@@ -12,17 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 01/19/2018
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c8789f08a37466862120dda88a0bce7da3e9a91
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 181954e4657166db8aa94021ad093437d8c7abfd
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="Azure Cosmos DB-HDInsight"></a>使用 Azure Cosmos DB 和 HDInsight 运行 Apache Hive、Pig 或 Hadoop 作业
 本教程演示如何在带有 Cosmos DB 的 Hadoop 连接器的 Azure HDInsight 上运行 [Apache Hive][apache-hive]、[Apache Pig][apache-pig] 和 [Apache Hadoop][apache-hadoop] MapReduce 作业。 Cosmos DB 的 Hadoop 连接器使 Cosmos DB 可以充当 Hive、Pig 以及 MapReduce 作业的源和接收器。 本教程将 Cosmos DB 用作 Hadoop 作业的数据源和目的地。
+
+> [!IMPORTANT] 
+> Spark 到 Azure Cosmos DB 的连接器是用于将 Azure HDInsight 连接到 Azure Cosmos DB 的建议选项。 有关详细信息，请参阅[使用 Spark 到 Azure Cosmos DB 的连接器加速实时大数据分析](spark-connector.md)。
 
 完成本教程后，能够回答以下问题：
 
@@ -35,7 +38,7 @@ ms.lasthandoff: 11/03/2017
 >
 >
 
-然后，返回到本文，在这里可以获得有关如何对 Cosmos DB 数据运行分析作业的完整详细信息。
+然后，返回到本文，在这里可获得有关如何对 Cosmos DB 数据运行分析作业的完整详细信息。
 
 > [!TIP]
 > 本教程假定先前有使用 Apache Hadoop、Hive 和/或 Pig 的经验。 如果不熟悉 Apache Hadoop、Hive 和 Pig，建议访问 [Apache Hadoop 文档][apache-hadoop-doc]。 本教程还假定你具有使用 Cosmos DB 的经验，并且拥有一个 Cosmos DB 帐户。 如果不熟悉 Cosmos DB 或没有 Cosmos DB 帐户，请查看[入门][getting-started]页。
@@ -161,7 +164,7 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
 
     ![Azure PowerShell 的关系图][azure-powershell-diagram]
 
-## <a name="RunHive"></a>步骤 3：使用 Cosmos DB 和 HDInsight 运行 Hive 作业
+## <a name="RunHive"></a>步骤 3：使用 Azure Cosmos DB 和 HDInsight 运行 Hive 作业
 > [!IMPORTANT]
 > 必须使用配置设置填写所有由 < > 表示的变量。
 >
@@ -178,7 +181,7 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
         $clusterName = "<HDInsightClusterName>"
 2. <p>让我们开始构造查询字符串。 我们将编写 Hive 查询，该查询采用来自 Azure Cosmos DB 集合的所有文档系统生成的时间戳 (_ts) 和唯一 ID (_rid)，按分钟计算所有文档，并将结果存储回新 Azure Cosmos DB 集合。</p>
 
-    <p>首先，从 Azure Cosmos DB 集合创建 Hive 表。 将以下代码片段添加到 PowerShell 脚本窗格中从 #1 开始的代码片段<strong>之后</strong>。 请确保包括可选的 DocumentDB.query 参数，以便将我们的文档调整为 just_ts 和 _rid。</p>
+    <p>首先，从 Azure Cosmos DB 集合创建 Hive 表。 将以下代码片段添加到 PowerShell 脚本窗格中从 #1 开始的代码片段<strong>之后</strong>。 请确保包含可选的查询参数，以便将文档调整为 just_ts 和 _rid。</p>
 
    > [!NOTE]
    > **命名 DocumentDB.inputCollections 不是一个错误。** 是，我们允许将多个集合作为输入添加： </br>
@@ -187,7 +190,7 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
 
         '*DocumentDB.inputCollections*' = '*\<DocumentDB Input Collection Name 1\>*,*\<DocumentDB Input Collection Name 2\>*' A1A</br> The collection names are separated without spaces, using only a single comma.
 
-        # Create a Hive table using data from DocumentDB. Pass DocumentDB the query to filter transferred data to _rid and _ts.
+        # Create a Hive table using data from Azure Cosmos DB. Pass Azure Cosmos DB the query to filter transferred data to _rid and _ts.
         $queryStringPart1 = "drop table DocumentDB_timestamps; "  +
                             "create external table DocumentDB_timestamps(id string, ts BIGINT) "  +
                             "stored by 'com.microsoft.azure.documentdb.hive.DocumentDBStorageHandler' "  +
@@ -207,7 +210,7 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
    >
    >
 
-       # Create a Hive table for the output data to DocumentDB.
+       # Create a Hive table for the output data to Azure Cosmos DB.
        $queryStringPart2 = "drop table DocumentDB_analytics; " +
                              "create external table DocumentDB_analytics(Month INT, Day INT, Hour INT, Minute INT, Total INT) " +
                              "stored by 'com.microsoft.azure.documentdb.hive.DocumentDBStorageHandler' " +
@@ -276,7 +279,7 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
         # Provide HDInsight cluster name where you want to run the Pig job.
         $clusterName = "Azure HDInsight Cluster Name"
 2. <p>让我们开始构造查询字符串。 我们将编写 Pig 查询，该查询采用来自 Azure Cosmos DB 集合的所有文档系统生成的时间戳 (_ts) 和唯一 ID (_rid)，按分钟计算所有文档，并将结果存储回新 Azure Cosmos DB 集合。</p>
-    <p>首先，从 Cosmos DB 将文档加载到 HDInsight 中。 将以下代码片段添加到 PowerShell 脚本窗格中从 #1 开始的代码片段<strong>之后</strong>。 请确保添加了 DocumentDB.query 到可选的 DocumentDB 查询参数，以便将我们的文档调整到 just_ts 和 _rid。</p>
+    <p>首先，从 Cosmos DB 将文档加载到 HDInsight 中。 将以下代码片段添加到 PowerShell 脚本窗格中从 #1 开始的代码片段<strong>之后</strong>。 请确保向可选的 DocumentDB 查询参数添加了查询，以便将文档调整到 just_ts 和 _rid。</p>
 
    > [!NOTE]
    > 是，我们允许将多个集合作为输入添加： </br>
@@ -286,7 +289,7 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
 
     文档将为跨多个集合的分布式轮循机制。 一批文档将存储在一个集合中，第二批文档则存储在下一个集合中，如此类推。
 
-        # Load data from Cosmos DB. Pass DocumentDB query to filter transferred data to _rid and _ts.
+        # Load data from Cosmos DB. Pass the Azure Cosmos DB query to filter transferred data to _rid and _ts.
         $queryStringPart1 = "DocumentDB_timestamps = LOAD '<DocumentDB Endpoint>' USING com.microsoft.azure.documentdb.pig.DocumentDBLoader( " +
                                                         "'<DocumentDB Primary Key>', " +
                                                         "'<DocumentDB Database Name>', " +
@@ -397,7 +400,7 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
 
 若要了解更多信息，请参阅下列文章：
 
-* [使用 Documentdb 开发 Java 应用程序][documentdb-java-application]
+* [使用 Azure Cosmos DB 开发 Java 应用程序][sql-api-java-application]
 * [为 HDInsight 中的 Hadoop 开发 Java MapReduce 程序][hdinsight-develop-deploy-java-mapreduce]
 * [将 Hadoop 与 HDInsight 中的 Hive 配合使用以分析手机使用情况][hdinsight-get-started]
 * [将 MapReduce 与 HDInsight 配合使用][hdinsight-use-mapreduce]
@@ -409,14 +412,14 @@ DNS 名称必须以字母数字字符开头和结尾，并且可以包含短划�
 [apache-hadoop-doc]: http://hadoop.apache.org/docs/current/
 [apache-hive]: http://hive.apache.org/
 [apache-pig]: http://pig.apache.org/
-[getting-started]: documentdb-get-started.md
+[getting-started]: sql-api-get-started.md
 
 [azure-portal]: https://portal.azure.com/
 [azure-powershell-diagram]: ./media/run-hadoop-with-hdinsight/azurepowershell-diagram-med.png
 
 [hdinsight-samples]: http://portalcontent.blob.core.windows.net/samples/documentdb-hdinsight-samples.zip
 [github]: https://github.com/Azure/azure-documentdb-hadoop
-[documentdb-java-application]: documentdb-java-application.md
+[sql-api-java-application]: sql-api-java-application.md
 [import-data]: import-data.md
 
 [hdinsight-custom-provision]: ../hdinsight/hdinsight-provision-clusters.md

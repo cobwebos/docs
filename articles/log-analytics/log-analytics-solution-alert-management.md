@@ -1,6 +1,6 @@
 ---
-title: "Operations Management Suite (OMS) 中的警报管理解决方案 | Microsoft Docs"
-description: "Log Analytics 中的警报管理解决方案有助于分析环境中的所有警报。  除了整合 OMS 内生成的警报之外，它还会将连接的 System Center Operations Manager 管理组中的警报导入到 Log Analytics。"
+title: "Azure Log Analytics 中的警报管理解决方案 | Microsoft Docs"
+description: "Log Analytics 中的警报管理解决方案有助于分析环境中的所有警报。  除了整合 Log Analytics 内生成的警报之外，它还会将连接的 System Center Operations Manager 管理组中的警报导入到 Log Analytics。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/13/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 4ec80fccdf4521792ff6be115ec66227f0fe1ed2
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: c34916913915331020d9fc9789221f790b75a070
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/22/2018
 ---
-# <a name="alert-management-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) 中的警报管理解决方案
+# <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警报管理解决方案
 
 ![警报管理图标](media/log-analytics-solution-alert-management/icon.png)
 
@@ -34,10 +34,10 @@ ms.lasthandoff: 12/13/2017
 - 对于 System Center Operations Manager 警报，[将 Operations Manager 管理组连接到 Log Analytics 工作区](log-analytics-om-agents.md)。  System Center Operations Manager 中创建的任何警报均导入 Log Analytics。  
 
 ## <a name="configuration"></a>配置
-使用[添加解决方案](log-analytics-add-solutions.md)中所述的过程，将警报管理解决方案添加到 OMS 工作区。  无需进一步配置。
+使用[添加解决方案](log-analytics-add-solutions.md)中所述的过程，将警报管理解决方案添加到 Log ANalytics 工作区。  无需进一步的配置。
 
 ## <a name="management-packs"></a>管理包
-如果 System Center Operations Manager 管理组已连接到 OMS 工作区，则添加此解决方案时在 System Center Operations Manager 中安装以下管理包。  无需对管理包进行任何配置或维护。  
+如果 System Center Operations Manager 管理组已连接到 Log Analytics 工作区，则添加此解决方案时将在 System Center Operations Manager 中安装以下管理包。  无需对管理包进行任何配置或维护。  
 
 * Microsoft System Center Advisor 警报管理 (Microsoft.IntelligencePacks.AlertManagement)
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 12/13/2017
 - 警报数据每 3 分钟从 Operations Manager 管理组发送到 Log Analytics。  
 
 ## <a name="using-the-solution"></a>使用解决方案
-在 OMS 工作区中添加警报管理解决方案时，“警报管理”磁贴将添加到 OMS 仪表板。  此磁贴显示在过去 24 小时内生成的当前活动警报的数目的计数与图形表示。  不能更改此时间范围。
+在 Log Analytics 工作区中添加警报管理解决方案时，“警报管理”磁贴将添加到仪表板。  此磁贴显示在过去 24 小时内生成的当前活动警报的数目的计数与图形表示。  不能更改此时间范围。
 
 ![警报管理磁贴](media/log-analytics-solution-alert-management/tile.png)
 

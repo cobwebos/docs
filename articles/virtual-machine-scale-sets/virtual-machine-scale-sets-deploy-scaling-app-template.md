@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/16/2017
 ms.author: iainfou
-ms.openlocfilehash: 614c7c82aabab212753529a21d7a770b7a02027e
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 201b752c2a79362f2e049d2e0f0b953d77aaedfe
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 在此入门文章中，可以使用 Azure 资源管理器模板创建虚拟机规模集。 也可使用 [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md)、[Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) 或 [Azure 门户](virtual-machine-scale-sets-create-portal.md)创建规模集。
@@ -37,7 +37,7 @@ Azure 资源管理器模板允许部署成组的相关资源。 模板以 JavaSc
 | 属性                     | 属性说明                                  | 示例模板值                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | 要创建的 Azure 资源类型                            | Microsoft.Compute/virtualMachineScaleSets |
-| name                         | 规模集名称                                       | myScaleSet                                |
+| 名称                         | 规模集名称                                       | myScaleSet                                |
 | location                     | 要创建规模集的位置                     | 美国东部                                   |
 | sku.name                     | 每个规模集实例的 VM 大小                  | Standard_A1                               |
 | sku.capacity                 | 一开始需要创建的 VM 实例数           | #N/A                                         |
@@ -175,7 +175,7 @@ az group deployment create \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/azuredeploy.json
 ```
 
-若要查看运行中的应用，请使用 [az network public-ip list](/cli/azure/network/public-ip#show) 命令获取负载均衡器的公共 IP 地址，如下所示：
+若要查看运行中的应用，请使用 [az network public-ip list](/cli/azure/network/public-ip#az_network_public_ip_show) 命令获取负载均衡器的公共 IP 地址，如下所示：
 
 ```azurecli-interactive
 az network public-ip list \
@@ -213,7 +213,7 @@ Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 
 
 ## <a name="clean-up-resources"></a>清理资源
-如果不再需要资源组、规模集和所有相关的资源，可以使用 [az group delete](/cli/azure/group#delete) 命令将其删除，如下所示：
+如果不再需要资源组、规模集和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除，如下所示：
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

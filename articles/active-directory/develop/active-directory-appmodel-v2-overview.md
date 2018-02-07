@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 446e39f57448cbc0cd9a6f93a388159d7eca5863
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 18319ad461500fac13b3f6ac1117a52b94e695e7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>在单个应用程序中将 Microsoft 帐户和 Azure Active Directory 用户登录
 在过去，想要支持个人 Microsoft 帐户和 Azure Active Directory 中的工作帐户的应用程序开发人员必须集成两个单独的系统。 Azure Active Directory (Azure AD) v2.0 终结点推出了新的身份验证 API 版本，可简化此过程。 使用 Azure AD v2.0 终结点可通过一次集成从这两种类型的帐户登录。 使用 Azure AD v2.0 终结点的应用程序还可以通过其中一种帐户从 [Microsoft 图形 API](https://graph.microsoft.io) 使用 REST API。
@@ -51,4 +51,4 @@ ms.lasthandoff: 12/11/2017
 > [!NOTE]
 > 如果只需从 Azure Active Directory 登录到工作和学校帐户，请从 [Azure AD 开发人员指南](active-directory-developers-guide.md)入手。 Azure AD v2.0 终结点供明确需要登录到 Microsoft 个人帐户的开发人员使用。
 
-[!INCLUDE  [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

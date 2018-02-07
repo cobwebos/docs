@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: c0d90f7c6ad136cd1a558f6158cf734de51b9538
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: c416ae23565870223abc3f2db1ac460e8bea77f6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-input-validation--mitigations"></a>安全框架：输入验证 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="example"></a>示例 
 
-```C#
+```csharp
 XsltSettings settings = new XsltSettings();
 settings.EnableScript = true; // WRONG: THIS SHOULD BE SET TO false
 ```
@@ -50,14 +50,14 @@ settings.EnableScript = true; // WRONG: THIS SHOULD BE SET TO false
 ### <a name="example"></a>示例
 如果使用.MSXML 6.0，XSLT 脚本默认已禁用；但是，必须确保未通过 XML DOM 对象属性 AllowXsltScript 显式将它启用。 
 
-```C#
+```csharp
 doc.setProperty("AllowXsltScript", true); // WRONG: THIS SHOULD BE SET TO false
 ```
 
 ### <a name="example"></a>示例
 如果使用 MSXML 5 或更低版本，XSLT 脚本默认已启用，必须显式将它禁用。 将 XML DOM 对象属性 AllowXsltScript 设置为 false。 
 
-```C#
+```csharp
 doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables XSLT scripting.
 ```
 
@@ -144,7 +144,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 ### <a name="example"></a>示例
 对于 .NET Framework 代码，可使用以下方法：
 
-```C#
+```csharp
 XmlTextReader reader = new XmlTextReader(stream);
 reader.ProhibitDtd = true;
 
@@ -162,7 +162,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ### <a name="example"></a>示例
 若要对 XmlDocuments 禁用实体解析，请使用 Load 方法的 `XmlDocument.Load(XmlReader)` 重载，并在 XmlReader 参数中设置相应的属性来禁用解析，如以下代码中所示： 
 
-```C#
+```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
 settings.ProhibitDtd = true;
 XmlReader reader = XmlReader.Create(stream, settings);
@@ -173,7 +173,7 @@ doc.Load(reader);
 ### <a name="example"></a>示例
 如果无法对应用程序禁用实体解析，请根据应用程序的需要，将 XmlReaderSettings.MaxCharactersFromEntities 属性设置为某个合理值。 这样可以限制潜在的指数扩张 DoS 攻击的影响。 以下示例代码演示了此方法： 
 
-```C#
+```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
 settings.ProhibitDtd = false;
 settings.MaxCharactersFromEntities = 1000;
@@ -183,7 +183,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ### <a name="example"></a>示例
 如果需要解析内联实体但不需要解析外部实体，请将 XmlReaderSettings.XmlResolver 属性设置为 null。 例如： 
 
-```C#
+```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
 settings.ProhibitDtd = false;
 settings.MaxCharactersFromEntities = 1000;
@@ -217,7 +217,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ### <a name="example"></a>示例
 有关文件格式签名验证的最后一个要点，请参阅以下类的详细信息： 
 
-```C#
+```csharp
         private static Dictionary<string, List<byte[]>> fileSignature = new Dictionary<string, List<byte[]>>
                     {
                     { ".DOC", new List<byte[]> { new byte[] { 0xD0, 0xCF, 0x11, 0xE0, 0xA1, 0xB1, 0x1A, 0xE1 } } },
@@ -333,7 +333,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ### <a name="example"></a>示例 
 以下代码演示在调用存储过程时，如何对 SqlParameterCollection 使用类型安全的参数。 
 
-```C#
+```csharp
 using System.Data;
 using System.Data.SqlClient;
 
@@ -358,7 +358,7 @@ myCommand.Fill(userDataset);
 | **适用的技术** | MVC5、MVC6 |
 | **属性**              | 不适用  |
 | **参考**              | [元数据特性](http://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute)、[公共密钥安全漏洞和缓解措施](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation)、[有关 ASP.NET MVC 中的大规模分配的完整指南](http://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx)、[通过 MVC 开始使用 EF](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
-| **步骤** | <ul><li>**在什么情况下应该查找过度提交漏洞？**- 在绑定用户输入中的模型类的任何位置，都可能存在过度提交漏洞。 MVC 等框架可在自定义 .NET 类中表示用户数据，包括普通旧 CLR 对象 (POCO)。 MVC 会在这些模型类中自动填充请求中的数据，提供一种便利的表示形式来处理用户输入。 如果这些类包含不应由用户设置的属性，应用程序将很容易遭到过度提交攻击，使用户能够控制应用程序永远不希望他们控制的数据。 与 MVC 模型绑定一样，数据库访问技术（例如，包括 Entity Framework 在内的对象/关系映射器）通常也支持使用 POCO 对象来表示数据库数据。 使用这些数据模型类同样能够方便地处理数据库数据，就如同使用 MVC 处理用户输入一样。 由于 MVC 和数据库支持类似的模型（例如 POCO 对象），因此，似乎可以轻松地重复使用相同的类来实现这两种目的。 这种做法无法保留关注点分离，这是向模型绑定公共非预期属性，造成过度提交攻击的一个常见区域。</li><li>**为何不应使用未筛选的数据库模型类作为 MVC 操作的参数？**- 因为 MVC 模型绑定会绑定该类中的任何内容。 即使数据未显示在视图中，恶意用户也可以发送包含此数据的 HTTP 请求，而 MVC 会自然而然地绑定此请求，因为操作指出，数据库类就是它应该接受用户输入的数据形状。</li><li>**为何应关心用于模型绑定的形状？**- 结合过度扩散的模型使用 ASP.NET MVC 模型绑定会使应用程序曝露在过度提交攻击之下。 攻击者可能会利用过度提交来更改应用程序数据，使之超出开发人员的预期，例如，覆盖某个商品的价格，或者帐户的安全特权。 应用程序应使用操作特定的绑定模型（或特定的受允许属性筛选列表）来提供显式约定，规定允许通过模型绑定提供哪些不受信任的输入。</li><li>**是否存在只复制代码的单独绑定模型？**- 没有，这是一个关注点分离的问题。 如果在操作方法中重复使用数据库模型，则表示 HTTP 请求中的用户可以设置该类中的任何属性（或子属性）。 如果不希望 MVC 这样做，则需要使用筛选列表或单独的类形状来告知 MVC，可以通过用户输入提供哪些数据。</li><li>**如果针对用户输入使用单独的绑定模型，是否需要复制所有数据批注特性？**- 没有必要。 可在数据库模型类中使用 MetadataTypeAttribute 来链接到模型绑定类中的元数据。 只需注意，MetadataTypeAttribute 所引用的类型必须是引用类型（可能包含更少或更多的属性）的子集。</li><li>**在用户输入模型与数据库模型之间来回移动数据是个繁琐的过程。是否可以只使用反射来复制所有属性？**- 可以。 在绑定模型中显示的属性无非就是你确定对于用户输入安全的属性。 没有安全方面的理由会阻止使用反射来复制这两个模型之间共有的所有属性。</li><li>**对于 [Bind(Exclude ="â€¦")]，是否可以使用它来取代单独的绑定模型？**- 不建议采用这种做法。 使用 [Bind(Exclude ="â€¦")] 意味着任何新属性在默认情况下可绑定。 添加新属性后，记得执行一个额外的步骤来保持安全性，而不要采用默认的设计安全性。 根据具体的开发人员，每次添加一个属性都要检查此列表是有风险的。</li><li>**[Bind(Include ="â€¦")] 是否可用于 Edit 操作？**- 不可以。 [Bind(Include ="â€¦")] 仅适用于 INSERT 式操作（添加新数据）。 对于 UPDATE 式操作（修改现有数据），请使用另一种方式，例如，使用单独的绑定模型，或者将允许属性的显式列表传递给 UpdateModel 或 TryUpdateModel。 在 Edit 操作中添加 [Bind(Include ="â€¦")] 特性意味着 MVC 会创建一个对象实例并且仅设置列出的属性，将其他所有属性保留默认值。 如果数据是持久保存的，将完全替换现有实体，将所有已省略属性的值重置为默认值。 例如，如果在 Edit 操作的 [Bind(Include ="â€¦")] 特性中省略 IsAdmin，则名称已通过此操作进行编辑的任何用户将重置为 IsAdmin = false（任何编辑过的用户将丢失管理员状态）。 如果想要防止对某些属性进行更新，请使用上述其他方式之一。 请注意，某些版本的 MVC 工具会在 Edit 操作中生成包含 [Bind(Include ="â€¦")] 的控制器类，这意味着从该列表中删除某个属性可防止过度提交攻击。 但是，如上所述，这种方式无法按预期工作，而是将已省略属性中的任何数据重置为默认值。</li><li>**对于 Create 操作，使用 [Bind(Include ="â€¦")] 而不是单独的绑定模型是否需要注意什么？**- 是的。 首先，这种方式不适用于 Edit 方案，它需要保留采用两种不同的方式来缓解所有过度提交漏洞。 其次，单独的绑定模型会在用于用户输入的形状与用于持久性的形状之间实施关注点分离，而 [Bind(Include ="â€¦")] 则不会。 再次，请注意，[Bind(Include ="â€¦")] 只能处理顶级属性；不能只允许在特性中使用一部分子属性（例如“Details.Name”）。 最后，也许最重要的是，使用 [Bind(Include ="â€¦")] 会增加一个额外的步骤，每次将该类用于模型绑定时，都必须记得执行该步骤。 如果新的操作方法直接绑定到数据类而忘记包含 [Bind(Include ="â€¦")] 特性，则很容易遭到过度提交攻击，因此 [Bind(Include ="â€¦")] 方式在默认情况下不是那么安全。 如果使用 [Bind(Include ="â€¦")]，每次当数据类显示为操作方法参数时，请始终记得指定该特性。</li><li>**对于 Create 操作，如果将 [Bind(Include ="â€¦")] 特性放置在模型类本身中会怎样？使用这种方式是否就不需要记得在每个操作方法中放置该特性？**- 在某些情况下，这种方式是可行的。 在模型类型本身中（而不是在使用此类的操作参数中）使用 [Bind(Include ="â€¦")] 确实不需要记得在每个操作方法中包含 [Bind(Include ="â€¦")] 特性。 在类中直接使用该特性可以针对模型绑定目的，有效创建此类的独立外围应用。 但是，这种方式只允许为每个模型类创建一个模型绑定形状。 如果某个操作方法需要允许字段的模型绑定（例如，用于更新用户角色的仅限管理员的操作），而其他操作需要防止字段的模型绑定，则此方式不起作用。 每个类只能有一个模型绑定形状；如果不同的操作需要不同的模型绑定形状，它们需要在操作方法中使用单独的模型绑定类或单独的 [Bind(Include ="â€¦")] 特性来表示这些不同的形状。</li><li>**什么是绑定模型？它们与视图模型一样吗？**- 这是两个相关的概念。 术语“绑定模型”表示操作中使用的模型类是参数列表（从 MVC 模型绑定传递给操作方法的形状）。 术语“视图模型”表示从操作方法传递给视图的模型类。 我们经常使用视图特定的模型将数据从操作方法传递给视图。 通常，此形状也适用于模型绑定，术语“视图模型”可用于表示在这两个位置使用的同一模型。 为追求精确，本过程将专门讨论绑定模型并侧重于传递给操作的形状，这是有关大规模分配的一个要点。</li></ul>| 
+| **步骤** | <ul><li>**在什么情况下应该查找过度提交漏洞？**- 在绑定用户输入中的模型类的任何位置，都可能存在过度提交漏洞。 MVC 等框架可在自定义 .NET 类中表示用户数据，包括普通旧 CLR 对象 (POCO)。 MVC 会在这些模型类中自动填充请求中的数据，提供一种便利的表示形式来处理用户输入。 如果这些类包含不应由用户设置的属性，应用程序将很容易遭到过度提交攻击，使用户能够控制应用程序永远不希望他们控制的数据。 与 MVC 模型绑定一样，数据库访问技术（例如，包括 Entity Framework 在内的对象/关系映射器）通常也支持使用 POCO 对象来表示数据库数据。 使用这些数据模型类同样能够方便地处理数据库数据，就如同使用 MVC 处理用户输入一样。 由于 MVC 和数据库支持类似的模型（例如 POCO 对象），因此，似乎可以轻松地重复使用相同的类来实现这两种目的。 这种做法无法保留关注点分离，这是向模型绑定公共非预期属性，造成过度提交攻击的一个常见区域。</li><li>**为何不应使用未筛选的数据库模型类作为 MVC 操作的参数？**- 因为 MVC 模型绑定会绑定该类中的任何内容。 即使数据未显示在视图中，恶意用户也可以发送包含此数据的 HTTP 请求，而 MVC 会自然而然地绑定此请求，因为操作指出，数据库类就是它应该接受用户输入的数据形状。</li><li>**为何应关心用于模型绑定的形状？**- 结合过度扩散的模型使用 ASP.NET MVC 模型绑定会使应用程序曝露在过度提交攻击之下。 攻击者可能会利用过度提交来更改应用程序数据，使之超出开发人员的预期，例如，覆盖某个商品的价格，或者帐户的安全特权。 应用程序应使用操作特定的绑定模型（或特定的受允许属性筛选列表）来提供显式约定，规定允许通过模型绑定提供哪些不受信任的输入。</li><li>**是否存在只复制代码的单独绑定模型？**- 没有，这是一个关注点分离的问题。 如果在操作方法中重复使用数据库模型，则表示 HTTP 请求中的用户可以设置该类中的任何属性（或子属性）。 如果不希望 MVC 这样做，则需要使用筛选列表或单独的类形状来告知 MVC，可以通过用户输入提供哪些数据。</li><li>**如果针对用户输入使用单独的绑定模型，是否需要复制所有数据批注特性？**- 没有必要。 可在数据库模型类中使用 MetadataTypeAttribute 来链接到模型绑定类中的元数据。 只需注意，MetadataTypeAttribute 所引用的类型必须是引用类型（可能包含更少或更多的属性）的子集。</li><li>**在用户输入模型与数据库模型之间来回移动数据是个繁琐的过程。是否可以只使用反射来复制所有属性？**- 可以。 在绑定模型中显示的属性无非就是你确定对于用户输入安全的属性。 没有安全方面的理由会阻止使用反射来复制这两个模型之间共有的所有属性。</li><li>**关于 [Bind(Exclude ="â€¦")]，是否可以使用它来取代单独的绑定模型？**- 不建议采用这种做法。 使用 [Bind(Exclude ="â€¦")] 意味着任何新属性在默认情况下可绑定。 添加新属性后，记得执行一个额外的步骤来保持安全性，而不要采用默认的设计安全性。 根据具体的开发人员，每次添加一个属性都要检查此列表是有风险的。</li><li>**[Bind(Include ="â€¦")] 是否可用于 Edit 操作？**- 不可以。 [Bind(Include ="â€¦")] 仅适用于 INSERT 式操作（添加新数据）。 对于 UPDATE 式操作（修改现有数据），请使用另一种方式，例如，使用单独的绑定模型，或者将允许属性的显式列表传递给 UpdateModel 或 TryUpdateModel。 在 Edit 操作中添加 [Bind(Include ="â€¦")] 特性意味着 MVC 会创建一个对象实例并且仅设置列出的属性，将其他所有属性保留默认值。 如果数据是持久保存的，将完全替换现有实体，将所有已省略属性的值重置为默认值。 例如，如果在 Edit 操作的 [Bind(Include ="â€¦")] 特性中省略 IsAdmin，则名称已通过此操作进行编辑的任何用户将重置为 IsAdmin = false（任何编辑过的用户将丢失管理员状态）。 如果想要防止对某些属性进行更新，请使用上述其他方式之一。 请注意，某些版本的 MVC 工具会在 Edit 操作中生成包含 [Bind(Include ="â€¦")] 的控制器类，这意味着从该列表中删除某个属性可防止过度提交攻击。 但是，如上所述，这种方式无法按预期工作，而是将已省略属性中的任何数据重置为默认值。</li><li>**对于 Create 操作，使用 [Bind(Include ="â€¦")] 而不是单独的绑定模型是否需要注意什么？**- 是的。 首先，这种方式不适用于 Edit 方案，它需要保留采用两种不同的方式来缓解所有过度提交漏洞。 其次，单独的绑定模型会在用于用户输入的形状与用于持久性的形状之间实施关注点分离，而 [Bind(Include ="â€¦")] 则不会。 再次，请注意，[Bind(Include ="â€¦")] 只能处理顶级属性；不能只允许在特性中使用一部分子属性（例如“Details.Name”）。 最后，也许最重要的是，使用 [Bind(Include ="â€¦")] 会增加一个额外的步骤，每次将该类用于模型绑定时，都必须记得执行该步骤。 如果新的操作方法直接绑定到数据类而忘记包含 [Bind(Include ="â€¦")] 特性，则很容易遭到过度提交攻击，因此 [Bind(Include ="â€¦")] 方式在默认情况下不是那么安全。 如果使用 [Bind(Include ="â€¦")]，每次当数据类显示为操作方法参数时，请始终记得指定该特性。</li><li>**对于 Create 操作，如果将 [Bind(Include ="â€¦")] 特性放置在模型类本身中会怎样？使用这种方式是否就不需要记得在每个操作方法中放置该特性？**- 在某些情况下，这种方式是可行的。 在模型类型本身中（而不是在使用此类的操作参数中）使用 [Bind(Include ="â€¦")] 确实不需要记得在每个操作方法中包含 [Bind(Include ="â€¦")] 特性。 在类中直接使用该特性可以针对模型绑定目的，有效创建此类的独立外围应用。 但是，这种方式只允许为每个模型类创建一个模型绑定形状。 如果某个操作方法需要允许字段的模型绑定（例如，用于更新用户角色的仅限管理员的操作），而其他操作需要防止字段的模型绑定，则此方式不起作用。 每个类只能有一个模型绑定形状；如果不同的操作需要不同的模型绑定形状，它们需要在操作方法中使用单独的模型绑定类或单独的 [Bind(Include ="â€¦")] 特性来表示这些不同的形状。</li><li>**什么是绑定模型？它们与视图模型一样吗？**- 这是两个相关的概念。 术语“绑定模型”表示操作中使用的模型类是参数列表（从 MVC 模型绑定传递给操作方法的形状）。 术语“视图模型”表示从操作方法传递给视图的模型类。 我们经常使用视图特定的模型将数据从操作方法传递给视图。 通常，此形状也适用于模型绑定，术语“视图模型”可用于表示在这两个位置使用的同一模型。 为追求精确，本过程将专门讨论绑定模型并侧重于传递给操作的形状，这是有关大规模分配的一个要点。</li></ul>| 
 
 ## <a id="rendering"></a>在呈现之前为不受信任的 Web 输出编码
 
@@ -373,7 +373,7 @@ myCommand.Fill(userDataset);
 
 ### <a name="example"></a>示例
 
-```C#
+```csharp
 * Encoder.HtmlEncode 
 * Encoder.HtmlAttributeEncode 
 * Encoder.JavaScriptEncode 
@@ -465,7 +465,7 @@ $('body').append(resHTML);
 ### <a name="example"></a>示例
 例如，如果处理时间超过 5 秒，以下配置将引发 RegexMatchTimeoutException： 
 
-```C#
+```csharp
 <httpRuntime targetFramework="4.5" defaultRegexMatchTimeout="00:00:05" />
 ```
 
@@ -483,7 +483,7 @@ $('body').append(resHTML);
 ### <a name="example"></a>示例
 下面是不安全做法的示例： 
 
-```C#
+```csharp
 <div class="form-group">
             @Html.Raw(Model.AccountConfirmText)
         </div>
@@ -508,7 +508,7 @@ $('body').append(resHTML);
 ### <a name="example"></a>示例
 下面是不安全的动态存储过程的示例： 
 
-```C#
+```csharp
 CREATE PROCEDURE [dbo].[uspGetProductsByCriteria]
 (
   @productName nvarchar(200) = NULL,
@@ -535,7 +535,7 @@ AS
 
 ### <a name="example"></a>示例
 下面是安全实现的同一个存储过程： 
-```C#
+```csharp
 CREATE PROCEDURE [dbo].[uspGetProductsByCriteriaSecure]
 (
              @productName nvarchar(200) = NULL,
@@ -568,7 +568,7 @@ AS
 ### <a name="example"></a>示例
 以下代码演示了相同的操作： 
 
-```C#
+```csharp
 using System.ComponentModel.DataAnnotations;
 
 namespace MyApi.Models
@@ -589,7 +589,7 @@ namespace MyApi.Models
 ### <a name="example"></a>示例
 在 API 控制器的操作方法中，必须显式验证模型的有效性，如下所示： 
 
-```C#
+```csharp
 namespace MyApi.Controllers
 {
     public class ProductsController : ApiController
@@ -636,7 +636,7 @@ namespace MyApi.Controllers
 ### <a name="example"></a>示例
 以下代码演示在调用存储过程时，如何对 SqlParameterCollection 使用类型安全的参数。 
 
-```C#
+```csharp
 using System.Data;
 using System.Data.SqlClient;
 

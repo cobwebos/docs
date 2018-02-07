@@ -2,22 +2,20 @@
 title: "Azure 堆栈数据中心集成的 DNS"
 description: "了解如何将与你的数据中心 DNS 集成 Azure 堆栈 DNS"
 services: azure-stack
-author: troettinger
+author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/10/2017
-ms.author: victorh
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 40d6d4858ef2e3df61d04dc68c00e09c04f000e2
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 504cbabe6ea4b7ad71601186dac853515f8c4709
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Azure 堆栈数据中心集成的 DNS
-
-*适用范围： Azure 堆栈集成系统*
-
 若要能够访问 Azure 堆栈终结点 (`portal`， `adminportal`， `management`，`adminmanagement`等。) 从外部 Azure 堆栈，你需要与托管你想要使用 Azure 堆栈中的 DNS 区域的 DNS 服务器集成的 Azure 堆栈 DNS 服务。
 
 ## <a name="azure-stack-dns-namespace"></a>Azure 堆栈 DNS 命名空间
@@ -140,4 +138,4 @@ Azure 堆栈 DNS 服务器的 Fqdn 具有以下格式：
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 堆栈数据中心集成的标识](azure-stack-integrate-identity.md)
+[防火墙集成](azure-stack-firewall.md)

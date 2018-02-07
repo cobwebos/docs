@@ -1,6 +1,6 @@
 ---
-title: "创建面向 Internet 的负载均衡器 - Azure 模板 | Microsoft 文档"
-description: "了解如何使用模板在 Resource Manager 中创建面向 Internet 的负载均衡器"
+title: "创建公共负载均衡器 - Azure 模板 | Microsoft Docs"
+description: "了解如何使用模板在资源管理器中创建公共负载均衡器"
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 10d96920d3aa3cae19750d7c2437b88bac1c8cda
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 21ff5a48d29117ba1d6195f308f00180b1f1edbf
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="creating-an-internet-facing-load-balancer-using-a-template"></a>使用模板创建面向 Internet 的负载均衡器
+# <a name="creating-a-public-load-balancer-using-a-template"></a>使用模板创建公共负载均衡器
 
 > [!div class="op_single_selector"]
-> * [门户](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [Portal](../load-balancer/load-balancer-get-started-internet-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [模板](../load-balancer/load-balancer-get-started-internet-arm-template.md)

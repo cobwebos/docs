@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 6b2dcaa4b0e0f59bf8a632b48813ba6a24202ec5
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 45fcbc3af02dd8afbd9581e8bc38ad10369a2747
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>如何在应用服务和 Azure Functions 中使用 Azure 托管服务标识（公共预览版）
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/06/2017
 
 3. 选择“托管服务标识”。
 
-4. 将“使用 Azure Active Directory 注册”切换至“打开”。 单击“保存” 。
+4. 将“使用 Azure Active Directory 注册”切换至“打开”。 单击“ **保存**”。
 
 ![应用服务中的托管服务标识](media/app-service-managed-service-identity/msi-blade.png)
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 12/06/2017
 
 以下步骤将指导你完成使用 CLI 创建 Web 应用并为其分配标识的操作：
 
-1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/#login) 登录到 Azure。 使用与要在其下部署应用程序的 Azure 订阅关联的帐户：
+1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/#az_login) 登录到 Azure。 使用与要在其下部署应用程序的 Azure 订阅关联的帐户：
 
     ```azurecli-interactive
     az login

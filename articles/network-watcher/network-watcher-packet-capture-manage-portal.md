@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 818f6513625a2677668dd6b6869ef969fe015bf7
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c283fb4d1a390de88b425ce51a312b5404503f0d
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>在门户中使用 Azure 网络观察程序管理数据包捕获
 
 > [!div class="op_single_selector"]
-> - [Azure 门户](network-watcher-packet-capture-manage-portal.md)
+> - [Azure portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
@@ -50,7 +50,7 @@ ms.lasthandoff: 12/21/2017
 
 ### <a name="packet-capture-agent-extension-through-the-portal"></a>通过门户安装数据包捕获代理扩展
 
-要通过门户安装数据包捕获 VM 代理，请导航到虚拟机，单击“扩展” > “添加”，然后搜索“适用于 Windows 的网络观察程序代理”
+要通过门户安装数据包捕获 VM 代理，请导航到你的虚拟机，单击“扩展” > “添加”，并搜索“适用于 Windows 的网络观察程序代理”
 
 ![代理视图][agent]
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 12/21/2017
 - **存储帐户** - 确定是否将数据包捕获保存在存储帐户中。
 - **文件** - 确定是否将数据包捕获保存在虚拟机本地。
 - **存储帐户** - 用于保存数据包捕获的选定存储帐户。 默认位置为 https://{storage account name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription id}/resourcegroups/{resource group name}/providers/microsoft.compute/virtualmachines/{virtual machine name}/{YY}/{MM}/{DD}/packetcapture_{HH}_{MM}_{SS}_{XXX}.cap。 （仅当选择了“存储”时才启用此选项）
-- **本地文件路径** - 虚拟机上保存数据包捕获的本地路径。 （仅当选择了“文件”时才启用此选项）。 必须提供有效的路径
+- **本地文件路径** - 虚拟机上保存数据包捕获的本地路径。 （仅当选择了“文件”时才启用此选项）。 必须提供有效的路径。 对于 Linux 虚拟机，路径必须以 /var/captures 开头。
 - **每个数据包的最大字节数** - 从每个数据包捕获的字节数，如果留空，将捕获所有字节。
 - **每个会话的最大字节数** - 捕获的字节总数，一旦达到此值，就会停止数据包捕获。
 - **时间限制(秒)** - 设置停止数据包捕获的时间限制。 默认值为 18000 秒。

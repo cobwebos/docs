@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: e3787b48037360bf6066ddce2bacba6842213b2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41bd0291f3ff8f5dd61a21d1ba4ecb3b60a3cbfb
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 EDIFACT 消息
 
@@ -30,14 +30,14 @@ ms.lasthandoff: 10/11/2017
 
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
 * 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用解码 EDIFACT 消息连接器。 
-* 已在集成帐户中定义了至少两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
+* 已在集成帐户中至少定义了两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 * 已在集成帐户中定义了 [EDIFACT 协议](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="decode-edifact-messages"></a>为 EDIFACT 消息解码
 
-1. [创建逻辑应用](logic-apps-create-a-logic-app.md)。
+1. [创建逻辑应用](quickstart-create-first-logic-app-workflow.md)。
 
-2. 解码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，并将操作添加到逻辑应用。
+2. 解码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
 
 3. 在搜索框中，输入“EDIFACT”作为筛选器。 选择“解码 EDIFACT 消息”。
    

@@ -3,7 +3,7 @@ title: "外部的监视解决方案与 Azure 堆栈集成 |Microsoft 文档"
 description: "了解如何将 Azure 堆栈与数据中心外部监视解决方案集成。"
 services: azure-stack
 documentationcenter: 
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: 
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2017
-ms.author: mabrigg
-ms.openlocfilehash: 76499ac959b77e83494bc4f9593c20a99da5c147
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
+ms.openlocfilehash: a7f6d3691410711fcae692007b08977a93961845
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>外部的监视解决方案与 Azure 堆栈集成
 
@@ -83,8 +84,8 @@ ms.lasthandoff: 12/11/2017
 | *Tenant_id* | 管理员的订阅 ID | 检索通过管理员门户或 PowerShell |
 | *User_name* | 运算符订阅用户名 | operator@myazuredirectory.onmicrosoft.com |
 | *User_password* | 运算符订阅密码 | mypassword |
-| *Client_id* | 客户端 | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417 * |
-| *区域* |  Azure 堆栈区域名称 | local |
+| *Client_id* | Client | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417* |
+| *region* |  Azure 堆栈区域名称 | local |
 |  |  |
 
 * 提供 PowerShell GUID 是通用的。 你可以使用它为每个部署。
@@ -139,7 +140,7 @@ ms.lasthandoff: 12/11/2017
 
 |方法  |请求 URI  |
 |---------|---------|
-|GET     |   https://{armendpoint}/subscriptions/{subId}/resourceGroups/system。{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/Alerts?api-version=2016-05-01"      |
+|GET     |   https://{armendpoint}/subscriptions/{subId}/resourceGroups/system.{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/Alerts?api-version=2016-05-01"      |
 |     |         |
 
 **参数**
@@ -214,7 +215,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*createdtimestamp*     |     创建警报时的 UTC 时间。   |
 |*说明*     |    警报的说明。     |
 |*faultid*     | 受影响的组件。        |
-|*alertid 匹配的警报*     |  警报的唯一 ID。       |
+|*alertid*     |  警报的唯一 ID。       |
 |*faulttypeid*     |  发生故障的组件的唯一类型。       |
 |*lastupdatedtimestamp*     |   上次更新警报的信息的 UTC 时间。    |
 |*healthstate*     | 总体运行状况状态。        |
@@ -222,14 +223,14 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*fabricname*     |    已注册的 fabric 发生故障的组件名称。   |
 |*说明*     |  已注册的结构组件的说明。   |
 |*servicetype*     |   已注册的 fabric 服务的类型。   |
-|*修正*     |   建议的修正步骤。    |
+|*remediation*     |   建议的修正步骤。    |
 |*类型*     |   警报类型。    |
 |*resourceRegistrationid*    |     受影响的已注册资源 ID。    |
 |*resourceProviderRegistrationID*   |    受影响的组件的已注册的资源提供程序 ID。  |
 |*serviceregistrationid*     |    已注册的服务 ID。   |
-|*严重性*     |     警报严重性。  |
+|*severity*     |     警报严重性。  |
 |*state*     |    警报状态。   |
-|*标题*     |    警报标题。   |
+|*title*     |    警报标题。   |
 |*impactedresourceid*     |     受影响资源的 ID。    |
 |*ImpactedresourceDisplayName*     |     受影响资源的名称。  |
 |*closedByUserAlias*     |   关闭警报的用户。      |
@@ -242,7 +243,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 
 |方法    |请求 URI  |
 |---------|---------|
-|PUT     |   https://{armendpoint}/subscriptions/{subId}/resourceGroups/system。{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/Alerts/alertid?api-version=2016-05-01"    |
+|PUT     |   https://{armendpoint}/subscriptions/{subId}/resourceGroups/system.{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/Alerts/alertid?api-version=2016-05-01"    |
 
 **参数**
 
@@ -252,8 +253,8 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*armendpoint*     |   你的 Azure 堆栈环境，格式 https://adminmanagement 资源管理器终结点。{RegionName}。{外部 FQDN}。 例如，如果外部 FQDN 为*azurestack.external*和地区名称都是*本地*，则资源管理器终结点是 https://adminmanagement.local.azurestack.external。      |
 |*subid*     |    进行调用的用户的订阅 ID。 你可以使用查询此 API 仅具有对默认提供程序订阅的权限的用户。     |
 |*RegionName*     |   Azure 堆栈部署的区域名称。      |
-|*api 版本*     |    用于发出此请求的协议的版本。 你必须使用 2016年-05-01。     |
-|*alertid 匹配的警报*     |    警报的唯一 ID。     |
+|*api-version*     |    用于发出此请求的协议的版本。 你必须使用 2016年-05-01。     |
+|*alertid*     |    警报的唯一 ID。     |
 
 **正文**
 
@@ -357,7 +358,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 |*createdtimestamp*     |     创建警报时的 UTC 时间。   |
 |*说明*     |    警报的说明。     |
 |*faultid*     | 受影响的组件。        |
-|*alertid 匹配的警报*     |  警报的唯一 ID。       |
+|*alertid*     |  警报的唯一 ID。       |
 |*faulttypeid*     |  发生故障的组件的唯一类型。       |
 |*lastupdatedtimestamp*     |   上次更新警报的信息的 UTC 时间。    |
 |*healthstate*     | 总体运行状况状态。        |
@@ -365,14 +366,14 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 |*fabricname*     |    已注册的 fabric 发生故障的组件名称。   |
 |*说明*     |  已注册的结构组件的说明。   |
 |*servicetype*     |   已注册的 fabric 服务的类型。   |
-|*修正*     |   建议的修正步骤。    |
+|*remediation*     |   建议的修正步骤。    |
 |*类型*     |   警报类型。    |
 |*resourceRegistrationid*    |     受影响的已注册资源 ID。    |
 |*resourceProviderRegistrationID*   |    受影响的组件的已注册的资源提供程序 ID。  |
 |*serviceregistrationid*     |    已注册的服务 ID。   |
-|*严重性*     |     警报严重性。  |
+|*severity*     |     警报严重性。  |
 |*state*     |    警报状态。   |
-|*标题*     |    警报标题。   |
+|*title*     |    警报标题。   |
 |*impactedresourceid*     |     受影响资源的 ID。    |
 |*ImpactedresourceDisplayName*     |     受影响资源的名称。  |
 |*closedByUserAlias*     |   关闭警报的用户。      |
@@ -386,7 +387,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 
 |方法  |请求 URI  |
 |---------|---------|
-|GET    |   https://{armendpoint}/subscriptions/{subId}/resourceGroups/system。{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/serviceHealths?api-version=2016-05-01"   |
+|GET    |   https://{armendpoint}/subscriptions/{subId}/resourceGroups/system.{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/serviceHealths?api-version=2016-05-01"   |
 
 
 **参数**
@@ -397,7 +398,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 |*armendpoint*     |    你的 Azure 堆栈环境，格式 https://adminmanagement 资源管理器终结点。{RegionName}。{外部 FQDN}。 例如，如果外部 FQDN 是 azurestack.external 且本地区域名称，则资源管理器终结点是 https://adminmanagement.local.azurestack.external。     |
 |*subid*     |     进行调用的用户的订阅 ID。 你可以使用查询此 API 仅具有对默认提供程序订阅的权限的用户。    |
 |*RegionName*     |     Azure 堆栈部署的区域名称。    |
-|*api 版本*     |   用于发出此请求的协议的版本。 你必须使用 2016年-05-01。      |
+|*api-version*     |   用于发出此请求的协议的版本。 你必须使用 2016年-05-01。      |
 
 
 **响应**
@@ -441,7 +442,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*标记*     |     资源标记。    |
 |*registrationId*     |   资源提供程序的唯一注册。      |
 |*displayName*     |资源提供程序显示名称。        |
-|*命名空间*     |   API 命名空间资源提供程序实现。       |
+|*namespace*     |   API 命名空间资源提供程序实现。       |
 |*routePrefix*     |    与资源提供程序交互的 URI。     |
 |*serviceLocation*     |   此资源提供程序注册到的区域。      |
 |*infraURI*     |   作为基础结构角色中列出的资源提供程序的 URI。      |
@@ -457,7 +458,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 
 |方法  |请求 URI  |
 |---------|---------|
-|GET     |     https://{armendpoint}/subscriptions/{subId}/resourceGroups/system。{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/serviceHealths/{RegistrationID}/resourceHealths?api-version=2016-05-01"    |
+|GET     |     https://{armendpoint}/subscriptions/{subId}/resourceGroups/system.{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/serviceHealths/{RegistrationID}/resourceHealths?api-version=2016-05-01"    |
 
 **参数**
 
@@ -466,7 +467,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*armendpoint*     |    你的 Azure 堆栈环境，格式 https://adminmanagement 资源管理器终结点。{RegionName}。{外部 FQDN}。 例如，如果外部 FQDN 是 azurestack.external 且本地区域名称，则资源管理器终结点是 https://adminmanagement.local.azurestack.external。     |
 |*subid*     |进行调用的用户的订阅 ID。 你可以使用查询此 API 仅具有对默认提供程序订阅的权限的用户。         |
 |*RegionName*     |  Azure 堆栈部署的区域名称。       |
-|*api 版本*     |  用于发出此请求的协议的版本。 你必须使用 2016年-05-01。       |
+|*api-version*     |  用于发出此请求的协议的版本。 你必须使用 2016年-05-01。       |
 |*RegistrationID* |特定的资源提供程序的注册 ID。 |
 
 **响应**
@@ -509,14 +510,17 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*标记*     |     资源标记。    |
 |*registrationId*     |   资源提供程序的唯一注册。      |
 |*resourceType*     |资源的类型。        |
-|*资源名称*     |   资源名称。   |
+|*resourceName*     |   资源名称。   |
 |*usageMetrics*     |    资源的使用情况度量值。     |
 |*resourceLocation*     |   区域名称部署的位置。      |
 |*resourceURI*     |   资源的 URI。   |
 |*alertSummary*     |   摘要的关键和警告性警报，运行状况状态。     |
 
+## <a name="learn-more"></a>了解详细信息
+
+有关内置的运行状况监视的信息，请参阅[监视运行状况和 Azure 堆栈中的警报](azure-stack-monitor-health.md)。
+
+
 ## <a name="next-steps"></a>后续步骤
 
-- 有关内置的运行状况监视的信息，请参阅[监视运行状况和 Azure 堆栈中的警报](azure-stack-monitor-health.md)。
-
-
+[安全集成](azure-stack-integrate-security.md)

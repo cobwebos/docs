@@ -1,0 +1,218 @@
+- name: Azure 搜索文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure 搜索
+      href: search-what-is-azure-search.md
+- name: 快速入门
+  items:
+    - name: 创建服务
+      href: search-create-service-portal.md
+    - name: 门户
+      items:
+        - name: 创建索引
+          href: search-create-index-portal.md
+        - name: 导入数据
+          href: search-import-data-portal.md
+        - name: 搜索浏览器
+          href: search-explorer.md
+    - name: .NET
+      items:
+        - name: 创建索引
+          href: search-create-index-dotnet.md
+        - name: 导入数据
+          href: search-import-data-dotnet.md
+        - name: 搜索
+          href: search-query-dotnet.md
+    - name: REST
+      items:
+        - name: 创建索引
+          href: search-create-index-rest-api.md
+        - name: 导入数据
+          href: search-import-data-rest-api.md
+        - name: 搜索
+          href: search-query-rest-api.md
+        - name: 使用 REST 客户端进行测试
+          href: search-fiddler.md
+- name: 教程
+  items:
+    - name: 1 - 编制 Azure SQL 数据库索引
+      href: search-indexer-tutorial.md
+    - name: 2 - 编制 Azure Blob 索引
+      href: search-semi-structured-data.md
+    - name: 3 - 在 .NET 中添加同义词
+      href: search-synonyms-tutorial-sdk.md
+    - name: 4 - 门户演练
+      href: search-get-started-portal.md
+- name: 示例
+  items:
+    - name: Azure 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?service=search'
+    - name: GitHub 示例
+      href: 'https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search'
+- name: 概念
+  items:
+    - name: 全文搜索
+      href: search-lucene-query-architecture.md
+    - name: 索引
+      href: search-what-is-data-import.md
+    - name: 索引定义
+      href: search-what-is-an-index.md
+    - name: 语言分析
+      href: search-analyzers.md
+- name: 操作指南
+  items:
+    - name: 规划和设计
+      items:
+        - name: 选择 SKU
+          href: search-sku-tier.md
+        - name: 服务限制
+          href: search-limits-quotas-capacity.md
+        - name: 服务伸缩性
+          href: search-capacity-planning.md
+        - name: 多租户的设计模式
+          href: search-modeling-multitenant-saas-applications.md
+        - name: 性能和优化
+          href: search-performance-optimization.md
+    - name: “安全”
+      items:
+        - name: 数据和操作安全性
+          href: search-security-overview.md
+        - name: 使用标识筛选器进行保护
+          href: search-security-trimming-for-azure-search.md
+        - name: 使用 Active Directory 进行保护
+          href: search-security-trimming-for-azure-search-with-aad.md
+    - name: 开发
+      items:
+        - name: API 版本
+          href: search-api-versions.md
+        - name: 使用 .NET 进行开发
+          href: search-howto-dotnet-sdk.md
+        - name: 使用 Node.js 进行开发
+          href: search-get-started-nodejs.md
+        - name: 使用 Java 进行开发
+          href: search-get-started-java.md
+        - name: 升级 SDK
+          items:
+            - name: .NET SDK 3.0
+              href: search-dotnet-sdk-migration.md
+            - name: .NET SDK 1.1
+              href: search-dotnet-sdk-migration-version-1.md
+            - name: .NET 管理 SDK
+              href: search-dotnet-mgmt-sdk-migration.md
+        - name: 升级 REST API
+          href: search-api-migration.md
+        - name: 为复杂数据类型建模
+          href: search-howto-complex-data-types.md
+        - name: 处理并发更新
+          href: search-howto-concurrency.md
+        - name: 分页结果
+          href: search-pagination-page-layout.md
+    - name: 文本分析
+      items:
+        - name: 语言分析器
+          href: 'https://docs.microsoft.com/rest/api/searchservice/language-support'
+        - name: 自定义分析器
+          href: 'https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search'
+    - name: 为数据编制索引
+      items:
+        - name: 索引器概述
+          href: search-indexer-overview.md
+        - name: Azure Blob 存储索引器
+          href: search-howto-indexing-azure-blob-storage.md
+        - name: Azure 表存储索引器
+          href: search-howto-indexing-azure-tables.md
+        - name: Azure SQL 索引器
+          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+        - name: Azure Cosmos DB 索引器
+          href: search-howto-index-cosmosdb.md
+        - name: 为 CSV Blob 创建索引
+          href: search-howto-index-csv-blobs.md
+        - name: 为 JSON Blob 创建索引
+          href: search-howto-index-json-blobs.md
+        - name: 配置与 Azure VM 上 SQL Server 的索引器连接
+          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+        - name: 索引器中的字段映射
+          href: search-indexer-field-mappings.md
+    - name: 搜索
+      items:
+        - name: 基本查询构造
+          href: search-query-overview.md
+        - name: 简化的查询语法
+          href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
+        - name: Lucene 查询语法
+          href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
+        - name: Lucene 语法查询示例
+          href: search-query-lucene-examples.md
+        - name: 多面导航
+          href: search-faceted-navigation.md
+        - name: 为配置文件评分
+          href: 'https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index'
+        - name: 建议
+          href: 'https://docs.microsoft.com/rest/api/searchservice/suggesters'
+        - name: 同义词（预览版）
+          href: search-synonyms.md
+    - name: 筛选器
+      items:
+        - name: 筛选器概述
+          href: search-filters.md
+        - name: Facet 筛选器
+          href: search-filters-facets.md
+        - name: OData 表达式语法
+          href: 'https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search'
+    - name: 管理和分析
+      items:
+        - name: 管理（门户）
+          href: search-manage.md
+        - name: PowerShell（Azure 搜索）
+          href: search-manage-powershell.md
+        - name: 监视使用情况和统计信息
+          href: search-monitor-usage.md
+        - name: 搜索流量分析
+          href: search-traffic-analytics.md
+- name: 引用
+  items:
+    - name: .NET
+      href: /dotnet/api/?term=microsoft.azure.search
+    - name: .NET（管理）
+      href: /dotnet/api/?term=microsoft.azure.management.search
+    - name: Python（管理）
+      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html'
+    - name: REST
+      href: /rest/api/searchservice
+    - name: .NET（管理）
+      href: /rest/api/searchmanagement
+    - name: 服务 REST（预览版）
+      href: search-api-2016-09-01-preview.md
+- name: 资源
+  items:
+    - name: FAQ - 常见问题解答
+      href: search-faq-frequently-asked-questions.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/search/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=search'
+    - name: 课件和教程
+      items:
+        - name: 视频和教程
+          href: search-video-demo-tutorial-list.md
+        - name: 虚拟大学
+          href: 'https://mva.microsoft.com/training-courses/using-windows-azure-search-10540?l=ADkxnd97_9304984382'
+    - name: 演示站点
+      items:
+        - name: 搜索分析器演示
+          href: 'http://alice.unearth.ai/'
+        - name: 实时演示应用
+          href: 'https://searchsamples.azurewebsites.net/'
+        - name: 作业列表应用
+          href: 'http://aka.ms/azjobsdemo'
+    - name: 合作伙伴和社区
+      items:
+        - name: Azure 搜索 MSDN 论坛
+          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=AzureSearch'
+        - name: 堆栈溢出
+          href: 'http://stackoverflow.com/questions/tagged/azure-search'
+        - name: 博客：为关系数据建模
+          href: 'http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx'
+        - name: 博客：多层分面
+          href: 'http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx'

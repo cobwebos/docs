@@ -3,8 +3,8 @@ title: "Azure Active Directory 的托管服务标识 (MSI)"
 description: "概述了 Azure 资源的托管服务标识。"
 services: active-directory
 documentationcenter: 
-author: skwan
-manager: mbaldwin
+author: daveba
+manager: mtillman
 editor: 
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/31/2017
+ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: 5444e9d54bd9a2f7250ce590c3b6ced6b8b7bc51
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 07610b178bde6de9eb8d890edc060458fc3b07ac
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Azure 资源的托管服务标识 (MSI)
 
@@ -63,6 +63,7 @@ ms.lasthandoff: 12/02/2017
 |                    | [使用 Linux VM 托管服务标识和 Azure Key Vault 访问非 Azure AD 资源](msi-tutorial-linux-vm-access-nonaad.md) |
 | Azure 应用服务  | [将托管服务标识与 Azure 应用服务或 Azure Functions 结合使用](/azure/app-service/app-service-managed-service-identity) |
 | Azure 函数     | [将托管服务标识与 Azure 应用服务或 Azure Functions 结合使用](/azure/app-service/app-service-managed-service-identity) |
+| Azure 服务总线  | [将托管服务标识与 Azure 服务总线配合使用](../service-bus-messaging/service-bus-managed-service-identity.md) |
 
 ## <a name="which-azure-services-support-managed-service-identity"></a>哪些 Azure 服务支持托管服务标识？
 
@@ -74,9 +75,10 @@ ms.lasthandoff: 12/02/2017
 
 | 服务 | 状态 | 日期 | 配置 | 获取令牌 |
 | ------- | ------ | ---- | --------- | ----------- |
-| Azure 虚拟机 | 预览 | 2017 年 9 月 | [Azure 门户](msi-qs-configure-portal-windows-vm.md)<br>[PowerShell](msi-qs-configure-powershell-windows-vm.md)<br>[Azure CLI](msi-qs-configure-cli-windows-vm.md)<br>[Azure 资源管理器模板](msi-qs-configure-template-windows-vm.md) | [REST](msi-how-to-use-vm-msi-token.md#get-a-token-using-http)<br>[.NET](msi-how-to-use-vm-msi-token.md#get-a-token-using-c)<br>[Bash/Curl](msi-how-to-use-vm-msi-token.md#get-a-token-using-curl)<br>[Go](msi-how-to-use-vm-msi-token.md#get-a-token-using-go)<br>[PowerShell](msi-how-to-use-vm-msi-token.md#get-a-token-using-azure-powershell) |
-| Azure 应用服务 | 预览 | 2017 年 9 月 | [Azure 门户](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
-| Azure Functions | 预览 | 2017 年 9 月 | [Azure 门户](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure 虚拟机 | 预览 | 2017 年 9 月 | [Azure portal](msi-qs-configure-portal-windows-vm.md)<br>[PowerShell](msi-qs-configure-powershell-windows-vm.md)<br>[Azure CLI](msi-qs-configure-cli-windows-vm.md)<br>[Azure 资源管理器模板](msi-qs-configure-template-windows-vm.md) | [REST](msi-how-to-use-vm-msi-token.md#get-a-token-using-http)<br>[.NET](msi-how-to-use-vm-msi-token.md#get-a-token-using-c)<br>[Bash/Curl](msi-how-to-use-vm-msi-token.md#get-a-token-using-curl)<br>[Go](msi-how-to-use-vm-msi-token.md#get-a-token-using-go)<br>[PowerShell](msi-how-to-use-vm-msi-token.md#get-a-token-using-azure-powershell) |
+| Azure 应用服务 | 预览 | 2017 年 9 月 | [Azure portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure Functions | 预览 | 2017 年 9 月 | [Azure portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure 数据工厂 V2 | 预览 | 2017 年 11 月 | [Azure portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
 
 ### <a name="azure-services-that-support-azure-ad-authentication"></a>支持 Azure AD 身份验证的 Azure 服务
 
@@ -84,10 +86,12 @@ ms.lasthandoff: 12/02/2017
 
 | 服务 | 资源 ID | 状态 | 日期 | 分配访问权限 |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure 资源管理器 | https://management.azure.com/ | 可用 | 2017 年 9 月 | [Azure 门户](msi-howto-assign-access-portal.md) <br>[PowerShell](msi-howto-assign-access-powershell.md) <br>[Azure CLI](msi-howto-assign-access-CLI.md) |
+| Azure 资源管理器 | https://management.azure.com/ | 可用 | 2017 年 9 月 | [Azure portal](msi-howto-assign-access-portal.md) <br>[PowerShell](msi-howto-assign-access-powershell.md) <br>[Azure CLI](msi-howto-assign-access-CLI.md) |
 | Azure 密钥保管库 | https://vault.azure.net/ | 可用 | 2017 年 9 月 | |
 | Azure Data Lake | https://datalake.azure.net/ | 可用 | 2017 年 9 月 | |
 | Azure SQL | https://database.windows.net/ | 可用 | 2017 年 10 月 | |
+| Azure 事件中心 | https://eventhubs.azure.net/ | 可用 | 2017 年 12 月 | |
+| Azure 服务总线 | https://servicebus.azure.net/ | 可用 | 2017 年 12 月 | |
 
 ## <a name="how-much-does-managed-service-identity-cost"></a>托管服务标识的费用如何？
 

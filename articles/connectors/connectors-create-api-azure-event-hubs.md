@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: estfan; LADocs
-ms.openlocfilehash: 2ca27fb8269d1796fb1181fc4d0a8744a592d548
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a7f31c2c17d326d58ede0bb00cdc0f701069ea14
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="monitor-receive-and-send-events-with-the-event-hubs-connector"></a>通过事件中心连接器监视、接收和发送事件
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 * 必须在 Azure 中有[事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 了解[如何创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 
 
-* 若要在逻辑应用中使用[任意连接器](https://docs.microsoft.com/azure/connectors/apis-list)，必须先创建逻辑应用。 了解[如何创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+* 若要在逻辑应用中使用[任意连接器](https://docs.microsoft.com/azure/connectors/apis-list)，必须先创建逻辑应用。 了解[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 <a name="permissions-connection-string"></a>
 ## <a name="check-event-hubs-namespace-permissions-and-find-the-connection-string"></a>检查事件中心命名空间权限，找到连接字符串
@@ -64,7 +64,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="start-workflow-when-your-event-hub-receives-new-events"></a>当事件中心接收新事件时启动工作流
 
-[触发器](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)是一个事件，在逻辑应用中启动工作流。 若要在新事件发送到事件中心时启动工作流，请执行以下步骤，以便添加用于检测该事件的触发器。
+[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)是一个事件，在逻辑应用中启动工作流。 若要在新事件发送到事件中心时启动工作流，请执行以下步骤，以便添加用于检测该事件的触发器。
 
 1.  在 [Azure 门户](https://portal.azure.com "Azure 门户")中转到现有的逻辑应用，或者创建一个空白逻辑应用。
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="send-events-to-your-event-hub-from-your-logic-app"></a>将事件从逻辑应用发送到事件中心
 
-[*操作*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)是逻辑应用工作流执行的任务。 将触发器添加到逻辑应用后，可以添加一个操作，以便使用该触发器生成的数据执行操作。 要将事件从逻辑应用发送到事件中心，请执行以下步骤。
+[*操作*](../logic-apps/logic-apps-overview.md#logic-app-concepts)是逻辑应用工作流执行的任务。 将触发器添加到逻辑应用后，可以添加一个操作，以便使用该触发器生成的数据执行操作。 要将事件从逻辑应用发送到事件中心，请执行以下步骤。
 
 1.  在逻辑应用设计器的逻辑应用触发器下，选择“新步骤” > “添加操作”。
 

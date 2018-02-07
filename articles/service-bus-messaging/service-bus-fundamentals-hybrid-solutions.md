@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/12/2017
 ms.author: sethm
-ms.openlocfilehash: b71814756a52f56ac6d0bb72a2f4bb1b1c2ea0b2
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: f095407a58e00ed9143e8f19d91a212d2167564b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-service-bus"></a>Azure 服务总线
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 10/13/2017
 
 若要在中继场景中使用任意这些对象，Windows 应用程序可使用 Windows Communication Foundation (WCF)。 此服务称为 [WCF 中继](../service-bus-relay/relay-what-is-it.md)。 对于队列和主题，Windows 应用程序可使用服务总线定义的消息传送 API。 为了更轻松地通过非 Windows 应用程序使用这些对象，Microsoft 提供了 Java、Node.js 和其他语言的 SDK。 此外，也可以使用 [REST API](/rest/api/servicebus/) 通过 HTTP 访问队列和主题。 
 
-即使服务总线本身在云（即 Microsoft 的 Azure 数据中心）中运行，使用它的应用程序也能随处运行，了解这一点很重要。 可以使用服务总线连接在 Azure 上运行的应用程序或在自己的数据中心内运行的应用程序。 也可以使用服务总线通过本地应用程序或通过平板电脑和手机来连接在 Azure 或其他云平台上运行的应用程序。 甚至可以将家用电器、传感器和其他设备连接到中央应用程序或其他应用程序。 服务总线是云中的通信机制，几乎可从任何位置对其进行访问。 使用服务总线的方式取决于应用程序需要执行的操作。
+即使服务总线本身在云（即 Microsoft 的 Azure 数据中心）中运行，使用它的应用程序也能随处运行，了解这一点很重要。 可以使用服务总线连接在 Azure 上运行的应用程序或在自己的数据中心内运行的应用程序。 也可以使用服务总线通过本地应用程序或通过平板电脑和手机来连接在 Azure 或其他云平台上运行的应用程序。 甚至可以将家用电器、传感器和其他设备连接到中央应用程序，或者这些设备互相连接。 服务总线是云中的通信机制，几乎可从任何位置对其进行访问。 使用服务总线的方式取决于应用程序需要执行的操作。
 
 ## <a name="queues"></a>队列
 

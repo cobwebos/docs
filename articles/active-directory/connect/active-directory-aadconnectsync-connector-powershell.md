@@ -3,7 +3,7 @@ title: "PowerShell 连接器 | Microsoft Docs"
 description: "本文介绍如何配置 Microsoft 的 Windows PowerShell 连接器。"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 6dba8e34-a874-4ff0-90bc-bd2b0a4199b5
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 27ca89a2032c82a8be909349b38a64fc6aa9579e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2caf8dd8a657f116df0342893763829676602cd6
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="windows-powershell-connector-technical-reference"></a>Windows PowerShell 连接器技术参考
 本文介绍 Windows PowerShell 连接器。 本文适用于以下产品：
@@ -101,7 +101,7 @@ Windows PowerShell 连接器用于存储同步服务数据库中的每个脚本�
 
 架构发现脚本将从连接器接收以下参数：
 
-| Name | 数据类型 | 说明 |
+| 名称 | 数据类型 | 说明 |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk] [string, [ConfigParameter][cp]] |连接器的配置参数表。 |
 | 凭据 |[PSCredential][pscred] |包含管理员在“连接”选项卡上输入的任何凭据。 |
@@ -274,7 +274,7 @@ Windows PowerShell 连接器可以用作密码更改/重置的目标。
 | OperationType |String |指示操作是重置 (**SetPassword**) 还是更改 (**ChangePassword**)。 |
 | PasswordOptions |[PasswordOptions][pwdopt] |指定所需密码重置行为的标志。 仅当 OperationType 为 **SetPassword** 时，才可以使用此参数。 |
 | OldPassword |String |填充对象的旧密码以进行密码更改。 仅当 OperationType 为 **ChangePassword** 时，才可以使用此参数。 |
-| NewPassword |字符串 |填充脚本应该设置的对象新密码。 |
+| NewPassword |String |填充脚本应该设置的对象新密码。 |
 
 密码脚本预期不会将任何结果返回到 Windows PowerShell 管道。 如果密码脚本中发生错误，脚本应引发以下异常之一，以告知同步服务此问题：
 

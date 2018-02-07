@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 16685787b04d26f09e2b8778faac257571162aac
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: ab72152fc937e3c4552147fce29c95ea0efcadf4
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>有关 IoT 套件连接工厂预配置解决方案的常见问题
 
@@ -117,7 +117,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) 或 [iothub-explorer](https://github.com/azure/iothub-explorer) 工具可查看解决方案当前所用的 IoT 中心中注册了哪些设备。 若要使用这些工具，需要部署中 IoT 中心的连接字符串。
+使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) 或[适用于 Azure CLI 2.0 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)工具，可以查看解决方案当前所用的 IoT 中心中注册了哪些设备。 若要使用设备资源管理器，则部署中需要 IoT 中心的连接字符串。 若要使用适用于 Azure CLI 2.0 的 IoT 扩展，则需要 IoT 中心的名称。
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>如何从模拟组件获取日志数据？
 
@@ -146,9 +146,15 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 ### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>如何在连接的工厂解决方案中启用互动地图？
 
-若要在连接的工厂解决方案中启用互动地图，必须具有现有的“适用于企业的必应地图 API”计划。 如果你在从 www.azureiotsuite.com 部署连接的工厂解决方案时已有“适用于企业的必应地图 API”计划，则会自动启用互动地图。
+若要在连接的工厂解决方案中启用互动地图，必须具有现有的“适用于企业的必应地图 API”计划。
 
-### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>如何创建“适用于企业的必应地图 API”帐户？
+从 [www.azureiotsuite.com](http://www.azureiotsuite.com) 进行部署时，部署过程会验证你的订阅是否已启用“适用于企业的必应地图 API”计划，然后自动将互动地图部署到连接的工厂中。 如果未启用，仍然可以在部署中启用互动地图，如下所示：
+
+在连接的工厂 GitHub 存储库中，当使用 `build.ps1` 脚本进行部署并且有“适用于企业的必应地图 API”计划时，请将生成窗口中的环境变量 `$env:MapApiQueryKey` 设置为计划的查询密钥。 互动地图随后会自动启用。
+
+如果没有“适用于企业的必应地图 API”计划，则可以从 [www.azureiotsuite.com](http://www.azureiotsuite.com) 或使用 `build.ps1` 脚本部署连接的工厂解决方案。 然后按照[如何创建“适用于企业的必应地图 API”帐户？](#how-do-i-create-a-bing-maps-api-for-enterprise-account)所述将“适用于企业的必应地图 API”计划添加到订阅中。 按照[如何获取“适用于企业的必应地图 API”查询密钥](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey)中所述查找此帐户的查询密钥，然后保存此密钥。 导航到 Azure 门户并访问连接的工厂部署中的应用服务资源。 导航到“应用程序设置”，在此处可以找到“应用设置”部分。 将 MapApiQueryKey 设置为你获取的查询密钥。 保存设置，然后导航到“概述”并重新启动应用服务。
+
+### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>如何创建“适用于企业的必应地图 API”帐户
 
 可以获取免费的*适用于企业的内部事务 1 级必应地图*计划。 但是，只能将这些计划中的两个添加到 Azure 订阅。 如果没有“适用于企业的必应地图 API”帐户，则通过单击“+ 创建资源”在 Azure 门户中创建一个。 然后，搜索“适用于企业的必应地图 API”并根据提示创建它。
 

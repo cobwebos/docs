@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: robb
-ms.openlocfilehash: b03265b52886b30e4b9de0b0293e5dadd6d2413a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ae99085a37162a883d18976181be198a2f21a60c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
 本文介绍有关使用 Azure 诊断的故障排除信息。 有关 Azure 诊断的详细信息，请参阅 [Azure 诊断概述](azure-diagnostics.md)。
@@ -64,7 +64,7 @@ Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果无法查
 如果资源 ID 不正确，请检查“诊断配置” > “指标” > “ResourceId”，以查看是否已正确设置资源 ID。
 
 如果没有特定指标数据，请检查“诊断配置” > “PerformanceCounter”，以查看是否包含指标（性能计数器）。 默认启用以下计数器：
-- \Processor(_Total)\% Processor Time
+- \Processor(_Total)\% 处理器时间
 - \Memory\Available Bytes
 - \ASP.NET Applications(__Total__)\Requests/Sec
 - \ASP.NET Applications(__Total__)\Errors Total/Sec
@@ -154,7 +154,7 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 ## <a name="diagnostics-data-tables-not-found"></a>找不到诊断数据表
 Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 
-```C#
+```csharp
         if (String.IsNullOrEmpty(eventDestination)) {
             if (e == "DefaultEvents")
                 tableName = "WADDefault" + MD5(provider);

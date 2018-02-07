@@ -1,6 +1,6 @@
-<!--author=alkohli last changed: 01/13/17-->
+<!--author=alkohli last changed: 01/23/18-->
 
-如果卷容器具有关联的卷，请首先使那些卷脱机。 请按照[使卷脱机](../articles/storsimple/storsimple-manage-volumes.md#take-a-volume-offline)中的步骤操作。 卷处于脱机状态后，可以删除它们。 当卷容器没有关联的卷时，删除卷容器。 可以执行以下过程来删除卷容器。
+如果卷容器具有关联的卷，请首先使那些卷脱机。 请按照[使卷脱机](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)中的步骤操作。 卷处于脱机状态后，可以删除它们。 当卷容器没有关联的卷时，删除卷容器。 可以执行以下过程来删除卷容器。
 
 #### <a name="to-delete-a-volume-container"></a>删除卷容器
 1. 转到 StorSimple Device Manager 服务并单击“设备”。 选择并单击“设备”，并转到“设置”>“管理”>“卷容器”。

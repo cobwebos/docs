@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: 276997bb6800fda9cb432384ebaaaa717b8426ca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eaceab7d0dba7719452000cc4e1bd19baa28af9e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>有关 Azure Active Directory 中应用程序管理的文章索引
 本页提供了一份完整列表，列出编写的 Azure Active Directory (Azure AD) 中各种应用程序相关功能的所有文章。
@@ -137,7 +137,7 @@ Cloud App Discovery 是一项 [Azure AD Premium](https://azure.microsoft.com/pri
 | 了解其工作原理，并查找常见问题的解答 |[在 SaaS 应用中自动预配和取消预配用户](active-directory-saas-app-provisioning.md) |
 | 配置如何在 Azure AD 与 SaaS 应用程序之间映射信息 |[自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)<br><br>[为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
 | 如何对支持 SCIM 协议的任何应用启用自动化预配 |[对启用 SCIM 的任何应用设置自动化用户预配](active-directory-scim-provisioning.md) |
-| 如何针对用户预配进行报告和故障排除 |[针对自动用户预配进行报告](active-directory-saas-provisioning-reporting.md)<br><br>[预配通知](active-directory-saas-account-provisioning-notifications.md)<br><br>[对用户预配进行故障排除](active-directory-application-provisioning-content-map.md) |
+| 如何针对用户预配进行报告和故障排除 |[针对自动用户预配进行报告](active-directory-saas-provisioning-reporting.md)<br><br>[对用户预配进行故障排除](active-directory-application-provisioning-content-map.md) |
 | 根据应用程序的属性值限制可以预配应用程序的人员 |[范围筛选器](active-directory-saas-scoping-filters.md) |
 
 自动化用户预配适用于所有版本的 Azure AD，每个用户最多十个应用程序。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) 支持无限数目的应用程序。 如果组织拥有 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)或 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)，则可以[使用组来管理要预配哪些用户](#managing-access-to-applications)。

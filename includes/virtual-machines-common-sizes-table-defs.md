@@ -1,3 +1,4 @@
+<!-- Not used for Ls-series -->
 
 ## <a name="size-table-definitions"></a>大小表定义
 
@@ -7,6 +8,5 @@
 -   若要获得 VM 的最佳性能，应将数据磁盘数限制为每 vCPU 2 个磁盘。
 - **预期的网络带宽**是指跨所有 NIC [为每个 VM 类型分配的最大聚合带宽](../articles/virtual-network/virtual-machine-network-throughput.md)，适用于所有目标。 不保证能够达到上述预期上限，但目的是提供相关指导，以便为目标应用程序选择适当的 VM 类型。 实际的网络性能将取决于许多因素，包括网络拥塞、应用程序负载和网络设置。 有关如何优化网络吞吐量的信息，请参阅[为 Windows 和 Linux 优化网络吞吐量](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md)。 若要在 Linux 或 Windows 中达到预期的网络性能，可能需要选择特定的版本，或者需要优化 VM。 有关详细信息，请参阅[如何针对虚拟机吞吐量进行可靠的测试](../articles/virtual-network/virtual-network-bandwidth-testing.md)。
 
-- &#8224; 16 vCPU 性能在即将推出的版本中会始终达到上限。
 
 

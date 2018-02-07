@@ -3,8 +3,8 @@ title: "从 Azure 下载应用商店项 |Microsoft 文档"
 description: "我可以从 Azure 到我的 Azure 堆栈部署下载的应用商店项。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -12,23 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/30/2017
-ms.author: erikje
-ms.openlocfilehash: 33b7be4a85723ab03e4c656a8dd28632ad854e29
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.date: 01/30/2018
+ms.author: brenduns
+ms.openlocfilehash: 58f8287e5675e1134cb2fcceef9a9128ef97207c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>从 Azure 应用商店项下载到 Azure 堆栈
 
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
+
 当您决定在 Azure 堆栈应用商店中包括哪些内容，应考虑从 Azure 应用商店的可用内容。 你可以从策展已预先测试，在 Azure 堆栈上运行的 Azure 应用商店项列表中进行下载。 新项经常会添加到此列表，因此请务必不久后回来查看新内容。
 
 ## <a name="download-marketplace-items-in-a-connected-scenario-with-internet-connectivity"></a>下载 （具有 internet 连接） 的连接方案中的应用商店项
 
-1. 若要下载应用商店项，你必须首先[向 Azure 注册 Azure 堆栈](azure-stack-register.md)。 
+1. 若要下载应用商店项，你必须首先[向 Azure 注册 Azure 堆栈](azure-stack-register.md)。
 2. 登录到 Azure 堆栈管理员门户 (https://portal.local.azurestack.external)。
 3. 一些应用商店项可能很大。 请检查以确保通过单击你的系统上有足够的空间**资源提供程序** > **存储**。
 
@@ -51,7 +52,7 @@ ms.lasthandoff: 12/02/2017
 
 ## <a name="download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>下载中断开连接的应用商店项或部分连接的方案 （具有有限的 internet 连接）
 
-在断开连接 （不带任何 internet 连接） 模式下部署 Azure 堆栈时，你无法通过 Azure 堆栈门户下载的应用商店项。 但是，可以使用应用商店联合工具下载到计算机具有 internet 连接的应用商店项，然后将它们传输到 Azure 堆栈环境。 
+在断开连接 （不带任何 internet 连接） 模式下部署 Azure 堆栈时，你无法通过 Azure 堆栈门户下载的应用商店项。 但是，可以使用应用商店联合工具下载到计算机具有 internet 连接的应用商店项，然后将它们传输到 Azure 堆栈环境。
 
 ### <a name="prerequisites"></a>必备组件
 你可以使用应用商店联合工具之前，请确保你有[注册您的 Azure 订阅的 Azure 堆栈](azure-stack-register.md)。  
@@ -132,12 +133,12 @@ ms.lasthandoff: 12/02/2017
     -Version "2017.09.25" `
     -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Microsoft.WindowsServer2016DatacenterServerCore-ARM-Eval.2017.09.25.vhd" `
     -CreateGalleryItem $False `
-    -Location Local 
+    -Location Local
    ```
 
 4. 使用门户来上载应用商店项 (。Azpkg) 到 Azure 堆栈 Blob 存储。 你可以将上载到 Azure 堆栈的本地存储或上载到 Azure 存储。 （它是包的临时位置。）请确保 blob 是可公开访问，请注意 URI。  
 
-5. 使用将应用商店项目发布到 Azure 堆栈**添加 AzureRMGalleryItem**。 例如：
+5. 使用将应用商店项目发布到 Azure 堆栈**添加 AzsGalleryItem**。 例如：
 
    ```powershell
    Add-AzsGalleryItem `

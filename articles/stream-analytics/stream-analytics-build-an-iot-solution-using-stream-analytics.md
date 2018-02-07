@@ -4,8 +4,8 @@ description: "使用收费站方案了解流分析 IoT 解决方案的入门教�
 keywords: "iot 解决方案, 开窗函数"
 documentationcenter: 
 services: stream-analytics
-author: samacha
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 editor: cgronlun
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: a93693ef7d40025fa96846594a8eb525a50b6885
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/12/2018
+ms.author: sngun
+ms.openlocfilehash: cc84a34a410a750ddf2acb8f19b3bb809d269098
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
+
 ## <a name="introduction"></a>介绍
 在本教程中，将学习如何使用 Azure 流分析来实时了解数据。 开发人员可以轻松将数据流（例如点击流、日志和设备生成的时间）与历史记录或引用数据结合起来，获取业务信息。 由 Microsoft Azure 托管的 Azure 流分析是可完全管理的实时流计算服务，它提供内置冗余、低延迟及伸缩性，可让用户在几分钟之内就立刻上手。
 
@@ -54,7 +55,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="entry-data-stream"></a>入口数据流
 入口数据流包含汽车进入收费站时的相关信息。
 
-| TollID | EntryTime | LicensePlate | 状态 | 制造商 | 模型 | VehicleType | VehicleWeight | 收费站 | 标记 |
+| TollID | EntryTime | LicensePlate | State | 制造商 | 模型 | VehicleType | VehicleWeight | 收费站 | 标记 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -70,7 +71,7 @@ ms.lasthandoff: 10/11/2017
 | TollID |唯一标识收费亭的收费亭 ID |
 | EntryTime |汽车进入收费亭的日期和时间（世界协调时） |
 | LicensePlate |汽车的牌照号码 |
-| 状态 |美国的某个州 |
+| State |美国的某个州 |
 | 制造商 |汽车制造商 |
 | 模型 |汽车型号 |
 | VehicleType |1（客车）或 2（商用车） |
@@ -116,7 +117,7 @@ ms.lasthandoff: 10/11/2017
 | --- | --- |
 | LicensePlate |汽车的牌照号码 |
 | RegistrationId |汽车的注册 ID |
-| Expired |汽车的注册状态：0 代表汽车注册仍有效，1 代表汽车注册已过期 |
+| 已过期 |汽车的注册状态：0 代表汽车注册仍有效，1 代表汽车注册已过期 |
 
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>设置 Azure 流分析的环境
 若要完成本教程，需要一个 Microsoft Azure 订阅。 Microsoft 提供免费试用版的 Microsoft Azure 服务。
@@ -175,24 +176,11 @@ ms.lasthandoff: 10/11/2017
 现在，Azure 门户中应会显示资源。 转到 <https://portal.azure.com>，并使用帐户凭据登录。 请注意，当前某些功能会使用经典门户。 相关步骤将清晰标出。
 
 ### <a name="azure-event-hubs"></a>Azure 事件中心
-在 Azure 门户的左侧管理窗格底部，单击“更多服务”。 在提供的字段中键入“事件中心”，并单击“事件中心”。 这会启动新的浏览器窗口，显示**经典门户**的**服务总线**区域。 可在此处查看由 Setup.ps1 脚本创建的事件中心。
 
-![服务总线](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image8.png)
-
-单击以 *tolldata* 开头的项。 单击“事件中心”选项卡。会看到在此命名空间中创建的两个事件中心，分别名为 *entry* 和 *exit*。
-
-![经典门户中的“事件中心”选项卡](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image9.png)
+在 Azure 门户的左侧管理窗格底部，单击“更多服务”。 在提供的字段中键入“事件中心”，会显示以“tolldata”开头的新事件中心命名空间。 此命名空间由 Setup.ps1 脚本创建。 会看到在此命名空间中创建的两个事件中心，分别名为 **entry** 和 **exit**。
 
 ### <a name="azure-storage-container"></a>Azure 存储容器
-1. 返回到浏览器中打开指向 Azure 门户的选项卡。 单击 Azure 门户左侧的“存储”，查看在教程中使用的 Azure 存储容器。
-   
-    ![存储菜单项](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image11.png)
-2. 单击以 *tolldata* 开头的项。 单击“容器”选项卡，查看创建的容器。
-   
-    ![Azure 门户中的“容器”选项卡](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image10.png)
-3. 单击 **tolldata** 容器，查看已上传的、包含汽车注册数据的 JSON 文件。
-   
-    ![容器中 registration.json 文件的屏幕截图](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image12.png)
+从 Azure 门户浏览到存储帐户，应该可以看到以“tolldata”开头的存储帐户。 单击 **tolldata** 容器，查看已上传的、包含汽车注册数据的 JSON 文件。
 
 ### <a name="azure-sql-database"></a>Azure SQL 数据库
 1. 返回在浏览器中打开的第一个选项卡上的 Azure 门户。 单击 Azure 门户左侧的“SQL 数据库”，查看要在本教程中使用的 SQL 数据库，并单击“tolldatadb”。
@@ -216,7 +204,7 @@ ms.lasthandoff: 10/11/2017
 6. 单击“选择或输入数据库名称”，并选择“TollDataDB”作为数据库。
    
     ![“添加连接”对话框](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image17.jpg)
-7. 单击 **“确定”**。
+7. 单击“确定”。
 8. 打开 Server Explorer。
    
     ![服务器资源管理器](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image18.png)

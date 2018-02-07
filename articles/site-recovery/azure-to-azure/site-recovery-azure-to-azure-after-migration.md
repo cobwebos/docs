@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: ponatara
-ms.openlocfilehash: 7658bedc0bd5c4a289f3271504a006ba54c783b6
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 559e64ae3c16ed21bc09ac0c044281aa0a6e43df
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="replicate-azure-vms-to-another-region-after-migration-to-azure-by-using-azure-site-recovery"></a>在迁移到 Azure 后，使用 Azure Site Recovery 将 Azure VM 复制到另一个区域
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/18/2018
 2. “完成迁移”操作会完成迁移过程、删除计算机复制设置及让计算机不再产生 Site Recovery 费用。
 
 ### <a name="step-2-install-the-azure-vm-agent-on-the-virtual-machine"></a>步骤 2：在虚拟机上安装 Azure VM 代理
-必须在虚拟机上安装 Azure [VM 代理](../../virtual-machines/windows/classic/agents-and-extensions.md#azure-vm-agents-for-windows-and-linux)，Site Recovery 扩展才能运行及帮助保护 VM。
+必须在虚拟机上安装 Azure [VM 代理](../../virtual-machines/windows/agent-user-guide.md)，Site Recovery 扩展才能运行及帮助保护 VM。
 
 >[!IMPORTANT]
 >从版本 9.7.0.0 开始，在 Windows 虚拟机上，移动服务安装程序还会安装最新可用的 Azure VM 代理。 迁移时，虚拟机需要满足使用所有 VM 扩展（包括 Site Recovery 扩展）的代理安装先决条件。 仅当迁移的计算机上安装的移动服务为版本 9.6 或更早版本时，才需要手动安装 Azure VM 代理。

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: 7f978ecd128115e5f2fe562da46d8b29324e3d04
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 1cb6fbc82c493e17815dc60ddcff183a47513bc6
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="get-started-with-notification-hubs-for-xamarinandroid-apps"></a>适用于 Xamarin.Android 应用的通知中心入门
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/12/2018
 
 可以在 GitHub 上的 [此处][GitHub]找到本教程的已完成代码。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 本教程需要的内容如下：
 
 * 基于 Windows 的 [Visual Studio with Xamarin] 或基于 OS X 的 [Visual Studio for Mac]。
@@ -208,7 +208,7 @@ ms.lasthandoff: 01/12/2018
     ```csharp
         [Service]
         [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
-        public class MyFirebaseIIDService : FirebaseMessagingService
+        public class MyFirebaseMessagingService : FirebaseMessagingService
     ```
     
 14. 将以下代码添加到 **MyFirebaseMessagingService.cs**：

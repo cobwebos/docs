@@ -5,15 +5,15 @@ description: "存储帐户密钥在 Azure Key Vault 与 Azure 存储帐户基于
 ms.topic: article
 services: key-vault
 ms.service: key-vault
-author: BrucePerlerMS
-ms.author: bruceper
+author: lleonard-msft
+ms.author: alleonar
 manager: mbaldwin
 ms.date: 10/12/2017
-ms.openlocfilehash: a87877f4b213365442400d113a67964ef942341f
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 6ebac5fc90e259b19e0a4103a732754384232a44
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault 存储帐户密钥
 

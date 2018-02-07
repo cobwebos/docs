@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c58e62a087c456c2e5b9772935aca17b77a75c5e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a717ea57642c0fb56eec176542ae401f83af6841
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂向或从本地文件系统复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](data-factory-onprem-file-system-connector.md)
+> * [版本 1 - 正式版](data-factory-onprem-file-system-connector.md)
 > * [版本 2 - 预览版](../connector-file-system.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（即正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的文件系统连接器](../connector-file-system.md)。
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的文件系统连接器](../connector-file-system.md)。
 
 
 本文介绍如何使用 Azure 数据工厂中的复制活动向/从本地文件系统复制数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
@@ -73,7 +73,7 @@ ms.lasthandoff: 11/03/2017
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | type |确保类型属性设置为 **OnPremisesFileServer**。 |是 |
-| 主机 |指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。 |是 |
+| host |指定要复制的文件夹的根路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅 [Sample linked service and dataset definitions](#sample-linked-service-and-dataset-definitions)（链接服务和数据集定义示例）。 |是 |
 | userid |指定有权访问服务器的用户的 ID。 |否（如果选择 encryptedCredential） |
 | password |设置用户的密码 (userid)。 |否（如果选择 encryptedCredential） |
 | encryptedCredential |指定可通过运行 New-AzureRmDataFactoryEncryptValue cmdlet 获取的加密凭据。 |否（如果选择在纯文本中指定 userid 和密码） |
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/03/2017
 
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>链接服务和数据集定义示例
-| 方案 | 链接服务定义中的主机 | 数据集定义中的 folderPath |
+| 场景 | 链接服务定义中的主机 | 数据集定义中的 folderPath |
 | --- | --- | --- |
 | 数据管理网关计算机上的本地文件夹： <br/><br/>示例：D:\\\* 或 D:\folder\subfolder\\* |D:\\\\（适用于数据管理网关 2.0 以及更高版本） <br/><br/> localhost（适用于数据管理网关 2.0 之前的版本） |.\\\\ 或 folder\\\\subfolder（适用于数据管理网关 2.0 以及更高版本） <br/><br/>D:\\\\ 或 D:\\\\folder\\\\subfolder（适用于低于 2.0 的网关版本） |
 | 远程共享文件夹： <br/><br/>示例：\\\\myserver\\share\\\* 或 \\\\myserver\\share\\folder\\subfolder\\* |\\\\\\\\myserver\\\\share |.\\\\ 或 folder\\\\subfolder |
@@ -171,7 +171,7 @@ ms.lasthandoff: 11/03/2017
 在本示例中，SliceStart 的年、月、日和时间已提取到 folderPath 和 fileName 属性使用的各个变量。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出数据集等属性和策略可用于所有类型的活动。 但是，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。
+有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出数据集等属性和策略可用于所有类型的活动。 但是，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。
 
 对于复制活动，这些属性则因源和接收器的类型而异。 要从本地文件系统移动数据，请在复制活动中将源类型设置为 **FileSystemSource**。 同样，要将数据移入本地文件系统，请在复制活动中将接收器类型设置为 **FileSystemSink**。 本部分提供 FileSystemSource 和 FileSystemSink 支持的属性列表。
 

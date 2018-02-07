@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: f19cf8fddd9ffcf08b8ce18db070a7482ce012df
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: a3ab4713861d4d9681ad2ac5f084255fc29462ce
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="archive-azure-monitoring-data"></a>Azure 监视数据存档
 
@@ -66,7 +66,7 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 
 接下来，通过设置资源诊断设置来配置要路由到存储帐户的资源级别数据（资源指标和诊断日志）。
 
-1. 单击左侧导航列表中的“监视器”按钮，然后单击“诊断设置”。 在此处查看订阅中所有资源的列表，这些资源通过 Azure Monitor 生成监视数据。 如果此列表中没有任何资源，可在处理前[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)，以拥有可在其中配置诊断设置的资源。
+1. 单击左侧导航列表中的“监视器”按钮，然后单击“诊断设置”。 在此处查看订阅中所有资源的列表，这些资源通过 Azure Monitor 生成监视数据。 如果此列表中没有任何资源，可在处理前[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)，以拥有可在其中配置诊断设置的资源。
 
 2. 单击列表中的某个资源，然后单击“启用诊断”。
    
@@ -80,7 +80,7 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 
    ![诊断设置部分](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-home.png)
 
-4. 单击“存档到存储帐户”下的“配置”按钮，并选择在上一部分中创建的存储帐户。 单击**“确定”**。
+4. 单击“存档到存储帐户”下的“配置”按钮，并选择在上一部分中创建的存储帐户。 单击“确定”。
 
    ![诊断设置存储帐户](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-storage.png)
 
@@ -90,7 +90,7 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
    
 6. 将“保留期(天)”滑块移至 30。 此滑块设置监视数据要在存储帐户中保留的天数。 Azure Monitor 会自动删除早于所述天数的数据。 如果保留期为 0 天，则无限期存储数据。
 
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 现在，资源的监视数据将流入到存储帐户。
 
@@ -124,7 +124,7 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 
 9. 在显示的部分中，选择在之前的“创建存储帐户”步骤中创建的存储帐户。
 
-10. 单击“保存”。
+10. 单击“ **保存**”。
 
 现在，虚拟机的监视数据将流入到存储帐户。
 

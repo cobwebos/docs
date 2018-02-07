@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: d422a07a27ffa62a673bd2d471ae4fc837251dee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3eae7a4a47680fc36849fd413b76a80865cf3c9f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-http-action"></a>HTTP 操作入门
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 * 创建在管理的网站出现故障时激活（触发）的逻辑应用工作流。
 * 通过 HTTP 向任意终结点通信以将工作流扩展到其他服务中。
 
-若要开始在逻辑应用中使用 HTTP 操作，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+若要开始在逻辑应用中使用 HTTP 操作，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="use-the-http-trigger"></a>使用 HTTP 触发器
 触发器是可用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](connectors-overview.md)。
@@ -116,7 +116,7 @@ HTTP 触发器按重复间隔对 HTTP 终结点发送调用。 任何低于 300 
 | 方法* |方法 |要使用的 HTTP 谓词 |
 | URI* |uri |HTTP 请求的 URI |
 | 标头 |headers |要包含的 HTTP 标头的 JSON 对象 |
-| 正文 |body |HTTP 请求正文 |
+| Body |body |HTTP 请求正文 |
 | 身份验证 |authentication |[身份验证](#authentication)部分中的详细信息 |
 
 <br>
@@ -127,7 +127,7 @@ HTTP 触发器按重复间隔对 HTTP 终结点发送调用。 任何低于 300 
 | 属性名称 | 数据类型 | 说明 |
 | --- | --- | --- |
 | 标头 |对象 |响应标头 |
-| 正文 |对象 |响应对象 |
+| Body |对象 |响应对象 |
 | 状态代码 |int |HTTP 状态代码 |
 
 ## <a name="authentication"></a>身份验证
@@ -215,5 +215,5 @@ Azure AD OAuth 身份验证需要以下身份验证对象。 * 表示它是必�
 ```
 
 ## <a name="next-steps"></a>后续步骤
-现在，试用平台并[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
+现在，试用平台并[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
 

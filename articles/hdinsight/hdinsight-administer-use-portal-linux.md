@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2017
 ms.author: jgao
-ms.openlocfilehash: a65daae8931c5ef892bf01eb049897488d6b15c7
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 347af14d342751fd9d03cd5d0e9cedf05f91a2e1
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
 
@@ -81,10 +81,10 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
 4. 单击列表中的群集可查看概述页：
 
     ![Azure 门户 HDInsight 群集概要](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials.png)概述菜单：
-    * **仪表板**：打开群集仪表板，即可用于基于 Linux 群集的 Ambari Web。
+    * **仪表板**：打开群集的 Ambari Web UI。
     * **安全外壳**：显示使用安全 Shell (SSH) 连接与群集建立连接的说明。
     * **缩放群集**：可更改此群集的辅助角色节点数。
-    * **移动**：将群集移至其他资源组或订阅。
+    * **移动**：将群集移至其他资源组或其他订阅。
     * **删除**：删除群集。
 
     **左侧菜单：**
@@ -98,7 +98,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
     * **适用于 HDInsight 的工具**：HDInsight 相关工具的帮助信息。
     * **订阅核心使用情况**：显示订阅的已使用和可用核心。
     * **缩放群集**：增加和减少群集辅助角色节点的数量。 请参阅[缩放群集](hdinsight-administer-use-management-portal.md#scale-clusters)。
-    * **SSH + 群集登录**：显示使用安全外壳 (SSH) 连接与群集建立连接的说明。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)，并重置群集登录凭据。
+    * **SSH + 群集登录**：显示使用安全外壳 (SSH) 连接与群集建立连接的说明。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
     * **HDInsight 合作伙伴**：添加/删除当前的 HDInsight 合作伙伴。
     * **外部元存储**：查看 Hive 和 Oozie 元存储。 只能在群集创建过程中配置元存储。 请参阅[使用 Hive/Oozie 元存储](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore)。
     * **脚本操作**：在群集上运行 Bash 脚本。 请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
@@ -226,6 +226,21 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
 
 请参阅[将 HDInsight 群集升级到更新的版本](./hdinsight-upgrade-cluster.md)。
 
+## <a name="open-the-ambari-web-ui"></a>打开 Ambari Web UI
+
+Ambari 提供由其 RESTful API 提供支持的直观、易用的 Hadoop 管理 Web UI。 Ambari 使系统管理员能够管理和监视 Hadoop 群集。
+
+1. 从 Azure 门户打开 HDInsight 群集。  请参阅[列出和显示群集](#list-and-show-clusters)。
+2. 单击“群集仪表板”。
+
+    ![HDInsight Hadoop 群集菜单](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu.png)
+
+1. 输入群集用户名和密码。  默认群集用户名为“admin”。Ambari Web UI 如下所示：
+
+    ![HDInsight Hadoop Ambari Web UI](./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-ambari-web-ui.png)
+
+有关详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
+
 ## <a name="change-passwords"></a>更改密码
 HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（即 HTTP 用户帐户）和 SSH 用户帐户是在创建过程中创建的。 可以使用 Ambari Web UI 更改群集用户帐户用户名和密码，使用脚本操作更改 SSH 用户帐户
 
@@ -269,7 +284,7 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（�
    | 名称 |更改 ssh 密码 |
    | Bash 脚本 URI |changepassword.sh 文件的 URI |
    | 节点（头节点、辅助角色节点、Nimbus、监督程序、Zookeeper，等等。） |✓ 适用于所有列出的节点类型 |
-   | Parameters |输入 SSH 用户名和新密码。 用户名与密码之间应有一个空格。 |
+   | parameters |输入 SSH 用户名和新密码。 用户名与密码之间应有一个空格。 |
    | 保留此脚本操作... |将此字段保留未选中状态。 |
 5. 选择“创建”以应用脚本。 完成脚本后，可以使用新密码通过 SSH 连接到群集。
 

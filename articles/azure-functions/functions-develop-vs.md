@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: ed1d8298123597fe8330b54f89fd580095f21ec7
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: ec9258a123774607ffee8705a1bc5391525567f5
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>用于 Visual Studio 的 Azure Functions 工具  
 
@@ -34,9 +34,9 @@ Azure Functions 工具提供以下优势：
 本主题介绍如何使用用于 Visual Studio 2017 的 Azure Functions 工具在 C# 中开发函数。 此外，还介绍如何将项目作为 .NET 程序集发布到 Azure。
 
 > [!IMPORTANT]
-> 不要将本地开发和门户开发混合在同一函数应用中。 从本地项目发布到函数应用时，部署过程将覆盖在门户中开发的任何函数。
+> 不要将本地开发和门户开发混合在同一函数应用中。 从本地项目发布到函数应用时，部署过程会覆盖在门户中开发的任何函数。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 Azure Functions Tools 随附在 [Visual Studio 2017 版本 15.4](https://www.visualstudio.com/vs/) 或更高版本的 Azure 开发工作负荷中。 请确保你在安装 Visual Studio 2017 时随附了Azure 开发工作负荷：
 
@@ -61,9 +61,9 @@ Azure Functions Tools 随附在 [Visual Studio 2017 版本 15.4](https://www.vis
     
 * **local.settings.json**：维护本地运行函数时使用的设置。 Azure 不使用这些设置，它们由 [Azure Functions 核心工具](functions-run-local.md)使用。 使用此文件可以在其他 Azure 服务中指定设置（例如连接字符串）。 针对项目中的函数所需的每个连接，请将新键添加到 **Values** 数组。 有关详细信息，请参阅 Azure Functions 核心工具主题中的[本地设置文件](functions-run-local.md#local-settings-file)。
 
-Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。
+Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 
 
-[!INCLUDE [Note to not use local storage](../../includes/functions-local-settings-note.md)]
+[!INCLUDE [Note on local storage](../../includes/functions-local-settings-note.md)]
 
  若要设置存储帐户连接字符串，请执行以下操作：
 
@@ -83,7 +83,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
     ![](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
     
-    已提供名为 **QueueStorage** 的连接字符串键，该键在 local.settings.json 文件中定义。 
+    此触发器示例使用具有名为 **QueueStorage** 的键的连接字符串。 必须在 local.settings.json 文件中定义此连接字符串设置。 
  
 3. 检查新添加的类。 将会看到一个静态 **Run** 方法，它已使用 **FunctionName** 属性设置了属性。 该属性指示该方法是函数的入口点。 
 
@@ -113,7 +113,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
 Azure Functions Core Tools 允许在本地开发计算机上运行 Azure Functions 项目。 首次从 Visual Studio 启动某个函数时，系统会提示你安装这些工具。  
 
-若要测试函数，请按 F5。 如果系统提示，请按 Visual Studio 的请求下载和安装 Azure Functions Core (CLI) 工具。  可能还需启用一个防火墙例外，以便这些工具能够处理 HTTP 请求。
+若要测试函数，请按 F5。 如果系统提示，请按 Visual Studio 的请求下载和安装 Azure Functions Core (CLI) 工具。 可能还需启用一个防火墙例外，以便这些工具能够处理 HTTP 请求。
 
 在运行项目时，可以像测试已部署的函数一样测试代码。 有关详细信息，请参阅[在 Azure Functions 中测试代码的策略](functions-test-a-function.md)。 在调试模式下运行时，断点将按预期命中 Visual Studio。 
 
@@ -125,12 +125,23 @@ Azure Functions Core Tools 允许在本地开发计算机上运行 Azure Functio
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
->[!NOTE]  
->还必须将在 local.settings.json 中添加的任何设置添加到 Azure 函数应用中。 这些设置不会自动添加。 可通过以下方式的其中一种将所需设置添加到函数应用中：
->
->* [使用 Azure 门户](functions-how-to-use-azure-function-app-settings.md#settings)。
->* [使用 `--publish-local-settings` 发布 Azure Functions Core Tools 中的选项](functions-run-local.md#publish)。
->* [使用 Azure CLI](/cli/azure/functionapp/config/appsettings#set)。 
+## <a name="function-app-settings"></a>函数应用设置   
+
+还必须将在 local.settings.json 中添加的任何设置添加到 Azure 函数应用中。 发布项目时，不会自动上传这些设置。 
+
+将所需设置上传到 Azure 中的函数应用的最简单方法是使用“管理应用程序设置...”链接（在成功发布项目之后显示）。 
+
+![](./media/functions-develop-vs/functions-vstools-app-settings.png)
+
+这会显示用于函数应用的“应用程序设置”对话框，可以在其中添加新应用程序设置或修改现有设置。
+
+![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
+
+还可以采用以下这些其他方法之一来管理应用程序设置：
+
+* [使用 Azure 门户](functions-how-to-use-azure-function-app-settings.md#settings)。
+* [使用 `--publish-local-settings` 发布 Azure Functions Core Tools 中的选项](functions-run-local.md#publish)。
+* [使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set)。 
 
 ## <a name="next-steps"></a>后续步骤
 

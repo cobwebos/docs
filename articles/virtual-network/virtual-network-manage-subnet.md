@@ -1,5 +1,5 @@
 ---
-title: "添加、更改或删除 Azure 虚拟网络子网 | Microsoft 文档"
+title: "添加、更改或删除 Azure 虚拟网络子网 | Microsoft Docs"
 description: "了解如何在 Azure 中添加、更改或删除虚拟网络子网。"
 services: virtual-network
 documentationcenter: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
-ms.openlocfilehash: 85ba6ef3e51c339a77eb9b4198c4f87e2a64cf09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 413ec2ef4fcc7752b95984a209818eeba535746e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>添加、更改或删除虚拟网络子网
 
@@ -35,15 +35,15 @@ ms.lasthandoff: 10/11/2017
 
 在开始本文所述的任务之前，请先完成以下先决条件：
 
-- 如果对如何使用虚拟网络不太熟悉，建议查看[创建你的第一个 Azure 虚拟网络](virtual-network-get-started-vnet-subnet.md)中的练习。 此练习有助于熟悉虚拟网络。
+- 如果对如何使用虚拟网络不太熟悉，建议查看[创建你的第一个 Azure 虚拟网络](quick-create-portal.md)中的练习。 此练习有助于熟悉虚拟网络。
 - 若要了解有关虚拟网络限制的详细信息，请查看 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 - 使用 Azure 帐户登录到 Azure 门户、Azure 命令行工具 (Azure CLI) 或 Azure PowerShell。 若没有 Azure 帐户，请注册 [免费试用帐户](https://azure.microsoft.com/free)
 - 如果打算使用 PowerShell 命令来完成本文中所述的任务，首先必须[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保安装最新版本的 Azure PowerShell cmdlet。 若要获取示例中的 PowerShell 命令的相关帮助，请输入 `get-help <command> -full`。
 - 如果打算使用 Azure CLI 命令来完成本文中所述的任务，必须：
     - [安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保安装最新版本的 Azure CLI。
-    - 使用 Azure Cloud Shell。 除安装 CLI 及其依赖项外，还可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置与你的帐户一起使用。 若要使用 Cloud Shell，请单击 Azure 门户顶部的 Cloud Shell (>_) 图标。 
+    - 使用 Azure Cloud Shell。 除安装 CLI 及其依赖项外，还可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 若要使用 Cloud Shell，请单击 Azure 门户顶部的 Cloud Shell (>_) 图标。 
 
-  若要获取 Azure CLI 命令的相关帮助，请输入 `az <command> --help`。
+  若要获取 Azure CLI 命令的帮助，请输入 `az <command> --help`。
 
 ## <a name="create-subnet"></a>添加子网
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 10/11/2017
 3. 在“虚拟网络”边栏选项卡中，单击想要为其更改子网地址范围的虚拟网络。
 4. 单击要为其更改地址范围的子网。
 5. 在子网边栏选项卡的“地址范围”框中，输入新的地址范围。 此范围在该虚拟网络的地址空间内必须唯一。 其范围不能与虚拟网络中其他子网地址范围重叠。 必须使用 CIDR 表示法指定地址空间。 例如，在地址空间为 10.0.0.0/16 的虚拟网络中，可将子网地址空间定义为 10.0.0.0/24。 可以指定的最小范围为 /29，为子网提供八个 IP 地址。 Azure 保留每个子网中的第一个地址和最后一个地址，以确保协议一致性。 此外还会保留三个地址供 Azure 服务使用。 因此，地址范围为 /29 的子网有三个可用 IP 地址。 如果打算将虚拟网络连接到 VPN 网关，必须创建一个网关子网。 详细了解[网关子网地址范围具体考虑事项](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)。 在特定条件下，可以在子网创建后更改地址范围。 若要了解有关如何更改子网地址范围的相关信息，请参阅本文中的[更改子网设置](#change-subnet)部分。
-6. 单击“保存” 。
+6. 单击“ **保存**”。
 
 **命令**
 
@@ -107,4 +107,4 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-若要在子网中创建虚拟机，请参阅[在子网中创建虚拟网络并部署 VM](virtual-network-get-started-vnet-subnet.md#create-vms)。
+若要在子网中创建虚拟机，请参阅[在子网中创建虚拟网络并部署 VM](quick-create-portal.md#create-virtual-machines)。

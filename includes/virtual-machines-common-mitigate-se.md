@@ -1,9 +1,17 @@
 
-**上次文档更新**：太平洋标准时间 1 月 6 日下午 6:30。
+
+
+**上次文档更新**：太平洋标准时间 1 月 22 日下午 3:00。
 
 最近发现了一种称为推理执行旁道攻击的[新型 CPU 漏洞](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)，这使想要了解其详情的客户向我们提出了问题。  
 
 运行 Azure 并将客户工作负荷相互隔离的基础结构是受保护的。  这意味着 Azure 上运行的其他客户无法使用这些漏洞攻击你的应用程序。
+
+> [!NOTE] 
+> 以前于 2018 年 1 月 3 日公布的 Azure 缓解措施不受 Intel 提供的最新[更新指南](https://newsroom.intel.com/news/root-cause-of-reboot-issue-identified-updated-guidance-for-customers-and-partners/)影响。 由于此新信息，客户 VM 上将没有附加的维护活动。
+>
+> 当我们从硬件供应商收到微代码更新时，我们将继续更新这些最佳做法。 请返回查看是否有更新指南。
+>
 
 ## <a name="keeping-your-operating-systems-up-to-date"></a>使操作系统保持最新
 
@@ -40,11 +48,6 @@
 
 ### <a name="linux"></a>Linux
 如果使用 Linux 且托管不受信任的代码，还应将 Linux 更新到一个实现内核页表隔离 (KPTI) 的较新版本，内核页表隔离会将内核使用的页表与属于用户空间的页表分隔开来。 这些防御措施需要 Linux 操作系统更新，可以在推出后从分发版提供方获取。 操作系统提供方可告诉你保护在默认情况下是处于启用状态还是禁用状态。
-
-
-
-
-
 
 
 

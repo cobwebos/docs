@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; klam
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8adda0d9cd6af98c04f2432eeabbc003ad403719
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 49b4bbfda4518b03ef6080bec1e2a493933af4f5
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>从预构建的模板创建逻辑应用工作流
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/21/2017
 | 协议模式模板 | 用于实现 HTTP 请求-响应及 FTP 和 SFTP 之间的集成等协议模式。 使用这些提供的模板，或在其上构建模板以处理复杂协议模式。 | 
 ||| 
 
-如果还没有 Azure 订阅，可以在开始前[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 有关构建逻辑应用的详细信息，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+如果还没有 Azure 订阅，可以在开始前[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 有关构建逻辑应用的详细信息，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="create-logic-apps-from-templates"></a>从模板创建逻辑应用
 
@@ -153,7 +153,7 @@ ms.lasthandoff: 10/21/2017
 ## <a name="get-support"></a>获取支持
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
-* 若要提交功能方面的想法或进行相关投票，请访问[逻辑应用用户反馈站点](http://aka.ms/logicapps-wish)。
+* 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](http://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤
 

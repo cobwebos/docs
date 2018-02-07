@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/22/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 61bfbedfd4f1e84b6976099323a32f3a720634c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7719e0e90df3a384e870e2e839cb77a27d95ada8
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-ftp-connector"></a>FTP 连接器入门
 使用 FTP 连接器在 FTP 服务器上监视、管理和创建文件。 
 
-若要使用[“任何连接器”](apis-list.md)，首先需要创建逻辑应用。 可通过[“立即创建逻辑应用”](../logic-apps/logic-apps-create-a-logic-app.md)开始操作。
+若要使用[“任何连接器”](apis-list.md)，首先需要创建逻辑应用。 可通过[“立即创建逻辑应用”](../logic-apps/quickstart-create-first-logic-app-workflow.md)开始操作。
 
 ## <a name="connect-to-ftp"></a>连接到 FTP
 与服务创建*连接*后，逻辑应用才能访问服务。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 > 
 
 ## <a name="use-a-ftp-trigger"></a>使用 FTP 触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。  
+触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。  
 
 > [!IMPORTANT]
 > FTP 连接器需要可从 Internet 访问并配置为在 PASSIVE 模式下运行的 FTP 服务器。 此外，FTP 连接器**与隐式 FTPS (FTP over SSL) 不兼容**。 FTP 连接器仅支持显式 FTPS (FTP over SSL)。  
@@ -61,7 +61,7 @@ ms.lasthandoff: 10/11/2017
 > 
 
 ## <a name="use-a-ftp-action"></a>使用 FTP 操作
-操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。  
+操作是指在逻辑应用中定义的由工作流执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。  
 
 现已添加触发器，按照以下步骤添加将获取由该触发器找到的新文件或已修改文件内容的操作。    
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/11/2017
    ![FTP 操作图 2](./media/connectors-create-api-ftp/ftp-action-2.png)  
    “获取文件内容”控件打开。 **注意：**系统会提示授权逻辑应用访问 FTP 服务器帐户（如果之前尚未这样做）。  
    ![FTP 操作图 3](./media/connectors-create-api-ftp/ftp-action-3.png)   
-5. 选择“文件”控件（**FILE*** 下方的空白处）。 此处可以使用在 FTP 服务器上找到的新文件或已修改文件的任何属性。  
+5. 选择“文件”控件（**文件***下方的空白处）。 此处可以使用在 FTP 服务器上找到的新文件或已修改文件的任何属性。  
 6. 选择“文件内容”选项。  
    ![FTP 操作图 4](./media/connectors-create-api-ftp/ftp-action-4.png)   
 7. 控件更新，指示“FTP - 获取文件内容”操作将获取 FTP 服务器上新文件或已修改文件的“文件内容”。      
@@ -91,5 +91,5 @@ ms.lasthandoff: 10/11/2017
 在[连接器详细信息](/connectors/ftpconnector/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
+[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 

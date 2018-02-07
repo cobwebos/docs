@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: matp; LADocs
 ms.openlocfilehash: d35647921ff540167a3a591fb489d3bab031a5c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>从逻辑应用工作流连接到 Dynamics 365
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 10/11/2017
 
 向字段添加值时，无论是键入一个值还是从动态内容列表中选择一个值，该值都必须与字段类型匹配。
 
-字段类型  |如何使用  |查找位置  |Name  |数据类型  
+字段类型  |如何使用  |查找位置  |名称  |数据类型  
 ---------|---------|---------|---------|---------
 文本字段|文本字段需要单个文本行或类型为文本字段的动态内容。 示例包括“类别”和“子类别”字段。|“设置”>“自定义”>“自定义系统”>“实体”>“任务”>“字段” |category |单个文本行        
 整数字段 | 有些字段需要整数或类型为整数字段的动态内容。 示例包括“完成百分比”和“持续时间”。 |“设置”>“自定义”>“自定义系统”>“实体”>“任务”>“字段” |完成百分比 |整数         

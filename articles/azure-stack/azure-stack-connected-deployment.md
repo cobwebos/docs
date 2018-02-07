@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: c1a3b2107abdc3ef19a314616518c494687d81bf
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: a2d4efc3a3e1480de71528144ae3f025f4879f07
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>规划 Azure 堆栈的决策的 azure 连接的部署集成系统
 您已决定后[如何将将 Azure 堆栈集成到你的混合云环境](azure-stack-deployment-decisions.md)，然后才能最终完成 Azure 堆栈的部署决策。
@@ -57,9 +57,8 @@ ms.lasthandoff: 01/17/2018
 
 |方案|域和订阅选项|
 |-----|-----|
-|你是直接或间接的 CSP 合作伙伴，并且将运行 Azure 堆栈|使用 CSL （通用服务层） 订阅。|
-|你是直接或间接的 CSP 合作伙伴，并且将运行 Azure 堆栈|在合作伙伴中心，Azure AD 租户使用创建一个描述性名称，例如<your organization>CSPAdmin 和 Azure CSP 订阅与之关联。|
-|您是间接的 CSP 经销商联系，并将运行 Azure 堆栈|要求你间接 CSP 提供商创建，使用合作伙伴中心，你的组织，以及一个与它关联的 Azure CSP 订阅 Azure AD 租户。|
+|你是**直接 CSP 合作伙伴**或**间接 CSP 提供程序**，和将运行 Azure 堆栈|使用 CSL （通用服务层） 订阅。<br>     或<br>创建 Azure AD 租户中合作伙伴中心的描述性名称。 例如&lt;你的组织 > CSPAdmin Azure CSP 订阅与之关联。|
+|你是**间接 CSP 分销商**，和将运行 Azure 堆栈|向间接 CSP 提供商创建一个与它使用合作伙伴中心关联的 Azure CSP 订阅与你的组织的 Azure AD 租户。|
 
 ### <a name="capacity-based-billing"></a>容量基于的计费
 如果你决定使用容量计费模型，你必须购买 Azure 堆栈容量计划 SKU 基于你的系统的容量。 你将需要知道你购买的正确数量的 Azure 堆栈中的物理内核数。 
@@ -70,3 +69,6 @@ ms.lasthandoff: 01/17/2018
 - 有关用例、 购买、 合作伙伴和 OEM 硬件供应商的信息，请参阅[Azure 堆栈](https://azure.microsoft.com/overview/azure-stack/)产品页。
 - 有关 Azure 堆栈信息的路线图和地域可用性集成的系统，请参阅白皮书： [Azure 堆栈： Azure 的扩展](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)。 
 - 若要了解有关 Microsoft Azure 堆栈打包和定价的详细信息[下载.pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)。 
+
+## <a name="next-steps"></a>后续步骤
+[数据中心网络集成](azure-stack-network.md)

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 185780da206e4d0ed0d8e5f8b24a546e3d9b3800
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f59c9e2c523db319565c1cca13eb85f809b2bdd6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="calling-a-web-api-from-a-net-web-app"></a>从 .NET Web 应用调用 API
 通过 v2.0 终结点，可以快速地将身份验证添加 Web 应用和 Web API，同时支持个人 Microsoft 帐户以及工作或学校帐户。  此外，我们将构建一个借助 Microsoft OWIN 中间件使用 OpenID Connect 将用户登录的 MVC Web 应用。  该 Web 应用将获取受 OAuth 2.0 保护的 Web API 的 OAuth 2.0 访问令牌，用于在给定用户的“待办事项列表”上进行创建、读取和删除操作。
@@ -68,7 +68,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoList-WebApp
 * 打开文件 `App_Start\Startup.Auth.cs`，为上述库添加 `using` 语句。
 * 在同一个文件中，实现 `ConfigureAuth(...)` 方法。  在 `OpenIDConnectAuthenticationOptions` 中提供的参数将充当应用程序与 Azure AD 通信时使用的坐标。
 
-```C#
+```csharp
 public void ConfigureAuth(IAppBuilder app)
 {
     app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
@@ -116,7 +116,7 @@ public void ConfigureAuth(IAppBuilder app)
 * 在 `App_Start\Startup.Auth.cs` 文件中为 MSAL 添加另一个 `using` 语句。
 * 现在，添加一个新方法，即 `OnAuthorizationCodeReceived` 事件处理程序。  此处理程序将使用 MSAL 获取待办事项列表 API 的访问令牌，并将 MSAL 令牌缓存中的令牌存储起来以供稍后使用：
 
-```C#
+```csharp
 private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
 {
         string userObjectId = notification.AuthenticationTicket.Identity.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
@@ -144,7 +144,7 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
     `using Microsoft.Identity.Client;`
 * 在 `Index` 操作中，使用 MSAL 的 `AcquireTokenSilentAsync` 方法获取可用于读取待办事项列表服务数据的 access_token：
 
-```C#
+```csharp
 // ...
 string userObjectID = ClaimsPrincipal.Current.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
 string tenantID = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value;
@@ -160,7 +160,7 @@ result = await app.AcquireTokenSilentAsync(new string[] { Startup.clientId });
 * 此示例接下来将生成的令牌添加到 HTTP GET 请求作为 `Authorization` 标头，让待办事项列表服务用于身份验证请求。
 * 如果待办事项列表服务返回 `401 Unauthorized` 响应，则表示 MSAL 的 access_tokens 由于某种原因而失效。  在此情况下，应删除所有来自 MSAL 缓存的 access_tokens，并向用户显示消息告知其可能需要重新登录，这会重启令牌获取流。
 
-```C#
+```csharp
 // ...
 // If the call failed with access denied, then drop the current access token from the cache,
 // and show the user an error indicating they might need to sign-in again.
@@ -175,7 +175,7 @@ if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
 
 * 同样，如果 MSAL 由于任何原因而无法返回 access_token，则你应该再次指示用户登录。  这就像获取任何 `MSALException` 一样简单：
 
-```C#
+```csharp
 // ...
 catch (MsalException ee)
 {

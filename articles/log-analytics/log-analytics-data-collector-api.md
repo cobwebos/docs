@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 5b4b31b58c7a4bcb93277333502bc082da2062ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88d9c4b23eb676743c004c0d1b3ab45f6cd66055
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将数据发送到 Log Analytics
 本文说明如何使用 HTTP 数据收集器 API 从 REST API 客户端将数据发送到 Log Analytics。  它说明对于脚本或应用程序收集的数据，如何设置其格式、将其包含在请求中，并由 Log Analytics 授权该请求。  将针对 PowerShell、C# 和 Python 提供示例。
@@ -175,7 +175,7 @@ HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作
 
 | 代码 | 状态 | 错误代码 | 说明 |
 |:--- |:--- |:--- |:--- |
-| 200 |确定 | |已成功接受请求。 |
+| 200 |OK | |已成功接受请求。 |
 | 400 |错误的请求 |InactiveCustomer |工作区已关闭。 |
 | 400 |错误的请求 |InvalidApiVersion |服务无法识别所指定的 API 版本。 |
 | 400 |错误的请求 |InvalidCustomerId |指定的工作区 ID 无效。 |
@@ -260,7 +260,7 @@ Function Build-Signature ($customerId, $sharedKey, $date, $contentLength, $metho
 
 
 # Create the function to create and post the request
-Function Post-OMSData($customerId, $sharedKey, $body, $logType)
+Function Post-LogAnalyticsData($customerId, $sharedKey, $body, $logType)
 {
     $method = "POST"
     $contentType = "application/json"
@@ -291,7 +291,7 @@ Function Post-OMSData($customerId, $sharedKey, $body, $logType)
 }
 
 # Submit the data to the API endpoint
-Post-OMSData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
+Post-LogAnalyticsData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
 ```
 
 ### <a name="c-sample"></a>C# 示例

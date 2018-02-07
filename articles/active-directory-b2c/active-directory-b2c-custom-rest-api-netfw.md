@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/30/2017
 ms.author: yoelh
-ms.openlocfilehash: b7ce383b5297b0973f2999e7310fad94a0abe7dd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fd9c95ae78590aa772fde10c8c80914c905767a8
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 使用构成 Azure Active Directory B2C (Azure AD B2C) 基础的标识体验框架，可在用户旅程中与 RESTful API 相集成。 本演练将会介绍 Azure AD B2C 如何与 .NET Framework RESTful 服务 (Web API) 交互。
@@ -88,7 +88,7 @@ ms.lasthandoff: 12/11/2017
 
 3. 将类命名为 `InputClaimsModel`，并将以下属性添加到 `InputClaimsModel` 类：
 
-    ```C#
+    ```csharp
     namespace Contoso.AADB2C.API.Models
     {
         public class InputClaimsModel
@@ -102,7 +102,7 @@ ms.lasthandoff: 12/11/2017
 
 4. 创建新模型 `OutputClaimsModel`，并将以下属性添加到 `OutputClaimsModel` 类：
 
-    ```C#
+    ```csharp
     namespace Contoso.AADB2C.API.Models
     {
         public class OutputClaimsModel
@@ -114,7 +114,7 @@ ms.lasthandoff: 12/11/2017
 
 5. 再创建一个模型 `B2CResponseContent`，用于引发输入验证错误消息。 将以下属性添加到 `B2CResponseContent` 类，提供缺少的引用，并保存文件：
 
-    ```C#
+    ```csharp
     namespace Contoso.AADB2C.API.Models
     {
         public class B2CResponseContent
@@ -152,7 +152,7 @@ ms.lasthandoff: 12/11/2017
 
 4. 如果 *IdentityController.cs* 文件尚未打开，请双击它，并将该文件中的代码替换为以下代码：
 
-    ```C#
+    ```csharp
     using Contoso.AADB2C.API.Models;
     using Newtonsoft.Json;
     using System;

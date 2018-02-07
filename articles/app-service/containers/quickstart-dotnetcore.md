@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 529ddd23d144ef8edf7f3ec7c91da60a7ca8ac01
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 736d3977bb1aa092d6bdce70c852b52139ff2e2a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 .NET Core Web 应用
 
@@ -34,14 +34,14 @@ ms.lasthandoff: 12/19/2017
 
 可以在 Mac、Windows 或 Linux 计算机上执行以下步骤。
 
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
 完成本快速入门教程：
 
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
 * <a href="https://github.com/dotnet/core/blob/master/release-notes/download-archives/1.1.6-sdk-download.md" target="_blank">安装 .NET Core SDK 1.1</a>
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-app-locally"></a>在本地创建应用
 
@@ -140,11 +140,11 @@ To https://cephalin-dotnetcore.scm.azurewebsites.net/cephalin-dotnetcore.git
 http://<app_name>.azurewebsites.net
 ```
 
-Node.js 示例代码在包含内置映像的 Web 应用中运行。
+.NET Core 示例代码在包含内置映像的 Web 应用中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
-**祝贺你！** 现已将第一个 Node.js 应用部署到 Linux 应用服务。
+**祝贺你！** 现已将第一个 .NET Core 应用部署到 Linux 应用服务。
 
 ## <a name="update-and-redeploy-the-code"></a>更新并重新部署代码
 

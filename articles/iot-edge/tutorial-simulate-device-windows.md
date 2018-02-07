@@ -1,4 +1,4 @@
----
+﻿---
 title: "在 Windows 上模拟 Azure IoT Edge | Microsoft Docs"
 description: "在 Windows 的模拟设备上安装 Azure IoT Edge 运行时，并部署第一个模块"
 services: iot-edge

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 6a3941efcc7d9cebe49024fa7aa792cf12e9937d
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: ab3044b46c37a2a50d271fa8e8a6b924da1e131b
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-from-odata-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/11/2018
 
 OData 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**OData** |是 |
 | url | OData 服务的根 URL。 |是 |
@@ -130,7 +130,7 @@ OData 链接的服务支持以下属性：
 
 要从 OData 复制数据，请将数据集的 type 属性设置为“ODataResource”。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**ODataResource** | 是 |
 | 路径 | OData 资源的路径。 | 否 |
@@ -163,7 +163,7 @@ OData 链接的服务支持以下属性：
 
 要从 OData 复制数据，请将复制活动中的源类型设置为“RelationalSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：RelationalSource | 是 |
 | query | 用于筛选数据的 OData 查询选项。 示例：“?$select=Name,Description&$top=5”。<br/><br/>最后请注意，OData 连接器会从组合 URL 复制数据：`[url specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 请参阅 [OData URL 组件](http://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
@@ -218,7 +218,7 @@ OData 链接的服务支持以下属性：
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | 字符串 |
+| Edm.String | String |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 

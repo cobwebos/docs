@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; gwallace
-ms.openlocfilehash: 96702fb1b377861c3692358a5754e73475cee84d
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 63120614f2a2ef6b366bc2d92ec9a0dd430a3fb4
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>在 Azure 自动化 DSC 中编译配置
 
@@ -299,7 +299,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
 ### <a name="importing-a-node-configuration-in-the-azure-portal"></a>在 Azure 门户中导入节点配置
 
-1. 从自动化帐户中，单击“DSC 节点配置”。
+1. 在“自动化帐户”页上的“配置管理”下，单击“DSC 节点配置”。
 
     ![DSC 节点配置](./media/automation-dsc-compile/node-config.png)
 2. 在“DSC 节点配置”边栏选项卡中，单击“添加 NodeConfiguration”。
@@ -307,7 +307,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
     ![浏览本地文件](./media/automation-dsc-compile/import-browse.png)
 4. 在“配置名称”文本框中，输入名称。 此名称必须与编译节点配置的配置名称匹配。
-5. 单击 **“确定”**。
+5. 单击“确定”。
 
 ### <a name="importing-a-node-configuration-with-powershell"></a>使用 PowerShell 导入节点配置
 

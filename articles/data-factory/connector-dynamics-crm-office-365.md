@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 91de03f3472244341f4cf086bc8a2f56f7d2e487
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: d577db2b2f14da61baccfb6230b0c6e03a62b9b1
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-data-fromto-dynamics-365dynamics-crm-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365/Dynamics CRM 复制数据
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/11/2018
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
 以下部分提供了有关各属性的详细信息，这些属性用于定义特定于 Dynamics 的数据工厂实体。
 
@@ -60,7 +60,7 @@ Dynamics 链接的服务支持以下属性：
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 和 Dynamics CRM Online
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为：Dynamics | 是 |
 | deploymentType | Dynamics 实例的部署类型。 Dynamics 联机必须为“联机”。 | 是 |
@@ -107,7 +107,7 @@ Dynamics 链接的服务支持以下属性：
 
 与 Dynamics 联机进行对比的其他属性是“hostName”和“port”。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为：Dynamics | 是 |
 | deploymentType | Dynamics 实例的部署类型。 带有 IFD 的本地 Dynamics 必须为“OnPremisesWithIfd”| 是 |
@@ -160,7 +160,7 @@ Dynamics 链接的服务支持以下属性：
 
 要从/向 Dynamics 复制数据，请将数据集的类型属性设置为“DynamicsEntity”。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为：DynamicsEntity |是 |
 | entityName | 要检索的实体的逻辑名称。 | 源为否（如果指定了活动源中的“query”），接收器为是 |
@@ -213,7 +213,7 @@ Dynamics 链接的服务支持以下属性：
 
 要从 Dynamics 复制数据，请将复制活动中的源类型设置为“DynamicsSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**DynamicsSource**  | 是 |
 | query  | FetchXML 是在 Microsoft Dynamics（联机和本地）中使用的专有查询语言。 请参阅下面的示例，并从[使用 FeachXML 生成查询](https://msdn.microsoft.com/en-us/library/gg328332.aspx)了解详细信息。 | 否（如果指定了数据集中的“entityName”）  |
@@ -274,7 +274,7 @@ Dynamics 链接的服务支持以下属性：
 
 要向 Dynamics 复制数据，请将复制活动中的接收器类型设置为“DynamicsSink”。 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**DynamicsSink**  | 是 |
 | writeBehavior | 操作的写入行为。<br/>允许的值为：**"Upsert"**。 | 是 |
@@ -332,16 +332,16 @@ Dynamics 链接的服务支持以下属性：
 | AttributeType.DateTime | Datetime | ✓ | ✓ |
 | AttributeType.Decimal | 小数 | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
-| AttributeType.EntityName | 字符串 | ✓ | ✓ |
+| AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | Guid | ✓ |  |
 | AttributeType.ManagedProperty | 布尔 | ✓ |  |
-| AttributeType.Memo | 字符串 | ✓ | ✓ |
+| AttributeType.Memo | String | ✓ | ✓ |
 | AttributeType.Money | 小数 | ✓ | ✓ |
 | AttributeType.Owner | Guid | ✓ | |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |
-| AttributeType.String | 字符串 | ✓ | ✓ |
+| AttributeType.String | String | ✓ | ✓ |
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 

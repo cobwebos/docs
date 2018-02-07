@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 1ec815a12cea98228dd4b7ac7361fe5e3554b5d3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 6dfee26d7585c8ec295a1f0ea1bd0bc14a34cc5a
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Log Analytics 新日志搜索常见问题解答和已知问题
 
@@ -148,10 +148,10 @@ Application Insights 连接器解决方案中不再支持 [Application Insights 
 ## <a name="upgrade-process"></a>升级过程
 
 ### <a name="question-i-have-several-workspaces-can-i-upgrade-all-workspaces-at-the-same-time"></a>问：我有多个工作区。 是否可以同时升级所有工作区？  
-不能。  升级适用于单次单个工作区。 当前没有方法可以一次性升级多个工作区。 请注意，所升级的工作区的其他用户也会受影响。  
+不会。  升级适用于单次单个工作区。 当前没有方法可以一次性升级多个工作区。 请注意，所升级的工作区的其他用户也会受影响。  
 
 ### <a name="question-will-existing-log-data-collected-in-my-workspace-be-modified-if-i-upgrade"></a>问：如果升级，是否将修改工作区中收集的现有日志数据？  
-不能。 可用于工作区搜索的日志数据不受升级影响。 已保存的搜索、警报和视图将自动转换为新的搜索语言。  
+不会。 可用于工作区搜索的日志数据不受升级影响。 已保存的搜索、警报和视图将自动转换为新的搜索语言。  
 
 ### <a name="question-what-happens-if-i-dont-upgrade-my-workspace"></a>问：如果不升级工作区，会发生什么情况？  
 旧的日志搜索将在几个月后弃用。 系统会自动升级此时间前仍未升级的工作区。
@@ -160,11 +160,10 @@ Application Insights 连接器解决方案中不再支持 [Application Insights 
 在正式发布之前，升级后可以还原工作区。  现在，新的语言已正式发布，已删除此功能，因为我们开始停用旧的平台。
 
 
-
 ## <a name="views"></a>视图
 
 ### <a name="question-how-do-i-create-a-new-view-with-view-designer"></a>问：如何使用视图设计器创建新视图？
-升级之前，可以使用视图设计器使用主仪表板上的磁贴创建新视图。  工作区升级后，将删除此磁贴。  可以通过单击左侧菜单中的绿色“+”按钮，使用视图设计器在 OMS 门户中创建新视图。
+升级之前，可以使用 OMS 门户中主仪表板上的磁贴通过视图设计器创建新视图。  工作区升级后，将删除此磁贴。  可以通过单击左侧菜单中的绿色“+”按钮，使用视图设计器在 OMS 门户中创建新视图。  可继续通过单击“视图设计器”磁贴使用 Azure 门户创建新视图。
 
 
 ## <a name="next-steps"></a>后续步骤

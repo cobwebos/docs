@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/7/2017
 ms.author: LADocs; estfan; jonfan
-ms.openlocfilehash: e0b7292f25a145c699dbafaf4e31e3f9d072b957
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: de519084a4f172ad984c78727123835eeb9deaef
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="send-receive-and-batch-process-messages-in-logic-apps"></a>在逻辑应用中对消息进行进行发送、接收和批处理
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 10/14/2017
 
 * Azure 订阅。 如果没有订阅，可以[从免费的 Azure 帐户着手](https://azure.microsoft.com/free/)。 也可以[注册即用即付订阅](https://azure.microsoft.com/pricing/purchase-options/)。
 
-* 有关[如何创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)的基本知识 
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识 
 
 * 具有任何 [Azure 逻辑应用支持的电子邮件提供商](../connectors/apis-list.md)的电子邮件帐户
 
@@ -83,13 +83,13 @@ ms.lasthandoff: 10/14/2017
       例如，如果具有工作或学校帐户，则选择 Office 365 Outlook 连接器。 
       如果具有 Gmail 帐户，则选择 Gmail 连接器。
 
-   3. 为连接器选择此操作：**{*电子邮件提供商*} - 发送电子邮件**
+   3. 为连接器选择此操作：{电子邮件提供商} - 发送电子邮件
 
       例如：
 
       ![为电子邮件提供商选择“发送电子邮件”操作](./media/logic-apps-batch-process-send-receive-messages/add-send-email-action.png)
 
-5. 如果以前没有为电子邮件提供商创建连接，请在出现提示时提供电子邮件凭据进行身份验证。 详细了解[对电子邮件凭据进行身份验证](../logic-apps/logic-apps-create-a-logic-app.md)。
+5. 如果以前没有为电子邮件提供商创建连接，请在出现提示时提供电子邮件凭据进行身份验证。 详细了解[对电子邮件凭据进行身份验证](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 6. 为刚添加的操作设置属性。
 

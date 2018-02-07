@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2017
+ms.date: 01/17/2018
 ms.author: kaanan
-ms.openlocfilehash: d7b7204f218cf67b1749e4fcdbc78d134e6d80e7
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 679c3093a1feb4589ff96dab398d38a866c9ad2a
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/13/2017
 | **北美** |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、圣安东尼奥、西雅图、硅谷、华盛顿特区、蒙特利尔、魁北克市、多伦多 |
 | **南美洲** |巴西南部 |圣保罗 |
 | **欧洲** |北欧、西欧、英国西部、英国南部 |阿姆斯特丹、都柏林、伦敦、纽波特（威尔士）、巴黎 |
-| **亚洲** |东亚、东南亚 |中国香港特别行政区、新加坡 |
+| **亚洲** |东亚、东南亚 |香港特别行政区、新加坡、新加坡 2 |
 | **日本** |日本西部、日本东部 |大坂、东京 |
 | **澳大利亚** |澳大利亚东南部、澳大利亚东部 |墨尔本、悉尼 |
 | **印度** |印度西部、印度中部、印度南部 |金奈、孟买 |
@@ -83,7 +83,7 @@ ms.lasthandoff: 12/13/2017
 | **洛杉矶** |CoreSite、Equinix、Megaport、NTT、Zayo Group |
 | **墨尔本** |AARNet、Equinix、Megaport、NEXTDC、Telstra Corporation |
 | **迈阿密** |C3ntro+、Megaport、Neutrona Networks |
-| **Montreal** |Bell Canada、Cologix |
+| **Montreal** |Bell Canada、Cologix、Telus |
 | **Mumbai** |Airtel+、Global CloudXchange (GCX)、Sify、Tata Communications |
 | **纽约** |Coresite、Equinix、Level 3 Communications、Megaport、Zayo Group |
 | **Newport(Wales)** |Level 3 Communications、Next Generation Data |
@@ -96,6 +96,7 @@ ms.lasthandoff: 12/13/2017
 | **首尔** |KINX、LG CNS、Sejong Telecom |
 | **硅谷** |Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink+、Comcast、Console、Coresite、Equinix、Level 3 Communications、Megaport、Orange、Tata Communications、Verizon、Zayo Group |
 | **新加坡** |Aryaka Networks、AT&T NetBond、British Telecom、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Verizon |
+| **新加坡 2** |Megaport、SingTel |
 | **悉尼** |AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、Orange、Telstra Corporation、Verizon |
 | **东京** |Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、Level 3 Communications、NTT Communications、Softbank、Verizon |
 | **多伦多** |AT&T NetBond、Bell Canada、Cologix、Console、Equinix、Megaport、Telus、Zayo Group |

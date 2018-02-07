@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 33ec5775a371a04074f07d589d35d1c05bd64d30
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: af09c5602c53be4377ba19e68ff3486bcfefe0ea
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>准备本地 VMware 服务器用于灾难恢复到 Azure
 
@@ -110,7 +110,7 @@ VM 还必须运行受支持的操作系统。 有关受支持版本的完整列�
 1. 在本地计算机上故障转移之前，请确保安全外壳服务设置为在系统启动时自动启动。 确保防火墙规则允许 SSH 连接。
 
 2. 在 Azure VM 上执行故障转移后，允许已故障转移的 VM 及其所连接 Azure 子网上的网络安全组规则与 SSH 端口建立传入连接。
-   为 VM [添加公共 IP 地址](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)。 可选中“启动诊断”查看 VM 的屏幕截图。
+   为 VM [添加公共 IP 地址](site-recovery-monitoring-and-troubleshooting.md)。 可选中“启动诊断”查看 VM 的屏幕截图。
 
 ## <a name="next-steps"></a>后续步骤
 

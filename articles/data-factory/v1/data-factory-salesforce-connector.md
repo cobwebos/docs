@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 29f4c5e8998331cc48dac694512766a5b3cd4a30
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 9e678e947a686b5a672af13cb0f0e60b4a272de9
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](data-factory-salesforce-connector.md)
+> * [版本 1 - 正式版](data-factory-salesforce-connector.md)
 > * [版本 2 - 预览版](../connector-salesforce.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1（即正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 Salesforce 连接器](../connector-salesforce.md)。
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 Salesforce 连接器](../connector-salesforce.md)。
 
 
 本文概括介绍了如何使用 Azure 数据工厂中的复制活动将数据从本地 Salesforce 移动到[支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表中的接收器列下所列出的任何数据存储。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何结合使用复制活动和受支持的数据存储进行数据移动。
@@ -292,7 +292,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下�
 | 货币 |Double |
 | 日期 |DateTime |
 | 日期/时间 |DateTime |
-| 电子邮件 |String |
+| Email |String |
 | ID |String |
 | 查找关系 |String |
 | 多选择列表 |String |

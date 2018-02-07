@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 11/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 7c2a1d61bc13ba1cde404e2b732933d2d314e3e3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e2db429860e6e3a60211c993bebfecbca98d67fd
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>如何发现 Azure 数据目录中的数据源
 ## <a name="introduction"></a>介绍
@@ -37,7 +37,7 @@ Azure 数据目录是一个完全托管的云服务，充当企业数据源的�
 ## <a name="search-syntax"></a>搜索语法
 虽然默认的自定义文本搜索简单且直观，但用户还可以使用数据目录搜索语法来更好地控制搜索结果。 数据目录搜索支持以下技术：
 
-| 技术 | 使用 | 示例 |
+| 技术 | 用途 | 示例 |
 | --- | --- | --- |
 | 基本搜索 |使用一个或多个搜索词的基本搜索。 结果是与一个或多个指定搜索词的属性匹配的所有资产。 |`sales data` |
 | 属性范围 |仅返回搜索词匹配指定属性的数据源。 |`name:finance` |

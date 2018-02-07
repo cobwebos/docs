@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2017
 ms.author: anhoh
-ms.openlocfilehash: 2ad6308903d1c3615392eadedfd7da3cfad4096d
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 41c0b360b54f9a9dcd2458ce5bdc05911c4f73a5
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>将 MongoDB 应用程序连接到 Azure Cosmos DB
 了解如何使用 MongoDB 连接字符串，将 MongoDB 应用连接到 Azure Cosmos DB 帐户。 然后，可使用 Azure Cosmos DB 数据库作为 MongoDB 应用的数据存储。 
@@ -75,5 +75,5 @@ Azure Cosmos DB 支持标准 MongoDB 连接字符串 URI 格式，但要满足�
     mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何配合[使用 MongoChef](mongodb-mongochef.md) 与 Azure Cosmos DB API for MongoDB 帐户。
+* 了解如何配合[使用 Studio 3T (MongoChef)](mongodb-mongochef.md) 与 Azure Cosmos DB API for MongoDB 帐户。
 * 查看[示例](mongodb-samples.md)，了解 Azure Cosmos DB API for MongoDB。

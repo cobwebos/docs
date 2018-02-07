@@ -15,26 +15,26 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: d7496b0578301713ebae7381e9a54642e226eb96
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: cb9d20bcb4b863736229bb920f5d4615b2c28c94
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="deploy-an-application-to-a-party-cluster-in-azure"></a>将应用程序部署到 Azure 中的合作群集
 本教程是一个系列的第二部分，介绍如何将 Azure Service Fabric 应用程序部署到 Azure 中的合作群集。
 
 在该系列教程的第二部分中，你会学习如何：
 > [!div class="checklist"]
-> * 使用 Visual Studio 将应用程序部署到远程群集
-> * 使用 Service Fabric Explorer 从群集中删除应用程序
-
-在此系列教程中，你会学习如何：
-> [!div class="checklist"]
 > * [构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)
 > * 将应用程序部署到远程群集
 > * [使用 Visual Studio Team Services 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [设置监视和诊断应用程序](service-fabric-tutorial-monitoring-aspnet.md)
+
+在此系列教程中，你会学习如何：
+> [!div class="checklist"]
+> * 使用 Visual Studio 将应用程序部署到远程群集
+> * 使用 Service Fabric Explorer 从群集中删除应用程序
 
 ## <a name="prerequisites"></a>先决条件
 在开始学习本教程之前：

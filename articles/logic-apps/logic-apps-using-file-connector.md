@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: LADocs; deli
-ms.openlocfilehash: 7738b3346af49cb8aa811eb17003d1b72b1bbe46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32ab5be41a8dee3b1f2c0b1bde076c0d1a844bdd
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="connect-to-on-premises-file-systems-from-logic-apps-with-the-file-system-connector"></a>使用文件系统连接器从逻辑应用连接到本地文件系统
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 * 安装和设置最新的本地数据网关（版本 1.15.6150.1 或更高版本）。 有关步骤，请参阅[连接到本地数据源](http://aka.ms/logicapps-gateway)。 必须先在本地计算机上安装网关，才能继续执行这些步骤。
 
-* 有关[如何创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)的基本知识
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 ## <a name="add-trigger-and-actions-for-connecting-to-your-file-system"></a>添加用于连接到文件系统的触发器和操作
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: fbfef291334109c6dcfcde80741874549fb7929f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec407d72f90cf3616214d27c378dee0ff42f4c6f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-webhook-connector"></a>Webhook 连接器入门
 
@@ -92,9 +92,9 @@ ms.lasthandoff: 10/11/2017
 
 | 显示名称 | 属性名称 | 说明 |
 | --- | --- | --- |
-| 订阅方法* |method |要用于订阅请求的 HTTP 方法 |
+| 订阅方法* |方法 |要用于订阅请求的 HTTP 方法 |
 | 订阅 URI* |uri |要用于订阅请求的 HTTP URI |
-| 取消订阅方法* |method |要用于取消订阅请求的 HTTP 方法 |
+| 取消订阅方法* |方法 |要用于取消订阅请求的 HTTP 方法 |
 | 取消订阅 URI* |uri |要用于取消订阅请求的 HTTP URI |
 | 订阅正文 |body |订阅的 HTTP 请求正文 |
 | 订阅标头 |headers |订阅的 HTTP 请求标头 |
@@ -110,7 +110,7 @@ Webhook 请求
 | 属性名称 | 数据类型 | 说明 |
 | --- | --- | --- |
 | 标头 |对象 |Webhook 请求标头 |
-| 正文 |对象 |Webhook 请求对象 |
+| Body |对象 |Webhook 请求对象 |
 | 状态代码 |int |Webhook 请求状态代码 |
 
 ## <a name="webhook-actions"></a>Webhook 操作
@@ -128,9 +128,9 @@ Webhook 请求
 
 | 显示名称 | 属性名称 | 说明 |
 | --- | --- | --- |
-| 订阅方法* |method |要用于订阅请求的 HTTP 方法 |
+| 订阅方法* |方法 |要用于订阅请求的 HTTP 方法 |
 | 订阅 URI* |uri |要用于订阅请求的 HTTP URI |
-| 取消订阅方法* |method |要用于取消订阅请求的 HTTP 方法 |
+| 取消订阅方法* |方法 |要用于取消订阅请求的 HTTP 方法 |
 | 取消订阅 URI* |uri |要用于取消订阅请求的 HTTP URI |
 | 订阅正文 |body |订阅的 HTTP 请求正文 |
 | 订阅标头 |headers |订阅的 HTTP 请求标头 |
@@ -146,10 +146,10 @@ Webhook 请求
 | 属性名称 | 数据类型 | 说明 |
 | --- | --- | --- |
 | 标头 |对象 |Webhook 请求标头 |
-| 正文 |对象 |Webhook 请求对象 |
+| Body |对象 |Webhook 请求对象 |
 | 状态代码 |int |Webhook 请求状态代码 |
 
 ## <a name="next-steps"></a>后续步骤
 
-* [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
+* [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [查找其他连接器](apis-list.md)

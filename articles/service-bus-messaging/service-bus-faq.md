@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
 ms.author: sethm
-ms.openlocfilehash: e64e7d9f203debe19dfa222f501c7902cfe2ae98
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ba34938883ee342936b5c7a4568dae5e02684bb2
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
 本文讨论了一些关于 Microsoft Azure 服务总线的常见问题解答。 还可以访问 [Azure 支持常见问题解答](http://go.microsoft.com/fwlink/?LinkID=185083)了解常规的 Azure 定价和支持信息。
@@ -48,7 +48,6 @@ ms.lasthandoff: 11/15/2017
 ### <a name="what-should-i-know-before-creating-entities"></a>创建实体前需了解哪些事项？
 队列和主题的下列属性固定不变。 预配实体时，请考虑此限制，因为必须创建新的替代实体才可修改这些属性。
 
-* 大小
 * 分区
 * 会话
 * 重复检测

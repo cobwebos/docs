@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 3cc96b22b45e5c741991b11e1bbee758a569bed9
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 2aeed42d3cf6f4d5b30777d12cb7d51c6e4a6b59
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
 > [!NOTE]
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/02/2017
 ## <a name="earlier-versions"></a>早期版本
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>增强功能
-- 可将 DNS 条目添加到白名单服务总线，而不是将防火墙中的所有 Azure IP 地址列入白名单（如果需要）。 可以在 Azure 门户中找到相应的 DNS 条目（“数据工厂”->“创作和部署”->“网关”->“serviceUrls”（采用 JSON））
+- 可将 DNS 条目添加到允许列表服务总线，而不是将防火墙中的所有 Azure IP 地址列入允许列表（如果需要）。 可以在 Azure 门户中找到相应的 DNS 条目（“数据工厂”->“创作和部署”->“网关”->“serviceUrls”（采用 JSON））
 - HDFS 连接器现在允许跳过 SSL 验证，支持自签名的公用证书。
 - 已修复：更新期间发生的网关脱机问题（由于时钟偏差）
 

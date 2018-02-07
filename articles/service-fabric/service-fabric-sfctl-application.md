@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: 82d2024f567768e784d9d8697784d06b56bc08ed
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 345717e76097931f52354369e822af41133b34f0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="sfctl-application"></a>sfctl application
 创建、删除和管理应用程序及应用程序类型。
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/03/2017
 
 |参数|说明|
 | --- | --- |
-| --application-id [必需]| 应用程序标识。 这通常是不包含“fabric:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果应用程序名为“fabric://myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp~app1”，在以前的版本中为“myapp/app1”。|
+| --application-id [必需]| 应用程序的标识。 这通常是不包含“fabric:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果应用程序名为“fabric://myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp~app1”，在以前的版本中为“myapp/app1”。|
 | --force-remove          | 强制删除 Service Fabric 应用程序或服务，跳过正常关闭序列。 若因服务代码中的问题而无法正常关闭副本，导致应用程序或服务删除超时，可使用此参数强制删除该应用程序或服务。|
 | --timeout -t            | 服务器超时，以秒为单位。  默认值：60。|
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 11/03/2017
 
 |参数|说明|
 | --- | --- |
-| --application-id [必需]| 应用程序标识。 这通常是不包含“fabric:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果应用程序名为“fabric://myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp~app1”，在以前的版本中为“myapp/app1”。|
+| --application-id [必需]| 应用程序的标识。 这通常是不包含“fabric:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果应用程序名为“fabric://myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp~app1”，在以前的版本中为“myapp/app1”。|
 | --node-name [必需]| 节点的名称。|
 | --timeout -t            | 服务器超时，以秒为单位。  默认值：60。|
 
@@ -128,10 +128,10 @@ ms.lasthandoff: 11/03/2017
 |参数|说明|
 | --- | --- |
 | --application-id [必需]| 应用程序的标识。 这通常是不带“fabric:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果应用程序名为“fabric://myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp~app1”，在以前的版本中为“myapp/app1”。|
-| --deployed-applications-health-state-filter| 用于根据运行状况筛选应用程序运行状况查询结果中返回的已部署应用程序运行状况对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的已部署应用程序。 所有已部署应用程序都用于评估聚合运行状况。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的已部署应用程序的运行状况。 - Default - 默认值。 匹配任何 HealthState。 值为零。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
+| --deployed-applications-health-state-filter| 用于根据运行状况筛选应用程序运行状况查询结果中返回的已部署应用程序运行状况对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的已部署应用程序。 所有已部署应用程序都用于评估聚合运行状况。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的已部署应用程序的运行状况。 - Default - 默认值。 匹配任何 HealthState。 值为 0。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
 | --events-health-state-filter            | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。 - Default - 默认值。 匹配任何 HealthState。 值为 0。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
 | --exclude-health-statistics | 指示运行状况统计数据是否应作为查询结果的一部分返回。 默认值为 False。 统计信息显示处于 Ok、Warning 和 Error 运行状况的子实体数。|
-| --services-health-state-filter          | 用于根据运行状况筛选服务运行状况查询结果中返回的服务运行状况对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的服务。 所有服务都用于评估聚合运行状况。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为“6”，则返回 HealthState 值为 OK (2) 和 Warning (4) 的服务的运行状况。 - Default - 默认值。 匹配任何 HealthState。 值为零。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
+| --services-health-state-filter          | 用于根据运行状况筛选服务运行状况查询结果中返回的服务运行状况对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的服务。 所有服务都用于评估聚合运行状况。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为“6”，则返回 HealthState 值为 OK (2) 和 Warning (4) 的服务的运行状况。 - Default - 默认值。 匹配任何 HealthState。 值为 0。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
 | --timeout -t                            | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数
@@ -153,7 +153,7 @@ ms.lasthandoff: 11/03/2017
 
 |参数|说明|
 | --- | --- |
-| --application-id [必需]| 应用程序标识。 这通常是不包含“fabric:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果应用程序名为“fabric://myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp~app1”，在以前的版本中为“myapp/app1”。|
+| --application-id [必需]| 应用程序的标识。 这通常是不包含“fabric:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果应用程序名为“fabric://myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp~app1”，在以前的版本中为“myapp/app1”。|
 | --exclude-application-parameters| 该标志指定应用程序参数是否排除在结果之外。|
 | --timeout -t                 | 服务器超时，以秒为单位。  默认值：60。|
 
@@ -315,7 +315,7 @@ ms.lasthandoff: 11/03/2017
 
 |参数|说明|
 | --- | --- |
-| --app-id [必需]| 应用程序标识。 这通常是不包含“fabric:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果应用程序名称为“fabric://myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp~app1”，在以前的版本中为“myapp/app1”。|
+| --app-id [必需]| 应用程序的标识。 这通常是不包含“fabric:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果应用程序名称为“fabric://myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp~app1”，在以前的版本中为“myapp/app1”。|
 | --app-version [必需]| 目标应用程序版本。|
 | --parameters [必需]| 升级应用程序时应用的应用程序参数替代的 JSON 编码列表。|
 | --default-service-health-policy| 默认使用的健康策略的 JSON 编码规范，用于评估服务类型的运行状况。|

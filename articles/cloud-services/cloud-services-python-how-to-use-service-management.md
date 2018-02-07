@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: a55a38df765dcd1947312e729dbd37e3284876cf
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: ca6e892e9f40204682be4ed00c413696f2022622
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-to-use-service-management-from-python"></a>如何从 Python 使用服务管理
 本指南说明如何以编程方式从 Python 执行常见服务管理任务。 [用于 Python 的 Azure SDK](https://github.com/Azure/azure-sdk-for-python) 中的 ServiceManagementService 类支持以编程方式访问 [Azure 门户][management-portal]中提供的众多与服务管理相关的功能（例如创建、更新和删除云服务、部署、数据管理服务和虚拟机）。 此功能可用于构建需要以编程方式访问服务管理的应用程序。
@@ -103,8 +103,8 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 在创建云服务或存储服务时，需要提供有效位置。 **list\_locations** 方法将始终返回当前可用位置的最新列表。 截止到本文撰写时为止，可用位置为：
 
 * 欧洲西部
-* 欧洲北部
-* 亚洲东南部
+* 北欧
+* 东南亚
 * 东亚
 * 美国中部
 * 美国中北部
@@ -394,9 +394,9 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
         role_size='Small',
         vm_image_name = image_name)
 
-若要了解有关如何捕获 Linux 虚拟机的详细信息，请参阅[如何捕获 Linux 虚拟机](../virtual-machines/linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
+若要详细了解如何在经典部署模型中捕获 Linux 虚拟机，请参阅[如何捕获 Linux 虚拟机](../virtual-machines/linux/classic/capture-image-classic.md)。
 
-若要了解有关如何捕获 Windows 虚拟机的详细信息，请参阅[如何捕获 Windows 虚拟机](../virtual-machines/windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+若要详细了解如何在经典部署模型中捕获 Windows 虚拟机，请参阅[如何捕获 Windows 虚拟机](../virtual-machines/windows/classic/capture-image-classic.md)。
 
 ## <a name="What's Next"></a>后续步骤
 现在，已学习了有关服务管理的基础知识，接下来可以访问 [Azure Python SDK 的完整 API 参考文档](http://azure-sdk-for-python.readthedocs.org/)，并轻松执行复杂的任务来管理 python 应用程序。

@@ -11,13 +11,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 01/22/2018
 ms.author: nitinme
-ms.openlocfilehash: fb77ec001f9f52e0a974f8765f458f831fb63908
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5da6ffc346cc0e7f0f83bf4a4c33600b668a17ca
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>有关 Azure Databricks 的常见问题解答
 
@@ -36,13 +36,13 @@ Databricks 预配过程中会创建新的虚拟网络。 不能在此版本中�
 2. 在 Data Lake Store 中分配服务主体的必需权限。
 3. 若要访问 Data Lake Store 中的文件，请使用 Notebook 中的服务主体凭据。
 
-有关详细信息，请参阅[配合使用 Data Lake Store 和 Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html#azure-data-lake-store)。
+有关详细信息，请参阅[配合使用 Data Lake Store 和 Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html)。
 
 ## <a name="fix-common-problems"></a>解决常见问题
 
 以下是使用 Databricks 时可能会遇到的一些问题。
 
-### <a name="this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>该订阅未注册为使用命名空间“Microsoft.Databricks”
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>问题：该订阅未注册为使用命名空间“Microsoft.Databricks”
 
 #### <a name="error-message"></a>错误消息
 
@@ -55,7 +55,7 @@ Databricks 预配过程中会创建新的虚拟网络。 不能在此版本中�
 3. 在资源提供程序列表中，针对“Microsoft.Databricks”选择“注册”。 必须具有订阅的参与者或所有者角色才能注册资源提供程序。
 
 
-### <a name="your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>在 Azure 门户中，你的帐户 {email} 没有 Databricks 工作区资源的“所有者”或“参与者”角色
+### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>问题：在 Azure 门户中，你的帐户 {email} 没有 Databricks 工作区资源的“所有者”或“参与者”角色
 
 #### <a name="error-message"></a>错误消息
 
@@ -71,36 +71,36 @@ Databricks 预配过程中会创建新的虚拟网络。 不能在此版本中�
 
     a. 在 Azure 门户中，转到 Azure AD。 依次选择“用户和组” > “添加用户”。
 
-    b. 使用 `@<tenant_name>.onmicrosoft.com` 电子邮件而非 `@<your_domain>` 电子邮件添加用户。 可在 Azure 门户中 Azure AD 下的“自定义域”找到它。
+    b. 使用 `@<tenant_name>.onmicrosoft.com` 电子邮件而非 `@<your_domain>` 电子邮件添加用户。 可在 Azure 门户中 Azure AD 下的“自定义域”中找到此选项。
     
     c. 授予新用户 Databricks 工作区资源的“参与者”角色。
     
     d.单击“下一步”。 使用新用户登录到 Azure 门户，并找到 Databricks 工作区。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 以此用户的身份启动 Databricks 工作区。
+    e. 以此用户的身份启动 Databricks 工作区。
 
 
-### <a name="your-account-email-has-not-been-registered-in-databricks"></a>你的帐户 {email} 未在 Databricks 中注册 
+### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>问题：你的帐户 {电子邮件} 未在 Databricks 中注册 
 
 #### <a name="solution"></a>解决方案
 
 如果你未创建工作区，但要添加为用户，请联系创建工作区的人员。 让他通过 Azure Databricks 管理员控制台添加。 有关说明，请参阅 [Adding and managing users](https://docs.azuredatabricks.net/administration-guide/admin-settings/users.html)（添加和管理用户）。 如果已创建该工作区但仍出现此错误，请尝试再次在 Azure 门户中单击“初始化工作区”。
 
-### <a name="cloud-provider-launch-failure-while-setting-up-the-cluster"></a>设置群集时，云提供程序启动失败
+### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>问题：设置群集时，云提供程序启动失败 (PublicIPCountLimitReached)
 
 #### <a name="error-message"></a>错误消息
 
-“云提供程序启动故障: 在设置群集时遇到云提供程序错误。 请参阅 Databricks 指南以获取详细信息。 Azure 错误代码：PublicIPCountLimitReached。 Azure 错误消息: 不能在此区域为该订阅创建超过 60 个公共 IP 地址。”
+“云提供程序启动故障: 在设置群集时遇到云提供程序错误。 有关详细信息，请参阅“Databricks 指南”。 Azure 错误代码：PublicIPCountLimitReached。 Azure 错误消息: 不能在此区域为该订阅创建超过 60 个公共 IP 地址。”
 
 #### <a name="solution"></a>解决方案
 
 Databricks 群集为每个节点使用一个公共 IP 地址。 如果订阅已使用其所有的公共 IP，则应[请求增加配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。 选择“配额”作为“问题类型”、选择“网络: ARM”作为“配额类型”。 在“详细信息”中，请求增加公共 IP 地址配额。 例如，如果限制当前为 60，但希望创建具有 100 个节点的群集，则请求将限制增加至 160。
 
-### <a name="a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster"></a>设置群集时，第二种类型的云提供程序启动失败
+### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>问题：设置群集时，第二种类型的云提供程序启动失败 (MissingSubscriptionRegistration)
 
 #### <a name="error-message"></a>错误消息
 
-“云提供程序启动故障: 在设置群集时遇到云提供程序错误。 请参阅 Databricks 指南以获取详细信息。
+“云提供程序启动故障: 在设置群集时遇到云提供程序错误。 有关详细信息，请参阅“Databricks 指南”。
 Azure 错误代码：MissingSubscriptionRegistration；Azure 错误消息：订阅未注册为使用命名空间“Microsoft.Databricks”。 请参阅 https://aka.ms/rps-not-found 了解如何注册订阅。”
 
 #### <a name="solution"></a>解决方案
@@ -110,6 +110,16 @@ Azure 错误代码：MissingSubscriptionRegistration；Azure 错误消息：订�
 3. 在资源提供程序列表中，针对“Microsoft.Compute”选择“注册”。 必须具有订阅的参与者或所有者角色才能注册资源提供程序。
 
 有关详细说明，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md)。
+
+### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>问题：Azure Databricks 需要只有管理员可以授予的访问组织中资源的权限。
+
+#### <a name="background"></a>背景
+
+Azure Databricks 已与 Azure AD 集成。 这使你可通过指定 Azure AD 中的用户在 Azure Databricks 中（例如，在笔记本或群集上）设置权限。 要使 Azure Databricks 能够列出 Azure AD 中的用户名称，它需要该信息的读取权限。 这需要许可。 如果许可尚不可用，将看到错误。
+
+#### <a name="solution"></a>解决方案
+
+以全局管理员身份登录到 Azure 门户。 对于 Azure Active Directory，请转到“用户设置”选项卡并确保“用户可以同意应用代表他们访问公司数据”设置为“是”。
 
 ## <a name="next-steps"></a>后续步骤
 

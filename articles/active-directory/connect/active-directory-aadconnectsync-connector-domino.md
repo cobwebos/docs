@@ -3,7 +3,7 @@ title: "Lotus Domino 连接器 | Microsoft Docs"
 description: "本文介绍如何配置 Microsoft 的 Lotus Domino 连接器。"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: e07fd469-d862-470f-a3c6-3ed2a8d745bf
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/119/2017
 ms.author: barclayn
-ms.openlocfilehash: 80151134821c6106382c58bf0ec68ea0f6d4646a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6c412be1c54e0378166791c61469c951bca3a583
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Lotus Domino 连接器技术参考
 本指南介绍 Lotus Domino 连接器。 本文适用于以下产品：
@@ -59,7 +59,7 @@ Lotus Domino 连接器使用 Lotus Notes 客户端来与 Lotus Domino 服务器�
 
 下表列出了每个操作所需的权限：
 
-| 操作 | 访问权限 |
+| Operation | 访问权限 |
 | --- | --- |
 | 导入 |<li>读取公共文档</li><li> 具有完全访问权限的管理员（对于属于完全访问权限的管理员组的成员，自然而然就拥有有效的 ACL 访问权限）。</li> |
 | 导出和重置密码 |有效访问权限： <li>创建文档</li><li>删除文档</li><li>读取公共文档</li><li>写入公共文档</li><li>复制文档</li>对于导出操作，还需以下角色： <li>CreateResource</li><li>GroupCreator</li><li>GroupModifier</li><li>UserCreator</li><li>UserModifier</li> |

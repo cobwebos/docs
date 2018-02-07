@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3e13cc70dc09dd795bb0df57a4bbb29c8fcddb9e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 1818e564acb0e9b5fa620d6f38db141811ca9777
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -99,10 +99,10 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 Microsoft 只使用这些数据来向你提供服务。
 
 ## <a name="where-is-the-data-held"></a>数据保存在哪个位置？
-* 美国或欧洲。 创建新的 Application Insights 资源时，可以选择存储位置。 
+* 在美国、欧洲或东南亚。 创建新的 Application Insights 资源时，可以选择存储位置。 
 
 
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-or-europe"></a>这是否意味着必须在美国或欧洲托管我的应用？
+#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>这是否意味着必须在美国、欧洲或东南亚托管我的应用？
 * 不会。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
 
 ## <a name="how-secure-is-my-data"></a>数据的安全性如何？
@@ -158,7 +158,7 @@ Application Insights 不会筛选或删除数据。 应该适当地管理数据�
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>不同情况下发送的数据类
 | 操作 | 收集的数据类（参阅下一表格） |
 | --- | --- |
-| [将 Application Insights SDK 添加到 .NET Web 项目][greenbrown] |ServerContext<br/>推断<br/>性能计数器<br/>请求<br/>**异常**<br/>会话<br/>users |
+| [将 Application Insights SDK 添加到 .NET Web 项目][greenbrown] |ServerContext<br/>推断<br/>性能计数器<br/>Requests<br/>**异常**<br/>会话<br/>users |
 | [在 IIS 上安装状态监视器][redfield] |依赖项<br/>ServerContext<br/>推断<br/>性能计数器 |
 | [将 Application Insights SDK 添加到 Java Web 应用][java] |ServerContext<br/>推断<br/>请求<br/>会话<br/>users |
 | [将 JavaScript SDK 添加到网页][client] |ClientContext <br/>推断<br/>Page<br/>ClientPerf<br/>Ajax |
@@ -179,12 +179,12 @@ Application Insights 不会筛选或删除数据。 应该适当地管理数据�
 | 会话 |会话 ID |
 | ServerContext |计算机名称、区域性、OS、设备、用户会话、用户上下文、操作 |
 | 推断 |IP 地址中的地理位置、时间戳、OS、浏览器 |
-| 指标 |指标名称和值 |
-| 事件 |事件名称和值 |
+| 度量值 |指标名称和值 |
+| 活动 |事件名称和值 |
 | PageViews |URL 和页面名称或屏幕名称 |
 | 客户端性能 |URL/页面名称、浏览器加载时间 |
 | Ajax |从网页到服务器的 HTTP 调用 |
-| 请求 |URL、持续时间、响应代码 |
+| Requests |URL、持续时间、响应代码 |
 | 依赖项 |类型（SQL、HTTP...）、连接字符串或 URI、同步/异步、持续时间、成功结果、SQL 语句（包含状态监视器） |
 | **异常** |类型、**消息**、调用堆栈、源文件与行号、线程 ID |
 | 崩溃 |进程 ID、父进程 ID、崩溃线程 ID；应用程序修补程序、ID、版本；异常类型、地址、原因；模糊符号和寄存器、二进制开始和结束地址、二进制文件名和路径、CPU 类型 |

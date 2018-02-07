@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 12c5d4985260c734ba813ace3143433883966712
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: b6267dd2bc1b29229b2e8016e2429ed88b7bf676
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="using-azure-files-with-kubernetes"></a>将 Azure 文件与 Kubernetes 配合使用
 
@@ -66,7 +66,7 @@ echo -n $AKS_PERS_STORAGE_ACCOUNT_NAME | base64
 echo -n $STORAGE_KEY | base64
 ```
 
-创建名为 `azure-secret.yml` 的文件，并将其复制到以下 YAML 中。 使用在最后一步检索到的 base64 编码的值更新 `azurestorageaccountname` 和 `azurestorageaccountkey` 值。
+创建名为 `azure-secret.yaml` 的文件，并将其复制到以下 YAML 中。 使用在最后一步检索到的 base64 编码的值更新 `azurestorageaccountname` 和 `azurestorageaccountkey` 值。
 
 ```yaml
 apiVersion: v1
@@ -82,12 +82,12 @@ data:
 使用 [kubectl create][kubectl-create] 命令创建机密。
 
 ```azurecli-interactive
-kubectl create -f azure-secret.yml
+kubectl create -f azure-secret.yaml
 ```
 
 ## <a name="mount-file-share-as-volume"></a>将文件共享装载为卷
 
-通过在卷的规范中配置卷，可以将 Azure 文件共享装载到 pod。使用以下内容创建名为 `azure-files-pod.yml` 的新文件。 使用提供给 Azure 文件共享的名称更新 `aksshare`。
+通过在卷的规范中配置卷，可以将 Azure 文件共享装载到 pod。使用以下内容创建名为 `azure-files-pod.yaml` 的新文件。 使用提供给 Azure 文件共享的名称更新 `aksshare`。
 
 ```yaml
 apiVersion: v1
@@ -112,7 +112,7 @@ spec:
 使用 kubectl 创建 pod。
 
 ```azurecli-interactive
-kubectl apply -f azure-files-pod.yml
+kubectl apply -f azure-files-pod.yaml
 ```
 
 现在你有一个正在运行的容器，其中 Azure 文件共享被装载到 `/mnt/azure` 目录中。 通过 `kubectl describe pod azure-files-pod` 检查 pod 时，可以看到此卷装载。
@@ -122,13 +122,16 @@ kubectl apply -f azure-files-pod.yml
 使用 Azure 文件了解有关 Kubernetes 卷的详细信息。
 
 > [!div class="nextstepaction"]
-> [用于 Azure 文件的 Kubernetes 插件](https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_file/README.md)
+> [用于 Azure 文件的 Kubernetes 插件][kubernetes-files]
 
-<!-- LINKS -->
+<!-- LINKS - external -->
+[kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create
+[kubernetes-files]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_file/README.md
+[kubernetes-secret]: https://kubernetes.io/docs/concepts/configuration/secret/
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/
+
+<!-- LINKS - internal -->
+[az-group-create]: /cli/azure/group#az_group_create
 [az-storage-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list
 [az-storage-share-create]: /cli/azure/storage/share#az_storage_share_create
-[kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create
-[kubernetes-secret]: https://kubernetes.io/docs/concepts/configuration/secret/
-[az-group-create]: /cli/azure/group#az_group_create

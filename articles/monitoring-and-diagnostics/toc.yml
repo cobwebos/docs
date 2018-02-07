@@ -2,8 +2,8 @@
   href: index.yml
 - name: 概述
   items:
-    - name: Azure 监视器
-      href: monitoring-overview-azure-monitor.md
+    - name: 在 Azure 中进行监视
+      href: monitoring-overview.md
 - name: 快速入门
   expanded: true
   items:
@@ -27,8 +27,8 @@
       href: monitoring-partners.md
     - name: 其他概述
       items:
-        - name: 跨 Azure 的监视工具
-          href: monitoring-overview.md
+        - name: Azure 监视器
+          href: monitoring-overview-azure-monitor.md
         - name: 度量值
           href: monitoring-overview-metrics.md
         - name: 警报

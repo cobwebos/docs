@@ -9,17 +9,17 @@ ms.date: 11/22/2017
 ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: 06743640aae5e06d0160105458d9a3cfa35d5040
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 494a8308a5ed4ae37ed9561d051155e7433e6193
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-use-the-azure-location-based-services-map-control"></a>如何使用 Azure Location Based Services Map Control
 可通过 Map Control 客户端 Javascript 库呈现地图，并将 Azure Location Based Services 功能嵌入 Web 或移动应用中。 
 
 ## <a name="prerequisites"></a>先决条件
-Azure Location Based Services 帐户和订阅密钥。 有关创建帐户和检索订阅密钥的信息，请参阅[如何管理 Azure Location Based Services 帐户和密钥](how-to-manage-account-keys.md)。 
+Azure Location Based Services 帐户和密钥。 有关创建帐户和检索密钥的信息，请参阅[如何管理 Azure Location Based Services 帐户和密钥](how-to-manage-account-keys.md)。 
 
 ## <a name="create-a-new-map-in-a-web-page-using-the-map-control-api"></a>在网页上使用 Map Control API 创建新地图
 通过使用 Map Control 客户端 Javascript 库，可以在网页中嵌入地图。
@@ -42,19 +42,19 @@ Azure Location Based Services 帐户和订阅密钥。 有关创建帐户和检�
             }
     ``` 
     
-4. 若要初始化 Map Control，在 html 正文中定义新部分并创建脚本。 使用你自己在 Azure Location Based Services 帐户中的订阅密钥。 
+4. 若要初始化 Map Control，在 html 正文中定义新部分并创建脚本。 在脚本中使用自己的 Azure Location Based Services 帐户密钥。 
 
     ```html
     <div id="map">
         <script>
-            var subscriptionKey = "<_subscriptionKey_>";
+            var LBSAccountKey = "<_your account key_>";
             var map = new atlas.Map("map", {
-                "subscription-key": subscriptionKey,
+                "subscription-key": LBSAccountKey,
                 center: [47.59093,-122.33263],
                 zoom: 12
             });
-        <script>
-    <div>
+        </script>
+    </div>
     ```
     
 5. 在 Web 浏览器中打开该文件并查看呈现的地图。

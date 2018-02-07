@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4a6647e30657a6d2d076cd254069d96f99a0aa60
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 9f3eb14340205709b5409a3d16d631cc2d02eb32
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -110,7 +110,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 也可以在服务器端进行记录：
 
-```C#
+```csharp
     var tc = new Microsoft.ApplicationInsights.TelemetryClient();
     tc.TrackEvent("CreatedAccount", new Dictionary<string,string> {"AccountType":account.Type}, null);
     ...
@@ -141,7 +141,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 为此，请[设置遥测初始值设定项](app-insights-api-filtering-sampling.md##add-properties-itelemetryinitializer)：
 
-```C#
+```csharp
 
 
     // Telemetry initializer class
@@ -156,7 +156,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 在 Global.asax.cs 等 Web 应用初始值设定项中：
 
-```C#
+```csharp
 
     protected void Application_Start()
     {

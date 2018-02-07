@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: d679ca7a01a96bd398b26e6a545e33674ae33390
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: aa4608d37b06db88819e6175dcf8f94a7e13f04a
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>在 Log Analytics 中使用日志搜索查找数据
 
@@ -30,7 +30,7 @@ Log Analytics 的核心是日志搜索功能，该功能允许将环境内来自
 
 可以在“搜索”页上创建查询，并在搜索时使用 Facet 控件筛选结果。 还可创建高级查询以转换、筛选和报告结果。
 
-常见的日志搜索查询显示在大多数解决方案页面上。 在整个 OMS 控制台中，可以单击磁贴或钻取其他项目，以使用日志搜索查看有关项目的详细信息。
+常见的日志搜索查询显示在大多数解决方案页面上。 在整个 OMS 门户中，可以单击磁贴或钻取到其他项目，以使用日志搜索查看有关项目的详细信息。
 
 我们在本教程中演示的示例将涵盖使用日志搜索时的所有基本知识。
 
@@ -39,7 +39,7 @@ Log Analytics 的核心是日志搜索功能，该功能允许将环境内来自
 熟悉了搜索技术后，可查看 [Log Analytics 日志搜索引用](log-analytics-search-reference.md)。
 
 ## <a name="use-basic-filters"></a>使用基本筛选器
-首先需要了解的是，搜索查询的第一部分（在任意“|”竖线前）始终是*筛选器*。 可将其视为 TSQL 中的 Where 子句（它确定从 OMS 数据存储中拉取的数据子集*内容*）。 在数据存储中的搜索主要与指定想要提取的数据特征有关，因此从 Where 子句开始查询是很自然的。
+首先需要了解的是，搜索查询的第一部分（在任意“|”竖线前）始终是*筛选器*。 可将其视为 TSQL 中的 WHERE 子句（它确定要从 Log Analytics 工作区中拉取的数据子集*内容*）。 在数据存储中的搜索主要与指定想要提取的数据特征有关，因此从 Where 子句开始查询是很自然的。
 
 可使用的最基本的筛选器是*关键字*，例如“错误”或“超时”）或计算机名称。 这些简单的查询类型通常返回同一结果集内的各种数据形状。 这是因为 Log Analytics 在系统中有不同的数据*类型*。
 
@@ -259,7 +259,7 @@ Type=Event EventID=600 | Top 1
 
 在以上图像中，有 35.8 万条 EventID=600 的记录。 左侧的字段、Facet 和筛选器始终显示有关由查询的*筛选器部分*返回的结果信息，这一部分位于任意管道字符之前。 “**结果**”窗格仅返回最新的 1 个结果，因为示例命令对结果进行了塑造和转换。
 
-### <a name="select"></a>选择
+### <a name="select"></a>Select
 SELECT 命令的行为与 PowerShell 中的 Select-Object 类似。 它返回筛选后的结果，该结果并不具有其全部原始属性。 相反，它仅选择指定的属性。
 
 #### <a name="to-run-a-search-using-the-select-command"></a>使用 SELECT 命令运行搜索
@@ -355,7 +355,7 @@ Type=ConfigurationChange | Measure Max(TimeGenerated) by Computer
 ## <a name="use-the-avg-function-with-the-measure-command"></a>将 avg 函数与 Measure 命令结合使用
 与 Measure 结合使用的 Avg() 统计函数可计算某些字段的平均值，并按相同或其他字段对结果分组。 这在各种事例中都很有用（如性能数据）。
 
-我们从性能数据开始。 注意，OMS 目前为 Windows 和 Linux 计算机收集性能计数器。
+我们从性能数据开始。 请注意，Log Analytics 目前为 Windows 和 Linux 计算机收集性能计数器。
 
 若要搜索*所有*性能数据，最基本的查询是：
 

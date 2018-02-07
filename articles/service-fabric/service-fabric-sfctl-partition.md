@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 99756378f2106707b4f6d634a1183d5c32243ee2
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 9d709a0ec2b7de985ac08fe9ee2935848e7a371c
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 查询和管理任何服务的分区。
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/14/2017
 |参数|说明|
 | --- | --- |
 | --partition-id      [必需]| 分区的标识。|
-| --events-health-state-filter  | 用于根据运行状态筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。                仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。 - Default - 默认值。 匹配任何 HealthState。 值为零。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。                - All - 与具有任意 HealthState 值的输入匹配的筛选器。                值为 65535。|
+| --events-health-state-filter  | 用于根据运行状态筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。                仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。 - Default - 默认值。 匹配任何 HealthState。 值为 0。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。                - All - 与具有任意 HealthState 值的输入匹配的筛选器。                值为 65535。|
 |--exclude-health-statistics   | 指示是否作为查询结果的一部分返回运行状况统计数据。 默认值为 False。 统计信息显示处于 Ok、Warning 和 Error 运行状态的子实体数。|
 | --replicas-health-state-filter| 用于筛选分区上 ReplicaHealthState 对象的集合。 可从位运算的成员或 HealthStateFilter 的成员获取该值。 仅返回与筛选器匹配的副本。 所有副本用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。 此参数的可能值包括以下运行状态之一的整数值。 - Default - 默认值。 匹配任何 HealthState。 值为零。 - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。 - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。 - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。 - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。 - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。|
 | --timeout -t               | 服务器超时，以秒为单位。  默认值：60。|
@@ -68,7 +68,7 @@ ms.lasthandoff: 10/14/2017
 | --help -h                  | 显示此帮助消息并退出。|
 | --output -o                | 输出格式。  允许的值：json、jsonc、table、tsv。                默认值：json。|
 | --query                    | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。 |
-| --verbose                  | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose                  | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-partition-info"></a>sfctl partition info
 获取有关 Service Fabric 分区的信息。
@@ -90,7 +90,7 @@ Partitions 终结点返回有关指定的分区的信息。 响应包括分区 I
 | --help -h             | 显示此帮助消息并退出。|
 | --output -o           | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query               | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-partition-list"></a>sfctl partition list
 获取 Service Fabric 服务的分区列表。
@@ -113,7 +113,7 @@ Partitions 终结点返回有关指定的分区的信息。 响应包括分区 I
 | --help -h           | 显示此帮助消息并退出。|
 | --output -o         | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query             | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose           | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-partition-load"></a>sfctl partition load
 获取指定的 Service Fabric 分区的负载。
@@ -135,7 +135,7 @@ Partitions 终结点返回有关指定的分区的信息。 响应包括分区 I
 | --help -h             | 显示此帮助消息并退出。|
 | --output -o           | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query               | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-partition-recover"></a>sfctl partition recover
 向 Service Fabric 群集指出应该尝试恢复当前停滞在仲裁丢失状态的特定分区。
@@ -157,7 +157,7 @@ Partitions 终结点返回有关指定的分区的信息。 响应包括分区 I
 | --help -h             | 显示此帮助消息并退出。|
 | --output -o           | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
 | --query               | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
-| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。|
+| --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-partition-restart"></a>sfctl partition restart
 此 API 重启指定分区的部分或所有副本或者实例。

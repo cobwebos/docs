@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a748e15abbc01f260349fba2678c03a40c4d7713
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 36c5586f79cf127ec069fd3c6ef95dd073fdbdb6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>缩放 Kubernetes Pod 和 Kubernetes 基础结构
 
@@ -114,7 +114,7 @@ azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        
 
 ## <a name="scale-the-agents"></a>缩放代理
 
-如果在前面的教程中使用默认命令创建了 Kubernetes 群集，则它具有三个代理节点。 如果计划群集上具有更多或更少的容器工作负荷，则可以手动调整代理数。 使用 [az acs scale](/cli/azure/acs#scale) 命令，并使用 `--new-agent-count` 参数指定代理数。
+如果在前面的教程中使用默认命令创建了 Kubernetes 群集，则它具有三个代理节点。 如果计划群集上具有更多或更少的容器工作负荷，则可以手动调整代理数。 使用 [az acs scale](/cli/azure/acs#az_acs_scale) 命令，并使用 `--new-agent-count` 参数指定代理数。
 
 下面的示例将名为 myK8sCluster 的 Kubernetes 群集中的代理节点数增加到 4 个。 该命令需要几分钟时间完成。
 

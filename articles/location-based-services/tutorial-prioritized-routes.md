@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 19cf9da839d9d3a1ec78c8d1f6994628684f4e31
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 78e911d17fe8c468cf89ec1477f1c5144e6669b6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>使用 Azure Location Based Services 查找不同行驶模式的路线
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/02/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-在继续之前，请确保[创建 Azure Location Based Services 帐户](./tutorial-search-location.md#createaccount)，以及[获取帐户的订阅密钥](./tutorial-search-location.md#getkey)。 此外，你还可以观察如何使用 Map Control 和搜索服务 API，如教程[使用 Azure Location Based Services 搜索附近兴趣点](./tutorial-search-location.md)中所讨论的那样，并了解路线服务 API 的基本用法，如教程[使用 Azure Location Based Services 的确定到兴趣点的路线](./tutorial-route-location.md)中所讨论的那样。
+在继续之前，请确保[创建 Azure Location Based Services 帐户](./tutorial-search-location.md#createaccount)，并[获取帐户的密钥](./tutorial-search-location.md#getkey)。 此外，你还可以观察如何使用 Map Control 和搜索服务 API，如教程[使用 Azure Location Based Services 搜索附近兴趣点](./tutorial-search-location.md)中所讨论的那样，并了解路线服务 API 的基本用法，如教程[使用 Azure Location Based Services 的确定到兴趣点的路线](./tutorial-route-location.md)中所讨论的那样。
 
 
 <a id="queryroutes"></a>
@@ -80,9 +80,9 @@ ms.lasthandoff: 01/02/2018
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var subscriptionKey = "<insert-key>";
+    var LBSAccountKey = "<_your account key_>";
     var map = new atlas.Map("map", {
-        "subscription-key": subscriptionKey
+        "subscription-key": LBSAccountKey
     });
     ```
     Atlas.Map 提供一个可视和交互式的 Web 地图控件，它是 Azure Map Control API 的一个组件。
@@ -195,7 +195,7 @@ ms.lasthandoff: 01/02/2018
 
     var truckRouteUrl = "https://atlas.microsoft.com/route/directions/json?";
     truckRouteUrl += "&api-version=1.0";
-    truckRouteUrl += "&subscription-key=" + subscriptionKey;
+    truckRouteUrl += "&subscription-key=" + LBSAccountKey;
     truckRouteUrl += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
         destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
     truckRouteUrl += "&travelMode=truck";
@@ -209,7 +209,7 @@ ms.lasthandoff: 01/02/2018
     ```
     此代码片段将创建一个 [XMLHttpRequest](https://xhr.spec.whatwg.org/)，并添加事件处理程序以分析传入的响应。 对于成功的响应，它创建返回路线的坐标数组并将其添加地图的 `truckRouteLayerName` 层。 
     
-    此代码片段还会将查询发送到路线服务，为帐户的订阅密钥获取指定起点和终点的路线。 以下可选参数用于指示重型卡车的路线：- 参数 `travelMode=truck` 将行驶模式指定为“卡车”。 支持的其他行驶模式有“出租车”、“公交车”、“货车”、“摩托车”和默认的“汽车”。  
+    此代码片段还会将查询发送到路线服务，为帐户密钥获取指定起点和终点的路线。 以下可选参数用于指示重型卡车的路线：- 参数 `travelMode=truck` 将行驶模式指定为“卡车”。 支持的其他行驶模式有“出租车”、“公交车”、“货车”、“摩托车”和默认的“汽车”。  
         - 参数 `vehicleWidth`、`vehicleHeight` 和 `vehicleLength` 以米为单位指定车辆的尺寸，仅在行驶模式为“卡车”时考虑这些参数。  
         - `vehicleLoadType` 将货物分类为危险物品，并在部分道路上是受限的。 目前也只有“卡车”模式考虑此参数。  
 
@@ -238,7 +238,7 @@ ms.lasthandoff: 01/02/2018
 
     var carRouteUrl = "https://atlas.microsoft.com/route/directions/json?";
     carRouteUrl += "&api-version=1.0";
-    carRouteUrl += "&subscription-key=" + subscriptionKey;
+    carRouteUrl += "&subscription-key=" + LBSAccountKey;
     carRouteUrl += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
         destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
 
@@ -247,7 +247,7 @@ ms.lasthandoff: 01/02/2018
     ```
     此代码片段将创建另一个 [XMLHttpRequest](https://xhr.spec.whatwg.org/)，并添加事件处理程序以分析传入的响应。 对于成功的响应，它创建返回路线的坐标数组并将其添加地图的 `carRouteLayerName` 层。 
     
-    此代码片段还会将查询发送到路线服务，为帐户的订阅密钥获取指定起点和终点的路线。 由于没有使用其他参数，因此，将返回默认行驶车辆模式的路线。 
+    此代码片段还会将查询发送到路线服务，为帐户密钥获取指定起点和终点的路线。 由于没有使用其他参数，因此，将返回默认行驶车辆模式的路线。 
 
 3. 将 MapTruckRoute.html 文件保存在本地，然后在你选择的 Web 浏览器中打开它并观察结果。 要成功连接 Location Based Services 的 API，应看到类似于以下内容的地图。 
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 44691f7c06aede764c3bf0dcc99848a4f22ce08d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a23b3b1084cf6776cee8583891ae3d879183d072
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="add-sign-in-to-an-net-mvc-web-app"></a>将登录凭据添加到 .NET MVC Web 应用
 通过 v2.0 终结点，可以快速地将身份验证添加 Web 应用，同时支持个人 Microsoft 帐户以及工作或学校帐户。  在 ASP.NET Web 应用中，可以使用随附在 .NET Framework 4.5 中的 Microsoft OWIN 中间件来完成此操作。
@@ -64,7 +64,7 @@ ms.lasthandoff: 12/11/2017
 3. 将称为 `Startup.cs` 的“OWIN 启动类”添加到项目。右键单击项目，选择“添加” --> “新建项”，并搜索“OWIN”。  当应用程序启动时，该 OWIN 中间件将调用 `Configuration(...)` 方法。
 4. 将类声明更改为 `public partial class Startup` - 我们已在另一个文件中实现了此类的一部分。  在 `Configuration(...)` 方法中，调用 ConfigureAuth(...) 以设置 Web 应用的身份验证。  
 
-        ```C#
+        ```csharp
         [assembly: OwinStartup(typeof(Startup))]
         
         namespace TodoList_WebApp
@@ -81,7 +81,7 @@ ms.lasthandoff: 12/11/2017
 
 5. 打开文件 `App_Start\Startup.Auth.cs` 并实现 `ConfigureAuth(...)` 方法。  在 `OpenIdConnectAuthenticationOptions` 中提供的参数将充当应用程序与 Azure AD 通信时使用的坐标。  还需要设置 Cookie 身份验证 - OpenID Connect 中间件会在幕后使用 Cookie。
 
-        ```C#
+        ```csharp
         public void ConfigureAuth(IAppBuilder app)
                      {
                              app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
@@ -118,7 +118,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可以在控制器中使用授权标记，要求用户在访问特定页面之前登录。  打开 `Controllers\HomeController.cs`，然后将 `[Authorize]` 标记添加到 About 控制器。
         
-        ```C#
+        ```csharp
         [Authorize]
         public ActionResult About()
         {
@@ -127,7 +127,7 @@ ms.lasthandoff: 12/11/2017
 
 - 还可以使用 OWIN 直接从代码内部发出身份验证请求。  打开 `Controllers\AccountController.cs`。  在 SignIn() 和 SignOut() 操作中，分别发出 OpenID Connect 质询和注销请求。
 
-        ```C#
+        ```csharp
         public void SignIn()
         {
             // Send an OpenID Connect sign-in request.
@@ -178,7 +178,7 @@ ms.lasthandoff: 12/11/2017
 
 - 打开 `Controllers\HomeController.cs` 文件。  可以通过 `ClaimsPrincipal.Current` 安全主体对象访问控制器中的用户声明。
 
-        ```C#
+        ```csharp
         [Authorize]
         public ActionResult About()
         {
@@ -201,7 +201,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="run"></a>运行
 最后，生成并运行应用程序！   使用个人 Microsoft 帐户或者工作或学校帐户登录，随后你会看到该用户的标识已出现在顶部导航栏中。  Web 应用现在使用行业标准的协议进行保护，可以使用个人和工作/学校帐户来验证用户。
 
-若要参考，请在[此处查看 .zip 格式的](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/complete.zip)完整示例（不含配置值），也可从 GitHub 克隆该示例：
+[此处以 .zip 格式提供了](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/complete.zip)完整示例（不包括配置值）以供参考，也可以从 GitHub 克隆该示例：
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```
 

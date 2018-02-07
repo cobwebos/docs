@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 01/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 5fe36241efc11cbb85231137649f7b97e23cc0a5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0956476931396c6455bf3e4fc7582da3bf3deb33
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD 域服务 - 故障排除指南
 本文提供设置或管理 Azure Active Directory (AD) 域服务时可能遇到的问题的故障排除提示。
@@ -122,6 +122,7 @@ if ($sp -ne $null)
 
 要解决此错误，请启用此应用程序，并尝试为 Azure AD 租户启用域服务。
 
+
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>用户无法登录 Azure AD 域服务托管域
 如果 Azure AD 租户中有一个或多个用户无法登录到新建的托管域，请执行以下故障排除步骤：
 
@@ -145,12 +146,17 @@ if ($sp -ne $null)
     2. net start 'Microsoft Azure AD Sync'
 * **仅限云帐户**：如果受影响的用户帐户是仅限云的用户帐户，请确保在启用 Azure AD 域服务之后，用户已更改其密码。 执行此步骤可以生成 Azure AD 域服务所需的凭据哈希。
 
+## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>托管域上出现一个或多个警报
+
+有关如何解决托管域上的警报，请访问[排查警报问题](active-directory-ds-troubleshoot-alerts.md)一文。
+
 ## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>从 Azure AD 租户中删除的用户不会从托管域中删除
 Azure AD 会防止意外删除用户对象。 如果从 Azure AD 租户中删除某个用户帐户，相应的用户对象将移到回收站。 将此删除操作同步到托管域时，会导致相应的用户帐户标记为已禁用。 今后可以借助此功能来恢复或取消删除用户帐户。
 
 即使在 Azure AD 目录中重新创建带相同 UPN 的用户帐户，托管域中的用户帐户仍处于禁用状态。 若要从托管域中删除用户帐户，需要从 Azure AD 租户中强制删除该帐户。
 
 若要从托管域中完全删除用户帐户，可以从 Azure AD 租户中永久删除该用户。 结合使用 `Remove-MsolUser` PowerShell cmdlet 和 `-RemoveFromRecycleBin` 选项，参照 [MSDN 文章](https://msdn.microsoft.com/library/azure/dn194132.aspx)中的介绍。
+
 
 ## <a name="contact-us"></a>联系我们
 欢迎联系 Azure Active Directory 域服务产品团队[分享看法或请求支持](active-directory-ds-contact-us.md)。

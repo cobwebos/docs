@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: cdf4e808045bb649b3a2406e8f7c1ef30e34fe7b
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 232b9bed1ea719dfb76d639bc8d5274551cdab6f
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 终结点复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/11/2018
 
 HTTP 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **HttpServer**。 | 是 |
 | url | Web 服务器的基 URL | 是 |
@@ -63,7 +63,7 @@ HTTP 链接的服务支持以下属性：
 
 将“authenticationType”属性设置为“Basic”、“Digest”或“Windows”，并指定以下属性及上节所述的泛型属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 用于访问 HTTP 终结点的用户名。 | 是 |
 | password | 用户 (userName) 的密码。 将此字段标记为 SecureString。 | 是 |
@@ -96,7 +96,7 @@ HTTP 链接的服务支持以下属性：
 
 要使用 ClientCertificate 身份验证，请将“authenticationType”属性设置为“ClientCertificate”，并指定以下属性以及在上一节中所述的泛型属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | embeddedCertData | Base64 编码的证书数据。 | 指定 `embeddedCertData` 或 `certThumbprint`。 |
 | certThumbprint | 自承载集成运行时计算机的证书存储中所安装证书的指纹。 仅当在 connectVia 中指定自承载类型的集成运行时时适用。 | 指定 `embeddedCertData` 或 `certThumbprint`。 |
@@ -159,7 +159,7 @@ HTTP 链接的服务支持以下属性：
 
 要从 HTTP 复制数据，请将数据集的 type 属性设置为“HttpFile”。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**HttpFile** | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 | 否 |
@@ -216,7 +216,7 @@ HTTP 链接的服务支持以下属性：
 
 要从 HTTP 复制数据，请将复制活动中的源类型设置为“HttpSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**HttpSource** | 是 |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 (TimeSpan)。 这是获取响应而不是读取响应数据的超时。<br/> 默认值为：00:01:40  | 否 |

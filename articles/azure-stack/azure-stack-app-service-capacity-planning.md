@@ -12,15 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 4ad91def00ca73f91f0ffd8e57afa442a93176f6
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 93e10235e3de4ecea4d0e356bb4b52922c8afac8
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Azure 堆栈中的 Azure App Service 服务器角色的容量规划
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
 若要设置 Azure 堆栈上的 Azure App Service 的生产就绪部署，你必须规划希望系统上以便支持的容量。  下面是实例和计算用于任何生产部署时，你应的 Sku 的最小数量的指南。
 
@@ -82,7 +83,7 @@ Azure 应用程序服务管理角色负责应用服务 Azure 资源管理器和 
 
    例如，如果有 5000 上运行 10 个 Web 工作进程角色的环境中的应用程序，则每个 Web 工作进程角色 VM 应有 7060 MB 的 RAM:
 
-   5000 * 70 * 0.05 – (10 * 1044) = 7060 （= 大约为 7 GB）
+   5,000 * 70 * 0.05 – (10 * 1044) = 7060 (=about 7 GB)
 
    有关添加更多辅助实例的信息，请参阅[添加多个辅助角色](azure-stack-app-service-add-worker-roles.md)。
 

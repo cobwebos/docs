@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: c9854c68a95c2c1cc584503eb2f0b0dba6091016
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 4606cb676c3ab7c8c8511579f43d251ff7d2ae8a
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-preconfigured-solution-on-windows-or-linux"></a>在 Windows 或 Linux 上为连接工厂预配置解决方案部署边缘网关
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 01/12/2018
 ![安装 Docker for Windows](./media/iot-suite-connected-factory-gateway-deployment/image1.png)
 
 > [!NOTE]
-> 也可在从“设置”对话框安装 Docker 后，执行此步骤。 右键单击 Windows 系统托盘中的“Docker”图标，选择“设置”。
+> 也可在从“设置”对话框安装 Docker 后，执行此步骤。 右键单击 Windows 系统托盘中的“Docker”图标，选择“设置”。 如果主要 Windows 更新已部署到系统（如 Windows Fall Creators 更新），则取消共享驱动器并再次共享它们以刷新访问权限。
 
 如果使用的是 Linux，则无需进行其他配置就能启用对文件系统的访问。
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 01/12/2018
 
 在 Docker 命令中引用 `<SharedFolder>` 时，务必针对操作系统使用正确的语法。 下面有两个示例，一个适用于 Windows，一个适用于 Linux：
 
-- 如果在 Windows 上将文件夹 `D:\shared` 用作 `<SharedFolder>`，则 Docker 命令语法为 `//d/shared`。
+- 如果在 Windows 上将文件夹 `D:\shared` 用作 `<SharedFolder>`，则 Docker 命令语法为 `d:/shared`。
 
 - 如果在 Linux 上将文件夹 `/shared` 用作 `<SharedFolder>`，则 Docker 命令语法为 `/shared`。
 
@@ -108,30 +108,16 @@ docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/co
 
 - `<IoTHubOwnerConnectionString>` 是来自 Azure 门户的 **iothubowner** 共享访问策略连接字符串。 已在前面步骤中复制此连接字符串。 仅在首次运行 OPC 发布服务器时才需要此连接字符串。 后续运行时，应省略此字符串，因为它会带来安全风险。
 
-- [安装并配置 Docker](#install-and-configure-docker) 部分中介绍了所用的 `<SharedFolder>` 及其语法。 OPC 发布服务器使用 `<SharedFolder>` 读取 OPC 发布服务器配置文件，写入日志文件，并使这些文件在容器外可用。
+- [安装并配置 Docker](#install-and-configure-docker) 部分中介绍了所用的 `<SharedFolder>` 及其语法。 OPC 发布服务器使用 `<SharedFolder>` 来读写 OPC 发布服务器配置文件，写入日志文件，并使这些文件在容器外可用。
 
-- OPC 发布服务器从 **publishednodes.json** 文件中读取其配置，该文件应放置在 `<SharedFolder>/docker` 文件夹中。 此配置文件定义 OPC 发布服务器应订阅给定 OPC UA 服务器上的哪些 OPC UA 节点数据。
-
-- 每当 OPC UA 服务器向 OPC 发布服务器发送数据更改通知时，都会向 IoT 中心发送新值。 根据批处理设置，OPC 发布服务器可能会先收集数据，然后再将数据批量发送到 IoT 中心。
-
-- GitHub 上的 [OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher)页介绍了 **publishednodes.json** 文件的完整语法。
-
-    以下代码片段展示了 **publishednodes.json** 文件的一个简单示例。 此示例展示如何从主机名为 **win10pc** 的 OPC UA 服务器发布 **CurrentTime** 值：
+- OPC 发布服务器从 publishednodes.json 文件中读取其配置，它是从 `<SharedFolder>/docker` 文件夹读取并写入该文件夹。 此配置文件定义 OPC 发布服务器应订阅给定 OPC UA 服务器上的哪些 OPC UA 节点数据。 GitHub 上的 [OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher)页介绍了 **publishednodes.json** 文件的完整语法。 添加网关时，把一个空的 publishednodes.json 放到文件夹中：
 
     ```json
     [
-      {
-        "EndpointUrl": "opc.tcp://win10pc:48010",
-        "OpcNodes": [
-          {
-            "ExpandedNodeId": "nsu=http://opcfoundation.org/UA/;i=2258"
-          }
-        ]
-      }
     ]
     ```
 
-    在 **publishednodes.json** 文件中，OPC UA 服务器由终结点 URL 指定。 如果按照上一示例中所示，使用主机名标签（如 **win10pc**）而非 IP 地址来指定主机名，则容器中的网络地址解析必须能够将此主机名标签解析为 IP 地址。
+- 每当 OPC UA 服务器向 OPC 发布服务器发送数据更改通知时，都会向 IoT 中心发送新值。 根据批处理设置，OPC 发布服务器可能会先收集数据，然后再将数据批量发送到 IoT 中心。
 
 - Docker 不支持 NetBIOS 名称解析，仅支持 DNS 名称解析。 如果网络上没有 DNS 服务器，可以使用上一命令行示例中所示的解决方法。 上一命令行示例使用 `--add-host` 参数向容器主机文件中添加条目。 此条目允许主机名查找给定的 `<OpcServerHostname>`，并解析为给定的 IP 地址 `<IpAddressOfOpcServerHostname>`。
 
@@ -169,11 +155,16 @@ OPC 代理会在安装期间保存连接字符串。 后续运行时，应省略
 
 若要将自己的 OPC UA 服务器添加到连接工厂预配置解决方案中，请执行以下操作：
 
-1. 浏览到连接工厂解决方案门户中的“连接自己的 OPC UA 服务器”页面。 按照前面部分的步骤操作，在连接工厂门户与 OPC UA 服务器之间建立信任关系。
+1. 浏览到连接工厂解决方案门户中的“连接自己的 OPC UA 服务器”页面。
 
-    ![解决方案门户](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
+    1. 启动想要连接的 OPC UA 服务器。 确保可以通过容器中运行的 OPC 发布服务器和 OPC 代理来访问 OPC UA 服务器（请参阅之前有关名称解析的注释）。
+    1. 输入 OPC UA 服务器 (`opc.tcp://<host>:<port>`) 的终结点 URL，然后单击“连接”。
+    1. 作为连接设置的一部分，已建立连接工厂门户（OPC UA 客户端）和尝试连接的 OPC UA 服务器之间的信任关系。 在连接的工厂仪表板中，将显示“无法验证要连接的服务器的证书”警告。 显示证书警告时单击“继续”。
+    1. 更难以设置的是尝试连接的 OPC UA 服务器的证书配置。 对于基于 PC 的 OPC UA 服务器，可能会在仪表板中显示一个你可确认的警告对话框。 对于嵌入式 OPC UA 服务器系统，请参阅 OPC UA 服务器的文档以查看完成该任务的方式。 若要完成此任务，可能需要连接工厂门户的 OPC UA 客户端的证书。 管理员可以在**连接你自己的 OPC UA 服务器**页面上下载此证书：
 
-1. 浏览 OPC UA 服务器的 OPC UA 节点树，右键单击要发送到连接工厂的 OPC 节点，并选择“发布”。
+        ![解决方案门户](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
+
+1. 浏览 OPC UA 服务器的 OPC UA 节点树，右键单击要将值发送到连接工厂的 OPC 节点，并选择“发布”。
 
 1. 遥测现从网关设备流入。 可在连接工厂门户中“新工厂”下的“工厂位置”视图中查看此遥测。
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/19/2017
 ms.author: iainfou
-ms.openlocfilehash: b07bdd0739dabb05ef7012051b7ac28af3aaddaf
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 16e9c0b30710d711ef2789f7781b17e72889d4da
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>使用 Azure 模板创建 Linux 虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 在此入门文章中，可以使用 Azure 资源管理器模板创建 Linux 虚拟机规模集。 也可使用 [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md)、[Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) 或 [Azure 门户](virtual-machine-scale-sets-create-portal.md)创建规模集。
@@ -41,7 +41,7 @@ Azure 资源管理器模板允许部署成组的相关资源。 模板以 JavaSc
 | 属性                     | 属性说明                                  | 示例模板值                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | 要创建的 Azure 资源类型                            | Microsoft.Compute/virtualMachineScaleSets |
-| name                         | 规模集名称                                       | myScaleSet                                |
+| 名称                         | 规模集名称                                       | myScaleSet                                |
 | location                     | 要创建规模集的位置                     | 美国东部                                   |
 | sku.name                     | 每个规模集实例的 VM 大小                  | Standard_A1                               |
 | sku.capacity                 | 一开始需要创建的 VM 实例数           | #N/A                                         |
@@ -135,7 +135,7 @@ Azure 资源管理器模板允许部署成组的相关资源。 模板以 JavaSc
 
 [![将模板部署到 Azure](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
-也可使用 Azure CLI 2.0 通过 [az group deployment create](/cli/azure/group/deployment#create) 命令安装基于 Linux 的 Python HTTP 服务器，如下所示：
+也可使用 Azure CLI 2.0 通过 [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) 命令安装基于 Linux 的 Python HTTP 服务器，如下所示：
 
 ```azurecli-interactive
 # Create a resource group
@@ -151,7 +151,7 @@ az group deployment create \
 
 
 ## <a name="test-your-sample-application"></a>测试示例应用程序
-若要查看运行中的应用，请使用 [az network public-ip list](/cli/azure/network/public-ip#show) 命令获取负载均衡器的公共 IP 地址，如下所示：
+若要查看运行中的应用，请使用 [az network public-ip list](/cli/azure/network/public-ip#az_network_public_ip_show) 命令获取负载均衡器的公共 IP 地址，如下所示：
 
 ```azurecli-interactive
 az network public-ip list \
@@ -165,7 +165,7 @@ az network public-ip list \
 
 
 ## <a name="clean-up-resources"></a>清理资源
-如果不再需要资源组、规模集和所有相关的资源，可以使用 [az group delete](/cli/azure/group#delete) 命令将其删除，如下所示：
+如果不再需要资源组、规模集和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除，如下所示：
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

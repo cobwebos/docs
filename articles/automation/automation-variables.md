@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/09/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: e38d2b751090cfdc078de4e8c683c6bb9b48fac3
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: f166b420dcd424b38f89275e1befd42a505b5785
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure 自动化中的变量资产
 
@@ -51,20 +51,20 @@ ms.lasthandoff: 01/03/2018
 * 布尔
 * Null
 
-## <a name="scripting-the-creation-and-management-of-variables"></a>编写用于创建和管理变量的脚本
+## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell cmdlet
+对于 AzureRM，下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。  可在自动化 Runbook 和 DSC 配置中使用的 [AzureRM.Automation 模块](/powershell/azure/overview)已随附了这些 cmdlet。
 
-下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化变量。 可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](../powershell-install-configure.md)已随附了这些 cmdlet。
-
-|Cmdlet|说明|
+| Cmdlet | 说明 |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx)|检索现有变量的值。|
 |[New-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603613.aspx)|创建新变量并设置变量值。|
 |[Remove-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt619354.aspx)|删除现有变量。|
 |[Set-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603601.aspx)|设置现有变量的值。|
 
-下表中的工作流活动用于在 Runbook 中访问自动化变量。 它们仅可在 Runbook 或 DSC 配置中使用，而不作为 Azure PowerShell 模块的一部分提供。
+## <a name="activities"></a>活动
+下表中的活动用于在 Runbook 和 DSC 配置中访问凭据。
 
-|工作流活动|说明|
+| 活动 | 说明 |
 |:---|:---|
 |Get-AutomationVariable|检索现有变量的值。|
 |Set-AutomationVariable|设置现有变量的值。|
@@ -205,4 +205,3 @@ ms.lasthandoff: 01/03/2018
 
 * 要了解有关在图形创作中将活动连接在一起的详细信息，请参阅[图形创作中的链接](automation-graphical-authoring-intro.md#links-and-workflow)
 * 若要开始使用图形 Runbook，请参阅 [我的第一个图形 Runbook](automation-first-runbook-graphical.md) 
-

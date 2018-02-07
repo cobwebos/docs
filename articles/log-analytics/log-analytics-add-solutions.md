@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 01/23/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1ba1bb02c27fa040cc2daef4baf5c9ecc827d323
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d951387882a5a8f5e0ebdc01841bb8384e4848ee
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>将 Azure Log Analytics 管理解决方案添加到工作区
 
@@ -34,7 +34,7 @@ Log Analytics 管理解决方案是**逻辑**、**可视化**和**数据采集�
 > [!NOTE]
 > Log Analytics 包括了日志搜索功能，因此无需安装管理解决方案便可启用该功能。 不过，可以通过向工作区添加管理解决方案来获取数据可视化、建议的搜索和洞察力。
 
-根据本文，将使用 Azure 门户应用商店向工作区添加管理解决方案。 添加解决方案后，会从基础结构中的服务器收集数据并将其发送到 OMS 服务。 OMS 服务处理通常需要几分钟到一小时。 该服务处理数据后，可以在 OMS 中查看。
+根据本文，将使用 Azure 门户 Marketplace 向工作区添加管理解决方案。 添加解决方案后，会从基础结构中的服务器收集数据并将其发送到 OMS 服务。 OMS 服务处理通常需要几分钟到一小时。 该服务处理数据后，可以在 OMS 中查看。
 
 当不再需要某个管理解决方案时，可以轻松将其删除。 在删除管理解决方案时，其数据不会发送至 OMS。 如果在免费定价层，删除解决方案可减少数据使用量，帮助维持在数据的每日配额以下。
 
@@ -42,11 +42,11 @@ Log Analytics 管理解决方案是**逻辑**、**可视化**和**数据采集�
 
 Azure 应用商店包含 [Log Analytics 的管理解决方案](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)列表。
 
-可以通过单击每个解决方案底部的“立即获取”链接从 Azure 应用商店安装管理解决方案。
+可以通过单击每个解决方案底部的“立即获取”链接从 Azure Marketplace 安装管理解决方案。
 
 ## <a name="add-a-management-solution"></a>添加管理解决方案
 1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请使用 Azure 订阅登录。
-2. 在“新建”边栏选项卡中，在“应用商店”下，选择“监视 + 管理”。
+2. 在“新建”边栏选项卡中，在“Marketplace”下，选择“监视 + 管理”。
 3. 在“监视 + 管理”边栏选项卡中，单击“查看所有”。  
     ![“监视 + 管理”边栏选项卡](./media/log-analytics-add-solutions/monitoring-management-blade.png)  
 4. 在“管理解决方案”的右侧，单击“更多”。
@@ -75,8 +75,8 @@ Azure 应用商店包含 [Log Analytics 的管理解决方案](https://azuremark
 | 管理解决方案                                                                       | 产品                                                                     | 定价层<sup>1</sup>                                                 | 说明 |
 | ---                                                                                       | ---                                                                       | ---                                                                                                       | ---   |
 | [活动 Log Analytics](log-analytics-activity.md)                                                                   | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | 90 天内数据免费使用<br>数据不受免费层资源占用限额的约束 |
-| [AD 评估](log-analytics-ad-assessment.md)                                           | <ul><li>见解与分析&nbsp;&nbsp;</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | |
-| [AD 复制状态](log-analytics-ad-replication-status.md)                           | <ul><li>见解与分析&nbsp;&nbsp;</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | 无法从 Azure 门户/应用商店添加。 |
+| [AD 评估](log-analytics-ad-assessment.md)                                           | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | |
+| [AD 复制状态](log-analytics-ad-replication-status.md)                           | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | 无法从 Azure 门户/应用商店添加。 |
 | [代理运行状况](../operations-management-suite/oms-solution-agenthealth.md)                                                                                | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | 数据不受免费层资源占用限额的约束<br> 无法从 Azure 门户/应用商店添加。 |
 | [警报管理](log-analytics-solution-alert-management.md)                            | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | 无法从 Azure 门户/应用商店添加。 |
 | [Application Insights 连接器（预览版）](log-analytics-app-insights-connector.md)                                               | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | |
@@ -89,7 +89,7 @@ Azure 应用商店包含 [Log Analytics 的管理解决方案](https://azuremark
 | [容量和性能（预览版）](log-analytics-capacity.md)                                                   | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | |
 | [更改跟踪](log-analytics-change-tracking.md)                                       | <ul><li>自动化与控制</li></ul>                                  | 免费<br> 按&nbsp;节点&nbsp;(OMS)                                                                         | 需要将 Log Analytics 工作区链接到自动化帐户 |
 | [容器](log-analytics-containers.md)                                                 | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | |
-| [IT Service Management Connector（预览版）](log-analytics-itsmc-overview.md)                                              | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 按&nbsp;节点&nbsp;(OMS)     | |
+| [IT Service Management Connector](log-analytics-itsmc-overview.md)                                                | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 按&nbsp;节点&nbsp;(OMS)     | |
 | HDInsight HBase 监视 <br>（预览版）                                                  | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | |
 | [密钥保管库分析](log-analytics-azure-key-vault.md)                   | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | |
 | [逻辑应用 B2B](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)                    | <ul><li>见解&nbsp;与&nbsp;分析</li><li>Log Analytics</li></ul>   | 免费<br> 标准<br> 高级&nbsp;(OMS)<br> 按&nbsp;GB&nbsp;（独立）<br> 按&nbsp;节点&nbsp;(OMS)   | 无法从 Azure 门户/应用商店添加。 |

@@ -8,7 +8,7 @@
 
     ![启用 TCP](./media/virtual-machines-sql-server-connection-tcp-protocol/enable-tcp.png)
 
-1. 在控制台窗格中，单击“SQL Server 服务”。 在详细信息窗格中，右键单击“SQL Server (实例名)” （默认实例为 **SQL Server (MSSQLSERVER)**），然后单击“重新启动”以停止并重新启动该 SQL Server 实例。
+1. 在控制台窗格中，单击“SQL Server 服务”。 在详细信息窗格中，右键单击“SQL Server (实例名)”（默认实例为 **SQL Server (MSSQLSERVER)**），然后单击“重启”以停止并重启该 SQL Server 实例。
 
     ![重新启动数据库引擎](./media/virtual-machines-sql-server-connection-tcp-protocol/restart-sql-server.png)
 

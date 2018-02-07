@@ -5,15 +5,15 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/03/2018
+ms.date: 01/18/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 882cf3cde71f5154efcd88f055984e72463b3099
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: d6a588e1d8a20ffba555461cf98009f3894ed761
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>创建和管理策略以强制实施符合性
 
@@ -25,11 +25,11 @@ ms.lasthandoff: 01/04/2018
 > * 解决不符合或遭拒绝的资源
 > * 在组织中实施新策略
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+若要分配一个策略用于识别现有资源的当前符合性状态，请参阅快速入门文章。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="assign-a-policy"></a>分配策略
 
-使用 Azure 策略强制实施符合性的第一步是分配策略定义。 策略定义用于定义实施策略的条件，以及要执行的操作。 在此示例中，分配名为“需要 SQL Server 版本 12.0”的内置策略定义，强制执行“所有 SQL Server 数据库都必须是 v12.0 才视为符合”的条件。
+使用 Azure 策略强制实施符合性的第一步是分配策略定义。 策略定义用于定义实施策略的条件，以及要执行的操作。 在此示例中，我们将分配名为“需要 SQL Server 版本 12.0”的内置策略定义，强制执行“所有 SQL Server 数据库都必须是 v12.0 才视为符合”的条件。
 
 1. 通过搜索并选择左侧窗格中的“策略”，启动 Azure 门户中的 Azure 策略服务。
 
@@ -40,28 +40,29 @@ ms.lasthandoff: 01/04/2018
 
    ![分配策略定义](media/create-manage-policy/select-assign-policy.png)
 
-4. 在“分配策略”页上，单击“策略”字段旁边的![策略定义按钮](media/assign-policy-definition/definitions-button.png)，打开可用定义的列表。
+4. 在“分配策略”页上，单击“策略”字段旁边的![策略定义按钮](media/assign-policy-definition/definitions-button.png)，打开可用定义的列表。 可以使用“内置”来筛选策略定义的**类型**，以查看所有相关策略定义及其说明。
 
    ![打开可用策略定义](media/create-manage-policy/open-policy-definitions.png)
 
-5. 选择“需要 SQL Server 版本 12.0”。
+5. 选择“需要 SQL Server 版本 12.0”。 如果不能立即找到它，请在搜索框中键入“需要 SQL Server 版本 12.0”，然后按 ENTER。
 
    ![查找策略](media/create-manage-policy/select-available-definition.png)
 
-6. 提供策略分配的显示名称。 在此示例中，我们使用“需要 SQL Server 版本 12.0”。 还可根据需要添加“说明”。 该说明详细介绍了此策略分配如何确保此环境中创建的所有 SQL Server 版本均为 12.0。
+6. 显示的**名称**是自动填充的，但可以更改它。 本示例使用了“需要 SQL Server 版本 12.0”。 还可根据需要添加“说明”。 该说明详细介绍了此策略分配如何确保此环境中创建的所有 SQL Server 版本均为 12.0。
+
 7. 将定价层更改为“标准”，确保策略应用于现有资源。
 
-   Azure 策略内有两个定价层 - 免费和标准。 使用免费层，只能对将来资源强制实施策略；使用标准层，还可对现有资源强制实施策略，更好地了解符合性状态。 由于我们处于受限预览版，尚未发布定价模型，因此你不会收到选择标准的帐单。 若要了解有关定价的详细信息，请参阅 [Azure 策略定价](https://azure.microsoft.com/pricing/details/azure-policy)。
+   Azure 策略内有两个定价层 - 免费和标准。 使用免费层，只能对将来资源强制实施策略；使用标准层，还可对现有资源强制实施策略，更好地了解符合性状态。 由于 Azure 策略目前以预览版提供，尚未发布定价模型，因此选择“标准”不会产生费用。 若要了解有关定价的详细信息，请参阅 [Azure 策略定价](https://azure.microsoft.com/pricing/details/azure-policy)。
 
 8. 选择“范围”- 之前注册的订阅（或资源组）。 范围用于确定对其强制执行策略分配的资源或资源组。 它可以从订阅延伸至资源组。
 
-   此示例使用此订阅 -“Azure 分析容量开发”。 你的订阅将有所不同。
+   本示例使用 **Azure 分析容量开发**订阅。 你的订阅将有所不同。
 
 10. 选择“分配”。
 
 ## <a name="implement-a-new-custom-policy"></a>实施新的自定义策略
 
-我们现已分配策略定义，接下来将创建新策略，通过确保环境中创建的 VM 不属于 G 系列来节约成本。 这样，当组织中用户每次尝试创建 G 系列的 VM 时，请求将被拒绝。
+分配内置的策略定义后，可以使用 Azure 策略执行其他操作。 接下来创建一个新的自定义策略，确保在环境中创建的 VM 不能处于 G 系列，从而节省成本。 这样，当组织中的用户每次尝试创建 G 系列的 VM 时，请求将被拒绝。
 
 1. 选择左侧窗格中“创作”下的“定义”。
 
@@ -72,7 +73,8 @@ ms.lasthandoff: 01/04/2018
 
    - 策略定义的名称 - 需要 VM SKU 小于 G 系列
    - 想通过策略定义实现的操作的说明 - 此策略定义强制此范围中创建的所有 VM 具有的 SKU 都小于 G 系列，以减少成本。
-   - 将执行策略定义的订阅 - 本示例中，策略定义位于“顾问分析容量开发”中。 你的订阅列表将有所不同。
+   - 策略定义所在的订阅。 在本例中，策略定义位于“顾问分析容量开发”中。 你的订阅列表将有所不同。
+   - 从现有的选项中选择，或者为此策略定义创建新的类别。
    - 复制以下 json 代码并根据需要进行更新：
       - 策略参数。
       - 策略规则/条件，此示例中为 - VM SKU 大小等于 G 系列
@@ -102,7 +104,9 @@ ms.lasthandoff: 01/04/2018
 }
     ```
 
-    若要查看 json 代码的示例，请参阅 [Azure 策略的模板](json-samples.md)一文。
+    策略规则中字段属性的值必须是下列其中一项：“名称”、“类型”、“位置”、“标记”或别名。 例如，`"Microsoft.Compute/VirtualMachines/Size"`。
+
+    若要查看 json 代码的更多示例，请参阅 [Azure 策略的模板](json-samples.md)一文。
 
 4. 选择“保存”。
 
@@ -333,22 +337,22 @@ az policy definition list
 2. 选择页面顶部的“计划定义”，然后将显示“计划定义”窗体。
 3. 输入计划的名称和说明。
 
-   在此示例中，我们想要确保资源符合有关保证安全的策略定义，计划的名称为“保证安全”，说明为：创建了此计划，处理所有与保护资源相关的策略定义。
+   在此示例中，请确保资源符合有关保证安全的策略定义。 因此，计划的名称为“保证安全”，说明为：“创建此计划的目的是处理所有与保护资源相关的策略定义”。
 
    ![计划定义](media/create-manage-policy/initiative-definition.png)
 
-4. 浏览“可用定义”列表，然后选择要添加到该计划的策略定义。 对于“保证安全”计划，添加以下内置策略定义：
+4. 浏览“可用定义”列表，然后选择要添加到该计划的策略定义。 对于“保证安全”计划，请**添加**以下内置策略定义：
    - 需要 SQL Server 版本 12.0
-   - 监视安全中心内未受保护的 Web 应用。
+   - 在安全中心监视不受保护的 Web 应用程序。
    - 监视安全中心内的许可网络。
    - 监视安全中心内列为白名单的可能的应用。
    - 监视安全中心内未加密的 VM 磁盘。
 
    ![计划定义](media/create-manage-policy/initiative-definition-2.png)
 
-   从列表中选择策略定义后，该策略定义将显示在“策略和参数”下，如上所示。
+   从列表中选择策略定义后，该策略定义将显示在“策略和参数”下，如上图所示。
 
-5. 选择“创建”。
+5. 使用“定义位置”选择用于存储定义的订阅。 选择“保存”。
 
 ### <a name="assign-an-initiative-definition"></a>分配计划定义
 
@@ -358,27 +362,27 @@ az policy definition list
 
    ![分配定义](media/create-manage-policy/assign-definition.png)
 
-4. 输入以下内容，填写“分配”窗体：
+4. 输入以下示例信息以填写“分配”表单。 可以使用自己的信息。
    - 名称：保证安全分配
-   - 说明：此计划分配旨在在“Azure 顾问容量开发”订阅中强制执行这组策略定义
+   - 说明：此计划分配旨在在 **Azure 顾问容量开发**订阅中强制执行这组策略定义。
    - 定价层：标准
-   - 想要应用于此分配的范围：Azure 顾问容量开发
+   - 此分配的应用范围：**Azure 顾问容量开发** 可以选择自己的订阅和资源组。
 
 5. 选择“分配”。
 
 ## <a name="resolve-a-non-compliant-or-denied-resource"></a>解决不符合或遭拒绝的资源
 
-继续以上示例，在分配策略定义、要求使用 SQL server 版本 12.0 以后，通过其他版本创建的 SQL Server 将被拒绝。 本部分介绍如何通过请求排除解决拒绝尝试创建不同版本的 SQL Server 的问题。
+继续以上示例，在分配策略定义、要求使用 SQL server 版本 12.0 以后，通过其他版本创建的 SQL Server 将被拒绝。 本部分介绍如何通过请求排除解决拒绝尝试创建不同版本的 SQL Server 的问题。 排除实质上是阻止策略实施。 排除可以应用到资源组，或者你可以将排除范围缩小到单个资源。
 
 1. 选择左侧窗格中的“分配”。
-2. 浏览所有策略分配并启动“需要 SQL Server 版本 12.0”分配。
-3. 请求排除尝试在其中创建 SQL Server 的资源组。 此示例排除 Microsoft.Sql/servers/databases：baconandbeer/Cheetos 和 baconandbeer/Chorizo。
+2. 浏览所有策略分配并打开“需要 SQL Server 版本 12.0”分配。
+3. 在尝试创建 SQL Server 的资源组中**选择**排除资源。 此示例将排除 Microsoft.Sql/servers/databases：*azuremetrictest/testdb* 和 *azuremetrictest/testdb2*。
 
    ![请求排除](media/create-manage-policy/request-exclusion.png)
 
    可解决遭拒绝资源的其他方法包括：如果具有需要创建 SQL Server 的强有力理由，请联系与策略相关的联系人；如果具有策略的访问权限，请直接编辑策略。
 
-4. 选择“保存”。
+4. 单击“分配”。
 
 本部分中，通过请求对资源进行排除解决了尝试创建版本为 12.0 的 SQL Server 遭拒绝的问题。
 

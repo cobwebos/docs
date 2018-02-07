@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2C：在使用者注册期间禁用电子邮件验证 | Microsoft 文档"
+title: "在使用者注册期间禁用电子邮件验证 - Azure Active Directory B2C"
 description: "本主题演示在使用者在 Azure Active Directory B2C 中注册期间如何禁用电子邮件验证"
 services: active-directory-b2c
 documentationcenter: 
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/06/2017
 ms.author: parakhj
-ms.openlocfilehash: 88c0620aa626c16d5edcdc35db03fb346b3ce0f5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 57da51fafbac8a1c165c37437e82c75cb238fd3d
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-active-directory-b2c-disable-email-verification-during-consumer-sign-up"></a>Azure Active Directory B2C：在使用者注册期间禁用电子邮件验证
 启用后，Azure Active Directory (Azure AD) B2C 让使用者能够通过提供电子邮件地址和创建本地帐户来注册应用程序。 Azure AD B2C 通过要求使用者在注册过程中验证电子邮件地址来确保电子邮件地址有效。 它还阻止恶意的自动化过程生成应用程序的假帐户。

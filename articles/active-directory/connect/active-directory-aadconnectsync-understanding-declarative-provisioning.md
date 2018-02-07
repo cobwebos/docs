@@ -3,7 +3,7 @@ title: "Azure AD Connect：了解声明性预配 | Microsoft 文档"
 description: "介绍 Azure AD Connect 中的声明性预配配置模型。"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 7e299fb33bdbd514a8fbc96c6953c9a8ca70f54a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 50fce526d667fa829551425edff4bd3863429ef2
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同步：了解声明性预配
 本主题介绍 Azure AD Connect 中的配置模型。 该模型称为声明性预配，让用户能够轻松地更改配置。 本主题介绍的许多内容都是高级内容，在大部分客户方案中并非必要。
@@ -50,7 +50,7 @@ ms.lasthandoff: 12/11/2017
 
 范围模块支持以下运算。
 
-| 操作 | 说明 |
+| Operation | 说明 |
 | --- | --- |
 | EQUAL、NOTEQUAL |计算某个值是否等于属性值的字符串比较。 对于多值属性，请参阅 ISIN 和 ISNOTIN。 |
 | LESSTHAN、LESSTHAN_OR_EQUAL |计算某个值是否小于属性值的字符串比较。 |

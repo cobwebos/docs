@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen; ladocs
-ms.openlocfilehash: 4501b3d9a2fdc00582596cb907f7130591e4782e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ad246ede7e891de42235443c1bc6a90b88ad5ac
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-db2-connector"></a>DB2 连接器入门
 Microsoft DB2 连接器可将逻辑应用连接到在 IBM DB2 数据库中存储的资源。 此连接器包括要在 TCP/IP 网络上与远程 DB2 服务器计算机通信的 Microsoft 客户端。 这包括云数据库（如在 Azure 虚拟化中运行的 Windows IBM Bluemix dashDB 或 IBM DB2）和使用本地数据网关的本地数据库。 请参阅 IBM DB2 平台和版本（在本主题中）的[受支持列表](connectors-create-api-db2.md#supported-db2-platforms-and-versions)。
@@ -35,7 +35,7 @@ DB2 连接器支持以下数据库操作：
 
 本主题介绍了如何在逻辑应用中使用连接器来处理数据库操作。
 
-若要了解有关逻辑应用的详细信息，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+若要了解有关逻辑应用的详细信息，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="available-actions"></a>可用操作
 DB2 连接器支持以下逻辑应用操作：
@@ -281,5 +281,5 @@ DB2 连接器支持以下逻辑应用操作：
 在[连接器详细信息](/connectors/db2/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
+[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 在我们的 [API 列表](apis-list.md)中了解逻辑应用中的其他可用连接器。
 

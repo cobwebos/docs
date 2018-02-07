@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/01/2017
+ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 744759968706e0a2c9fe8c1c153f44cc958e31b8
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 8dd20d0cf7f202b5d5fdeffb5848235e73eb9349
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>使用 Azure 导入/导出服务将数据脱机复制到 Data Lake Store
 本文介绍如何使用脱机复制方法（例如 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)）将大型数据集 (>200 GB) 复制到 Azure Data Lake Store。 具体而言，本文中用作示例的文件大小为 339,420,860,416 字节，即约 319GB 磁盘空间。 命名此文件为 319GB.tsv。
@@ -33,6 +33,7 @@ ms.lasthandoff: 11/03/2017
 * **Azure Data Lake Store 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)
 
 ## <a name="preparing-the-data"></a>准备数据
+
 使用导入/导入服务前，请将要传输的数据文件拆分为**小于 200GB 大小的副本**。 导入工具无法处理大于 200GB 的文件。 在本教程中，我们将文件拆分成多个块，每个 100 GB。 可使用 [Cygwin](https://cygwin.com/install.html) 实现此目的。 Cygwin 支持 Linux 命令。 在这种情况下，使用以下命令：
 
     split -b 100m 319GB.tsv

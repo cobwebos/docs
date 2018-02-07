@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/16/2017
+ms.date: 01/16/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b2388626dd68ea1911cdfb3d6a84e70f6bf3cc6
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 9e25ad9b9be6d02550b4be9c09496021cd7fe2d2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到 OMS 管理解决方案（预览版）
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/17/2017
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
-Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-analytics-manage-access.md)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)中所述，工作区不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果不存在工作区，解决方案安装将失败。
+Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-analytics-manage-access.md)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)中所述，工作区不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果不存在工作区，解决方案安装将失败。
 
 工作区的名称包含在每个 Log Analytics 资源的名称中。  这是在具有 **workspace** 参数的解决方案中完成的，如以下 savedsearch 资源示例所示。
 
@@ -45,17 +45,14 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 ## <a name="log-analytics-api-version"></a>Log Analytics API 版本
 资源管理器模板中定义的所有 Log Analytics 资源均包含 apiVersion 属性，该属性将定义资源应使用的 API 版本。  对于使用[旧版查询语言和升级版查询语言](../log-analytics/log-analytics-log-search-upgrade.md)的资源，此版本有所不同。  
 
- 下表指定了旧版工作区和升级版工作区适用的 Log Analytics API 版本，并提供了为它们指定不同语法的查询示例。 
+ 下表指定了旧版和升级版工作区中已保存的搜索的 Log Analytics API 版本： 
 
-| 工作区版本 | API 版本 | 示例查询 |
+| 工作区版本 | API 版本 | 查询 |
 |:---|:---|:---|
-| v1（旧版）   | 2015-11-01-预览版 | Type=Event EventLevelName = Error             |
-| v2（升级版） | 2017-03-15-预览版 | Event &#124; where EventLevelName == "Error"  |
+| v1（旧版）   | 2015-11-01-preview | 旧版格式。<br> 示例：Type=Event EventLevelName = Error  |
+| v2（升级版） | 2015-11-01-preview | 旧版格式。  在安装时转换为升级版格式。<br> 示例：Type=Event EventLevelName = Error<br>转换为：Event &#124; where EventLevelName == "Error"  |
+| v2（升级版） | 2017-03-03-preview | 升级版格式。 <br>示例：Event &#124; where EventLevelName == "Error"  |
 
-请注意下文以了解不同的版本支持的工作区。
-
-- 可以将使用旧版查询语言的模板安装到旧版或升级版工作区。  如果安装到升级版工作区，当用户运行查询时，会将查询实时转换为新的语言。
-- 只能将使用升级版查询语言的模板安装到升级版工作区中。
 
 
 ## <a name="saved-searches"></a>保存的搜索
@@ -189,7 +186,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 
 | 元素名称 | 必选 | 说明 |
 |:--|:--|:--|
-| 类型 | 是 | 操作的类型。  警报操作的类型是 Alert。 |
+| Type | 是 | 操作的类型。  警报操作的类型是 Alert。 |
 | 名称 | 是 | 警报的显示名称。  这是警报规则在控制台中的显示名称。 |
 | 说明 | 否 | 警报的可选说明。 |
 | 严重性 | 是 | 警报记录的严重等级包括以下值：<br><br> **严重**<br>**警告**<br>**信息性** |
@@ -229,7 +226,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 | 元素名称 | 必选 | 说明 |
 |:--|:--|:--|
 | 收件人 | 是 | 由逗号分隔的电子邮件地址列表，创建警报后向这些地址发送通知，示例如下。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| 使用者 | 是 | 邮件的主题行。 |
+| 主题 | 是 | 邮件的主题行。 |
 | 附件 | 否 | 目前不支持附件。  如果包含此元素，则它应为“无”。 |
 
 
@@ -244,7 +241,7 @@ Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-ana
 
 #### <a name="webhook-actions"></a>Webhook 操作
 
-Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进程。 Webhook 操作与修正操作类似，不同之处在于它们是用于 Webhook，可能调用 Azure 自动化 Runbook 之外的进程。 此外，它们还提供其他选项来提供要发送到远程进程的负载。
+Webhook 操作通过调用 URL 和提供要发送的负载（可选）启动进程。 Webhook 操作与修正操作类似，不同之处在于它们是用于 Webhook，可能调用 Azure 自动化 Runbook 之外的进程。 此外，它们还提供了额外的选项，即提供要发送到远程进程的负载。
 
 如果警报会调用 webhook，则除 **Alert** 操作资源外，还将需要一个类型为 **Webhook** 的操作资源。  
 

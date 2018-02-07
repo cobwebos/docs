@@ -12,15 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 19b712d622276b6521317d79c68fc093dba547db
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
-ms.translationtype: HT
+ms.openlocfilehash: f3f0add4cf48ebcb4235fb05aa8bfa0b5365848c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Azure Stack 上的应用服务概述
+*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
 Azure 堆栈上的 azure App Service 是一种可供 Azure 堆栈的 Microsoft Azure 的平台作为-服务 (PaaS) 产品。 此服务，你的客户的内部或外部-创建 web、 API 和 Azure 函数为任何平台或设备的应用程序。 它们可以与本地应用程序集成你的应用程序并自动执行其业务流程。 Azure 堆栈云操作员可以在完全托管的虚拟机 (Vm) 上运行具有共享的 VM 资源或专用的 Vm 的自选客户应用。
 
@@ -37,8 +38,8 @@ Azure 应用程序服务包括用于自动执行业务流程和托管云 Api 的
 
 应用程序服务提供几种应用程序类型，其中每个旨在承载特定工作负荷：
 
-- [Web 应用](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-overview)用于托管网站和 web 应用程序。
-- [API Apps](https://docs.microsoft.com/en-us/azure/app-service-api/app-service-api-apps-why-best-platform)托管 RESTful Api。
+- [Web 应用](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview)用于托管网站和 web 应用程序。
+- [API Apps](https://docs.microsoft.com/azure/app-service-api/app-service-api-apps-why-best-platform)托管 RESTful Api。
 - 用于托管事件驱动的无服务器工作负荷的 azure 函数。
 
 Word 应用此处是指专用于运行工作负荷的托管资源。 以“Web 应用”为例，用户可能习惯于将 Web 应用视为计算资源和应用程序代码，二者共同向浏览器提供功能。 但在 App Service web 应用程序是 Azure 堆栈提供用于承载应用程序代码的计算资源。
@@ -49,7 +50,7 @@ Word 应用此处是指专用于运行工作负荷的托管资源。 以“Web �
 
    ![](media/azure-stack-app-service-overview/image01.png)
 
-## <a name="what-is-an-app-service-plan"></a>什么是 App Service 计划?
+## <a name="what-is-an-app-service-plan"></a>什么是应用服务计划?
 
 App Service 资源提供程序使用 Azure App Service 使用相同的代码。 因此，某些基本的概念是值得描述。 在 App Service 应用程序的定价容器称为 App Service 计划。 它表示的一套用来保存你的应用程序的专用虚拟机。 在给定的订阅，你可具有多个 App Service 计划。
 

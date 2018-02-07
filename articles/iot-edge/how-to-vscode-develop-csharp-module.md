@@ -6,14 +6,14 @@ keywords:
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 12/06/2017
+ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 269f77e5015175e45e0078926ef06699811889a4
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: cad28b4e6d4e46058641da19795cd71efdbd0c92
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="use-visual-studio-code-to-develop-c-module-with-azure-iot-edge"></a>使用 Visual Studio Code 通过 Azure IoT Edge 开发 C# 模块
 本文提供有关使用 [Visual Studio Code](https://code.visualstudio.com/) 作为主要开发工具来开发和部署 IoT Edge 模块的详细说明。 
@@ -48,21 +48,37 @@ ms.lasthandoff: 12/18/2017
 1. 在命令面板（按 F1 或 Ctrl + Shift + P）中，键入并选择 **Azure: Sign in**。 然后单击弹出窗口中的“复制并打开”。* 在浏览器中粘贴 (Ctrl + V) 代码，并单击“继续”按钮。 然后使用 Azure 帐户登录。 在 VS Code 状态栏中可以看到帐户信息。
 2. 在命令面板（按 F1 或 Ctrl + Shift + P）中，键入并选择 **IoT: Select IoT Hub**。 首先，请选择在上一篇教程中创建了 IoT 中心的订阅。 然后选择包含 IoT Edge 设备的 IoT 中心。
 
+    ![列出设备](./media/how-to-vscode-develop-csharp-module/device-list.png)
 
 #### <a name="set-iot-hub-connection-string"></a>设置 IoT 中心连接字符串
-1. 在命令面板（按 F1 或 Ctrl + Shift + P）中，键入并选择 **IoT: Set IoT Hub Connection String**。 确保将连接字符串粘贴到 **iothubowner** 策略（可以在 Azure 门户中 IoT 中心的“共享访问策略”中找到它）的下面。
+在命令面板（按 F1 或 Ctrl + Shift + P）中，键入并选择 **IoT: Set IoT Hub Connection String**。 确保将连接字符串粘贴到 **iothubowner** 策略（可以在 Azure 门户中 IoT 中心的“共享访问策略”中找到它）的下面。
  
-
 在 IoT 中心设备资源管理器的左侧栏中，可以查看设备列表。
 
 ### <a name="start-your-iot-edge-runtime-and-deploy-a-module"></a>启动 IoT Edge 运行时并部署模块
 在设备上安装并启动 Azure IoT Edge 运行时。 部署一个可将遥测数据发送到 IoT 中心的模拟传感器模块。
 1. 在命令面板中，选择 **Edge: Setup Edge** 并选择 IoT Edge 设备 ID。 或者在设备列表中右键单击“Edge 设备 ID”，并选择“安装 Edge”。
+
+    ![设置 Edge 运行时](./media/how-to-vscode-develop-csharp-module/setup-edge.png)
+
 2. 在命令面板中，选择 **Edge: Start Edge** 以启动 Edge 运行时。 在集成终端中可以看到相应的输出。
+
+    ![启动 Edge 运行时](./media/how-to-vscode-develop-csharp-module/start-edge.png)
+
 3. 在 Docker 资源管理器中检查 Edge 运行时状态。 绿色表示它正在运行。 已成功启动 IoT Edge 运行时。
-4. 现在，Edge 运行时正在运行，意味着电脑可以模拟 Edge 设备。 下一步是模拟 sensorthing，以便不断地将消息发送到 Edge 设备。 在命令面板中，键入并选择 **Edge: Generate Edge configuration file**。 选择要在其中创建此文件的文件夹。 在生成的 deployment.json 文件中，将行 "<registry>/<image>:<tag>" 替换为 `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`。
+
+    ![Edge 运行时正在运行](./media/how-to-vscode-develop-csharp-module/edge-runtime.png)
+
+4. 现在，Edge 运行时正在运行，意味着电脑可以模拟 Edge 设备。 下一步是模拟 sensorthing，以便不断地将消息发送到 Edge 设备。 在命令面板中，键入并选择 **Edge: Generate Edge configuration file**。 选择要在其中创建此文件的文件夹。 在生成的 deployment.json 文件中，使用 `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview` 替换内容 `<registry>/<image>:<tag>` 并保存文件。
+
+    ![传感器模块](./media/how-to-vscode-develop-csharp-module/sensor-module.png)
+
 5. 选择 **Edge: Create deployment for Edge device**，并选择用于创建新部署的 Edge 设备 ID。 或者，可以在设备列表中右键单击 Edge 设备 ID，并选择“为 Edge 设备创建部署”。 
-6. 应会看到，IoT Edge 已开始使用模拟传感器在 Docker 资源管理器中运行。 在 Docker 资源管理器中右键单击容器。 可以监视每个模块的 docker 日志。
+
+6. 应会看到，IoT Edge 已开始使用模拟传感器在 Docker 资源管理器中运行。 在 Docker 资源管理器中右键单击容器。 可以监视每个模块的 docker 日志。 可在设备列表中查看模块列表。
+
+    ![模块列表](./media/how-to-vscode-develop-csharp-module/module-list.png)
+
 7. 右键单击 Edge 设备 ID，可以在 VS Code 中监视 D2C 消息。
 8. 若要停止 IoT Edge 运行时和传感器模块，可以在命令面板中键入并选择 **Edge: Stop Edge**。
 
@@ -97,12 +113,18 @@ docker run -d -p 5000:5000 --name registry registry:2
  
 3. 选择“文件” > “打开文件夹”。
 4. 浏览到 FilterModule 文件夹，然后单击“选择文件夹”，在 VS Code 中打开此项目。
-5. 在 VS Code 资源管理器中，单击 Program.cs 将其打开。
+5. 在 VS Code 资源管理器中，单击 Program.cs 将其打开。 在“program.cs”顶部，包括以下命名空间。
+   ```csharp
+   using Microsoft.Azure.Devices.Shared;
+   using System.Collections.Generic;  
+   using Newtonsoft.Json;
+   ```
+
 6. 将 `temperatureThreshold` 变量添加到 **Program** 类。 此变量设置一个值，若要向 IoT 中心发送数据，测量的温度必须超出该值。 
 
-    ```csharp
-    static int temperatureThreshold { get; set; } = 25;
-    ```
+   ```csharp
+   static int temperatureThreshold { get; set; } = 25;
+   ```
 
 7. 将 `MessageBody`、`Machine` 和 `Ambient` 类添加到 **Program** 类。 这些类将为传入消息的正文定义所需的架构。
 
@@ -225,16 +247,22 @@ docker run -d -p 5000:5000 --name registry registry:2
     }
     ```
 
-11. 若要生成项目，请右键单击资源管理器中的“FilterModule.csproj”文件，然后单击“生成 IoT Edge 模块”。 此流程编译模块并将二进制文件及其依赖项导出到用于创建 Docker 映像的文件夹中。
+11. 若要生成项目，请右键单击资源管理器中的“FilterModule.csproj”文件，然后单击“生成 IoT Edge 模块”。 此流程编译模块并将二进制文件及其依赖项导出到用于创建 Docker 映像的文件夹中。 
 
+    ![生成模块](./media/how-to-vscode-develop-csharp-module/build-module.png)
 
 ### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>创建 Docker 映像并将其发布到注册表
 
 1. 在 VS Code 资源管理器中展开 **Docker** 文件夹。 然后展开适用于所用容器平台的文件夹（linux-x64 或 windows-nano）。
 2. 右键单击“Dockerfile”文件，然后单击“生成 IoT Edge 模块 Docker 映像”。 
+
+    ![生成 docker 映像](./media/how-to-vscode-develop-csharp-module/build-docker-image.png)
+
 3. 在“选择文件夹”窗口，浏览到或输入 `./bin/Debug/netcoreapp2.0/publish`。 单击“选择文件夹作为 EXE_DIR”。
 4. 在 VS Code 窗口顶部弹出的文本框中，输入映像名称。 例如：`<your container registry address>/filtermodule:latest`。 若要部署到本地注册表，则它应为 `localhost:5000/filtermodule:latest`。
-5. 将映像推送到 Docker 存储库。 使用 **Edge: Push IoT Edge module Docker image** 命令，并在 VS Code 窗口顶部的弹出文本框中输入映像 URL。 使用上一步骤中所用的同一映像 URL。
+5. 将映像推送到 Docker 存储库。 使用 **Edge: Push IoT Edge module Docker image** 命令，并在 VS Code 窗口顶部的弹出文本框中输入映像 URL。 使用上一步骤中所用的同一映像 URL。 检查控制台日志并确保已成功推送映像。
+
+    ![推送 docker 映像](./media/how-to-vscode-develop-csharp-module/push-image.png) ![推送的 docker 映像](./media/how-to-vscode-develop-csharp-module/pushed-image.png)
 
 ### <a name="deploy-your-iot-edge-modules"></a>部署 IoT Edge 模块
 
@@ -264,21 +292,26 @@ docker run -d -p 5000:5000 --name registry registry:2
 
 2. 将 **routes** 节替换为以下内容：
     ```json
-    {
-        "routes": {
-            "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-            "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
-        }
-    }
+    "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+    "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
     ```
    > [!NOTE]
    > 此运行时中的声明性规则将定义这些消息流经的位置。 本教程需要两个路由。 第一个路由通过“input1”终结点（该终结点是通过 FilterMessages 处理程序配置的终结点）将消息从温度传感器传输到筛选器模块。 第二个路由会将消息从筛选器模块传输到 IoT 中心。 在此路由中，upstream 是一个特殊目标，它告知 Edge 中心要将消息发送到 IoT 中心。
 
 3. 保存此文件。
 4. 在命令面板中，选择 **Edge: Create deployment for Edge device**。 然后，选择 IoT Edge 设备 ID 来创建部署。 或者，在设备列表中右键单击该设备 ID 并选择“为 Edge 设备创建部署”。
+
+    ![创建部署](./media/how-to-vscode-develop-csharp-module/create-deployment.png)
+
 5. 选择更新的 `deployment.json`。 在输出窗口中，可以看到部署的相应输出。
+
+    ![部署成功](./media/how-to-vscode-develop-csharp-module/deployment-succeeded.png)
+
 6. 在命令面板中启动 Edge 运行时。 **Edge: Start Edge**
 7. 可以看到，IoT Edge 运行时已开始使用模拟传感器和筛选器模块在 Docker 资源管理器中运行。
+
+    ![IoT Edge 解决方案正在运行](./media/how-to-vscode-develop-csharp-module/solution-running.png)
+
 8. 右键单击 Edge 设备 ID，可以在 VS Code 中监视 D2C 消息。
 
 

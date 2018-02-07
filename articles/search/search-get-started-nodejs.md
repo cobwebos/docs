@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 04/26/2017
 ms.author: evboyle
-ms.openlocfilehash: 32865ed986f5eea961ef2c3813dcc6531498c90a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 511f3327972672deaa321fb34bc5f91d355370a2
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Node.js 中的 Azure 搜索入门
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/18/2017
 ## <a name="download-the-sample-files"></a>下载示例文件
 使用以下方法之一下载该示例。
 
-1. 转到 [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodejsIndexerDemo)。
+1. 转到[搜索节点索引器演示](https://github.com/Azure-Samples/search-node-indexer-demo)。
 2. 单击“下载 ZIP” ，保存该 .zip 文件，并解压缩其包含的所有文件。
 
 将对此文件夹中的文件进行所有后续文件修改并运行语句。

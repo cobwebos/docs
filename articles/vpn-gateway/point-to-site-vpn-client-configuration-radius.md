@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2017
+ms.date: 01/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3ab1094c7cf99e105bc0a08d9f84332010f5afd5
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 37951a04bbfd266717490dd1752d0be04d2231a5
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/18/2018
 ---
-# <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication-preview"></a>创建并安装适用于 P2S RADIUS 身份验证的 VPN 客户端配置文件（预览版）
+# <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>创建并安装适用于 P2S RADIUS 身份验证的 VPN 客户端配置文件
 
 VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供的设置是本机 Windows 或 Mac IKEv2 VPN 客户端通过点到站点方式连接到 VNet 所必需的。 RADIUS 服务器提供了多个身份验证选项，因此，VPN 客户端配置因选项而异。
 
@@ -45,7 +45,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供的�
 
 请确保所有进行连接的用户的用户名/密码凭据可以通过 RADIUS 进行身份验证。 只能针对 EAP-MSCHAPv2 用户名/密码身份验证协议创建配置。 “-AuthenticationMethod”指定为“EapMSChapv2”。
 
-## <a name="usernamefiles"></a> 1.<a name="usernamefiles"></a>生成 VPN 客户端配置文件
+## <a name="usernamefiles"></a> 1.生成 VPN 客户端配置文件
 
 生成 VPN 客户端配置文件来用于用户名/密码身份验证。 可以使用以下命令生成 VPN 客户端配置文件：
 
@@ -95,7 +95,7 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 5. 在配置文件安装过程中，可以指定用于 VPN 身份验证的用户名和密码。 此信息不是必须输入的。 此信息在指定后会进行保存，在启动连接时自动使用。 单击“安装”继续。
 
   ![设置](./media/point-to-site-vpn-client-configuration-radius/adsettings.png)
-6. 输入用户名和密码，以便获取在计算机上安装该配置文件所需的必要权限。 单击**“确定”**。
+6. 输入用户名和密码，以便获取在计算机上安装该配置文件所需的必要权限。 单击“确定”。
 
   ![用户名和密码](./media/point-to-site-vpn-client-configuration-radius/adusername.png)
 7. 安装后，该配置文件即可在“配置文件”对话框中查看。 该对话框也可在以后从“系统首选项”打开。

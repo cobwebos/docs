@@ -15,16 +15,16 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 3/23/2017
 ms.author: elbutter
-ms.openlocfilehash: 0d0d3b94fb50155ce0579d32e8ff78a47b9e3589
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d795abe5254d47a72a468b0989e46829a5c5142a
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>管理 Azure SQL 数据仓库中的计算能力（概述）
 > [!div class="op_single_selector"]
 > * [概述](sql-data-warehouse-manage-compute-overview.md)
-> * [门户](sql-data-warehouse-manage-compute-portal.md)
+> * [Portal](sql-data-warehouse-manage-compute-portal.md)
 > * [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 > * [REST](sql-data-warehouse-manage-compute-rest-api.md)
 > * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
@@ -189,11 +189,11 @@ SQL 数据仓库中的性能以 [数据仓库单位 (DWU)][数据仓库单位 (D
 
 [capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
 
-[Pause compute with Azure portal]:  ./sql-data-warehouse-manage-compute-portal.md#pause-compute-bk
+[Pause compute with Azure portal]:  ./sql-data-warehouse-manage-compute-portal.md
 [Pause compute with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#pause-compute-bk
 [Pause compute with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#pause-compute-bk
 
-[Resume compute with Azure portal]:  ./sql-data-warehouse-manage-compute-portal.md#resume-compute-bk
+[Resume compute with Azure portal]:  ./sql-data-warehouse-manage-compute-portal.md
 [Resume compute with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#resume-compute-bk
 [Resume compute with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#resume-compute-bk
 

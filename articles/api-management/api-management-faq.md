@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 004e7b0299763be9d31b1df22df2a423dc7c52cf
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1903655a262583f1ba78b728bf404a81278e2275
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
@@ -33,7 +33,6 @@ ms.lasthandoff: 12/08/2017
 * [是否可以编程方式管理 API 管理实例？](#can-i-manage-my-api-management-instance-programmatically)
 * [如何向管理员组添加用户？](#how-do-i-add-a-user-to-the-administrators-group)
 * [我想要添加的策略为何在策略编辑器中不可用？](#why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor)
-* [如何在 API 管理中使用 API 版本控制？](#how-do-i-use-api-versioning-in-api-management)
 * [如何在单个 API 中设置多个环境？](#how-do-i-set-up-multiple-environments-in-a-single-api)
 * [是否可将 SOAP 用于 API 管理？](#can-i-use-soap-with-api-management)
 * [API 管理网关 IP 地址是否不变？是否可以在防火墙规则中使用它？](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
@@ -63,7 +62,7 @@ ms.lasthandoff: 12/08/2017
 
 * 使用 HTTP 基本身份验证。 有关详细信息，请参阅[导入并发布第一个 API](import-and-publish.md)。
 * 使用[如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全](api-management-howto-mutual-certificates.md)中所述的 SSL 相互身份验证。
-* 在后端服务上使用 IP 允许列表。 如果有标准或高级层 API 管理实例，则网关的 IP 地址保持不变。 可设置允许列表以允许此 IP 地址。 可在 Azure 门户中的仪表板上获取 API 管理实例的 IP 地址。
+* 在后端服务上使用 IP 允许列表。 在 API 管理的所有层中，网关的 IP 地址保持不变，但有几个[注意事项](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)。 可设置允许列表以允许此 IP 地址。 可在 Azure 门户中的仪表板上获取 API 管理实例的 IP 地址。
 * 将 API 管理实例连接到 Azure 虚拟网络。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>如何将 API 管理服务实例复制到新实例？
@@ -97,13 +96,6 @@ ms.lasthandoff: 12/08/2017
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>我想要添加的策略为何在策略编辑器中不可用？
 如果要添加的策略在策略管理器中显示为变暗或有阴影，请确保处于该策略的正确范围内。 每个策略声明都设计为在特定范围和策略部分中使用。 若要查看策略部分和策略范围，请参阅 [API 管理策略](https://msdn.microsoft.com/library/azure/dn894080.aspx)中的策略的用法部分。
 
-### <a name="how-do-i-use-api-versioning-in-api-management"></a>如何在 API 管理中使用 API 版本控制？
-有几种选项可在 API 管理中使用 API 版本控制：
-
-* 在 API 管理中，可将 API 配置为表示不同版本。 例如，可具有两个不同的 API，MyAPIv1 和 MyAPIv2。 开发人员可选择该开发人员要使用的版本。
-* 还可使用不包含版本段的服务 URL 配置 API，例如 https://my.api。 然后，在每个操作的[重写 URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) 模板上配置版本段。 
-* 如果希望在 API 的服务 URL 中保留“默认”版本段，请在选定操作上设置使用[设置后端服务](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService)策略的策略以更改后端请求路径。
-
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>如何在单个 API 中设置多个环境？
 若要在单个 API 中设置多个环境（例如，一个测试环境和一个生产环境），则有两个选项。 可以：
 
@@ -114,7 +106,7 @@ ms.lasthandoff: 12/08/2017
 当前已提供 [SOAP 传递](http://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/)支持。 管理员可以导入其 SOAP 服务的 WSDL，以便 Azure API 管理创建一个 SOAP 前端。 开发人员门户文档、测试控制台、策略和分析都可用于 SOAP 服务。
 
 ### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>API 管理网关 IP 地址是否不变？ 是否可以在防火墙规则中使用它？
-在标准和高级层中，API 管理租户的公共 IP 地址 (VIP) 在租户生存期内是静态的，但有一些例外。 IP 地址在以下情况下更改：
+在 API 管理的所有层中，API 管理租户的公用 IP 地址 (VIP) 在租户生存期中是静态的，但有一些例外。 IP 地址在以下情况下更改：
 
 * 服务被删除，然后重新创建。
 * 服务订阅被[暂停](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)或[警告](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)（例如，由于未付款），然后恢复。

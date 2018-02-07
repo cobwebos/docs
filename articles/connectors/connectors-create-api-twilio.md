@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/19/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: a790ac51b0fea7e3fa379d20e0e094e7ce0d7696
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 50361a3342a0d14ae02b2cb478bbb0f74b61bba0
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-twilio-connector"></a>Twilio 连接器入门
 连接到 Twilio 以发送和接收全球短信、彩信和 IP 消息。 借助 Twilio，可以：
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 * 根据从 Twilio 中获取的数据生成业务流。 
 * 使用获取消息、列出消息等的操作。 这些操作可获得响应，并使输出可用于其他操作。 例如，收到新 Twilio 消息时，可接受此消息并在服务总线工作流中使用它。 
 
-若要开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+若要开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="create-a-connection-to-twilio"></a>创建到 Twilio 的连接
 将此连接器添加到逻辑应用时，输入以下 Twilio 值：

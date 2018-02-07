@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/01/2017
+ms.date: 01/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4b8b547e3fc57d51f35aa7ca31b76f09593bb5f1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 62e532f3750adf8f4defe3e8f8aabe5b9f0446a0
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -121,11 +121,11 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 ### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>如果我的某个 ExpressRoute 链路出现故障，我会失去连接吗？
 
-如果其中一个交叉连接出现故障，不会失去连接。 冗余连接可用于支持网络负载。 另外，还可以在不同对等位置创建多条线路以获得故障恢复能力。
+如果其中一个交叉连接出现故障，不会失去连接。 可使用冗余连接，以支持网络负载和提供 ExpressRoute 线路的高可用性。 另外，还可以在不同对等位置创建一条线路以获得线路级恢复能力。
 
-## <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>如何确保连接到 ExpressRoute 的虚拟网络上的高可用性？
+### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>如何确保连接到 ExpressRoute 的虚拟网络上的高可用性？
 
-可以通过将不同的对等位置中的多条 ExpressRoute 线路连接到虚拟网络来实现高可用性。 例如，如果一个 ExpressRoute 站点出现故障，连接会故障转移到另一个 ExpressRoute 站点。 默认情况下，将基于等成本多路径路由 (ECMP) 对离开虚拟网络的流量进行路由。 可以使用连接权重来使一个连接优先于另一个连接。 有关连接权重的更多详细信息，请参阅[优化 ExpressRoute 路由](expressroute-optimize-routing.md)。
+可以通过将不同的对等位置（如新加坡、新加坡 2）中的 ExpressRoute 线路连接到虚拟网络来实现高可用性。 如果一条 ExpressRoute 线路出现故障，连接会故障转移到另一条 ExpressRoute 线路。 默认情况下，将基于等成本多路径路由 (ECMP) 对离开虚拟网络的流量进行路由。 可以使用连接权重来使一条线路优先于另一条线路。 有关连接权重的更多详细信息，请参阅[优化 ExpressRoute 路由](expressroute-optimize-routing.md)。
 
 ### <a name="onep2plink"></a>如果我不在发生云交换的位置，而我的服务提供商提供了点到点连接，我需要订购位于本地网络与 Microsoft 之间的两个物理连接吗？
 
@@ -145,9 +145,12 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 是的。 可以使用许多服务提供商的 ExpressRoute 线路。 每条 ExpressRoute 线路只与一个服务提供商相关联。 
 
-### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-location"></a>在同一位置中是否可以有多条 ExpressRoute 线路？
+### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-eg-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>我在同一城市内看到两个 ExpressRoute 对等位置（如新加坡和新加坡 2）。 我应选择哪个对等位置来创建我的 ExpressRoute 线路？
+如果服务提供商在两个站点均提供 ExpressRoute，则可以与提供商协作，选择任意一个站点来设置 ExpressRoute。 
 
-是的。 在同一位置中可以有多条 ExpressRoute 线路，它们可以具有相同或不同的服务提供商。 不过，无法从同一位置将多条 ExpressRoute 线路链接到同一虚拟网络。
+### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>在相同市内是否可以有多条 ExpressRoute 线路？ 是否可以将这些线路链接到同一虚拟网络？
+
+是的。 可以具有多条包含相同或不同服务提供商的 ExpressRoute 线路。 如果市内具有多个 ExpressRoute 对等位置，并且在各个对等位置创建线路，则可以将这些线路链接到同一虚拟网络。 如果在相同对等位置创建线路，则不能将这些线路链接到同一虚拟网络。
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>如何将我的虚拟网络连接到 ExpressRoute 线路
 
@@ -181,7 +184,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>连接到同一线路的虚拟网络相互隔离吗？
 
-否。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
+不会。 从路由角度看，连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，不是相互隔离的。 如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>能否将一个虚拟网络连接到多条 ExpressRoute 线路？
 
@@ -289,7 +292,7 @@ ExpressRoute 高级版是以下功能的集合：
 
 ### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>我是否可以从高级功能集选择所需的功能？
 
-不能。 无法选择功能。 如果启用 ExpressRoute 高级版，我们会启用所有功能。
+不会。 无法选择功能。 如果启用 ExpressRoute 高级版，我们会启用所有功能。
 
 ### <a name="how-much-does-expressroute-premium-cost"></a>ExpressRoute 高级版的费用是多少？
 

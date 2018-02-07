@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 9402dbbf66bbbf7ff23f3fc29cbb38f8aa8615e6
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 8137892c4360a6b55cfe48d62226c2421a791d5e
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>创建与 Azure 逻辑应用集成的函数
 
@@ -86,7 +86,7 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
 
     ![Azure 门户中的 Functions 快速入门页](media/functions-twitter-email/add-first-function.png)
 
-2. 在搜索字段中，键入 `http`，然后针对 HTTP 触发器模板选择 **C#**。 
+2. 在搜索字段中，键入 `http`，然后针对 HTTP 触发器模板选择“C#”。 
 
     ![选择 HTTP 触发器](./media/functions-twitter-email/select-http-trigger-portal.png)
 
@@ -288,5 +288,5 @@ Azure 中以单个资源的形式提供了认知服务 API。 使用文本分析
 > [!div class="nextstepaction"] 
 > [使用 Azure Functions 创建无服务器 API](functions-create-serverless-api.md)
 
-若要详细了解逻辑应用，请参阅 [Azure 逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)。
+若要详细了解逻辑应用，请参阅 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。
 

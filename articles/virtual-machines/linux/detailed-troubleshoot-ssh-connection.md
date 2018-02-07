@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 82b2bcf5b05288888714339af15ff2796d9660bd
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 66fc8bac46decacdd2214475e94980c447045935
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>对连接到 Azure 中 Linux VM 时出现的问题进行 SSH 故障排除的具体步骤
 有许多可能的原因会导致 SSH 客户端无法连接到 VM 上的 SSH 服务。 如果已经执行了较[常规的 SSH 故障排除步骤](troubleshoot-ssh-connection.md)，则需要进一步排查连接问题。 本文将指导用户完成详细的故障排除步骤，以确定 SSH 连接失败的位置及其解决方法。
@@ -120,7 +120,7 @@ ms.lasthandoff: 01/03/2018
 
 ![突出显示基于 Linux 的 Azure 虚拟机的图表](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
 
-如果尚未这样做，请遵循[如何为基于 Linux 的虚拟机重置密码或 SSH](classic/reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) 中的说明。
+如果尚未这样做，请按照[为基于 Linux 的虚拟机重置密码](reset-password.md)中的说明进行操作。
 
 再次尝试从计算机建立连接。 如果仍然失败，则可能存在以下问题：
 

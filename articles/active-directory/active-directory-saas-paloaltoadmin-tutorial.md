@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 5dca976449ee856cc61407d0eae831fc1e1e7a50
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8e54630d97dee2388ffc9c8877faeac269df1609
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>教程：Azure Active Directory 与 Palo Alto Networks - 管理 UI 集成
 
@@ -36,11 +36,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Palo Alto Networks - 管理 UI 的集成，需具有以下项目：
 
-- 一个 Azure AD 订阅
-- 启用了 Palo Alto Networks - 管理 UI 单一登录的订阅
+- Azure AD 订阅
+- Palo Alto Networks 新一代防火墙或 Panorama（针对防火墙的集中管理系统）
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 12/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Palo Alto Networks - 管理 UI
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-palo-alto-networks---admin-ui-from-the-gallery"></a>从库添加 Palo Alto Networks - 管理 UI
 若要配置 Palo Alto Networks - 管理 UI 与 Azure AD 的集成，需要从库中将 Palo Alto Networks - 管理 UI 添加到托管的 SaaS 应用列表。
@@ -68,11 +68,11 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“Palo Alto Networks - 管理 UI”，从结果面板选择“Palo Alto Networks - 管理 UI”，然后单击“添加”按钮来添加应用程序。
 
-    ![结果列表中的 Palo Alto Networks - 管理 UI](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_addfromgallery.png)
+    ![结果列表中的 Palo Alto Networks - 管理 UI](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_step4-add-from-the-gallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -108,9 +108,9 @@ ms.lasthandoff: 12/11/2017
 
     ![Palo Alto Networks - 管理 UI 域和 URL 单一登录信息](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<Customer Firewall URL>/php/login.php`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<Customer Firewall FQDN>/php/login.php`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<Customer Firewall URL>/SAML20/SP`
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<Customer Firewall FQDN>/SAML20/SP`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请联系 [Palo Alto Networks - 管理 UI 客户端支持团队](https://support.paloaltonetworks.com/support)。 
@@ -132,11 +132,11 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_attribute_05.png)
     
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d. 单击“确定”
+    d.单击“下一步”。 单击“确定”
 
     > [!NOTE]
     > 有关属性的详细信息，可参阅以下文章。
@@ -151,7 +151,7 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_general_400.png)
 
-8. 以管理员身份在另一个浏览器窗口中打开 Palo Alto 站点。
+8. 在另一个浏览器窗口中，以管理员身份打开 Palo Alto 网络防火墙管理 UI。
 
 9. 单击“设备”。
 
@@ -199,13 +199,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-paloaltoadmin-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d.单击“下一步”。 单击“创建”。
  
 ### <a name="create-a-palo-alto-networks---admin-ui-test-user"></a>创建 Palo Alto Networks - 管理 UI 测试用户
 
@@ -251,7 +251,7 @@ Palo Alto Networks - 管理 UI 支持实时用户预配，以便在身份验证�
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 

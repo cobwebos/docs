@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: szark
-ms.openlocfilehash: 18b7a5ec2a04962523a70886e1aa2344eb818458
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 9769b3968f841334aebdc4a371ecd59e64d5ebc2
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
 在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](http://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。
@@ -124,7 +124,7 @@ ms.lasthandoff: 12/02/2017
 
         # sudo subscription-manager unregister
 
-15. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
+15. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
         # sudo waagent -force -deprovision
 
@@ -207,7 +207,7 @@ ms.lasthandoff: 12/02/2017
 
         # sudo subscription-manager unregister
 
-14. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
+14. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
         # sudo waagent -force -deprovision
 
@@ -331,7 +331,7 @@ ms.lasthandoff: 12/02/2017
 
         # subscription-manager unregister
 
-17. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
+17. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
         # waagent -force -deprovision
 
@@ -480,7 +480,7 @@ ms.lasthandoff: 12/02/2017
 
         # subscription-manager unregister
 
-17. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
+17. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
         # sudo waagent -force -deprovision
 
@@ -609,7 +609,7 @@ ms.lasthandoff: 12/02/2017
 
         # sudo subscription-manager unregister
 
-14. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
+14. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
 
         # sudo waagent -force -deprovision
 
@@ -922,6 +922,6 @@ ms.lasthandoff: 12/02/2017
 有关详细信息，请参阅有关[重新生成 initramfs](https://access.redhat.com/solutions/1958) 的信息。
 
 ## <a name="next-steps"></a>后续步骤
-现在，可以使用 Red Hat Enterprise Linux 虚拟硬盘在 Azure 中创建新的虚拟机。 如果这是第一次将 .vhd 文件上传到 Azure，请参阅[创建和上传包含 Linux 操作系统的虚拟硬盘](classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)中的步骤 2 和步骤 3。
+现在，可以使用 Red Hat Enterprise Linux 虚拟硬盘在 Azure 中创建新的虚拟机。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。
 
 有关已通过认证可运行 Red Hat Enterprise Linux 的虚拟机监控程序的更多详细信息，请参阅 [Red Hat 网站](https://access.redhat.com/certified-hypervisors)。

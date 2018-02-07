@@ -1,21 +1,21 @@
 ---
 title: "从 Azure 容器注册表部署到 Azure 容器实例"
-description: "从 Azure 容器注册表部署 Azure 容器实例"
+description: "了解如何使用容器映像在 Azure 容器注册表中部署 Azure 容器实例中的容器。"
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/02/2018
+ms.date: 01/24/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 4205b47dc67920021812c1e573a98de64ad198ec
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: c69b95f66bf2eaf4975961da5b25f5ac6172798c
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/25/2018
 ---
-# <a name="deploy-to-azure-container-instances-from-the-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
+# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
 
 Azure 容器注册表是用于 Docker 容器映像的基于 Azure 的专用注册表。 本文介绍如何将存储在 Azure 容器注册表中的容器映像部署到 Azure 容器实例。
 
@@ -51,17 +51,23 @@ az container create --resource-group myResourceGroup --name myprivatecontainer -
 
 1. 在 Azure 门户中，导航到容器注册表。
 
-2. 选择“存储库”，然后选择想要从中进行部署的存储库，右键单击想要部署的容器映像的标记，然后选择“运行实例”。
+1. 选择“存储库”，然后选择想要从中进行部署的存储库，右键单击想要部署的容器映像的标记，然后选择“运行实例”。
 
     ![Azure 门户中 Azure 容器注册表中的“运行实例”][acr-runinstance-contextmenu]
 
-3. 输入容器和资源组的名称。 也可根据需要更改默认值。
+1. 输入容器和资源组的名称。 也可根据需要更改默认值。
 
     ![Azure 容器实例的创建菜单][acr-create-deeplink]
 
-4. 部署完成后，可从通知窗格导航至容器组，查找其 IP 地址和其他属性。
+1. 部署完成后，可从通知窗格导航至容器组，查找其 IP 地址和其他属性。
 
     ![Azure 容器实例容器组的详细信息视图][aci-detailsview]
+
+## <a name="service-principal-authentication"></a>服务主体身份验证
+
+如果禁用了 Azure 容器注册表的管理员用户，创建容器实例时可以使用 Azure Active Directory [服务主体](../container-registry/container-registry-auth-service-principal.md)对注册表进行身份验证。 在无外设的方案中也建议使用服务主体进行身份验证，如以无人参与方式创建容器实例的脚本或应用程序。
+
+有关详细信息，请参阅[使用 Azure 容器注册表从 Azure 容器实例进行身份验证](../container-registry/container-registry-auth-aci.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

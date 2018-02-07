@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: 913bd917ae7c2b44df097ead9c3e35841338905c
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: b454720dd5bd2df036a400c8bfc1c383de5af542
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>PowerShell in Azure Cloud Shell（预览版）快速入门
 
@@ -263,6 +263,63 @@ mywebapp2       Running  MyResourceGroup2   {mywebapp2.azurewebsites.net...   We
 mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   South Central US
 
 ```
+
+## <a name="ssh"></a>SSH
+
+[Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH) 在 PowerShell CloudShell 中可用。
+若要使用 SSH 对服务器或 VM 进行身份验证，请在 CloudShell 中生成公钥/私钥对并将公钥发布到远程计算机上的 `authorized_keys`，如 `/home/user/.ssh/authorized_keys`。
+
+> [!NOTE]
+> 可以使用 `ssh-keygen` 创建 SSH 私钥/公钥并将其发布到 CloudShell 中的 `$env:USERPROFILE\.ssh`。
+
+### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>使用自定义配置文件持久保存 GIT 和 SSH 设置
+
+由于会话在注销后不会持久保留，因此请将 `$env:USERPROFILE\.ssh` 文件夹保存到 `CloudDrive`，或者在启动 CloudShell 时创建符号链接。
+在 profile.ps1 中添加以下代码片段以创建 CloudDrive 的符号链接。
+
+``` Powershell
+# Check if the ssh folder exists
+if( -not (Test-Path $home\CloudDrive\.ssh){
+    mkdir $home\CloudDrive\.ssh
+}
+
+# .ssh path relative to this script
+$script:sshFolderPath = Join-Path $PSScriptRoot .ssh
+
+# Create a symlink to .ssh in user's $home
+if(Test-Path $script:sshFolderPath){
+   if(-not (Test-Path (Join-Path $HOME .ssh ))){
+        New-Item -ItemType SymbolicLink -Path $HOME -Name .ssh -Value $script:sshFolderPath
+   }
+}
+
+```
+
+### <a name="using-ssh"></a>使用 SSH
+
+按照[此处](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)的说明使用 AzureRM Cmdlet 创建新的 VM 配置。
+在调用 `New-AzureRMVM` 以启动部署之前，请将 SSH 公钥添加到 VM 配置。
+新创建的 VM 将包含 `~\.ssh\authorized_keys` 位置中的公钥，从而允许通过无凭据的 ssh 会话连接到 VM。
+
+``` Powershell
+
+# Create VM config object - $vmConfig using instructions on linked page above
+
+# Generate SSH Keys in CloudShell
+ssh-keygen -t rsa -b 2048 -f $HOME\.ssh\id_rsa 
+
+# Ensure VM config is updated with SSH Keys
+$sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
+Add-AzureRmVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
+
+# Create a virtual machine
+New-AzureRmVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmConfig
+
+# ssh to the VM
+ssh azureuser@MyVM.Domain.Com
+
+```
+
 
 ## <a name="list-available-commands"></a>列出可用命令
 

@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 09/13/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5b2b82d90dee41e80233e5f52c960be23d89ee3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b88d0c1ccb7a729c95299bcdc3cba5fd73fcdeac
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
 
-[Azure 逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)提供 [100 多个可以使用的连接器](../connectors/apis-list.md)（从本地 SQL Server 或 SAP 到 Microsoft 认知服务），可帮助用户安排和集成不同的服务。 逻辑应用服务“无服务器”，因此无需担心规模或实例。 只需定义带有触发器的工作流和工作流执行的操作。 基础平台处理缩放、可用性和性能。 逻辑应用尤其适用于需要在多个系统中协调多个操作的用例和方案。
+[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)提供 [100 多个可以使用的连接器](../connectors/apis-list.md)（从本地 SQL Server 或 SAP 到 Microsoft 认知服务），可帮助用户安排和集成不同的服务。 逻辑应用服务“无服务器”，因此无需担心规模或实例。 只需定义带有触发器的工作流和工作流执行的操作。 基础平台处理缩放、可用性和性能。 逻辑应用尤其适用于需要在多个系统中协调多个操作的用例和方案。
 
-为了帮助你详细了解 [Azure 逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)支持的多种模式和功能，下面提供了一些常见示例和方案。
+为了帮助你详细了解 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)支持的多种模式和功能，下面提供了一些常见示例和方案。
 
 ## <a name="popular-starting-points-for-logic-app-workflows"></a>逻辑应用工作流的常用起点
 
-每个逻辑应用均由[触发器](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)启动，并且只有一个触发器，该触发器可启动逻辑应用工作流并将任何数据作为该触发器的一部分进行传递。 某些连接器提供触发器，类型包括：
+每个逻辑应用均由[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)启动，并且只有一个触发器，该触发器可启动逻辑应用工作流并将任何数据作为该触发器的一部分进行传递。 某些连接器提供触发器，类型包括：
 
 * 轮询触发器：定期检查服务终结点以获取新数据。 如果存在新数据，触发器会创建并运行新的工作流实例（将数据作为输入）。
 

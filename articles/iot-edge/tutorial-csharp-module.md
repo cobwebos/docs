@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure IoT Edge C# 模块 | Microsoft Docs"
 description: "使用 C# 代码创建 IoT Edge 模块，并将它部署到边缘设备"
 services: iot-edge
@@ -9,11 +9,11 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: bd186341329721ee097a5b3ad3e7ad11b8e189f9
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 4fd84904fb264fc61d0059d389347e05839162d2
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>开发 C# IoT Edge 模块，并将它部署到模拟设备 - 预览
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/04/2018
 
 在本教程中创建的 IoT Edge 模块可以筛选由设备生成的温度数据。 它只在温度高于指定阈值的情况下，向上游发送消息。 在边缘进行的此类分析适用于减少传递到云中和存储在云中的数据量。 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * 已通过快速入门或第一个教程创建 Azure IoT Edge 设备。
 * IoT Edge 设备的主键连接字符串。  
@@ -70,6 +70,14 @@ ms.lasthandoff: 01/04/2018
 5. 在 VS Code 资源管理器中，单击 Program.cs 将其打开。
 
    ![打开 Program.cs][1]
+
+6. 在 **FilterModule** 命名空间的顶部，为以后要使用的类型添加三个 `using` 语句：
+
+    ```csharp
+    using System.Collections.Generic;     // for KeyValuePair<>
+    using Microsoft.Azure.Devices.Shared; // for TwinCollection
+    using Newtonsoft.Json;                // for JsonConvert
+    ```
 
 6. 将 `temperatureThreshold` 变量添加到 **Program** 类。 此变量设置一个值，若要向 IoT 中心发送数据，测量的温度必须超出该值。 
 

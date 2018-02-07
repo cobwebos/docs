@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: bdca9d4968e9e68314f350787907f15e417821f7
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: db1ed08c4d4c9e9abd525ec13f5511da82ee1fe4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -56,7 +56,8 @@ Azure Monitor 作为一项 Azure 服务，提供单一资源来监视所有 Azur
 
 查看活动日志：
 
-1. 在“API 管理”实例中单击“活动日志”。
+1. 选择 APIM 服务实例。
+2. 单击“活动日志”。
 
 ## <a name="view-diagnostic-logs"></a>查看诊断日志
 
@@ -64,7 +65,8 @@ Azure Monitor 作为一项 Azure 服务，提供单一资源来监视所有 Azur
 
 访问诊断日志：
 
-1. 在“API 管理”实例中单击“诊断日志”。
+1. 选择 APIM 服务实例。
+2. 单击“诊断日志”。
 
 ## <a name="view-metrics-of-your-apis"></a>查看 API 的指标
 

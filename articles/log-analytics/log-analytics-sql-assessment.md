@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 01/19/2018
 ms.author: magoedte;banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 04a5959d69cd42e77317161d743be7d778e3186d
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 09fed11830bbbce23f7098050568d68a3b3bebec
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>使用 Log Analytics 中的 SQL Server 运行状况检查解决方案优化 SQL 环境
 
@@ -93,7 +93,7 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
    > 运行方式帐户类型必须是 Windows。 在托管 SQL Server 实例的所有 Windows Server 上，运行方式帐户还必须属于本地管理员组。
    >
    >
-5. 单击“保存” 。
+5. 单击“ **保存**”。
 6. 在每个 SQL Server 实例上先修改再执行以下 T-SQL 示例，以授予运行方式帐户执行运行状况检查所需的最低权限。 但是，如果运行方式帐户已是 SQL Server 实例上 sysadmin 服务器角色的一部分，则无需执行此操作。
 
 ```
@@ -127,7 +127,7 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
     Set-SCOMRunAsProfile -Action "Add" -Profile $Profile -Account $Account
 ```
 
-## <a name="understanding-how-recommendations-are-prioritized"></a>了解如何设置建议的优先级
+## <a name="understanding-how-recommendations-are-prioritized"></a>了解如何划分建议的优先级
 每项建议都指定有一个权重值，用于标识该建议的相对重要性。 仅显示十个最重要的建议。
 
 ### <a name="how-weights-are-calculated"></a>如何计算权重
@@ -165,14 +165,14 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>查看针对重点区域的建议并采取纠正措施
 1. 登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。 
 2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
-3. 在 Log Analytics 订阅窗格中选择一个工作区，再选择“OMS 门户”磁贴。  
+3. 在 Log Analytics 订阅窗格中选择一个工作区，再单击“概述”磁贴。  
 4. 在“概述”页上，单击“SQL 运行状况检查”磁贴。 
 5. 在“运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。
 6. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“**受影响的对象**”下的建议，以查看有关为何给出此建议的详细信息。<br><br> ![SQL 运行状况检查建议图像](./media/log-analytics-sql-assessment/sql-healthcheck-dashboard-02.png)<br>
 7. 可以采取“建议的操作”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且将提高合规性分数。 已更正的项会显示为“通过的对象”。
 
 ## <a name="ignore-recommendations"></a>忽略建议
-如果有要忽略的建议，可以创建 OMS 用来防止建议出现在评估结果中的文本文件。
+如果有要忽略的建议，可以创建 Log Analytics 用来防止建议出现在评估结果中的文本文件。
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 

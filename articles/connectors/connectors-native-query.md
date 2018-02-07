@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
-ms.openlocfilehash: a11ba47d6ec69d31360e9142b7bce97803809c57
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05dd4ae3c4ee439d66401a3f5595f9104051f8ee
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-query-action"></a>查询操作入门
 通过使用查询操作，可使用批处理和数组完成工作流，以便：
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 * 为来自数据库的所有高优先级记录创建任务。
 * 将电子邮件的所有 PDF 附件保存到 Azure blob 中。
 
-若要开始在逻辑应用中使用查询操作，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+若要开始在逻辑应用中使用查询操作，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="use-the-query-action"></a>使用查询操作
 操作是由在逻辑应用中定义的工作流执行的操作。 [了解有关操作的详细信息](connectors-overview.md)。  
@@ -80,5 +80,5 @@ ms.lasthandoff: 10/11/2017
 | 已筛选的数组 |数组 |为每个已筛选的结果包含一个对象的数组 |
 
 ## <a name="next-steps"></a>后续步骤
-现在，试用平台并[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
+现在，试用平台并[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 通过查看 [API 列表](apis-list.md)了解逻辑应用中的其他可用连接器。
 

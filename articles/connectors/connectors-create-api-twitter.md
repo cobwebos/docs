@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: be8163043535833ce45b3d50939a537406cf8152
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 065de976118e7be67ef8a515e39c04cfd74b5b43
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-twitter-connector"></a>Twitter 连接器入门
 借助 Twitter 连接器，可以：
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 * 访问时间线、好友和关注者
 * 执行下面所述的任意其他操作和触发器  
 
-若要使用 [任何连接器](apis-list.md) ，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md) 开始操作。  
+若要使用 [任何连接器](apis-list.md)，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 开始操作。  
 
 ## <a name="connect-to-twitter"></a>连接到 Twitter
 在逻辑应用访问任何服务之前，必须先创建到该服务的*连接*。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  
@@ -39,7 +39,7 @@ ms.lasthandoff: 10/11/2017
 > 
 
 ## <a name="use-a-twitter-trigger"></a>使用 Twitter 触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。
+触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
 
 在此示例中，我将演示如何使用“发布新推文时”触发器搜索 #Seattle，如果找到了 #Seattle，则使用推文中的文本更新 Dropbox 中的文件。 在企业示例中，可搜索公司名称并使用推文中的文本更新 SQL 数据库。
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 10/11/2017
    ![Twitter 条件图 8](../../includes/media/connectors-create-api-twitter/condition-8.png)   
 
 ## <a name="use-a-twitter-action"></a>使用 Twitter 操作
-操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)。  
+操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。  
 
 现已添加触发器，按照以下步骤添加操作，该操作将发布带有该触发器找到的推文内容的新推文。 在本演练中，将仅发布关注者超过 50 个的用户的推文。  
 
@@ -104,5 +104,5 @@ ms.lasthandoff: 10/11/2017
 在[连接器详细信息](/connectors/twitterconnector/)中查看在 Swagger 中定义的触发器和操作，并查看限制。 
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)
+[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 

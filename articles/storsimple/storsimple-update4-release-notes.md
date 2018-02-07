@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/03/2017
+ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: ce9a6493e80d65641ef5d797d89663bfaa5cd624
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: f1c0734b07287d95a2f5031e010f0e407d3a816f
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 系列 Update 4 发行说明
 > [!NOTE]
@@ -59,7 +59,7 @@ Update 4 中进行了以下重大改进和 bug 修复。
 
 * **更新更改** - 此版本修复了与更新失败相关的 bug。
 
-* **磁盘故障警报** - 此版本中添加了一种新警报，用于警告用户即将发生的磁盘故障。 如果遇到此警报，请联系 Microsoft 支持，让其发送更换磁盘。 有关详细信息，请转到 [StorSimple 设备上的硬件警报](storsimple-manage-alerts.md#hardware-alerts)。
+* **磁盘故障警报** - 此版本中添加了一种新警报，用于警告用户即将发生的磁盘故障。 如果遇到此警报，请联系 Microsoft 支持，让其发送更换磁盘。 有关详细信息，请转到 [StorSimple 设备上的硬件警报](storsimple-8000-manage-alerts.md#hardware-alerts)。
 
 * **控制器替换更改** - 此版本中添加了一个 cmdlet，它允许用户查询控制器替换过程的状态。 有关详细信息，请转到[可查询控制器替换状态的 cmdlet](https://technet.microsoft.com/library/dn688168.aspx)。
 

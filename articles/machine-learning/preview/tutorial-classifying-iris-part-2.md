@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/06/2017
-ms.openlocfilehash: 7e489526fd1b6a7d38172d147df1f30d74119e95
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 3337ba9fa6845deb98813259821f77ff713f9eb1
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="classify-iris-part-2-build-a-model"></a>鸢尾花分类（第 2 部分）：生成模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -34,7 +34,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 本教程使用了永久[鸢尾花卉数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)。 屏幕截图与 Windows 相关，但 Mac OS 上的体验几乎相同。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 完成本系列教程的第一部分。 开始本教程的步骤之前，请遵循[准备数据教程](tutorial-classifying-iris-part-1.md)创建 Azure 机器学习资源，并安装 Azure Machine Learning Workbench 应用程序。
 
 （可选）可以尝试对本地 Docker 容器运行脚本。 为此，需在本地的 Windows 或 Mac OS 计算机上安装并启动 Docker 引擎（Community Edition 已足够）。 有关 Docker 安装的详细信息，请参阅 [Docker 安装说明](https://docs.docker.com/engine/installation/)。
@@ -326,7 +326,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 3. 与前面一样在 CLI 窗口中发出相同的命令，但这次以 myvm 为目标：
    ```azurecli
    REM executes iris_sklearn.py in a remote Docker container
-   az ml experiment submit -c myvm .\iris_sklearn.py
+   az ml experiment submit -c myvm iris_sklearn.py
    ```
    该命令的执行方式与在 `docker-python` 环境中相同，不过，执行是在远程 Linux VM 上发生的。 CLI 窗口显示相同的输出信息。
 

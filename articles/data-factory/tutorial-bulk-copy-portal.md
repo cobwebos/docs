@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 2100b5d1804f81f7c5a9dacfbb133e8d14dee39e
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 6aa5d4aa032ef4dc3583bf76b9c451874b74f9a6
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
 本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
 
 > [!NOTE]
-> - 如果对 Azure 数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。
+> - 如果你对 Azure 数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。
 > - 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 从较高层面讲，本教程涉及以下步骤：
@@ -98,7 +98,7 @@ ms.lasthandoff: 01/16/2018
 8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
 
     ![“正在部署数据工厂”磁贴](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
-9. 创建完以后，会显示图中所示的“数据工厂”页。
+9. 创建完成后，会显示图中所示的“数据工厂”页。
    
     ![数据工厂主页](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 应用程序。
@@ -195,7 +195,7 @@ ms.lasthandoff: 01/16/2018
 5. 切换到“参数”选项卡，然后单击“+ 新建”
 
     ![源数据集连接页](./media/tutorial-bulk-copy-portal/sink-dataset-new-parameter-button.png)
-6. 输入 **DWTableName** 作为参数名称。 
+6. 输入 **DWTableName** 作为参数名称。 如果从页面中复制/粘贴此名称，请确保 **DWTableName** 末尾没有**尾随空格字符**。 
 7. 在“参数化属性”部分，输入 `@{dataset().DWTableName}` 作为 **tableName** 属性。 数据集的 **tableName** 属性设置为一个特定值，该值作为 **DWTableName** 参数的自变量传递。 ForEach 活动循环访问一系列表，然后将这些表逐个传递到“复制”活动。 
    
     ![参数名称](./media/tutorial-bulk-copy-portal/dwtablename-tablename.png)

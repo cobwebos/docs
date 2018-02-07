@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 39e283e4b0bb5e50d1268e1b2cac53bf9ee71028
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: e326a512bdb9c30068845b51e86795a410e6c9b3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
 > [!NOTE]
@@ -92,7 +92,7 @@ ms.lasthandoff: 11/02/2017
     ![“创建网关”页](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
 
     > [!NOTE]
-    > 本演练将创建只有一个节点（本地 Windows 计算机）的逻辑网关。 可通过将多个本地计算机与网关相关联来向外扩展数据管理网关。 可通过增加可以同时在一个节点上运行的数据移动作业数来向上扩展数据管理网关。 此功能也适用于包含一个节点的逻辑网关。 有关详细信息，请参阅[在 Azure 数据工厂中缩放数据管理网关](data-factory-data-management-gateway-high-availability-scalability.md)一文。  
+    > 本演练将创建只有一个节点（本地 Windows 计算机）的逻辑网关。 可通过将多个本地计算机与网关相关联来向外扩展数据管理网关。 可通过增加可以同时在一个节点上运行的数据移动作业数来进行扩展。 此功能也适用于包含一个节点的逻辑网关。 有关详细信息，请参阅[在 Azure 数据工厂中缩放数据管理网关](data-factory-data-management-gateway-high-availability-scalability.md)一文。  
 4. 在“配置”页中，单击“直接在此计算机上安装”。 此操作将为网关下载安装包，并在计算机上安装、配置和注册该网关。  
 
    > [!NOTE]
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/02/2017
 5. 等待几分钟，或一直等待直到看到以下通知消息：
 
     ![网关安装成功](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
-6. 启动计算机上的“数据管理网关配置管理器”应用程序。 在“搜索”窗口中，键入“数据管理网关”，以访问此实用程序。 还可以在文件夹 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** 中查找可执行文件 **ConfigManager.exe**
+6. 启动计算机上的“数据管理网关配置管理器”应用程序。 在“搜索”窗口中，键入“数据管理网关”，以便访问此实用程序。 还可以在文件夹 **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared** 中查找可执行文件 **ConfigManager.exe**
 
     ![网关配置管理器](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
 7. 确认可以看到 `adftutorialgateway is connected to the cloud service` 消息。 底部状态栏显示带有**绿色复选标记**的“已连接到云服务”。
@@ -239,7 +239,7 @@ ms.lasthandoff: 11/02/2017
         }
     }     
     ```     
-   请注意以下几点：
+   注意以下几点：
 
    * **type** 设置为 **SqlServerTable**。
    * **tableName** 设置为 **emp**。
@@ -274,7 +274,7 @@ ms.lasthandoff: 11/02/2017
         }
      }
     ```   
-   请注意以下几点：
+   注意以下几点：
 
    * **type** 设置为 **AzureBlob**。
    * **linkedServiceName** 设置为 **AzureStorageLinkedService**（已在步骤 2 中创建此链接服务）。
@@ -356,7 +356,7 @@ ms.lasthandoff: 11/02/2017
    >
    >
 
-   请注意以下几点：
+   注意以下几点：
 
    * 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
    * 活动的 **Input** 设置为 **EmpOnPremSQLTable**，**output** 设置为 **OutputBlobTable**。

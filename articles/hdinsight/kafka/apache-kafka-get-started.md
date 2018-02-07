@@ -13,17 +13,17 @@ ms.devlang:
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/07/2017
+ms.date: 01/18/2018
 ms.author: larryfr
-ms.openlocfilehash: 24133adc6e6b16c69a8b124f13e684fce26b115f
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 6191d81d6b55f5ffe943f800be542d7ea4614eaf
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight 入门
 
-了解如何在 Azure HDInsight 上创建和使用 [Apache Kafka](https://kafka.apache.org) 群集。 Kafka 是开源分布式流式处理平台，可与 HDInsight 配合使用。 通常将其用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。
+了解如何在 Azure HDInsight 上创建和使用 [Apache Kafka](https://kafka.apache.org) 群集。 Kafka 是开源分布式流式处理平台，可与 HDInsight 配合使用。 通常将其用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。 Kafka 通常与 Apache Spark 和 Apache Storm 一起使用。
 
 > [!NOTE]
 > 目前，有两个 Kafka 版本可用于 HDInsight；0.9.0 (HDInsight 3.4) 和 0.10.0（HDInsight 3.5 和 3.6）。 本文档中的步骤假设使用 Kafka on HDInsight 3.6。
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/06/2018
 
 使用以下步骤创建 Kafka on HDInsight 群集：
 
-1. 从 [Azure 门户](https://portal.azure.com)，选择“+ 新建”**、“智能 + 分析”**，并选择“HDInsight”。
+1. 从 [Azure 门户](https://portal.azure.com)依次选择“+ 创建资源”、“数据 + 分析”、“HDInsight”。
    
     ![创建 HDInsight 群集](./media/apache-kafka-get-started/create-hdinsight.png)
 
@@ -55,12 +55,9 @@ ms.lasthandoff: 01/06/2018
 3. 选择“群集类型”，然后在“群集配置”中设置以下值：
    
     * **群集类型**：Kafka
-
     * 版本：Kafka 0.10.0 (HDI 3.6)
 
-    * **群集层**：标准
-     
- 最后使用“选择”按钮保存设置。
+    最后使用“选择”按钮保存设置。
      
  ![选择群集类型](./media/apache-kafka-get-started/set-hdinsight-cluster-type.png)
 
@@ -122,17 +119,16 @@ ms.lasthandoff: 01/06/2018
 
     ```bash
     CLUSTERNAME='your cluster name'
-    PASSWORD='your cluster password'
-    export KAFKAZKHOSTS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
+    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
 
-    export KAFKABROKERS=`curl -sS -u admin:$PASSWORD -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
+    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`
 
     echo '$KAFKAZKHOSTS='$KAFKAZKHOSTS
     echo '$KAFKABROKERS='$KAFKABROKERS
     ```
 
     > [!IMPORTANT]
-    > 将 `CLUSTERNAME=` 设置为 Kafka 群集的名称。 将 `PASSWORD=` 设置为在创建群集时使用的登录（管理员）密码。
+    > 将 `CLUSTERNAME=` 设置为 Kafka 群集的名称。 出现提示时，输入群集登录（管理员）帐户的密码。
 
     以下文本是 `$KAFKAZKHOSTS` 的内容示例：
    
@@ -183,164 +179,17 @@ Kafka 将记录存储在主题中。 记录由生成者生成，由使用者使�
 2. 使用随 Kafka 提供的脚本从主题中读取记录：
    
     ```bash
-    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --zookeeper $KAFKAZKHOSTS --topic test --from-beginning
+    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic test --from-beginning
     ```
    
     此命令从主题中检索并显示记录。 使用 `--from-beginning` 告知使用者从流的开头开始，以检索所有记录。
 
+    > [!NOTE]
+    > 如果使用的是较旧版本的 Kafka，可能需要将 `--bootstrap-server $KAFKABROKERS` 替换为 `--zookeeper $KAFKAZKHOSTS`。
+
 3. 使用 __Ctrl + C__ 阻止使用者。
 
-## <a name="producer-and-consumer-api"></a>生成者和使用者 API
-
-还可使用 [Kafka API](http://kafka.apache.org/documentation#api) 以编程方式生成和使用记录。 若要构建 Java 生成者和使用者，请在开发环境中执行以下步骤。
-
-> [!IMPORTANT]
-> 必须在开发环境中安装以下组件：
->
-> * [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 或类似程序，如 OpenJDK。
->
-> * [Apache Maven](http://maven.apache.org/)
->
-> * SSH 客户端和 `scp` 命令。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)文档。
-
-1. 从 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 下载示例。 对于生成者/使用者示例，使用 `Producer-Consumer` 目录中的项目。 本示例包含以下类：
-   
-    * **运行** - 启动使用者或生成者。
-
-    * **生成者** - 将 1,000,000 个记录存储到主题中。
-
-    * **使用者** - 从主题中读取记录。
-
-2. 若要创建 jar 包，请将目录更改为 `Producer-Consumer` 目录的位置，然后执行以下命令：
-
-    ```
-    mvn clean package
-    ```
-
-    此命令创建一个名为 `target` 的目录，其中包含名为 `kafka-producer-consumer-1.0-SNAPSHOT.jar` 的文件。
-
-3. 使用以下命令将 `kafka-producer-consumer-1.0-SNAPSHOT.jar` 文件复制到 HDInsight 群集：
-   
-    ```bash
-    scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
-    ```
-   
-    将 **SSHUSER** 替换为群集的 SSH 用户，并将 **CLUSTERNAME** 替换为群集的名称。 出现提示时，请输入 SSH 用户密码。
-
-4. 等 `scp` 命令复制完文件以后，使用 SSH 连接到群集。 使用以下命令将记录写入测试主题：
-
-    ```bash
-    java -jar kafka-producer-consumer.jar producer $KAFKABROKERS
-    ```
-
-5. 完成该过程后，使用以下命令从主题中读取：
-   
-    ```bash
-    java -jar kafka-producer-consumer.jar consumer $KAFKABROKERS
-    ```
-   
-    将显示读取的记录以及记录计数。 使用之前步骤中的脚本将多个记录发送到主题时，可能会看到超过 1,000,000 个记录。
-
-6. 使用 __Ctrl + C__ 让使用者退出。
-
-### <a name="multiple-consumers"></a>多个使用者
-
-在读取记录时，Kafka 使用者使用使用者组。 让多个使用者使用同一个组会导致对主题的读取进行负载均衡操作。 组中的每个使用者接收一部分记录。 若要实时查看此过程，请使用以下步骤：
-
-1. 向群集打开新 SSH 会话，从而具有两个会话。 在每个会话中，使用以下命令通过同一使用者组 ID 启动使用者：
-   
-    ```bash
-    java -jar kafka-producer-consumer.jar consumer $KAFKABROKERS mygroup
-    ```
-
-    此命令使用组 ID `mygroup` 启动使用者。
-
-    > [!NOTE]
-    > 使用[获取 Zookeeper 和中转站主机信息](#getkafkainfo)部分的命令为该 SSH 会话设置 `$KAFKABROKERS`。
-
-2. 观察每个会话对从主题中收到的记录进行计数。 两个会话的总记录数应与之前从一个使用者中收到的记录数相同。
-
-同一组中客户端的使用情况通过主题的分区进行处理。 之前创建的 `test` 主题有 8 个分区。 若打开 8 个 SSH 会话，并在所有会话中启动一个使用者，每个使用者都将从主题的单个分区中读取记录。
-
-> [!IMPORTANT]
-> 使用者组中存在的使用者实例不能比分区多。 此示例中，一个使用者组最多可包含八个使用者，因为这是本主题中的分区数。 也可拥有多个使用者组，每个组的使用者不能超过八个。
-
-存储在 Kafka 中的记录都按在分区中接收的顺序进行存储。 若要在分区内实现记录的有序交付，请创建一个使用者组，其中的使用者实例数与分区数匹配。 若要在主题内实现记录的有序交付，请创建仅含一个使用者实例的使用者组。
-
-## <a name="streaming-api"></a>流式处理 API
-
-已将流式处理 API 添加到 Kafka 版本 0.10.0 中；早期版本依赖于 Apache Spark 或 Storm 进行流式处理。
-
-1. 如果尚未执行此操作，请从 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 将示例下载到开发环境。 对于流式处理示例，使用 `streaming` 目录中的项目。
-   
-    此项目仅包含一个类 `Stream`，该类从之前创建的 `test` 主题读取记录。 它会统计读取的字数，并发出每个字，计数到名为 `wordcounts` 的主题。 `wordcounts` 主题在本部分之后的步骤中进行创建。
-
-2. 从开发环境中的命令行，将目录更改为 `Streaming` 目录的位置，然后使用以下命令创建 jar 包：
-
-    ```bash
-    mvn clean package
-    ```
-
-    此命令创建一个名为 `target` 的目录，其中包含名为 `kafka-streaming-1.0-SNAPSHOT.jar` 的文件。
-
-3. 使用以下命令将 `kafka-streaming-1.0-SNAPSHOT.jar` 文件复制到 HDInsight 群集：
-   
-    ```bash
-    scp ./target/kafka-streaming-1.0-SNAPSHOT.jar SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net:kafka-streaming.jar
-    ```
-   
-    将 **SSHUSER** 替换为群集的 SSH 用户，并将 **CLUSTERNAME** 替换为群集的名称。 出现提示时，请输入 SSH 用户密码。
-
-4. `scp` 命令完成复制文件后，使用 SSH 连接到群集，并使用以下命令创建 `wordcounts` 主题：
-
-    ```bash
-    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic wordcounts --zookeeper $KAFKAZKHOSTS
-    ```
-
-5. 接下来，使用以下命令启动流式处理过程：
-   
-    ```bash
-    java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS 2>/dev/null &
-    ```
-   
-    此命令在后台启动流式处理。
-
-6. 使用以下命令将消息发送到 `test` 主题。 这些消息由流式处理示例进行处理：
-   
-    ```bash
-    java -jar kafka-producer-consumer.jar producer $KAFKABROKERS &>/dev/null &
-    ```
-
-7. 使用以下命令查看流式处理过程写入到 `wordcounts` 主题的输出：
-   
-    ```bash
-    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --from-beginning --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
-    ```
-   
-    > [!NOTE]
-    > 若要查看数据，必须告诉使用者要列显键以及用于键和值的反序列化程序。 键名为单词，键值包含计数。
-   
-    输出与以下文本类似：
-   
-        dwarfs  13635
-        ago     13664
-        snow    13636
-        dwarfs  13636
-        ago     13665
-        a       13803
-        ago     13666
-        a       13804
-        ago     13667
-        ago     13668
-        jumped  13640
-        jumped  13641
-        a       13805
-        snow    13637
-   
-    > [!NOTE]
-    > 每遇到一个字，计数就会增加。
-
-7. 使用 __Ctrl + C__ 让使用者退出，然后使用 `fg` 命令将流式处理后台任务恢复到前台。 同样，使用 __Ctrl + C__ 使它退出。
+还可以以编程方式创建生产者和使用者。 有关如何使用此 API 的示例，请参阅[将 Kafka 生产者和使用者 API 与 HDInsight 配合使用](apache-kafka-producer-consumer-api.md)文档。
 
 ## <a name="data-high-availability"></a>数据高可用性
 
@@ -377,7 +226,10 @@ Kafka 不识别容错域。 在创建主题的分区副本时，它可能未针�
 
 * [分析 Kafka 日志](apache-kafka-log-analytics-operations-management.md)
 * [在 Kafka 群集之间复制数据](apache-kafka-mirroring.md)
+* [将 Kafka 生产者和使用者 API 与 HDInsight 配合使用](apache-kafka-producer-consumer-api.md)
+* [将 Kafka 流 API 与 HDInsight 配合使用](apache-kafka-streams-api.md)
 * [将 Apache Spark 流式处理 (DStream) 与 Kafka on HDInsight 配合使用](../hdinsight-apache-spark-with-kafka.md)
 * [将 Apache Spark 结构化流式处理与 Kafka on HDInsight 配合使用](../hdinsight-apache-kafka-spark-structured-streaming.md)
+* [使用 Apache Spark 结构化流式处理将数据从 Kafka on HDInsight 移到 Cosmos DB](../apache-kafka-spark-structured-streaming-cosmosdb.md)
 * [将 Apache Storm 与 Kafka on HDInsight 结合使用](../hdinsight-apache-storm-with-kafka.md)
 * [通过 Azure 虚拟网络连接到 Kafka](apache-kafka-connect-vpn-gateway.md)

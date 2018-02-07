@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 数据工厂中创建自承载的集成运行时 | Microsoft Docs"
-description: "了解如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库或 Azure SQL 数据仓库中的存储过程。"
+title: "在 Azure 数据工厂中创建 Azure-SSIS 集成运行时 | Microsoft Docs"
+description: "了解如何创建 Azure-SSIS 集成运行时，以便可以在 Azure 云中运行 SSIS 包。"
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -11,32 +11,44 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: c73bb23d844977b0bc74f49820be1a01c5c6635c
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 35883890b330588415290295815ad55cf5021afb
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 本文提供在 Azure 数据工厂中配置 Azure-SSIS 集成运行时所要执行的步骤。 然后，可以使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 将 SQL Server Integration Services (SSIS) 包部署到 Azure 上的此运行时。
 
-> [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-introduction.md)。
-
 教程[教程：将 SQL Server Integration Services 包 (SSIS) 部署到 Azure](tutorial-deploy-ssis-packages-azure.md) 介绍了如何使用 Azure SQL 数据库作为 SSIS 目录的存储来创建 Azure-SSIS 集成运行时 (IR)。 本文对该教程的内容做了延伸，介绍了如何执行以下操作： 
 
 - 使用 Azure SQL 托管实例（个人预览版）来承载 SSIS 目录（SSISDB 数据库）。
-- 将 Azure-SSIS IR 加入 Azure 虚拟网络 (VNet)。 
+- 将 Azure-SSIS IR 加入 Azure 虚拟网络 (VNet)。 有关将 Azure-SSIS IR 加入 VNet 以及在 Azure 门户中配置 VNet 的概念性信息，请参阅[将 Azure-SSIS IR 加入 VNet](join-azure-ssis-integration-runtime-virtual-network.md)。 
 
-有关将 Azure-SSIS IR 加入 VNet 以及在 Azure 门户中配置 VNet 的概念性信息，请参阅[将 Azure-SSIS IR 加入 VNet](join-azure-ssis-integration-runtime-virtual-network.md)。 
+> [!NOTE]
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-introduction.md)。
+
+
+## <a name="overview"></a>概述
+本文演示预配 Azure-SSIS IR 的不同方法：
+
+- [Azure portal](#azure-portal)
+- [Azure PowerShell](#azure-powershell)
+- [Azure 资源管理器模板](#azure-resource-manager-template)
+
+创建 Azure-SSIS IR 时，数据工厂将连接到 Azure SQL 数据库以准备 SSIS 目录数据库 (SSISDB)。 该脚本还配置 VNet 的权限和设置（如果已指定），并将 Azure SSIS 集成运行时的新实例加入 VNet 中。
+
+预配 SQL 数据库实例以托管 SSISDB 时，还会安装 Azure Feature Pack for SSIS 和 Access Redistributable。 除了内置组件支持的数据源外，这些组件还提供与 Excel 和 Access 文件和各种 Azure 数据源的连接。 目前不能安装用于 SSIS 的第三方组件（包括 Microsoft 提供的第三方组件，如 Attunity 提供的 Oracle 和 Teradata 组件以及 SAP BI 组件）。
 
 ## <a name="prerequisites"></a>先决条件
 
 - **Azure 订阅**。 如果没有订阅，可以创建一个[免费试用](http://azure.microsoft.com/pricing/free-trial/)帐户。
 - **Azure SQL 数据库服务器**或 **SQL Server 托管实例（专用预览）（扩展专用预览）**。 如果还没有数据库服务器，请在启动之前在 Azure 门户中创建一个。 此服务器承载着 SSIS 目录数据库 (SSISDB)。 建议在集成运行时所在的同一 Azure 区域中创建数据库服务器。 此配置允许集成运行时将执行日志写入 SSISDB 而无需跨 Azure 区域。 记下 Azure SQL Server 的定价层。 有关受支持的 Azure SQL 数据库定价层列表，请参阅 [SQL 数据库资源限制](../sql-database/sql-database-resource-limits.md)。
-- **经典虚拟网络 (VNet)（可选）**。 如果下列条件中至少有一个属实，则必须具有 Azure 虚拟网络 (VNet)：
+
+    确认 Azure SQL 数据库服务器或 SQL Server 托管实例（扩展个人预览版）没有 SSIS 目录（SSIDB 数据库）。 预配 Azure-SSIS IR 时不支持使用现有 SSIS 目录。
+- **经典或 Azure 资源管理器虚拟网络 (VNet)（可选）**。 如果下列条件中至少有一个属实，则必须具有 Azure 虚拟网络 (VNet)：
     - 作为 VNet 一部分的 SQL Server 托管实例（个人预览版）上承载着 SSIS 目录数据库。
     - 想要从 Azure-SSIS 集成运行时中运行的 SSIS 包连接到本地数据存储。
 - **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。 将使用 PowerShell 运行一个脚本来在云中预配运行 SSIS 包的 Azure-SSIS 集成运行时。 
@@ -44,8 +56,109 @@ ms.lasthandoff: 12/13/2017
 > [!NOTE]
 > 如需 Azure 数据工厂 V2 和 Azure-SSIS Integration Runtime 所支持的区域的列表，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/services/)。 展开“数据 + 分析”即可看到“数据工厂 V2”和“SSIS Integration Runtime”。
 
+## <a name="azure-portal"></a>Azure 门户
+在本部分中，使用 Azure 门户（具体的说是数据工厂 UI）创建 Azure-SSIS IR。 
 
-## <a name="create-variables"></a>创建变量
+### <a name="create-a-data-factory"></a>创建数据工厂
+
+1. 登录到 [Azure 门户](https://portal.azure.com/)。    
+2. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。 
+   
+   ![新建 -> DataFactory](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
+3. 在“新建数据工厂”页中，输入 **MyAzureSsisDataFactory** 作为**名称**。 
+      
+     ![“新建数据工厂”页](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
+ 
+   Azure 数据工厂的名称必须 **全局唯一**。 如果收到错误，请更改数据工厂的名称（例如改为 yournameMyAzureSsisDataFactory），并重新尝试创建。 有关数据工厂项目命名规则，请参阅[数据工厂 - 命名规则](naming-rules.md)一文。
+  
+       `Data factory name “MyAzureSsisDataFactory” is not available`
+3. 选择要在其中创建数据工厂的 Azure **订阅**。 
+4. 对于**资源组**，请执行以下步骤之一：
+     
+      - 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
+      - 选择“新建”，并输入资源组的名称。   
+         
+      若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  
+4. 选择“V2 (预览)”作为**版本**。
+5. 选择数据工厂的**位置**。 列表中只会显示支持创建数据工厂的位置。
+6. 选择“固定到仪表板”。     
+7. 单击“创建”。
+8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
+
+    ![“正在部署数据工厂”磁贴](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
+9. 创建完成后，会显示图中所示的“数据工厂”页。
+   
+   ![数据工厂主页](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
+10. 单击“创作和监视”，在单独的选项卡中启动数据工厂用户界面 (UI)。 
+
+### <a name="provision-an-azure-ssis-integration-runtime"></a>预配 Azure SSIS 集成运行时
+
+1. 在入门页，单击“配置 SSIS 集成运行时”磁贴。 
+
+   ![“配置 Azure SSIS 集成运行时”磁贴](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
+2. 在“集成运行时安装”的“常规设置”页中执行以下步骤： 
+
+   ![常规设置](./media/tutorial-create-azure-ssis-runtime-portal/general-settings.png)
+
+    1. 指定集成运行时的**名称**。
+    2. 选择集成运行时的**位置**。 界面上仅显示支持的位置。
+    3. 选择要为 SSIS 运行时配置的**节点大小**。
+    4. 指定群集中的**节点数**。
+    5. 单击“资源组名称” 的 Azure 数据工厂。 
+1. 在“SQL 设置”中执行以下步骤： 
+
+    ![SQL 设置](./media/tutorial-create-azure-ssis-runtime-portal/sql-settings.png)
+
+    1. 指定包含 Azure SQL 服务器的 Azure**订阅**。 
+    2. 选择**目录数据库服务器终结点**的 Azure SQL Server。
+    3. 输入**管理员**用户名。
+    4. 输入管理员的**密码**。  
+    5. 选择 SSISDB 数据库的**服务层**。 默认值为“基本”。
+    6. 单击“资源组名称” 的 Azure 数据工厂。 
+1.  在“高级设置”页中，选择“每个节点的最大并行执行数”的值。   
+
+    ![高级设置](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)    
+5. 此步骤是**可选的**。 如果要将集成运行时加入到某个经典虚拟网络 (VNet)，请选择“选择 Azure-SSIS 集成运行时要加入的 VNet，并允许 Azure 服务配置 VNet 权限/设置”选项，然后执行以下步骤： 
+
+    ![包含 VNet 的高级设置](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)    
+
+    1. 指定包含经典 VNet 的**订阅**。 
+    2. 选择“VNet”。 <br/>
+    4. 选择“子网”。<br/> 
+1. 单击“完成”开始创建 Azure-SSIS 集成运行时。 
+
+    > [!IMPORTANT]
+    > - 完成此过程大约需要 20 分钟
+    > - 数据工厂服务将连接到 Azure SQL 数据库来准备 SSIS 目录数据库 (SSISDB)。 该脚本还配置 VNet 的权限和设置（如果已指定），并将 Azure SSIS 集成运行时的新实例加入 VNet 中。
+7. 在“连接”窗口中，根据需要切换到“集成运行时”。 单击“刷新”以刷新状态。 
+
+    ![创建状态](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-creation-status.png)
+8. 使用“操作”列下面的链接可以监视、停止/启动、编辑或删除集成运行时。 使用最后一个链接可以查看集成运行时的 JSON 代码。 仅当 IR 已停止时，才会启用编辑和删除按钮。 
+
+    ![Azure SSIS IR - 操作](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-actions.png)        
+9. 单击“操作”下面的“监视”链接。  
+
+    ![Azure SSIS IR - 详细信息](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-details.png)
+10. 如果发生了与 Azure SSIS IR 关联的**错误**，此页面上会显示错误数，以及用于查看错误详细信息的链接。 例如，如果数据库服务器中已包含 SSIS 目录，则会出现一条错误，指出 SSISDB 数据库已存在。  
+11. 单击顶部的“集成运行时”导航回到前一页，以查看与数据工厂关联的所有集成运行时。  
+
+### <a name="azure-ssis-integration-runtimes-in-the-portal"></a>门户中的 Azure SSIS 集成运行时
+
+1. 在 Azure 数据工厂 UI 中切换到“编辑”选项卡，单击“连接”，然后切换到“集成运行时”选项卡以查看数据工厂中的现有集成运行时。 
+    ![查看现有 IR](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
+1. 单击“新建”创建新的 Azure-SSIS IR。 
+
+    ![通过菜单创建集成运行时](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
+2. 若要创建 Azure-SSIS 集成运行时，请单击“新建”，如图所示。 
+3. 在“集成运行时安装”窗口中选择“直接迁移现有的 SSIS 包以在 Azure 中执行”，然后单击“下一步”。
+
+    ![指定集成运行时的类型](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
+4. 请参阅[预配 Azure SSIS 集成运行时](#provision-an-azure-ssis-integration-runtime)部分，了解用于设置 Azure-SSIS IR 的剩余步骤。
+
+## <a name="azure-powershell"></a>Azure PowerShell
+在本部分中，将使用 Azure PowerShell 来创建 Azure-SSIS IR。
+
+### <a name="create-variables"></a>创建变量
 定义在本教程的脚本中使用的变量：
 
 ```powershell
@@ -61,10 +174,10 @@ $AzureSSISName = "[your Azure-SSIS integration runtime name]"
 $AzureSSISDescription = "This is my Azure-SSIS integration runtime"
 $AzureSSISLocation = "EastUS" 
 # In public preview, only Standard_A4_v2|Standard_A8_v2|Standard_D1_v2|Standard_D2_v2|Standard_D3_v2|Standard_D4_v2 are supported.
-$AzureSSISNodeSize = "Standard_A4_v2" 
+$AzureSSISNodeSize = "Standard_D3_v2"
 # In public preview, only 1-10 nodes are supported.
 $AzureSSISNodeNumber = 2 
-# In public preview, only 1-8 parallel executions per node are supported.
+# For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
 $AzureSSISMaxParallelExecutionsPerNode = 2 
 
 # SSISDB info
@@ -78,15 +191,12 @@ $SSISDBPricingTier = "[your Azure SQL Database pricing tier. Examples: Basic, S0
 
 # Remove these the following two OPTIONAL variables if you are using Azure SQL Database. 
 # These two parameters apply if you are using VNet and Azure SQL Managed Instance (private preview). 
-# Get the following information from the properties page for your Classic Virtual Network in the Azure portal
-# It should be in the format: $VnetId = "/subscriptions/<Azure Subscription ID>/resourceGroups/<Azure Resource Group>/providers/Microsoft.ClassicNetwork/virtualNetworks/<Class Virtual Network Name>"
-
-# OPTIONAL: In public preview, only classic virtual network (VNet) is supported.
+# OPTIONAL: specify your VNet ID and the subnet name. 
 $VnetId = "[your VNet resource ID or leave it empty]" 
 $SubnetName = "[your subnet name or leave it empty]" 
 
 ```
-## <a name="log-in-and-select-subscription"></a>登录并选择订阅
+### <a name="log-in-and-select-subscription"></a>登录并选择订阅
 在脚本中添加以下代码，用于登录并选择 Azure 订阅： 
 
 ```powershell
@@ -94,7 +204,7 @@ Login-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 ```
 
-## <a name="validate-the-connection-to-database"></a>验证与数据库的连接
+### <a name="validate-the-connection-to-database"></a>验证与数据库的连接
 添加以下脚本用于验证 Azure SQL 数据库服务器 server.database.windows.net 或 Azure SQL 托管实例（个人预览版）服务器终结点。 
 
 ```powershell
@@ -116,7 +226,7 @@ Catch [System.Data.SqlClient.SqlException]
 }
 ```
 
-## <a name="configure-virtual-network"></a>配置虚拟网络
+### <a name="configure-virtual-network"></a>配置虚拟网络
 添加以下脚本以自动配置加入 Azure-SSIS 集成运行时的虚拟网络权限/设置。
 
 ```powershell
@@ -129,19 +239,22 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
     {
     Start-Sleep -s 10
     }
-    # Assign VM contributor role to Microsoft.Batch
-    New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+    if($VnetId -match "/providers/Microsoft.ClassicNetwork/")
+    {
+        # Assign VM contributor role to Microsoft.Batch
+        New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+    }
 }
 ```
 
-## <a name="create-a-resource-group"></a>创建资源组
+### <a name="create-a-resource-group"></a>创建资源组
 使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 命令创建 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 `westeurope` 位置创建名为 `myResourceGroup` 的资源组。
 
 ```powershell
 New-AzureRmResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
 ```
 
-## <a name="create-a-data-factory"></a>创建数据工厂
+### <a name="create-a-data-factory"></a>创建数据工厂
 运行以下命令以创建数据工厂：
 
 ```powershell
@@ -150,10 +263,10 @@ Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
                          -Name $DataFactoryName
 ```
 
-## <a name="create-an-integration-runtime"></a>创建集成运行时
+### <a name="create-an-integration-runtime"></a>创建集成运行时
 运行以下命令创建在 Azure 中运行 SSIS 包的 Azure-SSIS 集成运行时：基于所使用的数据库类型使用此部分中的脚本（Azure SQL 数据库与Azure SQL 托管实例（专用预览））。 
 
-### <a name="azure-sql-database-to-host-the-ssisdb-database-ssis-catalog"></a>用于托管 SSISDB 数据库（SSIS 目录）的 Azure SQL 数据库 
+#### <a name="azure-sql-database-to-host-the-ssisdb-database-ssis-catalog"></a>用于托管 SSISDB 数据库（SSIS 目录）的 Azure SQL 数据库 
 
 ```powershell
 $secpasswd = ConvertTo-SecureString $SSISDBServerAdminPassword -AsPlainText -Force
@@ -174,7 +287,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
 
 不需要传递 VNetId 和 Subnet 的值，除非需要访问本地数据（即，SSIS 包中包含本地数据源/目标）。 必须传递 CatalogPricingTier 参数的值。 有关受支持的 Azure SQL 数据库定价层列表，请参阅 [SQL 数据库资源限制](../sql-database/sql-database-resource-limits.md)。
 
-### <a name="azure-sql-managed-instance-private-preview-to-host-the-ssisdb-database"></a>用于托管 SSISDB 数据库的 Azure SQL 托管实例（个人预览版）
+#### <a name="azure-sql-managed-instance-private-preview-to-host-the-ssisdb-database"></a>用于托管 SSISDB 数据库的 Azure SQL 托管实例（个人预览版）
 
 ```powershell
 $secpasswd = ConvertTo-SecureString $SSISDBServerAdminPassword -AsPlainText -Force
@@ -196,7 +309,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
 
 需要在加入 VNet 的 Azure SQL 托管实例（个人预览版）中传递 VnetId 和 Subnet 参数的值。 CatalogPricingTier 参数不适用于 Azure SQL 托管实例。 
 
-## <a name="start-integration-runtime"></a>启动集成运行时
+### <a name="start-integration-runtime"></a>启动集成运行时
 运行以下命令以启动 Azure-SSIS 集成运行时： 
 
 ```powershell
@@ -212,7 +325,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 此命令将花费 **20 到 30 分钟**才能完成。 
 
 
-## <a name="full-script"></a>完整脚本
+### <a name="full-script"></a>完整脚本
 下面是创建 Azure-SSIS IR 并将其加入到 VNet 的完整脚本。 此脚本假设使用 Azure SQL 托管实例 (MI) 来托管 SSIS 目录。 
 
 ```powershell
@@ -228,10 +341,10 @@ $AzureSSISName = "[your Azure-SSIS integration runtime name]"
 $AzureSSISDescription = "This is my Azure-SSIS integration runtime"
 $AzureSSISLocation = "EastUS" 
 # In public preview, only Standard_A4_v2|Standard_A8_v2|Standard_D1_v2|Standard_D2_v2|Standard_D3_v2|Standard_D4_v2 are supported.
-$AzureSSISNodeSize = "Standard_A4_v2" 
+$AzureSSISNodeSize = "Standard_D3_v2"
 # In public preview, only 1-10 nodes are supported.
 $AzureSSISNodeNumber = 2 
-# In public preview, only 1-8 parallel executions per node are supported.
+# For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
 $AzureSSISMaxParallelExecutionsPerNode = 2 
 
 # SSISDB info
@@ -245,7 +358,7 @@ $SSISDBPricingTier = "[your Azure SQL Database pricing tier. Examples: Basic, S0
 
 ## Remove these two OPTIONAL variables if you are using Azure SQL Database. 
 ## These two parameters apply if you are using VNet and Azure SQL Managed Instance (private preview). 
-# In public preview, only classic virtual network (VNet) is supported.
+# Specify information about your classic or Azure Resource Manager virtual network (VNet).
 $VnetId = "[your VNet resource ID or leave it empty]" 
 $SubnetName = "[your subnet name or leave it empty]" 
 
@@ -278,8 +391,11 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
     {
         Start-Sleep -s 10
     }
-    # Assign VM contributor role to Microsoft.Batch
-    New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+    if($VnetId -match "/providers/Microsoft.ClassicNetwork/")
+    {
+        # Assign VM contributor role to Microsoft.Batch
+        New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+    }
 }
 
 Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
@@ -311,6 +427,70 @@ Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupNa
 write-host("##### Completed #####")
 write-host("If any cmdlet is unsuccessful, please consider using -Debug option for diagnostics.")
 ```
+
+## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
+在本部分中，可以使用 Azure 资源管理器模板创建 Azure-SSIS 集成运行时。 下面是示例演练： 
+
+1. 使用以下资源管理器模板创建 JSON 文件。 将尖括号中的值（占位符）替换为你自己的值。 
+
+    ```json
+    {
+        "contentVersion": "1.0.0.0",
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "parameters": {},
+        "variables": {},
+        "resources": [{
+            "name": "<Specify a name for your data factory>",
+            "apiVersion": "2017-09-01-preview",
+            "type": "Microsoft.DataFactory/factories",
+            "location": "East US",
+            "properties": {},
+            "resources": [{
+                "type": "integrationruntimes",
+                "name": "<Specify a name for the Azure SSIS IR>",
+                "dependsOn": [ "<The name of the data factory you specified at the beginning>" ],
+                "apiVersion": "2017-09-01-preview",
+                "properties": {
+                    "type": "Managed",
+                    "typeProperties": {
+                        "computeProperties": {
+                            "location": "East US",
+                            "nodeSize": "Standard_D1_v2",
+                            "numberOfNodes": 1,
+                            "maxParallelExecutionsPerNode": 1
+                        },
+                        "ssisProperties": {
+                            "catalogInfo": {
+                                "catalogServerEndpoint": "<Azure SQL server>.database.windows.net",
+                                "catalogAdminUserName": "<Azure SQL user",
+                                "catalogAdminPassword": {
+                                    "type": "SecureString",
+                                    "value": "<Azure SQL Password>"
+                                },
+                                "catalogPricingTier": "Basic"
+                            }
+                        }
+                    }
+                }
+            }]
+        }]
+    }
+    ```
+2. 若要部署资源管理器模板，请运行 New-AzureRmResourceGroupDeployment 命令，如以下示例中所示。 在此示例中，ADFTutorialResourceGroup 是资源组的名称。 ADFTutorialARM.json 是包含数据工厂和 Azure-SSIS IR 的 JSON 定义的文件。 
+
+    ```powershell
+    New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json
+    ```
+
+    此命令将创建数据工厂并在其中创建 Azure-SSIS IR，但未启动 IR。 
+3. 若要启动 Azure-SSIS IR，请运行 Start-AzureRmDataFactoryV2IntegrationRuntime 命令： 
+
+    ```powershell
+    Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName "<Resource Group Name> `
+                                             -DataFactoryName <Data Factory Name> `
+                                             -Name <Azure SSIS IR Name> `
+                                             -Force
+    ``` 
 
 ## <a name="deploy-ssis-packages"></a>部署 SSIS 包
 现在，使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 来将 SSIS 包部署到 Azure。 连接到承载着 SSIS 目录 (SSISDB) 的 Azure SQL 服务器。 Azure SQL 服务器的名称采用以下格式：&lt;servername&gt;.database.windows.net（适用于 Azure SQL 数据库）。 有关说明，请参阅[部署包](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)一文。 

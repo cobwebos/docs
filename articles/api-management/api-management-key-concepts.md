@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 08490af077ad92dfa8e4ec248a1416980ac400f3
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 727be96828b9217f89214722f474abfc220b0b3c
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="what-is-api-management"></a>什么是 API 管理？
 
@@ -92,7 +92,7 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 * **开发人员** - 已经过身份验证的开发人员门户用户属于此组。 开发人员是使用 API 构建应用程序的客户。 开发人员有权访问开发人员门户，并构建调用 API 操作的应用程序。
 * **来宾** - 未经身份验证的开发人员门户用户，如访问此组中 API 管理实例的开发人员门户的潜在客户。 它们可以被授予某些只读访问权限，如能够查看 API，但不能调用它们。
 
-除了这些系统组，管理员还可以创建自定义组或[利用关联 Azure Active Directory 租户中的外部组](api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group)。 自定义组和外部组可与系统组一起使用为开发人员提供可见性并可以访问 API 产品。 例如，可以为隶属于一个特定合作伙伴组织的开发人员创建一个自定义组并允许他们从仅包含相关 API 的产品中访问 API。 用户可以是多个组的成员。
+除了这些系统组，管理员还可以创建自定义组或[利用关联 Azure Active Directory 租户中的外部组](api-management-howto-aad.md)。 自定义组和外部组可与系统组一起使用为开发人员提供可见性并可以访问 API 产品。 例如，可以为隶属于一个特定合作伙伴组织的开发人员创建一个自定义组并允许他们从仅包含相关 API 的产品中访问 API。 用户可以是多个组的成员。
 
 有关详细信息，请参阅[如何创建和使用组][How to create and use groups]。
 
@@ -103,7 +103,7 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 
 有关详细信息，请参阅[如何创建或邀请开发人员][How to create or invite developers]和[如何将组与开发人员关联][How to associate groups with developers]。
 
-## <a name="policies"> </a> 策略
+## <a name="policies"></a> 策略
 策略是 API 管理的一项强大功能，允许发布者通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 流行的语句包含 XML 格式转换为 JSON 和调用速率限制，以限制从开发人员传入的呼叫数，还有许多其他策略可用。
 
 在任何 API 管理策略中，策略表达式可以用作属性值或文本值，除非该策略另外指定。 某些策略（如[控制流](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose)和[设置变量](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable)策略）基于策略表达式。 有关详细信息，请参阅[高级策略](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies)和[策略表达式](https://msdn.microsoft.com/library/azure/dn910913.aspx)。

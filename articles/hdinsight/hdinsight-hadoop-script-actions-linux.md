@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2017
+ms.date: 01/17/2018
 ms.author: larryfr
-ms.openlocfilehash: 0cef360de3b7a9be01536b0ebe90769c89e7c432
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: ddf5db3e61633c45e388e161e165637521803094
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/24/2017
 | Azure PowerShell |✓ |✓ |
 | Azure CLI |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
-| Azure Resource Manager 模板 |✓ |&nbsp; |
+| Azure 资源管理器模板 |✓ |&nbsp; |
 
 有关使用这些方法应用脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
@@ -118,7 +118,7 @@ fi
 > [!IMPORTANT]
 > 使用的存储帐户必须是群集的默认存储帐户，或其他任何存储帐户的公共只读容器。
 
-例如，Microsoft 提供的示例存储在 [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) 存储帐户中。 这是 HDInsight 团队维护的一个公共只读容器。
+例如，Microsoft 提供的示例存储在 [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) 存储帐户中。 此位置是 HDInsight 团队维护的一个公共只读容器。
 
 ### <a name="bPS4"></a>使用预编译的资源
 
@@ -314,7 +314,7 @@ fi
 
 ## <a name="deployScript"></a>有关部署脚本操作的清单
 
-下面是我们在准备部署这些脚本时执行的步骤：
+下面是在准备部署脚本时执行的步骤：
 
 * 将包含自定义脚本的文件放置在群集节点在部署期间可访问的位置中。 例如，群集的默认存储。 还可以将文件存储在可公开读取的托管服务中。
 * 验证脚本是否幂等。 这样，便可以在同一个节点上执行脚本多次。
@@ -327,7 +327,7 @@ fi
 
 * Azure 门户
 * Azure PowerShell
-* Azure Resource Manager 模板
+* Azure 资源管理器模板
 * HDInsight .NET SDK。
 
 有关使用每种方法的详细信息，请参阅[如何使用脚本操作](hdinsight-hadoop-customize-cluster-linux.md)。

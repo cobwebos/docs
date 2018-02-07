@@ -251,6 +251,8 @@
           href: ../workloads/sap/get-started.md
         - name: MATLAB 群集
           href: matlab-mdcs-cluster.md
+        - name: Visual Studio
+          href: using-visual-studio-vm.md
         - name: 高性能计算 (HPC)
           href: hpcpack-cluster-options.md
           items:

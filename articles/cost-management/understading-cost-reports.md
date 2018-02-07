@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/27/2017
+ms.date: 01/30/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: df2108a6e2a01195340a09eacf1c56f9d738c923
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 38c1313f42a58403e158cad9c2930b6541da5adc
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="understanding-cost-reports"></a>了解成本报表
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 11/28/2017
   示例可能包括：
      - 成本中心
      - 系
-     - 应用程序
+     - Application
      - 环境
      - 成本代码
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 11/28/2017
 
   在“分期付款”下，选择“摊销成本”或“实际成本”。
 
-8. **解析度**
+8. **解决方法**
 
     “解析度”用于选择所选日期范围内的时间解析度。 时间解析度将确定单位如何在报表中显示，并可以包括：
     - 每日

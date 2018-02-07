@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e274a9364dcb7bf4d220159e1f906bbd015369aa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b76d6a31dfe600a4639b830bfbbb5cacfc158dd6
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection 操作手册
 此操作手册有助于：
@@ -106,7 +106,7 @@ Azure Active Directory Identity Protection：
     a. 若要阻止，请选择“阻止登录”下的“中等”。
     
     b. 若要强制安全密码更改，请选择“要求多重身份验证”下的“中等”。
-11. 单击“保存” 。
+11. 单击“ **保存**”。
 12. 现在通过使用具有提升的风险级别的用户登录，可以测试基于风险的条件访问。 如果用户风险为中等，根据策略配置，登录将受阻止或强制你更改密码。 
     <br><br>
     ![演练手册](./media/active-directory-identityprotection-playbook/201.png "演练手册")

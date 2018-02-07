@@ -15,15 +15,14 @@ ms.workload: na
 ms.date: 10/19/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0520e97a8b4f218b87683464d342bf7a08b2383
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 243845139c7ae0389333d7490098ef73f95dceac
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 借助 IoT 中心，用户可以从云中对设备调用直接方法。 直接方法表示与设备进行的请求-答复式交互，类似于会立即成功或失败（在用户指定的超时时间后）的 HTTP 调用。 此方法适用于即时操作过程取决于设备能否响应的情况，例如，如果设备脱机，则向设备发送短信以唤醒设备（短信的开销比方法调用更大）。
-
 每个设备方法针对一个设备。 [作业][lnk-devguide-jobs]提供了一种方法，用于对多个设备调用直接方法，并为已断开连接的设备计划方法调用。
 
 只要拥有 IoT 中心的“服务连接”权限，任何人都可以调用设备上的方法。
@@ -44,7 +43,7 @@ ms.lasthandoff: 01/03/2018
 
 直接方法从云端只能通过 HTTPS 调用，从设备端可以通过 MQTT 或 AMQP 调用。
 
-方法请求和响应的有效负载为最大 8 KB 的 JSON 文档。
+方法请求和响应的有效负载为最大 128 KB 的 JSON 文档。
 
 ## <a name="invoke-a-direct-method-from-a-back-end-app"></a>从后端应用调用直接方法
 ### <a name="method-invocation"></a>方法调用

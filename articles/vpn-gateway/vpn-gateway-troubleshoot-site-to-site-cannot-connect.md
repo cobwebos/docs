@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: genli
-ms.openlocfilehash: 55cfba5e9730b123bba20dfdc5d10c1157352a35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96a1705d651b9a2d17a466b9c43721bec7b4972c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>故障排除：Azure 站点到站点 VPN 连接无法建立连接并停止工作
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
     
     ![网关概述](media\vpn-gateway-troubleshoot-site-to-site-cannot-connect\gatewayoverview.png)
 
-### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>步骤 1。 检查是否已验证本地 VPN 设备
+### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>步骤 1. 检查是否已验证本地 VPN 设备
 
 1. 检查是否使用的是[已验证的 VPN 设备和操作系统版本](vpn-gateway-about-vpn-devices.md#devicetable)。 如果设备是未经验证的 VPN 设备，你可能需要与设备制造商联系，了解是否存在兼容性问题。
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 10/11/2017
 
 **Azure PowerShell**
 
-对于 Azure Resource Manager 部署模型：
+对于 Azure 资源管理器部署模型：
 
     Get-AzureRmVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 10/11/2017
 
 检查并删除网关子网中的用户定义的路由 (UDR) 或网络安全组 (NSG)，然后测试结果。 如果问题得到解决，请验证 NSG 或 UDR 应用的设置。
 
-### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>步骤 5. 检查本地 VPN 设备的外部接口地址
+### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>步骤 5。 检查本地 VPN 设备的外部接口地址
 
 - 如果 VPN 设备面向 Internet 的 IP 地址包含在 Azure 的“本地网络”定义中，可能会出现偶发的断开连接。
 - 设备的外部接口必须直接在 Internet 上。 在 Internet 和设备之间应该没有网络地址转换或防火墙。
@@ -87,12 +87,12 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>步骤 6. 验证子网是否完全匹配（基于 Azure 策略的网关）
 
--   验证 Azure 虚拟网络与 Azure 虚拟网络本地定义之间的子网是否完全匹配。
+-   验证虚拟网络地址空间与 Azure 虚拟网络和本地定义之间的子网是否完全匹配。
 -   验证“本地网络网关”与本地网络本地定义之间的子网是否完全匹配。
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>步骤 7. 验证 Azure 网关的运行状况探测
 
-1. 转到[运行状况探测](https://&lt;YourVirtualNetworkGatewayIP&gt;:8081/healthprobe)。
+1. 转到运行状况探测。
 
 2. 单击证书警告。
 3. 如果收到响应，则可认为 VPN 网关正常。 如果未收到响应，则可能表示网关不正常，或者网关子网上的某个 NSG 导致出现问题。 以下文本是示例响应：

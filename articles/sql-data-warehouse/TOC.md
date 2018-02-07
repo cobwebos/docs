@@ -6,6 +6,14 @@
 # 快速入门
 
 ## [创建并连接 - 门户](create-data-warehouse-portal.md)
+## 暂停和恢复计算
+### [Portal](pause-and-resume-compute-portal.md)
+### [PowerShell](pause-and-resume-compute-powershell.md)
+## 缩放计算
+### [Portal](quickstart-scale-compute-portal.md)
+### [PowerShell](quickstart-scale-compute-powershell.md)
+### [T-SQL](quickstart-scale-compute-tsql.md)
+
 
 # 教程
 ## [1 - 从 blob 加载数据](load-data-from-azure-blob-storage-using-polybase.md)
@@ -109,8 +117,6 @@
 ### [分析工作负荷](analyze-your-workload.md)
 
 ## 向外扩展
-### [管理计算 - 门户](sql-data-warehouse-manage-compute-portal.md)
-### [管理计算 - PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 ### [管理计算 - REST API](sql-data-warehouse-manage-compute-rest-api.md)
 ### [自动化计算级别](manage-compute-with-azure-functions.md)
 

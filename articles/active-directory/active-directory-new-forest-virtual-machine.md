@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2017
 ms.author: joflore
-ms.openlocfilehash: 23bea4b6e3351bdce77e6d265ba258ce60a22a36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c98082b7d839490410132f19fdbf653c61d7165c
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>在 Azure 虚拟网络中安装新的 Active Directory 林
 本文说明如何在 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)上的虚拟机 (VM) 中创建新的 Windows Server Active Directory 环境。 在此情况下，Azure 虚拟网络未连接到本地网络。
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="create-vms-to-run-the-domain-controller-and-dns-server-roles"></a>创建 VM 以运行域控制器和 DNS 服务器角色
 重复以下步骤，根据需要创建用于托管 DC 角色的 VM。 应该至少部署两个虚拟域控制器来提供容错和冗余。 如果 Azure 虚拟网络包含至少两个采用类似配置的 DC（即，它们都是 GC、运行 DNS 服务器，并且都不包含任何 FSMO 角色，等等），那么，可将运行这些 DC 的 VM 放在可用性集中，以获得更高的容错能力。
 
-若要使用 Windows PowerShell 而不是 UI 创建 VM，请参阅[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](../virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+若要使用 Windows PowerShell 而不是 UI 创建 VM，请参阅[使用 PowerShell 创建虚拟机](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md)示例。
 
 1. 在 Azure 门户中，选择“新建” > “计算”，再选择虚拟机。 使用以下值来完成向导。 除非建议或必须使用其他值，否则请接受默认的设置值。
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 12/11/2017
    |  **虚拟机配置** |<p>虚拟机名称：键入单个标签名称（例如 AzureDC1）。</p><p>新用户名：键入用户的名称。 此用户将是 VM 上本地管理员组的成员。 在首次登录 VM 时，需要使用此名称。 名为“管理员”的内置帐户将无法使用。</p><p>新密码/确认：键入密码</p> |
    |  **虚拟机配置** |<p>云服务：针对第一个 VM 选择“创建新云服务”，并在创建更多用于托管 DC 角色的 VM 时选择该云服务名称。<b></b></p><p>云服务 DNS 名称：指定一个全局唯一的名称</p><p>区域/地缘组/虚拟网络：指定虚拟网络名称（例如 WestUSVNet）。</p><p>存储帐户：针对第一个 VM 选择“使用自动生成的存储帐户”，并在创建更多用于托管 DC 角色的 VM 时选择该存储帐户名称。<b></b></p><p>可用性集：选择“创建可用性集”。<b></b></p><p>可用性集名称：键入创建第一个 VM 时的可用性集的名称，并在创建更多 VM 时选择该名称。</p> |
    |  **虚拟机配置** |<p>选择“安装 VM 代理”，以及所需的任何其他扩展。<b></b></p> |
-2. 将磁盘附加到要运行 DC 服务器角色的每个 VM。 需要提供额外的磁盘来存储 AD 数据库、日志和 SYSVOL。 指定磁盘的大小（例如 10 GB）并将“主机缓存首选项”设置为“无”。 有关步骤，请参阅[如何将数据磁盘附加到 Windows 虚拟机](../virtual-machines/windows/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+2. 将磁盘附加到要运行 DC 服务器角色的每个 VM。 需要提供额外的磁盘来存储 AD 数据库、日志和 SYSVOL。 指定磁盘的大小（例如 10 GB）并将“主机缓存首选项”设置为“无”。 有关步骤，请参阅[如何将数据磁盘附加到 Windows 虚拟机](../virtual-machines/windows/attach-managed-disk-portal.md)。
 3. 在首次登录 VM 之后，请打开“服务器管理器” > “文件和存储服务”，使用 NTFS 在该磁盘上创建一个卷。
 4. 为要运行 DC 角色的 VM 保留静态 IP 地址。 若要保留静态 IP 地址，请下载 Microsoft Web 平台安装程序，[安装 Azure PowerShell](/powershell/azure/overview) 并运行 Set-AzureStaticVNetIP cmdlet。 例如：
 

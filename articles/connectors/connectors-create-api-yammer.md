@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: c7a213343b4fb2b5a89a5052a459061b404a431c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 37f72d829fc50a0f967f08e068c553f5026f35eb
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-yammer-connector"></a>Yammer 连接器入门
 连接到 Yammer 以在企业网络中访问对话。 借助 Yammer，可以：
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 * 针对组或关注的源中有新消息的情况使用触发器。
 * 使用操作发布消息、获取所有消息等。 这些操作可获得响应，并使输出可用于其他操作。 例如，出现新消息时，可使用 Office 365 发送电子邮件。
 
-若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="create-a-connection-to-yammer"></a>创建到 Yammer 的连接
 要使用 Yammer 连接器，首先创建**连接**，然后为以下属性提供详细信息： 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/21/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: f31487c5b5d8b888c7eb58aea2e42199b1614af8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c780efe92ec69ff692b42a586f55a1036d2ec952
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件访问入门
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 12/11/2017
 
     b. 单击“选择”。
 
-    c. 在“选择”边栏选项卡中选择云应用，然后单击“选择”。
+    c. 在“选择”边栏选项卡中选择你的云应用，并单击“选择”。
 
     d.单击“下一步”。 在“云应用”边栏选项卡中，单击“完成”。
 

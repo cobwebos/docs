@@ -57,8 +57,6 @@
           href: azure-disks-dynamic-pv.md
         - name: Azure 文件 - 永久性卷
           href: azure-files-dynamic-pv.md
-        - name: Azure 文件 - 卷
-          href: azure-files.md
 - name: 引用
   items:
     - name: Azure CLI
@@ -79,3 +77,5 @@
       href: 'http://stackoverflow.com/questions/tagged/azure-container-service'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'
+    - name: 常见问题
+      href: faq.md

@@ -1,14 +1,15 @@
 ---
 layout: HubPage
-hide_bc: True
+hide_bc: 
 title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
-featureFlags: clicktale
-ms.openlocfilehash: 2cc74958c62ed99c75e848094e9da40fb21dddd3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+featureFlags:
+- clicktale
+ms.openlocfilehash: 88c99f7aa0af914210e760d498bb4fb514798207
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/03/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -155,7 +156,7 @@ ms.lasthandoff: 01/23/2018
                                                             <img src="media/index/logo_PHP.svg" alt=""> PHP</a>
                                                     </li>
                                                     <li>
-                                                        <a class="barLink" href="/nodejs/azure/">
+                                                        <a class="barLink" href="/javascript/azure/">
                                                             <img src="media/index/logo_nodejs.svg" alt=""> Node.js</a>
                                                     </li>
                                                 </ul></td></tr></table>
@@ -800,19 +801,19 @@ ms.lasthandoff: 01/23/2018
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/storage/blobs/storage-blobs-introduction/">
+                                            <a href="/azure/storage/blobs/storage-blobs-introduction">
                                                 <img src="media/index/logo_azure-blob-storage.svg" alt="" />
                                                 <p>Blob 存储</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/virtual-machines/disks/">
+                                            <a href="/azure/virtual-machines/windows/about-disks-and-vhds">
                                                 <img src="media/index/Disks-color.svg" alt="" />
                                                 <p>磁盘存储</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/storage/queues/storage-queues-introduction/">
+                                            <a href="/azure/storage/queues/storage-queues-introduction">
                                                 <img src="media/index/logo_azure-storage-q.svg" alt="" />
                                                 <p>队列存储</p>
                                             </a>
@@ -3914,10 +3915,10 @@ ms.lasthandoff: 01/23/2018
                                                     <a href="/javascript/azure/node-sdk-azure-get-started">获取用于 Node.js 的 Azure 库</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="/nodejs/azure/">入门</a>
+                                                    <a href="/javascript/azure/">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/nodejs/api/overview/azure">API 参考</a>
+                                                    <a href="/javascript/api/overview/azure/">API 参考</a>
                                                 </p>
                                             </div>
                                         </div>

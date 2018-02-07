@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/10/2018
 ms.author: spelluru
-ms.openlocfilehash: 3c4f401682e5d1789c6e15597ced145a230bbcd6
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 02e4d7cd062364cae2edad0c76e3a009bb6c1bda
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
 可使用查找活动从任何外部源读取或查找记录、表名称或值。 此输出可进一步由后续活动引用。 
@@ -36,6 +36,8 @@ ms.lasthandoff: 01/04/2018
 - Azure SQL 数据仓库（从查询转换为 JSON 数据）
 - SQL Server（从查询转换为 JSON 数据）
 - Azure 表存储（从查询转换为 JSON 数据）
+
+查找活动返回的最大行数是 **5000**，最大大小为 **10MB**。
 
 ## <a name="syntax"></a>语法
 
@@ -58,7 +60,7 @@ ms.lasthandoff: 01/04/2018
 ```
 
 ## <a name="type-properties"></a>Type 属性
-名称​​ | 说明 | Type | 必需？
+名称 | 说明 | Type | 必需？
 ---- | ----------- | ---- | --------
 dataset | 为查找提供数据集引用。 目前，支持的数据集类型包括：<ul><li>`AzureBlobDataset`，用于 [Azure Blob 存储](connector-azure-blob-storage.md#dataset-properties)（作为源）</li><li>`FileShareDataset`，用于[文件系统](connector-file-system.md#dataset-properties)（作为源）</li><li>`AzureSqlTableDataset`，用于 [Azure SQL 数据库](connector-azure-sql-database.md#dataset-properties)或 [Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md#dataset-properties)（作为源）</li><li>`SqlServerTable`，用于 [SQL Server](connector-sql-server.md#dataset-properties)（作为源）</li><li>`AzureTableDataset`，用于 [Azure 表存储](connector-azure-table-storage.md#dataset-properties)（作为源）</li> | 键/值对 | 是
 源 | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”部分中获取详细信息。 | 键/值对 | 是

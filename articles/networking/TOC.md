@@ -24,7 +24,7 @@
 ### [本地连接 - 专用](../expressroute/expressroute-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 # 入门
-## [创建自己的首个虚拟网络](../virtual-network/virtual-network-get-started-vnet-subnet.md?toc=%2fazure%2fnetworking%2ftoc.json)
+## [创建自己的首个虚拟网络](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 # 如何
 ## Internet 连接

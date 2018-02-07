@@ -1,10 +1,10 @@
 ---
-title: "使用 Service Fabric Explorer 可视化群集 | Microsoft 文档"
-description: "Service Fabric Explorer 是一个用于检验和管理 Microsoft Azure Service Fabric 群集中的云应用程序和节点的 Web 工具。"
+title: "使用 Azure Service Fabric Explorer 可视化群集 | Microsoft Docs"
+description: "Service Fabric Explorer 是一个用于检验和管理 Microsoft Azure Service Fabric 群集中的云应用程序和节点的应用程序。"
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: mikkelhegn
+manager: msfussell
 editor: 
 ms.assetid: c875b993-b4eb-494b-94b5-e02f5eddbd6a
 ms.service: service-fabric
@@ -12,25 +12,58 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2017
-ms.author: ryanwi
-ms.openlocfilehash: 965ffc0f8cec26cccbe6e6459731afc234111f4d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/08/2018
+ms.author: mikhegn
+ms.openlocfilehash: 34e00058591bc5a0a02bc408cfc3fcc11010f17c
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
-Service Fabric Explorer 是一个用于检验和管理 Azure Service Fabric 群集中的应用程序和节点的 Web 工具。 Service Fabric Explorer 管理器直接托管在群集内，因此，无论群集在何处运行，它都始终可供使用。
+
+Service Fabric Explorer (SFX) 是一种用于检验和管理 Azure Service Fabric 群集的开源工具。 Service Fabric Explorer 是适用于 Windows 和 Linux 的桌面应用程序。 即将推出针对 MacOS 的支持。
+
+## <a name="service-fabric-explorer-download"></a>Service Fabric Explorer 下载
+
+使用以下链接将 Service Fabric Explorer 下载为桌面应用程序：
+
+- Windows
+  - https://aka.ms/sfx-windows
+
+- Linux
+  - https://aka.ms/sfx-linux-x86
+  - https://aka.ms/sfx-linux-x64
+
+> [!NOTE]
+> 桌面版的 Service Fabric Explorer 可能比群集支持包含更多或更少的功能。 可回退到部署到群集的 Service Fabric Explorer 版本，以确保完全的功能兼容性。
+>
+>
+
+### <a name="running-service-fabric-explorer-from-the-cluster"></a>从群集运行 Service Fabric Explorer
+
+Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点中进行托管。 若要在 Web 浏览器中启动 SFX，则从任意浏览器（如 https://clusterFQDN:19080）浏览到群集的 HTTP 管理终结点。
+
+对于开发人员工作站设置，可以通过导航到 http://localhost:19080/Explorer 在本地群集上启动 Service Fabric Explorer。 阅读本文，了解如何[准备开发环境](service-fabric-get-started.md)。
+
+## <a name="connect-to-a-service-fabric-cluster"></a>连接到 Service Fabric 群集
+若要连接到 Service Fabric 群集，需要群集管理终结点 (FQDN/IP) 和 HTTP 管理终结点端口（默认情况下为 19080）。 例如，https://mysfcluster.westus.cloudapp.azure.com:19080。 使用“连接到 localhost”复选框，连接到工作站上的本地群集。
+
+### <a name="connect-to-a-secure-cluster"></a>连接到安全群集
+可以使用证书或 Azure Active Directory (AAD) 控制客户端对 Service Fabric 群集的访问。
+
+如果尝试连接到安全群集，则将需提供客户端证书或使用 AAD 登录，具体取决于群集的配置。
 
 ## <a name="video-tutorial"></a>视频教程
 
 若要了解如何使用 Service Fabric Explorer，请观看下面的 Microsoft 虚拟大学视频：
 
-[<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
+> [!NOTE]
+> 此视频展示是 Service Fabric 群集中托管的 Service Fabric Explorer，而非桌面版。
+>
+>
 
-## <a name="connect-to-service-fabric-explorer"></a>连接到 Service Fabric Explorer
-如果已根据说明[准备开发环境](service-fabric-get-started.md)，则可以通过导航到 http://localhost:19080/Explorer 来启动本地群集上的 Service Fabric Explorer。
+[<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>了解 SService Fabric Explorer 的布局
 可以使用左侧的树来导航 Service Fabric Explorer。 在树根中，群集仪表板提供了群集的概述，包括应用程序和节点运行状况的摘要。
@@ -68,25 +101,6 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 > [!TIP]
 > 可以通过单击每个元素旁边的省略号来执行相同的操作。
 >
->
-
-下表列出了可对每个实体执行的操作：
-
-| **实体** | **操作** | **说明** |
-| --- | --- | --- |
-| 应用程序类型 |取消预配类型 |从群集的映像存储中删除应用程序包。 需要先删除该类型的所有应用程序。 |
-| 应用程序 |删除应用程序 |删除应用程序，包括其所有的服务以及状态（如果有）。 |
-| 服务 |删除服务 |删除服务及其状态（如果有）。 |
-| 节点 |激活 |激活节点。 |
-| 节点 | 停用（暂停） | 在其当前的状态中暂停节点。 服务继续运行，但 Service Fabric 并不主动在节点上移入或移出任何项目，除非需要避免服务中断或数据不一致的问题。 此操作通常用于在特定节点上启用调试服务，以确保它们不在检查期间移动。 | |
-| 节点 | 停用（重新启动） | 从节点中安全删除所有内存服务，并关闭永久性服务。 通常在需要重新启动主机进程或计算机时使用。 | |
-| 节点 | 停用（删除数据） | 在构建足够的备用副本之后，安全关闭节点上运行的所有服务。 通常在永久性淘汰某个节点（或至少其存储）时使用。 | |
-| 节点 | 删除节点状态 | 从群集中删除节点副本的信息。 通常在发生故障的节点肯定无法恢复时使用。 | |
-| 节点 | 重新启动 | 重启节点可模拟节点故障。 详细信息请参见[此处](/powershell/module/servicefabric/restart-servicefabricnode?view=azureservicefabricps) | |
-
-由于许多操作都具有破坏性，因此在完成该操作之前，系统可能会请求你确认意图。
-
-> [!TIP]
 > 可以通过 Service Fabric Explorer 执行的每个操作也可以通过 PowerShell 或 REST API 执行，以实现自动化。
 >
 >
@@ -96,27 +110,11 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 ![在 Service Fabric Explorer 中创建应用程序实例][sfx-create-app-instance]
 
 > [!NOTE]
-> 当前无法对通过 Service Fabric Explorer 创建的应用程序实例进行参数化。 它们是使用默认参数值创建的。
+> Service Fabric Explorer 创建应用程序实例时不支持参数。 应用程序实例使用默认参数值。
 >
 >
-
-## <a name="connect-to-a-remote-service-fabric-cluster"></a>连接到远程 Service Fabric 群集
-如果知道群集的终结点并具有足够的权限，则可从任一浏览器访问 Service Fabric Explorer。 这是因为 Service Fabric Explorer 只是在该群集中运行的另一个服务。
-
-### <a name="discover-the-service-fabric-explorer-endpoint-for-a-remote-cluster"></a>发现远程群集的 Service Fabric Explorer 终结点
-要访问给定群集的 Service Fabric Explorer，请将浏览器指向：
-
-http://&lt;your-cluster-endpoint&gt;:19080/Explorer
-
-对于 Azure 群集，Azure 门户的群集基本信息窗格中也提供了 Azure 群集的完整 URL。
-
-### <a name="connect-to-a-secure-cluster"></a>连接到安全群集
-可以使用证书或 Azure Active Directory (AAD) 控制客户端对 Service Fabric 群集的访问。
-
-如果尝试在安全群集上连接到 Service Fabric Explorer，则需提供客户端证书或使用 AAD 登录，具体取决于群集的配置。
 
 ## <a name="next-steps"></a>后续步骤
-* [可测试性概述](service-fabric-testability-overview.md)
 * [在 Visual Studio 中管理 Service Fabric 应用程序](service-fabric-manage-application-in-visual-studio.md)
 * [使用 PowerShell 部署 Service Fabric 应用程序](service-fabric-deploy-remove-applications.md)
 

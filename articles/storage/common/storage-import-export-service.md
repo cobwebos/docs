@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: muralikk
-ms.openlocfilehash: ffcf0766b89cdab7c79c28dad6bf4c80275e33fc
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 37860425460496c5fc2451713d1d3ec58ac9106d
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>使用 Microsoft Azure 导入/导出服务将数据传输到 Azure 存储中
 本文分步介绍如何使用 Azure 导入/导出服务将磁盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure 存储传输到硬盘驱动器，然后再寄送到本地站点。 可将单个内部 SATA 磁盘驱动器中的数据导入 Azure Blob 存储或 Azure 文件。 
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/14/2017
 2.  根据数据的总大小，采购所需数目的 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II 或 III 硬盘驱动器。
 3.  直接使用 SATA 或通过外部 USB 适配器将硬盘驱动器附加到 Windows 计算机。
 4.  在每个硬盘驱动器上创建一个 NTFS 卷，并向该卷分配一个驱动器号。 没有装入点。
-5.  启用 NTFS 卷上的 bit locker 加密。 使用 https://technet.microsoft.com/zh-cn/library/cc731549(v=ws.10).aspx 上的说明在 Windows 计算机上启用加密。
+5.  若要在 Windows 计算机上启用加密，请启用 NTFS 卷上的 bit locker 加密。 使用 https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx 上的说明。
 6.  使用复制粘贴或拖放操作，或使用 RoboCopy 或任何类似的工具将数据完全复制到磁盘上这些加密的 NTFS 卷。
 7.  从 https://www.microsoft.com/en-us/download/details.aspx?id=42659 下载 WAImportExport V1
 8.  解压缩到默认文件夹 waimportexportv1。 例如，C:\WaImportExportV1  
@@ -55,12 +55,12 @@ ms.lasthandoff: 12/14/2017
 
 1. 登录 https://portal.azure.com/，在“更多服务”->“存储”->“导入/导出作业”下，单击“创建导入/导出作业”。
 
-2. 在“基本”部分中，选择“导入 Azure”，输入作业名称字符串，选择订阅，输入或选择资源组。 输入导入作业的描述性名称。 请注意，输入的名称只能包含小写字母、数字、连字符和下划线，必须以字母开头并且不得包含空格。 在作业进行中以及作业完成后，将使用所选名称来跟踪作业。
+2. 在“基本”部分中，选择“导入 Azure”，输入作业名称字符串，选择订阅，输入或选择资源组。 输入导入作业的描述性名称。 请注意，输入的名称只能包含小写字母、数字、连字符和下划线，必须以字母开头并且不得包含空格。 在作业进行中以及作业完成后，使用所选名称来跟踪作业。
 
-3. 在“作业详细信息”部分中，上传在驱动器准备步骤中获取的驱动器日志文件。 如果使用了 waimportexport.exe version1，需要为已准备好的每个驱动器上传一个文件。 在“导入目标”存储帐户部分中，选择要将数据导入哪个存储帐户。 “放置位置”将根据选定存储帐户所属的区域自动进行填充。
+3. 在“作业详细信息”部分中，上传在驱动器准备步骤中获取的驱动器日志文件。 如果使用了 waimportexport.exe version1，需要为已准备好的每个驱动器上传一个文件。 在“导入目标”存储帐户部分中，选择要将数据导入哪个存储帐户。 “放置位置”根据选定存储帐户所属的区域自动进行填充。
    
    ![创建导入作业 - 步骤 3](./media/storage-import-export-service/import-job-03.png)
-4. 在“回寄信息”部分中，从下拉列表中选择快递商，并输入已通过此快递商创建的有效快递商帐号。 当导入作业完成后，Microsoft 将使用此帐户寄回驱动器。 输入完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、州/省/自治区/直辖市和国家/地区。
+4. 在“回寄信息”部分中，从下拉列表中选择快递商，并输入已通过此快递商创建的有效快递商帐号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 输入完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、州/省/自治区/直辖市和国家/地区。
    
 5. 在“摘要”部分中，输入 Azure 数据中心寄送地址是为了将磁盘寄送到 Azure 数据中心。 请确保寄送标签上标明了作业名称和完整地址。 
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 12/14/2017
 * 数据恢复：恢复存储在存储中的大量数据，然后将其递送到本地位置。
 
 ## <a name="prerequisites"></a>先决条件
-本部分列出了使用此服务需要满足的先决条件。 请在寄送驱动器之前仔细查看这些先决条件。
+本部分列出了使用此服务需要满足的先决条件。 在寄送驱动器之前仔细查看这些先决条件。
 
 ### <a name="storage-account"></a>存储帐户
 必须拥有 Azure 订阅以及一个或多个存储帐户才能使用导入/导出服务。 每个作业只能用于将数据传输到一个存储帐户或者从一个存储帐户传输数据。 换言之，一个导入/导出作业不能跨多个存储帐户。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-create-storage-account.md#create-a-storage-account)。
@@ -96,13 +96,16 @@ ms.lasthandoff: 12/14/2017
 要开始从存储进行导入或导出的过程，首先要创建一个“作业”。 作业可以是“导入作业”或“导出作业”：
 
 * 需要将本地数据传输到 Azure 存储帐户时，可创建导入作业。
-* 若要将当前在存储帐户中存储的数据传输到寄送给我们的硬盘，请创建导出作业。 创建作业时，需通知导入/导出服务：要将一个或多个硬盘驱动器运送到 Azure 数据中心。
+* 若要将当前在存储帐户中存储的数据传输到寄送给 Microsoft 的硬盘，请创建导出作业。 创建作业时，需通知导入/导出服务：要将一个或多个硬盘驱动器运送到 Azure 数据中心。
 
 * 对于导入作业，需要寄送包含数据的硬盘驱动器。
 * 对于导出作业，需要寄送空硬盘驱动器。
 * 每个作业最多可以寄送 10 个硬盘驱动器。
 
 可以使用 Azure 门户或 [Azure 存储导入/导出 REST API](/rest/api/storageimportexport) 创建导入或导出作业。
+
+> [!Note]
+> 自 2018 年 2 月 28 日起将不再支持 RDFE API。 若要继续使用此服务，请迁移到 [ARM 导入/导出 REST API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/storageimportexport/resource-manager/Microsoft.ImportExport/stable/2016-11-01/storageimportexport.json)。 
 
 ### <a name="waimportexport-tool"></a>WAImportExport 工具
 创建**导入**作业的第一步是准备需要通过寄送进行数据导入的驱动器。 要准备驱动器，必须将其连接到本地服务器，然后在本地服务器上运行 WAImportExport 工具。 使用此 WAImportExport 工具可以方便地将数据复制到驱动器、使用 BitLocker 加密驱动器上的数据，以及生成驱动器日志文件。
@@ -121,21 +124,21 @@ WAImportExport 工具仅兼容 64 位 Windows 操作系统。 请参阅[操作�
 ### <a name="hard-disk-drives"></a>硬盘驱动器
 只支持将 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II 或 III 内部 HDD 用于导入/导出服务。 单个导入/导出作业最多可以有 10 个 HDD/SSD，并且每个 HDD/SSD 可以为任意大小。 大量驱动器可以分布在多个作业上，并且可创建的作业数没有限制。 
 
-对于导入作业，将处理驱动器上的第一个数据卷。 该数据卷必须使用 NTFS 进行格式化。
+对于导入作业，仅处理驱动器上的第一个数据卷。 该数据卷必须使用 NTFS 进行格式化。
 
 > [!IMPORTANT]
 > 此服务不支持内置 USB 适配器附带的外部硬盘驱动器。 此外，不能使用外部 HDD 包装内的磁盘；请勿寄送外部 HDD。
 > 
 > 
 
-下面是用于将数据复制到内部 HDD 的外部 USB 适配器列表。 Anker 68UPSATAA-02BU Anker 68UPSHHDS-BU Startech SATADOCK22UE Orico 6628SUS3-C-BK（6628 系列）Thermaltake BlacX Hot-Swap SATA 外部硬盘驱动器坞站（USB 2.0 和 eSATA）
+以下是用于将数据复制到内部 HDD 的外部 USB 适配器列表。 Anker 68UPSATAA-02BU Anker 68UPSHHDS-BU Startech SATADOCK22UE Orico 6628SUS3-C-BK（6628 系列）Thermaltake BlacX Hot-Swap SATA 外部硬盘驱动器坞站（USB 2.0 和 eSATA）
 
 ### <a name="encryption"></a>加密
-必须使用 BitLocker 驱动器加密对驱动器上的数据进行加密。 这会在运送过程中保护数据。
+必须使用 BitLocker 驱动器加密对驱动器上的数据进行加密。 此加密会在运送过程中保护数据。
 
 对于导入作业，可以通过两种方式进行加密。 第一种方式是在运行 WAImportExport 工具准备驱动器时，使用数据集 CSV 文件指定该选项。 第二种方式是在准备驱动器期间，在驱动器上手动启用 BitLocker 加密并在运行 WAImportExport 工具命令行时，在驱动集 CSV 文件中指定加密密钥。
 
-对于导出作业，在将数据复制到驱动器以后，此服务会使用 BitLocker 加密驱动器，然后再将驱动器寄回给你。 加密密钥将通过 Azure 门户提供。  
+对于导出作业，在将数据复制到驱动器以后，此服务会使用 BitLocker 加密驱动器，然后再将驱动器寄回给你。 加密密钥是通过 Azure 门户提供的。  
 
 ### <a name="operating-system"></a>操作系统
 在将驱动器寄送到 Azure 之前，可以使用下述 64 位操作系统之一通过 WAImportExport 工具准备硬盘驱动器：
@@ -143,7 +146,7 @@ WAImportExport 工具仅兼容 64 位 Windows 操作系统。 请参阅[操作�
 Windows 7 Enterprise、Windows 7 Ultimate、Windows 8 Pro、Windows 8 Enterprise、Windows 8.1 Pro、Windows 8.1 Enterprise、Windows 10<sup>1</sup>、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2。 所有这些操作系统都支持 BitLocker 驱动器加密。
 
 ### <a name="locations"></a>位置
-Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户，以及从后者进行复制。 可以将硬盘驱动器寄送到以下位置之一。 如果存储帐户所在的公共 Azure 位置没有在这里指定，则使用 Azure 门户或导入/导出 REST API 创建作业时，会提供备用的寄送位置。
+Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户，以及从后者进行复制。 可以将硬盘驱动器寄送到列出的其中一个位置。 如果存储帐户所在的公共 Azure 位置没有在这里指定，则使用 Azure 门户或导入/导出 REST API 创建作业时，会提供备用的寄送位置。
 
 支持的寄送位置：
 
@@ -155,10 +158,10 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 * 美国中北部
 * 美国中南部
 * 美国中西部
-* 欧洲北部
+* 北欧
 * 欧洲西部
 * 东亚
-* 亚洲东南部
+* 东南亚
 * 澳大利亚东部
 * 澳大利亚东南部
 * 日本西部
@@ -183,7 +186,7 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 ### <a name="shipping"></a>寄送
 **将驱动器寄送到数据中心：**
 
-创建导入或导出作业时，会向你提供某个受支持位置的寄送地址，以便你寄送自己的驱动器。 提供的寄送地址将取决于存储帐户的位置，但可能不同于存储帐户位置。
+创建导入或导出作业时，会向你提供某个受支持位置的寄送地址，以便你寄送自己的驱动器。 提供的寄送地址取决于存储帐户的位置，但可能不同于存储帐户位置。
 
 FedEx、UPS 或 DHL 可用于将驱动器寄送到寄送地址。
 
@@ -196,14 +199,14 @@ FedEx、UPS 或 DHL 可用于将驱动器寄送到寄送地址。
 发运包裹时，必须遵循 [Microsoft Azure 服务条款](https://azure.microsoft.com/support/legal/services-terms/)中的条款。
 
 > [!IMPORTANT]
-> 请注意，发运的物理介质可能需要穿越国界。 应当负责确保物理介质和数据是遵照适用的法律导入和/或导出的。 在寄送物理介质之前，请咨询顾问以验证介质和数据是否可以合法地寄送到所确定的数据中心。 这会有助于确保它可以及时到达 Microsoft。 例如，任何跨国界的包裹都需要附上商业发票（除非在欧盟内跨越国界）。 可从快递商网站打印填写好的商业发票的副本。 比如，商业发票可以是 [DHL 商业发票](http://invoice-template.com/wp-content/uploads/dhl-commercial-invoice-template.pdf)和 [FedEx 商业发票](http://images.fedex.com/downloads/shared/shipdocuments/blankforms/commercialinvoice.pdf)。 请确保 Microsoft 未被指定为导出者。
+> 请注意，发运的物理介质可能需要穿越国界。 应当负责确保物理介质和数据是遵照适用的法律导入和/或导出的。 在寄送物理介质之前，请咨询顾问以验证介质和数据是否可以合法地寄送到所确定的数据中心。 这有助于确保它可以及时到达 Microsoft。 例如，任何跨国界的包裹都需要附上商业发票（除非在欧盟内跨越国界）。 可从快递商网站打印填写好的商业发票的副本。 比如，商业发票可以是 [DHL 商业发票](http://invoice-template.com/wp-content/uploads/dhl-commercial-invoice-template.pdf)和 [FedEx 商业发票](http://images.fedex.com/downloads/shared/shipdocuments/blankforms/commercialinvoice.pdf)。 请确保 Microsoft 未被指定为导出者。
 > 
 > 
 
 ## <a name="how-does-the-azure-importexport-service-work"></a>Azure 导入/导出服务是如何工作的？
 可以使用 Azure 导入/导出服务在本地站点和 Azure 存储之间传输数据，只需创建作业，然后将硬盘驱动器寄送到 Azure 数据中心即可。 寄送的每个硬盘驱动器都与单个作业相关联。 每个作业都与单个存储帐户相关联。 请仔细查看[先决条件](#pre-requisites)部分，以了解此服务的具体情况，例如支持的数据类型、磁盘类型、位置和寄送方式。
 
-此部分将深入介绍导入和导出作业所涉及的步骤。 随后，我们会在[快速启动部分](#quick-start)提供分步说明，指导创建导入和导出作业。
+此部分介绍作业导入和导出操作中涉及的高级别步骤。 随后，将在[快速启动部分](#quick-start)提供分步说明，指导如何创建导入和导出作业。
 
 ### <a name="inside-an-import-job"></a>关于导入作业
 概括而言，导入作业包括以下步骤：
@@ -242,7 +245,7 @@ FedEx、UPS 或 DHL 可用于将驱动器寄送到寄送地址。
     ![图 2：导出作业流](./media/storage-import-export-service/exportjob.png)
 
 ### <a name="viewing-your-job-and-drive-status"></a>查看作业和驱动器状态
-可以从 Azure 门户跟踪导入或导出作业的状态。 单击“导入/导出”选项卡。作业的列表将出现在该页上。
+可以从 Azure 门户跟踪导入或导出作业的状态。 单击“导入/导出”选项卡。随即页面上显示作业列表。
 
 ![查看作业状态](./media/storage-import-export-service/jobstate.png)
 
@@ -392,7 +395,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 
 ## <a name="create-an-export-job"></a>创建导出作业
-创建导出作业的目的是通知导入/导出服务：要将一个或多个空驱动器寄送到数据中心；这样数据中心就可以将数据从存储帐户导出到驱动器，然后将驱动器寄送给你。
+创建导出作业的目的是通知导入/导出服务：要将一个或多个空驱动器寄送到数据中心；这样数据中心就可以将数据从存储帐户导出到驱动器，并将驱动器寄送给用户。
 
 ### <a name="prepare-your-drives"></a>准备驱动器
 对驱动器进行准备以便完成导出作业时，建议执行以下预检查：
@@ -487,11 +490,11 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 **该服务是否会在返还驱动器之前将其格式化？**
 
-不能。 所有驱动器都使用 BitLocker 加密。
+不会。 所有驱动器都使用 BitLocker 加密。
 
 **我是否可为导入/导出作业从 Microsoft 购买驱动器？**
 
-不能。 对于导入和导出作业，用户将需要装运自己的驱动器。
+不会。 对于导入和导出作业，用户将需要装运自己的驱动器。
 
 **如何才能访问此服务导入的数据？**
 

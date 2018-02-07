@@ -3,7 +3,7 @@ title: "自动增加 Azure 事件中心吞吐量单位 |Microsoft Docs"
 description: "在命名空间上启用自动膨胀，自动增加吞吐量单位"
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: sethmanheim
 manager: timlt
 editor: 
 ms.assetid: 
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
+ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 1cd31e0866ee6088483f88e8f80d01f75764c771
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20ee0e6cff2a07cbd62a79799eada5708c7a0f07
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>自动增加 Azure 事件中心吞吐量单位
 
-Azure 事件中心是高度可缩放的数据流式处理平台。 因此，事件中心客户通常会在加入该服务后提高自己的使用量。 要提高使用量需要增加预先确定的吞吐量单位，从而扩展事件中心和处理更大的传输速率。 事件中心的自动膨胀功能可自动增加吞吐量单位数，以便满足使用量需求。 增加吞吐量单位数可防止出现限制情况，在这些情况下：
+Azure 事件中心是高度可缩放的数据流式处理平台。 因此，开始使用该服务后事件中心使用量通常会增加。 这样的使用量需要增加预先确定的吞吐量单位，从而扩展事件中心和处理更大的传输速率。 事件中心的自动膨胀功能可自动增加吞吐量单位数，以便满足使用量需求。 增加吞吐量单位数可防止出现限制情况，在这些情况下：
 
 * 数据入口速率超过设置的吞吐量单位数。
 * 数据出口请求速率超过设置的吞吐量单位数。
@@ -37,26 +37,26 @@ Azure 事件中心是高度可缩放的数据流式处理平台。 因此，事�
 
 ## <a name="enable-auto-inflate-on-a-namespace"></a>在命名空间上启用自动膨胀
 
-可使用下列方法之一在命名空间上启用或禁用自动膨胀：
+可使用下列方法之一在事件中心命名空间上启用或禁用自动膨胀：
 
 1. [Azure 门户](https://portal.azure.com)。
-2. Azure Resource Manager 模板。
+2. Azure 资源管理器模板。
 
 ### <a name="enable-auto-inflate-through-the-portal"></a>通过门户启用自动膨胀
 
-创建事件中心命名空间时，可在命名空间上启用自动膨胀功能：
+创建事件中心命名空间时，可启用自动膨胀功能：
  
 ![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
-启用此选项后，可从少量吞吐量单位开始并随所需使用量的增长而增加。 膨胀的上限不会影响定价，定价取决于每小时使用的吞吐量单位数。
+启用此选项后，可从少量吞吐量单位开始并随所需使用量的增长而增加。 膨胀的上限不会立即影响定价，定价取决于每小时使用的吞吐量单位数。
 
-还可以使用门户中“设置”边栏选项卡上的“缩放”选项启用自动膨胀：
+还可以使用门户中“设置”窗格上的“缩放”选项启用自动膨胀：
  
 ![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
 
-### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板启用自动膨胀
+### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用自动膨胀
 
-可在 Azure Resource Manager 模板部署期间启用自动膨胀。 例如，将 `isAutoInflateEnabled` 属性设置为“true”并将 `maximumThroughputUnits` 设置为 10。
+可在 Azure 资源管理器模板部署期间启用自动膨胀。 例如，将 `isAutoInflateEnabled` 属性设置为“true”并将 `maximumThroughputUnits` 设置为 10。
 
 ```json
 "resources": [
@@ -106,4 +106,4 @@ Azure 事件中心是高度可缩放的数据流式处理平台。 因此，事�
 访问以下链接可以了解有关事件中心的详细信息：
 
 * [事件中心概述](event-hubs-what-is-event-hubs.md)
-* [创建事件中心](event-hubs-create.md)
+

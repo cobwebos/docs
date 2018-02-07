@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: LADocs; deli
-ms.openlocfilehash: 338b6a5b549d7bf81186550295608438ac4aee32
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a459fb131cb9f917f2b0cf79679b04da48d76c42
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="perform-different-actions-in-logic-apps-with-a-switch-statement"></a>使用 Switch 语句在逻辑应用中执行不同操作
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="prerequisites"></a>先决条件
 
 - 一个有效的 Azure 订阅。 如果没有有效的 Azure 订阅，请[创建免费帐户](https://azure.microsoft.com/free/)，或[免费试用逻辑应用](https://tryappservice.azure.com/)。
-- [有关逻辑应用的基本知识](logic-apps-what-are-logic-apps.md)
+- [有关逻辑应用的基本知识](logic-apps-overview.md)
 
 ## <a name="add-a-switch-statement-to-your-workflow"></a>将 Switch 语句添加到工作流
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 
 3. 添加 Switch 语句。
 
-   - 选择**+ 新步骤** > **...更多”** > “添加 Switch 案例”。 
+   - 选择“+ 新步骤” > “...更多”** > “添加 Switch 案例”。 
    - 现在，我们要根据“发送审批电子邮件”操作的 `SelectedOptions` 输出来选择要执行的操作。 
    可在“添加动态内容”选择器中找到此字段。
    - 当审批者选择了 `Approve` 时，使用“案例 1”进行处理。

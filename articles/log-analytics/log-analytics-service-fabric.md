@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 01/19/2018
 ms.author: nini
-ms.openlocfilehash: ca86787e344aa5e9e68934dee6e9e83aeb4cc340
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 15c2d882a121df48c94d457719287cd510d0c093
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a>使用 PowerShell 评估 Azure Service Fabric 应用程序和微服务
 > [!div class="op_single_selector"]
-> * [Resource Manager](log-analytics-service-fabric-azure-resource-manager.md)
+> * [资源管理器](log-analytics-service-fabric-azure-resource-manager.md)
 > * [PowerShell](log-analytics-service-fabric.md)
 >
 >
@@ -49,7 +49,7 @@ Service Fabric 解决方案仪表板显示 Service Fabric 环境中值得注意�
 3. 在工作区中启用 Service Fabric 解决方案。
 
 ## <a name="configure-log-analytics-to-collect-and-view-service-fabric-logs"></a>配置 Log Analytics 以收集和查看 Service Fabric 日志
-在本节中将了解如何配置 Log Analytics 以检索 Service Fabric 日志。 借助日志，你可以使用 OMS 门户查看、分析和解决群集或该群集中运行的应用程序和服务中的问题。
+在本节中将了解如何配置 Log Analytics 以检索 Service Fabric 日志。 借助日志，你可以使用 Azure 门户查看、分析和解决群集或该群集中运行的应用程序和服务中的问题。
 
 > [!NOTE]
 > 配置 Azure 诊断扩展，以上传存储表日志。 此表必须与 Log Analytics 寻找的表匹配。 有关详细信息，请参阅[如何使用 Azure 诊断收集日志](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md)。 本文中的配置设置示例会显示存储表的名称。 在群集上设置“诊断”且并将日志上传到存储帐户后，下一步是配置 Log Analytics 以收集这些日志。
@@ -61,7 +61,7 @@ Service Fabric 解决方案仪表板显示 Service Fabric 环境中值得注意�
 以下工具用于执行本节中的某些操作：
 
 * Azure PowerShell
-* [Operations Management Suite](http://www.microsoft.com/oms)
+* [Log Analytics](log-analytics-overview.md)
 
 ### <a name="configure-a-log-analytics-workspace-to-show-the-cluster-logs"></a>配置 Log Analytics 工作区以显示群集日志
 
@@ -421,10 +421,10 @@ $WADtables = @("WADServiceFabricReliableActorEventTable",
                )
 
 <#
-    Check if OMS Log Analytics is configured to index service fabric events from the specified table
+    Check if Log Analytics is configured to index service fabric events from the specified table
 #>
 
-function Check-OMSLogAnalyticsConfiguration {
+function Check-LogAnalyticsConfiguration {
     param(
     [psobject]$workspace,
     [psobject]$storageAccount,
@@ -439,21 +439,21 @@ function Check-OMSLogAnalyticsConfiguration {
 
         if ("WADServiceFabric*EventTable" -in $currentStorageAccountInsight.Tables)
         {
-            Write-Verbose ("OMS Log Analytics workspace " + $workspace.Name + " is configured to index service fabric actor, service and operational events from " + $storageAccount.Name)
+            Write-Verbose ("Log Analytics workspace " + $workspace.Name + " is configured to index service fabric actor, service and operational events from " + $storageAccount.Name)
         } else
         {
-            Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + " is not configured to index service fabric actor, service and operational events from " + $storageAccount.Name)
+            Write-Warning ("Log Analytics workspace " + $workspace.Name + " is not configured to index service fabric actor, service and operational events from " + $storageAccount.Name)
         }
         if ("WADETWEventTable" -in $currentStorageAccountInsight.Tables)
         {
-            Write-Verbose ("OMS Log Analytics workspace " + $workspace.Name + " is configured to index service fabric application events from " + $storageAccount.Name)
+            Write-Verbose ("Log Analytics workspace " + $workspace.Name + " is configured to index service fabric application events from " + $storageAccount.Name)
         } else
         {
-            Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + " is not configured to index service fabric application events from " + $storageAccount.Name)
+            Write-Warning ("Log Analytics workspace " + $workspace.Name + " is not configured to index service fabric application events from " + $storageAccount.Name)
         }
     } else
     {
-        Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + "is not configured to read service fabric events from " + $storageAccount.Name)
+        Write-Warning ("Log Analytics workspace " + $workspace.Name + "is not configured to read service fabric events from " + $storageAccount.Name)
     }    
 }
 
@@ -614,9 +614,9 @@ catch [System.Management.Automation.PSInvalidOperationException]
 
 $allResources = Get-AzureRmResource
 
-$OMSworkspace = $allResources.Where({($_.ResourceType -eq "Microsoft.OperationalInsights/workspaces") -and ($_.ResourceName -eq $workspaceName)})
+$logAnalyticsWorkspace = $allResources.Where({($_.ResourceType -eq "Microsoft.OperationalInsights/workspaces") -and ($_.ResourceName -eq $workspaceName)})
 
-if ($OMSworkspace.Name -ne $workspaceName)
+if ($logAnalyticsWorkspace.Name -ne $workspaceName)
 {
     Write-Error ("Unable to find Log Analytics Workspace " + $workspaceName)
 }
@@ -644,7 +644,7 @@ $storageAccountsToCheck = ($allResources.Where({($_.ResourceType -eq "Microsoft.
 foreach($storageAccount in $storageAccountsToCheck)
 {
     Check-TablesForData $storageAccount
-    Check-OMSLogAnalyticsConfiguration $OMSworkspace $storageAccount
+    Check-LogAnalyticsConfiguration $logAnalyticsWorkspace $storageAccount
 }
  ```
 

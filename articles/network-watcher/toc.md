@@ -7,7 +7,7 @@
 ## [安全组视图](network-watcher-security-group-view-overview.md)
 ## [下一跃点](network-watcher-next-hop-overview.md)
 ## [VPN 连接故障排除](network-watcher-troubleshoot-overview.md)
-## [连接检查](network-watcher-connectivity-overview.md)
+## [排查连接问题](network-watcher-connectivity-overview.md)
 ## [服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-watcher-limits)
 
 # 入门
@@ -46,7 +46,7 @@
 ### [Azure CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
 ### [Azure CLI](network-watcher-security-group-view-cli.md)
 ### [REST](network-watcher-security-group-view-rest.md)
-## 测试连接
+## 排查连接问题
 ### [Azure portal](network-watcher-connectivity-portal.md)
 ### [Azure PowerShell](network-watcher-connectivity-powershell.md)
 ### [Azure CLI](network-watcher-connectivity-cli.md)

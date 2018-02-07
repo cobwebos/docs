@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
-ms.openlocfilehash: 710a1fe0ce2b7a1841187cf75f4ffb090cc161e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f95ee94d1b86b6409fc5ecce14ed3e068a635b3d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="connecting-your-security-products-to-the-operations-management-suite-oms-security-and-audit-solution"></a>将安全产品连接到 Operations Management Suite (OMS) 安全性和审核解决方案 
 本文档帮助读者将安全产品连接到 OMS 安全性和审核解决方案。 支持以下源：
@@ -95,7 +95,7 @@ OMS 安全性支持通过 Syslogs 和 [Cisco ASA](https://blogs.technet.microsof
 
 ## <a name="reviewing-collected-security-events"></a>查看收集的安全事件
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 配置完成后，OMS 安全性将开始引入安全事件。 要可视化这些事件，请打开“日志搜索”，在搜索字段中键入命令 *Type=CommonSecurityLog*，并按 ENTER。 以下示例显示了此命令的结果。请注意，在本例中，OMS 安全性已从多个供应商引入安全日志：
    

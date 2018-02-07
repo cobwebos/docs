@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8398a261ca33060b7709d818cb64bb1e8e2058b1
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 3350645d4f173a6d0d007ff9095bb3115600a13b
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>在不到 15 分钟的时间里通过数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库
 > [!NOTE]
@@ -125,7 +125,7 @@ ms.lasthandoff: 11/02/2017
       2. 选择“新建”并输入资源组的名称。
    4. 选择数据工厂的**位置**。
    5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。  
-   6. 单击“创建” 。
+   6. 单击“创建”。
 4. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：
 
    ![数据工厂主页](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
@@ -143,7 +143,7 @@ ms.lasthandoff: 11/02/2017
 
 1. 输入 **CopyFromBlobToAzureSqlDataWarehouse** 作为**任务名称**
 2. 选择“立即运行一次”选项。   
-3. 单击“下一步”。  
+3. 单击“资源组名称” 的 Azure 数据工厂。  
 
     ![复制向导 - 属性页](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
@@ -185,7 +185,7 @@ ms.lasthandoff: 11/02/2017
 
 ## <a name="step-4-performance-settings"></a>步骤 4：性能设置
 
-默认选中“允许 polybase”。  单击“下一步”。
+默认选中“允许 polybase”。  单击“资源组名称” 的 Azure 数据工厂。
 
 ![复制向导 - 架构映射页](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 

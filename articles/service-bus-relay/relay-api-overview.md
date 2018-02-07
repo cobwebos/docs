@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
+ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 60413bd110fd4021b070f94d6338a50e1b321dea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fc6db8aba887b186961da9b12e7c5f32afa4355b
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="available-relay-apis"></a>可用的中继 API
 
@@ -37,9 +37,11 @@ ms.lasthandoff: 10/11/2017
 ### <a name="additional-information"></a>其他信息
 
 #### <a name="net"></a>.NET
+
 .NET 生态系统具有多个运行时，因此事件中心有多个 .NET 库。 可以使用 .NET Core 或 .NET Framework 运行 .NET Standard 库，但 .NET Framework 库只能在 .NET Framework 环境中运行。 有关 .NET Frameworks 的详细信息，请参阅 [framework 版本](/dotnet/articles/standard/frameworks#framework-versions)。
 
 ## <a name="next-steps"></a>后续步骤
+
 若要了解有关 Azure 中继的详细信息，请访问以下链接：
 * [什么是 Azure 中继？](relay-what-is-it.md)
 * [中继常见问题](relay-faq.md)

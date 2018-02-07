@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 01/22/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 5be05fabf03e7e3ccaa3bf66ffefdd6406a06b3e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b6e540576bc4a5876bc8546262a181bd82ad9727
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>使用 HDInsight 中的 Hive 和 Hadoop 分析 Twitter 数据
 
@@ -45,7 +45,7 @@ Twitter 允许通过 REST API 检索[每个推文的数据](https://dev.twitter.
 
    | 字段 | 值 |
    |:--- |:--- |
-   | Name |MyHDInsightApp |
+   | 名称 |MyHDInsightApp |
    | 说明 |MyHDInsightApp |
    | 网站 |http://www.myhdinsightapp.com |
 

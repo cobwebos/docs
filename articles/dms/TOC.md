@@ -16,3 +16,6 @@
 ## [数据库迁移指南](https://aka.ms/datamigration)
 ## [Data Migration Assistant](https://aka.ms/dma)
 ## [定价](https://aka.ms/dms-pricing)
+## [先决条件概述](pre-reqs.md)
+## [常见问题](faq.md)
+

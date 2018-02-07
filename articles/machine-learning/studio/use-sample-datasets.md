@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2017
+ms.date: 01/19/2018
 ms.author: garye
-ms.openlocfilehash: d93c7c0bdad930bba679d705b012f1567da1da8a
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 3339d3b3bab2c0ce210950c178ef03fc6c0ecab9
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中使用示例数据集
 [top]: #machine-learning-sample-datasets
@@ -102,15 +102,6 @@ UCI 自行车租赁数据集基于 Capital Bikeshare 公司的实际数据，该
 <b>相关研究：</b>Yeh, I.C.（2008 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
 <p></p>
 Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM model using Bernoulli sequence”, 专家系统及其应用, 2008 年, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
-  </td>
-</tr>
-
-<tr>
-  <td>Amazon 中的书评</td>
-  <td>
-Amazon 中图书的评论，由宾夕法尼亚大学的研究人员摘自 amazon.com 网站（<a href="http://www.cs.jhu.edu/~mdredze/datasets/sentiment/">观点</a>）。 请参阅研究报告“Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification”，作者：Association of Computational Linguistics (ACL) 的 John Blitzer、Mark Dredze 和 Fernando Pereira，2007 年。
-<p></p>
-原始数据集中的评论大小为 975K，排名为 1、2、3、4 或 5。 评论使用英语撰写，时间段为 1997 年到 2007 年。 此数据集已降低取样 10K 大小的评论。
   </td>
 </tr>
 

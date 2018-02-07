@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/25/2017
 ms.author: yoelh
-ms.openlocfilehash: d65d94bb5c807abfd6cbb1fae786a02f179e93d6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0d4594f5e7c0a13d50993dd42d4780c1ba703140
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
 在[相关的 Azure AD B2C 文章](active-directory-b2c-custom-rest-api-netfw.md)中，我们已创建一个无需身份验证即可集成到 Azure Active Directory B2C (Azure AD B2C) 用户旅程的 RESTful 服务 (Web API)。 
@@ -76,7 +76,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 3. 打开 *App_Start\ClientAuthMiddleware.cs* 文件并将文件内容替换为以下代码：
 
-    ```C#
+    ```csharp
     
     using Microsoft.Owin;
     using System;
@@ -194,7 +194,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 2. 打开 *Startup.cs* 文件并将文件内容替换为以下代码：
 
-    ```C#
+    ```csharp
     using Microsoft.Owin;
     using Owin;
     
@@ -239,7 +239,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“机密”。
 
-8. 选择“创建” 。
+8. 选择“创建”。
 
 9. 确认已创建 `B2C_1A_B2cRestClientId` 密钥。
 
@@ -259,7 +259,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“机密”。
 
-8. 选择“创建” 。
+8. 选择“创建”。
 
 9. 确认已创建 `B2C_1A_B2cRestClientSecret` 密钥。
 

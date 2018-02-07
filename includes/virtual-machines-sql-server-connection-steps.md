@@ -42,7 +42,7 @@
 1. 在连接到虚拟机时，在“开始”页面中，键入“SQL Server Management Studio”，并单击勾选图标。
    
     Management Studio 在首次打开时，一定会创建用户 Management Studio 环境。 这可能需要一小段时间。
-2. Management Studio 会显示“连接到服务器”对话框。 在“服务器名称”框中键入要使用对象资源管理器连接到数据库引擎的虚拟机的名称（除了虚拟机名称，还可以使用“(local)”或一个句点作为“服务器名称”）。 选择“Windows 身份验证”，在“用户名”框中保留“***your_VM_name*\your_local_administrator**”。 单击“连接”。
+2. Management Studio 会显示“连接到服务器”对话框。 在“服务器名称”框中键入要使用对象资源管理器连接到数据库引擎的虚拟机的名称（除了虚拟机名称，还可以使用“(local)”或一个句点作为“服务器名称”）。 选择“Windows 身份验证”，在“用户名”框中保留 ***your_VM_name*\your_local_administrator**。 单击“连接”。
    
     ![连接到服务器](./media/virtual-machines-sql-server-connection-steps/19Connect-to-Server.png)
 3. 在 SQL Server Management Studio 的“对象资源管理器”中，右键单击 SQL Server 实例的名称（虚拟机名称），并单击“属性”。

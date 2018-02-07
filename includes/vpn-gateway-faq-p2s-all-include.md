@@ -51,9 +51,23 @@ Azure 支持两种类型的点到站点 VPN 选项：
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure 是否支持使用 Windows 的 IKEv2 VPN？
 
-用户可以使用支持 IKEv2 的内置 Windows VPN 客户端连接到 Azure。 但是，在以下情况下，从 Windows 设备建立的 IKEv2 连接不起作用：
+在 Windows 10 和 Server 2016 上支持 IKEv2。 但是，若要使用 IKEv2，必须在本地安装更新并设置注册表项值。 Windows 10 以前的 OS 版本不受支持，并且只能使用 SSTP。
 
-  如果用户的设备包含大量的受信任根证书，在 IKE 交换期间，消息有效负载会很大，导致 IP 层碎片化。 碎片会在 Azure 端被拒绝，导致连接失败。 导致此问题的确切证书数目很难估算。 因此，无法保证从 Windows 设备建立的 IKEv2 连接可行。 在混合环境（包括 Windows 和 Mac 设备）中配置 SSTP 和 IKEv2 时，Windows VPN 配置文件始终会先尝试 IKEv2 隧道。 如果由于此处所述的问题而导致这种尝试失败，将会回退到 SSTP。
+为运行 IKEv2 准备 Windows 10 或 Server 2016：
+
+1. 安装更新。
+
+  | OS 版本 | 日期 | 编号/链接 |
+  |---|---|---|---|
+  | Windows Server 2016<br>Windows 10 版本 1607 | 2018 年 1 月 17 日 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+  | Windows 10 版本 1703 | 2018 年 1 月 17 日 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+  |  |  |  |  |
+
+2. 设置注册表项值。 在注册表中创建“HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload”REG_DWORD 键或将其设置为 1。
+
+### <a name="what-happens-when-i-configure-both-sstp-and-ikev2-for-p2s-vpn-connections"></a>为 P2S VPN 连接配置 SSTP 和 IKEv2 时，会发生什么情况？
+
+在混合环境（包括 Windows 和 Mac 设备）中同时配置了 SSTP 和 IKEv2 时，Windows VPN 客户端始终将先尝试使用 IKEv2 隧道，但如果 IKEv2 连接不成功将回退到 SSTP。 MacOSX 将仅通过 IKEv2 进行连接。
 
 ### <a name="other-than-windows-and-mac-which-other-platforms-does-azure-support-for-p2s-vpn"></a>除了 Windows 和 Mac 以外，Azure 还支持在其他哪些平台上使用 P2S VPN？
 

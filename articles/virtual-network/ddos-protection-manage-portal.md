@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 958533079c0e0864ff0e561ad865114ef2a415a8
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: ee418537fb52dbfb3eacca6e99d8572152a60910
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 门户管理 Azure DDoS 保护标准
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 12/22/2017
 
     ![攻击警报](./media/ddos-protection-manage-portal/ddos-alert.png) 
 
-还可以了解有关为创建警报而[配置 webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) 和[逻辑应用](../logic-apps/logic-apps-what-are-logic-apps.md)的详细信息。
+还可以了解有关为创建警报而[配置 webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) 和[逻辑应用](../logic-apps/logic-apps-overview.md)的详细信息。
 
 ## <a name="configure-logging-on-ddos-protection-standard-metrics"></a>配置针对 DDoS 保护标准指标的日志记录
 

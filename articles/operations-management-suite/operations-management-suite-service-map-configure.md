@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 0823cc54731ac1cd7f39de256a899696683375a8
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: e23173fb6708104c39071145595e4eec3454ee76
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>在 Operations Management Suite 中配置服务映射
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 借助它，你可以按照自己的想法，将服务器作为提供重要服务的互连系统。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -28,8 +28,8 @@ ms.lasthandoff: 11/22/2017
 ## <a name="dependency-agent-downloads"></a>依赖关系代理下载
 | 文件 | 操作系统 | 版本 | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.2.1 | CBF050BFEA78B56A138CB1313DE0E75ABC30187C1B96EF9B4CBDEDD9EDFF6A17 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.2.1 | F4560E951F6C57A7466C82052BAFBF9515DC80DDA794ED8FB4DB02CEBA743277 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.3.0 | 1F5261CAAF6C8DF4E03E4927DA918B3461B40B41C6BF5845803878D7CF975693 |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.3.0 | 7BADFF2411899114F0214766160E4E871A2462DC137141CEEDEFAF528F428ADD  |
 
 
 ## <a name="connected-sources"></a>连接的源
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/22/2017
 
 | 连接的源 | 支持 | 说明 |
 |:--|:--|:--|
-| Windows 代理 | 是 | 服务映射从 Windows 代理计算机分析和收集数据。 <br><br>除 [OMS 代理](../log-analytics/log-analytics-windows-agents.md)以外，Windows 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
+| Windows 代理 | 是 | 服务映射从 Windows 代理计算机分析和收集数据。 <br><br>除 [OMS 代理](../log-analytics/log-analytics-windows-agent.md)以外，Windows 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
 | Linux 代理 | 是 | 服务映射从 Linux 代理计算机分析和收集数据。 <br><br>除 [OMS 代理](../log-analytics/log-analytics-linux-agents.md)以外，Linux 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
 | System Center Operations Manager 管理组 | 是 | 服务映射在连接的 [System Center Operations Manager 管理组](../log-analytics/log-analytics-om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br>需要从 System Center Operations Manager 代理计算机直接连接到 Operations Management Suite。 数据从管理组转发到 Operations Management Suite 存储库。|
 | Azure 存储帐户 | 否 | 服务映射从代理计算机中收集数据，因此其中任何数据都不会从 Azure 存储中收集。 |
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/22/2017
 
 使用以下步骤在每台 Windows 计算机上安装依赖关系代理：
 
-1.  请按照[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](../log-analytics/log-analytics-windows-agents.md)中的说明安装 OMS 代理。
+1.  请按照[将 Windows 计算机连接到 Azure 中的 Log Analytics 服务](../log-analytics/log-analytics-windows-agent.md)中的说明安装 OMS 代理。
 2.  下载 Windows 代理，并使用以下命令运行： <br>`InstallDependencyAgent-Windows.exe`
 3.  按照向导安装代理。
 4.  如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Windows 代理上，日志目录是 %Programfiles%\Microsoft Dependency Agent\logs。 
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/22/2017
 
 依赖关系代理的文件放置在以下目录中：
 
-| 文件 | 位置 |
+| 文件 | Location |
 |:--|:--|
 | 核心文件 | /opt/microsoft/dependency-agent |
 | 日志文件 | /var/opt/microsoft/dependency-agent/log |
@@ -139,7 +139,7 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 ```
 
 ## <a name="azure-vm-extension"></a>Azure VM 扩展
-可以使用 [Azure VM 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/classic/agents-and-extensions)轻松地将依赖项代理部署到 Azure VM。  借助 Azure VM 扩展，可以通过 PowerShell 脚本或直接在 VM 的 Azure 资源管理器模板中将依赖项代理部署到 VM。  有一个扩展可用于 Windows (DependencyAgentWindows) 和 Linux (DependencyAgentLinux)。  如果通过 Azure VM 扩展进行部署，则代理可以自动更新到最新版本。
+可以使用 [Azure VM 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features)轻松地将依赖项代理部署到 Azure VM。  借助 Azure VM 扩展，可以通过 PowerShell 脚本或直接在 VM 的 Azure 资源管理器模板中将依赖项代理部署到 VM。  有一个扩展可用于 Windows (DependencyAgentWindows) 和 Linux (DependencyAgentLinux)。  如果通过 Azure VM 扩展进行部署，则代理可以自动更新到最新版本。
 
 若要通过 PowerShell 部署 Azure VM 扩展，可以使用以下示例：
 ```PowerShell
@@ -262,8 +262,8 @@ Microsoft 依赖关系代理基于 Microsoft Visual Studio 运行时库。 如�
 #### <a name="server-doesnt-appear-in-service-map"></a>服务映射中不显示服务器
 如果已成功安装依赖关系代理，但在服务映射解决方案中看不到服务器：
 * 依赖关系代理是否已安装成功？ 可通过检查是否已安装并运行服务来验证这一点。<br><br>
-Windows：查找名为“Microsoft 依赖关系代理”的服务<br>
-Linux：查找名为“microsoft-dependency-agent”的运行中进程
+**Windows**：查找名为“Microsoft 依赖关系代理”的服务<br>
+**Linux**：查找正在运行的进程“microsoft-dependency-agent”
 
 * 是否属于 [Operations Management Suite/Log Analytics 的免费定价层](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)？ 免费计划允许最多 5 个仅有的服务映射服务器。 服务映射中不再有任何其他的服务器，即使前 5 个服务器不再发送数据。
 
@@ -350,8 +350,8 @@ Linux：查找名为“microsoft-dependency-agent”的运行中进程
 
 | OS 版本 | 内核版本 |
 |:--|:--|
-| 16.04 | 4.4.0-98 |
-| 14.04 | 3.13.0-135<br>4.4.0-98 |
+| 16.04 | 4.4.0-103<br>4.11.0-1016 |
+| 14.04 | 3.13.0-137<br>4.4.0-103 |
 
 ### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>具有 Unbreakable Enterprise Kernel (UEK) 的 Oracle Enterprise Linux
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
@@ -367,8 +367,6 @@ Linux：查找名为“microsoft-dependency-agent”的运行中进程
 
 | OS 版本 | 内核版本
 |:--|:--|
-| 5.8 | Oracle 2.6.32-300 (UEK R1) |
-| 5.9 | Oracle 2.6.39-300 (UEK R2) |
 | 5.10 | Oracle 2.6.39-400 (UEK R2) |
 | 5.11 | Oracle 2.6.39-400 (UEK R2) |
 
@@ -377,16 +375,10 @@ Linux：查找名为“microsoft-dependency-agent”的运行中进程
 #### <a name="suse-linux-11"></a>SUSE Linux 11
 | OS 版本 | 内核版本
 |:--|:--|
-| 11 | 2.6.27 |
-| 11 SP1 | 2.6.32 |
-| 11 SP2 | 3.0.13 |
-| 11 SP3 | 3.0.76 |
-| 11 SP4 | 3.0.101 |
+| 11 SP2 | 3.0.101-0.7 |
+| 11 SP3 | 3.0.101-0.47 |
+| 11 SP4 | 3.0.101-65 |
 
-#### <a name="suse-linux-10"></a>SUSE Linux 10
-| OS 版本 | 内核版本
-|:--|:--|
-| 10 SP4 | 2.6.16.60 |
 
 ## <a name="diagnostic-and-usage-data"></a>诊断和使用情况数据
 Microsoft 通过使用服务映射服务，自动收集使用情况和性能数据。 Microsoft 使用此数据提供和改进服务映射服务的质量、安全性和完整性。 数据包括有关软件配置的信息（如操作系统和版本）。 还包括 IP 地址、DNS 名称和工作站名称，能够准确高效地排除故障。 我们不收集姓名、地址或其他联系信息。

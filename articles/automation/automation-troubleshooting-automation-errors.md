@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: sngun; v-reagie
-ms.openlocfilehash: 29362ea94fb86f86f7ff85be81cbf33fef6accce
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 95abba4fd293e2d04a58f0d07f955aca808434b7
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure 自动化中的常见问题解答 
 本文介绍如何排除会在 Azure 自动化中遇到的常见错误，并提供可能的解决方案建议。
@@ -190,6 +190,16 @@ ms.lasthandoff: 01/06/2018
 **疑难解答提示：**
 
 可以删除对此解决方案的查询，重新载入解决方案，这会重新创建查询。 可以在你的工作区内找到此查询，它位于“保存的搜索”下。 查询名称是 **MicrosoftDefaultComputerGroup**，查询类别是与此查询关联的解决方案的名称。 如果启用了多个解决方案，则 **MicrosoftDefaultComputerGroup** 会在“保存的搜索”下显示多次。
+
+### <a name="policyviolation"></a>PolicyViolation
+
+**错误原因：**
+
+此错误代码意味着部署由于违反策略而失败。
+
+**疑难解答提示：**
+
+检查 Azure 门户右上角的通知或导航到包含自动化帐户的资源组，然后选择“设置”下的“部署”以查看失败部署。 若要了解有关 Azure 策略的详细信息，请访问：[Azure 策略概述](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: d436e7d9046fa9c1bced890c005f98b40b372ef6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b50d3b091848776feb33c042c2cddfcf2a598fc9
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>部署并使用 Azure 容器注册表
 
@@ -42,7 +42,7 @@ Azure 容器注册表 (ACR) 是用于 Docker 容器映像的基于 Azure 的专�
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az acr create][az-acr-create] 命令创建 Azure 容器注册表。 容器注册表的名称必须唯一。
+使用 [az acr create][az-acr-create] 命令创建 Azure 容器注册表。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic

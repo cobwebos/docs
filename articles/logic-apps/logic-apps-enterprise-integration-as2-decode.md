@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: a7920b2509fe368c6f7d55e17fe0bf0020c4562c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4acae9f1837069c494985ff1456979490485f609
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用的 AS2 消息解码 
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="decode-as2-messages"></a>为 AS2 消息解码
 
-1. [创建逻辑应用](../logic-apps/logic-apps-create-a-logic-app.md)。
+1. [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 2. 解码 AS2 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
 

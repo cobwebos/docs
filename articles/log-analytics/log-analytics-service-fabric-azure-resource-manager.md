@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 01/19/2018
 ms.author: nini
-ms.openlocfilehash: 8c564c0dcbb2f9be286917b2f4d8a40da5406fae
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 10c5394935c59b21139c0e141c348ce20a7c0800
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>使用 Azure 门户评估 Service Fabric 应用程序和微服务
 
 > [!div class="op_single_selector"]
-> * [Resource Manager](log-analytics-service-fabric-azure-resource-manager.md)
+> * [资源管理器](log-analytics-service-fabric-azure-resource-manager.md)
 > * [PowerShell](log-analytics-service-fabric.md)
 >
 >
@@ -37,7 +37,7 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 若要开始使用解决方案，需要将 Service Fabric 群集连接到 Log Analytics 工作区。 下面是需要考虑的三种方案：
 
 1. 如果尚未部署 Service Fabric 群集，请使用***部署已连接到 Log Analytics 工作区的 Service Fabric 群集***中的步骤部署新群集，并将其配置为向 Log Analytics 报告。
-2. 如果你需要从主机中收集性能计数器以便在 Service Fabric 群集上使用其他 OMS 解决方案（如安全性），请按照“部署已连接到装有 VM 扩展的 Log Analytics 工作区的 Service Fabric 群集”中的步骤操作。
+2. 如果需要从主机中收集性能计数器以便在 Service Fabric 群集上使用其他管理解决方案（如安全性），请按照“部署已连接到装有 VM 扩展的 Log Analytics 工作区的 Service Fabric 群集”中的步骤操作。
 3. 如果已部署了 Service Fabric 群集并且希望将其连接到 Log Analytics，请按照***将现有的存储帐户添加到 Log Analytics*** 中的步骤操作。
 
 ## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace"></a>部署连接到 Log Analytics 工作区的 Service Fabric 群集。
@@ -79,7 +79,7 @@ Service Fabric 解决方案通过从 Azure WAD 表中收集相关数据来使用
 若要从节点查看性能数据：
 
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 - 从 Azure 门户启动 Log Analytics 工作区。
   ![Service Fabric](./media/log-analytics-service-fabric/6.png)

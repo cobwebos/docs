@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 01/25/2018
 ms.author: sethm
-ms.openlocfilehash: e97bdd645ef2a3efba83e3f87114c998f9a9e344
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a67a9d01f686c6aa8a569239667ae14d7bf087a9
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-sequencing-and-timestamps"></a>消息序列化和时间戳
 
@@ -47,7 +47,7 @@ SequenceNumber 值是在中转站接受并存储消息时分配给消息的唯�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解服务总线消息，请参阅以下主题：
+若要了解有关服务总线消息传送的详细信息，请参阅以下主题：
 
 * [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)

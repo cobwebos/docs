@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2017
+ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 3652e80c20c425570ba90a1f3ce7a3035762a34d
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: dd5bc0dd0088856954e06d880f2c03f0a74ed9d7
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 中继指标（预览版）
 
@@ -67,14 +67,14 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 |SenderConnections-TotalRequests（预览版）|在指定的期间内由发送者发出的连接请求数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |ActiveConnections（预览版）|指定的期间内的活动连接数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 |ActiveListeners（预览版）|指定的期间内的活动侦听器数。<br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|ListenerDisconnects（预览版）|指定的期间内断开连接的侦听器数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
-|SenderDisconnects（预览版）|指定的期间内断开连接的发送者数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|ListenerDisconnects（预览版）|指定的期间内断开连接的侦听器数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|SenderDisconnects（预览版）|指定的期间内断开连接的发送者数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="memory-usage-metrics"></a>内存使用情况指标
 
 | 指标名称 | 说明 |
 | ------------------- | ----------------- |
-|BytesTransferred（预览版）|在指定的期间内传输的字节数。<br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
+|BytesTransferred（预览版）|在指定的期间内传输的字节数。<br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 维度：EntityName|
 
 ## <a name="metrics-dimensions"></a>指标维度
 

@@ -3,8 +3,8 @@ title: "重新部署 Azure 堆栈 |Microsoft 文档"
 description: "重新部署 Azure 堆栈。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: jeffgilb
+manager: femila
 editor: 
 ms.assetid: 795af5ea-892d-40b1-a080-42e4472e4bba
 ms.service: azure-stack
@@ -12,15 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
-ms.author: erikje
-ms.openlocfilehash: 891cde9b16bbbb51729129b6ad7a0f3794307baa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/24/2018
+ms.author: jeffgilb
+ms.openlocfilehash: 0dec5ea70376ff1c8cf488689f1a66190256f6ff
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="redeploy-azure-stack"></a>重新部署 Azure 堆栈
+如果在部署 Azure 堆栈时收到错误，你可以重新运行安装程序使用以下 PowerShell 命令： `.\InstallAzureStackpoc.ps1 -rerun`。 此命令将重新启动而无需从头开始通过以前失败的点处的 Azure 堆栈安装程序。 如果再次收到相同的安装程序错误，可能需要执行完全重新部署到地址问题。 
+
 若要重新部署 Azure 堆栈，你必须通过从头开始如下所述。
 
 ## <a name="steps-to-redeploy-azure-stack"></a>若要重新部署 Azure 堆栈的步骤

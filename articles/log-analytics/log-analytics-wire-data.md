@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/16/2018
 ms.author: magoedte;banders
-ms.openlocfilehash: 331cc9d27dd416900e0145f3e453dfd3bfcfbcb5
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: b7cb178a24b043fe2c884ef0e4b3ad14ca0d73e4
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics 中的 Wire Data 2.0（预览版）解决方案
 
@@ -375,9 +375,6 @@ rpm -e dependency-agent dependency-agent-connector
 
 在安装代理并安装解决方案后，Wire Data 2.0 磁贴将出现在工作区中。
 
-> [!NOTE]
-> 当前，必须使用 OMS 门户查看线路数据。 无法使用 Azure 门户查看线路数据。
-
 ![Wire Data 磁贴](./media/log-analytics-wire-data/wire-data-tile.png)
 
 ## <a name="using-the-wire-data-20-solution"></a>使用 Wire Data 2.0 解决方案
@@ -429,7 +426,7 @@ rpm -e dependency-agent dependency-agent-connector
 | ReceivedBytes | 已接收的字节数 |
 | ProtocolName | 使用的网络协议的名称 |
 | IPVersion | IP 版本 |
-| Direction | 入站或出站 |
+| 方向 | 入站或出站 |
 | MaliciousIP | 某个已知恶意源的 IP 地址 |
 | Severity | 可疑恶意软件的严重性 |
 | RemoteIPCountry | 远程 IP 地址所在的国家/地区 |

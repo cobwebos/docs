@@ -11,23 +11,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: 
-ms.date: 09/05/2017
+ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: e8572af6187a889067341bbebb254d701b39395a
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: bfc95588378466fe1e83bcc4e899eca6b66b358a
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Azure 数据工厂中的数据集和链接服务 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](v1/data-factory-create-datasets.md)
+> * [版本 1 - 正式版](v1/data-factory-create-datasets.md)
 > * [版本 2 - 预览版](concepts-datasets-linked-services.md)
 
 本文介绍了数据集的涵义，采用 JSON 格式定义数据集的方式以及数据集在 Azure 数据工厂 V2 管道中的用法。 
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) - 版本 1 的数据工厂服务，请参阅[数据工厂 V1 中的数据集](v1/data-factory-create-datasets.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) - 版本 1 的数据工厂服务，请参阅[数据工厂 V1 中的数据集](v1/data-factory-create-datasets.md)。
 
 如果对数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)了解相关概述。 
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 12/13/2017
 
 属性 | 说明 | 必选 |
 -------- | ----------- | -------- |
-名称 | 链接服务的名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
+name | 链接服务的名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 链接服务的类型。 例如：AzureStorage（数据存储）或 AzureBatch（计算）。 请参阅 typeProperties 说明。 | 是 |
 typeProperties | 每个数据存储或计算的类型属性各不相同。 <br/><br/> 有关支持的数据存储类型及其类型属性，请参阅本文中的[数据集类型](#dataset-type)表。 导航到数据存储连接器一文，了解特定于数据存储的类型属性。 <br/><br/> 有关支持的计算类型及其类型属性，请参阅[计算链接服务](compute-linked-services.md)。 | 是 |
 connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 | 否
@@ -124,7 +124,7 @@ connectVia | 用于连接到数据存储的[集成运行时](concepts-integratio
 
 属性 | 说明 | 必选 |
 -------- | ----------- | -------- |
-名称 | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
+name | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-types)。 | 是 |
 structure | 数据集的架构。 有关详细信息，请参阅[数据集结构](#dataset-structure)。 | 否 |
 typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属性各不相同。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#dataset-type)。 | 是 |
@@ -149,7 +149,7 @@ typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属
 }
 
 ```
-请注意以下几点：
+注意以下几点：
 
 - type 设置为 AzureSqlTable。
 - tableName 类型属性（特定于 AzureSqlTable 类型）设置为 MyTable。
@@ -198,7 +198,7 @@ typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属
 
 属性 | 说明 | 必选
 -------- | ----------- | --------
-名称 | 列的名称。 | 是
+name | 列的名称。 | 是
 type | 列的数据类型。 | 否
 culture | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认为 `en-us`。 | 否
 格式 | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 | 否

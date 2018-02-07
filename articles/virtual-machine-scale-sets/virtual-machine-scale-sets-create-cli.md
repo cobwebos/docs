@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: get-started-article
 ms.date: 12/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 222bfa1c3070fa4634cf5c48d934a6387c48a4b0
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 8794ea7d998293e7ea88ba780f67ef8a021f2298
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 在此入门文章中，可以使用 Azure CLI 2.0 创建虚拟机规模集。 也可使用 [Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) 或 [Azure 门户](virtual-machine-scale-sets-create-portal.md)创建规模集。
@@ -32,13 +32,13 @@ ms.lasthandoff: 12/21/2017
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [az group create](/cli/azure/group#create) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+使用 [az group create](/cli/azure/group#az_group_create) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-现在，使用 [az vmss create](/cli/azure/vmss#create) 创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，并生成 SSH 密钥（如果不存在）：
+现在，使用 [az vmss create](/cli/azure/vmss#az_vmss_create) 创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，并生成 SSH 密钥（如果不存在）：
 
 ```azurecli-interactive 
 az vmss create \
@@ -70,7 +70,7 @@ az vmss extension set \
 
 
 ## <a name="allow-web-traffic"></a>允许 Web 流量
-若要允许通信流到达 Web 服务器，请使用 [az network lb rule create](/cli/azure/network/lb/rule#create) 命令创建负载均衡器规则。 以下示例创建名为“myLoadBalancerRuleWeb”的规则：
+若要允许通信流到达 Web 服务器，请使用 [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) 命令创建负载均衡器规则。 以下示例创建名为“myLoadBalancerRuleWeb”的规则：
 
 ```azurecli-interactive 
 az network lb rule create \
@@ -86,7 +86,7 @@ az network lb rule create \
 
 
 ## <a name="test-your-web-server"></a>测试 Web 服务器
-若要查看运行中的 Web 服务器，请使用 [az network public-ip show](/cli/azure/network/public-ip#show) 命令获取负载均衡器的公共 IP 地址。 以下示例获取创建为规模集一部分的“myScaleSetLBPublicIP”的 IP 地址：
+若要查看运行中的 Web 服务器，请使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) 命令获取负载均衡器的公共 IP 地址。 以下示例获取创建为规模集一部分的“myScaleSetLBPublicIP”的 IP 地址：
 
 ```azurecli-interactive 
 az network public-ip show \
@@ -102,7 +102,7 @@ az network public-ip show \
 
 
 ## <a name="clean-up-resources"></a>清理资源
-如果不再需要资源组、规模集和所有相关的资源，可以使用 [az group delete](/cli/azure/group#delete) 命令将其删除，如下所示：
+如果不再需要资源组、规模集和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除，如下所示：
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

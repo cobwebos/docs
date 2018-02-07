@@ -12,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/12/2017
+ms.date: 22/01/2018
 ms.author: byvinyal
-ms.openlocfilehash: e6595c9f49e3b6303ad96c37d4ee5ebea37ce829
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ffffd3cc9f5c59f74f71d6d7d31c5ea615d11f4
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="high-density-hosting-on-azure-app-service"></a>在 Azure 应用服务上进行高密度托管
 使用应用服务时，应用程序会与所分配的容量分离，具体表现在两个概念：
@@ -38,12 +38,12 @@ ms.lasthandoff: 10/11/2017
 按应用缩放在缩放应用时独立于所属的应用服务计划。 这样，可以将一个应用服务计划扩展到 10 个实例，而将一个应用设置为仅用 5 个。
 
    >[!NOTE]
-   >按应用缩放仅适用于**高级** SKU 应用服务计划
+   >按应用缩放仅适用于**标准**、**高级**、**高级 V2** 和**独立** SKU 应用服务计划
    >
 
 ### <a name="per-app-scaling-using-powershell"></a>使用 PowerShell 的按应用缩放
 
-通过将 ```-perSiteScaling $true``` 属性传入 ```New-AzureRmAppServicePlan``` commandlet，可创建配置为“按应用缩放”计划的计划
+通过将 ```-perSiteScaling $true``` 属性传入 ```New-AzureRmAppServicePlan``` commandlet，创建配置为“按应用缩放”计划的计划
 
 ```
 New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -71,7 +71,7 @@ $newASP
 Set-AzureRmAppServicePlan $newASP
 ```
 
-在应用级别，需要配置应用可以在应用服务计划中使用的实例数。
+在应用级别，配置应用可以在应用服务计划中使用的实例数。
 
 在以下示例中，无论基础应用服务计划扩展到多少个实例，应用都被限制为两个实例。
 
@@ -89,9 +89,9 @@ Set-AzureRmWebApp $newapp
 > [!IMPORTANT]
 > $newapp.SiteConfig.NumberOfWorkers 不同于 $newapp.MaxNumberOfWorkers。 按应用缩放使用 $newapp.SiteConfig.NumberOfWorkers 来确定应用的缩放特征。
 
-### <a name="per-app-scaling-using-azure-resource-manager"></a>使用 Azure Resource Manager 的按应用缩放
+### <a name="per-app-scaling-using-azure-resource-manager"></a>使用 Azure 资源管理器的按应用缩放
 
-以下 Azure Resource Manager 模板创建：
+以下 Azure 资源管理器模板创建：
 
 - 扩展到 10 个实例的应用服务计划
 - 配置为最多扩展到 5 个实例的应用。

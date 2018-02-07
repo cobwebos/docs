@@ -15,28 +15,33 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 53a241f12373acdb5d40575915d8d6c2f3c86b9a
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 53adef0f512c54e036a981dbaa0d08453db6b194
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/16/2018
 ---
-# <a name="using-the-azure-custom-script-extension-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展
-自定义脚本扩展在 Azure 虚拟机上下载并执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 自定义脚本扩展与 Azure 资源管理器模板集成，也可以使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 来运行它。
+# <a name="use-the-azure-custom-script-extension-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展
+自定义脚本扩展在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 
 
-本文档详细说明如何从 Azure CLI 和 Azure 资源管理器模板使用自定义脚本扩展，同时详细说明了 Linux 系统上的故障排除步骤。
+将自定义脚本扩展与 Azure 资源管理器模板集成。 也可使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 来运行它。
+
+本文详细介绍如何使用 Azure CLI 中的自定义脚本扩展以及如何使用 Azure 资源管理器模板运行扩展。 本文还提供针对 Linux 系统的疑难解答步骤。
 
 ## <a name="extension-configuration"></a>扩展配置
-自定义脚本扩展配置指定脚本位置和要运行命令等设置。 此配置可以存储在配置文件中、在命令行中指定，或者在 Azure 资源管理器模板中指定。 敏感数据可以存储在受保护的配置中，此配置经过加密，只能在虚拟机内部解密。 当执行命令包含机密（例如密码）时，受保护的配置相当有用。
+自定义脚本扩展配置指定脚本位置和要运行命令等设置。 可将此配置存储在配置文件中、在命令行中指定，或者在 Azure 资源管理器模板中指定该配置。 
+
+可将敏感数据存储在受保护的配置中，此配置经过加密，只能在虚拟机内部解密。 当执行命令包含机密（例如密码）时，受保护的配置相当有用。
 
 ### <a name="public-configuration"></a>公共配置
-架构：
+公共配置的架构如下所示。
 
-请注意 - 这些属性名称区分大小写。 使用下述名称可避免部署问题。
+>[!NOTE]
+>这些属性名称区分大小写。 要避免部署问题，请使用如下所示的名称。
 
-* **commandToExecute**：（必需，字符串）要执行的入口点脚本。
-* **fileUris**：（可选，字符串数组）要下载的文件的 URL。
-* **timestamp**：（可选，整数）仅当通过更改此字段的值来触发脚本的重新运行时，才需使用此字段。
+* **commandToExecute**（必需，字符串）：要运行的入口点脚本。
+* **fileUris**（可选，字符串数组）：要下载的文件的 URL。
+* **timestamp**（可选，整数）：脚本的时间戳。 仅当要触发脚本的重新运行操作时才可更改此字段的值。
 
 ```json
 {
@@ -46,13 +51,14 @@ ms.lasthandoff: 01/10/2018
 ```
 
 ### <a name="protected-configuration"></a>受保护的配置
-架构：
+受保护的配置的架构如下所示。
 
-请注意 - 这些属性名称区分大小写。 使用下述名称可避免部署问题。
+>[!NOTE]
+>这些属性名称区分大小写。 要避免部署问题，请使用如下所示的名称。
 
-* **commandToExecute**：（可选，字符串）要执行的入口点脚本。 如果命令包含机密（例如密码），请改用此字段。
-* **storageAccountName**：（可选，字符串）存储帐户的名称。 如果指定存储凭据，所有 fileUri 必须是 Azure Blob 的 URL。
-* **storageAccountKey**：（可选，字符串）存储帐户的访问密钥。
+* **commandToExecute**（可选，字符串）：要运行的入口点脚本。 如果命令包含机密（例如密码），请使用此字段。
+* **storageAccountName**（可选，字符串）：存储帐户的名称。 如果指定存储凭据，所有文件 URI 必须是 Azure Blob 的 URL。
+* **storageAccountKey**（可选，字符串）：存储帐户的访问密钥。
 
 ```json
 {
@@ -63,7 +69,7 @@ ms.lasthandoff: 01/10/2018
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-使用 Azure CLI 来运行自定义脚本扩展时，请创建一个或多个至少包含文件 URI 和脚本执行命令的配置文件。
+在使用 Azure CLI 运行自定义脚本扩展时，请创建一个或多个配置文件。 配置文件至少要包含文件 URI 和脚本执行命令。
 
 ```azurecli
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
@@ -82,7 +88,7 @@ az vm extension set '
 
 ### <a name="azure-cli-examples"></a>Azure CLI 示例
 
-**示例 1** - 包含脚本文件的公共配置。
+#### <a name="public-configuration-with-script-file"></a>包含脚本文件的公共配置
 
 ```json
 {
@@ -97,7 +103,7 @@ Azure CLI 命令：
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-**示例 2** - 不包含脚本文件的公共配置。
+#### <a name="public-configuration-with-no-script-file"></a>不包含脚本文件的公共配置
 
 ```json
 {
@@ -111,7 +117,9 @@ Azure CLI 命令：
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-**示例 3** - 使用公共配置文件指定脚本文件 URI，使用受保护的配置文件指定要执行的命令。
+#### <a name="public-and-protected-configuration-files"></a>公共和受保护的配置文件
+
+使用公共配置文件来指定脚本文件 URI。 使用受保护的配置文件来指定要运行的命令。
 
 公共配置文件：
 
@@ -135,11 +143,12 @@ Azure CLI 命令：
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json --protected-settings ./protected-config.json
 ```
 
-## <a name="resource-manager-template"></a>Resource Manager 模板
-可以使用 Resource Manager 模板在虚拟机部署阶段运行 Azure 自定义脚本扩展。 为此，请将格式正确的 JSON 添加到部署模板。
+## <a name="resource-manager-template"></a>资源管理器模板
+可使用资源管理器模板在虚拟机部署时运行 Azure 自定义脚本扩展。 为此，请将格式正确的 JSON 添加到部署模板。
 
-### <a name="resource-manager-examples"></a>Resource Manager 示例
-**示例 1** - 公共配置。
+### <a name="resource-manager-examples"></a>资源管理器示例
+
+#### <a name="public-configuration"></a>公共配置
 
 ```json
 {
@@ -168,7 +177,7 @@ az vm extension set --resource-group myResourceGroup --vm-name myVM --name custo
 }
 ```
 
-**示例 2** - 受保护配置中的执行命令。
+#### <a name="execution-command-in-protected-configuration"></a>受保护配置中的执行命令
 
 ```json
 {
@@ -199,22 +208,22 @@ az vm extension set --resource-group myResourceGroup --vm-name myVM --name custo
 }
 ```
 
-有关完整示例，请参阅“.Net Core 音乐应用商店演示”中的[音乐应用商店演示](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
+有关完整示例，请参阅 [.NET Music 商店演示](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)。
 
 ## <a name="troubleshooting"></a>故障排除
-运行自定义脚本扩展时，会创建脚本，或将脚本下载到类似于以下示例的目录。 命令输出也会保存到此目录中的 `stdout` 和 `stderr` 文件中。
+运行自定义脚本扩展时，会创建脚本，或将脚本下载到类似于以下示例的目录中。 命令输出也会保存到此目录中的 `stdout` 和 `stderr` 文件中。
 
 ```bash
 /var/lib/waagent/custom-script/download/0/
 ```
 
-Azure 脚本扩展生成一个日志，位置如下。
+Azure 脚本扩展生成一个日志，位置如下：
 
 ```bash
 /var/log/azure/custom-script/handler.log
 ```
 
-也可以使用 Azure CLI 来检索自定义脚本扩展的执行状态。
+也可使用 Azure CLI 来检索自定义脚本扩展的执行状态：
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM
@@ -233,5 +242,5 @@ info:    vm extension get command OK
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关其他 VM 脚本扩展的信息，请参阅 [Azure Script Extension overview for Linux](extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（适用于 Linux 的 Azure 脚本扩展概述）。
+有关其他 VM 脚本扩展的信息，请参阅[适用于 Linux 的 Azure 脚本扩展概述](extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 

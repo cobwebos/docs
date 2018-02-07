@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7786fc785afa745da28b1da644ec58568d0cf424
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 2095d75ed042ae8be02ae0a1570f8e77d06a3563
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -146,38 +146,80 @@ ms.lasthandoff: 12/19/2017
 
 ## <a name="monitoring"></a>监视
 
-复制活动执行详细信息和性能特性将返回到“复制活动运行结果 -> 输出”部分。 下面是详细列表。 了解如何从[快速入门监视部分](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)监视活动运行。 可将方案的性能和配置与内部测试中复制活动的[性能参考](copy-activity-performance.md#performance-reference)进行比较。
+可通过编程方式或在 Azure 数据工厂的“创作和监视”UI 上监视复制活动运行。 然后，可将方案的性能和配置与内部测试中复制活动的[性能参考](copy-activity-performance.md#performance-reference)进行比较。
+
+### <a name="monitor-visually"></a>直观地监视
+
+若要直观地监视复制活动运行，请转到数据工厂 ->“创作和监视” -> “监视”选项卡，可看到一个管道运行列表，其“操作”列中提供了“查看活动运行”链接。 
+
+![监视管道运行](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
+
+单击以查看此管道运行中的活动列表。 在“操作”列中，具有指向复制活动输入、输出、错误（如果复制活动运行失败）和详细信息的链接。
+
+![监视活动运行](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
+
+单击“操作”下的“详细信息”链接，查看复制活动的执行详细信息和性能特征。 它显示复制方案的以下信息：从源复制到接收器的数据量/行/文件、吞吐量、所执行的步骤和相应的持续时间，以及使用的配置。
+
+**示例：从 Amazon S3 复制到 Azure Data Lake Store**
+![监视活动运行详细信息](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
+
+**示例：使用暂存复制从 Azure SQL 数据库复制到 Azure SQL 数据仓库**
+![监视活动运行详细信息](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
+
+### <a name="monitor-programmatically"></a>以编程方式监视
+
+“复制活动运行结果”->“输出”部分中也会返回复制活动执行详细信息和性能特征。 下面是一个详细清单；将只显示适用于用户复制方案的内容。 了解如何从[快速入门监视部分](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)监视活动运行。
 
 | 属性名称  | 说明 | 单位 |
 |:--- |:--- |:--- |
-| dataRead | 从源中读取的数据大小 | Int64 值（字节） |
-| DataWritten | 写入接收器的数据大小 | Int64 值（字节） |
+| dataRead | 从源中读取的数据大小 | Int64 值（**字节**） |
+| DataWritten | 写入接收器的数据大小 | Int64 值（**字节**） |
+| filesRead | 从文件存储复制数据时要复制的文件数。 | Int64 值（未指定单位） |
+| filesWritten | 将数据复制到文件存储时要复制的文件数。 | Int64 值（未指定单位） |
 | rowsCopied | 正在复制（不适用于二进制复制）的行数。 | Int64 值（未指定单位） |
 | rowsSkipped | 跳过的不兼容行数。 可以通过将“enableSkipIncompatibleRow”设置为 true 来启用该功能。 | Int64 值（未指定单位） |
-| throughput | 数据传输比率 | 浮点数 (KB/s) |
+| throughput | 数据传输比率 | 浮点数 (**KB/s**) |
 | copyDuration | 复制持续时间 | Int32 值（秒） |
 | sqlDwPolyBase | 如果将数据复制到 SQL 数据仓库时使用了 PolyBase。 | 布尔 |
 | redshiftUnload | 如果从 Redshift 复制数据时使用了 UNLOAD。 | 布尔 |
 | hdfsDistcp | 如果从 HDFS 复制数据时使用了 DistCp。 | 布尔 |
 | effectiveIntegrationRuntime | 以 `<IR name> (<region if it's Azure IR>)` 格式显示运行活动时使用的集成运行时。 | 文本（字符串） |
 | usedCloudDataMovementUnits | 复制期间有效的云数据移动单位。 | Int32 值 |
+| usedParallelCopies | 复制期间的有效 parallelCopies。 | Int32 值|
 | redirectRowPath | 在“redirectIncompatibleRowSettings”下配置的 blob 存储中跳过的不兼容行的日志路径。 请参阅下面的示例。 | 文本（字符串） |
-| billedDuration | 数据移动所需的持续时间。 | Int32 值（秒） |
+| executionDetails | 有关复制活动经历的各个阶段、相应步骤、持续时间、使用的配置等内容的更多详细信息。不建议分析此节，因为它有可能发生更改。 | Array |
 
 ```json
 "output": {
-    "dataRead": 1024,
-    "dataWritten": 2048,
-    "rowsCopies": 100,
-    "rowsSkipped": 2,
-    "throughput": 1024.0,
-    "copyDuration": 3600,
-    "redirectRowPath": "https://<account>.blob.core.windows.net/<path>/<pipelineRunID>/",
-    "redshiftUnload": true,
-    "sqlDwPolyBase": true,
-    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (West US)",
-    "usedCloudDataMovementUnits": 8,
-    "billedDuration": 28800
+    "dataRead": 107280845500,
+    "dataWritten": 107280845500,
+    "filesRead": 10,
+    "filesWritten": 10,
+    "copyDuration": 224,
+    "throughput": 467707.344,
+    "errors": [],
+    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US 2)",
+    "usedCloudDataMovementUnits": 32,
+    "usedParallelCopies": 8,
+    "executionDetails": [
+        {
+            "source": {
+                "type": "AmazonS3"
+            },
+            "sink": {
+                "type": "AzureDataLakeStore"
+            },
+            "status": "Succeeded",
+            "start": "2018-01-17T15:13:00.3515165Z",
+            "duration": 221,
+            "usedCloudDataMovementUnits": 32,
+            "usedParallelCopies": 8,
+            "detailedDurations": {
+                "queuingDuration": 2,
+                "transferDuration": 219
+            }
+        }
+    ]
 }
 ```
 

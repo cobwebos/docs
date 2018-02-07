@@ -3,8 +3,8 @@ title: "Azure Batch 服务配额和限制 | Microsoft Docs"
 description: "了解默认的 Azure Batch 配额、限制和约束，以及如何请求提高配额"
 services: batch
 documentationcenter: 
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 editor: 
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
 ms.service: batch
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 210ba4a90f24ce9b0b55c4565028232c2b7fd7cc
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 06445845ef8f93a06cb4b52e07108965cc3b7f8a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -86,14 +86,14 @@ ms.lasthandoff: 12/01/2017
    
     d.单击“下一步”。 “支持计划” > “配额支持 - 已包括”
    
-    单击“下一步”。
+    单击“资源组名称” 的 Azure 数据工厂。
 4. 在“问题”中：
    
     a. 根据[业务影响情况][support_sev]选择“严重性”。
    
     b. 在“详细信息”中，指定想要更改的每个配额、Batch 帐户名和新限制。
    
-    单击“下一步”。
+    单击“资源组名称” 的 Azure 数据工厂。
 5. 在“联系人信息”中：
    
     a. 选择“首选联系方法”。

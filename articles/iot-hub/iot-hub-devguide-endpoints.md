@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2017
 ms.author: dobett
-ms.openlocfilehash: 47f8949139c48ffa79f5530552b0a2e27b0f9ee0
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: dc983549aea53ed29859205102d6308a3367bec7
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 可以在“概述”边栏选项卡上找到在门户中承载你的终结点的 IoT 中心的名称。 默认情况下，IoT 中心的 DNS 名称如下所示：`{your iot hub name}.azure-devices.net`。
 
-可以使用 Azure DNS 为 IoT 中心创建自定义 DNS 名称。 有关详细信息，请参阅[使用 Azure DNS 为 Azure 服务提供自定义域设置](../dns/dns-custom-domain.md#azure-iot)。
+可以使用 Azure DNS 为 IoT 中心创建自定义 DNS 名称。 有关详细信息，请参阅[使用 Azure DNS 为 Azure 服务提供自定义域设置](../dns/dns-custom-domain.md)。
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>内置 IoT 中心终结点列表
 
