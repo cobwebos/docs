@@ -1,4 +1,4 @@
----
+﻿---
 title: "使用 ASP.NET Core 来与服务通信 | Microsoft Docs"
 description: "了解如何在无状态和有状态 Reliable Services 中使用 ASP.NET Core。"
 services: service-fabric
