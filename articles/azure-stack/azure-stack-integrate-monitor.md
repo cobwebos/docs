@@ -12,22 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: a7f6d3691410711fcae692007b08977a93961845
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3435ada40afb9f1c6e57be64d1b9086d0cdaefd9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>外部的监视解决方案与 Azure 堆栈集成
 
-*适用范围： Azure 堆栈集成系统*
+对于外部监视 Azure 堆栈基础结构，你需要监视 Azure 堆栈软件、 物理计算机、 和的物理网络交换机。 上述每个区域提供一种方法来检索运行状况和警报的信息：
 
-对于外部监视 Azure 堆栈基础结构，你需要监视 Azure 堆栈软件、 物理计算机、 和的物理网络交换机。 上述每个区域提供一种方法来检索运行状况和警报的信息。
-
-- Azure 堆栈软件提供基于 REST 的 API 来检索运行状况和警报。 （使用软件定义的技术，如存储空间直通，存储运行状况和警报是软件监视的一部分。）
+- Azure 堆栈软件提供基于 REST 的 API 来检索运行状况和警报。 （使用软件定义的技术，如存储空间直通，存储运行状况和警报是软件监视的一部分。）。
 - 物理计算机可以使运行状况和警报的信息可通过基板管理控制器 (Bmc)。
 - 物理网络设备可以使运行状况和警报的信息可通过 SNMP 协议。
 
@@ -48,16 +46,16 @@ ms.lasthandoff: 02/01/2018
 
 用于 Azure 堆栈的管理包提供以下功能：
 
-- 你可以管理多个 Azure 堆栈部署。
-- 这是 Azure Active Directory (Azure AD) 和 Active Directory 联合身份验证服务 (AD FS) 的支持。
-- 你可以检索并关闭警报。
-- 没有在运行状况和容量仪表板。
-- 包括自动维护模式修补程序和更新 (P & U) 是当正在进行中的检测。
-- 包括用于部署和区域的强制更新任务。
-- 可以将自定义信息添加到区域。
-- 支持通知和报告。
+- 你可以管理多个 Azure 堆栈部署
+- 对于 Azure Active Directory (Azure AD) 和 Active Directory 联合身份验证服务 (AD FS) 的支持
+- 您可以检索并关闭警报
+- 没有在运行状况和容量仪表板
+- 包括自动维护模式修补程序和更新 (P & U) 是当正在进行中的检测
+- 包括用于部署和区域的强制更新任务
+- 可以将自定义信息添加到某一区域
+- 支持通知和报告
 
-你可以下载 System Center 管理包为 Microsoft Azure 堆栈和关联的用户指南[此处](https://www.microsoft.com/en-us/download/details.aspx?id=55184)，或直接从 Operations Manager。
+你可以下载 System Center 管理包为 Microsoft Azure 堆栈和关联[用户指南](https://www.microsoft.com/en-us/download/details.aspx?id=55184)，或直接从 Operations Manager。
 
 对于票证的解决方案，可以将集成 Operations Manager 与 System Center Service Manager 中。 集成的产品连接器允许，可关闭 Azure 堆栈和 Operations Manager 中的警报解决 Service Manager 中的服务请求后的双向通信。
 

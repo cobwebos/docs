@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05b1f11158233a7c02950320741b405429a08d50
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 50020f007096b45b843515ff765e40c550fcf4e3
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2018
@@ -146,7 +146,7 @@ iothub-message-schema | deviceLifecycleNotification |
 
 | 属性 | 选项 | 说明 |
 | --- | --- | --- |
-| deviceId |必需，更新时只读 |ASCII 7 位字母数字字符 + 某些特殊字符（`- : . + % _ # * ? ! ( ) , = @ ; $ '`）的区分大小写字符串（最长为 128 个字符）。 |
+| deviceId |必需，更新时只读 |ASCII 7 位字母数字字符 + 某些特殊字符（`- . + % _ # * ? ! ( ) , = @ $ '`）的区分大小写字符串（最长为 128 个字符）。 |
 | generationId |必需，只读 |IoT 中心生成的区分大小写字符串，最长为 128 个字符。 删除并重新创建设备时，此值用于区分具有相同 **deviceId** 的设备。 |
 | etag |必需，只读 |一个字符串，根据 [RFC7232][lnk-rfc7232] 表示设备标识的弱 ETag。 |
 | auth |可选 |包含身份验证信息和安全材料的复合对象。 |
