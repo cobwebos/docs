@@ -117,7 +117,7 @@ Windows:
 
 3. 在页面顶部打开的文本框中，输入你的 IoT 中心的 iothubowner 连接字符串。 你的 IoT Edge 设备应当会出现在“IoT 中心设备”列表中。
 4. 再次选择 **...**，然后选择“开始监视 D2C 消息”。
-5. 观察每五秒钟来自 tempSensor 的消息，machinelearningmodule 将这些消息附加到其对设备运行状况的评估。 
+5. 观察每五秒钟来自 tempSensor 的消息，machinelearningmodule 将这些消息附加到其对设备运行状况的评估中。 
 
    ![消息正文中的 Azure ML 响应](./media/tutorial-deploy-machine-learning/ml-output.png)
 
