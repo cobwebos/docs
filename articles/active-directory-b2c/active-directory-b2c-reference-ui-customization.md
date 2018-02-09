@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: be3fe7199308606aaab002290319df9c82149433
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a9136ebd15a995361a325804ca81ece0db30b3e6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C：自定义 Azure AD B2C 用户界面 (UI)
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="the-page-ui-customization-feature"></a>页面 UI 自定义功能
 
-可自定义客户注册、登录、密码重置和配置文件编辑页面的外观和风格（通过配置[策略](active-directory-b2c-reference-policies.md)）。 在应用程序和 Azure AD B2C 提供的页面之间导航时，客户会获得无缝体验。
+可自定义客户注册、登录（有关与品牌相关的例外，请参阅上面的说明）、密码重置和配置文件编辑页面的外观和风格（通过配置[策略](active-directory-b2c-reference-policies.md)）。 在应用程序和 Azure AD B2C 提供的页面之间导航时，客户会获得无缝体验。
 
 不同于使用 UI 选项的其他服务，Azure AD B2C 使用简单的新式方法自定义 UI。
 

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: df31e5b0dfd3b41f5fc125bf3a59cfd6e8e5f4e1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5d624735a91d0828c4ac3796bde6c17acf6e131a
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="split-column-by-example-transformation"></a>“按示例拆分列”转换
 此转换预先在有意义的边界拆分列内容，无需用户输入。 拆分算法在分析列内容后选择边界。 可以通过以下项定义这些边界
@@ -52,6 +52,11 @@ ms.lasthandoff: 12/18/2017
 为了提供拆分示例，用户可以将值从一个单元格复制并粘贴到另一个单元格。
 
 用户可以通过单击转换编辑器中的链接在“基本模式”和“高级模式”之间切换。
+
+### <a name="transform-editor-send-feedback"></a>转换编辑器：发送反馈
+
+单击“发送反馈”链接，打开“反馈”对话框，其中注释框已填充所提供的参数选择和示例用户。 用户应查看注释框中的内容并提供更多详细信息，帮助我们了解问题。 如果用户不希望与 Microsoft 共享数据，则应在单击“发送反馈”按钮之前删除预填充的示例数据。 
+
 
 ### <a name="editing-an-existing-transformation"></a>编辑现有的转换
 

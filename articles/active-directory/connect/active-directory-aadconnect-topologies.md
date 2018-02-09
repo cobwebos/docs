@@ -14,11 +14,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 50cf58c7d2d9be4644ada4feae02d0d5219a3fd6
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: dbf531302e53ca52e24dbd2ba954defad391060f
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
 本文介绍使用 Azure AD Connect 同步作为关键集成解决方案的各种本地拓扑和 Azure Active Directory (Azure AD) 拓扑。 此外，介绍支持和不支持的配置。
@@ -110,10 +110,11 @@ Azure AD Connect 同步中的默认配置假设：
 某些 Office 365 工作负荷对支持的拓扑实施一些限制：
 
 | 工作负载 | 限制 |
---------- | ---------
+| --------- | --------- |
 | Exchange Online | 有关 Exchange Online 支持的混合拓扑的详细信息，请参阅[具有多个 Active Directory 林的混合部署](https://technet.microsoft.com/library/jj873754.aspx)。 |
 | Skype for Business | 使用多个本地林时，只支持帐户资源林拓扑。 有关详细信息，请参阅 [Skype for Business Server 2015 的环境要求](https://technet.microsoft.com/library/dn933910.aspx)。 |
 
+如果是更大的组织，则应考虑使用 [Office 365 PreferredDataLocation](active-directory-aadconnectsync-feature-preferreddatalocation.md) 功能。 它允许你定义用户的资源位于哪个数据中心区域。
 
 ## <a name="staging-server"></a>暂存服务器
 ![拓扑中的暂存服务器](./media/active-directory-aadconnect-topologies/MultiForestStaging.png)

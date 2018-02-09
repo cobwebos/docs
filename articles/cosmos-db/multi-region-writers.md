@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/23/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf1482ae7b1070023703f5dbe861d151f5d64fd8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e02b286db42d8a9de8f1df8263f40c3732484038
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="multi-master-globally-replicated-database-architectures-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 多主机全局复制数据库体系结构
 Azure Cosmos DB 支持统包的[全球复制](distribute-data-globally.md)，允许在工作负荷中的任意位置以低延迟的访问将数据分配到多个区域。 此模型常用于发布者/使用者工作负荷。在这些工作负荷中，单个地理区域具有作者，其他（读取）区域具有分布于全球的读者。 
@@ -318,6 +318,6 @@ Azure Cosmos DB 支持统包的[全球复制](distribute-data-globally.md)，允
 * 了解 Azure Cosmos DB 如何支持[全球分布](distribute-data-globally.md)
 * 了解 [Azure Cosmos DB 中的自动和手动故障转移](regional-failover.md)
 * 了解 [Azure Cosmos DB 的全局一致性](consistency-levels.md)
-* 使用 [Azure Cosmos DB - DocumentDB API](tutorial-global-distribution-documentdb.md) 进行多个区域开发
+* 使用 [Azure Cosmos DB - SQL API](tutorial-global-distribution-sql-api.md) 进行多个区域开发
 * 使用 [Azure Cosmos DB - MongoDB API](tutorial-global-distribution-MongoDB.md) 进行多个区域开发
 * 使用 [Azure Cosmos DB - 表 API](tutorial-global-distribution-table.md) 进行多个区域开发

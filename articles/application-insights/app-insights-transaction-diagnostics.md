@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: sdash
-ms.openlocfilehash: b090699cf90c74af8480b811901b6e3078b007b3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8c1d8600b7f4aaa1e95f4acfbbdd55fdbfebb8fb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/23/2018
 
 ## <a name="what-does-component-mean-in-the-context-of-application-insights"></a>在 Application Insights 的上下文中，组件意味着什么？
 
-组件是分布式/微服务应用程序的可独立部署的部件。 开发者或操作团队具有代码级可见性，或有权访问由这些应用程序组件生成的遥测。 
+组件是分布式/微服务应用程序的可独立部署的部件。 开发者或操作团队具有代码级可见性，或有权访问由这些应用程序组件生成的遥测。
 
 * 组件与“观察到的”外部依赖项（如 SQL 和 EventHub 等）不同，团队/组织可能无权访问（代码或遥测）。
 * 组件在任意数目的服务器/角色/容器实例上运行。
@@ -40,11 +40,11 @@ ms.lasthandoff: 01/23/2018
 
 ![启用预览](media/app-insights-e2eTxn-diagnostics/previews.png)
 
-此预览当前适用于服务器端请求、依赖项及异常。 可以从“搜索结果”、“性能”或“失败”会审体验访问新体验。 预览版替换了相应的经典详细信息边栏选项卡。 
+此预览当前适用于服务器端请求、依赖项及异常。 可以从“搜索结果”、“性能”或“失败”会审体验访问新体验。 预览版替换了相应的经典详细信息边栏选项卡。
 
 ![性能示例](media/app-insights-e2eTxn-diagnostics/performanceSamplesClickThrough.png)
 
-## <a name="transaction-diagnostics-experience"></a>事务诊断体验 
+## <a name="transaction-diagnostics-experience"></a>事务诊断体验
 此视图包含三个主要部分：跨组件事务图、来自特定组件操作的所有遥测的时序列表，以及位于左侧的详细信息窗格（显示任意选定遥测项的详细信息）。
 
 ![关键部分](media/app-insights-e2eTxn-diagnostics/3partsCrossComponent.png)
@@ -77,6 +77,10 @@ ms.lasthandoff: 01/23/2018
 ## <a name="profiler-and-snapshot-debugger"></a>探查器和快照调试器
 
 [Application Insights 探查器](app-insights-profiler.md)或[快照调试器](app-insights-snapshot-debugger.md)有助于对性能和失败问题进行代码级诊断。 通过此体验，仅需一次单击即可查看任意组件的探查器跟踪或快照。
+
+如果无法让 Profiler 正常工作，请联系 **serviceprofilerhelp@microsoft.com**
+
+如果无法让快照调试器正常工作，请联系 **snapshothelp@microsoft.com**
 
 ![调试程序集成](media/app-insights-e2eTxn-diagnostics/debugSnapshot.png)
 

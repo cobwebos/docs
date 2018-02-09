@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: 20614aaabc05513e93eb001c1676a73f85003947
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d58baa89c9d11b6b7a6bbb3b53974184ef1903b5
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect 同步：理解和自定义同步
 Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azure AD Connect 的一个主要组件。 它负责在本地环境与 Azure AD 之间同步标识数据的所有相关操作。 Azure AD Connect 同步是 DirSync、Azure AD Sync 和 Forefront Identity Manager 的后继版本，同时配置了 Azure Active Directory 连接器。
 
 本主题是 **Azure AD Connect 同步**（也称为**同步引擎**）的主页，其中列出了与其相关的所有其他主题的链接。 有关 Azure AD Connect 的链接，请参阅[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
 
-同步服务包括两个组件，本地“Azure AD Connect 同步”组件和 Azure AD 中称为 **Azure AD Connect 同步服务**的服务端组件。 
+同步服务包括两个组件，本地“Azure AD Connect 同步”组件和 Azure AD 中称为 **Azure AD Connect 同步服务**的服务端组件。
 
 ## <a name="azure-ad-connect-sync-topics"></a>Azure AD Connect 同步主题
 | 主题 | 涵盖的内容和阅读时机 |
@@ -49,6 +49,7 @@ Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azur
 | [实现密码同步](active-directory-aadconnectsync-implement-password-synchronization.md) |介绍密码同步的工作原理、实现方式，及其操作与故障排除方法。 |
 | [设备写回](active-directory-aadconnect-feature-device-writeback.md) |介绍设备写回在 Azure AD Connect 中的工作原理。 |
 | [目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md) |介绍如何使用自己的自定义属性扩展 Azure AD 架构。 |
+| [Office 365 PreferredDataLocation](active-directory-aadconnectsync-feature-preferreddatalocation.md) |介绍如何将用户的 Office 365 资源放置在用户所在的区域。 |
 | **同步服务** | |
 | [Azure AD Connect 同步服务功能](active-directory-aadconnectsyncservice-features.md) |介绍同步服务端，以及如何在 Azure AD 中更改同步设置。 |
 | [重复属性复原](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) |介绍如何启用并使用 **userPrincipalName** 和 **proxyAddresses** 重复属性值复原。 |
@@ -64,4 +65,3 @@ Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azur
 
 ## <a name="additional-resources"></a>其他资源
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
-

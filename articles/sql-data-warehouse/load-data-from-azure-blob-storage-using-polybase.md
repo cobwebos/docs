@@ -1,5 +1,5 @@
 ---
-title: "Polybase 数据加载 - 从 Azure 存储 Blob 到 Azure SQL 数据仓库 | Microsoft Docs"
+title: "教程：Polybase 数据加载 - 从 Azure 存储 Blob 到 Azure SQL 数据仓库 | Microsoft Docs"
 description: "本教程使用 Azure 门户和 SQL Server Management Studio 将纽约市出租车数据从 Azure Blob 存储加载到 Azure SQL 数据仓库。"
 services: sql-data-warehouse
 documentationcenter: 
@@ -17,13 +17,13 @@ ms.workload: Active
 ms.date: 11/17/2017
 ms.author: cakarst
 ms.reviewer: barbkess
-ms.openlocfilehash: 64315945d977ba912634eb626491a4513def1556
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: a1f504f5bb728ce080e51678d44ed4eef4c3faa7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>使用 PolyBase 将数据从 Azure Blob 存储加载到 Azure SQL 数据仓库
+# <a name="tutorial-use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>教程：使用 PolyBase 将数据从 Azure Blob 存储加载到 Azure SQL 数据仓库
 
 PolyBase 是一种标准加载技术，用于将数据加载到 SQL 数据仓库。 在本教程中，使用 PolyBase 将纽约市出租车数据从 Azure Blob 存储加载到 Azure SQL 数据仓库。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) 执行以下操作： 
 

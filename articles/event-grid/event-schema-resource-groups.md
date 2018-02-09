@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: c7435d87f9aaa906c3f6758186b64f3458cb9716
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 109f5af5cc1647cebee805c3141f4bc83c73bcfc
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>资源组的 Azure 事件网格事件架构
 
@@ -39,7 +39,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 ```json
 [
-    {
+  {
     "topic":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}",
     "subject":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
     "eventType":"Microsoft.Resources.ResourceWriteSuccess",
@@ -56,8 +56,10 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
         "status":"Succeeded",
         "subscriptionId":"{subscription-id}",
         "tenantId":"72f988bf-86f1-41af-91ab-2d7cd011db47"
-        },
-    }
+    },
+    "dataVersion": "",
+    "metadataVersion": "1"
+  }
 ]
 ```
 
@@ -81,7 +83,9 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
     "status": "Succeeded",
     "subscriptionId": "{subscription-id}",
     "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
@@ -89,18 +93,20 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 |
+| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | 字符串 | 事件的唯一标识符。 |
 | 数据 | 对象 | 资源组事件数据。 |
+| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | authorization | 字符串 | 操作请求的授权。 |
 | 声明 | 字符串 | 声明的属性。 |

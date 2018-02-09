@@ -93,7 +93,7 @@ ms.lasthandoff: 01/24/2018
 | 美国西部 2 | 13.66.226.202  | |
 ||||
 
-\***注意：***美国东部 2* 还有第三个 IP 地址 `52.167.104.0`。
+\* **注意:** *美国东部 2* 还有第三个 IP 地址 `52.167.104.0`。
 
 ## <a name="change-azure-sql-database-connection-policy"></a>更改 Azure SQL 数据库连接策略
 

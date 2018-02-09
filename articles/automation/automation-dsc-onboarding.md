@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: gwallace
-ms.openlocfilehash: bfdec6d3982bb7744374a8026a41c3d548aca612
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: ffe08f0f85f07accdce9e3b8fa9524ef3c99c878
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Onboarding machines for management by Azure Automation DSC（登记由 Azure 自动化 DSC 管理的计算机）
 
@@ -36,14 +36,14 @@ Azure 自动化 DSC 可用于管理各种不同的计算机：
 此外，如果未准备好从云管理计算机配置，Azure 自动化 DSC 也可用作仅限报告的终结点。 这样，便可以通过 DSC 本地设置（推送）所需配置，以及查看符合 Azure 自动化中的所需状态匹配节点的丰富报告详细信息。
 
 > [!NOTE]
-> 如果安装了高于 2.70 版的虚拟机 DSC 扩展，则包含使用 DSC 管理 Azure VM 的功能而无需额外付费。 有关详细信息，请参阅[**自动化定价页**](https://azure.microsoft.com/en-us/pricing/details/automation/)。
+> 如果安装了高于 2.70 版的虚拟机 DSC 扩展，则包含使用 DSC 管理 Azure VM 的功能而无需额外付费。 有关更多详细信息，请参阅[**自动化定价页**](https://azure.microsoft.com/en-us/pricing/details/automation/)。
 
 
 以下部分概述了如何将每种类型的计算机登记到 Azure 自动化 DSC。
 
 ## <a name="azure-virtual-machines-classic"></a>Azure 虚拟机（经典）
 
-利用 Azure 自动化 DSC 可以轻松登记 Azure 虚拟机（经典），以使用 Azure 门户或 PowerShell 进行配置管理。 在幕后，在不需要管理员远程连接到 VM 的情况下，Azure VM 所需状态配置扩展会在 Azure 自动化 DSC 中注册 VM。 因为 Azure VM 所需状态配置扩展以异步方式运行，可在下方的[**排查 Azure 虚拟机登记问题**](#troubleshooting-azure-virtual-machine-onboarding)部分了解跟踪注册进度或故障排除的步骤。
+利用 Azure 自动化 DSC 可以轻松登记 Azure 虚拟机（经典），以使用 Azure 门户或 PowerShell 进行配置管理。 在幕后，在不需要管理员远程连接到 VM 的情况下，Azure VM 所需状态配置扩展会在 Azure 自动化 DSC 中注册 VM。 因为 Azure VM 所需状态配置扩展以异步方式运行，可在以下[**排查 Azure 虚拟机登记问题**](#troubleshooting-azure-virtual-machine-onboarding)部分了解跟踪注册进度或故障排除的步骤。
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -51,7 +51,7 @@ Azure 自动化 DSC 可用于管理各种不同的计算机：
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
 
-若要查找计算机所要登记到的自动化帐户的注册 URL 与密钥，请查看以下[**安全注册**](#secure-registration)部分。
+若要查找计算机所要登记到的自动化帐户的注册 URL 与密钥，请参阅以下[**安全注册**](#secure-registration)部分：
 
 ### <a name="powershell"></a>PowerShell
 
@@ -119,11 +119,11 @@ $VM | Update-AzureVM
 
 ## <a name="azure-virtual-machines"></a>Azure 虚拟机
 
-Azure Automation DSC 可让你使用 Azure 门户、Azure 资源管理器模板或 PowerShell 轻松登记 Azure 虚拟机以进行配置管理。 在幕后，在不需要管理员远程连接到 VM 的情况下，Azure VM 所需状态配置扩展会在 Azure 自动化 DSC 中注册 VM。 因为 Azure VM 所需状态配置扩展以异步方式运行，可在下方的[**排查 Azure 虚拟机登记问题**](#troubleshooting-azure-virtual-machine-onboarding)部分了解跟踪注册进度或故障排除的步骤。
+Azure Automation DSC 可让你使用 Azure 门户、Azure 资源管理器模板或 PowerShell 轻松登记 Azure 虚拟机以进行配置管理。 在幕后，在不需要管理员远程连接到 VM 的情况下，Azure VM 所需状态配置扩展会在 Azure 自动化 DSC 中注册 VM。 因为 Azure VM 所需状态配置扩展以异步方式运行，可在以下[**排查 Azure 虚拟机登记问题**](#troubleshooting-azure-virtual-machine-onboarding)部分了解跟踪注册进度或故障排除的步骤。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在 [Azure 门户](https://portal.azure.com/)中，导航到要在其中登记虚拟机的 Azure 自动化帐户。 在自动化帐户仪表板上，单击“DSC 节点” -> “添加 Azure VM”。
+在 [Azure 门户](https://portal.azure.com/)中，导航到要在其中登记虚拟机的 Azure 自动化帐户。 在自动化帐户仪表板上，单击“DSC 节点” -> “+ 添加 Azure VM”。
 
 选择要登记的 Azure 虚拟机。
 
@@ -359,9 +359,9 @@ Azure Automation DSC 可让你使用 Azure 门户、Azure 资源管理器模板�
 
 ## <a name="secure-registration"></a>安全注册
 
-计算机可以通过 WMF 5 DSC 注册协议安全登记到 Azure 自动化帐户，这样，DSC 节点便可向 PowerShell DSC V2“拉”服务器或报告服务器（包括 Azure 自动化 DSC）进行身份验证。 节点将注册到位于**注册 URL** 的服务器，并使用**注册密钥**进行身份验证。 在注册期间，DSC 节点和 DSC“拉”服务器/报告服务器将协商唯一证书，以便在注册后使用此节点向服务器进行身份验证。 此过程可防止登记的节点彼此模拟，例如当节点遭到入侵并且具有恶意行为时。 注册之后，注册密钥不再用于身份验证，而是从节点中删除。
+计算机可以通过 WMF 5 DSC 注册协议安全登记到 Azure 自动化帐户，这样，DSC 节点便可向 PowerShell DSC“拉”服务器或报告服务器（包括 Azure 自动化 DSC）进行身份验证。 节点将注册到位于**注册 URL** 的服务器，并使用**注册密钥**进行身份验证。 在注册期间，DSC 节点和 DSC“拉”服务器/报告服务器将协商唯一证书，以便在注册后使用此节点向服务器进行身份验证。 此过程可防止登记的节点彼此模拟，例如当节点遭到入侵并且具有恶意行为时。 注册之后，注册密钥不再用于身份验证，而是从节点中删除。
 
-可以从 Azure 预览门户中的“管理密钥”边栏选项卡获取 DSC 注册协议所需的信息。 在自动化帐户的“基本信息”面板中单击密钥图标即可打开此边栏选项卡。
+可以从 Azure 门户中“帐户设置”下的“密钥”中获取 DSC 注册协议所需的信息。 在自动化帐户的“基本信息”面板中单击密钥图标即可打开此边栏选项卡。
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
 
@@ -377,9 +377,7 @@ Azure Automation DSC 可让你轻松登记 Azure Windows VM 以进行配置管�
 > [!NOTE]
 > 将 Azure Windows VM 登记到使用 Azure VM 所需状态配置扩展的 Azure 自动化 DSC 的任何方法最多可能需要一小时，节点才显示为已在 Azure 自动化中注册。 Azure VM DSC 扩展会在 VM 上安装 Windows Management Framework 5.0，以便将 VM 登记到 Azure 自动化 DSC。
 
-要查看 Azure VM 所需状态配置扩展的状态或对其进行故障排除，请在 Azure 门户中，导航到正在登记的 VM，并单击“所有设置” -> “扩展” -> “DSC”。 有关详细信息，可以单击“查看详细状态”。
-
-[![](./media/automation-dsc-onboarding/DSC_Onboarding_5.png)](https://technet.microsoft.com/library/dn249912.aspx)
+若要查看 Azure VM 所需状态配置扩展的状态或对其进行故障排除，请在 Azure 门户中，导航到正在登记的 VM，并单击“设置”下的“扩展”。 然后单击 **DSC** 或 **DSCForLinux**，具体取决于操作系统。 有关详细信息，可以单击“查看详细状态”。
 
 ## <a name="certificate-expiration-and-reregistration"></a>证书过期和重新注册
 

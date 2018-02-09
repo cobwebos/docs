@@ -11,15 +11,15 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: d04e2000f2043e8bb11e15f6b9d7fd06ef5b9da3
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 49931155339660fc7a0a39f5b60dc9443374b8b0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>使用 Azure CLI 创建第一个在 Linux 上运行的函数（预览版）
 
-使用 Azure Functions 可将函数托管在 Linux 上的默认 Azure 应用服务容器中。 此功能目前处于预览状态。 还可以[自带自定义的容器](functions-create-function-linux-custom-image.md)。 
+使用 Azure Functions 可将函数托管在 Linux 上的默认 Azure 应用服务容器中。 还可以[自带自定义的容器](functions-create-function-linux-custom-image.md)。 此功能目前为预览版，并且需要 [Functions 2.0 运行时](functions-versions.md)，后者也为预览版。
 
 本快速入门主题逐步讲解如何配合使用 Azure Functions 和 Azure CLI，在 Linux 上创建第一个托管在默认应用服务容器中的函数应用。 函数代码本身将部署到 GitHub 示例存储库中的映像。    
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/16/2017
 
 ## <a name="create-a-function-app-on-linux"></a>在 Linux 上创建函数应用
 
-必须使用函数应用在 Linux 上托管函数的执行。 函数应用提供一个用于执行函数代码的环境。 它可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 使用 [az functionapp create](/cli/azure/functionapp#create) 命令在 Linux 应用服务计划中创建一个函数应用。 
+必须使用函数应用在 Linux 上托管函数的执行。 函数应用提供一个用于执行函数代码的环境。 它可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。 使用 [az functionapp create](/cli/azure/functionapp#az_functionapp_create) 命令在 Linux 应用服务计划中创建一个函数应用。 
 
 在以下命令中，请将 `<app_name>` 占位符替换成唯一函数应用名称，将 `<storage_name>` 替换为存储帐户名。 `<app_name>` 将用作 Function App 的默认 DNS 域，因此，该名称需要在 Azure 中的所有应用之间保持唯一。 _deployment-source-url_ 参数是 GitHub 中包含“Hello World”HTTP 触发函数的示例存储库。
 

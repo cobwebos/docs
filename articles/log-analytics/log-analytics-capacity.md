@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: banders
-ms.openlocfilehash: 031a538c7e3a7dd381fa9bd996d8a027f761a50a
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: c7516c6d4fa8cfe8e146c325af7ca7ca70475a94
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>使用容量和性能解决方案（预览版）计划 Hyper-V 虚拟机容量
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 12/13/2017
 |---|---|---|
 | [Windows 代理](log-analytics-windows-agent.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
 | [Linux 代理](log-analytics-linux-agents.md) | 否    | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
-| [SCOM 管理组](log-analytics-om-agents.md) | 是 |解决方案从连接的 SCOM 管理组中的代理收集容量和性能数据。 不需要从 SCOM 代理直接连接到 OMS。 数据从管理组转发到 OMS 存储库。|
+| [SCOM 管理组](log-analytics-om-agents.md) | 是 |解决方案从连接的 SCOM 管理组中的代理收集容量和性能数据。 不需要从 SCOM 代理直接连接到 Log Analytics。|
 | [Azure 存储帐户](log-analytics-azure-storage.md) | 否 | Azure 存储不包括容量和性能数据。|
 
 ## <a name="prerequisites"></a>先决条件
@@ -59,11 +59,11 @@ ms.lasthandoff: 12/13/2017
 
 执行以下步骤，将容量和性能解决方案添加到工作区。
 
-- 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中描述的过程，将容量和性能解决方案添加到 OMS 工作区。
+- 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中描述的过程，将容量和性能解决方案添加到 Log Analytics 工作区。
 
 ## <a name="management-packs"></a>管理包
 
-如果 SCOM 管理组已连接到 OMS 工作区，则添加该解决方案时会在 SCOM 中安装以下管理包。 无需对这些管理包进行任何配置或维护。
+如果 SCOM 管理组已连接到 Log Analytics 工作区，则添加该解决方案时会在 SCOM 中安装以下管理包。 无需对这些管理包进行任何配置或维护。
 
 - Microsoft.IntelligencePacks.CapacityPerformance
 

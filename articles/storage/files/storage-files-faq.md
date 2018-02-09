@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: e25a6555e06a437259cddcc46c27add5f8b2ad8b
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 8762b2cca03f4c95f7543803a024bff4573927a1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>有关 Azure 文件的常见问题解答
 [Azure 文件](storage-files-introduction.md)在云中提供可以通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)（也称为通用 Internet 文件系统，简称 CIFS）访问的完全托管文件共享。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步（预览版）在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -73,7 +73,7 @@ ms.lasthandoff: 01/05/2018
 
 * <a id="redundancy-options"></a>
 **Azure 文件支持哪些存储冗余选项？**  
-    当前，Azure 文件仅支持本地冗余存储 (LRS) 和异地冗余存储 (GRS)。 将来我们计划支持区域冗余存储空间 (ZRS) 和读取访问权限异地冗余存储 (RA-GRS)，但目前还没有可分享的日程表。
+    目前，Azure 文件支持本地冗余存储 (LRS)、区域冗余存储 (ZRS) 和异地冗余存储 (GRS)。 将来我们计划支持读取访问权限异地冗余存储 (RA-GRS)，但目前还没有可分享的日程表。
 
 * <a id="tier-options"></a>
 **Azure 文件支持哪些存储层？**  
@@ -90,7 +90,7 @@ ms.lasthandoff: 01/05/2018
 
 * <a id="afs-region-availability"></a>
 **Azure 文件同步（预览版）支持哪些区域？**  
-    Azure 文件同步目前适用于美国东部、美国西部、西欧、澳大利亚东部和东南亚。 在我们努力全面推出的过程中，我们将增加对更多地区的支持。 有关详细信息，请参阅[地区可用性](storage-sync-files-planning.md#region-availability)。
+    Azure 文件同步目前适用于澳大利亚东部、加拿大中部、美国东部、东南亚、英国南部、西欧和美国西部。 在我们努力全面推出的过程中，我们将增加对更多地区的支持。 有关详细信息，请参阅[地区可用性](storage-sync-files-planning.md#region-availability)。
 
 * <a id="cross-domain-sync"></a>
 **是否可以在同一个同步组中同时包含已加入域的服务器和未加入域的服务器？**  

@@ -42,6 +42,9 @@
 ### [Azure PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
 ## 配置重定向
 ### [Azure PowerShell](application-gateway-configure-redirect-powershell.md)
+## 配置外部重定向
+### [Azure PowerShell](tutorial-external-site-redirect-cli.md)
+### [Azure CLI](tutorial-external-site-redirect-powershell.md)
 ## 将 Web 应用配置为后端池成员
 ### [Azure PowerShell](application-gateway-web-app-powershell.md)
 ## 配置运行状况探测

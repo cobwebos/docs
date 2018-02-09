@@ -3,23 +3,23 @@ title: "通过 Azure 门户自定义 Azure 事件网格的事件 | Microsoft Doc
 description: "使用 Azure 事件网格和 PowerShell 发布一个主题，然后订阅该事件。"
 services: event-grid
 keywords: 
-author: djrosanova
-ms.author: darosa
-ms.date: 10/11/2017
+author: tfitzmac
+ms.author: tomfitz
+ms.date: 01/30/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: 0fe498b7b6dcf59bc5caef8ff5a40053e0498f85
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 01472ffc7a98cd2c99793c8675efe2cefffe5558
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>使用 Azure 门户和事件网格创建和路由自定义事件
 
-Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure 门户创建一个自定义主题，然后订阅该主题，再触发可查看结果的事件。 通常将事件发送到与该事件对应的终结点，例如 webhook 或 Azure Function。 但在本文中，为简便起见，请将事件发送到仅收集消息的 URL。 请使用名为 [RequestBin](https://requestb.in/) 的第三方开源工具创建该 URL。
+Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure 门户创建一个自定义主题，然后订阅该主题，再触发可查看结果的事件。 通常将事件发送到与该事件对应的终结点，例如 webhook 或 Azure Function。 但在本文中，为简便起见，请将事件发送到仅收集消息的 URL。 可从 [RequestBin](https://requestb.in/) 或 [Hookbin](https://hookbin.com/) 使用第三方工具创建此 URL。
 
 >[!NOTE]
->RequestBin 是一种不适用于高吞吐量的开源工具。 在这里使用该工具纯粹是为了演示。 如果一次推送多个事件，可能不会在工具中看到所有事件。
+>RequestBin 和 Hookbin 并不适合在高吞吐量方案中使用。 在这里使用这些工具纯粹是为了演示。 如果一次推送多个事件，可能不会在工具中看到所有事件。
 
 完成后即可看到事件数据已发送到某个终结点。
 
@@ -35,7 +35,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
    ![创建资源组](./media/custom-event-quickstart-portal/create-resource-group.png)
 
-1. 将资源组名称设置为 gridResourceGroup，将位置设置为 westus2。 选择“创建” 。
+1. 将资源组名称设置为 gridResourceGroup，将位置设置为 westus2。 选择“创建”。
 
    ![提供资源组值](./media/custom-event-quickstart-portal/provide-resource-group-values.png)
 
@@ -51,7 +51,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
    ![添加事件网格主题](./media/custom-event-quickstart-portal/add-topic.png)
 
-1. 为主题提供一个名称。 主题名称必须唯一，因为它由 DNS 条目表示。 预览版的事件网格支持“westus2”和“westcentralus”区域。 选择之前创建的资源组。 选择“创建” 。
+1. 为主题提供一个名称。 主题名称必须唯一，因为它由 DNS 条目表示。 选择一个[支持的区域](overview.md)。 选择之前创建的资源组。 选择“创建”。
 
    ![提供事件网格主题值](./media/custom-event-quickstart-portal/provide-topic-values.png)
 
@@ -61,7 +61,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 
-在订阅主题之前, 让我们创建事件消息的终结点。 与其编写代码来响应事件，不如创建一个终结点来收集消息，方便你查看。 RequestBin 是第三方开源工具，用于创建终结点和查看发送到其中的请求。 转到 [RequestBin](https://requestb.in/)，单击“创建 RequestBin”。  复制 bin URL，因为在订阅主题时需要它。
+在订阅主题之前, 让我们创建事件消息的终结点。 与其编写代码来响应事件，不如创建一个终结点来收集消息，方便你查看。 RequestBin 和 Hookbin 是第三方工具，用于创建终结点和查看发送到其中的请求。 转到 [RequestBin](https://requestb.in/)，然后单击“创建 RequestBin”；或者转到 [Hookbin](https://hookbin.com/)，然后单击“新建终结点”。  复制 bin URL，因为在订阅主题时需要它。
 
 ## <a name="subscribe-to-a-topic"></a>订阅主题
 
@@ -75,7 +75,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
    ![添加事件网格订阅](./media/custom-event-quickstart-portal/add-subscription.png)
 
-1. 提供事件订阅的唯一名称。 对于主题类型，请选择“事件网格主题”。 对于实例，请选择创建的自定义主题。 提供来自 RequestBin 的 URL 作为事件通知的终结点。 提供值以后，选择“创建”。
+1. 提供事件订阅的唯一名称。 对于主题类型，请选择“事件网格主题”。 对于实例，请选择创建的自定义主题。 提供来自 RequestBin 或 Hookbin 的 URL 作为事件通知的终结点。 提供值以后，选择“创建”。
 
    ![提供事件网格订阅值](./media/custom-event-quickstart-portal/provide-subscription-values.png)
 
@@ -106,7 +106,7 @@ CURL 是执行 HTTP 请求的实用工具。 本文使用 CURL 向主题发送�
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-你已经触发事件，而事件网格则已将消息发送到你在订阅时配置的终结点。 浏览到此前创建的 RequestBin URL。 或者，在打开的 RequestBin 浏览器中单击“刷新”。 此时会看到刚发送的事件。
+你已经触发事件，而事件网格则已将消息发送到你在订阅时配置的终结点。 浏览到此前创建的终结点 URL。 或者，在打开的浏览器中单击“刷新”。 此时会看到刚发送的事件。
 
 ```json
 [{
@@ -118,6 +118,8 @@ curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
     "make": "Ducati",
     "model": "Monster"
   },
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/{topic}"
 }]
 ```

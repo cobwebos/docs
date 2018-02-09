@@ -12,17 +12,17 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: cb4df0495420776ba2ff7b471c44c4ca3aa1dcff
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 09345b32e80008d4afe61078bd4d272fafe631d2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 
-本文介绍如何使用 Azure 资源管理器模板创建包含一个事件中心实例的事件中心命名空间，并在事件中心启用[捕获功能](event-hubs-capture-overview.md)。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
+本文介绍如何使用 Azure 资源管理器模板创建包含一个事件中心实例的[事件中心](event-hubs-what-is-event-hubs.md)命名空间，并在事件中心启用[捕获功能](event-hubs-capture-overview.md)。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
 
 本文还介绍如何根据所选目标，指定将事件捕获到 Azure 存储 Blob 或 Azure Data Lake Store 中。
 
@@ -42,11 +42,7 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="what-will-you-deploy"></a>将部署什么内容？
 
-借助此模板，可以部署包含事件中心的事件中心命名空间并启用[事件中心捕获](event-hubs-capture-overview.md)。
-
-[事件中心](event-hubs-what-is-event-hubs.md)是一种事件处理服务，用于向 Azure 提供大规模的事件与遥测数据入口，并且具有较低的延迟和较高的可靠性。 通过事件中心捕获，可以在所选的指定时间或大小间隔内，将事件中心的流式处理数据自动传送到 Azure Blob 存储或 Azure Data Lake Store。
-
-单击以下按钮，允许事件中心捕获将事件捕获到 Azure 存储中：
+借助此模板，可以部署包含事件中心的事件中心命名空间并启用[事件中心捕获](event-hubs-capture-overview.md)。 通过事件中心捕获，可以在所选的指定时间或大小间隔内，将事件中心的流式处理数据自动传送到 Azure Blob 存储或 Azure Data Lake Store。 单击以下按钮，允许事件中心捕获将事件捕获到 Azure 存储中：
 
 [![部署到 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
 
@@ -62,7 +58,7 @@ ms.lasthandoff: 12/21/2017
 
 ### <a name="eventhubnamespacename"></a>eventHubNamespaceName
 
-要创建的[事件中心命名空间](event-hubs-create.md)的名称。
+要创建的事件中心命名空间的名称。
 
 ```json
 "eventHubNamespaceName":{  
@@ -75,7 +71,7 @@ ms.lasthandoff: 12/21/2017
 
 ### <a name="eventhubname"></a>eventHubName
 
-在[事件中心命名空间](event-hubs-create.md)中创建的事件中心的名称。
+在事件中心命名空间中创建的事件中心的名称。
 
 ```json
 "eventHubName":{  

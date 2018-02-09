@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/29/2018
 ms.author: mimig
-ms.openlocfilehash: 835f6ffce9b2e1bb4b6cfd7476bb3fdb24a4f092
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: b8f92953634f9294805521d8b925ed67d121a17d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 诊断日志记录
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="what-is-logged"></a>记录哪些内容？
 
-* 记录所有经过身份验证的 REST SQL API 请求，包括由于访问权限、系统错误或错误请求而失败的请求。 当前不支持 MongoDB、Graph 和表 API。
+* 记录所有 API 中所有已经过身份验证的后端请求 (TCP/REST)，包括由于访问权限、系统错误或错误请求而发生的失败请求。 目前不支持用户启动的图形、Cassandra 和表 API 请求。
 * 对数据库本身的操作，包括对所有文档、容器和数据库的 CRUD 操作。
 * 对帐户密钥的操作，包括创建、修改或删除这些密钥。
 * 导致出现 401 响应的未经身份验证的请求。 例如，请求不包含持有者令牌、格式不正确或已过期，或者包含无效的令牌。
@@ -54,8 +54,8 @@ ms.lasthandoff: 01/19/2018
     * **存档到存储帐户**。 要使用此选项，需要一个可连接到的现有存储帐户。 要在门户中创建新的存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)，并按照说明创建资源管理器（即通用帐户）。 然后在门户中返回到此页，选择存储帐户。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
     * **流式传输到事件中心**。 要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 要创建事件中心命名空间，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
     * **发送到 Log Analytics**。     若要使用此选项，请使用现有的工作区，或遵循[创建新工作区](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)的步骤在门户中创建新的 Log Analytics 工作区。 有关在 Log Analytics 中查看日志的详细信息，请参阅[在 Log Analytics 中查看日志](#view-in-loganalytics)。
-    * **记录 DataPlaneRequests**。 选择此选项可以记录 SQL API、图形 API 和表 API 帐户的诊断。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
-    * **记录 MongoRequests**。 选择此选项可以记录 MongoDB API 帐户的诊断。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
+    * **记录 DataPlaneRequests**。 选择此选项可记录从 Azure Cosmos DB 的基础分布式平台发出的针对 SQL、图形、MongoDB、Cassandra 和表 API 帐户的后端请求。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
+    * **记录 MongoRequests**。 选择此选项可记录用户从 Azure Cosmos DB 前端发起的用于处理 MongoDB API 帐户的请求。  若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
     * **指标请求**。 选择此选项可在 [Azure 指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
 
 3. 单击“ **保存**”。

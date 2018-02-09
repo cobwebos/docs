@@ -4,22 +4,24 @@ description: "简要介绍 Azure 时序见解，这是一种用于时序数据�
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: anshan, jasonh
 manager: jhubbard
 editor: MarkMcGeeAtAquent
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: 2a0d3e829ed28912b56a022aa6aa82ade1718e35
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.date: 01/26/2018
+ms.openlocfilehash: e31cebfd027e93096e233f2963445e4fc50a7e9d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="what-is-azure-time-series-insights"></a>什么是 Azure 时序见解？
 
 时序见解是用于存储、可视化和查询大量时序数据（例如 IoT 设备所生成的数据）的新服务。  如果你想要在云中存储、管理、查询或可视化时序数据，则时序见解可能会很适合你。  
+
+![Time Series Insights flowchart] (media/overview/time-series-insights-flowchart.png)
 
 时序见解包含四个关键作业：
 
@@ -67,7 +69,6 @@ ms.lasthandoff: 01/13/2018
 
 ## <a name="time-series-insights-explorer"></a>时序见解资源管理器
 此图表显示了通过资源管理器查看时序见解数据的示例：![Time Series Insights explorer] (media/time-series-insights-explorer/explorer4.png)
-
 
 ## <a name="next-steps"></a>后续步骤
  - [在演示环境中使用时序见解资源管理器浏览](./time-series-quickstart.md)

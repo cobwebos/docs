@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 22eafca56eb5677c63a833d298799b725c50f768
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: d8ffd9b3b9a315129ab0442908a9b3ad3bbecd1c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>使用事件网格自动调整上传图像的大小
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
-Azure Functions 需要一个常规存储帐户。 使用 [az storage account create](/cli/azure/storage/account#create) 命令在资源组中创建一个常规的独立存储帐户。
+Azure Functions 需要一个常规存储帐户。 使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令在资源组中创建一个常规的独立存储帐户。
 
 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 
 
@@ -65,7 +65,7 @@ az storage account create --name <general_storage_account> \
 
 ## <a name="create-a-function-app"></a>创建函数应用  
 
-必须使用 Function App 托管函数的执行。 Function App 提供一个环境，以便在不使用服务器的情况下执行函数代码。 使用 [az functionapp create](/cli/azure/functionapp#create) 命令创建 Function App。 
+必须使用 Function App 托管函数的执行。 Function App 提供一个环境，以便在不使用服务器的情况下执行函数代码。 使用 [az functionapp create](/cli/azure/functionapp#az_functionapp_create) 命令创建 Function App。 
 
 在以下命令中，请在看到 `<function_app>` 占位符的位置替换为自己的唯一函数应用名称。 `<function_app>` 将用作 Function App 的默认 DNS 域，因此，该名称需要在 Azure 中的所有应用之间保持唯一。 在这种情况下，`<general_storage_account>` 是你创建的常规存储帐户的名称。  
 
@@ -78,7 +78,7 @@ az functionapp create --name <function_app> --storage-account  <general_storage_
 
 ## <a name="configure-the-function-app"></a>配置函数应用
 
-该函数需要连接字符串以连接到 blob 存储帐户。 在这种情况下，`<blob_storage_account>` 是你在上一教程中创建的 Blob 存储帐户的名称。 使用 [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) 命令获得连接字符串。 缩略图容器名称也必须设置为 `thumbs`。 使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) 命令将这些应用程序设置添加到函数应用。
+该函数需要连接字符串以连接到 blob 存储帐户。 在这种情况下，`<blob_storage_account>` 是你在上一教程中创建的 Blob 存储帐户的名称。 使用 [az storage account show-connection-string](/cli/azure/storage/account#az_storage_account_show_connection_string) 命令获得连接字符串。 缩略图容器名称也必须设置为 `thumbs`。 使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) 命令将这些应用程序设置添加到函数应用。
 
 ```azurecli-interactive
 storageConnectionString=$(az storage account show-connection-string \
@@ -95,7 +95,7 @@ myContainerName=thumbs
 
 ## <a name="deploy-the-function-code"></a>部署函数代码 
 
-执行图像大小调整的 C# 函数可在此[示例 GitHub 存储库](https://github.com/Azure-Samples/function-image-upload-resize)中找到。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) 命令将此函数代码项目部署到函数应用。 
+执行图像大小调整的 C# 函数可在此[示例 GitHub 存储库](https://github.com/Azure-Samples/function-image-upload-resize)中找到。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#az_functionapp_deployment_source_config) 命令将此函数代码项目部署到函数应用。 
 
 在以下命令中，`<function_app>` 是你在上一个脚本中创建的同一个函数应用。
 
@@ -106,7 +106,9 @@ az functionapp deployment source config --name <function_app> \
 ```
 
 图像大小调整功能由 Blob 创建事件的事件订阅触发。 传递给触发器的数据包括 blob 的 URL，此 URL 接着会传递给输入绑定，以从 Blob 存 储中获取上传的图像。 该函数生成缩略图，并将生成的流写入 Blob 存储中的单独容器。 要了解有关此函数的详细信息，请参阅[示例存储库中的自述文件](https://github.com/Azure-Samples/function-image-upload-resize/blob/master/README.md)。
- 
+
+此项目使用 `EventGridTrigger` 作为触发器类型。 建议使用事件网格触发器而不是泛型 HTTP 触发器。 事件网格会自动验证事件网格函数触发器。 使用泛型 HTTP 触发器时，必须实现[验证响应](security-authentication.md#webhook-event-delivery)。
+
 函数项目代码直接从公共示例存储库部署。 要了解有关 Azure Functions 部署选项的详细信息，请参阅 [Azure Functions 的持续部署](../azure-functions/functions-continuous-deployment.md)。
 
 ## <a name="create-your-event-subscription"></a>创建事件订阅
@@ -129,8 +131,8 @@ az functionapp deployment source config --name <function_app> \
     | ------------ |  ------- | -------------------------------------------------- |
     | **Name** | imageresizersub | 标识新事件订阅的名称。 | 
     | 主题类型 |  存储帐户 | 选择存储帐户事件提供程序。 | 
-    | **订阅** | 订阅 | 默认情况下，应选择当前订阅。   |
-    | **资源组** | myResourceGroup | 选择“使用现有”，然后选择此主题中使用的资源组。  |
+    | **订阅** | Azure 订阅 | 默认情况下，应选择当前的 Azure 订阅。   |
+    | **资源组** | myResourceGroup | 选择“使用现有”，然后选择此教程中使用的资源组。  |
     | **实例** |  `<blob_storage_account>` |  使用你创建 Blob 存储帐户。 |
     | 事件类型 | 已创建 blob | 除“已创建 Blob”以外，取消选中所有其他类型。 只有 `Microsoft.Storage.BlobCreated` 的事件类型传递给函数。| 
     | 订阅者终结点 | 自动生成 | 使用为你生成的终结点 URL。 | 

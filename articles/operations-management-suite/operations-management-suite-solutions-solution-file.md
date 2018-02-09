@@ -1,6 +1,6 @@
 ---
-title: "在 Operations Management Suite (OMS) 中创建管理解决方案 | Microsoft 文档"
-description: "通过提供客户可添加到其 OMS 工作区的打包管理方案，管理解决方案可扩展 Operations Management Suite (OMS) 的功能。  本文提供有关如何创建要在自己的环境中使用或可供客户使用的管理解决方案的详细信息。"
+title: "在 Azure 中创建管理解决方案文件 | Microsoft Docs"
+description: "管理解决方案提供打包的管理方案，客户可将其添加到 Azure 环境。  本文提供有关如何创建要在自己的环境中使用或可供客户使用的管理解决方案的详细信息。"
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1ace3042cc00cedd005955cdfb82c557fd4a8fb2
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: d896fb7c5ffed5c0fe338c2d2f1ef864aacd6f79
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="creating-a-management-solution-file-in-operations-management-suite-oms-preview"></a>在 Operations Management Suite (OMS) 中创建管理解决方案文件（预览版）
+# <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
 > [!NOTE]
-> 这是在 OMS 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。  
+> 这是在 Azure 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。  
 
-Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manager 模板](../azure-resource-manager/resource-manager-template-walkthrough.md)实现。  了解如何创作管理解决方案的主要任务是了解如何[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)。  本文提供了用于解决方案的模板以及如何配置典型的解决方案资源的唯一详细信息。
+Azure 中的管理解决方案作为[资源管理器模板](../azure-resource-manager/resource-manager-template-walkthrough.md)实施。  了解如何创作管理解决方案的主要任务是了解如何[创作模板](../azure-resource-manager/resource-group-authoring-templates.md)。  本文提供了用于解决方案的模板以及如何配置典型的解决方案资源的唯一详细信息。
 
 
 ## <a name="tools"></a>工具
@@ -53,7 +53,8 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
 ## <a name="parameters"></a>parameters
 [parameters](../azure-resource-manager/resource-group-authoring-templates.md#parameters) 是你在用户安装管理解决方案时从用户请求的值。  存在所有解决方案均具有的标准参数，你也可以根据特定解决方案的需要添加其他参数。  用户安装解决方案时提供参数值的方式取决于特定参数和解决方案安装方式。
 
-用户通过 [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) 或 [Azure 快速入门模板](operations-management-suite-solutions.md#finding-and-installing-management-solutions) 安装管理解决方案时，系统会提示他们选择 [OMS 工作区和自动管理帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
+用户通过 [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) 或 [Azure 快速入门模板](operations-management-suite-solutions.md#finding-and-installing-management-solutions)安装管理解决方案时，系统会提示他们选择 [Log Analytics 工作区和自动化帐户](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
+
 
 用户安装解决方案[另一种方法](operations-management-suite-solutions.md#finding-and-installing-management-solutions)时，必须为所有标准参数和所有其他参数提供一个值。
 
@@ -168,8 +169,9 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
 ### <a name="dependencies"></a>依赖项
 **dependsOn** 元素指定对另一个资源的[依赖](../azure-resource-manager/resource-group-define-dependencies.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](operations-management-suite-solutions-resources-automation.md#automation-jobs)安装，则该解决方案需要[启动 runbook](operations-management-suite-solutions-resources-automation.md#runbooks)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
 
-### <a name="oms-workspace-and-automation-account"></a>OMS 工作区和自动化帐户
-管理解决方案需要 [OMS 工作区](../log-analytics/log-analytics-manage-access.md)来包含视图，也需要[自动化帐户](../automation/automation-security-overview.md#automation-account-overview)来包含 runbook 和相关资源。  这些内容在解决方案中的资源创建之前必须已经存在，并且不能在解决方案本身中定义。  部署解决方案时，用户将[指定工作区和帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)，但作为作者，应考虑以下几点。
+### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics 工作区和自动化帐户
+管理解决方案需要 [Log Analytics 工作区](../log-analytics/log-analytics-manage-access.md)来包含视图，也需要[自动化帐户](../automation/automation-security-overview.md#automation-account-overview)来包含 runbook 和相关资源。  这些内容在解决方案中的资源创建之前必须已经存在，并且不能在解决方案本身中定义。  部署解决方案时，用户将[指定工作区和帐户](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)，但作为作者，应考虑以下几点。
+
 
 ## <a name="solution-resource"></a>解决方案资源
 每个解决方案在 **resources** 元素中都需要资源项，用于定义解决方案本身。  该资源项的类型为 **Microsoft.OperationsManagement/solutions**，并且具有以下结构。 这包括常用于定义解决方案属性的[标准参数](#parameters)和[变量](#variables)。
@@ -224,7 +226,7 @@ Operations Management Suite (OMS) 中的管理解决方案作为 [Resource Manag
 
 | 属性 | 说明 |
 |:--- |:--- |
-| name |解决方案名称。 |
+| 名称 |解决方案名称。 |
 | 版本 |由作者确定的解决方案版本。 |
 | product |标识解决方案的唯一字符串。 |
 | 发布者 |解决方案发布者。 |

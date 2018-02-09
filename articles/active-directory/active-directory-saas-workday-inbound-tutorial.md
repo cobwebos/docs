@@ -1,5 +1,5 @@
 ---
-title: "教程：使用本地 Active Directory 和 Azure Active Directory 为 Workday 配置自动用户预配 | Microsoft Docs"
+title: "教程：使用 Azure Active Directory 为 Workday 配置自动用户预配 | Microsoft Docs"
 description: "了解如何将 Workday 用作 Active Directory 和 Azure Active Directory 的标识数据源。"
 services: active-directory
 author: asmalser-msft
@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2017
+ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: f267a59fadb7f402ac81f43b5465b6ac1f28943e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3a84a7ae7572145df8154ec5cbccf9f97e81866b
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configure-workday-for-automatic-user-provisioning-with-on-premises-active-directory-and-azure-active-directory"></a>教程：使用本地 Active Directory 和 Azure Active Directory 为 Workday 配置自动用户预配
+# <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
+
 本教程旨在说明需要执行哪些步骤才能将用户从 Workday 导入 Active Directory 和 Azure Active Directory，并有选择性地将某些属性写回到 Workday。 
 
 
@@ -176,7 +177,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 1. 在搜索框中输入域安全策略，然后单击链接“功能区域的域安全策略”。  
    
     ![域安全策略](./media/active-directory-saas-workday-inbound-tutorial/IC750986.png "域安全策略")  
-2. 搜索“系统”并选择“系统”功能区域。  单击 **“确定”**。  
+2. 搜索“系统”并选择“系统”功能区域。  单击“确定”。  
    
     ![域安全策略](./media/active-directory-saas-workday-inbound-tutorial/IC750987.png "域安全策略")  
 3. 在系统功能区域的安全策略列表中，展开“安全管理”并选择域安全策略“外部帐户预配”。  
@@ -341,7 +342,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  创建 + 更新 |
 | **PostalCode**  |   postalCode  |     | 创建 + 更新 |
 | **LocalReference** |  preferredLanguage  |     |  创建 + 更新 |
-| **Replace(Mid(Replace(\[EmployeeID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
+| **Replace(Mid(Replace(\[EmployeeID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
 | **姓氏**   |   sn   |     |  创建 + 更新 |
 | **CountryRegionReference** |  号     |     | 创建 + 更新 |
 | **AddressLineData**    |  streetAddress  |     |   创建 + 更新 |
@@ -445,7 +446,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 1.  在“预配”选项卡中，将“预配状态”设置为“打开”。
 
-2. 单击“保存”。
+2. 单击“ **保存**”。
 
 3. 随后将启动初始同步。根据 Workday 中的用户数，此过程花费的时间可能有所不同。
 
@@ -553,7 +554,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * **使用此属性匹配对象** – 是否应使用此映射唯一标识 Workday 与 Azure AD 之间的用户。 通常在 Workday 的“工作人员 ID”字段中设置此值，此值通常映射到 Azure AD 中的“员工 ID”属性（新）或扩展属性。
 
-   * **匹配优先顺序** – 可设置多个匹配属性。 当存在匹配时，会按照此字段定义的顺序进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
+   * 匹配优先级 – 可设置多个匹配属性。 当存在匹配时，会按照此字段定义的顺序进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
 
    * **应用此映射**
 
@@ -568,7 +569,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 1.  在“预配”选项卡中，将“预配状态”设置为“打开”。
 
-2. 单击“保存”。
+2. 单击“ **保存**”。
 
 3. 随后将启动初始同步。根据 Workday 中的用户数，此过程花费的时间可能有所不同。
 
@@ -629,7 +630,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 1.  在“预配”选项卡中，将“预配状态”设置为“打开”。
 
-2. 单击“保存”。
+2. 单击“ **保存**”。
 
 3. 随后将启动初始同步。根据 Workday 中的用户数，此过程花费的时间可能有所不同。
 
@@ -646,7 +647,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 ## <a name="additional-resources"></a>其他资源
 * [教程：在 Workday 与 Azure Active Directory 之间配置单一登录](active-directory-saas-workday-tutorial.md)
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 ## <a name="next-steps"></a>后续步骤
 

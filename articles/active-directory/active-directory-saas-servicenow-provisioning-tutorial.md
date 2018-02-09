@@ -1,5 +1,5 @@
 ---
-title: "教程：使用 Azure Active Directory 配置 ServiceNow 实现自动用户预配 | Microsoft Docs"
+title: "教程：使用 Azure Active Directory 为 ServiceNow 配置自动用户预配 | Microsoft Docs"
 description: "了解如何将用户帐户从 Azure AD 自动预配到 ServiceNow 及如何取消预配。"
 services: active-directory
 documentationCenter: na
@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 06772c9e21936d224f721413ccdc1c859b07b940
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: de6bddeedbff5fded716db31b1a528466df1d396
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>教程：使用 Azure Active Directory 配置 ServiceNow 实现自动用户预配
+# <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>教程：使用 Azure Active Directory 为 ServiceNow 配置自动用户预配
 
 本教程的目的是说明从 Azure AD 自动将用户帐户预配到 ServiceNow 和取消其预配所需在 ServiceNow 和 Azure 中执行的步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 *   Azure Active Directory 租户。
 *   必须拥有 ServiceNow for Work 或 ServiceNow for Education 的有效租户。 免费试用帐户可用于任一服务。
@@ -89,7 +89,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 * [配置单一登录](active-directory-saas-servicenow-tutorial.md)
 
 

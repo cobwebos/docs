@@ -1,125 +1,251 @@
 ---
-title: "使用 URL 路由规则创建应用程序网关 - Azure CLI 2.0 | Microsoft Docs"
-description: "本页提供有关如何使用 URL 路由规则创建和配置应用程序网关的说明。"
-documentationcenter: na
+title: "使用基于 URL 路径的路由规则创建应用程序网关 - Azure CLI | Microsoft Docs"
+description: "了解如何使用 Azure CLI 为应用程序网关和虚拟机规模集创建基于 URL 路径的路由规则。"
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 10d01d5d80e2d111d6b39598eed3612f80162b23
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0593e37def43770efad7e07b306d8290b0590a48
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="create-an-application-gateway-by-using-path-based-routing-with-azure-cli-20"></a>使用 Azure CLI 2.0，通过基于路径的路由创建应用程序网关
+# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>通过 Azure CLI 使用基于 URL 路径的路由规则创建应用程序网关
 
-> [!div class="op_single_selector"]
-> * [Azure 门户](application-gateway-create-url-route-portal.md)
-> * [Azure 资源管理器 PowerShell](application-gateway-create-url-route-arm-ps.md)
-> * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
+创建[应用程序网关](application-gateway-introduction.md)时可以使用 Azure CLI 配置[基于 URL 路径的路由规则](application-gateway-url-route-overview.md)。 在本教程中，使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)创建后端池。 然后创建路由规则，以便确保 Web 流量到达池中的相应服务器。
 
-借助基于 URL 路径的路由，可根据 HTTP 请求的 URL 路径来关联路由。 它会检查是否有路由连接到为应用程序网关中列出的 URL 配置的后端服务器池，并将网络流量发送到定义的池。 基于 URL 路径的路由的常见用法是将不同内容类型的请求负载均衡到不同的后端服务器池。
+在本文中，学习如何：
 
-Azure 应用程序网关使用两种规则类型：基本规则和基于 URL 路径的规则。 基本规则类型为后端池提供轮循机制服务。 除了轮循机制分发之外，基于路径的规则还可以使用请求 URL 的路径模式选择适当的后端池。
+> [!div class="checklist"]
+> * 设置网络
+> * 使用 URL 映射创建应用程序网关
+> * 使用后端池创建虚拟机规模集
 
-## <a name="scenario"></a>方案
+![URL 路由示例](./media/application-gateway-create-url-route-cli/scenario.png)
 
-在以下示例中，应用程序网关使用两个后端服务器池为 contoso.com 提供流量：默认服务器池和映像服务器池。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-http://contoso.com/image* 请求将被路由到映像服务器池 (imagesBackendPool)。 如果路径模式不匹配，应用程序网关将选择默认的服务器池 (appGatewayBackendPool)。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-![URL 路由](./media/application-gateway-create-url-route-cli/scenario.png)
+如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="create-a-resource-group"></a>创建资源组
 
-打开 Microsoft Azure 命令提示符，并登录：
+资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group#create) 创建资源组。
 
-```azurecli
-az login -u "username"
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组。
+
+```azurecli-interactive 
+az group create --name myResourceGroupAG --location eastus
 ```
 
-> [!NOTE]
-> 还可以使用不带开关的 `az login` 进行设备登录，登录时需要在 aka.ms/devicelogin 输入代码。
+## <a name="create-network-resources"></a>创建网络资源 
 
-输入前面的命令后，将收到一个代码。 在浏览器中转到 https://aka.ms/devicelogin，继续登录过程。
+使用 [az network vnet create](/cli/azure/network/vnet#az_net) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) 添加后端服务器所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
 
-![显示设备登录信息的命令提示符][1]
+```azurecli-interactive
+az network vnet create \
+  --name myVNet \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name myAGSubnet \
+  --subnet-prefix 10.0.1.0/24
+az network vnet subnet create \
+  --name myBackendSubnet \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --address-prefix 10.0.2.0/24
+az network public-ip create \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress
+```
 
-在浏览器中，输入收到的代码。 这样，可以重定向到登录页。
+## <a name="create-the-application-gateway-with-url-map"></a>使用 URL 映射创建应用程序网关
 
-![用于输入代码的浏览器][2]
+可以使用 [az network application-gateway create](/cli/azure/application-gateway#create) 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myAGPublicIPAddress*。 
 
-输入代码进行登录，再关闭浏览器，以便继续操作。
+```azurecli-interactive
+az network application-gateway create \
+  --name myAppGateway \
+  --location eastus \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --subnet myAGsubnet \
+  --capacity 2 \
+  --sku Standard_Medium \
+  --http-settings-cookie-based-affinity Disabled \
+  --frontend-port 80 \
+  --http-settings-port 80 \
+  --http-settings-protocol Http \
+  --public-ip-address myAGPublicIPAddress
+```
 
-![已成功登录][3]
+ 创建应用程序网关可能需要几分钟时间。 创建应用程序网关后，可以看到它的这些新功能：
 
-## <a name="add-a-path-based-rule-to-an-existing-application-gateway"></a>将基于路径的规则添加到现有应用程序网关
+- *appGatewayBackendPool* - 应用程序网关必须至少具有一个后端地址池。
+- *appGatewayBackendHttpSettings* - 指定将端口 80 和 HTTP 协议用于通信。
+- *appGatewayHttpListener* - 与 *appGatewayBackendPool* 关联的默认侦听器。
+- *appGatewayFrontendIP* - 将 *myAGPublicIPAddress* 分配给 *appGatewayHttpListener*。
+- *rule1* - 与 *appGatewayHttpListener* 关联的默认路由规则。
 
-下列步骤演示了如何将基于路径的规则添加到现有应用程序网关。
-### <a name="create-a-new-back-end-pool"></a>创建新后端池
 
-配置应用程序网关设置“imagesBackendPool”以在后端池中实现负载均衡的网络流量。 本示例为新后端池配置不同的后端池设置。 每个后端池都可有自身的设置。 基于路径的规则使用后端 HTTP 设置将流量路由到正确的后端池成员。 将流量发送到后端池成员时，所用的协议和端口由此设置决定。 后端 HTTP 设置还决定了基于 Cookie 的会话。  在启用的情况下，基于 Cookie 的会话相关性会将流量发送到与每个数据包的前述请求相同的后端。
+### <a name="add-image-and-video-backend-pools-and-port"></a>添加映像及视频后端池和端口
+
+可以使用 [az network application-gateway address-pool create](/cli/azure/application-gateway#az_network_application_gateway_address-pool_create) 向应用程序网关添加名为 *imagesBackendPool* 和 *videoBackendPool* 的后端池。 使用 [az network application-gateway frontend-port create](/cli/azure/application-gateway#az_network_application_gateway_frontend_port_create) 为池添加前端端口。 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
---gateway-name AdatumAppGateway \
---name imagesBackendPool  \
---resource-group myresourcegroup \
---servers 10.0.0.6 10.0.0.7
+  --gateway-name myAppGateway \
+  --resource-group myResourceGroupAG \
+  --name imagesBackendPool
+az network application-gateway address-pool create \
+  --gateway-name myAppGateway \
+  --resource-group myResourceGroupAG \
+  --name videoBackendPool
+az network application-gateway frontend-port create \
+  --port 8080 \
+  --gateway-name myAppGateway \
+  --resource-group myResourceGroupAG \
+  --name port8080
 ```
 
-### <a name="create-a-new-front-end-port-for-an-application-gateway"></a>为应用程序网关创建新的前端端口
+### <a name="add-backend-listener"></a>添加后端侦听器
 
-侦听器使用前端端口配置对象来定义应用程序网关所侦听的具体端口，以便确定侦听器上的流量。
+使用 [az network application-gateway http-listener create](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create) 添加路由流量所需的名为 *backendListener* 的后端侦听器。
+
 
 ```azurecli-interactive
-az network application-gateway frontend-port create --port 82 --gateway-name AdatumAppGateway --resource-group myresourcegroup --name port82
+az network application-gateway http-listener create \
+  --name backendListener \
+  --frontend-ip appGatewayFrontendIP \
+  --frontend-port port8080 \
+  --resource-group myResourceGroupAG \
+  --gateway-name myAppGateway
 ```
 
-### <a name="create-a-new-listener"></a>创建新侦听器
+### <a name="add-url-path-map"></a>添加 URL 路径映射
 
-此步骤针对用于接收传入网络流量的公共 IP 地址和连接端口配置侦听器。 以下示例使用以前配置的前端 IP 配置、前端端口配置以及协议（http 或 https，区分大小写）对侦听器进行配置。 在此示例中，侦听器侦听端口 82 上的 HTTP 流量，该端口位于此方案之前创建的公共 IP 地址上。
-
-```azurecli-interactive
-az network application-gateway http-listener create --name imageListener --frontend-ip appGatewayFrontendIP  --frontend-port port82 --resource-group myresourcegroup --gateway-name AdatumAppGateway
-```
-
-### <a name="create-the-url-path-map"></a>创建 URL 路径映射
-
-此步骤配置应用程序网关用于定义路径间映射的相对 URL 路径，以及分配以用于处理传入流量的后端池。
-
-> [!IMPORTANT]
-> 每个路径必须以“/”开头，星号只允许放在末尾处。 有效示例包括 /xyz, /xyz* 或 /xyz/*。 发送到路径匹配器的字符串不会在第一个“?”或“#”之后包含任何文本，不允许使用这些字符。 
-
-以下示例针对 /images/* 路径创建一个将流量路由到后端 imagesBackendPool 的规则。 此规则可确保将每个 URL 集的流量路由到后端。 例如，http://adatum.com/images/figure1.jpg 转到 imagesBackendPool。 如果路径不符合任何预定义的路径规则，规则路径映射配置也会配置默认的后端地址池。 例如，http://adatum.com/shoppingcart/test.html 转到 pool1，因为它被定义为非匹配流量的默认池。
+URL 路径映射可确保将特定的 URL 路由到特定的后端池。 可以分别使用 [az network application-gateway url-path-map create](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_create) 和 [az network application-gateway url-path-map rule create](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_rule_create) 创建名为 *imagePathRule* 和 *videoPathRule* 的 URL 路径映射
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
---gateway-name AdatumAppGateway \
---name imagespathmap \
---paths /images/* \
---resource-group myresourcegroup2 \
---address-pool imagesBackendPool \
---default-address-pool appGatewayBackendPool \
---default-http-settings appGatewayBackendHttpSettings \
---http-settings appGatewayBackendHttpSettings \
---rule-name images
+  --gateway-name myAppGateway \
+  --name myPathMap \
+  --paths /images/* \
+  --resource-group myResourceGroupAG \
+  --address-pool imagesBackendPool \
+  --default-address-pool appGatewayBackendPool \
+  --default-http-settings appGatewayBackendHttpSettings \
+  --http-settings appGatewayBackendHttpSettings \
+  --rule-name imagePathRule
+az network application-gateway url-path-map rule create \
+  --gateway-name myAppGateway \
+  --name videoPathRule \
+  --resource-group myResourceGroupAG \
+  --path-map-name myPathMap \
+  --paths /video/* \
+  --address-pool videoBackendPool
 ```
+
+### <a name="add-routing-rule"></a>添加路由规则
+
+路由规则可将 URL 映射与所创建的侦听器相关联。 可以使用 [az network application-gateway rule create](/cli/azure/application-gateway#az_network_application_gateway_rule_create) 添加名为 *rule2* 的规则。
+
+```azurecli-interactive
+az network application-gateway rule create \
+  --gateway-name myAppGateway \
+  --name rule2 \
+  --resource-group myResourceGroupAG \
+  --http-listener backendListener \
+  --rule-type PathBasedRouting \
+  --url-path-map myPathMap \
+  --address-pool appGatewayBackendPool
+```
+
+## <a name="create-virtual-machine-scale-sets"></a>创建虚拟机规模集
+
+在此示例中，将创建三个虚拟机规模集以支持所创建的三个后端池。 创建的规模集分别名为 *myvmss1*、*myvmss2* 和 *myvmss3*。 每个规模集包含两个在其上安装了 NGINX 的虚拟机实例。
+
+```azurecli-interactive
+for i in `seq 1 3`; do
+  if [ $i -eq 1 ]
+  then
+    poolName="appGatewayBackendPool" 
+  fi
+  if [ $i -eq 2 ]
+  then
+    poolName="imagesBackendPool"
+  fi
+  if [ $i -eq 3 ]
+  then
+    poolName="videoBackendPool"
+  fi
+  az vmss create \
+    --name myvmss$i \
+    --resource-group myResourceGroupAG \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --admin-password Azure123456! \
+    --instance-count 2 \
+    --vnet-name myVNet \
+    --subnet myBackendSubnet \
+    --vm-sku Standard_DS2 \
+    --upgrade-policy-mode Automatic \
+    --app-gateway myAppGateway \
+    --backend-pool-name $poolName
+done
+```
+
+### <a name="install-nginx"></a>安装 NGINX
+
+```azurecli-interactive
+for i in `seq 1 3`; do
+  az vmss extension set \
+    --publisher Microsoft.Azure.Extensions \
+    --version 2.0 \
+    --name CustomScript \
+    --resource-group myResourceGroupAG \
+    --vmss-name myvmss$i \
+    --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
+done
+```
+
+## <a name="test-the-application-gateway"></a>测试应用程序网关
+
+若要获取应用程序网关的公共 IP 地址，可以使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，*http://40.121.222.19*、*http://40.121.222.19:8080/images/test.htm* 或 *http://40.121.222.19:8080/video/test.htm*。
+
+```azurepowershell-interactive
+az network public-ip show \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress \
+  --query [ipAddress] \
+  --output tsv
+```
+
+![应用程序网关中的测试基 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
+
+将 http://<ip-address>:8080/video/test.html 的 URL 更改到基 URL 的末尾，应看到类似下例所示的内容：
+
+![应用程序网关中的测试映像 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx-images.png)
+
+更改 http://<ip-address>:8080/video/test.html 的 URL，应看到类似下例所示的内容。
+
+![应用程序网关中的测试视频 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-如果要了解安全套接字层 (SSL) 卸载，请参阅[配置应用程序网关以进行 SSL 卸载](application-gateway-ssl-cli.md)。
+本教程介绍了如何：
 
+> [!div class="checklist"]
+> * 设置网络
+> * 使用 URL 映射创建应用程序网关
+> * 使用后端池创建虚拟机规模集
 
-[scenario]: ./media/application-gateway-create-url-route-cli/scenario.png
-[1]: ./media/application-gateway-create-url-route-cli/figure1.png
-[2]: ./media/application-gateway-create-url-route-cli/figure2.png
-[3]: ./media/application-gateway-create-url-route-cli/figure3.png
+若要了解有关应用程序网关及其关联资源的详细信息，请继续阅读操作指南文章。

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
-ms.date: 09/07/2017
-ms.openlocfilehash: 50d2d481b91199630bbfbf3cfdd21a1bf3062ff0
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.date: 02/01/2018
+ms.openlocfilehash: 18db3caf487375252ca50f3942d7bdf538367ba6
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="supported-data-exports-for-this-preview"></a>此预览支持的数据导出 
 可以导出为多种不同的格式。 在集成到其余的机器学习工作流之前，可以使用这些格式来保留数据准备的中间结果。

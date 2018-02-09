@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: bcbe59d5e2f085f055b99b715bcbcd91d9845f2d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 39bfc4e6a4f4066e8aeda0da387fe570525b6086
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure"></a>在 Azure 中构建 PHP 和 MySQL Web 应用
 
 > [!NOTE]
-> 本文将应用部署到基于 Windows 的应用服务。 若要部署到基于 Linux 的应用服务，请参阅[在基于 Linux 的 Azure 应用服务中生成 PHP 和 MySQL Web 应用](./containers/tutorial-php-mysql-app.md)。
+> 本文将应用部署到 Windows 上的应用服务。 若要部署到基于 Linux 的应用服务，请参阅[在基于 Linux 的 Azure 应用服务中生成 PHP 和 MySQL Web 应用](./containers/tutorial-php-mysql-app.md)。
 >
 
 [Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本教程介绍如何在 Azure 中创建 PHP Web 应用，并将其连接到 MySQL 数据库。 完成本教程后，Azure 应用服务 Web 应用中将会运行一个 [Laravel](https://laravel.com/) 应用。
@@ -41,7 +41,9 @@ ms.lasthandoff: 01/04/2018
 > * 从 Azure 流式传输诊断日志
 > * 在 Azure 门户中管理应用
 
-## <a name="prerequisites"></a>系统必备
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>先决条件
 
 完成本教程：
 
@@ -50,8 +52,6 @@ ms.lasthandoff: 01/04/2018
 * [安装 Composer](https://getcomposer.org/doc/00-intro.md)
 * 启用 Laravel 所需的以下 PHP 扩展：OpenSSL、PDO-MySQL、Mbstring、Tokenizer、XML
 * [安装并启动 MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prepare-local-mysql"></a>准备本地 MySQL
 
@@ -162,7 +162,7 @@ php artisan serve
 
 ### <a name="create-a-mysql-server"></a>创建 MySQL 服务器
 
-在 Cloud Shell 中，使用 [az mysql server create](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) 命令在用于 MySQL 的 Azure 数据库（预览版）中创建一个服务器。
+在 Cloud Shell 中，使用 [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) 命令在 Azure Database for MySQL（预览版）中创建一个服务器。
 
 在以下命令中，请将 &lt;mysql_server_name> 占位符替换为你自己的唯一 MySQL 服务器名称（有效字符是 `a-z`、`0-9` 和 `-`）。 此名称是 MySQL 服务器主机名 (`<mysql_server_name>.database.windows.net`) 的一部分，必须全局唯一。
 
@@ -192,7 +192,7 @@ az mysql server create --name <mysql_server_name> --resource-group myResourceGro
 
 ### <a name="configure-server-firewall"></a>配置服务器防火墙
 
-在 Cloud Shell 中，使用 [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) 命令创建 MySQL 服务器的防火墙规则，以便允许客户端连接。
+在 Cloud Shell 中，使用 [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) 命令创建 MySQL 服务器的防火墙规则，以便建立客户端连接。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
@@ -265,25 +265,21 @@ MYSQL_SSL=true
 
 ### <a name="configure-ssl-certificate"></a>配置 SSL 证书
 
-默认情况下，用于 MySQL 的 Azure 数据库强制执行来自客户端的 SSL 连接。 若要在 Azure 中连接 MySQL 数据库，必需使用 .pem SSL 证书。
+默认情况下，用于 MySQL 的 Azure 数据库强制执行来自客户端的 SSL 连接。 若要连接到 Azure 中的 MySQL 数据库，必须使用 [Azure Database for MySQL 提供的 _.pem_ 证书](../mysql/howto-configure-ssl.md)。
 
-打开 config/database.php 并添加 sslmode 和 options 参数到 `connections.mysql`，如下面的代码所示。
+打开 _config/database.php_，将 `sslmode` 和 `options` 参数添加到 `connections.mysql`，如以下代码所示。
 
 ```php
 'mysql' => [
     ...
     'sslmode' => env('DB_SSLMODE', 'prefer'),
     'options' => (env('MYSQL_SSL')) ? [
-        PDO::MYSQL_ATTR_SSL_KEY    => '/ssl/certificate.pem', 
+        PDO::MYSQL_ATTR_SSL_KEY    => '/ssl/BaltimoreCyberTrustRoot.crt.pem', 
     ] : []
 ],
 ```
 
-若要了解如何产生此 certificate.pem，请参阅[配置应用程序中的 SSL 连接性以安全连接到用于 MySQL 的 Azure 数据库](../mysql/howto-configure-ssl.md)。
-
-> [!TIP]
-> 路径 /ssl/certificate.pem 指向 Git 存储库中某个现有 certificate.pem 文件。 在本教程中，为方便起见提供此文件。 最佳做法是不将 .pem 证书提交到源控件。 
->
+在本教程中，为方便起见，证书 `BaltimoreCyberTrustRoot.crt.pem` 在存储库中提供。 
 
 ### <a name="test-the-application-locally"></a>在本地测试应用程序
 
@@ -345,7 +341,7 @@ git commit -m "database.php updates"
 
 如前所述，可以使用应用服务中的环境变量连接到 Azure MySQL 数据库。
 
-在 Cloud Shell 中，使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) 命令将环境变量设置为 _app settings_。
+在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) 命令将环境变量设置为应用设置。
 
 使用以下命令可以配置应用设置 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME` 和 `DB_PASSWORD`。 替换占位符 &lt;appname> 和 &lt;mysql_server_name>。
 
@@ -376,7 +372,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 php artisan key:generate --show
 ```
 
-在 Cloud Shell 中，使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) 命令在应用服务 Web 应用中设置应用程序密钥。 替换占位符 _&lt;appname>_ 和 _&lt;outputofphpartisankey:generate>_。
+在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) 命令在应用服务 Web 应用中设置应用程序密钥。 替换占位符 _&lt;appname>_ 和 _&lt;outputofphpartisankey:generate>_。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -388,7 +384,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 设置 Web 应用的虚拟应用程序路径。 需要执行此步骤的原因是 [Laravel 应用程序生命周期](https://laravel.com/docs/5.4/lifecycle)在 public 目录中开始，而不是在应用程序的根目录中开始。 无需手动配置虚拟应用程序路径，生命周期在根目录中开始的其他 PHP 框架也能正常工作。
 
-在 Cloud Shell 中，使用 [az resource update](/cli/azure/resource#update) 命令设置虚拟应用程序路径。 替换 _&lt;appname>_ 占位符。
+在 Cloud Shell 中，使用 [`az resource update`](/cli/azure/resource#az_resource_update) 命令设置虚拟应用程序路径。 替换 _&lt;appname>_ 占位符。
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
@@ -398,19 +394,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 
 ### <a name="push-to-azure-from-git"></a>从 Git 推送到 Azure
 
-在本地终端窗口中，将 Azure 远程功能添加到本地 Git 存储库。 将 _&lt;paste\_copied\_url\_here>_ 替换为从[创建 Web 应用](#create)保存的 Git 远程 URL。
-
-```bash
-git remote add azure <paste_copied_url_here>
-```
-
-推送到 Azure 远程功能以部署 PHP 应用程序。 系统会提示输入前面在创建部署用户期间提供的密码。
-
-```bash
-git push azure master
-```
-
-在部署期间，Azure 应用服务会向 Git 告知其进度。
+[!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
 ```bash
 Counting objects: 3, done.
@@ -591,7 +575,7 @@ git push azure master
 
 当 PHP 应用程序在 Azure 应用服务中运行时，可以将控制台日志传输到终端。 如此，可以获得相同的诊断消息，以便调试应用程序错误。
 
-若要启动日志流式处理，请在 Cloud Shell 中使用 [az webapp log tail](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) 命令。
+若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) 命令。
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup

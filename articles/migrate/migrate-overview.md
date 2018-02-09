@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: overview
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: 0bd3d7a9961e7a095684262ae1031f5a3ac0c3fb
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 393f2dfa29b930622a37b8ad90ee17b794c70aeb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -42,7 +42,7 @@ Azure Migrate 有助于：
 
 ## <a name="what-do-i-need-to-pay-for"></a>需要支付哪些费用？
 
-无需额外付费即可使用 Azure Migrate。 但在公开预览期间，使用依赖关系可视化功能需要额外付费。 默认情况下，Azure Migrate 创建支持[依赖关系可视化](concepts-dependency-visualization.md)的 Log Analytics 工作区。 如果使用依赖关系可视化，或使用 Azure Migrate 外部的工作区，则需按工作区使用情况付费。 [详细了解](https://azure.microsoft.com/en-us/pricing/details/insight-analytics/)费用。 当该服务公开发布后，使用依赖关系可视化功能不需付费。
+[在此处](https://azure.microsoft.com/en-in/pricing/details/azure-migrate/)详细了解 Azure Migrate 定价。
 
 
 ## <a name="whats-in-an-assessment"></a>评估内容有哪些？

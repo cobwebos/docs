@@ -2,17 +2,17 @@
 title: "Azure Batch 渲染服务 - 云规模的渲染 | Microsoft Docs"
 description: "直接从 Maya 渲染 Azure 虚拟机上的作业，按使用付费。"
 services: batch
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.topic: hero-article
 ms.date: 09/14/2017
 ms.author: danlep
-ms.openlocfilehash: aab68b4275edc48e1726b26a7400bbfdd8d40d6f
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: f1aa8de26afd8b54746c706047a6b6b21cbf311c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="get-started-with-the-batch-rendering-service"></a>Batch 渲染服务入门
 
@@ -25,12 +25,8 @@ Azure Batch 渲染服务提供云规模的渲染功能，按使用付费。 Batc
 
 Batch 渲染服务目前支持以下应用程序：
 
-- Autodesk Maya
-- Autodesk 3ds Max
-- Autodesk Arnold for Maya
-- Autodesk Arnold for 3ds Max
-- Chaos Group V-Ray for Maya
-- Chaos Group V-Ray for 3ds Max
+•   Autodesk Maya I/O 2017 Update 4（17.4.5459 版）•   Autodesk 3ds Max I/O 2018 Update 1（20.1.0.238 版）•   Autodesk Arnold for Maya（5.0.1.1 版）•   Autodesk Arnold for 3ds Max（1.0.836 版）•   Chaos Group V-Ray for Maya（3.52.03 版）•   Chaos Group V-Ray for 3ds Max（3.60.02 版）
+
 
 ## <a name="prerequisites"></a>先决条件
 

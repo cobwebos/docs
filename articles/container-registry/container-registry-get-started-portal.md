@@ -23,7 +23,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 (https://portal.azure.com)。
+登录 Azure 门户 ( https://portal.azure.com )。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 

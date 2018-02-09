@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/13/2017
 ms.author: heidist
-ms.openlocfilehash: 5b4d88cb9c9662fe45de8c11534232a2905cf5a4
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 02a027845e56407bc8cc95f54a46d9534cb6de92
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>如何在 Azure 搜索中生成分面筛选器 
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/25/2017
 
 分面为动态并在查询中返回。 搜索响应带有用于导航结果的分面类别。 如果不熟悉分面，可通过以下示例了解分面导航结构。
 
-  ![](./media/search-filters/facet-nav.png)
+  ![](./media/search-filters-facets/facet-nav.png)
 
 不熟悉分面导航并希望了解更多详情？ 请参阅[如何在 Azure 搜索中实现分面导航](search-faceted-navigation.md)。
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/25/2017
 + Edm.String
 + Edm.DateTimeOffset
 + Edm.Boolean
-+ Edm.Collections（请参阅本文后面的[如何对复杂数据类型进行分面](#facet-complex-fields)。）
++ Edm.Collections
 + 数值字段类型：Edm.Int32、Edm.Int64、Edm.Double
 
 不能在分面导航中使用 Edm.GeographyPoint。 分面基于可人工读取的文本或数字而构造。 因此，地理坐标不支持分面。 需要城市或区域字段才可实现按位置进行分面。
@@ -88,7 +88,7 @@ ms.lasthandoff: 10/25/2017
 
 ## <a name="build-and-load-an-index"></a>生成和加载索引
 
-拟定查询前的中间步骤（可能很显然）是必须[生成和填充索引](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index)。 为了保持完整性，此处介绍此步骤。 确定索引是否可用的一种方法是在[门户](https://portal.azure.com)中查看索引列表。
+编写查询之前的一个中间步骤（也许是众所周知的步骤）是[生成并填充索引](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index)。 为了保持内容完整，此处阐述了此步骤。 确定索引是否可用的一种方法是在[门户](https://portal.azure.com)中查看索引列表。
 
 ## <a name="add-facet-filters-to-a-query"></a>将分面筛选器添加到查询
 

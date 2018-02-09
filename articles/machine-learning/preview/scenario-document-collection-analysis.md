@@ -2,18 +2,19 @@
 title: "文档集分析 - Azure | Microsoft Docs"
 description: "如何使用 Azure ML Workbench 总结和分析大型文档集，包括短语学习、主题建模和主题模型分析等技术。"
 services: machine-learning
-documentationcenter: 
 author: kehuan
 ms.author: kehuan
-ms.reviewer: garyericson, jasonwhowell, mldocs
+manager: mwinkle
+ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview, mldocs
 ms.service: machine-learning
+ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 5ef1589e28c01d750641873d3c8482f61d90a887
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: a6034652f27765bb20db4dbbb4c25741b261e50a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="document-collection-analysis"></a>文档集分析
 
@@ -61,7 +62,7 @@ ms.lasthandoff: 10/27/2017
 
 * 本示例可以在任何计算环境中运行。 但是，建议在内存至少为 16 GB 且磁盘空间至少为 5 GB 的多核计算机中运行本示例。
 
-## <a name="create-a-new-workbench-project"></a>新建 Workbench 项目
+## <a name="create-a-new-workbench-project"></a>创建新的 Workbench 项目
 
 使用本示例作为模板，创建一个新项目：
 1.  打开 Azure Machine Learning Workbench
@@ -82,7 +83,7 @@ ms.lasthandoff: 10/27/2017
 
 数据文件中有 9 个数据字段。 数据字段名称和说明如下所示。
 
-| 字段名称 | 类型 | 说明 | 包含缺失值 |
+| 字段名称 | Type | 说明 | 包含缺失值 |
 |------------|------|-------------|---------------|
 | `ID` | String | 法案和决议的 ID。 此字段的格式是 [bill_type][number]-[congress]。 例如，“hconres1-93”表示法案类型为“hconres”（代表众议院共同决议，请参阅[本文档](https://github.com/unitedstates/congress/wiki/bills#basic-information)），法案号为“1”，会议号为“93”。 | 否 |
 | `Text` | String | 法案/决议的内容。 | 否 |
@@ -100,7 +101,7 @@ ms.lasthandoff: 10/27/2017
 
 本示例中的文件按如下方式组织。
 
-| 文件名 | 类型 | 说明 |
+| 文件名 | Type | 说明 |
 |-----------|------|-------------|
 | `aml_config` | 文件夹 | Azure Machine Learning Workbench 配置文件夹，请参阅[此文档](./experimentation-service-configuration-reference.md)了解详细的试验执行配置 |
 | `Code` | 文件夹 | 用来保存 Python 脚本和 Python 包的代码文件夹 |

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: ccompy
-ms.openlocfilehash: 72ff0c13319218f8ef91aff9208772fcb0fd9459
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b755197af7e8791e01273bcc25f72c0d92ef6bc2
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成
 本文档介绍 Azure 应用服务虚拟网络集成功能，并说明如何在 [Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) 中使用应用对其进行设置。 如果不熟悉 Azure 虚拟网络 (VNet)，则这里需要指出的是，该功能允许将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用多种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述][VNETOverview]。 
@@ -39,7 +39,7 @@ VNet 集成功能：
 * 需要“标准”、“高级”或“隔离”定价计划 
 * 适用于经典 VNet 或资源管理器 VNet 
 * 支持 TCP 和 UDP
-* 适用于 Web 应用、移动应用和 API 应用
+* 适用于 Web 应用、移动应用、API 应用和函数应用
 * 允许应用一次只连接到 1 个 VNet
 * 允许在应用服务计划中一次最多集成 5 个 VNet 
 * 允许在应用服务计划中由多个应用使用同一个 VNet
@@ -93,7 +93,7 @@ VNet 集成不支持某些功能，其中包括：
 ![][8]
 
 ##### <a name="enabling-point-to-site-in-a-resource-manager-vnet"></a>在资源管理器 VNet 中启用点到站点连接
-若要使用网关和点到站点配置资源管理器 VNet，可以使用此处（[使用 PowerShell 配置与虚拟网络的点到站点连接][V2VNETP2S]）所述的 PowerShell，或使用此处（[使用 Azure 门户配置与 VNet 的点到站点连接][V2VNETPortal]）所述的 Azure 门户。 尚未提供执行此功能的 UI。 请注意，需要为点到站点配置创建证书。 将 WebApp 连接到 VNet 时会自动配置证书。 
+若要使用网关和点到站点配置资源管理器 VNet，可以使用此处（[使用 PowerShell 配置与虚拟网络的点到站点连接][V2VNETP2S]）所述的 PowerShell，或使用此处（[使用 Azure 门户配置与 VNet 的点到站点连接][V2VNETPortal]）所述的 Azure 门户。 尚未提供执行此功能的 UI。 请注意，不需要为点到站点配置创建证书。 将 WebApp 连接到 VNet 时会自动配置证书。 
 
 ### <a name="creating-a-pre-configured-vnet"></a>创建预先配置的 VNet
 若要创建配置了网关和点到站点连接的新 VNet，则可使用应用服务网络 UI 来执行该操作，但仅限于资源管理器 VNet。 若要创建配置了网关和点到站点连接的经典 VNet，则需通过“网络”用户界面手动执行该操作。 
@@ -257,6 +257,10 @@ tcpping 实用程序会告知是否可访问特定主机和端口。 仅满足�
 * 网络安全组阻止点到站点 IP 范围中的 IP 进行访问
 * 本地防火墙阻止来自点到站点 IP 范围的流量
 * VNet 中的用户定义路由 (UDR) 阻止点到站点型流量访问本地网络
+
+## <a name="powershell-automation"></a>PowerShell 自动化
+
+可以使用 PowerShell 将应用服务与 Azure 虚拟网络集成。 对于准备好运行的脚本，请参阅[将 Azure 应用服务中的应用连接到 Azure 虚拟网络](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)。
 
 ## <a name="hybrid-connections-and-app-service-environments"></a>混合连接和应用服务环境
 可以通过 3 大功能来访问 VNet 托管的资源。 它们是：

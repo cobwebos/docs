@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 01/26/2018
 ms.author: sethm
-ms.openlocfilehash: 7c18cc4a0e6a8dbf3a47c146707666c5538ff7c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ac7e71002a375961b8d06b44bbccce2919129e4
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="messages-payloads-and-serialization"></a>消息、有效负载和序列化
 
@@ -33,14 +33,14 @@ Microsoft Azure 服务总线负责处理消息。 消息传递键值对属性形
 
 | 属性名称                         | 说明                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (content-type)           | 视需要描述消息的有效负载，采用符合 RFC2045 第 5 部分格式的描述符。例如，`application/json`。                                                                                                                                                                                                                                                                                             |
-|  [CorrelationId](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (correlation-id)       | 允许应用程序出于关联目的指定消息的上下文。例如，反映正在答复的消息的 MessageId。                                                                                                                                                                                                                                                                  |
+|  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (content-type)           | 视需要描述消息的有效负载，采用符合 RFC2045 第 5 部分格式的描述符；例如，`application/json`。                                                                                                                                                                                                                                                                                             |
+|  [CorrelationId](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (correlation-id)       | 使应用程序可出于关联目的指定消息的上下文。例如，反映正在答复的消息的 MessageId。                                                                                                                                                                                                                                                                  |
 | [DeadLetterSource](/dotnet/api/microsoft.azure.servicebus.message.deadlettersource)                      | 仅在已成为死信并随后从死信队列自动转发至其他实体的消息中设置。 指明已成为死信的消息所在的实体。 此属性为只读。                                                                                                                                                                                                                                  |
 | [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deliverycount)                         | 已尝试传递此消息的次数。 当消息锁期满，或接收程序明确放弃消息时，此计数递增。 此属性为只读。                                                                                                                                                                                                                                                  |
 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber)                | 对于已自动转发的消息，此属性反映的是在原始提交点首次分配给消息的序列号。 此属性为只读。                                                                                                                                                                                                                                                                |
 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc)                       | 实体接受并存储消息的即时 UTC。 如果接收程序不想信任发送程序的时钟，可以将此值用作权威的中性到达时间指示器。 此属性为只读。                                                                                                                                                                                                   |
-|  [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) (absolute-expiry-time) | 由于已过期而标记消息以供删除且无法再从实体中检索消息的即时 UTC。 此属性是通过将 EnqueuedTimeUtc 和控制是否过期的 TimeToLive 相加计算得出。 此属性为只读。                                                                                                                                                                           |
-| [ForcePersistence](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence)                      | 对于设置了 [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 标志的队列或主题，可以将此属性设置为，指明在消息获得承认前，必须先将消息暂留到磁盘中。 这是所有非快速实体的标准行为。                                                                                                                                                                                                         |
+|  [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) (absolute-expiry-time) | 由于其已过期而标记消息以供删除且无法再从实体中检索消息的即时 UTC。 此属性是通过将 EnqueuedTimeUtc 和控制是否过期的 TimeToLive 相加计算得出。 此属性为只读。                                                                                                                                                                           |
+| [ForcePersistence](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence)                      | 对于设置了 [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress) 标志的队列或主题，可以将此属性设置为，指明在消息获得承认前，必须先将消息暂留到磁盘中。 这是所有非快速实体的标准行为。                                                                                                                                                                                                         |
 | [Label](/dotnet/api/microsoft.azure.servicebus.message.label) (subject)                       | 借助此属性，应用程序可以类似于电子邮件主题行的标准化方式，向接收程序指明消息目的。                                                                                                                                                                                                                                                                                  |
 | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc)                        | 对于检索到的处于锁定状态（速览锁定接收模式，而非预先安排）的消息，此属性反映消息在队列/订阅中解除锁定的即时 UTC。 锁定期满后，[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deliverycount) 递增，消息再次可供检索。 此属性为只读。                                                                                                                         |
 | [LockToken](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.locktoken)                             | 锁定令牌引用了处于速览锁定接收模式的中转站保留的锁定。 此令牌可用于通过 [Deferral](message-deferral.md) API 永久固定锁定，随后并从常规传递状态流中取出消息。 此属性为只读。                                                                                                                                                               |
@@ -50,11 +50,11 @@ Microsoft Azure 服务总线负责处理消息。 消息传递键值对属性形
 | [ReplyToSessionId](/dotnet/api/microsoft.azure.servicebus.message.replytosessionid) (reply-to-group-id)  | 此值补充了 ReplyTo 信息，并指定了应为发送给答复实体的答复设置的 SessionId。                                                                                                                                                                                                                                                                            |
 | [ScheduledEnqueueTimeUtc](/dotnet/api/microsoft.azure.servicebus.message.scheduledenqueuetimeutc)               | 对于仅在延迟后才可供检索的消息，此属性定义了按逻辑将消息排入队列、序列化且消息随后可供检索的即时 UTC。                                                                                                                                                                                                                 |
 | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber)                        | 序列号是在中转站接受并存储消息时分配给消息的唯一 64 位整数，可用作真正的标识符。 对于已分区实体，最前面的 16 位数反映的是分区标识符。 序列号单调递增且无间隔。 在 48-64 位范围用尽后，序列号会回滚到 0。 此属性为只读。                                                                |
-| [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) (group-id)                  | 对于会话感知实体，应用程序定义的此值指定了消息的会话附属关系。 会话标识符相同的消息会处于摘要锁定状态，并确切启用依序处理和解多路复用。 对于非会话感知实体，可忽略此值。                                                                                                                                     |
+| [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) (group-id)                  | 对于会话感知实体，应用程序定义的此值指定了消息的会话附属关系。 会话标识符相同的消息会处于摘要锁定状态，并确切启用依序处理和解多路复用。 对于非会话感知实体，将忽略此值。                                                                                                                                     |
 | [大小](/dotnet/api/microsoft.azure.servicebus.message.size)                                  | 反映了中转站日志内存储的消息的大小（以字节为单位），因为它计入存储配额。 此属性为只读。                                                                                                                                                                                                                                                                                                       |
 | [State](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.state)                                 | 指明日志中消息的状态。 此属性仅在消息浏览（“速览”）期间才相关，可确定消息是“有效”（在到达队列顶部时可供检索）、是延迟还是在等待排期。 此属性为只读。                                                                                                                                           |
-| [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive)                            | 此值是相对持续时间，自中转站接受并存储消息时（如 EnqueueTimeUtc 所捕获）开始算起，期满后则消息过期。 如果未明确设置，假设值为适用于相应队列或主题的 DefaultTimeToLive。 消息级 TimeToLive 值不得超过实体的 DefaultTimeToLive 设置，否则将会进行无提示调整。 |
-| [To](/dotnet/api/microsoft.azure.servicebus.message.to) (to)                               | 此属性已保留，以供将来用于路由方案，暂被中转站本身忽略。 应用程序可以在规则驱动的自动转发链方案中使用此值，指明消息的预期逻辑目标。                                                                                                                                                                                   |
+| [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive)                            | 此值是相对持续时间，自中转站接受并存储消息时（如 EnqueueTimeUtc 所捕获）开始算起，期满后则消息过期。 如果未明确设置，假设值为适用于相应队列或主题的 DefaultTimeToLive。 消息级 TimeToLive 值不得超过实体的 DefaultTimeToLive 设置。 否则，将进行无提示调整。 |
+| [To](/dotnet/api/microsoft.azure.servicebus.message.to) (to)                               | 此属性已保留，以供将来用于路由方案，当前被中转站本身忽略。 应用程序可以在规则驱动的自动转发链方案中使用此值，指明消息的预期逻辑目标。                                                                                                                                                                                   |
 | [ViaPartitionKey](/dotnet/api/microsoft.azure.servicebus.message.viapartitionkey)                       | 如果消息是通过事务范围内的传输队列发送，此值选择传输队列分区。                                                                                                                                                                                                                                                                                                                 |
 
 借助抽象消息模型，可以通过 HTTP（其实始终为 HTTPS）将消息发布到队列，并能通过 AMQP 检索消息。 无论属于上述哪种情况，在相应协议的上下文中，消息看上去都很正常。 中转站属性会根据需要进行转换，用户属性会映射到相应协议消息模型上最合适的位置。 在 HTTP 中，用户属性直接与 HTTP 头相互映射；在 AMQP 中，用户属性与“应用程序-属性”映射相互映射。
@@ -76,7 +76,7 @@ Microsoft Azure 服务总线负责处理消息。 消息传递键值对属性形
 
 与 Java 或 .NET Standard 变体不同，服务总线 API 的 .NET Framework 版本支持将任意 .NET 对象传递到构造函数，创建 BrokeredMessage 实例。 
 
-如果使用的是旧版 SBMP 协议，这些对象使用默认二进制序列化程序，或使用外部提供的序列化程序进行序列化。 如果使用的是 AMQP 协议，对象会被序列化为 AMQP 对象。 接收程序可以使用 [GetBody<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法检索这些对象，同时提供预期类型；使用 AMQP，对象会被序列化为 ArrayList 和 IDictionary<string,object> 对象的 AMQP 图，并可供任何 AMQP 客户端解码。 
+如果使用的是旧版 SBMP 协议，这些对象使用默认二进制序列化程序，或使用外部提供的序列化程序进行序列化。 如果使用的是 AMQP 协议，对象会被序列化为 AMQP 对象。 接受器可使用 [GetBody<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) 方法检索这些对象，并提供预期类型。 使用 AMQP，对象都被序列化为 ArrayList 和 IDictionary<string,object> 对象的 AMQP 图，任何 AMQP 客户端都可以将其解码。 
 
 尽管这种隐藏序列化的神奇操作十分方便，但应用程序应明确控制对象序列化，并先将对象图转为流，再将它们添加到消息中（在接收程序端，操作执行顺序相反）。 这样生产的是交互结果。 还应指出，尽管 AMQP 有功能强大的二进制编码模型，但它与 AMQP 消息生态系统关联，导致 HTTP 客户端无法解码此类有效负载。 
 
@@ -86,7 +86,7 @@ Microsoft Azure 服务总线负责处理消息。 消息传递键值对属性形
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解服务总线消息，请参阅以下主题：
+若要了解有关服务总线消息传送的详细信息，请参阅以下主题：
 
 * [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)

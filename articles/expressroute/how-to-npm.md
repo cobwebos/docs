@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: 6a03986288fdb6acaf234a8abf690f728d160fd7
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 63160bc8f334b975ade8b35ce809578ad3a5b3fa
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>为 ExpressRoute 配置网络性能监视器（预览版）
 
@@ -46,6 +46,7 @@ ms.lasthandoff: 12/13/2017
 * 欧洲西部 
 * 美国东部 
 * 东南亚 
+* 澳大利亚东南部
 
 ## <a name="workflow"></a>工作流
 
@@ -174,16 +175,13 @@ ms.lasthandoff: 12/13/2017
 
 有关 NSG 的详细信息，请参阅[网络安全组](../virtual-network/virtual-networks-create-nsg-arm-portal.md)。
 
-## <a name="whitelist"></a>步骤 4：请求将工作区加入白名单
-
 >[!NOTE]
 >请确保已安装代理（包括本地服务器代理和 Azure 服务器代理），并且在执行此步骤前已运行 PowerShell 脚本。
 >
 >
 
-若要开始使用 NPM 的 ExpressRoute 监视功能，必须先请求将你的工作区加入白名单。 [单击此处转到对应页面并填写请求窗体](https://aka.ms/npmcohort)。 （提示：可能需要在新窗口或新选项卡中打开此链接。） 加入白名单的过程可能至少需要一个工作日。 加入白名单完成后，将收到一封电子邮件。
 
-## <a name="setupmonitor"></a>步骤 5：配置 NPM 进行 ExpressRoute 监视
+## <a name="setupmonitor"></a>步骤 4：配置 NPM 以进行 ExpressRoute 监视
 
 >[!WARNING]
 >若要继续执行操作，工作区必须已加入白名单并且已收到确认电子邮件。
@@ -208,7 +206,7 @@ ms.lasthandoff: 12/13/2017
 
   ![监视磁贴](.\media\how-to-npm\15.png)
 
-## <a name="explore"></a>步骤 6：查看监视磁贴
+## <a name="explore"></a>步骤 5：查看监视磁贴
 
 ### <a name="dashboard"></a>网络性能监视器页面
 

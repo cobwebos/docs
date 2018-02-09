@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 0bf1cff4058bfe46b54f3f0b6836ede3e04ed5dd
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 4bdcd6d57989df3d1b67c87d56b8c57035ef2f63
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="test-your-solution-with-simulated-devices"></a>使用模拟设备测试解决方案
 
@@ -78,6 +78,10 @@ ms.lasthandoff: 01/24/2018
 > * 将新设备类型添加到仪表板
 > * 从现有的设备类型发送自定义遥测数据
 
+以下视频演示了如何将模拟和真实设备连接到远程监视解决方案：
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-38-Customizing-Azure-IoT-Suite-solution-and-connect-a-real-device/Player]
+
 ## <a name="prerequisites"></a>先决条件
 
 若要学习本教程，需要：
@@ -127,24 +131,24 @@ ms.lasthandoff: 01/24/2018
 1. 若要启用对虚拟机的 SSH 访问，请使用上一步骤中记下的网络安全组名称运行以下命令：
 
     ```sh
-    az network nsg rule create --name SSH --nsg-name your-network-security-group --priority 101 --destination-port-ranges 22 --access Allow --protocol TCP
+    az network nsg rule create --name SSH --nsg-name YOUR-NETWORK-SECURITY-GROUP --priority 101 --destination-port-ranges 22 --access Allow --protocol TCP
     ```
 
     若要查看网络的入站规则列表，请运行以下命令：
 
     ```sh
-    az network nsg rule list --nsg-name Contoso-01-nsg -o table
+    az network nsg rule list --nsg-name YOUR-NETWORK-SECURITY-GROUP -o table
     ```
 
 1. 若要将虚拟机密码更改为所需的密码，请运行以下命令。 使用前面记下的虚拟机名称和所选的密码：
 
     ```sh
-    az vm user update --name your-vm-name --username azureuser --password your-password
+    az vm user update --name YOUR-VM-NAME --username azureuser --password YOUR-PASSWORD
     ```
 1. 若要查找虚拟机的 IP 地址，请使用以下命令，并记下公共 IP 地址：
 
     ```sh
-    az vm list-ip-addresses --name your-vm-name
+    az vm list-ip-addresses --name YOUR-VM-NAME
     ```
 
 1. 现在，可以使用 SSH 连接到虚拟机。 Cloud Shell 中已预装 `ssh` 命令。 使用上一步骤中记下的公共 IP 地址，并在出现提示时，输入针对虚拟机配置的密码：

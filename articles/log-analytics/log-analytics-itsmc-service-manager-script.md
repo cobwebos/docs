@@ -1,6 +1,6 @@
 ---
-title: "使用自动化脚本创建要与 OMS 中的 IT Service Management Connector 连接的 Service Manager Web 应用 | Microsoft Docs"
-description: "使用自动化脚本创建要与 OMS 中的 IT Service Management connector 连接的 Service Manager Web 应用，集中监视和管理 ITSM 工作项。"
+title: "使用自动化脚本创建要与 Azure 中的 IT 服务管理连接器连接的 Service Manager Web 应用 | Microsoft Docs"
+description: "使用自动化脚本创建要与 Azure 中的 IT 服务管理连接器连接的 Service Manager Web 应用，集中监视和管理 ITSM 工作项。"
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: ad69d82e57be8bfd9ba40dd88cbc0a979c9e1722
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34ec15781776fc8373cd6c9dafa75010e942e167
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script-preview"></a>使用自动化脚本创建 Service Manager Web 应用（预览版）
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自动化脚本创建 Service Manager Web 应用
 
 使用以下脚本创建用于 Service Manager 实例的 Web 应用。 此处提供了有关 Service Manager 连接的详细信息：[Service Manager Web 应用](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 
 - Azure 订阅详细信息
 - 资源组名称
-- 位置
+- Location
 - Service Manager 服务器详细信息（服务器名称、域、用户名和密码）
 - Web 应用的站点名称前缀
 - ServiceBus 命名空间。

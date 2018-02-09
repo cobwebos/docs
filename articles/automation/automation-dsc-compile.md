@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; gwallace
-ms.openlocfilehash: 63120614f2a2ef6b366bc2d92ec9a0dd430a3fb4
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: c84f1671d8e23e5ff222455192e020700f1ff51e
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>在 Azure 自动化 DSC 中编译配置
 
@@ -40,14 +40,14 @@ ms.lasthandoff: 01/24/2018
 * 传递 ConfigurationData
 * 编译使用凭据的配置
 
-在确定编译方法后，可以遵循以下相应过程开始编译。
+确定编译方法后，可以按照以下过程开始编译。
 
 ## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>使用 Azure 门户编译 DSC 配置
 
 1. 从自动化帐户中，单击“DSC 配置”。
 2. 单击某个配置以打开其边栏选项卡。
 3. 单击“编译”。
-4. 如果该配置没有参数，系统会提示确认是否要进行编译。 如果该配置有参数，则会打开“编译配置”边栏选项卡让用户提供参数值。 有关参数的详细信息，请参阅下面的[**基本参数**](#basic-parameters)部分。
+4. 如果该配置没有参数，系统会提示确认是否要进行编译。 如果该配置有参数，则会打开“编译配置”边栏选项卡让用户提供参数值。 有关参数的更多详细信息，请参阅下面的[**基本参数**](#basic-parameters)部分。
 5. “编译作业”边栏选项卡随即打开，用户可跟踪编译作业的状态，且会将由于此作业引起的节点配置（MOF 配置文档）放在 Azure 自动化 DSC“拉”服务器上。
 
 ## <a name="compiling-a-dsc-configuration-with-windows-powershell"></a>使用 Windows PowerShell 编译 DSC 配置
@@ -131,7 +131,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
 ## <a name="composite-resources"></a>复合资源
 
-借助**复合资源**，可将 DSC 配置用作某个配置中的嵌套资源。 这样，便可将多个配置应用到单个资源。  有关**复合资源**的详细信息，请参阅[复合资源：将 DSC 配置用作资源](https://docs.microsoft.com/powershell/dsc/authoringresourcecomposite)
+借助**复合资源**，可将 DSC 配置用作某个配置中的嵌套资源。 这样，便可将多个配置应用到单个资源。 有关**复合资源**的详细信息，请参阅[复合资源：将 DSC 配置用作资源](https://docs.microsoft.com/powershell/dsc/authoringresourcecomposite)
 
 > [!NOTE]
 > 若要正确编译**复合资源**，首先必须确保复合资源所依赖的所有 DSC 资源已事先安装在 Azure 自动化帐户模块存储库中，否则复合资源不会正确导入。
@@ -144,7 +144,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
 ![选择模块](./media/automation-dsc-compile/select_dscresource.png)
 
-随后将会回到模块目录，在其中可以监视**复合资源**在解包和注册到 Azure 自动化时的状态。
+将会回到模块目录，在其中可以监视**复合资源**在解包和注册到 Azure 自动化时的状态。
 
 ![导入复合资源](./media/automation-dsc-compile/register_composite_resource.png)
 
@@ -174,7 +174,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 ```
 
 ## <a name="configurationdata"></a>ConfigurationData
-通过 **ConfigurationData** 可在使用 PowerShell DSC 时区分结构化配置与任何环境特定配置。 有关 **ConfigurationData** 的详细信息，请参阅[区分 PowerShell DSC 中的“What”与“Where”](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx)。
+通过 **ConfigurationData** 可在使用 PowerShell DSC 时分开结构化配置与任何环境特定配置。 有关 **ConfigurationData** 的详细信息，请参阅[区分 PowerShell DSC 中的“What”与“Where”](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx)。
 
 > [!NOTE]
 > 使用 Azure PowerShell 在 Azure 自动化 DSC 中进行编译时，可使用 **ConfigurationData**，但在 Azure 门中编译时不可使用。
@@ -238,7 +238,7 @@ Azure 自动化 DSC 配置和 Runbook 中的资产引用是相同的。 有关�
 
 ### <a name="credential-assets"></a>凭据资产
 
-尽管 Azure 自动化中的 DSC 配置可以使用 **Get-AzureRmAutomationCredential** 引用凭据资产，但如果需要，也可以通过参数传入凭据资产。 如果配置采用属于 **PSCredential** 类型的参数，则需要将 Azure 自动化凭据资产的字符串名称传递为该参数的值，而不是 PSCredential 对象。 具有该名称的 Azure 自动化凭据资产在后台检索并传递到配置。
+尽管 Azure 自动化中的 DSC 配置可以使用 **Get-AzureRmAutomationCredential** 引用凭据资产，但如果需要，也可以通过参数传入凭据资产。 如果配置采用属于 **PSCredential** 类型的参数，则需要将 Azure 自动化凭据资产的字符串名称传递为该参数的值，而不是 PSCredential 对象。 在后台将检索具有该名称的 Azure 自动化凭据资产并将其传递给配置。
 
 要在节点配置（MOF 配置文档）中保持凭据的安全，需要在节点配置 MOF 文件中为凭据加密。 Azure 自动化进一步执行此步骤并加密整个 MOF 文件。 不过，目前必须告知 PowerShell DSC 在节点配置 MOF 生成期间以纯文本形式输出凭据是可行的，因为 PowerShell DSC 并不知道在通过编译作业生成 MOF 文件之后 Azure 自动化将加密整个文件。
 

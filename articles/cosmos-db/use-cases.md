@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: cd10147047a7d5d8b0a15be08fbba24a07adffad
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bcafc999c30d1e72971c8e26e951169ea6b56416
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB 常见用例
 本文概述了 Azure Cosmos DB 的几个常见用例。  本文中的建议可以作为使用 Cosmos DB 开发应用程序的一个起点。   
@@ -33,9 +33,7 @@ ms.lasthandoff: 11/15/2017
 ## <a name="introduction"></a>介绍
 [Azure Cosmos DB](../cosmos-db/introduction.md) 由 Microsoft 提供，是全球分布的数据库服务。 使用该服务，客户可在任意数量的地理区域间弹性而独立地缩放吞吐量和存储空间。 Azure Cosmos DB 是一项全球分布式数据库服务，它在当前市场中率先提供了综合[服务级别协议](https://azure.microsoft.com/support/legal/sla/cosmos-db/)，包含吞吐量、延迟、可用性和一致性。 
 
-Azure Cosmos DB 项目在 2011 年以“Project Florence”的名义开始解决 Microsoft 内部大型 Internet 规模应用程序开发人员所面临的难题。 在发现 Microsoft 以外的应用程序开发人员也会遇到这些难题后，我们决定在 2015 年以 [Azure DocumentDB](https://azure.microsoft.com/blog/documentdb-moving-to-general-availability/) 的形式对外部开发人员公开发布 Azure Cosmos DB。 Microsoft 内部处处都在使用该服务，它是 Azure 外部开发人员使用数量增长最快的服务之一。 
-
-Azure Cosmos DB 是一种全球分步的多模型数据库，广泛用于应用程序和用例。 它对于需要低延迟毫秒级响应时间或需要全局快速缩放的任何[无服务器的](http://azure.com/serverless)应用程序都是一个不错的选择。 它以可扩展的方式本机支持多种数据模型（键值、文档、图形和纵栏式）和许多用于数据访问的 API，包括 [MongoDB API](mongodb-introduction.md)、[DocumentDB API (SQL)](documentdb-introduction.md)、[图形 API (Gremlin)](graph-introduction.md) 和[表 API](table-introduction.md)。 
+Azure Cosmos DB 是一种全球分步的多模型数据库，广泛用于应用程序和用例。 它对于需要低延迟毫秒级响应时间或需要全局快速缩放的任何[无服务器的](http://azure.com/serverless)应用程序都是一个不错的选择。 它以可扩展的方式支持多种数据模型（键值、文档、图形和纵栏式）以及许多用于数据访问的 API，包括 [MongoDB API](mongodb-introduction.md)、[SQL API](documentdb-introduction.md)、[图形 API (Gremlin)](graph-introduction.md) 和[表 API](table-introduction.md)。 
 
 下面介绍了 Azure Cosmos DB 的几个属性，这些属性使 Cosmos DB 非常适用于想要实现全球分布的高性能应用程序。
 
@@ -107,7 +105,7 @@ JSON 是一种用于呈现 UI 布局数据的有效格式，它受 Cosmos DB 支
 ![Azure Cosmos DB Web 应用参考体系结构](./media/use-cases/personalization.png)
 
 ## <a name="next-steps"></a>后续步骤
-可以根据[快速入门](create-documentdb-dotnet.md)开始使用 Azure Cosmos DB，其中逐步讲解了如何创建帐户并开始使用 Cosmos DB。 
+可以根据[快速入门](create-sql-api-dotnet.md)开始使用 Azure Cosmos DB，其中逐步讲解了如何创建帐户并开始使用 Cosmos DB。 
 
 或者，如果想要了解有关使用 Cosmos DB 的客户的详细信息，可以参阅下面的客户案例：
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 01/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 513855084c8b89d97b049f1df2ec24d0f9789afe
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: d12743b752c42e6a7373e9c15df6dac71b7f9d27
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>使用 Log Analytics 从环境中的计算机收集数据
 
@@ -42,6 +42,10 @@ Azure Log Analytics 可以从驻留在以下环境中的 Windows 或 Linux 计�
 
 如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将代理配置为连接到 OMS 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 Linux 或 Windows 代理配置为通过 OMS 网关与 Log Analytics 服务进行通信的详细信息和步骤，请参阅[使用 OMS 网关将计算机连接到 OMS](log-analytics-oms-gateway.md)。 
 
+> [!NOTE]
+> Windows 代理仅支持传输层安全性 (TLS) 1.0 和 1.1。  
+> 
+
 ## <a name="prerequisites"></a>先决条件
 开始之前，请查看以下详细信息，验证是否满足最低系统要求。
 
@@ -58,7 +62,7 @@ Windows 代理正式支持以下版本的 Windows 操作系统：
 |----------------|-------|------------------------|
 |*.ods.opinsights.azure.com |443 | 是 |
 |*.oms.opinsights.azure.com | 443 | 是 | 
-|*.blob.core.windows.net | 443 | 是 | 
+|* .blob.core.windows.net | 443 | 是 | 
 |*.azure-automation.net | 443 | 是 | 
 
 ### <a name="linux-operating-systems"></a>Linux 操作系统
@@ -79,8 +83,8 @@ Windows 代理正式支持以下版本的 Windows 操作系统：
 |------|---------|  
 |*.ods.opinsights.azure.com | 端口 443|   
 |*.oms.opinsights.azure.com | 端口 443|   
-|*.blob.core.windows.net | 端口 443|   
-|*.azure-automation.net | 端口 443|  
+|* .blob.core.windows.net | 端口 443|   
+|* .azure-automation.net | 端口 443|  
 
 Linux 代理支持使用 HTTPS 协议通过代理服务器或 OMS 网关与 Log Analytics 服务进行通信。  并同时支持匿名身份验证和基本身份验证（用户名/密码）。  可在安装期间指定代理服务器，也可在安装后通过修改 proxy.conf 配置文件来指定。  
 
@@ -107,7 +111,7 @@ Linux 代理支持使用 HTTPS 协议通过代理服务器或 OMS 网关与 Log 
 ## <a name="install-and-configure-agent"></a>安装并配置代理 
 可根据要求使用不同的方法将本地计算机与 Log Analytics 直接连接。 下表详细介绍了每种方法，以便用户确定组织中最适用的方法。
 
-|源 | 方法 | 说明|
+|Source | 方法 | 说明|
 |-------|-------------|-------------|
 | Windows 计算机|- [手动安装](log-analytics-agent-windows.md)<br>- [Azure Automation DSC](log-analytics-agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [具有 Azure Stack 的资源管理器模板](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |可从命令行或使用自动化方法（如 Azure Automation DSC、[System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications)）安装 Microsoft Monitoring Agent，或者，如果已在数据中心部署 Microsoft Azure Stack，则可使用 Azure 资源管理器进行安装。| 
 |Linux 计算机| [手动安装](log-analytics-quick-collect-linux-computer.md)|调用 GitHub 上托管的包装器脚本安装 Linux 代理。 | 
@@ -117,6 +121,6 @@ Linux 代理支持使用 HTTPS 协议通过代理服务器或 OMS 网关与 Log 
 
 * 查看[数据源](log-analytics-data-sources.md)，了解可用于从 Windows 或 Linux 系统收集数据的数据源。 
 
-* 了解[日志搜索](log-analytics-log-searches.md)，分析从数据源和解决方案中收集的数据。 
+* 了解[日志搜索](log-analytics-log-searches.md)以便分析从数据源和解决方案中收集的数据。 
 
 * 了解[解决方案](log-analytics-add-solutions.md)如何将功能添加到 Log Analytics，以及如何将数据收集到 OMS 存储库。

@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 653c31fb1115c79216f882a52484cd37303e0322
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 05b1f11158233a7c02950320741b405429a08d50
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -76,7 +76,7 @@ IoT 解决方案通常具有不同的解决方案特定存储，其中包含应�
 
 可以使用 [IoT 中心资源提供程序终结点][lnk-endpoints]上的异步操作，从 IoT 中心的标识注册表批量导出设备标识。 导出是长时间运行的作业，它使用客户提供的 blob 容器来保存从标识注册表读取的设备标识数据。
 
-可以使用 [IoT 中心资源提供程序终结点][lnk-endpoints]上的异步操作，将设备标识批量导入 IoT 中心的标识注册表。 导入是长时间运行的作业，它使用客户提供的 Blob 容器中的数据，将设备标识数据写入标识注册表。
+可以使用 [IoT 中心资源提供程序终结点][lnk-endpoints]上的异步操作，向 IoT 中心的标识注册表批量导入设备标识。 导入是长时间运行的作业，它使用客户提供的 Blob 容器中的数据，将设备标识数据写入标识注册表。
 
 有关导入和导出 API 的详细信息，请参阅 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis]。 若要了解有关如何运行导入和导出作业的详细信息，请参阅[批量管理 IoT 中心的设备标识][lnk-bulk-identity]。
 
@@ -105,7 +105,7 @@ IoT 中心标识注册表包含名为 **connectionState** 的字段。 开发和
 
 属性：消息系统属性以 `'$'` 符号为前缀。
 
-| 名称​​ | 值 |
+| 名称 | 值 |
 | --- | --- |
 $content-type | application/json |
 $iothub-enqueuedtime |  发送通知的时间 |
@@ -180,7 +180,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 * [在设备上调用直接方法][lnk-devguide-directmethods]
 * [在多台设备上安排作业][lnk-devguide-jobs]
 
-若要尝试本文中介绍的一些概念，可以根据兴趣学习以下 IoT 中心教程：
+要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 
 * [Azure IoT 中心入门][lnk-getstarted-tutorial]
 

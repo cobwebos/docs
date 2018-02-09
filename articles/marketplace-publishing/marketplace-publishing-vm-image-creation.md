@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 126c5a5b3abd48b350c7d11a038a5d94e40280a0
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 8915abbb27184c2f0b47747e422e5a4fa7bc1cbb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure Marketplace 创建虚拟机映像指南
 本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，并将其部署到 Azure Marketplace。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
@@ -118,6 +118,9 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 我们强烈建议使用远程桌面协议 (RDP) 在云中开发 VHD。 使用在预配过程中指定的用户名和密码连接到 RDP。
 
 > [!IMPORTANT]
+> 请勿使用托管磁盘。 用于将 VHD 开发到云的虚拟机不得基于托管磁盘，因为它目前尚不支持从中创建映像。
+> 在可选功能中创建虚拟机会更改托管磁盘的默认值。
+
 > 如果本地开始 VHD（不推荐），请参阅[本地创建虚拟机映像](marketplace-publishing-vm-image-creation-on-premise.md)。 如果在云中开发，则无需下载 VHD。
 >
 >

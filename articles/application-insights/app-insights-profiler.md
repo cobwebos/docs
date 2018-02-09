@@ -12,86 +12,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: f8ba1a6308dfe234fff700d363fb9252b94570e2
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 5f691fb88c6764309bf012dfc65b561ec87afede
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure Web 应用
 
 Application Insights 的此功能已分别面向 Azure 应用服务和 Azure 计算资源提供正式版和预览版。
 
-使用 [Application Insights Profiler](app-insights-overview.md) 确定实时 Web 应用程序中的每个方法花费了多长时间。 Application Insights 探查工具会显示应用提供的实时请求的详细探查信息，并突出显示占用最多时间的“热路径”。 该探查器会自动选择具有不同响应时间的示例，然后使用各种技术将开销降到最低。
+使用 [Application Insights](app-insights-overview.md) 确定实时 Web 应用程序中的每个方法花费了多长时间。 Application Insights 探查工具会显示应用提供的实时请求的详细探查信息，并突出显示占用最多时间的“热路径”。 将会根据采样探查具有不同响应时间的请求。 可以使用各种技术将应用程序开销降到最低。
 
-该探查器目前适用于 Azure 应用服务上运行的、至少处于基本服务层的 ASP.NET Web 应用。
+该探查器目前适用于 Azure 应用服务上运行的、至少处于“基本”服务层的 ASP.NET 和 ASP.NET Core Web 应用。
 
-## <a id="installation"></a>启用探查器
+## <a id="installation"></a>为应用服务 Web 应用启用探查器
+如果已将应用程序发布到应用服务，但尚未在源代码中执行任何操作来使用 Application Insights，请导航到 Azure 门户中的“应用服务”窗格，转到“监视”|“Application Insights”，遵照窗格中的说明创建新的或选择现有的 Application Insights 资源来监视 Web 应用。 请注意，探查器只适用于“基本”或更高层的应用服务计划。
 
-在代码中[安装 Application Insights](app-insights-asp-net.md)。 如果已安装，请确保使用的是最新版本。 要检查最新版本，请在解决方案资源管理器中右键单击你的项目，然后选择“管理 NuGet 包” > “更新” > “更新所有包”。 然后重新部署应用。
+![在应用服务门户上启用 App Insights][appinsights-in-appservices]
 
-*使用的是 ASP.NET Core？获取[详细信息](#aspnetcore)。*
+如果可以访问项目源代码，请[安装 Application Insights](app-insights-asp-net.md)。 如果已安装，请确保使用的是最新版本。 要检查最新版本，请在解决方案资源管理器中右键单击你的项目，然后选择“管理 NuGet 包” > “更新” > “更新所有包”。 然后部署应用。
+
+ASP.NET Core 应用程序需要安装 Microsoft.ApplicationInsights.AspNetCore NuGet 包 2.1.0-beta6 或更高版本才能使用探查器。 自 2017 年 6 月 27 日起，以前的版本将不再受支持。
 
 在 [Azure 门户](https://portal.azure.com)中，打开 Web 应用的 Application Insights 资源。 选择“性能” > “启用 Application Insights Profiler”。
 
 ![选择“启用探查器”横幅][enable-profiler-banner]
 
-另外，可以通过选择“配置”来查看状态，启用或禁用探查器。
+另外，可以通过选择“探查器”配置来查看状态，启用或禁用探查器。
 
-![在“性能”下，选择“配置”][performance-blade]
+![在“性能”下，选择“探查器”配置][performance-blade]
 
-配置有 Application Insights 的 Web 应用会在“配置”下列出。 如果需要，请根据说明安装探查器代理。 如果尚无 Web 应用配置有 Application Insights，请选择“添加链接应用”。
+配置有 Application Insights 的 Web 应用会在“探查器”配置窗格中列出。 如果遵循了上述步骤，则应该已安装探查器代理。 在“探查器”配置窗格中选择“启用探查器”。
 
-若要控制链接的所有 Web 应用上的探查器，请在“配置”窗格中选择“启用探查器”或“禁用探查器”按钮。
+如果需要，请根据说明安装探查器代理。 如果尚无 Web 应用配置有 Application Insights，请选择“添加链接应用”。
 
 ![“配置”窗格选项][linked app services]
 
 与通过应用服务计划托管的 Web 应用不同，在 Azure 计算资源（例如：Azure 虚拟机、虚拟机规模集、Azure Service Fabric 或 Azure 云服务）中托管的应用程序不由 Azure 直接管理。 在这种情况下，将没有任何要链接到的 Web 应用。 请改为选择“启用探查器”按钮，而不是链接到应用。
 
-## <a name="disable-the-profiler"></a>禁用探查器
-若要为单个应用服务实例停止或重新启动探查器，可在“Web 作业”下转到“应用服务资源”。 若要删除探查器，请转到“扩展”。
-
-![为 Web 作业禁用探查器][disable-profiler-webjob]
-
-建议在所有 Web 应用上都启用探查器以便尽早发现任何性能问题。
-
-如果使用 WebDeploy 将更改部署到 Web 应用程序，请确保排除 App_Data 文件夹，以防在部署期间将它删除。 否则，下一次将 Web 应用程序部署到 Azure 时，会删除探查器扩展文件。
-
-### <a name="using-profiler-with-azure-vms-and-azure-compute-resources-preview"></a>将探查器与 Azure VM 和 Azure 计算资源一起使用（预览版）
-
-[在运行时为 Azure 应用服务启用 Application Insights](app-insights-azure-web-apps.md#run-time-instrumentation-with-application-insights) 后，Application Insights Profiler 会自动可用。 如果已经为资源启用了 Application Insights，则可能需要通过使用“配置”向导更新到最新版本。
+### <a name="enable-the-profiler-for-azure-compute-resources-preview"></a>为 Azure 计算资源启用探查器（预览）
 
 获取有关[用于 Azure 计算资源的探查器的预览版本](https://go.microsoft.com/fwlink/?linkid=848155)的信息。
 
-
-## <a name="limitations"></a>限制
-
-默认数据保留期为 5 天。 每天引入的最大数据量为 10 GB。
-
-使用探查器服务没有任何费用。 要使用探查器服务，Web 应用必须至少托管在应用服务的基本层中。
-
-## <a name="overhead-and-sampling-algorithm"></a>开销和采样算法
-
-在托管已启用探查器以捕获跟踪的应用程序的每个虚拟机上，探查器每小时随机运行 2 分钟。 当探查器运行时，它使服务器增加 5% 到 15% 的 CPU 开销。
-可用于托管应用程序的服务器越多，探查器对总体应用程序性能的影响越小。 这是因为采样算法会使探查器在任何时候都只在 5% 的服务器上运行。 有更多服务器可用于响应 Web 请求，以抵消运行探查器所产生的服务器开销。
-
-
 ## <a name="view-profiler-data"></a>查看探查器数据
 
-转到“性能”窗格，然后向下滚动到操作列表。
+**确保应用程序可以接收流量。** 如果你正在执行试验，可以使用 [Application Insights 性能测试](https://docs.microsoft.com/en-us/vsts/load-test/app-service-web-app-performance-test)向 Web 应用生成请求。 如果最近启用了探查器，则可以运行简短的负载测试大约 15 分钟，然后应会收到事件探查器跟踪。 如果已启用探查器相当长一段时间，请记住，探查器每小时会随机运行两次，每次运行两分钟。 建议运行负载测试一个小时，确保获取探查器跟踪样本。
 
-![“Application Insights 性能”窗格示例列][performance-blade-examples]
-
-操作表包含以下列：
-
-* **计数**：在“计数”窗格的时间范围内这些请求的数目。
-* **中值**：应用响应请求所花费的平均时间。 在所有响应中，有一半的响应速度超过此值。
-* **95%**：95% 的响应速度超过此值。 如果此值与中值有显著差异，可能是应用存在间歇性的问题。 （或者，原因可能出在某个设计功能上，如缓存。）
-* **探查器跟踪**：一个图标，指示探查器已捕获此操作的堆栈跟踪。
-
-选择“视图”打开跟踪浏览器。 该浏览器显示探查器捕获的多个样本（已按响应时间分类）。
-
-如果正在使用“预览性能”窗格，请转到此页的“执行操作”部分查看探查器跟踪。 选择“探查器跟踪”按钮。
+应用程序收到一些流量后，请转到“性能”边栏选项卡，然后转到页面的“采取措施”部分，以查看探查器跟踪。 选择“探查器跟踪”按钮。
 
 ![“Application Insights 性能”窗格预览探查器跟踪][performance-blade-v2-examples]
 
@@ -151,6 +119,26 @@ CPU 正忙于执行指令。
 
 ### <a id="when"></a>“时间”列
 “时间”列是针对节点收集的非独占样本在各个时间发生的变化的可视化效果。 请求的总范围划分成 32 个时间存储桶。 该节点的非独占样本会在这 32 个存储桶中累积。 每个存储桶用一个条形表示。 条形的高度表示缩放后的值。 对于带有 CPU_TIME 或 BLOCKED_TIME 标记的节点，或者资源（CPU、磁盘、线程）的消耗存在某种明显关系时，条形表示在该桶的时间段内消耗了其中的某个资源。 如果消耗多个资源，这些指标的值可能大于 100%。 例如，如果在某个时间间隔内平均使用两个 CPU，则指标值为 200%。
+
+## <a name="limitations"></a>限制
+
+默认数据保留期为 5 天。 每天引入的最大数据量为 10 GB。
+
+使用探查器服务没有任何费用。 要使用探查器服务，Web 应用必须至少托管在应用服务的基本层中。
+
+## <a name="overhead-and-sampling-algorithm"></a>开销和采样算法
+
+在托管已启用探查器以捕获跟踪的应用程序的每个虚拟机上，探查器每小时随机运行 2 分钟。 当探查器运行时，它使服务器增加 5% 到 15% 的 CPU 开销。
+可用于托管应用程序的服务器越多，探查器对总体应用程序性能的影响越小。 这是因为采样算法会使探查器在任何时候都只在 5% 的服务器上运行。 有更多服务器可用于响应 Web 请求，以抵消运行探查器所产生的服务器开销。
+
+## <a name="disable-the-profiler"></a>禁用探查器
+若要为单个应用服务实例停止或重新启动探查器，可在“Web 作业”下转到“应用服务资源”。 若要删除探查器，请转到“扩展”。
+
+![为 Web 作业禁用探查器][disable-profiler-webjob]
+
+建议在所有 Web 应用上都启用探查器以便尽早发现任何性能问题。
+
+如果使用 WebDeploy 将更改部署到 Web 应用程序，请确保排除 App_Data 文件夹，以防在部署期间将它删除。 否则，下一次将 Web 应用程序部署到 Azure 时，会删除探查器扩展文件。
 
 
 ## <a id="troubleshooting"></a>故障排除
@@ -301,17 +289,11 @@ c.  `--single` 表示运行，然后自动停止。  `--immediate-profiling-dura
 3.  应用服务的“Web 作业”功能独特之处在于，当它运行 Web 作业时，可以确保进程使用的环境变量和应用设置，与网站最终使用的环境变量和应用设置相同。 这意味着，不需要通过命令行将检测密钥传递给探查器，探查器只会从环境中拾取检测密钥。 但是，如果想要在应用服务外部的开发机箱或计算机上运行探查器，则需要提供检测密钥。 为此，可以传入参数 `--ikey <instrumentation-key>`。 请注意，此值必须与应用程序使用的检测密钥匹配。 探查器的日志输出将会告知探查器是使用哪个 ikey 启动的，以及在探查时，我们是否通过该检测密钥检测到活动。
 4.  手动触发的 Web 作业实际上可以通过 Web 挂钩来触发。 可通过以下方式获取此 URL：在仪表板中右键单击 Web 作业并查看属性，或者在从表中选择 Web 作业后，选择工具栏中的“属性”。 有大量在线文章介绍了此方法，因此我不会过多地重述。此方法为通过 CI/CD 管道（例如 VSTS）或 Microsoft Flow (https://flow.microsoft.com/en-us/) 触发探查器带来了可能性。 根据 run.cmd 的复杂程度（例如，创建 run.ps1），可能的方法有多种多样。  
 
-
-
-
-## <a id="aspnetcore"></a>ASP.NET Core 支持
-
-ASP.NET Core 应用程序需要安装 Microsoft.ApplicationInsights.AspNetCore NuGet 包 2.1.0-beta6 或更高版本才能使用探查器。 自 2017 年 6 月 27 日起，以前的版本将不再受支持。
-
 ## <a name="next-steps"></a>后续步骤
 
 * [在 Visual Studio 中使用 Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
 
+[appinsights-in-appservices]:./media/app-insights-profiler/AppInsights-AppServices.png
 [performance-blade]: ./media/app-insights-profiler/performance-blade.png
 [performance-blade-examples]: ./media/app-insights-profiler/performance-blade-examples.png
 [performance-blade-v2-examples]:./media/app-insights-profiler/performance-blade-v2-examples.png

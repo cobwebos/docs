@@ -29,4 +29,4 @@ Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料�
 
 <!--end-collapse-->
 
-[!INCLUDE  [Help and support](active-directory-develop-help-support-include.md)]
+[!INCLUDE [Help and support](active-directory-develop-help-support-include.md)]

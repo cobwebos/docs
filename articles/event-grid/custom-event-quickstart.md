@@ -3,23 +3,23 @@ title: "使用 CLI 自定义 Azure 事件网格的事件 | Microsoft Docs"
 description: "使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。"
 services: event-grid
 keywords: 
-author: djrosanova
-ms.author: darosa
-ms.date: 01/19/2018
+author: tfitzmac
+ms.author: tomfitz
+ms.date: 01/30/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: 867953c0aef877b1f1c07d910a8e9350ec2f2176
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 77ef5c5048952dc7ac233fd2b826caf2eed8719d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-and-route-custom-events-with-azure-cli-and-event-grid"></a>使用 Azure CLI 和事件网格创建和路由自定义事件
 
-Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure CLI 创建一个自定义主题，然后订阅该主题，再触发可查看结果的事件。 通常将事件发送到与该事件对应的终结点，例如 webhook 或 Azure Function。 但在本文中，为简便起见，请将事件发送到仅收集消息的 URL。 请使用名为 [RequestBin](https://requestb.in/) 的第三方开源工具创建该 URL。
+Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure CLI 创建一个自定义主题，然后订阅该主题，再触发可查看结果的事件。 通常将事件发送到与该事件对应的终结点，例如 webhook 或 Azure Function。 但在本文中，为简便起见，请将事件发送到仅收集消息的 URL。 可从 [RequestBin](https://requestb.in/) 或 [Hookbin](https://hookbin.com/) 使用第三方工具创建此 URL。
 
 >[!NOTE]
->RequestBin 是一种不适用于高吞吐量的开源工具。 在这里使用该工具纯粹是为了演示。 如果一次推送多个事件，可能不会在工具中看到所有事件。
+>RequestBin 和 Hookbin 并不适合在高吞吐量方案中使用。 在这里使用这些工具纯粹是为了演示。 如果一次推送多个事件，可能不会在工具中看到所有事件。
 
 完成后即可看到事件数据已发送到某个终结点。
 
@@ -35,7 +35,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 事件网格主题是 Azure 资源，必须放置在 Azure 资源组中。 该资源组是在其中部署和管理 Azure 资源的逻辑集合。
 
-使用 [az group create](/cli/azure/group#create) 命令创建资源组。 
+使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 
 
 以下示例在“westus2”位置创建名为“gridResourceGroup”的资源组。
 
@@ -45,7 +45,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>创建自定义主题
 
-主题提供用户定义的终结点，可向其发布事件。 以下示例在资源组中创建主题。 用主题的唯一名称替换 `<topic_name>`。 主题名称必须唯一，因为它由 DNS 条目表示。 预览版的事件网格支持“westus2”和“westcentralus”区域。
+主题提供用户定义的终结点，可向其发布事件。 以下示例在资源组中创建主题。 用主题的唯一名称替换 `<topic_name>`。 主题名称必须唯一，因为它由 DNS 条目表示。
 
 ```azurecli-interactive
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
@@ -53,18 +53,18 @@ az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 
-在订阅主题之前, 让我们创建事件消息的终结点。 与其编写代码来响应事件，不如创建一个终结点来收集消息，方便你查看。 RequestBin 是第三方开源工具，用于创建终结点和查看发送到其中的请求。 转到 [RequestBin](https://requestb.in/)，单击“创建 RequestBin”。  复制 bin URL，因为在订阅主题时需要它。
+在订阅主题之前, 让我们创建事件消息的终结点。 与其编写代码来响应事件，不如创建一个终结点来收集消息，方便你查看。 RequestBin 和 Hookbin 是第三方工具，用于创建终结点和查看发送到其中的请求。 转到 [RequestBin](https://requestb.in/)，然后单击“创建 RequestBin”；或者转到 [Hookbin](https://hookbin.com/)，然后单击“新建终结点”。  复制 bin URL，因为在订阅主题时需要它。
 
 ## <a name="subscribe-to-a-topic"></a>订阅主题
 
-订阅主题是为了告知事件网格要跟踪哪些事件。以下示例订阅你所创建的主题，并将 RequestBin 中的 URL 作为事件通知的终结点传递。 将 `<event_subscription_name>` 替换为订阅的唯一名称，将 `<URL_from_RequestBin>` 替换为上一部分的值。 在订阅时指定终结点，然后事件网格就会负责将事件路由到该终结点。 对于 `<topic_name>`，请使用此前创建的值。 
+订阅主题是为了告知事件网格要跟踪哪些事件。以下示例订阅你所创建的主题，并将 RequestBin 或 Hookbin 中的 URL 作为事件通知的终结点传递。 将 `<event_subscription_name>` 替换为订阅的唯一名称，将 `<endpoint_URL>` 替换为上一部分的值。 在订阅时指定终结点，然后事件网格就会负责将事件路由到该终结点。 对于 `<topic_name>`，请使用此前创建的值。 
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
   -g gridResourceGroup \
   --topic-name <topic_name> \
   --name <event_subscription_name> \
-  --endpoint <URL_from_RequestBin>
+  --endpoint <endpoint_URL>
 ```
 
 ## <a name="send-an-event-to-your-topic"></a>向主题发送事件
@@ -90,7 +90,7 @@ CURL 是执行 HTTP 请求的实用工具。 本文使用 CURL 向主题发送�
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-你已经触发事件，而事件网格则已将消息发送到你在订阅时配置的终结点。 浏览到此前创建的 RequestBin URL。 或者，在打开的 RequestBin 浏览器中单击“刷新”。 此时会看到刚发送的事件。 
+你已经触发事件，而事件网格则已将消息发送到你在订阅时配置的终结点。 浏览到此前创建的终结点 URL。 或者，在打开的浏览器中单击“刷新”。 此时会看到刚发送的事件。 
 
 ```json
 [{
@@ -102,6 +102,8 @@ curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
     "make": "Ducati",
     "model": "Monster"
   },
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/{topic}"
 }]
 ```

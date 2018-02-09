@@ -76,7 +76,7 @@ Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1
    ![添加用户](./media/log-analytics-sccm/sccm-azure06.png)  
 
 ## <a name="add-an-oms-connection-to-configuration-manager"></a>将 OMS 连接添加到配置管理器
-若要添加 OMS 连接，配置管理器环境必须有针对联机模式配置的服务连接点[](https://technet.microsoft.com/library/mt627781.aspx)。
+若要添加 OMS 连接，配置管理器环境必须有针对联机模式配置的[服务连接点](https://technet.microsoft.com/library/mt627781.aspx)。
 
 1. 在配置管理器的“管理”工作区中，选择“OMS 连接器”。 这会打开**添加 OMS 连接向导**。 选择“**下一步**”。
 2. 在“常规”屏幕上，确认已完成以下操作，并且具有每个项的详细信息，然后选择“下一步”。

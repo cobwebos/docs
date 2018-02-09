@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.topic: get-started-article
 ms.workload: big-data
 ms.date: 11/21/2017
-ms.openlocfilehash: b7c58697323ec12ac08575916cb3ac5b38cc39c1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ffa8e96ab9a5344c924400fe55b4d1e6aee95f06
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
@@ -63,14 +63,16 @@ ms.lasthandoff: 12/21/2017
 
 `timeSeriesDefinitions=<collection of term objects>` 参数指定时序见解视图的术语，其中：
 
-- `name=<string>`
+- "name":"<string>"
   - 术语的名称。
-- `splitBy=<string>`
+- "splitBy":"<string>"
   - 要按其进行拆分的列名。
-- `measureName=<string>`
+- "measureName":"<string>"
   - 度量值的列名。
-- `predicate=<string>`
+- "predicate":"<string>"
   - 用于服务器端筛选的 where 子句。
+-  "useSum":"true"
+  - 这是一个可选参数，指定对度量值使用总和。  注意，如果所选度量值为“事件”，则默认选择计数。  如果未选择“事件”，则默认选择平均值。  
 
 “multiChartStack=<true/false>”参数可以启用图表中的堆叠，“multiChartSameScale=<true/false>”参数允许在可选参数的多个条件中使用同一 Y 轴比例。  
 

@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 727be96828b9217f89214722f474abfc220b0b3c
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 010c4619a2a4d8ae477ebd6e66747c55cde0fc08
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="what-is-api-management"></a>什么是 API 管理？
 
@@ -30,7 +30,7 @@ API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和内部
 > 
 > 
 
-本主题概述了涉及 APIM 的常用方案，  并简单介绍了 APIM 系统的主要组件， 然后较详细地介绍了每个组件。
+本文概述了涉及 APIM 的常用方案，  并简单介绍了 APIM 系统的主要组件， 然后较详细地介绍了每个组件。
 
 ## <a name="overview"></a>概述
 
@@ -50,14 +50,14 @@ API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和内部
   * 无需修改代码即可随时转换 API。
   * 在设置的位置缓存后端响应。
   * 记录调用元数据以用于分析。
-* **发布者门户** 是一个管理界面，可以在其中设置 API 程序。 使用它可执行以下操作：
+* **Azure 门户**是一个管理界面，可以在其中设置 API 程序。 使用它可执行以下操作：
   
   * 定义或导入 API 架构。
   * 将 API 打包到产品中。
   * 设置策略，如 API 的配额或转换。
   * 从分析中获得见解。
   * 管理用户。
-* **开发人员门户** 是面向开发人员的主要 Web 平台，可以在其中执行以下操作：
+* **开发人员门户**是面向开发人员的主要 Web 平台，可以在其中执行以下操作：
   
   * 阅读 API 文档。
   * 通过交互式控制台试用 API。
@@ -99,12 +99,12 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 ## <a name="developers"> </a> 开发人员
 开发人员表示 API 管理服务实例中的用户帐户。 可以让管理员创建或邀请开发人员加入，也可以让开发人员从[开发人员门户][Developer portal]注册。 每个开发人员是一个或多个组的成员，并且可以订阅授予这些组的可见性的产品。
 
-开发人员需要他们订阅被授予该产品的主要和辅助密钥的产品。 在调用产品的 API 时使用此键。
+当开发人员订阅某个产品时，会向其授予该产品的主密钥和辅助密钥。 在调用产品的 API 时使用此键。
 
 有关详细信息，请参阅[如何创建或邀请开发人员][How to create or invite developers]和[如何将组与开发人员关联][How to associate groups with developers]。
 
 ## <a name="policies"></a> 策略
-策略是 API 管理的一项强大功能，允许发布者通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 流行的语句包含 XML 格式转换为 JSON 和调用速率限制，以限制从开发人员传入的呼叫数，还有许多其他策略可用。
+策略是 API 管理的一项强大功能，允许 Azure 门户通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 流行的语句包含 XML 格式转换为 JSON 和调用速率限制，以限制从开发人员传入的呼叫数，还有许多其他策略可用。
 
 在任何 API 管理策略中，策略表达式可以用作属性值或文本值，除非该策略另外指定。 某些策略（如[控制流](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose)和[设置变量](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable)策略）基于策略表达式。 有关详细信息，请参阅[高级策略](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies)和[策略表达式](https://msdn.microsoft.com/library/azure/dn910913.aspx)。
 

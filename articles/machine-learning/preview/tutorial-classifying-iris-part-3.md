@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: 97cd46819a4547ec743270871bcb6b4eef3eb365
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 12cbd7d9682e70fc5bc65b2eda5b8eddf6bbb7f0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>鸢尾花分类（第 3 部分）：部署模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，适用于专业数据科学家。 数据科学家可以使用它以云的规模准备数据、开发试验和部署模型。
@@ -30,7 +30,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 > * 运行实时 Web 服务。
 > * 检查输出 Blob 数据。 
 
- 本教程使用了永久[鸢尾花卉数据集](https://en.wikipedia.org/wiki/iris_flower_data_set)。 屏幕截图与 Windows 相关，但 Mac OS 上的体验几乎相同。
+ 本教程使用了永久[鸢尾花卉数据集](https://en.wikipedia.org/wiki/iris_flower_data_set)。 屏幕截图来自 Windows，但 Mac OS 上的体验几乎相同。
 
 ## <a name="prerequisites"></a>先决条件
 先完成本系列教程的前两个部分：
@@ -146,6 +146,17 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    
    可以参考群集名称识别环境。 位置应该与在 Azure 门户中创建的模型管理帐户的位置相同。
 
+   为了确保环境设置成功，请使用以下命令来检查状态：
+
+   ```azurecli
+   az ml env show -n <deployment environment name> -g <existing resource group name>
+   ```
+
+   在步骤 5 中设置环境之前，请确保“预配状态”的值为“成功”（如下所示）。
+
+   ![预配状态](media/tutorial-classifying-iris/provisioning_state.png)
+ 
+   
 3. 创建模型管理帐户。 （这是一次性设置。）  
    ```azurecli
    az ml account modelmanagement create --location <e.g. eastus2> -n <new model management account name> -g <existing resource group name> --sku-name S1
@@ -258,8 +269,9 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 2. 若要测试服务，请执行返回的服务运行命令：
 
+    
    ```azurecli
-   az ml service run realtime -i irisapp -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
+   az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
    ```
    输出为 "2"，即预测的类。 （你的结果可能不同。） 
 

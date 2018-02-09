@@ -1,5 +1,5 @@
 ---
-title: "教程：Azure Active Directory 与 NetSuite 集成 | Microsoft Docs"
+title: "教程：使用 Azure Active Directory 为 Netsuite 配置自动用户预配 | Microsoft Docs"
 description: "了解如何在 Azure Active Directory 和 Netsuite 之间配置单一登录。"
 services: active-directory
 documentationCenter: na
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 20a670a3843586ab57ce776f400bd382947d7861
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3de048a88b2a14936f7a49afefc8c96e56909c37
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>教程：为 Netsuite 配置自动用户预配
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="assigning-users-to-netsuite"></a>将用户分配到 Netsuite
 
-Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中的应用程序的用户和组。
+Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中应用程序的用户和组。
 
 在配置和启用预配服务前，需确定 Azure AD 中的哪些用户和/或组表示需要访问 Netsuite 应用的用户。 确定后，可按照此处的说明将这些用户分配到 Netsuite 应用：
 
@@ -93,5 +93,5 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 * [配置单一登录](active-directory-saas-netsuite-tutorial.md)

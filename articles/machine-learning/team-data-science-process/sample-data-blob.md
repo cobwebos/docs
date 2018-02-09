@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: fashah;garye;bradsev
-ms.openlocfilehash: 00444853cc7b0f8d8ea4dfa1e6cddad4479daec0
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: garye;bradsev
+ms.openlocfilehash: 1e5cf5da727b6720c936e43147beb8d87fb925cd
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="heading"></a>对 Azure blob 存储中的数据采样
 本文档介绍对在 Azure blob 存储中数据进行取样的方法：通过以编程方式下载，并使用以 Python 编写的过程对其进行采样。

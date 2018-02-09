@@ -41,7 +41,7 @@ ms.lasthandoff: 12/12/2017
  
 ## <a name="classic-policies"></a>经典策略
 
-在 [Azure 门户](https://portal.azure.com)中，“条件访问 - 策略”页是条件访问策略的入口点。[](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) 但是，你的环境也可能包含尚未使用此页创建的条件访问策略。 这些策略称为“经典策略”。 经典策略是在以下位置创建的条件访问策略：
+在 [Azure 门户](https://portal.azure.com)中，[条件访问 - 策略](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)页是条件访问策略的入口点。 但是，你的环境也可能包含尚未使用此页创建的条件访问策略。 这些策略称为“经典策略”。 经典策略是在以下位置创建的条件访问策略：
 
 - Azure 经典门户
 - Intune 经典门户

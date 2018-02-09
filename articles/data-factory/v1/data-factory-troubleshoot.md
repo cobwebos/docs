@@ -66,7 +66,7 @@ ms.lasthandoff: 01/23/2018
 ### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>问题：输入切片始终处于等待状态
 切片处于“等待”状态的原因有多种。 其中一个常见原因是 **external** 属性未设置为 **true**。 在 Azure 数据工厂范围外部生成的任何数据集都应标记为 **external** 属性。 此属性表示该数据是外部的，且不由数据工厂内的任何管道提供支持。 当数据出现在相应的存储中后，数据切片将标记为 **Ready**。
 
-有关 **external** 属性的用法，请参阅以下示例。 将 external 设置为 true 时，可以选择指定 **externalData***。
+有关 **external** 属性的用法，请参阅以下示例。 将 external 设置为 true 时，可以选择指定 **externalData** \*。
 
 有关此属性的更多详细信息，请参阅[数据集](data-factory-create-datasets.md)一文。
 

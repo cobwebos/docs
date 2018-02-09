@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 36a08cab2b1d409d2de382a07cfd7259a1c94e13
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3bb54f7897876d656da6f1a4b349c9db202a142d
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="azure-log-analytics-upgrade-to-new-log-search"></a>将 Azure Log Analytics 升级到新的日志搜索
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 12/11/2017
 转换工作区时，将对它进行以下更改：
 
 - 保存的任何搜索、警报规则和使用视图设计器创建的视图会自动转换为新语言。  解决方案中包含的搜索不会自动转换，但会在用户打开它们时动态转换。  
-- 将摒弃[我的仪表板](log-analytics-dashboards.md)以支持[视图设计器](log-analytics-view-designer.md)和 [Azure 仪表板](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards.md)。  添加到“我的仪表板”的磁贴仍然可用，但它们为只读模式。
+- 将摒弃[我的仪表板](log-analytics-dashboards.md)以支持[视图设计器](log-analytics-view-designer.md)和 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。  添加到“我的仪表板”的磁贴仍然可用，但它们为只读模式。
 - [Power BI 集成](log-analytics-powerbi.md)将被替换为一个新进程。  你创建的任何现有 Power BI 计划都将被禁用，并且需要将它们替换为新的进程。
 - 使用 webhook 和 runbook 从[警报操作](log-analytics-alerts-actions.md)发出的响应采用新的格式，你可能需要相应地更新你的警报规则。
 - 有关升级的常见问题，请参阅[日志搜索常见问题解答](log-analytics-log-search-faq.md)。

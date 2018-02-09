@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1909183a33ed03d8165671cff25cc8b83b77733
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1097b1ddd2e8f2fae0ffc809aee63be5c2ed4cb1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>将 Azure 自动化资源添加到 OMS 管理解决方案（预览版）
 > [!NOTE]
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 - 如何[创作 Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>自动化帐户
-Azure 自动化中的所有资源都包含在[自动化帐户](../automation/automation-security-overview.md#automation-account-overview)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#oms-workspace-and-automation-account)中所述，自动化帐户不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果没有，解决方案安装会失败。
+Azure 自动化中的所有资源都包含在[自动化帐户](../automation/automation-security-overview.md#automation-account-overview)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)中所述，自动化帐户不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果没有，解决方案安装会失败。
 
 每个自动化资源的名称都包含其自动化帐户的名称。  这是在具有 **accountName** 参数的解决方案中完成的，如以下 Runbook 资源示例所示。
 
@@ -203,7 +203,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../automation/aut
 | startTime |指定计划的开始时间作为 DateTime 对象。 如果它可以转换为有效的 DateTime，则可以提供一个字符串。 |
 | isEnabled |指定是否启用计划。 |
 | interval |计划的间隔类型。<br><br>day<br>hour |
-| frequency |计划应在数天或数小时内触发的频率。 |
+| 频率 |计划应在数天或数小时内触发的频率。 |
 
 计划的开始时间值必须晚于当前时间。  不能通过变量来提供此值，因为无法知道何时要安装。
 
@@ -272,7 +272,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../automation/aut
 | description | 变量的可选说明。 |
 | isEncrypted | 指定是否应加密变量。 |
 | type | 当前此属性无效。  初始值决定该变量的数据类型。 |
-| value | 变量的值。 |
+| 值 | 变量的值。 |
 
 > [!NOTE]
 > 当前，“类型”属性对正在创建的变量无效。  变量的数据类型由值决定。  

@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: dc983549aea53ed29859205102d6308a3367bec7
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 54491d0ca1f515786af07146d83ef65fc7d46f11
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
 
@@ -81,7 +81,12 @@ IoT 中心需要这些服务终结点的写入权限，以便使用消息路由�
 
 ### <a name="when-using-azure-storage-containers"></a>如果使用 Azure 存储容器
 
-IoT 中心仅支持将数据以 [Apache Avro](http://avro.apache.org/) 格式作为 blob 写入 Azure 存储容器。 IoT 中心将在其达到特定大小或经过一定的时间之后（以先发生者为准），会对消息进行批处理，并将数据写入 blob。 如果没有要写入的数据，IoT 中心不会写入一个空 blob。
+IoT 中心仅支持将数据以 [Apache Avro](http://avro.apache.org/) 格式作为 blob 写入 Azure 存储容器。 出现下列情况时，IoT 中心将对消息进行批处理，并将数据写入 blob：
+
+* 批达到特定大小。
+* 或者已经过了一段时间。
+
+如果没有要写入的数据，IoT 中心将写入一个空 blob。
 
 IoT 中心默认为以下文件命名约定：
 

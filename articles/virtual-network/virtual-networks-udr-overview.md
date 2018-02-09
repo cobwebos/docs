@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 85be79261d5fc214ab4b46fa5d7b4d0a5b13db27
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d05492425381649a7893b872c4b1c49e9f241b50
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 
@@ -151,7 +151,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 替代 0.0.0.0/0 地址前缀时，除了出站流量从子网流经虚拟网关或虚拟设备，还会在 Azure 的默认路由上发生以下变化： 
 
-- Azure 将所有流量发送到路由中指定的下一跃点类型，这样就可以包括目标为 Azure 服务公共 IP 地址的流量。 当地址前缀为 0.0.0.0/0 的路由的下一跃点类型为“Internet”时，从子网流向 Azure 服务公共 IP 地址的流量不会离开 Azure 的主干网络，不管虚拟网络或 Azure 服务资源存在于哪个 Azure 区域。 但在创建下一跃点类型为“虚拟网关”或“虚拟设备”的用户定义路由或 BGP 路由时，所有流量都会发送到路由中指定的下一跃点类型，这样是为了包括发送到 Azure 服务（尚未为其启用[服务终结点](virtual-network-service-endpoints-overview.md)）公共 IP 地址的流量。 如果已为服务启用服务终结点，则不会将目标为该服务的流量路由到地址前缀为 0.0.0.0/0 的路由中的下一跃点类型，因为该服务的地址前缀是在启用服务终结点时 Azure 创建的路由中指定的，并且该服务的地址前缀比 0.0.0.0/0 长。
+- Azure 将所有流量发送到路由中指定的下一跃点类型，包括目标为 Azure 服务公共 IP 地址的流量。 当地址前缀为 0.0.0.0/0 的路由的下一跃点类型为“Internet”时，从子网流向 Azure 服务公共 IP 地址的流量不会离开 Azure 的主干网络，不管虚拟网络或 Azure 服务资源存在于哪个 Azure 区域。 但在创建下一跃点类型为“虚拟网关”或“虚拟设备”的用户定义路由或 BGP 路由时，所有流量都会发送到路由中指定的下一跃点类型，包括发送到 Azure 服务（尚未为其启用[服务终结点](virtual-network-service-endpoints-overview.md)）公共 IP 地址的流量。 如果已为服务启用服务终结点，则不会将目标为该服务的流量路由到地址前缀为 0.0.0.0/0 的路由中的下一跃点类型，因为该服务的地址前缀是在启用服务终结点时 Azure 创建的路由中指定的，并且该服务的地址前缀比 0.0.0.0/0 长。
 - 你将不再能够直接从 Internet 访问子网中的资源。 可以从 Internet 直接访问子网中的资源，前提是入站流量在到达虚拟网络中的资源之前，流经地址前缀为 0.0.0.0/0 的路由的下一跃点类型所指定的设备。 如果路由包含下一跃点类型的以下值：
     - **虚拟设备**：设备必须符合以下条件：
         - 可从 Internet 访问
@@ -161,7 +161,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
         - 能够进行网络地址转换和转发，或者能够对流向子网中目标资源的流量进行代理，以及能够让流量返回 Internet。 
     - **虚拟网关**：如果网关为 ExpressRoute 虚拟网关，则连接了 Internet 的本地设备可以进行网络地址转换和转发，或者通过 ExpressRoute 的[专用对等互连](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering)对流向子网中目标资源的流量进行代理。 
 
-  请参阅 [Azure 与本地数据中心之间的外围网络](/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json)和 [Azure 与 Internet 之间的外围网络](/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json)，了解在 Internet 和 Azure 之间使用虚拟网关和虚拟设备时的实施详情。
+  请参阅 [Azure 与本地数据中心之间的外围网络](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json)和 [Azure 与 Internet 之间的外围网络](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json)，了解在 Internet 和 Azure 之间使用虚拟网关和虚拟设备时的实施详情。
 
 ## <a name="routing-example"></a>路由示例
 

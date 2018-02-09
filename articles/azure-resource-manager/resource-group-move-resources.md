@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7d500d20dcce3e472e3e1e15b9ce307874caf22a
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: ea0c2487e24fcb924632d3277163b7732442b414
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -53,7 +53,10 @@ ms.lasthandoff: 01/22/2018
   az account show --subscription <your-destination-subscription> --query tenantId
   ```
 
-  如果源和目标订阅的租户 ID 不相同，则必须联系[支持人员](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)才能将资源移动到新租户。
+  如果源订阅和目标订阅的租户 ID 不相同，可使用以下方法协调租户 ID： 
+
+  * [将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)
+  * [如何将 Azure 订阅关联或添加到 Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)
 
 2. 该服务必须支持移动资源的功能。 本文列出了支持对资源进行移动的服务和不支持对资源进行移动的服务。
 3. 必须针对要移动的资源的资源提供程序注册目标订阅。 否则会出现错误“未针对资源类型注册订阅”。 将资源移到新的订阅时，可能会遇到此问题，但该订阅从未配合该资源类型使用。
@@ -93,7 +96,7 @@ ms.lasthandoff: 01/22/2018
 
 有以下需要时，请联系[支持人员](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)：
 
-* 将资源移到新 Azure 帐户（和 Azure Active Directory 租户）。
+* 将资源移到新的 Azure 帐户（和 Azure Active Directory 租户），并且对于上一部分中的说明需要帮助。
 * 移动经典资源时遇到限制方面的问题。
 
 ## <a name="services-that-enable-move"></a>可移动的服务
@@ -319,7 +322,7 @@ ms.lasthandoff: 01/22/2018
  1. 暂时停止备份并保留备份数据
  2. 将 VM 移至目标资源组
  3. 在相同/新保管库中对其进行重新保护 用户可以从在移动操作之前创建的可用还原点进行还原。
-如果用户跨订阅移动备份 VM，则步骤 1 和步骤 2 保持相同。 在步骤 3 中，用户需要保护存在/创建于目标订阅中的新保管库下的 VM。恢复服务保管库不支持跨订阅备份。
+如果用户跨订阅移动备份 VM，则步骤 1 和步骤 2 保持相同。 在步骤 3 中，用户需要在目标订阅中存在/创建的新保管库下保护 VM。 恢复服务保管库不支持跨订阅备份。
 
 ## <a name="hdinsight-limitations"></a>HDInsight 限制
 

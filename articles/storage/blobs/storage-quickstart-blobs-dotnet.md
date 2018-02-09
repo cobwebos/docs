@@ -103,14 +103,14 @@ Press the 'Enter' key while in the console to delete the sample files, example c
 
 * 创建 [CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer?view=azure-dotnet) 对象的实例，该对象代表所访问的容器。 容器用于组织 blob，就像使用计算机上的文件夹组织文件一样。
 
-有了 CloudBlobContainer 后，就可以创建 CloudBlockBlob 对象（该对象指向你感兴趣的特定 blob）的实例，然后执行上传、下载、复制等操作[](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer?view=azure-dotnet)[](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azure-dotnet)。
+有了 [CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer?view=azure-dotnet) 后，就可以创建 [CloudBlockBlob](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azure-dotnet) 对象（该对象指向你感兴趣的特定 blob）的实例，然后执行上传、下载、复制等操作。
 
 > [!IMPORTANT]
 > 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
 在本部分中，将创建对象的实例、创建新容器，并对容器设置权限，使 blob 公开，只需 URL 即可对其进行访问。 容器名称为 quickstartblobs。
 
-此示例使用 CreateIfNotExists[](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexists?view=azure-dotnet)，因为我们想要每次运行示例时都创建新容器。 在整个应用程序中使用相同容器的生产环境中，建议仅调用 **CreateIfNotExists** 一次， 或提前创建容器，这样就无需在代码中创建它。
+此示例使用 [CreateIfNotExists](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexists?view=azure-dotnet) ，因为我们想要每次运行示例时都创建新容器。 在整个应用程序中使用相同容器的生产环境中，建议仅调用 **CreateIfNotExists** 一次， 或提前创建容器，这样就无需在代码中创建它。
 
 ```csharp
 // Load the connection string for use with the application. The storage connection string is stored

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 22189c3d2d2164ba0fa3c2d790c36361fb0f5854
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 4151811a74fc0e58f6171e11d77e070f3cb40f95
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>教程：Azure Active Directory 与 Confluence SAML SSO by Microsoft 集成
 
@@ -133,7 +133,6 @@ ms.lasthandoff: 01/24/2018
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 端口可选，以防止其为命名 URL。 在配置 Confluence 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
- 
 
 4. 若要生成**元数据** URL，请执行以下步骤：
 
@@ -165,7 +164,7 @@ ms.lasthandoff: 01/24/2018
     
     ![配置单一登录](./media/active-directory-saas-Confluencemicrosoft-tutorial/addon1.png)
 
-8. 从 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=56503)下载插件。 使用“上传加载项”菜单手动上传由 Microsoft 提供的插件
+8. 从 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=56503)下载插件。 使用“上传加载项”菜单手动上传由 Microsoft 提供的插件。 [Microsoft 服务协议](https://www.microsoft.com/en-us/servicesagreement/)涵盖了插件下载。 
     
     ![配置单一登录](./media/active-directory-saas-Confluencemicrosoft-tutorial/addon12.png)
 

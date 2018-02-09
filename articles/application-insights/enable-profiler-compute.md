@@ -12,54 +12,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: 57a4cb560825e0c05ac49df26ac12ee52da52c3c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d4559007aece8850b4c2d707686effd706ec468c
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-cloud-services"></a>为 Azure VM、Service Fabric 和云服务启用 Application Insights Profiler
 
-本文演示如何在 Azure 计算资源托管的 ASP.NET 应用程序上启用 Azure Application Insights Profiler。 
+本文演示如何在 Azure 计算资源托管的 ASP.NET 应用程序上启用 Azure Application Insights Profiler。
 
 本文中的示例包括对 Azure 虚拟机、虚拟机规模集、Azure Service Fabric 和 Azure 云服务的支持。 所有示例依赖于支持 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)部署模型的模板。  
 
 
 ## <a name="overview"></a>概述
 
-下图显示 Application Insights Profiler 如何使用 Azure 资源。 此图使用 Azure 虚拟机作为示例。
+下图显示 Application Insights Profiler 如何使用 Azure 计算资源。 Azure 计算资源包括虚拟机、虚拟机规模集、云服务和 Service Fabric 群集。 此图使用 Azure 虚拟机作为示例。  
 
   ![概述](./media/enable-profiler-compute/overview.png)
 
 若要完全启用 Profiler，必须更改三个位置中的配置：
 
-* Azure 门户中的 Application Insights 实例窗格。
+* Azure 门户中的 Application Insights 实例边栏选项卡。
 * 应用程序源代码（例如，ASP.NET Web 应用程序）。
-* 环境部署定义源代码（例如，VM 部署模板 .json 文件）。
+* 环境部署定义源代码（例如，.json 文件中的 Azure 资源管理器模板）。
 
 
 ## <a name="set-up-the-application-insights-instance"></a>设置 Application Insights 实例
 
-在 Azure 门户中，创建或转到要使用的 Application Insights 实例。 记下实例检测密钥。 在其他配置步骤中使用检测密钥。
+[新建一个 Application Insights 资源](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-create-new-resource)或选择一个现有 Application Insights 资源。
+导航到 Application Insights 资源并复制检测密钥。
 
   ![密钥检测的位置](./media/enable-profiler-compute/CopyAIKey.png)
 
-此实例应与应用程序相同。 它已配置为向每个请求发送遥测数据。
-Profiler 结果也在此实例中提供。  
-
-在 Azure 门户中完成[启用 Profiler](https://docs.microsoft.com/azure/application-insights/app-insights-profiler#enable-the-profiler) 中所述步骤，为 Profiler 设置 Application Insights 实例。 不需为本文中的示例链接 Web 应用， 只需确保在门户中启用 Profiler 即可。
+然后完成[启用 Profiler](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler) 中所述步骤，为 Profiler 设置 Application Insights 实例。 不需要链接 Web 应用，因为这些步骤特定于应用程序服务资源。 只需确保在“配置 Profiler”边栏选项卡中启用 Profiler 即可。
 
 
 ## <a name="set-up-the-application-source-code"></a>设置应用程序源代码
 
+### <a name="aspnet-web-applications-cloud-services-web-roles-or-service-fabric-aspnet-web-frontend"></a>ASP.NET Web 应用程序、云服务 Web 角色或 Service Fabric ASP.NET Web 前端
 将应用程序设置为在每次执行 `Request` 操作时将遥测数据发送到 Application Insights 实例：  
 
-1. 将 [Application Insights SDK](https://docs.microsoft.com/azure/application-insights/app-insights-overview#get-started) 添加到应用程序项目。 请确保 NuGet 包版本如下所示：  
+将 [Application Insights SDK](https://docs.microsoft.com/azure/application-insights/app-insights-overview#get-started) 添加到应用程序项目。 请确保 NuGet 包版本如下所示：  
   - 对于 ASP.NET 应用程序：[Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 或更高版本。
   - 对于 ASP.NET Core 应用程序：[Microsoft.ApplicationInsights.AspNetCore](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) 2.1.0 或更高版本。
   - 对于其他 .NET 和 .NET Core 应用程序（例如，Service Fabric 无状态服务或云服务辅助角色）：[Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 或 [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 或更高版本。  
 
-2. 如果应用程序不是 ASP.NET 或 ASP.NET Core 应用程序（例如，如果应用程序是云服务辅助角色或 Service Fabric 无状态 API），则需进行下述额外的检测设置：  
+### <a name="cloud-services-worker-roles-or-service-fabric-stateless-backend"></a>云服务辅助角色或 Service Fabric 无状态后端
+如果应用程序*不*是 ASP.NET 或 ASP.NET Core 应用程序（例如，如果应用程序是云服务辅助角色或 Service Fabric 无状态 API），则除了上述步骤外，还需进行以下额外的检测设置：  
 
   1. 在应用程序生命周期的早期添加以下代码：  
 
@@ -204,7 +204,7 @@ Profiler 结果也在此实例中提供。
   ```
 
 2. 如果目标应用程序通过 [IIS](https://www.microsoft.com/web/platform/server.aspx) 运行，请启用 `IIS Http Tracing` Windows 功能：  
-  
+
   1. 建立到环境的远程访问，然后使用[添加 Windows 功能]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/)窗口，或以管理员身份在 PowerShell 中运行以下命令：  
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
@@ -217,7 +217,7 @@ Profiler 结果也在此实例中提供。
 
 ## <a name="enable-the-profiler-on-on-premises-servers"></a>在本地服务器上启用 Profiler
 
-在本地服务器上启用 Profiler 也称为以独立模式运行 Application Insights Profiler（不依赖于 Azure 诊断扩展修改）。 
+在本地服务器上启用 Profiler 也称为以独立模式运行 Application Insights Profiler（不依赖于 Azure 诊断扩展修改）。
 
 我们没有计划为本地服务器提供正式的 Profiler 支持。 如果有兴趣试验这种情况，可[下载支持代码](https://github.com/ramach-msft/AIProfiler-Standalone)。 我们不负责维护该代码或响应与之相关的问题和功能请求。
 

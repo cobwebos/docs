@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
-ms.openlocfilehash: d985008bf4aa6710f3aae89f13fc7e36ac0c176b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: c5fe5256d4a8b8479f5e4aff95ec03fc1ba1018a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>弹性数据库作业入门
 使用 Azure SQL 数据库的弹性数据库作业（预览版），可以跨多个数据库可靠执行 T-SQL 脚本，同时自动重试并提供最终完成保证。 有关弹性数据库作业功能的详细信息，请参阅[弹性作业](sql-database-elastic-jobs-overview.md)。

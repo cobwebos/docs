@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 75a6b9bc3ecfe6d6901bb38e312d62333f38daf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bf1ba333f36dcfa8959320566bcb771f37cfe22
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="upload-files-with-iot-hub"></a>使用 IoT 中心上传文件
 
@@ -77,7 +77,7 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 ## <a name="notify-iot-hub-of-a-completed-file-upload"></a>通知 IoT 中心已完成文件上传
 
-设备负责使用 Azure 存储 SDK 将文件上传到存储。 上传完成后，设备会使用以下 JSON 正文向 `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` 发送 POST 请求：
+设备负责使用 Azure 存储 SDK 将文件上传到存储空间。 上传完成后，设备会使用以下 JSON 正文向 `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` 发送 POST 请求：
 
 ```json
 {
@@ -96,7 +96,7 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 ## <a name="file-upload-notifications"></a>文件上传通知
 
-（可选）当设备通知 IoT 中心上传完成时，IoT 中心可以生成包含文件名称和存储位置的通知消息。
+（可选）当设备通知 IoT 中心上传完成时，IoT 中心生成一条通知消息，其中包含文件的名称和存储位置。
 
 如[终结点][lnk-endpoints]中所述，IoT 中心通过面向服务的终结点 (**/messages/servicebound/fileuploadnotifications**) 以消息的形式传递文件上传通知。 文件上传通知的接收语义与云到设备的消息的接收语义相同，并且具有相同的[消息生命周期][lnk-lifecycle]。 从文件上传通知终结点检索到的每条消息都是具有以下属性的 JSON 记录：
 
@@ -153,7 +153,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 * [在设备上调用直接方法][lnk-devguide-directmethods]
 * [在多台设备上安排作业][lnk-devguide-jobs]
 
-若要尝试本文中介绍的一些概念，可以根据兴趣学习以下 IoT 中心教程：
+要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 
 * [如何通过 IoT 中心将文件从设备上传到云中][lnk-fileupload-tutorial]
 

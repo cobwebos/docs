@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: f160a3291357387fcef75d8c2257e6e37274b0e7
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: db3086724c22e485e2a9a69c36a990fc5b8016a9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>使用 Linux 应用服务创建 Ruby 应用
 
@@ -28,12 +28,12 @@ ms.lasthandoff: 01/04/2018
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
 * <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">安装 Ruby 2.4.1 或更高版本</a>
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="download-the-sample"></a>下载示例
 
@@ -90,19 +90,19 @@ rails server
 
 ## <a name="create-a-ruby-web-app-on-azure"></a>在 Azure 上创建 Ruby Web 应用
 
-资源组需包含 Web 应用所需的资产。 若要创建资源组，请使用 [az group create]() 命令。
+资源组需包含 Web 应用所需的资产。 若要创建资源组，请使用 [`az group create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) 命令。
 
 ```azurecli-interactive
 az group create --location westeurope --name myResourceGroup
 ```
 
-使用 [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) 命令创建 Web 应用的应用服务计划。
+使用 [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) 命令创建 Web 应用的应用服务计划。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --is-linux
 ```
 
-接下来，发出 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) 命令，以创建使用新创建的服务计划的 Web 应用。 请注意，运行时设置为 `ruby|2.3`。 不要忘记将 `<app name>` 替换为唯一的应用名称。
+接下来，发出 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) 命令，以创建使用新创建的服务计划的 Web 应用。 请注意，运行时设置为 `ruby|2.3`。 不要忘记将 `<app name>` 替换为唯一的应用名称。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> \
@@ -147,7 +147,7 @@ To https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
 myuser@ubuntu1234:~workspace/<app name>$
 ```
 
-在部署完成后，通过使用 [az webapp restart](/cli/azure/webapp?view=azure-cli-latest#az_webapp_restart) 命令，重新启动 Web 应用以使部署生效，如下所示：
+在部署完成后，通过使用 [`az webapp restart`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_restart) 命令，重新启动 Web 应用以使部署生效，如下所示：
 
 ```azurecli-interactive
 az webapp restart --name <app name> --resource-group myResourceGroup

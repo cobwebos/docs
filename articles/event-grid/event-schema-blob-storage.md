@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: bdc64733b75fd809cf0245986aa96370343c1a34
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: d0a8a3726ac3c33668d8ad91c97c35937c299b46
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Blob 存储的 Azure 事件网格事件架构
 
@@ -51,7 +51,9 @@ Blob 存储发出以下事件类型：
     "storageDiagnostics": {
       "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
     }
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
@@ -74,7 +76,9 @@ Blob 删除事件的架构与此类似：
     "storageDiagnostics": {
       "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
     }
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
  
@@ -82,18 +86,20 @@ Blob 删除事件的架构与此类似：
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 |
+| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | 字符串 | 事件的唯一标识符。 |
 | 数据 | 对象 | Blob 存储事件数据。 |
+| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 说明 |
 | -------- | ---- | ----------- |
 | api | 字符串 | 触发事件的操作。 |
 | ClientRequestId | 字符串 | 客户端生成的不透明值，限制为 1-KB 字符。 启用存储分析日志记录后，该值会记录在分析日志中。 |
@@ -101,7 +107,7 @@ Blob 删除事件的架构与此类似：
 | eTag | 字符串 | 可用于根据条件执行操作的值。 |
 | contentType | 字符串 | 为 Blob 指定的内容类型。 |
 | contentLength | integer | Blob 大小，以字节为单位。 |
-| blobType | 字符串 | Blob 的类型。 |
+| blobType | 字符串 | Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。 |
 | url | 字符串 | Blob 的路径。 |
 | sequencer | 字符串 | 可用于跟踪请求的用户控制值。 |
 | storageDiagnostics | 对象 | 有关存储诊断的信息。 |

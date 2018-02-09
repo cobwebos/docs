@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: a8a8d8e95af3e6d98aa4dd98b11c066dca81421b
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 18d0e8bc6cc1559f9ae1a1a4457aa85d2a206597
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-storage-replication"></a>Azure 存储复制
 
@@ -50,16 +50,7 @@ ms.lasthandoff: 01/24/2018
 [!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
 
 ## <a name="zone-redundant-storage"></a>区域冗余存储
-
-区域冗余存储 (ZRS)（预览版）旨在简化高可用性应用程序的开发。 ZRS 在一年中提供至少 99.9999999999%（12 个 9）的存储对象持久性。 ZRS 可跨多个可用性区域同步复制数据。 对于不可接受停机的交易应用程序等方案，请考虑使用 ZRS。
-
-即使单个区域不可用或不可恢复，ZRS 也能让客户读取和写入数据。 数据的插入和更新以同步方式进行，并保持极高的一致性。   
-
-ZRS 当前可在以下区域中用于预览（更多区域即将推出）：
-
-- 美国东部 2 
-- 美国中部 
-- 法国中部（此区域目前处于预览状态。 请参阅[法国现已开通具有 Azure 可用性区域的 Microsoft Azure 预览版](https://azure.microsoft.com/blog/microsoft-azure-preview-with-azure-availability-zones-now-open-in-france)来请求访问。）
+[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
 ### <a name="zrs-classic-accounts"></a>ZRS 经典版帐户
 
@@ -72,7 +63,7 @@ ZRS 经典版帐户无法与 LRS、GRS 或 RA-GRS 相互转换。 ZRS 经典版�
 ZRS 在某个区域中正式发布之后，你在该区域中将无法再通过门户创建 ZRS 经典版帐户，不过可以通过其他方式创建一个帐户。  
 将来会提供从 ZRS 经典版到 ZRS 的自动迁移过程。
 
-ZRS 帐户支持手动将该区域中的 ZRS 帐户与 LRS、GRS 或 RAGRS 帐户相互迁移。 可以使用 AzCopy、Azure 存储资源管理器、Azure PowerShell、Azure CLI 或 Azure 存储客户端库之一执行此手动迁移。
+可以手动从 LRS、ZRS 经典版、GRS 或 RAGRS 帐户迁移 ZRS 帐户数据。 可以使用 AzCopy、Azure 存储资源管理器、Azure PowerShell、Azure CLI 或 Azure 存储客户端库之一执行此手动迁移。
 
 > [!NOTE]
 > ZRS 经典版帐户计划于 2021 年 3 月 31 日弃用并需要迁移。 Microsoft 会在弃用之前向 ZRS 经典版客户发送更多详细信息。

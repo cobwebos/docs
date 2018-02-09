@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 6/06/2017
+ms.date: 01/30/2018
 ms.author: johnkem
-ms.openlocfilehash: f0e507cf2804edbcdd6c87f47b30defbc6a5eb94
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: c3c7ffe00263b8f76d89aa8d15fe2d502538527d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>将 Azure 活动日志流式传输到事件中心
 可以将 [**Azure 活动日志**](monitoring-overview-activity-logs.md)以近实时方式流式传输到任何应用程序，方法是使用门户中的内置“导出”选项，或者通过 Azure PowerShell Cmdlet 或 Azure CLI 在日志配置文件中启用服务总线规则 ID。
@@ -35,16 +35,17 @@ ms.lasthandoff: 12/14/2017
 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，服务总线或事件中心命名空间就不必与订阅发出日志位于同一订阅中。
 
 ### <a name="via-azure-portal"></a>通过 Azure 门户
-1. 使用门户左侧的菜单导航到“活动日志”边栏选项卡。
+1. 使用门户左侧的“全部”服务搜索导航到“活动日志”边栏选项卡。
    
-    ![在门户中导航到“活动日志”](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
-2. 单击边栏选项卡顶部的“导出”按钮。
+    ![在门户中导航到“活动日志”](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
+2. 单击活动日志边栏选项卡顶部的“导出”按钮。
    
-    ![门户中的“导出”按钮](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
-3. 在出现的边栏选项卡中，可以选择要流式传输事件的区域，还可以选择服务总线命名空间，在其中创建事件中心来流式传输这些事件。
+    ![门户中的“导出”按钮](./media/monitoring-stream-activity-logs-event-hubs/export.png)
+3. 在出现的边栏选项卡中，可以选择要流式传输事件的区域，还可以选择服务总线命名空间，在其中创建事件中心来流式传输这些事件。 选择“所有区域”。
    
-    ![“导出活动日志”边栏选项卡](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
+    ![“导出活动日志”边栏选项卡](./media/monitoring-stream-activity-logs-event-hubs/export-audit.png)
 4. 单击“保存”保存这些设置。 这些设置会即时应用到订阅。
+5. 如果有多个订阅，请重复此操作，并将所有数据发送至同一事件中心。
 
 ### <a name="via-powershell-cmdlets"></a>通过 PowerShell Cmdlet
 如果日志配置文件已存在，则需先删除该配置文件。
@@ -53,8 +54,10 @@ ms.lasthandoff: 12/14/2017
 2. 如果存在，使用 `Remove-AzureRmLogProfile` 将其删除。
 3. 使用 `Set-AzureRmLogProfile` 创建配置文件：
 
-```
+```powershell
+
 Add-AzureRmLogProfile -Name my_log_profile -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
+
 ```
 
 服务总线规则 ID 是特定格式的字符串，例如：{服务总线资源 ID}/authorizationrules/{密钥名称} 
@@ -66,7 +69,7 @@ Add-AzureRmLogProfile -Name my_log_profile -serviceBusRuleId /subscriptions/s1/r
 2. 如果存在，使用 `azure insights logprofile delete` 将其删除。
 3. 使用 `azure insights logprofile add` 创建配置文件：
 
-```
+```azurecli-interactive
 azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope --retentionInDays 90 –categories Write,Delete,Action
 ```
 

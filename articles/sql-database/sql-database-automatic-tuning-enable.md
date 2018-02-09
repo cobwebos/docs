@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/19/2016
 ms.author: veljko-msft
-ms.openlocfilehash: bf8e0203112a42132a80e234964747c550fea284
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: b599273874a4b5a3bbcb78284d69b4c8d02b5f2c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="enable-automatic-tuning"></a>启用自动优化
 
@@ -28,7 +28,11 @@ Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识�
 ## <a name="enable-automatic-tuning-on-server"></a>对服务器启用自动优化
 在服务器级别上，可选择从“Azure 默认值”继承自动优化配置，或选择不继承配置。 Azure 默认值启用了 FORCE_LAST_GOOD_PLAN 和 CREATE_INDEX，禁用了 DROP_INDEX。
 
-### <a name="portal"></a>门户
+## <a name="configure-automiatic-tuning-e-mail-notifications"></a>配置自动优化电子邮件通知
+
+请参阅[自动优化电子邮件通知](sql-database-automatic-tuning-email-notifications.md)
+
+### <a name="azure-portal"></a>Azure 门户
 若要对 Azure SQL 数据库服务器启用自动优化，请在 Azure 门户中导航到该服务器，然后选择菜单中的“自动优化”。 选择想要启用的自动优化选项，然后选择“应用”：
 
 ![服务器](./media/sql-database-automatic-tuning-enable/server.png)
@@ -38,7 +42,7 @@ Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识�
 ### <a name="rest-api"></a>REST API
 [单击此处，详细了解如何通过 REST API 在服务器级别启用自动优化](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)
 
-## <a name="enable-automatic-tuning-on-database"></a>对数据库启用自动优化
+## <a name="enable-automatic-tuning-on-an-individual-database"></a>对单个数据库启用自动优化
 
 Azure SQL 数据库支持为每个数据库单独指定自动优化配置。 在数据库级别中，可选择从“Azure 默认值”继承自动优化配置，或选择不继承配置。 Azure 默认值启用了 FORCE_LAST_GOOD_PLAN 和 CREATE_INDEX，禁用了 DROP_INDEX。
 
@@ -46,7 +50,7 @@ Azure SQL 数据库支持为每个数据库单独指定自动优化配置。 在
 > 常规建议是在服务器级别管理自动优化配置，以便为每个数据库自动应用相同的配置设置。 如果数据库与同一服务器上的其他数据库不同，则在单个数据库上配置自动优化。
 >
 
-### <a name="portal"></a>门户
+### <a name="azure-portal"></a>Azure 门户
 
 若要对单个数据库启用自动优化，请在 Azure 门户中导航到该数据库，然后选择“自动优化”。 通过选中该选项，可将单个数据库配置为从服务器继承设置，或者可以单独为数据库指定配置。
 

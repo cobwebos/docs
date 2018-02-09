@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 39dea03ef9f42a3ff06dadd94c8d70541cbdc06c
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 0d99df534da4575f3c34ec6b3475cdd1bdc3308a
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>在 Microsoft Azure 中发现、识别个人数据并对其进行分类
 
@@ -183,9 +183,9 @@ HDInsight 教程将引导你完成整个过程。 该教程介绍先决条件，
 
 若要从基础开始，请访问 [Azure CosmosD DB：如何使用 SQL 进行查询](../cosmos-db/tutorial-query-documentdb.md)教程。 该教程提供一个示例文档及两个示例 SQL 查询和结果。
 
-有关构建 SQL 查询的深度指南，请参阅[用于 Azure Cosmos DB Document DB API 的 SQL 查询](../cosmos-db/documentdb-sql-query.md)
+有关构建 SQL 查询的深度指南，请参阅[用于 Azure Cosmos DB Document DB API 的 SQL 查询](../cosmos-db/sql-api-sql-query.md)
 
-如果是 Azure Cosmos DB 新手并希望了解如何创建数据库、添加集合和数据，请参阅 [Azure Cosmos DB：生成 DocumentDB API Web 应用](../cosmos-db/create-documentdb-dotnet.md)快速入门教程。 如果希望使用 .NET 以外的语言（如 Java 或 Python）完成此操作，只需在转到站点后选择首选的语言。
+如果是 Azure Cosmos DB 新手并希望了解如何创建数据库、添加集合和数据，请参阅 [Azure Cosmos DB：生成 SQL API Web 应用](../cosmos-db/create-sql-api-dotnet.md)快速入门教程。 如果希望使用 .NET 以外的语言（如 Java 或 Python）完成此操作，只需在转到站点后选择首选的语言。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 22d0ee242d18d73d1d5825567fd61638fd22cc68
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 5e3147cbc9fce6737cfb9b2e93e8bf1662163f3c
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>逻辑应用限制和配置
 
@@ -85,12 +85,12 @@ ms.lasthandoff: 01/19/2018
 这些限制适用于单个逻辑应用实例。
 
 | 名称 | 限制 | 说明 | 
-| ---- | ----- | ----- | 
-| 每 5 分钟执行的操作数 | 100,000 | 可以根据需要在多个应用之间分配工作负荷。 | 
+| ----- | ----- | ----- | 
+| 每 5 分钟执行的操作数 | 100,000 |<p>通过在 `High Througput` 模式下运行逻辑应用，可以将限制增加到 300,000，将工作流资源的 `runtimeConfiguration` 下的 `operationOptions` 属性设置为 `OptimizedForHighThroughput`，可完成此操作。 <p>请注意该高吞吐量模式处于预览状态。 也可以根据需要在多个应用之间分配工作负荷。 | 
 | 操作并发传出调用数 | ~2,500 | 减少并发请求数，或根据需要减少持续时间。 | 
-| 运行时终结点：并发传入调用数 | ~1,000 | 减少并发请求数，或根据需要减少持续时间。 | 
-| 运行时终结点：每 5 分钟读取的调用数 | 60,000 | 可以根据需要在多个应用之间分配工作负荷。 | 
-| 运行时终结点：每 5 分钟调用的调用数 | 45,000 | 可以根据需要在多个应用之间分配工作负荷。 | 
+| 运行时终结点：并发传入调用数 |~1,000 | 减少并发请求数，或根据需要减少持续时间。 | 
+| 运行时终结点：每 5 分钟读取的调用数  | 60,000 | 可以根据需要在多个应用之间分配工作负荷。 | 
+| 运行时终结点：每 5 分钟调用的调用数| 45,000 |可以根据需要在多个应用之间分配工作负荷。 | 
 |||| 
 
 若要在正常处理中超过这些限制，或要运行可能超过这些限制的负载测试，请[与我们联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。

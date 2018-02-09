@@ -1,5 +1,5 @@
 ---
-title: "教程：配置 Workplace by Facebook 以进行用户预配 | Microsoft Docs"
+title: "教程：使用 Azure Active Directory 为 Workplace by Facebook 配置自动用户预配 | Microsoft Docs"
 description: "了解如何从 Azure AD 自动将用户帐户预配到 Workplace by Facebook 以及取消其预配。"
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 77f5f33044b1915fbda7b86c6b07882c0e1e7554
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 70686a48585d83ca5de78fdded99ae46e90cc20c
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configure-workplace-by-facebook-for-user-provisioning"></a>教程：配置 Workplace by Facebook 以进行用户预配
+# <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
 本教程展示了从 Azure Active Directory (Azure AD) 到 Workplace by Facebook 对用户账户进行自动预配和取消预配所需的步骤。
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Workplace by Facebook 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Workplace by Facebook 单一登录 (SSO) 的订阅
 
 若要测试本教程中的步骤，请遵循以下建议：
@@ -89,6 +89,6 @@ Azure AD 支持将已分配的用户的帐户详细信息自动同步到 Workpla
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 * [配置单一登录](active-directory-saas-facebook-at-work-tutorial.md)
 
