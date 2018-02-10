@@ -133,6 +133,8 @@
           href: functions-run-local.md
         - name: Visual Studio 开发
           href: functions-develop-vs.md
+        - name: 错误处理。
+          href: functions-bindings-error-pages.md
     - name: 部署
       items:
         - name: 连续部署

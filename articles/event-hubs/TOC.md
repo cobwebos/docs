@@ -3,7 +3,7 @@
 ## [事件中心功能](event-hubs-features.md)
 ## [常见问题](event-hubs-faq.md)
 
-# 入门
+# 快速入门
 ## [创建事件中心](event-hubs-create.md)
 ## 发送事件
 ### [.NET 标准](event-hubs-dotnet-standard-getstarted-send.md)
