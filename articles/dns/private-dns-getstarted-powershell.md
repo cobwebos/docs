@@ -15,21 +15,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2017
 ms.author: kumud
-ms.openlocfilehash: d71e2391b6415b2403447479dea4fd0a3b818ed0
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 4613e152336eda7ce7cdc4c44b0c6b5e96abac10
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="get-started-with-azure-dns-private-zones-using-powershell"></a>Azure DNS 专用区域入门（使用 PowerShell）
 
 本文将逐步引导你完成使用 PowerShell 创建第一个专用 DNS 区域和记录的步骤。
 
+[!INCLUDE [private-dns-preview-notice](../../includes/private-dns-preview-notice.md)]
+
 DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后会在此 DNS 区域内为每个 DNS 记录创建域。 若要向虚拟网络发布专用 DNS 区域，请指定一个列表，其中包含允许在区域中解析记录的虚拟网络。  这些虚拟网络称为“解析网络”。  也可指定一组虚拟网络，让 Azure DNS 在创建 VM、更改 IP 或销毁 VM 时为其保留主机名记录。  这些虚拟网络称为“注册网络”。
 
-由于该功能当前为托管预览版，因此会提供预览 PowerShell 模块。
+由于该功能当前为托管预览版，因此当你向 [AzureDNS-PrivateZone@microsoft.com](mailto:AzureDNS-PrivateZone@microsoft.com) 发送电子邮件时，会向你提供预览版 PowerShell 模块。
 
-[!INCLUDE [private-dns-preview-notice](../../includes/private-dns-preview-notice.md)]
+## <a name="get-the-preview-powershell-module"></a>获取预览版 PowerShell 模块
+
+若要使用 PowerShell 创建专用 DNS 区域，请向 [AzureDNS-PrivateZone@microsoft.com](mailto:AzureDNS-PrivateZone@microsoft.com) 发送电子邮件，以便获取预览版 PowerShell 模块。
 
 ## <a name="create-the-resource-group"></a>创建资源组
 

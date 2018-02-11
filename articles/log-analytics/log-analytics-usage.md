@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/21/2017
+ms.date: 02/01/2018
 ms.author: magoedte
-ms.openlocfilehash: 9a4709f298131722e9c473a19f7eee0aebf7e1e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d873fe37ba2c4e851df35b9d5afe69b4adbf001c
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>在 Log Analytics 中分析数据使用情况
-Log Analytics 包括以下信息：收集的数据量、哪些计算机发送了数据、所发送数据的不同类型。  可以通过“Log Analytics 使用情况”仪表板查看发送到 Log Analytics 服务的数据量。 该仪表板显示每个解决方案收集的数据量，以及计算机所发送的数据量。
+Log Analytics 包括以下信息：收集的数据量、哪些系统发送了数据、所发送数据的不同类型。  可以通过“Log Analytics 使用情况”仪表板查看发送到 Log Analytics 服务的数据量。 该仪表板显示每个解决方案收集的数据量，以及计算机所发送的数据量。
 
 ## <a name="understand-the-usage-dashboard"></a>了解“使用情况”仪表板
 “Log Analytics 使用情况”仪表板会显示以下信息：
@@ -37,24 +37,18 @@ Log Analytics 包括以下信息：收集的数据量、哪些计算机发送了
     - 见解与分析节点
     - 自动化与控制节点
     - 安全节点
-- 性能
-    - 收集数据和为数据建索引所花的时间
 - 查询列表
 
 ![使用情况仪表板](./media/log-analytics-usage/usage-dashboard01.png)
 
 ### <a name="to-work-with-usage-data"></a>处理使用情况数据
-1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请使用 Azure 订阅登录。
-2. 在“中心”菜单中，单击“更多服务”，并在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 单击“Log Analytics”。  
-    ![Azure 中心](./media/log-analytics-usage/hub.png)
-3. “Log Analytics”仪表板会显示工作区的列表。 选择工作区。
-4. 在“工作区”仪表板中，单击“Log Analytics 使用情况”。
-5. 在“Log Analytics 使用情况”仪表板中，单击“时间: 过去 24 小时”更改时间间隔。  
-    ![时间间隔](./media/log-analytics-usage/time.png)
-6. 查看“使用情况类别”边栏选项卡以显示感兴趣的区域。 选择一个边栏选项卡，并单击其中的项以在“[日志搜索](log-analytics-log-searches.md)”中查看更多详细信息。  
-    ![示例数据使用量边栏选项卡](./media/log-analytics-usage/blade.png)
-7. 在“日志搜索”仪表板中，查看搜索返回的结果。  
-    ![日志搜索用法示例](./media/log-analytics-usage/usage-log-search.png)
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+3. 在 Log Analytics 工作区列表中选择一个工作区。
+4. 从左窗格的列表中选择“Log Analytics 使用情况”。
+5. 在“Log Analytics 使用情况”仪表板中，单击“时间: 过去 24 小时”更改时间间隔。<br><br> ![时间间隔](./media/log-analytics-usage/time.png)<br><br>
+6. 查看“使用情况类别”边栏选项卡以显示感兴趣的区域。 选择一个边栏选项卡，并单击其中的项以在“[日志搜索](log-analytics-log-searches.md)”中查看更多详细信息。<br><br> ![示例数据使用量边栏选项卡](./media/log-analytics-usage/blade.png)<br><br>
+7. 在“日志搜索”仪表板中，查看搜索返回的结果。<br><br> ![日志搜索用法示例](./media/log-analytics-usage/usage-log-search.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>当数据收集量高于预期时创建警报
 本部分介绍如何在以下情况下创建警报：
@@ -63,20 +57,20 @@ Log Analytics 包括以下信息：收集的数据量、哪些计算机发送了
 
 Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 如果在过去 24 小时内收集的数据超过 100 GB，则以下查询就会有结果：
 
-`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
+`union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
 
 以下查询使用简单的公式来预测在一天中发送的数据何时会超过 100 GB： 
 
-`Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
+`union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
 
 若要针对其他数据量发出警报，请在查询中将 100 更改为要发出警报的 GB 数。
 
 执行[创建警报规则](log-analytics-alerts-creating.md#create-an-alert-rule)中介绍的步骤，当数据收集量超出预期时，系统就会通知你。
 
-为第一个查询创建警报时，如果 24 小时内的数据超出 100 GB，则请进行如下设置：
-- 将“名称”设置为“24 小时内的数据量大于 100 GB”
-- 将“严重性”设置为“警告”
-- 将“搜索查询”设置为 `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(Quantity,1024)) as DataGB by Type | where DataGB > 100`
+为第一个查询创建警报时，如果 24 小时内的数据超出 100 GB，则请进行如下设置：  
+- 将“名称”设置为“24 小时内的数据量大于 100 GB”  
+- 将“严重性”设置为“警告”  
+- 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`   
 - 将“时间窗口”设置为“24 小时”。
 - 将“警报频率”设置为“一小时”，因为使用情况数据一小时才更新一次。
 - 将“生成警报的基础”设置为“结果数”
@@ -87,7 +81,7 @@ Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 �
 为第二个查询创建警报时，如果预测 24 小时内的数据会超出 100 GB，则请进行如下设置：
 - 将“名称”设置为“预期 24 小时内的数据量大于 100 GB”
 - 将“严重性”设置为“警告”
-- 将“搜索查询”设置为 `Type=Usage QuantityUnit=MBytes IsBillable=true | measure sum(div(mul(Quantity,8),1024)) as EstimatedGB by Type | where EstimatedGB > 100`
+- 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
 - 将“时间窗口”设置为“3 小时”。
 - 将“警报频率”设置为“一小时”，因为使用情况数据一小时才更新一次。
 - 将“生成警报的基础”设置为“结果数”
@@ -115,33 +109,29 @@ Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 �
 
 查看“一段时间的数据量”图表。 若要查看为特定计算机发送最多数据的解决方案和数据类型，请单击计算机的名称。 单击列表中第一台计算机的名称。
 
-在以下屏幕截图中，“日志管理/性能”数据类型为计算机发送了最多的数据。 
-
-![计算机的数据量](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)
+在以下屏幕截图中，“日志管理/性能”数据类型为计算机发送了最多的数据。<br><br> ![计算机的数据量](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)<br><br>
 
 接下来回到“使用情况”仪表板，查看“按解决方案统计的数据量”图表。 若要查看为解决方案发送最多数据的计算机，请单击列表中解决方案的名称。 单击列表中第一个解决方案的名称。 
 
-在以下屏幕截图中，可以确认 acmetomcat 计算机为“日志管理”解决方案发送了最多数据。
-
-![解决方案的数据量](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)
+在以下屏幕截图中，可以确认 acmetomcat 计算机为“日志管理”解决方案发送了最多数据。<br><br> ![解决方案的数据量](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
 
 根据需要执行其他分析，确定某个解决方案或数据类型中的大型卷。 查询示例如下：
 
 + “安全”解决方案
-  - `Type=SecurityEvent | measure count() by EventID`
+  - `SecurityEvent | summarize AggregatedValue = count() by EventID`
 + “日志管理”解决方案
-  - `Type=Usage Solution=LogManagement IsBillable=true | measure count() by DataType`
+  - `Usage | where Solution == "LogManagement" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | summarize AggregatedValue = count() by DataType`
 + “性能”数据类型
-  - `Type=Perf | measure count() by CounterPath`
-  - `Type=Perf | measure count() by CounterName`
+  - `Perf | summarize AggregatedValue = count() by CounterPath`
+  - `Perf | summarize AggregatedValue = count() by CounterName`
 + “事件”数据类型
-  - `Type=Event | measure count() by EventID`
-  - `Type=Event | measure count() by EventLog, EventLevelName`
+  - `Event | summarize AggregatedValue = count() by EventID`
+  - `Event | summarize AggregatedValue = count() by EventLog, EventLevelName`
 + “Syslog”数据类型
-  - `Type=Syslog | measure count() by Facility, SeverityLevel`
-  - `Type=Syslog | measure count() by ProcessName`
+  - `Syslog | summarize AggregatedValue = count() by Facility, SeverityLevel`
+  - `Syslog | summarize AggregatedValue = count() by ProcessName`
 + AzureDiagnostics 数据类型
-  - `Type=AzureDiagnostics | measure count() by ResourceProvider, ResourceId`
+  - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
 
 通过以下步骤减少所收集日志的量：
 
@@ -155,20 +145,31 @@ Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 �
 | 不需解决方案的计算机中的解决方案数据 | 使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据。 |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>查看节点数是否超出预期
-如果你位于“按节点(OMS)”定价层，则根据所用节点和解决方案数收费。 可以在使用情况仪表板的产品/服务部分中查看使用了每项产品的多少个节点。
-
-![使用情况仪表板](./media/log-analytics-usage/log-analytics-usage-offerings.png)
+如果你位于“按节点(OMS)”定价层，则根据所用节点和解决方案数收费。 可以在使用情况仪表板的产品/服务部分中查看使用了每项产品的多少个节点。<br><br> ![使用情况仪表板](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
 
 单击“全部查看...”，查看为所选产品/服务发送数据的计算机的完整列表。
 
 使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据。
 
+## <a name="check-if-there-is-ingestion-latency"></a>检查是否有引入延迟
+使用 Log Analytics 时，在引入收集的数据时预期会存在延迟。  在创建数据索引后，需要过一段时间才能对该数据进行搜索，这个绝对时间可能是无法预测的。 我们以前的仪表板上有一个性能图表，显示收集数据和创建数据索引所花的时间。在引入新的查询语言以后，我们暂时去除了该图表。  在我们发布更新的数据引入延迟指标之前，可以使用以下查询作为过渡解决方案，对每个数据类型的延迟进行近似求值。  
+
+    search *
+    | where TimeGenerated > ago(8h)
+    | summarize max(TimeGenerated) by Type
+    | extend LatencyInMinutes = round((now() - max_TimeGenerated)/1m,2)
+    | project Type, LatencyInMinutes
+    | sort by LatencyInMinutes desc
+
+> [!NOTE]
+> 此引入延迟查询不显示历史延迟，仅返回当前时间的结果。  对于常用架构日志，*TimeGenerated* 的值在代理处填充；对于自定义日志，该值在收集终结点填充。  
+>
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解如何使用搜索语言，请参阅 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)。 可以使用搜索查询，对使用情况数据执行其他分析。
 * 执行[创建警报规则](log-analytics-alerts-creating.md#create-an-alert-rule)中介绍的步骤，当满足搜索条件时，系统就会通知你
 * 使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据
-* 选择[通用或最低安全性事件](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/)
+* 若要配置有效的安全事件收集策略，请参阅 [Azure 安全中心筛选策略](../security-center/security-center-enable-data-collection.md)
 * 更改[性能计数器配置](log-analytics-data-sources-performance-counters.md)
-* 更改[事件日志配置](log-analytics-data-sources-windows-events.md)
-* 更改 [syslog 配置](log-analytics-data-sources-syslog.md)
+* 若要修改事件收集设置，请参阅[事件日志配置](log-analytics-data-sources-windows-events.md)
+* 若要修改 syslog 收集设置，请参阅 [syslog 配置](log-analytics-data-sources-syslog.md)

@@ -14,19 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/25/2018
 ms.author: mazha
-ms.openlocfilehash: 81a88f6495ca9092ca3b55b8ffb3e41def3b4623
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f1681b0796885cd6dc880303485edb97c15cda71
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="getting-started-with-azure-cdn"></a>Azure CDN 入门
-本文介绍如何通过创建新的 Azure 内容交付网络 (CDN) 配置文件和终结点来启用 CDN。
-
-> [!IMPORTANT]
-> 如需 CDN 简介和功能的列表，请参阅 [CDN 概述](cdn-overview.md)。
-> 
-> 
+本文介绍如何通过创建新的 Azure [内容交付网络 (CDN)](cdn-overview.md) 配置文件和终结点来启用 CDN。
 
 ## <a name="create-a-new-cdn-profile"></a>创建新的 CDN 配置文件
 CDN 配置文件是 CDN 终结点的集合。 每个配置文件可以包含一个或多个 CDN 终结点。 若要通过 Internet 域、Web 应用程序或某些其他条件来组织 CDN 终结点，可以使用多个配置文件。

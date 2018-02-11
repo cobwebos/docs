@@ -9,13 +9,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
-ms.date: 01/16/2018
+ms.date: 02/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 0973a7ae8316d413244367f5407a89d1ba809847
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: f17dc18825c929a75169875594c7b1a13ba1f6d7
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>使用 Azure 数据工厂 UI 创建数据工厂
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/25/2018
 > [!NOTE]
 > 如果你对 Azure 数据工厂不太熟悉，请在学习本快速入门之前参阅 [Azure 数据工厂简介](data-factory-introduction.md)。 
 >
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用第 1 版的服务（即正式版 (GA)），请参阅[数据工厂第 1 版教程](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用第 1 版的服务（即正式版 (GA)），请参阅[数据工厂第 1 版教程](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 01/25/2018
 
    c. 指定 **OutputDataset** 作为名称。
 
-   d.单击“下一步”。 输入 **adftutorial/output** 作为文件夹。 如果输出文件夹不存在，复制活动会创建一个。
+   d.单击“下一步”。 输入 **adftutorial/output** 作为文件夹。 如果 **output** 文件夹不存在，复制活动会在运行时创建它。
 
    e. 输入 `@CONCAT(pipeline().RunId, '.txt')` 作为文件名。 
    
@@ -180,7 +180,7 @@ ms.lasthandoff: 01/25/2018
 ## <a name="trigger-the-pipeline-manually"></a>手动触发管道
 在此过程中，请将实体（链接服务、数据集、管道）部署到 Azure 数据工厂， 然后手动触发管道运行。 也可将实体发布到自己的 Visual Studio Team Services GIT 存储库，这在[另一教程](tutorial-copy-data-portal.md?#configure-code-repository)中有介绍。
 
-1. 在触发管道之前，必须将实体发布到数据工厂。 若要进行发布，请选择左窗格中的“发布”。 
+1. 在触发管道之前，必须将实体发布到数据工厂。 若要进行发布，请选择左窗格中的“全部发布”。 
 
    ![发布按钮](./media/quickstart-create-data-factory-portal/publish-button.png)
 2. 若要手动触发管道，请选择工具栏中的“触发器”，然后选择“立即触发”。 
@@ -224,9 +224,9 @@ ms.lasthandoff: 01/25/2018
 5. 查看警告消息，然后选择“完成”。
 
    ![警告和“完成”按钮](./media/quickstart-create-data-factory-portal/new-trigger-finish.png)
-6. 选择“发布”，将所做的更改发布到数据工厂。 
+6. 选择“全部发布”，将所做的更改发布到数据工厂。 
 
-   ![发布按钮](./media/quickstart-create-data-factory-portal/publish-2.png)
+   ![发布按钮](./media/quickstart-create-data-factory-portal/publish-button.png)
 8. 在左侧切换到“监视”选项卡。 选择“刷新”可刷新列表。 从发布时间到结束时间这段时间内，可以看到管道每分钟运行一次。 
 
    请注意“触发因素”列中的值。 手动触发器运行是在此前执行的步骤（“立即触发”）中完成的。 

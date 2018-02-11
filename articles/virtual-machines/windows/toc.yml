@@ -422,7 +422,9 @@
           href: performance-diagnostics-vm-extension.md
         - name: 使用嵌套虚拟化
           href: troubleshoot-vm-by-use-nested-virtualization.md
-- name: 引用
+        - name: 在脱机模式下安装 VM 代理
+          href: install-vm-agent-offline.md
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/vm

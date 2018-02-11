@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/15/2017
+ms.date: 01/31/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: c9c23462f80533a224c3c2ac3658b9630f1798f9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e2242851d51dee56679231b9f34c8b474ba6578d
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="configure-virtual-network-service-endpoints"></a>配置虚拟网络服务终结点
 
@@ -72,10 +72,10 @@ ms.lasthandoff: 12/08/2017
 子网名称|mySubnet
 子网地址范围|10.0.0.0/24
 资源组|保留选中“新建”，输入名称。
-位置|任何受支持的区域，例如“澳大利亚东部”
+Location|任何受支持的区域，例如“澳大利亚东部”
 订阅|选择订阅。
-__ServiceEndpoints__|Enabled
-__服务__ | 选择一个或所有可用服务。 在预览期，受支持的服务包括：__“Microsoft.Storage”、“Microsoft.Sql”__。
+__ServiceEndpoints__|已启用
+__服务__ | 选择一个或所有可用服务。 支持的服务：__“Microsoft.Storage”、“Microsoft.Sql”__。
 
 选择终结点的服务：![选择服务终结点服务](media/virtual-network-service-endpoints-portal/vnet-create-flow-services.png)
 
@@ -136,7 +136,7 @@ Get-AzureRmVirtualNetworkAvailableEndpointService -location eastus
 ```
 
 输出： 
-名称 | ID | 类型
+名称 | ID | Type
 -----|----|-------
 Microsoft.Storage|/subscriptions/xxxx-xxx-xxx/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.Storage|Microsoft.Network/virtualNetworkEndpointServices
 Microsoft.Sql|/subscriptions/xxxx-xxx-xxx/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.Sql|Microsoft.Network/virtualNetworkEndpointServices
@@ -387,7 +387,7 @@ az network vnet subnet update -g myRG -n mySubnet --vnet-name myVNet --service-e
 
 详细了解[内置角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)以及将特定的权限分配到[自定义角色](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)。
 
-VNet 和 Azure 服务资源可以位于相同或不同的订阅中。 如果两者位于不同的订阅中，在预览期，资源应在相同的 Active Directory (AD) 租户下。
+VNet 和 Azure 服务资源可以位于相同或不同的订阅中。 如果两者位于不同的订阅中，资源应在相同的 Active Directory (AD) 租户下。
 
 ## <a name="next-steps"></a>后续步骤
 

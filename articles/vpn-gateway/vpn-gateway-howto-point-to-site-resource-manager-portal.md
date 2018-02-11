@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2018
+ms.date: 02/02/2018
 ms.author: cherylmc
-ms.openlocfilehash: 39129572ac9908429dc9b9ef64930e896afc355f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 8cc387fafb2771577b55f57f79cc8b3a6ee8cfa9
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点连接：Azure 门户
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/18/2018
 
 本文可用来帮助使用本机 Azure 证书身份验证配置采用身份验证的 P2S 配置。 如果希望使用 RADIUS 对进行连接的用户进行身份验证，请参阅[使用 RADIUS 身份验证的 P2S](point-to-site-how-to-radius-ps.md)。
 
-![将计算机连接到 Azure VNet - 点到站点连接示意图](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/p2snativeps.png)
+![将计算机连接到 Azure VNet - 点到站点连接示意图](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/p2snativeportal.png)
 
 点到站点连接不需要 VPN 设备或面向公众的 IP 地址。 P2S 基于 SSTP（安全套接字隧道协议）或 IKEv2 创建 VPN 连接。
 
@@ -113,12 +113,12 @@ Azure 使用证书对通过点到站点 VPN 连接连接到 VNet 的客户端进
 
 ## <a name="addresspool"></a>6.添加客户端地址池
 
-客户端地址池是指定的专用 IP 地址的范围。 通过点到站点 VPN 进行连接的客户端接收来自此范围的 IP 地址。 使用专用 IP 地址范围时，该范围不得与要通过其进行连接的本地位置重叠，也不得与要连接到其中的 VNet 重叠。
+客户端地址池是指定的专用 IP 地址的范围。 通过点到站点 VPN 进行连接的客户端动态接收此范围内的 IP 地址。 使用专用 IP 地址范围时，该范围不得与要通过其进行连接的本地位置重叠，也不得与要连接到其中的 VNet 重叠。
 
 1. 创建虚拟网关后，请导航到虚拟网关页的“设置”部分。 在“设置”部分，单击“点到站点配置”可打开“点到站点配置”页。
 
   ![“点到站点”页](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/gatewayblade.png)
-2. 在“点到站点配置”页上，可以删除自动填充的范围，然后添加要使用的专用 IP 地址范围。 单击“保存”验证和保存设置。
+2. 在“点到站点配置”页上，可以删除自动填充的范围，然后添加要使用的专用 IP 地址范围。 VPN 客户端动态接收指定范围内的 IP 地址。 单击“保存”验证和保存设置。
 
   ![客户端地址池](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/ipaddresspool.png)
 

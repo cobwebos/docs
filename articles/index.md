@@ -5,11 +5,11 @@ title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 featureFlags:
 - clicktale
-ms.openlocfilehash: 88c99f7aa0af914210e760d498bb4fb514798207
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 2f0316b17dc1bedab724b3174f8f88d9e92f74f8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -4263,12 +4263,12 @@ SQL 工具 </h3>
                             <li>
                                 <div class="container intro">
                                     <p>
-为云应用程序建议的一组体系结构。 每种体系结构包括建议的做法、说明性的步骤以及附带建议的可执行组件。
+Azure 体系结构中心包含用于在 Microsoft Azure 上构建端到端解决方案的指南。 此处提供了参考体系结构、最佳做法、设计模式、方案指南和参考实现。
                                     </p>
                                 </div>
                             </li>
                             <li>
-                                <a href="/azure/architecture/guide/">
+                                <a href="/azure/architecture/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -4278,8 +4278,27 @@ SQL 工具 </h3>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
+                                                    <h3>Azure 体系结构中心</h3>
+                                                    <p>用于在 Microsoft Azure 上构建端到端解决方案的指南。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/architecture/guide/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/index/azure_best-practices.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
                                                     <h3>Azure 应用程序体系结构指南</h3>
-                                                    <p>在云中取得成功所要掌握的基础知识。 云或 Azure 的新手可以从此处着手。</p>
+                                                    <p>本指南演示用于在 Azure 上设计可缩放、可复原且高度可用的应用程序的结构化方法。 该方法基于我们从客户互动中掌握的成熟做法。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4318,27 +4337,6 @@ SQL 工具 </h3>
                                                 <div class="cardText">
                                                     <h3>云设计模式</h3>
                                                     <p>云的设计模式 每种模式描述了一个问题、用于解决该问题的模式，以及基于 Azure 的示例。</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/architecture/best-practices/api-design">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/index/azure_best-practices.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>云应用程序最佳实践</h3>
-                                                    <p>
-适用于云应用程序的一套最佳实践，涉及自动缩放、缓存、数据分区、API 设计和监视等多个方面。
-                                                    </p>
                                                 </div>
                                             </div>
                                         </div>

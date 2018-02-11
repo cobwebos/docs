@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 01/08/2018
 ms.author: rogirdh
-ms.openlocfilehash: 9878936b5dd76730633dec16b1c3a3eaac78e95a
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: fb6db6555171b65767a715c6b4c8ff37f42c94ef
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB：将 Mongoose 框架与 Azure Cosmos DB 配合使用
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/10/2018
 
 Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -55,7 +55,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 1. 使用一个 ```npm install``` 选项安装所需的包：
     * Mongoose：```npm install mongoose --save```
     * Dotenv（若要从 .env 文件加载机密）：```npm install dotenv --save```
-    
+
     >[!Note]
     > ```--save``` 标志将依赖项添加到 package.json 文件。
 
@@ -86,7 +86,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     > 此处的环境变量是使用“dotenv”npm 包以 process.env.{variableName} 加载的。
 
     连接到 Azure Cosmos DB 后，可以在 Mongoose 中立即开始设置对象模型。
-    
+
 ## <a name="caveats-to-using-mongoose-with-azure-cosmos-db"></a>有关将 Mongoose 与 Azure Cosmos DB 配合使用的注意事项
 
 对于创建的每个模型，Mongoose 会在幕后创建新的 MongoDB 集合。 但是，考虑到 Azure Cosmos DB 的按集合计费模型，如果有多个稀疏填充的对象模型，则它可能不是最具成本效益的方式。
@@ -181,7 +181,7 @@ Mongoose 还存在称作[鉴别器](http://mongoosejs.com/docs/discriminators.ht
 
 1. 现在，请转到 Azure 门户，可以看到 Azure Cosmos DB 中创建了两个集合。
 
-    ![Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了集合名称 - Node 数据库][alldata]
+    ![Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了多个集合名称 - Node 数据库][mutiple-coll]
 
 1. 最后，我们从 Azure Cosmos DB 读取数据。 由于我们使用的是默认 Mongoose 操作模型，读取操作与 Mongoose 的其他读取操作相同。
 
@@ -286,7 +286,7 @@ Mongoose 还存在称作[鉴别器](http://mongoosejs.com/docs/discriminators.ht
 
 1. 现在，如果返回到 Azure 门户，可以看到只有一个名为 ```alldata``` 的集合，其中包含“Family”和“VacationDestinations”数据。
 
-    ![Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了集合名称 - Node 数据库][mutiple-coll]
+    ![Node.js 教程 - Azure 门户的屏幕截图，其中显示 Azure Cosmos DB 帐户，并突出显示了集合名称 - Node 数据库][alldata]
 
 1. 另请注意，每个对象有另一个名为 ```__type``` 的属性，可帮助区分两个不同的对象模型。
 

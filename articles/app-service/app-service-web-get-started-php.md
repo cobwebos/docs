@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: 200178b37fde89cbbdd81ef539451988aa26a472
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e38c8e7d6211c7c7b6bbf3a501ce53c2808ee0fc
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-a-php-web-app-in-azure"></a>在 Azure 中创建 PHP Web 应用
 
@@ -67,8 +67,6 @@ php -S localhost:8080
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Upload zip file](../../includes/app-service-web-upload-zip.md)]
-
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group.md)]
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)]
@@ -105,15 +103,17 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 http://<app name>.azurewebsites.net
 ```
 
+新 Web 应用应该如下所示：
+
 ![空 Web 应用页面](media/app-service-web-get-started-php/app-service-web-service-created.png)
 
-[!INCLUDE [Deploy uploaded ZIP file](../../includes/app-service-web-deploy-zip.md)]
+[!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
 
 ## <a name="browse-to-the-app"></a>浏览到应用
 
 使用 Web 浏览器浏览到已部署的应用程序。
 
-```bash
+```
 http://<app_name>.azurewebsites.net
 ```
 
@@ -141,13 +141,7 @@ zip -r myUpdatedAppFiles.zip .
 Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
 ``` 
 
-将此新的 ZIP 文件上传到 Cloud Shell，使用的步骤与[上传 ZIP 文件](#upload-the-zip-file)中的相同。
-
-然后在 Cloud Shell 中再次部署上传的 ZIP 文件。
-
-```azurecli-interactive
-az webapp deployment source config-zip --resource-group myResouceGroup --name <app_name> --src clouddrive/myUpdatedAppFiles.zip
-```
+将此新的 ZIP 文件部署到应用服务，使用的步骤与[上传 ZIP 文件](#upload-the-zip-file)中的相同。
 
 切换回在“浏览到应用”步骤中打开的浏览器窗口，然后刷新页面。
 

@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7606a5a1bce6c8ce6974e230698e72cac77e93f7
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0013b3b1e95d733191aeafcffcda078a352d034f
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中创建 Node.js Web 应用
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/01/2018
 
 ![在 Azure 中运行应用的示例](media/quickstart-nodejs/hello-world-in-browser.png)
 
-可以在 Mac、Windows 或 Linux 计算机上执行以下步骤。
+可以使用 Mac、Windows 或 Linux 计算机执行本教程中的步骤。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -91,6 +91,8 @@ npm start
 ```bash
 http://<app name>.azurewebsites.net
 ```
+
+新 Web 应用应该如下所示：
 
 ![空 Web 应用页面](media/quickstart-nodejs/app-service-web-service-created.png)
 

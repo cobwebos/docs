@@ -48,6 +48,8 @@
           href: how-to-vscode-develop-azure-function.md
         - name: 调试 Azure Functions
           href: how-to-vscode-debug-azure-function.md
+    - name: 在边缘存储数据
+      href: sql-storage.md
     - name: 故障排除
       href: troubleshoot.md
 - name: 概念
