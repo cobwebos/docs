@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
-ms.date: 09/07/2017
-ms.openlocfilehash: 3c3864480d2fcba4f6d388d4e0d00b917cb62d2b
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.date: 02/01/2018
+ms.openlocfilehash: 76ed1a93af22620ccc2074168b3ff20f6bb4c37d
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="data-preparations-python-extensions"></a>数据准备 Python 扩展
 作为一种填补内置功能之间功能差距的方法，Azure 机器学习数据准备包含多个级别的扩展性。 在本文档中，我们将通过 Python 脚本概述扩展性。 
@@ -125,7 +125,7 @@ import scipy as sp
 `./pip install <libraryname>`
 
 ## <a name="use-custom-modules"></a>使用自定义模块
-在“转换数据流(脚本)”中，编写如下所示的 python 代码：
+在“转换数据流(脚本)”中，编写以下 Python 代码
 
 ```python
 import sys
@@ -135,7 +135,7 @@ from UserModule import ExtensionFunction1
 df = ExtensionFunction1(df)
 ```
 
-在“添加列(脚本)中”，设置“代码块类型”=“模块”，并编写如下 python 代码：
+在“添加列(脚本)中”，设置“代码块类型”=“模块”，并编写以下 Python 代码
 
 ```python 
 import sys
@@ -146,7 +146,7 @@ from UserModule import ExtensionFunction2
 def newvalue(row):
     return ExtensionFunction2(row)
 ```
-对于不同的执行上下文（本地、docker spark），请将绝对路径指向正确的位置。 可能需要使用“os.getcwd() + relativePath”来找到它。
+对于不同的执行上下文（本地、Docker Spark），请将绝对路径指向正确的位置。 可能需要使用“os.getcwd() + relativePath”来找到它。
 
 
 ## <a name="column-data"></a>列数据 

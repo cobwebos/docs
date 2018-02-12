@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/12/2018
+ms.date: 02/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de82062f605d060dc388022cdb8ee9d5c09b2b89
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 421e594f7bd4df1bc1c5faedc2c8bfab0540ca61
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 
@@ -101,18 +101,21 @@ sudo apt-get install cuda-drivers
 sudo reboot
 ```
 
-### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>基于 CentOS 的 7.3 或 Red Hat Enterprise Linux 7.3
+### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS 或 Red Hat Enterprise Linux 7.3 或 7.4
 
-1. 安装适用于 Hyper-V 的最新 Linux 集成服务。
+1. 更新内核。
 
-  > [!IMPORTANT]
-  > 如果在 NC24r VM 上安装了基于 CentOS 的 HPC 映像，请跳至步骤 3。 由于 Azure RDMA 驱动程序和 Linux 集成服务会预安装在 HPC 映像中，因此，不应升级 LIS，默认情况下内核更新已禁用。
-  >
+  ```
+  sudo yum install kernel kernel-tools kernel-headers kernel-devel
+  
+  sudo reboot
+
+2. Install the latest Linux Integration Services for Hyper-V.
 
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-2.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
  
-  tar xvzf lis-rpms-4.2.3-2.tar.gz
+  tar xvzf lis-rpms-4.2.3-5.tar.gz
  
   cd LISISO
  
@@ -124,8 +127,6 @@ sudo reboot
 3. 重新连接到 VM 并使用以下命令继续安装：
 
   ```bash
-  sudo yum install kernel-devel
-
   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
   sudo yum install dkms
@@ -162,20 +163,22 @@ sudo reboot
 ![NVIDIA 设备状态](./media/n-series-driver-setup/smi.png)
 
 
-
 ## <a name="rdma-network-connectivity"></a>RDMA 网络连接
 
 可以在支持 RDMA 的 N 系列 VM（如同一可用性集中部署的 NC24r）上启用 RDMA 网络连接。 对于使用 Intel MPI 5.x 或更高版本运行的应用程序，RDMA 网络支持消息传递接口 (MPI) 流量。 其他要求如下：
 
 ### <a name="distributions"></a>分发
 
-在支持 RDMA 连接的 Azure Marketplace 中，从以下映像之一部署支持 RDMA 的 N 系列 VM：
+从 Azure Marketplace 部署 N 系列 VM 用于支持 RDMA 连接中映像 RDMA N 系列 VM:
   
-* Ubuntu - Ubuntu Server 16.04 LTS。 在 VM 上配置 RDMA 驱动程序，并注册 Intel 下载 Intel MPI：
+* **Ubuntu 16.04 LTS** - 在 VM 上配置 RDMA 驱动程序，并注册 Intel 下载 Intel MPI：
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
-* 基于 CentOS 的 HPC - 基于 CentOS 的 7.3 HPC。 在 VM 上安装 RDMA 驱动程序和 Intel MPI 5.1。 
+> [!NOTE]
+> 基于 CentOS 的 HPC 映像当前建议不要用于 N 系列 VM 上的 RDMA 连接。 最新支持 NVIDIA GPU 的 CentOS 7.4 内核不支持 RDMA。
+> 
+
 
 ## <a name="install-grid-drivers-for-nv-vms"></a>安装适用于 NV VM 的 GRID 驱动程序
 
@@ -237,7 +240,7 @@ sudo reboot
 9. 重新启动 VM，并继续验证安装。
 
 
-### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>基于 CentOS 的 7.3 或 Red Hat Enterprise Linux 7.3
+### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS 或 Red Hat Enterprise Linux 
 
 1. 更新内核和 DKMS。
  
@@ -262,9 +265,9 @@ sudo reboot
 3. 重新启动 VM、重新进行连接并安装适用于 Hyper-V 的最新 Linux 集成服务：
  
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-2.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
 
-  tar xvzf lis-rpms-4.2.3-2.tar.gz
+  tar xvzf lis-rpms-4.2.3-5.tar.gz
 
   cd LISISO
 
@@ -343,8 +346,6 @@ if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; 
 通过在 `/etc/rc.d/rc3.d` 中为此文件创建一个条目，可以在启动时以 root 身份调用此文件。
 
 ## <a name="troubleshooting"></a>故障排除
-
-* Ubuntu 16.04 LTS 上运行 4.4.0-75 Linux 内核的 Azure N 系列 VM 上的 CUDA 驱动程序存在已知问题。 如果要从早期的内核版本进行升级，请至少升级到内核版本 4.4.0-77。
 
 * 可以使用 `nvidia-smi` 设置持久性模式，以便在需要查询卡时该命令的输出更快。 若要设置持久性模式，请执行 `nvidia-smi -pm 1`。 请注意，如果重启 VM，此模式设置将消失。 你可以始终将该模式设置编写为在启动时执行。
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 01/31/2018
 ms.author: billmath
-ms.openlocfilehash: 8a36fc45334a2f1d12e6eabbfb16731ccc9998bf
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 021f009e66e57665a2252646b210f0e6dc55d33c
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-ad-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure AD Connect 同步：为 Office 365 资源配置首选数据位置
-本主题旨在介绍如何在 Azure AD Connect 同步中默认 PreferredDataLocation。当客户在 Office 365 中使用多地域功能时，此属性用于指定用户的 Office 365 数据的地理位置。
+本主题旨在介绍如何在 Azure AD Connect 同步中默认 PreferredDataLocation。当客户在 Office 365 中使用多地域功能时，此属性用于指定用户的 Office 365 数据的地理位置。 条款**区域**和**异地**可以换用。
 
 > [!IMPORTANT]
 > 多地域目前以预览版提供。 若要参与预览计划，请与 Microsoft 代表联系。
@@ -38,20 +38,25 @@ ms.lasthandoff: 02/01/2018
 >
 >
 
+在找不到一份针对 Office 365 提供的所有 Geo[ 其中是你的数据位于](https://aka.ms/datamaps)。
+
 Office 365 中支持多地域的区域包括：
 
-| 区域 | 说明 |
+| 地域 | preferredDataLocation 值 |
 | --- | --- |
-| NAM | 北美 |
-| EUR | 欧洲 |
-| APC | 亚太区 |
-| JPN | 日本 |
-| AUS | 澳大利亚 |
-| CAN | 加拿大 |
-| GBR | 英国 |
-| LAM | 拉丁美洲 |
+| 亚太区 | APC |
+| 澳大利亚 | AUS |
+| 加拿大 | CAN |
+| 欧盟 | EUR |
+| 印度 | IND |
+| 日本 | JPN |
+| 韩国 | KOR |
+| 英国 | GBR |
+| 美国 | NAM |
 
-并非所有 Office 365 工作负荷都支持设置用户的区域。
+* 如果是地域未列在此表，例如是南美洲，然后它不能为多地域。
+* 印度和韩国 geo 才对计费地址和在这些 geo 购买的许可证的客户都可用。
+* 并非所有 Office 365 工作负荷都支持设置用户的区域。
 
 Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **PreferredDataLocation** 属性同步。 更具体地讲，已引入以下更改：
 

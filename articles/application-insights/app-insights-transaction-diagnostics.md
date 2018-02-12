@@ -12,19 +12,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: sdash
-ms.openlocfilehash: 8c1d8600b7f4aaa1e95f4acfbbdd55fdbfebb8fb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1c7eaafe99717324ad03287a1f1e0699d77cc74f
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断
 
 此体验当前以预览版提供，它替换了用于服务器端请求、依赖项和异常的现有诊断边栏选项卡。
 
-此预览版引入了一种全新的统一诊断体验，将所有受 Application Insights 监视的组件中的服务器端遥测关联到一个单独的视图。 是否拥有多个资源和单独的检测密钥并不重要；Application Insights 可检测基础关系，并可用于轻松诊断导致事务缓慢或失败的应用程序组件、依赖项或异常。
+此预览版引入了一种全新的统一诊断体验，将所有受 Application Insights 监视的组件中的服务器端遥测关联到一个单独的视图。 是否拥有多个资源和单独的检测密钥并不重要。 Application Insights 可检测基础关系，并可用于轻松诊断导致事务缓慢或失败的应用程序组件、依赖项或异常。
 
-## <a name="what-does-component-mean-in-the-context-of-application-insights"></a>在 Application Insights 的上下文中，组件意味着什么？
+## <a name="what-is-a-component"></a>组件是什么？
 
 组件是分布式/微服务应用程序的可独立部署的部件。 开发者或操作团队具有代码级可见性，或有权访问由这些应用程序组件生成的遥测。
 
@@ -32,10 +32,12 @@ ms.lasthandoff: 02/01/2018
 * 组件在任意数目的服务器/角色/容器实例上运行。
 * 组件可以是单独的 Application Insights 检测密钥（即使订阅并不相同），或是向单个 Application Insights 检测密钥报告的不同角色。 新体验显示了所有组件的详细信息，而不论其设置方式。
 
-> [!Tip]
-> 要获得最佳结果，请确保使用最新 Application Insights 稳定 SDK 检测了所有组件。 如果存在不同的 Application Insights 资源，请确保具有查看其遥测的相应权限。
+> [!NOTE]
+> * **缺少相关的项链接？** 所有与服务器端请求、 依赖项和异常相关的遥测数据都在[顶部](#cross-component-transaction-chart)和[底部](#all-telemetry-related-to-the-selected-component-operation)的左侧部分。 
+> * [顶部](#cross-component-transaction-chart)部分关联的所有组件的事务。 要获得最佳结果，请确保使用最新 Application Insights 稳定 SDK 检测了所有组件。 如果存在不同的 Application Insights 资源，请确保具有查看其遥测的相应权限。
+> * [底部](#all-telemetry-related-to-the-selected-component-operation)的左侧显示的部分**所有**包括跟踪和事件的遥测与请求相关从所选组件。
 
-## <a name="enable-and-access"></a>启用和访问
+## <a name="enable-transaction-diagnostics-experience"></a>事务诊断体验
 从[预览列表](app-insights-previews.md)启用“统一详细信息：E2E 事务诊断”
 
 ![启用预览](media/app-insights-e2eTxn-diagnostics/previews.png)
@@ -49,7 +51,7 @@ ms.lasthandoff: 02/01/2018
 
 ![关键部分](media/app-insights-e2eTxn-diagnostics/3partsCrossComponent.png)
 
-### <a name="1-cross-component-transaction-chart"></a>[1] 跨组件事务图
+## <a name="cross-component-transaction-chart"></a>跨组件事务图
 
 此图提供使用水平条的时间线，表示请求的持续时间及各组件间的依赖项。 收集的任何异常也会标记在时间线上。
 
@@ -57,20 +59,20 @@ ms.lasthandoff: 02/01/2018
 * 对外部依赖项的任何调用都是简单的不可折叠行，以图标表示依赖项类型。
 * 对其它组件的调用均属于可折叠行。 每一行都与在组件处调用的特定操作对应。
 * 默认情况下，图上会显示最初选择的请求、依赖项或异常。
-* 选择任意行，在右侧查看其详细信息。 单击“打开探查器跟踪”或“打开调试快照”，在相应的详细信息窗格中查看代码级诊断信息。
+* 选择任意行，在[右侧查看其详细信息](#details-of-the-selected-telemetry)。 
 
 > [!NOTE]
 对其他组件的调用包括两行：一行表示来自调用方组件的出站调用（依赖项），另一行对应于调用的组件处的入站请求。 可通过前导图标和样式不同的持续时间条来区分它们。
 
-### <a name="2-time-sequenced-telemetry-of-the-selected-component-operation"></a>[2] 所选组件操作的时序遥测
+## <a name="all-telemetry-related-to-the-selected-component-operation"></a>所选组件操作的时序遥测
 
-在跨组件事务图中选择的任何行都与在特定组件调用的操作相关。 底部的标题中反映了此所选组件操作。 打开此部分，可查看与该特定操作相关的所有遥测的平面时间序列。 可以在此列表中选择任意遥测项，并在右侧查看相应的详细信息。
+在跨组件事务图中选择的任何行都与在特定组件调用的操作相关。 底部的标题中反映了此所选组件操作。 打开此部分，可查看与该特定操作相关的所有遥测的平面时间序列。 可以在此列表中选择任意遥测项，并[在右侧查看相应的详细信息](#details-of-the-selected-telemetry)。
 
 ![所有遥测的时间序列](media/app-insights-e2eTxn-diagnostics/allTelemetryDrawerOpened.png)
 
-### <a name="3-details-pane"></a>[3] 详细信息窗格
+## <a name="details-of-the-selected-telemetry"></a>所选遥测数据的详细信息
 
-此窗格在左侧两部分的任一部分中显示所选项的详细信息。 “显示全部”列出了收集的所有标准属性。 所有自定义属性都单独列在标准集之下。
+此窗格在左侧两部分的任一部分中显示所选项的详细信息。 “显示全部”列出了收集的所有标准属性。 所有自定义属性都单独列在标准集之下。 单击“打开探查器跟踪”或“打开调试快照”，在相应的详细信息窗格中查看代码级诊断信息。
 
 ![异常详细信息](media/app-insights-e2eTxn-diagnostics/exceptiondetail.png)
 

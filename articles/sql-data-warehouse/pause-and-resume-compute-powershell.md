@@ -14,14 +14,14 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 01/25/2018
 ms.author: barbkess
-ms.openlocfilehash: 799210366978c68a390fa6d671184e94cf021301
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e2401f31ad88c8ee5fdd8912ff6033f0619a06b0
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-powershell"></a>快速入门：在 PowerShell 中暂停和恢复 Azure SQL 数据仓库的计算
-使用 PowerShell 暂停 Azure SQL 数据仓库的计算来节约成本。 在要使用数据仓库时恢复计算。
+使用 PowerShell 暂停 Azure SQL 数据仓库的计算来节约成本。 在准备好使用数据仓库时恢复计算。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -58,13 +58,14 @@ Select-AzureRmSubscription -SubscriptionName "MySubscription"
 按照以下步骤查找数据仓库的位置信息。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户页面左侧单击“SQL 数据库”。
-3. 从“SQL 数据库”页中选择“mySampleDataWarehouse”。 此操作打开数据仓库。 
+2. 在 Azure 门户的左侧页面中，单击“SQL 数据库”。
+3. 从“SQL 数据库”页中选择“mySampleDataWarehouse”。 此操作打开数据仓库。
 
     ![服务器名称和资源组](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. 记下将用作数据库名称的数据仓库名称。 同时记下服务器名称和资源组。 执行暂停和恢复命令时会用到。
-5. 如果服务器是 foo.database.windows.net，请在 PowerShell cmdlet 中仅使用第一部分作为服务器名称。 在上图中，完整的服务器名称为 newserver-20171113.database.windows.net。 我们将使用 newserver-20171113 作为 PowerShell cmdlet 中的服务器名称。
+4. 记下将用作数据库名称的数据仓库名称。 同时记下服务器名称和资源组。 你 
+5.  执行暂停和恢复命令时会用到。
+6. 如果服务器是 foo.database.windows.net，请在 PowerShell cmdlet 中仅使用第一部分作为服务器名称。 在上图中，完整的服务器名称为 newserver-20171113.database.windows.net。 删除后缀并使用 newserver-20171113 作为 PowerShell cmdlet 中的服务器名称。
 
 ## <a name="pause-compute"></a>暂停计算
 为了节省成本，可以按需暂停和恢复计算资源。 例如，如果晚上和周末不使用数据库，那么可以在这些时间暂停数据库的使用，然后在白天时恢复使用。 数据库暂停时，不对计算资源进行收费。 但是，仍将收取存储费用。 

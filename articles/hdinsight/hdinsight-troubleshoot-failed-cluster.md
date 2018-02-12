@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 59382931d4b5478888238760b268af7f962a10b5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 00c4ac0e2ac059efebbfbe0b2426b27361ad8e37
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或故障问题
 
@@ -112,7 +112,7 @@ HDInsight 依赖于多个 Azure 服务。 它在 Azure HDInsight 中运行虚拟
 
 HDInsight 群集由虚拟机实例上运行的不同类型的节点组成。 可以监视每个节点上存在的资源严重不足、网络连接问题，以及可能降低群集速度的其他问题。 每个群集包含两个头节点，大多数群集类型包含工作节点和边缘节点的组合。 
 
-<!-- For a description of the various nodes each cluster type uses, see [HDInsight Architecture](hdinsight-architecture.md). -->
+有关每个群集类型使用的各个节点的说明，请参阅[使用 Hadoop、Spark、Kafka 等在 HDInsight 中设置群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 下列部分介绍如何检查每个节点和整个群集的运行状况。
 
@@ -255,7 +255,7 @@ HDInsight 群集会生成日志，这些日志将写入 Azure 表和 Azure Blob 
 
 HDInsight 群集中预配置了相关服务（例如 Hadoop、Hive、HBase 等）的默认设置。 根据群集的类型、硬件配置、节点数目、运行的作业类型和正在处理的数据（以及数据处理方式），可能需要优化配置。
 
-<!-- For detailed instructions on optimizing performance configurations for most scenarios, see [Changing configurations with Ambari](hdinsight-changing-configs-via-ambari.md). When using Spark, see [Optimizing Spark jobs for performance](spark/apache-spark-perf.md).  -->
+有关优化大多数方案的性能配置的详细说明，请参阅[优化使用 Ambari 的群集配置](hdinsight-changing-configs-via-ambari.md)。 在使用 Spark，请参阅[性能的优化 Spark 作业](spark/apache-spark-perf.md)。 
 
 ## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>步骤 7：在不同的群集上再现故障
 

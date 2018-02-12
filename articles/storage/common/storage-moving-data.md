@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: jarrettr
-ms.openlocfilehash: db0f09433750a3af2d70039d780a25ad64bb4df1
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 980e4675c2d2e88716a3133abb027988aecd538f
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>将数据移动到和移出 Azure 存储
 如果想将本地数据移动到 Azure 存储（或执行相反的操作），有许多种方式可以执行此操作。 最适合方法将取决于方案。 本文将提供不同方案以及针对每个方案的适当产品/服务的快速概述。
@@ -41,9 +41,9 @@ Azure 存储为 .NET、iOS、Java、Android、通用 Windows 平台 (UWP)、Xama
 如果需要或更熟悉命令行实用程序（例如系统管理员），以下是供你考虑的一些选项：
 
 ### <a name="azcopy"></a>AzCopy
-AzCopy 是一个 Windows 命令行实用程序，旨在实现高性能地将数据复制到 Azure 存储和从 Azure 存储中复制。 还可以在存储帐户内或者在不同的存储帐户之间复制数据。
+AzCopy 是一个命令行实用程序，旨在实现高性能地将数据复制到 Azure 存储和从 Azure 存储中复制。 还可以在存储帐户内或者在不同的存储帐户之间复制数据。 AzCopy 在 [Windows](storage-use-azcopy.md) 和 [Linux](storage-use-azcopy-linux.md) 上可用。
 
-请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)了解详细信息。
+请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)或[使用 Linux 上的 AzCopy 传输数据](storage-use-azcopy-linux.md)了解详细信息。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Azure PowerShell 是一个模块，它提供用于管理 Azure 上的服务的 cmdlet。 这是一种基于任务的命令行外壳和脚本语言，专为系统管理而设计。

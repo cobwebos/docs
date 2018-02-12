@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 01/29/2018
 ms.author: juliako
-ms.openlocfilehash: 96bd97abf598414ebc88e955437c02873ff43ca8
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 2743ef7e60371329bcad0090733eb8e40560c5f1
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-media-services-community"></a>Azure 媒体服务社区
 此 Azure 媒体服务 (AMS) 社区页讨论了如何通过不同的方式来获取有关 AMS 的更新。 此外，还可以观看新视频和播客、提出问题并提供反馈。   
@@ -29,26 +29,27 @@ ms.lasthandoff: 01/08/2018
 - [Protecting your Media Content with AES Encryption](https://azure.microsoft.com/documentation/videos/azure-media-services-protecting-your-media-content-with-aes-encryption/)（通过 AES 加密保护媒体内容） 
 - [Azure Media Services Developer Deep Dive](https://azure.microsoft.com/documentation/videos/build-2015-azure-media-services-developer-deep-dive/)（Azure 媒体服务开发人员深度课程） 
 - [Azure Media Indexer automatically creates transcripts for your media](https://azure.microsoft.com/documentation/videos/azure-media-indexer-autoatically-creates-transcripts-for-your-media-with-adarsh-solanki/)（Azure Media Indexer 自动为媒体创建脚本）  
-- [Microsoft Hyperlapse in Azure Media Services with Adarsh Solanki](https://azure.microsoft.com/documentation/videos/microsoft-hyperlapse-in-azure-media-services-with-adarsh-solanki/)（听 Adarsh Solanki 讲述 Azure 媒体服务中的 Microsoft Hyperlapse） 
+
 
 ## <a name="provide-feedback-and-make-suggestions"></a>提供反馈和建议
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="discussion"></a>讨论区
 ### <a name="twitter"></a>Twitter
-使用 [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) Twitter 用户名关注 AMS 新闻以及 Twitter 上的更新。 可以在 Twitter 上使用 [@AzureSupport](https://twitter.com/azuresupport) Twitter 用户名请求支持。  
+使用 [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter 句柄，请与我们联系，或在 Twitter 上关注更新。 可以在 Twitter 上使用 [@AzureSupport](https://twitter.com/azuresupport) Twitter 用户名请求支持。  
 
 ### <a name="online-forums"></a>在线论坛
 可以使用以下论坛提问有关当前产品和功能的问题。
 
-目前，MSDN 是 AMS 主论坛。
+目前，MSDN 为媒体服务团队的主社区论坛。
 
 [![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
+团队还可以监控使用 Azure 媒体服务标记 Stack Overflow 的问题。
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="contact-the-team"></a>与团队联系
-Azure 媒体服务主电子邮件是：**mediaservices@microsoft.com**。
+Azure 媒体服务主要支持电子邮件是：**amshelp@microsoft.com**。
 
 下表列出了功能子团队的电子邮件：
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: a88adc300e52c74f2a1fcd2e546ab879000d877e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: e5f6f423697d90e889ebde2cd203891e34278b3c
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="how-to-troubleshoot-azure-redis-cache"></a>如何排查 Azure Redis 缓存问题
 本文提供的指南适用于排查以下类别的 Azure Redis 缓存问题。
@@ -88,17 +88,17 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="client-side-bandwidth-exceeded"></a>超出客户端带宽
 #### <a name="problem"></a>问题
-不同大小的客户端计算机对于可提供的网络带宽存在不同的限制。 如果客户端超出可用带宽，则客户端的数据处理速度将赶不上服务器的数据发送速度。 这可能导致超时。
+不同的客户端计算机体系结构对于可提供的网络带宽存在不同的限制。 如果客户端超出可用带宽，则客户端的数据处理速度将赶不上服务器的数据发送速度。 这种情况下会导致超时。
 
 #### <a name="measurement"></a>度量
-使用[此类](https://github.com/JonCole/SampleCode/blob/master/BandWidthMonitor/BandwidthLogger.cs)代码监视带宽使用随时间变化的情况。 请注意，在对权限有限制的某些环境（例如 Azure 网站）中，此代码可能无法成功运行。
+使用[此类](https://github.com/JonCole/SampleCode/blob/master/BandWidthMonitor/BandwidthLogger.cs)代码监视带宽使用随时间变化的情况。 在对权限有限制的某些环境（例如 Azure 网站）中，此代码可能无法成功运行。
 
 #### <a name="resolution"></a>解决方法
 增加客户端 VM 大小或减少网络带宽消耗。
 
 ### <a name="large-requestresponse-size"></a>请求/响应大小过大
 #### <a name="problem"></a>问题
-请求/响应过大可能导致超时。 例如，假设你在客户端上配置的超时值为 1 秒。 应用程序同时请求两个密钥（例如“A”和“B”）（使用相同的物理网络连接）。 大多数客户端支持对请求进行“管道操作”，使得请求“A”和“B”在线路上是依次发送到服务器的，不需等待响应。 服务器会按相同顺序将响应发送回来。 如果响应“A”过大，则可能会消耗掉后续请求的大部分超时时间。 
+请求/响应过大可能导致超时。 例如，假设你在客户端上配置的超时值为 1 秒。 你的应用程序（使用相同的物理网络连接）的同时请求两个键 （例如，A 和 B）。 大多数客户端支持对请求进行“管道操作”，使得请求“A”和“B”在线路上是依次发送到服务器的，不需等待响应。 服务器会按相同顺序将响应发送回来。 如果响应“A”过大，则可能会消耗掉后续请求的大部分超时时间。 
 
 以下示例演示了这种情况。 在这种情况下，请求“A”和“B”的发送速度很快，服务器开始发送响应“A”和“B”的速度也很快，但由于数据传输需要时间，“B”被其他请求挡在了后面，在服务器响应速度很快的情况下也会超时。
 
@@ -112,11 +112,11 @@ ms.lasthandoff: 01/24/2018
 
 
 #### <a name="measurement"></a>度量
-这种情况很难进行度量。 基本说来，这种情况下你必须对客户端代码进行检测，以便跟踪大型请求和响应。 
+此请求/响应很难度量值。 基本说来，这种情况下你必须对客户端代码进行检测，以便跟踪大型请求和响应。 
 
 #### <a name="resolution"></a>解决方法
-1. Redis 适用于大量的小型值，而不适用于少量的大型值。 首选解决方案是将数据分解成较小的相关值。 请参阅 [What is the ideal value size range for redis?Is 100KB too large?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)（Redis 的理想值大小范围是多少？100KB 是否过大？）这个帖子，以详细了解为何我们建议使用较小值。
-2. 增加 VM 的大小（针对客户端和 Redis 缓存服务器），以便提高带宽能力，减少大型响应的数据传输时间。 请注意，不能只提高服务器的带宽，也不能只提高客户端的带宽。 测量带宽使用情况，将其与当前 VM 大小所对应的带宽能力进行比较。
+1. Redis 适用于大量的小型值，而不适用于少量的大型值。 首选解决方案是将数据分解成较小的相关值。 请参阅 [What is the ideal value size range for redis?Is 100 KB too large?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)（Redis 的理想值大小范围是多少？100KB 是否过大？）这个帖子，以详细了解为何我们建议使用较小值。
+2. 增加 VM 的大小（针对客户端和 Redis 缓存服务器），以便提高带宽能力，减少大型响应的数据传输时间。 不能只提高服务器的带宽，也不能只提高客户端的带宽。 测量带宽使用情况，将其与当前 VM 大小所对应的带宽能力进行比较。
 3. 增加所使用的 `ConnectionMultiplexer` 对象数，以及通过不同连接进行的轮询请求数。
 
 ### <a name="what-happened-to-my-data-in-redis"></a>我在 Redis 中的数据发生了什么情况？
@@ -160,11 +160,14 @@ CPU 使用率高可能意味着，客户端可能无法及时处理 Redis 发出
 通过 Azure 门户或关联的性能计数器监视系统范围的 CPU 使用率。 请注意，不要监视进程 CPU，因为即使单个进程的 CPU 使用率低，系统的总体 CPU 使用率也可能高。 注意与超时相对应的 CPU 使用率峰值。
 
 #### <a name="resolution"></a>解决方法
-通过[缩放](cache-how-to-scale.md)提高缓存层大小和 CPU 容量，或者调查清楚导致 CPU 峰值的原因。 
+* 查看任何建议和警报中所述[Redis 缓存顾问](cache-configure.md#redis-cache-advisor)。
+* 此外查看本主题中的其他建议和[的 Azure Redis 最佳实践](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f)若要查看是否采用了所有选项以进一步优化你的缓存和你的客户端。 
+* 查看 [Azure Redis 缓存性能](cache-faq.md#azure-redis-cache-performance)图表和查看是否有可能是附近当前层的上限阈值。 如有必要，[缩放](cache-how-to-scale.md)到具有更多的 CPU 容量更大的缓存层。 如果已使用高级层，你可能需要[使用群集向外扩展](cache-how-to-premium-clustering.md)
+
 
 ### <a name="server-side-bandwidth-exceeded"></a>超出服务器端带宽
 #### <a name="problem"></a>问题
-不同大小的缓存实例对于可提供的网络带宽存在不同的限制。 如果服务器超出可用带宽，则数据将无法快速发送到客户端。 这可能导致超时。
+不同大小的缓存实例对于可提供的网络带宽存在不同的限制。 如果服务器超出可用带宽，则数据将无法快速发送到客户端。 这种情况下会导致超时。
 
 #### <a name="measurement"></a>度量
 可以监视 `Cache Read` 指标，该指标是指在指定的报告时间间隔内从缓存读取的数据量，以每秒兆字节数（MB/秒）为单位。 此值对应于该缓存使用的网络带宽。 如果要针对服务器端网络带宽限制设置警报，可使用此 `Cache Read` 计数器来创建这些警报。 将读数与[此表](cache-faq.md#cache-performance)中的值进行比较，了解各种缓存定价层和大小所遵循的带宽限制。

@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: b2040bfad42f2913882792c0055225b2c3d521b5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e8c1ff23ee00e15325a82e1df0f4643ec429b119
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2018
 ---
 # <a name="authorize-users-for-ambari-views"></a>授权用户访问 Ambari 视图
 
-[已加入域的 HDInsight 群集](./domain-joined/apache-domain-joined-introduction.md)提供企业级功能，包括基于 Azure Active Directory 的身份验证。 可以将已添加的新用户同步到已被授予群集访问权限的 Azure AD 组 <!-- [synchronize new users](hdinsight-sync-aad-users-to-cluster.md) -->，从而允许这些特定用户执行某些操作。 已加入域的 HDInsight 群集和标准 HDInsight 群集均支持使用 Ambari 中的用户、组和权限。
+[已加入域的 HDInsight 群集](./domain-joined/apache-domain-joined-introduction.md)提供企业级功能，包括基于 Azure Active Directory 的身份验证。 可以将已添加的[新用户同步](hdinsight-sync-aad-users-to-cluster.md)到已被授予群集访问权限的 Azure AD 组，从而允许这些特定用户执行某些操作。 已加入域的 HDInsight 群集和标准 HDInsight 群集均支持使用 Ambari 中的用户、组和权限。
 
 Active Directory 用户可以使用他们的域凭据登录到群集节点。 他们还可以使用自己的域凭据在其他已批准的终结点（例如 Hue、Ambari 视图、ODBC、JDBC、PowerShell 和 REST API）上进行身份验证，以便与群集交互。
 
@@ -145,5 +145,4 @@ Tez 视图实例可让用户监视和调试 Hive 查询与 Pig 脚本提交的�
 * [在已加入域的 HDInsight 中配置 Hive 策略](./domain-joined/apache-domain-joined-run-hive.md)
 * [管理已加入域的 HDInsight 群集](./domain-joined/apache-domain-joined-manage.md)
 * [将 Hive 视图与 HDInsight 中的 Hadoop 配合使用](hadoop/apache-hadoop-use-hive-ambari-view.md)
-
-<!-- * [Synchronize Azure AD users to the cluster](hdinsight-sync-aad-users-to-cluster.md) -->
+* [将 Azure AD 用户同步到群集](hdinsight-sync-aad-users-to-cluster.md)

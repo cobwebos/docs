@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: damaerte
-ms.openlocfilehash: 5a2a5095f6418cf188c5d5d5f3b14049f889a272
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9f089b5c5d573bf469d6920f9144b7cc5c97c03a
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2018
@@ -53,7 +53,6 @@ PowerShell in Cloud Shell（预览版）启动后，用户会进入 Azure 驱动
 ![](media/features-powershell/azure-drive.png)
 
 #### <a name="contextual-awareness"></a>上下文感知
-
 - **资源组范围**：在 Azure 驱动器 (`Azure:`) 中资源组路径的上下文内，资源组名称会自动传递到 Azure PowerShell cmdlet。
 
     ![](media/features-powershell/resource-group-autocomplete.png)
@@ -104,7 +103,7 @@ IntelliSense 支持是通过可与 [PowerShell 编辑器服务](https://github.c
 |------------|-----------|
 |.NET        |4.6        |
 |Node.js     |6.10       |
-|PowerShell  |5.1 和 [6.0 (beta)](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell  |5.1 和 [6.0.0](https://github.com/PowerShell/powershell/releases)       |
 |Python      |2.7        |
 
 ## <a name="next-steps"></a>后续步骤

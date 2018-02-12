@@ -3,7 +3,7 @@ title: "如何使用 Azure VM 托管服务标识登录"
 description: "有关使用 Azure VM MSI 服务主体进行脚本客户端登录和资源访问的逐步说明与示例。"
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -12,19 +12,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/05/2018
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c5f71d27a9e07cc6d6a260b809e91aaa2a50270c
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: c5c1be01947dba8b7f4ef8aa54aa6aedfb191d32
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="sign-in-using-a-vm-user-assigned-managed-service-identity-msi"></a>使用 VM 用户分配的托管服务标识 (MSI) 登录
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)] 本文提供有关使用用户分配的 MSI 服务主体进行登录的 CLI 脚本示例，以及有关错误处理等重要主题的指导。
+[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+本文提供有关使用用户分配的 MSI 服务主体进行登录的 CLI 脚本示例，以及有关错误处理等重要主题的指导。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
 
@@ -57,7 +58,7 @@ MSI 提供一个[服务主体](~/articles/active-directory/develop/active-direct
     echo The VM region location is $vmLocation
     ```
 
-    响应示例：
+    示例响应：
    
     ```bash
     user@vmLinux:~$ az login --msi -u /subscriptions/80c696ff-5efa-4909-a64d-z1b616f423bl/resourcegroups/rgName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/msiName

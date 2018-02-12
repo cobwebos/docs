@@ -3,8 +3,8 @@ title: "如何在 VM 上通过 Azure SDK 使用用户分配的托管服务标识
 description: "在 VM 上将 Azure SDK 与用户分配的 MSI 配合使用的代码示例。"
 services: active-directory
 documentationcenter: 
-author: BryanLa
-manager: mbaldwin
+author: daveba
+manager: mtillman
 editor: 
 ms.service: active-directory
 ms.devlang: na
@@ -12,17 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/22/2017
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f9a31a0500a6f5f1c49fc45d5811e28788e6f2b1
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 59d65e42c9b32bd0acd98645342833b4d57ad7a4
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-azure-sdks-with-a-user-assigned-managed-service-identity-msi"></a>将 Azure SDK 与用户分配的托管服务标识 (MSI) 配合使用
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)] 本文提供了 SDK 示例的列表，这些示例演示了如何使用其各自 Azure SDK 对用户分配的 MSI 的支持。
+[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+本文提供了 SDK 示例的列表，这些示例演示了如何使用其各自 Azure SDK 对用户分配的 MSI 的支持。
 
 ## <a name="prerequisites"></a>先决条件
 
