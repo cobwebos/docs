@@ -107,6 +107,7 @@
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-device-management-get-started.md)
 #### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-device-management-get-started.md)
 #### [Java 后端/Java 设备](iot-hub-java-java-device-management-getstarted.md)
+#### [Python 后端/Python 设备](iot-hub-python-python-device-management-get-started.md)
 ### 如何使用克隆属性
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-twin-how-to-configure.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-twin-how-to-configure.md)

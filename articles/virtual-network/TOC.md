@@ -157,6 +157,7 @@
 #### [Azure CLI](virtual-network-manage-nsg-arm-cli.md)
 
 #### [日志](virtual-network-nsg-manage-log.md)
+### [路由表](manage-route-table.md)
 ### 网络接口 (NIC)
 #### [创建、更改或删除 NIC](virtual-network-network-interface.md)
 #### [添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)
@@ -177,6 +178,7 @@
 ### [吞吐量测试](virtual-network-bandwidth-testing.md)
 ### [无法删除虚拟网络](virtual-network-troubleshoot-cannot-delete-vnet.md)
 ### [VM 到 VM 连接问题](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
+### [为 SMTP 标题检查配置 PTR](create-ptr-for-smtp-service.md)
 
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)

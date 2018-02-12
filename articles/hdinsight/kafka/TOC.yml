@@ -29,6 +29,8 @@
       href: apache-kafka-mirroring.md
     - name: 分析 Kafka 日志
       href: apache-kafka-log-analytics-operations-management.md
+    - name: 将 Kafka 与 Azure 容器服务配合使用
+      href: apache-kafka-azure-container-services.md
     - name: 创建流式处理管道
       items:
         - name: Kafka 和 Spark（结构化流式处理）
