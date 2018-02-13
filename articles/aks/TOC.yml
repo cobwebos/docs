@@ -37,6 +37,8 @@
   items:
     - name: 群集操作
       items:
+        - name: 创建 AKS 群集
+          href: create-cluster.md
         - name: 缩放 AKS 群集
           href: scale-cluster.md
         - name: 升级 AKS 群集
@@ -45,10 +47,14 @@
           href: delete-cluster.md
     - name: 配置数据卷
       items:
-        - name: Azure 磁盘 - 永久性卷
+        - name: Azure 磁盘
           href: azure-disks-dynamic-pv.md
-        - name: Azure 文件 - 永久性卷
+        - name: Azure 文件
           href: azure-files-dynamic-pv.md
+    - name: 配置网络
+      items:
+        - name: 静态 IP 地址
+          href: static-ip.md
     - name: 安全性和身份验证
       items:
         - name: 创建服务主体

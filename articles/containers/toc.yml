@@ -51,12 +51,12 @@
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview'
         - name: 如何
           items:
-            - name: 创建 Docker 主机
-              href: 'https://docs.microsoft.com/azure/virtual-machines/linux/dockerextension'
-            - name: 使用 Docker 计算机
-              href: 'https://docs.microsoft.com/azure/virtual-machines/linux/docker-machine'
-            - name: 使用 Docker Compose
-              href: 'https://docs.microsoft.com/azure/virtual-machines/linux/docker-compose-quickstart'
+            - name: 在 Windows 上创建容器应用程序
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers'
+            - name: 在 Linux 上创建容器应用程序
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers-linux'
+            - name: 将现有 .NET 应用程序容器化
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-host-app-in-a-container'
     - name: Windows 容器
       href: 'https://docs.microsoft.com/azure/virtual-machines/windows/overview'
       items:

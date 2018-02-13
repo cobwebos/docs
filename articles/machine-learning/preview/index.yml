@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure 机器学习文档（预览）"
+title: "Azure 机器学习服务（预览版）文档"
 metadata:
-  title: "Azure 机器学习文档（预览）"
-  meta.description: Learn how to use Azure Machine Learning public preview features.
+  title: "Azure 机器学习服务（预览版）文档"
+  meta.description: Learn how to use Azure Machine Learning services (preview).
   services: machine-learning
   author: garyericson
   manager: jhubbard
@@ -11,27 +11,24 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/06/2017
+  ms.date: 01/18/2018
   ms.author: garye
-  ms.openlocfilehash: 98d106418472f66b8e5fe5d887eb8e75f5ce4a1b
-  ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+  ms.openlocfilehash: b5f55848e81b6faf2c8e2ab21ea32ee134e730bf
+  ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/23/2018
+  ms.lasthandoff: 02/13/2018
 abstract:
-  description: "参考快速入门与教程了解如何准备数据以及生成和部署模型。 借助 Azure 机器学习的预览功能，可以使用任何 Python 工具和库生成、部署和管理机器学习与 AI 模型。 可以使用 Azure 中的各种数据与计算服务来存储和处理数据。"
+  description: "借助 Azure 机器学习服务（预览版），可以使用任何 Python 工具和库生成、部署和管理机器学习与 AI 模型。 可以使用 Azure 中的各种数据与计算服务来存储和处理数据。"
 sections:
 - title: "5 分钟快速入门"
   items:
   - type: paragraph
     text: "创建第一个机器学习项目"
   - type: list
-    style: icon48
+    style: unordered
     items:
-    - image:
-        src: /azure/machine-learning/media/index/i_machine-learning.svg
-      text: "安装和创建"
-      href: quickstart-installation
+    - html: "<a href=\"quickstart-installation.md\">安装和创建</a>"
 - title: "分步教程"
   items:
   - type: paragraph
@@ -39,10 +36,28 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"tutorial-classifying-iris-part-1\">逐步学习机器学习服务（预览）的基础知识</a>"
+    - html: "<a href=\"tutorial-classifying-iris-part-1\">逐步学习机器学习服务（预览版）的基础知识</a>"
     - html: "<a href=\"tutorial-classifying-iris-part-2\">在 Machine Learning Workbench 中使用 Iris 鲜花数据集生成模型</a>"
     - html: "<a href=\"tutorial-classifying-iris-part-3\">了解如何部署机器学习模型</a>"
     - html: "<a href=\"tutorial-bikeshare-dataprep\">使用 Azure Machine Learning Workbench 进行高级数据准备</a>"
+- title: "更多 Azure 机器学习技术"
+  items:
+  - type: paragraph
+    text: "Azure 机器学习中可用的其他技术："
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: "Azure 机器学习工作室"
+      href: /azure/machine-learning/studio/
+      image:
+        src: media/index/machine-learning-studio.svg
+        href: /azure/machine-learning/studio/
+    - title: "数据科学虚拟机"
+      href: /azure/machine-learning/data-science-virtual-machine/
+      image:
+        src: media/index/virtual-machines.svg
+        href: /azure/machine-learning/data-science-virtual-machine/
 - title: "引用"
   items:
   - type: list

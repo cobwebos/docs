@@ -1,8 +1,6 @@
-- name: 机器学习预览版功能
+- name: Azure 机器学习服务（预览版）
   href: preview/index.yml
-- name: 机器学习工作室
-  href: studio/index.md
+- name: Azure 机器学习工作室
+  href: studio/index.yml
 - name: 数据科学虚拟机
-  href: data-science-virtual-machine/overview.md
-- name: Team Data Science Process
-  href: team-data-science-process/overview.md
+  href: data-science-virtual-machine/index.yml

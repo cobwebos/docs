@@ -54,35 +54,37 @@
         - name: 将 AWS 实例迁移到 Azure
           href: tutorial-migrate-aws-to-azure.md
         - name: 将 Azure VM 迁移到另一区域
-          href: tutorial-migrate-azure-to-azure.md
+          href: azure-to-azure-tutorial-migrate.md
 - name: 概念
   items:
-    - name: Azure 到 Azure 体系结构
-      href: concepts-azure-to-azure-architecture.md
-    - name: VMware 到 Azure 体系结构
-      href: concepts-vmware-to-azure-architecture.md
-    - name: Hyper-V 到 Azure 体系结构
-      href: concepts-hyper-v-to-azure-architecture.md
-    - name: 物理机到 Azure 体系结构
-      href: concepts-physical-to-azure-architecture.md
-    - name: Hyper-V 到辅助站点体系结构
-      href: concepts-hyper-v-to-secondary-architecture.md
-    - name: Azure 到 Azure 支持矩阵
-      href: site-recovery-support-matrix-azure-to-azure.md
-    - name: VMware 到 Azure 支持矩阵
-      href: support-matrix-vmware-to-azure.md
-    - name: Hyper-V 到 Azure 支持矩阵
-      href: support-matrix-hyper-v-to-azure.md
-    - name: 本地到 Azure 支持矩阵
-      href: site-recovery-support-matrix-to-azure.md
-    - name: 本地到辅助站点支持矩阵
-      href: site-recovery-support-matrix-to-sec-site.md
-    - name: 故障回复类型
-      href: concepts-types-of-failback.md
-    - name: 工作负荷的灾难恢复
-      href: site-recovery-workload.md
-    - name: 迁移到 Azure
-      href: site-recovery-migrate-to-azure.md
+    - name: 体系结构
+      items:
+        - name: Azure 到 Azure 体系结构
+          href: azure-to-azure-architecture.md
+        - name: VMware 到 Azure 体系结构
+          href: concepts-vmware-to-azure-architecture.md
+        - name: Hyper-V 到 Azure 体系结构
+          href: concepts-hyper-v-to-azure-architecture.md
+        - name: 物理机到 Azure 体系结构
+          href: concepts-physical-to-azure-architecture.md
+        - name: Hyper-V 到辅助站点体系结构
+          href: concepts-hyper-v-to-secondary-architecture.md
+    - name: 支持要求矩阵
+      items:
+        - name: Azure 到 Azure 支持矩阵
+          href: azure-to-azure-support-matrix.md
+        - name: VMware 到 Azure 支持矩阵
+          href: support-matrix-vmware-to-azure.md
+        - name: Hyper-V 到 Azure 支持矩阵
+          href: support-matrix-hyper-v-to-azure.md
+        - name: 本地到 Azure 支持矩阵
+          href: site-recovery-support-matrix-to-azure.md
+        - name: 本地到辅助站点支持矩阵
+          href: site-recovery-support-matrix-to-sec-site.md
+        - name: 工作负荷的灾难恢复
+          href: site-recovery-workload.md
+        - name: 迁移到 Azure
+          href: site-recovery-migrate-to-azure.md
     - name: 基于角色的访问权限
       href: site-recovery-role-based-linked-access-control.md
     - name: 常见问题
@@ -92,9 +94,9 @@
     - name: 网络
       items:
         - name: 设置网络以进行 Azure VM 灾难恢复（预览版）
-          href: site-recovery-azure-to-azure-networking-guidance.md
+          href: azure-to-azure-about-networking.md
         - name: 设置网络映射以进行 Azure VM 灾难恢复（预览版）
-          href: site-recovery-network-mapping-azure-to-azure.md
+          href: azure-to-azure-network-mapping.md
         - name: 保留 IP 以用于 Azure VM 灾难恢复（预览版）
           href: site-recovery-retain-ip-azure-vm-failover.md
         - name: 准备网络映射以将 Hyper-V VM 复制到 Azure
@@ -108,7 +110,7 @@
     - name: 灾难恢复
       items:
         - name: 迁移到 Azure 之后的 Azure VM 灾难恢复
-          href: site-recovery-azure-to-azure-after-migration.md
+          href: azure-to-azure-replicate-after-migration.md
         - name: 物理服务器到 Azure 的灾难恢复
           href: tutorial-physical-to-azure.md
         - name: 将 Hyper-V VM 复制到辅助站点
@@ -142,7 +144,7 @@
         - name: 在故障转移后重新保护计算机
           items:
             - name: 重新保护已从 Azure 次要区域故障转移到主要区域的计算机
-              href: site-recovery-how-to-reprotect-azure-to-azure.md
+              href: azure-to-azure-how-to-reprotect.md
             - name: 从 Azure 到本地进行重新保护
               href: site-recovery-how-to-reprotect.md
         - name: 从 Azure 进行故障回复
@@ -153,6 +155,12 @@
               href: site-recovery-failback-from-azure-to-hyper-v.md
         - name: 安装用于故障回复的 Linux 主目标服务器
           href: site-recovery-how-to-install-linux-master-target.md
+    - name: 迁移
+      items:
+        - name: 关于迁移
+          href: site-recovery-migrate-to-azure.md
+        - name: 在迁移到到另一个区域后复制 Azure VM
+          href: azure-to-azure-replicate-after-migration.md
     - name: 容量和缩放
       items:
         - name: 为将 VMware 复制到 Azure 规划容量
@@ -210,7 +218,7 @@
         - name: 启用复制
           items:
             - name: 启用 Azure 到 Azure 复制
-              href: site-recovery-replicate-azure-to-azure.md
+              href: azure-to-azure-how-to-enable-replication.md
             - name: 启用 VMware 到 Azure 复制
               href: site-recovery-replicate-vmware-to-azure.md
         - name: 为 VMware 部署移动服务
@@ -272,7 +280,7 @@
     - name: 监视和故障排除
       items:
         - name: Azure 到 Azure 复制问题
-          href: site-recovery-azure-to-azure-troubleshoot-errors.md
+          href: azure-to-azure-troubleshoot-errors.md
         - name: 本地到 Azure 复制问题
           href: site-recovery-vmware-to-azure-protection-troubleshoot.md
         - name: 移动服务问题
