@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 18a671fe49b57dda3df33b58a464b300e574376f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cdeec60b4935fda58e2657a215826d8355c81664
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>之前开始使用 Azure 堆栈上的 App Service
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
@@ -156,22 +156,22 @@ Azure 应用程序服务要求使用文件服务器。 对于生产部署，文�
 当你使用 Azure 资源管理器模板时，已经创建了用户。
 
 1. 运行以下命令以创建 FileShareOwner 和 FileShareUser 帐户。 替换`<password>`与你自己的值。
-``` DOS
-net user FileShareOwner <password> /add /expires:never /passwordchg:no
-net user FileShareUser <password> /add /expires:never /passwordchg:no
-```
+    ``` DOS
+    net user FileShareOwner <password> /add /expires:never /passwordchg:no
+    net user FileShareUser <password> /add /expires:never /passwordchg:no
+    ```
 2. 设置为永不过期通过运行以下 WMIC 命令的帐户的密码：
-``` DOS
-WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
-WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
-```
+    ``` DOS
+    WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
+    WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
+    ```
 3. 创建本地组 FileShareUsers 和 FileShareOwners，并向其中添加第一步中的帐户：
-``` DOS
-net localgroup FileShareUsers /add
-net localgroup FileShareUsers FileShareUser /add
-net localgroup FileShareOwners /add
-net localgroup FileShareOwners FileShareOwner /add
-```
+    ``` DOS
+    net localgroup FileShareUsers /add
+    net localgroup FileShareUsers FileShareUser /add
+    net localgroup FileShareOwners /add
+    net localgroup FileShareOwners FileShareOwner /add
+    ```
 
 ### <a name="provision-the-content-share"></a>设置内容共享
 
