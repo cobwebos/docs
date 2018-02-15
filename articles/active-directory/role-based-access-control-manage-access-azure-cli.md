@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 01/29/2018
 ms.author: andredm
 ms.reviewer: rqureshi
-ms.openlocfilehash: b99264eb69f115db6e334b6aceae6ed897202d56
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f9ca915718cb9016b82ba6a415715c5527657dad
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>使用 Azure 命令行接口管理基于角色的访问控制
 > [!div class="op_single_selector"]
@@ -27,9 +27,14 @@ ms.lasthandoff: 12/21/2017
 > * [REST API](role-based-access-control-manage-access-rest.md)
 
 
-可以使用 Azure 门户中基于角色的访问控制 (RBAC) 和 Azure 资源管理器 API，精细地管理对订阅和资源的访问。 使用此功能，可以通过在特定范围内为 Active Directory 用户、组或服务主体分配某些角色来向其授予访问权限。
+可以使用 Azure 门户中基于角色的访问控制 (RBAC) 和 Azure 资源管理器 API，精细地管理对订阅和资源的访问。 使用此功能，可以通过在特定范围内为 Active Directory 用户、组或服务主体分配某些角色来向其授予访问权限。 
 
-在使用 Azure 命令行接口 (CLI) 管理 RBAC 之前，必须具备以下先决条件：
+> [!NOTE] 
+> 目前最新的角色文档适用于 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/role?view=azure-cli-latest)。
+
+
+ 
++> [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/role?view=azure-cli-latest) 的最新角色文档 在使用 Azure 命令行接口 (CLI) 管理 RBAC 之前，必须具备以下先决条件：
 
 * Azure CLI 0.8.8 版或更高。 要安装最新版本并将其与 Azure 订阅相关联，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)。
 * Azure CLI 中的 Azure 资源管理器。 转到[将 Azure CLI 用于 Resource Manager](../xplat-cli-azure-resource-manager.md) 了解详细信息。

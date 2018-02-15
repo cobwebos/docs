@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/19/2018
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: b315bd77a47a6f106c5768da56828a5169de5fe9
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: dba17a860dffd87b3784c53cf288b7a312c77e33
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>将大数据流式传输到数据仓库
 
@@ -74,7 +74,7 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
 
 ## <a name="deploy-the-infrastructure"></a>部署基础结构
 
-为了缩短本文的篇幅，请使用资源管理器模板部署所需的基础结构。 若要查看已部署的资源，请查看[模板](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json)。 预览版的事件网格支持“westus2”和“westcentralus”区域。 对资源组位置使用其中一个区域。
+为了缩短本文的篇幅，请使用资源管理器模板部署所需的基础结构。 若要查看已部署的资源，请查看[模板](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json)。 请使用[支持的区域](overview.md)之一作为资源组位置。
 
 对于 Azure CLI，请使用：
 

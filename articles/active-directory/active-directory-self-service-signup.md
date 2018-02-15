@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory 中的自助服务或病毒性注册 | Microsoft Docs"
+title: "Azure Active Directory 中的自助服务或试用注册 | Microsoft Docs"
 description: "在 Azure Active Directory (Azure AD) 租户中使用自助服务注册"
 services: active-directory
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2017
+ms.date: 01/28/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 2b41bb1b72cc773c29d464228c3177fbd1d9f5e0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9f2b541d5028596f9beabc7fd82001b4c9dacad4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>什么是 Azure Active Directory 的自助服务注册？
 此文章介绍自助服务注册及如何在 Azure Active Directory (Azure AD) 中支持自助服务注册的相关内容。 若要从非托管 Azure AD 租户处接管域名，请参阅[以管理员身份接管非托管目录](domains-admin-takeover.md)。
@@ -46,7 +46,12 @@ ms.lasthandoff: 12/11/2017
 管理员可以使用以下 Azure AD cmdlet Set-MsolCompanySettings 参数配置这些功能：
 
 * **AllowEmailVerifiedUsers** 控制用户是否可以创建或加入非托管目录。 如果将该参数设置为 $false，则电子邮件验证的用户不可以加入目录。
-* AllowAdHocSubscriptions 控制用户执行自助服务注册的能力。 如果将该参数设置为 $false，则用户不可以执行自助服务注册。
+* AllowAdHocSubscriptions 控制用户执行自助服务注册的能力。 如果将该参数设置为 $false，则用户不可以执行自助服务注册。 
+  
+  > [!NOTE]
+  > Flow 和 PowerApps 试用注册不由 **AllowAdHocSubscriptions** 设置控制。 有关详细信息，请参阅以下文章：
+  > * [如何禁止现有用户开始使用 Power BI？](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
+  > * [组织中 Flow 问答](https://docs.microsoft.com/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>这些控制方式如何配合工作？
 可以结合使用这两个参数，从而实现对自助服务注册更精确的控制。 例如，以下命令允许用户执行自助服务注册，但前提是这些用户已在 Azure AD 中拥有一个帐户（换言之，需要先创建电子邮件验证帐户的用户无法执行自助服务注册）：

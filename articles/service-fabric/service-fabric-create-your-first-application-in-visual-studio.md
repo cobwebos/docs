@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: bdabdbbb3037f3325c107a4e6148873a923b4ded
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 2ecb8f8068043936d00f2c9752666490137414e3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>创建你的第一个 C# Service Fabric 有状态 Reliable Services 应用程序
 
@@ -81,6 +81,17 @@ Visual Studio 会创建应用程序项目和有状态服务项目，并在解决
 应用程序启动后，Visual Studio 会自动显示诊断事件查看器，可以在其中查看来自服务的跟踪输出。
    
 ![诊断事件查看器][5]
+
+>[!NOTE]
+>事件应该在诊断事件查看器中自动开始跟踪，但如果需要手动对其进行配置，请先打开位于 **MyStatefulService** 项目中的 `ServiceEventSource.cs` 文件。 复制 `ServiceEventSource` 类顶部的 `EventSource` 属性的值。 在下面的示例中，事件源称为 `"MyCompany-MyApplication-MyStatefulService"`，此项遇到你的情况可能有所不同。
+>
+>![查找服务事件源名称][service-event-source-name]
+>
+>接下来，单击位于“诊断事件查看器”选项卡中的齿轮图标，打开“ETW 提供程序”对话框。 将刚复制的事件源的名称粘贴到“ETW 提供程序”输入框中。 然后单击“应用”按钮。 这会自动启动跟踪事件。
+>
+>![设置诊断事件源名称][setting-event-source-name]
+>
+>此时会看到事件出现在“诊断事件”窗口。
 
 所用的有状态服务模板显示在 **MyStatefulService.cs** 的 `RunAsync` 方法中递增的计数器值。
 
@@ -146,3 +157,5 @@ Visual Studio 会创建应用程序项目和有状态服务项目，并在解决
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 [switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
 [cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
+[service-event-source-name]: ./media/service-fabric-create-your-first-application-in-visual-studio/event-source-attribute-value.png
+[setting-event-source-name]: ./media/service-fabric-create-your-first-application-in-visual-studio/setting-event-source-name.png

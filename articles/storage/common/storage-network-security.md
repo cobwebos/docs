@@ -1,5 +1,5 @@
 ---
-title: "配置 Azure 存储防火墙和虚拟网络（预览版）| Microsoft Docs"
+title: "配置 Azure 存储防火墙和虚拟网络 | Microsoft Docs"
 description: "配置存储帐户的分层网络安全性。"
 services: storage
 documentationcenter: 
@@ -13,20 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: d29f2d180df93f45202e881336e492c45587b276
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: fc13b7cc164c948f25a6908bdf71124a5be02fb9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>配置 Azure 存储防火墙和虚拟网络（预览版）
+# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 Azure 存储提供一种分层安全模型，用于保护存储帐户，使其仅可供一组特定的许可网络访问。  配置网络规则时，只有来自许可网络的应用程序才能访问存储帐户。  从许可网络进行调用时，应用程序仍需获得正确的授权（有效的访问密钥或 SAS 令牌）才能访问存储帐户。
 
-## <a name="preview-availability-and-support"></a>预览版的可用性与支持
-存储防火墙和虚拟网络为预览版。  此功能当前可用于所有 Azure 公有云区域中的新存储帐户或现有存储帐户。
-
-> [!NOTE]
-> 预览期间不支持生产工作负荷。
+> [!IMPORTANT]
+> 启用存储帐户的防火墙规则将阻止访问传入的数据请求，包括来自其他 Azure 服务的数据。  这包括使用门户、写入日志等。对于参与的服务，可通过以下的[异常](#Exceptions)部分重新启用功能。  若要访问门户，需要从已设置的可信边界（IP 或 VNet）内的计算机进行访问。
 >
 
 ## <a name="scenarios"></a>方案
@@ -55,9 +52,6 @@ Azure 存储提供一种分层安全模型，用于保护存储帐户，使其�
 
 #### <a name="azure-portal"></a>Azure 门户
 1. 导航到要保护的存储帐户。  
-> [!NOTE]
-> 确保存储帐户位于公共预览版支持的区域之一。
->
 
 2. 单击名为“防火墙和虚拟网络”的设置菜单。
 3. 若要默认拒绝访问，请选择允许从“所选网络”进行访问。  若要允许来自所有网络的流量，请选择允许从“所有网络”进行访问。

@@ -3,7 +3,7 @@ title: "使用 Linux VM 上用户分配的 MSI 访问 Azure 存储"
 description: "本教程介绍使用 Linux VM 上用户分配的托管服务标识 (MSI) 访问 Azure 存储的过程。"
 services: active-directory
 documentationcenter: 
-author: bryanLa
+author: daveba
 manager: mtillman
 editor: arluca
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/15/2017
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 91fe06825d1db586b715617241b0ca39115414c0
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 1d8641fef3a60ffcde6d0a4ac7e30d4e6cd3b169
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-storage"></a>使用 Linux VM 上用户分配的托管服务标识 (MSI) 访问 Azure 存储
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/12/2018
 > * 向 MSI 授予对 Azure 存储实例的访问权限
 > * 使用用户分配的 MSI 标识获取访问令牌，并用它访问 Azure 存储
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
 
@@ -40,8 +40,8 @@ ms.lasthandoff: 01/12/2018
 
 若要运行本教程中的 CLI 脚本示例，你有两种选择：
 
-- 从 Azure 门户或者通过每个代码块右上角的“试用”按钮使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
-- 如果希望使用本地 CLI 控制台，可以[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.23 或更高版本）。
+- 从 Azure 门户中或者通过每个代码块右上角的“试用”按钮使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
+- 如果喜欢使用本地 CLI 控制台，请[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.23 或更高版本）。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -134,10 +134,10 @@ az vm assign-identity -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscripti
 
 使用 MSI，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。 在本教程中，将使用 Azure 存储。
 
-首先，向 MSI 标识授予对 Azure 存储容器的访问权限。 在此例中，使用前面创建的容器。 根据环境适当地更新 `<MSI PRINCIPALID>`、`<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、`<STORAGE ACCOUNT NAME>` 和 `<CONTAINER NAME>` 的值。 将 `<CLIENT ID>` 替换为在[创建用户分配的 MSI](#create-a-user-assigned-msi) 中由 `az identity create` 命令返回的 `clientId` 属性：
+首先，向 MSI 标识授予对 Azure 存储容器的访问权限。 在此例中，使用前面创建的容器。 根据环境的需要更新 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、`<STORAGE ACCOUNT NAME>` 和 `<CONTAINER NAME>` 的值。 此外，将 `<MSI PRINCIPALID>` 替换为在[创建用户分配的 MSI](#create-a-user-assigned-msi) 中由 `az identity create` 命令返回的 `principalId` 属性：
 
 ```azurecli-interactive
-az role assignment create --assignee <MSI PRINCIPALID> --role ‘Reader’ --scope "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/blobServices/default/containers/<CONTAINER NAME>"
+az role assignment create --assignee <MSI PRINCIPALID> --role 'Reader' --scope "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/blobServices/default/containers/<CONTAINER NAME>"
 ```
 
 响应包括所创建的角色分配的详细信息：

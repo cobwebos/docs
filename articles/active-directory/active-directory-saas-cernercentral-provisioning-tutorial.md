@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2017
+ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: f7e6d4275940174074c1758a5b73030e0b3f107c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fe24db4e573ef9c9daf34bb8069c7a1e57616ffb
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-cerner-central-for-automatic-user-provisioning"></a>教程：为 Cerner Central 配置自动用户预配
+# <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>教程：为 Cerner Central 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Cerner Central 中的用户名单以及取消其预配而需要在 Cerner Central 和 Azure AD 中执行的步骤。 
 
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 *   一个 Azure Active Directory 租户
 *   Cerner Central 租户 
@@ -37,7 +37,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="assigning-users-to-cerner-central"></a>将用户分配到 Cerner Central
 
-Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中的应用程序的用户和组。 
+Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中应用程序的用户和组。 
 
 在配置和启用预配服务前，应确定 Azure AD 中的哪些用户和/或组表示需要访问 Cerner Central 的用户。 确定后，可以按照此处的说明将这些用户分配到 Cerner Central：
 
@@ -113,13 +113,13 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 10. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
-11. 单击“保存” 。 
+11. 单击“ **保存**”。 
 
 12. 在“属性映射”部分中，查看要从 Azure AD 同步到 Cerner Central 的用户和组属性。 选为“匹配”属性的特性将用于匹配 Cerner Central 中的用户帐户和组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
 13. 若要为 Cerner Central 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-14. 单击“保存” 。 
+14. 单击“ **保存**”。 
 
 这将开始对在“用户和组”部分中分配给 Cerner Central 的任何用户和/或组进行初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 20 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务对 Cerner Central 应用执行的所有操作。
 
@@ -130,7 +130,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 * [Cerner Central：使用 Azure AD 发布标识数据](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [教程：使用 Azure Active Directory 为 Cerner Central 配置单一登录](active-directory-saas-cernercentral-tutorial.md)
 * [管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 ## <a name="next-steps"></a>后续步骤
 * [了解如何查看日志并获取有关预配活动的报表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)。

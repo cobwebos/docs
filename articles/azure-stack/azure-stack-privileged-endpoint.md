@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7f95014ac9186815d8ea0c7d271e5c6e19252d73
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 34ad4d7038202bd5efa2b3c210571268a39bf278
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>在 Azure 堆栈中使用的特权的终结点
 
@@ -78,8 +78,6 @@ PEP 记录每个操作 （和其相应的输出） 在 PowerShell 会话中执�
       - **密码**： 输入 AzureStackAdmin 域管理员帐户安装期间提供的相同密码。
     
 3.  连接后，提示将更改为**[*IP 地址或 ERCS VM 名称*]: PS >**或**[azs ercs01]: PS >**，取决于环境。 从此处，运行`Get-Command`若要查看可用的 cmdlet 的列表。
-
-    ![Get-command cmdlet 的可用命令的输出显示列表](media/azure-stack-privileged-endpoint/getcommandoutput.png)
 
     其中许多 cmdlet 旨在仅供 （例如与数据中心集成相关的 cmdlet) 的集成的系统环境变量。 在 ASDK，验证以下 cmdlet:
 
@@ -169,5 +167,5 @@ PEP 记录每个操作 （和其相应的输出） 在 PowerShell 会话中执�
 
 脚本日志文件已成功传输到文件共享后，你会自动从 PEP 删除它们。 如果你使用的 cmdlet 关闭 PEP 会话`Exit-PSSession`或`Exit`，或只需关闭 PowerShell 控制台，脚本日志不传输到的文件共享。 它们保留在 PEP 中。 下次运行`Close-PrivilegedEndpoint`和包含文件共享，从上一个脚本日志还将传输会话。
 
-## <a name="next-steps"></a>接下来的步骤
+## <a name="next-steps"></a>后续步骤
 [Azure 堆栈诊断工具](azure-stack-diagnostics.md)

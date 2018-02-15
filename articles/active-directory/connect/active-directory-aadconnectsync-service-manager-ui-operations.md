@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91210edc3306b834cbd68f0f028845a7f36dd0b5
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 309a4ca2d5ef929bb50ed899f24709c062d7db29
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>使用“Sync Service Manager 操作”选项卡
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/18/2018
 
 | 状态 | 注释 |
 | --- | --- |
-| stopped-* |运行无法完成。 例如，如果远程系统已关闭且无法访问。 |
+| stopped-\* |运行无法完成。 例如，如果远程系统已关闭且无法访问。 |
 | stopped-error-limit |有 5,000 个以上的错误。 运行因错误数量过多而自动停止。 |
 | completed-\*-errors |运行已完成，但发生应调查的错误（数量少于 5,000 个）。 |
 | completed-\*-warnings |运行已完成，但某些数据并未处于预期的状态。 如果遇到错误，则此消息通常只是一种征兆。 在解决错误之前，不应该调查警告。 |

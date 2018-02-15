@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
-ms.author: sethm; babanisa
-ms.openlocfilehash: 236d49b7d8104b410e2a4c768820c3c9ebcdce96
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/30/2018
+ms.author: sethm
+ms.openlocfilehash: 9b7be70d726edfa9dbda3719d431e532106724b6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="what-is-event-hubs"></a>什么是事件中心？
 
@@ -44,7 +44,7 @@ Azure 事件中心是高度可缩放的数据流式处理平台和事件引入�
 
 ## <a name="event-hubs-features"></a>事件中心功能
 
-事件中心包含以下主要元素：
+事件中心的特点是以下主要元素：
 
 - [**事件生成者/发布者**](event-hubs-features.md#event-publishers)：向事件中心发送数据的实体。 事件通过 AMQP 1.0 或 HTTPS 发布。
 - [**捕获**](event-hubs-features.md#capture)：用于捕获事件中心流式处理数据，并将其存储在 Azure Blob 存储帐户中。

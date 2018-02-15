@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
-ms.openlocfilehash: 0d1e3c826e61b8dee264e1c01fd2d54ba7ebb636
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8186e86bd7a441fcefb0759d75ded6f063a4722f
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySql 数据库搭配 Azure 应用服务的 FAQ
 此 FAQ 解答了为 Azure Web 应用使用和购买 ClearDB MySQL 数据库的常见问题。
@@ -74,13 +74,13 @@ Azure Marketplace 无法供在阿塞拜疆、克罗地亚、挪威或波多黎�
 如有任何数据库相关问题，请联系 [ClearDB 支持人员](https://www.cleardb.com/developers/help/support)。 准备好向其提供 Azure 订阅信息。
 
 ## <a name="can-i-create-additional-users-for-my-cleardb-mysql-database-cluster-solution"></a>我是否可以为自己的 ClearDB MySQL 数据库群集解决方案创建其他用户？
-不能。 无法创建其他用户，但可以在自己的 ClearDB 数据库群集上创建其他数据库。  
+不会。 无法创建其他用户，但可以在自己的 ClearDB 数据库群集上创建其他数据库。  
 
 ## <a name="can-basicpro-series-databases-be-upgraded-in-place-similar-to-planetary-plans-today-on-cleardb-portal"></a>是否可以像 ClearDB 门户上目前的 Planetary 计划一样，就地升级 Basic/Pro 系列数据库？
 是，可以就地升级 Basic 系列数据库（Basic 60 到 Basic 500）。 可以就地升级 Pro 系列（Pro 125 到 Pro 1000），但 Pro 60 除外。 我们目前不支持升级 Pro 60 数据库。 
 
 ## <a name="when-i-migrate-my-resources-from-one-subscription-to-another-does-my-cleardb-mysql-database-get-migrated-as-well"></a>当我将资源从一个订阅迁移到另一个订阅时，我的 ClearDB MySQL 数据库也会跟着迁移吗？
-在订阅间迁移资源时，存在某些[限制](app-service/app-service-move-resources.md)。 ClearDB MySQL 数据库是第三方服务，因而在 Azure 订阅迁移期间不会被迁移。 如果在迁移 Azure 资源之前，没有管理 MySQL 数据库的迁移，ClearDB MySQL 数据库可能会被禁用。 首先，手动迁移数据库，再对 Web 应用程序执行 Azure 订阅迁移。 
+在订阅间迁移资源时，存在某些[限制](azure-resource-manager/resource-group-move-resources.md#app-service-limitations)。 ClearDB MySQL 数据库是第三方服务，因而在 Azure 订阅迁移期间不会被迁移。 如果在迁移 Azure 资源之前，没有管理 MySQL 数据库的迁移，ClearDB MySQL 数据库可能会被禁用。 首先，手动迁移数据库，再对 Web 应用程序执行 Azure 订阅迁移。 
 
 ## <a name="i-hit-the-spending-limit-on-my-subscription-i-removed-the-limit-and-my-app-service-is-online-however-the-database-is-not-accessible-how-do-i-re-enable-the-cleardb-database"></a>我单击了订阅中的支出限制。 我删除了该限制，而且我的应用服务处于联机状态，但数据库却无法访问。 我该如何重新启用 ClearDB 数据库？
 请联系 [ClearDB 支持部门](https://www.cleardb.com/developers/help/support)以重新启用该数据库。 向他们提供 Azure 订阅信息和数据库名称。

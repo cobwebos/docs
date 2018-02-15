@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 01/26/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 6b454ed7257e8d3f91e585cee2b559c54371fb15
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: f9d79746dcf307cf434ee78d9b1514f5886d9fb6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="configure-expiration-for-office-365-groups-preview"></a>配置 Office 365 组过期（预览版）
 
@@ -34,11 +34,21 @@ ms.lasthandoff: 01/05/2018
 
 有关如何下载和安装 Azure AD PowerShell cmdlet 的信息，请参阅 [Azure Active Directory PowerShell for Graph – 公共预览版 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)。
 
+## <a name="roles-and-permissions"></a>角色和权限
+以下角色可用于为 Azure AD 中的 Office 365 组配置和使用到期。
+
+角色 | 权限
+-------- | --------
+全局管理员角色<br>用户帐户管理员 | 可以创建、读取、更新或删除 Office 365 组到期策略设置
+用户 | 可以续订他们拥有的 Office 365 组<br>可以还原他们拥有的 Office 365 组
+
+有关还原已删除组的权限的详细信息，请参阅[还原已删除的 Office 365 组](active-directory-groups-restore-azure-portal.md)。
+
 ## <a name="set-group-expiration"></a>设置组过期
 
 1. 使用 Azure AD 租户中的全局管理员帐户打开 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
-2. 打开 Azure AD，选择“用户和组”。
+2. 选择“用户和组”。
 
 3. 选择“组设置”，然后选择“过期”以打开过期设置。
   
@@ -48,7 +58,7 @@ ms.lasthandoff: 01/05/2018
 
   * 设置组的生存期（天）。 可以从预设值中任选其一，或自定义一个值（应为 31 天或以上）。 
   * 指定当组没有所有者时续订和过期通知应发送到的电子邮件地址。 
-  * 选择会过期的 Office 365 组。 可以为所有 Office 365 组启用过期，从各 Office 365 组中进行选择，或选择“无”为所有组禁用过期。
+  * 选择会过期的 Office 365 组。 可以为所有 Office 365 组启用到期，可以选择仅为所选 Office 365 组启用，也可以选择“无”为所有组禁用到期。
   * 设置完成后，选择“保存”来保存设置。
 
 

@@ -1,5 +1,5 @@
 - name: 机器学习工作室文档
-  href: index.md
+  href: index.yml
 - name: 概述
   expanded: true
   items:

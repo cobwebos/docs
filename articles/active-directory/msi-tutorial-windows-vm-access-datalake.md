@@ -3,7 +3,7 @@ title: "如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure Data Lake 
 description: "本教程介绍如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure Data Lake Store。"
 services: active-directory
 documentationcenter: 
-author: skwan
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: ad9b92f11571b013f371eb36c0676afb3e9e5213
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 367008c41aee6ee31811f7fa7ee4be69120b8851
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>使用 Windows VM 托管服务标识 (MSI) 访问 Azure Data Lake Store
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 12/11/2017
 2. 单击要用于本教程的 Data Lake Store。
 3. 单击命令栏中的“数据资源管理器”。
 4. 选择此 Data Lake Store 的根文件夹。  单击命令栏中的“访问权限”。
-5. 单击“添加”。  在“选择”字段中，输入 VM 的名称，如“DevTestVM”。  单击以从搜索结果中选择 VM，然后单击“选择”。
+5. 单击 **“添加”**。  在“选择”字段中，输入 VM 的名称，如“DevTestVM”。  单击以从搜索结果中选择 VM，然后单击“选择”。
 6. 单击“选择权限”。  选择“读取”和“执行”，并以“仅为访问权限”的形式添加到“此文件夹”。  单击“确定” 。  权限应已成功添加。
 7. 关闭“访问权限”边栏选项卡。
 8. 本教程将新建一个文件夹。  单击命令栏中的“新建文件夹”并为新文件夹命名，如“TestFolder”。  单击“确定” 。

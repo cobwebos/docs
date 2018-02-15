@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: banders
-ms.openlocfilehash: e3ff3d9c667e00995daa2023a7137870247b9ab3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 49a78faa98bd7eb3da16dc069f65ef39b5e092af
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
-# <a name="application-insights-connector-solution-preview-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) 中 Application Insights 连接器解决方案（预览版）
+# <a name="application-insights-connector-management-solution-preview"></a>Application Insights 连接器管理解决方案（预览版） 
 
 ![Application Insights 符号](./media/log-analytics-app-insights-connector/app-insights-connector-symbol.png)
 
-可以借助 Application Insights 连接器解决方案诊断性能问题，以及了解用户在使用 [Application Insights](../application-insights/app-insights-overview.md) 监视的应用中执行的操作。 OMS 中提供了 Application Insights 中向开发人员显示的相同应用程序遥测数据视图。 但是，将 Application Insights 应用与 OMS 集成时，将操作和应用程序数据放在一个位置可以增强应用程序的可见性。 使用相同的视图有助于与应用开发人员协作。 常见的视图可帮助减少检测和解决应用程序与平台问题的时间。
+可以借助 Application Insights 连接器解决方案诊断性能问题，以及了解用户在使用 [Application Insights](../application-insights/app-insights-overview.md) 监视的应用中执行的操作。 Log Analytics 中提供了 Application Insights 中向开发人员显示的相同应用程序遥测数据视图。 但是，将 Application Insights 应用与 Log Analytics 集成时，将操作和应用程序数据放在一个位置可以增强应用程序的可见性。 使用相同的视图有助于与应用开发人员协作。 常见的视图可帮助减少检测和解决应用程序与平台问题的时间。
 
 使用该解决方案时，可以：
 
 - 在一个位置查看所有 Application Insights 应用，即使它们位于不同的 Azure 订阅中
 - 将基础结构数据与应用程序数据相关联
 - 在日志搜索中使用透视图可视化应用程序数据
-- 在 OMS 和 Azure 门户中通过 Log Analytics 数据透视 Application Insights 应用
+- 在 Log Analytics 和 Azure 门户中通过 Log Analytics 数据透视 Application Insights 应用
 
 ## <a name="connected-sources"></a>连接的源
 
@@ -63,8 +63,8 @@ ms.lasthandoff: 02/01/2018
 
 要记住的其他要点：
 
-- 只能将 Application Insights 应用链接到一个 OMS 工作区。
-- 只能将[标准或高级 Application Insights 资源](https://azure.microsoft.com/pricing/details/application-insights)链接到 OMS Log Analytics。 但是，可以使用 Log Analytics 的免费层。
+- 只能将 Application Insights 应用链接到一个 Log Analytics 工作区。
+- 只能将[标准或高级 Application Insights 资源](https://azure.microsoft.com/pricing/details/application-insights)链接到 Log Analytics。 但是，可以使用 Log Analytics 的免费层。
 
 ## <a name="management-packs"></a>管理包
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 02/01/2018
 
 ### <a name="pivot-to-an-app-in-the-azure-portal"></a>在 Azure 门户中透视应用
 
-使用 OMS 门户时，可以通过“Application Insights 连接器”边栏选项卡透视选定的 Application Insights 应用。 可以使用该解决方案作为高级监视平台来帮助排查应用问题。 在任何连接的应用程序中发现潜在问题时，可以在 OMS 搜索中深入到该问题，或者直接透视 Application Insights 应用。
+使用 OMS 门户时，可以通过“Application Insights 连接器”边栏选项卡透视选定的 Application Insights 应用。 可以使用该解决方案作为高级监视平台来帮助排查应用问题。 在任何连接的应用程序中发现潜在问题时，可以在 Log Analytics 搜索中深入到该问题，或者直接透视 Application Insights 应用。
 
 若要透视，请单击每行末尾显示的省略号 (**...**)，然后选择“在 Application Insights 中打开”。
 
@@ -140,7 +140,7 @@ ms.lasthandoff: 02/01/2018
 
 ### <a name="sample-corrected-data"></a>采样更正数据
 
-Application Insights 提供*[采样更正](../application-insights/app-insights-sampling.md)*来帮助减少遥测流量。 在 Application Insights 应用中启用采样时，可以减少 Application Insights 和 OMS 中存储的条目数量。 尽管“Application Insights 连接器”页面和透视图中会保持数据一致性，但对于自定义查询，应手动更正采样的数据。
+Application Insights 提供*[采样更正](../application-insights/app-insights-sampling.md)*来帮助减少遥测流量。 在 Application Insights 应用中启用采样时，可以减少 Application Insights 和 Log Analytics 中存储的条目数量。 尽管“Application Insights 连接器”页面和透视图中会保持数据一致性，但对于自定义查询，应手动更正采样的数据。
 
 下面日志搜索查询中的采样更正示例：
 
@@ -162,7 +162,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 - 页面视图 - 要使工作区接收页面视图，必须将应用配置为收集该信息。 有关详细信息，请参阅 [PageViews](../application-insights/app-insights-api-custom-events-metrics.md#page-views)。
 - 自定义事件 - 要使工作区接收自定义事件，必须将应用配置为收集该信息。 有关详细信息，请参阅 [TrackEvent](../application-insights/app-insights-api-custom-events-metrics.md#trackevent)。
 
-数据可用后，OMS 将从 Application Insights 接收该数据。
+数据可用后，Log Analytics 将从 Application Insights 接收该数据。
 
 ## <a name="output-data"></a>输出数据
 

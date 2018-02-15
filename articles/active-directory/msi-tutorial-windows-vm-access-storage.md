@@ -3,21 +3,21 @@ title: "使用 Windows VM MSI 访问 Azure 存储"
 description: "本教程逐步介绍如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure 存储。"
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: daveba
 manager: mtillman
-editor: bryanla
+editor: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: bryanla
-ms.openlocfilehash: 582890820f2d7cfb2ff92be0858d3221fea04fa8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: daveba
+ms.openlocfilehash: 535906e273b6d36045f5bc56d25b2085b2f71b9d
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>使用 Windows VM 托管服务标识通过访问密钥访问 Azure 存储
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 12/11/2017
 3. 输入存储帐户的名称，稍后将使用该名称。  
 4. **部署模型**和**帐户类型**应分别设置为“资源管理器”和“通用”。 
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。
-6. 单击“创建” 。
+6. 单击“创建”。
 
     ![新建存储帐户](media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

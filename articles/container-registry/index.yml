@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/26/2017
   ms.author: carolz
-  ms.openlocfilehash: d6f7bc786b4239f93983a039f2ae8b82ee90ed5b
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.openlocfilehash: ef8e3d5706dea2c32c1c98120dffb2ccf828461f
+  ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 02/09/2018
 abstract:
   description: "使用 Azure 容器注册表可以存储和管理所有类型的容器部署的映像。 参考这些快速入门、教程和示例了解如何使用 Azure 容器注册表。"
 sections:
@@ -61,6 +61,6 @@ sections:
     - title: "命令行"
       html: <p><a href="/cli/azure/acr">Azure CLI</a></p><p><a href="/powershell/module/azurerm.containerregistry">PowerShell</a></p>
     - title: "语言"
-      html: <p><a href="/dotnet/api/overview/azure/containerregistry">.NET</a></p><p><a href="/python/api/overview/azure/container-registry">Python</a></p><p><a href="/javascript/api/overview/azure/container-registry">Node.js</a></p>
+      html: <p><a href="/dotnet/api/overview/azure/containerregistry">.NET</a></p><p><a href="/python/api/overview/azure/container-registry">Python</a></p><p><a href="/java/api/overview/azure/containerregistry">Java</a></p><p><a href="/javascript/api/overview/azure/container-registry">Node.js</a></p>
     - title: REST
       html: "<p><a href=\"/rest/api/containerregistry\">REST API 参考</a></p><p><a href=\"/azure/templates/microsoft.containerregistry/registries\">资源管理器模板</a></p><p><a href=\"/azure/container-registry/container-registry-webhook-reference\">Webhook 架构</a></p>"

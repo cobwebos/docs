@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2017
 ms.author: magoedte
-ms.openlocfilehash: a897a97b9a1e259f5994a27b974eb5183fd1194b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 602b868073da6bd1f64099c0f344c9b492abaff0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="remove-azure-automation-hybrid-runbook-workers"></a>删除 Azure 自动化混合 Runbook 辅助角色
 
-可以 
+利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接在托管角色的计算机上运行 Runbook，也可以对环境中的资源运行 Runbook，从而管理这些本地资源。 本文将指导你完成从本地计算机中删除混合辅助角色的步骤。
 
 ## <a name="removing-hybrid-runbook-worker"></a>删除混合 Runbook 辅助角色
 
@@ -40,8 +40,8 @@ ms.lasthandoff: 12/14/2017
 要删除某个组，首先需要使用前面所示的过程，从每台计算机中删除属于该组的混合 Runbook 辅助角色，然后执行以下步骤删除该组。  
 
 1. 在 Azure 门户中打开自动化帐户。
-1. 选择“混合辅助角色组”磁贴，并在“混合辅助角色组”边栏选项卡中选择要删除的组。  在选择特定的组之后，会显示“混合辅助角色组”属性边栏选项卡。<br> ![混合 Runbook 辅助角色组边栏选项卡](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)   
-1. 在所选组的属性边栏选项卡中，单击“删除”。  此时会显示一条消息请求确认此操作，如果确定要继续，请选择“是”。<br> ![确认删除组对话框](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)<br> 此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。 
+1. 在“流程自动化”下选择“混合辅助角色组”。 选择要删除的组。  在选择特定的组之后，会显示“混合辅助角色组”属性边栏选项卡。<br> ![混合 Runbook 辅助角色组边栏选项卡](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)   
+2. 在所选组的属性边栏选项卡中，单击“删除”。  此时会显示一条消息请求确认此操作，如果确定要继续，请选择“是”。<br> ![确认删除组对话框](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)<br> 此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。 
 
 ## <a name="next-steps"></a>后续步骤
 

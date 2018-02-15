@@ -145,6 +145,9 @@
             - name: 使用 Ambari REST API
               href: ../hdinsight-hadoop-manage-ambari-rest-api.md
               maintainContext: true
+        - name: 缩放 HDInsight 群集
+          href: ../hdinsight-scaling-best-practices.md
+          maintainContext: true
         - name: 管理 HDInsight 群集的日志
           href: ../hdinsight-log-management.md
           maintainContext: true

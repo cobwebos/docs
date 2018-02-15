@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: raymondl;garye;v-donglo
-ms.openlocfilehash: c56ce659766536772d203d0366ef6b53e544a82b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: raymondl;garye
+ms.openlocfilehash: d228021564cdfe5c898c67cce0038b3ec36d014b
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="retrain-machine-learning-models-programmatically"></a>以编程方式重新训练机器学习模型
 在本演练中，学习如何使用 C# 和机器学习批处理执行服务以编程方式重新训练 Azure 机器学习 Web 服务。
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 有关重新训练过程的概述，请参阅[重新训练机器学习模型](retrain-machine-learning-model.md)。
 
-如果想从基于现有的新 Azure Resource Manager 的 Web 服务开始，请参阅[重新训练现有预测 Web 服务](retrain-existing-resource-manager-based-web-service.md)。
+如果想从基于现有的新 Azure 资源管理器的 Web 服务开始，请参阅[重新训练现有预测 Web 服务](retrain-existing-resource-manager-based-web-service.md)。
 
 ## <a name="create-a-training-experiment"></a>创建训练实验
 对于此示例，将使用来自 Microsoft Azure 机器学习示例中的“示例 5：训练、测试、评估二元分类：成人数据集”。 
@@ -54,7 +54,7 @@ ms.lasthandoff: 10/11/2017
 接下来创建预测实验。
 
 1. 在实验画布的底部，单击“**设置 Web 服务**”，并选择“**预测 Web 服务**”。 这会将该模型保存为训练模型，并将添加 Web 服务输入和输出模块。 
-2. 单击“**运行**”。 
+2. 单击“运行”。 
 3. 实验运行完毕后，单击“部署 Web 服务 [经典]”或“部署 Web 服务 [全新] ”。
 
 > [!NOTE] 
@@ -67,7 +67,7 @@ ms.lasthandoff: 10/11/2017
 2. 在“搜索实验项目”的搜索框中，键入 Web 服务。 
 3. 将 *Web 服务输入*模块拖到实验画布，并将其输出连接到*清理缺失数据*模块。  这可确保重新训练数据的处理方式与原始训练数据相同。
 4. 将两个 *Web 服务输出*模块拖到实验画布。 将*训练模型*模块的输出连接到一个画布，将*评估模型*模块的输出连接到另一个画布。 **训练模型**的 Web 服务输出为我们提供了新的训练模型。 附加到**评估模型**的输出将返回该模块的输出，这是性能结果。
-5. 单击“**运行**”。 
+5. 单击“运行”。 
 
 接下来，必须将训练实验部署为 Web 服务，该服务将生成训练模型和模型评估结果。 要实现此目的，接下来的操作将依赖于是要使用经典 Web 服务还是新的 Web 服务。  
 
@@ -119,7 +119,7 @@ BES 示例代码将本地驱动器（例如，“C:\temp\CensusIpnput.csv”）�
 要完成此任务，必须从经典 Azure 门户和代码的更新对应值中，检索用于存储帐户的存储帐户名称、密钥和容器信息。 
 
 1. 登录到经典 Azure 门户。
-2. 在左侧导航列中，单击“**存储**”。
+2. 在左侧导航列中，单击“存储”。
 3. 从存储帐户列表中，选择一个来存储重新训练模型。
 4. 在该页的底部，单击“**管理访问密匙**”。
 5. 复制并保存“**主访问密匙**”，并关闭对话框。 

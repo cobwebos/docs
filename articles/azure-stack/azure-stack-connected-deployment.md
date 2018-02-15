@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: a2d4efc3a3e1480de71528144ae3f025f4879f07
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: def9d5381144026b5ad0e8a076edd3c0692a08f4
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>规划 Azure 堆栈的决策的 azure 连接的部署集成系统
-您已决定后[如何将将 Azure 堆栈集成到你的混合云环境](azure-stack-deployment-decisions.md)，然后才能最终完成 Azure 堆栈的部署决策。
+您已决定后[如何将将 Azure 堆栈集成到你的混合云环境](azure-stack-connection-models.md)，然后才能最终完成 Azure 堆栈的部署决策。
 
 连接到 Azure 的部署 Azure 堆栈意味着只能用于为标识存储有 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS)。 你还可以选择从任一计费模型： 为你的使用付费或基于容量的。 已连接的部署是默认选项，因为允许客户获得最大值超出了 Azure 堆栈，特别是对于涉及 Azure 和 Azure 堆栈的混合云方案。 
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/01/2018
 如果你想要使用您自己的标识存储，例如你公司的 Active Directory，为服务管理员帐户，请选择此选项。  
 
 ## <a name="choose-a-billing-model"></a>选择计费模型
-你可以任选一个**作为你的使用付费**或**容量**计费模型。 为你的使用付费计费模型部署必须能够通过与 Azure 的连接每 30 天至少一次报告使用情况，因此，如果连接将不可用，则容量计费模型是唯一的选项。 
+你可以任选一个**作为你的使用付费**或**容量**计费模型。 为你的使用付费计费模型部署必须能够通过与 Azure 的连接每 30 天至少一次报告使用情况。 因此，作为你的使用付费计费模型是仅可用于连接的部署。  
 
 ### <a name="pay-as-you-use"></a>为你的使用付费
 使用作为你的使用付费计费模型，到 Azure 订阅计费使用情况。 你只需付费时使用的 Azure 堆栈服务。 如果这是你决定的模型，你将需要 Azure 订阅和与该订阅关联的帐户 ID (例如， serviceadmin@contoso.onmicrosoft.com)。 支持 EA、 CSP 和 CSL 订阅。 使用情况报告期间配置[Azure 堆栈注册](azure-stack-registration.md)。

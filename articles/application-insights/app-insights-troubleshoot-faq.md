@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 9f6cf019d681ce6e844481ca58de1ff472b3d32c
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ed10b364a809c519fe9fe49e019df22598b8c04e
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -152,7 +152,7 @@ ms.lasthandoff: 01/03/2018
 
 如果代码发送了此类数据，则有可能。 如果堆栈跟踪中的变量包括 PII，也可能发生这种情况。 开发团队应进行风险评估，确保妥善处理 PII。 [深入了解数据保留和隐私](app-insights-data-retention-privacy.md)。
 
-客户端 Web 地址的最后一个八进制数在门户引入后始终设置为 0。
+**所有**八进制数的客户端 web 地址始终设置为 0，查找异地位置属性。
 
 ## <a name="my-ikey-is-visible-in-my-web-page-source"></a>在网页源中可见我的 iKey。 
 

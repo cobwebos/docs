@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 6febd3f12248a96f54415a91fcf0513ef7412e78
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7ee5a720b12152c27a96ee18f1b11e5fc03a531a
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="derive-column-by-example-transformation"></a>“按示例派生列”转换
 
@@ -67,6 +67,10 @@ Workbench 分析数据，并尝试识别应由用户审核的边缘事例。 分
 在高级模式下，可以通过双击网格中的行来添加任何行作为示例行。 将一行复制为示例行后，还可以编辑源列中的数据以创建合成示例。 如此一来，可以添加示例数据中当前不存在的事例。
 
 用户可以通过单击转换编辑器中的链接在“基本模式”和“高级模式”之间切换。
+
+### <a name="transform-editor-send-feedback"></a>转换编辑器：发送反馈
+
+单击“发送反馈”链接，打开“反馈”对话框，其中注释框已预填充所提供的示例用户。 用户应查看注释框中的内容并提供更多详细信息，帮助我们了解问题。 如果用户不希望与 Microsoft 共享数据，则应在单击“发送反馈”按钮之前删除预填充的示例数据。 
 
 ### <a name="editing-existing-transformation"></a>编辑现有的转换
 

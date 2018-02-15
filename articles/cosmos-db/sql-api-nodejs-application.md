@@ -15,11 +15,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: mimig
-ms.openlocfilehash: 043de0e8a934a2fd92522eeb70261203afac180e
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 2c64c1dfa558576b47f47c718a80d46ad6687e6e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="_Toc395783175"></a>使用 Azure Cosmos DB 生成 Node.js Web 应用程序
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ ms.lasthandoff: 12/18/2017
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Node.js][Node.js] v0.10.29 或更高版本。
+* [Node.js][Node.js] v0.10.29 或更高版本。 我们建议使用 Node.js 6.10 或更高版本。
 * [Express 生成器](http://www.expressjs.com/starter/generator.html)（可以通过 `npm install express-generator -g` 安装）
 * [Git][Git]。
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 12/18/2017
    
     ![了解 Node.js - 浏览器窗口中 Hello World 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
-    然后，要停止应用程序，可在终端窗口中按 CTRL+C 并单击“y”终止批处理作业。
+    然后，要停止应用程序，可在终端窗口中按 CTRL+C 并仅在 Windows 计算机上单击“y”终止批处理作业。
 
 ## <a name="_Toc395783179"></a>步骤 3：安装其他模块
 **package.json** 文件是在项目的根目录中创建的文件之一。 此文件包含一系列其他模块，它们是 Node.js 应用程序必需的。 稍后，在将此应用程序部署到 Azure 网站时，使用此文件以确定需要在 Azure 上安装哪些模块来支持应用程序。 我们仍需要为本教程多安装两个包。
@@ -91,29 +91,6 @@ ms.lasthandoff: 12/18/2017
 2. 通过 npm 安装 **documentdb** 模块。 这是所有 Azure Cosmos DB magic 发生的模块。
    
         npm install documentdb --save
-3. 快速检查应用程序的 **package.json** 文件应显示其他模块。 此文件将通知 Azure 当运行应用程序时要下载并安装的包。 它应类似于下面的示例。
-   
-        {
-          "name": "todo",
-          "version": "0.0.0",
-          "private": true,
-          "scripts": {
-            "start": "node ./bin/www"
-          },
-          "dependencies": {
-            "async": "^2.1.4",
-            "body-parser": "~1.15.2",
-            "cookie-parser": "~1.4.3",
-            "debug": "~2.2.0",
-            "documentdb": "^1.10.0",
-            "express": "~4.14.0",
-            "jade": "~1.11.0",
-            "morgan": "~1.7.0",
-            "serve-favicon": "~2.3.0"
-          }
-        }
-   
-    这会告知 Node（稍后告知 Azure），应用程序依赖于这些模块。
 
 ## <a name="_Toc395783180"></a>步骤 4：在 node 应用程序中使用 Azure Cosmos DB 服务
 这负责处理所有的初始安装和配置，现在让我们看看为什么要用这步，可以编写一些使用 Azure Cosmos DB 的代码。
@@ -384,13 +361,13 @@ ms.lasthandoff: 12/18/2017
    
         var config = {}
    
-        config.host = process.env.HOST || "[the URI value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
-        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
+        config.host = process.env.HOST || "[the URI value from the Azure Cosmos DB Keys page on http://portal.azure.com]";
+        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the Azure Cosmos DB Keys page on http://portal.azure.com]";
         config.databaseId = "ToDoList";
         config.collectionId = "Items";
    
         module.exports = config;
-3. 在 **config.js** 文件中，使用 [Microsoft Azure 门户](https://portal.azure.com)中 Azure Cosmos DB 帐户的“密钥”边栏选项卡中的值更新 HOST 和 AUTH_KEY 的值。
+3. 在 **config.js** 文件中，使用 [Microsoft Azure 门户](https://portal.azure.com)中 Azure Cosmos DB 帐户的“密钥”页中的值更新 HOST 和 AUTH_KEY 的值。
 4. 保存并关闭 **config.js** 文件。
 
 ### <a name="modify-appjs"></a>修改 app.js
@@ -513,7 +490,7 @@ ms.lasthandoff: 12/18/2017
 3. 页面应更新为在 ToDo 列表中显示新建项。
    
     ![ToDo 列表中具有新的项的应用程序屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
-4. 要完成任务，只需选中“完成”列中的复选框，并单击“更新任务” 。 这样会更新已创建的文档。
+4. 要完成任务，只需选中“完成”列中的复选框，并单击“更新任务” 。 这将更新已创建的文档并将其从视图中删除。
 
 5. 若要停止应用程序，可在终端窗口中按 CTRL+C 并单击“Y”终止批处理作业。
 

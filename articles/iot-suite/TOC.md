@@ -58,7 +58,9 @@
 ### [使用规则检测问题](iot-suite-remote-monitoring-automate.md)
 ### [管理设备](iot-suite-remote-monitoring-manage.md)
 ### [排查设备问题](iot-suite-remote-monitoring-maintain.md)
-### [使用模拟设备](iot-suite-remote-monitoring-test.md)
+### [了解设备模型架构](iot-suite-remote-monitoring-device-schema.md)
+### [了解设备模型行为](iot-suite-remote-monitoring-device-behavior.md)
+### [创建新的模拟设备](iot-suite-remote-monitoring-test.md)
 ### [自定义解决方案](iot-suite-remote-monitoring-customize.md)
 ### [使用 CLI 进行部署](iot-suite-remote-monitoring-deploy-cli.md)
 ### 连接物理设备

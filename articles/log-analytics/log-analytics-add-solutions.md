@@ -1,6 +1,6 @@
 ---
 title: "添加 Azure Log Analytics 管理解决方案 | Microsoft 文档"
-description: "Operations Management Suite (OMS)/Log Analytics 管理解决方案是逻辑、可视化效果和数据采集规则的集合，用于提供围绕特定问题区域透视的指标。"
+description: "Azure 中的管理解决方案是逻辑、可视化效果和数据采集规则的集合，提供围绕特定问题领域制定的指标。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d951387882a5a8f5e0ebdc01841bb8384e4848ee
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 6c7d8d6946d89e4c6541636287e3022c444e0eb8
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>将 Azure Log Analytics 管理解决方案添加到工作区
 
-Log Analytics 管理解决方案是**逻辑**、**可视化**和**数据采集规则**的集合，用于提供围绕特定问题区域透视的指标。 本文列出了 Log Analytics 支持的管理解决方案，并说明了如何使用 Azure 门户为工作区添加和删除管理解决方案。 还可以在 OMS 门户中使用解决方案库添加解决方案。
+Log Analytics 管理解决方案是**逻辑**、**可视化**和**数据采集规则**的集合，用于提供围绕特定问题区域透视的指标。 本文列出了 Log Analytics 支持的管理解决方案，并说明了如何使用 Azure 门户为工作区添加和删除管理解决方案。
 
 管理解决方案可提供深入探索，以便：
 
@@ -34,9 +34,9 @@ Log Analytics 管理解决方案是**逻辑**、**可视化**和**数据采集�
 > [!NOTE]
 > Log Analytics 包括了日志搜索功能，因此无需安装管理解决方案便可启用该功能。 不过，可以通过向工作区添加管理解决方案来获取数据可视化、建议的搜索和洞察力。
 
-根据本文，将使用 Azure 门户 Marketplace 向工作区添加管理解决方案。 添加解决方案后，会从基础结构中的服务器收集数据并将其发送到 OMS 服务。 OMS 服务处理通常需要几分钟到一小时。 该服务处理数据后，可以在 OMS 中查看。
+根据本文，将使用 Azure 门户 Marketplace 向工作区添加管理解决方案。 添加解决方案后，会从基础结构中的服务器收集数据并将其发送到 Log Analytics。 处理通常需要几分钟到一小时。 该服务处理数据后，可以在 Log Analytics 中查看。
 
-当不再需要某个管理解决方案时，可以轻松将其删除。 在删除管理解决方案时，其数据不会发送至 OMS。 如果在免费定价层，删除解决方案可减少数据使用量，帮助维持在数据的每日配额以下。
+当不再需要某个管理解决方案时，可以轻松将其删除。 在删除管理解决方案时，其数据不会发送至 Log Analytics。 如果在免费定价层，删除解决方案可减少数据使用量，帮助维持在数据的每日配额以下。
 
 ## <a name="view-available-management-solutions"></a>查看可用的管理解决方案
 
@@ -126,14 +126,14 @@ Azure 应用商店包含 [Log Analytics 的管理解决方案](https://azuremark
 ## <a name="data-collection-details"></a>数据收集详细信息
 以下各表显示了数据收集方法以及有关如何为 Log Analytics 管理解决方案和数据源收集数据的其他详细信息。 这些表按等同于[订阅定价层](https://go.microsoft.com/fwlink/?linkid=827926)的解决方案产品进行分类。 活动 Log Analytics 解决方案可供所有定价层免费使用。
 
-Log Analytics Windows 代理和 System Center Operations Manager 代理实质上相同。 Windows 代理包括附加功能，可允许它连接到 OMS 工作区并通过代理服务器进行路由。 如果使用 Operations Manager 代理，则必须将其定为 OMS 代理才能与 OMS 进行通信。 此表中的 Operations Manager 代理是连接到 Operations Manager 的 OMS 代理。 有关将现有 Operations Manager 环境连接到 OMS 的信息，请参阅[将 Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md)。
+Log Analytics Windows 代理和 System Center Operations Manager 代理实质上相同。 Windows 代理包括附加功能，可允许它连接到 Log Analytics 工作区并通过代理服务器进行路由。 如果使用 Operations Manager 代理，则必须将其定为 OMS 代理才能与 Log Analytics 进行通信。 此表中的 Operations Manager 代理是连接到 Operations Manager 的 OMS 代理。 有关将现有 Operations Manager 环境连接到 Log Analytics 的信息，请参阅[将 Operations Manager 连接到 Log Analytics](log-analytics-om-agents.md)。
 
 > [!NOTE]
-> 使用的代理类型确定在以下条件下，数据如何发送到 OMS：
+> 使用的代理类型确定在以下条件下，数据如何发送到 Log Analytics：
 > - 你使用 Windows 代理或连接了 Operations Manager 的 OMS 代理。
-> - 需要 Operations Manager 时，请始终使用 Operations Manager 管理组，将解决方案的 Operations Manager 代理数据发送至 OMS。 此外，需要 Operations Manager 时，解决方案仅使用 Operations Manager 代理。
-> - 不需要 Operations Manager 且表显示使用管理组将 Operations Manager 代理数据发送到 OMS 时，始终使用管理组将 Operations Manager 代理数据发送到 OMS。 Windows 代理绕过管理组，直接将其数据发送到 OMS。
-> - 不使用管理组发送 Operations Manager 代理数据时，这些数据绕过管理组直接发送到 OMS。
+> - 需要 Operations Manager 时，请始终使用 Operations Manager 管理组，将解决方案的 Operations Manager 代理数据发送至 Log Analytics。 此外，需要 Operations Manager 时，解决方案仅使用 Operations Manager 代理。
+> - 不需要 Operations Manager 且表显示使用管理组将 Operations Manager 代理数据发送到 Log Analytics 时，始终使用管理组将 Operations Manager 代理数据发送到 Log Analytics。 Windows 代理绕过管理组，直接将其数据发送到 Log Analytics。
+> - 不使用管理组发送 Operations Manager 代理数据时，这些数据绕过管理组直接发送到 Log Analytics。
 
 ### <a name="insight--analytics--log-analytics"></a>见解与分析 / Log Analytics
 
@@ -242,7 +242,7 @@ Log Analytics Windows 代理和 System Center Operations Manager 代理实质上
 * 事情并不始终如愿。
   * 问题范围可能从一点小麻烦发展到根本不工作。
 * 预览版可能会对系统/环境产生负面影响。
-  * 我们尽量避免了对与 OMS 一起使用的系统产生负面影响，但有时会发生意想不到的问题。
+  * 我们尽量避免了对与 Log Analytics 一起使用的系统产生负面影响，但有时会发生意想不到的问题。
 * 可能发生数据丢失/损坏。
 * 我们可能要求收集诊断日志或其他数据来帮助解决问题。
 * 可能会（临时或永久）删除功能或解决方案。

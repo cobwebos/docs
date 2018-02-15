@@ -64,7 +64,7 @@
 
 ### <a name="graphics-and-rendering"></a>图形和渲染
 
-* Azure Batch（预览版）上的 [Autodesk Maya、3ds Max 和 Arnold](../articles/batch/batch-rendering-service.md)
+* Azure Batch 上的 [Autodesk Maya、3ds Max 和 Arnold](../articles/batch/batch-rendering-service.md) 
 
 ### <a name="ai-and-deep-learning"></a>AI 和深度学习
 
@@ -96,18 +96,19 @@ N 系列的 VM 具备为计算密集型或图形密集型应用程序（包括�
 
 
 
-## <a name="azure-batch"></a>Azure Batch
+## <a name="azure-batch"></a>Azure 批处理
 [Batch](../articles/batch/batch-technical-overview.md) 是一种平台服务，用于在云中高效运行大规模并行和高性能计算 (HPC) 应用程序。 Azure Batch 可以计划要在托管的虚拟机池上运行的计算密集型工作，并且可以自动缩放计算资源以符合作业的需求。 
 
 SaaS 提供商或开发商可以使用 Batch SDK 和工具将 HPC 应用程序或容器工作负荷与 Azure 集成，将数据暂存到 Azure，并生成作业执行管道。 
 
 了解如何：
 
-* [开始使用 Batch 进行开发](../articles/batch/batch-dotnet-get-started.md)
+* [开始使用 Batch 进行开发](../articles/batch/quick-run-dotnet.md)
 * [使用 Azure Batch 代码示例](https://github.com/Azure/azure-batch-samples)
 * [将低优先级 VM 与 Batch 配合使用](../articles/batch/batch-low-pri-vms.md)
 * [使用 Batch Shipyard 运行容器化的 HPC 工作负荷](https://github.com/Azure/batch-shipyard)
 * [将 R 语言与 Batch 配合使用](https://github.com/Azure/doAzureParallel)
+* [在 Batch 中运行 Azure 分布式数据工程工具包](https://github.com/Azure/aztk)
 
 ## <a name="workload-managers"></a>工作负荷管理器
 
@@ -127,6 +128,7 @@ SaaS 提供商或开发商可以使用 Batch SDK 和工具将 HPC 应用程序�
 了解更多：
 
 * [Azure 上用于 HPC 存储的并行文件系统](https://blogs.msdn.microsoft.com/azurecat/2017/03/17/parallel-file-systems-for-hpc-storage-on-azure/)
+* 从高性能云存储解决方案[Avere](http://www.averesystems.com/about-us/about-avere) (现在[加入与 Microsoft](https://blogs.microsoft.com/blog/2018/01/03/microsoft-to-acquire-avere-systems-accelerating-high-performance-computing-innovation-for-media-and-entertainment-industry-and-beyond/))
 
 
 ## <a name="related-azure-services"></a>相关的 Azure 服务
@@ -139,13 +141,16 @@ Azure 虚拟机、虚拟机规模集、Batch 和相关的计算服务是大多�
 * [文件存储](../articles/storage/storage-files-introduction.md)
 
 ### <a name="data-and-analytics"></a>数据和分析
-* 用于 Azure 上的 Hadoop 群集的 [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md)
+* [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md)
 * [Data Factory](../articles/data-factory/introduction.md)
 * [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
 * [机器学习](../articles/machine-learning/machine-learning-what-is-machine-learning.md)
 * [SQL 数据库](../articles/sql-database/sql-database-technical-overview.md)
 
-### <a name="networking"></a>联网
+### <a name="ai-and-cognitive-services"></a>AI 和认知服务
+* [Batch AI](../articles/batch-ai/overview.md)
+
+### <a name="networking"></a>网络
 * [虚拟网络](../articles/virtual-network/virtual-networks-overview.md)
 * [ExpressRoute](../articles/expressroute/expressroute-introduction.md)
 

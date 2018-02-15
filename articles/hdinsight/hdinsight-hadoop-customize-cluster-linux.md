@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: 5e4fe189a3fa7269a271b422116dc6838e7ef3cb
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 42bf760b793f3c035a766c4d39524e03c1cbe6ee
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>使用脚本操作自定义基于 Linux 的 HDInsight 群集
 
@@ -55,7 +55,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 
 ## <a name="understanding-script-actions"></a>了解脚本操作
 
-脚本操作是一个 Bash 脚本，为其提供 URI 和参数。 该脚本在 HDInsight 群集节点上运行。 下面是脚本操作的特征和功能。
+脚本操作是指在 HDInsight 群集的节点上运行的 Bash 脚本。 下面是脚本操作的特征和功能。
 
 * 必须存储在可从 HDInsight 群集访问的 URI 上。 下面是可能的存储位置：
 
@@ -79,9 +79,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 
 * 可以是**持久化**或**即席**。
 
-    持久化脚本在运行后会应用于添加到群集的辅助节点。 例如，在扩大群集时。
-
-    持久化脚本还可以将更改应用于其他节点类型，如头节点。
+    **持久化**脚本用于自定义通过缩放操作添加到群集的新工作节点。 进行缩放操作时，持久化脚本还可以将更改应用于其他节点类型，如头节点。
 
   > [!IMPORTANT]
   > 持久化脚本操作必须有唯一的名称。
@@ -94,30 +92,32 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
   > 即使明确指出应予保存，也不会持久保存失败的脚本。
 
 * 可以接受脚本在执行期间使用的**参数**。
+
 * 在群集节点上以**根级别权限**运行。
-* 可以通过 **Azure 门户**、**Azure PowerShell**、**Azure CLI** 或 **HDInsight .NET SDK** 使用
+
+* 可以通过 **Azure 门户**、**Azure PowerShell**、**Azure CLI v1.0** 或 **HDInsight .NET SDK** 使用
 
 群集保留已运行的所有脚本的历史记录。 需要查找要升级或降级的脚本的 ID 时，历史记录很有用。
 
 > [!IMPORTANT]
 > 没有任何自动方式可撤销脚本操作所做的更改。 手动撤消更改，或者提供一个脚本来撤消更改。
 
-
 ### <a name="script-action-in-the-cluster-creation-process"></a>群集创建过程中的脚本操作
 
 在群集创建期间使用的脚本操作与在现有群集上运行的脚本操作稍有不同：
 
 * 该脚本将**自动持久保存**。
+
 * 脚本**失败**可能会导致群集创建过程失败。
 
 下图演示了在创建过程中执行脚本操作的时间：
 
 ![群集创建过程中的 HDInsight 群集自定义和阶段][img-hdi-cluster-states]
 
-脚本在配置 HDInsight 时运行。 在此阶段，脚本在群集中的所有指定节点上并行运行，并且在节点上使用 root 权限运行。
+脚本在配置 HDInsight 时运行。 脚本在群集中的所有指定节点上并行运行，并且在节点上使用 root 权限运行。
 
 > [!NOTE]
-> 由于脚本是以 root 级权限在群集节点上运行的，因此可以执行诸如停止和启动服务（包括与 Hadoop 相关的服务）等操作。 如果停止服务，则必须在脚本完成运行之前，确保 Ambari 服务及其他与 Hadoop 相关的服务都已启动且正在运行。 这些服务必须在群集创建时，成功地确定群集的运行状况和状态。
+> 可以执行停止和启动服务（包括 Hadoop 相关服务）等操作。 如果停止服务，必须确保 Ambari 服务及其他 Hadoop 相关服务在脚本完成运行之前正在运行。 这些服务必须在群集创建时，成功地确定群集的运行状况和状态。
 
 
 在创建群集期间，可以同时使用多个脚本操作。 按照这些脚本的指定顺序调用它们。
@@ -130,12 +130,12 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 
 ### <a name="script-action-on-a-running-cluster"></a>正在运行的群集上的脚本操作
 
-不同于在群集创建期间使用的脚本操作，在运行中群集上运行的脚本发生失败并不会自动导致群集更改为失败状态。 脚本完成后，群集应该恢复“正在运行”状态。
+在运行中群集上运行的脚本发生失败并不会自动导致群集更改为失败状态。 脚本完成后，群集应该恢复“正在运行”状态。
 
 > [!IMPORTANT]
 > 即使群集处于“正在运行”状态，失败的脚本也可能已损坏。 例如，脚本无法删除群集所需的文件。
 >
-> 脚本操作以 root 权限运行，因此应该先确保了解脚本的作用，再将它应用到群集。
+> 使用 root 权限运行的脚本操作。 确保先了解脚本的作用，然后再将它应用到群集。
 
 将脚本应用到群集时，如果脚本运行成功，群集状态将从“正在运行”更改为“已接受”，再更改为“HDInsight 配置”，最后回到“正在运行”。 脚本状态记录在脚本操作历史记录中，可以使用此信息确定脚本是成功还是失败。 例如，可以使用 `Get-AzureRmHDInsightScriptActionHistory` PowerShell cmdlet 来查看脚本的状态。 它会返回类似于以下文本的信息：
 
@@ -144,7 +144,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
     EndTime           : 8/14/2017 7:41:05 PM
     Status            : Succeeded
 
-> [!NOTE]
+> [!IMPORTANT]
 > 如果在创建群集后更改群集用户 (admin) 的密码，针对此群集运行的脚本操作可能会失败。 如果任何持久性脚本操作以辅助节点为目标，则缩放群集时，这些脚本可能失败。
 
 ## <a name="example-script-action-scripts"></a>脚本操作脚本示例
@@ -153,7 +153,7 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 
 * Azure 门户
 * Azure PowerShell
-* Azure CLI
+* Azure CLI v1.0
 * HDInsight .NET SDK
 
 HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
@@ -194,8 +194,8 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
     | --- | --- |
     | 选择脚本 | 要使用自己的脚本，请选择“自定义”。 否则，请从提供的脚本中选择一个。 |
     | 名称 |指定脚本操作的名称。 |
-    | Bash 脚本 URI |指定要调用来自定义群集的脚本的 URI。 |
-    | 头节点/辅助节点/Zookeeper 节点 |指定在其上运行自定义脚本的节点（**头**节点、**辅助角色**节点或 **ZooKeeper** 节点）。 |
+    | Bash 脚本 URI |指定脚本的 URI。 |
+    | 头节点/辅助节点/Zookeeper 节点 |指定在其上运行脚本的节点（**头**节点、**工作**节点或 **ZooKeeper** 节点）。 |
     | parameters |根据脚本的需要，指定参数。 |
 
     使用“持久保存此脚本操作”条目，确保在缩放操作中应用了脚本。
@@ -271,8 +271,8 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
     | --- | --- |
     | 选择脚本 | 要使用自己的脚本，请选择“自定义”。 否则，请选择提供的脚本。 |
     | 名称 |指定脚本操作的名称。 |
-    | Bash 脚本 URI |指定要调用来自定义群集的脚本的 URI。 |
-    | 头节点/辅助节点/Zookeeper 节点 |指定在其上运行自定义脚本的节点（**头**节点、**辅助角色**节点或 **ZooKeeper** 节点）。 |
+    | Bash 脚本 URI |指定脚本的 URI。 |
+    | 头节点/辅助节点/Zookeeper 节点 |指定在其上运行脚本的节点（**头**节点、**工作**节点或 **ZooKeeper** 节点）。 |
     | parameters |根据脚本的需要，指定参数。 |
 
     使用“持久保存此脚本操作”条目，确保在缩放操作中应用了脚本。
@@ -298,9 +298,10 @@ HDInsight .NET SDK 提供客户端库，可简化从 .NET 应用程序中使用 
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>从 Azure CLI 将脚本操作应用到正在运行的群集
 
-在继续前，确保已安装并配置 Azure CLI。 有关详细信息，请参阅[安装 Azure CLI](../cli-install-nodejs.md)。
+在继续前，确保已安装并配置 Azure CLI。 有关详细信息，请参阅[安装 Azure CLI 1.0](../cli-install-nodejs.md)。
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+> [!IMPORTANT]
+> HDInsight 需要 Azure CLI 1.0。 目前 Azure CLI 2.0 未提供针对使用 HDInsight 的命令。
 
 1. 要切换到 Azure 资源管理器模式，请在命令行中使用以下命令：
 
@@ -458,7 +459,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
     * **Zookeeper 节点** - `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
-* 相应主机的所有 stdout 和 stderr 将上传到存储帐户。 每个脚本操作各有一个 **output-\*.txt** 和 **errors-\*.txt**。 output-*.txt 文件包含有关在主机上运行的脚本的 URI 信息。 例如
+* 相应主机的所有 stdout 和 stderr 将上传到存储帐户。 每个脚本操作各有一个 **output-\*.txt** 和 **errors-\*.txt**。 output-*.txt 文件包含有关在主机上运行的脚本的 URI 信息。 以下文本是此信息的示例：
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 

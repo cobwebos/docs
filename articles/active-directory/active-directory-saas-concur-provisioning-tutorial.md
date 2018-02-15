@@ -1,5 +1,5 @@
 ---
-title: "教程：Azure Active Directory 与 Concur 的集成 | Microsoft 文档"
+title: "教程：使用 Azure Active Directory 为 Concur 配置自动用户预配 | Microsoft Docs"
 description: "了解如何在 Azure Active Directory 和 Concur 之间配置单一登录。"
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: f39013785f000c7055aaa28f4c6f41998644cb6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 743d974c3711d5359cf7664c6a8709f7eaaeee20
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-concur-for-user-provisioning"></a>教程：配置 Concur 以便进行用户预配
+# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>教程：为 Concur 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Concur 以及取消其预配而需要在 Concur 和 Azure AD 中执行的步骤。
 
@@ -70,7 +70,7 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
 
 * 如果管理员离开了公司，可根据需要将与该 WS 管理员配置文件关联的名称更改为替代管理员，这不会影响已启用的应用，因为无需停用该配置文件。
 
-**若要配置用户预配，请执行以下步骤：**
+**若要配置用户设置，请执行以下步骤：**
 
 1. 登录到“Concur”租户。
 
@@ -121,6 +121,6 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 * [配置单一登录](active-directory-saas-concur-tutorial.md)
 

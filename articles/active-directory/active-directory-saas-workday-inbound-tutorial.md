@@ -1,5 +1,5 @@
 ---
-title: "教程：使用本地 Active Directory 和 Azure Active Directory 为 Workday 配置自动用户预配 | Microsoft Docs"
+title: "教程：使用 Azure Active Directory 为 Workday 配置自动用户预配 | Microsoft Docs"
 description: "了解如何将 Workday 用作 Active Directory 和 Azure Active Directory 的标识数据源。"
 services: active-directory
 author: asmalser-msft
@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2017
+ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: f267a59fadb7f402ac81f43b5465b6ac1f28943e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ed35a703774fdb2f2896414b6022b6f13fb7a307
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="tutorial-configure-workday-for-automatic-user-provisioning-with-on-premises-active-directory-and-azure-active-directory"></a>教程：使用本地 Active Directory 和 Azure Active Directory 为 Workday 配置自动用户预配
+# <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
+
 本教程旨在说明需要执行哪些步骤才能将用户从 Workday 导入 Active Directory 和 Azure Active Directory，并有选择性地将某些属性写回到 Workday。 
 
 
@@ -163,20 +164,24 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
     ![系统安全组](./media/active-directory-saas-workday-inbound-tutorial/IC750985.png "系统安全组")  
 
 ### <a name="configure-security-group-options"></a>配置安全组选项
-在此步骤中，将授予新安全组对对象执行 **Get** 和 **Put** 操作的权限，对象受以下域安全策略保护：
+此步骤授予域安全策略对以下域安全策略保护的工作人员数据的权限：
 
-* 外部帐户预配
-* 工作人员数据：公职人员报告
-* 工作人员数据：所有职位
-* 工作人员数据：当前人员配备信息
-* 工作人员数据：工作人员个人资料中的职称
+
+| Operation | 域安全策略 |
+| ---------- | ---------- | 
+| “获取”和“放置” |  外部帐户预配 |
+| “获取”和“放置” | 工作人员数据：公职人员报告 |
+| “获取”和“放置” | 工作人员数据：所有职位 |
+| “获取”和“放置” | 工作人员数据：当前人员配备信息 |
+| “获取”和“放置” | 工作人员数据：工作人员个人资料中的职称 |
+| “查看”和“修改” | 工作人员数据: 工作电子邮件 |
 
 **配置安全组选项：**
 
 1. 在搜索框中输入域安全策略，然后单击链接“功能区域的域安全策略”。  
    
     ![域安全策略](./media/active-directory-saas-workday-inbound-tutorial/IC750986.png "域安全策略")  
-2. 搜索“系统”并选择“系统”功能区域。  单击 **“确定”**。  
+2. 搜索“系统”并选择“系统”功能区域。  单击“确定”。  
    
     ![域安全策略](./media/active-directory-saas-workday-inbound-tutorial/IC750987.png "域安全策略")  
 3. 在系统功能区域的安全策略列表中，展开“安全管理”并选择域安全策略“外部帐户预配”。  
@@ -341,13 +346,13 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  创建 + 更新 |
 | **PostalCode**  |   postalCode  |     | 创建 + 更新 |
 | **LocalReference** |  preferredLanguage  |     |  创建 + 更新 |
-| **Replace(Mid(Replace(\[EmployeeID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
+| **Replace(Mid(Replace(\[EmployeeID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
 | **姓氏**   |   sn   |     |  创建 + 更新 |
 | **CountryRegionReference** |  号     |     | 创建 + 更新 |
 | **AddressLineData**    |  streetAddress  |     |   创建 + 更新 |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | 创建 + 更新 |
 | **BusinessTitle**   |  title     |     |  创建 + 更新 |
-| **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , ), "contoso.com")**   | userPrincipalName     |     | 创建 + 更新                                                   
+| **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , ), "contoso.com")**   | userPrincipalName     |     | 仅在创建时写入                                                   
 | **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  创建 + 更新 |
   
 ### <a name="part-3-configure-the-on-premises-synchronization-agent"></a>第 3 部分：配置本地同步代理
@@ -445,7 +450,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 1.  在“预配”选项卡中，将“预配状态”设置为“打开”。
 
-2. 单击“保存”。
+2. 单击“ **保存**”。
 
 3. 随后将启动初始同步。根据 Workday 中的用户数，此过程花费的时间可能有所不同。
 
@@ -553,7 +558,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
    * **使用此属性匹配对象** – 是否应使用此映射唯一标识 Workday 与 Azure AD 之间的用户。 通常在 Workday 的“工作人员 ID”字段中设置此值，此值通常映射到 Azure AD 中的“员工 ID”属性（新）或扩展属性。
 
-   * **匹配优先顺序** – 可设置多个匹配属性。 当存在匹配时，会按照此字段定义的顺序进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
+   * 匹配优先级 – 可设置多个匹配属性。 当存在匹配时，会按照此字段定义的顺序进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
 
    * **应用此映射**
 
@@ -568,7 +573,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 1.  在“预配”选项卡中，将“预配状态”设置为“打开”。
 
-2. 单击“保存”。
+2. 单击“ **保存**”。
 
 3. 随后将启动初始同步。根据 Workday 中的用户数，此过程花费的时间可能有所不同。
 
@@ -629,7 +634,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 1.  在“预配”选项卡中，将“预配状态”设置为“打开”。
 
-2. 单击“保存”。
+2. 单击“ **保存**”。
 
 3. 随后将启动初始同步。根据 Workday 中的用户数，此过程花费的时间可能有所不同。
 
@@ -637,16 +642,126 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 5. 完成某项操作后，系统会在“预配”选项卡中写入一份审核摘要报告，如下所示。
 
+
+## <a name="customizing-the-list-of-workday-user-attributes"></a>自定义 Workday 用户属性列表
+适用于 Active Directory 和 Azure AD 的 Workday 预配应用都包含一个默认的 Workday 用户属性列表，可以从中进行选择。 但是，这些列表并不详尽。 Workday 支持数百个可能的用户属性，这些属性可能是 Workday 租户中的标准属性或唯一属性。 
+
+Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力资源 API 的 [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v29.2/Get_Workers.html) 操作中公开的所有属性。
+
+为此，必须使用 [Workday Studio](https://community.workday.com/studio-download) 来提取表示要使用的属性的 XPath 表达式，然后在 Azure 门户中使用高级属性编辑器将其添加到预配配置。
+
+**检索 Workday 用户属性的 XPath 表达式：**
+
+1. 下载并安装 [Workday Studio](https://community.workday.com/studio-download)。 需要使用 Workday 社区帐户来访问安装程序。
+
+2. 从以下 URL 下载 Workday Human_Resources WDSL 文件：https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v29.2/Human_Resources.wsdl
+
+3. 启动 Workday Studio。
+
+4. 在命令栏中，选择“Workday”>“在测试器中测试 Web 服务”选项。
+
+5. 选择“外部”，然后选择在步骤 2 中下载的 Human_Resources WSDL 文件。
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio1.PNG)
+
+6. 将“位置”字段设置为 `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources`，不过，请将“IMPL-CC”替换为实际实例类型，并将“TENANT”替换为实际租户名称。
+
+7. 将“操作”设置为 **Get_Workers**
+
+8.  单击“请求/响应”窗格下面的“配置”链接设置 Workday 凭据。 选中“身份验证”，并输入 Workday 集成系统帐户的用户名和密码。 请务必将用户名格式设置为 name@tenant，并保留选中“WS-Security UsernameToken”选项。
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio2.PNG)
+
+9. 选择“确定”。
+
+10. 在“请求”窗格中，粘贴以下 XML，并将“Employee_ID”设置为 Workday 租户中某个真实用户的员工 ID。 选择一个已填充想要提取的属性的用户。
+
+    ```
+    <?xml version="1.0" encoding="UTF-8"?>
+    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <env:Body>
+        <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v28.0">
+          <wd:Request_References wd:Skip_Non_Existing_Instances="true">
+            <wd:Worker_Reference>
+              <wd:ID wd:type="Employee_ID">21008</wd:ID>
+            </wd:Worker_Reference>
+          </wd:Request_References>
+        </wd:Get_Workers_Request>
+      </env:Body>
+    </env:Envelope>
+    ```
+ 
+11. 单击“发送请求”（绿色箭头）执行该命令。 如果成功，“响应”窗格中应会显示响应。 检查响应，确保其中包含输入的用户 ID 数据且不包含错误。
+
+12. 如果成功，请复制“响应”窗格中的 XML 并将其保存为 XML 文件。
+
+13. 在 Workday Studio 的命令栏中，选择“文件”>“打开文件...”，并打开刚刚保存的 XML 文件。 这会在 Workday Studio XML 编辑器中打开该文件。
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio3.PNG)
+
+14. 在文件树中，浏览“/env:Envelope > env:Body > wd:Get_Workers_Response > wd:Response_Data > wd:Worker”找到用户的数据。 
+
+15. 在“wd:Worker”下，找到要添加的属性并将其选中。
+
+16. 复制“文档路径”字段中选定属性的 XPath 表达式。
+
+17. 从复制的表达式中删除“/env:Envelope/env:Body/wd:Get_Workers_Response/wd:Response_Data/”前缀。 
+
+18. 如果复制的表达式中的最后一项是节点（例如“/wd:Birth_Date”，请在表达式的末尾追加 **/text()**。 如果最后一项是属性（例如“/@wd:type”），则不需要执行此操作。
+
+19. 结果应类似于 `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`。 这就是要复制到 Azure 门户中的内容。
+
+
+**将自定义 Workday 用户属性添加到预配配置：**
+
+1. 启动 [Azure 门户](https://portal.azure.com)，并根据本教程前面所述，导航到 Workday 预配应用程序的“预配”部分。
+
+2. 将“预配状态”设置为“关闭”，选择“保存”。 这有助于确保只有在准备就绪时，才让更改生效。
+
+3. 在“映射”下，选择“将工作人员同步到本地”（或“将工作人员同步到 Azure AD”）。
+
+4. 在下一屏幕中滚动到底部，选择“显示高级选项”。
+
+5. 选择“编辑 Workday 的属性列表”。
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio_AAD1.PNG)
+
+6. 滚动到属性列表的底部查看输入字段。
+
+7. 对于“名称”，请输入属性的显示名称。
+
+8. 对于“类型”，请选择对应于属性的类型（最常用的选项是“字符串”）。
+
+9. 对于“API 表达式”，请输入从 Workday Studio 复制的 XPath 表达式。 示例：`wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
+
+10. 选择“添加属性”。
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio_AAD2.PNG)
+
+11. 选择上面的“保存”，然后在对话框中选择“是”。 如果“属性映射”屏幕仍然打开，请将其关闭。
+
+12. 返回“预配”主选项卡，再次选择“将工作人员同步到本地”（或“将工作人员同步到 Azure AD”）。
+
+13. 选择“添加新映射”。
+
+14. 此时，新属性应会显示在“源属性”列表中。
+
+15. 根据需要添加新属性的映射。
+
+16. 完成后，请记得将“预配状态”改回“打开”并保存设置。
+
+
 ## <a name="known-issues"></a>已知问题
 
 * 运行 **Add-ADSyncAgentAzureActiveDirectoryConfiguration** Powershell 命令时，目前有一个已知的问题：如果全局管理员凭据使用自定义域（例如：admin@contoso.com），则这些凭据不起作用。 解决方法是在 Azure AD 中创建并使用包含 onmicrosoft.com 域的全局管理员帐户（例如：admin@contoso.onmicrosoft.com）。
 
 * 以前存在的，审核日志在位于欧盟的 Azure AD 租户中不显示的问题现已得到解决。 但是，需要对欧盟的 Azure AD 租户进行附加的代理配置。 有关详细信息，请参阅[第 3 部分：配置本地同步代理](#Part 3: Configure the on-premises synchronization agent)
 
+
 ## <a name="additional-resources"></a>其他资源
 * [教程：在 Workday 与 Azure Active Directory 之间配置单一登录](active-directory-saas-workday-tutorial.md)
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 ## <a name="next-steps"></a>后续步骤
 

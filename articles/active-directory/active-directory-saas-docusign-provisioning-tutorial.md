@@ -1,5 +1,5 @@
 ---
-title: "教程：Azure Active Directory 与 DocuSign 的集成 | Microsoft 文档"
+title: "教程：使用 Azure Active Directory 为 DocuSign 配置自动用户预配 | Microsoft Docs"
 description: "了解如何在 Azure Active Directory 和 DocuSign 之间配置单一登录。"
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e8ba836a021a06c017defee2c5b7379d200ac642
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1de1b8e68648e4bac05eca4b306e741bcdb6868b
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-docusign-for-user-provisioning"></a>教程：为 DocuSign 配置用户预配
+# <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>教程：为 DocuSign 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 DocuSign 以及取消其预配而需要在 DocuSign 和 Azure 中执行的步骤。
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="assigning-users-to-docusign"></a>将用户分配到 DocuSign
 
-Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中的应用程序的用户和组。
+Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中应用程序的用户和组。
 
 在配置和启用预配服务前，需确定 Azure AD 中哪些用户和/或组表示需要访问 DocuSign 应用的用户。 确定后，可按照此处的说明将这些用户分配到 DocuSign 应用：
 
@@ -96,5 +96,5 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 * [配置单一登录](active-directory-saas-docusign-tutorial.md)

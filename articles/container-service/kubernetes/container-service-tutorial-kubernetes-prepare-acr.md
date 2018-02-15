@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 9d5486b3ac7ca0ef0f5824660ee8278de3f6fe80
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ea2574a64c5ae5c10680ad0da7e06ffe12cc72cb
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>部署并使用 Azure 容器注册表
 
@@ -87,10 +87,10 @@ tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ag
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-此时，使用容器注册表的 loginServer 标记 `azure-vote-front` 映像。 另外，将 `:redis-v1` 添加至映像名称的末端。 此标记代表映像版本。
+此时，使用容器注册表的 loginServer 标记 `azure-vote-front` 映像。 另外，将 `:v1` 添加至映像名称的末端。 此标记代表映像版本。
 
 ```bash
-docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v1
+docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
 进行标记后，运行 [docker images] (https://docs.docker.com/engine/reference/commandline/images/) 以验证操作。
@@ -104,7 +104,7 @@ docker images
 ```bash
 REPOSITORY                                           TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                                     latest              eaf2b9c57e5e        8 minutes ago       716 MB
-mycontainerregistry082.azurecr.io/azure-vote-front   redis-v1            eaf2b9c57e5e        8 minutes ago       716 MB
+mycontainerregistry082.azurecr.io/azure-vote-front   v1            eaf2b9c57e5e        8 minutes ago       716 MB
 redis                                                latest              a1b99da73d05        7 days ago          106MB
 tiangolo/uwsgi-nginx-flask                           flask               788ca94b2313        8 months ago        694 MB
 ```
@@ -116,7 +116,7 @@ tiangolo/uwsgi-nginx-flask                           flask               788ca94
 使用以下示例，将 ACR loginServer 名称替换为环境中的 loginServer。
 
 ```bash
-docker push <acrLoginServer>/azure-vote-front:redis-v1
+docker push <acrLoginServer>/azure-vote-front:v1
 ```
 
 此操作需要几分钟时间完成。
@@ -148,7 +148,7 @@ az acr repository show-tags --name <acrName> --repository azure-vote-front --out
 ```azurecli
 Result
 --------
-redis-v1
+v1
 ```
 
 完成本教程后，容器映像已存储在专用 Azure 容器注册表实例中。 在后续教程中，此映像会从 ACR 部署到 Kubernetes 群集。

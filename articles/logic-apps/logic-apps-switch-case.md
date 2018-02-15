@@ -3,7 +3,7 @@ title: "Azure 逻辑应用中适用于不同操作的 Switch 语句 | Microsoft 
 description: "通过使用 Switch 语句，根据表达式值选择要在逻辑应用中执行的不同操作"
 services: logic-apps
 keywords: "Switch 语句"
-author: derek1ee
+author: ecfan
 manager: anneta
 editor: 
 documentationcenter: 
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
-ms.author: LADocs; deli
-ms.openlocfilehash: a459fb131cb9f917f2b0cf79679b04da48d76c42
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: LADocs; estfan
+ms.openlocfilehash: 8f11d18009d60ea5c74781ccef2ff7d811516750
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="perform-different-actions-in-logic-apps-with-a-switch-statement"></a>使用 Switch 语句在逻辑应用中执行不同操作
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 01/19/2018
 
 3. 添加 Switch 语句。
 
-   - 选择“+ 新步骤” > “...更多”** > “添加 Switch 案例”。 
+   - 选择“+ 新步骤” > **“...更多”** > “添加 Switch 案例”。 
    - 现在，我们要根据“发送审批电子邮件”操作的 `SelectedOptions` 输出来选择要执行的操作。 
    可在“添加动态内容”选择器中找到此字段。
    - 当审批者选择了 `Approve` 时，使用“案例 1”进行处理。

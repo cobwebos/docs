@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager 请求限制 | Microsoft Docs"
-description: "介绍在达到订阅限制时，如何对 Azure Resource Manager 请求使用限制。"
+title: "Azure 资源管理器请求限制 | Microsoft Docs"
+description: "介绍在达到订阅限制时，如何对 Azure 资源管理器请求使用限制。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 01/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d7eeaf460674c3ab98425a5412ffa465b9ffd1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc109cdaeade900e239624f408cea2a1f448ae5a
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求
-对于每个订阅和租户，Resource Manager 将每小时的读取请求数限制为 15,000 个，将每小时的写入请求数限制为 1,200 个。 这些限制适用于每个 Azure Resource Manager 实例；每个 Azure 区域中有多个实例，Azure Resource Manager 部署到所有 Azure 区域。  因此，在实践中，限制实际上比上面列出的要高得多，因为用户请求通常是由多个不同的实例提供服务。
+对于每个订阅和租户，Resource Manager 将每小时的读取请求数限制为 15,000 个，将每小时的写入请求数限制为 1,200 个。 这些限制适用于每个 Azure 资源管理器实例。 每个 Azure 区域中有多个实例，Azure 资源管理器将部署到所有 Azure 区域。  因此，在实践中，限制实际上比上述限制要高得多，因为用户请求通常是由多个不同的实例提供服务。
 
-如果应用程序或脚本达到这些限制，则需要限制请求。 本主题说明如何在达到限制之前确定剩余的请求数，以及达到限制时如何做出响应。
+如果应用程序或脚本达到这些限制，则需要限制请求。 本文说明如何在达到限制之前确定剩余的请求数，以及达到限制时如何做出响应。
 
 达到限制时，会收到 HTTP 状态代码“429 请求过多”。
 
@@ -61,7 +61,7 @@ $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/re
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-或者，如果想要查看剩余请求数以进行调试，可以在 **PowerShell** cmdlet 中提供 **-Debug** 参数。
+或者，如果想要查看剩余的调试请求数，可以在 **PowerShell** cmdlet 中提供 **-Debug** 参数。
 
 ```powershell
 Get-AzureRmResourceGroup -Debug
@@ -85,7 +85,7 @@ x-ms-ratelimit-remaining-subscription-reads: 14999
 在 **Azure CLI** 中，可以使用更详细的选项检索标头值。
 
 ```azurecli
-azure group list -vv --json
+az group list --verbose --debug
 ```
 
 这会返回许多值，包括以下对象：

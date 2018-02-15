@@ -1,5 +1,5 @@
 ---
-title: "OMSManagement 解决方案最佳做法 | Microsoft Docs"
+title: "Azure 中管理解决方案的最佳做法 | Microsoft Docs"
 description: 
 services: operations-management-suite
 documentationcenter: 
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: b3d07ad3164609a5628c0d9805de55a32870ab94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 155a7117f4c02bafcf66d0f7abca7dd97dc1236f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="best-practices-for-creating-management-solutions-in-operations-management-suite-oms-preview"></a>在 Operations Management Suite (OMS) 中创建管理解决方案（预览版）的最佳做法
+# <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>在 Azure 中创建管理解决方案的最佳做法（预览版）
 > [!NOTE]
-> 这是在 OMS 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。  
+> 这是在 Azure 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。  
 
-本文提供在 Operations Management Suite (OMS) 中[创建管理解决方案文件](operations-management-suite-solutions-solution-file.md)的最佳做法。  发现其他最佳做法后，将更新此信息。
+本文提供在 Azure 中[创建管理解决方案文件](operations-management-suite-solutions-solution-file.md)的最佳做法。  发现其他最佳做法后，将更新此信息。
 
 ## <a name="data-sources"></a>数据源
 - 数据源可以[使用 Resource Manager 模板进行配置](../log-analytics/log-analytics-template-workspace-configuration.md)，但它们不应包含在解决方案文件中。  原因是，数据源配置当前是不幂等的，这意味着解决方案可以覆盖用户工作区中的现有配置。<br><br>例如，解决方案可能需要应用程序事件日志中的警告和错误事件。  如果在解决方案中将此项指定为数据源，则当用户已在其工作区中配置此项时，可能会删除信息事件。  如果包含所有事件，则可能会在用户的工作区中收集过多信息事件。

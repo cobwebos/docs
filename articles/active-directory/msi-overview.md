@@ -14,11 +14,11 @@ ms.tgt_pltfrm:
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: 07610b178bde6de9eb8d890edc060458fc3b07ac
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: b28f5c7c90783c5abd933b50ddb9631739b8f421
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/29/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Azure 资源的托管服务标识 (MSI)
 
@@ -64,6 +64,7 @@ ms.lasthandoff: 01/23/2018
 | Azure 应用服务  | [将托管服务标识与 Azure 应用服务或 Azure Functions 结合使用](/azure/app-service/app-service-managed-service-identity) |
 | Azure 函数     | [将托管服务标识与 Azure 应用服务或 Azure Functions 结合使用](/azure/app-service/app-service-managed-service-identity) |
 | Azure 服务总线  | [将托管服务标识与 Azure 服务总线配合使用](../service-bus-messaging/service-bus-managed-service-identity.md) |
+| Azure 事件中心   | [将托管服务标识与 Azure 事件中心一起使用](../event-hubs/event-hubs-managed-service-identity.md) |
 
 ## <a name="which-azure-services-support-managed-service-identity"></a>哪些 Azure 服务支持托管服务标识？
 

@@ -11,13 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: c9e6aa03e3a1e0592223630c7b81634bcb09add6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 82681214e9e42819bfc698aa670755467d250fa7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>通过内置终结点读取设备到云的消息
 
@@ -32,7 +32,7 @@ IoT 中心还支持用户管理内置设备到云接收终结点上的使用者�
 
 默认情况下，不显式匹配消息路由规则的所有消息都将写入到内置终结点。 如果禁用此回退路由，将删除不显式匹配任何消息路由规则的消息。
 
-可以通过 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis] 以编程方式修改保留期时间，或使用 [Azure 门户][lnk-management-portal]进行修改。
+可以使用 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis] 以编程方式修改保留期时间，或通过 [Azure 门户][lnk-management-portal]进行修改。
 
 IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端服务读取中心收到的设备到云消息。 该终结点与事件中心兼容，因此可以使用事件中心服务支持的任何机制读取消息。
 
@@ -40,7 +40,7 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
 使用[适用于 .NET 的 Azure 服务总线 SDK][lnk-servicebus-sdk] 或[事件中心 - 事件处理器主机][lnk-eventprocessorhost]时，可以将任何 IoT 中心连接字符串与正确的权限配合使用。 然后使用**消息/事件**作为事件中心名称。
 
-使用无法识别 IoT 中心的 SDK（或产品集成）时，必须从 IoT 中心设置检索与事件中心兼容的终结点和与事件中心兼容的名称：
+使用无法识别 IoT 中心的 SDK（或产品集成）时，必须检索与事件中心兼容的终结点和与事件中心兼容的名称：
 
 1. 登录 [Azure 门户][lnk-management-portal]，并导航到 IoT 中心。
 1. 单击“终结点” 。

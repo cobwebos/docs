@@ -1,5 +1,5 @@
 ---
-title: "教程：在 Azure 中为自动用户预配配置 Google Apps | Microsoft Docs"
+title: "教程：使用 Azure Active Directory 为 Google Apps 配置自动用户预配 | Microsoft Docs"
 description: "了解如何将用户帐户从 Azure AD 自动预配到 Google Apps 及如何取消预配。"
 services: active-directory
 documentationCenter: na
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a77b5b1fff670ed7698d0ef48fa63f8a8f9be819
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0a0dd38fda35b1eee1fdce196a3ed15f6e73dde6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>教程：配置 Google Apps 实现自动用户预配
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="assign-users-to-google-apps"></a>将用户分配到 Google Apps
 
-Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中的应用程序的用户和组。
+Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中应用程序的用户和组。
 
 配置和启用预配服务前，需确定 Azure AD 中的哪些用户或组需访问 Google Apps 应用。 确定后，可按照此处的说明将这些用户分配到 Google Apps 应用：[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)。
 
@@ -89,7 +89,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
      
      ![域](./media/active-directory-saas-google-apps-provisioning-tutorial/domain_4.png)
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 对所有要添加到目录的域重复上述步骤。
+    e. 对所有要添加到目录的域重复上述步骤。
 
     > [!NOTE]
     若要进行用户预配，Google Apps 自定义域必须与源 Azure AD 的域名匹配。 如果不匹配，可以通过实现属性映射自定义来解决此问题。
@@ -111,7 +111,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     d.单击“下一步”。 选择“继续验证域所有权”。 然后按步骤验证所拥有的域名。 有关如何验证域与 Google Apps 的完整说明，请参阅[验证站点所有权与 Google Apps ](https://support.google.com/webmasters/answer/35179)。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 对所有要添加到 Google Apps 的其他域重复上述步骤。
+    e. 对所有要添加到 Google Apps 的其他域重复上述步骤。
      
      > [!WARNING]
      > 如果更改了 Google Apps 租户的主域并且已配置 Azure AD 单一登录，则必须重复[步骤 2：启用单一登录](#step-two-enable-single-sign-on)下的步骤 3。
@@ -164,7 +164,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 * [配置单一登录](active-directory-saas-google-apps-tutorial.md)
 
 

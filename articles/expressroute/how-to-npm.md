@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/13/2017
-ms.author: cherylmc
-ms.openlocfilehash: 6a03986288fdb6acaf234a8abf690f728d160fd7
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.date: 01/31/2018
+ms.author: pareshmu
+ms.openlocfilehash: 269c2e8a7867521b34128980e33ed97aa7b62a04
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>为 ExpressRoute 配置网络性能监视器（预览版）
 
@@ -43,9 +43,11 @@ ms.lasthandoff: 12/13/2017
 
 通过使用以下任一区域托管的工作区，可以在世界上任何地方监视 ExpressRoute 线路：
 
-* 欧洲西部 
+* 欧洲西部
+* 美国中西部
 * 美国东部 
 * 东南亚 
+* 澳大利亚东南部
 
 ## <a name="workflow"></a>工作流
 
@@ -56,14 +58,13 @@ ms.lasthandoff: 12/13/2017
     * 在本地服务器和 Azure VM 上安装监视代理。
     * 在监视代理服务器上配置设置，允许监视代理进行通信。 （打开防火墙端口等）
 3. 配置网络安全组 (NSG) 规则，允许 Azure VM 上安装的监视代理与本地监视代理进行通信。
-4. 请求将 NPM 工作区加入白名单。
-5. 设置监视：自动发现和管理在 NPM 中可见的网络。
+4. 设置监视：自动发现和管理在 NPM 中可见的网络。
 
 如果已使用网络性能监视器监视其他对象或服务，并且在一个受支持区域已有工作区，则可以跳过步骤 1 和步骤 2，从步骤 3 开始配置。
 
-## <a name="configure"></a>步骤 1：创建工作区
+## <a name="configure"></a>步骤 1：创建一个工作区 （在已链接到 ExpressRoute 线路的 VNET 所在的订阅中）
 
-1. 在 [Azure 门户](https://portal.azure.com)中，从 Marketplace 服务列表中搜索“网络性能监视器”。 在返回结果中，单击打开“网络性能监视器”页面。
+1. 在[Azure 门户](https://portal.azure.com)，选择 Vnet 的订阅到 ExpressRoute 线路对等。 然后从 Marketplace 服务列表中搜索“网络性能监视器”。 在返回结果中，单击打开“网络性能监视器”页面。
 
   ![portal](.\media\how-to-npm\3.png)<br><br>
 2. 在“网络性能监视器”主页底部，单击“创建”打开“网络性能监视器 - 创建新解决方案”页面。 单击“OMS 工作区 - 选择工作区”打开“工作区”页面。 单击“+ 创建新工作区”打开“工作区”页面。
@@ -104,7 +105,7 @@ ms.lasthandoff: 12/13/2017
 
   ![PowerShell 脚本](.\media\how-to-npm\7.png)
 
-### <a name="installagent"></a>2.2：在每个监视服务器上安装监视代理
+### <a name="installagent"></a>2.2：在每个监视服务器上安装监视代理（在要监视的每个 VNET 上）
 
 我们建议在 ExpressRoute 连接的每一端（即本地和 Azure VNET）至少安装两个代理来实现冗余。 使用以下步骤安装代理：
 
@@ -126,6 +127,8 @@ ms.lasthandoff: 12/13/2017
 6. 在“准备安装”页上检查所做的选择，并单击“安装”。
 7. 在“配置已成功完成”页上，单击“完成”。
 8. 完成后，Microsoft Monitoring Agent 将显示在“控制面板”中。 可在该处查看配置并验证代理是否已连接到操作见解 (OMS)。 如果连接到 OMS，代理会显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。
+
+9. 请重复上述操作需要监视每个 VNET。
 
 ### <a name="proxy"></a>2.3：配置代理设置（可选）
 
@@ -164,7 +167,7 @@ ms.lasthandoff: 12/13/2017
 >
 >
 
-在代理服务器上，使用管理权限打开 PowerShell 窗口。 运行 [EnableRules](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634) PowerShell 脚本（之前已下载）。 不要使用任何参数。
+在代理服务器上，使用管理权限打开 PowerShell 窗口。 运行 [EnableRules](https://aka.ms/npmpowershellscript) PowerShell 脚本（之前已下载）。 不要使用任何参数。
 
   ![PowerShell_Script](.\media\how-to-npm\script.png)
 
@@ -174,23 +177,15 @@ ms.lasthandoff: 12/13/2017
 
 有关 NSG 的详细信息，请参阅[网络安全组](../virtual-network/virtual-networks-create-nsg-arm-portal.md)。
 
-## <a name="whitelist"></a>步骤 4：请求将工作区加入白名单
-
 >[!NOTE]
 >请确保已安装代理（包括本地服务器代理和 Azure 服务器代理），并且在执行此步骤前已运行 PowerShell 脚本。
 >
 >
 
-若要开始使用 NPM 的 ExpressRoute 监视功能，必须先请求将你的工作区加入白名单。 [单击此处转到对应页面并填写请求窗体](https://aka.ms/npmcohort)。 （提示：可能需要在新窗口或新选项卡中打开此链接。） 加入白名单的过程可能至少需要一个工作日。 加入白名单完成后，将收到一封电子邮件。
 
-## <a name="setupmonitor"></a>步骤 5：配置 NPM 进行 ExpressRoute 监视
+## <a name="setupmonitor"></a>步骤 4：配置 NPM 以进行 ExpressRoute 监视
 
->[!WARNING]
->若要继续执行操作，工作区必须已加入白名单并且已收到确认电子邮件。
->
->
-
-完成之前的部分并验证已加入白名单后，便可以设置监视功能。
+完成前面的部分后，可以设置监视。
 
 1. 转到“所有资源”页面，单击已加入白名单的 NPM 工作区，导航到“网络性能监视器”概述磁贴。
 
@@ -208,7 +203,7 @@ ms.lasthandoff: 12/13/2017
 
   ![监视磁贴](.\media\how-to-npm\15.png)
 
-## <a name="explore"></a>步骤 6：查看监视磁贴
+## <a name="explore"></a>步骤 5：查看监视磁贴
 
 ### <a name="dashboard"></a>网络性能监视器页面
 

@@ -5,22 +5,22 @@ services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 2f15e130859272a729fb0ad6e0b718d4724f2103
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 03dc26ba3fcf10b52f6d6b77445de3f6770c4162
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure 堆栈数据中心集成的标识
 你可以部署 Azure 堆栈使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供程序。 在部署 Azure 堆栈之前，必须做出的选择。 使用 AD FS 部署也被称为在断开模式中部署 Azure 堆栈。
 
 下表显示两个标识选项之间的差异：
 
-||以物理方式断开连接|以物理方式连接|
+||从 internet 断开连接|连接到 internet|
 |---------|---------|---------|
 |计费|必须是容量<br> 仅企业协议 (EA)|容量或作为你的使用付费<br>EA 或云解决方案提供商 (CSP)|
 |标识|必须是 AD FS|Azure AD 或 AD FS|

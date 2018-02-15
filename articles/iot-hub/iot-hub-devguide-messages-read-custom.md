@@ -11,23 +11,23 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: d1e22a4378caf69d2077d79f78682c4d438dbcd2
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: a40fa94260b488e9c01ac09b22da8c0677d73968
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>对设备到云的消息使用消息路由和自定义终结点
 
-通过 IoT 中心可基于消息属性将[设备到云的消息][lnk-device-to-cloud]路由到面向服务的 IoT 中心终结点。 使用路由规则可将消息灵活发送到所需目标位置，无需借助其他服务来处理消息，也无需编写其他代码。 配置的每个路由规则包含以下属性：
+通过 IoT 中心可基于消息属性将[设备到云的消息][lnk-device-to-cloud]路由到面向服务的 IoT 中心终结点。 使用路由规则可将消息灵活发送到所需目标位置，无需借助其他服务或自定义代码。 配置的每个路由规则包含以下属性：
 
 | 属性      | 说明 |
 | ------------- | ----------- |
 | **Name**      | 用于标识规则的唯一名称。 |
 | **源**    | 要处理的数据流的来源。 例如，设备遥测。 |
-| **条件** | 路由规则的查询表达式，针对消息的标头和正文运行，用于确定消息是否与终结点匹配。 有关构造路由条件的详细信息，请参阅[参考 - 设备孪生和作业的查询语言][lnk-devguide-query-language]。 |
+| **条件** | 路由规则的查询表达式，针对消息的标头和正文运行，确定消息是否与终结点匹配。 有关构造路由条件的详细信息，请参阅[参考 - 设备孪生和作业的查询语言][lnk-devguide-query-language]。 |
 | **终结点**  | IoT 中心将匹配条件的消息发送到的终结点的名称。 终结点应与 IoT 中心位于同一区域，否则跨区域写入将产生费用。 |
 
 一条消息可能与多个路由规则中的条件匹配，在这种情况下，IoT 中心会将该消息传递到与每个匹配规则关联的终结点。 IoT 中心还会自动删除重复的消息传递，因此如果消息与具有相同目标的多个规则匹配，则仅会将其写入该目标位置一次。

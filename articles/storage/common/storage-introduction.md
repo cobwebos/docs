@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 9af4bfd5b5ae46a856b25a94cdbe55e098ea940e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 088a58bf5bfe3736a158d2384c69cb5928b53556
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure 存储简介
 
@@ -131,21 +131,21 @@ Blob 存储帐户是专用于存储块 Blob 和追加 Blob 的存储帐户。 �
 
 ## <a name="encryption"></a>加密
 
-有多种适用于存储服务的基本加密类型。
+有两种适用于存储服务的基本加密类型。 若要详细了解安全性和加密，请参阅 [Azure 存储安全指南](storage-security-guide.md)。
 
 ### <a name="encryption-at-rest"></a>静态加密
 
-可以在适用于 Azure 存储帐户的文件服务（预览版）或 Blob 服务上启用存储服务加密 (SSE)。 如果启用此功能，所有写入到特定服务的数据都会在写入前加密。 读取数据时，数据会在返回前解密。
+静态 Azure 存储服务加密 (SSE) 可帮助保护数据，使组织能够信守在安全性与符合性方面所做的承诺。 使用此功能，Azure 存储可以先自动加密数据，再将数据保存到存储，并在检索之前解密数据。 加密、解密和密钥管理对于用户而言是完全透明的。
+
+可以为 Blob 存储或 Azure 文件（预览版）启用存储服务加密 (SSE)。 如果启用此功能，所有写入到特定服务的数据都会在写入前加密。 读取数据时，数据会在返回前解密。
+
+有关 SSE 静态加密的详细信息，请参阅[静态数据的 Azure 存储服务加密](storage-service-encryption.md)。
 
 ### <a name="client-side-encryption"></a>客户端加密
 
 可以调用存储客户端库的方法以编程方式加密数据，然后再将数据通过网络从客户端发送到 Azure。 数据以加密方式存储，这意味着数据也是静态加密的。 读回数据时，会在收到数据信息后再将其解密。
 
-### <a name="encryption-in-transit-with-azure-file-shares"></a>通过 Azure 文件共享在传输过程中进行加密
-
-有关共享访问签名的详细信息，请参阅 [使用共享访问签名 (SAS)](../storage-dotnet-shared-access-signature-part-1.md) 。 有关安全访问存储帐户的详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)和 [Authentication for the Azure Storage Services](https://msdn.microsoft.com/library/azure/dd179428.aspx)（Azure 存储服务身份验证）。
-
-若要详细了解如何确保存储帐户和加密的安全性，请参阅 [Azure 存储安全指南](storage-security-guide.md)。
+有关客户端加密的详细信息，请参阅 [Microsoft Azure 存储的使用 .NET 的客户端加密](storage-client-side-encryption.md)。
 
 ## <a name="replication"></a>复制
 

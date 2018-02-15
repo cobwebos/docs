@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: db7daf61fa80854c17b58252d7d6cb30c329dfb1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3273f435cb65411c85e3a22369682d51e7a12baf
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 MySQL 数据库
 
@@ -88,7 +88,7 @@ MySQL 数据库，共有网站，支持多个网站平台。 例如，在部署�
 
     - 只有一个单个证书文件所在 DependencyFilesLocalPath。
     
-    - 文件名称必须不包含任何特殊字符。
+    - 文件名称必须不包含任何特殊字符或空格。
 
 
 5. 打开**新**提升 （管理） 的 PowerShell 控制台。 然后将更改为您将文件解压缩的目录。 使用新窗口以避免可能不正确的已加载 PowerShell 模块从系统出现的问题。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 242be346f975e013004c520a41bf14b95a3f27a4
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 3c1095c67b9a5369a9ac797bf17342499675e244
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="azure-cdn-pop-locations"></a>Azure CDN 的 POP 位置
 本文列出了**来自 Verizon 的 Azure CDN** 和**来自 Akamai 的 Azure CDN** 的当前接入点 (POP) 位置。
@@ -37,8 +37,9 @@ ms.lasthandoff: 12/12/2017
 | 北欧和东欧 | 丹麦哥本哈根<br />赫尔辛基，芬兰<br />波兰华沙<br />瑞典斯德哥尔摩 | 丹麦<br />波兰<br />瑞典<br /> |
 | 欧洲西部 | 奥地利维也纳<br />法国巴黎<br />德国法兰克福<br />荷兰阿姆斯特丹<br />英国伦敦 | 奥地利<br />法国<br />德国<br />爱尔兰<br />荷兰<br />瑞士<br />英国 |
 | 欧洲南部 | 意大利米兰<br />西班牙马德里 | 意大利<br />西班牙 |
-| 亚洲 | 香港特别行政区<br />印度班加罗尔<br />印度钦奈<br />印度新德里<br />印度孟买<br />印度新德里<br />印度尼西亚巴淡岛<br />印度尼西亚雅加达<br />日本大阪<br />日本东京<br />新加坡<br />韩国首尔<br />中国台湾高雄 | 香港特别行政区<br />印度<br />印度尼西亚<br />日本<br />马来西亚<br />菲律宾<br />新加坡<br />台湾<br />泰国<br />越南 |
+| 非洲 | 南非约翰内斯堡 | |
 | 中东 | 阿曼马斯喀特<br />阿拉伯联合酋长国富查伊拉 | 卡塔尔 |
+| 亚洲 | 香港特别行政区<br />印度班加罗尔<br />印度钦奈<br />印度新德里<br />印度孟买<br />印度新德里<br />印度尼西亚巴淡岛<br />印度尼西亚雅加达<br />日本大阪<br />日本东京<br />新加坡<br />韩国首尔<br />中国台湾高雄 | 香港特别行政区<br />印度<br />印度尼西亚<br />日本<br />马来西亚<br />菲律宾<br />新加坡<br />台湾<br />泰国<br />越南 |
 | 澳大利亚和新西兰 | 澳大利亚墨尔本<br />澳大利亚悉尼<br />新西兰奥克兰 | 澳大利亚<br />新西兰 |
 
 ## <a name="see-also"></a>另请参阅

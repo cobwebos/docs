@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: elioda
-ms.openlocfilehash: 3ea10ee8652dc2a03791feb66041431e7b3c6ae1
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: ecc5da8daf0f5c93dffc93798f40507f8eac48be
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT 中心高可用性和灾难恢复
 作为一项 Azure 服务，IoT 中心在 Azure 区域级别使用冗余来提供高可用性 (HA)，而解决方案不需要执行任何额外的工作。 此外，Microsoft Azure 平台还包含了相关功能来帮助你构建提供灾难恢复 (DR) 功能或跨区域可用性的解决方案。 若要为设备或用户提供全局性的跨区域高可用性，请利用这些 Azure DR 功能。 [Azure 业务持续性技术指南](../resiliency/resiliency-technical-guidance.md)一文描述了针对业务连续性和 DR 的 Azure 内置功能。 [Azure 应用程序的灾难恢复和高可用性][Disaster recovery and high availability for Azure applications]一文针对 Azure 应用程序的 HA 和 DR 实现策略提供了体系结构指导。
@@ -34,6 +34,8 @@ ms.lasthandoff: 10/14/2017
 | 操作监视消息 |所有未读的消息都丢失 |
 | 云到设备的消息 |丢失 0-5 分钟的数据 |
 | 云到设备的反馈队列 |所有未读的消息都丢失 |
+| 设备孪生数据 |丢失 0-5 分钟的数据 |
+| 父作业和设备作业 |丢失 0-5 分钟的数据 |
 
 ## <a name="regional-failover-with-iot-hub"></a>IoT 中心区域故障转移
 IoT 解决方案中对部署拓扑的完整处理不在本文的介绍范围内。 本文将讨论用于提供高可用性和灾难恢复功能的*区域性故障转移*部署模型。

@@ -142,10 +142,14 @@
           href: logic-apps-enterprise-integration-as2.md
         - name: Azure Blob 存储
           href: ../connectors/connectors-create-api-azureblobstorage.md
+        - name: Azure 事件中心
+          href: ../connectors/connectors-create-api-azure-event-hubs.md
         - name: Azure Functions
           href: logic-apps-azure-functions.md
         - name: Azure 逻辑应用
           href: logic-apps-http-endpoint.md
+        - name: Azure 服务总线
+          href: ../connectors/connectors-create-api-servicebus.md
         - name: Azure SQL 数据库
           href: ../connectors/connectors-create-api-sqlazure.md
         - name: 自定义 API 和 Web 应用
@@ -156,8 +160,6 @@
           href: ../connectors/connectors-create-api-crmonline.md
         - name: EDIFACT
           href: logic-apps-enterprise-integration-edifact.md
-        - name: 事件中心
-          href: ../connectors/connectors-create-api-azure-event-hubs.md
         - name: 文件系统
           href: logic-apps-using-file-connector.md
         - name: 平面文件
@@ -188,8 +190,6 @@
           href: logic-apps-using-sap-connector.md
         - name: 计划
           href: ../connectors/connectors-native-recurrence.md
-        - name: Azure 服务总线
-          href: ../connectors/connectors-create-api-servicebus.md
         - name: SharePoint Online
           href: ../connectors/connectors-create-api-sharepointonline.md
         - name: SharePoint Server

@@ -34,6 +34,7 @@
 ### 配置 P2S VPN
 #### [Azure PowerShell](point-to-site-how-to-radius-ps.md)
 ### [创建和安装 VPN 客户端配置文件](point-to-site-vpn-client-configuration-radius.md)
+### [将 P2S VPN RADIUS 身份验证与 NPS 服务器集成](vpn-gateway-radiuis-mfa-nsp.md)
 
 ## 配置 VNet 到 VNet 连接
 ### [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)

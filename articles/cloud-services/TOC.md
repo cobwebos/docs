@@ -64,13 +64,13 @@
 
 ## 监视
 ### [监视云服务](cloud-services-how-to-monitor.md)
+### [使用性能计数器](diagnostics-performance-counters.md)
 ### [测试性能](../vs-azure-tools-performance-profiling-cloud-services.md)
 #### [使用 Visual Studio 探查器测试](cloud-services-performance-testing-visual-studio-profiler.md)
 ### 启用诊断
 #### [Azure PowerShell](cloud-services-diagnostics-powershell.md)
 #### [.NET](cloud-services-dotnet-diagnostics.md)
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
-### [在 Azure 诊断中使用性能计数器](cloud-services-dotnet-diagnostics-performance-counters.md)
 ### [在 Azure 存储中存储和查看诊断数据](cloud-services-dotnet-diagnostics-storage.md)
 ### [使用诊断跟踪云服务](cloud-services-dotnet-diagnostics-trace-flow.md)
 ### [将诊断数据发送到 App Insights](cloud-services-dotnet-diagnostics-applicationinsights.md)

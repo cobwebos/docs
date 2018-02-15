@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 1/29/2018
 ms.author: v-craic
-ms.openlocfilehash: d376909a46da11ac1b6b1fa968e53ebef8f3dbf7
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 99b0938d5f4c8b022ead3473a0367de5d75cd6ff
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室发布通告
 
@@ -47,6 +47,13 @@ ms.lasthandoff: 01/02/2018
 
 1. 若要为此实验室中的用户创建消息，请将“已启用”设置为“是”。
 
+1. 可以输入**到期日期**以指定向用户显示公告的截止日期和时间。 如果未输入到期日期，该公告将一直显示，直到禁用它。
+
+   > [!NOTE]
+   > 公告到期后，将不再向用户显示，但仍存在于“实验室公告”窗格中。 可以对其进行编辑，然后重新启用它使其重新处于活动状态。
+   >
+   >
+
 1. 输入“通告标题”和“通告文本”。
 
    标题最多可包含 100 个字符，在实验室的“概述”页上向用户显示。 当用户选择该标题时，会显示通告文本。
@@ -58,7 +65,7 @@ ms.lasthandoff: 01/02/2018
 
 1. 准备好发布通告后，请选择“保存”。
 
-如果不再想要向实验室用户显示此通告，请返回“实验室通告”页，并将“已启用”设置为“否”。
+如果不再想要向实验室用户显示此通告，请返回“实验室通告”页，并将“已启用”设置为“否”。 如果指定了到期日期，公告将在该日期和时间自动被禁用。
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>用户查看通告的步骤
 

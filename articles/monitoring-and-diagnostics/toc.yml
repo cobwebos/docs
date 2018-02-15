@@ -41,6 +41,8 @@
           href: monitoring-overview-autoscale.md
         - name: 活动日志
           href: monitoring-overview-activity-logs.md
+        - name: 活动日志警报（预览版）
+          href: monitoring-activity-log-alerts-new-experience.md
         - name: 操作组
           href: monitoring-action-groups.md
         - name: 诊断日志
@@ -84,8 +86,8 @@
           href: insights-alerts-command-line-interface.md
         - name: 使用 Azure PowerShell 配置警报
           href: insights-alerts-powershell.md
-        - name: 让指标警报调用 webhook
-          href: insights-webhooks-alerts.md
+        - name: 用于日志警报的 Webhook 操作
+          href: monitor-alerts-unified-log-webhook.md
         - name: 使用 Resource Manager 模板创建指标警报
           href: monitoring-enable-alerts-using-template.md
     - name: 使用自动缩放

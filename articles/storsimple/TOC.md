@@ -236,6 +236,7 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [市场营销博客](http://blogs.technet.com/b/cis/)
 ## [市场营销](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)
+## [StorSimple 支持选项](storsimple-8000-support-options.md)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
 ## [定价](https://azure.microsoft.com/pricing/details/storsimple/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

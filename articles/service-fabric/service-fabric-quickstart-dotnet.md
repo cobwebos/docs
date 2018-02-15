@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/02/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 70167322f1576b4a9cbd5f499edfc934b8a9a799
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0ba6cf4532e5bcd86c53a63349241509bfc941ec
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-a-net-service-fabric-application-in-azure"></a>在 Azure 中创建 .NET Service Fabric 应用程序
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理可缩放的可靠微服务和容器。 
@@ -123,9 +123,27 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 若要将应用程序部署到 Azure，需要运行该应用程序的 Service Fabric 群集。 
 
 ### <a name="join-a-party-cluster"></a>加入 Party 群集
-合作群集是在 Azure 上托管的、由 Service Fabric 团队运行的免费限时 Service Fabric 群集，任何人都可以在其中部署应用程序及了解平台的情况。 
+合作群集是在 Azure 上托管的、由 Service Fabric 团队运行的免费限时 Service Fabric 群集，任何人都可以在其中部署应用程序及了解平台的情况。 该群集使用单个自签名证书来确保节点到节点和客户端到节点的安全。 
 
-登录并[加入 Windows 群集](http://aka.ms/tryservicefabric)。 请记住**连接终结点**值，该值将在以下步骤中使用。
+登录并[加入 Windows 群集](http://aka.ms/tryservicefabric)。 通过单击 **PFX** 链接，将 PFX 证书下载到计算机。 证书和**连接终结点**值在以下步骤中使用。
+
+![PFX 和连接终结点](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
+
+在 Windows 计算机上，将 PFX 安装到 *CurrentUser\My* 证书存储中。
+
+```powershell
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
+\CurrentUser\My
+
+
+   PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+
+Thumbprint                                Subject
+----------                                -------
+3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
+```
+
+请记住一个后续步骤的指纹。
 
 > [!Note]
 > 默认情况下，Web 前端服务被配置为侦听端口 8080 上是否有传入流量。 端口 8080 在 Party 群集中打开。  如果需要更改应用程序端口，将其更改为在 Party 群集中打开的端口之一。
@@ -136,24 +154,29 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 1. 在解决方案资源管理器中，右键单击“投票”，再选择“发布”。 此时，“发布”对话框显示。
 
-    ![发布对话框](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
-2. 将 Party 群集页面中的“连接终结点”复制到“连接终结点”字段，然后单击“发布”。 例如，`winh1x87d1d.westus.cloudapp.azure.com:19000`。
+2. 将 Party 群集页面中的“连接终结点”复制到“连接终结点”字段。 例如，`zwin7fh14scd.westus.cloudapp.azure.com:19000`。 单击“高级连接参数”并填写以下信息。  *FindValue* 和 *ServerCertThumbprint* 值必须与前一步骤中安装的证书的指纹匹配。 
+
+    ![发布对话框](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
     群集中的每个应用程序都必须具有唯一名称。  Party 群集是一个公共、共享的环境，但是可能与现有应用程序存在冲突。  如果存在名称冲突，请重命名 Visual Studio 项目并重新部署。
 
-3. 打开浏览器，键入群集地址（后跟“:8080”），转到群集中的应用程序，例如，`http://winh1x87d1d.westus.cloudapp.azure.com:8080`。 此时，应该能够看到应用程序在 Azure 群集中运行。
+3. 单击“发布” 。
+
+4. 打开浏览器，键入群集地址（后跟“:8080”），转到群集中的应用程序，例如，`http://zwin7fh14scd.westus.cloudapp.azure.com:8080`。 此时，应该能够看到应用程序在 Azure 群集中运行。
 
 ![应用程序前端](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>在群集中缩放应用程序和服务
 可以跨群集轻松缩放 Service Fabric 服务，以便适应服务负载变化。 可以通过更改群集中运行的实例数量来缩放服务。 服务缩放方式有多种，可以使用 PowerShell 或 Service Fabric CLI (sfctl) 脚本/命令。 在此示例中，使用 Service Fabric Explorer。
 
-Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过浏览器进行访问，访问方法是转到群集 HTTP 管理端口 19080（例如，`http://winh1x87d1d.westus.cloudapp.azure.com:19080`）。
+Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过浏览器进行访问，访问方法是转到群集 HTTP 管理端口 19080（例如，`http://zwin7fh14scd.westus.cloudapp.azure.com:19080`）。 
+
+可能会收到浏览器警告，指出该位置不可信。 这是因为证书是自签名的。 可以选择忽略该警告并继续。 出现浏览器提示时，请选择要连接的已安装证书。 
 
 若要缩放 Web 前端服务，请按照以下步骤操作：
 
-1. 在群集中打开 Service Fabric Explorer（例如，`http://winh1x87d1d.westus.cloudapp.azure.com:19080`）。
+1. 在群集中打开 Service Fabric Explorer（例如，`http://zwin7fh14scd.westus.cloudapp.azure.com:19080`）。
 2. 单击树视图中 fabric:/Voting/VotingWeb 节点旁边的省略号（三个点），再选择“缩放服务”。
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
@@ -185,7 +208,7 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
 7. 在“发布 Service Fabric 应用程序”对话框中，选中“升级应用程序”复选框，再单击“发布”。
 
     ![“发布”对话框中的升级设置](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
-8. 打开浏览器，并转到端口 19080 上的群集地址（例如，`http://winh1x87d1d.westus.cloudapp.azure.com:19080`）。
+8. 打开浏览器，并转到端口 19080 上的群集地址（例如，`http://zwin7fh14scd.westus.cloudapp.azure.com:19080`）。
 9. 单击树视图中的“应用程序”节点，再单击右侧窗格中的“进行中的升级”。 可以了解如何通过群集中的升级域滚动升级，同时确保在继续执行下一步之前每个域都能够正常运行。 在验证域运行状况后，进度栏中的升级域将显示为绿色。
     ![Service Fabric Explorer 中的升级视图](./media/service-fabric-quickstart-dotnet/upgrading.png)
 

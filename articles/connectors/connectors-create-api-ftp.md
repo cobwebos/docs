@@ -73,7 +73,7 @@ ms.lasthandoff: 01/19/2018
    ![FTP 操作图 2](./media/connectors-create-api-ftp/ftp-action-2.png)  
    “获取文件内容”控件打开。 **注意：**系统会提示授权逻辑应用访问 FTP 服务器帐户（如果之前尚未这样做）。  
    ![FTP 操作图 3](./media/connectors-create-api-ftp/ftp-action-3.png)   
-5. 选择“文件”控件（**文件***下方的空白处）。 此处可以使用在 FTP 服务器上找到的新文件或已修改文件的任何属性。  
+5. 选择“文件”控件（**文件** * 下方的空白处）。 此处可以使用在 FTP 服务器上找到的新文件或已修改文件的任何属性。  
 6. 选择“文件内容”选项。  
    ![FTP 操作图 4](./media/connectors-create-api-ftp/ftp-action-4.png)   
 7. 控件更新，指示“FTP - 获取文件内容”操作将获取 FTP 服务器上新文件或已修改文件的“文件内容”。      

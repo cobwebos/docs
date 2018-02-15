@@ -3,9 +3,9 @@ title: "使用 Linux VM 用户分配的 MSI 访问 Azure 资源管理器"
 description: "本教程介绍使用 Linux VM 上用户分配的托管服务标识 (MSI) 访问 Azure 资源管理器的过程。"
 services: active-directory
 documentationcenter: 
-author: bryanLa
+author: daveba
 manager: mtillman
-editor: bryanla
+editor: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: arluca
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: bebdccb616a4677fdf36ac257ac36f1827958af7
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 350b20dbff306221fbedd069ef378f11e2ec1415
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-resource-manager"></a>使用 Linux VM 上用户分配的托管服务标识 (MSI) 访问 Azure 资源管理器
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 01/09/2018
 > * 授予 MSI 对 Azure 资源管理器中资源组的访问权限 
 > * 使用 MSI 获取访问令牌，并使用它调用 Azure 资源管理器 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
 
@@ -44,8 +44,8 @@ ms.lasthandoff: 01/09/2018
 
 若要运行本教程中的 CLI 脚本示例，你有两种选择：
 
-- 从 Azure 门户或者通过每个代码块右上角的“试用”按钮使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
-- 如果希望使用本地 CLI 控制台，可以[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.23 或更高版本）。
+- 从 Azure 门户中或者通过每个代码块右上角的“试用”按钮使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
+- 如果喜欢使用本地 CLI 控制台，请[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.23 或更高版本）。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -110,10 +110,10 @@ az vm assign-identity -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscripti
 
 使用 MSI，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源 API 进行身份验证。 在本教程中，代码访问 Azure 资源管理器 API。 
 
-需先向 MSI 的标识授予对 Azure 资源管理器中资源的访问权限，代码才能访问 API。 在此情况下，即为包含 VM 的资源组。 请务必将 `<CLIENT ID>`、`<SUBSCRIPTION ID>` 和 `<RESOURCE GROUP>` 参数值替换为你自己的值。 将 `<CLIENT ID>` 替换为在[创建用户分配的 MSI](#create-a-user-assigned-msi) 中由 `az identity create` 命令返回的 `clientId` 属性： 
+需先向 MSI 的标识授予对 Azure 资源管理器中资源的访问权限，代码才能访问 API。 在此情况下，即为包含 VM 的资源组。 根据环境的需要更新 `<SUBSCRIPTION ID>` 和 `<RESOURCE GROUP>` 的值。 此外，将 `<MSI PRINCIPALID>` 替换为在[创建用户分配的 MSI](#create-a-user-assigned-msi) 中由 `az identity create` 命令返回的 `principalId` 属性：
 
 ```azurecli-interactive
-az role assignment create --assignee <CLIENT ID> --role ‘Reader’ --scope "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP> "
+az role assignment create --assignee <MSI PRINCIPALID> --role 'Reader' --scope "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP> "
 ```
 
 响应包含所创建的角色分配的详细信息，与以下示例类似：

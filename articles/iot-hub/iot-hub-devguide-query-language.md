@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2017
+ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: 450f2d38f7b641bcf6b8be061969404a1b582b4c
-ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
+ms.openlocfilehash: 01951afa983e7a578281fda38bb4714df6b41891
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>用于设备孪生、作业和消息路由的 IoT 中心查询语言
 
@@ -131,7 +131,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-此分组查询将返回类似于以下示例的结果。 这里，三个设备报告了成功配置，两个仍在应用配置，一个报告了错误。 
+此分组查询将返回类似于以下示例的结果：
 
 ```json
 [
@@ -149,6 +149,8 @@ GROUP BY properties.reported.telemetryConfig.status
     }
 ]
 ```
+
+在此示例中，三个设备报告了成功配置，两个仍在应用配置，一个报告了错误。
 
 投影查询允许开发人员仅返回他们所关注的属性。 例如，若要检索所有已断开连接设备的上次活动时间，请使用以下查询：
 
@@ -172,8 +174,9 @@ while (query.HasMoreResults)
 }
 ```
 
-请注意如何使用页面大小（最大 100）实例化 **query** 对象，并通过多次调用 **GetNextAsTwinAsync** 方法来检索多个页面。
-请注意，查询对象会公开多个 **Next***，具体取决于查询所需的反序列化选项（如设备孪生或作业对象）或者使用投影时要用的普通 JSON。
+“查询”对象实例化为页面大小（最大为 100）。 然后通过多次调用 GetNextAsTwinAsync 方法来检索多个页面。
+
+查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
 
 ### <a name="nodejs-example"></a>Node.js 示例
 查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK][lnk-hub-sdks] 在 **Registry** 对象中公开。
@@ -198,16 +201,19 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-请注意如何使用页面大小（最大 100）实例化 **query** 对象，并通过多次调用 **nextAsTwin** 方法来检索多个页面。
-请注意，查询对象会公开多个 **next***，具体取决于查询所需的反序列化选项（如设备孪生或作业对象）或者使用投影时要用的普通 JSON。
+“查询”对象实例化为页面大小（最大为 100）。 然后通过多次调用 nextAsTwin 方法来检索多个页面。
+
+查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
 
 ### <a name="limitations"></a>限制
+
 > [!IMPORTANT]
-> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果按 ID 查询单个设备孪生，将始终优先使用检索设备孪生 API，它始终包含最新值并具有较高的限制。
+> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果通过 ID 查询单个设备孪生，请使用检索设备双向 API。 此 API 始终包含最新值，并具有更高的节流限制。
 
 目前，仅支持在基元类型（无对象）之间进行比较，例如，仅在这些属性具有基元值时才支持 `... WHERE properties.desired.config = properties.reported.config`。
 
 ## <a name="get-started-with-jobs-queries"></a>作业查询入门
+
 使用[作业][lnk-jobs]可对一组设备执行操作。 每个设备孪生包含名为**作业**的集合中该设备参与的作业的信息。
 从逻辑上讲，
 
@@ -243,7 +249,7 @@ query.nextAsTwin(onResults);
 目前，可以使用 IoT 中心查询语言以 **devices.jobs** 形式查询此集合。
 
 > [!IMPORTANT]
-> 目前，查询设备孪生（即包含“FROM devices”的查询）时不会返回作业属性。 它仅可使用 `FROM devices.jobs` 通过查询直接访问。
+> 目前，查询设备孪生时不会返回作业属性。 即包含“FROM 设备”的查询。 该作业属性仅可通过使用 `FROM devices.jobs` 的查询直接访问。
 >
 >
 
@@ -282,9 +288,9 @@ WHERE devices.jobs.jobId = 'myJobId'
 
 ## <a name="device-to-cloud-message-routes-query-expressions"></a>设备到云消息路由查询表达式
 
-可使用[设备到云的路由][lnk-devguide-messaging-routes]配置 IoT 中心，根据按各消息计算的表达式将设备到云的消息分派给不同的终结点。
+可使用[设备到云的路由][lnk-devguide-messaging-routes]配置 IoT 中心，以将设备到云的消息分派给不同的终结点。 根据针对各消息计算的表达式进行分派。
 
-在克隆和作业查询中，路由[条件][lnk-query-expressions]使用相同的 IoT 中心查询语言作为条件。 基于消息标题和正文评估路由条件。 路由查询表达式可能只涉及消息标题、只涉及消息正文或同时涉及消息标题和正文。 为了对消息进行路由，IoT 中心为标头和消息正文采用了特定的架构。 以下各节介绍了 IoT 中心正确进行路由所需满足的要求。
+在克隆和作业查询中，路由[条件][lnk-query-expressions]使用相同的 IoT 中心查询语言作为条件。 基于消息标题和正文评估路由条件。 路由查询表达式可能只涉及消息标题、只涉及消息正文或同时涉及两者。 为了对消息进行路由，IoT 中心为标头和消息正文采用了特定的架构。 以下各节介绍了 IoT 中心正确进行路由所需满足的要求。
 
 ### <a name="routing-on-message-headers"></a>基于消息标题路由
 
@@ -311,7 +317,7 @@ IoT 中心假设以下 JSON 表现形式的消息标题用于消息路由：
 ```
 
 消息系统属性以 `'$'` 符号为前缀。
-用户属性始终使用其名称进行访问。 如果用户属性名恰好与系统属性（例如 `$to`）完全一致，则将使用 `$to` 表达式检索用户属性。
+用户属性始终使用其名称进行访问。 如果用户属性名与系统属性（例如 `$to`）完全一致，则将使用 `$to` 表达式检索用户属性。
 始终可以使用括号 `{}` 访问系统属性：例如，可以使用表达式 `{$to}` 访问系统属性 `to`。 将属性名称括在括号中始终可检索相应的系统属性。
 
 请记住，属性名称不区分大小写。
@@ -342,7 +348,7 @@ messageType = 'alerts' AND as_number(severity) <= 2
 
 ### <a name="routing-on-message-bodies"></a>基于消息正文路由
 
-如果消息正文是使用 UTF-8、UTF-16 或 UTF-32 编码的正确格式的 JSON，则 IoT 中心只能基于消息正文内容路由。 在消息标头中，将消息的内容类型设置为 `application/json`，并将内容编码设置为一个受支持 UTF 编码。 如果未指定标题，IoT 中心不会尝试对消息评估涉及正文的任何查询表达式。 如果消息不是 JSON 消息，或者如果消息未指定内容类型和内容编码，仍可以使用消息路由基于消息标题路由该消息。
+如果消息正文是使用 UTF-8、UTF-16 或 UTF-32 编码的正确的 JSON 格式，则 IoT 中心只能基于消息正文内容路由。 将消息的内容类型设置为 `application/json`。 在消息标头中，将内容编码设置为一个受支持的 UTF 编码。 如果未指定标题，IoT 中心不会尝试对消息评估涉及正文的任何查询表达式。 如果消息不是 JSON 消息，或者如果消息未指定内容类型和内容编码，仍可以使用消息路由基于消息标题路由该消息。
 
 可以在查询表达式中使用 `$body` 路由消息。 可以在查询表达式中使用简单的正文引用、正文数组引用或多个正文引用。 查询表达式也可以将正文引用和消息标题引用结合使用。 例如，以下所有查询表达式都有效：
 
@@ -355,7 +361,7 @@ $body.Weather.Temperature = 50 AND Status = 'Active'
 ```
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT 中心查询基础知识
-每个 IoT 中心查询都包括 SELECT 和 FROM 子句，以及可选的 WHERE 和 GROUP BY 子句。 每个查询针对 JSON 文档的集合（例如，设备孪生）运行。 FROM 子句指示要迭代的文档集合（**devices** 或 **devices.jobs**）。 然后，应用 WHERE 子句中的筛选器。 使用聚合时，根据 GROUP BY 子句中的指定将此步骤的结果分组；对于每个组，会根据 SELECT 子句中的指定生成一行。
+每个 IoT 中心查询都包括 SELECT 和 FROM 子句，以及可选的 WHERE 和 GROUP BY 子句。 每个查询针对 JSON 文档的集合（例如，设备孪生）运行。 FROM 子句指示要迭代的文档集合（**devices** 或 **devices.jobs**）。 然后，应用 WHERE 子句中的筛选器。 使用聚合时，将按 GROUP BY 子句中的指定对此步骤的结果分组。 对于每组，将按照 SELECT 子句中的指定生成一行。
 
 ```sql
 SELECT <select_list>
@@ -374,7 +380,7 @@ FROM <from_specification>
 
 ## <a name="select-clause"></a>SELECT 子句
 **SELECT <select_list>** 是必需的，用于指定要通过查询检索的值。 它指定用于生成新 JSON 对象的 JSON 值。
-对于 FROM 集合中已筛选子集（且可选择性分组）的每个元素，投影阶段将生成一个新 JSON 对象，其由 SELECT 子句中指定的值构造而成。
+对于 FROM 集合中已筛选子集（且可选择性分组）的每个元素，投影阶段将生成一个新 JSON 对象。 使用 SELECT 子句中指定的值构造此对象。
 
 SELECT 子句的语法如下：
 
@@ -433,7 +439,7 @@ GROUP BY <group_by_element>
 * 求值结果为 JSON 类型的实例（例如布尔值、数字、字符串、数组或对象）。
 * 由设备 JSON 文档中的操作数据以及使用内置运算符和函数的常量定义。
 
-条件是求值为布尔值的表达式。 除布尔值 **true** 以外的任何常量均被视为 **false**（包括 **null**、**undefined**、任何对象或数组实例、任何字符串，当然还有布尔值 **false**）。
+条件是求值为布尔值的表达式。 将任何不同于布尔值“true”的常数视为“false”。 此规则包括“Null”、“undefined”、任何对象或数组实例、任何字符串和布尔值“false”。
 
 表达式的语法为：
 

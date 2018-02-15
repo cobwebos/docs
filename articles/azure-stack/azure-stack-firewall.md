@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: f7b621312677c0b250e267770ae0c445ee9f083f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 919618c0779d47f0add02d5e7d3ab9ab4b5bdd10
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure 堆栈防火墙集成
 建议你使用防火墙设备来帮助安全 Azure 堆栈。 虽然防火墙可以帮助与分布式的拒绝服务 (DDOS) 攻击、 入侵检测等内容检查内容，但它们也可能会变为如 blob、 表和队列的 Azure 存储服务的形成吞吐量瓶颈。
@@ -41,7 +41,7 @@ NAT 也可在外部网络或公共 Vip 上的公共 IP 地址的替代方法。 
 - 对于使用 Azure 的混合云方案，请考虑 Azure 不支持设置使用 VPN 隧道连接到终结点使用 nat。
 
 ### <a name="ssl-decryption"></a>SSL 解密
-当前的 SSL 解密我们建议是禁用该 Azure 堆栈的所有流量，将来我们将提供有关如何为 Azure 堆栈启用 SSL 解密的指南。
+当前建议禁用 Azure 堆栈的所有流量的 SSL 解密。 如果将来的更新在支持它，则指南将提供有关如何启用 Azure 堆栈的 SSL 解密。
 
 ## <a name="edge-firewall-scenario"></a>边缘防火墙方案
 在边缘部署中，直接在边缘路由器或防火墙后面部署 Azure 堆栈。 在这些情况下，它被支持对防火墙后，才更高版本边框或充当边框设备，如果它支持相等成本多路径 (ECMP) 与 BGP 或静态路由。

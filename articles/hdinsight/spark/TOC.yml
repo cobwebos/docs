@@ -86,6 +86,9 @@
           href: apache-spark-use-with-data-lake-store.md
         - name: 连接到 Azure SQL 数据库
           href: apache-spark-connect-to-sql-database.md
+        - name: 使用 Spark 和 Cosmos DB 实现 lambda 体系结构
+          href: ../../cosmos-db/lambda-architecture.md
+          maintainContext: true
     - name: Spark 流式处理
       items:
         - name: 概述

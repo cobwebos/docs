@@ -4,7 +4,7 @@ description: "了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase
 services: hdinsight
 documentationcenter: 
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: 
 ms.assetid: 1d1ed180-e0f4-4d1c-b5ea-72e0eda643bc
 ms.service: hdinsight
@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: 07f6d49b6d5c0a5b77ef5a7a7395a37e79419955
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 7f5e4cd36b32ae86bc6f498c81d5a558ca6974d2
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>构建适用于 Apache HBase 的 Java 应用程序
 
@@ -628,7 +628,7 @@ ms.lasthandoff: 11/04/2017
 
 2. 保存 `hbase-runner.psm1` 文件。
 
-3. 打开一个新的 Azure PowerShell 窗口，将目录切换到 `hbaseapp` 目录，并运行以下命令：
+3. 打开一个新的 Azure PowerShell 窗口，将目录切换到 `hbaseapp` 目录，然后运行以下命令：
 
     ```powershell
     PS C:\ Import-Module c:\path\to\hbase-runner.psm1
@@ -642,7 +642,7 @@ ms.lasthandoff: 11/04/2017
     Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName hdinsightclustername
     ```
 
-    将 `hdinsightclustername` 替换为群集的名称。 此命令将 `hbaseapp-1.0-SNAPSHOT.jar` 上传到群集的主存储中的 `example/jars` 位置。
+    将 `hdinsightclustername` 替换为群集的名称。 出现提示时，输入群集登录名 (admin) 和密码。 此命令将 `hbaseapp-1.0-SNAPSHOT.jar` 上传到群集的主存储中的 `example/jars` 位置。
 
 5. 若要使用 `hbaseapp` 创建表，请使用以下命令：
 
@@ -650,7 +650,7 @@ ms.lasthandoff: 11/04/2017
     Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName hdinsightclustername
     ```
 
-    将 `hdinsightclustername` 替换为群集的名称。
+    将 `hdinsightclustername` 替换为群集的名称。 出现提示时，输入群集登录名 (admin) 和密码。
 
     此命令会在 HDInsight 群集上的 HBase 中创建一个名为 **people** 的表。 此命令在控制台窗口中不显示任何输出。
 
@@ -660,7 +660,7 @@ ms.lasthandoff: 11/04/2017
     Start-HBaseExample -className com.microsoft.examples.SearchByEmail -clusterName hdinsightclustername -emailRegex contoso.com
     ```
 
-    将 `hdinsightclustername` 替换为群集的名称。
+    将 `hdinsightclustername` 替换为群集的名称。 出现提示时，输入群集登录名 (admin) 和密码。
 
     此命令使用 `SearchByEmail` 类搜索 `contactinformation` 列系列和 `email` 列包含字符串 `contoso.com` 的任何行。 应该会收到以下结果：
 

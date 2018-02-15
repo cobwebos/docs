@@ -1,7 +1,7 @@
 ---
 title: "Azure Cosmos DB 的服务器端 JavaScript 编程 | Microsoft Docs"
 description: "了解如何通过 Azure Cosmos DB 使用 JavaScript 编写存储过程、数据库触发器和用户定义的函数 (UDF)。 获取数据库编程提示以及更多内容。"
-keywords: "数据库触发器, 存储过程, 存储过程, 数据库程序, sproc, DocumentDB, Azure, Microsoft Azure"
+keywords: "数据库触发器、存储过程、存储过程、数据库程序、sproc、Azure、Microsoft Azure"
 services: cosmos-db
 documentationcenter: 
 author: aliuy
@@ -13,15 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2016
+ms.date: 12/07/2017
 ms.author: andrl
-ms.openlocfilehash: ef191c3c8d85afa389859956d30b5ac0275053d2
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: d8438d126c1f994e51871e80bb11610ec95b0814
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB 服务器端编程：存储过程、数据库触发器和 UDF
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
 了解 Azure Cosmos DB 的对 JavaScript 的语言集成式事务执行如何让开发人员使用 [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript 在本机编写存储过程、触发器和用户定义的函数 (UDF)。 这使得能够编写可在数据库存储分区上直接传送和执行的数据库程序应用程序逻辑。 
 
 我们建议从观看下面的视频入手，Andrew Liu 在该视频中简要介绍了 Cosmos DB 的服务器端数据库编程模型。 
@@ -53,7 +56,7 @@ ms.lasthandoff: 11/11/2017
   * 它会在原始数据之上添加抽象层，这使得数据架构师能够从数据独立发展他们的应用程序。 当数据无架构时，如果他们必须直接处理数据，则由于可能需要兼并到应用程序中的脆性假设，使得这样做尤其有益。  
   * 这种抽象使企业通过从脚本简化访问来保证他们的数据安全。  
 
-数据库触发器、存储过程和自定义查询运算符的创建和执行通过 [REST API](/rest/api/documentdb/)、[Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) 和[客户端 SDK](documentdb-sdk-dotnet.md) 在许多平台（包括 .NET、Node.js 和 JavaScript）中得到支持。
+数据库触发器、存储过程和自定义查询运算符的创建和执行通过 [Azure 门户](https://portal.azure.com)、[REST API](/rest/api/documentdb/)、[Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) 和 [客户端 SDK](sql-api-sdk-dotnet.md)在许多平台（包括 .NET、Node.js 和 JavaScript）中得到支持。
 
 本教程使用[具有 Q Promises 的 Node.js SDK](http://azure.github.io/azure-documentdb-node-q/) 来阐明存储过程、触发器和 UDF 的语法和用法。   
 
@@ -437,7 +440,7 @@ Cosmos DB 提供通过文档中的操作执行或触发的触发器。 例如，
 务必要注意的一点是 Cosmos DB 中触发器的**事务**执行。 此后触发器作为与原始文档的创建相同的事务的一部分运行。 因此，如果我们从后触发器引发异常（假设我们无法更新元数据文档），那么整个事务都会失败并回滚。 不会创建文档，而将返回异常。  
 
 ## <a id="udf"></a>用户定义的函数
-用户定义的函数 (UDF) 用于扩展 DocumentDB API SQL 查询语言语法和实现自定义业务逻辑。 它们只能从查询内部调用。 它们不具有对上下文对象的访问权限且旨在被用作仅计算的 JavaScript。 因此，UDF 可以在 Cosmos DB 服务的次要副本上运行。  
+将用户定义的函数 (UDF) 用来扩展 Azure Cosmos DB SQL 查询语言语法和实现自定义业务逻辑。 它们只能从查询内部调用。 它们不具有对上下文对象的访问权限且旨在被用作仅计算的 JavaScript。 因此，UDF 可以在 Cosmos DB 服务的次要副本上运行。  
 
 以下示例创建 UDF 来计算基于各种收入档次的税率的所得税，并在查询内部使用它查找所有支付税款超过 $20,000 的人。
 
@@ -479,7 +482,7 @@ UDF 随后可以用在诸如下面示例的查询中：
     });
 
 ## <a name="javascript-language-integrated-query-api"></a>JavaScript 语言集成的查询 API
-除了使用 DocumentDB 的 SQL 语法发起查询外，服务器端 SDK 还允许在没有任何 SQL 知识的情况下使用流畅的 JavaScript 接口来执行优化的查询。 JavaScript 查询 API 允许使用与 ECMAScript5 的数组内置项类似的语法和如 lodash 等热门的 JavaScript 库，通过将谓词函数传递到可链的函数调用中以编程方式生成查询。 查询由将使用 Azure Cosmos DB 的索引有效执行的 JavaScript 运行时进行分析。
+除了使用 Azure Cosmos DB 的 SQL 语法发起查询外，服务器端 SDK 还允许在没有任何 SQL 知识的情况下使用流畅的 JavaScript 接口来执行优化的查询。 JavaScript 查询 API 允许使用与 ECMAScript5 的数组内置项类似的语法和如 lodash 等热门的 JavaScript 库，通过将谓词函数传递到可链的函数调用中以编程方式生成查询。 查询由将使用 Azure Cosmos DB 的索引有效执行的 JavaScript 运行时进行分析。
 
 > [!NOTE]
 > `__`（双下划线）是 `getContext().getCollection()` 的别名。
@@ -642,7 +645,7 @@ UDF 随后可以用在诸如下面示例的查询中：
 
 
 ## <a name="runtime-support"></a>运行时支持
-[DocumentDB JavaScript 服务器端 API](http://azure.github.io/azure-documentdb-js-server/) 为大多数 [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 规范的主流 JavaScript 语言功能提供支持。
+Azure Cosmos DB [JavaScript 服务器端 API](http://azure.github.io/azure-documentdb-js-server/) 为大多数由 [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 规范的主流 JavaScript 语言功能提供支持。
 
 ### <a name="security"></a>“安全”
 JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效果不会在未经过数据库级别的快照事务隔离的情况下泄漏到其他脚本。 运行时环境是共用的，但是在每次运行后都会清理上下文。 因此可以保证它们安全避免互相之间的任何意外副作用。
@@ -651,7 +654,7 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
 存储过程、触发器和 UDF 是隐式预编译到字节代码格式的，这是为了避免每次脚本调用时产生的编译成本。 这可确保存储过程的调用迅速且痕迹较少。
 
 ## <a name="client-sdk-support"></a>客户端 SDK 支持
-除了适用于 [Node.js](documentdb-sdk-node.md) 客户端的 DocumentDB API 外，Azure Cosmos DB 还有适用于 DocumentDB API 的 [.NET](documentdb-sdk-dotnet.md)、[.NET Core](documentdb-sdk-dotnet-core.md)、[Java](documentdb-sdk-java.md)、[JavaScript](http://azure.github.io/azure-documentdb-js/) 和[Python SDK](documentdb-sdk-python.md)。 也可以使用这些 SDK 来创建和执行存储过程、触发器和 UDF。 以下示例演示如何使用 .NET 客户端创建和执行存储过程。 请注意 .NET 类型是如何以 JSON 传递到存储过程中并从中读回的。
+除 Azure Cosmos DB 的[Node.js](sql-api-sdk-node.md) 外，Azure Cosmos DB 还有适用于 SQL API 的 [.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md)、[Java](sql-api-sdk-java.md)、[JavaScript](http://azure.github.io/azure-documentdb-js/) 和[Python SDK](sql-api-sdk-python.md)。 也可以使用这些 SDK 来创建和执行存储过程、触发器和 UDF。 以下示例演示如何使用 .NET 客户端创建和执行存储过程。 请注意 .NET 类型是如何以 JSON 传递到存储过程中并从中读回的。
 
     var markAntiquesSproc = new StoredProcedure
     {
@@ -684,7 +687,7 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
     Document createdDocument = await client.ExecuteStoredProcedureAsync<Document>(UriFactory.CreateStoredProcedureUri("db", "coll", "ValidateDocumentAge"), document, 1920);
 
 
-本示例演示如何使用 [DocumentDB .NET API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) 创建预触发器，并使用已启用的触发器创建文档。 
+本示例演示如何使用 [SQL .NET API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) 创建预触发器，并使用已启用的触发器创建文档。 
 
     Trigger preTrigger = new Trigger()
     {
@@ -705,7 +708,7 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
         });
 
 
-以下示例演示如何创建用户定义的函数 (UDF) 并在 [DocumentDB API SQL 查询](documentdb-sql-query.md)中使用它。
+以下示例演示如何创建用户定义的函数 (UDF) 并在 [SQL 查询](sql-api-sql-query.md)中使用它。
 
     UserDefinedFunction function = new UserDefinedFunction()
     {
@@ -802,7 +805,7 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
 
 还可以查找以下参考和资源，可帮助了解更多有关 Azure Cosmos DB 服务器端编程的信息：
 
-* [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md)
+* [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
 * [JSON](http://www.json.org/) 
 * [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)

@@ -3,24 +3,23 @@ title: "操作和不操作 - Azure 基于角色的访问控制 (RBAC) | Microsof
 description: "本主题介绍适用于基于角色的访问控制 (RBAC) 的内置角色。 将不断添加角色，所以请查看文档是否有最新版本。"
 services: active-directory
 documentationcenter: 
-author: andredm7
-manager: femila
+author: curtand
+manager: mtillman
 editor: 
-ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 06/28/2017
-ms.author: andredm
-ms.reviewer: 
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a5de00793621cfdecea887c53a22d482a25d1b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/30/2018
+ms.author: curtand
+ms.reviewer: rqureshi
+ms.custom: it-pro
+ms.openlocfilehash: 43a958129b3c86f5e7a596b992d793a600c46dfd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>用于 Azure 基于角色的访问控制的内置角色
 Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和服务的内置角色。 不能修改内置角色的定义。 但是，可以创建 [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)，以满足组织的特定需要。
@@ -55,7 +54,7 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | [数据工厂参与者](#data-factory-contributor) |可创建和管理数据工厂，以及它们包含的子资源。 |
 | [实验室用户](#devtest-labs-user) |可查看一切内容，并可连接、启动、重启和关闭虚拟机 |
 | [DNS 区域参与者](#dns-zone-contributor) |可以管理 DNS 区域和记录 |
-| [Azure Cosmos DB 帐户参与者](#documentdb-account-contributor) |可管理 Azure Cosmos DB 帐户 |
+| [DocumentDB 帐户参与者](#documentdb-account-contributor) |可管理 Azure Cosmos DB 帐户 |
 | [智能系统帐户参与者](#intelligent-systems-account-contributor) |可管理 Intelligent Systems 帐户 |
 | 逻辑应用参与者 | 可以管理逻辑应用的所有方面，但不能创建新应用。 |
 | 逻辑应用运算符 |可以启动和停止在逻辑应用内定义的工作流。 |
@@ -68,7 +67,9 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | [Redis 缓存参与者](#redis-cache-contributor) |可管理 Redis 缓存 |
 | [计划程序作业集合参与者](#scheduler-job-collections-contributor) |可管理计划程序作业集合 |
 | [搜索服务参与者](#search-service-contributor) |可管理搜索服务 |
-| [安全经理](#security-manager) |可管理安全组件、安全策略和虚拟机 |
+| [安全管理员](#security-administrator) | 仅在安全中心内：可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议 |
+| [安全经理](#security-manager) | 可管理安全组件、安全策略和虚拟机 |
+| [安全读者](#security-reader) | 仅在安全中心内：可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改 |
 | [Site Recovery 参与者](#site-recovery-contributor) | 可以在恢复服务保管库中管理 Site Recovery |
 | [Site Recovery 运算符](#site-recovery-operator) | 可以在恢复服务保管库中管理故障转移和故障回复 Site Recovery |
 | [Site Recovery 读取器](#site-recovery-reader) | 可以查看所有 Site Recovery 管理操作  |
@@ -371,13 +372,13 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | Microsoft.Resources/subscriptions/resourceGroups/read |读取资源组 |
 | Microsoft.Support/\* |创建和管理支持票证 |
 
-### <a name="azure-cosmos-db-account-contributor"></a>Azure Cosmos DB 帐户参与者
-可管理 Azure Cosmos DB 帐户
+### <a name="documentdb-account-contributor"></a>DocumentDB 帐户参与者
+可管理 Azure Cosmos DB 帐户。 Azure Cosmos DB 以前称为 DocumentDB。
 
 | **操作** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |读取角色和角色分配 |
-| Microsoft.DocumentDb/databaseAccounts/* |创建和管理 DocumentDB 帐户 |
+| Microsoft.DocumentDb/databaseAccounts/* |创建并管理 Azure Cosmos DB 帐户 |
 | Microsoft.Insights/alertRules/* |创建和管理警报规则 |
 | Microsoft.ResourceHealth/availabilityStatuses/read |读取资源的运行状况 |
 | Microsoft.Resources/deployments/* |创建和管理资源组部署 |
@@ -506,21 +507,50 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | Microsoft.Search/searchServices/* |创建和管理搜索服务 |
 | Microsoft.Support/* |创建和管理支持票证 |
 
+### <a name="security-administrator"></a>安全管理员
+仅在安全中心内：可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议
+
+| **操作** |  |
+| --- | --- |
+| Microsoft.Authorization/*/read |读取角色和角色分配 |
+| Microsoft.Authorization/policyAssignments/* | 创建和管理策略分配 |
+| Microsoft.Authorization/policySetDefinitions/* | 创建和管理策略集 |
+| Microsoft.Authorization/policyDefinitions/* | 创建和管理策略定义 |
+| Microsoft.Insights/alertRules/* | 创建和管理警报规则 |
+| Microsoft.operationalInsights/workspaces/*/read | 查看 Log Analytics 数据 |
+| Microsoft.Resources/deployments/* |创建和管理资源组部署 |
+| Microsoft.Resources/subscriptions/resourceGroups/read |读取资源组 |
+| Microsoft.Security/*/read | 读取安全组件和策略 |
+| Microsoft.Support/* |创建和管理支持票证 |
+
 ### <a name="security-manager"></a>安全管理器
 可管理安全组件、安全策略和虚拟机
 
 | **操作** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |读取角色和角色分配 |
-| Microsoft.ClassicCompute/*/read |读取经典计算虚拟机的配置信息 |
-| Microsoft.ClassicCompute/virtualMachines/*/write |为虚拟机写入配置 |
+| Microsoft.ClassicCompute/*/read |读取经典虚拟机的配置信息 |
+| Microsoft.ClassicCompute/virtualMachines/*/write |写入经典虚拟机的配置 |
 | Microsoft.ClassicNetwork/*/read |读取有关经典网络的配置信息 |
-| Microsoft.Insights/alertRules/* |创建和管理警报规则 |
+| Microsoft.Insights/alertRules/* | 创建和管理警报规则 |
 | Microsoft.ResourceHealth/availabilityStatuses/read |读取资源的运行状况 |
 | Microsoft.Resources/deployments/* |创建和管理资源组部署 |
 | Microsoft.Resources/subscriptions/resourceGroups/read |读取资源组 |
 | Microsoft.Security/* |创建和管理安全组件和策略 |
 | Microsoft.Support/* |创建和管理支持票证 |
+
+### <a name="security-reader"></a>安全读者
+仅在安全中心内：可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改
+
+| **操作** |  |
+| --- | --- |
+| Microsoft.Authorization/*/read |读取角色和角色分配 |
+| Microsoft.Insights/alertRules/* | 创建和管理警报规则 |
+| Microsoft.operationalInsights/workspaces/*/read | 查看 Log Analytics 数据 |
+| Microsoft.Resources/subscriptions/resourceGroups/read |读取资源组 |
+| Microsoft.Security/*/read | 读取安全组件和策略 |
+| Microsoft.Support/* |创建和管理支持票证 |
+| Microsoft.Resources/deployments/* |创建和管理资源组部署 |
 
 ### <a name="site-recovery-contributor"></a>Site Recovery 参与者
 可以管理所有 Site Recovery 管理操作，但无法创建恢复服务保管库和向其他用户分配访问权限
@@ -703,7 +733,7 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 
 | **操作** |  |
 | --- | --- |
-| Microsoft.Authorization/*/read |读取授权 |
+| Microsoft.Authorization/*/read |读取角色和角色分配 |
 | Microsoft.Insights/alertRules/* |创建和管理 Insights 警报规则 |
 | Microsoft.ResourceHealth/availabilityStatuses/read |读取资源的运行状况 |
 | Microsoft.Resources/deployments/* |创建和管理资源组部署 |
@@ -872,3 +902,4 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 * [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)：了解如何创建自定义角色，以满足访问需要。
 * [创建访问权限更改历史记录报告](role-based-access-control-access-change-history-report.md)：记录 RBAC 中的角色分配更改。
 * [基于角色的访问控制故障排除](role-based-access-control-troubleshooting.md)：获取解决常见问题的建议。
+* [Azure 安全中心中的权限](../security-center/security-center-permissions.md)

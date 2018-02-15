@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 36eee42b7b10dfb62e569d665f62a94fc94365be
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: cee0619df4e2ed2e31becc764dd64dafef6e97d5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Azure 逻辑应用的工作流定义语言架构
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/06/2017
   
 |元素名称|必选|说明|  
 |------------------|--------------|-----------------|  
-|$schema|否|指定描述定义语言版本的 JSON 架构文件所在的位置。 从外部引用定义时，需要提供此位置。 在本文档中，该位置为： <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#`|  
+|$schema|否|指定描述定义语言版本的 JSON 架构文件所在的位置。 从外部引用定义时，需要提供此位置。 下面是本文档位置： <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`|  
 |contentVersion|否|指定定义版本。 使用定义部署工作流时，可以使用此值来确保使用适当的定义。|  
 |parameters|否|指定用于将数据输入到定义中的参数。 最多可以定义 50 个参数。|  
 |触发器|否|指定启动工作流的触发器的信息。 最多可以定义 10 个触发器。|  
@@ -106,7 +106,7 @@ ms.lasthandoff: 11/06/2017
 |元素名称|必选|说明|  
 |------------------|--------------|-----------------|  
 |key1|是|指定输出的密钥标识符。 请将 **key1** 替换为用于标识输出的名称。|  
-|value|是|指定输出的值。|  
+|值|是|指定输出的值。|  
 |type|是|指定已指定的值的类型。 可能的值类型为： <ul><li>`string`</li><li>`securestring`</li><li>`int`</li><li>`bool`</li><li>`array`</li><li>`object`</li></ul>|
   
 ## <a name="expressions"></a>表达式  

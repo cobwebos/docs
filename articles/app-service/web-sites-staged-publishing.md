@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: b69f6b2190362b970420ba81450978ac9faecd86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 55c023e8f6b41c17e85ba441f862a7682b2f2599
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -244,7 +244,7 @@ Azure CLI 提供了适用于 Azure 的跨平台命令，包括对管理应用服
 * 若要在 Azure CLI 中列出可用于 Azure 应用服务的命令，请调用 `azure site -h`。
 
 > [!NOTE] 
-> 若要了解部署槽的 [Azure CLI 2.0](https://github.com/Azure/azure-cli) 命令，请参阅 [az appservice web 部署槽](/cli/azure/appservice/web/deployment/slot)。
+> 有关用于部署槽的 [Azure CLI 2.0](https://github.com/Azure/azure-cli) 命令，请参阅 [az webapp deployment slot](/cli/azure/webapp/deployment/slot)。
 
 - - -
 ### <a name="azure-site-list"></a>azure site list

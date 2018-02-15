@@ -1,6 +1,6 @@
 ---
 title: "Azure 安全技术功能 | Microsoft Docs"
-description: "了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动增加或减少。"
+description: "了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。"
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 7288466cf31e180a16db18f8ddfe02ace3588a8d
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 536745d869ea3bcd0beedad3712597b00e600796
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 
-为了帮助当前和潜在的 Azure 客户了解和利用 Azure 平台中和围绕 Azure 平台提供的各种安全相关功能，Microsoft 制定了一系列白皮书、安全概述、最佳实践和清单。 这些主题涵盖各类不同宽度和深度的内容，并且定期更新。 本文档属于下面“摘要”部分中总结的系列的一部分。 有关此 Azure 安全系列的更多信息，请访问 (URL)。
+为了帮助当前和潜在的 Azure 客户了解和利用 Azure 平台中和围绕 Azure 平台提供的各种安全相关功能，Microsoft 制定了一系列白皮书、安全概述、最佳做法和清单。 这些主题涵盖各类不同宽度和深度的内容，并且定期更新。 本文档属于下面“摘要”部分中总结的系列的一部分。 有关此 Azure 安全系列的更多信息，请访问 (URL)。
 
 ## <a name="azure-platform"></a>Azure 平台
 
@@ -42,14 +42,13 @@ Microsoft Azure 是唯一一个提供安全一致的应用程序平台和服务�
 
 ## <a name="scope"></a>范围
 
-本白皮书的焦点包括用于支持 Microsoft Azure 核心组件（即 [Microsoft Azure 存储](https://docs.microsoft.com/azure/storage/storage-introduction)、[Microsoft Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)、[Microsoft Azure 虚拟机模型](https://docs.microsoft.com/azure/virtual-machines/    )以及用于管理这些组件的工具和基础结构）的安全功能。 它重点介绍了客户可用来履行保护数据安全和隐私职责的 Microsoft Azure 技术功能。
+本白皮书的焦点包括用于支持 Microsoft Azure 核心组件（即 [Microsoft Azure 存储](https://docs.microsoft.com/azure/storage/storage-introduction)、[Microsoft Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)、[Microsoft Azure 虚拟机模型](https://docs.microsoft.com/azure/virtual-machines/)以及用于管理这些组件的工具和基础结构）的安全功能。 它重点介绍了客户可用来履行保护数据安全和隐私职责的 Microsoft Azure 技术功能。
 
 了解此共同责任模式对于迁移到云的客户至关重要。 云提供商为安全和合规性工作的实施带来了极大的优势，但这些优势并不表示客户就不用保护其用户、应用程序和服务产品。
 
 使用 IaaS 解决方案的客户需要负责或共同负责保护和管理操作系统、网络配置、应用程序、标识、客户端及数据。  PaaS 解决方案以 IaaS 部署为基础构建，客户仍需负责或共同负责保护和管理应用程序、标识、客户端及数据。 使用 SaaS 解决方案的客户也还是需要负责这些。 他们必须确保数据正确分类，并且共同负责管理其用户和终结点设备。
 
 本文档未详细介绍任何相关的 Microsoft Azure 平台组件，如 Azure 网站、Azure Active Directory、HDInsight、媒体服务，以及位于核心组件顶层的其他服务。 尽管提供了少许常规信息，但本白皮书假定读者熟悉 Microsoft 提供的其他参考资料中所描述的以及本白皮书提供的链接中所包含的 Azure 基本概念。
-
 
 ## <a name="available-security-technical-capabilities-to-fulfil-user-customer-responsibility---big-picture"></a>可用于履行用户（客户）职责的安全技术功能 — 大图
 
@@ -65,7 +64,7 @@ Microsoft Azure 提供可帮助客户满足安全性、隐私和合规性需求�
 
 Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，比如多重身份验证和条件性访问策略。 通过高级安全报告、审核和警报来监视可疑活动，有助于减少潜在的安全问题。 [Azure Active Directory Premium](https://docs.microsoft.com/azure/active-directory/active-directory-editions) 向数千个云 (SaaS) 应用提供单一登录，并提供对你在本地运行的 Web 应用的访问。
 
-Azure Active Directory (AD) 在安全方面的益处包括以下能力：
+Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 - 为混合企业中的每个用户创建和管理单一标识，从而保持用户、组和设备同步。
 
@@ -133,9 +132,9 @@ Azure Active Directory (AD) 在安全方面的益处包括以下能力：
 
 使用 Azure Active Directory B2C 时，用户可通过使用他们现有的社交帐户（Facebook、Google、Amazon、LinkedIn）或创建新的凭据（电子邮件地址和密码，或者用户名和密码）在应用程序中注册。
 
-设备注册
+#### <a name="device-registration"></a>设备注册
 
-[Azure AD 设备注册](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-registration-overview)是基于设备的[条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-registration-overview)方案的基础。 在注册设备时，Azure Active Directory 设备注册会为设备提供一个标识，用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件性访问策略。
+[Azure AD 设备注册](https://docs.microsoft.com/en-us/azure/active-directory/device-management-introduction)是基于设备的[条件访问](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-device-registration-on-premises-setup)方案的基础。 在注册设备时，Azure AD 设备注册会为设备提供一个标识，此标识用于在用户登录时对设备进行身份验证。 然后，可以使用已经过身份验证的设备和设备的属性，对云中和本地托管的应用程序实施条件性访问策略。
 
 当与 Intune 之类的[移动设备管理 (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) 解决方案结合使用时，Azure Active Directory 中的设备属性会使用关于设备的更多信息进行更新。 这会允许创建条件性访问规则，用于从设备强制访问满足安全和合规性标准。
 
@@ -183,9 +182,9 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 - 传输中：数据在组件、位置或程序之间发送时，例如通过网络、通过服务总线（从本地到云，反之亦然，包括诸如 ExpressRoute 的混合连接），或在输入/输出过程中，会被视为动态数据。
 
-### <a name="encryption--rest"></a>静态加密
+### <a name="encryption-at-rest"></a>静态加密
 
-实现静态加密
+要实现静态加密，请执行以下各项：
 
 支持使用下表详述的至少一个推荐加密模型来加密数据。
 
@@ -224,15 +223,15 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 对于 VM 和本地磁盘存储，使用 Azure 磁盘加密（如果支持）：
 
-IaaS
+#### <a name="iaas"></a>IaaS
 
 包含 IaaS VM（Windows 或 Linux）的服务应使用 [Azure 磁盘加密](https://microsoft.sharepoint.com/teams/AzureSecurityCompliance/Security/SitePages/Azure%20Disk%20Encryption.aspx)对包含客户数据的卷进行加密。
 
-PaaS v2
+#### <a name="paas-v2"></a>PaaS v2
 
 在使用 Service Fabric 的 PaaS v2 上运行的服务可以对虚拟机规模集 [VMSS] 使用 Azure 磁盘加密来加密其 PaaS v2 VM。
 
-PaaS v1
+#### <a name="paas-v1"></a>PaaS v1
 
 PaaS v1 当前不支持 Azure 磁盘加密。 因此，必须使用应用程序级加密对持久的静态数据进行加密。  这包括但不限于应用程序数据、临时文件、日志和故障转储。
 
@@ -319,13 +318,11 @@ Azure 还提供多种易用的功能，帮助保护应用的入站和出站流�
 
 - [为应用设置 Azure Active Directory 身份验证](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
 
-
 - [启用传输层安全性 (TLS/SSL) - HTTPS 保护应用流量安全](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
-    - [强制所有传入流量通过 HTTPS 连接](http://microsoftazurewebsitescheatsheet.info/)
+  - [强制所有传入流量通过 HTTPS 连接](http://microsoftazurewebsitescheatsheet.info/)
 
   - [启用严格传输安全性 (HSTS)](http://microsoftazurewebsitescheatsheet.info/#enable-http-strict-transport-security-hsts)
-
 
 - [按客户端 IP 地址限制应用访问](http://microsoftazurewebsitescheatsheet.info/#filtering-traffic-by-ip)
 
@@ -462,7 +459,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 
 [存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)可存储一些指标，这些指标包括有关存储服务请求的聚合事务统计信息和容量数据。 在 API 操作级别以及存储服务级别报告事务，并在存储服务级别报告容量。 度量值数据可用于分析存储服务使用情况，诊断对存储服务所发出请求的问题以及提高使用服务的应用程序的性能。
 
-### <a name="application-insights"></a>Application insights
+### <a name="application-insights"></a>Application Insights
 
 [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) 是多个平台上面向 Web 开发人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时 Web 应用程序。 它会自动检测性能异常。 Application Insights 内含强大的分析工具，有助于诊断问题并了解用户在应用中执行的操作。 Application Insights 有助于持续提高性能与可用性。 它适用于本地或云中托管的各种平台（包括 .NET、Node.js 和 J2EE）中的应用。 它与 devOps 流程集成，并具有与各种开发工具的连接点。
 
@@ -487,6 +484,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 - 应用中的**诊断跟踪日志**- 可以将跟踪事件与请求相关联。
 
 - 在客户端或服务器代码中自行编写的**自定义事件和指标**，用于跟踪业务事件（例如销售的商品或赢得的游戏）。
+
 应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)以组的方式处理解决方案中的资源。
 
 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。

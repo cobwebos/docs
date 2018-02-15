@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 01/30/2018
 ms.author: damaerte
-ms.openlocfilehash: 1113589507934d814bc8924267c07c99f8864657
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 9f089b5c5d573bf469d6920f9144b7cc5c97c03a
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>PowerShell in Azure Cloud Shell（预览版）的功能和工具
 
-[!include [features-introblock](../../includes/cloud-shell-features-introblock.md)]
+[!INCLUDE [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
 > [!TIP]
 > 此外还提供 [Bash](features.md) 的功能和工具。
@@ -53,7 +53,6 @@ PowerShell in Cloud Shell（预览版）启动后，用户会进入 Azure 驱动
 ![](media/features-powershell/azure-drive.png)
 
 #### <a name="contextual-awareness"></a>上下文感知
-
 - **资源组范围**：在 Azure 驱动器 (`Azure:`) 中资源组路径的上下文内，资源组名称会自动传递到 Azure PowerShell cmdlet。
 
     ![](media/features-powershell/resource-group-autocomplete.png)
@@ -91,7 +90,7 @@ IntelliSense 支持是通过可与 [PowerShell 编辑器服务](https://github.c
 
 |**类别**    |**Name**                                 |
 |----------------|-----------------------------------------|
-|Azure 工具     |[Azure PowerShell (5.1.1)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.1.1)<br> [Azure CLI (2.0.25)](https://docs.microsoft.com/cli/azure/overview)|
+|Azure 工具     |[Azure PowerShell (5.2.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Azure CLI (2.0.26)](https://docs.microsoft.com/cli/azure/overview)|
 |文本编辑器    |vim<br> nano                             |
 |包管理器 |PowerShellGet<br> PackageManagement<br> npm<br> pip |
 |源代码管理  |git                                      |
@@ -104,7 +103,7 @@ IntelliSense 支持是通过可与 [PowerShell 编辑器服务](https://github.c
 |------------|-----------|
 |.NET        |4.6        |
 |Node.js     |6.10       |
-|PowerShell  |5.1 和 [6.0 (beta)](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell  |5.1 和 [6.0.0](https://github.com/PowerShell/powershell/releases)       |
 |Python      |2.7        |
 
 ## <a name="next-steps"></a>后续步骤

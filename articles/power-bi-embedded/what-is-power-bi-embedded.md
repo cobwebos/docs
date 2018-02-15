@@ -40,7 +40,7 @@ Power BI Embedded 适用于生成应用的开发者。 若要使用第三方商�
 
 使用 Power BI Embedded，可以专注于自己擅长的事情，即生成优质应用。 可使用现有工具和技能，通过 Power BI Embedded 进行管理和开发。
 
-* **Azure 门户**：用于管理所有 Azure 服务的基于 Web 的应用程序[](https://portal.azure.com/)
+* [**Azure 门户**](https://portal.azure.com/)：用于管理所有 Azure 服务的基于 Web 的应用程序
 * [**Visual Studio Code**](https://code.visualstudio.com/docs)：可下载且免费的开放源代码代码编辑器，适用于 Windows、macOS 和 Linux，可支持扩展
 * [**Power BI Desktop**](https://powerbi.microsoft.com/desktop/)：免费的可下载工具，用于创建内容丰富（含视觉对象分析）的交互式报表
 

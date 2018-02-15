@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: sngun; v-reagie
-ms.openlocfilehash: 95abba4fd293e2d04a58f0d07f955aca808434b7
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 76a3096595d07916159b3a50da0793c653a490a0
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure 自动化中的常见问题解答 
 本文介绍如何排除会在 Azure 自动化中遇到的常见错误，并提供可能的解决方案建议。
@@ -195,11 +195,19 @@ ms.lasthandoff: 01/24/2018
 
 **错误原因：**
 
-此错误代码意味着部署由于违反策略而失败。
+此错误代码表示部署由于违反一个或多个策略而失败。
 
 **疑难解答提示：**
 
-检查 Azure 门户右上角的通知或导航到包含自动化帐户的资源组，然后选择“设置”下的“部署”以查看失败部署。 若要了解有关 Azure 策略的详细信息，请访问：[Azure 策略概述](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json)
+为了成功部署解决方案，需要考虑更改指示的策略。 由于可以定义许多不同类型的策略，因此所需的特定更改取决于所违反的策略。 例如，如果在某个资源组上定义了一个拒绝更改该资源组中某些类型的资源内容的权限的策略，则可以（例如）执行以下任一操作：
+
+*   将该策略完全删除。
+* 尝试加入到不同的资源组。
+* 通过以下方式修改策略，例如：
+   * 将策略重定位到特定资源（例如，特定自动化帐户）。
+   * 修改该策略已配置为拒绝的资源集。
+
+检查 Azure 门户右上角的通知或导航到包含自动化帐户的资源组，然后选择“设置”下的“部署”以查看失败部署。 若要了解有关 Azure 策略的详细信息，请访问：[Azure 策略概述](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json)。
 
 ## <a name="next-steps"></a>后续步骤
 

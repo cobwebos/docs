@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
-ms.openlocfilehash: 948b91a9fabc3ab3c4d6708968a88cb9d203b171
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: ec532ce0871d11fea222050bb08ec73afe5f2be3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="connectors-list"></a>连接器列表
 若要查找每个连接器的 Swagger 说明和连接器限制所定义的触发器和操作，请参阅[连接器详细信息](/connectors/)。
@@ -82,7 +82,7 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 | --- | --- | --- | --- |
 | [![API 图标][as2icon]<br/>**AS2</br> 解码**][as2decode] | [![API 图标][as2icon]<br/>**AS2</br> 编码**][as2encode] | [![API 图标][x12icon]<br/>**EDIFACT</br> 解码**][EDIFACTdecode] | [![API 图标][x12icon]<br/>**EDIFACT</br> 编码**][EDIFACTencode] |
 [![API 图标][flatfileicon]<br/>**平面文件</br>编码**][flatfiledoc] | [![API 图标][flatfiledecodeicon]<br/>**平面文件</br>解码**][flatfiledecodedoc] | [![API 图标][integrationaccounticon]<br/>**集成<br/>帐户**][integrationaccountdoc] | [![API 图标][xmltransformicon]<br/>**转换<br/>XML**][xmltransformdoc] |
-| [![API 图标][x12icon]<br/>**X12</br> 解码**][x12decode] | [![API 图标][x12icon]<br/>**X12</br> 编码**][x12encode] | [![API 图标][xmlvalidateicon]<br/>**XML <br/>验证**][xmlvalidatedoc] | |
+| [![API 图标][x12icon]<br/>**X12</br> 解码**][x12decode] | [![API 图标][x12icon]<br/>**X12</br> 编码**][x12encode] | [![API 图标][xmlvalidateicon]<br/>**XML <br/>验证**][xmlvalidatedoc] | [![API 图标][liquidicon]<br/>**转换 <br/>JSON**][JSONliquidtransformdoc] |
 
 ### <a name="enterprise-connectors"></a>企业连接器
 
@@ -189,6 +189,7 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 [EDIFACTdecode]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "了解企业集成 EDIFACT 解码"
 [EDIFACTencode]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "了解企业集成 EDIFACT 编码"
 [integrationaccountdoc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "在集成帐户中查找架构、映射、合作伙伴等内容"
+[JSONliquidtransformdoc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "了解使用 Liquid 进行的 JSON 转换"
 
 
 [boxDoc]: ./connectors-create-api-box.md "连接到 Box。上传、获取、删除、列出文件，等等"
@@ -328,3 +329,4 @@ Enterprise Integration Pack (EIP) 包括 BizTalk Server 社区众所周知的连
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 [integrationaccounticon]: ./media/apis-list/integrationaccount.png
+[liquidicon]: ./media/apis-list/liquidtransform.png

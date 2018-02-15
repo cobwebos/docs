@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: a98e9ad891fcfaf02ca7df5d10d5b310445c9d34
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 4f5bc49bf58773a1510b552ce6fc20aa61076348
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric Reliable Services 中的 ASP.NET Core
 
@@ -26,7 +26,7 @@ ASP.NET Core 是新的开源跨平台框架，用于构建现代基于云的连�
 
 本文详细说明了如何使用 NuGet 包的 Microsoft.ServiceFabric.AspNetCore. 集在 Service Fabric Reliable Services 中托管 ASP.NET Core 服务。
 
-有关 Service Fabric 中 ASP.NET Core 的入门教程以及如何设置开发环境的说明，请参阅[使用 ASP.NET Core 为应用程序构建 Web 前端](service-fabric-add-a-web-frontend.md)。
+有关 Service Fabric 中 ASP.NET Core 的入门教程以及如何设置开发环境的说明，请参阅[创建 .NET 应用程序](service-fabric-tutorial-create-dotnet-app.md)。
 
 本文的其余部分假定你已熟悉 ASP.NET Core。 如果不熟悉，我们建议通读一遍 [ASP.NET Core 基础知识](https://docs.microsoft.com/aspnet/core/fundamentals/index)。
 

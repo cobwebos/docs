@@ -1,5 +1,5 @@
 ---
-title: "教程：Azure Active Directory 与 Salesforce Sandbox 集成 | Microsoft 文档"
+title: "教程：使用 Azure Active Directory 为 Salesforce Sandbox 配置自动用户预配 | Microsoft Docs"
 description: "了解如何在 Azure Active Directory 和 Salesforce 沙盒之间配置单一登录。"
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: d0efcae50b18dc2626af5510bd47ff36a27ba718
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9ff50ddc2460a94c17b2401f0c8e4ad12c6d23a7
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-salesforce-sandbox-for-automatic-user-provisioning"></a>教程：为 Salesforce Sandbox 配置自动用户预配
+# <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>教程：为 Salesforce Sandbox 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Salesforce Sandbox 以及取消其预配而需要在 Salesforce Sandbox 和 Azure AD 中执行的步骤。
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="assigning-users-to-salesforce-sandbox"></a>将用户分配到 Salesforce Sandbox
 
-Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中的应用程序的用户和组。
+Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中应用程序的用户和组。
 
 在配置和启用预配服务之前，需要确定 Azure AD 中的哪些用户或组需要访问 Salesforce Sandbox 应用。 确定后，可按照[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)中的说明将这些用户分配到 Salesforce Sandbox 应用
 
@@ -105,10 +105,10 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Salesforce Sandbox。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 20 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务在 Salesforce Sandbox 应用上执行的所有操作。
 
-现在可创建测试帐户。 等待最多 20 分钟，验证该帐户是否已同步到 Salesforce。
+现可创建测试帐户。 等待最多 20 分钟，验证该帐户是否已同步到 Salesforce。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 * [配置单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-sandbox-tutorial)

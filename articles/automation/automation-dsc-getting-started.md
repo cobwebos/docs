@@ -14,16 +14,16 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: magoedte;gwallace
-ms.openlocfilehash: 45afb09f09e754e37ae8dba02e1e16b3fde1e408
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: ff23b4f5022597763728ccf301966c34c5423b34
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Azure Automation DSC 入门
 本文说明如何使用 Azure Automation Desired State Configuration (DSC) 执行最常见的任务，例如创建、导入、编译配置，登记要管理的计算机和查看报表。 若要大致了解什么是 Azure Automation DSC，请参阅 [ DSC 概述](automation-dsc-overview.md)。 有关 DSC 文档，请参阅 [Windows PowerShell Desired State Configuration 概述](https://msdn.microsoft.com/PowerShell/dsc/overview)。
 
-本文提供了如何使用 Azure 自动化 DSC 的分步指南。 如果需要一个已经设置好的示例环境，而不想按照本文所述步骤进行操作，则可使用以下[资源管理器模板](https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup)。 此模板设置了一个完整的 Azure Automation DSC 环境，包括一个由 Azure Automation DSC 管理的 Azure VM。
+本文提供了如何使用 Azure 自动化 DSC 的分步指南。 如果想要一个已设置的示例环境（未按照本文所述的步骤设置），可以使用以下资源管理器模板：此模板可设置完整的 Azure Automation DSC 环境，包括由 Azure Automation DSC 管理的 Azure VM。
 
 ## <a name="prerequisites"></a>先决条件
 若要完成本文中的示例，需要具备以下条件：
@@ -138,7 +138,7 @@ ms.lasthandoff: 01/24/2018
 4. 在“DSC 节点”页中，单击“添加 Azure VM”。
    
     ![“DSC 节点”页的屏幕截图，其中突出显示“添加 Azure VM”按钮](./media/automation-dsc-getting-started/OnboardVM.png)
-5. 在“虚拟机”页上，选择你的 VM。  在“添加 Azure VM”页中，单击“选择要登记的虚拟机”。
+5. 在“虚拟机”页上，选择 VM。 在“添加 Azure VM”页中，单击“选择要登记的虚拟机”。
 6. 单击“连接”。
    
    > [!IMPORTANT]

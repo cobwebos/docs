@@ -359,6 +359,8 @@
           items:
             - name: 部署示例应用
               href: saas-standaloneapp-get-started-deploy.md
+            - name: 预配租户
+              href: saas-standaloneapp-provision-and-catalog.md
         - name: 每个租户一个数据库
           href: saas-dbpertenant-wingtip-app-overview.md
           items:
