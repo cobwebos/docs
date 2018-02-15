@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 424a5ec49018e969edbf90c374a9da7e1d22395d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8b5211e9c932221c6b6134e7e0627f4d7f964123
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Blob 复制到 Azure SQL 数据库
 在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/23/2018
 > [!NOTE]
 > - 如果你对 Azure 数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。
 >
-> - 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> - 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 在本教程中执行以下步骤：
 
@@ -144,10 +144,7 @@ ms.lasthandoff: 01/23/2018
 9. 在底部的“属性”窗口的“常规”选项卡中，指定 **SourceBlobDataset** 作为**名称**。
 
     ![数据集名称](./media/tutorial-copy-data-portal/dataset-name.png)
-10. 切换到属性窗口中的“连接”选项卡。   
-
-    ![“连接”选项卡](./media/tutorial-copy-data-portal/source-dataset-connection-tab.png)
-11. 单击“链接服务”文本框旁边的“+ 新建”。 链接服务可将数据存储或计算链接到数据工厂。 在本例中，我们将创建一个 Azure 存储链接服务，用于将 Azure 存储帐户链接到数据存储。 该链接服务包含的连接信息可供数据工厂服务用来在运行时连接到 Blob 存储。 数据集指定包含源数据的容器、文件夹和文件（可选）。 
+10. 切换到属性窗口中的“连接”选项卡。 单击“链接服务”文本框旁边的“+ 新建”。 链接服务可将数据存储或计算链接到数据工厂。 在本例中，我们将创建一个 Azure 存储链接服务，用于将 Azure 存储帐户链接到数据存储。 该链接服务包含的连接信息可供数据工厂服务用来在运行时连接到 Blob 存储。 数据集指定包含源数据的容器、文件夹和文件（可选）。 
 
     ![“新建链接服务”按钮](./media/tutorial-copy-data-portal/source-dataset-new-linked-service-button.png)
 12. 在“新建链接服务”窗口中，执行以下步骤： 
@@ -283,7 +280,7 @@ ms.lasthandoff: 01/23/2018
 2. 验证是否已将源文件中的数据插入到目标 SQL 数据库中。 
 
     ![验证 SQL 输出](./media/tutorial-copy-data-portal/verify-sql-output.png)
-3. 单击左窗格中的“发布”。 此操作将所创建的实体（链接服务、数据集和管道）发布到 Azure 数据工厂。
+3. 单击左窗格中的“全部发布”。 此操作将所创建的实体（链接服务、数据集和管道）发布到 Azure 数据工厂。
 
     ![发布按钮](./media/tutorial-copy-data-portal/publish-button.png)
 4. 等待“已成功发布”消息出现。 若要查看通知消息，请单击左侧边栏中的“显示通知”选项卡。 单击“X”关闭通知窗口。
@@ -343,7 +340,7 @@ ms.lasthandoff: 01/23/2018
 ## <a name="trigger-the-pipeline-manually"></a>手动触发管道
 在此步骤中，请手动触发在前面的步骤中发布的管道。 
 
-1. 单击工具栏中的“触发器”，然后单击“立即触发”。 
+1. 单击工具栏中的“触发器”，然后单击“立即触发”。 在“管道运行”页上单击“完成”。  
 
     ![“立即触发”菜单](./media/tutorial-copy-data-portal/trigger-now-menu.png)
 2. 在左侧切换到“监视”选项卡。 此时会看到由手动触发器触发的管道运行。 可以使用“操作”列中的链接来查看活动详细信息以及重新运行该管道。
@@ -386,10 +383,10 @@ ms.lasthandoff: 01/23/2018
 6. 在“触发器运行参数”页中查看以下警告，然后单击“完成”。 此示例中的管道不采用任何参数。 
 
     ![管道参数](./media/tutorial-copy-data-portal/trigger-pipeline-parameters.png)
-7. 单击“发布”，将所做的更改发布到存储库。 在发布成功之前，触发器不会实际激活。 
+7. 单击“同步”，将你的分库中的更改与 master 分库同步。 默认选择“在同步后发布更改”。 因此，在选择“同步”时，它也将更新的条目从 master 分库发布到 Azure 数据工厂服务。 在发布成功之前，触发器不会实际激活。
 
-    ![发布触发器](./media/tutorial-copy-data-portal/publish-trigger.png) 
-8. 切换到左侧的“监视”选项卡，查看触发的管道运行。 
+    ![发布触发器](./media/tutorial-copy-data-portal/sync-your-changes-with-trigger.png) 
+9. 切换到左侧的“监视”选项卡，查看触发的管道运行。 
 
     ![触发的管道运行](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)    
 9. 若要从管道运行视图切换到触发器运行视图，请单击“管道运行”，然后选择“触发器运行”。

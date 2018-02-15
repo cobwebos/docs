@@ -55,6 +55,7 @@
 ### [密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)
 ### [Azure AD 服务帐户](active-directory-aadconnectsync-howto-azureadaccount.md)
 ### [安装向导](active-directory-aadconnectsync-installation-wizard.md)
+### [如何填充 UserPrincipalName](active-directory-aadconnect-userprincipalname.md)
 ### [更改默认配置](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
 ### [配置筛选](active-directory-aadconnectsync-configure-filtering.md)
 ### [计划程序](active-directory-aadconnectsync-feature-scheduler.md)

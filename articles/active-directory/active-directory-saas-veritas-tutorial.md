@@ -4,20 +4,20 @@ description: "了解如何在 Azure Active Directory 和 Veritas Enterprise Vaul
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: c47894b1-f5df-4755-845d-f12f4c602dc4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2017
+ms.date: 01/31/2017
 ms.author: jeedes
-ms.openlocfilehash: fbec2cee6e1ecd23b34fd879d978a05bd5a04ac4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eb9243367d0817d37549fa147c6c5e1d2acf3761
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>教程：Azure Active Directory 与 Veritas Enterprise Vault.cloud SSO 集成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Veritas Enterprise Vault.cloud SSO
 - 可以让用户使用其 Azure AD 帐户自动登录到 Veritas Enterprise Vault.cloud SSO（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 12/11/2017
 - 已启用 Veritas Enterprise Vault.cloud SSO 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -110,7 +110,23 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_url.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>`
+
+    b. 在“标识符”文本框中，根据数据中心使用 URL
+
+    | 数据中心| 代码 |
+    |----------|----|
+    | 北美| `https://auth.lax.archivecloud.net` |
+    | 欧洲 | `https://auth.ams.archivecloud.net` |
+    | 亚太区| `https://auth.syd.archivecloud.net`|
+
+    c. 在“答复 URL”文本框中，根据数据中心使用 URL
+
+    | 数据中心| 代码 |
+    |----------|----|
+    | 北美| `https://auth.lax.archivecloud.net` |
+    | 欧洲 | `https://auth.ams.archivecloud.net` |
+    | 亚太区| `https://auth.syd.archivecloud.net`|
     
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Veritas Enterprise Vault.cloud SSO 客户端支持团队](https://www.veritas.com/support/.html)获取此值。 
@@ -158,11 +174,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d.单击“下一步”。 单击“创建”。
  
 ### <a name="creating-a-veritas-enterprise-vaultcloud-sso-test-user"></a>创建 Veritas Enterprise Vault.cloud SSO 测试用户
 
@@ -207,7 +223,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

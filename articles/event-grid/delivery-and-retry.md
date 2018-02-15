@@ -2,17 +2,17 @@
 title: "Azure 事件网格传送和重试"
 description: "介绍 Azure 事件网格如何传送事件以及如何处理未送达的消息。"
 services: event-grid
-author: djrosanova
+author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/10/2018
-ms.author: darosa
-ms.openlocfilehash: fe9089334deceb38186add56ce3fb1d6ecc20363
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.date: 01/30/2018
+ms.author: tomfitz
+ms.openlocfilehash: cdf6a4e999d55196e8f4eac5695163a7e5a933de
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试 
 
@@ -58,11 +58,11 @@ ms.lasthandoff: 01/11/2018
 6. 30 分钟
 7. 1 小时	
 
-事件网格允许所有重试间隔可以略微随机。
+事件网格允许所有重试间隔可以略微随机。 一个小时后，事件传送每小时重试一次。
 
 ## <a name="retry-duration"></a>重试持续事时间
 
-预览版中，Azure 事件网格会就将所有未在两小时内发送的事件视为过期。
+Azure 事件网格会使所有未在 24 小时内发送的事件过期。
 
 ## <a name="next-steps"></a>后续步骤
 

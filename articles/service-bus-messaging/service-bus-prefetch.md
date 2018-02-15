@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 4a4a06f90c2c48d35d836f0be89fec9cc47f32c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a61918108a48f4a9fa3d1c07cc8d41525f1f2a0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>预提取 Azure 服务总线消息
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="enable-prefetch"></a>启用预提取
 
-在 .NET 中，通过将 MessageReceiver、QueueClient 或 SubscriptionClient 的 [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) 属性设置为大于零的数字，可启用预提取功能。 将该值设为零可关闭预提取。
+使用 .NET，通过将 MessageReceiver、QueueClient 或 SubscriptionClient 的 [PrefetchCount](/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount#Microsoft_Azure_ServiceBus_QueueClient_PrefetchCount) 属性设置为大于零的数字，可启用预提取功能。 将该值设为零可关闭预提取。
 
 可轻松向 [QueuesGettingStarted](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/QueuesGettingStarted) 或 [ReceiveLoop](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ReceiveLoop) 示例的设置的接收方添加此设置来查看这些上下文中的效果。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="if-it-is-faster-why-is-prefetch-not-the-default-option"></a>既然预提取更快，为何不是默认选项？
 
-预提取可加快消息流程，方法是在应用程序请求消息时及请求消息前，准备好消息用于本地检索。 这种吞吐量提升有赖于应用程序作者明确作出某种权衡：
+预提取可加快消息流程，方法是在应用程序请求消息时及请求消息前，准备好消息用于本地检索。 这种吞吐量提升是应用程序作者不得不明确作出的某种权衡的结果：
 
 通过 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode.receiveanddelete) 接收模式，预提取缓存区获取的所有消息在队列中不再可用，仅驻留在内存中预提取缓存区，直到应用程序通过 Receive/ReceiveAsync 或 OnMessage/OnMessageAsync API 接收到它们。 如果在应用程序接收到消息前终止应用程序，这些消息将丢失，且不可恢复。
 

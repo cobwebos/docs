@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/01/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f32fc2d2df73f4a01c300d565595e2c00b2baf4b
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 34826332db2e63d442d47ada74fcbad4cad600ae
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -75,7 +75,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 
 使用 Azure AD Premium P1 版本时，许可证未涵盖的检测项会显示为风险事件“登录时检测到其他风险”。
 
-有关详细信息，请参阅 [Azure Active Directory 风险事件](active-directory-reporting-risk-events.md)。
+有关详细信息，请参阅 [Azure Active Directory 风险事件](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)。
  
 
 ---
@@ -90,7 +90,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 现在，可以通过新的用户设置来更好地管理 Office 365 应用程序显示用户访问面板的方式。 如果只想在 Office 门户中显示 Office 应用，可以借助此选项来减少用户访问面板中的应用数量。 该设置位于“用户设置”中，带有“用户只能在 Office 365 门户中查看 Office 365 应用”标签。
  
 
-有关详细信息，请参阅[在 Azure Active Directory 的用户体验中隐藏应用程序](active-directory-coreapps-hide-third-party-app.md)。
+有关详细信息，请参阅[在 Azure Active Directory 的用户体验中隐藏应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)。
 
 ---
  
@@ -110,7 +110,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 - 在扩展中使用快捷方式访问最近使用的应用
 - 该扩展适用于 Edge、Chrome 和 Firefox。
  
-有关详细信息，请参阅[我的应用安全登录扩展](active-directory-saas-access-panel-introduction.md#my-apps-secure-sign-in-extension)。
+有关详细信息，请参阅[我的应用安全登录扩展](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension)。
 
 ---
 
@@ -155,9 +155,9 @@ MFA 配置位于：“Azure Active Directory”\>“MFA 服务器”
 
 有关详细信息，请参阅：
 
-- [Azure Active Directory 报告 API 入门](active-directory-reporting-api-getting-started-azure-portal.md)
+- [Azure Active Directory 报告 API 入门](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)
 
-- [Azure Active Directory Identity Protection 和 Microsoft Graph 入门](active-directory-identityprotection-graph-getting-started.md)
+- [Azure Active Directory Identity Protection 和 Microsoft Graph 入门](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
 
 
 ---
@@ -227,7 +227,7 @@ Azure AD 登录页上的“使我保持登录状态”复选框已被替换为�
 
 对于要求用户展开使用条款这一选项，可选择“打开”或“关闭”。 “打开”设置要求用户在接受使用条款之前先查看条款。
 
-有关详细信息，请参阅 [Azure AD 使用条款功能（预览版）](active-directory-tou.md)。
+有关详细信息，请参阅 [Azure AD 使用条款功能（预览版）](https://docs.microsoft.com/azure/active-directory/active-directory-tou)。
  
 ---
  
@@ -240,7 +240,7 @@ Azure AD 登录页上的“使我保持登录状态”复选框已被替换为�
  
 可以使用范围激活功能来激活符合条件的 Azure 资源角色分配，其自治性比原始分配的默认值小。 例如，你被分配为租户中某个订阅的所有者。 使用范围激活可以激活订阅中包含的最多五个资源（例如资源组和虚拟机）的“所有者”角色。 划分激活范围可能会降低对关键 Azure 资源执行不必要更改的可能性。
 
-有关详细信息，请参阅[什么是 Azure AD Privileged Identity Management？](active-directory-privileged-identity-management-configure.md)。
+有关详细信息，请参阅[什么是 Azure AD Privileged Identity Management？](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)。
  
 ---
  
@@ -343,7 +343,7 @@ Azure AD 目录角色的审批工作流程已正式发布。
 
 可在即将发布的博客和发行说明中了解此功能和详细信息。 
 
-有关详细信息，请参阅 [Azure AD 中的条件访问](active-directory-conditional-access-azure-portal.md)。
+有关详细信息，请参阅 [Azure AD 中的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)。
 
  
 ---
@@ -358,7 +358,7 @@ Azure AD 目录角色的审批工作流程已正式发布。
 
 
 
-计划将以下应用添加到[批准的客户端应用](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)列表：
+计划将以下应用添加到[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)列表：
 
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - [Microsoft StaffHub](https://staffhub.office.com/what-it-is)
@@ -366,8 +366,8 @@ Azure AD 目录角色的审批工作流程已正式发布。
 
 有关详细信息，请参阅：
 
-- [批准的客户端应用要求](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)
-- [Azure AD 基于应用的条件访问](active-directory-conditional-access-mam.md)
+- [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Azure AD 基于应用的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
 
 
 ---
@@ -409,7 +409,7 @@ Azure AD 目录角色的审批工作流程已正式发布。
 - 可帮助解决此问题的文档链接。 
 
 
-有关详细信息，请参阅[本地集成](active-directory-passwords-how-it-works.md#on-premises-integration)。
+有关详细信息，请参阅[本地集成](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-how-it-works#on-premises-integration)。
 
  
 ---
@@ -428,9 +428,9 @@ Azure AD 目录角色的审批工作流程已正式发布。
 
 
 
-现在可将对 Office 365 和其他已连接 Azure AD 的云应用的访问权限限于[批准的客户端应用](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)，这些应用支持使用[基于 Azure AD 的应用的条件访问](active-directory-conditional-access-mam.md)的 Intune 应用保护策略。 Intune 应用保护策略用于配置和保护这些客户端应用程序中的公司数据。
+现在可将对 Office 365 和其他已连接 Azure AD 的云应用的访问权限限于[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)，这些应用支持使用[基于 Azure AD 的应用的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)的 Intune 应用保护策略。 Intune 应用保护策略用于配置和保护这些客户端应用程序中的公司数据。
 
-通过组合[基于应用](active-directory-conditional-access-mam.md)的条件访问策略和[基于设备](active-directory-conditional-access-policy-connected-applications.md)的条件访问策略，可以灵活地保护个人和公司设备的数据。
+通过组合[基于应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)的条件访问策略和[基于设备](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)的条件访问策略，可以灵活地保护个人和公司设备的数据。
 
 以下条件和控制现可用于基于应用的条件访问：
 
@@ -448,7 +448,7 @@ Azure AD 目录角色的审批工作流程已正式发布。
 - 需要批准的客户端应用
 
 
-有关详细信息，请参阅[基于 Azure AD 应用的条件访问](active-directory-conditional-access-mam.md)。
+有关详细信息，请参阅[基于 Azure AD 应用的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)。
 
  
 ---
@@ -472,7 +472,7 @@ Azure AD 目录角色的审批工作流程已正式发布。
 - 查找已加入 Azure AD 的设备的 BitLocker 密钥、使用 Intune 管理设备，等等。
 - 管理与 Azure AD 设备相关的设置。
 
-有关详细信息，请参阅[使用 Azure 门户管理设备](device-management-azure-portal.md)。
+有关详细信息，请参阅[使用 Azure 门户管理设备](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal)。
 
 
 
@@ -497,7 +497,7 @@ Azure AD 目录角色的审批工作流程已正式发布。
 有关详细信息，请参阅：
 
 - [使用 Intune 创建适用于 macOS 设备的设备符合性策略](https://aka.ms/macoscompliancepolicy)
-- [Azure AD 中的条件访问](active-directory-conditional-access-azure-portal.md)
+- [Azure AD 中的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
 
 
  
@@ -518,7 +518,7 @@ Azure AD 目录角色的审批工作流程已正式发布。
 此扩展是为想要保护虚拟专用网络连接，但不部署 Azure 多重身份验证服务器的组织创建的。 网络策略服务器扩展充当 RADIUS 与基于云的 Azure 多重身份验证之间的适配器，以为联合用户或已同步用户提供身份验证的第二个因素。
 
 
-有关详细信息，请参阅[将现有网络策略服务器基础结构与 Azure 多重身份验证集成](../multi-factor-authentication/multi-factor-authentication-nps-extension.md)。
+有关详细信息，请参阅[将现有网络策略服务器基础结构与 Azure 多重身份验证集成](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-extension)。
 
  
 ---
@@ -557,7 +557,7 @@ Azure AD 目录角色的审批工作流程已正式发布。
 **产品功能：**标识安全和保护
 
 
-以下应用已添加到[批准的客户端应用](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)列表：
+以下应用已添加到[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)列表：
 
 - Microsoft Planner
 - Azure 信息保护 
@@ -565,8 +565,8 @@ Azure AD 目录角色的审批工作流程已正式发布。
 
 有关详细信息，请参阅：
 
-- [批准的客户端应用要求](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)
-- [Azure AD 基于应用的条件访问](active-directory-conditional-access-mam.md)
+- [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Azure AD 基于应用的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
 
 
 ---
@@ -581,7 +581,7 @@ Azure AD 目录角色的审批工作流程已正式发布。
  
 现在，可对条件访问控制使用“OR”（需要一个选定控制条件）。 可以使用此功能创建在访问控制条件之间包含“OR”的策略。 例如，可以使用此功能创建一个策略，要求用户使用多重身份验证登录“OR”用户位于符合条件的设备上。
 
-有关详细信息，请参阅 [Azure AD 条件访问中的控制](active-directory-conditional-access-controls.md)。
+有关详细信息，请参阅 [Azure AD 条件访问中的控制](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls)。
 
  
 ---
@@ -635,7 +635,7 @@ Azure 门户提供：
 
 
 
-对于显示 HTML 用户名和密码字段的应用程序，Azure AD 支持自动登录字段检测。 [如何自动捕获应用程序的登录字段](application-config-sso-problem-configure-password-sso-non-gallery.md#how-to-manually-capture-sign-in-fields-for-an-application)中介绍了这些步骤。 在 [Azure 门户](http://aad.portal.azure.com)中的“企业应用程序”页面上添加一个“非库”应用程序，即可找到此功能。 此外，可在此新应用程序中将“单一登录”模式配置为“基于密码的单一登录”，输入 Web URL，然后保存页面。
+对于显示 HTML 用户名和密码字段的应用程序，Azure AD 支持自动登录字段检测。 [如何自动捕获应用程序的登录字段](https://docs.microsoft.com/azure/active-directory/application-config-sso-problem-configure-password-sso-non-gallery#how-to-manually-capture-sign-in-fields-for-an-application)中介绍了这些步骤。 在 [Azure 门户](http://aad.portal.azure.com)中的“企业应用程序”页面上添加一个“非库”应用程序，即可找到此功能。 此外，可在此新应用程序中将“单一登录”模式配置为“基于密码的单一登录”，输入 Web URL，然后保存页面。
  
 由于某个服务问题，此功能曾经暂时禁用过。 该问题现已得到解决，自动登录字段检测功能再次可用。
 
@@ -657,7 +657,7 @@ Azure 门户提供：
 
 在此公共预览版中，MFA 管理和报告集成到核心 Azure AD 配置体验中。 现在，可以在 Azure AD 体验中管理 MFA 管理门户功能。
 
-有关详细信息，请参阅 [Azure 门户中的 MFA 报告参考](active-directory-reporting-activity-sign-ins-mfa.md)。 
+有关详细信息，请参阅 [Azure 门户中的 MFA 报告参考](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins-mfa)。 
 
 
 ---
@@ -680,7 +680,7 @@ Azure 门户提供：
 - 基于用户属性（例如，动态组中的医生与护士或国内员工和国际员工）的具体使用条款
 - 有关访问业务影响性较高的应用（例如 Salesforce）的具体使用条款
 
-有关详细信息，请参阅 [Azure AD 使用条款](active-directory-tou.md)。
+有关详细信息，请参阅 [Azure AD 使用条款](https://docs.microsoft.com/azure/active-directory/active-directory-tou)。
 
 
 ---
@@ -701,7 +701,7 @@ Azure 门户提供：
 
 Azure 门户中使用 Azure RBAC 功能的所有资源都可以利用 Azure AD Privileged Identity Management 提供的所有安全和生命周期管理功能。
 
-有关详细信息，请参阅 [Azure 资源的 Privileged Identity Management](privileged-identity-management/azure-pim-resource-rbac.md)。
+有关详细信息，请参阅 [Azure 资源的 Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac)。
 
 
 ---
@@ -722,7 +722,7 @@ Azure 门户中使用 Azure RBAC 功能的所有资源都可以利用 Azure AD P
 
 可以收集与组织相关的程序中的访问评审控件，跟踪符合性或风险敏感应用程序的审阅。
 
-有关详细信息，请参阅 [Azure AD 访问评审](active-directory-azure-ad-controls-access-reviews-overview.md)。
+有关详细信息，请参阅 [Azure AD 访问评审](https://docs.microsoft.com/azure/active-directory/active-directory-azure-ad-controls-access-reviews-overview)。
 
 
 ---
@@ -739,7 +739,7 @@ Azure 门户中使用 Azure RBAC 功能的所有资源都可以利用 Azure AD P
 
 现在，可以通过“隐藏应用”属性更好地管理用户门户中显示的应用。 如果为后端服务显示的应用磁贴或重复的磁贴导致用户的应用启动器变得混杂，隐藏应用可帮助解决问题。 切换开关位于第三方应用的“属性”部分中，带有“对用户可见?”标签 还可以通过 PowerShell 以编程方式隐藏应用。 
 
-有关详细信息，请参阅[在 Azure AD 的用户体验中隐藏第三方应用程序](active-directory-coreapps-hide-third-party-app.md)。 
+有关详细信息，请参阅[在 Azure AD 的用户体验中隐藏第三方应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)。 
 
 
 **可用功能**

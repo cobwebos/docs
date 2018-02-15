@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: 415eddaec9702a42ceee51858a39840fcd6a202b
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 540dca5416367f39d6132ae306dd1e44ec0561d5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure 自动化中的 Runbook 输出和消息
 大多数 Azure 自动化 Runbook 向用户或旨在由其他工作流使用的复杂对象提供某种形式的输出，例如错误消息。 Windows PowerShell 提供[多个流](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx)，以便从脚本或工作流发送输出。 Azure 自动化以不同方式处理其中的每个流，在创建 Runbook 时，应该遵循有关如何使用每个流的最佳实践。
@@ -35,7 +35,7 @@ ms.lasthandoff: 01/03/2018
 | 调试 |面向交互式用户的消息。 不应在 Runbook 中使用。 |不会写入作业历史记录。 |不会写入测试输出窗格。 |
 
 ## <a name="output-stream"></a>输出流
-输出流旨在输出脚本或工作流创建的对象（如果该脚本或工作流正常运行）。 在 Azure 自动化中，此流主要用于供[调用当前 Runbook 的父 Runbook](automation-child-runbooks.md) 使用的对象。 从父 Runbook [调用某个内联 Runbook](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution) 时，后者会将输出流中的数据返回给父级。 仅知道该 Runbook 永不被其他 Runbook 调用时，才应使用输出流将一般信息传回给用户。 但是，最佳做法通常是使用[详细流](#Verbose)向用户传递常规信息。
+输出流旨在输出脚本或工作流创建的对象（如果该脚本或工作流正常运行）。 在 Azure 自动化中，此流主要用于供[调用当前 Runbook 的父 Runbook](automation-child-runbooks.md) 使用的对象。 从父 Runbook [调用某个内联 Runbook](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution) 时，后者会将输出流中的数据返回给父级。 仅在知道该 Runbook 永不会被其他 Runbook 调用时，才应使用输出流将一般信息传回给用户。 但是，最佳做法通常是使用[详细流](#Verbose)向用户传递常规信息。
 
 可以通过使用 [Write-Output](http://technet.microsoft.com/library/hh849921.aspx)，或者在 Runbook 中将对象放置在其对应行中，来向输出流写入数据。
 
@@ -95,9 +95,9 @@ Runbook 作业的详细流将是：
        Write-Output $output
     }
 
-若要在图形或图形 PowerShell 工作流 Runbook 中声明输出类型，可选择“输入和输出”菜单选项，并键入输出类型的名称。 建议使用完整的 .NET 类名称，以便从父 Runbook 引用该类时可轻松识别它。 这会向 Runbook 中的数据总线公开该类的所有属性，并在将其用于条件逻辑、日志记录和作为 Runbook 中其他活动的值引用时提供很大灵活性。<br> ![Runbook 输入和输出选项](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
+若要在图形或图形 PowerShell 工作流 Runbook 中声明输出类型，可选择“输入和输出”菜单选项，并键入输出类型的名称。 建议使用完整的 .NET 类名，以便从父 Runbook 引用该类时可轻松识别它。 这会向 Runbook 中的数据总线公开该类的所有属性，并在将其用于条件逻辑、日志记录和作为 Runbook 中其他活动的值引用时提供很大灵活性。<br> ![Runbook 输入和输出选项](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
-以下示例使用两个图形 Runbook 来演示此功能。 如果应用模块式 Runbook 设计模型，则有一个 Runbook，它作为身份验证 Runbook 模板来管理使用运行方式帐户通过 Azure 进行的身份验证。 在此情况下，通常执行核心逻辑以自动实施给定方案的第二个 Runbook 将执行该身份验证 Runbook 模板，并在“测试”输出窗格中显示结果。  在正常情况下，需使用此 Runbook 针对利用子 Runbook 输出的资源执行某些操作。    
+以下示例使用两个图形 Runbook 来演示此功能。 如果应用模块式 Runbook 设计模型，则有一个 Runbook，它作为身份验证 Runbook 模板来管理使用运行方式帐户通过 Azure 进行的身份验证。 在此情况下，通常执行核心逻辑以自动实施给定方案的第二个 Runbook 将执行该身份验证 Runbook 模板，并在“测试”输出窗格中显示结果。 在正常情况下，会使用此 Runbook 针对利用子 Runbook 输出的资源执行某些操作。    
 
 下面是 **AuthenticateTo-Azure** Runbook 的基本逻辑。<br> ![身份验证 Runbook 模板示例](media/automation-runbook-output-and-messages/runbook-authentication-template.png)。  
 
@@ -149,7 +149,7 @@ Runbook 作业的详细流将是：
 ## <a name="preference-variables"></a>Preference 变量
 Windows PowerShell 使用[首选项变量](http://technet.microsoft.com/library/hh847796.aspx)来确定如何响应发送到不同输出流的数据。 可以在 Runbook 中设置这些变量以控制此 Runbook 如何响应发送到不同流中的数据。
 
-下表列出了可在 Runbook 中使用的 preference 变量及其有效值和默认值。 请注意，此表格仅包含在 Runbook 中有效的值。 preference 变量的其他值在 Azure 自动化外部的 Windows PowerShell 中使用时有效。
+下表列出了可在 Runbook 中使用的 preference 变量及其有效值和默认值。 此表仅包含在 Runbook 中有效的值。 preference 变量的其他值在 Azure 自动化外部的 Windows PowerShell 中使用时有效。
 
 | 变量 | 默认值 | 有效值 |
 |:--- |:--- |:--- |
@@ -170,7 +170,7 @@ Windows PowerShell 使用[首选项变量](http://technet.microsoft.com/library/
 可以从 Azure 门户中 Runbook 的“作业”选项卡查看 Runbook 作业的详细信息。 作业的“摘要”可显示输入参数和[输出流](#Output)，此外，还显示有关作业以及任何发生的异常的常规信息。 “历史记录”包含来自[输出流](#Output)以及[警告和错误流](#WarningError)中的消息，此外，如果 Runbook 已配置为记录详细记录和进度记录，则还包含[详细流](#Verbose)和[进度记录](#Progress)。
 
 ### <a name="windows-powershell"></a>Windows PowerShell
-在 Windows PowerShell 中，可以使用 [Get-AzureAutomationJobOutput](https://msdn.microsoft.com/library/mt603476.aspx) cmdlet 检索 Runbook 的输出和消息。 此 cmdlet 需要作业的 ID，如果指定了要返回的流，则它还要使用一个名为 Stream 的参数。 可以指定 Any 来返回作业的所有流。
+在 Windows PowerShell 中，可以使用 [Get-AzureAutomationJobOutput](https://msdn.microsoft.com/library/mt603476.aspx) cmdlet 检索 Runbook 的输出和消息。 此 cmdlet 需要作业的 ID，如果指定了要返回的流，则它还要使用一个名为 Stream 的参数。 可以指定 **Any** 来返回作业的所有流。
 
 以下示例将启动一个示例 Runbook，然后等待该 Runbook 完成。 完成后，将从作业收集该 Runbook 的输出流。
 
@@ -194,24 +194,24 @@ Windows PowerShell 使用[首选项变量](http://technet.microsoft.com/library/
     
 
 ### <a name="graphical-authoring"></a>图形创作
-对于图形 Runbook，以活动级别跟踪形式提供了额外的日志记录。  有两个级别的跟踪：基本和详细。  在基本跟踪中，可以看到 Runbook 中每个活动的开始和结束时间，以及与任何活动重试相关的信息，例如尝试次数和活动开始时间。  在详细跟踪中，可获取基本跟踪以及每个活动的输入和输出数据。  请注意，目前跟踪记录是使用详细流写入的，因此，必须在启用跟踪时启用详细日志记录。  对于启用了跟踪的图形 Runbook，无需记录进度记录，因为基本跟踪起着相同作用，并且信息更丰富。
+对于图形 Runbook，以活动级别跟踪形式提供了额外的日志记录。 有两个级别的跟踪：基本和详细。 在基本跟踪中，可以看到 Runbook 中每个活动的开始和结束时间，以及与任何活动重试相关的信息，例如尝试次数和活动开始时间。 在详细跟踪中，可获取基本跟踪以及每个活动的输入和输出数据。 目前跟踪记录是使用详细流写入的，因此，必须在启用跟踪时启用详细日志记录。 对于启用了跟踪的图形 Runbook，无需记录进度记录，因为基本跟踪起着相同作用，并且信息更丰富。
 
 ![“图形创作作业流”视图](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
 
-从上面的屏幕截图可以看出，为图形 Runbook 启用详细日志记录和跟踪时，在“生产作业流”视图中会提供更多信息。  此额外信息对于解决 Runbook 的生产问题是非常必要的，因此应仅为该目的启用它，而不是作为一种常规做法。 “跟踪”记录可以特别大量。  凭借图形 Runbook 跟踪，可获取与每个活动相关的二至四条记录，具体数量取决于配置的是基本跟踪还是详细跟踪。  除非需要此信息来跟踪 Runbook 进度以进行故障排除，否则你可能想要使跟踪保持关闭状态。
+从前面的屏幕截图可以看出，为图形 Runbook 启用详细日志记录和跟踪时，在“生产作业流”视图中会提供更多信息。 此额外信息对于解决 Runbook 的生产问题是非常必要的，因此应仅为该目的启用它，而不是作为一种常规做法。 “跟踪”记录可以特别大量。 凭借图形 Runbook 跟踪，可获取与每个活动相关的二至四条记录，具体数量取决于配置的是基本跟踪还是详细跟踪。 除非需要此信息来跟踪 Runbook 进度以进行故障排除，否则你可能想要使跟踪保持关闭状态。
 
-**若要启用活动级别跟踪，请执行以下步骤。**
+**若要启用活动级别跟踪，请执行以下步骤：**
 
 1. 在 Azure 门户中，打开自动化帐户。
-2. 单击“Runbook”  磁贴打开 Runbook 的列表。
-3. 在“Runbook”边栏选项卡上，单击以从 Runbook 列表中选择图形 Runbook。
-4. 在所选 Runbook 的“设置”边栏选项卡上，单击“日志记录和跟踪”。
-5. 在“日志记录和跟踪”边栏选项卡的“记录详细记录”下，单击“启用”以启用详细日志记录；在“活动级别跟踪”下，根据所需的跟踪级别，将跟踪级别更改为“基本”或“详细”。<br>
+2. 在“流程自动化”下选择“Runbook”，打开 Runbook 的列表。
+3. 在“Runbook”页上，单击以从 Runbook 列表中选择图形 Runbook。
+4. 在“设置”下，单击“日志记录和跟踪”。
+5. 在“日志记录和跟踪”页的“日志详细记录”下，单击“启用”以启用详细日志记录；在“活动级别跟踪”下，根据所需的跟踪级别，将跟踪级别更改为“基本”或“详细”。<br>
    
    ![“图形创作日志记录和跟踪”边栏选项卡](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
 ### <a name="microsoft-operations-management-suite-oms-log-analytics"></a>Microsoft Operations Management Suite (OMS) Log Analytics
-自动化可以将 Runbook 作业状态和作业流发送到 Microsoft Operations Management Suite (OMS) Log Analytics 工作区。  使用 Log Anaytics，可以：
+自动化可以将 Runbook 作业状态和作业流发送到 Microsoft Operations Management Suite (OMS) Log Analytics 工作区。 使用 Log Anaytics，可以：
 
 * 获取有关自动化作业的见解 
 * 基于 Runbook 作业状态（例如失败或暂停）触发电子邮件或警报 

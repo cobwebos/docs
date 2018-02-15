@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 01/18/2018
 ms.author: barbkess
-ms.openlocfilehash: 692d92f2e45e04a4eb284b43797b5b468cd9ec1b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3c86b89da796223336e3a0d9dd809ae140d6911e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>有关如何在 Azure SQL 数据仓库中设计分布式表的指南
 
@@ -121,7 +121,7 @@ WITH
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>没有合适分布列时怎么办
 
-若没有合适的候选列，请考虑使用轮循机制作为分布方法。
+如果列没有足够的不同值用于分步列，可创建一个新列作为一个或多个值的复合。 要避免查询执行时出现数据移动，可在查询中使用复合分布列作为联接列。
 
 完成哈希分布表的设计后，下一步就是将数据加载到表。  有关加载指南，请参阅[加载概述](sql-data-warehouse-overview-load.md)。 
 

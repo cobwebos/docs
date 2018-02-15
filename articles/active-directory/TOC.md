@@ -83,6 +83,7 @@
 #### [将许可证分配到组](active-directory-licensing-group-assignment-azure-portal.md)
 #### [识别和解决组中的许可证问题](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [将单个许可用户迁移到基于组的许可](active-directory-licensing-group-migration-azure-portal.md)
+#### [在产品许可证之间迁移用户](active-directory-licensing-group-product-migration.md)
 #### [基于组的许可的其他方案](active-directory-licensing-group-advanced.md)
 #### [基于组的许可的 Azure PowerShell 示例](active-directory-licensing-ps-examples.md)
 #### [Azure AD 中的产品和服务计划的参考](active-directory-licensing-product-and-service-plan-reference.md)
@@ -200,8 +201,6 @@
 ##### [连接器](application-proxy-understand-connectors.md)
 ##### [安全性](application-proxy-security-considerations.md)
 ##### [网络](application-proxy-network-topology-considerations.md)
-
-
 ##### [从 TMG 或 UAG 升级](application-proxy-transition-from-uag-tmg.md)
 
 #### 高级配置
@@ -212,6 +211,8 @@
 ##### [无提示安装](active-directory-application-proxy-silent-installation.md)
 ##### [自定义主页](application-proxy-office365-app-launcher.md)
 ##### [转换内联链接](application-proxy-link-translation.md)
+##### [通配符应用程序](active-directory-application-proxy-wildcard.md)
+
 #### 发布演练
 ##### [远程桌面](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
@@ -293,8 +294,9 @@
 
 ## 保护标识
 ### [条件性访问](active-directory-conditional-access-azure-portal.md)
-#### [控制](active-directory-conditional-access-controls.md)
+#### [条件](active-directory-conditional-access-conditions.md)
 #### [位置条件](active-directory-conditional-access-locations.md)
+#### [控制](active-directory-conditional-access-controls.md)
 #### [入门](active-directory-conditional-access-azure-portal-get-started.md)
 #### [最佳实践](active-directory-conditional-access-best-practices.md)
 #### [了解 Office 365 服务的设备策略](active-directory-conditional-access-device-policies.md)

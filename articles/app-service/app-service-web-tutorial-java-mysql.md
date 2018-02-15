@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: ad53575b655ebec5a134c8d76b963708caf14334
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 2df08c8e3dbadbfc1a9d2cfb3adcda4f5bae2851
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="build-a-java-and-mysql-web-app-in-azure"></a>在 Azure 中构建 Java 和 MySQL Web 应用
 
 > [!NOTE]
-> 本文将应用部署到基于 Windows 的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[将容器化 Spring Boot 应用部署到 Azure](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin)。
+> 本文将应用部署到 Windows 上的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[将容器化 Spring Boot 应用部署到 Azure](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin)。
 >
 
 本教程介绍如何在 Azure 中创建 Java Web 应用，并将其连接到 MySQL 数据库。 完成本教程后，即可使用 [Spring Boot](https://projects.spring.io/spring-boot/) 应用程序将数据存储到[用于 MySQL 的 Azure 数据库](https://docs.microsoft.com/azure/mysql/overview)，后者运行在 [Azure 应用服务 Web 应用](app-service-web-overview.md)中。
@@ -41,14 +41,13 @@ ms.lasthandoff: 12/15/2017
 > * 从 Azure 流式传输诊断日志
 > * 在 Azure 门户中监视应用
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
 1. [下载并安装 Git](https://git-scm.com/)
 1. [下载并安装 Java 7 JDK 或更高版本](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 1. [下载、安装并启动 MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prepare-local-mysql"></a>准备本地 MySQL 
 
@@ -126,7 +125,7 @@ select * from todo_item;
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#create) 命令创建[资源组](../azure-resource-manager/resource-group-overview.md)。 Azure 资源组是在其中部署和管理相关资源（例如 Web 应用、数据库和存储帐户）的逻辑容器。 
+使用 [`az group create`](/cli/azure/group#az_group_create) 命令创建[资源组](../azure-resource-manager/resource-group-overview.md)。 Azure 资源组是在其中部署和管理相关资源（例如 Web 应用、数据库和存储帐户）的逻辑容器。 
 
 以下示例在北欧区域创建资源组：
 
@@ -134,12 +133,11 @@ select * from todo_item;
 az group create --name myResourceGroup --location "North Europe"
 ```    
 
-若要查看可对 `--location` 使用的可能值，请使用 [az appservice list-locations](/cli/azure/appservice#list-locations) 命令。
+若要查看可以用于 `--location` 的可能值，请使用 [`az appservice list-locations`](/cli/azure/appservice#list-locations) 命令。
 
 ### <a name="create-a-mysql-server"></a>创建 MySQL 服务器
 
-在 Cloud Shell 中，使用 [az mysql server create](/cli/azure/mysql/server#create) 命令在用于 MySQL 的 Azure 数据库（预览版）中创建一个服务器。    
-将出现的 `<mysql_server_name>` 占位符替换成自己的唯一 MySQL 服务器名称。 此名称是 MySQL 服务器主机名 `<mysql_server_name>.mysql.database.azure.com` 的一部分，因此必须全局唯一。 此外，请将 `<admin_user>` 和 `<admin_password>` 替换成自己的值。
+在 Cloud Shell 中，使用 [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) 命令在 Azure Database for MySQL（预览版）中创建一个服务器。 将出现的 `<mysql_server_name>` 占位符替换成自己的唯一 MySQL 服务器名称。 此名称是 MySQL 服务器主机名 `<mysql_server_name>.mysql.database.azure.com` 的一部分，因此必须全局唯一。 此外，请将 `<admin_user>` 和 `<admin_password>` 替换成自己的值。
 
 ```azurecli-interactive
 az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user <admin_user> --admin-password <admin_password>
@@ -163,7 +161,7 @@ az mysql server create --name <mysql_server_name> --resource-group myResourceGro
 
 ### <a name="configure-server-firewall"></a>配置服务器防火墙
 
-在 Cloud Shell 中，使用 [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#create) 命令创建 MySQL 服务器的防火墙规则，以便允许客户端连接。 
+在 Cloud Shell 中，使用 [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) 命令创建 MySQL 服务器的防火墙规则，以便建立客户端连接。 
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
@@ -205,7 +203,7 @@ quit
 
 ## <a name="deploy-the-sample-to-azure-app-service"></a>将示例部署到 Azure 应用服务
 
-使用 [az appservice plan create](/cli/azure/appservice/plan#create) CLI 命令通过“免费”定价层创建 Azure 应用服务计划。 appservice 计划定义用于托管应用的物理资源。 分配到 appservice 计划的所有应用程序共享这些资源，因此在托管多个应用时可以节省成本。 
+使用 [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) CLI 命令通过**免费**定价层创建 Azure 应用服务计划。 appservice 计划定义用于托管应用的物理资源。 分配到 appservice 计划的所有应用程序共享这些资源，因此在托管多个应用时可以节省成本。 
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -231,7 +229,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ### <a name="create-an-azure-web-app"></a>创建 Azure Web 应用
 
- 在 Cloud Shell 中，使用 [az webapp create](/cli/azure/appservice/web#create) CLI 命令在 `myAppServicePlan` 应用服务计划中创建 Web 应用定义。 Web 应用定义提供了一个用于访问应用程序的 URL，并配置了多个将代码部署到 Azure 的选项。 
+在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/appservice/web#az_appservice_web_create) CLI 命令在 `myAppServicePlan` 应用服务计划中创建 Web 应用定义。 Web 应用定义提供了一个用于访问应用程序的 URL，并配置了多个将代码部署到 Azure 的选项。 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
@@ -258,7 +256,7 @@ az webapp create --name <app_name> --resource-group myResourceGroup --plan myApp
 
 ### <a name="configure-java"></a>配置 Java 
 
-在 Cloud Shell 中，使用 [az appservice web config update](/cli/azure/appservice/web/config#update) 命令，设置应用所需的 Java 运行时配置。
+在 Cloud Shell 中，使用 [`az webapp config set`](/cli/azure/webapp/config#az_webapp_config_set) 命令，设置应用所需的 Java 运行时配置。
 
 以下命令配置的 Web 应用可在最新的 Java 8 JDK 和 [Apache Tomcat](http://tomcat.apache.org/) 8.0 上运行。
 
@@ -270,7 +268,7 @@ az webapp config set --name <app_name> --resource-group myResourceGroup --java-v
 
 在运行示例应用之前，请在 Web 应用上设置应用程序设置，以便使用在 Azure 中创建的 Azure MySQL 数据库。 这些属性以环境变量的形式公开给 Web 应用程序，并替代在已打包 Web 应用的 application.properties 中设置的值。 
 
-在 Cloud Shell 中，使用 CLI 中的 [az webapp config appsettings](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) 设置应用程序设置：
+在 Cloud Shell 的 CLI 中使用 [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) 设置应用程序设置：
 
 ```azurecli-interactive
 az webapp config appsettings set --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" --resource-group myResourceGroup --name <app_name>
@@ -287,7 +285,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>获取 FTP 部署凭据 
 可以通过不同的方法将应用程序部署到 Azure appservice，包括 FTP、本地 Git、 GitHub、Visual Studio Team Services 和 BitBucket。 就本示例来说，请通过 FTP 将此前在本地计算机上生成的 .WAR 文件部署到 Azure 应用服务。
 
-若要确定要在 ftp 命令中将哪些凭据传递给 Web 应用，请在 Cloud Shell 中使用 [az appservice web deployment list-publishing-profiles](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az_appservice_web_deployment_list_publishing_profiles) 命令： 
+若要确定要在 ftp 命令中将哪些凭据传递给 Web 应用，请在 Cloud Shell 中使用 [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az_appservice_web_deployment_list_publishing_profiles) 命令： 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json
@@ -372,7 +370,7 @@ put target/TodoDemo-0.0.1-SNAPSHOT.war ROOT.war
     repository.save(item);
     ```
 
-4. 在 Thymeleaf 模板中添加对新字段的支持。 更新 src/main/resources/templates/index.html，对时间戳使用新的表头，并在每个表数据行中使用新字段来显示时间戳的值。
+4. 在 `Thymeleaf` 模板中添加对新字段的支持。 更新 src/main/resources/templates/index.html，对时间戳使用新的表头，并在每个表数据行中使用新字段来显示时间戳的值。
 
     ```html
     <th>Name</th>
@@ -401,7 +399,7 @@ put target/TodoDemo-0.0.1-SNAPSHOT.war ROOT.war
 
 当 Java 应用程序在 Azure 应用服务中运行时，可将控制台日志通过管道直接传输到终端。 如此，可以获得相同的诊断消息，以便调试应用程序错误。
 
-若要启动日志流式处理，请在 Cloud Shell 中使用 [az webapp log tail](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) 命令。
+若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) 命令。
 
 ```azurecli-interactive 
 az webapp log tail --name <app_name> --resource-group myResourceGroup 
@@ -409,19 +407,17 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 ## <a name="manage-your-azure-web-app"></a>管理 Azure Web 应用
 
-转到 Azure 门户查看已创建的 Web 应用。
-
-为此，请登录到 [https://portal.azure.com](https://portal.azure.com)。
+转到 [Azure 门户](https://portal.azure.com)查看已创建的 Web 应用。
 
 从左侧菜单中单击“应用服务”，并单击 Azure Web 应用的名称。
 
 ![在门户中导航到 Azure Web 应用](./media/app-service-web-tutorial-java-mysql/access-portal.png)
 
-默认情况下，Web 应用的边栏选项卡显示“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行管理任务，例如停止、启动、重启和删除。 边栏选项卡左侧的选项卡显示可以打开的不同配置页。
+默认情况下，Web 应用页显示“概览”页。 在此页中可以查看应用的运行状况。 在此处还可以执行管理任务，例如停止、启动、重启和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
-![Azure 门户中的应用服务边栏选项卡](./media/app-service-web-tutorial-java-mysql/web-app-blade.png)
+![Azure 门户中的应用服务页](./media/app-service-web-tutorial-java-mysql/web-app-blade.png)
 
-边栏选项卡中的这些选项卡显示了可添加到 Web 应用的许多强大功能。 以下列表只是列出了一部分可用的功能：
+页面中的这些选项卡显示了可添加到 Web 应用的许多强大功能。 以下列表只是列出了一部分可用的功能：
 * 映射自定义 DNS 名称
 * 绑定自定义 SSL 证书
 * 配置持续部署

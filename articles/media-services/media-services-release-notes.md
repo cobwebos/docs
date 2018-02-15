@@ -327,7 +327,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](http://github.com/Azure/azur
 适用于 .NET 的媒体服务 SDK 当前版本为 3.0.0.7。
 
 ### <a id="sept_14_breaking_changes"></a>重大更改
-* 已将 Origin 重命名为 StreamingEndpoint。[]
+* 已将 Origin 重命名为 [StreamingEndpoint]。
 * 更改了使用 Azure 门户编码和发布 MP4 文件时的默认行为。
 
 ### <a id="sept_14_GA_changes"></a>公开上市版中的新增功能/方案

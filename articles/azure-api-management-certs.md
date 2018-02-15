@@ -1,6 +1,6 @@
 ---
-title: "上传 Azure Management API 证书 | Microsoft Docs"
-description: "了解如何为 Azure 门户上传 Management API 证书。"
+title: "上传 Azure Service Management 证书 | Microsoft Docs"
+description: "了解如何为 Azure 门户上传 Service Management 证书。"
 services: cloud-services
 documentationcenter: .net
 author: Thraka
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: adegeo
-ms.openlocfilehash: ad55d71a56657e9cf33c1d33e09c58295206a2ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e74a3e918a7c7426c743447e23ede9938ce3f63e
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="upload-an-azure-management-api-management-certificate"></a>上传 Azure Management API 管理证书
+# <a name="upload-an-azure-service-management-certificate"></a>上传 Azure Service Management 证书
 管理证书使你可以使用 Azure 提供的经典部署模型进行身份验证。 许多程序和工具（如 Visual Studio 或 Azure SDK）会使用这些证书来自动配置和部署各种 Azure 服务。 
 
 > [!WARNING]

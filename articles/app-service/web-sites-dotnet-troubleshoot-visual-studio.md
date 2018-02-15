@@ -3,8 +3,8 @@ title: "使用 Visual Studio 对 Azure 应用服务中的 Web 应用进行故障
 description: "了解如何通过内置于 Visual Studio 2013 的远程调试、 跟踪和日志记录工具排除 Azure Web 应用的故障。"
 services: app-service
 documentationcenter: .net
-author: tdykstra
-manager: erikre
+author: cephalin
+manager: cfowler
 editor: 
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.service: app-service
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
-ms.author: rachelap
-ms.openlocfilehash: 1e3aff1898665c834a70e6c49f23e408a508b10a
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: cephalin
+ms.openlocfilehash: 6b1d5694c4d80a4db584b0c76a044dd596c5d553
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的 Web 应用进行故障排除
 ## <a name="overview"></a>概述
@@ -117,9 +117,9 @@ ms.lasthandoff: 11/23/2017
 
 远程调试不适用于 Visual Studio Express 版。
 
-本节介绍如何使用你在 [Create an ASP.NET web app in Azure][app-service-web-get-started-dotnet.md] 中创建的项目进行远程调试。
+本部分介绍如何使用在[在 Azure 中创建 ASP.NET Web 应用](app-service-web-get-started-dotnet.md)中创建的项目进行远程调试。
 
-1. 打开你在 [Create an ASP.NET web app in Azure][app-service-web-get-started-dotnet.md] 中创建的 web 项目。
+1. 打开在[在 Azure 中创建 ASP.NET Web 应用](app-service-web-get-started-dotnet.md)中创建的 Web 项目。
 
 2. 打开 *Controllers\HomeController.cs*。
 
@@ -135,7 +135,7 @@ ms.lasthandoff: 11/23/2017
 
 5. 在“解决方案资源管理器”中，右键单击该项目并单击“发布”。
 
-6. 在“配置文件”下拉列表中，选择在 [Create an ASP.NET web app in Azure][app-service-web-get-started-dotnet.md] 中使用的相同配置文件。 然后，单击“设置”。
+6. 在“配置文件”下拉列表中，选择在[在 Azure 中创建 ASP.NET Web 应用](app-service-web-get-started-dotnet.md)中使用的相同配置文件。 然后，单击“设置”。
 
 7. 在“发布”对话框中，单击“设置”选项卡，将“配置”更改为“调试”，然后单击“保存”。
 

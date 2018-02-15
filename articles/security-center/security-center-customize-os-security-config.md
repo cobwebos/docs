@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/16/2018
+ms.date: 01/25/2018
 ms.author: terrylan
-ms.openlocfilehash: d42dd4ba150a28109d6bb3f7c2281d07b21a366e
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: f12441a960db9f1c45bca2a5b95f3669923c7e3d
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>在 Azure 安全中心自定义 OS 安全配置（预览）
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/25/2018
 
 ## <a name="what-are-os-security-configurations"></a>什么是 OS 安全配置？
 
-Azure 安全中心应用 150 多种建议的规则来监视安全配置。这些规则用于强化 OS，包括与防火墙、审核、密码策略等相关的规则。 如果发现计算机中的某项配置有漏洞，则安全中心会生成安全建议。
+Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)来监视安全配置。这些规则用于强化 OS，包括与防火墙、审核、密码策略等相关的规则。 如果发现计算机中的某项配置有漏洞，则安全中心会生成安全建议。
 
 通过自定义规则，组织可以控制更适合其环境的配置选项。 可以设置自定义的评估策略并将其应用到订阅中所有适用的计算机。
 
@@ -60,8 +60,8 @@ Azure 安全中心应用 150 多种建议的规则来监视安全配置。这些
 3.  选择要对其执行自定义的订阅。
 
 4. 在“策略组件”下，选择“编辑安全配置”。  
-    此时将打开“编辑安全配置”窗口。 
-    
+    此时将打开“编辑安全配置”窗口。
+
     ![“编辑安全配置”窗口](media/security-center-customize-os-security-config/blade.png)
 
 5. 在右窗格中，遵照步骤下载、编辑和上传修改后的文件。
@@ -70,7 +70,7 @@ Azure 安全中心应用 150 多种建议的规则来监视安全配置。这些
    > 默认情况下，下载的配置文件采用 *json* 格式。 有关修改此文件的说明，请转到[自定义配置文件](#customize-the-configuration-file)。
    >
 
-   成功保存文件后，配置将应用到与订阅下的所有工作区相连接的所有 VM 和计算机。 此过程通常需要几分钟或更长时间，具体时间取决于基础结构的大小。 
+   成功保存文件后，配置将应用到与订阅下的所有工作区相连接的所有 VM 和计算机。 此过程通常需要几分钟或更长时间，具体时间取决于基础结构的大小。
 
 6. 若要提交更改，请选择“保存”。 否则不会存储该策略。
 

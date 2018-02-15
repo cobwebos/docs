@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 01/25/2018
 ms.author: sethm
-ms.openlocfilehash: 91a6e62a03ffe39e456129ea78821250b65091e4
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: efc5608d4812edbb3f477dffbc2b495b331bd787
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="duplicate-detection"></a>重复检测
 
-如果应用程序在发送消息后立即遇到错误，并且重启的应用程序实例因此错误地认为先前的消息传递未成功，那么后续发送会导致同一消息在系统中出现两次。
+如果应用程序在发送消息后立即遇到灾难性错误，并且重启的应用程序实例错误地认为先前的消息传递未成功，那么后续发送会导致同一消息在系统中出现两次。
 
 也有可能更早在客户端或网络一级出错，导致已发送的消息被提交到队列，可以确认的是消息没有成功返回到客户端。 在这种情况下，客户端就会对发送操作结果产生怀疑。
 

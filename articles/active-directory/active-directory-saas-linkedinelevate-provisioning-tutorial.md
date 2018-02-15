@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/15/2017
+ms.date: 01/28/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 6c2f26e6df435b522346f22ce697468d094de23e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7694c28dd41b75438bfa4ffc8d032f439173122b
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-linkedin-elevate-for-automatic-user-provisioning"></a>教程：为 LinkedIn Elevate 配置自动用户预配
+# <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>教程：为 LinkedIn Elevate 配置自动用户预配
 
 
 本教程的目的是展示为了从 Azure AD 自动将用户帐户预配到 LinkedIn Elevate 以及取消其预配而需要在 LinkedIn Elevate 和 Azure AD 中执行的步骤。 
@@ -106,7 +106,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 12) 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
-13) 单击“保存” 。 
+13) 单击“ **保存**”。 
 
 14) 在“属性映射”部分中，查看将从 Azure AD 同步到 LinkedIn Elevate 的用户和组属性。 请注意，选为**匹配**属性的属性用于匹配 LinkedIn Elevate 中的用户帐户和组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
@@ -114,7 +114,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 15) 要为 LinkedIn Elevate 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-16) 单击“保存” 。 
+16) 单击“ **保存**”。 
 
 这会开始对在“用户和组”部分中分配给 LinkedIn Elevate 的任何用户和/或组进行初始同步。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 20 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务对 LinkedIn Elevate 应用执行的所有操作。
 

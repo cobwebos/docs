@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: v-masebo
-ms.openlocfilehash: 24c556c8ea585a522c890dab16ae9fb96dc51c22
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f467437afb4bf89e77668cfd3e8a824bfbde9e10
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="routing-messages-with-iot-hub-python"></a>使用 IoT 中心路由消息 (Python)
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 01/23/2018
         print ( "IoTHubClient sample stopped" )
     ```
    
-    此方法会将 `"level": "critical"` 和 `"level": "storage"` 属性随机添加到设备发送的消息，此设备模拟需要应用程序后端立即执行操作的消息，或需要永久存储的消息。 应用程序支持基于消息正文路由消息。
+    此方法会将 `"level": "critical"` 和 `"level": "storage"` 属性随机添加到设备发送的消息，此设备模拟需要应用程序后端立即执行操作的消息，或需要永久存储的消息。 应用程序支持基于消息正文的路由消息。
    
    > [!NOTE]
    > 可使用消息属性根据各种方案路由消息，包括冷路径处理和此处所示的热路径示例。
@@ -117,6 +117,9 @@ ms.lasthandoff: 01/23/2018
 在本部分中，将创建一个服务总线队列和一个存储帐户并将其连接到 IoT 中心，还会配置 IoT 中心，根据消息是否存在某个属性将消息发送到该队列，并将所有消息发送到该存储帐户。 有关如何处理服务总线队列中的消息的详细信息，请参阅[队列入门][lnk-sb-queues-node]；有关如何管理存储，请参阅 [Azure 存储入门][Azure 存储]。
 
 1. 按[队列入门][lnk-sb-queues-node]中所述，创建服务总线队列。 记下命名空间和队列名称。
+
+    > [!NOTE]
+    > 用作 IoT 中心终结点的服务总线队列和主题不得启用会话或重复检测选项。 如果启用了其中任一选项，该终结点会在 Azure 门户中显示为“无法访问”。
 
 1. 在 Azure 门户中，打开 IoT 中心并单击“终结点”。
 

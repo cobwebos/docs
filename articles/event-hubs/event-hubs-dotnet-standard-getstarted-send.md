@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2017
+ms.date: 02/01/2018
 ms.author: sethm
-ms.openlocfilehash: 5cf01580b53b551064a46282b9005ade6afe9604
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f59f88d47bfcb3e761f509a3d87c6d068f44e0db
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>使用 .NET Standard 将消息发送到 Azure 事件中心入门
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 * Azure 订阅。
 * 事件中心命名空间。
 
-为了将消息发送到事件中心，我们将使用 Visual Studio 编写 C# 控制台应用程序。
+为了将消息发送到事件中心，本教程使用 Visual Studio 编写 C# 控制台应用程序。
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>创建事件中心命名空间和事件中心
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="write-some-code-to-send-messages-to-the-event-hub"></a>编写一些代码以将消息发送到事件中心
 
-1. 在 Program.cs 文件顶部添加以下 `using` 语句。
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
 
     ```csharp
     using Microsoft.Azure.EventHubs;
@@ -77,8 +77,8 @@ ms.lasthandoff: 10/11/2017
     private static async Task MainAsync(string[] args)
     {
         // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
-        // Typically, the connection string should have the entity path in it, but for the sake of this simple scenario
-        // we are using the connection string from the namespace.
+        // Typically, the connection string should have the entity path in it, but this simple scenario
+        // uses the connection string from the namespace.
         var connectionStringBuilder = new EventHubsConnectionStringBuilder(EhConnectionString)
         {
             EntityPath = EhEntityPath
@@ -121,7 +121,7 @@ ms.lasthandoff: 10/11/2017
     }
     ```
 
-5. 在 `Program` 类的 `Main` 方法中添加以下代码。
+5. 在 `Program` 类的 `Main` 方法中添加以下代码：
 
     ```csharp
     MainAsync(args).GetAwaiter().GetResult();
@@ -151,8 +151,8 @@ ms.lasthandoff: 10/11/2017
             private static async Task MainAsync(string[] args)
             {
                 // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
-                // Typically, the connection string should have the entity path in it, but for the sake of this simple scenario
-                // we are using the connection string from the namespace.
+                // Typically, the connection string should have the entity path in it, but this simple scenario
+                // uses the connection string from the namespace.
                 var connectionStringBuilder = new EventHubsConnectionStringBuilder(EhConnectionString)
                 {
                     EntityPath = EhEntityPath
@@ -198,7 +198,7 @@ ms.lasthandoff: 10/11/2017
 祝贺你！ 现在已向事件中心发送消息。
 
 ## <a name="next-steps"></a>后续步骤
-访问以下链接可以了解有关事件中心的详细信息：
+可以通过以下链接详细了解事件中心：
 
 * [从事件中心接收事件](event-hubs-dotnet-standard-getstarted-receive-eph.md)
 * [事件中心概述](event-hubs-what-is-event-hubs.md)

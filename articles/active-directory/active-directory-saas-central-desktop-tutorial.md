@@ -1,157 +1,286 @@
 ---
 title: "教程：Azure Active Directory 与 Central Desktop 集成 | Microsoft Docs"
-description: "了解如何使用 Central Desktop 与 Azure Active Directory 以启用单一登录、自动化预配及更多内容！"
+description: "了解如何在 Azure Active Directory 和 Central Desktop 之间配置单一登录。"
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
+ms.reviewer: joflore
 ms.assetid: b805d485-93db-49b4-807a-18d446c7090e
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 02/10/2017
+ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: fe32c1d68040ceb9d9de2ad6c4a6dc9ea93f5aef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 94c67bef7a0c6ba60fc9c7a60c79a23bf7984fb1
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>教程：Azure Active Directory 与 Central Desktop 集成
-本教程的目的是说明 Azure 与 Central Desktop 的集成。 在本教程中概述的方案假定已有以下各项：
 
-* 一个有效的 Azure 订阅
-* 已启用 Central Desktop 单一登录的订阅 / Central Desktop 租户
+本教程介绍了如何将 Central Desktop 与 Azure Active Directory (Azure AD) 集成。
 
-在本教程中概述的方案由以下构建基块组成：
+将 Central Desktop 与 Azure AD 集成可提供以下优势：
 
-* 为 Central Desktop 启用应用程序集成
-* 配置单一登录 (SSO)
-* 配置用户设置
-* 分配用户
+- 可以在 Azure AD 中控制谁有权访问 Central Desktop。
+- 可以让用户使用其 Azure AD 帐户自动登录到 Central Desktop。
+- 可在一个中心位置（即 Azure 门户）管理帐户。
 
-![方案](./media/active-directory-saas-central-desktop-tutorial/IC769558.png "方案")
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)。
 
-## <a name="enable-the-application-integration-for-central-desktop"></a>为 Central Desktop 启用应用程序集成
-本部分的目的是概述如何为 Central Desktop 启用应用程序集成。
+## <a name="prerequisites"></a>先决条件
 
-**若要为 Central Desktop 启用应用程序集成，请执行以下步骤：**
+若要配置 Azure AD 与 Central Desktop 的集成，需要具有以下项：
 
-1. 在 Azure 经典门户的左侧导航窗格中，单击“Active Directory”。
-   
-   ![Active Directory](./media/active-directory-saas-central-desktop-tutorial/IC700993.png "Active Directory")
-2. 在“目录”列表中，选择要启用目录集成的目录。
-3. 若要打开应用程序视图，请在目录视图的顶部菜单中，单击“应用程序”。
-   
-   ![应用程序](./media/active-directory-saas-central-desktop-tutorial/IC700994.png "应用程序")
-4. 在页面底部单击“添加”。
-   
-   ![添加应用程序](./media/active-directory-saas-central-desktop-tutorial/IC749321.png "添加应用程序")
-5. 在“要执行什么操作”对话框中，单击“从库中添加应用程序”。
-   
-   ![从库添加应用程序](./media/active-directory-saas-central-desktop-tutorial/IC749322.png "从库添加应用程序")
-6. 在搜索框中，键入“Central Desktop”。
-   
-   ![应用程序库](./media/active-directory-saas-central-desktop-tutorial/IC769559.png "应用程序库")
-7. 在结果窗格中，选择“Central Desktop”，并单击“完成”添加该应用程序。
-   
-   ![Central Desktop](./media/active-directory-saas-central-desktop-tutorial/IC769560.png "Central Desktop")
-   
-## <a name="configure-single-sign-on"></a>配置单一登录
+- Azure AD 订阅
+- 一个启用了单一登录的 Central Desktop 订阅
 
-本部分的目的是概述如何让用户能够使用基于 SAML 协议的联合身份验证通过他们在 Azure AD 中的帐户向 Central Desktop 证明自己的身份。
+> [!NOTE]
+> 不建议使用生产环境测试本教程中的步骤。
 
-在此过程中，需要将 base-64 编码的证书上传到 Central Desktop 租户。  
-如果不熟悉此过程，请参阅[如何将二进制证书转换为文本文件](http://youtu.be/PlgrzUZ-Y1o)。
+若要测试本教程中的步骤，请遵循以下建议：
 
-**若要配置单一登录，请执行以下步骤：**
+- 除非必要，请勿使用生产环境。
+- 如果还没有 Azure AD 试用环境，请[获取一个月免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-1. 在 Azure 经典门户中的“Central Desktop”应用程序集成页上，单击“配置单一登录”，打开“配置单一登录”对话框。
-   
-   ![配置单一登录](./media/active-directory-saas-central-desktop-tutorial/IC749323.png "配置单一登录")
-2. 在“你希望用户如何登录 Central Desktop”页上，选择“Microsoft Azure AD 单一登录”，并单击“下一步”。
-   
-   ![配置单一登录](./media/active-directory-saas-central-desktop-tutorial/IC777628.png "配置单一登录")
-3. 在“配置应用 URL”对话框页上，执行以下步骤，并单击“下一步”： 
-   
-   1. 在“Central Desktop 登录 URL”文本框中，键入 Central Desktop 租户的 URL（例如：*http://contoso.centraldesktop.com*）。
-   2. 在“Central Desktop 回复 URL”文本框中，键入 Central Desktop AssertionConsumerService URL（例如：https://contoso.centraldesktop.com/saml2-assertion.php）。
-   
-   >[!NOTE]
-   >可以从 Central Desktop 元数据（例如：*http://contoso.centraldesktop.com*）获取该值。
-   >  
-   
-   ![配置应用 URL](./media/active-directory-saas-central-desktop-tutorial/IC769561.png "配置应用 URL")
-4. 在“配置 Central Desktop 的单一登录”页上，要下载证书，请单击“下载证书”，然后将该证书文件保存到计算机上。
-   
-  ![配置单一登录](./media/active-directory-saas-central-desktop-tutorial/IC769562.png "配置单一登录")
-5. 登录到 **Central Desktop** 租户。
-6. 转到“设置”，单击“高级”，并单击“单一登录”。
-   
-  ![设置 - 高级](./media/active-directory-saas-central-desktop-tutorial/IC769563.png "Setup - Advanced")
-7. 在“单一登录设置”页上，执行以下步骤：
-   
-  ![单一登录设置](./media/active-directory-saas-central-desktop-tutorial/IC769564.png "Single Sign On Settings")
-   
-  1. 选择“启用 SAML v2 单一登录”。
-  2. 在 Azure 经典门户的“配置 Central Desktop 的单一登录”对话框页上，复制“颁发者 URL”值，然后将其粘贴到“SSO URL”文本框中。
-  3. 在 Azure 经典门户的“配置 Central Desktop 的单一登录”页上，复制“远程登录 URL”值，然后将其粘贴到“SSO 登录 URL”文本框中。
-  4. 在 Azure 经典门户的“配置 Central Desktop 的单一登录”页上，复制“单一登录服务 URL”值，然后将其粘贴到“SSO 注销 URL”文本框中。
-8. 在“消息签名验证方法”部分执行以下步骤：
-   
-   ![消息签名验证方法](./media/active-directory-saas-central-desktop-tutorial/IC769565.png "Message Signature Verification Method")
-   
-  1. 选择“证书”。
-  2. 从“SSO 证书”列表中，选择 **RSH SHA256**。
-  3. 根据已下载的证书创建一个文本文件，复制文本文件的内容，然后将其粘贴到“SSO 证书”字段中。  
-     >[!TIP]
-     >有关详细信息，请参阅[如何将二进制证书转换为文本文件](http://youtu.be/PlgrzUZ-Y1o)
-      >  
-   4. 选择“显示 SAMLv2 登录页的链接”。
-9. 单击“更新”。
-10. 在 Azure 经典门户中，选择“单一登录配置确认”，并单击“完成”，关闭“配置单一登录”对话框。
+## <a name="scenario-description"></a>方案描述
+在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+
+1. 从库中添加 Central Desktop
+2. 配置和测试 Azure AD 单一登录
+
+## <a name="add-central-desktop-from-the-gallery"></a>从库中添加 Central Desktop
+要配置 Central Desktop 与 Azure AD 的集成，需要从库中将 Central Desktop 添加到托管 SaaS 应用列表。
+
+**若要从库中添加 Central Desktop，请执行以下步骤：**
+
+1. 在 [Azure 门户](https://portal.azure.com)的左窗格中，选择“Azure Active Directory”图标。 
+
+    ![“Azure Active Directory”按钮][1]
+
+2. 转到“企业应用程序”。 然后转到“所有应用程序”。
+
+    ![“企业应用程序”边栏选项卡][2]
     
-    ![配置单一登录](./media/active-directory-saas-central-desktop-tutorial/IC769566.png "配置单一登录")
-    
-## <a name="configure-user-provisioning"></a>配置用户设置
+3. 若要添加新应用程序，请选择对话框顶部的“新建应用程序”按钮。
 
-要使 AAD 用户能够登录，必须将这些用户预配到 Central Desktop 应用程序中。 本部分介绍如何在 Central Desktop 中创建 AAD 用户帐户。
+    ![“新增应用程序”按钮][3]
+
+4. 在搜索框中，键入“Central Desktop”。 在结果窗格中，选择“Central Desktop”，然后选择“添加”按钮添加该应用程序。
+
+    ![结果列表中的 Central Desktop](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_addfromgallery.png)
+
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+
+本部分基于名为“Britta Simon”的测试用户配置并测试 Central Desktop 的 Azure AD 单一登录。
+
+要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Central Desktop 用户。 换句话说，需要在 Azure AD 用户与 Central Desktop 中的相关用户之间建立链接。
+
+在 Central Desktop 中，赋予“用户名”与 Azure AD 中的“用户名”相同的值。 现在，已关联这两个用户。
+
+要配置和测试 Central Desktop 的 Azure AD 单一登录，需要完成以下构建基块：
+
+1. [配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)，使用户能够使用此功能。
+2. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，使用 Britta Simon 测试 Azure AD 单一登录。
+3. [创建 Central Desktop 测试用户](#create-a-central-desktop-test-user)，在 Central Desktop 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+4. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，使 Britta Simon 能够使用 Azure AD 单一登录。
+5. [测试单一登录](#test-single-sign-on)，验证配置是否正常工作。
+
+### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+
+在本部分中，会在 Azure 门户中启用 Azure AD 单一登录并在 Central Desktop 应用程序中配置单一登录。
+
+**要为 Central Desktop 配置 Azure AD 单一登录，请执行以下步骤：**
+
+1. 在 Azure 门户中的“Central Desktop”应用程序集成页上，选择“单一登录”。
+
+    ![配置单一登录链接][4]
+
+2. 若要启用单一登录，请在“单一登录”对话框中的“模式”下拉列表中，选择“基于 SAML 的登录”。
+ 
+    ![“单一登录”对话框](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_samlbase.png)
+
+3. 在“Central Desktop 域和 URL”部分中执行以下步骤：
+
+    ![Central Desktop 域和 URL 单一登录信息](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_url.png)
+
+    a. 在“登录 URL”框中，使用以下模式键入 URL：`https://<companyname>.centraldesktop.com`
+
+    b. 在“标识符”框中，使用以下模式键入 URL：
+    | |
+    |--|
+    | `https://<companyname>.centraldesktop.com/saml2-metadata.php`|
+    | `https://<companyname>.imeetcentral.com/saml2-metadata.php`|
+
+    c. 在“回复 URL”框中，使用以下模式键入 URL：`https://<companyname>.centraldesktop.com/saml2-assertion.php`    
+     
+    > [!NOTE] 
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Central Desktop 客户端支持团队](https://imeetcentral.com/contact-us)获取这些值。 
+
+4. 在“SAML 签名证书”部分中，选择“证书”。 然后将证书文件保存在计算机上。
+
+    ![证书下载链接](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_certificate.png) 
+
+5. 选择“保存”按钮。
+
+    ![配置单一登录 -“保存”按钮](./media/active-directory-saas-central-desktop-tutorial/tutorial_general_400.png)
+    
+6. 在“Central Desktop 配置”部分中，选择“配置 Central Desktop”，打开“配置登录”窗口。 从“快速参考”部分，复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+
+    ![Central Desktop 配置](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_configure.png) 
+
+7. 登录到 Central Desktop 租户。
+
+8. 转到“设置”。 选择“高级”，然后选择“单一登录”。
+
+    ![设置 - 高级](./media/active-directory-saas-central-desktop-tutorial/ic769563.png "Setup - Advanced")
+
+9. 在“单一登录设置”页上，执行以下步骤：
+
+    ![单一登录设置](./media/active-directory-saas-central-desktop-tutorial/ic769564.png "Single Sign-On Settings")
+    
+    a. 选择“启用 SAML v2 单一登录”。
+    
+    b. 在“SSO URL”框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
+    
+    c. 在“SSO 登录 URL”框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
+    
+    d.单击“下一步”。 在“SSO 注销 URL”框中，粘贴从 Azure 门户复制的“注销 URL”值。
+
+10. 在“消息签名验证方法”部分执行以下步骤：
+
+    ![消息签名验证方法](./media/active-directory-saas-central-desktop-tutorial/ic769565.png "Message Signature Verification Method") a. 选择“证书”。
+    
+    b. 从“SSO 证书”列表中，选择“RSH SHA256”。
+    
+    c. 在记事本中打开已下载的证书。 然后将证书内容复制并粘贴到“SSO 证书”字段。
+        
+    d.单击“下一步”。 选择“显示 SAMLv2 登录页的链接”。
+    
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 选择“更新”。
+
+> [!TIP]
+> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了。 从“Active Directory” > “企业应用程序”部分添加该应用后，选择“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)中阅读有关嵌入式文档功能的详细信息。
+
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
+本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
+
+   ![创建 Azure AD 测试用户][100]
+
+**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+
+1. 在 Azure 门户的左窗格中，选择“Azure Active Directory”按钮。
+
+    ![“Azure Active Directory”按钮](./media/active-directory-saas-central-desktop-tutorial/create_aaduser_01.png)
+
+2. 若要显示用户列表，请转到“用户和组”。 然后选择“所有用户”。
+
+    ![“用户和组”以及“所有用户”链接](./media/active-directory-saas-central-desktop-tutorial/create_aaduser_02.png)
+
+3. 若要打开“用户”对话框，请在“所有用户”对话框顶部选择“添加”。
+
+    ![“添加”按钮](./media/active-directory-saas-central-desktop-tutorial/create_aaduser_03.png)
+
+4. 在“用户”对话框中，执行以下步骤：
+
+    ![“用户”对话框](./media/active-directory-saas-central-desktop-tutorial/create_aaduser_04.png)
+
+    a. 在“姓名”框中，键入“BrittaSimon”。
+
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+
+    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+
+    d.单击“下一步”。 选择“创建”。
+ 
+### <a name="create-a-central-desktop-test-user"></a>创建 Central Desktop 测试用户
+
+要使 Azure AD 用户能够登录，必须将这些用户预配到 Central Desktop 应用程序中。 本部分介绍如何在 Central Desktop 中创建 Azure AD 用户帐户。
+
+> [!NOTE]
+> 可以使用 Central Desktop 提供的任何其他 Central Desktop 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 
 **为 Central Desktop 预配用户帐户：**
+
 1. 登录到 Central Desktop 租户。
-2. 转到“人员”\>“内部成员”。
-3. 单击“添加内部成员”。
-   
-  ![人员](./media/active-directory-saas-central-desktop-tutorial/IC781051.png "人员")
-4. 在“新成员的电子邮件地址”文本框中，键入要预配的 AAD 帐户，并单击“下一步”。
-   
-  ![新成员的电子邮件地址](./media/active-directory-saas-central-desktop-tutorial/IC781052.png "Email Addresses of New Members")
-5. 单击“添加内部成员”。
-   
-  ![添加内部成员](./media/active-directory-saas-central-desktop-tutorial/IC781053.png "Add Internal Member")
+
+2. 转到“人员” > “内部成员”。
+
+3. 选择“添加内部成员”。
+
+    ![人员](./media/active-directory-saas-central-desktop-tutorial/ic781051.png "人员")
+    
+4. 在“新成员的电子邮件地址”框中，键入要预配的 Azure AD 帐户，并选择“下一步”。
+
+    ![新成员的电子邮件地址](./media/active-directory-saas-central-desktop-tutorial/ic781052.png "Email Addresses of New Members")
+
+5. 选择“添加内部成员”。
+
+    ![添加内部成员](./media/active-directory-saas-central-desktop-tutorial/ic781053.png "Add Internal Member")
    
    >[!NOTE]
-   >已添加的用户会收到一封电子邮件，其中包含一个确认链接，需要用户单击来激活帐户。
-   > 
-
->[!NOTE]
->可以使用 Central Desktop 提供的任何其他 Central Desktop 用户帐户创建工具或 API 来预配 AAD 用户帐户。
->  
-
-## <a name="assign-users"></a>分配用户
-若要测试配置，需要通过分配权限的方式向希望其使用应用程序的 Azure AD 用户授予该配置的访问权限。
-
-**要将用户分配到 Central Desktop，请执行以下步骤：**
-
-1. 在 Azure 经典门户中，创建测试帐户。
-2. 在“Central Desktop”应用程序集成页上，单击“分配用户”。
+   >所添加的用户会收到一封电子邮件，其中包含用于激活其帐户的确认链接。
    
-   ![分配用户](./media/active-directory-saas-central-desktop-tutorial/IC769567.png "分配用户")
-3. 选择测试用户，单击“分配”，并单击“是”确认分配。
-   
-   ![是](./media/active-directory-saas-central-desktop-tutorial/IC767830.png "是")
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-如果要测试单一登录设置，请打开访问面板。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。
+本部分通过授予用户 Britta Simon 访问 Central Desktop 的权限，使其能够使用 Azure 单一登录。
+
+![分配用户角色][200] 
+
+**要将 Britta Simon 分配到 Central Desktop，请执行以下步骤：**
+
+1. 在 Azure 门户中，打开应用程序视图。 转到目录视图，然后转到“企业应用程序”。
+
+2. 选择“所有应用程序”。
+
+    ![分配用户][201] 
+
+2. 在应用程序列表中，选择“Central Desktop”。
+
+    ![应用程序列表中的 Central Desktop 链接](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_app.png)  
+
+3. 在左侧菜单中，选择“用户和组”。
+
+    ![“用户和组”链接][202]
+
+4. 选择“添加”按钮。 然后，在“添加分配”对话框中，选择“用户和组”。
+
+    ![“添加分配”窗格][203]
+
+5. 在“用户和组”对话框中，选择“用户”列表中的“Britta Simon”。
+
+6. 在“用户和组”对话框中，单击“选择”按钮。
+
+7. 在“添加分配”对话框中，选择“分配”按钮。
+    
+### <a name="test-single-sign-on"></a>测试单一登录
+
+在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+
+在访问面板中选择“Central Desktop”磁贴时，可自动登录到 Central Desktop 应用程序。
+有关访问面板的详细信息，请参阅[访问面板简介](active-directory-saas-access-panel-introduction.md)。 
+
+## <a name="additional-resources"></a>其他资源
+
+* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-central-desktop-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-central-desktop-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-central-desktop-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-central-desktop-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-central-desktop-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-central-desktop-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-central-desktop-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-central-desktop-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-central-desktop-tutorial/tutorial_general_203.png
 

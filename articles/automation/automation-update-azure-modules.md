@@ -3,7 +3,7 @@ title: "更新 Azure 自动化中的 Azure 模块 | Microsoft Docs"
 description: "本文介绍如何更新 Azure 自动化中默认提供的常见 Azure PowerShell 模块。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 6bd259f3da1005228b8137415c30660221507909
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5e7c66cfd26bd6927d48ffd8bc0f82e9a3e2d13
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>如何在 Azure 自动化中更新 Azure PowerShell 模块
 
@@ -28,11 +28,11 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="updating-azure-modules"></a>更新 Azure 模块
 
-1. 在自动化帐户的“模块”边栏选项卡中有一个名为“更新 Azure 模块”的选项。  该选项始终处于启用状态。<br><br> ![“模块”边栏选项卡中的“更新 Azure 模块”选项](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
+1. 在自动化帐户的“模块”页中有一个名为“更新 Azure 模块”的选项。 该选项始终处于启用状态。<br><br> ![“模块”页中的“更新 Azure 模块”选项](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
 2. 单击“更新 Azure 模块”，会出现一条询问是否要继续的确认通知。<br><br> ![更新 Azure 模块通知](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
 
-3. 单击“是”，模块更新过程开始。  更新过程大约需要 15-20 分钟来更新以下模块：
+3. 单击“是”，模块更新过程将开始进行。 更新过程大约需要 15-20 分钟来更新以下模块：
 
   * Azure
   * Azure.Storage
@@ -43,12 +43,12 @@ ms.lasthandoff: 10/11/2017
   * AzureRm.Sql
   * AzureRm.Storage
 
-    如果模块已经是最新的，则该过程只需几秒钟即可完成。  更新过程完成后将收到通知。<br><br> ![更新 Azure 模块更新状态](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
+    如果模块已经是最新的，则该过程只需几秒钟即可完成。 更新过程完成后将收到通知。<br><br> ![更新 Azure 模块更新状态](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
 > [!NOTE]
-> 当运行新的计划作业时，Azure 自动化将使用自动化帐户中的最新模块。    
+> 当运行新的计划作业时，Azure 自动化将在自动化帐户中使用最新模块。    
 
-如果在 Runbook 中使用这些 Azure PowerShell 模块中的 cmdlet 来管理 Azure 资源，则需要大约每月执行此更新过程一次，以确保拥有最新的模块。
+如果在 Runbook 中使用这些 Azure PowerShell 模块中的 cmdlet 来管理 Azure 资源，则需要大约每月执行一次此更新过程，以确保拥有最新的模块。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,0 +1,45 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: "Team Data Science Process 文档"
+metadata:
+  title: "Team Data Science Process 文档"
+  description: "了解如何使用 Team Data Science Process。"
+  services: machine-learning
+  author: carolz
+  manager: carolz
+  ms.service: machine-learning
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 01/18/2018
+  ms.author: bradsev
+  ms.openlocfilehash: 05f47b7511108f4a94c6fd132c9b7fd18c6e267d
+  ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/13/2018
+abstract:
+  description: "Team Data Science Process 是一种敏捷的迭代式数据科学方法，用于高效交付预测分析解决方案和智能应用程序。 TDSP 有助于改进团队协作和学习。 它包含来自 Microsoft 及本行业中其他企业的最佳做法与结构精华，能够促进数据科学方案的成功实现。 其目标是帮助公司完全实现其分析程序的优势。"
+sections:
+- title: "5 分钟快速入门"
+  items:
+  - type: paragraph
+    text: "了解 Team Data Science Process："
+  - type: list
+    style: unordered
+    items:
+    - html: "<a href:\"overview\">概述</a>"
+    - html: "<a href:\"lifecycle\">生命周期</a>"
+- title: "分步教程"
+  items:
+  - type: paragraph
+    text: "了解如何在各种方案中使用 Team Data Science Process："
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="walkthroughs-aml-with-tdsp">Azure Machine Learning Workbench</a>
+    - html: "<a href=\"walkthroughs-spark\">将 Spark 与 PySpark 和 Scala 配合使用</a>"
+    - html: "<a href=\"walkthroughs-hdinsight-hadoop\">将 Hive 与 HDInsight Hadoop 配合使用</a>"
+    - html: "<a href=\"walkthroughs-azure-data-lake\">将 U-SQL 与 Azure Data Lake 配合使用</a>"
+    - html: "<a href=\"walkthroughs-sql-server\">将 R、Python 和 T-SQL 与 SQL Server 配合使用</a>"
+    - html: "<a href=\"walkthroughs-sql-data-warehouse\">将 T-SQL 和 Python 与 SQL DW 配合使用</a>"

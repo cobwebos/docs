@@ -1,91 +1,181 @@
 ---
-title: "配置 SSL 卸载 - Azure 应用程序网关 - Azure 门户 | Microsoft Docs"
-description: "本文说明如何使用 Azure 门户创建支持 SSL 卸载的应用程序网关"
-documentationcenter: na
+title: "使用 SSL 终端创建应用程序网关 - Azure 门户 | Microsoft Docs"
+description: "了解如何使用 Azure 门户创建应用程序网关并为 SSL 终端添加证书。"
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
-ms.assetid: 8373379a-a26a-45d2-aa62-dd282298eff3
+tags: azure-resource-manager
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 2f7f5d4132e28c8c192d90d5f4bfb2a9034f8b8c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: daab3ada5ef0cc20883130e4c12b1dc3570e63b1
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-azure-portal"></a>使用 Azure 门户配置可以进行 SSL 卸载的应用程序网关
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>通过 Azure 门户使用 SSL 终端创建应用程序网关
 
-> [!div class="op_single_selector"]
-> * [Azure 门户](application-gateway-ssl-portal.md)
-> * [Azure 资源管理器 PowerShell](application-gateway-ssl-arm.md)
-> * [Azure 经典 PowerShell](application-gateway-ssl.md)
-> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
+可通过 Azure 门户使用 SSL 终端的证书创建使用虚拟机作为后端服务器的[应用程序网关](application-gateway-introduction.md)。
 
-可将 Azure 应用程序网关配置为在网关上终止安全套接字层 (SSL) 会话，以避免 Web 场中出现开销较高的 SSL 解密任务。 SSL 卸载还简化了 Web 应用程序的前端服务器设置与管理。
+在本文中，学习如何：
 
-## <a name="scenario"></a>方案
+> [!div class="checklist"]
+> * 创建自签名证书
+> * 使用证书创建应用程序网关
+> * 创建用作后端服务器的虚拟机
 
-以下方案演示了如何在现有应用程序网关上配置 SSL 卸载。 该方案假定已按相关步骤[创建应用程序网关](application-gateway-create-gateway-portal.md)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="log-in-to-azure"></a>登录 Azure
 
-若要配置应用程序网关的 SSL 卸载，必须提供证书。 此证书在应用程序网关上加载，用于加密和解密通过 SSL 发送的流量。 证书需采用个人信息交换 (.pfx) 格式。 此文件格式适用于导出私钥，后者是应用程序网关对流量进行加解密所必需的。
+通过 [http://portal.azure.com](http://portal.azure.com) 登录到 Azure 门户
 
-## <a name="add-an-https-listener"></a>添加 HTTPS 侦听器
+## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
-HTTPS 侦听器根据配置来查找流量，并可将流量路由到后端池。 若要添加 HTTPS 侦听器，请按照下列步骤操作：
+在本部分中，将使用 [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) 创建自签名证书，为应用程序网关创建侦听器时会将该证书上传到 Azure 门户。
 
-   1. 浏览到 Azure 门户，并选择现有的应用程序网关。
+在本地计算机上，以管理员身份打开 Windows PowerShell 窗口。 运行以下命令以创建证书：
 
-   2. 选择“侦听器”，然后选择“添加”按钮来添加侦听器。
+```powershell
+New-SelfSignedCertificate \
+  -certstorelocation cert:\localmachine\my \
+  -dnsname www.contoso.com
+```
 
-   ![应用程序网关概述窗格][1]
+应看到与此响应类似的内容：
 
+```
+PSParentPath: Microsoft.PowerShell.Security\Certificate::LocalMachine\my
 
-   3. 填写以下侦听器必需的信息并上传 .pfx 证书：
-      - 名称：侦听器的友好名称。
+Thumbprint                                Subject
+----------                                -------
+E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 
-      - 前端 IP 配置：用于侦听器的前端 IP 配置。
+Use [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) with the Thumbprint that was returned to export a pfx file from the certificate:
+```
 
-      - 前端端口（名称/端口）：用在应用程序网关前端的端口的友好名称，以及所使用的实际端口。
+```powershell
+$pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
+Export-PfxCertificate \
+  -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 \
+  -FilePath c:\appgwcert.pfx \
+  -Password $pwd
+```
 
-      - 协议：一个开关，用于确定前端使用 HTTPS 还是 HTTP。
+## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-      - 证书（名称/密码）：如果使用了 SSL 卸载，则需对此设置使用 .pfx 证书， 并需提供友好名称和密码。
+要使创建的资源之间实现通信需要虚拟网络。 在此示例中创建了两个子网：一个用于应用程序网关，另一个用于后端服务器。 可以在创建应用程序网关的同时创建虚拟网络。
 
-   4. 选择“确定”。
+1. 单击 Azure 门户左上角的“新建”。
+2. 选择“网络”，然后在“特别推荐”列表中选择“应用程序网关”。
+3. 输入 *myAppGateway* 作为应用程序网关的名称，输入 *myResourceGroupAG* 作为新资源组的名称。
+4. 接受其他设置的默认值，然后单击“确定”。
+5. 单击“选择虚拟网络”，单击“新建”，然后为虚拟网络输入以下值：
 
-![添加侦听器窗格][2]
+    - *myVNet* - 作为虚拟网络的名称。
+    - *10.0.0.0/16* - 作为虚拟网络地址空间。
+    - *myAGSubnet* - 作为子网名称。
+    - *10.0.0.0/24* - 作为子网地址空间。
 
-## <a name="create-a-rule-and-associate-it-to-the-listener"></a>创建规则并将其关联到侦听器
+    ![创建虚拟网络](./media/application-gateway-ssl-portal/application-gateway-vnet.png)
 
-现在已创建侦听器。 接下来，创建一个规则以处理来自侦听器的流量。 规则定义如何将流量路由到基于多个配置设置的后端池。 这些设置包括协议、端口和运行状况探测，以及是否使用基于 cookie 的会话相关性。 若要创建一个规则并将其关联到侦听器，请执行以下步骤：
+6. 单击“确定”以创建虚拟网络和子网。
+7. 单击“选择公共 IP 地址”，单击“新建”，然后输入公共 IP 地址的名称。 在此示例中，公共 IP 地址名为 *myAGPublicIPAddress*。 接受其他设置的默认值，然后单击“确定”。
+8. 单击 **HTTPS** 作为侦听器的协议，并确保端口定义为 **443**。
+9. 单击“文件夹”图标，然后浏览到以前创建的 *appgwcert.pfx* 证书，以便将其上传。
+10. 输入 *mycert1* 作为证书的名称，输入 *Azure123456!*  作为密码，并单击“确定”。
 
+    ![新建应用程序网关](./media/application-gateway-ssl-portal/application-gateway-create.png)
 
-   1. 选择应用程序网关的“规则”，然后选择“添加”。
+11. 复查摘要页上的设置，然后单击“确定”以创建网络资源和应用程序网关。 创建应用程序网关可能需要几分钟时间，请等到部署成功完成，然后再转到下一部分。
 
-   ![应用程序网关规则窗格][3]
+### <a name="add-a-subnet"></a>添加子网
 
+1. 单击左侧菜单中的“所有资源”，然后从资源列表中单击 **myVNet**。
+2. 单击“子网”，然后单击“子网”。
 
-   2. 在“添加基本规则”下的“名称”字段中，输入规则的友好名称，然后选择在上一步创建的“侦听器”。 选择适当的“后端池”和“HTTP 设置”，然后选择“确定”。
+    ![创建子网](./media/application-gateway-ssl-portal/application-gateway-subnet.png)
 
-   ![HTTPS 设置窗口][4]
+3. 输入 *myBackendSubnet* 作为子网的名称，然后单击“确定”。
 
-现在，设置将保存到应用程序网关。 保存这些设置可能需要一段时间，此时间过后才能通过门户或 PowerShell 查看这些设置。 保存完以后，应用程序网关将负责处理流量的加解密。 应用程序网关和后端 Web 服务器之间的所有流量都将通过 HTTP 来处理。 任何通过 HTTPS 启动的需要返回到客户端的通信都会返回到加密的客户端。
+## <a name="create-backend-servers"></a>创建后端服务器
+
+在此示例中，将创建两个虚拟机以用作应用程序网关的后端服务器。 还可以在虚拟机上安装 IIS，以验证是否已成功创建应用程序网关。
+
+### <a name="create-a-virtual-machine"></a>创建虚拟机
+
+1. 单击“新建” 。
+2. 单击“计算”，然后在“特别推荐”列表中选择“Windows Server 2016 Datacenter”。
+3. 为虚拟机输入以下值：
+
+    - *myVM* - 作为虚拟机的名称。
+    - *azureuser* - 作为管理员用户名。
+    - *Azure123456!* 作为密码。
+    - 选择“使用现有资源组”，然后选择“myResourceGroupAG”。
+
+4. 单击“确定”。
+5. 选择 **DS1_V2** 作为虚拟机的大小，然后单击“选择”。
+6. 请确保选择 **myVNet** 作为虚拟网络，子网是 **myBackendSubnet**。 
+7. 单击“禁用”以禁用启动诊断。
+8. 创建“确定”，复查“摘要”页上的设置，然后单击“创建”。
+
+### <a name="install-iis"></a>安装 IIS
+
+1. 打开交互式 shell 并确保它已设置为 **PowerShell**。
+
+    ![安装自定义扩展](./media/application-gateway-ssl-portal/application-gateway-extension.png)
+
+2. 运行以下命令以在虚拟机上安装 IIS： 
+
+    ```azurepowershell-interactive
+    Set-AzureRmVMExtension `
+      -ResourceGroupName myResourceGroupAG `
+      -ExtensionName IIS `
+      -VMName myVM `
+      -Publisher Microsoft.Compute `
+      -ExtensionType CustomScriptExtension `
+      -TypeHandlerVersion 1.4 `
+      -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
+      -Location EastUS
+    ```
+
+3. 使用刚刚完成的步骤创建第二个虚拟机并安装 IIS。 输入 *myVM2* 作为其名称，并将其用于 Set-AzureRmVMExtension 中的 VMName。
+
+### <a name="add-backend-servers"></a>添加后端服务器
+
+3. 单击“所有资源”，然后单击 **myAppGateway**。
+4. 单击“后端池”。 默认池已随应用程序网关自动创建。 单击 **appGateayBackendPool**。
+5. 单击“添加目标”将所创建的每个虚拟机添加到后端池。
+
+    ![添加后端服务器](./media/application-gateway-ssl-portal/application-gateway-backend.png)
+
+6. 单击“ **保存**”。
+
+## <a name="test-the-application-gateway"></a>测试应用程序网关
+
+1. 单击“所有资源”，然后单击 **myAGPublicIPAddress**。
+
+    ![记录应用程序网关的公共 IP 地址](./media/application-gateway-ssl-portal/application-gateway-ag-address.png)
+
+2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”：
+
+    ![安全警告](./media/application-gateway-ssl-portal/application-gateway-secure.png)
+
+    随即显示受保护的 IIS 网站，如下例所示：
+
+    ![应用程序网关中的测试基 URL](./media/application-gateway-ssl-portal/application-gateway-iistest.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何配置 Azure 应用程序网关的自定义运行状况探测，请参阅[创建自定义运行状况探测](application-gateway-create-gateway-portal.md)。
+本教程介绍了如何：
 
-[1]: ./media/application-gateway-ssl-portal/figure1.png
-[2]: ./media/application-gateway-ssl-portal/figure2.png
-[3]: ./media/application-gateway-ssl-portal/figure3.png
-[4]: ./media/application-gateway-ssl-portal/figure4.png
+> [!div class="checklist"]
+> * 创建自签名证书
+> * 使用证书创建应用程序网关
+> * 创建用作后端服务器的虚拟机
 
+若要了解有关应用程序网关及其关联资源的详细信息，请继续阅读操作指南文章。

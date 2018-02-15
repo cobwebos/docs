@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bafbd43d65a0f46f87a13cea4a2a6299d3bf43ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d3811a9d59e388a1ceaacdefebc17afeda5b07d
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>导出 Azure Cosmos DB 模拟器证书供 Java、Python 和 Node.js 使用
 
@@ -57,7 +57,7 @@ Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 
 
     ![Azure Cosmos DB 本地模拟器导出步骤 3](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png)
 
-4. 单击“下一步”。
+4. 单击“资源组名称” 的 Azure 数据工厂。
 
     ![Azure Cosmos DB 本地模拟器导出步骤 4](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
 
@@ -73,7 +73,7 @@ Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 
 
     ![Azure Cosmos DB 本地模拟器导出步骤 7](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png)
 
-8. 单击“完成”。
+8. 单击“完成” 。
 
     ![Azure Cosmos DB 本地模拟器导出步骤 8](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png)
 
@@ -87,11 +87,11 @@ Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 
 
 ## <a name="how-to-use-the-certificate-in-python"></a>如何在 Python 中使用证书
 
-默认情况下，用于 DocumentDB API 的 [Python SDK（版本 2.0.0 或更高版本）](documentdb-sdk-python.md)在连接到本地模拟器时不会尝试使用 SSL 证书。 但如果要使用 SSL 验证，可以按照 [Python 套接字包装器](https://docs.python.org/2/library/ssl.html)一文中的示例操作。
+默认情况下，用于 SQL API 的 [Python SDK（版本 2.0.0 或更高版本）](sql-api-sdk-python.md)在连接到本地仿真器时不会尝试使用 SSL 证书。 但如果要使用 SSL 验证，可以按照 [Python 套接字包装器](https://docs.python.org/2/library/ssl.html)一文中的示例操作。
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>如何在 Node.js 中使用证书
 
-默认情况下，用于 DocumentDB API 的 [Node.js SDK（版本 1.10.1 或更高版本）](documentdb-sdk-node.md)在连接到本地模拟器时不会尝试使用 SSL 证书。 但如果要使用 SSL 验证，可以按照 [Node.js 文档](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)中的示例操作。
+默认情况下，用于 SQL API 的 [Node.js SDK（版本 1.10.1 或更高版本）](sql-api-sdk-node.md)在连接到本地仿真器时不会尝试使用 SSL 证书。 但如果要使用 SSL 验证，可以按照 [Node.js 文档](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)中的示例操作。
 
 ## <a name="next-steps"></a>后续步骤
 

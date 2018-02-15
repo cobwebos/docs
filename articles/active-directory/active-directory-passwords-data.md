@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 8fae46088bad5cbcbdb879f0b5a948fb85b76875
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 2744c848b81c688f4083cf51b7ef7bc89f0e34e1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>在无需最终用户注册的情况下部署密码重置
 
@@ -31,6 +31,8 @@ ms.lasthandoff: 01/12/2018
 若要正常工作，电话号码必须采用“+国家/地区代码 电话号码”格式，例如，+1 4255551234。
 
 > [!NOTE]
+> 在国家/地区代码和电话号码之间需要有一个空格。
+>
 > 密码重置不支持电话分机。 即使采用“+1 4255551234X12345”格式，在拨出电话前也会删除分机。
 
 ## <a name="fields-populated"></a>填充的字段
@@ -42,6 +44,11 @@ ms.lasthandoff: 01/12/2018
 | telephoneNumber | 办公电话 | 备用号码 |
 | mobile | 移动电话 | 电话 |
 
+在用户确认其身份验证数据之前，这些字段可能显示为空。
+
+全局管理员可以手动为用户设置身份验证联系人信息，如以下屏幕截图中所示。
+
+![联系人][Contact]
 
 ## <a name="security-questions-and-answers"></a>安全问题和答案
 
@@ -152,3 +159,5 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](active-directory-passwords-how-it-works.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
+
+[Contact]: ./media/active-directory-passwords-data/user-authentication-contact-info.png "全局管理员可以修改用户的身份验证联系人信息"

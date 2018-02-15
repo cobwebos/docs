@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: gwallace
-ms.openlocfilehash: 0cf0b1829c7e1f9b0b8be90983a705d82784c062
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 1f005ae28309879f36a28df499685937c37a3be0
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="my-first-python-runbook"></a>我的第一个 Python Runbook
 
@@ -68,12 +68,11 @@ print("Hello World!")
 在发布 Runbook 使其可在生产中使用之前，需对其进行测试以确保其能正常工作。 测试 Runbook 时，可以运行其“草稿”版本并以交互方式查看其输出。
 
 1. 单击“测试窗格”  打开测试窗格。
-   ![Test Pane](media/automation-first-runbook-textual-python/automation-runbook-edit-controls-test.png)
-1. 单击“启动”以启动测试  。 这应该是唯一的已启用选项。
-1. 将创建一个 [Runbook 作业](automation-runbook-execution.md) 并显示其状态。
+2. 单击“启动”以启动测试  。 这应该是唯一的已启用选项。
+3. 将创建一个 [Runbook 作业](automation-runbook-execution.md) 并显示其状态。
    作业状态一开始为“排队”，表示正在等待云中的 Runbook 辅助角色变为可用状态。 在某个辅助角色认领此作业后，作业状态将变为“正在启动”，然后当 Runbook 实际开始运行时，此状态将变为“正在运行”。
-1. Runbook 作业完成后，会显示其输出。 在此示例中，应会显示 Hello World。
-1. 关闭测试窗格以返回到画布。
+4. Runbook 作业完成后，会显示其输出。 在此示例中，应会显示 Hello World。
+5. 关闭测试窗格以返回到画布。
 
 ## <a name="publish-and-start-the-runbook"></a>发布和启动 Runbook
 
@@ -82,19 +81,18 @@ print("Hello World!")
 在此示例中，因此才创建了 Runbook，因此还没有已发布版本。
 
 1. 单击“发布”以发布该 Runbook，并在出现提示时单击“是”。
-   ![发布按钮](media/automation-first-runbook-textual-python/automation-runbook-edit-controls-publish.png)
-1. 如果向左滚动以在“Runbook”窗格中查看该 Runbook，它会显示“已发布”的“创作状态”。
+2. 如果向左滚动以在“Runbook”窗格中查看该 Runbook，它会显示“已发布”的“创作状态”。
 1. 向右滚动查看“MyFirstRunbook-Python”窗格。
    顶部的选项允许我们启动 Runbook、查看 Runbook、计划其在将来的某个时刻启动，或创建 [webhook](automation-webhooks.md) 以使其可以通过 HTTP 调用启动。
-1. 如果想要启动 Runbook，请单击“启动”，并在“启动 Runbook”边栏选项卡打开时单击“确定”。
-1. 此时会为你创建的 Runbook 作业打开作业窗格。 可以关闭此窗格，但在此示例中，将它保持打开状态，以便查看该作业的进度。
-1. 作业状态显示在“作业摘要”中并且与测试该 Runbook 时看到的状态相匹配。
-1. 一旦此 Runbook 状态显示“已完成”，单击“输出”。 “输出”窗格打开后，可以看到 Hello World。
-1. 关闭“输出”窗格。
-1. 单击“所有日志”打开 Runbook 作业的“流”窗格。 应该只会在输出流中看到 *Hello World*，但此窗格也可以显示 Runbook 作业的其他流，例如，“详细”和“错误”（如果 Runbook 向其写入）。
-1. 关闭“流”窗格和“作业”窗格以返回到“MyFirstRunbook-Python”窗格。
-1. 单击“作业”打开此 Runbook 的“作业”窗格  。 这会列出此 Runbook 创建的所有作业。 由于只运行该作业一次，应该只会看到一个列出的作业。
-1. 可以单击此作业，打开在启动 Runbook 时查看过的“作业”窗格。 这样便可以回溯并查看为特定 Runbook 创建的任何作业的详细信息。
+2. 如果想要启动 Runbook，请单击“启动”，并在“启动 Runbook”边栏选项卡打开时单击“确定”。
+3. 此时会为你创建的 Runbook 作业打开作业窗格。 可以关闭此窗格，但在此示例中，将它保持打开状态，以便查看该作业的进度。
+4. 作业状态显示在“作业摘要”中并且与测试该 Runbook 时看到的状态相匹配。
+5. 一旦此 Runbook 状态显示“已完成”，单击“输出”。 “输出”窗格打开后，可以看到 Hello World。
+6. 关闭“输出”窗格。
+7. 单击“所有日志”打开 Runbook 作业的“流”窗格。 应该只会在输出流中看到 *Hello World*，但此窗格也可以显示 Runbook 作业的其他流，例如，“详细”和“错误”（如果 Runbook 向其写入）。
+8. 关闭“流”窗格和“作业”窗格以返回到“MyFirstRunbook-Python”窗格。
+9. 单击“作业”打开此 Runbook 的“作业”窗格  。 这会列出此 Runbook 创建的所有作业。 由于只运行该作业一次，应该只会看到一个列出的作业。
+10. 可以单击此作业，打开在启动 Runbook 时查看过的“作业”窗格。 这样便可以回溯并查看为特定 Runbook 创建的任何作业的详细信息。
 
 ## <a name="add-authentication-to-manage-azure-resources"></a>添加身份验证来管理 Azure 资源
 
@@ -194,9 +192,7 @@ async_vm_start = compute_client.virtual_machines.start(resource_group_name, vm_n
 async_vm_start.wait()
 ```
 
-启动 Python Runbook（在“测试”边栏选项卡上启动或将其作为已发布的 Runbook 启动）时，可以在“启动 Runbook”边栏选项卡的“参数”下输入参数的值。
-
-![参数值框](media/automation-first-runbook-textual-python/runbook-python-param-highlight.png)
+启动 Python Runbook（在“测试”页上启动或将其作为已发布的 Runbook 启动）时，可以在“启动 Runbook”页的“参数”下输入参数的值。
 
 开始在第一个框中输入值时，将出现第二个框，以此类推，这样可以根据需要输入任意数量的参数值。
 

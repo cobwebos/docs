@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
-ms.date: 09/11/2017
-ms.openlocfilehash: ff5fcbc6df8cb07e0b98b877f20d981d6bef5117
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.date: 02/01/2018
+ms.openlocfilehash: 1046f08d4e3b1111f8f82551b71252856174a308
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>适用于 Azure 机器学习数据准备预览版的受支持检查器
 本文档概述了可用于此预览版的一组检查器。
@@ -52,6 +52,7 @@ ms.lasthandoff: 12/18/2017
 - 默认存储桶数（Scott 规则） 
 - 显示 Halo
 - 内核密度绘图覆盖（高斯内核） 
+- 使用对数刻度
 
 
 ### <a name="actions"></a>操作
@@ -65,6 +66,7 @@ ms.lasthandoff: 12/18/2017
 - 降序
 - 包含 NULL/错误值
 - 显示 Halo
+- 使用对数刻度
 
 
 ### <a name="actions"></a>操作 

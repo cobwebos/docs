@@ -1,4 +1,4 @@
----
+﻿---
 title: "使用 Azure IoT Edge 部署 Azure 机器学习 | Microsoft 文档"
 description: "将 Azure 机器学习作为一个模块部署到 Edge 设备"
 services: iot-edge

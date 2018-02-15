@@ -11,19 +11,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 4e346306ecb8f4897a249454c537ce9a1a4c4011
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 48b904818c80b9175d45b88345634f11cf4a4812
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>将设备到云的消息发送到 IoT 中心
 
 若要将时间序列遥测和警报从设备发送到解决方案后端，请将设备到云的消息从设备发送到 IoT 中心。 有关 IoT 中心支持的设备到云的其他选项的讨论，请参阅[设备到云的通信指南][lnk-d2c-guidance]。
 
-通过面向设备的终结点 (**/devices/{deviceId}/messages/events**) 发送从设备到云的消息。 路由规则随后将消息路由到 IoT 中心内面向服务的终结点之一。 路由规则使用流经中心的设备到云消息的标头和正文来确定将消息路由到的位置。 默认情况下，消息将路由到与[事件中心][lnk-event-hubs]兼容的面向服务的内置终结点 (messages/events) 中。 因此，可以在解决方案后端中使用标准[事件中心集成和 SDK][lnk-compatible-endpoint] 接受从设备到云的消息。
+通过面向设备的终结点 (**/devices/{deviceId}/messages/events**) 发送从设备到云的消息。 路由规则随后将消息路由到 IoT 中心内面向服务的终结点之一。 路由规则使用设备到云消息的标头和正文来确定将消息路由到的位置。 默认情况下，消息将路由到与[事件中心][lnk-event-hubs]兼容的面向服务的内置终结点 (messages/events) 中。 因此，可以在解决方案后端中使用标准[事件中心集成和 SDK][lnk-compatible-endpoint] 接受从设备到云的消息。
 
 IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与[事件中心][lnk-event-hubs]*事件*和[服务总线][lnk-servicebus]*消息*相比，IoT 中心的设备到云消息更类似前者，类似之处在于有大量事件通过可供多个读取器读取的服务。
 
@@ -36,11 +36,11 @@ IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与
 * IoT 中心启动数百万同时连接的设备（请参阅[配额和限制][lnk-quotas]）。
 * IoT 中心不允许任意分区。 从设备到云的消息根据其源于的 **deviceId** 进行分区。
 
-有关 IoT 中心和事件中心服务差异的详细信息，请参阅 [Azure IoT 中心与 Azure 事件中心的比较][lnk-comparison]。
+有关 IoT 中心和事件中心差异的详细信息，请参阅 [Azure IoT 中心与 Azure 事件中心的比较][lnk-comparison]。
 
 ## <a name="send-non-telemetry-traffic"></a>发送非遥测流量
 
-通常，除了遥测数据点以外，设备还会发送消息以及要求在解决方案后端中单独执行和处理。 例如，关键警报必须在后端触发特定操作。 可轻松编写[路由规则][lnk-devguide-custom]，根据消息的标头或信息正文的值，将这些类型的消息发送到专用于处理这些消息的终结点 。
+通常，除了遥测数据以外，设备还会发送消息和需要在解决方案后端中单独执行和处理的请求。 例如，关键警报必须在后端触发特定操作。 可以编写[路由规则][lnk-devguide-custom]，根据消息的标头或消息正文中的值，将这些类型的消息发送到专用于处理这些消息的终结点。
 
 有关此类消息的最佳处理方式的详细信息，请参阅[教程：如何处理 IoT 中心从设备到云的消息][lnk-d2c-tutorial]教程。
 

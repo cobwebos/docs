@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/06/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 6dd9045d7aa8d4dc8b3a1acbe6f927e232d9b505
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b01412202b5091ad3ae420089049bf456f9a30b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
 
@@ -31,12 +31,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="current-architecture"></a>当前体系结构
 服务总线使用多个消息存储空间来存储发送到队列或主题的消息。 将未分区的队列或主题分配到一个消息存储空间。 如果此消息存储空间不可用，则针对该队列或主题的所有操作将都失败。
 
-所有服务总线消息传送实体（队列、主题、中继）都位于同一服务命名空间中，它隶属于数据中心。 服务总线不允许对数据进行自动异地复制，也不允许一个命名空间跨多个数据中心。
-
-## <a name="protecting-against-acs-outages"></a>针对 ACS 中断进行保护
-如果使用 ACS 凭据，则当 ACS 凭据不可用时，客户端无法再获取令牌。 ACS 出现故障时具有令牌的客户端可以在令牌到期前继续使用服务总线。 默认令牌生存期为 3 小时。
-
-要针对 ACS 中断进行保护，请使用共享访问签名 (SAS) 令牌。 在这种情况下，客户端使用密钥对自创令牌进行签名，从而与服务总线直接进行身份验证。 不再需要调用 ACS。 有关 SAS 令牌的详细信息，请参阅[服务总线身份验证][Service Bus authentication]。
+所有服务总线消息传送实体（队列、主题、中继）都位于同一服务命名空间中，它隶属于数据中心。 当前，[服务总线支持命名空间级别的异地灾难恢复和异地复制](service-bus-geo-dr.md)。
 
 ## <a name="protecting-queues-and-topics-against-messaging-store-failures"></a>保护队列和主题免受消息存储故障的影响
 将未分区的队列或主题分配到一个消息存储空间。 如果此消息存储空间不可用，则针对该队列或主题的所有操作将都失败。 另一方面，分区的队列包括多个片段。 每个片段存储在不同的消息存储空间中。 当向分区的队列或主题发送消息时，服务总线会将该消息分配到其中一个片段。 如果相应的消息存储空间不可用，则服务总线会将消息写入另一片段（如有可能）。 有关分区的实体的详细信息，请参阅[分区的消息实体][Partitioned messaging entities]。
@@ -82,9 +77,14 @@ ms.lasthandoff: 10/11/2017
 
 [使用服务总线中转消息进行异地复制][Geo-replication with Service Bus Brokered Messages]示例演示了消息传送实体的被动复制。
 
+## <a name="geo-replication"></a>异地复制
+
+服务总线支持命名空间级别的异地灾难恢复和异地复制。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。 灾难恢复功能仅适用于[高级 SKU](service-bus-premium-messaging.md)，可实现元数据灾难恢复，并且依赖于主要和辅助灾难恢复命名空间。
+
 ## <a name="next-steps"></a>后续步骤
 若要了解有关灾难恢复的详细信息，请参阅这些文章：
 
+* [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)
 * [Azure SQL 数据库业务连续性][Azure SQL Database Business Continuity]
 * [设计适用于 Azure 的弹性应用程序][Azure resiliency technical guidance]
 

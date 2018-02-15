@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: rafats
-ms.openlocfilehash: 127b42b67a3e29022ac5d9535751a1b2a3be250e
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: c530b34edf9bfa0651b7b114dcf7e8add0d906ed
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB 中的唯一键
 
 开发人员可以使用唯一键对其数据库添加一层数据完整性。 创建容器时，通过创建唯一键策略，可确保每个[分区键](partition-data.md)的一个或多个值的唯一性。 使用唯一键策略创建容器后，它可以避免创建值与唯一键约束指定的值重复的任何新的或更新项。   
 
 > [!NOTE]
-> 最新版本的 [.NET](documentdb-sdk-dotnet.md) 和 [.NET Core](documentdb-sdk-dotnet-core.md) DocumentDB (SQL) SDK 以及 [MongoDB API](mongodb-feature-support.md#unique-indexes) 支持唯一键。 表 API 和图形 API 目前不支持唯一键。 
+> 最新版本的 [.NET](sql-api-sdk-dotnet.md) 和 [.NET Core](sql-api-sdk-dotnet-core.md) SQL SDK 以及 [MongoDB API](mongodb-feature-support.md#unique-indexes) 支持唯一键。 表 API 和图形 API 目前不支持唯一键。 
 > 
 >
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 12/04/2017
 
 现有容器不能更新为使用唯一键。
 
-一旦使用唯一键策略创建了容器，就无法更改策略，除非重新创建容器。 如果你有想要对其实施唯一键的现有数据，请创建新容器，然后使用相应的数据迁移工具将数据移到新容器。 对于 DocumentDB (SQL) 容器，请使用[数据迁移工具](import-data.md)。 对于 MongoDB 容器，请使用 [mongoimport.exe 或 mongorestore.exe](mongodb-migrate.md)。
+一旦使用唯一键策略创建了容器，就无法更改策略，除非重新创建容器。 如果你有想要对其实施唯一键的现有数据，请创建新容器，然后使用相应的数据迁移工具将数据移到新容器。 对于 SQL 容器，请使用[数据迁移工具](import-data.md)。 对于 MongoDB 容器，请使用 [mongoimport.exe 或 mongorestore.exe](mongodb-migrate.md)。
 
 每个唯一键可以包含最多 16 个路径值（例如 /firstName、/lastName、/address/zipCode 等）。 
 
@@ -64,9 +64,9 @@ ms.lasthandoff: 12/04/2017
 
 不支持稀疏的唯一键。 如果某些唯一路径的值缺失，则会将其视为特殊的 null 值，这些值参与唯一性约束。
 
-## <a name="documentdb-sql-api-sample"></a>DocumentDB (SQL) API 示例
+## <a name="sql-api-sample"></a>SQL API 示例
 
-下面的代码示例显示了如何创建具有两个唯一键约束的新 DocumentDB (SQL) 容器。 第一个约束是前面示例中所述的 firstName、lastName、email 约束。 第二个约束是用户地址/邮政编码。 使用此唯一键策略中路径的示例 JSON 文件遵循代码示例。 
+以下代码示例显示了如何创建具有两个唯一键约束的新 SQL 容器。 第一个约束是前面示例中所述的 firstName、lastName、email 约束。 第二个约束是用户地址/邮政编码。 使用此唯一键策略中路径的示例 JSON 文件遵循代码示例。 
 
 ```csharp
 // Create a collection with two separate UniqueKeys, one compound key for /firstName, /lastName,

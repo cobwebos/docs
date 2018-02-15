@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2018
+ms.date: 01/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: 37951a04bbfd266717490dd1752d0be04d2231a5
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 838065287279f1c17e7f294bc919c4a0421e2a58
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>创建并安装适用于 P2S RADIUS 身份验证的 VPN 客户端配置文件
 
@@ -56,7 +56,7 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
 运行该命令将返回一个链接。 请将该链接复制并粘贴到 Web 浏览器，下载“VpnClientConfiguration.zip”。 解压缩该文件，查看以下文件夹： 
  
 * WindowsAmd64 和 WindowsX86 - 这些文件夹分别包含 Windows 64 位和 32 位安装程序包。 
-* GenericDevice - 此文件夹包含的常规信息用于创建你自己的 VPN 客户端配置。 配置用户名/密码身份验证不需要此文件夹。
+* 泛型 - 此文件夹包含的常规信息用于创建你自己的 VPN 客户端配置。 配置用户名/密码身份验证不需要此文件夹。
 * Mac - 如果已在创建虚拟网关时配置了 IKEv2，则会看到名为“Mac”的文件夹，其中包含 mobileconfig 文件。 该文件用于配置 Mac 客户端。
 
 如果已创建客户端配置文件，可以使用“Get-AzureRmVpnClientConfiguration”cmdlet 检索这些文件。 但是，如果对 P2S VPN 配置（例如 VPN 协议类型或身份验证类型）进行更改，该配置不会自动更新。 必须运行“New-AzureRmVpnClientConfiguration”cmdlet 才能创建新的配置下载。
@@ -125,7 +125,7 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 生成 VPN 客户端配置文件来用于证书身份验证。 可以使用以下命令生成 VPN 客户端配置文件：
  
 ```powershell
-New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root>
+New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root> | fl
 ```
 
 运行该命令将返回一个链接。 请将该链接复制并粘贴到 Web 浏览器，下载“VpnClientConfiguration.zip”。 解压缩该文件，查看以下文件夹：
@@ -138,7 +138,7 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
 若要检索以前生成的客户端配置文件，请使用以下命令：
 
 ```powershell
-Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
+Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
  
 ## <a name="setupusername"></a> 2.配置 Windows 和 Mac VPN 客户端

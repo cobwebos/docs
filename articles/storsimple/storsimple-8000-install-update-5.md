@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: eefeedfb87bd30630439d13a434b246508defa96
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: d6e17c7609fd41b8f4457edda373f6882a1a9d2b
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 5
 
@@ -77,7 +77,7 @@ Update 5 包括设备软件、Storport 和 Spaceport、OS 安全更新和 OS 更
 
 | 顺序 | KB | 说明 | 更新类型 | 安装时间 |在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |软件更新<br> 同时下载 _HcsSfotwareUpdate.exe_ 和 _CisMSDAgent.exe_ |常规 <br></br>非中断性 |~ 25 分钟 |FirstOrderUpdate|
+| 1. |KB4037264 |软件更新<br> 同时下载 _HcsSoftwareUpdate.exe_ 和 _CisMSDAgent.exe_ |常规 <br></br>非中断性 |~ 25 分钟 |FirstOrderUpdate|
 
 如果从运行 Update 4 的设备更新，仅需要安装 OS 累积更新作为第二顺序更新。
 

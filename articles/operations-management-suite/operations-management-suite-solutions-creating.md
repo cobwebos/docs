@@ -1,6 +1,6 @@
 ---
-title: "在 OMS 中生成管理解决方案 | Microsoft Docs"
-description: "通过提供客户可添加到其 OMS 工作区的打包管理方案，管理解决方案可扩展 Operations Management Suite (OMS) 的功能。  本文提供有关如何创建要在自己的环境中使用或可供客户使用的管理解决方案的详细信息。"
+title: "在 Azure 中生成管理解决方案 | Microsoft Docs"
+description: "管理解决方案包括 Azure 中打包的管理方案，客户可将其添加到 Log Analytics 工作区。  本文提供有关如何创建要在自己的环境中使用或可供客户使用的管理解决方案的详细信息。"
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a17c73393ecbdff693e9b200d1506887e0f1d71e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 0f5d42292c8e885491aed55ada129f05cb3bcd35
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>在 Operations Management Suite (OMS)（预览版）中设计和生成管理解决方案
+# <a name="design-and-build-a-management-solution-in-azure-preview"></a>在 Azure 中设计和生成管理解决方案（预览）
 > [!NOTE]
-> 这是在 OMS 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。
+> 这是在 Azure 中创建管理解决方案（当前处于预览状态）的初步文档。 如下所述的全部架构均会有变动。
 
-通过提供客户可添加到其 OMS 工作区的打包管理方案，[管理解决方案](operations-management-suite-solutions.md)可扩展 Operations Management Suite (OMS) 的功能。  本文提供了一个基本的流程，方便用户设计和生成符合最常见要求的管理解决方案。  如果不了解如何生成管理解决方案，则可一开始就使用此流程，并在要求提高以后利用相关概念生成更复杂的解决方案。
+[管理解决方案](operations-management-suite-solutions.md)提供打包的管理方案，客户可将其添加到 Log Analytics 工作区。  本文提供了一个基本的流程，方便用户设计和生成符合最常见要求的管理解决方案。  如果不了解如何生成管理解决方案，则可一开始就使用此流程，并在要求提高以后利用相关概念生成更复杂的解决方案。
 
 ## <a name="what-is-a-management-solution"></a>管理解决方案是什么？
 
-管理解决方案包含 OMS 和 Azure 资源，后二者可以共同实现特定的监视方案，  并且可以作为[资源管理模板](../azure-resource-manager/resource-manager-template-walkthrough.md)来实现。此类模板包含说明，详述了在安装解决方案时如何安装和配置模板中包含的资源。
+管理解决方案包含可协同工作以实现特定管理方案的 Azure 资源。  并且可以作为[资源管理模板](../azure-resource-manager/resource-manager-template-walkthrough.md)来实现。此类模板包含说明，详述了在安装解决方案时如何安装和配置模板中包含的资源。
 
 基本策略是通过在 Azure 环境中生成各个组件来启动管理解决方案。  功能正常以后，即可将其打包到[管理解决方案文件](operations-management-suite-solutions-solution-file.md)中。 
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 12/18/2017
 ## <a name="design-your-solution"></a>设计解决方案
 管理解决方案的最常见模式如下图所示。  下面介绍了此模式中的不同组件。
 
-![OMS 解决方案概述](media/operations-management-suite-solutions-creating/solution-overview.png)
+![管理解决方案概述](media/operations-management-suite-solutions-creating/solution-overview.png)
 
 
 ### <a name="data-sources"></a>数据源

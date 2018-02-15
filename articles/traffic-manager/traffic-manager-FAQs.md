@@ -4,7 +4,7 @@ description: "本文提供有关流量管理器的常见问题解答"
 services: traffic-manager
 documentationcenter: 
 author: KumudD
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2017
+ms.date: 02/01/2018
 ms.author: kumud
-ms.openlocfilehash: d6681a5b46aa352b1aa0dadedad8a51c9d1e5eaf
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 09fd133ec72f7ebbbcb45f652855e7640656a0ca
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -321,42 +321,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>运行状况检查从哪些 IP 地址发起？
 
-以下列表包含流量管理器可从中发起运行状况检查的 IP 地址。 可以使用此列表确保终结点上允许来自这些 IP 地址的传入连接，以便能够检查这些终结点的运行状况。
-
-* 40.68.30.66
-* 40.68.31.178
-* 137.135.80.149
-* 137.135.82.249
-* 23.96.236.252
-* 65.52.217.19
-* 40.87.147.10
-* 40.87.151.34
-* 13.75.124.254
-* 13.75.127.63
-* 52.172.155.168
-* 52.172.158.37
-* 104.215.91.84
-* 13.75.153.124
-* 13.84.222.37
-* 23.101.191.199
-* 23.96.213.12
-* 137.135.46.163
-* 137.135.47.215
-* 191.232.208.52
-* 191.232.214.62
-* 13.75.152.253
-* 104.41.187.209
-* 104.41.190.203
-* 52.173.90.107
-* 52.173.250.232
-* 104.45.149.110
-* 40.114.5.197
-* 52.240.151.125
-* 52.240.144.45
-* 13.65.95.152
-* 13.65.92.252
-* 40.78.67.110
-* 104.42.192.195
+单击[此处](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)以查看列出从哪些流量管理器运行状况检查可能源自的 IP 地址的 JSON 文件。 查看在 JSON 文件中列出的 Ip，以确保在终结点允许从这些 IP 地址传入的连接是以检查其运行状况状态。
 
 ### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>流量管理器可以对终结点进行多少次运行状况检查？
 

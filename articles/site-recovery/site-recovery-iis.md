@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: nisoneji
-ms.openlocfilehash: cff6a7502e80eb4ff447cc99fe31b48cb660c27e
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 00d5c1fa8c0c16daef5d928147e169553672e1f6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="replicate-a-multi-tier-iis-based-web-application-using-azure-site-recovery"></a>使用 Azure Site Recovery 复制基于 IIS 的多层 Web 应用程序
 
@@ -31,15 +31,15 @@ ms.lasthandoff: 12/13/2017
 
 传统恢复方法并非以复制为基础，涉及备份各种配置文件、注册表设置、绑定、自定义组件（COM 或 .NET）、内容和证书，以及通过一系列手动步骤恢复文件。 很明显，这些方法非常繁琐、容易出错且没有弹性。 例如，我们经常忘记备份证书。如果出现这种情况，在故障转移后，我们别无他法，只能为服务器购买新证书。
 
-合理的灾难恢复解决方案应该允许围绕上述复杂应用程序体系结构为恢复计划建模，同时，可以添加自定义的步骤来处理各层之间的应用程序映射，以便在发生导致 RTO 降低的灾难时，只需按一下鼠标就能彻底解决问题。
+良好的灾难恢复解决方案应允许围绕复杂应用程序体系结构为恢复计划建模。 它还能添加自定义步骤，处理各个层级之间的应用程序映射。 如果发生灾难，它将提供单击确定的一键解决方案，降低 RTO。
 
 
-本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 保护基于 IIS 的 Web 应用程序。 内容包括如何按照最佳做法将基于 IIS 的三层 Web 应用程序复制到 Azure、执行灾难恢复演练，以及将应用程序故障转移到 Azure。
+本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 保护基于 IIS 的 Web 应用程序。 内容包括如何将基于 IIS 的三层 Web 应用程序复制到 Azure、如何执行灾难恢复演练，以及如何将应用程序故障转移到 Azure 的最佳做法。
 
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请确保了解以下知识：
+在开始之前，请确保了解以下要求：
 
 1. [将虚拟机复制到 Azure](site-recovery-vmware-to-azure.md)
 1. 如何[设计恢复网络](site-recovery-network-design.md)
@@ -84,10 +84,10 @@ ms.lasthandoff: 12/13/2017
 
 ## <a name="creating-a-recovery-plan"></a>创建恢复计划
 
-使用恢复计划可将多层应用程序中各个层的故障转移排序，从而可以保持应用程序一致性。 为多层 Web 应用程序创建恢复计划时，请遵循以下步骤。  [详细了解如何创建恢复计划](./site-recovery-create-recovery-plans.md)。
+使用恢复计划可将多层应用程序中各个层的故障转移排序，从而可以保持应用程序一致性。 以下是为多层 Web 应用程序创建恢复计划的步骤。  [详细了解如何创建恢复计划](./site-recovery-create-recovery-plans.md)。
 
 ### <a name="adding-virtual-machines-to-failover-groups"></a>将虚拟机添加到故障转移组
-典型的多层 IIS Web 应用程序包括：包含 SQL 虚拟机的数据库层、由 IIS 服务器构成的 Web 层，以及应用程序层。 请按如下所示，根据不同的层将所有这些虚拟机添加到不同的组中。 [详细了解如何自定义恢复计划](site-recovery-runbook-automation.md#customize-the-recovery-plan)。
+典型的多层 IIS Web 应用程序包括：包含 SQL 虚拟机的数据库层、由 IIS 服务器构成的 Web 层，以及应用程序层。 请遵照以下步骤，根据不同的层将所有这些虚拟机添加到不同的组中。 [详细了解如何自定义恢复计划](site-recovery-runbook-automation.md#customize-the-recovery-plan)。
 
 1. 创建恢复计划。 在“组 1”下面添加数据库层虚拟机，确保最后关闭、最先启动这些虚拟机。
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 12/13/2017
 
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>将脚本添加到恢复计划
-在故障转移/测试故障转移后，可能需要在 Azure 虚拟机上执行一些操作才能让 IIS Web 场正常工作。 可按如下所示在恢复计划中添加相应的脚本，将更新 DNS 条目、更改站点绑定、更改连接字符串等故障转移后操作自动化。 [详细了解如何添加脚本恢复计划](./site-recovery-create-recovery-plans.md#add-scripts)。
+在故障转移/测试故障转移后，可能需要在 Azure 虚拟机上执行一些操作才能让 IIS Web 场正常工作。 可按如下所示在恢复计划中添加相应的脚本，将更新 DNS 条目、更改站点绑定、更改连接字符串等故障转移后操作自动化。 [详细了解如何添加脚本恢复计划](./site-recovery-how-to-add-vmmscript.md)。
 
 #### <a name="dns-update"></a>DNS 更新
 如果为动态 DNS 更新配置了 DNS，则虚拟机在启动后，通常会使用新的 IP 更新 DNS。 如果想要添加一个明确的步骤来使用虚拟机的新 IP 更新 DNS，请添加这个[用于更新 DNS 中的 IP 的脚本](https://aka.ms/asr-dns-update)，作为恢复计划组中的后期操作。  
@@ -107,7 +107,7 @@ ms.lasthandoff: 12/13/2017
 #### <a name="connection-string-in-an-applications-webconfig"></a>应用程序 web.config 中的连接字符串
 连接字符串指定与网站通信的数据库。
 
-如果连接字符串附带了数据库虚拟机的名称，则故障转移后不需要执行其他步骤，应用程序可自动连接到数据库。 此外，如果数据库虚拟机的 IP 地址得到保留，则不需要更新连接字符串。 如果连接字符串指向使用某个 IP 地址的数据库虚拟机，则故障转移后需要更新该字符串。 例如 以下连接字符串指向 IP 为 127.0.1.2 的数据库
+如果连接字符串包含数据库虚拟机的名称，则故障转移后无需进行其他步骤。 应用程序可自动传递到数据库。 此外，如果数据库虚拟机的 IP 地址得到保留，则不需要更新连接字符串。 如果连接字符串指向使用某个 IP 地址的数据库虚拟机，则故障转移后需要更新该字符串。 例如，以下连接字符串指向 IP 为 127.0.1.2 的数据库
 
         <?xml version="1.0" encoding="utf-8"?>
         <configuration>
@@ -134,7 +134,7 @@ ms.lasthandoff: 12/13/2017
 如果使用应用程序请求路由虚拟机，请在“组 4”后面添加 [IIS ARR 故障转移脚本](https://aka.ms/asr-iis-arrtier-failover-script-classic)来更新 IP 地址。
 
 #### <a name="the-ssl-cert-binding-for-an-https-connection"></a>用于 https 连接的 SSL 证书绑定
-网站可与 SSL 证书关联，帮助确保在 Web 服务器与用户浏览器之间实现安全通信。 如果网站有一个 https 连接，并且有关联的 https 站点绑定，通过 SSL 证书绑定至 IIS 服务器的 IP 地址，则故障转移后，需要使用 IIS 虚拟机的 IP 来为证书添加新的站点绑定。
+网站可与 SSL 证书关联，帮助确保在 Web 服务器与用户浏览器之间实现安全通信。 如果网站有一个 https 连接，并且将一个 https 站点绑定关联到了具有 SSL 证书绑定的 IIS 服务器的 IP 地址，则故障转移后，需要使用 IIS 虚拟机的 IP 来为证书添加新的站点绑定。
 
 可针对以下对象颁发 SSL 证书 -
 

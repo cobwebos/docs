@@ -9,29 +9,29 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: df5614d8a708b49ee1368c4d7983f45d29920fd8
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: a77e214c1138ce936b2ec6c521950704e5beb3ff
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>结合使用 Draft 与 Azure 容器服务 (AKS)
 
-Draft 是一种开源工具，有助于在 Kubernetes 群集中打包和运行代码。 Draft 针对开发迭代周期；因为代码正处于开发阶段，尚未提交到版本控制。 借助 Draft，可在代码发生更改时快速将应用程序重新部署到 Kubernetes。 有关 Draft 的详细信息，请参阅 [GitHub 上的 Draft 文档](https://github.com/Azure/draft/tree/master/docs)。
+Draft 是一种开源工具，有助于在 Kubernetes 群集中打包和运行代码。 Draft 针对开发迭代周期；因为代码正处于开发阶段，尚未提交到版本控制。 借助 Draft，可在代码发生更改时快速将应用程序重新部署到 Kubernetes。 有关 Draft 的详细信息，请参阅 [GitHub 上的 Draft 文档][draft-documentation]。
 
 本文档详细介绍了如何将 Draft 与 AKS 上的 Kubernetes 群集结合使用。
 
 ## <a name="prerequisites"></a>先决条件
 
-本文档详述的步骤假设你已创建 AKS 群集并已通过该群集建立 kubectl 连接。 如果需要这些项，请参阅 [AKS 快速入门](./kubernetes-walkthrough.md)。
+本文档详述的步骤假设你已创建 AKS 群集并已通过该群集建立 kubectl 连接。 如果需要这些项，请参阅 [AKS 快速入门][aks-quickstart]。
 
-还需在 Azure 容器注册表 (ACR) 中创建专用 Docker 注册表。 有关部署 ACR 实例的说明，请参阅 [Azure 容器注册表快速入门](../container-registry/container-registry-get-started-azure-cli.md)。
+还需在 Azure 容器注册表 (ACR) 中创建专用 Docker 注册表。 有关部署 ACR 实例的说明，请参阅 [Azure 容器注册表快速入门][acr-quickstart]。
 
 ## <a name="install-helm"></a>安装 Helm
 
 Helm CLI 是一个在开发系统上运行的客户端，可让你使用 Helm 图表启动、停止和管理应用程序。
 
-若要在 Mac 上安装 Helm CLI，请使用 `brew`。 有关更多安装选项，请参阅[安装 Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md)。
+若要在 Mac 上安装 Helm CLI，请使用 `brew`。 有关更多安装选项，请参阅[安装 Helm][install-helm]。
 
 ```console
 brew install kubernetes-helm
@@ -54,7 +54,7 @@ Bash completion has been installed to:
 
 Draft CLI 是一个在开发系统上运行的客户端，可让你将代码快速部署到 Kubernetes 群集中。
 
-若要在 Mac 上安装 Draft CLI，请使用 `brew`。 有关更多安装选项，请参阅 [Draft 安装指南](https://github.com/Azure/draft/blob/master/docs/install.md)。
+若要在 Mac 上安装 Draft CLI，请使用 `brew`。 有关更多安装选项，请参阅 [Draft 安装指南][install-draft]。
 
 ```console
 brew install draft
@@ -178,7 +178,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 
 ## <a name="expose-application"></a>公开应用程序
 
-在 Kubernetes 中测试应用程序时，可能需要通过 Internet 访问应用程序。 这通过使用类型为 [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer) 的 Kubernetes 服务或[入口控制器](https://kubernetes.io/docs/concepts/services-networking/ingress/)即可实现。 本文档详述如何使用 Kubernetes 服务。
+在 Kubernetes 中测试应用程序时，可能需要通过 Internet 访问应用程序。 这通过使用类型为 [LoadBalancer][kubernetes-service-loadbalancer] 的 Kubernetes 服务或[入口控制器][kubernetes-ingress]即可实现。 本文档详述如何使用 Kubernetes 服务。
 
 
 首先，需要更新 Draft 包以指定应创建类型为 `LoadBalancer` 的服务。 为此，请更新 `values.yaml` 文件中的服务类型。
@@ -302,4 +302,15 @@ Hello World, I'm Java - Draft Rocks!
 若要详细了解如何使用 Draft，请参阅 GitHub 上的 Draft 文档。
 
 > [!div class="nextstepaction"]
-> [Draft 文档](https://github.com/Azure/draft/tree/master/docs)
+> [Draft 文档][draft-documentation]
+
+<!-- LINKS - external -->
+[draft-documentation]: https://github.com/Azure/draft/tree/master/docs
+[install-draft]: https://github.com/Azure/draft/blob/master/docs/install.md
+[install-helm]: https://github.com/kubernetes/helm/blob/master/docs/install.md
+[kubernetes-ingress]: https://kubernetes.io/docs/concepts/services-networking/ingress/
+[kubernetes-service-loadbalancer]: https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer
+
+<!-- LINKS - internal -->
+[acr-quickstart]: ../container-registry/container-registry-get-started-azure-cli.md
+[aks-quickstart]: ./kubernetes-walkthrough.md

@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 764c6bd3c2466ceb93e33d03bece1c9036c1b1d9
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 34742208e9189eb31310b58770ee4a22e33f56d5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-iot-hub-get-started-tutorials"></a>Azure IoT 中心入门教程
 
 可以使用 Azure IoT 中心和 Azure IoT 设备 SDK 生成物联网 (IoT) 解决方案：
 
 * Azure IoT 中心是在云中完全托管的服务，可安全地连接、监视和管理 IoT 设备。 使用 Azure IoT 设备 SDK 实现 IoT 设备。
-* 在更复杂的 IoT 方案中使用 IoT 网关。 例如在这些方案中需要考虑一些因素，如旧设备、带宽成本、安全性和隐私策略或边缘数据处理等。 在这些方案中，可以使用 Azure IoT Edge 实现用于将设备连接到 IoT 中心的网关。
+* 在更复杂的 IoT 方案中使用 IoT 网关。 例如在这些方案中需要考虑一些因素，如旧设备、带宽成本、安全性和隐私策略或边缘数据处理等。 在这些方案中，使用 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) 实现用于将设备连接到 IoT 中心的网关。
 
 ## <a name="what-the-tutorials-cover"></a>教程涵盖内容
 

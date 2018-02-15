@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/28/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9431483293bcc252b79d02ba2d655a3aa86aaa4a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 8262162ce73176426057af4654f12614cac85472
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-to-access-resources"></a>使用 Azure PowerShell 创建服务主体来访问资源
 
@@ -62,7 +62,7 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-该示例休眠 20 秒，让新的服务主体有时间传遍 Azure Active Directory。 如果脚本等待时长不足，会显示错误：“PrincipalNotFound: 主体 {ID} 不存在于目录中”。
+该示例休眠 20 秒，让新的服务主体有时间传遍 Azure Active Directory。 如果脚本等待时长不足，会显示错误：“主体 {ID} 不存在于目录 {DIR-ID} 中”。
 
 使用以下脚本可以指定默认订阅以外的范围，并在出错时重试角色分配：
 
@@ -128,7 +128,7 @@ Param (
 * 若要授予对默认订阅的标识访问权限，不必提供 ResourceGroup 或 SubscriptionId 参数。
 * 仅当希望将角色分配范围限定为某个资源组时指定 ResourceGroup 参数。
 *  在此示例中，将服务主体添加到“参与者”角色。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。
-* 该脚本休眠 15 秒，让新的服务主体有时间传遍 Azure Active Directory。 如果脚本等待时长不足，会显示错误：“PrincipalNotFound: 主体 {ID} 不存在于目录中”。
+* 该脚本休眠 15 秒，让新的服务主体有时间传遍 Azure Active Directory。 如果脚本等待时长不足，会显示错误：“主体 {ID} 不存在于目录 {DIR-ID} 中”。
 * 如果需要授予对更多订阅或资源组的服务主体访问权限，则再次针对不同的作用域运行 `New-AzureRMRoleAssignment` cmdlet。
 
 
@@ -160,7 +160,7 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-该示例休眠 20 秒，让新的服务主体有时间传遍 Azure Active Directory。 如果脚本等待时长不足，会显示错误：“PrincipalNotFound: 主体 {ID} 不存在于目录中”。
+该示例休眠 20 秒，让新的服务主体有时间传遍 Azure Active Directory。 如果脚本等待时长不足，会显示错误：“主体 {ID} 不存在于目录 {DIR-ID} 中”。
 
 使用以下脚本可以指定默认订阅以外的范围，并在出错时重试角色分配。 必须在 Windows 10 或 Windows Server 2016 上使用 Azure PowerShell 2.0。
 
@@ -223,7 +223,7 @@ Param (
 * 若要授予对默认订阅的标识访问权限，不必提供 ResourceGroup 或 SubscriptionId 参数。
 * 仅当希望将角色分配范围限定为某个资源组时指定 ResourceGroup 参数。
 * 在此示例中，将服务主体添加到“参与者”角色。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。
-* 该脚本休眠 15 秒，让新的服务主体有时间传遍 Azure Active Directory。 如果脚本等待时长不足，会显示错误：“PrincipalNotFound: 主体 {ID} 不存在于目录中”。
+* 该脚本休眠 15 秒，让新的服务主体有时间传遍 Azure Active Directory。 如果脚本等待时长不足，会显示错误：“主体 {ID} 不存在于目录 {DIR-ID} 中”。
 * 如果需要授予对更多订阅或资源组的服务主体访问权限，则再次针对不同的作用域运行 `New-AzureRMRoleAssignment` cmdlet。
 
 如果未使用 **Windows 10 或 Windows Server 2016 Technical Preview**，需要从 Microsoft 脚本中心下载[自签名证书生成器](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/)。 解压其内容，并导入所需的 cmdlet。
@@ -321,7 +321,7 @@ Param (
 
 * 访问范围限定于订阅。
 * 在此示例中，将服务主体添加到“参与者”角色。 对于其他角色，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。
-* 该脚本休眠 15 秒，让新的服务主体有时间传遍 Azure Active Directory。 如果脚本等待时长不足，会显示错误：“PrincipalNotFound: 主体 {ID} 不存在于目录中”。
+* 该脚本休眠 15 秒，让新的服务主体有时间传遍 Azure Active Directory。 如果脚本等待时长不足，会显示错误：“主体 {ID} 不存在于目录 {DIR-ID} 中”。
 * 如果需要授予对更多订阅或资源组的服务主体访问权限，则再次针对不同的作用域运行 `New-AzureRMRoleAssignment` cmdlet。
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>通过自动执行的 PowerShell 脚本提供证书

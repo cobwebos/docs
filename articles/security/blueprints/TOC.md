@@ -17,8 +17,8 @@
 ### [安全技术功能](../azure-security-technical-capabilities.md)
 ### [Azure 中的监管](../governance-in-azure.md)
 ### [静态数据加密](../azure-security-encryption-atrest.md)
-### 体系结构蓝图
-#### 符合性 - PCI DSS
+### Azure 安全性和符合性蓝图
+#### PCI DSS
 ##### [PCI DSS 相容环境的支付处理](payment-processing-blueprint.md)
 ##### [要求概述](pci-dss-requirements-overview.md)
 ##### [要求 1 - 防火墙](pci-dss-requirement-1-firewall.md)
@@ -33,8 +33,8 @@
 ##### [要求 10 - 监视](pci-dss-requirement-10-monitoring.md)
 ##### [要求 11 - 测试](pci-dss-requirement-11-testing.md)
 ##### [要求 12 - 策略](pci-dss-requirement-12-policy.md)
-#### 符合性 - FedRAMP
-##### [FedRAMP 的 Web 应用程序](fedramp.md)
+#### FedRAMP
+##### [Web 应用程序自动化](fedramp.md)
 ##### [安全控制概述](fedramp-controls-overview.md)
 ##### [访问控制](fedramp-access-controls.md)
 ##### [审核和责任](fedramp-audit-accountability-controls.md)
@@ -53,11 +53,11 @@
 ##### [系统和通信保护](fedramp-system-communications-protection-controls.md)
 ##### [系统和信息完整性](fedramp-system-information-integrity-controls.md)
 ##### [系统和服务获取](fedramp-system-services-acquisition-controls.md)
-#### 符合性 - UK-OFFICIAL
-##### [UK-OFFICIAL 的三层式 Web 应用程序](uk-official-three-tier-applications-overview.md)
+#### UK-OFFICIAL
+##### [三层 Web 应用程序自动化](uk-official-three-tier-applications-overview.md)
 ##### [概述](uk-official-three-tier-applications-overview.md)
 ##### [原则概述](uk-official-three-tier-applications-principles-overview.md)
-#### 符合性 - 金融服务
+#### 金融服务
 ##### [适用于受管制工作负荷的金融服务](financial-services-regulated-workloads.md)
 
 # 入门
@@ -93,7 +93,6 @@
 ### [Azure 日志集成简介](../security-azure-log-integration-overview.md)
 #### [Azure 日志集成入门](../security-azure-log-integration-get-started.md)
 #### [集成 Azure Active Directory 审核日志](../security-azure-log-integration-ad.md)
-#### [集成安全中心警报](../security-azure-log-integration-security-center.md)
 #### [使用事件中心集成 Key Vault 中的日志](../security-azure-log-integration-keyvault-eventhub.md)
 #### [常见问题](../security-azure-log-integration-faq.md)
 
@@ -126,7 +125,7 @@
 ## [Microsoft 安全响应中心](../azure-security-response-center.md)
 ## [渗透测试](../azure-security-pen-testing.md)
 ## [安全中心](../../security-center/security-center-intro.md?toc=%2fazure%2fsecurity-center%2ftoc.json)
-## [密钥保管库](../../key-vault/key-vault-whatis.md)
+## [Key Vault](../../key-vault/key-vault-whatis.md)
 ## [Log Analytics](../../log-analytics/log-analytics-overview.md)
 ## [多重身份验证](../../multi-factor-authentication/multi-factor-authentication.md)
 ## [Azure Active Directory](../../active-directory/active-directory-whatis.md)

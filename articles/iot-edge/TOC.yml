@@ -24,8 +24,6 @@
       href: tutorial-deploy-machine-learning.md
     - name: 部署 Azure Functions
       href: tutorial-deploy-function.md
-    - name: 使用适用于 Azure CLI 2.0 的 IoT 扩展创建 IoT Edge 部署
-      href: tutorial-create-deployment-with-cli-iot-extension.md
 - name: 操作指南
   items:
     - name: 创建网关
@@ -34,6 +32,8 @@
           href: how-to-create-transparent-gateway.md
         - name: Modbus 网关
           href: deploy-modbus-gateway.md
+    - name: 使用适用于 Azure CLI 2.0 的 IoT 扩展
+      href: tutorial-create-deployment-with-cli-iot-extension.md
     - name: 大规模部署和监视
       href: how-to-deploy-monitor.md
     - name: 预配 IoT Core 设备
@@ -48,6 +48,8 @@
           href: how-to-vscode-develop-azure-function.md
         - name: 调试 Azure Functions
           href: how-to-vscode-debug-azure-function.md
+    - name: 在边缘存储数据
+      href: sql-storage.md
     - name: 故障排除
       href: troubleshoot.md
 - name: 概念

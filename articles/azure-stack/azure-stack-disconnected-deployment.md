@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: afea4b23aca322321b4096cdfdc9d30b087a2f30
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e697dec0f3d104af073fd61bac81a00e182524e1
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure 断开连接的部署规划 Azure 堆栈的决策集成系统
-您已决定后[如何将将 Azure 堆栈集成到你的混合云环境](azure-stack-deployment-decisions.md)，然后才能最终完成 Azure 堆栈的部署决策。
+您已决定后[如何将将 Azure 堆栈集成到你的混合云环境](azure-stack-connection-models.md)，然后才能最终完成 Azure 堆栈的部署决策。
 
 使用断开连接从 Azure 的部署选项，可以部署和使用 Azure 堆栈未连接到 Internet。 但是，通过断开连接的部署，你仅限于一个 AD FS 标识存储区和基于容量的计费模型。 
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/01/2018
 > [!TIP]
 > 有时，此类型的环境是也称为"潜水艇方案"。
 
-断开连接的部署并不严格意味着，你不能更高版本 Azure 堆栈实例为连接到 Azure 的混合租户 VM 方案。 这意味着你在部署过程中没有与 Azure 的连接，或不想使用 Azure Active Directory 作为标识存储。 但是，如果你想要连接到 Azure 后部署，而不考虑你想要使用作为标识存储，则应选择连接到 Azure 的部署选项。 
+断开连接的部署并不严格意味着，你不能更高版本 Azure 堆栈实例为连接到 Azure 的混合租户 VM 方案。 这意味着你在部署过程中没有与 Azure 的连接，或不想使用 Azure Active Directory 作为标识存储。
 
 ## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>障碍的用户或中不可用的断开连接部署的功能 
 Azure 堆栈旨在时连接到 Azure，因此务必要注意有障碍的用户或完全不可用在断开连接模式下的某些功能和功能的工作效率最佳。 

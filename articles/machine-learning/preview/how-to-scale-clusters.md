@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
-ms.openlocfilehash: 8d709936bfba5c89091d7f26449d165bddb930de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 49e22c5136da67f62a43374817fb1e462fcbcaf0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>缩放群集以管理 Web 服务吞吐量
 
@@ -83,7 +83,7 @@ az ml service update realtime -i <service id> --autoscale-enabled true --autosca
 例如，将 `autoscale-min-replicas` 设置为 5 将创建 5 个副本。 为了达到最佳 Web 服务数，请将数量设置为值（如 10），然后监视 503 错误消息数。 然后对数量作出相应的调整。
 
 
-| 参数名称 | 类型 | 说明 |
+| 参数名称 | Type | 说明 |
 |--------------------|--------------------|--------------------|
 | `autoscale-enabled` | 布尔值 | 指定是否启用自动缩放。 默认值：true |
 | `autoscale-min-replicas` | integer | 指定最小 pod 数。 必须大于或等于 0。 默认值：1 |

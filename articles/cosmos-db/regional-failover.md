@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/17/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 93a9bf568b1047e1af4e7825c3ca99bf11945560
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 3a8b32440ce3ec6cd2da7aaccf218a94e0ee3e77
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Azure Cosmos DB 中可实现业务连续性的自动区域故障转移
 Azure Cosmos DB 可通过提供完全托管的[多区域数据库帐户](distribute-data-globally.md)简化数据的全球分布。这些帐户在一致性、可用性和性能方面进行了很好的平衡，各方面的效果都有相应的保证。 Cosmos DB 帐户具有以下特点：高可用性、10 毫秒以下的延迟、[妥善定义的一致性级别](consistency-levels.md)、使用多宿主 API 实现透明的区域故障转移，以及在全球范围内弹性缩放吞吐量和存储。 
@@ -46,7 +46,7 @@ Cosmos DB 支持显式和策略驱动型故障转移，方便用户在发生故�
 * 配置了 `West US` 作为第一个首选区域，确保读取时的低延迟性
 * 配置了 `North Europe` 作为第二个首选区域（确保区域故障时的高可用性）
 
-在 DocumentDB API 中，该配置类似于以下代码片段：
+在 SQL API 中，该配置类似于以下代码片段：
 
 ```cs
 ConnectionPolicy usConnectionPolicy = new ConnectionPolicy 
@@ -141,6 +141,6 @@ do
 ## <a id="NextSteps"></a>后续步骤
 * 了解 Cosmos DB 如何支持[全球分布](distribute-data-globally.md)
 * 了解 [Azure Cosmos DB 的全局一致性](consistency-levels.md)
-* 使用 Azure Cosmos DB 的[DocumentDB API](../cosmos-db/tutorial-global-distribution-documentdb.md) 进行多个区域开发
-* 了解如何通过 Azure DocumentDB 构建[多区域写入器体系结构](multi-region-writers.md)
+* 使用 Azure Cosmos DB 的 [SQL API](tutorial-global-distribution-sql-api.md) 进行多个区域开发
+* 了解如何通过 Azure Cosmos DB 构建[多区域写入器体系结构](multi-region-writers.md)
 

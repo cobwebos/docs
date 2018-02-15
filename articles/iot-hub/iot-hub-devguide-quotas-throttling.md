@@ -12,25 +12,25 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 68a6e999ac0ffe97c08b6420dd6e71d7154b5de8
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: e16c8b9e8bfb75226d7dec32e545da72cba107e9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
 ## <a name="quotas-and-throttling"></a>配额和限制
 每个 Azure 订阅最多可以拥有 10 个 IoT 中心和 1 个免费中心。
 
-每个 IoT 中心预配了特定 SKU 的特定单位数（有关详细信息，请参阅 [Azure IoT 中心定价][lnk-pricing]）。 SKU 和单位数目确定可以发送的消息的每日配额上限。
+每个 IoT 中心都预配了特定 SKU 的特定单位数。 有关详细信息，请参阅 [Azure IoT 中心定价][lnk-pricing]。 SKU 和单位数目确定可以发送的消息的每日配额上限。
 
 SKU 还确定了 IoT 中心对所有操作强制实施的限制。
 
 ## <a name="operation-throttles"></a>操作限制
-操作限制是在分钟范围内应用的速率限制，主要是为了避免不当使用。 IoT 中心会尽可能避免返回错误，但如果违反限制太久，就会开始返回异常。
+操作限制是在分钟范围内应用的速率限制，主要是为了防止不当使用。 IoT 中心会尽可能避免返回错误，但如果违反限制太久，就会开始返回异常。
 
 下表显示了强制限制。 值与单个中心相关。
 
@@ -48,17 +48,18 @@ SKU 还确定了 IoT 中心对所有操作强制实施的限制。
 | 作业操作 <br/> （创建、更新、列表、删除） | 1.67/秒/单位（100/分钟/单位） | 1.67/秒/单位（100/分钟/单位） | 83.33/秒/单位（5000/分钟/单位） |
 | 作业每设备操作吞吐量 | 10/秒 | 高于 10/秒或 1/秒/单位 | 50/秒/单位 |
 
-<sup>1</sup>限制计量大小为 8KB
+<sup>1</sup>限制计量大小为 8 KB
 
-必须清楚地知道，“设备连接”限制控制与 IoT 中心建立新设备连接的速率。 “设备连接”限制不控制同时连接的最大设备数。 该限制取决于为 IoT 中心预配的单位数。
+> [!IMPORTANT]
+> “设备连接”限制控制与 IoT 中心建立新设备连接的速率。 “设备连接”限制不控制同时连接的最大设备数。 该限制取决于为 IoT 中心预配的单位数。
 
 例如，如果购买的是单一 S1 单位，则限制为每秒 100 个连接。 因此，若要连接 100,000 台设备，至少需要花费 1000 秒（大约 16 分钟）。 但是，同时连接的设备数可与用户在标识注册表中注册的设备数相同。
 
 有关 IoT 中心限制行为的深入讨论，请参阅博客文章 [IoT 中心限制与你息息相关][lnk-throttle-blog]。
 
 > [!NOTE]
-> 无论何时，都可以通过增加 IoT 中心预配的单位来提高配额或限制。
-> 
+> 无论何时，都可通过增加 IoT 中心预配的单位数来提高配额或限制。
+
 > [!IMPORTANT]
 > 标识注册表操作用于设备管理与预配方案中的运行时使用。 通过[导入和导出作业][lnk-importexport]可以支持读取或更新大量的设备标识。
 > 
@@ -77,7 +78,7 @@ IoT 中心强制实施的其他操作限制：
 | 设备到云的消息传递 | 最大消息大小为 256 KB |
 | 云到设备的消息传递 | 最大消息大小为 64 KB |
 | 云到设备的消息传递 | 进行传递的最大挂起消息数为 50 |
-| 直接方法 | 最大的直接方法有效负载大小为 128 KB |
+| 直接方法 | 直接方法有效负载的最大大小为 128 KB |
 
 > [!NOTE]
 > 目前，可以连接到单个 IoT 中心的设备的最大数目是 500,000。 如果想要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。

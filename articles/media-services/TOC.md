@@ -171,6 +171,7 @@
 #### [Face Redactor 演练](media-services-redactor-walkthrough.md)
 ### [使用视频缩略图进行处理](media-services-video-summarization.md)
 ### [使用 OCR 进行处理](media-services-video-optical-character-recognition.md)
+### [使用内容审查器进行处理](media-services-content-moderation.md)
 
 ## [配置遥测](media-services-telemetry-overview.md)
 ###[.NET](media-services-dotnet-telemetry.md)

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 24bc439b6167d335a0862aa93debb9efe5aeae48
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 3d1b5f30898bc0aab5c617ab547aa7db5e7e4375
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 
@@ -38,29 +38,34 @@ ms.lasthandoff: 11/15/2017
 3. 为代理提供一个名称。
 4. 通过指定**路由模板**和 **HTTP 方法**配置在此 Function App 上公开的终结点。 这些参数的行为取决于 [HTTP 触发器]的规则。
 5. 将“后端 URL”设置为另一个终结点。 此终结点可以是其他 Function App 中的函数，也可以是任何其他 API。 该值不需要是静态值，并且可以引用[应用程序设置]和[原始客户端请求中的参数]。
-6. 单击“创建” 。
+6. 单击“创建”。
 
 代理现在已作为新终结点存在于 Function App 上。 从客户端角度来看，它等同于 Azure Functions 中的 HttpTrigger。 可以通过复制代理 URL 并使用最喜欢的 HTTP 客户端对其进行测试来试验新代理。
 
 ## <a name="modify-requests-responses"></a>修改请求和响应
 
-使用 Azure Functions 代理可以修改针对后端发出的请求以及后端返回的响应。 这些转换可以使用[使用变量]中定义的变量。
+使用 Azure Functions 代理可以修改针对后端发出的请求以及从后端返回的响应。 这些转换可以使用[使用变量]中定义的变量。
 
 ### <a name="modify-backend-request"></a>修改后端请求
 
 默认情况下，后端请求初始化为原始请求的副本。 除了设置后端 URL 以外，还可以对 HTTP 方法、标头和查询字符串参数进行更改。 修改的值可以引用[应用程序设置]和[原始客户端请求中的参数]。
 
-没有目前门户体验可用于修改后端请求。 若要了解如何从 proxies.json 运用此功能，请参阅[定义 requestOverrides 对象]。
+没有目前门户体验可用于修改后端请求。 若要了解如何从 proxies.json 应用此功能，请参阅[定义 requestOverrides 对象]。
 
 ### <a name="modify-response"></a>修改响应
 
 默认情况下，客户端响应初始化为后端响应的副本。 可对响应的状态代码、原因短语、标头和正文进行更改。 修改的值可以引用[应用程序设置]、[原始客户端请求中的参数]和[后端响应中的参数]。
 
-没有目前门户体验可用于修改响应。 若要了解如何从 proxies.json 运用此功能，请参阅[定义 responseOverrides 对象]。
+没有目前门户体验可用于修改响应。 若要了解如何从 proxies.json 应用此功能，请参阅[定义 responseOverrides 对象]。
 
 ## <a name="using-variables"></a>使用变量
 
-代理的配置不需要是静态的。 可将它调整为使用原始请求、后端响应或应用程序设置中的变量。
+代理的配置不需要是静态的。 可将它调整为使用原始客户端请求、后端响应或应用程序设置中的变量。
+
+### <a name="reference-localhost"></a>引用本地函数
+可以使用 `localhost` 直接引用同一函数应用内的函数，而无需往返代理请求。
+
+`"backendurl": "localhost/api/httptriggerC#1"` 将引用路由 `/api/httptriggerC#1` 中的本地 HTTP 触发函数
 
 ### <a name="request-parameters"></a>引用请求参数
 
@@ -84,7 +89,7 @@ ms.lasthandoff: 11/15/2017
 
 * **{backend.response.statusCode}**：在后端响应中返回的 HTTP 状态代码。
 * **{backend.response.statusReason}**：在后端响应中返回的 HTTP 原因短语。
-* **{backend.response.headers.\<HeaderName\>}**：可从后端响应中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在请求中，则该值为空字符串。
+* **{backend.response.headers.\<HeaderName\>}**：可从后端响应中读取的标头。 请将 *\<HeaderName\>* 替换为要读取的标头的名称。 如果该标头未包含在响应中，则该值将为空字符串。
 
 ### <a name="use-appsettings"></a>引用应用程序设置
 
@@ -95,9 +100,21 @@ ms.lasthandoff: 11/15/2017
 > [!TIP] 
 > 当有多个部署或测试环境时，请为后端主机使用应用程序设置。 这样可以确保始终与该环境的正确后端进行通信。
 
+## <a name="debugProxies"></a>对代理进行故障排除
+
+通过将标志 `"debug":true` 添加到 `proxy.json` 中的任何代理，将启用调试日志记录。 日志存储在 `D:\home\LogFiles\Application\Proxies\DetailedTrace` 中，可通过高级工具 (kudu) 访问。 任何 HTTP 响应也将包含 `Proxy-Trace-Location` 标头，其中包含用于访问日志文件的 URL。
+
+可以通过添加设置为 `true` 的 `Proxy-Trace-Enabled` 标头来从客户端调试代理。 这还会将跟踪结果记录到文件系统，并以响应中标头的形式返回跟踪 URL。
+
+### <a name="block-proxy-traces"></a>阻止代理跟踪
+
+出于安全原因，你可能不想允许任何人调用服务生成跟踪。 没有登录凭据这些人将无法访问跟踪内容，但生成跟踪会占用资源并公开你正在使用函数代理。
+
+通过将 `"debug":false` 添加到 `proxy.json` 中的任何特定代理可完全禁用跟踪。
+
 ## <a name="advanced-configuration"></a>高级配置
 
-配置的代理存储在一个 proxies.json 文件中，此文件位于 Function App 目录的根目录中。 使用 Functions 支持的任意[部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)时，可以手动编辑此文件并将其部署为应用的一部分。 必须[启用](#enable)此功能才能处理此文件。 
+配置的代理存储在一个 proxies.json 文件中，此文件位于函数应用目录的根目录中。 使用 Functions 支持的任意[部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)时，可以手动编辑此文件并将其部署为应用的一部分。 必须[启用](#enable) Azure Functions 代理功能才能使此文件得到处理。 
 
 > [!TIP] 
 > 如果尚未设置一种部署方法，也可以在门户中使用 proxies.json 文件。 转到到 Function App，选择“平台功能”，并选择“应用服务编辑器”。 这样，便可以看到 Function App 的整个文件结构并进行更改。
@@ -129,7 +146,25 @@ Proxies.json 是由一个代理对象定义的，包括已命名的代理及其�
 * **responseOverrides**：定义对客户端响应执行的转换的对象。 请参阅[定义 responseOverrides 对象]。
 
 > [!NOTE] 
-> route 属性“Azure Functions 代理”不接受 Functions 主机配置的 routePrefix 属性。 如果希望包括诸如 /api 的前缀，必须将其包括在 route 属性中。
+> Azure Functions 代理中的 route 属性不接受 Function App 主机配置的 routePrefix 属性。 如果希望包括一个如 `/api` 等前缀，必须将其包括在 route 属性中。
+
+### <a name="disableProxies"></a>禁用单个代理
+
+可以通过将 `"disabled": true` 添加到 `proxies.json` 文件中的代理来禁用单个代理。 这将导致满足 matchCondidtion 的任何请求返回 404。
+```json
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "Root": {
+            "disabled":true,
+            "matchCondition": {
+                "route": "/example"
+            },
+            "backendUri": "www.example.com"
+        }
+    }
+}
+```
 
 ### <a name="requestOverrides"></a>定义 requestOverrides 对象
 
@@ -193,7 +228,7 @@ requestOverrides 对象定义对传回客户端的响应所做的更改。 该�
 }
 ```
 > [!NOTE] 
-> 在此示例中，将直接设置正文，因此不需要 `backendUri` 属性。 此示例演示如何使用 Azure Functions 代理来模拟 API。
+> 在此示例中，响应正文是直接设置的，因此不需要 `backendUri` 属性。 此示例演示如何使用 Azure Functions 代理来模拟 API。
 
 ## <a name="enable"></a>启用 Azure Functions 代理
 

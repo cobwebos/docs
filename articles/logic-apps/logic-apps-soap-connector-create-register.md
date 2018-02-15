@@ -1,7 +1,7 @@
 ---
 title: "创建并注册 SOAP 连接器 - Azure 逻辑应用 | Microsoft Docs"
 description: "设置在 Azure 逻辑应用中使用的 SOAP 连接器"
-author: divyaswarnkar
+author: ecfan
 manager: anneta
 editor: 
 services: logic-apps
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 0323b0f7ee03dce209d5a71c6711988a34ba7633
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: LADocs; estfan
+ms.openlocfilehash: 031762e5639fc52e0b0a6a5bf8d12db25da25e12
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-and-register-soap-connectors-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建并注册 SOAP 连接器
 
@@ -151,7 +151,7 @@ ms.lasthandoff: 11/17/2017
 ## <a name="faq"></a>常见问题
 
 **问：**SOAP 连接器正式发布 (GA) 了吗？ </br>
-**答：**SOAP 连接器处于**预览**状态，尚不是 GA 服务。
+**答：**SOAP 连接器目前以**预览版**提供，并非正式版服务。
 
 **问：**SOAP 连接器是否有任何限制和已知问题？ </br>
 **答：**有，请参阅[SOAP 连接器限制和已知问题](../api-management/api-management-api-import-restrictions.md#wsdl)。

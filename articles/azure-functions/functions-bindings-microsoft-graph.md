@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 63b94c0a9b77a3f3a6fd394a130bf8f132d51369
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 5d0f266047e1b083cdf23f8d1c55950a46406f61
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions 的 Microsoft Graph 绑定
 
@@ -43,7 +43,7 @@ Microsoft Graph 扩展提供了以下绑定：
 
 绑定扩展仅适用于 Azure Functions 2.0 预览版。 
 
-有关如何将函数应用设置为使用 Functions 运行时预览版 2.0，请参阅[指定 2.0 版运行时](functions-versions.md#target-the-version-20-runtime)。
+有关如何将函数应用设置为使用 Functions 运行时预览版 2.0 的信息，请参阅[如何面向 Azure Functions 运行时版本](set-runtime-version.md)。
 
 ### <a name="installing-the-extension"></a>安装扩展
 

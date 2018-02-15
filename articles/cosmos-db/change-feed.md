@@ -3,7 +3,7 @@ title: "使用 Azure Cosmos DB 中的更改源支持 | Microsoft Docs"
 description: "使用 Azure Cosmos DB 的更改源支持跟踪文档中发生的更改，执行基于事件的处理（例如触发器），使缓存和分析系统保持最新状态。"
 keywords: "更改源"
 services: cosmos-db
-author: arramac
+author: rafats
 manager: jhubbard
 editor: mimig
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: article
-ms.date: 10/30/2017
-ms.author: arramac
-ms.openlocfilehash: d1968e9fea0fb08edfdbf9e09acca9c4af00b048
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.date: 01/29/2018
+ms.author: rafats
+ms.openlocfilehash: 3fa321a3354be3eb7dce2ff886cd40c6c9f1ebbb
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的更改源支持
 
@@ -60,6 +60,7 @@ Azure Cosmos DB 中的更改源支持的工作原理是侦听 Azure Cosmos DB �
 * 更改可从任意时间点同步，也就是说，发生更改的数据没有固定的保留期。
 * 更改以分区键范围区块提供。 多个使用者/服务器可以使用此功能并行处理大型集合中发生的更改。
 * 应用程序可针对同一集合同时请求多个更改源。
+* 可以使用 ChangeFeedOptions.StartTime 提供初始起点，例如，为了查找给定时钟时间所对应的继续标记。 ContinuationToken（如果指定）将优先于 StartTime 和 StartFromBeginning 值。 ChangeFeedOptions.StartTime 的精度是 ~5 秒。 
 
 ## <a name="use-cases-and-scenarios"></a>用例和方案
 
@@ -178,6 +179,7 @@ Azure Cosmos DB 的 [SQL SDK](sql-api-sdk-dotnet.md) 提供用于读取和管理
 
 请注意，如果有两个无服务器 Azure 函数正在监视同一个集合并使用相同的租约，则根据处理器库决定处理分区的方式，这两个函数可能会收到不同的文档。
 
+<a id="understand-cf"></a>
 ### <a name="understanding-the-change-feed-processor-library"></a>了解更改源处理器库
 
 实现更改源处理器需要四个主要组件：监视集合、租用集合、处理器主机和使用者。 

@@ -56,7 +56,7 @@ ms.lasthandoff: 12/13/2017
 ## <a name="add-atlassian-cloud-from-the-gallery"></a>从库中添加 Atlassian Cloud
 若要配置 Atlassian Cloud 与 Azure AD 的集成，请执行以下操作，从库中将 Atlassian Cloud 添加到托管 SaaS 应用列表：
 
-1. 在“Azure 门户”的左窗格中，选择“Azure Active Directory”按钮[](https://portal.azure.com)。 
+1. 在[Azure 门户](https://portal.azure.com)的左窗格中，选择“Azure Active Directory”按钮。 
 
     ![“Azure Active Directory”按钮][1]
 

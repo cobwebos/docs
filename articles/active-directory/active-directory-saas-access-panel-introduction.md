@@ -15,48 +15,46 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b5c139766af9e166b12e8833c2ced8be08e743a
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: c9069cb0b46ddc1155c64bd63a7fcd8a685abbad
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="what-is-the-access-panel"></a>访问面板是什么？
 
-访问面板是一个基于 Web 的门户。 在Azure Active Directory 中拥有工作或学校帐户的用户可以使用访问面板来查看和启动 Azure AD 管理员已授权他们访问的基于云的应用程序。 还可以通过访问面板使用自助服务组和应用管理功能。
+访问面板是一个基于 Web 的门户。 如果在Azure Active Directory (Azure AD) 中拥有工作或学校帐户，可以使用访问面板来查看和启动 Azure AD 管理员已授权你访问的基于云的应用程序。 还可以通过访问面板使用自助服务组和应用管理功能。
 
-访问面板不同于 Azure 门户，它不要求拥有 Azure 订阅。
+访问面板与 Azure 门户不同， 它不需要你拥有 Azure 订阅。
 
-![访问面板][1]
+![访问面板][1]使用访问面板可以编辑一些配置文件设置，并执行以下操作：
 
-使用访问面板可以编辑一些配置文件设置，包括：
+- 更改工作或学校帐户关联的密码。
 
-- 更改工作或学校帐户关联的密码
+- 编辑密码重置设置。
 
-- 编辑密码重置设置
+- 编辑与多重身份验证相关的联系人和首选项设置（适用于管理员要求使用访问面板执行此类操作的帐户）。
 
-- 编辑与多重身份验证相关的联系人和首选项设置（适用于管理员要求使用访问面板执行此类操作的帐户）
+- 查看帐户详细信息，例如，用户 ID、备用电子邮件地址、移动电话号码、办公电话号码和设备。
 
-- 查看帐户详细信息，例如，用户 ID、备用电子邮件地址、移动电话号码、办公电话号码和设备
+- 查看和启动 Azure AD 管理员已授权访问的基于云的应用程序。 
 
-- 查看和启动 Azure AD 管理员已授权访问的基于云的应用程序。 有关从用户角度阐述的访问面板详细信息，请参阅“使用访问面板”。 
-
-- 自我管理组。 更具体地说，管理员可以在 Azure AD 中创建和管理安全组，并请求安全组成员身份。 有关详细信息，请参阅 [Self-service group management for users in Azure AD](active-directory-accessmanagement-self-service-group-management.md)（面向 Azure AD 中用户的自助组管理）和 [Manage your groups](active-directory-manage-groups.md)（管理组）。
+- 自我管理组。 管理员可以在 Azure AD 中创建和管理安全组，并请求安全组成员身份。 有关详细信息，请参阅 [Self-service group management for users in Azure AD](active-directory-accessmanagement-self-service-group-management.md)（面向 Azure AD 中用户的自助组管理）和 [Manage your groups](active-directory-manage-groups.md)（管理组）。
 
 
 
 
-## <a name="accessing-the-access-panel"></a>访问访问面板
+## <a name="access-the-access-panel"></a>访问访问面板
 
-可以通过在 Web 浏览器中浏览以下 URL 来访问访问面板：`http://myapps.microsoft.com`
+可以转到 `http://myapps.microsoft.com` 来访问访问面板。
 
-如果为登录页配置了自定义商标，则可以将组织的域追加到 URL 来尾来加载此商标：`http://myapps.microsoft.com/<your domain>.com`
+如果为登录页配置了自定义商标，则可以将组织的域追加到 URL 来加载此商标（例如 `http://myapps.microsoft.com/<your domain>.com`）。
 
-在此情况下，可以使用已在 Azure 门户中配置的任何活动域名或已验证域名。
+可以使用已在 Azure 门户中配置的任何活动域名或已验证域名，如下所示：
 
 ![Wingtip Toys 域名][2]  
 
-需要将此 URL 分发给要登录到与 Azure AD 集成的应用程序的所有用户。
+将此 URL 分发给要登录到与 Azure AD 集成的应用程序的所有用户。
 
 ## <a name="authentication"></a>身份验证
 
@@ -71,32 +69,28 @@ ms.lasthandoff: 01/10/2018
 访问面板的最低要求是使用支持 JavaScript 且已启用 CSS 的浏览器。 为了让用户通过基于密码的单一登录 (SSO) 登录到应用程序，必须在浏览器中安装“访问面板”扩展。 选择某个已配置基于密码的 SSO 的应用程序时，会自动下载此扩展。
 
 访问面板扩展插件当前适用于：
--   Windows 10 周年纪念版或更高版本上的 Edge 
-
--   Chrome -- 在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上
-
--   Firefox 26.0 或更高版本 -- 在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上
-
--   Internet Explorer 8、9、10、11（Windows 7 或更高版本）（支持受限）
+- **Edge**：Windows 10 周年纪念版或更高版本上。 
+- **Chrome**：在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上。
+- **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上。
+- **Internet Explorer 8、9、10、11**：在 Windows 7 或更高版本上（支持受限）。
 
 ## <a name="my-apps-secure-sign-in-extension"></a>我的应用安全登录扩展插件
 此扩展插件要求用户使用密码进行单一登录。 安装后，用户还可通过单击“登录以开始使用”登录该扩展插件，启用附加功能。 
 
-- 用户可通过访问应用的“登录 URL”直接登录应用。 当用户导航到应用的登录 URL 时，该扩展插件会进行检测并为用户提供从该扩展插件进行登录的选项。
-- 用户也可使用该扩展插件的“快速搜索”功能，从访问面板启动其任何应用。 
-- 该扩展插件还会在“最近使用的应用”部分显示用户最近启动的三个应用程序。
+- 可通过访问应用的“登录 URL”直接登录应用。 导航到应用的登录 URL 时，该扩展插件会检测操作并提供从该扩展插件进行登录的选项。
+- 可使用该扩展插件的“快速搜索”功能，从访问面板启动其任何应用。 
+- 该扩展插件还会在“最近使用的应用”部分显示最近启动的三个应用程序。
 
 > [!NOTE]
 > 附加功能仅适用于 Edge、Chrome 和 Firefox。
 >
->
 
-如果使用的“我的应用 URL”不是 https://myapps.microsoft.com，则必须通过以下步骤配置默认 URL：
-1. 未登录到该扩展插件时，请右键单击该扩展插件图标。
-2. 从菜单中单击“选择我的应用 URL”。
+如果使用的我的应用 URL 不是 `https://myapps.microsoft.com`，请通过执行以下操作配置默认 URL：
+1. 未登录到该扩展时，请右键单击该扩展图标。
+2. 在菜单上，选择“我的应用 URL”。
 3. 选择默认 URL。
-4. 单击该扩展插件图标。
-5. 通过选择“登录以开始使用”登录到该扩展插件。
+4. 单击该扩展图标。
+5. 选择“登录以开始使用”。
 
 ## <a name="mobile-app-support"></a>移动应用支持
 
@@ -110,71 +104,71 @@ Azure Active Directory 团队发布了“我的应用”移动应用。 安装�
 ### <a name="my-apps-for-android"></a>我的应用 Android 版
 
 运行 Android 4.1 和更高版本的任何 Android 设备都支持“我的应用 Android 版”。  
+
 [Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.myapps)中已提供此应用。
 
 ![我的应用 Android 版][3]   
 
 ### <a name="my-apps-for-iphone-and-ipad"></a>我的应用 iPhone 和 iPad 版
 
-运行 iOS 7 和更高版本的任何 iPhone 或 iPad 设备都支持“我的应用 iOS 版”。  
+运行 iOS 7 或更高版本的任何 iPhone 或 iPad 设备都支持“我的应用 iOS 版”。  
+
 [Apple App Store](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) 中已提供此应用。
 
 ![我的应用 iOS 版][4]    
 
 
-
 ## <a name="managed-browser-for-my-apps"></a>Managed Browser 中的“我的应用”
 
-“我的应用”还已集成到 Intune Managed Browser 中。 适用于 iOS 和 Android 设备的 Intune Managed Browser 在确保移动设备上的数据安全性方面发挥着重要的作用。 该应用可让我们安全查看和导航可能包含公司信息的网页，并提供安全的 Web 浏览体验。  
+“我的应用”还已集成到 Intune Managed Browser 中。 适用于 iOS 和 Android 设备的 Intune Managed Browser 在确保移动设备上的数据安全性方面发挥着重要的作用。 该浏览器可让我们安全查看和导航可能包含公司信息的网页，并提供安全的 Web 浏览体验。  
+
 Managed Browser 主页和书签中提供了“我的应用”的快速访问链接，只需单击几下鼠标即可进入任何想要访问的应用程序。
 
-[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) 和 [Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser&hl=en)中已提供此应用。
+[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) 和 [Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser&hl=en)中已提供 Intune Managed Browser。
 
 ![Managed Browser 中的“我的应用”][5]    
 
 
-
-
-
 ## <a name="tips-for-testing-the-user-experience"></a>有关测试用户体验的提示
 
-如果你是 Azure 管理员并已使用目录中的帐户登录到 Azure 门户，则会以当前帐户的身份自动登录到访问面板。 在此情况下，可以看到所有已分配给你的应用程序。
+如果你是 Azure 管理员并已使用目录中的帐户登录到 Azure 门户，则会以当前帐户的身份自动登录到访问面板。 此视图显示所有已分配给你的应用程序。
 
-**以不同的用户帐户测试：**
+若要以不同的用户帐户测试，请执行以下操作：
 
-1. 单击 Azure 门户或访问面板右上角的用户菜单，并选择“注销”。 
+1. 在 Azure 门户或访问面板的右上角，选择“注销”。 
 2. 转到[访问面板](http://myapps.microsoft.com)。
 3. 在登录页中，键入目录中想要测试的帐户的用户名和密码。
 
 
 ## <a name="starting-applications"></a>启动应用程序
 
-访问面板中可以显示多种类型的应用程序。
+本部分介绍访问面板上可能会出现有多种类型的应用程序。
 
 ### <a name="office-365-applications"></a>Office 365 应用程序
 
 如果组织正在使用 Office 365 应用程序并且拥有相应的许可证，Office 365 应用程序会显示在访问面板上。
 
-单击 Office 365 应用程序的应用程序磁贴时，会重定向到该应用程序并自动登录。
+选择 Office 365 应用程序的应用程序磁贴时，会重定向到该应用程序并自动登录。
 
 ### <a name="microsoft-and-third-party-applications-configured-with-federation-based-sso"></a>使用基于联合的 SSO 配置的 Microsoft 应用程序与第三方应用程序
 
 管理员可以在 SSO 模式设置为“Azure AD 单一登录”的情况下，将应用程序添加到 Azure 门户的“Active Directory”部分中。 仅当管理员已向你显式授予这些应用程序的访问权限时，你才能看到这些应用程序。
 
-单击其中一个应用程序的磁贴时，会重定向并自动登录到该应用程序。
+选择某个应用程序的磁贴时，会重定向并自动登录到该应用程序。
 
 ### <a name="password-based-sso-without-identity-provisioning"></a>没有标识预配的基于密码的 SSO
 
 管理员可以在 SSO 模式设置为“基于密码的单一登录”的情况下，将应用程序添加到 Azure 门户的“Active Directory”部分中。 目录中的所有用户都可看到在此模式下配置的所有应用程序。
 
-首次单击其中一个应用程序的磁贴时，系统会提示安装适用于 Internet Explorer 或 Chrome 的密码 SSO 插件。 安装后可能需要重启 Web 浏览器。 返回访问面板并再次单击应用程序磁贴时，系统会提示输入应用程序的用户名和密码。 输入用户名和密码后，这些凭据会安全存储在 Azure AD 中并链接到 Azure AD 中的帐户。
+首次选择其中一个应用程序的磁贴时，系统会提示安装适用于 Internet Explorer 或 Chrome 的密码 SSO 插件。 安装后可能需要重启 Web 浏览器。 返回访问面板并再次选择应用程序磁贴时，系统会提示输入应用程序的用户名和密码。 输入用户名和密码后，这些凭据会安全存储在 Azure AD 中并链接到 Azure AD 中的帐户。
 
-下次单击应用程序磁贴时，会自动登录到该应用程序。  
+下次选择应用程序磁贴时，会自动登录到该应用程序。  
+
 无需再次输入凭据，也无需安装密码 SSO 插件。
 
 如果凭据在第三方目标应用程序中已更改，则也必须更新 Azure AD 中存储的相应凭据。 
 
-**更新凭据：**
+若要更新凭据，请执行以下操作：
 
 1. 选择应用程序磁贴上的图标。
 2. 选择“更新凭据”以重新输入应用程序的用户名和密码。
@@ -184,12 +178,13 @@ Managed Browser 主页和书签中提供了“我的应用”的快速访问链�
 
 管理员可以在 SSO 模式设置为“基于密码的单一登录”的情况下，将应用程序连同标识预配一起添加到 Azure 门户的“Active Directory”部分中。
 
-首次单击其中一个应用程序的应用程序磁贴时，系统会提示安装“适用于 Internet Explorer 或 Chrome 的密码 SSO 插件”。 安装后可能需要重启 Web 浏览器。  
-返回访问面板并单击应用程序磁贴时，会自动登录到应用程序。
+首次选择其中一个应用程序的磁贴时，系统会提示安装适用于 Internet Explorer 或 Chrome 的密码 SSO 插件。 安装后可能需要重启 Web 浏览器。  
+
+返回访问面板并选择应用程序磁贴时，会自动登录到应用程序。
 
 某些应用程序可能要求在首次登录时更改密码。 如果凭据在第三方目标应用程序中已更改，则也必须更新 Azure AD 中存储的相应凭据。 
 
-**更新凭据：**
+若要更新凭据，请执行以下操作：
 
 1. 选择应用程序磁贴上的图标。
 2. 选择“更新凭据”以重新输入应用程序的用户名和密码。

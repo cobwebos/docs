@@ -38,6 +38,9 @@
 ### [使用适用于 Azure CLI 2.0 的 IoT 扩展进行设备管理](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
 ### [使用逻辑应用执行远程监视和发送通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
+## 使用 MXChip IoT DevKit
+### [使用 Azure IoT 套件进行远程监视](iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)
+
 # 操作指南
 ## 计划
 ### [比较 IoT 中心与事件中心](iot-hub-compare-event-hubs.md)
@@ -104,6 +107,7 @@
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-device-management-get-started.md)
 #### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-device-management-get-started.md)
 #### [Java 后端/Java 设备](iot-hub-java-java-device-management-getstarted.md)
+#### [Python 后端/Python 设备](iot-hub-python-python-device-management-get-started.md)
 ### 如何使用克隆属性
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-twin-how-to-configure.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-twin-how-to-configure.md)

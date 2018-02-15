@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 01/25/2018
 ms.author: sethm
-ms.openlocfilehash: b0bc1ef7570ccac07975e2560a1d0501d3cde2b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 124c4592a41bf9f3e2a148ba5c3b928bb051d160
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-browsing"></a>消息浏览
 
-通过消息浏览（“速览”），客户端可以枚举队列或订阅中驻留的所有消息，通常用于诊断和调试目的。
+通过消息浏览（“速览”），服务总线客户端可以枚举队列或订阅中驻留的所有消息，通常用于诊断和调试目的。
 
-速览操作返回队列或订阅消息日志中驻留的所有消息，而不仅仅是可通过 Receive() 或 OnMessage() 循环立即获取的消息。 每个消息的 State 属性指明消息是有效（可供接收）、是延迟（请参阅“延迟”[链接待定]），还是已计划（请参阅“计划的消息”[链接待定]）。
+速览操作返回队列或订阅消息日志中驻留的所有消息，而不仅仅是可通过 `Receive()` 或 `OnMessage()` 循环立即获取的消息。 每个消息的 `State` 属性指明消息是有效（可供接收）、[延迟](message-deferral.md)还是[已计划](message-sequencing.md)。
 
-已使用和过期的消息通过异步运行“垃圾回收”操作进行清理，但这不一定与消息过期完全同步。因此，Peek 可能确实会返回已过期的消息，如果接下来对队列或订阅调用接收操作，这些消息将会遭到删除或成为死信。
+已使用和过期的消息通过异步运行“垃圾回收”操作进行清理，但这不一定与消息过期完全同步。因此，`Peek` 可能确实会返回已过期的消息，如果接下来对队列或订阅调用接收操作，这些消息将会遭到删除或成为死信。
 
 如果试图从队列中恢复延迟的消息，请务必注意这一点。 一旦超过 [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc)，便无法再通过其他任何方式定期检索消息，即使是 Peek 返回的消息，也不例外。 返回这些消息是有意而为之，因为 Peek 是反映日志当前状态的诊断工具。
 
@@ -43,7 +43,7 @@ Peek 还会返回锁定的消息，以及当前由其他接收程序处理但尚
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解服务总线消息，请参阅以下主题：
+若要了解有关服务总线消息传送的详细信息，请参阅以下主题：
 
 * [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)

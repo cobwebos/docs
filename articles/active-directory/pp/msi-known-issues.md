@@ -3,7 +3,7 @@ title: "Azure Active Directory 的托管服务标识 (MSI) 的常见问题解答
 description: "Azure Active Directory 的托管服务标识存在的已知问题。"
 services: active-directory
 documentationcenter: 
-author: BryanLa
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
 ms.date: 12/15/2017
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7a71010567a76569da969db3d53f71535f96f2d0
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 8820691f5b7c6dbd2c15faede75de123f779b167
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="faq-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory 的托管服务标识 (MSI) 的常见问题解答和已知问题
 
@@ -57,6 +57,23 @@ Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location
 其中： 
 - 适用于 Windows 的扩展名称和类型是：ManagedIdentityExtensionForWindows
 - 适用于 Linux 的扩展名称和类型是：ManagedIdentityExtensionForLinux
+
+### <a name="are-there-rbac-roles-for-user-assigned-identities"></a>是否有用于用户分配的标识的 RBAC 角色？
+有：
+1. MSI 参与者： 
+
+- 可以：对用户分配的标识进行 CRUD 操作。 
+- 不能：将用户分配的标识分配给资源。 （即，将标识分配给 VM）
+
+2. MSI 操作员： 
+
+- 可以：将用户分配的标识分配给资源。 （即，将标识分配给 VM）
+- 不能：对用户分配的标识进行 CRUD 操作。
+
+注意：内置的参与者角色可以执行上述所有操作： 
+- 对用户分配的标识进行 CRUD 操作
+- 将用户分配的标识分配给资源。 （即，将标识分配给 VM）
+
 
 ## <a name="known-issues"></a>已知问题
 
@@ -104,10 +121,9 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 
 - 删除所有用户分配的 MSI 的唯一方式是启用系统分配的 MSI。 
 - 由于 DNS 查找失败，配置 VM 的 VM 扩展可能失败。 重新启动 VM，然后重试。 
-- Azure CLI：`Az resource show` 和 `Az resource list` 在具有用户分配的 MSI 的 VM 上会失败。 要解决此问题，请使用 `az vm/vmss show`
+- 添加“不存在”的 MSI 会导致 VM 出现故障。 *注意：对 MSI 不存在时无法分配标识的修复即将推出*
 - 目前，Azure 存储教程仅提供于美国中部 EUAP。 
-- 用户分配的 MSI 被授予资源访问权限时，该资源的 IAM 边栏选项卡会显示“无法访问数据”。 使用 CLI 查看/编辑该资源的角色分配可暂时解决这一问题。
-- 不支持创建名称中具有下划线的用户分配的 MSI。
+- 不支持创建名称中具有特殊字符（即下划线）的用户分配的 MSI。
 - 如果再添加一个用户分配的标识，clientID 可能无法供其请求令牌使用。 使用以下两个 bash 命令重新启动 MSI VM 扩展可缓解此问题：
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`

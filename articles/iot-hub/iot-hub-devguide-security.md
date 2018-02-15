@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 43917e4fe4ce7643ea034d128f303a5397dbcdc2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 4f75c5725046fb5e0348c405092edcc65c2d8129
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
@@ -72,7 +72,7 @@ Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验�
 
 每个支持的协议（如 MQTT、AMQP 和 HTTPS）以不同方式传输令牌。
 
-使用 MQTT 时，CONNECT 包将 deviceId 用作 ClientId，“用户名”字段中为 {iothubhostname}/{deviceId}；在“密码”字段中为 SAS 令牌。 {iothubhostname} 应该是 IoT 中心的完整 CName（例如，contoso.azure-devices.net）。
+使用 MQTT 时，CONNECT 包将 deviceId 用作 ClientId，“用户名”字段中为 `{iothubhostname}/{deviceId}`；在“密码”字段中为 SAS 令牌。 `{iothubhostname}` 应为 IoT 中心的完整 CName（例如，contoso.azure-devices.net）。
 
 使用 [AMQP][lnk-amqp] 时，IoT 中心支持 [SASL PLAIN][lnk-sasl-plain] 和 [AMQP 基于声明的安全性][lnk-cbs]。
 

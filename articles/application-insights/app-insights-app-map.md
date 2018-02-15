@@ -1,6 +1,6 @@
 ---
 title: "Azure Application Insights 中的应用程序映射 | Microsoft 文档"
-description: "应用组件（带有 KPI 和警报标签）之间的依赖项的可视化展示。"
+description: "使用应用程序映射监视复杂的应用程序拓扑"
 services: application-insights
 documentationcenter: 
 author: SoubhagyaDash
@@ -13,23 +13,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: e1eb2177d6032142781e6e31af6c7f6313d38f4d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 3bbed59bf93eab5e729fbdd3ccae04599ac47081
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/03/2018
 ---
-# <a name="application-map-in-application-insights"></a>Application Insights 中的应用程序映射
-在 [Azure Application Insights](app-insights-overview.md) 中，应用程序映射是应用程序组件的依赖项关系的可视化布局。 每个组件显示负载、性能、故障和警报等 KPI，有助于发现导致性能问题或故障的任何组件。 可从任何组件单击以获得更详细的诊断，如 Application Insights 事件。 如果应用使用了 Azure 服务，还可以单击获得 Azure 诊断，如 SQL 数据库顾问建议。
+# <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
+应用程序映射可帮助你发现的性能瓶颈或热点失败的所有组件的分布式应用程序。 在地图上的每个节点表示应用程序组件或其依赖项;并且有运行状况 KPI 和警报状态。 可从任何组件单击以获得更详细的诊断，如 Application Insights 事件。 如果应用使用了 Azure 服务，还可以单击获得 Azure 诊断，如 SQL 数据库顾问建议。
 
-与其他图一样，可以将应用程序映射固定到 Azure 仪表板，该映射可在其中完全正常运行。 
+## <a name="what-is-a-component"></a>组件是什么？
 
-## <a name="open-the-application-map"></a>打开应用程序映射
-从应用程序的概述边栏选项卡中打开映射：
+组件是分布式/微服务应用程序的可独立部署的部件。 开发者或操作团队具有代码级可见性，或有权访问由这些应用程序组件生成的遥测。 
 
-![打开应用映射](./media/app-insights-app-map/01.png)
+* 组件与“观察到的”外部依赖项（如 SQL 和 EventHub 等）不同，团队/组织可能无权访问（代码或遥测）。
+* 组件在任意数目的服务器/角色/容器实例上运行。
+* 组件可以是单独的 Application Insights 检测密钥（即使订阅并不相同），或是向单个 Application Insights 检测密钥报告的不同角色。 预览地图体验显示了组件而不考虑如何设置它们。
 
-![应用映射](./media/app-insights-app-map/02.png)
+## <a name="composite-application-map-preview"></a>复合应用程序映射 （预览版）
+*这是早期预览版中，并且我们将将更多的功能添加到此映射。我们期待你的反馈获取新体验。可以轻松地切换之间的预览和经典经验。*
+
+从启用"复合应用程序映射"[预览列表](app-insights-previews.md)，或者在右上角的切换按钮中单击"预览图"上。 此开关可用于切换回经典体验。
+![启用预览映射](media/app-insights-app-map/preview-from-classic.png)
+
+>[!Note]
+此预览版将替换以前的"Mult 角色应用程序映射"预览版。 在此期间，使用此跨多个级别的应用程序组件依赖项查看整个拓扑。 向我们提供反馈，我们将添加更多的功能类似于经典映射的支持。
+
+你可以跨多个级别的相关应用程序组件中查看完整的应用程序拓扑。 组件可以是不同的 Application Insights 资源或不同的角色在单个资源。 应用映射通过跟踪已安装 Application Insights SDK 的服务器之间进行的任何 HTTP 依赖项调用来查找服务器节点。 
+
+这种体验开头渐进式发现的组件。 当首次加载预览时，将触发一组查询发现与此组件相关的组件。 在左上角的按钮将使用更新你的应用程序中的组件数量发现它们。 
+![预览映射](media/app-insights-app-map/preview.png)
+
+单击"更新映射组件"，发现在该点之前的所有组件刷新映射。
+![预览加载的映射](media/app-insights-app-map/components-loaded-hierarchical.png)
+
+如果所有组件都是单个的 Application Insights 资源中的角色，则不需要此发现步骤。 这样的应用程序的初始负载将具有所有组件。
+
+与新体验的主要目标之一是能够实现可视化效果具有数百个组件的复杂拓扑。 新体验支持缩放，并根据你放大添加详细信息。 可以缩小以查看详细一眼的组件和仍发现组件具有更高版本的失败率。 
+
+![缩放级别](media/app-insights-app-map/zoom-levels.png)
+
+单击以查看相关的见解，转到的性能和失败的该组件的会审体验的任何组件。
+
+![浮出控件](media/app-insights-app-map/preview-flyout.png)
+
+
+## <a name="classic-application-map"></a>经典应用程序映射
 
 该映射显示：
 
@@ -37,6 +66,8 @@ ms.lasthandoff: 11/01/2017
 * 客户端组件（使用 JavaScript SDK 监视）
 * 服务器端组件
 * 客户端和服务器组件的依赖项
+
+![应用映射](./media/app-insights-app-map/02.png)
 
 可展开和折叠依赖项链接组：
 
@@ -99,22 +130,6 @@ ms.lasthandoff: 11/01/2017
 
 可以单击资源名称，查看该资源的标准概述指标。
 
-## <a name="end-to-end-system-app-maps"></a>端到端系统应用映射
-
-需要 SDK 2.3 或更高版本
-
-如果应用程序具有多个组件（例如，除 Web 应用外还有后端服务），则通过一个集成的应用映射将其全部显示。
-
-![设置筛选器](./media/app-insights-app-map/multi-component-app-map.png)
-
-应用映射通过跟踪已安装 Application Insights SDK 的服务器之间进行的任何 HTTP 依赖项调用来查找服务器节点。 假定每个 Application Insights 资源包含一个服务器。
-
-### <a name="multi-role-app-map-preview"></a>多角色应用映射（预览版）
-
-预览版多角色应用映射功能允许使用包含多个服务器的应用映射将数据发送到相同的 Application Insights 资源/检测密钥。 映射中的服务器由遥测项上的 cloud_RoleName 属性进行分段。 在“预览”边栏选项卡上，将“多角色应用程序映射”设置为“启用”以启用此配置。
-
-此方法可能适用于微服务应用程序，或需在单个 Application Insights 资源中跨多个服务器关联事件的方案。
-
 ## <a name="video"></a>视频
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
@@ -127,4 +142,4 @@ ms.lasthandoff: 11/01/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 门户](https://portal.azure.com)
+* [Azure portal](https://portal.azure.com)

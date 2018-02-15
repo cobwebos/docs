@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 1/23/2018
 ms.author: mabrigg
-ms.openlocfilehash: b0b0a4af1d852de516d387697afb2760b967db43
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: be4a61f185435238db68e4dc43c323a30a754f03
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>将 Windows Server 2016 VM 映像添加到 Azure 堆栈应用商店
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="new-azsserver2016vmimage"></a>New-AzsServer2016VMImage 
 
-创建和上载新的 Server 2016 Core 和，或完整的映像，并为其创建的应用商店项。
+创建和上载新的 Server 2016 Core 或完整的映像，并为其创建的应用商店项。
 
 | parameters | 需要 | 示例 | 说明 |
 |-----|-----|------|---- |

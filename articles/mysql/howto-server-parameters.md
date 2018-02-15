@@ -8,16 +8,16 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/10/2017
-ms.openlocfilehash: f3b32c1f6b33bc60b50f1496414a300db468dc92
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.date: 01/25/2018
+ms.openlocfilehash: 59eeed42356a276c259bd8da55890b7ada67d729
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置服务器参数
 
-用于 MySQL 的 Azure 数据库支持配置某些服务器参数。 本主题介绍如何使用 Azure 门户配置这些参数。 并非所有服务器参数都可调整。 
+用于 MySQL 的 Azure 数据库支持配置某些服务器参数。 本文介绍如何使用 Azure 门户配置这些参数。 并非所有服务器参数都可调整。 
 
 ## <a name="navigate-to-server-parameters-on-azure-portal"></a>在 Azure 门户中导航到“服务器参数”
 1. 登录到 Azure 门户，然后定位到适用于 MySQL 服务器的 Azure 数据库。
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/10/2018
 3. 定位需要调整的任何设置。 查看“说明”列，了解用途和允许的值。 
 4. 单击“保存”，保存更改。
 
-![Azure 门户中的服务器参数边栏选项卡](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+![Azure 门户中的服务器参数页](./media/howto-server-parameters/auzre-portal-server-parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>可配置的服务器参数列表
 
@@ -43,12 +43,15 @@ InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-service
 | 标准 400 | 10240 | 800 | 
 | 标准 800 | 20480 | 1600 |
 
-以下附加服务器参数不可在系统中配置 <br>
- 在基本层中，innodb_file_per_table 为 OFF<br>
- innodb_flush_log_at_trx_commit 为 1<br>
- sync_binlog 为 1<br>
- innodb_log_file_size 为 512 MB<br>
- 
+以下附加服务器参数不可在系统中配置：
+
+|**Parameter**|**固定值**|
+| :------------------------ | :-------- |
+|基本层中的 innodb_file_per_table|熄灭|
+|innodb_flush_log_at_trx_commit|1|
+|sync_binlog|1|
+|innodb_log_file_size|512MB|
+
 在版本 [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) 和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) 中，上表中未列出的其他服务器参数将设置为其 MySQL 现成默认值。
 
 ## <a name="next-steps"></a>后续步骤

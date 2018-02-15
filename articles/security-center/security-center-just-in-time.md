@@ -1,6 +1,6 @@
 ---
 title: "Azure 安全中心中的恰时虚拟机访问 | Microsoft Docs"
-description: "本文档将引导你了解 Azure 安全中心中的恰时 VM 访问可以如何帮助你控制对 Azure 虚拟机的访问。"
+description: "本文档说明 Azure 安全中心中的恰时 VM 访问可以如何帮助你控制对 Azure 虚拟机的访问。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2017
+ms.date: 01/26/2018
 ms.author: terrylan
-ms.openlocfilehash: c715afe55a3aedd5c4f826bc34c3c56e167d2f82
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a15857f0df5c967031aed00d89e71b3199eed0c4
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time-preview"></a>使用恰时功能管理虚拟机访问（预览版）
 
@@ -44,17 +44,19 @@ ms.lasthandoff: 10/11/2017
 当用户请求访问 VM 时，安全中心会检查该用户是否具有为 VM 提供写入访问的[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 权限。 如果用户具有写入权限，则会批准请求并且安全中心会自动将网络安全组 (NSG) 配置为在你指定的时间内允许发往管理端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。
 
 > [!NOTE]
-> 安全中心恰时 VM 访问当前仅支持通过 Azure Resource Manager 部署的 VM。 若要了解有关经典部署模型和 Resource Manager 部署模型的详细信息，请参阅 [Azure Resource Manager 与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
+> 安全中心恰时 VM 访问当前仅支持通过 Azure 资源管理器部署的 VM。 若要了解有关经典部署模型和资源管理器部署模型的详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
 >
 >
 
 ## <a name="using-just-in-time-access"></a>使用恰时访问
 
-“安全中心”下的“恰时 VM 访问”磁贴显示已配置了恰时访问的 VM 数和过去一周内批准的访问请求数。
+1. 打开“安全中心”仪表板。
+
+2. 在左侧窗格中，选择“恰时 VM 访问”。
 
 ![“恰时 VM 访问”磁贴][2]
 
-选择“恰时 VM 访问”磁贴后，“恰时 VM 访问”将打开。
+“恰时 VM 访问”窗口随即打开。
 
 ![“恰时 VM 访问”磁贴][10]
 
@@ -64,7 +66,7 @@ ms.lasthandoff: 10/11/2017
 - **推荐** - 可以支持恰时 VM 访问但尚未配置此功能的 VM。 建议为这些 VM 启用恰时 VM 访问控制。 请参阅[配置恰时访问策略](#configuring-a-just-in-time-access-policy)。
 - **不推荐** - 导致不推荐某个 VM 的可能原因有：
   - 缺少 NSG - 恰时解决方案需要 NSG 准备就绪。
-  - 经典 VM - 安全中心恰时 VM 访问当前仅支持通过 Azure Resource Manager 部署的 VM。 恰时解决方案不支持经典部署。
+  - 经典 VM - 安全中心恰时 VM 访问当前仅支持通过 Azure 资源管理器部署的 VM。 恰时解决方案不支持经典部署。
   - 其他 - 如果在订阅或资源组的安全策略中未开启恰时解决方案，或者 VM 缺少公共 IP 且没有已准备就绪的 NSG，则该 VM 将位于此类别中。
 
 ## <a name="configuring-a-just-in-time-access-policy"></a>配置恰时访问策略

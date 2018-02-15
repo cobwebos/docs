@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 2c013c11dea5217d564ac15a13a8d11614989057
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f93fc95d6bed517cae3adb706f690941f97c366e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>有关集成 Azure 堆栈系统的数据中心集成注意事项
 如果你感兴趣的集成的 Azure 堆栈系统，你应了解一些围绕部署和系统如何适应你的数据中心的主要规划注意事项。 本文概述了这些注意事项，可帮助你做出你 Azure 堆栈的多节点系统的重要的基础结构决策。 使用你的 OEM 硬件供应商联系，与它们部署到你的数据中心的 Azure 堆栈时，可帮助了解这些注意事项。  
@@ -45,7 +45,7 @@ Azure 堆栈是一个密封的系统，其中基础结构已被锁定同时从�
 
 自选标识提供程序没有租户虚拟机、 标识系统和它们使用的帐户上的任何影响，是否可以加入 Active Directory 域，等等。这是独立的。
 
-你可以了解有关选择中的标识提供程序[Azure 堆栈集成的系统项目的部署决策](.\azure-stack-deployment-decisions.md)。
+你可以了解有关选择中的标识提供程序[Azure 堆栈集成的系统连接模型文章](.\azure-stack-connection-models.md)。
 
 ### <a name="ad-fs-and-graph-integration"></a>AD FS 和关系图的集成
 如果你选择部署为标识提供程序中使用 AD FS 的 Azure 堆栈，你必须将 Azure 堆栈上的 AD FS 实例集成使用现有 AD FS 实例通过联合信任。 这允许在现有 Active Directory 林中使用 Azure 堆栈中的资源进行身份验证的身份。
@@ -53,18 +53,25 @@ Azure 堆栈是一个密封的系统，其中基础结构已被锁定同时从�
 你还可以向现有的 Active Directory 集成 Azure 堆栈中的 Graph 服务。 这使您可以管理基于角色的访问控制 (RBAC) Azure 堆栈中。 委派对资源的访问后，图组件查找中使用 LDAP 协议的现有 Active Directory 林中的用户帐户。
 
 下图显示集成的 AD FS 和 Graph 通信流。
-![显示 AD FS 和 Graph 通信流的图示](media/azure-stack-deployment-planning/ADFSIntegration.PNG)
+![显示 AD FS 和 Graph 通信流的图示](media/azure-stack-datacenter-integration/ADFSIntegration.PNG)
 
 ## <a name="licensing-model"></a>授权模型
+你必须决定你想要使用的授权模型。 可用选项取决于部署连接到 internet 的 Azure 堆栈：
+- 有关[连接部署](azure-stack-connected-deployment.md)，你可以选择为你的使用付费或基于容量的许可。 为你的使用付费需要与 Azure 报告使用情况，然后通过 Azure 商务计费的连接。 
+- 如果仅基于容量的许可支持你[部署断开连接](azure-stack-disconnected-deployment.md)从 internet。 
 
-你必须决定你想要使用的授权模型。 对于连接部署，你可以选择为你的使用付费或基于容量的许可。 为你的使用付费需要与 Azure 报告使用情况，然后通过 Azure 商务计费的连接。 如果你部署仅基于容量的许可支持与 internet 断开了。 有关授权模型的详细信息，请参阅[打包和定价的 Microsoft Azure 堆栈](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)。
+有关授权模型的详细信息，请参阅[打包和定价的 Microsoft Azure 堆栈](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)。
+
 
 ## <a name="naming-decisions"></a>命名的决策
 
-你将需要考虑你想要计划你的 Azure 堆栈命名空间，尤其是区域名称和外部域名。 你的 Azure 堆栈部署面向公众的终结点的完全限定的域名 (FQDN) 是这两个名称的组合&lt;*区域*&gt;&lt;*external_FQDN* &gt;，例如， *east.cloud.fabrikam.com*。在此示例中，Azure 堆栈门户将在以下 Url:
+你将需要考虑你想要计划你的 Azure 堆栈命名空间，尤其是区域名称和外部域名。 外部完全限定的域名 (FQDN) 的 Azure 堆栈部署面向公众的终结点是这两个名称的组合： &lt;*区域*&gt;。&lt;*fqdn*&gt;。 例如， *east.cloud.fabrikam.com*。在此示例中，Azure 堆栈门户将在以下 Url:
 
 - https://portal.east.cloud.fabrikam.com
 - https://adminportal.east.cloud.fabrikam.com
+
+> [!IMPORTANT]
+> 为你的 Azure 堆栈部署选择的区域名称必须是唯一的并将显示在门户的地址。 
 
 下表总结了这些域命名决策。
 
@@ -128,14 +135,14 @@ Azure 堆栈是一个密封的系统，其中基础结构已被锁定同时从�
 
 下图显示 ExpressRoute 单租户方案 (其中"客户的连接"为 ExpressRoute 线路)。
 
-![关系图显示单租户 ExpressRoute 方案](media/azure-stack-deployment-planning/ExpressRouteSingleTenant.PNG)
+![关系图显示单租户 ExpressRoute 方案](media/azure-stack-datacenter-integration/ExpressRouteSingleTenant.PNG)
 
 下图显示多租户方案 ExpressRoute。
 
-![关系图显示多租户 ExpressRoute 方案](media/azure-stack-deployment-planning/ExpressRouteMultiTenant.PNG)
+![关系图显示多租户 ExpressRoute 方案](media/azure-stack-datacenter-integration/ExpressRouteMultiTenant.PNG)
 
 ## <a name="external-monitoring"></a>外部监视
-若要获取的所有警报的单一视图从你的 Azure 堆栈部署和设备，并将警报集成到现有 IT 服务管理的工作流对于票证，你可以监视解决方案的外部数据中心与集成 Azure 堆栈。
+若要获取的所有警报的单一视图从你的 Azure 堆栈部署和设备，并将警报集成到现有 IT 服务管理的工作流对于票证，你可以[与外部数据中心监视解决方案集成Azure堆栈](azure-stack-integrate-monitor.md).
 
 包括 Azure 堆栈解决方案，硬件生命周期主机是硬件的 OEM 供应商提供的管理工具运行的 Azure 堆栈之外的计算机。 你可以使用这些工具或其他直接将与你的数据中心中的现有监视解决方案的集成的解决方案。
 
@@ -143,15 +150,15 @@ Azure 堆栈是一个密封的系统，其中基础结构已被锁定同时从�
 
 | 区域 | 外部的监视解决方案 |
 | -- | -- |
-| Azure 堆栈软件 | - [Azure 堆栈适用于 Operations Manager 管理包](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>- [Nagios 插件](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>-基于 REST 的 API 调用 | 
-| 物理服务器 (通过 IPMI Bmc) | Operations Manager 供应商管理包<br>OEM 硬件供应商提供的解决方案<br>硬件供应商 Nagios 插件 | OEM 合作伙伴支持的监视解决方案 （包括） | 
-| 网络设备 (SNMP) | Operations Manager 网络设备发现<br>OEM 硬件供应商提供的解决方案<br>-Nagios 交换机插件 |
-| 租户订阅运行状况监视 | - [System Center Management Pack for Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
+| Azure 堆栈软件 | [Azure 堆栈适用于 Operations Manager 管理包](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Nagios 插件](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>基于 REST 的 API 调用 | 
+| 物理服务器 (通过 IPMI Bmc) | OEM 硬件-Operations Manager 供应商管理包<br>OEM 硬件供应商提供的解决方案<br>硬件供应商 Nagios 插件 | OEM 合作伙伴支持的监视解决方案 （包括） | 
+| 网络设备 (SNMP) | Operations Manager 网络设备发现<br>OEM 硬件供应商提供的解决方案<br>Nagios 交换机插件 |
+| 租户订阅运行状况监视 | [System Center Management Pack for Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
 |  |  | 
 
 请注意以下要求：
 - 你使用的解决方案必须是无代理。 你无法安装在 Azure 堆栈组件内的第三方代理。 
-- 如果你想要使用 System Center Operations Manager，这需要 Operations Manager 2012 R2 或 Operations Manager 2016。
+- 如果你想要使用 System Center Operations Manager，则需要 Operations Manager 2012 R2 或 Operations Manager 2016。
 
 ## <a name="backup-and-disaster-recovery"></a>备份和灾难恢复
 
@@ -159,7 +166,7 @@ Azure 堆栈是一个密封的系统，其中基础结构已被锁定同时从�
 
 ### <a name="protect-infrastructure-components"></a>保护基础结构组件
 
-Azure 堆栈备份到你指定的共享基础结构组件。
+你可以[备份 Azure 堆栈](azure-stack-backup-back-up-azure-stack.md)基础结构组件到 SMB 共享，你可以指定：
 
 - 你将需要上现有的基于 Windows 的文件服务器或第三方设备的外部 SMB 文件共享。
 - 为网络交换机和硬件生命周期主机的备份，应使用此相同的共享。 OEM 硬件供应商将帮助提供有关备份和还原这些组件的指南，因为这是外部的 Azure 堆栈。 你负责运行备份的工作流根据 OEM 供应商的建议。

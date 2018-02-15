@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 01/29/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5f44d2ae42ffc6f75887a64c9ef988fe6d8fd69
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: b00c89183ff0d4e7df49d29834508643e68246bb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="overview-of-the-azure-iot-hub-service"></a>Azure IoT 中心服务概述
 
@@ -65,20 +65,36 @@ Azure IoT 中心提供一大组[设备到云][lnk-d2c-guidance]和[云到设备]
 
 * **基于声明性规则将设备到云的消息路由到 Azure 服务**。 IoT 中心根据路由规则定义消息路由，用于控制中心发送设备到云消息的位置。 路由规则不要求用户编写任何代码，并且可以代替自定义的引入后消息调度程序。
 
+* **将 IoT 中心事件集成到商业应用程序中**。 IoT 中心与 Azure 事件网格集成。 使用此集成来配置其他 Azure 服务或第三方应用程序，以便侦听 IoT 中心事件。 使用 Azure 事件网格可以采用可靠、可缩放且安全的方式快速响应关键事件。
+
 * **设备连接操作监视**。 可以收到有关设备标识管理操作与设备连接事件的详细操作日志。 IoT 解决方案可以通过此监视功能确定连接问题。 使用这些日志，可以确定那些提供错误凭据、发送消息过于频繁或拒绝了所有云到设备消息的设备。
 
 * **一组丰富的设备库**。 [Azure IoT 设备 SDK][lnk-device-sdks] 适用于各种语言和平台 - C 面向很多 Linux 分发版、Windows 和实时操作系统。 Azure IoT 设备 SDK 也支持 C#、Java 和 JavaScript 等托管语言。
 
 * **IoT 协议和可扩展性**。 如果解决方案无法使用设备库，则 IoT 中心会公开一个公共协议，它使设备可以通过本机方式使用 MQTT v3.1.1、HTTPS 1.1 或 AMQP 1.0 协议。 还可以通过以下方式扩展 IoT 中心，以便为自定义协议提供支持：
 
-  * 使用 [Azure IoT Edge][lnk-iot-edge] 创建现场网关，以便将自定义协议转换为 IoT 中心所理解的三个协议之一。
+  * 使用 [Azure IoT Edge][lnk-iot-edge] 创建现场网关，以便将自定义协议转换为 IoT 中心理解的协议。
   * 自定义 [Azure IoT 协议网关][protocol-gateway]（在云中运行的一个开放源代码组件）。
 
 * **扩展**。 Azure IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件。
 
+* **设备预配**。 [IoT 中心设备预配服务](https://docs.microsoft.com/azure/iot-dps/)是针对 IoT 中心的帮助程序服务，无需人为干预即可零接触将设备恰时预配至合适的 IoT 中心，让你以安全且可缩放的方式预配数百万台设备。
+
 ## <a name="gateways"></a>网关
 
-IoT 解决方案中的网关通常是部署于云中的[协议网关][lnk-iotedge]或使用设备在本地部署的[现场网关][lnk-field-gateway]。 协议网关执行协议转换，例如 MQTT 到 AMQP。 现场网关可以在边缘运行分析、制定时间敏感型决策以减少延迟、提供设备管理服务、强制实施安全和隐私约束，并且还可以执行协议转换。 这两种网关都可以充当设备与 IoT 中心之间的媒介。
+IoT 解决方案中的网关通常是部署于云中的[协议网关][lnk-iotedge]或使用设备在本地部署的[现场网关][lnk-field-gateway]。
+
+协议网关执行协议转换，例如 MQTT 到 AMQP 的转换。
+
+现场网关可以：
+
+* 在边缘运行分析。
+* 进行时间敏感性决策以降低延迟。
+* 提供设备管理服务。
+* 强制实施安全和隐私约束。
+* 执行协议转换。
+
+这两种网关都可以充当设备与 IoT 中心之间的媒介。
 
 现场网关与简单的流量路由设备（例如网络地址转换设备或防火墙）不同，因为它通常在解决方案中管理访问和信息流中扮演主动的角色。
 
@@ -86,7 +102,7 @@ IoT 解决方案中的网关通常是部署于云中的[协议网关][lnk-iotedg
 
 ## <a name="how-does-iot-hub-work"></a>IoT 中心如何运作？
 
-Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模式，调节设备与解决方案后端之间的交互。 服务辅助通信的目标是在控制系统（例如 IoT 中心）与专用设备（位于不受信任的物理空间中）之间，建立可信任的双向通信路径。 该模式会建立下列原则：
+Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模式，调节设备与解决方案后端之间的交互。 此模式的目的是在控制系统（例如 IoT 中心）与专用设备（位于不受信任的物理空间中）之间，建立可信任的双向通信路径。 该模式会建立下列原则：
 
 * 安全性的优先级高于其他所有功能。
 
@@ -94,7 +110,7 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 
 * 设备只能同与它们对等的已知服务（例如 IoT 中心）进行连接或建立路由。
 
-* 设备和服务之间或设备和网关之间的通信路径在应用程序协议层受到保护。
+* 设备和服务之间或网关之间的通信路径在应用程序协议层受到保护。
 
 * 系统级别的授权和身份验证以每个设备的标识为基础。 它们可让访问凭据和权限近乎实时地撤销。
 
@@ -108,13 +124,13 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 
 ## <a name="next-steps"></a>后续步骤
 
+若要开始编写一些代码并运行一些示例，请参阅 [IoT 中心入门][lnk-get-started]教程。
+
 若要了解如何从设备发送消息并从 IoT 中心接收消息以及如何配置消息路由，请参阅[使用 IoT 中心发送和接收消息][lnk-send-messages]。
 
 若要了解 IoT 中心如何实现标准的设备管理，以便远程管理、配置和更新设备，请参阅 [IoT 中心设备管理概述][lnk-device-management]。
 
 可以使用 Azure IoT 设备 SDK 在各种设备硬件平台和操作系统上实现客户端应用程序。 设备 SDK 包含库，可协助将遥测数据发送到 IoT 中心，并接收云到设备的消息。 使用设备 SDK 时，可从各种网络协议中进行选择，以便与 IoT 中心通信。 若要了解详细信息，请参阅[设备 SDK 的相关信息][lnk-device-sdks]。
-
-若要开始编写一些代码并运行一些示例，请参阅 [IoT 中心入门][lnk-get-started]教程。
 
 [img-architecture]: media/iot-hub-what-is-iot-hub/hubarchitecture.png
 
@@ -131,7 +147,7 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 [lnk-apple-push]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
-[lnk-iot-edge]: https://github.com/Azure/iot-edge
+[lnk-iot-edge]: https://docs.microsoft.com/azure/iot-edge/
 [lnk-send-messages]: iot-hub-devguide-messaging.md
 [lnk-device-management]: iot-hub-device-management-overview.md
 

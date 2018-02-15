@@ -1,5 +1,5 @@
 ---
-title: "教程：Azure Active Directory 与 Jive 集成 | Microsoft Docs"
+title: "教程：使用 Azure Active Directory 为 Jive 配置自动用户预配 | Microsoft Docs"
 description: "了解如何在 Azure Active Directory 和 Jive 之间配置单一登录。"
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 930b64d8c119f468a18ab5736983365aaf5f03c4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 67bbf48c0ce67b0fef5cc2b1c61e3612e0201534
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-jive-for-user-provisioning"></a>教程：为 Jive 配置用户预配
+# <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>教程：为 Jive 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Jive 和取消其预配而需要在 Jive 和 Azure 中执行的步骤。
 
@@ -71,7 +71,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
    
     a. 在“Jive 管理员用户名”文本框中，键入在 Jive.com 中已分配**系统管理员**配置文件的 Jive 帐户名称。
    
-    b.保留“数据库类型”设置，即设置为“共享”。 在“Jive 管理员密码”文本框中，键入此帐户的密码。
+    b. 在“Jive 管理员密码”文本框中，键入此帐户的密码。
    
     c. 在“Jive 租户 URL”文本框中，键入 Jive 租户 URL。
       
@@ -100,5 +100,5 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 * [配置单一登录](active-directory-saas-jive-tutorial.md)

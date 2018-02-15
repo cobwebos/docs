@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 数据工厂从/向 Dynamics CRM 和 365 复制数据 | Microsoft Docs"
-description: "了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Dynamics CRM 和 365 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 Dynamics CRM 和 365。"
+title: "使用 Azure 数据工厂从/向 Dynamics CRM 或 Dynamics 365 复制数据 | Microsoft Docs"
+description: "了解如何通过在数据工厂管道中使用复制活动，将数据从 Microsoft Dynamics CRM 或 Microsoft Dynamics 365 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 Dynamics CRM 或 Dynamics 365。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -11,30 +11,30 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 01/30/2018
 ms.author: jingwang
-ms.openlocfilehash: d577db2b2f14da61baccfb6230b0c6e03a62b9b1
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 9481d8d9bbdb5081eae9b9a3d4b9a280cba86be5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="copy-data-fromto-dynamics-365dynamics-crm-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365/Dynamics CRM 复制数据
+# <a name="copy-data-from-and-to-dynamics-365-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 或 Dynamics CRM 复制数据
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Dynamics 365 和 Dynamics CRM 复制数据， 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何使用 Azure 数据工厂中的复制活动从/向 Microsoft Dynamics 365 或 Microsoft Dynamics CRM 复制数据。 本文是根据总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文编写的。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用已正式发布的版本 1 的数据工厂，请参阅[版本 1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-可将数据从 Dynamics 365/Dynamics CRM 复制到任何受支持的接收器数据存储，或者将数据从任何受支持的源数据存储到 Dynamics 365/Dynamics CRM。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+可以将数据从 Dynamics 365 或 Dynamics CRM 复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Dynamics 365 或 Dynamics CRM。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-此 Dynamics 连接器支持以下 Dynamics 版本和身份验证类型（*IFD 是“面向 Internet 的部署”的略写*）：
+此 Dynamics 连接器支持以下 Dynamics 版本和身份验证类型。 IFD 是“Internet Facing Deployment”（面向 Internet 的部署）的缩写。
 
 | Dynamics 版本 | 身份验证类型 | 链接的服务示例 |
 |:--- |:--- |:--- |
-| Dynamics 365 联机 <br> Dynamics CRM 联机 | Office365 | [Dynamics 联机 + Office365 身份验证](#dynamics-365-and-dynamics-crm-online) |
+| Dynamics 365 联机 <br> Dynamics CRM Online | Office365 | [Dynamics Online + Office365 身份验证](#dynamics-365-and-dynamics-crm-online) |
 | 带有 IFD 的本地 Dynamics 365 <br> 带有 IFD 的本地 Dynamics CRM 2016 <br> 带有 IFD 的本地 Dynamics CRM 2015 | IFD | [带有 IFD 的本地 Dynamics + IFD 身份验证](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
 具体而言，对于 Dynamics 365，支持以下应用程序类型：
@@ -45,10 +45,9 @@ ms.lasthandoff: 01/19/2018
 - Dynamics 365 for Project Service Automation
 - Dynamics 365 for Marketing
 
-> [!NOTE]
-> 若要使用 Dynamics 连接器，请将密码存储在 Azure Key Vault 中，并在执行数据复制时允许从中拉取复制活动。 请参阅如何在[链接的服务属性](#linked-service-properties)部分进行配置。
+不支持其他应用程序类型，例如，Operations and Finance、Talent 等。
 
-## <a name="getting-started"></a>入门
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
 
@@ -56,22 +55,22 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
-Dynamics 链接的服务支持以下属性：
+Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 和 Dynamics CRM Online
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 类型属性必须设置为：Dynamics | 是 |
-| deploymentType | Dynamics 实例的部署类型。 Dynamics 联机必须为“联机”。 | 是 |
-| organizationName | Dynamics 实例的组织名称。 | 否，应指定何时与用户关联多个 Dynamics 实例。 |
-| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为 Dynamics 联机指定“Office365”。 | 是 |
-| username | 指定要连接到 Dynamics 的用户名。 | 是 |
-| password | 指定为用户名指定的用户帐户的密码。 必须将密码存放在 Azure Key Vault 中，并将密码配置为“AzureKeyVaultSecret”。 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure 集成运行时。 | 对于源为“否”，对于接收器为“是”（如果源链接服务没有 IR） |
+| type | 类型属性必须设置为 **Dynamics**。 | 是 |
+| deploymentType | Dynamics 实例的部署类型。 Dynamics Online 必须为 **"Online"**。 | 是 |
+| organizationName | Dynamics 实例的组织名称。 | 否，应指定何时与用户关联多个 Dynamics 实例 |
+| authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为 Dynamics Online 指定 **"Office365"**。 | 是 |
+| username | 指定用于连接到 Dynamics 的用户名。 | 是 |
+| password | 指定为 username 指定的用户帐户的密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure 集成运行时。 | 对于源为“否”，对于接收器为“是”（如果源链接服务没有集成运行时） |
 
 >[!IMPORTANT]
->将数据复制**到** Dynamics 时，不能使用默认 Azure 集成运行时执行复制。 换句话说，如果源链接服务未指定 IR，请使用接近 Dynamics 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并按以下示例所示关联 Dynamics 链接服务。
+>将数据复制到 Dynamics 时，不能使用默认 Azure 集成运行时执行复制。 换而言之，如果源链接服务未指定集成运行时，请使用靠近 Dynamics 实例的位置显式[创建 Azure 集成运行时](create-azure-integration-runtime.md#create-azure-ir)。 按如下示例所示在 Dynamics 链接服务中关联该运行时。
 
 示例：使用 Office365 身份验证的 Dynamics 联机
 
@@ -87,12 +86,8 @@ Dynamics 链接的服务支持以下属性：
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
-                "type": "AzureKeyVaultSecret",
-                "secretName": "<secret name in AKV>",
-                "store":{
-                    "referenceName": "<Azure Key Vault linked service>",
-                    "type": "LinkedServiceReference"
-                }
+                "type": "SecureString",
+                "value": "<password>"
             }
         },
         "connectVia": {
@@ -109,18 +104,18 @@ Dynamics 链接的服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 类型属性必须设置为：Dynamics | 是 |
-| deploymentType | Dynamics 实例的部署类型。 带有 IFD 的本地 Dynamics 必须为“OnPremisesWithIfd”| 是 |
+| type | 类型属性必须设置为 **Dynamics**。 | 是 |
+| deploymentType | Dynamics 实例的部署类型。 带有 IFD 的本地 Dynamics 必须为 **"OnPremisesWithIfd"**。| 是 |
 | hostName | 本地 Dynamics 服务器的主机名称。 | 是 |
-| **port** | 本地 Dynamics 服务器的端口。 | 否，默认端口为 443 |
+| 端口 | 本地 Dynamics 服务器的端口。 | 否，默认端口为 443 |
 | organizationName | Dynamics 实例的组织名称。 | 是 |
 | authenticationType | 要连接到 Dynamics 服务器的身份验证类型。 为带有 IFD 的本地 Dynamics 指定“Ifd” | 是 |
-| username | 指定要连接到 Dynamics 的用户名。 | 是 |
-| password | 指定为用户名指定的用户帐户的密码。 请注意，你必须将密码存放在 Azure Key Vault 中，并将密码配置为“AzureKeyVaultSecret”。 在[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)中了解详细信息。 | 是 |
+| username | 指定用于连接到 Dynamics 的用户名。 | 是 |
+| password | 指定为 username 指定的用户帐户的密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure 集成运行时。 | 对于源为“No”，对于接收器为“Yes” |
 
 >[!IMPORTANT]
->若要将数据复制到 Dynamics，请使用接近 Dynamics 的位置显式[创建 Azure IR](create-azure-integration-runtime.md#create-azure-ir)，并关联如下面示例中的链接服务。
+>若要将数据复制到 Dynamics，请使用靠近 Dynamics 实例的位置显式[创建 Azure 运行时](create-azure-integration-runtime.md#create-azure-ir)。 按如下示例所示在链接服务中关联该运行时。
 
 示例：带有 IFD、使用 IFD 身份验证的本地 Dynamics
 
@@ -138,12 +133,8 @@ Dynamics 链接的服务支持以下属性：
             "authenticationType": "Ifd",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
-                "type": "AzureKeyVaultSecret",
-                "secretName": "<secret name in AKV>",
-                "store":{
-                    "referenceName": "<Azure Key Vault linked service>",
-                    "type": "LinkedServiceReference"
-                }
+                "type": "SecureString",
+                "value": "<password>"
             }
         },
         "connectVia": {
@@ -158,16 +149,16 @@ Dynamics 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Dynamics 数据集支持的属性列表。
 
-要从/向 Dynamics 复制数据，请将数据集的类型属性设置为“DynamicsEntity”。 支持以下属性：
+要从/向 Dynamics 复制数据，请将数据集的类型属性设置为 **DynamicsEntity**。 支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的类型属性必须设置为：DynamicsEntity |是 |
-| entityName | 要检索的实体的逻辑名称。 | 源为否（如果指定了活动源中的“query”），接收器为是 |
+| type | 数据集的类型属性必须设置为 **DynamicsEntity**。 |是 |
+| entityName | 要检索的实体的逻辑名称。 | 源为“No”（如果指定了活动源中的“query”），接收器为“Yes” |
 
 > [!IMPORTANT]
->- **从 Dynamics 复制数据时，需要 Dynamics 数据集中的“structure”节**，它定义要复制的 Dynamics 数据的列名和数据类型。 请参阅[数据集结构](concepts-datasets-linked-services.md#dataset-structure)和 [Dynamics 的数据类型映射](#data-type-mapping-for-dynamics)，了解详细信息。
->- **向 Dynamics 复制数据时，Dynamics 数据集中的“structure”节是可选的**。 要复制到哪些列由源数据架构确定。 如果源是 CSV 文件没有标头，与列的名称和数据类型映射到 CSV 文件逐个顺序中的字段中输入数据集，指定“结构”。
+>- 从 Dynamics 复制数据时，需要 Dynamics 数据集中的“structure”节。 该节定义要复制的 Dynamics 数据的列名和数据类型。 有关详细信息，请参阅[数据集结构](concepts-datasets-linked-services.md#dataset-structure)和 [Dynamics 的数据类型映射](#data-type-mapping-for-dynamics)。
+>- 向 Dynamics 复制数据时，Dynamics 数据集中的“structure”节是可选的。 要复制到哪些列由源数据架构确定。 如果源是不包含标头的 CSV 文件，请在输入数据集中指定包含列名称和数据类型的“结构”。 这些值将按顺序逐个映射到 CSV 文件中的字段。
 
 **示例：**
 
@@ -207,16 +198,16 @@ Dynamics 链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Dynamics 源和接收器支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Dynamics 源和接收器类型支持的属性列表。
 
-### <a name="dynamics-as-source"></a>作为源的 Dynamics
+### <a name="dynamics-as-a-source-type"></a>将 Dynamics 用作源类型
 
-要从 Dynamics 复制数据，请将复制活动中的源类型设置为“DynamicsSource”。 复制活动**源**部分支持以下属性：
+要从 Dynamics 复制数据，请将复制活动中的源类型设置为“DynamicsSource”。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**DynamicsSource**  | 是 |
-| query  | FetchXML 是在 Microsoft Dynamics（联机和本地）中使用的专有查询语言。 请参阅下面的示例，并从[使用 FeachXML 生成查询](https://msdn.microsoft.com/en-us/library/gg328332.aspx)了解详细信息。 | 否（如果指定了数据集中的“entityName”）  |
+| type | 复制活动源的 type 属性必须设置为 **DynamicsSource**。 | 是 |
+| query | FetchXML 是在 Dynamics（联机和本地）中使用的专属查询语言。 请参阅以下示例。 有关详细信息，请参阅[使用 FeachXML 生成查询](https://msdn.microsoft.com/en-us/library/gg328332.aspx)。 | 否（如果指定了数据集中的“entityName”） |
 
 **示例：**
 
@@ -270,19 +261,19 @@ Dynamics 链接的服务支持以下属性：
 </fetch>
 ```
 
-### <a name="dynamics-as-sink"></a>作为接收器的 Dynamics
+### <a name="dynamics-as-a-sink-type"></a>将 Dynamics 用作接收器类型
 
-要向 Dynamics 复制数据，请将复制活动中的接收器类型设置为“DynamicsSink”。 复制活动接收器部分中支持以下属性：
+要向 Dynamics 复制数据，请将复制活动中的接收器类型设置为“DynamicsSink”。 复制活动 **sink** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动接收器的 type 属性必须设置为：**DynamicsSink**  | 是 |
-| writeBehavior | 操作的写入行为。<br/>允许的值为：**"Upsert"**。 | 是 |
+| type | 复制活动接收器的 type 属性必须设置为 **DynamicsSink**。 | 是 |
+| writeBehavior | 操作的写入行为。<br/>允许的值为 **"Upsert"**。 | 是 |
 | writeBatchSize | 每批中写入到 Dynamics 的数据行计数。 | 否（默认值为 10） |
-| ignoreNullValues | 指示是否忽略 null 值从输入数据（键字段除外）期间写入操作。<br/>允许的值为：true 和 false。<br>- true：保留目标中的数据对象时进行更新插入/更新操作保持不变，并插入在执行插入操作时定义默认值。<br/>- false：执行 upsert/update 操作时为 NULL 更新目标对象中的数据和执行插入操作时插入 NULL 值。  | 否（默认值为 false） |
+| ignoreNullValues | 指示是否忽略 null 值从输入数据（键字段除外）期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：保留目标中的数据对象时进行更新插入/更新操作保持不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入/更新操作时为 NULL 更新目标对象中的数据。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
 
 >[!NOTE]
->接收器 writeBatchSize 和复制活动的默认值 [parallelCopies](copy-activity-performance.md#parallel-copy) 为 Dynamics 接收器是这两个 10，这意味着同时提交给 Dynamics 100 条记录。
+>接收器 writeBatchSize 的默认值和 Dynamics 接收器的复制活动 [parallelCopies](copy-activity-performance.md#parallel-copy) 都是 10。 因此，会将 100 条记录同时提交到 Dynamics。
 
 **示例：**
 
@@ -320,22 +311,22 @@ Dynamics 链接的服务支持以下属性：
 
 ## <a name="data-type-mapping-for-dynamics"></a>Dynamics 的数据类型映射
 
-从 Dynamics 复制数据时，以下映射用于从 Dynamics 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+从 Dynamics 复制数据时，以下映射用于从 Dynamics 数据类型映射到数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
-使用以下映射表，根据源 Dynamics 数据类型在数据集结构中配置相应的数据工厂数据类型：
+使用以下映射表，根据源 Dynamics 数据类型在数据集结构中配置相应的数据工厂数据类型。
 
 | Dynamics 数据类型 | 数据工厂临时数据类型 | 支持用作源 | 支持用作接收器 |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Long | ✓ | ✓ |
 | AttributeTypeCode.Boolean | 布尔 | ✓ | ✓ |
-| AttributeType.Customer | Guid | ✓ |  |
+| AttributeType.Customer | Guid | ✓ | |
 | AttributeType.DateTime | Datetime | ✓ | ✓ |
 | AttributeType.Decimal | 小数 | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
 | AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
-| AttributeType.Lookup | Guid | ✓ |  |
-| AttributeType.ManagedProperty | 布尔 | ✓ |  |
+| AttributeType.Lookup | Guid | ✓ | |
+| AttributeType.ManagedProperty | 布尔 | ✓ | |
 | AttributeType.Memo | String | ✓ | ✓ |
 | AttributeType.Money | 小数 | ✓ | ✓ |
 | AttributeType.Owner | Guid | ✓ | |
@@ -350,4 +341,4 @@ Dynamics 链接的服务支持以下属性：
 > Dynamics 数据类型 AttributeType.CalendarRules 和 AttributeType.PartyList 不受支持。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

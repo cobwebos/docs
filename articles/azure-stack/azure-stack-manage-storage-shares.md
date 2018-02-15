@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: dce4252846732ca5161018103438df1f9ff6146d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 30e5265fbad66ab3c68bc5d5e90687b1a968167b
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>管理 Azure 堆栈的存储容量
 
@@ -130,7 +130,7 @@ VM 磁盘通过租户添加到容器，并且包括操作系统磁盘。 Vm 还�
 - 如果你缺少到资源组的权限，并能使用 PowerShell 来查询溢出数据的其他卷，使用这些资源组和容器以了解数据的总大小在迁移该数据之前迁移的所有者。  
 
 > [!IMPORTANT]
-> 容器的 blob 的迁移是脱机操作需要的 PowerShell 使用。 迁移完成之前，你要迁移的容器的所有 blob 保持脱机状态，并且不能使用。
+> 容器的 blob 的迁移是脱机操作需要的 PowerShell 使用。 迁移完成之前，你要迁移的容器的所有 blob 保持脱机状态，并且不能使用。 你还应该避免升级 Azure 堆栈，直到所有正在进行的迁移完成。
 
 #### <a name="to-migrate-containers-using-powershell"></a>若要迁移容器使用 PowerShell
 1. 确认你拥有[Azure PowerShell 安装和配置](http://azure.microsoft.com/documentation/articles/powershell-install-configure/)。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](http://go.microsoft.com/fwlink/?LinkId=394767)。

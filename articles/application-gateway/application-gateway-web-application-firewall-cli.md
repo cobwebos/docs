@@ -1,162 +1,188 @@
 ---
-title: "配置 Web 应用程序防火墙：Azure 应用程序网关 | Microsoft 文档"
-description: "本文将简要介绍如何在现有的或新的应用程序网关上开始使用 Web 应用程序防火墙。"
-documentationcenter: na
+title: "创建具有 Web 应用程序防火墙的应用程序网关 - Azure CLI | Microsoft Docs"
+description: "了解如何使用 Azure CLI 创建具有 Web 应用程序防火墙的应用程序网关。"
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
-ms.assetid: 670b9732-874b-43e6-843b-d2585c160982
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/20/2017
+ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: e60bfc89378569b154f4f973d1dceb683fa58482
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 611e9b27baeddf61531421d7ad2bed20188ad279
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="configure-a-web-application-firewall-on-a-new-or-existing-application-gateway-with-azure-cli"></a>使用 Azure CLI 在新的或现有应用程序网关上配置 Web 应用程序防火墙
+# <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-cli"></a>使用 Azure CLI 创建具有 Web 应用程序防火墙的应用程序网关
 
-> [!div class="op_single_selector"]
-> * [Azure 门户](application-gateway-web-application-firewall-portal.md)
-> * [PowerShell](application-gateway-web-application-firewall-powershell.md)
-> * [Azure CLI](application-gateway-web-application-firewall-cli.md)
+可以使用 Azure CLI 创建具有 [Web 应用程序防火墙](application-gateway-web-application-firewall-overview.md) (WAF) 且使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)的[应用程序网关](application-gateway-introduction.md)。 WAF 使用 [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 规则保护应用程序。 这些规则包括针对各种攻击（例如 SQL 注入、跨站点脚本攻击和会话劫持）的保护。 
 
-了解如何创建启用 Web 应用程序防火墙 (WAF) 的应用程序网关。 此外，了解如何将 WAF 添加到现有的应用程序网关。
+在本文中，学习如何：
 
-Azure 应用程序网关中的 WAF 可保护 Web 应用程序，使其免受常见的基于 Web 的攻击威胁，例如 SQL 注入、跨站点脚本攻击和会话劫持。
+> [!div class="checklist"]
+> * 设置网络
+> * 创建启用 WAF 的应用程序网关
+> * 创建虚拟机规模集
+> * 创建存储帐户和配置诊断
 
- 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关提供了许多应用程序传送控制器 (ADC) 功能：
+![Web 应用程序防火墙示例](./media/application-gateway-web-application-firewall-cli/scenario-waf.png)
 
- * HTTP 负载均衡 
- * 基于 Cookie 的会话关联 
- * 安全套接字层 (SSL) 卸载 
- * 自定义运行状况探测 
- * 对多站点功能的支持
- 
- 若要查找支持功能的完整列表，请参阅[应用程序网关概述](application-gateway-introduction.md)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-本文介绍如何[将 Web 应用程序防火墙添加到现有应用程序网关](#add-web-application-firewall-to-an-existing-application-gateway)。 此外，它还演示如何[创建使用 Web 应用程序防火墙的应用程序网关](#create-an-application-gateway-with-web-application-firewall)。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-![方案图像][scenario]
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
-## <a name="prerequisite-install-the-azure-cli-20"></a>先决条件：安装 Azure CLI 2.0
+## <a name="create-a-resource-group"></a>创建资源组
 
-若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](https://docs.microsoft.com/cli/azure/install-az-cli2)。
+资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group#az_group_create) 创建名为 *myResourceGroupAG* 的 Azure 资源组。
 
-## <a name="waf-configuration-differences"></a>WAF 配置差异
+```azurecli-interactive 
+az group create --name myResourceGroupAG --location eastus
+```
 
-如果已阅读[使用 Azure CLI 创建应用程序网关](application-gateway-create-gateway-cli.md)，就能了解创建应用程序网关时需要配置的 SKU 设置。 在应用程序网关上配置 SKU 时，WAF 会提供其他可定义的设置。 不需要对应用程序网关本身进行任何其他更改。
+## <a name="create-network-resources"></a>创建网络资源
 
-| **设置** | **详细信息**
-|---|---|
-|**SKU** |没有 WAF 的普通应用程序网关支持 Standard\_Small、Standard\_Medium 和 Standard\_Large 大小。 随着 WAF 的引入，还提供了其他两个 SKU，分别是 WAF\_Medium 和 WAF\_Large。 小型应用程序网关不支持 WAF。|
-|**模式** | 此设置为 WAF 模式。 允许的值为“检测”和“阻止”。 WAF 设置为“检测”模式时，所有威胁都会存储在日志文件中。 在“阻止”模式下，仍然会记录事件，但攻击者会从应用程序网关收到“403 未授权”响应。|
-
-## <a name="add-a-web-application-firewall-to-an-existing-application-gateway"></a>将 Web 应用程序防火墙添加到现有的应用程序网关
-
-以下命令会将现有的标准应用程序网关更改为启用 WAF 的应用程序网关：
+虚拟网络和子网用于提供与应用程序网关及其关联资源的网络连接。 分别使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 和 [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
 
 ```azurecli-interactive
-#!/bin/bash
+az network vnet create \
+  --name myVNet \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name myBackendSubnet \
+  --subnet-prefix 10.0.1.0/24
+az network vnet subnet create \
+  --name myAGSubnet \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --address-prefix 10.0.2.0/24
+az network public-ip create \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress
+```
 
+## <a name="create-an-application-gateway-with-a-waf"></a>创建具有 WAF 的应用程序网关
+
+可以使用 [az network application-gateway create](/cli/azure/application-gateway#az_application_gateway_create) 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给之前创建的 *myAGSubnet* 和 *myPublicIPSddress*。
+
+```azurecli-interactive
+az network application-gateway create \
+  --name myAppGateway \
+  --location eastus \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --subnet myAGSubnet \
+  --capacity 2 \
+  --sku WAF_Medium \
+  --http-settings-cookie-based-affinity Disabled \
+  --frontend-port 80 \
+  --http-settings-port 80 \
+  --http-settings-protocol Http \
+  --public-ip-address myAGPublicIPAddress
 az network application-gateway waf-config set \
   --enabled true \
-  --firewall-mode Prevention \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
+  --gateway-name myAppGateway \
+  --resource-group myResourceGroupAG \
+  --firewall-mode Detection \
+  --rule-set-version 3.0
 ```
 
-此命令使用 WAF 更新应用程序网关。 了解如何查看应用程序网关的日志，请参阅[应用程序网关诊断](application-gateway-diagnostics.md)。 由于 WAF 的安全特性，请定期查看日志，以了解 Web 应用程序的安全状态。
+创建应用程序网关可能需要几分钟时间。 创建应用程序网关后，可以看到它的这些新功能：
 
-## <a name="create-an-application-gateway-with-a-web-application-firewall"></a>创建具有 Web 应用程序防火墙的应用程序网关
+- *appGatewayBackendPool* - 应用程序网关必须至少具有一个后端地址池。
+- *appGatewayBackendHttpSettings* - 指定将端口 80 和 HTTP 协议用于通信。
+- *appGatewayHttpListener* - 与 *appGatewayBackendPool* 关联的默认侦听器。
+- *appGatewayFrontendIP* - 将 *myAGPublicIPAddress* 分配给 *appGatewayHttpListener*。
+- *rule1* - 与 *appGatewayHttpListener* 关联的默认路由规则。
 
-以下命令将创建具有 WAF 的应用程序网关：
+## <a name="create-a-virtual-machine-scale-set"></a>创建虚拟机规模集
+
+在此示例中，将创建虚拟机规模集，以便为应用程序网关的后端池提供两个服务器。 规模集中的虚拟机与 *myBackendSubnet* 子网相关联。 若要创建规模集，可以使用 [az vmss create](/cli/azure/vmss#az_vmss_create)。
 
 ```azurecli-interactive
-#!/bin/bash
-
-az network application-gateway create \
-  --name "AdatumAppGateway2" \
-  --location "eastus" \
-  --resource-group "AdatumAppGatewayRG" \
-  --vnet-name "AdatumAppGatewayVNET2" \
-  --vnet-address-prefix "10.0.0.0/16" \
-  --subnet "Appgatewaysubnet2" \
-  --subnet-address-prefix "10.0.0.0/28" \
- --servers "10.0.0.5 10.0.0.4" \
-  --capacity 2 
-  --sku "WAF_Medium" \
-  --http-settings-cookie-based-affinity "Enabled" \
-  --http-settings-protocol "Http" \
-  --frontend-port "80" \
-  --routing-rule-type "Basic" \
-  --http-settings-port "80" \
-  --public-ip-address "pip2" \
-  --public-ip-address-allocation "dynamic" \
-  --tags "cli[2] owner[administrator]"
+az vmss create \
+  --name myvmss \
+  --resource-group myResourceGroupAG \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --admin-password Azure123456! \
+  --instance-count 2 \
+  --vnet-name myVNet \
+  --subnet myBackendSubnet \
+  --vm-sku Standard_DS2 \
+  --upgrade-policy-mode Automatic \
+  --app-gateway myAppGateway \
+  --backend-pool-name appGatewayBackendPool
 ```
 
-> [!NOTE]
-> 为使用基本 WAF 配置创建的应用程序网关配置 CRS 3.0 以进行保护。
-
-## <a name="get-an-application-gateway-dns-name"></a>获取应用程序网关 DNS 名称
-
-创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不便。 若要确保用户能够访问应用程序网关，可以使用 CNAME 记录指向应用程序网关的公共终结点。 有关详细信息，请参阅[配置 Azure 云服务的自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 
-
-若要配置 CNAME 记录，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关和与之关联的 IP/DNS 名称的详细信息。 使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为在重新启动应用程序网关时可能会更改 VIP。
+### <a name="install-nginx"></a>安装 NGINX
 
 ```azurecli-interactive
-#!/bin/bash
+az vmss extension set \
+  --publisher Microsoft.Azure.Extensions \
+  --version 2.0 \
+  --name CustomScript \
+  --resource-group myResourceGroupAG \
+  --vmss-name myvmss \
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
+```
 
+## <a name="create-a-storage-account-and-configure-diagnostics"></a>创建存储帐户和配置诊断
+
+在本教程中，应用程序网关使用存储帐户来存储用于检测和防范目的的数据。 也可以使用 Log Analytics 或事件中心来记录数据。 
+
+### <a name="create-a-storage-account"></a>创建存储帐户
+
+使用 [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create) 创建名为 *myagstore1* 的存储帐户。
+
+```azurecli-interactive
+az storage account create \
+  --name myagstore1 \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --sku Standard_LRS \
+  --encryption blob
+```
+
+### <a name="configure-diagnostics"></a>配置诊断
+
+配置诊断以将数据记录到 ApplicationGatewayAccessLog、ApplicationGatewayPerformanceLog 和 ApplicationGatewayFirewallLog 日志中。 将 `<subscriptionId>` 替换为你的订阅标识符，然后使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az_monitor_diagnostic_settings_create) 配置诊断。
+
+```azurecli-interactive
+appgwid=$(az network application-gateway show --name myAppGateway --resource-group myResourceGroupAG --query id -o tsv)
+storeid=$(az storage account show --name myagstore1 --resource-group myResourceGroupAG --query id -o tsv)
+az monitor diagnostic-settings create --name appgwdiag --resource $appgwid \
+  --logs '[ { "category": "ApplicationGatewayAccessLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } }, { "category": "ApplicationGatewayPerformanceLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } }, { "category": "ApplicationGatewayFirewallLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } } ]' \
+  --storage-account $storeid
+```
+
+## <a name="test-the-application-gateway"></a>测试应用程序网关
+
+若要获取应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
+
+```azurepowershell-interactive
 az network public-ip show \
-  --name pip2 \
-  --resource-group "AdatumAppGatewayRG"
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress \
+  --query [ipAddress] \
+  --output tsv
 ```
 
-```
-{
-  "dnsSettings": {
-    "domainNameLabel": null,
-    "fqdn": "8c786058-96d4-4f3e-bb41-660860ceae4c.cloudapp.net",
-    "reverseFqdn": null
-  },
-  "etag": "W/\"3b0ac031-01f0-4860-b572-e3c25e0c57ad\"",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/publicIPAddresses/pip2",
-  "idleTimeoutInMinutes": 4,
-  "ipAddress": "40.121.167.250",
-  "ipConfiguration": {
-    "etag": null,
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/applicationGateways/AdatumAppGateway2/frontendIPConfigurations/appGatewayFrontendIP",
-    "name": null,
-    "privateIpAddress": null,
-    "privateIpAllocationMethod": null,
-    "provisioningState": null,
-    "publicIpAddress": null,
-    "resourceGroup": "AdatumAppGatewayRG",
-    "subnet": null
-  },
-  "location": "eastus",
-  "name": "pip2",
-  "provisioningState": "Succeeded",
-  "publicIpAddressVersion": "IPv4",
-  "publicIpAllocationMethod": "Dynamic",
-  "resourceGroup": "AdatumAppGatewayRG",
-  "resourceGuid": "3c30d310-c543-4e9d-9c72-bbacd7fe9b05",
-  "tags": {
-    "cli[2] owner[administrator]": ""
-  },
-  "type": "Microsoft.Network/publicIPAddresses"
-}
-```
+![应用程序网关中的测试基 URL](./media/application-gateway-web-application-firewall-cli/application-gateway-nginxtest.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何自定义 WAF 规则，请参阅[通过 Azure CLI 2.0 自定义 Web 应用程序防火墙规则](application-gateway-customize-waf-rules-cli.md)。
+本教程介绍了如何：
 
-[scenario]: ./media/application-gateway-web-application-firewall-cli/scenario.png
+> [!div class="checklist"]
+> * 设置网络
+> * 创建启用 WAF 的应用程序网关
+> * 创建虚拟机规模集
+> * 创建存储帐户和配置诊断
+
+若要了解有关应用程序网关及其关联资源的详细信息，请继续阅读操作指南文章。

@@ -1,4 +1,5 @@
 - name: 数据科学虚拟机文档
+  href: index.yml
   items: null
 - name: 概述
   expanded: true

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 01/23/2018
+ms.date: 01/31/2018
 ms.author: genemi
-ms.openlocfilehash: 6294216568e1d4c50ef6e6b6d2348a2a221406b0
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: d4179c590ef418633158dd5a5dbadbc8c20bcde7
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>使用适用于 Azure SQL 数据库的虚拟网络服务终结点和规则
 
@@ -28,9 +28,6 @@ ms.lasthandoff: 01/24/2018
 
 若要创建虚拟网络规则，首先必须具有可供规则引用的[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]。
 
-
-> [!NOTE]
-> 对于 Azure SQL 数据库，以预览版形式向 Azure 公有云的所有区域提供此功能。
 
 #### <a name="how-to-create-a-virtual-network-rule"></a>如何创建虚拟网络规则
 

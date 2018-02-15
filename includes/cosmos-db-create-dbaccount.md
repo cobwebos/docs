@@ -17,7 +17,7 @@
 
     然后单击“创建”。
 
-    ![Azure Cosmos DB 的“新建帐户”边栏选项卡](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
+    ![Azure Cosmos DB 的“新建帐户”页](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
 
 4. 创建帐户需要几分钟时间。 在创建帐户过程中，门户会在右侧显示“部署 Azure Cosmos DB”磁贴，可能需要向右滚动仪表板才能看到此磁贴。 另外，还会在屏幕顶部附近显示进度条。 你可以查看任一区域来了解进度。 
 

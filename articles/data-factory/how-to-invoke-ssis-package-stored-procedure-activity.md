@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 84596041284139b8243287ba6ad719c7c8f7b47b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7d245c2222b1ad9ba71c6f5dbdde66e56e1aa6ab
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
 本文介绍如何使用存储过程活动从 Azure 数据工厂管道中调用 SSIS 包。 
@@ -97,8 +97,8 @@ ms.lasthandoff: 02/01/2018
     1. 对于“存储过程名称”字段，输入 `sp_executesql`。 
     2. 在“存储过程参数”部分中单击“+ 新建”。 
     3. 对于参数的“名称”，输入“stmt”。 
-    4. 对于参数的“类型”，输入“字符串”。 
-    5. 对于参数的“值”，输入以下 SQL 查询。
+    4. 输入“字符串”作为参数**类型**。 
+    5. 输入以下 SQL 查询作为参数的**值**：
 
         在 SQL 查询中，指定 **folder_name**、**project_name** 和 **package_name** 参数的右侧值。 
 
@@ -133,7 +133,9 @@ ms.lasthandoff: 02/01/2018
 
     ![验证包执行](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
-也可以为管道创建一个计划触发器，以便按计划（每小时、每天等）运行管道。 有关示例，请参阅[创建数据工厂 - 数据工厂 UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)。
+
+> [!NOTE]
+> 也可以为管道创建一个计划触发器，以便按计划（每小时、每天等）运行管道。 有关示例，请参阅[创建数据工厂 - 数据工厂 UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 在此部分中，将使用 Azure PowerShell 创建数据工厂管道，管道中包含可调用 SSIS 包的存储过程活动。 

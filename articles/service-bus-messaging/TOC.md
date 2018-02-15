@@ -4,7 +4,7 @@
 ## [服务总线体系结构](service-bus-architecture.md)
 ## [常见问题](service-bus-faq.md)
 
-# 入门
+# 快速入门
 ## [创建命名空间](service-bus-create-namespace-portal.md)
 ## 使用队列
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)

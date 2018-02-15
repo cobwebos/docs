@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: c283fb4d1a390de88b425ce51a312b5404503f0d
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: a43d2ea10bfd6de2f8177283821f7aad59e9f610
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>在门户中使用 Azure 网络观察程序管理数据包捕获
 
@@ -80,6 +80,7 @@ ms.lasthandoff: 01/19/2018
 
 **捕获配置**
 
+- 本地文件路径 - 保存数据包捕获的虚拟机上的本地路径（仅在选择“[file]”时有效）。 必须指定有效的路径。 如果使用 Linux 虚拟机，路径必须以 /var/captures 开头。
 - **存储帐户** - 确定是否将数据包捕获保存在存储帐户中。
 - **文件** - 确定是否将数据包捕获保存在虚拟机本地。
 - **存储帐户** - 用于保存数据包捕获的选定存储帐户。 默认位置为 https://{storage account name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription id}/resourcegroups/{resource group name}/providers/microsoft.compute/virtualmachines/{virtual machine name}/{YY}/{MM}/{DD}/packetcapture_{HH}_{MM}_{SS}_{XXX}.cap。 （仅当选择了“存储”时才启用此选项）

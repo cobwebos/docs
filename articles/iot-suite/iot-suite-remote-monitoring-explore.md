@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: e57ad43cc9a82e3944e93c6500ad5740818d10cc
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: d8943db3ec6ef5875b2b884d42ea25dbb44a30e5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>探索远程监控预配置解决方案的功能
 
@@ -31,6 +31,10 @@ ms.lasthandoff: 12/13/2017
 > * 响应警报
 > * 更新设备中的固件
 > * 组织资产
+
+以下视频展示了远程监视解决方案的演练：
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-28-An-introduction-to-Azure-IoT-through-the-new-Remote-Monitoring-Preconfigured-Solution/Player]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -73,7 +77,7 @@ Contoso 使用不同类型的智能设备。 这些设备在公司中发挥不�
 
 Contoso 的操作员知道哪些阈值确定了设备是否正常工作。 例如，如果报告的压力大于 250 PSI，则表示冷却器的工作不正常。 下表显示了 Contoso 针对每种设备类型定义的基于阈值的规则：
 
-| 规则名称 | 说明 | 阈值 | 严重性 | 受影响的设备 |
+| 规则名称 | 说明 | 阈值 | Severity | 受影响的设备 |
 | --------- | ----------- | --------- | -------- | ---------------- |
 | 冷却器压力过高 | 如果冷却器超过正常压力级别，则发出警报   |P>250 psi       | 严重 | 冷却器            |
 | 原型制作设备温度过高  | 如果原型制作设备超过正常温度级别，则发出警报  |T>80&deg; F |严重 | 原型制作设备 |

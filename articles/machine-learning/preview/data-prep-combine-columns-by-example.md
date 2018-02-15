@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: dc3870e81edd47a9932db86d347290451c4f1eb8
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 528d7ff5f74948fd1ae7b829d4b2fc38fa2f1109
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="combine-columns-by-example-transformation"></a>“按示例合并列”转换
 此转换允许用户通过组合多个列的值来添加一个新列。 用户可以指定分隔符或提供组合值的示例来执行此转换。 在用户提供组合示例时，将由“按示例派生列”转换中使用的同一个“按示例”引擎来处理转换。
@@ -37,6 +37,10 @@ ms.lasthandoff: 12/18/2017
 选择“合并列依据”下的“示例”，使用户能够提供合并值的示例。 若要提升行作为示例，则双击网格中的行。 在文本框中键入针对提升行的预期输出。 离开“分隔符”文本框，以在数据网格中预览结果。 按“确定”提交转换。 
 
 用户可以通过单击转换编辑器中的链接在“基本模式”和“高级模式”之间切换。
+
+### <a name="transform-editor-send-feedback"></a>转换编辑器：发送反馈
+
+单击“发送反馈”链接，打开“反馈”对话框，其中注释框已预填充所提供的示例用户。 用户应查看注释框中的内容并提供更多详细信息，帮助我们了解问题。 如果用户不希望与 Microsoft 共享数据，则应在单击“发送反馈”按钮之前删除预填充的示例数据。 
 
 ### <a name="editing-existing-transformation"></a>编辑现有的转换
 

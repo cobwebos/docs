@@ -15,24 +15,25 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 43df04d6478e44c82c88b17d916cfc9fe4afc03e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 525df7ddb8cd569bfd361da10d14ae08c1a721e0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure 逻辑应用的架构更新 - 2016 年 6 月 1 日
 
-适用于 Azure 逻辑应用的这个新架构和 API 版本包含多项关键改进，使逻辑应用更可靠，更易于使用：
+适用于 Azure 逻辑应用的[更新架构](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json)和 API 版本包含多项关键改进，使逻辑应用更可靠、更易于使用：
 
 * [作用域](#scopes)允许用户以操作集合方式将操作组合或嵌套在一起。
 * [条件和循环](#conditions-loops)现在是一流操作。
 * 针对 `runAfter` 属性运行操作时排序更精确，替换了 `dependsOn`
 
-要将逻辑应用从 2015 年 8 月 1 日的预览版架构升级到 2016 年 6 月 1 日的架构，请[查看升级部分](##upgrade-your-schema)。
+要将逻辑应用从 2015 年 8 月 1 日的预览版架构升级到 2016 年 6 月 1 日的架构，请[查看升级部分](#upgrade-your-schema)。
 
 <a name="scopes"></a>
-## <a name="scopes"></a>范围
+
+## <a name="scopes"></a>作用域
 
 此架构包含作用域，方便用户将操作组合或嵌套到一起。 例如，一个条件可以包含另一个条件。 请详细了解[作用域语法](../logic-apps/logic-apps-loops-and-scopes.md)，或者查看下面这个基本的作用域示例：
 
@@ -57,6 +58,7 @@ ms.lasthandoff: 10/11/2017
 ```
 
 <a name="conditions-loops"></a>
+
 ## <a name="conditions-and-loops-changes"></a>条件和循环更改
 
 在以前的架构版本中，条件和循环是与单个操作关联的参数。 此架构提升了该限制，因此条件和循环现在显示为操作类型。 请详细了解[循环和作用域](../logic-apps/logic-apps-loops-and-scopes.md)，或者查看下面这个基本的条件操作示例：
@@ -86,6 +88,7 @@ ms.lasthandoff: 10/11/2017
 ```
 
 <a name="run-after"></a>
+
 ## <a name="runafter-property"></a>“runAfter”属性
 
 `runAfter` 属性替换了 `dependsOn`，根据以前操作的状态为操作指定运行顺序时更精确。
@@ -104,7 +107,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="upgrade-your-schema"></a>升级架构
 
-升级到新的架构只需几个步骤。 升级过程包括运行升级脚本、另存为新的逻辑应用，以及在可能情况下根据需要覆盖旧逻辑应用。
+若要升级到[最新架构](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json)，仅需要执行几个步骤。 升级过程包括运行升级脚本、另存为新的逻辑应用，以及在可能情况下根据需要覆盖旧逻辑应用。
 
 1. 在 Azure 门户中打开逻辑应用。
 
