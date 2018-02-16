@@ -25,7 +25,7 @@ ms.lasthandoff: 02/01/2018
 - 在 [Windows](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-windows) 或 [Linux](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux) 中在模拟设备上部署 Azure IoT Edge
 - [开发 C# IoT Edge 模块并将其部署到模拟设备](https://docs.microsoft.com/azure/iot-edge/tutorial-csharp-module)
 
-下面是一个清单，其中显示了在完成前面的教程后应会得到的项目：
+下面是一个清单，其中显示了在完成前面的教程后应该会得到的项目：
 
 - [Contact.java](https://code.visualstudio.com/) 
 - [适用于 Visual Studio Code 的 Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
