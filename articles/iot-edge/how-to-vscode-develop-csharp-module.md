@@ -75,7 +75,7 @@ ms.lasthandoff: 02/01/2018
 
 5. 选择 **Edge: Create deployment for Edge device**，并选择用于创建新部署的 IoT Edge 设备 ID。 或者，可以在设备列表中右键单击 IoT Edge 设备 ID，并选择“为 Edge 设备创建部署”。 
 
-6. 应会看到，IoT Edge 已开始使用模拟传感器在 Docker 资源管理器中运行。 在 Docker 资源管理器中右键单击容器。 可以监视每个模块的 Docker 日志。 可在设备列表中查看模块列表。
+6. 应该会看到，IoT Edge 已开始使用模拟传感器在 Docker 资源管理器中运行。 在 Docker 资源管理器中右键单击容器。 可以监视每个模块的 Docker 日志。 可在设备列表中查看模块列表。
 
     ![模块列表的屏幕截图](./media/how-to-vscode-develop-csharp-module/module-list.png)
 
