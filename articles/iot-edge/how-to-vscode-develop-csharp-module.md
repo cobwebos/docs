@@ -27,7 +27,7 @@ ms.lasthandoff: 02/01/2018
 
 下面是一个清单，其中显示了在完成前面的教程后应会得到的项目：
 
-- [Contact.java](https://code.visualstudio.com/) 
+- [Visual Studio Code](https://code.visualstudio.com/) 
 - [适用于 Visual Studio Code 的 Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
 - [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
 - [Docker](https://docs.docker.com/engine/installation/)
