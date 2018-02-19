@@ -27,7 +27,7 @@ ms.lasthandoff: 02/01/2018
 
 下面是一个清单，其中显示了在完成前面的教程后应该会得到的项目：
 
-- [Contact.java](https://code.visualstudio.com/) 
+- [Visual Studio Code](https://code.visualstudio.com/) 
 - [适用于 Visual Studio Code 的 Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
 - [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
 - [Docker](https://docs.docker.com/engine/installation/)
@@ -75,7 +75,7 @@ ms.lasthandoff: 02/01/2018
 
 5. 选择 **Edge: Create deployment for Edge device**，并选择用于创建新部署的 IoT Edge 设备 ID。 或者，可以在设备列表中右键单击 IoT Edge 设备 ID，并选择“为 Edge 设备创建部署”。 
 
-6. 应会看到，IoT Edge 已开始使用模拟传感器在 Docker 资源管理器中运行。 在 Docker 资源管理器中右键单击容器。 可以监视每个模块的 Docker 日志。 可在设备列表中查看模块列表。
+6. 应该会看到，IoT Edge 已开始使用模拟传感器在 Docker 资源管理器中运行。 在 Docker 资源管理器中右键单击容器。 可以监视每个模块的 Docker 日志。 可在设备列表中查看模块列表。
 
     ![模块列表的屏幕截图](./media/how-to-vscode-develop-csharp-module/module-list.png)
 
