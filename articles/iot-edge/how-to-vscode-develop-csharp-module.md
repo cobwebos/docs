@@ -27,6 +27,7 @@ ms.lasthandoff: 02/01/2018
 
 下面是一个清单，其中显示了在完成前面的教程后应会得到的项目：
 
+
 - [Visual Studio Code](https://code.visualstudio.com/) 
 - [适用于 Visual Studio Code 的 Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
 - [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
@@ -35,7 +36,8 @@ ms.lasthandoff: 02/01/2018
 - [Python 2.7](https://www.python.org/downloads/)
 - [IoT Edge 控制脚本](https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl)
 - AzureIoTEdgeModule 模板 (`dotnet new -i Microsoft.Azure.IoT.Edge.Module`)
-- 包含至少一个 IoT Edge 设备的活动 IoT 中心
+
+- 包含至少一个 IoT Edge 设备的有效 IoT 中心
 
 另外，最好是安装 [Docker support for VS Code](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) 以便更好地管理模块映像和容器。
 
