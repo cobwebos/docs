@@ -7,13 +7,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 199f3f98f71dcc9eb5f7f3338547870f215d3d64
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: d492147b8855d8f1ef64d3421c62e11a1951eadd
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Blob 存储复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ ms.lasthandoff: 01/29/2018
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureStorage**。 |是 |
-| connectionString | 为 connectionString 属性指定连接到存储所需的信息。 将此字段标记为 SecureString。 |是 |
+| connectionString | 为 connectionString 属性指定连接到存储所需的信息。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 **示例：**
@@ -95,7 +95,7 @@ ms.lasthandoff: 01/29/2018
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureStorage**。 |是 |
-| sasUri | 指定存储资源（例如 Blob、容器或表）的共享访问签名 URI。 将此字段标记为 SecureString。 |是 |
+| sasUri | 指定存储资源（例如 Blob、容器或表）的共享访问签名 URI。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 **示例：**

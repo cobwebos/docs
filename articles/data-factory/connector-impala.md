@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 06b60968931d18e7c7219d83801a5433631ed470
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e1f745fc70395f06d2eb3d98644d54c314a0ef26
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Impala 复制数据
 
@@ -52,7 +52,7 @@ Impala 链接服务支持以下属性。
 | 端口 | Impala 服务器用来侦听客户端连接的 TCP 端口。 默认值为 21050。  | 否 |
 | authenticationType | 可使用的身份验证类型。 <br/>允许的值为：**Anonymous**、**SASLUsername** 和 **UsernameAndPassword**。 | 是 |
 | username | 用于访问 Impala 服务器的用户名。 使用 SASLUsername 时，默认值是匿名的。  | 否 |
-| password | 使用 UsernameAndPassword 时用户名所对应的密码。 可以将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将密码存储在 Azure Key Vault 中，并让复制活动在执行数据复制时从该处拉取密码。 若要了解详细信息，请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 否 |
+| password | 使用 UsernameAndPassword 时用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | enableSsl | 指定是否使用 SSL 加密到服务器的连接。 默认值为 **false**。  | 否 |
 | trustedCertPath | 包含受信任 CA 证书（通过 SSL 进行连接时用于验证服务器）的 .pem 文件的完整路径。 仅当在自承载集成运行时上使用 SSL 时，才能设置此属性。 默认值是随集成运行时一起安装的 cacerts.pem 文件。  | 否 |
 | useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 默认值为 **false**。  | 否 |
@@ -87,7 +87,7 @@ Impala 链接服务支持以下属性。
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Impala 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Impala 数据集支持的属性列表。
 
 要从 Impala 复制数据，请将数据集的 type 属性设置为“ImpalaObject”。 此类型的数据集中没有任何其他特定于类型的属性。
 
@@ -112,7 +112,7 @@ Impala 链接服务支持以下属性。
 
 ### <a name="impala-as-a-source-type"></a>以 Impala 作为源类型
 
-要从 Impala 复制数据，请将复制活动中的源类型设置为“ImpalaSource”。 复制活动**源**部分支持以下属性。
+要从 Impala 复制数据，请将复制活动中的源类型设置为“ImpalaSource”。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: a9f50a1762f003727e62b43b6e81e62b66878f2f
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: cf86325971b607c7e1ec4b026f7df274e14c5e52
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="create-a-function-triggered-by-a-generic-webhook"></a>创建由通用 webhook 触发的函数
 
@@ -32,7 +32,7 @@ Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 
 
 完成本教程：
 
-+ 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
++ 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
@@ -128,7 +128,7 @@ Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 
         if (activityLog == null || !string.Equals((string)activityLog["resourceType"], 
             "Microsoft.Resources/subscriptions/resourcegroups"))
         {
-            log.Error("An error occured");
+            log.Error("An error occurred");
             return req.CreateResponse(HttpStatusCode.BadRequest, new
             {
                 error = "Unexpected message payload or wrong alert received."

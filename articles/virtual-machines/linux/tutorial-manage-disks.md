@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 16cc0c5e38eb273fc2504a39497d00c76d666316
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 87b410fdcd5901499e809f8d2b9a7b8788134cfc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-azure-disks-with-the-azure-cli"></a>使用 Azure CLI 管理 Azure 磁盘
 
@@ -108,7 +108,7 @@ Azure 提供两种类型的磁盘。
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-使用 [az vm create]( /cli/azure/vm#create) 命令创建 VM。 `--datadisk-sizes-gb` 参数用于指定应创建并附加到虚拟机的附加磁盘。 若要创建并附加多个磁盘，请使用空格分隔的磁盘大小值列表。 在以下示例中，创建的 VM 具有两个均为 128 GB 的数据磁盘。 因为磁盘大小为 128 GB，所以这两个磁盘都配置为 P10，每个磁盘最多提供 500 IOPS。
+使用 [az vm create]( /cli/azure/vm#az_vm_create) 命令创建 VM。 `--datadisk-sizes-gb` 参数用于指定应创建并附加到虚拟机的附加磁盘。 若要创建并附加多个磁盘，请使用空格分隔的磁盘大小值列表。 在以下示例中，创建的 VM 具有两个均为 128 GB 的数据磁盘。 因为磁盘大小为 128 GB，所以这两个磁盘都配置为 P10，每个磁盘最多提供 500 IOPS。
 
 ```azurecli-interactive 
 az vm create \
@@ -122,7 +122,7 @@ az vm create \
 
 ### <a name="attach-disk-to-existing-vm"></a>将磁盘附加到现有 VM
 
-要创建新磁盘并将其附加到现有虚拟机，请使用 [az vm disk attach](/cli/azure/vm/disk#attach) 命令。 以下示例创建大小为 128 GB 的高级磁盘，并将其附加到上一步创建的 VM 中。
+要创建新磁盘并将其附加到现有虚拟机，请使用 [az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach) 命令。 以下示例创建大小为 128 GB 的高级磁盘，并将其附加到上一步创建的 VM 中。
 
 ```azurecli-interactive 
 az vm disk attach --vm-name myVM --resource-group myResourceGroupDisk --disk myDataDisk --size-gb 128 --sku Premium_LRS --new 
@@ -207,13 +207,13 @@ exit
 az disk list -g myResourceGroupDisk --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
 ```
 
-此外，必须解除分配 VM。 使用 [az vm deallocate]( /cli/azure/vm#deallocate) 命令停止和解除分配 VM。
+此外，必须解除分配 VM。 使用 [az vm deallocate]( /cli/azure/vm#az_vm_deallocate) 命令停止和解除分配 VM。
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupDisk --name myVM
 ```
 
-使用 [az disk update](/cli/azure/vm/disk#update) 命令调整磁盘大小。 本示例将名为“myDataDisk”的磁盘的大小调整为 1 TB。
+使用 [az disk update](/cli/azure/vm/disk#az_vm_disk_update) 命令调整磁盘大小。 本示例将名为“myDataDisk”的磁盘的大小调整为 1 TB。
 
 ```azurecli-interactive 
 az disk update --name myDataDisk --resource-group myResourceGroupDisk --size-gb 1023

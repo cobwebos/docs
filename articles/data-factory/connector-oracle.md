@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: d6b96bc40325d398c91e293ec6ca8f8cc2993e58
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: dfbc6e1d8bdf20cc7a0a4b1571882ba84487dddc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +58,7 @@ Oracle 链接服务支持以下属性。
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **Oracle**。 | 是 |
-| connectionString | 指定连接到 Oracle 数据库实例所需的信息。 将此字段标记为 SecureString。<br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称**来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | 是 |
+| connectionString | 指定连接到 Oracle 数据库实例所需的信息。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。<br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称**来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 **示例：**
@@ -84,7 +84,7 @@ Oracle 链接服务支持以下属性。
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Oracle 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Oracle 数据集支持的属性列表。
 
 若要从/向 OData 复制数据，请将数据集的 type 属性设置为“OracleTable”。 支持以下属性。
 
@@ -118,7 +118,7 @@ Oracle 链接服务支持以下属性。
 
 ### <a name="oracle-as-a-source-type"></a>以 Oracle 作为源类型
 
-要从 Oracle 复制数据，请将复制活动中的源类型设置为“OracleSource”。 复制活动**源**部分支持以下属性。
+要从 Oracle 复制数据，请将复制活动中的源类型设置为“OracleSource”。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -161,7 +161,7 @@ Oracle 链接服务支持以下属性。
 
 ### <a name="oracle-as-a-sink-type"></a>以 Oracle 作为接收器类型
 
-要向 Oracle 复制数据，请将复制活动中的接收器类型设置为“OracleSink”。 复制活动接收器部分中支持以下属性。
+要向 Oracle 复制数据，请将复制活动中的接收器类型设置为“OracleSink”。 复制活动 **sink** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

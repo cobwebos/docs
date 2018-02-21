@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2017
 ms.author: v-livech
-ms.openlocfilehash: 9eae17b304f8a987b44ebed8906dabd8ff3a36a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4566e9b236049c336858e9149cca80066b029775
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
 
@@ -67,7 +67,7 @@ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoi
 
 在此详细的演练中，我们创建所需的先决条件，即先创建文件存储共享，然后通过 SMB 将其装载到 Linux VM 上。
 
-1. 使用 [az group create](/cli/azure/group#create) 创建资源组，以便保存文件共享。
+1. 使用 [az group create](/cli/azure/group#az_group_create) 创建资源组，以便保存文件共享。
 
     通过在“美国西部”位置创建名为 `myResourceGroup` 的资源组，请使用以下示例：
 
@@ -75,7 +75,7 @@ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoi
     az group create --name myResourceGroup --location westus
     ```
 
-2. 使用 [az storage account create](/cli/azure/storage/account#create) 创建 Azure 存储帐户，用于存储实际文件。
+2. 使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 创建 Azure 存储帐户，用于存储实际文件。
 
     若要通过 Standard_LRS 存储 SKU 创建名为 mystorageaccount 的存储帐户，请使用以下示例：
 
@@ -90,7 +90,7 @@ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoi
 
     创建存储帐户时，帐户密钥是成对创建的，这样是为了不中断任何服务就可轮换密钥。 轮换到密钥对中的第二个密钥后，将创建新的密钥对。 新的存储帐户密钥始终成对创建，可确保始终至少有一个未使用的存储帐户密钥可以轮换到。
 
-    使用 [az storage account keys list](/cli/azure/storage/account/keys#list) 查看存储帐户密钥。 名为 `mystorageaccount` 的存储帐户的密钥列在以下示例中：
+    使用 [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) 查看存储帐户密钥。 名为 `mystorageaccount` 的存储帐户的密钥列在以下示例中：
 
     ```azurecli
     az storage account keys list --resource-group myResourceGroup \
@@ -107,7 +107,7 @@ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoi
 
 4. 创建文件存储共享。
 
-    使用 [az storage share create](/cli/azure/storage/share#create) 创建的文件存储共享包含 SMB 共享。 配额始终以千兆字节 (GB) 表示。 从前面的 `az storage account keys list` 命令传入其中一个密钥。 使用以下示例创建名为 mystorageshare 的共享，配额为 10 GB：
+    使用 [az storage share create](/cli/azure/storage/share#az_storage_share_create) 创建的文件存储共享包含 SMB 共享。 配额始终以千兆字节 (GB) 表示。 从前面的 `az storage account keys list` 命令传入其中一个密钥。 使用以下示例创建名为 mystorageshare 的共享，配额为 10 GB：
 
     ```azurecli
     az storage share create --name mystorageshare \
@@ -137,7 +137,7 @@ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mymountpoi
     重新启动 Linux VM 后，已装载的 SMB 共享会在关闭过程中卸载。 若要在启动时重新装载 SMB 共享，请向 Linux /etc/fstab 添加一行。 Linux 使用 fstab 文件列出在启动过程中需要装载的文件系统。 添加 SMB 共享可确保文件存储共享是 Linux VM 的永久装载文件系统。 使用 cloud-init 可以将文件存储 SMB 共享添加到新的 VM。
 
     ```bash
-    //myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+    //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountdirectory cifs vers=3.0,username=mystorageaccount,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
     ```
 
 ## <a name="next-steps"></a>后续步骤

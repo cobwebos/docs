@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2c2318d9a5f72800f9cfbd430dca448fd1e5746f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e0d5bd57a40fca837ead42e691e1fa0c802dc013
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>部署 Azure 容器服务 (AKS) 群集
 
@@ -41,10 +41,10 @@ az provider register -n Microsoft.ContainerService
 
 ## <a name="create-kubernetes-cluster"></a>创建 Kubernetes 群集
 
-下面的示例在 `myResourceGroup` 资源组中创建 `myK8sCluster` 群集。 此资源组是在[上一教程][aks-tutorial-prepare-acr]中创建的。
+下面的示例在 `myResourceGroup` 资源组中创建 `myAKSCluster` 群集。 此资源组是在[上一教程][aks-tutorial-prepare-acr]中创建的。
 
 ```azurecli
-az aks create --resource-group myResourceGroup --name myK8sCluster --node-count 1 --generate-ssh-keys
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
 几分钟后，部署完成并返回有关 AKS 部署的 JSON 格式信息。
@@ -64,7 +64,7 @@ az aks install-cli
 若要配置 kubectl 以连接到 Kubernetes 群集，请运行以下命令：
 
 ```azurecli
-az aks get-credentials --resource-group=myResourceGroup --name=myK8sCluster
+az aks get-credentials --resource-group=myResourceGroup --name=myAKSCluster
 ```
 
 若要验证与群集之间的连接，请运行 [kubectl get nodes][kubectl-get] 命令。
@@ -77,7 +77,7 @@ kubectl get nodes
 
 ```
 NAME                          STATUS    AGE       VERSION
-k8s-myk8scluster-36346190-0   Ready     49m       v1.7.7
+k8s-myAKSCluster-36346190-0   Ready     49m       v1.7.7
 ```
 
 教程完成时，AKS 群集已准备就绪，可用于工作负荷。 在后续教程中，一个多容器应用程序会部署到此群集、进行扩大、更新以及受到监视。

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 474a2d66cc46fcac35b145633e802d72881b10d8
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 9f8c9a32be9b889ced4fdc7065acd09e6700afd5
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>使用 Docker 和 Compose 在 Azure 中定义和运行多容器应用程序入门
 借助 [Compose](http://github.com/docker/compose)，可以使用简单的文本文件定义由多个 Docker 容器组成的应用程序。 然后使用单个命令启动应用程序，该命令会执行部署定义的环境所需的所有操作。 作为示例，本文说明如何在 Ubuntu VM 上使用后端 MariaDB SQL 数据库快速设置 WordPress 博客。 也可以使用 Compose 设置更复杂的应用程序。
@@ -32,15 +32,15 @@ ms.lasthandoff: 12/19/2017
 
 
 ### <a name="create-docker-host-with-azure-cli-20"></a>使用 Azure CLI 2.0 创建 Docker 主机
-安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
+安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/#az_login) 登录到 Azure 帐户。
 
-首先，使用 [az group create](/cli/azure/group#create) 为 Docker 环境创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+首先，使用 [az group create](/cli/azure/group#az_group_create) 为 Docker 环境创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-接下来，使用 [az group deployment create](/cli/azure/group/deployment#create) 部署 VM，其中包含 [GitHub 中此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)中的 Azure Docker VM 扩展。 出现提示时，为 newStorageAccountName、adminUsername、adminPassword 和 dnsNameForPublicIP 提供自己的唯一值：
+接下来，使用 [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) 部署 VM，其中包含 [GitHub 中此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)中的 Azure Docker VM 扩展。 出现提示时，为 newStorageAccountName、adminUsername、adminPassword 和 dnsNameForPublicIP 提供自己的唯一值：
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -51,7 +51,7 @@ az group deployment create --resource-group myResourceGroup \
 
 
 ## <a name="verify-that-compose-is-installed"></a>确认已安装 Compose
-若要查看 VM 的详细信息（包括 DNS 名称），请使用 [az vm show](/cli/azure/vm#show)：
+若要查看 VM 的详细信息（包括 DNS 名称），请使用 [az vm show](/cli/azure/vm#az_vm_show)：
 
 ```azurecli
 az vm show \

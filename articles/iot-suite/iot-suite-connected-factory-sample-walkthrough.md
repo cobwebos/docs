@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 88fe50460baf8b7180da113b33a03120f39cf44f
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 10497097bfda36a0a8a2b6b677ac26394217d8b4
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>已连接好的工厂预配置解决方案演练
 
@@ -75,7 +75,7 @@ MES 通过 OPC UA 监视生产线中的每个工作站来检测工作站状态�
 
 ## <a name="gateway-opc-publisher-module"></a>网关 OPC 发布服务器模块
 
-OPC 发布服务器模块连接到工作站 OPC UA 服务器并订阅要发布的 OPC 节点。 该模块将节点数据转换为 JSON 格式，对其进行加密，并将其作为 OPC UA 发布/订阅消息发送到 IoT 中心。
+OPC 发布服务器模块连接到工作站 OPC UA 服务器并订阅要发布的 OPC 节点。 该模块将节点数据转换为 JSON 格式，对其进行加密，然后将其作为 OPC UA 发布/订阅消息发送到 IoT 中心。
 
 OPC 发布服务器模块仅需要出站 https 端口 (443) 并且可以与现有企业基础结构一起工作。
 
@@ -233,7 +233,7 @@ TSI 使用一个搜索跨度（Time.From、Time.To）对节点数据进行查询
 
 * [azureiotsuite.com 站点权限][lnk-permissions]
 * [在 Windows 或 Linux 上为连接工厂预配置解决方案部署网关](iot-suite-connected-factory-gateway-deployment.md)
-* [OPC 发布服务器引用实现](iot-suite-connected-factory-publisher.md)。
+* [OPC 发布服务器引用实现](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)。
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 

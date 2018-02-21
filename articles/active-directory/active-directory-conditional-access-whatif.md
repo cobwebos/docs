@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/21/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: de6b3dcd77132154e583d7333983d6745c4aa3bd
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 19ebb30164eee8e03a3cd8f18b6d575c6eee5438
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-active-directory-conditional-access-what-if-tool---preview"></a>Azure Active Directory 条件访问模拟工具 - 预览版
 
@@ -78,14 +78,14 @@ ms.lasthandoff: 01/18/2018
 
 ### <a name="ip-address"></a>IP 地址
 
-IP 地址为单个 IPv4 地址，用于模拟[位置条件](active-directory-conditional-access-azure-portal.md#locations)。 地址表示用户用于登录的设备的面向 Internet 的地址。 可以通过导航到 [What is my IP address](https://whatismyipaddress.com)（我的 IP 地址是什么）等来验证设备的 IP 地址。    
+IP 地址为单个 IPv4 地址，用于模拟[位置条件](active-directory-conditional-access-locations.md)。 地址表示用户用于登录的设备的面向 Internet 的地址。 可以通过导航到 [What is my IP address](https://whatismyipaddress.com)（我的 IP 地址是什么）等来验证设备的 IP 地址。    
 
 ### <a name="device-platforms"></a>设备平台
 
-此设置模拟[设备平台条件](active-directory-conditional-access-azure-portal.md#device-platforms)及表示所有平台（包括不受支持的平台）的等效项。 
+此设置模拟[设备平台条件](active-directory-conditional-access-conditions.md#device-platforms)及表示所有平台（包括不受支持的平台）的等效项。 
 ### <a name="client-apps"></a>客户端应用
 
-此设置模拟[客户端应用条件](active-directory-conditional-access-azure-portal.md#client-apps)。
+此设置模拟[客户端应用条件](active-directory-conditional-access-conditions.md#client-apps)。
 默认情况下，此设置会导致对同时选中“浏览器”和“移动应用和桌面客户端”或其中之一的所有策略进行评估。 此外，此设置还检测强制实施“Exchange ActiveSync (EAS)”的策略。 可以通过选择以下内容缩小此设置的范围：
 
 - 浏览器：评估至少选择了“浏览器”的所有策略。 
@@ -95,7 +95,7 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](active-directory-con
 
 ### <a name="sign-in-risk"></a>登录风险
 
-此设置模拟[登录风险条件](active-directory-conditional-access-azure-portal.md#sign-in-risk)。   
+此设置模拟[登录风险条件](active-directory-conditional-access-conditions.md#sign-in-risk)。   
 
 
 ## <a name="evaluation"></a>计算 

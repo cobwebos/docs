@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5fd9a1890c1940cdd4e79cc32e0b3984edd043e8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d82232d590bcc5c578ebe8ed7c85d25aebcfe097
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="upgrade-kubernetes-in-azure-container-service-aks"></a>在 Azure 容器服务 (AKS) 中升级 Kubernetes
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 12/11/2017
 在升级群集之前，请使用 `az aks get-versions` 命令检查哪些 Kubernetes 版本可用于升级。
 
 ```azurecli-interactive
-az aks get-versions --name myK8sCluster --resource-group myResourceGroup --output table
+az aks get-versions --name myAKSCluster --resource-group myResourceGroup --output table
 ```
 
 这里可以看到，当前节点版本为 `1.7.7`，且版本 `1.7.9`、`1.8.1` 和 `1.8.2` 可用。
@@ -54,16 +54,16 @@ default  myAKSCluster     1.7.7            1.8.2, 1.7.9, 1.8.1  1.7.7           
 使用 `az aks upgrade` 命令升级群集节点。 以下示例将群集更新到版本 `1.8.2`。
 
 ```azurecli-interactive
-az aks upgrade --name myK8sCluster --resource-group myResourceGroup --kubernetes-version 1.8.2
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.8.2
 ```
 
 输出：
 
 ```json
 {
-  "id": "/subscriptions/4f48eeae-9347-40c5-897b-46af1b8811ec/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myK8sCluster",
+  "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
   "location": "eastus",
-  "name": "myK8sCluster",
+  "name": "myAKSCluster",
   "properties": {
     "accessProfiles": {
       "clusterAdmin": {
@@ -78,7 +78,7 @@ az aks upgrade --name myK8sCluster --resource-group myResourceGroup --kubernetes
         "count": 1,
         "dnsPrefix": null,
         "fqdn": null,
-        "name": "myK8sCluster",
+        "name": "myAKSCluster",
         "osDiskSizeGb": null,
         "osType": "Linux",
         "ports": null,
@@ -118,7 +118,7 @@ az aks upgrade --name myK8sCluster --resource-group myResourceGroup --kubernetes
 现在可以使用 `az aks show` 命令确认升级是否成功。
 
 ```azurecli-interactive
-az aks show --name myK8sCluster --resource-group myResourceGroup --output table
+az aks show --name myAKSCluster --resource-group myResourceGroup --output table
 ```
 
 输出：
@@ -126,7 +126,7 @@ az aks show --name myK8sCluster --resource-group myResourceGroup --output table
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myK8sCluster  eastus     myResourceGroup  1.8.2                Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.eastus.azmk8s.io
+myAKSCluster  eastus     myResourceGroup  1.8.2                Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>后续步骤

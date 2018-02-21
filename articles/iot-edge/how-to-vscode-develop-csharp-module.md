@@ -1,4 +1,4 @@
----
+﻿---
 title: "使用 Visual Studio Code 通过 Azure IoT Edge 开发 C# 模块 | Microsoft Docs"
 description: "在 Visual Studio Code 中在不切换上下文的情况下开发 C# 模块并通过 Azure IoT Edge 进行部署。"
 services: iot-edge
@@ -35,7 +35,7 @@ ms.lasthandoff: 02/01/2018
 - [Python 2.7](https://www.python.org/downloads/)
 - [IoT Edge 控制脚本](https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl)
 - AzureIoTEdgeModule 模板 (`dotnet new -i Microsoft.Azure.IoT.Edge.Module`)
-- 包含至少一个 IoT Edge 设备的活动 IoT 中心
+- 包含至少一个 IoT Edge 设备的有效 IoT 中心
 
 另外，最好是安装 [Docker support for VS Code](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) 以便更好地管理模块映像和容器。
 

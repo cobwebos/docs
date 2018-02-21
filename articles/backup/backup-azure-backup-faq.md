@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/21/2017
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: d6ee96b17c6bc85a2278bbe98867a579ff9c550a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: da589905babd20b46ea7bc0baba753415b3b5d5b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>有关 Azure 备份服务的问题
 本文回答有关 Azure 备份组件的常见问题。 某些答案提供内含全面信息的文章的链接。 单击“评论”（右侧）即可提问有关 Azure 备份的问题。 评论显示在本文末尾。 需要使用 Livefyre 帐户发表评论。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -117,7 +117,7 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 | S.No | 操作系统 | 数据源的最大大小 |
 |:---:|:--- |:--- |
 | 1 |Windows Server 2012 或更高版本 |54,400 GB |
-| #N/A |Windows 8 或更高版本 |54,400 GB |
+| 2 |Windows 8 或更高版本 |54,400 GB |
 | 3 |Windows Server 2008、Windows Server 2008 R2 |1700 GB |
 | 4 |Windows 7 |1700 GB |
 
@@ -132,7 +132,8 @@ Azure 备份支持以下列表中的操作系统使用 Azure 备份服务器和 
 | Microsoft Exchange |所备份 Exchange 服务器中所有 Exchange 数据库的总和 |
 | BMR/系统状态 |所备份计算机的 BMR 或系统状态的每个副本 |
 
-就 Azure VM 备份来说，每个 VM 最多可以有 16 个数据磁盘，每个数据磁盘的大小不得超出 1023GB。 
+就 Azure VM 备份来说，每个 VM 最多可以有 16 个数据磁盘，每个数据磁盘的大小不得超出 1024GB。 <br>
+我们提供了[个人预览版](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a?redir=0)，最多可支持 4TB 的磁盘。 
 
 ## <a name="retention-policy-and-recovery-points"></a>保留策略和恢复点
 ### <a name="is-there-a-difference-between-the-retention-policy-for-dpm-and-windows-serverclient-that-is-on-windows-server-without-dpmbr"></a>DPM 和 Windows Server/客户端（即，在不带 DPM 的 Windows Server 上）的保留策略是否有差别？<br/>

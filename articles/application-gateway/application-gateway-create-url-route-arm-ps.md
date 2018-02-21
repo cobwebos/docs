@@ -10,15 +10,15 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: e5c76ff84fc6409975ce6df076bfe220a092eeec
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 70973684445416d715c5b26d06613b31e0001395
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>通过 Azure PowerShell 使用基于 URL 路径的路由规则创建应用程序网关
 
-创建[应用程序网关](application-gateway-introduction.md)时可以使用 Azure PowerShell 配置[基于 URL 路径的路由规则](application-gateway-url-route-overview.md)。 在本教程中，使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)创建后端池。 然后创建路由规则，以便确保 Web 流量到达池中的相应服务器。
+创建[应用程序网关](application-gateway-introduction.md)时可以使用 Azure PowerShell 配置[基于 URL 路径的路由规则](application-gateway-url-route-overview.md)。 在本教程中，使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)创建后端池。 然后创建路由规则，以确保 Web 流量到达池中的相应服务器。
 
 在本文中，学习如何：
 
@@ -350,15 +350,15 @@ for ($i=1; $i -le 3; $i++)
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-![应用程序网关中的测试基 URL](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
+![在应用程序网关中测试基 URL](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-将 http://<ip-address>:8080/video/test.htm 的 URL 更改到基 URL 的末尾，应看到类似下例所示的内容：
+将 URL 更改为 http://<ip-address>:8080/video/test.htm（请将 <ip-address> 替换为自己的 IP 地址），应会看到如以下示例所示的内容：
 
-![应用程序网关中的测试映像 URL](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
+![在应用程序网关中测试映像 URL](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
 更改 http://<ip-address>:8080/video/test.htm 的 URL，应看到类似下例所示的内容：
 
-![应用程序网关中的测试视频 URL](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
+![在应用程序网关中测试视频 URL](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
 
 ## <a name="next-steps"></a>后续步骤
 

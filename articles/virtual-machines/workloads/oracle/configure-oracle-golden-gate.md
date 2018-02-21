@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: rclaus
-ms.openlocfilehash: a05711357d345267647c02e42336fd37c09e1bff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c0011da9d7c57a532589b4b8ae19643ab554c35
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
 
-Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详述了如何使用 Azure CLI 通过 Azure 应用商店库映像部署 Oracle 12c 数据库。 
+Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南详述了如何使用 Azure CLI 通过 Azure Marketplace 库映像部署 Oracle 12c 数据库。 
 
 本文档逐步演示如何在 Azure VM 上创建、安装和配置 Oracle Golden Gate。
 
@@ -50,7 +50,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南�
 
 ### <a name="sign-in-to-azure"></a>登录 Azure 
 
-使用 [az login](/cli/azure/#login) 命令登录 Azure 订阅。 然后，遵照屏幕指令进行操作。
+使用 [az login](/cli/azure/#az_login) 命令登录 Azure 订阅。 然后，遵照屏幕指令进行操作。
 
 ```azurecli
 az login
@@ -58,7 +58,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#create) 命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
+使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
 
 以下示例在 `westus` 位置创建名为 `myResourceGroup` 的资源组。
 
@@ -80,7 +80,7 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](/cli/azure/vm#create) 命令创建 VM。 
+使用 [az vm create](/cli/azure/vm#az_vm_create) 命令创建 VM。 
 
 以下示例创建两个 VM，分别名为 `myVM1` 和 `myVM2`。 如果默认密钥位置中不存在 SSH 密钥，则创建这些密钥。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
 
@@ -178,7 +178,7 @@ ssh <publicIpAddress>
 
 ### <a name="create-the-database-on-myvm1-primary"></a>在 myVM1（主）上创建数据库
 
-Oracle 软件已在应用商店映像上安装，因此下一步是安装数据库。 
+Oracle 软件已在 Marketplace 映像上安装，因此下一步是安装数据库。 
 
 以“oracle”超级用户身份运行软件：
 

@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: e52f38d5fb3c100e4275032f9a2a1234961c672b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52f1f1543fe0ef15cf71d2cf1f9a8bfeaae8933f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-blob-storage-from-nodejs"></a>如何通过 Node.js 使用 Blob 存储
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
-有关如何创建 Node.js 应用程序的说明，请参阅 [在 Azure 应用服务中创建 Node.js Web 应用]、[生成 Node.js 应用程序并将其部署到 Azure 云服务](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)（使用 Windows PowerShell），或[使用 Web Matrix 构建 Node.js Web 应用并将其部署到 Azure](https://www.microsoft.com/web/webmatrix/)。
+有关如何创建 Node.js 应用程序的说明，请参阅[在 Azure 应用服务中创建 Node.js Web 应用](../../app-service/app-service-web-get-started-nodejs.md)、[生成 Node.js 应用程序并将其部署到 Azure 云服务](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) 、或[使用 Web Matrix 构建 Node.js Web 应用并将其部署到 Azure](https://www.microsoft.com/web/webmatrix/)。
 
 ## <a name="configure-your-application-to-access-storage"></a>配置应用程序以访问存储
 若要使用 Azure 存储，需要 Azure Storage SDK for Node.js，其中包括一组便于与存储 REST 服务进行通信的库。

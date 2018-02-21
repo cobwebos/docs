@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/05/2017
+ms.date: 2/5/2018
 ms.author: chackdan
-ms.openlocfilehash: 2bd3053d645d9acd4850fddf7f27237ff954e8c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 720bb83c9d8540549852ce78ee1709f8c8717348
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 节点类型与虚拟机规模集
 虚拟机规模集是一种 Azure 计算资源。 可使用规模集以集的形式部署和管理虚拟机集合。 为在 Azure Service Fabric 群集中定义的每个节点类型设置独立规模集。 可独立增加或减少每个节点类型、打开不同的端口集，并使用不同的容量指标。
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 
 在 Azure 门户中的负载均衡器页上，选择“设置” > “入站 NAT 规则”。 可获得可用来远程连接到第一个规模集实例的 IP 地址和端口。 
 
-![负载均衡器][LBBlade]
+![负载均衡][LBBlade]
 
 在下图中，IP 地址和端口为 104.42.106.156 和 3389。
 

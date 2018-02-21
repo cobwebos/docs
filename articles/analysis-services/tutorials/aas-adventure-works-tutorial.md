@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/08/2018
+ms.date: 02/10/2018
 ms.author: owend
-ms.openlocfilehash: 9b81e011d3e1ed23465bbd554a0c7376b432b585
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ecc95181f61f556b18fa820617ea5ad0636c7a4b
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services - Adventure Works 教程
 
@@ -45,12 +45,12 @@ ms.lasthandoff: 01/09/2018
   
 -   如何将表格模型部署到 **Azure Analysis Services** 服务器或本地 SQL Server 2017 Analysis Services 服务器。  
   
-## <a name="prerequisites"></a>系统必备  
+## <a name="prerequisites"></a>先决条件  
 要完成本教程，需要：  
   
 -   Azure Analysis Services 服务器。 注册免费的 [Azure Analysis Services 试用版](https://azure.microsoft.com/services/analysis-services/)并[创建服务器](../analysis-services-create-server.md)。 
 
--   包含**示例 AdventureWorksDW 数据库**的 [Azure SQL 数据仓库](../../sql-data-warehouse/create-data-warehouse-portal.md)，或者包含 [Adventure Works 示例数据库](http://go.microsoft.com/fwlink/?LinkID=335807)的 SQL Server 数据仓库。
+-   包含**示例 AdventureWorksDW 数据库**的 [Azure SQL 数据仓库](../../sql-data-warehouse/create-data-warehouse-portal.md)，或者包含 [Adventure Works 示例数据库](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)的 SQL Server 数据仓库。
 
     **重要说明：**如果在本地 SQL Server 数据仓库上安装示例数据库，并且将模型部署到 Azure Analysis Services 服务器，则需要[本地数据网关](../analysis-services-gateway.md)。
 

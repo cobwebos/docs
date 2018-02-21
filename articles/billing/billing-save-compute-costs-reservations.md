@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
 ms.author: vikdesai
-ms.openlocfilehash: 96e9cf2fed0b22fd7aa7b9ffeab0e94738ce510d
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 799abddc4894bc090d860e7fe100ee65d4d085ab
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>通过保留虚拟机实例节省虚拟机资金 
 使用保留虚拟机实例时，需预付一年或三年的计算能力款项，以便获得所用虚拟机的折扣。 它可以显著减少虚拟机成本，最多可以降低 72% 的即用即付价格，前提是提前承诺使用一年或三年的服务。 保留虚拟机实例是一种计费折扣，不影响虚拟机的运行时状态。
@@ -60,5 +60,14 @@ ms.lasthandoff: 11/17/2017
 
 ## <a name="next-steps"></a>后续步骤
 购买[保留虚拟机实例](https://go.microsoft.com/fwlink/?linkid=861721)，开始节省虚拟机费用。 
+
+若要了解有关预订虚拟机实例的详细信息，请参阅以下文章。
+
+- [通过预订 VM 实例预付虚拟机](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [管理预订虚拟机实例](billing-manage-reserved-vm-instance.md)
+- [了解如何应用预订虚拟机实例折扣](billing-understand-vm-reservation-charges.md)
+- [了解即用即付订阅的预订实例使用情况](billing-understand-reserved-instance-usage.md)
+- [了解企业许可登记表的预订实例使用情况](billing-understand-reserved-instance-usage-ea.md)
+- [预订实例未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
 
 如果需要帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

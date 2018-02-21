@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
-ms.author: v-donglo
-ms.openlocfilehash: 2e71fa46f88ce219bee96a223a034078a037b4d3
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.author: raymondl
+ms.openlocfilehash: 88eba56424d9289a35b7de4dcf5f50191411a09a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>使用 Azure 机器学习 Web 服务门户管理 Web 服务
 可以使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。

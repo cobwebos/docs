@@ -1,142 +1,189 @@
 ---
-title: "使用 Azure 应用程序网关托管多个站点 | Microsoft Docs"
-description: "此页说明了如何通过 Azure 门户配置现有的 Azure 应用程序网关，以便在同一网关托管多个 Web 应用程序。"
-documentationcenter: na
+title: "创建托管多个站点的应用程序网关 - Azure 门户 | Microsoft Docs"
+description: "了解如何使用 Azure 门户创建托管多个站点的应用程序网关。"
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
-ms.assetid: 95f892f6-fa27-47ee-b980-7abf4f2c66a9
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 28a7fcb3e08a9c4b6a27e9fbc8d3ebae309adc62
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 403c6c254d8547b09e42f0b1561e5eff350a1f9b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="configure-an-existing-application-gateway-for-hosting-multiple-web-applications"></a>配置托管多个 Web 应用程序的现有应用程序网关
+# <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>使用 Azure 门户创建托管多个站点的应用程序网关
 
-> [!div class="op_single_selector"]
-> * [Azure 门户](application-gateway-create-multisite-portal.md)
-> * [Azure 资源管理器 PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
-> 
-> 
+创建[应用程序网关](application-gateway-introduction.md)时可以使用 Azure 门户配置[多个网站的托管](application-gateway-multi-site-overview.md)。 本教程中使用虚拟机规模集创建后端池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本教程假定你拥有多个域，并使用示例 *www.contoso.com* 和 *www.fabrikam.com*。
 
-托管多个站点可以让你在同一应用程序网关上部署多个 Web 应用程序。 系统会通过传入 HTTP 请求中存在的主机标头来确定接收流量的侦听器。 然后，侦听器会根据网关规则定义中的配置将流量定向到适当的后端池。 在启用了 SSL 的 Web 应用程序中，应用程序网关会根据服务器名称指示 (SNI) 扩展来选择 Web 流量的适当侦听器。 通常会通过托管多个站点将不同 Web 域的请求负载均衡到不同的后端服务器池。 同样还可以将同一根域的多个子域托管到同一应用程序网关。
+在本文中，学习如何：
 
-## <a name="scenario"></a>方案
+> [!div class="checklist"]
+> * 创建应用程序网关
+> * 为后端服务器创建虚拟机
+> * 使用后端服务器创建后端池
+> * 创建侦听器和路由规则
+> * 在域中创建 CNAME 记录
 
-在以下示例中，应用程序网关使用两个后端服务器池来为 contoso.com 和 fabrikam.com 提供流量：contoso 服务器池和 fabrikam 服务器池。 可以使用类似的设置来托管 app.contoso.com 和 blog.contoso.com 这样的子域。
+![多站点路由示例](./media/application-gateway-create-multisite-portal/scenario.png)
 
-![多站点方案][multisite]
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="log-in-to-azure"></a>登录 Azure
 
-此方案将多站点支持添加到现有应用程序网关。 若要完成此方案，需要使用现有应用程序网关进行配置。 请访问[使用门户创建应用程序网关](application-gateway-create-gateway-portal.md)，了解如何在门户中创建基本的应用程序网关。
+通过 [http://portal.azure.com](http://portal.azure.com) 登录到 Azure 门户
 
-以下是更新应用程序网关所需执行的步骤：
+## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-1. 创建用于每个站点的后端池。
-2. 为应用程序网关支持的每个站点创建侦听器。
-3. 创建规则，为每个侦听器映射相应的后端。
+若要在创建的资源之间实现通信，需要设置虚拟网络。 在本示例中创建了两个子网：一个用于应用程序网关，另一个用于后端服务器。 可以在创建应用程序网关的同时创建虚拟网络。
 
-## <a name="requirements"></a>要求
+1. 单击 Azure 门户左上角的“新建”。
+2. 选择“网络”，然后在“特色”列表中选择“应用程序网关”。
+3. 输入应用程序网关的以下值：
 
-* **后端服务器池：** 后端服务器的 IP 地址列表。 列出的 IP 地址应属于虚拟网络子网，或者是公共 IP/VIP。 也可使用 FQDN。
-* **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置绑定到池，并会应用到池中的所有服务器。
-* **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，并重定向到后端服务器之一。
-* **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。 对于启用了多个站点的应用程序网关，还会添加主机名和 SNI 指示器。
-* **规则：**规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 规则按其列出的顺序进行处理，并且流量通过匹配的第一个规则进行定向，而无论特殊性如何。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。 
-* **证书：**每个侦听器都需要唯一的证书。在此示例中，为多站点创建了 2 个侦听器。 需要为侦听器创建两个 .pfx 证书和密码。
+    - *myAppGateway* - 应用程序网关的名称。
+    - *myResourceGroupAG* - 新资源组。
 
-## <a name="create-back-end-pools-for-each-site"></a>为每个站点创建后端池
+    ![新建应用程序网关](./media/application-gateway-create-multisite-portal/application-gateway-create.png)
 
-应用程序网关支持的每个站点都需要一个后端池。在此示例中，将创建 2 个后端池，一个用于 contoso11.com，另一个用于 fabrikam11.com。
+4. 接受其他设置的默认值，然后单击“确定”。
+5. 依次单击“选择虚拟网络”、“新建”，然后输入虚拟网络的以下值：
 
-### <a name="step-1"></a>步骤 1
+    - *myVNet* - 虚拟网络的名称。
+    - *10.0.0.0/16* - 虚拟网络地址空间。
+    - *myAGSubnet* - 子网名称。
+    - *10.0.0.0/24* - 子网地址空间。
 
-在 Azure 门户 (https://portal.azure.com) 中导航到现有的应用程序网关。 选择“后端池”，单击“添加”
+    ![创建虚拟网络](./media/application-gateway-create-multisite-portal/application-gateway-vnet.png)
 
-![添加后端池][7]
+6. 单击“确定”创建虚拟网络和子网。
+7. 依次单击“选择公共 IP 地址”、“新建”，然后输入公共 IP 地址的名称。 在本示例中，公共 IP 地址名为 *myAGPublicIPAddress*。 接受其他设置的默认值，然后单击“确定”。
+8. 接受侦听器配置的默认值，让 Web 应用程序防火墙保留禁用状态，然后单击“确定”。
+9. 检查摘要页上的设置，然后单击“确定”创建网络资源和应用程序网关。 创建应用程序网关可能需要几分钟时间，请等到部署成功完成，然后转到下一部分。
 
-### <a name="step-2"></a>步骤 2
+### <a name="add-a-subnet"></a>添加子网
 
-填写后端池“pool1”的信息，为后端服务器添加 IP 地址或 FQDN，并单击“确定”
+1. 单击左侧菜单中的“所有资源”，然后从资源列表中单击“myVNet”。
+2. 单击“子网”，然后单击“子网”。
 
-![后端池 pool1 设置][8]
+    ![创建子网](./media/application-gateway-create-multisite-portal/application-gateway-subnet.png)
 
-### <a name="step-3"></a>步骤 3
+3. 输入 *myBackendSubnet* 作为子网的名称，然后单击“确定”。
 
-在后端池边栏选项卡上单击“添加”以添加另一后端池“pool2”，为后端服务器添加 IP 地址或 FQDN，并单击“确定”
+## <a name="create-virtual-machines"></a>创建虚拟机
 
-![后端池 pool2 设置][9]
+在此示例中，将创建两个虚拟机以用作应用程序网关的后端服务器。 还可以在虚拟机上安装 IIS 以验证流量是否正确路由。
 
-## <a name="create-listeners-for-each-back-end"></a>为每个后端创建侦听器
+1. 单击“新建” 。
+2. 单击“计算”，然后在“特色”列表中选择“Windows Server 2016 Datacenter”。
+3. 输入虚拟机的以下值：
 
-应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。 在门户中创建的基本侦听器不包含此属性。
+    - *contosoVM* - 虚拟机的名称。
+    - *azureuser* - 管理员用户名。
+    - *Azure123456!* - 密码。
+    - 选择“使用现有资源组”，然后选择“myResourceGroupAG”。
 
-### <a name="step-1"></a>步骤 1
+4. 单击“确定”。
+5. 选择“DS1_V2”作为虚拟机的大小，然后单击“选择”。
+6. 请确保选择 **myVNet** 作为虚拟网络，子网是 **myBackendSubnet**。 
+7. 单击“禁用”以禁用启动诊断。
+8. 创建“确定”，检查“摘要”页上的设置，然后单击“创建”。
 
-单击现有应用程序网关上的“侦听器”，并单击“多站点”添加第一个侦听器。
+### <a name="install-iis"></a>安装 IIS
 
-![侦听器概述边栏选项卡][1]
+1. 打开交互式 shell 并确保它已设置为 **PowerShell**。
 
-### <a name="step-2"></a>步骤 2
+    ![安装自定义扩展](./media/application-gateway-create-multisite-portal/application-gateway-extension.png)
 
-填写侦听器的信息。 此示例将配置 SSL 终止，创建新的前端端口。 上传用于 SSL 终止的 .pfx 证书。 此边栏选项卡与标准的基本侦听器边栏选项卡的唯一区别是主机名。
+2. 运行以下命令以在虚拟机上安装 IIS： 
 
-![侦听器属性边栏选项卡][2]
+    ```azurepowershell-interactive
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    Set-AzureRmVMExtension `
+      -ResourceGroupName myResourceGroupAG `
+      -Location eastus `
+      -ExtensionName IIS `
+      -VMName contosoVM `
+      -Publisher Microsoft.Compute `
+      -ExtensionType CustomScriptExtension `
+      -TypeHandlerVersion 1.4 `
+      -Settings $publicSettings
+    ```
 
-### <a name="step-3"></a>步骤 3
+3. 使用刚刚完成的步骤创建第二个虚拟机并安装 IIS。 在 Set-AzureRmVMExtension 中输入 *fabrikamVM* 作为名称，并输入 VMName 值。
 
-根据上一步中针对第二个站点的说明，单击“多站点”并创建另一个侦听器。 请确保对第二个侦听器使用不同的证书。 此边栏选项卡与标准的基本侦听器边栏选项卡的唯一区别是主机名。 填写侦听器的信息，并单击“确定”。
+## <a name="create-backend-pools-with-the-virtual-machines"></a>使用虚拟机创建后端池
 
-![侦听器属性边栏选项卡][3]
+1. 单击“所有资源”，然后单击“myAppGateway”。
+2. 依次单击“后端池”、“添加”。
+3. 输入名称 *contosoPool*，并使用“添加目标”添加 *contosoVM*。
 
-> [!NOTE]
-> 在 Azure 门户中创建应用程序网关的侦听器是一项运行时间长的任务，可能需要一些时间才能在此方案中创建两个侦听器。 完成时，侦听器会显示在门户中，如下图所示：
+    ![添加后端服务器](./media/application-gateway-create-multisite-portal/application-gateway-multisite-backendpool.png)
 
-![侦听器概述][4]
+4. 单击“确定”。
+5. 依次单击“后端池”、“添加”。
+6. 使用刚刚完成的步骤创建 *fabrikamPool* 与 *fabrikamVM*。
 
-## <a name="create-rules-to-map-listeners-to-backend-pools"></a>创建规则，将侦听器映射到后端池
+## <a name="create-listeners-and-routing-rules"></a>创建侦听器和路由规则
 
-### <a name="step-1"></a>步骤 1
+1. 单击“侦听器”，然后单击“多站点”。
+2. 为侦听器输入以下值：
+    
+    - *contosoListener* - 作为侦听器的名称。
+    - *www.contoso.com* - 将此主机名示例替换为自己的域名。
 
-在 Azure 门户 (https://portal.azure.com) 中导航到现有的应用程序网关。 选择“规则”，再选择现有的默认规则“rule1”，然后单击“编辑”。
+3. 单击“确定”。
+4. 使用名称 *fabrikamListener* 并使用第二个域名创建第二个侦听器。 在此示例中，使用 *www.fabrikam.com*。
 
-### <a name="step-2"></a>步骤 2
+规则按其列出的顺序进行处理，并且流量使用匹配的第一个规则进行定向，而无论特殊性如何。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。 
 
-填写规则边栏选项卡，如下图所示。 选择第一个侦听器和第一个池，完成时单击“保存”。
+在此示例中，将创建两个新规则并删除在创建应用程序网关时创建的默认规则。 
 
-![编辑现有规则][6]
+1. 依次单击“规则”、“基本”。
+2. 输入 *contosoRule* 作为名称。
+3. 对于侦听器，选择 *contosoListener*。
+4. 对于后端池，选择 *contosoPool*。
 
-### <a name="step-3"></a>步骤 3
+    ![创建基于路径的规则](./media/application-gateway-create-multisite-portal/application-gateway-multisite-rule.png)
 
-单击“基本规则”创建第二个规则。 在表单中填写第二个侦听器和第二个后端池，单击“确定”保存。
+5. 单击“确定”。
+6. 使用名称 *fabrikamRule*、*fabrikamListener* 和 *fabrikamPool* 创建第二个规则。
+7. 通过单击名为 *rule1* 的默认规则并单击“删除”删除该规则。
 
-![添加基本规则边栏选项卡][10]
+## <a name="create-a-cname-record-in-your-domain"></a>在域中创建 CNAME 记录
 
-此方案通过 Azure 门户完成对一个支持多站点的现有应用程序网关的配置。
+使用其公共 IP 地址创建应用程序网关后，可以获取 DNS 地址并使用它在域中创建 CNAME 记录。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+
+1. 单击“所有资源”，然后单击“myAGPublicIPAddress”。
+
+    ![记下应用程序网关的 DNS 地址](./media/application-gateway-create-multisite-portal/application-gateway-multisite-dns.png)
+
+2. 复制 DNS 地址，并将其用作域中新 CNAME 记录的值。
+
+## <a name="test-the-application-gateway"></a>测试应用程序网关
+
+1. 在浏览器的地址栏中输入域名。 例如，http://www.contoso.com。
+
+    ![在应用程序网关中测试 contoso 站点](./media/application-gateway-create-multisite-portal/application-gateway-iistest.png)
+
+2. 将地址更改为其他域，应看到类似下例所示的内容：
+
+    ![在应用程序网关中测试 fabrikam 站点](./media/application-gateway-create-multisite-portal/application-gateway-iistest2.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-通过[应用程序网关 - Web 应用程序防火墙](application-gateway-webapplicationfirewall-overview.md)了解如何保护网站
+本文介绍了如何执行以下操作：
 
-<!--Image references-->
-[1]: ./media/application-gateway-create-multisite-portal/figure1.png
-[2]: ./media/application-gateway-create-multisite-portal/figure2.png
-[3]: ./media/application-gateway-create-multisite-portal/figure3.png
-[4]: ./media/application-gateway-create-multisite-portal/figure4.png
-[5]: ./media/application-gateway-create-multisite-portal/figure5.png
-[6]: ./media/application-gateway-create-multisite-portal/figure6.png
-[7]: ./media/application-gateway-create-multisite-portal/figure7.png
-[8]: ./media/application-gateway-create-multisite-portal/figure8.png
-[9]: ./media/application-gateway-create-multisite-portal/figure9.png
-[10]: ./media/application-gateway-create-multisite-portal/figure10.png
-[multisite]: ./media/application-gateway-create-multisite-portal/multisite.png
+> [!div class="checklist"]
+> * 创建应用程序网关
+> * 为后端服务器创建虚拟机
+> * 使用后端服务器创建后端池
+> * 创建侦听器和路由规则
+> * 在域中创建 CNAME 记录
+
+> [!div class="nextstepaction"]
+> [详细了解应用程序网关的作用](application-gateway-introduction.md)

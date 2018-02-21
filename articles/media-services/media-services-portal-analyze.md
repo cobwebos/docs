@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 22032aef0cc8b7b015503043028873e70c21ee85
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fee9f8d2204869cbe5cac7f446e8011305e92bfa
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>使用 Azure 门户分析媒体
 > [!NOTE]
@@ -44,8 +44,8 @@ Azure 媒体服务分析是一系列语音和影像组件（具企业规模、�
     本文的其余部分介绍每种处理器的功能和使用方式。 
 5. 按“创建”，开始作业。
 
-## <a name="azure-media-indexer"></a>Azure Media Indexer
-通过 **Azure Media Indexer** 媒体处理器，可使媒体文件和内容具有可搜索性并可生成隐藏式字幕跟踪。 本部分提供可为此 MP 指定的选项的详细信息。
+## <a name="azure-media-indexer"></a>Azure 媒体索引器
+通过 **Azure Media Indexer** 媒体处理器，可使媒体文件和内容具有可搜索性并可生成隐藏式字幕跟踪。 本部分提供有关可为此 MP 指定的选项的一些详细信息。
 
 ![分析视频](./media/media-services-portal-analyze/media-services-portal-analyze003.png)
 
@@ -74,7 +74,7 @@ Azure 媒体服务分析是一系列语音和影像组件（具企业规模、�
 可以识别出输出内容的友好名称。 
 
 ## <a name="azure-media-hyperlapse"></a>Azure Media Hyperlapse
-Azure Media Hyperlapse 是可以使用第一人称视角或运动相机内容创建流畅缩时视频的 MP。  有关详细信息，请参阅[此](media-services-hyperlapse-content.md)主题。 本部分提供可为此 MP 指定的选项的详细信息。
+Azure Media Hyperlapse 是可以使用第一人称视角或运动相机内容创建流畅缩时视频的 MP。  有关详细信息，请参阅[此](media-services-hyperlapse-content.md)主题。 本部分提供有关可为此 MP 指定的选项的一些详细信息。
 
 ![分析视频](./media/media-services-portal-analyze/media-services-portal-analyze004.png)
 
@@ -135,6 +135,17 @@ Azure Media Hyperlapse 是可以使用第一人称视角或运动相机内容创
 ### <a name="output-file"></a>输出文件
 可以识别出输出内容的友好名称。 
 
+## <a name="azure-media-content-moderator"></a>Azure 媒体内容审查器
+此处理器可以帮助检测视频中可能存在的成人和猥亵内容。 此处理器自动检测视频中的快照和关键帧。 它为可能存在成人或猥亵内容的关键帧评分，并根据默认阈值建议评审。 有关详细信息和示例，请参阅[使用 Azure 媒体内容审查器审查视频](media-services-content-moderation.md)
+
+![审查视频](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
+
+### <a name="version"></a>版本 
+使用“2.0”。
+
+### <a name="mode"></a>Mode
+2.0 版忽略 `Mode` 设置。
+
 ## <a name="next-steps"></a>后续步骤
 查看媒体服务学习路径。
 
@@ -142,4 +153,3 @@ Azure Media Hyperlapse 是可以使用第一人称视角或运动相机内容创
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

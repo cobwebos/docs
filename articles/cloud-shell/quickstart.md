@@ -1,6 +1,6 @@
 ---
 title: "Bash in Azure Cloud Shell 快速入门 | Microsoft Docs"
-description: "Bash in Cloud Shell 快速入门"
+description: "Cloud Shell 中的 Bash 快速入门"
 services: 
 documentationcenter: 
 author: jluk
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: 4ed83b28fe5f0f1e9626115390f8697dfb2c8ead
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 69431979769a03b62a7f9fd7760e6eb614e37cd6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Bash in Azure Cloud Shell 快速入门
+# <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 Bash 快速入门
 
-本文档详细介绍如何在 [Azure 门户](https://ms.portal.azure.com/)中使用 Bash in Azure Cloud Shell。
+本文档详细介绍如何在 [Azure 门户](https://ms.portal.azure.com/)中使用 Azure Cloud Shell 中的 Bash。
 
 > [!NOTE]
-> 此外，还提供了 [PowerShell in Azure Cloud Shell](quickstart-powershell.md) 快速入门。
+> 此外，还提供了 [Azure Cloud Shell 中的 PowerShell](quickstart-powershell.md) 快速入门。
 
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
 1. 从 Azure 门户的顶部导航栏启动 **Cloud Shell** <br>
@@ -59,7 +59,7 @@ ms.lasthandoff: 11/15/2017
 `az vm create -n my_vm_name -g MyRG --image UbuntuLTS --generate-ssh-keys`
 
 > [!NOTE]
-> 默认情况下，用于对 VM 进行身份验证的公钥和私钥由 Azure CLI 2.0 置于 `/User/.ssh/id_rsa` 和 `/User/.ssh/id_rsa.pub` 中。 .ssh 文件夹保存在附加的 Azure 文件共享的 5 GB 映像中。
+> 默认情况下，用于对 VM 进行身份验证的公钥和私钥由 Azure CLI 2.0 置于 `/home/<user>/.ssh/id_rsa` 和 `/home/<user>/.ssh/id_rsa.pub` 中。 .ssh 文件夹保存在附加的 Azure 文件共享的 5 GB 映像中。
 
 此 VM 中的用户名将是你在 Cloud Shell 中使用的用户名 ($User@Azure:)。
 
@@ -77,6 +77,6 @@ ms.lasthandoff: 11/15/2017
 运行 `az group delete -n MyRG`
 
 ## <a name="next-steps"></a>后续步骤
-[了解如何为 Bash in Cloud Shell 持久保存文件](persisting-shell-storage.md) <br>
+[了解如何为 Cloud Shell 中的 Bash 持久保存文件](persisting-shell-storage.md) <br>
 [了解 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/) <br>
 [了解 Azure 文件存储](../storage/files/storage-files-introduction.md) <br>

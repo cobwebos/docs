@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: d4ea43cb7ca5e9fa50202561c71d6bfb298e2452
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 8ef8d64ba90960281faffc350821d7934e35749a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>使用 Azure API 管理、事件中心和 Runscope 监视 API
-[API 管理服务](api-management-key-concepts.md)提供许多功能来增强发送到 HTTP API 的 HTTP 请求的处理。 但是，请求和响应都是暂时性存在的。 在请求发出后，将通过 API 管理服务流送到后端 API。 API 将处理该请求，然后，将响应返回给 API 使用者。 API 管理服务保留要在发布者门户仪表板中显示的 API 一些重要统计信息，但除此之外不显示详细信息。
+[API 管理服务](api-management-key-concepts.md)提供许多功能来增强发送到 HTTP API 的 HTTP 请求的处理。 但是，请求和响应都是暂时性存在的。 在请求发出后，将通过 API 管理服务流送到后端 API。 API 将处理该请求，然后，将响应返回给 API 使用者。 API 管理服务保留要在 Azure 门户仪表板中显示的有关 API 的一些重要统计信息，但除此之外不显示详细信息。
 
 在 API 管理服务中使用 log-to-eventhub 策略，可将请求和响应的详细信息发送到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)。 想要从发送到 API 的 HTTP 消息生成事件的原因包罗万象。 示例包括更新审核线索、使用情况分析、异常警报和第三方集成。   
 

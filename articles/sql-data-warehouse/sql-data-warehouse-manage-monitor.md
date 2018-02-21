@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 12/14/2017
 ms.author: joeyong;barbkess;kevin
-ms.openlocfilehash: 56bae284bb83b1ff18bf2caf644e6dd071b8eb69
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 1895e9c6174dfb05212991040cc265b8cb6e0651
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>使用 DMV 监视工作负荷
 本文介绍如何使用动态管理视图 (DMV) 在 Azure SQL 数据仓库中监视工作负荷及调查查询执行情况。
@@ -269,7 +269,6 @@ FROM sys.dm_pdw_nodes_os_performance_counters
 WHERE 
 instance_name like 'Distribution_%' 
 AND counter_name = 'Log File(s) Used Size (KB)'
-AND counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-rollback"></a>监视事务日志回滚
 如果查询失败或运行时间较长，可检查并监视是否存在事务回退。

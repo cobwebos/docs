@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.date: 11/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 9814dca53f1a410f4d1e95cc18b98373f27f9802
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: be01d3104db04ebd759f2eab99505a2be4762c6c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>使用 Azure 容器服务 (AKS) 的服务主体
 
@@ -35,7 +35,7 @@ AKS 群集需要 [Azure Active Directory 服务主体][aad-service-principal]才
 在以下示例中，已经创建了 AKS 群集，但由于未指定现有的服务主体，因此为群集创建了一个服务主体。 若要完成此操作，帐户必须具有创建服务主体所需的相应权限。
 
 ```azurecli
-az aks create --name myK8SCluster --resource-group myResourceGroup --generate-ssh-keys
+az aks create --name myAKSCluster --resource-group myResourceGroup --generate-ssh-keys
 ```
 
 ## <a name="use-an-existing-sp"></a>使用现有的 SP
@@ -67,7 +67,7 @@ az ad sp create-for-rbac --skip-assignment
 使用预先创建的服务主体时，请提供 `appId` 和 `password` 作为 `az aks create` 命令的参数值。
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myK8SCluster --service-principal <appId> --client-secret <password>
+az aks create --resource-group myResourceGroup --name myAKSCluster --service-principal <appId> --client-secret <password>
 ```
 
 如果使用 Azure 门户来部署 AKS 群集，请在 AKS 群集配置窗体的“服务主体客户端 ID”字段中输入 `appId` 值，在“服务主体客户端机密”字段中输入 `password` 值。

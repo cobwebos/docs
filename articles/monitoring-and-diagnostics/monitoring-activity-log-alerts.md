@@ -14,16 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: johnkem
-ms.openlocfilehash: 3885469ec0e1fcc31386dd0ad7fe6cb5d03ab28e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8a2ce3ca90895262e77c3895867d29c9d3530a2
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-activity-log-alerts"></a>创建活动日志警报
 
 ## <a name="overview"></a>概述
 活动日志警报是新发生的活动日志事件与警报中指定的条件匹配时激活的警报。 它们是 Azure 资源，因此，可通过使用 Azure 资源管理器模板进行创建。 此外，还可以在 Azure 门户中创建、更新或删除它们。 本文介绍活动日志警报背后的概念。 然后演示如何使用 Azure 门户设置有关活动日志事件的警报。
+
+> [!NOTE]
+
+>  [警报(预览)](monitoring-overview-unified-alerts.md) 目前在创建和管理活动日志方面提供增强的体验。  [了解详细信息](monitoring-activity-log-alerts-new-experience.md)。
 
 通常，你会在以下情况下创建活动日志警报以接收通知：
 
@@ -43,15 +47,13 @@ ms.lasthandoff: 10/11/2017
 - 状态：事件的状态，通常为“已启动”、“已失败”或“已成功”。
 - 事件发起者：也称为“调用方”。 电子邮件地址或执行操作的用户的 Azure Active Directory 标识符。
 
->[!NOTE]
->必须在警报中至少指定上述两项条件之一，其中一项是类别。 不能创建每次在活动日志中创建事件时激活的警报。
->
->
+> [!NOTE]
+> 当类别是“管理”时，必须在警报中至少指定上述条件之一。 不能创建每次在活动日志中创建事件时激活的警报。
 
 活动日志警报激活后会使用操作组生成操作或通知。 操作组是一组可重用的通知接收方，例如电子邮件地址、Webhook URL 或短信电话号码。 可以从多个警报中引用接收方，以集中和分组通知通道。 在定义活动日志警报时，有两个选项。 可以：
 
-* 在活动日志警报中使用现有操作组。 
-* 创建新的操作组。 
+* 在活动日志警报中使用现有操作组。
+* 创建新的操作组。
 
 若要了解有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](monitoring-action-groups.md)。
 

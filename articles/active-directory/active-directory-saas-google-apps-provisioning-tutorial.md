@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 0a0dd38fda35b1eee1fdce196a3ed15f6e73dde6
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: a90fe2c919e0c5452072c4129dcb7a1135d9ec25
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>教程：配置 Google Apps 实现自动用户预配
 
@@ -157,9 +157,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 20. 选择“保存”。
 
-此操作会对在“用户和组”部分中分配到 Google Apps 的任何用户或组启动初始同步。 初始同步执行的时间比后续同步长，当服务处于运行状态时，大约每隔 20 分钟就会进行一次同步。 
+此操作会对在“用户和组”部分中分配到 Google Apps 的任何用户或组启动初始同步。 初始同步执行的时间比后续同步长，当服务处于运行状态时，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接。 这些日志描述了预配服务对 Google Apps 应用执行的所有操作。
 
-可使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接。 这些报告说明了预配服务对 Google Apps 应用执行的所有操作。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](active-directory-saas-provisioning-reporting.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

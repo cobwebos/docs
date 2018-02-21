@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: c668dde33b3571436711c6c5e5289993a9edf1a2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c36d742c61fb85f1b6077dd9156d6e36b37db1e1
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>使用用于 Eclipse 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序
 
@@ -69,6 +69,26 @@ ms.lasthandoff: 02/01/2018
    
    ![展开群集名称可查看资源](./media/apache-spark-eclipse-tool-plugin/view-explorer-4.png)
 
+## <a name="link-a-cluster"></a>链接群集
+可以使用 Ambari 管理的用户名链接标准群集，还可以使用域用户名（例如：user1@contoso.com）链接安全 hadoop 群集。
+1. 从 **Azure 资源管理器**单击“链接群集”。
+
+   ![链接群集上下文菜单](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
+
+2. 输入**群集名称**、**存储帐户**、**存储密钥**，然后从**存储容器**中选择容器，最后输入用户名和密码。 单击“确定”按钮以链接群集。
+   
+   ![“链接群集”对话框](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog.png)
+   
+   > [!NOTE]
+   > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接存储密钥、用户名和密码。
+
+3. 单击“确定”按钮后，如果输入信息正确，可以在 **HDInsight** 节点中看到链接的群集。 现在可以将应用程序提交到此链接群集。
+
+   ![链接的群集](./media/apache-spark-intellij-tool-plugin/linked-cluster.png)
+
+4. 还可以从 **Azure 资源管理器**取消链接群集。
+   
+   ![取消链接的群集](./media/apache-spark-intellij-tool-plugin/unlink.png)
 
 
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>为 HDInsight Spark 群集设置 Spark Scala 项目
@@ -130,6 +150,7 @@ ms.lasthandoff: 02/01/2018
 6. “Spark 提交”选项卡应开始显示进度。 可以通过选择“Spark 提交”窗口中的红色按钮停止应用程序。 也可以选择地球图标（以图中的蓝色框表示），查看此特定应用程序运行的日志。
       
    ![“Spark 提交”窗口](./media/apache-spark-eclipse-tool-plugin/create-scala-proj-4.png)
+
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-hdinsight-tools-in-azure-toolkit-for-eclipse"></a>使用 Azure Toolkit for Eclipse 中的 HDInsight 工具访问和管理 HDInsight Spark 群集
 可以使用 HDInsight 工具执行各种操作，包括访问作业输出。

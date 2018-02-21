@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5e3147cbc9fce6737cfb9b2e93e8bf1662163f3c
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 8de3cc6665fc3861aedcf4f36cdce4a4a776e80d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>逻辑应用限制和配置
 
-本主题介绍 Azure 逻辑应用的当前限制和配置的详细信息。
+本文介绍 Azure 逻辑应用的当前限制和配置详细信息。
 
 ## <a name="limits"></a>限制
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 01/29/2018
 | 最大重复间隔 | 500 天 | 
 ||| 
 
-若要在正常处理流中超出运行持续时间或存储保留期限制，请[与我们联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
+若要在正常处理流中超出运行持续时间或存储保留期限制，请[与产品团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
 
 ### <a name="looping-and-debatching-limits"></a>循环和解除批处理限制
 
@@ -82,18 +82,18 @@ ms.lasthandoff: 01/29/2018
 
 ### <a name="throughput-limits"></a>吞吐量限制
 
-这些限制适用于单个逻辑应用实例。
+这些限制适用于单个逻辑应用资源。
 
 | 名称 | 限制 | 说明 | 
 | ----- | ----- | ----- | 
-| 每 5 分钟执行的操作数 | 100,000 |<p>通过在 `High Througput` 模式下运行逻辑应用，可以将限制增加到 300,000，将工作流资源的 `runtimeConfiguration` 下的 `operationOptions` 属性设置为 `OptimizedForHighThroughput`，可完成此操作。 <p>请注意该高吞吐量模式处于预览状态。 也可以根据需要在多个应用之间分配工作负荷。 | 
+| 每 5 分钟执行的操作数 | 100,000 |<p>以 `High Througput` 模式运行逻辑应用可以将此限制提高到 300,000。 可以通过将工作流资源的 `runtimeConfiguration` 下的 `operationOptions` 属性设置为 `OptimizedForHighThroughput` 来配置高吞吐量模式。 <p>请注意高吞吐量模式处于预览状态。 也可以根据需要在多个应用之间分配工作负荷。 | 
 | 操作并发传出调用数 | ~2,500 | 减少并发请求数，或根据需要减少持续时间。 | 
 | 运行时终结点：并发传入调用数 |~1,000 | 减少并发请求数，或根据需要减少持续时间。 | 
 | 运行时终结点：每 5 分钟读取的调用数  | 60,000 | 可以根据需要在多个应用之间分配工作负荷。 | 
 | 运行时终结点：每 5 分钟调用的调用数| 45,000 |可以根据需要在多个应用之间分配工作负荷。 | 
 |||| 
 
-若要在正常处理中超过这些限制，或要运行可能超过这些限制的负载测试，请[与我们联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
+若要在正常处理中超过这些限制，或要运行可能超过这些限制的负载测试，请[与产品团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
 
 ### <a name="logic-app-definition-limits"></a>逻辑应用定义限制
 

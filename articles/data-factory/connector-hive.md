@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8842adcc00a1230f252411d64c22d497faeec5b2
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 8816885a7703e89c53bbfd839c9e7eb1337c3879
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>使用 Azure 数据工厂从 Hive 复制数据 
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Hive 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -54,7 +54,7 @@ Hive 链接的服务支持以下属性：
 | zooKeeperNameSpace | ZooKeeper 上要将 Hive Server 2 节点添加到其下的命名空间。  | 否 |
 | useNativeQuery | 指定驱动程序是使用本机 HiveQL 查询，还是将其转换为 HiveQL 中的等效形式。  | 否 |
 | username | 用于访问 Hive 服务器的用户名。  | 否 |
-| password | 在 Username 字段中提供的用户名所对应的密码。可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取 - 从[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息。 | 否 |
+| password | 用户所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | httpPath | 对应于 Hive 服务器的部分 URL。  | 否 |
 | enableSsl | 指定是否使用 SSL 加密到服务器的连接。 默认值为 false。  | 否 |
 | trustedCertPath | 包含受信任 CA 证书（通过 SSL 进行连接时用于验证服务器）的 .pem 文件的完整路径。 只有在自托管 IR 上使用 SSL 时才能设置此属性。 默认值是随 IR 一起安装的 cacerts.pem 文件。  | 否 |

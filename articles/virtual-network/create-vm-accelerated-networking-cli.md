@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 908d81c363a556917d211e0bcc92188f849fb690
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: c051fec3369ef0d309ecf6c68b17272bb396eeec
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的 Linux 虚拟机
 
@@ -68,9 +68,9 @@ ms.lasthandoff: 01/05/2018
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。 在以下示例中，请将示例参数名称替换为自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVm。
+安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/#az_login) 登录到 Azure 帐户。 在以下示例中，请将示例参数名称替换为自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVm。
 
-使用 [az group create](/cli/azure/group#create) 创建资源组。 以下示例在 centralus 位置创建名为 myResourceGroup 的资源组：
+使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在 centralus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location centralus
@@ -78,7 +78,7 @@ az group create --name myResourceGroup --location centralus
 
 必须选择 [Linux 加速网络](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)中列出的受支持 Linux 区域。
 
-使用 [az network vnet create](/cli/azure/network/vnet#create) 创建虚拟网络。 以下示例创建名为 myVnet 且具有一个子网的虚拟网络：
+使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建虚拟网络。 以下示例创建名为 myVnet 且具有一个子网的虚拟网络：
 
 ```azurecli
 az network vnet create \
@@ -90,7 +90,7 @@ az network vnet create \
 ```
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
-使用 [az network nsg create](/cli/azure/network/nsg#create) 创建网络安全组。 以下示例创建名为“myNetworkSecurityGroup”的网络安全组：
+使用 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) 创建网络安全组。 以下示例创建名为“myNetworkSecurityGroup”的网络安全组：
 
 ```azurecli
 az network nsg create \
@@ -125,7 +125,7 @@ az network public-ip create \
     --resource-group myResourceGroup
 ```
 
-使用 [az network nic create](/cli/azure/network/nic#create) 创建启用加速网络的网络接口。 以下示例在 myVnet 虚拟网络的 mySubnet 子网中创建名为 myNic 的网络接口，并将 myNetworkSecurityGroup 网络安全组关联到该网络接口：
+使用 [az network nic create](/cli/azure/network/nic#az_network_nic_create) 创建启用加速网络的网络接口。 以下示例在 myVnet 虚拟网络的 mySubnet 子网中创建名为 myNic 的网络接口，并将 myNetworkSecurityGroup 网络安全组关联到该网络接口：
 
 ```azurecli
 az network nic create \
@@ -141,7 +141,7 @@ az network nic create \
 ## <a name="create-a-vm-and-attach-the-nic"></a>创建 VM 并附加 NIC
 创建 VM 时，指定使用 `--nics` 创建的 NIC。 必须选择 [Linux 加速网络](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview)中列出的大小和分发。 
 
-使用 [az vm create](/cli/azure/vm#create) 创建 VM。 以下示例创建名为 myVM 的 VM，其具有 UbuntuLTS 映像，并且大小支持加速网络 (*Standard_DS4_v2*) ：
+使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 以下示例创建名为 myVM 的 VM，其具有 UbuntuLTS 映像，并且大小支持加速网络 (*Standard_DS4_v2*) ：
 
 ```azurecli
 az vm create \

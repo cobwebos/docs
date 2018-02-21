@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 10/13/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 767b378331d994bb48a83726b1ebbfcb99649d12
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 07f73c90b3974943dc55df64df595ca590580d52
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建 Linux 虚拟机
 
@@ -34,7 +34,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
@@ -69,7 +69,7 @@ az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --ge
 
 ## <a name="open-port-80-for-web-traffic"></a>为 Web 流量打开端口 80 
 
-默认情况下，仅允许通过 SSH 连接登录到 Azure 中部署的 Linux 虚拟机。 如果此 VM 将用作 Web 服务器，则需要从 Internet 打开端口 80。 使用 [az vm open-port](/cli/azure/vm#open-port) 命令打开所需端口。  
+默认情况下，仅允许通过 SSH 连接登录到 Azure 中部署的 Linux 虚拟机。 如果此 VM 将用作 Web 服务器，则需要从 Internet 打开端口 80。 使用 [az vm open-port](/cli/azure/vm#az_vm_open_port) 命令打开所需端口。  
  
  ```azurecli-interactive 
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -104,7 +104,7 @@ NGINX 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 可以
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、VM 和所有相关的资源，可以使用 [az group delete](/cli/azure/group#delete) 命令将其删除。 退出 SSH 会话，返回 VM，然后删除资源，如下所示：
+如果不再需要资源组、VM 和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除。 退出 SSH 会话，返回 VM，然后删除资源，如下所示：
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

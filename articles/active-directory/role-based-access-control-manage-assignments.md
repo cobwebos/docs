@@ -3,7 +3,7 @@ title: "查看 Azure 资源访问权限分配 | Microsoft Docs"
 description: "在 Azure 门户中查看和管理任何用户或组的所有基于角色的访问控制分配"
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: rolyon
 manager: mtillman
 editor: jeffsta
 ms.assetid: e6f9e657-8ee3-4eec-a21c-78fe1b52a005
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2017
-ms.author: andredm
-ms.openlocfilehash: 51b158ebfeea52e726213edd042277779f52124b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: rolyon
+ms.openlocfilehash: e893aeeabf6a34707fbfe6576293a9e0726dd975
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal"></a>在 Azure 门户中查看用户和组的访问权限分配
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ ms.lasthandoff: 12/21/2017
 4. 在用户边栏选项卡上，选择“Azure 资源”。 将列出该用户的所有访问权限分配。
 
 ### <a name="read-permissions-to-view-assignments"></a>查看分配的读取权限
-本页仅显示你有权读取的访问权限分配。 例如，具有对订阅 A 的读取权限，然后转到 Azure 资源边栏选项卡以检查用户的分配。 可以看到她的订阅 A 的访问权限分配，但看不到她还具有订阅 B 上的访问权限分配。
+本页仅显示你有权读取的访问权限分配。 例如，具有对订阅 A 的读取权限，并转到 Azure 资源边栏选项卡以检查用户的分配。 可以看到她的订阅 A 的访问权限分配，但看不到她还具有订阅 B 上的访问权限分配。
 
 ## <a name="delete-access-assignments"></a>删除访问权限分配
 通过此边栏选项卡，可以删除已直接分配给用户或组的访问权限分配。 如果访问权限分配继承自父组，需要转到资源或订阅，并在该处管理相应的分配。

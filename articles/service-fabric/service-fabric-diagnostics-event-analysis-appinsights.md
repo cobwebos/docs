@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 34f14f42150e46edae2d1352827f96a411117a62
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 479e486dca432020d5fcbaf98971a9803888bf98
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 进行事件分析和可视化
 
@@ -28,7 +28,7 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 
 ### <a name="creating-an-ai-resource"></a>创建 AI 资源
 
-若要创建 AI 资源，请转到 Azure 应用商店并搜索“Application Insights”。 它应显示为首个解决方案（位于“Web + Mobile”类别下）。 发现相应资源时单击“创建”（请确保路径与以下图像匹配）。
+若要创建 AI 资源，请转到 Azure Marketplace 并搜索“Application Insights”。 它应显示为首个解决方案（位于“Web + Mobile”类别下）。 发现相应资源时单击“创建”（请确保路径与以下图像匹配）。
 
 ![新建 Application Insights 资源](media/service-fabric-diagnostics-event-analysis-appinsights/create-new-ai-resource.png)
 
@@ -100,7 +100,7 @@ Azure Application Insights 是用于应用程序监视和诊断的可扩展平�
 
 通常建议使用 EventFlow 和 WAD 作为聚合解决方案，因为它们允许使用更加模块化的方法，方便诊断和监视。例如，若想从 EventFlow 更改输出，不需要更改实际检测，仅需对配置文件进行简单修改。 然而，若决定投资使用 Application Insights，且不太可能更改到其他平台，则应使用 AI 的新 SDK 以聚合事件并将它们发送到 AI。 这意味着不再非得配置 EventFlow 将数据发送到 AI，而是安装 Application Insight 的 Service Fabric NuGet 包。 可在[此处](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)找到此包的详细信息。
 
-[微服务和容器的 Application Insights 支持](https://azure.microsoft.com/app-insights-microservices/)会显示一些开发中的新功能（当前仍为 beta 版本），通过它们可以使用更加丰富的现成 AI 监视选项。 这包含依赖项跟踪（用于生成群集中所有服务和应用程序的 AppMap 以及它们之间的通信），以及服务的更好跟踪关联（有助于更好地查明应用或服务的工作流中的问题）。
+[微服务和容器的 Application Insights 支持](https://azure.microsoft.com/en-us/blog/app-insights-microservices/)会显示一些开发中的新功能（当前仍为 beta 版本），通过它们可以使用更加丰富的现成 AI 监视选项。 这包含依赖项跟踪（用于生成群集中所有服务和应用程序的 AppMap 以及它们之间的通信），以及服务的更好跟踪关联（有助于更好地查明应用或服务的工作流中的问题）。
 
 若在 .NET 中进行开发，将来可能会使用一些 Service Fabric 编程模型，且愿意使用 AI 作为可视化和分析事件和日志数据的平台，那我们建议选取 AI SDK 途径作为监视和诊断工作流。 请参阅[本文](../application-insights/app-insights-asp-net-more.md)和[本文](../application-insights/app-insights-asp-net-trace-logs.md)，开始使用 AI 收集和显示日志。
 

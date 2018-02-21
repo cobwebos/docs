@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/31/2018
 ms.author: ancav
-ms.openlocfilehash: bc25f58070d8871a92df249a2d48f27de0bc9498
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 97dca282bd7bbf00ce1d03899f6de0444a41163a
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure Monitor 的指标管道中使用的完整指标列表。
@@ -861,7 +861,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|QueryDuration|查询持续时间|Count|平均值|上一个间隔的 DAX 查询持续时间|无维度|
+|QueryDuration|查询持续时间|毫秒|平均值|上一个间隔的 DAX 查询持续时间|无维度|
 |QueryPoolJobQueueLength|线程: 查询池作业队列长度|Count|平均值|查询线程池队列中的作业数。|无维度|
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces

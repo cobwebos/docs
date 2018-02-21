@@ -3,7 +3,7 @@ title: "使用 REST 进行基于角色的访问控制 - Azure AD | Microsoft 文
 description: "使用 REST API 管理基于角色的访问控制"
 services: active-directory
 documentationcenter: na
-author: andredm7
+author: rolyon
 manager: mtillman
 editor: 
 ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
-ms.author: andredm
-ms.openlocfilehash: 9ec64dc3ce95de9c29331699ad2140e5a3c25673
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: rolyon
+ms.openlocfilehash: d449b53d348471275cea3c7129245569e2151864
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-role-based-access-control-with-the-rest-api"></a>使用 REST API 管理基于角色的访问控制
 > [!div class="op_single_selector"]
@@ -151,7 +151,7 @@ Azure 门户中基于角色的访问控制 (RBAC) 和 Azure 资源管理器 API 
 
 ```
 
-| 元素名称 | 必选 | 类型 | 说明 |
+| 元素名称 | 必选 | Type | 说明 |
 | --- | --- | --- | --- |
 | roleDefinitionId |是 |String |角色的标识符。 标识符的格式为：`{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
 | principalId |是 |String |角色将分配到的 Azure AD 主体（用户、组或服务主体）的 objectId。 |
@@ -434,7 +434,7 @@ Azure 门户中基于角色的访问控制 (RBAC) 和 Azure 资源管理器 API 
 
 ```
 
-| 元素名称 | 必选 | 类型 | 说明 |
+| 元素名称 | 必选 | Type | 说明 |
 | --- | --- | --- | --- |
 | 名称 |是 |String |自定义角色的 GUID 标识符。 |
 | properties.roleName |是 |String |自定义角色的显示名称。 最大大小为 128 个字符。 |
@@ -537,7 +537,7 @@ Azure 门户中基于角色的访问控制 (RBAC) 和 Azure 资源管理器 API 
 
 ```
 
-| 元素名称 | 必选 | 类型 | 说明 |
+| 元素名称 | 必选 | Type | 说明 |
 | --- | --- | --- | --- |
 | 名称 |是 |String |自定义角色的 GUID 标识符。 |
 | properties.roleName |是 |String |更新的自定义角色的显示名称。 |

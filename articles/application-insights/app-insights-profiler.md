@@ -10,13 +10,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5f691fb88c6764309bf012dfc65b561ec87afede
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 80792a82adbb93e80c94b4829b704b70d2a8ed23
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure Web 应用
 
@@ -24,16 +24,16 @@ Application Insights 的此功能已分别面向 Azure 应用服务和 Azure 计
 
 使用 [Application Insights](app-insights-overview.md) 确定实时 Web 应用程序中的每个方法花费了多长时间。 Application Insights 探查工具会显示应用提供的实时请求的详细探查信息，并突出显示占用最多时间的“热路径”。 将会根据采样探查具有不同响应时间的请求。 可以使用各种技术将应用程序开销降到最低。
 
-该探查器目前适用于 Azure 应用服务上运行的、至少处于“基本”服务层的 ASP.NET 和 ASP.NET Core Web 应用。
+该探查器目前适用于 Azure 应用服务上运行的、至少处于“基本”服务层的 ASP.NET 和 ASP.NET Core Web 应用。 **基本**服务层或更高版本需要使用探查器。
 
 ## <a id="installation"></a>为应用服务 Web 应用启用探查器
-如果已将应用程序发布到应用服务，但尚未在源代码中执行任何操作来使用 Application Insights，请导航到 Azure 门户中的“应用服务”窗格，转到“监视”|“Application Insights”，遵照窗格中的说明创建新的或选择现有的 Application Insights 资源来监视 Web 应用。 请注意，探查器只适用于“基本”或更高层的应用服务计划。
+如果已将应用程序发布到应用服务，但尚未在源代码中执行任何操作来使用 Application Insights，请导航到 Azure 门户中的“应用服务”窗格，转到“监视”|“Application Insights”，遵照窗格中的说明创建新的或选择现有的 Application Insights 资源来监视 Web 应用。
 
 ![在应用服务门户上启用 App Insights][appinsights-in-appservices]
 
 如果可以访问项目源代码，请[安装 Application Insights](app-insights-asp-net.md)。 如果已安装，请确保使用的是最新版本。 要检查最新版本，请在解决方案资源管理器中右键单击你的项目，然后选择“管理 NuGet 包” > “更新” > “更新所有包”。 然后部署应用。
 
-ASP.NET Core 应用程序需要安装 Microsoft.ApplicationInsights.AspNetCore NuGet 包 2.1.0-beta6 或更高版本才能使用探查器。 自 2017 年 6 月 27 日起，以前的版本将不再受支持。
+ASP.NET Core 应用程序需要安装 Microsoft.ApplicationInsights.AspNetCore NuGet 包 2.1.0-beta6 或更高版本才能使用探查器。 从 2017 年 6 月 27 日开始，不支持更早的版本。
 
 在 [Azure 门户](https://portal.azure.com)中，打开 Web 应用的 Application Insights 资源。 选择“性能” > “启用 Application Insights Profiler”。
 
@@ -89,7 +89,7 @@ clr!ThePreStub 是 .NET Framework 中的 helper 函数，用于准备首次执�
 如果 clr!ThePreStub 针对某个请求花费了很长时间，则表示这是第一个执行该方法的请求。 .NET Framework 运行时加载该方法的时间非常重要。 可以考虑在用户访问该代码部分之前使用执行该代码部分的预热进程，或者考虑在程序集中运行本机映像生成器 (ngen.exe)。
 
 ### <a id="lockcontention"></a>锁争用（clr!JITutil\_MonContention 或 clr!JITutil\_MonEnterWorker）
-clr!JITutil\_MonContention 或 clr!JITutil\_MonEnterWorker 指示当前线程正在等待释放锁。 执行 C# LOCK 语句、调用 Monitor.Enter 方法或者结合 MethodImplOptions.Synchronized 属性调用某个方法时，通常会显示这种状态。 如果线程 A 获取了某个锁，而线程 B 在线程 A 释放该锁之前尝试获取同一个锁，此时通常会发生锁争用。
+clr!JITutil\_MonContention 或 clr!JITutil\_MonEnterWorker 指示当前线程正在等待释放锁。 执行 C# LOCK 语句、调用 Monitor.Enter 方法或者结合 MethodImplOptions.Synchronized 属性调用某个方法时，通常会显示这种状态。 如果线程 _A_ 获取了某个锁，而线程 _B_ 在线程 _A_ 释放该锁之前尝试获取同一个锁，此时通常会发生锁争用。
 
 ### <a id="ngencold"></a>加载代码 ([COLD])
 如果方法名称包含 [COLD]（例如 mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined），则表示 .NET Framework 运行时首次执行的代码未经过<a href="https://msdn.microsoft.com/library/e7k32f4k.aspx">按配置优化</a>功能的优化。 对于每个方法，在进程的生存期内，这种状态最多只应出现一次。
@@ -124,7 +124,7 @@ CPU 正忙于执行指令。
 
 默认数据保留期为 5 天。 每天引入的最大数据量为 10 GB。
 
-使用探查器服务没有任何费用。 要使用探查器服务，Web 应用必须至少托管在应用服务的基本层中。
+使用探查器服务没有任何费用。 要使用探查器服务，Web 应用必须至少托管在 Azure 应用服务的基本层中。
 
 ## <a name="overhead-and-sampling-algorithm"></a>开销和采样算法
 
@@ -161,9 +161,9 @@ CPU 正忙于执行指令。
 * 确保 Web 应用在 .NET Framework 4.6 上运行。
 * 如果 Web 应用是一个 ASP.NET Core 应用程序，请检查[所需的依赖项](#aspnetcore)。
 
-启动探查器后，将有短暂的一段预热时间，在此期间，探查器会活跃地收集多种性能跟踪。 此后，探查器将每隔一小时收集性能跟踪两分钟。  
+启动探查器后，将有短暂的一段预热时间，在此期间，探查器会活跃地收集多种性能跟踪。 此后，探查器将每隔一小时收集性能跟踪两分钟。
 
-### <a name="i-was-using-azure-service-profiler-what-happened-to-it"></a>使用 Azure 服务事件探查器时出现问题， 原因是什么？  
+### <a name="i-was-using-azure-service-profiler-what-happened-to-it"></a>使用 Azure 服务事件探查器时出现问题， 原因是什么？
 
 启用 Application Insights Profiler 时，会禁用 Azure 服务探查器代理。
 
@@ -171,7 +171,7 @@ CPU 正忙于执行指令。
 
 在某些情况下，堆栈查看器中的总时间指标大于请求的持续时间。
 
-如果存在与请求关联的两个或更多个线程并且它们并行运行，则可能会发生这种情况。 在这种情况下，总线程时间就会超过已用时间。 一个线程可能会等待另一个线程完成。 查看器会尝试检测此数据并省略不相关的等待时间，但是，它会倾向于显示过多信息，而不是省略关键信息。  
+如果存在与请求关联的两个或更多个线程并且它们并行运行，则可能会发生这种情况。 在这种情况下，总线程时间就会超过已用时间。 一个线程可能会等待另一个线程完成。 查看器会尝试检测此数据并省略不相关的等待时间，但是，它会倾向于显示过多信息，而不是省略关键信息。
 
 如果看到跟踪中出现并行线程，请确定哪些线程处于等待状态，以便可以确定请求的关键路径。 在大多数情况下，快速进入等待状态的线程只是在等待其他线程完成。 请专注于其他线程，忽略等待中线程花费的时间。
 
@@ -221,9 +221,9 @@ CPU 正忙于执行指令。
 
 本部分介绍如何：
 
-1.  创建一个 Web 作业。只需按下某个按钮，该作业就能将探查器启动两分钟。
-2.  创建一个可以计划运行探查器的 Web 作业。
-3.  设置探查器的参数。
+1. 创建一个 Web 作业。只需按下某个按钮，该作业就能将探查器启动两分钟。
+2. 创建一个可以计划运行探查器的 Web 作业。
+3. 设置探查器的参数。
 
 
 ### <a name="set-up"></a>设置
@@ -238,10 +238,10 @@ CPU 正忙于执行指令。
 1.  转到 kudu 站点。 在“开发工具”选项卡下面，单击带有 Kudu 徽标的“高级工具”选项卡。 单击“转到”。 随后将会转到一个新站点并自动登录。
 2.  接下来，需要下载探查器二进制文件。 通过页面顶部的“调试控制台”->“CMD”导航到文件资源管理器。
 3.  单击“站点”->“wwwroot”->“App_Data”->“作业”->“连续”。 此时应会看到“ApplicationInsightsProfiler2”文件夹。 单击该文件夹左侧的下载图标。 随后将会下载“ApplicationInsightsProfiler2.zip”文件。
-4.  这会下载后续步骤所需的所有文件。 我建议创建一个空目录，以便在继续操作之前，将此 zip 存档移到该目录。
+4.  这会将下载所需的所有文件。 我建议创建一个空目录，以便在继续操作之前，将此 zip 存档移到该目录。
 
 ### <a name="setting-up-the-web-job-archive"></a>设置 Web 作业存档
-简单而言，将新的 Web 作业添加到 Azure 网站就是创建一个包含 run.cmd 的 zip 存档。 该 run.cmd 告知 Web 作业系统在你运行该 Web 作业时要执行哪些操作。 可以查看 Web 作业文档中的其他选项，但对于本教程，我们不需要其他任何选项。
+简单而言，将新的 Web 作业添加到 Azure 网站就是创建一个包含 run.cmd 的 zip 存档。 该 run.cmd 告知 Web 作业系统在你运行该 Web 作业时要执行哪些操作。
 
 1.  开始创建新文件夹，并将其命名为“RunProfiler2Minutes”。
 2.  将提取的 ApplicationInsightProfiler2 文件夹中的文件复制到此新文件夹。
@@ -258,11 +258,11 @@ c.  `--single` 表示运行，然后自动停止。  `--immediate-profiling-dura
 创建 Web 作业 .zip 文件后，可以在站点中使用它来设置 Web 作业。
 
 ### <a name="add-a-new-web-job"></a>添加新的 Web 作业
-接下来，在站点中添加一个新的 Web 作业。 本示例将演示如何添加手动触发的 Web 作业。 完成此过程后，计划 Web 作业的过程几乎相同。 你可以自行阅读有关计划触发的作业的详细信息。
+接下来，在站点中添加一个新的 Web 作业。 本示例将演示如何添加手动触发的 Web 作业。 完成此过程后，计划 Web 作业的过程几乎相同。
 
 1.  转到 Web 作业仪表板。
 2.  在工具栏中单击“添加”命令。
-3.  为 Web 作业命名，为方便阅读，我使用了与存档相同的名称，同时也方便将它打开以包含不同版本的 run.cmd。
+3.  为 Web 作业提供一个名称。 为清楚起见，它可以帮助您的存档的名称相匹配，并打开以显示有不同版本的 run.cmd。
 4.  在窗体的文件上传部分中，单击“打开文件”图标并找到前面创建的 .zip 文件。
 5.  对于“类型”，请选择“已触发”。
 6.  对于“触发器”，请选择“手动”。
@@ -274,20 +274,23 @@ c.  `--single` 表示运行，然后自动停止。  `--immediate-profiling-dura
 
 添加可以手动触发的新 Web 作业后，可以尝试运行它。
 
-1.  根据设计，在任意给定时间，计算机上只能运行一个 ApplicationInsightsProfiler.exe 进程。 因此，若要开始运行探查器，请务必在此仪表板中禁用“连续”Web 作业。 单击相应的行并按“停止”。 在工具栏上刷新，并确认状态是否显示作业已停止。
-2.  单击添加的新 Web 作业所在的行，并按“运行”。
-3.  在仍旧选中该行的情况下，单击工具栏中的“日志”命令，转到已启动的 Web 作业的 Web 作业仪表板。 仪表板中列出了最近的运行及其结果。
-4.  单击刚刚启动的运行。
-5.  如果一切正常，将会看到探查器发来的一些诊断日志，表示探查已经开始。
+1. 根据设计，在任意给定时间，计算机上只能运行一个 ApplicationInsightsProfiler.exe 进程。 因此，若要开始运行探查器，请务必在此仪表板中禁用“连续”Web 作业。 单击相应的行并按“停止”。 在工具栏上刷新，并确认状态是否显示作业已停止。
+2. 单击添加的新 Web 作业所在的行，并按“运行”。
+3. 在仍旧选中该行的情况下，单击工具栏中的“日志”命令，转到已启动的 Web 作业的 Web 作业仪表板。 仪表板中列出了最近的运行及其结果。
+4. 单击刚刚启动的运行实例。
+5. 如果一切正常，将会看到探查器发来的一些诊断日志，表示探查已经开始。
 
 ### <a name="things-to-consider"></a>注意事项
 
 尽管此方法相对简单直接，但需要注意一些问题。
 
-1.  由于此过程不是由我们的服务进行管理，因此，我们无法更新 Web 作业的代理二进制文件。 目前，二进制文件没有稳定的下载页，获取最新文件的唯一方法是更新扩展，然后从 continuous 文件夹中抓取文件，就像我们前面所做的一样。
-2.  由于此过程使用的命令行参数最初设计为面向开发人员而不是最终用户，这些参数将来可能会更改，因此，在升级时请注意这一点。 这不会造成太大的问题，因为可以添加 Web 作业、运行它，然后测试它是否正常工作。 最终我们会生成 UI 来执行此操作而无需手动过程，但这是一个需要考虑的问题。
-3.  应用服务的“Web 作业”功能独特之处在于，当它运行 Web 作业时，可以确保进程使用的环境变量和应用设置，与网站最终使用的环境变量和应用设置相同。 这意味着，不需要通过命令行将检测密钥传递给探查器，探查器只会从环境中拾取检测密钥。 但是，如果想要在应用服务外部的开发机箱或计算机上运行探查器，则需要提供检测密钥。 为此，可以传入参数 `--ikey <instrumentation-key>`。 请注意，此值必须与应用程序使用的检测密钥匹配。 探查器的日志输出将会告知探查器是使用哪个 ikey 启动的，以及在探查时，我们是否通过该检测密钥检测到活动。
-4.  手动触发的 Web 作业实际上可以通过 Web 挂钩来触发。 可通过以下方式获取此 URL：在仪表板中右键单击 Web 作业并查看属性，或者在从表中选择 Web 作业后，选择工具栏中的“属性”。 有大量在线文章介绍了此方法，因此我不会过多地重述。此方法为通过 CI/CD 管道（例如 VSTS）或 Microsoft Flow (https://flow.microsoft.com/en-us/) 触发探查器带来了可能性。 根据 run.cmd 的复杂程度（例如，创建 run.ps1），可能的方法有多种多样。  
+- 由于此过程不是由我们的服务进行管理，因此，我们无法更新 Web 作业的代理二进制文件。 目前，二进制文件没有稳定的下载页，获取最新文件的唯一方法是更新扩展，然后从 continuous 文件夹中抓取文件，就像我们前面所做的一样。
+
+- 由于此过程使用的命令行参数最初设计为面向开发人员而不是最终用户，这些参数将来可能会更改，因此，在升级时请注意这一点。 这不会造成太大的问题，因为可以添加 Web 作业、运行它，然后测试它是否正常工作。 最终，我们将生成用于处理这种情况不的手动过程的 UI。
+
+- 应用服务的“Web 作业”功能独特之处在于，当它运行 Web 作业时，可以确保进程使用的环境变量和应用设置，与网站最终使用的环境变量和应用设置相同。 这意味着，不需要通过命令行将检测密钥传递给探查器，探查器只会从环境中拾取检测密钥。 它只应选取检测密钥从环境。 但是，如果想要在应用服务外部的开发机箱或计算机上运行探查器，则需要提供检测密钥。 为此，可以传入参数 `--ikey <instrumentation-key>`。 请注意，此值必须与应用程序使用的检测密钥匹配。 探查器的日志输出将会告知探查器是使用哪个 ikey 启动的，以及在探查时，我们是否通过该检测密钥检测到活动。
+
+- 手动触发的 Web 作业实际上可以通过 Web 挂钩来触发。 你可以通过右键单击 web 作业从仪表板并查看的属性来获取此 url。 或通过从表中选择的 web 作业后选择工具栏中的属性。 这将打开类似触发探查器与 CI/CD 管道 （如 VSTS）或 Microsoft Flow (https://flow.microsoft.com/en-us/) 类似的无限可能。 从根本上讲，这取决于想要使你 run.cmd （这也可以是 run.ps1），复杂但灵活性存在。
 
 ## <a name="next-steps"></a>后续步骤
 

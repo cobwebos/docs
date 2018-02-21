@@ -1,22 +1,22 @@
 ---
-title: "在 Azure Cloud Shell 中运行 Ansible"
-description: "了解如何在 Azure Cloud Shell 中执行各种 Ansible 任务"
+title: "使用 Bash in Azure Cloud Shell 运行 Ansible"
+description: "了解如何使用 Bash in Azure Cloud Shell 执行各种 Ansible 任务"
 ms.service: ansible
-keywords: ansible, azure, devops, bash, cloudshell, playbook
+keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
-ms.date: 01/14/2018
+ms.date: 02/01/2018
 ms.topic: article
-ms.openlocfilehash: d5a818616d382954d0880bcae58bb13b632ad757
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 0cd0390a381e85c8f047960ce06c581a433d4a2c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="run-ansible-in-the-azure-cloud-shell"></a>在 Azure Cloud Shell 中运行 Ansible
+# <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>使用 Bash in Azure Cloud Shell 运行 Ansible
 
-本教程介绍如何在 Azure Cloud Shell 中执行各种 Ansible 任务。 这些任务包括连接到虚拟机，以及创建用于创建和删除 Azure 资源组的 Ansible playbook。
+本教程介绍如何从 Bash in Cloud Shell 执行各种 Ansible 任务。 这些任务包括连接到虚拟机，以及创建用于创建和删除 Azure 资源组的 Ansible playbook。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,12 +24,14 @@ ms.lasthandoff: 01/29/2018
 
 - **Azure 凭据** - [创建 Azure 凭据和配置 Ansible](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
 
-- **配置 Azure Cloud Shell** - 如果不熟悉 Azure Cloud Shell，[Bash in Azure Cloud Shell 快速入门](https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart)一文演示了如何启动和配置 Cloud Shell。
+- **配置 Azure Cloud Shell** - 如果不熟悉 Azure Cloud Shell，[Bash in Azure Cloud Shell 快速入门](https://docs.microsoft.com/en-us/azure/cloud-shell/quickstart)一文演示了如何启动和配置 Cloud Shell。 在此处启动 Cloud Shell 专用的网站：
+
+[![启动 Cloud Shell](https://shell.azure.com/images/launchcloudshell.png "启动 Cloud Shell")](https://shell.azure.com)
 
 ## <a name="use-ansible-to-connect-to-a-vm"></a>使用 Ansible 连接到 VM
 Ansible 已创建了一个名为 [azure_rm.py](https://github.com/ansible/ansible/blob/devel/contrib/inventory/azure_rm.py) 的 Python 脚本，该脚本可通过向 Azure 资源管理器发出 API 请求生成 Azure 资源的动态清单。 以下步骤引导你完成使用 `azure_rm.py` 脚本连接到 Azure 虚拟机：
 
-1. 打开 Azure Cloud Shell。
+1. 打开 Bash in Cloud Shell。 Shell 类型在 Cloud Shell 窗口左侧表示。
 
 1. 如果没有可使用的虚拟机，请在 Cloud Shell 中输入以下命令，以创建用于测试的虚拟机：
 
@@ -175,4 +177,4 @@ Ansible 已创建了一个名为 [azure_rm.py](https://github.com/ansible/ansibl
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"] 
-> [使用 Ansible 在 Azure 中创建基本虚拟机](/azure/virtual-machines/linux/ansible-create-vm)
+> [使用 Ansible 在 Azure 中创建基本的虚拟机](/azure/virtual-machines/linux/ansible-create-vm)

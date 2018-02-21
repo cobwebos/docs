@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: b110fd4f9eb70644a6fcb66198113af2ec685142
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 9c8b352194e3a624097a48b5d312356a0ead4276
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>使用 Resource Manager 模板和 Azure CLI 部署资源
 
-本主题介绍了如何将 Azure CLI 2.0 与 Resource Manager 模板配合使用来将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。  
+本文介绍了如何将 Azure CLI 2.0 与资源管理器模板配合使用将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。  
 
 部署的 Resource Manager 模板可以是计算机上的本地文件，也可以是位于 GitHub 等存储库中的外部文件。 本文中部署的模板可在[示例模板](#sample-template)部分中找到，也可在 [GitHub 中的存储帐户模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json)中找到。
 
@@ -86,6 +86,10 @@ az group deployment create \
    az group create --name examplegroup --location "South Central US"
    az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageAccountType=Standard_GRS
    ```
+
+## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>部署到多个资源组或订阅
+
+通常情况下，将模板中的所有资源部署到单个资源组。 不过，在某些情况下，你可能希望将一组资源部署在一起但将其放置在不同的资源组或订阅中。 在单个部署中可以仅部署到五个资源组。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](resource-manager-cross-resource-group-deployment.md)。
 
 ## <a name="parameter-files"></a>参数文件
 
@@ -183,7 +187,7 @@ az group deployment create \
 
 ## <a name="sample-template"></a>示例模板
 
-本主题中的示例使用以下模板。 复制并将其另存为名为 storage.json 的文件。 要了解如何创建此模板，请参阅[创建第一个 Azure 资源管理器模板](resource-manager-create-first-template.md)。  
+本文中的示例使用以下模板。 复制并将其另存为名为 storage.json 的文件。 要了解如何创建此模板，请参阅[创建第一个 Azure 资源管理器模板](resource-manager-create-first-template.md)。  
 
 ```json
 {

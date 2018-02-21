@@ -10,22 +10,22 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2017
-ms.openlocfilehash: 6fede727a36b0f3243975bf23df2ef53baf1b15c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 630e6e22bb41c777a043a7e6580239e254db9f1f
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="sprint-2---december-2017"></a>冲刺 (sprint) 2 - 2017 年 12 月 
 
 #### <a name="version-number-01171115263"></a>版本号：0.1.1711.15263
 
->此处介绍了如何[查找版本号](https://docs.microsoft.com/azure/machine-learning/preview/known-issues-and-troubleshooting-guide)。
+>此处介绍了如何[查找版本号](known-issues-and-troubleshooting-guide.md)。
 
 欢迎使用 Azure Machine Learning Workbench 的第三个更新。 此更新包括 Workbench 应用、命令行接口 (CLI) 以及后端服务中的改进。 非常感谢你向我们发送微笑和哭脸。 下面的许多更新就是针对你的反馈的直接结果。 
 
 ## <a name="notable-new-features"></a>值得注意的新功能
-- [支持 SQL Server 和 Azure SQL 数据库用作数据源](https://docs.microsoft.com/azure/machine-learning/preview/data-prep-appendix2-supported-data-sources#types) 
+- [支持 SQL Server 和 Azure SQL 数据库用作数据源](data-prep-appendix2-supported-data-sources.md#types) 
 - [使用 MMLSpark 深入学习具备 GPU 支持的 Spark](https://github.com/Azure/mmlspark/blob/master/docs/gpu-setup.md)
 - [所有已部署的 AML 容器都与 Azure IoT Edge 设备兼容（无需额外步骤）](http://aka.ms/aml-iot-edge-blog)
 - Azure 门户中提供了已注册的模型列表和详细信息视图
@@ -56,7 +56,7 @@ ms.lasthandoff: 12/08/2017
 
 - 改进了性能，同时建议在“按示例派生列”转换中查看边缘事例
 
-- [支持 SQL Server 和 Azure SQL 数据库用作数据源](https://docs.microsoft.com/azure/machine-learning/preview/data-prep-appendix2-supported-data-sources#types) 
+- [支持 SQL Server 和 Azure SQL 数据库用作数据源](data-prep-appendix2-supported-data-sources.md#types) 
 
 ![新建 SQL Server 数据源的图像](media/release-notes-sprint-2/sql-server-data-source.png)
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 12/08/2017
 
 - 可以准备此计算目标并将其用于执行，Azure ML Workbench 会使用此密钥来进行身份验证。  
 
-有关创建计算目标的详细信息，请参阅 [配置 Azure 机器学习试验服务](https://docs.microsoft.com/azure/machine-learning/preview/experimentation-service-configuration)
+有关创建计算目标的详细信息，请参阅 [配置 Azure 机器学习试验服务](experimentation-service-configuration.md)
 
 ### <a name="visual-studio-tools-for-ai"></a>用于 AI 的 Visual Studio Tools
 - 增加了对 [Visual Studio Tools for AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vstoolsai-vs2017)的支持。 

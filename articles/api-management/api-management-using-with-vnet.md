@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 4e3c17a86281176726be64008fa9e59e08e026f0
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: fe5e26a957d18f1f7f5ed360a27bb1f9c9826718
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -61,7 +61,7 @@ ms.lasthandoff: 02/01/2018
     此时会显示一个列表，其中包含预配了 API 管理服务的所有区域。 选择每个区域的 VNET 和子网。 该列表中填充了在配置的区域中设置的 Azure 订阅中可用的经典和 Resource Manager 虚拟网络。
     
     > [!NOTE]
-    > 上图中的**服务终结点**包括网关/代理、发布者门户、开发人员门户、GIT 和直接管理终结点。
+    > 上图中的**服务终结点**包括网关/代理、Azure 门户、开发人员门户、GIT 和直接管理终结点。
     > 上图中的**管理终结点**是托管在服务上用于通过 Azure 门户和 Powershell 管理配置的终结点。
     > 另请注意：即使图示中显示了各个终结点的 IP 地址，但 API 管理服务**仅**对其配置的主机名作出响应。
     

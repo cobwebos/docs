@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 1fcc432e8437a7fd284a75aa40454848a2af3006
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 471749563fae5b5de6e98e22ebf2ec5cc9365368
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>在 Azure 上的 Linux VM 中使用 cloud-init 运行 bash 脚本
 本文介绍如何在 Azure 中使用 [cloud-init](https://cloudinit.readthedocs.io) 在预配时在 Linux 虚拟机 (VM) 或虚拟机规模集 (VMSS) 中运行现有的 bash 脚本。 Azure 预配资源后首次启动时，会运行这些 cloud-init 脚本。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
@@ -28,20 +28,20 @@ ms.lasthandoff: 12/04/2017
 
 如果已在使用 Linux 自定义脚本 Azure 扩展运行脚本，则可以迁移它们以使用 cloud-init。 但是，Azure 扩展已集成报告功能，当脚本失败时会发出警报，因此如果脚本失败，cloud-init 映像部署不会失败。
 
-若要了解此功能的工作原理，请创建一个简单的 bash 脚本用于测试。 与 cloud-init `#cloud-config` 文件一样，此脚本必须位于预配虚拟机时运行 AzureCLI 命令的本地位置。  对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor simple_bash.sh` 以创建文件并查看可用编辑器的列表。 选择“#1”以使用 **nano** 编辑器。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  
+若要了解此功能的工作原理，请创建一个简单的 bash 脚本用于测试。 与 cloud-init `#cloud-config` 文件一样，此脚本必须位于预配虚拟机时运行 AzureCLI 命令的本地位置。  对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor simple_bash.sh` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  
 
 ```bash
 #!/bin/sh
 echo "this has been written via cloud-init" + $(date) >> /tmp/myScript.txt
 ```
 
-在部署此映像之前，需要使用 [az group create](/cli/azure/group#create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+在部署此映像之前，需要使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-现在，使用 [az vm create](/cli/azure/vm#create) 创建 VM，并通过 `--custom-data simple_bash.sh` 指定 bash 脚本文件，如下所示：
+现在，使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM，并通过 `--custom-data simple_bash.sh` 指定 bash 脚本文件，如下所示：
 
 ```azurecli-interactive 
 az vm create \

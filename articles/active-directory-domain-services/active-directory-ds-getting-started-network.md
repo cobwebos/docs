@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 02/05/2018
 ms.author: maheshu
-ms.openlocfilehash: 680ffc41ab96d69153ef7039698bf9285ed6ce16
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7c84ac3318bbd63129b04711c62dc441b9d35285
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户启用 Azure Active Directory 域服务
 
@@ -46,6 +46,9 @@ ms.lasthandoff: 12/11/2017
 
     ![选取虚拟网络](./media/getting-started/domain-services-blade-network-pick-vnet.png)
 
+  > [!WARNING]
+  > 请确保选取专用 IP 地址空间内的地址空间。 公共地址空间中你未拥有的 IP 地址会导致 Azure AD 域服务内出错。
+
 5. 现有虚拟网络：如果计划选取现有虚拟网络，则[使用虚拟网络扩展创建专用子网](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)，然后选取该子网。 单击“虚拟网络”，以选择一个现有虚拟网络。 单击“子网”，以在现有虚拟网络中选取要在其中启用新托管域的专用子网。 完成后，单击“确定”。
 
     ![在虚拟网络中选取子网](./media/getting-started/domain-services-blade-network-pick-subnet.png)
@@ -54,7 +57,7 @@ ms.lasthandoff: 12/11/2017
   > **有关选择子网的指导**
   > 1. 对 Azure AD 域服务使用专用子网。 不向此子网部署任何其他虚拟机。 此配置使你可以为工作负荷/虚拟机配置网络安全组 (NSG)，而不会中断托管域。 有关详细信息，请参阅 [Azure Active Directory 域服务的网络注意事项](active-directory-ds-networking.md)。
   2. 不要选择网关子网用于部署 Azure AD 域服务，因为它不是受支持的配置。
-  3. 确保选择的子网具有足够可用地址空间 - 至少 3-5 个可用 IP 地址。
+  3. 确保选择的子网具有足够可用地址空间 - 至少 3-5 个可用 IP 地址，并存在于专用 IP 地址空间中。
   >
 
 6. 完成后，单击“确定”以转到向导的“管理员组”页。

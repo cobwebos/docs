@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
-ms.openlocfilehash: 2c9b072551b467785dbb4aae02492ffae6cdb787
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2a6ac8d9c2f3694cf08357d6ccec874f7e076514
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>有关在 Azure 虚拟机上部署 Windows Server Active Directory 的指导
 本文阐述在本地部署 Windows Server Active Directory 域服务 (AD DS) 和 Active Directory 联合身份验证服务 (AD FS) 与在 Microsoft Azure 虚拟机上部署这些服务的重要区别。
@@ -433,7 +433,7 @@ RODC 在 HBI 和 PII 问题方面具有其他优势，因为可向 RODC 筛选�
 选择 Windows Server AD DS 数据库、日志和 SYSVOL 位于何处。 必须将其部署在 Azure 数据磁盘上。
 
 > [!NOTE]
-> Azure 数据磁盘最大容量限制为 1 TB。
+> Azure 数据磁盘最大容量限制为 4 TB。
 > 
 > 
 

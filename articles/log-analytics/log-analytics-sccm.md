@@ -3,7 +3,7 @@ title: "将配置管理器连接到 Log Analytics | Microsoft Docs"
 description: "本文介绍将配置管理器连接到 Log Analytics 以及开始分析数据的步骤。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: f2298bd7-18d7-4371-b24a-7f9f15f06d66
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: banders
-ms.openlocfilehash: 7acf0cbd4f4cba885e6cc91dfe3cb68306a3649a
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.author: magoedte
+ms.openlocfilehash: 5acf2ad27a55684a8cb42ed646c54d1ec91a5625
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>将配置管理器连接到 Log Analytics
 可以将 System Center Configuration Manager 连接到 Log Analytics 以同步设备集合数据。 这就使得来自配置管理器层次结构的数据可在 OMS 中使用。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 Log Analytics 支持 System Center Configuration Manager 当前分支，版本 1606 和更高版本。  
 

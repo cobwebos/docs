@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 67bbf48c0ce67b0fef5cc2b1c61e3612e0201534
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 4190b1cbc7e32b1471795e29a211f7a7e5831648
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>教程：为 Jive 配置自动用户预配
 
@@ -93,9 +93,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 12. 单击“保存”。
 
-这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Jive。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 20 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务对 Jive 应用执行的所有操作。
+这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Jive。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Jive 应用执行的所有操作。
 
-现可创建测试帐户。 验证该帐户是否已同步到 Jive 最多需等待 20 分钟时间。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](active-directory-saas-provisioning-reporting.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

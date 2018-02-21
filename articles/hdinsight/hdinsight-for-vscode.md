@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 89e83dc02f32f6f2a781cf2e35040b29cc3d3c06
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: 0e2cd75845eb3613b23409b6bf1ab7d37d992275
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具
 
@@ -101,6 +101,26 @@ ms.lasthandoff: 01/04/2018
     - 提交交互式 PySpark 查询
     - 提交 PySpark 批处理脚本
     - 设置配置
+
+**链接群集**
+
+可以使用 Ambari 管理的用户名链接标准群集，还可以使用域用户名（例如：user1@contoso.com）链接安全 hadoop 群集。
+1. 通过选择 **CTRL+SHIFT+P** 打开命令面板，然后输入“HDInsight: Link a cluster”。
+
+   ![链接群集命令](./media/hdinsight-for-vscode/link-cluster-command.png)
+
+2. 输入 HDInsight 群集 URL -> 输入用户名 -> 输入密码 -> 选择群集类型 -> 如果通过验证，将显示成功信息。
+   
+   ![“链接群集”对话框](./media/hdinsight-for-vscode/link-cluster-process.png)
+
+   > [!NOTE]
+   > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接用户名和密码。 
+   
+3. 可以使用命令**列出群集**来查看链接群集。 现在可以将脚本提交到此链接群集。
+
+   ![链接的群集](./media/hdinsight-for-vscode/linked-cluster.png)
+
+4. 还可以通过从命令面板输入“HDInsight: Unlink a cluster”取消链接群集。
 
 ## <a name="list-hdinsight-clusters"></a>列出 HDInsight 群集
 
@@ -256,6 +276,9 @@ ms.lasthandoff: 01/04/2018
    ![提交 python 作业结果](./media/hdinsight-for-vscode/submit-pythonjob-result.png) 
 
 提交 Python 作业后，提交日志会显示在 VS Code 的“输出”窗口中。 同时还会显示 **Spark UI URL** 和 **Yarn UI URL**。 可以在 Web 浏览器中打开 URL 来跟踪作业状态。
+
+
+   
 
 
 ## <a name="additional-features"></a>其他功能

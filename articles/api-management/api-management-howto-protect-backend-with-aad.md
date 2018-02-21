@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 603a22059dcf07c68f4c6576ea1df97d810eacf3
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 1ba7a415a56f5147e73faa48fcd51151c3c818a8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>如何使用 Azure Active Directory 和 API 管理保护 Web API 后端
 下面的视频演示了如何生成 Web API 后端，并使用具有 Azure Active Directory 和 API 管理的 OAuth 2.0 协议对其进行保护。  本文提供视频中步骤的概述及其他信息。 此视频演示了以下内容，时长 24 分钟：
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/24/2018
 > 
 
 ## <a name="create-an-azure-ad-directory"></a>创建 Azure AD 目录
-若要使用 Azure Active Directory 保护 Web API 后端，必须首先创建 AAD 租户。 本视频中使用租户 **APIMDemo**。 若要创建 AAD 租户，请登录 [Azure 经典门户](https://manage.windowsazure.com)，单击“新建”->“应用服务”->“Active Directory”->“目录”->“自定义创建”。 
+若要使用 Azure Active Directory 保护 Web API 后端，必须首先拥有 AAD 租户。 本视频中使用租户 **APIMDemo**。 若要创建 AAD 租户，请登录 [Azure 经典门户](https://manage.windowsazure.com)，单击“新建”->“应用服务”->“Active Directory”->“目录”->“自定义创建”。 
 
 ![Azure Active Directory][api-management-create-aad-menu]
 

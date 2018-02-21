@@ -17,6 +17,7 @@
 #### [azureiotsuite.com 权限](iot-suite-v1-permissions.md)
 #### [远程监视解决方案演练](iot-suite-v1-remote-monitoring-sample-walkthrough.md)
 #### [连接 Raspberry Pi](iot-suite-v1-raspberry-pi-kit-get-started.md)
+#### [连接 MXChip IoT DevKit](../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)
 ##### 使用 C
 ###### [模拟数据](iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md)
 ###### [使用实际传感器](iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md)
@@ -76,7 +77,7 @@
 ## 连接工厂
 ### [为已连接的工厂部署网关](iot-suite-connected-factory-gateway-deployment.md)
 ### [自定义连接的工厂](iot-suite-connected-factory-customize.md)
-### [将 OPC 发布服务器用于连接的工厂](iot-suite-connected-factory-publisher.md)
+### [将 OPC 发布服务器用于连接的工厂](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
 ### [配置连接的工厂](iot-suite-connected-factory-configure.md)
 ## [azureiotsuite.com 权限](iot-suite-permissions.md)
 

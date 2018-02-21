@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/10/2017
 ms.author: tomfitz
-ms.openlocfilehash: 46856a25fb57bb2c5a3c1aeae13c11655e1a58a5
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: b46b36805c2f33b1e066bbee2d0333113a26922a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>使用 Resource Manager 模板和 Resource Manager REST API 部署资源
 > [!div class="op_single_selector"]
@@ -88,7 +88,37 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="parameter-file"></a>参数文件
 
-[!INCLUDE [resource-manager-parameter-file](../../includes/resource-manager-parameter-file.md)]
+如果要在部署期间使用参数文件传递参数值，需要使用类似于以下示例的格式创建一个 JSON 文件：
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "webSiteName": {
+            "value": "ExampleSite"
+        },
+        "webSiteHostingPlanName": {
+            "value": "DefaultPlan"
+        },
+        "webSiteLocation": {
+            "value": "West US"
+        },
+        "adminPassword": {
+            "reference": {
+               "keyVault": {
+                  "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
+               }, 
+               "secretName": "sqlAdminPassword" 
+            }   
+        }
+   }
+}
+```
+
+参数文件的大小不能超过 64 KB。
+
+如果需要为参数（如密码）提供敏感值，请将该值添加到密钥保管库。 在部署过程中检索密钥保管库，如前面的示例所示。 有关详细信息，请参阅[在部署期间传递安全值](resource-manager-keyvault-parameter.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解如何处理异步 REST 操作，请参阅[跟踪异步 Azure 操作](resource-manager-async-operations.md)。

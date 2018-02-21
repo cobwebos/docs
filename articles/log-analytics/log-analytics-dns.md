@@ -3,7 +3,7 @@ title: "Azure Log Analytics 中的 DNS Analytics 解决方案 | Microsoft Docs"
 description: "在 Log Analytics 中设置并使用 DNS Analytics 解决方案，收集有关 DNS 基础结构安全性、性能和操作的见解。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
-ms.author: banders
-ms.openlocfilehash: 8f83d019c0168aa5abbf3211b4a599f631e9f426
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.author: magoedte
+ms.openlocfilehash: 8ead058108f39eca8682eccc296760d4b756d336
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -145,7 +145,7 @@ DNS Analytics 可帮助：
 
 **示例 DDI Analytics 查询**。 包含直接提取原始分析数据的最常见搜索查询的列表。
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![示例查询](./media/log-analytics-dns/queries.png)
 

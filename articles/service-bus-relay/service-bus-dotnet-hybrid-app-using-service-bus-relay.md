@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/02/2017
 ms.author: sethm
-ms.openlocfilehash: 77bb769a094c2a619c0c75363e23ae3ee561c1e4
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: fe13de5f83fe18a85f8d46d0eee039159e1a60e9
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>使用 Azure WCF 中继创建 .NET 本地/云混合应用程序
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 11/07/2017
     ![][18]
 
 7. 回到“新建 ASP.NET Web 应用程序”对话框，单击“确定”创建 MVC 应用。
-8. 现在必须配置新 Web 应用的 Azure 资源。 按照[本文“发布到 Azure”部分](../app-service/app-service-web-get-started-dotnet.md#publish-to-azure)的步骤操作。 然后，返回到本教程并继续执行下一步。
+8. 现在必须配置新 Web 应用的 Azure 资源。 按照[本文“发布到 Azure”部分](../app-service/app-service-web-get-started-dotnet-framework.md#publish-to-azure)的步骤操作。 然后，返回到本教程并继续执行下一步。
 10. 在解决方案资源管理器中，右键单击“模型”，并依次单击“添加”和“类”。 在“名称”框中，键入名称“Product.cs”。 然后，单击“添加”。
 
     ![][17]

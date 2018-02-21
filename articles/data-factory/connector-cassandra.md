@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 5b6a2cde9bea3d3aba9262bb9446d54773cf0297
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: bc57e54b051ff8831ba38e91ed682b8f5d868d46
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>使用 Azure 数据工厂从 Cassandra 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/23/2018
 
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Cassandra 连接器](v1/data-factory-onprem-cassandra-connector.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Cassandra 连接器](v1/data-factory-onprem-cassandra-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -60,7 +60,7 @@ Cassandra 链接的服务支持以下属性：
 | 端口 |Cassandra 服务器用来侦听客户端连接的 TCP 端口。 |否（默认值为 9042） |
 | authenticationType | 用于连接 Cassandra 数据库的身份验证类型。<br/>允许的值为：Basic 和 Anonymous。 |是 |
 | username |为用户帐户指定用户名。 |是（如果 authenticationType 设置为 Basic）。 |
-| password |指定用户帐户的密码。 将此字段标记为 SecureString。 |是（如果 authenticationType 设置为 Basic）。 |
+| password |指定用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（如果 authenticationType 设置为 Basic）。 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 **示例：**
@@ -231,11 +231,11 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 | pk_int | List_index | List_value |
 | --- | --- | --- |
 | 1 |0 |1 |
-| 1 |1 |#N/A |
-| 1 |#N/A |3 |
+| 1 |1 |2 |
+| 1 |2 |3 |
 | 3 |0 |100 |
 | 3 |1 |101 |
-| 3 |#N/A |102 |
+| 3 |2 |102 |
 | 3 |3 |103 |
 
 **表“ExampleTable_vt_Map”：**

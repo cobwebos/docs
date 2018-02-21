@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 905a2bf1b42819a531bc4b16dd1e6f5539e80068
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 6af955b456a00fa90a9e49701fef6318e51bbd4b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/23/2018
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Teradata 数据库复制数据。 本文基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Teradata 连接器](v1/data-factory-onprem-teradata-connector.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Teradata 连接器](v1/data-factory-onprem-teradata-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -61,7 +61,7 @@ Teradata 链接的服务支持以下属性：
 | server | Teradata 服务器的名称。 | 是 |
 | authenticationType | 用于连接 Teradata 数据库的身份验证类型。<br/>允许的值为：Basic 和 Windows。 | 是 |
 | username | 指定用于连接到 Teradata 数据库的用户名。 | 是 |
-| password | 指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString。 | 是 |
+| password | 指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
 **示例：**

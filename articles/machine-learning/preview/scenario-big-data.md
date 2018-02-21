@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: f2482c7a47c72d192f26f3d8d9b9249af53da25d
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: c8e023d68ec2c7e40675f985d3e13b0714cec8ea
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>基于 TB 量级的数据执行服务器工作负荷预测
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/12/2018
 在此方案中，重点是针对每台计算机（或服务器）的工作负荷预测。 具体说来，请使用每台服务器上的会话数据来预测未来服务器的工作负荷类别。 请使用 [Apache Spark ML](https://spark.apache.org/docs/2.1.1/ml-guide.html) 中的随机林分类器将每台服务器的负荷分为低、中、高三个类别。 该示例中的机器学习技术和工作流可以被轻松地延伸至其他类似问题。 
 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 运行此示例的先决条件如下所示：
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/12/2018
 * Windows 10（对于 macOS 系统，此示例中的说明通常也一样）。
 * Data Science Virtual Machine (DSVM) for Linux (Ubuntu)，最好位于数据所在的美国东部地区。 可以按照[这些说明](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)预配 Ubuntu DSVM。 也可参阅[此快速入门](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)。 我们建议使用至少具有 8 个内核和 32 GB 内存的虚拟机。 
 
-按照[说明](https://docs.microsoft.com/azure/machine-learning/preview/known-issues-and-troubleshooting-guide#remove-vm-execution-error-no-tty-present)在 VM 上为 AML Workbench 启用无密码 sudoer 访问。  可以选择[在 AML Workbench 中使用基于 SSH 密钥的身份验证来创建和使用 VM](https://docs.microsoft.com/azure/machine-learning/preview/experimentation-service-configuration#using-ssh-key-based-authentication-for-creating-and-using-compute-targets)。 在此示例中，我们使用密码来访问 VM。  将下表与 DSVM 信息一起保存，以供在后续步骤中使用：
+按照[说明](known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present)在 VM 上为 AML Workbench 启用无密码 sudoer 访问。  可以选择[在 AML Workbench 中使用基于 SSH 密钥的身份验证来创建和使用 VM](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets)。 在此示例中，我们使用密码来访问 VM。  将下表与 DSVM 信息一起保存，以供在后续步骤中使用：
 
  字段名称| 值 |  
  |------------|------|
@@ -115,8 +115,8 @@ DSVM IP 地址 | xxx|
 12 | `SubService_5_Load`| Double |      子服务 5 负荷
 13 |`SecureBytes_Load`  | Double | 安全字节负荷
 14 |`TotalLoad` | Double | 服务器总负荷
-15 |`ClientIP` | 字符串|    客户端 IP 地址
-16 |`ServerIP` | 字符串|    服务器 IP 地址
+15 |`ClientIP` | String|    客户端 IP 地址
+16 |`ServerIP` | String|    服务器 IP 地址
 
 
 
@@ -186,11 +186,11 @@ DSVM IP 地址 | xxx|
 
 | 字段 | Type | 说明 |
 |-----------|------|-------------|
-| storageAccount | 字符串 | Azure 存储帐户名称 |
-| storageContainer | 字符串 | Azure 存储帐户中用于存储中间结果的容器 |
-| storageKey | 字符串 |Azure 存储帐户访问密钥 |
-| dataFile|字符串 | 数据源文件  |
-| duration| 字符串 | 数据源文件中的数据持续时间|
+| storageAccount | String | Azure 存储帐户名称 |
+| storageContainer | String | Azure 存储帐户中用于存储中间结果的容器 |
+| storageKey | String |Azure 存储帐户访问密钥 |
+| dataFile|String | 数据源文件  |
+| duration| String | 数据源文件中的数据持续时间|
 
 同时修改 `Config/storageconfig.json` 和 `Config/fulldata_storageconfig.json` 以配置存储帐户、存储密钥和 Blob 容器，以存储中间结果。 默认情况下，一个月数据运行的 Blob 容器是 `onemonthmodel`，完整数据集运行的 Blob 容器是 `fullmodel`。 请确保在存储帐户中创建这两个容器。 [`Config/fulldata_storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json) 中的 `dataFile` 字段配置在 [`Code/etl.py`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py) 中加载的数据。 `duration` 字段配置数据所包括的范围。 如果持续时间设置为 ONE_MONTH，则所加载的数据应为 2016 年 6 月数据的七个文件中的一个 .csv 文件。 如果持续时间为 FULL，则加载完整数据集 (1 TB)。 无需在这两个配置文件中更改 `dataFile` 和 `duration`。
 
@@ -330,7 +330,7 @@ run_logger.log("Test Accuracy", testAccuracy)
 
 在此部分，请实施在前述步骤中作为 Web 服务创建的模型。 另请了解如何使用 Web 服务来预测工作负荷。 使用计算机语言实施命令行接口 (CLI) 将代码和依赖项打包为 Docker 图像，并将模型作为容器化 Web 服务发布。
 
-可以在 Machine Learning Workbench 中使用命令行提示符来运行 CLI。  也可以按照[安装指南](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/install-on-ubuntu-linux.md)在 Ubuntu Linux 上运行 CLI。 
+可以在 Machine Learning Workbench 中使用命令行提示符来运行 CLI。  也可以按照[安装指南](./deployment-setup-configuration.md#using-the-cli)在 Ubuntu Linux 上运行 CLI。 
 
 > [!NOTE]
 > 在下述所有命令中，将任何参数变量替换为实际值。 完成此部分需要约 40 分钟的时间。
@@ -416,7 +416,7 @@ run_logger.log("Test Accuracy", testAccuracy)
 
 8. 扩展 Web 服务。 
 
-   有关详细信息，请参阅 [How to scale operationalization on your Azure Container Service cluster](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/how-to-scale.md)（如何在 Azure 容器服务群集上进行大规模实施）。
+   有关详细信息，请参阅 [How to scale operationalization on your Azure Container Service cluster](how-to-scale-clusters.md)（如何在 Azure 容器服务群集上进行大规模实施）。
  
 
 ## <a name="next-steps"></a>后续步骤

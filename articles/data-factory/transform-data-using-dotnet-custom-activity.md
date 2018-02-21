@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 2674b431ba610bccb92f6b209970af1fab110f48
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: ad829fc771bf67953315f3f42abd66eaa2628c13
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,13 +32,13 @@ ms.lasthandoff: 01/24/2018
 若要将数据移入/移出数据工厂不支持的数据存储，或者要以数据工厂不支持的方式转换/处理数据，可以使用你自己的数据移动或转换逻辑创建**自定义活动**，并在管道中使用该活动。 自定义活动在虚拟机的 **Azure Batch** 池上运行自定义代码逻辑。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的（自定义）DotNet 活动](v1/data-factory-use-custom-activities.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 版本 1 的数据工厂服务，请参阅[数据工厂版本 1 中的（自定义）DotNet 活动](v1/data-factory-use-custom-activities.md)。
  
 
-如果不熟悉 Azure Batch 服务，请参阅以下主题：
+如果不熟悉 Azure Batch 服务，请参阅以下文章：
 
 * [Azure Batch 基础知识](../batch/batch-technical-overview.md) - Azure Batch 服务的概述。
-* [New-AzureRmBatchAccount](/powershell/module/azurerm.batch/New-AzureRmBatchAccount?view=azurermps-4.3.1) cmdlet - 创建 Azure Batch 帐户（或）[Azure 门户](../batch/batch-account-create-portal.md) - 使用 Azure 门户创建 Azure Batch 帐户。 请参阅 [Using PowerShell to manage Azure Batch Account](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)（使用 Azure PowerShell 管理 Azure Batch 帐户）主题，以了解有关使用此 cmdlet 的详细信息。
+* [New-AzureRmBatchAccount](/powershell/module/azurerm.batch/New-AzureRmBatchAccount?view=azurermps-4.3.1) cmdlet - 创建 Azure Batch 帐户（或）[Azure 门户](../batch/batch-account-create-portal.md) - 使用 Azure 门户创建 Azure Batch 帐户。 请参阅 [Using PowerShell to manage Azure Batch Account](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)（使用 Azure PowerShell 管理 Azure Batch 帐户）一文，了解有关使用此 cmdlet 的详细说明。
 * [New-AzureBatchPool](/powershell/module/azurerm.batch/New-AzureBatchPool?view=azurermps-4.3.1) cmdlet - 创建 Azure Batch 池。
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 链接服务 
@@ -107,7 +107,7 @@ ms.lasthandoff: 01/24/2018
 
 | 属性              | 说明                              | 必选 |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | 管道中活动的名称     | 是      |
+| 名称                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
 | type                  | 对于自定义活动，活动类型为 **Custom**。 | 是      |
 | linkedServiceName     | Azure Batch 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  | 是      |
@@ -295,12 +295,12 @@ namespace SampleApp
 如果要在下游活动中使用 stdout.txt 的内容，则可以在表达式“@activity('MyCustomActivity').output.outputs[0]”中获取 stdout.txt 文件的路径。 
 
   > [!IMPORTANT]
-  > - activity.json、linkedServices.json 和 datasets.json 存储在 Bath 任务的 runtime 文件夹中。 对于本例，activity.json、linkedServices.json 和 datasets.json 存储在“https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/”路径中。 必要时需要单独清理它们。 
+  > - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 对于本例，activity.json、linkedServices.json 和 datasets.json 存储在“https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/”路径中。 必要时需要单独清理它们。 
   > - 对于使用自承载集成运行时的链接服务，将通过自承载集成运行时对敏感信息（例如密钥或密码）进行加密，以确保凭据保留在客户定义的专用网络环境中。 以此方式在自定义应用程序代码中进行引用时，可能会丢掉一些敏感字段。 如果需要，请在 extendedProperties 中使用 SecureString 而非使用链接服务引用。 
 
-## <a name="difference-between-custom-activity-in-azure-data-factory-v2-and-custom-dotnet-activity-in-azure-data-factory-v1"></a>Azure 数据工厂 V2 中的自定义活动和 Azure 数据工厂 V1 中的（自定义） DotNet 活动之间的差异 
+## <a name="difference-between-custom-activity-in-azure-data-factory-version-2-and-custom-dotnet-activity-in-azure-data-factory-version-1"></a>Azure 数据工厂版本 2 中的自定义活动和 Azure 数据工厂版本 1 中的（自定义） DotNet 活动之间的差异
 
-  在 Azure 数据工厂 V1 中，通过使用实现 IDotNetActivity 接口 Execute 方法的类创建 .NET 类库项目来实现（自定义）DotNet 活动代码。 链接服务、数据集和（自定义）DotNet 活动 JSON 负载中的扩展属性作为强类型对象传递到执行方法。 有关详细信息，请参阅 [V1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 因此，需要在 .Net Framework 4.5.2 中编写自定义代码，并需要在基于 Windows 上的 Azure Batch 池节点上执行该代码。 
+  在 Azure 数据工厂版本 1 中，通过使用实现 IDotNetActivity 接口 Execute 方法的类创建 .NET 类库项目来实现（自定义）DotNet 活动代码。 链接服务、数据集和（自定义）DotNet 活动 JSON 负载中的扩展属性作为强类型对象传递到执行方法。 有关详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 因此，需要在 .Net Framework 4.5.2 中编写自定义代码，并需要在基于 Windows 上的 Azure Batch 池节点上执行该代码。 
 
   在 Azure 数据工厂 V2 自定义活动中，无需实现 .Net 接口。 现在可以直接运行命令、脚本，并可运行自己已编译为可执行文件的自定义代码。 可以通过指定 Command 属性和 folderPath 属性来实现此目的。 自定义活动会将可执行文件和依赖项上传到 folderpath，并执行命令。 
 
@@ -308,10 +308,10 @@ namespace SampleApp
 
   借助 Azure 数据工厂 V2 自定义活动中引入的更改，你可以随意使用自己喜欢的语言编写自定义代码，并可在 Azure Batch 支持的 Windows 和 Linux 操作系统上执行这些代码。 
 
-  下表介绍数据工厂 V2 自定义活动和数据工厂 V1（自定义）DotNet 活动之间的差异： 
+  下表介绍数据工厂 V2 自定义活动和数据工厂版本 1（自定义）DotNet 活动之间的差异： 
 
 
-|差异      |ADFv2 自定义活动      |ADFv1（自定义）DotNet 活动      |
+|差异      |版本 2 自定义活动      | 版本 1（自定义）DotNet 活动      |
 | ---- | ---- | ---- |
 |如何定义自定义逻辑      |通过运行任何可执行文件（现有可执行文件或实施你自己的可执行文件）      |通过实施 .Net DLL      |
 |自定义逻辑的执行环境      |Windows 或 Linux      |Windows (.Net Framework 4.5.2)      |
@@ -322,16 +322,16 @@ namespace SampleApp
 |日志记录      |直接写入到 STDOUT      |在 .Net DLL 中实施记录器      |
 
 
-  如果有针对 V1（自定义）DotNet 活动编写的现有 .Net 代码，则需要按照以下高级准则修改代码，以使其可用于 V2 自定义活动：  
+  如果有针对版本 1（自定义）DotNet 活动编写的现有 .Net 代码，则需要按照以下高级准则修改代码，使其可用于版本 2 自定义活动：  
 
    - 将项目从 .Net 类库更改到控制台应用。 
    - 使用 Main 方法启动应用程序，将不再需要 IDotNetActivity 接口的 Execute 方法。 
    - 使用 JSON 序列化程序读取和分析链接服务、数据集和活动，而不是将它们作为强类型对象，然后将所需属性的值传递到主自定义代码逻辑。 可将前面的 SampleApp.exe 代码作为示例进行参考。 
-   - 将不再支持 Logger 对象，可将执行文件输出传输到控制台，并保存到 stdout.txt。 
+   - 将不再支持 Logger 对象，可将可执行文件输出传输到控制台，并保存到 stdout.txt。 
    - 将不再需要 Microsoft.Azure.Management.DataFactories NuGet 包。 
    - 编译代码，将可执行文件和依赖项上传到 Azure 存储，并在 folderPath 属性中定义路径。 
 
-有关端到端 DLL 和数据工厂 V1 文档[在 Azure 数据工厂管道中使用自定义活动](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)中所述的管道示例如何重写到数据工厂 V2 自定义活动样式中的完整示例。 请参阅[数据工厂 V2 自定义活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)。 
+有关端到端 DLL 和数据工厂版本 1 文档[在 Azure 数据工厂管道中使用自定义活动](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)中所述的管道示例如何重写到数据工厂版本 2 自定义活动样式中的完整示例。 请参阅[数据工厂版本 2 自定义活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)。 
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch 的自动缩放
 还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量不使用专用 VM 但使用自动缩放公式创建 Azure 批处理池。 

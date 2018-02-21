@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: d6e5b27493a786daa604124d4572f51bae4bcb20
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f46917731ef64290816870b6abd14679dd465211
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/23/2018
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 SQL Server 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的 SQL Server 连接器](v1/data-factory-sqlserver-connector.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的 SQL Server 连接器](v1/data-factory-sqlserver-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -57,9 +57,9 @@ SQL Server 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SqlServer** | 是 |
-| connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 connectionString 信息。 将此字段标记为 SecureString。 |是 |
+| connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 connectionString 信息。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
 | userName |如果使用的是 Windows 身份验证，请指定用户名。 示例：**域名\\用户名**。 |否 |
-| password |指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString。 |否 |
+| password |指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 **示例 1：使用 SQL 身份验证**
@@ -257,7 +257,7 @@ GO
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。<br/>允许的值为：整数（行数）。 |否（默认值：10000） |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。<br/>允许的值为：timespan。 示例：“00:30:00”（30 分钟）。 |否 |
 | preCopyScript |将数据写入到 SQL Server 之前，指定复制活动要执行的 SQL 查询。 每次运行复制仅调用该查询一次。 此属性可用于清理预先加载的数据。 |否 |
-| sqlWriterStoredProcedureName |存储过程的名称，该存储过程定义如何将源数据应用到目标表，例如使用你自己的业务逻辑执行更新插入或转换。 <br/><br/>请注意，此存储过程将**由每个批处理调用**。 如果要执行仅运行一次且与源数据无关的操作（例如删除/截断），请使用 `preCopyScript` 属性。 |否 |
+| sqlWriterStoredProcedureName |存储过程的名称，该存储过程定义如何将源数据应用到目标表，例如使用你自己的业务逻辑执行更新插入或转换。 <br/><br/>请注意，此存储过程将由每个批处理调用。 如果要执行仅运行一次且与源数据无关的操作（例如删除/截断），请使用 `preCopyScript` 属性。 |否 |
 | storedProcedureParameters |存储过程的参数。<br/>允许的值为：名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 | sqlWriterTableType |指定要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |否 |
 

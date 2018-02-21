@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: d72b5aa352a9c6724e801c1741969525387f6b90
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: c2c9588e6c452714edcc594c05c59ed05f3c6666
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>教程：为 Asana 配置自动用户预配
 
@@ -93,7 +93,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 12. 选择“保存”。 
 
-这会对“用户”部分中分配到 Asana 的任何用户启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 20 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接。 这些报告说明了预配服务对 Asana 应用执行的所有操作。
+这会对“用户”部分中分配到 Asana 的任何用户启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接。 这些审核日志描述了预配服务对 Asana 应用执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](active-directory-saas-provisioning-reporting.md)。
 

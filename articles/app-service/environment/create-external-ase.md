@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 70c43b25aea364d7254137b46af31f851dcf8bc6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1beb06301807c35a1b070989a0f80f4c8097762
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-external-app-service-environment"></a>创建外部应用服务环境 #
 
@@ -32,7 +32,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 创建 ASE 后，不能更改以下项：
 
-- 位置
+- Location
 - 订阅
 - 资源组
 - 使用的 VNet
@@ -87,7 +87,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
     b. 输入新的子网名称。
 
-    c. 选择子网的大小。 请记住选择足够的大小，以容纳 ASE 的未来增长。 建议使用 `/25`，其地址长度为 128 位且能够容纳最大尺寸的 ASE。 例如，建议不要使用 `/28`，因为仅有 16 位地址可用。 基础结构至少占用 5 个地址。 在 `/28` 子网中，最多剩下 11 个缩放实例。
+    c. 选择子网的大小。 请记住选择足够的大小，以容纳 ASE 的未来增长。 建议使用 `/25`，其地址长度为 128 位且能够容纳最大尺寸的 ASE。 例如，建议不要使用 `/28`，因为仅有 16 位地址可用。 基础结构至少使用 7 个地址，Azure 网络使用另外 5 个地址。 在 `/28` 子网中，对于外部 ASE，你最多可以缩放 4 个应用服务计划，而对于 ILB ASE，只能缩放 3 个应用服务计划。
 
     d.单击“下一步”。 选择子网 IP 范围。
 

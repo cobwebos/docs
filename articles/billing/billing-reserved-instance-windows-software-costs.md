@@ -1,6 +1,6 @@
 ---
 title: "Azure 保留 VM 实例 Windows 软件成本 | Microsoft Docs"
-description: "了解对符合保留实例条件的 Windows VM 的 Window 软件使用了哪些计量。"
+description: "了解预订虚拟机实例成本中不包含哪些 Windows 软件计量。"
 services: billing
 documentationcenter: 
 author: manish-shukla01
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: manshuk
-ms.openlocfilehash: b985e6e9575ffeedcac5bcb3f94a43d23fdbb85e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: a0bb559369877e1cc5333394102bfb85d3f0bb11
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="windows-software-costs-not-included-with-reserved-instances"></a>保留实例未包含的 Windows 软件成本
 
-如果你对保留实例 VM 没有 Azure 混合使用权益，则会针对下表中列出的 Windows 软件计量向你收取费用：
+如果你对预订实例虚拟机没有 Azure 混合使用权益，则会针对以下部分中列出的 Windows 软件计量向你收取费用。
+
+## <a name="windows-software-meters-not-included-in-reserved-instance-cost"></a>预订实例成本中未包含的 Windows 软件计量
 
 | 计量 ID | 使用情况文件中的计量名称 | VM 使用的系列 |
 | ------- | ------------------------| --- |
@@ -48,3 +50,13 @@ ms.lasthandoff: 11/16/2017
 | 6fdab81b-4284-4df9-8939-c237cc7462fe | 保留-Windows Server（96 核心） | B 系列以外的所有系列 |
 
 可以通过 Azure RateCard API 来获取上述每个计量的成本。 有关如何获取 azure 计量的费率的信息，请参阅[获取 Azure 订阅中使用的资源的价格和元数据信息](https://msdn.microsoft.com/library/azure/mt219004)。
+
+## <a name="next-steps"></a>后续步骤
+若要了解有关预订虚拟机实例的详细信息，请参阅以下文章。
+
+- [通过预订 VM 实例预付虚拟机](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [管理预订虚拟机实例](billing-manage-reserved-vm-instance.md)
+- [通过预订虚拟机实例节省虚拟机资金](billing-save-compute-costs-reservations.md)
+- [了解如何应用预订虚拟机实例折扣](billing-understand-vm-reservation-charges.md)
+- [了解即用即付订阅的预订实例使用情况](billing-understand-reserved-instance-usage.md)
+- [了解企业许可登记表的预订实例使用情况](billing-understand-reserved-instance-usage-ea.md)

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 1a1855cc3f83d7fcba749ce94167039feb5bebe1
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 84fb2cc08e97541d2d9d327ca2b6865ff9a6fe20
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>使用 Azure 门户还原虚拟机
 可以通过按定义的间隔创建数据快照来保护数据。 这些快照称为恢复点，存储在恢复服务保管库中。 当需要修复或重新生成虚拟机 (VM) 时，可以从保存的任何恢复点还原 VM。 还原恢复点时，可以：
@@ -104,7 +104,7 @@ ms.lasthandoff: 01/22/2018
 
    * 还原磁盘
 
-门户为已还原的 VM 提供“快速创建”选项。 如果想要自定义在创建新 VM 过程中创建的资源的 VM 配置或名称，请使用 PowerShell 或门户还原已备份的磁盘。 使用 PowerShell 命令将其附加到所选 VM 配置。 或者可以使用附带了已还原磁盘的模板来自定义已还原的 VM。 有关如何还原具有多个 NIC 或采用负载均衡器的 VM 的详细信息，请参阅[还原采用特殊网络配置的 VM](#restore-a vm-with-special-network-configurations)。 如果 Windows VM 使用 [HUB 许可](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，请还原磁盘并使用本文中所指定的 PowerShell/模板来创建 VM。 确保在创建 VM 时将“许可证类型”指定为“Windows_Server”以利用还原的 VM 上的 HUB 优势。 
+门户为已还原的 VM 提供“快速创建”选项。 如果想要自定义在创建新 VM 过程中创建的资源的 VM 配置或名称，请使用 PowerShell 或门户还原已备份的磁盘。 使用 PowerShell 命令将其附加到所选 VM 配置。 或者可以使用附带了已还原磁盘的模板来自定义已还原的 VM。 有关如何还原具有多个 NIC 或采用负载均衡器的 VM 的详细信息，请参阅[还原采用特殊网络配置的 VM](#restore-vms-with-special-network-configurations)。 如果 Windows VM 使用 [HUB 许可](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，请还原磁盘并使用本文中所指定的 PowerShell/模板来创建 VM。 确保在创建 VM 时将“许可证类型”指定为“Windows_Server”以利用还原的 VM 上的 HUB 优势。 
  
 ## <a name="create-a-new-vm-from-a-restore-point"></a>从还原点创建新的 VM
 1. 如果尚未执行此操作，请[选择一个还原点](#restore-a vm-with-special-network-configurations)，然后开始从还原点创建新的 VM。 选择还原点后，请在“还原配置”边栏选项卡中，输入或选择以下每个字段的值：

@@ -3,7 +3,7 @@ title: "在 Azure 中创建自定义的基于角色的访问控制角色并将�
 description: "为内部和外部用户分配使用 PowerShell 与 CLI 创建的自定义 RBAC 角色"
 services: active-directory
 documentationcenter: 
-author: andreicradu
+author: rolyon
 manager: mtillman
 editor: kgremban
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
 ms.date: 12/06/2017
-ms.author: a-crradu
+ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: b3b65812d453a9f7d93ee4381c4261e685a60376
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 75a45b492c230b19d2f7237f8ea7fe2c49de29bf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="intro-on-role-based-access-control"></a>基于角色的访问控制简介
 
@@ -96,7 +96,7 @@ RBAC 角色只能由订阅的“所有者”授予，因此管理员用户必须
 已邀请用户“chessercarlton@gmail.com”成为“免费试用”订阅的“所有者”。 发送邀请后，外部用户将收到包含激活链接的电子邮件确认。
 ![RBAC 角色的电子邮件邀请](./media/role-based-access-control-create-custom-roles-for-internal-external-users/5.png)
 
-由于在组织外部，新用户在“默认租户 Azure”目录中没有任何现有的属性。 同意在与外部用户分配有角色的订阅相关联的目录中记录该用户后，会创建这些属性。
+由于在组织外部，新用户在“默认租户 Azure”目录中没有任何现有的属性。 在外部用户同意记录在与其分配有角色的订阅关联的目录中后，会创建这些属性。
 
 
 
@@ -116,7 +116,7 @@ RBAC 角色只能由订阅的“所有者”授予，因此管理员用户必须
 
 在“用户”视图中，可以通过 Azure 门户中的不同图标类型识别外部用户。
 
-但是，在“订阅”范围向外部用户授予“所有者”或“参与者”访问权限并不允许他们访问管理员用户的目录，除非“全局管理员”允许访问。 在用户属性中，可以看到包含“成员”和“来宾”这两个通用参数的“用户类型”。 成员是已在目录中注册的用户，而来宾是来自外部源的、受邀加入目录的用户。 有关详细信息，请参阅 [Azure Active Directory 管理员如何添加 B2B 协作用户](active-directory-b2b-admin-add-users.md)。
+但是，在“订阅”范围向外部用户授予“所有者”或“参与者”访问权限并不允许他们访问管理员用户的目录，除非“全局管理员”允许访问。 在用户属性中，可以标识包含“成员”和“来宾”这两个通用参数的“用户类型”。 成员是已在目录中注册的用户，而来宾是来自外部源的、受邀加入目录的用户。 有关详细信息，请参阅 [Azure Active Directory 管理员如何添加 B2B 协作用户](active-directory-b2b-admin-add-users.md)。
 
 > [!NOTE]
 > 请确保在门户中输入凭据后，外部用户选择要登录到的正确目录。 同一个用户可以访问多个目录，并且可以选择其中的一个目录：在 Azure 门户中单击右上角的用户名，并从下拉列表中选择相应的目录。
@@ -129,7 +129,7 @@ RBAC 角色只能由订阅的“所有者”授予，因此管理员用户必须
 
 ![Azure Active Directory Azure 门户中受限的访问权限](./media/role-based-access-control-create-custom-roles-for-internal-external-users/9.png)
 
-Azure Active Directory 与 Azure 订阅之间不像其他 Azure 资源（例如：虚拟机、虚拟网络、Web 应用、存储等）与 Azure 订阅之间一样存在子-父关系。 后者都是在 Azure 订阅下创建、管理和计费的，同时，Azure 订阅用于管理对 Azure 目录的访问。 有关详细信息，请参阅 [Azure 订阅与 Azure AD 的关系](/active-directory/active-directory-how-subscriptions-associated-directory)。
+Azure Active Directory 与 Azure 订阅之间不像其他 Azure 资源（例如：虚拟机、虚拟网络、Web 应用、存储等）与 Azure 订阅之间一样存在子-父关系。 后者都是在 Azure 订阅下创建、管理和计费的，而 Azure 订阅用于管理对 Azure 目录的访问。 有关详细信息，请参阅 [Azure 订阅与 Azure AD 的关系](/active-directory/active-directory-how-subscriptions-associated-directory)。
 
 在所有内置 RBAC 角色中，“所有者”和“参与者”提供对环境中所有资源的完全管理访问权限，两者的区别在于，“参与者”无法创建和删除新的 RBAC 角色。 其他内置角色（例如“虚拟机参与者”）只提供对按名称指定的资源的完全管理访问权限，不管这些角色是在哪个**资源组**中创建的。
 
@@ -158,7 +158,7 @@ Azure Active Directory 与 Azure 订阅之间不像其他 Azure 资源（例如�
 无论是从授予 RBAC 角色的管理角度，还是将授予用户对角色的访问权限的角度来看，流程都与添加外部用户相同。 此处的差别在于，受邀用户不会收到任何电子邮件邀请，因为订阅中的所有资源范围只有在登录后才会显示在仪表板中。
 
 ## <a name="assign-rbac-roles-at-the-resource-group-scope"></a>在资源组范围分配 RBAC 角色
-对于外部和内部（属于同一个目录）这两种用户类型，在**资源组**范围分配 RBAC 角色的过程与在订阅级别分配角色的过程相同。 分配有 RBAC 角色的用户只能通过 Azure 门户中的“资源组”图标查看其环境中有权访问的资源组。
+对于外部和内部（属于同一个目录）这两种用户类型，在**资源组**范围分配 RBAC 角色的过程与在订阅级别分配角色的过程相同。 分配有 RBAC 角色的用户只能通过 Azure 门户中的“资源组”图标查看其环境中他们有权访问的资源组。
 
 ## <a name="assign-rbac-roles-at-the-resource-scope"></a>在资源范围分配 RBAC 角色
 在 Azure 中的资源范围分配 RBAC 角色的过程，与在订阅级别或资源组级别分配该角色的过程相同，这两种方案都遵循相同的工作流。 同样，分配有 RBAC 角色的用户只能在“所有资源”选项卡或直接在仪表板中查看他们有权访问的项。
@@ -172,7 +172,7 @@ Azure Active Directory 与 Azure 订阅之间不像其他 Azure 资源（例如�
 ![Azure 门户中的目录登录](./media/role-based-access-control-create-custom-roles-for-internal-external-users/13.png)
 
 ## <a name="assign-rbac-roles-for-an-azure-active-directory-group"></a>为 Azure Active Directory 组分配 RBAC 角色
-在 Azure 中的三个不同范围使用 RBAC 的所有方案都提供以已分配用户身份管理和部署各种资源的特权，而无需管理个人订阅。 不管 RBAC 角色是针对订阅、资源组或资源范围分配的，已分配用户创建的其他所有资源都会根据用户有权访问的某个 Azure 订阅计费。 这样，对整个 Azure 订阅拥有计费管理员权限的用户便可以获得完整的消耗概况，不管资源由谁管理。
+在 Azure 中的三个不同范围使用 RBAC 的所有方案都提供以已分配用户身份管理和部署各种资源的特权，而无需管理个人订阅。 不管 RBAC 角色是针对订阅、资源组还是资源范围分配的，已分配用户创建的其他所有资源都会根据用户有权访问的某个 Azure 订阅进行计费。 这样，对整个 Azure 订阅拥有计费管理员权限的用户便可以获得完整的消耗概况，不管资源由谁管理。
 
 对于大型组织，可通过不同的方式针对 Azure Active Directory 组应用 RBAC 角色，同时考虑到管理员用户是否想要针对团队或整个部门而不是每个用户授予精细访问权限，因此可将此方案视为一个极具时间和管理效率的选项。 为了演示此示例，我们已在订阅级别将“参与者”角色添加到租户中的某个组。
 
@@ -189,9 +189,9 @@ Azure 中提供的内置 RBAC 角色可确保根据环境中可用的资源授�
 
 创建自定义 RBAC 角色需要使用某个内置角色，对其进行编辑，然后将它导入回到环境中。 角色的下载和上传是使用 PowerShell 或 CLI 管理的。
 
-必须了解创建可在订阅级别授予精细访问权限，并允许受邀用户灵活提出支持请求的自定义角色的相关先决条件。
+必须了解创建可在订阅级别授予精细访问权限，并允许受邀用户灵活提出支持请求的自定义角色的先决条件。
 
-在此示例中，允许用户查看所有资源范围，但不允许编辑这些范围或者创建新范围的内置角色“读取者”已经过自定义，允许用户使用相应的选项提出支持请求。
+在此示例中，允许用户查看所有资源范围，但不允许编辑这些范围或者创建新范围的内置角色“读者”已经过自定义，允许用户使用相应的选项提出支持请求。
 
 第一个操作（导出“读取者”角色）需要在使用提升的权限以管理员身份运行的 PowerShell 中完成。
 
@@ -293,7 +293,7 @@ New-AzureRMRoleDefinition -InputFile "C:\rbacrole2.json"
 
 创建自定义角色的步骤与前面所述相同，唯一的差别在于，使用 CLI 时，无法在 JSON 模板中下载角色，但可以在 CLI 中查看角色。
 
-对于本示例，我已选择内置角色“备份读取者”。
+对于本示例，我已选择内置角色“备份读者”。
 
 ```
 

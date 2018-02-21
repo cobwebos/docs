@@ -8,13 +8,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 6df7d74d572a59c83105905fbe0a9e218aadc28f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: b5dbf4b7ae0fc1f8871fbf6df1a29f0f7324d83a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/23/2018
 本文概述如何使用 Azure 数据工厂中的复制活动向/从 Azure Blob 存储复制数据。 本文基于说明复制活动总体概述的[复制活动概述](copy-activity-overview.md)一文构建。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 版本 1 的数据工厂服务，请参阅 [V1 中的 Amazon S3 连接器](v1/data-factory-amazon-simple-storage-service-connector.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 版本 1 的数据工厂服务，请参阅 [V1 中的 Amazon S3 连接器](v1/data-factory-amazon-simple-storage-service-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -37,9 +37,9 @@ ms.lasthandoff: 01/23/2018
 若要从 Amazon S3 复制数据，请确保已具有以下权限：
 
 - 对 Amazon S3 对象操作的 `s3:GetObject` 和 `s3:GetObjectVersion`。
-- 对 Amazon S3 存储桶操作的 `s3:ListBucket`。 如果使用数据工厂复制向导，则还需要 `s3:ListAllMyBuckets`。
+- 对 Amazon S3 Bucket 操作的 `s3:ListBucket` 或 `s3:GetBucketLocation`。 如果使用数据工厂复制向导，则还需要 `s3:ListAllMyBuckets`。
 
-可以从[在策略中指定权限](http://docs.aws.amazon.com/amazons3/latest/dev/using-with-s3-actions.html)中找到 Amazon S3 权限的完整列表（包含详细信息）。
+可以从[在策略中指定权限](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)中找到 Amazon S3 权限的完整列表（包含详细信息）。
 
 ## <a name="getting-started"></a>入门
 
@@ -55,7 +55,7 @@ Amazon S3 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为“AmazonS3”。 | 是 |
 | accessKeyId | 机密访问键 ID。 |是 |
-| secretAccessKey | 机密访问键本身。 将此字段标记为 SecureString。 |是 |
+| secretAccessKey | 机密访问键本身。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 >[!NOTE]

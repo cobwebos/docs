@@ -10,10 +10,10 @@ ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
 ms.openlocfilehash: be502e6aef39ee4ed8cfc1f8926cb556dc1defb1
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="mount-an-azure-file-share-with-azure-container-instances"></a>装载与 Azure 容器实例的 Azure 文件共享
 

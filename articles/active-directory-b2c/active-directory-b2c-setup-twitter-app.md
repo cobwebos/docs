@@ -14,17 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/06/2017
 ms.author: parakhj
-ms.openlocfilehash: dde17c89c49223c75842f328f455c6637aa1915b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4dbc70d866a728a63102bd169a124bd26990aeb2
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts"></a>Azure Active Directory B2C：向用户提供使用 Twitter 帐户的注册和登录功能
-
-> [!NOTE]
-> 此功能为预览版。
-> 
 
 ## <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
 要将 Twitter 用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 Twitter 应用程序并向其提供合适的参数。 需要一个 Twitter 开发人员帐户，以便执行此操作。 如果没有此帐户，可以在 [https://dev.twitter.com/](https://dev.twitter.com/) 上获取。
@@ -46,3 +42,6 @@ ms.lasthandoff: 12/11/2017
 6. 单击“设置此标识提供者”，针对“客户端 ID”，输入 Twitter **使用者密钥**，针对“客户端密码”输入 Twitter **使用者密码**。
 7. 单击“确定”，并单击“创建”以保存 Twitter 配置。
 
+## <a name="next-steps"></a>后续步骤
+
+创建或编辑[内置策略](active-directory-b2c-reference-policies.md)并将 Twitter 添加为标识提供者。

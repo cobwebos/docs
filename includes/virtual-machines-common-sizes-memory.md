@@ -81,7 +81,7 @@ ACU：180 - 240
 
 <sup>1</sup> *GS 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。 有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/virtual-machines/windows/premium-storage.md)。 
 
-<sup>2</sup> 实例对于专用于单个客户的硬件独立。
+<sup>2</sup> 实例对于专用于单个客户的硬件独立。 
 
 <sup>3</sup> 受约束的可用核心大小 
 
@@ -117,7 +117,7 @@ ACU：210 - 250
 
 <sup>1</sup> DSv2 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../articles/virtual-machines/windows/premium-storage.md)。
 
-<sup>2</sup> 实例是一个独立的节点，可保证你的 VM 是 Intel Haswell 节点上的唯一 VM。
+<sup>2</sup> 实例对于专用于单个客户的硬件独立。 
 
 <sup>3</sup> 25000 Mbps，具有加速网络。
 
@@ -135,7 +135,7 @@ ACU：210 - 250
 | Standard_D14_v2   | 16        | 112         | 800            | 48000/750/375                                        | 64/64x500                       | 8 / 12000          |
 | Standard_D15_v2 <sup>1</sup> | 20        | 140         | 1,000          | 60000/937/468                                        | 64/64x500                       | 8 / 25000 <sup>2</sup> |
 
-<sup>1</sup> 实例是一个独立的节点，可保证你的 VM 是 Intel Haswell 节点上的唯一 VM。
+<sup>1</sup> 实例对于专用于单个客户的硬件独立。 
 
 <sup>2</sup> 25000 Mbps，具有加速网络。
 
