@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 88d71510c1d966c3250891eb9a430503959a91ba
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: f0fe8f65ff2d6a3029e44b51c004404e336e0129
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,7 +62,7 @@ Sybase 链接的服务支持以下属性：
 | database | Sybase 数据库的名称。 |是 |
 | authenticationType | 用于连接 Sybase 数据库的身份验证类型。<br/>允许的值为：Basic 和 Windows。 |是 |
 | username | 指定用于连接到 Sybase 数据库的用户名。 |是 |
-| password | 指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString。 |是 |
+| password | 指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
 **示例：**

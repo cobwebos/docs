@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: ab55281b6adcc8867f207e6887c88a26c1a8616b
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: e1cf4da324d082e0ee09feb3344cd2340ab59af7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure Cosmos DB 绑定
 
@@ -745,6 +745,12 @@ JavaScript 代码如下所示：
 
 > [!Note]  
 > 如果指定现有文档的 ID，它会被新的输出文档覆盖。 
+
+## <a name="exceptions-and-return-codes"></a>异常和返回代码
+
+| 绑定 | 引用 |
+|---|---|
+| DocumentDB | [Cosmos DB 错误代码](https://docs.microsoft.com/en-us/rest/api/documentdb/http-status-codes-for-documentdb) |
 
 ## <a name="next-steps"></a>后续步骤
 

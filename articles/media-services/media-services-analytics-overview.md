@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: c0bbe6f80370515fa783b12757434897fe2221b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88c854a6a2bc98a6851246c0ac3481869bbd9c34
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>媒体服务平台上的媒体分析
 ## <a name="overview"></a>概述
@@ -50,6 +50,8 @@ Microsoft Hyperlapse 结合了视频稳定化和慢镜头功能，可从长格�
 借助 Azure 媒体 OCR（光学字符识别），可以将视频文件中的文本内容转换成可编辑、可搜索的数字文本。 可以从媒体的视频信号中自动提取有意义的元数据。
 ### <a name="scalable-face-redaction"></a>可缩放的面部修订
 Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中进行可缩放的面部修订。 使用面部修订，可对视频进行修改，使所选个人的面部模糊显示。 用户可能想要在新闻媒体中或涉及公共安全时使用面部修订服务。 对于时长仅几分钟但包含多张面孔的镜头，进行手动面部修订可能需要几个小时，但使用此服务仅需几个简单步骤即可完成面部修订。 有关详细信息，请参阅[使用 Azure 媒体分析进行面部修订](media-services-face-redaction.md)文章。
+### <a name="content-moderation"></a>内容审核
+借助 Azure 内容审查器，可以对视频使用机器辅助审查。 例如，你可能希望检测视频中可能存在的成人和猥亵内容，以及复查由人工审查团队标记出的内容。 手动审查不良内容的视频是一项耗时且成本高昂的任务。 使用此服务及关联的检查工具，就可将机器辅助审查与“人在回路中”功能相结合，以经济高效的方式获得最佳结果。 若要了解详细信息，请参阅[使用 Azure 内容审查器处理视频](media-services-content-moderation.md)一文。
 
 ## <a name="common-scenarios"></a>常见方案
 媒体分析可帮助组织和企业从视频搜集新的见解，并更有效地管理大量视频内容。 下面介绍几种方案：
@@ -63,12 +65,13 @@ Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中�
 
 ### <a name="mp-names"></a>MP 名称
 * Azure Media Indexer 2 Preview
-* Azure Media Indexer
+* Azure 媒体索引器
 * Azure Media Hyperlapse
 * Azure 媒体面部检测器
 * Azure Media Motion Detector
 * Azure 媒体视频缩略图
 * Azure 媒体 OCR
+* Azure 媒体内容审查器
 
 ### <a name="net"></a>.NET
 以下函数采用其中一个指定的 MP 名称，并返回 MP 对象。
@@ -123,11 +126,6 @@ Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中�
 ## <a name="demos"></a>演示
 请参阅 [Azure 媒体分析演示](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)。
 
-## <a name="next-steps"></a>后续步骤
-查看媒体服务学习路径。
-
-[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
@@ -137,3 +135,8 @@ Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中�
 <!-- Images -->
 
 [overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
+
+## <a name="next-steps"></a>后续步骤
+查看媒体服务学习路径。
+
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

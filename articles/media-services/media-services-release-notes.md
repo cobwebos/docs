@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 4775374b7e91930daa686e48e2869b4891615c4c
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 919851db455e1ac727d8c98346d13e45d4336bc7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 这些 Azure 媒体服务发行说明汇总了与以前版本相比的变更之处和已知的问题。
@@ -348,8 +348,8 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](http://github.com/Azure/azur
 * 实时流式处理预览版。 有关详细信息，请参阅[使用媒体服务实时传送视频流](http://msdn.microsoft.com/library/azure/dn783466.aspx)。
 * 密钥传递服务。 有关详细信息，请参阅[使用 AES-128 动态加密和密钥传递服务](http://msdn.microsoft.com/library/azure/dn783457.aspx)。
 * AES 动态加密。 有关详细信息，请参阅[使用 AES-128 动态加密和密钥传递服务](http://msdn.microsoft.com/library/azure/dn783457.aspx)。
-* PlayReady 许可证传递服务。 有关详细信息，请参阅[使用 PlayReady 动态加密和许可证传递服务](http://msdn.microsoft.com/library/azure/dn783467.aspx)。
-* PlayReady 动态加密。 有关详细信息，请参阅[使用 PlayReady 动态加密和许可证传递服务](http://msdn.microsoft.com/library/azure/dn783467.aspx)。
+* PlayReady 许可证传递服务。 
+* PlayReady 动态加密。 
 * 媒体服务 PlayReady 许可证模板。 有关详细信息，请参阅[媒体服务 PlayReady 许可证模板概述]。
 * 流式处理存储加密资产。 有关详细信息，请参阅[流式处理存储加密内容](http://msdn.microsoft.com/library/azure/dn783451.aspx)。
 

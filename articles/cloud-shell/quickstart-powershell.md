@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: b454720dd5bd2df036a400c8bfc1c383de5af542
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 71ae70c13b4de87593345fd957a773741294b49c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>PowerShell in Azure Cloud Shell（预览版）快速入门
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/22/2018
 
 在 Cloud Shell 中运行普通的 PowerShell 命令，例如：
 
-```Powershell
+```PowerShell
 PS Azure:\> Get-Date
 Monday, September 25, 2017 08:55:09 AM
 
@@ -58,13 +58,13 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
 
  1. 列出订阅
 
-    ``` Powershell
+    ``` PowerShell
     PS Azure:\> dir
     ```
 
  2. 运行 `cd` 可切换到首选的订阅
 
-    ``` Powershell
+    ``` PowerShell
     PS Azure:\> cd MySubscriptionName
     PS Azure:\MySubscriptionName>
     ```
@@ -189,15 +189,15 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
   ``` Powershell
   Invoke-AzureRmVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -EnableRemoting
   ```
-  还可以先导航到 virtualMachines 目录，然后按如下所示运行 `Invoke-AzureRmVMCommand`。
+  还可以先导航到 VirtualMachines 目录，然后按如下所示运行 `Invoke-AzureRmVMCommand`。
 
-  ``` Powershell
+  ``` PowerShell
   PS Azure:\> cd MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines
   PS Azure:\MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzureRmVMCommand -Scriptblock{Get-ComputerInfo}
   ```
   将显示类似于下面的输出：
 
-  ``` Powershell
+  ``` PowerShell
   PSComputerName                                          : 65.52.28.207
   RunspaceId                                              : 2c2b60da-f9b9-4f42-a282-93316cb06fe1
   WindowsBuildLabEx                                       : 14393.1066.amd64fre.rs1_release_sec.170327-1835
@@ -215,13 +215,13 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 
 可以使用 `Enter-AzureRmVM` 以交互方式登录到 Azure 中运行的 VM。
 
-  ``` Powershell
+  ``` PowerShell
   Enter-AzureRmVM -Name MyVM1 -ResourceGroupName MyResourceGroup -EnableRemoting
   ```
 
-还可以先导航到 `virtualMachines` 目录，然后按如下所示运行 `Enter-AzureRmVM`
+还可以先导航到 `VirtualMachines` 目录，然后按如下所示运行 `Enter-AzureRmVM`
 
-  ``` Powershell
+  ``` PowerShell
  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzureRmVM
  ```
 
@@ -266,20 +266,20 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="ssh"></a>SSH
 
-[Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH) 在 PowerShell CloudShell 中可用。
-若要使用 SSH 对服务器或 VM 进行身份验证，请在 CloudShell 中生成公钥/私钥对并将公钥发布到远程计算机上的 `authorized_keys`，如 `/home/user/.ssh/authorized_keys`。
+[Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH) 在 PowerShell Cloud Shell 中可用。
+若要使用 SSH 对服务器或 VM 进行身份验证，请在 Cloud Shell 中生成公钥/私钥对并将公钥发布到远程计算机上的 `authorized_keys`，如 `/home/user/.ssh/authorized_keys`。
 
 > [!NOTE]
-> 可以使用 `ssh-keygen` 创建 SSH 私钥/公钥并将其发布到 CloudShell 中的 `$env:USERPROFILE\.ssh`。
+> 可以使用 `ssh-keygen` 创建 SSH 私钥/公钥并将其发布到 Cloud Shell 中的 `$env:USERPROFILE\.ssh`。
 
 ### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>使用自定义配置文件持久保存 GIT 和 SSH 设置
 
-由于会话在注销后不会持久保留，因此请将 `$env:USERPROFILE\.ssh` 文件夹保存到 `CloudDrive`，或者在启动 CloudShell 时创建符号链接。
+由于会话在注销后不会持久保留，因此请将 `$env:USERPROFILE\.ssh` 文件夹保存到 `CloudDrive`，或者在启动 Cloud Shell 时创建符号链接。
 在 profile.ps1 中添加以下代码片段以创建 CloudDrive 的符号链接。
 
-``` Powershell
-# Check if the ssh folder exists
-if( -not (Test-Path $home\CloudDrive\.ssh){
+``` PowerShell
+# Check if the .ssh folder exists
+if( -not (Test-Path $home\CloudDrive\.ssh)){
     mkdir $home\CloudDrive\.ssh
 }
 
@@ -297,25 +297,25 @@ if(Test-Path $script:sshFolderPath){
 
 ### <a name="using-ssh"></a>使用 SSH
 
-按照[此处](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)的说明使用 AzureRM Cmdlet 创建新的 VM 配置。
-在调用 `New-AzureRMVM` 以启动部署之前，请将 SSH 公钥添加到 VM 配置。
-新创建的 VM 将包含 `~\.ssh\authorized_keys` 位置中的公钥，从而允许通过无凭据的 ssh 会话连接到 VM。
+按照[此处](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)的说明使用 AzureRM cmdlet 创建新的 VM 配置。
+在调用 `New-AzureRmVM` 以启动部署之前，请将 SSH 公钥添加到 VM 配置。
+新创建的 VM 将包含 `~\.ssh\authorized_keys` 位置中的公钥，从而允许通过无凭据的 SSH 会话连接到 VM。
 
-``` Powershell
+``` PowerShell
 
 # Create VM config object - $vmConfig using instructions on linked page above
 
-# Generate SSH Keys in CloudShell
+# Generate SSH keys in Cloud Shell
 ssh-keygen -t rsa -b 2048 -f $HOME\.ssh\id_rsa 
 
-# Ensure VM config is updated with SSH Keys
+# Ensure VM config is updated with SSH keys
 $sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
 Add-AzureRmVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 # Create a virtual machine
 New-AzureRmVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmConfig
 
-# ssh to the VM
+# SSH to the VM
 ssh azureuser@MyVM.Domain.Com
 
 ```
@@ -335,13 +335,13 @@ ssh azureuser@MyVM.Domain.Com
 
 键入 `Get-Help` 可获取有关 Azure Cloud Shell 中的 PowerShell 的信息。
 
-``` Powershell
+``` PowerShell
 PS Azure:\> Get-Help
 ```
 
-对于特定命令，仍可以执行 Get-Help 后接一个 cmdlet。
+对于特定命令，仍可以执行 `Get-Help` 后接一个 cmdlet。
 
-``` Powershell
+``` PowerShell
 PS Azure:\> Get-Help Get-AzureRmVM
 ```
 
@@ -349,7 +349,7 @@ PS Azure:\> Get-Help Get-AzureRmVM
 
 可以创建一个脚本（例如 `helloworld.ps1`）并将其保存到 `CloudDrive`，以便在不同的 shell 会话中使用该脚本。
 
-``` Powershell
+``` PowerShell
 cd C:\users\ContainerAdministrator\CloudDrive
 PS C:\users\ContainerAdministrator\CloudDrive> vim .\helloworld.ps1
 # Add the content, such as 'Hello World!'
@@ -367,7 +367,7 @@ Hello World!
 
 ## <a name="use-git"></a>使用 Git
 
-若要在 Cloud Shell 中克隆 git 存储库，需要创建[个人访问令牌][githubtoken]并将其用作用户名。 创建令牌后，可按如下所示克隆存储库：
+若要在 Cloud Shell 中克隆 Git 存储库，需要创建[个人访问令牌][githubtoken]并将其用作用户名。 创建令牌后，可按如下所示克隆存储库：
 
  ``` PowerShell
   git clone https://<your-access-token>@github.com/username/repo.git
@@ -383,7 +383,7 @@ $script:gitconfigPath = Join-Path $PSScriptRoot .gitconfig
 # Create a symlink to .gitconfig in user's $home
 if(Test-Path $script:gitconfigPath){
 
-    if(-not (Test-Path (Join-Path $Home .gitconfig ))){
+    if(-not (Test-Path (Join-Path $home .gitconfig ))){
          New-Item -ItemType SymbolicLink -Path $home -Name .gitconfig -Value $script:gitconfigPath
     }
 }

@@ -11,17 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2017
+ms.date: 02/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 48ba938db992ce192d8afb51365d87fba4422590
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 40b2d04fe829c51a58fb3bec1519a590a12cfdb8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>将 Azure 资源部署到多个订阅或资源组
 
 通常情况下，将模板中的所有资源部署到单个[资源组](resource-group-overview.md)。 不过，在某些情况下，你可能希望将一组资源部署在一起但将其放置在不同的资源组或订阅中。 例如，你可能希望将 Azure Site Recovery 的备份虚拟机部署到一个单独的资源组和位置。 资源管理器允许使用嵌套的模板将不同于父模板所用订阅和资源组的多个不同订阅和资源组作为目标。
+
+> [!NOTE]
+> 在单个部署中可以仅部署到五个资源组。
 
 ## <a name="specify-a-subscription-and-resource-group"></a>指定订阅和资源组
 

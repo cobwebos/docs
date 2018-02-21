@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Resource Manager 执行部署操作 | Microsoft 文档"
-description: "介绍如何通过门户、PowerShell、Azure CLI 和 REST API 查看 Azure Resource Manager 部署操作。"
+title: "使用 Azure 资源管理器执行部署操作 | Microsoft Docs"
+description: "介绍如何通过门户、PowerShell、Azure CLI 和 REST API 查看 Azure 资源管理器部署操作。"
 services: azure-resource-manager,virtual-machines
 documentationcenter: 
 tags: top-support-issue
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 01/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: fb6b3b357fd1f66184e480115a9c863ba31ac193
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 197f890690ff68236cba221988ead9b9abd8c04e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="view-deployment-operations-with-azure-resource-manager"></a>使用 Azure Resource Manager 查看部署操作
+# <a name="view-deployment-operations-with-azure-resource-manager"></a>使用 Azure 资源管理器查看部署操作
 
 
 可以通过 Azure 门户查看部署操作。 在部署过程中收到错误时，可能最想要查看操作，因此本文将重点介绍如何查看已失败的操作。 该门户提供一个界面，可用于轻松查找错误并确定潜在修复。
 
-[!INCLUDE [resource-manager-troubleshoot-introduction](../../includes/resource-manager-troubleshoot-introduction.md)]
+可以通过查看审核日志或部署操作来对部署进行故障排除。 本主题将演示这两种方法。 有关解决特定部署错误的帮助，请参阅[解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](resource-manager-common-deployment-errors.md)。
 
 ## <a name="portal"></a>门户
 若要查看部署操作，请使用以下步骤 ：
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
     ![查看失败的部署](./media/resource-manager-deployment-operations/view-error.png)
    
     此错误消息应足够让可以开始进行故障排除。 但是，如果需要有关完成了哪些任务的更多详细信息，可以查看操作，如下面的步骤所示。
-4. 可以在“部署”边栏选项卡中查看所有部署操作。 选择任何操作，以查看更多详细信息。
+4. 可以查看所有部署操作。 选择任何操作，以查看更多详细信息。
    
     ![查看操作](./media/resource-manager-deployment-operations/view-operations.png)
    
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/11/2017
 5. 可以通过选择“事件”查看部署的事件。
    
     ![查看事件](./media/resource-manager-deployment-operations/view-events.png)
-6. 查看部署的所有事件，并选择任何事件以了解更多详细信息。 另请注意相关性 ID。 与技术支持人员合作排查部署问题时，此值非常有用。
+6. 查看部署的所有事件，并选择任何事件以了解更多详细信息。 请注意相关 ID。 与技术支持人员合作排查部署问题时，此值非常有用。
    
     ![查看事件](./media/resource-manager-deployment-operations/see-all-events.png)
 
@@ -178,7 +178,7 @@ ms.lasthandoff: 10/11/2017
   }
   ```
 
-2. 使用[列出所有模板部署操作](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List)操作获取有关部署操作的信息。 
+2. 使用[列出所有模板部署操作](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List)获取有关部署的信息。 
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
@@ -213,7 +213,7 @@ ms.lasthandoff: 10/11/2017
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关解决特定部署错误的帮助，请参阅 [Resolve common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md)（解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误）。
+* 有关解决特定部署错误的帮助，请参阅[解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](resource-manager-common-deployment-errors.md)。
 * 若要了解如何使用活动日志监视其他类型的操作，请参阅[通过查看活动日志管理 Azure 资源](resource-group-audit.md)。
-* 若要在执行部署之前验证部署，请参阅 [Deploy a resource group with Azure Resource Manager template](resource-group-template-deploy.md)（使用 Azure Resource Manager 模板部署资源组）。
+* 若要在执行部署之前验证部署，请参阅[使用 Azure 资源管理器模板部署资源组](resource-group-template-deploy.md)。
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/12/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 1ce1fc4c03130dfea4e79c89c25cf5a9004e4dc8
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: fd82d77e79f05a67f8e818095753b8dc22ccf314
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 12/23/2017
 
 ## <a name="cloud-apps-assignments"></a>云应用分配
 
-使用条件访问策略，可以控制用户如何访问你的[云应用](active-directory-conditional-access-azure-portal.md#who)。 配置条件访问策略时，至少需要一个云应用。 
+使用条件访问策略，可以控制用户如何访问你的[云应用](active-directory-conditional-access-conditions.md#cloud-apps)。 配置条件访问策略时，至少需要一个云应用。 
 
 ![为策略选择云应用](./media/active-directory-conditional-access-technical-reference/09.png)
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 12/23/2017
 
 ## <a name="client-apps-condition"></a>客户端应用条件 
 
-在条件访问策略中，可以配置[客户端应用](active-directory-conditional-access-azure-portal.md#client-apps)条件，以将策略绑定到发起访问尝试的客户端应用。 设置客户端应用条件，在用户尝试从以下类型的客户端应用进行访问时授予其访问权限或阻止访问：
+在条件访问策略中，可以配置[客户端应用](active-directory-conditional-access-conditions.md#client-apps)条件，以将策略绑定到发起访问尝试的客户端应用。 设置客户端应用条件，在用户尝试从以下类型的客户端应用进行访问时授予其访问权限或阻止访问：
 
 - 浏览器
 - 移动应用和桌面应用
@@ -169,10 +169,9 @@ ms.lasthandoff: 12/23/2017
 |Outlook 2016 (Office for macOS)|Office 365 Exchange Online|Mac OS X|
 |Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证）|Office 365 Exchange Online|Windows 8.1、Windows 7|
 |Outlook 移动应用|Office 365 Exchange Online|Android、iOS|
-|PowerBI 应用。 适用于 Android 的 Power BI 应用当前不支持基于设备的条件访问。|PowerBI 服务|Windows 10、Windows 8.1、Windows 7 和 iOS|
+|PowerBI 应用|PowerBI 服务|Windows 10、Windows 8.1、Windows 7 和 iOS|
 |Skype for Business|Office 365 Exchange Online|Android、IOS |
 |Visual Studio Team Services 应用|Visual Studio Team Services|Windows 10、Windows 8.1、Windows 7、iOS 和 Android|
-
 
 
 ## <a name="approved-client-app-requirement"></a>批准的客户端应用要求 
@@ -186,6 +185,7 @@ ms.lasthandoff: 12/23/2017
 
 - Microsoft Azure 信息保护
 - Microsoft Excel
+- Microsoft Kaizala 
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
@@ -193,6 +193,7 @@ ms.lasthandoff: 12/23/2017
 - Microsoft PowerPoint
 - Microsoft SharePoint
 - Microsoft Skype for Business
+- Microsoft StaffHub
 - Microsoft Teams
 - Microsoft Visio
 - Microsoft Word

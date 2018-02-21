@@ -5,22 +5,19 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/01/2017
+ms.topic: tutorial
+ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 02b709bb8dbab5d10ce9f4cf6155ff26ce229298
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: b45d1287444d200727550a81ce72a19a417fe510
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions-preview"></a>对 Azure 区域（预览）之间的 Azure VM 进行故障转移和故障回复
 
-[Azure Site Recovery](site-recovery-overview.md) 服务有助于实施灾难恢复策略，因为它可以管理和协调本地计算机和 Azure 虚拟机 (VM) 的复制、故障转移和故障回复。
+[Azure Site Recovery](site-recovery-overview.md) 服务可管理和协调本地计算机和 Azure 虚拟机 (VM) 的复制、故障转移和故障回复，进而有利于灾难恢复策略。
 
 本教程介绍如何将单个 Azure VM 故障转移到 Azure 次要区域。 故障转移后，可在主要区域可用时故障回复到主要区域。 本教程介绍如何执行下列操作：
 

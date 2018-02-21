@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/09/2017
+ms.date: 02/07/2018
 ms.author: larryfr
-ms.openlocfilehash: 904bbfcd02984b301d9eb9faaa6203f16139eba5
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 7c79e66c6ee4d5aa3ffd052306f57666df866313
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>将针对 Visual Studio 的 Azure Data Lake 工具与 Hortonworks 沙盒配合使用
 

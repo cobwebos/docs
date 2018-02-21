@@ -6,25 +6,22 @@ documentationcenter:
 author: vladvino
 manager: erikre
 editor: mattfarm
-ms.assetid: 364cd53e-88fb-4301-a093-f132fa1f88f5
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 0abf2635e08bfc3113e9dec1947b9bb162cd3952
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 57d14b6aa6caca0cc9b075723d4c350b0a50c9f8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 保存和配置 API 管理服务
-> 
-> 
 
-每个 API 管理服务实例都保留一个配置数据库，该数据库包含关于服务实例的配置和元数据的信息。 可能通过在发布者门户中更改设置、使用 PowerShell cmdlet 或进行 REST API 调用对服务实例进行更改。 除了这些方法，还可以使用 Git 管理服务实例配置，从而支持下列服务管理方案：
+每个 API 管理服务实例都保留一个配置数据库，该数据库包含关于服务实例的配置和元数据的信息。 可能通过在 Azure 门户中更改设置、使用 PowerShell cmdlet 或进行 REST API 调用对服务实例进行更改。 除了这些方法，还可以使用 Git 管理服务实例配置，从而支持下列服务管理方案：
 
 * 配置版本控制 - 下载和存储不同版本的服务配置
 * 批量配置更改 - 通过单个操作，在本地存储库中对服务配置的多个部分进行更改，并将更改集成回服务器
@@ -34,7 +31,7 @@ ms.lasthandoff: 12/08/2017
 
 ![Git 配置][api-management-git-configure]
 
-使用发布者门户、PowerShell cmdlet 或 REST API 对服务进行更改时，即表示正在使用 `https://{name}.management.azure-api.net` 终结点管理服务配置数据库，如图右侧所示。 图左侧说明了如何针对位于 `https://{name}.scm.azure-api.net` 的服务使用 Git 和 Git 存储库管理服务配置。
+使用 Azure 门户、PowerShell cmdlet 或 REST API 对服务进行更改时，即表示正在使用 `https://{name}.management.azure-api.net` 终结点管理服务配置数据库，如图右侧所示。 图左侧说明了如何针对位于 `https://{name}.scm.azure-api.net` 的服务使用 Git 和 Git 存储库管理服务配置。
 
 以下步骤提供了使用 Git 管理 API 管理服务实例的概述。
 
@@ -47,11 +44,8 @@ ms.lasthandoff: 12/08/2017
 本文介绍如何启用和使用 Git 管理服务配置，并提供 Git 存储库中的文件和文件夹的参考。
 
 ## <a name="access-git-configuration-in-your-service"></a>访问服务中的 Git 配置
-可通过查看发布者门户右上角的 Git 图标快速查看 Git 配置的状态。 在此示例中，状态消息指出存储库存在未保存的更改。 这是因为 API 管理服务配置数据库尚未保存到存储库。
 
-![Git 状态][api-management-git-icon-enable]
-
-若要查看和配置 Git 配置设置，可单击 Git 图标，或者单击“安全”菜单并导航到“配置存储库”选项卡。
+若要查看和配置 Git 配置设置，可单击“安全”菜单并导航到“配置存储库”选项卡。
 
 ![启用 Git][api-management-enable-git]
 
@@ -63,43 +57,30 @@ ms.lasthandoff: 12/08/2017
 有关使用 REST API 启用或禁用 Git 访问的信息，请参阅[使用 REST API 启用或禁用 Git 访问](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit)。
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>将服务配置保存到 Git 存储库
-克隆存储库之前的第一个步骤是将服务配置的当前状态保存到存储库。 单击“将配置保存到存储库”。
 
-![保存配置][api-management-save-configuration]
+克隆存储库之前的第一个步骤是将服务配置的当前状态保存到存储库。 单击“保存到存储库”。
 
 在确认屏幕上进行任何所需的更改，并单击“确定”保存。
 
-![保存配置][api-management-save-configuration-confirm]
-
 片刻后配置已保存，并显示存储库的配置状态，包括上次配置更改和服务配置与存储库之间上次同步的日期和时间。
-
-![配置状态][api-management-configuration-status]
 
 将配置保存到存储库后，可以克隆它。
 
 有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 提交配置快照](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot)。
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>将存储库克隆到本地计算机
-若要克隆存储库，需要存储库的 URL、用户名和密码。 用户名和 URL 显示在“配置存储库”选项卡顶部附近。
 
-![Git 克隆][api-management-configuration-git-clone]
-
-密码在“配置存储库”选项卡底部生成。
-
-![生成密码][api-management-generate-password]
-
-要生成密码，先确保“到期”设置为所需的到期日期和时间，并单击“生成令牌”。
-
-![密码][api-management-password]
+若要克隆存储库，需要存储库的 URL、用户名和密码。 若要获取用户名和其他凭据，请单击页面顶部附近的“访问凭据”。  
+ 
+若要生成密码，先确保“到期”设置为所需的到期日期和时间，然后单击“生成”。
 
 > [!IMPORTANT]
 > 记下此密码。 离开此页面后，不会再次显示该密码。
 > 
-> 
 
 以下示例使用 [Git for Windows](http://www.git-scm.com/downloads) 中的 Git Bash 工具，但可以使用熟悉的任何 Git 工具。
 
-使用发布者门户提供的命令，在所需文件夹中打开 Git 工具并运行以下命令以将 Git 存储库克隆到本地计算机。
+使用 Azure 门户提供的命令，在所需文件夹中打开 Git 工具并运行以下命令以将 Git 存储库克隆到本地计算机。
 
 ```
 git clone https://bugbashdev4.scm.azure-api.net/
@@ -116,7 +97,7 @@ git clone https://username:password@bugbashdev4.scm.azure-api.net/
 如果这提供了一个错误，请尝试对命令的密码部分进行 URL 编码。 执行此操作的一个快速方法是打开 Visual Studio，并在“即时窗口”中发出以下命令。 要打开“即使窗口”，请在 Visual Studio 中打开任意解决方案或项目（或创建新的空白控制台应用程序），并从“调试”菜单中依次选择“Windows”、“即时”。
 
 ```
-?System.NetWebUtility.UrlEncode("password from publisher portal")
+?System.NetWebUtility.UrlEncode("password from the Azure portal")
 ```
 
 将编码密码与用户名和存储库位置一起用于构造 Git 命令。
@@ -128,7 +109,8 @@ git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
 克隆存储库后，可在本地文件系统中查看和处理它。 有关详细信息，请参阅[本地 Git 存储库的文件和文件夹结构参考](#file-and-folder-structure-reference-of-local-git-repository)。
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>使用最新服务实例配置更新本地存储库
-如果在发布者门户中或使用 REST API 对 API 管理服务实例进行更改，必须先将这些更改保存到存储库，然后才能使用更新更改更新本地存储库。 要执行此操作，请单击发布者门户中的“配置存储库”选项卡上的“将配置保存到存储库”，然后在本地存储库中发布以下命令。
+
+如果在 Azure 门户中或使用 REST API 对 API 管理服务实例进行更改，必须先将这些更改保存到存储库，然后才能使用最新更改更新本地存储库。 要执行此操作，请单击 Azure 门户中“配置存储库”选项卡上的“将配置保存到存储库”，然后在本地存储库中发布以下命令。
 
 ```
 git pull
@@ -155,16 +137,16 @@ git push
 ```
 
 ## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>将任何服务配置更改部署到 API 管理服务实例
-将本地更改提交并推送到服务器存储库后，可将它们部署到 API 管理服务实例。
 
-![部署][api-management-configuration-deploy]
+将本地更改提交并推送到服务器存储库后，可将它们部署到 API 管理服务实例。
 
 有关使用 REST API 执行此操作的信息，请参阅[使用 REST API 将 Git 更改部署到配置数据库](https://docs.microsoft.com/rest/api/apimanagement/tenantconfiguration)。
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>本地 Git 存储库的文件和文件夹结构参考
+
 本地 Git 存储库中的文件和文件夹包含有关服务实例的配置信息。
 
-| 项目 | 说明 |
+| Item | 说明 |
 | --- | --- |
 | 根 api-management 文件夹 |包含服务实例的顶级配置 |
 | apis 文件夹 |包含服务实例中的 API 的配置 |
@@ -192,7 +174,6 @@ git push
 > * 订阅
 > * 属性
 > * 样式以外的开发人员门户实体
-> 
 > 
 
 ### <a name="root-api-management-folder"></a>根 api-management 文件夹
@@ -223,8 +204,6 @@ git push
 | UserRegistrationTermsEnabled |“显示用户登录时的使用条款”复选框 |
 | UserRegistrationTermsConsentRequired |“需要同意”复选框 |
 
-![标识设置][api-management-identity-settings]
-
 接下来的四个设置（`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled` 和 `DelegationValidationKey`）映射到“安全”部分中的“委派”选项卡上的以下设置。
 
 | 委派设置 | 映射到 |
@@ -233,8 +212,6 @@ git push
 | DelegationUrl |“委派终结点 URL”文本框 |
 | DelegatedSubscriptionEnabled |“委派产品订阅”复选框 |
 | DelegationValidationKey |“委派验证密钥”文本框 |
-
-![委派设置][api-management-delegation-settings]
 
 最后的设置 `$ref-policy` 映射到服务实例的全局策略声明文件。
 
@@ -283,15 +260,9 @@ git push
 * 使用以下 PowerShell cmdlet 管理服务实例
   * [服务部署 PowerShell cmdlet 参考](https://msdn.microsoft.com/library/azure/mt619282.aspx)
   * [服务管理 PowerShell cmdlet 参考](https://msdn.microsoft.com/library/azure/mt613507.aspx)
-* 在发布者门户中管理服务实例
-  * [管理第一个 API](import-and-publish.md)
 * 使用 REST API 管理服务实例
   * [API 管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 
-## <a name="watch-a-video-overview"></a>观看视频概述
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Configuration-over-Git/player]
-> 
-> 
 
 [api-management-enable-git]: ./media/api-management-configuration-repository-git/api-management-enable-git.png
 [api-management-git-enabled]: ./media/api-management-configuration-repository-git/api-management-git-enabled.png

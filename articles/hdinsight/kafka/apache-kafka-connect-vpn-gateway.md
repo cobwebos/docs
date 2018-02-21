@@ -13,13 +13,13 @@ ms.custom: hdinsightactive
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/07/2017
+ms.date: 02/05/2018
 ms.author: larryfr
-ms.openlocfilehash: 2b55de4de6bb94be78649112161211346090b23a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c82629c0f3d3b32314d22467164a06a4c7bcabfe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>通过 Azure 虚拟网络连接到 Kafka on HDInsight
 
@@ -47,7 +47,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 * 使用 VPN 网关和 VPN 客户端将单个计算机连接到虚拟网络。 若要启用此配置，请执行以下任务：
 
     1. 创建虚拟网络。
-    2. 创建使用点到站点配置的 VPN 网关。 此配置提供可以安装在 Windows 客户端上的 VPN 客户端。
+    2. 创建使用点到站点配置的 VPN 网关。 此配置可同时用于 Windows 和 MacOS 客户端。
     3. 在虚拟网络中安装 Kafka on HDInsight。
     4. 为 IP 播发配置 Kafka。 此配置允许客户端使用 IP 地址而不是域名建立连接。
     5. 在开发系统上下载并使用 VPN 客户端。
@@ -57,7 +57,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
     > [!WARNING]
     > 由于存在以下限制，只建议将此配置用于开发目的：
     >
-    > * 每个客户端必须使用 VPN 软件客户端建立连接。 Azure 仅提供基于 Windows 的客户端。
+    > * 每个客户端必须使用 VPN 软件客户端建立连接。
     > * VPN 客户端不会向虚拟网络传递名称解析请求，因此，必须使用 IP 寻址来与 Kafka 通信。 IP 通信需要在 Kafka 群集上完成其他配置。
 
 有关在 Azure 虚拟网络中使用 HDInsight 的详细信息，请参阅[使用 Azure 虚拟网络扩展 HDInsight](../hdinsight-extend-hadoop-virtual-network.md)。
@@ -232,22 +232,13 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
         -DefaultStorageAccountName "$storageName.blob.core.windows.net" `
         -DefaultStorageAccountKey $defaultStorageKey `
         -DefaultStorageContainer $defaultContainerName `
+        -DisksPerWorkerNode 2 `
         -VirtualNetworkId $network.Id `
         -SubnetName $defaultSubnet.Id
     ```
 
   > [!WARNING]
   > 此过程完成时间大约为 15 分钟。
-
-8. 使用下列 cmdlet 为虚拟网络的 Windows VPN 客户端检索 URL：
-
-    ```powershell
-    Get-AzureRmVpnClientPackage -ResourceGroupName $resourceGroupName `
-        -VirtualNetworkGatewayName $vpnName `
-        -ProcessorArchitecture Amd64
-    ```
-
-    要下载 Windows VPN 客户端，请在 Web 浏览器中使用返回的 URI。
 
 ### <a name="configure-kafka-for-ip-advertising"></a>为 IP 播发配置 Kafka
 
@@ -299,7 +290,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 ### <a name="connect-to-the-vpn-gateway"></a>连接到 VPN 网关
 
-要从 Windows 客户端连接到 VPN 网关，请按[配置点到站点连接](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#clientcertificate)文档中“连接到 Azure”部分进行操作。
+若要连接到 VPN 网关，请按[配置点到站点连接](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)文档中__连接到 Azure__ 部分进行操作。
 
 ## <a id="python-client"></a>示例：Python 客户端
 

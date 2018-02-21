@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: jgao
-ms.openlocfilehash: fe2b84aac718ff5eddd4d73b5dc2120362952c1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fbd4f1ae5eeec971a378c41761508629e530887c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli-20"></a>通过 Azure CLI 2.0 开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -52,7 +52,7 @@ az account set --subscription <subscription id>
 ## <a name="create-data-lake-analytics-account"></a>创建 Data Lake Analytics 帐户
 在运行任何作业之前，需要一个 Data Lake Analytics 帐户。 若要创建 Data Lake Analytics 帐户，必须指定以下各项：
 
-* **Azure 资源组**。 必须在 Azure 资源组中创建一个 Data Lake Analytics 帐户。 使用 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 能够以组的方式处理应用程序中的资源。 你可以通过一个协调的操作部署、更新或删除应用程序的所有资源。  
+* **Azure 资源组**。 必须在 Azure 资源组中创建一个 Data Lake Analytics 帐户。 使用 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)能够以组的方式处理应用程序中的资源。 你可以通过一个协调的操作部署、更新或删除应用程序的所有资源。  
 
 若要列出订阅中的现有资源组，请执行以下命令：
 
@@ -183,16 +183,16 @@ az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity 
 作业完成后，可以使用以下命令列出输出文件，并下载这些文件：
 
 ```
-az dls fs list --account "<Data Lake Store Account Name>" --source-path "/Output" --destination-path "<Destintion>"
+az dls fs list --account "<Data Lake Store Account Name>" --source-path "/Output" --destination-path "<Destination>"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv" --length 128 --offset 0
-az dls fs downlod --account "<Data Lake Store Account Name>" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destintion-path "<Destination Path and File Name>"
+az dls fs download --account "<Data Lake Store Account Name>" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "<Destination Path and File Name>"
 ```
 
 例如：
 
 ```
-az dls fs downlod --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destintion-path "C:\DLA\myfile.csv"
+az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"
 ```
 
 ## <a name="pipelines-and-recurrences"></a>管道和重复周期

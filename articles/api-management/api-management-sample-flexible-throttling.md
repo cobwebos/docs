@@ -12,19 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2016
+ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 356f98aec072a1295915ae0701a3e3cd793aba07
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 427660be92d3caf4c381cec65f49adce9808e50a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>使用 Azure API 管理进行高级请求限制
 限制传入请求是 Azure API 管理的重要功能。 通过控制请求的速率或传输的请求/数据总量，API 管理让 API 提供程序能够保护其 API 不被滥用，为不同的 API 产品层创造价值。
 
 ## <a name="product-based-throttling"></a>基于产品的限制
-到目前为止，速率限制功能局限于特定产品订阅的限定范围（本质上是一个密钥），在 API 管理发布者门户中定义。 API 提供程序可以使用它将限制应用到注册使用其 API 的开发人员，但是，举例而言，它无法帮助限制 API 的每个最终用户。 想让开发人员的应用程序的单个用户使用整个配额，并让开发人员的其他客户无法使用应用程序，是有可能的。 此外，生成大量请求的多个客户可能限制临时用户的访问权限。
+到目前为止，速率限制功能局限于特定产品订阅的限定范围（实质上是一个密钥），在 Azure 门户中定义。 API 提供程序可以使用它将限制应用到注册使用其 API 的开发人员，但是，举例而言，它无法帮助限制 API 的每个最终用户。 想让开发人员的应用程序的单个用户使用整个配额，并让开发人员的其他客户无法使用应用程序，是有可能的。 此外，生成大量请求的多个客户可能限制临时用户的访问权限。
 
 ## <a name="custom-key-based-throttling"></a>基于自定义密钥的限制
 新的[基于密钥的速率限制](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey)和[基于密钥的配额](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey)策略提供灵活得多的流量控制解决方案。 使用这些新策略可以定义表达式，识别用于跟踪流量使用的密钥。 最好是举一个例子来演示其工作原理。 

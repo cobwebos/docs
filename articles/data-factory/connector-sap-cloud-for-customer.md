@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: e580c3f36ce19679d3edcf7a8861e4e492dfa9c5
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 4d7df73bec7306b135f5a559c2bc66ac88d88809
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Cloud for Customer (C4C) 复制数据
 
 本文概述如何使用 Azure 数据工厂中的复制活动从/向 SAP Cloud for Customer (C4C) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -42,12 +42,12 @@ ms.lasthandoff: 01/11/2018
 
 SAP Cloud for Customer 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomer**。 | 是 |
 | url | SAP C4C OData 服务的 URL。 | 是 |
 | username | 指定用于连接到 SAP C4C 的用户名。 | 是 |
-| password | 指定为 username 指定的用户帐户的密码。 将此字段标记为 SecureString。 | 是 |
+| password | 指定为 username 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure 集成运行时。 | 对于源为“No”，对于接收器为“Yes” |
 
 >[!IMPORTANT]
@@ -82,7 +82,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要从 SAP Cloud for Customer 复制数据，请将数据集的 type 属性设置为 **SapCloudForCustomerResource**。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**SapCloudForCustomerResource** |是 |
 | 路径 | 指定 SAP C4C OData 实体的路径。 |是 |
@@ -113,7 +113,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要从 SAP Cloud for Customer 复制数据，请将复制活动中的源类型设置为 **SapCloudForCustomerSource**。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomerSource**  | 是 |
 | query | 指定用于读取数据的自定义 OData 查询。 | 否 |
@@ -156,7 +156,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要将数据复制到 SAP Cloud for Customer，请将复制活动中的接收器类型设置为 **SapCloudForCustomerSink**。 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomerSink**  | 是 |
 | writeBehavior | 操作的写入行为。 可以是“Insert”、“Update”。 | 不会。 默认值为“Insert”。 |
@@ -219,7 +219,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | 字符串 |
+| Edm.String | String |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 

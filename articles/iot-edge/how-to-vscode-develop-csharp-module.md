@@ -25,9 +25,9 @@ ms.lasthandoff: 02/01/2018
 - 在 [Windows](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-windows) 或 [Linux](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux) 中在模拟设备上部署 Azure IoT Edge
 - [开发 C# IoT Edge 模块并将其部署到模拟设备](https://docs.microsoft.com/azure/iot-edge/tutorial-csharp-module)
 
-下面是一个清单，其中显示了在完成前面的教程后应会得到的项目：
+下面是一个清单，其中显示了在完成前面的教程后应该会得到的项目：
 
-- [Contact.java](https://code.visualstudio.com/) 
+- [Visual Studio Code](https://code.visualstudio.com/) 
 - [适用于 Visual Studio Code 的 Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
 - [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
 - [Docker](https://docs.docker.com/engine/installation/)
@@ -35,7 +35,7 @@ ms.lasthandoff: 02/01/2018
 - [Python 2.7](https://www.python.org/downloads/)
 - [IoT Edge 控制脚本](https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl)
 - AzureIoTEdgeModule 模板 (`dotnet new -i Microsoft.Azure.IoT.Edge.Module`)
-- 包含至少一个 IoT Edge 设备的活动 IoT 中心
+- 包含至少一个 IoT Edge 设备的有效 IoT 中心
 
 另外，最好是安装 [Docker support for VS Code](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) 以便更好地管理模块映像和容器。
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 02/01/2018
 
 5. 选择 **Edge: Create deployment for Edge device**，并选择用于创建新部署的 IoT Edge 设备 ID。 或者，可以在设备列表中右键单击 IoT Edge 设备 ID，并选择“为 Edge 设备创建部署”。 
 
-6. 应会看到，IoT Edge 已开始使用模拟传感器在 Docker 资源管理器中运行。 在 Docker 资源管理器中右键单击容器。 可以监视每个模块的 Docker 日志。 可在设备列表中查看模块列表。
+6. 应该会看到，IoT Edge 已开始使用模拟传感器在 Docker 资源管理器中运行。 在 Docker 资源管理器中右键单击容器。 可以监视每个模块的 Docker 日志。 可在设备列表中查看模块列表。
 
     ![模块列表的屏幕截图](./media/how-to-vscode-develop-csharp-module/module-list.png)
 

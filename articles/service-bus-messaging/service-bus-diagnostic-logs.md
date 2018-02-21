@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 10/16/2017
+ms.date: 02/05/2018
 ms.author: sethm
-ms.openlocfilehash: 2bf65b7c5b0518da59e767db18fe6f4193e0ab6e
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 4ce724adc9ca167634be9a0b7137b6a3d54211bf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="service-bus-diagnostic-logs"></a>服务总线诊断日志
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 10/17/2017
 ------- | -------
 ActivityId | 用于跟踪的内部 ID
 EventName | 操作名称           
-resourceId | Azure Resource Manager 资源 ID
+resourceId | Azure 资源管理器资源 ID
 SubscriptionId | 订阅 ID
 EventTimeString | 操作时间
 EventProperties | 操作属性
@@ -93,7 +93,7 @@ category | OperationalLogs
 
 ## <a name="next-steps"></a>后续步骤
 
-请访问以下链接，详细了解服务总线：
+请查看以下链接，详细了解服务总线：
 
 * [服务总线简介](service-bus-messaging-overview.md)
 * [服务总线入门](service-bus-dotnet-get-started-with-queues.md)

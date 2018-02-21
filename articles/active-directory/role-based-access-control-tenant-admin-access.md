@@ -3,7 +3,7 @@ title: "租户管理员提升访问权限 - Azure AD | Microsoft Docs"
 description: "本主题介绍适用于基于角色的访问控制 (RBAC) 的内置角色。"
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: rolyon
 manager: mtillman
 editor: rqureshi
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2017
-ms.author: andredm
-ms.openlocfilehash: 894ccd13684a79590b75821514ef6922abb8fdaf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: rolyon
+ms.openlocfilehash: 8be842018cadfc36eb74b14a02a8f9bc9ddf098d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>通过基于角色的访问控制，作为租户管理员提升访问权限
 
@@ -101,7 +101,7 @@ Remove-AzureRmRoleAssignment -SignInName <username@somedomain.com> -RoleDefiniti
 
 调用 *elevateAccess* 时，会为自己创建角色分配，因此若要撤消这些特权，需删除该分配。
 
-1.  调用 GET role definitions，其中 roleName = 用户访问管理员，由此确定用户访问管理员角色的名称 GUID。
+1.  调用 GET roleDefinitions，其中 roleName = 用户访问管理员，由此确定用户访问管理员角色的名称 GUID。
     1.  GET *https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=roleName+eq+'User+Access+Administrator*
 
         ```
@@ -127,7 +127,7 @@ Remove-AzureRmRoleAssignment -SignInName <username@somedomain.com> -RoleDefiniti
     1. GET *https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'*
     
         >[!NOTE] 
-        >租户管理员不应拥有多个分配，如果上述查询返回过多分配，你仍可以在租户作用域级别查询所有分配，然后筛选结果：GET *https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()*
+        >租户管理员不应拥有多个分配，如果前面的查询返回过多分配，你也可以只在租户作用域级别查询所有分配，然后筛选结果：GET *https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()*
         
     2. 上述调用将返回角色分配列表。 查找作用域为“/”的角色分配，其中 RoleDefinitionId 以在步骤 1 中找到的角色名称 GUID 结尾，并且 PrincipalId 与租户管理员的 ObjectId 相匹配。角色分配应为如下所示：
 

@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 736d286bb7b97e842e73afd362ba70a42d1a9d9d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 62036e8a4e0611958ffacf7f7d7896e6ebde5e16
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Amazon Marketplace Web 服务复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Amazon Marketplace Web 服务复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 > [!IMPORTANT]
 > 此连接器目前处于 Beta 版本。 欢迎试用并提供反馈。 请勿在生产环境中使用该版本。
@@ -51,9 +51,9 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 | endpoint | Amazon MWS 服务器的终结点（即，mws.amazonservices.com）  | 是 |
 | marketplaceID | 要从中检索数据的 Amazon Marketplace ID。 要从多个 Marketplace ID 检索数据，请将其用逗号 (`,`) 分隔。 （即，A2EUQ1WTGCTBG2）  | 是 |
 | sellerID | Amazon 卖方 ID。  | 是 |
-| mwsAuthToken | Amazon MWS 身份验证令牌。 可以选择将此字段标记为 SecureString 以便数据工厂服务安全地存储它，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取 - 从[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息。 | 是 |
+| mwsAuthToken | Amazon MWS 身份验证令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | accessKeyId | 用于访问数据的访问密钥 ID。  | 是 |
-| secretKey | 用于访问数据的密钥。 可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取 - 从[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息。 | 是 |
+| secretKey | 用于访问数据的密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |

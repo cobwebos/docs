@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: bprakash
-ms.openlocfilehash: 009b909f9d92c6a21babffae3984be36a7682476
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 35ded349e9ced6463ece876ca1fd92423d20c625
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Hadoop 组件和版本？
 
@@ -78,7 +78,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 每个版�
 
 ### <a name="available-versions"></a>可用版本
 
-下表列出了 Azure 门户以及其他部署方法（比如 PowerShell 和 .NET SDK）中可用的 HDInsight 版本。
+下表列出了 Azure 门户中可用的 HDInsight 版本以及其他部署方法（比如 PowerShell 和 .NET SDK）。
 
 | HDInsight 版本 | HDP 版本 | VM OS | 发行日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户上的可用性 | 
 | --- | --- | --- | --- | --- | --- | --- | --- |

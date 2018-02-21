@@ -1,284 +1,280 @@
 ---
-title: "创建托管多个站点的应用程序网关 | Microsoft Docs"
-description: "此页说明了如何创建和配置 Azure 应用程序网关，以便在同一网关托管多个 Web 应用程序。"
-documentationcenter: na
+title: "创建托管多个站点的应用程序网关 - Azure PowerShell | Microsoft Docs"
+description: "了解如何使用 Azure Powershell 创建托管多个站点的应用程序网关。"
 services: application-gateway
-author: amsriva
-manager: rossort
-editor: amsriva
-ms.assetid: b107d647-c9be-499f-8b55-809c4310c783
+author: davidmu1
+manager: timlt
+editor: tysonn
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2016
-ms.author: amsriva
-ms.openlocfilehash: d42efa7d359f5c87c14afbfd138328b37c8ae6c2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 01/26/2018
+ms.author: davidmu
+ms.openlocfilehash: ed385eac624f5c59981c01ee70ba2a1700a78653
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="create-an-application-gateway-for-hosting-multiple-web-applications"></a>创建托管多个 Web 应用程序的应用程序网关
+# <a name="create-an-application-gateway-with-multiple-site-hosting-using-azure-powershell"></a>使用 Azure PowerShell 创建托管多个站点的应用程序网关
 
-> [!div class="op_single_selector"]
-> * [Azure 门户](application-gateway-create-multisite-portal.md)
-> * [Azure 资源管理器 PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
+创建[应用程序网关](application-gateway-introduction.md)时可以使用 Azure Powershell 配置[多个网站的托管](application-gateway-multi-site-overview.md)。 本教程中使用虚拟机规模集创建后端池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本教程假定你拥有多个域，并使用示例 *www.contoso.com* 和 *www.fabrikam.com*。
 
-托管多个站点可以让你在同一应用程序网关上部署多个 Web 应用程序。 系统会通过传入 HTTP 请求中存在的主机标头来确定接收流量的侦听器。 然后，侦听器会根据网关规则定义中的配置将流量定向到适当的后端池。 在启用了 SSL 的 Web 应用程序中，应用程序网关会根据服务器名称指示 (SNI) 扩展来选择 Web 流量的适当侦听器。 通常会通过托管多个站点将不同 Web 域的请求负载均衡到不同的后端服务器池。 同样还可以将同一根域的多个子域托管到同一应用程序网关。
+在本文中，学习如何：
 
-## <a name="scenario"></a>方案
+> [!div class="checklist"]
+> * 设置网络
+> * 创建应用程序网关
+> * 创建侦听器和路由规则
+> * 使用后端池创建虚拟机规模集
+> * 在域中创建 CNAME 记录
 
-在以下示例中，应用程序网关使用两个后端服务器池来为 contoso.com 和 fabrikam.com 提供流量：contoso 服务器池和 fabrikam 服务器池。 可以使用类似的设置来托管 app.contoso.com 和 blog.contoso.com 这样的子域。
+![多站点路由示例](./media/application-gateway-create-multisite-azureresourcemanager-powershell/scenario.png)
 
-![imageURLroute](./media/application-gateway-create-multisite-azureresourcemanager-powershell/multisite.png)
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="before-you-begin"></a>开始之前
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-1. 使用 Web 平台安装程序安装最新版本的 Azure PowerShell cmdlet。 可以从[下载页](https://azure.microsoft.com/downloads/)的“Windows PowerShell”部分下载并安装最新版本。
-2. 为使用应用程序网关而添加到后端池的服务器必须存在，或者在单独子网的虚拟网络中为其创建终结点，或者为其分配公共 IP/VIP。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块版本 3.6 或更高版本。 若要查找版本，请运行 ` Get-Module -ListAvailable AzureRM`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
 
-## <a name="requirements"></a>要求
+## <a name="create-a-resource-group"></a>创建资源组
 
-* **后端服务器池：** 后端服务器的 IP 地址列表。 列出的 IP 地址应属于虚拟网络子网，或者是公共 IP/VIP。 也可使用 FQDN。
-* **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置绑定到池，并会应用到池中的所有服务器。
-* **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，并重定向到后端服务器之一。
-* **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。 对于启用了多个站点的应用程序网关，还会添加主机名和 SNI 指示器。
-* **规则：**规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 规则按其列出的顺序进行处理，并且流量通过匹配的第一个规则进行定向，而无论特殊性如何。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。
+资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 创建 Azure 资源组。  
+
+```azurepowershell-interactive
+New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
+```
+
+## <a name="create-network-resources"></a>创建网络资源
+
+使用 [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) 配置名为 *myBackendSubnet* 和 *myAGSubnet* 的子网。 使用 [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) 和子网配置创建名为 *myVNet* 的虚拟网络。 最后使用 [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
+
+```azurepowershell-interactive
+$backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+  -Name myBackendSubnet `
+  -AddressPrefix 10.0.1.0/24
+$agSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+  -Name myAGSubnet `
+  -AddressPrefix 10.0.2.0/24
+$vnet = New-AzureRmVirtualNetwork `
+  -ResourceGroupName myResourceGroupAG `
+  -Location eastus `
+  -Name myVNet `
+  -AddressPrefix 10.0.0.0/16 `
+  -Subnet $backendSubnetConfig, $agSubnetConfig
+$pip = New-AzureRmPublicIpAddress `
+  -ResourceGroupName myResourceGroupAG `
+  -Location eastus `
+  -Name myAGPublicIPAddress `
+  -AllocationMethod Dynamic
+```
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-以下是创建应用程序网关所需执行的步骤：
+### <a name="create-the-ip-configurations-and-frontend-port"></a>创建 IP 配置和前端端口
 
-1. 创建 Resource Manager 的资源组。
-2. 创建应用程序网关的虚拟网络、子网和公共 IP。
-3. 创建应用程序网关配置对象。
-4. 创建应用程序网关资源。
+使用 [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration) 将前面创建的 *myAGSubnet* 关联到应用程序网关。 使用 [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig) 将 *myAGPublicIPAddress* 分配给应用程序网关。
 
-## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组
-
-确保使用最新版本的 Azure PowerShell。 可从[将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)中获取详细信息。
-
-### <a name="step-1"></a>步骤 1
-
-登录 Azure
-
-```powershell
-Login-AzureRmAccount
-```
-系统会提示用户使用凭据进行身份验证。
-
-### <a name="step-2"></a>步骤 2
-
-检查该帐户的订阅。
-
-```powershell
-Get-AzureRmSubscription
+```azurepowershell-interactive
+$vnet = Get-AzureRmVirtualNetwork `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myVNet
+$subnet=$vnet.Subnets[0]
+$gipconfig = New-AzureRmApplicationGatewayIPConfiguration `
+  -Name myAGIPConfig `
+  -Subnet $subnet
+$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig `
+  -Name myAGFrontendIPConfig `
+  -PublicIPAddress $pip
+$frontendport = New-AzureRmApplicationGatewayFrontendPort `
+  -Name myFrontendPort `
+  -Port 80
 ```
 
-### <a name="step-3"></a>步骤 3
+### <a name="create-the-backend-pools-and-settings"></a>创建后端池和设置
 
-选择要使用的 Azure 订阅。
+使用 [New-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendaddresspool) 为应用程序网关创建名为 *contosoPool* 和 *fabrikamPool* 的后端池。 使用 [New-AzureRmApplicationGatewayBackendHttpSettings](/powershell/module/azurerm.network/new-azurermapplicationgatewaybackendhttpsettings) 配置池的设置。
 
-```powershell
-Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+```azurepowershell-interactive
+$contosoPool = New-AzureRmApplicationGatewayBackendAddressPool `
+  -Name contosoPool 
+$fabrikamPool = New-AzureRmApplicationGatewayBackendAddressPool `
+  -Name fabrikamPool 
+$poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
+  -Name myPoolSettings `
+  -Port 80 `
+  -Protocol Http `
+  -CookieBasedAffinity Enabled `
+  -RequestTimeout 120
 ```
 
-### <a name="step-4"></a>步骤 4
+### <a name="create-the-listeners-and-rules"></a>创建侦听器和规则
 
-创建资源组（如果要使用现有的资源组，请跳过此步骤）。
+应用程序网关需要侦听器才能适当地将流量路由到后端池。 在本教程中，将为两个域的每一个域创建侦听器。 在此示例中，将为域 *www.contoso.com* 和 *www.fabrikam.com* 创建侦听器。
 
-```powershell
-New-AzureRmResourceGroup -Name appgw-RG -location "West US"
+使用 [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener) 以及前面创建的前端配置和前端端口创建名为 *contosoListener* 和 *fabrikamListener* 的侦听器。 侦听器需要使用规则来了解哪个后端池用于传入流量。 使用 [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule) 创建名为 *contosoRule* 和 *fabrikamRule* 的基本规则。
+
+```azurepowershell-interactive
+$contosolistener = New-AzureRmApplicationGatewayHttpListener `
+  -Name contosoListener `
+  -Protocol Http `
+  -FrontendIPConfiguration $fipconfig `
+  -FrontendPort $frontendport `
+  -HostName "www.contoso.com"
+$fabrikamlistener = New-AzureRmApplicationGatewayHttpListener `
+  -Name fabrikamListener `
+  -Protocol Http `
+  -FrontendIPConfiguration $fipconfig `
+  -FrontendPort $frontendport `
+  -HostName "www.fabrikam.com"
+$contosoRule = New-AzureRmApplicationGatewayRequestRoutingRule `
+  -Name contosoRule `
+  -RuleType Basic `
+  -HttpListener $contosoListener `
+  -BackendAddressPool $contosoPool `
+  -BackendHttpSettings $poolSettings
+$fabrikamRule = New-AzureRmApplicationGatewayRequestRoutingRule `
+  -Name fabrikamRule `
+  -RuleType Basic `
+  -HttpListener $fabrikamListener `
+  -BackendAddressPool $fabrikamPool `
+  -BackendHttpSettings $poolSettings
 ```
 
-或者，可以为应用程序网关的资源组创建标记：
+### <a name="create-the-application-gateway"></a>创建应用程序网关
 
-```powershell
-$resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US" -Tags @{Name = "testtag"; Value = "Application Gateway multiple site"}
+现在已创建所需的支持资源，请使用 [New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku) 为名为 *myAppGateway* 的应用程序网关指定参数，然后再使用 [New-AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway) 创建它。
+
+```azurepowershell-interactive
+$sku = New-AzureRmApplicationGatewaySku `
+  -Name Standard_Medium `
+  -Tier Standard `
+  -Capacity 2
+$appgw = New-AzureRmApplicationGateway `
+  -Name myAppGateway `
+  -ResourceGroupName myResourceGroupAG `
+  -Location eastus `
+  -BackendAddressPools $contosoPool, $fabrikamPool `
+  -BackendHttpSettingsCollection $poolSettings `
+  -FrontendIpConfigurations $fipconfig `
+  -GatewayIpConfigurations $gipconfig `
+  -FrontendPorts $frontendport `
+  -HttpListeners $contosoListener, $fabrikamListener `
+  -RequestRoutingRules $contosoRule, $fabrikamRule `
+  -Sku $sku
 ```
 
-Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
+## <a name="create-virtual-machine-scale-sets"></a>创建虚拟机规模集
 
-在上面的示例中，我们创建了名为“appgw-RG”的资源组，位置为“美国西部”。
+在此示例中，将创建两个虚拟机规模集以支持所创建的两个后端池。 创建的规模集分别名为 *myvmss1* 和 *myvmss2*。 每个规模集包含两个在其上安装了 IIS 的虚拟机实例。 配置 IP 设置时将规模集分配给后端池。
 
-> [!NOTE]
-> 如果需要为应用程序网关配置自定义探测，请参阅 [Create an application gateway with custom probes by using PowerShell](application-gateway-create-probe-ps.md)（使用 PowerShell 创建带自定义探测的应用程序网关）。 有关详细信息，请参阅[自定义探测和运行状况监视](application-gateway-probe-overview.md)。
-
-## <a name="create-a-virtual-network-and-subnets"></a>创建虚拟网络和子网
-
-以下示例演示如何使用 Resource Manager 创建虚拟网络。 在此步骤中创建两个子网。 第一个子网用于应用程序网关本身。 应用程序网关需要自己的子网才能保存其实例。 仅可在该子网中部署其他应用程序网关。 第二个子网用于保存应用程序后端服务器。
-
-### <a name="step-1"></a>步骤 1
-
-将地址范围 10.0.0.0/24 分配给用于保存应用程序网关的 subnet 变量。
-
-```powershell
-$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name appgatewaysubnet -AddressPrefix 10.0.0.0/24
-```
-### <a name="step-2"></a>步骤 2
-
-将地址范围 10.0.1.0/24 分配给用于后端池的 subnet2 变量。
-
-```powershell
-$subnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name backendsubnet -AddressPrefix 10.0.1.0/24
-```
-
-### <a name="step-3"></a>步骤 3
-
-使用前缀 10.0.0.0/16 以及子网 10.0.0.0/24 和 10.0.1.0/24，在美国西部区域的“appgw-rg”资源组中创建名为“appgwvnet”的虚拟网络。
-
-```powershell
-$vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet,$subnet2
-```
-
-### <a name="step-4"></a>步骤 4
-
-分配子网变量，以完成后面的创建应用程序网关的步骤。
-
-```powershell
-$appgatewaysubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name appgatewaysubnet -VirtualNetwork $vnet
-$backendsubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name backendsubnet -VirtualNetwork $vnet
-```
-
-## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>创建前端配置的公共 IP 地址
-
-在 West US 区域的 **appgw-rg** 资源组中创建公共 IP 资源 **publicIP01**。
-
-```powershell
-$publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -name publicIP01 -location "West US" -AllocationMethod Dynamic
-```
-
-服务启动时，一个 IP 地址会分配到应用程序网关。
-
-## <a name="create-application-gateway-configuration"></a>创建应用程序网关配置
-
-创建应用程序网关之前，必须设置所有配置项目。 以下步骤将创建应用程序网关资源所需的配置项。
-
-### <a name="step-1"></a>步骤 1
-
-创建名为 **gatewayIP01** 的应用程序网关 IP 配置。 应用程序网关启动时，它会从配置的子网获取 IP 地址，再将网络流量路由到后端 IP 池中的 IP 地址。 请记住，每个实例需要一个 IP 地址。
-
-```powershell
-$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $appgatewaysubnet
+```azurepowershell-interactive
+$vnet = Get-AzureRmVirtualNetwork `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myVNet
+$appgw = Get-AzureRmApplicationGateway `
+  -ResourceGroupName myResourceGroupAG `
+  -Name myAppGateway
+$contosoPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+  -Name contosoPool `
+  -ApplicationGateway $appgw
+$fabrikamPool = Get-AzureRmApplicationGatewayBackendAddressPool `
+  -Name fabrikamPool `
+  -ApplicationGateway $appgw
+for ($i=1; $i -le 2; $i++)
+{
+  if ($i -eq 1) 
+  {
+    $poolId = $contosoPool.Id
+  }
+  if ($i -eq 2)
+  {
+    $poolId = $fabrikamPool.Id
+  }
+  $ipConfig = New-AzureRmVmssIpConfig `
+    -Name myVmssIPConfig$i `
+    -SubnetId $vnet.Subnets[1].Id `
+    -ApplicationGatewayBackendAddressPoolsId $poolId
+  $vmssConfig = New-AzureRmVmssConfig `
+    -Location eastus `
+    -SkuCapacity 2 `
+    -SkuName Standard_DS2 `
+    -UpgradePolicyMode Automatic
+  Set-AzureRmVmssStorageProfile $vmssConfig `
+    -ImageReferencePublisher MicrosoftWindowsServer `
+    -ImageReferenceOffer WindowsServer `
+    -ImageReferenceSku 2016-Datacenter `
+    -ImageReferenceVersion latest
+  Set-AzureRmVmssOsProfile $vmssConfig `
+    -AdminUsername azureuser `
+    -AdminPassword "Azure123456!" `
+    -ComputerNamePrefix myvmss$i
+  Add-AzureRmVmssNetworkInterfaceConfiguration `
+    -VirtualMachineScaleSet $vmssConfig `
+    -Name myVmssNetConfig$i `
+    -Primary $true `
+    -IPConfiguration $ipConfig
+  New-AzureRmVmss `
+    -ResourceGroupName myResourceGroupAG `
+    -Name myvmss$i `
+    -VirtualMachineScaleSet $vmssConfig
+}
 ```
 
-### <a name="step-2"></a>步骤 2
+### <a name="install-iis"></a>安装 IIS
 
-分别配置名为“pool01”和“pool2”的后端 IP 地址池，其中，“pool1”的 IP 地址为“134.170.185.46”、“134.170.188.221”、“134.170.185.50”；“pool2”的 IP 地址为“134.170.186.46”、“134.170.189.221”、“134.170.186.50”。
+```azurepowershell-interactive
+$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1"); 
+  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
 
-```powershell
-$pool1 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.0.1.100, 10.0.1.101, 10.0.1.102
-$pool2 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool02 -BackendIPAddresses 10.0.1.103, 10.0.1.104, 10.0.1.105
+for ($i=1; $i -le 2; $i++)
+{
+  $vmss = Get-AzureRmVmss `
+    -ResourceGroupName myResourceGroupAG `
+    -VMScaleSetName myvmss$i
+  Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
+    -Name "customScript" `
+    -Publisher "Microsoft.Compute" `
+    -Type "CustomScriptExtension" `
+    -TypeHandlerVersion 1.8 `
+    -Setting $publicSettings
+  Update-AzureRmVmss `
+    -ResourceGroupName myResourceGroupAG `
+    -Name myvmss$i `
+    -VirtualMachineScaleSet $vmss
+}
 ```
 
-在本示例中，会有两个后端池根据请求的站点路由网络流量。 一个池接收来自站点“contoso.com”的流量，另一个池接收来自站点“fabrikam.com”的流量。 必须替换上述 IP 地址，添加自己的应用程序 IP 地址终结点。 对于后端实例，也可以使用公共 IP 地址、FQDN 或 VM 的 NIC 来替换内部 IP 地址。 若要指定 FQDN 而非 IP，请在 PowerShell 中使用“-BackendFQDNs”参数。
+## <a name="create-cname-record-in-your-domain"></a>在域中创建 CNAME 记录
 
-### <a name="step-3"></a>步骤 3
+使用其公共 IP 地址创建应用程序网关后，可以获取 DNS 地址并使用它在域中创建 CNAME 记录。 可以使用 [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 获取应用程序网关的 DNS 地址。 复制 DNSSettings 的 *fqdn* 值并使用它作为所创建的 CNAME 记录的值。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
 
-为后端池中进行了负载均衡的网络流量配置应用程序网关设置“poolsetting01”和“poolsetting02”。 在本示例中，将为后端池配置不同的后端池设置。 每个后端池可有自身的后端池设置。
-
-```powershell
-$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
-$poolSetting02 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting02" -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 240
+```azurepowershell-interactive
+Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-### <a name="step-4"></a>步骤 4
+## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-使用公共 IP 终结点配置前端 IP。
+在浏览器的地址栏中输入域名。 例如，http://www.contoso.com。
 
-```powershell
-$fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name "frontend1" -PublicIPAddress $publicip
-```
+![在应用程序网关中测试 contoso 站点](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest.png)
 
-### <a name="step-5"></a>步骤 5
+将地址更改为其他域，应看到类似下例所示的内容：
 
-配置应用程序网关的前端端口。
-
-```powershell
-$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name "fep01" -Port 443
-```
-
-### <a name="step-6"></a>步骤 6
-
-为此示例中需要提供支持的两个网站配置两个 SSL 证书。 一个证书用于 contoso.com 流量，另一个证书用于 fabrikam.com 流量。 这些证书应该是证书颁发机构针对网站颁发的证书。 支持自签名证书，但不建议将其用于生产流量。
-
-```powershell
-$cert01 = New-AzureRmApplicationGatewaySslCertificate -Name contosocert -CertificateFile <file path> -Password <password>
-$cert02 = New-AzureRmApplicationGatewaySslCertificate -Name fabrikamcert -CertificateFile <file path> -Password <password>
-```
-
-### <a name="step-7"></a>步骤 7
-
-为此示例中的两个网站配置两个侦听器。 此步骤针对用于接收传入流量的公共 IP 地址、端口和主机配置侦听器。 需要提供 HostName 参数才能支持多个站点，并应将该参数设置为适当的网站，以便为其接收流量。 在多主机方案中，对于需要提供 SSL 支持的网站，应将 RequireServerNameIndication 参数设置为 true。 如果需要提供 SSL 支持，则还需指定用于保护该 Web 应用程序流量的 SSL 证书。 对于侦听器而言，FrontendIPConfiguration、FrontendPort 和 HostName 的组合必须是唯一的。 每个侦听器都可以支持一个证书。
-
-```powershell
-$listener01 = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protocol Https -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -HostName "contoso11.com" -RequireServerNameIndication true  -SslCertificate $cert01
-$listener02 = New-AzureRmApplicationGatewayHttpListener -Name "listener02" -Protocol Https -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -HostName "fabrikam11.com" -RequireServerNameIndication true -SslCertificate $cert02
-```
-
-### <a name="step-8"></a>步骤 8
-
-为此示例中的两个 Web 应用程序创建两个规则设置。 可以通过规则将侦听器、后端池和 http 设置绑定到一起。 此步骤将应用程序网关配置为使用基本的路由规则，每个网站都有一个规则。 流向每个网站的流量由所配置的侦听器接收，然后又定向到所配置的后端池，所使用的属性在 BackendHttpSettings 中指定。
-
-```powershell
-$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule01" -RuleType Basic -HttpListener $listener01 -BackendHttpSettings $poolSetting01 -BackendAddressPool $pool1
-$rule02 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule02" -RuleType Basic -HttpListener $listener02 -BackendHttpSettings $poolSetting02 -BackendAddressPool $pool2
-```
-
-### <a name="step-9"></a>步骤 9
-
-配置实例数目和应用程序网关的大小。
-
-```powershell
-$sku = New-AzureRmApplicationGatewaySku -Name "Standard_Medium" -Tier Standard -Capacity 2
-```
-
-## <a name="create-application-gateway"></a>创建应用程序网关
-
-创建包含前述步骤中所有配置对象的应用程序网关。
-
-```powershell
-$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-RG -Location "West US" -BackendAddressPools $pool1,$pool2 -BackendHttpSettingsCollection $poolSetting01, $poolSetting02 -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01, $listener02 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslCertificates $cert01, $cert02
-```
-
-> [!IMPORTANT]
-> 应用程序网关预配是运行时间较长的操作，可能需要一段时间才能完成。
-> 
-> 
-
-## <a name="get-application-gateway-dns-name"></a>获取应用程序网关 DNS 名称
-
-创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不方便。 若要确保最终用户能够访问应用程序网关，可以使用 CNAME 记录指向应用程序网关的公共终结点。 [在 Azure 中配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 为此，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 应使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
-
-```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
-```
-
-```
-Name                     : publicIP01
-ResourceGroupName        : appgw-RG
-Location                 : westus
-Id                       : /subscriptions/<subscription_id>/resourceGroups/appgw-RG/providers/Microsoft.Network/publicIPAddresses/publicIP01
-Etag                     : W/"00000d5b-54ed-4907-bae8-99bd5766d0e5"
-ResourceGuid             : 00000000-0000-0000-0000-000000000000
-ProvisioningState        : Succeeded
-Tags                     : 
-PublicIpAllocationMethod : Dynamic
-IpAddress                : xx.xx.xxx.xx
-PublicIpAddressVersion   : IPv4
-IdleTimeoutInMinutes     : 4
-IpConfiguration          : {
-                                "Id": "/subscriptions/<subscription_id>/resourceGroups/appgw-RG/providers/Microsoft.Network/applicationGateways/appgwtest/frontendIP
-                            Configurations/frontend1"
-                            }
-DnsSettings              : {
-                                "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.cloudapp.net"
-                            }
-```
+![在应用程序网关中测试 fabrikam 站点](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest2.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-通过[应用程序网关 - Web 应用程序防火墙](application-gateway-webapplicationfirewall-overview.md)了解如何保护网站
+本文介绍了如何执行以下操作：
 
+> [!div class="checklist"]
+> * 设置网络
+> * 创建应用程序网关
+> * 创建侦听器和路由规则
+> * 使用后端池创建虚拟机规模集
+> * 在域中创建 CNAME 记录
+
+> [!div class="nextstepaction"]
+> [详细了解应用程序网关的作用](application-gateway-introduction.md)

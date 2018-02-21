@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: danlep
-ms.openlocfilehash: 3596b50b68cabf212218825566c0f8313f054f65
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fb3941e0b55f8b5d79c9fc794ec984e074caafe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>配合使用 VMAccess 扩展和 Azure CLI 2.0 管理管理用户、SSH，并检查或修复 Linux VM 上的磁盘
 Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的 root 密码，或者不小心删除了 SSH 私钥。 如果在数据中心的时代发生这种情况，则需要开车到那里，并打开 KVM 访问服务器控制台。 请将 Azure VMAccess 扩展想像成该 KVM 交换机，它允许访问控制台以重置 Linux 访问或执行磁盘级维护。
 
-本文说明如何使用 Azure VMAccess 扩展检查或修复磁盘、重置用户访问权限、管理管理用户帐户，或重置 Linux 上的 SSH 配置。 也可以使用 [Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。
+本文说明如何使用 Azure VMAccess 扩展检查或修复磁盘、重置用户访问权限、管理管理用户帐户，或重置 Linux 上的 SSH 配置。 还可以使用 [Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。
 
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>使用 VMAccess 扩展的方法
@@ -33,7 +33,7 @@ Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的 root 密
 * 使用 Azure CLI 2.0 和所需参数。
 * [使用 VMAccess 要处理和操作的原始 JSON 文件](#use-json-files-and-the-vmaccess-extension)。
 
-下面的示例使用 [az vm user](/cli/azure/vm/user) 命令。 若要执行这些步骤，需要安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
+下面的示例使用 [az vm user](/cli/azure/vm/user) 命令。 若要执行这些步骤，需要安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#az_login) 登录到 Azure 帐户。
 
 ## <a name="reset-ssh-key"></a>重置 SSH 密钥
 以下示例重置名为 `myVM` 的 VM 上用户 `azureuser` 的 SSH 密钥：
@@ -91,7 +91,7 @@ az vm user delete \
 
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>使用 JSON 文件和 VMAccess 扩展
-以下示例使用原始 JSON 文件。 然后使用 [az vm extension set](/cli/azure/vm/extension#set) 调用 JSON 文件。 从 Azure 模板也可以调用这些 JSON 文件。 
+以下示例使用原始 JSON 文件。 然后使用 [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) 调用 JSON 文件。 从 Azure 模板也可以调用这些 JSON 文件。 
 
 ### <a name="reset-user-access"></a>重置用户访问权限
 如果已失去 Linux VM 的 root 访问权限，可以启动 VMAccess 脚本重置用户的 SSH 密钥或密码。
@@ -228,11 +228,11 @@ az vm extension set \
 ```
 
 ## <a name="next-steps"></a>后续步骤
-使用 Azure VMAccess 扩展更新 Linux 是一种对正在运行的 Linux VM 进行更改的方法。 还可以使用 cloud-init 和 Azure Resource Manager 模板之类的工具在 Linux VM 启动时对其进行修改。
+使用 Azure VMAccess 扩展更新 Linux 是一种对正在运行的 Linux VM 进行更改的方法。 还可以使用 cloud-init 和 Azure 资源管理器模板之类的工具在 Linux VM 启动时对其进行修改。
 
 [适用于 Linux 的虚拟机扩展和功能](extensions-features.md)
 
-[使用 Linux VM 扩展创作 Azure Resource Manager 模板](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[使用 Linux VM 扩展创作 Azure 资源管理器模板](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [在创建期间使用 cloud-init 自定义 Linux VM](using-cloud-init.md)
 

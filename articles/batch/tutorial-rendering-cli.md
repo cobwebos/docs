@@ -6,14 +6,14 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 01/23/2018
+ms.date: 02/05/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 5a5c541f7a912a96547b6b3bec37f0e4066a54e6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c14f4d14584dad27e53504e2413e82764db9dca0
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>教程：使用 Azure Batch 渲染场景 
 
@@ -32,7 +32,7 @@ Azure Batch 提供云规模的渲染功能，按使用付费。 Batch 渲染服�
 
 ## <a name="prerequisites"></a>先决条件
 
-[GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) 上提供了本教程的示例 3ds Max 场景，以及示例 Bash 脚本和 JSON 配置文件。 3ds Max 场景来自 [Autodesk 3ds Max 示例文件](http:download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe)。 （提供的 Autodesk 3ds Max 示例文件已获得 Creative Commons Attribution-NonCommercial-Share Alike 许可。 版权所有 © Autodesk, Inc.）
+[GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) 上提供了本教程的示例 3ds Max 场景，以及示例 Bash 脚本和 JSON 配置文件。 3ds Max 场景来自 [Autodesk 3ds Max 示例文件](http://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe)。 （提供的 Autodesk 3ds Max 示例文件已获得 Creative Commons Attribution-NonCommercial-Share Alike 许可。 版权所有 © Autodesk, Inc.）
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -216,8 +216,8 @@ az batch job create \
   "commandLine": "cmd /c \"3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 Robo_Dummy_Lo_Res.max\"",
   "resourceFiles": [
     {
-        "blobSource": "https://mystorageaccount.blob.core.windows.net/maxfile/Robo_Dummy_Lo_Res.max",
-        "filePath": "Robo_Dummy_Lo_Res.max"
+        "blobSource": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
+        "filePath": "MotionBlur-DragonFlying.max"
     }
   ],
     "outputFiles": [

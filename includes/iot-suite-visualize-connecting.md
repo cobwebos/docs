@@ -16,7 +16,7 @@
 
 ## <a name="act-on-your-device"></a>对设备执行操作
 
-若要对设备调用方法，请使用远程监视解决方案中的“设备”页。 例如，在远程监视解决方案中，**冷却器**设备实现了**重新启动**方法。
+若要对设备调用方法，请使用远程监视解决方案中的“设备”页。 例如，在远程监视解决方案中，**冷却器**设备实现了 **FirmwareUpdate** 方法。
 
 1. 选择“设备”可导航到解决方案中的“设备”页。
 
@@ -26,11 +26,15 @@
 
 1. 若要显示可对设备调用的方法列表，请选择“计划”。 若要计划要在多个设备上运行的方法，可以在列表中选择多个设备。 “计划”面板将显示普遍适用于所选择的所有设备的方法类型。
 
-1. 选择“重新启动”，将作业名称设置为 **RebootPhysicalChiller**，然后选择“应用”：
+1. 选择 **FirmwareUpdate**，将作业名称设置为 **UpdatePhysicalChiller**。 将“固件版本”设置为 **2.0.0**，将“固件 URI”设置为 **http://contoso.com/updates/firmware.bin**，然后选择“应用”：
 
-    ![计划重新启动](media/iot-suite-visualize-connecting/deviceschedule.png)
+    ![计划固件更新](media/iot-suite-visualize-connecting/deviceschedule.png)
 
-1. 设备处理该方法时，一条消息将显示在运行设备代码的控制台中。
+1. 模拟设备处理该方法时，一系列消息将显示在运行设备代码的控制台中。
+
+1. 更新完成时，“设备”页上将显示新的固件版本：
+
+    ![更新已完成](media/iot-suite-visualize-connecting/complete.png)
 
 > [!NOTE]
 > 若要跟踪解决方案中作业的状态，请选择“查看”。

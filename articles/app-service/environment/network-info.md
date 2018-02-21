@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: ccompy
-ms.openlocfilehash: 3ac630982b47f7105feb034982eae070faa72d9e
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: c4779ada60fab2db5249a107abfc7ca6f80cb16f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -54,6 +54,13 @@ ms.lasthandoff: 11/23/2017
 |  Visual Studio 远程调试  |  用户可配置 |  4016, 4018, 4020, 4022 |
 
 如果在外部 ASE 或 ILB ASE 上操作，就会使用这些端口。 如果在外部 ASE 上操作，将在公共 VIP 上命中这些端口。 如果在 ILB ASE 上操作，则将在 ILB 上命中这些端口。 如果锁定端口 443，则在门户中公开的某些功能可能会收到影响。 有关详细信息，请参阅[门户依赖项](#portaldep)。
+
+## <a name="ase-subnet-size"></a>ASE 子网大小 ##
+
+用于托管 ASE 的子网的大小在部署 ASE 后不能更改。  ASE 使用每个基础结构角色以及每个独立应用服务计划实例的地址。  此外，还有创建的每个子网的 Azure 网络使用的 5 个地址。  在创建应用前，根本不带应用服务计划的 ASE 将使用 12 个地址。  如果它是 ILB ASE，则在该 ASE 中创建应用前将使用 13 个地址。 扩大应用服务计划时，添加的每个前端将需要额外的地址。  默认情况下，为每 15 个总应用服务计划实例添加前端服务器。 
+
+   > [!NOTE]
+   > 子网中仅可具有 ASE。 请务必选择一个容许将来扩展的地址空间。 以后无法更改此设置。 建议大小是地址长度为 128 位的 `/25`。
 
 ## <a name="ase-dependencies"></a>ASE 依赖项 ##
 
@@ -99,7 +106,7 @@ ASE 入站访问依赖项如下：
 
 ## <a name="portal-dependencies"></a>门户依赖项 ##
 
-除了 ASE 功能依赖项，还有其他几项与门户体验相关。 Azure 门户中的某些功能依赖于直接访问 _SCM 站点_。 Azure 应用服务中的每个应用都有两个 URL。 第一个 URL 用于访问你的应用。 第二个 URL 用于访问 SCM 站点（也称为 _Kudu 控制台_）。 使用 SCM 站点的功能包括：
+除了 ASE 功能依赖项，还有其他几项与门户体验相关。 Azure 门户中的某些功能依赖于对 _SCM 站点_的直接访问。 Azure 应用服务中的每个应用都有两个 URL。 第一个 URL 用于访问你的应用。 第二个 URL 用于访问 SCM 站点（也称为 _Kudu 控制台_）。 使用 SCM 站点的功能包括：
 
 -   Web 作业
 -   函数
@@ -150,7 +157,7 @@ ASE 具有一些需要注意的 IP 地址。 它们是：
 
 可通过 Azure 门户或 PowerShell 配置 NSG。 此处仅介绍了 Azure 门户中的操作。 在门户中的“网络”下面创建和管理 NSG 顶级资源。
 
-若要考虑到入站和出站要求，NSG 应与本例中所示的 NSG 相似。 VNet 地址范围为 192.168.250.0/16，ASE 所在的子网为 192.168.251.128/25。
+若要考虑到入站和出站要求，NSG 应与本例中所示的 NSG 相似。 VNet 地址范围为 192.168.250.0/23，ASE 所在的子网为 192.168.251.128/25。
 
 本例列表顶部显示了要使 ASE 正常工作需满足的前两个入站要求。 满足这些要求可以实现 ASE 管理，并使 ASE 能与自身通信。 其他项均可在租户中配置，且可控制对 ASE 托管的应用程序的网络访问。 
 
@@ -168,13 +175,13 @@ ASE 具有一些需要注意的 IP 地址。 它们是：
 
 ## <a name="routes"></a>路由 ##
 
-路由导致问题的最常见原因是使用 Azure ExpressRoute 配置 VNet。 VNet 中有 3 种类型的路由：
+强制隧道的定义及其用法都离不开路由。 在 Azure 虚拟网络中，路由是基于最长前缀匹配 (LPM) 实现的。 如果有多个路由的 LPM 匹配情况相同，则按以下顺序根据路由源来选择路由：
 
--   系统路由
--   BGP 路由
--   用户定义的路由 (UDR)
+- 用户定义的路由 (UDR)
+- BGP 路由（当使用 ExpressRoute 时）
+- 系统路由
 
-BGP 路由替代系统路由。 UDR 路由替代 BGP 路由。 有关 Azure 虚拟网络中的路由的详细信息，请参阅[用户定义的路由概述][UDRs]。
+若要详细了解虚拟网络中的路由，请参阅[用户定义的路由和 IP 转发][UDRs]。
 
 ASE 管理系统时所用的 Azure SQL 数据库配有防火墙。 它要求通信来自于 ASE 公共 VIP。 如果 ASE 到 SQL 数据库的连接沿着 ExpressRoute 连接发送，且经过另一 IP 地址，则此连接将被拒绝。
 

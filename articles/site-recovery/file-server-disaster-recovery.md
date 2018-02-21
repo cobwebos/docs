@@ -9,14 +9,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2017
+ms.date: 02/06/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: ac734ffc6cb57188b7b0959cbe7655949b2853de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 779ec70a3b45a0ac3e766c956aac94932d4d126b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="protect-a-file-server-using-azure-site-recovery"></a>使用 Azure Site Recovery 保护文件服务器 
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 12/08/2017
 
 ### <a name="site-recovery-support"></a>Site Recovery 支持
 由于 Site Recovery 复制不区分应用程序，因此本文提供的建议应该也适用于以下方案：
-| 源    |到辅助站点    |到 Azure
+| Source    |到辅助站点    |到 Azure
 |---------|---------|---------|
 |Azure| -|是|
 |Hyper-V|   是 |是

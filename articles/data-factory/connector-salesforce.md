@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 4a6138f0927f9761677d6da1ae05546286ad3898
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4b2561aa338707567b44237e668e9d6d1a01bfea
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -66,8 +66,8 @@ Salesforce 链接服务支持以下属性。
 | type |类型属性必须设置为 **Salesforce**。 |是 |
 | environmentUrl | 指定 Salesforce 实例的 URL。 <br> - 默认为 `"https://login.salesforce.com"`。 <br> - 要从沙盒复制数据，请指定 `"https://test.salesforce.com"`。 <br> - 要从自定义域复制数据，请指定 `"https://[domain].my.salesforce.com"`（以此为例）。 |否 |
 | username |为用户帐户指定用户名。 |是 |
-| password |指定用户帐户的密码。<br/><br/>可以将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将密码存储在 Azure Key Vault 中，并让复制活动在执行数据复制时从该处拉取密码。 若要了解详细信息，请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
-| securityToken |为用户帐户指定安全令牌。 有关如何重置和获取安全令牌的说明，请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)。 若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。<br/><br/>可以将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将安全令牌存储在 Key Vault 中，并让复制活动在执行数据复制时从该处拉取令牌。 若要了解详细信息，请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
+| password |指定用户帐户的密码。<br/><br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
+| securityToken |为用户帐户指定安全令牌。 有关如何重置和获取安全令牌的说明，请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)。 若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。<br/><br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure 集成运行时。 | 对于源为“否”，对于接收器为“是”（如果源链接服务没有集成运行时） |
 
 >[!IMPORTANT]

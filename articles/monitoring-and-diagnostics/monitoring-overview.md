@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 3ab7d2d5c3b95d215f3ee9eb9346e8a7895e734c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 505e92b5fc63f570bc4d0f8899ae977b93850356
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>监视 Azure 应用程序和资源
 
@@ -57,8 +57,11 @@ Azure 包含多个服务，它们在监视空间中各自执行特定角色和�
 [服务映射](../operations-management-suite/operations-management-suite-service-map.md)通过分析具有不同进程和在其他计算机和外部进程中具有依赖项的虚拟机，提供有关 IaaS 环境的深入见解。  它将事件、性能数据和管理解决方案在 Log Analytics 中进行整合，让使用者能够在每台计算机的上下文中查看此数据，以及它与环境中其他内容之间的关系。  服务映射类似于 [Application Insights 中的应用程序映射](../application-insights/app-insights-app-map.md)，但它侧重于为应用程序提供支持的基础结构组件。
 
 ### <a name="network-watcher"></a>网络观察程序
-[网络观察程序](../network-watcher/network-watcher-monitoring-overview.md)为 Azure 中的不同网络方案提供基于方案的监视和诊断。  它将数据存储在 Azure 指标和诊断中待将来分析时使用，并与 [Log Analytics 中的管理解决方案](../log-analytics/log-analytics-azure-networking-analytics.md)协同工作，实现对网络资源的完整监视。
-
+[网络观察程序](../network-watcher/network-watcher-monitoring-overview.md)为 Azure 中的不同网络方案提供基于方案的监视和诊断。  它将数据存储在 Azure 指标和诊断中供将来分析时使用，并与以下监视解决方案协同工作，实现监视网络的各个方面：
+* [网络性能监视器 (NPM)](https://blogs.msdn.microsoft.com/azuregov/2017/09/05/network-performance-monitor-general-availability/) - 一种基于云的网络监视解决方案，用于监视公有云、数据中心和本地环境之间的连接
+* [ExpressRoute 监视器](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) - 一种 NPM 功能，用于通过 ExpressRoute 线路监视端到端连接和性能。
+* 流量分析 - 一种基于云的解决方案，可查看云网络上的用户和应用程序活动。
+* [DNS Analytics](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-dns) - 基于 DNS 服务器提供与安全、性能和操作相关的见解。
 
 ### <a name="management-solutions"></a>管理解决方案
 [管理解决方案](../log-analytics/log-analytics-add-solutions.md)是打包的逻辑集，它提供有关特定应用程序或服务的见解。  它们依赖于 Log Analytics 来存储和分析所收集的监视数据。  管理解决方案可从 Microsoft 或合作伙伴处获得，可用于为各种 Azure 服务和第三方服务提供监视。 监视解决方案的例子包括[容器监视](../log-analytics/log-analytics-containers.md)，借助容器监视，可查看和管理容器主机，以及 [Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md)，可为 SQL Azure 数据库收集和可视化性能指标。

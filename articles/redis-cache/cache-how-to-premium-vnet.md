@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 74ec104bebec2004a8b7116865c2394c02b12638
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 5ed5af627fa8ec8007f095face2cbf115ead4b27
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>如何为高级 Azure Redis 缓存配置虚拟网络支持
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能的选择上具有灵活性，其中包括高级层功能，如群集、暂留和虚拟网络支持。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。 本文说明如何为高级 Azure Redis 缓存实例配置虚拟网络支持。
@@ -117,6 +117,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 | 20226 |出站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
 | 13000-13999 |出站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
 | 15000-15999 |出站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
+| 6379-6380 |出站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
 
 
 ### <a name="inbound-port-requirements"></a>入站端口要求
@@ -125,7 +126,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 
 | 端口 | 方向 | 传输协议 | 目的 | 本地 IP | 远程 IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379、6380 |入站 |TCP |与 Redis 的客户端通信、Azure 负载均衡 | （Redis 子网） |虚拟网络、Azure 负载均衡器 |
+| 6379、6380 |入站 |TCP |与 Redis 的客户端通信、Azure 负载均衡 | （Redis 子网） | （Redis 子网）、虚拟网络、Azure 负载均衡器 |
 | 8443 |入站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |
 | 8500 |入站 |TCP/UDP |Azure 负载均衡 | （Redis 子网） |Azure 负载均衡器 |
 | 10221-10231 |入站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网）、Azure 负载均衡器 |
@@ -146,7 +147,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>如何验证 VNET 中缓存是否正常工作？
 
 >[!IMPORTANT]
->连接到 VNET 中托管的 Azure Redis 缓存实例时，缓存客户端必须位于同一 VNET 中，包括任何测试应用程序或诊断 ping 工具。
+>连接到 VNET 中托管的 Azure Redis 缓存实例时，缓存客户端必须位于同一 VNET 中或已启用 VNET 对等互连的 VNET 中。 这包括任何测试应用程序或诊断 ping 工具。 无论客户端应用程序在哪里托管，都必须配置网络安全组，以便允许客户端的网络流量到达 Redis 实例。
 >
 >
 

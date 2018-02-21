@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: d548d3df209df2a9ae8fa3f8ee684190bc140175
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 49a3e7f3aab3ae95c6f40b167880bb48d0fc851b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
 Azure 中的每个虚拟机 (VM) 都创建至定义 Linux 分发和 OS 版本的映像。 映像可包括预安装的应用程序和配置。 Azure Marketplace 为最常见的分发和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
@@ -28,7 +28,7 @@ Azure 中的每个虚拟机 (VM) 都创建至定义 Linux 分发和 OS 版本的
 ## <a name="create-azure-resource-group"></a>创建 Azure 资源组
 在生成过程中，Packer 会在生成源 VM 时创建临时 Azure 资源。 要捕获该源 VM 用作映像，必须定义资源组。 Packer 生成过程的输出存储在此资源组中。
 
-使用 [az group create](/cli/azure/group#create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create -n myResourceGroup -l eastus
@@ -54,7 +54,7 @@ az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, t
 }
 ```
 
-若要向 Azure 进行身份验证，还需使用 [az account show](/cli/azure/account#show) 获取 Azure 订阅 ID：
+若要向 Azure 进行身份验证，还需使用 [az account show](/cli/azure/account#az_account_show) 获取 Azure 订阅 ID：
 
 ```azurecli
 az account show --query "{ subscription_id: id }"
@@ -200,7 +200,7 @@ Packer 生成 VM、运行配置程序以及清理部署需要几分钟时间。
 
 
 ## <a name="create-vm-from-azure-image"></a>从 Azure 映像创建 VM
-现在可使用 [az vm create](/cli/azure/vm#create) 从映像创建 VM。 指定使用 `--image` 参数创建的映像。 以下示例从 myPackerImage 创建一个名为 myVM 的 VM，并生成 SSH 密钥（如果它们尚不存在）：
+现在可使用 [az vm create](/cli/azure/vm#az_vm_create) 从映像创建 VM。 指定使用 `--image` 参数创建的映像。 以下示例从 myPackerImage 创建一个名为 myVM 的 VM，并生成 SSH 密钥（如果它们尚不存在）：
 
 ```azurecli
 az vm create \

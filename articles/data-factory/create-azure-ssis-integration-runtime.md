@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: bb63a3d882d50f509fff220d3eb2c1eb6bf0d70f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 86e624476b7869331720e58363ad14b22704b19b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 本文提供在 Azure 数据工厂中配置 Azure-SSIS 集成运行时所要执行的步骤。 然后，可以使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 将 SQL Server Integration Services (SSIS) 包部署到 Azure 上的此运行时。
@@ -61,8 +61,9 @@ ms.lasthandoff: 02/01/2018
 
 ### <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。    
-2. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。 
+1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
+2. 登录到 [Azure 门户](https://portal.azure.com/)。    
+3. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。 
    
    ![新建 -> DataFactory](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
 3. 在“新建数据工厂”页中，输入 **MyAzureSsisDataFactory** 作为**名称**。 

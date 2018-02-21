@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: b3829f0e1b87451bf0706edc268359be5c4480bc
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 015bf031aea6b79fcca0a416253e9aa47bb245b6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ASE
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/11/2017
 
 2. ILB ASE 创建完毕后，将上传一个匹配 ILB ASE 域的 SSL 证书。
 
-3. 上传的 SSL 证书将分配到 ILB ASE 作为其“默认”SSL 证书。  当应用使用分配给 ASE 的一般根域（如 https://someapp.mycustomrootcomain.com ）时，此证书用于 ILB ASE 上流向应用的 SSL 流量。
+3. 上传的 SSL 证书将分配到 ILB ASE 作为其“默认”SSL 证书。  当应用使用分配给 ASE 的一般根域（如 https://someapp.mycustomrootdomain.com）时，此证书用于 ILB ASE 上流向应用的 SSL 流量。
 
 
 ## <a name="create-the-ase"></a>创建 ASE

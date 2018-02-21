@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/31/2018
 ms.author: mimig
-ms.openlocfilehash: 02bb5d23ee9468ab1f74396877cdcd6bdd8b8fba
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 9083ae631f654789b621a1fc62e0b9d31c24f119
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -40,6 +40,10 @@ ms.lasthandoff: 12/12/2017
 >
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+* 将 TableQueryMaxItemCount、TableQueryEnableScan、TableQueryMaxDegreeOfParallelism 和 TableQueryContinuationTokenLimitInKb 添加到 TableRequestOptions
+* Bug 修复
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * 正式发布版

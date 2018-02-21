@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 14f654979f004186e81b2f18578ced3c9aab3815
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: ab29338b5ce2090166e75f3860744562aa9f6b01
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 ODBC 数据存储复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -55,10 +55,10 @@ ODBC 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Odbc | 是 |
-| connectionString | 不包括凭据部分的连接字符串。 可以使用类似 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 的模式指定连接字符串，也可以利用在 Integration Runtime 计算机上使用 `"DSN=<name of the DSN on IR machine>;"` 设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。| 是 |
+| connectionString | 不包括凭据部分的连接字符串。 可以使用类似 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 的模式指定连接字符串，也可以利用在 Integration Runtime 计算机上使用 `"DSN=<name of the DSN on IR machine>;"` 设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。<br>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。| 是 |
 | authenticationType | 用于连接 ODBC 数据存储的身份验证类型。<br/>允许的值是：Basic 和 Anonymous。 | 是 |
 | userName | 如果使用基本身份验证，请指定用户名。 | 否 |
-| password | 指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString。 | 否 |
+| password | 指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | credential | 连接字符串的访问凭据部分，采用特定于驱动程序的属性值格式指定。 示例：`"RefreshToken=<secret refresh token>;"`。 将此字段标记为 SecureString。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 

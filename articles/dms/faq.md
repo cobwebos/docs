@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/25/2018
-ms.openlocfilehash: 87bd27147d20fec8c5839b744d70f215e2c1ec47
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 3c1c259cc58eb1adab39d9c0ca376726b798186e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>有关使用 Azure 数据库迁移服务的常见问题解答
 本文列出了有关使用 Azure 数据库迁移服务的常见问题和相关解答。
@@ -81,6 +81,9 @@ Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服�
 
 ### <a name="q-how-do-i-set-up-an-azure-virtual-network"></a>问： 如何设置 Azure 虚拟网络？
 有多篇 Microsoft 教程逐步讲解了如何完成设置 Azure VNET 的过程，另外，还可以参阅 [Azure 虚拟网络](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview)一文中提到的官方文档。
+
+### <a name="q-why-is-my-azure-database-migration-service-unavailable-or-stopped"></a>问： 为什么 Azure 数据库迁移服务不可用或已停止？
+如果用户显式停止 Azure 数据库迁移服务 (DMS)，或者如果服务处于非活动状态已有 24 小时，则服务将处于已停止或自动暂停状态。 在上述每种情况下，服务将不可用并处于已停止状态。  若要恢复活动迁移，请重启该服务。
 
 ### <a name="q-where-can-i-leave-feedback-about-the-azure-database-migration-service"></a>问： 在哪里可以提供有关 Azure 数据库迁移服务的反馈？
 我们希望收到读者的意见。 欢迎通过 [User Voice](https://feedback.azure.com/forums/906100-azure-database-migration-service) 发送有关 Azure 数据库迁移服务的任何反馈和看法。

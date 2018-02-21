@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b3f093f84758fe8622f09212b6a11a2c5f3795aa
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 772af3bce6947a92fa62a93a84ee84ee34093d82
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Azure 文件存储复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure 文件存储（Azure 文件）复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -47,7 +47,7 @@ Azure 文件存储链接的服务支持以下属性：
 | type | type 属性必须设置为：FileServer。 | 是 |
 | host | 将 Azure 文件存储终结点指定为 `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`。 | 是 |
 | userid | 将要访问 Azure 文件存储的用户指定为 `"userid": "AZURE\\<storage name>"`。 | 是 |
-| password | 指定存储访问密钥。 将此字段标记为 SecureString。<br/> | 是 |
+| password | 指定存储访问密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |对于源为“No”，对于接收器为“Yes” |
 
 >[!IMPORTANT]

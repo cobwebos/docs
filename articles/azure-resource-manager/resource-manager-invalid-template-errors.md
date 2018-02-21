@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 09/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: e58c10cfb4cdd4ba49945e6c19845cbc957d6326
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87bc6e4def624785c5052a9a25f579b022c940ec
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="resolve-errors-for-invalid-template"></a>解决无效模板错误
 
@@ -131,6 +131,10 @@ part of the allowed values
 
 请仔细检查模板中的允许值，并提供在部署过程中提供这些值之一。
 
-### <a name="solution-4---circular-dependency-detected"></a>解决方案 4 - 检测到循环依赖项
+### <a name="solution-4---too-many-target-resource-groups"></a>解决方案 4 - 太多目标资源组
+
+如果在单个部署中指定的目标资源组超过五个，则会收到此错误。 请考虑合并部署中的资源组数，或者部署某些模板作为单独的部署。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](resource-manager-cross-resource-group-deployment.md)。
+
+### <a name="solution-5---circular-dependency-detected"></a>解决方案 5 - 检测到循环依赖项
 
 当资源以某种方式互相依赖，导致部署无法启动时，就会出现此错误。 将多个相互依赖的项组合在一起时，会导致两个或两个以上的资源等待其他资源，而后者也在进行等待。 例如，resource1 依赖于 resource3，resource2 依赖于 resource1，resource3 依赖于 resource2。 通常情况下，删除不必要的依赖项即可解决此问题。

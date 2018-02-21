@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/30/2017
-ms.openlocfilehash: 04e5465a56b8da9f2a078e513d5176f134fd011d
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: d09292cce1414a1b89e4b75df27d0a689738b4d6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
 本文探讨时序见解资源管理器 Web 应用中可用的各种功能和选项。 在 Web 浏览器中使用时序见解资源管理器来创建数据的可视化效果。
@@ -37,7 +37,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
 2. 选择环境后，使用顶部的“开始时间”和“结束时间”配置，或者单击和拖动需要的时间范围。  单击右上角的放大镜，或者右键单击所选择的时间范围并选择“搜索”。  
 
-3. 还可以通过选择“自动打开”按钮，每分钟自动刷新可用性。
+3. 还可以通过选择“自动打开”按钮，每分钟自动刷新可用性。  请注意，“自动打开”按钮仅适用于可用性图表，而不适用于主要可视化效果的内容。
 
 4. 请注意，Azure 云图标使你转到 Azure 门户中的环境。
 
@@ -55,7 +55,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
       - “谓词”：通过谓词，可以使用下面的操作数集快速筛选事件。 如果通过选择/单击执行搜索，谓词将基于该搜索自动更新。      支持的操作数类型包括：
 
-         |操作  |支持的类型  |说明  |
+         |Operation  |支持的类型  |说明  |
          |---------|---------|---------|
          |<, >, <=, >=     |  双精度、DateTime、TimeSpan       |         |
          |=, !=, <>     | 字符串、布尔型、双精度型、DateTime、TimeSpan、NULL        |         |
@@ -94,7 +94,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
 12. “事件”：选择或右键单击以上内容来选择浏览事件时，事件面板是可用的。  在这里，可以看到所有原始事件并可将事件导出为 JSON 或 CSV 文件。 请注意，时序见解存储所有原始数据。
 
-   ![事件](media/time-series-insights-explorer/explorer7.png)
+   ![活动](media/time-series-insights-explorer/explorer7.png)
 
 13. 浏览事件以公开模式和列统计信息之后，单击“统计信息”选项卡。  
 

@@ -7,11 +7,11 @@ author: dcaro
 ms.author: dcaro
 ms.date: 10/19/2017
 ms.topic: article
-ms.openlocfilehash: 253e5d341f93e61d851893eb05832fbf35707cfc
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 5157066086f1bdfa580c1946942bda4505e48935
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="terraform-cloud-shell-development"></a>Terraform Cloud Shell 开发 
 
@@ -36,7 +36,7 @@ provider "azurerm" {
 }
 ```
 
-使用任意 `terraform` CLI 命令时，Cloud Shell 会将 `azurerm` 提供程序所需的值传递给环境变量。
+使用任何 `terraform` CLI 命令时，Cloud Shell 会通过环境变量传递 `azurerm` 提供程序所需的值。
 
 ## <a name="other-cloud-shell-developer-tools"></a>其他 Cloud Shell 开发人员工具
 

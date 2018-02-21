@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: 391b691e895c672ef872f8b98c88567175ad8030
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 70451c5a69a1a268aef0eb957cb92791b92eb221
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -89,8 +89,7 @@ VM 大小和类型由 CPU 处理能力、RAM 大小和网络延迟决定：
 
 根据群集类型，增加工作节点数目可以添加更多的计算容量（例如更多的核心），但同时也可能会增大整个群集为所处理数据的内存中存储提供支持所需的内存总量。 在 VM 大小和类型的选择上，适当的群集规模通常是使用模拟工作负荷或 canary 查询凭经验选择出来的。
 
-可以扩展群集来满足峰值负载需求，然后在不再需要这些额外的节点时缩减群集。
-<!-- - see [Scaling - best practices](hdinsight-scaling-best-practices.md). -->
+可以扩展群集来满足峰值负载需求，然后在不再需要这些额外的节点时缩减群集。 有关详细信息，请参阅[缩放 HDInsight 群集](hdinsight-scaling-best-practices.md)。
 
 ### <a name="cluster-lifecycle"></a>群集生命周期
 

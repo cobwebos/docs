@@ -2,24 +2,18 @@
 title: "使用 Azure Site Recovery 将 AWS 中的 VM 迁移到 Azure | Microsoft Docs"
 description: "本文介绍如何使用 Azure Site Recovery 将 Amazon Web Services (AWS) 中运行的 VM 迁移到 Azure。"
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
 manager: carmonm
-editor: 
-ms.assetid: ddb412fd-32a8-4afa-9e39-738b11b91118
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/01/2017
+ms.topic: tutorial
+ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 814d8ee4952dd08707849eadc1e4e97ab6087da0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4acdc540ca1a87a4545130eb5fbc096633b0605c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
 
@@ -33,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 > * 测试故障转移，确保一切正常运行
 > * 面向 Azure 运行一次性故障转移
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 
 ## <a name="prepare-azure-resources"></a>准备 Azure 资源 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: manshuk
-ms.openlocfilehash: 6982d6177ef5c94436a28cd68beb9feb5cc343e5
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 29f153803d5eb74e2d287d97cf9436e81b2a3e20
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="understand-reserved-instance-usage-for-your-pay-as-you-go-subscription"></a>了解即用即付订阅的保留实例使用情况
 
@@ -56,6 +56,16 @@ csv 的此部分显示预订的总体使用情况。 将筛选器应用于包含
 3. “保留-基础 VM”计量子类别行表示声明部分中的 0 美元成本行。 预订已支付了运行此 VM 的成本。
 4. 这是预订的计量 ID。 此计量的成本是 0 美元。 任何有资格作为保留实例的 VM 都在 csv 中具有此计量 ID 以便核算成本。 
 5. Standard_DS1_v2 是 1 vCPU VM，此 VM 在不使用 Azure 混合权益的情况下部署。 因此，此计量涉及 Windows 软件的额外费用。 请参阅 [Azure 保留 VM 实例 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)， 找到与 D 系列 1 核心 VM 对应的计量。 如果使用 Azure 混合权益，则不会收取此额外费用。 
+
+## <a name="next-steps"></a>后续步骤
+若要了解有关预订虚拟机实例的详细信息，请参阅以下文章。
+
+- [通过预订 VM 实例预付虚拟机](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [管理预订虚拟机实例](billing-manage-reserved-vm-instance.md)
+- [通过预订虚拟机实例节省虚拟机资金](billing-save-compute-costs-reservations.md)
+- [了解如何应用预订虚拟机实例折扣](billing-understand-vm-reservation-charges.md)
+- [了解企业许可登记表的预订实例使用情况](billing-understand-reserved-instance-usage-ea.md)
+- [预订实例未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
 

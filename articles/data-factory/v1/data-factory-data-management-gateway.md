@@ -15,15 +15,18 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0735dd186e53a72c29040fcde51ceb70024784e4
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 1f83b3568cf5c6ad0650f2289263d855ab395772
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
 > 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[版本 2 中的自托管集成运行时](../create-self-hosted-integration-runtime.md)。 
+
+> [!NOTE]
+> 数据管理网关的产品名称现在已更改为自承载 Integration Runtime。  
 
 数据管理网关是必须安装到本地环境中的客户端代理，用于在云和本地数据存储之间复制数据。 [支持的数据源](data-factory-data-movement-activities.md#supported-data-stores-and-formats)部分列出了数据工厂支持的本地数据存储。
 

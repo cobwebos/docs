@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
-ms.openlocfilehash: 01f9c01c9e04e02dbb548b68cf99684ba6ddd57e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5afccc4aa7b751958952d1401182f93109cff358
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure 自动化方案 - 自动化源代码管理与 Visual Studio Team Services 的集成
 
@@ -33,17 +33,17 @@ ms.lasthandoff: 10/11/2017
 
 Runbook | 说明| 
 --------|------------|
-Sync-VSTS | 执行签入时从 VSTS 源代码管理导入 Runbook 或配置。 如果手动运行该 Runbook，它会将所有 Runbook 或配置导入并发布到自动化帐户。| 
-Sync-VSTSGit | 执行签入时从 Git 源代码管理中的 VSTS 导入 Runbook 或配置。 如果手动运行该 Runbook，它会将所有 Runbook 或配置导入并发布到自动化帐户。|
+Sync-VSTS | 执行签入时从 VSTS 源代码管理导入 Runbook 或配置。 如果手动运行，它会将所有 Runbook 或配置导入并发布到自动化帐户。| 
+Sync-VSTSGit | 执行签入时从 Git 源代码管理中的 VSTS 导入 Runbook 或配置。 如果手动运行，它会将所有 Runbook 或配置导入并发布到自动化帐户。|
 
 ### <a name="variables"></a>变量
 
 变量 | 说明|
 -----------|------------|
-VSToken | 要创建的安全变量资产，包含 VSTS 个人访问令牌。 可在 [VSTS 身份验证页](https://www.visualstudio.com/en-us/docs/integrate/get-started/auth/overview)上了解如何创建 VSTS 个人访问令牌。 
+VSToken | 所创建的安全变量资产，包含 VSTS 个人访问令牌。 可在 [VSTS 身份验证页](/vsts/accounts/use-personal-access-tokens-to-authenticate)上了解如何创建 VSTS 个人访问令牌。
 ## <a name="installing-and-configuring-this-scenario"></a>安装和配置此方案
 
-在 VSTS 中创建[个人访问令牌](https://www.visualstudio.com/en-us/docs/integrate/get-started/auth/overview)，到时需要使用它来将 Runbook 或配置同步到自动化帐户。
+在 VSTS 中创建[个人访问令牌](/vsts/accounts/use-personal-access-tokens-to-authenticate)，到时需要使用它来将 Runbook 或配置同步到自动化帐户。
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPersonalToken.png) 
 
@@ -60,14 +60,14 @@ VSToken | 要创建的安全变量资产，包含 VSTS 个人访问令牌。 可
 
 为此 Sync-VSTS Runbook 创建 [Webhook](automation-webhooks.md) 并按如下所示填写参数。 请务必复制 Webhook URL，因为到时需要使用它在 VSTS 中创建服务挂钩。 VSAccessTokenVariableName 是前面创建用来保存个人访问令牌的安全变量的名称 (VSToken)。 
 
-与 VSTS (Sync-VSTS.ps1) 的集成会采用以下参数。
+与 VSTS (Sync-VSTS.ps1) 的集成会采用以下参数：
 ### <a name="sync-vsts-parameters"></a>Sync-VSTS 参数
 
 参数 | 说明| 
 --------|------------|
-WebhookData | 包含 VSTS 服务挂钩发送的签入信息。 应将此参数留空。| 
+WebhookData | 此项包含从 VSTS 服务挂钩发送的签入信息。 应将此参数留空。| 
 resourceGroup | 这是自动化帐户所在的资源组的名称。|
-AutomationAccountName | 将与 VSTS 同步的自动化帐户的名称。|
+AutomationAccountName | 与 VSTS 同步的自动化帐户的名称。|
 VSFolder | VSTS 中的、Runbook 和配置所在的文件夹的名称。|
 VSAccount | Visual Studio Team Services 帐户的名称。| 
 VSAccessTokenVariableName | 保存 VSTS 个人访问令牌的安全变量的名称 (VSToken)。| 
@@ -80,7 +80,7 @@ VSAccessTokenVariableName | 保存 VSTS 个人访问令牌的安全变量的名�
 参数 | 说明|
 --------|------------|
 WebhookData | 包含 VSTS 服务挂钩发送的签入信息。 应将此参数留空。| resourceGroup | 这是自动化帐户所在的资源组的名称。|
-AutomationAccountName | 将与 VSTS 同步的自动化帐户的名称。|
+AutomationAccountName | 与 VSTS 同步的自动化帐户的名称。|
 VSAccount | Visual Studio Team Services 帐户的名称。|
 VSProject | VSTS 中的、Runbook 和配置所在的项目的名称。|
 GitRepo | Git 存储库的名称。|
@@ -93,7 +93,7 @@ VSAccessTokenVariableName | 保存 VSTS 个人访问令牌的安全变量的名�
 在 VSTS 中为文件夹签入创建服务挂钩，以便在签入代码时触发此 Webhook。 选择“Web 挂钩”作为创建新订阅时要集成的服务。 可以通过 [VSTS 服务挂钩文档](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started)了解有关服务挂钩的详细信息。
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSServiceHook.png)
 
-现在，应该可以向 VSTS 执行所有的 Runbook 和配置签入，让这些 Runbook 和配置会自动同步到自动化帐户。
+现在，应该可以向 VSTS 执行所有的 Runbook 和配置签入，让这些 Runbook 和配置自动同步到自动化帐户。
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSSyncRunbookOutput.png)
 

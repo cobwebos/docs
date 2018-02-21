@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: johnkem
-ms.openlocfilehash: 91129da9ef7791a506292d9e13e386a25ee341a8
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: a5c05466b21184a73d08190856e00ae95ee3727f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
 通过 Azure 活动日志，可以深入了解 Azure 中发生的任何订阅级别事件。 本文介绍了每种数据类别的事件架构。
@@ -27,76 +27,89 @@ ms.lasthandoff: 10/26/2017
 ### <a name="sample-event"></a>示例事件
 ```json
 {
-  "authorization": {
-    "action": "microsoft.support/supporttickets/write",
-    "role": "Subscription Admin",
-    "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841"
-  },
-  "caller": "admin@contoso.com",
-  "channels": "Operation",
-  "claims": {
-    "aud": "https://management.core.windows.net/",
-    "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
-    "iat": "1421876371",
-    "nbf": "1421876371",
-    "exp": "1421880271",
-    "ver": "1.0",
-    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
-    "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
-    "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
-    "puid": "20030000801A118C",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
-    "name": "John Smith",
-    "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
-    "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
-    "appidacr": "2",
-    "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
-    "http://schemas.microsoft.com/claims/authnclassreference": "1"
-  },
-  "correlationId": "1e121103-0ba6-4300-ac9d-952bb5d0c80f",
-  "description": "",
-  "eventDataId": "44ade6b4-3813-45e6-ae27-7420a95fa2f8",
-  "eventName": {
-    "value": "EndRequest",
-    "localizedValue": "End request"
-  },
-  "httpRequest": {
-    "clientRequestId": "27003b25-91d3-418f-8eb1-29e537dcb249",
-    "clientIpAddress": "192.168.35.115",
-    "method": "PUT"
-  },
-  "id": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841/events/44ade6b4-3813-45e6-ae27-7420a95fa2f8/ticks/635574752669792776",
-  "level": "Informational",
-  "resourceGroupName": "MSSupportGroup",
-  "resourceProviderName": {
-    "value": "microsoft.support",
-    "localizedValue": "microsoft.support"
-  },
-  "resourceUri": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
-  "operationId": "1e121103-0ba6-4300-ac9d-952bb5d0c80f",
-  "operationName": {
-    "value": "microsoft.support/supporttickets/write",
-    "localizedValue": "microsoft.support/supporttickets/write"
-  },
-  "properties": {
-    "statusCode": "Created"
-  },
-  "status": {
-    "value": "Succeeded",
-    "localizedValue": "Succeeded"
-  },
-  "subStatus": {
-    "value": "Created",
-    "localizedValue": "Created (HTTP Status Code: 201)"
-  },
-  "eventTimestamp": "2015-01-21T22:14:26.9792776Z",
-  "submissionTimestamp": "2015-01-21T22:14:39.9936304Z",
-  "subscriptionId": "s1"
+    "authorization": {
+        "action": "Microsoft.Network/networkSecurityGroups/write",
+        "scope": "/subscriptions/dd042f02-6b3e-4f79-939a-6a381ffed3c0/resourcegroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNSG"
+    },
+    "caller": "rob@contoso.com",
+    "channels": "Operation",
+    "claims": {
+        "aud": "https://management.core.windows.net/",
+        "iss": "https://sts.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/",
+        "iat": "1234567890",
+        "nbf": "1234567890",
+        "exp": "1234567890",
+        "_claim_names": "{\"groups\":\"src1\"}",
+        "_claim_sources": "{\"src1\":{\"endpoint\":\"https://graph.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/users/f409edeb-4d29-44b5-9763-ee9348ad91bb/getMemberObjects\"}}",
+        "http://schemas.microsoft.com/claims/authnclassreference": "1",
+        "aio": "A3GgTJdwK4vy7Fa7l6DgJC2mI0GX44tML385OpU1Q+z+jaPnFMwB",
+        "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+        "appid": "355249ed-15d9-460d-8481-84026b065942",
+        "appidacr": "2",
+        "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "10845a4d-ffa4-4b61-a3b4-e57b9b31cdb5",
+        "e_exp": "262800",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Robertson",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "Rob",
+        "ipaddr": "111.111.1.111",
+        "name": "Rob Robertson",
+        "http://schemas.microsoft.com/identity/claims/objectidentifier": "f409edeb-4d29-44b5-9763-ee9348ad91bb",
+        "onprem_sid": "S-1-5-21-4837261184-168309720-1886587427-18514304",
+        "puid": "18247BBD84827C6D",
+        "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "b-24Jf94A3FH2sHWVIFqO3-RSJEiv24Jnif3gj7s",
+        "http://schemas.microsoft.com/identity/claims/tenantid": "1114444b-7467-4144-a616-e3a5d63e147b",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "rob@contoso.com",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "rob@contoso.com",
+        "uti": "IdP3SUJGtkGlt7dDQVRPAA",
+        "ver": "1.0"
+    },
+    "correlationId": "b5768deb-836b-41cc-803e-3f4de2f9e40b",
+    "eventDataId": "d0d36f97-b29c-4cd9-9d3d-ea2b92af3e9d",
+    "eventName": {
+        "value": "EndRequest",
+        "localizedValue": "End request"
+    },
+    "category": {
+        "value": "Administrative",
+        "localizedValue": "Administrative"
+    },
+    "eventTimestamp": "2018-01-29T20:42:31.3810679Z",
+    "id": "/subscriptions/dd042f02-6b3e-4f79-939a-6a381ffed3c0/resourcegroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNSG/events/d0d36f97-b29c-4cd9-9d3d-ea2b92af3e9d/ticks/636528553513810679",
+    "level": "Informational",
+    "operationId": "04e575f8-48d0-4c43-a8b3-78c4eb01d287",
+    "operationName": {
+        "value": "Microsoft.Network/networkSecurityGroups/write",
+        "localizedValue": "Microsoft.Network/networkSecurityGroups/write"
+    },
+    "resourceGroupName": "myResourceGroup",
+    "resourceProviderName": {
+        "value": "Microsoft.Network",
+        "localizedValue": "Microsoft.Network"
+    },
+    "resourceType": {
+        "value": "Microsoft.Network/networkSecurityGroups",
+        "localizedValue": "Microsoft.Network/networkSecurityGroups"
+    },
+    "resourceId": "/subscriptions/dd042f02-6b3e-4f79-939a-6a381ffed3c0/resourcegroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNSG",
+    "status": {
+        "value": "Succeeded",
+        "localizedValue": "Succeeded"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2018-01-29T20:42:50.0724829Z",
+    "subscriptionId": "dd042f02-6b3e-4f79-939a-6a381ffed3c0",
+    "properties": {
+        "statusCode": "Created",
+        "serviceRequestId": "a4c11dbd-697e-47c5-9663-12362307157d",
+        "responseBody": "",
+        "requestbody": ""
+    },
+    "relatedEvents": []
 }
+
 ```
 
 ### <a name="property-descriptions"></a>属性说明
@@ -116,7 +129,7 @@ ms.lasthandoff: 10/26/2017
 | resourceId |受影响资源的资源 ID。 |
 | operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName |操作的名称。 |
-| properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
+| 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
 | status |描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus |通常为相应 REST 调用的 HTTP 状态代码，但也可能包括用于描述子状态的其他字符串，例如以下常用值：OK（HTTP 状态代码：200）、Created（HTTP 状态代码：201）、Accepted（HTTP 状态代码：202）、No Content（HTTP 状态代码：204）、Bad Request（HTTP 状态代码：400）、Not Found（HTTP 状态代码：404）、Conflict（HTTP 状态代码：409）、Internal Server Error（HTTP 状态代码：500）、Service Unavailable（HTTP 状态代码：503）、Gateway Timeout（HTTP 状态代码：504）。 |
 | eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
@@ -290,7 +303,7 @@ Properties.communicationId | 与此事件关联的通信。
 | resourceId | 受影响资源的资源 ID 的名称（如果是指标警报）。 对其它警报类型而言，这是警报资源本身的资源 ID。 |
 | operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName |操作的名称。 |
-| properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
+| 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
 | status |描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus | 对警报而言通常为 NULL。 |
 | eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
@@ -325,7 +338,7 @@ Properties.communicationId | 与此事件关联的通信。
 | properties.MetricUnit | 计算指标预警规则所用的指标的指标单位。 |
 
 ## <a name="autoscale"></a>自动缩放
-此类别包含基于在订阅中定义的任何自动缩放设置的自动缩放引擎操作相关的事件记录。 可在此类别中看到的事件类型示例如“自动缩放扩大操作失败”。 使用自动缩放，可在支持的资源类型中，通过自动缩放设置基于日期和/或负载（指标）数据来自动增加或减少实例的数量。 满足增加或减少条件时，开始、成功或失败的事件将记录到此类别中。
+此类别包含基于在订阅中定义的任何自动缩放设置的自动缩放引擎操作相关的事件记录。 可在此类别中看到的事件类型示例如“自动缩放扩展操作失败”。 使用自动缩放，可在支持的资源类型中，通过自动缩放设置基于日期和/或负载（指标）数据来自动增加或减少实例的数量。 满足纵向扩展或缩减条件时，开始、成功或失败的事件将记录到此类别中。
 
 ### <a name="sample-event"></a>示例事件
 ```json
@@ -399,7 +412,7 @@ Properties.communicationId | 与此事件关联的通信。
 | resourceId |自动缩放设置的资源 ID。 |
 | operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName |操作的名称。 |
-| properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
+| 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
 | properties.Description | 有关自动缩放引擎执行的操作的详细说明。 |
 | properties.ResourceName | 受影响资源（正在执行缩放操作的资源）的资源 ID |
 | properties.OldInstancesCount | 自动缩放操作生效前的实例数量。 |
@@ -411,7 +424,7 @@ Properties.communicationId | 与此事件关联的通信。
 | submissionTimestamp |事件可供查询的时间戳。 |
 | subscriptionId |Azure 订阅 ID。 |
 
-## <a name="security"></a>安全
+## <a name="security"></a>“安全”
 此类别包含 Azure 安全中心生成的任何警报记录。 可在此类别中看到的事件类型示例为“执行了可疑的双扩展名文件”。
 
 ### <a name="sample-event"></a>示例事件
@@ -490,7 +503,7 @@ Properties.communicationId | 与此事件关联的通信。
 | resourceId |安全警报的资源 ID。 |
 | operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName |操作的名称。 |
-| properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 这些属性将因安全警报的类型而异。 有关来自安全中心的警报类型的说明，请参阅[此页](../security-center/security-center-alerts-type.md)。 |
+| 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 这些属性将因安全警报的类型而异。 有关来自安全中心的警报类型的说明，请参阅[此页](../security-center/security-center-alerts-type.md)。 |
 | properties.Severity |严重性级别。 可能的值为“High”、“Medium”或“Low”。 |
 | status |描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus | 对于安全事件通常为 null。 |

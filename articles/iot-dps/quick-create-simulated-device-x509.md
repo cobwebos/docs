@@ -12,18 +12,14 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 3ada994b645064cf2a28f0d6287b70f8fffa804c
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 4d723a3b78a43d3b609d5a884591a92606ca11cc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-and-provision-an-x509-simulated-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 C 设备 SDK 创建和预配 X.509 模拟设备
-> [!div class="op_single_selector"]
-> * [C](quick-create-simulated-device-x509.md)
-> * [Java](quick-create-simulated-device-x509-java.md)
-> * [C#](quick-create-simulated-device-x509-csharp.md)
-> * [Python](quick-create-simulated-device-x509-python.md)
+[!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 以下步骤演示了如何在运行 Windows OS 的开发计算机上模拟 X.509 设备，以及如何使用代码示例通过设备预配服务和 IoT 中心连接该模拟设备。 
 
