@@ -3,7 +3,7 @@ title: "查看 Azure Web 应用分析数据 | Microsoft Docs"
 description: "可以使用 Azure Web 应用分析解决方案来收集所有 Azure Web 应用资源的各种指标，以便深入了解 Azure Web 应用。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: 20ff337f-b1a3-4696-9b5a-d39727a94220
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: banders
-ms.openlocfilehash: d910339cc35e09705e543706b40dfe8e0ea9dd42
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.author: magoedte
+ms.openlocfilehash: 7c22950c391707cdfe14ca242ea82a317be0e46e
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>查看所有 Azure Web 应用资源的指标的分析数据
 
@@ -62,7 +62,7 @@ Azure Web 应用分析解决方案从 Azure 中收集两组指标：
   - 平均响应时间
   - 接收/发送的字节数
   - CPU 时间
-  - 请求
+  - Requests
   - 内存工作集
   - Httpxxx
 - 应用服务计划指标
@@ -90,7 +90,7 @@ Azure Web 应用分析解决方案从 Azure 中收集两组指标：
 
 单击“Azure Web 应用分析”磁贴以打开“Azure Web 应用分析”仪表板。 该仪表板包含下表中的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出匹配该边栏选项卡条件的最多 10 个项。 可通过单击边栏选项卡底部的“查看全部”或单击边栏选项卡标题，运行返回所有记录的日志搜索。
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | 列 | 说明 |
 | --- | --- |

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: daf4e70767d59a602d7ff1a2099af904b314c5f9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 58474286352ff3f00b31e65a565c2b64a656a177
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="read-nsg-flow-logs"></a>读取 NSG 流日志
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 12/08/2017
 
 NSG 流日志存储于[块 blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs) 中的存储帐户中。 块 blob 由一些更小的块组成。 每个日志是每个一小时生成的单独块 blob。 每隔一小时会生成新的日志，每隔几分钟会以包含最新数据的新条目来更新日志。 本文介绍如何读取部分流日志。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 在如下方案中，你有一个存储在存储帐户的示例流日志。 我们将逐步介绍如何选择性地读取 NSG 流日志中的最新事件。 虽然本文中我们将使用 PowerShell，但本文中讨论到的概念并不限于编程语言，而是适用于 Azure 存储 API 支持的所有语言。
 
@@ -62,8 +62,11 @@ $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageA
 # Container name used by NSG flow logs
 $ContainerName = "insights-logs-networksecuritygroupflowevent"
 
+# The MAC Address of the Network Interface
+$macAddress = "000D3AFA8650"
+
 # Name of the blob that contains the NSG flow log
-$BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${nsgName}/y=$($logtime.Year)/m=$(($logtime).ToString("MM"))/d=$(($logtime).ToString("dd"))/h=$(($logtime).ToString("HH"))/m=00/PT1H.json"
+$BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${nsgName}/y=$($logtime.Year)/m=$(($logtime).ToString("MM"))/d=$(($logtime).ToString("dd"))/h=$(($logtime).ToString("HH"))/m=00/macAddress=$($macAddress)/PT1H.json"
 
 # Gets the storage blog
 $Blob = Get-AzureStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
@@ -80,7 +83,7 @@ $blockList = $CloudBlockBlob.DownloadBlockList()
 ```
 Name                                         Length Committed
 ----                                         ------ ---------
-ZDk5MTk5N2FkNGE0MmY5MTk5ZWViYjA0YmZhODRhYzY=     21      True
+ZDk5MTk5N2FkNGE0MmY5MTk5ZWViYjA0YmZhODRhYzY=     12      True
 NzQxNDA5MTRhNDUzMGI2M2Y1MDMyOWZlN2QwNDZiYzQ=   2685      True
 ODdjM2UyMWY3NzFhZTU3MmVlMmU5MDNlOWEwNWE3YWY=   2586      True
 ZDU2MjA3OGQ2ZDU3MjczMWQ4MTRmYWNhYjAzOGJkMTg=   2688      True
@@ -88,7 +91,7 @@ ZmM3ZWJjMGQ0ZDA1ODJlOWMyODhlOWE3MDI1MGJhMTc=   2775      True
 ZGVkYTc4MzQzNjEyMzlmZWE5MmRiNjc1OWE5OTc0OTQ=   2676      True
 ZmY2MjUzYTIwYWIyOGU1OTA2ZDY1OWYzNmY2NmU4ZTY=   2777      True
 Mzk1YzQwM2U0ZWY1ZDRhOWFlMTNhYjQ3OGVhYmUzNjk=   2675      True
-ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      9      True
+ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 ```
 
 ## <a name="read-the-block-blob"></a>读取块 blob

@@ -11,11 +11,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 53d182d84c8f28c7b4055780a5b41df00fdc8583
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c3ad1cf8651858a2cb1fdadc2beed4e5c7bef56c
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>使用 Azure 机器学习 Workbench 进行图像分类
 
@@ -193,7 +193,7 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 ### <a name="step-6-deployment"></a>步骤 6：部署
 `Scripts: 6_callWebservice.py, deploymain.py. Notebook: deploy.ipynb`
 
-训练的系统现在可以作为 REST API 进行发布。 笔记本 `deploy.ipynb` 对部署作有说明，部署基于 Azure Machine Learning Workbench 中的功能（请记住将内核设置成名为“PROJECTNAME local”的本地项目内核）。 另请参阅 [IRIS 教程](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-3)的杰出部署部分，了解关于部署的详细信息。
+训练的系统现在可以作为 REST API 进行发布。 笔记本 `deploy.ipynb` 对部署作有说明，部署基于 Azure Machine Learning Workbench 中的功能（请记住将内核设置成名为“PROJECTNAME local”的本地项目内核）。 另请参阅 [IRIS 教程](tutorial-classifying-iris-part-3.md)的杰出部署部分，了解关于部署的详细信息。
 
 部署完成后，即可使用脚本 `6_callWebservice.py` 调用 Web 服务。 请注意，需要先在脚本中设置 Web 服务的 IP 地址（本地或云中）。 笔记本 `deploy.ipynb` 中介绍了如何查找此 IP 地址。
 
@@ -228,7 +228,7 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
 
 ### <a name="run-history-tracking"></a>运行历史记录跟踪
 
-Azure 机器训练 Workbench 将每次运行的历史记录存储在 Azure 上，以便比较两次或多次相隔甚至长达数周的运行结果。 [Iris 教程](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-2)中对此有详细介绍。 以下屏幕截图也对此进行了说明，在下图中，我们比较了两次运行脚本 `5_evaluate.py` 的结果，一次使用 DNN 优化 `classifier = "dnn"`（运行次数 148），一次使用 SVM 训练 `classifier = "svm"`（运行次数 150）。
+Azure 机器训练 Workbench 将每次运行的历史记录存储在 Azure 上，以便比较两次或多次相隔甚至长达数周的运行结果。 [Iris 教程](tutorial-classifying-iris-part-2.md)中对此有详细介绍。 以下屏幕截图也对此进行了说明，在下图中，我们比较了两次运行脚本 `5_evaluate.py` 的结果，一次使用 DNN 优化 `classifier = "dnn"`（运行次数 148），一次使用 SVM 训练 `classifier = "svm"`（运行次数 150）。
 
 在第一个屏幕截图中，对于所有类，DNN 优化得到的准确性优于 SVM 训练。 第二个屏幕截图显示了正在跟踪的所有指标，包括分类器是什么。 此跟踪在脚本 `5_evaluate.py` 中通过调用 Azure 机器学习 Workbench 记录器实现。 此外，该脚本还将 ROC 曲线和混淆矩阵保存到“输出”文件夹。 此“输出”文件夹很特殊，因为其内容也被 Workbench 历史记录功能跟踪，因此，可以随时访问此输出文件，无论本地副本是否被覆盖。
 

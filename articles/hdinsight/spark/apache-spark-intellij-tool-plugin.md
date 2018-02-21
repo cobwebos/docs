@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: 77c7163b896c2b364039ea6c669ee70cf8be4d9e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 077805cedb7895c8c59b650b3ec691244168a9f5
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>使用用于 IntelliJ 的 Azure 工具包为 HDInsight 群集创建 Spark 应用程序
 
@@ -69,6 +69,27 @@ ms.lasthandoff: 12/08/2017
    
     ![展开的群集名称节点](./media/apache-spark-intellij-tool-plugin/view-explorer-4.png)
 
+## <a name="link-a-cluster"></a>链接群集
+可以使用 Ambari 管理的用户名链接标准群集，还可以使用域用户名（例如：user1@contoso.com）链接安全 hadoop 群集。 
+1. 从 **Azure 资源管理器**单击“链接群集”。
+
+   ![链接群集上下文菜单](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
+
+2. 输入**群集名称**、**存储帐户**、**存储密钥**，然后从**存储容器**中选择容器，最后输入用户名和密码。 如果获得身份验证失败，需要检查用户名和密码。
+   
+   ![“链接群集”对话框](./media/apache-spark-intellij-tool-plugin/link-a-cluster-dialog.png)
+
+   > [!NOTE]
+   > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接存储密钥、用户名和密码。 
+   
+3. 如果输入信息正确，可以在 **HDInsight** 节点中看到链接的群集。 现在可以将应用程序提交到此链接群集。
+
+   ![链接的群集](./media/apache-spark-intellij-tool-plugin/linked-cluster.png)
+
+4. 还可以从 **Azure 资源管理器**取消链接群集。
+   
+   ![取消链接的群集](./media/apache-spark-intellij-tool-plugin/unlink.png)
+
 ## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>在 HDInsight Spark 群集中运行 Spark Scala 应用程序
 
 1. 启动 IntelliJ IDEA 并创建一个项目。 在“新建项目”对话框中执行以下操作： 
@@ -82,7 +103,7 @@ ms.lasthandoff: 12/08/2017
 
     ![“新建项目”对话框](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
-2. 选择“下一步”。
+2. 选择“**下一步**”。
 
 3. Scala 项目创建向导会自动检测是否安装了 Scala 插件。 选择“安装”。
 
@@ -164,12 +185,14 @@ ms.lasthandoff: 12/08/2017
 
    c. 窗口底部的“Spark 提交”选项卡应开始显示进度。 也可以通过选择“Spark 提交”窗口中的红色按钮停止应用程序。
       
-      ![“Spark 提交”窗口](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
+     ![“Spark 提交”窗口](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
       
       若要了解如何访问作业输出，请参阅本文稍后的“使用用于 IntelliJ 的 Azure 工具包访问和管理 HDInsight Spark 群集”部分。
 
 ## <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>本地或远程调试 HDInsight 群集上的 Spark 应用程序 
-我们还建议以另一种方式将 Spark 应用程序提交到群集。 另外，也可在“运行/调试配置”IDE 中设置参数来实现此目的。 有关详细信息，请参阅[使用用于 IntelliJ 的 Azure 工具包通过 SSH 本地或远程调试 HDInsight 群集上的 Spark 应用程序](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh)。
+我们还建议以另一种方式将 Spark 应用程序提交到群集。 为此，可在“运行/调试配置”IDE 中设置参数。 有关详细信息，请参阅[使用用于 IntelliJ 的 Azure 工具包通过 SSH 本地或远程调试 HDInsight 群集上的 Spark 应用程序](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh)。
+
+
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>使用用于 IntelliJ 的 Azure 工具包访问和管理 HDInsight Spark 群集
 可以使用用于 IntelliJ 的 Azure 工具包执行各种操作。
@@ -182,6 +205,8 @@ ms.lasthandoff: 12/08/2017
 2. 在右窗格中，“Spark 作业视图”选项卡显示了群集上运行的所有应用程序。 选择想要查看其详细信息的应用程序的名称。
 
     ![应用程序详细信息](./media/apache-spark-intellij-tool-plugin/view-job-logs.png)
+    >注意
+    >
 
 3. 若要显示正在运行的作业的基本信息，请将鼠标悬停在作业图上。 若要查看每个作业生成的阶段图和信息，请在作业图中选择一个节点。
 

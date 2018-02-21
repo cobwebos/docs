@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 4a27ae1402717c91029eda9d635db124f8bb6b8d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 43f045033648534e9c0fea344bbc38da34f8454b
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-by-using-the-azure-portal"></a>使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ ms.lasthandoff: 12/21/2017
 
     ![将服务主体添加到 HDInsight 群集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "将服务主体添加到 HDInsight 群集")
 
-    - **选择 Data Lake Store 帐户**：选择一个现有的 Data Lake Store 帐户。 必须具有现有的 Data Lake Store 帐户。  请参阅[先决条件](#prereuisites)。
+    - **选择 Data Lake Store 帐户**：选择一个现有的 Data Lake Store 帐户。 必须具有现有的 Data Lake Store 帐户。  请参阅[先决条件](#prerequisites)。
     - **根路径**：输入群集特定文件的存储路径。 在屏幕截图中，它是 __/clusters/myhdiadlcluster/__，其中，__/clusters__ 文件夹是必须存在的，*myhdicluster* 文件夹则由门户创建。  *myhdicluster* 是群集名称。
     - **Data Lake Store 访问**：配置 Data Lake Store 帐户和 HDInsight 群集之间的访问。 有关说明，请参阅[配置 Data Lake Store 访问](#configure-data-lake-store-access)。
     - **附加存储帐户**：添加 Azure 存储帐户作为群集的附加存储帐户。 添加附加的 Data Lake Store 后，为群集提供对更多 Data Lake Store 帐户中数据的权限，并将某个 Data Lake Store 帐户配置为主存储类型。 请参阅[配置 Data Lake Store 访问](#configure-data-lake-store-access)。

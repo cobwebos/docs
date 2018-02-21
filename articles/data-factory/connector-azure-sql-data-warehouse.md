@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9360c0ee90f9a4ffdffd7649505699f656833bbe
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 456e5bd722d103f10779aa0cd99bf01fdcf8a7fe
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/11/2018
 本文概述了如何使用 Azure 数据工厂中的复制活动将数据复制到 Azure SQL 数据仓库以及从 Azure SQL 数据仓库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的 Azure SQL 数据仓库连接器](v1/data-factory-azure-sql-data-warehouse-connector.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的 Azure SQL 数据仓库连接器](v1/data-factory-azure-sql-data-warehouse-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -49,10 +49,10 @@ ms.lasthandoff: 01/11/2018
 
 Azure SQL 数据仓库链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureSqlDW** | 是 |
-| connectionString |为 connectionString 属性指定连接到 Azure SQL 数据仓库实例所需的信息。 仅支持基本身份验证。 将此字段标记为 SecureString。 |是 |
+| connectionString |为 connectionString 属性指定连接到 Azure SQL 数据仓库实例所需的信息。 仅支持基本身份验证。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
 
@@ -86,7 +86,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
 
 要从/向 Azure SQL 数据仓库复制数据，请将数据集的 type 属性设置为“AzureSqlDWTable”。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：AzureSqlDWTable | 是 |
 | tableName |链接服务引用的 Azure SQL 数据仓库实例中的表名称或视图名称。 | 是 |
@@ -118,7 +118,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
 
 要从 Azure SQL 数据仓库复制数据，请将复制活动中的源类型设置为“SqlDWSource”。 复制活动**源**部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：SqlDWSource | 是 |
 | sqlReaderQuery |使用自定义 SQL 查询读取数据。 示例：`select * from MyTable`。 |否 |
@@ -222,7 +222,7 @@ GO
 
 要向 Azure SQL 数据仓库复制数据，请将复制活动中的接收器类型设置为“SqlDWSink”。 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**SqlDWSink** | 是 |
 | allowPolyBase |指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> **使用 PolyBase 是将数据加载到 SQL 数据仓库的建议方式。** 有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。<br/><br/>允许的值是：true（默认）和 false。  |否 |
@@ -269,7 +269,7 @@ SQL 数据仓库 PolyBase 直接支持作为源并具有特定文件格式要求
 
 如果不满足要求，Azure 数据工厂会检查设置，并自动回退到 BULKINSERT 机制以进行数据移动。
 
-1. **源链接服务**的类型为：**AzureStorage** 或 **AzureDataLakeStore**。
+1. **源链接服务**的类型为：**AzureStorage** 或使用服务主体身份验证的 **AzureDataLakeStore**。
 2. **输入数据集**的类型为：**AzureBlob** 或 **AzureDataLakeStoreFile**，`type` 属性下的格式类型为 **OrcFormat**、**ParquetFormat** 或 **TextFormat**，其配置如下：
 
    1. `rowDelimiter` 必须是 \n。

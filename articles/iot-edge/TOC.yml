@@ -88,7 +88,7 @@
     - name: 学习路径
       href: 'https://azure.microsoft.com/documentation/learning-paths/iot-hub/'
     - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub'
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=iotedge'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
     - name: 定价计算器

@@ -14,13 +14,13 @@ ms.workload: Active
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 436166fcb0fa9103c6b702b63d93a0b222d536d0
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 4a0fbb2a1f468493e5b22b12518be42fdd9d5ce6
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>选择云 SQL Server 选项：Azure SQL (PaaS) 数据库或 Azure VM 上的 SQL Server (IaaS)
 Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负荷：
@@ -48,7 +48,7 @@ Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负
 在以下部分中，将了解 Microsoft 公有云中的 SQL Server：Azure SQL 数据库和 Azure VM 上的 SQL Server。 此外，将探讨常见的业务动机，以判断哪一个选项最适合应用程序。
 
 ## <a name="a-closer-look-at-azure-sql-database-and-sql-server-on-azure-vms"></a>Azure SQL 数据库和 Azure VM 中的 SQL Server 详述
-**Azure SQL 数据库**是托管在 Azure 云中的关系数据库即服务 (DBaaS)，属于软件即服务 (SaaS) 和平台即服务 (PaaS) 行业类别。 [SQL 数据库](sql-database-technical-overview.md) 构建在 Microsoft 所拥有、托管及维护的标准化硬件和软件基础之上。 使用 SQL 数据库，可以使用内置的特性和功能在服务上直接进行开发。 使用 SQL 数据库时，可以即用即付，并使用向上或向外缩放选项获得更强大的功能且不会中断服务。
+**Azure SQL 数据库**是托管在 Azure 云中的关系数据库即服务 (DBaaS)，属于软件即服务 (SaaS) 和平台即服务 (PaaS) 行业类别。 [SQL 数据库](sql-database-technical-overview.md) 构建在 Microsoft 所拥有、托管及维护的标准化硬件和软件基础之上。 使用 SQL 数据库，可以使用内置的特性和功能在服务上直接进行开发。 使用 SQL 数据库时，可以即用即付，并使用纵向扩展或横向扩展选项获得更强大的功能且不会中断服务。
 
 **Azure 虚拟机 (VM) 上的 SQL Server** 属于“基础结构即服务 (IaaS)”行业类别，可让你在云中的虚拟机上运行 SQL Server。 与 SQL 数据库一样，它构建在 Microsoft 所拥有、托管及维护的标准化硬件基础之上。 使用 VM 上的 SQL Server 时，既可使用 SQL Server 映像中已包含的 SQL Server 许可证即付即用，也可方便地使用现有的许可证。 还可以根据需要轻松增加/减少和暂停/恢复 VM。
 
@@ -80,7 +80,7 @@ Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负
 #### <a name="billing-and-licensing-basics"></a>计费和许可基础概念
 **SQL 数据库** 作为一种服务销售给客户，不含许可证。  [Azure VM 上的 SQL Server](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) 销售时附带按分钟付费的许可证。 如果有现有的许可证，也可以使用它。  
 
-目前，我们在多个服务层中提供 **SQL 数据库**，并根据你选择的服务层和性能级别，以固定费率向你收取每小时费用。 此外，需要对固定的 [数据传输速率](https://azure.microsoft.com/pricing/details/data-transfers/)的 Internet 传出流量付费。 基本、标准、高级和高级 RS 服务层旨在以多个性能级别提供可预测的性能，以满足应用程序的高峰要求。 可以在服务层和性能级别之间进行更改，以满足应用程序的不同吞吐量需求。 如果数据库具有高事务量且必须支持许多并发用户，我们建议使用高级服务层。 有关目前支持的服务层的最新信息，请参阅 [Azure SQL 数据库服务层](sql-database-service-tiers.md)。 还可以创建[弹性池](sql-database-elastic-pool.md)，在数据库实例之间共享性能资源。
+目前，我们在多个服务层中提供 **SQL 数据库**，并根据你选择的服务层和性能级别，以固定费率向你收取每小时费用。 此外，需要对固定的 [数据传输速率](https://azure.microsoft.com/pricing/details/data-transfers/)的 Internet 传出流量付费。 基本、标准和高级服务层旨在以多个性能级别提供可预测的性能，以满足应用程序的高峰要求。 可以在服务层和性能级别之间进行更改，以满足应用程序的不同吞吐量需求。 如果数据库具有高事务量且必须支持许多并发用户，我们建议使用高级服务层。 有关目前支持的服务层的最新信息，请参阅 [Azure SQL 数据库服务层](sql-database-service-tiers.md)。 还可以创建[弹性池](sql-database-elastic-pool.md)，在数据库实例之间共享性能资源。
 
 使用 **Azure SQL 数据库**，Microsoft 会自动配置、修补和升级数据库软件，从而可以降低管理成本。 此外，它的 [内置备份](sql-database-automated-backups.md) 功能可帮助你大幅降低成本，尤其是拥有大量的数据库时。
 
@@ -118,7 +118,7 @@ Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负
 ### <a name="service-level-agreement-sla"></a>服务级别协议 (SLA)
 对于许多 IT 部门而言，达到服务级别协议 (SLA) 规定的正常运行时间义务是首要任务。 在本部分中，我们将了解 SLA 对每个数据库托管选项代表的含义。
 
-对于 **SQL 数据库**的基本、标准、高级和高级 RS 服务层，Microsoft 提供 99.99% 的可用性 SLA。 有关最新信息，请参阅 [服务级别协议](https://azure.microsoft.com/support/legal/sla/sql-database/)。 有关 SQL 数据库服务层和支持的业务连续性计划的最新信息，请参阅 [服务层](sql-database-service-tiers.md)。
+对于 **SQL 数据库** 基本、标准和高级服务层，Microsoft 提供 99.99% 的可用性 SLA。 有关最新信息，请参阅 [服务级别协议](https://azure.microsoft.com/support/legal/sla/sql-database/)。 有关 SQL 数据库服务层和支持的业务连续性计划的最新信息，请参阅 [服务层](sql-database-service-tiers.md)。
 
 对于 **Azure VM 上运行的 SQL Server**，Microsoft 提供 99.95% 的可用性 SLA（仅涵盖虚拟机）。 此 SLA 不涵盖 VM 上运行的进程（例如 SQL Server），并且要求在可用性集中托管至少两个 VM 实例。 有关最新信息，请参阅 [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。 为了在 VM 中实现数据库高可用性 (HA)，应在 SQL Server 中配置一个受支持的高可用性选项，例如 [AlwaysOn 可用性组](http://blogs.technet.com/b/dataplatforminsider/archive/2014/08/25/sql-server-alwayson-offering-in-microsoft-azure-portal-gallery.aspx)。 使用支持的高可用性选项不会提供更多 SLA，但使用户能够实现 >99.99% 的数据库可用性。
 

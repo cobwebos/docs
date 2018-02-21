@@ -67,8 +67,10 @@
           href: kubernetes-helm.md
         - name: 使用 Draft 开发应用程序
           href: kubernetes-draft.md
-        - name: 使用 OSBA 与 Azure 集成
+        - name: 打开 Service Broker for Azure
           href: integrate-azure.md
+        - name: Jenkins 持续部署
+          href: jenkins-continuous-deployment.md
     - name: Kubernetes 基础知识
       items:
         - name: 使用 Kubernetes 仪表板

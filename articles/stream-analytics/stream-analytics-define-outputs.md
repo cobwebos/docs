@@ -4,8 +4,8 @@ description: "了解有关设定流分析数据输出选项（包括 Power BI）
 keywords: "数据转换、分析结果、数据存储选项"
 services: stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage
 documentationcenter: 
-author: samacha
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 editor: cgronlun
 ms.assetid: ba6697ac-e90f-4be3-bafd-5cfcf4bd8f1f
 ms.service: stream-analytics
@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 33d0b9aa37cc92dda27f1cf21f1d393b42b8c09b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/18/2017
+ms.author: sngun
+ms.openlocfilehash: 6df9a3fafea97638d63c0dc4601c5ced357c410d
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="stream-analytics-outputs-options-for-storage-analysis"></a>流分析输出：存储、分析选项
 创作流分析作业时，需考虑如何使用生成的数据。 如何查看流分析作业的结果？流分析作业的结果存储在何处？
 
-为了启用多种应用程序模式，Azure 流分析提供了不同的选项来存储输出和查看分析结果。 这样可以轻松地查看作业输出，并可灵活地使用和存储作业输出，以便进行数据仓库操作和其他操作。 必须先存在作业中配置的输出，才能启动作业并开始事件的流动。 例如，如果使用 Blob 存储作为输出，该作业将不会自动创建存储帐户。 在启动 ASA 作业之前，需要由用户创建该存储帐户。
+为了启用多种应用程序模式，Azure 流分析提供了不同的选项来存储输出和查看分析结果。 这样可以轻松地查看作业输出，并可灵活地使用和存储作业输出，以便进行数据仓库操作和其他操作。 必须先存在作业中配置的输出，才能启动作业并开始事件的流动。 例如，如果使用 Blob 存储作为输出，该作业将不会自动创建存储帐户。 启动流分析作业之前，请创建一个存储帐户。
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
 流分析支持 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)。 此存储可让你存储任何大小、类型和引入速度的数据，以便进行运行和探索分析。 此外，流分析需要经过授权，才能访问 Data Lake Store。 [Data Lake 输出一文](stream-analytics-data-lake-output.md)讨论了有关授权以及如何注册 Data Lake Store（如果需要）的详细信息。
 
 ### <a name="authorize-an-azure-data-lake-store"></a>授权 Azure Data Lake Store
-当选择 Data Lake 存储作为 Azure 门户的输出时，系统会提示对现有 Data Lake Store 的连接进行授权。  
+当选择 Data Lake Storage 作为 Azure 门户的输出时，系统会提示对现有 Data Lake Store 的连接进行授权。  
 
 ![Azure Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
@@ -165,8 +165,17 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 </tbody>
 </table>
 
+当使用 blob 存储作为输出时，在以下情况下 blob 中创建一个新文件：
+
+* 如果此文件超过了允许块 （请注意，可能但未到达最大允许的 blob 大小达到最大允许块数量最大数量。 例如，如果输出率很高，你可以看到每个块，更多字节和文件大小大于。 当输出率不足时，每个块都有较少的数据，且文件大小较小。  
+* 如果在输出中，架构更改，并且输出格式需要固定的架构（CSV 和 Avro）。  
+* 如果重启作业是外部或内部重启的作业。  
+* 如果完全分区查询，为每个输出分区创建新文件。  
+* 如果用户删除文件或存储帐户的容器。  
+* 如果了输出，则使用路径前缀模式分区的时间，当查询移动到下一个小时，则使用新 blob。
+
 ## <a name="event-hub"></a>事件中心
-[事件中心](https://azure.microsoft.com/services/event-hubs/)是具有高扩展性的发布-订阅事件引入器。 事件中心每秒可收集数百万个事件。  当流分析作业的输出将要成为另一个流式处理作业的输入时，可以将事件中心用作输出。
+[事件中心](https://azure.microsoft.com/services/event-hubs/)是具有高扩展性的发布-订阅事件引入器。 事件中心每秒可收集数百万个事件。 当流分析作业的输出将要成为另一个流式处理作业的输入时，可以将事件中心用作输出。
 
 将事件中心数据流配置成输出时，需要使用几个参数。
 
@@ -175,7 +184,7 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 | 输出别名 |该名称是在查询中使用的友好名称，用于将查询输出定向到此事件中心。 |
 | 服务总线命名空间 |服务总线命名空间是包含一组消息传递实体的容器。 创建新的事件中心后，还创建了服务总线命名空间 |
 | 事件中心 |事件中心输出的名称 |
-| 事件中心策略名称 |可以在事件中心的“配置”选项卡上创建的共享访问策略。每个共享访问策略都会有名称、所设权限以及访问密钥 |
+| 事件中心策略名称 |可以在事件中心的“配置”选项卡上创建的共享访问策略。每个共享访问策略具有名称、所设权限以及访问密钥。 |
 | 事件中心策略密钥 |用于验证访问服务总线命名空间的共享访问密钥 |
 | 分区键列 [可选] |此列包含事件中心输出的分区键。 |
 | 事件序列化格式 |输出数据的序列化格式。  支持 JSON、CSV 和 Avro。 |
@@ -213,9 +222,9 @@ Power BI 帐户身份验证完成后，可以为自己的 Power BI 输出配置�
 > 
 
 ### <a name="schema-creation"></a>架构创建
-Azure 流分析会代表用户创建一个 Power BI 数据集和表（如果不存在）。 在所有其他情况下，会使用新值更新表。目前存在一个限制，即一个数据集中只能存在一个表。
+Azure 流分析会代表用户创建一个 Power BI 数据集和表（如果不存在）。 在所有其他情况下，表可以更新使用新值。 目前，没有限制，只能有一个表中数据集可存在。
 
-### <a name="data-type-conversion-from-asa-to-power-bi"></a>从 ASA 到 Power BI 的数据类型转换
+### <a name="data-type-conversion-from-stream-analytics-to-power-bi"></a>从流分析到 Power BI 的数据类型转换
 如果输出架构更改，Azure 流分析会在运行时动态更新数据模型。 列名称更改、列类型更改，以及添加或删除列，这些都会进行跟踪。
 
 此表介绍了在不存在 POWER BI 数据集和表的情况下，如何将数据类型从[流分析数据类型](https://msdn.microsoft.com/library/azure/dn835065.aspx)转换为 Power BI 的[实体数据模型 (EDM) 类型](https://powerbi.microsoft.com/documentation/powerbi-developer-walkthrough-push-data/)。
@@ -262,7 +271,7 @@ Datetime | String | String |  Datetime | String
 | 输出别名 |该名称是在查询中使用的友好名称，用于将查询输出定向到此表存储。 |
 | 存储帐户 |存储帐户的名称（正在向该存储帐户发送输出）。 |
 | 存储帐户密钥 |与存储帐户关联的访问密钥。 |
-| 表名称 |表的名称。 如果表不存在，则会创建表。 |
+| 表名称 |表的名称。 如果表不存在，则创建新表。 |
 | 分区键 |包含分区键的输出列的名称。 分区键是给某个定表中分区的唯一标识，分区键构成了实体主键的第一部分。 分区键是一个最大为 1 KB 的字符串值。 |
 | 行键 |包含行键的输出列的名称。 行键是某个给定分区中实体的唯一标识符。 行键构成了实体主键的第二部分。 行键是一个最大为 1 KB 的字符串值。 |
 | 批大小 |批处理操作的记录数。 通常情况下，默认值对于大多数作业来说已经足够；若要修改此设置，请参阅[表批处理操作规范](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx)以获取详细信息。 |
@@ -277,7 +286,7 @@ Datetime | String | String |  Datetime | String
 | 输出别名 |该名称是在查询中使用的友好名称，用于将查询输出定向到此服务总线队列。 |
 | 服务总线命名空间 |服务总线命名空间是包含一组消息传递实体的容器。 |
 | 队列名称 |服务总线队列的名称。 |
-| 队列策略名称 |在创建队列时，还可以在“队列配置”选项卡上创建共享的访问策略。每个共享访问策略都会有名称、所设权限以及访问密钥。 |
+| 队列策略名称 |在创建队列时，还可以在“队列配置”选项卡上创建共享的访问策略。每个共享访问策略具有名称、所设权限以及访问密钥。 |
 | 队列策略密钥 |用于验证访问服务总线命名空间的共享访问密钥 |
 | 事件序列化格式 |输出数据的序列化格式。  支持 JSON、CSV 和 Avro。 |
 | 编码 |对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式 |
@@ -291,28 +300,28 @@ Datetime | String | String |  Datetime | String
 
 | 属性名称 | 说明 |
 | --- | --- |
-| 输出别名 |这个名称是在查询中使用的友好名称，用于将查询输出定向到此服务总线主题。 |
+| 输出别名 |该名称是在查询中使用的友好名称，用于将查询输出定向到此服务总线主题。 |
 | 服务总线命名空间 |服务总线命名空间是包含一组消息传递实体的容器。 创建新的事件中心后，还创建了服务总线命名空间 |
 | 主题名称 |主题是消息传送实体，类似于事件中心和队列。 之所以设计队列，是为了从多个不同的设备和服务收集事件流。 在创建主题时，还会为其提供特定的名称。 发送到主题的消息在创建订阅后才会提供给用户，因此请确保主题下存在一个或多个订阅 |
-| 主题策略名称 |创建主题时，还可以在“主题配置”选项卡上创建共享的访问策略。每个共享访问策略都会有名称、所设权限以及访问密钥 |
+| 主题策略名称 |创建主题时，还可以在“主题配置”选项卡上创建共享的访问策略。每个共享访问策略具有名称、所设权限以及访问密钥。 |
 | 主题策略密钥 |用于验证访问服务总线命名空间的共享访问密钥 |
 | 事件序列化格式 |输出数据的序列化格式。  支持 JSON、CSV 和 Avro。 |
  | 编码 |如果是 CSV 或 JSON 格式，则必须指定一种编码格式。 目前只支持 UTF-8 这种编码格式 |
 | 分隔符 |仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。 |
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
-[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 是一种分布全球的多模型数据库服务，它提供全球范围内不设限的弹性缩放、丰富查询和自动索引（经由与构架无关的数据模型）、可靠的低延迟及行业领先的综合 SLA。
+[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 是一种分布全球的多模型数据库服务，它提供全球范围内不设限的弹性缩放、丰富查询和自动索引（经由与架构无关的数据模型）、可靠的低延迟及行业领先的综合 SLA。
 
 以下列表详细介绍了用于创建 Azure Cosmos DB 输出的属性名称和属性。
 
-* **输出别名** - 用于在 ASA 查询中引用此输出的别名  
+* **输出别名** - 用于在流分析查询中引用此输出的别名  
 * 帐户名 - Cosmos DB 帐户的名称或终结点 URI。  
 * 帐户密钥 - Cosmos DB 帐户的共享访问密钥。  
 * 数据库 - Cosmos DB 数据库名称。  
 * **集合名称模式** - 要使用的集合的集合名称或其模式。 可以使用可选的 {partition} 令牌（其中分区从 0 开始）构造集合名称格式。 以下是有效输入示例：  
   1\) MyCollection - 必须存在一个名为“MyCollection”的集合。  
   2\) MyCollection{partition} – 此类集合必须存在 –“MyCollection0”、“MyCollection1”、“MyCollection2”等。  
-* **分区键** - 可选。 仅当用户在集合名称模式中使用 {parition} 令牌时，才需要此项。 输出事件中的字段的名称，该字段用于指定跨集合分区输出的键。 对于单个集合输出，可使用任何任意输出列（例如 PartitionId）。  
+* **分区键** - 可选。 仅当你在集合名称模式中使用 partition 令牌时，才需要此项。 输出事件中的字段的名称，该字段用于指定跨集合分区输出的键。 对于单个集合输出，可使用任何任意输出列（例如 PartitionId）。  
 * **文档 ID** - 可选。 输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。  
 
 ## <a name="azure-functions-in-preview"></a>Azure Functions（处于预览状态）
@@ -324,11 +333,11 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下
 | --- | --- |
 | Function App |Azure Functions App 的名称 |
 | 函数 |Azure Functions App 中的函数的名称 |
-| 最大批大小 |此属性可用于设置将发送到 Azure Function 的每个输出批的最大大小。 默认情况下，此值为 256 KB |
+| 最大批大小 |此属性可用于设置将发送到 Azure 函数的每个输出批的最大大小。 默认情况下，此值为 256 KB |
 | 最大批数  |顾名思义，此属性允许指定发送到 Azure Functions 的每个批中的最大事件数。 默认最大批数值为 100 |
 | 密钥 |如果想要使用其他订阅中的 Azure Function，则提供访问 Function 的密钥 |
 
-请注意，当 Azure 流分析从 Azure Function 收到 413（http 请求实体过大）异常时，它将减小发送到 Azure Functions 的批的大小。 在 Azure Function 代码中，使用此异常以确保 Azure 流分析不会发送过大的批。 此外，请确保函数中使用的最大批数值和最大批大小值与在流分析门户中输入的值一致。 
+请注意，当 Azure 流分析从 Azure Function 收到 413（http 请求实体过大）异常时，它将减小发送到 Azure Functions 的批的大小。 在 Azure Function 代码中，使用此异常以确保 Azure 流分析不会发送过大的批。 确保函数中使用的最大批次数和最大批次大小值与在流分析门户中输入的值一致。 
 
 另外，如果时间窗口中没有任何事件登录，则不生成任何输出。 因此，不会调用 computeResult 函数。 此行为与内置窗口化聚合函数一致。
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 17/01/2018
 ms.author: dobett
-ms.openlocfilehash: 0ac6226b1e5773b1212b70172e2c13a0a5c925a8
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: b29c5fe9543c5fe6da9ff52da6549fdcacff868f
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="what-is-azure-iot-suite"></a>Azure IoT 套件是什么？
 
@@ -80,7 +80,7 @@ IoT 套件预配置解决方案在设计时遵循相同的原则和目标。
 
 |                      | 远程监视  | 预见性维护 | 连接工厂 |
 | -------------------- | ------------------ | ---------------------- | ----------------- |
-| IoT 中心              | 是                |                        | 是               |
+| IoT 中心              | 是                | 是                    | 是               |
 | 事件中心           |                    | 是                    |                   |
 | 时序见解 |                    |                        | 是               |
 | 容器服务   | 是                |                        |                   |

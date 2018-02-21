@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/01/2018
+ms.date: 02/13/2018
 ms.author: magoedte
-ms.openlocfilehash: d873fe37ba2c4e851df35b9d5afe69b4adbf001c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9125f3db8929a41f49ff3ae53de9f3a71f5bf051
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>在 Log Analytics 中分析数据使用情况
 Log Analytics 包括以下信息：收集的数据量、哪些系统发送了数据、所发送数据的不同类型。  可以通过“Log Analytics 使用情况”仪表板查看发送到 Log Analytics 服务的数据量。 该仪表板显示每个解决方案收集的数据量，以及计算机所发送的数据量。
@@ -36,7 +36,9 @@ Log Analytics 包括以下信息：收集的数据量、哪些系统发送了数
 - 产品/服务
     - 见解与分析节点
     - 自动化与控制节点
-    - 安全节点
+    - 安全节点  
+- 性能
+    - 收集数据和为数据建索引所花的时间  
 - 查询列表
 
 ![使用情况仪表板](./media/log-analytics-usage/usage-dashboard01.png)
@@ -151,19 +153,6 @@ Log Analytics [警报](log-analytics-alerts-creating.md)使用搜索查询。 �
 
 使用[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，只从必需的计算机组收集数据。
 
-## <a name="check-if-there-is-ingestion-latency"></a>检查是否有引入延迟
-使用 Log Analytics 时，在引入收集的数据时预期会存在延迟。  在创建数据索引后，需要过一段时间才能对该数据进行搜索，这个绝对时间可能是无法预测的。 我们以前的仪表板上有一个性能图表，显示收集数据和创建数据索引所花的时间。在引入新的查询语言以后，我们暂时去除了该图表。  在我们发布更新的数据引入延迟指标之前，可以使用以下查询作为过渡解决方案，对每个数据类型的延迟进行近似求值。  
-
-    search *
-    | where TimeGenerated > ago(8h)
-    | summarize max(TimeGenerated) by Type
-    | extend LatencyInMinutes = round((now() - max_TimeGenerated)/1m,2)
-    | project Type, LatencyInMinutes
-    | sort by LatencyInMinutes desc
-
-> [!NOTE]
-> 此引入延迟查询不显示历史延迟，仅返回当前时间的结果。  对于常用架构日志，*TimeGenerated* 的值在代理处填充；对于自定义日志，该值在收集终结点填充。  
->
 
 ## <a name="next-steps"></a>后续步骤
 * 若要了解如何使用搜索语言，请参阅 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)。 可以使用搜索查询，对使用情况数据执行其他分析。

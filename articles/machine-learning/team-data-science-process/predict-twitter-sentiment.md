@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: bradsev;
-ms.openlocfilehash: df1124ddb436f0cfeec8f4ed9728fa15278b9325
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 9bae3971f438659c121bfc18a23746a016e5ef97
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="predict-twitter-sentiment-with-word-embeddings-by-using-the-team-data-science-process"></a>使用团队数据科学过程，通过字词嵌入预测 Twitter 情绪
 
@@ -131,7 +131,7 @@ Skip-Gram 模型是浅表神经网络。 将输入的目标单词编码为独热
 
 ![Kubernetes 仪表板](./media/predict-twitter-sentiment/kubernetes-dashboard.PNG)
 
-有关操作化过程的详细信息，请参阅[将 Azure 机器学习模型部署为 Web 服务](https://docs.microsoft.com/azure/machine-learning/preview/model-management-service-deploy)。
+有关操作化过程的详细信息，请参阅[将 Azure 机器学习模型部署为 Web 服务](../preview/model-management-service-deploy.md)。
 
 ## <a name="conclusion"></a>结束语
 
@@ -143,8 +143,8 @@ Skip-Gram 模型是浅表神经网络。 将输入的目标单词编码为独热
 * [团队数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) 
 * [如何在 Azure 机器学习中使用 Team Data Science Process (TDSP)](https://aka.ms/how-to-use-tdsp-in-aml)
 * [适用于 Azure 机器学习的 TDSP 项目模板](https://aka.ms/tdspamlgithubrepo)
-* [Azure Machine Learning Workbench](https://docs.microsoft.com/azure/machine-learning/preview/)
+* [Azure Machine Learning Workbench](../preview/index.yml)
 * [UCI ML 存储库中的美国收入数据集](https://archive.ics.uci.edu/ml/datasets/adult)
-* [使用 TDSP 模板进行生物医学实体识别](https://docs.microsoft.com/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition)
+* [使用 TDSP 模板进行生物医学实体识别](../preview/scenario-tdsp-biomedical-recognition.md)
 * [Tomas Mikolov 等人《Distributed Representations of Words and Phrases and their Compositionality.Advances in neural information processing systems.》（单词和短语的分布式表示形式及其组成暨神经信息处理系统的进步）。2013.](https://arxiv.org/abs/1310.4546)
 * [Duyu Tang 等人《Learning Sentiment-Specific Word Embedding for Twitter Sentiment Classification》（学习 Twitter 情绪分类所用的情绪特定单词嵌入）。ACL (1).2014.](http://www.aclweb.org/anthology/P14-1146)

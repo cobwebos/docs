@@ -3,7 +3,7 @@ title: "查看 Azure Application Insights 应用数据 | Microsoft Docs"
 description: "可以使用 Application Insights 连接器解决方案来诊断性能问题，以及了解用户在使用 Application Insights 监视的应用中执行的操作。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: banders
-ms.openlocfilehash: 49a78faa98bd7eb3da16dc069f65ef39b5e092af
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: magoedte
+ms.openlocfilehash: bf3259909a84e1e1f5325ff4e39d5c10f1abc831
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="application-insights-connector-management-solution-preview"></a>Application Insights 连接器管理解决方案（预览版） 
+# <a name="application-insights-connector-management-solution-preview"></a>Application Insights 连接器管理解决方案（预览版）
 
 ![Application Insights 符号](./media/log-analytics-app-insights-connector/app-insights-connector-symbol.png)
 

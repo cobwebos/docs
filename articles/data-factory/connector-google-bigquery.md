@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 3b559e64f38727b1e390160515b7614ad1dfaa97
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 35f61f6bd38b59a2df0613ba2506d047c1daeaaa
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Google BigQuery 复制数据
 
@@ -51,12 +51,17 @@ Google BigQuery 链接服务支持以下属性。
 | project | 针对其查询的默认 BigQuery 项目的项目 ID。  | 是 |
 | additionalProjects | 要访问的公共 BigQuery 项目的项目 ID 逗号分隔列表。  | 否 |
 | requestGoogleDriveScope | 是否要请求访问 Google Drive。 允许 Google Drive 访问可支持将 BigQuery 数据与 Google Drive 中的数据组合的联合表。 默认值为 **false**。  | 否 |
-| authenticationType | 用于身份验证的 OAuth 2.0 身份验证机制。 ServiceAuthentication 只能在自承载集成运行时上使用。 <br/>允许的值为 **ServiceAuthentication** 和 **UserAuthentication**。 | 是 |
-| refreshToken | 从 Google 获得的刷新令牌，用于授权访问 BigQuery 以进行用户身份验证。 可以将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将密码存储在 Azure Key Vault 中，并让复制活动在执行数据复制时从该处拉取密码。 若要了解详细信息，请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 否 |
-| 电子邮件 | 用于 ServiceAuthentication 的服务帐户电子邮件 ID。 它只能在自承载集成运行时上使用。  | 否 |
-| keyFilePath | .p12 密钥文件的完整路径，该文件用于对服务帐户电子邮件地址进行身份验证。 它只能在自承载集成运行时上使用。  | 否 |
-| trustedCertPath | 包含受信任 CA 证书（通过 SSL 进行连接时用于验证服务器）的 .pem 文件的完整路径。 仅当在自承载集成运行时上使用 SSL 时，才能设置此属性。 默认值是随集成运行时一起安装的 cacerts.pem 文件。  | 否 |
-| useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 .pem 文件中的 CA 证书。 默认值为 **false**。  | 否 |
+| authenticationType | 用于身份验证的 OAuth 2.0 身份验证机制。 ServiceAuthentication 只能在自承载集成运行时上使用。 <br/>允许的值为 **UserAuthentication** 和 **ServiceAuthentication**。 有关这些身份验证类型的其他属性和 JSON 示例，请分别参阅此表格下面的部分。 | 是 |
+
+### <a name="using-user-authentication"></a>使用用户身份验证
+
+将“authenticationType”属性设置为“UserAuthentication”，并指定以下属性及上节所述的泛型属性：
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| clientId | 应用程序的 ID，用于生成刷新令牌。 | 否 |
+| clientSecret | 应用程序的机密，用于生成刷新令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
+| refreshToken | 从 Google 获得的刷新令牌，用于授权访问 BigQuery。 从[获取 OAuth 2.0 访问令牌](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens)了解如何获取刷新令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 
 **示例：**
 
@@ -70,6 +75,11 @@ Google BigQuery 链接服务支持以下属性。
             "additionalProjects" : "<additional project IDs>",
             "requestGoogleDriveScope" : true,
             "authenticationType" : "UserAuthentication",
+            "clientId": "<id of the application used to generate the refresh token>",
+            "clientSecret": {
+                "type": "SecureString",
+                "value":"<secret of the application used to generate the refresh token>"
+            },
             "refreshToken": {
                  "type": "SecureString",
                  "value": "<refresh token>"
@@ -79,9 +89,42 @@ Google BigQuery 链接服务支持以下属性。
 }
 ```
 
+### <a name="using-service-authentication"></a>使用服务身份验证
+
+将“authenticationType”属性设置为“ServiceAuthentication”，并指定以下属性及上节所述的泛型属性。 此身份验证类型只能在自承载 Integration Runtime 上使用。
+
+| 属性 | 说明 | 必选 |
+|:--- |:--- |:--- |
+| 电子邮件 | 用于 ServiceAuthentication 的服务帐户电子邮件 ID。 它只能在自承载集成运行时上使用。  | 否 |
+| keyFilePath | .p12 密钥文件的完整路径，该文件用于对服务帐户电子邮件地址进行身份验证。 | 否 |
+| trustedCertPath | 包含受信任 CA 证书（通过 SSL 进行连接时用于验证服务器）的 .pem 文件的完整路径。 仅当在自承载集成运行时上使用 SSL 时，才能设置此属性。 默认值是随集成运行时一起安装的 cacerts.pem 文件。  | 否 |
+| useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 .pem 文件中的 CA 证书。 默认值为 **false**。  | 否 |
+
+**示例：**
+
+```json
+{
+    "name": "GoogleBigQueryLinkedService",
+    "properties": {
+        "type": "GoogleBigQuery",
+        "typeProperties": {
+            "project" : "<project id>",
+            "requestGoogleDriveScope" : true,
+            "authenticationType" : "ServiceAuthentication",
+            "email": "<email>",
+            "keyFilePath": "<.p12 key path on the IR machine>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Self-hosted Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+} 
+```
+
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各个部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Google BigQuery 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Google BigQuery 数据集支持的属性列表。
 
 要从 Google BigQuery 复制数据，请将数据集的 type 属性设置为 **GoogleBigQueryObject**。 此类型的数据集中没有任何其他特定于类型的属性。
 
@@ -106,7 +149,7 @@ Google BigQuery 链接服务支持以下属性。
 
 ### <a name="googlebigquerysource-as-a-source-type"></a>以 GoogleBigQuerySource 作为源类型
 
-要从 Google BigQuery 复制数据，请将复制活动中的源类型设置为“GoogleBigQuerySource”。 复制活动**源**部分支持以下属性。
+要从 Google BigQuery 复制数据，请将复制活动中的源类型设置为“GoogleBigQuerySource”。 复制活动的 **source** 节支持以下属性。
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

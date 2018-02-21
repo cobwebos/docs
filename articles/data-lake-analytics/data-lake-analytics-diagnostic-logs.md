@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/08/2017
+ms.date: 02/12/2018
 ms.author: larryfr
-ms.openlocfilehash: 5bab7a0646d34de3b6d71370a0fa4216845ee6a2
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: e6cc5fd3d45691dbdc004f346c10d7b4568ae9aa
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Accessing diagnostic logs for Azure Data Lake Analytics（访问 Azure Data Lake Analytics 的诊断日志）
 
@@ -130,7 +130,7 @@ ms.lasthandoff: 11/09/2017
 
 #### <a name="request-log-schema"></a>请求日志架构
 
-| Name | 类型 | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
 | resourceId |String |操作发生所在的资源的标识符 |
@@ -140,11 +140,11 @@ ms.lasthandoff: 11/09/2017
 | callerIpAddress |String |作出请求的客户端 的IP 地址 |
 | correlationId |String |日志的标识符。 此值可用于分组相关的日志条目。 |
 | identity |对象 |生成日志的标识 |
-| properties |JSON |请参阅下节（请求日志属性架构），了解详细信息 |
+| 属性 |JSON |请参阅下节（请求日志属性架构），了解详细信息 |
 
 #### <a name="request-log-properties-schema"></a>请求日志属性架构
 
-| Name | 类型 | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | HttpMethod |String |用于此操作的 HTTP 方法。 例如 GET。 |
 | 路径 |String |操作执行所在的路径 |
@@ -182,7 +182,7 @@ ms.lasthandoff: 11/09/2017
 
 #### <a name="audit-log-schema"></a>审核日志架构
 
-| Name | 类型 | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | time |String |日志时间戳（采用 UTC） |
 | resourceId |String |操作发生所在的资源的标识符 |
@@ -200,7 +200,7 @@ ms.lasthandoff: 11/09/2017
 
 #### <a name="audit-log-properties-schema"></a>审核日志属性架构
 
-| Name | 类型 | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | JobId |String |分配给作业的 ID |
 | JobName |String |提供给作业的名称 |

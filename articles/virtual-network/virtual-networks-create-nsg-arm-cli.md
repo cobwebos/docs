@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecc50a54feca6c3e9304821e0a5bdbb50708bd11
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: cb99f121a1ddf079008ed97edde71b067d6b5edb
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-network-security-groups-using-the-azure-cli"></a>使用 Azure CLI 创建网络安全组
 
@@ -36,9 +36,9 @@ ms.lasthandoff: 11/17/2017
 
 若要基于上述方案创建名为 *NSG-FrontEnd* 的 NSG，请执行以下步骤。
 
-1. 如果尚未这样做，请安装并配置最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#login) 登录 Azure 帐户。 
+1. 如果尚未这样做，请安装并配置最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#az_login) 登录 Azure 帐户。 
 
-2. 使用 [az network nsg create](/cli/azure/network/nsg#create) 命令创建 NSG。 
+2. 使用 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) 命令创建 NSG。 
 
     ```azurecli
     az network nsg create \
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/17/2017
 
 
 
-3. 使用 [az network nsg rule create](/cli/azure/network/nsg/rule#create) 命令创建允许从 Internet 访问端口 3389 (RDP) 的规则。
+3. 使用 [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) 命令创建允许从 Internet 访问端口 3389 (RDP) 的规则。
 
     > [!NOTE]
     > 根据要使用的外壳程序，可能需要修改参数中的 `*` 字符以免在执行前展开参数。
@@ -171,7 +171,7 @@ ms.lasthandoff: 11/17/2017
     }
     ```
 
-5. 使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#update) 命令将 NSG 绑定到 **FrontEnd** 子网。
+5. 使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) 命令将 NSG 绑定到 **FrontEnd** 子网。
         
     ```azurecli
     az network vnet subnet update \

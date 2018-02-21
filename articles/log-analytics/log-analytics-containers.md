@@ -3,7 +3,7 @@ title: "Azure Log Analytics 中的容器监视解决方案 | Microsoft Docs"
 description: "Log Analytics 中的容器监视解决方案可帮助用户在单个位置查看和管理 Docker 和 Windows 容器主机。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: e1e4b52b-92d5-4bfa-8a09-ff8c6b5a9f78
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
-ms.author: magoedte;banders
-ms.openlocfilehash: 4087cb787e43c3d1b40ad082e84534b34918c9e9
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.author: magoedte
+ms.openlocfilehash: b3f78f6cc89a3d4bf8712c339f66b5d50f373919
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics 中的容器监视解决方案
 
@@ -402,8 +402,8 @@ KEY:    88 bytes
         ```
     3. 通过运行 ``` kubectl create -f omsagentsecret.yaml ``` 创建 omsagent daemon-set
     4. 若要检查，请运行以下命令：
-    
-        ``` 
+
+        ```
         root@ubuntu16-13db:~# kubectl get secrets
         ```
 
@@ -418,13 +418,13 @@ KEY:    88 bytes
         Namespace:      default
         Labels:         <none>
         Annotations:    <none>
-    
+
         Type:   Opaque
-    
+
         Data
         ====
         WSID:   36 bytes
-        KEY:    88 bytes 
+        KEY:    88 bytes
         ```
 
     5. 通过运行 ```kubectl create -f ws-omsagent-de-secrets.yaml``` 创建 omsagent daemon-set
@@ -437,9 +437,9 @@ KEY:    88 bytes
     omsagent   1         1         <none>          1h
     ```
 
-3. 若要在运行 Windows 的工作节点上安装代理，请按照[安装和配置 Windows 容器主机](#install-and-configure-windows-container-hosts)部分中的步骤进行操作。 
+3. 若要在运行 Windows 的工作节点上安装代理，请按照[安装和配置 Windows 容器主机](#install-and-configure-windows-container-hosts)部分中的步骤进行操作。
 
-#### <a name="use-helm-to-deploy-oms-agent-on-linux-kubernetes"></a>使用 Helm 在 Linux Kubernetes 上部署 OMS 代理 
+#### <a name="use-helm-to-deploy-oms-agent-on-linux-kubernetes"></a>使用 Helm 在 Linux Kubernetes 上部署 OMS 代理
 若要使用 helm 在 Linux Kubernetes 环境上部署 OMS 代理，请执行以下步骤。
 
 1. 通过运行 ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms``` 创建 omsagent daemon-set
@@ -653,7 +653,7 @@ Type=Perf <containerName>
 ## <a name="example-log-search-queries"></a>日志搜索查询示例
 从一或两个示例开始生成查询，并修改它们以适应环境，这通常很有用。 可以首先尝试使用“示例查询”区域，它可以帮助你构建更高级的查询。
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![容器查询](./media/log-analytics-containers/containers-queries.png)
 
