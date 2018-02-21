@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 659a791124eab002290ac0b7f0898cf1c06c2951
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 72ed9ecd7a4c8e846818f7a19ad25c566fa57f64
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-cli"></a>使用 Azure CLI 创建虚拟网络
 
@@ -45,9 +45,9 @@ Azure 有两个部署模型：Azure 资源管理器模型和经典模型。 Micr
 
 若要使用 Azure CLI 创建虚拟网络，请完成以下步骤：
 
-1. 安装并配置最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#login) 登录 Azure 帐户。
+1. 安装并配置最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#az_login) 登录 Azure 帐户。
 
-2. 使用具有 `--name` 和 `--location` 参数的 [az group create](/cli/azure/group#create) 命令创建 VNet 的资源组：
+2. 使用具有 `--name` 和 `--location` 参数的 [az group create](/cli/azure/group#az_group_create) 命令创建 VNet 的资源组：
 
     ```azurecli
     az group create --name TestRG --location centralus

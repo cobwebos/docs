@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fb646a56b51960d5b076027d942dabe8f2afbe97
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2354a8bf81189f70bb8d0d63c3df3236403c11fc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>配置 Azure Active Directory 基于设备的条件访问策略
 
@@ -41,11 +41,11 @@ ms.lasthandoff: 12/11/2017
 
 在移动优先、云优先的世界中，使用 Azure Active Directory 可以实现从任意位置单一登录到设备、应用和服务。 对于环境中的某些资源，将访问权限授予适当的用户不可能并不足够。 除了向适当的用户授权以外，可能还需要使用受信任的设备来访问资源。 在环境中，可以基于以下组件定义什么是受信任的设备：
 
-- 设备上的[设备平台](active-directory-conditional-access-azure-portal.md#device-platforms)
+- 设备上的[设备平台](active-directory-conditional-access-conditions.md#device-platforms)
 - 设备是否合规
 - 设备是否已加入域 
 
-[设备平台](active-directory-conditional-access-azure-portal.md#device-platforms)根据设备上运行的操作系统来定义特征。 在基于设备的条件访问策略中，可将特定资源的访问权限限制给特定的设备平台。
+[设备平台](active-directory-conditional-access-conditions.md#device-platforms)根据设备上运行的操作系统来定义特征。 在基于设备的条件访问策略中，可将特定资源的访问权限限制给特定的设备平台。
 
 
 

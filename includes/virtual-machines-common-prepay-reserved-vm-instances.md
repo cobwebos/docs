@@ -14,7 +14,7 @@
 
     | 字段      | 说明|
     |:------------|:--------------|
-    |名称​​        |此预订的名称。| 
+    |名称        |此预订的名称。| 
     |订阅|用于支付预订费用的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须是“企业协议”（产品/服务编号：MS-AZR-0017P）或“即用即付”（产品/服务编号：MS-AZR-0003P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。|    
     |范围       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>单个订阅 - 预订折扣将应用到此订阅中的 VM。 </li><li>共享 - 预订折扣将应用到计费上下文中任何订阅中运行的 VM。 对于企业客户，共享范围是许可登记表，包括许可登记表中的所有订阅（开发/测试订阅除外）。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</li></ul>|
     |Location    |预订涵盖的 Azure 区域。|    
@@ -30,8 +30,15 @@
 
     ![提交预订购买之前的屏幕截图](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvmInstance-submit.png)
 
-## <a name="next-steps-after-buying-a-reservation"></a>购买预订后的后续步骤
+## <a name="next-steps"></a>后续步骤 
 预订折扣将自动应用于正在运行的与预订范围和属性匹配的虚拟机数量。 可以通过 [Azure 门户](https://portal.azure.com)、PowerShell、CLI 或通过 API 更新预订的范围。 
 
-若要了解如何管理预订，请参阅[管理 Azure 保留虚拟机实例](../articles/billing/billing-manage-reserved-vm-instance.md)。
+若要了解如何管理预订，请参阅[管理 Azure 预订虚拟机实例](../articles/billing/billing-manage-reserved-vm-instance.md)。
 
+若要了解有关预订虚拟机实例的详细信息，请参阅以下文章。
+
+- [通过预订虚拟机实例节省虚拟机资金](../articles/billing/billing-save-compute-costs-reservations.md)
+- [了解如何应用预订虚拟机实例折扣](../articles/billing/billing-understand-vm-reservation-charges.md)
+- [了解即用即付订阅的预订实例使用情况](../articles/billing/billing-understand-reserved-instance-usage.md)
+- [了解企业许可登记表的预订实例使用情况](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
+- [预订实例未包含的 Windows 软件成本](../articles/billing/billing-reserved-instance-windows-software-costs.md)

@@ -16,6 +16,8 @@
       href: time-series-insights-explorer.md
     - name: 缓解限制
       href: time-series-insights-environment-mitigate-latency.md
+    - name: 了解数据保留
+      href: time-series-insights-concepts-retention.md
     - name: 诊断和故障排除
       href: time-series-insights-diagnose-and-solve-problems.md
     - name: 开发
@@ -38,6 +40,8 @@
       href: time-series-insights-how-to-add-an-event-source-eventhub.md
     - name: 连接到 IoT 中心
       href: time-series-insights-how-to-add-an-event-source-iothub.md
+    - name: 配置数据保留
+      href: time-series-insights-how-to-configure-retention.md
     - name: 创建参考数据集
       href: time-series-insights-add-reference-data-set.md
     - name: 发送事件

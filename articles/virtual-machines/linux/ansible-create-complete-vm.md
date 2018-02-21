@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 88e1f17184be07ec8499ad3049f7210b56fdfc15
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: d5e3f3db4726bfb16cbb389cf99b9bf7c511da97
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>在 Azure 中使用 Ansible 创建完整的 Linux 虚拟机环境
 使用 Ansible 可以在环境中自动部署和配置资源。 可以在 Azure 中使用 Ansible 管理虚拟机 (VM)，管理其他任意资源也一样。 本文介绍了如何使用 Ansible 创建完整的 Linux 环境和支持资源。 还可以了解如何[使用 Ansible 创建基本 VM](ansible-create-vm.md)。
@@ -187,7 +187,7 @@ Ansible 操作手册中的以下部分在 10.0.0.0/16 地址空间中创建了�
         version: latest
 ```
 
-Ansible 需要一个资源组来部署所有资源。 使用 [az group create](/cli/azure/vm#create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+Ansible 需要一个资源组来部署所有资源。 使用 [az group create](/cli/azure/vm#az_vm_create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: ancav
-ms.openlocfilehash: 7e16926b5a1c28c0c8c80ee8c17e8c2fdb9e55a7
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 9ff52bd29644c7c585d2a85fcbe49e8800f6a035
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="scale-instance-count-manually-or-automatically"></a>手动或自动缩放实例计数
 在 [Azure 门户](https://portal.azure.com/)中，可手动设置服务的实例计数，或者设置参数以基于需求自动缩放。 这通常称为扩大或缩小。
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/14/2017
 ## <a name="scaling-manually"></a>手动缩放
 1. 在 [Azure 门户](https://portal.azure.com/)中，单击“浏览”，并导航到要缩放的资源（如“应用服务计划”）。
 2. 单击“设置”>“扩大(应用服务计划)”。
-3. 在“缩放”边栏选项卡顶部，可以查看服务的自动缩放操作历史记录。
+3. 在“缩放”边栏选项卡顶部的“运行历史记录”选项卡中，可以查看服务的自动缩放操作历史记录。
    
     ![“缩放”分页](./media/insights-how-to-scale/Insights_ScaleBladeDayZero.png)
    
@@ -38,7 +38,7 @@ ms.lasthandoff: 12/14/2017
    > 只有自动缩放执行的操作才会显示在此图表中。 如果手动调整实例计数，则更改不会反映在此图表中。
    > 
    > 
-4. 可以使用滑块手动调整“实例”数。
+4. 可以在“配置”选项卡中手动调整**实例**数。
 5. 单击“保存”命令，可几乎立即缩放到该实例数。
 
 ## <a name="scaling-based-on-a-pre-set-metric"></a>基于预设指标进行缩放
@@ -97,7 +97,7 @@ ms.lasthandoff: 12/14/2017
 3. 要具有在白天应用的配置文件，请将“开始时间”设置为一天中希望开始进行的时间。
    
     ![默认重复周期](./media/insights-how-to-scale/Insights_ProfileRecurrence.png)
-4. 单击 **“确定”**。
+4. 单击“确定”。
 5. 接下来，需要添加要在其他时间应用的配置文件。 单击“添加配置文件”行。
     ![下班](./media/insights-how-to-scale/Insights_ProfileOffWork.png)
 6. 命名新的第二个配置文件，例如可将它称为“下班”。
@@ -108,7 +108,7 @@ ms.lasthandoff: 12/14/2017
    > 自动缩放会对所选择的任何“时区”使用夏令时规则。 但是，在夏令时时间内，UTC 时差会显示基本时区时差，而不是夏令时 UTC 时差。
    > 
    > 
-9. 单击 **“确定”**。
+9. 单击“确定”。
 10. 现在，需要添加要在第二个配置文件实施期间应用的任何规则。 单击“添加规则”，并可以构建在默认配置文件实施期间具有的相同规则。
     
     ![向下班添加规则](./media/insights-how-to-scale/Insights_RuleOffWork.png)

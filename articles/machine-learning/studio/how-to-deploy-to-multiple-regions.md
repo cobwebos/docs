@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: v-donglo
-ms.openlocfilehash: abd6f05e9b9ce711ce55e88f07aa13287c76ebc2
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.author: raymondl
+ms.openlocfilehash: 58c0f5b0ac8e96c2457db4b86dcf2483f68289c6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-deploy-a-web-service-to-multiple-regions"></a>如何将 Web 服务部署到多个区域
 借助新的 Azure Web 服务，无需多个订阅或工作区即可轻松地将 Web 服务部署到多个区域。 
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/09/2017
 6. 从“资源组”下拉列表中，选择适用于该计划的资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
 7. 在“计划名称”中，键入计划的名称。
 8. 在“计划选项”中，单击新计划的计费级别。
-9. 单击“创建” 。
+9. 单击“创建”。
 
 ## <a name="deploying-the-web-service-to-another-region"></a>将 Web 服务部署到另一个区域
 1. 单击“Web 服务”菜单选项。

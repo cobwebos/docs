@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 5f60dde981465709c16a9813ca24335c67252585
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b7f05f02249f86e6bee7f89c6ecf8016ede9c4fb
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>对用于容器的 Web 应用使用自定义 Docker 映像
 
@@ -237,7 +237,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 <!-- Depending on your requirements, you may have your docker images in a Public Docker Registry, such as Docker Hub, or a Private Docker Registry, such as Azure Container Registry. Select the appropriate tab for your scenario below: -->
 
 > [!NOTE]
-> 从专用 Docker 注册表部署？ 请参阅有关如何[将 Web 应用配置为使用专用注册表中的 Docker 容器](#configure-web-app-to-use-docker-container-from-a-private-registry-optional)的可选说明。
+> 从专用 Docker 注册表部署？ 请参阅有关如何[使用任何专用注册表中的 Docker 映像](#use-a-docker-image-from-any-private-registry-optional)的可选说明。
 
 <!-- # [Docker Hub](#tab/docker-hub)-->
 

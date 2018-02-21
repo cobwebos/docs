@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3485120347923dd291663962d528a1e5996b477f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8871012458c97a36b1f8c2cca413319ec7d72e8e
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从 SFTP 服务器移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -123,7 +123,7 @@ ms.lasthandoff: 01/23/2018
 | passPhrase | 如果密钥文件受通行短语保护，请指定用于解密私钥的通行短语/密码。 | 如果私钥文件受通行短语的保护，则为 Yes。 |
 
 > [!NOTE]
-> SFTP 连接器仅支持 OpenSSH 密钥。 请确保密钥文件格式正确。 可使用 Putty 工具将 .ppk 格式转换为 OpenSSH 格式。
+> SFTP 连接器支持 RSA/DSA OpenSSH 密钥。 请确保密钥文件内容以“-----BEGIN [RSA/DSA] PRIVATE KEY-----”开头。 如果私钥文件是 ppk 格式文件，请使用 Putty 工具从 .ppk 转换为 OpenSSH 格式。
 
 #### <a name="example-sshpublickey-authentication-using-private-key-filepath"></a>示例：使用私钥 filePath 进行 SshPublicKey 身份验证
 

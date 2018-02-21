@@ -3,7 +3,7 @@ title: "使用 Azure Log Analytics 优化 System Center Operations Manager 环�
 description: "可以使用 System Center Operations Manager 运行状况检查解决方案定期评估环境的风险和运行状况。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2017
-ms.author: magoedte;banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a66cc13d05c81de571e2710519ad9474304d656
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 86484ca2bc7dc14035f48b8f7b1514a4fc471b74
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 10/27/2017
 
 ## <a name="system-center-operations-manager-assessment-data-collection-details"></a>System Center Operations Manager 评估数据收集详细信息
 
-System Center Operations Manager 评估从以下源收集数据： 
+System Center Operations Manager 评估从以下源收集数据：
 
 * 注册表
 * Windows Management Instrumentation (WMI)
@@ -72,7 +72,7 @@ System Center Operations Manager 评估从以下源收集数据：
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Log Analytics 的 Operations Manager 运行方式帐户
 
-Log Analytics 基于工作负荷的管理包生成，提供增值服务。 每个工作负荷需要特定于工作负荷的权限，才能在不同的安全上下文（例如域用户帐户）中运行管理包。 使用特权凭据配置 Operations Manager 运行方式帐户。 有关更多信息，请参阅 Operations Manager 文档中的[如何创建运行方式帐户](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx)。 
+Log Analytics 基于工作负荷的管理包生成，提供增值服务。 每个工作负荷需要特定于工作负荷的权限，才能在不同的安全上下文（例如域用户帐户）中运行管理包。 使用特权凭据配置 Operations Manager 运行方式帐户。 有关更多信息，请参阅 Operations Manager 文档中的[如何创建运行方式帐户](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx)。
 
 使用以下信息为 System Center Operations Manager 运行状况检查设置 Operations Manager 运行方式帐户。
 
@@ -82,21 +82,21 @@ Log Analytics 基于工作负荷的管理包生成，提供增值服务。 每�
 
 * 该帐户是域用户帐户，并且是支持任何 Operations Manager 角色的所有服务器（管理服务器，以及托管操作数据、数据仓库和 ACS 数据库、报告组件、Web 控制台和网关服务器的 SQL Server）上的本地管理员组的成员。
 * 正在评估管理组的 Operation Manager 管理员角色
-* 如果该帐户没有 SQL sysadmin 权限，请执行该[脚本](#sql-script-to-grant-granular-permissions-to-the-run-as-account)，向托管一个或所有 Operations Manager 数据库的每个 SQL Server 实例上的帐户授予粒度权限。 
+* 如果该帐户没有 SQL sysadmin 权限，请执行该[脚本](#sql-script-to-grant-granular-permissions-to-the-run-as-account)，向托管一个或所有 Operations Manager 数据库的每个 SQL Server 实例上的帐户授予粒度权限。
 
 1. 在 Operations Manager 控制台中，选择“管理”导航按钮。
 2. 在“运行方式配置”下，单击“帐户”。
 3. 在“创建运行方式帐户”向导中的“简介”页上，单击“下一步”。
 4. 在“常规属性”页上的“运行方式帐户类型:”列表中，选择“Windows”。
-5. 在“显示名称”文本框中键入显示名称，并选择性地在“说明”框中键入说明，单击“下一步”。 
+5. 在“显示名称”文本框中键入显示名称，并选择性地在“说明”框中键入说明，单击“下一步”。
 6. 在“分发安全性”页上，选择“更安全”。
-7. 单击“创建” 。  
+7. 单击“创建”。  
 
 创建运行方式帐户后，需要将管理组中的管理服务器指定为该帐户的目标，并将其关联到某个预定义的运行方式配置文件，以便能够使用凭据运行工作流。  
 
 1. 在“运行方式配置”下选择“帐户”，在结果窗格中，双击前面创建的帐户。
 2. 在“分发”选项卡上，单击“选定的计算机”框旁边的“添加”，添加要将该帐户分发到的管理服务器。  单击“确定”两次以保存更改。
-3. 在“运行方式配置”下，单击“配置文件”。 
+3. 在“运行方式配置”下，单击“配置文件”。
 4. 搜索“SCOM 评估配置文件”。
 5. 配置文件名应为：“Microsoft System Center Advisor SCOM 评估运行方式配置文件”。
 6. 右键单击该配置文件并更新其属性，添加最近创建的运行方式帐户。
@@ -216,7 +216,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 查看概述的针对基础结构的合规性评估，并深入分析建议。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>查看针对重点区域的建议并采取纠正措施
-1. 登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。 
+1. 登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
 2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
 3. 在 Log Analytics 订阅窗格中选择一个工作区，再选择“OMS 门户”磁贴。  
 4. 在“概述”页上，单击“System Center Operations Manager 运行状况检查”磁贴。
@@ -228,7 +228,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 
 如果有要忽略的建议，可以创建 Log Analytics 用来防止建议出现在评估结果中的文本文件。
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>确定要忽略的建议
 1. 在 Azure 门户中所选工作区对应的 Log Analytics 工作区页上，单击“日志搜索”磁贴。
@@ -298,7 +298,7 @@ Microsoft System Center Advisor SCOM 评估运行评估规则默认已禁用。 
 
 *为何需要配置运行方式帐户？* 使用 Operations Manager 时，会运行各种 SQL 查询。 为了运行这些查询，必须使用一个具有所需权限的运行方式帐户。 此外，查询 WMI 需要用到本地管理员凭据。
 
-*为何仅显示前 10 条建议？* 我们不会提供名目繁多的详尽任务列表，只是建议先按优先级着重实施建议的方法。 在解决这些建议后，其他建议将变为可用。 如果想要查看详细的列表，可以使用日志搜索查看所有建议。
+*仅显示前 10 条建议的原因* 我们不会提供名目繁多的详尽任务列表，只是建议先按优先级着重实施建议的方法。 在解决这些建议后，其他建议将变为可用。 如果想要查看详细的列表，可以使用日志搜索查看所有建议。
 
 *有没有方法来忽略建议？* 是的，请参阅[忽略建议](#Ignore-recommendations)。
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: larryfr
-ms.openlocfilehash: 1ea20eceb28fead003c7279632b1e75ae1fd3553
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: be6ed6d4c0c3a5fa55166b84b128881d434c4ab2
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="apache-kafka-streams-api"></a>Apache Kafka Streams API
 
@@ -100,6 +100,12 @@ ms.lasthandoff: 01/20/2018
     * 启动用于写入到 `test` 主题的 producer。
     * 启动 consumer，以便显示写入到 `wordcounts` 主题的输出
 
+    > [!NOTE]
+    > 需要在 Kafka 中转站配置文件中确认 `auto.create.topics.enable` 属性已设置为 `true`。 可以使用 Ambari Web UI 在高级 Kafka 中转站配置文件中查看和修改此属性。 否则，在使用以下命令运行此示例之前，需要手动创建中间主题 `RekeyedIntermediateTopic`：
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic RekeyedIntermediateTopic  --zookeeper $KAFKAZKHOSTS
+    ```
+    
     可以通过打开三个 SSH 会话来完成这些操作。 但之后必须在每个 SSH 会话中运行此部分的步骤 4，以便为每个会话设置 `$KAFKABROKERS` 和 `$KAFKAZKHOSTS`。 更简单的解决方案是使用 `tmux` 实用工具，它可以将当前 SSH 显示拆分为多个部分。 若要使用 `tmux` 启动 stream、producer 和 consumer，请使用以下命令：
 
     ```bash

@@ -1,32 +1,40 @@
 ---
-title: "Desired State Configuration Resource Manager 模板 | Microsoft Docs"
-description: "Azure 中 Desired State Configuration 的 Resource Manager 模板定义，提供示例和故障排除方法"
+title: "Desired State Configuration 扩展与 Azure 资源管理器模板 | Microsoft Docs"
+description: "Azure 中 Desired State Configuration 扩展的资源管理器模板定义"
 services: virtual-machines-windows
 documentationcenter: 
-author: zjalexander
+author: mgreenegit
 manager: timlt
 editor: 
-tags: azure-service-management,azure-resource-manager
-keywords: 
+tags: azure-resource-manager
+keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 09/15/2016
-ms.author: zachal
-ms.openlocfilehash: 4292f9d8cd181073fdf0adff99fcb9624e0e9f55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/02/2018
+ms.author: migreene
+ms.openlocfilehash: f638d1530541526316f6e409f1efd44f136992a5
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="windows-vmss-and-desired-state-configuration-with-azure-resource-manager-templates"></a>在 Azure Resource Manager 模板中使用 Windows VMSS 和 Desired State Configuration
-本文介绍 [Desired State Configuration 扩展处理程序](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)的 Resource Manager 模板。 
+# <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration 扩展与 Azure 资源管理器模板
+
+本文介绍 [Desired State Configuration 扩展处理程序](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)的 Azure 资源管理器模板。 
+
+*注意：你可能会遇到略有不同的架构示例。*
+*2016 年 10 月发行版中发生的架构更改。*
+*将在此页中具有以下标题的部分中说明详细信息：*
+*[从以前的格式更新](##Updating-from-the-Previous-Format)*。
 
 ## <a name="template-example-for-a-windows-vm"></a>Windows VM 模板示例
+
 将以下代码片段放入模板的 Resource 节。
+DSC 扩展继承了默认扩展属性，如 [VirtualMachineExtension 类](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.)中所述
 
 ```json
             "name": "Microsoft.Powershell.DSC",
@@ -39,28 +47,35 @@ ms.lasthandoff: 10/11/2017
               "properties": {
                   "publisher": "Microsoft.Powershell",
                   "type": "DSC",
-                  "typeHandlerVersion": "2.20",
+                  "typeHandlerVersion": "2.72",
                   "autoUpgradeMinorVersion": true,
                   "forceUpdateTag": "[parameters('dscExtensionUpdateTagVersion')]",
                   "settings": {
-                      "configuration": {
-                          "url": "[concat(parameters('_artifactsLocation'), '/', variables('dscExtensionArchiveFolder'), '/', variables('dscExtensionArchiveFileName'))]",
-                          "script": "dscExtension.ps1",
-                          "function": "Main"
-                      },
-                      "configurationArguments": {
-                          "nodeName": "[variables('vmName')]"
-                      }
-                  },
-                  "protectedSettings": {
-                      "configurationUrlSasToken": "[parameters('_artifactsLocationSasToken')]"
-                  }
-              }
-
+                    "configurationArguments": {
+                        {
+                            "Name": "RegistrationKey",
+                            "Value": {
+                                "UserName": "PLACEHOLDER_DONOTUSE",
+                                "Password": "PrivateSettingsRef:registrationKeyPrivate"
+                            },
+                        },
+                        "RegistrationUrl" : "[parameters('registrationUrl1')]",
+                        "NodeConfigurationName" : "nodeConfigurationNameValue1"
+                        }
+                        },
+                        "protectedSettings": {
+                            "Items": {
+                                        "registrationKeyPrivate": "[parameters('registrationKey1']"
+                                    }
+                        }
+                    }
 ```
 
 ## <a name="template-example-for-windows-vmss"></a>Windows VMSS 的模板示例
-VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”和“extensionProfile”属性。 DSC 添加在“extensions”下面。 
+
+VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”和“extensionProfile”属性。 DSC 添加在“extensions”下面。
+
+DSC 扩展继承了默认扩展属性，如 [VirtualMachineScaleSetExtension 类](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet)中所述。
 
 ```json
 "extensionProfile": {
@@ -70,30 +85,40 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
                     "properties": {
                         "publisher": "Microsoft.Powershell",
                         "type": "DSC",
-                        "typeHandlerVersion": "2.20",
+                        "typeHandlerVersion": "2.72",
                         "autoUpgradeMinorVersion": true,
                         "forceUpdateTag": "[parameters('DscExtensionUpdateTagVersion')]",
                         "settings": {
-                            "configuration": {
-                                "url": "[concat(parameters('_artifactsLocation'), '/', variables('DscExtensionArchiveFolder'), '/', variables('DscExtensionArchiveFileName'))]",
-                                "script": "DscExtension.ps1",
-                                "function": "Main"
-                            },
                             "configurationArguments": {
-                                "nodeName": "localhost"
-                            }
+                                {
+                                    "Name": "RegistrationKey",
+                                    "Value": {
+                                        "UserName": "PLACEHOLDER_DONOTUSE",
+                                        "Password": "PrivateSettingsRef:registrationKeyPrivate"
+                                    },
+                                },
+                                "RegistrationUrl" : "[parameters('registrationUrl1')]",
+                                "NodeConfigurationName" : "nodeConfigurationNameValue1"
+                        }
                         },
                         "protectedSettings": {
-                            "configurationUrlSasToken": "[parameters('_artifactsLocationSasToken')]"
+                            "Items": {
+                                        "registrationKeyPrivate": "[parameters('registrationKey1']"
+                                    }
                         }
                     }
-                }
-            ]
+                ]
+            }
         }
 ```
 
 ## <a name="detailed-settings-information"></a>详细设置信息
-以下架构用于 Azure Resource Manager 模板中 Azure DSC 扩展的 settings 部分。
+
+以下架构用于 Azure 资源管理器模板中 Azure DSC 扩展的 settings 部分。
+
+*有关可用于默认配置脚本的参数列表，*
+*请参阅下面名为*
+*[默认配置脚本](##Default-Configuration-Script)的部分*。
 
 ```json
 
@@ -118,7 +143,7 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
     "downloadMappings": {
       "customWmfLocation": "http://myWMFlocation"
     }
-  } 
+  }
 },
 "protectedSettings": {
   "configurationArguments": {
@@ -138,12 +163,13 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 ```
 
 ## <a name="details"></a>详细信息
-| 属性名称 | 类型 | 说明 |
+
+| 属性名称 | Type | 说明 |
 | --- | --- | --- |
 | settings.wmfVersion |字符串 |指定应在 VM 上安装的 Windows Management Framework 版本。 将此属性设置为“latest”可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”、“5.0PP”和“latest”。 这些可能值将来可能会更新。 默认值为“latest”。 |
-| settings.configuration.url |字符串 |指定要从中下载 DSC 配置 zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationUrlSasToken 属性设置为 SAS 令牌的值。 如果已定义 settings.configuration.script 和/或 settings.configuration.function，则需要此属性。 |
-| settings.configuration.script |字符串 |指定包含 DSC 配置定义的脚本的文件名。 此脚本必须位于从 configuration.url 属性所指定的 URL 下载的 zip 文件的根文件夹中。 如果已定义 settings.configuration.url 和/或 settings.configuration.script，则需要此属性。 |
-| settings.configuration.function |字符串 |指定 DSC 配置的名称。 命名的配置必须包含在 configuration.script 定义的脚本中。 如果已定义 settings.configuration.url 和/或 settings.configuration.function，则需要此属性。 |
+| settings.configuration.url |字符串 |指定要从中下载 DSC 配置 zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationUrlSasToken 属性设置为 SAS 令牌的值。 如果已定义 settings.configuration.script 和/或 settings.configuration.function，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置 LCM 元数据，并应提供参数。 |
+| settings.configuration.script |字符串 |指定包含 DSC 配置定义的脚本的文件名。 此脚本必须位于从 configuration.url 属性所指定的 URL 下载的 zip 文件的根文件夹中。 如果已定义 settings.configuration.url 和/或 settings.configuration.script，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置 LCM 元数据，并应当应用参数。 |
+| settings.configuration.function |字符串 |指定 DSC 配置的名称。 命名的配置必须包含在 configuration.script 定义的脚本中。 如果已定义 settings.configuration.url 和/或 settings.configuration.function，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置 LCM 元数据，并应提供参数。 |
 | settings.configurationArguments |集合 |定义想要传递到 DSC 配置的任何参数。 此属性未加密。 |
 | settings.configurationData.url |字符串 |指定 URL，将从中下载配置数据 (.pds1) 文件用作 DSC 配置的输入。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationDataUrlSasToken 属性设置为 SAS 令牌的值。 |
 | settings.privacy.dataEnabled |字符串 |启用或禁用遥测数据收集。 此属性的可能值只有“Enable”、“Disable”、'' 或 $null。 将此属性留空或 null 可启用遥测。 默认值为 ''。 [详细信息](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) |
@@ -152,7 +178,25 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 | protectedSettings.configurationUrlSasToken |字符串 |指定用于访问 configuration.url 所定义的 URL 的 SAS 令牌。 此属性已加密。 |
 | protectedSettings.configurationDataUrlSasToken |字符串 |指定用于访问 configurationData.url 所定义的 URL 的 SAS 令牌。 此属性已加密。 |
 
+## <a name="default-configuration-script"></a>默认配置脚本
+
+有关这些值的详细信息，请参阅文档页[本地配置管理器基本设置](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#basic-settings)。
+使用 DSC 扩展默认配置脚本只能配置下表中的 LCM 属性。
+
+| 属性名称 | Type | 说明 |
+| --- | --- | --- |
+| settings.configurationArguments.RegistrationKey |securestring |必需的属性。 指定节点用于注册到 Azure 自动化服务的密钥作为 PowerShell 凭据对象的密码。 此值可以使用 listkeys 方法针对自动化帐户自动发现，并应作为受保护设置加以保护。 |
+| settings.configurationArguments.RegistrationUrl |字符串 |必需的属性。 指定节点将尝试注册的 Azure 自动化终结点的 URL。 此值可以使用 reference 方法针对自动化帐户自动发现。 |
+| settings.configurationArguments.NodeConfigurationName |字符串 |必需的属性。 在 Azure 自动化帐户中指定要分配给节点的节点配置。 |
+| settings.configurationArguments.ConfigurationMode |字符串 |指定本地配置管理器的模式。 有效选项包括“ApplyOnly”、“ApplyandMonitor”和“ApplyandAutoCorrect”。  默认值为“ApplyandMonitor”。 |
+| settings.configurationArguments.RefreshFrequencyMins | uint32 | 指定 LCM 将尝试向自动化帐户查询更新的频率。  默认值为 30。  最小值为 15。 |
+| settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | 指定 LCM 将验证当前配置的频率。  默认值为 15。  最小值为 15。 |
+| settings.configurationArguments.RebootNodeIfNeeded | 布尔值 | 指定在 DSC 操作请求时是否可能会自动重新启动节点。  默认值为 false。 |
+| settings.configurationArguments.ActionAfterReboot | 字符串 | 指定在应用配置时重新启动后会发生什么情况。 有效选项为“ContinueConfiguration”和“StopConfiguration”。 默认值为“ContinueConfiguration”。 |
+| settings.configurationArguments.AllowModuleOverwrite | 布尔值 | 指定 LCM 是否会覆盖节点上的现有模块。  默认值为 false。 |
+
 ## <a name="settings-vs-protectedsettings"></a>Settings 与ProtectedSettings
+
 所有设置保存在 VM 上的 settings 文本文件中。
 “settings”下面的属性是公共属性，因为它们未在 settings 文本文件中加密。
 “protectedSettings”下面的属性已使用证书加密，因此不会在 VM 上以明文显示在此文件中。
@@ -171,10 +215,39 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 ```
 
 ## <a name="example"></a>示例
-以下示例摘自 [DSC 扩展处理程序概述](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)网页中的“入门”部分。
-此示例使用 Resource Manager 模板而不是cmdlet 来部署该扩展。 保存“IisInstall.ps1”配置，将它放在 .ZIP 文件中，并将该文件上传到可访问的 URL 中。 此示例使用 Azure Blob 存储，但可以从任意位置下载 .ZIP 文件。
 
-在 Azure Resource Manager 模板中，以下代码指示 VM 下载正确的文件并运行适当的 PowerShell 函数：
+下面的示例是 DSC 扩展的默认行为，其目的是为本地配置管理器提供元数据设置，并注册到 Azure 自动化 DSC 服务。
+配置参数是必需的，并将传递给默认配置脚本以设置 LCM 元数据。
+
+```json
+"settings": {
+    "configurationArguments": {
+        {
+            "Name": "RegistrationKey",
+            "Value": {
+                "UserName": "PLACEHOLDER_DONOTUSE",
+                "Password": "PrivateSettingsRef:registrationKeyPrivate"
+            },
+        },
+        "RegistrationUrl" : "[parameters('registrationUrl1')]",
+        "NodeConfigurationName" : "nodeConfigurationNameValue1"
+  }
+},
+"protectedSettings": {
+    "Items": {
+                "registrationKeyPrivate": "[parameters('registrationKey1']"
+            }
+}
+```
+
+## <a name="example-using-configuration-script-in-azure-storage"></a>在 Azure 存储中使用配置脚本的示例
+
+以下示例摘自 [DSC 扩展处理程序概述](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)网页中的“入门”部分。
+此示例使用 Resource Manager 模板而不是cmdlet 来部署该扩展。
+保存“IisInstall.ps1”配置，将它放在 .ZIP 文件中，并将该文件上传到可访问的 URL 中。
+此示例使用 Azure Blob 存储，但可以从任意位置下载 .ZIP 文件。
+
+在 Azure 资源管理器模板中，以下代码指示 VM 下载正确的文件并运行适当的 PowerShell 函数：
 
 ```json
 "settings": {
@@ -183,7 +256,6 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
         "script": "IisInstall.ps1",
         "function": "IISInstall"
     }
-    } 
 },
 "protectedSettings": {
     "configurationUrlSasToken": "odLPL/U1p9lvcnp..."
@@ -191,6 +263,7 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 ```
 
 ## <a name="updating-from-the-previous-format"></a>从以前的格式进行更新
+
 以前格式（包含 ModulesUrl、ConfigurationFunction、SasToken 或 Properties 等公共属性）中的所有设置会自动调整为当前格式，并按以前的相同方式运行。
 
 上述 settings 架构如下所示：
@@ -206,7 +279,7 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
         "ParameterToConfigurationFunction2":  "Value2",
         "ParameterOfTypePSCredential1": {
             "UserName": "UsernameValue1",
-            "Password": "PrivateSettingsRef:Key1" 
+            "Password": "PrivateSettingsRef:Key1"
         },
         "ParameterOfTypePSCredential2": {
             "UserName": "UsernameValue2",
@@ -214,7 +287,7 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
         }
     }
 },
-"protectedSettings": { 
+"protectedSettings": {
     "Items": {
         "Key1": "PasswordValue1",
         "Key2": "PasswordValue2"
@@ -240,32 +313,44 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 | protectedSettings.configurationDataUrlSasToken |protectedSettings.DataBlobUri 中的 SAS 令牌 |
 
 ## <a name="troubleshooting---error-code-1100"></a>故障排除 - 错误代码 1100
+
 错误代码 1100 指示 DSC 扩展中的用户输入有问题。
 这些错误的文本是可变的，将来可能会更改。
 下面是可能会遇到的一些错误及其解决方法。
 
 ### <a name="invalid-values"></a>无效值
-“Privacy.dataCollection 为‘{0}’。 可能的值只有 ''、'Enable' 和 'Disable'”。“WmfVersion 为‘{0}’。 唯一的可能值为 ... 和 'latest'”
+
+“Privacy.dataCollection 为‘{0}’。
+可能的值只有 ''、'Enable' 和 'Disable'”。
+“WmfVersion 为 ‘{0}’。
+唯一的可能值为 ... 和 'latest'”。
 
 问题：不允许使用提供的值。
 
-解决方法：将无效值更改为有效值。 请参阅“详细信息”部分中的表格。
+解决方法：将无效值更改为有效值。
+请参阅“详细信息”部分中的表格。
 
 ### <a name="invalid-url"></a>无效的 URL
+
 “ConfigurationData.url 为‘{0}’。 这不是有效的 URL”。“DataBlobUri 为‘{0}’。 这不是有效的 URL”。“Configuration.url 为‘{0}’。 这不是有效的 URL”
 
 问题：提供的 URL 无效。
 
-解决方法：检查提供的所有 URL。 确保所有 URL 都解析为扩展可在远程计算机上访问的有效位置。
+解决方法：检查提供的所有 URL。
+确保所有 URL 都解析为扩展可在远程计算机上访问的有效位置。
 
 ### <a name="invalid-configurationargument-type"></a>无效的 ConfigurationArgument 类型
+
 “无效的 configurationArguments 类型 {0}”
 
-问题：ConfigurationArguments 属性无法解析为哈希表对象。 
+问题：ConfigurationArguments 属性无法解析为哈希表对象。
 
-解决方法：将 ConfigurationArguments 属性设置为哈希表。 遵循上述示例中提供的格式。 请注意引号、逗号和括号。
+解决方法：将 ConfigurationArguments 属性设置为哈希表。
+遵循上述示例中提供的格式。
+请注意引号、逗号和括号。
 
 ### <a name="duplicate-configurationarguments"></a>重复的 ConfigurationArguments
+
 “在公共和受保护的 configurationArguments 中找到重复的参数‘{0}’”
 
 问题：公共设置中的 ConfigurationArguments 和受保护设置中的 ConfigurationArguments 包含同名属性。
@@ -287,17 +372,17 @@ VMSS 节点具有“properties”节，其中包含“VirtualMachineProfile”�
 
 问题：定义的属性需要另一个缺少的属性。
 
-解决方案： 
+解决方案：
 
-* 提供缺少的属性。
-* 删除需要缺失属性的属性。
+- 提供缺少的属性。
+- 删除需要缺失属性的属性。
 
 ## <a name="next-steps"></a>后续步骤
+
 在[将虚拟机规模集与 Azure DSC 扩展配合使用](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md)中了解 DSC 和虚拟机规模集。
 
-在 [DSC 的安全凭据管理](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中了解更多详细信息。 
+在 [DSC 的安全凭据管理](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中了解更多详细信息。
 
-有关 Azure DSC 扩展处理程序的详细信息，请参阅 [Azure Desired State Configuration 扩展处理程序简介](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
+有关 Azure DSC 扩展处理程序的详细信息，请参阅 [Azure Desired State Configuration 扩展处理程序简介](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-有关 PowerShell DSC 的详细信息，请[访问 PowerShell 文档中心](https://msdn.microsoft.com/powershell/dsc/overview)。 
-
+有关 PowerShell DSC 的详细信息，请[访问 PowerShell 文档中心](https://msdn.microsoft.com/powershell/dsc/overview)。

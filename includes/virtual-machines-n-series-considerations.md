@@ -4,9 +4,7 @@
 
 * N 系列 VM 只能按 Resource Manager 部署模型部署。
 
-* 使用 Azure 门户创建 N 系列的 VM 时，请在“基本信息”边栏选项卡中选择“HDD”作为“VM 磁盘类型”。 若要选择可用的 N 系列大小，请在“大小”边栏选项卡中单击“全部查看”。
-
-* NC 和 NV VM 不支持 Azure 高级存储所支持的 VM 磁盘。
+* N 系列的 VM 在对其磁盘支持的 Azure 存储类型方面有所不同。 NC 和 NV VM 仅支持标准磁盘存储 (HDD) 所支持的 VM 磁盘。 NCv2、ND 和 NCv3（预览版）VM 仅支持高级磁盘存储 (SSD) 所支持的 VM 磁盘。
 
 * 如果需要部署的 N 系列 VM 较多，请考虑使用即用即付订阅或其他购买选项。 如果使用的是 [Azure 免费帐户](https://azure.microsoft.com/free/)，则仅可以使用有限数量的 Azure 计算核心。
 

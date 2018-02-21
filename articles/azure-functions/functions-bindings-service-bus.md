@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: 2df003d47291570b31e1091f34994e4023000981
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: ed26abdb76083b9a18f79276ebf4294b4b6967b1
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -468,6 +468,13 @@ public static string Run([HttpTrigger] dynamic input, TraceWriter log)
 若要在 C# 或 C# 脚本函数中创建多条消息，可以使用 `ICollector<T>` 或 `IAsyncCollector<T>`。 调用 `Add` 方法时创建了一条消息。
 
 在 JavaScript 中通过 `context.bindings.<name>` 访问队列或主题。 `<name>` 是在 *function.json* 的 `name` 属性中指定的值。 可以向 `context.binding.<name>` 分配一个字符串、字节数组或 Javascript 对象（反序列化为 JSON）。
+
+## <a name="exceptions-and-return-codes"></a>异常和返回代码
+
+| 绑定 | 引用 |
+|---|---|
+| 服务总线 | [服务总线错误代码](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
+| 服务总线 | [服务总线限制](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
 
 ## <a name="next-steps"></a>后续步骤
 

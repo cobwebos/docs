@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: bef7f6ef13f6d31c16d40deb46f168ae52a9e61b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b2e9324cbe7ae683a472ecc0ee93329773886f88
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>使用 Azure CLI 创建和管理 Linux VM
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机的基本部署项目，例如选择 VM 大小、选择 VM 映像和部署 VM。 你将学习如何：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机的基本部署项目，例如选择 VM 大小、选择 VM 映像和部署 VM。 学习如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 VM
@@ -93,7 +93,7 @@ exit
 
 Azure 应用商店包括许多可用于创建 VM 的映像。 在之前的步骤中，使用 Ubuntu 映像创建了虚拟机。 在此步骤中，Azure CLI 用于在应用商店中搜索 CentOS 映像，此映像稍后用于部署第二个虚拟机。  
 
-若要查看最常用的映像列表，请使用 [az vm image list](/cli/azure/vm/image#list) 命令。
+若要查看最常用的映像列表，请使用 [az vm image list](/cli/azure/vm/image#az_vm_image_list) 命令。
 
 ```azurecli-interactive 
 az vm image list --output table
@@ -150,7 +150,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 下表将大小分类成了多个用例。  
 
-| 类型                     | 大小           |    说明       |
+| Type                     | 大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [常规用途](sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
 | [计算优化](sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
@@ -162,7 +162,7 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 ### <a name="find-available-vm-sizes"></a>查找可用的 VM 大小
 
-若要查看在特定区域可用的 VM 大小的列表，请使用 [az vm list-sizes](/cli/azure/vm#list-sizes) 命令。 
+若要查看在特定区域可用的 VM 大小的列表，请使用 [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes) 命令。 
 
 ```azurecli-interactive 
 az vm list-sizes --location eastus --output table
@@ -193,7 +193,7 @@ az vm list-sizes --location eastus --output table
 
 ### <a name="create-vm-with-specific-size"></a>创建具有特定大小的 VM
 
-在前面的 VM 创建示例中未提供大小，因此会使用默认大小。 可以在创建时使用 [az vm create](/cli/azure/vm#create) 和 `--size` 参数选择 VM 大小。 
+在前面的 VM 创建示例中未提供大小，因此会使用默认大小。 可以在创建时使用 [az vm create](/cli/azure/vm#az_vm_create) 和 `--size` 参数选择 VM 大小。 
 
 ```azurecli-interactive 
 az vm create \
@@ -206,24 +206,24 @@ az vm create \
 
 ### <a name="resize-a-vm"></a>调整 VM 的大小
 
-部署 VM 后，可调整其大小以增加或减少资源分配。 可通过 [az vm show](/cli/azure/vm#show) 查看 VM 的当前大小：
+部署 VM 后，可调整其大小以增加或减少资源分配。 可通过 [az vm show](/cli/azure/vm#az_vm_show) 查看 VM 的当前大小：
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
 ```
 
-调整 VM 大小之前，请检查所需的大小在当前 Azure 群集上是否可用。 [az vm list-vm-resize-options](/cli/azure/vm#list-vm-resize-options) 命令返回大小列表。 
+调整 VM 大小之前，请检查所需的大小在当前 Azure 群集上是否可用。 [az vm list-vm-resize-options](/cli/azure/vm#az_vm_list_vm_resize_options) 命令返回大小列表。 
 
 ```azurecli-interactive 
 az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
 ```
-如果所需大小可用，则可从开机状态调整 VM 大小，但需在此操作期间重启 VM。 使用 [az vm resize]( /cli/azure/vm#resize) 命令执行大小调整。
+如果所需大小可用，则可从开机状态调整 VM 大小，但需在此操作期间重启 VM。 使用 [az vm resize]( /cli/azure/vm#az_vm_resize) 命令执行大小调整。
 
 ```azurecli-interactive 
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
 ```
 
-如果所需大小在当前群集上不可用，则需解除分配 VM，才能执行调整大小操作。 使用 [az vm deallocate]( /cli/azure/vm#deallocate) 命令停止和解除分配 VM。 请注意，重新打开 VM 的电源时，可能会删除临时磁盘上的所有数据。 除非使用静态 IP 地址，否则公共 IP 地址也会更改。 
+如果所需大小在当前群集上不可用，则需解除分配 VM，才能执行调整大小操作。 使用 [az vm deallocate]( /cli/azure/vm#az_vm_deallocate) 命令停止和解除分配 VM。 请注意，重新打开 VM 的电源时，可能会删除临时磁盘上的所有数据。 除非使用静态 IP 地址，否则公共 IP 地址也会更改。 
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupVM --name myVM
@@ -259,7 +259,7 @@ Azure VM 可能会处于多种电源状态之一。 从虚拟机监控程序的�
 
 ### <a name="find-power-state"></a>查找电源状态
 
-若要检索特定 VM 的状态，请使用 [az vm get instance-view](/cli/azure/vm#get-instance-view) 命令。 请确保为虚拟机和资源组指定有效的名称。 
+若要检索特定 VM 的状态，请使用 [az vm get instance-view](/cli/azure/vm#az_vm_get_instance_view) 命令。 请确保为虚拟机和资源组指定有效的名称。 
 
 ```azurecli-interactive 
 az vm get-instance-view \

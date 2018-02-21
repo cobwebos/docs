@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: spelluru
-ms.openlocfilehash: 60a4afdb8a78cffdc7eb1ee82c7daf3b06e5fe15
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 814ef63f317c2c0c9081579c16a12a908c05ff74
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>如何计划 Azure SSIS 集成运行时的启动和停止 
 运行 Azure SSIS (SQL Server Integration Services) 集成运行时 (IR) 会产生相关的费用。 因此我们希望，只有需要在 Azure 中运行 SSIS 包时才运行 IR，在不需要该包时停止 IR。 可以使用数据工厂 UI 或 Azure PowerShell 来[手动启动或停止 Azure SSIS IR](manage-azure-ssis-integration-runtime.md)。 本文介绍如何使用 Azure 自动化和 Azure 数据工厂来计划 Azure SSIS 集成运行时 (IR) 的启动和停止。 下面是本文所述的概要步骤：
@@ -44,8 +44,9 @@ ms.lasthandoff: 02/01/2018
 ### <a name="create-an-azure-automation-account"></a>创建 Azure 自动化帐户
 如果你没有 Azure 自动化帐户，请遵照此步骤中的说明创建一个。 有关详细步骤，请参阅[创建 Azure 自动化帐户](../automation/automation-quickstart-create-account.md)。 在执行此步骤的过程中，创建一个 **Azure 运行方式**帐户（Azure Active Directory 中的服务主体），并将其添加到 Azure 订阅的**参与者**角色。 请确保该订阅包含 Azure SSIS IR 所在的数据工厂。 Azure 自动化使用此帐户在 Azure 资源管理器中进行身份验证，并对资源执行操作。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。    
-2. 在左侧菜单中选择“新建”，然后依次选择“监视 + 管理”、“自动化”。 
+1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
+2. 登录到 [Azure 门户](https://portal.azure.com/)。    
+3. 在左侧菜单中选择“新建”，然后依次选择“监视 + 管理”、“自动化”。 
 
     ![“新建”->“监视 + 管理”->“自动化”](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
 2. 在“添加自动化帐户”窗口中执行以下步骤： 

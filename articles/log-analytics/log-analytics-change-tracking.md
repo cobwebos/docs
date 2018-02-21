@@ -3,7 +3,7 @@ title: "使用 Azure Log Analytics 跟踪更改 | Microsoft 文档"
 description: "Log Analytics 中的更改跟踪解决方案可帮助用户确定在环境中发生的软件和 Windows 服务更改。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: f8040d5d-3c89-4f0c-8520-751c00251cb7
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
-ms.author: banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81cc7f78ef777e02b195422a81d9a9f15cb63564
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: ede3519b0b61ed20d85ea141dc6dee2505420448
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的软件更改
 
@@ -40,8 +40,8 @@ ms.lasthandoff: 12/13/2017
 
 1. 在 OMS 门户中，单击“设置”（齿轮符号）。
 2. 在“设置”页上，依次单击“数据”和“Linux 文件跟踪”。
-3. 在“Linux 文件更改跟踪”下，键入整个路径（包括要跟踪的文件的文件名），然后单击“添加”符号。 例如："/etc/* .conf"
-4. 单击“保存” 。  
+3. 在“Linux 文件更改跟踪”下，键入整个路径（包括要跟踪的文件的文件名），然后单击“添加”符号。 例如："/etc/*.conf"
+4. 单击“ **保存**”。  
 
 > [!NOTE]
 > Linux 文件跟踪具有一些附加功能，包括目录跟踪、通过目录递归和通配符跟踪。
@@ -52,7 +52,7 @@ ms.lasthandoff: 12/13/2017
 1. 在 OMS 门户中，单击“设置”（齿轮符号）。
 2. 在“设置”页上，依次单击“数据”和“Windows 文件跟踪”。
 3. 在“Windows 文件更改跟踪”下，键入整个路径（包括要跟踪的文件的文件名），并单击“添加”符号。 例如：C:\Program Files (x86)\Internet Explorer\iexplore.exe 或 C:\Windows\System32\drivers\etc\hosts。
-4. 单击“保存” 。  
+4. 单击“ **保存**”。  
    ![Windows 文件更改跟踪](./media/log-analytics-change-tracking/windows-file-change-tracking.png)
 
 ### <a name="configure-windows-registry-keys-to-track"></a>配置要跟踪的 Windows 注册表项
@@ -61,7 +61,7 @@ ms.lasthandoff: 12/13/2017
 1. 在 OMS 门户中，单击“设置”（齿轮符号）。
 2. 在“设置”页上，依次单击“数据”和“Windows 注册表跟踪”。
 3. 在“Windows 注册表更改跟踪”下，键入要跟踪的完整注册表项，并单击“添加”符号。
-4. 单击“保存” 。  
+4. 单击“ **保存**”。  
    ![Windows 注册表更改跟踪](./media/log-analytics-change-tracking/windows-registry-change-tracking.png)
 
 ### <a name="explanation-of-linux-file-collection-properties"></a>Linux 文件集合属性的说明
@@ -105,7 +105,7 @@ ms.lasthandoff: 12/13/2017
 
 下表显示“更改跟踪”的数据收集方法和其他数据收集方式的详细信息。
 
-| 平台 | 直接代理 | Operations Manager 代理 | Linux 代理 | Azure 存储空间 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
+| 平台 | 直接代理 | Operations Manager 代理 | Linux 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Windows 和 Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | 耗时 5 分钟到 50 分钟，具体取决于更改类型。 有关详细信息，请查阅下表。 |
 
@@ -183,7 +183,7 @@ Log Analytics 通过“更改跟踪”解决方案执行 Windows 注册表监视
 ### <a name="to-view-changes-for-any-change-type"></a>查看任何更改类型的更改
 1. 在“**概述**”页上单击“**更改跟踪**”磁贴。
 2. 在“**更改跟踪**”仪表板上，查看其中一个更改类型边栏选项卡中的摘要信息，并在“**日志搜索**”页中单击一条信息，以查看其详细信息。
-3. 在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 还可以按方面进行筛选以缩减搜索结果。
+3. 在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 也可以按方面进行筛选以缩减搜索结果。
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](log-analytics-log-searches.md)可查看详细的更改跟踪数据。

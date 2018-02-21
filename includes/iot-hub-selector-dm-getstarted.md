@@ -3,6 +3,7 @@
 > * [设备：Node.js 服务：C#](../articles/iot-hub/iot-hub-csharp-node-device-management-get-started.md)
 > * [设备：C# 服务：C#](../articles/iot-hub/iot-hub-csharp-csharp-device-management-get-started.md)
 > * [设备：Java 服务：Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
+> * [设备：Python 服务：Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)
 
 后端应用可以使用 Azure IoT 中心基元（例如[设备孪生][lnk-devtwin]和[直接方法][lnk-c2dmethod]）远程启动和监视设备上的设备管理操作。 本教程说明后端应用和设备应用如何协同工作，以便使用 IoT 中心发起远程设备重启操作并对其进行监视。
 

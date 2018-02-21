@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9925b29a60fc46e9ecc775ca132bd2365f64b15
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: c936518c3cc431bb74dcdfe7f967687d3dc71e42
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>使用 Azure CLI 为虚拟机配置专用 IP 地址
 
@@ -41,9 +41,9 @@ ms.lasthandoff: 11/17/2017
 
 若要在名为 *TestVNet* 的 VNet 的 *FrontEnd* 子网中使用静态专用 IP *192.168.1.101* 创建名为 *DNS01* 的 VM，请完成以下步骤：
 
-1. 如果尚未这样做，请安装并配置最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#login) 登录 Azure 帐户。 
+1. 如果尚未这样做，请安装并配置最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/#az_login) 登录 Azure 帐户。 
 
-2. 使用 [az network public-ip create](/cli/azure/network/public-ip#create) 命令，为该 VM 创建公共 IP。 在输出后显示的列表说明了所用的参数。
+2. 使用 [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) 命令，为该 VM 创建公共 IP。 在输出后显示的列表说明了所用的参数。
 
     > [!NOTE]
     > 可能想要或需要根据环境对此步骤和后续步骤中的变量使用不同的值。
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/17/2017
    * `--name`：公共 IP 的名称。
    * `--location`：要在其中创建公共 IP 的 Azure 区域。
 
-3. 运行 [az network nic create](/cli/azure/network/nic#create) 命令，以创建具有静态专用 IP 的 NIC。 在输出后显示的列表说明了所用的参数。 
+3. 运行 [az network nic create](/cli/azure/network/nic#az_network_nic_create) 命令，以创建具有静态专用 IP 的 NIC。 在输出后显示的列表说明了所用的参数。 
    
     ```azurecli
     az network nic create \
@@ -126,7 +126,7 @@ ms.lasthandoff: 11/17/2017
     * `--vnet-name`：要在其中创建 NIC 的 VNet 的名称。
     * `--subnet`：要在其中创建 NIC 的子网的名称。
 
-4. 运行 [azure vm create](/cli/azure/vm/nic#create) 命令，以使用前面创建的公共 IP 和 NIC 创建 VM。 在输出后显示的列表说明了所用的参数。
+4. 运行 [azure vm create](/cli/azure/vm/nic#az_vm_nic_create) 命令，以使用前面创建的公共 IP 和 NIC 创建 VM。 在输出后显示的列表说明了所用的参数。
    
     ```azurecli
     az vm create \
@@ -154,7 +154,7 @@ ms.lasthandoff: 11/17/2017
     }
     ```
    
-   基本 [az vm create](/cli/azure/vm#create) 参数以外的参数。
+   基本 [az vm create](/cli/azure/vm#az_vm_create) 参数以外的参数。
 
    * `--nics`：VM 所附加到的 NIC 的名称。
    

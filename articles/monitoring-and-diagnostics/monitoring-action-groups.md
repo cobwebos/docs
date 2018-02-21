@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: ancav
-ms.openlocfilehash: 05775415e210333cf63565e7b5b554d014f6ba23
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 9f7f9dcc473e6925000ebe76a6592779c228a9af
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
@@ -58,10 +58,10 @@ ms.lasthandoff: 12/18/2017
 
     b. **操作类型**：选择短信、电子邮件、Webhook、Azure 应用、ITSM 或自动化 Runbook。
 
-    c. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。 
+    c. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。
 
    > [!NOTE]
-   > ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../log-analytics/log-analytics-itsmc-overview.md)。 ITSM 操作当前仅适用于活动日志警报。 对于其他警报类型，此操作当前不执行任何操作。
+   > ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../log-analytics/log-analytics-itsmc-overview.md)。 
 
 8. 选择“确定”创建操作组。
 
@@ -75,6 +75,6 @@ ms.lasthandoff: 12/18/2017
 * 详细了解[短信警报行为](monitoring-sms-alert-behavior.md)。  
 * 获取[对活动日志警报 webhook 架构的了解](monitoring-activity-log-alerts-webhook.md)。  
 * 了解有关 [ITSM 连接器](../log-analytics/log-analytics-itsmc-overview.md)的详细信息
-* 详细了解有关警报的[速率限制](monitoring-alerts-rate-limiting.md)。 
+* 详细了解有关警报的[速率限制](monitoring-alerts-rate-limiting.md)。
 * 获取[活动日志警报概述](monitoring-overview-alerts.md)，了解如何接收警报。  
 * 了解如何[配置每次发布服务运行状况通知时的警报](monitoring-activity-log-alerts-on-service-notifications.md)。

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
+ms.date: 02/09/2018
 ms.author: yurid
-ms.openlocfilehash: 15257e6ee8744b11fd3965e365cf4fb0e1d429ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a89048b0d49d5b3715931285accafda2406ab969
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Azure 安全中心安全攻略（预览版）
 本文档介绍如何使用 Azure 安全中心安全攻略来响应安全相关问题。
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 1.  打开“安全中心”仪表板。
 2.  在左窗格中的“自动化和业务流程”部分单击“攻略(预览版)”。
 
-    ![逻辑应用](./media/security-center-playbooks/security-center-playbooks-fig1.png)
+    ![逻辑应用](./media/security-center-playbooks/security-center-playbooks-fig17.png)
  
 3. 在“安全中心 - 攻略(预览版)”页中，单击“添加”按钮。
 

@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: dea6b137fb12467a881afaa9a3e6985b584f5559
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: c06270c75ae16ba516e71a5dde9db4a7277d7e38
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
@@ -34,7 +34,7 @@ Linux 应用服务支持大量内置映像，以便提高开发人员工作效�
 |---|---|
 | Node.js | 4.4, 4.5, 6.2, 6.6, 6.9-6.11, 8.0, 8.1 |
 | PHP | 5.6, 7.0 |
-| .NET Core | 1.0, 1.1 |
+| .NET Core | 1.0, 1.1, 2.0 |
 | Ruby | 2.3 |
 
 ## <a name="deployments"></a>部署

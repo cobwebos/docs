@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: aa81f9d163da8d9236470c0b797f5430163ed39d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 458ad702b510c0fd01ab63541b2026b8a9a06e91
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 Xero 复制数据
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 Xero 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [V1 中的复制活动](v1/data-factory-data-movement-activities.md)。
 
 > [!IMPORTANT]
 > 此连接器目前处于 Beta 版本。 可以进行试用并提供反馈。 请勿在生产环境中使用该版本。
@@ -32,6 +32,11 @@ ms.lasthandoff: 01/19/2018
 ## <a name="supported-capabilities"></a>支持的功能
 
 可以将数据从 Xero 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+
+具体而言，此 Xero 连接器支持：
+
+- Xero [专用应用程序](https://developer.xero.com/documentation/getting-started/api-application-types)，而不是公共应用程序。
+- 除“报告”外的所有 Xero 表（API 终结点）。 
 
 Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
 
@@ -48,9 +53,9 @@ Xero 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Xero** | 是 |
-| host | Xero 服务器的终结点。 （即，api.xero.com）  | 是 |
-| consumerKey | 与 Xero 应用程序关联的使用者密钥。 可以选择将此字段标记为 SecureString 以将其安全地存储在数据工厂中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取 - 从[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息。 | 是 |
-| privateKey | 为 Xero 专用应用程序生成的 .pem 文件中的私钥。 包括 .pem 文件中的所有文本，包括 Unix 行尾(\n)。 可以选择将此字段标记为 SecureString 以将其安全地存储在数据工厂中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取 - 从[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息。 | 是 |
+| host | Xero 服务器的终结点 (`api.xero.com`)。  | 是 |
+| consumerKey | 与 Xero 应用程序关联的使用者密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| privateKey | 为 Xero 专用应用程序生成的 .pem 文件中的私钥，请参阅[创建公钥/私钥对](https://developer.xero.com/documentation/api-guides/create-publicprivate-key)。 包括 .pem 文件中的所有文本，包括 Unix 行尾(\n)，请参见下面的示例。<br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
 | useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
 | usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
@@ -75,6 +80,14 @@ Xero 链接服务支持以下属性：
         }
     }
 }
+```
+
+**示例私钥值：**
+
+包括 .pem 文件中的所有文本，包括 Unix 行尾(\n)。
+
+```
+"-----BEGIN RSA PRIVATE KEY-----\nMII***************************************************P\nbu****************************************************s\nU/****************************************************B\nA*****************************************************W\njH****************************************************e\nsx*****************************************************l\nq******************************************************X\nh*****************************************************i\nd*****************************************************s\nA*****************************************************dsfb\nN*****************************************************M\np*****************************************************Ly\nK*****************************************************Y=\n-----END RSA PRIVATE KEY-----"
 ```
 
 ## <a name="dataset-properties"></a>数据集属性
@@ -102,7 +115,7 @@ Xero 链接服务支持以下属性：
 
 有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 Xero 数据源支持的属性列表。
 
-### <a name="xerosource-as-source"></a>以 XeroSource 作为源
+### <a name="xero-as-source"></a>以 Xero 作为源
 
 要从 Xero 复制数据，请将复制活动中的源类型设置为“XeroSource”。 复制活动**源**部分支持以下属性：
 
@@ -142,6 +155,60 @@ Xero 链接服务支持以下属性：
     }
 ]
 ```
+
+指定 Xero 查询时，请注意以下事项：
+
+- 包含复杂项的表将拆分为多个表。 例如，银行事务具有复杂数据结构“LineItems”，因此银行事务数据将映射到表 `Bank_Transaction` 和 `Bank_Transaction_Line_Items`，并使用 `Bank_Transaction_ID` 作为外键将这些表链接在一起。
+
+- 可通过两个架构使用 Xero 数据：`Minimal`（默认值）和 `Complete`。 完整架构包含先决条件调用表，这些表在进行所需的查询之前需要其他数据（例如 ID 列）。
+
+以下表的最小架构和完整架构具有相同信息。 若要减少 API 调用数，请使用最小架构（默认值）。
+
+- Bank_Transactions
+- Contact_Groups 
+- 联系人 
+- Contacts_Sales_Tracking_Categories 
+- Contacts_Phones 
+- Contacts_Addresses 
+- Contacts_Purchases_Tracking_Categories 
+- Credit_Notes 
+- Credit_Notes_Allocations 
+- Expense_Claims 
+- Expense_Claim_Validation_Errors
+- 发票 
+- Invoices_Credit_Notes
+- Invoices_Prepayments 
+- Invoices_Overpayments 
+- Manual_Journals 
+- Overpayments 
+- Overpayments_Allocations 
+- Prepayments 
+- Prepayments_Allocations 
+- Receipts 
+- Receipt_Validation_Errors 
+- Tracking_Categories
+
+以下表只能使用完整架构查询：
+
+- Complete.Bank_Transaction_Line_Items 
+- Complete.Bank_Transaction_Line_Item_Tracking 
+- Complete.Contact_Group_Contacts 
+- Complete.Contacts_Contact_Persons 
+- Complete.Credit_Note_Line_Items 
+- Complete.Credit_Notes_Line_Items_Tracking 
+- Complete.Expense_Claim_Payments 
+- Complete.Expense_Claim_Receipts 
+- Complete.Invoice_Line_Items 
+- Complete.Invoices_Line_Items_Tracking
+- Complete.Manual_Journal_Lines 
+- Complete.Manual_Journal_Line_Tracking 
+- Complete.Overpayment_Line_Items 
+- Complete.Overpayment_Line_Items_Tracking 
+- Complete.Prepayment_Line_Items 
+- Complete.Prepayment_Line_Item_Tracking 
+- Complete.Receipt_Line_Items 
+- Complete.Receipt_Line_Item_Tracking 
+- Complete.Tracking_Category_Options
 
 ## <a name="next-steps"></a>后续步骤
 有关复制活动支持的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

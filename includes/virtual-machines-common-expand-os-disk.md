@@ -8,6 +8,9 @@
 > Azure 具有用于创建和处理资源的两个不同的部署模型：Resource Manager 和经典。 本文介绍如何使用 Resource Manager 模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 > 
 > 
+> [!WARNING]
+> 调整 Azure 虚拟机的 OS 磁盘大小会导致其重启。
+>
 
 ## <a name="resize-the-os-drive"></a>调整 OS 驱动器的大小
 在本文中，我们将使用 [Azure Powershell](/powershell/azureps-cmdlets-docs) 的 Resource Manager 模块，完成调整 OS 驱动器大小的任务。 我们将演示如何为非托管磁盘和托管磁盘调整 OS 驱动器大小，因为调整磁盘大小的方法因这两种磁盘类型而异。

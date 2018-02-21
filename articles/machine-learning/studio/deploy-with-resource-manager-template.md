@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Resource Manager 部署机器学习工作区 | Microsoft 文档"
-description: "如何使用 Azure Resource Manager 模板部署 Azure 机器学习工作区"
+title: "使用 Azure 资源管理器部署机器学习工作区 | Microsoft 文档"
+description: "如何使用 Azure 资源管理器模板部署 Azure 机器学习工作区"
 services: machine-learning
 documentationcenter: 
 author: ahgyger
@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/15/2017
+ms.date: 2/05/2018
 ms.author: ahgyger
-ms.openlocfilehash: e3cbcb8118aa05e554b2493506280d0e24706059
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6189cd2dce2be8c87255dedecd4493767e857031
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>使用 Azure Resource Manager 部署机器学习工作区
+# <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>使用 Azure 资源管理器部署机器学习工作区
 ## <a name="introduction"></a>介绍
-通过提供部署带有验证和重试机制的互连组件的可扩展方法，使用 Azure Resource Manager 部署模板可节约时间。 例如，为了设置 Azure 机器学习工作区，需要先配置 Azure 存储帐户，然后部署工作区。 想象为数百个工作区手动执行此操作的样子。 更轻松的替代方法是使用 Azure Resource Manager 模板部署 Azure 机器学习工作区及其所有依赖项。 本文将引导逐步完成此过程。 有关 Azure Resource Manager 的整体概述，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md)。
+通过提供部署带有验证和重试机制的互连组件的可扩展方法，使用 Azure 资源管理器部署模板可节约时间。 例如，为了设置 Azure 机器学习工作区，需要先配置 Azure 存储帐户，然后部署工作区。 想象为数百个工作区手动执行此操作的样子。 更轻松的替代方法是使用 Azure 资源管理器模板部署 Azure 机器学习工作区及其所有依赖项。 本文将引导逐步完成此过程。 有关 Azure 资源管理器的整体概述，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>分布说明：创建机器学习工作区
 我们将创建 Azure 资源组，然后使用 Resource Manager 模板部署新 Azure 存储帐户和新 Azure 机器学习工作区。 部署完成后，我们将打印有关所创建工作区的重要信息（主密钥、workspaceID 和该工作区的 URL）。
 
-### <a name="create-an-azure-resource-manager-template"></a>创建 Azure Resource Manager 模板
+### <a name="create-an-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 机器学习工作区需要 Azure 存储帐户才能存储链接的数据集。
 下面的模板使用资源组名称生成存储帐户名称和工作区名称。  创建工作区时，它还将存储帐户名称用作属性。
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="deploy-the-resource-group-based-on-the-template"></a>根据模板部署资源组
 * 打开 PowerShell
-* 为 Azure Resource Manager 和 Azure 服务管理安装模块  
+* 为 Azure 资源管理器和 Azure 服务管理安装模块  
 
 ```
 # Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
@@ -139,9 +139,9 @@ Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |
 预配工作区后，还可使用[用于 Azure 机器学习的 PowerShell 模块](http://aka.ms/amlps)自动化许多 Azure 机器学习工作室任务。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解有关[编写 Azure Resource Manager 模板](../../azure-resource-manager/resource-group-authoring-templates.md)的详细信息 
+* 了解有关[编写 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)的详细信息 
 * 请查看 [Azure 快速启动模板存储库](https://github.com/Azure/azure-quickstart-templates)。 
-* 观看有关 [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39) 的视频。 
+* 观看有关 [Azure 资源管理器](https://channel9.msdn.com/Events/Ignite/2015/C9-39)的视频。 
 
 <!--Image references-->
 [1]: ./media/deploy-with-resource-manager-template/azuresubscription.png

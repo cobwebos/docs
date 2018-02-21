@@ -10,22 +10,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 02/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 145c2bc0556010389e78e523fde6fd4b9063f930
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 42643c73368597d1caea4aba12bc7b64b7440970
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="store-credential-in-azure-key-vault"></a>在 Azure Key Vault 中存储凭据
 
 可以在 [Azure Key Vault](../key-vault/key-vault-whatis.md) 中存储数据存储的凭据。 执行使用数据存储的活动时，Azure 数据工厂将检索凭据。
 
-目前，[Dynamics 连接器](connector-dynamics-crm-office-365.md)、[Salesforce 连接器](connector-salesforce.md)和几个新启用连接器支持此功能。 以后将有更多连接器支持此功能，敬请期待。 可以查看每个连接器主题，了解详细信息。 对于支持此功能的机密字段，可在说明中看到如下内容：*可以选择将此字段标记为 SecureString 以将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许复制活动在执行数据复制时从此处拉取 - 从“在 Key Vault 中存储凭据”了解详细信息*。
+目前，所有类型的连接器的复制活动均支持此功能 - 有关详细信息，请参阅[每个连接器主题](copy-activity-overview.md#supported-data-stores-and-formats)的“链接服务属性”部分。 对其他活动类型和计算链接服务的支持不久将会推出。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,10 +35,10 @@ ms.lasthandoff: 12/14/2017
 
 若要引用 Azure Key Vault 中存储的凭据，需要：
 
-1. 通过复制与工厂一起生成的“服务标识应用程序 ID”的值[检索数据工厂服务标识](data-factory-service-identity.md#retrieve-service-identity)。
-2. 授予服务标识对 Azure Key Vault 的访问权限。 通过密钥保管库 ->“访问控制”->“添加”-> 搜索此服务标识应用程序 ID 以至少添加**读者**权限。 它允许此指定的工厂访问密钥保管库中的机密。
-3. 创建指向 Azure Key Vault 的链接服务。 请参阅 [Azure Key Vault 链接服务](#azure-key-vault-linked-service)。
-4. 创建数据存储链接服务，该服务中引用密钥保管库中存储的相应机密。 请参阅[引用 Key Vault 中存储的凭据](#reference-credential-stored-in-key-vault)。
+1. 通过复制与工厂一起生成的“服务标识应用程序 ID”的值**[检索数据工厂服务标识](data-factory-service-identity.md#retrieve-service-identity)**。
+2. **授予服务标识对 Azure Key Vault 的访问权限**。 在密钥保管库中 -> 访问策略 -> 新增 -> 搜索此服务标识应用程序 ID，以在“机密权限”下拉列表中授予“获取”权限。 它允许此指定的工厂访问密钥保管库中的机密。
+3. **创建指向 Azure Key Vault 的链接服务**。 请参阅 [Azure Key Vault 链接服务](#azure-key-vault-linked-service)。
+4. **创建数据存储链接服务，该服务中引用密钥保管库中存储的相应机密**。 请参阅[引用密钥保管库中存储的机密](#reference-secret-stored-in-key-vault)。
 
 ## <a name="azure-key-vault-linked-service"></a>Azure Key Vault 链接服务
 
@@ -63,7 +63,7 @@ Azure Key Vault 链接服务支持以下属性：
 }
 ```
 
-## <a name="reference-credential-stored-in-key-vault"></a>引用密钥保管库中存储的凭据
+## <a name="reference-secret-stored-in-key-vault"></a>引用密钥保管库中存储的机密
 
 在引用密钥保管库机密的链接服务中配置字段时，支持以下属性：
 

@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 7d245c2222b1ad9ba71c6f5dbdde66e56e1aa6ab
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 39d60592c7fcbc937dc9f86e4c8b6962a51fd6ef
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
 本文介绍如何使用存储过程活动从 Azure 数据工厂管道中调用 SSIS 包。 
@@ -39,8 +39,9 @@ ms.lasthandoff: 02/03/2018
 ### <a name="create-a-data-factory"></a>创建数据工厂
 第一步是使用 Azure 门户创建数据工厂。 
 
-1. 导航到 [Azure 门户](https://portal.azure.com)。 
-2. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。 
+1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
+2. 导航到 [Azure 门户](https://portal.azure.com)。 
+3. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。 
    
    ![新建 -> DataFactory](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-azure-data-factory-menu.png)
 2. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为**名称**。 
@@ -75,7 +76,7 @@ ms.lasthandoff: 02/03/2018
 1. 在“入门”页中，单击“创建管道”： 
 
     ![“入门”页](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
-2. 在“活动”工具箱中展开“SQL 数据库”，将**存储过程**活动拖放到管道设计器图面。 
+2. 在“活动”工具箱中展开“常规”，将**存储过程**活动拖放到管道设计器图面。 
 
     ![拖放存储过程活动](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
 3. 在存储过程活动的属性窗口中切换到“SQL 帐户”选项卡，然后单击“+ 新建”。 与托管 SSIS 目录（SSIDB 数据库）的 Azure SQL 数据库建立连接。 
@@ -94,11 +95,12 @@ ms.lasthandoff: 02/03/2018
         ![Azure SQL 数据库链接服务](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. 在属性窗口中，从“SQL 帐户”选项卡切换到“存储过程”选项卡，然后执行以下步骤： 
 
-    1. 对于“存储过程名称”字段，输入 `sp_executesql`。 
-    2. 在“存储过程参数”部分中单击“+ 新建”。 
-    3. 对于参数的“名称”，输入“stmt”。 
-    4. 输入“字符串”作为参数**类型**。 
-    5. 输入以下 SQL 查询作为参数的**值**：
+    1. 选择“编辑”。 
+    2. 对于“存储过程名称”字段，输入 `sp_executesql`。 
+    3. 在“存储过程参数”部分中单击“+ 新建”。 
+    4. 对于参数的“名称”，输入“stmt”。 
+    5. 输入“字符串”作为参数**类型**。 
+    6. 输入以下 SQL 查询作为参数的**值**：
 
         在 SQL 查询中，指定 **folder_name**、**project_name** 和 **package_name** 参数的右侧值。 
 
@@ -120,7 +122,8 @@ ms.lasthandoff: 02/03/2018
 1. 若要触发某个管道运行，请在工具栏中单击“触发器”，然后单击“立即触发”。 
 
     ![立即触发](./media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
-2. 在左侧切换到“监视”选项卡。 随即显示管道运行及其状态以及其他信息（比如运行开始时间）。 若要刷新视图，请单击“刷新”。
+2. 在“管道运行”窗口中选择“完成”。 
+3. 在左侧切换到“监视”选项卡。 随即显示管道运行及其状态以及其他信息（比如运行开始时间）。 若要刷新视图，请单击“刷新”。
 
     ![管道运行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 3. 在“操作”列中单击“查看活动运行”链接。 此时只显示一个活动运行，因为管道只有一个活动（存储过程活动）。

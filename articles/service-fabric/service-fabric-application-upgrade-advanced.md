@@ -12,50 +12,44 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/5/2018
 ms.author: subramar;chackdan
-ms.openlocfilehash: 8d3b922f3d50b645ac9db2cc879a319df1262e0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b0ca553fb96b0a54f3b76d306ed98d95026dcd9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
-## <a name="adding-or-removing-services-during-an-application-upgrade"></a>在升级应用程序期间添加或删除服务
-如果将新服务添加到已部署的应用程序，并将其作为升级项发布，则该新服务将添加到部署的应用程序。  此类升级不会影响到已属于应用程序一部分的任何服务。 但是，若要激活新服务，必须启动已添加的服务的实例（使用 `New-ServiceFabricService` cmdlet）。
+## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>在升级应用程序期间添加或删除服务类型
+如果在升级过程中向已发布的应用程序添加新的服务类型，则该新的服务类型将添加到已部署的应用程序。 这样的升级不会影响已经是应用程序一部分的任何服务实例，但是，必须创建所添加的服务类型的实例，新的服务类型才会处于活动状态（请参阅 [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)）。
 
-还可以在升级期间从应用程序中删除服务。 但是，在继续升级之前，必须停止要删除的服务的所有当前实例（使用 `Remove-ServiceFabricService` cmdlet）。
+类似地，在升级过程中还可以从应用程序中删除服务类型。 但是，必须删除待删除服务类型的所有服务实例，然后才能继续进行升级（请参阅 [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)）。
 
 ## <a name="manual-upgrade-mode"></a>手动升级模式
 > [!NOTE]
-> 只应针对已失败或暂停的升级考虑使用不受监视的手动模式。 受监视模式是建议用于 Service Fabric 应用程序的升级模式。
+> 对于所有 Service Fabric 升级，建议使用 *Monitored* 升级模式。
+> 只有对于失败或暂停的升级，才应考虑使用 *UnmonitoredManual* 升级模式。 
 >
 >
 
-Azure Service Fabric 提供了多个升级模式，可支持开发和生产群集。 选择的部署选项可根据不同的环境而有所不同。
+在 *Monitored* 模式下，Service Fabric 应用运行状况策略来确保应用程序在升级过程中正常运行。 如果违反了运行状况策略，则升级将暂停或自动回滚，具体取决于指定的 *FailureAction*。
 
-受监视应用程序滚动升级是生产环境中使用的最典型的升级。 当指定了升级策略时，Service Fabric 可确保在升级继续进行之前，应用程序处于正常状态。
+在 *UnmonitoredManual* 模式下，应用程序管理员对升级进度具有完全控制权。 当应用自定义运行状况评估策略或执行非常规升级来完全绕过运行状况监视时（例如，当应用程序已经丢失数据时），此模式非常有用。 在此模式下运行的升级在完成每个 UD 后会将其自己暂停，并且必须使用 [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) 显式使其继续执行。 当升级暂停并且就绪可供用户继续执行时，其升级状态将显示 *RollforwardPending*（请参阅 [UpgradeState](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)）。
 
- 应用程序管理员可以使用手动滚动应用程序升级模式，通过各种升级域获得升级过程的完全控制权。 需要自定义的或者复杂的运行状况评估策略，或者进行非常规升级（例如，应用程序已有数据丢失）时，此模式非常有用。
-
-最后，自动应用程序滚动升级对开发或测试环境很有用，可在服务开发期间提供快速迭代周期。
-
-## <a name="change-to-manual-upgrade-mode"></a>切换到手动升级模式
-**手动** - 在当前 UD 停止应用程序升级，并将升级模式更改为不受监视的手动模式。 管理员需要手动调用 **MoveNextApplicationUpgradeDomainAsync**，以继续进行升级或通过启动新升级触发回滚。 升级进入到“手动”模式后，就会保持为“手动”模式，直到启动新的升级。 **GetApplicationUpgradeProgressAsync** 命令将返回 FABRIC\_APPLICATION\_UPGRADE\_STATE\_ROLLING\_FORWARD\_PENDING。
+最后，*UnmonitoredAuto* 模式非常适用于在开发或或测试服务期间执行快速升级迭代，因为不需要提供用户输入并且不会评估应用程序运行状况策略。
 
 ## <a name="upgrade-with-a-diff-package"></a>使用差异包升级
-Service Fabric 应用程序可以通过预配一个完整且独立的应用程序包进行升级。 此外，还可以通过使用一个仅包含已更新应用程序文件、已更新应用程序清单和服务清单文件的差异包对应用程序进行升级。
+还可以通过预配仅包含更新后的代码/配置/数据包以及完整的应用程序清单和完整的服务清单的差异包（不需要预配完整的应用程序包）来执行升级。 只有首次将应用程序安装到群集时，才需要完整的应用程序包。 后续升级可以使用完整的应用程序包或差异包执行。  
 
-完整的应用程序包中包含启动和运行 Service Fabric 应用程序所需的所有文件。 差异包仅包含在最后一次设置与当前升级之间更改的文件，以及完整的应用程序清单和服务清单文件。 如果应用程序清单或服务清单中存在任何无法在生成布局中找到的引用，系统会在映像存储中搜索这些引用。
+如果差异包的应用程序清单或服务清单中的任何引用无法在应用程序包中找到，则会自动将该引用替换为当前预配的版本。
 
-向群集首次安装应用程序时，需要完整的应用程序包。 后续更新可以是完整的应用程序包或差异包。
+使用差异包的方案有：
 
-在以下情况下，使用差异包将是一个不错的选择：
+* 拥有一个引用了多个服务清单文件和/或多个代码包、配置包或数据包的大型应用程序包时。
+* 当部署系统直接在应用程序生成过程中产生生成布局时。 在这种情况下，即使代码未发生任何更改，新生成的程序集也会获得不同的校验和。 若要使用完整的应用程序包，需要更新所有代码包上的版本。 使用差异包时，只提供更改的文件和其中的版本已更改的清单文件。
 
-* 拥有一个引用了多个服务清单文件和/或多个代码包、配置包或数据包的大型应用程序包时，首选差异包。
-* 当部署系统直接从应用程序生成过程产生生成布局时，首选差异包。 在这种情况下，即使代码未发生任何更改，新生成的程序集也会获得不同的校验和。 若要使用完整的应用程序包，需要更新所有代码包上的版本。 使用差异包时，只提供更改的文件和其中的版本已更改的清单文件。
-
-如果应用程序是使用 Visual Studio 升级的，会自动发布差异包。 若要手动创建差异包，必须更新应用程序清单和服务清单，只在最终应用程序包中包含更改的包。
+如果应用程序是使用 Visual Studio 升级的，则会自动发布差异包。 若要手动创建差异包，必须更新应用程序清单和服务清单，只在最终应用程序包中包含更改的包。
 
 例如，让我们从以下应用程序开始（为便于理解，这里提供了版本号）：
 
@@ -69,7 +63,7 @@ app1           1.0.0
     config     1.0.0
 ```
 
-现在，假设只想使用 PowerShell 和差异包来更新 service1 的代码包。 现在，更新的应用程序使用以下文件夹结构：
+假设你想要使用差异包仅更新 service1 的代码包。 更新后的应用程序有以下版本更改：
 
 ```text
 app1           2.0.0      <-- new version
@@ -81,13 +75,23 @@ app1           2.0.0      <-- new version
     config     1.0.0
 ```
 
-在本例中，已将应用程序清单更新为 2.0.0，并更新了 service1 的服务清单以反映代码包更新。 应用程序包的文件夹使用以下结构：
+在本例中，你将应用程序清单更新为 2.0.0，并更新了 service1 的服务清单来反映代码包更新。 应用程序包的文件夹使用以下结构：
 
 ```text
 app1/
   service1/
     code/
 ```
+
+换句话说，就是照常创建完整的应用程序包，然后删除其版本未更改的任何代码/配置/数据包文件夹。
+
+## <a name="rolling-back-application-upgrades"></a>回滚应用程序升级
+
+虽然升级可以通过三种模式之一（*Monitored*、*UnmonitoredAuto* 或 *UnmonitoredManual*）进行前滚，但它们只能在 *UnmonitoredAuto* 或 *UnmonitoredManual* 模式下进行回滚。 在 *UnmonitoredAuto* 模式下进行回滚与进行前滚时行为相同，唯一的例外是 *UpgradeReplicaSetCheckTimeout* 的默认值不同 - 请参阅[应用程序升级参数](service-fabric-application-upgrade-parameters.md)。 在 *UnmonitoredManual* 模式下进行回滚与进行前滚时行为相同 - 回滚在完成每个 UD 后会将其自己暂停，并且必须使用 [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) 显式继续执行回滚。
+
+当违反了在 *Monitored* 模式下进行的升级的运行状况策略并且 *FailureAction* 为 *Rollback* 时，可以自动触发回滚（请参阅[应用程序升级参数](service-fabric-application-upgrade-parameters.md)）；也可以使用 [Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps) 显式触发回滚。
+
+在回滚期间，可以随时使用 [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps) 更改 *UpgradeReplicaSetCheckTimeout* 的值和模式。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。

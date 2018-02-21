@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/03/2018
 ms.author: sngun
-ms.openlocfilehash: 0d89259d54fba0bd57881ec69cb61b5af6d603b5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: f354c39fc3b366795fe4ed8dbeeb961bb11d5420
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
  
@@ -57,7 +57,10 @@ ms.lasthandoff: 01/12/2018
   * **以前的版本：**在由 Azure 流分析引擎处理时，字段名称更改为小写。 
 
   * **当前版本：**在由 Azure 流分析引擎处理时，字段名称保留区分大小写的做法。 
- 
+
+  > [!NOTE] 
+  > 保留区分大小写尚不适用于使用 Edge 环境托管的流分析作业。 因此，如果在 Edge 上托管作业，所有字段名称都将转换为小写。 
+
 * **FloatNaNDeserializationDisabled**  
 
   * **以前的版本：**CREATE TABLE 命令不使用 NaN（非数值。 例如，Infinity、-Infinity）在 FLOAT 列类型中筛选事件，因为对于这些数字来说，事件不在已记录的范围之内。

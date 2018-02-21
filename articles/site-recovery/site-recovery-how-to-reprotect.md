@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 02/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 17a43de3faaa3a146fa9d8f43d36545d6d82b274
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: c336966f9a785707e76bc6a10c4a9283d797d064
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>在本地站点中重新保护 Azure 上的虚拟机
 
@@ -204,7 +204,7 @@ To replicate back to on-premises, you will need a failback policy. This policy g
 4. 对于“数据存储”，选择要将本地磁盘恢复到的数据存储。 删除本地虚拟机后，如果需要创建新磁盘，可使用此选项。 如果磁盘已存在，则会忽略此选项，但你仍然需要指定一个值。
 5. 选择保留驱动器。
 6. 将自动选择故障回复策略。
-7. 单击“确定”开始重新保护。 一个作业会开始将虚拟机从 Azure 复制到本地站点。 可以在“作业”选项卡上跟踪进度。
+7. 单击“确定”开始重新保护。 一个作业会开始将虚拟机从 Azure 复制到本地站点。 可以在“**作业**”选项卡上跟踪进度。
 
 如果要恢复到备用位置（删除了本地虚拟机时），请选择针对主目标服务器配置的保留驱动器和数据存储。 故障回复到本地站点时，故障回复保护计划中的 VMware 虚拟机将使用与主目标服务器相同的数据存储。 将在 vCenter 中创建一个新虚拟机。
 
@@ -221,13 +221,7 @@ To replicate back to on-premises, you will need a failback policy. This policy g
 
 重新保护成功后，虚拟机将进入受保护状态。
 
-## <a name="next-steps"></a>后续步骤
-
-虚拟机进入受保护状态后，可以[启动故障回复](site-recovery-how-to-failback-azure-to-vmware.md#steps-to-fail-back)。 
-
-故障回复将关闭 Azure 中的虚拟机，并启动本地虚拟机。 应用程序应该会停机一段时间。 请在应用程序可以容许停机时选择一个时间进行故障回复。
-
-## <a name="common-problems"></a>常见问题
+## <a name="common-issues"></a>常见问题
 
 * 如果虚拟机是使用模板创建的，请确保每个虚拟机对于磁盘具有其自己的 UUID。 如果本地虚拟机的 UUID 与主目标的 UUID 冲突（因为两者都是基于同一模板创建的），重新保护会失败。 请部署不是基于同一模板创建的另一个主目标。
 
@@ -245,38 +239,9 @@ To replicate back to on-premises, you will need a failback policy. This policy g
 
 * 作为物理本地服务器保护的 Windows Server 2008 R2 SP1 服务器无法从 Azure 故障回复到本地站点。
 
-### <a name="common-error-codes"></a>常见错误代码
 
-#### <a name="error-code-95226"></a>错误代码 95226
+## <a name="next-steps"></a>后续步骤
 
-重新保护失败，因为 Azure 虚拟机无法访问本地配置服务器。
+虚拟机进入受保护状态后，可以[启动故障回复](site-recovery-how-to-failback-azure-to-vmware.md#steps-to-fail-back)。 
 
-发生条件 
-1. Azure 虚拟机无法访问本地配置服务器，因此无法发现，也无法向配置服务器注册。 
-2. 需要在 Azure 虚拟机上运行以与本地配置服务器通信的 InMage Scout 应用程序服务，可能在故障转移之后未能运行。
-
-解决方法
-1. 需要确保已配置 Azure 虚拟机网络，以便虚拟机能与本地配置服务器通信。 要执行此操作，请将站点到站点 VPN 设置回本地数据中心，或在 Azure 虚拟机的虚拟网络上配置具有私有对等的 ExpressRoute 连接。 
-2. 如果已配置网络以允许 Azure 虚拟机与本地配置服务器通信，请登录虚拟机，然后检查“InMage Scout 应用程序服务”。 如果发现 InMage Scout 应用程序服务未运行，请手动启动该服务，并确保服务启动类型设置为“自动”。
-
-### <a name="error-code-78052"></a>错误代码 78052
-重新保护失败，出现错误消息：“无法完成对虚拟机的保护”。
-
-发生此错误的原因有两个
-1. 要重新保护的虚拟机为 Windows Server 2016。 故障回复当前不支持此操作系统，但很快将给予支持。
-2. 故障回复到的主目标服务器上已有同名虚拟机。
-
-要解决此问题，可在另一台主机上选择另一个主目标服务器，以便重新保护在该主机上创建计算机，从而确保名称不发生冲突。 还可以将主目标 vMotion 到另一台主机，这样就不会发生名称冲突。 如果现有虚拟机是孤立的计算机，可将其重命名，以便在同一 ESXi 主机上创建新的虚拟机。
-
-### <a name="error-code-78093"></a>错误代码 78093
-
-VM 未运行，它处于挂起状态或无法访问。
-
-要将故障转移的虚拟机重新保护回本地，需运行 Azure 虚拟机。 这样做的目的是向本地配置服务器注册移动服务，并通过与进程服务器通信来启动复制。 如果计算机位于错误的网络中或者未运行（处于挂起或关闭状态），则配置服务器无法访问虚拟机中的移动服务，无法开始重新保护。 可以重启虚拟机，使其重新与本地通信。 启动 Azure 虚拟机后，重启重新保护作业
-
-### <a name="error-code-8061"></a>错误代码 8061
-
-无法通过 ESXi 主机访问数据存储。
-
-有关故障回复，请参阅[主目标先决条件](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server)及[支持数据存储](site-recovery-how-to-reprotect.md#what-datastore-types-are-supported-on-the-on-premises-esxi-host-during-failback)
-
+故障回复将关闭 Azure 中的虚拟机，并启动本地虚拟机。 应用程序应该会停机一段时间。 请在应用程序可以容许停机时选择一个时间进行故障回复。

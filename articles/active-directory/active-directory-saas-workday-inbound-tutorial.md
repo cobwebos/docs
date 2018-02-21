@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: ed35a703774fdb2f2896414b6022b6f13fb7a307
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 2db9e60fe2807b1aa8ed7cab7eed6f7db8059a89
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
 
@@ -297,7 +297,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
          * **表达式** – 可以基于一个或多个 Workday 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](active-directory-saas-writing-expressions-for-attribute-mappings.md)。
 
-      * **源属性** – Workday 中的用户属性。
+      * **源属性** – Workday 中的用户属性。 如果你查找的属性不存在，请参阅[自定义 Workday 用户属性列表](#customizing-the-list-of-workday-user-attributes)。
 
       * **默认值** – 可选。 如果源属性的值为空，映射将改为写入此值。
             最常见的配置是将此项留空。
@@ -467,7 +467,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 ## <a name="configuring-user-provisioning-to-azure-active-directory"></a>配置到 Azure Active Directory 的用户预配
 如何配置到 Azure Active Directory 的预配取决于预配要求，下表对此做了详述。
 
-| 方案 | 解决方案 |
+| 场景 | 解决方案 |
 | -------- | -------- |
 | **需要将用户预配到 Active Directory 和 Azure AD** | 使用 **[AAD Connect](connect/active-directory-aadconnect.md)** |
 | **只需将用户预配到 Active Directory** | 使用 **[AAD Connect](connect/active-directory-aadconnect.md)** |
@@ -549,7 +549,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
       * **表达式** – 可以基于一个或多个 Workday 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](active-directory-saas-writing-expressions-for-attribute-mappings.md)。
 
-   * **源属性** – Workday 中的用户属性。
+   * **源属性** – Workday 中的用户属性。 如果你查找的属性不存在，请参阅[自定义 Workday 用户属性列表](#customizing-the-list-of-workday-user-attributes)。
 
    * **默认值** – 可选。 如果源属性的值为空，映射将改为写入此值。
             最常见的配置是将此项留空。
@@ -646,7 +646,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 ## <a name="customizing-the-list-of-workday-user-attributes"></a>自定义 Workday 用户属性列表
 适用于 Active Directory 和 Azure AD 的 Workday 预配应用都包含一个默认的 Workday 用户属性列表，可以从中进行选择。 但是，这些列表并不详尽。 Workday 支持数百个可能的用户属性，这些属性可能是 Workday 租户中的标准属性或唯一属性。 
 
-Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力资源 API 的 [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v29.2/Get_Workers.html) 操作中公开的所有属性。
+Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力资源 API 的 [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 操作中公开的所有属性。
 
 为此，必须使用 [Workday Studio](https://community.workday.com/studio-download) 来提取表示要使用的属性的 XPath 表达式，然后在 Azure 门户中使用高级属性编辑器将其添加到预配配置。
 
@@ -654,7 +654,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 1. 下载并安装 [Workday Studio](https://community.workday.com/studio-download)。 需要使用 Workday 社区帐户来访问安装程序。
 
-2. 从以下 URL 下载 Workday Human_Resources WDSL 文件：https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v29.2/Human_Resources.wsdl
+2. 从以下 URL 下载 Workday Human_Resources WDSL 文件：https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl
 
 3. 启动 Workday Studio。
 
@@ -680,12 +680,23 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
     <?xml version="1.0" encoding="UTF-8"?>
     <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
       <env:Body>
-        <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v28.0">
+        <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v21.1">
           <wd:Request_References wd:Skip_Non_Existing_Instances="true">
             <wd:Worker_Reference>
               <wd:ID wd:type="Employee_ID">21008</wd:ID>
             </wd:Worker_Reference>
           </wd:Request_References>
+          <wd:Response_Group>
+            <wd:Include_Reference>true</wd:Include_Reference>
+            <wd:Include_Personal_Information>true</wd:Include_Personal_Information>
+            <wd:Include_Employment_Information>true</wd:Include_Employment_Information>
+            <wd:Include_Management_Chain_Data>true</wd:Include_Management_Chain_Data>
+            <wd:Include_Organizations>true</wd:Include_Organizations>
+            <wd:Include_Reference>true</wd:Include_Reference>
+            <wd:Include_Transaction_Log_Data>true</wd:Include_Transaction_Log_Data>
+            <wd:Include_Photo>true</wd:Include_Photo>
+            <wd:Include_User_Account>true</wd:Include_User_Account>
+          </wd:Response_Group>
         </wd:Get_Workers_Request>
       </env:Body>
     </env:Envelope>

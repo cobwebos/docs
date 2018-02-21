@@ -2,23 +2,17 @@
 title: "规划容量和缩放以便使用 Azure Site Recovery 将 VMware 复制到 Azure | Microsoft Docs"
 description: "请阅读本文了解如何规划容量和缩放，以便使用 Azure Site Recovery 将 VMware VM 复制到 Azure"
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: jwhit
-editor: 
-ms.assetid: 0a1cd8eb-a8f7-4228-ab84-9449e0b2887b
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 02/07/2018
 ms.author: rayne
-ms.openlocfilehash: 0f4d82d450a6ca2e73c68452a409f300841dbf32
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 02f5a7270b5d8b7657a585fce99946cff8ed8d67
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>通过 Azure Site Recovery，针对 VMware 复制规划容量和缩放
 
@@ -111,7 +105,7 @@ ms.lasthandoff: 10/30/2017
 2. 默认值为 4。 在“过度预配型”网络中，这些注册表项需要更改，不能使用默认值。 最大值为 32。 监视流量以优化值。
 
 
-## <a name="deploy-additional-process-servers"></a>部署额外的进程服务器
+## <a name="deploy-additional-process-servers"></a>部署附加的进程服务器
 
 如果必须将部署扩大到 200 台以上源计算机，或者每日总改动率超过 2 TB，则需要额外的进程服务器来处理流量。 按照这些说明设置进程服务器。 设置服务器后，可以迁移源计算机来使用它。
 

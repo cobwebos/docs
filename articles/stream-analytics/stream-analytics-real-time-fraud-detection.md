@@ -1,3 +1,26 @@
+---
+title: "流分析：实时欺诈检测 | Microsoft 文档"
+description: "了解如何通过流分析创建实时欺诈行为检测解决方案。 使用事件中心进行实时事件处理。"
+keywords: "异常检测、欺诈检测、实时异常检测"
+services: stream-analytics
+documentationcenter: 
+author: SnehaGunda
+manager: jhubbard
+editor: cgronlun
+ms.assetid: c10dd53f-d17a-4268-a561-cb500a8c04eb
+ms.service: stream-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: data-services
+ms.date: 03/28/2017
+ms.author: sngun
+ms.openlocfilehash: cc581142ca2c75bbee80f9d980c4984b4863a6cf
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/14/2018
+---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时检测欺诈行为
 
 本教程提供有关如何使用 Azure 流分析的端到端说明。 学习如何： 
@@ -57,7 +80,7 @@
     ![用于创建新事件中心的边栏选项卡](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png)
     
  
-7. 单击“创建” 。
+7. 单击“创建”。
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>授予对事件中心的访问权限，并获取连接字符串
 
 在进程可以将数据发送到事件中心之前，事件中心必须具有允许适当访问的策略。 访问策略生成包含授权信息的连接字符串。
@@ -73,7 +96,7 @@
 
     ![用于创建新事件中心访问策略的边栏选项卡](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png)
  
-4.  单击“创建” 。
+4.  单击“创建”。
 
 5.  部署策略后，在共享访问策略列表中单击该策略。
 
@@ -150,7 +173,7 @@
 
     ![创建新的流分析作业](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png)
 
-3. 单击“创建” 。
+3. 单击“创建”。
 
     创建作业后，门户就会显示作业详细信息。 尽管尚无任何应用正在运行，但必须先配置该作业，然后才能启动。
 
@@ -164,7 +187,7 @@
 3. 单击“+&nbsp;添加”，然后在窗格中填写以下值：
 
     * **输入别名**：使用名称 `CallStream`。 如果使用其他名称，请将其记录下来，因为稍后需要该名称。
-    * 源类型：选择“数据流”。 （引用数据是指静态查找数据，不会在本教程中使用该数据。）
+    * **源类型**：选择“数据流”。 （引用数据是指静态查找数据，不会在本教程中使用该数据。）
     * 源：选择“事件中心”。
     * 导入选项：选择“从当前订阅使用事件中心”。 
     * 服务总线命名空间：选择之前创建的事件中心命名空间 (`<yourname>-eh-ns-demo`)
@@ -173,7 +196,7 @@
 
     ![为流分析作业创建新输入](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png)
 
-4. 单击“创建” 。
+4. 单击“创建”。
 
 ## <a name="create-queries-to-transform-real-time-data"></a>创建查询以转换实时数据
 
@@ -300,7 +323,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
     ![用于自联接的流分析作业输出，其中显示生成的 6 条记录](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-self-join.png)
 
-3. 单击“保存” 。 这将自联接查询保存为流分析作业的一部分。 （不会保存示例数据。）
+3. 单击“ **保存**”。 这将自联接查询保存为流分析作业的一部分。 （不会保存示例数据。）
 
     ![保存流分析作业](./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png)
 
@@ -330,7 +353,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
     
     ![流分析作业的“新建输出”窗格](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png)
     
-4. 单击“创建” 。 
+4. 单击“创建”。 
 
     Azure 创建存储帐户，并自动生成密钥。 
 
@@ -348,7 +371,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 3. 在“启动作业”窗格中，为作业输出开始时间选择“现在”。 
 
-4. 单击“开始”屏幕。 
+4. 单击“启动”。 
 
     ![流分析作业的“启动作业”窗格](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-start-job-blade.png)
 

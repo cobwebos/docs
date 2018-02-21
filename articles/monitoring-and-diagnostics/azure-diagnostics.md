@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-ms.openlocfilehash: 0c6e4d9d2a3744f607b72364f3944c700acd070c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fbeacd2acfd2fba9d26e7cbc94d8660d15c75642
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="what-is-azure-diagnostics"></a>什么是 Azure 诊断
 Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的功能。 可以使用于自许多不同源的诊断扩展。 目前支持的有 Azure 云服务 Web 和辅助角色、运行 Microsoft Windows 的 Azure 虚拟机，以及 Service Fabric。 其他 Azure 服务都有自身不同的诊断扩展。
@@ -67,7 +67,7 @@ Azure 诊断扩展可将此数据传输到 Azure 存储帐户，或者发送到 
 有关更高级主题，请参阅
 
 * [使用 PowerShell 在 Azure 虚拟机上设置诊断](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [使用 Azure 资源管理器模板创建具有监视和诊断功能的 Windows 虚拟机](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="service-fabric-using-azure-diagnostics"></a>使用 Azure 诊断的 Service Fabric
 请参阅[监视 Service Fabric 应用程序](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)帮助自己入门。 打开此文章后，可以使用左侧的导航树来查看其他许多 Service Fabric 诊断文章。
@@ -75,6 +75,6 @@ Azure 诊断扩展可将此数据传输到 Azure 存储帐户，或者发送到 
 ## <a name="general-azure-diagnostics-articles"></a>一般的 Azure 诊断文章
 * [Azure 诊断架构配置](https://msdn.microsoft.com/library/azure/mt634524.aspx) - 了解如何更改架构文件以收集和路由诊断数据。 请注意，也可以使用 Visual Studio 来更改架构文件。
 * [Azure 诊断数据在 Azure 存储中的存储方式](../cloud-services/cloud-services-dotnet-diagnostics-storage.md) - 了解诊断数据写入到的表和 Blob 的名称。
-* 了解如何[在 Azure 诊断中使用性能计数器](../cloud-services/cloud-services-dotnet-diagnostics-performance-counters.md)。
+* 了解如何[在 Azure 诊断中使用性能计数器](../cloud-services/diagnostics-performance-counters.md)。
 * 了解如何[将 Azure 诊断信息路由到 Application Insights](azure-diagnostics-configure-application-insights.md)
 * 如果在开始诊断时或者在 Azure 存储表中查找数据时遇到问题，请参阅 [Azure 诊断故障排除](azure-diagnostics-troubleshooting.md)

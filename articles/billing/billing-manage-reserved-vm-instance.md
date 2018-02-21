@@ -1,6 +1,6 @@
 ---
-title: "管理 Azure 保留虚拟机实例 | Microsoft Docs"
-description: "了解如何为 Azure 保留 VM 实例更改订阅范围以及管理访问权限。"
+title: "管理 Azure 预订虚拟机实例 | Microsoft Docs"
+description: "了解如何为 Azure 预订 VM 实例更改订阅范围以及管理访问权限。"
 services: billing
 documentationcenter: 
 author: vikramdesai01
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2017
 ms.author: vikdesai
-ms.openlocfilehash: e23eea52ff5d27beacf938a1ef153172e24f1aee
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 8f75bab7fc795a59dabfedca5a4889622f66b73a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-reserved-virtual-machine-instances"></a>管理保留虚拟机实例
 
@@ -75,6 +75,16 @@ ms.lasthandoff: 11/16/2017
 5.  选择“添加” > “角色” > “所有者”（或其他角色，如果希望提供有限的访问权限）。 
 6. 键入要添加为“所有者”的用户的电子邮件地址。 
 7. 选择用户，再选择“保存”。
+
+## <a name="next-steps"></a>后续步骤
+若要了解有关预订虚拟机实例的详细信息，请参阅以下文章。
+
+- [通过预订 VM 实例预付虚拟机](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [通过预订虚拟机实例节省虚拟机资金](billing-save-compute-costs-reservations.md)
+- [了解如何应用预订虚拟机实例折扣](billing-understand-vm-reservation-charges.md)
+- [了解即用即付订阅的预订实例使用情况](billing-understand-reserved-instance-usage.md)
+- [了解企业许可登记表的预订实例使用情况](billing-understand-reserved-instance-usage-ea.md)
+- [预订实例未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 9b4163471f3dc8483993b9ac762694af4e926aa0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 322514debd42714142434106748e4acac220ebee
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>创建 OpenBSD 磁盘映像并上传到 Azure
 本文说明如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)。 将其上传后，可以通过 Azure CLI 使用它作为你自己的映像在 Azure 中创建虚拟机 (VM)。
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 本文假设拥有以下项目：
 
 * **Azure 订阅** - 如果没有帐户，只需几分钟即可创建一个。 如果有 MSDN 订阅，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 否则，请了解如何[创建一个免费试用帐户](https://azure.microsoft.com/pricing/free-trial/)。  
-* **Azure CLI 2.0** - 确保已安装了最新的 [Azure CLI 2.0](/cli/azure/install-azure-cli) 并已使用 [az login](/cli/azure/#login) 登录到 Azure 帐户。
+* **Azure CLI 2.0** - 确保已安装了最新的 [Azure CLI 2.0](/cli/azure/install-azure-cli) 并已使用 [az login](/cli/azure/#az_login) 登录到 Azure 帐户。
 * **安装在 .vhd 文件中的 OpenBSD 操作系统** - 必须将受支持的 OpenBSD 操作系统（6.1 版本）安装到虚拟硬盘中。 可使用多个工具创建 .vhd 文件。 例如，可使用虚拟化解决方案（如 Hyper-V）创建 .vhd 文件并安装操作系统。 有关如何安装和使用 Hyper-V 的说明，请参阅[安装 Hyper-V 和创建虚拟机](http://technet.microsoft.com/library/hh846766.aspx)。
 
 
@@ -102,13 +102,13 @@ Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed
 ```
 
 ## <a name="create-storage-resources-and-upload"></a>创建存储资源并上传
-首先，使用 [az group create](/cli/azure/group#create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+首先，使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-若要上传 VHD，请使用 [az storage account create](/cli/azure/storage/account#create) 创建存储帐户。 存储帐户名称必须唯一，因此请提供自己的名称。 以下示例创建一个名为 mystorageaccount 的存储帐户：
+若要上传 VHD，请使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 创建存储帐户。 存储帐户名称必须唯一，因此请提供自己的名称。 以下示例创建一个名为 mystorageaccount 的存储帐户：
 
 ```azurecli
 az storage account create --resource-group myResourceGroup \
@@ -117,7 +117,7 @@ az storage account create --resource-group myResourceGroup \
     --sku Premium_LRS
 ```
 
-若要控制对存储帐户的访问，请按如下所示，使用 [az storage account key list](/cli/azure/storage/account/keys#list) 获取存储密钥：
+若要控制对存储帐户的访问，请按如下所示，使用 [az storage account key list](/cli/azure/storage/account/keys#az_storage_account_keys_list) 获取存储密钥：
 
 ```azurecli
 STORAGE_KEY=$(az storage account keys list \
@@ -126,7 +126,7 @@ STORAGE_KEY=$(az storage account keys list \
     --query "[?keyName=='key1']  | [0].value" -o tsv)
 ```
 
-若要在逻辑上分隔上传的 VHD，请使用 [az storage container create](/cli/azure/storage/container#create) 在存储帐户中创建容器：
+若要在逻辑上分隔上传的 VHD，请使用 [az storage container create](/cli/azure/storage/container#az_storage_container_create) 在存储帐户中创建容器：
 
 ```azurecli
 az storage container create \
@@ -135,7 +135,7 @@ az storage container create \
     --account-key ${STORAGE_KEY}
 ```
 
-最后，按如下所示使用 [az storage blob upload](/cli/azure/storage/blob#upload) 上传 VHD：
+最后，按如下所示使用 [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) 上传 VHD：
 
 ```azurecli
 az storage blob upload \
@@ -148,7 +148,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>通过 VHD 创建 VM
-可以使用[示例脚本](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md)或直接使用 [az vm create](/cli/azure/vm#create) 创建 VM。 若要指定你上传的 OpenBSD VHD，请按如下所示使用 `--image` 参数：
+可以使用[示例脚本](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md)或直接使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 若要指定你上传的 OpenBSD VHD，请按如下所示使用 `--image` 参数：
 
 ```azurecli
 az vm create \

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 2131aa75dcfb975f11cff9800087c3e4e7170378
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 72b0965e1fda733651baa04997da1242a73320f1
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 对于以下情况，请将 Azure-SSIS 集成运行时 (IR) 加入 Azure 虚拟网络 (VNet)： 
@@ -31,7 +31,13 @@ ms.lasthandoff: 02/01/2018
 > 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="access-on-premises-data-stores"></a>访问本地数据存储
-如果 SSIS 包仅访问公有云数据存储，则不需要将 Azure-SSIS IR 加入 VNet。 如果 SSIS 包访问本地数据存储，则必须将 Azure-SSIS IR 加入已连接到本地网络的 VNet。 如果 SSIS 目录承载于不在 VNet 上的 Azure SQL 数据库中，则需要打开相应的端口。 如果 SSIS 目录承载在 Azure 资源管理器 VNet 或经典 VNet 上的 Azure SQL 托管实例中，则可将 Azure-SSIS IR 加入到相同的 VNet 中，或加入到已与 Azure SQL 托管实例所在的 VNet 建立 VNet 到 VNet 连接的不同 VNet 中。 以下部分提供了更多详细信息。
+如果 SSIS 包仅访问公有云数据存储，则不需要将 Azure-SSIS IR 加入 VNet。 如果 SSIS 包访问本地数据存储，则必须将 Azure-SSIS IR 加入已连接到本地网络的 VNet。 
+
+如果 SSIS 目录承载于不在 VNet 上的 Azure SQL 数据库中，则需要打开相应的端口。 
+
+如果 SSIS 目录承载在 VNet 上的 Azure SQL 托管实例 (MI) 中，则可将 Azure-SSIS IR 加入到相同的 VNet 中，或加入到已与 Azure SQL 托管实例所在的 VNet 建立 VNet 到 VNet 连接的不同 VNet 中。 VNet 可以是经典 VNet 或 Azure 资源管理 VNet。 如果打算将 Azure-SSIS IR 加入到包含 SQL MI 的**同一 VNet** 中，请确保 Azure SSIS IR 与 SQL MI 在**不同子网**中。   
+
+以下部分提供了更多详细信息。
 
 下面是几个要点： 
 
@@ -58,10 +64,11 @@ ms.lasthandoff: 02/01/2018
 ### <a name="use-portal-to-configure-a-classic-vnet"></a>使用门户配置经典 VNet
 首先需要配置 VNet，然后才能将 Azure-SSIS IR 加入该 VNet。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击“更多服务”。 筛选并选择“虚拟网络(经典)”。
-3. 在列表中筛选并选择自己的**虚拟网络**。 
-4. 在“虚拟网络(经典)”页中选择“属性”。 
+1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
+2. 登录到 [Azure 门户](https://portal.azure.com)。
+3. 单击“更多服务”。 筛选并选择“虚拟网络(经典)”。
+4. 在列表中筛选并选择自己的**虚拟网络**。 
+5. 在“虚拟网络(经典)”页中选择“属性”。 
 
     ![经典 VNet 资源 ID](media/join-azure-ssis-integration-runtime-virtual-network/classic-vnet-resource-id.png)
 5. 单击“资源 ID”对应的复制按钮，将经典网络的资源 ID 复制到剪贴板。 将剪贴板中的 ID 保存到 OneNote 或某个文件中。
@@ -93,13 +100,14 @@ ms.lasthandoff: 02/01/2018
 ### <a name="use-portal-to-configure-an-azure-resource-manager-vnet"></a>使用门户配置 Azure 资源管理器 VNet
 首先需要配置 VNet，然后才能将 Azure-SSIS IR 加入该 VNet。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击“更多服务”。 筛选并选择“虚拟网络”。
-3. 在列表中筛选并选择自己的**虚拟网络**。 
-4. 在“虚拟网络”页中选择“属性”。 
-5. 单击“资源 ID”对应的复制按钮，将虚拟网络的资源 ID 复制到剪贴板。 将剪贴板中的 ID 保存到 OneNote 或某个文件中。
-6. 在左侧菜单中单击“子网”，确保**可用地址**的数目大于 Azure-SSIS 集成运行时中的节点数。
-5. 验证是否已将 Azure Batch 提供程序注册到包含 VNet 的 Azure 订阅中，或注册 Azure Batch 提供程序。 如果订阅中已包含 Azure Batch 帐户，则已经为 Azure Batch 注册了订阅。
+1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
+2. 登录到 [Azure 门户](https://portal.azure.com)。
+3. 单击“更多服务”。 筛选并选择“虚拟网络”。
+4. 在列表中筛选并选择自己的**虚拟网络**。 
+5. 在“虚拟网络”页中选择“属性”。 
+6. 单击“资源 ID”对应的复制按钮，将虚拟网络的资源 ID 复制到剪贴板。 将剪贴板中的 ID 保存到 OneNote 或某个文件中。
+7. 在左侧菜单中单击“子网”，确保**可用地址**的数目大于 Azure-SSIS 集成运行时中的节点数。
+8. 验证是否已将 Azure Batch 提供程序注册到包含 VNet 的 Azure 订阅中，或注册 Azure Batch 提供程序。 如果订阅中已包含 Azure Batch 帐户，则已经为 Azure Batch 注册了订阅。
     1. 在 Azure 门户上的左侧菜单中，单击“订阅”。 
     2. 选择**订阅**。 
     3. 在左侧单击“资源提供程序”，确认 `Microsoft.Batch` 是注册的提供程序。 
@@ -111,7 +119,8 @@ ms.lasthandoff: 02/01/2018
 ### <a name="join-the-azure-ssis-ir-to-a-vnet"></a>将 Azure SSIS IR 加入 VNet
 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择左侧菜单中的“数据工厂”。 如果菜单中未显示“数据工厂”，请选择“更多服务”，然后在“智能 + 分析”部分选择“数据工厂”。 
+1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
+2. 在 [Azure 门户](https://portal.azure.com)中，选择左侧菜单中的“数据工厂”。 如果菜单中未显示“数据工厂”，请选择“更多服务”，然后在“智能 + 分析”部分选择“数据工厂”。 
     
     ![数据工厂列表](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 2. 在列表中选择包含 Azure SSIS 集成运行时的数据工厂。 随后会显示该数据工厂的主页。 选择“创作和部署”磁贴。 单独的选项卡中会显示数据工厂用户界面 (UI)。 

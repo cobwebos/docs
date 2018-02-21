@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: tamram
-ms.openlocfilehash: c768bdbb8e1ce2aae3eb5b6db0e48977366c83fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 327816874fb2f2d43192e02410bd31c168e574f7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>在 Azure 存储中断时该怎么办
 Microsoft 一直努力确保所提供的服务始终可用。 但有时候，各种不可控因素会导致一个或多个区域出现计划外服务中断，对我们造成影响。 为了帮助你应对这些偶发事件，我们提供了下述针对 Azure 存储服务的概述性指导。
@@ -26,10 +26,10 @@ Microsoft 一直努力确保所提供的服务始终可用。 但有时候，各
 ## <a name="how-to-prepare"></a>如何准备
 每个客户都应准备好自己的灾难恢复计划，这很重要。 从存储中断进行恢复时，通常需要操作人员和自动化过程的参与，目的是在正常运行状态下重新激活应用程序。 制定自己的灾难恢复计划时，请参阅以下 Azure 文档：
 
-* [Azure 应用程序的灾难恢复和高可用性](/azure/architecture/resiliency/disaster-recovery-high-availability-azure-applications.md)
-* [Azure 复原技术指南](/azure/architecture/resiliency.md)
+* [可用性清单](https://docs.microsoft.com/azure/architecture/checklist/availability)
+* [设计适用于 Azure 的弹性应用程序](/azure/architecture/resiliency)
 * [Azure Site Recovery 服务](https://azure.microsoft.com/services/site-recovery/)
-* [Azure 存储复制](storage-redundancy.md)
+* [Azure 存储复制](storage-redundancy)
 * [Azure 备份服务](https://azure.microsoft.com/services/backup/)
 
 ## <a name="how-to-detect"></a>如何检测

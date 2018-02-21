@@ -3,7 +3,7 @@ title: "使用 Azure Log Analytics 优化 Active Directory 环境 | Microsoft �
 description: "可以使用 Active Directory 运行状况检查解决方案定期评估环境的风险和运行状况。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
-ms.author: magoedte;banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8f6cfc678d0b6443ac1aa440941eb2b5c664564
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: f026c605b84c5f2b6420e975a06d7c02227efbd9
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>使用 Log Analytics 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 02/03/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-* Active Directory 运行状况检查解决方案要求在每台装有 Microsoft Monitoring Agent (MMA) 的计算机上安装受支持版本的 .NET Framework 4.5.2 或更高版本。  MMA 代理由 System Center 2016 - Operations Manager 和 Operations Manager 2012 R2 以及 Log Analytics 服务使用。 
+* Active Directory 运行状况检查解决方案要求在每台装有 Microsoft Monitoring Agent (MMA) 的计算机上安装受支持版本的 .NET Framework 4.5.2 或更高版本。  MMA 代理由 System Center 2016 - Operations Manager 和 Operations Manager 2012 R2 以及 Log Analytics 服务使用。
 * 该解决方案支持运行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2 以及 Windows Server 2016 的域控制器。
 * 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure Marketplace 添加 Active Directory 运行状况检查解决方案。  无需进一步的配置。
 
@@ -62,13 +62,13 @@ ms.lasthandoff: 02/03/2018
 
 Active Directory 运行状况检查使用已启用的代理收集以下来源的数据：
 
-- 注册表 
-- LDAP 
+- 注册表
+- LDAP
 - .NET framework
-- 事件日志 
+- 事件日志
 - Active Directory 服务接口 (ADSI)
 - Windows PowerShell
-- 文件数据 
+- 文件数据
 - Windows Management Instrumentation (WMI)
 - DCDIAG 工具 API
 - 文件复制服务 (NTFRS) API
@@ -109,7 +109,7 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>查看针对重点区域的建议并采取纠正措施
 3. 在 Azure 门户中的 Log Analytics 工作区单击“概述”磁贴。
-4. 在“概述”页上，单击“Active Directory 运行状况检查”磁贴。 
+4. 在“概述”页上，单击“Active Directory 运行状况检查”磁贴。
 5. 在“运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。
 6. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“**受影响的对象**”下的建议，以查看有关为何给出此建议的详细信息。<br><br> ![运行状况检查建议图像](./media/log-analytics-ad-assessment/ad-healthcheck-dashboard-02.png)
 7. 可以采取“建议的操作”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且合规性分数将提高。 已更正的项会显示为“通过的对象”。
@@ -133,7 +133,7 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 2. 在单独的行上粘贴或键入要 Log Analytics 忽略的每个建议的 RecommendationId，保存并关闭该文件。
 3. 将以下文件夹中的文件置于每台要让 Log Analytics 忽略建议的计算机上。
    * 在具有 Microsoft Monitoring Agent（直接连接或通过 Operations Manager 连接）的计算机上 - *SystemDrive*:\Program Files\Microsoft Monitoring Agent\Agent
-   * 在 Operations Manager 2012 R2 管理服务器上 - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server 
+   * 在 Operations Manager 2012 R2 管理服务器上 - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
    * 在 Operations Manager 2016 管理服务器上 - *SystemDrive*:\Program Files\Microsoft System Center 2016\Operations Manager\Server
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>验证建议是否已被忽略

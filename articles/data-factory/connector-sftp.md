@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 046172d8c4cff880c8e5d59834f5753927fb90c2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 55379add493224770ca7e0e26fd607cd0a2cf892
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从 SFTP 服务器复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,7 +65,7 @@ SFTP 链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 有权访问 SFTP 服务器的用户。 |是 |
-| password | 用户 (userName) 的密码。 将此字段标记为 SecureString。 | 是 |
+| password | 用户 (userName) 的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 
 **示例：**
 
@@ -104,11 +104,11 @@ SFTP 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | userName | 有权访问 SFTP 服务器的用户 |是 |
 | privateKeyPath | 指定集成运行时可以访问的私钥文件的绝对路径。 仅当在“connectVia”中指定自承载类型的集成运行时时适用。 | 指定 `privateKeyPath` 或 `privateKeyContent`。  |
-| privateKeyContent | Base64 编码的 SSH 私钥内容。 SSH 私钥应采用 OpenSSH 格式。 将此字段标记为 SecureString。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 |
-| passPhrase | 如果密钥文件受通行短语保护，请指定用于解密私钥的通行短语/密码。 将此字段标记为 SecureString。 | 如果私钥文件受通行短语的保护，则为 Yes。 |
+| privateKeyContent | Base64 编码的 SSH 私钥内容。 SSH 私钥应采用 OpenSSH 格式。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 |
+| passPhrase | 如果密钥文件受通行短语保护，请指定用于解密私钥的通行短语/密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 如果私钥文件受通行短语的保护，则为 Yes。 |
 
 > [!NOTE]
-> SFTP 连接器仅支持 OpenSSH 密钥。 请确保密钥文件格式正确。 可使用 Putty 工具将 .ppk 格式转换为 OpenSSH 格式。
+> SFTP 连接器支持 RSA/DSA OpenSSH 密钥。 请确保密钥文件内容以“-----BEGIN [RSA/DSA] PRIVATE KEY-----”开头。 如果私钥文件是 ppk 格式文件，请使用 Putty 工具从 .ppk 转换为 OpenSSH 格式。 
 
 **示例 1：使用私钥 filePath 进行 SshPublicKey 身份验证**
 
