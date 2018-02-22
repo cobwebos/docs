@@ -4,7 +4,7 @@ description: "介绍 Azure 虚拟机上运行的 SQL Server 数据库的备份�
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/15/2016
 ms.author: mikeray
-ms.openlocfilehash: 65557938673c5442758396a47873be1016e0f71b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 16fef048e7c795f3d21fbc4185f6ba31bbc885fb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的备份和还原
 ## <a name="overview"></a>概述
@@ -82,7 +82,7 @@ SQL Server 2014 包括以下增强功能：
 有关 SQL Server 2008 中的 SQL Server 备份和还原的信息，请参阅[在 SQL Server 中备份和还原数据库 (SQL Server 2008)](https://msdn.microsoft.com/library/ms187048%28v=sql.100%29.aspx)。
 
 ## <a name="next-steps"></a>后续步骤
-规划 Azure VM 中的 SQL Server 部署时，可在以下教程中找到预配指导：[Provisioning a SQL Server Virtual Machine on Azure with Azure Resource Manager](virtual-machines-windows-portal-sql-server-provision.md)（使用 Azure Resource Manager 在 Azure 上预配 SQL Server 虚拟机）。
+规划 Azure VM 中的 SQL Server 部署时，可在以下教程中找到预配指导：[使用 Azure 资源管理器在 Azure 上预配 SQL Server 虚拟机](virtual-machines-windows-portal-sql-server-provision.md)。
 
 尽管备份和还原可用于迁移数据，但是，Azure VM 上的 SQL Server 可能还存在更便捷的数据迁移路径。 有关迁移选项和建议的完整讨论，请参阅[将数据库迁移到 Azure VM 上的 SQL Server](virtual-machines-windows-migrate-sql.md)。
 

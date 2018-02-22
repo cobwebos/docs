@@ -15,11 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: 5e3c729ce3e75665078d7f33baed943087fbe0ca
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: ee7febeb04d3a956b4a0a11b69f8f34acee23067
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>在 Azure 计算模拟器中使用 Visual Studio 探查器来本地测试云服务的性能
 可通过各种工具和技术来测试云服务的性能。
@@ -44,31 +44,35 @@ ms.lasthandoff: 10/27/2017
 
 为了进行演示，请将一些代码添加到项目中，这些代码将占用大量时间，从而演示某个明显的性能问题。 例如，将以下代码添加到辅助角色项目：
 
-    public class Concatenator
+```csharp
+public class Concatenator
+{
+    public static string Concatenate(int number)
     {
-        public static string Concatenate(int number)
+        int count;
+        string s = "";
+        for (count = 0; count < number; count++)
         {
-            int count;
-            string s = "";
-            for (count = 0; count < number; count++)
-            {
-                s += "\n" + count.ToString();
-            }
-            return s;
+            s += "\n" + count.ToString();
         }
+        return s;
     }
+}
+```
 
 在辅助角色的 RoleEntryPoint-derived 类中从 RunAsync 方法调用此代码。 （忽略有关以同步方式运行方法的警告。）
 
-        private async Task RunAsync(CancellationToken cancellationToken)
-        {
-            // TODO: Replace the following with your own logic.
-            while (!cancellationToken.IsCancellationRequested)
-            {
-                Trace.TraceInformation("Working");
-                Concatenator.Concatenate(10000);
-            }
-        }
+```csharp
+private async Task RunAsync(CancellationToken cancellationToken)
+{
+    // TODO: Replace the following with your own logic.
+    while (!cancellationToken.IsCancellationRequested)
+    {
+        Trace.TraceInformation("Working");
+        Concatenator.Concatenate(10000);
+    }
+}
+```
 
 本地生成并运行云服务且不进行调试 (Ctrl+F5)，并将解决方案配置设置为 **Release**。 这会确保创建的所有文件和文件夹都用于本地运行应用程序，并确保启动所有仿真程序。 从任务栏启动计算模拟器 UI，以验证辅助角色是否正在运行。
 
@@ -88,9 +92,11 @@ ms.lasthandoff: 10/27/2017
  也可以通过附加到 WaIISHost.exe 来附加到 Web 角色。
 如果应用程序中有多个辅助角色进程，则需要使用 processID 将它们区分开来。 可以通过访问 Process 对象以编程方式查询 processID。 例如，如果将此代码添加到角色中 RoleEntryPoint 派生的类的 Run 方法，则可在计算模拟器 UI 中查看日志以了解要连接到的进程。
 
-    var process = System.Diagnostics.Process.GetCurrentProcess();
-    var message = String.Format("Process ID: {0}", process.Id);
-    Trace.WriteLine(message, "Information");
+```csharp
+var process = System.Diagnostics.Process.GetCurrentProcess();
+var message = String.Format("Process ID: {0}", process.Id);
+Trace.WriteLine(message, "Information");
+```
 
 若要查看日志，请启动计算模拟器 UI。
 
@@ -126,16 +132,18 @@ ms.lasthandoff: 10/27/2017
 ## <a name="4-make-changes-and-compare-performance"></a>4：进行更改并比较性能
 也可在代码更改之前或之后比较性能。  停止正在运行的进程，并编辑代码以将字符串串联操作替换为使用 StringBuilder：
 
-    public static string Concatenate(int number)
+```csharp
+public static string Concatenate(int number)
+{
+    int count;
+    System.Text.StringBuilder builder = new System.Text.StringBuilder("");
+    for (count = 0; count < number; count++)
     {
-        int count;
-        System.Text.StringBuilder builder = new System.Text.StringBuilder("");
-        for (count = 0; count < number; count++)
-        {
-             builder.Append("\n" + count.ToString());
-        }
-        return builder.ToString();
+        builder.Append("\n" + count.ToString());
     }
+    return builder.ToString();
+}
+```
 
 执行其他性能运行，并比较性能。 在性能资源管理器中，如果运行位于同一会话中，则只需选择两个报告，打开快捷菜单，并选择“**比较性能报告**”。 若要与其他性能会话中的运行进行比较，请打开“**分析**”菜单，并选择“**比较性能报告**”。 在显示的对话框中指定这两个文件。
 

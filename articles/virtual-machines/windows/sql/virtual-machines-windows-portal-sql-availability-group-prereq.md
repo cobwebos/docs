@@ -4,7 +4,7 @@ description: "本教程演示如何配置用于在 Azure VM 中创建 SQL Server
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 0748e0ffa405fc02f6da7e2c412beec12510fde5
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 85ad53f0b7b4b14784bb0755ee22763d124e63ba
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>完成用于在 Azure 虚拟机中创建 Alwayson 可用性组的必备组件配置
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 11/17/2017
 
    ![资源组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. 单击“资源组”。
-5. 单击“创建” 。
+5. 单击“创建”。
 6. 在“资源组”边栏选项卡的“资源组名称”下，键入资源组的名称。 例如，键入 **sql-ha-rg**。
 7. 若有多个 Azure 订阅，请验证该订阅是否为要在其中创建可用性组的 Azure 订阅。
 8. 选择一个位置。 该位置是要创建可用性组的 Azure 区域。 对于本教程，会在单个 Azure 位置构建所有资源。
@@ -94,7 +94,7 @@ Azure 将创建资源组，并在门户中固定资源组的快捷方式。
 
    本示例使用子网名称 **Admin**。此子网用于域控制器。
 
-5. 单击“创建” 。
+5. 单击“创建”。
 
    ![配置虚拟网络](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/06-configurevirtualnetwork.png)
 
@@ -114,7 +114,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
    ![配置虚拟网络](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/07-addsubnet.png)
 5. 创建第二个子网。 单击“+ 子网”。
 6. 在“添加子网”边栏选项卡中，通过在“名称”下键入 sqlsubnet 配置子网。 Azure 会自动指定一个有效的**地址范围**。 请确认此地址范围中至少有 10 个地址。 生产环境中可能需要更多地址。
-7. 单击 **“确定”**。
+7. 单击“确定”。
 
     ![配置虚拟网络](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/08-configuresubnet.png)
 
@@ -189,7 +189,7 @@ Azure 会将返回到门户仪表板，并在创建新网络时发出通知。
 | **公共 IP 地址** |*与 VM 同名* |
 | **网络安全组** |*与 VM 同名* |
 | **可用性集** |adavailabilityset </br>**容错域**:2</br>**更新域**:2|
-| **诊断** |Enabled |
+| **诊断** |已启用 |
 | **诊断存储帐户** |*自动创建* |
 
    >[!IMPORTANT]
@@ -234,7 +234,7 @@ Azure 将创建虚拟机。
     | **部署配置** |**添加新林**<br/> **根域名** = corp.contoso.com |
     | **域控制器选项** |**DSRM 密码** = Contoso!0000<br/>**确认密码** = Contoso!0000 |
 14. 单击“下一步”浏览向导中的其他页。 在“必备项检查”页上，确认看到以下消息：“所有先决条件检查都成功通过”。 查看任何适用的警告消息，但可继续安装。
-15. 单击“安装” 。 **ad-primary-dc** 虚拟机会自动重新启动。
+15. 单击“安装”。 **ad-primary-dc** 虚拟机会自动重新启动。
 
 ### <a name="note-the-ip-address-of-the-primary-domain-controller"></a>记下主域控制器的 IP 地址
 
@@ -261,7 +261,7 @@ Azure 将创建虚拟机。
 
 3. 单击“自定义”，键入主域控制器的专用 IP 地址。
 
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 ### <a name="configure-the-second-domain-controller"></a>配置第二个域控制器
 在主域控制器重新启动之后，可以配置第二个域控制器。 此可选步骤适用于实现高可用性。 遵循以下步骤配置第二个域控制器：
@@ -389,7 +389,7 @@ Azure 将创建虚拟机。
 2. 在“服务器管理器”中，单击“本地服务器”。
 3. 单击“工作组”链接。
 4. 在“计算机名”选项上，单击“更改”。
-5. 选中“域”复选框并在文本框中键入 **corp.contoso.com**。 单击 **“确定”**。
+5. 选中“域”复选框并在文本框中键入 **corp.contoso.com**。 单击“确定”。
 6. 在“Windows 安全性”弹出对话框中，指定默认域管理员帐户 (**CORP\DomainAdmin**) 和密码 (**Contoso!0000**) 的凭据。
 7. 在看到“欢迎使用 corp.contoso.com 域”消息时，请单击“确定”。
 8. 单击“关闭”，并单击弹出对话框中的“立即重新启动”。
@@ -443,7 +443,7 @@ Azure 将创建虚拟机。
 
 1. 将该登录名设置为 sysadmin 固定服务器角色的成员。
 
-1. 单击 **“确定”**。
+1. 单击“确定”。
 
 在另一个 SQL Server VM 上重复上述步骤。
 
@@ -486,7 +486,7 @@ Azure 将创建虚拟机。
 
    ![SQL 防火墙](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/35-tcpports.png)
 
-5. 单击“下一步”。
+5. 单击“资源组名称” 的 Azure 数据工厂。
 6. 在“操作”页上，保持选中“允许连接”，并单击“下一步”。
 7. 在“配置文件”页上，接受默认设置，并单击“下一步”。
 8. 在“名称”页的“名称”文本框中指定一个规则名称（如 Azure LB Probe），并单击“完成”。

@@ -2,17 +2,17 @@
 title: "使用 OMS Log Analytics 监视 Azure SQL 数据同步 | Microsoft 文档"
 description: "了解如何通过使用 OMS Log Analytics 监视 Azure SQL 数据同步"
 services: sql-database
-ms.date: 11/7/2017
+ms.date: 11/07/2017
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: ace0eb671556dc980836464a365731d6100eab25
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 8683b3aec569f210529c1188cbbf514f7956b340
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>使用 OMS Log Analytics 监视 SQL 数据同步（预览版） 
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/10/2017
 
 4.  在“Runbook 文件”下，使用给定的 `DataSyncLogPowerShellRunbook` 文件。 将“Runbook 类型”设置为 `PowerShell`。 为 runbook 提供一个名称。
 
-5.  选择“创建” 。 现在你拥有了一个 runbook。
+5.  选择“创建”。 现在你拥有了一个 runbook。
 
 6.  在 Azure 自动化帐户下，请选择“共享资源”下的“变量”选项卡。
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 11/10/2017
 
 5.  将“定期”设置为“重复执行”，并设置所需间隔。 在脚本和 OMS 中，请在此处使用相同的间隔。
 
-6.  选择“创建” 。
+6.  选择“创建”。
 
 ### <a name="check-the-automation"></a>检查自动化
 
@@ -140,7 +140,7 @@ ms.lasthandoff: 11/10/2017
 
 5.  在“操作”下，将“电子邮件通知”设置为“是”。 输入所需的电子邮件收件人。
 
-6.  单击“保存” 。 现在，当错误发生时，指定的收件人就会收到电子邮件通知。
+6.  单击“ **保存**”。 现在，当错误发生时，指定的收件人就会收到电子邮件通知。
 
 ## <a name="create-an-oms-view-for-monitoring"></a>创建要监控的 OMS 视图。
 

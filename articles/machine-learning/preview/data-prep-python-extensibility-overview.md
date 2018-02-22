@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 76ed1a93af22620ccc2074168b3ff20f6bb4c37d
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 936d3718c84cad49221e64b65e60bea7e37a523c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="data-preparations-python-extensions"></a>数据准备 Python 扩展
 作为一种填补内置功能之间功能差距的方法，Azure 机器学习数据准备包含多个级别的扩展性。 在本文档中，我们将通过 Python 脚本概述扩展性。 
@@ -101,7 +101,7 @@ import scipy as sp
 ### <a name="windows"></a>Windows 
 在 Windows 中找到位置的方法是，查找 python 特定于应用程序的安装及其脚本目录。 默认位置为：  
 
-`C:\Users\<user>\AppData\Local\AmlWorkbench\Python\Scripts.` 
+`C:\Users\<user>\AppData\Local\AmlWorkbench\Python\Scripts` 
 
 然后运行以下命令之一： 
 
@@ -114,7 +114,7 @@ import scipy as sp
 ### <a name="mac"></a>Mac 
 在 Mac 中找到位置的方法是，查找 Python 特定于应用程序的安装及其脚本目录。 默认位置为： 
 
-`/Users/<user>/Library/Caches/AmlWorkbench>/Python/bin` 
+`/Users/<user>/Library/Caches/AmlWorkbench/Python/bin` 
 
 然后运行以下命令之一： 
 

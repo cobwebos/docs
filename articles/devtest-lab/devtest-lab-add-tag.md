@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
 ms.author: v-craic
-ms.openlocfilehash: 38b6612bc33326b758b357dca09081c02d294e5d
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 72e82b207a543a9020b38b2c4494717e9f648ab7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室添加标记
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/02/2018
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>在现有实验室中管理标记的具体步骤
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 必要时，选择“更多服务”，并从列表中选择“开发测试实验室”。 实验室可能已显示在“所有资源”下的“仪表板”上。
+1. 如果需要，请选择“所有服务”，并从列表中选择“开发测试实验室”。 实验室可能已显示在“所有资源”下的“仪表板”上。
 1. 在实验室列表中，选择要在其中添加或管理标记的实验室。  
 1. 在实验室的“概览”区域中，选择“配置和策略”。  
 

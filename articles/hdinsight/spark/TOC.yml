@@ -95,8 +95,6 @@
           href: apache-spark-streaming-overview.md
         - name: 在 YARN 中创建高度可用的 Spark 流式处理作业
           href: apache-spark-streaming-high-availability.md
-        - name: 处理流事件
-          href: apache-spark-eventhub-streaming.md
         - name: 使用事件中心进行结构化流式处理
           href: apache-spark-eventhub-structured-streaming.md
         - name: 将结构化流式处理与 Kafka 配合使用

@@ -9,11 +9,11 @@ ms.date: 11/14/2017
 ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: 3bc28d6744725e7c58d78c5262d9e50d3bb674e8
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: b82ff3edc3515d9dce465c7a7ed6084a2bfe25c2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-manage-your-azure-location-based-services-account-and-keys"></a>如何管理 Azure Location Based Services 帐户和密钥
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="create-a-new-account"></a>创建新帐户
 
-1. 单击 Azure 门户左上角的“新建”按钮。
+1. 在 Azure 门户的左上角单击“创建资源”。
 
 2. 搜索并选择“Location Based Services”，然后单击“创建”。
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm:
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 0541e63a1d3467b9691032e66892efe8f0f0cad8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: c8b25082170eb03c1ebc5965e273868982a3846f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory 的托管服务标识 (MSI) 的常见问题解答和已知问题
 
@@ -46,6 +46,7 @@ ms.lasthandoff: 02/03/2018
 - CentOS 7.1
 - RedHat 7.2
 - Ubuntu 15.04
+- Ubuntu 16.04
 
 目前不支持其他 Linux 发行版，该扩展在不受支持的发行版上运行可能会失败。
 

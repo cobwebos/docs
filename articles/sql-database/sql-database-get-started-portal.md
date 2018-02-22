@@ -14,13 +14,13 @@ ms.workload: Active
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/12/2018
+ms.date: 02/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 7a57593825f816a03b59f6c5228243670f1e9e9e
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 425e2186d4eba5db358ebb3a014c3563c4443eb5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>在 Azure 门户中创建 Azure SQL 数据库
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 02/14/2018
 
 请按以下步骤创建包含 Adventure Works LT 示例数据的 SQL 数据库。
 
-1. 单击 Azure 门户左上角的“新建”按钮。
+1. 在 Azure 门户的左上角单击“创建资源”。
 
 2. 从“新建”页中选择“数据库”，然后从“新建”页的“SQL 数据库”中选择“创建”。
 
@@ -172,7 +172,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 有了数据库以后，即可使用偏好的工具进行连接和查询。 若要了解详细信息，请选择下面的工具：
 
 - [SQL Server Management Studio](sql-database-connect-query-ssms.md)
-- [Contact.java](sql-database-connect-query-vscode.md)
+- [Visual Studio Code](sql-database-connect-query-vscode.md)
 - [.NET](sql-database-connect-query-dotnet.md)
 - [PHP](sql-database-connect-query-php.md)
 - [Node.js](sql-database-connect-query-nodejs.md)

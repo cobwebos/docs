@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 10/05/2017
+ms.date: 02/15/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 726bbafa9e4ba35cfa4a9cbf4d89056d52fe7963
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0f3ce7496427b6975eb4ac476e7d1737321ed2e9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="understand-azure-iot-edge-modules---preview"></a>了解 Azure IoT Edge 模块 - 预览版
 
@@ -50,7 +50,7 @@ IoT Edge 模块映像包含能够充分利用 IoT Edge 运行时的管理、安�
 
 模块孪生是存储模块信息和配置属性的 JSON 文档。 此概念与 IoT 中心的[设备孪生][lnk-device-twin]概念类似。 模块孪生的结构与设备孪生完全相同。 用于与这两种类型的孪生进行交互的 API 也是相同的。 两者之间唯一的区别是用来实例化客户端 SDK 的标识。 
 
-```
+```csharp
 // Create a DeviceClient object. This DeviceClient will act on behalf of a 
 // module since it is created with a module’s connection string instead 
 // of a device connection string. 

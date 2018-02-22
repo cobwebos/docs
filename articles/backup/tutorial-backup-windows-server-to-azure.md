@@ -1,26 +1,26 @@
 ---
 title: "将 Windows Server 备份到 Azure | Microsoft Docs"
 description: "本教程详细介绍了如何将本地 Windows Server 备份到恢复服务保管库。"
-services: back up
+services: backup
 documentationcenter: 
 author: saurabhsensharma
 manager: shivamg
 editor: 
 keywords: "windows server 备份; 备份 windows server; 备份和灾难恢复"
 ms.assetid: 
-ms.service: back up
-ms.workload: storage-back up-recovery
+ms.service: backup
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/23/2017
+ms.date: 2/14/2018
 ms.author: saurabhsensharma;markgal;
 ms.custom: mvc
-ms.openlocfilehash: 0dbf3850c7fcccb1a02e70a19b498522a4ce0e79
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: de0398b7f295894a3cac7c67b68cef237c3ac2c2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="back-up-windows-server-to-azure"></a>将 Windows Server 备份到 Azure
 
@@ -118,7 +118,7 @@ Microsoft Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保�
 
 4. 单击“添加项”，然后在打开的对话框中选择“系统状态”，以及要备份的文件或文件夹。 然后单击“确定”。
 
-5. 单击“下一步”。
+5. 单击“资源组名称” 的 Azure 数据工厂。
 
 6. 在“指定备份计划(系统状态)”页上，指定需为系统状态触发文件和文件夹备份的具体时间（哪天或哪周），然后单击“下一步”。 
 

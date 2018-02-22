@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/6/2017
-ms.openlocfilehash: c8949e4f66623951ef66005b3acc2b2279486b4d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 82841833ea0c63d22c43f9509fe9f88f9e9edebe
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="model-management-setup"></a>模型管理安装
 
@@ -42,16 +42,7 @@ Azure Machine Learning Workbench 和 [Azure DSVM](https://docs.microsoft.com/azu
 使用“以管理员身份运行”打开命令提示符，然后运行以下命令：
 
 ```cmd
-pip install azure-cli
-pip install azure-cli-ml
-```
- 
->[!NOTE]
->如果已安装了较早的版本，请先使用以下命令卸载它：
->
-
-```cmd
-pip uninstall azure-cli-ml
+pip install -r https://aka.ms/az-ml-o16n-cli-requirements-file
 ```
 
 ### <a name="installing-or-updating-on-linux"></a>在 Linux 上安装（或更新）
@@ -59,8 +50,7 @@ pip uninstall azure-cli-ml
 
 ```bash
 sudo -i
-pip install azure-cli
-pip install azure-cli-ml
+pip install -r https://aka.ms/az-ml-o16n-cli-requirements-file
 ```
 
 ### <a name="configuring-docker-on-linux"></a>在 Linux 上配置 Docker

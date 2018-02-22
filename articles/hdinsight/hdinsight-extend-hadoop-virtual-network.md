@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/08/2018
+ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: 8bd5bebb04303b83a21bc1434e713ce26de54ae9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e0ca77fb49bfdd0a47c7efe746d58a93dd4eafc1
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
 
@@ -299,6 +299,7 @@ HDInsight 在多个端口上公开服务。 使用虚拟设备防火墙时，必
     | &nbsp; | 美国东部 | 13.82.225.233</br>40.71.175.99 | 443 | 入站 |
     | &nbsp; | 美国中北部 | 157.56.8.38</br>157.55.213.99 | 443 | 入站 |
     | &nbsp; | 美国中西部 | 52.161.23.15</br>52.161.10.167 | 443 | 入站 |
+    | &nbsp; | 美国西部 | 13.64.254.98</br>23.101.196.19 | 443 | 入站 |
     | &nbsp; | 美国西部 2 | 52.175.211.210</br>52.175.222.222 | 443 | 入站 |
 
     若要获取用于 Azure 政府版的 IP 地址的信息，请参阅 [Azure 政府智能 + 分析](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)文档。

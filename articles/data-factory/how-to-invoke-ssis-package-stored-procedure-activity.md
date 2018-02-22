@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 39d60592c7fcbc937dc9f86e4c8b6962a51fd6ef
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 89eb2e567e06660efa5feddce1db0fcdb47792f3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
 本文介绍如何使用存储过程活动从 Azure 数据工厂管道中调用 SSIS 包。 
@@ -196,7 +196,7 @@ ms.lasthandoff: 02/14/2018
 
     ```json
     {
-        "name": "AzureSqlDbLinkedService",
+        "name": "AzureSqlDatabaseLinkedService",
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
@@ -235,7 +235,7 @@ ms.lasthandoff: 02/14/2018
                     "description":"Runs an SSIS package",
                     "type": "SqlServerStoredProcedure",
                     "linkedServiceName": {
-                        "referenceName": "AzureSqlDbLinkedService",
+                        "referenceName": "AzureSqlDatabaseLinkedService",
                         "type": "LinkedServiceReference"
                     },
                     "typeProperties": {

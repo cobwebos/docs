@@ -1,10 +1,10 @@
 ---
 title: "配置 AlwaysOn 可用性组侦听器 - Microsoft Azure | Microsoft 文档"
-description: "使用具有一个或多个 IP 地址的内部负载均衡器在 Azure Resource Manager 模型上配置可用性组侦听器。"
+description: "使用具有一个或多个 IP 地址的内部负载均衡器在 Azure 资源管理器模型上配置可用性组侦听器。"
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 ms.assetid: 14b39cde-311c-4ddf-98f3-8694e01a7d3b
 ms.service: virtual-machines-sql
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: 74fa1e4c9cfa608a9a385f3dd82a0599fbcc421c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5efb72f450261e098b638af023001ddb2a5015cf
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>配置一个或多个 Always On 可用性组侦听器 - Resource Manager
 本主题说明如何：
@@ -28,14 +28,14 @@ ms.lasthandoff: 10/11/2017
 
 可用性组侦听器是客户端连接以获得数据库数据库访问权限的虚拟网络名称。 在 Azure 虚拟机上，负载均衡器持有侦听器的 IP 地址。 负载均衡器将流量路由到侦听探测端口的 SQL Server 实例。 通常，可用性组使用内部负载均衡器。 Azure 内部负载均衡器可以托管一个或多个 IP 地址。 每个 IP 地址使用特定的探测端口。 本文档说明如何使用 PowerShell 创建负载均衡器，或将 IP 地址添加到 SQL Server 可用性组的现有负载均衡器。 
 
-将多个 IP 地址分配到内部负载均衡器是 Azure 的一项新增功能，只能在 Resource Manager 模型中使用。 若要完成此任务，需要在 Resource Manager 模型中的 Azure 虚拟机上部署 SQL Server 可用性组。 这两个 SQL Server 虚拟机必须属于同一个可用性集。 可以使用 [Microsoft 模板](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)在 Azure Resource Manager 中自动创建可用性组。 此模板会自动可用性组，包括内部负载均衡器。 如果需要，可以[手动配置 Always On 可用性组](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)。
+将多个 IP 地址分配到内部负载均衡器是 Azure 的一项新增功能，只能在 Resource Manager 模型中使用。 若要完成此任务，需要在 Resource Manager 模型中的 Azure 虚拟机上部署 SQL Server 可用性组。 这两个 SQL Server 虚拟机必须属于同一个可用性集。 可以使用 [Microsoft 模板](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)在 Azure 资源管理器中自动创建可用性组。 此模板会自动可用性组，包括内部负载均衡器。 如果需要，可以[手动配置 Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-tutorial.md)。
 
 本主题要求事先配置可用性组。  
 
 相关主题包括：
 
-* [在 Azure VM (GUI) 中配置 AlwaysOn 可用性组](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)   
-* [使用 Azure Resource Manager 和 PowerShell 配置 VNet 到 VNet 连接](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+* [在 Azure VM (GUI) 中配置 AlwaysOn 可用性组](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
+* [使用 Azure 资源管理器和 PowerShell 配置 VNet 到 VNet 连接](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
@@ -106,7 +106,7 @@ foreach($VMName in $VMNames)
 > [!NOTE]
 > 对于 SQL Server 可用性组，每个 IP 地址需要一个特定的探测端口。 例如，如果负载均衡器上有一个 IP 地址使用探测端口 59999，该负载均衡器上的其他任何 IP 地址就不能使用探测端口 59999。
 
-* 有关负载均衡器限制的信息，请参阅[网络限制 - Azure Resource Manager](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)下面的**每个负载均衡器的专用前端 IP**。
+* 有关负载均衡器限制的信息，请参阅[网络限制 - Azure 资源管理器](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)下面的**每个负载均衡器的专用前端 IP**。
 * 有关可用性组限制的信息，请参阅[限制（可用性组）](http://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG)。
 
 以下脚本将新的 IP 地址添加到现有负载均衡器。 ILB 使用侦听器端口作为负载均衡前端端口。 此端口可以是 SQL Server 正在侦听的端口。 对于 SQL Server 的默认实例，此端口为 1433。 可用性组的负载均衡规则需要浮动 IP（直接服务器返回），因此后端端口与前端端口相同。 请更新环境的变量。 
@@ -196,7 +196,7 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
 
 
 ## <a name="for-more-information"></a>更多信息
-有关详细信息，请参阅[在 Azure VM 中手动配置 Always On 可用性组](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)。
+有关详细信息，请参阅[在 Azure VM 中手动配置 Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-tutorial.md)。
 
 ## <a name="powershell-cmdlets"></a>PowerShell cmdlet
 使用以下 PowerShell cmdlet 为 Azure 虚拟机创建内部负载均衡器。

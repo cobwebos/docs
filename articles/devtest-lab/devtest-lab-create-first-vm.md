@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2017
 ms.author: v-craic
-ms.openlocfilehash: c807789dc2b47fe3632fc4ecf597904d8b0bbf6f
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 95fc017e64ac5c8a31be93790f53eb7fefa8f69a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-your-first-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的实验室中创建第一个 VM
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/02/2018
 
 ## <a name="steps-to-add-your-first-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加第一个 VM 的步骤
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 选择“更多服务”，并从列表中选择“开发测试实验室”。
+1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 1. 从实验室列表中选择要在其中创建 VM 的实验室。  
 1. 在实验室的“概述”边栏选项卡上，选择“+ 添加”。  
 

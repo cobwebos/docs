@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: e1bc0f27b14beef91b4deb68dc625d75195445fb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6611bd07ad4c65953349c62cae3ece735fd85e70
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>保护 Azure AD 中的特权访问
 保护特权访问是帮助保护现代组织中的业务资产的首要步骤。 特权帐户是指掌控和管理 IT 系统的帐户。 网络攻击者会攻击这些帐户来获取组织数据和系统的访问权限。 为了保护特权访问，应隔离此类帐户和系统，使其免受恶意用户的威胁。
@@ -50,7 +50,7 @@ Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案，可�
 ## <a name="time-bound-privileges"></a>时间约束的特权
 某些组织可能发现它们有太多拥有高特权角色的用户。 用户可能因为某个特定活动（例如注册某个服务）而被添加到该角色，但之后却不经常使用这些特权。
 
-为了降低特权公开时间并提高用户使用的可见性，可将用户限制为仅“就在当时”(JIT) 具有其特权，或在缩短的持续时间内分配这些角色，从而有把握自动撤销特权。 对于 Azure Active Directory、Azure 资源（预览）和 Microsoft Online Services，可使用 [Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM)。
+为了降低特权公开时间并提高用户使用的可见性，可将用户限制为仅“就在当时”(JIT) 具有其特权，或在缩短的持续时间内分配这些角色，从而有把握自动撤销特权。 对于 Azure Active Directory、Azure 资源（预览）和 Microsoft Online Services，可使用 [Azure AD Privileged Identity Management (PIM)](https://aka.ms/AzurePIM)。
 
 ![PIM 仪表板][2]
 
@@ -68,7 +68,7 @@ Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案，可�
 * 启用 [Azure AD Identity Protection](../active-directory-identityprotection.md)
 * 启用[条件性访问控制](../active-directory-conditional-access-azure-portal.md)
 
-若要深入了解如何构建完整的安全路线图，请参阅[针对企业结构设计的 Microsoft 云安全性](http://aka.ms/securecustomer)文档中的“客户责任和路线图”部分。 若要深入了解如何运用 Microsoft 服务来帮助实现上述任意主题中的功能，请联系 Microsoft 代表或访问[网络安全解决方案网页](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)。
+若要深入了解如何构建完整的安全路线图，请参阅[针对企业结构设计的 Microsoft 云安全性](https://aka.ms/securecustomer)文档中的“客户责任和路线图”部分。 若要深入了解如何运用 Microsoft 服务来帮助实现上述任意主题中的功能，请联系 Microsoft 代表或访问[网络安全解决方案网页](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)。
 
 <!--Image references-->
 [1]: ../media/active-directory-privileged-identity-management-configure/Search_PIM.png

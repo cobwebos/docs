@@ -39,6 +39,8 @@
       href: log-analytics-faq.md
     - name: 数据使用
       href: log-analytics-usage.md
+    - name: 数据安全
+      href: log-analytics-data-security.md
     - name: 管理访问权限
       href: log-analytics-manage-access.md
     - name: 监视混合环境

@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 17675f870a015e86f98bf286a9b1c2bbc05c16cd
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 803b0bbff12c8ce471c0bff5e22e24601b8ce07f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>快速入门：将第一个 IoT Edge 模块从 Azure 门户部署到 Windows 设备 - 预览
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/18/2017
 3. 安装 [Windows 上的 Python 2.7][lnk-python] 并确保可以使用 pip 命令。
 4. 运行以下命令，下载 IoT Edge 控制脚本。
 
-   ```
+   ```cmd
    pip install -U azure-iot-edge-runtime-ctl
    ```
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/18/2017
 >    * Windows IoT Core（内部版本 16299）
 >
 > 对于 Windows IoT Core，请按照[在 Windows IoT Core 上安装 IoT Edge 运行时][lnk-install-iotcore]中的说明进行操作。 否则，只能[将 Docker 配置为使用 Windows 容器][lnk-docker-containers]，并根据需要使用以下 PowerShell 命令验证先决条件：
->    ```
+>    ```powershell
 >    Invoke-Expression (Invoke-WebRequest -useb https://aka.ms/iotedgewin)
 >    ```
 
@@ -78,19 +78,19 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它由两个模块组成
 
 使用上一节的 IoT Edge 设备连接字符串配置运行时。
 
-```
+```cmd
 iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
 ```
 
 启动运行时。
 
-```
+```cmd
 iotedgectl start
 ```
 
 检查 Docker，查看 IoT Edge 代理是否正作为模块运行。
 
-```
+```cmd
 docker ps
 ```
 

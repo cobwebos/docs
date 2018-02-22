@@ -4,7 +4,7 @@ description: "了解如何在 Azure 虚拟机上运行完整版本的 SQL Server
 services: virtual-machines-windows
 documentationcenter: 
 author: rothja
-manager: jhubbard
+manager: craigg
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-sql
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/14/2017
 ms.author: jroth
-ms.openlocfilehash: 95a18e4b2437ca628e84f6d6f580e12f2f26e111
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 268ae1dae1a247ee63adef22403f89680daa4961
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虚拟机上的 SQL Server 是什么？ (Windows)
 
@@ -95,9 +95,9 @@ Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL VM 还
 * [虚拟机概述](../overview.md)
 
 ### <a name="storage"></a>存储
-* [Microsoft Azure 存储简介](../../../storage/common/storage-introduction.md)
+* [Microsoft Azure 存储空间简介](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>联网
+### <a name="networking"></a>网络
 * [虚拟网络概述](../../../virtual-network/virtual-networks-overview.md)
 * [Azure 中的 IP 地址](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [在 Azure 门户中创建完全限定的域名](../portal-create-fqdn.md)

@@ -15,11 +15,11 @@ ms.date: 01/30/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 520a52161438c967b7614ab01b2e9892612254f0
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 82fa6d3f04dc528c0e2d95dae82e7a7f8787ea7c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>用于 Azure 基于角色的访问控制的内置角色
 Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和服务的内置角色。 不能修改内置角色的定义。 但是，可以创建 [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)，以满足组织的特定需要。
@@ -61,7 +61,6 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | [监视查阅者](#monitoring-reader) |可以读取所有监视数据 |
 | [监视参与者](#monitoring-contributor) |可以读取监视数据和编辑监视设置 |
 | [网络参与者](#network-contributor) |可管理所有网络资源 |
-| [New Relic APM 帐户参与者](#new-relic-apm-account-contributor) |可管理 New Relic 应用程序性能管理帐户和应用程序 |
 | [所有者](#owner) |可管理一切内容（包括访问权限） |
 | [读者](#reader) |可查看一切内容，但不可作出更改 |
 | [Redis 缓存参与者](#redis-cache-contributor) |可管理 Redis 缓存 |
@@ -440,19 +439,6 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | Microsoft.Resources/deployments/* |创建和管理资源组部署 |
 | Microsoft.Resources/subscriptions/resourceGroups/read |读取资源组 |
 | Microsoft.Support/* |创建和管理支持票证 |
-
-### <a name="new-relic-apm-account-contributor"></a>New elic APM 帐户参与者
-可管理 New Relic 应用程序性能管理帐户和应用程序
-
-| **操作** |  |
-| --- | --- |
-| Microsoft.Authorization/*/read |读取角色和角色分配 |
-| Microsoft.Insights/alertRules/* |创建和管理警报规则 |
-| Microsoft.ResourceHealth/availabilityStatuses/read |读取资源的运行状况 |
-| Microsoft.Resources/deployments/* |创建和管理资源组部署 |
-| Microsoft.Resources/subscriptions/resourceGroups/read |读取资源组 |
-| Microsoft.Support/* |创建和管理支持票证 |
-| NewRelic.APM/accounts/* |创建并管理 New Relic 应用程序性能管理帐户 |
 
 ### <a name="owner"></a>所有者
 可管理一切内容（包括访问权限）

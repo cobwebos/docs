@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: v-craic
-ms.openlocfilehash: 27a80ddb110ba47bf9c1284aa48d2f3af1a87145
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: c940f5646bc7845db7b774d7ada40b8105534d69
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>使用 PowerShell 将 VHD 文件上传到实验室的存储帐户
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/02/2018
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 选择“更多服务”，并从列表中选择“开发测试实验室”。
+1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 
 1. 从实验室列表，选择所需的实验室。  
 
