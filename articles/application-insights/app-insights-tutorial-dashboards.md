@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 0d2f98ca2fb39289b2916ddd24590924856507d6
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 50d2545d5145f1d93a1ea9fed3e4f98b474d41b2
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 创建自定义 KPI 仪表板
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 11/01/2017
 
 3. 在屏幕的顶部，单击“查看仪表板”以返回到仪表板。
 
-4. “概述时间线”现在已添加到仪表板。  单击并将其拖动至相应位置，然后依次单击“完成自定义”和“发布更改”。 
+4. “时间线指标图表”现已添加到仪表板。 单击并将其拖动至相应位置，然后依次单击“完成自定义”和“发布更改”。 
 
     ![包含指标的仪表板](media/app-insights-tutorial-dashboards/dashboard-03.png)
 

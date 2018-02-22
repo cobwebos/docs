@@ -3,8 +3,8 @@ title: "创建和发布 Azure 堆栈中的应用商店项 |Microsoft 文档"
 description: "创建和发布 Azure 堆栈中的应用商店项。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 77e5f60c-a86e-4d54-aa8d-288e9a889386
 ms.service: azure-stack
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
-ms.author: erikje
-ms.openlocfilehash: 64203ce186665aada98fbe8daed971164a650399
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: jeffgo
+ms.openlocfilehash: 5ac91dac3cb446abaf07492d8b6ec8aa0c120ef4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="create-and-publish-a-marketplace-item"></a>创建和发布应用商店项目
+# <a name="create-and-publish-a-marketplace-item"></a>创建和发布 Marketplace 项目
 
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
@@ -100,14 +101,14 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="reference-marketplace-item-manifestjson"></a>参考： 应用商店项 manifest.json
 ### <a name="identity-information"></a>标识信息
-| 名称 | 必选 | 类型 | 约束 | 说明 |
+| 名称 | 需要 | Type | 约束 | 说明 |
 | --- | --- | --- | --- | --- |
-| 名称 |X |String |[A-Za-z0-9] + | |
-| 发布者 |X |String |[A-Za-z0-9] + | |
+| 名称 |X |String |[A-Za-z0-9]+ | |
+| 发布者 |X |String |[A-Za-z0-9]+ | |
 | 版本 |X |String |[SemVer v2](http://semver.org/) | |
 
-### <a name="metadata"></a>Metadata
-| 名称 | 必选 | 类型 | 约束 | 说明 |
+### <a name="metadata"></a>元数据
+| 名称 | 需要 | Type | 约束 | 说明 |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |80 个字符的建议 |如果它的长度大于 80 个字符门户不可能正常显示项目名称。 |
 | PublisherDisplayName |X |String |建议的 30 个字符 |如果它的长度超过 30 个字符门户不可能正常显示你的发布服务器名称。 |
@@ -133,7 +134,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="links"></a>链接
 每个应用商店项目可以包含各种指向其他内容。 链接指定为名称和 Uri 的列表。
 
-| 名称 | 必选 | 类型 | 约束 | 说明 |
+| 名称 | 需要 | Type | 约束 | 说明 |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |最多为 64 个字符 | |
 | Uri |X |URI | | |
@@ -141,7 +142,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="additional-properties"></a>其他属性
 除了前面的元数据，应用商店作者可以提供自定义的键/值对数据采用以下形式：
 
-| 名称 | 必选 | 类型 | 约束 | 说明 |
+| 名称 | 需要 | Type | 约束 | 说明 |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |最大值为 25 个字符 | |
 | 值 |X |String |最多 30 个字符 | |

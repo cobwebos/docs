@@ -3,8 +3,8 @@ title: "创建在不同的 Azure 堆栈开发工具包环境中的两个虚拟�
 description: "云管理员用于创建两个单节点 Azure 堆栈开发工具包环境之间的站点到站点 VPN 连接的分步过程。"
 services: azure-stack
 documentationcenter: 
-author: ScottNapolitan
-manager: darmour
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 3f1b4e02-dbab-46a3-8e11-a777722120ec
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/10/2017
-ms.author: scottnap
-ms.openlocfilehash: fa2a940620e06521fa110fa13dcbc3050635a502
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: scottnap
+ms.openlocfilehash: 886d56169c5500c9175b7ddc43edfc29c5142fbb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>创建在不同的 Azure 堆栈开发工具包环境中的两个虚拟网络之间的站点到站点 VPN 连接
 ## <a name="overview"></a>概述
@@ -52,7 +53,7 @@ ms.lasthandoff: 10/11/2017
 |---------|---------|---------|
 |虚拟网络名称     |VNET-01|VNET-02 |
 |虚拟网络地址空间 |10.0.10.0/23|10.0.20.0/23|
-|子网名称     |子网-01|子网-02|
+|子网名称     |Subnet-01|Subnet-02|
 |子网地址范围|10.0.10.0/24 |10.0.20.0/24 |
 |网关子网     |10.0.11.0/24|10.0.21.0/24|
 |外部 BGPNAT 地址     |         |         |
@@ -94,13 +95,13 @@ ms.lasthandoff: 10/11/2017
     ![创建新的虚拟网络](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
 
 3. 转到**Marketplace**，然后选择**网络**。
-4. 选择**虚拟网络**。
+4. 选择“虚拟网络”。
 5. 有关**名称**，**地址空间**，**子网名称**，和**子网地址范围**，使用前面在网络中显示的值配置表。
 6. 在**订阅**，先前创建的订阅显示。
 7. 有关**资源组**，你可以创建资源组，也可以已经拥有一个帐户，如果选择**使用现有**。
 8. 验证默认位置。
 9. 选择“固定到仪表板”。
-10. 选择“创建” 。
+10. 选择“创建”。
 
 ### <a name="create-the-gateway-subnet"></a>创建网关子网
 1. 在仪表板中，打开你前面创建的 VNET-01 虚拟网络资源。
@@ -125,7 +126,7 @@ ms.lasthandoff: 10/11/2017
 7. 在**名称**，输入**GW1 PiP**，然后选择**确定**。
 8.  默认情况下，为**VPN 类型**，**基于路由的**选择。
     保留**基于路由的**VPN 类型。
-9. 验证“订阅”和“位置”是否正确。 你可以固定到仪表板的资源。 选择“创建” 。
+9. 验证“订阅”和“位置”是否正确。 你可以固定到仪表板的资源。 选择“创建”。
 
 ### <a name="create-the-local-network-gateway"></a>创建本地网关
 在此 Azure Stack 评估部署中实现*本地网关* 稍微不同于实际 Azure 部署中的情况。
@@ -184,13 +185,13 @@ ms.lasthandoff: 10/11/2017
 1. 通过使用租户帐户登录。
 2. 在用户门户中，选择**新建**。
 3. 转到**Marketplace**，然后选择**网络**。
-4. 选择**虚拟网络**。
+4. 选择“虚拟网络”。
 5. 使用前面在网络配置表中显示的信息以确定的值为 POC2**名称**，**地址空间**，**子网名称**，和**子网地址范围**。
 6. 在**订阅**，先前创建的订阅显示。
 7. 有关**资源组**，创建新的资源组或如果你已经有一个，则选择**使用现有**。
 8. 验证默认**位置**。
 9. 选择“固定到仪表板”。
-10. 选择“创建” 。
+10. 选择“创建”。
 
 ### <a name="create-the-gateway-subnet"></a>创建网关子网
 1. 打开刚才创建的虚拟网络资源 (**VNET-02**) 从仪表板。
@@ -211,7 +212,7 @@ ms.lasthandoff: 10/11/2017
 7. 在**名称**，输入**GW2 PiP**，然后选择**确定**。
 8. 默认情况下，为**VPN 类型**，**基于路由的**选择。
     保留**基于路由的**VPN 类型。
-9. 验证“订阅”和“位置”是否正确。 你可以固定到仪表板的资源。 选择“创建” 。
+9. 验证“订阅”和“位置”是否正确。 你可以固定到仪表板的资源。 选择“创建”。
 
 ### <a name="create-the-local-network-gateway-resource"></a>创建本地网络网关资源
 
@@ -365,4 +366,4 @@ ms.lasthandoff: 10/11/2017
 2. 转到**的所有资源**，然后选择**POC2 POC1**连接。 **连接**显示。
 4. 上**连接**边栏选项卡、 的统计信息**中的数据**和**输出数据量**显示。 在以下屏幕截图中，较大的数字归因于另外的文件传输。 你应看到那里一些非零值。
    
-    ![数据输入和输出](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)
+    ![数据流入和流出](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)

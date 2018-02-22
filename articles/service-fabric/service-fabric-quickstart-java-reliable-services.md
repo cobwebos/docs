@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: aec4db684a9067e1dee424f2c0e05e3674f84d1a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8f4d121ba76d63b70fa6976125457942a0e98aa9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-java-application"></a>创建 Java 应用程序
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理微服务和容器。 
@@ -79,16 +79,42 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 ## <a name="deploy-the-application-to-azure"></a>将应用程序部署到 Azure
 
 ### <a name="set-up-your-azure-service-fabric-cluster"></a>设置 Azure Service Fabric 群集
-要将应用程序部署到 Azure 中的群集，可自行创建群集，或使用合作群集。
+若要将应用程序部署到 Azure 中的群集，可创建自己的群集。
 
 合作群集是 Azure 上托管的免费限时 Service Fabric 群集。 这些群集由 Service Fabric 团队运行，任何人均可在其中部署应用程序和了解平台。 若要使用合作群集，请[按照说明操作](http://aka.ms/tryservicefabric)。 
+
+若要在安全合作群集上执行管理操作，可以使用 Service Fabric Explorer、CLI 或 Powershell。 若要使用 Service Fabric Explorer，需从合作群集网站下载 PFX 文件并将证书导入到证书存储（Windows 或 Mac）中，或者导入到浏览器 (Ubuntu) 中。 合作群集提供的自签名证书没有密码。 
+
+若要使用 Powershell 或 CLI 执行管理操作，需要 PFX (Powershell) 或 PEM (CLI)。 若要将 PFX 转换为 PEM 文件，请运行以下命令：  
+
+```bash
+openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
+```
 
 若要了解如何创建自己的群集，请参阅[在 Azure 上创建 Service Fabric 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
 
 > [!Note]
-> Web 前端服务配置为侦听端口 8080 上是否有传入流量。 请确保此端口在群集中处于打开状态。 如果使用的是合作群集，此端口已处于打开状态。
+> Spring Boot 服务配置为侦听端口 8080 上的传入流量。 请确保此端口在群集中处于打开状态。 如果使用的是合作群集，此端口已处于打开状态。
 >
 
+### <a name="add-certificate-information-to-your-application"></a>向应用程序添加证书信息
+
+需将证书指纹添加到应用程序，因为它使用 Service Fabric 编程模型。 
+
+1. 在安全群集上运行时，需要 ```Voting/VotingApplication/ApplicationManiest.xml``` 文件中的证书的指纹。 运行以下命令，提取证书指纹。
+
+    ```bash
+    openssl x509 -in [CERTIFICATE_FILE] -fingerprint -noout
+    ```
+
+2. 在 ```Voting/VotingApplication/ApplicationManiest.xml``` 中的 **ApplicationManifest** 标记下添加以下代码片段。 **X509FindValue** 应该是上一步的指纹（无分号）。 
+
+    ```xml
+    <Certificates>
+        <SecretsCertificate X509FindType="FindByThumbprint" X509FindValue="0A00AA0AAAA0AAA00A000000A0AA00A0AAAA00" />
+    </Certificates>   
+    ```
+    
 ### <a name="deploy-the-application-using-eclipse"></a>使用 Eclipse 部署应用程序
 应用程序和群集现已准备就绪，可直接通过 Eclipse 部署到群集。
 
@@ -100,8 +126,8 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
          {
             "ConnectionIPOrURL": "lnxxug0tlqm5.westus.cloudapp.azure.com",
             "ConnectionPort": "19080",
-            "ClientKey": "",
-            "ClientCert": ""
+            "ClientKey": "[path_to_your_pem_file_on_local_machine]",
+            "ClientCert": "[path_to_your_pem_file_on_local_machine]"
          }
     }
     ```
@@ -121,7 +147,7 @@ Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过�
 
 若要缩放 Web 前端服务，请按照以下步骤操作：
 
-1. 在群集中打开 Service Fabric Explorer - 例如 `http://lnxxug0tlqm5.westus.cloudapp.azure.com:19080`。
+1. 在群集中打开 Service Fabric Explorer - 例如 `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080`。
 2. 单击树视图中 fabric:/Voting/VotingWeb 节点旁边的省略号（三个点），再选择“缩放服务”。
 
     ![Service Fabric Explorer 缩放服务](./media/service-fabric-quickstart-java/scaleservicejavaquickstart.png)

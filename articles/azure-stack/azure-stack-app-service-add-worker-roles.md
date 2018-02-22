@@ -3,9 +3,9 @@ title: "横向扩展应用程序服务-Azure 堆栈中的辅助角色 |Microsoft
 description: "缩放 Azure 堆栈应用程序服务的详细的指南"
 services: azure-stack
 documentationcenter: 
-author: apwestgarth
-manager: slinehan
-editor: anwestg
+author: brenduns
+manager: femila
+editor: 
 ms.assetid: 3cbe87bd-8ae2-47dc-a367-51e67ed4b3c0
 ms.service: azure-stack
 ms.workload: app-service
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: anwestg
-ms.openlocfilehash: a9be9011062f07d59842d417bf6761ec81c39275
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: brenduns
+ms.reviewer: anwestg
+ms.openlocfilehash: ddd9820715e964218db8b88fb5211b3725c808b9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>Azure 堆栈上的 app Service： 添加更多的基础结构或辅助角色
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*  

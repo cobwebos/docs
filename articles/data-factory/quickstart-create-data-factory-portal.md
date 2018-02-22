@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 02/01/2018
 ms.author: jingwang
-ms.openlocfilehash: f17dc18825c929a75169875594c7b1a13ba1f6d7
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 7065b0b6e0576238e3b32fdbf7ac43b7fc2ae9e6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>使用 Azure 数据工厂 UI 创建数据工厂
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -38,8 +38,9 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 转到 [Azure 门户](https://portal.azure.com)。 
-2. 在左侧菜单中选择“新建”，然后依次选择“数据 + 分析”、“数据工厂”。 
+1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
+2. 转到 [Azure 门户](https://portal.azure.com)。 
+3. 在左侧菜单中选择“新建”，然后依次选择“数据 + 分析”、“数据工厂”。 
    
    ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 2. 在“新建数据工厂”页中，输入 **ADFTutorialDataFactory** 作为**名称**。 

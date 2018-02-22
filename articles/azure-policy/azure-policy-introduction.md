@@ -10,17 +10,17 @@ ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 37fdb8156e4507046a574ba681e2ea3f6909c4a6
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: bb6f08e8e6252233c51c47c63ca0aec4636247dd
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure 策略？
 
 IT 治理清楚地区分了业务目标和 IT 项目。 良好的 IT 治理涉及在战略级别上规划各项举措和设置优先级。 你的公司是否正遇到了大量似乎难以解决的 IT 问题？ 实施这些策略有助于优化管理，预防问题。 Azure 策略正适合用在这些策略的实施处。
 
-Azure 策略是 Azure 中的一项服务，可用于创建、分配和管理策略定义。 策略定义将在整个资源中强制实施不同的规则和操作，以便这些资源符合公司标准和服务级别协议。 Azure 策略对资源进行计算和扫描，并找到与所定义策略不相符的资源。 例如，可指定仅允许特定类型的虚拟机的策略。 或者，可要求所有资源都拥有特定标记。 在创建和更新资源时评估策略。
+Azure 策略是 Azure 中的一项服务，可用于创建、分配和管理策略定义。 策略定义将在整个资源中强制实施不同的规则和操作，以便这些资源符合公司标准和服务级别协议。 Azure 策略对资源进行计算和扫描，并找到与所定义策略不相符的资源。 例如，可以设置一个策略，只允许特定类型的虚拟机。 或者，可要求所有资源都拥有特定标记。 在创建和更新资源时评估策略。
 
 ## <a name="how-is-it-different-from-rbac"></a>策略与 RBAC 有什么不同？
 

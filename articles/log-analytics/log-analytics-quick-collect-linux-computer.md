@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/23/2018
+ms.date: 02/11/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 839fc3a326dca8b60c6750231b06d2369c3de2fc
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 804d9df37b5c89501200fc4e233108c09cce9262
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="collect-data-from-linux-computers-hosted-in-your-environment"></a>从托管在环境中的 Linux 计算机上收集数据
-[Azure Log Analytics](log-analytics-overview.md) 可直接从物理或虚拟 Linux 计算机及环境中的其他资源收集数据，并将数据置于单个存储库进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Linux 计算机中配置或收集数据。  有关 Azure Linux VM 的信息，请参阅以下主题[收集 Azure 虚拟机的相关数据](log-analytics-quick-collect-azurevm.md)。  
+# <a name="collect-data-from-linux-computer-hosted-in-your-environment"></a>从托管在环境中的 Linux 计算机收集数据
+[Azure Log Analytics](log-analytics-overview.md) 可直接从物理或虚拟 Linux 计算机及环境中的其他资源收集数据，并将数据置于单个存储库中进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Linux 计算机中配置或收集数据。  有关 Azure Linux VM 的信息，请参阅以下主题[收集 Azure 虚拟机的相关数据](log-analytics-quick-collect-azurevm.md)。  
 
-若要了解部署 Linux 代理的网络和系统要求，请参阅[使用 Azure Log Analytics 从环境收集数据](log-analytics-concept-hybrid.md#prerequisites)。
+若要了解部署 Linux 代理的网络和系统要求，请参阅 [Linux 操作系统的必备组件](log-analytics-concept-hybrid.md#prerequisites)。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -61,30 +61,33 @@ ms.lasthandoff: 01/23/2018
 >[!NOTE]
 >无法将适用于 Linux 的 OMS 代理配置为向多个 Log Analytics 工作区报告。  
 
-1. 要配置 Linux 计算机以连接至 Log Analytics，请运行以下命令，并提供先前复制的工作区 ID 和主密钥。  此命令将下载代理、验证其校验和并对其进行安装。 
+如果 Linux 计算机需要通过代理服务器与 Log Analytics 通信，可以在命令行中指定代理配置，方法是包括 `-p [protocol://][user:password@]proxyhost[:port]`。  *proxyhost* 属性接受代理服务器的完全限定域名或 IP 地址。 
+
+例如： `https://user01:password@proxy01.contoso.com:30443`
+
+1. 要配置 Linux 计算机以连接至 Log Analytics，请运行以下命令，并提供先前复制的工作区 ID 和主密钥。  以下命令将下载代理、验证其校验和并将其安装好。 
     
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-2. 要配置 Linux 计算机以连接至 Azure 政府云中的 Log Analytics，请运行以下命令，并提供先前所复制的工作区 ID 和主密钥。  此命令将下载代理、验证其校验和并对其进行安装。 
+    以下命令包括 `-p` 代理参数和示例语法。
+
+   ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
+    ```
+
+2. 要配置 Linux 计算机以连接至 Azure 政府云中的 Log Analytics，请运行以下命令，并提供先前所复制的工作区 ID 和主密钥。  以下命令将下载代理、验证其校验和并将其安装好。 
 
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-## <a name="configure-agent-to-communicate-with-a-proxy-server"></a>配置代理与代理服务器进行通信
+    以下命令包括 `-p` 代理参数和示例语法。
 
-如果 Linux 计算机需要通过代理服务器与 Log Analytics 通信，请执行以下步骤。  代理配置值具有以下语法 `[protocol://][user:password@]proxyhost[:port]`。  *proxyhost* 属性接受代理服务器的完全限定域名或 IP 地址。    
-
-1. 运行以下命令编辑文件 `/etc/opt/microsoft/omsagent/proxy.conf`，并针对特定设置更改相关的值。
-
+   ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ```
-    proxyconf="https://proxyuser:proxypassword@proxyserver01:30443"
-    sudo echo $proxyconf >>/etc/opt/microsoft/omsagent/proxy.conf
-    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf 
-    ```
-
 2. 运行以下命令重启代理： 
 
     ```
@@ -99,7 +102,7 @@ Log Analytics 可从 Linux Syslog 以及指定用于长期分析的性能计数�
 3. 在表中，取消选中严重性“信息”、“通知”和“调试”。 
 4. 单击页面顶部的“保存”来保存配置。
 5. 选择“Linux 性能数据”，在 Windows 计算机上启用性能计数器收集。 
-6. 首次为新的 Log Analytics 工作区配置 Linux 性能计数器时，可以选择快速创建几个通用的计数器。 将这些计数器在一个复选框中依次列出。<br><br> ![默认选中的 Windows 性能计数器](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png)。<br><br> 单击“添加所选性能计数器”。  随即会添加它们，并且通过 10 秒收集示例间隔进行预设。  
+6. 首次为新的 Log Analytics 工作区配置 Linux 性能计数器时，可以选择快速创建几个通用的计数器。 将这些计数器在一个复选框中依次列出。<br><br> ![选中的默认 Windows 性能计数器](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png)<br> 单击“添加所选性能计数器”。  随即会添加它们，并且通过 10 秒收集示例间隔进行预设。  
 7. 单击页面顶部的“保存”来保存配置。
 
 ## <a name="view-data-collected"></a>查看收集的数据
@@ -111,12 +114,9 @@ Log Analytics 可从 Linux Syslog 以及指定用于长期分析的性能计数�
 ## <a name="clean-up-resources"></a>清理资源
 如无需再使用，可从 Linux 计算机中删除代理，并删除 Log Analytics 工作区。  
 
-按以下步骤删除代理。
+若要删除代理，请在 Linux 计算机上运行以下命令。  *--purge* 参数可彻底删除代理及其配置。
 
-1. 将 Linux 代理[通用脚本](https://github.com/Microsoft/OMS-Agent-for-Linux/releases)下载到计算机。
-2. 在计算机上运行 bundle .sh file w the --purge 参数，彻底删除代理及其配置。
-
-    `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
+   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
 若要删除工作区，请选择前面创建的 Log Analytics 工作区，在资源页上单击“删除”。<br><br> ![删除 Log Analytics 资源](media/log-analytics-quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 

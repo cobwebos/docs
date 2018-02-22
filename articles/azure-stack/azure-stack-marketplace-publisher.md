@@ -3,8 +3,8 @@ title: "使用应用商店工具包来创建和发布的应用商店项 |Microso
 description: "了解如何使用发布工具包快速创建应用商店项"
 services: azure-stack
 documentationcenter: 
-author: HeathL17
-manager: ByronR
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 7/14/2017
-ms.author: helaw
-ms.openlocfilehash: 5b2c04d2cbc06e1572dc2e40712f6cf9d886aa1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: jeffgo
+ms.openlocfilehash: 61ee3296429f9641643f1c9268ae89e3691fcfa1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>添加使用发布工具的应用商店项
 你将内容添加到[Azure 堆栈应用商店](azure-stack-marketplace.md)使你的解决方案可供您和您的租户以进行部署。  应用商店工具包创建基于 IaaS Azure 资源管理器模板或 VM 扩展的 Azure 应用商店包 (.azpkg) 文件。  你还可以使用应用商店工具包发布.azpkg 文件，使用该工具创建或使用[手动](azure-stack-create-and-publish-marketplace-item.md)步骤。  本主题将指导您完成下载该工具、 创建基于 VM 模板中，应用商店项和再将该项目发布到 Azure 堆栈应用商店。     

@@ -16,16 +16,16 @@ ms.topic: tutorial
 ms.date: 10/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e7780a29f6633b444608d96012fabe67b9b6d924
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 504c4a666d1abd7a495d6759d62815f53f0b54fa
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-availability-sets"></a>如何使用可用性集
 
 
-本教程介绍如何使用称作“可用性集”的功能提高 Azure 上虚拟机解决方案的可用性和可靠性。 可用性集可确保在 Azure 上部署的 VM 能够跨多个隔离的硬件群集分布。 这样，就可以确保当 Azure 中发生硬件或软件故障时，只有一部分 VM 会受到影响，整体解决方案仍可使用和操作。
+本教程介绍如何使用称作“可用性集”的功能提高 Azure 上虚拟机解决方案的可用性和可靠性。 可用性集可确保在 Azure 上部署的 VM 能够跨多个隔离的硬件群集分布。 这样，就可以确保当 Azure 中发生硬件或软件故障时，只有一部分 VM 受到影响，整体解决方案仍可使用和操作。
 
 本教程介绍如何执行下列操作：
 
@@ -43,14 +43,14 @@ ms.lasthandoff: 10/11/2017
 
 可用性集是一种逻辑分组功能，在 Azure 中使用它可以确保将 VM 资源部署在 Azure 数据中心后，这些资源相互隔离。 Azure 确保可用性集中部署的 VM 能够跨多个物理服务器、计算机架、存储单元和网络交换机运行。 如果出现硬件或 Azure 软件故障，只有一部分 VM 会受到影响，整体应用程序仍会保持运行，可供客户使用。 如果想要构建可靠的云解决方案，可用性集是一项关键功能。
 
-假设某个基于 VM 的典型解决方案包含 4 个前端 Web 服务器，以及 2 个托管数据库的后端 VM。 在 Azure 中，若想在部署 VM 之前先定义两个可用性集：一个可用性集用于“Web”层级，另一个可用性集用于“数据库”层级。 创建新的 VM 时，可在 az vm create 命令中指定可用性集作为参数，Azure 会自动确保在可用性集中创建的 VM 在多个物理硬件资源之间保持独立。 如果运行某个 Web 服务器或数据库服务器 VM 的物理硬件有问题，可以确信 Web 服务器和数据库 VM 的其他实例会保持运行，因为它们位于不同的硬件上。
+假设某个基于 VM 的典型解决方案包含四个前端 Web 服务器，以及两个托管数据库的后端 VM。 在 Azure 中，若想在部署 VM 之前先定义两个可用性集：一个可用性集用于“Web”层级，另一个可用性集用于“数据库”层级。 创建新的 VM 时，可在 az vm create 命令中指定可用性集作为参数，Azure 会自动确保在可用性集中创建的 VM 在多个物理硬件资源之间保持独立。 如果运行某个 Web 服务器或数据库服务器 VM 的物理硬件有问题，可以确信 Web 服务器和数据库 VM 的其他实例会保持运行，因为它们位于不同的硬件上。
 
 在 Azure 中部署基于 VM 的可靠解决方案时，使用可用性集。
 
 
 ## <a name="create-an-availability-set"></a>创建可用性集
 
-可使用 [az vm availability-set create](/cli/azure/vm/availability-set#create) 创建可用性集。 在本示例中，将 myResourceGroupAvailability 资源组中名为 myAvailabilitySet 的可用性集的更新域数和容错域数均设置为 2。
+可使用 [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) 创建可用性集。 在本示例中，将 myResourceGroupAvailability 资源组中名为 myAvailabilitySet 的可用性集的更新域数和容错域数均设置为 2。
 
 创建资源组。
 
@@ -74,7 +74,7 @@ az vm availability-set create \
 
 必须在可用性集中创建 VM，确保它们正确地分布在硬件中。 创建后，无法将现有 VM 添加到可用性集中。 
 
-使用 [az vm create](/cli/azure/vm#create) 创建 VM 时，利用 `--availability-set` 参数指定可用性集，以指定该可用性集的名称。
+使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM 时，利用 `--availability-set` 参数指定可用性集，以指定该可用性集的名称。
 
 ```azurecli-interactive 
 for i in `seq 1 2`; do
@@ -92,13 +92,13 @@ done
 
 现在，我们已在新建的可用性集中创建了两个虚拟机。 由于它们在同一可用性集中，Azure 会确保 VM 及其所有资源（包括数据磁盘）分布在隔离的物理硬件上。 这种分布方式有助于确保提高整体 VM 解决方案的可用性。
 
-如果你通过转到“资源组”>“myResourceGroupAvailability”>“myAvailabilitySet”，在门户中查看可用性集，则应查看如何跨 2 个容错域和更新域分布 VM。
+如果通过转到“资源组”>“我的资源组可用性”>“我的可用性集”在门户中查看可用性集，则应查看如何跨两个容错域和更新域分布 VM。
 
 ![门户中的可用性集](./media/tutorial-availability-sets/fd-ud.png)
 
 ## <a name="check-for-available-vm-sizes"></a>检查可用的 VM 大小 
 
-稍后可向可用性集添加更多 VM，但需了解在硬件上可用的 VM 大小。  使用 [az vm availability-set list-sizes](/cli/azure/availability-set#list-sizes) 列出可用性集的硬件群集上所有可用的大小。
+稍后可向可用性集添加更多 VM，但需了解在硬件上可用的 VM 大小。  使用 [az vm availability-set list-sizes](/cli/azure/availability-set#az_availability_set_list_sizes) 列出可用性集的硬件群集上所有可用的大小。
 
 ```azurecli-interactive 
 az vm availability-set list-sizes \
@@ -109,7 +109,7 @@ az vm availability-set list-sizes \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习了如何执行以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 创建可用性集
@@ -119,5 +119,5 @@ az vm availability-set list-sizes \
 请转到下一教程，了解虚拟机规模集。
 
 > [!div class="nextstepaction"]
-> [创建 VM 规模集](tutorial-create-vmss.md)
+> [创建虚拟机规模集](tutorial-create-vmss.md)
 

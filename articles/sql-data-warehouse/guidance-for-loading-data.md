@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 12/13/2017
 ms.author: barbkess
-ms.openlocfilehash: 80974f7660696887783e97b674e2d9921fe2feac
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 277766c22e25945fb314aa51017a72f415cbab46
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>将数据加载到 Azure SQL 数据仓库中的最佳做法
 关于如何将数据加载到 Azure SQL 数据仓库中的建议以及与之相关的性能优化。 
@@ -120,15 +120,19 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 
 若要轮换 Azure 存储帐户密钥，请执行以下操作：
 
-1. 创建基于辅助存储访问密钥的第二个数据库范围凭据。
-2. 创建基于此新凭据的第二个外部数据源。
-3. 删除外部表后又创建该表，使之指向新的外部数据源。 
+对于每个已更改密钥的存储帐户，请发出 [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql.md) 命令。
 
-将外部表迁移到新的数据源之后，请执行以下清理任务：
+示例：
 
-1. 删除第一个外部数据源。
-2. 删除基于主存储访问密钥的第一个数据库范围凭据。
-3. 登录 Azure 并重新生成主访问密钥，供下次轮换时使用。
+已创建原始密钥
+
+CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1' 
+
+将密钥从密钥 1 轮换为密钥 2
+
+ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key2' 
+
+无需对基础外部数据源进行更改。
 
 
 ## <a name="next-steps"></a>后续步骤

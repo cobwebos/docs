@@ -13,11 +13,11 @@ ms.devlang:
 ms.topic: hero-article
 ms.date: 01/29/2018
 ms.author: spelluru
-ms.openlocfilehash: 9e0b0efdf28e6d8b99d1cdf702dd0698ad87da7b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: abb5fd4953709198f6071bbdd4a1dc86900f0183
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="provision-an-azure-ssis-integration-runtime-by-using-the-azure-data-factory-ui"></a>使用 Azure 数据工厂 UI 预配 Azure-SSIS 集成运行时
 本教程提供使用 Azure 门户在 Azure 数据工厂中预配 Azure-SSIS 集成运行时 (IR) 的步骤。 然后，可以使用 SQL Server Data Tools 或 SQL Server Management Studio 将 SQL Server Integration Services (SSIS) 包部署到 Azure 上的此运行时。 有关 Azure-SSIS IR 的概念性信息，请参阅 [Azure-SSIS 集成运行时概述](concepts-integration-runtime.md#azure-ssis-integration-runtime)。
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/01/2018
 
 > [!div class="checklist"]
 > * 创建数据工厂。
-> * 创建并启动 Azure-SSIS 集成运行时。
+> * 预配 Azure-SSIS 集成运行时。
 
 > [!NOTE]
 > 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
@@ -41,8 +41,9 @@ ms.lasthandoff: 02/01/2018
  
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。    
-2. 在左侧菜单中选择“新建”，然后依次选择“数据 + 分析”、“数据工厂”。 
+1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
+2. 登录到 [Azure 门户](https://portal.azure.com/)。    
+3. 在左侧菜单中选择“新建”，然后依次选择“数据 + 分析”、“数据工厂”。 
    
    ![在“新建”窗格中选择“数据工厂”](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
 3. 在“新建数据工厂”页的“名称”下，输入 **MyAzureSsisDataFactory**。 
@@ -69,7 +70,7 @@ ms.lasthandoff: 02/01/2018
 11. 创建完成后，会显示“数据工厂”页。
    
    ![数据工厂主页](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
-12. 选择“监视和管理”，在单独的选项卡中打开数据工厂用户界面 (UI)。 
+12. 选择“创作和监视”，在单独的选项卡中打开数据工厂用户界面 (UI)。 
 
 ## <a name="provision-an-azure-ssis-integration-runtime"></a>预配 Azure-SSIS 集成运行时
 
@@ -160,7 +161,7 @@ ms.lasthandoff: 02/01/2018
 
 > [!div class="checklist"]
 > * 创建数据工厂。
-> * 创建并启动 Azure-SSIS 集成运行时。
+> * 预配 Azure-SSIS 集成运行时。
 
 若要了解如何将数据从本地复制到云，请转到以下教程： 
 

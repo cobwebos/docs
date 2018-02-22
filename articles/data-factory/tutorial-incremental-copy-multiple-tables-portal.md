@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/20/2018
 ms.author: jingwang
-ms.openlocfilehash: c79bce401b0f1d67d7955f4c97a5dfac5008be0d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 11dedc8866fcc0239fd4a34b7ed73af34c6d5a4e
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
@@ -135,7 +135,7 @@ ms.lasthandoff: 01/23/2018
 
     ```
 
-### <a name="create-another-table-in-the-sql-database-to-store-the-high-watermark-value"></a>在 SQL 数据库中创建另一个表，用于存储高水印值
+### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>在 Azure SQL 数据库中创建另一个表，用于存储高水印值
 1. 针对 SQL 数据库运行以下 SQL 命令，创建名为 `watermarktable` 的表，用于存储水印值： 
     
     ```sql
@@ -157,7 +157,7 @@ ms.lasthandoff: 01/23/2018
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-sql-database"></a>在 SQL 数据库中创建存储过程 
+### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>在 Azure SQL 数据库中创建存储过程 
 
 运行以下命令，在 SQL 数据库中创建存储过程。 此存储过程在每次管道运行后更新水印值。 
 
@@ -175,7 +175,7 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures"></a>创建数据类型和其他存储过程
+### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>在 Azure SQL 数据库中创建数据类型和其他存储过程
 运行以下查询，在 SQL 数据库中创建两个存储过程和两个数据类型， 以便将源表中的数据合并到目标表中。
 
 ```sql
@@ -228,6 +228,7 @@ END
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
+1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。 
    
    ![新建 -> DataFactory](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory-menu.png)
@@ -422,7 +423,7 @@ END
     3. 选择“对象”作为参数**类型**。
 
     ![管道参数](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
-4. 将“ForEach”活动从“活动”工具箱拖放到管道设计器图面。 在属性窗口的“常规”选项卡中，输入 **IterateSQLTables**。 
+4. 在“活动”工具栏中展开“迭代和条件语句”，然后将 **ForEach** 活动拖放到管道设计器图面。 在属性窗口的“常规”选项卡中，输入 **IterateSQLTables**。 
 
     ![ForEach 活动 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
 5. 在“属性”窗口中切换到“设置”选项卡，然后输入 `@pipeline().parameters.tableList` 作为**项目**。 ForEach 活动循环访问一系列表，并执行增量复制操作。 
@@ -431,7 +432,7 @@ END
 6. 在管道中选择 **ForEach** 活动（如果尚未选择）。 单击“编辑(铅笔图标)”按钮。
 
     ![ForEach 活动 - 编辑](./media/tutorial-incremental-copy-multiple-tables-portal/edit-foreach.png)
-7. 从“活动”工具箱拖放**查找**活动，然后输入 **LookupOldWaterMarkActivity** 作为**名称**。
+7. 在“活动”工具箱中展开“常规”，将**查找**活动拖放到管道设计器图面，然后输入 **LookupOldWaterMarkActivity** 作为**名称**。
 
     ![第一个查找活动 - 名称](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-name.png)
 8. 在“属性”窗口中切换到“设置”选项卡，然后执行以下步骤： 
@@ -497,12 +498,13 @@ END
     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 19. 切换到“存储过程”选项卡，然后执行以下步骤：
 
-    1. 输入 `sp_write_watermark` 作为**存储过程名称**。 
-    2. 使用“新建”按钮添加以下参数： 
+    1. 至于“存储过程名称”，请选择 `sp_write_watermark`。 
+    2. 选择“导入参数”。 
+    3. 指定以下参数值： 
 
         | 名称 | Type | 值 | 
         | ---- | ---- | ----- |
-        | LastModifiedtime | datetime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)

@@ -12,25 +12,25 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8da7d9112c9527945ab4b524625603faa84cf00d
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 791992028d11633fc20f55ae1a34e7fcd442bf3a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>使用 Azure Location Based Services 搜索附近的兴趣点
+# <a name="search-nearby-points-of-interest-using-azure-location-based-services"></a>使用 Azure Location Based Services 搜索附近的兴趣点
 
 本教程介绍如何使用 Azure Location Based Services 设置一个帐户，然后使用提供的 API 搜索兴趣点。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 使用 Azure Location Based Services 创建帐户
 > * 了解 Azure Location Based Services 帐户的主密钥
-> * 使用地图控件 API 创建新网页
+> * 使用 Map Control API 创建新网页
 > * 使用搜索服务查找附近的兴趣点
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
 
-# <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
+## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 登录到 [Azure 门户](https://portal.azure.com)。
 
 <a id="createaccount"></a>

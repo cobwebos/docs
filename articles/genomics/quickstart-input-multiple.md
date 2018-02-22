@@ -10,18 +10,20 @@ ms.author: grhuynh
 ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
-ms.date: 12/07/2017
-ms.openlocfilehash: d410516f807b7914e15bed1fb93ee58d3e340d1e
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.date: 02/05/2018
+ms.openlocfilehash: 7aeb4d5ad939cefcf8300b78b4afcc9d91ca0624
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>使用来自同一示例的多个输入提交工作流
 
-本快速入门演示了在输入文件为多个**来自同一示例**的 FASTQ 或 BAM 文件的情况下，如何将工作流提交到 Microsoft 基因组学服务。 但请记住，**不能**在同一提交中混合 FASTQ 和 BAM 文件。
+本快速入门演示了在输入文件为多个**来自同一示例**的 FASTQ 或 BAM 文件的情况下，如何将工作流提交到 Microsoft 基因组学服务。 例如，如果在顺序器的多个通道中运行了**同一示例**，顺序器可能会为每个通道输出一组 FASTQ 文件。 可以不在比对与变体识别之前将这些 FASTQ 文件串联在一起，而是直接将所有这些输入提交到 `msgen` 客户端。 来自 `msgen` 客户端的输出将是**一组**文件，包括 .bam、.bai、.vcf 文件。 
 
-本主题假定你已安装和运行 `msgen` 客户端，并且熟悉如何使用 Azure 存储。 如果你已成功使用提供的示例数据提交工作流，则可开始学习本教程。 
+但请记住，**不能**在同一提交中混合 FASTQ 和 BAM 文件。 另外，**不能**从多个个体提交多个 FASTQ 或 BAM 文件。 
+
+本文假定你已安装和运行 `msgen` 客户端，并且熟悉如何使用 Azure 存储。 如果你已成功使用提供的示例数据提交工作流，则可开始学习本教程。 
 
 
 ## <a name="multiple-bam-files"></a>多个 BAM 文件
@@ -32,7 +34,7 @@ ms.lasthandoff: 12/13/2017
 
 ### <a name="submit-your-job-to-the-msgen-client"></a>将作业提交到 `msgen` 客户端 
 
-可以提交多个 BAM 文件，方法是将其所有名称传递到 --input-blob-name-1 参数。 请注意，所有文件都应该来自同一示例，但其顺序不重要。 下面是通过命令行进行的示例提交，适用于 Windows、Unix 和配置文件。 为清楚起见，添加了换行符：
+可以提交多个 BAM 文件，方法是将其所有名称传递到 --input-blob-name-1 参数。 请注意，所有文件都应该来自同一示例，但其顺序不重要。 以下部分详述了通过命令行进行的示例提交，适用于 Windows、Unix 和配置文件。 为清楚起见，添加了换行符：
 
 
 对于 Windows：
@@ -97,7 +99,7 @@ output_storage_account_container: outputs
 
 配对的 FASTQ 文件不仅需要来自同一示例，还需要一起处理。  将它们作为参数传递到 --input-blob-name-1 和 --input-blob-name-2 时，文件名的顺序很重要。 
 
-下面是通过命令行进行的示例提交，适用于 Windows、Unix 和配置文件。 为清楚起见，添加了换行符：
+以下部分详述了通过命令行进行的示例提交，适用于 Windows、Unix 和配置文件。 为清楚起见，添加了换行符：
 
 
 对于 Windows：

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: ff26d3ae159320f8c726b37eb0c68e6c5f2c2cc3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: edde9d8c6fe070e5323cf63d222c7cd6a8983e8a
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。 
@@ -154,6 +154,7 @@ END
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
+1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。 
    
    ![新建 -> DataFactory](./media/tutorial-incremental-copy-portal/new-azure-data-factory-menu.png)
@@ -192,7 +193,7 @@ END
 3. 在管道的“属性”窗口的“常规”页中，输入名称“IncrementalCopyPipeline”。 
 
    ![管道名称](./media/tutorial-incremental-copy-portal/pipeline-name.png)
-4. 请添加第一个查找活动，获取旧水印值。 在“活动”工具箱中展开“SQL 数据库”，将**查找**活动拖放到管道设计器图面。 将活动的名称更改为 **LookupOldWaterMarkActivity**。
+4. 请添加第一个查找活动，获取旧水印值。 在“活动”工具箱中展开“常规”，将**查找**活动拖放到管道设计器图面。 将活动的名称更改为 **LookupOldWaterMarkActivity**。
 
    ![第一个查找活动 - 名称](./media/tutorial-incremental-copy-portal/first-lookup-name.png)
 5. 切换到“设置”选项卡，针对“源数据集”单击“+ 新建”。 在此步骤中，请创建一个代表 **watermarktable** 中数据的数据集。 此表包含在前一复制操作中使用过的旧水印。 
@@ -224,7 +225,7 @@ END
 11. 通过单击顶部的管道选项卡，或者单击左侧树状视图中管道的名称，切换到管道编辑器。 在**查找**活动的属性窗口中，确认对于“源数据集”字段，是否已选择 **WatermarkDataset**。 
 
     ![管道 - 旧水印数据集](./media/tutorial-incremental-copy-portal/pipeline-old-watermark-dataset-selected.png)
-12. 在“活动”工具箱中展开“SQL 数据库”，将另一**查找**活动拖放到管道设计器图面，然后在属性窗口的“常规”选项卡中将名称设置为 **LookupNewWaterMarkActivity**。 此“查找”活动从特定表获取新的水印值，该表包含的源数据可以复制到目标。 
+12. 在“活动”工具箱中展开“常规”，将另一**查找**活动拖放到管道设计器图面，然后在属性窗口的“常规”选项卡中将名称设置为 **LookupNewWaterMarkActivity**。 此“查找”活动从特定表获取新的水印值，该表包含的源数据可以复制到目标。 
 
     ![第二个查找活动 - 名称](./media/tutorial-incremental-copy-portal/second-lookup-activity-name.png)
 13. 在第二个“复制”活动的属性窗口中切换到“设置”选项卡，然后单击“新建”。 请创建一个数据集，使之指向源表，该表包含新的水印值（LastModifyTime 的最大值）。 
@@ -295,7 +296,7 @@ END
 
         ![接收器数据集 - 连接设置](./media/tutorial-incremental-copy-portal/sink-dataset-connection-settings.png)
 28. 通过单击顶部的管道选项卡，或者单击左侧树状视图中管道的名称，切换到**管道**编辑器。 
-29. 在“活动”工具箱中，展开“SQL 数据库”，然后将**存储过程**活动从“活动”工具箱拖放到管道设计器图面。 将**复制**活动的绿色（成功）输出**连接**到**存储过程**活动。 
+29. 在“活动”工具箱中，展开“常规”，然后将**存储过程**活动从“活动”工具箱拖放到管道设计器图面。 将**复制**活动的绿色（成功）输出**连接**到**存储过程**活动。 
     
     ![“复制”活动 - 源](./media/tutorial-incremental-copy-portal/connect-copy-to-stored-procedure-activity.png)
 24. 在管道设计器中选择“存储过程活动”，将其名称更改为 **StoredProceduretoWriteWatermarkActivity**。 
@@ -306,26 +307,27 @@ END
     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. 切换到“存储过程”选项卡，然后执行以下步骤： 
 
-    1. 输入 **sp_write_watermark** 作为**存储过程名称**。 
-    2. 若要指定存储过程参数的值，请在“存储过程参数”部分单击“+ 新建”，然后输入以下值： 
+    1. 至于“存储过程名称”，请选择 **sp_write_watermark**。 
+    2. 若要指定存储过程参数的值，请单击“导入参数”，然后为参数输入以下值： 
 
         | 名称 | Type | 值 | 
         | ---- | ---- | ----- | 
-        | LastModifiedtime | datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
+        | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. 若要验证管道设置，请单击工具栏中的“验证”。 确认没有任何验证错误。 若要关闭“管道验证报告”窗口，请单击 >>。   
 
     ![验证管道](./media/tutorial-incremental-copy-portal/validate-pipeline.png)
-28. 单击“发布”按钮，将实体（链接服务、数据集和管道）发布到 Azure 数据工厂服务。 等待“发布成功”消息出现。 
+28. 选择“全部发布”按钮，将实体（链接服务、数据集和管道）发布到 Azure 数据工厂服务。 等待“发布成功”消息出现。 
 
     ![发布按钮](./media/tutorial-incremental-copy-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run"></a>触发管道运行
-单击工具栏中的“触发器”，然后单击“立即触发”。 
+1. 单击工具栏中的“触发器”，然后单击“立即触发”。 
 
-![“立即触发”按钮](./media/tutorial-incremental-copy-portal/trigger-now.png)
+    ![“立即触发”按钮](./media/tutorial-incremental-copy-portal/trigger-now.png)
+2. 在“管道运行”窗口中选择“完成”。 
 
 ## <a name="monitor-the-pipeline-run"></a>监视管道运行
 

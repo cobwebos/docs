@@ -3,8 +3,8 @@ title: "Azure Stack 中的重要功能和概念 | Microsoft Docs"
 description: "了解 Azure Stack 中的重要功能和概念。"
 services: azure-stack
 documentationcenter: 
-author: Heathl17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 09ca32b7-0e81-4a27-a6cc-0ba90441d097
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: fd16748e1369b8abcab38ce1945f72c681c344b8
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: b252d3d52c9bf3825ae2b443065e007dda141b24
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack 中的重要功能和概念
 

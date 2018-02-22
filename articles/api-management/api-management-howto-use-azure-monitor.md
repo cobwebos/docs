@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: db1ed08c4d4c9e9abd525ec13f5511da82ee1fe4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 445723242a76dcef4a6b137439728235d5d6e32a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -50,7 +50,7 @@ Azure Monitor 作为一项 Azure 服务，提供单一资源来监视所有 Azur
 活动日志提供针对 API 管理服务执行的操作的详细信息。 通过活动日志，可确定对 API 管理服务执行的任何写入操作 (PUT、POST、DELETE) 的“操作内容、操作人员和操作时间”。 
 
 > [!NOTE]
-> 活动日志不包括读取 (GET) 操作，或者通过经典发布服务器门户或使用原始管理 API 执行的操作。
+> 活动日志不包括读取 (GET) 操作或者通过 Azure 门户或原始管理 API 执行的操作。
 
 可在 API 管理服务中访问活动日志，或在 Azure Monitor 中访问所有 Azure 资源的日志。 
 

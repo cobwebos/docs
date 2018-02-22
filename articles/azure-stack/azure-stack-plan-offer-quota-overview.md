@@ -3,8 +3,8 @@ title: "Azure 堆栈计划、 产品/服务、 配额，和订阅概述 |Microso
 description: "作为云操作员，我想要了解 Azure 堆栈计划、 产品/服务、 配额和订阅。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/22/2017
-ms.author: erikje
-ms.openlocfilehash: 083ca2f0a06625810d2f90a682ba0b3110032e60
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: 7c395dfcdfcd509d8b32028badd1c1310ea67657
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>计划、产品/服务、配额和订阅概述
 
@@ -55,7 +56,7 @@ ms.lasthandoff: 10/11/2017
 
 在创建某项服务，服务管理员可以包括基本计划。 用户订阅该产品时，默认情况下包括这些基本计划。 在用户订阅时，他们有权 （具有相应的配额） 这些基本计划中指定的所有资源提供程序。
 
-### <a name="add-on-plans"></a>外接程序计划
+### <a name="add-on-plans"></a>加载项计划
 
 你还可包含可选的外接程序计划中某项服务。 默认情况下，订阅中不包含附加计划。 外接程序计划是 （与配额） 在订阅服务器可以将添加到其订阅产品/服务中可用的其他计划。 例如，你可以决定采用服务向客户提供具有一个试用版的有限资源的基本计划和外接程序计划具有更多实质性的资源。
 

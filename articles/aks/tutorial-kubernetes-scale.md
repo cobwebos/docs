@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: ff8cf813f9c932f867413dbf7e76f949e0de2f26
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 993a8b71b29952394a2ab6a2bdddd0fc5fd241ae
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="scale-application-in-azure-container-service-aks"></a>在 Azure 容器服务 (AKS) 中缩放应用程序
 
@@ -38,10 +38,10 @@ ms.lasthandoff: 12/11/2017
 
 如果在前面的教程中使用命令创建了 Kubernetes 群集，则它具有一个节点。 如果计划在群集上有更多或更少的容器工作负荷，则可以手动调整节点数。
 
-下面的示例将名为 myK8sCluster 的 Kubernetes 群集中的节点数增加到 3 个。 该命令需要几分钟时间完成。
+下面的示例将名为 myAKSCluster 的 Kubernetes 群集中的节点数增加到 3 个。 该命令需要几分钟时间完成。
 
 ```azurecli
-az aks scale --resource-group=myResourceGroup --name=myK8SCluster --node-count 3
+az aks scale --resource-group=myResourceGroup --name=myAKSCluster --node-count 3
 ```
 
 输出类似于：
@@ -52,7 +52,7 @@ az aks scale --resource-group=myResourceGroup --name=myK8SCluster --node-count 3
     "count": 3,
     "dnsPrefix": null,
     "fqdn": null,
-    "name": "myK8sCluster",
+    "name": "myAKSCluster",
     "osDiskSizeGb": null,
     "osType": "Linux",
     "ports": null,

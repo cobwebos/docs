@@ -7,14 +7,14 @@ author: vhorne
 manager: byronr
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 12/11/2017
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a97372002052570ccad2bb8bc442eb0dd1ca76d9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.openlocfilehash: 1e1732f48de9f95e669d0282d120e48b5fe5f0ef
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-stack-portal"></a>使用 Azure 堆栈门户创建 Linux 虚拟机
 
@@ -59,10 +59,10 @@ ms.lasthandoff: 12/08/2017
 
 ## <a name="create-the-virtual-machine"></a>创建虚拟机
 
-1. 单击**新建**按钮位于 Azure 堆栈门户左上角。
+1. 单击**创建资源**中 Azure 堆栈门户左上角。
 
 2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
-3. 单击“创建” 。
+3. 单击“创建”。
 
 4. 键入虚拟机信息。 对于“身份验证类型”，请选择“SSH 公钥”。 在你将粘贴你 SSH 公钥 （它以前保存到文件） 中，注意若要删除的所有前导或尾随空格。 完成后，单击“确定”。
 
@@ -119,9 +119,9 @@ sudo apt-get -y install nginx
 1. 虚拟机上**概述**页上，单击名称**资源组**。
 2. 选择**网络安全组**为虚拟机。 可以通过“类型”列来标识 NSG。 
 3. 在左侧菜单上，在**设置**，单击**入站安全规则**。
-4. 单击“添加”。
+4. 单击 **“添加”**。
 5. 在“名称”中，键入 **http**。 请确保将“端口范围”设置为 80，将“操作”设置为“允许”。 
-6. 单击 **“确定”**。
+6. 单击“确定”。
 
 
 ## <a name="view-the-nginx-welcome-page"></a>查看 NGINX 欢迎页

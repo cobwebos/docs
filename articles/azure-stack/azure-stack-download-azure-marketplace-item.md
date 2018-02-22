@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/30/2018
 ms.author: brenduns
-ms.openlocfilehash: 58f8287e5675e1134cb2fcceef9a9128ef97207c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.reviewer: jeffgo
+ms.openlocfilehash: a5b321bc06ef14207eddf5aa77ff983ada1e409f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>从 Azure 应用商店项下载到 Azure 堆栈
 

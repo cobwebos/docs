@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: yushwang
-ms.openlocfilehash: bb6f9f4df9afa9d0c1a75fbb1166798a2aef4bb4
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: f75732761cefd7706fe1555484148efe6cdc0e56
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
 
@@ -57,6 +57,7 @@ ms.lasthandoff: 12/19/2017
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[配置指南*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
 | Cisco |ASR |PolicyBased：IOS 15.1<br>RouteBased：IOS 15.2 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
 | Cisco |ISR |PolicyBased：IOS 15.0<br>RouteBased*：IOS 15.1 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[配置示例**](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Cisco |Meraki |不适用 |不兼容 |不兼容 |
 | Citrix |NetScaler MPX，SDX，VPX |10.1 及以上 |[配置指南](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |不兼容 |
 | F5 |BIG-IP 系列 |12.0 |[配置指南](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[配置指南](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.6 |  |[配置指南](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-56/) |
@@ -151,7 +152,7 @@ ms.lasthandoff: 12/19/2017
 |-  |**加密**|**身份验证**|**PFS 组**|
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |无         |
-| #N/A |AES256        |SHA1              |无         |
+| 2 |AES256        |SHA1              |无         |
 | 3 |3DES          |SHA1              |无         |
 | 4 |AES256        |SHA256            |无         |
 | 5 |AES128        |SHA1              |无         |
@@ -162,29 +163,29 @@ ms.lasthandoff: 12/19/2017
 |-  |**加密**|**身份验证**|**PFS 组**|
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |无         |
-| #N/A |AES256        |SHA1              |无         |
+| 2 |AES256        |SHA1              |无         |
 | 3 |3DES          |SHA1              |无         |
 | 4 |AES256        |SHA256            |无         |
 | 5 |AES128        |SHA1              |无         |
 | 6 |3DES          |SHA256            |无         |
 | 7 |DES           |SHA1              |无         |
 | 8 |AES256        |SHA1              |1            |
-| 9 |AES256        |SHA1              |#N/A            |
+| 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
 | 11|AES128        |SHA1              |1            |
-| 12|AES128        |SHA1              |#N/A            |
+| 12|AES128        |SHA1              |2            |
 | 13|AES128        |SHA1              |14           |
 | 14|3DES          |SHA1              |1            |
-| 15|3DES          |SHA1              |#N/A            |
-| 16|3DES          |SHA256            |#N/A            |
+| 15|3DES          |SHA1              |2            |
+| 16|3DES          |SHA256            |2            |
 | 17|AES256        |SHA256            |1            |
-| 18|AES256        |SHA256            |#N/A            |
+| 18|AES256        |SHA256            |2            |
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
 | 22|AES128        |SHA256            |无         |
 | 23|AES128        |SHA256            |1            |
-| 24|AES128        |SHA256            |#N/A            |
+| 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |
 | 26|3DES          |SHA1              |14           |
 

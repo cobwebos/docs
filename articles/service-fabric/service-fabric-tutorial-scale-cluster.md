@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/24/2017
+ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 63b4747164959b0e95f6d3f1908d1fd265589a98
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: bbbb31687ab0980d62b35d627c4b1708b7ae8288
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="scale-a-service-fabric-cluster"></a>缩放 Service Fabric 群集
 
@@ -85,7 +85,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-连接后，即可使用命令获取群集中每个节点的状态。 对于 PowerShell，请使用 `Get-ServiceFabricClusterHealth` 命令，而对于 sfctl，请使用 `` 命令。
+连接后，即可使用命令获取群集中每个节点的状态。 对于 PowerShell，请使用 `Get-ServiceFabricClusterHealth` 命令，而对于 sfctl，请使用 `sfctl cluster select` 命令。
 
 ## <a name="scale-out"></a>向外扩展
 
@@ -95,7 +95,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 $scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
 $scaleset.Sku.Capacity += 1
 
-Update-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
+Update-AzureRmVmss -ResourceGroupName $scaleset.ResourceGroupName -VMScaleSetName $scaleset.Name -VirtualMachineScaleSet $scaleset
 ```
 
 此代码将容量设为 6。
@@ -120,11 +120,11 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
 缩小虚拟机规模集时，规模集（大多情况下）会移除上次创建的虚拟机实例。 因此，需要找到上次创建的相应 Service Fabric 节点。 可以通过检查 Service Fabric 节点上最大 `NodeInstanceId` 属性值找到最近的节点。 下面的代码示例按节点实例排序并返回有最大 ID 值的实例的详细信息。 
 
 ```powershell
-Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
+Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
 ```
 
 ```azurecli
-`sfctl node list --query "sort_by(items[*], &instanceId)[-1]"`
+sfctl node list --query "sort_by(items[*], &name)[-1]"
 ```
 
 Service Fabric 群集需要了解此节点将被移除。 需要执行以下三个步骤：
@@ -146,8 +146,9 @@ sfcli：`sfctl node remove-state`
 以下代码块获取最近创建的节点，禁用、停止并将节点从群集中移除。
 
 ```powershell
+#### After you've connected.....
 # Get the node that was created last
-$node = Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
+$node = Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
 
 # Node details for the disable/stop process
 $nodename = $node.NodeName
@@ -202,7 +203,7 @@ else
 }
 ```
 
-在下面的“sfctl”代码中，使用以下命令获取最近创建节点 `sfctl node list --query "sort_by(items[*], &instanceId)[-1].[instanceId,name]"` 的 “node-name”和“node-instance-id”值。
+在下面的“sfctl”代码中，使用以下命令获取最近创建的节点 `sfctl node list --query "sort_by(items[*], &name)[-1].name"` 的 “node-name”值：
 
 ```azurecli
 # Inform the node that it is going to be removed
@@ -219,10 +220,10 @@ sfctl node remove-state --node-name _nt1vm_5
 > 使用以下“sfctl”查询检查每个步骤的状态。
 >
 > **检查停用状态**  
-> `sfctl node list --query "sort_by(items[*], &instanceId)[-1].nodeDeactivationInfo"`
+> `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
 >
 > **检查停止状态**  
-> `sfctl node list --query "sort_by(items[*], &instanceId)[-1].isStopped"`
+> `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
 >
 
 

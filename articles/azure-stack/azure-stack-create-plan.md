@@ -3,8 +3,8 @@ title: "在 Azure 堆栈中创建一个计划 |Microsoft 文档"
 description: "作为云管理员，创建一个计划，允许订阅服务器上设置虚拟机。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/10/2017
-ms.author: erikje
-ms.openlocfilehash: 30759dca746fd7fd02653556cb105f419f5bf854
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: 5eefca3541ae9f73514f80b0f8df9e5027600f87
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-plan-in-azure-stack"></a>在 Azure 堆栈中创建计划
 

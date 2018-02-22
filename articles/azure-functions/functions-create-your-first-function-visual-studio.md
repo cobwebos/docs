@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 01/17/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e8a43febdb2958f58ecb8d82f9f42b39c591522d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f908b874a8205c2b8738deeccb3d7dd38b9833fe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 创建你的第一个函数
 
@@ -69,7 +69,7 @@ Visual Studio 将创建一个项目，并在该项目中创建一个包含所选
 
     ![浏览器中的函数 localhost 响应](./media/functions-create-your-first-function-visual-studio/functions-test-local-browser.png)
 
-4. 若要停止调试，请单击 Visual Studio 工具栏中的“停止”按钮。
+4. 若要停止调试，请按 Shift + F5。
 
 验证该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
 

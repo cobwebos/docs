@@ -3,8 +3,8 @@ title: "Azure 堆栈中的配额类型 |Microsoft 文档"
 description: "查看可供服务和 Azure 堆栈中的资源的不同配额类型。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/23/2017
-ms.author: erikje
-ms.openlocfilehash: d9bb048ece32bf5b34e05d7459488aa0f24d0d44
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: da4105fa88848b14e5d5d0289859cfd0f85c8fee
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure 堆栈中的配额类型
 

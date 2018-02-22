@@ -12,15 +12,15 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: bfc31553c32ac4dbfde55aa30b33025b579f6139
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 09022648c03ffa12aa3b060e5094c40ea5c3d61e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>使用 Azure Location Based Services（预览版）启动演示性的交互式地图搜索
 
-本文使用 Azure 地图和交互式搜索来演示 Azure Location Based Services (LBS)（预览版）的功能。 此外，还逐步讲解了自行创建 LBS 帐户，以及获取要在演示 Web 应用程序中使用的帐户密钥的基本步骤。 
+本文使用 Azure 地图来演示 Azure Location Based Services (LBS) 执行交互式搜索的功能。 此外，还逐步讲解了自行创建 LBS 帐户，以及获取要在演示 Web 应用程序中使用的帐户密钥的基本步骤。 
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
