@@ -3,8 +3,8 @@ title: "连接到 Azure 中使用 VPN 的 Azure 堆栈"
 description: "如何将 Azure 堆栈中的虚拟网络连接到使用 VPN 的 Azure 中的虚拟网络。"
 services: azure-stack
 documentationcenter: 
-author: ScottNapolitan
-manager: 
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
-ms.author: victorh
-ms.openlocfilehash: 5d963fe8b1b576768156500af39254f45939f90d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: brenduns
+ms.reviewer: scottnap
+ms.openlocfilehash: 16cc1962eb72ac219adc8483f38cecf41a4296c1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>连接到 Azure 中使用 VPN 的 Azure 堆栈
 
@@ -40,7 +41,7 @@ ms.lasthandoff: 02/01/2018
 ## <a name="network-example-values-table"></a>网络示例值表
 网络示例值表显示了这篇文章中的使用的示例值。 你可以使用这些值也可以引用它们以更好地了解这篇文章中的示例。
 
-**网络示例值表**
+网络示例值表
 |   |Azure Stack|Azure|
 |---------|---------|---------|
 |虚拟网络名称     |Azs-VNet|AzureVNet |

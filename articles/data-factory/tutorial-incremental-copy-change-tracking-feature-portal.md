@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 93df74da6e9db1bd03885179cd3917205ab3b4ee
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: ddc299d0a292ba17624aa3d0617e420a82f2abf3
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/23/2018
 > * 创建、运行和监视增量复制管道
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="overview"></a>概述
 在数据集成解决方案中，一种广泛使用的方案是在完成初始数据加载后以增量方式加载数据。 在某些情况下，可以通过某种方式（例如，使用 LastModifyTime、CreationTime 等属性）将源数据存储中某个时段的更改数据轻松地进行切分。 在某些情况下，没有明确的方式可以将增量数据从上一次处理过的数据中区分出来。 可以使用 Azure SQL 数据库、SQL Server 等数据存储支持的更改跟踪技术来确定增量数据。  本教程介绍如何将 Azure 数据工厂第 2 版与 SQL 更改跟踪技术配合使用，通过增量方式将增量数据从 Azure SQL 数据库加载到 Azure Blob 存储中。  有关 SQL 更改跟踪技术的更具体的信息，请参阅 [SQL Server 中的更改跟踪](/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 
@@ -151,6 +151,7 @@ ms.lasthandoff: 01/23/2018
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
+1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。 
    
    ![新建 -> DataFactory](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory-menu.png)
@@ -360,7 +361,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 2. 此时会显示用于配置管道的新选项卡。 树状视图中也会显示管道。 在“属性”窗口中，将管道的名称更改为 **IncrementalCopyPipeline**。
 
     ![管道名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
-3. 在“活动”工具箱中展开“SQL 数据库”，将“查找”活动拖放到管道设计器图面。 将活动的名称设置为 **LookupLastChangeTrackingVersionActivity**。 此活动获取在上次复制操作中使用的、存储在 **table_store_ChangeTracking_version** 表中的更改跟踪版本。
+3. 在“活动”工具箱中展开“常规”，将**查找**活动拖放到管道设计器图面。 将活动的名称设置为 **LookupLastChangeTrackingVersionActivity**。 此活动获取在上次复制操作中使用的、存储在 **table_store_ChangeTracking_version** 表中的更改跟踪版本。
 
     ![查找活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
 4. 在“属性”窗口中切换到“设置”，为“源数据集”字段选择“ChangeTrackingDataset”。 
@@ -408,12 +409,13 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. 切换到“存储过程”选项卡，然后执行以下步骤： 
 
-    1. 输入 **Update_ChangeTracking_Version** 作为**存储过程名称**。  
-    2. 在“存储过程参数”部分，使用“+ 新建”按钮添加以下两个参数：
+    1. 至于“存储过程名称”，请选择 **Update_ChangeTracking_Version**。  
+    2. 选择“导入参数”。 
+    3. 在“存储过程参数”部分，指定以下参数值： 
 
         | 名称 | Type | 值 | 
         | ---- | ---- | ----- | 
-        | CurrentTrackingVersion | INT64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
+        | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
     
         ![存储过程活动 - 参数](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
@@ -423,14 +425,15 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 15. 在工具栏中单击“验证”。 确认没有任何验证错误。 单击 **>>** 关闭“管道验证报告”窗口。 
 
     ![“验证”按钮](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
-16.  单击“发布”按钮，将实体（链接服务、数据集和管道）发布到数据工厂服务。 等到“发布成功”消息出现。 
+16.  单击“全部发布”按钮，将实体（链接服务、数据集和管道）发布到数据工厂服务。 等到“发布成功”消息出现。 
 
         ![发布按钮](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>运行增量复制管道
-在工具栏中单击管道对应的“触发器”，然后单击“立即触发”。 
+1. 在工具栏中单击管道对应的“触发器”，然后单击“立即触发”。 
 
-![“立即触发”菜单](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
+    ![“立即触发”菜单](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
+2. 在“管道运行”窗口中选择“完成”。
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>监视增量复制管道
 1. 单击左侧的“监视”选项卡。 可以在列表中查看管道运行及其状态。 若要刷新列表，请单击“刷新”。 使用“操作”列中的链接可以查看与管道运行关联的活动运行，以及重新运行管道。 

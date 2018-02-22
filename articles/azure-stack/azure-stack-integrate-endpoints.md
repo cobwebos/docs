@@ -5,21 +5,18 @@ services: azure-stack
 author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/16/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: 
-ms.openlocfilehash: e368109adc7db4c589ac37b28c4891cb3ec5346f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8af533147f3cc12f2334a43e7b672c69d0d25802
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure 堆栈数据中心集成-发布终结点
-
-*适用范围： Azure 堆栈集成系统*
-
-Azure 堆栈将设置其基础结构角色的各种终结点 (Vip 的虚拟 IP 地址)。 这些 Vip 是从公共 IP 地址池分配的。 每个 VIP 访问控制列表 (ACL) 中的软件定义网络层保护。 Acl 还跨物理交换机 （TORs 和 BMC） 用于进一步强化处理解决方案。 为每个终结点在部署时指定的外部 DNS 区域中创建 DNS 条目。
+Azure 堆栈设置了多个虚拟 IP 地址 (Vip) 及其基础结构角色。 这些 Vip 是从公共 IP 地址池分配的。 每个 VIP 访问控制列表 (ACL) 中的软件定义网络层保护。 Acl 还跨物理交换机 （TORs 和 BMC） 用于进一步强化处理解决方案。 为每个终结点在部署时指定的外部 DNS 区域中创建 DNS 条目。
 
 
 下面的体系结构关系图显示了不同的网络层和 Acl:
@@ -28,7 +25,7 @@ Azure 堆栈将设置其基础结构角色的各种终结点 (Vip 的虚拟 IP �
 
 ## <a name="ports-and-protocols-inbound"></a>端口和协议 （入站）
 
-下表中列出所需的到外部网络的发布 Azure 堆栈终结点的基础结构 Vip。 此列表显示每个终结点、 所需的端口和协议。 终结点所需的 SQL 资源提供程序和其他人，等其他资源提供程序特定的资源提供程序部署文档中介绍。
+下面列出了所需的到外部网络的发布 Azure 堆栈终结点的基础结构 Vip。 此列表显示每个终结点、 所需的端口和协议。 终结点所需的 SQL 资源提供程序和其他人，等其他资源提供程序特定的资源提供程序部署文档中介绍。
 
 未列出 Vip，因为它们不需要发布 Azure 堆栈的内部基础结构。
 
@@ -52,7 +49,11 @@ Azure 堆栈将设置其基础结构角色的各种终结点 (Vip 的虚拟 IP �
 |存储表|&#42;.table.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |存储 Blob|&#42;.blob.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |SQL 资源提供程序|sqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
-|MySQL 资源提供程序|mysqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304
+|MySQL 资源提供程序|mysqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
+|应用服务|&#42;.appservice.*&lt;region>.&lt;fqdn>*|TCP|80 (HTTP)<br>443 (HTTPS)<br>8172 (MSDeploy)|
+|  |&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)|
+|  |api.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)<br>44300 （azure 资源管理器）|
+|  |ftp.appservice.*&lt;region>.&lt;fqdn>*|TCP、 UDP|21、 1021，10001 101000 (FTP)<br>990 (FTPS)|
 
 ## <a name="ports-and-urls-outbound"></a>端口和 Url （出站）
 

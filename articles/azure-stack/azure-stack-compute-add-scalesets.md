@@ -1,18 +1,22 @@
 ---
-title: "在 Azure 堆栈中提供虚拟机规模集"
-description: "了解如何云管理员可以向 Azure 堆栈应用商店中添加虚拟机规模"
+title: "在 Azure 堆栈中可用的进行虚拟机规模集 |Microsoft 文档"
+description: "了解如何云操作员可以向 Azure 堆栈应用商店中添加虚拟机规模"
 services: azure-stack
-author: anjayajodha
+author: brenduns
+manager: femila
+editor: 
+ms.assetid: 
 ms.service: azure-stack
 ms.topic: article
 ms.date: 9/25/2017
-ms.author: anajod
+ms.author: brenduns
+ms.reviewer: anajod
 keywords: 
-ms.openlocfilehash: 31aeb963bdf4fd32712bc6f29f64060ec1c77cb8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e4c1145b8ff4665024b4532cf9cc9ac6a0a24a1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>在 Azure 堆栈中提供虚拟机规模集
 
@@ -47,7 +51,7 @@ Azure 堆栈上的虚拟机规模集就像在 Azure 上的虚拟机规模集。 
 
 编辑你的环境的以下 PowerShell 脚本，然后运行它，以便添加到你的 Azure 堆栈 Marketplace 设置虚拟机规模。 
 
-``$User``是用于连接管理员门户的帐户。 例如，serviceadmin@contoso.onmicrosoft.com。
+``$User`` 是用于连接管理员门户的帐户。 例如，serviceadmin@contoso.onmicrosoft.com。
 
 ```
 $Arm = "https://adminmanagement.local.azurestack.external"

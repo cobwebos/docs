@@ -3,8 +3,8 @@ title: "可供 Azure 堆栈的 azure 应用商店项 |Microsoft 文档"
 description: "可以在 Azure 堆栈中使用这些 Azure 应用商店项。"
 services: azure-stack
 documentationcenter: 
-author: JeffGoldner
-manager: bradleyb
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2018
-ms.author: JeffGoldner
-ms.openlocfilehash: a23b5ff4dc8b0cf18e529d9cdc9925ea7fcedba0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: brenduns
+ms.reviewer: jeffgo
+ms.openlocfilehash: bfc55a305fd0099af5cc2bb394420e547d2703bc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>可供 Azure 堆栈的 azure 应用商店项
 
@@ -30,14 +31,14 @@ ms.lasthandoff: 02/01/2018
 
 |  | 项名称 | 说明 | 发布者 | OS 类型 |
 | --- | --- | --- | --- | --- |
-|![](media/azure-stack-marketplace-azure-items/cse.png) | [SQL IaaS 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>下载此扩展来部署 Windows 应用商店项上的任何 SQL Server-这是必需的。</b> | Microsoft | Windows |
-|![](media/azure-stack-marketplace-azure-items/cse.png) | [自定义脚本扩展](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>下载此更新到框中的自定义脚本扩展适用于 Windows 的版本。</b> | Microsoft | Windows |
-|![](media/azure-stack-marketplace-azure-items/dsc.png) | [PowerShell DSC 扩展](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| <b>下载此更新的现成新版 PowerShell DSC 扩展。</b> | Microsoft | Windows |
-| ![](media/azure-stack-marketplace-azure-items/cse.png) | [Microsoft 反恶意软件扩展](https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware)| 适用于 Azure 的 Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的单一代理解决方案，可在在后台运行而无需人工干预。 | Microsoft | Windows |
+|![](media/azure-stack-marketplace-azure-items/cse.png) | [ SQL IaaS 扩展 ](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>下载此扩展来部署 Windows 应用商店项上的任何 SQL Server-这是必需的。</b> | Microsoft | Windows |
+|![](media/azure-stack-marketplace-azure-items/cse.png) | [ 自定义脚本扩展 ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>下载此更新到框中的自定义脚本扩展适用于 Windows 的版本。</b> | Microsoft | Windows |
+|![](media/azure-stack-marketplace-azure-items/dsc.png) | [ PowerShell DSC 扩展 ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| <b>下载此更新的现成新版 PowerShell DSC 扩展。</b> | Microsoft | Windows |
+| ![](media/azure-stack-marketplace-azure-items/cse.png) | [ Microsoft 反恶意软件扩展 ](https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware)| 适用于 Azure 的 Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的单一代理解决方案，可在在后台运行而无需人工干预。 | Microsoft | Windows |
 | ![](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.docker-arm) | Linux 虚拟机的 docker 扩展。 | Microsoft | Linux |
-| ![](media/azure-stack-marketplace-azure-items/cse.png) | [适用于 Linux 的 VM 访问](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>下载此更新的现成新版 VMAccess for Linux 扩展。这是重要信息： 如果你打算使用 Debian Linux Vm。</b> | Microsoft | Linux |
-| ![](media/azure-stack-marketplace-azure-items/acronis.png) | [适用于 Linux Acronis 备份扩展](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | Microsoft Azure Acronis 备份扩展是 Acronis 备份产品系列的数据保护的一部分。 | Acronis 国际 GmbH。 | Linux |
-| ![](media/azure-stack-marketplace-azure-items/acronis.png) | [适用于 Windows 的 Acronis 备份扩展](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | Microsoft Azure Acronis 备份扩展是 Acronis 备份产品系列的数据保护的一部分。 | Acronis 国际 GmbH。 | Windows |
+| ![](media/azure-stack-marketplace-azure-items/cse.png) | [ 适用于 Linux 的 VM 访问 ](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>下载此更新的现成新版 VMAccess for Linux 扩展。这是重要信息： 如果你打算使用 Debian Linux Vm。</b> | Microsoft | Linux |
+| ![](media/azure-stack-marketplace-azure-items/acronis.png) | [ 适用于 Linux Acronis 备份扩展 ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | Microsoft Azure Acronis 备份扩展是 Acronis 备份产品系列的数据保护的一部分。 | Acronis 国际 GmbH。 | Linux |
+| ![](media/azure-stack-marketplace-azure-items/acronis.png) | [ 适用于 Windows 的 Acronis 备份扩展 ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | Microsoft Azure Acronis 备份扩展是 Acronis 备份产品系列的数据保护的一部分。 | Acronis 国际 GmbH。 | Windows |
 
 ## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Microsoft 虚拟机映像和解决方案模板
 
@@ -70,9 +71,9 @@ Microsoft Azure 堆栈支持以下 Azure 应用商店虚拟机和解决方案模
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 上的 SQL Server 自 2017 年 Express SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2) | 免费 express 版本的 SQL Server 2016 SP1。 | Microsoft + SUSE |
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 上的 SQL Server 自 2017 年 Enterprise SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017EnterpriseonSLES12SP2) | 智能、 任务关键型应用程序的数据库平台。 | Microsoft + SUSE |
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 自 2017 年 1 Web 在 SUSE Linux Enterprise Server (SLES) 12 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017WebonSLES12SP2) | 智能、 任务关键型应用程序的数据库平台。 | Microsoft + SUSE |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习 Windows Server 2016 上的服务器 9.2.1](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onWindowsServer2016) | Microsoft 机器学习服务器 9.2.1 Windows Server 2016 上。 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习服务器 9.2.1 上 Ubuntu 16.04](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onUbuntu1604) | Microsoft 机器学习服务器 9.2.1 Ubuntu 16.04 上。 | Microsoft + Canonical |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习 CentOS Linux 7.2 上的服务器 9.2.1](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onCentOSLinux72) | Microsoft 机器学习服务器 9.2.1 CentOS Linux 7.2 上。 | Microsoft + Rogue Wave |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习 Windows Server 2016 上的服务器 9.2.1 ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onWindowsServer2016) | Microsoft 机器学习服务器 9.2.1 Windows Server 2016 上。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习服务器 9.2.1 上 Ubuntu 16.04 ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onUbuntu1604) | Microsoft 机器学习服务器 9.2.1 Ubuntu 16.04 上。 | Microsoft + Canonical |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习 CentOS Linux 7.2 上的服务器 9.2.1 ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onCentOSLinux72) | Microsoft 机器学习服务器 9.2.1 CentOS Linux 7.2 上。 | Microsoft + Rogue Wave |
 
 
 ## <a name="linux-distributions"></a>Linux 分发
@@ -85,7 +86,7 @@ Microsoft Azure 堆栈支持以下 Azure 应用商店虚拟机和解决方案模
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [基于 centOS 的 6.9](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased69) | 这种 Linux 分发基于 CentOS，以及由恶意批软件。 | 恶意批软件 (以前称为 OpenLogic)  |
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [基于 centOS 的 7.4](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74) | 这种 Linux 分发基于 CentOS，以及由恶意批软件。 | 恶意批软件 (以前称为 OpenLogic) |
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [基于 centOS 的 7.4 LVM](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74LVM) | 这种 Linux 分发基于 CentOS，以及由恶意批软件。 | 恶意批软件 (以前称为 OpenLogic) |
-| ![](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSELinuxEnterpriseServer12SP3BringYourOwnSubscription) | SUSE Linux Enterprise Server 12 SP3。 | SUSE |
+| ![](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSELinuxEnterpriseServer12SP3BringYourOwnSubscription) | SUSE Linux Enterprise Server 12 SP3。 | SUSE |
 
 ## <a name="third-party-byol-free-and-trial-images-and-solution-templates"></a>第三方 BYOL、 免费版和试用版映像和解决方案模板
 
@@ -209,5 +210,5 @@ Microsoft Azure 堆栈支持以下 Azure 应用商店虚拟机和解决方案模
 | ![](media/azure-stack-marketplace-azure-items/kemp.png) | [LoadMaster 负载平衡器 ADC 内容交换机](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | 图 4-7 层应用程序传递控制器 (ADC) 负载平衡器、 内容交换机和流量管理器。 | KEMP Technologies inc. |
 | ![](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa 混合 AWS S3 compatibe-Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | 跨公用和本地容量资源的 S3 兼容存储服务。 | NooBaa |
 | ![](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise 使你能够自动你 Azure 堆栈的基础结构的整个生命周期。 <b>下载这两个 Puppet 应用商店项。</b> | Puppet |
-| ![](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 代理 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | 同类最佳打开源基础结构管理。 | SUSE |
-| ![](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown 软件工具](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | ZeroDown 软件工具 v7.1-迁移 + HA。 | ZeroDown Software |
+| ![](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 代理 (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | 同类最佳打开源基础结构管理。 | SUSE |
+| ![](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown 软件工具 ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | ZeroDown 软件工具 v7.1-迁移 + HA。 | ZeroDown Software |

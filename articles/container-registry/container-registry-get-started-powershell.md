@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 10/08/2017
+ms.date: 02/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c7d74395b1c8b386ce190906aa5b63b48c1bb1bf
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 80b5055dee35cd6efe62ee949c05aef386a3ba14
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="create-an-azure-container-registry-using-powershell"></a>使用 PowerShell 创建 Azure 容器注册表
 
@@ -21,7 +21,7 @@ Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专
 
 本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
-还必须在本地安装 Docker。 Docker 提供的包可在任何 [Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 或 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 系统上轻松配置 Docker。
+还必须在本地安装 Docker。 Docker 提供的包可在任何 [Mac][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -57,13 +57,13 @@ $registry = New-AzureRMContainerRegistry -ResourceGroupName "myResourceGroup" -N
 $creds = Get-AzureRmContainerRegistryCredential -Registry $registry
 ```
 
-接下来，运行 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令以登录到 ACR 实例。
+接下来，使用 [docker login][docker-login] 命令登录到 ACR 实例。
 
 ```bash
 docker login $registry.LoginServer -u $creds.Username -p $creds.Password
 ```
 
-完成后，该命令会返回“登录成功”消息。
+该命令在完成后返回 `Login Succeeded`。 可能会看见建议使用 `--password-stdin` 参数的安全警告。 虽然本文中未介绍它的用法，但我们建议按照此最佳做法进行操作。 有关详细信息，请参阅 [docker login][docker-login] 命令参考。
 
 ## <a name="push-image-to-acr"></a>将映像推送到 ACR
 
@@ -79,13 +79,13 @@ docker pull microsoft/aci-helloworld
 Get-AzureRmContainerRegistry | Select Loginserver
 ```
 
-使用 [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) 命令标记映像。 将 *acrLoginServer* 替换为你的 ACR 实例的登录服务器名称。
+使用 [docker tag][docker-tag] 命令标记映像。 将 *acrLoginServer* 替换为你的 ACR 实例的登录服务器名称。
 
 ```bash
 docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
 ```
 
-最后，使用 [docker push](https://docs.docker.com/engine/reference/commandline/push/) 将映像推送到 ACR 实例。 将 *acrLoginServer* 替换为你的 ACR 实例的登录服务器名称。
+最后，使用 [docker push][docker-push] 将映像推送到 ACR 实例。 将 *acrLoginServer* 替换为你的 ACR 实例的登录服务器名称。
 
 ```bash
 docker push <acrLoginServer>/aci-helloworld:v1
@@ -105,3 +105,11 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [Azure 容器实例教程](../container-instances/container-instances-tutorial-prepare-app.md)
+
+<!-- LINKS - external -->
+[docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
+[docker-login]: https://docs.docker.com/engine/reference/commandline/login/
+[docker-mac]: https://docs.docker.com/docker-for-mac/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
+[docker-windows]: https://docs.docker.com/docker-for-windows/

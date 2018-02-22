@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2018
+ms.date: 02/06/2018
 ms.author: yurid
-ms.openlocfilehash: 04f2dd3dcaa44a243cb9620ab8192e15aae82a01
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 608947ec4a94cad276e34e8d3457f05b06d04ad6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>在 Azure 安全中心进行安全运行状况监视
 本文介绍如何通过 Azure 安全中心的监视功能监视合规性。
@@ -87,6 +87,13 @@ ms.lasthandoff: 01/04/2018
 > [!NOTE]
 > 此处提供的安全建议与“建议”选项中的相同。 请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)，详细了解如何应用建议。 这不仅适用于虚拟机和计算机，还适用于“资源运行状况”磁贴中提供的所有资源。
 >
+
+#### <a name="unmonitored-vms"></a>未监视的 VM
+如果某个 VM 未运行 Microsoft Monitoring Agent 扩展，则该 VM 未受安全中心监视。 VM 可能已安装了本地代理，例如 OMS 直接代理或 SCOM 代理。 装有这些代理的 VM 会被标识为未受监视，因为安全中心不完全支持这些代理。 若要充分利用安全中心的所有功能，需要使用 Microsoft Monitoring Agent 扩展。
+
+除了已安装的本地代理，还可以在未受监视的 VM 上安装该扩展。 对两个代理进行相同的配置，将二者连接到同一工作区。 这样，安全中心就能与 Microsoft Monitoring Agent 扩展交互并收集数据。  请参阅[启用 VM 扩展](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)，获取如何安装 Microsoft Monitoring Agent 扩展的说明。
+
+请参阅[监视代理运行状况问题](security-center-troubleshooting-guide.md#monitoring-agent-health-issues)，详细了解安全中心无法成功监视那些已针对自动预配初始化的 VM 和计算机的原因。
 
 #### <a name="vms--computers-section"></a>VM 和计算机部分
 可以通过虚拟机和计算机部分概要了解所有虚拟机和计算机的建议。 每一列代表一组建议，如以下屏幕截图所示：

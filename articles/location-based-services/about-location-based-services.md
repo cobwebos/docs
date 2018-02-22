@@ -5,18 +5,18 @@ services: location-based-services
 keywords: 
 author: dsk-2015
 ms.author: dkshir
-ms.date: 11/28/2017
+ms.date: 02/05/2017
 ms.topic: overview
 ms.service: location-based-services
 documentationcenter: 
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 6871f174eb9bae57d9b4767520d0fb2d8d9631d3
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 9e6236f7d69556d7636962c98886d9f9508445ac
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="an-introduction-to-azure-location-based-services-preview"></a>Azure Location Based Services（预览版）简介
 Azure Location Based Services 是一项地理空间服务组合，包括适用于地图、搜索、路线、交通和时区的服务 API。 借助这组与 Azure OneAPI 兼容的服务，可让你使用熟悉的开发人员工具快速开发和缩放将位置信息集成到 Azure 解决方案中的解决方案。 Azure Location Based Services 向开发人员提供各个行业强大的地理空间功能，并搭配所需的全新地图数据，以便为 Web 和移动应用程序提供地理环境。 Azure Location Based Services 是与 Azure One API 兼容的一组 REST API，随基于 Web 的 JavaScript 控件一起提供，使得开发极其简单、灵活且可跨多个媒体移植。 
@@ -65,7 +65,8 @@ Azure Location Based Services 是针对移动性而构建的，可以支持跨�
 
 Azure Location Based Services 使用基于密钥的身份验证方案，因此，访问这些服务需要导航到 [Azure 门户](http://portal.azure.com)，并创建一个 Azure Location Based Services 帐户。 你的帐户将附带为你预生成的两个密钥。 首先将这些位置功能直接集成到你的应用程序，方法是使用请求 Azure Location Based Services 服务的任一密钥。
 
-**与必应地图的关系** - 请注意，本文档中介绍的 Azure Location Based Services 不同于必应地图提供的。  虽然二者的很多功能是相同的，但这两项服务既不相同，也不相关。  在 Azure 中提供这项将会单独管理的新服务对必应地图产品的提供或路线图没有影响。
+## <a name="relationship-with-bing-maps"></a>与必应地图的关系
+本文档中介绍的 Azure Location Based Services 不同于必应地图提供的。  虽然二者的很多功能是相同的，但这两项服务既不相同，也不相关。  在 Azure 中提供这项将会单独管理的新服务对必应地图产品的提供或路线图没有影响。
 
 Microsoft 的目标是为开发人员社区在定位服务产品方面提供选择。  下面是适用于开发人员的一些简要指南，介绍了如何针对不同的用例和客户情况使用不同的服务。  请注意，此指南目前适用于 Azure LBS，因为它处于公共预览版阶段，在 2018 年末公开发行后会进行更新。
 
@@ -79,7 +80,7 @@ Microsoft 的目标是为开发人员社区在定位服务产品方面提供选�
 | 地图内容 | 标准的地面图已足够 | 卫星图、空中图和街道图是必需的 |
 | 基础性的地图来源 | TomTom 地图数据为首选 | HERE 地图数据为首选 |
 
-立即注册 [Azure Location Based Services 帐户](http://aka.ms/azurelbsportal)！
+立即注册 [Azure Location Based Services 帐户](http://aka.ms/azurelbsportal)。
 
 ## <a name="next-steps"></a>后续步骤
 

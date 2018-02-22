@@ -2,24 +2,18 @@
 title: "Azure 快速入门 - 使用 Node.js 从 Azure Blob 存储转入/转出对象 | Microsoft 文档"
 description: "快速了解如何使用 Node.js 从 Azure Blob 存储转入/转出对象"
 services: storage
-documentationcenter: storage
-author: georgewallace
-manager: timlt
-editor: tysonn
-ms.assetid: 
+author: tamram
+manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/30/2017
-ms.author: gwallace
-ms.openlocfilehash: dd4d3abf082767c40760d020c0997b365452e769
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.date: 02/06/2018
+ms.author: tamram
+ms.openlocfilehash: 07845d0e1917c00dbd6098ef2bfbd9dcbbf2f97b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-nodejs"></a>使用 Node.js 从 Azure Blob 存储转入/转出对象
 
@@ -31,7 +25,7 @@ ms.lasthandoff: 11/13/2017
 
 * 安装 [Node.js](https://nodejs.org/en/)
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
 
@@ -109,9 +103,9 @@ Sample finished running. When you hit <ENTER> key, the temporary files will be d
 
 ### <a name="get-references-to-the-storage-objects"></a>获取对存储对象的引用
 
-首先创建对用于访问和管理 Blob 存储的 `BlobService` 的引用。 这些对象相互关联 - 每个对象被列表中的下一个对象使用。
+首先创建对用于访问和管理 Blob 存储的 **BlobService** 对象的引用。 这些对象相互关联 - 每个对象被列表中的下一个对象使用。
 
-* 创建 [BlobService](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService__ctor) 对象的实例，指向存储帐户中的 Blob 服务。
+* 创建 [BlobService](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService__ctor) 对象的实例，该对象指向存储帐户中的 Blob 服务。
 
 * 创建新容器，并对容器设置权限，以便 blob 公开，只需 URL 即可对其进行访问。 容器以“quickstartcontainer-”开头。
 
@@ -199,4 +193,4 @@ console.log('6. Deleting block Blob\n');
 > [!div class="nextstepaction"]
 > [Blob 存储操作说明](storage-nodejs-how-to-use-blob-storage.md)
 
-若要详细了解存储资源管理器和 Blob，请参阅[使用存储资源管理器管理 Azure Blob 存储资源](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+有关 Azure 存储的 Node.js 参考，请参阅 [azure-storage package](https://docs.microsoft.com/javascript/api/azure-storage/?view=azure-node-latest)。

@@ -2,7 +2,7 @@
 
 - 对于使用虚拟机配置创建的池，仅支持基于 Azure 资源管理器的 VNet。 对于使用云服务配置创建的池，仅支持经典 VNet。 
   
-- 若要使用经典 VNet，`MicrosoftAzureBatch` 服务主体必须为指定的 VNet 提供 `Classic Virtual Machine Contributor` 基于角色的访问控制 (RBAC) 角色。 但是，若要使用基于 Azure 资源管理器的 VNet，则不需要其他的权限设置。
+- 若要使用经典 VNet，`MicrosoftAzureBatch` 服务主体必须为指定的 VNet 提供 `Classic Virtual Machine Contributor` 基于角色的访问控制 (RBAC) 角色。 若要使用基于 Azure 资源管理器的 VNet，你需要拥有访问 VNet 并在子网中部署 VM 的权限。
 
 - 为池指定的子网必须提供足够的未分配 IP 地址来容纳面向该池的 VM 的数量；即，池的 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 属性的总和。 如果子网没有足够的未分配 IP 地址，池将分配部分计算节点，并发生调整大小错误。 
 
@@ -13,7 +13,7 @@
 
   |    目标端口    |    源 IP 地址      |   Source Port    |    Batch 是否添加 NSG？    |    是使用 VM 所必需的吗？    |    来自用户的操作   |
   |---------------------------|---------------------------|----------------------------|----------------------------|-------------------------------------|-----------------------|
-  |   <ul><li>使用虚拟机配置创建的池：29876、29877</li><li>使用云服务配置创建的池：10100、20100、30100</li></ul>        |    仅 Batch 服务角色 IP 地址 | * 或 443 |    是的。 Batch 在附加到 VM 的网络接口 (NIC) 级别添加 NSG。 这些 NSG 仅允许来自 Batch 服务角色 IP 地址的流量。 即使为整个 Web 打开这些端口，系统也会在 NIC 处阻止相关流量。 |    是  |  不需指定 NSG，因为 Batch 仅允许 Batch IP 地址。 <br /><br /> 但是，如果指定 NSG，请确保这些端口对入站流量开放。 <br /><br /> 如果在 NSG 中指定 * 作为源 IP，Batch 仍会在附加到 VM 的 NIC 级别添加 NSG。 |
+  |   <ul><li>使用虚拟机配置创建的池：29876、29877</li><li>使用云服务配置创建的池：10100、20100、30100</li></ul>        |    * 或者，为了提高安全性，请指定 Batch 服务的 IP 地址。 若要获取 Batch 服务的 IP 地址列表，请联系 Azure Support。 | * 或 443 |    是的。 Batch 在附加到 VM 的网络接口 (NIC) 级别添加 NSG。 这些 NSG 仅允许来自 Batch 服务角色 IP 地址的流量。 即使为整个 Web 打开这些端口，系统也会在 NIC 处阻止相关流量。 |    是  |  不需指定 NSG，因为 Batch 仅允许 Batch IP 地址。 <br /><br /> 但是，如果指定 NSG，请确保这些端口对入站流量开放。 <br /><br /> 如果在 NSG 中指定 * 作为源 IP，Batch 仍会在附加到 VM 的 NIC 级别添加 NSG。 |
   |    3389 (Windows)、22 (Linux)               |    用户计算机，用于调试目的，方便你远程访问 VM。    |   *  | 否                                    |    否                    |    如需允许远程访问（RDP 或 SSH）VM，请添加 NSG。   |                                
 
 

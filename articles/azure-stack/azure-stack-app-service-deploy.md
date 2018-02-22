@@ -3,8 +3,8 @@ title: "部署应用程序服务： Azure 堆栈 |Microsoft 文档"
 description: "部署 Azure 堆栈中的应用程序服务的详细的指南"
 services: azure-stack
 documentationcenter: 
-author: apwestgarth
-manager: stefsch
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: anwestg
-ms.openlocfilehash: 6851fd46d243fcdce4f69811495c74dfe8311478
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: brenduns
+ms.reviewer: anwestg
+ms.openlocfilehash: d4394463be02d067b8228099acd30a0421ce4be9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>添加到 Azure 堆栈的 App Service 资源提供程序
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*

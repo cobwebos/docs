@@ -3,8 +3,8 @@ title: "在部署 Azure 堆栈上的 App Service 之前 |Microsoft 文档"
 description: "若要完成部署 Azure 堆栈上的应用程序服务之前的步骤"
 services: azure-stack
 documentationcenter: 
-author: apwestgarth
-manager: stefsch
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: anwestg
-ms.openlocfilehash: cdeec60b4935fda58e2657a215826d8355c81664
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.author: brenduns
+ms.reviewer: anwestg
+ms.openlocfilehash: 27f0255c023382a14368915b0d19a49d133154d8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>之前开始使用 Azure 堆栈上的 App Service
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*

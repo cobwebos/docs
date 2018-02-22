@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: deb2572de363ca5d0dec0f78f2e30ad648e9b5f8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: ff9a396f09b675e798e2b2a04fdf0fdb0cdaa09d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="check-traffic-with-a-scheduler-based-logic-app"></a>使用基于计划程序的逻辑应用检查流量
 
@@ -148,7 +148,7 @@ ms.lasthandoff: 01/19/2018
    | **距离单位** | <*your-preference*> | 路线的距离单位。 本文使用的单位为“英里”  | 
    | **旅行模式** | 驾车 | 路线的旅行模式。 选择“驾车”模式 | 
    | **运输日期/时间** | 无 | 仅适用于运输模式 | 
-   | **运输日期/时间类型** | 无 | 仅适用于运输模式 | 
+   | **日期时间类型** | 无 | 仅适用于运输模式 | 
    |||| 
 
    有关这些参数的详细信息，请参阅 [Calculate a route](https://msdn.microsoft.com/library/ff701717.aspx)（计算路线）。

@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 6aa5d4aa032ef4dc3583bf76b9c451874b74f9a6
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 5f0703a3cb2ce912bfc042d0717ad8d921ec43e3
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>使用 Azure 数据工厂批量复制多个表
 本教程演示如何**将 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库**。 在其他复制方案中，也可以应用相同的模式。 例如，将 SQL Server/Oracle 中的表复制到 Azure SQL 数据库/数据仓库/Azure Blob，将 Blob 中的不同路径复制到 Azure SQL 数据库表。
 
 > [!NOTE]
 > - 如果你对 Azure 数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。
-> - 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> - 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 从较高层面讲，本教程涉及以下步骤：
 
@@ -74,6 +74,7 @@ ms.lasthandoff: 01/23/2018
 3. 在“防火墙设置”页中，单击“允许访问 Azure 服务”对应的“打开”。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
+1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 在左侧菜单中单击“新建”，并依次单击“数据 + 分析”、“数据工厂”。 
    
    ![新建 -> DataFactory](./media/tutorial-bulk-copy-portal/new-azure-data-factory-menu.png)
@@ -286,7 +287,7 @@ ms.lasthandoff: 01/23/2018
 2. 在“属性”窗口中，将管道的名称更改为 **GetTableListAndTriggerCopyData**。 
 
     ![管道名称](./media/tutorial-bulk-copy-portal/second-pipeline-name.png)
-3. 在“活动”工具箱中展开“SQL 数据库”，将**查找**活动拖放到管道设计器图面，然后执行以下步骤：
+3. 在“活动”工具箱中展开“常规”，将**查找**活动拖放到管道设计器图面，然后执行以下步骤：
 
     1. 输入 **LookupTableList** 作为**名称**。 
     2. 输入“从 Azure SQL 数据库检索表格列表”作为**说明**。
@@ -322,7 +323,7 @@ ms.lasthandoff: 01/23/2018
 8. 若要验证管道，请单击工具栏中的“验证”。 确认没有任何验证错误。 若要关闭“管道验证报告”，请单击 **>>**。
 
     ![第二个管道 - 验证报告](./media/tutorial-bulk-copy-portal/second-pipeline-validation-report.png)
-9. 若要将实体（数据集、管道等）发布到数据工厂服务，请单击“发布”。 等待发布成功。 
+9. 若要将实体（数据集、管道等）发布到数据工厂服务，请单击“全部发布”。 等待发布成功。 
 
     ![发布按钮](./media/tutorial-bulk-copy-portal/publish.png)
 

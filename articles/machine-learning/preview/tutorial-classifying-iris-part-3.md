@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: 12cbd7d9682e70fc5bc65b2eda5b8eddf6bbb7f0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ab0c10b2eeaa4388ef9b4dab90b99b37fa32df74
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>鸢尾花分类（第 3 部分）：部署模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，适用于专业数据科学家。 数据科学家可以使用它以云的规模准备数据、开发试验和部署模型。
@@ -198,7 +198,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    * `-n`：应用名称，必须全部采用小写形式。
    * `-f`：评分脚本文件名。
    * `--model-file`：模型文件。 在此示例中，它是 pickle model.pkl 文件。
-   * `-r`：模型类型。 在此示例中，它是 Python 模型。
+   * `-r`：模型的运行时。 在此示例中，它是 Python 模型。 有效的运行时为 `python` 和 `spark-py`。
    * `--collect-model-data true`：此项启用数据收集功能。
    * `-c`：在其中指定了其他包的 conda 依赖项文件的路径。
 

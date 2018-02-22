@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/31/2018
+ms.date: 02/07/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: 61859e86f38e4666be01f218922ce00c698de960
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: aa1ac804c9cd623e5fb03c97a38f9352ac8a42ad
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -28,7 +28,8 @@ ms.lasthandoff: 02/01/2018
 此功能针对以下 Azure 服务和区域提供：
 
 - **Azure 存储**：已正式发布。 Azure 公有云和 Azure 政府中的所有区域。
-- **Azure SQL**：预览版。 Azure 公有云中的所有区域。
+- **Azure SQL 数据库**：在所有 Azure 区域正式发布。 
+- **Azure SQL 数据仓库**：预览版。 Azure 公有云中的所有区域。
 
 有关预览版的最新通知，请查看 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页。
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/18/2018
 ms.author: larryfr
-ms.openlocfilehash: 6191d81d6b55f5ffe943f800be542d7ea4614eaf
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 639adb2fdc5a7d76c11397b5027199626a0a4016
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight 入门
 
@@ -226,10 +226,12 @@ Kafka 不识别容错域。 在创建主题的分区副本时，它可能未针�
 
 * [分析 Kafka 日志](apache-kafka-log-analytics-operations-management.md)
 * [在 Kafka 群集之间复制数据](apache-kafka-mirroring.md)
-* [将 Kafka 生产者和使用者 API 与 HDInsight 配合使用](apache-kafka-producer-consumer-api.md)
+* [将 Kafka Producer 和 Consumer API 与 HDInsight 配合使用](apache-kafka-producer-consumer-api.md)
 * [将 Kafka 流 API 与 HDInsight 配合使用](apache-kafka-streams-api.md)
 * [将 Apache Spark 流式处理 (DStream) 与 Kafka on HDInsight 配合使用](../hdinsight-apache-spark-with-kafka.md)
 * [将 Apache Spark 结构化流式处理与 Kafka on HDInsight 配合使用](../hdinsight-apache-kafka-spark-structured-streaming.md)
 * [使用 Apache Spark 结构化流式处理将数据从 Kafka on HDInsight 移到 Cosmos DB](../apache-kafka-spark-structured-streaming-cosmosdb.md)
 * [将 Apache Storm 与 Kafka on HDInsight 结合使用](../hdinsight-apache-storm-with-kafka.md)
 * [通过 Azure 虚拟网络连接到 Kafka](apache-kafka-connect-vpn-gateway.md)
+* [将 Kafka 与 Azure 容器服务配合使用](apache-kafka-azure-container-services.md)
+* [将 Kafka 与 Azure Function App 配合使用](apache-kafka-azure-functions.md)

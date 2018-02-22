@@ -12,13 +12,13 @@ ms.devlang: csharp
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/19/2017
+ms.date: 1/27/2018
 ms.author: subramar
-ms.openlocfilehash: e18dcad73486ab7610c53c269fbc81de73b5147e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7a7bda1b2bab05459e4266f7bac0d32ea4093c8b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>创建第一个 Azure Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -40,10 +40,18 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 1. 在计算机上安装 nodejs 和 NPM
 
-  ```bash
-  sudo apt-get install npm
-  sudo apt install nodejs-legacy
-  ```
+   Ubuntu
+   ```bash
+   sudo apt-get install npm
+   sudo apt install nodejs-legacy
+   ```
+
+   Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
+   ```bash
+   sudo yum install nodejs
+   sudo yum install npm
+   ```
+
 2. 通过 NPM 在计算机上安装 [Yeoman](http://yeoman.io/) 模板生成器
 
   ```bash
@@ -118,11 +126,6 @@ Actor 项目自身未执行任何操作。 它们需要另一个服务或客户�
 要将其他服务添加到使用 `yo` 创建的应用程序，请执行以下步骤：
 1. 将目录更改为现有应用程序的根目录。  例如，如果 `MyApplication` 是 Yeoman 创建的应用程序，则使用 `cd ~/YeomanSamples/MyApplication`。
 2. 运行 `yo azuresfcsharp:AddService`
-
-## <a name="migrating-from-projectjson-to-csproj"></a>从 project.json 迁移到 .csproj
-1. 在项目根目录中运行“dotnet migrate”可将所有 project.json 迁移到 csproj 格式。
-2. 将项目引用更新到项目文件的相应 csproj 文件中。
-3. 将项目文件名更新到 build.sh 格式的 csproj 文件。
 
 ## <a name="next-steps"></a>后续步骤
 

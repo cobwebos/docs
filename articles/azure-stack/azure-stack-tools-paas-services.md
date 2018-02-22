@@ -3,8 +3,8 @@ title: "有关 Azure 堆栈的工具和 PaaS 服务 |Microsoft 文档"
 description: "了解如何开始使用 Azure 堆栈中的 PaaS 服务。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 2ce8d7e3-bc5d-4d61-8ab8-e8f61df40675
 ms.service: multiple
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 7/10/2017
-ms.author: erikje
-ms.openlocfilehash: a3866a91bf2656990c40ead20cedb67fc47a87fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: 878bbbfe8fafce8c5d7c18bd0ac6f848e4513e03
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="paas-services-for-azure-stack"></a>Azure 堆栈的 PaaS 服务
 
