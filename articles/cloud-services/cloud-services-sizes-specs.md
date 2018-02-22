@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 7bef7643a989caee846f8235e024deb482f4b0a0
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 542632dc61f1acecd8ca8ac45fb29bfa6aa839c2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="sizes-for-cloud-services"></a>云服务的大小
 本主题介绍云服务角色实例（Web 角色和辅助角色）的可用大小和选项。 此外，还提供了在计划使用这些资源时要考虑的部署注意事项。 每个大小都具有会放入[服务定义文件](cloud-services-model-and-package.md#csdef)中的 ID。 [云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)页提供每种大小的价格。
@@ -147,23 +147,23 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 
 | 大小            | CPU 核心数 | 内存：GiB   | 本地 SSD：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
-| Standard_D2_v3  | 2         | 8             | 16                   | 2/中 |
-| Standard_D4_v3  | 4         | 16            | 32                   | 2/高 |
-| Standard_D8_v3  | 8         | 32            | 64                   | 4/高 |
-| Standard_D16_v3 | 16        | 64            | 128                  | 8/极高 |
-| Standard_D32_v3 | 32        | 128           | 256                  | 8/极高 |
-| Standard_D64_v3 | 64        | 256           | 512                  | 8/极高 |
+| Standard_D2_v3  | 2         | 8             | 50                   | 2/中 |
+| Standard_D4_v3  | 4         | 16            | 100                  | 2/高 |
+| Standard_D8_v3  | 8         | 32            | 200                  | 4/高 |
+| Standard_D16_v3 | 16        | 64            | 400                  | 8/极高 |
+| Standard_D32_v3 | 32        | 128           | 800                  | 8/极高 |
+| Standard_D64_v3 | 64        | 256           | 1600                 | 8/极高 |
 
 ## <a name="ev3-series"></a>Ev3 系列
 
 | 大小            | CPU 核心数 | 内存：GiB   | 本地 SSD：GiB       | 最大网卡数/网络带宽等级 |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
-| Standard_E2_v3  | 2         | 16            | 32                   | 2/中 |
-| Standard_E4_v3  | 4         | 32            | 64                   | 2/高 |
-| Standard_E8_v3  | 8         | 64            | 128                  | 4/高 |
-| Standard_E16_v3 | 16        | 128           | 256                  | 8/极高 |
-| Standard_E32_v3 | 32        | 256           | 512                  | 8/极高 |
-| Standard_E64_v3 | 64        | 432           | 864                  | 8/极高 |
+| Standard_E2_v3  | 2         | 16            | 50                   | 2/中 |
+| Standard_E4_v3  | 4         | 32            | 100                  | 2/高 |
+| Standard_E8_v3  | 8         | 64            | 200                  | 4/高 |
+| Standard_E16_v3 | 16        | 128           | 400                  | 8/极高 |
+| Standard_E32_v3 | 32        | 256           | 800                  | 8/极高 |
+| Standard_E64_v3 | 64        | 432           | 1600                 | 8/极高 |
 
 
 ## <a name="g-series"></a>G 系列

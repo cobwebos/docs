@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 12/19/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a501a852a317ec7d087904c3a675ebefce1bece0
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: ae41149bf507e30dc5281fd60a9d6f77d2023293
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-in-the-azure-portal"></a>在 Azure 门户中创建虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 在此入门文章中，将在 Azure 门户中创建虚拟机规模集。 也可使用 [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md) 或 [Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) 创建规模集。
@@ -36,7 +36,7 @@ ms.lasthandoff: 01/12/2018
 ## <a name="create-virtual-machine-scale-set"></a>创建虚拟机规模集
 可使用 Windows Server 映像或 Linux 映像（如 RHEL、CentOS、Ubuntu 或 SLES）部署规模集。
 
-1. 单击 Azure 门户左上角的“新建”按钮。
+1. 在 Azure 门户的左上角单击“创建资源”。
 2. 搜索“规模集”，选择“虚拟机规模集”，然后选择“创建”。
 3. 为规模集输入名称，如 myScaleSet。
 4. 选择所需 OS 类型，如 Windows Server 2016 Datacenter。

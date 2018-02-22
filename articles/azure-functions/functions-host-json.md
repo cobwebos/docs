@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/09/2017
+ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 58fc58049e346d60c0882a91bd04485746a15cbd
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6b5a8c81b1e3e45c85ea84a46054b6a38a886c5b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Azure Functions 的 host.json 参考
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/01/2018
 }
 ```
 
-|属性  |默认 | 说明 |
+|属性 |默认  | 说明 |
 |---------|---------|---------| 
 |batchSize|1000|要聚合的最大请求数。| 
 |flushTimeout|00:00:30|要聚合的最大时间段。| 
@@ -237,25 +237,7 @@ ms.lasthandoff: 02/01/2018
 
 [存储队列触发器和绑定](functions-bindings-storage-queue.md)的配置设置。
 
-```json
-{
-    "queues": {
-      "maxPollingInterval": 2000,
-      "visibilityTimeout" : "00:00:30",
-      "batchSize": 16,
-      "maxDequeueCount": 5,
-      "newBatchThreshold": 8
-    }
-}
-```
-
-|属性  |默认 | 说明 |
-|---------|---------|---------| 
-|maxPollingInterval|60000|队列轮询的最大间隔时间，以毫秒为单位。| 
-|visibilityTimeout|0|消息处理失败时的重试间隔时间。| 
-|batchSize|16|要并行检索和处理的队列消息数。 最大值为 32。| 
-|maxDequeueCount|5|在将某个消息移到有害队列之前，尝试处理该消息的次数。| 
-|newBatchThreshold|batchSize/2|提取新消息批所要达到的阈值。| 
+[!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -268,6 +250,7 @@ ms.lasthandoff: 02/01/2018
 单一实例锁行为的配置设置。 有关详细信息，请参阅[有关单一实例支持的 GitHub 问题](https://github.com/Azure/azure-webjobs-sdk-script/issues/912)。
 
 ```json
+{
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",

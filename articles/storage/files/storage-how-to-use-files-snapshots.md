@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: c4a5f7d28601867c383b8b348568e4bb580a81eb
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: eb5c7d0fcb9e1106dbc0aa577ba5ecfa1bf6bee7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="work-with-share-snapshots-preview"></a>使用共享快照（预览版）
 共享快照（预览版）是某个时间点拍摄的 Azure 文件共享的只读版本。 在创建共享快照后，可以读取、复制或删除该快照，但无法对其进行修改。 利用共享快照，可以对共享内容在某个时间点的状态进行备份。 
@@ -246,7 +246,6 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 }
 ```
 
-<<<<<<< HEAD
 ### <a name="file-share-snapshot-operations-in-azure-powershell"></a>Azure PowerShell 中的文件共享快照操作
 Azure PowerShell 可用于执行相同的操作，如列出共享快照、浏览共享快照内容、从共享快照还原或下载文件，或删除共享快照。
 
@@ -281,11 +280,7 @@ $directory = Get-AzureStorageFile -ShareName "ContosoShare06" -Path "ContosoWork
 Get-AzureStorageFileContent -Share $snapshot -Path $file -Destination $directory
 ```
 
-
-## <a name="delete-azure-files-share-snapshot"></a>删除 Azure 文件共享快照
-=======
 ## <a name="delete-a-share-snapshot"></a>删除共享快照
->>>>>>> 6a1833e10031fbf1ab204bb1f30cb54cf5fbcada
 
 可以使用 Azure 门户、PowerShell、CLI、REST API 或任何存储 SDK 来删除共享快照。 以下部分介绍如何使用 Azure 门户、CLI 和 PowerShell 删除共享快照。
 

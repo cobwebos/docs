@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: v-craic
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3dcd285761774c3cd1050976894f1f15db61b52c
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 330f6ae246697d54c6bce0690346652b5f2e2dd0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>管理 Azure 开发测试实验室公式
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/02/2018
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-2. 选择“更多服务”，并从列表中选择“开发测试实验室”。
+2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 
 3. 从实验室列表，选择所需的实验室。  
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 01/02/2018
 > 
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 选择“更多服务”，并从列表中选择“开发测试实验室”。
+2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。  
 4. 在实验室的“概述”边栏选项卡上，选择要从中创建公式的 VM。
    
@@ -104,7 +104,7 @@ ms.lasthandoff: 01/02/2018
 若要修改公式，请按照下列步骤操作：
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 选择“更多服务”，并从列表中选择“开发测试实验室”。
+2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。  
 4. 在实验室的边栏选项卡上，选择“公式（可重用基项）”。
    
@@ -116,7 +116,7 @@ ms.lasthandoff: 01/02/2018
 若要删除公式，请按照下列步骤操作：
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 选择“更多服务”，并从列表中选择“开发测试实验室”。
+2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。  
 4. 在实验室“设置”边栏选项卡上，选择“公式”。
    

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: v-craic
-ms.openlocfilehash: 25675aae77fbe2610fe416210de9a306c1c09f3d
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: a37fece1f46a992b860e3a57f63da5852038205f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到实验室的存储帐户
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 01/02/2018
 
     1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
     
-    1. 选择“更多服务”，并从列表中选择“开发测试实验室”。
+    1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
     
     1. 从实验室列表，选择所需的实验室。  
     

@@ -4,7 +4,7 @@ description: "本文介绍如何在 Azure 虚拟机上创建 SQL Server 故障�
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 9fc761b1-21ad-4d79-bebc-a2f094ec214d
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2017
 ms.author: mikeray
-ms.openlocfilehash: ec35b4a02c04d5b6d0bbf9049927529258c3825b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 8c957b1f2b4466ba68d81885fb014ad4026a47d2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
@@ -91,9 +91,9 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
    如果尚未为虚拟机创建资源组，请在创建 Azure 可用性集时执行该操作。 若要使用 Azure 门户创建可用性集，请执行以下步骤：
 
-   - 在 Azure 门户中，单击 **+** 打开 Azure 应用商店。 搜索“可用性集”。
+   - 在 Azure 门户中，单击 **+** 打开 Azure Marketplace。 搜索“可用性集”。
    - 单击“可用性集”。
-   - 单击“创建” 。
+   - 单击“创建”。
    - 在“创建可用性集”边栏选项卡中设置以下值：
       - **名称**：可用性集的名称。
       - **订阅**：Azure 订阅。
@@ -117,7 +117,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
       >[!IMPORTANT]
       >创建虚拟机后无法设置或更改可用性集。
 
-   从 Azure 应用商店中选择一个映像。 可以使用同时包含 Windows Server 和 SQL Server 或者只包含 Windows Server 的应用商店映像。 有关详细信息，请参阅 [Azure 虚拟机上的 SQL Server 概述](../../virtual-machines-windows-sql-server-iaas-overview.md)
+   从 Azure Marketplace 中选择一个映像。 可以使用同时包含 Windows Server 和 SQL Server 或者只包含 Windows Server 的 Marketplace 映像。 有关详细信息，请参阅 [Azure 虚拟机上的 SQL Server 概述](virtual-machines-windows-sql-server-iaas-overview.md)
 
    Azure 库中的正式 SQL Server 映像包含已安装的 SQL Server 实例，以及 SQL Server 安装软件和所需的密钥。
 
@@ -136,7 +136,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
    >[!IMPORTANT]
    >创建虚拟机后，删除预装的独立 SQL Server 实例。 配置故障转移群集和 S2D 之后，将使用预装的 SQL Server 媒体创建 SQL Server FCI。
 
-   或者，可以使用只包含操作系统的 Azure 应用商店映像。 选择一个 **Windows Server 2016 Datacenter** 映像，并在配置故障转移群集和 S2D 后安装 SQL Server FCI。 此映像不包含 SQL Server 安装媒体。 将安装媒体放在可以针对每个服务器运行 SQL Server 安装的位置。
+   或者，可以使用只包含操作系统的 Azure Marketplace 映像。 选择一个 **Windows Server 2016 Datacenter** 映像，并在配置故障转移群集和 S2D 后安装 SQL Server FCI。 此映像不包含 SQL Server 安装媒体。 将安装媒体放在可以针对每个服务器运行 SQL Server 安装的位置。
 
 1. Azure 在创建虚拟机之后，将使用 RDP 连接到每个虚拟机。
 
@@ -221,14 +221,14 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
 1. 在“服务器管理器”中单击“工具”，并单击“故障转移群集管理器”。
 1. 在“故障转移群集管理器”中单击“操作”，并单击“验证配置...”。
-1. 单击“下一步”。
+1. 单击“资源组名称” 的 Azure 数据工厂。
 1. 在“选择服务器或群集”中，键入两个虚拟机的名称。
-1. 在“测试选项”中，选择“仅运行选择的测试”。 单击“下一步”。
+1. 在“测试选项”中，选择“仅运行选择的测试”。 单击“资源组名称” 的 Azure 数据工厂。
 1. 在“测试选择”中，包含除“存储”以外的所有测试。 参阅下图：
 
    ![验证测试](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
-1. 单击“下一步”。
+1. 单击“资源组名称” 的 Azure 数据工厂。
 1. 在“确认”中，单击“下一步”。
 
 “验证配置向导”将运行验证测试。
@@ -308,7 +308,7 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 
 1. 在“故障转移群集管理器”中，确保所有群集核心资源位于第一个虚拟机上。 如有必要，请将所有资源移到此虚拟机。
 
-1. 找到安装媒体。 如果虚拟机使用某个 Azure 应用商店映像，该媒体将位于 `C:\SQLServer_<version number>_Full`。 单击“设置”。
+1. 找到安装媒体。 如果虚拟机使用某个 Azure Marketplace 映像，该媒体将位于 `C:\SQLServer_<version number>_Full`。 单击“设置”。
 
 1. 在“SQL Server 安装中心”中单击“安装”。
 
@@ -327,7 +327,7 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 1. 单击“将节点添加到 SQL Server 故障转移群集”。 遵照向导中的说明安装 SQL Server 并将此服务器添加到 FCI。
 
    >[!NOTE]
-   >如果使用了包含 SQL Server 的 Azure 应用商店库映像，该映像已随附 SQL Server 工具。 如果未使用此映像，需单独安装 SQL Server 工具。 请参阅 [Download SQL Server Management Studio (SSMS)](http://msdn.microsoft.com/library/mt238290.aspx)（下载 SQL Server Management Studio (SSMS)）。
+   >如果使用了包含 SQL Server 的 Azure Marketplace 库映像，该映像已随附 SQL Server 工具。 如果未使用此映像，需单独安装 SQL Server 工具。 请参阅 [Download SQL Server Management Studio (SSMS)](http://msdn.microsoft.com/library/mt238290.aspx)（下载 SQL Server Management Studio (SSMS)）。
 
 ## <a name="step-5-create-azure-load-balancer"></a>步骤 5：创建 Azure 负载均衡器
 
@@ -341,9 +341,9 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 
 1. 在 Azure 门户中，转到虚拟机所在的资源组。
 
-1. 单击“+ 添加”。 在应用商店中搜索“负载均衡器”。 单击“负载均衡器”。
+1. 单击“+ 添加”。 在 Marketplace 中搜索“负载均衡器”。 单击“负载均衡器”。
 
-1. 单击“创建” 。
+1. 单击“创建”。
 
 1. 为负载均衡器配置以下属性：
 
@@ -419,7 +419,7 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
    - **空闲超时(分钟)**：4。
    - **浮动 IP (直接服务器返回)**：已启用
 
-1. 单击 **“确定”**。
+1. 单击“确定”。
 
 ## <a name="step-6-configure-cluster-for-probe"></a>步骤 6：为探测配置群集
 

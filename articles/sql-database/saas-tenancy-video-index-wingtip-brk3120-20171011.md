@@ -1,29 +1,31 @@
 ---
 title: "视频已编制索引，Azure SaaS SQL 应用 | Microsoft Docs"
-description: "通过 2017 年 10 月 11 日举行的 Ignite 会议，本文在 81 分钟的视频中对 SaaS DB 租户应用设计的各个时间点进行了索引。 可直接跳到感兴趣的部分。 至少描述了 3 种模式。 描述了简化开发和管理的 Azure 功能。"
+description: "本文对一个视频中的各个时间点进行了索引。这是 2017 年 10 月 11 日举行的 Ignite 会议上录制的关于 SaaS DB 租户应用设计的视频，时长 81 分钟。 可直接跳到感兴趣的部分。 至少描述了 3 种模式。 描述了简化开发和管理的 Azure 功能。"
 ms.custom: 
 ms.date: 12/06/2017
-ms.prod: sql-server
+ms.prod: 
+ms.service: sql-database
 ms.reviewer: billgib
 ms.suite: 
-ms.technology: database-engine
+ms.technology:
+- database-engine
 ms.tgt_pltfrm: 
 ms.topic: article
 author: MightyPen
 ms.author: genemi
 manager: craigg
 ms.workload: Inactive
-ms.openlocfilehash: db47d1dd0a6114ebca0715da179cc0629b26781a
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 5e8d5467e676ee178b77c02e387bdfd2c54e6071
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="video-indexed-and-annotated-for-mulit-tenant-saas-app-using-azure-sql-database"></a>使用 Azure SQL 数据库对多租户 SaaS 应用视频进行索引和批注
+# <a name="video-indexed-and-annotated-for-mulit-tenant-saas-app-using-azure-sql-database"></a>关于使用 Azure SQL 数据库的多租户 SaaS 应用的视频，包含索引和批注
 
-本文是有关 SaaS 租户模型或模式的 81 分钟视频的时间位置批注索引。 本文允许向后跳转或向前跳转至视频中感兴趣的部分。 视频介绍 Azure SQL 数据库上多租户数据库应用程序的主要设计选项。 视频包括管理代码的演示和演练，有时甚至提供比书面文档更加详细的信息。
+本文是有关 SaaS 租户模型或模式的 81 分钟视频的时间位置批注索引。 可以在本文中向后跳转或向前跳转至视频中感兴趣的部分。 视频介绍 Azure SQL 数据库上多租户数据库应用程序的主要设计选项。 该视频包括演示和管理代码演练，有时甚至可以通过实际操作提供比书面文档更加详细的信息。
 
-视频对书面文档中的内容进行详述，可在以下位置找到： 
+该视频扩充了以下书面文档中的信息： 
 - 概念：[多租户 SaaS 数据库租户模式][saas-concept-design-patterns-563e]
 - 教程：[Wingtip Tickets SaaS 应用程序][saas-how-welcome-wingtip-app-679t]
 
@@ -37,7 +39,7 @@ ms.lasthandoff: 12/07/2017
 
 本节将在 81 分钟的视频中对 38 个讨论的时间位置进行索引。 每个时间索引都带有视频中屏幕截图的批注，有时还有其他信息。
 
-每个时间索引采用的格式均为 h:mm: ss。 例如，标记“会话目标”的第二个索引时间位置，它开始的大概时间位置为 0:03:11。
+每个时间索引采用的格式均为 h:mm: ss。 例如，标记为“会话目标”的第二个索引时间位置大概始于 0:03:11。
 
 
 ### <a name="compact-links-to-video-indexed-time-locations"></a>到视频索引时间位置的紧凑型链接
@@ -94,18 +96,18 @@ ms.lasthandoff: 12/07/2017
 &nbsp; <a name="anchor-image-wtip-min00001"/>
 #### <a name="1-start-welcome-slide-00001"></a>1.（开始）欢迎使用幻灯片，0:00:01
 
-借鉴 MYOB：设计 Azure SQL 数据库 - BRK3120 上的 SaaS 应用程序模式
+借鉴 MYOB：设计 Azure SQL 数据库上的 SaaS 应用程序模式 - BRK3120
 
 [![欢迎使用幻灯片][image-wtip-min00003-brk3120-whole-welcome]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=1)
 
 - 标题：借鉴 MYOB：设计 Azure SQL 数据库上的 SaaS 应用程序模式
 - Bill.Gibson@microsoft.com
 - Azure SQL 数据库首席计划经理
-- Microsoft Ignite 会话 BRK3120，美国佛罗里达州奥兰多，2017 年 10 月 11 日
+- Microsoft Ignite 专场 BRK3120，美国佛罗里达州奥兰多，2017 年 10 月 11 日
 
 
 &nbsp; <a name="anchor-image-wtip-min00311"/>
-#### <a name="2-session-objectives-00153"></a>2.会话目标，0:01:53
+#### <a name="2-session-objectives-00153"></a>2.专场目标，0:01:53
 [![会话目标][image-wtip-min00311-session]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=113)
 
 - 多租户应用的替代模式，及优缺点。

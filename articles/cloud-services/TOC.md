@@ -20,13 +20,10 @@
 #### [Blob 存储和连接的服务](../visual-studio/vs-storage-cloud-services-getting-started-blobs.md)
 #### [队列存储和连接的服务](../visual-studio/vs-storage-cloud-services-getting-started-queues.md)
 #### [表存储和连接的服务](../visual-studio/vs-storage-cloud-services-getting-started-tables.md)
-### 配置程序包以实现连续构建和部署
-#### [TFS 和 Team Build](cloud-services-dotnet-continuous-delivery.md)
 ### [配置角色的流量规则](cloud-services-enable-communication-role-instances.md)
 ### [处理云服务生命周期事件](cloud-services-role-lifecycle-dotnet.md)
 ### [Socket.io (Node.js)](cloud-services-nodejs-chat-app-socketio.md)
 ### [使用 Twilio 拨打电话 (.NET)](../partner-twilio-cloud-services-dotnet-phone-call-web-role.md)
-### [New Relic](../store-new-relic-cloud-services-dotnet-application-performance-management.md)
 
 ### 配置启动任务
 #### [创建启动任务](cloud-services-startup-tasks.md)
@@ -73,11 +70,9 @@
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
 ### [在 Azure 存储中存储和查看诊断数据](cloud-services-dotnet-diagnostics-storage.md)
 ### [使用诊断跟踪云服务](cloud-services-dotnet-diagnostics-trace-flow.md)
-### [将诊断数据发送到 App Insights](cloud-services-dotnet-diagnostics-applicationinsights.md)
 
 ## 故障排除
 ### 调试 
-#### [通过持续交付启用远程调试](cloud-services-virtual-machines-dotnet-continuous-delivery-remote-debugging.md)
 #### [云服务的选项](../vs-azure-tools-debugging-cloud-services-overview.md)
 #### [使用 Visual Studio 调试本地云服务](../vs-azure-tools-debug-cloud-services-virtual-machines.md)
 #### [使用 Visual Studio 调试已发布的云服务](../vs-azure-tools-intellitrace-debug-published-cloud-services.md)

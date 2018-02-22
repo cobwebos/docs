@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: v-craic
-ms.openlocfilehash: c1f83097fe4e5da3a46f693d37b001dbb6831527
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 7a0a86f658ac19bfb197c7e233b8717bf9fba40b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>对 Azure 开发测试实验室中的虚拟机执行附加或分离数据磁盘操作
 [Azure 托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)管理与虚拟机数据磁盘关联的存储帐户。 用户将新数据磁盘附加到 VM，指定所需的磁盘的类型和大小，然后 Azure 会自动创建并管理磁盘。 数据磁盘可以从 VM 中分离，并且可以在以后重新附加到同一 VM 或附加到属于同一用户的其他 VM。
@@ -35,7 +35,7 @@ ms.lasthandoff: 01/02/2018
 请按照下列步骤创建新的托管数据磁盘并将其附加到 Azure 开发测试实验室中的 VM。
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 选择“更多服务”，并从列表中选择“开发测试实验室”。
+1. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 1. 从实验室列表，选择所需的实验室。 
 1. 从“我的虚拟机”列表中，选择一个正在运行的虚拟机。
 1. 从左侧菜单中选择“磁盘”。

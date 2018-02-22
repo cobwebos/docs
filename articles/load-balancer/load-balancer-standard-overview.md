@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 02/04/2018
 ms.author: kumud
-ms.openlocfilehash: ddcbe895bdaa6eaa49e8ed129fe92b415f2600ef
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: cf7be370ab0d79be9068534f0c43b88f454bc024
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Azure 负载均衡器标准版概述（预览版）
 
 将 Azure 负载均衡器标准 SKU 和公共 IP 标准 SKU 结合使用，可以构建高度可缩放且可靠的体系结构。 使用负载均衡器标准版的应用程序可以利用新的功能。 针对所有 TCP 和 UDP 应用程序的数百万个流提供低延迟、高吞吐量和缩放功能。
 
 >[!NOTE]
-> 负载均衡器标准版 SKU 目前以预览版提供。 在预览期，该功能的可用性和可靠性级别可能与正式版不同。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 请将正式版[负载均衡器基本 SKU](load-balancer-overview.md) 用于生产服务。 与此预览版关联的功能、[可用性区域](https://aka.ms/availabilityzones)和 [HA 端口](https://aka.ms/haports)目前需要单独注册。 除了注册负载均衡器[标准预览版](#preview-sign-up)外，请按照相应说明注册这些功能。
+> 负载均衡器标准版 SKU 目前以预览版提供。 在预览期，该功能的可用性和可靠性级别可能与正式版不同。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 请将正式版[负载均衡器基本 SKU](load-balancer-overview.md) 用于生产服务。 若要将[可用性区域预览版](https://aka.ms/availabilityzones)与此预览版配合使用，需要进行[单独注册](https://aka.ms/availabilityzones)，并且还需要注册负载均衡器[标准预览版](#preview-sign-up)。
 
 ## <a name="why-use-load-balancer-standard"></a>为何使用负载均衡器标准版？
 
@@ -325,13 +325,11 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 
 ## <a name="region-availability"></a>上市区域
 
-负载均衡器标准版目前已在以下区域推出：
-- 美国东部 2
-- 美国中部
-- 北欧
-- 美国中西部
-- 欧洲西部
-- 东南亚
+负载均衡器标准版目前已在所有公有云区域推出。
+
+>[!IMPORTANT]
+> 在短时间内，访问初始启动区域（美国东部 2、美国中部、北欧、美国中西部、西欧、东南亚）之外的区域需要注册其他订阅功能（AllowLBPreviewWave2 和AllowLBPreviewWave3）。  [请执行以下步骤](#additionalpreviewregions)。 请执行所有这些步骤，即使以前已注册了 AllowLBPreview 也是如此。
+> 未来几周中将删除此要求。
 
 ## <a name="sku-service-limits-and-abilities"></a>SKU 服务限制和功能
 
@@ -369,7 +367,12 @@ Azure 的[网络服务限制](https://docs.microsoft.com/azure/azure-subscriptio
 若要参与负载均衡器标准 SKU 及其配套公共 IP 标准 SKU 的预览，请注册订阅。  通过注册订阅，即可使用 PowerShell 或 Azure CLI 2.0 进行访问。 若要进行注册，请执行以下步骤：
 
 >[!NOTE]
->注册负载均衡器标准版功能可能需要长达一小时才能在全局范围内生效。 如果要将负载均衡器标准版与[可用性区域](https://aka.ms/availabilityzones)和 [HA 端口](https://aka.ms/haports)配合使用，需要对这些预览功能进行单独注册。 按照相应说明注册这些功能。
+>注册负载均衡器标准版功能可能需要长达一小时才能在全局范围内生效。 如果要将负载均衡器标准版与[可用性区域](https://aka.ms/availabilityzones)配合使用，需要对 AZ 预览版进行[单独注册](https://aka.ms/availabilityzones)。
+
+<a name="additionalpreviewregions"></a>
+>[!IMPORTANT]
+> 在短时间内，访问初始启动区域（美国东部 2、美国中部、北欧、美国中西部、西欧、东南亚）之外的区域需要注册其他订阅功能（AllowLBPreviewWave2 和AllowLBPreviewWave3）。  下面的步骤已被修改以启用其他订阅功能。 请执行所有这些步骤，即使以前已注册了 AllowLBPreview 也是如此。 未来几周中将删除此要求。
+
 
 ### <a name="sign-up-by-using-azure-cli-20"></a>使用 Azure CLI 2.0 注册
 
@@ -377,15 +380,19 @@ Azure 的[网络服务限制](https://docs.microsoft.com/azure/azure-subscriptio
 
     ```cli
     az feature register --name AllowLBPreview --namespace Microsoft.Network
+    az feature register --name AllowLBPreviewWave2 --namespace Microsoft.Network
+    az feature register --name AllowLBPreviewWave3 --namespace Microsoft.Network
     ```
     
-2. 此操作可能最多需要 10 分钟才能完成。 可以使用以下命令来检查操作状态：
+2. 此操作可能最多需要 10 分钟才能完成。 可使用以下命令检查操作状态：
 
     ```cli
-    az feature show --name AllowLBPreview --namespace Microsoft.Network
+    az feature list --query "[?name=='Microsoft.Network/AllowLBPreview']" --output json
+    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave2']" --output json
+    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave3']" --output json
     ```
     
-    功能注册状态返回“已注册”时，继续执行下一步：
+    对于上述每种注册功能，当功能注册状态返回“已注册”时，继续执行下一步。 示例：
    
     ```json
     {
@@ -398,28 +405,33 @@ Azure 的[网络服务限制](https://docs.microsoft.com/azure/azure-subscriptio
     }
     ```
     
-3. 在资源提供程序中重新注册订阅，完成预览版注册：
+4. 在资源提供程序中重新注册订阅，完成预览版注册：
 
     ```cli
     az provider register --namespace Microsoft.Network
     ```
     
+
 ### <a name="sign-up-by-using-powershell"></a>使用 PowerShell 注册
 
 1. 在提供程序中注册此功能：
 
     ```powershell
     Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
+    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
+    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
     ```
     
-2. 此操作可能最多需要 10 分钟才能完成。 可以使用以下命令来检查操作状态：
+2. 此操作可能最多需要 10 分钟才能完成。 可使用以下命令检查操作状态：
 
     ```powershell
     Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
+    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
+    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
     ```
 
-    功能注册状态返回“已注册”时，继续执行下一步：
-   
+  对于上述每种注册功能，当功能注册状态返回“已注册”时，继续执行下一步。 示例：
+
     ```
     FeatureName      ProviderName        RegistrationState
     -----------      ------------        -----------------
@@ -450,11 +462,14 @@ Azure 的[网络服务限制](https://docs.microsoft.com/azure/azure-subscriptio
 - 不支持 IPv6。
 - 在可用性区域的上下文中，无法将前端从区域配置变成区域冗余配置，反之亦然。 将前端创建为区域冗余配置后，它将一直是区域冗余配置。 将前端创建为区域配置后，它将一直是区域配置。
 - 在可用性区域的上下文中，区域公共 IP 地址不能从一个区域转移到另一个区域。
+- 目前不支持 [Azure Monitor 警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
+- 门户尚不支持扩展的预览区域。  请使用模板、Azure CLI 2.0 或 PowerShell 等客户端工具作为解决方法。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[负载均衡器基本版](load-balancer-overview.md)。
 - 详细了解[可用性区域](../availability-zones/az-overview.md)。
+- 详细了解[网络安全组](../virtual-network/virtual-networks-nsg.md)。
 - 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
-
+- 了解 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) [中公开的指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)。

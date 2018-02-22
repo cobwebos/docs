@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 397afc28b5f4c4f7f84afde13b6d031d83aaced4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 2de214f604469025a8a4accde44359fea0ded7e9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones-preview"></a>创建使用可用性区域（预览版）的虚拟机规模集
 若要防止虚拟机规模集发生数据中心级故障，可以跨可用性区域创建规模集。 支持可用性区域的 Azure 区域最少具有三个单独的区域，每个都有其自己的独立电源、网络和冷却设备。 有关详细信息，请参阅[可用性区域概述](../availability-zones/az-overview.md)。
@@ -30,13 +30,7 @@ ms.lasthandoff: 01/18/2018
 ## <a name="single-zone-and-zone-redundant-scale-sets"></a>单区域和区域冗余规模集
 部署虚拟机规模集时，可选择在区域中使用单个可用性区域或多个区域。
 
-在单个区域中创建规模集时，可控制要运行所有这些 VM 实例的区域，规模集仅在该区域中进行托管和自动缩放。 下图展示一个示例，介绍如何使用分配流量的区域冗余负载均衡器创建多个单个区域规模集：
-
-![使用区域冗余负载均衡器实现的单区域规模集部署](media/virtual-machine-scale-sets-use-availability-zones/zonal-vmss.png)
-
-使用区域冗余规模集，可创建跨越多个区域的单个规模集。 创建 VM 实例时，默认其在各区域中同等均衡。 如果其中一个区域中发生中断，规模集不会自动扩大以增加容量。 最佳做法是基于 CPU 或内存使用情况配置自动缩放规则。 借助自动缩放规则，规模集能够通过在其余可操作区域中横向扩展新实例，来应对该区域中的 VM 实例损失。 下图显示跨多个区域部署的单个规模集的示例：
-
-![区域冗余规模集部署和负载均衡器](media/virtual-machine-scale-sets-use-availability-zones/zone-redundant-vmss.png)
+在单个区域中创建规模集时，可控制要运行所有这些 VM 实例的区域，规模集仅在该区域中进行托管和自动缩放。 使用区域冗余规模集，可创建跨越多个区域的单个规模集。 创建 VM 实例时，默认其在各区域中同等均衡。 如果其中一个区域中发生中断，规模集不会自动扩大以增加容量。 最佳做法是基于 CPU 或内存使用情况配置自动缩放规则。 借助自动缩放规则，规模集能够通过在其余可操作区域中横向扩展新实例，来应对该区域中的 VM 实例损失。
 
 若要使用可用性区域，必须在[受支持的 Azure 区域](../availability-zones/az-overview.md#regions-that-support-availability-zones)中创建规模集。 还需要[注册可用性区域预览版](http://aka.ms/azenroll)。 可以使用下列方法之一创建使用可用性区域的规模集：
 

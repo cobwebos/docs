@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/09/2017
 ms.author: mikhegn
-ms.openlocfilehash: 959fdb4aceee48863f3914d1b91f2bec6e256d6b
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 6bc986236d50106485dce151f1f74622f56400c5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-applications-for-multiple-environments"></a>管理多个环境的应用程序
 
@@ -55,8 +55,8 @@ ms.lasthandoff: 01/16/2018
 ## <a name="next-steps"></a>后续步骤
 以下文章演示如何使用此处所述的某些概念：
 
-- [如何在 Service Fabric 中指定服务的环境变量](service-fabric-how-to-specify-port-number-using-parameters.md)
-- [如何在 Service Fabric 中使用参数来指定服务的端口号](service-fabric-how-to-specify-environment-variables.md)
+- [如何在 Service Fabric 中指定服务的环境变量](service-fabric-how-to-specify-environment-variables.md)
+- [如何在 Service Fabric 中使用参数来指定服务的端口号](service-fabric-how-to-specify-port-number-using-parameters.md)
 - [如何参数化配置文件](service-fabric-how-to-parameterize-configuration-files.md)
 
 - [环境变量引用](service-fabric-environment-variables-reference.md)
