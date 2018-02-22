@@ -87,6 +87,7 @@
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
 #### [Node.js](iot-hub-node-node-file-upload.md)
+#### [Python](iot-hub-python-python-file-upload.md)
 ### 设备孪生入门
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-twin-getstarted.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-twin-getstarted.md)
@@ -110,15 +111,19 @@
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-twin-how-to-configure.md)
 #### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-twin-how-to-configure.md)
 #### [Java 后端/Java 设备](iot-hub-java-java-twin-how-to-configure.md)
+#### [Python 后端/Python 设备](iot-hub-python-python-twin-how-to-configure.md)
 ### 使用设备作业更新设备固件
 #### [Node 后端/Node 设备](iot-hub-node-node-firmware-update.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-firmware-update.md)
 #### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-firmware-update.md)
 #### [Java 后端/Java 设备](iot-hub-java-java-firmware-update.md)
+#### [Python 后端/Python 设备](iot-hub-python-python-firmware-update.md)
 ### 计划和广播作业
 #### [Node.js 后端/Node.js 设备](iot-hub-node-node-schedule-jobs.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-schedule-jobs.md)
-#### [Java](iot-hub-java-java-schedule-jobs.md)
+#### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-schedule-jobs.md)
+#### [Java 后端/Java 设备](iot-hub-java-java-schedule-jobs.md)
+#### [Python 后端/Python 设备](iot-hub-python-python-schedule-jobs.md)
 
 ## 管理
 ### 创建 IoT 中心 
