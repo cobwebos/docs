@@ -3,8 +3,8 @@ title: "将模板与 Azure 堆栈中的命令行部署 |Microsoft 文档"
 description: "了解如何使用跨平台命令行界面 (CLI)，将模板部署到 Azure 堆栈。"
 services: azure-stack
 documentationcenter: 
-author: heathl17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 9584177f-4af3-4834-864d-930b09ae0995
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: d58d80d89bb2544c4d4a34f608177a96760406ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: 88e10d98a709ff967e19bfe5bfb35bbce9d2df9f
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>将 Azure 堆栈使用命令行中的模板部署
 

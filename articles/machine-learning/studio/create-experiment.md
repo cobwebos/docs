@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/20/2017
 ms.author: garye
-ms.openlocfilehash: 11496f0ca225baf0e6647a62aae09b8992f825c8
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 3cc4278ca7d4603f4bfb916885d44e6a85864b25
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>机器学习教程：在 Azure 机器学习工作室中创建第一个数据科研试验
 
@@ -143,7 +143,7 @@ ms.lasthandoff: 01/08/2018
 3. 单击[选择数据集中的列][select-columns] 模块，并单击“属性”窗格中的“启动列选择器”。
 
     - 在左侧单击“使用规则”
-    - 在“开头为”下面，单击“所有列”。 这会指示[选择数据集中的列][select-columns]”传递所有列（但要排除的列除外）。
+    - 在“开头为”下面，单击“所有列”。 这会指示[选择数据集中的列][select-columns]传递所有列（但要排除的列除外）。
     - 在下拉列表中，选择“排除”和“列名称”，并在文本框内部单击。 此时会显示列的列表。 选择“规范化损失”，该列随即添加到文本框中。
     - 单击复选标记（“确定”）按钮，关闭列选择器（右下角）。
 
@@ -159,15 +159,13 @@ ms.lasthandoff: 01/08/2018
 
     > [!TIP]
     可以双击模块并输入文本，为模块添加注释。 这有助于快速查看模块在实验中的运行情况。 在本例中，请双击[选择数据集中的列][select-columns]模块，并键入注释“排除规范化损失”。
-    >
-    >
 
 
     ![双击要添加注释的模块][add-comment]
     <br/>
     ***双击要添加注释的模块***
 
-3. 将[清理缺失数据][clean-missing-data]模块拖到试验画布，然后将其连接到[选择数据集中的列][select-columns]”模块。 在“属性”窗格的“清理模式”下选择“删除整行”。 这会指示[清理缺失数据][clean-missing-data]”清理数据，删除存在缺失值的行。 双击该模块并键入注释“删除缺失值行”。
+3. 将[清理缺失数据][clean-missing-data]模块拖到试验画布，然后将其连接到[选择数据集中的列][select-columns]”模块。 在“属性”窗格的“清理模式”下选择“删除整行”。 这会指示[清理缺失数据][clean-missing-data]清理数据，删除存在缺失值的行。 双击该模块并键入注释“删除缺失值行”。
 
     ![将“清理缺失数据”模块的清理模式设置为“删除整行”][set-remove-entire-row]
     <br/>

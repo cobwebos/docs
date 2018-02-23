@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/11/2017
 ms.author: oanapl
-ms.openlocfilehash: cd9a144baf06422b425a0bc6c516600d6fcd4b97
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: f2a07d58938ae77701d8df8099ec0aedf1524d6b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
 Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还将这些实体组织为层次结构以捕获实体交互。
@@ -638,6 +638,21 @@ HealthEvents          :
 
 - **IReplicator.BuildReplica (<Remote ReplicaId>)**：此警告指明生成过程有问题。 有关详细信息，请参阅[副本生命周期](service-fabric-concepts-replica-lifecycle.md)。 这可能是由于复制器地址配置错误所致。 有关详细信息，请参阅[配置有状态可靠服务](service-fabric-reliable-services-configuration.md)和[在服务清单中指定资源](service-fabric-service-manifest-resources.md)。 也可能是远程节点有问题。
 
+### <a name="replicator-system-health-reports"></a>复制器系统运行状况报告
+**复制队列已满：**如果复制队列已满，则 
+System.Replicator 报告警告。 在主要副本上，由于一个或多个次要副本确认操作的速度较慢，复制队列通常会达到已满状态。 在辅助副本上，当服务应用操作的速度较慢时，通常会发生这种情况。 当队列不再满时，警告被清除。
+
+* **SourceId**：System.Replicator
+* **属性**：PrimaryReplicationQueueStatus 或 SecondaryReplicationQueueStatus（视副本角色而定）。
+* **后续步骤**：如果报告位于主要副本上，请检查群集中节点间的连接。 如果所有连接都正常，则可能至少有一个慢速次要副本在应用操作时具有高磁盘延迟。 如果报告位于次要副本上，请首先检查节点上的磁盘使用情况和性能，然后检查慢速节点到主要副本之间的传出连接。
+
+**RemoteReplicatorConnectionS状态：**当辅助（远程）复制器的连接不正常时，主要副本上的
+**System.Replicator** 会报告警告。 报告的信息中会显示远程复制器的地址，这样可以更方便地检测是否传入了错误的配置，或者复制器之间是否存在网络问题。
+
+* **SourceId**：System.Replicator
+* **属性**：**RemoteReplicatorConnectionStatus**
+* **下一步**：请检查错误消息，确保正确配置远程复制器地址（例如，如果使用“localhost”侦听地址打开了远程复制器，则它不可从外部访问）。 如果地址看上去正确，请检查主节点和远程地址间的连接，以找出任何潜在的网络问题。
+
 ### <a name="replication-queue-full"></a>复制队列已满
 如果复制队列已满，则 **System.Replicator** 报告警告。 在主要副本上，由于一个或多个次要副本确认操作的速度较慢，复制队列通常会达到已满状态。 在辅助副本上，当服务应用操作的速度较慢时，通常会发生这种情况。 当队列不再满时，警告被清除。
 
@@ -747,7 +762,7 @@ HealthEvents                       :
 如果应用程序包下载失败，System.Hosting 会报告错误。
 
 * **SourceId**：System.Hosting
-* **属性**：Download:RolloutVersion。
+* **属性**：下载：RolloutVersion.
 * **后续步骤**：调查在节点上下载失败的原因。
 
 ## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage 系统运行状况报告
@@ -825,7 +840,7 @@ HealthEvents               :
 如果服务包下载失败，System.Hosting 报告错误。
 
 * **SourceId**：System.Hosting
-* **属性**：Download:RolloutVersion。
+* **属性**：下载：RolloutVersion.
 * **后续步骤**：调查在节点上下载失败的原因。
 
 ### <a name="upgrade-validation"></a>升级验证

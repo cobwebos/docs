@@ -3,8 +3,8 @@ title: "将你的应用程序部署到 Azure 和 Azure 堆栈 |Microsoft 文档"
 description: "了解如何使用混合 CI/CD 管道将应用部署到 Azure 和 Azure 堆栈。"
 services: azure-stack
 documentationcenter: 
-author: HeathL17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/25/2017
-ms.author: helaw
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: 83bb401d5d65cd2c34015a1a14673363aeee81d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6c073376db196b7d6c73c38d6a0a7b2c24949528
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-apps-to-azure-and-azure-stack"></a>将应用部署到 Azure 和 Azure 堆栈
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
@@ -40,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 - [Azure 堆栈的关键概念](../azure-stack-key-features.md)
 
 ### <a name="azure"></a>Azure
- - 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+ - 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
  - 创建[Web 应用](../../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md)，并将其用于配置[FTP 发布](../../app-service/app-service-deploy-ftp.md)。  记下新的 Web 应用 URL，因为它用更高版本。
 
 
@@ -71,7 +72,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="commit-and-push-changes-to-vsts"></a>提交并将更改推送到 VSTS
 1.  使用 Visual Studio 中的团队资源管理器，选择下拉菜单，然后单击**更改**。
 2.  提供提交消息，并选择**提交所有**。 可能会提示你保存解决方案文件，请单击是以保存所有。
-3.  一旦提交，Visual Studio 主动同步到你的项目的更改。 选择**同步**。
+3.  一旦提交，Visual Studio 主动同步到你的项目的更改。 选择“同步”。
 
     ![显示提交屏幕完成提交后的图像](./media/azure-stack-solution-pipeline/image1.png)
 
@@ -118,7 +119,7 @@ ms.lasthandoff: 10/11/2017
     |用户名 | 为 Web 应用创建 FTP 凭据时配置的用户名 |
     |密码 | 创建时建立的 Web 应用的 FTP 凭据的密码|
     |源目录 | $(System.DefaultWorkingDirectory)\**\ |
-    |远程目录 | /site/wwwroot / |
+    |远程目录 | /site/wwwroot/ |
     |保留文件路径 | 启用 （已选中）|
 
 4.  单击“保存”
@@ -144,7 +145,7 @@ ms.lasthandoff: 10/11/2017
 
 1.  在版本定义中，选择**+ 添加环境**和**创建新环境**。
 2.  选择**空**，单击**下一步**。
-3.  选择**特定用户**并指定你的帐户。  选择“创建” 。
+3.  选择**特定用户**并指定你的帐户。  选择“创建”。
 4.  对环境重命名通过选择现有的名称，并键入*Azure 堆栈*。
 5.  现在，选择 Azure 堆栈环境中，然后选择**添加任务**。
 6.  选择**FTP 上载**任务并选择**添加**，然后选择**关闭**。
@@ -162,7 +163,7 @@ ms.lasthandoff: 10/11/2017
     |用户名 | 为 Web 应用创建 FTP 凭据时配置的用户名 |
     |密码 | 创建时建立的 Web 应用的 FTP 凭据的密码|
     |源目录 | $(System.DefaultWorkingDirectory)\**\ |
-    |远程目录 | /site/wwwroot /|
+    |远程目录 | /site/wwwroot/|
     |保留文件路径 | 启用 （已选中）|
 
 2.  单击“保存”

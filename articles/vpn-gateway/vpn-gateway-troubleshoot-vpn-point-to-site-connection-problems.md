@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: genli
-ms.openlocfilehash: 69d363b5ff0b94884cf6d13ae0260f3747e4e69a
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 83d96a2706e879f8817540e85369729289be9456
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
@@ -65,11 +65,18 @@ ms.lasthandoff: 12/20/2017
 
 ### <a name="cause"></a>原因
 
-如果根证书公钥未上传到 Azure VPN 网关，则会发生此问题。 如果密钥已损坏或过期，也会发生此问题。
+如果下列一项条件为 true，则会发生此问题：
+
+- 网关子网上使用默认路由的用户定义路由 (UDR) 设置不正确。
+- 根证书公钥未上传到 Azure VPN 网关。 
+- 密钥已损坏或过期。
 
 ### <a name="solution"></a>解决方案
 
-若要解决此问题，请在 Azure 门户中检查根证书的状态，确定是否已吊销。 如果未吊销，请尝试删除并重新上传根证书。 有关详细信息，请参阅[创建证书](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts)。
+若要解决该问题，请执行以下步骤：
+
+1. 删除网关子网上的 UDR。 请确保 UDR 正确地转发所有流量。
+2. 请在 Azure 门户中检查根证书的状态，确定它是否已吊销。 如果未吊销，请尝试删除并重新上传根证书。 有关详细信息，请参阅[创建证书](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts)。
 
 ## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN 客户端错误：已处理证书链，但被终止 
 
@@ -146,7 +153,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息：
 
-**无法保存虚拟网络网关 &lt;*网关名称*&gt;。 证书 &lt;*证书 ID*&gt; 的数据无效。**
+无法保存虚拟网络网关 &lt;网关名称&gt;**。证书 &lt;证书 ID&gt; 的数据无效**。
 
 ### <a name="cause"></a>原因 
 
@@ -181,7 +188,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息： 
 
-**无法保存虚拟网络网关 &lt;*网关名称*&gt;。 资源名称 &lt;*尝试上传的证书名称*&gt; 无效。**
+无法保存虚拟网络网关 &lt;网关名称&gt;**。资源名称 &lt;尝试上传的证书名称 无效&gt;**。
 
 ### <a name="cause"></a>原因
 
@@ -199,7 +206,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 导致此错误发生的原因是临时网络问题。 几分钟后，再次尝试下载 VPN 包。
 
-## <a name="azure-vpn-gateway-upgrade-all-p2s-clients-are-unable-to-connect"></a>Azure VPN 网关升级：所有 P2S 客户端都无法连接
+## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Azure VPN 网关升级：所有点到站点的客户端都无法连接
 
 ### <a name="cause"></a>原因
 
@@ -207,7 +214,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 ### <a name="solution"></a>解决方案
 
-若要解决此问题，请新建证书并向 VPN 客户端重新分发。 
+要解决此问题，请重新部署所有客户端上点到站点的包。
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>一次性连接的 VPN 客户端过多
 
@@ -234,6 +241,10 @@ VPN 客户端范围属于 10.0.0.0/8 的较小子网（如 10.0.12.0/24）。 �
 如果地址属于 B 类 --> 应用 /16
 
 如果地址属于 C 类 --> 应用 /24
+
+### <a name="solution"></a>解决方案
+
+将其他网络的路由注入具有最长前缀匹配或指标低于点到站点（因此具有更高优先级）的路由表中。 
 
 ## <a name="vpn-client-cannot-access-network-file-shares"></a>VPN 客户端无法访问网络文件共享
 
@@ -262,7 +273,7 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 
 ### <a name="solution"></a>解决方案
 
-若要解决此问题，请从 C:\Users\TheUserName\AppData\Roaming\Microsoft\Network\Connections 删除旧的 VPN 客户端配置文件，再重新运行 VPN 客户端安装程序。
+要解决此问题，请从 C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId> 删除旧的 VPN 客户端配置文件，再重新运行 VPN 客户端安装程序。
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>点到站点 VPN 客户端无法解析本地域中的资源的 FQDN
 
@@ -301,7 +312,7 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 
 ### <a name="cause"></a>原因
 
-如果用于对 VPN 客户端进行身份验证的 RADIUS 服务器具有不正确的设置，则会发生此错误。 
+如果用于对 VPN 客户端进行身份验证的 RADIUS 服务器具有不正确的设置，或者 Azure 网关无法连接到 Radius 服务器，则会发生此错误。
 
 ### <a name="solution"></a>解决方案
 
@@ -312,3 +323,45 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 ### <a name="cause"></a>原因
 
 根证书尚未安装。 根证书安装在客户端的**可信证书**存储中。
+
+## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>VPN 客户端错误：未进行远程连接，因为尝试的 VPN 隧道失败。 （错误 800） 
+
+### <a name="cause"></a>原因
+
+网卡驱动程序已过时。
+
+### <a name="solution"></a>解决方案
+
+更新网卡驱动程序：
+
+1. 单击“开始”，键入“设备管理器”，然后从结果列表中选择它。 如果系统提示需要管理员密码或确认，请键入密码或进行确认。
+2. 在“网络适配器”类别，查找要更新的网卡。  
+3. 双击设备名称，选择“更新驱动程序”，选择“自动搜索更新的驱动程序软件”。
+4. 如果 Windows 找不到新的驱动程序，可以尝试在设备制造商的网站上查找，并按照说明执行操作。
+5. 重启计算机并再次尝试连接。
+
+## <a name="error-file-download-error-target-uri-is-not-specified"></a>错误：“文件下载错误，未指定目标 URI”
+
+### <a name="cause"></a>原因
+
+这是因为配置了不正确的网关类型。
+
+### <a name="solution"></a>解决方案
+
+Azure VPN 网关类型必须是 VPN，VPN 类型必须是 RouteBased。
+
+## <a name="vpn-package-installer-doesnt-complete"></a>VPN 包安装程序未完成
+
+### <a name="cause"></a>原因
+
+此问题可能由以前的 VPN 客户端安装引起。 
+
+### <a name="solution"></a>解决方案
+
+从 C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId> 删除旧的 VPN 客户端配置文件，再次运行 VPN 客户端安装程序。 
+
+## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>VPN 客户端在一段时间后进入休眠状态或睡眠状态
+
+### <a name="solution"></a>解决方案
+
+在 VPN 客户端运行的计算机中检查睡眠和休眠设置。

@@ -3,8 +3,8 @@ title: "在 Azure 堆栈中使用 Azure 资源管理器模板 |Microsoft 文档"
 description: "了解如何使用 Azure 资源管理器模板在 Azure 堆栈中来设置资源。"
 services: azure-stack
 documentationcenter: 
-author: heathl17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: 7648855011e8f77c35713d2d2ae50f2e474a08a6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: 6d4ef16881ef8dc249116aec706f760b163a2972
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>在 Azure 堆栈中使用 Azure 资源管理器模板
 
@@ -72,6 +73,5 @@ Azure 资源管理器模板部署和设置在单个协调的操作的应用程�
 ## <a name="next-steps"></a>后续步骤
 [通过门户部署模板](azure-stack-deploy-template-portal.md)
 
-
-            [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)
+[Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)
 

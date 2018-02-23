@@ -1,23 +1,8 @@
----
-title: "监视任何网站的可用性和响应能力 | Microsoft Docs"
-description: "在 Application Insights 中设置 Web 测试。 当网站不可用或响应速度缓慢时接收警报。"
-services: application-insights
-documentationcenter: 
-author: SoubhagyaDash
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 12/14/2017
-ms.author: sdash
-ms.openlocfilehash: b35f37b4599cdf6276bc82013dc2fdf1c7d12834
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ ;--- title: 监视任何网站的可用性和响应能力 | Microsoft Docs description: 在 Application Insights 中设置 Web 测试。 当网站不可用或响应速度缓慢时接收警报。
+services: application-insights documentationcenter: '' author: SoubhagyaDash manager: carmonm
+
+ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee ms.service: application-insights ms.workload: tbd ms.tgt_pltfrm: ibiza ms.devlang: na ms.topic: get-started-article ms.date: 02/09/2018 ms.author: sdash ; mbullwin
+
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
 将 Web 应用或网站部署到任何服务器之后，可以设置测试来监视其可用性和响应能力。 [Azure Application Insights](app-insights-overview.md) 将来自全球各地的 Web 请求定期发送到应用程序。 如果应用程序无响应或响应太慢，则会发出警报。
@@ -41,7 +26,7 @@ ms.lasthandoff: 02/03/2018
 
 **如果已配置 Application Insights**（针对 Web 应用），请在 [Azure 门户](https://portal.azure.com)中打开 Application Insights 资源。
 
-**或者，要在新资源中查看报告**，请注册 [Microsoft Azure](http://azure.com)，转到 [Azure 门户](https://portal.azure.com)，并创建 Application Insights 资源。
+**或者，若要在新资源中查看报告**，请转到 [Azure 门户](https://portal.azure.com)，并创建 Application Insights 资源。
 
 ![“新建”>“Application Insights”](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
@@ -56,9 +41,13 @@ ms.lasthandoff: 02/03/2018
 * **分析从属请求**：如果选中此选项，则测试将请求图像、脚本、样式文件以及其他属于受测网页的文件。 记录的响应时间包括获取这些文件所耗费的时间。 如果无法在超时期限内为整个测试成功下载所有这些资源，测试会失败。 
 
     如果不选中此选项，则测试只请求指定 URL 的文件。
+
 * **启用重试**：如果选中此选项，则测试失败时，会在短时间后重试。 仅当连续三次尝试失败时，才报告失败。 然后，将按照一般的测试频率执行后续测试。 重试会暂停，直到下次成功为止。 可在每个测试位置单独应用此规则。 建议使用此选项。 平均大约有 80% 的失败可在重试后消除。
-* **测试频率**：设置从每个测试位置运行测试的频率。 如果有五个测试位置，且频率为五分钟，则平均每隔一分钟测试站点一次。
+
+* **测试频率**：设置从每个测试位置运行测试的频率。 如果有五个测试位置，且默认频率为五分钟，则平均每隔一分钟测试站点一次。
+
 * **测试位置** 是服务器将 Web 请求发送到的 URL 位置。 请选择多个位置，以便区分网站问题与网络问题。 最多可以选择 16 个位置。
+
 * **成功准则**：
 
     **测试超时**：减少此值可以接收有关响应变慢的警报。 如果未在这段时间内收到站点的响应，则将测试视为失败。 如果选择了“分析依赖请求”，则必须在这段时间内收到所有图像、样式文件、脚本和其他依赖资源。

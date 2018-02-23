@@ -36,8 +36,11 @@
 #### [跨多个存储帐户管理资产](meda-services-managing-multiple-storage-accounts.md)
 ### [配额和限制](media-services-quotas-and-limitations.md)
 ## [配置 Postman](media-rest-apis-with-postman.md)
-### [环境](postman-environment.md)
-### [集合](postman-collection.md)
+### 按需流式处理
+#### [环境](postman-environment.md)
+#### [集合](postman-collection.md)
+### 实时传送视频流
+#### [集合](postman-live-streaming-collection.md)
 ## 上传内容
 ### 将文件上传到帐户中
 #### [Azure portal](media-services-portal-upload-files.md)

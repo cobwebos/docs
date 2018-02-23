@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/09/2017
-ms.openlocfilehash: 9d8a9f1c32578abff1d98e093469e1a780f6cd80
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 4a8681bfdfe6b387d5790446d8b6dce04aaec580
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>如何在 Azure 机器学习工作台中使用 Jupyter Notebook
 
@@ -42,15 +42,15 @@ Azure 机器学习工作台通过 Jupyter Notebook 的集成支持交互式数�
 >查看[配置执行](experimentation-service-configuration.md)以了解更多有关运行配置和计算目标的详细信息。
 
 ### <a name="kernel-naming-convention"></a>内核命名约定
-通常以“\<项目名称> \<运行配置名称>”的格式命名内核。 例如，如果在名为 _myIris_ 的项目中有一个名为 _docker python_ 的运行配置，那么当打开 Jupyter Notebook 时可以在内核列表中找到名为“myIris docker-python”的内核。
-
+Azure ML Workbench 生成自定义 Jupyter 内核。  这些内核名为“\<项目名称> \<运行配置名称>”。 例如，如果在名为 myIris 的项目中有一个名为 docker-python 的运行配置，那么 Azure ML 会提供一个名为“myIris docker-python”的内核。  在 Jupyter 笔记本“内核”菜单的“更改内核”子菜单中设置正在运行的内核。 菜单栏最右侧会显示正在运行的内核的名称。
+ 
 目前，该工作台支持以下类型的内核。
 
 ### <a name="local-python-kernel"></a>本地 Python 内核
 此类 Python 内核支持在本地计算机上执行。 它与 Azure 机器学习的运行历史记录支持集成。 该内核的名称通常为“my_project_name local”。
 
 >[!NOTE]
->不要使用“Python 3”内核。 它是 Jupyter 默认提供的独立内核。 它没有与 Azure 机器学习功能集成。
+>不要使用“Python 3”内核。 它是 Jupyter 默认提供的独立内核。 它没有与 Azure 机器学习功能集成。 例如，%azureml Jupyter 神奇函数返回“未找到”错误。 
 
 ### <a name="python-kernel-in-docker-local-or-remote"></a>Docker 中的 Python 内核（本地或远程）
 此类 Python 内核在本地计算机或远程 Linux 虚拟机中的 Docker 容器中运行。 该内核的名称通常为“my_project docker”。 相关的 `docker.runconfig` 文件将字段 `Framework` 设置为 `Python`。

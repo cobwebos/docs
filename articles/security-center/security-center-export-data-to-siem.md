@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 02/01/2018
 ms.author: barclayn
-ms.openlocfilehash: aef623f047bd7e14cb5bd17fb2a2c18e3c5d42b9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7a0a72a25010952f13eb190f0e0a1a65cc6d42d3
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>将 Azure 安全数据导出到 SIEM - 管道配置 [预览版]
 
@@ -61,7 +61,7 @@ Azure 安全中心生成的事件经过处理后，将被发布到 Azure [活动
 | **查询说明**                                | **查询**                                                                                                                              |
 |---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | 所有警报                                              | index=main Microsoft.Security/locations/alerts                                                                                         |
-| 按名称汇总操作计数             | Alerts index=main sourcetype="amal:security" \| table operationName \| stats count by operationName                                |
+| 按名称汇总操作计数             | index=main sourcetype="amal:security" \| table operationName \| stats count by operationName                                |
 | 获取警报信息：时间、名称、状态、ID 和订阅 | index=main Microsoft.Security/locations/alerts \| table \_time, properties.eventName, State, properties.operationId, am_subscriptionId |
 
 

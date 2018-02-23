@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint 自动化 - 物理保护和环境保护"
-description: "FedRAMP 的 web 应用程序 - 物理保护和环境保护"
+title: "Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化 - 物理保护和环境保护"
+description: "FedRAMP Web 应用程序自动化 - 物理保护和环境保护"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9e9e473285f4e82e1da40b8c3d496d65733fbd45
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 792b9da0f4e5ec73c39f56a6e4805cf3c37133c4
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="physical-and-environmental-protection-pe"></a>物理保护和环境保护 (PE)
 

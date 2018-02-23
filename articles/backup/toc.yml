@@ -79,6 +79,14 @@
               href: backup-mabs-system-state-and-bmr.md
         - name: 从 Azure 备份服务器恢复数据
           href: backup-azure-alternate-dpm-server.md
+    - name: Azure 文件共享
+      items:
+        - name: 备份 Azure 文件共享
+          href: backup-azure-files.md
+        - name: 备份 Azure 文件共享常见问题解答
+          href: backup-azure-files-faq.md
+        - name: 排查 Azure 文件共享备份问题
+          href: troubleshoot-azure-files.md
     - name: Azure VM
       items:
         - name: 准备 VM

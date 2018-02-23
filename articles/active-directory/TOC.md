@@ -88,6 +88,7 @@
 #### [基于组的许可的 Azure PowerShell 示例](active-directory-licensing-ps-examples.md)
 #### [Azure AD 中的产品和服务计划的参考](active-directory-licensing-product-and-service-plan-reference.md)
 ### [设置 Office 365 组过期时间](active-directory-groups-lifecycle-azure-portal.md)
+### [为组强制执行命名策略](groups-naming-policy.md)
 ### [查看所有组](active-directory-groups-view-azure-portal.md)
 ### [添加对 SaaS 应用的组访问权限](active-directory-accessmanagement-group-saasapps.md)
 ### [还原已删除的 Office 365 组](active-directory-groups-restore-azure-portal.md)
@@ -217,7 +218,9 @@
 ##### [远程桌面](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
+#### [PowerShell](https://docs.microsoft.com/powershell/module/azuread)
 #### [故障排除](active-directory-application-proxy-troubleshoot.md)
+
 
 ### 管理企业应用
 #### [分配用户](active-directory-coreapps-assign-user-azure-portal.md)

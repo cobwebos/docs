@@ -1,6 +1,6 @@
 ---
-title: "Azure 蓝图自动化 - 适用于 FedRAMP 的 Web 应用程序"
-description: "Azure 蓝图自动化 - 适用于 FedRAMP 的 Web 应用程序"
+title: "Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化"
+description: "Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: d0521d68bab8bd0b7db53a512da6d37033abd85e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9b605e500925e8435b15ec8055f8d8f376888aaf
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="azure-blueprint-automation---web-applications-for-fedramp"></a>Azure 蓝图自动化 - 适用于 FedRAMP 的 Web 应用程序
+# <a name="azure-security-and-compliance-blueprint---fedramp-web-applications-automation"></a>Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化
 
 ## <a name="overview"></a>概述
 
-[联邦风险与授权管理计划 (FedRAMP)](https://www.fedramp.gov) 是美国政府范围的计划，它提供一种标准化方法来对云产品和服务进行安全评估、授权和持续监视。 此“Azure 蓝图自动化 - 适用于 FedRAMP 的 Web 应用程序”提供的指南适用于部署 FedRAMP 相容基础结构即服务 (IaaS) 环境，该环境适合简单的面向 Internet 的 Web 应用程序。 此解决方案自动完成适用于常用参考体系结构的 Azure 资源的部署和配置，演示了客户如何通过多种方式达到特定的安全和符合性要求，是客户在 Azure 上生成和配置其解决方案的基础。 此解决方案实施的一部分控制来自 FedRAMP High 基线（基于 NIST SP 800-53）。 有关 FedRAMP High 要求和此解决方案的详细信息，请参阅 [FedRAMP High 要求 - 综合概述](fedramp-controls-overview.md)。 注意：此解决方案部署到 Azure 政府。
+[联邦风险与授权管理计划 (FedRAMP)](https://www.fedramp.gov) 是美国政府范围的计划，它提供一种标准化方法来对云产品和服务进行安全评估、授权和持续监视。 此 Azure 安全性和符合性蓝图自动化提供的指南适用于部署 FedRAMP 相容基础结构即服务 (IaaS) 环境，该环境适合简单的面向 Internet 的 Web 应用程序。 此解决方案自动完成适用于常用参考体系结构的 Azure 资源的部署和配置，演示了客户如何通过多种方式达到特定的安全和符合性要求，是客户在 Azure 上生成和配置其解决方案的基础。 此解决方案实施的一部分控制来自 FedRAMP High 基线（基于 NIST SP 800-53）。 有关 FedRAMP High 要求和此解决方案的详细信息，请参阅 [FedRAMP High 要求 - 综合概述](fedramp-controls-overview.md)。 注意：此解决方案部署到 Azure 政府。
 
 本体系结构旨在作为客户的基础，以根据他们的特定需求进行调整，而不应在生产环境中按原样使用。 在未经修改的情况下将应用程序直接部署到此环境并不足以完全符合 FedRAMP High 基线的要求。 请注意以下事项：
 - 本体系结构提供一个基线来帮助客户以遵从 FedRAMP 的方式使用 Azure。
@@ -36,13 +36,13 @@ ms.lasthandoff: 11/16/2017
 
 ## <a name="solution-components"></a>解决方案组件
 
-此 Azure 蓝图自动化自动部署预配置了安全控件的 IaaS Web 应用程序参考体系结构，帮助客户实现符合 FedRAMP 要求的目标。 此解决方案包含 Azure 资源管理器模板和 PowerShell 脚本，指导用户进行资源部署和配置。 伴随 Azure 蓝图提供的是[符合性文档](#compliance-documentation)。该文档指出，安全控件源自 Azure 以及符合 NIST SP 800-53 安全控件标准的已部署资源和配置，因此可以让组织快速跟踪其符合性情况。
+此 Azure 安全性和符合性蓝图自动化将自动部署带有预配置安全控件的 IaaS Web 应用程序参考体系结构，以帮助客户符合 FedRAMP 要求。 此解决方案包含 Azure 资源管理器模板和 PowerShell 脚本，指导用户进行资源部署和配置。 提供了伴随的[符合性文档](#compliance-documentation)。该文档指出，安全控件源自 Azure 以及符合 NIST SP 800-53 安全控件标准的已部署资源和配置，因此可以让组织快速跟踪其符合性情况。
 
 ## <a name="architecture-diagram"></a>体系结构关系图
 
 此解决方案为带有数据库后端的 IaaS Web 应用程序部署参考体系结构。 体系结构包括 Web 层、数据层、Active Directory 基础结构、应用程序网关和负载均衡器。 部署到 Web 层和数据层的虚拟机在可用性集中配置，SQL Server 实例在 AlwaysOn 可用性组中配置，以确保高可用性。 在将虚拟机加入域的同时，使用 Active Directory 组策略在操作系统级别强制实施安全性和符合性配置。 可以通过管理 jumpbox（守护主机）进行安全的连接，以便管理员访问部署的资源。
 
-![替换文本](images/fedramp-architectural-diagram.png?raw=true "适用于 FedRAMP 相容环境的 IaaS Web 应用程序蓝图自动化")
+![替换文字](images/fedramp-architectural-diagram.png?raw=true "Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化")
 
 此解决方案使用以下 Azure 服务。 [部署体系结构](#deployment-architecture)部分提供了部署体系结构的详细信息。
 
@@ -122,13 +122,13 @@ ms.lasthandoff: 11/16/2017
 
 体系结构使用多种加密措施保护静态数据。
 
-#### <a name="azure-storage"></a>Azure 存储空间
+#### <a name="azure-storage"></a>Azure 存储
 
 为了满足静态数据加密要求，所有存储帐户都使用[存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。
 
 #### <a name="sql-database"></a>SQL 数据库
 
-SQL 数据库配置为使用[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)，它执行数据和日志文件的实时加密和解密，以保护静态信息。 TDE 为存储的数据不会受到未经授权的访问提供证。 
+SQL 数据库配置为使用[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)，它执行数据和日志文件的实时加密和解密，以保护静态信息。 TDE 可确保存储的数据免遭他人未经授权的访问。 
 
 #### <a name="azure-disk-encryption"></a>Azure 磁盘加密
 
@@ -182,7 +182,7 @@ Azure 磁盘加密用于加密 Windows IaaS 虚拟机磁盘。 [Azure 磁盘加�
 
 ### <a name="patch-management"></a>修补程序管理
 
-通过此蓝图自动化部署的 Windows 虚拟机默认配置为从 Windows 更新服务接收自动更新。 另外，此解决方案还部署 OMS Azure 自动化解决方案，通过此方案可以创建更新部署，以便在需要时将修补程序部署到 Windows 服务器上。
+通过此 Azure 安全性和符合性蓝图自动化部署的 Windows 虚拟机默认配置为从 Windows 更新服务接收自动更新。 另外，此解决方案还部署 OMS Azure 自动化解决方案，通过此方案可以创建更新部署，以便在需要时将修补程序部署到 Windows 服务器上。
 
 ### <a name="operations-management"></a>操作管理
 
@@ -215,7 +215,7 @@ Azure 磁盘加密用于加密 Windows IaaS 虚拟机磁盘。 [Azure 磁盘加�
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-此 Azure 蓝图解决方案包含的 JSON 配置文件和 PowerShell 脚本可供 Azure 资源管理器的 API 服务用来在 Azure 中部署资源。 [此处](https://aka.ms/fedrampblueprintrepo)提供了详细的部署说明。 注意：此解决方案部署到 Azure 政府。
+此 Azure 安全性和符合性蓝图自动化包含的 JSON 配置文件和 PowerShell 脚本可供 Azure 资源管理器的 API 服务用来在 Azure 中部署资源。 [此处](https://aka.ms/fedrampblueprintrepo)提供了详细的部署说明。 注意：此解决方案部署到 Azure 政府。
 
 #### <a name="quickstart"></a>快速入门
 1. 将[此](https://aka.ms/fedrampblueprintrepo) GitHub 存储库克隆或下载到本地工作站。

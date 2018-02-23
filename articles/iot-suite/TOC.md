@@ -17,7 +17,6 @@
 #### [azureiotsuite.com 权限](iot-suite-v1-permissions.md)
 #### [远程监视解决方案演练](iot-suite-v1-remote-monitoring-sample-walkthrough.md)
 #### [连接 Raspberry Pi](iot-suite-v1-raspberry-pi-kit-get-started.md)
-#### [连接 MXChip IoT DevKit](../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)
 ##### 使用 C
 ###### [模拟数据](iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md)
 ###### [使用实际传感器](iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md)
@@ -26,6 +25,7 @@
 ###### [模拟数据](iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md)
 ###### [使用实际传感器](iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md)
 ###### [实施固件更新](iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md)
+#### [连接 MXChip IoT DevKit](../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)
 
 ### 操作指南
 #### 连接模拟设备
@@ -99,5 +99,7 @@
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [常见问题](iot-suite-faq.md)
+## [远程监视常见问题解答](iot-suite-faq-rm-v2.md)
 ## [连接的工厂常见问题解答](iot-suite-faq-cf.md)
+## [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-iot-suite)
 ## [IoT 套件学习路径](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)

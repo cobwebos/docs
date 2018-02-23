@@ -61,6 +61,7 @@
 # 如何
 ## [使用 Azure 自动化监视 VPN 网关](network-watcher-monitor-with-azure-automation.md)
 ## [通过 VPN 网关诊断本地连接](network-watcher-diagnose-on-premises-connectivity.md)
+## [监视网络连接](connection-monitor.md)
 ## [使用 PowerShell 在网络上执行符合性检查和审核](network-watcher-nsg-auditing-powershell.md)
 ## [在 Azure Log Analytics 中分析应用程序网关日志](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
 ## 数据包捕获

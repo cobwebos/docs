@@ -378,8 +378,8 @@
               href: saas-dbpertenant-restore-single-tenant.md
             - name: 管理租户架构
               href: saas-tenancy-schema-management.md
-            - name: 运行临时查询
-              href: saas-tenancy-adhoc-analytics.md
+            - name: 跨租户报告
+              href: saas-tenancy-cross-tenant-reporting.md
             - name: 用于分析的 ETL
               href: saas-tenancy-tenant-analytics.md
         - name: 多租户数据库

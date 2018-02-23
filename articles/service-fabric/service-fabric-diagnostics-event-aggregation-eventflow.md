@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 9a6e629582b6966d270a2378e585572efe133f3e
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 69750db615460b3ac69ba9ffe707a970ca8e2e11
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>使用 EventFlow 进行事件聚合和收集
 
@@ -43,6 +43,9 @@ EventFlow 二进制文件都可用作一组 NuGet 包。 要将 EventFlow 添加
 
 ## <a name="configure-and-enable-log-collection"></a>配置和启用日志收集
 EventFlow 管道（负责发送日志）根据配置文件中存储的规范创建。 `Microsoft.Diagnostics.EventFlow.ServiceFabric` 包在 `PackageRoot\Config` 解决方案文件夹下安装名为 `eventFlowConfig.json` 的起始 EventFlow 配置文件。 需要对此配置文件进行修改，以从默认服务 `EventSource` 类和其他任何希望配置的输入中捕获数据，并将数据发送到适当位置。
+
+>[!NOTE]
+>如果项目文件具有 VisualStudio 2017 格式，则不会自动添加 `eventFlowConfig.json` 文件。 要修复此问题，请在 `Config` 文件夹中创建该文件，并将生成操作设置为`Copy if newer`。 
 
 以下是基于上文提到的 NuGet 包的 eventFlowConfig.json 示例：
 ```json

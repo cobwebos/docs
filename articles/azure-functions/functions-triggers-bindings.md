@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: a122271b5fdffd9db33a7dca5908e15f002041d7
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 90a192f58f0e4b285f7aece8a3555c08df051f38
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 
@@ -483,6 +483,12 @@ module.exports = function (context, info) {
 ## <a name="functionjson-file-schema"></a>function.json 文件架构
 
 Function.json 文件架构可在 [http://json.schemastore.org/function](http://json.schemastore.org/function) 处获取。
+
+## <a name="handling-binding-errors"></a>处理绑定错误
+
+[!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
+
+有关 Functions 所支持各种服务的所有相关错误主题链接，请参阅 [Azure Functions 错误处理](functions-bindings-error-pages.md)概述主题的[绑定错误代码](functions-bindings-error-pages.md#binding-error-codes)部分。  
 
 ## <a name="next-steps"></a>后续步骤
 

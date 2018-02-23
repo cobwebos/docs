@@ -149,7 +149,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 > [!NOTE] 
 > 目前支持包含 .NET Framework 3.5 或更高版本的 Windows 版本。
 
-### <a name="performance-counter-trace-"></a>性能计数器跟踪 (**)
+### <a name="performance-counter-trace-"></a>性能计数器跟踪 (\*\*)
 
 收集以下性能计数器：
 

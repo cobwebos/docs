@@ -16,21 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: genemi
-ms.openlocfilehash: d38cd108821bce05824732bbdbdd322ae8563bde
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 2daf05513127c2d1ab8e4b0196b578e18b6e03e7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的独立单租户应用程序
 
-本教程中将部署和浏览 Wingtip 票证 SaaS 独立应用程序。 该应用程序旨在展示简化启用 SaaS 方案的 Azure SQL 数据库功能。
+在本教程中，你将部署和浏览使用独立应用程序或每租户应用模式开发的 Wingtip 票证 SaaS 示例应用程序。  该应用程序旨在展示简化启用多租户 SaaS 方案的 Azure SQL 数据库的功能。
 
-独立应用程序模式为每个租户部署包含单租户应用程序和单租户数据库的 Azure 资源组。  可以预配应用程序的多个实例，提供多租户解决方案。
+独立应用程序或每租户应用模式将为每个租户部署应用程序实例。  为特定租户配置了每个应用程序并在单独的 Azure 资源组中部署了这些应用程序。 预配了应用程序的多个实例，提供多租户解决方案。 租户数较少且最需要优先考虑租户隔离时，最适合采用此模式。 Azure 具有合作伙伴计划，这些计划允许将资源部署到租户的订阅中，由服务提供商代表租户进行管理。 
 
-在本教程中，我们要将多个租户的资源组部署到 Azure 订阅中。  使用此模式可将资源组部署到租户的 Azure 订阅中。 Azure 具有合作伙伴计划，这些计划允许服务提供商在租户订阅中代表租户管理这些资源组。 服务提供者是租户订阅中的管理员。
-
-在后面的部署部分中，提供了三个蓝色的“部署到 Azure”按钮。 每个按钮部署应用程序的不同实例。 每个实例已针对特定的租户自定义。 按下每个按钮时，相应的应用程序会在五分钟内完全部署。  应用部署到 Azure 订阅中。  用户具有完全访问权限，可以浏览并处理各个应用程序组件。
+在本教程中，三个租户的三个独立应用程序将会部署到 Azure 订阅中。  用户具有完全访问权限，可以浏览并处理各个应用程序组件。
 
 [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub 存储库提供了应用程序源代码和管理脚本。
 
@@ -61,11 +59,10 @@ ms.lasthandoff: 12/01/2017
     > 出于演示目的，某些身份验证和服务器防火墙已有意取消保护。 为每个应用程序部署创建新的资源组。  不要使用现有资源组。 不要使用该应用程序及其创建的任何资源进行生产。 使用完该应用程序时请删除所有资源组，停止相关计费。
 
     最好在资源名称中仅使用小写字母、数字和连字符。
-    * 对于“资源组”，请选择“新建”，然后为资源组提供一个小写的**名称**。
-        * 建议追加短横线，后面依次是缩写、数字，例如 *wingtip-sa-af1*。
-        * 从下拉列表中选择一个**位置**。
+    * 对于“资源组”，请选择“新建”，然后为资源组提供一个小写的名称。 **wingtip-sa-\<venueName\>-\<user\>** 是建议的模式。  对于 \<venueName\>，请替换为场所名称，不留空格。 对于 \<user\>，请替换为以下的用户值。  使用此模式，资源组名称可能是 wingtip-sa-contosoconcerthall-af1、wingtip-sa-dogwooddojo-af1、wingtip-sa-fabrikamjazzclub-af1。
+    * 从下拉列表中选择一个**位置**。
 
-    * 对于“用户”，请建议选择较短的用户值，例如在缩写后加上数字：*af1*。
+    * 对于“用户”，建议使用较短的用户值，例如在缩写后加上数字：af1。
 
 
 3. **部署应用程序**。
@@ -73,25 +70,25 @@ ms.lasthandoff: 12/01/2017
     * 单击“我同意上述条款和条件”。
     * 单击“购买”。
 
-4. 通过单击“通知”（搜索框右侧的钟形图标）监视所有三个部署的部署状态。 部署应用需要五分钟。
+4. 通过单击“通知”（搜索框右侧的钟形图标）监视所有三个部署的状态。 部署应用大约需要五分钟。
 
 
-## <a name="run-the-application"></a>运行应用程序
+## <a name="run-the-applications"></a>运行应用程序
 
-举办活动的应用展示场所。 场所类型包括音乐厅、爵士乐俱乐部和运动俱乐部。 场所是 Wingtip Tickets 应用的客户。 在 Wingtip Tickets 中，场所注册为租户。 注册为租户可让场所轻松列出活动，以及向其客户销售门票。 每个场所有个性化的网站用于列出其活动和售票。 每个租户与其他租户隔离，彼此保持独立。 事实上，每个租户都有单独的应用程序实例和自身的独立 SQL 数据库。
+举办活动的应用展示场所。  场所是应用程序的租户。 每个场所有个性化的网站用于列出活动和售票。 场所类型包括音乐厅、爵士乐俱乐部和运动俱乐部。 在示例中，场所的类型决定了场所网站上所示的背景照片。   在独立应用模型中，每个场所都具有单独的应用程序实例及其自身的独立 SQL 数据库。
 
 1. 在不同的浏览器选项卡中打开三个租户各自的活动页面：
 
-    - http://events.contosoconcerthall.&lt;USER&gt;.trafficmanager.net
-    - http://events.dogwooddojo.&lt;USER&gt;.trafficmanager.net
-    - http://events.fabrikamjazzclub.&lt;USER&gt;.trafficmanager.net
+    - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
+    - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
+    - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
 
-    （在每个 URL 中，请将 &lt;USER&gt; 替换为自己的部署 user 值。）
+    （在每个 URL 中，请将 &lt;user&gt; 替换为自己的部署 user 值。）
 
-   ![事件](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![活动](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 该应用使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)来控制传入请求的分配。 每个租户特定的应用实例将租户名称用作 URL 中域名的一部分。 所有租户 URL 包含特定的 **User** 值。 URL 采用以下格式：
-- http://events.&lt;场所名称&gt;.&lt;用户&gt;.trafficmanager.net
+- http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
 
 每个租户的数据库**位置**包含在部署的相应应用的应用设置中。
 
@@ -103,12 +100,12 @@ ms.lasthandoff: 12/01/2017
 请看看一些已部署的资源：
 
 1. 在 [Azure 门户](http://portal.azure.com)中，浏览到资源组列表。
-2. 请参阅 **wingtip-sa-catalog-&lt;USER&gt;** 资源组。
-    - 在此资源组中，已部署 **catalog-sa-&lt;USER&gt;** 服务器。 服务器包含 **tenantcatalog** 数据库。
+2. 请参阅 **wingtip-sa-catalog-&lt;user&gt;** 资源组。
+    - 在此资源组中，已部署 **catalog-sa-&lt;user&gt;** 服务器。 服务器包含 **tenantcatalog** 数据库。
     - 还将看到三个租户资源组。
-3. 打开 wingtip-sa-fabrikam-&lt;USER&gt; 资源组，其中包括“Fabrikam 爵士乐俱乐部”这一部署的资源。  fabrikamjazzclub-&lt;USER&gt; 服务器包括 fabrikamjazzclub 数据库。
+3. 打开 wingtip-sa-fabrikam-&lt;user&gt; 资源组，其中包括“Fabrikam 爵士乐俱乐部”这一部署的资源。  fabrikamjazzclub-&lt;user&gt; 服务器包括 fabrikamjazzclub 数据库。
 
-每个租户数据库都是一个 50 DTU 的 *独立*数据库。
+每个租户数据库都是一个 50 DTU 的 独立数据库。
 
 ## <a name="additional-resources"></a>其他资源
 
@@ -120,6 +117,10 @@ ms.lasthandoff: 12/01/2017
 
 - 若要了解多租户 SaaS 应用程序，请参阅[多租户 SaaS 应用程序的设计模式](saas-tenancy-app-design-patterns.md)。
 
+ 
+## <a name="delete-resource-groups-to-stop-billing"></a>删除资源组，停止计费 ##
+
+完成使用示例后，删除创建的所有资源组以停止相关计费。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -129,4 +130,7 @@ ms.lasthandoff: 12/01/2017
 > * 如何部署 Wingtip Tickets SaaS 独立应用程序。
 > * 关于构成该应用的服务器和数据库。
 > * 如何删除示例资源以停止相关计费。
+
+接下来，请尝试[预配和编录](saas-standaloneapp-provision-and-catalog.md)教程。
+ 
 

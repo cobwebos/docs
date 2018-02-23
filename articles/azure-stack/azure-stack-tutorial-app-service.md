@@ -3,8 +3,8 @@ title: "使 web 应用程序和 API apps 适用于 Azure 堆栈用户 |Microsoft
 description: "安装 App Service 资源提供程序和创建教程提供，使你的 Azure 堆栈用户能够创建 web 应用程序和 API apps。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: 
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 7/03/2017
-ms.author: erikje
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: 42d94eea8b9e4db611b821cd84e7d02f1d226293
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 5978706f2cab69c83a49bfd0e15ae904a38c7bab
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>使 web 应用程序和 API apps 适用于 Azure 堆栈用户
 
@@ -70,7 +71,7 @@ ms.lasthandoff: 11/27/2017
     - **资源组**: DNN RG
 3. 单击**登录设置**，对于数据库中，输入凭据，然后单击**确定**。 在这些步骤的更高版本中，你将使用这些凭据。
 4. 单击**SKU** > 选择你创建了 SQL 宿主服务器的 SQL SKU >**确定**。
-5. 单击“创建” 。
+5. 单击“创建”。
 
 ### <a name="create-a-dnn-app"></a>创建 DNN 应用    
 
@@ -79,7 +80,7 @@ ms.lasthandoff: 11/27/2017
 3. 单击**配置所需设置** > **新建**> 类型**App Service 计划**名称。
 4. 单击**定价层** > **F1 免费** > **选择** > **确定**。
 5. 单击**数据库**和输入前面创建的 SQL 数据库的信息。
-6. 单击“创建” 。
+6. 单击“创建”。
 
 本教程介绍了如何：
 

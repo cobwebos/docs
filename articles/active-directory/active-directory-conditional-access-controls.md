@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 条件访问中的控制 | Microsoft Docs"
-description: "了解 Azure Active Directory 条件访问中的控制的工作原理。"
+title: "Azure Active Directory 条件访问中的访问控制 | Microsoft Docs"
+description: "了解 Azure Active Directory 条件访问中的访问控制的工作原理。"
 services: active-directory
 keywords: "对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略"
 documentationcenter: 
@@ -13,28 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/29/2017
+ms.date: 02/09/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 533229ae90828a0aeba9f10cbdfdb70afa21e1c5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c5a2ab3b8d2fe55eee1f67e4b697a1e5b0dd2daf
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的控制 
+# <a name="access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制 
 
-使用 [Azure Active Directory (Azure AD) 条件访问](active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用程序的方式。 在条件访问策略中，定义在特定条件下（“出现这种情况时”）的响应（“这样做”）。 在条件访问的上下文中， 
+使用 [Azure Active Directory (Azure AD) 条件访问](active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用程序的方式。 在条件访问策略中，定义触发策略的诱因（“出现这种情况时”）的响应（“执行此操作”）。 
 
-- “**如何发生这种情况**”称为**条件语句**
+![控制](./media/active-directory-conditional-access-controls/10.png)
 
-- “**则执行这种操作**”称为**控制**
 
-![控制](./media/active-directory-conditional-access-controls/11.png)
+在条件访问的上下文中， 
+
+- “出现这种情况时”称为条件
+
+- “则执行此操作”称为访问控制
+
 
 条件语句与控制的组合表示一种条件性访问策略。
 
-![控制](./media/active-directory-conditional-access-controls/12.png)
+![控制](./media/active-directory-conditional-access-controls/61.png)
 
 每个控制要么限制人员或系统必须满足哪些要求才能登录，要么限制用户在登录后可以执行哪些操作。 
 

@@ -3,8 +3,8 @@ title: "让 Azure 堆栈用户能够使用 SQL 数据库 |Microsoft 文档"
 description: "安装 SQL Server 资源提供程序和创建教程提供了让 Azure 堆栈用户创建 SQL 数据库。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: 
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 7/03/2017
-ms.author: erikje
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: f774888ba3921d0688feddac669ed1dca4667441
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e9fd74fa44bb9482ee2285f4305085ee6ff2fb73
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>让 Azure 堆栈用户能够使用 SQL 数据库
 
@@ -71,7 +72,7 @@ ms.lasthandoff: 10/11/2017
     - **资源组**: SQL RG
 3. 单击**登录设置**，对于数据库中，输入凭据，然后单击**确定**。
 4. 单击**SKU** > 选择你创建了 SQL 宿主服务器的 SQL SKU >**确定**。
-5. 单击“创建” 。
+5. 单击“创建”。
 
 ## <a name="next-steps"></a>后续步骤
 

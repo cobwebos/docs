@@ -3,8 +3,8 @@ title: "让 Azure 堆栈用户能够使用虚拟机 |Microsoft 文档"
 description: "若要使虚拟机在 Azure 堆栈上可用的教程"
 services: azure-stack
 documentationcenter: 
-author: vhorne
-manager: 
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/23/2017
-ms.author: victorh
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: f6fce4a3230c98295afb19e633bf2801c115831f
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: d169a18df8916cfb8dd30b00248099a3d374aacc
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>让 Azure 堆栈用户能够使用虚拟机
 
@@ -66,7 +67,7 @@ Azure 堆栈中传递给使用订阅、 服务和计划的用户的服务。 用
 
    ![计划的显示名称](media/azure-stack-tutorial-tenant-vm/image04.png)
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击**服务**，选择**Microsoft.Compute**， **Microsoft.Network**，和**Microsoft.Storage**，然后单击**选择**。
+   e. 单击**服务**，选择**Microsoft.Compute**， **Microsoft.Network**，和**Microsoft.Storage**，然后单击**选择**。
 
    ![计划服务](media/azure-stack-tutorial-tenant-vm/image05.png)
 
@@ -74,7 +75,7 @@ Azure 堆栈中传递给使用订阅、 服务和计划的用户的服务。 用
 
    在此示例中，我们首先要创建计算服务的配额。 在命名空间列表中，选择**Microsoft.Compute**命名空间，然后单击**创建新配额**。
    
-   ![创建新的配额](media/azure-stack-tutorial-tenant-vm/image06.png)
+   ![创建新配额](media/azure-stack-tutorial-tenant-vm/image06.png)
 
    g. 上**创建配额**节中，键入配额的名称和设置配额然后单击所需的参数**确定**。
 
@@ -142,7 +143,7 @@ Azure 堆栈中传递给使用订阅、 服务和计划的用户的服务。 用
 
    d.单击“下一步”。 在**选择大小**部分中，单击**A1 标准**，然后单击**选择**。  
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在**设置**部分中，单击**虚拟网络**。 在**选择虚拟网络**部分中，单击**新建**。 在**创建虚拟网络**部分，接受所有默认值，然后单击**确定**。 在**设置**部分中，单击**确定**。
+   e. 在**设置**部分中，单击**虚拟网络**。 在**选择虚拟网络**部分中，单击**新建**。 在**创建虚拟网络**部分，接受所有默认值，然后单击**确定**。 在**设置**部分中，单击**确定**。
 
    ![创建虚拟网络](media/azure-stack-provision-vm/image04.png)
 

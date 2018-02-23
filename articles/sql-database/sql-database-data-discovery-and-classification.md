@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: 4538ad9c048a3e84bbe793572f569dd7126803da
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1ff7f3509ccdaa6911cee0487d5a6d90b11eb79f
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL 数据库数据发现和分类
-数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。
-发现最敏感的数据（业务/财务、医疗保健、 PII 等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
+数据发现和分类（当前为预览版）提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和保护数据库中的敏感数据。 & 
+发现最敏感的数据（业务、财务、医疗保健、 PII 等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以作为基础结构，用于：
+* 帮助满足数据隐私标准和法规符合性要求，如 GDPR。
 * 各种安全方案，如监视（审核）并在敏感数据存在异常访问时发出警报。
 * 控制对包含高度敏感数据的数据库的访问并强化其安全性。
-* 帮助满足数据隐私标准和法规符合性要求，如 GDPR。
 
 ## <a id="subheading-1"></a>概述
 数据发现和分类引入了一套高级的服务和新的 SQL 功能，形成了新的 SQL 信息保护模式，旨在保护数据，而不仅仅是数据库：
@@ -92,6 +92,8 @@ ms.lasthandoff: 02/01/2018
     ![导航窗格][10]
 
 ## <a id="subheading-3"></a>审核对敏感数据的访问
+
+信息保护范例的一个重要方面是能够监视对敏感数据的访问。
 
 [Azure SQL 数据库审核](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing) 已经过增强，在审核日志中加入了名为 data_sensitivity_information 的新字段，该字段会记录查询返回的实际数据的敏感度分类（标签）。
 

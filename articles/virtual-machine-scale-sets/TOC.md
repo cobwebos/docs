@@ -30,6 +30,9 @@
 #### [高级自动缩放](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [规模集中的应用程序](virtual-machine-scale-sets-deploy-app.md)
 ### [将数据磁盘与规模集配合使用](virtual-machine-scale-sets-attached-disks.md)
+### 加密规模集中的磁盘
+#### [使用 PowerShell](virtual-machine-scale-sets-encrypt-disks-ps.md)
+#### [使用 Azure CLI 2.0](virtual-machine-scale-sets-encrypt-disks-cli.md)
 ### [使用大型规模集](virtual-machine-scale-sets-placement-groups.md)
 ### [将规模集模板转换为使用托管磁盘](virtual-machine-scale-sets-convert-template-to-md.md)
 

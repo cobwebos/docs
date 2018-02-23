@@ -78,7 +78,7 @@ ms.lasthandoff: 01/16/2018
 | 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **separator** |必选 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
-| **source1  … sourceN ** |必选，次数可变 |String |要联接在一起的字符串值。 |
+| ** source1  … sourceN ** |必选，次数可变 |String |要联接在一起的字符串值。 |
 
 - - -
 ### <a name="mid"></a>Mid
