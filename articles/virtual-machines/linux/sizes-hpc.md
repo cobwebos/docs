@@ -1,6 +1,6 @@
 ---
 title: "Azure Linux VM 大小 - HPC | Microsoft Docs"
-description: "列出 Azure 中适用于 Linux 高性能计算虚拟机的各种大小。 针对此系列中的大小列出有关 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽的信息。"
+description: "列出 Azure 中适用于 Linux 高性能计算虚拟机的各种大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。"
 services: virtual-machines-linux
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: a235261dc477ab29dc17fe1e680e4e91ae2f4ede
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: cdfd09d90be9696dacc151e138920944c8bbd2c9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>高性能计算虚拟机大小
 
@@ -30,9 +30,9 @@ ms.lasthandoff: 11/17/2017
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
 ## <a name="rdma-capable-instances"></a>支持 RDMA 的实例
-计算密集型实例（H16r、H16mr、A8 和 A9）的子集具有远程直接内存访问 (RDMA) 连接的网络接口。 此接口是对可供其他 VM 大小使用的标准 Azure 网络接口的补充。 
+计算密集型实例（H16r、H16mr、NC24r、A8 和 A9）的子集具有远程直接内存访问 (RDMA) 连接的网络接口。 此接口是对可供其他 VM 大小使用的标准 Azure 网络接口的补充。 
   
-此接口允许支持 RDMA 的实例在 InfiniBand 网络上通信，对 H16r 和 H16mr 虚拟机以 FDR 速率运行，对 A8 和 A9 虚拟机以 QDR 速率运行。 对于在 Intel MPI 5.x 或更高版本下运行的消息传递接口 (MPI) 应用程序，这些 RDMA 功能可提供其可扩展性和性能。
+此接口允许支持 RDMA 的实例在 InfiniBand 网络上通信，对 H16r、H16mr 和 NC24r 虚拟机以 FDR 速率运行，对 A8 和 A9 虚拟机以 QDR 速率运行。 对于仅在 Intel MPI 5.x 版本下运行的消息传递接口 (MPI) 应用程序，这些 RDMA 功能可提高其可扩展性和性能。 更高版本（2017 版和 2018 版）的 Intel MPI 运行时库与 Azure RDMA 驱动程序不兼容。
 
 在同一个可用性集中（使用 Azure 资源管理器部署模型时）或同一个云服务中（使用经典部署模型时）部署支持 RDMA 的 VM。 支持 RDMA 的 Linux VM 可以访问 Azure RDMA 网络的其他要求如下。
 

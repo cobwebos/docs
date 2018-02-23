@@ -101,7 +101,7 @@ ms.lasthandoff: 12/21/2017
        ---- ----- ------------- ----------- ----------------
        Active {10.9.0.0/16} VnetLocal {}
        Active {0.0.0.0/0} Internet {}
-3. 上一步骤的输出没有列出 WestUS-VNet1（前缀 10.9.0.0/16）* 到 WestUS-VNet3 VNet（前缀 10.10.0.0/16）的路由。 如下图所示，包含 *WestUS-VNet3* VNet 的 VNet 对等互连链接处于“*已断开*”状态。
+3. 上一步骤的输出没有列出 WestUS-VNet1（前缀 10.9.0.0/16） ** 到 WestUS-VNet3 VNet（前缀 10.10.0.0/16）的路由。 如下图所示，包含 *WestUS-VNet3* VNet 的 VNet 对等互连链接处于“*已断开*”状态。
    
     ![](./media/virtual-network-routes-troubleshoot-portal/image4.png)
    

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 9ffac9ea033c1df462297fdb134bf0ead185b09f
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 76bbee514eac36aec8eaf84e8a20f85a27559fc7
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-federated-sso"></a>教程：Azure Active Directory 与 ADP Federated SSO 的集成
 
@@ -196,9 +196,10 @@ ms.lasthandoff: 02/03/2018
 
     ![配置单一登录链接][4]
 
-7. 在“单一登录”对话框中，选择“模式”作为“链接登录”。 将应用程序链接到 **ADP Federated SSO**。
+7. 在“单一登录”对话框中，将“模式”选择为“链接登录”，将应用程序链接到“ADP 联合 SSO”。
+<!---Loc Comment:Sentence "to link your application to ADP Federated SSO." should be concatenated with the previous sentence--->
 
-    ![单一登录已链接](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linked.png)
+    ![Single sign-on linked](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linked.png)
 
 8. 导航到“配置登录 URL”部分，执行以下步骤：
 

@@ -3,18 +3,19 @@ title: "Azure 堆栈快速入门-创建虚拟机门户"
 description: "Azure 堆栈快速启动-创建 Linux VM 使用门户"
 services: azure-stack
 cloud: azure-stack
-author: vhorne
-manager: byronr
+author: brenduns
+manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
 ms.date: 12/11/2017
-ms.author: victorh
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: 1e1732f48de9f95e669d0282d120e48b5fe5f0ef
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: HT
+ms.openlocfilehash: d4aef23e2de327fabb1f0304d8a3db1497d55827
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-stack-portal"></a>使用 Azure 堆栈门户创建 Linux 虚拟机
 

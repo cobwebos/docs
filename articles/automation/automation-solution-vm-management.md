@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: magoedte
-ms.openlocfilehash: 4424cbb83bdb31c60e15d62f9387b4050611a98d
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 7ffd424de2a7224b5ac50fa228289c5397092b2e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案（预览）
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 12/22/2017
 
 执行以下步骤可将非工作时间启动/停止 VM 解决方案添加到自动化帐户，然后配置变量来自定义该解决方案。
 
-1. 在 Azure 门户中，单击“新建”。<br> ![Azure portal](media/automation-solution-vm-management/azure-portal-01.png)<br>  
+1. 在 Azure 门户中，单击“创建资源”。<br> ![Azure portal](media/automation-solution-vm-management/azure-portal-01.png)<br>  
 2. 在“Marketplace”窗格中，键入类似于“启动”或“启动/停止” 的关键字。 开始键入时，会根据输入筛选该列表。 或者，可以键入解决方案完整名称中的一个或多个关键，然后按 Enter。  从搜索结果中选择“在空闲时间启动/停止 VM [预览版]”。  
 3. 在所选解决方案的“在空闲时间启动/停止 VM [预览版]”窗格中查看摘要信息，并单击“创建”。  
 4. 此时会显示“添加解决方案”窗格。 系统会提示先要配置解决方案，然后才可以将它导入自动化订阅。<br><br> ![VM 管理中的“添加解决方案”边栏选项卡](media/automation-solution-vm-management/azure-portal-add-solution-01.png)<br><br>

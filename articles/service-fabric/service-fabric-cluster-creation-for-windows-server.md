@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
-ms.author: chackdan;maburlik;dekapur
-ms.openlocfilehash: 4b3b1e8a368419fe4014802f7b2a35b7ae3fba3c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: dekapur;chackdan;maburlik
+ms.openlocfilehash: 7d65845d21205e22a3e5b0868acb637ff614fb42
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>创建在 Windows Server 上运行的独立群集
 可以使用 Azure Service Fabric 在运行 Windows Server 的任何虚拟机或计算机上创建 Service Fabric 群集。 这意味着可以在包含一组相互连接的 Windows Server 计算机的任何环境（无论是本地环境还是任何云提供商所提供的环境）中部署和运行 Service Fabric 应用程序。 Service Fabric 提供了一个安装程序包，用于创建名为“Windows Server 独立包”的 Service Fabric 群集。
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/08/2017
 ## <a name="create-the-cluster"></a>创建群集
 可以使用[示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)中包含的 *ClusterConfig.Unsecure.DevCluster.json* 文件将 Service Fabric 部署到一个计算机开发群集。
 
-将独立包解压缩到计算机，将示例配置文件复制到本地计算机，然后通过管理员 PowerShell 会话从独立包文件夹中运行 *CreateServiceFabricCluster.ps1* 脚本：
+将独立包解压缩到你的计算机，将示例配置文件复制到本地计算机，并通过管理员 PowerShell 会话从独立包文件夹中运行 *CreateServiceFabricCluster.ps1* 脚本：
 ### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>步骤 1A：创建不受保护的本地开发群集
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: f85875b5b128f53d45fe9af97c026fc6e34b2d27
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: HT
+ms.openlocfilehash: bbd6cc68f1c16d48380cf498d6b089abe923e95a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Azure 资源管理器模板注意事项
 

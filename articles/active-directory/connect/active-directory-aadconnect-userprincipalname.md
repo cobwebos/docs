@@ -8,11 +8,11 @@ ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
-ms.openlocfilehash: 1fca41a8498cec506298748acd3511a5c5802d26
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 96b12fbddd4293c55e9029b194416541ca44c622
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName 填充
 
@@ -67,9 +67,10 @@ Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域�
 将用户对象首次同步到 Azure AD 租户后，Azure AD 会按顺序检查以下各项，并将 MailNickName 属性值设置为现有的第一个值：
 
 - 本地 mailNickName 属性
-- 本地 mail 属性的前缀
 - 主要 SMTP 地址的前缀
+- 本地 mail 属性的前缀
 - 本地 userPrincipalName 属性/备用登录 ID 的前缀
+- 次要 smtp 地址的前缀
 
 将用户对象更新同步到 Azure AD 租户后，仅当本地 mailNickName 属性值发生更新时，Azure AD 才会更新 MailNickName 属性值。
 
@@ -85,12 +86,12 @@ Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域�
 
 本地用户对象：
 - mailNickName：&lt;未设置&gt;
-- mail：us1@contoso.com
-- proxyAddresses：{SMTP:us2@contoso.com}
+- proxyAddresses：{SMTP:us1@contoso.com}
+- mail：us2@contoso.com
 - userPrincipalName：us3@contoso.com`
 
 首次将用户对象同步到 Azure AD 租户
-- 将 Azure AD MailNickName 属性设置为本地 mail 属性前缀。
+- 将 Azure AD MailNickName 属性设置为主要 SMTP 地址前缀。
 - 将 MOERA 设置为 &lt;MailNickName&gt;&#64;&lt;初始域&gt;。
 - 将 Azure AD UserPrincipalName 属性设置为 MOERA。
 
@@ -103,8 +104,8 @@ Azure AD 租户用户对象：
 
 本地用户对象：
 - mailNickName：us4
-- mail：us1@contoso.com
-- proxyAddresses：{SMTP:us2@contoso.com}
+- proxyAddresses：{SMTP:us1@contoso.com}
+- mail：us2@contoso.com
 - userPrincipalName：us3@contoso.com
 
 将本地 mailNickName 属性更新同步到 Azure AD 租户
@@ -119,8 +120,8 @@ Azure AD 租户用户对象：
 
 本地用户对象：
 - mailNickName：us4
-- mail：us1@contoso.com
-- proxyAddresses：{SMTP:us2@contoso.com}
+- proxyAddresses：{SMTP:us1@contoso.com}
+- mail：us2@contoso.com
 - userPrincipalName：us5@contoso.com
 
 将本地 userPrincipalName 属性更新同步到 Azure AD 租户
@@ -132,16 +133,16 @@ Azure AD 租户用户对象：
 - MailNickName：us4
 - UserPrincipalName：us4@contoso.onmicrosoft.com
 
-### <a name="scenario-4-non-verified-upn-suffix--update-on-premises-mail-attribute-and-primary-smtp-address"></a>方案 4：未验证的 UPN 后缀 – 更新本地 mail 属性和主要 SMTP 地址
+### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>方案 4：未验证的 UPN 后缀 – 更新主要 SMTP 地址和本地 mail 属性
 
 本地用户对象：
 - mailNickName：us4
-- mail：us6@contoso.com
-- proxyAddresses：{SMTP:us7@contoso.com}
+- proxyAddresses：{SMTP:us6@contoso.com}
+- mail：us7@contoso.com
 - userPrincipalName：us5@contoso.com
 
 将本地 mail 属性和主要 SMTP 地址的更新同步到 Azure AD 租户
-- 完成用户对象的初始同步后，本地 mail 属性和主要 SMTP 地址的更新不会影响 Azure AD MailNickName 和 UserPrincipalName 属性。
+- 完成用户对象的初始同步后，本地 mail 属性和主要 SMTP 地址的更新既不影响 Azure AD MailNickName 属性，也不影响 UserPrincipalName 属性。
 
 Azure AD 租户用户对象：
 - MailNickName：us4
@@ -151,8 +152,8 @@ Azure AD 租户用户对象：
 
 本地用户对象：
 - mailNickName：us4
-- mail：us6@contoso.com
-- proxyAddresses：{SMTP:us7@contoso.com}
+- proxyAddresses：{SMTP:us6@contoso.com}
+- mail：us7@contoso.com
 - serPrincipalName：us5@verified.contoso.com
 
 将本地 userPrincipalName 属性更新同步到 Azure AD 租户

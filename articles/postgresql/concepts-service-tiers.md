@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: 2c0ed6b58fe3e354da3cf58cd0c504d72bb0f421
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 9de2d93735942903df9320741baadf2c934bd7ab
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure Database for PostgreSQL 选项和性能：了解每个定价层提供的功能
 创建 Azure Database for PostgreSQL 服务器时，需确定三个主要选项以配置为该服务器分配的资源。 这些选项会影响服务器的性能和缩放。
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/06/2017
 \*最大服务器存储大小指服务器的最大预配存储大小。
 
 ## <a name="storage"></a>存储 
-存储配置定义可供 Azure Database for PostgreSQL 使用的存储容量。 服务使用的存储包括数据库文件、事务日志和 PostgreSQL 服务器日志。 选择存储配置时，请考虑承载数据库所需的存储大小以及性能要求 (IOPS)。
+存储配置定义可供 Azure Database for PostgreSQL 使用的存储容量。 服务使用的存储包括数据库文件、临时文件、事务日志和 PostgreSQL 服务器日志。 选择存储配置时，请考虑承载数据库所需的存储大小以及性能要求 (IOPS)。
 
 每个定价层都至少包含某个存储容量（在前面的表格中注明为“包含存储大小”）。 创建服务器时，可以添加额外存储容量（以 125 GB 为增量），直到达到允许的最大存储。 可以独立于计算单元配置来配置额外存储容量。 价格基于选择的存储量而变化。
 

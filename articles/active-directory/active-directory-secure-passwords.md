@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
-ms.openlocfilehash: 683badcfb67dd9e98058d560a6b13d1a3474d3e9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 19c8d9084c9ce03d347e58b3359b65cdbcd80651
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Azure AD 密码安全性多层方法
 
@@ -46,7 +46,7 @@ Azure AD 和 Microsoft 帐户系统利用行业认可的方法，保证安全保
 * 动态阻止的密码
 * 智能密码锁定
 
-若要了解基于当前研究的密码管理，请参阅[密码指南](http://aka.ms/passwordguidance)白皮书。
+若要了解基于当前研究的密码管理，请参阅[密码指南](https://aka.ms/passwordguidance)白皮书。
 
 ### <a name="dynamically-banned-passwords"></a>动态阻止的密码
 

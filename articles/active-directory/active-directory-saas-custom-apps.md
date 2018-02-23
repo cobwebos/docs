@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/20/2017
+ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cedba7397e29cb397560c65a2408cd27442ec01c
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: e161bb308f08e2a7c137c696e77bf1dfb86e8d31
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录
 本文介绍可让管理员在*不编写任何代码*的情况下，针对不在 Azure Active Directory 应用库中的应用程序配置单一登录的功能。 此功能已在 2015 年 11 月 18 日技术预览中发布，并且已包含在 [Azure Active Directory Premium](active-directory-editions.md) 中。 要查找有关如何通过代码将自定义应用与 Azure AD 集成的开发人员指南，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)。
 
-如[此文](active-directory-appssoaccess-whatis.md)中所述，Azure Active Directory 应用程序库提供了一份已知能够支持 Azure Active Directory 单一登录的应用程序列表。 IT 专业人员或组织中的系统集成人员找到所要连接的应用程序后，可以遵循 Azure 管理门户中提供的分步说明启用单一登录。
+如[此文](active-directory-appssoaccess-whatis.md)中所述，Azure Active Directory 应用程序库提供了一份已知能够支持 Azure Active Directory 单一登录的应用程序列表。 IT 专业人员或组织中的系统集成人员找到所要连接的应用程序后，可以遵循 Azure 门户中提供的分步说明启用单一登录。
 
 具有 [Azure Active Directory Premium](active-directory-editions.md) 许可证的客户还会额外获得以下功能：
 
@@ -38,32 +38,32 @@ ms.lasthandoff: 01/03/2018
 这些功能（也称为*应用集成模板*）为支持 SAML、SCIM 或基于窗体的身份验证的应用程序提供了基于标准的连接点，包括灵活的选项以及与各种应用程序兼容的设置。 
 
 ## <a name="adding-an-unlisted-application"></a>添加未列出的应用程序
-要使用应用集成模板连接应用程序，请使用 Azure Active Directory 管理员帐户登录到 Azure 管理门户，导航到“Active Directory”> [目录] >“应用程序”部分，选择“添加”，并选择“从库中添加应用程序”。 
+要使用应用集成模板连接应用程序，请使用 Azure Active Directory 管理员帐户登录到 Azure 门户，导航到“Active Directory”>“企业应用程序”>“新建应用程序”>“非库应用程序”部分，选择“添加”，并选择“从库中添加应用程序”。
 
-![][1]
+  ![][1]
 
-在应用库中，可以使用左侧的“自定义”类别来添加未列出的应用程序；找不到所需的应用时，可以选择搜索结果中显示的“添加未列出的应用程序”链接来添加该应用。 输入应用程序的名称后，便可以配置单一登录选项和行为。 
+当在应用库中找不到所需的应用时，可以通过选择搜索结果中显示的“非库应用程序”标题来添加未列出的应用。 输入应用程序的名称后，便可以配置单一登录选项和行为。 
 
-**快速提示**：最佳实践是使用搜索函数来检查该应用程序是否已在应用程序库中。 如果找到该应用并且其说明中提到“单一登录”，则表示应用程序支持联合单一登录。 
+**快速提示**：最佳实践是使用搜索函数来检查该应用程序是否已在应用程序库中。 如果找到该应用并且其说明中提到“单一登录”，则表示应用程序支持联合单一登录。
 
-![][2]
+  ![][2]
 
 以这种方式添加应用程序非常类似于针对预先集成的应用程序提供的体验。 若要开始，请选择“配置单一登录”。 随后出现的屏幕会显示以下三个单一登录配置选项，后续部分介绍这些选项。
 
-![][3]
+  ![][3]
 
-## <a name="azure-ad-single-sign-on"></a>Azure AD 单一登录
-选择此选项可为应用程序配置基于 SAML 的身份验证。 此选项要求应用程序支持 SAML 2.0。在继续下一步之前，应该先收集有关如何使用应用程序的 SAML 功能的信息。 选择“下一步”后，系统会提示输入对应于应用程序 SAML 终结点的三个不同的 URL。 
+## <a name="saml-based-sign-on"></a>基于 SAML 的登录
+选择此选项可为应用程序配置基于 SAML 的身份验证。 此选项要求应用程序支持 SAML 2.0。在继续下一步之前，应该先收集有关如何使用应用程序的 SAML 功能的信息。 选择“下一步”后，系统会提示输入对应于应用程序 SAML 终结点的三个不同的 URL。
 
-![][4]
+  ![][4]
 
 其中包括：
 
 * **登录 URL (仅限 SP 发起)** – 用户可通过此 URL 登录到此应用程序。 如果将应用程序配置为执行服务提供者发起的单一登录，则当用户导航到此 URL 时，服务提供者会进行必要的重定向，重定向到 Azure AD 完成用户身份验证和登录。 如果填充了此字段，则 Azure AD 会使用此 URL 从 Office 365 和 Azure AD 访问面板启动应用程序。 如果忽略此字段，从 Office 365、Azure AD 访问面板或 Azure AD 单一登录 URL（可从“仪表板”选项卡复制）启动应用时，Azure AD 则改为执行标识提供者发起的登录。
 * **颁发者 URL** - 颁发者 URL 应唯一标识正在为其配置单一登录的应用程序。 这是 Azure AD 发送回应用程序的值，作为 SAML 令牌的 **Audience** 参数，预计由应用程序对其进行验证。 该值也在应用程序提供的任何 SAML 元数据中显示为**实体 ID**。 有关实体 ID 或 Audience 值的详细信息，请查看应用程序的 SAML 文档。 以下示例显示了在返回到应用程序的 SAML 令牌中的受众 URL 的形式：
-
-```
-    <Subject>
+  
+  ```
+  <Subject>
     <NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:unspecificed">chad.smith@example.com</NameID>
         <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />
       </Subject>
@@ -72,12 +72,14 @@ ms.lasthandoff: 01/03/2018
           <Audience>https://tenant.example.com</Audience>
         </AudienceRestriction>
       </Conditions>
-```
+    ```
 
 * **回复 URL** - 应用程序通常会在回复 URL 中接收 SAML 令牌。 也称**断言使用者服务 (ACS) URL**。 有关 SAML 令牌回复 URL 或 ACS URL 的详细信息，请查看应用程序的 SAML 文档。
-  输入这些信息后，单击“下一步”转到下一屏幕。 该屏幕说明需在应用程序端进行什么配置才能接受来自 Azure AD 的 SAML 令牌。 
+  输入这些信息后，单击“下一步”转到下一屏幕。 该屏幕说明需在应用程序端进行什么配置才能接受来自 Azure AD 的 SAML 令牌。
 
-![][5]
+  * 单击“配置 Litware”。
+  
+    ![][5]
 
 所需值根据应用程序的不同而异，请查看应用程序的 SAML 文档获取详细信息。 **登录**和**注销**服务 URL 解析为相同的终结点，即 Azure AD 实例的 SAML 请求处理终结点。 颁发者 URL 值在颁发给应用程序的 SAML 令牌中显示为“Issuer”。 
 
@@ -86,9 +88,9 @@ ms.lasthandoff: 01/03/2018
 ## <a name="assigning-users-and-groups-to-your-saml-application"></a>将用户和组分配到 SAML 应用程序
 将应用程序配置为使用 Azure AD 作为基于 SAML 的标识提供者后，便可以开始测试。 作为安全控制机制，Azure AD 不会发出可让用户登录应用程序的令牌，除非使用 Azure AD 向他们授予了访问权限。 可以直接向用户授予访问权限，或者通过他们所属的组授予访问权限。 
 
-要将用户或组分配到应用程序，请单击“分配用户”按钮。 选择要分配的用户或组，并选择“分配”按钮。 
+要将用户或组分配到应用程序，请单击“分配用户”按钮。 选择要分配的用户或组，并选择“分配”按钮。
 
-![][6]
+  ![][6]
 
 分配用户后，Azure AD 可为该用户颁发令牌，并在用户的访问面板中显示此应用程序的磁贴。 如果用户使用 Office 365，则 Office 365 应用程序启动器中也会显示一个应用程序磁贴。 
 
@@ -97,9 +99,9 @@ ms.lasthandoff: 01/03/2018
 ### <a name="customizing-the-claims-issued-in-the-saml-token"></a>自定义在 SAML 令牌中颁发的声明
 当用户在应用程序中进行身份验证时，Azure AD 会将一个 SAML 令牌颁发给应用，其中包含用于唯一标识用户的用户相关信息（或声明）。 默认情况下，这些信息包括用户的用户名、电子邮件地址、名字和姓氏。 
 
-可以在“属性”选项卡下面查看或编辑通过 SAML 令牌发送到应用程序的声明。 
+可以在“属性”选项卡下面查看或编辑通过 SAML 令牌发送到应用程序的声明。
 
-![][7]
+  ![][7]
 
 可能出于两个原因编辑 SAML 令牌中颁发的声明：•被写入的应用程序需要一组不同的声明 URI 或声明值 •应用程序的部署方式需要 NameIdentifier 声明不同于存储在 Azure Active Directory 中的用户名（也称为用户主体名称）。 
 

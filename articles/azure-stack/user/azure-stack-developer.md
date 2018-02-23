@@ -3,8 +3,8 @@ title: "开发 Azure 堆栈的应用 |Microsoft 文档"
 description: "了解 Azure 堆栈上的原型制作应用程序中的开发注意事项"
 services: azure-stack
 documentationcenter: 
-author: HeathL17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: d3ebc6b1-0ffe-4d3e-ba4a-388239d6cdc3
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: 062c17173f87eec8e0eaa3f74323cbf8a8f48571
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: 4b9e0f5a264296e59579539dd929f5d75a54b62a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="develop-for-azure-stack"></a>为 Azure Stack 进行开发
 你可以开始开发应用程序今天，即使你没有对 Azure 堆栈环境的访问。 因为 Azure 堆栈提供了在你的数据中心中运行的 Microsoft Azure 服务，可以使用类似的工具和流程来开发针对 Azure 堆栈，就像使用 Azure。  稍加准备和从以下主题的指南，可以使用 Azure 来模拟 Azure 堆栈环境：

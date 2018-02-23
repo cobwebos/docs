@@ -1,32 +1,25 @@
 ---
-title: "Site Recovery 中到 Azure 的测试故障转移 | Microsoft Docs"
-description: "了解运行从本地到 Azure 的测试故障转移"
+title: "Azure Site Recovery 中到 Azure 的测试故障转移 | Microsoft Docs"
+description: "了解使用 Azure Site Recovery 服务运行从本地到 Azure 的测试故障转移。"
 services: site-recovery
-documentationcenter: 
-author: prateek9us
-manager: gauravd
-editor: 
-ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/16/2017
-ms.author: pratshar
-ms.openlocfilehash: a4555b1cc758e2d4bdd11a16776dc3bb209adee8
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.date: 02/08/2018
+ms.author: raynew
+ms.openlocfilehash: c6a227ca78a1312fe315cc6838834ec956a08b01
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="test--failover-to-azure-in-site-recovery"></a>Site Recovery 中到 Azure 的测试故障转移
-
+# <a name="test-failover-to-azure-in-site-recovery"></a>Site Recovery 中到 Azure 的测试故障转移
 
 
 本文介绍如何使用 Site Recovery 测试故障转移运行到 Azure 的灾难恢复演练。  
 
-运行测试故障转移可以在不丢失任何数据或造成停机的情况下验证复制和灾难恢复策略。 测试故障转移不会对正在进行的复制或生产环境造成任何影响。 可在特定的虚拟机 (VM) 或者包含多个 VM 的[恢复计划](site-recovery-create-recovery-plans.md)中运行测试故障转移。 
+运行测试故障转移可以验证复制和灾难恢复策略，且不会丢失任何数据或造成停机。 测试故障转移不会对正在进行的复制或生产环境造成任何影响。 可在特定的虚拟机 (VM) 或者包含多个 VM 的[恢复计划](site-recovery-create-recovery-plans.md)中运行测试故障转移。 
 
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移
@@ -50,7 +43,7 @@ ms.lasthandoff: 01/23/2018
     - 如果该子网中没有相同的 IP 地址，则 VM 会接收该子网中的另一个可用 IP 地址。 [了解详细信息](#creating-a-network-for-test-failover)。
 4. 如果要故障转移到 Azure 并且启用了数据加密，请在“加密密钥”中，选择在安装提供程序期间启用加密时颁发的证书。 如果未启用加密，则可以忽略此步骤。
 5. 在“**作业**”选项卡上跟踪故障转移进度。在 Azure 门户中，应当能够看到测试副本计算机。
-6. 若要通过 RDP 与 Azure VM 发起连接，需在故障转移的 VM 的网络接口上[添加公共 IP 地址](site-recovery-monitoring-and-troubleshooting.md)。 
+6. 若要通过 RDP 与 Azure VM 发起连接，需在故障转移的 VM 的网络接口上[添加公共 IP 地址](https://aka.ms/addpublicip)。 
 7. 如果一切符合预期，请单击“清理测试故障转移”。 这会删除在执行测试故障转移期间创建的 VM。
 8. 在“说明”中，记录并保存与测试性故障转移相关联的任何观测结果。 
 
@@ -113,9 +106,9 @@ ms.lasthandoff: 01/23/2018
 **故障转移** | **位置** | **操作**
 --- | --- | ---
 **运行 Windows 的 Azure VM** | 故障转移之前的本地计算机 | 若要通过 Internet 访问 Azure VM，请启用 RDP，并确保已针对“公共”添加 TCP 和 UDP 规则，并在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP。<br/><br/> 若要通过站点到站点连接访问 Azure VM，请在计算机上启用 RDP，并确保在“Windows 防火墙” -> “允许的应用和功能”中针对“域和专用”网络允许 RDP。<br/><br/>  确保操作系统 SAN 策略已设置为 **OnlineAll**。 [了解详细信息](https://support.microsoft.com/kb/3031135)。<br/><br/> 在触发故障转移时，请确保 VM 上没有处于挂起状态的 Windows 更新。 Windows 更新可能会在故障转移时启动，在更新完成之前，无法登录到 VM。 
-**运行 Windows 的 Azure VM** | 故障转移后的 Azure VM |  为 VM [添加公共 IP 地址](site-recovery-monitoring-and-troubleshooting.md)。<br/><br/> 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则需要允许与 RDP 端口建立传入连接。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图。<br/><br/> 如果无法连接，请检查 VM 是否正在运行，并查看这些[故障排除提示](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+**运行 Windows 的 Azure VM** | 故障转移后的 Azure VM |  为 VM [添加公共 IP 地址](https://aka.ms/addpublicip)。<br/><br/> 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则需要允许与 RDP 端口建立传入连接。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图。<br/><br/> 如果无法连接，请检查 VM 是否正在运行，并查看这些[故障排除提示](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 **运行 Linux 的 Azure VM** | 故障转移之前的本地计算机 | 确保 VM 上的安全外壳服务已设置为在系统引导时自动启动。<br/><br/> 确保防火墙规则允许 SSH 连接。
-**运行 Linux 的 Azure VM** | 故障转移后的 Azure VM | 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则需要允许与 SSH 端口建立传入连接。<br/><br/> 为 VM [添加公共 IP 地址](site-recovery-monitoring-and-troubleshooting.md)。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图。<br/><br/>
+**运行 Linux 的 Azure VM** | 故障转移后的 Azure VM | 已故障转移的 VM（及其连接到的 Azure 子网）上的网络安全组规则需要允许与 SSH 端口建立传入连接。<br/><br/> 为 VM [添加公共 IP 地址](https://aka.ms/addpublicip)。<br/><br/> 选中“启动诊断”可查看 VM 的屏幕截图。<br/><br/>
 
 
 

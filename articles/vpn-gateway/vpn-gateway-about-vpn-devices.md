@@ -56,7 +56,7 @@ ms.lasthandoff: 02/14/2018
 | 检查点 |安全网关 |R77.30 |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[配置指南](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[配置指南*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
 | Cisco |ASR |PolicyBased：IOS 15.1<br>RouteBased：IOS 15.2 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
-| Cisco |ISR |PolicyBased：IOS 15.0<br>RouteBased*：IOS 15.1 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[配置示例**](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Cisco |ISR |PolicyBased：IOS 15.0<br>RouteBased*：IOS 15.1 |[配置示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[配置示例\*\*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Cisco |Meraki |不适用 |不兼容 |不兼容 |
 | Citrix |NetScaler MPX，SDX，VPX |10.1 及以上 |[配置指南](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |不兼容 |
 | F5 |BIG-IP 系列 |12.0 |[配置指南](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[配置指南](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
@@ -78,7 +78,7 @@ ms.lasthandoff: 02/14/2018
 >
 > (*) Cisco ASA 版本 8.4+ 增加了 IKEv2 支持，可以通过“UsePolicyBasedTrafficSelectors”选项使用自定义 IPsec/IKE 策略连接到 Azure VPN 网关。 请参阅此[操作说明文章](vpn-gateway-connect-multiple-policybased-rm-ps.md)。
 >
-> (**) ISR 7200 系列路由器仅支持 PolicyBased VPN。
+> (\*\*) ISR 7200 系列路由器仅支持 PolicyBased VPN。
 
 ## <a name="additionaldevices"></a>非验证的 VPN 设备
 

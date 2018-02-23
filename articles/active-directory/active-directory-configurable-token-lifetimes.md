@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 19cd4ae8dc0ca3efa4eca51e5a6ba102338b4ef9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eaf9e7088c8c88140ea690c13ff7e0c7026b8f86
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Azure Active Directory 中可配置的令牌生存期（公共预览版）
 可以指定 Azure Active Directory (Azure AD) 颁发的令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。
@@ -73,7 +73,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 | 属性 | 策略属性字符串 | 影响 | 默认 | 最小值 | 最大值 |
 | --- | --- | --- | --- | --- | --- |
 | 访问令牌生存期 |AccessTokenLifetime |访问令牌、ID 令牌、SAML2 令牌 |1 小时	 |10 分钟 |1 天 |
-| 刷新令牌最大非活动时间 |MaxInactiveTime |刷新令牌 |14 天 |10 分钟 |90 天 |
+| 刷新令牌最大非活动时间 |MaxInactiveTime |刷新令牌 |90 天 |10 分钟 |90 天 |
 | 单因素刷新令牌最大期限 |MaxAgeSingleFactor |刷新令牌（适用于任何用户） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
 | 多因素刷新令牌最大期限 |MaxAgeMultiFactor |刷新令牌（适用于任何用户） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
 | 单因素会话令牌最大期限 |MaxAgeSessionSingleFactor<sup>2</sup> |会话令牌（持久性和非持久性） |直到吊销 |10 分钟 |直到吊销<sup>1</sup> |
@@ -83,7 +83,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 * <sup>2</sup>如果未设置 **MaxAgeSessionSingleFactor**，此值会采用 **MaxAgeSingleFactor** 值。 如果未设置任一参数，该属性会采用默认值（直到吊销）。
 * <sup>3</sup>如果未设置 **MaxAgeSessionMultiFactor**，此值会采用 **MaxAgeMultiFactor** 值。 如果未设置任一参数，该属性会采用默认值（直到吊销）。
 
-### <a name="exceptions"></a>异常
+### <a name="exceptions"></a>例外
 | 属性 | 影响 | 默认 |
 | --- | --- | --- |
 | 刷新令牌最大期限（针对吊销信息不足的联合用户颁发<sup>1</sup>） |刷新令牌（针对吊销信息不足的联合用户颁发<sup>1</sup>） |12 小时 |
@@ -363,7 +363,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
 ```
 
-| Parameters | 说明 | 示例 |
+| parameters | 说明 | 示例 |
 | --- | --- | --- |
 | <code>&#8209;Definition</code> |包含所有策略规则的字符串化 JSON 的数组。 | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;DisplayName</code> |策略名称的字符串。 |`-DisplayName "MyTokenPolicy"` |

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/10/2017
+ms.date: 02/09/2018
 ms.author: jejiang
-ms.openlocfilehash: c70cfc309fe60f0641c89b4a341e3364af74771a
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 7e1e2c0a5481a81e9267bcf87076076b377a1496
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>使用针对 Visual Studio Code 的 Azure Data Lake 工具
 
@@ -86,36 +86,52 @@ ms.lasthandoff: 12/21/2017
 
     脚本创建具有 /output 文件夹中某些数据的 departments.csv 文件。
 
-5. 在打开的文件夹中，将文件命名为 **myUSQL.usql**，并保存。 xxx_settings.json 配置文件也添加到了此文件夹。
-6. 打开 xxx_settings.json，并对其配置以下属性：
-
-    - 帐户：在 Azure 订阅中需要编译和运行 U-SQL 作业的 Data Lake Analytics 帐户，因此，你需要在编译和运行 U-SQL 作业之前配置计算机帐户。
-    - 数据库：你帐户下的数据库。 默认为 **master**。
-    - 架构：你数据库下的架构。 默认为 **dbo**。
-    - 可选设置：
-        - 优先级：优先级范围是 1 到 1000，1 是最高优先级。 默认值为 **1000**。
-        - 并行度：并行度范围是 1 到 150。 默认值是 Azure Data Lake Analytics 帐户中允许的最大并行度。 
-        
-        ![用于 Visual Studio Code 的 Data Lake 工具配置文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-configuration-file.png)
-      
-        > [!NOTE] 
-        > 保存配置后，帐户、数据库和架构信息会显示在对应 .usql 文件左下角的状态栏上。
+5. 在打开的文件夹中，将文件命名为 **myUSQL.usql**，并保存。
 
 **编译 U-SQL 脚本的方法**
 
 1. 按 Ctrl+Shift+P 打开命令面板。 
 2. 输入“ADL: Compile Script”。 编译结果显示在“输出”窗口中。 也可以右键单击脚本文件，并选择“ADL: Compile Script”编译 U-SQL 作业。 编译结果显示在“输出”窗格中。
  
-
 **提交 U-SQL 脚本的方法**
 
 1. 按 Ctrl+Shift+P 打开命令面板。 
 2. 输入“ADL: Submit Job”。  也可以右键单击脚本文件，并选择“ADL: Submit Job”。 
 
-提交 U-SQL 作业后，提交日志会显示在 VS Code 的“输出”窗口中。 如果提交成功，还会显示作业 URL。 可以在 Web 浏览器中打开作业 URL，跟踪实时作业状态。
+ 提交 U-SQL 作业后，提交日志会显示在 VS Code 的“输出”窗口中。 作业视图将显示在右侧窗格中。 如果提交成功，还会显示作业 URL。 可以在 Web 浏览器中打开作业 URL，跟踪实时作业状态。 在“作业视图摘要”选项卡上，可以看到作业详细信息。 主要功能包括重新提交脚本、复制脚本、在门户中打开。 在“作业视图数据”选项卡上，可以参考输入文件、输出文件、资源。 可将文件下载到本地计算机。
 
-若要启用输出作业详细信息，请在 **vscode for u-sql_settings.json** 文件中设置 **jobInformationOutputPath**。
- 
+   ![用于 Visual Studio Code 的 Data Lake 工具配置文件](./media/data-lake-analytics-data-lake-tools-for-vscode/job-view-summary.png)
+
+   ![用于 Visual Studio Code 的 Data Lake 工具配置文件](./media/data-lake-analytics-data-lake-tools-for-vscode/job-view-data.png)
+
+**设置默认上下文**
+
+ 可设置要中，如果没有为文件分别设置参数，可将要应用此设置的默认上下文设置为所有脚本文件。
+
+1. 按 Ctrl+Shift+P 打开命令面板。 
+2. 输入“ADL: Set Default Context”。
+3. 或者右键单击脚本编辑器，选择“ADL: Set Default Context”，然后选择所需的帐户、数据库和架构。 设置将保存到 xxx_settings.json 配置文件。
+
+    ![用于 Visual Studio Code 的 Data Lake 工具配置文件](./media/data-lake-analytics-data-lake-tools-for-vscode/default-context-sequence.png)
+
+**设置脚本参数**
+
+1. 按 Ctrl+Shift+P 打开命令面板。 
+2. 输入“ADL: Set Script Parameters”。
+3. 将打开 xxx_settings.json，其中显示了以下属性：
+
+  - 帐户：在 Azure 订阅中需要编译和运行 U-SQL 作业的 Data Lake Analytics 帐户，因此，你需要在编译和运行 U-SQL 作业之前配置计算机帐户。
+    - 数据库：你帐户下的数据库。 默认为 **master**。
+    - 架构：你数据库下的架构。 默认为 **dbo**。
+    - 可选设置：
+        - 优先级：优先级范围是 1 到 1000，1 是最高优先级。 默认值为 **1000**。
+        - 并行度：并行度范围是 1 到 150。 默认值是 Azure Data Lake Analytics 帐户中允许的最大并行度。 
+
+        ![用于 Visual Studio Code 的 Data Lake 工具配置文件](./media/data-lake-analytics-data-lake-tools-for-vscode/default-context-setting.png)
+      
+        > [!NOTE] 
+        > 如果未设置默认上下文，则保存配置后，帐户、数据库和架构信息会显示在对应 .usql 文件左下角的状态栏上。
+
 **Set Git Ignore**
 
 1. 按 Ctrl+Shift+P 打开命令面板。 
@@ -124,7 +140,7 @@ ms.lasthandoff: 12/21/2017
     - 如果 VSCode 工作文件夹中没有 **.gitIgnore** 文件，则会在该文件夹中创建一个名为 **.gitIgnor** 的文件。 默认情况下会将四个项（**usqlCodeBehindReference**、**usqlCodeBehindGenerated**、**.cache** 和 **obj**）添加到该文件。 如果需要，可以进一步进行更新。
     - 如果 VSCode 工作文件夹中已有一个 **.gitIgnore** 文件，则该工具会向 **.gitIgnore** 文件中添加四个项（**usqlCodeBehindReference**、**usqlCodeBehindGenerated**、**.cache**、**obj**）（如果该文件中尚未包括这四个项）。
 
-  ![用于 Visual Studio Code 的 Data Lake 工具配置文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-gitignore.png)
+    ![用于 Visual Studio Code 的 Data Lake 工具配置文件](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-gitignore.png)
 
 ## <a name="use-python-r-and-csharp-code-behind-file"></a>使用 Python、R 和 CSharp 代码隐藏文件
 Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在 VSCode 中使用 Python、R 和 CSharp 开发用于 Azure Data Lake Analytics 的 U-SQL](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)。
@@ -137,7 +153,7 @@ Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在
 
 **注册程序集的方法**
 
-可以通过 **ADL: Register Assembly** 或 **ADL: Register Assembly through Configuration** 命令注册程序集。
+可以通过 ADL: Register Assembly 或 ADL: Register Assembly (Advanced) 命令注册程序集。
 
 **通过 ADL: Register Assembly 命令注册**
 1.  按 Ctrl+Shift+P 打开命令面板。
@@ -150,51 +166,52 @@ Azure Data Lake 工具支持多个自定义代码，有关说明，请参阅[在
 
 触发 **ADL: Register Assembly** 命令的另一种便利方法是在文件资源管理器中右键单击 .dll 文件。 
 
-**通过 ADL: Register Assembly through Configuration 命令注册**
+**通过 ADL: Register Assembly (Advanced) 注册**
 1.  按 Ctrl+Shift+P 打开命令面板。
-2.  输入 **ADL: Register Assembly through Configuration**。 
+2.  输入“ADL: Register Assembly (Advanced)”。 
 3.  指定本地程序集路径。 
 4.  会显示 JSON 文件。 检查并根据需要编辑程序集依赖项和资源参数。 指令会显示在“输出”窗口中。 若要继续进行程序集注册，请保存 (Ctrl+S) JSON 文件。
 
-![针对 Visual Studio Code 的 Data Lake 工具代码隐藏](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-register-assembly-advance.png)
->[!NOTE]
->- 程序集依赖项：Azure Data Lake 工具会自动检测 DLL 是否具有任何依赖项。 依赖项在检测到之后会显示在 JSON 文件中。 
->- 资源：可以在程序集注册过程中上传 DLL 资源（例如，.txt、.png 和 .csv）。 
+    ![针对 Visual Studio Code 的 Data Lake 工具代码隐藏](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-register-assembly-advance.png)
+    
+   >[!NOTE]
+   >- 程序集依赖项：Azure Data Lake 工具会自动检测 DLL 是否具有任何依赖项。 依赖项在检测到之后会显示在 JSON 文件中。 
+   >- 资源：可以在程序集注册过程中上传 DLL 资源（例如，.txt、.png 和 .csv）。 
 
-触发 **ADL: Register Assembly through Configuration** 命令的另一种便利方法是在文件资源管理器中右键单击 .dll 文件。 
+触发 ADL: Register Assembly (Advanced) 命令的另一种方法是在文件资源管理器中右键单击 .dll 文件。 
 
 以下 U-SQL 代码演示如何调用程序集。 在示例中，程序集名称是 test。
 
-```
-REFERENCE ASSEMBLY [test];
 
-@a = 
-    EXTRACT 
-        Iid int,
-    Starts DateTime,
-    Region string,
-    Query string,
-    DwellTime int,
-    Results string,
-    ClickedUrls string 
-    FROM @"Sample/SearchLog.txt" 
-    USING Extractors.Tsv();
+        REFERENCE ASSEMBLY [test];
 
-@d =
-    SELECT DISTINCT Region 
-    FROM @a;
+        @a = 
+            EXTRACT 
+                Iid int,
+            Starts DateTime,
+            Region string,
+            Query string,
+            DwellTime int,
+            Results string,
+            ClickedUrls string 
+            FROM @"Sample/SearchLog.txt" 
+            USING Extractors.Tsv();
 
-@d1 = 
-    PROCESS @d
-    PRODUCE 
-        Region string,
-    Mkt string
-    USING new USQLApplication_codebehind.MyProcessor();
+        @d =
+            SELECT DISTINCT Region 
+            FROM @a;
 
-OUTPUT @d1 
-    TO @"Sample/SearchLogtest.txt" 
-    USING Outputters.Tsv();
-```
+        @d1 = 
+            PROCESS @d
+            PRODUCE 
+                Region string,
+            Mkt string
+            USING new USQLApplication_codebehind.MyProcessor();
+
+        OUTPUT @d1 
+            TO @"Sample/SearchLogtest.txt" 
+            USING Outputters.Tsv();
+
 
 ## <a name="connect-to-azure"></a>连接到 Azure
 
@@ -243,10 +260,10 @@ OUTPUT @d1
 ## <a name="view-data-lake-analytics-jobs"></a>查看 Data Lake Analytics 作业
 
 **查看 Data Lake Analytics 作业**
-1.  打开命令面板 (Ctrl+Shift+P)，并选择“ADL: Show Job”。 
+1.  打开命令面板 (Ctrl+Shift+P)，并选择“ADL: Show Jobs”。 
 2.  选择 Data Lake Analytics 或本地帐户。 
 3.  等待显示帐户的作业列表
-4.  从作业列表中选择作业，Data Lake 工具会在 Azure 门户中打开作业详细信息，并在 VS Code 中显示 JobInfo 文件。
+4.  从作业列表中选择作业，Data Lake 工具将在右侧窗格中打开作业视图，并在 VS 代码输出中显示一些信息。
 
     ![用于 Visual Studio Code 的 Data Lake 工具 IntelliSense 对象类型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-show-job.png)
 
@@ -258,7 +275,7 @@ OUTPUT @d1
  - 在 VS Code 中将文件上传到 Azure Data Lake 存储。 [上传文件或文件夹](#upload-file-or-folder)。
  - 直接从 VS Code 的 Azure Data Lake 存储下载文件。 [下载文件](#download-file)。
 
-## <a name="list-the-storage-path"></a>列出存储路径 
+### <a name="list-the-storage-path"></a>列出存储路径 
 
 **通过命令面板列出存储路径**
 
@@ -277,7 +294,7 @@ OUTPUT @d1
 ![针对 Visual Studio Code 的 Data Lake 工具右键单击上下文菜单](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-right-click-path.png)
 
 
-## <a name="preview-the-storage-file"></a>预览存储文件
+### <a name="preview-the-storage-file"></a>预览存储文件
 
 右键单击脚本编辑器，然后选择“ADL: 预览文件”。
 
@@ -287,7 +304,7 @@ OUTPUT @d1
 
 预览文件的另一种方法是，通过在脚本编辑器的文件完整路径或文件相对路径上右键单击菜单。 
 
-## <a name="upload-file-or-folder"></a>上传文件或文件夹
+### <a name="upload-file-or-folder"></a>上传文件或文件夹
 
 1. 右键单击脚本编辑器，然后选择“上传文件”或“上传文件夹”。
 
@@ -301,7 +318,7 @@ OUTPUT @d1
 与此同时，可以监视[上传状态](#check-storage-tasks-status)。
 
 
-## <a name="download-file"></a>下载文件 
+### <a name="download-file"></a>下载文件 
 可以通过输入命令“ADL: 下载文件”或“ADL: 下载文件(高级)”来下载文件。
 
 **通过“ADL: 下载文件(高级)”下载文件的具体步骤**
@@ -329,7 +346,7 @@ OUTPUT @d1
 
 与此同时，可以监视[下载状态](#check-storage-tasks-status)。
 
-## <a name="check-storage-tasks-status"></a>检查存储任务的状态
+### <a name="check-storage-tasks-status"></a>检查存储任务的状态
 完成下载和上传时，状态显示在状态栏底部。
 1. 单击下面的状态栏，即可在“输出”面板中查看下载和上传状态。
 

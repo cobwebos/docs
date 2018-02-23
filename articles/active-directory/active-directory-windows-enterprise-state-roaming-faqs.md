@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 054705e802867fda666c80217396db197c60f50e
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 0aac3a9d3595ea0e761ba14070bf7cff4d4b264c
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
 本主题将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。
@@ -80,7 +80,7 @@ ms.lasthandoff: 01/09/2018
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>现有 Windows 桌面应用程序的漫游设置选项有哪些？
 漫游仅适用于通用 Windows 应用。 有两种选项可用于在现有 Windows 桌面应用程序上启用漫游：
 
-* [桌面桥](http://aka.ms/desktopbridge)有助于将现有的 Windows 桌面应用引入到通用 Windows 平台。 在这里，只需要最少的代码更改，就可以利用 Azure AD 应用数据漫游。 桌面桥为应用提供应用标识，需要该标识才可为现有桌面应用启用应用数据漫游。
+* [桌面桥](https://aka.ms/desktopbridge)有助于将现有的 Windows 桌面应用引入到通用 Windows 平台。 在这里，只需要最少的代码更改，就可以利用 Azure AD 应用数据漫游。 桌面桥为应用提供应用标识，需要该标识才可为现有桌面应用启用应用数据漫游。
 * [用户体验虚拟化 (UE-V)](https://technet.microsoft.com/library/dn458947.aspx) 有助于为现有 Windows 桌面应用创建自定义设置模板，并为 Win32 应用启用漫游。 此选项不需要应用程发人员更改应用代码。 UE-V 仅限于已购买 Microsoft Desktop Optimization Pack 的客户的本地 Active Directory 漫游。
 
 通过 [UE-V 组策略](https://technet.microsoft.com/itpro/mdop/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2)更改 Windows OS 设置和通用应用程序数据的漫游，管理员可以配置 UE-V 来漫游 Windows 桌面应用。组策略包括：

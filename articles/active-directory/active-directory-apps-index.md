@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: eaceab7d0dba7719452000cc4e1bd19baa28af9e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ccbe48e4c7fdb25e003aedc048194e041865710e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>有关 Azure Active Directory 中应用程序管理的文章索引
 本页提供了一份完整列表，列出编写的 Azure Active Directory (Azure AD) 中各种应用程序相关功能的所有文章。
@@ -53,7 +53,7 @@ ms.lasthandoff: 02/01/2018
 | 文章指南 |  |
 |:---:| --- |
 | 联合身份验证和其他登录类型简介 |[使用 Azure AD 进行单一登录](active-directory-appssoaccess-whatis.md) |
-| 通过已简化的单一登录配置步骤与 Azure AD 预先集成的数千个 SaaS 应用程序 |[Azure AD 应用程序库入门](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[支持联合身份验证的预先集成应用完整列表](http://aka.ms/aadfederatedapps)<br /><br />[如何将应用程序添加到 Azure AD 应用库](active-directory-app-gallery-listing.md) |
+| 通过已简化的单一登录配置步骤与 Azure AD 预先集成的数千个 SaaS 应用程序 |[Azure AD 应用程序库入门](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[支持联合身份验证的预先集成应用完整列表](active-directory-saas-tutorial-list.md)<br /><br />[如何将应用程序添加到 Azure AD 应用库](active-directory-app-gallery-listing.md) |
 | 超过 150 个应用教程，讲解如何为 [Salesforce](active-directory-saas-salesforce-tutorial.md)、[ServiceNow](active-directory-saas-servicenow-tutorial.md)、[Google Apps](active-directory-saas-google-apps-tutorial.md)、[Workday](active-directory-saas-workday-tutorial.md) 等应用配置单一登录 |[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md) |
 | 如何手动设置和自定义单一登录配置 |[如何为不在 Azure Active Directory 应用程序库中的应用配置联合单一登录](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[如何为预先集成的应用自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md) |
 | 使用 SAML 协议的联合应用的故障排除指南 |[排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md) |
