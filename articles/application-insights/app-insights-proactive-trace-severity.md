@@ -26,7 +26,7 @@ ms.lasthandoff: 12/09/2017
 此功能需要为应用配置跟踪日志（请参见如何为 [.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) 或 [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs) 配置跟踪日志侦听器），除此之外，不需要其他特殊步骤。 在应用生成足够多的异常遥测数据后，此功能会激活。
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>何时会收到此类型的智能检测通知？
-对比前面七天计算的基线，如果“良好”跟踪（跟踪级别记录为 Info 或 Verbose）和“错误”跟踪（跟踪级别记录为 Warning、Error 或 Fatal）之间的比率在某一天降低，则可能会收到此类型通知。
+对比前面七天计算的基线，如果“良好”跟踪（跟踪级别记录为 Info 或 Verbose）和“错误”跟踪（跟踪级别记录为 Warning、Error 或 \* Fatal）之间的比率在某一天降低，则可能会收到此类型通知。
 
 ## <a name="does-my-app-definitely-have-a-problem"></a>收到通知是否意味着我的应用肯定有问题？
 不是，通知并不意味着应用肯定有问题。 虽然“良好”和“错误”跟踪之间的比率降低可能指示应用程序出现问题，但这种比率的变化也可能是良性的。 例如，如果应用程序中的新流发出的“错误”跟踪多于现有流，则可能带来比率的增加。

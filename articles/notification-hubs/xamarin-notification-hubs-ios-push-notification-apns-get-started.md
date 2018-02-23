@@ -217,7 +217,7 @@ ms.lasthandoff: 01/02/2018
 * REST 接口：可以使用 [REST 接口](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)在任何后端平台上支持推送通知。
 * **Microsoft Azure 通知中心 .NET SDK**：在 Visual Studio 的 Nuget 包管理器中，运行 [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 * Node.js：[如何通过 Node.js 使用通知中心](notification-hubs-nodejs-push-notification-tutorial.md)。
-* Java / PHP**：有关如何使用 REST API 发送推送通知的示例，请参阅“如何通过 Java/PHP 使用通知中心”([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md))。
+* Java / PHP \**：有关如何使用 REST API 发送推送通知的示例，请参阅“如何通过 Java/PHP 使用通知中心”([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md))。
 
 ## <a name="next-steps"></a>后续步骤
 在这个简单的示例中，已将推送通知广播到所有 iOS 设备。 要针对特定客户，请参考教程 [使用通知中心将通知推送到用户]。 如果要按兴趣组划分用户，可以阅读 [使用通知中心发送突发新闻]。 请在[通知中心指南]和[适用于 iOS 的通知中心操作方法指南]中了解有关如何使用通知中心的详细信息。
