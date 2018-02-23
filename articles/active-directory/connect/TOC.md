@@ -17,6 +17,7 @@
 ### [从 DirSync 升级](active-directory-aadconnect-dirsync-upgrade-get-started.md)
 ### [从以前的版本升级](active-directory-aadconnect-upgrade-previous-version.md)
 ### [使用现有 ADSync 数据库进行安装](active-directory-aadconnect-existing-database.md)
+### [使用 SQL 委派管理员权限安装](active-directory-aadconnect-sql-delegation.md)
 
 # 如何
 ## 规划和设计
@@ -51,6 +52,7 @@
 
 
 ## 管理 Azure AD Connect Sync
+### [GDPR 符合性和 Azure AD Connect](active-directory-aadconnect-gdpr.md)
 ### [防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 ### [密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)
 ### [Azure AD 服务帐户](active-directory-aadconnectsync-howto-azureadaccount.md)
@@ -81,6 +83,7 @@
 ### [连接](active-directory-aadconnect-troubleshoot-connectivity.md)
 ### [同步过程中出错](active-directory-aadconnect-troubleshoot-sync-errors.md)
 ### [对象不同步](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
+### [使用故障排除任务进行对象同步](active-directory-aadconnect-troubleshoot-objectsync.md)
 ### [密码同步](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)
 ### [userCertificate 导致的 LargeObject 错误](active-directory-aadconnectsync-largeobjecterror-usercertificate.md)
 ### [如何从 LocalDB 10 GB 的限制恢复](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)

@@ -5,11 +5,11 @@ title: "Microsoft Azure 文档"
 description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
 featureFlags:
 - clicktale
-ms.openlocfilehash: 0eb89abcd31756a2147ac3df49d0c3fffb574eec
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 9f2b958d4a5d7869999d0cbaccaeed69672d6b0b
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/22/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -722,7 +722,7 @@ ms.lasthandoff: 02/13/2018
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-entities-search/search-the-web">
+                                            <a href="/azure/cognitive-services/bing-entities-search/">
                                                 <img src="media/index/API_Bing_Entity_Search.svg" alt="" />
                                                 <p>必应实体搜索</p>
                                             </a>
@@ -1827,7 +1827,7 @@ ms.lasthandoff: 02/13/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>备份</h3>
-                                                    <p>以简单可靠的方式将服务器数据备份到云中</p>
+                                                    <p>使用基于云的备份即服务来保护数据</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2747,7 +2747,7 @@ ms.lasthandoff: 02/13/2018
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-custom-search"><img src="media/index/API_Bing_Custom_Search.svg" alt="" /><span>必应自定义搜索</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/search-the-web"><img src="media/index/API_Bing_Entity_Search.svg" alt="" /><span>必应实体搜索&nbsp;<sup style="font-size:70%">预览版</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/"><img src="media/index/API_Bing_Entity_Search.svg" alt="" /><span>必应实体搜索&nbsp;<sup style="font-size:70%">预览版</sup></span></a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-image-search"><img src="media/index/API_Bing_Image_Search.svg" alt="" />必应图像搜索</a>
@@ -3888,7 +3888,7 @@ ms.lasthandoff: 02/13/2018
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/python/azure/python-sdk-azure-install">获取用于 Python 的 Azure 库</a>
+                                                    <a href="/python/azure">获取用于 Python 的 Azure 库</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/python/azure">入门</a>

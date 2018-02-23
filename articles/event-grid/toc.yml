@@ -36,6 +36,8 @@
       href: delivery-and-retry.md
 - name: 操作指南
   items:
+    - name: 将事件接收到 HTTP 终结点
+      href: receive-events.md
     - name: 将数据从事件中心流式传输到数据仓库
       href: event-grid-event-hubs-integration.md
     - name: 发送有关 IoT 中心事件的通知

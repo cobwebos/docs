@@ -23,6 +23,10 @@
       items:
         - name: 从 Linux VM 访问
           href: msi-tutorial-linux-vm-access-arm.md
+    - name: 使用 VM MSI 访问 Azure Cosmos DB
+      items:
+        - name: 从 Linux VM 访问
+          href: msi-tutorial-linux-vm-access-cosmosdb.md
     - name: 使用 VM MSI 访问 Azure 存储
       items:
         - name: 使用访问密钥从 Linux VM 访问

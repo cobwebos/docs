@@ -41,6 +41,8 @@
 #### [消息传输、锁定和处置](message-transfers-locks-settlement.md)
 #### [消息序列化和时间戳](message-sequencing.md)
 #### [消息到期时间（生存时间）](message-expiration.md)
+#### [使用 Azure 事件网格进行消息处理](service-bus-to-event-grid-integration-concept.md)
+#### [Azure 事件网格示例](service-bus-to-event-grid-integration-example.md)
 ### [身份验证和授权](service-bus-authentication-and-authorization.md)
 #### [从 ACS 迁移到 SAS](service-bus-migrate-acs-sas.md)
 #### [使用共享访问签名进行的身份验证](service-bus-sas.md)

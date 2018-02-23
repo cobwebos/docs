@@ -14,6 +14,7 @@
 # 引用
 ## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Azure AD Connect Health 版本历史记录](active-directory-aadconnect-health-version-history.md)
+## [GDPR 符合性和 Azure AD Connect Health](active-directory-aadconnect-health-gdpr.md)
 
 # 相关内容
 ## [将本地标识与 Azure Active Directory 集成](../active-directory-aadconnect.md)
