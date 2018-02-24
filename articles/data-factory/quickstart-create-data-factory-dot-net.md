@@ -105,7 +105,7 @@ ms.lasthandoff: 01/23/2018
 按照[此文](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)中的说明执行以下任务： 
 
 1. **创建 Azure Active Directory 应用程序**。 在 Azure Active Directory 中创建一个应用程序来表示正在本教程中创建的 .NET 应用程序。 对于登录 URL，可以提供虚拟 URL，如本文中所示 (`https://contoso.org/exampleapp`)。
-2. 按照本文的**获取应用程序 ID 和身份验证密钥**部分中的说明获取“应用程序 ID”和“身份验证密钥”。 记下这些值，以便稍后在本教程中使用。 
+2. 按照本文的**获取应用程序 ID 和身份验证密钥**部分中的说明获取 \** 应用程序 ID”和“身份验证密钥”。 记下这些值，以便稍后在本教程中使用。 
 3. 按照本文的**获取租户 ID** 部分中的说明获取**租户 ID**。 记下此值。 
 4. 将应用程序分配到订阅级别的**参与者**角色，以便应用程序可以在订阅中创建数据工厂。 按照本文的**将应用程序分配到角色**部分中的说明进行操作。 
 
