@@ -404,7 +404,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 11. 将“存储过程”活动从“活动”工具箱拖放到管道设计器图面。 将活动的名称设置为 **StoredProceduretoUpdateChangeTrackingActivity**。 此活动更新 **table_store_ChangeTracking_version** 表中的更改跟踪版本。
 
     ![存储过程活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
-12. 切换到“SQL 帐户”选项卡，为“链接服务”选择“AzureSqlDatabaseLinkedService”。 
+12. 切换到“ \* SQL 帐户”选项卡，为“链接服务”选择“AzureSqlDatabaseLinkedService”。 
 
     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. 切换到“存储过程”选项卡，然后执行以下步骤： 
