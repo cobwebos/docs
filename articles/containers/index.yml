@@ -17,11 +17,11 @@ metadata:
   ms.technology: azure
   ms.devlang: multiple
   ms.service: multiple
-  ms.openlocfilehash: fd20b6194a4ddaba7077a6bcc85b4f2ed264312a
-  ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+  ms.openlocfilehash: 1ef8924da3622ae853c88c19c4dc82b13e889f6d
+  ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/25/2017
+  ms.lasthandoff: 02/23/2018
 sections:
 - items:
   - type: markdown
@@ -59,7 +59,7 @@ sections:
       title: "在 Service Fabric 上部署 Windows 容器应用程序"
       image:
         src: /azure/media/index/Fabric.svg
-    - href: https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image
+    - href: https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go
       title: "使用容器的 Azure Web 应用创建容器化的应用"
       image:
         src: https://docs.microsoft.com/media/logos/logo_linux.svg
