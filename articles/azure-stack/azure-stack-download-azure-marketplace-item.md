@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/30/2018
+ms.date: 02/22/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: a5b321bc06ef14207eddf5aa77ff983ada1e409f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 27b575a1baa793794480d16e91f0f96355b3d303
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>从 Azure 应用商店项下载到 Azure 堆栈
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 02/21/2018
 
     ![](media/azure-stack-download-azure-marketplace-item/image03.png)
 
-5. 选择你要在列表中，然后单击的项**下载**。 这将启动下载您选定的项的 VM 映像。 下载时间会有所不同。
+5. 选择你要在列表中，然后单击的项**下载**。 若要下载的启动选项 VM 映像。 下载时间会有所不同。
 
     ![](media/azure-stack-download-azure-marketplace-item/image04.png)
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 02/21/2018
 
 1. 打开 PowerShell 控制台以管理员身份和[安装 Azure 堆栈特定 PowerShell 模块](azure-stack-powershell-install.md)。 请确保你安装**PowerShell 版本 1.2.11 或更高版本**。  
 
-2. 添加具有用于注册 Azure 堆栈的 Azure 帐户。 若要执行此操作，运行**添加 AzureRmAccount**不带任何参数的 cmdlet。 系统将提示你输入你的 Azure 帐户凭据，并且你可能必须为使用双因素身份验证，具体情况视你的帐户的配置。  
+2. 添加具有用于注册 Azure 堆栈的 Azure 帐户。 若要添加的帐户，运行**添加 AzureRmAccount**不带任何参数的 cmdlet。 系统将提示你输入你的 Azure 帐户凭据，并且你可能必须为使用双因素身份验证，具体情况视你的帐户的配置。  
 
 3. 如果你有多个订阅，运行以下命令以选择的一个具有用于注册：  
 
@@ -75,16 +75,16 @@ ms.lasthandoff: 02/21/2018
 
    ```PowerShell
    # Download the tools archive.
-   invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/vnext.zip `
-     -OutFile vnext.zip
+   invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip `
+     -OutFile master.zip
 
    # Expand the downloaded files.
-   expand-archive vnext.zip `
+   expand-archive master.zip `
      -DestinationPath . `
      -Force
 
    # Change to the tools directory.
-   cd \AzureStack-Tools-vnext
+   cd \AzureStack-Tools-master
 
    ```
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 02/21/2018
    Import-Module .\ Syndication\AzureStack.MarketplaceSyndication.psm1
 
    Sync-AzSOfflineMarketplaceItem `
-     -destination “<Destination folder path>” `
+     -destination "<Destination folder path>" `
      -AzureTenantID $AzureContext.Tenant.TenantId `
      -AzureSubscriptionId $AzureContext.Subscription.Id  
    ```
@@ -103,15 +103,17 @@ ms.lasthandoff: 02/21/2018
 
    ![Azure 应用商店项弹出窗口](./media/azure-stack-download-azure-marketplace-item/image05.png)
 
-7. 选择你想要下载的映像 （可以通过按住 Ctrl 键选择多个映像） 和记下映像版本，您将使用此版本在下一节中的将图像导入 > 单击**确定**> 接受法律条款通过单击**是**。 此外可以通过使用筛选的映像列表**添加条件**选项。 下载需要一段时间，具体取决于映像的大小。 一次图像下载，它可用于您之前提供的目标路径。 下载包含 Azpkg 格式中的 VHD 文件和库项。  
+7. 选择你想要下载和记下映像版本的映像。 可以通过按住 Ctrl 键来选择多个映像。 你使用的映像版本导入下一节中的图像。  接下来，单击**确定**，然后通过单击接受法律条款**是**。 此外可以通过使用筛选的映像列表**添加条件**选项。 
+
+   下载需要一段时间，具体取决于映像的大小。 一次图像下载，它可用于您之前提供的目标路径。 下载包含 Azpkg 格式中的 VHD 文件和库项。
 
 ### <a name="import-the-image-and-publish-it-to-azure-stack-marketplace"></a>导入映像并将其发布到 Azure 堆栈市场
 
-1. 下载 image& 库包后，将它们和内容保存到可移动磁盘驱动器的 AzureStack 工具 vnext 文件夹中，并将其复制到 Azure 堆栈环境 (你可以将其复制到本地到的任何位置如:"C:\MarketplaceImages"。)   
+1. 下载映像和库包后，将它们和内容保存到可移动磁盘驱动器的 AzureStack 工具主文件夹中，并将其复制到 Azure 堆栈环境 (你可以复制该本地到的任何位置如:"C:\MarketplaceImages")。   
 
 2. 然后再导入映像，你必须通过连接到 Azure 堆栈运算符的环境中所述的步骤[配置 Azure 堆栈运算符 PowerShell 环境](azure-stack-powershell-configure-admin.md)。  
 
-3. 通过使用添加 AzsVMImage cmdlet 导入到 Azure 堆栈的映像。 使用此 cmdlet 时，请确保发布服务器、 产品和其他参数值将替换为要导入的映像的值。 上一节中都可以从步骤 6 获取"发布者"、"提议"和"sku"值来自前面下载的 Azpkg 文件 imageReference 对象的映像的和的"版本"值。
+3. 通过使用添加 AzsVMImage cmdlet 导入到 Azure 堆栈的映像。 使用此 cmdlet 时，请确保将*发布服务器*，*提供*，和其他参数值与你要导入的图像的值。 你可以获取*发布服务器*，*提供*，和*sku*来自前面下载的 Azpkg 文件 imageReference 对象的映像的值与*版本*步骤 6 中上一节中的值。
 
    ```json
    "imageReference": {
@@ -131,8 +133,8 @@ ms.lasthandoff: 02/21/2018
     -offer "WindowsServer" `
     -sku "2016-Datacenter-Server-Core" `
     -osType Windows `
-    -Version "2017.09.25" `
-    -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Microsoft.WindowsServer2016DatacenterServerCore-ARM-Eval.2017.09.25.vhd" `
+    -Version "2016.127.20171215" `
+    -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Windows-Server-2016-DatacenterCore-20171215-en.us-127GB.vhd" `
     -CreateGalleryItem $False `
     -Location Local
    ```

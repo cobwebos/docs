@@ -57,8 +57,12 @@
         - name: Azure 堆栈部署 PKI 要求
           href: azure-stack-pki-certs.md
           items:
-            - name: 获取 Azure 堆栈部署 PKI 证书
+            - name: 获取 Azure 堆栈 PKI 证书
               href: azure-stack-get-pki-certs.md
+            - name: 准备 Azure 堆栈 PKI 证书
+              href: prepare-pki-certs.md
+            - name: 验证 Azure 堆栈 PKI 证书
+              href: validate-pki-certs.md
         - name: 标识集成
           href: azure-stack-integrate-identity.md
         - name: 注册 Azure 堆栈
@@ -79,7 +83,7 @@
   items:
     - name: 部署 ASDK
       items:
-        - name: 先决条件
+        - name: 必备组件
           href: azure-stack-deploy.md
         - name: 遥测
           href: azure-stack-telemetry.md
@@ -168,6 +172,10 @@
           href: azure-stack-security-foundations.md
         - name: 标识
           items:
+            - name: 标识概述
+              href: azure-stack-identity-overview.md
+            - name: 标识体系结构
+              href: azure-stack-identity-architecture.md
             - name: 管理 RBAC
               href: azure-stack-manage-permissions.md
             - name: 为 Azure AD 添加用户
@@ -180,7 +188,7 @@
               href: azure-stack-enable-multitenancy.md
         - name: 旋转机密
           href: azure-stack-rotate-secrets.md
-    - name: 优惠服务
+    - name: 提供服务
       items:
         - name: 提供服务概述
           href: azure-stack-offer-services-overview.md
@@ -268,7 +276,7 @@
               href: azure-stack-vpn-gateway-settings.md
             - name: 使用 ExpressRoute 进行连接
               href: azure-stack-connect-expressroute.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 已知问题
           href: azure-stack-troubleshooting.md
@@ -278,23 +286,25 @@
           href: azure-stack-diagnostic-test.md
         - name: 重新部署 Azure Stack 开发工具包
           href: azure-stack-redeploy.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.9
-- name: 相关
+- name: 相关内容
   items:
     - name: Azure Stack 用户文档
       href: /azure/azure-stack/user/
 - name: 资源
   items:
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack'
+    - name: Azure 堆栈路线图
+      href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
+    - name: Azure 堆栈 MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
+    - name: Azure 堆栈文档反馈
+      href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: 定价信息
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-stack'
     - name: 培训和认证
-      href: azure-stack-train-and-cert.md
+      href: 'https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert'
