@@ -2,7 +2,7 @@
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 选择“新建” > “Web + 移动” > “通知中心”。
+2. 选择“创建资源” > “Web + 移动” > “通知中心”。
    
       ![Azure 门户 - 创建通知中心](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
       

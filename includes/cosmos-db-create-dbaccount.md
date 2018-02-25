@@ -1,5 +1,5 @@
 1. 在新浏览器窗口中，登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击“新建” > “数据库” > “Azure Cosmos DB”。
+2. 单击“创建资源” > “数据库” > “Azure Cosmos DB”。
    
    ![Azure 门户“数据库”窗格](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
 

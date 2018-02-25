@@ -1,4 +1,4 @@
-1. 单击 Azure 门户左上角的“新建”按钮，然后选择“计算” > “函数应用”。 
+1. 在 Azure 门户左上角单击“创建资源”，然后选择“计算” > “函数应用”。 
 
     ![在 Azure 门户中创建函数应用](./media/functions-create-function-app-portal/function-app-create-flow.png)
 

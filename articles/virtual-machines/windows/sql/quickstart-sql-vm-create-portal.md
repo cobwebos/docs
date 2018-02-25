@@ -1,10 +1,10 @@
 ---
-title: "在 Azure 门户中创建SQL Server Windows VM | Microsoft Docs"
+title: "在门户中创建SQL Server Windows VM | Microsoft Docs"
 description: "本教程介绍如何在 Azure 门户中创建 Windows SQL Server 2017 虚拟机。"
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 2bf2382094f88c8c57077df10473b5f3a2e4c127
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: e6ae3937a9805dfec8784efaf8370117754a03ad
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>在 Azure 门户中创建 SQL Server 2017 Windows 虚拟机
+# <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 SQL Server 2017 Windows 虚拟机
 
 > [!div class="op_single_selector"]
 > * [Windows](quickstart-sql-vm-create-portal.md)
@@ -27,13 +27,16 @@ ms.lasthandoff: 12/12/2017
 
 本快速入门逐步讲解如何在 Azure 门户中创建 SQL Server 虚拟机。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+> [!TIP]
+> 本快速入门提供的路径适用于快速预配并连接到 SQL VM。 若要详细了解其他 SQL VM 预配选择，请参阅 [Azure 门户中的 Windows SQL Server VM 预配指南](virtual-machines-windows-portal-sql-server-provision.md)。
+
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a id="select"></a>选择 SQL Server VM 映像
 
 1. 使用帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 门户中，单击“新建”。 该门户将打开“新建”窗口。
+1. 在 Azure 门户中，单击“创建资源”。 
 
 1. 在搜索字段中键入“Windows Server 2016 上的 SQL Server 2017 Developer”，然后按 Enter。
 
@@ -44,7 +47,7 @@ ms.lasthandoff: 12/12/2017
    > [!TIP]
    > 本教程中使用 Developer 版，因为该版本是 SQL Server 的完整功能版本，并且可免费用于开发测试。 只需支付运行 VM 的成本。 有关完整的定价注意事项，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
 
-1. 单击“创建” 。
+1. 单击“创建”。
 
 ## <a id="configure"></a> 提供基本详细信息
 
