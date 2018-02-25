@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/17/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: 11b5d1bc4e931ad902b623fe55e62097ae40d8ef
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9f51daabef7d1e02917869e4e6943b8ea28b56f5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="start-using-azure-ad-privileged-identity-management"></a>开始使用 Azure AD Privileged Identity Management
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/11/2017
 
 1. 以目录的全局管理员身份登录 [Azure 门户](https://portal.azure.com/) 。
 2. 如果组织有多个目录，请在 Azure 门户的右上角选择用户名。 选择要在其中使用 PIM 的目录。
-3. 选择“更多服务”，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”。
+3. 选择“所有服务”，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”。
 4. 选中“固定到仪表板”，并单击“创建”。 Privileged Identity Management 应用程序打开。
 
 如果你是第一个在目录中使用 Azure AD Privileged Identity Management 的人，系统会自动在目录中为你分配“安全管理员”和“特权角色管理员”角色。 只有特权角色管理员才能管理用户的 Azure AD Directory 角色分配。 此外，还可以选择运行[安全向导](active-directory-privileged-identity-management-security-wizard.md)。 系统会引导你完成初始的发现和分配体验。

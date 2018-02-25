@@ -1,6 +1,6 @@
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 依次单击“新建”、“Web + 移动”和“Mobile Engagement”。
+2. 依次单击“创建资源”、“Web + 移动”和“Mobile Engagement”。
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-azme-extension.png)
 3. 在显示的“新 Mobile Engagement 应用集合”边栏选项卡中，将要创建的是一个应用集合。 输入以下信息：

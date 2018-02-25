@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 9919e326613ce81db32f1d72a8cb5e3668992885
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f8082b632e9fef4aa5d46deb35e415f2b1c55dda
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>在云中监视本地标识基础结构和同步服务
 Azure Active Directory (Azure AD) Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。 它针对重要的标识组件 - 例如 Active Directory 联合身份验证服务 (AD FS) 服务器、Azure AD Connect 服务器（也称为同步引擎）、Active Directory 域控制器等 - 提供监视功能，以便与 Office 365 和 Microsoft Online Services 建立可靠的连接。它还可以让用户轻松访问有关这些组件的关键数据点，获取使用情况信息和其他重要见解来做出明智的决策。
@@ -110,7 +110,7 @@ Azure Active Directory (Azure AD) Connect Health 可帮助你监视和深入了�
 Azure AD Connect Health 门户显示警报、性能监视和使用情况分析的视图。 单击 https://aka.ms/aadconnecthealth URL 可转到 Azure AD Connect Health 的主边栏选项卡。 可以将边栏选项卡视为窗口。 在主边栏选项卡上，可以看到“快速启动”、Azure AD Connect Health 中的服务和其他配置选项。 请参阅下面的屏幕截图及其后面的简要说明。 部署代理后，运行状况服务会自动标识 Azure AD Connect Health 正在监视的服务。
 
 > [!NOTE]
-> 有关许可信息，请参阅 [Azure AD Connect 常见问题](active-directory-aadconnect-health-faq.md)或 [Azure AD 定价页](https://aka.ms/aadpricing)。
+> 有关许可信息，请参阅 [Azure AD Connect Health 常见问题解答](active-directory-aadconnect-health-faq.md)或 [Azure AD 定价页](https://aka.ms/aadpricing)。
     
 ![Azure AD Connect Health 门户](./media/active-directory-aadconnect-health/portal4.png)
 

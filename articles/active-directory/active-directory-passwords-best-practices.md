@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 0ab45043e2f75ff07a2a1a48e69507be185b56ab
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 063c92a006696afb998799c312515c79c19a48f4
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>如何成功推出自助密码重置
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 01/17/2018
 许多客户选择托管网页并创建根 DNS 条目，例如 https://passwords.contoso.com。他们在此页中填充以下信息的链接：
 
 * [Azure AD 密码重置门户 - https://aka.ms/sspr](https://aka.ms/sspr)
-* [Azure AD 密码重置注册门户 - http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)
+* [Azure AD 密码重置注册门户 - https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
 * [Azure AD 密码更改门户 - https://account.activedirectory.windowsazure.com/ChangePassword.aspx](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)
 * 其他特定于组织的信息
 
