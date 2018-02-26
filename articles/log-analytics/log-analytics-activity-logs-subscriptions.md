@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/08/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: ded0b4cdcbac747d52435023a24b5719f3c58758
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 89c62563b9772fa07d63a24b4aa20857b0143f85
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>将 Azure 活动日志收集到不同订阅中的 Log Analytics
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 01/19/2018
 
 <!-- Follow the steps in [how to create an Event Hubs namespace and Event Hub](../event-hubs/event-hubs-create.md) to create your event hub. -->
 
-1. 在 Azure 门户中，选择“新建”> “物联网” > “事件中心”。
+1. 在 Azure 门户中，选择“创建资源” > “物联网” > “事件中心”。
 
    ![Marketplace - 新建事件中心](media/log-analytics-activity-logs-subscriptions/marketplace-new-event-hub.png)
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: f0cdafdb88604b8874a245751246d219e8df3813
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 704391a60b4ba777b8fd2b156db2ea5587498383
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
 
@@ -116,7 +116,7 @@ ms.lasthandoff: 11/16/2017
 Azure 云服务是该应用程序将运行的环境。
 
 1. 在浏览器中，打开 [Azure 门户](https://portal.azure.com)。
-2. 单击“新建”>“计算”>“云服务”。
+2. 单击“创建资源”>“计算”>“云服务”。
 
 3. 在 DNS 名称输入框中，输入云服务的 URL 前缀。
 
@@ -126,7 +126,7 @@ Azure 云服务是该应用程序将运行的环境。
 5. 选择要在其中部署该应用程序的区域。
 
     此字段指定云服务将托管在哪个数据中心。 对于生产应用程序，可以选择离客户最近的区域。 对于本教程，选择最近的区域。
-5. 单击“创建” 。
+5. 单击“创建”。
 
     在下图中，使用 URL CSvccontosoads.cloudapp.net 创建了一个云服务。
 
@@ -135,7 +135,7 @@ Azure 云服务是该应用程序将运行的环境。
 ### <a name="create-an-azure-sql-database"></a>创建 Azure SQL 数据库
 在云中运行应用程序时，它将使用基于云的数据库。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“新建”>“数据库”>“SQL 数据库”。
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“创建资源”>“数据库”>“SQL 数据库”。
 2. 在“数据库名称”框中  ，输入 *contosoads*。
 3. 在“资源组”中，单击“使用现有资源组”，并选择用于云服务的资源组。
 4. 在下图中，单击“服务器 - 配置所需设置”和“新建服务器”。
@@ -155,14 +155,14 @@ Azure 云服务是该应用程序将运行的环境。
 9. 针对新服务器单击“选择”。
 
     ![新建 SQL 数据库服务器](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. 单击“创建” 。
+10. 单击“创建”。
 
 ### <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 Azure 存储帐户提供在云中存储队列和 Blob 数据的资源。
 
 在实际应用程序中，通常会为记录数据的应用程序数据创建单独的帐户，并且为生产数据的测试数据创建单独帐户。 对于本教程，将只使用一个帐户。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“新建”>“存储” >“存储帐户 - Blob、文件、表、队列”。
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“创建资源”>“存储”>“存储帐户 - Blob、文件、表、队列”。
 2. 在“名称”框中，输入 URL 前缀。
 
     此前缀加上在框下看到的文本将是存储帐户的唯一 URL。 如果其他人已使用输入的前缀，必须选择不同的前缀。
@@ -178,7 +178,7 @@ Azure 存储帐户提供在云中存储队列和 Blob 数据的资源。
     当云服务和存储帐户位于不同的数据中心（不同区域）时，延迟将增加，并且需要为数据中心外的带宽付费。 数据中心内的带宽是免费的。
 
     Azure 地缘组实际上是一种机制，目的是最小化数据中心内不同资源之间的距离，这样可以降低延迟。 本教程不使用地缘组。 有关详细信息，请参阅 [如何在 Azure 中创建地缘组](http://msdn.microsoft.com/library/jj156209.aspx)。
-7. 单击“创建” 。
+7. 单击“创建”。
 
     ![新的存储帐户](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -481,7 +481,7 @@ public class ContosoAdsContext : DbContext
 }
 ```
 
-类具有两个构造函数。 其中第一个由 web 项目使用，并指定存储在 Web.config 文件中的连接字符串的名称。 第二个构造函数用于传入辅助角色项目所使用的实际连接字符串，因为没有 Web.config 文件。 之前看到存储此连接字符串的位置，稍后会看到在实例化 DbContext 类时代码如何检索连接字符串。
+类具有两个构造函数。 其中第一个由 web 项目使用，并指定存储在 Web.config 文件中的连接字符串的名称。 第二个构造函数用于传入辅助角色项目所使用的实际连接字符串，因为没有 Web.config 文件。 以前看到存储此连接字符串的位置，并且稍后会看到连接字符串在实例化 DbContext 类时代码如何检索它。
 
 ### <a name="contosoadsweb---globalasaxcs"></a>ContosoAdsWeb - Global.asax.cs
 从 `Application_Start` 方法调用的代码创建*图像* Blob 容器和*图像*队列（如果它们尚不存在）。 这确保只要开始使用新的存储帐户，或在新的计算机上开始使用存储模拟器，就自动创建所需的 Blob 容器和队列。

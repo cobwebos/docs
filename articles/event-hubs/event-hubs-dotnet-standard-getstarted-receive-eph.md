@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2017
 ms.author: sethm
-ms.openlocfilehash: 0dd3533ab1556b334c09ba69d096b06c8be85cc8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 5eb5c2d1f0b85c907f788fb6ac752488601f613a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>使用 .NET Standard 中的事件处理程序主机接收消息入门
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 02/03/2018
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户  
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。  
-2. 在门户的左侧导航窗格中，依次单击“新建”、“存储”和“存储帐户”。  
+2. 在门户的左侧导航窗格中，依次单击“创建资源”、“存储”、“存储帐户”。  
 3. 完成存储帐户窗口中的字段，并单击“创建”。
 
     ![创建存储帐户][1]

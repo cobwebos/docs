@@ -8,11 +8,11 @@ ms.author: tomfitz
 ms.date: 01/30/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: 01472ffc7a98cd2c99793c8675efe2cefffe5558
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f37d496d43bb24c51d6e1c11b77d9ceba48b7b23
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>使用 Azure 门户和事件网格创建和路由自定义事件
 
@@ -43,7 +43,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 主题提供用户定义的终结点，可向其发布事件。 
 
-1. 若要在资源组中创建一个主题，请选择“更多服务”，然后搜索“事件网格”。 从可用选项中选择“事件网格主题”。
+1. 若要在资源组中创建一个主题，请选择“所有服务”，然后搜索“事件网格”。 从可用选项中选择“事件网格主题”。
 
    ![创建事件网格主题](./media/custom-event-quickstart-portal/create-event-grid-topic.png)
 
@@ -67,7 +67,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 订阅主题是为了告知事件网格要跟踪哪些事件。 
 
-1. 若要创建事件网格订阅，请再次选择“更多服务”并搜索“事件网格”。 从可用选项中选择“事件网格订阅”。
+1. 若要创建事件网格订阅，请再次选择“所有服务”并搜索“事件网格”。 从可用选项中选择“事件网格订阅”。
 
    ![创建事件网格订阅](./media/custom-event-quickstart-portal/create-subscription.png)
 

@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 9f7343102cf7af6d7f2ba6b4b2f08b7b855da6f8
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 7480c1f71a64e31b65cc76f28734df6f424a6b3f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>在应用服务环境中创建和使用内部负载均衡器 #
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 12/04/2017
 
 若要创建 ILB ASE，请执行以下操作：
 
-1. 在 Azure 门户中选择“新建” > “Web + 移动” > “应用服务环境”。
+1. 在 Azure 门户中选择“创建资源” > “Web + 移动” > “应用服务环境”。
 
 2. 选择订阅。
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 12/04/2017
 
 在 ILB ASE 中创建应用通常与在 ASE 中创建应用相同。
 
-1. 在 Azure 门户中选择“新建” > “Web + 移动” > “Web”、“移动”或“API 应用”。
+1. 在 Azure 门户中选择“创建资源” > “Web + 移动” > “Web”、“移动”或“API 应用”。
 
 2. 输入应用的名称。
 
@@ -116,7 +116,7 @@ ms.lasthandoff: 12/04/2017
 
 5. 选择或创建应用服务计划。 若想创建新的应用服务计划，请选择 ASE 作为位置。 选择希望在其中创建应用服务计划的辅助角色池。 创建应用服务计划时，选择 ASE 作为位置并选择辅助角色池。 指定应用的名称时，应用名称下面的域会替换为 ASE 的域。
 
-6. 选择“创建” 。 如果希望应用显示在仪表板上，请选中“固定到仪表板”复选框。
+6. 选择“创建”。 如果希望应用显示在仪表板上，请选中“固定到仪表板”复选框。
 
     ![应用服务计划创建][2]
 

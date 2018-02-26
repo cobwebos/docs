@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 8f0f575319eec0517366079c637ad7565530ac70
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 5274ec13ec2d04194e2dd4c8ec93be0f78329b23
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-internal-load-balancer-in-the-azure-portal"></a>在 Azure 门户中创建内部负载均衡器
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/11/2018
 使用以下步骤从 Azure 门户创建内部负载均衡器。
 
 1. 打开浏览器，导航到 [Azure 门户](http://portal.azure.com)，并使用 Azure 帐户登录。
-2. 在屏幕的左上方，单击“新建” > “网络” > “负载均衡器”。
+2. 在屏幕的左上方，单击“创建资源” > “网络” > “负载均衡器”。
 3. 在“创建负载均衡器”边栏选项卡中，输入负载均衡器的“名称”。
 4. 在“类型”下，单击“内部”。
 5. 单击“虚拟网络”，并选择要在其中创建负载均衡器的虚拟网络。

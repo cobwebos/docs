@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b01aa01df198ce75b2f8b66d28a2db68b1c30b87
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0f55e368586910b771115b39b5ec9b286f031069
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-azure-container-service-aks"></a>监视 Azure 容器服务 (AKS)
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="configure-the-monitoring-solution"></a>配置监视解决方案
 
-在 Azure 门户中，选择“新建”并搜索 `Container Monitoring Solution`。 找到后，选择“创建”。
+在 Azure 门户中，选择“创建资源”，然后搜索 `Container Monitoring Solution`。 找到后，选择“创建”。
 
 ![添加解决方案](./media/container-service-tutorial-kubernetes-monitor/add-solution.png)
 

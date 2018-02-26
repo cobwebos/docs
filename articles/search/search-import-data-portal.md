@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.openlocfilehash: 710543b5423d2b651545151eb4a8d426720e28e0
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 286408fb0c3aa2b83cf17a4646f6f7420b6884f4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>使用门户将数据导入到 Azure 搜索中
 Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导，用于将数据加载到索引中。 
@@ -49,7 +49,7 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
 平展数据集是必需的输入。 只能从单个表、数据库视图或等效的数据结构导入。 在运行向导之前，应创建此数据结构。
 
 ## <a name="connect-to-your-data"></a>连接到数据
-1. 登录到 [Azure 门户](https://portal.azure.com)，并打开服务仪表板。 可以单击跳转栏中的“更多服务”，搜索当前订阅中的现有“搜索服务”。 
+1. 登录到 [Azure 门户](https://portal.azure.com)，并打开服务仪表板。 可以单击跳转栏中的“所有服务”，搜索当前订阅中的现有“搜索服务”。 
 2. 单击命令栏上的“导入数据”  ，滑动打开“导入数据”边栏选项卡。  
 3. 单击“连接到数据”  ，指定索引器使用的数据源定义。 对于订阅内数据源，该向导通常可以检测并读取连接信息，并将整个配置要求降至最低。
 

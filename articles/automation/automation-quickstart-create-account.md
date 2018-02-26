@@ -8,11 +8,11 @@ ms.date: 12/13/2017
 ms.topic: quickstart
 ms.service: automation
 ms.custom: mvc
-ms.openlocfilehash: 5522c56749f9c26f376661636dd62f88017f805e
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 1ac5da8950f2aa5504c2e1e4c80e8cf5cc5d5be8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-azure-automation-account"></a>创建 Azure 自动化帐户
 
@@ -26,7 +26,7 @@ Azure 自动化帐户可以通过 Azure 创建。 此方法提供一个基于浏
 
 ## <a name="create-automation-account"></a>创建自动化帐户
 
-1. 单击 Azure 左上角的“新建”按钮。
+1. 单击 Azure 左上角的“创建资源”按钮。
 
 1. 选择“监视 + 管理”，然后选择“自动化”。
 

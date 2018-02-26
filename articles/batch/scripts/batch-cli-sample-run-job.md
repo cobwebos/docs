@@ -1,64 +1,62 @@
 ---
-title: "Azure CLI 脚本示例 - 使用批处理运行作业 | Microsoft Docs"
-description: "Azure CLI 脚本示例 - 使用批处理运行作业"
+title: "Azure CLI 脚本示例 - 运行 Batch 作业 | Microsoft Docs"
+description: "Azure CLI 脚本示例 - 使用 Batch 运行作业"
 services: batch
 documentationcenter: 
-author: annatisch
-manager: daryls
+author: dlepow
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 
 ms.service: batch
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
-ms.author: antisch
-ms.openlocfilehash: 73d93622d418359be421e043d0af4e4befc6f4b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/29/2018
+ms.author: danlep
+ms.openlocfilehash: a782bed39720ac8f4b62b082dd43a2604faf1ca6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="running-jobs-on-azure-batch-with-azure-cli"></a>使用 Azure CLI 在 Azure Batch 上运行作业
+# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI 示例：使用 Azure Batch 运行作业和任务
 
-此脚本将创建一个批处理作业，并将一系列任务添加到该作业。 它还演示了如何监视作业及其任务。 最后，它演示如何有效地查询 Batch 服务，以获取有关作业任务的信息。
+此脚本将创建一个批处理作业，并将一系列任务添加到该作业。 它还演示了如何监视作业及其任务。 
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-- 按照 [Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)中提供的说明安装 Azure CLI（如果尚未这样做）。
-- 创建 Batch 帐户（如果还没有帐户）。 有关创建帐户的示例脚本，请参阅[使用 Azure CLI 创建 Batch 帐户](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account)。
-- 将应用程序配置为从启动任务运行（如果尚未这样做）。 有关用于创建应用程序并将应用程序包上传到 Azure 的示例脚本，请参阅[使用 Azure CLI 将应用程序添加到 Azure Batch](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-add-application)。
-- 配置会在其中运行作业的池。 有关用于使用云服务配置或虚拟机配置创建池的示例脚本，请参阅[使用 Azure CLI 管理 Azure Batch 池](https://docs.microsoft.com/azure/batch/batch-cli-sample-manage-pool)。
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.20 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 
 
-## <a name="sample-script"></a>示例脚本
+## <a name="example-script"></a>示例脚本
 
-[!code-azurecli[main](../../../cli_scripts/batch/run-job/run-job.sh "Run Job")]
+[!code-azurecli-interactive[main](../../../cli_scripts/batch/run-job/run-job.sh "Run Job")]
 
-## <a name="clean-up-job"></a>清除作业
+## <a name="clean-up-deployment"></a>清理部署
 
-运行上述示例脚本后，可运行以下命令以删除作业及其所有任务。 请注意，池将需要单独删除。 有关创建和删除池的详细信息，请参阅[使用 Azure CLI 管理 Azure Batch 池](./batch-cli-sample-manage-pool.md)。
+运行以下命令以删除资源组及其相关的所有资源。
 
-```azurecli
-az batch job delete --job-id myjob
+```azurecli-interactive
+az group delete --name myResourceGroup
 ```
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建批处理作业和任务。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
 | 命令 | 说明 |
 |---|---|
-| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) | 针对批处理帐户进行身份验证。  |
+| [az group create](/cli/azure/group#az_group_create) | 创建用于存储所有资源的资源组。 |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | 创建批处理帐户。 |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | 针对指定的批处理帐户进行身份验证，以便进一步进行 CLI 交互。  |
+| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_create) | 创建计算节点池。  |
 | [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_create) | 创建批处理作业。  |
+| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_create) | 将任务添加到指定的批处理作业。  |
 | [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_set) | 更新批处理作业的属性。  |
 | [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_show) | 检索指定批处理作业的详细信息。  |
-| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_create) | 将任务添加到指定的批处理作业。  |
 | [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_show) | 从指定的批处理作业中检索任务的详细信息。  |
-| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_list) | 列出与指定的作业关联的任务。  |
+| [az group delete](/cli/azure/group#az_group_delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
-
-可以在 [Azure Batch CLI 文档](../batch-cli-samples.md)中找到其他批处理 CLI 脚本示例。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure/overview)。

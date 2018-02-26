@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: ce854a3dc41dec69c3f8de245a03d55a2354335f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb6aca8d99e32948b8a01a2f893bcf40d160a76c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
 本教程是一个系列中的第四部分， 介绍了使用 Application Insights 针对 Service Fabric 群集上运行的 ASP.NET Core 应用程序设置监视和诊断的步骤。 我们会从本教程第一部分（即[构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)）开发的应用程序中收集遥测数据。 
@@ -52,7 +52,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ```
 
 ## <a name="set-up-an-application-insights-resource"></a>设置 Application Insights 资源
-Application Insights 是 Azure 的应用程序性能管理平台，也是 Service Fabric 建议用于应用程序监视和诊断的平台。 若要创建 Application Insights 资源，请导航到 [Azure 门户](https://portal.azure.com)。 单击左侧导航菜单中的“新建”，打开 Azure Marketplace。 单击“监视 + 管理”，然后单击“Application Insights”。
+Application Insights 是 Azure 的应用程序性能管理平台，也是 Service Fabric 建议用于应用程序监视和诊断的平台。 若要创建 Application Insights 资源，请导航到 [Azure 门户](https://portal.azure.com)。 单击左侧导航菜单中的“创建资源”，打开 Azure Marketplace。 单击“监视 + 管理”，然后单击“Application Insights”。
 
 ![创建新的 AI 资源](./media/service-fabric-tutorial-monitoring-aspnet/new-ai-resource.png)
 

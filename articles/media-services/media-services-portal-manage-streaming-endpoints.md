@@ -96,7 +96,7 @@ ms.lasthandoff: 01/08/2018
 
 将在所有 Azure 数据中心启用 CDN 集成，但中国区域和联邦政府区域除外。
 
-启用 CDN 集成后，“访问控制”、“自定义主机名”和“Akamai 签名身份验证”配置将处于禁用状态。
+启用 CDN 集成后，“访问控制”、 ** “自定义主机名”和“Akamai 签名身份验证”配置将处于禁用状态。
  
 > [!IMPORTANT]
 > 标准流式处理终结点可在 **Verizon 提供的 Azure CDN** 上实现 Azure 媒体服务与 Azure CDN 的集成。 可以使用所有 **Azure CDN 定价层和提供程序**配置高级流式处理终结点。 有关 Azure CDN 功能的详细信息，请参阅 [CDN 概述](../cdn/cdn-overview.md)。

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/13/2017
-ms.openlocfilehash: 9a2648d800b803bf0d9d565a806e627c49bb1a00
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 1f25e6daa7378be4463bb0322cd702163dff5c3f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>创建 Azure 机器学习预览帐户并安装 Azure Machine Learning Workbench
 Azure 机器学习服务（预览版）是集成式的端到端数据科学和高级分析解决方案。 它可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -37,7 +37,7 @@ Azure 机器学习服务（预览版）是集成式的端到端数据科学和�
 
 ## <a name="create-azure-machine-learning-accounts"></a>创建 Azure 机器学习帐户
 使用 Azure 门户预配 Azure 机器学习帐户： 
-1. 选择门户左上角的“新建”按钮 (+)。
+1. 选择门户左上角的“创建资源”按钮 (+)。
 
 2. 在搜索栏中输入“机器学习”。 选择名为“机器学习试验(预览版)”的搜索结果。  单击星形图标，将此选择项目加入 Azure 门户中的收藏夹。
 
@@ -55,7 +55,7 @@ Azure 机器学习服务（预览版）是集成式的端到端数据科学和�
    订阅 | 用户的订阅 |选择要用于试验的 Azure 订阅。 如果有多个订阅，请选择要计费的资源所在的相应订阅。
    资源组 | 你的资源组 | 可以创建新的资源组名称，也可以使用订阅中现有的。
    Location | _离用户最近的区域_ | 选择最靠近用户和数据资源的位置。
-   席位数 | #N/A | 输入席位数。 此项选择会影响[定价](https://azure.microsoft.com/pricing/details/machine-learning/)。 前两个席位是免费的。 对于本快速入门，请使用两个席位。 以后可根据需要在 Azure 门户中更新席位数。
+   席位数 | 2 | 输入席位数。 此项选择会影响[定价](https://azure.microsoft.com/pricing/details/machine-learning/)。 前两个席位是免费的。 对于本快速入门，请使用两个席位。 以后可根据需要在 Azure 门户中更新席位数。
    存储帐户 | 唯一的名称 | 选择“新建”，然后提供一个名称，用于创建 Azure 存储帐户。 或者选择“使用现有资源组”，并从下拉列表中选择现有的存储帐户。 存储帐户是必需的，用于保存项目内容和运行历史记录数据。 
    试验帐户的工作区 | 唯一的名称 | 为新工作区提供一个名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。
    分配工作区的所有者 | 你的帐户 | 选择自己的帐户作为工作区所有者。

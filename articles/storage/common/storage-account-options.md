@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: get-started-article
 ms.date: 01/17/2018
 ms.author: jirwin
-ms.openlocfilehash: bdbcdc7d46d5395b28cf9ba7066703ce5da900a5
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: aa8704b9991dde639b50a5b6c9a27ad5cd08ad02
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-storage-account-options"></a>Azure 存储帐户选项
 
@@ -125,7 +125,7 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在“中心”菜单上，选择“新建” > “数据 + 存储” > “存储帐户”。
+2. 在“中心”菜单上，选择“创建资源” > “数据 + 存储” > “存储帐户”。
 
 3. 输入存储帐户的名称。
 
@@ -159,7 +159,7 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 要导航到存储帐户，请先选择“所有资源”，然后选择存储帐户。
+2. 若要导航到存储帐户，请先选择“所有资源”，然后选择存储帐户。
 
 3. 在“设置”部分单击“配置”。
 
@@ -173,7 +173,7 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 要导航到存储帐户，请先选择“所有资源”，然后选择存储帐户。
+2. 若要导航到存储帐户，请先选择“所有资源”，然后选择存储帐户。
 
 3. 在“设置”边栏选项卡中，单击“ **配置** ”以查看和/或更改帐户配置。
 

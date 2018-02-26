@@ -9,15 +9,17 @@ ms.date: 04/27/2017
 ms.topic: sample
 ms.service: functions
 ms.custom: mvc
-ms.openlocfilehash: 39e26ba6c3ae0927fbf6c62af0bd3b48d16657ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 382fbe8919a031ca29a32e708b12070c584ed21f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-github"></a>创建 Function App 并从 GitHub 部署函数代码
 
-此示例脚本使用[消耗计划](../functions-scale.md#consumption-plan)及其相关资源创建 Function App，并从公共 GitHub 存储库部署函数代码（不进行持续部署）。 有关从 GitHub 持续交付函数代码，请阅读[创建 Function App 并从 GitHub 进行持续部署](functions-cli-create-function-app-github-continuous.md)
+此示例脚本使用[消耗计划](../functions-scale.md#consumption-plan)及其相关资源创建 Function App，并从公共 GitHub 存储库部署函数代码（不进行持续部署）。 若要从 GitHub 持续交付函数代码，请阅读[创建函数应用，然后从 GitHub 持续进行部署](functions-cli-create-function-app-github-continuous.md)。
+
+[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

@@ -7,14 +7,14 @@ services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.service: monitoring-and-diagnostics
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 08d63d47a99bdf9480299a74634bc0e9a09e691e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c1a6271d0cb2157cb23f1dd4193eadba2c1679b
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>当指标值满足条件时接收通知
 
@@ -30,11 +30,11 @@ Azure Monitor 使指标可用于许多 Azure 资源。 这些指标传达相关�
 
 ## <a name="create-a-logic-app"></a>创建逻辑应用
 
-1. 单击 Azure 门户左上角的“新建”按钮。
+1. 单击 Azure 门户左上角的“创建资源”按钮。
 
-2. 搜索并选择“逻辑应用”。 创建名为“myResourceGroup”的新资源组。使用默认位置。 单击“创建”  按钮。
+2. 搜索并选择“逻辑应用”。 单击“创建”  按钮。
 
-3. 输入逻辑应用信息，并选中“固定到仪表板”选项。 完成后，单击“创建”。
+3. 输入下图中显示的逻辑应用信息。  使用默认位置。 勾选“固定到仪表板”选项。  完成后，单击“创建”。 
 
     ![在门户中输入有关逻辑应用的基本信息](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
 
@@ -59,7 +59,9 @@ Azure Monitor 使指标可用于许多 Azure 资源。 这些指标传达相关�
 
 11. 将“方法”设置为 POST，并将“Uri”设置为所选的 Web 地址。
 
-12. 单击“保存” 。
+12. 单击“ **保存**”。
+
+13. 可能需要长达 5 分钟的时间才会出现逻辑应用运行操作。  
 
 ## <a name="view-metrics-for-your-logic-app"></a>查看逻辑应用的指标
 
@@ -71,7 +73,7 @@ Azure Monitor 使指标可用于许多 Azure 资源。 这些指标传达相关�
 
 4. 修改图表的“时间范围”，以显示过去一小时的数据。
 
-5. 此时应该可以看到一张图表，上面绘制了逻辑应用在过去一小时启动的运行总数。
+5. 此时应该可以看到一张图表，上面绘制了逻辑应用在过去一小时启动的运行总数。 如果看不到任何操作，请确保在完成上述步骤后，至少已等待 5 分钟， 然后刷新浏览器。 
 
     ![为逻辑应用资源绘制指标图](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
 

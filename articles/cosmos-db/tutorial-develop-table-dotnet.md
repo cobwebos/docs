@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 41d7e42f203170e4fa3b8e3a8c973e23808f941b
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: bb08a60a9ec2db0fa145f75e00be96bc05664e32
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB：在 .NET 中使用表 API 进行开发
 
@@ -55,7 +55,7 @@ Azure Cosmos DB 为有某类需求的应用程序提供[表 API](table-introduct
 - 单个区域内可用性达 99.99%，可添加更多区域以提高可用性，以及获得可通用的[行业领先的综合 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - 使用现有的 Azure 存储 .NET SDK，而不会更改应用程序的任何代码
 
-本教程介绍使用 .NET SDK 的 Azure Cosmos DB 表 API。 可以从 NuGet 下载 [Azure 存储预览版 SDK](https://aka.ms/tableapinuget)。
+本教程介绍使用 .NET SDK 的 Azure Cosmos DB 表 API。 可以从 NuGet 下载 [Azure Cosmos DB 表 API .NET SDK](https://aka.ms/tableapinuget)。
 
 若要详细了解复杂的 Azure 表存储任务，请参阅：
 

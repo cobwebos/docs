@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: negat
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6c796377b90fb3cd697f6d77589e3995b3eac338
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: ea842ecb40e2aff3316ed255388412597bb28eae
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>什么是 Azure 中的虚拟机规模集？
 虚拟机规模集是一种 Azure 计算资源，可用于部署和管理一组相同的 VM。 规模集中的所有 VM 采用相同的配置，支持真正的自动缩放 - 无需对 VM 进行预配。 这样就可以更方便地构建面向大型计算、大型数据、容器化工作负荷的大规模服务。
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/18/2018
 * [Guy Bowerman 介绍虚拟机规模集](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
 ## <a name="creating-and-managing-scale-sets"></a>创建和管理规模集
-可以在 [Azure 门户](https://portal.azure.com)中创建规模集，方法是：选择“新建”，并在搜索栏中键入“规模”。 结果中会列出“虚拟机规模集”。 从这里，可以填写必填字段，自定义和部署规模集。 还可以使用相应的选项根据 CPU 使用率设置基本的自动缩放规则。 若要管理规模集，可以使用 Azure 门户、[Azure PowerShell cmdlet](virtual-machine-scale-sets-windows-manage.md) 或 Azure CLI 2.0。
+可以在 [Azure 门户](https://portal.azure.com)中创建规模集，方法是：选择“创建资源”，然后在搜索栏中键入“规模”。 结果中会列出“虚拟机规模集”。 从这里，可以填写必填字段，自定义和部署规模集。 还可以使用相应的选项根据 CPU 使用率设置基本的自动缩放规则。 若要管理规模集，可以使用 Azure 门户、[Azure PowerShell cmdlet](virtual-machine-scale-sets-windows-manage.md) 或 Azure CLI 2.0。
 
 规模集可以部署到各个[可用性区域](virtual-machine-scale-sets-use-availability-zones.md)中。
 

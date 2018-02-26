@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 9125f3db8929a41f49ff3ae53de9f3a71f5bf051
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 8d6baa6b46290c7a332f5cf780c7f70680fb6a2c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>在 Log Analytics 中分析数据使用情况
 Log Analytics 包括以下信息：收集的数据量、哪些系统发送了数据、所发送数据的不同类型。  可以通过“Log Analytics 使用情况”仪表板查看发送到 Log Analytics 服务的数据量。 该仪表板显示每个解决方案收集的数据量，以及计算机所发送的数据量。
@@ -44,13 +44,17 @@ Log Analytics 包括以下信息：收集的数据量、哪些系统发送了数
 ![使用情况仪表板](./media/log-analytics-usage/usage-dashboard01.png)
 
 ### <a name="to-work-with-usage-data"></a>处理使用情况数据
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
-3. 在 Log Analytics 工作区列表中选择一个工作区。
-4. 从左窗格的列表中选择“Log Analytics 使用情况”。
-5. 在“Log Analytics 使用情况”仪表板中，单击“时间: 过去 24 小时”更改时间间隔。<br><br> ![时间间隔](./media/log-analytics-usage/time.png)<br><br>
-6. 查看“使用情况类别”边栏选项卡以显示感兴趣的区域。 选择一个边栏选项卡，并单击其中的项以在“[日志搜索](log-analytics-log-searches.md)”中查看更多详细信息。<br><br> ![示例数据使用量边栏选项卡](./media/log-analytics-usage/blade.png)<br><br>
-7. 在“日志搜索”仪表板中，查看搜索返回的结果。<br><br> ![日志搜索用法示例](./media/log-analytics-usage/usage-log-search.png)
+1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请使用 Azure 订阅登录。
+2. 单击“所有服务”，然后在资源列表中键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 单击“Log Analytics”。  
+    ![Azure 中心](./media/log-analytics-usage/hub.png)
+3. “Log Analytics”仪表板会显示工作区的列表。 选择工作区。
+4. 在“工作区”仪表板中，单击“Log Analytics 使用情况”。
+5. 在“Log Analytics 使用情况”仪表板中，单击“时间: 过去 24 小时”更改时间间隔。  
+    ![时间间隔](./media/log-analytics-usage/time.png)
+6. 查看“使用情况类别”边栏选项卡以显示感兴趣的区域。 选择一个边栏选项卡，并单击其中的项以在“[日志搜索](log-analytics-log-searches.md)”中查看更多详细信息。  
+    ![示例数据使用量边栏选项卡](./media/log-analytics-usage/blade.png)
+7. 在“日志搜索”仪表板中，查看搜索返回的结果。  
+    ![日志搜索用法示例](./media/log-analytics-usage/usage-log-search.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>当数据收集量高于预期时创建警报
 本部分介绍如何在以下情况下创建警报：

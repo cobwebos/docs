@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4aee1b0ded7a26df802ca2f05d6e93c153fa0476
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 76fcdff6804cd1fa66c846597218d351eb6f4c77
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>将 Service Fabric Windows 群集部署到 Azure 虚拟网络
 本教程是一个系列中的第一部分。 其中介绍了如何使用 PowerShell 和模板，将运行 Windows 的 Service Fabric 群集部署到 [Azure 虚拟网络 (VNET)](../virtual-network/virtual-networks-overview.md) 和[网络安全组](../virtual-network/virtual-networks-nsg.md)。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。  若要使用 Azure CLI 创建 Linux 群集，请参阅[在 Azure 上创建安全的 Linux 群集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/09/2018
 在此系列教程中，你会学习如何：
 > [!div class="checklist"]
 > * 在 Azure 上创建安全群集
-> * [缩小或扩大群集](/service-fabric-tutorial-scale-cluster.md)
+> * [缩小或扩大群集](service-fabric-tutorial-scale-cluster.md)
 > * [升级群集的运行时](service-fabric-tutorial-upgrade-cluster.md)
 > * [部署 API 管理与 Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 02/09/2018
 
 Azure 密钥保管库用于管理 Azure 中 Service Fabric 群集的证书。  在 Azure 中部署群集时，负责创建 Service Fabric 群集的 Azure 资源提供程序将从密钥保管库提取证书，并将其安装在群集 VM 上。
 
-本教程在单个节点类型中部署包含五个节点的群集。 但是，对于任何生产群集部署，[容量规划](service-fabric-cluster-capacity.md)都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
+本教程显示了一个在单个节点类型中包含五个节点的群集。 但是，对于任何生产群集部署，[容量规划](service-fabric-cluster-capacity.md)都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
 
 - 群集所需的节点数目和节点类型 
 - 每个节点类型的属性（例如，大小、主节点、面向 Internet 以及 VM 数量等）

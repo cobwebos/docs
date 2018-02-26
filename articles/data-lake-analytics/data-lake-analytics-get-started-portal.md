@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
-ms.openlocfilehash: 2722a2d72ed90ea0005362563ecaee30750c040a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad5316add4b7806a03e777aee1757841ed866070
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 现在可同时创建 Data Lake Analytics 帐户和 Data Lake Store 帐户。  此步骤很简单，只需大约 60 秒即可完成。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击“新建” >  “数据 + 分析” > “Data Lake Analytics”。
+2. 单击“创建资源” >  “数据 + 分析” > “Data Lake Analytics”。
 3. 为以下项选择值：
    * **名称**：为 Data Lake Analytics 帐户命名（只允许小写字母和数字）。
    * **订阅**：选择用于 Analytics 帐户的 Azure 订阅。
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
    * **位置**。 为 Data Lake Analytics 帐户选择 Azure 数据中心。
    * Data Lake Store：按照说明创建新的 Data Lake Store 帐户，或选择现有帐户。 
 4. （可选）为 Data Lake Analytics 帐户选择定价层。
-5. 单击“创建” 。 
+5. 单击“创建”。 
 
 
 ## <a name="your-first-u-sql-script"></a>第一个 U-SQL 脚本

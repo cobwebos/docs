@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 11/10/2017
 ms.author: heidist
-ms.openlocfilehash: bebfdfdf72014019a49a6da0e512e72932b096ac
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 22eeccfd692cca74bc0cf12c3400d717c103332f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>如何使用 Azure 搜索索引器对 Azure SQL 数据库进行爬网
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 01/09/2018
 > * 搜索索引
 > * 查看门户中的索引器配置
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * 有效的 Azure 帐户。 如果没有，可以注册[免费试用版](https://azure.microsoft.com/free/)。 
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 01/09/2018
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。 
 
-2. 单击“新建” > “SQL 数据库”，创建数据库、服务器和资源组。 可以使用默认设置和最低级别的定价层。 创建服务器的一大优势是可以指定管理员用户名和密码，这是在后面的步骤中创建和加载表所必需的。
+2. 单击“创建资源” > “SQL 数据库”，创建数据库、服务器和资源组。 可以使用默认设置和最低级别的定价层。 创建服务器的一大优势是可以指定管理员用户名和密码，这是在后面的步骤中创建和加载表所必需的。
 
    ![“新建数据库”页](./media/search-indexer-tutorial/indexer-new-sqldb.png)
 

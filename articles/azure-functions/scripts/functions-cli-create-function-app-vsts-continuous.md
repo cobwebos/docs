@@ -9,15 +9,19 @@ ms.date: 01/09/2018
 ms.topic: sample
 ms.service: functions
 ms.custom: mvc
-ms.openlocfilehash: bf9428f23e851bae3485ec3d724dfb9ccd2af4c1
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 789f4e0b325475ddc3ff7aeb6e014f3814ac3458
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="create-a-function-in-azure-that-is-deployed-from-visual-studio-team-services"></a>在 Azure 中创建从 Visual Studio Team Services 部署的函数
+# <a name="create-a-function-app-and-deploy-function-code-from-visual-studio-team-services"></a>创建函数应用，然后从 Visual Studio Team Services 部署函数代码
 
-本主题演示如何使用 Azure Functions 创建使用[消耗计划](../functions-scale.md#consumption-plan)的[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数应用。 从 Visual Studio Team Services (VSTS) 存储库连续部署函数应用（即函数的容器）。 若要完成本主题，必须具备以下条件：
+本主题演示如何使用 Azure Functions 创建使用[消耗计划](../functions-scale.md#consumption-plan)的[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数应用。 从 Visual Studio Team Services (VSTS) 存储库连续部署函数应用（即函数的容器）。 
+
+[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
+
+若要完成本主题，必须具备以下条件：
 
 * 包含函数应用项目的 VSTS 存储库，并且你对其具有管理权限。
 * [个人访问令牌 (PAT)](https://docs.microsoft.com/vsts/accounts/use-personal-access-tokens-to-authenticate)，用于访问 VSTS 存储库。

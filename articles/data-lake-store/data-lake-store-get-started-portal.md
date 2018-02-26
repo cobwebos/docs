@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 38a8792588e013a0105ea57b20b2560f0acf02e6
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: c5b0f5250a08915e987a1eb5229f2c4648e660fd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Azure Data Lake Store 入门（使用 Azure 门户）
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/10/2018
 
 了解如何使用 Azure 门户来创建 Azure Data Lake Store 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关详细信息，请参阅 [Azure Data Lake Store 概述](data-lake-store-overview.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 开始学习本教程之前，必须做好以下准备：
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -38,7 +38,7 @@ ms.lasthandoff: 01/10/2018
 ## <a name="create-an-azure-data-lake-store-account"></a>创建 Azure Data Lake Store 帐户
 
 1. 登录到新的 [Azure 门户](https://portal.azure.com)。
-2. 依次单击“新建”、“数据 + 存储”、“Azure Data Lake Store”。 阅读“Azure Data Lake Store”边栏选项卡中的信息，并单击边栏选项卡左下角的“创建”。
+2. 依次单击“创建资源”、“数据 + 存储”、“Azure Data Lake Store”。 阅读“Azure Data Lake Store”边栏选项卡中的信息，并单击边栏选项卡左下角的“创建”。
 3. 在“新建 Data Lake Store”边栏选项卡中，提供以下屏幕截图中所示的值：
    
     ![创建新的 Azure Data Lake Store 帐户](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "创建新的 Azure Data Lake 帐户")

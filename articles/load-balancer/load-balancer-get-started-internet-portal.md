@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 29c74c2cc58e7cab1364b2fc2c74951440dea0ab
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ff61008710766830640c0de31bf9fd23198946fd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="creating-an-internet-facing-load-balancer-using-the-azure-portal"></a>使用 Azure 门户创建面向 Internet 的负载均衡器
 
 > [!div class="op_single_selector"]
-> * [门户](../load-balancer/load-balancer-get-started-internet-portal.md)
+> * [Portal](../load-balancer/load-balancer-get-started-internet-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [模板](../load-balancer/load-balancer-get-started-internet-arm-template.md)
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/18/2017
 > 本示例假定已有名为 **myVNet** 的虚拟网络。 请参考[创建虚拟网络](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)完成此操作。 本示例还假定 **myVNet** 内有一个名为 **LB-Subnet-BE** 的子网以及两个分别名为 **web1** 和 **web2** 的 VM，这两个 VM 都位于 **myVNet** 中名为 **myAvailSet** 的可用性集中。 请参考[此链接](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)创建 VM。
 
 1. 从浏览器导航到 Azure 门户：[http://portal.azure.com](http://portal.azure.com)，并使用 Azure 帐户登录。
-2. 在屏幕的左上方，选择“新建” > “网络” > “负载均衡器”。
+2. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”。
 3. 在“创建负载均衡器”边栏选项卡中，为负载均衡器键入一个名称。 此例中使用名称 **myLoadBalancer**。
 4. 在“类型”下，选择“公共”。
 5. 在“公共 IP 地址”下，创建名为 **myPublicIP** 的新公共 IP。

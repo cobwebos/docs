@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/01/2017
-ms.openlocfilehash: f427b23ca4b48da79759584bdcc98c1002c054c1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 88fd06d45d0cd966199ce198578eedd349adc2c8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>使用 Azure 门户创建 Azure Database for MySQL 服务器
 Azure Database for MySQL 是一种托管服务，可用于在云中运行、管理和缩放高可用性的 MySQL 数据库。 此快速入门介绍了如何使用 Azure 门户在大约五分钟内创建 Azure Database for MySQL 服务器。  
@@ -29,7 +29,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
 按照以下步骤创建 Azure Database for MySQL 服务器：
 
-1. 选择门户左上角的“新建”按钮 (+)。
+1. 选择门户左上角的“创建资源”按钮 (+)。
 
 2. 选择“数据库” > “Azure Database for MySQL”。 还可以在搜索框中键入“MySQL”以查找该服务。
 
@@ -45,7 +45,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
     服务器管理员登录名 | myadmin | 连接到服务器时需使用的登录帐户。 管理员登录名不能是“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”。
     密码 | *由用户选择* | 为服务器管理员帐户提供新密码。 必须包含 8 到 128 个字符。 密码必须包含以下字符类别中的三类：英文大写字母、英文小写字母、数字 (0-9) 以及非字母数字字符（!、$、#、% 等）。
     确认密码 | *由用户选择*| 确认管理员帐户密码。
-    位置 | *离用户最近的区域*| 选择最靠近用户或其他 Azure 应用程序的位置。
+    Location | *离用户最近的区域*| 选择最靠近用户或其他 Azure 应用程序的位置。
     版本 | 最新版本| 最新版本，有特定要求（即需要其他版本）的除外。
     定价层 | “基本”、“50 个计算单元”、“50 GB” | 选择新数据库的服务层和性能级别。 在顶部的选项卡中选择“基本层”。 选择“计算单位”滑块的左端，将值调整为适用于本快速入门的最小值。 选择“确定”，保存所做的定价层选择。 有关详细信息，请参阅以下屏幕截图。
     固定到仪表板 | 勾选标记 | 单击此标记即可轻松地在 Azure 门户的前端仪表板页上跟踪服务器。

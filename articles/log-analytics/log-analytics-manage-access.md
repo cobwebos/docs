@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 1549408c6885ee556a142ab7de613ebb1629070d
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 5121535768b7fb430486c1c2c623e1a3a488858f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-workspaces"></a>管理工作区
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/13/2017
 ## <a name="determine-the-number-of-workspaces-you-need"></a>确定所需工作区数
 工作区是一种 Azure 资源，也是 Azure 门户中收集、聚合、分析和呈现数据的容器。
 
-一个 Azure 订阅可以有多个工作区，可以访问多个工作区。 由于不可能跨多个工作区进行查询，请尽量减少工作区的数目，这样就可以对最多的数据执行查询和关联操作。 本部分介绍有助于创建多个工作区的情况。
+一个 Azure 订阅可以有多个工作区，可以访问多个工作区。 以前只可以分析来自当前工作区内的数据，这限制了跨多个工作区（在订阅中定义）查询数据的能力。 现在可[跨多个工作区进行查询](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search)，以便在系统范围内查看数据。 本部分介绍有助于创建多个工作区的情况。
 
 工作区目前提供：
 
@@ -62,10 +62,10 @@ ms.lasthandoff: 12/13/2017
 #### <a name="view-workspace-information-in-the-azure-portal"></a>在 Azure 门户中查看工作区信息
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在 Azure 门户的左下角，单击“更多服务”。  在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 单击“Log Analytics”。  
-    ![Azure 中心](./media/log-analytics-manage-access/hub.png)  
-3. 在 Log Analytics 订阅边栏选项卡中选择一个工作区。
-4. 工作区边栏选项卡会显示有关工作区的详细信息，以及其他信息的链接。  
+2. 单击“所有服务”。  在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 单击“Log Analytics”。  
+    ![显示 Azure 左侧菜单的屏幕截图](./media/log-analytics-manage-access/hub.png)  
+3. 在 Log Analytics 订阅页中选择一个工作区。
+4. 工作区页会显示有关工作区的详细信息，以及其他信息的链接。  
     ![工作区详细信息](./media/log-analytics-manage-access/workspace-details.png)  
 
 
@@ -114,7 +114,7 @@ Log Analytics 读者角色的成员可以：
 - 查看和搜索所有监视数据 
 - 查看监视设置，包括查看 Azure 诊断在所有 Azure 资源上的配置。
 
-| 类型    | 权限 | 说明 |
+| Type    | 权限 | 说明 |
 | ------- | ---------- | ----------- |
 | 操作 | `*/read`   | 能够查看所有资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置 |
 | 操作 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 能够执行 Log Search v2 查询 |
@@ -207,7 +207,7 @@ Log Analytics 参与者角色的成员可以：
      >
      >
 4. 选择要添加的用户或组的类型：**管理员**、**参与者**或**只读用户**。  
-5. 单击“添加”。
+5. 单击 **“添加”**。
 
    如果正要添加 Microsoft 帐户，系统会向所提供的电子邮件发送加入工作区的邀请。 用户按照邀请中的说明加入 OMS 后，便可访问此工作区。
    如果正要添加组织帐户，该帐户用户可以立即访问 Log Analytics。  
@@ -270,7 +270,7 @@ Log Analytics 参与者角色的成员可以：
 7. 如果需要，可以更改以下项的值：
    * 订阅
    * 资源组
-   * 位置
+   * Location
    * 定价层  
      ![更改值](./media/log-analytics-manage-access/manage-access-link-azure05.png)
 8. 单击“确定”。 工作区现已链接到 Azure 帐户。

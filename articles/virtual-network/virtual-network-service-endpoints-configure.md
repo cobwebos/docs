@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: e705946dca839e6b8e11872ad5431f125b9fb41d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1e52b89cf8ac1a8ddeaa7e08ebd3734d1affe98e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-virtual-network-service-endpoints"></a>配置虚拟网络服务终结点
 
@@ -62,8 +62,8 @@ ms.lasthandoff: 02/09/2018
 
 1. 打开 [Azure 门户](https://portal.azure.com/)。
 使用 Azure 帐户登录到 Azure。 如果没有 Azure 帐户，可以注册免费试用版。 该帐户必须拥有创建虚拟网络和服务终结点的必要[权限](#provisioning)。
-2. 单击“+新建”>“网络”>“虚拟网络”>“+添加”。
-3. 在“创建虚拟网络”中输入以下值，单击“创建”：
+2. 单击“创建资源” > “网络” > “虚拟网络” > “+添加”。
+3. 在“创建虚拟网络”中输入以下值，然后单击“创建”：
 
 设置 | 值
 ------- | -----

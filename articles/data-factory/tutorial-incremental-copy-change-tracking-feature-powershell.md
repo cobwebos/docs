@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: d2cf578d6328e6e53d1081b9ab4de3ad262390df
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 69a2967be1709c3b3e3bd9fa5854482ecc5e3aba
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/23/2018
 > * 创建、运行和监视增量复制管道
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="overview"></a>概述
 在数据集成解决方案中，一种广泛使用的方案是在完成初始数据加载后以增量方式加载数据。 在某些情况下，可以通过某种方式（例如，使用 LastModifyTime、CreationTime 等属性）将源数据存储中某个时段的更改数据轻松地进行切分。 在某些情况下，没有明确的方式可以将增量数据从上一次处理过的数据中区分出来。 可以使用 Azure SQL 数据库、SQL Server 等数据存储支持的更改跟踪技术来确定增量数据。  本教程介绍如何将 Azure 数据工厂第 2 版与 SQL 更改跟踪技术配合使用，通过增量方式将增量数据从 Azure SQL 数据库加载到 Azure Blob 存储中。  有关 SQL 更改跟踪技术的更具体的信息，请参阅 [SQL Server 中的更改跟踪](/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 
@@ -183,7 +183,7 @@ ms.lasthandoff: 01/23/2018
     Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
     ```
 
-注意以下几点：
+请注意以下几点：
 
 * Azure 数据工厂的名称必须全局唯一。 如果收到以下错误，请更改名称并重试。
 
@@ -445,7 +445,7 @@ Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGr
 ### <a name="monitor-the-full-copy-pipeline"></a>监视完整的复制管道
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击“更多服务”，使用关键字 `data factories` 进行搜索，然后选择“数据工厂”。 
+2. 单击“所有服务”，使用关键字 `data factories` 进行搜索，然后选择“数据工厂”。 
 
     ![数据工厂菜单](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-data-factories-menu-1.png)
 3. 在数据工厂列表中搜索**你的数据工厂**，然后选择它来启动“数据工厂”页。 
@@ -454,7 +454,7 @@ Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGr
 4. 在“数据工厂”页中，单击“监视和管理”磁贴。 
 
     ![“监视和管理”磁贴](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-monitor-manage-tile-3.png)    
-5. **数据集成应用程序**在单独的选项卡中启动。可以看到所有**管道运行**及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 单击“参数”列中的链接即可查看传递至管道的参数。 如果有错误，请查看“错误”列中的链接。 单击“操作”列中的链接。 
+5. **数据集成应用程序**在单独的选项卡中启动。可以看到所有**管道运行**及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 单击“参数”列中的链接即可查看传递至管道的参数。 如果有错误，在“错误”列可以看到链接。 单击“操作”列中的链接。 
 
     ![管道运行](media\tutorial-incremental-copy-change-tracking-feature-powershell\monitor-pipeline-runs-4.png)    
 6. 单击“操作”列中的链接时，可以看到以下页面，其中显示管道的所有**活动运行**。 
