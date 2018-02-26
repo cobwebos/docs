@@ -107,7 +107,7 @@
           href: 'https://docs.loganalytics.io'
         - name: 从旧式语言转换
           href: log-analytics-log-search-transition.md
-        - name: 跨工作区搜索
+        - name: 跨资源搜索
           href: log-analytics-cross-workspace-search.md
         - name: 从搜索结果执行操作
           href: log-analytics-log-search-takeaction.md
