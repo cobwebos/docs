@@ -33,21 +33,23 @@
       href: tutorial-virtual-network.md
     - name: 9 - 备份虚拟机
       href: tutorial-backup-vms.md
-    - name: 10 - 监视和更新 VM
+    - name: 10 - 控制 VM
+      href: tutorial-govern-resources.md
+    - name: 11 - 监视和更新 VM
       href: tutorial-monitoring.md
-    - name: 11 - 管理 VM 安全性
+    - name: 12 - 管理 VM 安全性
       href: tutorial-azure-security.md
-    - name: 12 - 部署 Jenkins
+    - name: 13 - 部署 Jenkins
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 13 - 将 Team Services 与 CI/CD 配合使用
+    - name: 14 - 将 CI/CD 与 Team Services 配合使用
       href: tutorial-build-deploy-jenkins.md
-    - name: 14a - 创建 LAMP 堆栈
+    - name: 15a - 创建 LAMP 堆栈
       href: tutorial-lamp-stack.md
-    - name: 14b - 创建 LEMP 堆栈
+    - name: 15b - 创建 LEMP 堆栈
       href: tutorial-lemp-stack.md
-    - name: 14c - 创建 MEAN 堆栈
+    - name: 15c - 创建 MEAN 堆栈
       href: tutorial-mean-stack.md
-    - name: 15 - 使用 SSL 保护 Web 服务器
+    - name: 16 - 使用 SSL 保护 Web 服务器
       href: tutorial-secure-web-server.md
 - name: 示例
   items:

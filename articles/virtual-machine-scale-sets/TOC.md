@@ -42,7 +42,7 @@
 #### [使用 Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md)
 ### [规模集中的垂直缩放](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 ### [自动 OS 升级](virtual-machine-scale-sets-automatic-upgrade.md)
-### [规模集升级](virtual-machine-scale-sets-upgrade-scale-set.md)
+### [修改规模集](virtual-machine-scale-sets-upgrade-scale-set.md)
 ### [使用 DSC 和规模集](virtual-machine-scale-sets-dsc.md)
 ### [规模集网络](virtual-machine-scale-sets-networking.md)
 ### [将模板转换为托管磁盘](virtual-machine-scale-sets-convert-template-to-md.md)
