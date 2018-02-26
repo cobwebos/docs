@@ -197,7 +197,7 @@
           items:
             - name: VMware 到 Azure 方案的源环境
               href: site-recovery-set-up-vmware-to-azure.md
-            - name: 为 VMware 和物理服务器部署配置服务器
+            - name: 为 VMware 灾难恢复部署配置服务器
               href: how-to-deploy-configuration-server.md
             - name: 物理机到 Azure 方案的源环境
               href: site-recovery-set-up-physical-to-azure.md
@@ -267,8 +267,10 @@
       items:
         - name: 在 Azure 中管理进程服务器
           href: site-recovery-vmware-setup-azure-ps-resource-manager.md
-        - name: 管理配置服务器
+        - name: 为 VMware 灾难恢复管理配置服务器
           href: site-recovery-vmware-to-azure-manage-configuration-server.md
+        - name: 为物理计算机灾难恢复管理配置服务器
+          href: physical-manage-configuration-server.md
         - name: 管理 vCenter 服务器
           href: site-recovery-vmware-to-azure-manage-vCenter.md
         - name: 使用 CSP 管理多租户

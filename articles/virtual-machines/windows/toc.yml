@@ -33,15 +33,17 @@
       href: tutorial-virtual-network.md
     - name: 9 - 备份虚拟机
       href: tutorial-backup-vms.md
-    - name: 10 - 监视和更新 VM
+    - name: 10 - 控制 VM
+      href: tutorial-govern-resources.md
+    - name: 11 - 监视和更新 VM
       href: tutorial-monitoring.md
-    - name: 11 - 管理 VM 安全性
+    - name: 12 - 管理 VM 安全性
       href: tutorial-azure-security.md
-    - name: 12 - 团队服务 CI/CD
+    - name: 13 - Team Services CI/CD
       href: tutorial-vsts-iis-cicd.md
-    - name: 13 - 安装 SQL\IIS\.NET 堆栈
+    - name: 14 - 安装 SQL\IIS\.NET 堆栈
       href: tutorial-iis-sql.md
-    - name: 14 - 使用 SSL 保护 Web 服务器
+    - name: 15 - 使用 SSL 保护 Web 服务器
       href: tutorial-secure-web-server.md
 - name: 示例
   items:
@@ -424,7 +426,7 @@
           href: troubleshoot-vm-by-use-nested-virtualization.md
         - name: 在脱机模式下安装 VM 代理
           href: install-vm-agent-offline.md
-- name: 参考
+- name: 引用
   items:
     - name: Azure CLI
       href: /cli/azure/vm

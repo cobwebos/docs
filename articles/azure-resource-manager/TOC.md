@@ -3,6 +3,7 @@
 ## [资源提供程序和类型](resource-manager-supported-services.md)
 ## [Resource Manager 部署和经典部署](resource-manager-deployment-model.md)
 ## [订阅监管](resource-manager-subscription-governance.md)
+## [使用管理组组织资源](management-groups-overview.md)
 
 # 入门
 ## [创建和部署模板](resource-manager-create-first-template.md)
@@ -45,7 +46,8 @@
 ### [REST API](resource-manager-rest-api.md)
 ### [使用标记来组织资源](resource-group-using-tags.md)
 ### [将资源移到新组或订阅](resource-group-move-resources.md)
-### [使用管理组组织订阅](../billing/billing-enterprise-mgmt-group-overview.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [创建管理组](management-groups-create.md)
+### [管理你的管理组](management-groups-manage.md)
 ### [监管示例](resource-manager-subscription-examples.md)
 ### [托管应用程序](../managed-applications/overview.md)
 

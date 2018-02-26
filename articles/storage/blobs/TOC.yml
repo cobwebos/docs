@@ -44,9 +44,9 @@
           href: storage-monitor-troubleshoot-storage-application.md
     - name: 云存储中针对高可用性的设计
       items:
-        - name: 使你的应用程序具有高可用性
+        - name: 1 - 使应用程序具有高可用性
           href: storage-create-geo-redundant-storage.md
-        - name: 模拟 RA-GRS 存储故障
+        - name: 2 - 模拟 RA-GRS 存储故障
           href: storage-simulate-failure-ragrs-account-app.md
     - name: 使用 AzCopy 将本地数据迁移到云
       href: ../common/storage-use-azcopy-migrate-on-premises-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -54,13 +54,13 @@
       href: storage-unstructured-search.md
     - name: 优化存储应用程序性能和可伸缩性
       items:
-        - name: 创建 VM 和存储帐户
+        - name: 1 - 创建 VM 和存储帐户
           href: storage-blob-scalable-app-create-vm.md
-        - name: 将大型数据上传到 Azure 存储帐户
+        - name: 2 - 将大型数据上传到 Azure 存储帐户
           href: storage-blob-scalable-app-upload-files.md
-        - name: 从 Azure 存储帐户下载大型数据
+        - name: 3 - 从 Azure 存储帐户下载大型数据
           href: storage-blob-scalable-app-download-files.md
-        - name: 验证吞吐量和延迟指标
+        - name: 4 - 验证吞吐量和延迟指标
           href: storage-blob-scalable-app-verify-metrics.md
 - name: 示例
   items:

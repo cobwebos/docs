@@ -62,6 +62,7 @@
 ### [事件排序注意事项](stream-analytics-out-of-order-and-late-events.md)
 ### [事件中心读取器限制](stream-analytics-event-hub-consumer-groups.md)
 ### [诊断日志](stream-analytics-job-diagnostic-logs.md)
+### [获取格式不正确的事件](stream-analytics-malformed-events.md)
 
 ## 自动化
 ### [使用 Management .NET SDK](stream-analytics-dotnet-management-sdk.md)

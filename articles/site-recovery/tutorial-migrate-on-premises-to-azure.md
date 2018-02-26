@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/07/2018
+ms.date: 02/18/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ee9397406cbca21d8bd53019d9daac5a037f508c
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 406f0890da1ef4123b16082e7371d67f6328ea2c
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 01/18/2018
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
 1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务**。
-2. 单击“新建” > “监视和管理” > “备份和 Site Recovery”。
+2. 单击“创建资源” > “监视和管理” > “备份和站点恢复”。
 3. 在“名称”中，指定友好名称 **ContosoVMVault**。 如果有多个订阅，请选择合适的一个。
 4. 创建资源组 **ContosoRG**。
 5. 指定 Azure 区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
@@ -72,7 +72,7 @@ ms.lasthandoff: 01/18/2018
 
 - [设置](tutorial-vmware-to-azure.md#set-up-the-source-environment) VMware VM 的源环境。
 - [设置](tutorial-physical-to-azure.md#set-up-the-source-environment)物理服务器的源环境。
-- [设置](tutorial-hyper-v-to-azure.md#set-up-the-source-environment) Hyper-V VM 的源环境。
+- [设置](hyper-v-azure-tutorial.md#set-up-the-source-environment) Hyper-V VM 的源环境。
 
 ## <a name="set-up-the-target-environment"></a>设置目标环境
 
@@ -86,19 +86,19 @@ ms.lasthandoff: 01/18/2018
 
 - 为 VMware VM [设置复制策略](tutorial-vmware-to-azure.md#create-a-replication-policy)。
 - 为物理服务器[设置复制策略](tutorial-physical-to-azure.md#create-a-replication-policy)。
-- 为 Hyper-V VM [设置复制策略](tutorial-hyper-v-to-azure.md#set-up-a-replication-policy)。
+- 为 Hyper-V VM [设置复制策略](hyper-v-azure-tutorial.md#set-up-a-replication-policy)。
 
 
 ## <a name="enable-replication"></a>启用复制
 
 - 为 VMware VM [启用复制](tutorial-vmware-to-azure.md#enable-replication)。
 - 为物理服务器[启用复制](tutorial-physical-to-azure.md#enable-replication)。
-- 为 Hyper-V VM [启用复制](tutorial-hyper-v-to-azure.md#enable-replication)。
+- 为 Hyper-V VM [启用复制](hyper-v-azure-tutorial.md#enable-replication)。
 
 
 ## <a name="run-a-test-migration"></a>运行测试迁移
 
-运行[测试故障转移](tutorial-dr-drill-azure.md)，确保一切如预期正常运行。
+运行[“测试故障转移”](tutorial-dr-drill-azure.md)，确保一切如预期正常运行。
 
 
 ## <a name="migrate-to-azure"></a>迁移到 Azure

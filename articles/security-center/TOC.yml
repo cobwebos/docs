@@ -48,61 +48,62 @@
           href: security-center-customize-os-security-config.md
         - name: 使用 Azure 策略的安全策略
           href: security-center-azure-policy.md
-    - name: 监视安全运行状况
-      href: security-center-monitoring.md
-    - name: 标识和访问
-      href: security-center-identity-access.md
     - name: 实施安全建议
       href: security-center-recommendations.md
-    - name: 计算安全
-      href: security-center-virtual-machine-recommendations.md
+    - name: 监视安全运行状况
+      href: security-center-monitoring.md
       items:
-        - name: 应用磁盘加密
-          href: security-center-apply-disk-encryption.md
-        - name: 应用系统更新
-          href: security-center-apply-system-updates.md
-        - name: 为存储帐户启用加密
-          href: security-center-enable-encryption-for-storage-account.md
-        - name: 启用 VM 代理
-          href: security-center-enable-vm-agent.md
-        - name: 安装终结点保护
-          href: security-center-install-endpoint-protection.md
-        - name: 在系统更新后重启
-          href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
-        - name: 修正安全配置
-          href: security-center-remediate-os-vulnerabilities.md
-        - name: 更新 OS 版本
-          href: security-center-update-os-version.md
-        - name: 未安装漏洞评估
-          href: security-center-vulnerability-assessment-recommendations.md
-    - name: 网络安全
-      href: security-center-network-recommendations.md
-      items:
-        - name: 添加下一代防火墙
-          href: security-center-add-next-generation-firewall.md
-        - name: 启用网络安全组
-          href: security-center-enable-network-security-groups.md
-        - name: 通过面向 Internet 的终结点限制访问
-          href: security-center-restrict-access-through-internet-facing-endpoints.md
-        - name: 仅通过 NGFW 路由流量
-          href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
-    - name: 存储和数据安全
-      href: security-center-sql-service-recommendations.md
-      items:
-        - name: 在 SQL 数据库上启用审核与威胁检测
-          href: security-center-enable-auditing-on-sql-databases.md
-        - name: 在 SQL 服务器上启用审核与威胁检测
-          href: security-center-enable-auditing-on-sql-servers.md
-        - name: 启用透明数据加密
-          href: security-center-enable-transparent-data-encryption.md
-    - name: 应用程序安全性
-      href: security-center-application-recommendations.md
-      items:
-        - name: 添加 Web 应用程序防火墙
-          href: security-center-add-web-application-firewall.md
-        - name: 完成应用程序保护
-          href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
-    - name: 云防御措施
+        - name: 计算安全
+          href: security-center-virtual-machine-recommendations.md
+          items:
+            - name: 应用磁盘加密
+              href: security-center-apply-disk-encryption.md
+            - name: 应用系统更新
+              href: security-center-apply-system-updates.md
+            - name: 为存储帐户启用加密
+              href: security-center-enable-encryption-for-storage-account.md
+            - name: 启用 VM 代理
+              href: security-center-enable-vm-agent.md
+            - name: 安装终结点保护
+              href: security-center-install-endpoint-protection.md
+            - name: 在系统更新后重启
+              href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
+            - name: 修正安全配置
+              href: security-center-remediate-os-vulnerabilities.md
+            - name: 更新 OS 版本
+              href: security-center-update-os-version.md
+            - name: 未安装漏洞评估
+              href: security-center-vulnerability-assessment-recommendations.md
+        - name: 网络安全
+          href: security-center-network-recommendations.md
+          items:
+            - name: 添加下一代防火墙
+              href: security-center-add-next-generation-firewall.md
+            - name: 启用网络安全组
+              href: security-center-enable-network-security-groups.md
+            - name: 通过面向 Internet 的终结点限制访问
+              href: security-center-restrict-access-through-internet-facing-endpoints.md
+            - name: 仅通过 NGFW 路由流量
+              href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
+        - name: 存储和数据安全
+          href: security-center-sql-service-recommendations.md
+          items:
+            - name: 在 SQL 数据库上启用审核与威胁检测
+              href: security-center-enable-auditing-on-sql-databases.md
+            - name: 在 SQL 服务器上启用审核与威胁检测
+              href: security-center-enable-auditing-on-sql-servers.md
+            - name: 启用透明数据加密
+              href: security-center-enable-transparent-data-encryption.md
+        - name: 应用程序安全性
+          href: security-center-application-recommendations.md
+          items:
+            - name: 添加 Web 应用程序防火墙
+              href: security-center-add-web-application-firewall.md
+            - name: 完成应用程序保护
+              href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
+        - name: 标识和访问
+          href: security-center-identity-access.md
+    - name: 应用云防御措施
       items:
         - name: 实时访问
           href: security-center-just-in-time.md
@@ -136,7 +137,7 @@
           href: security-center-threat-intel.md
         - name: 调查
           href: security-center-investigation.md
-    - name: 自动化和协调
+    - name: 自动执行安全工作流
       items:
         - name: 逻辑应用演练手册
           href: security-center-playbooks.md

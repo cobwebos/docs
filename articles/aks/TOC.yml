@@ -55,6 +55,8 @@
       items:
         - name: 静态 IP 地址
           href: static-ip.md
+        - name: 入口和 TLS
+          href: ingress.md
     - name: 安全性和身份验证
       items:
         - name: 创建服务主体
