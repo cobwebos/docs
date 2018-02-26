@@ -87,28 +87,28 @@
           href: site-recovery-migrate-to-azure.md
     - name: 基于角色的访问权限
       href: site-recovery-role-based-linked-access-control.md
+    - name: 将 Azure 流量管理器与 Azure Site Recovery 配合使用
+      href: concepts-traffic-manager-with-site-recovery.md
     - name: 常见问题
       href: site-recovery-faq.md
 - name: 操作方法指南
   items:
     - name: 网络
       items:
-        - name: 设置网络以进行 Azure VM 灾难恢复（预览版）
+        - name: 管理网络以进行 Azure VM 灾难恢复（预览版）
           href: azure-to-azure-about-networking.md
-        - name: 设置网络映射以进行 Azure VM 灾难恢复（预览版）
+        - name: 准备用于 Azure VM 灾难恢复的网络映射
           href: azure-to-azure-network-mapping.md
-        - name: 设置 VMM 中的 HYPER-V VM 网络映射复制
-          href: hyper-v-vmm-network-mapping.md
-        - name: 保留 IP 以用于 Azure VM 灾难恢复（预览版）
+        - name: 设置在 Azure VM 故障转移后要使用的 IP 地址
           href: site-recovery-retain-ip-azure-vm-failover.md
-        - name: 准备网络映射以将 Hyper-V VM 复制到 Azure
-          href: site-recovery-network-mapping.md
-        - name: 设置在故障转移后用于访问 Azure 的 IP 地址
-          href: concepts-on-premises-to-azure-networking.md
-        - name: 设置在故障转移后用于访问辅助站点的 IP 地址
-          href: hyper-v-vmm-networking.md
-        - name: 本地到 Azure 方案的网络接口管理
+        - name: 管理用于本地到 Azure 的灾难恢复的网络接口
           href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
+        - name: 准备用于 Hyper-V VM 灾难恢复的网络映射
+          href: hyper-v-vmm-network-mapping.md
+        - name: 设置在故障转移到 Azure 后要使用的 IP 地址
+          href: concepts-on-premises-to-azure-networking.md
+        - name: 设置在故障转移到辅助站点后要使用的 IP 地址
+          href: hyper-v-vmm-networking.md
     - name: 灾难恢复
       items:
         - name: 迁移到 Azure 之后的 Azure VM 灾难恢复
