@@ -16,11 +16,11 @@ ms.topic: hero-article
 ms.date: 01/05/2018
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50f908a166cb56d5654778ebb1f57ab956bf34a1
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: b91da3e3c99cec3a63d747062d4ae9f62720a872
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>将 Azure 虚拟机备份到恢复服务保管库
 
@@ -50,9 +50,9 @@ ms.lasthandoff: 01/22/2018
 执行以下步骤，在 Azure 门户的虚拟机管理边栏选项卡中配置备份作业。 以下步骤仅适用于 Azure 门户中的虚拟机。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在“中心”菜单上，单击“更多服务”，并在“筛选器”对话框中键入“虚拟机”。 键入时，系统将筛选出资源列表。 看到虚拟机时，请选择它。
+2. 在“中心”菜单上单击“所有服务”，然后在“筛选器”对话框中键入“虚拟机”。 键入时，系统将筛选出资源列表。 看到虚拟机时，请选择它。
 
-  ![在“中心”菜单上，单击“更多服务”以打开文本对话框，并键入虚拟机](./media/backup-azure-vms-first-look-arm/open-vm-from-hub.png)
+  ![演示如何从“所有服务”导航到虚拟机的屏幕截图](./media/backup-azure-vms-first-look-arm/open-vm-from-hub.png)
 
   将显示订阅中的虚拟机 (VM) 列表。
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 01/22/2018
 若要创建恢复服务保管库，请执行以下操作：
 
 1. 如果尚未登录 [Azure 门户](https://portal.azure.com/)，请使用 Azure 订阅登录。
-2. 在“中心”菜单上，单击“更多服务”，并在“筛选器”对话框中键入“恢复服务”。 键入时，系统将筛选出资源列表。 在列表中看见“恢复服务保管库”时，请单击它。
+2. 在“中心”菜单上单击“所有服务”，然后在“筛选器”对话框中键入“恢复服务”。 键入时，系统将筛选出资源列表。 在列表中看见“恢复服务保管库”时，请单击它。
 
     ![创建恢复服务保管库步骤 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
@@ -202,7 +202,7 @@ ms.lasthandoff: 01/22/2018
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>选择备份目标、设置策略并定义要保护的项
 在向保管库注册 VM 前，请先执行发现过程，以确保能够识别任何添加到订阅中的新虚拟机。 该过程会在 Azure 上查询订阅中的虚拟机列表和其他信息，例如云服务名称、区域等。 在 Azure 门户中，方案是指要放入恢复服务保管库中的项。 策略是有关恢复点创建频率和时间的计划。 策略还包含恢复点的保留范围。
 
-1. 如果已打开恢复服务保管库，请转到步骤 2。 否则，请在“中心”菜单上单击“更多服务”，在资源列表中键入“恢复服务”并单击“恢复服务保管库”。
+1. 如果已打开恢复服务保管库，请转到步骤 2。 否则，请单击“所有服务”。 键入“恢复服务”，然后单击“恢复服务保管库”。
 
     ![创建恢复服务保管库步骤 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 

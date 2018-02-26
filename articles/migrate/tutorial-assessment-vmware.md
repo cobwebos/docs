@@ -4,14 +4,14 @@ description: "介绍如何发现和评估要使用 Azure Migrate 迁移到 Azure
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 01/08/2018
+ms.date: 06/02/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bbcfe95f5427681f8d55d647b102d35fc37f15ee
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 0c82eeaeb17fb670b6d277d1b703b44b84343877
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>发现和评估要迁移到 Azure 的本地 VMware VM
 
@@ -74,6 +74,14 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. 生成的哈希应匹配这些设置。
     
+    适用于 OVA 版本 1.0.8.59
+
+    **算法** | **哈希值**
+    --- | ---
+    MD5 | 71139e24a532ca67669260b3062c3dad
+    SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
+    SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
+
     适用于 OVA 版本 1.0.8.49
     **算法** | **哈希值**
     --- | ---
@@ -118,7 +126,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     > [!NOTE]
     > 需以 http://ProxyIPAddress 或 http://ProxyFQDN 的形式输入代理地址。 仅支持 HTTP 代理。
 
-    - 收集器检查 collectorservice 是否正在运行。 该服务默认安装在收集器 VM 上。
+    - 收集器将检查 collectorservice 是否正在运行。 该服务默认安装在收集器 VM 上。
     - 下载并安装 VMware PowerCLI。
 
 5. 在“指定 vCenter Server 详细信息”中，执行以下操作：
@@ -153,19 +161,27 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 6. 创建评估后，在“概述” > “仪表板”中查看该评估。
 7. 单击“导出评估”，将评估下载为 Excel 文件。
 
-### <a name="sample-assessment"></a>示例评估
+### <a name="assessment-details"></a>评估详细信息
 
-下面是一份示例评估报告。 其中包括有关 VM 是否与 Azure 兼容，以及每月估算费用的信息。 
+评估包括以下信息：本地 VM 是否兼容 Azure、适合在 Azure 中运行 VM 的 VM 大小，以及估算的每月 Azure 成本。 
 
 ![评估报告](./media/tutorial-assessment-vmware/assessment-report.png)
 
 #### <a name="azure-readiness"></a>Azure 迁移就绪性
 
-此视图显示每台计算机的就绪状态。
+评估中的 Azure 就绪性视图显示每个 VM 的就绪状态。 可以根据 VM 的属性将每个 VM 标记为：
+- 已做好 Azure 迁移准备
+- 已做好特定条件下的 Azure 迁移准备
+- 尚未做好 Azure 迁移准备
+- 就绪性未知 
 
-- 对于准备就绪的 VM，Azure Migrate 会推荐一个适合 Azure 的 VM 大小。
-- 对于未准备就绪的 VM，Azure Migrate 会解释原因，并提供补救步骤。
-- Azure Migrate 会推荐可用于迁移的工具。 如果计算机适合直接迁移，则建议使用 Azure Site Recovery 服务。 对于数据库计算机，建议使用 Azure 数据库迁移服务。
+对于准备就绪的 VM，Azure Migrate 会推荐一个适合 Azure 的 VM 大小。 Azure Migrate 提供的大小建议取决于在评估属性中指定的大小调整条件。 如果大小调整条件是基于性能的大小调整，则在提供大小建议时，会考虑 VM 的性能历史记录。 如果大小调整条件是“作为本地 VM”进行大小调整，则在提供建议时，会查看本地 VM 的大小（按原样进行大小调整）。 在这种情况下，不考虑利用率数据。 [详细了解](concepts-assessment-calculation.md)如何在 Azure Migrate 中进行大小调整。 
+
+如果 VM 尚未做好 Azure 迁移或特定条件下的 Azure 迁移的准备，Azure Migrate 会对就绪性问题进行说明，并提供修正步骤。 
+
+对于 Azure Migrate 因数据不可用而无法确定其 Azure 就绪性的 VM，系统会将其标记为“就绪性未知”。
+
+除了 Azure 就绪性和大小调整，Azure Migrate 还会建议适用于 VM 迁移的工具。 如果计算机适合直接迁移，则建议使用 [Azure Site Recovery] 服务。 对于数据库计算机，建议使用 Azure 数据库迁移服务。
 
   ![评估就绪](./media/tutorial-assessment-vmware/assessment-suitability.png)  
 
@@ -180,10 +196,31 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 ![评估 VM 费用](./media/tutorial-assessment-vmware/assessment-vm-cost.png) 
 
-可以深入查看特定计算机的详细信息。
+#### <a name="confidence-rating"></a>置信度分级
 
-![评估 VM 费用](./media/tutorial-assessment-vmware/assessment-vm-drill.png) 
+在 Azure Migrate 中进行的每次评估都会与置信度分级相关联。置信度分为 1 星到 5 星，1 星表示置信度最低，5 星表示置信度最高。 为评估分配置信度时，会考虑到进行评估计算时所需数据点的可用性。 它可以用来评估 Azure Migrate 提供的大小建议的可靠性。 
 
+进行基于性能的大小调整时，置信度分级很有用，因为并非所有数据点都可用。 如果是作为本地 VM 进行大小调整，则置信度分级始终为 5 星，因为 Azure Migrate 有进行 VM 大小调整所需的所有数据。 
+
+对于基于性能的大小调整，Azure Migrate 需要 CPU 和内存的利用率数据。 对于每个附加到 VM 的磁盘，它需要进行基于性能的大小调整所需的读/写 IOPS 和吞吐量。 同样，对于每个附加到 VM 的网络适配器，Azure Migrate 需要进行基于性能的大小调整所需的网络流入/流出量。 如果上述利用率数据在 vCenter Server 中均不可用，则 Azure Migrate 提供的大小建议可能不可靠。 提供评估的置信度分级时，会考虑到可用数据点的百分比：
+
+   **数据点的可用性** | **置信度分级**
+   --- | ---
+   0%-20% | 1 星
+   21%-40% | 2 星
+   41%-60% | 3 星
+   61%-80% | 4 星
+   81%-100% | 5 星
+
+由于以下某个原因，评估时并非所有数据点都可用：
+- vCenter Server 中的统计设置未设置为级别 3，但评估却将基于性能的大小调整作为大小调整条件。 如果 vCenter Server 中的统计设置低于级别 3，则不会从 vCenter Server 收集磁盘和网络的性能数据。 在这种情况下，Azure Migrate 针对磁盘和网络提供的建议是只考虑在本地分配的内容。 至于存储，Azure Migrate 建议使用标准磁盘，因为无法确定磁盘的 IOPS/吞吐量是否高到需要高级磁盘的程度。
+- 在启动发现之前，vCenter Server 中的统计设置已短时间设置为级别 3。 例如，如果在今天将统计设置级别更改为 3，并在明天（24 小时后）使用收集器设备启动发现，则如果是创建一天的评估，你就有了所有数据点。 但是，如果在评估属性中将性能时段更改为一个月，则置信度分级会下降，因为最后一个月的磁盘和网络性能数据不可用。 若要考虑最后一个月的性能数据，建议将 vCenter Server 统计设置保留为级别 3 一个月，然后再启动发现。 
+- 一些 VM 在进行评估计算期间关闭。 如果某些 VM 停机了一段时间，则 vCenter Server 不会有该时段的性能数据。 
+- 在进行评估计算期间创建了一些 VM。 例如，如果要针对最后一个月的性能历史记录创建评估，但仅仅在一周前，在环境中创建了一些 VM， 则在这种情况下，新建 VM 的性能历史记录并非在整个期间都有。
+
+> [!NOTE]
+> 如果任何评估的置信度分级低于 3 星，建议将 vCenter Server 统计设置级别更改为 3，等待要考虑进行评估的期间（1 天/1 周/1 月），然后进行发现和评估。 如果前述操作无法完成，则基于性能的大小调整可能不可靠，建议通过更改评估属性切换到“作为本地 VM 进行大小调整”。
+ 
 ## <a name="next-steps"></a>后续步骤
 
 - [了解](how-to-scale-assessment.md)如何发现和评估大型 VMware 环境。

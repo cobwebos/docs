@@ -12,11 +12,11 @@ ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.technology: database-engine
-ms.openlocfilehash: 8d714718e4fc27f0abbfede8fe6d0e2693698ec1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4105e0b4038f5dc09c503ac90ba7ad67c2fd93b8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>在 Azure 门户中预配 Linux SQL Server 虚拟机
 
@@ -35,15 +35,15 @@ ms.lasthandoff: 12/18/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free)。
 
 ## <a id="create"></a> 创建安装了 SQL Server 的 Linux VM
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 在左窗格中，单击“新建”。
+1. 在左窗格中单击“创建资源”。
 
-1. 在“新建”窗格中，单击“计算”。
+1. 在“创建资源”窗格中单击“计算”。
 
 1. 单击“特色”标题旁边的“全部查看”。
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 12/18/2017
    > [!TIP]
    > Developer 版允许你使用 Enterprise 版的功能进行测试或开发，但没有 SQL Server 许可费用。 只需支付运行 Linux VM 的费用。
 
-1. 单击“创建” 。
+1. 单击“创建”。
 
 1. 在“基本信息”窗口中，填写 Linux VM 的详细信息。 
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 12/18/2017
     > [!Note]
     > 可以选择使用“SSH 公钥”或“密码”进行身份验证。 SSH 更安全。 有关如何生成 SSH 密钥的说明，请参阅[在 Linux 和 Mac 上为 Azure 中的 Linux VM 创建 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
 
-1. 单击 **“确定”**。
+1. 单击“确定”。
 
 1. 在“大小”窗口中，选择计算机大小。 若要查看其他大小，请选择“全部查看”。 有关 VM 计算机大小的详细信息，请参阅 [Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)。
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 12/18/2017
 
 1. 在“设置”窗口中，可以对设置进行更改，也可以保留默认设置。
 
-1. 单击 **“确定”**。
+1. 单击“确定”。
 
 1. 在“摘要”页中，单击“购买”以创建 VM。
 

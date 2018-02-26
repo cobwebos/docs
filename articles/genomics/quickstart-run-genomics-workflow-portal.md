@@ -10,11 +10,11 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 71f5e4d1288a361c4b52ff45fb4c6601fa39a757
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: ed2048755317649d160bcfd71519af715067b99b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>快速入门：通过 Microsoft 基因组学服务运行工作流
 
@@ -84,7 +84,7 @@ pip install msgen
 
 
 ### <a name="test-the-microsoft-genomics-client"></a>测试 Microsoft 基因组学客户端
-若要测试 Microsoft 基因组学客户端，请从基因组学帐户下载配置文件。 可以单击左下角的“更多服务”，进行筛选，然后针对基因组学帐户进行选择，以便导航到你的基因组学帐户。
+若要测试 Microsoft 基因组学客户端，请从基因组学帐户下载配置文件。 可以单击左上角的“所有服务”，进行筛选，然后针对基因组学帐户进行选择，以便导航到你的基因组学帐户。
 
 
 ![Azure 门户中的 Microsoft 基因组学筛选器](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Azure 门户中的 Microsoft 基因组学筛选器")

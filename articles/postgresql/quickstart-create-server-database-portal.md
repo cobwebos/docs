@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/03/2017
-ms.openlocfilehash: b78009a4b2683bb7ee881808ddbbc792d66dea6c
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: de35254183798dd0aea32b63eb0689d33ae5b247
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>在 Azure 门户中创建用于 PostgreSQL 的 Azure 数据库服务器
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/06/2017
 创建的 Azure Database for PostgreSQL 服务器中包含一组已定义的[计算和存储](./concepts-compute-unit-and-storage.md)资源。 将在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建服务器。
 
 若要创建用于 PostgreSQL 的 Azure 数据库服务器，请执行以下步骤：
-1. 选择门户左上角的“新建”按钮 (+)。
+1. 选择门户左上角的“创建资源”按钮 (+)。
 
 2. 选择“数据库” > “用于 PostgreSQL 的 Azure 数据库”。
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/06/2017
     资源组|myresourcegroup| 新的资源组名称，或订阅中的现有资源组。
     服务器管理员登录名 |mylogin| 连接到服务器时使用的自己的登录帐户。 管理员登录名不能是 **azure_superuser**、**azure_pg_admin**、**admin**、**administrator**、**root**、**guest** 或 **public**， 不能以 **pg_** 开头。
     密码 |由用户选择 | 服务器管理员帐户的新密码。 必须包含 8 到 128 个字符。 密码必须含以下字符类别中的三类：英文大写字母、英文小写字母、数字（0 到 9）及非字母数字字符（!、$、#、% 等）。
-    位置|离用户最近的区域| 最靠近用户的位置。
+    Location|离用户最近的区域| 最靠近用户的位置。
     PostgreSQL 版本|最新版本| 除非有特定的要求，否则请选择最新版本。
     定价层 | “基本”、“50 个计算单元”、“50 GB” | 新数据库的服务层和性能级别。 选择“定价层”。 接下来，选择“基本”选项卡。然后选择“计算单位”滑块的左端，将值调整为适用于本快速入门的最小值。 若要保存所做的定价层选择，请选择“确定”。 有关详细信息，请参阅以下屏幕截图。 
     固定到仪表板 | 勾选标记 | 可以轻松地在门户的前端仪表板页上跟踪服务器。

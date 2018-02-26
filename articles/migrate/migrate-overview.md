@@ -7,18 +7,15 @@ ms.topic: overview
 ms.date: 01/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 3269b865c4ef3c11a674d7b755faab2bbf5970e3
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: a9e04c7fa2a32ab7be8844b962f4bccdf260af23
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
-Azure Migrate 服务会评估要迁移到 Azure 的本地工作负荷。 该服务会评估是否适合迁移以及需要根据性能进行哪些大小调整，并提供在 Azure 上运行本地计算机的成本估算。 如果打算进行直接迁移，或者处于迁移的早期评估阶段，则不妨选择此服务。 进行评估以后，即可使用 Azure Site Recovery 和 Azure 数据库迁移之类的服务将计算机迁移到 Azure。
-
-> [!NOTE]
-> Azure Migrate 目前为预览版，支持生产工作负荷。
+Azure Migrate 服务会评估要迁移到 Azure 的本地工作负荷。 该服务会评估是否适合从本地计算机迁移到 Azure，以及需要根据性能进行哪些大小调整，并提供在 Azure 中运行本地计算机的成本估算。 如果打算进行直接迁移，或者处于迁移的早期评估阶段，则不妨选择此服务。 进行评估以后，即可使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 和 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)之类的服务将计算机迁移到 Azure。
 
 ## <a name="why-use-azure-migrate"></a>为何使用 Azure Migrate？
 
@@ -27,18 +24,17 @@ Azure Migrate 有助于：
 - **评估 Azure 迁移就绪性**：评估本地计算机是否适合在 Azure 中运行。 
 - **获取大小建议**：获取 Azure VM 的大小建议，具体取决于本地 VM 的性能历史记录。 
 - **估算每月成本**：获取在 Azure 中运行本地计算机的估算成本。  
-- **充满信心地进行迁移**：将本地计算机的依赖关系可视化，创建可以一起进行评估和迁移的计算机组。 可以准确地查看特定计算机或一个组中所有计算机的依赖关系。
+- **充满信心地进行迁移**：将本地计算机的依赖关系可视化，创建可以一起进行评估和迁移的计算机组。 
 
 ## <a name="current-limitations"></a>当前限制
 
-- 目前可以评估要迁移到 Azure VM 的本地 VMware 虚拟机 (VM)。
+- 目前只能评估要迁移到 Azure VM 的本地 VMware 虚拟机 (VM)。 VMware VM 必须通过 vCenter Server（5.5、6.0 或 6.5 版）进行管理。
 
 > [!NOTE]
 > 对 Hyper-V 的支持已在规划中，将尽快启用。 在此期间，建议使用 [Azure Site Recovery 部署规划器](http://aka.ms/asr-dp-hyperv-doc)来计划 Hyper-V 工作负荷的迁移。 
 
 - 一次发现最多可以发现 1000 个 VM，单个项目中最多可以发现 1500 个 VM。 另外，单次评估最多可以评估 400 个 VM。 如需发现或评估更多，可以增加发现或评估的次数。 [了解详细信息](how-to-scale-assessment.md)。
-- 必须通过 vCenter Server 5.5、6.0 或 6.5 来管理需评估的 VM。
-- 只能在“美国中西部”区域创建一个 Azure Migrate 项目。 但是，这不会影响迁移计划的制定。可以迁移到另一 Azure 目标位置。 迁移项目的位置只用来存储在本地环境中发现的元数据。
+- 只能在“美国中西部”或“美国东部”区域创建一个 Azure Migrate 项目。 但是，这不会影响迁移计划的制定。可以迁移到另一 Azure 目标位置。 迁移项目的位置只用来存储在本地环境中发现的元数据。
 - Azure Migrate 仅支持使用托管磁盘进行迁移评估。
 
 ## <a name="what-do-i-need-to-pay-for"></a>需要支付哪些费用？
@@ -48,15 +44,16 @@ Azure Migrate 有助于：
 
 ## <a name="whats-in-an-assessment"></a>评估内容有哪些？
 
-可以通过评估了解 Azure 是否适合本地 VM，获取在 Azure 中运行 VM 的大小建议和成本估算。 评估基于下表中汇总的属性。 可以在 Azure Migrate 门户中修改这些属性。 
+可以通过评估了解 Azure 是否适合本地 VM，获取在 Azure 中运行 VM 的大小建议和成本估算。 可以通过更改评估属性，根据需要对评估进行自定义。 下面是创建评估时考虑的属性。 
 
 **属性** | **详细信息**
 --- | ---
 **目标位置** | 要迁移到的 Azure 位置。 默认情况下，目标位置设置为“美国西部 2”。 
-**存储冗余** | Azure VM 会在迁移后使用的存储类型。 LRS 为默认设置。
-**定价计划** | 评估会考虑你是否加入了软件保障计划，因而能够使用 [Azure 混合使用权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)这一情况。 此外还会考虑应该应用的 Azure 优惠，并允许你指定可以在该优惠基础上使用的特定于订阅的折扣 (%)。 
-**定价层** | 可以指定 Azure VM 的[定价层（基本/标准）](../virtual-machines/windows/sizes-general.md)。 这是为了迁移到合适的 Azure VM 系列，具体取决于是否在生产环境中。 默认使用[标准](../virtual-machines/windows/sizes-general.md)层。
-**性能历史记录** | 默认情况下，Azure Migrate 使用一个月的历史记录来评估本地计算机的性能，百分位数为 95%。 可以修改此设置。
+**存储冗余** | Azure VM 会在迁移后使用的[存储冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy)类型。 默认为本地冗余存储 (LRS)。 请注意，Azure Migrate 仅支持基于托管磁盘的评估，而托管磁盘仅支持 LRS，因此该属性目前只有 LRS 选项。 
+**调整大小的条件** | Azure Migrate 用来对 Azure 的 VM 进行大小调整的条件。 可以根据本地 VM 的*性能历史记录*来进行大小调整，也可以将 Azure VMs *作为本地 VM* 来调整大小，不考虑性能历史记录。 默认值为基于性能的大小调整。
+**定价计划** | 至于成本计算，在评估时要考虑到是否有软件保障，以及是否有享受 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)的资格。 此外还要考虑到你可能有资格获得 [Azure 优惠](https://azure.microsoft.com/support/legal/offer-details/)，并且可以指定在该优惠基础上使用的任何特定于订阅的折扣 (%)。 
+**定价层** | 可以指定目标 Azure VM 的[定价层（基本/标准）](../virtual-machines/windows/sizes-general.md)。 例如，如果打算迁移生产环境，则可考虑“标准”层，其提供的 VM 延迟较低但成本可能较高。 而如果使用开发-测试环境，则可考虑“基本”层，其 VM 延迟较高，但成本较低。 默认使用[标准](../virtual-machines/windows/sizes-general.md)层。
+**性能历史记录** | 仅在调整大小的条件是基于性能的情况下适用。 默认情况下，Azure Migrate 使用最后一天的性能历史记录来评估本地计算机的性能，百分位数为 95%。 可以在评估属性中修改这些值。 
 **舒适因子** | Azure Migrate 在评估期间会考虑到缓冲（舒适因子）。 该缓冲应用到 VM 的机器使用率数据（CPU、内存、磁盘和网络）上。 舒适因子考虑到季节性使用特点、短期性能历史记录，以及未来使用量可能会增加等问题。<br/><br/> 例如，一个使用率为 20% 的 10 核 VM 通常相当于一个 2 核 VM。 但是，如果舒适因子为 2.0x，则结果就变成一个 4 核 VM。 默认的舒适设置为 1.3x。
 
 

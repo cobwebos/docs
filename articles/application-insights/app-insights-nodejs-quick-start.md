@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: b2c8b8cab312f581a9ceb14179a0a7cab94516d6
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 30b75f577b5e68614131e6476586921a752768dc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>开始监视 Node.js Web 应用程序
 
@@ -40,11 +40,11 @@ ms.lasthandoff: 12/13/2017
 
 Application Insights 可以从任何连接 Internet 的应用程序收集遥测数据，而不考虑它是在本地运行还是在云中运行。 按照以下步骤开始查看此数据。
 
-1. 选择“新建” > “监视 + 管理” > “Application Insights”。
+1. 选择“创建资源” > “监视 + 管理” > “Application Insights”。
 
    ![添加 Application Insights 资源](./media/app-insights-nodejs-quick-start/001-u.png)
 
-   将显示配置对话框，请使用下表填写输入字段。
+   此时会显示配置对话框，请使用下表填写输入字段。
 
     | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
@@ -53,7 +53,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
 
-2. 单击“创建” 。
+2. 单击“创建”。
 
 ## <a name="configure-app-insights-sdk"></a>配置 App Insights SDK
 
@@ -129,7 +129,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 如果计划继续使用后续的快速入门或相关教程，请勿清除在本快速入门中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤，删除通过此快速入门创建的所有资源。
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击“myResourceGroup”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击“myResourceGroup”。
 2. 在资源组页上单击“删除”，在文本框中键入 **myResourceGroup**，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤

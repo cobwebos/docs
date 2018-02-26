@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 1/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 9b6b9df01f0e56cac3fe45bd0ef8290ca1587a1a
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: d382144c202b2b7f5623f2cca2a82c384387e8ca
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>快速入门：生成第一个逻辑应用工作流 - Azure 门户
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="create-your-logic-app"></a>创建逻辑应用 
 
-1. 从主 Azure 菜单中选择“新建” > “企业集成” > “逻辑应用”。
+1. 在 Azure 主菜单中，选择“创建资源” > “企业集成” > “逻辑应用”。
 
    ![创建逻辑应用](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
 

@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 11/03/2017
-ms.openlocfilehash: 1a210f813319a4f21c7c246002c968b8093f8a4e
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 215de7113421670dae5745ddd5fc2cc22d2143e1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="design-your-first-azure-database-for-postgresql-using-the-azure-portal"></a>使用 Azure 门户设计第一个 Azure Database for PostgreSQL
 
@@ -40,8 +40,8 @@ Azure Database for PostgreSQL 是一种托管服务，可用于在云中运行�
 
 创建的 Azure Database for PostgreSQL 服务器中包含一组已定义的[计算和存储](./concepts-compute-unit-and-storage.md)资源。 将在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建服务器。
 
-按照以下步骤创建 Azure Database for PostgreSQL 服务器：
-1.  单击 Azure 门户左上角的“新建”按钮。
+可以按照以下步骤创建用于 PostgreSQL 的 Azure 数据库：
+1.  在 Azure 门户的左上角单击“创建资源”。
 2.  从“新建”页中选择“数据库”，并从“数据库”页中选择“用于 PostgreSQL 的 Azure 数据库”。
  ![用于 PostgreSQL 的 Azure 数据库 - 创建数据库](./media/tutorial-design-database-using-azure-portal/1-create-database.png)
 
@@ -50,7 +50,7 @@ Azure Database for PostgreSQL 是一种托管服务，可用于在云中运行�
     - 订阅：如果有多个订阅，请选择资源所在的相应订阅或对资源进行计费的订阅。
     - 资源组：**myresourcegroup**
     - 选择的服务器管理员登录名和密码
-    - 位置
+    - Location
     - PostgreSQL 版本
 
   > [!IMPORTANT]

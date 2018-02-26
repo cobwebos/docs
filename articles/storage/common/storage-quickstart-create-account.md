@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: f9692156fa2c1eaf9d3a617d339cdbc210bf6dd1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2043f635e30de208a29a3da2fcde6bf2a1223fc8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -161,7 +161,7 @@ Azure 存储提供两种类型的常规用途存储帐户：
 
 若要在 Azure 门户中创建常规用途 v2 存储帐户，请执行以下步骤：
 
-1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“更多服务”。 然后向下滚动到“存储”，接着选择“存储帐户”。 在显示的“存储帐户”窗口中，选择“添加”。
+1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“所有服务”。 然后向下滚动到“存储”，接着选择“存储帐户”。 在显示的“存储帐户”窗口中，选择“添加”。
 2. 输入存储帐户的名称。
 3. 将“帐户类型”字段设置为“StorageV2 (常规用途 v2)”。
 4. 将“复制”字段保持设置为“本地冗余存储(LRS)”。 或者，可以选择“区域冗余存储(ZRS 预览版)”、“异地冗余存储(GRS)”或“读取访问异地冗余存储(RA-GRS)”。

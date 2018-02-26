@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 63290127b298efced14ad34e9223840f3229f046
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: d1aadd6b44d64f0bdb35ea02d628bedfc366ad3c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>准备 Azure 资源以进行本地计算机复制
 
@@ -60,8 +60,7 @@ ms.lasthandoff: 01/17/2018
 
 ## <a name="create-a-vault"></a>创建保管库
 
-1. 在 Azure 门户菜单中，单击 **新建** > **监视和管理** >
-   **备份和站点恢复**。
+1. 在 Azure 门户中，单击“创建资源” > “监视 + 管理” > “备份和站点恢复”。
 2. 在“名称”中，指定一个友好名称以标识该保管库。 在本教程中，我们使用 ContosoVMVault。
 3. 选择名为 contosoRG 的现有资源组。
 4. 指定 Azure 地区 - 西欧，我们在本教程集中使用该地区。
@@ -75,8 +74,7 @@ ms.lasthandoff: 01/17/2018
 
 在故障转移后创建的 Azure VM 会加入此网络。
 
-1. 在 [Azure 门户](https://portal.azure.com) 菜单中，单击 **新建** > **网络** >
-   **虚拟网络**
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“创建资源” > “网络” > “虚拟网络”。
 2. 选择“资源管理器”作为部署模型。 建议使用“资源管理器”部署模型。
    - 指定网络名称。 名称在 Azure 资源组中必须唯一。 我们将使用名称 ContosoASRnet
    - 使用现有的资源组 contosoRG。

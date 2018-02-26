@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.date: 07/19/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 5874e6ce7d19c5106bc88ce9ff7fddd1842e0c3b
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 85783d58b2b02a9d0c6230429bebf2806514dee5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-get-an-azure-active-directory-tenant"></a>如何获取 Azure Active Directory 租户
 在 Azure Active Directory (Azure AD) 中， [租户](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) 表示组织。  它是组织在注册 Azure、Microsoft Intune 或 Office 365 等 Microsoft 云服务时接收并拥有的 Azure AD 服务专用实例。  每个 Azure AD 租户都是独特的，独立于其他 Azure AD 租户。  
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/16/2017
 为此，请执行下列步骤。  或者，可能想要创建新的租户，并遵循类似的过程中在该租户中创建管理员。
 
 1. 使用个人帐户登录到 [Azure 门户](https://portal.azure.com)
-2. 导航到门户的“Azure Active Directory”部分（可在左侧导航栏中的“更多服务”下找到）
+2. 导航到门户的“Azure Active Directory”部分（可在左侧导航栏中的“所有服务”下找到）
 3. 应自动登录到“默认目录”，否则可以通过单击右上角的帐户名称切换目录。
 4. 从“快速任务”部分中，选择“添加用户”。
 5. 在“添加用户”表单中，提供以下详细信息：
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/16/2017
 8. 要更改临时密码，请使用此新用户帐户登录到 [https://login.microsoftonline.com](https://login.microsoftonline.com)，并根据请求更改密码。
 
 ## <a name="use-an-organizational-azure-subscription"></a>使用组织的 Azure 订阅
-如果之前使用组织帐户注册过 Azure 订阅，则已有一个租户！  在 [Azure 门户](https://portal.azure.com)中导航到“更多服务”和“Azure Active Directory”时，会看到一个租户。  可以根据需要任意使用此租户。
+如果之前使用组织帐户注册过 Azure 订阅，则已有一个租户！  在 [Azure 门户](https://portal.azure.com)中导航到“所有服务”和“Azure Active Directory”时，会看到一个租户。  可以根据需要任意使用此租户。
 
 ## <a name="start-from-scratch"></a>从头开始
 如果上述所有方法都不起作用，请不要担心。 直接访问 [Azure 门户](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)，创建新的 Azure AD 目录。 完成此过程后，会获得自己的 Azure AD 租户，该租户使用了你在注册期间选择的域名。  在 [Azure 门户](https://portal.azure.com)中，可以通过导航到左侧导航栏中的 **Azure Active Directory** 来查找租户。

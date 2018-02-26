@@ -5,16 +5,16 @@ services: application-insights
 keywords: 
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/10/2017
+ms.date: 12/12/2017
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 9246def86fa647213aa3ec12427d829c24fa8034
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: daf7fb88b41ca21ea08e1368215578971032e47d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="start-monitoring-your-java-web-application"></a>开始监视 Java Web 应用程序
 
@@ -42,11 +42,11 @@ ms.lasthandoff: 12/08/2017
 
 Application Insights 可以从任何连接 Internet 的应用程序收集遥测数据，而不考虑它是在本地运行还是在云中运行。 按照以下步骤开始查看此数据。
 
-1. 选择“新建” > “监视 + 管理” > “Application Insights”。
+1. 选择“创建资源” > “监视 + 管理” > “Application Insights”。
 
    ![添加 Application Insights 资源](./media/app-insights-java-quick-start/001-j.png)
 
-   将显示配置对话框，请使用下表填写输入字段。
+   此时会显示配置对话框，请使用下表填写输入字段。
 
     | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
@@ -55,7 +55,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
 
-2. 单击“创建” 。
+2. 单击“创建”。
 
 ## <a name="install-app-insights-plugin"></a>安装 App Insights 插件
 
@@ -132,7 +132,7 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 如果计划继续使用后续的快速入门或相关教程，请勿清除在本快速入门中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤，删除通过此快速入门创建的所有资源。
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击“myResourceGroup”。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击“myResourceGroup”。
 2. 在资源组页上单击“删除”，在文本框中键入 **myResourceGroup**，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤

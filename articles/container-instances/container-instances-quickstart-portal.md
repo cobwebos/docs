@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 01/02/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 16e726d10b159d0a3f08f8bca197c675d748c764
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 63f22544276da07ec98e779cc524879603655db6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>在 Azure 容器实例中创建你的第一个容器
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="create-a-container-instance"></a>创建容器实例
 
-选择“新建” > “容器” > “Azure 容器实例（预览版）”。
+选择“创建资源” > “容器” > “Azure 容器实例(预览版)”。
 
 ![开始在 Azure 门户中创建新的容器实例][aci-portal-01]
 

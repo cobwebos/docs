@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 09/26/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: dfcbb925a16ca1e53d10b7bf70d03e62bc9dae69
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: fc5dcc945750b4ab4eef337dbd96bd051bb4dd81
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>查看或分析使用 Log Analytics 日志搜索收集的数据
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/24/2017
 ## <a name="open-the-log-search-portal"></a>打开日志搜索门户 
 首先打开日志搜索门户。   
 
-1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
+1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
 2. 在 Log Analytics 订阅窗格中，选择一个工作区，然后选择“日志搜索”磁贴。<br> ![“日志搜索”按钮](media/log-analytics-tutorial-viewdata/azure-portal-01.png)
 
 你可能已注意到门户中 Log Analytics 资源页顶部显示的邀请升级的横幅。<br> ![Azure 门户中的 Log Analytics 升级通知](media/log-analytics-tutorial-viewdata/log-analytics-portal-upgradebanner.png)
@@ -50,7 +50,7 @@ Log Analytics 最近引入了一种新查询语言，这种语言使构造查询
 
 升级也很简单。  单击显示“了解详细信息并执行升级”的横幅即可开始此进程。  在升级信息页面上阅读有关升级的其他信息，然后单击“立即升级”。
 
-此过程需要几分钟才能完成，在此期间，可从菜单中的“通知”下跟踪其进度。 可详细了解[新查询语言的好处](log-analytics-log-search-upgrade.md#why-the-new-language)。
+此过程需要几分钟才能完成，在此期间，可在菜单的“通知”下跟踪其进度。 可详细了解[新查询语言的好处](log-analytics-log-search-upgrade.md#why-the-new-language)。
 
 ## <a name="create-a-simple-search"></a>创建简单的搜索
 用于检索某些要使用的数据的最快方法是使用一个简单查询，它可返回表中的所有记录。  如果将任何 Windows 或 Linux 客户端连接到自己的工作区，将具有 Event（事件）(Windows) 或 Syslog (Linux) 表中的数据。

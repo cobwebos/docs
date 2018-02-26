@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 897c45322148aeb088f1ec2e7f8d9f46b58c71aa
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 04e379e1bbd84929fca68cf2de8ebfcc217a51d2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>开始使用 App Center 和 Application Insights 分析移动应用
 
@@ -66,7 +66,7 @@ Analytics.trackEvent("Video clicked")
 在应用发送自定义事件，并且 App Center 收到这些事件后，需要在 Azure 门户中创建 App Center 类型的 Application Insights 资源：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 选择“新建” > “监视 + 管理” > “Application Insights”。
+2. 选择“创建资源” > “监视 + 管理” > “Application Insights”。
 
     ![添加 Application Insights 资源](./media/app-insights-mobile-center-quickstart/add.png)
 
@@ -79,7 +79,7 @@ Analytics.trackEvent("Video clicked")
    | **资源组**     | 一个新资源组或菜单中的一个现有资源组 | 在其中创建新 Application Insights 资源的资源组 |
    | **位置** | 菜单中的某个位置 | 选择离你近的位置或离托管应用的位置近的位置 |
 
-3. 单击“创建” 。
+3. 单击“创建”。
 
 如果应用支持多个平台（iOS、Android 等），则最好创建单独的 Application Insights 资源，每个平台使用一个资源。
 

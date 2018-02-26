@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 088d127521ce89d3a82e30ad8797fe5746ae7e03
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 247c2155943d651c3be7791571522b652cf63483
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>通过 IoT 中心设备预配服务配置云资源以进行设备预配
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 > * 将 IoT 中心链接到设备预配服务
 > * 设置设备预配服务上的分配策略
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 
 按照下列步骤创建新的设备预配服务实例。
 
-1. 单击 Azure 门户左上角的“新建”。
+1. 在 Azure 门户的左上角单击“创建资源”。
 2. 在搜索框中键入“设备预配”。 
 3. 单击“IoT 中心设备预配服务”。
 4. 用以下信息填写“IoT 中心设备预配服务”表：
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/11/2017
 
    ![在门户中输入 DPS 的基本信息](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. 单击“创建” 。
+5. 单击“创建”。
 6. ID 范围用于标识注册 ID，并保证注册 ID 的唯一性。 若要获取此值，请单击“概述”，打开设备预配服务的“概要”页。 将“ID 范围”的值复制到临时位置以供将来使用。
 7. 此外，还需记下“服务终结点”的值，或将其复制到临时位置，以供将来使用。 
 
@@ -66,9 +66,9 @@ ms.lasthandoff: 10/11/2017
 
 1. 在“所有资源”页上，单击之前创建的设备预配服务实例。
 2. 在“设备预配服务”页上，单击“链接 IoT 中心”。
-3. 单击“添加”。
+3. 单击 **“添加”**。
 4. 在“将链接添加到 IoT 中心”页上，使用单选按钮指定链接的 IoT 中心位于当前订阅中还是其他订阅中。 然后，从“IoT 中心”框中选择该 IoT 中心的名称。
-5. 单击“保存” 。
+5. 单击“ **保存**”。
 
    ![链接中心名称，以便链接到门户中的 DPS](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 

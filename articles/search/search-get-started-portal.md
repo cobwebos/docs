@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 12/04/2017
 ms.author: heidist
-ms.openlocfilehash: 098faa777746ac23ce7e88aa01fc727f88d4259c
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 528fd6e82079f37c1e9f907e081a1e918abd241e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>在门户中创建、查询和筛选 Azure 搜索索引
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 12/05/2017
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开 Azure 搜索服务的服务仪表板。 如果未将服务磁贴固定到仪表板，可通过以下方式找到服务： 
    
-   * 在跳转栏中，单击左侧导航窗格底部的“更多服务”。
+   * 在跳转栏中，单击左侧导航窗格中的“所有服务”。
    * 在搜索框中，键入“搜索”获取订阅的搜索服务列表。 服务应会出现在该列表中。 
 
 ## <a name="check-for-space"></a>检查空间

@@ -1,10 +1,10 @@
 ---
 title: "VPN 网关概述：创建到 Azure 虚拟网络的跨界 VPN 连接 | Microsoft 文档"
-description: "此 VPN 网关概述介绍了在使用基于 Internet 的 VPN 连接时，如何通过各种方式连接到 Azure 虚拟网络。 随附基本连接配置示意图。"
+description: "本文介绍了什么是 VPN 网关，并说明了在使用基于 Internet 的 VPN 连接时，如何通过各种方式连接到 Azure 虚拟网络。 随附基本连接配置示意图。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 2358dd5a-cd76-42c3-baf3-2f35aadc64c8
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/04/2017
+ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: ae8de17c6b2ca8e1b9888612221c7f39b629c1b1
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: ebecbfa3279a71cda005f60c32247e9e95dd6646
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="about-vpn-gateway"></a>关于 VPN 网关
 
@@ -27,15 +27,11 @@ VPN 网关是一种虚拟网络网关，可通过公共连接将加密流量发�
 
 每个虚拟网络只能有一个 VPN 网关，但是，可以创建连接到相同 VPN 网关的多个连接。 此示例演示了一种多站点连接配置。 与同一个 VPN 网关建立多个连接时，所有 VPN 隧道（包括点到站点 VPN）将共享该网关可用的带宽。
 
-### <a name="whatis"></a>什么是虚拟网关？
+## <a name="whatis"></a>什么是虚拟网关？
 
 虚拟网络网关由两个或多个部署到名为 GatewaySubnet 的特定子网的虚拟机组成。 创建虚拟网络网关时，将创建位于 GatewaySubnet 的 VM。 虚拟网络网关 VM 配置为包含特定于该网关的路由表和网关服务。 无法直接配置属于虚拟网络网关的 VM，且绝不应该将其他资源部署到 GatewaySubnet。
 
 如果使用网关类型“VPN”创建虚拟网络网关，则会创建可加密流量的特定类型的虚拟网络网关，即 VPN 网关。 VPN 网关可能需要长达 45 分钟才能创建完。 这是因为，适用于 VPN 网关的 VM 是部署到 GatewaySubnet 且使用指定的设置进行配置的。 所选网关 SKU 决定了 VM 功能的强大程度。
-
-## <a name="gwsku"></a>网关 SKU
-
-[!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
 ## <a name="configuring"></a>配置 VPN 网关
 
@@ -52,6 +48,10 @@ VPN 网关连接依赖于使用特定设置配置的多个资源。 大多数资
 ### <a name="models"></a>部署模型
 
 配置 VPN 网关时，采取的步骤取决于用于创建虚拟网络的部署模型。 例如，如果使用经典部署模型创建的 VNet，则使用经典部署模型的指导原则和说明来创建及配置 VPN 网关设置。 有关部署模型的详细信息，请参阅 [了解 Resource Manager 和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。
+
+## <a name="gwsku"></a>网关 SKU
+
+[!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
 ## <a name="diagrams"></a>连接拓扑示意图
 
@@ -153,4 +153,4 @@ ExpressRoute 是从 WAN （不通过公共 Internet）到 Microsoft 服务（包
 - 规划 VPN 网关配置。 请参阅 [VPN 网关规划和设计](vpn-gateway-plan-design.md)。
 - 有关更多信息，请查看 [VPN 网关常见问题](vpn-gateway-vpn-faq.md)。
 - 查看[订阅和服务限制](../azure-subscription-service-limits.md#networking-limits)。
-- 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
+- 了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。
