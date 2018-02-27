@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/20/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: d96e2e6767ca01c8c16403a8846e3ab9d16796bc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 89f3ceeb95b4a8b498523e0d73930740bcadd268
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure 堆栈公钥基础结构证书要求
 Azure 堆栈具有使用从外部访问公共 IP 地址分配给 Azure 堆栈服务和可能的租户 Vm 的一小部分的公共基础结构网络。 在 Azure 堆栈部署过程中，使用合适的 DNS 名称，这些 Azure 堆栈公共基础结构终结点的 PKI 证书是必需的。 本文提供以下信息：
@@ -37,6 +37,7 @@ Azure 堆栈具有使用从外部访问公共 IP 地址分配给 Azure 堆栈服
 - 证书签名算法不能为 SHA1，因为它必须是更强。 
 - 证书格式必须为 PFX，因为公钥和私钥密钥 Azure 堆栈安装所必需的。 
 - 证书 pfx 文件必须具有值"数字签名"和"KeyEncipherment"与其"密钥用法"字段中。
+- 证书 pfx 文件必须具有"增强型密钥用法"字段中的"服务器身份验证 (1.3.6.1.5.5.7.3.1)"和"客户端身份验证 (1.3.6.1.5.5.7.3.2)"的值。
 - 对所有的证书 pfx 文件密码必须是部署的相同时
 - 请确保使用者名称和的所有证书的使用者备用名称匹配本文以避免失败的部署中所述的规范。
 

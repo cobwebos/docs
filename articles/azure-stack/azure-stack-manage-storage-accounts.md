@@ -3,8 +3,8 @@ title: "管理 Azure 堆栈存储帐户 |Microsoft 文档"
 description: "了解如何查找、 管理、 恢复和回收 Azure 堆栈存储帐户"
 services: azure-stack
 documentationcenter: 
-author: AniAnirudh
-manager: darmour
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/6/2017
-ms.author: anirudha
-ms.openlocfilehash: 6e14bd6312135b45984a82099e68a934ec2a4a70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: anirudha
+ms.openlocfilehash: 3ef9a66095d0ed5fc865dc3c22961f9f7bdcedd9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>管理 Azure 堆栈中的存储帐户
 了解如何管理 Azure 堆栈以查找，恢复，并回收根据业务需要的存储容量中的存储帐户。
