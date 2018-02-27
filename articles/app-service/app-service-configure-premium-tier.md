@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: cephalin
-ms.openlocfilehash: 92cc8d8b0f67dde95ea2e3fc2f0f083bd8ac8aab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76897173d9fdfffe7139e7c5648ad0efb1c05b97
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>为 Azure 应用服务配置 PremiumV2 层
 
-与“标准”层相比，新的“高级 V2”层提供 [Dv2 系列 VM](../virtual-machines/windows/sizes-general.md#dv2-series)，此系列 VM 配备更快的处理器、SSD 存储以及双倍的内存核心比。 在本文中，你将了解如何在 **PremiumV2** 层中创建应用或者将应用纵向扩展到 **PremiumV2** 层。
+与现有定价层相比，新的 PremiumV2 定价层提供更快的处理器和 SSD 存储以及双倍的内存-内核比。 借助性能优势，可以通过在更少的实例上运行应用来节省资金。 在本文中，你将了解如何在 **PremiumV2** 层中创建应用或者将应用纵向扩展到 **PremiumV2** 层。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,7 +56,7 @@ az appservice list-locations --sku P1V2
 ![](media/app-service-configure-premium-tier/pick-premium-tier.png)
 
 > [!IMPORTANT] 
-> 如果没有看到 **P1V2**、**P2V2** 和 **P3V2** 作为选项列出，则 **PremiumV2** 在你选择的区域中不可用，或者你是在配置不支持 **PremiumV2** 的 Linux 应用服务计划。
+> 如果没有看到 **P1V2**、**P2V2** 和 **P3V2** 作为选项列出，则 **PremiumV2** 在所选区域中不可用，或者所配置的 Linux 应用服务计划不支持 **PremiumV2**。
 
 ## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>将现有应用纵向扩展到 PremiumV2 层
 
@@ -74,7 +74,7 @@ az appservice list-locations --sku P1V2
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
-如果操作成功完成，则应用的概述页面会显示它目前处于 **PremiumV2** 层中。
+如果操作成功完成，则应用的概述页会显示它目前处于 **PremiumV2** 层中。
 
 ![](media/app-service-configure-premium-tier/finished.png)
 
@@ -88,7 +88,7 @@ az appservice list-locations --sku P1V2
 
 ![](media/app-service-configure-premium-tier/change-plan.png)
 
-选择刚才创建的应用服务计划。
+选择所创建的应用服务计划。
 
 ![](media/app-service-configure-premium-tier/select-plan.png)
 
@@ -105,7 +105,7 @@ az appservice list-locations --sku P1V2
 
     ![](media/app-service-configure-premium-tier/clone-app.png)
 
-    在“克隆应用”页面中，可以在所需的区域中创建新的应用服务计划，并指定要克隆的设置。
+    在“克隆应用”页中，可以在所需的区域中创建应用服务计划，并指定要克隆的设置。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 

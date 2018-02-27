@@ -1,10 +1,10 @@
 ---
 title: "安装 P2S 客户端证书 | Azure"
-description: "本文可用来帮助安装用于 P2S 证书身份验证的客户端证书。"
+description: "安装用于 P2S 证书身份验证的 Mac 或 Windows 客户端证书。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-resource-manager, azure-service-management
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/24/2017
+ms.date: 02/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: fc0cc37794ef291c9d27b094211b38cec90da55c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: de98201b65f5531f334aded1056f622cecb6e190
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="install-a-client-certificate-for-point-to-site-azure-certificate-authentication-connections"></a>为点到站点 Azure 证书身份验证连接安装客户端证书
 
@@ -47,6 +47,6 @@ Mac VPN 客户端仅在资源管理器部署模型中受支持。 经典部署�
 
 继续执行点到站点配置步骤。
 
-* [Azure 门户](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+* [Azure portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 * [Azure 门户（经典）](vpn-gateway-howto-point-to-site-classic-azure-portal.md)

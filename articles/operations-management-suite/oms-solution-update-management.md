@@ -1,5 +1,5 @@
 ---
-title: "更新 OMS 中的管理解决方案 | Microsoft Docs"
+title: "Azure 中的更新管理解决方案 | Microsoft Docs"
 description: "本文旨在帮助你了解如何使用此解决方案来管理 Windows 和 Linux 计算机的更新。"
 services: operations-management-suite
 documentationcenter: 
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: 71322c650b2ee464bab91bf8d4b176f3b2d93949
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 5156beb82e1ca8aeb9817badc4fcb38971143d4f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="update-management-solution-in-oms"></a>更新 OMS 中的管理解决方案
+# <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
 ![“更新管理”符号](./media/oms-solution-update-management/update-management-symbol.png)
 
-可以使用 OMS 中的更新管理解决方案，为部署在 Azure、本地环境或其他云提供程序中的 Windows 和 Linux 计算机管理操作系统安全更新。  可以快速评估所有代理计算机上可用更新的状态，并管理为服务器安装所需更新的过程。
+可以使用 Azure 中的更新管理解决方案，为部署在 Azure、本地环境或其他云提供程序中的 Windows 和 Linux 计算机管理操作系统安全更新。  可以快速评估所有代理计算机上可用更新的状态，并管理为服务器安装所需更新的过程。
 
 ## <a name="update-management-in-azure-automation"></a>Azure 自动化中的更新管理
 
@@ -48,13 +48,13 @@ ms.lasthandoff: 01/03/2018
 #### <a name="linux"></a>Linux
 ![Linux 更新管理流程](media/oms-solution-update-management/update-mgmt-linux-updateworkflow.png)
 
-在计算机执行更新符合性扫描以后，OMS 代理会将信息批量转发到 OMS。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时执行一次。  除了按扫描计划扫描，更新符合性扫描还会在更新安装前和更新安装后的 15 分钟内启动，前提是 Microsoft Monitoring Agent (MMA) 重新启动。  使用 Linux 计算机时，符合性扫描默认情况下每 3 小时执行一次。在重新启动 MMA 代理的情况下，15 分钟内就会启动符合性扫描。  
+在计算机执行更新符合性扫描以后，OMS 代理会将信息批量转发到 Log Analytics。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时执行一次。  除了按扫描计划扫描，更新符合性扫描还会在更新安装前和更新安装后的 15 分钟内启动，前提是 Microsoft Monitoring Agent (MMA) 重新启动。  使用 Linux 计算机时，符合性扫描默认情况下每 3 小时执行一次。在重新启动 MMA 代理的情况下，15 分钟内就会启动符合性扫描。  
 
 然后即可在解决方案随附的仪表板中处理和汇总符合性信息，或者通过用户定义查询或预定义查询对其进行搜索。  解决方案报告计算机更新情况的依据是你被配置为通过什么源来同步。  如果将 Windows 计算机配置为向 WSUS 报告，则结果可能不同于 Microsoft 更新所显示的内容，具体取决于 WSUS 上次通过 Microsoft 更新进行同步的时间。  对于配置为向本地存储库（而不是公共存储库）报告的 Linux 计算机来说，情况也是如此。   
 
 可以通过创建计划的部署，在需要更新的计算机上部署和安装软件更新。  归类为“可选”的更新不包括在 Windows 计算机的部署范围内，仅必需更新包括在其内。  计划的部署会显式指定计算机或根据特定的一组计算机的日志搜索结果来选择[计算机组](../log-analytics/log-analytics-computer-groups.md)，从而定义会接收适用更新的目标计算机。  也可通过指定计划来批准和指定一个时段，允许在该时段内安装更新。  通过 Azure 自动化中的 runbook 安装更新。  无法查看这些 runbook，它们不需要任何配置。  更新部署在创建时，会创建一个计划，在指定的时间为包括在内的计算机启动主更新 Runbook。  此主 Runbook 会在每个代理上启动子 Runbook，以便执行所需更新的安装。       
 
-目标计算机会按更新部署中指定的日期和时间，以并行方式执行部署。  首先会执行扫描，验证是否仍然需要更新，如果是，则会安装相应的更新。  请务必注意，对于 WSUS 客户端计算机来说，如果更新未在 WSUS 中获得批准，则更新部署会失败。  所应用更新的结果将转发到 OMS，通过仪表板或搜索事件进行处理和汇总。     
+目标计算机会按更新部署中指定的日期和时间，以并行方式执行部署。  首先会执行扫描，验证是否仍然需要更新，如果是，则会安装相应的更新。  请务必注意，对于 WSUS 客户端计算机来说，如果更新未在 WSUS 中获得批准，则更新部署会失败。  所应用更新的结果将转发到 Log Analytics，通过仪表板或搜索事件进行处理和汇总。     
 
 ## <a name="prerequisites"></a>先决条件
 * 该解决方案支持对 Windows Server 2008 和更高版本执行更新评估，以及对 Windows Server 2008 R2 SP1 和更高版本执行更新部署。  不支持 Nano Server。
@@ -78,7 +78,7 @@ ms.lasthandoff: 01/03/2018
 * Linux 代理必须具有访问更新存储库的权限。  
 
     > [!NOTE]
-    > 此解决方案不支持适用于 Linux 且配置为向多个 OMS 工作区报告的 OMS 代理。  
+    > 此解决方案不支持适用于 Linux 且配置为向多个 Log Analytics 工作区报告的 OMS 代理。  
     >
 
 若要详细了解如何安装适用于 Linux 的 OMS 代理并下载最新版本，请参阅 [Operations Management Suite Agent for Linux](https://github.com/microsoft/oms-agent-for-linux)（适用于 Linux 的 Operations Management Suite 代理）。  若要了解如何安装适用于 Windows 的 OMS 代理，请参阅[适用于 Windows 的 Operations Management Suite 代理](../log-analytics/log-analytics-windows-agent.md)。  
@@ -90,7 +90,7 @@ ms.lasthandoff: 01/03/2018
 此解决方案包含以下资源，这些资源添加到自动化帐户和直接连接的代理或 Operations Manager 连接的管理组。
 
 ### <a name="management-packs"></a>管理包
-如果 System Center Operations Manager 管理组已连接到 OMS 工作区，则会在 Operations Manager 中安装以下管理包。  在添加此解决方案以后，这些管理包也会安装在直接连接的 Windows 计算机上。 这些管理包不需进行配置或管理。
+如果 System Center Operations Manager 管理组已连接到 Log Analytics 工作区，则会在 Operations Manager 中安装以下管理包。  在添加此解决方案以后，这些管理包也会安装在直接连接的 Windows 计算机上。 这些管理包不需进行配置或管理。
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -99,34 +99,31 @@ ms.lasthandoff: 01/03/2018
 有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../log-analytics/log-analytics-om-agents.md)。
 
 ### <a name="hybrid-worker-groups"></a>混合辅助角色组
-启用此解决方案以后，任何直接连接到 OMS 工作区的 Windows 计算机都会自动配置为混合 Runbook 辅助角色，为此解决方案随附的 Runbook 提供支持。  此方案管理的每个 Windows 计算机都会列在自动化帐户的“混合 Runbook 辅助角色组”边栏选项卡下，其命名依据命名约定 *Hostname FQDN_GUID*。  不能以在帐户中有 Runbook 的这些组为目标，否则会失败。 这些组只能用于为管理解决方案提供支持。   
+启用此解决方案以后，任何直接连接到 Log Analytics 工作区的 Windows 计算机都会自动配置为混合 Runbook 辅助角色，为此解决方案随附的 Runbook 提供支持。  此方案管理的每个 Windows 计算机都会列在自动化帐户的“混合 Runbook 辅助角色组”边栏选项卡下，其命名依据命名约定 *Hostname FQDN_GUID*。  不能以在帐户中有 Runbook 的这些组为目标，否则会失败。 这些组只能用于为管理解决方案提供支持。   
 
 不过，只要将同一个帐户同时用于解决方案和混合 Runbook 辅助角色组成员身份，即可将 Windows 计算机添加到自动化帐户的混合 Runbook 辅助角色组，为自动化 Runbook 提供支持。  此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。  
 
 ## <a name="configuration"></a>配置
-执行以下步骤，将“更新管理”解决方案添加到 OMS 工作区并确认代理正在进行报告。 已连接到工作区的 Windows 代理会自动添加，无额外配置。
+执行以下步骤，将“更新管理”解决方案添加到 Log Analytics 工作区并确认代理正在进行报告。 已连接到工作区的 Windows 代理会自动添加，无额外配置。
 
-可以使用下述方法部署解决方案：
+可以通过在 Azure 门户中选择“自动化和控制”服务或“更新管理”解决方案从 Azure Marketplace 部署解决方案
 
-* Azure 门户中的 Azure Marketplace：选择“自动化与控制”服务或“更新管理”解决方案
-* OMS 工作区中的 OMS 解决方案库
+如果已在同一资源组和区域中将自动化帐户和 Log Analytics 工作区关联到一起，则选择“自动化和控制”时会对配置进行验证，仅安装该解决方案并在两项服务中对其进行配置。  从 Azure Marketplace 选择“更新管理”解决方案会产生相同的行为。  如果订阅中没有部署任一服务，则请执行“创建新的解决方案”边栏选项卡中的步骤，确认需要安装其他预先选定的建议解决方案。  （可选）可以使用[添加 OMS 解决方案](../log-analytics/log-analytics-add-solutions.md)中所述的步骤，将“更新管理”解决方案添加到 Log Analytics 工作区。  
 
-如果已在同一资源组和区域中将自动化帐户和 OMS 工作区关联到一起，则选择“自动化和控制”时会对配置进行验证，仅安装该解决方案并在两项服务中对其进行配置。  从 Azure Marketplace 选择“更新管理”解决方案会产生相同的行为。  如果订阅中没有部署任一服务，则请执行“创建新的解决方案”边栏选项卡中的步骤，确认需要安装其他预先选定的建议解决方案。  （可选）可以使用解决方案库中[添加 OMS 解决方案](../log-analytics/log-analytics-add-solutions.md)一文所述步骤，将“更新管理”解决方案添加到 OMS 工作区。  
+### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-to-log-analytics"></a>确认 OMS 代理和 Operations Manager 管理组已连接到 Log Analytics
 
-### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms"></a>确认 OMS 代理和 Operations Manager 管理组已连接到 OMS
-
-若要确认直接连接的适用于 Linux 和 Windows 的 OMS 代理正在与 OMS 通信，可在数分钟后运行以下日志搜索：
+若要确认直接连接的适用于 Linux 和 Windows 的 OMS 代理正在与 Log Analytics 通信，可在数分钟后运行以下日志搜索：
 
 * Linux - `Type=Heartbeat OSType=Linux | top 500000 | dedup SourceComputerId | Sort Computer | display Table`。  
 
 * Windows - `Type=Heartbeat OSType=Windows | top 500000 | dedup SourceComputerId | Sort Computer | display Table`。
 
-在 Windows 计算机上，可以通过查看以下内容来验证代理与 OMS 的连接：
+在 Windows 计算机上，可以通过查看以下内容来验证代理与 Log Analytics 的连接：
 
 1.  在控制面板中打开 Microsoft Monitoring Agent，此时该代理会在“Azure Log Analytics (OMS)”选项卡上显示一条消息，指出“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。   
-2.  打开 Windows 事件日志，导航到“应用程序和服务日志\Operations Manager”，搜索来自源服务连接器的事件 ID 3000 和 5002。  这些事件指示计算机已注册到 OMS 工作区并且正在接收配置。  
+2.  打开 Windows 事件日志，导航到“应用程序和服务日志\Operations Manager”，搜索来自源服务连接器的事件 ID 3000 和 5002。  这些事件指示计算机已注册到 Log Analytics 工作区并且正在接收配置。  
 
-如果代理无法与 OMS 服务通信且已配置为通过防火墙或代理服务器与 Internet 通信，则请参阅 [Windows 代理的网络配置](../log-analytics/log-analytics-windows-agent.md)或 [Linux 代理的网络配置](../log-analytics/log-analytics-agent-linux.md)，确认防火墙或代理服务器是否已正确配置。
+如果代理无法与 Log Analytics 通信且已配置为通过防火墙或代理服务器与 Internet 通信，则请参阅 [Windows 代理的网络配置](../log-analytics/log-analytics-windows-agent.md)或 [Linux 代理的网络配置](../log-analytics/log-analytics-agent-linux.md)，确认防火墙或代理服务器是否已正确配置。
 
 > [!NOTE]
 > 如果 Linux 系统配置为与代理或 OMS 网关通信，并且你将载入此解决方案，请执行以下命令更新 proxy.conf 权限，向 omiuser 组授予对文件的读取权限：  
@@ -136,7 +133,7 @@ ms.lasthandoff: 01/03/2018
 
 执行评估后，新添加的 Linux 代理会显示状态“已更新”。  此过程可能需要长达 6 小时的时间。
 
-若要确认 Operations Manager 管理组是否正在与 OMS 通信，请参阅[验证 Operations Manager 与 OMS 的集成](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms)。
+若要确认 Operations Manager 管理组是否正在与 Log Analytics 通信，请参阅[验证 Operations Manager 与 OMS 的集成](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms)。
 
 ## <a name="data-collection"></a>数据收集
 ### <a name="supported-agents"></a>支持的代理
@@ -146,7 +143,7 @@ ms.lasthandoff: 01/03/2018
 | --- | --- | --- |
 | Windows 代理 |是 |该解决方案从 Windows 代理收集有关系统更新的信息，并启动所需更新的安装。 |
 | Linux 代理 |是 |该解决方案从 Linux 代理收集有关系统更新的信息，并在支持的发行版上启动所需更新的安装。 |
-| Operations Manager 管理组 |是 |该解决方案从已连接的管理组中的代理收集有关系统更新的信息。<br>从 Operations Manager 代理到 Log Analytics 的直接连接不是必须的。 数据从管理组转发到 OMS 存储库。 |
+| Operations Manager 管理组 |是 |该解决方案从已连接的管理组中的代理收集有关系统更新的信息。<br>从 Operations Manager 代理到 Log Analytics 的直接连接不是必须的。 数据将从管理组转发到 Log Analytics 工作区。 |
 | Azure 存储帐户 |否 |Azure 存储不包含有关系统更新的信息。 |
 
 ### <a name="collection-frequency"></a>收集频率
@@ -155,7 +152,7 @@ ms.lasthandoff: 01/03/2018
 可能需要 30 分钟到 6 小时的时间，仪表板才会显示受托管计算机提供的已更新数据。   
 
 ## <a name="using-the-solution"></a>使用解决方案
-向 OMS 工作区添加更新管理解决方案时，“更新管理”磁贴将添加到 OMS 仪表板。 此磁贴显示环境中计算机数量及其更新符合性的计数和图形表示形式。<br><br>
+向 Log Analytics 工作区添加更新管理解决方案时，“更新管理”磁贴将添加到 Log Analytics 仪表板。 此磁贴显示环境中计算机数量及其更新符合性的计数和图形表示形式。<br><br>
 ![更新管理摘要磁贴](media/oms-solution-update-management/update-management-summary-tile.png)  
 
 
@@ -220,7 +217,7 @@ ms.lasthandoff: 01/03/2018
 若要更改数据的时间范围，请在仪表板的顶部选择“数据基于”。 可以选择过去 7 天、1 天或 6 小时内创建或更新的记录。 也可以选择“自定义”，并指定自定义的日期范围。
 
 ## <a name="log-analytics-records"></a>Log Analytics 记录
-更新管理解决方案在 OMS 存储库中创建两种类型的记录。
+更新管理解决方案在 Log Analytics 工作区中创建两种类型的记录。
 
 ### <a name="update-records"></a>更新记录
 **更新**类型的记录为每台计算机上已安装或需要安装的每个更新而创建。 更新记录具有下表中的属性。
@@ -317,7 +314,7 @@ ms.lasthandoff: 01/03/2018
 
 在软件更新管理 (SUM) 周期中，已经投资购买 System Center Configuration Manager 来管理电脑、服务器和移动设备的客户还可以依赖其在管理软件更新方面的优势和成熟度。
 
-若要了解如何将 OMS 更新管理解决方案与 Sytem Center Configuration Manager 集成，请参阅[将 System Center Configuration Manager 与 OMS 更新管理集成](../automation/oms-solution-updatemgmt-sccmintegration.md)。
+若要了解如何将 OMS 更新管理解决方案与 System Center Configuration Manager 集成，请参阅[将 System Center Configuration Manager 与 OMS 更新管理集成](../automation/oms-solution-updatemgmt-sccmintegration.md)。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -335,7 +332,7 @@ ms.lasthandoff: 01/03/2018
 | 无法注册进行修补程序管理的计算机，<br>注册失败，出现异常<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>无法创建自签名证书。 ---><br>System.UnauthorizedAccessException: 访问被拒绝。 | 自签名证书生成失败 | 请验证系统帐户是否具有<br>以下文件夹的读取访问权限:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|  
 
 ### <a name="how-do-i-troubleshoot-update-deployments"></a>如何排查更新部署问题？
-可以通过与支持此解决方案的 OMS 工作区关联的自动化帐户的“作业”边栏选项卡，查看负责部署已计划更新部署所随附更新的 Runbook 的结果。  Runbook **Patch-MicrosoftOMSComputer** 是一个以特定托管计算机为目标的子 Runbook，查看详细的流即可详细了解该部署。  输出会显示适用的必需更新、下载状态、安装状态等详细信息。<br><br> ![更新部署作业状态](media/oms-solution-update-management/update-la-patchrunbook-outputstream.png)<br>
+可以通过与支持此解决方案的 Log Analytics 工作区关联的自动化帐户的“作业”边栏选项卡，查看负责部署已计划更新部署所随附更新的 Runbook 的结果。  Runbook **Patch-MicrosoftOMSComputer** 是一个以特定托管计算机为目标的子 Runbook，查看详细的流即可详细了解该部署。  输出会显示适用的必需更新、下载状态、安装状态等详细信息。<br><br> ![更新部署作业状态](media/oms-solution-update-management/update-la-patchrunbook-outputstream.png)<br>
 
 有关详细信息，请参阅[自动化 Runbook 输出和消息](../automation/automation-runbook-output-and-messages.md)。   
 

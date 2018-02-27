@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: 608f5ec2fb4b8fa374778cb4f506f1d25eb7642b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 01f845e0cb987eb4e4e9baa62478d3ff6991fb7e
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions HTTP 和 webhook 绑定
 
@@ -493,6 +493,9 @@ module.exports = function (context, req) {
 ### <a name="authorization-keys"></a>授权密钥
 
 HTTP 触发器允许使用密钥提高安全性。 标准 HTTP 触发器可以将这些密钥用作 API 密钥，这需要在请求中提供此密钥。 Webhook 可以使用密钥以多种方式对请求授权，具体取决于提供程序支持何种方式。
+
+> [!NOTE]
+> 在本地运行函数时，无论 `function.json` 中的 `authLevel` 设置为什么，都将禁用授权。 一旦发布到 Azure Functions，`authLevel` 就会立即生效。
 
 密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看密钥，请创建新的密钥或将密钥滚动到新值，导航到门户中的某个函数并选择“管理”。 
 

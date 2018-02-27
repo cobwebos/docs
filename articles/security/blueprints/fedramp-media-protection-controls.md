@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint Automation - 媒体保护"
-description: "FedRAMP Web 应用 - 媒体保护"
+title: "Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化 - 媒体保护"
+description: "FedRAMP Web 应用程序自动化 - 媒体保护"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9cb33abc7ab88aaa54a77308c7863f8128f2e6c7
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 37812c2f7ee79685f9014a7999b4355e649ca6e1
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="media-protection-mp"></a>媒体保护 (MP)
 
 > [!NOTE]
-> 美国国家标准技术研究所 (NIST) 和美国商务部在 NIST 特刊 800-53 修订版 4 中定义了这些控制。 请参阅 NIST 800-53 修订版 4，了解每项控制的测试过程和相关指南。
+> 本文档所述的控制措施由美国国家标准技术研究所 (NIST) 和美国商务部定义，作为 NIST 特别出版物 800-53 修订版 4 的一部分。 请参阅 NIST 800-53 修订版 4，了解每项控制的测试过程和相关指南。
 
 ## <a name="nist-800-53-control-mp-1"></a>NIST 800-53 控制 MP-1
 

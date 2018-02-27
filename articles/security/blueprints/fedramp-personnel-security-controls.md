@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint 自动化 - 人员规划"
-description: "FedRAMP 的 Web 应用程序 - 人员安全"
+title: "Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化 - 人员安全"
+description: "FedRAMP Web 应用程序自动化 - 人员安全"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: ace6a78fe08d1dbabeb435d76e686ba9c61aac99
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 2b9095d0420987f9cad758e3c883a9e2b5cd60c4
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="personnel-security-ps"></a>人员安全 (PS)
 

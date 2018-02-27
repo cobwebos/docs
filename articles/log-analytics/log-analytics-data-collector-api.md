@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 88d9c4b23eb676743c004c0d1b3ab45f6cd66055
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 5c6f2b35b48988af533612cb48da8fe79a838cf6
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将数据发送到 Log Analytics
 本文说明如何使用 HTTP 数据收集器 API 从 REST API 客户端将数据发送到 Log Analytics。  它说明对于脚本或应用程序收集的数据，如何设置其格式、将其包含在请求中，并由 Log Analytics 授权该请求。  将针对 PowerShell、C# 和 Python 提供示例。
@@ -49,7 +49,7 @@ Log Analytics 存储库中的所有数据都存储为具有某种特定记录类
 ### <a name="request-uri-parameters"></a>请求 URI 参数
 | 参数 | 说明 |
 |:--- |:--- |
-| CustomerID |Microsoft Operations Management Suite 工作区的唯一标识符。 |
+| CustomerID |Log Analytics 工作区的唯一标识符。 |
 | 资源 |API 资源名称: /api/logs。 |
 | API 版本 |用于此请求的 API 版本。 目前，API 版本为 2016-04-01。 |
 
@@ -70,7 +70,7 @@ Log Analytics HTTP 数据收集器 API 的任何请求都必须包含授权标�
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* 是 Operations Management Suite 工作区的唯一标识符。 *签名*是[基于哈希的消息验证代码 (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx)，它构造自请求并使用 [SHA256 算法](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx)进行计算。 然后，使用 Base64 编码进行编码。
+*WorkspaceID* 是 Log Analytics 工作区的唯一标识符。 *签名*是[基于哈希的消息验证代码 (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx)，它构造自请求并使用 [SHA256 算法](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx)进行计算。 然后，使用 Base64 编码进行编码。
 
 使用此格式对 **SharedKey** 签名字符串进行编码：
 
@@ -204,7 +204,8 @@ HTTP 状态代码 200 表示已接收请求以便进行处理。 这表示操作
 
 对于每个示例，执行以下步骤来设置授权标头的变量：
 
-1. 在 Operations Management Suite 门户中，选择“设置”磁贴，并选择“已连接的源”选项卡。
+1. 在 Azure 门户中，找到 Log Analytics 工作区。
+2. 依次选择“高级设置”和“已连接的源”。
 2. 在 **Workspace ID** 的右侧，选择复制图标，并粘贴该 ID 作为 **Customer ID** 变量的值。
 3. 在 **Primary Key** 的右侧，选择复制图标，并粘贴该 ID 作为 **Shared Key** 变量的值。
 
@@ -311,7 +312,7 @@ namespace OIAPIExample
         // An example JSON object, with key/value pairs
         static string json = @"[{""DemoField1"":""DemoValue1"",""DemoField2"":""DemoValue2""},{""DemoField3"":""DemoValue3"",""DemoField4"":""DemoValue4""}]";
 
-        // Update customerId to your Operations Management Suite workspace ID
+        // Update customerId to your Log Analytics workspace ID
         static string customerId = "xxxxxxxx-xxx-xxx-xxx-xxxxxxxxxxxx";
 
         // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
@@ -389,7 +390,7 @@ import hashlib
 import hmac
 import base64
 
-# Update the customer ID to your Operations Management Suite workspace ID
+# Update the customer ID to your Log Analytics workspace ID
 customer_id = 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 
 # For the shared key, use either the primary or the secondary Connected Sources client authentication key   

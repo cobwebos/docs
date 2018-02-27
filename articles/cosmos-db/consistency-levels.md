@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 02/12/2018
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 303a36fc966cd92399de92b4d52f75c114b75781
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c3bd28316e3d2e7596021d6964594002d47d160a
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的可优化数据一致性级别
 Azure Cosmos DB 是从无到有开发出来的，其设计考虑到了适合每个数据模型的全局分发。 它旨在提供可预测的低延迟保证以及多个完善定义的宽松一致性模型。 Azure Cosmos DB 当前提供 5 种一致性级别：非常、有限过期、会话、一致前缀和最终级别。 有限过期、会话、一致性前缀和最终级别称为“宽松一致性模型”，因为它们提供的一致性比非常一致性更差，后者是可用的最高一致性模型。 
@@ -40,7 +40,7 @@ Azure Cosmos DB 是从无到有开发出来的，其设计考虑到了适合每�
 
 | 一致性级别 | 保证 |
 | --- | --- |
-| 强 | 可线性化。 保证读取操作返回项的最新版本。|
+| 非常 | 可线性化。 保证读取操作返回项的最新版本。|
 | 有限过期 | 一致前缀。 读取操作落后写入操作 k 个前缀或 t 时间间隔 |
 | 会话   | 一致前缀。 单调读取、单调写入、读取写入、写入跟随读取 |
 | 一致前缀 | 返回的更新是全部更新的某些前缀，不带间隔 |
@@ -117,6 +117,10 @@ Azure Cosmos 数据库提供 99.99% 的全面 [SLA](https://azure.microsoft.com/
 | 无 |从非常、有限过期、会话、一致前缀或最终一致性级别中选择 |不适用 |
 
 与读取请求一样，可以在每个 API 中降低特定查询请求的一致性级别。
+
+## <a name="consistency-levels-for-the-mongodb-api"></a>MongoDB API 的一致性级别
+
+Azure Cosmos DB 当前实现了 MongoDB 3.4 版，其中具有两个一致性设置：强一致性和最终一致性。 由于 Azure Cosmos DB 是多 api，因此一致性设置在帐户级别适用，并由每个 API 控制一致性的实施。  在 MongoDB 3.6 以前，没有会话一致性的概念，因此如果将 MongoDB API 帐户设置为使用会话一致性，则使用 MongoDB API 时，该一致性会降级为最终一致性。 如果需要向某个 MongoDB API 帐户提供“读取自己的写入”保证，该帐户的默认一致性级别应设置为“强”或“有限过期”。
 
 ## <a name="next-steps"></a>后续步骤
 如果想详细了解一致性级别和平衡方案，建议参阅下列资源：

@@ -106,7 +106,7 @@ ms.lasthandoff: 02/09/2018
     }
     ```
 
-8. 在 Init 方法中，此代码创建并配置 DeviceClient 对象。 该对象允许模块连接到本地 Azure IoT Edge 运行时，发送并接收消息。 在 **Init** 方法中使用的连接字符串由 IoT Edge 运行时提供给模块。 创建 **DeviceClient** 后，代码从模块孪生的所需属性读取 TemperatureThreshold，并通过 **input1** 终结点注册回叫，接收来自 IoT Edge 中心的消息。 将 `SetInputMessageHandlerAsync` 方法替换为新方法，然后添加 `SetDesiredPropertyUpdateCallbackAsync` 方法，以便进行所需的属性更新。 要进行此更改，请用以下代码替换 Init 方法的最后一行：
+8. 在 Init 方法中，此代码创建并配置 DeviceClient 对象。 该对象允许模块连接到本地 Azure IoT Edge 运行时，发送并接收消息。 在 **Init** 方法中使用的连接字符串由 IoT Edge 运行时提供给模块。 创建 **DeviceClient** 后，代码通过Module Twin中的所需属性读取TemperatureThreshold的值， 并且通过 **input1** 终结点注册一个回调方法，用于接收来自 IoT Edge 中心的消息。 将 `SetInputMessageHandlerAsync` 方法替换为新方法，然后添加 `SetDesiredPropertyUpdateCallbackAsync` 方法，以便进行所需的属性更新。 若要进行此更改，请使用以下代码替换 Init 方法的最后一行 ：
 
     ```csharp
     // Register callback to be called when a message is received by the module

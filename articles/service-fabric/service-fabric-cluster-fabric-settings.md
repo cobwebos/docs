@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 2e609b205c32d2ea5ca58586e9f8ba9623ef7580
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 23f063d89c5030d440d50765eee9d121b4d8f5ba
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>自定义 Service Fabric 群集设置和结构升级策略
 本文档说明如何为 Service Fabric 群集自定义各种结构设置和结构升级策略。 可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板完成自定义。
@@ -52,14 +52,14 @@ ms.lasthandoff: 01/11/2018
 ### <a name="section-name-diagnostics"></a>节名称：Diagnostics
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-| ConsumerInstances |字符串 | 动态 |DCA 使用者实例列表。 |
-| ProducerInstances |字符串 | 动态 |DCA 生成者实例列表。 |
+| ConsumerInstances |String | 动态 |DCA 使用者实例列表。 |
+| ProducerInstances |String | 动态 |DCA 生成者实例列表。 |
 | AppEtwTraceDeletionAgeInDays |Int，默认值为 3 | 动态 |在多少天后删除包含应用程序 ETW 跟踪的旧 ETL 文件。 |
 | AppDiagnosticStoreAccessRequiresImpersonation |Bool，默认值为 true | 动态 |代表应用程序访问诊断存储时是否需要模拟。 |
 | MaxDiskQuotaInMB |Int，默认值为 65536 | 动态 |Windows Fabric 日志文件的磁盘配额（以 MB 为单位）。 |
 | DiskFullSafetySpaceInMB |Int，默认值为 1024 | 动态 |要避免被 DCA 使用的剩余磁盘空间（以 MB 为单位）。 |
 | ApplicationLogsFormatVersion |Int，默认值为 0 | 动态 |用于应用程序日志格式的版本。 支持的值是 0 和 1. 版本 1 比版本 0 包含更多 ETW 事件记录的字段。 |
-| ClusterId |字符串 | 动态 |群集的唯一 ID。 于群集创建时生成。 |
+| ClusterId |String | 动态 |群集的唯一 ID。 于群集创建时生成。 |
 | EnableTelemetry |Bool，默认值为 true | 动态 |这会启用或禁用遥测。 |
 | EnableCircularTraceSession |Bool，默认值为 false | 静态 |标志指示是否应使用循环跟踪会话。 |
 
@@ -73,16 +73,16 @@ ms.lasthandoff: 01/11/2018
 | --- | --- | --- | --- |
 | IsEnabled |Bool，默认值为 true | 动态 |标志指示是否启用本地节点上的性能计数器集合。 |
 | SamplingIntervalInSeconds |Int，默认值为 60 | 动态 |正在收集的性能计数器的采样间隔。 |
-| 计数器 |字符串 | 动态 |要收集的性能计数器的逗号分隔列表。 |
+| 计数器 |String | 动态 |要收集的性能计数器的逗号分隔列表。 |
 | MaxCounterBinaryFileSizeInMB |Int，默认值为 1 | 动态 |每个性能计数器二进制文件的最大大小（以 MB 为单位）。 |
 | NewCounterBinaryFileCreationIntervalInMinutes |Int，默认值为 10 | 动态 |在其之后创建新的性能计数器二进制文件的最大间隔（以秒为单位）。 |
 
 ### <a name="section-name-setup"></a>节名称：Setup
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-| FabricDataRoot |字符串 | 不允许 |Service Fabric 数据根目录。 Azure 默认位置为 d:\svcfab |
-| FabricLogRoot |字符串 | 不允许 |Service Fabric 日志根目录。 这是放置 SF 日志和跟踪信息的位置。 |
-| ServiceRunAsAccountName |字符串 | 不允许 |运行 Fabric 主机服务的帐户名称。 |
+| FabricDataRoot |String | 不允许 |Service Fabric 数据根目录。 Azure 默认位置为 d:\svcfab |
+| FabricLogRoot |String | 不允许 |Service Fabric 日志根目录。 这是放置 SF 日志和跟踪信息的位置。 |
+| ServiceRunAsAccountName |String | 不允许 |运行 Fabric 主机服务的帐户名称。 |
 | SkipFirewallConfiguration |Bool，默认值为 false | 不允许 |指定是否需要由系统设置防火墙设置。 仅当使用 Windows 防火墙时适用。 如果使用第三方防火墙，则必须打开端口以供系统和应用程序使用 |
 |NodesToBeRemoved|string，默认值为“”| 动态 |应在配置升级过程中删除的节点。 （仅适用于独立部署）|
 |ContainerNetworkSetup|bool，默认值为 FALSE| 静态 |是否设置容器网络。|
@@ -107,8 +107,8 @@ ms.lasthandoff: 01/11/2018
 | CheckpointThresholdInMB |Int，默认值为 50 |静态|日志使用量超过此值时，将启动检查点。 |
 | MaxAccumulatedBackupLogSizeInMB |Int，默认值为 800 |静态|给定备份日志链中备份日志的最大累积大小（以 MB 为单位）。 如果增量备份生成的备份日志将导致从相关完整备份以来累积的备份日志大于此大小，则增量备份请求会失败。 在这种情况下，用户需要执行完整备份。 |
 | MaxWriteQueueDepthInKB |Int，默认值为 0 |不允许| 最大写入队列深度的 Int，该写入队列深度指核心记录器可用于与此副本关联的日志的写入队列深度（以千字节为单位）。 此值是核心记录器更新期间可以处于未完成状态的最大字节数。 该值可能为 0，以便核心记录器计算适当值，或是 4 的倍数。 |
-| SharedLogId |字符串 |不允许|共享日志标识符。 这是一个 guid，且对于每个共享日志须是唯一的。 |
-| SharedLogPath |字符串 |不允许|共享日志的路径。 如果此值为空，则使用默认共享日志。 |
+| SharedLogId |String |不允许|共享日志标识符。 这是一个 guid，且对于每个共享日志须是唯一的。 |
+| SharedLogPath |String |不允许|共享日志的路径。 如果此值为空，则使用默认共享日志。 |
 | SlowApiMonitoringDuration |以秒为单位的时间，默认值为 300 |静态| 在触发运行状况事件警告前，指定 api 的持续时间。|
 | MinLogSizeInMB |Int，默认值为 0 |静态|事务日志的最小大小。 不允许将日志截断到此设置以下的大小。 0 表示复制器会根据其他设置确定最小日志大小。 由于减少了截断相关日志记录的可能性，所以增加此值会增加执行部分副本和增量备份的可能性。 |
 
@@ -482,17 +482,32 @@ ms.lasthandoff: 01/11/2018
 ### <a name="section-name-securityclientx509names"></a>节名称：Security/ClientX509Names
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-PropertyGroup|X509NameMap，默认值为 None|动态| |
+|PropertyGroup|X509NameMap，默认值为 None|动态| |
 
 ### <a name="section-name-securityclusterx509names"></a>节名称：Security/ClusterX509Names
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-PropertyGroup|X509NameMap，默认值为 None|动态| |
+|PropertyGroup|X509NameMap，默认值为 None|动态| |
 
 ### <a name="section-name-securityserverx509names"></a>节名称：Security/ServerX509Names
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-PropertyGroup|X509NameMap，默认值为 None|动态| |
+|PropertyGroup|X509NameMap，默认值为 None|动态| |
+
+### <a name="section-name-securityclientcertificateissuerstores"></a>节名称：Security/ClientCertificateIssuerStores
+| **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
+| --- | --- | --- | --- |
+|PropertyGroup|IssuerStoreKeyValueMap，默认值为 None |动态|客户端证书的 X509 颁发者证书存储；名称 = clientIssuerCN；值 = 逗号分隔的存储列表 |
+
+### <a name="section-name-securityclustercertificateissuerstores"></a>节名称：Security/ClusterCertificateIssuerStores
+| **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
+| --- | --- | --- | --- |
+|PropertyGroup|IssuerStoreKeyValueMap，默认值为 None |动态|群集证书的 X509 颁发者证书存储；名称 = clusterIssuerCN；值 = 逗号分隔的存储列表 |
+
+### <a name="section-name-securityservercertificateissuerstores"></a>节名称：Security/ServerCertificateIssuerStores
+| **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
+| --- | --- | --- | --- |
+|PropertyGroup|IssuerStoreKeyValueMap，默认值为 None |动态|服务器证书的 X509 颁发者证书存储；名称 = serverIssuerCN；值 = 逗号分隔的存储列表 |
 
 ### <a name="section-name-securityclientaccess"></a>节名称：Security/ClientAccess
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
@@ -555,31 +570,31 @@ PropertyGroup|X509NameMap，默认值为 None|动态| |
 | StartClusterConfigurationUpgrade |string，默认值为“Admin” |动态| 在分区上引入 StartClusterConfigurationUpgrade。 |
 | GetUpgradesPendingApproval |string，默认值为“Admin” |动态| 在分区上引入 GetUpgradesPendingApproval。 |
 | StartApprovedUpgrades |string，默认值为“Admin” |动态| 在分区上引入 StartApprovedUpgrades。 |
-| Ping |string，默认值为“Admin\|\|User" |动态| 用于客户端 ping 的安全性配置。 |
-| 查询 |string，默认值为“Admin\|\|User" |动态| 用于查询的安全性配置。 |
-| NameExists |string，默认值为“Admin\|\|User" | 动态|用于检查命名 URI 存在的安全性配置。 |
-| EnumerateSubnames |string，默认值为“Admin\|\|User" |动态| 用于枚举命名 URI 的安全性配置。 |
-| EnumerateProperties |string，默认值为“Admin\|\|User" | 动态|用于枚举命名属性的安全性配置。 |
-| PropertyReadBatch |string，默认值为“Admin\|\|User" |动态| 用于命名属性读取操作的安全性配置。 |
-| GetServiceDescription |string，默认值为“Admin\|\|User" |动态| 用于长时间轮询服务通知和读取服务描述的安全性配置。 |
-| ResolveService |string，默认值为“Admin\|\|User" |动态| 用于基于投诉的服务解析的安全配置。 |
-| ResolveNameOwner |string，默认值为“Admin\|\|User" | 动态|用于解析命名 URI 所有者的安全性配置。 |
-| ResolvePartition |string，默认值为“Admin\|\|User" | 动态|用于解析系统服务的安全性配置。 |
-| ServiceNotifications |string，默认值为“Admin\|\|User" |动态| 用于基于时间的服务通知的安全配置。 |
-| PrefixResolveService |string，默认值为“Admin\|\|User" |动态| 用于基于投诉的服务前缀解析的安全配置。 |
-| GetUpgradeStatus |string，默认值为“Admin\|\|User" |动态| 用于轮询应用程序升级状态的安全性配置。 |
-| GetFabricUpgradeStatus |string，默认值为“Admin\|\|User" |动态| 用于轮询群集升级状态的安全性配置。 |
-| InvokeInfrastructureQuery |string，默认值为“Admin\|\|User" | 动态|用于查询基础结构任务的安全性配置。 |
-| 列出 |string，默认值为“Admin\|\|User" | 动态|用于映像存储客户端文件列表操作的安全性配置。 |
-| ResetPartitionLoad |string，默认值为“Admin\|\|User" |动态| 用于 failoverUnit 的重置负载的安全性配置。 |
-| ToggleVerboseServicePlacementHealthReporting | string，默认值为“Admin\|\|User" |动态| 用于切换详细服务放置运行状况报告的安全配置。 |
-| GetPartitionDataLossProgress | string，默认值为“Admin\|\|User" | 动态|获取调用数据丢失 API 调用的进度。 |
-| GetPartitionQuorumLossProgress | string，默认值为“Admin\|\|User" |动态| 获取调用仲裁丢失 API 调用的进度。 |
-| GetPartitionRestartProgress | string，默认值为“Admin\|\|User" |动态| 获取重启分区 API 调用的进度。 |
-| GetChaosReport | string，默认值为“Admin\|\|User" |动态| 获取给定时间范围内混沌的状态。 |
-| GetNodeTransitionProgress | string，默认值为“Admin\|\|User" |动态| 用于获取节点转换命令进度的安全配置。 |
-| GetClusterConfigurationUpgradeStatus | string，默认值为“Admin\|\|User" |动态| 在分区上引入 GetClusterConfigurationUpgradeStatus。 |
-| GetClusterConfiguration | string，默认值为“Admin\|\|User" | 动态|在分区上引入 GetClusterConfiguration。 |
+| Ping |string，默认值为“Admin\|\|User” |动态| 用于客户端 ping 的安全性配置。 |
+| 查询 |string，默认值为“Admin\|\|User” |动态| 用于查询的安全性配置。 |
+| NameExists |string，默认值为“Admin\|\|User” | 动态|用于检查命名 URI 存在的安全性配置。 |
+| EnumerateSubnames |string，默认值为“Admin\|\|User” |动态| 用于枚举命名 URI 的安全性配置。 |
+| EnumerateProperties |string，默认值为“Admin\|\|User” | 动态|用于枚举命名属性的安全性配置。 |
+| PropertyReadBatch |string，默认值为“Admin\|\|User” |动态| 用于命名属性读取操作的安全性配置。 |
+| GetServiceDescription |string，默认值为“Admin\|\|User” |动态| 用于长时间轮询服务通知和读取服务描述的安全性配置。 |
+| ResolveService |string，默认值为“Admin\|\|User” |动态| 用于基于投诉的服务解析的安全配置。 |
+| ResolveNameOwner |string，默认值为“Admin\|\|User” | 动态|用于解析命名 URI 所有者的安全性配置。 |
+| ResolvePartition |string，默认值为“Admin\|\|User” | 动态|用于解析系统服务的安全性配置。 |
+| ServiceNotifications |string，默认值为“Admin\|\|User” |动态| 用于基于时间的服务通知的安全配置。 |
+| PrefixResolveService |string，默认值为“Admin\|\|User” |动态| 用于基于投诉的服务前缀解析的安全配置。 |
+| GetUpgradeStatus |string，默认值为“Admin\|\|User” |动态| 用于轮询应用程序升级状态的安全性配置。 |
+| GetFabricUpgradeStatus |string，默认值为“Admin\|\|User” |动态| 用于轮询群集升级状态的安全性配置。 |
+| InvokeInfrastructureQuery |string，默认值为“Admin\|\|User” | 动态|用于查询基础结构任务的安全性配置。 |
+| 列出 |string，默认值为“Admin\|\|User” | 动态|用于映像存储客户端文件列表操作的安全性配置。 |
+| ResetPartitionLoad |string，默认值为“Admin\|\|User” |动态| 用于 failoverUnit 的重置负载的安全性配置。 |
+| ToggleVerboseServicePlacementHealthReporting | string，默认值为“Admin\|\|User” |动态| 用于切换详细服务放置运行状况报告的安全配置。 |
+| GetPartitionDataLossProgress | string，默认值为“Admin\|\|User” | 动态|获取调用数据丢失 API 调用的进度。 |
+| GetPartitionQuorumLossProgress | string，默认值为“Admin\|\|User” |动态| 获取调用仲裁丢失 API 调用的进度。 |
+| GetPartitionRestartProgress | string，默认值为“Admin\|\|User” |动态| 获取重启分区 API 调用的进度。 |
+| GetChaosReport | string，默认值为“Admin\|\|User” |动态| 获取给定时间范围内混沌的状态。 |
+| GetNodeTransitionProgress | string，默认值为“Admin\|\|User” |动态| 用于获取节点转换命令进度的安全配置。 |
+| GetClusterConfigurationUpgradeStatus | string，默认值为“Admin\|\|User” |动态| 在分区上引入 GetClusterConfigurationUpgradeStatus。 |
+| GetClusterConfiguration | string，默认值为“Admin\|\|User” | 动态|在分区上引入 GetClusterConfiguration。 |
 |CreateComposeDeployment|string，默认值为 L"Admin"| 动态|创建由组合文件说明的组合部署 |
 |DeleteComposeDeployment|string，默认值为 L"Admin"| 动态|删除组合部署 |
 |UpgradeComposeDeployment|string，默认值为 L"Admin"| 动态|升级组合部署 |
@@ -721,8 +736,6 @@ PropertyGroup|X509NameMap，默认值为 None|动态| |
 |MaxDataMigrationTimeout |以秒为单位的时间，默认值为 600 |动态|指定以秒为单位的时间范围。 发生 Fabric 升级后，数据迁移恢复操作的最大超时时间。 |
 |MaxOperationRetryDelay |以秒为单位的时间，默认值为 5|动态| 指定以秒为单位的时间范围。 遇到故障时，内部重试的最大延迟时间。 |
 |ReplicaSetCheckTimeoutRollbackOverride |以秒为单位的时间，默认值为 1200 |动态| 指定以秒为单位的时间范围。 如果 ReplicaSetCheckTimeout 设置为 DWORD 的最大值，则出于回滚目的，将用此配置的值对其进行重写。 永远不会重写用于前滚的值。 |
-|ImageBuilderJobQueueThrottle |Int，默认值为 10 |动态|映像生成器代理作业队列对应用程序请求的线程计数限制。 |
-|MaxExponentialOperationRetryDelay|TimeSpan，默认值为 Common::TimeSpan::FromSeconds(30)|动态|指定以秒为单位的时间范围。 反复遇到故障时，内部重试的最大指数延迟时间 |
 
 ### <a name="section-name-defragmentationemptynodedistributionpolicy"></a>节名称：DefragmentationEmptyNodeDistributionPolicy
 | **Parameter** | **允许的值** |**升级策略**| **指导或简短说明** |

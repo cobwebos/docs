@@ -1,6 +1,6 @@
 ---
-title: "Azure Blueprint Automation - 国家网络安全中心云安全原则概述"
-description: "Azure Blueprint Automation - 国家网络安全中心云安全原则概述"
+title: "UK-OFFICIAL 三层 Web 应用程序自动化 - 概述"
+description: "UK-OFFICIAL 三层 Web 应用程序自动化 - 概述"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 0be18e2c2354ea8f766eb48db793c906e565a201
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 787f504dea6e98911d6ba4716e88aff322c70c5b
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="national-cyber-security-centre-cloud-security-principles-overview"></a>国家网络安全中心云安全原则概述
 
 
 > [!NOTE]
-> 这些安全原则由英国国家网络安全中心 (NCSC) 定义。 请参阅 [NCSC 文档](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)，了解每项安全原则的测试过程和指南。
+> 这些安全原则由英国国家网络安全中心 (NCSC) 定义。 参阅 [NCSC 文档](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)，了解每项安全原则的测试过程和指南。
 
 
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/18/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 配置的资源仅使用安全协议进行通信。 应用程序网关的 WAF 组件配置为，接受通过 HTTPS/TLS 外部使用的通信器，并仅通过 HTTPS/TLS 与后端池进行通信。 远程桌面服务配置为使用安全连接。 VPN 用于确保 AppGateway 和 Azure 之间网络流量的安全。 |
+| **客户** | 此蓝图配置的资源仅使用安全协议进行通信。 应用程序网关的 WAF 组件配置为，接受通过 HTTPS/TLS 外部使用的通信器，并仅通过 HTTPS/TLS 与后端池进行通信。 远程桌面服务配置为使用安全连接。 VPN 用于确保 AppGateway 和 Azure 之间网络流量的安全。 |
 | **提供商&nbsp; (Microsoft&nbsp;Azure)** | 按照 CESG/NCSC 所建议的，Azure 使用行业标准的传输层安全性 (TLS) 1.2 协议，附带 2048 位 RSA/SHA256 加密密钥，用于加密客户和云之间的通信，以及 Azure 系统和数据中心之间的内部通信。 例如，当管理员使用 Microsoft Azure 门户管理其组织的服务时，在门户和管理员设备之间传输的数据将通过加密的 TLS 通道发送。 当电子邮件用户使用标准的 Web 浏览器连接 Outlook.com 时，HTTPS 连接会提供一个安全通道来接收和发送电子邮件。<br /> <br /> Azure 为客户提供了一系列选项，用于保护他们自己的数据和流量。 Azure 中内置的证书管理功能可让管理员灵活地为管理系统、单个服务、安全外壳 (SSH) 会话、虚拟专用网络 (VPN) 连接、远程桌面 (RDP) 连接和其他功能配置证书和加密密钥。 <br /><br /> 开发人员可以使用 Microsoft .NET Framework 中内置的加密服务提供程序 (CSP) 来访问高级加密标准 (AES) 算法，以及安全哈希算法 (SHA-2) 功能，用于处理诸如验证数字签名之类的任务。 Azure Key Vault 通过将加密密钥和机密存储在硬件安全模块 (HSM) 中，以帮助客户来保护这些信息的安全。 |
 
 
@@ -74,12 +74,12 @@ ms.lasthandoff: 11/18/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 提示管理员将 Azure 资源部署到哪个区域。 部署建议的区域是英国南部或英国西部。 |
+| **客户** | 此蓝图提示管理员将 Azure 资源部署到哪个区域。 部署建议的区域是英国南部或英国西部。 |
 | **提供商&nbsp; (Microsoft&nbsp;Azure)** | 不适用 |
 
 
  ## <a name="ncsc-cloud-security-principle-22"></a>NCSC 云安全原则 2.2
-### <a name="datacentre-security"></a>数据中心安全性
+### <a name="datacenter-security"></a>数据中心安全性
 用于提供云服务的位置需要物理保护，以防未经授权的访问、篡改、盗窃或重新配置系统。 保护不充分可能会导致数据泄露、篡改或丢失。
 
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 11/18/2017
 |||
 |---|---|
 | **客户** | 在 Azure 数据中心，客户对任何系统资源都没有物理访问权限；数据中心安全保护措施由 Microsoft Azure 实施和管理。 这一原则继承自 Microsoft Azure。 |
-| **提供商&nbsp; (Microsoft&nbsp;Azure)** | Microsoft Azure 代表客户实现这一原则。 Microsoft Azure 在各地分布的 Microsoft 设施中运行，与其他 Microsoft Online Services 共享空间和实用程序。 每台设备都被设计为 24x7x365 全天候运行，并采用各种行业标准措施来保护运行设施，以免出现电源故障、物理入侵和网络服务中断。 这些数据中心符合物理安全性和可用性的行业标准（如 ISO 27001）。 它们由 Microsoft 操作人员进行管控、监视和管理。 <br /> <br /> Azure 客户可以确信所有 Azure 数据中心中的物理安全控件已就绪，因为 Azure 将证书保存在符合 ISO/IEC 27001:2013 标准的所有数据中心。 英国地区由 2 个区域组成：英国南部和英国西部。 |
+| **提供商&nbsp; (Microsoft&nbsp;Azure)** | Microsoft Azure 代表客户实现这一原则。 Microsoft Azure 在各地分布的 Microsoft 设施中运行，与其他 Microsoft Online Services 共享空间和实用程序。 每台设备都被设计为 24x7x365 全天候运行，并采用各种行业标准措施来保护运行设施，以免出现电源故障、物理入侵和网络服务中断。 这些数据中心符合物理安全性和可用性的行业标准（如 ISO 27001）。 它们由 Microsoft 操作人员进行管控、监视和管理。 <br /> <br /> Azure 客户可以确信所有 Azure 数据中心中的物理安全控件已就绪，因为 Azure 将证书保存在符合 ISO/IEC 27001:2013 标准的所有数据中心。 英国地区由两个区域组成：英国南部和英国西部。 |
 
 
  ## <a name="ncsc-cloud-security-principle-23"></a>NCSC 云安全原则 2.3
@@ -104,12 +104,12 @@ ms.lasthandoff: 11/18/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 解决方案部署的所有 blob 存储的保密性和完整性都通过使用 Azure 存储服务加密 (SSE) 来保护。 SSE 使用 256 位 AES 加密保护 Azure 存储帐户中的静态数据。 |
+| **客户** | 此蓝图解决方案部署的所有 blob 存储的保密性和完整性都通过使用 Azure 存储服务加密 (SSE) 来保护。 SSE 使用 256 位 AES 加密保护 Azure 存储帐户中的静态数据。 |
 | **提供商&nbsp; (Microsoft&nbsp;Azure)** | Azure 提供各种加密功能，便于客户选择满足自己需求的最佳解决方案。 Azure Key Vault 可帮助客户轻松高效地保持对密钥的控制，以便云应用程序和服务用于加密数据。 客户可以使用 Azure 磁盘加密来加密虚拟机。 Azure 存储服务加密可以加密客户存储帐户中的所有数据。 |
 
 
  ## <a name="ncsc-cloud-security-principle-24"></a>NCSC 云安全原则 2.4
-### <a name="data-sanitisation"></a>数据清理
+### <a name="data-sanitization"></a>数据清理
 预配、迁移和取消预配资源的过程不应导致对用户数据未经授权的访问。
 
 未充分清理数据可能会导致：
@@ -177,7 +177,7 @@ ms.lasthandoff: 11/18/2017
 |||
 |---|---|
 | **客户** | Microsoft Azure 确保隔离每个用户，以防止恶意或受攻击用户影响到另一个用户的服务或数据。 在这种情况下，这一原则继承自 Microsoft Azure。 |
-| **提供商&nbsp; (Microsoft&nbsp;Azure)** | 由于客户云服务器是虚拟的，因此，物理隔离范例不再适用。 Microsoft Azure 旨在帮助识别和应对多租户环境中的固有风险。 在 Azure 用户中，使用 Active Directory 和专门为多租户服务开发的功能对数据存储和处理进行逻辑分离，旨在确保存储在共享 Azure 数据中心的用户数据无法被其他组织访问。 <br /> <br /> 任何共享云体系结构的基本原理是，为每个用户提供隔离，以防止恶意或受攻击用户影响到另一个用户的服务或数据。 <br /> <br /> 有关 Microsoft 租户分离的详细信息，请参阅 [Azure Blueprint - NCSC 云安全原则 - 客户职责矩阵](https://aka.ms/blueprintuk-gcrm)中的完整说明。 |
+| **提供商&nbsp; (Microsoft&nbsp;Azure)** | 由于客户云服务器是虚拟的，因此，物理隔离范例不再适用。 Microsoft Azure 旨在帮助识别和应对多租户环境中的固有风险。 在 Azure 用户中，使用 Active Directory 和专门为多租户服务开发的功能对数据存储和处理进行逻辑分离，旨在确保存储在共享 Azure 数据中心的用户数据无法被其他组织访问。 <br /> <br /> 任何共享云体系结构的基本原理是，为每个用户提供隔离，以防止恶意或受攻击用户影响到另一个用户的服务或数据。 <br /> <br /> 有关 Microsoft 租户分离的详细信息，请参阅 [Azure 安全与符合性蓝图 - NCSC 云安全原则 - 客户职责矩阵](https://aka.ms/blueprintuk-gcrm)中的完整说明。 |
 
 
  ## <a name="ncsc-cloud-security-principle-4"></a>NCSC 云安全原则 4
@@ -192,7 +192,7 @@ ms.lasthandoff: 11/18/2017
 |||
 |---|---|
 | **客户** | Microsoft Azure 维护 Azure 服务已编档的安全管理框架。 在这种情况下，这一原则继承自 Microsoft Azure。 |
-| **提供商&nbsp; (Microsoft&nbsp;Azure)** | Microsoft 符合性框架包括一个标准方法，用于定义符合性域、确定哪些目标适用于给定的团队或资产，以及在域控件目标应用到给定行业标准、法规或业务需求的特定集合时捕获解决这些目标的具体方式。 该框架将控件映射到多个法规标准，这可让 Microsoft 使用一组常用的控件来设计和构建服务，从而在当下以及未来发展中简化一系列法规的符合性。 <br /> <br /> 此外，Microsoft 符合性过程还可以使客户更容易地跨多个服务实现符合性，并有效地满足其不断变化的需求。 同时，增强安全性技术和有效符合性过程使得 Microsoft 能够维护并扩充一套丰富的第三方认证。 这些认证可以帮助客户向其客户、审核员和管理机构演示符合性准备情况。 <br /> <br />  Azure 遵守一组广泛的国际标准，以及区域和特定于行业的符合性标准，如 ISO 27001、FedRAMP、SOC 1 和 SOC 2。 通过严格的第三方审核来验证对这些标准中所包含的严格安全控件的符合性，证明 Azure 服务与一流的行业标准、认证、证明和授权协同工作并符合其要求。 <br /> <br /> Azure 的设计采用了符合性策略，帮助客户处理业务目标以及行业标准和法规。 安全符合性框架包括测试和审核阶段、安全分析、风险管理最佳实践和安全基准分析，以实现认证和证明。 <br /> <br /> 有关 Microsoft 遵守符合性框架的详细信息，请参阅 [Azure Blueprint - NCSC 云安全原则 - 客户职责矩阵](https://aka.ms/blueprintuk-gcrm)中的完整说明。|
+| **提供商&nbsp; (Microsoft&nbsp;Azure)** | Microsoft 符合性框架包括一个标准方法，用于定义符合性域、确定哪些目标适用于给定的团队或资产，以及在域控件目标应用到给定行业标准、法规或业务需求的特定集合时捕获解决这些目标的具体方式。 该框架将控件映射到多个法规标准，这可让 Microsoft 使用一组常用的控件来设计和构建服务，从而在当下以及未来发展中简化一系列法规的符合性。 <br /> <br /> 此外，Microsoft 符合性过程还可以使客户更容易地跨多个服务实现符合性，并有效地满足其不断变化的需求。 同时，增强安全性技术和有效符合性过程使得 Microsoft 能够维护并扩充一套丰富的第三方认证。 这些认证可以帮助客户向其客户、审核员和管理机构演示符合性准备情况。 <br /> <br />  Azure 遵守一组广泛的国际标准，以及区域和特定于行业的符合性标准，如 ISO 27001、FedRAMP、SOC 1 和 SOC 2。 通过严格的第三方审核来验证对这些标准中所包含的严格安全控件的符合性，证明 Azure 服务与一流的行业标准、认证、证明和授权协同工作并符合其要求。 <br /> <br /> Azure 的设计采用了符合性策略，帮助客户处理业务目标以及行业标准和法规。 安全符合性框架包括测试和审核阶段、安全分析、风险管理最佳实践和安全基准分析，以实现认证和证明。 <br /> <br /> 有关 Microsoft 遵守符合性框架的详细信息，请参阅 [Azure 安全与符合性蓝图 - NCSC 云安全原则 - 客户职责矩阵](https://aka.ms/blueprintuk-gcrm)中的完整说明。|
 
 
  ## <a name="ncsc-cloud-security-principle-5"></a>NCSC 云安全原则 5
@@ -221,7 +221,7 @@ ms.lasthandoff: 11/18/2017
 
 |||
 |---|---|
-| **客户** | Azure 资源管理器模板和构成此 Azure Blueprint 的附带资源表示已部署的体系结构的“配置为代码”基线。 解决方案通过 GitHub 提供，可以用于配置控件。 <br /> <br /> Azure Active Directory 帐户特权是通过使用基于角色的访问控制来实现的，通过将用户分配给角色来提供严格的控制，用户可以通过此控制查看和控制已部署的资源。 通过将用户分配到安全组，使用基于角色的访问控制来实现 Active Directory 帐户特权。 这些安全组控制用户可以执行的有关操作系统配置的操作。 这些基于角色的方案可以由客户进行扩展以满足任务需求。 <br /> <br /> 若要符合这一原则，客户需要进一步配置，以便在生产中使用。 在这种情况下，这些配置将需要成为客户更改管理过程的一部分。 |
+| **客户** | Azure 资源管理器模板和构成此蓝图的附带资源表示已部署的体系结构的“作为代码的配置”基线。 解决方案通过 GitHub 提供，可以用于配置控制措施。 <br /> <br /> Azure Active Directory 帐户特权是通过使用基于角色的访问控制来实现的，通过将用户分配给角色来提供严格的控制，用户可以通过此控制查看和控制已部署的资源。 通过将用户分配到安全组，使用基于角色的访问控制来实现 Active Directory 帐户特权。 这些安全组控制用户可以执行的有关操作系统配置的操作。 这些基于角色的方案可以由客户进行扩展以满足任务需求。 <br /> <br /> 若要符合这一原则，客户需要进一步配置，以便在生产中使用。 在这种情况下，这些配置将需要成为客户更改管理过程的一部分。 |
 | **提供商&nbsp; (Microsoft&nbsp;Azure)** | Microsoft Azure 每年都会检查和更新硬件、软件和网络设备的配置设置和基线配置。 在从开发和/或测试环境进入生产环境之前，需开发、测试和批准更改。 <br /> <br />Microsoft Azure 应用基线配置，使用针对 Microsoft Azure 软件组件（例如 OS、Fabric、RDFE、XStore 等）的变更和发布过程，以及针对硬件和网络设备组件的启动配置过程来进入 Microsoft Azure 生产环境，如下所述。 <br /> <br /> Azure 安全性和符合性团队以及服务团队在部署其生产服务之前，对基于 Azure 的服务所需的基线配置将作为测试的一部分进行评审。 |
 
 
@@ -267,7 +267,7 @@ ms.lasthandoff: 11/18/2017
 |||
 |---|---|
 | **客户** | 客户负责为客户部署的资源（包括应用程序、操作系统、数据库和软件）建立事件管理过程。 客户实现声明应处理报告事件和警报，支持及时的事件响应，并根据情况将信息转发给 PGA 和其他 HMG 组织。 |
-| **提供商&nbsp; (Microsoft&nbsp;Azure)** | Microsoft 已实施安全事件管理过程，以在发生事件时加速对事件的协调响应。 <br /> <br /> 如果 Microsoft 发现任何对存储在其设备或设施上的任何客户数据未经授权的访问，或未经授权访问这些设备或设施导致客户数据丢失、泄露或更改，Microsoft 已声明它将： <br /> <br />   - 立即通知客户相关安全事件； <br /> - 立即调查安全事件，并向客户提供有关安全事件的详细信息；以及 <br /> - 执行合理和提示性步骤，以减轻影响并将安全事件导致的损害降至最低。  <br />  <br /> 已建立一个事件管理框架，其中定义了角色并分配了职责。 Windows Azure 安全事件管理 (WASIM) 团队负责管理安全事件，包括升级，并确保在必要时专家团队的参与。 Azure Operations Managers 负责在得到其他职能部门支持的同时，监视安全和隐私事件的调查及解决。 <br /> <br /> 有关 Microsoft 事件响应过程的详细信息，请参阅 [Azure Blueprint - NCSC 云安全原则 - 客户职责矩阵](https://aka.ms/blueprintuk-gcrm)中的完整说明。 |
+| **提供商&nbsp; (Microsoft&nbsp;Azure)** | Microsoft 已实施安全事件管理过程，以在发生事件时加速对事件的协调响应。 <br /> <br /> 如果 Microsoft 发现任何对存储在其设备或设施上的任何客户数据未经授权的访问，或未经授权访问这些设备或设施导致客户数据丢失、泄露或更改，Microsoft 已声明它将： <br /> <br />   - 立即通知客户相关安全事件； <br /> - 立即调查安全事件，并向客户提供有关安全事件的详细信息；以及 <br /> - 执行合理和提示性步骤，以减轻影响并将安全事件导致的损害降至最低。  <br />  <br /> 已建立一个事件管理框架，其中定义了角色并分配了职责。 Windows Azure 安全事件管理 (WASIM) 团队负责管理安全事件，包括升级，并确保在必要时专家团队的参与。 Azure Operations Managers 负责在得到其他职能部门支持的同时，监视安全和隐私事件的调查及解决。 <br /> <br /> 有关 Microsoft 事件响应过程的详细信息，请参阅 [Azure 安全与符合性蓝图 - NCSC 云安全原则 - 客户职责矩阵](https://aka.ms/blueprintuk-gcrm)中的完整说明。 |
 
 
  ## <a name="ncsc-cloud-security-principle-6"></a>NCSC 云安全原则 6
@@ -295,7 +295,7 @@ ms.lasthandoff: 11/18/2017
 
 |||
 |---|---|
-| **客户** | 通过此 Azure Blueprint 部署的虚拟机运行 Windows 操作系统。 Windows 提供实时文件完整性验证、保护和恢复核心系统文件，这些文件通过 Windows 资源保护 (WRP) 功能作为 Windows 或授权 Windows 系统更新的一部分安装，该功能支持实时完整性检查。 <br /> <br /> Windows 提供了以下保护来防止在受限制的内存位置执行代码：无执行 (NX)、地址空间布局随机化 (ASLR) 和数据执行保护 (DEP)。 <br /> <br /> 此 Azure Blueprint 针对所有部署的 Windows 虚拟机部署基于主机的反恶意软件保护，通过 Microsoft Windows Defender 来实现。 Windows Defender 配置为在发布时自动更新反恶意软件引擎和保护签名。 <br /> <br /> 若要符合这一原则，客户需要进一步配置，以便在生产中使用。 在这种情况下，这些配置将需要成为客户安全开发过程的一部分。 |
+| **客户** | 此蓝图部署的虚拟机运行 Windows 操作系统。 Windows 提供实时文件完整性验证、保护和恢复核心系统文件，这些文件通过 Windows 资源保护 (WRP) 功能作为 Windows 或授权 Windows 系统更新的一部分安装，该功能支持实时完整性检查。 <br /> <br /> Windows 提供了以下保护来防止在受限制的内存位置执行代码：无执行 (NX)、地址空间布局随机化 (ASLR) 和数据执行保护 (DEP)。 <br /> <br /> 此蓝图针对所有部署的 Windows 虚拟机部署基于主机的反恶意软件保护，通过 Microsoft Windows Defender 来实现。 Windows Defender 配置为在发布时自动更新反恶意软件引擎和保护签名。 <br /> <br /> 若要符合这一原则，客户需要进一步配置，以便在生产中使用。 在这种情况下，这些配置将需要成为客户安全开发过程的一部分。 |
 | **提供商&nbsp; (Microsoft&nbsp;Azure)** | Microsoft 安全开发生命周期 (SDL) 提供了一个有效威胁建模过程来识别威胁以及软件和服务中的漏洞。 威胁建模是一个团队练习，包含运营经理、程序/项目经理，开发人员和测试人员，表示为解决方案设计执行的主要安全分析任务。 团队成员使用 SDL 威胁建模工具，在生成和使用新特性和功能进行更新时对所有服务和项目进行建模。 威胁模型涵盖所有在攻击界面上暴露的代码，以及所有由第三方编写或授权的代码，并考虑所有信任边界。 STRIDE 系统（欺骗、篡改、否认、信息泄露、拒绝服务和特权提升）用于帮助识别和解决设计过程中的早期安全威胁，从而避免影响客户。 |
 
 
@@ -311,7 +311,7 @@ ms.lasthandoff: 11/18/2017
 |||
 |---|---|
 | **客户** | 客户负责为其 Azure 订阅中使用的任何第三方获得的软件和操作系统提供安全供应链文档。 客户实现声明应处理异常，以遵循该供应链文档标识的过程。 |
-| **提供商&nbsp; (Microsoft&nbsp;Azure)** | Microsoft 云供应链 (MCSC) 组包含 6 个唯一团队，每个团队均参与对 Azure 的保护，以防对供应链造成威胁。  <br />  <br /> - 采购 <br /> - 客户运营 <br /> - 部署质量 <br /> - 供应商关系管理 <br /> - 备用 <br />  <br /> 有关 Microsoft MCSC 组的详细信息，请参阅 [Azure Blueprint - NCSC 云安全原则 - 客户职责矩阵](https://aka.ms/blueprintuk-gcrm)中的完整说明。 |
+| **提供商&nbsp; (Microsoft&nbsp;Azure)** | Microsoft 云供应链 (MCSC) 组包含 6 个唯一团队，每个团队均参与对 Azure 的保护，以防对供应链造成威胁。  <br />  <br /> - 采购 <br /> - 客户运营 <br /> - 部署质量 <br /> - 供应商关系管理 <br /> - 备用 <br />  <br /> 有关 Microsoft MCSC 小组的详细信息，请参阅 [Azure 安全与符合性蓝图 - NCSC 云安全原则 - 客户职责矩阵](https://aka.ms/blueprintuk-gcrm)中的完整说明。 |
 
 
  ## <a name="ncsc-cloud-security-principle-9"></a>NCSC 云安全原则 9
@@ -337,7 +337,7 @@ ms.lasthandoff: 11/18/2017
 
 |||
 |---|---|
-| **客户** | 当管理员访问 Microsoft Azure 门户来管理其组织的 Azure 资源时，在门户和管理员设备之间传输的数据将通过加密的传输层安全性 (TLS) 通道，按照 CESG/NCSC 的建议，使用 2048 位 RSA/SHA256 加密密钥进行发送。  <br /> <br /> 此 Azure Blueprint 采用 Windows 身份验证、远程桌面和 BitLocker。 这些组件可以配置为依赖 FIPS 140 验证的加密模块。 <br /> <br /> 此 Azure Blueprint 使用 Azure Active Directory 实施的基于角色的访问控制，通过将用户分配给角色来强制执行逻辑访问授权，通过将用户分配给安全组和 Windows OS 级控制来强制执行 Active Directory。 分配给用户或组的 Azure Active Directory 角色在资源、组或订阅级别控制对 Azure 内资源的逻辑访问。 Active Directory 安全组控制对 OS 级别的资源和功能的逻辑访问。 |
+| **客户** | 当管理员访问 Microsoft Azure 门户来管理其组织的 Azure 资源时，在门户和管理员设备之间传输的数据将通过加密的传输层安全性 (TLS) 通道，按照 CESG/NCSC 的建议，使用 2048 位 RSA/SHA256 加密密钥进行发送。  <br /> <br /> 此蓝图采用 Windows 身份验证、远程桌面和 BitLocker。 这些组件可以配置为依赖 FIPS 140 验证的加密模块。 <br /> <br /> 此蓝图使用 Azure Active Directory 实施的基于角色的访问控制，通过将用户分配给角色来强制执行逻辑访问授权，通过将用户分配给安全组和 Windows OS 级控制来强制执行 Active Directory。 分配给用户或组的 Azure Active Directory 角色在资源、组或订阅级别控制对 Azure 内资源的逻辑访问。 Active Directory 安全组控制对 OS 级别的资源和功能的逻辑访问。 |
 | **提供商&nbsp; (Microsoft&nbsp;Azure)** | 客户通过 Azure 门户管理他们的 Azure 资源，该门户提供对所有虚拟机、数据库、云服务以及为客户帐户配置的其他资源的访问权限。 对 Azure 门户的 Web 访问受到行业标准的传输层安全性 (TLS) 1.2 连接的保护，根据 CESG/NCSC 的建议，使用 2048 位 RSA/SHA256 加密密钥。 提供了基于角色的访问控制，以使客户能够为特定用户和组提供对 Azure 管理资源的有限访问。 |
 
 
@@ -354,7 +354,7 @@ ms.lasthandoff: 11/18/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 部署应用程序网关、负载均衡器，并配置网络安全组规则来控制外部边界和内部子网之间的通信。 通过强制执行逻辑访问控制和系统体系结构，将用户功能与系统管理功能进行分离。 系统管理功能界面不同于用户界面。 所有管理连接都是通过管理子网中的安全堡垒主机 (jumpbox) 实现，子网中包含网络安全组规则，可以适当限制对生产资源的访问。 |
+| **客户** | 此蓝图部署应用程序网关、负载均衡器，并配置网络安全组规则来控制外部边界和内部子网之间的通信。 通过强制执行逻辑访问控制和系统体系结构，将用户功能与系统管理功能进行分离。 系统管理功能界面不同于用户界面。 所有管理连接都是通过管理子网中的安全堡垒主机 (jumpbox) 实现，子网中包含网络安全组规则，可以适当限制对生产资源的访问。 |
 | **提供商&nbsp; (Microsoft&nbsp;Azure)** | 如用户分离之间的分离置于 Azure 核心中所述。 Azure Active Directory (Azure AD 或 AAD) 可用于向有权访问 Azure 门户的所有用户提供访问权限，以只访问他们有权查看和管理的资源。 因此，在通过常见的 Azure 门户进行管理时，不同客户帐户之间将彼此严格隔离。 |
 
 
@@ -370,7 +370,7 @@ ms.lasthandoff: 11/18/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 使用 Active Directory 进行帐户管理。 保护对由此 Azure Blueprint 部署的资源的访问，以防止受到 Azure Active Directory、Active Directory 和 Windows 操作系统的内置 Kerberos 功能的攻击。 在 Kerberos 身份验证中，客户端发送的验证器包含其他数据，如加密的 IP 列表、客户端时间戳和票证生存期。 如果重播数据包，则会检查时间戳。 如果时间戳早于、或与上一验证器的时间相同，则会拒绝数据包。 |
+| **客户** | 此蓝图使用 Active Directory 进行帐户管理。 通过 Azure Active Directory、Active Directory 和 Windows 操作系统的内置 Kerberos 功能，防止此蓝图部署的资源访问受到重播攻击。 在 Kerberos 身份验证中，客户端发送的验证器包含其他数据，如加密的 IP 列表、客户端时间戳和票证生存期。 如果重播数据包，则会检查时间戳。 如果时间戳早于、或与上一验证器的时间相同，则会拒绝数据包。 |
 | **提供商&nbsp; (Microsoft&nbsp;Azure)** | Azure 提供了相关服务来帮助跟踪标识，并将其与可能已在使用的标识存储集成在一起。 Azure AD 是针对云的一项全面标识和访问管理服务，可帮助安全访问本地和云应用程序中的数据。 此外，Azure AD 通过将核心目录服务、高级身份管理、安全性和应用程序访问管理相结合，简化了用户和组的管理。 |
 
 
@@ -386,8 +386,8 @@ ms.lasthandoff: 11/18/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 在包含独立 Web 子网、数据库子网、Active Directory 子网和管理子网的体系结构中部署资源。 子网从逻辑上是以应用于各个子网的网络安全组规则进行分隔，以限制子网之间只能有系统和管理功能所必需的流量（例如，外部流量无法访问数据库子网、管理子网或 Active Directory 子网）。  <br /> <br /> 部署应用程序网关，以管理客户部署的 Web 应用程序的外部连接。 管理访问的外部连接仅限于管理子网中部署的 jumpbox（堡垒主机），并应用网络安全规则来限制到授权 IP 地址的外部连接。 |
-| **提供商&nbsp; (Microsoft&nbsp;Azure)** | Microsoft 使用一个称为“红色团队”的方法，通过常规渗透测试来改进 Azure 安全控件和进程。 红色团队是 Microsoft 内部的一组全职员工，该团队专注于针对 Microsoft 基础结构、平台和应用程序进行定向和持续攻击，而不是针对终端客户应用程序或数据。 <br /> <br /> 有关 Microsoft 红色团队以及蓝色团队工作说明的详细信息，请参阅 [Azure Blueprint - NCSC 云安全原则 - 客户职责矩阵](https://aka.ms/blueprintuk-gcrm)中的完整说明。  |
+| **客户** | 此蓝图在包含独立 Web 子网、数据库子网、Active Directory 子网和管理子网的体系结构中部署资源。 子网从逻辑上是以应用于各个子网的网络安全组规则进行分隔，以限制子网之间只能有系统和管理功能所必需的流量（例如，外部流量无法访问数据库子网、管理子网或 Active Directory 子网）。  <br /> <br /> 部署应用程序网关，以管理客户部署的 Web 应用程序的外部连接。 管理访问的外部连接仅限于管理子网中部署的 jumpbox（堡垒主机），并应用网络安全规则来限制到授权 IP 地址的外部连接。 |
+| **提供商&nbsp; (Microsoft&nbsp;Azure)** | Microsoft 使用一个称为“红色团队”的方法，通过常规渗透测试来改进 Azure 安全控件和进程。 红色团队是 Microsoft 内部的一组全职员工，该团队专注于针对 Microsoft 基础结构、平台和应用程序进行定向和持续攻击，而不是针对终端客户应用程序或数据。 <br /> <br /> 有关 Microsoft 红色团队以及蓝色团队工作说明的详细信息，请参阅 [Azure 安全与符合性蓝图 - NCSC 云安全原则 - 客户职责矩阵](https://aka.ms/blueprintuk-gcrm)中的完整说明。  |
 
 
  ## <a name="ncsc-cloud-security-principle-12"></a>NCSC 云安全原则 12
@@ -415,14 +415,14 @@ ms.lasthandoff: 11/18/2017
 
 |||
 |---|---|
-| **客户** | 通过此 Azure Blueprint 审核的事件包括用于部署资源并由 Azure 活动日志审核的事件、OS 级日志和 Active Directory 日志。 这些事件日志包括足以确定事件发生时间的信息、事件的来源、事件的结果，以及支持安全事件调查的其他详细信息。 客户可选择其他事件进行审核，以满足任务需要。 所有 Azure 资源在 Azure 门户中都提供了审核日志。 |
+| **客户** | 通过此蓝图审核的事件包括用于部署资源并由 Azure 活动日志审核的事件、OS 级日志和 Active Directory 日志。 这些事件日志包括足以确定事件发生时间的信息、事件的来源、事件的结果，以及支持安全事件调查的其他详细信息。 客户可根据任务需求选择其他要审核的事件。 所有 Azure 资源在 Azure 门户中都提供了审核日志。 |
 | **提供商&nbsp; (Microsoft&nbsp;Azure)** | 一旦组织系统和网络中发生事件，Azure Log Analytics 便在任何人篡改它们之前收集事件记录，并通过在多台计算机之间关联数据来允许不同类型的分析。 Azure 使客户能够从 Azure IaaS 和 PaaS 角色生成安全事件，并将其收集到其订阅的中心存储。 这些收集的事件可以导出到本地安全信息和事件管理 (SIEM) 系统，以便进行持续监视。 数据传输到存储后，可以通过许多选项来查看诊断数据。 <br /> <br /> Azure 内置诊断可以帮助进行调试。 对于在 Azure 中部署的应用程序，默认情况下会启用一组操作系统安全事件。 客户可以通过自定义操作系统审核策略来添加、删除或修改要审核的事件。 <br /> <br /> 在高级别上，在 Azure 中使用 IaaS 部署基于 Windows 的 VM 时，使用 Windows 事件转发 (WEF) 或更高级的 Azure 诊断开始收集日志将简单易行。 此外，Azure 诊断可以配置为从 PaaS 角色实例中收集日志和事件。 在使用基于 IaaS 的 VM 时，客户只需通过启用 Windows Servers 的相同方式来配置并启用所需的安全事件，即可在本地数据中心记录审核。 对于 Web 应用程序，如果是 Azure 的主应用程序和部署，还可以启用 IIS 日志记录。 客户可以始终在他们选择的受支持地理位置的存储帐户中存储安全数据，以满足数据主权要求。 |
 
 
  ## <a name="ncsc-cloud-security-principle-14"></a>NCSC 云安全原则 14
 ### <a name="secure-use-of-the-service"></a>安全使用服务
 如果使用服务不当，则可能破坏云服务和在其中保存的数据的安全性。 因此，在使用该服务时，你将承担一定的责任，以便数据得到充分保护。
-责任范围将根据云服务的部署模型以及你打算使用该服务的场景而异。 各个服务的特定功能也可能有影响。 例如，内容传送网络如何保护私钥，或者云支付提供商如何检测欺诈性交易，这些都是除云安全原则所涵盖的常规注意事项以外的重要安全考虑事项。  
+责任范围将根据云服务的部署模型以及你打算使用该服务的场景而异。 各个服务的特定功能也可能有影响。 例如，内容传送网络如何保护私钥，或者云支付提供商如何检测欺诈性交易，这些都是除云安全原则所涵盖的常规注意事项以外的重要安全考虑事项。
 使用 IaaS 和 PaaS 产品/服务，你将负责数据和工作负荷安全的重要方面。 例如，如果你购买 IaaS 计算实例，通常要负责安装现代操作系统、安全配置该操作系统、安全部署任何应用程序，并通过应用修补程序或执行所需维护来维护该实例。
 
 
@@ -433,7 +433,7 @@ ms.lasthandoff: 11/18/2017
 
 |||
 |---|---|
-| **客户** | Azure 资源管理器模板和构成此 Azure Blueprint 的附带资源遵循安全的深度防护方法。 若要符合这一原则，客户需要进一步配置，以便在生产中使用（例如，数据库管理软件、Web 应用程序部署）。 |
+| **客户** | Azure 资源管理器模板和构成此蓝图的附带资源遵循安全的深度防护方法。 若要符合这一原则，客户需要进一步配置，以便在生产中使用（例如，数据库管理软件、Web 应用程序部署）。 |
 | **提供商&nbsp; (Microsoft&nbsp;Azure)** | 不适用 |
 
 ## <a name="disclaimer"></a>免责声明
@@ -443,4 +443,4 @@ ms.lasthandoff: 11/18/2017
  - 客户可复制本文档，将其用于内部参考。
  - 本文档中的某些建议可能会导致 Azure 中数据、网络或计算资源使用量的增加，还可能导致客户 Azure 许可或订阅成本增加。
  - 本体系结构旨在作为客户的基础，以根据他们的特定需求进行调整，而不应在生产环境中按原样使用。
- - 本文档作为参考开发，不应用于定义客户用来满足特定符合性需求和法规的所有方法。 客户应在已批准的客户实现中向其组织寻求合法支持。
+ - 本文档是作为参考内容制定的，不应该用于定义客户用来满足特定符合性要求和法规的所有方法。 客户应在已批准的客户实施项目中向其组织寻求合法支持。

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: e18de2adc9aac585d6890dd7b43a54f1a0ca177e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb1cadec240dc7f6e3ac5b8932d66c3d55c76e42
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>媒体编码器高级工作流格式和编解码器
 > [!NOTE]
-> 有关高级编码器的问题，请发送电子邮件到 Microsoft.com。
+> 有关高级编码器的问题，请发送电子邮件到 mepd@microsoft.com。
 > 
-> 本主题中所述的 Media Encoder Premium Workflow 媒体处理器在中国不可用。 
+> 本主题中所述的媒体编码器高级工作流媒体处理器在中国不可用。 
 > 
 > 
 

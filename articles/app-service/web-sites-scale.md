@@ -1,6 +1,6 @@
 ---
 title: "向上缩放 Azure 中的应用 | Microsoft Docs"
-description: "了解如何向上缩放 Azure 应用服务中的应用以增加容量和功能。"
+description: "了解如何扩展 Azure 应用服务中的应用规模以增加容量和功能。"
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: 248b96cc97367ca2cb3fd82c9824d43dfee43c0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f6244e3f739424be169f1ea117500159bd5e4254
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="scale-up-an-app-in-azure"></a>向上缩放 Azure 中的应用
 
 > [!NOTE]
-> 与现有定价层相比，新的 PremiumV2 层提供更快的 CPU 和 SSD 存储以及双倍的内存-内核比。 要纵向扩展到 PremiumV2 层，请参阅[为应用服务配置 PremiumV2 层](app-service-configure-premium-tier.md)。
+> 与现有定价层相比，新的 PremiumV2 层提供更快的 CPU 和 SSD 存储以及双倍的内存-内核比。 借助性能优势，可以通过在更少的实例上运行应用来节省资金。 要纵向扩展到 PremiumV2 层，请参阅[为应用服务配置 PremiumV2 层](app-service-configure-premium-tier.md)。
 >
 
-本文介绍如何在 Azure 应用服务中缩放应用。 缩放的工作流有两种：向上缩放和向外缩放；本文介绍向上缩放工作流。
+本文介绍如何在 Azure 应用服务中缩放应用。 缩放的工作流有两种：纵向扩展和横向扩展；本文介绍纵向扩展工作流。
 
-* [向上缩放](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)：获取更多 CPU、内存、磁盘空间和额外功能，例如专用虚拟机 (VMs)、自定义域和证书、暂存槽、自动缩放以及更多功能。 可以通过更改应用所属的应用服务计划的定价层来向上缩放。
+* [向上缩放](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)：获取更多 CPU、内存、磁盘空间和额外功能，例如专用虚拟机 (VMs)、自定义域和证书、暂存槽、自动缩放以及更多功能。 可以通过更改应用所属的应用服务计划的定价层来提升。
 * [向外缩放](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling)：增加用于运行应用的 VM 实例数。
   最多可以向外缩放到 20 个实例，具体取决于定价层。 独立层中的[应用服务环境](environment/intro.md)会进一步将横向扩展计数增加到 100 个实例。 有关向外缩放的详细信息，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md)。 可在该文中了解如何使用自动缩放，即根据预定义的规则和计划自动缩放实例计数。
 
 缩放设置仅需几秒即可应用，并且会影响[应用服务计划](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)中的所有应用。
-在此过程中，不需要更改代码或重新部署应用程序。
+缩放设置不需要更改代码或重新部署应用程序。
 
 有关各个应用服务计划的定价和功能的信息，请参阅[应用服务定价详细信息](https://azure.microsoft.com/pricing/details/web-sites/)。  
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 1. 在浏览器中，打开 [Azure 门户][portal]。
 2. 在应用服务应用页面，单击“所有设置”，然后单击“纵向扩展”。
    
-    ![导航到向上缩放 Azure 应用。][ChooseWHP]
+    ![导航以纵向扩展 Azure 应用规模。][ChooseWHP]
 3. 选择层，并单击“选择”。
    
     在操作完成后，“通知”选项卡上将闪现绿色的**成功**字样。
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 <a name="ScalingSQLServer"></a>
 
 ## <a name="scale-related-resources"></a>与缩放相关的资源
-如果应用依赖于其他服务，如 Azure SQL 数据库或 Azure 存储，则可单独对这些资源进行纵向扩展。 这些资源不受应用服务计划管理。
+如果应用依赖于其他服务，如 Azure SQL 数据库或 Azure 存储，则可单独对这些资源进行纵向扩展。 这些资源不由应用服务计划管理。
 
 1. 在“软件包”中，单击“资源组”链接。
    
@@ -71,7 +71,7 @@ ms.lasthandoff: 10/11/2017
    
     还可以为 SQL 数据库实例启用[异地复制](../sql-database/sql-database-geo-replication-overview.md)。
    
-    对于 Azure 存储资源，请单击“设置” > “配置”以向上缩放存储选项。
+    对于 Azure 存储资源，请单击“设置” > “配置”以增大存储选项。
    
     ![向上缩放 Azure 应用使用的 Azure 存储帐户](./media/web-sites-scale/ScaleStorage.png)
 
@@ -81,11 +81,6 @@ ms.lasthandoff: 10/11/2017
 ## <a name="compare-pricing-tiers"></a>比较定价层
 有关详细信息（例如每个定价层的 VM 大小），请参阅[应用服务定价详细信息](https://azure.microsoft.com/pricing/details/web-sites/)。
 有关服务限制、配额和约束的表以及每个层级所支持的功能，请参阅[应用服务限制](../azure-subscription-service-limits.md#app-service-limits)。
-
-> [!NOTE]
-> 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](https://azure.microsoft.com/try/app-service/)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用任何信用卡，也无需做出任何承诺。
-> 
-> 
 
 <a name="Next Steps"></a>
 

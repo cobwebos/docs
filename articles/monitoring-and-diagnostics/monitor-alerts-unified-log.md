@@ -12,20 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 02/02/2018
 ms.author: vinagara
-ms.openlocfilehash: 99d222102ab0245c7c4dc8603eaedcfc88ae7a66
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: f6072e4e8a9ab72f677c35e498e31b5218579f1b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Azure Monitor - 警报（预览版）中的日志警报
 本文详细说明了 Analytics 中的警报规则在 Azure 警报（预览版）中如何工作，并介绍了不同类型的日志警报规则之间的差异。
-当前，Azure 警报（预览版）仅支持与来自 [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 的以[新的 Log Analytics查询语言](../log-analytics/log-analytics-log-search-upgrade.md)编写的查询相关的日志警报。
+
+目前，Azure 警报（预览版）支持与来自 [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 和 [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) 的查询相关的日志警报。
 
 > [!WARNING]
-> Azure 警报（预览版）- 日志警报当前不支持跨工作空间或跨应用查询。 
+
+> 目前，Azure 警报（预览版）中的日志警报不支持跨工作区或跨应用查询。
 
 ## <a name="log-alert-rules"></a>日志警报规则
 
@@ -70,7 +72,16 @@ Log Analytics 中的预警规则均为以下两种类型之一。  这些类型�
 
 **聚合函数**：确定要执行的计算以及可能要聚合的数字字段。  例如，**count()** 返回查询中的记录数，**avg(CounterValue)** 返回 CounterValue 字段在特定时间间隔内的平均值。
 
+> [!NOTE]
+
+> 查询中的聚合函数必须名为：AggregatedValue 并提供数值。
+
+
 **分组字段**：将为此字段的每个实例创建包含聚合值的记录，并可为每个实例生成警报。  例如，如果需要为每台计算机生成一个警报，则可使用“按计算机”。   
+
+> [!NOTE]
+
+> 对于基于 Application Insights 的指标度量警报规则，可以指定对数据分组的字段。 若要执行此操作，请使用规则定义中的“聚合基于”选项。   
 
 **间隔**：定义一个时间间隔，在该间隔内对数据进行聚合。  例如，如果指定“五分钟”，则会在为警报指定的时间范围内，为分组字段（按 5 分钟间隔进行聚合）的每个实例创建一个记录。
 
@@ -93,6 +104,6 @@ Log Analytics 中的预警规则均为以下两种类型之一。  这些类型�
 
 
 ## <a name="next-steps"></a>后续步骤
-* [获取 Azure 警报（预览版）的概述](monitoring-overview-unified-alerts.md) 
+* [获取 Azure 警报（预览版）的概述](monitoring-overview-unified-alerts.md)
 * 了解如何[使用 Azure 警报（预览版）](monitor-alerts-unified-usage.md)
 * 详细了解 [Log Analytics](../log-analytics/log-analytics-overview.md)。    

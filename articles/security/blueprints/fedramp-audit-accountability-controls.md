@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint 自动化 - 审核和责任"
-description: "FedRAMP 的 Web 应用 - 审核和责任"
+title: "Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化 - 审核和责任"
+description: "FedRAMP Web 应用程序自动化 - 审核和责任"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 83ef9cbb7652bf128d7758237a8e6fbeed6c6565
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: c37d027882882c637585d745ce81111ba30f6257
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="audit-and-accountability-au"></a>审核和责任 (AU)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 的审核功能由 Azure Monitor 和 OMS 中的 Log Analytics 服务提供。 Azure Monitor 提供与已部署资源相关的活动的详细审核日志。 这些日志和 OS 级别的日志由 Log Analytics 收集，并存储在 OMS 存储库中。 Log Analytics 可关联此解决方案部署的资源中的审核数据，并且可扩展到客户部署的 Web 应用程序。 |
+| **客户** | 此蓝图的审核功能由 Azure Monitor 和 OMS 中的 Log Analytics 服务提供。 Azure Monitor 提供与已部署资源相关的活动的详细审核日志。 这些日志和 OS 级别的日志由 Log Analytics 收集，并存储在 OMS 存储库中。 Log Analytics 可关联此解决方案部署的资源中的审核数据，并且可扩展到客户部署的 Web 应用程序。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 审核的事件包括足以确定事件发生时间、事件来源和事件结果的信息，以及其他支持安全事件调查的详细信息。 |
+| **客户** | 此蓝图审核的事件包括足以确定事件发生时间、事件来源和事件结果的信息，以及其他支持安全事件调查的详细信息。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 审核的事件包括通过 Azure 活动日志（针对已部署的资源）、OS 级日志、Active Directory 日志和 SQL Server 日志审核的事件。 客户可根据任务需求选择其他要审核的事件。 |
+| **客户** | 此蓝图审核的事件包括通过已部署资源的 Azure 活动日志、OS 级日志、Active Directory 日志和 SQL Server 日志审核的事件。 客户可根据任务需求选择其他要审核的事件。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 依赖于 Azure、Windows Server 和 SQL Server 的内置审核功能。 这些审核解决方案捕获的审核记录包含充足的详细信息，可满足此控制措施的需求。 |
+| **客户** | 此蓝图依赖于 Azure、Windows Server 和 SQL Server 的内置审核功能。 这些审核解决方案捕获的审核记录包含充足的详细信息，可满足此控制措施的需求。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | Azure 活动日志事件使用的详细架构中包含多个字段，对应超过 20 种审核信息。 除了活动日志之外，此 Azure Blueprint 还在 OMS 中部署了 Log Analytics 解决方案，支持 Windows 日志、Linux 日志、Azure 诊断日志和客户日志等多种数据源。  |
+| **客户** | Azure 活动日志事件使用的详细架构中包含多个字段，对应超过 20 种审核信息。 除了活动日志之外，此蓝图还在 OMS 中部署了 Log Analytics 解决方案，以支持 Windows 日志、Linux 日志、Azure 诊断日志和客户日志等多种数据源。  |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 部署的所有虚拟机都加入已部署的 Active Directory 域。 所有已加入域的虚拟机都实现一组策略，可通过配置该策略集中管理 OS 级审核系统配置。 |
+| **客户** | 此蓝图部署的所有虚拟机都将加入已部署的 Active Directory 域。 所有已加入域的虚拟机都实现一组策略，可通过配置该策略集中管理 OS 级审核系统配置。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 分配可保留一年审核记录的充足存储容量。 所有审核记录都由 Log Analytics 收集，并配置一年的保留期。 |
+| **客户** | 此蓝图分配可保留一年审核记录的充足存储容量。 所有审核记录都由 Log Analytics 收集，并配置一年的保留期。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -189,7 +189,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 由此 Azure Blueprint 部署的资源生成的所有审核记录都由 Log Analytics 收集，并保留一年时间。 此审核记录存储的存储分配是动态分配的，可确保有足够的容量可用。 |
+| **客户** | 由此蓝图部署的资源生成的所有审核记录都由 Log Analytics 收集，并保留一年时间。 此审核记录存储的存储分配是动态分配的，可确保有足够的容量可用。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -203,7 +203,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 由此 Azure Blueprint 部署的资源生成的所有审核记录都由 Log Analytics 收集，并保留一年时间。 此审核记录存储的存储分配是动态分配的，可确保有足够的容量可用。 |
+| **客户** | 由此蓝图部署的资源生成的所有审核记录都由 Log Analytics 收集，并保留一年时间。 此审核记录存储的存储分配是动态分配的，可确保有足够的容量可用。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 在 OMS 中实现 Log Analytics 解决方案，以便集中已部署资源中的审核数据，为组织范围的态势感知提供支持。 客户可能选择进一步将 Log Analytics 与其他系统集成。 |
+| **客户** | 此蓝图在 OMS 中实现 Log Analytics 解决方案，以便集中已部署资源中的审核数据，为组织范围的态势感知提供支持。 客户可能选择进一步将 Log Analytics 与其他系统集成。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -287,7 +287,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 在 OMS 中实现 Log Analytics 解决方案，以集中已部署资源中的审核数据，为集中评审、分析和报告提供支持。 |
+| **客户** | 此蓝图在 OMS 中实现 Log Analytics 解决方案，以集中已部署资源中的审核数据，为集中评审、分析和报告提供支持。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -301,7 +301,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 部署 OMS 安全和审核解决方案。 此解决方案提供有关安全状况的全面信息。 安全和审核仪表板使用部署的 OMS 解决方案中的可用数据，提供对部署资源的安全状态的高级洞察，同时集成基线和修补程序评估中的日志数据和漏洞数据。 |
+| **客户** | 此蓝图部署 OMS 安全和审核解决方案。 此解决方案提供有关安全状况的全面信息。 安全和审核仪表板使用部署的 OMS 解决方案中的可用数据，提供对部署资源的安全状态的高级洞察，同时集成基线和修补程序评估中的日志数据和漏洞数据。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -329,7 +329,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 由此 Azure Blueprint 部署的 Windows 虚拟机实现 OS 级权限，限制用户可对审核信息采取的操作。 在 Azure 中，可将用户或用户组分配到各角色（例如，所有者、参与者、读者或自定义角色），以限制可对任何资源或部署的解决方案（包括 Log Analytics ）采取的操作。  |
+| **客户** | 由此蓝图部署的 Windows 虚拟机实现 OS 级权限，限制用户可对审核信息采取的操作。 在 Azure 中，可将用户或用户组分配到各角色（例如，所有者、参与者、读者或自定义角色），以限制可对任何资源或部署的解决方案（包括 Log Analytics ）采取的操作。  |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -357,7 +357,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 在 OMS 中实现 Log Analytics 解决方案。 Log Analytics 通过将托管资源的数据收集到中心存储库来为 OMS 提供监视服务。 收集后，可以分析、导出数据或针对它们发出警报。 |
+| **客户** | 此蓝图在 OMS 中实现 Log Analytics 解决方案。 Log Analytics 通过将托管资源的数据收集到中心存储库来为 OMS 提供监视服务。 收集后，可以分析、导出数据或针对它们发出警报。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -371,7 +371,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 在 OMS 中实现 Log Analytics 解决方案。 Log Analytics 通过将托管资源的数据收集到中心存储库来为 OMS 提供监视服务。 通过 Log Analytics 进行收集时，不会更改审核记录的内容和时间排序。 |
+| **客户** | 此蓝图在 OMS 中实现 Log Analytics 解决方案。 Log Analytics 通过将托管资源的数据收集到中心存储库来为 OMS 提供监视服务。 通过 Log Analytics 进行收集时，不会更改审核记录的内容和时间排序。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -385,7 +385,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 在 OMS 中实现 Log Analytics 解决方案。 Log Analytics 通过将托管资源的数据收集到中心存储库来为 OMS 提供监视服务。 收集后，可以分析、导出数据或针对它们发出警报。 Log Analytics 包含强大的查询语言，可提取存储库中存储的数据。 |
+| **客户** | 此蓝图在 OMS 中实现 Log Analytics 解决方案。 Log Analytics 通过将托管资源的数据收集到中心存储库来为 OMS 提供监视服务。 收集后，可以分析、导出数据或针对它们发出警报。 Log Analytics 包含强大的查询语言，可提取存储库中存储的数据。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -399,7 +399,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 部署的资源使用内部系统时钟生成审核记录的时间戳。 |
+| **客户** | 此蓝图部署的资源使用内部系统时钟生成审核记录的时间戳。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -413,7 +413,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 部署的资源使用内部系统时钟生成审核记录的时间戳。 时间戳以 UTC 格式记录。 |
+| **客户** | 此蓝图部署的资源使用内部系统时钟生成审核记录的时间戳。 时间戳以 UTC 格式记录。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -427,7 +427,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 部署的资源使用内部系统时钟生成审核记录的时间戳。 内部系统时钟配置为与权威时间源同步。 |
+| **客户** | 此蓝图部署的资源使用内部系统时钟生成审核记录的时间戳。 内部系统时钟配置为与权威时间源同步。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -441,7 +441,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 部署的资源使用内部系统时钟生成审核记录的时间戳。 内部系统时钟配置为与权威时间源同步。 |
+| **客户** | 此蓝图部署的资源使用内部系统时钟生成审核记录的时间戳。 内部系统时钟配置为与权威时间源同步。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -455,7 +455,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 逻辑访问控制用于防止此 Azure Blueprint 内的审核信息和工具遭到未经授权的访问、修改和删除。 Azure Active Directory 使用基于角色的组成员身份强制执行已批准的逻辑访问。 查看审核信息和使用审核工具的能力仅限于需要这些权限的用户。 |
+| **客户** | 逻辑访问控制用于防止此蓝图内的审核信息和工具遭到未经授权的访问、修改和删除。 Azure Active Directory 使用基于角色的组成员身份强制执行已批准的逻辑访问。 查看审核信息和使用审核工具的能力仅限于需要这些权限的用户。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -469,7 +469,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 在 OMS 中实现 Log Analytics 服务。 部署的 VM 和 Azure 诊断存储帐户连接到 Log Analytics 的源，并与其来源分开保留。 数据由 OMS 近乎实时地进行收集。 |
+| **客户** | 此蓝图在 OMS 中实现 Log Analytics 服务。 部署的 VM 和 Azure 诊断存储帐户连接到 Log Analytics 的源，并与其来源分开保留。 数据由 OMS 近乎实时地进行收集。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -483,7 +483,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 在 OMS 中实现 Log Analytics 服务。 Log Analytics 通过使用 Azure 身份验证对证书和数据完整性进行验证，确保传入数据来自受信任的源。 |
+| **客户** | 此蓝图在 OMS 中实现 Log Analytics 服务。 Log Analytics 通过使用 Azure 身份验证对证书和数据完整性进行验证，确保传入数据来自受信任的源。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -497,7 +497,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 逻辑访问控制用于防止此 Azure Blueprint 内的审核信息和工具遭到未经授权的访问、修改和删除。 Azure Active Directory 使用基于角色的组成员身份强制执行已批准的逻辑访问。 查看审核信息和使用审核工具的能力仅限于需要这些权限的用户。
+| **客户** | 逻辑访问控制用于防止此蓝图内的审核信息和工具遭到未经授权的访问、修改和删除。 Azure Active Directory 使用基于角色的组成员身份强制执行已批准的逻辑访问。 查看审核信息和使用审核工具的能力仅限于需要这些权限的用户。
  |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
@@ -512,7 +512,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 的审核功能由 Azure Monitor 和 OMS 中的 Log Analytics 服务提供。 Azure Monitor 提供与已部署资源相关的活动的详细审核日志。 这些日志和 OS 级别的日志由 Log Analytics 收集，并存储在 OMS 存储库中。 这些日志包含信息系统事件的详细记录，有助于防范不可否认性。 此外，使用基于角色的访问控制来限制对日志数据的访问，防止对日志数据进行未经授权的修改或删除。 |
+| **客户** | 此蓝图的审核功能由 Azure Monitor 和 OMS 中的 Log Analytics 服务提供。 Azure Monitor 提供与已部署资源相关的活动的详细审核日志。 这些日志和 OS 级别的日志由 Log Analytics 收集，并存储在 OMS 存储库中。 这些日志包含信息系统事件的详细记录，有助于防范不可否认性。 此外，使用基于角色的访问控制来限制对日志数据的访问，防止对日志数据进行未经授权的修改或删除。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -526,7 +526,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 在 OMS 中实现 Log Analytics 服务。 Log Analytics 通过将托管资源的数据收集到中心存储库来为 OMS 提供监视服务。 收集数据后，每个 Log Analytics 配置保留一年。 |
+| **客户** | 此蓝图在 OMS 中实现 Log Analytics 服务。 Log Analytics 通过将托管资源的数据收集到中心存储库来为 OMS 提供监视服务。 收集数据后，每个 Log Analytics 配置保留一年。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -534,13 +534,13 @@ ms.lasthandoff: 11/23/2017
 
 #### <a name="audit-generation"></a>审核生成
 
-**AU-12.a** 信息系统在 [赋值：组织定义的信息系统组件] 中为 AU-2 a 中定义的可审核事件提供审核记录生成功能。 at [Assignment: organization-defined information system components].
+**AU-12.a** 信息系统在 [分配：组织定义的信息系统组件] 为 AU-2 a 中定义的可审核事件提供审核记录生成功能 。
 
 **责任：**`Customer Only`
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 审核的事件包括通过 Azure 活动日志（针对已部署的资源）、OS 级日志、Active Directory 日志和 SQL Server 日志审核的事件。 客户可根据任务需求选择其他要审核的事件。 |
+| **客户** | 此蓝图审核的事件包括通过已部署资源的 Azure 活动日志、OS 级日志、Active Directory 日志和 SQL Server 日志审核的事件。 客户可根据任务需求选择其他要审核的事件。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -554,7 +554,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 使用基于角色的访问控制在 Azure 和虚拟机 OS 级限制对审核功能的访问。 拥有基于角色的相应授权的用户可以配置由此 Azure Blueprint 部署的资源审核的所选事件配置。 |
+| **客户** | 使用基于角色的访问控制在 Azure 和虚拟机 OS 级限制对审核功能的访问。 拥有基于角色的相应授权的用户可以配置要由此蓝图部署的资源审核的所选事件配置。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -562,13 +562,13 @@ ms.lasthandoff: 11/23/2017
 
 #### <a name="audit-generation"></a>审核生成
 
-**AU-12.c** 信息系统使用 AU-3 中定义的内容为 AU-2.d 中定义的事件生成审核记录。 with the content defined in AU-3.
+**AU-12.c** 信息系统使用 AU-3 中定义的内容为 AU-2.d 中定义的事件生成审核记录 。
 
 **责任：**`Customer Only`
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 审核的事件包括通过 Azure 活动日志（针对已部署的资源）、OS 级日志、Active Directory 日志和 SQL Server 日志审核的事件。 客户可根据任务需求选择其他要审核的事件。 |
+| **客户** | 此蓝图审核的事件包括通过已部署资源的 Azure 活动日志、OS 级日志、Active Directory 日志和 SQL Server 日志审核的事件。 客户可根据任务需求选择其他要审核的事件。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -582,7 +582,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 在 OMS 中实现 Log Analytics 服务。 Log Analytics 通过将托管资源的数据收集到中心存储库来为 OMS 提供监视服务。 审核记录时间戳不会被更改，因此审核线索是时间相关的。 |
+| **客户** | 此蓝图在 OMS 中实现 Log Analytics 服务。 Log Analytics 通过将托管资源的数据收集到中心存储库来为 OMS 提供监视服务。 审核记录时间戳不会被更改，因此审核线索是时间相关的。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -596,5 +596,5 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 使用基于角色的访问控制在 Azure 和虚拟机 OS 级限制对审核功能的访问。 拥有基于角色的相应授权的用户可以配置由此 Azure Blueprint 部署的资源审核的所选事件配置。 |
+| **客户** | 使用基于角色的访问控制在 Azure 和虚拟机 OS 级限制对审核功能的访问。 拥有基于角色的相应授权的用户可以配置要由此蓝图部署的资源审核的所选事件配置。 |
 | **提供商 (Microsoft Azure)** | 不适用 |

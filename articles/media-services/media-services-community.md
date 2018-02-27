@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: juliako
-ms.openlocfilehash: 2743ef7e60371329bcad0090733eb8e40560c5f1
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: b32997f9a936b73a08b367ca69341da24f31f3a8
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-media-services-community"></a>Azure 媒体服务社区
 此 Azure 媒体服务 (AMS) 社区页讨论了如何通过不同的方式来获取有关 AMS 的更新。 此外，还可以观看新视频和播客、提出问题并提供反馈。   
@@ -59,4 +59,6 @@ Azure 媒体服务主要支持电子邮件是：**amshelp@microsoft.com**。
 | Azure Media Player |ampinfo@microsoft.com |
 | Azure 媒体资源管理器 |amse@microsoft.com |
 | 工作流设计器 |mepd@microsoft.com |
+| 文件流式传输和打包 |amsstreaming@microsoft.com |
+| 实时传送视频流和打包 |amslived@microsoft.com |
 

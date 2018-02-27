@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL 数据库功能概述 | Microsoft 文档"
-description: "此页面概述了 Azure SQL 数据库逻辑服务器和数据库，并且包括了功能支持矩阵和所列出的每项功能的链接。"
+title: "Azure SQL 数据库功能比较 | Microsoft Docs"
+description: "本文对 SQL Server 和 Azure SQL 数据库的功能进行了比较，并说明了它们之间的差异。"
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 10/25/2017
+ms.date: 02/08/2018
 ms.author: carlrab
-ms.openlocfilehash: a15c23683a3334328720e8ae4369b2495f9613de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: dc9a7fa0a7fa0e029f71510cc516496ed12a6274
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="azure-sql-database-features"></a>Azure SQL 数据库功能
+# <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>功能比较：Azure SQL 数据库与 SQL Server 
 
 Azure SQL 数据库与 SQL Server 共享通用基本代码，并在数据库级别支持大多数相同功能。 Azure SQL 数据库和 SQL Server 之间的主要功能差异存在于实例级别。 
 
@@ -38,7 +38,7 @@ Azure SQL 数据库与 SQL Server 共享通用基本代码，并在数据库级�
 | SQL Server 功能 | **在 Azure SQL 数据库中受支持** | 
 | --- | --- |  
 | [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | 是 - 请参阅[证书存储](sql-database-always-encrypted.md)和[密钥保管库](sql-database-always-encrypted-azure-key-vault.md)|
-| [AlwaysOn 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | 每个数据库均包含高可用性。 [简要介绍如何使用 Azure SQL 数据库确保业务连续性](sql-database-geo-replication-overview.md)中对灾难恢复进行了讨论 |
+| [AlwaysOn 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | 每个数据库均包含高可用性。 请参阅[高可用性和 Azure SQL 数据库](sql-database-high-availability.md)。 [简要介绍如何使用 Azure SQL 数据库确保业务连续性](sql-database-geo-replication-overview.md)中对灾难恢复进行了讨论 |
 | [附加数据库](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | 否 |
 | [应用程序角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) | 是 |
 |[审核](/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [是](sql-database-auditing.md)|

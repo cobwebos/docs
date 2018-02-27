@@ -9,11 +9,11 @@ ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: 
-ms.openlocfilehash: af373e2770ad020b3a3eb669424c001670ec9204
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: ffff4a663b64342142f42a662905a290044e2dfb
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 策略定义结构
 
@@ -66,14 +66,11 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 
 ## <a name="mode"></a>Mode
 
-建议将 `mode` 设置为 `all` 以使策略分配评估所有资源组和类型。 在[允许来自资源组的自定义 VM 映像](scripts/allow-custom-vm-image.md)一文中，可以看到在资源组中强制实施标记的策略定义示例。
+**模式**确定将对策略评估哪些资源类型。 支持的模式包括：
+* `all`：评估资源组和所有资源类型 
+* `indexed`：仅评估支持标记和位置的资源类型
 
-将其设置为 all 时，系统会评估该策略的资源组和所有资源类型。 门户对所有策略使用 all。 如果使用 PowerShell 或 Azure CLI，则需要指定 `mode` 参数并将其设置为 all。
-
-使用门户创建的所有策略定义都使用 `all` 模式，但如果想要使用 PowerShell 或 Azure CLI，则需要指定 `mode` 参数并将其设置为 `all`。
-
-如果将模式设置为 `indexed`，将仅在支持标记和位置的资源类型上评估策略分配。
-
+建议将**模式**设置为 `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则需要指定 **mode** 参数并将其设置为 `all`。 
 
 ## <a name="parameters"></a>parameters
 
@@ -265,6 +262,7 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 | Microsoft.Compute/virtualMachines/imageVersion | 设置用于创建虚拟机的平台映像或应用商店映像的版本。 |
 | Microsoft.Compute/virtualMachines/osDisk.Uri | 设置 vhd URI。 |
 | Microsoft.Compute/virtualMachines/sku.name | 设置虚拟机的大小。 |
+| Microsoft.Compute/virtualMachines/availabilitySet.id | 为虚拟机设置可用性集 ID。 |
 
 **Microsoft.Compute/virtualMachines/extensions**
 
@@ -335,6 +333,7 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 | Microsoft.Storage/storageAccounts/enableFileEncryption | 设置在将数据存储于文件存储服务中时，服务是否对数据进行加密。 |
 | Microsoft.Storage/storageAccounts/sku.name | 设置 SKU 名称。 |
 | Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | 设置为仅允许 https 流入存储服务。 |
+| Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].id | 检查是否启用了虚拟网络服务终结点。 |
 
 ## <a name="initiatives"></a>计划
 

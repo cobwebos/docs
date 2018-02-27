@@ -408,7 +408,7 @@ Net # 可选择支持定义具有共享权重的多个捆绑。 如果任意两�
   * **NodeCount**\[1] = (13 - 5) / 2 + 1 = 5。 
   * **NodeCount**\[2] = (13 - 5) / 2 + 1 = 5。 
 * 可通过使用层的声明维数 [50, 5, 5] 计算节点总数，如下所示：***MapCount** * **NodeCount**\[0] * **NodeCount**\[1] * **NodeCount**\[2] = 10 * 5 * 5 * 5*
-* 因为仅对于 *d == 0*，**Sharing**[d] 为 False，所以内核数为 ***MapCount** * **NodeCount**\[0] = 10 * 5 = 50*。 
+* 因为仅对于 *d == 0*，**Sharing**[d] 为 False，所以内核数为 ***MapCount** * **NodeCount**\[0] = 10 * 5 = 50 \*。 
 
 ## <a name="acknowledgements"></a>致谢
 用于自定义神经网络体系结构的 Net# 语言由 Microsoft 的 Shon Katzenberger（架构师，机器学习）和 Alexey Kamenev（软件工程师，Microsoft Research）开发。 在内部，其用于机器学习项目和应用程序，其范围包括从映像检测到文本分析。 有关详细信息，请参阅 [Neural Nets in Azure ML - Introduction to Net#](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)（Azure ML 中的神经网络 - Net# 简介）

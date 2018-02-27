@@ -1,6 +1,6 @@
 ---
-title: "Azure Blueprint Automation - 适用于受管制工作负荷的金融服务"
-description: "适用于受管制工作负荷的金融服务蓝图"
+title: "Azure 安全性和符合性蓝图 - FFIEC 金融服务管控的工作负荷"
+description: "Azure 安全性和符合性蓝图 - FFIEC 金融服务管控的工作负荷"
 services: security
 documentationcenter: na
 author: simorjay
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2017
+ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: 19e26c16866dada8dcff04a520ce4c208d67c365
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: a1167f56f595f905c6338868806351345c06b91a
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="azure-blueprint-automation-financial-services-blueprint-for-regulated-workloads"></a>Azure Blueprint Automation：适用于受管制工作负荷的金融服务蓝图
+# <a name="azure-security-and-compliance-blueprint---ffiec-financial-services-regulated-workloads"></a>Azure 安全性和符合性蓝图 - FFIEC 金融服务管控的工作负荷
 
 ## <a name="overview"></a>概述
 
-适用于受管制工作负荷的金融服务蓝图可帮助部署安全且合规的平台即服务 (PaaS) Web 应用程序，旨在处理云中的敏感数据。 该蓝图包括自动化脚本，以及展示一个简单参考体系结构和设计的指南，可帮助简化 Microsoft Azure 解决方案的采用。 此蓝图演示一个端到端解决方案，寻求减轻在云中部署负担和成本的组织可以利用此解决方案解决需求。
+Azure 安全性和符合性蓝图 - FFIEC 金融服务管控的工作负荷可帮助部署安全且合规的平台即服务 (PaaS) Web 应用程序，旨在处理云中的敏感数据。 该蓝图包括自动化脚本，以及展示一个简单参考体系结构和设计的指南，可帮助简化 Microsoft Azure 解决方案的采用。 此蓝图演示一个端到端解决方案，寻求减轻在云中部署负担和成本的组织可以利用此解决方案解决需求。
 
 此蓝图旨在满足美国注册会计师协会规定的严格法规标准的要求，例如 - SOC 1、SOC 2、支付卡行业数据安全标准委员会制定的 DSS 3.2，以及有关收集、存储和检索敏感金融数据的 FFIEC。 其中演示了如何通过部署一个可以在安全、合规的多层环境中管理金融数据的解决方案，来适当处理此类数据。 该解决方案部署为端到端的基于 Azure 的 PaaS 解决方案。 
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 12/20/2017
 
 该蓝图可解决以下用例需求。
 
-> 此方案演示某家虚构的网络商店如何将敏感数据转移到基于 Azure 的 PaaS 云解决方案。 示例解决方案演示了如何处理和收集基本用户信息和选定的敏感数据。 这项工作借自 Azure Blueprint Automation：用于处理支付卡的 PCI DSS 遵从环境的支付处理。 有关详细信息，有关此项工作的扩展，请参阅[“实施评论和指南”](https://aka.ms/pciblueprintprocessingoverview)一文，其中提供了符合 PCI DSS 的环境的评论。
+> 此方案演示某家虚构的网络商店如何将敏感数据转移到基于 Azure 的 PaaS 云解决方案。 示例解决方案演示了如何处理和收集基本用户信息和选定的敏感数据。 这项工作利用 Azure 安全性和符合性蓝图 - 符合 PCI DSS 的付款处理环境。 有关详细信息，有关此项工作的扩展，请参阅[“实施评论和指南”](https://aka.ms/pciblueprintprocessingoverview)一文，其中提供了符合 PCI DSS 的环境的评论。
 
 ### <a name="use-case"></a>使用案例
 名为 *Contoso Webstore* 的小型网络商店已准备好将包含客户付款信息的金融数据移到云中。 
@@ -111,7 +111,7 @@ Edna Benson 是业务经理兼接待员。 她负责确保客户信息准确和�
 - Edna 可以覆盖财务信息。
 - Edna 帐户无法查看未筛选的金融信息。
 
-> 在 Contoso Webstore 中，用户自动指定为 **Edna**，可测试已部署环境的功能。
+
 
 ### <a name="contoso-webstore---estimated-pricing"></a>Contoso Webstore - 估算价格
 
@@ -172,7 +172,7 @@ Edna Benson 是业务经理兼接待员。 她负责确保客户信息准确和�
 - 针对管理 Jumpbox（守护主机）的 NSG
 - 针对应用服务环境的 NSG
 
-每个 NSG 打开了特定的端口和协议，以便安全正确地操作解决方案。 有关详细信息，请参阅 [PCI 指南 - 网络安全组](#network-security-groups)。
+每个 NSG 打开了特定的端口和协议，以便安全正确地操作解决方案。 
 
 此外，为每个 NSG 启用了以下配置：
 
@@ -305,7 +305,7 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-[付款处理蓝图代码存储库][code-repo]中提供了用于部署此解决方案的组件。 基础体系结构的部署需要通过 Microsoft PowerShell v5 执行多个步骤。 若要连接到网站，必须提供自定义域名（例如 contoso.com）。 此域名是在步骤 2 中使用 `-customHostName` 开关指定的。 有关详细信息，请参阅[购买 Azure Web 应用的自定义域名](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)。 成功部署和运行解决方案不需要自定义域名，但如果不使用，则无法连接到网站进行演示。
+[蓝图代码存储库][code-repo]中提供了用于部署此解决方案的组件。 基础体系结构的部署需要通过 Microsoft PowerShell v5 执行多个步骤。 若要连接到网站，必须提供自定义域名（例如 contoso.com）。 此域名是在步骤 2 中使用 `-customHostName` 开关指定的。 有关详细信息，请参阅[购买 Azure Web 应用的自定义域名](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)。 成功部署和运行解决方案不需要自定义域名，但如果不使用，则无法连接到网站进行演示。
 
 脚本将域用户添加到指定的 Azure AD 租户。 Microsoft 建议创建一个用于测试的新 Azure AD 租户。
 
@@ -361,7 +361,7 @@ Microsoft 强烈建议使用全新的 PowerShell 安装来部署解决方案。 
     
 ## <a name="threat-model"></a>威胁模型
 
-数据流关系图 (DFD) 和 Contoso Web 存储的示例威胁模型[付款处理蓝图威胁模型](https://aka.ms/pciblueprintthreatmodel)。
+数据流关系图 (DFD) 和 Contoso Web 存储的示例威胁模型[蓝图威胁模型](https://aka.ms/pciblueprintthreatmodel)。
 
 ![](images/pci-threat-model.png)
 

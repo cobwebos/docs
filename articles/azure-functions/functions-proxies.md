@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 3d1b5f30898bc0aab5c617ab547aa7db5e7e4375
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 75b568c12fd58d5599b6878dedb6c2266b6cb649
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 
@@ -50,13 +50,13 @@ ms.lasthandoff: 01/29/2018
 
 默认情况下，后端请求初始化为原始请求的副本。 除了设置后端 URL 以外，还可以对 HTTP 方法、标头和查询字符串参数进行更改。 修改的值可以引用[应用程序设置]和[原始客户端请求中的参数]。
 
-没有目前门户体验可用于修改后端请求。 若要了解如何从 proxies.json 应用此功能，请参阅[定义 requestOverrides 对象]。
+可在门户中通过展开代理详细信息页的“请求替代”部分修改后端请求。 
 
 ### <a name="modify-response"></a>修改响应
 
 默认情况下，客户端响应初始化为后端响应的副本。 可对响应的状态代码、原因短语、标头和正文进行更改。 修改的值可以引用[应用程序设置]、[原始客户端请求中的参数]和[后端响应中的参数]。
 
-没有目前门户体验可用于修改响应。 若要了解如何从 proxies.json 应用此功能，请参阅[定义 responseOverrides 对象]。
+可在门户中通过展开代理详细信息页的“响应替代”部分修改后端请求。 
 
 ## <a name="using-variables"></a>使用变量
 
@@ -65,7 +65,11 @@ ms.lasthandoff: 01/29/2018
 ### <a name="reference-localhost"></a>引用本地函数
 可以使用 `localhost` 直接引用同一函数应用内的函数，而无需往返代理请求。
 
-`"backendurl": "localhost/api/httptriggerC#1"` 将引用路由 `/api/httptriggerC#1` 中的本地 HTTP 触发函数
+`"backendurl": "https://localhost/api/httptriggerC#1"` 将引用路由 `/api/httptriggerC#1` 中的本地 HTTP 触发函数
+
+ 
+>[!Note]  
+>如果函数使用“函数”、“管理员”或“sys” 授权级别，将需要根据原始函数 URL 提供代码和 clientId。 在这种情况下，引用将如下所示：`"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`
 
 ### <a name="request-parameters"></a>引用请求参数
 
@@ -114,7 +118,7 @@ ms.lasthandoff: 01/29/2018
 
 ## <a name="advanced-configuration"></a>高级配置
 
-配置的代理存储在一个 proxies.json 文件中，此文件位于函数应用目录的根目录中。 使用 Functions 支持的任意[部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)时，可以手动编辑此文件并将其部署为应用的一部分。 必须[启用](#enable) Azure Functions 代理功能才能使此文件得到处理。 
+配置的代理存储在一个 proxies.json 文件中，此文件位于函数应用目录的根目录中。 使用 Functions 支持的任意[部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)时，可以手动编辑此文件并将其部署为应用的一部分。 
 
 > [!TIP] 
 > 如果尚未设置一种部署方法，也可以在门户中使用 proxies.json 文件。 转到到 Function App，选择“平台功能”，并选择“应用服务编辑器”。 这样，便可以看到 Function App 的整个文件结构并进行更改。
@@ -229,16 +233,6 @@ requestOverrides 对象定义对传回客户端的响应所做的更改。 该�
 ```
 > [!NOTE] 
 > 在此示例中，响应正文是直接设置的，因此不需要 `backendUri` 属性。 此示例演示如何使用 Azure Functions 代理来模拟 API。
-
-## <a name="enable"></a>启用 Azure Functions 代理
-
-现在这些代理默认情况下已启用！ 如果使用的是较旧版本的代理预览版并禁用了代理，则需要手动启用一次代理才能执行代理。
-
-1. 打开 [Azure 门户]，并转到 Function App。
-2. 选择“Function App 设置”。
-3. 将“启用 Azure Functions 代理(预览版)”切换为“打开”。
-
-当新功能可用时还可以返回到此处来更新代理运行时。
 
 [Azure 门户]: https://portal.azure.com
 [HTTP 触发器]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger

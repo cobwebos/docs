@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint Automation - 系统和服务采购"
-description: "Web 应用程序的 FedRAMP - 系统和服务采购"
+title: "Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化 - 系统和服务采购"
+description: "FedRAMP Web 应用程序自动化 - 系统和服务采购"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: f38f2c7069c4edd0983fd1c2a723287950ace708
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 490632a77fd9fb72bda075b996c40378a394f389
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="system-and-services-acquisition-sa"></a>系统和服务采购 (SA)
 
 > [!NOTE]
-> 本文档所述的控制措施由美国国家标准技术研究所 (NIST) 和美国商务部在 NIST 特别出版物 800-53 修订版 4 中定义。 请参阅 NIST 800-53 修订版 4，了解每项控制的测试流程和相关指导。
+> 本文档所述的控制措施由美国国家标准技术研究所 (NIST) 和美国商务部定义，作为 NIST 特别出版物 800-53 修订版 4 的一部分。 请参阅 NIST 800-53 修订版 4，了解每项控制的测试流程和相关指导。
 
 ## <a name="nist-800-53-control-sa-1"></a>NIST 800-53 控制措施 SA-1
 

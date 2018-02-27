@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 01/29/2018
 ms.author: adegeo
-ms.openlocfilehash: 3ffbdb121aa558d69547db294cad83b5d11e3f56
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: f3a3a1beb8540ee8ab0502379396c06ea505fb44
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>云服务监视简介
 
@@ -39,9 +39,9 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="advanced-monitoring"></a>高级监视
 
-高级监视涉及到对想要监视的角色使用 **Azure 诊断**扩展（和可选的 Application Insights SDK）。 该诊断扩展使用名为 **diagnostics.wadcfgx** 的配置文件（按角色）来配置所监视的诊断指标。 Azure 诊断扩展收集的数据存储在 Azure 存储帐户中，而 Azure 存储帐户在 **.wadcfgx**、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 和 [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) 文件中配置。 这意味着，高级监视会产生额外的成本。
+高级监视涉及到对想要监视的角色使用 **Azure 诊断**扩展（和可选的 Application Insights SDK）。 该诊断扩展使用名为 **diagnostics.wadcfgx** 的配置文件（按角色）来配置所监视的诊断指标。 Azure 诊断扩展收集数据，并将数据存储在 Azure 存储帐户中。 在 **.wadcfgx**、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) 和 [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) 文件中配置这些设置。 这意味着，高级监视会产生额外的成本。
 
-创建每个角色时，Visual Studio 会将 Azure 诊断扩展添加到其中。 此扩展可收集以下类型的信息：
+创建每个角色时，Visual Studio 会将 Azure 诊断扩展添加到其中。 此诊断扩展可收集以下类型的信息：
 
 * 自定义性能计数器
 * 应用程序日志
@@ -54,12 +54,6 @@ ms.lasthandoff: 01/24/2018
 
 > [!IMPORTANT]
 > 尽管所有这些数据都会聚合到存储帐户中，但门户**不**提供绘制数据图表的本机方法。 强烈建议你将另一个服务（如 Application Insights）集成到应用程序中。
-
-### <a name="use-application-insights"></a>使用 Application Insights
-
-从 Visual Studio 发布云服务时，可以选择将诊断数据发送到 Application Insights。 可以在那时创建 Application Insights Azure 资源，或者将数据发送到现有 Azure 资源。 Application Insights 可以监视云服务的可用性、性能、故障和使用情况。 可将自定义图表添加到 Application Insights，以便查看最重要的数据。 在云服务项目中使用 Application Insights SDK 可以收集角色实例数据。 有关如何集成 Application Insights 的详细信息，请参阅[包含云服务的 Application Insights](../application-insights/app-insights-cloudservices.md)。
-
-请注意，尽管可以使用 Application Insights 来显示通过 Windows Azure 诊断扩展指定的性能计数器（和其他设置），但是只有将 Application Insights SDK 集成到辅助角色和 Web 角色，才能获得更丰富的体验。
 
 ## <a name="setup-diagnostics-extension"></a>设置诊断扩展
 
@@ -96,7 +90,15 @@ ms.lasthandoff: 01/24/2018
       -->
 ```
 
+## <a name="use-application-insights"></a>使用 Application Insights
+
+从 Visual Studio 发布云服务时，可以选择将诊断数据发送到 Application Insights。 可以在那时创建 Application Insights Azure 资源，或者将数据发送到现有 Azure 资源。 Application Insights 可以监视云服务的可用性、性能、故障和使用情况。 可将自定义图表添加到 Application Insights，以便查看最重要的数据。 在云服务项目中使用 Application Insights SDK 可以收集角色实例数据。 有关如何集成 Application Insights 的详细信息，请参阅[包含云服务的 Application Insights](../application-insights/app-insights-cloudservices.md)。
+
+请注意，尽管可以使用 Application Insights 来显示通过 Windows Azure 诊断扩展指定的性能计数器（和其他设置），但是只有将 Application Insights SDK 集成到辅助角色和 Web 角色，才能获得更丰富的体验。
+
+
 ## <a name="next-steps"></a>后续步骤
 
 - [了解包含云服务的 Application Insights](../application-insights/app-insights-cloudservices.md)
+- [设置性能计数器](diagnostics-performance-counters.md)
 
