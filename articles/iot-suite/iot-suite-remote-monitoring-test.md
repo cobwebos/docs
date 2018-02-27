@@ -12,13 +12,13 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 4bdcd6d57989df3d1b67c87d56b8c57035ef2f63
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9f51c35be09af6f3a8dde7061dcf57a9c4cc9fdb
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="test-your-solution-with-simulated-devices"></a>使用模拟设备测试解决方案
+# <a name="create-a-new-simulated-device"></a>创建新的模拟设备
 
 本教程介绍如何在远程监视预配置解决方案中自定义设备模拟器微服务。 为了演示设备模拟器的功能，本教程在 Contoso IoT 应用程序中使用了两个方案。
 

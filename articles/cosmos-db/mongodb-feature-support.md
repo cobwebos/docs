@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 007b530cd7a14f063ae4f86d18daa9742c6655c2
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: e955aa1c3985e540246d964b4dce88d15fb85949
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>针对 MongoDB 功能和语法的 MongoDB API 支持
 
@@ -237,6 +237,33 @@ $regex | ``` { "Volcano Name": { $regex: "^Rain"} } ```|  | -
 当需要包含“$”或“|”时，最好创建两个（或更多）正则表达式查询。 例如，给定以下原始查询：```find({x:{$regex: /^abc$/})```，必须按如下所示进行修改：```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```。
 第一部分将使用索引将搜索限制为以 ^ abc 开头的文档，第二部分将匹配确切的条目。 竖条运算符“|”充当“or”函数 - 查询 ```find({x:{$regex: /^abc|^def/})``` 匹配字段“x”的值以“abc”或“def”开头的文档。 要使用索引，建议将查询分解为两个由 $or 运算符连接的不同查询：```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```。
 
+### <a name="update-operators"></a>更新运算符
+
+#### <a name="field-update-operators"></a>字段更新运算符
+- $inc
+- $mul
+- $rename
+- $setOnInsert
+- $set
+- $unset
+- $min
+- $max
+- $currentDate
+
+#### <a name="array-update-operators"></a>数组更新运算符
+- $addToSet
+- $pop
+- $pullAll
+- $pull（注意：不支持带条件的 $pull）
+- $pushAll
+- $push
+- $each
+- $slice
+- $sort
+- $position
+
+#### <a name="bitwise-update-operator"></a>位更新运算符
+- $bit
 
 ### <a name="geospatial-operators"></a>地理空间运算符
 

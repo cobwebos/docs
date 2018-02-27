@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: d71d8e44d0327515ed302c5c902ce87587e36c7d
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 6f933c75d4829e3b2c5198aeee324f15490d8a93
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows 数据科学虚拟机
 Microsoft 数据科学虚拟机是一种 Windows Azure 虚拟机 (VM) 映像，它已预装并配置了多个常用于数据分析和机器学习的热门工具。 这些工具包括：
 
-* [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning-services/) Workbench
-* [Microsoft ML Server](https://docs.microsoft.com/machine-learning-server/index) Developer Edition
+* [Azure Machine Learning](../preview/index.yml) Workbench
+* [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/index) 开发人员版
 * Enthought Python 分发版
 * Jupyter Notebook（使用 R、Python、PySpark 内核）
 * Visual Studio Community Edition
@@ -35,7 +35,7 @@ Microsoft 数据科学虚拟机是一种 Windows Azure 虚拟机 (VM) 映像，�
   * 深度学习框架：VM 中包含一组丰富的 AI 框架，包括 [Microsoft 认知工具包](https://www.microsoft.com/en-us/cognitive-toolkit/)、[TensorFlow](https://www.tensorflow.org/)、[Chainer](https://chainer.org/)、mxNet 和 Keras。
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit)：一种快速机器学习系统，支持在线、哈希、allreduce、缩减、learning2search、主动和交互式学习等技术。
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/)：一种提供快速、准确的提升树实现的工具。
-  * [Rattle](http://rattle.togaware.com/) (R Analytical Tool To Learn Easily)（用于实现轻松学习的 R 分析工具）：该工具使在 R 中开始数据分析和机器学习变得简单，支持基于 GUI 的数据浏览和使用自动 R 代码生成进行建模。
+  * [Rattle](http://rattle.togaware.com/) (R Analytical Tool To Learn Easily)（用于实现轻松学习的 R 分析工具）：该工具使在 R 中开始数据分析和机器学习变得简单。 它包括基于 GUI 的数据浏览和使用自动 R 代码生成进行建模。
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/)：Java 中的可视数据挖掘和机器学习软件。
   * [Apache Drill](https://drill.apache.org/)：面向 Hadoop、NoSQL 和云存储的无架构 SQL 查询引擎。  支持使用 ODBC 和 JDBC 接口通过 PowerBI、Excel、Tableau 等标准 BI 工具查询 NoSQL 和文件。
 * R 和 Python 中的库，供 Azure 机器学习和其他 Azure 服务使用
@@ -57,14 +57,14 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 它支持处理各
 ## <a name="other-versions-of-the-data-science-virtual-machine"></a>其他版本的数据科学虚拟机
 [Ubuntu](dsvm-ubuntu-intro.md) 映像同样可用，它包含多种相同的工具和一些附加的深度学习框架。 [CentOS](linux-dsvm-intro.md) 映像也可用。 我们还提供数据科学虚拟机的 [Windows Server 2012 版](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm)，不过，有些工具只能在 Windows Server 2016 版中使用。  否则，本文也适用于 Windows Server 2012 版。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 创建 Microsoft 数据科研虚拟机之前，必须满足以下条件：
 
 * **Azure 订阅**：若要获取订阅，请参阅[获取 Azure 免费试用版](http://azure.com/free)。
 
 
 ## <a name="create-your-microsoft-data-science-virtual-machine"></a>创建 Microsoft 数据科研虚拟机
-下面是创建 Microsoft 数据科研虚拟机实例的步骤：
+若要创建 Microsoft 数据科学虚拟机实例，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016)中导航到虚拟机列表。
 2. 选择底部的“创建”按钮进入向导。![configure-data-science-vm](./media/provision-vm/configure-data-science-virtual-machine.png)
@@ -83,8 +83,8 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 它支持处理各
    3. **设置**：
       
       1. **使用托管磁盘**：如果希望 Azure 管理 VM 的磁盘，请选择“托管”。  否则，需要指定新的或现有的存储帐户。 
-      2. **其他参数**：通常只需使用默认值。 如果考虑使用非默认值，可以将鼠标悬停在特定字段的信息链接上获取帮助。
-   4. **摘要**：检查输入的所有信息是否正确，并单击“创建”。 **注意**：除计算“大小”步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
+      2. **其他参数**：通常只需使用默认值。 若要考虑使用非默认值，请将鼠标悬停在信息链接上获取特定字段的帮助。
+    a. **摘要**：检查输入的所有信息是否正确，并单击“创建”。 **注意**：除计算“大小”步骤中选择的服务器大小所产生的费用外，VM 没有任何其他费用。 
 
 > [!NOTE]
 > 预配约需要 10 到 20 分钟。 预配的状态在 Azure 门户上显示。
@@ -114,7 +114,7 @@ Azure Machine Learning Workbench 是一个桌面应用程序和命令行接口�
 > 
 > 
 
-Anaconda Python 2.7 安装在 C:\Anaconda 下面，Anaconda Python 3.5 安装在 C:\Anaconda\envs\py35 下面。 有关详细步骤，请参阅 [PTVS 文档](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it)。 
+Anaconda Python 2.7 安装在 C:\Anaconda 下面，Anaconda Python 3.5 安装在 C:\Anaconda\envs\py35 下面。 有关详细步骤，请参阅 [PTVS 文档](/visualstudio/python/python-environments.md#selecting-and-installing-python-interpreters)。 
 
 ### <a name="jupyter-notebook"></a>Jupyter 笔记本
 Anaconda 分发版还附带 Jupyter 笔记本 - 用于共享代码和分析的环境。 Jupyter Notebook 服务器上已预先配置 Python 2.7、Python 3.5、PySpark、Julia 和 R 内核。 可通过名为“Jupyter Notebook”的桌面图标启动 Jupyter 服务器，并启动浏览器来访问 Notebook 服务器。 
@@ -196,9 +196,9 @@ VM 上安装了多个 Azure 工具：
 以下后续步骤可帮助你继续学习和探索。 
 
 * 单击开始菜单并查看菜单中列出的工具可以浏览数据科研 VM 上的各种数据科研工具。
-* 访问产品的[快速入门和教程页](https://docs.microsoft.com/azure/machine-learning/preview/)，了解 Azure 机器学习服务和 Workbench。 
+* 访问产品的[快速入门和教程页](../preview/index.yml)，了解 Azure 机器学习服务和 Workbench。 
 * 导航到 **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts**，获取有关在 R 中使用 RevoScaleR 库的示例，该库支持企业级数据分析。  
 * 阅读文章：[数据科研虚拟机的十大功能](http://aka.ms/dsvmtenthings)
-* 通过使用 [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)，了解如何系统性地构建端到端分析解决方案。
+* 通过使用 [Team Data Science Process](../team-data-science-process/index.yml)，了解如何系统性地构建端到端分析解决方案。
 * 访问 [Azure AI 库](http://gallery.cortanaintelligence.com)，获取在 Azure 上使用 Azure 机器学习和相关数据服务的机器学习和数据分析示例。 我们还在虚拟机的“开始”菜单与桌面上提供了此库的图标。
 

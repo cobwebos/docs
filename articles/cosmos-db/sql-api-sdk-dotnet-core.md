@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 02/12/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f8e3e0e8868c05188d9d6cb26fe6c2bd2891c17d
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: c62ea8efe56186a2f3ee934823b4ea03775037b0
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB .NET Core SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -58,6 +58,14 @@ Azure Cosmos DB .NET Core SDK 具有与最新版 [Azure Cosmos DB .NET SDK](sql-
 
 > [!NOTE] 
 > Azure Cosmos DB .NET Core SDK 与通用 Windows 平台 (UWP) 应用尚不兼容。 如果不支持 UWP 应用的 .NET Core SDK 感兴趣，请向 [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) 发送电子邮件。
+
+### <a name="a-name180181"></a><a name="1.8.0"/>1.8.1
+
+* 修复了其中 FeedOptions.MaxItemCount = -1 引发 System.ArithmeticException: 页大小为负的回归。
+* 向 QueryMetrics 添加了新的 ToString() 函数。
+* 公开了有关读取集合的分区统计信息。
+* 向 ChangeFeedOptions 添加了 PartitionKey 属性。
+* 小 bug 修复。
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
  
@@ -157,6 +165,7 @@ Azure Cosmos DB .NET Core 预览版 SDK 与最新版 [Azure Cosmos DB .NET SDK](
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.8.1](#1.8.1) |2018 年 2 月 5 日 |--- |
 | [1.7.1](#1.7.1) |2017 年 11 月 16 日 |--- |
 | [1.7.0](#1.7.0) |2017 年 11 月 10 日 |--- |
 | [1.6.0](#1.6.0) |2017 年 10 月 17 日 |--- |

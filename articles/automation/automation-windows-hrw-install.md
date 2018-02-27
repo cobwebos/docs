@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 71c98a7e17472ae0aa7646b9e7fc745363546211
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 4232634f57f9650a35c40ee769cbeb0a3e009dfb
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-deploy-a-windows-hybrid-runbook-worker"></a>如何部署 Windows 混合 Runbook 辅助角色
 
@@ -50,7 +50,7 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 
 执行以下步骤，以便自动完成 Windows 混合辅助角色的安装和配置。  
 
-1. 直接从运行混合 Runbook 辅助角色的计算机或环境中的其他计算机的 [PowerShell 库](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/1.0/DisplayScript)下载 New-OnPremiseHybridWorker.ps1 脚本，并将其复制到辅助角色。  
+1. 直接从运行混合 Runbook 辅助角色的计算机或环境中的其他计算机的 [PowerShell 库](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/)下载 New-OnPremiseHybridWorker.ps1 脚本，并将其复制到辅助角色。  
 
     在执行期间，New-OnPremiseHybridWorker.ps1 脚本需要以下参数：
 
@@ -76,7 +76,7 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 
 4. 系统会提示用户同意安装 **NuGet** 并使用 Azure 凭据进行身份验证。<br><br> ![执行 New-OnPremiseHybridWorker 脚本](media/automation-hybrid-runbook-worker/new-onpremisehybridworker-scriptoutput.png)
 
-5. 脚本完成后，“混合辅助角色组”边栏选项卡会显示新组和成员数，或者会将成员数进行递增（如果组已存在）。  可以从“混合辅助角色组”边栏选项卡上的列表中选择组，并选择“混合辅助角色”磁贴。  在“混合辅助角色”边栏选项卡上，会列出组的每个成员。  
+5. 脚本完成后，“混合辅助角色组”页会显示新组和成员数，或者会将成员数进行递增（如果组已存在）。  可以从“混合辅助角色组”页上的列表中选择组，并选择“混合辅助角色”磁贴。  在“混合辅助角色”页上，会列出组的每个成员。  
 
 ### <a name="manual-deployment"></a>手动部署 
 
@@ -113,13 +113,13 @@ Microsoft Monitoring Agent 可将计算机连接到 Operations Management Suite�
 
     Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 
-可以从 Azure 门户的“管理密钥”边栏选项卡获取此 cmdlet 所需的信息。  打开此边栏选项卡，方法是通过自动化帐户在“设置”边栏选项卡中选择“密钥”选项。
+可以从 Azure 门户的“管理密钥”页获取此 cmdlet 所需的信息。  通过在自动化帐户的“设置”页中选择“密钥”选项，打开此页。
 
 ![混合 Runbook 辅助角色概述](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
 * **GroupName** 是混合 Runbook 辅助角色组的名称。 如果该组已经存在于自动化帐户中，则会将当前计算机添加到其中。  如果该组不存在，则会创建它。
-* “终结点”是“管理密钥”边栏选项卡中的“URL”字段。
-* “令牌”是指“管理密钥”边栏选项卡中的“主访问密钥”。  
+* “终结点”是“管理密钥”页中的“URL”字段。
+* “令牌”是指“管理密钥”页中的“主访问密钥”。  
 
 使用包含 **Add-HybridRunbookWorker** 的 **-Verbose** 开关可接收有关安装的详细信息。
 
@@ -143,8 +143,8 @@ Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任�
 3. Microsoft Monitoring Agent 服务未运行。  
     如果 Microsoft Monitoring Agent Windows 服务未运行，会导致混合 Runbook 辅助角色无法与 Azure 自动化通信。  在 PowerShell 中输入以下命令，验证代理是否正在运行：`get-service healthservice`。  如果该服务已停止，请在 PowerShell 中输入以下命令启动该服务：`start-service healthservice`。  
 
-4. 在 **Application and Services Logs\Operations Manager** 事件日志中，可看到事件 4502、包含 **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** 的事件消息以及下列描述：*服务 <wsid>.oms.opinsights.azure.com 提供的证书不是由 Microsoft 服务使用的证书颁发机构颁发的。请联系网络管理员以查看其是否正在运行截获 TLS/SSL 通信的代理。KB3126513 一文还介绍了关于连接问题的其他故障排除信息。*
-    原因可能是代理或网络防火墙阻止与 Microsoft Azure 通信。  确保计算机在端口 443 上对 *.azure-automation.net 有出站访问权限。
+4. 在 **Application and Services Logs\Operations Manager** 事件日志中，可看到事件 4502、包含 **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** 的事件消息以及下列描述：*服务 \<wsid\>.oms.opinsights.azure.com 提供的证书不是由 Microsoft 服务使用的证书颁发机构颁发的。请联系网络管理员以查看其是否正在运行截获 TLS/SSL 通信的代理。KB3126513 一文还介绍了关于连接问题的其他故障排除信息。*
+    这可能是因为代理或网络防火墙阻止与 Microsoft Azure 通信。  确保计算机在端口 443 上对 *.azure-automation.net 有出站访问权限。
 
 日志存储在每个混合辅助角色本地的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。  可以检查 **Application and Services Logs\Microsoft-SMA\Operations** 和 **Application and Services Logs\Operations Manager** 事件日志中是否写入了任何警告或错误事件，指示出现了影响角色载入 Azure 自动化的连接问题或其他问题，或者在执行正常操作时出现问题。  
 

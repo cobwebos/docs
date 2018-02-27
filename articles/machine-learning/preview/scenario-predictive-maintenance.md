@@ -11,21 +11,21 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: 0299e73aecca3b3e5714b37c8b0b776ec8561e29
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 21cf8201236224244e6ed34f91f9c5c601ab9a79
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="predictive-maintenance-real-world-scenario"></a>预测性维护实际方案
 
-计划外设备停机带来的影响对任何企业而言都是极具破坏性的。 因此保持现场设备正常运行以最大限度提高利用率和性能，以及将开销和计划外停机时间降至最低至关重要。 极早发现问题所在有助于以经济高效的方式分配有限的维护资源，并改进质量和供应链流程。 
+计划外设备停机带来的影响对任何企业而言都是极具破坏性的。 保持现场设备正常运行以最大限度提高利用率和性能，以及将开销和计划外停机时间降至最低至关重要。 极早发现问题所在有助于以经济高效的方式分配有限的维护资源，并改进质量和供应链流程。 
 
 此方案利用一个相当[大规模的模拟数据集](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data)来指导用户逐步完成一个预测性维护数据科学项目，包括从数据引入、特征工程、模型构建直到模型实施和部署的一系列步骤。 整个过程的代码都是在 Azure ML Workbench 内在 Jupyter Notebook 中使用 PySpark 编写的。 最终模型是使用“Azure 机器学习模型管理”部署的，以实现实时的设备故障预测。   
 
 ## <a name="link-to-the-gallery-github-repository"></a>库 GitHub 存储库的链接
 
-以下是到公共 GitHub 存储库的链接：[https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance)
+以下是到公共 GitHub 存储库的链接：[https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance)，可从中获得问题报告和发布内容
 
 
 ## <a name="use-case-overview"></a>用例概述
@@ -36,11 +36,11 @@ ms.lasthandoff: 01/12/2018
 
 这些模拟数据的业务问题是预测组件故障引发的问题。 因此，业务问题是“*由于组件故障而导致计算机故障的概率是多少*？” 将该问题格式化为多类分类问题（每个计算机多个组件），并使用机器学习算法来创建预测性模型。 基于从计算机中收集的历史数据定型模型。 在此方案中，用户将在 Azure Machine Learning Workbench 环境中完成实现此类模型的各种步骤。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * [Azure 帐户](https://azure.microsoft.com/en-us/free/)（有免费试用版可用）。
 * 遵循[安装快速入门指南](./quickstart-installation.md)安装 [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) 的副本，以安装程序并创建工作区。
-* Azure 机器学习操作化需要一个本地部署环境和[模型管理帐户](https://docs.microsoft.com/azure/machine-learning/preview/model-management-overview)
+* Azure 机器学习操作化需要一个本地部署环境和[模型管理帐户](model-management-overview.md)
 
 本示例可在任何 AML Workbench 计算上下文中运行。 但是，建议在至少有 16 GB 内存的计算机上运行。 此方案已在运行远程 DS4_V2 标准大小的[适用于 Linux (Ubuntu) 的数据科学虚拟机](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)的 Windows 10 计算机上进行生成和测试。
 
@@ -52,8 +52,8 @@ ms.lasthandoff: 01/12/2018
 1.  打开 Azure Machine Learning Workbench
 2.  在“项目”页上单击 + 号，然后选择“新建项目”
 3.  在“新建项目”窗格中，填写新项目的信息
-4.  在“搜索项目模板”搜索框中，键入“预测性维护”并选择模板
-5.  单击“创建” 
+4.  在“搜索项目模板”搜索框中，键入“预测性维护”并选择“预测性维护”模板
+5.  单击“创建”按钮
 
 ## <a name="prepare-the-notebook-server-computation-target"></a>准备 Notebook 服务器计算目标
 
@@ -125,13 +125,15 @@ az ml notebook start
 
 ## <a name="references"></a>参考
 
-本用例事先已在多个平台上开发：
+可在各种平台上找到其他预测性维护用例：
 
 * [预测性维护解决方案模板](https://docs.microsoft.com/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance)
 * [预测性维护建模指南](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)
 * [使用 SQL R Services 的预测性维护建模指南](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-Modeling-Guide-using-SQL-R-Services-1)
 * [预测性维护建模指南 Python 笔记本](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
 * [使用 PySpark 的预测性维护](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
+* [深度学习预测性维护](
+ https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-deep-learning-for-predictive-maintenance)
 
 ## <a name="next-steps"></a>后续步骤
 

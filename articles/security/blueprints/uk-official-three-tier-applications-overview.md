@@ -1,6 +1,6 @@
 ---
-title: "Azure Blueprint Automation - UK-OFFICIAL 的三层式 Web 应用程序"
-description: "Azure Blueprint Automation - UK-OFFICIAL 的三层式 Web 应用程序"
+title: "Azure 安全性和符合性蓝图 - UK-OFFICIAL 三层式 Web 应用程序自动化"
+description: "Azure 安全性和符合性蓝图 - UK-OFFICIAL 三层式 Web 应用程序自动化"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 5f5694367d9be2ae66c7303cfea063b7f4979307
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9d95ccdd536efbff1540fab2b564e7745f5ac397
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="azure-blueprint-automation-three-tier-web-applications-for-uk-official"></a>Azure Blueprint Automation：UK-OFFICIAL 的三层式 Web 应用程序
+# <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Azure 安全性和符合性蓝图 - UK-OFFICIAL 三层式 Web 应用程序自动化
 
 ## <a name="overview"></a>概述
 
  本文提供用于交付 Microsoft Azure 三层式基于 Web 的体系结构的自动化脚本及相关指导，这些体系结构适合用于处理在英国分类为“OFFICIAL”（官方）的许多工作负荷。
 
- [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) (ARM) 模板将使用“基础结构即代码”方法，部署一个符合英国国家网络安全中心 (NCSC) 14 项[云安全原则](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)和 Internet 安全中心 (CIS) [关键安全控制措施](https://www.cisecurity.org/critical-controls.cfm)的环境。
+ [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)模板集将使用“基础结构即代码”方法，部署一个符合英国国家网络安全中心 (NCSC) 14 项[云安全原则](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)和 Internet 安全中心 (CIS) [关键安全控制措施](https://www.cisecurity.org/critical-controls.cfm)的环境。
 
  NCSC 建议客户使用“云安全原则”评估服务的安全属性，并帮助了解客户与供应商之间的责任划分。 我们提供了有关其中每项原则的信息，以帮助读者了解责任的划分。
 
- Microsoft 白皮书[英国政府使用的 Azure Blueprint](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)中提供了此体系结构和相应 ARM 模板的辅助信息。 此白皮书全面阐述了如何使 Azure 服务适应英国 NCSC 的 14 项云安全原则，使各组织能够审视自身的能力，在短时间内达到有关在本地以及在英国的 Microsoft Azure 云中使用基于云的服务所要满足的法规要求。
+ Microsoft 白皮书[使用 Microsoft Azure 的英国云的 14 项云安全控制措施](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)支持此体系结构和相应的 Azure 资源管理器模板。 此白皮书全面阐述了如何使 Azure 服务适应英国 NCSC 的 14 项云安全原则，使各组织能够审视自身的能力，在短时间内达到有关在本地以及在英国的 Microsoft Azure 云中使用基于云的服务所要满足的法规要求。
 
  此模板会部署工作负荷的基础结构。 必须安装并配置应用程序代码和支持性的业务层与数据层软件。 [此处](https://aka.ms/ukwebappblueprintrepo)提供了详细的部署说明。
 
@@ -193,19 +193,19 @@ ms.lasthandoff: 11/16/2017
 
 **Active Directory 集成**：客户可能希望使用 [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-azure-active-directory) 集成或 [Azure 中已加入本地林的 Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-active-directory-in-azure-joined-to-an-on-premises-forest) 作为专用 AD DS 体系结构的替代方案。
 
-### <a name="security"></a>安全
+### <a name="security"></a>“安全”
 
-**管理安全性**：此 Azure Blueprint 允许管理员使用 RDP 从受信任的源连接到管理 VNet 和 Jumpbox。 使用 NSG 控制管理 VNet 的网络流量。 仅限受信任 IP 范围内可访问包含 Jumpbox 的子网的流量访问端口 3389。
+**管理安全性**：此蓝图允许管理员使用 RDP 从受信任的源连接到管理 VNet 和 Jumpbox。 使用 NSG 控制管理 VNet 的网络流量。 仅限受信任 IP 范围内可访问包含 Jumpbox 的子网的流量访问端口 3389。
 
 连接到管理 VNet 和 Jumpbox 时，客户也可以考虑使用[增强的安全管理模型](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/securing-privileged-access)来保护环境。 建议想要增强安全性的客户使用[特权访问工作站](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations#what-is-a-privileged-access-workstation-paw)和 RDGateway 配置。 使用网络虚拟设备和公共/专用外围网络会进一步增强安全性。
 
-**保护网络**：建议对每个子网使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG)，以针对入站流量提供第二层保护，并绕过错误配置的或已禁用的网关。 示例 - [用于部署 NSG 的 ARM 模板](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups)。
+**保护网络**：建议对每个子网使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG)，以针对入站流量提供第二层保护，并绕过错误配置的或已禁用的网关。 示例 - [用于部署 NSG 的资源管理器模板](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups)。
 
 **保护公共终结点**：Internet 网关通过 Internet 向用户公开应用程序服务。 可使用提供 Web 应用程序防火墙和 HTTPS 协议管理的[应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)保护访问这些服务的流量。
 
 **IP 范围**：体系结构中的 IP 范围是建议的范围。 建议客户考虑自身的环境，并使用适当的范围。
 
-**混合连接**：基于的云工作负荷使用 Azure VPN 网关通过 IPSEC VPN 连接到本地数据中心。 客户应确保使用适当的 VPN 网关连接到 Azure。 示例 - [VPN 网关 ARM 模板](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection)。 运行大规模任务关键型工作负荷且要满足大数据要求的客户可能需要考虑混合网络体系结构，使用 [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) 来与 Microsoft 云服务建立专用网络连接。
+**混合连接**：基于云的工作负荷使用 Azure VPN 网关通过 IPSEC VPN 连接到本地数据中心。 客户应确保使用适当的 VPN 网关连接到 Azure。 示例 - [VPN 网关资源管理器模板](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection)。 运行大规模任务关键型工作负荷且要满足大数据要求的客户可能需要考虑混合网络体系结构，使用 [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) 来与 Microsoft 云服务建立专用网络连接。
 
 **关注点分离**：此参考体系结构将用于管理运营和业务运营的 VNet 分离开来。 将 VNet 和子网分离可以实现流量管理，包括根据 [Microsoft 云服务和网络安全](https://docs.microsoft.com/azure/best-practices-network-security)最佳做法，在网段之间使用 NSG 来限制传入和传出流量。
 
@@ -221,17 +221,17 @@ ms.lasthandoff: 11/16/2017
 
 Crown Commercial Service（一家致力于改善政府商业和采购活动的机构）续订了 Microsoft 的分层式企业云服务并将级别提升到 G-Cloud v6，其中涵盖 OFFICIAL 级别的所有产品/服务。 在 [Azure 英国 G-Cloud 安全评估摘要](https://www.microsoft.com/en-us/trustcenter/compliance/uk-g-cloud)中可以找到 Azure 和 G-Cloud 的详细信息。
 
-此 UK-OFFICIAL Azure Blueprint 解决方案符合 NCSC [云安全原则](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)中所述的 14 项云安全原则，可帮助确保所用环境支持分类为“UK-OFFICIAL”的工作负荷。
+此蓝图符合 NCSC [云安全原则](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)中所述的 14 项云安全原则，可帮助确保所用环境支持分类为“UK-OFFICIAL”的工作负荷。
 
 [客户责任矩阵](https://aka.ms/blueprintuk-gcrm)（Excel 工作簿）中列出了所有 14 项云安全原则，并指明每项原则（或原则的细则）的实施是由 Microsoft、客户还是两者共同负责。
 
-[原则实施矩阵](https://aka.ms/ukwebappblueprintpim)（Excel 工作簿）中列出了所有 14 项云安全原则，并针对在“客户责任矩阵”中指定由客户负责的每项原则（或原则的细则）指明：1) 是否通过 Azure Blueprint Automation 实施该原则；2) 如何根据原则要求完成实施的说明。 [此处](https://github.com/Azure/uk-official-three-tier-webapp/blob/master/principles-overview.md)也提供了这些内容。
+[原则实施矩阵](https://aka.ms/ukwebappblueprintpim)（Excel 工作簿）中列出了所有 14 项云安全原则，并针对在“客户责任矩阵”中指定由客户负责的每项原则（或原则的细则）指明：1) 蓝图自动化是否实施该原则；2) 如何根据原则要求完成实施的说明。 [此处](https://github.com/Azure/uk-official-three-tier-webapp/blob/master/principles-overview.md)也提供了这些内容。
 
 此外，云安全联盟 (CSA) 也发布了“云控制矩阵”，以帮助客户评估云提供商，以及确定在转移到云服务之前所要解答的问题。 作为回应，Microsoft Azure 解答了 CSA 舆论评估计划调查问卷 ([CSA CAIQ](https://www.microsoft.com/en-us/TrustCenter/Compliance/CSA))，其中阐述了 Microsoft 如何满足所提议的原则。
 
 ## <a name="deploy-the-solution"></a>部署解决方案
 
-部署用户可使用两种方法部署此 Azure Blueprint 解决方案。 第一种方法使用 PowerShell 脚本，第二种方法使用 Azure 门户部署参考体系结构。 [此处](https://aka.ms/ukwebappblueprintrepo)提供了详细的部署说明。
+部署用户可使用两种方法部署此蓝图自动化。 第一种方法使用 PowerShell 脚本，而第二种方法使用 Azure 门户部署参考体系结构。 [此处](https://aka.ms/ukwebappblueprintrepo)提供了详细的部署说明。
 
 ## <a name="disclaimer"></a>免责声明
 

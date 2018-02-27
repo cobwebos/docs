@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: negat
-ms.openlocfilehash: 145f4ec92b142a1585ba17bf6e49c7824cc32529
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 59dad832977c4afc39db3773edf9789cd1a704e7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Azure 虚拟机规模集自动 OS 升级
 
@@ -40,9 +40,7 @@ ms.lasthandoff: 01/06/2018
 预览期间，存在以下限制和局限：
 
 - 自动 OS 升级仅支持 [4 个 OS SKU](#supported-os-images)。 无 SLA 或保证。 建议预览期间不自动升级对生产而言十分重要的工作负荷。
-- 即将推出对 Service Fabric 群集中规模集的支持。
 - 虚拟机规模集自动 OS 升级目前**不**支持 Azure 磁盘加密（当前处于预览状态）。
-- 即将推出门户体验。
 
 
 ## <a name="register-to-use-automatic-os-upgrade"></a>注册以使用自动 OS 升级
@@ -58,17 +56,23 @@ Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureNam
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-建议应用程序使用运行状况探测。 要注册提供程序功能以实现运行状况探测，请使用 [Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature)，如下所示：
+> [!NOTE]
+> Service Fabric 群集具有其自己的应用程序运行状况概念，但不带 Service Fabric 的规模集使用负载均衡器运行状况探测监视应用程序运行状况。 要注册提供程序功能以实现运行状况探测，请使用 [Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature)，如下所示：
+>
+> ```powershell
+> Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVmssHealthProbe
+> ```
+>
+> 同样，约 10 分钟后，注册状态报告为“已注册”。 可以使用 [Get AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) 检查当前注册状态。 注册后，请确保使用 [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) 注册 Microsoft.Network 提供程序，如下所示：
+>
+> ```powershell
+> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+> ```
 
-```powershell
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVmssHealthProbe
-```
+## <a name="portal-experience"></a>门户体验
+执行上面的注册步骤后，可以转到 [Azure 门户](https://aka.ms/managed-compute)以启用规模集上的自动 OS 升级和查看升级进度：
 
-同样，约 10 分钟后，注册状态报告为“已注册”。 可以使用 [Get AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) 检查当前注册状态。 注册后，请确保使用 [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) 注册 Microsoft.Network 提供程序，如下所示：
-
-```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
+![](./media/virtual-machine-scale-sets-automatic-upgrade/automatic-upgrade-portal.png)
 
 
 ## <a name="supported-os-images"></a>支持的 OS 映像
@@ -85,7 +89,10 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 
 
 
-## <a name="application-health"></a>应用程序运行状况
+## <a name="application-health-without-service-fabric"></a>不带 Service Fabric 的应用程序运行状况
+> [!NOTE]
+> 本部分仅适用于不带 Service Fabric 的规模集。 Service Fabric 具有其自己的应用程序运行状况概念。 使用带 Service Fabric 的自动 OS 升级时，更新域将推出新的 OS 映像，以维持 Service Fabric 中运行的服务的高可用性。 有关 Service Fabric 群集的持续性特征的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)。
+
 OS 升级过程中，规模集中的 VM 实例每次只升级一批。 只有客户应用程序在升级后的 VM 实例上正常运行时，才会继续升级。 建议应用程序向规模集 OS 升级引擎提供运行状况信号。 默认情况下，在 OS 升级期间，平台根据 VM 电源状态和扩展预配状态确定升级后 VM 实例是否正常运行。 在 VM 实例的 OS 升级期间，VM 实例上的 OS 磁盘被替换为基于最新版本映像的新磁盘。 OS 升级完毕后，配置的扩展在这些 VM 上运行。 仅当已成功预配 VM 上的所有扩展时，才视应用程序为正常运行。 
 
 可以选择为规模集配置应用程序运行状况探测，用于为平台提供关于应用程序当前状态的准确信息。 应用程序运行状况探测是用作运行状况信号的自定义负载均衡器探测。 规模集 VM 实例上运行的应用程序可以响应外部的 HTTP 或 TCP 请求，指示其是否正常运行。 若要详细了解自定义负载均衡器探测的工作原理，请参阅[了解负载均衡器探测](../load-balancer/load-balancer-custom-probe-overview.md)。 自动 OS 升级不是必须配置应用程序运行状况探测，但强烈建议使用该探测。

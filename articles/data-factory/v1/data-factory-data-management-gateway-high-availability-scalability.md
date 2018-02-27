@@ -165,7 +165,7 @@ ms.lasthandoff: 01/23/2018
 - 每个集成运行时节点都必须信任此证书，以及运行凭据管理器应用程序的客户端计算机。 
 > [!NOTE]
 > 通过复制向导/Azure 门户安全设置凭据时，使用凭据管理器应用程序。 这可能是从与本地/专用数据存储位于同一网络的任何一台计算机触发。
-- 支持通配符证书。 如果 FQDN 名称为 node1.domain.contoso.com，可以使用 *.domain.contoso.com 作为证书的使用者名称。
+- 支持通配符证书。 如果 FQDN 名称为 **node1.domain.contoso.com** ，可以使用 ***.domain.contoso.com** 作为证书的使用者名称。
 - 不建议使用 SAN 证书，因为鉴于当前限制，只会使用使用者可选名称的最后一项，其他所有项都会遭忽略。 例如 有一个 SAN 证书，其中 SAN 为 node1.domain.contoso.com 和 node2.domain.contoso.com，那么只能在 FQDN 为 node2.domain.contoso.com 的计算机上使用此证书。
 - 针对 SSL 证书支持受 Windows Server 2012 R2 支持的任何密钥大小。
 - 不支持使用 CNG 密钥的证书。 不支持使用 CNG 密钥的证书。

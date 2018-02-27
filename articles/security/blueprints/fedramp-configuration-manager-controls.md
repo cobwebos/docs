@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint 自动化 - 配置管理"
-description: "用于 FedRAMP 的 Web 应用程序 - 配置管理"
+title: "Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化 - 配置管理"
+description: "FedRAMP Web 应用程序自动化 - 配置管理"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: e93aa430b7150f07210f5d1f37e2027d95334a59
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 6566783769d37ee829df3894fdb5673b4edafd2c
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="configuration-management-cm"></a>配置管理 (CM)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | Azure 资源管理器模板和构成此 Azure Blueprint 的附带资源表示已部署的体系结构的“作为代码的配置”基线。 解决方案通过 GitHub 提供，可以用于配置控制措施。 此解决方案包括每个已部署虚拟机的所需状态配置 (DSC) 基线。 |
+| **客户** | Azure 资源管理器模板和构成此蓝图的附带资源表示已部署的体系结构的“作为代码的配置”基线。 解决方案通过 GitHub 提供，可以用于配置控制措施。 此解决方案包括每个已部署虚拟机的所需状态配置 (DSC) 基线。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | Azure 资源管理器模板和构成此 Azure Blueprint 的附带资源表示已部署的体系结构的“作为代码的配置”基线。 解决方案通过 GitHub 提供，可以用于配置控制措施。 在 Azure 门户中，自动化脚本适用于所有已部署的资源，并始终提供这些资源的最新表示形式。  |
+| **客户** | Azure 资源管理器模板和构成此蓝图的附带资源表示已部署的体系结构的“作为代码的配置”基线。 解决方案通过 GitHub 提供，可以用于配置控制措施。 在 Azure 门户中，自动化脚本适用于所有已部署的资源，并始终提供这些资源的最新表示形式。  |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -455,7 +455,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 由此 Azure Blueprint 部署的虚拟机实施 Windows AppLocker，以指定哪些用户可以安装和/或运行特定应用程序。 此外，所有 Windows 操作系统的更新都经过数字签名。 |
+| **客户** | 由此蓝图部署的虚拟机实施 Windows AppLocker，以指定哪些用户可以安装和/或运行特定应用程序。 此外，所有 Windows 操作系统的更新都经过数字签名。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -497,7 +497,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 包括每个已部署虚拟机的所需状态配置 (DSC) 基线。 这些声明性的 PowerShell 脚本定义和配置其所应用到的资源。 该解决方案部署的资源所包含的基线 DSC 可由客户扩展以满足任务需求。 |
+| **客户** | 此蓝图包括每个已部署虚拟机的所需状态配置 (DSC) 基线。 这些声明性的 PowerShell 脚本定义和配置其所应用到的资源。 该解决方案部署的资源所包含的基线 DSC 可由客户扩展以满足任务需求。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -511,7 +511,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 包括每个已部署虚拟机的所需状态配置 (DSC) 基线。 在部署过程中，使用自定义脚本虚拟机扩展将基线自动应用到虚拟机。 |
+| **客户** | 此蓝图包括每个已部署虚拟机的所需状态配置 (DSC) 基线。 在部署过程中，使用自定义脚本虚拟机扩展将基线自动应用到虚拟机。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -539,7 +539,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 部署了 Automation DSC。 Automation DSC 使计算机配置与特定的组织定义的配置一致。 |
+| **客户** | 此蓝图部署了 Automation DSC。 Automation DSC 使计算机配置与特定的组织定义的配置一致。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -553,7 +553,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 部署了 Azure Automation DSC。 Automation DSC 使计算机配置与特定的组织定义的配置保持一致，并持续监视变更。 |
+| **客户** | 此蓝图部署了 Azure Automation DSC。 Automation DSC 使计算机配置与特定的组织定义的配置保持一致，并持续监视变更。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -567,7 +567,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 部署了 Azure Automation DSC。 Azure 的 Operations Management Suite (OMS) 中的自动化 DSC 可配置为在检测到错误配置时，生成警报或对其进行更正。 |
+| **客户** | 此蓝图部署了 Azure Automation DSC。 Azure 的 Operations Management Suite (OMS) 中的自动化 DSC 可配置为在检测到错误配置时，生成警报或对其进行更正。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -581,7 +581,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 部署的资源配置为根据其预期用途提供最少功能。 每个已部署虚拟机的所需状态配置 (DSC) 基线包含在内。 这些声明性的 PowerShell 脚本定义和配置其所应用到的资源。 该解决方案部署的资源所包含的基线 DSC 可由客户扩展以根据任务需求进一步限制功能。 |
+| **客户** | 此蓝图部署的资源配置为根据其预期用途提供最少功能。 每个已部署虚拟机的所需状态配置 (DSC) 基线包含在内。 这些声明性的 PowerShell 脚本定义和配置其所应用到的资源。 该解决方案部署的资源所包含的基线 DSC 可由客户扩展以根据任务需求进一步限制功能。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -595,7 +595,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 部署了 Azure 应用程序网关和网络安全组，以将对端口和协议的使用限制为仅允许使用必要的端口和协议。 虚拟机的应用程序网关、网络安全组和 DSC 基线可由客户进一步配置，以将函数、端口、协议和服务的使用限制为仅提供预期功能。 |
+| **客户** | 此蓝图部署了 Azure 应用程序网关和网络安全组，以将对端口和协议的使用限制为仅允许使用必要的端口和协议。 虚拟机的应用程序网关、网络安全组和 DSC 基线可由客户进一步配置，以将函数、端口、协议和服务的使用限制为仅提供预期功能。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -693,7 +693,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 将所有资源部署到 Azure 资源管理器资源组。 Azure 资源管理器提供始终最新的部署资源列表，可以针对资源标记和分组进行自定义以便实现清单管理。 由此解决方案部署的资源会被赋予一个与系统边界相关的特定资源标记。 |
+| **客户** | 此蓝图将所有资源部署到 Azure 资源管理器资源组。 Azure 资源管理器提供始终最新的部署资源列表，可以针对资源标记和分组进行自定义以便实现清单管理。 由此解决方案部署的资源会被赋予一个与系统边界相关的特定资源标记。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -707,7 +707,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 将所有资源部署到 Azure 资源管理器资源组。 Azure 资源管理器提供可在 Azure 门户中查看的已部署资源的始终最新列表。 |
+| **客户** | 此蓝图将所有资源部署到 Azure 资源管理器资源组。 Azure 资源管理器提供可在 Azure 门户中查看的已部署资源的始终最新列表。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -721,7 +721,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 将所有资源部署到 Azure 资源管理器资源组。 Azure 门户中的资源边栏选项卡列出了所有已部署的资源，在部署和删除资源时提供始终最新的清单。 |
+| **客户** | 此蓝图将所有资源部署到 Azure 资源管理器资源组。 Azure 门户中的资源边栏选项卡列出了所有已部署的资源，在部署和删除资源时提供始终最新的清单。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -735,7 +735,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 将所有资源部署到 Azure 资源管理器资源组。 Azure 门户中的资源边栏选项卡列出了所有已部署的资源，在部署和删除资源时提供始终最新的清单。 |
+| **客户** | 此蓝图将所有资源部署到 Azure 资源管理器资源组。 Azure 门户中的资源边栏选项卡列出了所有已部署的资源，在部署和删除资源时提供始终最新的清单。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -777,7 +777,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 将所有资源部署到 Azure 资源管理器资源组。 Azure 资源标记是用于对资源进行分类的键/值对，可用于问责和/或管理用途。 |
+| **客户** | 此蓝图将所有资源部署到 Azure 资源管理器资源组。 Azure 资源标记是用于对资源进行分类的键/值对，可用于问责和/或管理用途。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -791,7 +791,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 将所有资源部署到 Azure 资源管理器资源组。 Azure 资源管理器提供已部署资源的始终最新列表。 由此解决方案部署的资源会被赋予一个与系统边界相关的特定资源标记。 |
+| **客户** | 此蓝图将所有资源部署到 Azure 资源管理器资源组。 Azure 资源管理器提供已部署资源的始终最新列表。 由此解决方案部署的资源会被赋予一个与系统边界相关的特定资源标记。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -861,7 +861,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | Windows 和 SQL Server 许可证都包含在由此 Azure Blueprint 部署的资源中。 这是 Azure 的内置功能。 具有现有软件许可协议的组织可以考虑部署备用许可证模型。 |
+| **客户** | 为由此蓝图部署的资源提供了 Windows 和 SQL Server 许可证。 这是 Azure 的内置功能。 具有现有软件许可协议的组织可以考虑部署备用许可证模型。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -875,7 +875,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | Windows 和 SQL Server 许可证都包含在由此 Azure Blueprint 部署的资源中。 用户不需要单独跟踪许可证的使用。 |
+| **客户** | 为由此蓝图部署的资源提供了 Windows 和 SQL Server 许可证。 用户不需要单独跟踪许可证的使用。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 
@@ -889,7 +889,7 @@ ms.lasthandoff: 11/23/2017
 
 |||
 |---|---|
-| **客户** | 此 Azure Blueprint 没有部署对等文件共享功能。 |
+| **客户** | 此蓝图没有部署对等文件共享功能。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 

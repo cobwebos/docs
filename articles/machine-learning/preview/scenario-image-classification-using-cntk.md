@@ -259,7 +259,7 @@ Azure 机器训练 Workbench 将每次运行的历史记录存储在 Azure 上�
 
 ### <a name="using-a-custom-dataset"></a>使用自定义数据集
 
-首先，让我们来看看服装纹理数据的文件夹结构。 请注意，具有不同属性的所有图像在 DATA_DIR/images/fashionTexture/ 中是如何划分到不同子文件夹“圆点”、“豹纹”和“条纹”中。 此外，还要注意图像文件夹名称如何出现在 `PARAMETERS.py` 文件中：
+首先，让我们来看看服装纹理数据的文件夹结构。 请注意，具有不同属性的所有图像在 DATA_DIR/images/fashionTexture/ 中是如何划分到不同子文件夹“圆点”、“豹纹”和“条纹” *\* 中。 此外，还要注意图像文件夹名称如何出现在 `PARAMETERS.py` 文件中：
 ```python
 datasetName = "fashionTexture"
 ```

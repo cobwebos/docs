@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: sethm
-ms.openlocfilehash: 16f641c7b6fdd1d6730d2ae229c93ce4a33b9492
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 7a594e5951f6e90c9151fbaf231675d6ed091d1f
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>消息会话：先进先出 (FIFO) 
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 01/03/2018
 
 ![][1]
 
-[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) 接收程序是由接受会话的客户端创建。 客户端调用 C# 编写的 [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) 或 [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync)。 在反应回调模型中，它会注册会话处理程序，如后面所述。
+[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) 接收程序是由接受会话的客户端创建。 客户端调用 C# 编写的 [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) 或 [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync)。 在反应回调模型中，它会注册会话处理程序。
 
 当 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) 对象被接受同时由客户端保留时，此客户端会对队列或订阅中的包含相应会话 [SessionId](/en-us/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) 的所有消息，以及在会话保留期间仍在到达且包含相应 SessionId 的所有消息一直施加排他锁。
 
@@ -72,6 +72,8 @@ ms.lasthandoff: 01/03/2018
 从服务总线的角度来看，消息会话状态是一个不透明的二进制对象，可以保留一个消息大小的数据（对于服务总线标准版，大小为 256KB；对于服务总线高级版，大小为 1MB）。 相对于会话的处理状态可以保留在会话状态中，会话状态也可以指向保留此类信息的某存储位置或数据库记录。
 
 用于管理会话状态的 API [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) 和 [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState) 存在于 C# 和 Java API 的 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) 对象中。 之前没有设置会话状态的会话将对 GetState 返回空引用。 可以使用 [SetState(null)](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) 清除之前设置的会话状态。
+
+请注意，只要不清除会话状态，会话状态将保留（返回 **null**），即使会话中的所有消息都已使用，也是如此。
 
 可以使用 Java API 中的 SessionBrowser 方法、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) 上的 [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) 以及 .NET 客户端中的 [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient)，枚举队列或订阅中的所有现有会话。
 

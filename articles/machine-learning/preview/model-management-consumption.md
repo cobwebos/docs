@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 64141afe421ace44fe71c04f8a2fba48144633c9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 120611f98c97fa4c5bfa2a44aece47f246d9ec57
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="consuming-web-services"></a>使用 Web 服务
 将模型部署为实时 Web 服务后，可以从各种平台和应用程序向其发送数据并获取预测数据。 实时 Web 服务公开了一个用于获取预测数据的 REST API。 可以采用单行或多行格式向 Web 服务发送数据，从而一次获取一行或多行预测数据。
 
-使用 [Azure 机器学习 Web 服务](https://docs.microsoft.com/azure/machine-learning/preview/model-management-service-deploy)，外部应用程序可通过对服务 URL 进行 HTTP POST 调用以同步与预测模型进行通信。 若要进行 Web 服务调用，客户端应用程序需要指定在部署预测时创建的 API 密钥，并将请求数据置于 POST 请求正文中。
+使用 [Azure 机器学习 Web 服务](model-management-service-deploy.md)，外部应用程序可通过对服务 URL 进行 HTTP POST 调用以同步与预测模型进行通信。 若要进行 Web 服务调用，客户端应用程序需要指定在部署预测时创建的 API 密钥，并将请求数据置于 POST 请求正文中。
 
 请注意，API 密钥仅在群集部署模式下可用。 本地 Web 服务没有密钥。
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/08/2017
 Azure 机器学习 CLI 和 API 提供了实用的命令，可用于在使用 ```az ml env``` 选项的情况下为服务部署创建和管理计算环境。 
 
 ## <a name="list-deployed-services-and-images"></a>列出已部署的服务和映像
-可以使用 CLI 命令 ```az ml service list realtime -o table``` 列出当前已部署的服务和 Docker 映像。 请注意，此命令始终在当前计算环境的上下文中工作，并且不会显示在未设置为当前环境的环境中部署的服务。 若要设置环境，请使用 ```az ml env set```。 
+可以使用 CLI 命令 ```az ml service list realtime -o table``` 列出当前已部署的服务和 Docker 映像。 请注意，此命令始终在当前计算环境的上下文中正常工作。 对于未设置为当前的环境，它不会显示其中部署的服务。 若要设置环境，请使用 ```az ml env set```。 
 
 ## <a name="get-service-information"></a>获取服务信息
 成功部署 Web 服务后，使用以下命令获取服务 URL 和用于调用服务终结点的其他详细信息。 
@@ -55,7 +55,7 @@ az ml service keys realtime -i <web service id>
 创建 HTTP 请求时，在授权标头中使用该密钥："Authorization": "Bearer <key>"
 
 ## <a name="get-the-service-swagger-description"></a>获取服务 Swagger 说明
-如果提供了服务 API 架构，则服务终结点将在 ```http://<ip>/api/v1/service/<service name>/swagger.json``` 公开一个 Swagger 文档。 Swagger 文档可以用来自动生成服务客户端以及浏览预期的输入数据和关于服务的其他详细信息。
+如果提供了服务 API 架构，则服务终结点将在 ```http://<ip>/api/v1/service/<service name>/swagger.json``` 公开 Swagger 文档。 Swagger 文档可以用来自动生成服务客户端以及浏览预期的输入数据和关于服务的其他详细信息。
 
 ## <a name="get-service-logs"></a>获取服务日志
 若要了解服务行为并对问题进行诊断，可通过以下几种方式来检索服务日志：

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: d5f76d532b236e67a4e69eb820e2cfc3033a80c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7cd457fe0660718c3939d39ec1825009c5e4d17
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒体服务执行实时流式处理以创建多比特率流
 ## <a name="overview"></a>概述
 在 Azure 媒体服务 (AMS) 中，**频道**表示用于处理实时传送视频流内容的管道。 **频道**通过以下两种方式之一接收实时输入流：
 
 * 本地实时编码器（采用以下格式之一：RTP (MPEG-TS)、RTMP 或平滑流式处理（分片 MP4））将单比特率流发送至能够使用媒体服务执行实时编码的频道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传递给客户。
-* 本地实时编码器将多比特率 **RTMP** 或**平滑流式处理**（零碎的 MP4）发送到无法通过 AMS 进行实时编码的频道。 引入流将通过**频道**，而不会进行任何进一步处理。 这种方法称为**直通**。 可以使用以下输出多比特率平滑流式处理的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek 和 Tricaster 编码器。  实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。 收到请求时，媒体服务会将该流传递给客户。
+* 本地实时编码器将多比特率 **RTMP** 或**平滑流式处理**（零碎的 MP4）发送到无法通过 AMS 进行实时编码的频道。 引入流将通过**频道**，而不会进行任何进一步处理。 这种方法称为**直通**。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek 和 Tricaster 编码器。  实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。 收到请求时，媒体服务会将该流传递给客户。
   
   > [!NOTE]
   > 实时传送视频流时，使用直通方法是最经济的。
@@ -83,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 以下是在创建常见的实时流应用程序时涉及的常规步骤。
 
 > [!NOTE]
-> 目前，实时事件的最大建议持续时间为 8 小时。 如果需要长时间运行某个频道，请通过 Microsoft.com 联系 amslived。请注意，实时编码会影响计费，且应记住将实时编码频道保持为“正在运行”状态会产生以小时计算的费用。  建议在实时流式处理事件完成之后立即停止正在运行的通道，以避免产生额外的小时费用。 
+> 目前，实时事件的最大建议持续时间为 8 小时。 如果需要长时间运行某个频道，请联系 amslived@microsoft.com。请注意，实时编码会影响计费，且应记住将实时编码频道保持为“正在运行”状态会产生以小时计算的费用。  建议在实时流式处理事件完成之后立即停止正在运行的通道，以避免产生额外的小时费用。 
 > 
 > 
 
@@ -201,7 +201,7 @@ ms.lasthandoff: 10/11/2017
 
 创建频道后，可以获得引入 URL。 若要获取这些 URL，频道不一定要处于“正在运行”状态。 准备好开始将数据推送到频道时，频道必须处于“正在运行”状态。 在频道开始引入数据后，可以通过预览 URL 来预览流。
 
-可以选择通过 SSL 连接引入分片 MP4（平滑流）实时流。 要通过 SSL 进行摄取，请确保将摄取 URL 更新为 HTTPS。 请注意，目前 AMS 对自定义域不支持 SSL。  
+可以选择通过 SSL 连接引入分片 MP4（平滑流）实时流。 要通过 SSL 进行摄取，请确保将摄取 URL 更新为 HTTPS。 请注意，目前，AMS 对自定义域不支持 SSL。  
 
 ### <a name="allowed-ip-addresses"></a>允许的 IP 地址
 可以定义允许向此频道发布视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”），或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。
@@ -262,7 +262,7 @@ ms.lasthandoff: 10/11/2017
 ### <a id="preset"></a>系统预设
 指定此频道内的实时编码器要使用的预设。 目前，唯一允许的值是 **Default720p**（默认值）。
 
-请注意，如果需要自定义预设，应通过 Microsoft.com 联系 amslived。
+请注意，如果需要自定义预设，应联系 amslived@microsoft.com。
 
 **Default720p** 会将视频编码为以下 7 层。
 
@@ -290,7 +290,7 @@ ms.lasthandoff: 10/11/2017
 
 以下是指示广告时可以设置的属性。 
 
-### <a name="duration"></a>持续时间
+### <a name="duration"></a>Duration
 商业广告的持续时间（以秒为单位）。 这必须是非零正值，才能启动商业广告。 当商业广告正在播放时，将持续时间设为 0，并且 CueId 与正在播放的商业广告匹配，则广告会被取消。
 
 ### <a name="cueid"></a>CueId
@@ -381,7 +381,7 @@ ms.lasthandoff: 10/11/2017
 * 默认情况下，只能向媒体服务帐户添加 5 个频道。 这是所有新帐户的软配额。 有关详细信息，请参阅[配额和限制](media-services-quotas-and-limitations.md)。
 * 当频道或其关联的节目正在运行时，无法更改输入协议。 如果需要不同的协议，应当针对每个输入协议创建单独的频道。
 * 仅当频道处于“正在运行”状态时才会向你收费。 有关详细信息，请参阅[此](media-services-manage-live-encoder-enabled-channels.md#states)部分。
-* 目前，实时事件的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请通过 Microsoft.com 联系 amslived。
+* 目前，实时事件的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amslived@microsoft.com。
 * 确保使要从中流式传输内容的流式处理终结点处于“正在运行”状态。
 * 在 Azure 中输入多个语言轨迹和执行实时编码时，多语言输入仅支持 RTP。 使用 MPEG-2 TS over RTP 最多可以定义 8 个音频流。 当前不支持使用 RTMP 或平滑流引入多个音频轨迹。 使用[本地实时编码](media-services-live-streaming-with-onprem-encoders.md)执行实时编码时，不存在这种限制，因为发送到 AMS 的任何数据都会通过频道，而不做进一步的处理。
 * 编码预设使用“最大帧速率”30 fps 的思路。 因此，如果输入为 60fps/59.97i，则输入帧将修剪/反交错为 30/29.97 fps。 因此，如果输入为 50fps/50i，则输入帧将修剪/反交错为 25 fps。 如果输入为 25 fps，则输出将保持为 25 fps。

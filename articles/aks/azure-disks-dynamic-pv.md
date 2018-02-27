@@ -8,13 +8,13 @@ ms.service: container-service
 ms.topic: article
 ms.date: 1/25/2018
 ms.author: nepeters
-ms.openlocfilehash: e1f5b68d5d39dd846ebec525d1e83a6c0ef4971a
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: aa89cf9fe4e2cd5b63017558e89401de86effdc9
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="persistent-volumes-with-azure-disks---dynamic-provisioning"></a>Azure 磁盘的永久性卷 - 动态预配
+# <a name="persistent-volumes-with-azure-disks"></a>含 Azure 磁盘的永久性卷
 
 永久性卷表示已经过预配的可以在 Kubernetes 群集中使用的存储块。 永久性卷可供一个或多个 Pod 使用，并可动态或静态预配。 本文档详细介绍如何在 AKS 群集中将 Azure 磁盘动态预配为 Kubernetes 永久性卷。 
 

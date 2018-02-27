@@ -25,16 +25,16 @@ ms.lasthandoff: 02/03/2018
 |---------|---------|---------|---------|---------|
 |本地 Python    |     支持    |不支持         | 不支持        |         |
 |Docker (Linux VM) Python     |仅在项目文件中受支持*         | 不支持        |        不支持 |         |
-|Docker (Linux VM) PySpark     |仅在项目文件中受支持*     |支持         | 支持**        |         |
+|Docker (Linux VM) PySpark     |仅在项目文件中受支持*     |支持         | 支持 \**        |         |
 |Azure 数据科学虚拟机 Python     |仅在项目文件中受支持*         |不支持         |不支持         |         |
 |Azure 数据科学虚拟机 PySPark     | 仅在项目文件中受支持*        |不支持         |不支持         |         |
-|Azure HDInsight PySpark     | 不支持        |支持         |支持**         |         |
+|Azure HDInsight PySpark     | 不支持        |支持         |支持 \**         |         |
 |Azure HDInsight Python     | 不支持        | 不支持        | 不支持        |         |
 
 目前任何计算目标都不支持 Azure Data Lake Store。
 
 *使用本地文件路径时，项目中的文件会被复制到计算环境中，然后在该环境中读取。 不会复制项目之外的文件，并且路径将不会在计算环境中解析。 请考虑使用数据源替换，以便在本地运行时代码可以使用本地文件。 然后针对不同运行配置切换到 Azure 存储 Blob。 还可以在数据源上使用采样支持，只在某些运行配置中管理大型数据的运行。
 
-**使用 Maven JDBC SQL Server 驱动程序 6.2.1。 必须确保此包（或一个兼容包）包含在计算环境的 spark_dependencies.yml 文件中。
+\** 使用 Maven JDBC SQL Server 驱动程序 6.2.1。 必须确保此包（或一个兼容包）包含在计算环境的 spark_dependencies.yml 文件中。
 
 ***如果可从计算环境访问数据库，则支持 Azure SQL 数据库或 SQL Server。 

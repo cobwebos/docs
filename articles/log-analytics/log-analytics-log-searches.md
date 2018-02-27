@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: aa4608d37b06db88819e6175dcf8f94a7e13f04a
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: cef7fc282edc7396a0f26dab98ea7f1087315b23
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>在 Log Analytics 中使用日志搜索查找数据
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: e454778c558b9c17c47ad9eb651737aa0b5e2605
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 80d625a6ab2d3c6d5de0a90fbff0760888154d70
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="streaming-endpoints-overview"></a>流式处理终结点概述 
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 
 从 2017 年 1 月发布的媒体服务开始，可使用两种流式处理类型：**标准**和**高级**。 这些类型属于流式处理终结点版本“2.0”。
 
-类型|说明
+Type|说明
 ---|---
 **标准**|这是适用于大多数方案的默认选项。<br/>使用此选项，可以获得固定/有限的 SLA，在启动流式处理终结点后的前 15 天是免费的。<br/>如果创建多个流式处理终结点，只有第一个流式处理终结点在前 15 天是免费的，其他流式处理终结点在启动后立即就会计费。 <br/>请注意，免费试用仅适用于新创建的媒体服务帐户和默认的流式处理终结点。 现有的流式处理终结点和另外创建的流式处理终结点不包括免费试用期，即使将它们升级到版本 2.0 或创建为版本 2.0，也是如此。
 **高级**|此选项适用于需要更高级缩放或控制的专业方案。<br/>选择此选项则会使用基于已购买高级流单元 (SU) 容量的可变 SLA，专用流式处理终结点存在于隔离环境中，并不争用资源。
@@ -65,7 +65,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="versions"></a>版本
 
-|类型|StreamingEndpointVersion|ScaleUnits|CDN|计费|SLA| 
+|Type|StreamingEndpointVersion|ScaleUnits|CDN|计费|SLA| 
 |--------------|----------|-----------------|-----------------|-----------------|-----------------|    
 |经典|1.0|0|不可用|免费|不可用|
 |标准流式处理终结点|2.0|0|是|付费|是|
@@ -77,7 +77,7 @@ ms.lasthandoff: 10/11/2017
 功能|标准|高级
 ---|---|---
 前 15 天免费| 是 |否
-吞吐量 |未使用 Azure CDN 时，最多可达 600 Mbps。 使用 CDN 进行缩放。|每个流单元 (SU) 200 Mbps。 使用 CDN 进行缩放。
+Throughput |未使用 Azure CDN 时，最多可达 600 Mbps。 使用 CDN 进行缩放。|每个流单元 (SU) 200 Mbps。 使用 CDN 进行缩放。
 SLA | 99.9|99.9（每个 SU 200 Mbps）。
 CDN|Azure CDN、第三方 CDN 或没有 CDN。|Azure CDN、第三方 CDN 或没有 CDN。
 按比例计费| 每日|每日
@@ -86,12 +86,12 @@ CDN|Azure CDN、第三方 CDN 或没有 CDN。|Azure CDN、第三方 CDN 或没�
 缩放|自动增加到目标吞吐量。|额外流单元
 IP 筛选/G20/自定义主机|是|是
 渐进式下载|是|是
-建议的用法 |建议用于绝大多数的流式处理方案。|专业用法。<br/>如果认为需求可能会超出标准。 如果预计并发受众大小大于 50,000 个查看器，请与我们联系（microsoft.com 上的 amsstreaming）。
+建议的用法 |建议用于绝大多数的流式处理方案。|专业用法。<br/>如果认为需求可能会超出标准。 如果预计并发受众大小大于 50,000 个查看者，请与我们联系 (amsstreaming@microsoft.com)。
 
 
 ## <a name="migration-between-types"></a>类型之间的迁移
 
-从 | 如果 | 操作
+从 | 目标 | 操作
 ---|---|---
 经典|标准|需要选择加入
 经典|高级| 缩放（额外流单元）

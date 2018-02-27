@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: a43d2ea10bfd6de2f8177283821f7aad59e9f610
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 40414afbfcd456353b4290585ccd9d594fbf55dd
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>在门户中使用 Azure 网络观察程序管理数据包捕获
 
@@ -61,7 +61,10 @@ ms.lasthandoff: 02/01/2018
 概述页显示现有的所有数据包捕获列表，不管其状态如何。
 
 > [!NOTE]
-> 数据包捕获需要通过端口 443 来与存储帐户建立连接。
+> 数据包捕获需要以下连接。
+> * 通过端口 443 与存储帐户的出站连接。
+> * 与 169.254.169.254 的入站和出站连接
+> * 与 168.63.129.16 的入站和出站连接
 
 ![数据包捕获概述屏幕][1]
 

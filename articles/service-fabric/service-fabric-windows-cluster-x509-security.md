@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: ca858408ecb258cc64645571d048de93449689d6
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: ee1a2eeeda95b03b185090841cf93c4183c5fce2
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>使用 X.509 证书在 Windows 上保护独立群集
 本文介绍如何保护独立 Windows 群集的不同节点之间的通信。 此外，还介绍如何使用 X.509 证书针对连接到此群集的客户端进行身份验证。 身份验证可确保只有经过授权的用户才能访问该群集和部署的应用程序，以及执行管理任务。 创建群集时，应在该群集上启用证书安全性。  
@@ -48,6 +48,12 @@ ms.lasthandoff: 12/09/2017
             ],
             "X509StoreName": "My"
         },
+        "ClusterCertificateIssuerStores": [
+            {
+                "IssuerCommonName": "[IssuerCommonName]",
+                "X509StoreNames" : "Root"
+            }
+        ],
         "ServerCertificate": {
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
@@ -62,6 +68,12 @@ ms.lasthandoff: 12/09/2017
             ],
             "X509StoreName": "My"
         },
+        "ServerCertificateIssuerStores": [
+            {
+                "IssuerCommonName": "[IssuerCommonName]",
+                "X509StoreNames" : "Root"
+            }
+        ],
         "ClientCertificateThumbprints": [
             {
                 "CertificateThumbprint": "[Thumbprint]",
@@ -79,6 +91,12 @@ ms.lasthandoff: 12/09/2017
                 "IsAdmin": true
             }
         ],
+        "ClientCertificateIssuerStores": [
+            {
+                "IssuerCommonName": "[IssuerCommonName]",
+                "X509StoreNames": "Root"
+            }
+        ]
         "ReverseProxyCertificate": {
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
@@ -110,10 +128,13 @@ ms.lasthandoff: 12/09/2017
 | --- | --- |
 | ClusterCertificate |建议用于测试环境。 需要使用此证书来保护群集节点之间的通信。 可以使用两个不同的证书（一个主证书和一个辅助证书）进行升级。 在 Thumbprint 部分设置主证书的指纹，在 ThumbprintSecondary 变量中设置辅助证书的指纹。 |
 | ClusterCertificateCommonNames |建议用于生产环境。 需要使用此证书来保护群集节点之间的通信。 可以使用一个或两个群集证书公用名称。 CertificateIssuerThumbprint 对应此证书的颁发者的指纹。 如果要使用具有相同常见名称的多个证书，可以指定多个颁发者指纹。|
+| ClusterCertificateIssuerStores |建议用于生产环境。 此证书与群集证书的颁发者相对应。 可以在此节下提供颁发者公用名称和相应的存储名称，而不是在 ClusterCertificateCommonNames 下指定颁发者指纹。  这样可以轻松滚动更新群集颁发者证书。 如果使用多个群集证书，可以指定多个颁发者。 空的 IssuerCommonName 会将 X509StoreNames 下指定的相应存储中的所有证书加入允许列表。|
 | ServerCertificate |建议用于测试环境。 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 为方便起见，可以选择对 ClusterCertificate 和 ServerCertificate 使用相同的证书。 可以使用两个不同的服务器证书（一个主证书和一个辅助证书）进行升级。 在 Thumbprint 部分设置主证书的指纹，在 ThumbprintSecondary 变量中设置辅助证书的指纹。 |
 | ServerCertificateCommonNames |建议用于生产环境。 当客户端尝试连接到此群集时，系统会向客户端提供此证书。 CertificateIssuerThumbprint 对应此证书的颁发者的指纹。 如果要使用具有相同常见名称的多个证书，可以指定多个颁发者指纹。 为方便起见，可以选择对 ClusterCertificateCommonNames 和 ServerCertificateCommonNames 使用相同的证书。 可以使用一个或两个服务器证书公用名称。 |
+| ServerCertificateIssuerStores |建议用于生产环境。 此证书与服务器证书的颁发者相对应。 可以在此节下提供颁发者公用名称和相应的存储名称，而不是在 ServerCertificateCommonNames 下指定颁发者指纹。  这样可以轻松滚动更新服务器颁发者证书。 如果使用多个服务器证书，可以指定多个颁发者。 空的 IssuerCommonName 会将 X509StoreNames 下指定的相应存储中的所有证书加入允许列表。|
 | ClientCertificateThumbprints |在经过身份验证的客户端上安装这一组证书。 可以在想要允许其访问群集的计算机上安装许多不同的客户端证书。 在 CertificateThumbprint 变量中设置每个证书的指纹。 如果将 IsAdmin 设置为 *true*，则安装了此证书的客户端可以针对群集执行管理员管理活动。 如果 IsAdmin 设置为 *false*，则使用此证书的客户端只能执行用户有权执行的操作（通常为只读）。 有关角色的详细信息，请阅读[基于角色的访问控制 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)。 |
 | ClientCertificateCommonNames |在 CertificateCommonName 中设置第一个客户端证书的通用名称。 CertificateIssuerThumbprint 是此证书的颁发者的指纹。 若要详细了解公用名称和颁发者，请阅读[使用证书](https://msdn.microsoft.com/library/ms731899.aspx)。 |
+| ClientCertificateIssuerStores |建议用于生产环境。 此证书与客户端证书的颁发者（管理员和非管理员角色）相对应。 可以在此节下提供颁发者公用名称和相应的存储名称，而不是在 ClientCertificateCommonNames 下指定颁发者指纹。  这样可以轻松滚动更新客户端颁发者证书。 如果使用多个客户端证书，可以指定多个颁发者。 空的 IssuerCommonName 会将 X509StoreNames 下指定的相应存储中的所有证书加入允许列表。|
 | ReverseProxyCertificate |建议用于测试环境。 如果想要保护[反向代理](service-fabric-reverseproxy.md)，可以选择指定此证书。 若要使用此证书，请确保已在 nodeTypes 中设置了 reverseProxyEndpointPort。 |
 | ReverseProxyCertificateCommonNames |建议用于生产环境。 如果想要保护[反向代理](service-fabric-reverseproxy.md)，可以选择指定此证书。 若要使用此证书，请确保已在 nodeTypes 中设置了 reverseProxyEndpointPort。 |
 
@@ -123,7 +144,7 @@ ms.lasthandoff: 12/09/2017
  {
     "name": "SampleCluster",
     "clusterConfigurationVersion": "1.0.0",
-    "apiVersion": "2016-09-26",
+    "apiVersion": "10-2017",
     "nodes": [{
         "nodeName": "vm0",
         "metadata": "Replace the localhost below with valid IP address or FQDN",
@@ -162,12 +183,21 @@ ms.lasthandoff: 12/09/2017
                 "ClusterCertificateCommonNames": {
                   "CommonNames": [
                     {
-                      "CertificateCommonName": "myClusterCertCommonName",
-                      "CertificateIssuerThumbprint": "7c fc 91 97 13 66 8d 9f a8 ee 71 2b a2 f4 37 62 00 03 49 0d"
+                      "CertificateCommonName": "myClusterCertCommonName"
                     }
                   ],
                   "X509StoreName": "My"
                 },
+                "ClusterCertificateIssuerStores": [
+                    {
+                        "IssuerCommonName": "ClusterIssuer1",
+                        "X509StoreNames" : "Root"
+                    },
+                    {
+                        "IssuerCommonName": "ClusterIssuer2",
+                        "X509StoreNames" : "Root"
+                    }
+                ],
                 "ServerCertificateCommonNames": {
                   "CommonNames": [
                     {
@@ -221,6 +251,7 @@ ms.lasthandoff: 12/09/2017
 
 ## <a name="certificate-rollover"></a>证书滚动更新
 使用证书公用名而不使用指纹时，证书滚动更新不需要群集配置升级。 对于颁发者指纹升级，请确保新的指纹列表具有与旧列表的交集。 首先必须使用新的颁发者指纹进行配置升级，然后在存储中安装新证书（群集/服务器证书和颁发者证书）。 请在安装新的颁发者证书后，将旧的颁发者证书在证书存储中至少保存两小时。
+如果使用颁发者存储，则不需要对颁发者证书滚动更新执行配置升级。 在相应的证书存储中安装新的具有更迟到期日期的颁发者证书并在几个小时后删除旧的颁发者证书。
 
 ## <a name="acquire-the-x509-certificates"></a>获取 X.509 证书
 若要保护群集内部的通信，首先需要获取群集节点的 X.509 证书。 此外，如果只想允许经过授权的计算机/用户连接到此群集，需要获得并安装客户端计算机的证书。

@@ -2,49 +2,51 @@
 title: "深度学习预测性维护实际方案 - Azure | Microsoft Docs"
 description: "了解如何重现有关使用 Azure Machine Learning Workbench 深度学习预防性维护的教程。"
 services: machine-learning
-author: FrancescaLazzeri
-ms.author: Lazzeri
+author: ehrlinger
+ms.author: jehrling
 manager: ireiter
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
+ms.custom: mvc
 ms.devlang: 
 ms.topic: article
 ms.date: 11/22/2017
-ms.openlocfilehash: a55209256c29fa62cc2da72f9653fbc7fc0e7c54
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 7d4fe98b5c45767fb06391218e80789fc0c96a3b
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
-# <a name="deep-learning-for-predictive-maintenance-real-world-scenarios"></a>深度学习预测性维护实际方案
+# <a name="deep-learning-for-predictive-maintenance-real-world-scenario"></a>预测性维护实际方案的深度学习。
 
-深度学习是机器学习最流行的趋势之一。 深度学习广泛运用于许多领域和应用程序，其中包括无人驾驶车、语音和图像识别、机器人学和金融。 深度学习是受大脑形状（生物神经网络）和机器学习启发的一组算法。 认知科学通常将深度学习称为人工神经网络 (ANN)。
+深度学习是机器学习最流行的趋势之一，广泛运用于许多领域，包括：
+- 无人驾驶汽车和机器人
+- 语音和图像识别
+- 金融预测
 
-预测性维护也很受欢迎。 在预测性维护中，可通过多种不同的方法帮助确定设备状况，并预测何时应执行维护。 预测性维护的一些常见用途包括故障预测、故障诊断（根本原因分析）、故障检测、故障类型分类和发生故障后的缓解措施或维护操作建议。
+这些方法也称为深度神经网络 (DNN)，受大脑中各种神经元（生物神经网络）的启发。
 
-在预测性维护方案中，将收集一段时间内的数据来监视设备状态。 目标是找到可帮助预测和最终防止出现故障的模式。 使用[长短期记忆 (LSTM)](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) 网络是一种在预测性维护中尤其受欢迎的深度学习方法。 LSTM 网络擅长学习序列。 时序数据可用于回顾较长一段时间来检测故障模式。
+计划外设备停机带来的影响对任何企业而言都是极具破坏性的。 保持现场设备正常运行以最大限度提高利用率和性能，以及将开销和计划外停机时间降至最低至关重要。 极早发现问题所在有助于以经济高效的方式分配有限的维护资源，并改进质量和供应链流程。 
 
-在本教程中，我们将为[预测性维护](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3)中所述的数据集和方案构建一个 LSTM 网络。 我们使用该网络来预测飞机引擎的剩余使用寿命。 该模板使用模拟飞机传感器值来预测飞机引擎将在未来哪个时间点出现故障。 利用此预测，可以事先计划维护，以防出现故障。
+预测性维护 (PM) 策略使用机器学习方法来确定设备的状态，以便主动执行维护，避免对计算机造成不利的性能影响。 在 PM 中，在不同时间收集的数据用于监视计算机的状态，并通过分析找出可用于预测故障的模式。 此设置中往往使用[长短期记忆 (LSTM)](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) 网络，因为它们能够从数据序列中学习。
 
-本教程使用 [Keras](https://keras.io/) 深度学习库，并使用 Microsoft 认知工具包 [CNTK](https://docs.microsoft.com/cognitive-toolkit/Using-CNTK-with-Keras) 作为后端。
+## <a name="link-to-the-gallery-github-repository"></a>库 GitHub 存储库的链接
 
-包含本教程相关示例的公共 GitHub 存储库位于 [https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) 上。
+下面是到公共 GitHub 存储库的链接：[https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance)，可从中获得问题报告和发布内容 
 
 ## <a name="use-case-overview"></a>用例概述
 
-本教程使用模拟飞机引擎运行故障事件示例来演示预测性维护的建模过程。 
+本教程使用模拟飞机引擎运行故障事件示例来演示预测性维护的建模过程。 [预测性维护](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3)中描述了此方案。
 
-此处所述的建模数据隐式假设是指资产采用累进降级模式。 该模式反映在资产的传感器度量中。 通过检查资产一段时间内的传感器值，机器学习算法可以学习传感器值、传感器值变化与历史故障之间的关系。 此关系用于预测未来的故障。 
+此设置的主要假设是引擎在其整个生存周期内会逐渐降级。 可以通过引擎传感器的度量值检测降级。 PM 尝试对这些传感器值变化与历史故障之间的关系建模。 然后，该模型可以根据当前的传感器度量值状态，预测引擎将来何时可能发生故障。
 
-在将示例数据替换成你自己的日期之前，建议先检查数据格式，并完成模板的所有三个步骤。
+此方案会创建 LSTM 网络，以使用历史传感器值预测飞机引擎的剩余工作寿命 (RUL)。 该方案结合使用 [Keras](https://keras.io/) 和 [Tensorflow](https://www.tensorflow.org/) 深度学习框架作为计算引擎，通过一组引擎训练 LSTM，并基于不可见的一组引擎测试该网络。
 
-## <a name="prerequisites"></a>系统必备
-
+## <a name="prerequisites"></a>先决条件
 - [Azure 帐户](https://azure.microsoft.com/free/)（有免费试用版可用）。
 - 创建有工作区的 Azure Machine Learning Workbench。
-- 对于模型操作化：设置了本地部署环境的 Azure Machine Learning Operationalization，以及一个 [Azure 机器学习模型管理帐户](https://docs.microsoft.com/azure/machine-learning/preview/model-management-overview)。
+- 对于模型操作化：设置了本地部署环境的 Azure Machine Learning Operationalization，以及一个 [Azure 机器学习模型管理帐户](model-management-overview.md)。
 
 ## <a name="create-a-new-workbench-project"></a>创建新的 Workbench 项目
 
@@ -53,38 +55,53 @@ ms.lasthandoff: 01/12/2018
 1. 打开 Machine Learning Workbench。
 2. 在“项目”页上选择 **+**，然后选择“新建项目”。
 3. 在“新建项目”窗格中，输入新项目的信息。
-4. 在“搜索项目模板”搜索框中，输入“预测性维护”，然后选择模板。
-5. 选择“创建”。
+4. 在“搜索项目模板”搜索框中，键入“预测性维护”并选择“适用于预测维护方案的深度学习”模板。
+5. 单击“创建”按钮
 
 ## <a name="prepare-the-notebook-server-computation-target"></a>准备 Notebook 服务器计算目标
 
-在本地计算机上，从 Machine Learning Workbench 的“文件”菜单中选择“打开命令提示符”或“打开 PowerShell”。 在所选选项的命令提示符窗口中，执行以下命令：
+若要在本地计算机上运行，请在 AML Workbench `File` 菜单中选择 `Open Command Prompt` 或 `Open PowerShell CLI`。 CLI 接口允许使用 `az` 命令访问 Azure 服务。 首先，使用以下命令登录到 Azure 帐户：
 
-`az ml experiment prepare --target docker --run-configuration docker`
+```
+az login
+``` 
 
-建议在 DS4_V2 标准 [Data Science Virtual Machine (DSVM) for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) 上运行 Notebook 服务器。 配置完 DSVM 之后，运行以下命令来准备 Docker 映像：
+此命令提供用于 `https:\\aka.ms\devicelogin` URL 的身份验证密钥。 CLI 将一直等待，直到设备登录操作返回并提供一些连接信息。 接下来，如果具有本地 [docker](https://www.docker.com/get-docker) 安装，则使用以下命令准备本地计算环境：
 
-`az ml computetarget attach remotedocker --name [connection_name] --address [VM_IP_address] --username [VM_username] --password [VM_password]`
+```
+az ml experiment prepare --target docker --run-configuration docker
+```
 
-`az ml experiment prepare --target [connection_name] --run-configuration [connection_name]`
+考虑到内存和磁盘要求，最好在[用于 Linux (Ubuntu) 的数据科学虚拟机](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)上运行。 配置 DSVM 后，使用以下两个命令准备远程 docker 环境：
 
-准备好 Docker 映像后，打开 Jupyter Notebook 服务器。 若要打开 Jupyter Notebook 服务器，请转到 Machine Learning Workbench 的“Notebook”选项卡，或启动基于浏览器的服务器：`az ml notebook start`
+```
+az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]
+```
 
-Notebook 存储在 Jupyter 环境中的 Code 目录内。 按编号顺序运行这些 Notebook，先从 Code\1_data_ingestion_and_preparation.ipynb 开始。
+连接到远程 docker 容器后，使用以下命令准备 DSVM docker 计算环境： 
 
-选择与 [project_name]_Template [connection_name] 匹配的内核，然后选择“设置内核”。
+```
+az ml experiment prepare --target [Connection_Name] --run-configuration [Connection_Name]
+```
+
+准备 docker 计算环境后，在 AML Workbench 的 Notebook 选项卡中打开 Jupyter Notebook 服务器，或者使用以下命令启动基于浏览器的服务器： 
+```
+az ml notebook start
+```
+
+示例 Notebook 存储在 `Code` 目录中。 各个 Notebook 设置为按顺序运行，从第一个 (`Code\1_data_ingestion.ipynb`) Notebook 开始。 打开每个 Notebook 时，系统会提示你选择计算内核。 选择 `[Project_Name]_Template [Connection_Name]` 内核以在之前配置的 DSVM 上执行。
 
 ## <a name="data-description"></a>数据说明
 
-该模板使用 PM_train.txt、PM_test.txt 和 PM_truth.txt 文件中的三个数据集作为输入。
+该模板使用 **PM_train.txt**、**PM_test.txt** 和 **PM_truth.txt** 文件中的三个数据集作为输入。 
 
 -  **训练数据**：飞机引擎运行故障数据。 训练数据 (PM_train.txt) 包含多个多元时序，以*周期*为时间单位。 它在每个周期中包含 21 个传感器读数。 
 
-    可以假定每个时序生成自同一类型的不同引擎。 假定每个引擎一开始都具有不同程度的初始磨损和制造变化。 此信息对于用户是未知的。 
+    - 将会基于相同类型的不同引擎生成每个时序。 每个引擎最初具有不同程度的初始磨损和某种独特的制造差异。 此信息对于用户是未知的。 
 
-    在此模拟数据中，假定引擎在每个时序开始时正常运行。 在一系列运行周期中的某个时间点，它的性能开始下降。 性能不断下降，且下降速度呈数量级增长。 
+    - 在此模拟数据中，假定引擎在每个时序开始时正常运行。 在一系列运行周期中的某个时间点，它的性能开始下降。 性能不断下降，且下降速度呈数量级增长。 
 
-    当达到预定义的阈值时，则认为该引擎不安全，无法再使用。 每个时间序列中的最后一个周期都可被视为相应引擎的故障点。
+    - 当达到预定义的阈值时，则认为该引擎不安全，无法再使用。 每个时序的最后一个周期是该引擎的故障点。
 
 -   **测试数据**：飞机引擎运行数据，不记录故障事件。 测试数据 (PM_test.txt) 的数据架构与训练数据相同。 唯一的区别在于该数据不指示故障发生时间（最后一个时间段*不*表示故障点）。 此引擎在出现故障前还可以持续多少个周期是未知的。
 
@@ -92,44 +109,49 @@ Notebook 存储在 Jupyter 环境中的 Code 目录内。 按编号顺序运行�
 
 ## <a name="scenario-structure"></a>方案结构
 
-[GitHub 存储库] (https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance)提供了该方案的相关内容。 
-
-在存储库中，[自述文件] (https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance/blob/master/README.md)概述了从准备数据到构建和实现模型的一系列过程。 存储库中的 [Code] (https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance/tree/master/Code) 文件夹包含了这三个 Jupyter Notebook。 
-
-接下来我们将介绍分步方案工作流。
+方案工作流分为三个步骤，每个步骤在 Jupyter Notebook 中执行。 每个 Notebook 生成本地保存的数据项目用于以下 Notebook： 
 
 ### <a name="task-1-data-ingestion-and-preparation"></a>任务 1：数据引入和准备
 
-Code/1_data_ingestion_and_preparation.ipnyb 中的数据引入 Jupyter Notebook 将三个输入数据集加载成 Pandas 数据帧格式。 接着，它准备用于建模的数据，并进行一些初步数据可视化。 之后，数据转换成 PySpark 格式，并存储在 Azure 订阅的 Azure Blob 存储容器中，用于下一个建模任务。
+`Code/1_data_ingestion_and_preparation.ipnyb` 中的数据引入 Jupyter Notebook 将三个输入数据集加载成 Pandas 数据帧格式。 然后，它准备用于建模的数据，并进行一些初步数据可视化。 数据集存储在计算上下文的本地，以便在模型生成 Notebook 中使用。
 
 ### <a name="task-2-model-building-and-evaluation"></a>任务 2：模型构建和评估
 
-Code/2_model_building_and_evaluation.ipnyb 中的模型构建 Jupyter Notebook 从 Blob 存储中读取 PySpark 训练和测试数据集。 然后，使用训练数据集构建 LSTM 网络。 模型性能根据测试集来衡量。 生成的模型经过序列化，存储在本地计算上下文中，以用于操作化任务。
+`Code/2_model_building_and_evaluation.ipnyb` 中的模型生成 Jupyter Notebook 从磁盘读取训练和测试数据集，并为训练数据集生成 LSTM 网络。 模型性能根据测试集来衡量。 生成的模型经过序列化，存储在本地计算上下文中，以用于操作化任务。
 
 ### <a name="task-3-operationalization"></a>任务 3：操作化
 
-Code/3_operationalization.ipnyb 中的操作化 Jupyter Notebook 使用存储的模型来生成在 Azure 托管 Web 服务上调用模型所需的函数和架构。 该 Notebook 会测试这些函数，然后将操作化资产压缩成 .zip 文件。
+`Code/3_operationalization.ipnyb` 中的操作化 Jupyter Notebook 使用存储的模型来生成函数和架构，用于在 Azure 托管的 Web 服务中调用模型。 该 Notebook 会测试这些函数，然后将资产压缩成 `LSTM_o16n.zip` 文件，并加载到 Azure 存储容器中供部署。
 
-压缩后的文件包含以下文件：
+`LSTM_o16n.zip` 部署文件包含以下项目：
 
-- **modellstm.json**：用于部署的架构定义文件。 
-- **lstmscore.py**：Azure Web 服务所需的 **init()** 和 **run()** 函数。
-- **lstm.model**：模型定义目录。
+- `webservices_conda.yaml` 定义在部署目标上运行 LSTM 模型所需的 python 包。  
+- `service_schema.json` 定义 LSTM 模型所需的数据架构。     
+- `lstmscore.py` 定义部署目标运行的、用于给新数据评分的函数。    
+- `modellstm.json` 定义 LSTM 体系结构。 lstmscore.py 函数读取体系结构和权重来初始化模型。
+- `modellstm.h5` 定义模型权重。
+- `test_service.py` 使用测试数据记录调用部署终结点的测试脚本。 
+- `PM_test_files.pkl` `test_service.py` 脚本从 `PM_test_files.pkl` 文件读取历史引擎数据，并发送 LSTM 的 webservice enough 周期，以返回引擎故障的概率。
 
-该 Notebook 在打包要部署的操作化资产之前，会使用模型定义测试函数。 Notebook 的末尾包含部署说明。
-
+该 Notebook 在打包要部署的操作化资产之前，会使用模型定义测试函数。 `Code/3_operationalization.ipnyb` Notebook 的末尾包含了有关设置和测试 Web 服务的说明。
 
 ## <a name="conclusion"></a>结束语
 
-本教程使用的方案较为简单，该方案仅使用一个数据源（传感器值）进行预测。 在更高级的预测性维护方案中，比如[预测性维护建模指南 R Notebook](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1)，可能会使用多个数据源。 其他数据源可能包括历史维护记录、错误日志以及机器和操作员特征。 其他数据源可能需要在深度学习网络中进行不同类型的处理。 此外，优化模型以使用正确的参数（例如窗口大小）也很重要。 
-
-可以编辑此方案的相关部分，并尝试其他难处理的方案，比如[预测性维护建模指南](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)（涉及其他多个数据源）中所述的方案。
+本教程在一个简单的方案中使用传感器值做出预测。 更高级的预防性维护方案，例如[预测性维护建模指导 R Notebook](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1)，可以使用多个数据源，例如维护记录、错误日志和计算机特征。 其他数据源可能需要经过不同的处理才能在深度学习中使用。
 
 
 ## <a name="references"></a>参考
 
-- [预测性维护解决方案模板](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance)
-- [预测性维护建模指南](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)
-- [预测性维护建模指南 Python 笔记本](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
-- [使用 PySpark 的预测性维护](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
+我们提供了可在各种平台上使用的其他预测性维护用例：
 
+* [预测性维护解决方案模板](https://docs.microsoft.com/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance)
+* [预测性维护建模指南](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)
+* [使用 SQL R Services 的预测性维护建模指南](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-Modeling-Guide-using-SQL-R-Services-1)
+* [预测性维护建模指南 Python 笔记本](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
+* [使用 PySpark 的预测性维护](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
+
+* [预测性维护实际方案](https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-predictive-maintenance)
+
+## <a name="next-steps"></a>后续步骤
+
+Azure Machine Learning Workbench 中提供了其他许多示例方案来演示产品的其他功能。 

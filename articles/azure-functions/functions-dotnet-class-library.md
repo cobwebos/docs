@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 3de1e9b042a7a356c3c88e604e1e26c256d85657
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 8a098d2ecc004b1593310579c47c53778858e799
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -40,6 +40,9 @@ Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在
 
 * [host.json](functions-host-json.md) - 存储着在本地或者在 Azure 中运行时会影响项目中的所有函数的配置设置。
 * [local.settings.json](functions-run-local.md#local-settings-file) - 存储着在本地运行时使用的应用设置和连接字符串。
+
+> [!IMPORTANT]
+> 生成过程将为每个函数创建一个 *function.json* 文件。 此 *function.json* 文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 若要禁用函数，请使用 [Disable](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) 属性。 例如，添加布尔应用设置 MY_TIMER_DISABLED，然后将 `[Disable("MY_TIMER_DISABLED")]` 应用于函数。 然后，可以通过更改应用设置对其启用和禁用。
 
 ### <a name="functionname-and-trigger-attributes"></a>FunctionName 和触发器属性
 
@@ -83,7 +86,7 @@ public static class SimpleExampleWithOutput
 
 ### <a name="conversion-to-functionjson"></a>转换为 function.json
 
-生成过程会在生成文件中的一个函数文件夹中创建一个 *function.json* 文件。 此文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 
+生成过程会在生成文件中的一个函数文件夹中创建一个 *function.json* 文件。 如前所述，此文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 
 
 此文件的用途是向缩放控制器提供用于[对消耗计划做出缩放决策](functions-scale.md#how-the-consumption-plan-works)的信息。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
 
@@ -319,12 +322,12 @@ public static class IBinderExampleMultipleAttributes
 | [CosmosDBTrigger](functions-bindings-cosmosdb.md#trigger---attributes)| [DocumentDB](functions-bindings-cosmosdb.md#input---attributes)| [DocumentDB](functions-bindings-cosmosdb.md#output---attributes) |
 | [EventHubTrigger](functions-bindings-event-hubs.md#trigger---attributes)|| [EventHub](functions-bindings-event-hubs.md#output---attributes) |
 | [HTTPTrigger](functions-bindings-http-webhook.md#trigger---attributes)|||
-| [QueueTrigger](functions-bindings-storage-queue.md#trigger---attributes)|| [Queue](functions-bindings-storage-queue.md#output---attributes) |
+| [QueueTrigger](functions-bindings-storage-queue.md#trigger---attributes)|| [队列](functions-bindings-storage-queue.md#output---attributes) |
 | [ServiceBusTrigger](functions-bindings-service-bus.md#trigger---attributes)|| [ServiceBus](functions-bindings-service-bus.md#output---attributes) |
 | [TimerTrigger](functions-bindings-timer.md#attributes) | ||
 | |[ApiHubFile](functions-bindings-external-file.md)| [ApiHubFile](functions-bindings-external-file.md)|
 | |[MobileTable](functions-bindings-mobile-apps.md#input---attributes)| [MobileTable](functions-bindings-mobile-apps.md#output---attributes) | 
-| |[Table](functions-bindings-storage-table.md#input---attributes)| [Table](functions-bindings-storage-table.md#output---attributes)  | 
+| |[表](functions-bindings-storage-table.md#input---attributes)| [表](functions-bindings-storage-table.md#output---attributes)  | 
 | ||[NotificationHub](functions-bindings-notification-hubs.md#attributes) |
 | ||[SendGrid](functions-bindings-sendgrid.md#attributes) |
 | ||[Twilio](functions-bindings-twilio.md#attributes)| 

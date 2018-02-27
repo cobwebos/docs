@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 02/09/2017
+ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 5dc245a29a9106156c207ed7394f8bb289db729e
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0a7bce49a73d60785f09f270894afc4037661e10
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>优化 Azure SQL 数据库性能
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/31/2017
 
 ## <a name="increasing-performance-tier-of-your-database"></a>增加数据库性能层
 
-Azure SQL 数据库提供以下四个[服务层](sql-database-service-tiers.md)可供选择：基本、标准、高级和高级 RS（通过数据库吞吐量单位 ([DTU](sql-database-what-is-a-dtu.md)) 衡量性能）。 每个服务层可严格隔离 SQL 数据库可以使用的资源，并保证相应服务级别的可预测性能。 在本文中，我们将提供指南，帮助你选择应用程序的服务层。 另外，还会讨论如何优化应用程序以充分利用 Azure SQL 数据库。
+Azure SQL 数据库提供以下三个[服务层](sql-database-service-tiers.md)可供选择：基本、标准和高级（通过数据库吞吐量单位 ([DTU](sql-database-what-is-a-dtu.md)) 衡量性能）。 每个服务层可严格隔离 SQL 数据库可以使用的资源，并保证相应服务级别的可预测性能。 在本文中，我们将提供指南，帮助你选择应用程序的服务层。 另外，还会讨论如何优化应用程序以充分利用 Azure SQL 数据库。
 
 > [!NOTE]
 > 本文侧重于 Azure SQL 数据库中单一数据库的性能指南。 有关弹性池的性能指南，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。 不过，请注意，也可以将本文中的多项优化建议应用于弹性池中的数据库，获得类似的性能优势。
@@ -49,7 +49,6 @@ Azure SQL 数据库提供以下四个[服务层](sql-database-service-tiers.md)�
   * **高峰值负载**。 需要大量 CPU、内存或输入/输出 (I/O) 才能完成其操作的应用程序，都需要专用、高性能级别。 例如，已知较长时间使用多个 CPU 内核的数据库操作非常适合高级服务层。
   * **多个并发请求**。 某些数据库应用程序为多个并发请求服务，例如，为具有高流量的网站服务。 基本服务层和标准服务层对每个数据库的并发请求数都有限制。 需要更多连接的应用程序将需要选择合适的预留大小，以处理最大所需的请求数。
   * **低延迟时间**。 某些应用程序需要确保在最短时间内从数据库获得响应。 如果在更大范围的客户操作期间调用了特定存储过程，则有 99% 的时间可能要求在 20 毫秒内从该调用返回。 此类型的应用程序受益于高级服务层，以确保提供所需的计算能力。
-* **高级 RS**：高级 RS 层专为不需要最高可用性保证的 IO 密集型工作负载设计。 示例包括测试高性能工作负荷或数据库不是记录系统的分析工作负荷。
 
 SQL 数据库所需的服务级别取决于每个资源维度的峰值负载要求。 某些应用程序可能少量使用某个资源，但需要大量使用其他资源。
 

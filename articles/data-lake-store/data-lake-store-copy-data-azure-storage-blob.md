@@ -156,7 +156,7 @@ Azure Data Lake Store 提供的命令行工具 [AdlCopy](http://aka.ms/downloada
 此部分介绍如何使用 AdlCopy 以模式匹配从源（下面的示例使用的是 Azure 存储 Blob）将数据复制到目标 Data Lake Store 帐户。 例如，可使用以下步骤从源 blob 中将所有具有 .csv 扩展名的文件复制到目标。
 
 1. 打开命令提示符，并导航到 AdlCopy 的安装目录（通常是 `%HOMEPATH%\Documents\adlcopy`）。
-2. 运行以下命令从源容器的特定 blob 中将所有具有 .csv 扩展名的文件复制到 Data Lake Store：
+2. 运行以下命令从源容器的特定 blob 中将所有具有 *.csv 扩展名的文件复制到 Data Lake Store：
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv
 

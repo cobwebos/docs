@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 0cb7c7c33866ea078ab597e71cb56a601929f8f5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c5c9571b0a94fe353e37d27303cc1cd7c5373abc
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>使用媒体编码器高级工作流进行高级编码
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.lasthandoff: 12/11/2017
 >
 >
 
-有关高级编码器的问题，请发送电子邮件到 Microsoft.com。
+有关高级编码器的问题，请发送电子邮件到 mepd@microsoft.com。
 
 ## <a name="overview"></a>概述
 Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体处理器。 此处理器针对高级按需工作流提供高级编码功能。
@@ -230,7 +230,7 @@ namespace MediaEncoderPremiumWorkflowSample
 }
 ```
 
-有关高级编码器的问题，请发送电子邮件到 Microsoft.com。
+有关高级编码器的问题，请发送电子邮件到 mepd@microsoft.com。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: joflore
-ms.openlocfilehash: af86434e1205d67829fc7079d97a37f013c0f2d8
-ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
+ms.openlocfilehash: 67456fa865a7bc1057194d577cd79ce6378a7ac9
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>如何获取 Azure 多重身份验证
 
@@ -67,6 +67,9 @@ ms.lasthandoff: 01/08/2018
 | 记住受信任的设备的 MFA |● |● |● |
 | MFA SDK | | |●（已弃用） | 
 | 适用于本地应用程序的 MFA | | |● |
+
+## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>如何为 Azure AD 管理员启用 Azure 多重身份验证
+Azure AD 租户中被分配了全局管理员角色的用户可以免费为其 Azure AD 全局管理员帐户启用双重验证。 如果使用的是 Microsoft 帐户，可以在[此处](https://support.microsoft.com/en-us/help/12408/microsoft-account-about-two-step-verification)注册多重身份验证。 如果使用的不是 Microsoft 帐户，可以在[此处](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states)为全局管理员启用多重身份验证。
 
 ## <a name="how-to-get-azure-multi-factor-authentication"></a>如何获取 Azure 多重身份验证
 如果想要获取 Azure 多重身份验证提供的完整功能，可通过多种方法实现：

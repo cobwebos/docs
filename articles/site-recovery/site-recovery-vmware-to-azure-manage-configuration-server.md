@@ -5,13 +5,13 @@ services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 02/04/2018
 ms.author: anoopkv
-ms.openlocfilehash: e9e4bfc86df2cae1facac62472c915d91fb8c84c
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 9cdabfb4e24423d76e4f247f184ac4156c3b257b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-the-configuration-server"></a>管理配置服务器
 
@@ -72,6 +72,22 @@ OVF 模板部署具有单个网络适配器的配置服务器 VM。 可以[将�
       net stop obengine
       net start obengine
       ```
+## <a name="upgrade-the-configuration-server"></a>升级配置服务器
+
+运行更新汇总来更新配置服务器。 最多可以为 N-4 版本应用更新。 例如：
+
+- 如果运行的是 9.7、9.8、9.9 或 9.10 版，可以直接升级到 9.11 版。
+- 如果运行的是 9.6 版或更早版本并且想要升级到 9.11 版，则必须先升级到 9.7 版， 然后再升级到 9.11 版。
+
+[wiki 更新页](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)中提供了用于升级到配置服务器的所有版本的更新汇总的链接。
+
+按如下所示升级服务器：
+
+1. 将更新安装程序文件下载到配置服务器上。
+2. 双击以运行安装程序。
+3. 安装程序检测计算机上运行的当前版本。
+4. 单击“确定”以确认并运行升级。 
+
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>删除或取消注册配置服务器
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/4/2018
+ms.date: 2/4/2018
 ms.author: raiye
-ms.openlocfilehash: 675a304e2ca913c8b9cd18fb2f2a41abfd8f28d4
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 7e6b16465be1e032bd5e5fe94c95e6b2259a6704
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
@@ -26,8 +26,14 @@ ms.lasthandoff: 01/05/2018
 ## <a name="january-guest-os"></a>1 月来宾 OS
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
 | --- | --- | --- | --- | --- |
-| 不适用 | [4056898] |仅 Windows 安全性 |4.50 |2018 年 1 月 3 日 |
-| 不适用 | [4056890] |仅 Windows 安全性 |5.15 |2018 年 1 月 3 日 |
+| Rel 18-01 | [4056898], [4056897], [4056899] |仅 Windows 安全性 |2.70, 3.57, 4.50 |2018 年 1 月 3 日 |
+| Rel 18-01 | [4056890], [4056892] |仅 Windows 安全性 |5.15 |2018 年 1 月 3 日 |
+| 不适用 | [4054518] |12 月非安全性汇总 |2.70 |2017 年 12 月 12 日 |
+| 不适用 | [4054520] |12 月非安全性汇总 |3.57 |2017 年 12 月 12 日 |
+| 不适用 | [4054519] |12 月非安全性汇总 |4.50 |2017 年 12 月 12 日 |
+| 不适用 | [4051956] |1 月时区更新 |2.70, 3.57, 4.50 |2017 年 12 月 12 日 |
+
+
 
 ## <a name="december-guest-os"></a>12 月来宾 OS
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
@@ -36,7 +42,7 @@ ms.lasthandoff: 01/05/2018
 | Rel 17-12 | [4054521]、[4054522]、[4054523] |仅 Windows 安全性 |2.69、3.56、4.49 |2017 年 12 月 12 日 |
 | Rel 17-12 | [4052978] |Internet Explorer |2.69、3.56、4.49 |2017 年 12 月 12 日 |
 | Rel 17-12 | [4052978] |闪烁 |3.56、4.49、5.14 |2017 年 12 月 12 日 |
-| 不适用 | [4048957] |11 月非安全性汇总 |2.67 |2017 年 11 月 14 日 |
+| 不适用 | [4048957] |11 月非安全性汇总 |2.69 |2017 年 11 月 14 日 |
 | 不适用 | [4048959] |11 月非安全性汇总 |3.56 |2017 年 11 月 14 日 |
 | 不适用 | [4048958] |11 月非安全性汇总 |4.49 |2017 年 11 月 14 日 |
 | 不适用 | [4049068] |12 月时区更新 |2.69、3.56、4.49 |2017 年 12 月 12 日 |
@@ -48,7 +54,7 @@ ms.lasthandoff: 01/05/2018
 | Rel 17-10 | [4048960]、[4048962]、[4048961] |仅 Windows 安全性 |2.68、3.55、4.48 |2017 年 11 月 14 日 |
 | Rel 17-10 | [4047206] |Internet Explorer |2.68、3.55、4.48 |2017 年 11 月 14 日 |
 | Rel 17-10 | [4048951] |闪烁 |3.55、4.48、5.13 |2017 年 11 月 14 日 |
-| 不适用 | [4041681] |10 月非安全性汇总 |2.67 |2017 年 10 月 10 日 |
+| 不适用 | [4041681] |10 月非安全性汇总 |2.68 |2017 年 10 月 10 日 |
 | 不适用 | [4041690] |10 月非安全性汇总 |3.55 |2017 年 10 月 10 日 |
 | 不适用 | [4041693] |10 月非安全性汇总 |4.48 |2017 年 10 月 10 日 |
 | 不适用 | [3191566] |Windows Management Framework 5.1 更新  |2.68 |2017 年 11 月 14 日 |
@@ -582,7 +588,14 @@ ms.lasthandoff: 01/05/2018
 | 不适用 |[2896881] |在 Windows 中登录期间使用 AddPrinterConnection VBScript 命令映射用户的打印机时，登录时间过长 |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 
 [4056898]: http://support.microsoft.com/kb/4056898
+[4056897]: http://support.microsoft.com/kb/4056897
+[4056899]: http://support.microsoft.com/kb/4056899
 [4056890]: http://support.microsoft.com/kb/4056890 
+[4056892]: http://support.microsoft.com/kb/4056892
+[4054518]: http://support.microsoft.com/kb/4054518
+[4054520]: http://support.microsoft.com/kb/4054520
+[4054519]: http://support.microsoft.com/kb/4054519
+[4051956]: http://support.microsoft.com/kb/4051956
 
 [4053579]: http://support.microsoft.com/kb/4053579
 [4054517]: http://support.microsoft.com/kb/4054517 

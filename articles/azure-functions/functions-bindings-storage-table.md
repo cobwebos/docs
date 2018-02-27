@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 0fd6de8b59400270e42d428664df74d81d790f62
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: c132baad4d26fe481fa022329da32815b6994ad7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -634,6 +634,14 @@ public static MyPoco TableOutput(
 * **在 JavaScript 中写入一行或多行**
 
   在 JavaScript 函数中，可以使用 `context.bindings.<name>` 访问表输出。
+
+## <a name="exceptions-and-return-codes"></a>异常和返回代码
+
+| 绑定 | 引用 |
+|---|---|
+| 表 | [表错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
+| Blob、表、队列 | [存储错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob、表、队列 | [故障排除](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>后续步骤
 

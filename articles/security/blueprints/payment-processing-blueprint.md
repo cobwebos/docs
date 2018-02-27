@@ -1,6 +1,6 @@
 ---
-title: "PCI DSS 遵从环境的支付处理蓝图"
-description: "PCI DSS 要求"
+title: "Azure 安全性和符合性蓝图 - 符合 PCI DSS 的付款处理环境"
+description: "Azure 安全性和符合性蓝图 - 符合 PCI DSS 的付款处理环境"
 services: security
 documentationcenter: na
 author: simorjay
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2017
+ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: 7f85c8b0377e57f08044bac41dbddbbedb7a4f55
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 3e97862091e6ea334f2437bd8424b79952f41bf4
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="azure-blueprint-automation-payment-processing-for-pci-dss-compliant-environments"></a>Azure Blueprint Automation：PCI DSS 遵从环境的支付处理
+# <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure 安全性和符合性蓝图 - 符合 PCI DSS 的付款处理环境
 
 ## <a name="overview"></a>概述
 
@@ -43,7 +43,7 @@ PCI DSS 遵从环境的支付处理提供有关部署适合用于处理敏感支
 - **部署模板**。 在此部署中，[Azure 资源管理器模板](/azure/azure-resource-manager/resource-group-overview#template-deployment)通过在安装期间指定配置参数，将体系结构的组件自动部署到 Microsoft Azure。
 - **自动化部署脚本**。 这些脚本帮助部署端到端解决方案。 脚本包括：
     - 一个模块安装和[全局管理员](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)设置脚本，用于安装所需的 PowerShell 模块，并验证是否已正确配置全局管理员角色。
-    - 一个用于部署端到端解决方案的 PowerShell 安装脚本，通过一个 .zip 文件和一个 .bacpac 文件提供，其中包含预建的演示 Web 应用程序和 [SQL 数据库示例](https://github.com/Microsoft/azure-sql-security-sample)。 内容。 可在[付款处理蓝图代码存储库][code-repo]中查看此解决方案的源代码。 
+    - 一个用于部署端到端解决方案的 PowerShell 安装脚本，通过一个 .zip 文件和一个 .bacpac 文件提供，其中包含预建的演示 Web 应用程序和 [SQL 数据库示例](https://github.com/Microsoft/azure-sql-security-sample)。 内容。 可在[蓝图代码存储库][code-repo]中查看此解决方案的源代码。 
 
 ## <a name="architectural-diagram"></a>体系结构图
 
@@ -72,7 +72,7 @@ PCI DSS 遵从环境的支付处理提供有关部署适合用于处理敏感支
 
 #### <a name="role-site-and-subscription-admin"></a>角色：站点和订阅管理员
 
-|项目      |示例|
+|Item      |示例|
 |----------|------|
 |用户名： |`adminXX@contosowebstore.com`|
 | 姓名： |`Global Admin Azure PCI Samples`|
@@ -84,7 +84,7 @@ PCI DSS 遵从环境的支付处理提供有关部署适合用于处理敏感支
 
 #### <a name="role-sql-administrator"></a>角色：SQL 管理员
 
-|项目      |示例|
+|Item      |示例|
 |----------|------|
 |用户名： |`sqlAdmin@contosowebstore.com`|
 | 姓名： |`SQLADAdministrator PCI Samples`|
@@ -97,7 +97,7 @@ PCI DSS 遵从环境的支付处理提供有关部署适合用于处理敏感支
 
 #### <a name="role-clerk"></a>角色：职员
 
-|项目      |示例|
+|Item      |示例|
 |----------|------|
 |用户名：| `receptionist_EdnaB@contosowebstore.com`|
 | 姓名： |`Edna Benson`|
@@ -110,8 +110,6 @@ Edna Benson 是业务经理兼接待员。 她负责确保客户信息准确和�
 - Edna 可以创建和读取客户信息。
 - Edna 可以修改客户信息。
 - Edna 可以覆盖或替换信用卡号、失效日期和 CVV 信息。
-
-> 在 Contoso Webstore 中，用户自动指定为 **Edna**，可测试已部署环境的功能。
 
 ### <a name="contoso-webstore---estimated-pricing"></a>Contoso Webstore - 估算价格
 
@@ -357,13 +355,13 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
     
 ## <a name="threat-model"></a>威胁模型
 
-数据流关系图 (DFD) 和 Contoso Web 存储的示例威胁模型[付款处理蓝图威胁模型](https://aka.ms/pciblueprintthreatmodel)。
+数据流关系图 (DFD) 和 Contoso Web 存储的示例威胁模型[蓝图威胁模型](https://aka.ms/pciblueprintthreatmodel)。
 
 ![](images/pci-threat-model.png)
 
 
 
-## <a name="customer-responsibility-matrix"></a>客户责任矩阵
+## <a name="customer-responsibility-matrix"></a>客户责任表
 
 客户负责保留一份[责任摘要矩阵](https://aka.ms/pciblueprintcrm32)，其中概述了客户负责满足的 PCI DSS 要求以及 Microsoft Azure 负责的相应要求。
 

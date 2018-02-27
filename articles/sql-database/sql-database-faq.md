@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 02/07/2017
-ms.author: sashan;carlrab
-ms.openlocfilehash: da463bcaf91321b65c8ad1067e457b88c8dcd58f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.date: 02/12/2018
+ms.author: carlrab
+ms.openlocfilehash: 4efa053afd26bde208441c4b841c5d02142a2d18
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="sql-database-faq"></a>SQL 数据库常见问题
 
@@ -44,7 +44,7 @@ SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单�
 ## <a name="what-if-a-single-database-is-active-for-less-than-an-hour-or-uses-a-higher-service-tier-for-less-than-an-hour"></a>如果单一数据库活动的时间少于一小时，或使用更高服务层的时间少于一小时，会发生什么情况？
 需要支付使用最高服务层数据库存在的时数 + 在该小时适用的性能级别，无论使用方式或数据库的活动状态是否少于一小时。 例如，如果创建了单一数据库，五分钟后删除了它，则将按该数据库存在一小时收费。 
 
-示例
+示例:
 
 * 如果创建了一个基本数据库并立即将其升级为标准版 S1，则第一小时将按标准版 S1 费率收费。
 * 如果从晚上 10:00 开始将数据库从“基本”升级到“高级”， 并且在第二天凌晨 1:35 完成升级， 那么会从凌晨 1:00 开始按高级版费率收费。 
@@ -53,7 +53,7 @@ SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单�
 ## <a name="how-does-elastic-pool-usage-show-up-on-my-bill-and-what-happens-when-i-change-edtus-per-pool"></a>弹性池的使用情况如何体现在我的帐单上，另外，更改每个池的 eDTU 会发生什么情况？
 在帐单上，弹性池收费显示为弹性 DTU (eDTU)，并在[定价页](https://azure.microsoft.com/pricing/details/sql-database/)上以每一池 eDTU 递增显示。 弹性池没有按照数据库收取的费用。 对于池存在的每个小时，需要支付最高的 eDTU，无论使用量是多少，也不管池处于活动状态的时间少于一小时。 
 
-示例
+示例:
 
 * 如果在上午 11:18 以 200 eDTU 创建标准弹性池，同时将五个数据库添加到池，则从上午 11:00 开始以 200 eDTU 收取整小时的费用。 到当天剩余的时间。
 * 在第 2 天上午 5:05，数据库 1 开始使用 50 eDTU 并稳定持有一天。 数据库 2-5 在 0 和 80 eDTU 之间波动。 在当天，添加全天使用不同 eDTU 的其他五个数据库。 第 2 天将全天以 200 eDTU 计费。 
@@ -76,17 +76,17 @@ SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单�
 与单一数据库不同的是，对弹性数据库使用[活动异地复制](sql-database-geo-replication-overview.md)对计费没有直接的影响。  只需支付对每个池（主池和辅助池）预配的 eDTU 费用
 
 ## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>使用审核功能将对我的帐单产生什么影响？
-审核功能是 SQL 数据库服务的内置功能，无需另行付费，基本、标准、高级和高级 RS 数据库均提供此功能。 但是，为了存储审核日志，审核功能将使用 Azure 存储帐户，而 Azure 存储中的表和队列费率根据审核日志的大小来应用。
+审核功能是 SQL 数据库服务的内置功能，无需另行付费，基本、标准和高级数据库均提供此功能。 但是，为了存储审核日志，审核功能将使用 Azure 存储帐户，而 Azure 存储中的表和队列费率根据审核日志的大小来应用。
 
 ## <a name="how-do-i-find-the-right-service-tier-and-performance-level-for-single-databases-and-elastic-pools"></a>如何找到单一数据库和弹性池的正确服务层和性能级别？
-有几个工具可供使用。 
+有几个工具可供使用： 
 
 * 对于本地数据库，请使用 [DTU 选型顾问](http://dtucalculator.azurewebsites.net/)，它会建议所需的数据库和 DTU，并为弹性池评估多个数据库。
 * 如果单一数据库可因池受益，当 Azure 的智能引擎发现了担保的历史使用模式时，将建议使用弹性池。 请参阅[使用 Azure 门户监视和管理弹性池](sql-database-elastic-pool-manage-portal.md)。 有关如何自行进行数学计算的详细信息，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool.md)
 * 若要确定是否需要向上或向下调整单一数据库，请参阅[单一数据库的性能指南](sql-database-performance-guidance.md)。
 
 ## <a name="how-often-can-i-change-the-service-tier-or-performance-level-of-a-single-database"></a>可以按何种频率更改单一数据库的服务层或性能级别？
-可以（在基本、标准、高级和高级 RS 之间）更改服务层或服务层内的性能级别（例如 S1 到 S2），次数随意。 对于早期版本的数据库，可以在 24 小时内更改服务层或性能级别总共四次。
+可以（在基本、标准和高级之间）更改服务层或服务层内的性能级别（例如 S1 到 S2），频率随意。 对于早期版本的数据库，可以在 24 小时内更改服务层或性能级别总共四次。
 
 ## <a name="how-often-can-i-adjust-the-edtus-per-pool"></a>可以按何种频率调整每个池的 eDTU？
 次数随意。
@@ -95,13 +95,13 @@ SQL 数据库以可预测的每小时费率收费，同时基于服务层 + 单�
 更改数据库的服务层和移入和移出池需要在平台上以后台操作的形式复制数据库。 更改服务层可能需要几分钟至几小时的时间，具体取决于数据库的大小。 在这两种情况下，数据库在移动期间保持联机和可用。 有关更改单一数据库的详细信息，请参阅[更改数据库的服务层](sql-database-service-tiers.md)。 
 
 ## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>何时应该使用单一数据库或弹性数据库？
-一般而言，弹性池针对典型的[软件即服务 (SaaS) 应用程序模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)而设计，该模式中每个客户或租户有一个数据库。 购买单独的数据库并超量设置以满足每个数据库的可变和峰值需求通常不够经济高效。 使用池可以管理池的整体性能，数据库会自动扩展和收缩。 如果 Azure 的智能引擎发现了担保的使用模式，将为数据库建议池。 有关详细信息，请参阅[弹性池指南](sql-database-elastic-pool.md)。
+一般而言，弹性池针对典型的[软件即服务 (SaaS) 应用程序模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)而设计，该模式中每个客户或租户有一个数据库。 购买单独的数据库并超量设置以满足每个数据库的可变和峰值需求通常不够经济高效。 使用池可以管理池的整体性能，数据库会自动纵向扩展和缩减。 如果 Azure 的智能引擎发现了担保的使用模式，将为数据库建议池。 有关详细信息，请参阅[弹性池指南](sql-database-elastic-pool.md)。
 
 ## <a name="what-does-it-mean-to-have-up-to-200-of-your-maximum-provisioned-database-storage-for-backup-storage"></a>具有高达备份存储的最大已设置数据库存储两倍的容量是什么意思？
 备份存储是与用于[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)和[异地还原](sql-database-recovery-using-backups.md#geo-restore)的自动数据库备份关联的存储。 Microsoft Azure SQL 数据库提供了高达备份存储的最大已设置数据库存储两倍的容量，不需要支付额外的成本。 例如，如果有一个标准数据库实例并且设置的数据库大小为 250 GB，则会向你提供 500 GB 的备份存储并且不额外收费。 如果数据库超过提供的备份存储，则可以选择与 Azure 支持联系来缩短保留期，或针对按标准读取访问地域冗余存储 (RA-GRS) 费率计费的额外备份存储支付费用。 有关 RA-GRS 计费的更多信息，请参阅“存储定价详细信息”。
 
 ## <a name="im-moving-from-webbusiness-to-the-new-service-tiers-what-do-i-need-to-know"></a>我正在从 Web/企业版迁移到新服务层，我需要了解哪些信息？
-Azure SQL Web 和企业数据库现已停用。 基本、标准、高级、高级 RS 和弹性层将取代即将停用的 Web 和企业数据库。 
+Azure SQL Web 和企业数据库现已停用。 基本、标准、高级和弹性层将取代即将停用的 Web 和企业数据库。 
 
 ## <a name="what-is-an-expected-replication-lag-when-geo-replicating-a-database-between-two-regions-within-the-same-azure-geography"></a>在相同的 Azure 地理位置内的两个区域之间进行异地复制数据库时，哪些是预期的复制延迟？
 目前支持 5 秒的 RPO，并且只要地域辅助数据库承载于 Azure 建议的配对区域并且属于相同的服务层，则复制延迟就会少于该时间。
@@ -119,7 +119,7 @@ Azure SQL Web 和企业数据库现已停用。 基本、标准、高级、高�
 我们通过 DMV 显示主数据库与地域辅助数据库之间的实时复制延迟。 有关详细信息，请参阅 [sys.dm_geo_replication_link_status](https://msdn.microsoft.com/library/mt575504.aspx)。
 
 ## <a name="to-move-a-database-to-a-different-server-in-the-same-subscription"></a>将数据库移到同一订阅中的不同服务器
-* 在 [Azure 门户](https://portal.azure.com)中，单击“SQL 数据库”，从列表中选择数据库，并单击“复制”。 有关详细信息，请参阅[复制 Azure SQL 数据库](sql-database-copy.md)。
+在 [Azure 门户](https://portal.azure.com)中，单击“SQL 数据库”，从列表中选择数据库，并单击“复制”。 有关详细信息，请参阅[复制 Azure SQL 数据库](sql-database-copy.md)。
 
 ## <a name="to-move-a-database-between-subscriptions"></a>在订阅之间移动数据库
-* 在 [Azure 门户](https://portal.azure.com)中，单击“SQL Server”，并从列表中选择托管数据库的服务器。 单击“**移动**”，并选择要移动的资源以及要移动到其中的订阅。
+在 [Azure 门户](https://portal.azure.com)中，单击“SQL Server”，并从列表中选择托管数据库的服务器。 单击“**移动**”，并选择要移动的资源以及要移动到其中的订阅。
