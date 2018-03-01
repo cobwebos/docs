@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2018
+ms.date: 02/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: bfc55a305fd0099af5cc2bb394420e547d2703bc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c82ee87b341de4e85e2eab566f7a3c6fcffdace1
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>可供 Azure 堆栈的 azure 应用商店项
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/21/2018
 
 
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
-最好下载这些需要 VM 扩展的更新时。 在产品中提供的扩展将不会更新在正常的修补程序和更新过程;请经常检查更新。 仅通过应用商店管理提供了其他扩展。
+每当你使用的虚拟机 (VM) 扩展的更新时，你应下载它们。 在产品中提供的扩展不正常的修补程序和更新过程; 中更新因此经常检查更新。 仅通过应用商店管理提供了其他扩展。
 
 |  | 项名称 | 说明 | 发布者 | OS 类型 |
 | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Microsoft 虚拟机映像和解决方案模板
 
-Microsoft Azure 堆栈支持以下 Azure 应用商店虚拟机和解决方案模板。 请注明单独下载任何依赖项。 SQL Server 和机器学习 Server 等应用程序需要正确地执行授权，除了在标记为可用或试用版。
+Microsoft Azure 堆栈支持以下 Azure 应用商店虚拟机和解决方案模板。 所述单独下载任何依赖关系。 SQL Server 和机器学习 Server 等应用程序需要正确地执行授权，除了在标记为可用或试用版。
 
 |  | 项名称 | 说明 | 发布者 |
 | --- | --- | --- | --- |
@@ -71,9 +71,9 @@ Microsoft Azure 堆栈支持以下 Azure 应用商店虚拟机和解决方案模
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 上的 SQL Server 自 2017 年 Express SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2) | 免费 express 版本的 SQL Server 2016 SP1。 | Microsoft + SUSE |
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 上的 SQL Server 自 2017 年 Enterprise SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017EnterpriseonSLES12SP2) | 智能、 任务关键型应用程序的数据库平台。 | Microsoft + SUSE |
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 自 2017 年 1 Web 在 SUSE Linux Enterprise Server (SLES) 12 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017WebonSLES12SP2) | 智能、 任务关键型应用程序的数据库平台。 | Microsoft + SUSE |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习 Windows Server 2016 上的服务器 9.2.1 ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onWindowsServer2016) | Microsoft 机器学习服务器 9.2.1 Windows Server 2016 上。 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习服务器 9.2.1 上 Ubuntu 16.04 ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onUbuntu1604) | Microsoft 机器学习服务器 9.2.1 Ubuntu 16.04 上。 | Microsoft + Canonical |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习 CentOS Linux 7.2 上的服务器 9.2.1 ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onCentOSLinux72) | Microsoft 机器学习服务器 9.2.1 CentOS Linux 7.2 上。 | Microsoft + Rogue Wave |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习 Windows Server 2016 上的服务器 9.3.0 ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onWindowsServer2016) | Microsoft 机器学习服务器 9.3.0 Windows Server 2016 上。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习服务器 9.3.0 上 Ubuntu 16.04 ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onUbuntu1604) | Microsoft 机器学习服务器 9.3.0 Ubuntu 16.04 上。 | Microsoft + Canonical |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft 机器学习 CentOS Linux 7.2 上的服务器 9.3.0 ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onCentOSLinux72) | Microsoft 机器学习服务器 9.3.0 CentOS Linux 7.2 上。 | Microsoft + Rogue Wave |
 
 
 ## <a name="linux-distributions"></a>Linux 分发

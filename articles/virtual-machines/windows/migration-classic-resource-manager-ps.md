@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 01bccb2f8d103faf77b39825a1f9ff663329ed7a
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 38bc949917f6bb56486ad6267044ef2f19e33fcb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 以下步骤演示了如何使用 Azure PowerShell 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure 资源管理器部署模型。
@@ -59,7 +59,7 @@ ms.lasthandoff: 11/17/2017
 若要执行此迁移，必须在 [Azure 门户](https://portal.azure.com)中将你添加为订阅的协同管理员。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在“中心”菜单上，选择“订阅”。 如果看不到该选项，请先选择“更多服务”。
+2. 在“中心”菜单上，选择“订阅”。 如果看不到该选项，请选择“所有服务”。
 3. 查找相应订阅项，然后查看“我的角色”字段。 对于协同管理员，该值应为“帐户管理员”。
 
 如果无法添加协同管理员，请联系订阅的服务管理员或协同管理员，将自己添加为协同管理员。   

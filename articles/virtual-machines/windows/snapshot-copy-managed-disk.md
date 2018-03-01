@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 10b5eb0062e4a029b0f233ee8af17d590d59c8d4
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 9f773a8dfe772864fc9fc437052ac766a87623d1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-snapshot"></a>创建快照
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/19/2018
 ## <a name="use-azure-portal-to-take-a-snapshot"></a>使用 Azure 门户拍摄快照 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 首先在左上角单击“新建”并搜索“快照”。
+2. 首先在左上角单击“创建资源”并搜索“快照”。
 3. 在“快照”边栏选项卡中，单击“创建”。
 4. 输入快照的“名称”。
 5. 选择现有的[资源组](../../azure-resource-manager/resource-group-overview.md#resource-groups)，或键入新资源组的名称。 

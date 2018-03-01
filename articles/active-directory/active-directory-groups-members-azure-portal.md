@@ -16,18 +16,18 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: 49c975aa34f28c6c00591435726e538bb79a78cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 31ab2ae51174061fc4b4a232ebbc7acab86e1ab8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-group-membership-for-users-in-your-azure-active-directory-tenant"></a>在 Azure Active Directory 租户中管理用户的组成员身份
 本文介绍如何在 Azure Active Directory (Azure AD) 中管理组的成员。
 
 ## <a name="how-do-i-find-the-members-and-manage-them"></a>如何查找成员并对其进行管理？
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“更多服务”，在文本框中输入“用户和组”，并选择 **Enter**。
+2. 选择“所有服务”，在文本框中输入“用户和组”，并选择 **Enter**。
 
    ![打开“用户管理”](./media/active-directory-groups-members-azure-portal/search-user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“所有组”。

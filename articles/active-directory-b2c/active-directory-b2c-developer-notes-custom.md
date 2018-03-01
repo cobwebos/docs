@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 10/13/2017
 ms.author: joroja
-ms.openlocfilehash: 064ccec58406e08ae68320b59fcf2a96952a41ee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f65ad324e1bf0887ea293254621466a2f1ddaff
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Azure Active Directory B2C 自定义策略公共预览版发行说明
 自定义策略功能集现已推出公共预览版，供所有 Azure Active Directory B2C (Azure AD B2C) 客户评估。 此功能集面向构建最复杂标识解决方案的高级标识开发人员。  
@@ -60,7 +60,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="features-by-stage-and-known-issues"></a>按阶段的功能和已知问题
 自定义策略/标识体验框架功能正在持续而快速地进行开发。  下表是功能 / 组件可用性的索引。
 
-请将问题发布到 Stack Overflow，网址为 [aka.ms/aadb2cso](http://aka.ms/aadb2cso)
+请将问题发布到 Stack Overflow，网址为 [https://aka.ms/aadb2cso](https://aka.ms/aadb2cso)
 
 
 ### <a name="identity-providers-tokens-protocols"></a>标识提供者、令牌、协议
@@ -127,7 +127,7 @@ ms.lasthandoff: 12/11/2017
 | SAML SSO 会话提供程序 |  | x |  |  |
 
 
-### <a name="security"></a>安全
+### <a name="security"></a>“安全”
 | 功能 | 开发 | 预览 | GA | 说明 |
 |---------------------------------------------|-------------|---------|----|-------|
 | 策略密钥 - 生成、手动、上传 |  | x |  |  |

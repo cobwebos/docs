@@ -2,7 +2,7 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 2
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>注册 SendGrid 帐户
 1. 登录到 [Azure 门户][Azure portal]。
-2. 在左侧菜单中，单击“新建”。
+2. 在左侧菜单中，单击“创建资源”。
 
     ![command-bar-new][command-bar-new]
 3. 单击“外接程序”，并单击“SendGrid 电子邮件传递”。
@@ -45,7 +45,7 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 通过每月的这 2
 
     ![api-keys][api-keys]
 
-3. 单击“创建 API 密钥”下拉列表，并选择“常规 API 密钥”。
+3. 单击“创建 API 密钥”。
 
     ![general-api-key][general-api-key]
 4. 至少提供“此密钥名称”和对“邮件发送”的完全访问权限，并选择“保存”。

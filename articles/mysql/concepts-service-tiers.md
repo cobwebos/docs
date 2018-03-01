@@ -10,10 +10,10 @@ ms.service: mysql-database
 ms.topic: article
 ms.date: 11/03/2017
 ms.openlocfilehash: ae7e57e9b40f5194c15525a48843060bbccaa956
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure Database for MySQL 选项和性能：了解每个定价层提供的功能
 创建 Azure Database for MySQL 服务器时，需确定三个主要选项以配置为该服务器分配的资源。 这些选项会影响服务器的性能和规模。

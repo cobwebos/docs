@@ -21,10 +21,8 @@
 若要使用 Azure 门户：
 
 1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请先登录。
-2. 在中心菜单中，单击“+ 新建”，并单击“虚拟机”。
-   
-    ![Alt 图像文本](./media/virtual-machines-common-classic-configure-availability/ChooseVMImage.png)
-3. 选择要使用的应用商店虚拟机映像。 可以选择创建 Linux 或 Windows 虚拟机。
+2. 单击“创建资源” > “计算”。
+3. 选择要使用的 Marketplace 虚拟机映像。 可以选择创建 Linux 或 Windows 虚拟机。
 4. 对于所选的虚拟机，确认部署模型已设置为“经典”，并单击“创建”
    
     ![Alt 图像文本](./media/virtual-machines-common-classic-configure-availability/ChooseClassicModel.png)
@@ -42,7 +40,7 @@
 在 Azure 门户中，可以将现有经典虚拟机添加到现有可用性集，或为现有经典虚拟机创建新的可用性集。 （请记住，同一可用性集中的虚拟机必须属于同一云服务。）步骤几乎完全相同。 使用 Azure PowerShell 时，可以将虚拟机添加到现有可用性集。
 
 1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请先登录。
-2. 在“中心”菜单中，单击“虚拟机(经典)”。
+2. 在左侧菜单中单击“虚拟机(经典)”。
    
     ![Alt 图像文本](./media/virtual-machines-common-classic-configure-availability/ChooseClassicVM.png)
 3. 从虚拟机列表中，选择想要添加到集中的虚拟机的名称。
@@ -52,7 +50,7 @@
 5. 选择要将虚拟机添加到的可用性集。 虚拟机必须与可用性集属于同一云服务。
    
     ![Alt 图像文本](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetPicker.png)
-6. 单击“保存” 。
+6. 单击“ **保存**”。
 
 若要使用 Azure PowerShell 命令，请打开系统管理员级的 Azure PowerShell 会话并运行以下命令。 对于占位符（例如 &lt;VmCloudServiceName&gt;），请将引号内的所有内容（包括 < and > 字符）替换为相应的名称。
 

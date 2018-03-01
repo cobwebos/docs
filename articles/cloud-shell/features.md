@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: juluk
-ms.openlocfilehash: a2c5348ea2ea02917472c1c3ae3bb518364c6848
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 300630919ed832b059dd96fa0f35f89b52b0430d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 Bash 的功能和工具
 
@@ -37,7 +37,7 @@ Cloud Shell 中的 Bash 安全并自动地验证帐户对 Azure CLI 2.0 的访�
 
 ### <a name="ssh-into-azure-linux-virtual-machines"></a>通过 SSH 连接到 Azure Linux 虚拟机
 
-通过 Azure CLI 2.0 创建 Linux VM 可以创建默认的 SSH 密钥并将其放置在 `$Home` 目录中。 将 SSH 密钥放置在 `$Home` 中可以通过 Cloud Shell 与 Azure Linux VM 建立直接 SSH 连接。 密钥保存在文件共享中的 acc_<user>.img 内，使用文件共享或密钥或者共享其访问权限时，请遵循最佳做法。
+通过 Azure CLI 2.0 创建 Linux VM 可以创建默认的 SSH 密钥并将其放置在 `$Home` 目录中。 将 SSH 密钥放置在 `$Home` 中可以通过 Cloud Shell 与 Azure Linux VM 直接建立 SSH 连接。 密钥保存在文件共享中的 acc_<user>.img 内，使用文件共享或密钥或者共享其访问权限时，请遵循最佳做法。
 
 ### <a name="home-persistence-across-sessions"></a>$Home 可在不同的会话中持久保存
 
@@ -47,6 +47,10 @@ Cloud Shell 中的 Bash 安全并自动地验证帐户对 Azure CLI 2.0 的访�
 `$Home` 外部的文件和计算机状态不会持久保存在不同的会话中。
 
 [详细了解如何在 Cloud Shell 中的 Bash 中持久保存文件。](persisting-shell-storage.md)
+
+### <a name="deep-integration-with-open-source-tooling"></a>与开源工具深度集成
+
+Bash in Cloud Shell 为开源工具（例如，Terraform 和 Ansible）提供预配置的身份验证。 请通过示例演练试用该功能。
 
 ## <a name="tools"></a>工具
 

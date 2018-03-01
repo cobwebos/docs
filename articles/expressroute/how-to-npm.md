@@ -1,9 +1,9 @@
 ---
-title: "为 Azure ExpressRoute 线路配置网络性能监视器（预览版）| Microsoft Docs"
-description: "为 Azure ExpressRoute 线路配置 NPM。 （预览版）"
+title: "为 Azure ExpressRoute 线路配置网络性能监视器 | Microsoft Docs"
+description: "为 Azure ExpressRoute 线路配置基于云的网络监视。"
 documentationcenter: na
 services: expressroute
-author: cherylmc
+author: ajaycode
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/31/2018
-ms.author: pareshmu
-ms.openlocfilehash: 269c2e8a7867521b34128980e33ed97aa7b62a04
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.date: 02/14/2018
+ms.author: agummadi
+ms.openlocfilehash: 4d5bf1550ecd5982e51c0ae8d3917102d2f7c253
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="configure-network-performance-monitor-for-expressroute-preview"></a>为 ExpressRoute 配置网络性能监视器（预览版）
+# <a name="configure-network-performance-monitor-for-expressroute"></a>为 ExpressRoute 配置网络性能监视器
 
 网络性能监视器 (NPM) 是基于云的网络监视解决方案，用于监视 Azure 云部署和本地位置（分支机构等）之间的连接。 NPM 属于 Microsoft Operations Management Suite (OMS)。 NPM 现在可为 ExpressRoute 提供扩展，使你能通过配置为使用专用对等互连的 ExpressRoute 线路监视网络性能。 为 ExpressRoute 配置 NPM 后，可以检测到需要识别和消除的网络问题。
 
@@ -62,9 +62,15 @@ ms.lasthandoff: 02/01/2018
 
 如果已使用网络性能监视器监视其他对象或服务，并且在一个受支持区域已有工作区，则可以跳过步骤 1 和步骤 2，从步骤 3 开始配置。
 
-## <a name="configure"></a>步骤 1：创建一个工作区 （在已链接到 ExpressRoute 线路的 VNET 所在的订阅中）
+## <a name="configure"></a>步骤 1：创建工作区
+
+在具有连接到 ExpressRoute 线路的 VNet 链路的订阅中创建一个工作区。
 
 1. 在[Azure 门户](https://portal.azure.com)，选择 Vnet 的订阅到 ExpressRoute 线路对等。 然后从 Marketplace 服务列表中搜索“网络性能监视器”。 在返回结果中，单击打开“网络性能监视器”页面。
+
+>[!NOTE]
+>可以创建新的工作区或使用现有的工作区。  如果想要使用现有工作区，则必须确保工作区已迁移到新的查询语言。 [详细信息...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+>
 
   ![portal](.\media\how-to-npm\3.png)<br><br>
 2. 在“网络性能监视器”主页底部，单击“创建”打开“网络性能监视器 - 创建新解决方案”页面。 单击“OMS 工作区 - 选择工作区”打开“工作区”页面。 单击“+ 创建新工作区”打开“工作区”页面。
@@ -79,29 +85,25 @@ ms.lasthandoff: 02/01/2018
   >[!NOTE]
   >ExpressRoute 线路可以位于世界上任意位置，并且无需与工作区在同一区域。
   >
-
-
+  
   ![工作区](.\media\how-to-npm\4.png)<br><br>
 4. 单击“确定”保存和部署设置模板。 模板验证后，单击“创建”以部署工作区。
 5. 部署工作区后，导航到创建的“NetworkMonitoring(名称)”资源。 验证设置，然后单击“解决方案需要其他配置”。
 
   ![其他配置](.\media\how-to-npm\5.png)
-6. 在“欢迎使用网络性能监视器”页面，选择“将 TCP 用于综合事务”，然后单击“提交”。 TCP 事务仅用于建立和断开连接。 不会通过这些 TCP 发送任何数据。
-
-  ![用于综合事务的 TCP](.\media\how-to-npm\6.png)
 
 ## <a name="agents"></a>步骤 2：安装和配置代理
 
 ### <a name="download"></a>2.1：下载代理安装程序文件
 
-1. 在资源的“网络性能监视器配置 - TCP 安装”页面上的“安装 OMS 代理”部分，单击与你的服务器处理器的对应代理，然后下载安装程序文件。
+1. 转到资源的“网络性能监视器配置”页面的“通用设置”选项卡。 从“安装 OMS 代理”部分中选择与你的服务器的处理器对应的代理，并下载安装文件。
 
   >[!NOTE]
   >必须在 Windows Server（2008 SP1 或更高版本）上安装代理。 不支持使用 Windows 桌面操作系统和 Linux 操作系统监视 ExpressRoute 线路。 
   >
   >
 2. 接下来，将“工作区 ID”和“主密钥”复制到记事本。
-3. 在“配置代理”部分，下载 Powershell 脚本。 PowerShell 脚本可帮助你打开与 TCP 事务相关的防火墙端口。
+3. 从“将 OMS 代理配置为使用 TCP 协议进行监视”部分中，下载 Powershell 脚本。 PowerShell 脚本可帮助你打开与 TCP 事务相关的防火墙端口。
 
   ![PowerShell 脚本](.\media\how-to-npm\7.png)
 
@@ -211,7 +213,7 @@ NPM 页面包含一个 ExpressRoute 页面，其中显示 ExpressRoute 线路和
 
   ![仪表板](.\media\how-to-npm\dashboard.png)
 
-### <a name="circuits"></a>线路列表
+### <a name="circuits"></a>线路的列表
 
 若要查看所有受监视的 ExpressRoute 线路的列表，请单击“ExpressRoute 线路”磁贴。 可以选择一条线路并查看其运行状态以及数据包丢失、带宽使用率和延迟的趋势图表。 这些图表是交互式的。 可以选择自定义时间段来绘制图表。 可以在图表上方区域拖动鼠标来放大图表，详细查看数据点。
 

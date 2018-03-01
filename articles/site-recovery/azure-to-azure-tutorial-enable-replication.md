@@ -5,15 +5,18 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: tutorial
-ms.date: 02/07/2018
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: storage-backup-recovery
+ms.date: 12/11/2017
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9d8d5f1019b1db255c7aa6937c6d3eebed363378
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ed604209a8db4f2b39d433eb9596064da6104145
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>为 Azure VM 设置到辅助 Azure 区域的灾难恢复（预览版）
 
@@ -39,7 +42,7 @@ ms.lasthandoff: 02/09/2018
 在除了源区域之外的任意区域中创建保管库。
 
 1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务**。
-2. 单击“新建” > “监视和管理” > “备份和 Site Recovery”。
+2. 单击“创建资源” > “监视和管理” > “备份和站点恢复”。
 3. 在“名称”中，指定一个友好名称以标识该保管库。 如果有多个订阅，请选择合适的一个。
 4. 创建一个资源组或选择一个现有的资源组。 指定 Azure 区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
 5. 若要从仪表板快速访问保管库，请单击“固定到仪表板”，然后单击“创建”。

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviwer: japere
-ms.openlocfilehash: 0f50a705d4453970d039c2219aef8e1a411fd533
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 83c3a893fe18f2de2acc4fdbc9b048c92cc71d15
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>登录到访问面板网站时出现问题
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 12/11/2017
 -   Firefox 26.0 或更高版本 -- 在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上
 
 
-## <a name="problems-with-the-users-account"></a>用户帐户存在的问题
+## <a name="problems-with-the-users-account"></a>用户帐户问题
 
 对访问面板的访问可能会由于用户帐户存在的问题而被阻止。 下面是可以用来排除和解决用户及其帐户设置存在的问题的一些方法：
 
@@ -93,11 +93,11 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>检查在 Azure Active Directory 中是否存在用户帐户
 
-若要检查是否存在用户帐户，请按照以下步骤操作：
+若要检查是否存在某个用户帐户，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -111,11 +111,11 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="check-a-users-account-status"></a>检查用户帐户的状态
 
-若要检查用户的帐户状态，请按照以下步骤操作：
+若要检查用户帐户的状态，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -131,11 +131,11 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="reset-a-users-password"></a>重置用户的密码
 
-若要重置用户的密码，请按照以下步骤操作：
+若要重置用户的密码，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -145,9 +145,9 @@ ms.lasthandoff: 12/11/2017
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击用户边栏选项卡顶部的“重置密码”按钮。
+7.  单击用户窗格顶部的“重置密码”按钮。
 
-8.  在出现的“重置密码”边栏选项卡上，单击“重置密码”按钮。
+8.  在出现的“重置密码”窗格上，单击“重置密码”按钮。
 
 9.  为用户复制**临时密码**或**输入新密码**。
 
@@ -167,7 +167,7 @@ ms.lasthandoff: 12/11/2017
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 12/11/2017
 
 5.  单击“所有用户”。
 
-6.  单击边栏选项卡顶部的“多重身份验证”按钮。
+6.  单击窗格顶部的“多重身份验证”按钮。
 
 7.  在**多重身份验证管理门户**加载后，确保位于“用户”选项卡上。
 
@@ -190,11 +190,11 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="check-a-users-authentication-contact-info"></a>检查用户的身份验证联系信息
 
-若要检查用于多重身份验证、条件访问、Identity Protection 和密码重置的用户身份验证联系信息，请按照以下步骤操作：
+若要检查用于多重身份验证、条件访问、Identity Protection 和密码重置的用户身份验证联系信息，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -212,11 +212,11 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="check-a-users-group-memberships"></a>检查用户的组成员身份
 
-若要检查用户的组成员身份，请按照以下步骤操作：
+若要检查用户的组成员身份，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -230,11 +230,11 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="check-a-users-assigned-licenses"></a>检查用户的已分配许可证
 
-若要检查用户的已分配许可证，请按照以下步骤操作：
+若要检查用户的已分配许可证，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -248,11 +248,11 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="assign-a-user-a-license"></a>为用户分配许可证 
 
-要将许可证分配给用户，请按照以下步骤操作：
+若要将许可证分配给用户，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 

@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: tamram
-ms.openlocfilehash: 26d4adf4f74f9aacc4cf8cf24be293ebdb4d63c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 054e9686a1acae09f4dd3b7d841d82eae1fc88a9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 管理解决方案进行身份验证
 
 调用 Azure Batch 管理服务的应用程序使用 [Azure Active Directory][aad_about] (Azure AD) 进行身份验证。 Azure AD 是 Microsoft 提供的基于多租户云的目录和标识管理服务。 Azure 本身使用 Azure AD 来对其客户、服务管理员和组织用户进行身份验证。
 
-批处理管理 .NET 库公开用于使用批处理帐户、帐户密钥、应用程序和应用程序包的类型。 批处理管理 .NET 库是一个 Azure 资源提供程序客户端，与 [Azure Resource Manager][resman_overview] 结合使用可以编程方式管理这些资源。 Azure AD 需要对通过任何 Azure 资源提供程序客户端（包括 Batch 管理 .NET 库）和 [Azure Resource Manager][resman_overview] 发出的请求进行身份验证。
+批处理管理 .NET 库公开用于使用批处理帐户、帐户密钥、应用程序和应用程序包的类型。 Batch 管理 .NET 库是一个 Azure 资源提供程序客户端，与 [Azure 资源管理器][resman_overview] 结合使用可以编程方式管理这些资源。 Azure AD 需要对通过任何 Azure 资源提供程序客户端（包括 Batch 管理 .NET 库）和 [Azure 资源管理器][resman_overview]发出的请求进行身份验证。
 
 本文探讨如何使用 Azure AD，在使用 Batch 管理 .NET 库的应用程序中进行身份验证。 我们将演示如何使用 Azure AD 和集成身份验证对订阅管理员或协同管理员进行身份验证。 我们使用 GitHub 上提供的 [AccountManagment][acct_mgmt_sample] 示例项目来逐步讲解如何将 Azure AD 与 Batch 管理 .NET 库配合使用。
 
@@ -43,13 +43,13 @@ Azure [Active Directory 身份验证库][aad_adal] (ADAL) 提供一个可在应�
 
 ![](./media/batch-aad-auth-management/app-registration-client-id.png)
 
-## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>向 Azure Resource Manager API 授予应用程序访问权限
+## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>向 Azure 资源管理器 API 授予应用程序访问权限
 
-接下来，需要将应用程序的访问权限委派给 Azure Resource Manager API。 Resource Manager API 的 Azure AD 标识符为 **Windows Azure Service Management API**。
+接下来，需要将应用程序的访问权限委派给 Azure 资源管理器 API。 Resource Manager API 的 Azure AD 标识符为 **Windows Azure Service Management API**。
 
 在 Azure 门户中执行以下步骤：
 
-1. 在 Azure 门户的左侧导航窗格中，选择“更多服务”，单击“应用注册”，并单击“添加”。
+1. 在 Azure 门户的左侧导航窗格中，选择“所有服务”，单击“应用注册”，并单击“添加”。
 2. 在应用注册列表中搜索应用程序名称：
 
     ![搜索应用程序名称](./media/batch-aad-auth-management/search-app-registration.png)
@@ -62,7 +62,7 @@ Azure [Active Directory 身份验证库][aad_adal] (ADAL) 提供一个可在应�
 
 现在，“所需的权限”边栏选项卡会显示向 ADAL 和 Resource Manager API 授予的应用程序权限。 首先在 Azure AD 中注册应用程序时，默认向 ADAL 授予权限。
 
-![向 Azure Resource Manager API 委派权限](./media/batch-aad-auth-management/required-permissions-management-plane.png)
+![向 Azure 资源管理器 API 委派权限](./media/batch-aad-auth-management/required-permissions-management-plane.png)
 
 ## <a name="azure-ad-endpoints"></a>Azure AD 终结点
 
@@ -72,7 +72,7 @@ Azure [Active Directory 身份验证库][aad_adal] (ADAL) 提供一个可在应�
 
     `https://login.microsoftonline.com/common`
 
-- Azure Resource Manager 终结点，用于获取对 Batch 管理服务的请求进行身份验证的令牌：
+- Azure 资源管理器终结点，用于获取对 Batch 管理服务的请求进行身份验证的令牌：
 
     `https://management.core.windows.net/`
 

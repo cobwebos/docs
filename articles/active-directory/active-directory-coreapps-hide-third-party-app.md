@@ -15,11 +15,11 @@ ms.date: 01/04/2018
 ms.author: billmath
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 00307311ca2bc1432f2de3755575adf1804f9c77
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: dc314d8d2a0e7a099b0eff294d43995ea3809c90
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="hide-an-application-from-users-experience-in-azure-active-directory"></a>使应用程序不出现在用户在 Azure Active Directory 中的体验中
 
@@ -38,8 +38,8 @@ ms.lasthandoff: 01/11/2018
 按照以下步骤从用户的访问面板和 Office 365 应用启动器中隐藏应用程序。
 
 1.  使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2.  选择“更多服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。
-3.  在“Azure Active Directory - 目录名称”屏幕上（即所管理目录的 Azure AD 屏幕），选择“企业应用程序”。
+2.  选择“所有服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。
+3.  在“Azure Active Directory - 目录名称”屏幕上 \*（即所管理目录的 Azure AD 屏幕），选择“企业应用程序”。
 ![企业应用](media/active-directory-coreapps-hide-third-party-app/app1.png)
 4.  在“企业应用程序”屏幕上，选择“所有应用程序”。 此时会显示可管理应用的列表。
 5.  在“企业应用程序 - 所有应用程序”屏幕上，选择一个应用。</br>
@@ -54,8 +54,8 @@ ms.lasthandoff: 01/11/2018
 按照以下步骤从访问面板中隐藏所有 Office 365 应用程序。 这些应用仍将显示在 Office 365 门户中。
 
 1.  使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2.  选择“更多服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。
-3.  在“Azure Active Directory - 目录名称”屏幕上（即所管理目录的 Azure AD 屏幕），选择“用户设置”。
+2.  选择“所有服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。
+3.  在“Azure Active Directory - 目录名称”屏幕上 \*（即所管理目录的 Azure AD 屏幕），选择“用户设置”。
 4.  在“用户设置”屏幕上的“企业应用程序”下，对于“用户只能在 Office 365 门户中查看 Office 365 应用”选择“是”。
 
 ![企业应用](media/active-directory-coreapps-hide-third-party-app/apps4.png)

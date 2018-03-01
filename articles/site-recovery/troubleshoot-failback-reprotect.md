@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 12/19/2017
 ms.author: rajanaki
 ms.openlocfilehash: d487c1fcf7fb6444c2b8489df839a6450715ae0a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="troubleshoot-errors-reported-during-the-process-of-failback"></a>排查故障回复过程中报告的错误
 故障回复实质上包含两个主要步骤。 一个是将 Azure 中的虚拟机重新保护到本地，另一个是实际执行从 Azure 到本地的故障回复。

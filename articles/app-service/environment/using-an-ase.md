@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 64746f7b1a09e35b35e794f5a11d69bef39a03a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 64e1652ac4067a3f1639bf81cfcd0f79637ade9b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境 #
 
@@ -48,7 +48,7 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
 若要在 ASE 中创建 Web 应用，请执行以下操作：
 
-1. 选择“新建” > “Web 和移动” > “Web 应用”。
+1. 选择“创建资源” > “Web + 移动” > “Web 应用”。
 
 2. 输入 Web 应用的名称。 如果已在 ASE 中选择了应用服务计划，则应用的域名会反映 ASE 的域名。
 
@@ -68,11 +68,11 @@ Azure 应用服务环境指将 Azure 应用服务部署到客户 Azure 虚拟网
 
     d.单击“下一步”。 选择“隔离”定价层。 选择“选择”。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 选择“确定”。
+    e. 选择“确定”。
     
     ![“隔离”定价层][2]
 
-6. 选择“创建” 。
+6. 选择“创建”。
 
 ## <a name="how-scale-works"></a>缩放的工作原理 ##
 

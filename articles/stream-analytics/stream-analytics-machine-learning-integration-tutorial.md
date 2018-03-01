@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/06/2017
 ms.author: samacha
-ms.openlocfilehash: 243ee799d2cddb1baf5b8046eee6eaf182463d2e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d06681c687f5cd3eb10d375499266c7e78be1558
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>使用 Azure 流分析和 Azure 机器学习执行情绪分析
 本文介绍了如何快速设置集成了 Azure 机器学习的简单 Azure 流分析作业。 你将使用 Cortana Intelligence 库中的机器学习情绪分析模型来实时分析流文本数据并确定情绪分数。 可以使用 Cortana Intelligence Suite 完成此任务，不必担心构建情绪分析模型的复杂性。
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>创建一个存储容器并上传 CSV 输入文件
 对于此步骤，可以使用任何 CSV 文件，例如从 GitHub 获取的文件。
 
-1. 在 Azure 门户中，单击“新建”&gt;“存储”&gt;“存储帐户”。
+1. 在 Azure 门户中，单击“创建资源”&gt;“存储”&gt;“存储帐户”。
 
    ![创建新存储帐户](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-create-storage-account.png)
 
@@ -128,7 +128,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 转到 [Azure 门户](https://portal.azure.com)。  
 
-2. 单击“新建” > “物联网” > “流分析作业”。 
+2. 单击“创建资源” > “物联网” > “流分析作业”。 
 
    ![到达新的流分析作业的 Azure 门户路径](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-new-iot-sa-job.png)
    
@@ -160,7 +160,7 @@ ms.lasthandoff: 10/11/2017
 
     ![新作业输入的设置](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
-4. 单击“创建” 。
+4. 单击“创建”。
 
 ### <a name="configure-the-job-output"></a>配置作业输出
 作业将结果发送到它从中获取输入的同一 blob 存储。 
@@ -179,7 +179,7 @@ ms.lasthandoff: 10/11/2017
 
    ![新作业输出的设置](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
 
-4. 单击“创建” 。   
+4. 单击“创建”。   
 
 
 ### <a name="add-the-machine-learning-function"></a>添加机器学习函数 
@@ -204,7 +204,7 @@ ms.lasthandoff: 10/11/2017
   
     ![用于向流分析作业添加机器学习函数的设置](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
     
-5. 单击“创建” 。
+5. 单击“创建”。
 
 ### <a name="create-a-query-to-transform-the-data"></a>创建查询来转换数据
 

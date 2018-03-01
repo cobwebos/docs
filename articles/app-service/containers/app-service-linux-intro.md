@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: c06270c75ae16ba516e71a5dde9db4a7277d7e38
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 465e3d2c0c2b7c5d811441ede20adb9da2dbe847
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
@@ -90,7 +90,7 @@ Linux 应用服务仅支持[基本和标准](https://azure.microsoft.com/pricing
 
 请参阅以下链接，开始使用 Linux 应用服务。 如有问题和疑问，请在[我们的论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)上发帖。
 
-* [如何对用于容器的 Web 应用使用自定义 Docker 映像](quickstart-custom-docker-image.md)
+* [如何对用于容器的 Web 应用使用自定义 Docker 映像](quickstart-docker-go.md)
 * [在 Linux 上的 Azure 应用服务中使用 .NET Core](quickstart-dotnetcore.md)
 * [在 Linux 上的 Azure 应用服务中使用 Ruby](quickstart-ruby.md)
 * [用于容器的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)

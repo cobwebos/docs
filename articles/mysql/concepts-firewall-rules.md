@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for MySQL 服务器防火墙规则 | Microsoft Docs"
+title: "Azure Database for MySQL 服务器防火墙规则"
 description: "描述 Azure Database for MySQL 服务器的防火墙规则。"
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/12/2018
-ms.openlocfilehash: 5afe3fc2d39c6ab0996b1ee68a4158ccacc7e86a
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 02/28/2018
+ms.openlocfilehash: a1ebbc088b54112ed625412a347b054fd3361782
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL 服务器防火墙规则
 在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。

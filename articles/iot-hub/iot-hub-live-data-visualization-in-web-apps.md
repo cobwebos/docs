@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2017
 ms.author: xshi
-ms.openlocfilehash: e037f5c29cabf8e5d0d3e7ded187280a0652d5c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54a2defd6bfe2396e24584c686698d3215893cfd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>使用 Azure 应用服务的 Web 应用功能可视化 Azure IoT 中心的实时传感器数据
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-1. 在 [Azure 门户](https://ms.portal.azure.com/)中，单击“新建” > “Web + 移动” > “Web 应用”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“创建资源” > “Web + 移动” > “Web 应用”。
 2. 输入唯一的作业名称，验证订阅，指定资源组和位置，选择“固定到仪表板”，并单击“创建”。
 
    建议选择与资源组相同的位置。 这有助于加快处理速度，并降低数据传输的费用。
@@ -63,7 +63,7 @@ ms.lasthandoff: 10/11/2017
 1. 打开刚刚预配的 Web 应用。
 2. 单击“应用程序设置”，并在“应用设置”下面添加以下键/值对：
 
-   | 键                                   | 值                                                        |
+   | 密钥                                   | 值                                                        |
    |---------------------------------------|--------------------------------------------------------------|
    | Azure.IoT.IoTHub.ConnectionString     | 从 iothub-explorer 获取                                |
    | Azure.IoT.IoTHub.ConsumerGroup        | 添加到 IoT 中心的使用者组的名称  |

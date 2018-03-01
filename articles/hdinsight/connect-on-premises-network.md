@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 5e9951132ebb46d1053fbf62528b43e82cc76d2e
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 03214f25858ae340908a1d1b7f3ff7f62d545dc9
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>将 HDInsight 连接到本地网络
 

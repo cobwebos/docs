@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/04/2017
+ms.date: 01/26/2018
 ms.author: larryfr
-ms.openlocfilehash: b451a80934a19f8a38ab9e8ace358674827aefa0
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: c830abdf8220f222a06b771b8c9fc905146420b4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>使用 REST 在 HDInsight 中通过 Hadoop 运行 Hive 查询
 
@@ -28,24 +28,57 @@ ms.lasthandoff: 01/18/2018
 
 了解如何使用 WebHCat REST API 在 Azure HDInsight 群集上通过 Hadoop 运行 Hive 查询。
 
-[Curl](http://curl.haxx.se/) 用于演示如何使用原始 HTTP 请求与 HDInsight 交互。 [jq](http://stedolan.github.io/jq/) 实用工具用于处理从 REST 请求返回的 JSON 数据。
+## <a name="prerequisites"></a>先决条件
 
-> [!NOTE]
-> 如果已熟悉如何使用基于 Linux 的 Hadoop 服务器，但刚接触 HDInsight，请参阅 [HDInsight 上的基于 Linux 的 Hadoop 须知信息](../hdinsight-hadoop-linux-information.md)文档。
+* 基于 Linux 的 Hadoop on HDInsight 群集版本 3.4 或更高版本。
+
+  > [!IMPORTANT]
+  > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
+
+* 一个 REST 客户端。 本文档使用了 Windows PowerShell 和 [Curl](http://curl.haxx.se/) 示例。
+
+    > [!NOTE]
+    > Azure PowerShell 提供了用于使用 Hive on HDInsight 的专用 cmdlet。 有关详细信息，请参阅[将 Hive 与 Azure PowerShell 配合使用](apache-hadoop-use-hive-powershell.md)文档。
+
+本文档还使用 Windows PowerShell 和 [Jq](http://stedolan.github.io/jq/) 来处理从 REST 请求返回的 JSON 数据。
 
 ## <a id="curl"></a>运行 Hive 查询
 
 > [!NOTE]
 > 使用 cURL 或者与 WebHCat 进行任何其他形式的 REST 通信时，必须提供 HDInsight 群集管理员的用户名和密码以对请求进行身份验证。
 >
-> 对本部分中的命令，请将“admin”替换为要向群集进行身份验证的用户。 将 **CLUSTERNAME** 替换为群集名称。 出现提示时，请输入用户帐户的密码。
->
 > REST API 通过 [基本身份验证](http://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 为了有助于确保将凭据安全地发送到服务器，应始终使用安全 HTTP (HTTPS) 发出请求。
 
-1. 在命令行中，使用以下命令验证你是否可以连接到 HDInsight 群集。
+1. 若要设置本文档中的脚本使用的群集登录名，请使用下列命令之一：
 
     ```bash
-    curl -u admin -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
+    read -p "Enter your cluster login account name: " LOGIN
+    ```
+
+    ```powershell
+    $creds = Get-Credential -UserName admin -Message "Enter the cluster login name and password"
+    ```
+
+2. 若要设置群集名称，请使用下列命令之一：
+
+    ```bash
+    read -p "Enter the HDInsight cluster name: " CLUSTERNAME
+    ```
+
+    ```powershell
+    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+    ```
+
+3. 若要验证是否可以连接到 HDInsight 群集，请使用下列命令之一：
+
+    ```bash
+    curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/status)
+    ```
+    
+    ```powershell
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/status" `
+       -Credential $creds
+    $resp.Content
     ```
 
     将收到类似于以下文本的响应：
@@ -56,13 +89,19 @@ ms.lasthandoff: 01/18/2018
 
     此命令中使用的参数如下：
 
-    * **-u** - 用来对请求进行身份验证的用户名和密码。
-    * **-G** - 指示此请求是一个 GET 操作。
+    * `-u` - 用来对请求进行身份验证的用户名和密码。
+    * `-G` - 指示此请求是一个 GET 操作。
 
-   所有请求的 URL 开头都是 **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**。 路径 **/status** 指示请求将返回服务器的 WebHCat（也称为 Templeton）状态。 还可以通过使用以下命令请求 Hive 的版本：
+   URL 的开头 (`https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`) 对于所有请求都是相同的。 路径 `/status` 指示请求将返回服务器的 WebHCat（也称为 Templeton）状态。 还可以通过使用以下命令请求 Hive 的版本：
 
     ```bash
-    curl -u admin -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
+    curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
+    ```
+
+    ```powershell
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/version/hive" `
+       -Credential $creds
+    $resp.Content
     ```
 
     此请求返回的响应类似于以下文本：
@@ -71,83 +110,70 @@ ms.lasthandoff: 01/18/2018
         {"module":"hive","version":"0.13.0.2.1.6.0-2103"}
     ```
 
-2. 使用以下命令创建名为 **log4jLogs** 的表：
+4. 使用以下命令创建名为 **log4jLogs** 的表：
 
     ```bash
-    curl -u admin -d user.name=admin -d execute="set+hive.execution.engine=tez;DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
+    JOBID=`curl -s -u $LOGIN -d user.name=$LOGIN -d execute="set+hive.execution.engine=tez;DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/rest" https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/hive | jq .id`
+    echo $JOBID
     ```
 
-    以下参数与此请求配合使用：
+    ```powershell
+    $reqParams = @{"user.name"="admin";"execute"="set hive.execution.engine=tez;DROP TABLE log4jLogs;CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED BY ' ' STORED AS TEXTFILE LOCATION '/example/data/;SELECT t4 AS sev,COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;";"statusdir"="/example/rest"}
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/hive" `
+       -Credential $creds `
+       -Body $reqParams `
+       -Method POST
+    $jobID = (ConvertFrom-Json $resp.Content).id
+    $jobID
+    ```
 
-   * **-d** - 由于未使用 `-G`，请求将按默认使用 POST 方法。 `-d` 指定与请求一起发送的数据值。
+    此请求使用 POST 方法，该方法将数据作为请求的一部分发送到 REST API。 将随请求发送以下数据值：
 
-     * **user.name** - 正在运行命令的用户。
-     * **execute** - 要执行的 HiveQL 语句。
-     * **statusdir** - 此作业的状态要写入到的目录。
+     * `user.name` - 正在运行命令的用户。
+     * `execute` - 要执行的 HiveQL 语句。
+     * `statusdir` - 此作业的状态要写入到的目录。
 
    这些语句将执行以下操作：
    
-   * **DROP TABLE** - 如果表已存在，则删除该表。
-   * **CREATE EXTERNAL TABLE**：在 Hive 中创建新的“外部”表。 外部表仅在 Hive 中存储表定义。 数据将保留在原始位置。
+   * `DROP TABLE` - 如果表已存在，则删除该表。
+   * `CREATE EXTERNAL TABLE` - 在 Hive 中创建一个新的“外部”表。 外部表仅在 Hive 中存储表定义。 数据将保留在原始位置。
 
      > [!NOTE]
      > 如果希望通过外部源更新基础数据，应使用外部表。 例如，使用自动化数据上传过程或其他 MapReduce 操作。
      >
      > 删除外部表**不会**删除数据，只会删除表定义。
 
-   * **ROW FORMAT** - 如何设置数据的格式。 每个日志中的字段都用空格分隔。
-   * **STORED AS TEXTFILE LOCATION** - 数据的存储位置（example/data 目录），以及数据已存储为文本。
-   * **SELECT** - 选择第 **t4** 列包含值 **[ERROR]** 的所有行的计数。 此语句返回的值为 **3**，因为有三行包含此值。
+   * `ROW FORMAT` - 如何设置数据的格式。 每个日志中的字段都用空格分隔。
+   * `STORED AS TEXTFILE LOCATION` - 数据的存储位置（example/data 目录），并且数据存储为文本。
+   * `SELECT` - 选择 **t4** 列包含值 **[ERROR]** 的所有行的计数。 此语句返回的值为 **3**，因为有三行包含此值。
 
      > [!NOTE]
      > 请注意，在与 Curl 配合使用时，将用 `+` 字符替换 HiveQL 语句之间的空格。 如果带引号的值包含空格（例如分隔符），则不应替换为 `+`。
 
-   * **INPUT__FILE__NAME LIKE '%25.log'** - 此语句对搜索设置了限制，仅使用以 .log 结尾的文件。
+      此命令会返回可用来检查作业状态的作业 ID。
 
-     > [!NOTE]
-     > `%25` 是 % 的 URL 编码形式，因此实际条件是 `like '%.log'`。 % 必须是 URL 编码的，因为系统将其视为 URL 中的特殊字符。
-
-   此命令会返回可用来检查作业状态的作业 ID。
-
-    ```json
-       {"id":"job_1415651640909_0026"}
-    ```
-
-3. 若要检查作业的状态，请使用以下命令：
+5. 若要检查作业的状态，请使用以下命令：
 
     ```bash
-    curl -G -u admin -d user.name=admin https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
+    curl -G -u $LOGIN -d user.name=$LOGIN https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/$JOBID | jq .status.state
     ```
 
-    将“JOBID”替换为上一步骤返回的值。 例如，如果返回值为 `{"id":"job_1415651640909_0026"}`，则 **JOBID** 将是 `job_1415651640909_0026`。
+    ```powershell
+    $reqParams=@{"user.name"="admin"}
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/jobs/$jobID" `
+       -Credential $creds `
+       -Body $reqParams
+    # ConvertFrom-JSON can't handle duplicate names with different case
+    # So change one to prevent the error
+    $fixDup=$resp.Content.Replace("jobID","job_ID")
+    (ConvertFrom-Json $fixDup).status.state
+    ```
 
     如果作业已完成，状态将是 **SUCCEEDED**。
 
-   > [!NOTE]
-   > 此 Curl 请求返回含有作业相关信息的 JavaScript 对象表示法 (JSON) 文档。 Jq 用于仅检索状态值。
-
-4. 在作业的状态更改为“SUCCEEDED”后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，位置为 **/example/curl**。 此地址在群集默认存储的 **example/curl** 目录中存储输出。
+6. 在作业的状态更改为“SUCCEEDED”后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `/example/rest`。 此地址将输出存储在群集默认存储中的 `example/curl` 目录。
 
     可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 列出并下载这些文件。 有关将 Azure CLI 与 Azure 存储配合使用的详细信息，请参阅[将 Azure CLI 2.0 与 Azure 存储配合使用](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs)文档。
-
-5. 使用以下语句创建名为 **errorLogs** 的新“内部”表：
-
-    ```bash
-    curl -u admin -d user.name=admin -d execute="set+hive.execution.engine=tez;CREATE+TABLE+IF+NOT+EXISTS+errorLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+STORED+AS+ORC;INSERT+OVERWRITE+TABLE+errorLogs+SELECT+t1,t2,t3,t4,t5,t6,t7+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log';SELECT+*+from+errorLogs;" -d statusdir="/example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
-    ```
-
-    这些语句将执行以下操作：
-
-   * **CREATE TABLE IF NOT EXISTS** - 创建表（如果该表尚不存在）。 此语句创建内部表，该表存储在 Hive 数据仓库中。 此表由 Hive 托管。
-
-     > [!NOTE]
-     > 与外部表不同，删除内部表会同时删除基础数据。
-
-   * **STORED AS ORC**：以优化行纵栏表 (ORC) 格式存储数据。 ORC 是高度优化且有效的 Hive 数据存储格式。
-   * **INSERT OVERWRITE ...SELECT** - 从包含 **[ERROR]** 的 **log4jLogs** 表中选择行，然后将数据插入 **errorLogs** 表中。
-   * **SELECT** - 选择新 **errorLogs** 表中的所有行。
-
-6. 使用返回的作业 ID 检查作业的状态。 成功后，如前所述使用 Azure CLI 下载并查看结果。 输出应包含三行，其中所有行都包含 **[ERROR]**。
 
 ## <a id="nextsteps"></a>后续步骤
 

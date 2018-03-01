@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/04/2018
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 5550dc2ffc53c6ccd30ecb4901ec98c4d38e366b
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 908a1130171cc091b4d95d4532cc3bb95edb44f9
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>从 Apache Storm on HDInsight 写入 HDFS
 
@@ -160,7 +160,7 @@ bolts:
 
 1. 使用以下命令可将拓扑复制到 HDInsight 群集。 用创建群集时使用的 SSH 用户名替换 **USER**。 将 **CLUSTERNAME** 替换为群集的名称。
    
-        scp target\StormToHdfs-1.0-SNAPSHOT.jar USER@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs1.0-SNAPSHOT.jar
+        scp target\StormToHdfs-1.0-SNAPSHOT.jar USER@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs-1.0-SNAPSHOT.jar
    
     出现提示时，请输入在创建群集 SSH 用户时使用的密码。 如果使用公钥而不是密码，则可能需要使用 `-i` 参数指定匹配私钥的路径。
    

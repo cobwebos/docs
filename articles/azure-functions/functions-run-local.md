@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: c1a9310d0a09d714f1d58f29e5683097c9dc6b90
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8b85457c5df9fb15c7eebe8b6fe8fb904f9e6009
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
 
@@ -231,6 +231,9 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 func host start --debug vscode
 ```
+
+> [!IMPORTANT]
+> 对于调试，仅支持 Node.js 8.x。 不支持 Node.js 9.x。 
 
 然后，在 Visual Studio Code 中的“调试”视图中，选择“附加到 Azure Functions”。 可附加断点、检查变量和逐步执行代码。
 

@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2018
+ms.date: 01/26/2018
 ms.author: larryfr
-ms.openlocfilehash: ecf08b765ba17ac410f45bc3604a2aa0f3b4823e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: afd2bc95beb2458ec149824723ec62381b31b2da
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
@@ -41,20 +41,19 @@ HDInsight 提供已针对特定工作负荷进行优化的多种群集类型。 
 
 ## <a name="how-to-use-hive"></a>如何使用 Hive
 
-使用下表来了解如何在 HDInsight 中使用 Hive：
+使用下表来了解将 Hive 与 HDInsight 配合使用的各种方法：
 
-| **使用此方法**，如果想要... | ...**交互式** shell | ...**批处理** | ...使用此**群集操作系统** | ...从此**客户端操作系统** |
+| **使用此方法**，如果想要... | ...**交互式**查询 | ...**批处理** | ...使用此**群集操作系统** | ...从此**客户端操作系统** |
 |:--- |:---:|:---:|:--- |:--- |
 | [Hive 视图](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |任何（基于浏览器） |
 | [Beeline 客户端](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X 或 Windows |
 | [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux 或 Windows* |Linux、Unix、Mac OS X 或 Windows |
+| [Visual Studio Code 的 HDInsight 工具](../hdinsight-for-vscode.md) |✔ |✔ |Linux | Linux、Unix、Mac OS X 或 Windows |
 | [用于 Visual Studio 的 HDInsight 工具](../hadoop/apache-hadoop-use-hive-visual-studio.md) |&nbsp; |✔ |Linux 或 Windows* |Windows |
 | [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux 或 Windows* |Windows |
 
 > [!IMPORTANT]
 > \* Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
->
-> 如果使用基于 Windows 的 HDInsight 群集，可以通过浏览器或[远程桌面](../hadoop/apache-hadoop-use-hive-remote-desktop.md)使用[查询控制台](../hadoop/apache-hadoop-use-hive-query-console.md)来运行 Hive 查询。
 
 ## <a name="hiveql-language-reference"></a>HiveQL 语言参考
 
@@ -65,7 +64,14 @@ HDInsight 提供已针对特定工作负荷进行优化的多种群集类型。 
 Hive 知道如何处理结构化和半结构化数据。 例如，字段由特定字符分隔的文本文件。 以下 HiveQL 语句基于空格分隔的数据创建一个表：
 
 ```hiveql
-CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
+CREATE EXTERNAL TABLE log4jLogs (
+    t1 string,
+    t2 string,
+    t3 string,
+    t4 string,
+    t5 string,
+    t6 string,
+    t7 string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
 ```
@@ -74,20 +80,20 @@ Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化�
 
 有关 Hive 支持的文件格式的详细信息，请参阅[语言手册 (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
-## <a name="hive-internal-tables-vs-external-tables"></a>Hive 内部表与外部表
+### <a name="hive-internal-tables-vs-external-tables"></a>Hive 内部表与外部表
 
 使用 Hive 可以创建两种类型的表：
 
 * __内部__：数据存储在 Hive 数据仓库中。 数据仓库位于群集的默认存储中的 `/hive/warehouse/` 上。
 
-    在以下情况下使用内部表：
+    当下列条件之一成立时，请使用内部表：
 
     * 数据是临时性的。
     * 希望 Hive 管理表和数据的生命周期。
 
 * __外部__：数据存储在数据仓库外部。 数据可以存储在可由群集访问的任何存储中。
 
-    在以下情况下使用外部表：
+    当下列条件之一成立时，请使用外部表：
 
     * 数据也在 Hive 外部使用。 例如，另一个进程（不会锁定文件）会更新数据文件。
     * 数据需要保留在基础位置，即使在删除表之后。
@@ -102,9 +108,9 @@ Hive 还支持对复杂或不规则的结构化数据使用自定义**序列化�
 
 * [将 Java 用户定义函数与 Hive 配合使用](../hadoop/apache-hadoop-hive-java-udf.md)
 
-* [将 Python 用户定义函数与 Hive 和 Pig 配合使用](../hadoop/python-udf-hdinsight.md)
+* [将 Python 用户定义函数与 Hive 配合使用](../hadoop/python-udf-hdinsight.md)
 
-* [将 C# 用户定义函数与 Hive 和 Pig 配合使用](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [将 C# 用户定义函数与 Hive 配合使用](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
 * [如何将自定义的 Hive 用户定义函数添加到 HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
@@ -118,16 +124,27 @@ Hive on HDInsight 中预先加载了名为 `hivesampletable` 的内部表。 HDI
 
 以下 HiveQL 语句将各列投影到 `/example/data/sample.log` 文件上：
 
-    set hive.execution.engine=tez;
-    DROP TABLE log4jLogs;
-    CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
-    STORED AS TEXTFILE LOCATION '/example/data/';
-    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
+```hiveql
+set hive.execution.engine=tez;
+DROP TABLE log4jLogs;
+CREATE EXTERNAL TABLE log4jLogs (
+    t1 string,
+    t2 string,
+    t3 string,
+    t4 string,
+    t5 string,
+    t6 string,
+    t7 string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
+STORED AS TEXTFILE LOCATION '/example/data/';
+SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs 
+    WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' 
+    GROUP BY t4;
+```
 
 在上例中，HiveQL 语句执行以下操作：
 
-* `set hive.execution.engine=tez;`：将执行引擎设置为使用 Tez。 使用 Tez 而不是 MapReduce 可以提高查询性能。 有关 Tez 的详细信息，请参阅[使用 Apache Tez 提高性能](#usetez)部分。
+* `set hive.execution.engine=tez;`：将执行引擎设置为使用 Tez。 使用 Tez 可以提高查询性能。 有关 Tez 的详细信息，请参阅[使用 Apache Tez 提高性能](#usetez)部分。
 
     > [!NOTE]
     > 仅在使用基于 Windows 的 HDInsight 群集时需要此语句。 Tez 是用于基于 Linux 的 HDInsight 的默认执行引擎。
@@ -151,11 +168,21 @@ Hive on HDInsight 中预先加载了名为 `hivesampletable` 的内部表。 HDI
 
 若要创建**内部**表而非外部表，请使用以下 HiveQL：
 
-    set hive.execution.engine=tez;
-    CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
-    STORED AS ORC;
-    INSERT OVERWRITE TABLE errorLogs
-    SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
+```hiveql
+set hive.execution.engine=tez;
+CREATE TABLE IF NOT EXISTS errorLogs (
+    t1 string,
+    t2 string,
+    t3 string,
+    t4 string,
+    t5 string,
+    t6 string,
+    t7 string)
+STORED AS ORC;
+INSERT OVERWRITE TABLE errorLogs
+SELECT t1, t2, t3, t4, t5, t6, t7 
+    FROM log4jLogs WHERE t4 = '[ERROR]';
+```
 
 这些语句将执行以下操作：
 
@@ -195,7 +222,15 @@ Hive on HDInsight 中预先加载了名为 `hivesampletable` 的内部表。 HDI
 
 HDInsight 在交互式查询群集类型中提供 LLAP。 有关详细信息，请参阅[交互式查询入门](../interactive-query/apache-interactive-query-get-started.md)文档。
 
-## <a name="hive-jobs-and-sql-server-integration-services"></a>Hive 作业和 SQL Server Integration Services
+## <a name="scheduling-hive-queries"></a>计划 Hive 查询
+
+在计划的或按需工作流中，可以使用多个服务来运行 Hive 查询。
+
+### <a name="azure-data-factory"></a>Azure 数据工厂
+
+Azure 数据工厂允许将 HDInsight 用作数据工厂管道的一部分。 有关通过管道使用 Hive 的详细信息，请参阅[在 Azure 数据工厂中使用 Hive 活动转换数据](/data-factory/transform-data-using-hadoop-hive.md)文档。
+
+### <a name="hive-jobs-and-sql-server-integration-services"></a>Hive 作业和 SQL Server Integration Services
 
 可以使用 SQL Server Integration Services (SSIS) 来运行 Hive 作业。 Azure Feature Pack for SSIS 提供适用于 HDInsight 上的 Hive 作业的以下组件。
 
@@ -203,7 +238,11 @@ HDInsight 在交互式查询群集类型中提供 LLAP。 有关详细信息，�
 
 * [Azure 订阅连接管理器][connectionmanager]
 
-在[此处][ssispack]了解有关 Azure Feature Pack for SSIS 的详细信息。
+有关详细信息，请参阅 [Azure 功能包][ssispack]文档。
+
+### <a name="apache-oozie"></a>Apache Oozie
+
+Apache Oozie 是一个管理 Hadoop 作业的工作流和协调系统。 有关将 Oozie 与 Hive 配合使用的详细信息，请参阅[使用 Oozie 定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)文档。
 
 ## <a id="nextsteps"></a>后续步骤
 

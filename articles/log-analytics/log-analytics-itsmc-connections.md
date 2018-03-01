@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: a51ba4b45b7f6c72037d5c562a4ccd59e601cee4
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: e0cae844e8b7f3eab68ed02dbcd17f4d1cebfd25
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](log-analytics-itsmc-overview.md)。
@@ -185,11 +185,12 @@ ms.lasthandoff: 01/24/2018
 ### <a name="prerequisites"></a>先决条件
 请确保满足以下先决条件：
 - 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)。
-- ServiceNow 支持的版本：雅加达、伊斯坦布尔、赫尔辛基、日内瓦
+- ServiceNow 支持的版本：金斯顿、雅加达、伊斯坦布尔、赫尔辛基、日内瓦。
 
 **ServiceNow 管理员必须在其 ServiceNow 实例中执行以下操作**：
 - 生成 ServiceNow 产品的客户端 ID 和客户端密码。 有关如何生成客户端 ID 和机密的信息，请根据需要参阅以下信息：
 
+    - [为金斯顿设置 OAuth](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/concept/OAuth-setup.html)
     - [为雅加达设置 OAuth](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [为伊斯坦布尔设置 OAuth](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [为赫尔辛基设置 OAuth](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

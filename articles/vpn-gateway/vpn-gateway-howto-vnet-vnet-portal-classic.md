@@ -1,10 +1,10 @@
 ---
 title: "在 VNet 之间创建连接：经典：Azure 门户 l | Microsoft Docs"
-description: "如何使用 PowerShell 和 Azure 门户将 Azure 虚拟网络连接到一起。"
+description: "使用 PowerShell 和 Azure 门户将 Azure 虚拟网络连接到一起。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-service-management
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/05/2017
+ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1e7a7af26fbfb728aa5a6b8a0d63b71f678256bf
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9e0c96d0d2c321869f7dc90e18f8dd25d58edc8f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>配置 VNet 到 VNet 连接（经典）
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/21/2017
 本文介绍如何在虚拟网络之间创建 VPN 网关连接。 虚拟网络可以位于相同或不同的区域，也可以来自相同或不同的订阅。 本文中的步骤适用于经典部署模型和 Azure 门户。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
 
 > [!div class="op_single_selector"]
-> * [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure 门户（经典）](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -164,8 +164,8 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 3. 网关子网名称自动以所需的名称“GatewaySubnet”进行填充。 “地址范围”包含分配给 VPN 网关服务的 IP 地址。 某些配置允许使用网关子网 /29，但最好使用 /28 或 /27 以适应将来可能需要为网关服务使用更多 IP 地址的配置。 在示例设置中，我们使用了 10.11.1.0/27。 调整地址空间，并单击“确定”。
 4. 配置“网关大小”。 此设置指的是[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 5. 配置“路由类型”。 此配置的路由类型必须为“动态”。 无法更改路由类型，除非删除网关并创建一个新网关。
-6. 单击 **“确定”**。
-7. 在“新建 VPN 连接”页上，单击“确定”，开始创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选网关 SKU。
+6. 单击“确定”。
+7. 在“新建 VPN 连接”页上，单击“确定”，开始创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
 ## <a name="vnet4settings"></a>步骤 5 - 配置 TestVNet4 设置
 
@@ -238,7 +238,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
   ```powershell
   Add-AzureAccount
   ```
-3. 导出并查看网络配置文件。 在计算机上创建一个目录，并将网络配置文件导出到该目录。 在此示例中，网络配置文件导出到 **C:\AzureNet**。
+3. 导出并查看网络配置文件。 在计算机上创建一个目录，然后将网络配置文件导出到该目录。 在此示例中，网络配置文件导出到 **C:\AzureNet**。
 
   ```powershell
   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml

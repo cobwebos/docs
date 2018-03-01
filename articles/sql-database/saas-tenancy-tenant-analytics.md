@@ -1,5 +1,5 @@
 ---
-title: "针对数据库运行分析查询 | Microsoft Docs"
+title: "使用提取的数据运行跨租户分析 | Microsoft Docs"
 description: "使用从多个“Azure SQL 数据库”数据库提取的数据运行跨租户分析查询。"
 keywords: "sql 数据库教程"
 services: sql-database
@@ -15,19 +15,19 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: fb4311f28f55cfeb3f07a441adde18ae95f39e90
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 62f09a7ff353783b0f54202554d126bf59ee941a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>使用提取的数据运行跨租户分析
 
-本教程逐步讲解一个完整的分析方案。 该方案演示企业如何通过分析做出明智的决策。 借助从每个租户数据库提取的数据，可以使用分析来获取租户行为的见解，包括租户如何使用示例 Wingtip Tickets SaaS 应用程序。 此方案涉及三个步骤： 
+本教程逐步讲解一个完整的分析方案。 该方案演示企业如何通过分析做出明智的决策。 基于从每个租户数据库提取的数据，通过诊断深入了解租户行为和应用程序使用情况。 此方案涉及三个步骤： 
 
-1.  从每个租户数据库**提取数据**到分析存储。
-2.  **优化提取的数据**以进行分析处理。
-3.  使用**商业智能**工具抽取有用的见解，以引导做出决策。 
+1.  从每个租户数据库提取数据，然后加载到分析存储中。
+2.  转换提取后的数据进行分析处理。
+3.  使用“商业智能”工具抽取出有用的见解，以引导作出决策。 
 
 本教程介绍如何执行下列操作：
 
@@ -42,29 +42,28 @@ ms.lasthandoff: 11/28/2017
 
 ## <a name="offline-tenant-analytics-pattern"></a>脱机租户分析模式
 
-开发的 SaaS 应用程序有权访问云中存储的大量租户数据。 这些数据提供有关对应用程序的操作和用法，以及有关租户行为的丰富见解来源。 这些见解可引导应用和平台中的功能开发、可用性改进和其他投资。
+多租户 SaaS 应用程序通常在云端存储有大量租户数据。 可通过此类数据深入了解应用程序的操作和使用情况，以及租户的行为。 这些见解可引导应用和平台中的功能开发、可用性改进和其他投资。
 
-如果所有数据只是在一个多租户数据库中，则访问所有租户的数据就很简单。 但是，如果数据大量分散在几千个数据库中，则访问就会变得更复杂。 克服复杂性的方法之一是将数据提取到分析数据库或数据仓库。 然后，可以查询分析存储，以便从所有租户的门票数据中收集见解。
+如果所有数据均位于一个多租户数据库中，则可轻松访问所有租户的数据。 但是，如果数据大量分散在几千个数据库中，访问就变得更加复杂。 为降低复杂度和尽量减少分析查询对事务数据的影响，一种方式是将数据提取到专门的分析数据库或数据仓库。
 
-本教程将会介绍此示例 SaaS 应用程序的完整分析方案。 首先，使用弹性作业来计划从每个租户数据库提取数据。 将数据发送到分析存储。 分析存储可以是 SQL 数据库或 SQL 数据仓库。 对于大规模数据提取，建议使用 [Azure 数据工厂](../data-factory/introduction.md)。
+本教程将展示一个针对 Wingtip Tickets SaaS 应用程序的完整分析情景。 首先，使用弹性作业从租户数据库中提取数据，再将其加载到分析存储的临时表中。 分析存储可以是 SQL 数据库或 SQL 数据仓库。 对于大规模数据提取，建议使用 [Azure 数据仓库](../data-factory/introduction.md)。
 
-接下来，将聚合的数据分片成一组[星型架构](https://www.wikipedia.org/wiki/Star_schema)表。 这些表由一个中心事实数据表和相关的维度表组成：
+接下来，将聚合的数据转换为一组[星型架构](https://www.wikipedia.org/wiki/Star_schema)表。 这些表由一个中心事实数据表和相关的维度表组成。  对于 Wingtip Tickets：
 
 - 星型架构中的中心事实数据表包含门票数据。
-- 维度表包含有关会场、事件、客户和购买日期的数据。
+- 维度表中显示场所、活动、客户和购买日期的相关数据。
 
 将中心事实数据表与维度表相结合，可以实现高效的分析处理。 下图显示了本教程中使用的星型架构：
  
 ![architectureOverView](media/saas-tenancy-tenant-analytics/StarSchema.png)
 
-最后，查询星型架构表。 查询结果以可视形式显示，其中突出显示了租户的行为及其对应用程序的用法的见解。 使用此星型架构，可以运行查询来帮助发现如下所述的项：
+最后，使用 PowerBI 查询分析存储，以突出显示租户行为及其 Wingtip Tickets 应用程序使用情况的相关信息。 运行查询以：
+ 
+- 显示每个场所的相对受欢迎程度
+- 突出显示不同活动的售票模式
+- 显示售票后不同场所的相对活动成功情况
 
-- 谁正在买票，从哪个会场买票。
-- 以下方面的隐藏模式和趋势：
-    - 门票销量。
-    - 每个会场的相对受欢迎度。
-
-了解每个租户如何一致使用服务提供了根据需要创建服务计划的机会。 本教程提供从租户数据收集见解的基本示例。
+了解每位租户使用服务的方式，进而探索如何从服务中获利以及如何改进服务来让租户更加成功。 本教程提供一些基本示例，介绍可从租户数据中收集的见解类型。
 
 ## <a name="setup"></a>设置
 
@@ -76,7 +75,7 @@ ms.lasthandoff: 11/28/2017
 - 已从 GitHub 下载 Wingtip Tickets SaaS Database Per Tenant 脚本和应用程序[源代码](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)。 请参阅下载说明。 在提取 zip 文件的内容之前，请务必取消阻止该 zip 文件。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 - 已安装 Power BI Desktop。 [下载 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 - 已预配其他租户批，具体请参阅[**有关预配租户的教程**](saas-dbpertenant-provision-and-catalog.md)。
-- 已创建作业帐户和作业帐户数据库。 请参阅[**架构管理教程**](saas-tenancy-schema-management.md#create-a-job-account-database-and-new-job-account)中的相应步骤。
+- 已创建作业帐户和作业帐户数据库。 请参阅[**架构管理教程**](saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent)中的相应步骤。
 
 ### <a name="create-data-for-the-demo"></a>创建用于演示的数据
 

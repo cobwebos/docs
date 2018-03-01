@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 中创建虚拟网络 - 门户 | Microsoft Docs"
-description: "快速了解如何使用 Azure 门户创建虚拟网络。 虚拟网络能让不同类型的 Azure 资源互相私下通信。"
+description: "快速了解如何使用 Azure 门户创建虚拟网络。 虚拟网络能让多种不同类型的 Azure 资源互相私下通信。"
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 01/25/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 264dc38383b9adad70325f7fb7802b1dcf2da1c0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 61100b9786245204502686a47e5aae2a6d210259
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-portal"></a>使用 Azure 门户创建虚拟网络
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
-虚拟网络能让不同类型的 Azure 资源互相私下通信。 虚拟机是其中一种能部署到虚拟网络的资源类型。 在虚拟网络中创建两个虚拟机，并在稍后步骤中通过它们来验证和了解虚拟机在虚拟网络中互相通信的原理。
+虚拟网络能让几种类型的 Azure 资源互相私下通信。 虚拟机是一种能部署到虚拟网络的资源类型。 在虚拟网络中创建两个虚拟机，以便在稍后的步骤中验证和了解虚拟机在虚拟网络中互相通信的原理。
 
 1. 单击 Azure 门户左上角的“新建”按钮。
 
@@ -96,13 +96,13 @@ ms.lasthandoff: 02/01/2018
 netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
 ```
 
-要验证与 myVm2 的通信，请在虚拟机 myVm1 的命令提示符中输入以下命令。 提供创建虚拟机时使用的凭据，然后完成连接：
+要验证与 myVm2 的通信，请在虚拟机 myVm1 的命令提示符中输入以下命令. 提供创建虚拟机时使用的凭据，然后完成连接：
 
 ```
 mstsc /v:myVm2
 ```
 
-由于两个虚拟机都分配有来自默认子网的私有 IP 地址，且远程桌面通过 Windows 防火墙开启，因此远程桌面连接成功。 可以通过主机名连接至 myVm2，因为 Azure 将自动为虚拟网络中的所有主机提供 DNS 名称解析。 在命令提示符中，从 myVm2 ping myVm1。
+由于两个虚拟机都分配有来自“default”子网的私有 IP 地址，且远程桌面通过 Windows 防火墙开启，因此远程桌面连接成功。 可以通过主机名连接至 myVm2，因为 Azure 将自动为虚拟网络中的所有主机提供 DNS 名称解析。 在命令提示符处，通过 ping 命令测试 myVm2 到 myVm1 的连接。
 
 ```
 ping myvm1
@@ -114,7 +114,7 @@ ping 操作成功，因为在上一步中已经允许该命令通过虚拟机 my
 ping bing.com
 ```
 
-从 bing.com 收到四个答复。默认情况下，虚拟网络中的任意虚拟机都可以与 Internet 进行出站通信。
+从 bing.com 接收了四个回复。默认情况下，虚拟网络中的任意虚拟机都可以与 Internet 进行出站通信。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -122,7 +122,7 @@ ping bing.com
 
 ## <a name="next-steps"></a>后续步骤
 
-本文将使用一个子网和两个虚拟机来部署默认虚拟网络。 要了解如何使用多个子网创建自定义虚拟网络并执行基本管理任务，请继续参阅创建和管理自定义虚拟网络的教程。
+本文将使用一个子网和两个虚拟机来部署默认虚拟网络。 要了解如何使用多个子网创建自定义虚拟网络并执行基本管理任务，请继续参阅教程的创建和管理自定义虚拟网络部分。
 
 
 > [!div class="nextstepaction"]

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 2744c848b81c688f4083cf51b7ef7bc89f0e34e1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 929843825d19c003b5a97363a03ffdd3ae2a2f7d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>在无需最终用户注册的情况下部署密码重置
 
@@ -112,7 +112,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>使用 PowerShell 版本 2
 
-若要开始，需要[下载并安装 Azure AD 版本 2 PowerShell 模块](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure%20AD%20Cmdlets/AzureAD/index.md)。 安装后，可以按照以下步骤配置每个字段。
+若要开始，需要[下载并安装 Azure AD 版本 2 PowerShell 模块](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0)。 安装后，可以按照以下步骤配置每个字段。
 
 若要从支持安装模块的最新版本 PowerShell 快速安装，请运行以下命令。 （第一行检查是否已安装该模块。）
 

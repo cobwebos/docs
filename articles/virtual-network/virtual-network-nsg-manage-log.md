@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
-ms.openlocfilehash: 552f37dd704de25159bc0f0ad34fdae9ed8b73f5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6beb9ae1b64e27df0a4eefefd592c7850efc7d2d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="log-analytics-for-network-security-groups-nsgs"></a>网络安全组 (NSG) 的日志分析
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 * **规则计数器：**包含应用每个 NSG 规则以拒绝或允许流量的次数的条目。
 
 > [!NOTE]
-> 诊断日志仅适用于通过 Azure Resource Manager 部署模型部署的 NSG。 不能对通过经典部署模型部署的 NSG 启用诊断日志记录。 若要更好地了解这两种模型，可参考[了解 Azure 部署模型](../resource-manager-deployment-model.md)一文。
+> 诊断日志仅适用于通过 Azure 资源管理器部署模型部署的 NSG。 不能对通过经典部署模型部署的 NSG 启用诊断日志记录。 若要更好地了解这两种模型，可参考[了解 Azure 部署模型](../resource-manager-deployment-model.md)一文。
 
 默认情况下，对通过任一 Azure 部署模型创建的 NSG 启用活动日志记录（以前称为审核日志或操作日志）。 若要在活动日志中确定在 NSG 上完成的操作，请查找包含以下资源类型的条目： 
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要使用门户启用日志记录，请登录到[门户](https://portal.azure.com)。 单击“更多服务”，并键入“网络安全组”。 选择要为其启用日志记录的 NSG。 按照[在门户中启用诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)一文中非计算资源的说明进行操作。 选择 **NetworkSecurityGroupEvent**、**NetworkSecurityGroupRuleCounter** 或这两个日志类别。
+若要使用门户启用日志记录，请登录到[门户](https://portal.azure.com)。 单击“所有服务”，并键入“网络安全组”。 选择要为其启用日志记录的 NSG。 按照[在门户中启用诊断日志](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)一文中非计算资源的说明进行操作。 选择 **NetworkSecurityGroupEvent**、**NetworkSecurityGroupRuleCounter** 或这两个日志类别。
 
 ### <a name="powershell"></a>PowerShell
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 02/21/2017
 ms.author: billmath
-ms.openlocfilehash: b533df58d24b3bc76a229ad09c682d1d8aeaf741
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2d172b22d00f21062237a1af1742bad6a03c864c
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -78,7 +78,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 若要向用户推广该功能，需要使用 Active Directory 中的组策略将以下 Azure AD URL 添加到用户的 Intranet 区域设置：
 
 - https://autologon.microsoftazuread-sso.com
-- https://aadg.windows.net.nsatc.net
+
 
 此外，还需要通过“组策略”启用称为“允许通过脚本更新状态栏”的 Intranet 区域策略设置。 
 
@@ -87,7 +87,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>为什么需要修改用户的 Intranet 区域设置？
 
-默认情况下，浏览器将自动从特定 URL 计算正确的区域（Internet 或 Intranet）。 例如，“http://contoso/”将映射到 Intranet 区域，而“http://intranet.contoso.com/”将映射到 Internet 区域（因为此 URL 包含句点）。 与两个 Azure AD URL 类似，浏览器不会将 Kerberos 票证发送到云终结点，除非你将此 URL 显式添加到浏览器的 Intranet 区域。
+默认情况下，浏览器将自动从特定 URL 计算正确的区域（Internet 或 Intranet）。 例如，“http://contoso/”将映射到 Intranet 区域，而“http://intranet.contoso.com/”将映射到 Internet 区域（因为此 URL 包含句点）。 浏览器不会将 Kerberos 票证发送到云终结点（例如 Azure AD URL），除非将此 URL 显式添加到浏览器的 Intranet 区域。
 
 ### <a name="detailed-steps"></a>详细步骤
 
@@ -96,17 +96,13 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 3. 浏览到“用户配置” > “管理模板” > “Windows 组件” > “Internet Explorer” > “Internet 控制面板” > “安全页”。 然后选择“站点到区域分配列表”。
     ![单一登录](./media/active-directory-aadconnect-sso/sso6.png)
 4. 启用策略，然后在对话框中输入以下值：
-   - 值名称：转发 Kerberos 票证的 Azure AD URL。
+   - 值名称：要将 Kerberos 票证转发到的 Azure AD URL。
    - 值（数据）：1 指示 Intranet 区域。
 
    结果如下所示：
 
     值：https://autologon.microsoftazuread-sso.com
   
-    Data 1
-        
-   值：https://aadg.windows.net.nsatc.net
-
     Data 1
 
    >[!NOTE]

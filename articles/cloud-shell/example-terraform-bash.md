@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Cloud Shell 中的 Bash 通过 Terraform 进行部署 | Microsoft Docs"
-description: "在 Bash 中使用 Terraform 部署 Azure 资源"
+title: "通过 Terraform 和 Azure Cloud Shell 中的 Bash 进行部署 | Microsoft Docs"
+description: "通过 Terraform 和 Azure Cloud Shell 中的 Bash 进行部署"
 services: Azure
 documentationcenter: 
 author: tomarcher
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: c75b5d521dc3eacaf5c5921c35442b1afeb4fa13
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 6df6a3a5242e0a5fc5c03136e1cd20967a93487a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="terraform-and-bash-in-cloud-shell"></a>Terraform 和 Cloud Shell 中的 Bash
+# <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>通过 Terraform 和 Azure Cloud Shell 中的 Bash 进行部署
 本文逐步讲解如何使用 [Terraform AzureRM 提供程序](https://www.terraform.io/docs/providers/azurerm/index.html)创建资源组。 
 
 [Hashicorp Terraform](https://www.terraform.io/) 是一个开放工具，可将 API 编码成能够在团队成员之间共享的声明性配置文件，让他们对其进行编辑、审阅和版本控制。 使用 Microsoft AzureRM 提供程序可以通过 AzureRM API 来与 Azure 资源管理器支持的资源交互。 
@@ -188,4 +188,4 @@ Destroy complete! Resources: 1 destroyed.
 
 ## <a name="next-steps"></a>后续步骤
 [了解 Terraform Azure 提供程序](https://www.terraform.io/docs/providers/azurerm/#)<br>
-[Cloud Shell 中的 Bash 快速入门](quickstart.md)
+[Bash in Cloud Shell 快速入门](quickstart.md)

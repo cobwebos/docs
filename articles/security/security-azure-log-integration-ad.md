@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 08/08/2017
+ms.date: 02/16/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 8a1295cc86057ed72940e774d0bd423d61142e31
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f45f43a0296a7d90a68b0526f805ea50a1ce6c6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>集成 Azure Active Directory 审核日志
 
 Azure Active Directory (Azure AD) 审核事件可以帮助识别 Azure Active Directory 中发生的特权操作。 通过查看 [Azure Active Directory 审核报告事件](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md)，可以了解能够跟踪的事件类型。
+
 
 > [!NOTE]
 > 必须先查看[入门](security-azure-log-integration-get-started.md)文章并完成其中的步骤，然后才能尝试本文中的步骤。
@@ -70,7 +71,5 @@ Azure Active Directory (Azure AD) 审核事件可以帮助识别 Azure Active Di
 
 * [适用于 Azure 日志的 Microsoft Azure 日志集成](https://www.microsoft.com/download/details.aspx?id=53324)：此“下载中心”页面提供了有关 Azure 日志集成的详细信息、系统要求和安装说明。
 * [Azure 日志集成简介](security-azure-log-integration-overview.md)：本文介绍 Azure 日志集成、其主要功能及其工作原理。
-* [合作伙伴配置步骤](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/)：此博客文章介绍如何配置 Azure 日志集成，以使用 Splunk、HP ArcSight 和 IBM QRadar 合作伙伴解决方案。
 * [Azure 日志集成常见问题解答](security-azure-log-integration-faq.md)：本文回答有关 Azure 日志集成的问题。
-* [集成安全中心警报与 Azure 日志集成](../security-center/security-center-integrating-alerts-with-log-integration.md)：本文介绍如何将安全中心警报以及由 Azure 诊断和 Azure 审核日志收集的虚拟机安全事件与日志分析或 SIEM 解决方案同步。
 * [Azure 诊断和 Azure 审核日志的新功能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/)：此博客文章介绍 Azure 审核日志和其他功能，可帮助你深入了解 Azure 资源的操作。

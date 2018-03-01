@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 1b3da4d6e4593f3c71995ef9331fcea2d5b6ec19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bdd4b7ddd5ebaf0187ed4943a518a83fc2531da4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>通过警报和 Azure Functions，使用数据包捕获执行主动网络监视
 
@@ -38,7 +38,7 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 * 网络观察程序的现有实例。 [创建网络观察程序的实例](network-watcher-create.md)（如果还没有这样一个实例的话）。
 * 在网络观察程序所在的同一区域中的现有虚拟机，装有 [Windows 扩展](../virtual-machines/windows/extensions-nwa.md)或 [Linux 虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 在本示例中，VM 发送的 TCP 段数比平常多，因此你希望收到相关警报。 此处所示的 TCP 段只是用作示例，但可以使用任何警报条件。
 
@@ -65,7 +65,7 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 
 第一步是创建一个 Azure 函数来处理警报并创建数据包捕获。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建” > “计算” > “Function App”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “计算” > “Function App”。
 
     ![创建一个函数应用][1-1]
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: e5dd1ebd290c950c7f2bda3dae088f3ee7f836fd
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 6675603bf741b1a668ba387c8304d2e2b7ab4e12
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 可以指定任意数量的其他证书用于管理操作或用户客户端操作。 默认情况下，群集证书具有管理客户端的特权。 不应将这些附加的客户端证书安装到群集中，只需指定在群集配置中允许这些证书；不过，在连接到群集和执行任何管理操作的客户端计算机上需要安装这些证书。
 
 
-## <a name="prerequisites"></a>系统必备 
+## <a name="prerequisites"></a>先决条件 
 无论是 Linux 或 Windows 群集，创建安全群集的概念是相同的。 本指南将介绍如何使用 Azure PowerShell 或 Azure CLI 创建新群集。 先决条件为 
 
 -  [Azure PowerShell 4.1 和更高版本][azure-powershell]或 [Azure CLI 2.0 和更高版本][azure-CLI]。
@@ -127,12 +127,12 @@ $vaultName="myvault"
 $vaultResourceGroupName="myvaultrg"
 $CertSubjectName="mycluster.westus.cloudapp.azure.com"
 $certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
-$vmpassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force
+$vmpassword="Password!4321" | ConvertTo-SecureString -AsPlainText -Force
 $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 $certOutputFolder="c:\certificates"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
 
 ```
 
@@ -144,7 +144,7 @@ declare vaultResourceGroupName="myvaultrg"
 declare vaultName="myvault"
 declare CertSubjectName="mylinux.westus.cloudapp.azure.com"
 declare vmpassword="Password!1"
-declare certpassword="Password!1"
+declare certpassword="Password!4321"
 declare vmuser="myadmin"
 declare vmOs="UbuntuServer1604"
 declare certOutputFolder="c:\certificates"
@@ -232,11 +232,11 @@ $resourceGroupName="mylinux"
 $vaultName="myvault"
 $vaultResourceGroupName="myvaultrg"
 $certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
-$vmpassword=("Password!1" | ConvertTo-SecureString -AsPlainText -Force) 
+$vmpassword=("Password!4321" | ConvertTo-SecureString -AsPlainText -Force) 
 $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
 
 ```
 
@@ -292,7 +292,7 @@ $templateFilePath="c:\mytemplates\mytemplate.json"
 $certificateFile="C:\MyCertificates\chackonewcertificate3.pem"
 
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword #certPassword
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword #certPassword
 
 ```
 

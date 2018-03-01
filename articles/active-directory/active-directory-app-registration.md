@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: priyamo
 ms.reviewer: elisol
-ms.openlocfilehash: 4f32f57d4c8b3e13d2aa31b04ee10bb46a6c71f7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8f5d4ba82fcf3c963373b0e90b707a7d86fc0fea
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="register-your-application-with-your-azure-active-directory-tenant"></a>将应用程序注册到 Azure Active Directory 租户
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在页面右上角选择帐户，选择 Azure AD 租户。
-3. 在左侧导航窗格中，选择“更多服务”，单击“应用注册”，并单击“添加”。
+3. 在左侧导航窗格中，选择“所有服务”，单击“应用注册”，并单击“添加”。
 4. 根据提示创建新的应用程序。 如需 Web 应用程序或本机应用程序的特定示例，请查看[快速入门](active-directory-developers-guide.md)。
   * 对于 Web 应用程序，请在用户登录页面（如 `http://localhost:12345`）提供“登录 URL”，即应用的基 URL。
 <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
@@ -40,7 +40,7 @@ ms.lasthandoff: 12/11/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在页面右上角选择帐户，选择 Azure AD 租户。
-3. 在左侧导航窗格中，选择“更多服务”，单击“应用注册”，然后从列表中选择应用程序。
+3. 在左侧导航窗格中，选择“所有服务”，单击“应用注册”，并从列表中选择应用程序。
 4. 单击“设置”，打开应用程序的设置页面。
   * 在“属性”页中，可以修改应用程序的常规信息。 这包括应用程序名称、登录 URL 和注销 URL。
   * 在“回复 URL”页中，可以添加回复 URL，即 Azure AD 发送令牌响应的位置。
@@ -54,7 +54,7 @@ ms.lasthandoff: 12/11/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在页面右上角选择帐户，选择 Azure AD 租户。
-3. 在左侧导航窗格中，选择“更多服务”，单击“应用注册”，然后从列表中选择应用程序。
+3. 在左侧导航窗格中，选择“所有服务”，单击“应用注册”，并从列表中选择应用程序。
 4. 在应用程序页面中，单击“清单”打开内联清单编辑器。
 5. 准备就绪后，可直接对清单进行更改和保存。 或者，可下载清单并在喜爱的编辑器中打开，然后上传更新的清单。
 

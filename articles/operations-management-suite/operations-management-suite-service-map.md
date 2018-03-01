@@ -1,6 +1,6 @@
 ---
-title: "使用 Operations Management Suite 中的服务映射解决方案 | Microsoft Docs"
-description: "服务映射是 Operations Management Suite 解决方案，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供了有关在环境中部署服务映射并在各种方案中使用它的详细信息。"
+title: "使用 Azure 中的服务映射解决方案 | Microsoft Docs"
+description: "服务映射是 Azure 中的解决方案，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供了有关在环境中部署服务映射并在各种方案中使用它的详细信息。"
 services: operations-management-suite
 documentationcenter: 
 author: daveirwin1
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 993dff7657a73803ca21677e19b08946fb89bfa2
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 84a43a4f04d7cd89d0d968acb436d196353eb81d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="use-the-service-map-solution-in-operations-management-suite"></a>使用 Operations Management Suite 中的服务映射解决方案
+# <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 可使用服务映射如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示 TCP 连接的任何体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
 
-本指南介绍使用服务映射的详细信息。 有关配置服务映射和载入代理的信息，请参阅[配置 Operations Management Suite 中的服务映射解决方案](operations-management-suite-service-map-configure.md)。
+本指南介绍使用服务映射的详细信息。 有关配置服务映射和载入代理的信息，请参阅[配置 Azure 中的服务映射解决方案](operations-management-suite-service-map-configure.md)。
 
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>用例：使 IT 进程感知依赖关系
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/11/2018
 服务映射自动在服务器、进程和第三方服务上生成依赖关系的常见引用映射。 它可发现并映射所有 TCP 依赖关系，从而将意外连接、依赖的远程第三方系统和依赖关系标识到网络的传统深色区域（如 Active Directory）。 服务映射可发现托管系统尝试进行的失败网络连接，帮助标识潜在服务器配置错误、服务中断和网络问题。
 
 ### <a name="incident-management"></a>事件管理
-服务映射可显示系统的连接方式以及相互的影响，无需再猜测问题隔离。 除了标识失败的连接，它还帮助标识配置错误的负载均衡器、关键服务上的意外或多余负载以及与生产系统通信的开发人员计算机等恶意客户端。 通过将集成的工作流与 Operations Management Suite 更改跟踪配合使用，还可以查看后端计算机或服务上的更改事件是否能解释事件的根本原因。
+服务映射可显示系统的连接方式以及相互的影响，无需再猜测问题隔离。 除了标识失败的连接，它还帮助标识配置错误的负载均衡器、关键服务上的意外或多余负载以及与生产系统通信的开发人员计算机等恶意客户端。 通过将集成的工作流与更改跟踪配合使用，还可以查看后端计算机或服务上的更改事件是否能解释事件的根本原因。
 
 ### <a name="migration-assurance"></a>迁移保障
 使用服务映射可以有效地计划、加快和验证 Azure 迁移，帮助确保迁移所有内容，不会发生意外中断。 可以发现所有需要一起迁移的互相依赖的系统、访问系统配置和容量，并识别运行中的系统仍然为用户提供服务还是在等待解除授权而非迁移。 移动完成后，可以检查客户端负载和标识，验证测试系统和客户是否正在连接。 如果子网计划和防火墙定义有问题，“服务映射”映射中的失败连接将指向需要连接的系统。
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/11/2018
 如果使用 Azure Site Recovery 并需要帮助定义应用程序环境的恢复顺序，服务映射可自动显示系统互相依赖的方式，以便确保恢复计划可靠。 通过选择关键服务器或组并查看其客户端，可以标识要在该服务器还原并可用后恢复的前端系统。 相反，通过查看关键服务器的后端依赖关系，可以标识要在焦点系统还原之前恢复的系统。
 
 ### <a name="patch-management"></a>修补程序管理
-服务映射通过显示依赖于服务的其他团队和服务器，增强对 Operations Management Suite 系统更新评估的使用，以便在对系统进行修补之前通知他们。 服务映射还通过显示服务在完成修补和重启后是否可用并已正确连接，增强 Operations Management Suite 中的修补程序管理。
+“服务映射”通过显示依赖于服务的其他团队和服务器，增强对系统更新评估的使用，以便在对系统进行修补之前通知他们。 服务映射还通过显示服务在完成修补和重启后是否可用并已正确连接，来增强修补程序管理。
 
 
 ## <a name="mapping-overview"></a>映射概述
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/11/2018
 默认情况下，“服务映射”映射显示过去 30 分钟的依赖关系信息。 使用左上角的时间控件，可在映射中查询历史时间范围（最多一小时），显示依赖关系在过去（例如，发生事件期间或发生更改之前）的出现形式。 服务映射数据在付费工作区中存储 30 天，在免费工作区中存储 7 天。
 
 ## <a name="status-badges-and-border-coloring"></a>状态徽章和边框着色
-映射中每个服务器的底部可以是状态徽章的列表，用于表示有关服务器的状态信息。 徽章指示其中一个 Operations Management Suite 解决方案集成中有服务器的一些相关信息。 单击徽章，直接转到右侧窗格中的状态详细信息。 当前可用状态徽章包括警报、服务台、更改、安全性和更新。
+映射中每个服务器的底部可以是状态徽章的列表，用于表示有关服务器的状态信息。 徽章指示其中一个解决方案集成中有服务器的一些相关信息。 单击徽章，直接转到右侧窗格中的状态详细信息。 当前可用状态徽章包括警报、服务台、更改、安全性和更新。
 
 根据状态徽章的严重性，计算机节点边框的颜色可以是红色（严重）、黄色（警告）或蓝色（信息）。 该颜色表示任何状态徽章的最严重状态。 灰色边框指示没有状态指示器的节点。
 
@@ -168,12 +168,12 @@ ms.lasthandoff: 01/11/2018
 单击“显示自链接”，重绘包含任何自链接的服务器节点，这些自链接是表示服务器中进程的开始和结束的 TCP 连接。 如果显示了自链接，则该菜单命令更改为“隐藏自链接”，以便隐藏自链接。
 
 ## <a name="computer-summary"></a>计算机摘要
-“计算机摘要”窗格包括服务器的操作系统、依赖关系计数以及来自其他 Operations Management Suite 解决方案的各种数据的概述。 此类数据包括性能指标、服务台票证、更改跟踪、安全性和更新。
+“计算机摘要”窗格包括服务器的操作系统、依赖关系计数以及来自其他解决方案的各种数据的概述。 此类数据包括性能指标、服务台票证、更改跟踪、安全性和更新。
 
 ![“计算机摘要”窗格](media/oms-service-map/machine-summary.png)
 
 ## <a name="computer-and-process-properties"></a>计算机和进程属性
-导航“服务映射”映射时，可选择计算机和进程获取有关其属性的其他上下文。 计算机提供有关 DNS 名称、IPv4 地址、CPU 和内存容量、VM 类型、操作系统和版本、上次重启时间及其 Operations Management Suite 和服务映射代理的 ID 的信息。
+导航“服务映射”映射时，可选择计算机和进程获取有关其属性的其他上下文。 计算机提供有关 DNS 名称、IPv4 地址、CPU 和内存容量、VM 类型、操作系统和版本、上次重启时间及其 OMS 和服务映射代理的 ID 的信息。
 
 ![“计算机属性”窗格](media/oms-service-map/machine-properties.png)
 
@@ -185,8 +185,8 @@ ms.lasthandoff: 01/11/2018
 
 ![“进程摘要”窗格](media/oms-service-map/process-summary.png)
 
-## <a name="operations-management-suite-alerts-integration"></a>Operations Management Suite 警报集成
-服务映射与 Operations Management Suite 警报集成，可显示所选时间范围内对所选服务器触发的警报。 如果当前有警报，服务器会显示一个图标，且“计算机警报”窗格会列出警报。
+## <a name="alerts-integration"></a>警报集成
+服务映射与 Log Analytics 中的警报集成，可显示所选时间范围内所选服务器触发的警报。 如果当前有警报，服务器会显示一个图标，且“计算机警报”窗格会列出警报。
 
 ![“计算机警报”窗格](media/oms-service-map/machine-alerts.png)
 
@@ -197,13 +197,13 @@ ms.lasthandoff: 01/11/2018
 ![警报配置](media/oms-service-map/alert-configuration.png)
 
 
-## <a name="operations-management-suite-log-events-integration"></a>Operations Management Suite 日志事件集成
+## <a name="log-events-integration"></a>日志事件集成
 服务映射与日志搜索集成，可显示所选时间范围内所选服务器的所有可用的日志事件。 可单击事件计数列表中的任意行，跳转到“日志搜索”并查看单独的日志事件。
 
 ![“计算机日志事件”窗格](media/oms-service-map/log-events.png)
 
-## <a name="operations-management-suite-service-desk-integration"></a>Operations Management Suite 服务台集成
-在 Operations Management Suite 工作区中启用并配置服务映射和 IT Service Management Connector 之后，这两个解决方案会自动集成。 服务映射中的集成标记为“服务台”。 有关详细信息，请参阅[使用 IT Service Management Connector 集中管理 ITSM 工作项](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)。
+## <a name="service-desk-integration"></a>服务台集成
+当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与 IT Service Management Connector 集成。 服务映射中的集成标记为“服务台”。 有关详细信息，请参阅[使用 IT Service Management Connector 集中管理 ITSM 工作项](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)。
 
 “计算机服务台”窗格列出所选时间范围内选定服务器的所有 IT Service Management 事件。 如果当前存在项，服务器会显示一个图标，且“计算机服务台”窗格会列出存在的项。
 
@@ -214,8 +214,8 @@ ms.lasthandoff: 01/11/2018
 若要在日志搜索中查看项的详细信息，请单击“在日志搜索中显示”。
 
 
-## <a name="operations-management-suite-change-tracking-integration"></a>Operations Management Suite 更改跟踪集成
-在 Operations Management Suite 工作区中启用并配置服务映射和更改跟踪之后，这两个解决方案会自动集成。
+## <a name="change-tracking-integration"></a>更改跟踪集成
+当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与更改跟踪集成。
 
 “计算机更改跟踪”窗格列出所有更改（最新更改列在顶部），以及一个向下钻取到日志搜索以获取其他详细信息的链接。
 
@@ -226,7 +226,7 @@ ms.lasthandoff: 01/11/2018
 ![ConfigurationChange 事件](media/oms-service-map/configuration-change-event.png)
 
 
-## <a name="operations-management-suite-performance-integration"></a>Operations Management Suite 性能集成
+## <a name="performance-integration"></a>性能集成
 “计算机性能”窗格显示所选服务器的标准性能指标。 指标包括 CPU 利用率、内存利用率、发送和接收的网络字节数，以及发送和接收网络字节数最多的进程的列表。
 
 ![“计算机性能”窗格](media/oms-service-map/machine-performance.png)
@@ -245,20 +245,20 @@ Linux：
 - Network Adapter(*)\\Bytes Sent/sec
 - Network Adapter(*)\\Bytes Received/sec
 
-若要获取网络性能数据，还必须在 Operations Management Suite 中启用 Wire Data 2.0 解决方案。
+若要获取网络性能数据，还必须在工作区中启用 Wire Data 2.0 解决方案。
  
-## <a name="operations-management-suite-security-integration"></a>Operations Management Suite 安全性集成
-在 Operations Management Suite 工作区中启用并配置服务映射以及安全和审核之后，这两个解决方案会自动集成。
+## <a name="security-integration"></a>安全集成
+当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与安全和审核集成。
 
-“计算机安全性”窗格显示所选服务器的 Operations Management Suite 安全和审核解决方案的数据。 该窗格列出所选时间范围内服务器的所有未解决安全问题的摘要。 单击任意安全问题，向下钻取到日志搜索，了解有关安全问题的详细信息。
+“计算机安全”面板显示所选服务器的安全和审核解决方案的数据。 该窗格列出所选时间范围内服务器的所有未解决安全问题的摘要。 单击任意安全问题，向下钻取到日志搜索，了解有关安全问题的详细信息。
 
 ![“计算机安全性”窗格](media/oms-service-map/machine-security.png)
 
 
-## <a name="operations-management-suite-updates-integration"></a>Operations Management Suite 更新集成
-在 Operations Management Suite 工作区中启用并配置服务映射和更新管理之后，这两个解决方案会自动集成。
+## <a name="updates-integration"></a>更新集成
+当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与更新管理集成。
 
-“计算机更新”窗格显示所选服务器的 Operations Management Suite 更新管理解决方案的数据。 该窗格列出所选时间范围内服务器缺少的所有更新的摘要。
+“计算机更新”面板显示所选服务器的更新管理解决方案的数据。 该窗格列出所选时间范围内服务器缺少的所有更新的摘要。
 
 ![“计算机更改跟踪”窗格](media/oms-service-map/machine-updates.png)
 
@@ -272,8 +272,8 @@ Linux：
 
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
-- 计算机：使用 ResourceId 或 ResourceName_s 唯一标识 Operations Management Suite 工作区中的计算机。
-- 进程：使用 ResourceId 唯一标识 Operations Management Suite 工作区中的进程。 ResourceName_s 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
+- 计算机：使用 ResourceId 或 ResourceName_s 唯一地标识 Log Analytics 工作区中的计算机。
+- 进程：使用 ResourceId 唯一地标识 Log Analytics 工作区中的进程。 ResourceName_s 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
 
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 

@@ -1,8 +1,8 @@
 ---
 title: "在 Azure 门户中创建和管理操作组 | Microsoft 文档"
 description: "了解如何在 Azure 门户中创建和管理操作组。"
-author: anirudhcavale
-manager: orenr
+author: dkamstra
+manager: chrad
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
-ms.author: ancav
-ms.openlocfilehash: 9f7f9dcc473e6925000ebe76a6592779c228a9af
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 02/16/2018
+ms.author: dukek
+ms.openlocfilehash: 772b9c2b9532bd2cc37ad89db92545297eecd903
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
 本文演示如何在 Azure 门户中创建和管理操作组。
 
-通过操作组可以配置操作列表。 这些组然后可在定义活动日志警报时使用。 之后，这些组可由你定义的每个活动日志警报重复使用，确保每次触发活动日志警报时采取同样的操作。
+通过操作组可以配置操作列表。 之后，这些组可由你定义的每个警报使用，从而确保每次触发警报时采取相同的操作。
 
 操作组可以具有最多 10 种不同的操作类型。 每个操作包含以下属性：
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 02/09/2018
 
     a. 名称：输入此操作的唯一标识符。
 
-    b. **操作类型**：选择短信、电子邮件、Webhook、Azure 应用、ITSM 或自动化 Runbook。
+    b. **操作类型**：选择电子邮件/短信/Azure 应用、Webhook、ITSM 或自动化 Runbook。
 
     c. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。
 

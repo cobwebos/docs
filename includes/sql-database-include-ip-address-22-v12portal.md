@@ -17,13 +17,11 @@ articles/sql-database/sql-database-connect-query.md
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 在左侧的列表中，选择“浏览”。 
+2. 在左侧的列表中，选择“所有服务”。 
 
 3. 滚动并选择“SQL Server”。 
    
     ![在门户中找到 Azure SQL 数据库服务器][b21-FindServerInPortal]
-4. 为方便起见，可将“浏览”边栏选项卡最小化。
-
 5. 在筛选器文本框中，开始键入服务器的名称。 此时会显示行。
 
 6. 选择服务器所对应的行。 此时会显示服务器的边栏选项卡。

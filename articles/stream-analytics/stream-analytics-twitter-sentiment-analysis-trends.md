@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: samacha
-ms.openlocfilehash: 98230a8b61d1776a9ab23fd416af306efc700959
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96a169343481f1cdf43af82a7768cfe08cbd4886
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="create-an-event-hub-namespace-and-event-hub"></a>创建事件中心命名空间和事件中心
 在此过程中，首先创建事件中心命名空间，然后将事件中心添加到该命名空间。 事件中心命名空间用于逻辑分组相关的事件总线实例。 
 
-1. 登录 Azure 门户，然后单击“新建” > “物联网” > “事件中心”。 
+1. 登录 Azure 门户，然后依次单击“创建资源” > “物联网” > “事件中心”。 
 
 2. 在“创建命名空间”边栏选项卡中，输入命名空间名称，例如 `<yourname>-socialtwitter-eh-ns`。 可以对命名空间使用任何名称，但该名称必须对 URL 有效，并且在 Azure 中必须唯一。 
     
@@ -69,7 +69,7 @@ ms.lasthandoff: 10/11/2017
 
     ![用于创建新事件中心的边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
-7. 单击“创建” 。
+7. 单击“创建”。
 
 
 ### <a name="grant-access-to-the-event-hub"></a>授予对事件中心的访问权限
@@ -87,7 +87,7 @@ ms.lasthandoff: 10/11/2017
 
     ![用于创建新事件中心访问策略的边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-shared-access-policy-manage.png)
  
-4.  单击“创建” 。
+4.  单击“创建”。
 
 5.  部署策略后，在共享访问策略列表中单击该策略。
 
@@ -200,7 +200,7 @@ ms.lasthandoff: 10/11/2017
 
 既然推文事件正在从 Twitter 实时流式传输，那就可以设置一个流分析作业来实时分析这些事件。
 
-1. 在 Azure 门户中，单击“新建” > “物联网” > “流分析作业”。
+1. 在 Azure 门户中，单击“创建资源” > “物联网” > “流分析作业”。
 
 2. 将作业命名为 `socialtwitter-sa-job`，然后指定订阅、资源组和位置。
 
@@ -208,7 +208,7 @@ ms.lasthandoff: 10/11/2017
 
     ![创建新的流分析作业](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
 
-3. 单击“创建” 。
+3. 单击“创建”。
 
     创建作业后，门户就会显示作业详细信息。
 
@@ -229,7 +229,7 @@ ms.lasthandoff: 10/11/2017
 
     ![为流分析作业创建新输入](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
-3. 单击“创建” 。
+3. 单击“创建”。
 
 
 ## <a name="specify-the-job-query"></a>指定作业查询
@@ -274,7 +274,7 @@ ms.lasthandoff: 10/11/2017
 
 5. 单击“测试”。 查询会针对已采用的数据运行。
     
-6. 单击“保存” 。 这将查询保存为流分析作业的一部分。 （不会保存示例数据。）
+6. 单击“ **保存**”。 这将查询保存为流分析作业的一部分。 （不会保存示例数据。）
 
 
 ## <a name="experiment-using-different-fields-from-the-stream"></a>使用流中的不同字段进行试验 
@@ -305,7 +305,7 @@ ms.lasthandoff: 10/11/2017
     * “输出别名”：使用名称 `TwitterStream-Output`。 
     * **接收器**：选择“Blob 存储”。
     * “导入选项”：选择“从当前订阅使用 blob 存储”。
-    * “存储帐户”。 选择“创建新存储帐户”。
+    * **存储帐户**： 选择“创建新存储帐户”。
     * “存储帐户”（第二个框）。 输入 `YOURNAMEsa`，其中 `YOURNAME` 是你的姓名或另一唯一字符串。 该名称只能使用小写字母和数字，并且在 Azure 中必须唯一。 
     * “容器”。 输入 `socialtwitter`。
     存储帐户名称和容器名称结合使用，以便为 Blob 存储提供 URI，如下所示： 
@@ -314,7 +314,7 @@ ms.lasthandoff: 10/11/2017
     
     ![流分析作业的“新建输出”边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
     
-4. 单击“创建” 。 
+4. 单击“创建”。 
 
     Azure 创建存储帐户，并自动生成密钥。 
 
@@ -367,7 +367,7 @@ ms.lasthandoff: 10/11/2017
     HAVING COUNT(*) > 20
     ```
 
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 5. 请确保 TwitterWpfClient 应用程序正在运行。 
 

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1be9947c43c70b7248201b9f470fb3cf5a11519e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 656e0e16167a73ef3c3eab21d6896f5fc280e375
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>在 Azure Active Directory 中创建组并添加成员
 > [!div class="op_single_selector"]
-> * [Azure 门户](active-directory-groups-create-azure-portal.md)
+> * [Azure portal](active-directory-groups-create-azure-portal.md)
 > * [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 >
 >
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="how-do-i-create-a-group"></a>如何创建组？
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“更多服务”，在文本框中输入“用户和组”，并选择 **Enter**。
+2. 选择“所有服务”，在文本框中输入“用户和组”，并选择 **Enter**。
 
    ![打开“用户管理”](./media/active-directory-groups-create-azure-portal/search-user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“所有组”。

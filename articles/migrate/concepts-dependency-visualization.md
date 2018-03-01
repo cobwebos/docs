@@ -4,13 +4,13 @@ description: "概述 Azure Migrate 服务中的评估计算。"
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/12/2017
+ms.date: 2/21/2018
 ms.author: raynew
-ms.openlocfilehash: 10bc249aa70852dce71c96e46319925cececdd8b
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 886977764517f1fec89eee77fc3263d30ff9ab31
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="dependency-visualization"></a>依赖项可视化
 
@@ -35,7 +35,7 @@ Azure Migrate 使用 [Log Analytics](../log-analytics/log-analytics-overview.md)
 
 ## <a name="do-i-need-to-pay-for-it"></a>是否需要对其付费？
 
-是的。 会默认创建 Log Analytics 工作区，但并不使用，除非你在 Azure Migrate 中使用依赖项可视化。 如果使用依赖项可视化（或使用 Azure Migrate 外部的工作区），则会针对工作区使用情况向你收取费用。  [详细了解](https://azure.microsoft.com/pricing/details/insight-analytics/)服务映射解决方案定价。 
+[在此处](https://azure.microsoft.com/pricing/details/azure-migrate/)详细了解 Azure Migrate 定价。 
 
 ## <a name="how-do-i-manage-the-workspace"></a>如何管理工作区？
 

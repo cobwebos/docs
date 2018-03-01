@@ -1,6 +1,6 @@
 ---
-title: "将 Azure VPN 网关连接到多个基于策略的本地 VPN 设备: Azure Resource Manager: PowerShell | Microsoft Docs"
-description: "本文逐步介绍如何使用 Azure Resource Manager和 PowerShell 将基于路由的 Azure VPN 网关配置到多个基于策略的 VPN 设备。"
+title: "将 Azure VPN 网关连接到多个基于策略的本地 VPN 设备: Azure 资源管理器: PowerShell | Microsoft Docs"
+description: "使用 Azure 资源管理器和 PowerShell 将基于路由的 Azure VPN 网关配置到多个基于策略的 VPN 设备。"
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/27/2017
+ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: db4d8837fb5c5d15364422e957e4914966215674
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 90c855e768f403098e535391afb55e3c78044b0a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>使用 PowerShell 将 Azure VPN 网关连接到多个基于策略的本地 VPN 设备
 

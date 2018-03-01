@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: b76f6f7f53bc649fbc740a79e182f81f3fd983c7
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: f3bd3167c9a879a876774e5d91fbb10fd340c6a8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>使用 Azure 在 Linux 虚拟机上设置 Tomcat7
 Apache Tomcat（简称 Tomcat，以前也称为 Jakarta Tomcat）是由 Apache Software Foundation (ASF) 开发的一个开源 Web 服务器和 servlet 容器。 Tomcat 实现了 Sun Microsystems 提出的 Java Servlet 和 JavaServer Pages (JSP) 规范。 Tomcat 提供用于运行 Java 代码的纯 Java HTTP Web 服务器环境。 在最简单的配置中，Tomcat 在单个操作系统进程中运行。 此进程运行 Java 虚拟机 (JVM)。 浏览器向 Tomcat 发出的每个 HTTP 请求都作为 Tomcat 进程中的单独线程进行处理。  
@@ -64,7 +64,7 @@ SSH 是面向系统管理员的重要工具。 但是，我们并不建议基于
 6. 单击“保存私钥”，并将其保存到名为 privateKey.ppk 的文件中。
 
 ### <a name="step-2-create-the-image-in-the-azure-portal"></a>步骤 2：在 Azure 门户中创建映像
-1. 在[门户](https://portal.azure.com/)中，单击任务栏中的“新建”创建映像。 然后根据需要选择 Linux 映像。 以下示例使用 Ubuntu 14.04 映像。
+1. 在[门户](https://portal.azure.com/)中，单击任务栏中的“创建资源”来创建一个映像。 然后根据需要选择 Linux 映像。 以下示例使用 Ubuntu 14.04 映像。
 ![显示“新建”按钮的门户屏幕截图][3]
 
 2. 对于“主机名”，请指定你和 Internet 客户端用来访问此虚拟机的 URL 的名称。 定义 DNS 名称的最后一个部分（例如 tomcatdemo）。 然后，Azure 将生成 tomcatdemo.cloudapp.net 作为 URL。  

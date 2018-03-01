@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 5e6910ea52f880e28378c9bf7fde02d080bc2e58
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 98dc12a857d910e8822dcfbb61209aa9ef773f47
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。
@@ -42,6 +42,9 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="delete-a-server-or-service-instance"></a>删除服务器或服务实例
 
+>[!NOTE] 
+> 删除步骤需要 Azure AD premium 许可证。
+
 在某些情况下，可能需要从被监视的服务器中删除某个服务器。 以下是关于从 Azure AD Connect Health 服务中删除服务器的说明。
 
 删除服务器时，请注意以下事项：
@@ -51,7 +54,11 @@ ms.lasthandoff: 12/11/2017
 * 此操作不会删除已从该服务器上收集的数据。 将根据 Azure 数据保留策略删除该数据。
 * 执行此操作后，如果要重新开始监视同一服务器，必须在此服务器上先卸载 Health 代理，然后重新安装。
 
-### <a name="to-delete-a-server-from-the-azure-ad-connect-health-service"></a>从 Azure AD Connect Health 服务中删除服务器的步骤
+### <a name="delete-a-server-from-the-azure-ad-connect-health-service"></a>从 Azure AD Connect Health 服务中删除服务器
+
+>[!NOTE] 
+> 删除步骤需要 Azure AD premium 许可证。
+
 用于 Active Directory 联合身份验证服务 (AD FS) 的 Azure AD Connect Health 和 Azure AD Connect（同步）：
 
 1. 通过选择要删除的服务器名称，从“服务器列表”边栏选项卡中打开“服务器”边栏选项卡。
@@ -133,7 +140,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
 >
 
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>步骤 3：与用户或组共享边栏选项卡位置
-1. 分配权限后，用户可以转到[此处](http://aka.ms/aadconnecthealth)，访问 Azure AD Connect Health。
+1. 分配权限后，用户可以转到[此处](https://aka.ms/aadconnecthealth)，访问 Azure AD Connect Health。
 2. 在边栏选项卡上，用户可将边栏选项卡或卡上的其他部件固定到仪表板。 只需单击“固定到仪表板”图标。<br>
    ![Azure AD Connect Health RBAC 固定边栏选项卡的屏幕截图（其中突出显示了固定图标）](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
 

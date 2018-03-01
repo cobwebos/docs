@@ -1,3 +1,5 @@
+# [Redis 缓存文档](index.md)
+
 # 概述
 ##[为何使用 Redis 缓存](https://azure.microsoft.com/services/cache/)
 ##[探索高级层的功能](cache-premium-tier-intro.md)

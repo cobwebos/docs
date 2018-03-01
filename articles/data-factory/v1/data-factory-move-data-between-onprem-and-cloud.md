@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: e326a512bdb9c30068845b51e86795a410e6c9b3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 49683da9f03871cbe5c27dd06d27111864eb489e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
 > [!NOTE]
@@ -55,7 +55,7 @@ ms.lasthandoff: 01/23/2018
 本步骤使用 Azure 门户创建名为 **ADFTutorialOnPremDF** 的 Azure 数据工厂实例。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击“+新建”，并依次单击“智能 + 分析”、“数据工厂”。
+2. 单击“创建资源”，并依次单击“智能 + 分析”、“数据工厂”。
 
    ![新建 -> DataFactory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
 3. 在“新建数据工厂”页中，输入 ADFTutorialOnPremDF 作为名称。
@@ -239,7 +239,7 @@ ms.lasthandoff: 01/23/2018
         }
     }     
     ```     
-   注意以下几点：
+   请注意以下几点：
 
    * **type** 设置为 **SqlServerTable**。
    * **tableName** 设置为 **emp**。
@@ -274,7 +274,7 @@ ms.lasthandoff: 01/23/2018
         }
      }
     ```   
-   注意以下几点：
+   请注意以下几点：
 
    * **type** 设置为 **AzureBlob**。
    * **linkedServiceName** 设置为 **AzureStorageLinkedService**（已在步骤 2 中创建此链接服务）。
@@ -356,7 +356,7 @@ ms.lasthandoff: 01/23/2018
    >
    >
 
-   注意以下几点：
+   请注意以下几点：
 
    * 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
    * 活动的 **Input** 设置为 **EmpOnPremSQLTable**，**output** 设置为 **OutputBlobTable**。

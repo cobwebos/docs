@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 02/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 426a456f8d979c8fb68b469f01eb68f378e876e8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a17d0918ea5938daf81c469fd6402a7dc9764831
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>用于从本地复制到 Azure 的 Azure Site Recovery 支持矩阵
 
@@ -76,8 +76,8 @@ ms.lasthandoff: 02/09/2018
 >
 > 在 Linux 分发中，仅支持属于分发的次要版本发布/更新的常用内核。
 >
-> 不支持在由 Azure Site Recovery 提供保护的 VMware 虚拟机或物理服务器上跨 Linux 分发的主版本进行升级。 跨主版本（例如 CentOS 6.* 到 CentOS 7.*）升级操作系统时，将禁用计算机的复制、升级计算机上的操作系统，然后再次启用复制。
-> 
+> 不支持在由 Azure Site Recovery 提供保护的 VMware 虚拟机或物理服务器上跨 Linux 分发的主版本进行升级。 跨主版本（例如 CentOS 6.\* 到 CentOS 7.\*）升级操作系统时，将禁用计算机的复制、升级计算机上的操作系统，然后再次启用复制。
+>
 
 
 ### <a name="supported-ubuntu-kernel-versions-for-vmwarephysical-servers"></a>VMware/物理服务器支持的 Ubuntu 内核版本
@@ -166,7 +166,7 @@ SAN (ISCSI) | 是 | 是
 VMDK | 是 | 不适用
 VHD/VHDX | 不适用 | 是
 第 2 代 VM | 不适用 | 是
-EFI/UEFI| 仅限 Windows Server 2012 及更高版本到 Azure 的迁移。 </br></br> ** 请参阅表末尾的说明。  | 是
+EFI/UEFI| 只有 Windows Server 2012 及更高版本的 VMware 虚拟机可迁移到 Azure。 </br></br> ** 请参阅表末尾的说明。  | 是
 共享群集磁盘 | 否 | 否
 加密磁盘 | 否 | 否
 NFS | 否 | 不适用
@@ -182,10 +182,11 @@ RDM | 是<br/><br/> 不适用于物理服务器 | 不适用
 多路径 (MPIO) | 不适用 | 是
 
 > [!NOTE]
-> ** 运行 Windows Server 2012 或更高版本的 UEFI 引导 VMware 虚拟机或物理服务器可以迁移到 Azure。 存在以下限制。
+> ** 运行 Windows Server 2012 或更高版本的 UEFI 引导 VMware 虚拟机可迁移到 Azure。 存在以下限制。
 > - 仅迁移到 Azure。 不支持故障回复到本地 VMware 站点。
 > - 服务器的 OS 磁盘支持的分区不能超过 4 个。
 > - 需要 Azure Site Recovery 移动服务 9.13 版或更高版本。
+> - 不适用于物理服务器。
 
 **Azure 存储** | **VMware/物理服务器** | **Hyper-V（具有/不具有 Virtual Machine Manager）**
 --- | --- | ---

@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 92816a5b1a74be5b64d974ad9ade47374db5db10
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5998aa0e0b281ead859c24d792c3e175e3cca899
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>使用 Azure 门户排查网络安全组问题
 > [!div class="op_single_selector"]
-> * [Azure 门户](virtual-network-nsg-troubleshoot-portal.md)
+> * [在 Azure 应用服务中创建 Java Web 应用](virtual-network-nsg-troubleshoot-portal.md)
 > * [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
 > 
 > 
@@ -47,7 +47,7 @@ ms.lasthandoff: 12/21/2017
 可以从 VM 本身查看 NIC 上的完整有效安全规则列表。 如果有相应的权限，也可以从有效规则的边栏选项卡添加、修改和删除 NIC 与子网的 NSG 规则。
 
 1. 在 https://portal.azure.com 上使用 Azure 帐户登录到 Azure 门户。 你的帐户必须有权对网络接口执行 *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* 操作。 若要了解如何向帐户分配操作，请参阅[创建用于 Azure 基于角色的访问控制的自定义角色](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)。
-2. 单击“**更多服务**”，并在显示的列表中单击“**虚拟机**”。
+2. 单击“所有服务”，然后在显示的列表中单击“虚拟机”。
 3. 在显示的列表中选择要进行故障排除的 VM，随后会显示一个包含选项的 VM 边栏选项卡。
 4. 单击“**诊断和解决问题**”，并选择一个常见问题。 本示例选择了“**无法连接到 Windows VM**”。 
    
@@ -96,7 +96,7 @@ ms.lasthandoff: 12/21/2017
 如果特定的 NIC 影响了 VM 流量流，可以完成以下步骤，从网络接口上下文查看 NIC 的完整有效规则列表：
 
 1. 登录到 Azure 门户网站 https://portal.azure.com。
-2. 单击“**更多服务**”，并在显示的列表中单击“**网络接口**”。
+2. 单击“所有服务”，并在显示的列表中单击“网络接口”。
 3. 选择一个网络接口。 在下图中，已选择名为 *VM1-NIC1* 的 NIC。
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image5.png)
@@ -113,7 +113,7 @@ ms.lasthandoff: 12/21/2017
 修改 NSG 规则时，可以查看在特定 VM 上添加规则产生的影响。 可以查看应用了给定 NSG 的所有 NIC 的完整有效安全规则列表，而无需从给定 NSG 的边栏选项卡切换上下文。 若要排查 NSG 中有效规则的问题，请完成以下步骤：
 
 1. 登录到 Azure 门户网站 https://portal.azure.com。
-2. 单击“**更多服务**”，并在显示的列表中单击“**网络安全组**”。
+2. 单击“所有服务”，并在显示的列表中单击“网络安全组”。
 3. 选择一个 NSG。 在下图中，已选择名为 VM1-nsg 的 NSG。
    
     ![](./media/virtual-network-nsg-troubleshoot-portal/image6.png)

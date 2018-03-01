@@ -9,11 +9,11 @@ manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 6e9c541aac1241b6af0e4a58f5591d46f9a98c40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b73fe2214a165d7c02c0a58551d8b84bee39f919
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL 服务器
 本主题介绍了如何快速创建新的 Azure Database for MySQL 服务器。 它还提供了有关如何使用 Azure 门户来管理服务器的信息。 服务器管理包括查看服务器的详细信息和数据库、重置密码以及删除服务器。
@@ -24,7 +24,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="create-an-azure-database-for-mysql-server"></a>创建 Azure Database for MySQL 服务器
 按照下列步骤，创建一个名为“mysqlserver4demo”的 Azure Database for MySQL 服务器。
 
-1. 单击 Azure 门户左上角的“新建”按钮。
+1. 单击 Azure 门户左上角的“创建资源”按钮。
 
 2. 在“新建”页面上，选择“数据库”，然后在“数据库”页面上选择“Azure Database for MySQL”。
 

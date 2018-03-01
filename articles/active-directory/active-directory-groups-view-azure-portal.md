@@ -16,18 +16,18 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: 1aaebb66287edc375909f7367648da6cf5f4cc40
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 25ab1da5a07874596bf5ec62313e672af83a9bb9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="view-or-search-for-your-user-groups-in-azure-active-directory"></a>在 Azure Active Directory 中查看或搜索用户组
 本文介绍如何在 Azure Active Directory (Azure AD) 中查看所有组。 Azure AD 用户管理的功能之一是可以使用组来执行管理任务，如一次将许可证或权限分配给多个用户。
 
 ## <a name="how-do-i-see-all-the-groups"></a>如何查看所有组？
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“更多服务”，在文本框中输入“用户和组”，并选择 **Enter**。
+2. 选择“所有服务”，在文本框中输入“用户和组”，并选择 **Enter**。
 
    ![打开用户和组](./media/active-directory-groups-view-azure-portal/search-user-management.png)
 3. 在“用户和组”边栏选项卡中，选择“所有组”。

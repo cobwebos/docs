@@ -1,10 +1,11 @@
-- name: Azure 托管应用程序
+- name: Azure 托管应用程序文档
   href: index.yml
 - name: 概述
   items:
     - name: 关于托管应用程序
       href: overview.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 创建托管应用程序
       href: managed-apps-quickstart-cli.md

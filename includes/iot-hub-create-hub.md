@@ -1,7 +1,7 @@
 1. 登录到 [Azure 门户][lnk-portal]。
-1. 选择“新建” > “物联网” > “IoT 中心”。
+1. 选择“创建资源” > “物联网” > “IoT 中心”。
    
-    ![Azure 门户跳转栏][1]
+    ![屏幕截图显示 Azure 门户到 IoT 中心的导航][1]
 
 1. 在“IoT 中心”窗格中，输入 IoT 中心的以下信息：
 
@@ -19,10 +19,10 @@
 
     ![IoT 中心窗口][2]
 
-1. 单击“创建” 。 创建 IoT 中心可能需要数分钟的时间。 可在“通知”窗格中监视进度。
+1. 单击“创建”。 创建 IoT 中心可能需要数分钟的时间。 可在“通知”窗格中监视进度。
 <!-- Images -->
-[1]: ./media/iot-hub-get-started-create-hub/create-iot-hub1.png
-[2]: ./media/iot-hub-get-started-create-hub/create-iot-hub2.png
+[1]: ./media/iot-hub-create-hub/create-iot-hub1.png
+[2]: ./media/iot-hub-create-hub/create-iot-hub2.png
 <!-- Links -->
 [lnk-portal]: https://portal.azure.com/
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/

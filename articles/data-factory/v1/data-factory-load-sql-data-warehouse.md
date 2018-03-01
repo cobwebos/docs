@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3350645d4f173a6d0d007ff9095bb3115600a13b
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 1b931de564417ab98207321d7798613b187e411f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>在不到 15 分钟的时间里通过数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库
 > [!NOTE]
@@ -114,8 +114,8 @@ ms.lasthandoff: 01/23/2018
 
 ## <a name="launch-copy-wizard"></a>启动复制向导
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击左上角的“+ 新建”，单击“智能 + 分析”，并单击“数据工厂”。
-3. 在“新建数据工厂”  边栏选项卡中：
+2. 单击左上角的“创建资源”，单击“智能 + 分析”，然后单击“数据工厂”。
+3. 在“新建数据工厂”窗格中：
 
    1. 输入 **LoadIntoSQLDWDataFactory** 作为**名称**。
        Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称“LoadIntoSQLDWDataFactory”不可用**，请更改该数据工厂名称（例如改为“yournameLoadIntoSQLDWDataFactory”），并尝试再次创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  

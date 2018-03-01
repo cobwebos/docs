@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 8ca735f04334557f40ddbe3119f7110dbcdde2a8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d9885fc286e31100e14a5c8a1001df079829dcbe
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-perform-an-access-review-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中执行访问权限审查
 Azure Active Directory (AD) Privileged Identity Management 简化了企业管理以特权身份访问 Azure AD 中的资源和其他 Microsoft 联机服务（如 Office 365 或 Microsoft Intune）的方式。  
@@ -33,7 +33,7 @@ Azure Active Directory (AD) Privileged Identity Management 简化了企业管理
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 选择 Azure 门户右上角的用户名，并选择要操作的目录。
-3. 选择“更多服务”，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”。
+3. 选择“所有服务”，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”。
 4. 选中“固定到仪表板”，并单击“创建”。 Privileged Identity Management 应用程序会打开。
 
 ## <a name="approve-or-deny-access"></a>批准或拒绝访问权限

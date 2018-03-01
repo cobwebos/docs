@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: raynew
-ms.openlocfilehash: ead133318d8660e8b8f4b3e9c5dddb6d75878b19
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 88fc17b635cc96defd1b6f766b9b2ac2c63f2fa7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware 和物理服务器到 Azure 的复制支持矩阵
 
@@ -22,8 +22,8 @@ ms.lasthandoff: 01/25/2018
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-**方案** | **详细信息** 
---- | --- 
+**方案** | **详细信息**
+--- | ---
 **VMware VM** | 可以针对本地 VMware VM 执行到 Azure 的灾难恢复。 可以在 Azure 门户中部署此方案，也可使用 PowerShell 进行部署。
 **物理服务器** | 可以针对本地 Windows/Linux 物理服务器执行到 Azure 的灾难恢复。 可以在 Azure 门户中部署此方案。
 
@@ -83,86 +83,91 @@ XFSv5 | 从版本 9.10 开始，移动服务支持 XFS 文件系统上的 XFSv5 
 
 ## <a name="network"></a>网络
 
-**组件** | **支持** 
---- | --- 
+**组件** | **支持**
+--- | ---
 主机网络 NIC 组合 | 对于 VMware VM，支持 <br/><br/>对于物理计算机复制，不支持
-主机网络 VLAN | 是 
-主机网络 IPv4 | 是 
-主机网络 IPv6 | 否 
-来宾/服务器网络 NIC 组合 | 否 
-来宾/服务器网络 IPv4 | 是 
-来宾/服务器网络 IPv6 | 否 
-来宾/服务器网络静态 IP (Windows) | 是 
+主机网络 VLAN | 是
+主机网络 IPv4 | 是
+主机网络 IPv6 | 否
+来宾/服务器网络 NIC 组合 | 否
+来宾/服务器网络 IPv4 | 是
+来宾/服务器网络 IPv6 | 否
+来宾/服务器网络静态 IP (Windows) | 是
 来宾/服务器网络静态 IP (Linux) | 是 <br/><br/>VM 配置为在故障回复时使用 DHCP  
-来宾/服务器网络多个 NIC | 是 
+来宾/服务器网络多个 NIC | 是
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure VM 网络（故障转移后）
 
-**组件** | **支持** 
---- | --- 
-Express Route | 是 
-ILB | 是 
-ELB | 是 
-流量管理器 | 是 
-多 NIC | 是 
-保留 IP 地址 | 是 
-IPv4 | 是 
-保留源 IP 地址 | 是 
-虚拟网络服务终结点<br/><br/> （Azure 存储防火墙和 VNET） | 否 
+**组件** | **支持**
+--- | ---
+Express Route | 是
+ILB | 是
+ELB | 是
+流量管理器 | 是
+多 NIC | 是
+保留 IP 地址 | 是
+IPv4 | 是
+保留源 IP 地址 | 是
+虚拟网络服务终结点<br/><br/> （Azure 存储防火墙和 VNET） | 否
 
 
 ## <a name="storage"></a>存储
 
 
-**组件** | **支持** 
---- | --- 
-主机 NFS | VMware 支持<br/><br/> 物理服务器不支持 
+**组件** | **支持**
+--- | ---
+主机 NFS | VMware 支持<br/><br/> 物理服务器不支持
 主机 SAN (ISCSI) | 是
 主机多路径 (MPIO) | 是 - 针对以下项进行了测试：Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON
-来宾/服务器 VMDK | 是 
-来宾/服务器 EFI/UEFI| 部分（仅限 Windows Server 2012 及更高版本到 Azure 的迁移。） </br></br> ** 请参阅表末的说明。
-来宾/服务器共享群集磁盘 | 否 
-来宾/服务器加密磁盘 | 否 
-来宾/服务器 NFS | 否 
+来宾/服务器 VMDK | 是
+来宾/服务器 EFI/UEFI| 部分（只有 Windows Server 2012 及更高版本的 VMware 虚拟机可迁移到 Azure。） </br></br> ** 请参阅表末尾的说明。
+来宾/服务器共享群集磁盘 | 否
+来宾/服务器加密磁盘 | 否
+来宾/服务器 NFS | 否
 来宾/服务器 SMB 3.0 | 否
-来宾/服务器 RDM | 是<br/><br/> 不适用于物理服务器 
-> 1 TB 的来宾/服务器磁盘 | 是<br/><br/>最大 4095 GB 
+来宾/服务器 RDM | 是<br/><br/> 不适用于物理服务器
+> 1 TB 的来宾/服务器磁盘 | 是<br/><br/>最大 4095 GB
 逻辑和物理扇区大小均为 4K 的来宾/服务器磁盘 | 是
-逻辑扇区大小为 4K 且物理扇区大小为 512 字节 的来宾/服务器磁盘 | 是 
-具有 > 1 TB 的条带化磁盘的来宾/服务器卷<br/><br/> LVM-逻辑卷管理来宾/服务器 - 存储空间 | 否 来宾/服务器热添加/删除磁盘 | 否 来宾/服务器 - 排除磁盘 | 是 来宾/服务器多路径 (MPIO) | N/A
+逻辑扇区大小为 4K 且物理扇区大小为 512 字节 的来宾/服务器磁盘 | 是
+具有 > 4 TB 的条带化磁盘的来宾/服务器卷 <br><br/>LVM 逻辑卷管理 | 是
+来宾/服务器 - 存储空间 | 否
+来宾/服务器热添加/删除磁盘 | 否
+来宾/服务器 - 排除磁盘 | 是
+来宾/服务器多路径 (MPIO) | 不适用
 
 > [!NOTE]
-> ** 运行 Windows Server 2012 或更高版本的 UEFI 引导 VMware 虚拟机或物理服务器可以迁移到 Azure。 存在以下限制。
+> 运行 Windows Server 2012 或更高版本的** UEFI **引导 VMware 虚拟机可迁移到 Azure。 存在以下限制。
 > - 仅支持到 Azure 的迁移。 不支持到本地 VMware 站点的故障回复。
 > - 服务器在 OS 磁盘上不应具有 4 个以上分区。
-> - 需要 Azure Site Recovery 移动服务版本 9.13 或更高版本。
+> - 需要 Azure Site Recovery 移动服务 9.13 版或更高版本。
+> - 不适用于物理服务器。
 
 
 ## <a name="azure-storage"></a>Azure 存储
 
-**组件** | **支持** 
---- | --- 
-LRS | 是 
-GRS | 是 
-RA-GRS | 是 
-冷存储 | 否 
-热存储| 否 
-块 Blob | 否 
-静态加密 (SSE)| 是 
-高级存储 | 是 
-导入/导出服务 | 否 
-虚拟网络服务终结点<br/><br/> 在目标存储/缓存存储帐户（用来存储复制数据）上配置的 Azure 存储防火墙和 VNET | 否 
-常规用途 V2 存储帐户（冷热存储层） | 否 
+**组件** | **支持**
+--- | ---
+LRS | 是
+GRS | 是
+RA-GRS | 是
+冷存储 | 否
+热存储| 否
+块 Blob | 否
+静态加密 (SSE)| 是
+高级存储 | 是
+导入/导出服务 | 否
+虚拟网络服务终结点<br/><br/> 在目标存储/缓存存储帐户（用来存储复制数据）上配置的 Azure 存储防火墙和 VNET | 否
+常规用途 V2 存储帐户（冷热存储层） | 否
 
 
 ## <a name="azure-compute"></a>Azure 计算
 
-**功能** | **支持** 
---- | --- 
-可用性集 | 是 
+**功能** | **支持**
+--- | ---
+可用性集 | 是
 HUB | 是   
-托管磁盘 | 是 
+托管磁盘 | 是
 
 ## <a name="azure-vm-requirements"></a>Azure VM 要求
 
@@ -176,7 +181,7 @@ HUB | 是
 **操作系统磁盘计数** | 1 | 如果不支持，先决条件检查会失败。
 **数据磁盘计数** | 如果将 **VMware VM 复制到 Azure**，则为 64 个或更少；如果将 **Hyper-V VM 复制到 Azure**，则为 16 个或更少 | 如果不支持，先决条件检查会失败
 **数据磁盘 VHD 大小** | 最大 4095 GB | 如果不支持，先决条件检查会失败。
-**网络适配器** | 支持多个适配器 | 
+**网络适配器** | 支持多个适配器 |
 **共享 VHD** | 不支持 | 如果不支持，先决条件检查会失败。
 **FC 磁盘** | 不支持 | 如果不支持，先决条件检查会失败。
 **硬盘格式** | VHD <br/><br/> VHDX | 尽管 Azure 当前不支持 VHDX，但故障转移到 Azure 时，站点恢复会自动将 VHDX 转换为 VHD。 故障回复到本地时，虚拟机将继续使用 VHDX 格式。
@@ -186,10 +191,10 @@ HUB | 是
 
 ## <a name="vault-tasks"></a>保管库任务
 
-**Action** | **支持** 
---- | --- 
-跨资源组移动保管库<br/><br/> 订阅内和跨订阅移动 | 否 
-跨资源组移动存储、网络和 Azure VM<br/><br/> 订阅内和跨订阅移动 | 否 
+**Action** | **支持**
+--- | ---
+跨资源组移动保管库<br/><br/> 订阅内和跨订阅移动 | 否
+跨资源组移动存储、网络和 Azure VM<br/><br/> 订阅内和跨订阅移动 | 否
 
 
 ## <a name="mobility-service"></a>移动服务

@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 7fbca027d02512671cb380e9b440b03ffef86b89
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 66c356d6d42254e7443b645bff3393daca67012b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="sample-of-custom-source-connections-python"></a>自定义源连接示例 (Python) 
 阅读本附录前，请先阅读 [Python 扩展性概述](data-prep-python-extensibility-overview.md)。
@@ -45,7 +45,7 @@ API token (obtained at: https://data.world/settings/advanced): <enter API token 
 
 #### <a name="load-data-into-data-preparation"></a>在数据准备中加载数据
 
-创建一个新的基于脚本的数据流。 然后使用以下脚本从 data.world 加载数据。
+创建“转换数据流(脚本)”转换。 然后使用以下脚本从 data.world 加载数据。
 
 ```python
 #paths = df['Path'].tolist()

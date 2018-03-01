@@ -4,36 +4,37 @@ description: "介绍如何使用 Azure Migration Planner 设置和运行将 VMwa
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 06/02/2017
 ms.author: raynew
-ms.openlocfilehash: ce47790f6214864afdba33eb5cbe3a9e49b81cd5
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 8babdbc30e062c7b289e90a674cec3222943e48d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="customize-an-assessment"></a>自定义评估
 
-[Azure Migrate](migrate-overview.md) 使用默认设置创建评估。 创建评估后，可以使用本文中的说明修改这些默认设置。
+[Azure Migrate](migrate-overview.md) 使用默认属性创建评估。 创建评估后，可使用本文中的说明修改默认属性。
 
 
-## <a name="edit-assessment-values"></a>编辑评估值
+## <a name="edit-assessment-properties"></a>编辑评估属性
 
-1. 在 Azure Migrate 项目的“评估”页上选择评估，然后单击“编辑属性”。
-2. 根据下表修改设置。
+1. 在迁移项目“评估”页面上，选择评估，然后单击“编辑属性”。
+2. 根据下表修改属性：
 
     **设置** | **详细信息** | **默认**
     --- | --- | ---
     **目标位置** | 要迁移到的 Azure 位置。 |  美国西部 2 是默认位置。
-    **存储冗余** | Azure VM 会在迁移后使用的存储类型。 | 目前仅支持[本地冗余存储 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) 复制。
-    **舒适因子** | 舒适因子是在评估过程中使用的缓冲区。 使用它来应对季节性使用、短性能历史记录、将来的可能增长。 | 默认设置是1.3x。
-    **性能历史记录** | 在评估性能历史记录时使用的时间。 | 默认值为一个月。
-    **百分位使用率** | 要考虑性能历史记录的百分位值。 | 默认为 95%。
-    **定价层** | 可以指定 VM 的[定价层](https://azure.microsoft.com/blog/basic-tier-virtual-machines-2/)。  | 默认使用[标准](../virtual-machines/windows/sizes-general.md)层。
-    **产品** | 适用的 [Azure 产品](https://azure.microsoft.com/support/legal/offer-details/)。 | [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)是默认设置。
+    **存储冗余** | Azure VM 要在迁移后使用的存储冗余类型。 | 默认值为[本地冗余存储 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage)。 Azure Migrate 仅支持基于托管磁盘的评估，而托管磁盘仅支持 LRS，因此该属性目前只有 LRS 选项。 
+    **“大小调整”条件** | Azure Migrate 用来对 Azure 的 VM 进行大小调整的条件。 可执行基于性能的大小调整或将 VM 的大小设置为本地大小，而不用考虑性能历史记录。 | 默认选项为基于性能的大小调整。
+    **性能历史记录** | 评估 VM 性能时要考虑的时长。 此属性仅在“大小调整”条件为基于性能调整大小时才适用。 | 默认时长为一天。
+    **百分位使用率** | 进行适当大小调整时要考虑的性能样本集的百分位值。 此属性仅在“大小调整”条件为基于性能调整大小时才适用。  | 默认值为第 95 个百分位。
+    **定价层** | 可指定目标 Azure VM 的[定价层（基本/标准）](../virtual-machines/windows/sizes-general.md)。 例如，如果打算迁移生产环境，则可考虑“标准”层，其提供的 VM 延迟较低但成本可能较高。 而如果使用开发-测试环境，则可考虑“基本”层，其 VM 延迟较高，但成本较低。 | 默认使用[标准](../virtual-machines/windows/sizes-general.md)层。
+    **舒适因子** | Azure Migrate 在评估期间会考虑到缓冲（舒适因子）。 该缓冲应用到 VM 的机器使用率数据（CPU、内存、磁盘和网络）上。 舒适因子考虑到季节性使用特点、短期性能历史记录，以及未来使用量可能会增加等问题。<br/><br/> 例如，一个使用率为 20% 的 10 核 VM 通常相当于一个 2 核 VM。 但是，如果舒适因子为 2.0x，则结果就变成一个 4 核 VM。 | 默认设置是1.3x。
+    **产品** | 你注册到的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 | [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)是默认设置。
     **货币** | 计费货币。 | 默认为美元。
-    **折扣 (%)** | 在任何产品上收到的任何特定订阅的折扣。 | 默认设置是 0%。
-    **Azure 混合使用权益** | 指示是否要在 [Azure 混合使用权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)中登记。 如果设置为“是”，则考虑 Windows VM 的非 Windows Azure 价格。 | 默认值为“是”。
+    **折扣 (%)** | 基于 Azure 优惠获得的任何特定订阅的折扣。 | 默认设置是 0%。
+    **Azure 混合权益** | 指定你是否具有软件保证以及是否有资格享受 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。 若设为“是”，Windows VM 采用非 Windows Azure 价格。 | 默认值为“是”。
 
 3. 单击“保存”更新评估。
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: cfdee4450b0ef88d593d401009a7d7f29c24780b
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 855cb5b9cda873a2966465062d0164b2b054b1cd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -421,7 +421,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 ### <a name="step-1-create-the-data-factory"></a>步骤 1：创建数据工厂
 1. 请在登录到 Azure 门户后执行以下步骤：
-   1. 单击左侧菜单上的“新建”。
+   1. 在左侧菜单上单击“创建资源”。
    2. 单击“新建”边栏选项卡中的“数据 + 分析”。
    3. 单击“数据分析”边栏选项卡中的“数据工厂”。
    
@@ -557,7 +557,7 @@ test custom activity Microsoft test custom activity Microsoft
    | 切片 | 开始时间 | 输出文件 |
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
-   | #N/A |2016-11-16T01:00:00 |2016-11-16-01.txt |
+   | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
    | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
@@ -614,7 +614,7 @@ test custom activity Microsoft test custom activity Microsoft
     }
     ```
 
-    注意以下几点：
+    请注意以下几点：
 
    * **Concurrency** 设置为 **2**，以便在 Azure Batch 池中通过 2 个 VM 并行处理 2 个切片。
    * 在活动部分中包含一个活动，其类型为：**DotNetActivity**。

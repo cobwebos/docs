@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: f3d89c627f462c9e34b2ff067972be56f5bed32f
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: e94f08b9b9dad20c6f47367c47eb49aea59f4bd8
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="article-top"></a>将现有的 Azure 移动服务迁移到 Azure 应用服务
 借助 [Azure 应用服务正式版]，可轻松就地迁移 Azure 移动服务站点，使用 Azure 应用服务的所有功能。  本文档说明将站点从 Azure 移动服务迁移到 Azure 应用服务时的情形。
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/04/2018
 Microsoft 建议迁移 Azure 移动服务来利用 Azure 应用服务的各项功能，其中包括：
 
 * 新的主机功能，包括 [WebJobs] 和[自定义域名]。
-* 使用 New Relic 或 [Application Insights] 进行监视和故障排除。
+* 使用 [Application Insights] 进行监视和故障排除。
 * 内置的 DevOps 工具，包括[过渡槽]、回滚和生产环境内测试。
 * [自动缩放]、负载均衡和[性能监视]。
 

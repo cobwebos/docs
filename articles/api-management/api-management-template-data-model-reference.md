@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 92a52910ef8b9f078a8ea6ac409f89719f889b24
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 0f27b6b529c2591e37d48e3386190077fc8efc32
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API 管理模板数据模型参考
 本主题介绍数据模型中常用项目的实体和类型表示形式，这些数据模型适用于 Azure API 管理中的开发人员门户模板。  
@@ -51,12 +51,12 @@ ms.lasthandoff: 12/06/2017
 -   [用户注册](#UserSignUp)  
   
 ##  <a name="API"></a> API  
- `API` 实体具有以下属性。  
+ `API` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |id|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的 API。 值是有效的相对 URL，采用 `apis/{id}` 格式，其中 `{id}` 是 API 标识符。 此属性为只读。|  
-|name|字符串|API 的名称。 不得为空。 最大长度为 100 个字符。|  
+|名称|字符串|API 的名称。 不得为空。 最大长度为 100 个字符。|  
 |description|字符串|API 的说明。 不得为空。 可以包含 HTML 格式标记。 最大长度为 1000 个字符。|  
 |serviceUrl|字符串|实现此 API 的后端服务的绝对 URL。|  
 |路径|字符串|相对 URL，用于唯一标识此 API 及其在 API 管理服务实例中的所有资源路径。 可将其追加到在服务实例创建过程中指定的 API 终结点基 URL，构成此 API 的公共 URL。|  
@@ -65,18 +65,18 @@ ms.lasthandoff: 12/06/2017
 |subscriptionKeyParameterNames|对象|可选属性，可用于指定包含订阅密钥的查询参数和/或标头参数的自定义名称。 如果存在此属性，则其必须包含以下两个属性中的至少一个。<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="APISummary"></a> API 摘要  
- `API summary` 实体具有以下属性。  
+ `API summary` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |id|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的 API。 值是有效的相对 URL，采用 `apis/{id}` 格式，其中 `{id}` 是 API 标识符。 此属性为只读。|  
-|name|字符串|API 的名称。 不得为空。 最大长度为 100 个字符。|  
+|名称|字符串|API 的名称。 不得为空。 最大长度为 100 个字符。|  
 |description|字符串|API 的说明。 不得为空。 可以包含 HTML 格式标记。 最大长度为 1000 个字符。|  
   
 ##  <a name="Application"></a> 应用程序  
- `application` 实体具有以下属性。  
+ `application` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |ID|字符串|应用程序的唯一标识符。|  
 |标题|字符串|应用程序的标题。|  
@@ -84,7 +84,7 @@ ms.lasthandoff: 12/06/2017
 |URL|URI|应用程序的 URI。|  
 |版本|字符串|应用程序的版本信息。|  
 |要求|字符串|应用程序的要求的说明。|  
-|状态|数字|应用程序的当前状态。<br /><br /> - 0 - 已注册<br /><br /> - 1 - 已提交<br /><br /> - 2 - 已发布<br /><br /> - 3 - 已拒绝<br /><br /> - 4 - 未发布|  
+|State|数字|应用程序的当前状态。<br /><br /> - 0 - 已注册<br /><br /> - 1 - 已提交<br /><br /> - 2 - 已发布<br /><br /> - 3 - 已拒绝<br /><br /> - 4 - 未发布|  
 |RegistrationDate|DateTime|注册应用程序的日期和时间。|  
 |CategoryId|数字|应用程序的类别（财务、娱乐等）|  
 |DeveloperId|字符串|提交应用程序的开发人员的唯一标识符。|  
@@ -92,18 +92,18 @@ ms.lasthandoff: 12/06/2017
 |图标|[附件](#Attachment)|应用程序的图标。|  
   
 ##  <a name="Attachment"></a> 附件  
- `attachment` 实体具有以下属性。  
+ `attachment` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |UniqueId|字符串|附件的唯一标识符。|  
 |URL|字符串|资源的 URL。|  
-|类型|字符串|附件的类型。|  
+|Type|字符串|附件的类型。|  
 |ContentType|字符串|附件的媒体类型。|  
   
 ##  <a name="Sample"></a> 代码示例  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |title|字符串|操作的名称。|  
 |snippet|字符串|此属性已弃用，不应使用。|  
@@ -113,15 +113,15 @@ ms.lasthandoff: 12/06/2017
 |方法|字符串|此操作的 HTTP 方法。|  
 |scheme|字符串|将用于操作请求的协议。|  
 |路径|字符串|操作的路径。|  
-|查询|字符串|包含已定义参数的查询字符串示例。|  
-|主机|字符串|API 管理服务网关（针对包含此操作的 API）的 URL。|  
+|query|字符串|包含已定义参数的查询字符串示例。|  
+|host|字符串|API 管理服务网关（针对包含此操作的 API）的 URL。|  
 |headers|[标头](#Header)实体的集合。|此操作的标头。|  
-|参数|[参数](#Parameter)实体的集合。|为此操作定义的参数。|  
+|parameters|[参数](#Parameter)实体的集合。|为此操作定义的参数。|  
   
 ##  <a name="Comment"></a> 注释  
- `API` 实体具有以下属性。  
+ `API` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |ID|数字|注释的 ID。|  
 |CommentText|字符串|注释的正文。 可以包含 HTML。|  
@@ -131,7 +131,7 @@ ms.lasthandoff: 12/06/2017
 ##  <a name="Issue"></a> 问题  
  `issue` 实体具有以下属性。  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |ID|字符串|问题的唯一标识符。|  
 |ApiID|字符串|报告此问题时所针对的 API 的 ID。|  
@@ -145,9 +145,9 @@ ms.lasthandoff: 12/06/2017
 |服务|[API](#API) 实体的集合。|报告此问题的用户所订阅的 API。|  
   
 ##  <a name="Filtering"></a> 筛选  
- `filtering` 实体具有以下属性。  
+ `filtering` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |模式|字符串|当前的搜索词；如果没有搜索词，则为 `null`。|  
 |占位符|字符串|没有指定搜索词时，在搜索框中显示的文本。|  
@@ -155,11 +155,11 @@ ms.lasthandoff: 12/06/2017
 ##  <a name="Header"></a> 标头  
  本部分描述 `parameter` 表示形式。  
   
-|属性|说明|类型|  
+|属性|说明|Type|  
 |--------------|-----------------|----------|  
-|name|字符串|参数名称。|  
+|名称|字符串|参数名称。|  
 |description|字符串|参数说明。|  
-|value|字符串|标头值。|  
+|值|字符串|标头值。|  
 |typeName|字符串|标头值的数据类型。|  
 |options|字符串|选项。|  
 |必填|布尔值|标头是否为必需。|  
@@ -168,41 +168,41 @@ ms.lasthandoff: 12/06/2017
 ##  <a name="HTTPRequest"></a> HTTP 请求  
  本部分描述 `request` 表示形式。  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |description|字符串|操作请求说明。|  
 |headers|[标头](#Header)实体数组。|请求标头。|  
-|参数|[参数](#Parameter)数组|操作请求参数的集合。|  
+|parameters|[参数](#Parameter)数组|操作请求参数的集合。|  
 |representations|[表示形式](#Representation)数组|操作请求表示形式的集合。|  
   
 ##  <a name="HTTPResponse"></a> HTTP 响应  
  本部分描述 `response` 表示形式。  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |statusCode|正整数|操作响应状态代码。|  
 |description|字符串|操作响应说明。|  
 |representations|[表示形式](#Representation)数组|操作响应表示形式的集合。|  
   
 ##  <a name="Operation"></a> 操作  
- `operation` 实体具有以下属性。  
+ `operation` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |id|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的操作。 值是有效的相对 URL，采用 `apis/{aid}/operations/{id}` 格式，其中 `{aid}` 是 API 标识符，`{id}` 是操作标识符。 此属性为只读。|  
-|name|字符串|操作的名称。 不得为空。 最大长度为 100 个字符。|  
+|名称|字符串|操作的名称。 不得为空。 最大长度为 100 个字符。|  
 |description|字符串|操作说明。 不得为空。 可以包含 HTML 格式标记。 最大长度为 1000 个字符。|  
 |scheme|字符串|说明可在哪些协议上调用此 API 中的操作。 允许的值为 `http`、`https` 或者 `http` 和 `https`。|  
 |uriTemplate|字符串|相对 URL 模板，标识此操作的目标资源。 可以包括参数。 示例：`customers/{cid}/orders/{oid}/?date={date}`|  
-|主机|字符串|托管 API 的 API 管理网关 URL。|  
+|host|字符串|托管 API 的 API 管理网关 URL。|  
 |httpMethod|字符串|操作 HTTP 方法。|  
 |请求|[HTTP 请求](#HTTPRequest)|一个实体，包含请求详细信息。|  
 |responses|[HTTP 响应](#HTTPResponse)数组|操作 [HTTP 响应](#HTTPResponse)实体数组。|  
   
 ##  <a name="Menu"></a> 操作菜单  
- `operation menu` 实体具有以下属性。  
+ `operation menu` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |ApiId|字符串|当前 API 的 ID。|  
 |CurrentOperationId|字符串|当前操作的 ID。|  
@@ -210,18 +210,18 @@ ms.lasthandoff: 12/06/2017
 |MenuItems|[操作菜单项](#MenuItem)实体的集合。|当前 API 的操作。|  
   
 ##  <a name="MenuItem"></a> 操作菜单项  
- `operation menu item` 实体具有以下属性。  
+ `operation menu item` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |ID|字符串|操作的 ID。|  
 |标题|字符串|操作说明。|  
 |HttpMethod|字符串|此操作的 Http 方法。|  
   
 ##  <a name="Paging"></a> 分页  
- `paging` 实体具有以下属性。  
+ `paging` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |Page|数字|当前页码。|  
 |PageSize|数字|要显示在单个页面上的最大结果数。|  
@@ -232,20 +232,20 @@ ms.lasthandoff: 12/06/2017
 ##  <a name="Parameter"></a> 参数  
  本部分描述 `parameter` 表示形式。  
   
-|属性|说明|类型|  
+|属性|说明|Type|  
 |--------------|-----------------|----------|  
-|name|字符串|参数名称。|  
+|名称|字符串|参数名称。|  
 |description|字符串|参数说明。|  
-|value|字符串|参数值。|  
+|值|字符串|参数值。|  
 |options|字符串数组|为查询参数值定义的值。|  
 |必填|布尔值|指定参数是否为必需。|  
 |kind|数字|此参数是路径参数 (1)，还是查询字符串参数 (2)。|  
 |typeName|字符串|参数类型。|  
   
 ##  <a name="Product"></a> 产品  
- `product` 实体具有以下属性。  
+ `product` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |ID|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的产品。 值是有效的相对 URL，采用 `products/{pid}` 格式，其中 `{pid}` 是产品标识符。 此属性为只读。|  
 |标题|字符串|产品的名称。 不得为空。 最大长度为 100 个字符。|  
@@ -253,12 +253,12 @@ ms.lasthandoff: 12/06/2017
 |术语|字符串|产品使用条款。 当开发人员尝试订阅此产品时，系统会显示这些条款，开发人员需接受这些条款才能完成订阅过程。|  
 |ProductState|数字|指定产品是否已发布。 开发人员可以在开发人员门户中发现已发布的产品。 尚未发布的产品只对管理员可见。<br /><br /> 允许用于产品状态的值包括：<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
 |AllowMultipleSubscriptions|布尔值|指定用户是否可以同时拥有此产品的多个订阅。|  
-|MultipleSubscriptionsCount|数字|当前用户订阅此产品时的订阅数目。|  
+|MultipleSubscriptionsCount|数字|允许用户同时拥有此产品订阅的最大数。|  
   
 ##  <a name="Provider"></a> 提供程序  
- `provider` 实体具有以下属性。  
+ `provider` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |属性|字符串字典|此身份验证提供程序的属性。|  
 |AuthenticationType|字符串|提供程序类型。 （Azure Active Directory、Facebook 登录、Google 帐户、Microsoft 帐户、Twitter）。|  
@@ -267,15 +267,15 @@ ms.lasthandoff: 12/06/2017
 ##  <a name="Representation"></a> 表示形式  
  本部分描述 `representation`。  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |contentType|字符串|指定此表示形式的已注册内容类型或自定义内容类型，例如 `application/xml`。|  
 |示例|字符串|表示形式的示例。|  
   
 ##  <a name="Subscription"></a> 订阅  
- `subscription` 实体具有以下属性。  
+ `subscription` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |ID|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的订阅。 值是有效的相对 URL，采用 `subscriptions/{sid}` 格式，其中 `{sid}` 是订阅标识符。 此属性为只读。|  
 |ProductId|字符串|已订阅产品的产品资源标识符。 值是有效的相对 URL，采用 `products/{pid}` 格式，其中 `{pid}` 是产品标识符。|  
@@ -299,32 +299,32 @@ ms.lasthandoff: 12/06/2017
 |RenewUrl|字符串|用于续订订阅的相对 URL。|  
   
 ##  <a name="SubscriptionSummary"></a> 订阅摘要  
- `subscription summary` 实体具有以下属性。  
+ `subscription summary` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |ID|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的订阅。 值是有效的相对 URL，采用 `subscriptions/{sid}` 格式，其中 `{sid}` 是订阅标识符。 此属性为只读。|  
 |DisplayName|字符串|订阅的显示名称|  
   
 ##  <a name="UserAccountInfo"></a> 用户帐户信息  
- `user account info` 实体具有以下属性。  
+ `user account info` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |FirstName|字符串|名字。 不得为空。 最大长度为 100 个字符。|  
 |LastName|字符串|姓氏。 不得为空。 最大长度为 100 个字符。|  
-|电子邮件|字符串|电子邮件地址。 不得为空，且必须在服务实例中唯一。 最大长度为 254 个字符。|  
+|Email|字符串|电子邮件地址。 不得为空，且必须在服务实例中唯一。 最大长度为 254 个字符。|  
 |密码|字符串|用户帐户密码。|  
 |NameIdentifier|字符串|帐户标识符，与用户电子邮件相同。|  
 |ProviderName|字符串|身份验证提供程序名称。|  
 |IsBasicAccount|布尔值|如果此帐户使用电子邮件和密码注册，则为 true；如果此帐户使用提供程序注册，则为 false。|  
   
 ##  <a name="UseSignIn"></a> 用户登录  
- `user sign in` 实体具有以下属性。  
+ `user sign in` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
-|电子邮件|字符串|电子邮件地址。 不得为空，且必须在服务实例中唯一。 最大长度为 254 个字符。|  
+|Email|字符串|电子邮件地址。 不得为空，且必须在服务实例中唯一。 最大长度为 254 个字符。|  
 |密码|字符串|用户帐户密码。|  
 |ReturnUrl|字符串|用户单击“登录”时所在页面的 URL。|  
 |RememberMe|布尔值|是否保存当前用户的信息。|  
@@ -338,9 +338,9 @@ ms.lasthandoff: 12/06/2017
 |UserRegistrationTermsEnabled|布尔值|是否启用条款。|  
   
 ##  <a name="UserSignUp"></a> 用户注册  
- `user sign up` 实体具有以下属性。  
+ `user sign up` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|属性|Type|说明|  
 |--------------|----------|-----------------|  
 |PasswordConfirm|布尔值|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
 |密码|字符串|用户帐户密码。|  
@@ -348,7 +348,7 @@ ms.lasthandoff: 12/06/2017
 |UserRegistrationTerms|字符串|用户必须在登录之前同意的条款。|  
 |UserRegistrationTermsOptions|数字|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
 |ConsentAccepted|布尔值|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
-|电子邮件|字符串|电子邮件地址。 不得为空，且必须在服务实例中唯一。 最大长度为 254 个字符。|  
+|Email|字符串|电子邮件地址。 不得为空，且必须在服务实例中唯一。 最大长度为 254 个字符。|  
 |FirstName|字符串|名字。 不得为空。 最大长度为 100 个字符。|  
 |LastName|字符串|姓氏。 不得为空。 最大长度为 100 个字符。|  
 |UserData|字符串|[注册](api-management-page-controls.md#sign-up)控件使用的值。|  

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 16b206b97f71eeffbb4fddb9e447649034998672
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 97803d62ee42d777336dc87c34a16eff426d24d0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 门户启用 Azure Active Directory 域服务
 本文演示如何使用 Azure 门户启用 Azure Active Directory 域服务 (Azure AD DS)。
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 若要启动“启用 Azure AD 域服务”向导，请完成以下步骤：
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
-2. 在左窗格中，单击“新建”。
+2. 在左窗格中单击“创建资源”。
 3. 在“新建”页中，在搜索栏中输入“域服务”。
 
     ![搜索域服务](./media/getting-started/search-domain-services.png)

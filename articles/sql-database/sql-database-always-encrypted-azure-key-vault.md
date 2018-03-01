@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
-ms.openlocfilehash: 0f26ce26b8b33274291c115ae136d124d79ed349
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: ca4566ced525f0cb732afc15d96d9ef73fd8cff5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>始终加密：保护 SQL 数据库中的敏感数据并将加密密钥存储在 Azure 密钥保管库中
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 01/25/2018
 
 ## <a name="create-a-blank-sql-database"></a>创建空的 SQL 数据库
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 转到“新建” > “数据 + 存储” > “SQL 数据库”。
+2. 转到“创建资源” > “数据库” > “SQL 数据库”。
 3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 若要深入了解如何在 Azure 门户中创建数据库，请参阅[ SQL 数据库](sql-database-get-started-portal.md)。
    
     ![创建空数据库](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)

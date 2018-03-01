@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: wesmc
-ms.openlocfilehash: aee7352ce6f8dd854ce0c6c61c5485fb9a35bb23
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 084d3e4244bc6f19797fadab93265291494cf066
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心绑定
 
@@ -70,7 +70,7 @@ Azure Functions 的当前缩放逻辑的独特之处在于，N 大于分区数�
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
-public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnection")] string myEventHubMessage, TraceWriter log)
+public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] string myEventHubMessage, TraceWriter log)
 {
     log.Info($"C# Event Hub trigger function processed a message: {myEventHubMessage}");
 }
@@ -80,7 +80,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
-public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnection")] EventData myEventHubMessage, TraceWriter log)
+public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] EventData myEventHubMessage, TraceWriter log)
 {
     log.Info($"{Encoding.UTF8.GetString(myEventHubMessage.GetBytes())}");
 }
@@ -89,7 +89,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 ```cs
 [FunctionName("EventHubTriggerCSharp")]
-public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnection")] string[] eventHubMessages, TraceWriter log)
+public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] string[] eventHubMessages, TraceWriter log)
 {
     foreach (var message in eventHubMessages)
     {
@@ -110,7 +110,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
   "name": "myEventHubMessage",
   "direction": "in",
   "path": "MyEventHub",
-  "connection": "myEventHubReadConnectionString"
+  "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
 C# 脚本代码如下所示：
@@ -161,7 +161,7 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
   "name": "myEventHubMessage",
   "direction": "in",
   "path": "MyEventHub",
-  "connection": "myEventHubReadConnectionString"
+  "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
 
@@ -184,7 +184,7 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
   "name": "myEventHubMessage",
   "direction": "in",
   "path": "MyEventHub",
-  "connection": "myEventHubReadConnectionString"
+  "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
 
@@ -205,7 +205,7 @@ module.exports = function (context, myEventHubMessage) {
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
-public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnection")] string myEventHubMessage, TraceWriter log)
+public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] string myEventHubMessage, TraceWriter log)
 {
     ...
 }
@@ -224,7 +224,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 |**name** | 不适用 | 在函数代码中表示事件项的变量的名称。 | 
 |**路径** |**EventHubName** | 事件中心的名称。 | 
 |**consumerGroup** |**ConsumerGroup** | 一个可选属性，用于设置[使用者组](../event-hubs/event-hubs-features.md#event-consumers)，该组用于订阅事件中心中的事件。 如果将其省略，则会使用 `$Default` 使用者组。 | 
-|**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击“命名空间”（而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。|
+|**连接** |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -253,7 +253,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 ```csharp
 [FunctionName("EventHubOutput")]
-[return: EventHub("outputEventHubMessage", Connection = "EventHubConnection")]
+[return: EventHub("outputEventHubMessage", Connection = "EventHubConnectionAppSetting")]
 public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, TraceWriter log)
 {
     log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
@@ -272,7 +272,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
     "type": "eventHub",
     "name": "outputEventHubMessage",
     "path": "myeventhub",
-    "connection": "MyEventHubSend",
+    "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
 ```
@@ -313,7 +313,7 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
     "type": "eventHub",
     "name": "outputEventHubMessage",
     "path": "myeventhub",
-    "connection": "MyEventHubSend",
+    "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
 ```
@@ -338,7 +338,7 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWrit
     "type": "eventHub",
     "name": "outputEventHubMessage",
     "path": "myeventhub",
-    "connection": "MyEventHubSend",
+    "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
 ```
@@ -377,7 +377,7 @@ module.exports = function(context) {
 
 ```csharp
 [FunctionName("EventHubOutput")]
-[return: EventHub("outputEventHubMessage", Connection = "EventHubConnection")]
+[return: EventHub("outputEventHubMessage", Connection = "EventHubConnectionAppSetting")]
 public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, TraceWriter log)
 {
     ...

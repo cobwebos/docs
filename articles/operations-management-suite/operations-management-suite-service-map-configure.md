@@ -1,6 +1,6 @@
 ---
-title: "在 Operations Management Suite 中配置服务映射 | Microsoft Docs"
-description: "服务映射是 Operations Management Suite 解决方案，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供了有关在环境中部署服务映射并在各种方案中使用它的详细信息。"
+title: "在 Azure 中配置服务映射 | Microsoft Docs"
+description: "服务映射是 Azure 中的解决方案，可自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供了有关在环境中部署服务映射并在各种方案中使用它的详细信息。"
 services: operations-management-suite
 documentationcenter: 
 author: daveirwin1
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: e23173fb6708104c39071145595e4eec3454ee76
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: d535c738943b4fea81798b6fc2eedc60ae6be41f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="configure-service-map-in-operations-management-suite"></a>在 Operations Management Suite 中配置服务映射
+# <a name="configure-service-map-in-azure"></a>在 Azure 中配置服务映射
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 借助它，你可以按照自己的想法，将服务器作为提供重要服务的互连系统。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
 
-本文介绍了配置服务映射和载入代理的详细信息。 有关使用服务映射的信息，请参阅[使用 Operations Management Suite 中的服务映射解决方案](operations-management-suite-service-map.md)。
+本文介绍了配置服务映射和载入代理的详细信息。 有关使用服务映射的信息，请参阅[在 Azure 中使用服务映射解决方案](operations-management-suite-service-map.md)。
 
 ## <a name="dependency-agent-downloads"></a>依赖关系代理下载
 | 文件 | 操作系统 | 版本 | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.3.0 | 1F5261CAAF6C8DF4E03E4927DA918B3461B40B41C6BF5845803878D7CF975693 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.3.0 | 7BADFF2411899114F0214766160E4E871A2462DC137141CEEDEFAF528F428ADD  |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.4.1 | 0DCCE16495E7A3254A5FE1B5EADE66110984C3BE799A1FAAD7D119F23614592E |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.4.1 | 1E4ED4CA5940BEA462FC7CAEDF4DF1C7F92C927DE6D538C4DC61DCFDFFAB1A0B  |
 
 
 ## <a name="connected-sources"></a>连接的源
-服务映射从 Microsoft 依赖关系代理获取其数据。 依赖关系代理依赖 OMS 代理连接到 Operations Management Suite。 这意味着服务器必须首先安装和配置 OMS 代理，才能安装依赖关系代理。 下表介绍了服务映射解决方案支持的连接的源。
+服务映射从 Microsoft 依赖关系代理获取其数据。 依赖关系代理依赖 OMS 代理连接到 Log Analytics。 这意味着服务器必须首先安装和配置 OMS 代理，才能安装依赖关系代理。 下表介绍了服务映射解决方案支持的连接的源。
 
 | 连接的源 | 支持 | 说明 |
 |:--|:--|:--|
 | Windows 代理 | 是 | 服务映射从 Windows 代理计算机分析和收集数据。 <br><br>除 [OMS 代理](../log-analytics/log-analytics-windows-agent.md)以外，Windows 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
 | Linux 代理 | 是 | 服务映射从 Linux 代理计算机分析和收集数据。 <br><br>除 [OMS 代理](../log-analytics/log-analytics-linux-agents.md)以外，Linux 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
-| System Center Operations Manager 管理组 | 是 | 服务映射在连接的 [System Center Operations Manager 管理组](../log-analytics/log-analytics-om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br>需要从 System Center Operations Manager 代理计算机直接连接到 Operations Management Suite。 数据从管理组转发到 Operations Management Suite 存储库。|
+| System Center Operations Manager 管理组 | 是 | 服务映射在连接的 [System Center Operations Manager 管理组](../log-analytics/log-analytics-om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br>需要从 System Center Operations Manager 代理计算机直接连接到 Log Analytics。 数据将从管理组转发到 Log Analytics 工作区。|
 | Azure 存储帐户 | 否 | 服务映射从代理计算机中收集数据，因此其中任何数据都不会从 Azure 存储中收集。 |
 
 服务映射仅支持 64 位平台。
 
-在 Windows 中，System Center Operations Manager 和 Operations Management Suite 都可使用 Microsoft Monitoring Agent (MMA) 收集和发送监视数据。 （根据上下文，可将此代理称为 System Center Operations Manager 代理、OMS 代理、Log Analytics 代理、MMA 或直接代理。）System Center Operations Manager 和 Operations Management Suite 提供不同的 MMA 即开即用版本。 每个版本可向 System Center Operations Manager 报告，或向 Operations Management Suite 报告，也可同时向两者报告。  
+在 Windows 中，System Center Operations Manager 和 Log Analytics 都可使用 Microsoft Monitoring Agent (MMA) 收集和发送监视数据。 （根据上下文，可将此代理称为 System Center Operations Manager 代理、OMS 代理、Log Analytics 代理、MMA 或直接代理。）System Center Operations Manager 和 Log Analytics 提供不同的 MMA 现成版本。 这些版本每个都可向 System Center Operations Manager 报告，或向 Log Analytics 报告，也可同时向两者报告。  
 
-在 Linux 上，适用于 Linux 的 OMS 代理收集监视数据并将其发送到 Operations Management Suite。 可对具有 OMS 直接代理的服务器或通过 System Center Operations Manager 管理组附加到 Operations Management Suite 的服务器使用服务映射。  
+在 Linux 上，适用于 Linux 的 OMS 代理收集监视数据并将其发送到 Log Analytics。 可对具有 OMS 直接代理的服务器或通过 System Center Operations Manager 管理组附加到 Log Analytics 的服务器使用服务映射。  
 
-在本文中，所有代理称为“OMS 代理”（无论是在 Linux 或 Windows 上，无论是连接到 System Center Operations Manager 管理组还是直接连接到 Operations Management Suite）。 仅在上下文需要时使用代理的特殊部署名称。
+本文中将所有代理都称为“OMS 代理”（不论是在 Linux 还是在 Windows 上，也不论是连接到 System Center Operations Manager 管理组还是直接连接到 Log Analytics）。 仅在上下文需要时才使用代理的具体部署名称。
 
-服务映射代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 服务映射数据始终由 OMS 代理直接或通过 OMS 网关传输到 Operations Management Suite。
+服务映射代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 服务映射中的数据始终由 OMS 代理直接或通过 OMS 网关传输到 Log Analytics。
 
 ![服务映射代理](media/oms-service-map/agents.png)
 
-如果是 System Center Operations Manager 客户，且拥有连接到 Operations Management Suite 的管理组，则需注意以下几点：
+如果你是一位 System Center Operations Manager 客户且具有连接到 Log Analytics 的管理组：
 
-- 若 System Center Operations Manager 代理可访问 Internet 以连接到 Operations Management Suite，则无需进行附加配置。  
-- 若 System Center Operations Manager 代理无法通过 Internet 访问 Operations Management Suite，则需配置 OMS 网关以适用于 System Center Operations Manager。
+- 如果 System Center Operations Manager 代理可以访问 Internet 来连接到 Log Analytics，则无需进行额外配置。  
+- 如果 System Center Operations Manager 代理无法通过 Internet 访问 Log Analytics，则需配置 OMS 网关来与 System Center Operations Manager 配合使用。
   
-如果使用 OMS 直接代理，则需配置 OMS 代理本身才能连接到 Operations Management Suite 或 OMS 网关。 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 OMS 网关。
+如果使用的是 OMS 直接代理，则需要配置 OMS 代理本身才能连接到 Log Analytics 或 OMS 网关。 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 OMS 网关。
 
 ### <a name="management-packs"></a>管理包
-在 Operations Management Suite 工作区中激活服务映射时，将向该工作区中的所有 Windows 服务器发送 300KB 的管理包。 若在[连接的管理组](../log-analytics/log-analytics-om-agents.md)中使用 System Center Operations Manager 代理，则会从 System Center Operations Manager 部署服务映射管理包。 若直接连接代理，Operations Management Suite 会传送管理包。
+在 Log Analytics 工作区中激活服务映射时，将向该工作区中的所有 Windows 服务器发送 300KB 的管理包。 若在[连接的管理组](../log-analytics/log-analytics-om-agents.md)中使用 System Center Operations Manager 代理，则会从 System Center Operations Manager 部署服务映射管理包。 如果代理是直接连接的，则 Log Analytics 会传送管理包。
 
 管理包名为 Microsoft.IntelligencePacks.ApplicationDependencyMonitor。 它将写入 %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\。 管理包所使用的数据源是 %Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll。
 
@@ -147,7 +147,7 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 # Deploy the Dependency Agent to every VM in a Resource Group
 #
 
-$version = "9.1"
+$version = "9.3"
 $ExtPublisher = "Microsoft.Azure.Monitoring.DependencyAgent"
 $OsExtensionMap = @{ "Windows" = "DependencyAgentWindows"; "Linux" = "DependencyAgentLinux" }
 $rmgroup = "<Your Resource Group Here>"
@@ -180,7 +180,7 @@ ForEach-Object {
 "properties": {
     "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
     "type": "DependencyAgentWindows",
-    "typeHandlerVersion": "9.1",
+    "typeHandlerVersion": "9.3",
     "autoUpgradeMinorVersion": true
 }
 
@@ -235,7 +235,7 @@ sudo rpm -e dependency-agent
 ```
 Ubuntu：
 ```
-sudo dpkg --purge dependency-agent
+sudo apt -y purge dependency-agent
 ```
 ## <a name="troubleshooting"></a>故障排除
 如果安装或运行服务映射时遇到任何问题，可通过本部分内容获得帮助。 如果仍然无法解决问题，请联系 Microsoft 支持部门。
@@ -267,11 +267,11 @@ Microsoft 依赖关系代理基于 Microsoft Visual Studio 运行时库。 如�
 
 * 是否属于 [Operations Management Suite/Log Analytics 的免费定价层](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)？ 免费计划允许最多 5 个仅有的服务映射服务器。 服务映射中不再有任何其他的服务器，即使前 5 个服务器不再发送数据。
 
-* 服务器是否正在向 Operations Management Suite 发送日志和性能数据？ 转到日志搜索，并为计算机运行以下查询： 
+* 服务器是否正在向 Log Analytics 发送日志和性能数据？ 转到日志搜索，并为计算机运行以下查询： 
 
         * Computer="<your computer name here>" | measure count() by Type
         
-  结果中是否有多种不同的事件？ 是否为最新数据？ 如果是，则表示 OMS 代理正常运行并与 Operations Management Suite 服务通信。 如果不是，请在服务器上检查 OMS 代理：[用于 Windows 的 OMS 代理疑难解答](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)或[用于 Linux 的 OMS 代理疑难解答](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md)。
+  结果中是否有多种不同的事件？ 是否为最新数据？ 如果是，则表示 OMS 代理正常运行并正在与 Log Analytics 服务通信。 如果不是，请在服务器上检查 OMS 代理：[用于 Windows 的 OMS 代理疑难解答](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)或[用于 Linux 的 OMS 代理疑难解答](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md)。
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>服务器会在服务映射中显示，但没有任何进程
 如果在服务映射中看到了服务器，但没有任何进程或连接数据，则表明已安装并运行依赖关系代理，但未加载内核驱动程序。 
@@ -350,8 +350,8 @@ Microsoft 依赖关系代理基于 Microsoft Visual Studio 运行时库。 如�
 
 | OS 版本 | 内核版本 |
 |:--|:--|
-| 16.04 | 4.4.0-103<br>4.11.0-1016 |
-| 14.04 | 3.13.0-137<br>4.4.0-103 |
+| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
+| 14.04 | 3.13.\*<br>4.4.\* |
 
 ### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>具有 Unbreakable Enterprise Kernel (UEK) 的 Oracle Enterprise Linux
 #### <a name="oracle-linux-6"></a>Oracle Linux 6

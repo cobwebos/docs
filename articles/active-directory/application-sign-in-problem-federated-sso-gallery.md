@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: b84badda80015600027d7f138bdb4048f6eeaa43
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fa1387c3eb11899bb74418b2ff1af4a5d22a73d9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的库应用程序时出现的问题
 
@@ -43,7 +43,7 @@ SAML 请求中从应用程序发送给 Azure AD 的颁发者属性与应用程�
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -51,7 +51,7 @@ SAML 请求中从应用程序发送给 Azure AD 的颁发者属性与应用程�
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序
 
@@ -73,9 +73,9 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 确保 SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回复 URL”值匹配。
 
-1.  打开[“Azure 门户”](https://portal.azure.com/)，以“全局管理员”或“共同管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -83,7 +83,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序
 
@@ -108,7 +108,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -116,15 +116,15 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6.  从列表中选择要向其分配用户的应用程序。
 
 7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
-8.  单击“用户和组”列表顶部的“添加”按钮，打开“添加分配”边栏选项卡。
+8.  单击“用户和组”列表顶部的“添加”按钮，以打开“添加分配”窗格。
 
-9.  在“添加分配”边栏选项卡中，单击“用户和组”选择器。
+9.  在“添加分配”窗格中，单击“用户和组”选择器。
 
 10. 在“按名称或电子邮件地址搜索”搜索框中，键入要分配的用户的**全名**或**电子邮件地址**。
 
@@ -134,11 +134,11 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 
-14. **可选：**单击“添加分配”边栏选项卡中的“选择角色”选择器可选择要分配给所选用户的角色。
+14. **可选：**单击“添加分配”窗格中的“选择角色”选择器，选择一个角色来分配给所选用户。
 
 15. 单击“分配”按钮，将应用程序分配给选定用户。
 
-稍等片刻，所选用户就能使用解决方案描述部分所述的方法来启动这些应用程序了。
+在一段很短的时间后，所选用户能够使用解决方案描述部分中所述的方法启动这些应用程序。
 
 ## <a name="not-a-valid-saml-request"></a>不是有效的 SAML 请求
 
@@ -176,9 +176,9 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 若要解决此问题，请在 Azure AD 配置中添加唯一标识符值。 若要添加标识符值，请执行以下步骤：
 
-1.  打开[“Azure 门户”](https://portal.azure.com/)，以“全局管理员”或“共同管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -205,7 +205,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -213,11 +213,11 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序
 
-7.  单击应用程序“概述”边栏选项卡左上角的“删除”。
+7.  单击应用程序“概述”窗格左上角的“删除”。
 
 8.  刷新 Azure AD，并从 Azure AD 库添加应用程序。 然后，配置应用程序
 
@@ -237,7 +237,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -245,7 +245,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
- * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+ * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序
 
@@ -255,7 +255,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 9.  选择到期日期。 然后，单击“保存”。
 
-10. 选中“激活新证书”以覆盖活动证书。 然后，单击边栏选项卡顶部的“保存”并选择接受以激活滚动更新证书。
+10. 选中“激活新证书”以覆盖活动证书。 然后，单击窗格顶部的“保存”并选择接受以激活滚动更新证书。
 
 11. 在“SAML 签名证书”部分下，单击“删除”删除“未使用”的证书。
 

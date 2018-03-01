@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.date: 02/14/2018
 ms.author: owend
 ms.custom: mvc
-ms.openlocfilehash: 99798af8cb0a2b13f2c3c3808222113656a5a388
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 083c5a9bb5c57f3287c259900e6a23d6f0a886de
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-an-azure-analysis-services-server-by-using-powershell"></a>使用 PowerShell 创建 Azure Analysis Services 服务器
 
@@ -30,8 +30,8 @@ ms.lasthandoff: 02/21/2018
 > [!NOTE]
 > 创建服务器可能会导致新的计费服务。 有关详细信息，请参阅 [Analysis Services 定价](https://azure.microsoft.com/pricing/details/analysis-services/)。
 
-## <a name="prerequisites"></a>先决条件
-若要完成本快速入门，你需要：
+## <a name="before-you-begin"></a>开始之前
+若要完成本快速入门教程，需要：
 
 * **Azure 订阅**：访问 [Azure 免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p/)以创建帐户。
 * Azure Active Directory：订阅必须与 Azure Active Directory 租户相关联，且该目录中必须有一个帐户。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。

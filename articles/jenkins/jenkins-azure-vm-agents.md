@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 8/25/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: dbb30809ab68079666ecfa81a896c1d5101fb6fb
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 4d45ed14be499ed927f1433e134a029066146eea
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>使用 Azure VM 代理缩放 Jenkins 部署以满足需求
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 10/26/2017
             }
      ```
 
-    完成的服务主体应使用“订阅 ID”的 `id` 字段、“客户端 ID”的 `appId` 值、“客户端密码”的 `password` 和 `https://login.windows.net/<tenant_value>` 的 **OAuth 2.0 令牌终结点** URL。 选择“添加”添加服务主体，然后配置插件以使用新创建的凭据。
+    完成的服务主体应使用 `id` 字段作为**订阅 ID**，使用 `appId` 值作为**客户端 ID**，使用 `password` 作为**客户端密码**，并使用 `tenant` 作为**租户 ID**。 选择“添加”添加服务主体，然后配置插件以使用新创建的凭据。
 
     ![配置 Azure 服务主体](./media/jenkins-azure-vm-agents/new-service-principal.png)
 

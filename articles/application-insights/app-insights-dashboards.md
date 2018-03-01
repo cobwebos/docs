@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a6d3c89f0f99128e2bf754391c79c3d616f0730a
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 5ec0412dc91a7e5c28ee9ee820df9584ffa80cd8
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights 门户中的导航与仪表板
 [在项目中设置 Application Insights](app-insights-overview.md) 之后，有关应用性能和使用情况的遥测数据将出现在 [Azure 门户](https://portal.azure.com)中项目的 Application Insights 资源内。
@@ -25,7 +25,7 @@ ms.lasthandoff: 12/08/2017
 ## <a name="find-your-telemetry"></a>查找遥测数据
 登录到 [Azure 门户](https://portal.azure.com)，并导航到为应用创建的 Application Insights 资源。
 
-![单击“浏览”，选择“Application Insights”，然后选择应用。](./media/app-insights-dashboards/00-start.png)
+![单击“浏览”，选择“Application Insights”，并选择你的应用。](./media/app-insights-dashboards/00-start.png)
 
 应用的概述边栏选项卡（页面）显示应用的关键诊断指标，它是访问其他门户功能所要通过的网关。
 
@@ -117,7 +117,6 @@ ms.lasthandoff: 12/08/2017
 
 ### <a name="essentials-tab"></a>“概要”选项卡
 * [检测密钥](app-insights-create-new-resource.md#copy-the-instrumentation-key) - 标识此应用资源。
-* 定价 - 获取功能，设置用量限制。
 
 ### <a name="app-navigation-bar"></a>应用导航栏
 ![左侧导航栏](./media/app-insights-dashboards/app-left-nav-bar.png)

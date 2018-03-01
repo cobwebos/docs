@@ -2,7 +2,7 @@
 
 1.  使用 Microsoft 帐户凭据登录到 Azure 门户，URL 如下：<https://portal.azure.com/>。 如果是在政府门户中部署设备，请从以下地址登录：<https://portal.azure.us/>
 
-2.  在 Azure 门户中，单击“+ 新建”&gt;“存储”&gt;“StorSimple 虚拟系列”。
+2.  在 Azure 门户中，单击“+ 创建资源”&gt;“存储”&gt;“StorSimple 虚拟系列”。
 
     ![创建新服务](./media/storsimple-virtual-array-create-new-service/createnewservice2.png) 
 

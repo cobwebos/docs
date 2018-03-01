@@ -4,7 +4,7 @@ description: "本文使用通过经典部署模型创建的资源并介绍如何
 services: virtual-machines-windows
 documentationcenter: 
 author: danielsollondon
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 7ccf99d7-7cce-4e3d-bbab-21b751ab0e88
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: f637e3c744d61f6fda755c162609d7cc9f4619c7
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3d3fdd8865a293c5e2f0df6a97910ac8e2a07d4c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>将 Azure 高级存储用于虚拟机上的 SQL Server
 ## <a name="overview"></a>概述
@@ -49,7 +49,7 @@ ms.lasthandoff: 01/19/2018
 要使用高级存储，需要使用 DS 系列虚拟机 (VM)。 如果以前尚未在云服务中使用 DS 系列虚拟机，则必须在重新创建 VM 作为 DS* 角色大小之前，删除现有 VM、保留附加磁盘，并创建新的云服务。 有关虚拟机大小的详细信息，请参阅 [Azure 的虚拟机和云服务大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ### <a name="cloud-services"></a>云服务
-在新的云服务中创建 VM 时，只能将 DS* VM 用于高级存储。 如果在 Azure 中使用 SQL Server Always On，则 Always On 侦听器将引用与云服务关联的 Azure 内部或外部负载均衡器 IP 地址。 本文重点介绍如何在此方案中迁移，同时保持可用性。
+在新的云服务中创建 VM 时，只能将 DS* VM 用于高级存储。 如果在 Azure 中使用 SQL Server AlwaysOn，则 AlwaysOn 侦听器会引用与云服务关联的 Azure 内部或外部负载均衡器 IP 地址。 本文重点介绍如何在此方案中迁移，同时保持可用性。
 
 > [!NOTE]
 > DS* 系列必须是部署到新的云服务的第一个 VM。
@@ -61,7 +61,7 @@ ms.lasthandoff: 01/19/2018
 
 ![RegionalVNET][1]
 
-可以提供 Microsoft 支持票证以迁移到区域 VNET，Microsoft 将进行更改，然后为完成迁移到区域 VNET，更改网络配置中的 AffinityGroup 属性。 首先导出 PowerShell 中的网络配置，然后将 **VirtualNetworkSite** 元素中的 **AffinityGroup** 属性替换为 **Location** 属性。 指定 `Location = XXXX`，其中 `XXXX` 是 Azure 区域。 然后导入新配置。
+可提出要迁移到区域 VNET 的 Microsoft 支持票证。 随后，Microsoft 即会进行更改。 要完成到区域 VNET 的迁移，请更改网络配置中的 AffinityGroup 属性。 首先导出 PowerShell 中的网络配置，然后将 **VirtualNetworkSite** 元素中的 **AffinityGroup** 属性替换为 **Location** 属性。 指定 `Location = XXXX`，其中 `XXXX` 是 Azure 区域。 然后导入新配置。
 
 例如，考虑以下 VNET 配置：
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 01/19/2018
     </VirtualNetworkSite>
 
 ### <a name="storage-accounts"></a>存储帐户
-需要创建专为高级存储配置的新存储帐户。 请注意，在存储帐户（而不是单个 VHD）上设置使用高级存储，但使用 DS* 系列 VM 时，则可以从高级和标准存储帐户附加 VHD。 如果不想将操作系统 VHD 放到高级存储帐户上，则可以考虑此项。
+需要新建一个专为高级存储配置的存储帐户。 请注意，在存储帐户（而不是单个 VHD）上设置使用高级存储，但使用 DS* 系列 VM 时，则可以从高级和标准存储帐户附加 VHD。 如果不想将操作系统 VHD 放到高级存储帐户上，则可以考虑此项。
 
 以下使用“Premium_LRS”**类型**的 **New-AzureStorageAccountPowerShell** 命令将创建高级存储帐户：
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 01/19/2018
 附加 VHD 后，便不能变更缓存设置。 将需要分离 VHD，再使用已更新的缓存设置重新附加该 VHD。
 
 ### <a name="windows-storage-spaces"></a>Windows 存储空间
-可以像使用以前的标准存储一样使用 [Windows 存储空间](https://technet.microsoft.com/library/hh831739.aspx)，这会允许迁移已在利用存储空间的 VM。 [附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)中的示例（步骤 9 及前面的步骤）演示了提取并导入附加了多个 VHD 的 VM 的 Powershell 代码。
+可如在之前的标准存储操作一样使用 [Windows 存储空间](https://technet.microsoft.com/library/hh831739.aspx)，这样即可对当前使用存储空间的 VM 进行迁移。 [附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)中的示例（步骤 9 及前面的步骤）演示了提取并导入附加了多个 VHD 的 VM 的 Powershell 代码。
 
 存储池已用于标准 Azure 存储帐户以提高吞吐量并减少延迟。 在使用新部署的高级存储测试存储池时，你可能会发现价值，但这样做会为存储设置添加额外的复杂性。
 
@@ -111,7 +111,7 @@ ms.lasthandoff: 01/19/2018
 >
 >
 
-但是，如果使用的是由多个 VHD 构成的 Windows 存储空间，则需要查看原始脚本，以确定哪些附加 VHD 在哪个特定池中，这样便可以为每个磁盘相应地设置缓存设置。
+但是，如果使用的 Windows 存储空间由多个 VHD 构成，则需要查看原始脚本，确认每个附加的 VHD 位于哪些特定池中，然后才可相应地对每个磁盘设定缓存设置。
 
 如果没有可向你显示哪些 VHD 映射到存储池的原始脚本，则可以使用以下步骤来确定磁盘/存储池映射。
 
@@ -138,14 +138,14 @@ ms.lasthandoff: 01/19/2018
 
 现在，可以使用此信息将附加 VHD 关联到存储池中的物理磁盘。
 
-将 VHD 映射到存储池中的物理磁盘后，可以将其分离并复制到高级存储帐户，并使用正确的缓存设置附加它们。 请参阅[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)中的示例，步骤 8 到步骤 12。 以下步骤显示如何将 VM 附加的 VHD 磁盘配置提取到 CSV 文件、复制 VHD、变更磁盘配置缓存设置，最后将 VM 重新部署为带所有附加磁盘的 DS 系列 VM。
+将 VHD 映射到存储池中的物理磁盘后，可以将其分离并复制到高级存储帐户，并使用正确的缓存设置附加它们。 请参阅[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)步骤 8 至 12 中的示例。 以下步骤显示如何将 VM 附加的 VHD 磁盘配置提取到 CSV 文件、复制 VHD、变更磁盘配置缓存设置，最后将 VM 重新部署为带所有附加磁盘的 DS 系列 VM。
 
 ### <a name="vm-storage-bandwidth-and-vhd-storage-throughput"></a>VM 存储带宽和 VHD 存储吞吐量
-存储量性能取决于指定的 DS* VM 大小和 VHD 大小。 VM 针对可附加的 VHD 数量以及它们支持的最大带宽（MB/秒）提供不同限额。 有关特定带宽数字，请参阅 [Azure 的虚拟机和云服务大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+存储量性能取决于指定的 DS* VM 大小和 VHD 大小。 可附加到 VM 的 VHD 限额数量不同，且每个 VM 支持的最大带宽（MB/秒）也不同。 有关特定带宽数字，请参阅 [Azure 的虚拟机和云服务大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 较大的磁盘大小可提高 IOPS。 考虑迁移路径时，应考虑这一点。 有关详细信息，[请参阅 IOPS 和磁盘类型的表](../premium-storage.md#scalability-and-performance-targets)。
 
-最后，考虑到 VM 具有不同的最大磁盘带宽，它们将支持所有附加磁盘。 在高负载下可使可供该 VM 角色大小使用的最大磁盘带宽饱和。 例如，Standard_DS14 将最多支持 512MB/秒；因此，使用三个 P30 磁盘可使 VM 的磁盘带宽饱和。 但在此示例中，可以超出吞吐量限制，具体取决于读取和写入 IO 的组合。
+最后，需考虑到对于所附加的每个磁盘，VM 支持的最大磁盘带宽不同。 在高负载下可使可供该 VM 角色大小使用的最大磁盘带宽饱和。 例如，Standard_DS14 最多支持 512MB/秒；因此，三个 P30 磁盘就能让 VM 的磁盘带宽达到饱和。 但在此示例中，可以超出吞吐量限制，具体取决于读取和写入 IO 的组合。
 
 ## <a name="new-deployments"></a>新建部署
 接下来的两部分将演示如何将 SQL Server VM 部署到高级存储。 如前所述，不一定需要将操作系统磁盘放到高级存储上。 如果打算将任何密集型 IO 工作负荷放置在操作系统 VHD 上，则可以选择这样做。
@@ -197,7 +197,7 @@ ms.lasthandoff: 01/19/2018
     New-AzureStorageContainer -Name $containerName -Context $xioContext
 
 #### <a name="step-5-placing-os-vhd-on-standard-or-premium-storage"></a>步骤 5：将操作系统 VHD 放置在标准或高级存储上
-    #NOTE: Set up subscription and default storage account which will be used to place the OS VHD in
+    #NOTE: Set up subscription and default storage account which is used to place the OS VHD in
 
     #If you want to place the OS VHD Premium Storage Account
     Set-AzureSubscription -SubscriptionName $mysubscription -CurrentStorageAccount  $newxiostorageaccountname  
@@ -232,7 +232,7 @@ ms.lasthandoff: 01/19/2018
     $vmConfigsl = New-AzureVMConfig -Name $vmName -InstanceSize $newInstanceSize -ImageName $image  -AvailabilitySetName $availabilitySet  ` | Add-AzureProvisioningConfig -Windows ` -AdminUserName $userName -Password $pass | Set-AzureSubnet -SubnetNames $subnet | Set-AzureStaticVNetIP -IPAddress $ipaddr
 
     #Add Data and Log Disks to VM Config
-    #Note the size specified ‘-DiskSizeInGB 1023’, this will attach 2 x P30 Premium Storage Disk Type
+    #Note the size specified ‘-DiskSizeInGB 1023’, this attaches 2 x P30 Premium Storage Disk Type
     #Utilising the Premium Storage enabled Storage account
 
     $vmConfigsl | Add-AzureDataDisk -CreateNew -DiskSizeInGB 1023 -LUN 0 -HostCaching "ReadOnly"  -DiskLabel "DataDisk1" -MediaLocation "https://$newxiostorageaccountname.blob.core.windows.net/vhds/$vmName-data1.vhd"
@@ -251,7 +251,7 @@ ms.lasthandoff: 01/19/2018
 
 
 ### <a name="create-a-new-vm-to-use-premium-storage-with-a-custom-image"></a>使用自定义映像创建新的 VM 以使用高级存储
-此方案演示拥有驻留在标准存储帐户中的现有自定义映像的位置。 如前所述，如果要将操作系统 VHD 放置在高级存储上，则需要复制标准存储帐户中存在的映像，并将它们传输到高级存储中，才能使用它。 如果在本地有一个映像，也可以使用此方法将该映像直接复制到高级存储帐户。
+此方案演示拥有驻留在标准存储帐户中的现有自定义映像的位置。 如前所述，如果要将操作系统 VHD 放置在高级存储上，需要复制标准存储帐户中存在的映像，并将它们传输到高级存储中，才能使用它们。 如果在本地有一个映像，也可以使用此方法将该映像直接复制到高级存储帐户。
 
 #### <a name="step-1-create-storage-account"></a>步骤 1：创建存储帐户
     $mysubscription = "DansSubscription"
@@ -270,7 +270,7 @@ ms.lasthandoff: 01/19/2018
 
 
 #### <a name="step-3-use-existing-image"></a>步骤 3：使用现有映像
-可以使用现有映像， 也可以[创建现有虚拟机的映像](../classic/capture-image-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 请注意，创建映像的虚拟机不一定是 DS* 虚拟机。 获得映像后，以下步骤演示如何使用 **Start-AzureStorageBlobCopy** PowerShell commandlet 将其复制到高级存储帐户。
+可以使用现有映像， 也可以[创建现有虚拟机的映像](../classic/capture-image-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 请注意，执行映像的计算器不一定要是 DS* 计算机。 获得映像后，以下步骤演示如何使用 **Start-AzureStorageBlobCopy** PowerShell commandlet 将其复制到高级存储帐户。
 
     #Get storage account keys:
     #Standard Storage account
@@ -316,7 +316,7 @@ ms.lasthandoff: 01/19/2018
     $subnet = "Clients"
     $ipaddr = "192.168.0.41"
 
-    #This will need to be a new cloud service
+    #This needs to be a new cloud service
     $destcloudsvc = "danregsvcamsxio2"
 
     #Use to DS Series VM
@@ -342,29 +342,29 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="existing-deployments-that-do-not-use-always-on-availability-groups"></a>未使用 Always On 可用性组的现有部署
 > [!NOTE]
-> 对于现有部署，请首先参阅本主题的[先决条件](#prerequisites-for-premium-storage)部分。
+> 对于现有部署，请先参阅本文的[先决条件](#prerequisites-for-premium-storage)部分。
 >
 >
 
 未使用 Always On 可用性组的 SQL Server 部署和使用这些组的 SQL Server 部署有不同的注意事项。 如果未使用 Always On 并且有现有的独立 SQL Server，则可以通过使用新的云服务和存储帐户升级到高级存储。 请考虑以下选项：
 
-* **创建新的 SQL Server VM**。 可以创建使用高级存储帐户的新 SQL Server VM，如“新建部署”中所述。 然后备份并还原 SQL Server 配置和用户数据库。 将需要更新应用程序以引用新的 SQL Server（如果正在从内部或外部访问它）。 需要复制所有“数据库外”对象，就像执行并排 (SxS) SQL Server 迁移一样。 这包括登录名、证书和链接服务器等对象。
-* **迁移现有 SQL Server VM**。 这将需要使 SQL Server VM 脱机，并将其传输到新的云服务，包括将其所有附加 VHD 复制到高级存储帐户。 当 VM 联机时，应用程序将像以前一样引用服务器主机名。 请注意，现有磁盘的大小会影响性能特性。 例如，400 GB 磁盘将向上舍入到 P20。 如果知道不需要该磁盘性能，则可以将 VM 重新创建为 DS 系列 VM，并附加具有所需大小/性能指标的高级存储 VHD。 然后，可以分离并重新附加 SQL DB 文件。
+* **创建新的 SQL Server VM**。 可以创建使用高级存储帐户的新 SQL Server VM，如“新建部署”中所述。 然后对 SQL Server 和用户数据库进行备份和还原。 无论是从内部还是外部进行访问，都需要更新应用程序才可引用新的 SQL Server 。 需要复制所有“数据库外”对象，就像执行并排 (SxS) SQL Server 迁移一样。 这包括登录名、证书和链接服务器等对象。
+* **迁移现有 SQL Server VM**。 为此，需使 SQL Server VM 脱机，然后将其传输到新的云服务，包括将其附加的所有 VHD 复制到高级存储帐户。 VM 重新联机后，应用程序将如之前一般引用服务器主机名。 请注意，现有磁盘的大小会映像性能特征。 例如，400 GB 磁盘将向上舍入到 P20。 如果知道不需要该磁盘性能，则可以将 VM 重新创建为 DS 系列 VM，并附加具有所需大小/性能指标的高级存储 VHD。 然后，可以分离并重新附加 SQL DB 文件。
 
 > [!NOTE]
-> 复制 VHD 磁盘时应注意大小，取决于大小意味着这些磁盘将归入何种高级存储磁盘类型，此类型将确定磁盘性能指标。 Azure 将向上舍入到最接近的磁盘大小，因此，如果有一个 400GB 磁盘，则此磁盘将向上舍入到 P20。 根据操作系统 VHD 的现有 IO 要求，可能不需要将此 VHD 迁移到高级存储帐户。
+> 复制 VHD 磁盘时，应注意磁盘大小。取决于大小是指这些磁盘所属的高级存储磁盘类型，它决定了磁盘性能规格。 Azure 向上四舍五入到最近的磁盘大小，因此如果你的磁盘为 400GB，系统将舍入为 P20。 根据操作系统 VHD 的现有 IO 要求，可能不需要将此 VHD 迁移到高级存储帐户。
 >
 >
 
-如果从外部访问 SQL Server，则云服务 VIP 将更改。 还将需要更新终结点、ACL 和 DNS 设置。
+如果是从外部访问 SQL Server，则云服务 VIP 将不同。 还必须更新终结点、ACL 和 DNS 设置。
 
 ## <a name="existing-deployments-that-use-always-on-availability-groups"></a>使用 Always On 可用性组的现有部署
 > [!NOTE]
-> 对于现有部署，请首先参阅本主题的[先决条件](#prerequisites-for-premium-storage)部分。
+> 对于现有部署，请先参阅本文的[先决条件](#prerequisites-for-premium-storage)部分。
 >
 >
 
-在本部分开始，我们将了解 Always On 如何与 Azure 网络交互。 然后，我们会将迁移细分为两种方案：可以容忍停机一段时间的迁移和必须实现最短停机时间的迁移。
+在本部分的开头，将介绍 AlwaysOn 如何与 Azure 网络进行交互。 然后将迁移细分为两个部分：可容忍某些停机情况的迁移，以及必须达到最低停机时间的迁移。
 
 本地 SQL Server Always On 可用性组在本地使用这样的侦听器：它注册一个虚拟 DNS 名称，以及在一个或多个 SQL Server 之间共享的一个 IP 地址。 当客户端连接时，会将它们通过侦听器 IP 路由到主 SQL Server。 这是在该时间拥有 Always On IP 资源的服务器。
 
@@ -373,7 +373,7 @@ ms.lasthandoff: 01/19/2018
 在 Microsoft Azure 中，只能将一个 IP 地址分配给 VM 上的 NIC，因此，为了实现与本地相同的抽象层，Azure 将利用分配给内部/外部负载均衡器 (ILB/ELB) 的 IP 地址。 在服务器间共享的 IP 资源将设置为与 ILB/ELB 相同的 IP。 此 IP 在 DNS 中发布，客户端流量将通过 ILB/ELB 传递到主 SQL Server 副本。 ILB/ELB 知道哪个 SQL Server 为主，因为它使用探测器来探测 Always On IP 资源。 在前面的示例中，它会探测包含 ELB/ILB 引用的终结点的每个节点，做出响应的则是主 SQL Server。
 
 > [!NOTE]
-> ILB 和 ELB 都分配给特定 Azure 云服务，因此 Azure 中的任何云迁移都很可能意味着负载均衡器 IP 将更改。
+> ILB 和 ELB 均必须分配给特定的 Azure 云服务，因此最可能出现的情况是 Azure 中的云迁移均会造成负载均衡器 IP 发生改变。
 >
 >
 
@@ -390,7 +390,7 @@ ms.lasthandoff: 01/19/2018
 * 群集验证。
 * 对新的辅助副本测试 Always On 故障转移。
 
-如果为提高 IO 吞吐量你使用的是 VM 中的 Windows 存储池，则在进行完整的群集验证过程中，会将这些存储池脱机。 向群集添加节点时需要进行验证测试。 运行测试所需的时间可能会有所不同，因此，应在有代表性的测试环境中对此进行测试，以获得这会需要的大致时间。
+如果在 VM 中使用 Windows 存储池来提高 IO 吞吐量，则这些副本在完全群集验证期间处于脱机状态。 向群集添加节点时需要进行验证测试。 运行测试所花的时间不同，因此需在各自的测试环境中进行测试，了解该操作所耗费的大致时间。
 
 应设置可以对新添加的节点执行手动故障转移和混沌测试的时间，以确保 Always On 高可用性功能正常工作。
 
@@ -425,7 +425,7 @@ ms.lasthandoff: 01/19/2018
 ##### <a name="advantages"></a>优点
 * 在将新 SQL Server（SQL Server 和应用程序）添加到 Always On 之前，可以对其进行测试。
 * 可以根据确切需求更改 VM 大小和自定义存储。 但是，保持所有 SQL 文件路径不变会非常有益。
-* 可以控制何时开始将数据库备份传输到辅助副本。 这不同于使用 Azure **Start-AzureStorageBlobCopy** commandlet 复制 VHD，因为这是异步复制。
+* 可控制何时开始将 DB 备份转移到辅助副本。 这不同于使用 Azure **Start-AzureStorageBlobCopy** commandlet 复制 VHD，因为这是异步复制。
 
 ##### <a name="disadvantages"></a>缺点
 * 使用 Windows 存储池时，在对新的附加节点进行完整群集验证的过程中，会存在群集停机时间。
@@ -468,7 +468,7 @@ ms.lasthandoff: 01/19/2018
 * 如果选择将 Always On 群集组脱机来换出 IP 地址，则会增加停机时间。 可以通过对添加的 IP 地址资源使用 OR 依赖关系和可能的所有者来避免出现这种情况。 请参阅[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)的“在同一子网中添加 IP 地址资源”部分。
 
 > [!NOTE]
-> 如果要让添加的节点作为 Always On 故障转移伙伴参与其中，则需要添加带有对负载均衡集的引用的 Azure 终结点。 运行 **Add-AzureEndpoint** 命令来执行此操作时，当前连接将保持打开，但在更新负载均衡器之前，将无法与侦听器建立新连接。 在测试时，看到此现像持续 90 到 120 秒，应该对此进行测试。
+> 如果要让添加的节点作为 Always On 故障转移伙伴参与其中，则需要添加带有对负载均衡集的引用的 Azure 终结点。 运行 Add-AzureEndpoint 命令来执行此操作时，当前连接保持断开，但在更新负载均衡器之后，才能建立到侦听器的新连接。 在测试时，看到此现像持续 90 到 120 秒，应该对此进行测试。
 >
 >
 
@@ -480,8 +480,8 @@ ms.lasthandoff: 01/19/2018
 
 ##### <a name="disadvantages"></a>缺点
 * 在迁移期间，会暂时失去高可用性和灾难恢复。
-* 由于这是 1 对 1 迁移，必须使用支持 VHD 数量的最小 VM 大小，因此，可能不能减小 VM 大小。
-* 此方案将使用 Azure **Start-AzureStorageBlobCopy** commandlet，它是异步的。 复制完成后没有 SLA。 复制时间各不相同，这取决于在队列中等待的时间，还取决于要传输的数据量。 如果传输转到另一个在其他区域中支持高级存储的 Azure 数据中心，则复制时间将增加。 如果只有 2 个节点，请考虑在复制所用时间长于测试时的可能的缓解措施。 这可以包括以下建议。
+* 由于此操作是一对一迁移，因此必须使用支持 VHD 数量的最小 VM 大小，这样可能就无法缩小 VM 的大小。
+* 此方案将使用 Azure **Start-AzureStorageBlobCopy** commandlet，它是异步的。 复制完成后没有 SLA。 复制所用的时间不同，而这取决于在队列中的等待情况，还取决于要传输的数据量。 如果传输转到另一个在其他区域中支持高级存储的 Azure 数据中心，则复制时间将增加。 如果只有 2 个节点，请考虑在复制所用时间长于测试时的可能的缓解措施。 这可以包括以下建议。
   * 在使用商定的停机时间进行迁移之前，添加临时的第 3 个 SQL Server 节点以实现 HA。
   * 在 Azure 计划的维护之外运行迁移。
   * 确保已正确配置群集仲裁。  
@@ -523,8 +523,8 @@ ms.lasthandoff: 01/19/2018
 
 ##### <a name="disadvantages"></a>缺点
 * 根据客户端对 SQL Server 的访问权限，当 SQL Server 在应用程序的备用 DC 中运行时，延迟时间可能会增加。
-* VHD 到高级存储的复制时间可能会很长。 这可能会影响是否要在可用性组中保留节点的决策。 在所需的迁移过程中，运行日志密集型工作负荷时请考虑这一点，因为主节点将必须在其事务日志中保留未复制的事务。 因此，此日志可能会显著增长。
-* 此方案将使用 Azure **Start-AzureStorageBlobCopy** commandlet，它是异步的。 完成后没有 SLA。 复制时间各不相同，这取决于在队列中等待的时间，还取决于要传输的数据量。 因此，在第 2 个数据中心中只有一个节点，在复制所用时间长于测试的情况下，应该采取缓解措施。 这可以包括以下建议。
+* VHD 到高级存储的复制时间可能会很长。 这可能会影响是否要在可用性组中保留节点的决策。 请在确定何时需要在迁移期间运行日志密集型工作负荷时考虑这一点，因为主节点必须将未复制的事务保留在事务日志中。 因此，此日志可能会显著增长。
+* 此方案将使用 Azure **Start-AzureStorageBlobCopy** commandlet，它是异步的。 完成后没有 SLA。 复制所用的时间不同，而这取决于在队列中的等待情况，还取决于要传输的数据量。 因此，在第 2 个数据中心中只有一个节点，在复制所用时间长于测试的情况下，应该采取缓解措施。 这些迁移步骤包括以下方面：
   * 在使用商定的停机时间进行迁移之前，添加临时的第 2 个 SQL 节点以实现 HA。
   * 在 Azure 计划的维护之外运行迁移。
   * 确保已正确配置群集仲裁。
@@ -546,7 +546,7 @@ ms.lasthandoff: 01/19/2018
 * 将 AFP 切换回 SQL1 和 SQL2
 
 ## <a name="appendix-migrating-a-multisite-always-on-cluster-to-premium-storage"></a>附录：将多站点 Always On 群集迁移到高级存储
-本主题的剩余部分提供了将多站点 Always On 群集转换为高级存储的详细示例。 它还将侦听器从使用外部负载均衡器 (ELB) 转换为使用内部负载均衡器 (ILB)。
+本文的剩余部分介绍了一个将多站点 AlwaysOn 群集转换为高级存储的详细示例。 它还将侦听器从使用外部负载均衡器 (ELB) 转换为使用内部负载均衡器 (ILB)。
 
 ### <a name="environment"></a>环境
 * Windows 2k12/SQL 2k12
@@ -556,7 +556,7 @@ ms.lasthandoff: 01/19/2018
 ![Appendix1][11]
 
 ### <a name="vm"></a>VM：
-在此示例中，我们将演示从 ELB 移到 ILB。 ELB 是在 ILB 以前提供的，因此此示例演示如何在迁移期间切换到 ILB。
+本例中，将展示如何从 ELB 迁移到 ILB。 在 ILB 之前推出的是 ELB，因此本例展示如何在迁移期间切换到 ILB。
 
 ![Appendix2][12]
 
@@ -601,7 +601,7 @@ ms.lasthandoff: 01/19/2018
     New-AzureService $destcloudsvc -Location $location
 
 #### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>步骤 2：在资源上增加允许的故障 <Optional>
-在某些属于 Always On 可用性组的资源上，对于在某一期间可以发生的故障数有限制，超过该限制后，群集服务将尝试重新启动该资源组。 在完成此过程时，建议增加此限制，因为如果未手动故障转移或通过关闭计算机来触发故障转移，则可能会接近此限制。
+在 AlwaysOn 可用性组中包含的某些资源上，限定了在群集服务尝试重启资源组的固定时间内可出现的失败数。 在完成此过程时，建议增加此限制，因为如果未手动故障转移或通过关闭计算机来触发故障转移，则可能会接近此限制。
 
 明智的做法是，使允许的故障数加倍，为此，请在故障转移群集管理器中，转到 Always On 资源组的属性：
 
@@ -610,22 +610,22 @@ ms.lasthandoff: 01/19/2018
 将最大故障数更改为 6。
 
 #### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>步骤 3：为群集组添加 IP 地址资源 <Optional>
-如果为群集组只提供一个 IP 地址，并且已根据云子网调整此地址，请注意，如果意外使云中在该网络上的所有群集节点脱机，则该群集 IP 资源和群集网络名称将无法联机。 如果发生这种情况，将阻止对其他群集资源进行更新。
+如果群集组只有一个 IP 地址，而此地址分配给了云子网，则请注意，如果意外地使此玩过上云端的所有群集脱机，群集 IP 资源和群集网络名称将无法再联机。 此情况下，这会阻止更新到其他群集资源。
 
 #### <a name="step-4-dns-configuration"></a>步骤 4：DNS 配置
-能否实现平稳过渡取决于如何利用和更新 DNS。
-安装 Always On 时，它将创建一个 Windows 群集资源组，如果打开故障转移群集管理器，将看到它将至少包含三个资源，其中本文档引用的两个资源是：
+转移是否顺畅取决于如何利用和更新 DNS。
+安装 AlwaysOn 时，会创建一个 Windows 群集资源组；如果打开群集资源管理器，会看到最低程度时具有三个资源，而文档所引用的两个资源为：
 
-* 虚拟网络名称 (VNN) - 这是客户端想要通过 Always On 连接到 SQL Server 时要连接的 DNS 名称。
-* IP 地址资源 - 这是与 VNN 关联的 IP 地址，可以具有多个 IP 地址，在多站点配置中，将针对每个站点/子网有一个 IP 地址。
+* 虚拟网络名称 (VNN) - 想要通过 AlwaysOn 连接到 SQL Server 时客户端连接到的 DNS 名称。
+* IP 地址资源 - 与 VNN 关联的 IP 地址，可具有多个 IP 地址，且在多站点配置中，每个站点/子网均具有一个 IP 地址。
 
-连接到 SQL Sevrer 时，SQL Server 客户端驱动程序将检索与侦听器关联的 DNS 记录，并尝试连接到每个 Always On 关联的 IP 地址，下面我们将讨论可能会对此产生影响的一些因素。
+连接到 SQL Server 时，SQL Server 客户端驱动程序会检索与侦听器关联的 DNS 记录，并尝试连接到每个关联到 AlwaysOn 的 IP 地址。 接下来，将讨论会影响此进程的一些因素。
 
 与侦听器名称关联的并发 DNS 记录数不仅取决于关联的 IP 地址数，而且还取决于 Always ON VNN 资源的故障转移群集的“RegisterAllIpProviders”设置。
 
 在 Azure 中部署 Always On 时，可使用不同的步骤创建侦听器和 IP 地址，必须手动将“RegisterAllIpProviders”配置为 1，这与本地 Always On 部署不同，后者已设置为 1。
 
-如果“RegisterAllIpProviders”为 0，则在与侦听器关联的 DNS 中只看到一条 DNS 记录：
+如果“RegisterAllIpProviders”为零，则与侦听器关联的 DNS 中仅显示一条 DNS 记录：
 
 ![Appendix4][14]
 
@@ -633,7 +633,7 @@ ms.lasthandoff: 01/19/2018
 
 ![Appendix5][15]
 
-以下代码将转储 VNN 设置并为你设置它，请注意，要使更改生效，需要将 VNN 脱机，并重新联机，使侦听器脱机这种做法会导致客户端连接中断。
+以下代码会转储 VNN 设置并对其进行设置。 需要使 VNN 脱机，再将其还原到联机状态，才能使更改生效。 这会使侦听器脱机，进而导致客户端连接中断。
 
     ##Always On Listener Name
     $ListenerName = "Mylistener"
@@ -642,9 +642,9 @@ ms.lasthandoff: 01/19/2018
     ##Set RegisterAllProvidersIP
     Get-ClusterResource $ListenerName| Set-ClusterParameter RegisterAllProvidersIP  1
 
-在后面的迁移步骤中，将需要使用引用负载均衡器的已更新 IP 地址更新 Always On 侦听器，这会涉及删除和添加 IP 地址资源。 更新 IP 之后，需要确保已在 DNS 区域中更新新的 IP 地址并且客户端将更新其本地 DNS 缓存。
+在之后的迁移步骤中，需要使用引用负载均衡器的更新后的 IP 地址来更新 AlwaysOn 侦听器，此操作涉及到删除和添加 IP 地址资源。 更新 IP 之后，需要确保已在 DNS 区域中更新新的 IP 地址并且客户端将更新其本地 DNS 缓存。
 
-如果客户端驻留在不同网络段，并引用不同的 DNS 服务器，则需要考虑在迁移期间将发生哪些与 DNS 区域传送相关的事件，因为应用程序重新连接时间将至少受到侦听器的任何新 IP 地址的区域传送时间的约束。 如果在此处受到时间约束，则应与 Windows 团队讨论并测试强制增量区域传送，同时还应将 DNS 主机记录设为较小的生存时间 (TTL)，以使客户端更新。 有关详细信息，请参阅[增量区域传送](https://technet.microsoft.com/library/cc958973.aspx)和 [Start-DnsServerZoneTransfer](https://technet.microsoft.com/library/jj649917.aspx)。
+如果你的客户端驻留在不同的网络段中且引用不同的 DNS 服务器，则需要考虑到迁移期间 DNS 区域复制发生的情况，因为侦听器的任意新 IP 地址的区域复制时间都会制约应用程序连接时间（可能还有其他制约情况）。 如果在此处受到时间约束，则应与 Windows 团队讨论并测试强制增量区域传送，同时还应将 DNS 主机记录设为较小的生存时间 (TTL)，以使客户端更新。 有关详细信息，请参阅[增量区域传送](https://technet.microsoft.com/library/cc958973.aspx)和 [Start-DnsServerZoneTransfer](https://technet.microsoft.com/library/jj649917.aspx)。
 
 默认情况下，与 Azure 中的 Always On 中的侦听器关联的 DNS 记录的 TTL 为 1200 秒。 如果在迁移期间受时间约束，你可能希望减少此时间，以确保客户端使用侦听器更新后的 IP 地址更新其 DNS。 可以通过转储 VNN 的配置来查看并修改该配置：
 
@@ -656,19 +656,20 @@ ms.lasthandoff: 01/19/2018
     #Set HostRecordTTL Examples
     Get-ClusterResource $ListenerName| Set-ClusterParameter -Name "HostRecordTTL" 120
 
-请注意，“HostRecordTTL”越低，将发生的 DNS 通信量越高。
+> [!NOTE]
+> “HostRecordTTL”越低，DNS 流量越大。
 
 ##### <a name="client-application-settings"></a>客户端应用程序设置
-如果 SQL 客户端应用程序支持 .Net 4.5 SQLClient，则可以使用“MULTISUBNETFAILOVER=TRUE”关键字，建议应用此关键字，因为这样可以在故障转移期间更快地连接到 SQL Always On 可用性组。 它可以在故障转移过程中枚举与 Always On 侦听器并行关联的所有 IP 地址，并执行更激进的 TCP 连接重试速度。
+如果你的 SQL 客户端应用程序支持 .Net 4.5 SQLClient，则可使用“MULTISUBNETFAILOVER=TRUE”关键字。 必须使用此关键字，因为它可加快故障转移期间到 SQL AlwaysOn 可用性组的连接速度。 它可以在故障转移过程中枚举与 Always On 侦听器并行关联的所有 IP 地址，并执行更激进的 TCP 连接重试速度。
 
-有关上述设置的详细信息，请参阅 [MultiSubnetFailover 关键字和关联功能](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover)。 另请参阅 [SqlClient 对高可用性、灾难恢复的支持](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx)。
+有关先前设置的详细信息，请参阅[MultiSubnetFailover 关键字及关联的功能](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover)。 另请参阅 [SqlClient 对高可用性、灾难恢复的支持](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx)。
 
 #### <a name="step-5-cluster-quorum-settings"></a>步骤 5：群集仲裁设置
-由于一次将要让至少一个 SQL Server 关闭，应修改群集仲裁设置，如果要对 2 个节点使用文件共享见证 (FSW)，则应将仲裁设置为允许多数节点和利用动态投票，这样做是为了允许单个节点保持运转。
+由于你计划一次至少关闭一个 SQL Server，因此必须修改群集仲裁设置，且如果使用带两个节点的文件共享见证 (FSW)，也必须设置仲裁来实现节点多数原则和进行动态投票，这样即可使单个节点保持运行。
 
     Set-ClusterQuorum -NodeMajority  
 
-有关管理和配置群集仲裁的详细信息，请参阅[配置和管理 Windows Server 2012 故障转移群集中的仲裁](https://technet.microsoft.com/library/jj612870.aspx)。
+若要深入了解如何管理和配置群集仲裁，请参阅[在 Windows Server 2012 故障转移群集中配置和管理仲裁](https://technet.microsoft.com/library/jj612870.aspx)。
 
 #### <a name="step-6-extract-existing-endpoints-and-acls"></a>步骤 6：提取现有终结点和 ACL
     #GET Endpoint info
@@ -676,15 +677,15 @@ ms.lasthandoff: 01/19/2018
     #GET ACL Rules for Each EP, this example is for the Always On Endpoint
     Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate | Get-AzureAclConfig -EndpointName "myAOEndPoint-LB"  
 
-将这些内容保存到文本文件中。
+将此文本保存到文件中。
 
 #### <a name="step-7-change-failover-partners-and-replication-modes"></a>步骤 7：更改故障转移伙伴和复制模式
-如果使用 2 个以上的 SQL Server，则应将另一个 DC 或本地中的另一个辅助副本的故障转移更改为“同步”，并将其设为“自动故障转移伙伴”(AFP)，这样便可以在进行更改的同时维护高可用性。 可以通过修改 TSQL 来执行此操作（虽然 SSMS 也可以）：
+如果具有两个以上的 SQL Server，则必须将另一 DC 或本地项中另一辅助节点的故障转移设置为“同步”，并将其设置为自动故障转移伙伴 (AFP)，这样即可在进行更改时保证高可用性。 可以通过修改 TSQL 来执行此操作（虽然 SSMS 也可以）：
 
 ![Appendix6][16]
 
 #### <a name="step-8-remove-secondary-vm-from-cloud-service"></a>步骤 8：从云服务中删除辅助 VM
-应计划先迁移云辅助节点，如果这当前是主节点，则应启动手动故障转移。
+必须先计划迁移云辅助节点。 如果此节点当前为主节点，则必须手动进行故障转移。
 
     $vmNameToMigrate="dansqlams2"
 
@@ -734,9 +735,9 @@ ms.lasthandoff: 01/19/2018
     Remove-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate
 
 #### <a name="step-9-change-disk-caching-settings-in-csv-file-and-save"></a>步骤 9：更改 CSV 文件中的磁盘缓存设置并保存
-对于数据卷，这些应设置为 READONLY。
+对于数据卷，必须将这些项设置为“只读”。
 
-对于 TLOG 卷，这些应设置为 NONE。
+对于 TLOG 卷，必须将其设置为“无”。
 
 ![Appendix7][17]
 
@@ -891,7 +892,7 @@ ms.lasthandoff: 01/19/2018
 现在，应检查 SQL Server 客户端网络上的 DNS 服务器，并确保群集已为添加的 IP 地址添加额外的主机记录。 如果这些 DNS 服务器未更新，请考虑强制进行 DNS 区域传送并确保该子网中的客户端能够解析为这两个 Always On IP 地址，以便无需等待自动 DNS 复制。
 
 #### <a name="step-16-reconfigure-always-on"></a>步骤 16：重新配置 Always On
-此时，等待已迁移的辅助节点与本地节点完全重新同步并切换到同步复制节点，使其成为 AFP。  
+此时，需在已迁移的辅助节点与本地节点完全同步之前稍作等待，然后切换到同步复制节点并将其设置为 AFP。  
 
 #### <a name="step-17-migrate-second-node"></a>步骤 17：迁移辅助节点
     $vmNameToMigrate="dansqlams1"
@@ -943,9 +944,9 @@ ms.lasthandoff: 01/19/2018
     Remove-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate
 
 #### <a name="step-18-change-disk-caching-settings-in-csv-file-and-save"></a>步骤 18：更改 CSV 文件中的磁盘缓存设置并保存
-对于数据卷，这些应设置为 READONLY。
+对于数据卷，应将缓存设置设为“只读”。
 
-对于 TLOG 卷，这些应设置为 NONE。
+对于 TLOG 卷，应将缓存设置设为“无”。
 
 ![Appendix11][21]
 
@@ -1073,22 +1074,22 @@ ms.lasthandoff: 01/19/2018
     #http://msdn.microsoft.com/library/azure/dn495192.aspx
 
 #### <a name="step-23-test-failover"></a>步骤 23：测试故障转移
-现在，应让已迁移的节点与本地 Always On 节点同步，将其置于同步复制模式，并等到它完成同步。 然后从本地故障转移到第一个已迁移的节点（即 AFP）。 故障转移完成后，将最后一个已迁移的节点更改为 AFP。
+请在已迁移的节点与本地 AlwaysOn 节点同步之前稍作等待。 将其置于同步复制模式中，并在同步完成前稍作等待。 然后从本地故障转移到第一个已迁移的节点（即 AFP）。 故障转移完成后，将最后一个已迁移的节点更改为 AFP。
 
 应测试所有节点之间的故障转移，并运行所有混沌测试，以确保故障转移及时地正常工作。
 
 #### <a name="step-24-put-back-cluster-quorum-settings--dns-ttl--failover-pntrs--sync-settings"></a>步骤 24：置回群集仲裁设置/DNS TTL/故障转移伙伴/同步设置
 ##### <a name="adding-ip-address-resource-on-same-subnet"></a>在同一子网上添加 IP 地址资源
-如果只有 2 个 SQL Server 并且想要将它们迁移到新的云服务，但想要将它们保留在同一子网中，则可以避免使侦听器脱机以删除原始 Always On IP 地址并添加新的 IP 地址。 如果要将 VM 迁移到另一个子网，则不需要执行此操作，因为会有一个附加群集网络会引用该子网。
+如果你只有两个 SQL Server，你想将它们迁移到新的云服务但希望两者位于同一子网上，可让侦听器继续保持联机，以删除原始 AlwaysOn IP 地址并添加新的 IP 地址。 如果要将 VM 迁移到其他子网，则无需执行此操作，因为还存在一个引用该子网的群集网络。
 
 启动已迁移的辅助节点并在故障转移现有的主节点之前将其添加到新云服务的新 IP 地址资源中后，应在群集故障转移管理器执行以下步骤：
 
 若要添加 IP 地址，请参阅[附录](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)步骤 14。
 
-1. 对于当前的 IP 地址资源，将可能的所有者更改为“现有的主 SQL Server”（在以下示例中为“dansqlams4”）：
+1. 对于当前 IP 地址资源，将可能具有的所有者更改为“Existing Primary SQL Server”（在本例中为“dansqlams4”）：
 
     ![Appendix13][23]
-2. 对于新的 IP 地址资源，将可能的所有者更改为“已迁移的辅助 SQL Server”（在以下示例中为“dansqlams5”）：
+2. 对于新的 IP 地址资源，将可能具有的所有者更改为“Migrated secondary SQL Server”（在本例中为“dansqlams5”）：
 
     ![Appendix14][24]
 3. 设置了此项后便可以进行故障转移了，迁移了最后一个节点后，应编辑“可能的所有者”，以便将该节点添加为可能的所有者：

@@ -2,23 +2,17 @@
 title: "Azure Site Recovery：常见问题解答 | Microsoft 文档"
 description: "本文讨论了有关 Azure Site Recovery 的常见问题。"
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
 manager: carmonm
-editor: 
-ms.assetid: 5cdc4bcd-b4fe-48c7-8be1-1db39bd9c078
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/19/2017
+ms.date: 02/18/2018
 ms.author: raynew
-ms.openlocfilehash: 82cec6df5d5d6ecf1147cac29b8fc46966ea57de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1a7d57c1f1f84e7ce3b931c2911ae7394b066f8d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery：常见问题 (FAQ)
 本文包含有关 Azure Site Recovery 的常见问题。 如果在阅读本文后有任何问题，请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)上发布问题。
@@ -77,7 +71,7 @@ ms.lasthandoff: 12/08/2017
 ## <a name="pricing"></a>定价
 定价相关问题，请参阅 [Azure Site Recovery 定价](https://azure.microsoft.com/en-in/pricing/details/site-recovery/)中的常见问题解答。
 
-## <a name="security"></a>安全
+## <a name="security"></a>“安全”
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>复制数据是否会发送到 Site Recovery 服务？
 不会。站点恢复不拦截复制的数据，也不拥有虚拟机或物理服务器上运行哪些项目的任何相关信息。
 复制数据在本地 Hyper-V 主机、VMware 虚拟机监控程序或物理服务器和 Azure 存储或辅助站点之间交换。 站点恢复并不具有拦截该数据的能力。 只有协调复制与故障转移所需的元数据将发送到站点恢复服务。  
@@ -166,17 +160,17 @@ Azure 具有复原能力。 站点恢复已经能够根据需要故障转移到�
 * [详细了解](site-recovery-failback-azure-to-vmware.md) VMware VM 和物理服务器故障回复的信息
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-failover-back-to-a-different-host"></a>如果我的本地主机未响应或崩溃，我是否可以故障转移回到另一个主机？
-是，可以使用备用位置恢复从 Azure 故障回复到另一个主机。 通过用于 VMware 和 Hyper-v 虚拟机的以下链接详细了解选项。
+是，可以使用备用位置恢复从 Azure 故障回复到另一个主机。 有关这些选项的详细信息，请参阅针对 VMware 和 Hyper-V 虚拟机的以下链接。
 
-* [对于 VMware 虚拟机](site-recovery-how-to-failback-azure-to-vmware.md#fail-back-to-the-original-or-alternate-location)
-* [对于 Hyper-v 虚拟机](site-recovery-failback-from-azure-to-hyper-v.md#failback-to-an-alternate-location)
+* [针对 VMware 虚拟机](concepts-types-of-failback.md#alternate-location-recovery-alr)
+* [针对 Hyper-V 虚拟机](hyper-v-azure-failback.md#perform-failback)
 
 ## <a name="service-providers"></a>服务提供商
 ### <a name="im-a-service-provider-does-site-recovery-work-for-dedicated-and-shared-infrastructure-models"></a>我是服务提供商。 站点恢复适用于专用和共享的基础结构模型吗？
 是的，站点恢复同时支持专用与共享的基础结构模型。
 
 ### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>对于服务提供商而言，我的租户标识是否与 Site Recovery 服务共享？
-否。 租户标识是匿名的。 租户不需要访问 Site Recovery 门户。 只有服务提供商管理员才能与门户交互。
+不会。 租户标识是匿名的。 租户不需要访问 Site Recovery 门户。 只有服务提供商管理员才能与门户交互。
 
 ### <a name="will-tenant-application-data-ever-go-to-azure"></a>租户应用程序数据是否会发往 Azure？
 在服务提供商拥有的站点之间进行复制时，永远不会将应用程序数据发送到 Azure。 数据进行传输中加密并直接在服务提供商站点之间复制。
@@ -184,7 +178,7 @@ Azure 具有复原能力。 站点恢复已经能够根据需要故障转移到�
 如果是复制到 Azure，应用程序数据将发送到 Azure 存储而不是站点恢复服务。 数据进行传输中加密并在 Azure 中保持加密状态。
 
 ### <a name="will-my-tenants-receive-a-bill-for-any-azure-services"></a>我的租户会收到来自 Azure 服务的帐单吗？
-否。 Azure 直接与服务提供商保持计费关系。 服务提供商责任为其租户生成特定的帐单。
+不会。 Azure 直接与服务提供商保持计费关系。 服务提供商责任为其租户生成特定的帐单。
 
 ### <a name="if-im-replicating-to-azure-do-we-need-to-run-virtual-machines-in-azure-at-all-times"></a>如果我复制到 Azure，需要在 Azure 中随时运行虚拟机吗？
 不需要。会将数据复制到订阅中的 Azure 存储帐户。 执行测试故障转移（灾难恢复演练）或实际的故障转移时，站点恢复会在订阅中自动创建虚拟机。

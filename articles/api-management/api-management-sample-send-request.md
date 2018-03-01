@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 6b7f1268ea4893307713931e7288f5d38c5ee080
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7c32e5ae02e294ee88c19f058e04249c7c9969e
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>通过 Azure API 管理服务使用外部服务
 Azure API 管理服务中的策略可以单纯根据传入的请求、传出的响应以及基本配置信息执行多种不同的有用工作。 但是，如果能够与 API 管理策略中的外部服务进行交互，则可以使更多的想法成为可能。
 
-我们以前曾经介绍过如何与[日志记录、监视及分析的 Azure 事件中心服务](api-management-log-to-eventhub-sample.md)交互。 本文将演示可用来与基于 HTTP 的任何外部服务进行交互的策略。 这些策略可用于触发远程事件，或检索可用于以某种方式处理原始请求和响应的信息。
+你以前见过如何与[用于日志记录、监视及分析的 Azure 事件中心服务](api-management-log-to-eventhub-sample.md)交互。 本文演示可用来与基于 HTTP 的任何外部服务进行交互的策略。 这些策略可用于触发远程事件，或检索可用于以某种方式处理原始请求和响应的信息。
 
 ## <a name="send-one-way-request"></a>Send-One-Way-Request
-最简单的外部交互方式也许是即发即弃，使外部服务能够获得某种重要事件的通知。 我们可以使用控制流策略 `choose` 来检测任何一种感兴趣的状况，如果条件成立，可以使用 [send-one-way-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest) 策略发出外部 HTTP 请求。 这可以是对消息传送系统（例如 Hipchat 或 Slack）的请求，也可能是对邮件 API（例如 SendGrid 或 MailChimp）的请求，或者是针对某些例如 PagerDuty 的重大支持事件的请求。 所有这些消息传送系统都提供可方便调用的简单 HTTP API。
+最简单的外部交互方式也许是即发即弃，使外部服务能够获得某种重要事件的通知。 可以使用控制流策略 `choose` 来检测自己感兴趣的任何类型的条件。  如果条件满足，可以使用 [send-one-way-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest) 策略发起外部 HTTP 请求。 这可以是对消息传送系统（例如 Hipchat 或 Slack）的请求，也可能是对邮件 API（例如 SendGrid 或 MailChimp）的请求，或者是针对某些例如 PagerDuty 的重大支持事件的请求。 所有这些消息传送系统都提供可供调用的简单 HTTP API。
 
 ### <a name="alerting-with-slack"></a>使用 Slack 发出警报
-以下示例演示当 HTTP 响应状态代码大于或等于 500 时如何将消息发送到 Slack 聊天室。 500 范围错误表示后端 API 发生问题，而 API 的客户端无法解决此类问题。 通常我们需要进行某种形式的介入。  
+以下示例演示当 HTTP 响应状态代码大于或等于 500 时如何将消息发送到 Slack 聊天室。 500 范围错误表示后端 API 发生问题，而 API 的客户端无法解决此类问题。 通常需要在 API 管理部件上进行某种形式的介入。  
 
 ```xml
 <choose>
@@ -56,7 +56,7 @@ Azure API 管理服务中的策略可以单纯根据传入的请求、传出的�
 </choose>
 ```
 
-Slack 具有入站 Web Hook 的概念。 配置入站 Web Hook 时，Slack 将生成特殊的 URL，让用户执行简单的 POST 请求，并将消息传递到 Slack 通道。 我们创建的 JSON 主体基于 Slack 定义的格式。
+Slack 具有入站 Web Hook 的概念。 配置入站 Web Hook 时，Slack 将生成特殊的 URL，让用户执行简单的 POST 请求，并将消息传递到 Slack 通道。 创建的 JSON 主体基于 Slack 定义的格式。
 
 ![Slack Web Hook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
@@ -67,20 +67,20 @@ Slack 具有入站 Web Hook 的概念。 配置入站 Web Hook 时，Slack 将�
 `send-request` 策略能够使用外部服务来执行复杂的处理函数，并将数据返回到 API 管理服务，此服务可用于进一步处理策略。
 
 ### <a name="authorizing-reference-tokens"></a>授权引用令牌
-API 管理的主要功能是保护后端资源。 如果 API 使用的授权服务器可以像 [Azure Active Directory](../active-directory/active-directory-aadconnect.md) 一样创建 [JWT 令牌](http://jwt.io/)作为其 OAuth2 流程的一部分，则可以使用 `validate-jwt` 策略来验证令牌的有效性。 但是，某些授权服务器创建所谓的[引用令牌](http://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)，这些令牌无法在不对授权服务器进行回调的情况下进行验证。
+API 管理的主要功能是保护后端资源。 如果 API 使用的授权服务器可以像 [Azure Active Directory](../active-directory/active-directory-aadconnect.md) 一样创建 [JWT 令牌](http://jwt.io/)作为其 OAuth2 流程的一部分，则可以使用 `validate-jwt` 策略来验证令牌的有效性。 某些授权服务器创建所谓的[引用令牌](http://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)，这些令牌无法在不对授权服务器进行回调的情况下进行验证。
 
 ### <a name="standardized-introspection"></a>标准化自检
-过去一直没有标准化的方式可使用授权服务器来验证引用令牌。 但是，IETF 最近发布的提议标准 [RFC 7662](https://tools.ietf.org/html/rfc7662) 定义了资源服务器如何验证令牌的有效性。
+对于使用授权服务器来验证引用令牌，过去一直没有标准化的方式。 但是，IETF 最近发布的提议标准 [RFC 7662](https://tools.ietf.org/html/rfc7662) 定义了资源服务器如何验证令牌的有效性。
 
 ### <a name="extracting-the-token"></a>提取令牌
-第一个步骤是从授权标头撷取令牌。 标头值应该使用 `Bearer` 授权方案、单个空格和授权令牌根据 [RFC 6750](http://tools.ietf.org/html/rfc6750#section-2.1) 进行格式化。 但是，有一些情况需要省略授权分配。 为了在分析时说明这一点，我们使用空格来分区标头值，并从字符串的返回数组中选择最后一个字符串。 这样可为格式错误的授权标头提供应对措施。
+第一个步骤是从授权标头撷取令牌。 标头值应该使用 `Bearer` 授权方案、单个空格和授权令牌根据 [RFC 6750](http://tools.ietf.org/html/rfc6750#section-2.1) 进行格式化。 但是，有一些情况需要省略授权分配。 考虑到这一点，API 管理在分析时会使用空格来拆分标头值，并从返回的字符串数组中选择最后一个字符串。 这样可为格式错误的授权标头提供应对措施。
 
 ```xml
 <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
 ```
 
 ### <a name="making-the-validation-request"></a>发出验证请求
-获取授权令牌后，可以发出请求来验证令牌。 RFC 7662 调用此程序进行自检，并请求将 HTML 窗体 `POST` 到自检资源。 HTML 窗体必须至少包含具有键 `token` 的键/值对。 对授权服务器的请求也必须经过身份验证，确保恶意客户端无法获取有效令牌。
+获取授权令牌后，API 管理就可以发出验证令牌的请求。 RFC 7662 调用此程序进行自检，并请求将 HTML 窗体 `POST` 到自检资源。 HTML 窗体必须至少包含具有键 `token` 的键/值对。 对授权服务器的请求也必须经过身份验证，确保恶意客户端无法获取有效令牌。
 
 ```xml
 <send-request mode="new" response-variable-name="tokenstate" timeout="20" ignore-error="true">
@@ -99,10 +99,10 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 ### <a name="checking-the-response"></a>检查响应
 `response-variable-name` 属性可用于提供所返回响应的访问权限。 此属性中定义的名称可以用于作为 `context.Variables` 字典的键来访问 `IResponse` 对象。
 
-从响应对象中可以检索主体，RFC 7622 告诉我们，响应必须是 JSON 对象，并且必须至少包含一个名为 `active` 的属性（布尔值）。 当 `active` 为 true，则令牌被视为有效。
+从响应对象中可以检索主体，RFC 7622 会告知 API 管理，响应必须是 JSON 对象，并且必须至少包含一个名为 `active` 的属性（布尔值）。 当 `active` 为 true，则令牌被视为有效。
 
 ### <a name="reporting-failure"></a>报告失败
-我们使用 `<choose>` 策略来检测令牌是否无效，如果无效，则返回 401 响应。
+可以使用 `<choose>` 策略来检测令牌是否无效，如果无效，则返回 401 响应。
 
 ```xml
 <choose>
@@ -117,10 +117,10 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 </choose>
 ```
 
-根据 [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) 中说明的 `bearer` 令牌的使用方式，我们还返回了 `WWW-Authenticate` 标头以及 401 响应。 WWW-Authenticate 的目的是指示客户端如何构造适当授权的请求。 由于有各式各样可能具有 OAuth2 架构的处理方法，因此很难传达所有必要的信息。 幸好我们仍持续努力来帮助[客户端发现如何适当地将请求授权给资源服务器](http://tools.ietf.org/html/draft-jones-oauth-discovery-00)。
+根据 [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) 中说明的 `bearer` 令牌的使用方式，API 管理还返回了 `WWW-Authenticate` 标头以及 401 响应。 WWW-Authenticate 的目的是指示客户端如何构造适当授权的请求。 由于有各式各样可能具有 OAuth2 架构的处理方法，因此很难传达所有必要的信息。 幸好我们仍持续努力来帮助[客户端发现如何适当地将请求授权给资源服务器](http://tools.ietf.org/html/draft-jones-oauth-discovery-00)。
 
 ### <a name="final-solution"></a>最终解决方案
-将所有信息放在一起，就能得到以下策略：
+在结束时，你获得以下策略：
 
 ```xml
 <inbound>
@@ -159,22 +159,22 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 这是众多示例中唯一一个说明如何使用 `send-request` 策略，通过 API 管理服务将有用的外部服务集成到请求和响应的过程。
 
 ## <a name="response-composition"></a>响应组合
-`send-request` 策略可用于增强对后端系统的主要请求（如同我们在上述示例中所见），或者用于完全取代后端调用。 使用此技术可以轻松创建聚合自多个不同系统的复合资源。
+`send-request` 策略可用于增强对后端系统的主要请求（如同你在上述示例中所见），或者用于完全取代后端调用。 使用此技术可以轻松创建聚合自多个不同系统的复合资源。
 
 ### <a name="building-a-dashboard"></a>构建仪表板
 有时我们希望能够公开多个后端系统中的信息，例如，驱动仪表板。 KPI 来自所有不同的后端，但是习惯不提供它们的直接访问权限，并且如果所有信息都是检索自单个请求，这就非常有用。 也许有些后端信息需要进行某种切片和细分，需要先稍微处理一下！ 如果知道用户习惯按 F5 键来查看其性能不佳的指标是否可能更改时，为了降低后端负载，能够缓存该复合资源就非常有用。    
 
 ### <a name="faking-the-resource"></a>伪装资源
-构建仪表板资源的第一个步骤是在 API 管理发布者门户中配置新的操作。 这用于设置编写策略以构建动态资源的占位符操作。
+构建仪表板资源的第一步是在 Azure 门户中配置新的操作。 这是占位符操作，用于配置编写策略以构建动态资源。
 
 ![仪表板操作](./media/api-management-sample-send-request/api-management-dashboard-operation.png)
 
 ### <a name="making-the-requests"></a>发出请求
-创建 `dashboard` 操作后，可以专门针对该操作配置策略。 
+创建该操作后，可以专门针对该操作配置策略。 
 
 ![仪表板操作](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
-第一个步骤是提取来自传入请求的任何查询参数，以便可以将其转发到后端。 在本示例中，仪表板每隔一段时间显示信息，因此具有 `fromDate` 和 `toDate` 参数。 我们可以使用 `set-variable` 策略来提取请求 URL 中的信息。
+第一个步骤是提取来自传入请求的任何查询参数，以便将其转发到后端。 在本示例中，仪表板每隔一段时间显示信息，因此具有 `fromDate` 和 `toDate` 参数。 可以使用 `set-variable` 策略来提取请求 URL 中的信息。
 
 ```xml
 <set-variable name="fromDate" value="@(context.Request.Url.Query["fromDate"].Last())">
@@ -205,7 +205,7 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 </send-request>
 ```
 
-这些请求将按顺序执行，但这不是理想的做法。 在即将推出的版本中，将引入名为 `wait` 的新策略，它能使所有这些请求并行运行。
+这些请求按顺序执行，但这不是理想的做法。 
 
 ### <a name="responding"></a>响应
 若要构造复合响应，可以使用 [return-response](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) 策略。 `set-body` 元素可以使用表达式构造新的 `JObject` 以及嵌入为属性的所有组件表示形式。
@@ -278,15 +278,8 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 </policies>
 ```
 
-在占位符操作的配置中，可以将仪表板资源设置为至少缓存一小时，因为我们知道数据的性质意味着即使它在一个小时后就会过期，但仍可以充分有效地向用户传达重要信息。
+在配置占位符操作时，可以将仪表板资源配置为至少缓存一小时。 
 
 ## <a name="summary"></a>摘要
 Azure API 管理服务提供可根据需要应用到 HTTP 流量的灵活策略，并支持后端服务的组合。 不管是要使用警报、校验、验证功能还是基于多个后端服务创建新的复合资源来增强 API 网关，`send-request` 和相关策略都能使这种想法成为可能。
-
-## <a name="watch-a-video-overview-of-these-policies"></a>观看这些策略的视频概述
-有关本文中所述 [send-one-way-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest)、[send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) 和 [return-response](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) 策略的详细信息，请观看以下视频。
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Send-Request-and-Return-Response-Policies/player]
-> 
-> 
 

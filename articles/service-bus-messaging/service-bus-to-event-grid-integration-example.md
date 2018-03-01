@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: 8aff62dd32395c1ef292942e977467779f945931
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2a4d17673340d145de9a3514f920c74f7eebf6b6
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-service-bus-to-azure-event-grid-examples"></a>Azure 服务总线到 Azure 事件网格示例
 
@@ -118,7 +118,7 @@ public class GridEvent
 
 ## <a name="connect-function-and-namespace-via-event-grid"></a>通过事件网格连接函数和命名空间
 
-下一步是将函数和服务总线命名空间绑定在一起。 就此示例来说，请使用 Azure 门户。 请参阅[概念](service-bus-to-event-grid-integration-concept.md)页，了解如何使用 PowerShell 或 Azure CLI 来达到同一效果。
+下一步是将函数和服务总线命名空间绑定在一起。 就此示例来说，请使用 Azure 门户。 请参阅[概念](service-bus-to-event-grid-integration-concept.md 页，了解如何使用 PowerShell 或 Azure CLI 来达到同一效果。
 
 若要创建新的 Azure 事件网格订阅，请导航到 Azure 门户中的命名空间，然后选择“事件网格”边栏选项卡。 单击“+ 事件订阅”。
 
@@ -190,10 +190,10 @@ const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 [Azure 事件网格](https://docs.microsoft.com/en-us/azure/azure-functions/)。
-* 详细了解 [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/)。
-* 了解有关 [Azure 逻辑应用](https://docs.microsoft.com/en-us/azure/logic-apps/)的详细信息。
-* 详细了解 [Azure 服务总线](https://docs.microsoft.com/en-us/azure/azure-functions/)。
+* 详细了解 [Azure 事件网格](https://docs.microsoft.com/azure/event-grid/)。
+* 详细了解 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)。
+* 了解有关 [Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/)的详细信息。
+* 详细了解 [Azure 服务总线](https://docs.microsoft.com/azure/service-bus/)。
 
 [2]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid2.png
 [3]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid3.png

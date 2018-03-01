@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: a0079c1f4265e1c2564b85247cf5f5e0289799db
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 0a3bbfe32bde0cd3971450f5a9a909dcf8b5d793
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Azure AD Node.js Web 应用 入门
 此处，我们使用 Passport 进行以下操作：
@@ -48,14 +48,14 @@ Passport 是 Node.js 的身份验证中间件。 Passport 很灵活并且采用�
 
 2. 在页面顶部的菜单中选择帐户。 在“目录”列表下选择要注册应用程序的 Active Directory 租户。
 
-3. 在屏幕左侧的菜单中，选择“更多服务”，并选择“Azure Active Directory”。
+3. 在屏幕左侧的菜单中，选择“所有服务”，并选择“Azure Active Directory”。
 
 4. 选择“应用注册”，并选择“添加”。
 
 5. 根据提示创建一个 **Web 应用程序**和/或 **WebAPI**。
   * 应用程序的“名称”向用户描述应用程序。
 
-  * “登录 URL”是应用的基本 URL。  框架的默认值是 `http://localhost:3000/auth/openid/return`` 。
+  * “登录 URL”是应用的基本 URL。  框架的默认值为 `http://localhost:3000/auth/openid/return`。
 
 6. 注册后，Azure AD 会为应用分配唯一的应用程序 ID。 在后续部分中需用到此值，因此，请从应用程序页复制此值。
 7. 从应用程序的“设置” -> “属性”页中，更新应用 ID URI。 “应用程序 ID URI”是应用程序的唯一标识符。 约定使用的格式是 `https://<tenant-domain>/<app-name>`，例如：`https://contoso.onmicrosoft.com/my-first-aad-app`。

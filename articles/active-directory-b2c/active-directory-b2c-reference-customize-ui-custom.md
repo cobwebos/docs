@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
-ms.openlocfilehash: f07e05a1786f8afc1ccecf21994b1ad263ead285
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 40245c25a7f80db27a25a0d34eb20f1057fc5e02
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>使用自定义策略来自定义用户旅程的 UI
 
@@ -28,11 +28,11 @@ ms.lasthandoff: 12/11/2017
 > 本文深入介绍 UI 自定义的工作方式，以及如何使用标识体验框架通过 B2C 自定义策略实现这种自定义
 
 
-无缝用户体验是任何企业到消费者解决方案的关键所在。 无缝用户体验是指，不管在哪种设备或浏览器上，用户在我们服务中的经历与他们在自己的服务中的经历没有任何差别。
+无缝用户体验是任何企业到消费者解决方案的关键所在。 无缝用户体验是指，不管是在设备上还是在浏览器上，用户在我们服务中的经历与他们在自己的服务中的经历没有任何差别。
 
 ## <a name="understand-the-cors-way-for-ui-customization"></a>了解用于 UI 自定义的 CORS 方法
 
-Azure AD B2C 允许在 Azure AD B2C 可能通过自定义策略提供和显示的各个页面上自定义用户体验 (UX) 的外观。
+Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各个页面上自定义用户体验 (UX) 的外观。
 
 出于此目的，Azure AD B2C 会在使用者的浏览器中运行代码，并使用新式标准方法[跨域资源共享 (CORS)](http://www.w3.org/TR/cors/) 从自定义策略中指定的、指向 HTML5/CSS 模板的特定 URL 加载自定义内容。 CORS 是一种机制，允许从资源来源域外部的另一个域请求网页上的受限资源，如字体。
 
@@ -60,11 +60,11 @@ Azure AD B2C 允许在 Azure AD B2C 可能通过自定义策略提供和显示�
 </html>
 ```
 
-页面的 Azure AD B2C 相关内容将注入此 div，页面的其余部分由你控制。 Azure AD B2C JavaScript 代码将提取内容，并将我们的 HTML 注入此特定 div 元素。 Azure AD B2C 会适当地注入以下控件：帐户选择器控件、登录控件、多重身份验证（目前为基于电话）控件和属性集合控件。 Azure AD B2C 确保所有控件符合 HTML5 规范且可访问、可以完全设置所有控件的样式，并且控件版本不会倒退。
+页面的 Azure AD B2C 相关内容将注入此 div，页面的其余部分由你控制。 Azure AD B2C JavaScript 代码将提取内容，并将 HTML 注入此特定 div 元素。 Azure AD B2C 会适当地注入以下控件：帐户选择器控件、登录控件、多重身份验证（目前为基于电话）控件和属性集合控件。 Azure AD B2C 确保所有控件符合 HTML5 规范且可访问、可以完全设置所有控件的样式，并且控件版本不会倒退。
 
 合并的内容最终以动态文档的形式显示给使用者。
 
-若要确保上述过程按预期运行，必须：
+若要确保一切按预期运行，必须：
 
 - 确保内容符合 HTML5 规范且可访问
 - 确保为 CORS 启用了内容服务器。
@@ -72,7 +72,7 @@ Azure AD B2C 允许在 Azure AD B2C 可能通过自定义策略提供和显示�
 - 为所有链接和 CSS 内容使用绝对 URL，例如 https://yourdomain/content。
 
 > [!TIP]
-> 若要验证托管内容的站点是否已启用 CORS 并测试 CORS 请求，可以使用站点 http://test-cors.org/。 借助此站点，只需将 CORS 请求发送到远程服务器（测试是否支持 CORS），或者将 CORS 请求发送到测试服务器（探索 CORS 的某些功能）。
+> 若要验证托管内容的站点是否已启用 CORS 并测试 CORS 请求，可以使用站点 http://test-cors.org/。 可以借助此站点将 CORS 请求发送到远程服务器（测试是否支持 CORS），或者将 CORS 请求发送到测试服务器（探索 CORS 的某些功能）。
 
 > [!TIP]
 > 站点 http://enable-cors.org/ 也构成了用于实现 CORS 的极有用资源。
@@ -81,44 +81,44 @@ Azure AD B2C 允许在 Azure AD B2C 可能通过自定义策略提供和显示�
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-创建存储帐户是先决条件之一。 需要有一个 Azure 订阅来创建 Azure Blob 存储帐户。 可以在 [Azure 网站](https://azure.microsoft.com/en-us/pricing/free-trial/)注册免费试用版。
+创建存储帐户是先决条件之一。 需要有一个 Azure 订阅来创建 Azure Blob 存储帐户。 可以在 [Azure 网站](https://azure.microsoft.com/pricing/free-trial/)注册免费试用版。
 
 1. 打开浏览会话并导航到 [Azure 门户](https://portal.azure.com)。
 2. 使用管理凭据登录。
-3. 单击“+ 新建” > “数据 + 存储设备” > “存储帐户”。  此时会打开“创建存储帐户”边栏选项卡。
+3. 单击“创建资源” > “存储” > “存储帐户”。  此时会打开“创建存储帐户”窗格。
 4. 在“名称”中，提供存储帐户的名称，例如 *contoso369b2c*。 此值稍后将引用为 *storageAccountName*。
-5. 选择适当的定价层、资源组和订阅。 确保已选中“固定到启动板”选项。 单击“创建” 。
-6. 返回到启动板，并单击刚刚创建的存储帐户。
-7. 在“服务”部分中单击“Blob”。 此时会打开“Blob 服务”边栏选项卡。
+5. 选择适当的定价层、资源组和订阅。 确保已选中“固定到启动板”选项。 单击“创建”。
+6. 返回到启动板，并单击创建的存储帐户。
+7. 在“服务”部分中单击“Blob”。 此时会打开“Blob 服务”窗格。
 8. 单击“+ 容器”。
 9. 在“名称”中提供容器的名称，例如 *b2c*。 此值稍后将引用为 *containerName*。
-9. 为“访问类型”选择“Blob”。 单击“创建” 。
-10. 创建的容器会显示在“Blob 服务”边栏选项卡上的列表中。
-11. 关闭“Blob”边栏选项卡。
-12. 在“存储帐户”边栏选项卡中，单击“密钥”图标。 此时会打开“访问密钥”边栏选项卡。  
+9. 为“访问类型”选择“Blob”。 单击“创建”。
+10. 创建的容器会显示在“Blob 服务”窗格上的列表中。
+11. 关闭“Blob”窗格。
+12. 在“存储帐户”窗格中，单击“密钥”图标。 此时会打开“访问密钥”窗格。  
 13. 记下“密钥 1”的值。 此值稍后将引用为 *key1*。
 
 ## <a name="downloading-the-helper-tool"></a>下载帮助程序工具
 
 1.  从 [GitHub](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip) 下载帮助程序工具。
 2.  将 *B2C-AzureBlobStorage-Client-master.zip* 文件保存在本地计算机上。
-3.  将 B2C-AzureBlobStorage-Client-master.zip 文件的内容解压缩到本地磁盘，例如，解压缩到 **UI-Customization-Pack** 文件夹下。 这会在该位置下面创建 *B2C-AzureBlobStorage-Client-master* 文件夹。
+3.  将 B2C-AzureBlobStorage-Client-master.zip 文件的内容解压缩到本地磁盘，例如，解压缩到 **UI-Customization-Pack** 文件夹下，该文件夹在其下创建 *B2C-AzureBlobStorage-Client-master* 文件夹。
 4.  打开该文件夹，并解压缩其中的存档文件 *B2CAzureStorageClient.zip* 的内容。
 
 ## <a name="upload-the-ui-customization-pack-sample-files"></a>上传 UI-Customization-Pack 示例文件
 
 1.  使用 Windows 资源管理器导航到上一部分在 *UI-Customization-Pack* 文件夹下创建的 *B2C-AzureBlobStorage-Client-master* 文件夹。
-2.  运行 *B2CAzureStorageClient.exe* 文件。 此程序会直接将指定目录中的所有文件上传到存储帐户，并启用对这些文件的 CORS 访问。
+2.  运行 *B2CAzureStorageClient.exe* 文件。 此程序会将指定目录中的所有文件上传到存储帐户，并启用对这些文件的 CORS 访问。
 3.  出现提示时，请指定：a.  存储帐户 *storageAccountName* 的名称，例如 *contoso369b2c*。
     b.  Azure Blob 存储的主访问密钥（*密钥 1*），例如 *contoso369b2c*。
     c.  存储 Blob 存储容器 *containerName* 的名称，例如 *b2c*。
-    d.  *Starter-Pack* 示例文件的路径，例如 *..\B2CTemplates\wingtiptoys*。
+    d.单击“下一步”。  *Starter-Pack* 示例文件的路径，例如 *..\B2CTemplates\wingtiptoys*。
 
-如果遵循了上述步骤，虚构公司 **wingtiptoys** 的 *UI-Customization-Pack* 的 HTML5 和 CSS 文件现在将指向存储帐户。  可以在 Azure 门户中打开相关的容器边栏选项卡，验证是否已正确上传内容。 也可以通过从浏览器访问页面来验证是否已正确上传内容。 有关详细信息，请参阅 [Azure Active Directory B2C：用于演示页面用户界面 (UI) 自定义功能的帮助程序工具](active-directory-b2c-reference-ui-customization-helper-tool.md)。
+如果遵循了上述步骤，虚构公司 **wingtiptoys** 的 *UI-Customization-Pack* 的 HTML5 和 CSS 文件现在会指向存储帐户。  可以在 Azure 门户中打开相关的容器窗格，验证是否已正确上传内容。 也可以通过从浏览器访问页面来验证是否已正确上传内容。 有关详细信息，请参阅 [Azure Active Directory B2C：用于演示页面用户界面 (UI) 自定义功能的帮助程序工具](active-directory-b2c-reference-ui-customization-helper-tool.md)。
 
 ## <a name="ensure-the-storage-account-has-cors-enabled"></a>确保存储帐户已启用 CORS
 
-必须在终结点上启用 CORS（跨域资源共享）才能让 Azure AD B2C Premium 加载内容。 这是因为，该内容不是托管在 Azure AD B2C Premium 要从中提供页面的域上。
+必须在终结点上启用 CORS（跨域资源共享），否则 Azure AD B2C 高级版无法加载内容，因为托管内容的域不同于 Azure AD B2C 高级版从其提供页面的域。
 
 若要验证托管内容的存储是否已启用 CORS，请继续执行以下步骤：
 
@@ -129,7 +129,7 @@ Azure AD B2C 允许在 Azure AD B2C 可能通过自定义策略提供和显示�
 -->
 
 3. 在“远程 URL”中，输入 unified.html 内容的完整 URL，并单击“发送请求”。
-4. 在“结果”部分中检查包含“XHR 状态: 200”的输出。 这表明已启用 CORS。
+4. 验证“结果”部分的输出是否包含“XHR 状态: 200”（表明已启用 CORS）。
 <!--
 ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
 -->
@@ -160,8 +160,8 @@ Azure AD B2C 允许在 Azure AD B2C 可能通过自定义策略提供和显示�
 | 内容定义 ID | 说明 |
 |-----------------------|-------------|
 | *api.error* | **错误页面**。 遇到异常或错误时显示此页面。 |
-| *api.idpselections* | **标识提供者选择页面**。 此页面包含有可供用户在登录期间选择的标识提供者列表。 这些标识提供者包括企业标识提供者、社交标识提供者（如 Facebook 和 Google+）或本地帐户（基于电子邮件地址或用户名）。 |
-| *api.idpselections.signup* | **用于注册的标识提供者选项**。 此页面包含有可供用户在注册期间选择的标识提供者列表。 这些标识提供者包括企业标识提供者、社交标识提供者（如 Facebook 和 Google+）或本地帐户（基于电子邮件地址或用户名）。 |
+| *api.idpselections* | **标识提供者选择页面**。 此页面包含有可供用户在登录期间选择的标识提供者列表。 这些提供者包括企业标识提供者、社交标识提供者（如 Facebook 和 Google+）或本地帐户（基于电子邮件地址或用户名）。 |
+| *api.idpselections.signup* | **用于注册的标识提供者选项**。 此页面包含有可供用户在注册期间选择的标识提供者列表。 这些提供者包括企业标识提供者、社交标识提供者（如 Facebook 和 Google+）或本地帐户（基于电子邮件地址或用户名）。 |
 | *api.localaccountpasswordreset* | **忘记密码页面**。 此页面包含一个窗体，用户必须填写该窗体才能发起密码重置。  |
 | *api.localaccountsignin* | **本地帐户登录页面**。 此页面包含一个登录窗体，用户在使用基于电子邮件地址或用户名的本地帐户登录时必须填写此窗体。 该窗体可以包含文本输入框和密码输入框。 |
 | *api.localaccountsignup* | **本地帐户注册页面**。 此页面包含一个注册窗体，用户在注册基于电子邮件地址或用户名的本地帐户时必须填写此窗体。 该窗体可以包含不同的输入控件，如文本输入框、密码输入框、单选按钮、单选下拉框和多选复选框。 |

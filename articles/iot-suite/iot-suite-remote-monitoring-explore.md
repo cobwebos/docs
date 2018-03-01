@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 02/15/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d8943db3ec6ef5875b2b884d42ea25dbb44a30e5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5bc01c7e70e6837989c6bebd843ba1f41c8c5aeb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>探索远程监控预配置解决方案的功能
 
@@ -31,6 +31,7 @@ ms.lasthandoff: 02/01/2018
 > * 响应警报
 > * 更新设备中的固件
 > * 组织资产
+> * 停止和启动模拟设备
 
 以下视频展示了远程监视解决方案的演练：
 
@@ -230,6 +231,16 @@ Contoso 设立了两个不同的团队来从事现场服务活动：
 
 现在，Contoso 操作员可以根据操作团队查询设备，而无需在设备上更改任何设置。
 
+## <a name="stop-simulated-devices"></a>停止模拟设备
+
+可以使用设置菜单停止模拟设备。 这有助于减少测试和浏览解决方案的开销。 若要启动或停止模拟设备，请执行以下操作：
+
+1. 选择“设置”图标。
+
+1. 然后将“正在运行”切换到打开或关闭：
+
+    ![“设置”菜单](media/iot-suite-remote-monitoring-explore/settings.png)
+
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了如何：
@@ -239,6 +250,7 @@ Contoso 设立了两个不同的团队来从事现场服务活动：
 > * 响应警报
 > * 更新设备中的固件
 > * 组织资产
+> * 停止和启动模拟设备
 
 了解远程监视解决方案后，我们建议接下来继续了解远程监视解决方案的高级功能：
 

@@ -9,26 +9,27 @@ editor:
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2018
+ms.date: 02/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 50cbbca9181d67bc41632a4650c76b9636a72356
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 8d9b0fcc8b72f947cbc64c6ac9a428ac29f8dfd2
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>快速入门：将 Windows 计算机登记到安全中心
 加入 Azure 订阅之后，可以通过预配 Microsoft Monitoring Agent 为 Azure 外部（例如，本地或在其他云中）运行的资源启用安全中心。
 
 本快速入门演示如何在 Windows 计算机上安装 Microsoft Monitoring Agent。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-在开始学习本快速入门之前，你必须位于安全中心的“标准”定价层。 有关升级说明，请参阅[将 Azure 订阅加入到安全中心标准版](security-center-get-started.md)。 可以尝试安全中心标准版，头 60 天免费。
+在开始学习本快速入门之前，你必须位于安全中心的“标准”定价层。 有关升级说明，请参阅[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)。 可以尝试安全中心标准版，头 60 天免费。
 
 ## <a name="add-new-windows-computer"></a>添加新的 Windows 计算机
 
@@ -37,12 +38,12 @@ ms.lasthandoff: 01/08/2018
 
  ![安全中心概述][2]
 
-3. 在“安全中心”主菜单下，选择“加入到高级安全”。
+3. 在“安全中心”主菜单下，选择“载入高级安全”。
 4. 选择“是否要添加非 Azure 计算机”。
 
    ![加入到高级安全][3]
 
-5. 在“添加新的非 Azure 计算机”上，将显示 Log Analytics 工作区的列表。 该列表包含启用自动预配时为安全中心创建的默认工作区（如果适用）。 选择此工作区或要使用的其他工作区。
+5. 在“添加新的非 Azure 计算机”上，将显示 Log Analytics 工作区的列表。 该列表包含启用自动预配时由安全中心创建的默认工作区（如果适用）。 选择此工作区或要使用的其他工作区。
 
     ![添加非 Azure 计算机][4]
 
@@ -73,9 +74,9 @@ ms.lasthandoff: 01/08/2018
 
 完成后，**Microsoft Monitoring Agent** 将显示在“**控制面板**”中。 可以在该处检查配置，并验证代理是否已连接。
 
-有关安装和配置代理的详细信息，请参阅[连接 Windows 计算机](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup)。
+有关安装和配置代理的详细信息，请参阅[连接 Windows 计算机](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup-wizard)。
 
-现在可以在一个位置监视 Azure VM 和非 Azure 计算机。 在“计算”下，可以概览所有 VM 和计算机以及建议。 每一列代表一组建议。 颜色表示 VM 或计算机针对该建议的当前安全状态。 安全中心还显示安全警报中这些计算机的任何检测。
+现在可以在一个位置监视 Azure VM 和非 Azure 计算机。 在“计算”下，可以概览所有 VM 和计算机以及建议。 每一列代表一组建议。 颜色表示 VM 或计算机针对该建议的当前安全状态。 安全中心还会在“安全警报”中显示针对这些计算机的任何检测。
 
   ![“计算”边栏选项卡][6]
 

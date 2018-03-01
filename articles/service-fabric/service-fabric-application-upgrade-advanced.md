@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/5/2018
+ms.date: 2/23/2018
 ms.author: subramar;chackdan
-ms.openlocfilehash: 0b0ca553fb96b0a54f3b76d306ed98d95026dcd9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1bb3a5e215e3a664cf67727255840696c7f58e8c
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
 ## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>在升级应用程序期间添加或删除服务类型

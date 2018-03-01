@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 09/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: 25cea4ae23471d182105ca3f720aaf74f81bf8c4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a6cccfa5097847429d3e402e3d522addc14b8c31
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用的错误
 
@@ -46,7 +46,7 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 在 PowerShell 中使用 [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) 命令。 按位置筛选结果。 必须拥有最新版本 PowerShell 才能运行此命令。
 
 ```powershell
-Get-AzureRmComputeResourceSku | where {$_.Locations.Contains("southcentralus")}
+Get-AzureRmComputeResourceSku | where {$_.Locations -icontains "southcentralus"}
 ```
 
 结果包括位置的 SKU 列表以及针对该 SKU 的任何限制。

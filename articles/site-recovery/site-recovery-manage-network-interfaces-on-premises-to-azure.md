@@ -12,17 +12,17 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2017
+ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 036d5c2945bd6730d65f88f72c9377047fefcde6
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: ab8582d9c32cf13bd7b21a59031af8fde58effbf
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-scenarios"></a>管理用于本地到 Azure 方案的虚拟机网络接口
 
-Azure 中的虚拟机 (VM) 必须附加有至少一个网络接口。 它可以附加 VM 的大小所能够支持的网络接口数量。 
+Azure 中的虚拟机 (VM) 必须附加有至少一个网络接口。 它可以附加 VM 的大小所能够支持的网络接口数量。
 
 默认情况下，Azure 虚拟机上附加的第一个网络接口定义为主网络接口。 虚拟机中的所有其他网络接口为辅助网络接口。 默认情况下，来自虚拟机的所有出站流量都是通过分配给主网络接口的主 IP 配置的 IP 地址发出的。
 

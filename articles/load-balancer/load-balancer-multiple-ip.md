@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: ecb64aa13b3b08f7b054a0665df3dc0cdb3e09bd
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 02388162ac4d2d86255c0a65d8b94253047f3983
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 门户对多个 IP 配置进行负载均衡
 
 > [!div class="op_single_selector"]
-> * [门户](load-balancer-multiple-ip.md)
+> * [Portal](load-balancer-multiple-ip.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [CLI](load-balancer-multiple-ip-cli.md)
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 12/21/2017
 
 1. 浏览到 Azure 门户：http://portal.azure.com。使用 Azure 帐户登录。
 
-2. 在屏幕左上方，选择“新建” > “网络” > “负载均衡器”。 接下来，选择“创建”。
+2. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”。 接下来，选择“创建”。
 
 3. 在“创建负载均衡器”下，为负载均衡器键入一个名称。 此方案使用名称 **mylb**。
 

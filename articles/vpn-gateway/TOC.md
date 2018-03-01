@@ -1,3 +1,5 @@
+# [VPN 网关文档](index.md)
+
 # 概述
 ## [关于 VPN 网关](vpn-gateway-about-vpngateways.md)
 ## [VPN 网关常见问题](vpn-gateway-vpn-faq.md)

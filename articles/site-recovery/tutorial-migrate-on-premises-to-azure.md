@@ -9,10 +9,10 @@ ms.date: 02/18/2018
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 406f0890da1ef4123b16082e7371d67f6328ea2c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 02/22/2018
 
 ## <a name="run-a-test-migration"></a>运行测试迁移
 
-运行[“测试故障转移”](tutorial-dr-drill-azure.md)，确保一切如预期正常运行。
+运行 [测试故障转移](tutorial-dr-drill-azure.md)，确保一切如预期正常运行。
 
 
 ## <a name="migrate-to-azure"></a>迁移到 Azure

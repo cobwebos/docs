@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem; magoedte
-ms.openlocfilehash: d59abde29fc7b73a799e5bf3659b02f824b693de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df20e174abb9960ad378221008ac7261fd0582f1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>从 Azure 资源收集和使用日志数据
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 10/11/2017
    
    ![添加诊断设置 - 现有的设置](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-configure.png)
     
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 几分钟后，新设置会显示在此资源的设置列表中，只要生成新的事件数据，就会立即将诊断日志发送到指定的目标。
 
@@ -163,7 +163,7 @@ azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource 
 
 ![门户中的“诊断日志”边栏选项卡](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-nav.png)
 
-可能需要单击“更多服务”才能找到“监视”部分。
+可能需要单击“所有服务”才能找到“监视”部分。
 
 在此处可以查看和筛选所有支持诊断设置的资源，确定它们是否启用了诊断。 还可以向下钻取，以查看是否在某个资源上指定了多个设置，并检查这些数据流向哪个存储帐户、事件中心命名空间和/或 Log Analytics 工作区。
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure 监视器 PowerShell 快速入门示例。 | Microsoft 文档"
+title: "Azure 监视器 PowerShell 快速入门示例。 | Microsoft Docs"
 description: "使用 PowerShell 访问 Azure 监视器功能，如自动缩放、警报、webhook 和搜索活动日志。"
 author: rboucher
 manager: carmonm
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 2/14/2018
 ms.author: robb
-ms.openlocfilehash: 36836a4528c8ba04eee1c5234fd6d4e0f9545913
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 3479b9c5bc1c8c77d2c6012b40dc9cd8f8e1708b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure 监视器 PowerShell 快速入门示例
-本文给出了示例 PowerShell 命令，可帮助用户访问 Azure 监视器的功能。 通过 Azure Monitor 可自动缩放云服务、虚拟机和 Web 应用。 还可发送警报通知或根据配置的遥测数据的值调用 Web URL。
+本文给出了示例 PowerShell 命令，可帮助用户访问 Azure 监视器的功能。
 
 > [!NOTE]
 > 自 2016 年 9 月 25 日起，“Azure Insights”更名为 Azure 监视器。 但是，命名空间及以下命令仍包含“insights”一词。
@@ -145,7 +145,7 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 
 下表描述了用于使用指标创建警报的参数和值。
 
-| 参数 | value |
+| 参数 | 值 |
 | --- | --- |
 | 名称 |simpletestdiskwrite |
 | 此警报规则的位置 |美国东部 |
@@ -199,6 +199,22 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 ```
 
 `Get-AzureRmMetricDefinition` 的可用选项的完整列表位于 [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx) 中。
+
+## <a name="create-and-manage-activity-log-alerts"></a>创建和管理活动日志警报
+可以使用 `Set-AzureRmActivityLogAlert` cmdlet 来设置活动日志警报。 活动日志警报会要求你首先将条件定义为条件字典，然后创建使用这些条件的警报。
+
+```PowerShell
+
+$condition1 = New-AzureRmActivityLogAlertCondition -Field 'category' -Equals 'Administrative'
+$condition2 = New-AzureRmActivityLogAlertCondition -Field 'operationName' -Equals 'Microsoft.Compute/virtualMachines/write'
+$additionalWebhookProperties = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
+$additionalWebhookProperties.Add('customProperty', 'someValue')
+$actionGrp1 = New-AzureRmActionGroup -ActionGroupId 'actiongr1' -WebhookProperties $dict
+Set-AzureRmActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGroupName 'myResourceGroup' -Scope '/' -Action $actionGrp1 -Condition $condition1, $condition2
+
+```
+
+其他 Webhook 属性都是可选的。 可以使用 `Get-AzureRmActivityLogAlert` 返回活动日志警报的内容。
 
 ## <a name="create-and-manage-autoscale-settings"></a>创建和管理自动缩放设置
 资源（例如 Web 应用、VM、云服务或虚拟机规模集）只能有一种为其配置的自动缩放设置。

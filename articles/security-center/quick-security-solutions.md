@@ -9,17 +9,17 @@ editor:
 ms.assetid: 3263bb3d-befc-428c-9f80-53de65761697
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2018
+ms.date: 02/22/2018
 ms.author: yurid
-ms.custom: mvc
-ms.openlocfilehash: 2ea4dc75c6285379d7a7eb3e85d28c89ae520dc8
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 95cc85f0c742d465ab1ed68d6c29b61a6919dd5b
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="quickstart-connect-security-solutions-to-security-center"></a>快速入门：将安全解决方案连接到安全中心
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/08/2018
 - 使用 CEF 日志将安全解决方案连接到安全中心
 - 验证与安全解决方案的连接
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/free/)。
 
 若要逐步执行本快速入门，你必须位于安全中心的“标准”定价层。 可以尝试安全中心标准版，头 60 天免费。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。

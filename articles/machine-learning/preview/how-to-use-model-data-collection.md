@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 6f9786b75f5160ceaa4dd269a91d7f3a4b6700d5
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 5e6a79a9b716b6797a1af21f0dcb911219b77207
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>使用数据收集来收集模型数据
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 01/11/2018
 若要在 blob 存储中查看收集的数据：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“更多服务”。
+2. 选择“所有服务”。
 3. 在搜索框中键入“存储帐户”，并按“Enter”。
 4. 在“存储帐户”搜索边栏选项卡上，选择“存储帐户”资源。 若要确定存储帐户，请使用以下步骤：
 

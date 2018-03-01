@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 01/13/2017
 ms.author: navale;tomfitz;
 ms.openlocfilehash: 2f7ba23775545637de865f9ef63680ae22c62164
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/26/2018
 ---
 # <a name="resource-manager-rest-apis"></a>Resource Manager REST API
 > [!div class="op_single_selector"]
 > * [Azure PowerShell](powershell-azure-resource-manager.md)
 > * [Azure CLI](xplat-cli-azure-resource-manager.md)
-> * [门户](resource-group-portal.md) 
+> * [Portal](resource-group-portal.md) 
 > * [REST API](resource-manager-rest-api.md)
 > 
 > 

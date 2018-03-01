@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 250e84550fdf3253f28d682e85fe4bf855e40a4d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f24daaf5690eb1d9a0ab3b27a3626d03e6021d99
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>按 Azure Active Directory 中的组成员资格将许可证分配给用户
 
@@ -37,36 +37,36 @@ ms.lasthandoff: 12/11/2017
 
 1. 使用管理员帐户登录到 [**Azure 门户**](https://portal.azure.com)。 若要管理许可证，该帐户必须是全局管理员角色或用户帐户管理员。
 
-2. 在左侧导航窗格中选择“更多服务”，并选择“Azure Active Directory”。 可以将此边栏选项卡添加到收藏夹，也可以将它固定到门户仪表板。
+2. 在左侧导航窗格中选择“所有服务”，并选择“Azure Active Directory”。 可以将此窗格添加到收藏夹，也可以将它固定到门户仪表板。
 
-3. 在“Azure Active Directory”边栏选项卡中，选择“许可证”。 此时会打开一个边栏选项卡，可在其中查看和管理租户中所有可许可的产品。
+3. 在“Azure Active Directory”窗格上，选择“许可证”以打开一个窗格，在其中可以看到并管理租户中所有可许可的产品。
 
-4. 在“所有产品”，通过选择产品名称选中 Office 365 企业版 E3 和企业移动性 + 安全性。 若要开始分配，请在边栏选项卡顶部选择“分配”。
+4. 在“所有产品”，通过选择产品名称选中 Office 365 企业版 E3 和企业移动性 + 安全性。 若要开始分配，请在窗格顶部选择“分配”。
 
    ![所有产品, 分配许可证](media/active-directory-licensing-group-assignment-azure-portal/all-products-assign.png)
 
-5. 在“分配许可证”边栏选项卡中，单击“用户和组”打开“用户和组”边栏选项卡。 搜索组名称“人力资源部”，选择该组，请务必在边栏选项卡底部单击“选择”确认操作。
+5. 在“分配许可证”窗格中，单击“用户和组”以打开“用户和组”窗格。 搜索组名称“人力资源部”，选择该组，请务必在窗格底部单击“选择”来进行确认。
 
    ![选择组](media/active-directory-licensing-group-assignment-azure-portal/select-a-group.png)
 
-6. 在“分配许可证”边栏选项卡中，单击“分配选项(可选)”，显示包含在前面选择的两个产品中的所有服务计划。 查找“Yammer Enterprise”并将设置为“关闭”，以便在产品许可证中禁用该服务。 在“分配选项”的底部单击“确定”确认操作。
+6. 在“分配许可证”窗格中，单击“分配选项(可选)”，显示包含在前面选择的两个产品中的所有服务计划。 查找“Yammer Enterprise”并将设置为“关闭”，以便在产品许可证中禁用该服务。 在“分配选项”的底部单击“确定”确认操作。
 
    ![分配选项](media/active-directory-licensing-group-assignment-azure-portal/assignment-options.png)
 
-7. 若要完成分配，请在“分配许可证”边栏选项卡上，单击该边栏选项卡底部的“分配”。
+7. 若要完成分配，请在“分配许可证”窗格上，单击该窗格底部的“分配”。
 
 8. 右上角会显示一条通知，显示分配过程的状态和结果。 如果无法完成向组分配许可证（例如，由于该组中已有许可证），请单击该通知查看失败详细信息。
 
-现在，我们已为“HR Department”组指定一个许可证模板。 Azure AD 中已启动一个后台进程来处理该组的所有现有成员。 这项初始操作可能需要花费一段时间，具体时间取决于组的当前大小。 在下一步骤中，我们介绍如何验证该过程是否完成，并确定是否需要采取进一步的措施来解决问题。
+现在，我们已为“HR Department”组指定一个许可证模板。 Azure AD 中已启动一个后台进程来处理该组的所有现有成员。 这项初始操作可能需要花费一段时间，具体时间取决于组的当前大小。 下一步骤介绍了如何验证该过程是否完成，并确定是否需要采取进一步的措施来解决问题。
 
 > [!NOTE]
-> 也可以从另一个位置开始相同的分配：Azure AD 中的“用户和组”。 转到“Azure Active Directory” > “用户和组” > “所有组”。 然后找到该组，选择它，并转到“许可证”选项卡。单击边栏选项卡顶部的“分配”按钮会打开许可证分配边栏选项卡。
+> 也可以从另一个位置开始相同的分配：Azure AD 中的“用户和组”。 转到“Azure Active Directory” > “用户和组” > “所有组”。 然后找到该组，选择它，并转到“许可证”选项卡。单击窗格顶部的“分配”按钮会打开许可证分配窗格。
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>步骤 2：验证初始分配是否已完成
 
 1. 转到“Azure Active Directory” > “用户和组” > “所有组”。 然后找到已向其分配许可证的 **HR Department** 组。
 
-2. 在“人力资源部”组边栏选项卡中，选择“许可证”。 这使你可以快速确认是否已完全将许可证分配给用户，以及是否有任何需要调查的错误。 该边栏选项卡中提供以下信息：
+2. 在“人力资源部”组窗格中，选择“许可证”。 这使你可以快速确认是否已完全将许可证分配给用户，以及是否有任何需要调查的错误。 该边栏选项卡中提供以下信息：
 
    - 当前分配到组的产品许可证列表。 选择一个条目可以显示已启用的特定服务以及进行更改。
 
@@ -87,12 +87,12 @@ ms.lasthandoff: 12/11/2017
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>步骤 3：检查和解决许可证问题
 
 1. 转到“Azure Active Directory” > “用户和组” > “所有组”，找到已向其分配许可证的 **HR Department** 组。
-2. 在“人力资源部”组边栏选项卡中，选择“许可证”。 边栏选项卡顶部的通知显示无法为 10 个用户分配许可证。 单击此通知会打开此组中处于许可错误状态的所有用户的列表。
+2. 在“人力资源部”组窗格中，选择“许可证”。 窗格顶部的通知显示无法为 10 个用户分配许可证。 单击此通知会打开此组中处于许可错误状态的所有用户的列表。
 3. “失败的分配”列告知无法向这些用户分配这两个产品许可证。 “故障的首要原因”列包含失败的原因。 在此示例中，原因是**冲突的服务计划**。
 
    ![失败的分配](media/active-directory-licensing-group-assignment-azure-portal/failed-assignments.png)
 
-4. 选择用户以打开“许可证”边栏选项卡。 此边栏选项卡显示当前已分配给该用户的所有许可证。 在此示例中，该用户具有从“网亭用户”组继承的 Office 365 企业版 E1 许可证。 这与系统尝试从 **HR Department** 组应用的 E3 许可证冲突。 因此，该组中的许可证均未分配给该用户。
+4. 选择用户以打开“许可证”窗格。 此窗格显示当前已分配给该用户的所有许可证。 在此示例中，该用户具有从“网亭用户”组继承的 Office 365 企业版 E1 许可证。 这与系统尝试从 **HR Department** 组应用的 E3 许可证冲突。 因此，该组中的许可证均未分配给该用户。
 
    ![查看用户的许可证](media/active-directory-licensing-group-assignment-azure-portal/user-license-view.png)
 

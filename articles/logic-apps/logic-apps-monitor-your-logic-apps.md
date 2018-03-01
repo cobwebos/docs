@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 8ad8281744293a05b50f8664a7e5a3fea7aa7b33
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f0376070a8bec7d97f54e9a198d5d67a9751334c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>针对 Azure 逻辑应用监视状态、设置诊断日志记录，并启用警报
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="view-runs-and-trigger-history-for-your-logic-app"></a>查看逻辑应用的运行和触发历史记录
 
-1. 要在 [Azure 门户](https://portal.azure.com)查找逻辑应用，请在 Azure 主菜单上选择“更多服务”。 在搜索框中查找“逻辑应用”，然后选择“逻辑应用”。
+1. 若要在 [Azure 门户](https://portal.azure.com)中查找逻辑应用，请在 Azure 主菜单上选择“所有服务”。 在搜索框中键入“逻辑应用”，然后选择“逻辑应用”。
 
    ![查找逻辑应用](./media/logic-apps-monitor-your-logic-apps/find-your-logic-app.png)
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 01/19/2018
 
 要在逻辑应用中查找和查看事件（如触发事件、运行事件和操作事件），请按照下列步骤操作。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“更多服务”。 搜索“log analytics”，然后选择“Log Analytics”，如下所示：
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 搜索“log analytics”，然后选择“Log Analytics”，如下所示：
 
    ![选择“Log Analytics”](media/logic-apps-monitor-your-logic-apps/browseloganalytics.png)
 

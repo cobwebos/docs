@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: xshi
-ms.openlocfilehash: 7a611912ae55eb22103539dbba9f1a06aaa543b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0caa3397723f9cd0476e85d52a8d30ae283b6e47
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知
 
@@ -50,7 +50,7 @@ Azure 逻辑应用提供将流程自动化为一系列步骤的方法。 逻辑�
 
 ### <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，依次单击“新建” > “企业集成” > “服务总线”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“创建资源” > “企业集成” > “服务总线”。
 1. 提供以下信息：
 
    **名称**：服务总线的名称。
@@ -60,7 +60,7 @@ Azure 逻辑应用提供将流程自动化为一系列步骤的方法。 逻辑�
    **资源组**：使用 IoT 中心所用的同一资源组。
 
    **位置**：使用 IoT 中心所用的同一位置。
-1. 单击“创建” 。
+1. 单击“创建”。
 
    ![在 Azure 门户中创建服务总线命名空间](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1_create-service-bus-namespace-azure-portal.png)
 
@@ -87,7 +87,7 @@ Azure 逻辑应用提供将流程自动化为一系列步骤的方法。 逻辑�
    **服务总线命名空间**：选择创建的命名空间。
 
    **服务总线队列**：选择创建的队列。
-1. 单击 **“确定”**。
+1. 单击“确定”。
 
    ![在 Azure 门户中，将终结点添加到 IoT 中心](media/iot-hub-monitoring-notifications-with-azure-logic-apps/3_add-iot-hub-endpoint-azure-portal.png)
 
@@ -103,7 +103,7 @@ Azure 逻辑应用提供将流程自动化为一系列步骤的方法。 逻辑�
    **终结点**：选择创建的终结点。
 
    **查询字符串**：输入 `temperatureAlert = "true"`。
-1. 单击“保存” 。
+1. 单击“ **保存**”。
 
    ![在 Azure 门户中添加路由规则](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4_add-routing-rule-azure-portal.png)
 
@@ -111,7 +111,7 @@ Azure 逻辑应用提供将流程自动化为一系列步骤的方法。 逻辑�
 
 ### <a name="create-a-logic-app"></a>创建逻辑应用
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，依次单击“新建” > “企业集成” > “逻辑应用”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“创建资源” > “企业集成” > “逻辑应用”。
 1. 输入以下信息：
 
    **名称**：逻辑应用的名称。
@@ -119,7 +119,7 @@ Azure 逻辑应用提供将流程自动化为一系列步骤的方法。 逻辑�
    **资源组**：使用 IoT 中心所用的同一资源组。
 
    **位置**：使用 IoT 中心所用的同一位置。
-1. 单击“创建” 。
+1. 单击“创建”。
 
 ### <a name="configure-the-logic-app"></a>配置逻辑应用
 
@@ -157,7 +157,7 @@ Azure 逻辑应用提供将流程自动化为一系列步骤的方法。 逻辑�
 
       为 [Hotmail/Outlook.com](https://support.office.com/en-us/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970)、[Gmail](https://support.google.com/a/answer/176600?hl=en) 和 [Yahoo Mail](https://help.yahoo.com/kb/SLN4075.html) 获取 SMTP 信息。
    1. 输入“发件人”和“收件人”的电子邮件地址，并为“主题”和“正文”输入 `High temperature detected`。
-   1. 单击“保存” 。
+   1. 单击“ **保存**”。
 
 保存时，逻辑应用按工作顺序排列。
 

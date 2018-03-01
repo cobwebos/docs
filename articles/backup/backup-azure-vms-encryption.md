@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 10/13/2017
 ms.author: pajosh;markgal;trinadhk; sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 509e891207d1469ed244eab4512ec66420284fd5
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 4a1a3c5eb5550967e0a0e045ec508a86cd80ee03
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>使用 Azure 备份来备份和还原已加密的虚拟机
 本文介绍使用 Azure 备份来备份和还原虚拟机 (VM) 的步骤。 此外，提供有关受支持的方案、先决条件以及针对错误案例的疑难解答步骤的详细信息。
@@ -48,7 +48,7 @@ ms.lasthandoff: 12/21/2017
 使用以下步骤设置备份目标、定义策略、配置项目和触发备份。
 
 ### <a name="configure-backup"></a>配置备份
-1. 如果已打开恢复服务保管库，请转到下一步。 如果未打开恢复服务保管库，而是位于 Azure 门户中，请在“中心”菜单中选择“浏览”。
+1. 如果已打开恢复服务保管库，请转到下一步。 如果未打开恢复服务保管库，而是位于 Azure 门户中，请选择“所有服务”。
 
    a. 在资源列表中，键入“恢复服务”。
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="provide-permissions-to-backup"></a>为备份提供权限
 使用以下步骤为备份提供相关权限，以访问 Key Vault 并对加密 VM 执行备份。
-1. 选择“更多服务”并搜索“Key Vault”。
+1. 选择“所有服务”并搜索“Key Vault”。
 
     ![Key Vault](./media/backup-azure-vms-encryption/search-key-vault.png)
     

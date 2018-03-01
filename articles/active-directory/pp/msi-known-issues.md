@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 8820691f5b7c6dbd2c15faede75de123f779b167
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: b0b5b991b7d2baaa40ebedbd19247717e91aa027
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="faq-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory 的托管服务标识 (MSI) 的常见问题解答和已知问题
 
@@ -128,5 +128,4 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
 - Windows 上的 VMAgent 当前不支持用户分配的 MSI。 
-- 将角色分配给 MSI 来访问资源当前不需要特殊权限。 
 - 如果 VM 有用户分配的 MSI，但没有系统分配的 MSI，门户 UI 会显示已启用 MSI。 若要启用系统分配的 MSI，请使用 Azure 资源管理器模板、Azure CLI 或 SDK。

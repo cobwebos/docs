@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
-ms.openlocfilehash: 33df6c4255d4ca672e65237c8be45b3f0bc7864e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: dd84a8da348d0d534ba19a3d61970ec0d8c66cc8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD Graph API
 
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 通过在页面右上角选择帐户，选择 Azure AD B2C 租户。
-3. 在左侧导航窗格中，选择“更多服务”，单击“应用注册”，并单击“添加”。
+3. 在左侧导航窗格中，选择“所有服务”，单击“应用注册”，并单击“添加”。
 4. 根据提示创建新的应用程序。 
     1. 选择“Web 应用/API”作为应用程序类型。    
     2. 提供**任何重定向 URI**（例如 https://B2CGraphAPI），因为它与此示例无关。  

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: 0efea55d0e1329ddf4ada35aa0dd6164f0951a70
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 527e77d7ab8c67ea538d2452357f31a698b2b6ea
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="avoid-getting-charged-for-your-azure-free-account"></a>避免 Azure 免费帐户产生费用
 
@@ -28,7 +28,7 @@ Azure 免费帐户提供 200 美元的 Azure 信用额度（可在前 30 天内�
 如果尚有未到期的 Azure 信用额度，Azure 将使用这些信用额度抵扣超出免费服务及用量的使用量。
 
 ## <a name="your-credit-ran-out-or-has-expired"></a>信用额度已用完或已过期
-如果信用额度已用完或在 30 天结束后过期，Azure 会禁用订阅。 若要继续使用 Azure 服务，必须将订阅升级为即用即付订阅。 有关详细信息，请参阅[将 Azure 免费试用版订阅升级为即用即付订阅](billing-upgrade-azure-subscription.md)。 升级之后，你的订阅仍可使用 12 个月的免费服务。 只需要对超过免费服务及用量的使用量进行偿付。
+如果信用额度已用完或在 30 天结束后过期，Azure 会禁用订阅。 若要继续使用 Azure 服务，必须将订阅升级为即用即付订阅。 有关详细信息，请参阅[将 Azure 免费试用版订阅升级为即用即付订阅](billing-upgrade-azure-subscription.md)。 升级之后，你的订阅仍可使用 12 个月的免费服务。 只需对超过免费服务及用量的使用量付费即可。
 
 
 让我们来看看可能会让 Azure 免费帐户产生费用的一些原因。
@@ -48,7 +48,7 @@ Azure 免费帐户提供 200 美元的 Azure 信用额度（可在前 30 天内�
 
 1.  登录到 [Azure 门户](http://portal.azure.com)。
 
-2.  在左侧导航窗格底部选择“更多服务”。
+2.  在左侧的导航区域中，选择“所有服务”。
 
 3.  选择“订阅”。
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: 89f3ceeb95b4a8b498523e0d73930740bcadd268
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f2f71372211dcc9db34beb3fa3fd788920f8bd45
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure 堆栈公钥基础结构证书要求
 Azure 堆栈具有使用从外部访问公共 IP 地址分配给 Azure 堆栈服务和可能的租户 Vm 的一小部分的公共基础结构网络。 在 Azure 堆栈部署过程中，使用合适的 DNS 名称，这些 Azure 堆栈公共基础结构终结点的 PKI 证书是必需的。 本文提供以下信息：
@@ -27,6 +27,7 @@ Azure 堆栈具有使用从外部访问公共 IP 地址分配给 Azure 堆栈服
 - 哪些证书所需部署 Azure 堆栈
 - 获取匹配这些规范的证书的过程
 - 如何准备、 验证和在部署过程中使用这些证书
+
 > [!NOTE]
 > 在部署过程必须将证书复制到与匹配标识提供程序 (Azure AD 或 AD FS) 对要部署的部署文件夹。 如果对所有终结点使用一个证书，你必须将该证书文件复制到每个部署文件夹下表中所述。 文件夹结构中部署虚拟机预先生成和处找不： C:\CloudDeployment\Setup\Certificates。 
 

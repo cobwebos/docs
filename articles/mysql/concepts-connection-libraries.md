@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for MySQL 的连接库 | Microsoft Docs"
+title: "Azure Database for MySQL 的连接库"
 description: "本文列出了客户端程序连接到 Azure Database for MySQL 时可以使用的每个库或驱动程序。"
 services: mysql
 author: mswutao
 ms.author: wutao
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/20/2017
-ms.openlocfilehash: 759fa290cff94b04e29edd818b985b11267caab7
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.date: 02/28/2018
+ms.openlocfilehash: c22bb9b31e7623daa635f82256e28ed466070481
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Azure Database for MySQL 的连接库
 本文列出了客户端程序连接到 Azure Database for MySQL 时可以使用的每个库或驱动程序。

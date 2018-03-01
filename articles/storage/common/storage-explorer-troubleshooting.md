@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
-ms.openlocfilehash: 3187939fa813f941c2fe12a359df474a6c487c71
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 2f62de428d1915b1e070350a2837f24c3486f8c7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器疑难解答指南
 
-Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。 应用可连接到托管在 Azure、Sovereign Clouds 和 Azure Stack 上的存储帐户。
+Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。 应用可连接到托管在 Azure、National Clouds 和 Azure Stack 上的存储帐户。
 
 本指南汇总了存储资源管理器中常见问题的解决方案。
 
@@ -59,7 +59,7 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 
 6. 打开存储资源管理器，单击“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开创建的 .cer 文件。
 
-若通过上述步骤无法找到任何自签名证书，请通过反馈工具联系我们以获取更多帮助。
+如果通过上述步骤无法找到任何自签名证书，请通过反馈工具联系我们以获取更多帮助。
 
 ### <a name="unable-to-retrieve-subscriptions"></a>无法检索订阅
 
@@ -73,7 +73,7 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 
 - 尝试移除并重新添加帐户。
 
-- 尝试从根目录（即 C:\Users\ContosoUser）删除以下文件，然后添加帐户：
+- 尝试从根目录（即 C:\Users\ContosoUser）删除以下文件，然后重新添加帐户：
 
     - .adalcache
 
@@ -116,7 +116,7 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
     - Linux 中的 ~/.config/StorageExplorer
 
 > [!NOTE]
->  删除这些文件之后，需要重新输入所有凭据。
+>  删除上述文件后，需要重新登录到你的帐户。
 
 ## <a name="proxy-issues"></a>代理问题
 
@@ -176,10 +176,18 @@ Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可�
 如果意外附加了无效的 SAS URL，并且无法分离，请执行以下步骤：
 1.  运行存储资源管理器时，按 F12 打开开发人员工具窗口。
 2.  单击“应用程序”选项卡，然后单击左侧树中的“本地存储”> file://。
-3.  查找与有问题的 SAS URI 服务类型关联的键。 例如，如果用于 blob 容器的 SAS URI 错误，请查找名为“StorageExplorer_AddStorageServiceSAS_v1_blob”的键。
+3.  查找与有问题的 SAS URI 服务类型关联的键。 例如，如果用于 blob 容器的 SAS URI 错误，请查找名为 `StorageExplorer_AddStorageServiceSAS_v1_blob` 的键。
 4.  键的值应为 JSON 数组。 查找与错误 URI 关联的对象，并将其删除。
 5.  按 Ctrl+R 重新加载存储资源管理器。
 
+## <a name="linux-dependencies"></a>Linux 依赖项
+
+对于 Ubuntu 16.04 以外的 Linux 发行版，可能需要手动安装某些依赖项。 一般情况下，以下包是必需的：
+* libgconf-2-4
+* libsecret
+* Up-to-date GCC
+
+可能还需要安装其他包，具体取决于你的发行版。 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)包含用于某些发行版的特定步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

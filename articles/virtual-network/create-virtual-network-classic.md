@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 099e3c259f0b63e4376847727eb8e185aeb37380
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f4a1562983ffa68dbd6586a2ae3a569f766387b5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>创建包含多个子网的虚拟网络（经典）
 
@@ -39,10 +39,10 @@ ms.lasthandoff: 01/19/2018
 ## <a name="portal"></a>门户
 
 1. 在 Internet 浏览器中，转到 [Azure 门户](https://portal.azure.com)。 使用 [Azure 帐户](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)登录。 如果没有 Azure 帐户，可以注册[免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p)。
-2. 在门户中单击“+新建”。
-3. 在显示的“新建”边栏选项卡顶部的“搜索 Marketplace”中输入“虚拟网络”。  单击搜索结果中出现的“虚拟网络”。
-4. 在显示的“虚拟网络”边栏选项卡的“选择部署模型”框中选择“经典”，单击“创建”。 
-5. 在“创建虚拟网络(经典)”边栏选项卡中输入以下值，单击“创建”：
+2. 在门户中，单击“创建资源”。
+3. 在显示的“新建”窗格顶部的“搜索 Marketplace”中输入“虚拟网络”。 单击搜索结果中出现的“虚拟网络”。
+4. 在显示的“虚拟网络”窗格的“选择部署模型”框中选择“经典”，然后单击“创建”。 
+5. 在“创建虚拟网络(经典)”窗格中输入以下值，然后单击“创建”：
 
     |设置|值|
     |---|---|
@@ -55,13 +55,13 @@ ms.lasthandoff: 01/19/2018
 
     如果不熟悉 Azure，请详细了解[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)、[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)和[位置](https://azure.microsoft.com/regions)（也称为“区域”）。
 4. 在创建虚拟网络时，只能在门户中创建一个子网。 在本教程中，将在创建虚拟网络之后创建第二个子网。 随后可在“公共”子网中创建可通过 Internet 访问的资源。 还可以在“专用”子网中创建无法通过 Internet 访问的资源。 若要创建第二个子网，请在页面顶部的“搜索资源”框中输入 **myVnet**。 单击显示在搜索结果中的“myVnet”。
-5. 在显示的“创建虚拟网络(经典)”边栏选项卡中单击“子网”（在“设置”部分中）。
-6. 在显示的“myVnet - 子网”边栏选项卡中单击“+添加”。
-7. 在“添加子网”边栏选项卡中，为“名称”输入“专用”。 为“地址范围”输入 **10.0.1.0/24**。  单击“确定”。
-8. 在“myVnet - 子网”边栏选项卡中，可以看到已创建的“公共”和“专用”子网。
+5. 在显示的“创建虚拟网络(经典)”窗格中单击“子网”（在“设置”部分中）。
+6. 在显示的“myVnet - 子网”窗格中单击“+添加”。
+7. 在“添加子网”窗格中，为“名称”输入“专用”。 为“地址范围”输入 **10.0.1.0/24**。  单击“确定”。
+8. 在“myVnet - 子网”窗格中，可以看到已创建的“公共”和“专用”子网。
 9. **可选**：完成本教程后，可以删除创建的资源，以免产生使用费：
-    - 在“myVnet”边栏选项卡中单击“概述”。
-    - 在“myVnet”边栏选项卡中单击“删除”图标。
+    - 在“myVnet”窗格中单击“概述”。
+    - 在“myVnet”窗格中单击“删除”图标。
     - 若要确认删除，请单击“删除虚拟网络”框中的“是”。
 
 ## <a name="azure-cli"></a>Azure CLI

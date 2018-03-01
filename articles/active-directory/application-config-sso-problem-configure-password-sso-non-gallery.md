@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 265d58ce4098ea924318dfe2959397d60a0721d6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e5c8562b89b70236d9d65a5f8765ae386d6831b4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序密码单一登录时遇到的问题
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 12/11/2017
 
 **手动登录字段捕获**可以在应用程序**供应商未标记**登录所用输入字段的情况下使用。 也可以在**供应商呈现多个字段**且这些字段无法自动检测的情况下使用。 只要告诉我们字段在页面上的位置，Azure AD 就可以保存登录页面上所有字段的数据。
 
-一般情况下，**如果自动登录字段捕获无效，我们总是会建议尝试手动选项。**
+一般情况下，**如果自动登录字段捕获不起作用，请尝试手动选项。**
 
 ### <a name="how-to-automatically-capture-sign-in-fields-for-an-application"></a>如何自动捕获应用程序的登录字段
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 12/11/2017
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 12/11/2017
 
 8.  选择“基于密码的登录”模式。
 
-9.  输入“登录 URL”。 这就是用户在其中输入用户名和密码进行登录时的 URL。 **确保登录字段在提供的 URL 中可见**。
+9.  输入**登录 URL**，这是用户将在其中输入用户名和密码以进行登录的 URL。 **确保登录字段在提供的 URL 中可见**。
 
 10. 单击“保存”按钮  。
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 12/11/2017
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -91,11 +91,11 @@ ms.lasthandoff: 12/11/2017
 
 8.  选择“基于密码的登录”模式。
 
-9.  输入“登录 URL”。 这就是用户在其中输入用户名和密码进行登录时的 URL。 **确保登录字段在提供的 URL 中可见**。
+9.  输入**登录 URL**，这是用户将在其中输入用户名和密码以进行登录的 URL。 **确保登录字段在提供的 URL 中可见**。
 
 10. 单击“保存”按钮  。
 
-11. 执行该操作后，系统会自动擦除该 URL 并显示用户名和密码输入框，允许使用 Azure AD 通过访问面板浏览器扩展安全地将密码传输到该应用程序。 如果操作失败，可以继续到步骤 12，**将登录模式更改为使用手动登录字段捕获**。
+11. 执行该操作后，系统会自动擦除该 URL 并显示用户名和密码输入框，允许使用 Azure AD 通过访问面板浏览器扩展安全地将密码传输到该应用程序。 如果操作失败，可以前进到步骤 12，**将登录模式更改为使用手动登录字段捕获**。
 
 12. 单击“配置 &lt;应用名称&gt; 密码单一登录设置”。
 
@@ -103,19 +103,19 @@ ms.lasthandoff: 12/11/2017
 
 14. 单击“确定” 。
 
-15. 单击“保存” 。
+15. 单击“ **保存**”。
 
 16. 按照屏幕上的说明使用访问面板。
 
 ## <a name="i-see-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>看到“无法找到 URL 的任一登录字段”错误
 
-自动检测登录字段失败时会看到此错误。 要解决这一问题，请遵循[如何手动捕获应用程序的登录字段](#how-to-manually-capture-sign-in-fields-for-an-application)部分中的步骤，尝试手动检测登录字段。
+自动检测登录字段失败时会看到此错误。 若要解决此问题，请遵循[如何手动捕获应用程序的登录字段](#how-to-manually-capture-sign-in-fields-for-an-application)部分中的步骤，尝试手动检测登录字段。
 
 ## <a name="i-see-an-unable-to-save-single-sign-on-configuration-error"></a>看到“无法保存单一登录配置”错误
 
-在少数情况下，更新单一登录配置会失败。 要解决这一问题，请尝试再次保存单一登录配置。
+在少数情况下，更新单一登录配置会失败。 若要解决此问题，请尝试再次保存单一登录配置。
 
-如果这种情况持续失败，打开支持案例，并提供[如何看到门户通知的详细信息](#i-cannot-manually-detect-sign-in-fields-for-my-application)和[如何通过向支持工程师发送通知详细信息来获取帮助](#how-to-get-help-by-sending-notification-details-to-a-support-engineer)部分中搜集的信息。
+如果持续失败，请打开一个支持案例，并提供[如何看到门户通知的详细信息](#i-cannot-manually-detect-sign-in-fields-for-my-application)和[如何通过向支持工程师发送通知详细信息来获取帮助](#how-to-get-help-by-sending-notification-details-to-a-support-engineer)部分中搜集的信息。
 
 ## <a name="i-cannot-manually-detect-sign-in-fields-for-my-application"></a>无法手动检测应用程序的登录字段
 
@@ -139,9 +139,9 @@ ms.lasthandoff: 12/11/2017
 
 -   再次尝试手动捕获进程，确保红色红色标记在正确的字段上。
 
--   如果手动捕获进程看似已挂起或登录页面没有任何变化（上述案例 3），请再次尝试手动捕获进程。 但是，这次在进程完成后，请按“F12”按钮打开浏览器的开发人员控制台。 到达控制台后，打开“控制台”，键入“window.location=’&lt;enter the sign in url you specified when configuring the app&gt;’”，并按“Enter”。 这会使页面重定向至其他位置，以结束捕获过程并存储已捕获的字段。
+-   如果手动捕获进程看似已挂起或登录页面没有任何变化（上述案例 3），请再次尝试手动捕获进程。 但是，这次在进程完成后，请按“F12”按钮打开浏览器的开发人员控制台。 到达控制台后，打开**控制台**，键入 **window.location=”&lt;enter the sign-in url you specified when configuring the app&gt;”**，并按 **Enter**。 这会使页面重定向至其他位置，以结束捕获过程并存储已捕获的字段。
 
-如果这些方法都无效，我们可以提供帮助。 建立支持案例，其中包含所尝试的操作的详细信息以及在[如何查看门户通知的详细信息](#i-cannot-manually-detect-sign-in-fields-for-my-application)和[如何通过向支持工程师发送通知详细信息来获取帮助](#how-to-get-help-by-sending-notification-details-to-a-support-engineer)部分中收集的信息（如果适用）。
+如果这些方法都无效，支持人员可以提供帮助。 建立支持案例，其中包含所尝试的操作的详细信息以及在[如何查看门户通知的详细信息](#i-cannot-manually-detect-sign-in-fields-for-my-application)和[如何通过向支持工程师发送通知详细信息来获取帮助](#how-to-get-help-by-sending-notification-details-to-a-support-engineer)部分中收集的信息（如果适用）。
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安装访问面板浏览器扩展
 
@@ -173,23 +173,23 @@ ms.lasthandoff: 12/11/2017
 
 1.  单击 Azure 门户右上角的“通知”图标（铃铛）
 
-2.  选择“错误”状态的任何通知（旁边红色的 (!)）。
+2.  选择状态为“错误”的任何通知（旁边有红色的 (!)）。
 
   >!注意] 不能单击“成功”或“正在进行中”状态下的通知。
   >
   >
 
-3.  这会打开“通知的详细信息”边栏选项卡。
+3.  “通知详细信息”窗格随即打开。
 
-4.  请使用此信息了解有关问题的详细信息。
+4.  自己可以使用此信息了解有关问题的详细信息。
 
-5.  如果仍需要帮助，还可以与支持工程师或产品组共享此信息以获取问题的帮助。
+5.  如果仍需要帮助，还可以与支持工程师或产品组共享此信息以获取有关问题的帮助。
 
 6.  单击“复制错误”文本框右侧的“复制”图标，复制所有通知的详细信息以与支持工程师或产品组工程师共享。
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>如何通过向支持工程师发送通知的详细信息来获取帮助
 
-如果需要帮助，与支持工程师共享**下面列出的所有详细信息**非常重要，这有助于他们迅速提供帮助。 通过**捕获屏幕截图**或单击“复制错误”图标（位于“复制错误”文本框右侧），可以轻松执行此操作。
+如果需要帮助，与支持工程师共享**下面列出的所有详细信息**非常重要，这有助于他们迅速提供帮助。 可以**捕获屏幕截图**或单击“复制错误”图标（位于“复制错误”文本框右侧）。
 
 ## <a name="notification-details-explained"></a>介绍通知详细信息
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 12/11/2017
 
     -   示例 – **2017-03-23T19:50:43.7583681Z**
 
--   **内部事务 ID** – 可用于在系统中查找错误的内部 ID
+-   **内部事务 ID** – 用来在系统中查找错误的内部 ID
 
     -   示例 – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
@@ -243,7 +243,7 @@ ms.lasthandoff: 12/11/2017
 
     -   示例 * - **失败**
 
--   **对象 ID** - **（可以为空）**已对其执行操作的对象的 ID
+-   **对象 ID** – **（可能为空）**对其执行了操作的对象 ID
 
     -   示例 – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 

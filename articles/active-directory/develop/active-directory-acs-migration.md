@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
 ms.author: dastrock
-ms.openlocfilehash: f3de9016fe29a51ab2c7fb9e93fcd33af0f0e871
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: f634adbacc8e1fc128ecef15ad38f2f8b28eb25d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>从 Azure 访问控制服务迁移
 
@@ -180,7 +180,7 @@ Possible nameIdentifiers from Access Control (via AAD or AD FS):
 
 如果采用这种方法，需要了解 [Azure AD 中的签名密钥滚动更新](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)。 这种方法使用 Azure AD 全局签名密钥来颁发令牌。 默认情况下，WIF 不会自动刷新签名密钥。 如果 Azure AD 轮播全局签名密钥，WIF 实现需要做好接受更改的准备。
 
-如果能够通过 OpenID Connect 或 OAuth 协议与 Azure AD 集成，则建议这样做。 [Azure AD 开发人员指南](http://aka.ms/aaddev)中收录了大量有关如何将 Azure AD 集成到 Web 应用程序的文档和指南。
+如果能够通过 OpenID Connect 或 OAuth 协议与 Azure AD 集成，则建议这样做。 [Azure AD 开发人员指南](https://aka.ms/aaddev)中收录了大量有关如何将 Azure AD 集成到 Web 应用程序的文档和指南。
 
 <!-- TODO: If customers ask about authZ, let's put a blurb on role claims here -->
 

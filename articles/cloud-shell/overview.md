@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: b710c324f72fa56a2ebad0d1b35052639611d30d
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: da415f4fb276f3d86d3ff1634a08fa11eabe6e7f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
 Azure Cloud Shell 是一个用于管理 Azure 资源的交互式的可通过浏览器访问的 shell。
@@ -83,7 +83,7 @@ Cloud Shell 计算机是临时的，因此需要装载 Azure 文件共享作为 
 在存储设置提示下，单击“显示高级设置”显示其他选项。
 
 > [!Note]
-> 从下拉列表筛选预先分配的 Cloud Shell 区域和 LRS/GRS 存储帐户。
+> 从下拉列表筛选预先分配的 Cloud Shell 区域和 LRS/GRS/ZRS 存储帐户。
 
 [了解 Cloud Shell 存储、更新 Azure 文件共享和上传/下载文件。](persisting-shell-storage.md)
 

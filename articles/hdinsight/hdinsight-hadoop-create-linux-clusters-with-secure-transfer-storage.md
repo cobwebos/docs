@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 9b537595fd8224536f67989d7529f6030347bfab
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: fd27837e4b40b34551092be5d75eb770730d97a4
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全传输存储帐户创建 Hadoop 群集
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/06/2017
 
 2. 按说明遵循以下规范创建群集： 
 
-    - 指定 HDInsight 版本 3.6。  默认版本为 3.5。 3.6 或更高版本是必需的。
+    - 指定 HDInsight 版本 3.6。  3.6 或更高版本是必需的。
     - 指定启用安全传输的存储帐户。
     - 对存储帐户使用短名称。
     - 必须事先创建存储帐户和 blob 容器。 

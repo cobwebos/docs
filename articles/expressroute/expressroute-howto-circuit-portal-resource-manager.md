@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2017
 ms.author: cherylmc;ganesr
-ms.openlocfilehash: a21fdfbc4396f2b7aff50fae4ca796d8ea6a733b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: be97f441d6eb2e97d85d598b0ed66718aec97b14
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ ms.lasthandoff: 12/21/2017
 > 
 > 
 
-1. 可以通过选择创建新资源的选项来创建 ExpressRoute 线路。 单击“新建” > “网络” > “ExpressRoute”，如下图所示：
+1. 可以通过选择创建新资源的选项来创建 ExpressRoute 线路。 单击“创建资源” > “网络” > “ExpressRoute”，如下图所示：
 
   ![创建 ExpressRoute 线路](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit1.png)
 2. 单击“ExpressRoute”即可看到“创建 ExpressRoute 线路”页。 在此页上填写相应值时，请务必指定正确的 SKU 层（“标准”或“高级”）和数据计量计费模型（“不限流量”或“按流量计费”）。
@@ -130,7 +130,7 @@ ms.lasthandoff: 12/21/2017
 > [!IMPORTANT]
 > 如果现有端口上的容量不足，可能需要重新创建 ExpressRoute 线路。 如果该位置没有额外的可用容量，则不能升级线路。
 >
-> 但是，无法在不中断的情况下降低 ExpressRoute 线路的带宽。 带宽降级需要取消对 ExpressRoute 线路的预配，并重新预配新的 ExpressRoute 线路。
+> 尽管你可无缝升级带宽，但是无法在不中断的情况下降低 ExpressRoute 线路的带宽。 带宽降级需要取消对 ExpressRoute 线路的预配，并重新预配新的 ExpressRoute 线路。
 > 
 > 如果要使用的资源超出了标准线路所允许的范围，可能无法禁用 Premium 加载项。
 > 

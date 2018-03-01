@@ -14,14 +14,14 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 01/23/2018
 ms.author: barbkess
-ms.openlocfilehash: f8b4e29595c6a71696cf2c4939ad4c6c096a28b5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 30dede32b35f995f89e2946af34da10353f55212
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>快速入门：在 Azure 门户中暂停和恢复 Azure SQL 数据仓库的计算
-暂停 Azure SQL 数据仓库的计算以节约成本。 在准备好使用数据仓库时恢复计算。
+暂停 Azure SQL 数据仓库的计算以节约成本。 在准备好使用数据仓库时[还原计算](sql-data-warehouse-manage-compute-overview.md)。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/01/2018
 使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库。 
 
 ## <a name="pause-compute"></a>暂停计算
-为了节省成本，可以按需暂停和恢复计算资源。 例如，如果晚上和周末不使用数据库，那么可以在这些时间暂停数据库的使用，然后在白天时恢复使用。 当数据库暂停时，不对计算资源进行收费。 但是，仍将向你收取存储费用。 
+为了节省成本，可以按需暂停和恢复计算资源。 例如，如果晚上和周末不使用数据库，那么可以在这些时间暂停数据库的使用，然后在白天时恢复使用。 数据库暂停时，不对计算资源进行收费。 但是，仍将向你收取存储费用。 
 
 执行以下步骤，暂停 SQL 数据仓库。
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 02/01/2018
 
 
 ## <a name="next-steps"></a>后续步骤
-现在你已暂停并恢复了数据仓库的计算。 若要了解有关 Azure SQL 数据仓库的详细信息，请继续有关加载数据的教程。
+现在已暂停并恢复了数据仓库的计算。 若要了解有关 Azure SQL 数据仓库的详细信息，请继续有关加载数据的教程。
 
 > [!div class="nextstepaction"]
 >[将数据加载到 SQL 数据仓库](load-data-from-azure-blob-storage-using-polybase.md)

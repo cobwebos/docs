@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
-ms.openlocfilehash: 4e43c7a7cea903a2e94e60a519f6ead1e6f932e3
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: d1e70d8f9fb929e3877c88fd4c1169a0c76ac2a6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Log Analytics VM 扩展故障排除
 本文可帮助排查使用 Microsoft Azure 上运行的 Windows 和 Linux 虚拟机的 Log Analytics VM 扩展时可能遇到的错误，并建议解决这些问题可能的解决方案。
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/09/2018
 若要验证扩展的状态，请从 Azure 门户执行以下步骤。
 
 1. 登录到 [Azure 门户](http://portal.azure.com)。
-2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“虚拟机”。 开始键入时，会根据输入筛选该列表。 选择“虚拟机”。
+2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“虚拟机”。 开始键入时，会根据输入筛选该列表。 选择“虚拟机”。
 3. 在虚拟机列表中，找到并选择该虚拟机。
 3. 在虚拟机上，单击“扩展”。
 4. 从列表中，查看是否已启用 Log Analytics 扩展。  对于 Linux，代理列出为 **OMSAgentforLinux**；对于 Windows，代理列出为 **MicrosoftMonitoringAgent**。

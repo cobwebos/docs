@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: b3c1e2afadea91f010c3e4b43206b6d30a75ec38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e061f24f3160de82548c4debf6da5821318ad2fb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
-只有在安装并设置本地数据网关之后，逻辑应用才能访问本地数据源。 该网关充当桥梁，在本地系统与逻辑应用之间提供快速数据传输和加密。 网关通过 Azure 服务总线中继来自加密频道上的本地源的数据。 所有流量最初都是网关代理的安全出站流量。 详细了解[数据网关的工作原理](#gateway-cloud-service)。
+必须安装并设置本地数据网关，逻辑应用才能访问本地数据源。 该网关充当桥梁，在本地系统与逻辑应用之间提供快速数据传输和加密。 网关通过 Azure 服务总线中继来自加密频道上的本地源的数据。 所有流量最初都是网关代理的安全出站流量。 详细了解[数据网关的工作原理](#gateway-cloud-service)。
 
 网关支持连接到以下本地数据源：
 
@@ -54,18 +54,18 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="requirements"></a>要求
 
-**最低**：
+**最低**
 
 * .NET 4.5 Framework
 * 64 位版本的 Windows 7 或 Windows Server 2008 R2（或更高版本）
 
-**建议**：
+**建议**
 
 * 8 核 CPU
 * 8 GB 内存
 * 64 位版本的 Windows 2012 R2（或更高版本）
 
-**重要注意事项**：
+**重要注意事项**
 
 * 只能在本地计算机上安装本地数据网关。
 不能在域控制器上安装该网关。
@@ -80,7 +80,7 @@ ms.lasthandoff: 10/11/2017
   > [!TIP]
   > 如果要使用安装了包含 MSDN 订阅的 Visual Studio 的 Microsoft 帐户，请先使用 Microsoft 帐户[在 Azure Active Directory 中创建一个目录（租户）](../active-directory/develop/active-directory-howto-tenant.md)或使用默认目录。 将具有密码的用户添加到该目录，然后向该用户提供对订阅的访问权限。 然后在网关安装期间可以使用此用户名和密码登录。
 
-  稍后在 Azure 门户中创建网关资源并将其与网关安装关联时，必须使用同一工作或学校帐户。 在逻辑应用和本地数据源之间建立连接时，请选中此网关资源。 [为何必须使用 Azure AD 工作或学校帐户？](#why-azure-work-school-account)
+  后期在 Azure 门户中创建网关资源并将其与网关安装关联时，必须仍使用此工作或学校帐户。 在逻辑应用和本地数据源之间建立连接时，请选中此网关资源。 [为何必须使用 Azure AD 工作或学校帐户？](#why-azure-work-school-account)
 
   > [!TIP]
   > 如果注册了 Office 365 产品但未提供实际工作电子邮件，登录地址可能类似于 jeff@contoso.onmicrosoft.com。 
@@ -93,7 +93,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="install-the-data-gateway"></a>安装数据网关
 
-1.  [在本地计算机上下载并运行网关安装程序](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)。
+1. [在本地计算机上下载并运行网关安装程序](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)。
 
 2. 查看并接受使用条款和隐私声明。
 
@@ -197,7 +197,7 @@ PingReplyDetails (RTT) : 0 ms
 TcpTestSucceeded       : True
 ```
 
-如果 **TcpTestSucceeded** 未设置为 **true**，可能是防火墙阻止了连接。 如需详尽信息，请将 **ComputerName** 和 **Port** 值替换为本主题后面[配置端口](#configure-ports)下列出的值。
+如果 **TcpTestSucceeded** 未设置为 **true**，可能是防火墙阻止了连接。 如需详尽信息，请将 **ComputerName** 和 **Port** 值替换为本文中[配置端口](#configure-ports)下列出的值。
 
 防火墙可能也会阻止 Azure 服务总线向 Azure 数据中心发起的连接。 如果发生这种情况，请批准（取消阻止）区域中数据中心的所有 IP 地址。 对于这些 IP 地址，可[在此处获取 Azure IP 地址列表](https://www.microsoft.com/download/details.aspx?id=41653)。
 
@@ -206,19 +206,21 @@ TcpTestSucceeded       : True
 网关与 [Azure 服务总线](https://azure.microsoft.com/services/service-bus/)建立出站连接，并在出站端口上通信：TCP 443（默认值）、5671、5672、9350 到 9354。 网关不需要入站端口。 详细了解 [Azure 服务总线和混合解决方案](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)。
 
 | 域名 | 出站端口 | 说明 |
-| --- | --- | --- |
+| ------------ | -------------- | ----------- |
 | *.analysis.windows.net | 443 | HTTPS | 
 | *.login.windows.net | 443 | HTTPS | 
-| *.servicebus.windows.net | 5671-5672 | 高级消息队列协议 (AMQP) | 
-| *.servicebus.windows.net | 443, 9350-9354 | 通过 TCP 的服务总线中继上的侦听器（需要 443 来获取访问控制令牌） | 
+| * .servicebus.windows.net | 5671-5672 | 高级消息队列协议 (AMQP) | 
+| * .servicebus.windows.net | 443, 9350-9354 | 通过 TCP 的服务总线中继上的侦听器（需要 443 来获取访问控制令牌） | 
 | *.frontend.clouddatahub.net | 443 | HTTPS | 
 | *.core.windows.net | 443 | HTTPS | 
 | login.microsoftonline.com | 443 | HTTPS | 
 | *.msftncsi.com | 443 | 在 Power BI 服务无法访问网关时用于测试 Internet 连接。 | 
+||||
 
 如果需要批准 IP 地址而不是域，可以下载并使用 [Microsoft Azure 数据中心 IP 范围列表](https://www.microsoft.com/download/details.aspx?id=41653)。 在某些情况下，Azure 服务总线连接是使用 IP 地址而不是完全限定的域名建立的。
 
 <a name="gateway-cloud-service"></a>
+
 ## <a name="how-does-the-data-gateway-work"></a>数据网关的工作原理
 
 数据网关可以加速和保护逻辑应用、网关云服务与本地数据源之间的通信。 
@@ -240,6 +242,7 @@ TcpTestSucceeded       : True
 6. 结果将从数据源发回给网关，并发送到网关云服务。 网关云服务随后使用结果。
 
 <a name="faq"></a>
+
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="general"></a>常规
@@ -289,7 +292,7 @@ TcpTestSucceeded       : True
 **答**：使用恢复密钥可在发生灾难后迁移或恢复网关设置。
 
 **问**：是否有使用网关实现高可用性方案的计划？ <br/>
-**答**：我们正在规划这些方案，但还没有时间表。
+**答**：某些连接器支持高可用性方案，例如文件系统连接器和即将推出的其他连接器。 有关详细信息，请参阅[本地数据网关的高可用性群集](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters)。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -301,7 +304,7 @@ TcpTestSucceeded       : True
 还可以查看数据源用于跟踪查询的工具。 例如，可以使用 SQL Server 的扩展事件或 SQL 事件探查器以及 Analysis Services。
 
 **问**：网关日志在何处？ <br/>
-**答**：请参阅本主题后面的“工具”。
+**答**：请参阅本文后面的“工具”。
 
 ### <a name="update-to-the-latest-version"></a>更新到最新版本
 

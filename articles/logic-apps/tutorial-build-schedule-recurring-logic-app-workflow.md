@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: ff9a396f09b675e798e2b2a04fdf0fdb0cdaa09d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4360249367632a01e4357c527f595f8416c7cc38
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="check-traffic-with-a-scheduler-based-logic-app"></a>使用基于计划程序的逻辑应用检查流量
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="create-your-logic-app"></a>创建逻辑应用
 
-1. 从主 Azure 菜单中选择“新建” > “企业集成” > “逻辑应用”。
+1. 在 Azure 主菜单中，选择“创建资源” > “企业集成” > “逻辑应用”。
 
    ![创建逻辑应用](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app.png)
 

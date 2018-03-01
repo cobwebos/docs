@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 01/29/2018
+ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 531b162f2c3d6165c3ca8a54a5822bc10e7c0eff
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 47f42c10a791caa8ab20401574fb853ad3e4f0e9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Azure SQL 数据库资源限制
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 02/01/2018
 
 * 如果要升级到更高的服务层或性能级别，除非显式指定了更大的大小（最大），否则，最大数据库大小不会增大。
 * 若要对数据库进行降级，数据库所用空间必须小于目标服务层和性能级别允许的最大大小。 
-* 从高级或高级 RS 降级至标准层时，如果同时满足 (1) 目标性能级别支持该数据库的最大大小，(2) 最大大小超出目标性能级别附送的存储量，那么将产生额外存储费用。 例如，如果将最大大小为 500 GB 的 P1 数据库缩小至 S3，那么将产生额外的存储费用，因为 S3 支持的最大大小为 500 GB，而它的附送存储量仅为 250 GB。 因此，额外存储量为 500 GB – 250 GB = 250 GB。 有关额外存储定价的信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 如果实际使用的空间量小于附送的存储量，只要将数据库最大大小减少到附送的量，就能避免此项额外费用。 
+* 从高级降级至标准层时，如果同时满足 (1) 目标性能级别支持该数据库的最大大小，(2) 最大大小超出目标性能级别附送的存储量，那么将产生额外存储费用。 例如，如果将最大大小为 500 GB 的 P1 数据库缩小至 S3，那么将产生额外的存储费用，因为 S3 支持的最大大小为 500 GB，而它的附送存储量仅为 250 GB。 因此，额外存储量为 500 GB – 250 GB = 250 GB。 有关额外存储定价的信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 如果实际使用的空间量小于附送的存储量，只要将数据库最大大小减少到附送的量，就能避免此项额外费用。 
 * 在启用了[异地复制](sql-database-geo-replication-portal.md)的情况下升级数据库时，请先将辅助数据库升级到所需的性能层，然后再升级主数据库（一般原则）。 在升级到另一版本时，必须首先升级辅助数据库。
 * 在启用了[异地复制](sql-database-geo-replication-portal.md)的情况下降级数据库时，请先将主数据库降级到所需的性能层，然后再降级辅助数据库（一般原则）。 在降级到另一版本时，必须首先降级主数据库。
 * 各服务层提供的还原服务各不相同。 如果要降级到基本层，则备份保留期也将减少 - 请参阅 [Azure SQL 数据库备份](sql-database-automated-backups.md)。
@@ -111,6 +111,19 @@ ms.lasthandoff: 02/01/2018
 - 一般而言，更改每个数据库的最小 eDTU 或最大 eDTU 的持续时间将不超过五分钟。
 - 当缩小池 eDTU 时，池所用空间必须小于目标服务层和池 eDTU 所允许的最大大小。
 - 当重新缩放池 eDTU 时，如果 (1) 目标池支持池的存储上限，(2) 存储上限超过了目标池附送的存储量，将产生额外存储费用。 例如，如果最大大小为 100 GB 的 100 eDTU 标准池缩小为 50 eDTU 标准池，那么将产生额外存储费用，因为目标池支持的最大大小为 100 GB，其附送的存储量仅为 50 GB。 因此，额外存储量为 100 GB – 50 GB = 50 GB。 有关额外存储定价的信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 如果实际使用的空间量小于附送的存储量，只要将数据库最大大小减少到附送的量，就能避免此项额外费用。 
+
+## <a name="what-is-the-maximum-number-of-servers-and-databases"></a>服务器和数据库的最大数目是多少？
+
+| 最大值 | 值 |
+| :--- | :--- |
+| 每个服务器的数据库数 | 5000 |
+| 每个区域每个订阅的服务器数 | 21 |
+|||
+
+> [!IMPORTANT]
+> 随着数据库的数量接近每个服务器的限制，可能出现以下情况：
+> <br> •    针对主数据库运行查询的延迟增加。  这包括资源利用率统计信息的视图，如 sys.resource_stats。
+> <br> •    管理操作和呈现涉及枚举服务器中的数据库的门户视点方面的延迟增加。
 
 ## <a name="what-happens-when-database-and-elastic-pool-resource-limits-are-reached"></a>当数据库和弹性池资源到达限制时会如何？
 

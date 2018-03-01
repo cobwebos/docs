@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: c051fec3369ef0d309ecf6c68b17272bb396eeec
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e4c875d07905b56c0d3eb346c839f7a4917531de
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的 Linux 虚拟机
 
@@ -48,8 +48,8 @@ ms.lasthandoff: 02/09/2018
 ## <a name="supported-operating-systems"></a>支持的操作系统
 * **Ubuntu 16.04**：4.11.0-1013 或更高内核版本
 * **SLES SP3**：4.4.92-6.18 或更高内核版本
-* **RHEL**：7.4.2017120423 或更高内核版本
-* **CentOS**：7.4.20171206 或更高内核版本
+* **RHEL 7.4**：7.4.2017120423 或更高内核版本
+* **CentOS 7.4**：7.4.20171206 或更高内核版本
 
 ## <a name="supported-vm-instances"></a>支持的 VM 实例
 大多数常规用途实例以及具有 4 个或更多 vCPU 的计算优化实例都支持加速网络。 在支持超线程的实例上（如 D/DSv3 或 E/ESv3），具有 8 个或更多 vCPU 的 VM 实例支持加速网络。  支持的系列包含 D/DSv2、D/DSv3、E/ESv3、F/Fs/Fsv2 和 Ms/Mms。 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4f58a587c1f10aea1cee89e46fa9ec340e0d21c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db2d9313e443ebc9dd32fcb905b0ae62219e4bbf
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="validate-xml-with-schemas-for-azure-logic-apps-and-the-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 的架构验证 XML
 
@@ -26,9 +26,9 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="add-a-schema"></a>添加架构
 
-1. 在 Azure 门户中，选择“更多服务”。
+1. 在 Azure 门户中，选择“所有服务”。
 
-    ![Azure 门户，“更多服务”](media/logic-apps-enterprise-integration-schemas/overview-11.png)
+    ![Azure 门户，“所有服务”](media/logic-apps-enterprise-integration-schemas/overview-11.png)
 
 2. 在筛选器搜索框中输入**集成**，并从结果列表中选择“集成帐户”。
 

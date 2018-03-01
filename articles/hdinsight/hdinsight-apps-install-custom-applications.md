@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/03/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 3bf8ff367fcf88c76c2dc711a6daeffdcb3258b7
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 4065c08e647ff708e1d8c4fa52563da7f83ef0c1
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="install-custom-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装自定义 Hadoop 应用程序
 
@@ -31,7 +31,7 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 其他相关文章：
 
 * [安装 HDInsight 应用程序](hdinsight-apps-install-applications.md)：了解如何将 HDInsight 应用程序安装到群集。
-* [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 应用商店。
+* [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure Marketplace。
 * [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何定义 HDInsight 应用程序。
 
 ## <a name="prerequisites"></a>先决条件
@@ -58,7 +58,7 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 2. 在“参数”  边栏选项卡中，输入以下内容：
 
    * **ClusterName**：输入要安装应用程序的群集的名称。 此群集必须是现有的群集。
-3. 单击“确定”  保存参数。
+3. 单击“确定”保存参数。
 4. 在“自定义部署”边栏选项卡中输入“资源组”。  资源组是对群集、依赖存储帐户和其他资源进行分组的容器。 必须使用与群集相同的资源组。
 5. 单击“法律条款”，并单击“创建”。
 6. 确认已选中“固定到仪表板”复选框，并单击“创建”。 可以从固定到门户仪表板的磁贴和门户通知查看安装状态（单击门户顶部的铃铛图标）。  安装此应用程序大约需要 10 分钟。
@@ -129,7 +129,7 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 ## <a name="next-steps"></a>后续步骤
 * [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何开发用于部署 HDInsight 应用程序的 Resource Manager 模板。
 * [安装 HDInsight 应用程序](hdinsight-apps-install-applications.md)：了解如何将 HDInsight 应用程序安装到群集。
-* [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 应用商店。
+* [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure Marketplace。
 * [使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用脚本操作安装其他应用程序。
 * [使用 Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)：了解如何调用 Resource Manager 模板创建 HDInsight 群集。
 * [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)：了解如何使用空边缘节点访问 HDInsight 群集、测试 HDInsight 应用程序以及托管 HDInsight 应用程序。

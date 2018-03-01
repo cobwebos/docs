@@ -1,3 +1,5 @@
+- name: “Azure 上的 Terraform”文档
+  href: index.yml
 - name: 概述
   items:
     - name: 关于 Azure 上的 Terraform

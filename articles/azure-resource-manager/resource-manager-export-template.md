@@ -1,5 +1,5 @@
 ---
-title: "导出 Azure Resource Manager 模板 | Microsoft Docs"
+title: "导出 Azure 资源管理器模板 | Microsoft Docs"
 description: "使用 Azure Resource Manager 从现有资源组导出模板。"
 services: azure-resource-manager
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: c8f19a4f0aadbee2de97bb3ec85c2c85b493a394
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0af34a64cd3cc33519f2cc69653982e00e4c1e9b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>从现有资源导出 Azure Resource Manager 模板
+# <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>从现有资源导出 Azure 资源管理器模板
 本文介绍如何从订阅中的现有资源导出 Resource Manager 模板。 可以使用该生成的模板更好地了解模板语法。
 
 可以通过两种方式来导出模板：
@@ -33,18 +33,18 @@ ms.lasthandoff: 10/11/2017
 ## <a name="deploy-resources"></a>部署资源
 让我们开始将资源部署到 Azure，以便将其用作模板导出。 如果订阅中已有要导出到模板的资源组，则可跳过此部分。 本文其余部分假定你已部署此部分介绍的 Web 应用和 SQL 数据库解决方案。 如果使用其他解决方案，则体验可能会稍有不同，但导出模板的步骤是相同的。 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”。
    
       ![选择“新建”](./media/resource-manager-export-template/new.png)
 2. 搜索“Web 应用 + SQL”，然后在可用选项中选择它。
    
       ![搜索 Web 应用和 SQL](./media/resource-manager-export-template/webapp-sql.png)
 
-3. 选择“创建” 。
+3. 选择“创建”。
 
       ![选择“创建”](./media/resource-manager-export-template/create.png)
 
-4. 为 Web 应用和 SQL 数据库提供所需值。 选择“创建” 。
+4. 为 Web 应用和 SQL 数据库提供所需值。 选择“创建”。
 
       ![提供 Web 和 SQL 值](./media/resource-manager-export-template/provide-web-values.png)
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 10/11/2017
       
        ![查看模板](./media/resource-manager-export-template/see-template.png)
       
-事实上，创建 Web 应用和 SQL 数据库时使用的就是此模板。 请注意，可以使用该模板包含的参数在部署时提供不同的值。 若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
+事实上，创建 Web 应用和 SQL 数据库时使用的就是此模板。 请注意，可以使用该模板包含的参数在部署时提供不同的值。 若要详细了解模板的结构，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。
 
 ## <a name="export-the-template-from-resource-group"></a>从资源组导出模板
 如果已手动更改资源或将资源添加到多个部署中，则从部署历史记录中检索模板无法反映资源组的当前状态。 本部分介绍如何导出反映资源组当前状态的模板。 
@@ -173,6 +173,6 @@ ms.lasthandoff: 10/11/2017
 已学习如何从门户中创建的资源导出模板。
 
 * 可通过 [PowerShell](resource-group-template-deploy.md)、[Azure CLI](resource-group-template-deploy-cli.md) 或 [REST API](resource-group-template-deploy-rest.md) 部署模板。
-* 要了解如何通过 PowerShell 导出模板，请参阅 [Using Azure PowerShell with Azure Resource Manager](powershell-azure-resource-manager.md)（将 Azure PowerShell 与 Azure Resource Manager 配合使用）。
-* 要了解如何通过 Azure CLI 导出模板，请参阅 [Use the Azure CLI for Mac, Linux, and Windows with Azure Resource Manager](xplat-cli-azure-resource-manager.md)（用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用）。
+* 要了解如何通过 PowerShell 导出模板，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](powershell-azure-resource-manager.md)。
+* 要了解如何通过 Azure CLI 导出模板，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理器配合使用](xplat-cli-azure-resource-manager.md)。
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a93cfd710f89efbd4dab01b84ecdb12b4acb0033
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b35e4a7619c23660d93d91219a92be7e93a35139
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 终结点中的范围、权限和同意
 与 Azure Active Directory (Azure AD) 集成的应用遵循一种授权模型，该模型可让用户控制应用访问其数据的方式。 此授权模型的 v2.0 实现已更新，其中更改了应用程序必须与 Azure AD 交互的方式。 本文涵盖此授权模型的基本概念，包括范围、权限和同意。
@@ -58,7 +58,7 @@ OpenID Connect 的 v2.0 实现有一些明确定义但未应用到指定资源�
 ### <a name="openid"></a>openid
 如果应用使用 [OpenID Connect](active-directory-v2-protocols.md) 执行登录，则必须请求 `openid` 范围。 `openid` 范围在工作帐户同意页上显示为“登录”权限，而在个人 Microsoft 帐户同意页上显示为“查看配置文件并使用 Microsoft 帐户连接到应用和服务”权限。 此权限使应用能够以 `sub` 声明的形式接收用户的唯一标识符。 它还会向应用提供对 UserInfo 终结点的访问权限。 `openid` 范围可用于在 v2.0 令牌终结点获取 ID 令牌，该令牌可用于保护应用不同组件之间的 HTTP 调用。
 
-### <a name="email"></a>email
+### <a name="email"></a>电子邮件
 `email` 范围可与 `openid` 范围和任何其他范围一起使用。 它以 `email` 声明的形式向应用提供对用户主要电子邮件地址的访问权限。 仅当电子邮件地址与用户帐户关联（并非总是如此）时，`email` 声明才会包含在令牌中。 如果使用 `email` 范围，则应用应准备好处理 `email` 声明不存在于令牌中的情况。
 
 ### <a name="profile"></a>profile
@@ -147,7 +147,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| tenant |必选 |要向其请求权限的目录租户。 可以使用 GUID 或友好名称格式提供。 |
+| tenant |必选 |要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供或使用“common”以一般方式引用，如示例所示。 |
 | client_id |必选 |[应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)分配给该应用的应用程序 ID。 |
 | redirect_uri |必选 |要向其发送响应以供应用处理的重定向 URI。 其必须与在门户中注册的重定向 URI 之一完全匹配。 |
 | state |建议 |同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 在发出身份验证请求出现之前，使用该状态对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |

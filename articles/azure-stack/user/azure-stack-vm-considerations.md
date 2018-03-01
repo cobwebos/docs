@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2018
+ms.date: 02/23/2018
 ms.author: brenduns
-ms.openlocfilehash: 59053e4beda48fd8474da675e50e02438c79a98e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2b39ff3665a4cc3aeddf81b83e0c90c7f770da72
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Azure 堆栈中的虚拟机的注意事项
 
@@ -41,19 +41,25 @@ ms.lasthandoff: 02/01/2018
 |虚拟机规模集|自动缩放支持|不支持的自动缩放。<br>将多个实例添加到缩放集使用门户、 资源管理器模板或 PowerShell。
 
 ## <a name="virtual-machine-sizes"></a>虚拟机大小
+Azure 有一定通过多种方式来避免过度使用的资源 （服务器本地和服务级别） 的资源限制。 而无需将租户占用的资源的一些限制，干扰邻居 overconsumes 资源时，会降低租户体验。 
+- 对于从虚拟机的网络出口，有带宽超过到位。 Azure 堆栈上限匹配在 Azure 中的上限。  
+- 对于存储资源，Azure 堆栈实现存储 IOPs 限制，以避免基本过度使用的存储访问租户资源。 
+- 对于具有多个附加的数据磁盘的 Vm，每个单个数据磁盘的最大吞吐量是 500 IOPS HHDs 和为 Ssd 2300 IOPS。
 
-Azure 堆栈支持以下大小：
+下表列出其配置以及支持在 Azure 堆栈的 Vm:
 
-| Type | 大小 | 支持的大小的范围 |
-| --- | --- | --- |
-|常规用途 |基本 A|A0 - A4|
-|常规用途 |标准 A|A0 - A7|
-|常规用途 |D 系列|D1 - D4|
-|常规用途 |Dv2 系列|D1_v2 - D5_v2|
-|常规用途 |DS 系列|DS1 - DS4|
-|常规用途 |DSv2-series|DS1_v2 - DS5_v2|
-|内存优化|DS 系列|DS11 - DS14|
-|内存优化 |DSv2-series|DS11_v2 - DS14_v2|
+| Type           | 大小          | 支持的大小的范围 |
+| ---------------| ------------- | ------------------------ |
+|常规用途 |基本 A        |[A0 - A4](azure-stack-vm-sizes.md#basic-a)                   |
+|常规用途 |标准 A     |[A0 - A7](azure-stack-vm-sizes.md#standard-a)              |
+|常规用途 |D 系列       |[D1 - D4](azure-stack-vm-sizes.md#d-series)              |
+|常规用途 |Dv2 系列     |[D1_v2 - D5_v2](azure-stack-vm-sizes.md#ds-series)        |
+|常规用途 |DS 系列      |[DS1 - DS4](azure-stack-vm-sizes.md#dv2-series)            |
+|常规用途 |DSv2-series    |[DS1_v2 - DS5_v2](azure-stack-vm-sizes.md#dsv2-series)      |
+|内存优化|D 系列       |[D11 - D14](azure-stack-vm-sizes.md#mo-d)            |
+|内存优化|DS 系列      |[DS11 - DS14](azure-stack-vm-sizes.md#mo-ds)|
+|内存优化|Dv2 系列     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
+|内存优化|DSv2-系列-  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
 虚拟机大小和其关联的资源数量是 Azure 堆栈与 Azure 之间一致。 例如，这种一致性包括内核数量和可以创建的数据磁盘数量/大内存量。 但是，Azure 堆栈中的 VM 大小相同的性能取决于特定的 Azure 堆栈环境的基础特征。
 

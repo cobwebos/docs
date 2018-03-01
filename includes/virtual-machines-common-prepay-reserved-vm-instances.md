@@ -8,7 +8,7 @@
 
 ## <a name="buy-a-reserved-virtual-machine-instance"></a>购买保留虚拟机实例
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“更多服务” > “预订”。
+2. 选择“所有服务” > “预订”。
 3. 选择“添加”购买新的预订。
 4. 填写必填字段。 与所选属性匹配的正在运行的 VM 实例有资格获得预订折扣。 实际获得折扣的 VM 实例数取决于所选范围和数量。
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/10/2017
 ms.author: bhanupr
-ms.openlocfilehash: 77478616eae27828a57a36dc0aaf3884e80ce403
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 08795e6aafc6ccb43bad59189676a8680c03c966
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>使用 Azure Active Directory 域服务设置和配置已加入域的 HDInsight 群集
 
@@ -36,9 +36,11 @@ ms.lasthandoff: 01/24/2018
 在创建 HDInsight 群集之前，需要先创建 Azure AD DS。 若要创建 Azure ADDS，请参阅[使用 Azure 门户启用 Azure Active Directory 域服务](../../active-directory-domain-services/active-directory-ds-getting-started.md)。 
 
 > [!NOTE]
-> 只有租户管理员拥有创建域服务的特权。 如果将 Azure Data Lake 存储 (ADLS) 用作 HDInsight 的默认存储，则确保 ADLS 的默认 Azure AD 租户与 HDInsight 群集的域相同。 
+> 只有租户管理员拥有创建域服务的特权。 如果将 Azure Data Lake 存储 (ADLS) 用作 HDInsight 的默认存储，则确保 ADLS 的默认 Azure AD 租户与 HDInsight 群集的域相同。 需对有权访问群集的用户禁用多重身份验证，才可将此安装程序用于 Azure Data Lake Store。
 
 预配域服务后，需要在“Azure AD DC 管理员”组中创建一个服务帐户用于创建 HDInsight 群集。 服务帐户必须是 Azure AD 上的全局管理员。
+
+必须为 Azure AD 域服务托管域启用安全 LDAP。 要启用安全 LDAP，请参阅[为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)。
 
 ## <a name="create-a-domain-joined-hdinsight-cluster"></a>创建已加入域的 HDInsight 群集
 

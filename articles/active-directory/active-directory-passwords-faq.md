@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: afa609d7b47f3c743f5d3bfd4011e09c762ccbd1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 686cc2a94af729e6f872c334a6e5fda947d43725
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/01/2018
 
 * **问：用户是否可以注册其自己的密码重置数据？**
 
-  > **答：**可以。 只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户 (http://aka.ms/ssprsetup) 来注册其身份验证信息。 用户也可通过访问面板来注册 (http://myapps.microsoft.com)。 若要通过访问面板来注册，需选择个人资料图片，然后选择“个人资料”，再选择“注册密码重置”选项。
+  > **答：**可以。 只要已经启用密码重置功能并且用户已获得许可，用户就可以访问密码重置注册门户 (https://aka.ms/ssprsetup) 来注册其身份验证信息。 用户也可通过访问面板来注册 (http://myapps.microsoft.com)。 若要通过访问面板来注册，需选择个人资料图片，然后选择“个人资料”，再选择“注册密码重置”选项。
   >
   >
 * **问：如果为某个组启用密码重置，然后决定为每个人启用它，我的用户是否需要重新注册？**

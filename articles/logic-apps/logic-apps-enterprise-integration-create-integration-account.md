@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: 716e7b5bab8725dea0fd2b760d0e46e8e892c5b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7ec63810fe78b38c574ec39369d5926f80e595e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-is-an-integration-account"></a>什么是集成帐户？
 
@@ -26,9 +26,9 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="create-an-integration-account"></a>创建集成帐户
 
-1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“更多服务”。
+1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“所有服务”。
 
-    ![选择“更多服务”](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+    ![选择“所有服务”](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
 2. 在搜索框中，为筛选器键入“集成”。 在结果列表中，选择“集成帐户”。
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 10/11/2017
 > 在开始之前，请确保集成帐户和逻辑应用位于*相同的 Azure 位置*。
 
 
-1. 在 Azure 门户中选择逻辑应用，然后检查逻辑应用的位置。
+1. 在 Azure 门户中选择逻辑应用，并检查逻辑应用的位置。
 
     ![选择逻辑应用并检查位置](./media/logic-apps-enterprise-integration-accounts/linkaccount-1.png)
 
@@ -85,9 +85,9 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="delete-your-integration-account"></a>删除集成帐户
 
-1. 选择“更多服务”。
+1. 选择“所有服务”。
 
-    ![选择“更多服务”](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+    ![选择“所有服务”](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
 2. 在搜索框中，为筛选器键入“集成”。 在结果列表中，选择“集成帐户”。
 
@@ -110,9 +110,9 @@ ms.lasthandoff: 10/11/2017
 > [!IMPORTANT]
 > 移动集成帐户后，必须更新所有脚本才能使用新资源 ID。
 
-1. 选择“更多服务”。
+1. 选择“所有服务”。
 
-    ![选择“更多服务”](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+    ![选择“所有服务”](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
 2. 在搜索框中，为筛选器键入“集成”。 在结果列表中，选择“集成帐户”。
 

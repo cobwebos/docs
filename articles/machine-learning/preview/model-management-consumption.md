@@ -4,17 +4,17 @@ description: "本文档介绍了在使用通过 Azure 机器学习中的模型�
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
-manager: neerajkh
-ms.reviewer: garyericson, jasonwhowell, mldocs
+manager: hjerez
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 120611f98c97fa4c5bfa2a44aece47f246d9ec57
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 4d388af3175bce5df6108ff0fd836707cca5040a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="consuming-web-services"></a>使用 Web 服务
 将模型部署为实时 Web 服务后，可以从各种平台和应用程序向其发送数据并获取预测数据。 实时 Web 服务公开了一个用于获取预测数据的 REST API。 可以采用单行或多行格式向 Web 服务发送数据，从而一次获取一行或多行预测数据。
@@ -35,7 +35,7 @@ Azure 机器学习 CLI 和 API 提供了实用的命令，可用于在使用 ```
 成功部署 Web 服务后，使用以下命令获取服务 URL 和用于调用服务终结点的其他详细信息。 
 
 ```
-az ml service usage realtime -i <service name>
+az ml service usage realtime -i <web service id>
 ```
 
 如果在部署时提供了服务 API 架构，则此命令将输出用于调用服务的服务 URL、所需请求标头、Swagger URL 和示例数据。
@@ -43,7 +43,7 @@ az ml service usage realtime -i <service name>
 可以通过输入示例 CLI 命令及输入数据，直接从 CLI 对服务进行测试而不编写 HTTP 请求：
 
 ```
-az ml service run realtime -i <service name> -d "Your input data"
+az ml service run realtime -i <web service id> -d "Your input data"
 ```
 
 ## <a name="get-the-service-api-key"></a>获取服务 API 密钥

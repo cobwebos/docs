@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2016
 ms.author: robb
-ms.openlocfilehash: 7dd8c6e1fbfba2587aadb3410c3a769b57e06001
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b4f1f8900637f23220f9a89adbb321707c49e2d3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights
 云服务、虚拟机、虚拟机规模集和 Service Fabric 都使用 Azure 诊断扩展来收集数据。  Azure 诊断将数据发送到 Azure 存储表。  但是，也可以 Azure 诊断扩展 1.5 或更高版本，通过管道将所有或一部分数据发送到其他位置。
@@ -67,7 +67,7 @@ Application Insights 接收器的示例配置：
 
 - **ApplicationInsights** 元素指定要将 Azure 诊断数据发送到的 Application Insights 资源的检测键。
     - 如果没有 Application Insights 资源，请参阅[创建新的 Application Insights 资源](../application-insights/app-insights-create-new-resource.md)，了解有关创建资源和获取检测键的详细信息。
-    - 如果使用 Azure SDK 2.8 和更高版本开发云服务，系统会自动填充此检测键。 该值基于打包云服务项目时指定的 **APPINSIGHTS_INSTRUMENTATIONKEY** 服务配置设置。 请参阅[将 Application Insights 与 Azure 诊断配合使用以排查云服务问题](../cloud-services/cloud-services-dotnet-diagnostics-applicationinsights.md)。
+    - 如果使用 Azure SDK 2.8 和更高版本开发云服务，系统会自动填充此检测键。 该值基于打包云服务项目时指定的 **APPINSIGHTS_INSTRUMENTATIONKEY** 服务配置设置。 请参阅[将 Application Insights 与云服务配合使用](../application-insights/app-insights-cloudservices.md)。
 
 - **Channels** 元素包含一个或多个 **Channels** 元素。
     - *name* 属性唯一引用该通道。

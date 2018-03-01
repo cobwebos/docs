@@ -1,9 +1,9 @@
 ---
-title: "使用 OMS 网关将计算机连接到 OMS | Microsoft Docs"
-description: "使用 OMS 网关连接 OMS 管理的设备和 Operations Manager 监视的计算机，以便将数据发送到无法访问 Internet 的 OMS 服务。"
+title: "使用 OMS 网关连接计算机 | Microsoft Docs"
+description: "使用 OMS 网关连接设备和 Operations Manager 监视的计算机，以便在无法访问 Internet 时将数据发送到 Azure 自动化和 Log Analytics 服务。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
@@ -12,42 +12,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
-ms.author: magoedte;banders
-ms.openlocfilehash: 16d79f02bffeb3db22a0190822d4304d3a1de73b
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.date: 02/14/2018
+ms.author: magoedte
+ms.openlocfilehash: daf3cc236ef04ae27731e023d35cfe2aa82fc70a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="connect-computers-without-internet-access-to-oms-using-the-oms-gateway"></a>使用 OMS 网关将无法访问 Internet 的计算机连接到 OMS
-
-本文档介绍 OMS 管理的计算机和 System Center Operations Manager 监视的计算机在无法访问 Internet 的情况下，如何将数据发送到 OMS 服务。 OMS 网关是使用 HTTP CONNECT 命令支持 HTTP 隧道的 HTTP 转发代理，可以收集数据，然后代表这些设备将数据发送到 OMS 服务。  
+# <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>使用 OMS 网关连接无法访问 Internet 的计算机
+本文档介绍直接连接或 Operations Manager 监视的计算机无法访问 Internet 时，如何使用 OMS 网关，配置与 Azure 自动化和 Log Analytics 的通信。  OMS 网关是使用 HTTP CONNECT 命令，支持 HTTP 隧道的 HTTP 转发代理，它可以收集数据，然后代表这些设备将数据发送到 Azure 自动化和 Log Analytics。  
 
 OMS 网关支持：
 
 * Azure 自动化混合 Runbook 辅助角色  
-* 装有 Microsoft 监视代理的 Windows 计算机可直接连接到 OMS 工作区
-* OMS Agent for Linux 直接连接到 OMS 工作区的 Linux 计算机  
-* 与 OMS 集成的 System Center Operations Manager 2012 SP1 UR7、Operations Manager 2012 R2 UR3 或 Operations Manager 2016 管理组。  
+* 装有 Microsoft Monitoring Agent，可直接连接到 Log Analytics 工作区的 Windows 计算机
+* 装有适用于 Linux 的 OMS 代理，可直接连接到 Log Analytics 工作区的 Linux 计算机  
+* 与 Log Analytics 集成的 System Center Operations Manager 2012 SP1 with UR7、Operations Manager 2012 R2 with UR3、Operations Manager 2016 和 Operations Manager 版本 1801 管理组。  
 
-如果 IT 安全策略不允许网络中的计算机（例如销售点 (POS) 设备或支持 IT 服务的服务器）连接到 Internet，但需要将其连接到 OMS 以便管理和监视这些计算机，则可以将它们配置为直接与 OMS 网关通信，让网关代表这些计算机接收配置和转发数据。  如果在这些计算机上配置了可直接连接到 OMS 工作区的 OMS 代理，则所有计算机将改为与 OMS 网关通信。  网关会直接将数据从代理传输到 OMS，但不会分析传输中的任何数据。
+如果 IT 安全策略不允许网络中的计算机（例如销售点 (POS) 设备或支持 IT 服务的服务器）连接到 Internet，但需要将其连接到 Azure 自动化或 Log Analytics 以便管理和监视这些计算机，则可以将它们配置为直接与 OMS 网关通信，让网关代表这些计算机接收配置和转发数据。  如果这些计算机上配置了可直接连接到 Log Analytics 工作区的 OMS 代理，则所有计算机将改为与 OMS 网关通信。  网关会直接将数据从代理传输到服务，但不会分析传输中的任何数据。
 
-如果已将 Operations Manager 管理组与 OMS 集成，可将管理服务器配置为连接到 OMS 网关，以根据启用的解决方案接收配置信息并发送收集的数据。  Operations Manager 代理向管理服务器发送某些数据，例如 Operations Manager 警报、配置评估、实例空间和容量数据。 其他大批量的数据（例如 IIS 日志、性能和安全事件）将直接发送到 OMS 网关。  如果在外围网络或其他隔离网络中部署了一个或多个 Operations Manager 网关服务器用于监视不受信任的系统，这些服务器无法与 OMS 网关通信。  Operations Manager 网关服务器只能向管理服务器报告。  如果将 Operations Manager 管理组配置为与 OMS 网关通信，代理配置信息会自动分发到代理管理的、配置为收集 Log Analytics 数据的每台计算机，即使设置为空。    
+如果已将 Operations Manager 管理组与 Log Analytics 集成，可将管理服务器配置为连接到 OMS 网关，以根据启用的解决方案接收配置信息并发送收集的数据。  Operations Manager 代理向管理服务器发送某些数据，例如 Operations Manager 警报、配置评估、实例空间和容量数据。 其他大批量的数据（例如 IIS 日志、性能和安全事件）将直接发送到 OMS 网关。  如果在外围网络或其他隔离网络中部署了一个或多个 Operations Manager 网关服务器用于监视不受信任的系统，这些服务器无法与 OMS 网关通信。  Operations Manager 网关服务器只能向管理服务器报告。  如果将 Operations Manager 管理组配置为与 OMS 网关通信，代理配置信息会自动分发到代理管理的、配置为收集 Log Analytics 数据的每台计算机，即使设置为空。    
 
-若要为通过网关与 OMS 通信的直接连接的组或 Operations Management 组提供高可用性，可以使用网络负载均衡在多个网关服务器之间重定向和分配流量。  如果一台网关服务器发生故障，流量将重定向到另一个可用节点。  
+若要为通过网关与 Log Analytics 通信的直接连接的组或 Operations Management 组提供高可用性，可以使用网络负载均衡在多个网关服务器之间重定向和分配流量。  如果一台网关服务器发生故障，流量将重定向到另一个可用节点。  
 
 建议在运行 OMS 网关软件的计算机上安装 OMS 代理，用于监视 OMS 网关和分析性能或事件数据。 此外，该代理可帮助 OMS 网关标识它需要与之进行通信的服务终结点。
 
 每个代理必须与其网关建立网络连接，这样，代理才能自动与网关相互传输数据。 建议不要在域控制器上安装网关。
 
-下图显示了如何使用网关服务器将数据从直接代理传送到 OMS。  代理中的代理配置必须与 OMS 网关中配置用来与 OMS 通信的同一端口匹配。  
+下图显示了如何使用网关服务器将数据从直接代理传送到 Azure 自动化和 Log Analytics。  代理中的代理配置必须与 OMS 网关中配置用来与服务通信的同一端口匹配。  
 
-![直接代理与 OMS 通信的示意图](./media/log-analytics-oms-gateway/oms-omsgateway-agentdirectconnect.png)
+![直接代理与服务通信的示意图](./media/log-analytics-oms-gateway/oms-omsgateway-agentdirectconnect.png)
 
-下图显示了数据如何从 Operations Manager 管理组流向 OMS。   
+下图显示了数据如何从 Operations Manager 管理组流向 Log Analytics。   
 
-![Operations Manager 与 OMS 通信的示意图](./media/log-analytics-oms-gateway/log-analytics-agent-opsmgrconnect.png)
+![Operations Manager 与 Log Analytics 通信的示意图](./media/log-analytics-oms-gateway/log-analytics-agent-opsmgrconnect.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -82,15 +81,21 @@ OMS 网关提供了以下语言：
 ### <a name="supported-encryption-protocols"></a>支持的加密协议
 OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持安全套接字层 (SSL)。
 
+### <a name="supported-number-of-agent-connections"></a>支持的代理连接数
+下表突出显示了支持与网关服务器通信的代理数量。  支持基于代理每 6 秒上传 200KB 数据计算。 测试的每个代理的数据量约为每天 2.7GB。
+
+|网关 |支持的代理近似数量|  
+|--------|----------------------------------|  
+|- CPU：Intel XEON CPU E5-2660 v3 @ 2.6GHz 2 Cores<br> - 内存：4 GB<br> - 网络带宽：1 Gbps| 600|  
+|- CPU：Intel XEON CPU E5-2660 v3 @ 2.6GHz 4 Cores<br> - 内存：8 GB<br> - 网络带宽：1 Gbps| 1000|  
+
 ## <a name="download-the-oms-gateway"></a>下载 OMS 网关
 
-可通过三种方法获取最新版本的 OMS 网关安装程序文件。
+可通过两种方法获取最新版本的 OMS 网关安装程序文件。
 
 1. 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=54443)下载。
 
-2. 从 OMS 门户下载。  登录到 OMS 工作区后，导航到“设置” > “连接的源” > “Windows 服务器”，并单击“下载 OMS 网关”。
-
-3. 从 [Azure 门户](https://portal.azure.com)下载。  登录后：  
+2. 从 Azure 门户下载。  登录 Azure 门户后：  
 
    1. 浏览服务列表，并选择“Log Analytics”。  
    2. 选择工作区。
@@ -98,6 +103,10 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
    4. 在“选择要连接到工作区的数据源”下面，单击“计算机”。
    5. 在“直接代理”边栏选项卡中，单击“下载 OMS 网关”。<br><br> ![下载 OMS 网关](./media/log-analytics-oms-gateway/download-gateway.png)
 
+或 
+
+   1. 在工作区边栏选项卡中的“设置”下方，单击“高级设置”。
+   2. 导航到“连接的源” > “Windows 服务器”，然后单击“下载 OMS 网关”。
 
 ## <a name="install-the-oms-gateway"></a>安装 OMS 网关
 
@@ -127,9 +136,9 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
 4. 输入要连接的网关服务器的 IP 地址。<br><br> ![网络负载均衡管理器 – 将主机添加到群集：连接](./media/log-analytics-oms-gateway/nlb03.png) 
     
 ## <a name="configure-oms-agent-and-operations-manager-management-group"></a>配置 OMS 代理和 Operations Manager 管理组
-以下部分包含有关如何使用 OMS 网关配置直接连接的 OMS 代理、Operations Manager 管理组或 Azure 自动化混合 Runbook 辅助角色，使其与 OMS 通信的步骤。  
+以下部分包含有关如何使用 OMS 网关配置直接连接的 OMS 代理、Operations Manager 管理组或 Azure 自动化混合 Runbook 辅助角色，使其与 Azure 自动化或 Log Analytics 通信的步骤。  
 
-要了解有关在直接连接到 OMS 的 Windows 计算机上如何安装 OMS 代理的要求和步骤，请参阅[将 Windows 计算机连接到 OMS](log-analytics-windows-agent.md)；对于 Linux 计算机，请参阅[将 Linux 计算机连接到 OMS](log-analytics-linux-agents.md)。 
+要了解有关在直接连接到 Log Analytics 的 Windows 计算机上如何安装 OMS 代理的要求和步骤，请参阅[将 Windows 计算机连接到 Log Analytics](log-analytics-windows-agents.md)；对于 Linux 计算机，请参阅[将 Linux 计算机连接到 Log Analytics](log-analytics-quick-collect-linux-computer.md)。  有关自动化混合 Runbook 辅助角色的信息，请参阅[部署混合 Runbook 辅助角色](../automation/automation-hybrid-runbook-worker.md)。
 
 ### <a name="configuring-the-oms-agent-and-operations-manager-to-use-the-oms-gateway-as-a-proxy-server"></a>将 OMS 代理和 Operations Manager 配置为使用 OMS 网关作为代理服务器
 
@@ -137,35 +146,49 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
 请参阅[使用 Microsoft Monitoring Agent 配置代理和防火墙设置](log-analytics-proxy-firewall.md)，了解如何将代理配置为使用代理服务器（在本例中为网关）。  如果在网络负载均衡器后面部署了多个网关服务器，OMS 代理的代理配置为 NLB 的虚拟 IP 地址：<br><br> ![Microsoft Monitoring Agent 属性 – 代理设置](./media/log-analytics-oms-gateway/nlb04.png)
 
 ### <a name="configure-operations-manager---all-agents-use-the-same-proxy-server"></a>配置 Operations Manager - 所有代理使用相同的代理服务器
-可以配置 Operations Manager 以添加网关服务器。  即使设置为空，Operations Manager 代理配置也会自动应用到向 Operations Manager 报告的所有代理。
+可以配置 Operations Manager 以添加网关服务器。  即使设置为空，Operations Manager 代理配置也会自动应用到向 Operations Manager 报告的所有代理。  
 
 若要使用网关来支持 Operations Manager，必须满足以下条件：
 
-* 在网关服务器上安装 Microsoft Monitoring Agent（代理版本 – **8.0.10900.0** 或以上），并根据要通信的 OMS 工作区配置该代理。
+* 在网关服务器上安装 Microsoft Monitoring Agent（代理版本 – 8.0.10900.0 或以上），并根据要通信的 Log Analytics 工作区配置该代理。
 * 该网关必须已建立 Internet 连接，或者已连接到可访问 Internet 的代理服务器。
 
 > [!NOTE]
 > 如果未指定网关的值，会将空值推送到所有代理。
+> 
 
+如果这是首次向 Log Analytics 工作区注册 Operations Manager 管理组，为管理组指定代理配置的选项在操作控制台中不可用。  必须成功向服务注册管理组后，此选项才可用。  需使用 Netsh，对运行操作控制台以配置集成的系统，以及管理组中的所有管理服务器进行系统代理配置的更新。  
+
+1. 打开提升的命令指示符。
+   a. 转到“启动”，然后键入“cmd”。
+   b. 右键单击“命令提示符”然后选择“以管理员身份运行”**。
+2. 键入以下命令并按 Enter：
+
+    `netsh winhttp set proxy <proxy>:<port>`
+
+完成与 Log Analytics 的集成后，可运行 `netsh winhttp reset proxy` 删除更改，然后使用操作控制台中的“配置代理服务器”选项来指定 OMS 网关服务器。 
 
 1. 打开 Operations Manager 控制台，在“Operations Management Suite”下面单击“连接”，并单击“配置代理服务器”。<br><br> ![Operations Manager – 配置代理服务器](./media/log-analytics-oms-gateway/scom01.png)<br> 
 2. 选择“使用代理服务器访问 Operations Management Suite”，并键入 OMS 网关服务器的 IP 地址或 NLB 的虚拟 IP 地址。 请务必首先键入 `http://` 前缀。<br><br> ![Operations Manager – 代理服务器地址](./media/log-analytics-oms-gateway/scom02.png)<br> 
-3. 单击“完成” 。 Operations Manager 服务器已连接到 OMS 工作区。
+3. 单击“完成” 。 Operations Manager 管理组现已配置为通过网关服务器与 Log Analytics 服务通信。
 
 ### <a name="configure-operations-manager---specific-agents-use-proxy-server"></a>配置 Operations Manager - 特定的代理使用代理服务器
-在大型或复杂环境中，可能只希望特定的服务器（或组）使用 OMS 网关服务器。  对于这些服务器，无法直接更新 Operations Manager 代理，因为此值会被管理组的全局值覆盖。  应该重写用于推送这些值的规则。
+在大型或复杂环境中，可能只希望特定的服务器（或组）使用 OMS 网关服务器。  对于这些服务器，无法直接更新 Operations Manager 代理，因为此值会被管理组的全局值覆盖。  应该重写用于推送这些值的规则。  
 
 > [!NOTE] 
 > 可以利用与此相同的配置方法在环境中使用多个 OMS 网关服务器。  例如，可能会要求为每个区域指定特定的 OMS 网关服务器。
+>  
 
 1. 打开 Operations Manager 控制台并选择“创作”工作区。  
 2. 在“创作”工作区中选择“规则”，并单击 Operations Manager 工具栏上的“范围”按钮。 如果此按钮不可用，请确保已在“监视”窗格中选择了一个对象而不是文件夹。 “范围管理包对象”对话框显示了通用目标类、组或对象的列表。 
-3. 在“查找”字段中键入“运行状况服务”，并从列表中选择该服务。  单击 **“确定”**。  
-4. 在 Operations 控制台工具栏上搜索规则“顾问代理设置规则”，单击“重写”，并指向“重写规则”>“针对类的特定对象: 运行状况服务”并从列表中选择特定的对象。  或者，可以创建一个自定义组并在其中包含要将此重写应用到的服务器的 Health Service 对象，然后向该组应用该重写。
-5. 在“重写属性”对话框中，勾选“WebProxyAddress”参数旁边的“重写”列。  在“重写值”字段中，输入 OMS 网关服务器的 URL，请确保以 `http://` 前缀开头。
-   >[!NOTE]
-   > 不需要启用该规则，因为面向 Microsoft System Center 顾问监视服务器组的 Microsoft System Center 顾问安全引用重写管理包中包含的某个重写会自动管理该规则。
-   > 
+3. 在“查找”字段中键入“Health Service”，然后从列表中将其选中。  单击“确定”。  
+4. 在 Operations 控制台工具栏上搜索规则“顾问代理设置规则”，单击“重写”，然后指向“重写规则”>“针对类: Health Service 的特定对象”并从列表中选择特定的对象。  或者，可以创建一个自定义组并在其中包含要将此重写应用到的服务器的 Health Service 对象，然后向该组应用该重写。
+5. 在“重写属性”对话框中，勾选“WebProxyAddress”参数旁边的“重写”列。  在“重写值”字段中，输入 OMS 网关服务器的 URL，请确保以 `http://` 前缀开头。  
+
+    >[!NOTE]
+    > 不需要启用该规则，因为面向 Microsoft System Center 顾问监视服务器组的 Microsoft System Center 顾问安全引用重写管理包中包含的某个重写会自动管理该规则。
+    >   
+
 6. 从“选择目标管理包”列表中选择一个管理包，或单击“新建”创建新的未密封管理包。 
 7. 完成更改后，单击“确定”。 
 
@@ -190,7 +213,7 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
 | 美国中南部 |scus-jobruntimedata-prod-su1.azure-automation.net |
 | 美国东部 2 |eus2-jobruntimedata-prod-su1.azure-automation.net |
 | 加拿大中部 |cc-jobruntimedata-prod-su1.azure-automation.net |
-| 欧洲北部 |ne-jobruntimedata-prod-su1.azure-automation.net |
+| 北欧 |ne-jobruntimedata-prod-su1.azure-automation.net |
 | 东南亚 |sea-jobruntimedata-prod-su1.azure-automation.net |
 | 印度中部 |cid-jobruntimedata-prod-su1.azure-automation.net |
 | 日本 |jpe-jobruntimedata-prod-su1.azure-automation.net |
@@ -205,7 +228,7 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
 | 美国中南部 |scus-agentservice-prod-1.azure-automation.net |
 | 美国东部 2 |eus2-agentservice-prod-1.azure-automation.net |
 | 加拿大中部 |cc-agentservice-prod-1.azure-automation.net |
-| 欧洲北部 |ne-agentservice-prod-1.azure-automation.net |
+| 北欧 |ne-agentservice-prod-1.azure-automation.net |
 | 东南亚 |sea-agentservice-prod-1.azure-automation.net |
 | 印度中部 |cid-agentservice-prod-1.azure-automation.net |
 | 日本 |jpe-agentservice-prod-1.azure-automation.net |
@@ -236,7 +259,7 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
 
 | **Cmdlet** | **参数** | **说明** | **示例** |
 | --- | --- | --- | --- |  
-| `Get-OMSGatewayConfig` |键 |获取服务的配置 |`Get-OMSGatewayConfig` |  
+| `Get-OMSGatewayConfig` |密钥 |获取服务的配置 |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |密钥（必需） <br> 值 |更改服务的配置 |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |获取中继（上游）代理的地址 |`Get-OMSGatewayRelayProxy` |  
 | `Set-OMSGatewayRelayProxy` |地址<br> 用户名<br> 密码 |设置中继（上游）代理的地址（和凭据） |1.设置中继代理和凭据：<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2.设置不需要身份验证的中继代理：`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3.清除中继代理设置：<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
@@ -284,12 +307,10 @@ OMS 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它不支持�
 ![OMS 网关性能计数器](./media/log-analytics-oms-gateway/counters.png)
 
 ## <a name="get-assistance"></a>获取帮助
-登录到 Azure 门户后，可以针对 OMS 网关、其他任何 Azure 服务或服务功能创建支持请求。
+登录到 Azure 门户后，可以针对 OMS 网关或其他任何 Azure 服务或服务的功能创建支持请求。
 要请求帮助，请单击门户右上角的问号，并单击“新建支持请求”。 接下来，填写新建支持请求的表单。
 
 ![新建支持请求](./media/log-analytics-oms-gateway/support.png)
 
-同时，欢迎在 [Microsoft Azure 反馈论坛](https://feedback.azure.com/forums/267889)上提供有关 OMS 或 Log Analytics 的反馈。
-
 ## <a name="next-steps"></a>后续步骤
-* [添加数据源](log-analytics-data-sources.md)，以便从 Log Analytics 工作区中已连接的源收集数据并将其存储在 Log Analytics 存储库中。
+[添加数据源](log-analytics-data-sources.md)以便从连接的源中收集数据并将其存储在 Log Analytics 工作区中。

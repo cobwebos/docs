@@ -10,13 +10,13 @@ ms.service: iot-hub
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 096fcce979bd488a0fe9dead2b1232a057d0ae02
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6123039ba5eeb720e0ca590fa69af915da91367c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions---preview"></a>通过使用事件网格触发操作来响应 IoT 中心事件 - 预览版
 
@@ -107,7 +107,7 @@ IoT 中心事件包含响应设备生命周期中更改所需的全部信息。 
 
 ## <a name="filter-events"></a>筛选事件
 
-IoT 中心事件订阅可根据事件类型和设备名筛选事件。 事件网格中的使用者筛选器基于“前缀”和“后缀”的匹配进行筛选，以将含有匹配使用者的事件传送给订阅方。 
+IoT 中心事件订阅可根据事件类型和设备名筛选事件。 事件网格中的使用者筛选器基于“前缀”和“后缀”的匹配进行筛选。 该筛选器使用 `AND` 运算符，以便将含有与前缀和后缀都匹配的使用者的事件传送给订阅方。 
 
 IoT 事件使用者使用的格式：
 

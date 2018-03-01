@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;sngun
-ms.openlocfilehash: bb1ce4ceaa3d0c9aea014fc810ea269641dec14c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 15e69105d4171c63b4ccef0b072bccf49a2e9ceb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 源代码管理集成可让你将自动化帐户中的 Runbook 关联到 GitHub 源代码管理存储库。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，源代码管理可让你将源代码管理中的不同分支同步到开发、测试或生产自动化帐户，以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。
@@ -30,16 +30,15 @@ ms.lasthandoff: 12/14/2017
 > 
 > 
 
-为自动化帐户设置源代码管理时，需要执行两个简单的步骤；如果已有 GitHub 帐户，则只需要执行一个步骤。 它们具有以下特点：
+为自动化帐户设置源代码管理时，需要执行两个简单的步骤；如果已有 GitHub 帐户，则只需要执行一个步骤。 它们是：
 
 ## <a name="step-1--create-a-github-repository"></a>步骤 1 – 创建 GitHub 存储库
 如果已有想要链接到 Azure 自动化的 GitHub 帐户和存储库，请登录到现有帐户并从下面的步骤 2 开始。 否则，请导航到 [GitHub](https://github.com/)，注册新帐户并[创建新的存储库](https://help.github.com/articles/create-a-repo/)。
 
 ## <a name="step-2--set-up-source-control-in-azure-automation"></a>步骤 2 – 在 Azure 自动化中设置源代码管理
-1. 在 Azure 门户中的“自动化帐户”页面上，单击“设置源代码管理”。 
+1. 在 Azure 门户的“自动化帐户”页上，单击“帐户设置”下的“源代码管理”。 
    
-    ![设置源代码管理](media/automation-source-control-integration/automation_01_SetUpSourceControl.png)
-2. “源代码管理”页面随即打开，可以在其中配置 GitHub 帐户详细信息。 下面是要配置的参数的列表：  
+1. “源代码管理”页面随即打开，可以在其中配置 GitHub 帐户详细信息。 下面是要配置的参数的列表：  
    
    | **Parameter** | **说明** |
    |:--- |:--- |
@@ -67,7 +66,7 @@ ms.lasthandoff: 12/14/2017
      | **Parameter** | **值** |
      |:--- |:--- |
      | 名称 |Microsoft.Azure.Automation.SourceControl.Connection |
-     | 类型 |字符串 |
+     | Type |String |
      | 值 |{"Branch":\<分支名称>,"RunbookFolderPath":\<Runbook 文件夹路径>,"ProviderType":\<GitHub 具有值 1>,"Repository":\<存储库名称>,"Username":\< GitHub 用户名称>} |
 
     * 变量 **Microsoft.Azure.Automation.SourceControl.OAuthToken** 包含 OAuthToken 的安全加密值。  
@@ -75,7 +74,7 @@ ms.lasthandoff: 12/14/2017
     |**Parameter**            |**值** |
     |:---|:---|
     | 名称  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
-    | 类型 | Unknown(Encrypted) |
+    | Type | Unknown(Encrypted) |
     | 值 | <加密的 OAuthToken> |  
 
     ![变量](media/automation-source-control-integration/automation_04_Variables.png)  

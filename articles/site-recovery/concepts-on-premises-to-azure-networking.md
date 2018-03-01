@@ -3,7 +3,7 @@ title: "设置使用 Azure Site Recovery 故障转移到 Azure 后要连接的 I
 description: "说明如何设置使用 Azure Site Recovery 从本地故障转移后用于连接到 Azure VM 的 IP 地址"
 services: site-recovery
 documentationcenter: 
-author: prateek9us
+author: mayanknayar
 manager: carmonm
 editor: 
 ms.assetid: f02cdbea-0940-48bf-9fa5-f38d9e584fae
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/14/2017
-ms.author: pratshar
-ms.openlocfilehash: 5519a965d9828cfa1e73ba12f8acd1d509a36a66
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 02/27/2018
+ms.author: manayar
+ms.openlocfilehash: b9aeaf1dc6d471ba993dd470403ba60ce68153fc
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>设置在故障转移到 Azure 后要连接的 IP 地址
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/15/2017
 在规划复制和故障转移策略时，其中一个关键问题是如何在故障转移后连接到 Azure VM。 在设计副本 Azure VM 的网络策略时，有以下几个选择：
 
 - **使用不同的 IP 地址**：可以为复制的 Azure VM 网络选择使用不同的 IP 地址范围。 在此方案中，VM 会在故障转移后获取新的 IP 地址，并且需要进行 DNS 更新。
-- **保留相同的 IP 地址**：你可能想要在故障转移后为 Azure 网络使用与本地主站点相同的 IP 地址范围。 保留相同的 IP 地址，通过减少故障转移后网络相关问题来简化恢复过程。 不过，复制到 Azure 时，需要在运行故障转移后在路由中更新 IP 地址的新位置。 
+- **保留相同的 IP 地址**：你可能想要在故障转移后为 Azure 网络使用与本地主站点相同的 IP 地址范围。 保留相同的 IP 地址，可以减少运行故障转移后出现的网络相关问题，从而简化恢复过程。 不过，复制到 Azure 时，需要在运行故障转移后在路由中更新 IP 地址的新位置。
 
 ## <a name="retaining-ip-addresses"></a>保留 IP 地址
 
@@ -86,11 +86,7 @@ Site Recovery 支持在通过子网故障转移到 Azure 时保留固定的 IP �
 
 ## <a name="assigning-new-ip-addresses"></a>分配新 IP 地址
 
-这篇[博文](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)介绍了如何在运行故障转移后无需保留 IP 地址时设置 Azure 网络基础结构。 这篇博文从应用程序说明入手，介绍了如何设置本地网络和 Azure 网络，最后介绍了如何运行故障转移。 
+这篇[博文](http://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)介绍了如何在运行故障转移后无需保留 IP 地址时设置 Azure 网络基础结构。 这篇博文从应用程序说明入手，介绍了如何设置本地网络和 Azure 网络，最后介绍了如何运行故障转移。
 
 ## <a name="next-steps"></a>后续步骤
 [运行故障转移](site-recovery-failover.md)
-
-
-
-

@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/27/2017
+ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 6985d631bdac7114a72f105716c9483d0c5733ba
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 9294d19ea78a2b9cf4282d627eddd16e6588d3ee
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -67,7 +67,7 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 
 ### <a name="trigger---c-script-example"></a>触发器 - C# 脚本示例
 
-以下示例演示 function.json 文件中的一个 blob 触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 在 `samples-workitems` 容器中添加或更新 Blob 时，该函数会写入日志。
+以下示例演示 function.json 文件中的一个 Blob 触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 在 `samples-workitems` 容器中添加或更新 Blob 时，该函数会写入日志。
 
 下面是 *function.json* 文件中的绑定数据：
 
@@ -227,13 +227,22 @@ module.exports = function(context) {
 
 如上所述，其中某些类型需要在 *function.json* 中指定 `inout` 绑定方向。 此方向不受 Azure 门户中的标准编辑器支持，因此必须使用高级编辑器。
 
-如果需要文本 Blob，则可以绑定到 `string` 类型。 由于整个 blob 内容都会加载到内存，因此仅建议 blob 比较小时才这么做。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。
+如果需要文本 Blob，则可以绑定到 `string` 类型。 由于整个 blob 内容都会加载到内存，因此仅建议 blob 比较小时才这么做。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。 有关详细信息，请参阅本文后面的[并发和内存使用情况](#trigger---concurrency-and-memory-usage)。
 
 在 JavaScript 中，可以使用 `context.bindings.<name>` 访问输入 Blob 数据。
 
 ## <a name="trigger---blob-name-patterns"></a>触发器 - Blob 名称模式
 
-可以在 *function.json* 的 `path` 属性中或者在 `BlobTrigger` 特性构造函数中指定 Blob 名称模式。 名称模式可以是[筛选器或绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)。
+可以在 *function.json* 的 `path` 属性中或者在 `BlobTrigger` 特性构造函数中指定 Blob 名称模式。 名称模式可以是[筛选器或绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)。 以下部分提供了有关示例。
+
+### <a name="get-file-name-and-extension"></a>获取文件名和扩展名
+
+以下示例演示如何分别绑定到 Blob 文件名和扩展名：
+
+```json
+"path": "input/{blobname}.{blobextension}",
+```
+如果 Blob 名为 *original-Blob1.txt*，则函数代码中 `blobname` 和 `blobextension` 变量的值为 *original-Blob1* 和 *txt*。
 
 ### <a name="filter-on-blob-name"></a>按 Blob 名称筛选
 
@@ -262,15 +271,6 @@ module.exports = function(context) {
 ```
 
 如果 Blob 名为 *{20140101}-soundfile.mp3*，则函数代码中的 `name` 变量值为 *soundfile.mp3*。 
-
-### <a name="get-file-name-and-extension"></a>获取文件名和扩展名
-
-以下示例演示如何分别绑定到 Blob 文件名和扩展名：
-
-```json
-"path": "input/{blobname}.{blobextension}",
-```
-如果 Blob 名为 *original-Blob1.txt*，则函数代码中 `blobname` 和 `blobextension` 变量的值为 *original-Blob1* 和 *txt*。
 
 ## <a name="trigger---metadata"></a>触发器 - 元数据
 
@@ -309,6 +309,14 @@ Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名
 * ContainerName
 * BlobName
 * ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
+
+## <a name="trigger---concurrency-and-memory-usage"></a>触发器 - 并发和内存使用情况
+
+Blob 触发器可在内部使用队列，因此并发函数调用的最大数量受 [host.json 中的队列配置](functions-host-json.md#queues)控制。 默认设置会将并发限制到 24 个调用。 此限制分别应用于使用 blob 触发器的函数。
+
+[消耗计划](functions-scale.md#how-the-consumption-plan-works)将虚拟机 (VM) 上的函数应用限制为 1.5 GB 内存。 内存由每个并发执行函数实例和函数运行时本身使用。 如果 blob 触发的函数将整个 blob 加载到内存中，该函数使用的仅用于 blob 的最大内存为 24 * 最大 blob 大小。 例如，包含 3 个由 blob 触发的函数的函数应用和默认设置，其每 VM 最大并发为 3*24 = 72 个函数调用。
+
+JavaScript 函数可将整个 blob 加载到内存中，并且如果绑定到 `string`，C# 函数也会如此。
 
 ## <a name="trigger---polling-for-large-containers"></a>触发器 - 轮询大型容器
 
@@ -720,6 +728,14 @@ public static void Run(
 读取文本 Blob 时，可以绑定到 `string` 类型。 由于整个 Blob 内容都会载入内存，因此我们建议只在 Blob 较小时才使用此类型。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。
 
 在 JavaScript 中，可以使用 `context.bindings.<name>` 访问 Blob 数据。
+
+## <a name="exceptions-and-return-codes"></a>异常和返回代码
+
+| 绑定 |  引用 |
+|---|---|
+| Blob | [Blob 错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
+| Blob、表、队列 |  [存储错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Blob、表、队列 |  [故障排除](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>后续步骤
 

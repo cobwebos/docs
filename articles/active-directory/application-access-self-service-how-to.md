@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: cfa3d9803cd66308f21241bd61816654fd92eb2b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8aeda498847759debab18ddf4b44a75cd739a56c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>如何配置自助应用程序分配
 
@@ -45,9 +45,9 @@ ms.lasthandoff: 12/11/2017
 
 若要启用应用程序的自助应用程序访问，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，以**全局管理员**身份登录
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 12/11/2017
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6.  从列表中选择要对其启用自助访问的应用程序。
 

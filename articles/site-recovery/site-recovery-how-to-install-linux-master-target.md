@@ -3,7 +3,7 @@ title: "如何安装 Linux 主目标服务器用于从 Azure 故障转移到本�
 description: "在重新保护 Linux 虚拟机之前，需要一个 Linux 主目标服务器。 本文介绍如何安装该服务器。"
 services: site-recovery
 documentationcenter: 
-author: rajani-janaki-ram
+author: nsoneji
 manager: gauravd
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 11/22/2017
-ms.author: rajanaki
-ms.openlocfilehash: 11f9385c1082011ee690f48f2579b6f3b156d125
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 02/22/2018
+ms.author: nisoneji
+ms.openlocfilehash: 27b38eafd9ab5da11d66ede4d446a4952e30c534
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>安装 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 

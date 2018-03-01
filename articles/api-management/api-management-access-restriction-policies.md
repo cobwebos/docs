@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: f9872ee033d8c0bed215f8b37d64395e5dcd534c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 11cc5841d2f804f0d120dddda226bf05a0612607
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](http://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -55,14 +55,14 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |check-header|根元素。|是|  
-|value|允许的 HTTP 标头值。 指定了多个值元素时，如果任何一个值匹配，则可认为检查成功。|否|  
+|值|允许的 HTTP 标头值。 指定了多个值元素时，如果任何一个值匹配，则可认为检查成功。|否|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |failed-check-error-message|在标头不存在或其值无效的情况下，需要在 HTTP 响应正文中返回的错误消息。 此消息必须对任何特殊字符正确地进行转义。|是|不适用|  
 |failed-check-httpcode|在标头不存在或其值无效时需返回的 HTTP 状态代码。|是|不适用|  
@@ -70,7 +70,7 @@ ms.lasthandoff: 12/04/2017
 |ignore-case|可以设置为 True 或 False。 如果设置为 True，则在将标头值与一组可接受的值进行比较时，会忽略大小写。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[节](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略节：**入站、出站  
   
@@ -110,7 +110,7 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |set-limit|根元素。|是|  
 |api|添加一个或多个此类元素，对产品中的 API 施加调用速率限制。 产品和 API 的调用速率限制是分别应用的。|否|  
@@ -118,9 +118,9 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
-|name|要对其应用速率限制的 API 的名称。|是|不适用|  
+|名称|要对其应用速率限制的 API 的名称。|是|不适用|  
 |calls|在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。|是|不适用|  
 |renewal-period|在重置配额之前等待的时间长度，以秒为单位。|是|不适用|  
   
@@ -169,13 +169,13 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |set-limit|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |calls|在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。|是|不适用|  
 |counter-key|用于速率限制策略的密钥。|是|不适用|  
@@ -212,7 +212,7 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |ip-filter|根元素。|是|  
 |地址|指定要对其进行筛选的单个 IP 地址。|至少一个 `address` 或 `address-range` 元素是必需的。|  
@@ -220,7 +220,7 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |address-range from="address" to="address"|允许或拒绝其访问的某个 IP 地址范围。|使用 `address-range` 元素时必需。|不适用|  
 |ip-filter action="allow &#124; forbid"|指定是否应允许指定的 IP 地址和范围执行调用。|是|不适用|  
@@ -265,7 +265,7 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |quota|根元素。|是|  
 |api|添加一个或多个此类元素，对产品中的 API 设置配额。 产品和 API 的配额是分别应用的。|否|  
@@ -273,9 +273,9 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
-|name|要向其应用配额的 API 或操作的名称。|是|不适用|  
+|名称|要向其应用配额的 API 或操作的名称。|是|不适用|  
 |bandwidth|在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。|必须指定 `calls` 和/或 `bandwidth`。|不适用|  
 |calls|在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。|必须指定 `calls` 和/或 `bandwidth`。|不适用|  
 |renewal-period|在重置配额之前等待的时间长度，以秒为单位。|是|不适用|  
@@ -326,13 +326,13 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必选|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |quota|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
 |bandwidth|在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。|必须指定 `calls` 和/或 `bandwidth`。|不适用|  
 |calls|在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。|必须指定 `calls` 和/或 `bandwidth`。|不适用|  
@@ -495,20 +495,20 @@ ms.lasthandoff: 12/04/2017
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必选|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
-|clock-skew|时间跨度。 在令牌的到期声明存在于令牌中且早于当前日期/时间的情况下，提供一些小的余量。|否|0 秒|  
+|clock-skew|时间跨度。 用于指定令牌颁发者的系统时钟与 API 管理实例之间的最大预期时间差。|否|0 秒|  
 |failed-validation-error-message|JWT 未通过验证时会在 HTTP 响应正文中返回的错误消息。 此消息必须对任何特殊字符正确地进行转义。|否|默认错误消息取决于验证问题，例如“JWT 不存在”。|  
 |failed-validation-httpcode|JWT 未通过验证时会返回的 HTTP 状态代码。|否|401|  
-|header-name|包含令牌的 HTTP 标头的名称。|必须指定 `header-name` 或 `query-paremeter-name`，但不能二者都指定。|不适用|  
+|header-name|包含令牌的 HTTP 标头的名称。|必须指定 `header-name` 或 `query-parameter-name`，但不能二者都指定。|不适用|  
 |id|使用 `key` 元素的 `id` 属性可以指定一个字符串，该字符串将与令牌中的 `kid` 声明（如果存在）进行比较，以便找出进行签名验证时需要使用的适当密钥。|否|不适用|  
 |match|`claim` 元素的 `match` 属性用于指定：是否策略中的每个声明值都必须存在于令牌中验证才会成功。 可能的值包括：<br /><br /> -                          `all` - 策略中的每个声明值都必须存在于令牌中验证才会成功。<br /><br /> -                          `any` - 至少一个声明值必须存在于令牌中验证才会成功。|否|本应返回的所有记录的总数，|  
 |query-paremeter-name|包含令牌的查询参数的名称。|必须指定 `header-name` 或 `query-paremeter-name`，但不能二者都指定。|不适用|  
-|require-expiration-time|布尔值。 指定令牌中是否需要到期声明。|否|true|
+|require-expiration-time|布尔值。 指定令牌中是否需要到期声明。|否|是|
 |require-scheme|令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。|否|不适用|
 |require-signed-tokens|布尔值。 指定令牌是否需要签名。|否|是|  
 |分隔符|字符串。 指定要用于从多值声明中提取一组值的分隔符（例如 ","）。|否|不适用| 
-|url|Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以目录租户名称，例如 `contoso.onmicrosoft.com`。|是|不适用|  
+|url|Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 响应应符合以下 URL 中定义的规范：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。  对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以目录租户名称，例如 `contoso.onmicrosoft.com`。|是|不适用|  
   
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  

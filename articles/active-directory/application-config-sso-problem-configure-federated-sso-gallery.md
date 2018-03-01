@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: b0dcb4de19e0da208b9335621111641e1eb86882
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 86ddb91ae16da797e32c6e1a8a8b2cd8fca989a8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序的联合单一登录时遇到的问题
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 12/11/2017
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。转到步骤 7。 如果已经位于 Azure AD 上的应用程序配置边栏选项卡中。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -85,7 +85,7 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 

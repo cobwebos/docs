@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 99c9740e3f19e2a09332317b08e06352ffa8eee7
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 1ec845a6491b406c1aef34609b155a9c3d087427
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
@@ -70,12 +70,12 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
         <groupId>com.microsoft.azure</groupId>
         <artifactId>applicationinsights-web</artifactId>
         <!-- or applicationinsights-core for bare API -->
-        <version>[1.0,)</version>
+        <version>[2.0,)</version>
       </dependency>
     </dependencies>
 ```
 
-* *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`<version>1.0.n</version>`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
+* *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`<version>2.0.n</version>`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
 * *需要更新到新 SDK？* 请刷新项目的依赖项。
 
 #### <a name="if-youre-using-gradle"></a>如果使用 Gradle...
@@ -90,19 +90,19 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
     }
 
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '1.+'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '2.+'
       // or applicationinsights-core for bare API
     }
 ```
 
-* *发生了生成或校验和验证错误？尝试使用特定版本，例如：* `version:'1.0.n'`。 *可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)。*
+* *发生了生成或校验和验证错误？尝试使用特定版本，例如：* `version:'2.0.n'`。 *可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)。*
 * *更新到新 SDK*
   * 请刷新项目的依赖项。
 
 #### <a name="otherwise-"></a>否则...
 手动添加 SDK：
 
-1. 下载 [用于 Java 的 Application Insights SDK](https://aka.ms/aijavasdk)。
+1. 下载 [用于 Java 的 Application Insights SDK](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)。
 2. 解压缩 zip 文件中的二进制文件，然后将其添加项目。
 
 ### <a name="questions"></a>问题...
@@ -112,7 +112,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
   * `applicationinsights-web` 提供用于跟踪 HTTP 请求计数和响应时间的指标。 如果不想要自动收集此遥测数据，可以忽略此组件。 例如，如果想要编写自己的组件。
 * *在发布更改时更新 SDK*
 
-  * 下载最新的 [用于 Java 的 Application Insights SDK](https://aka.ms/qqkaq6) 并替换旧版本。
+  * 下载最新的 [用于 Java 的 Application Insights SDK](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) 并替换旧版本。
   * [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）中描述了更改。
 
 ## <a name="3-add-an-application-insights-xml-file"></a>3.添加 Application Insights .xml 文件

@@ -12,15 +12,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/9/2017
+ms.date: 1/16/2018
 ms.author: nachandr
-ms.openlocfilehash: 13c11902e275d1023e474d717800b3a36a6b31f2
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: bb3afdd3afa81664589f738945a63d20013d5291
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
+
+> [!div class="op_single_selector"]
+> * [Windows](service-fabric-patch-orchestration-application.md)
+> * [Linux](service-fabric-patch-orchestration-application-linux.md)
+>
+>
 
 修补业务流程应用程序是一个 Azure Service Fabric 应用程序，可在 Service Fabric 群集中自动修补操作系统，而无需停机。
 
@@ -61,15 +67,15 @@ ms.lasthandoff: 11/09/2017
 银级持久层中的 Azure 群集默认启用修复管理器服务。 黄金级耐久层中的 Azure 群集可能启用或不启用修复管理器服务，具体取决于这些群集的创建时间。 铜级持久层中的 Azure 群集默认不启用修复管理器服务。 如果已启用该服务，可以看到它在 Service Fabric Explorer 的系统服务部分中运行。
 
 ##### <a name="azure-portal"></a>Azure 门户
-在设置群集时，可以从 Azure 门户启用修复管理器。 在群集配置时选择“附加功能”下的“包含修复管理器”选项。
+在设置群集时，可以从 Azure 门户启用修复管理器。 在配置群集时选择“附加功能”下的“包含修复管理器”选项。
 ![从 Azure 门户启用修复管理器的映像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
-##### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
-或者可以使用 [Azure 资源管理器模板](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)在新的或现有 Service Fabric 群集上启用修复管理器服务。 获取要部署的群集的模板。 可以使用示例模板，或者创建自定义 Resource Manager 模板。 
+##### <a name="azure-resource-manager-deployment-model"></a>Azure 资源管理器部署模型
+另外，也可以使用 [Azure 资源管理器部署模型](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)在新的或现有 Service Fabric 群集上启用修复管理器服务。 获取要部署的群集的模板。 可以使用示例模板，或者创建自定义 Azure 资源管理器部署模型模板。 
 
-若要使用 [Azure 资源管理器模板](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)启用修复管理器服务，请执行以下操作：
+若要使用 [Azure 资源管理器部署模型模板](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)启用修复管理器服务，请执行以下操作：
 
-1. 首先，检查 `apiversion` 是否针对 `Microsoft.ServiceFabric/clusters` 资源设置为 `2017-07-01-preview`，如以下代码片段所示。 如果不同，需要将 `apiVersion` 更新为值 `2017-07-01-preview`：
+1. 首先检查 `Microsoft.ServiceFabric/clusters` 资源的 `apiversion` 是否设置为 `2017-07-01-preview`。 如果不是，则需要将 `apiVersion` 更新为值 `2017-07-01-preview` 或更高的值：
 
     ```json
     {
@@ -142,12 +148,12 @@ ms.lasthandoff: 11/09/2017
 |TaskApprovalPolicy   |枚举 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 指示协调器服务用于跨 Service Fabric 群集节点安装 Windows 更新的策略。<br>                         允许值包括： <br>                                                           <b>NodeWise</b>。 每次在一个节点上安装 Windows 更新。 <br>                                                           <b>UpgradeDomainWise</b>。 每次在一个升级域上安装 Windows 更新。 （在最大程度情况下，属于升级域的所有节点都可进行 Windows 更新。）
 |LogsDiskQuotaInMB   |Long  <br> （默认值：1024）               |可在节点本地持久保存的修补业务流程应用日志的最大大小，以 MB 为单位。
 | WUQuery               | 字符串<br>（默认值："IsInstalled=0"）                | 用于获取 Windows 更新的查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
-| InstallWindowsOSOnlyUpdates | Bool <br> （默认值：True）                 | 此标志允许安装 Windows 操作系统更新。            |
+| InstallWindowsOSOnlyUpdates | 布尔 <br> （默认值：True）                 | 此标志允许安装 Windows 操作系统更新。            |
 | WUOperationTimeOutInMinutes | int <br>（默认值：90）                   | 指示任何 Windows 更新操作（搜索、下载或安装）的超时。 在指定的超时内未完成的操作会被中止。       |
 | WURescheduleCount     | int <br> （默认值：5）                  | 在操作持续失败的情况下，服务重新计划 Windows 更新的最大次数。          |
 | WURescheduleTimeInMinutes | int <br>（默认值：30） | 在持续失败的情况下，服务重新计划 Windows 更新的间隔。 |
-| WUFrequency           | 逗号分隔的字符串（默认值："Weekly, Wednesday, 7:00:00"）     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>-   Monthly, DD,HH:MM:SS，例如：Monthly, 5,12:22:32。 <br> -   Weekly,DAY,HH:MM:SS，例如：Weekly, Tuesday, 12:22:32。  <br> -   Daily, HH:MM:SS，例如：Daily, 12:22:32。  <br> - None 表示不应执行 Windows 更新。  <br><br> 请注意，所有时间均采用 UTC。|
-| AcceptWindowsUpdateEula | Bool <br>（默认值：True） | 通过设置此标志，该应用程序将代表计算机所有者接受 Windows 更新的最终用户许可协议。              |
+| WUFrequency           | 逗号分隔的字符串（默认值："Weekly, Wednesday, 7:00:00"）     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>-   Monthly, DD, HH:MM:SS，例如：Monthly, 5,12:22:32。 <br> -   Weekly, DAY, HH:MM:SS，例如：Weekly, Tuesday, 12:22:32。  <br> -   Daily, HH:MM:SS，例如：Daily, 12:22:32。  <br> - None 表示不应执行 Windows 更新。  <br><br> 请注意，时间采用 UTC。|
+| AcceptWindowsUpdateEula | 布尔 <br>（默认值：True） | 通过设置此标志，该应用程序将代表计算机所有者接受 Windows 更新的最终用户许可协议。              |
 
 > [!TIP]
 > 若要立即进行 Windows 更新，请依据应用程序部署时间设置 `WUFrequency`。 例如，假设拥有一个 5 节点测试群集，并计划在大约 UTC 下午 5:00 部署应用。 如果假定应用程序升级或部署最多需要 30 分钟，请将 WUFrequency 设置为“Daily, 17:30:00”。
@@ -218,8 +224,8 @@ JSON 的字段如下所述。
 -- | -- | --
 OperationResult | 0 - Succeeded（成功）<br> 1 - Succeeded With Errors（已成功但存在错误）<br> 2 - Failed（失败）<br> 3 - Aborted（已中止）<br> 4 - Aborted With Timeout（因超时已中止） | 指示整个操作（通常涉及安装一个或多个更新）的结果。
 ResultCode | 与 OperationResult 相同 | 此字段指示单个更新的安装操作的结果。
-OperationType | 1 - Installation（安装）<br> 0 - Search and Download（搜索并下载）。| 安装是唯一默认情况下会显示在结果中的 OperationType。
-WindowsUpdateQuery | 默认值是“IsInstalled=0” |用于搜索更新的 Windows 更新查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
+OperationType | 1 - Installation（安装）<br> 0 - Search and Download（搜索并下载）。| Installation 是默认情况下结果中将显示的唯一 OperationType。
+WindowsUpdateQuery | 默认值是“IsInstalled=0” |用来搜索更新的 Windows 更新查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
 RebootRequired | true - 需要重新启动<br> false - 无需重新启动 | 指示是否需要重新启动才能完成安装更新。
 
 如果尚未计划更新，JSON 结果将为空。
@@ -300,14 +306,14 @@ A. 群集运行不正常时，修补业务流程应用不会安装更新。 请�
 A. 修补业务流程应用所需的时长主要取决于以下因素：
 
 - 协调器服务的策略。 
-  - 默认策略 `NodeWise` 指定一次只修补一个节点。 尤其是在更大的群集中，我们建议使用 `UpgradeDomainWise` 策略以实现更快的跨群集修补。
+  - 默认策略 `NodeWise` 指定一次只修补一个节点。 尤其是当存在更大的群集时，我们建议使用 `UpgradeDomainWise` 策略以实现更快的跨群集修补。
 - 可下载并安装的更新数。 
 - 下载和安装更新所需的平均时间，不应超过两个小时。
 - VM 的性能和网络带宽。
 
 问： **为什么某些更新会出现在通过 REST API 获得的 Windows 更新结果中，而不是在计算机的 Windows 更新历史记录下？**
 
-A. 某些产品更新需要签入其各自的更新/修补历史记录。 例如，Windows Defender 更新不会显示在 Windows Server 2016 的 Windows 更新历史记录中。
+A. 某些产品更新仅会显示在其各自的更新/修补历史记录中。 例如，Windows Defender 更新不会显示在 Windows Server 2016 的 Windows 更新历史记录中。
 
 ## <a name="disclaimers"></a>免责声明
 

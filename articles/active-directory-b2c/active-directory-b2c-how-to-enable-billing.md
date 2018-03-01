@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2017
 ms.author: parja
-ms.openlocfilehash: 063c00fe47be25b9359e80d71abfaf453c7a7074
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: c61cf24083ac3422e30dabf8514dcbd3aec0599d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>将 Azure 订阅链接到 Azure AD B2C 租户
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/19/2017
 
 ## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>在 Azure Marketplace 中找到 Azure AD B2C
 
-单击“新建”按钮。 在“搜索 Marketplace”字段中，输入 `B2C`。
+单击“创建资源”按钮。 在“搜索 Marketplace”字段中，输入 `B2C`。
 
 ![添加突出显示的按钮，并在“搜索 Marketplace”字段中添加文本“Azure AD B2C”](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 

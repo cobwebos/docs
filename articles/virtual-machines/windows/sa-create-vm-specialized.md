@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: e92a9d5900e3e0fe71084e5003010d419e44cb39
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 811cc6cea80acbe6cbbf4533c1f9a8c9c7f53702
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>从存储帐户中的专用 VHD 创建 VM
 
@@ -118,7 +118,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 ### <a name="before-you-begin"></a>开始之前
 请确保：
 
-* 获取有关**源和目标存储帐户**的信息。 对于源 VM，需要具有存储帐户和容器名称。 通常，容器名称为 **vhds**。 还需要获取目标存储帐户。 如果尚未拥有存储帐户，可以使用门户（“更多服务”>“存储帐户”>“添加”）或使用 [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) cmdlet 创建一个存储帐户。 
+* 获取有关**源和目标存储帐户**的信息。 对于源 VM，需要具有存储帐户和容器名称。 通常，容器名称为 **vhds**。 还需要获取目标存储帐户。 如果尚未拥有存储帐户，可以使用门户（“所有服务”>“存储帐户”>“添加”）或使用 [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) cmdlet 创建一个存储帐户。 
 * 已下载并安装 [AzCopy 工具](../../storage/common/storage-use-azcopy.md)。 
 
 ### <a name="deallocate-the-vm"></a>解除分配 VM
@@ -138,7 +138,7 @@ Azure 门户中该 VM 的“状态”将从“已停止”更改为“已停止(
 
 可以使用 Azure 门户或 Azure PowerShell 获取 URL：
 
-* 门户：单击>了解“更多服务” > “存储帐户” > “存储帐户” > “Blob”，源 VHD 文件可能在“vhds”容器中。 单击容器的“属性”并复制标记为 **URL** 的文本。 需要用到源和目标容器的 URL。 
+* **门户**：单击 **>** 以选择“所有服务” > “存储帐户” > “存储帐户” > “Blob”，源 VHD 文件可能在“vhds”容器中。 单击容器的“属性”并复制标记为 **URL** 的文本。 需要用到源和目标容器的 URL。 
 * Powershell：使用 [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) 可获取资源组“myResourceGroup”中名为“myVM”的 VM 的信息。 在结果中，查看 **Vhd Uri** 的 **Storage profile** 部分。 URI 的第一部分是容器的 URL，最后一部分是 VM 的 OS VHD 名称。
 
 ```powershell
@@ -148,7 +148,7 @@ Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>获取存储访问密钥
 查找源和目标存储帐户的访问密钥。 有关访问密钥的详细信息，请参阅[关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)。
 
-* 门户：单击“更多服务” > “存储帐户” > “存储帐户” > “访问密钥”。 复制标记为 **key1** 的密钥。
+* **门户**：单击“所有服务” > “存储帐户” > “存储帐户” > “访问密钥”。 复制标记为 **key1** 的密钥。
 * Powershell：使用 [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) 获取资源组“myResourceGroup”中存储帐户“mystorageaccount”的存储密钥。 复制标记为“key1”的密钥。
 
 ```powershell
@@ -312,7 +312,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM：
+在 [Azure 门户](https://portal.azure.com)中，应当可以在“所有服务” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM：
 
 ```powershell
 $vmList = Get-AzureRmVM -ResourceGroupName $rgName

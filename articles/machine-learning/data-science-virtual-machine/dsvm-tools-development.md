@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: b6a333d075e0391adca4f37bbff8918391a22fde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6aef0fbe44e19b515c2bc10c0e7c38fabac10dae
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>数据科学虚拟机开发工具
 
@@ -47,11 +47,20 @@ ms.lasthandoff: 10/11/2017
 ## <a name="rstudio--desktop"></a>RStudio Desktop 
 |    |           |
 | ------------- | ------------- |
-| 它是什么？   | R 语言的客户端 IDE    |
+| 它是什么？   | R 的客户端 IDE    |
 | 支持的 DSVM 版本      | Windows、Linux      |
 | 典型用途      |  R 开发     |
 | 如何使用/运行它？      | Windows 中桌面快捷方式 (`C:\Program Files\RStudio\bin\rstudio.exe`)，Linux 中桌面快捷方式 (`/usr/bin/rstudio`)      |
 | DSVM 上的相关工具      |   Visual Studio 2017、Visual Studio Code、Juno      |
+
+## <a name="rstudio--server"></a>RStudio Server 
+|    |           |
+| ------------- | ------------- |
+| 它是什么？   | R 的基于 Web 的 IDE    |
+| 支持的 DSVM 版本      | Linux      |
+| 典型用途      |  R 开发     |
+| 如何使用/运行它？      | 使用 _systemctl enable rstudio-server_ 启用该服务，然后使用 _systemctl start rstudio-server_ 启动该服务。 然后可以在 http://your-vm-ip:8787 中登录到 RStudio Server。       |
+| DSVM 上的相关工具      |   Visual Studio 2017、Visual Studio Code、RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 
 |    |           |

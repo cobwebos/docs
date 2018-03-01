@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f66ddecd6b999400b05a4b00aa781ffef3f7887d
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: d94fef9d51c5f696df37b26867c1c8ebe12a15b9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Blob 存储中或从 Azure Blob 存储中复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -81,7 +81,7 @@ ms.lasthandoff: 01/05/2018
 
 每种数据集的 **typeProperties** 节有所不同，该部分提供有关数据在数据存储区中的位置、格式等信息。 **AzureBlob** 类型的数据集的 typeProperties 部分具有以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | folderPath |到 Blob 存储中的容器和文件夹的路径。 示例：myblobcontainer\myblobfolder\ |是 |
 | fileName |blob 的名称。 fileName 可选，并且区分大小写。<br/><br/>如果指定文件名，则活动（包括复制）将对特定 Blob 起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中所有的 Blob。<br/><br/>如果没有为输出数据集指定 **fileName**，并且没有在活动接收器中指定 **preserveHierarchy**，所生成文件的名称会采用以下格式：Data.<Guid>.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
@@ -127,13 +127,13 @@ ms.lasthandoff: 01/05/2018
 
 **BlobSource** 支持 **typeProperties** 部分的以下属性：
 
-| 属性 | 说明 | 允许的值 | 必需 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |否 |
 
 **BlobSink** 支持以下 **typeProperties** 属性部分：
 
-| 属性 | 说明 | 允许的值 | 必需 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | copyBehavior |源为 BlobSource 或 FileSystem 时，请定义复制行为。 |<b>PreserveHierarchy</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><br/><b>FlattenHierarchy：</b>源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><br/><b>MergeFiles</b>：将源文件夹的所有文件合并到一个文件中。 如果指定文件/Blob 名称，则合并的文件名称将为指定的名称；否则，会自动生成文件名。 |否 |
 
@@ -173,7 +173,7 @@ ms.lasthandoff: 01/05/2018
 ## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>演练：使用“复制向导”将数据复制到 Blob 存储/从 Blob 存储复制数据
 让我们看一下如何快速将数据复制到 Azure Blob 存储/从 Azure Blob 存储复制数据。 在本演练中，源和目标数据存储都属于 Azure Blob 存储类型。 本演练中的管道将数据从一个文件夹复制到同一 blob 容器中的其他文件夹中。 本演练有意简单设计，以显示使用 Blob 存储作为源或接收器时的设置或属性。 
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>先决条件
 1. 如果尚无 Azure 存储帐户，请创建一个通用 Azure 存储帐户。 在本演练中，使用 blob 存储同时作为源和目标数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)一文获取创建步骤。
 2. 在存储帐户中创建名为 adfblobconnector 的 Blob 容器。 
 4. 在 adfblobconnector 容器中创建名为 input 的文件夹。
@@ -184,8 +184,8 @@ ms.lasthandoff: 01/05/2018
     ```
 ### <a name="create-the-data-factory"></a>创建数据工厂
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击左上角的“+ 新建”，单击“智能 + 分析”，并单击“数据工厂”。
-3. 在“新建数据工厂”  边栏选项卡中：   
+2. 单击左上角的“创建资源”，单击“智能 + 分析”，然后单击“数据工厂”。
+3. 在“新建数据工厂”窗格中：   
     1. 输入 ADFBlobConnectorDF作为名称。 Azure 数据工厂的名称必须全局唯一。 如果收到错误“`*Data factory name “ADFBlobConnectorDF” is not available`”，请更改数据工厂的名称（例如改为 yournameADFBlobConnectorDF），并重新尝试创建。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
     2. 选择 **Azure 订阅**。
     3. 对于资源组，选择“使用现有”以选择现有资源组（或）选择“新建”以输入资源组的名称。
@@ -233,7 +233,7 @@ ms.lasthandoff: 01/05/2018
         b. “列分隔符”已设为 `Comma (,)`。 可在下拉列表中看到数据工厂支持的其他列分隔符。 还可以指定自定义分隔符。
         c. “行分隔符”已设为 `Carriage Return + Line feed (\r\n)`。 可在下拉列表中看到数据工厂支持的其他行分隔符。 还可以指定自定义分隔符。
         d.单击“下一步”。 “跳过行计数”已设为“0”。 如果想要跳过文件顶部的几行，请在此处输入数字。
-        e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。  未设置“第一数据行包含列名”。 如果源文件的第一行包含列名称，请选择此选项。
+        e.  未设置“第一数据行包含列名”。 如果源文件的第一行包含列名称，请选择此选项。
         f. 已设置“将空列值视为 null”选项。
     2. 展开“高级设置”以查看可用的高级选项。
     3. 在页面底部，查看 emp.txt 文件的数据的“预览”。

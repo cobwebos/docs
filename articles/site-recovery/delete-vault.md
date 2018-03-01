@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/04/2017
+ms.date: 02/22/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 77bc7e068629c5dbf650b39844912b1b7a6155b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4cb5c387319b9659b16f0c98dc38cb79d72987e2
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="delete-a-site-recovery-vault"></a>删除 Site Recovery 保管库
 依赖项可能会阻止删除 Azure Site Recovery 保管库。 需要采取的措施因 Site Recovery 方案而异：VMware 到 Azure、Hyper-V（含和不含 System Center Virtual Machine Manager）到 Azure 和 Azure 备份。 若要删除用于 Azure 备份的保管库，请参阅[删除 Azure 备份保管库](../backup/backup-azure-delete-vault.md)。

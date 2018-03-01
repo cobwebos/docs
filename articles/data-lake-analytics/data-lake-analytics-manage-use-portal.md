@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.openlocfilehash: e49d1a0e0ccc6567d0a6841817667717ff5dba76
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15b3b44e45a59f44bd9bbd96dce867cc87fa410c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -33,14 +33,14 @@ ms.lasthandoff: 10/11/2017
 ### <a name="create-an-account"></a>创建帐户
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 单击“新建” > “智能 + 分析” > “Data Lake Analytics”。
+2. 单击“创建资源” > “智能 + 分析” > “Data Lake Analytics”。
 3. 为以下项选择值： 
    1. 名称：Data Lake Analytics 帐户的名称。
    2. 订阅：用于帐户的 Azure 订阅。
    3. 资源组：要在其中创建帐户的 Azure 资源组。 
    4. 位置：Data Lake Analytics 帐户的 Azure 数据中心。 
    5. Data Lake Store：要用于 Data Lake Analytics 帐户的默认存储。 Azure Data Lake Store 帐户和 Data Lake Analytics 帐户必须位于同一位置。
-4. 单击“创建” 。 
+4. 单击“创建”。 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>删除 Data Lake Analytics 帐户
 
@@ -117,7 +117,7 @@ Data Lake Analytics 支持以下数据源：
 2. 单击“访问控制 (IAM)” > “添加”。
 3. 选择角色。
 4. 添加用户。
-5. 单击 **“确定”**。
+5. 单击“确定”。
 
 >[!NOTE]
 >如果用户或安全组需要提交作业，还需要对存储帐户的权限。 有关详细信息，请参阅[保护 Data Lake Store 中存储的数据](../data-lake-store/data-lake-store-secure-data.md)。
@@ -178,7 +178,7 @@ Data Lake Analytics 支持以下数据源：
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 2. 单击“属性”。
 3. 在“最大 AU 数”下，移动滑块选择一个值，或在文本框中输入值。 
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 > [!NOTE]
 > 如果需要的数量大于默认 AU 数 (250)，在门户中单击“帮助 + 支持”提交支持请求。 可增加 Data Lake Analytics 帐户中可用的 AU 数。
@@ -192,7 +192,7 @@ Data Lake Analytics 支持以下数据源：
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 2. 单击“属性”。
 3. 在“运行作业的最大数”下，移动滑块选择一个值，或在文本框中输入值。 
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 > [!NOTE]
 > 如果需运行的作业数大于默认作业数 (20)，请在门户中单击“帮助 + 支持”提交支持请求。 可增加 Data Lake Analytics 帐户中可同时运行的作业数。
@@ -206,7 +206,7 @@ Data Lake Analytics 支持以下数据源：
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 2. 单击“属性”。
 3. 在“保留作业查询的天数”下，移动滑块选择一个值，或在文本框中输入值。  
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 ### <a name="job-level-policies"></a>作业级策略
 通过作业级策略，可控制单个用户（或特定安全组成员）可在提交的作业上设置的最大 AU 数和最高优先级。 这样就可以控制用户所产生的成本。 它还允许控制计划作业可能对在同一 Data Lake Analytics 帐户中的运行且优先级较高的生产作业产生的影响。

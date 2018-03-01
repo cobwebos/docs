@@ -1,6 +1,6 @@
 ---
 title: "什么是 Apache Storm - Azure HDInsight | Microsoft Docs"
-description: "Apache Storm 用于实时处理数据流。 可以通过 Azure HDInsight 轻松地在 Azure 云中创建 Storm 群集。 使用 Visual Studio 时，可以通过 C# 创建 Storm 解决方案，并将其部署到 HDInsight Storm 群集。"
+description: "Apache Storm 用于实时处理数据流。 可以通过 Azure HDInsight 轻松地在 Azure 云中创建 Storm 群集。 使用 Visual Studio 时，可以通过 C# 创建 Storm 解决方案，然后将其部署到 HDInsight Storm 群集。"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/08/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 2232ae8a838ae2d7feb9a66e0953f006bf45c644
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 7defb860ab526824492ddeb1fddf8ce037ec39ae
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 
@@ -130,7 +130,7 @@ Storm on HDInsight 附带完整的企业级持续支持。 Storm on HDInsight �
 
 ## <a name="development"></a>开发
 
-.NET 开发人员使用针对 Visual Studio 的 Data Lake 工具即可以 C# 语言设计和实施拓扑。 也可以创建使用 Java 和 C# 组件的混合拓扑。
+.NET 开发人员使用针对 Visual Studio 的 Data Lake 工具即可以 C# 语言设计和实施拓扑。 你也可以创建使用 Java 和 C# 组件的混合拓扑。
 
 有关详细信息，请参阅 [使用 Visual Studio 开发适用于 Storm on HDInsight 的 C# 拓扑](apache-storm-develop-csharp-visual-studio-topology.md)。
 

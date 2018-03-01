@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f1b92c604e20198714e9697bf4d08b3f71f23ae3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5657df412b1f2b7d4d43d7551289620ae4d77de2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>排查已加入混合 Azure Active Directory 的下层设备问题 
 
@@ -82,6 +82,18 @@ ms.lasthandoff: 12/11/2017
 - 登录身份不是域用户
 
     ![适用于 Windows 的工作区加入](./media/active-directory-device-registration-troubleshoot-windows-legacy/03.png)
+    
+    以下几种不同原因可能会导致此问题：
+    
+    1. 如果已登录的用户不是域用户（例如，是本地用户）。 低级别设备上的混合 Azure AD 联接仅支持域用户。
+    
+    2. 如果出于任何原因，Autoworkplace.exe 无法以无提示方式通过 Azure AD 或 AD FS 进行身份验证。 几个可能的原因可能是：到 Azure AD URL 的出站网络连接出现问题（请检查先决条件），或者为用户启用/配置了 MFA 但没有在联合服务器上配置 WIAORMUTLIAUTHN（请检查配置步骤）。 另一种可能性是主领域发现 (HRD) 页面正在等待用户交互，阻止了 Autoworkplace.exe 以无提示方式获取令牌。 
+    
+    3. 组织在使用 Azure AD 无缝单一登录，设备的 IE intranet 设置中不存在以下 URL：
+    - https://autologon.microsoftazuread-sso.com
+    - https://aadg.windows.net.nsatc.net
+    
+    并且必须为 Intranet 区域启用“允许通过脚本更新状态栏”设置。
 
 - 已达到配额
 

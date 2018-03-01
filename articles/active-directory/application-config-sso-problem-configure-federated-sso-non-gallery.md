@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: d0bdce43796ea555fc20ddc56a2a670042d4f16b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 77f4bf0fc38043afd7a6634bcf16a0f10f7ddfeb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序的联合单一登录时遇到的问题
 
@@ -27,11 +27,11 @@ ms.lasthandoff: 12/11/2017
 
 若要添加应用程序的第二个实例，需要能够：
 
--   配置第二个实例的唯一标识符。 配置的这个标识符不能与第一个实例中的标识符相同。
+-   配置第二个实例的唯一标识符。 不能配置与用于第一个实例的标识符相同的标识符。
 
 -   配置一个与第一个实例中所用证书不同的证书。
 
-如果应用程序不支持上面的所有配置。 则无法配置第二个实例。
+如果应用程序不支持上述任一方式，则无法配置第二个实例。
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>我在何处设置 EntityID（用户标识符）格式
 
@@ -41,11 +41,11 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 ## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>我从 Azure AD 中的何处获取应用程序元数据或证书
 
-若要从 Azure AD 下载应用程序元数据或证书，请按照以下步骤操作：
+若要从 Azure AD 下载应用程序元数据或证书，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 

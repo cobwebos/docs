@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/29/2017
+ms.date: 02/22/2018
 ms.author: asgang
-ms.openlocfilehash: 028aa0f23c3a7c98c4801d9e306c5dcfa35aab80
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 1b63515970f81b1cab679287d84707d531fd102a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="replicate-applications-running-on-vmware-virtual-machines-to-azure"></a>将在 VMware 虚拟机上运行的应用程序复制到 Azure
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.openlocfilehash: fc9a0068de5f9464133eec0b043fbba1dc0fbde7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 68009b74a410f7e854de675a1d8d0c32e310d2c9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 EDIFACT 消息以实现企业集成
 
@@ -42,12 +42,12 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="create-an-edifact-agreement"></a>创建 EDIFACT 协议 
 
-1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“更多服务”。
+1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“所有服务”。
 
     > [!TIP]
-    > 如果未看到“更多服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
+    > 如果未看到“所有服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
 
-    ![在左侧菜单中，选择“更多服务”](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
+    ![在左侧菜单中，选择“所有服务”](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
 2. 在搜索框中，为筛选器键入“集成”。 在结果列表中，选择“集成帐户”。
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 10/11/2017
 
     | 属性 | 说明 |
     | --- | --- |
-    | Name |协议的名称 |
+    | 名称 |协议的名称 |
     | 协议类型 | 应为 EDIFACT |
     | 管理方 |协议需要有管理方和托管方。 宿主合作伙伴代表配置协议的组织。 |
     | 管理方标识 |管理方的标识符 |

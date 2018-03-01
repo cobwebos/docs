@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/07/2017
 ms.author: robb
-ms.openlocfilehash: c463479b7eaee5a0548c8891dd3a20ef070dd39b
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 5f2b68e800f484a64e79f965fc855aebe090186a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-service-health"></a>Azure 服务运行状况
 当 Azure 服务中的问题影响到个人的服务时，Azure 服务运行状况会提供及时和个性化的信息。  借助此功能还可对即将进行的计划内维护做好准备。
@@ -32,8 +32,13 @@ ms.lasthandoff: 01/02/2018
     ![服务运行状况事件](./media/service-health-overview/azure-service-health-overview-7.png)
 
 ## <a name="get-started-with-service-health"></a>服务运行状况入门
-若要启动服务运行状况仪表板，请在门户仪表板上选择“服务运行状况”磁贴。 如果以前删除了该磁贴或者正在使用自定义仪表板，请在“更多服务”（仪表板左下角）中搜索“服务运行状况”服务。
+若要启动服务运行状况仪表板，请在门户仪表板上选择“服务运行状况”磁贴。 
+
 ![服务运行状况入门](./media/service-health-overview/azure-service-health-overview-1.png)
+
+如果以前删除了该磁贴或者正在使用自定义仪表板，请在“所有服务”（仪表板左上角）中搜索“服务运行状况”服务。
+
+![服务运行状况入门](./media/service-health-overview/azure-service-health-overview-1a.png)
 
 ## <a name="see-current-issues-which-impact-your-services"></a>查看当前影响了服务的问题
 “服务问题”视图显示 Azure 服务中当前正在影响资源的所有问题。 可以了解问题的开始时间，以及受影响的服务和区域。 还可以阅读最新的更新，了解 Azure 正在采取哪些措施来解决问题。 

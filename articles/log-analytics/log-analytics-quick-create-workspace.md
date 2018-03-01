@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte
-ms.openlocfilehash: 8259a97d28effa7bfa9cfb9d7cd9cd2a14c9d906
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 5d8b20d5da442aa1f37eb7e2b2cb8049031e7a24
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>在 Azure 门户中创建 Log Analytics 工作区
 在 Azure 门户中可以设置 Log Analytics 工作区，该工作区是一个具有其自己的数据存储库、数据源和解决方案的独特 Log Analytics 环境。  如果要从以下源中收集数据，本文中所述的步骤是必需的：
@@ -34,13 +34,13 @@ ms.lasthandoff: 10/26/2017
 *  [收集 Linux 计算机相关数据](log-analytics-quick-collect-linux-computer.md)
 *  [收集 Windows 计算机相关数据](log-analytics-quick-collect-windows-computer.md)
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="log-in-to-azure-portal"></a>登录到 Azure 门户
 登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。 
 
 ## <a name="create-a-workspace"></a>创建工作区
-1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. 单击“创建”，然后为以下各项选择选项：
 
   * 为新的 OMS 工作区提供名称，如 DefaultLAWorkspace。 

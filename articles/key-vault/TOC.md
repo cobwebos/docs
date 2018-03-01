@@ -1,3 +1,5 @@
+# [Key Vault 文档](index.md)
+
 # 概述
 ## [什么是密钥保管库？](key-vault-whatis.md)
 ## [服务概述](https://azure.microsoft.com/services/key-vault/)

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 12/19/2017
 ms.author: raynew
 ms.openlocfilehash: 8bae8688e322efd0a0556cf01e319252d42fc31d
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="physical-server-to-azure-replication-architecture"></a>物理服务器到 Azure 复制体系结构
 

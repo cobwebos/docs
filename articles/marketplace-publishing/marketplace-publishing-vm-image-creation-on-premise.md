@@ -1,6 +1,6 @@
 ---
-title: "为 Azure 应用商店创建本地虚拟机映像 | Microsoft Docs"
-description: "了解并执行相关步骤，以便创建本地 VM 映像并针对要购买的其他用户部署到 Azure 应用商店。"
+title: "为 Azure Marketplace 创建本地虚拟机映像 | Microsoft Docs"
+description: "了解并执行相关步骤，以便创建本地 VM 映像并针对要购买的其他用户部署到 Azure Marketplace。"
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 8f6b9a9293dc149586e6e5fd55028170ea825b07
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77771f1e690bdfb59d42989a34068634f35f845d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure 应用商店部署本地虚拟机映像
+# <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure Marketplace 部署本地虚拟机映像
 我们强烈建议使用远程桌面协议直接在云中开发 Azure 虚拟硬盘 (VHD)。 但是，如有必要，可以下载 VHD 并使用本地基础结构进行开发。  
 
 对于本地开发，必须下载所创建 VM 的操作系统 VHD。 这些步骤将作为上述步骤 3.3 的一部分执行。  
@@ -92,12 +92,12 @@ ms.lasthandoff: 10/11/2017
 
 **从 Microsoft Azure 门户中创建存储帐户**
 
-1. 单击“新建” 。
+1. 单击“创建资源”。
 2. 选择“存储”。
 3. 填写存储帐户名称，并选择位置。
    
    ![绘制](media/marketplace-publishing-vm-image-creation-on-premise/img08.png)
-4. 单击“创建” 。
+4. 单击“创建”。
 5. 创建的存储帐户的边栏选项卡应该会打开。 如果没有，请依次选择“浏览” > “存储帐户”。 在“存储帐户”边栏选项卡上，选择已创建的存储帐户。
 6. 选择“容器”。
    
@@ -146,6 +146,6 @@ ms.lasthandoff: 10/11/2017
 借助 [Linux 命令行工具](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)，使用以下项：azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
 
 ## <a name="see-also"></a>另请参阅
-* [为应用商店创建虚拟机映像](marketplace-publishing-vm-image-creation.md)
+* [为 Marketplace 创建虚拟机映像](marketplace-publishing-vm-image-creation.md)
 * [设置 Azure PowerShell](marketplace-publishing-powershell-setup.md)
 

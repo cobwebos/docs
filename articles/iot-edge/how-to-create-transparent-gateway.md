@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 12/04/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c3621cb860339499089ebdf3c3581faf770f1fe3
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 0ea4d8ec51211f1208083d3f93c3c100dc54e6b0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-iot-edge-device-that-acts-as-a-transparent-gateway---preview"></a>创建充当透明网关的 IoT Edge 设备 -预览版
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 02/03/2018
 
 1. 从 GitHub 克隆 Microsoft Azure IoT SDK 和适用于 C 的库：
 
-   ```
+   ```cmd/sh
    git clone -b modules-preview https://github.com/Azure/azure-iot-sdk-c.git 
    ```
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 02/03/2018
 
 创建新的设备证书：
 
-   ```
+   ```bash
    ./certGen.sh create_edge_device_certificate myGateway
    ```
 
@@ -83,14 +83,14 @@ ms.lasthandoff: 02/03/2018
  
 在 `certs` 目录中运行以下命令，以获取完整的设备公钥链：
 
-   ```
+   ```bash
    cat ./new-edge-device.cert.pem ./azure-iot-test-only.intermediate.cert.pem ./azure-iot-test-only.root.ca.cert.pem > ./new-edge-device-full-chain.cert.pem
    ```
 
 ### <a name="powershell"></a>Powershell
 
 创建新的设备证书： 
-   ```
+   ```powershell
    New-CACertsEdgeDevice myGateway
    ```
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/03/2018
  
 在 Linux 中，使用 Bash 输出：
 
-   ```
+   ```bash
    sudo iotedgectl setup --connection-string {device connection string}
         --edge-hostname {gateway hostname, e.g. mygateway.contoso.com}
         --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem
@@ -126,7 +126,7 @@ ms.lasthandoff: 02/03/2018
 
 在 Windows 中，使用 PowerShell 输出：
 
-   ```
+   ```powershell
    iotedgectl setup --connection-string {device connection string}
         --edge-hostname {gateway hostname, e.g. mygateway.contoso.com}
         --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem
@@ -135,15 +135,11 @@ ms.lasthandoff: 02/03/2018
         --owner-ca-cert-file {full path}/RootCA.pem
    ```
 
-默认情况下，示例脚本不设置设备私钥的密码。 如果要设置密码，请添加以下参数：
-
-   ```
-   --device-ca-passphrase {passphrase}
-   ```
+默认情况下，示例脚本不设置设备私钥的密码。 若要设置密码，请添加参数 `--device-ca-passphrase {passphrase}`。
 
 此脚本将提示设置边缘代理证书的密码。 在该命令后重启 IoT Edge 运行时：
 
-   ```
+   ```cmd/sh
    iotedgectl restart
    ```
 
@@ -155,7 +151,7 @@ ms.lasthandoff: 02/03/2018
 
 例如，对于 .NET 应用程序，可以添加下片段来信任以 PEM 格式存储在路径 `certPath` 中的证书。 根据使用的脚本版本，路径可引用 `certs/azure-iot-test-only.root.ca.cert.pem`(Bash) 或 `RootCA.pem`(Powershell)。
 
-   ```
+   ```csharp
    using System.Security.Cryptography.X509Certificates;
    
    ...

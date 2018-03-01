@@ -11,10 +11,10 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 11/03/2017
 ms.openlocfilehash: 9de2d93735942903df9320741baadf2c934bd7ab
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure Database for PostgreSQL 选项和性能：了解每个定价层提供的功能
 创建 Azure Database for PostgreSQL 服务器时，需确定三个主要选项以配置为该服务器分配的资源。 这些选项会影响服务器的性能和缩放。

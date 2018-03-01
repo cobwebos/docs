@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 8f1477c5fd8f57a815eeb603d2bde580bf78cca2
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: a2422d8a79d102accb72476f6934bae38603973a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>数据科学虚拟机数据引入工具
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 12/11/2017
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 将文件从虚拟机导入 CosmosDB，将数据从 Azure 表存储导入 CosmosDB，或将数据从 SQL Server 数据库导入到 CosmosDB。     |
 |  如何使用/运行它？    |   要使用命令行版本，请打开命令提示符，然后键入 `dt`。 要使用 GUI 工具，请打开命令提示符，然后键入 `dtui`。    |
-| 到示例的链接      | [CosmosDB 导入数据](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
+| 示例链接      | [CosmosDB 导入数据](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | DSVM 上的相关工具      | AzCopy、AdlCopy      |
 
 
@@ -84,6 +84,17 @@ ms.lasthandoff: 12/11/2017
 |  如何使用/运行它？    |   打开命令提示符，然后键入 `bcp` 获取帮助。    |
 | 到示例的链接      | [大容量复制实用工具](https://docs.microsoft.com/sql/tools/bcp-utility)      |
 | DSVM 上的相关工具      | SQL Server、sqlcmd      |
+
+## <a name="blobfuse"></a>blobfuse
+
+|    |           |
+| ------------- | ------------- |
+| 它是什么？   | 用于在 Linux 文件系统中装载 Azure blob 容器的工具。      |
+| 支持的 DSVM 版本      | Linux      |
+| 典型用途      | 读取和写入到容器中的 blob      |
+|  如何使用/运行它？    |   在终端中运行 _blobfuse_。    |
+| 示例链接      | [GitHub 上的 blobfuse)[https://github.com/Azure/azure-storage-fuse]      |
+| DSVM 上的相关工具      | Azure 命令行      |
 
 
 ## <a name="microsoft-data-management-gateway"></a>Microsoft 数据管理网关

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 71929b449f2a0fa55327fd3f9741208506859e85
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 6478d577c52ffa23c3149c8213f182eaa1e466bd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Azure 流分析事件顺序注意事项
 
@@ -70,6 +70,9 @@ Azure 流分析按时间戳顺序生成输出，并提供一些设置来处理�
 * 已删除：已放弃。
 
 当流分析对在“无序容错时段”范围内收到的事件重新排序时，查询的输出会根据无序容错时段延迟。
+
+### <a name="early-events"></a>早期事件
+按应用程序时间进行处理时，其应用程序时间早于其到达时间超过 5 分钟的事件将被删除或根据所选的配置选项进行调整。
 
 ### <a name="example"></a>示例
 

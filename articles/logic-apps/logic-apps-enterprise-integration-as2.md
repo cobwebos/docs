@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: 6a283d8772e48aa6671d88288c2083d891a220d5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: fa61bbecc51c4f3163bd1cc077391bb102662297
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 AS2 消息以实现企业集成
 
@@ -40,12 +40,12 @@ ms.lasthandoff: 12/18/2017
 
 1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。  
 
-2.  在左侧菜单中，选择“更多服务”。 在搜索框中，输入“集成”作为筛选器。 在结果列表中，选择“集成帐户”。
+2.  在左侧菜单中，选择“所有服务”。 在搜索框中，输入“集成”作为筛选器。 在结果列表中，选择“集成帐户”。
 
     > [!TIP]
-    > 如果未看到“更多服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
+    > 如果未看到“所有服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
 
-    ![在“更多服务”中筛选“集成”，选择“集成帐户”](./media/logic-apps-enterprise-integration-as2/overview-1.png)
+    ![在“所有服务”中筛选“集成”，选择“集成帐户”](./media/logic-apps-enterprise-integration-as2/overview-1.png)
 
 3. 在打开的“集成帐户”边栏选项卡中，选择要在其中创建协议的集成帐户。
 如果未看到任何集成帐户，请[先创建一个集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "有关集成帐户的详细信息")。  

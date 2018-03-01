@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: sstein
-ms.openlocfilehash: d17c361d2249cc95be78cde143925251ad65db44
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 2871d2b1208013808958e8a5b0c62fce31af86ec
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/22/2018
 ---
-# <a name="introduction-to-a-sql-database-multi-tenant-saas-app-example"></a>SQL 数据库多租户 SaaS 应用示例简介
+# <a name="introduction-to-a-multi-tenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>多租户 SaaS 应用简介，该应用通过“每租户一个数据库”模式使用 SQL 数据库
 
-Wingtip SaaS 应用程序是一个示例多租户应用，用于演示 SQL 数据库的独特优势。 该应用使用租户各有数据库（一种 SaaS 应用程序模式）为多个租户提供服务。 该应用旨在展示支持 SaaS 方案（包括多个 SaaS 设计及管理模式）的 Azure SQL 数据库功能。 Wingtip SaaS 应用的部署时间不到五分钟，可快速启动并运行！
+Wingtip SaaS 应用程序是多租户应用的一个例子。 该应用使用“每租户一个数据库”（一种 SaaS 应用程序模式）为多个租户提供服务。 该应用使用多个 SaaS 设计及管理模式，展示支持 SaaS 方案的 Azure SQL 数据库功能。 Wingtip SaaS 应用的部署时间不到五分钟，可快速启动并运行！
 
-[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存储库提供了应用程序源代码和管理脚本。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
+[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存储库提供了应用程序源代码和管理脚本。 开始操作前，请先参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)，获取下载和取消阻止 Wingtip Tickets 管理脚本的步骤。
 
 ## <a name="application-architecture"></a>应用程序体系结构
 
@@ -48,13 +48,13 @@ Wingtip SaaS 应用使用租户各有数据库模型，并使用 SQL 弹性池�
 |[监视和管理性能](saas-dbpertenant-performance-monitoring.md)| 了解如何使用 SQL 数据库的监视功能，以及如何在超出性能阈值时设置警报。 |
 |[使用 Log Anaytics 进行监视 (OMS)](saas-dbpertenant-log-analytics.md) | 了解如何使用 [Log Analytics](../log-analytics/log-analytics-overview.md) 跨多个池监视大量资源。 |
 |[还原单个租户](saas-dbpertenant-restore-single-tenant.md)| 了解如何将租户数据库还原到先前的时间点。 还包括在使现有租户数据库保持联机的情况下，还原为并行数据库的步骤。 |
-|[管理租户架构](saas-tenancy-schema-management.md)| 了解如何在所有 Wingtip SaaS 租户中更新架构和更新引用数据。 |
-|[运行即席分析](saas-tenancy-adhoc-analytics.md) | 创建即席分析数据库并对所有租户运行实时分布式查询。  |
-|[运行租户分析](saas-tenancy-tenant-analytics.md) | 将租户数据提取到分析数据库或数据仓库，从而运行脱机分析查询。 |
+|[管理租户数据库架构](saas-tenancy-schema-management.md)| 了解如何跨所有租户数据库更新架构和更新引用数据。 |
+|[运行跨租户分布式查询](saas-tenancy-cross-tenant-reporting.md) | 创建即席分析数据库并对所有租户运行实时分布式查询。  |
+|[对提取的租户数据运行分析](saas-tenancy-tenant-analytics.md) | 将租户数据提取到分析数据库或数据仓库，以运行脱机分析查询。 |
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure SQL 数据库多租户 SaaS 应用示例指南和提示](saas-tenancy-wingtip-app-guidance-tips.md)
+- [部署和使用 Wingtip Tickets SaaS 应用示例的常规指南和提示](saas-tenancy-wingtip-app-guidance-tips.md)
 
 - [部署 Wingtip SaaS 应用程序](saas-dbpertenant-get-started-deploy.md)

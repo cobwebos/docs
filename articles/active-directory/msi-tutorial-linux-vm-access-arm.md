@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 717738f68b8c91562a8fe842ad49dbee67a515ac
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: fc44dcb2a869ff2048bc8a8d50f72f774fa0483a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-resource-manager"></a>使用 Linux VM 托管服务标识 (MSI) 访问 Azure 资源管理器
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 02/03/2018
 
 本教程将新建一个 Linux VM。 另外，还可以在现有 VM 上启用 MSI。
 
-1. 单击 Azure 门户左上角的“新建”按钮。
+1. 单击 Azure 门户左上角的“创建资源”按钮。
 2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
 3. 输入虚拟机信息。 对于“身份验证类型”，选择“SSH 公钥”或“密码”。 使用创建的凭据可以登录 VM。
 

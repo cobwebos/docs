@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 238f8451f1d00b14563486ca5df9e77612a32654
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: e6c9cbc4f158e62092c7a9e401e618880e5ea3b6
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定义混合标识采用策略
-在此任务中，会根据所述的业务要求，为混合标识解决方案定义混合标识采用策略：
+在此任务中，你将根据所述的业务要求，为混合标识解决方案定义混合标识采用策略：
 
 * [确定业务需求](active-directory-hybrid-identity-design-considerations-business-needs.md)
 * [确定目录同步要求](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
@@ -39,11 +39,11 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 上图中定义的方案如下：
 
 * **云标识**：这是仅存在于云中的标识。  对于 Azure AD，它们实际上位于 Azure AD 目录中。
-* **同步**：这是存在于本地和云中的标识。  使用 Azure AD Connect 时，以现有的 Azure AD 帐户创建或联接这些用户。  在所谓的密码哈希中，用户的密码哈希从本地环境同步到云。  使用“同步”时的一个注意事项是，如果在本地环境中禁用某个用户，可能需要经过 3 小时，Azure AD 中才显示该帐户状态。  这是因为存在同步时间间隔。
+* **同步**：这是存在于本地和云中的标识。  使用 Azure AD Connect 时，以现有的 Azure AD 帐户创建或联接这些用户。  在所谓的密码哈希中，用户的密码哈希从本地环境同步到云。  使用“同步”时的一个注意事项是，如果在本地环境中禁用某个用户，可能需要经过三小时，Azure AD 中才显示该帐户状态。  这是因为存在同步时间间隔。
 * **联合**：这些标识同时存在于本地和云中。  使用 Azure AD Connect 时，以现有的 Azure AD 帐户创建或联接这些用户。  
 
 > [!NOTE]
-> 有关同步选项的详细信息，请参阅[将本地标识与 Azure Active Directory 集成](connect/active-directory-aadconnect.md)。
+> 有关同步选项的详细信息，请阅读 [Integrating your on-premises identities with Azure Active Directory](connect/active-directory-aadconnect.md)（将本地标识与 Azure Active Directory 集成）。
 > 
 > 
 
@@ -52,17 +52,17 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | 策略 | 优点 | 缺点 |
 | --- | --- | --- |
 | **云标识** |在小型组织中易于管理。 <br> 不需要在本地安装任何软件 - 不需要额外的硬件<br>用户离职时轻松禁用其帐户 |用户访问云中的工作负荷时需要登录 <br> 云和本地标识的密码可以相同，也可以不同 |
-| **同步** |本地密码用于验证本地和云目录 <br>在小型、中型或大型组织中易于管理 <br>用户可针对某些资源执行单一登录 (SSO) <br> 用于同步的 Microsoft 首选方法 <br> 更易于管理 |由于公司的特定策略，某些客户可能不愿意将目录与云同步 |
-| **联合** |用户可以执行单一登录 (SSO) <br>如果用户被辞退或离职，可以立即禁用其帐户并吊销其访问权限。<br> 支持同步所不能实现的高级方案 |详细安装和配置步骤 <br> 更多的维护工作 <br> 可能需要额外的硬件来部署 STS 服务器。 <br> 可能需要额外的硬件来安装联合身份验证服务器。如果使用 AD FS，需要额外的软件 <br> 需要进行大量的设置才能使用 SSO <br> 严重的缺点是，联合身份验证服务器关闭时用户无法进行身份验证 |
+| **同步** |本地密码用于针对本地和云目录进行身份验证 <br>在小型、中型或大型组织中更易于管理 <br>用户可针对某些资源执行单一登录 (SSO) <br> 用于同步的 Microsoft 首选方法 <br> 更易于管理 |由于公司的特定策略，某些客户可能不愿意将目录与云同步 |
+| **联合** |用户可以执行单一登录 (SSO) <br>如果用户被辞退或离职，可以立即禁用其帐户并吊销其访问权限。<br> 支持同步所不能实现的高级方案 |设置和配置步骤较多 <br> 更多的维护工作 <br> 可能需要额外的硬件来部署 STS 服务器。 <br> 可能需要额外的硬件来安装联合服务器。 如果使用 AD FS，则需要额外的软件 <br> 需要进行大量的设置才能使用 SSO <br> 严重的缺点是，联合身份验证服务器关闭时用户无法进行身份验证 |
 
 ### <a name="client-experience"></a>客户端体验
-使用的策略决定用户的登录体验。  下表提供用户预期的登录体验的相关信息。  请注意，所有联合标识提供者并非在所有方案中都支持 SSO。
+使用的策略决定用户的登录体验。  下表提供用户预期的登录体验的相关信息。  并非所有联合标识提供者在所有方案中都支持 SSO。
 
 **已加入域的应用程序和专用网络应用程序**：
 
 |  | 同步标识 | 联合标识 |
 | --- | --- | --- |
-| Web 浏览器 |基于窗体的身份验证 |单一登录，有时需要提供组织 ID |
+| Web 浏览器 |基于表单的身份验证 |单一登录，有时需要提供组织 ID |
 | Outlook |提示输入凭据 |提示输入凭据 |
 | Skype for Business (Lync) |提示输入凭据 |在 Lync 中需要单一登录，在 Exchange 中提示输入凭据 |
 | Skydrive Pro |提示输入凭据 |单一登录 |
@@ -72,7 +72,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 |  | 同步标识 | 联合标识 |
 | --- | --- | --- |
-| Web 浏览器 |基于窗体的身份验证 |基于窗体的身份验证 |
+| Web 浏览器 |基于表单的身份验证 |基于表单的身份验证 |
 | Outlook、Skype for Business (Lync)、Skydrive Pro、Office 订阅 |提示输入凭据 |提示输入凭据 |
 | Exchange ActiveSync |提示输入凭据 |在 Lync 中需要单一登录，在 Exchange 中提示输入凭据 |
 | 移动应用 |提示输入凭据 |提示输入凭据 |
@@ -87,10 +87,10 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 * 如果没有 WS-Trust/联合身份验证支持，其他所有活动客户端都会中断
   * 这意味着，Office 2016 以前的 Lync 客户端、OneDrive 客户端、Office 订阅、Office Mobile 都不可用
-* Office 转换为被动身份验证可让它们支持纯 SAML 2.0 IdP，但支持仍然以客户端为准
+* Office 转换为被动身份验证可让它们支持纯 SAML 2.0 IdP，但支持仍然因客户端而异
 
 > [!NOTE]
-> 有关最新列表，请参阅文章 http://aka.ms/ssoproviders。
+> 有关最新列表，请阅读文章 https://aka.ms/ssoproviders。
 > 
 > 
 
@@ -108,7 +108,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 ### <a name="supported-topologies"></a>支持的拓扑
 定义同步策略时，必须确定使用的拓扑。 可以根据步骤 2 中已确定的信息，确定适合使用的拓扑。 单林单 Azure AD 拓扑最常见，它由单个 Active Directory 林和单个 Azure AD 实例组成。  这会用于大多数方案，也是在使用 Azure AD Connect Express 安装时预期的拓扑，如下图所示。
 
-![](./media/hybrid-id-design-considerations/single-forest.png) 单林方案。在大型组织甚至小型组织中，拥有多个林很平常，如图 5 所示。
+![](./media/hybrid-id-design-considerations/single-forest.png) 单林方案。在大型组织甚至小型组织中，拥有多个林很常见，如图 5 所示。
 
 > [!NOTE]
 > 有关不同的本地和 Azure AD 拓扑与 Azure AD Connect 同步的详细信息，请参阅 [Azure AD Connect 的拓扑](connect/active-directory-aadconnect-topologies.md)一文。
@@ -141,7 +141,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 **多林多 Azure AD 方案**
 
-在组织的 Azure AD 中，建议只有单个目录，但只要 Azure AD Connect 同步操作服务器与 Azure AD 目录之间保持 1:1 关系，则仍然支持。  对于每个 Azure AD 实例，需要安装 Azure AD Connect。  此外，Azure AD 采用隔离设计，一个 Azure AD 实例中的用户看不到其他实例中的用户。
+在组织的 Azure AD 中，建议只有单个目录，但只要 Azure AD Connect 同步操作服务器与 Azure AD 目录之间保持 1:1 关系，则仍然支持。  对于每个 Azure AD 实例，都需要安装 Azure AD Connect。  此外，Azure AD 采用隔离设计，一个 Azure AD 实例中的用户看不到其他实例中的用户。
 
 可以且支持将一个 Active Directory 本地实例连接到多个 Azure AD 目录，如下图所示：
 
@@ -159,7 +159,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
   * 使用默认配置进行组写回
   * 设备写回
 
-请注意，不支持以下功能，请不要将其选作实现：
+不支持以下功能，不应将其选作实现：
 
 * 不支持将多个 Azure AD Connect 同步服务器连接到同一个 Azure AD 目录，即使它们已配置为同步对象的互斥集。
 * 它不支持同步相同用户到多个 Azure AD 目录。 

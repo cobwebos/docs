@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 128abd504785227c1f27debd329d46d358e6e516
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: d62be25678044ead469f65362b6f47c1a2df893b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>在 Microsoft Operations Management Suite (OMS) 中跟踪 B2B 通信
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 01/19/2018
 
 若要让 OMS 跟踪逻辑应用的 B2B 消息，必须将逻辑应用 B2B 解决方案添加到 OMS 门户。 详细了解如何[将解决方案添加到 OMS](../log-analytics/log-analytics-get-started.md)。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“更多服务”。 搜索“日志分析”，然后选择“Log Analytics”，如下所示：
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 搜索“日志分析”，然后选择“Log Analytics”，如下所示：
 
    ![查找 Log Analytics](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 

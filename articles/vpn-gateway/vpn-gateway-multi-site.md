@@ -1,6 +1,6 @@
 ---
 title: "使用 VPN 网关和 PowerShell 将虚拟网络连接到多个站点：经典 | Microsoft Docs"
-description: "本文指导使用经典部署模型的 VPN 网关将多个本地站点连接到虚拟网络。"
+description: "通过 VPN 网关将多个本地网站连接到经典虚拟网络。"
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2017
+ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 434f84dc6244eddce9b172a617722b218360ffc2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c0af4271df0e88354edb717b8d6f4c99ab29e573
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>将站点到站点连接添加到包含现有 VPN 网关连接的 VNet（经典）
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
 > [!div class="op_single_selector"]
-> * [Azure 门户](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell（经典）](vpn-gateway-multi-site.md)
 >
 >

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: e1beb06301807c35a1b070989a0f80f4c8097762
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 439fadeb01ccad58642492eb49ef25f866a9a9dd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-external-app-service-environment"></a>创建外部应用服务环境 #
 
@@ -59,7 +59,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 若要同时创建 ASE 和应用服务计划：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择“新建” > “Web + 移动” > “Web 应用”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择“创建资源” > “Web + 移动” > “Web 应用”。
 
     ![创建 Web 应用][1]
 
@@ -97,7 +97,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 如果创建独立的 ASE，则其中不含任何内容。 空的 ASE 存在基础结构，每月仍会产生费用。 按照这些步骤通过 ILB 创建 ASE，或在其自身的资源组中创建 ASE。 创建 ASE 后，可使用常规过程在其中创建应用。 选择新 ASE 作为位置。
 
-1. 在 Azure Marketplace 中搜索“应用服务环境”，或者选择“新建” > “Web + 移动” > “应用服务环境”。 
+1. 在 Azure Marketplace 中搜索“应用服务环境”，或者选择“创建资源” > “Web 移动” > “应用服务环境”。 
 
 2. 输入 ASE 的名称。 此名称用于在 ASE 中创建的应用。 如果该名称为 mynewdemoase，则子域名为 .mynewdemoase.p.azurewebsites.net。 如果创建名为 mytestapp 的应用，则可在 mytestapp.mynewdemoase.p.azurewebsites.net 中访问它。 不能在名称中使用空格。 如果使用大写字符，则域名为该名称的全小写形式。 如果使用 ILB，则不在子域中使用 ASE 名称，但会在 ASE 创建过程中显式声明该名称。
 

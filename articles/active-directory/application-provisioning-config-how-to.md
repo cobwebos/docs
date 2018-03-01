@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: a41c09cc5a13c8326e22e315801b81c86d125c0e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: da7050edae282c90c4f92c588ce8fe501ccba50d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>如何为 Azure AD 库应用程序配置用户预配
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/11/2017
 
 如果给定应用程序只显示手动模式，这表示尚未为该应用创建自动 Azure AD 预配连接器。 或意味着该应用不支持生成自动化预配连接器的必备用户管理 API。
 
-如果想要为给定应用请求自动化预配支持，可在 <http://aka.ms/aadapprequest> 填写申请表。
+如果想要为给定应用请求自动预配支持，可使用 [Azure Active Directory 应用程序请求](https://aka.ms/aadapprequest)填写请求。
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>将应用程序配置为自动化预配
 

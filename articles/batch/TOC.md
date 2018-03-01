@@ -83,9 +83,9 @@
 
 ## [Azure CLI](/cli/azure/batch)
 ## [Azure PowerShell](/powershell/module/azurerm.batch)
-## [.NET](/dotnet/api/microsoft.azure.batch)
-## [Java](/java/api/com.microsoft.azure.batch)
-## [Node.js](/nodejs/api/overview/azure/batch)
+## [.NET](/dotnet/api/overview/azure/batch)
+## [Java](/java/api/overview/azure/batch)
+## [Node.js](/javascript/api/overview/azure/batch)
 ## [Python](/python/api/overview/azure/batch)
 ## REST
 ### [Batch 服务](/rest/api/batchservice)
@@ -100,7 +100,6 @@
 ### [任务完成事件](batch-task-complete-event.md)
 ### [任务失败事件](batch-task-fail-event.md)
 ## [Batch 计算节点环境变量](batch-compute-node-environment-variables.md)
-### [资源管理器模板](/templates/microsoft.batch/batchaccounts)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
@@ -110,6 +109,7 @@
 ## [Azure 中的 HPC 解决方案](../virtual-machines/linux/high-performance-computing.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [定价](https://azure.microsoft.com/pricing/details/batch/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
+## [资源管理器模板](/azure/templates/microsoft.batch/batchaccounts)
 ## [服务更新](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-batch)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=batch)

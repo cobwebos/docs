@@ -12,250 +12,214 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: ae5ccb83a0088cb7c9668f18620b74f9f3f1e9b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e2f988fd62753e1ebed702728dee7ede65c72c4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="manage-resources-with-azure-powershell-and-resource-manager"></a>使用 Azure PowerShell 和 Resource Manager 管理资源
+# <a name="manage-resources-with-azure-powershell"></a>使用 Azure PowerShell 管理资源
 
-本文介绍如何使用 Azure PowerShell 和 Azure Resource Manager 管理解决方案。 如果不熟悉 Resource Manager，请参阅 [Resource Manager 概述](resource-group-overview.md)。 本文重点介绍管理任务。 将能够：
+[!include[Resource Manager governance introduction](../../includes/resource-manager-governance-intro.md)]
 
-1. 创建资源组
-2. 将资源添加到资源组
-3. 向资源添加标记
-4. 根据名称或标记值查询资源
-5. 向资源应用和删除锁
-6. 删除资源组
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-本文不演示如何将 Resource Manager 模板部署到订阅。 有关详细信息，请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](resource-group-template-deploy.md)。
+如果选择在本地安装并使用 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
 
-## <a name="get-started-with-azure-powershell"></a>Azure PowerShell 入门
+## <a name="understand-scope"></a>了解范围
 
-如果未安装 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+[!include[Resource Manager governance scope](../../includes/resource-manager-governance-scope.md)]
 
-如果过去安装了 Azure PowerShell，但最近未更新它，请考虑安装最新版本。 可通过用于安装的方法更新版本。 例如，如果使用 Web 平台安装程序，请再次启动它以查找更新。
+在本文中，请将所有管理设置应用到资源组，以便在完成后可以轻松地删除这些设置。
 
-若要检查 Azure 资源模块的版本，请使用以下 cmdlet：
+让我们创建该资源组。
 
-```powershell
-Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
+```azurepowershell-interactive
+Set-AzureRmContext -Subscription <subscription-name>
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-本文已针对版本 3.3.0 更新。 如果使用更旧的版本，体验可能与本文中所示步骤不完全相同。 有关此版本中 cmdlet 的文档，请参阅 [AzureRM.Resources 模块](/powershell/module/azurerm.resources)。
+目前，资源组为空。
 
-## <a name="log-in-to-your-azure-account"></a>登录到 Azure 帐户
-处理解决方案之前，必须登录到帐户。
+## <a name="role-based-access-control"></a>基于角色的访问控制
 
-若要登录到 Azure 帐户，请使用 **Login-AzureRmAccount** cmdlet。
+[!include[Resource Manager governance policy](../../includes/resource-manager-governance-rbac.md)]
 
-```powershell
-Login-AzureRmAccount
+### <a name="assign-a-role"></a>分配角色
+
+在本文中，请部署一个虚拟机及其相关的虚拟网络。 若要管理虚拟机解决方案，可以使用三种特定于资源的角色来进行通常所需的访问：
+
+* [虚拟机参与者](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
+* [网络参与者](../active-directory/role-based-access-built-in-roles.md#network-contributor)
+* [存储帐户参与者](../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+
+通常情况下，与其向单个用户分配角色，不如为需要进行相似操作的用户[创建一个 Azure Active Directory 组](../active-directory/active-directory-groups-create-azure-portal.md)， 然后向该组分配相应的角色。 为了简单起见，本文创建一个没有成员的 Azure Active Directory 组。 仍然可以为该组分配一个负责某个范围的角色。 
+
+以下示例创建一个组，然后为其分配了资源组的“虚拟机参与者”角色。 若要运行 `New-AzureAdGroup` 命令，必须使用 [Azure Cloud Shell](/azure/cloud-shell/overview) 或[下载 Azure AD PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/)。
+
+```azurepowershell-interactive
+$adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
+  -MailNickName vmDemoGroup `
+  -MailEnabled $false `
+  -SecurityEnabled $true
+New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
+  -ResourceGroupName myResourceGroup `
+  -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-该 cmdlet 会提示提供 Azure 帐户的登录凭据。 登录后它会下载帐户设置，供 Azure PowerShell 使用。
+通常情况下，请对**网络参与者**和**存储帐户参与者**重复执行此过程，确保分配用户来管理已部署的资源。 在本文中，可以跳过这些步骤。
 
-该 cmdlet 将返回有关帐户和用于任务的订阅的信息。
+## <a name="azure-policies"></a>Azure 策略
 
-```powershell
-Environment           : AzureCloud
-Account               : example@contoso.com
-TenantId              : {guid}
-SubscriptionId        : {guid}
-SubscriptionName      : Example Subscription One
-CurrentStorageAccount :
+[!include[Resource Manager governance policy](../../includes/resource-manager-governance-policy.md)]
 
+### <a name="apply-policies"></a>应用策略
+
+订阅已经有多个策略定义。 若要查看可用的策略定义，请使用：
+
+```azurepowershell-interactive
+(Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
 ```
 
-如果有多个订阅，可切换到其他订阅。 首先，请看帐户的所有订阅。
+可以看到现有的策略定义。 策略类型为“内置”或“自定义”。 在这些定义中查找所述条件正是你要分配的条件的定义。 在本文中，分配的策略要符合以下条件：
 
-```powershell
-Get-AzureRmSubscription
+* 限制所有资源的位置
+* 限制虚拟机的 SKU
+* 审核不使用托管磁盘的虚拟机
+
+```azurepowershell-interactive
+$locations ="eastus", "eastus2"
+$skus = "Standard_DS1_v2", "Standard_E2s_v2"
+
+$rg = Get-AzureRmResourceGroup -Name myResourceGroup
+
+$locationDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed locations"}
+$skuDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine SKUs"}
+$auditDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Audit VMs that do not use managed disks"}
+
+New-AzureRMPolicyAssignment -Name "Set permitted locations" `
+  -Scope $rg.ResourceId `
+  -PolicyDefinition $locationDefinition `
+  -listOfAllowedLocations $locations
+New-AzureRMPolicyAssignment -Name "Set permitted VM SKUs" `
+  -Scope $rg.ResourceId `
+  -PolicyDefinition $skuDefinition `
+  -listOfAllowedSKUs $skus
+New-AzureRMPolicyAssignment -Name "Audit unmanaged disks" `
+  -Scope $rg.ResourceId `
+  -PolicyDefinition $auditDefinition
 ```
 
-它将返回已启用和已禁用的订阅。
+## <a name="deploy-the-virtual-machine"></a>部署虚拟机
 
-```powershell
-SubscriptionName : Example Subscription One
-SubscriptionId   : {guid}
-TenantId         : {guid}
-State            : Enabled
+分配角色和策略以后，即可部署解决方案。 默认大小为 Standard_DS1_v2，这是允许的 SKU 之一。 运行此步骤时，会提示输入凭据。 输入的值将配置为用于虚拟机的用户名和密码。
 
-SubscriptionName : Example Subscription Two
-SubscriptionId   : {guid}
-TenantId         : {guid}
-State            : Enabled
-
-SubscriptionName : Example Subscription Three
-SubscriptionId   : {guid}
-TenantId         : {guid}
-State            : Disabled
+```azurepowershell-interactive
+New-AzureRmVm -ResourceGroupName "myResourceGroup" `
+     -Name "myVM" `
+     -Location "East US" `
+     -VirtualNetworkName "myVnet" `
+     -SubnetName "mySubnet" `
+     -SecurityGroupName "myNetworkSecurityGroup" `
+     -PublicIpAddressName "myPublicIpAddress" `
+     -OpenPorts 80,3389
 ```
 
-若要切换到其他订阅，请使用 **Set-AzureRmContext** cmdlet 提供订阅名称。
+部署完成后，可以对解决方案应用更多的管理设置。
 
-```powershell
-Set-AzureRmContext -SubscriptionName "Example Subscription Two"
+## <a name="lock-resources"></a>锁定资源
+
+[!include[Resource Manager governance locks](../../includes/resource-manager-governance-locks.md)]
+
+### <a name="lock-a-resource"></a>锁定资源
+
+若要锁定虚拟机和网络安全组，请使用：
+
+```azurepowershell-interactive
+New-AzureRmResourceLock -LockLevel CanNotDelete `
+  -LockName LockVM `
+  -ResourceName myVM `
+  -ResourceType Microsoft.Compute/virtualMachines `
+  -ResourceGroupName myResourceGroup
+New-AzureRmResourceLock -LockLevel CanNotDelete `
+  -LockName LockNSG `
+  -ResourceName myNetworkSecurityGroup `
+  -ResourceType Microsoft.Network/networkSecurityGroups `
+  -ResourceGroupName myResourceGroup
 ```
 
-## <a name="create-a-resource-group"></a>创建资源组
+只有在明确解除锁定以后，才能删除虚拟机。 该步骤显示在[清理资源](#clean-up-resources)中。
 
-必须先创建将包含资源的资源组，才能向订阅部署任何资源。
+## <a name="tag-resources"></a>标记资源
 
-请使用 **New-AzureRmResourceGroup** cmdlet 创建资源组。 该命令使用 **Name** 参数指定资源组的名称，并使用 **Location** 参数指定其位置。
+[!include[Resource Manager governance tags](../../includes/resource-manager-governance-tags.md)]
 
-```powershell
-New-AzureRmResourceGroup -Name TestRG1 -Location "South Central US"
+### <a name="tag-resources"></a>标记资源
+
+[!include[Resource Manager governance tags Powershell](../../includes/resource-manager-governance-tags-powershell.md)]
+
+若要将标记应用到虚拟机，请使用：
+
+```azurepowershell-interactive
+$r = Get-AzureRmResource -ResourceName myVM `
+  -ResourceGroupName myResourceGroup `
+  -ResourceType Microsoft.Compute/virtualMachines
+Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } -ResourceId $r.ResourceId -Force
 ```
 
-输入格式如下：
+### <a name="find-resources-by-tag"></a>按标记查找资源
 
-```powershell
-ResourceGroupName : TestRG1
-Location          : southcentralus
-ProvisioningState : Succeeded
-Tags              :
-ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1
+若要使用标记名称和值来查找资源，请使用：
+
+```azurepowershell-interactive
+(Find-AzureRmResource -TagName Environment -TagValue Test).Name
 ```
 
-如果稍后需要检索资源组，请使用以下 cmdlet：
+可以将返回的值用于管理任务，例如停止带有某个标记值的所有虚拟机。
 
-```powershell
-Get-AzureRmResourceGroup -ResourceGroupName TestRG1
+```azurepowershell-interactive
+Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
 ```
 
-若要获取订阅中的所有资源组，请勿指定名称：
+### <a name="view-costs-by-tag-values"></a>按标记值查看成本
 
-```powershell
-Get-AzureRmResourceGroup
+对资源应用标记以后，即可使用这些标记查看资源的成本。 成本分析显示最新使用情况需要一定的时间，因此可能还看不到这些成本。 成本可用以后，即可在订阅中跨资源组查看资源的成本。 用户必须具有[计费信息的订阅级别访问权限](../billing/billing-manage-access.md)才能查看这些成本。
+
+若要在门户中按标记查看成本，请先选择订阅，然后选择“成本分析”。
+
+![成本分析](./media/powershell-azure-resource-manager/select-cost-analysis.png)
+
+然后，按标记值进行筛选并选择“应用”。
+
+![按标记查看成本](./media/powershell-azure-resource-manager/view-costs-by-tag.png)
+
+也可使用 [Azure 计费 API](../billing/billing-usage-rate-card-overview.md) 以编程方式查看成本。
+
+## <a name="clean-up-resources"></a>清理资源
+
+在解除锁定之前，不能删除锁定的网络安全组。 若要解除锁定，请使用：
+
+```azurepowershell-interactive
+Remove-AzureRmResourceLock -LockName LockVM `
+  -ResourceName myVM `
+  -ResourceType Microsoft.Compute/virtualMachines `
+  -ResourceGroupName myResourceGroup
+Remove-AzureRmResourceLock -LockName LockNSG `
+  -ResourceName myNetworkSecurityGroup `
+  -ResourceType Microsoft.Network/networkSecurityGroups `
+  -ResourceGroupName myResourceGroup
 ```
 
-## <a name="add-resources-to-a-resource-group"></a>将资源添加到资源组
-
-要将资源添加到资源组中，可使用 **New-AzureRmResource** cmdlet 或特定于要创建的资源类型的 cmdlet（例如 **New-AzureRmStorageAccount**）。 使用特定于资源类型的 cmdlet 可能更轻松，因为它包含新资源组所需属性的参数。 要使用 **New-AzureRmResource**，必须了解将不会提示而设置所有属性。
-
-但是，通过 cmdlet 添加资源可能导致将来出现混乱，因为新的资源不存在于 Resource Manager 模板中。 Microsoft 建议在 Resource Manager 模板中定义 Azure 解决方案的基础结构。 通过模板，可以可靠地重复部署解决方案。 本文使用 PowerShell cmdlet 创建存储帐户，但稍后从资源组生成模板。
-
-以下 cmdlet 可创建存储帐户。 请勿使用示例所示的名称，而是为存储帐户提供唯一名称。 此名称必须为 3 到 24 个字符，只能使用数字和小写字母。 如果使用示例所示名称，将收到错误，因为该名称被使用。
+如果不再需要资源组、VM 和所有相关的资源，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 命令将其删除。
 
 ```powershell
-New-AzureRmStorageAccount -ResourceGroupName TestRG1 -AccountName mystoragename -Type "Standard_LRS" -Location "South Central US"
+Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
-
-如果稍后需要检索此资源组，请使用以下 cmdlet：
-
-```powershell
-Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1
-```
-
-## <a name="add-a-tag"></a>添加标记
-
-标记可用于根据属性组织资源。 例如，可能有不同资源组中的多项资源属于同一部门。 可对这些资源应用部门标签和值，将其标记为属于同一类别。 也可标记资源是用于生产环境还是测试环境。 在本文中，只对一项资源应用标记，但在环境中最好向所有资源应用标记。
-
-以下 cmdlet 将向存储帐户应用两个标记：
-
-```powershell
-Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName mystoragename -ResourceGroupName TestRG1 -ResourceType Microsoft.Storage/storageAccounts
- ```
-
-各个标记作为单个对象更新。 若要向已包含标记的资源添加标记，请首先检索现有标记。 将新标记添加到包含现有标记的对象，并将所有标记重新应用到资源。
-
-```powershell
-$tags = (Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1).Tags
-$tags += @{Status="Approved"}
-Set-AzureRmResource -Tag $tags -ResourceName mystoragename -ResourceGroupName TestRG1 -ResourceType Microsoft.Storage/storageAccounts
-```
-
-## <a name="search-for-resources"></a>搜索资源
-
-使用 **Find-AzureRmResource** cmdlet 可按不同搜索条件检索资源。
-
-* 若要按名称获取资源，请提供 **ResourceNameContains** 参数：
-
-  ```powershell
-  Find-AzureRmResource -ResourceNameContains mystoragename
-  ```
-
-* 若要获取资源组中的所有资源，请提供 **ResourceGroupNameContains** 参数：
-
-  ```powershell
-  Find-AzureRmResource -ResourceGroupNameContains TestRG1
-  ```
-
-* 若要获取具有某个标记名称和值的所有资源，请提供 **TagName** 和 **TagValue** 参数：
-
-  ```powershell
-  Find-AzureRmResource -TagName Dept -TagValue IT
-  ```
-
-* 若要获取具有特定资源类型的所有资源，请提供 **ResourceType** 参数：
-
-  ```powershell
-  Find-AzureRmResource -ResourceType Microsoft.Storage/storageAccounts
-  ```
-
-## <a name="get-resource-id"></a>获取资源 ID
-
-很多命令采用资源 ID 作为参数。 若要获取资源 ID 并将其存储在变量中，请使用：
-
-```powershell
-$webappID = (Get-AzureRmResource -ResourceGroupName exampleGroup -ResourceName exampleSite).ResourceId
-```
-
-## <a name="lock-a-resource"></a>锁定资源
-
-需要确保不会意外删除或修改关键资源时，请对资源应用锁定。 可指定 **CanNotDelete** 或 **ReadOnly**。
-
-若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。
-
-若要应用锁定，请使用以下 cmdlet：
-
-```powershell
-New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
-```
-
-上例中，在删除锁之前，无法删除锁定的资源。 若要删除所，请使用：
-
-```powershell
-Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
-```
-
-有关设置锁的详细信息，请参阅[使用 Azure Resource Manager 锁定资源](resource-group-lock-resources.md)。
-
-## <a name="remove-resources-or-resource-group"></a>删除资源或资源组
-可以删除资源或资源组。 删除资源组时，还会删除该资源组中的所有资源。
-
-* 若要从资源组中删除资源，请使用 **Remove-AzureRmResource** cmdlet。 此 cmdlet 将删除该资源，但不会删除该资源组。
-
-  ```powershell
-  Remove-AzureRmResource -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
-  ```
-
-* 若要删除资源组及其所有资源，请使用 **Remove-AzureRmResourceGroup** cmdlet。
-
-  ```powershell
-  Remove-AzureRmResourceGroup -Name TestRG1
-  ```
-
-使用这两个 cmdlet，都会要求确认要删除的资源或资源组。 如果操作成功删除资源或资源组，将返回 **True**。
-
-## <a name="run-resource-manager-scripts-with-azure-automation"></a>使用 Azure 自动化运行 Resource Manager 脚本
-
-本文演示如何通过 Azure PowerShell 对资源执行基本操作。 如果使用更高级的管理方案，通常需要创建脚本，并按需或按计划重复使用该脚本。 通过 [Azure 自动化](../automation/automation-intro.md)，可自动执行用于管理 Azure 解决方案的常用脚本。
-
-以下主题演示如何使用 Azure 自动化、Resource Manager 和 PowerShell 来有效执行管理任务：
-
-- 有关创建 Runbook 的信息，请参阅[我的第一个 PowerShell Runbook](../automation/automation-first-runbook-textual-powershell.md)。
-- 有关使用脚本库的信息，请参阅 [Azure 自动化的 Runbook 和模块库](../automation/automation-runbook-gallery.md)。
-- 如需用于启动和停止虚拟机的 Runbook，请参阅 [Azure 自动化方案 - 使用 JSON 格式的标记创建 Azure VM 启动和关闭计划](../automation/automation-scenario-start-stop-vm-wjson-tags.md)。
-- 如需用于在非工作时间启动和停止虚拟机的 Runbook，请参阅[在自动化中，在非工作时间启动/停止 VM](../automation/automation-solution-vm-management.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* 若要了解如何创建 Resource Manager 模板，请参阅[创作 Azure Resource Manager 模板](resource-group-authoring-templates.md)。
-* 若要了解如何部署模板，请参阅[使用 Azure Resource Manager 模板部署应用程序](resource-group-template-deploy.md)。
+* 若要了解如何监视虚拟机，请参阅[使用 Azure PowerShell 监视和更新 Windows 虚拟机](../virtual-machines/windows/tutorial-monitoring.md)。
+* 若要了解如何使用 Azure 安全中心来实施建议的安全做法，请[使用 Azure 安全中心监视虚拟机安全](../virtual-machines/windows/tutorial-azure-security.md)。
 * 可以将现有资源移动到新的资源组。 有关示例，请参阅[将资源移动到新的资源组或订阅中](resource-group-move-resources.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
-

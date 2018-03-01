@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 0d99df534da4575f3c34ec6b3475cdd1bdc3308a
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 011fe26c297ff991af1282c1ff3914031a99f1e4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>在 Microsoft Azure 中发现、识别个人数据并对其进行分类
 
@@ -59,22 +59,22 @@ ms.lasthandoff: 12/14/2017
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 选择“更多服务”，在文本框中输入“用户和组”，并选择 **Enter**。
+2. 选择“所有服务”，在文本框中输入“用户和组”，并选择 **Enter**。
 
    ![如何查找用户配置文件和工作信息](media/how-to-discover-classify-personal-data-azure/user-profile.png)
 
 3. 在“用户和组”边栏选项卡中，选择“用户”。
 
-  ![打开用户和组](media/how-to-discover-classify-personal-data-azure/users-groups.png)
+      ![打开用户和组](media/how-to-discover-classify-personal-data-azure/users-groups.png)
 
 4. 在“用户和组 - 用户”边栏选项卡上，从列表中选择一个用户，然后在选定用户的边栏选项卡上，选择“配置文件”查看可能包含个人数据的用户配置文件信息。
 
-  ![选择用户](media/how-to-discover-classify-personal-data-azure/select-user.png)
+      ![选择用户](media/how-to-discover-classify-personal-data-azure/select-user.png)
 
 5. 如果需要添加或更改用户配置文件信息，可在添加或修改后在命令栏中选择“保存”。
 6. 在选定用户的边栏选项卡上，选择“工作信息”查看可能包含个人数据的用户工作信息。
 
- ![查看工作信息](media/how-to-discover-classify-personal-data-azure/work-info.png)
+     ![查看工作信息](media/how-to-discover-classify-personal-data-azure/work-info.png)
 
 7. 如果需要添加或更改用户工作信息，可在添加或修改后在命令栏中选择“保存”。
 

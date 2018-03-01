@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; klam
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 49b4bbfda4518b03ef6080bec1e2a493933af4f5
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: e9145b9cb85cda9179f7ce46de017a0ab3a38924
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>从预构建的模板创建逻辑应用工作流
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/19/2018
 
 1. 如果尚未登录 [Azure 门户](https://portal.azure.com "Azure portal")，请先登录。
 
-2. 从主 Azure 菜单中选择“新建” > “企业集成” > “逻辑应用”。
+2. 在 Azure 主菜单中，选择“创建资源” > “企业集成” > “逻辑应用”。
 
    ![Azure 门户 >“新建”>“Enterprise Integration”>“逻辑应用”](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 
