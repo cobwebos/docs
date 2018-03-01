@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 02/22/2018
 ms.author: krnese
-ms.openlocfilehash: 118a2e775ae3d036f58989d9778104e372e8c701
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: eb837858fe81fa1f2d4966051bd4b7b068defe8b
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>使用 Azure Automation DSC 部署移动服务以复制 VM
 Operations Management Suite 提供了全面的备份和灾难恢复解决方案，可方便用户在业务连续性计划中使用。
@@ -353,7 +353,7 @@ Get-DscConfigurationStatus
 
 可以在环境中实例化自己的 DSC 拉取服务器，以从本质上提供从 Automation DSC 获取的相同功能。 即，客户端将请求到 DSC 终结点的配置（在其注册后）。 但是，也可以手动将 DSC 配置推送到本地或远程计算机。
 
-请注意，在此示例中，在计算机名称中有一个添加的参数。 远程文件现在位于远程共享上（可由想要保护的计算机访问）。 脚本的末尾启用配置，并开始将 DSC 配置应用于目标计算机。
+请注意，在此示例中，在计算机名称中有一个添加的参数。 远程文件现在位于远程共享上（可由想要保护的计算机访问）。 脚本的末尾启用配置，然后开始将 DSC 配置应用于目标计算机。
 
 ### <a name="prerequisites"></a>先决条件
 请确保已安装 xPSDesiredStateConfiguration PowerShell 模块。 对于安装了 WMF 5.0 的 Windows 计算机，可以在目标计算机上通过运行以下 cmdlet 来安装 xPSDesiredStateConfiguration 模块：

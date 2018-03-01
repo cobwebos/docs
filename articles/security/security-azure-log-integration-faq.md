@@ -12,17 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload8: na
-ms.date: 08/07/2017
+ms.date: 02/16/2018
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: bfdc7154160bb6bb7dc9c46eb2352ce74310c4de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 615bfb1ea86d31733fc1db7139cd995fbbbac7aa
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-log-integration-faq"></a>Azure 日志集成常见问题解答
-本文回答了一些有关 Azure 日志集成常见问题 (FAQ)。 
+
+本文回答了一些有关 Azure 日志集成常见问题 (FAQ)。
+
+>[!IMPORTANT]
+>用于集成 Azure 日志的首选方法是通过使用 SIEM 供应商的 Azure Monitor 连接器并遵循这些[说明](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)。 但是，如果你的 SIEM 供应商未提供 Azure Monitor 连接器，你或许可以使用 Azure 日志集成作为临时解决方案（如果你的 SIEM 受 Azure 日志集成支持），直到有此类连接器可用。
 
 Azure 日志集成是 Windows 操作系统服务，可用来将 Azure 资源中的原始日志集成到本地安全信息和事件管理 (SIEM) 系统。 此集成为本地或云端的所有资产提供统一的仪表板。 对于与应用程序相关的安全事件，可进行聚合、关联、分析和警报等操作。
 
@@ -34,7 +38,7 @@ Azure 日志集成是 Windows 操作系统服务，可用来将 Azure 资源中�
 目前 Azure 商业版和 Azure 政府版提供该功能，但在中国或德国不提供。
 
 ## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs"></a>如何查看 Azure 日志集成从中提取 Azure VM 日志的存储帐户？
-运行 **azlog source list** 命令。
+运行 **AzLog source list** 命令。
 
 ## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>如何判断 Azure 日志集成日志来自哪个订阅？
 
@@ -47,7 +51,7 @@ Azure Active Directory 审核日志的名称包含租户 ID。
 从事件中心读取的诊断日志的名称不包括订阅 ID。 但包括在创建事件中心源的过程中指定的友好名称。 
 
 ## <a name="how-can-i-update-the-proxy-configuration"></a>如何更新代理配置？
-如果代理设置不允许直接访问 Azure 存储，请打开 **c:\Program Files\Microsoft Azure Log Integration** 中的 **AZLOG.EXE.CONFIG** 文件。 更新文件，以将组织的代理地址包括在 **defaultProxy** 部分中。 完成更新后，并使用“net stop azlog”和“net start azlog”命令停止和启动该服务。
+如果代理设置不允许直接访问 Azure 存储，请打开 **c:\Program Files\Microsoft Azure Log Integration** 中的 **AZLOG.EXE.CONFIG** 文件。 更新文件，以将组织的代理地址包括在 **defaultProxy** 部分中。 完成更新后，并使用 **net stop AzLog** 和 **net start AzLog** 命令停止和启动该服务。
 
     <?xml version="1.0" encoding="utf-8"?>
     <configuration>
@@ -74,7 +78,7 @@ Azure Active Directory 审核日志的名称包含租户 ID。
 ![事件 XML][1]
 
 ## <a name="error-messages"></a>错误消息
-### <a name="when-i-run-the-command-azlog-createazureid-why-do-i-get-the-following-error"></a>运行 azlog createazureid 命令时，为什么会收到以下错误？
+### <a name="when-i-run-the-command-azlog-createazureid-why-do-i-get-the-following-error"></a>运行 ```AzLog createazureid``` 命令时，为何收到以下错误？
 错误：
 
   *无法创建 AAD 应用程序 - 租户 72f988bf-86f1-41af-91ab-2d7cd011db37 - 原因 = “禁止” - 消息 = “特权不足以完成此操作”。*

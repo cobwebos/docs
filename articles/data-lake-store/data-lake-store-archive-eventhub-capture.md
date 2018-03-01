@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 221ee6990fe0b5bfc9e745fc85543c4e04e41bd3
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: ac8000abc35cba89c4bf655a4806636933ab8d08
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Store 捕获事件中心的数据
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/28/2017
 
     ![分配 Data Lake Store 根目录的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Assign permissions for Data Lake Store root")
 
-    单击 **“确定”**。
+    单击“确定”。
 
 4. 为 Data Lake Store 帐户下要在其中捕获数据的文件夹分配权限。
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 11/28/2017
 
     ![分配 Data Lake Store 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Assign permissions for Data Lake Store folder")
     
-    单击 **“确定”**。 
+    单击“确定”。 
 
 ## <a name="configure-event-hubs-to-capture-data-to-data-lake-store"></a>配置事件中心，将数据捕获到 Data Lake Store
 
@@ -100,9 +100,9 @@ ms.lasthandoff: 11/28/2017
     
     d.单击“下一步”。 对于“捕获提供程序”，选择“Azure Data Lake Store”以及之前创建的 Data Lake Store。 对于“Data Lake 路径”，输入之前在 Data Lake Store 帐户中创建的文件夹的名称。 只需提供文件夹的相对路径。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 将“示例捕获文件名格式”保留为默认值。 此选项用于管理在捕获文件夹下创建的文件夹结构。
+    e. 将“示例捕获文件名格式”保留为默认值。 此选项用于管理在捕获文件夹下创建的文件夹结构。
 
-    f. 单击“创建” 。
+    f. 单击“创建”。
 
 ## <a name="test-the-setup"></a>测试设置
 

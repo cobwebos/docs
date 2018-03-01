@@ -11,195 +11,446 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/29/2018
+ms.date: 02/20/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
-ms.openlocfilehash: 1995cb34595fa9195e176e9ee341d551162f8ea5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5c099a7fd8848c2934603ec9b2db8947885226f9
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>使用 Azure 命令行接口管理基于角色的访问控制
+
 > [!div class="op_single_selector"]
 > * [PowerShell](role-based-access-control-manage-access-powershell.md)
 > * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 > * [REST API](role-based-access-control-manage-access-rest.md)
 
 
-可以使用 Azure 门户中基于角色的访问控制 (RBAC) 和 Azure 资源管理器 API，精细地管理对订阅和资源的访问。 使用此功能，可以通过在特定范围内为 Active Directory 用户、组或服务主体分配某些角色来向其授予访问权限。 
+使用基于角色的访问控制 (RBAC) 时，可以通过分配特定范围的角色，为用户、组和服务主体定义访问权限。 本文介绍如何使用 Azure 命令行界面 (CLI) 来管理访问权限。
 
-> [!NOTE] 
-> 目前最新的角色文档适用于 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/role?view=azure-cli-latest)。
+## <a name="prerequisites"></a>先决条件
 
+若要使用 Azure CLI 来管理 RBAC，必须具备以下先决条件：
 
- 
-+> [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/role?view=azure-cli-latest) 的最新角色文档 在使用 Azure 命令行接口 (CLI) 管理 RBAC 之前，必须具备以下先决条件：
-
-* Azure CLI 0.8.8 版或更高。 要安装最新版本并将其与 Azure 订阅相关联，请参阅[安装和配置 Azure CLI](../cli-install-nodejs.md)。
-* Azure CLI 中的 Azure 资源管理器。 转到[将 Azure CLI 用于 Resource Manager](../xplat-cli-azure-resource-manager.md) 了解详细信息。
+* [Azure CLI 2.0](/cli/azure/overview)。 可以通过 [Azure Cloud Shell](../cloud-shell/overview.md) 在浏览器中使用它，也可以将其[安装](/cli/azure/install-azure-cli)在 macOS、Linux 和 Windows 上，然后从命令行运行它。
 
 ## <a name="list-roles"></a>列出角色
-### <a name="list-all-available-roles"></a>列出所有可用的角色
-若要列出所有可用的角色，请使用：
 
-        azure role list
+### <a name="list-role-definitions"></a>列出角色定义
 
-以下示例显示了“所有可用的角色”的列表。
+若要列出所有可用的角色定义，请使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list)：
 
-```
-azure role list --json | jq '.[] | {"roleName":.properties.roleName, "description":.properties.description}'
+```azurecli
+az role definition list
 ```
 
-![RBAC Azure 命令行 - Azure 角色列表 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/1-azure-role-list.png)
+以下示例列出了所有可用的角色定义的名称和说明：
 
-### <a name="list-actions-of-a-role"></a>列出角色的操作
-若要列出角色的操作，请使用：
-
-    azure role show "<role name>"
-
-以下示例显示了*参与者*和*虚拟机参与者*角色的操作。
-
-```
-azure role show "contributor" --json | jq '.[] | {"Actions":.properties.permissions[0].actions,"NotActions":properties.permissions[0].notActions}'
-
-azure role show "virtual machine contributor" --json | jq '.[] | .properties.permissions[0].actions'
+```azurecli
+az role definition list --output json | jq '.[] | {"roleName":.properties.roleName, "description":.properties.description}'
 ```
 
-![RBAC Azure 命令行 - Azure 角色显示 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/1-azure-role-show.png)
+```Output
+{
+  "roleName": "API Management Service Contributor",
+  "description": "Can manage service and the APIs"
+}
+{
+  "roleName": "API Management Service Operator Role",
+  "description": "Can manage service but not the APIs"
+}
+{
+  "roleName": "API Management Service Reader Role",
+  "description": "Read-only access to service and APIs"
+}
+
+...
+```
+
+下面的示例列出了所有内置的角色定义：
+
+```azurecli
+az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.properties.roleName, "description":.properties.description, "type":.properties.type}'
+```
+
+```Output
+{
+  "roleName": "API Management Service Contributor",
+  "description": "Can manage service and the APIs",
+  "type": "BuiltInRole"
+}
+{
+  "roleName": "API Management Service Operator Role",
+  "description": "Can manage service but not the APIs",
+  "type": "BuiltInRole"
+}
+{
+  "roleName": "API Management Service Reader Role",
+  "description": "Read-only access to service and APIs",
+  "type": "BuiltInRole"
+}
+
+...
+```
+
+### <a name="list-actions-of-a-role-definition"></a>列出角色定义的操作
+
+若要列出角色定义的操作，请使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list)：
+
+```azurecli
+az role definition list --name <role_name>
+```
+
+下面的示例列出了“参与者”角色定义：
+
+```azurecli
+az role definition list --name "Contributor"
+```
+
+```Output
+[
+  {
+    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+    "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+    "properties": {
+      "additionalProperties": {
+        "createdBy": null,
+        "createdOn": "0001-01-01T08:00:00.0000000Z",
+        "updatedBy": null,
+        "updatedOn": "2016-12-14T02:04:45.1393855Z"
+      },
+      "assignableScopes": [
+        "/"
+      ],
+      "description": "Lets you manage everything except access to resources.",
+      "permissions": [
+        {
+          "actions": [
+            "*"
+          ],
+          "notActions": [
+            "Microsoft.Authorization/*/Delete",
+            "Microsoft.Authorization/*/Write",
+            "Microsoft.Authorization/elevateAccess/Action"
+          ]
+        }
+      ],
+      "roleName": "Contributor",
+      "type": "BuiltInRole"
+    },
+    "type": "Microsoft.Authorization/roleDefinitions"
+  }
+]
+```
+
+以下示例列出了“参与者”角色的 *actions* 和 *notActions*：
+
+```azurecli
+az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.properties.permissions[0].actions, "notActions":.properties.permissions[0].notActions}'
+```
+
+```Output
+{
+  "actions": [
+    "*"
+  ],
+  "notActions": [
+    "Microsoft.Authorization/*/Delete",
+    "Microsoft.Authorization/*/Write",
+    "Microsoft.Authorization/elevateAccess/Action"
+  ]
+}
+```
+
+以下示例列出了“虚拟机参与者”角色的 actions：
+
+```azurecli
+az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .properties.permissions[0].actions'
+```
+
+```Output
+[
+  "Microsoft.Authorization/*/read",
+  "Microsoft.Compute/availabilitySets/*",
+  "Microsoft.Compute/locations/*",
+  "Microsoft.Compute/virtualMachines/*",
+  "Microsoft.Compute/virtualMachineScaleSets/*",
+  "Microsoft.Insights/alertRules/*",
+  "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
+  "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+
+  ...
+
+  "Microsoft.Storage/storageAccounts/listKeys/action",
+  "Microsoft.Storage/storageAccounts/read"
+]
+```
 
 ## <a name="list-access"></a>列出访问权限
-### <a name="list-role-assignments-effective-on-a-resource-group"></a>列出资源组上有效的角色分配
-若要列出资源组中存在的角色分配，请使用：
-
-    azure role assignment list --resource-group <resource group name>
-
-以下示例显示了 *pharma-sales-projecforcast* 组中的角色分配。
-
-```
-azure role assignment list --resource-group pharma-sales-projecforcast --json | jq '.[] | {"DisplayName":.properties.aADObject.displayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
-```
-
-![RBAC Azure 命令行 - 按组列出的 Azure 角色分配 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-1.png)
 
 ### <a name="list-role-assignments-for-a-user"></a>为用户列出角色分配
-若要为特定用户列出角色分配以及已分配给用户组的分配，请使用：
 
-    azure role assignment list --signInName <user email>
+若要列出特定用户的角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list)：
 
-还可通过修改命令查看从组继承的角色分配：
-
-    azure role assignment list --expandPrincipalGroups --signInName <user email>
-
-以下示例显示了授予 *sameert@aaddemo.com* 用户的角色分配。 这包括直接分配给用户的角色，以及从组中继承的角色。
-
-```
-azure role assignment list --signInName sameert@aaddemo.com --json | jq '.[] | {"DisplayName":.properties.aADObject.DisplayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
-
-azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.com --json | jq '.[] | {"DisplayName":.properties.aADObject.DisplayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
+```azurecli
+az role assignment list --assignee <assignee>
 ```
 
-![RBAC Azure 命令行 - 按用户列出的 Azure 角色分配 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-2.png)
+默认情况下，只会列出局限于订阅的分配。 若要查看按资源或组来确定范围的分配，请使用 `--all`。
 
-## <a name="grant-access"></a>授予访问权限
-若要在已标识要分配的角色后授予访问权限，请使用：
+以下示例列出的角色分配是直接分配给 *patlong@contoso.com* 用户的：
 
-    azure role assignment create
+```azurecli
+az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.properties.principalName, "roleDefinitionName":.properties.roleDefinitionName, "scope":.properties.scope}'
+```
 
-### <a name="assign-a-role-to-group-at-the-subscription-scope"></a>将角色分配给订阅范围内的组
-要将角色分配给订阅范围内的组，请使用：
+```Output
+{
+  "principalName": "patlong@contoso.com",
+  "roleDefinitionName": "Backup Operator",
+  "scope": "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/pharma-sales-projectforecast"
+}
+{
+  "principalName": "patlong@contoso.com",
+  "roleDefinitionName": "Virtual Machine Contributor",
+  "scope": "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/pharma-sales-projectforecast"
+}
+```
 
-    azure role assignment create --objectId  <group object id> --roleName <name of role> --subscription <subscription> --scope <subscription/subscription id>
+### <a name="list-role-assignments-for-a-resource-group"></a>列出资源组的角色分配
 
-以下示例在*订阅*范围内将*读者*角色分配给 *Christine Koch 的团队*。
+若要列出存在的针对资源组的角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list)：
 
-![RBAC Azure 命令行 - 按组创建的 Azure 角色分配 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-1.png)
+```azurecli
+az role assignment list --resource-group <resource_group>
+```
 
-### <a name="assign-a-role-to-an-application-at-the-subscription-scope"></a>将角色分配给订阅范围内的应用程序
-要将角色分配给订阅范围内的应用程序，请使用：
+以下示例列出 *pharma-sales-projectforecast* 资源组的角色分配：
 
-    azure role assignment create --objectId  <applications object id> --roleName <name of role> --subscription <subscription> --scope <subscription/subscription id>
+```azurecli
+az role assignment list --resource-group pharma-sales-projectforecast --output json | jq '.[] | {"roleDefinitionName":.properties.roleDefinitionName, "scope":.properties.scope}'
+```
 
-以下示例在所选订阅上将*参与者*角色授予 *Azure AD* 应用程序。
+```Output
+{
+  "roleDefinitionName": "Backup Operator",
+  "scope": "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/pharma-sales-projectforecast"
+}
+{
+  "roleDefinitionName": "Virtual Machine Contributor",
+  "scope": "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/pharma-sales-projectforecast"
+}
 
- ![RBAC Azure 命令行 - 按应用程序创建的 Azure 角色分配](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-2.png)
+...
+```
 
-### <a name="assign-a-role-to-a-user-at-the-resource-group-scope"></a>将角色分配给资源组范围内的用户
-要将角色分配给资源组范围内的用户，请使用：
+## <a name="assign-access"></a>分配访问权限
 
-    azure role assignment create --signInName  <user email address> --roleName "<name of role>" --resourceGroup <resource group name>
+### <a name="assign-a-role-to-a-user"></a>向用户分配角色
 
-以下示例在 *Pharma-Sales-ProjectForcast* 资源组范围内将*虚拟机参与者*角色授予 *samert@aaddemo.com* 用户。
+若要将角色分配给资源组范围内的用户，请使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create)：
 
-![RBAC Azure 命令行 - 按用户创建的 Azure 角色分配 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-3.png)
+```azurecli
+az role assignment create --role <role> --assignee <assignee> --resource-group <resource_group>
+```
 
-### <a name="assign-a-role-to-a-group-at-the-resource-scope"></a>将角色分配给资源范围内的组
-要将角色分配给资源范围内的组，请使用：
+以下示例将“虚拟机参与者”角色分配给 *pharma-sales-projectforecast* 资源组范围内的 *patlong@contoso.com* 用户：
 
-    azure role assignment create --objectId <group id> --role "<name of role>" --resource-name <resource group name> --resource-type <resource group type> --parent <resource group parent> --resource-group <resource group>
+```azurecli
+az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales-projectforecast
+```
 
-以下示例在*子网*上将*虚拟机参与者*角色授予 *Azure AD* 组。
+### <a name="assign-a-role-to-a-group"></a>向组分配角色
 
-![RBAC Azure 命令行 - 按组创建的 Azure 角色分配 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-4.png)
+若要向组分配角色，请使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create)：
+
+```azurecli
+az role assignment create --role <role> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+```
+
+以下示例将“读者”角色分配给订阅范围内 ID 为 22222222-2222-2222-2222-222222222222 的“Ann Mack 团队”组。 若要获取组的 ID，可以使用 [az ad group list](/cli/azure/ad/group#az_ad_group_list) 或 [az ad group show](/cli/azure/ad/group#az_ad_group_show)。
+
+```azurecli
+az role assignment create --role Reader --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/11111111-1111-1111-1111-111111111111
+```
+
+以下示例将“虚拟机参与者”角色分配给名为 *pharma-sales-project-network* 的虚拟网络的资源范围内 ID 为 22222222-2222-2222-2222-222222222222 的“Ann Mack 团队”组：
+
+```azurecli
+az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/11111111-1111-1111-1111-111111111111/resourcegroups/pharma-sales-projectforecast/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network
+```
+
+### <a name="assign-a-role-to-an-application"></a>将角色分配给应用程序
+
+若要向应用程序分配角色，请使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create)：
+
+```azurecli
+az role assignment create --role <role> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+```
+
+以下示例将“虚拟机参与者”角色分配给 *pharma-sales-projectforecast* 资源组范围内对象 ID 为 44444444-4444-4444-4444-444444444444 的应用程序。 若要获取应用程序的对象 ID，可以使用 [az ad app list](/cli/azure/ad/app#az_ad_app_list) 或 [az ad app show](/cli/azure/ad/app#az_ad_app_show)。
+
+```azurecli
+az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales-projectforecast
+```
 
 ## <a name="remove-access"></a>删除访问权限
-若要删除角色分配，请使用：
 
-    azure role assignment delete --objectId <object id to from which to remove role> --roleName "<role name>"
+### <a name="remove-a-role-assignment"></a>删除角色分配
 
-以下示例在 *Pharma-Sales-ProjectForcast* 资源组上从 *sammert@aaddemo.com* 用户删除*虚拟机参与者*角色分配。
-然后，示例会从订阅的组中删除角色分配。
+若要删除角色分配，请使用 [az role assignment delete](/cli/azure/role/assignment#az_role_assignment_delete)：
 
-![RBAC Azure 命令行 - Azure 角色分配删除 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-assignment-delete.png)
-
-## <a name="create-a-custom-role"></a>创建自定义角色
-若要创建自定义的角色，请使用：
-
-    azure role create --inputfile <file path>
-
-以下示例创建名为“虚拟机操作员”的自定义角色。 该自定义角色授权访问 *Microsoft.Compute*、*Microsoft.Storage* 和 *Microsoft.Network* 资源提供程序的所有读取操作，并授权访问虚拟机启动、重启和监视操作。 该自定义角色可以在两个订阅中使用。 此示例将 JSON 文件用作输入。
-
-![JSON - 自定义角色定义 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-create-1.png)
-
-![RBAC Azure 命令行 - Azure 角色创建 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-create-2.png)
-
-## <a name="modify-a-custom-role"></a>修改自定义角色
-若要修改自定义角色，请先使用 `azure role list` 命令检索角色定义。 然后，对该角色定义文件做出所需更改。 最后，使用 `azure role set` 保存修改后的角色定义。
-
-    azure role set --inputfile <file path>
-
-以下示例将 *Microsoft.Insights/diagnosticSettings/* 操作添加到“操作”，并且向虚拟机操作员自定义角色的 **AssignableScopes** 添加了 Azure 订阅。
-
-![JSON - 修改自定义角色定义 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-set-1.png)
-
-![RBAC Azure 命令行 - Azure 角色集 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-set2.png)
-
-## <a name="delete-a-custom-role"></a>删除自定义角色
-若要删除自定义角色，请先使用 `azure role list` 命令确定角色的 **ID**。 然后，使用 `azure role delete` 命令通过指定 **ID** 来删除该角色。
-
-以下示例删除了*虚拟机操作员*自定义角色。
-
-![RBAC Azure 命令行 - Azure 角色删除 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-delete.png)
-
-## <a name="list-custom-roles"></a>列出自定义角色
-若要列出可在某范围内进行分配的角色，请使用 `azure role list` 命令。
-
-以下命令列出可在所选订阅中进行分配的所有角色。
-
-```
-azure role list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
+```azurecli
+az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>
 ```
 
-![RBAC Azure 命令行 - Azure 角色列表 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list1.png)
+以下示例在 *pharma-sales-projectforecast* 资源组上从 *patlong@contoso.com* 用户删除“虚拟机参与者”角色分配：
 
-在下面的示例中，*虚拟机操作员*自定义角色在 *Production4* 订阅中不可用，因为该订阅不在角色的 **AssignableScopes** 中。
-
-```
-azure role list --json | jq '.[] | if .properties.type == "CustomRole" then .properties.roleName else empty end'
+```azurecli
+az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales-projectforecast
 ```
 
-![RBAC Azure 命令行 - 自定义角色的 Azure 角色列表 - 屏幕截图](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list2.png)
+以下示例将“读者”角色从订阅范围内 ID 为 22222222-2222-2222-2222-222222222222 的“Ann Mack 团队”组删除。 若要获取组的 ID，可以使用 [az ad group list](/cli/azure/ad/group#az_ad_group_list) 或 [az ad group show](/cli/azure/ad/group#az_ad_group_show)。
+
+```azurecli
+az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --scope /subscriptions/11111111-1111-1111-1111-111111111111
+```
+
+## <a name="custom-roles"></a>自定义角色
+
+### <a name="list-custom-roles"></a>列出自定义角色
+
+若要列出可在某范围内进行分配的角色，请使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list)。
+
+下面的两个示例都列出了当前订阅中的所有自定义角色：
+
+```azurecli
+az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.properties.roleName, "type":.properties.type}'
+```
+
+```azurecli
+az role definition list --output json | jq '.[] | if .properties.type == "CustomRole" then {"roleName":.properties.roleName, "type":.properties.type} else empty end'
+```
+
+```Output
+{
+  "roleName": "My Management Contributor",
+  "type": "CustomRole"
+}
+{
+  "roleName": "My Service Operator Role",
+  "type": "CustomRole"
+}
+{
+  "roleName": "My Service Reader Role",
+  "type": "CustomRole"
+}
+
+...
+```
+
+### <a name="create-a-custom-role"></a>创建自定义角色
+
+若要创建自定义角色，请使用 [az role definition create](/cli/azure/role/definition#az_role_definition_create)。 角色定义可以是 JSON 说明，也可以是包含 JSON 说明的文件的路径。
+
+```azurecli
+az role definition create --role-definition <role_definition>
+```
+
+以下示例创建名为“虚拟机操作员”的自定义角色。 该自定义角色分配访问 *Microsoft.Compute*、*Microsoft.Storage* 和 *Microsoft.Network* 资源提供程序的所有读取操作的权限，并分配访问虚拟机启动、重启和监视操作的权限。 该自定义角色可以在两个订阅中使用。 此示例将 JSON 文件用作输入。
+
+vmoperator.json
+
+```json
+{
+  "Name": "Virtual Machine Operator",
+  "IsCustom": true,
+  "Description": "Can monitor and restart virtual machines.",
+  "Actions": [
+    "Microsoft.Storage/*/read",
+    "Microsoft.Network/*/read",
+    "Microsoft.Compute/*/read",
+    "Microsoft.Compute/virtualMachines/start/action",
+    "Microsoft.Compute/virtualMachines/restart/action",
+    "Microsoft.Authorization/*/read",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Insights/alertRules/*",
+    "Microsoft.Support/*"
+  ],
+  "NotActions": [
+
+  ],
+  "AssignableScopes": [
+    "/subscriptions/11111111-1111-1111-1111-111111111111",
+    "/subscriptions/33333333-3333-3333-3333-333333333333"
+  ]
+}
+```
+
+```azurecli
+az role definition create --role-definition ~/roles/vmoperator.json
+```
+
+### <a name="update-a-custom-role"></a>更新自定义角色
+
+若要更新自定义角色，请首先使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list) 检索角色定义。 然后，对该角色定义作出所需更改。 最后，使用 [az role definition update](/cli/azure/role/definition#az_role_definition_update) 保存更新的角色定义。
+
+```azurecli
+az role definition update --role-definition <role_definition>
+```
+
+以下示例将 *Microsoft.Insights/diagnosticSettings/* 操作添加到“虚拟机操作员”自定义角色的“Actions”。
+
+vmoperator.json
+
+```json
+{
+  "Name": "Virtual Machine Operator",
+  "IsCustom": true,
+  "Description": "Can monitor and restart virtual machines.",
+  "Actions": [
+    "Microsoft.Storage/*/read",
+    "Microsoft.Network/*/read",
+    "Microsoft.Compute/*/read",
+    "Microsoft.Compute/virtualMachines/start/action",
+    "Microsoft.Compute/virtualMachines/restart/action",
+    "Microsoft.Authorization/*/read",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Insights/alertRules/*",
+    "Microsoft.Insights/diagnosticSettings/*",
+    "Microsoft.Support/*"
+  ],
+  "NotActions": [
+
+  ],
+  "AssignableScopes": [
+    "/subscriptions/11111111-1111-1111-1111-111111111111",
+    "/subscriptions/33333333-3333-3333-3333-333333333333"
+  ]
+}
+```
+
+```azurecli
+az role definition update --role-definition ~/roles/vmoperator.json
+```
+
+### <a name="delete-a-custom-role"></a>删除自定义角色
+
+若要删除自定义角色，请使用 [az role definition delete](/cli/azure/role/definition#az_role_definition_delete)。 若要指定要删除的角色，请使用角色名称或角色 ID。 若要确定角色 ID，请使用 [az role definition list](/cli/azure/role/definition#az_role_definition_list)。
+
+```azurecli
+az role definition delete --name <role_name or role_id>
+```
+
+以下示例删除了“虚拟机操作员”自定义角色：
+
+```azurecli
+az role definition delete --name "Virtual Machine Operator"
+```
 
 ## <a name="next-steps"></a>后续步骤
+
 [!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 

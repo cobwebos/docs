@@ -1,10 +1,10 @@
 ---
-title: "为 Azure Resource Manager VM 设置高可用性 | Microsoft Docs"
-description: "本教程介绍在 Azure Resource Manager 模式下，如何使用 Azure 虚拟机创建 AlwaysOn 可用性组。"
+title: "为 Azure 资源管理器 VM 设置高可用性 | Microsoft Docs"
+description: "本教程介绍在 Azure 资源管理器模式下，如何使用 Azure 虚拟机创建 AlwaysOn 可用性组。"
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-resource-manager
 ms.assetid: 64e85527-d5c8-40d9-bbe2-13045d25fc68
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: d430febee23081b26eee0a68d4beb43228549f52
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a612ffd5a68e34cb0a367a6a883495ef26aeb4bc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>在 Azure 虚拟机中自动配置 AlwaysOn 可用性组：Resource Manager
 
-本教程介绍如何创建使用 Azure Resource Manager 虚拟机的 SQL Server 可用性组。 本教程会使用 Azure 边栏选项卡配置模板。 完成本教程后，可查看门户中的默认设置、键入所需设置，并可更新边栏选项卡。
+本教程介绍如何创建使用 Azure 资源管理器虚拟机的 SQL Server 可用性组。 本教程会使用 Azure 边栏选项卡配置模板。 完成本教程后，可查看门户中的默认设置、键入所需设置，并可更新边栏选项卡。
 
 完整的教程会在 Azure 虚拟机上创建一个 SQL Server 可用性组，包括以下元素：
 
@@ -63,27 +63,27 @@ ms.lasthandoff: 10/11/2017
 Azure 为整个解决方案提供库映像。 若要查找模板，请执行以下操作：
 
 1. 使用帐户登录到 Azure 门户。
-2. 在 Azure 门户中，单击“+新建”打开“新建”边栏选项卡。
-3. 在“新建”边栏选项卡中搜索“AlwaysOn”。
+2. 在 Azure 门户中，单击“创建资源”，打开“新建”窗格。
+3. 在“新建”窗格上，搜索“AlwaysOn”。
    ![查找 AlwaysOn 模板](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
 4. 在搜索结果中找到“SQL Server AlwaysOn 群集”。
    ![AlwaysOn 模板](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
 5. 在“选择部署模型”中选择“Resource Manager”。
 
-### <a name="basics"></a>基础知识
+### <a name="basics"></a>Basics
 单击“基本信息”，并配置以下设置：
 
 * “管理员用户名”是具有域管理员权限的用户帐户，并且是两个 SQL Server 实例上 SQL Server sysadmin 固定服务器角色的成员。 对于本教程，请使用 **DomainAdmin**。
 * “密码”是域管理员帐户的密码。 请使用复杂密码。 确认该密码。
 * **订阅**是指向 Azure 付费以运行为可用性组部署的所有资源。 如果帐户具有多个订阅，可以指定不同订阅。
-* **资源组**是此模板创建的所有 Azure 资源所属的组的名称。 对于本教程，请使用 **SQL-HA-RG**。 有关详细信息，请参阅 [Azure Resource Manager 概述](../../../azure-resource-manager/resource-group-overview.md#resource-groups)。
+* **资源组**是此模板创建的所有 Azure 资源所属的组的名称。 对于本教程，请使用 **SQL-HA-RG**。 有关详细信息，请参阅 [Azure 资源管理器概述](../../../azure-resource-manager/resource-group-overview.md#resource-groups)。
 * **位置**是本教程会在其中创建资源的 Azure 区域。 选择一个 Azure 区域。
 
 以下屏幕截图是完整的“基本信息”边栏选项卡：
 
 ![基础知识](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
 
-单击 **“确定”**。
+单击“确定”。
 
 ### <a name="domain-and-network-settings"></a>域和网络设置
 此 Azure 库模板将创建域和域控制器。 它还将创建一个网络和两个子网。 该模板无法在现有的域或虚拟网络中创建服务器。 下一步配置域和网络设置。
@@ -116,7 +116,7 @@ Azure 为整个解决方案提供库映像。 若要查找模板，请执行以�
 
 ![可用性组设置](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/3-availabilitygroup.png)
 
-单击 **“确定”**。
+单击“确定”。
 
 ### <a name="virtual-machine-size-storage-settings"></a>虚拟机大小、存储设置
 在“VM 大小、存储设置”中，选择 SQL Server 虚拟机大小并查看其他设置。
@@ -185,7 +185,7 @@ Azure 为整个解决方案提供库映像。 若要查找模板，请执行以�
 查看设置，并单击“确定”。
 
 ### <a name="summary"></a>摘要
-在摘要页上，Azure 会验证设置。 还可以下载模板。 查看摘要。 单击 **“确定”**。
+在摘要页上，Azure 会验证设置。 还可以下载模板。 查看摘要。 单击“确定”。
 
 ### <a name="buy"></a>购买
 这个最后的边栏选项卡包含“使用条款”和“隐私政策”。 查看此信息。 在 Azure 可开始创建虚拟机以及可用性组所需的其他所有资源后，请单击“创建”。
@@ -208,6 +208,6 @@ SQL Server 的新实例会在连接到 Internet 的 IP 地址上运行。 可以
 4. 在“sqlserver-0”边栏选项卡中，单击“连接”。 浏览器将询问是要打开还是要保存远程连接对象。 单击“打开”。
 5. “远程桌面连接”可能会发出警告：无法识别此远程连接的发布者。 单击“连接”。
 6. Windows 安全性会提示输入凭据，以便连接到主域控制器的 IP 地址。 单击“使用另一帐户”。 对于“用户名”，请键入 **contoso\DomainAdmin**。 此帐户是在模板中设置管理员用户名时配置的。 当配置了模板时，请使用所选的复杂密码。
-7. “远程桌面”可能会发出警告：由于安全证书存在问题，无法验证远程计算机。 它会显示安全证书名称。 如果按照本教程操作，该名称为 **sqlserver-0.contoso.com**。单击 **“是”**。
+7. “远程桌面”可能会发出警告：由于安全证书存在问题，无法验证远程计算机。 它会显示安全证书名称。 如果按照本教程操作，该名称为 **sqlserver-0.contoso.com**。单击“是”。
 
 现在，已通过 RDP 连接到 SQL Server 虚拟机。 可打开 SQL Server Management Studio，连接到 SQL Server 的默认实例，并验证可用性组是否已配置。

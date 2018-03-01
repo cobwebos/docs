@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 02/22/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 27b575a1baa793794480d16e91f0f96355b3d303
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 3437bc9f164cbdc6c923498b978291ced6278744
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>从 Azure 应用商店项下载到 Azure 堆栈
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 02/24/2018
 
 ### <a name="import-the-image-and-publish-it-to-azure-stack-marketplace"></a>导入映像并将其发布到 Azure 堆栈市场
 
-1. 下载映像和库包后，将它们和内容保存到可移动磁盘驱动器的 AzureStack 工具主文件夹中，并将其复制到 Azure 堆栈环境 (你可以复制该本地到的任何位置如:"C:\MarketplaceImages")。   
+1. 下载映像和库包后，将它们和内容保存到可移动磁盘驱动器的 AzureStack 工具主文件夹中，并将其复制到 Azure 堆栈环境 (你可以复制该本地到的任何位置如:"C:\MarketplaceImages")。     
 
 2. 然后再导入映像，你必须通过连接到 Azure 堆栈运算符的环境中所述的步骤[配置 Azure 堆栈运算符 PowerShell 环境](azure-stack-powershell-configure-admin.md)。  
 

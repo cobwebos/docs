@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 26ef6f69ef2f2d50628f4d0b021159526c9a04a7
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 4765a38689d5476331c593b89e54f94d4bd310c3
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="manage-mailing-list-requests-with-a-logic-app"></a>使用逻辑应用管理邮件列表请求
 
@@ -55,7 +55,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 ## <a name="create-your-logic-app"></a>创建逻辑应用
 
-1. 从主 Azure 菜单中选择“新建” > “企业集成” > “逻辑应用”。
+1. 在 Azure 主菜单中，选择“创建资源” > “企业集成” > “逻辑应用”。
 
    ![创建逻辑应用](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app.png)
 

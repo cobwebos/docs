@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 8799931f6233f0f18b56bea39e3cbcbbf51274e9
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 0cf26846a8f42238de09727a03dc6b50dff746b6
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD 中的自助密码重置深入探讨
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 01/17/2018
 
 仅当用户在管理员已启用并要求使用的身份验证方法中输入了数据时，他们才能重置其密码。
 
-如果用户不希望在目录中公开其移动电话号码，但仍想使用该号码来重置密码，则管理员不应在目录中填充该号码。 用户应通过[密码重置注册门户](http://aka.ms/ssprsetup)填充其“身份验证电话”属性。 管理员可在用户的配置文件中看到此信息，但此信息不会发布到其他位置。
+如果用户不希望在目录中公开其移动电话号码，但仍想使用该号码来重置密码，则管理员不应在目录中填充该号码。 用户应通过[密码重置注册门户](https://aka.ms/ssprsetup)填充其“身份验证电话”属性。 管理员可在用户的配置文件中看到此信息，但此信息不会发布到其他位置。
 
 ### <a name="the-number-of-authentication-methods-required"></a>所需身份验证方法的数量
 
@@ -95,8 +95,8 @@ ms.lasthandoff: 01/17/2018
 | 注册的方法数 | 必选方法数 | 结果 |
 | :---: | :---: | :---: |
 | 大于等于 1 | 1 | 能够重置或解锁 |
-| 1 | #N/A | 不可重置或解锁 |
-| 2 或更大 | #N/A | 能够重置或解锁 |
+| 1 | 2 | 不可重置或解锁 |
+| 2 或更大 | 2 | 能够重置或解锁 |
 
 如果更改了用户可用的身份验证方法类型，则可能会在无意间阻止用户使用 SSPR（如果不具有可用的最小数据量）。
 
@@ -180,7 +180,7 @@ ms.lasthandoff: 01/17/2018
 * 联合应用程序
 * 使用 Azure AD 的自定义应用程序
 
-如果已禁用要求注册，用户仍可手动注册其联系信息。 他们可以访问 [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)，或选择访问面板中“配置文件”选项卡下的“注册密码重置”链接。
+如果已禁用要求注册，用户仍可手动注册其联系信息。 他们可以访问 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)，或选择访问面板中“配置文件”选项卡下的“注册密码重置”链接。
 
 > [!NOTE]
 > 用户可以通过选择“取消”或关闭窗口来隐藏密码重置注册门户。 但是，在完成注册之前，每当他们登录时，系统都会提示他们注册。

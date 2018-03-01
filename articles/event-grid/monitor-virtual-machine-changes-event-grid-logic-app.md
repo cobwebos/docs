@@ -11,11 +11,11 @@ ms.service: logic-apps
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: e31f30e46c3a49ff9eca72cb82c16acb731427bf
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3d99dabe778b9b9234db9fe130ba503cd8b57834
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/19/2018
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
-2. 在 Azure 菜单的左上角，选择“新建” > “Enterprise Integration” > “逻辑应用”。
+2. 在 Azure 主菜单的左上角，选择“创建资源” > “企业集成” > “逻辑应用”。
 
    ![创建逻辑应用](./media/monitor-virtual-machine-changes-event-grid-logic-app/azure-portal-create-logic-app.png)
 

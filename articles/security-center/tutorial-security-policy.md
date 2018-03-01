@@ -9,17 +9,17 @@ editor:
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: tutorial
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2018
+ms.date: 02/22/2018
 ms.author: yurid
-ms.custom: mvc
-ms.openlocfilehash: 102e160b706ad8fb8ee12ae4cac8cda51b06a991
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: a740cec8a3177e0de5f33b362d5c4956671cd427
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>教程：定义和评估安全策略
 可以通过安全中心使用安全策略来定义工作负荷的所需配置，确保用户遵守公司或法规方面的安全要求。 为 Azure 订阅定义策略并根据工作负荷类型或数据敏感性对其进行调整以后，即可通过安全中心获取计算、网络、SQL 和存储以及应用程序资源方面的安全建议。 在本教程中，将了解如何：
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/08/2018
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 若要逐步执行本教程中介绍的功能，你必须位于安全中心的“标准”定价层。 可以尝试安全中心标准版，头 60 天免费。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。
 
 ## <a name="configure-security-policy"></a>配置安全策略

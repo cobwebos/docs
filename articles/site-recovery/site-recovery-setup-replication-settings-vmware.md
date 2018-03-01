@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/21/2017
+ms.date: 02/22/2018
 ms.author: sutalasi
-ms.openlocfilehash: a5d0eb5b8cd5ba49a602d7000291270af31fb222
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 0a567f31bf1991d4c2a95468d2abc31c51a878f3
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="manage-replication-policy-for-vmware-to-azure"></a>管理从 VMware 复制到 Azure 的复制策略
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/22/2017
 
 7. 在“应用一致性快照频率”中，指定创建包含应用程序一致性快照的恢复点的频率（以分钟为单位）。
 
-8. 单击 **“确定”**。 应会在 30 秒到 1 分钟之内创建好策略。
+8. 单击“确定”。 应会在 30 秒到 1 分钟之内创建好策略。
 
 ![复制策略生成](./media/site-recovery-setup-replication-settings-vmware/Creating-Policy.png)
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/22/2017
 ![关联配置服务器](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-1.PNG)
 
 3. 从服务器列表中选择配置服务器。
-4. 单击 **“确定”**。 应会在 1 到 2 分钟内关联配置服务器。
+4. 单击“确定”。 应会在 1 到 2 分钟内关联配置服务器。
 
 ![配置服务器关联](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-2.png)
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 11/22/2017
 ![编辑复制策略设置](./media/site-recovery-setup-replication-settings-vmware/Edit-Policy.png)
 
 3. 根据需要更改设置。
-4. 单击“保存” 。 应在 2 到 5 分钟内保存策略，具体取决于正在使用该复制策略的 VM 数量。
+4. 单击“ **保存**”。 应在 2 到 5 分钟内保存策略，具体取决于正在使用该复制策略的 VM 数量。
 
 ![保存复制策略](./media/site-recovery-setup-replication-settings-vmware/Save-Policy.png)
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/22/2017
 1. 选择要与配置服务器关联的复制策略。
 2. 单击“取消关联”。
 3. 从服务器列表中选择配置服务器。
-4. 单击 **“确定”**。 应会在 1 到 2 分钟内取消关联配置服务器。
+4. 单击“确定”。 应会在 1 到 2 分钟内取消关联配置服务器。
 
     > [!NOTE]
     > 如果至少有一个复制项正在使用该策略，则无法取消关联配置服务器。 在取消关联配置服务器前，请确保没有复制项正在使用该策略。

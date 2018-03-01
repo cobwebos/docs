@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 12/18/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 06d807b83f700c675c6979998dd8f74372a4845f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 1f31c05554db16d604a9825ef9b1317a0f281456
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
 使用支持 REST 调用的任何编程语言，可以针对 Azure Analysis Services 表格模型执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
@@ -208,7 +208,7 @@ syncstate 的值：
 
 这种形式的身份验证要求使用分配的所需 API 权限创建一个 Azure 应用程序。 
 
-1.  在 Azure 门户中，单击“新建” > “Azure Active Directory” > “应用注册” > “新建应用程序注册”。
+1.  在 Azure 门户中，单击“创建资源” > “Azure Active Directory” > “应用注册” > “新建应用程序注册”。
 
     ![新建应用程序注册](./media/analysis-services-async-refresh/aas-async-app-reg.png)
 

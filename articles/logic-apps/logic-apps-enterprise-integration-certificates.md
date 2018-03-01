@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 0570aab14283b38f9efcc50636f0c0c1c8e3ed13
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0357e67a8920a57b2ab8b79ebd8dd3a64d888478
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="learn-about-certificates-and-enterprise-integration-pack"></a>了解证书和 Enterprise Integration Pack
 ## <a name="overview"></a>概述
@@ -44,7 +44,7 @@ B2B 通信有时必须保持机密。 企业集成通过两种方式使用证书
 
 以下是用于在登录到 Azure 门户之后将公用证书上传到集成帐户中的详细步骤：
 
-1. 选择“更多服务”，并在筛选器搜索框中输入“集成”。 在结果列表中选择“集成帐户”     
+1. 选择“所有服务”，并在筛选器搜索框中输入“集成”。 在结果列表中选择“集成帐户”     
 ![选择“浏览”](media/logic-apps-enterprise-integration-certificates/overview-1.png)  
 2. 选择要将证书添加到其中的集成帐户。  
 ![选择要将证书添加到其中的集成帐户](media/logic-apps-enterprise-integration-certificates/overview-3.png)  

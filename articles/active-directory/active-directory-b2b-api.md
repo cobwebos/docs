@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/11/2017
 ms.author: sasubram
-ms.openlocfilehash: 9e1dcd38e7c05a234e4b8d7a6190770d813a227f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 06de162a82fa096780b4d7faa79ca1c91f9202fa
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B 协作 API 和自定义
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 12/11/2017
 在此模式下，任何使用 API 的用户都需要有创建 B2B 邀请的权限。
 
 ### <a name="app-only-mode"></a>“仅应用”模式
-在仅应用上下文中，应用需要 User.ReadWrite.All 或 Directory.ReadWrite.All 作用域才能使邀请成功。
+在仅应用上下文中，应用需要 User.Invite.All 作用域才能使邀请成功。
 
 有关详细信息，请参阅：https://graph.microsoft.io/docs/authorization/permission_scopes
 

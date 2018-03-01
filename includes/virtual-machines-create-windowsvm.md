@@ -1,6 +1,6 @@
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 首先在左上角单击“新建”>“计算”>“Windows Server 2016 Datacenter”。
+2. 首先在左上角单击“创建资源” > “计算” > “Windows Server 2016 Datacenter”。
 
     ![在门户中导航到 Azure VM 映像](./media/virtual-machines-common-portal-create-fqdn/marketplace-new.png)
 
@@ -16,7 +16,7 @@
 
 2. 输入用于在 VM 上创建本地帐户的“用户名”和强“密码”。 该本地帐户用于登录和管理 VM。 在本示例中，azureuser 是用户名。
 
- 密码长度必须为 8 到 123 个字符，并且必须满足以下 4 个复杂性要求的其中 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。 了解有关[用户名和密码要求](../articles/virtual-machines/windows/faq.md)的详细信息。
+ 密码长度必须为 8 到 123 个字符，并且必须满足以下 4 个复杂性要求的其中 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。 查看更多关于 [用户名和密码要求](../articles/virtual-machines/windows/faq.md)。
 
 3. “订阅”可选。 常用的一个设置是“即用即付”。
 

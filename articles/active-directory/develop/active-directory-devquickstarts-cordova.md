@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: vittorib
 ms.custom: aaddev
-ms.openlocfilehash: b489add83a462d1d3902831d63be0b70e2443718
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: d6f1d545265f0965a03afb23e5791cdd5e5e379c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-cordova-getting-started"></a>Azure AD Cordova 入门
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -88,8 +88,8 @@ Azure AD 仅向已知应用程序颁发令牌。 在从应用程序使用 Azure 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在顶部栏上，单击帐户。 在“目录”列表中，选择要在其中注册应用程序的 Azure AD 租户。
-3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
-4. 单击“应用注册”，然后选择“添加”。
+3. 在左窗格中，单击“所有服务”，并选择“Azure Active Directory”。
+4. 单击“应用注册”，并选择“添加”。
 5. 根据提示创建“本机客户端应用程序”。 （尽管 Cordova 应用以 HTML 为基础，但我们要在此处创建本机客户端应用程序。 必须选择“本机客户端应用程序”选项，否则应用程序将无法运行。）
   * **名称**向用户描述应用程序。
   * “重定向 URI”是用于将令牌返回应用的 URI。 输入 **http://MyDirectorySearcherApp**。

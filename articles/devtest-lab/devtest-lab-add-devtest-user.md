@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-craic
-ms.openlocfilehash: 2921356f848739d602807236006f9867eaa2a4e4
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 348952626e13b9ac73ca2ec8e101bf02e416dc9b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中添加所有者和用户
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -64,7 +64,7 @@ ms.lasthandoff: 01/02/2018
 以下步骤介绍在 Azure 开发测试实验室中将所有者或用户添加到实验室的过程：
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 选择“更多服务”，并从列表中选择“开发测试实验室”。
+2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。
 4. 在实验室的边栏选项卡上，选择“配置”。 
 5. 在“配置”边栏选项卡上，选择“用户”。
@@ -118,7 +118,7 @@ Azure 权限在 Azure 中从父范围传播到子范围。 因此，包含实验
 要将所有者添加到 Azure 订阅，请按照下列步骤操作：
 
 1. 登录到 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 选择“更多服务”，并从列表中选择“订阅”。
+2. 选择“所有服务”，并从列表中选择“订阅”。
 3. 选择所需的订阅。
 4. 选择“访问”图标。 
    

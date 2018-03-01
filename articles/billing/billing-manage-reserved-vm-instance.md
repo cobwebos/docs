@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2017
 ms.author: vikdesai
-ms.openlocfilehash: 8f75bab7fc795a59dabfedca5a4889622f66b73a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f3f5f974630c4bf1c68599e26612ed729b55bcfc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-reserved-virtual-machine-instances"></a>管理保留虚拟机实例
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/09/2018
 
 若要更新预订范围，请执行以下操作： 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“更多服务” > “预订”。
+2. 选择“所有服务” > “预订”。
 3. 选择该预订。
 4. 选择“设置” > “配置”。
 5. 更改范围。 如果要从“共享”更改为单个范围，只能选择自己是其所有者的订阅。 只能选择与该预订相同的计费上下文中的订阅。 计费上下文取决于在购买预订时已选择的订阅。 范围仅适用于即用即付产品/服务 MS-AZR-0003P 订阅和 Enterprise 产品/服务 MS-AZR-0017P 订阅。 对于企业协议，开发/测试订阅不符合获取预订折扣的条件。
@@ -69,7 +69,7 @@ ms.lasthandoff: 02/09/2018
  
 若要委托预订的访问管理，请执行以下操作： 
 1.  登录到 [Azure 门户](https://portal.azure.com)。
-2.  选择“更多服务” > “预订”以列出自己有权访问的预订。
+2.  选择“所有服务” > “预订”以列出自己有权访问的预订。
 3.  选择要将访问权限委托给其他用户的预订。
 4.  选择菜单中的“访问控制(IAM)”。
 5.  选择“添加” > “角色” > “所有者”（或其他角色，如果希望提供有限的访问权限）。 

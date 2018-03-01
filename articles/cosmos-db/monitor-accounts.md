@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mimig
-ms.openlocfilehash: f07489172306b4f6d03b5a9b1399ed92e007c3c1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 0e9a47e6a1a5c7a44c5553742d6c5c81f8ca7286
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-azure-cosmos-db"></a>监视 Azure Cosmos DB
 可以在 [Azure 门户](https://portal.azure.com/)中监视 Azure Cosmos DB 帐户。 对于每个 Azure Cosmos DB 帐户，一整套指标可用于监视吞吐量、存储、可用性、延迟和一致性。
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 可在“帐户”页、新的“指标”页或 Azure Monitor.中查看指标。
 
 ## <a name="view-performance-metrics-on-the-metrics-page"></a>在“指标”页上查看性能指标
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“更多服务”，滚动到“数据库”，单击“Azure Cosmos DB”，并单击要查看其性能指标的 Azure Cosmos DB 帐户的名称。
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“所有服务”，滚动到“数据库”，单击“Azure Cosmos DB”，然后单击要查看其性能指标的 Azure Cosmos DB 帐户的名称。
 2. 新页加载时，在资源菜单的“监视”下，单击“指标”。
 3. “指标”页打开时，从“集合”下拉列表中选择要查看的集合。
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/11/2017
 5. 在“可用指标”列表中，选择要显示的指标。 使用 Ctrl 按钮进行多选。 
 
 ## <a name="view-performance-metrics-on-the-account-page"></a>在“帐户”页上查看性能指标
-1. 在 [Azure 门户](https://portal.azure.com/)中，单击“更多服务”，滚动到“数据库”，单击“Azure Cosmos DB”，并单击要查看其性能指标的 Azure Cosmos DB 帐户的名称。
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“所有服务”，滚动到“数据库”，单击“Azure Cosmos DB”，然后单击要查看其性能指标的 Azure Cosmos DB 帐户的名称。
 2. 默认情况下，“监视”可重用功能区显示以下磁贴：
    
    * 当天的请求总数。
@@ -53,7 +53,7 @@ ms.lasthandoff: 12/11/2017
 4. “指标”页显示有关请求总数的详细信息。 
 
 ## <a name="set-up-alerts-in-the-portal"></a>在门户中设置警报
-1. 在 [Azure 门户](https://portal.azure.com/)中，依次单击“更多服务”、“Azure Cosmos DB”，并单击要设置性能指标警报的 Azure Cosmos DB 帐户的名称。
+1. 在 [Azure 门户](https://portal.azure.com/)中，依次单击“所有服务”、“Azure Cosmos DB”，并单击要设置性能指标警报的 Azure Cosmos DB 帐户的名称。
 2. 在资源菜单中，单击“警报规则”打开“警报规则”页。  
    ![所选的警报规则部件的屏幕截图](./media/monitor-accounts/madocdb10.5.png)
 3. 在“警报规则”页中，单击“添加警报”。  

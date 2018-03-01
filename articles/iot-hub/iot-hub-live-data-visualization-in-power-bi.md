@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: xshi
-ms.openlocfilehash: b190fea06ffc2406d781c7edad091f097cca9c2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82915a92464f240591777595e878a534cde0136c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>使用 Power BI 可视化 Azure IoT 中心的实时传感器数据
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="create-a-stream-analytics-job"></a>创建流分析作业
 
-1. 在 Azure 门户中，单击“新建”>“物联网”>“流分析作业”。
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“创建资源” > “物联网” > “流分析作业”。
 1. 为作业输入以下信息。
 
    **作业名称**：作业的名称。 该名称必须全局唯一。
@@ -98,7 +98,7 @@ ms.lasthandoff: 10/11/2017
    **数据集名称**：输入数据集名称。
 
    **表名称**：输入表名称。
-1. 单击“创建” 。
+1. 单击“创建”。
 
    ![向 Azure 中的流分析作业添加输出](media/iot-hub-live-data-visualization-in-power-bi/4_add-output-to-stream-analytics-job-azure.png)
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 10/11/2017
 1. 在“作业拓扑”下，单击“查询”。
 1. 将 `[YourInputAlias]` 替换为作业的输入别名。
 1. 将 `[YourOutputAlias]` 替换为作业的输出别名。
-1. 单击“保存” 。
+1. 单击“ **保存**”。
 
    ![向 Azure 中的流分析作业添加查询](media/iot-hub-live-data-visualization-in-power-bi/5_add-query-stream-analytics-job-azure.png)
 

@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: d9b951ad4c54a3714ba7e857d5198c351215cbac
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: e0b835f4cbad9855bfb7ddccf2d9bf5b4bf88231
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshoot-routes-using-the-azure-portal"></a>使用 Azure 门户排查路由问题
 > [!div class="op_single_selector"]
-> * [Azure 门户](virtual-network-routes-troubleshoot-portal.md)
+> * [在 Azure 应用服务中创建 Java Web 应用](virtual-network-routes-troubleshoot-portal.md)
 > * [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 >
 >
@@ -55,7 +55,7 @@ ms.lasthandoff: 12/21/2017
 若要查看应用到 VM 的聚合路由，请完成以下步骤：
 
 1. 登录到 Azure 门户网站 https://portal.azure.com。你的帐户必须有权对网络接口执行 *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* 操作。 若要了解如何向帐户分配操作，请参阅[创建用于 Azure 基于角色的访问控制的自定义角色](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)。
-2. 单击“**更多服务**”，并在显示的列表中单击“**虚拟机**”。
+2. 单击“所有服务”，然后在显示的列表中单击“虚拟机”。
 3. 在显示的列表中选择要进行故障排除的 VM，随后会显示一个包含选项的 VM 边栏选项卡。
 4. 单击“**诊断和解决问题**”，并选择一个常见问题。 本示例选择了“**无法连接到 Windows VM**”。
 
@@ -96,8 +96,8 @@ ms.lasthandoff: 12/21/2017
 ### <a name="view-effective-routes-for-a-network-interface"></a>查看网络接口的有效路由
 如果网络流量流受到特定网络接口 (NIC) 的影响，可以直接查看 NIC 上有效路由的完整列表。 若要查看应用到 NIC 的聚合路由，请完成以下步骤：
 
-1. 通过 https://portal.azure.com 登录到 Azure 门户。
-2. 单击“**更多服务**”，并单击“**网络接口**”
+1. 登录到 Azure 门户网站 https://portal.azure.com。
+2. 单击“所有服务”，然后单击“网络接口”
 3. 在列表中搜索 NIC 的名称，或者从显示的列表中选择 NIC。 本示例选择了 **VM1-NIC1**。
 4. 在“**网络接口**”边栏选项卡中选择“**有效路由**”，如下图所示：
 
@@ -116,8 +116,8 @@ ms.lasthandoff: 12/21/2017
 
 若要查看路由表的聚合路由，请完成以下步骤：
 
-1. 通过 https://portal.azure.com 登录到 Azure 门户。
-2. 单击“**更多服务**”，并单击“**路由表**”
+1. 登录到 Azure 门户网站 https://portal.azure.com。
+2. 单击“所有服务”，然后单击“路由表”
 3. 在列表中搜索想要查看其聚合路由的路由表，并将它选中。 本示例选择了 **UDRouteTable**。 此时会显示选定路由表的边栏选项卡，如下图所示：
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image9.png)

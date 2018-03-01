@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: f63a2cdeaec512bed4fd0f86ef7c9d5a9b77d7f6
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: be463b18c049c8b92c21cfde82defcf76718a5f0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>How to capture a classic Linux virtual machine as an image（如何捕获用作映像的经典 Linux 虚拟机）
 > [!IMPORTANT]
@@ -98,7 +98,7 @@ Azure 在“映像”下存储映像，以及任何已上载的映像。 有关�
    azure vm image list
    ```
 
-   在 [Azure 门户](http://portal.azure.com)中，新映像会出现在属于“计算”服务的“VM 映像(经典)”中。 可通过在 Azure 服务列表底部单击“更多服务”，并在“计算”服务中查找来访问“VM 映像(经典)”。   
+   在 [Azure 门户](http://portal.azure.com)中，新映像会出现在属于“计算”服务的“VM 映像(经典)”中。 可通过在 Azure 服务列表顶部单击“全部服务”，并在“计算”服务中查找来访问“VM 映像(经典)”。   
 
    ![成功捕获映像](./media/capture-image/VMCapturedImageAvailable.png)
 

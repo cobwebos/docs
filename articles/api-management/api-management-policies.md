@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: d0d10096c004b50688ad5e6550bf248ceb5ef878
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: cb0304cae1b92578eb3c9230ae9faeecdf13d750
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="api-management-policies"></a>API 管理策略
 本部分提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
@@ -72,13 +72,9 @@ ms.lasthandoff: 12/04/2017
     -   [设置 HTTP 标头](api-management-transformation-policies.md#SetHTTPheader) - 向现有的响应和/或请求标头赋值，或者添加新的响应和/或请求标头。  
     -   [设置查询字符串参数](api-management-transformation-policies.md#SetQueryStringParameter) - 添加、删除请求查询字符串参数或替换其值。  
     -   [重写 URI](api-management-transformation-policies.md#RewriteURL) - 将请求 URL 从其公用格式转换为 Web 服务所需的格式。  
-    -   [使用 XSLT 转换 XML](api-management-transformation-policies.md#XSLTransform) - 在请求或响应正文中将 XSL 转换应用到 XML。  
+    -   [使用 XSLT 转换 XML](api-management-transformation-policies.md#XSLTransform) - 在请求或响应正文中的 XML 应用 XSL 转换。  
 
-## <a name="video"></a>视频
 
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Policy-Expressions-in-Azure-API-Management/player]
-> 
-> 
 
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅：

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: xshi
-ms.openlocfilehash: 50ae54b9476c49b80236e295c0bf244df8236cff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec6bd6b053f6546c77508d29065de25739619d96
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>在 Azure 机器学习中使用 IoT 中心的传感器数据进行天气预报
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="create-a-stream-analytics-job"></a>创建流分析作业
 
-1. 在 [Azure 门户](https://ms.portal.azure.com/)中，单击“新建” > “物联网” > “流分析作业”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，单击“创建资源” > “物联网” > “流分析作业”。
 1. 为作业输入以下信息。
 
    **作业名称**：作业的名称。 该名称必须全局唯一。
@@ -109,7 +109,7 @@ ms.lasthandoff: 10/11/2017
 
    ![向 Azure 中的流分析作业添加输入](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
-1. 单击“创建” 。
+1. 单击“创建”。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>向流分析作业添加输出
 
@@ -128,7 +128,7 @@ ms.lasthandoff: 10/11/2017
 
    ![向 Azure 中的流分析作业添加输出](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
-1. 单击“创建” 。
+1. 单击“创建”。
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>向流分析作业添加函数以调用你部署的 Web 服务
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 10/11/2017
 
    ![向 Azure 中的流分析作业添加函数](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
-1. 单击“创建” 。
+1. 单击“创建”。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>配置流分析作业的查询
 
@@ -167,7 +167,7 @@ ms.lasthandoff: 10/11/2017
 
    将 `[YourOutputAlias]` 替换为作业的输出别名。
 
-1. 单击“保存” 。
+1. 单击“ **保存**”。
 
 ### <a name="run-the-stream-analytics-job"></a>运行流分析作业
 

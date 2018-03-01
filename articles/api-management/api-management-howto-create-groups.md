@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: f377e1aadc126934fb47f6371f12435d2742efa6
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: f4e1f8a701b5584138b92526e0e65e28d45e7c04
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>如何创建和使用组来管理 Azure API 管理中的开发人员帐户
 在 API 管理中，使用组来管理产品对开发人员的可见性。 产品首次对组可见，这些组中的开发人员可以查看和订阅与组关联的产品。 
@@ -62,10 +62,10 @@ API 管理具有下列不可变的系统组：
 3. 按“访问控制”。
 4. 单击“+ 添加组”。
 
-    ![添加新组](./media/api-management-howto-create-groups/groups002.png)
+    ![将组与产品关联](./media/api-management-howto-create-groups/groups002.png)
 5. 选择要添加的组。
 
-    ![添加新组](./media/api-management-howto-create-groups/groups003.png)
+    ![将组与产品关联](./media/api-management-howto-create-groups/groups003.png)
 
     若要从产品中删除组，请单击“删除”。
 
@@ -89,10 +89,10 @@ API 管理具有下列不可变的系统组：
     ![添加成员](./media/api-management-howto-create-groups/groups006.png)
 4. 按“选择”。
 
-
 一旦开发人员和组之间添加关联，可以在“用户”选项卡中查看它。
 
 ## <a name="next-steps"></a>后续步骤
+
 * 一旦开发人员添加到组，他们可以查看和订阅与该组关联的产品。 有关详细信息，请参阅[如何在 Azure API 管理中创建和发布产品][How create and publish a product in Azure API Management]，
 * 除了在发布者门户中创建和管理组，还可使用 API 管理 REST API [组](https://msdn.microsoft.com/library/azure/dn776329.aspx)实体创建和管理组。
 

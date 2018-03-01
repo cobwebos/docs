@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 8116ba82838cf0ee610c6dadada0d8bfe6106f34
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: cdb2bda0c3f7e73b115c2609c3f229c633093bdc
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-and-linux"></a>Azure 和 Linux
 Microsoft Azure 正在不断集结各种集成的公有云服务，包括分析、虚拟机、数据库、移动、网络、存储和 Web&mdash;是托管解决方案的理想之选。  Microsoft Azure 提供可缩放的计算平台，允许即用即付，而无需投资购买本地硬件。  Azure 允许根据客户端所需的任何规模，随时扩展和缩减解决方案。
@@ -32,7 +32,7 @@ Microsoft Azure 资源分布在世界各地的多个地理区域。  一个“�
 * [Azure 区域](https://azure.microsoft.com/regions/)
 
 ## <a name="availability"></a>可用性
-Azure 宣布了行业领先的单实例虚拟机服务级别协议：可用性达到 99.9%（前提是为所有磁盘使用高级存储部署 VM）。  为了使部署符合标准 99.95% 的 VM 服务级别协议，仍需要在可用性集中部署两个或更多个运行工作负荷的 VM。 可用性集可确保 VM 分布在 Azure 数据中心内的多个容错域，并使用不同的维护时段部署到主机。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) 说明了 Azure 作为整体的保证可用性。
+Azure 宣布了行业领先的单实例虚拟机服务级别协议：可用性达到 99.9%（前提是为所有磁盘使用高级存储部署 VM）。  为了使部署符合标准 99.95% 的 VM 服务级别协议，仍需要在可用性集中部署两个或更多个运行工作负荷的 VM。 可用性集可确保 VM 分布在 Azure 数据中心内的多个容错域，并使用不同的维护时段部署到主机。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
 
 ## <a name="managed-disks"></a>托管磁盘
 
@@ -110,11 +110,11 @@ VM 现在正在 Azure 上运行，用户可以登录。  使用密码通过 SSH 
 
 ## <a name="related-azure-components"></a>相关 Azure 组件
 ## <a name="storage"></a>存储
-* [Microsoft Azure 存储简介](../../storage/common/storage-introduction.md)
+* [Microsoft Azure 存储空间简介](../../storage/common/storage-introduction.md)
 * [使用 azure-cli 将磁盘添加到 Linux VM](add-disk.md)
 * [如何在 Azure 门户中将数据磁盘附加到 Linux VM](attach-disk-portal.md)
 
-## <a name="networking"></a>联网
+## <a name="networking"></a>网络
 * [虚拟网络概述](../../virtual-network/virtual-networks-overview.md)
 * [Azure 中的 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [在 Azure 中打开 Linux VM 的端口](nsg-quickstart.md)

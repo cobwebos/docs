@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: 2e377ef96f6c2b5866ad258a88d6403fd0bb1e41
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 87bbbd1fdcb9afb59de0bda29e99e23e0b9ad104
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录 
 Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
@@ -180,7 +180,7 @@ Azure SQL 数据库可发出指标和诊断日志，以便更轻松地进行监�
 
 ### <a name="create-a-log-analytics-resource"></a>创建 Log Analytics 资源
 
-1. 在左侧菜单中，选择“新建”。
+1. 在左侧菜单中，选择“创建资源”。
 
 2. 单击“监视 + 管理”。
 
@@ -276,7 +276,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|类型|始终是：AzureDiagnostics|
+|Type|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：QueryStoreRuntimeStatistics|
 |OperationName|操作的名称。 始终是：QueryStoreRuntimeStatisticsEvent|
@@ -327,7 +327,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|类型|始终是：AzureDiagnostics|
+|Type|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：QueryStoreWaitStatistics|
 |OperationName|操作的名称。 始终是：QueryStoreWaitStatisticsEvent|
@@ -365,7 +365,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|类型|始终是：AzureDiagnostics|
+|Type|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：Errors|
 |OperationName|操作的名称。 始终是：ErrorEvent|
@@ -380,7 +380,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |消息|纯文本格式的错误消息。|
 |user_defined_b|用户定义位错误。|
 |error_number_d|错误代码。|
-|严重性|错误的严重性。|
+|Severity|错误的严重性。|
 |state_d|错误的状态。|
 |query_hash_s|失败查询的查询哈希（如果存在）。|
 |query_plan_hash_s|失败查询的查询计划哈希（如果存在）。|
@@ -394,7 +394,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|类型|始终是：AzureDiagnostics|
+|Type|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：DatabaseWaitStatistics|
 |OperationName|操作的名称。 始终是：DatabaseWaitStatisticsEvent|
@@ -423,7 +423,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|类型|始终是：AzureDiagnostics|
+|Type|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：Timeouts|
 |OperationName|操作的名称。 始终是：TimeoutEvent|
@@ -446,7 +446,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |TenantId|租户 ID。|
 |SourceSystem|始终是：Azure|
 |TimeGenerated [UTC]|记录日志时的时间戳。|
-|类型|始终是：AzureDiagnostics|
+|Type|始终是：AzureDiagnostics|
 |ResourceProvider|资源提供程序的名称。 始终是：MICROSOFT.SQL|
 |类别|类别的名称。 始终是：Blocks|
 |OperationName|操作的名称。 始终是：BlockEvent|

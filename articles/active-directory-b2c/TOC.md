@@ -1,3 +1,5 @@
+# [Azure AD B2C 文档](index.md)
+
 # [概述](active-directory-b2c-overview.md)
 
 # 入门

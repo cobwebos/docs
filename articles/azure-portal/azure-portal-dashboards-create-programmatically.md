@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: d9acb58791cb1412d5e67479ca6490e1548be2c8
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: d2131a9fbb8fcb77a00045924169420773893f91
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="overview"></a>概述
 
-Azure 中的共享仪表板与虚拟机和存储帐户一样，是一种[资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。  因此，可通过 [Azure 资源管理器 REST API](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-rest-api)、[Azure CLI](https://docs.microsoft.com/cli/azure/overview)、[Azure PowerShell 命令](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0) 和许多基于这些 API 构建的 [Azure 门户](https://portal.azure.com)功能，以编程方式更轻松地管理这些资源。  
+Azure 中的共享仪表板与虚拟机和存储帐户一样，是一种[资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。  因此，可通过 [Azure 资源管理器 REST API](/rest/api/)、[Azure CLI](https://docs.microsoft.com/cli/azure/overview)、[Azure PowerShell 命令](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0) 和许多基于这些 API 构建的 [Azure 门户](https://portal.azure.com)功能，以编程方式更轻松地管理这些资源。  
 
 所有这些 API 和工具都提供了创建、罗列、检索、修改和删除资源的方法。  由于仪表板是资源，因此可以选择使用最喜欢的 API/工具。
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 619334b3ca65654fd845a62c2fc068156d94d6fc
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 6c949c07c95c5d965b31725bce4ab2deac646bca
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-android-getting-started"></a>Azure AD Android 入门
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -52,7 +52,7 @@ Active Directory 支持添加两种类型的应用程序：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在顶部栏上，单击帐户。 在“目录”列表中，选择要在其中注册应用程序的 Azure AD 租户。
-3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
+3. 在左窗格中，单击“所有服务”，并选择“Azure Active Directory”。
 4. 单击“应用注册”，并选择“添加”。
 5. 为应用程序输入一个友好的名称（例如“TodoListService”），选择“Web 应用程序和/或 Web API”，并单击“下一步”。
 6. 对于登录 URL，输入示例的基 URL。 默认情况下，它是 `https://localhost:8080`。
@@ -70,7 +70,7 @@ Active Directory 支持添加两种类型的应用程序：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在顶部栏上，单击帐户。 在“目录”列表中，选择要在其中注册应用程序的 Azure AD 租户。
-3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
+3. 在左窗格中，单击“所有服务”，并选择“Azure Active Directory”。
 4. 单击“应用注册”，并选择“添加”。
 5. 为应用程序输入一个友好的名称（例如“TodoListClient-Android”），选择“本机客户端应用程序”，并单击“下一步”。
 6. 对于“重定向 URI”，输入 `http://TodoListClient`。 单击“完成” 。

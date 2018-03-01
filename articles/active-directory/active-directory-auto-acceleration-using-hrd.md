@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: it-pro
 ms.date: 11/09/2017
 ms.author: billmath
-ms.openlocfilehash: e2e6e5c40dc4a9f67f94c45f8394512db3f777f5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: deaa52a062eb01450f760324e01e520fcbe894e1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-sign-in-auto-acceleration-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置登录自动加速
 
@@ -83,9 +83,9 @@ ms.lasthandoff: 12/11/2017
 
 1. 创建自动加速的 HRD 策略。
 
-2. 查找要附加策略的服务主体。
+2. 找到要将策略附加到的服务主体。
 
-3. 将策略附加到服务主体。 可能策略已在租户中创建，但要在附加到实体后才会生效。 
+3. 将策略附加到服务主体上。 可能策略已在租户中创建，但要在附加到实体后才会生效。 
 
 HRD 策略可以附加到服务主体，并且在给定实体上一次仅可有一个 HRD 策略处于活动状态。  
 
@@ -170,12 +170,12 @@ Get-AzureADPolicy
 ```
 
 
-若要在拥有 HRD 策略后启用自动加速，可将其分配到多个应用程序服务主体。
+要在设置有 HRD 策略后启用自动加速功能，可将其分配给多个应用程序服务主体。
 
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>步骤 2：查找要向其分配策略的服务主体  
 需要要向其分配策略的服务主体的“ObjectID”。 可通过多种方法查找服务主体的“ObjectID”。    
 
-可以使用门户，或查询 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)。 还可以转到 [Graph 浏览器工具](https://graphexplorer.cloudapp.net/)，并登录到 Azure AD 帐户，查看组织的所有服务主体。 由于正在使用 PowerShell，可使用 get-AzureADServicePrincipal cmdlet 列出服务主体及其 ID。
+可以使用门户，或查询 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)。 还可以转到 [Graph 浏览器工具](https://graphexplorer.cloudapp.net/)，并登录到 Azure AD 帐户，查看组织的所有服务主体。 你使用的是 PowerShell，因此可使用 get-AzureADServicePrincipal cmdlet 列出服务主体及其 ID。
 
 #### <a name="step-3-assign-the-policy-to-your-service-principal"></a>步骤 3：向服务主体分配策略  
 在获取了要配置自动加速的应用程序的服务主体的“ObjectID”后，请运行以下命令。 该命令将步骤 1 中创建的 HRD 策略与步骤 2 中找到的服务主体关联起来。

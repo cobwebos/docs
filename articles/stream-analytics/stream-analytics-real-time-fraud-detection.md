@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: sngun
-ms.openlocfilehash: cc581142ca2c75bbee80f9d980c4984b4863a6cf
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: a3b61b0eeef9ffc97b0cc06a8de44859e4d6db85
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时检测欺诈行为
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 02/14/2018
 ### <a name="create-a-namespace-and-event-hub"></a>创建命名空间和事件中心
 在此过程中，首先创建事件中心命名空间，然后将事件中心添加到该命名空间。 事件中心命名空间用于逻辑分组相关的事件总线实例。 
 
-1. 登录 Azure 门户，然后单击“新建” > “物联网” > “事件中心”。 
+1. 登录 Azure 门户，然后依次单击“创建资源” > “物联网” > “事件中心”。 
 
 2. 在“创建命名空间”窗格中，输入命名空间名称，例如 `<yourname>-eh-ns-demo`。 可以对命名空间使用任何名称，但该名称必须对 URL 有效，并且在 Azure 中必须唯一。 
     
@@ -165,7 +165,7 @@ ms.lasthandoff: 02/14/2018
 
 ### <a name="create-the-job"></a>创建作业 
 
-1. 在 Azure 门户中，单击“新建” > “物联网” > “流分析作业”。
+1. 在 Azure 门户中，单击“创建资源” > “物联网” > “流分析作业”。
 
 2. 将作业命名为 `sa_frauddetection_job_demo`，然后指定订阅、资源组和位置。
 

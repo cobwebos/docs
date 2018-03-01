@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: babanisa
-ms.openlocfilehash: 2b0039c7b90ef6f003641e096521f84885171c26
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9d1f0eed28a1c1c6776ddba89480adcedfc599a5
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/01/2018
 [
   {
     "topic": string,
-    "subject": string,    
+    "subject": string,
     "id": string,
     "eventType": string,
     "eventTime": string,
@@ -72,7 +72,7 @@ ms.lasthandoff: 02/01/2018
   }
 ]
 ```
- 
+
 ## <a name="event-properties"></a>事件属性
 
 所有事件均包含以下相同的顶级数据：
@@ -93,6 +93,8 @@ ms.lasthandoff: 02/01/2018
 * [Azure 订阅（管理操作）](event-schema-subscriptions.md)
 * [Blob 存储](event-schema-blob-storage.md)
 * [事件中心](event-schema-event-hubs.md)
+* [服务总线](event-schema-service-bus.md)
+* [IoT 中心](event-schema-iot-hub.md)
 * [资源组（管理操作）](event-schema-resource-groups.md)
 
 对于自定义主题，事件发布者确定数据对象。 顶级数据应包含与标准资源所定义事件相同的字段。 将事件发布到自定义主题时，应考虑对事件主题建模，以辅助路由和筛选。

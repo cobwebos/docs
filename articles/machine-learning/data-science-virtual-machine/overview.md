@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: a8b9efffd6373ee33026e915b0a14e15d41295b3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 3cedc16e3a420fd846b7860b69f4b19591ad1777
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Azure 数据科学虚拟机简介
 
-数据科学虚拟机 (DSVM) 是专为研究数据科学生成的 Microsoft Azure 云上的自定义 VM 映像。 它预装并预配了许多热门数据科学和其他工具，可为高级分析快速生成智能应用程序。 它在 Windows Server 和 Linux 上可用。 我们在 Server 2016 和 Server 2012 上提供了 Windows 版本的 DSVM。 我们在 Ubuntu 16.04 LTS 中和基于 OpenLogic 7.2 CentOS 的 Linux 发行版上提供了 Linux 版本的 DSVM。 
+数据科学虚拟机 (DSVM) 是专为研究数据科学生成的 Microsoft Azure 云上的自定义 VM 映像。 它预装并预配了许多热门数据科学和其他工具，可为高级分析快速生成智能应用程序。 它在 Windows Server 和 Linux 上可用。 我们在 Server 2016 和 Server 2012 上提供了 Windows 版本的 DSVM。 我们在 Ubuntu 16.04 LTS 和 CentOS 7.4 上提供了 Linux 版本的 DSVM。
 
 本主题讨论可对数据科学 VM 执行的操作、概述了使用 VM 的一些关键方案、详细列举了 Windows 和 Linux 版本上可用的关键功能，并说明了如何使用它们。
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/31/2017
 数据科学 VM 可用于评估或学习工具，例如 Microsoft ML Server、SQL Server、Visual Studio 工具、Jupyter、深度学习/ML 工具包以及社区热门且需要最少设置工作量的新工具。 因为数据科学 VM 可快速设置，所以可应用于其他短期使用方案，例如复制发布的实验、执行演示、遵循在线会话或会议教程中的演练。
 
 ### <a name="deep-learning"></a>深度学习
-数据科学 VM 可用于在基于 GPU（图形处理单元）的硬件上使用深度学习算法的训练模型。 利用 Azure 云的 VM 缩放功能，DSVM 可帮助根据需要在云上使用基于 GPU 的硬件。 如果训练大型模型或在保留相同 OS 磁盘的同时需要高速计算，可以切换到基于 GPU 的 VM。  Windows Server 2016 版本的 DSVM 预安装了 GPU 驱动程序、框架和 GPU 版本的深度学习算法。 在 Linux 上，仅在 [Linux (Ubuntu) 版本的数据科学虚拟机](http://aka.ms/dsvm/ubuntu)上支持 GPU 的深度学习。 在所有深度学习框架都将回退到 CPU 模式的情况下，可以将 Ubuntu/Windows-2016 版本的数据科学 VM 部署到非基于 GPU 的 Azure 虚拟机。 从前，我们针对 Windows Server 2012 发布了[深度学习工具包](http://aka.ms/dsvm/deeplearning)，但现在我们建议使用 Windows Server 2016 处理基于 Windows 的深度学习工作负荷。 基于 CentOS 的 DSVM Linux 版只包含一些深度学习工具（Microsoft 认知工具包、TensorFlow、MXNet）的 CPU 生成，但未预安装 GPU 驱动程序和框架。 
+数据科学 VM 可用于在基于 GPU（图形处理单元）的硬件上使用深度学习算法的训练模型。 利用 Azure 云的 VM 缩放功能，DSVM 可帮助根据需要在云上使用基于 GPU 的硬件。 如果训练大型模型或在保留相同 OS 磁盘的同时需要高速计算，可以切换到基于 GPU 的 VM。  Windows Server 2016 版本的 DSVM 预安装了 GPU 驱动程序、框架和 GPU 版本的深度学习框架。 在 Linux 上，在 CentOS 和 Ubuntu DSVM 中都启用了 GPU 上的深度学习。 在所有深度学习框架都将回退到 CPU 模式的情况下，可以将 Ubuntu、CentOS 或 Windows 2016 版本的数据科学 VM 部署到非基于 GPU 的 Azure 虚拟机。 
 
 ## <a name="whats-included-in-the-data-science-vm"></a>数据科学 VM 中包含什么内容？
 数据科学虚拟机已安装并配置了许多热门数据科学工具和深度学习工具。 它还包括简化使用各种 Azure 数据和分析产品的工具。 可使用 Microsoft ML Server（R、Python）或 SQL Server 2017 在大型数据集上浏览和生成预测模型。 还包括开源社区和 Microsoft 的其他工具主机，示例代码和笔记本也包括在内。 下表详细列举并比较了包括在数据科学虚拟机 Windows 和 Linux 版中的主要组件。
@@ -92,6 +92,7 @@ ms.lasthandoff: 10/31/2017
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Azure CLI](https://docs.microsoft.com/cli/azure/overview) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Azure Powershell | Y | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Azcopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy) | Y | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Blob FUSE 驱动程序](https://github.com/Azure/azure-storage-fuse) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Adlcopy(Azure Data Lake Storage)](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob) | Y | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [DocDB 数据迁移工具](https://docs.microsoft.com/azure/documentdb/documentdb-import-data) | Y | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft 数据管理网关](https://msdn.microsoft.com/library/dn879362.aspx)：在本地和云之间移动数据 | Y | N |
@@ -105,7 +106,7 @@ ms.lasthandoff: 10/31/2017
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Rattle](http://rattle.togaware.com/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [LightGBM](https://github.com/Microsoft/LightGBM) | N | 是（仅适用于 Ubuntu） |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [H2O](https://www.h2o.ai/h2o/) | N | 是（仅适用于 Ubuntu） |
-| **基于 GPU 的深度学习工具** |Windows Server 2016 版本  |Ubuntu 版本 |
+| **基于 GPU 的深度学习工具** |Windows Server 2016 版本  | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft 认知工具包（以前称为 CNTK）](https://www.microsoft.com/en-us/cognitive-toolkit/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow](https://www.tensorflow.org/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](http://mxnet.io/) | Y | Y|
@@ -113,7 +114,10 @@ ms.lasthandoff: 10/31/2017
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Torch](http://torch.ch/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Theano](https://github.com/Theano/Theano) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Keras](https://keras.io/)| N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [PyTorch](http://pytorch.org/)| N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [NVidia Digits](https://github.com/NVIDIA/DIGITS) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet 模型服务器](https://github.com/awslabs/mxnet-model-server) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow 服务](https://www.tensorflow.org/serving/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CUDA、CUDNN、Nvidia 驱动程序](https://developer.nvidia.com/cuda-toolkit) | Y | Y |
 | **大数据平台（仅限 Devtest）**|||
 | &nbsp;&nbsp;&nbsp;&nbsp;* 本地独立 [Spark](http://spark.apache.org/) | N | Y |
@@ -137,7 +141,7 @@ ms.lasthandoff: 10/31/2017
 
   或
 
-  * [基于 OpenLogic CentOS 的 DSVM](http://aka.ms/dsvm/centos)
+  * [基于 CentOS 的 DSVM](http://aka.ms/dsvm/centos)
 
   
 * 单击“立即获取”按钮。

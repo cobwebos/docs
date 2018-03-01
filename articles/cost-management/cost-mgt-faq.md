@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/14/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: b3c7c19543d50ed91129a2040bea1db1c4df1ea7
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0d33f434dccae7836ae7774afbdf9b80d4685eb4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure 成本管理常见问题解答
 
@@ -116,9 +116,9 @@ Cloudyn 发现你的 Azure 帐户后，会立即在基于成本的报告中提�
 
 可能有多个使用不同货币的 Azure 帐户。 但在 Cloudyn 中，每个成本报表不显示超过一种货币类型。
 
-如果有多个使用不同货币的订阅，则父实体及其子实体货币会显示 $ 符号。 建议的最佳做法是避免在同一实体层次结构中使用不同的货币。 换而言之，实体结构中组织的所有订阅应使用同一货币。
+如果有多个使用不同货币的订阅，则父实体及其子实体货币会以美元 ($) 显示。 建议的最佳做法是避免在同一实体层次结构中使用不同的货币。 换而言之，实体结构中组织的所有订阅应使用同一货币。
 
-Cloudyn 会自动检测企业协议订阅货币并在报表中正确显示。  但是，Cloudyn 仅对 CSP 和 Web 直通 Azure 帐户显示 $ 符号。
+Cloudyn 会自动检测企业协议订阅货币并在报表中正确显示。  但是，Cloudyn 仅对 CSP 和 Web 直通 Azure 帐户显示美元 ($)。
 
 ## <a name="what-are-cloudyn-data-refresh-timelines"></a>Cloudyn 数据刷新时间线是什么？
 

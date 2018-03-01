@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: eecb20d4a53478471c238018d8fbd5a5f9cb79d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b8a8e0653221af126ea137b1450ce27c29791ae3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-network-monitoring-overview"></a>Azure 网络监视概述
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="network-watcher"></a>网络观察程序
 
-网络观察程序是一个区域性的服务，可用于在网络级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。
+网络观察程序是一个区域性服务，可用于在网络方案级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。
 
 网络观察程序目前提供以下功能：
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 * **[虚拟网络网关和连接故障排除](network-watcher-troubleshoot-manage-rest.md)** - 提供排查虚拟网络网关和连接问题的功能。
 * **[网络订阅限制](#network-subscription-limits)** - 用于查看网络资源用量与限制。
 * **[配置诊断日志](#diagnostic-logs)** – 提供单个窗格来为资源组中的网络资源启用或禁用诊断日志。
-* **[连接性（预览）](network-watcher-connectivity-overview.md)**- 验证是否可以建立从虚拟机到给定终结点的直接 TCP 连接。
+* **[连接故障排除](network-watcher-connectivity-overview.md)** - 验证从虚拟机到给定终结点（已使用 Azure 上下文充实）建立直接 TCP 连接的可能性。
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>网络观察程序中基于角色的访问控制 (RBAC)
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 10/11/2017
 
 针对所有网络资源执行的操作都有相应的审核日志。
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
 指标是在一段时间内收集的性能度量值与计数器。 指标目前适用于应用程序网关。 使用指标可以基于阈值触发警报。 请参阅 [Application Gateway Diagnostics](../application-gateway/application-gateway-diagnostics.md)（应用程序网关诊断），了解如何使用指标创建警报。
 

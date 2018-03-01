@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: c6dba433536e07970ad5ce338e33b5d19f4532b2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 89a8cde0dbb7fe7ccfbb6d068411aaf5488c532f
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>深度学习和人工智能框架
 [数据科学虚拟机](http://aka.ms/dsvm) (DSVM) 和[深度学习 VM](http://aka.ms/dsvm/deeplearning) 支持多个深度学习框架，可帮助生成具有预测分析和认知功能（例如图像和语言理解）的人工智能 (AI) 应用程序。 
@@ -67,7 +67,7 @@ ms.lasthandoff: 01/24/2018
 |    |           |
 | ------------- | ------------- |
 | 它是什么？   | 深度学习框架      |
-| 支持的 DSVM 版本      | Linux     |
+| 支持的 DSVM 版本      | Ubuntu     |
 | 如何在 DSVM 上配置/安装它？  | Caffe 在 `/opt/caffe` 中安装。    |
 | 示例链接      | `/opt/caffe/examples` 中包含示例。      |
 | DSVM 上的相关工具      | Caffe2      |
@@ -87,7 +87,7 @@ jupyter notebook
 |    |           |
 | ------------- | ------------- |
 | 它是什么？   | 深度学习框架      |
-| 支持的 DSVM 版本      | Linux     |
+| 支持的 DSVM 版本      | Ubuntu     |
 | 如何在 DSVM 上配置/安装它？  | Caffe2 在 `/opt/caffe2` 中安装。 它还可用于 Python 2.7 (_root_) conda 环境。     |
 | 示例链接      | 包含 Jupyter 笔记本示例     |
 | DSVM 上的相关工具      | Caffe      |
@@ -114,7 +114,7 @@ jupyter notebook
 |    |           |
 | ------------- | ------------- |
 | 它是什么？   | H2O 深度学习框架      |
-| 支持的 DSVM 版本      | Linux     |
+| 支持的 DSVM 版本      | Ubuntu     |
 | 如何在 DSVM 上配置/安装它？  | Deep Water 在 `/dsvm/tools/deep_water` 中安装。   |
 | 示例链接      | 通过 Deep Water 服务器提供示例。      |
 | DSVM 上的相关工具      | H2O、Sparkling Water      |
@@ -145,7 +145,7 @@ jupyter notebook
 |    |           |
 | ------------- | ------------- |
 | 它是什么？   | 来自 NVIDIA 的深度学习系统，可用于快速训练深度学习模型      |
-| 支持的 DSVM 版本      | Linux     |
+| 支持的 DSVM 版本      | Ubuntu     |
 | 如何在 DSVM 上配置/安装它？  | DIGITS 在 `/dsvm/tools/DIGITS` 中安装，可通过名为 _digits_ 的服务获得。   |
 ### <a name="how-to-use--run-it"></a>如何使用/运行它？  
 
@@ -173,7 +173,7 @@ jupyter notebook
 |    |           |
 | ------------- | ------------- |
 | 它是什么？   | 深度学习框架      |
-| 支持的 DSVM 版本      | Linux     |
+| 支持的 DSVM 版本      | Ubuntu     |
 | 如何在 DSVM 上配置/安装它？  | Theano 在 Python 2.7 (_root_) 以及 Python 3.5 (_py35_) 环境中安装。   |
 | DSVM 上的相关工具      | Keras      |
 | 如何使用/运行它？    | 在终端上，激活所需的 Python 版本（root 或 py35），运行 python，然后导入 theano。 在 Jupyter 中，选择 Python 2.7 或 3.5 内核，然后导入 theano。  |
@@ -185,7 +185,42 @@ jupyter notebook
 |    |           |
 | ------------- | ------------- |
 | 它是什么？   | 深度学习框架      |
-| 支持的 DSVM 版本      | Linux     |
+| 支持的 DSVM 版本      | Ubuntu     |
 | 如何在 DSVM 上配置/安装它？  | Torch 在 `/dsvm/tools/torch` 中安装。 PyTorch 在 Python 2.7 (_root_) 以及 Python 3.5 (_py35_) 环境中安装。   |
 | 示例链接      | Torch 示例位于 `/dsvm/samples/torch`。 PyTorch 示例位于 `/dsvm/samples/pytorch`。      |
 
+
+## <a name="pytorch"></a>PyTorch
+
+|    |           |
+| ------------- | ------------- |
+| 它是什么？   | 深度学习框架      |
+| 支持的 DSVM 版本      | Linux     |
+| 如何在 DSVM 上配置/安装它？  | PyTorch 安装在 Python 3.5 (_py35_) 环境中。   |
+| 示例链接      | 包括了示例 Jupyter Notebook，可以在 /dsvm/samples/pytorch 中找到示例。      |
+| DSVM 上的相关工具      | Torch      |
+
+### <a name="how-to-use--run-it"></a>如何使用/运行它？  
+
+在终端，运行 _python_，然后导入 torch。 在 Jupyter 中，选择 Python 3.5 内核，然后导入 torch。
+
+
+## <a name="mxnet-model-server"></a>MXNet 模型服务器
+
+|    |           |
+| ------------- | ------------- |
+| 它是什么？   | 用于为 MXNet 和 ONNX 模型创建 HTTP 终结点的服务器      |
+| 支持的 DSVM 版本      | Linux     |
+| 如何在 DSVM 上配置/安装它？  | 在终端提供了 _mxnet-model-server_。   |
+| 示例链接      | 在 [MXNet 模型服务器页面](https://github.com/awslabs/mxnet-model-server)上查找最新示例。    |
+| DSVM 上的相关工具      | MXNet      |
+
+## <a name="tensorflow-serving"></a>TensorFlow 服务
+
+|    |           |
+| ------------- | ------------- |
+| 它是什么？   | 在 TensorFlow 模型上运行推断的服务器      |
+| 支持的 DSVM 版本      | Linux     |
+| 如何在 DSVM 上配置/安装它？  | 在终端提供了 _tensorflow_model_server_。   |
+| 示例链接      | 可以[联机](https://www.tensorflow.org/serving/)获取示例。      |
+| DSVM 上的相关工具      | TensorFlow      |

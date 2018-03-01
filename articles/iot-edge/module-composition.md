@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f3bc2f14b182e502c651ff44ef49b88cd34e1f50
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 5de67b6f1ce79934a3a6aab623d2e77a56a8ce76
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>了解如何使用、配置并重复使用 IoT Edge 模块 - 预览版
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/04/2018
 
 在 Azure IoT Edge 教程中，你将通过 Azure IoT Edge 门户中的向导生成部署清单。 此外，也可以使用 REST 或 IoT 中心服务 SDK 以编程方式应用部署清单。 有关 IoT Edge 部署的详细信息，请参阅[部署和监控][lnk-deploy]。
 
-在高级别中，部署清单将会配置在 IoT Edge 设备上部署的 IoT Edge 模块所需的属性。 其中有两个模块始终存在：Edge 代理和 Edge 中心。
+部署清单在较高级别为 IoT Edge 设备上部署的 IoT Edge 模块配置模块孪生的所需属性。 其中有两个模块始终存在：Edge 代理和 Edge 中心。
 
 清单将遵循此结构：
 
@@ -113,6 +113,8 @@ Edge 中心会一直存储消息，直到达到在 Edge 中心所需属性的 `s
 
 如果未在部署清单中指定模块孪生的所需属性，则 IoT 中心将不会以任何方式修改模块孪生，并且你将能够以编程方式设置所需属性。
 
+将使用用来修改设备孪生的相同机制来修改模块孪生。 有关进一步信息，请参阅[设备孪生开发人员指南](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins)。   
+
 ### <a name="deployment-manifest-example"></a>部署清单示例
 
 这是部署清单 JSON 文档的一个示例。
@@ -193,7 +195,7 @@ Edge 代理的模块孪生被称为 `$edgeAgent`，用于协调在设备与 IoT 
 
 ### <a name="edge-agent-twin-desired-properties"></a>Edge 代理孪生所需属性
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必选 |
 | -------- | ----------- | -------- |
 | schemaVersion | 必须为“1.0” | 是 |
 | runtime.type | 必须为“docker” | 是 |
@@ -240,7 +242,7 @@ Edge 代理报告属性包括三个主要信息：
 | configurationHealth.{deploymentId}.health | 如果部署 {deploymentId} 设置的所有模块的运行时状态为 `running` 或 `stopped`，则为 `healthy`，否则为 `unhealthy` |
 | runtime.platform.OS | 报告在设备上运行的 OS |
 | runtime.platform.architecture | 报告设备上的 CPU 体系结构 |
-| systemModules.edgeAgent.runtimeStatus | Edge 代理的报告状态：{"running" \| "unhealthy"} |
+| systemModules.edgeAgent.runtimeStatus | Edge 代理的报告状态： {"running" \| "unhealthy"} |
 | systemModules.edgeAgent.statusDescription | Edge 代理报告状态的文本说明。 |
 | systemModules.edgeHub.runtimeStatus | Edge 中心的当前状态：{ "running" \| "stopped" \| "failed" \| "backoff" \| "unhealthy" } |
 | systemModules.edgeHub.statusDescription | 运行状况不佳的情况下 Edge 中心当前状态的文本说明。 |
@@ -277,7 +279,7 @@ Edge 中心的模块孪生被称为 `$edgeHub`，用于协调设备与 IoT 中�
 | lastDesiredVersion | 此 int 指的是由 Edge 中心处理的所需属性的最后一个版本。 |
 | lastDesiredStatus.code | 此为状态代码，指的是 Edge 中心所看到的最后一个所需属性。 允许的值：`200` 成功、`400` 配置无效、`500` 失败 |
 | lastDesiredStatus.description | 状态的文本说明 |
-| clients.{device or module identity}.status | 此设备或模块的连接状态。 Possible values {"connected" \| "disconnected"}. 仅模块标识可以处于断开连接状态。 仅在连接时才会显示连接到 Edge 中心的下游设备。 |
+| clients.{device or module identity}.status | 此设备或模块的连接状态。 可能值：{"connected" \| "disconnected"}。 仅模块标识可以处于断开连接状态。 仅在连接时才会显示连接到 Edge 中心的下游设备。 |
 | clients.{device or module identity}.lastConnectTime | 设备或模块的上次连接时间 |
 | clients.{device or module identity}.lastDisconnectTime | 设备或模块上次断开连接的时间 |
 

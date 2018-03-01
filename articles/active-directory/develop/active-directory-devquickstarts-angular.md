@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d46f04a3e9fdb1beaf11c769ecdd7b807c5f817f
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 51734f5b39e9ca8af65048f2a7efd5c61cd53204
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-angularjs-getting-started"></a>Azure AD AngularJS 入门
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 12/20/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 如果登录到多个目录，可能需要确保正在查看正确目录。 若要执行此操作，在顶部栏上，单击你的帐户。 在“目录”列表下选择要注册应用程序的 Azure AD 租户。
-3. 在左窗格中，单击“更多服务”，并选择“Azure Active Directory”。
+3. 在左窗格中，单击“所有服务”，并选择“Azure Active Directory”。
 4. 单击“应用注册”，并选择“添加”。
 5. 根据提示创建一个新的 Web 应用程序和/或 Web API：
   * **名称**向用户描述应用程序。

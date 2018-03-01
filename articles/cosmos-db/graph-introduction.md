@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 14921dbeb0b670e4ec29a224caca07da12bfb82b
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: ba58377614326a10405be4a64d4b39f116b75bfe
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Azure Cosmos DB 简介：图形 API
 
@@ -107,22 +107,14 @@ Azure Cosmos DB 还可以在相同的容器/数据库中使用多个模型（例
 
 下表显示可以对 Azure Cosmos DB 使用的常用 Gremlin 驱动程序：
 
-| 下载 | 文档 |
-| --- | --- |
-| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) |[Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) |
-| [Node.js](https://www.npmjs.com/package/gremlin) |[Github 上的 Gremlin-JavaScript](https://github.com/jbmusso/gremlin-javascript) |
-| [Gremlin 控制台](https://tinkerpop.apache.org/downloads.html) |[TinkerPop 文档](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |
-
-Azure Cosmos DB 还通过 NuGet 提供基于 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 的、包含 Gremlin 扩展方法的 .NET 库。 此库提供一个可用于直接连接到数据分区的“进程内”Gremlin 服务器。
-
-| 下载 | 文档 |
-| --- | --- |
-| [.NET](https://www.nuget.org/packages/Microsoft.Azure.Graphs/) |[Microsoft.Azure.Graphs](https://msdn.microsoft.com/library/azure/dn948556.aspx) |
-
-使用 [Azure Cosmos DB 仿真器](local-emulator.md)可以通过上述 .NET 图形 API 在本地进行开发和测试，无需创建 Azure 订阅，也不会产生任何费用。 如果对应用程序在模拟器中的工作情况感到满意，则可以切换到在云中使用 Azure Cosmos DB 帐户。
-
-> [!NOTE]
-> 只能通过 .NET 图形 API 获取对 [Azure Cosmos DB 仿真器](local-emulator.md)的 Gremlin 查询的支持。
+| 下载 | 文档 | 入门 |
+| --- | --- | --- |
+| [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [GitHub 上的 Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [使用 .NET 创建图形](create-graph-dotnet.md) |
+| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) | [使用 Java 创建图形](create-graph-java.md) |
+| [Node.js](https://www.npmjs.com/package/gremlin) | [Github 上的 Gremlin-JavaScript](https://github.com/jbmusso/gremlin-javascript) | [使用 Node.js 创建图形](create-graph-nodejs.md) |
+| [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Github 上的 Gremlin-Python](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [使用 Python 创建图形](create-graph-python.md) |
+| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [GitHub 上的 Gremlin-PHP](https://github.com/PommeVerte/gremlin-php) | [使用 PHP 创建图形](create-graph-php.md) |
+| [Gremlin 控制台](https://tinkerpop.apache.org/downloads.html) | [TinkerPop 文档](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [使用 Gremlin 控制台创建图形](create-graph-gremlin-console.md) |
 
 ## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Azure Cosmos DB 图形支持的使用场合
 下面是可以使用 Azure Cosmos DB 图形支持的一些场合：

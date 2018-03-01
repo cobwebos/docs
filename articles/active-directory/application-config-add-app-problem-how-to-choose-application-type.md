@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 57dddcc9114aeec1337b5b5ad8cfda3004fb0a76
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e4a5ee41349a97493636327e3bda25cbd507867c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>添加应用程序时如何选择要使用的应用程序类型
 
@@ -39,9 +39,9 @@ Azure AD 支持使用“企业应用程序”下的“添加”功能添加的�
 
 -   **非库应用程序** - 引入自己的应用程序！ 任何所需的 Web 链接或任何呈现“用户名”和“密码”字段的应用程序，都支持 SAML 或 OpenID Connect 协议，或支持为实现单一登录而预集成到 Azure AD 的 SCIM。
 
-## <a name="features-and-capabilities-supported-by-all-the-above-application-types"></a>上述所有应用程序类型支持的功能
+## <a name="features-and-capabilities-supported-by-all-the-preceding-application-types"></a>上述所有应用程序类型都支持的特性和功能
 
-Azure AD 中的上述 4 种应用程序类型均支持以下功能：
+Azure AD 中的上述四种应用程序类型都支持以下功能：
 
 -   **快速入门** - 通过遵循[简单的部署步骤](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started)快速开始使用应用程序
 
@@ -61,13 +61,13 @@ Azure AD 中的上述 4 种应用程序类型均支持以下功能：
 
 ## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>特定应用程序类型支持的单一登录和预配模式
 
-下表介绍以上每种应用程序类型支持的单一登录和预配模式。 可使用此表帮助了解为支持特定目标而需添加的应用程序。
+下表介绍了以上每种应用程序类型支持的单一登录和预配模式。 可使用此表帮助了解为支持特定目标而需添加的应用程序。
 
   ![应用类型表](./media/application-tables/table1.png)
 
 ## <a name="how-to-choose-a-single-sign-on-mode"></a>如何选择单一登录模式
 
-下面列出了 Azure AD 应用程序支持的**单一登录**模式。
+下面是 Azure AD 应用程序支持的**单一登录**模式。
 
 -   **禁用 Azure AD 单一登录** - 如果尚未准备好将此应用程序与使用 Azure AD 的单一登录集成，或只是要进行测试，则选择禁用 Azure AD 单一登录**单一登录模式**
 
@@ -98,7 +98,7 @@ Azure AD 中的上述 4 种应用程序类型均支持以下功能：
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>适用于以自定义方式开发的应用程序的单一登录模式
 
-通过[以自定义方式开发的应用程序](#_Custom-Developed_Applications)的开发过程，以自定义方式开发的应用程序，还支持其他上面未列出的单一登录模式。 其中包括：
+通过[以自定义方式开发的应用程序](#_Custom-Developed_Applications)中的过程以自定义方式开发的应用程序还支持前面未列出的其他单一登录模式，这包括：
 
 -   基于 [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) 的登录
 
@@ -114,9 +114,9 @@ Azure AD 中的上述 4 种应用程序类型均支持以下功能：
 
 若要设置应用程序的“单一登录”模式，请按照以下说明进行操作：
 
-1.  打开[“Azure 门户”](https://portal.azure.com/)，以“全局管理员”或“共同管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -124,7 +124,7 @@ Azure AD 中的上述 4 种应用程序类型均支持以下功能：
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6.  选择要为其配置单一登录的应用程序。
 
@@ -154,9 +154,9 @@ Azure AD 中的上述 4 种应用程序类型均支持以下功能：
 
 若要设置应用程序的“单一登录”模式，请按照以下说明进行操作：
 
-1.  打开[“Azure 门户”](https://portal.azure.com/)，以“全局管理员”或“共同管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -164,7 +164,7 @@ Azure AD 中的上述 4 种应用程序类型均支持以下功能：
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6.  选择要为其配置预配的应用程序。
 

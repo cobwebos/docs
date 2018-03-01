@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: genemi
-ms.openlocfilehash: 5342b5290fab9826a2b38cd7ada63a6736c77601
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: cbe8a04abbf2dada7cc43e57e823c3a41bf83fe7
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-and-explore-a-multi-tenant-saas-application-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>部署和探索多租户 SaaS 应用程序，该应用程序通过“每个租户各有数据库”模式使用 Azure SQL 数据库
 
@@ -50,18 +50,21 @@ ms.lasthandoff: 12/08/2017
 
 ## <a name="deploy-the-wingtip-tickets-saas-application"></a>部署 Wingtip Tickets SaaS 应用程序
 
-部署应用：
+#### <a name="plan-the-names"></a>对名称进行计划
 
-1. 选择并记住以下参数所需的值：
+通过执行本部分中的步骤，提供用户值，用于确保资源名称为全局唯一，以及一个资源组的名称，该资源组包含部署应用时创建的所有资源。 如果一个人名叫 Ann Finley，则建议输入以下名称：
+- 用户：af1（首字母缩写加数字。如果是第二次部署应用，则使用不同的值，例如 af2。）
+- 资源组：wingtip-dpt-af1（wingtip-dpt 指示这是“每租户一个数据库”应用*。追加用户名 af1 会将资源组名称与它包含的资源的名称相关联。）*
 
-    - **User**：选择较短的值，如姓名首字母后跟一个数字。 例如，af1。 User 参数只能包含字母、数字和连字符（不能有空格）。 第一个和最后一个字符必须是字母或数字。 建议所有字母采用小写。
-    - **Resource group**：每次部署 Wingtip 应用程序时，必须为新的资源组选择不同的唯一名称。 建议将用户名追加到资源组基名称后面。 一个资源组名称例子是 wingtip-af1。 同样建议所有字母采用小写。
+现在请选择自己的名称，并将其写下来。 
 
-2. 通过单击蓝色“部署到 Azure”按钮，在 Azure 门户中打开 Wingtip Tickets SaaS 租户各有数据库部署模板。
+#### <a name="steps"></a>Steps
+
+1. 通过单击蓝色“部署到 Azure”按钮，在 Azure 门户中打开 Wingtip Tickets SaaS 租户各有数据库部署模板。
 
    <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-3. 在模板中，输入必需参数的值：
+1. 在模板中，输入必需参数的值：
 
     > [!IMPORTANT]
     > 出于演示目的，某些身份验证和服务器防火墙已有意取消保护。 建议新建资源组。 不要使用现有资源组、服务器或池。 不要将此应用程序、脚本或部署的任何资源用于生产。 使用完该应用程序时请删除此资源组，以停止相关计费。
@@ -70,12 +73,12 @@ ms.lasthandoff: 12/08/2017
     - 位置 - 从下拉列表中选择一个“位置”。
     - **User** - 使用之前所选的用户名值。
 
-4. 部署应用程序。
+1. 部署应用程序。
 
     - 单击“我同意上述条款和条件”。
     - 单击“购买”。
 
-5. 通过单击“通知”（搜索框右侧的钟形图标）监视部署状态。 部署 Wingtip Tickets SaaS 应用大约需要 5 分钟。
+1. 通过单击“通知”（搜索框右侧的钟形图标）监视部署状态。 部署 Wingtip Tickets SaaS 应用大约需要 5 分钟。
 
    ![部署成功](media/saas-dbpertenant-get-started-deploy/succeeded.png)
 
@@ -91,16 +94,16 @@ ms.lasthandoff: 12/08/2017
 3. 单击“下载 ZIP”，然后保存文件。
 4. 右键单击“WingtipTicketsSaaS-DbPerTenant-master.zip”文件，然后选择“属性”。
 5. 在“常规”选项卡上，选择“取消阻止”，然后单击“应用”。
-6. 单击 **“确定”**。
+6. 单击“确定”。
 7. 解压缩文件。
 
 脚本位于 *..\\WingtipTicketsSaaS-DbPerTenant-master\\Learning Modules* 文件夹中。
 
 ## <a name="update-the-user-configuration-file-for-this-deployment"></a>更新此部署的用户配置文件
 
-运行任何脚本之前，在 UserConfig.psm1 中更新“资源组”和“用户”值。 将这些变量设置为部署期间使用的值。
+运行任何脚本之前，在 UserConfig 文件中更新“资源组”和“用户”值。 将这些变量设置为部署期间使用的值。
 
-1. 在 PowerShell ISE 中，打开 ...\\Learning Modules\\*UserConfig.psm1* 
+1. 在 PowerShell ISE 中，打开 ...\\Learning Modules\\**UserConfig.psm1** 
 2. 使用部署（仅限 10 和 11 行）的特定值，更新 ResourceGroupName 和 Name。
 3. 保存更改！
 
@@ -114,37 +117,37 @@ ms.lasthandoff: 12/08/2017
 
 中间的“事件中心”页提供你的部署中租户的链接列表。
 
-1. 在 Web 浏览器中打开“事件中心”：http://events.wingtip-dpt.&lt;USER&gt;.trafficmanager.net（&lt;&gt;USER 替换为部署的用户值）：
+1. 在 Web 浏览器中打开“事件中心”：http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net（&lt;&gt;user 替换为部署的用户值）：
 
     ![事件中心](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
 2. 单击“活动中心”中的“Fabrikam 爵士乐俱乐部”。
 
-    ![事件](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
+    ![活动](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 #### <a name="azure-traffic-manager"></a>Azure 流量管理器
 
-Wingtip 应用程序使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)控制传入请求的分配。 用于访问租户事件中心的 URL 必须采用以下格式：
+Wingtip 应用程序使用 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)控制传入请求的分配。 特定租户的事件页的 URL 使用以下格式：
 
-- http://events.wingtip-dpt.&lt;USER&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
 
 下表中对前述格式的各部分进行了说明。
 
-| URL 部分 | 说明 |
-| :------- | :---------- |
-| http://events.wingtip-dpt | Wingtip 应用的事件部分。<br /><br />“-dpt”部分将 Wingtip 的“每租户数据库”实现方式与其他略有不同的实现方式区分开来。 例如，其他文档文章提供用于 Standalong (-sa) 或多租户数据库的 Wingtip。 |
-| .&lt;USER&gt; | 示例中的 af1。 |
+| URL 部分        | 说明       |
+| :-------------- | :---------------- |
+| http://events.wingtip-dpt | Wingtip 应用的事件部分。<br /><br /> “-dpt”部分将 Wingtip Tickets 的“每租户数据库”实现方式与其他实现方式区分开来。 例如，独立的“每租户应用”(-sa)实现方式 ，或多租户数据库 (-mt) 实现方式。 |
+| .*&lt;user&gt;* | 示例中的 af1。 |
 | .trafficmanager.net/ | Azure 流量管理器、基 URL。 |
-| fabrikamjazzclub | 针对名为“Fabrikam 爵士俱乐部”的租户。 |
+| fabrikamjazzclub | 标识名为“Fabrikam 爵士俱乐部”的租户。 |
 | &nbsp; | &nbsp; |
 
 1. 租户名称是由事件应用通过该 URL 分析得到的。
 2. 租户名称用于创建密钥。
 3. 密钥用于访问目录，以获取租户数据库的位置。
     - 目录是通过使用分片映射管理实现的。
-4. 事件中心使用目录中扩展的元数据获取事件 URL 的列表。
+4. 事件中心在目录中使用扩展元数据为每个租户构造事件页 URL 的列表。
 
-在生产环境中，通常要创建一条 CNAME DNS 记录，[将公司 Internet 域指向](../traffic-manager/traffic-manager-point-internet-domain.md)流量管理器配置文件。
+在生产环境中，通常要创建一条 CNAME DNS 记录，[将公司 Internet 域指向](../traffic-manager/traffic-manager-point-internet-domain.md)流量管理器 DNS 名称。
 
 ## <a name="start-generating-load-on-the-tenant-databases"></a>开始在租户数据库上生成负载
 
@@ -156,30 +159,18 @@ Demo-LoadGenerator PowerShell 脚本将启动用于针对所有租户数据库�
 负载模式需要几分钟的时间才会显现出来。 因此，最好让生成器先运行至少 3 或 4 分钟，然后再进行负载监测。
 
 1. 在 PowerShell ISE 中打开 ...\\Learning Modules\\Utilities\\Demo-LoadGenerator.ps1 脚本。
-2. 按 F5 运行脚本并启动负载生成器。 （暂时保留默认参数值。）
+1. 按 F5 运行脚本并启动负载生成器。 （暂时保留默认参数值。）
+1. 系统将提示登录 Azure 帐户，且如有必要，还需选择要使用的订阅。
 
-请勿重复使用相同的 PowerShell ISE 实例，除重新运行 Demo-LoadGenerator.ps1 的情况外。 如需运行其他 PowerShell 脚本，请启动单独的 PowerShell ISE。
-
-#### <a name="rerun-with-different-parameters"></a>使用不同的参数重新运行
-
-如果要使用不同的参数重新运行工作负载测试，请执行下列步骤：
-
-1. 停止 LoadGenerator.ps1。
-    - 使用 Ctrl+C，或单击“停止”按钮。
-    - 此停止操作不会停止或影响任何仍处于运行状态的未完成的后台作业。
-
-2. 重新运行 Demo-LoadGenerator.ps1。
-    - 此重新运行操作会首先停止任何可能仍在运行 sp_CpuLoadGenerator 的后台作业。
-
-或者可以终止 PowerShell ISE 实例，此操作会停止任何后台作业。 然后启动 PowerShell ISE 的新实例，并重新运行 Demo-LoadGenerator.ps1。
+负载生成器脚本为目录中的每个数据库启动一个后台作业，然后停止该作业。  如果重新运行该负载生成器脚本，它会先停止任何正在运行的后台作业，然后再启动新的作业。
 
 #### <a name="monitor-the-background-jobs"></a>监视后台作业
 
 如果要控制和监视后台作业，可使用以下 cmdlet：
 
-- Get-Job
-- Receive-Job
-- Stop-Job
+- `Get-Job`
+- `Receive-Job`
+- `Stop-Job`
 
 #### <a name="demo-loadgeneratorps1-actions"></a>Demo-LoadGenerator.ps1 操作
 
@@ -188,17 +179,19 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载。 以下步骤�
 1. Demo-LoadGenerator.ps1 在前台启动 LoadGenerator.ps1。
     - 这两个 .ps1 文件均存储在“学习模块\\实用工具\\”文件夹下。
 
-2. LoadGenerator.ps1 循环访问目录中注册的所有租户数据库。
+1. LoadGenerator.ps1 循环访问目录中的所有租户数据库。
 
-3. 对于每个租户数据库，LoadGenerator.ps1 会启动对名为 sp_CpuLoadGenerator 的 Transact-SQL 存储过程的执行。
-    - 该执行过程是通过调用 Invoke-SqlAzureWithRetry cmdlet 在后台启动的。
-    - sp_CpuLoadGenerator 会循环执行 SQL SELECT 语句，默认循环时间为 60 秒。 SELECT 问题之间的时间间隔会根据参数值而有所不同。
+1. LoadGenerator.ps1 为每个租户数据库启动一个后台 PowerShell 作业： 
+    - 后台作业默认运行 120 分钟。
+    - 每个作业通过执行 sp_CpuLoadGenerator，在一个租户数据库上引发一个基于 CPU 的负载。  负载的强度和持续时间会有所不同，具体取决于 `$DemoScenario`。 
+    - *sp_CpuLoadGenerator* 循环访问 SQL SELECT 语句，该语句引发高 CPU 负载。 SELECT 问题之间的时间间隔会根据参数值而有所不同，以此创建可控的 CPU 负载。 负载级别和间隔是随机的，旨在更加真实地模拟负载。
     - 此 .sql 文件存储在 WingtipTenantDB\\dbo\\StoredProcedures\\ 下。
 
-4. 对于每个租户数据库，LoadGenerator.ps1 还会启动 Start-Job cmdlet。
-    - Start-Job 会模拟票证销售的工作负载。
+1. 如果为 `$OneTime = $false`，负载生成器启动后台作业，然后继续运行，每隔 10 秒监视一次是否预配了任何新租户。 如果设置 `$OneTime = $true`，负载生成器将启动后台作业，然后停止在前台运行。 在本教程中，保留为 `$OneTime = $false`。
 
-5. LoadGenerator.ps1 会继续运行，并监视是否存在任何预配的新租户。
+  如果要停止或重启负载生成器，可使用 Ctrl+C 或停止操作 Ctrl-Break。 
+
+  如果要让负载生成器在前台继续运行，可使用另一个 PowerShell ISE 实例来运行其他 PowerShell 脚本。
 
 &nbsp;
 
@@ -208,7 +201,8 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载。 以下步骤�
 
 初始部署会创建三个示例租户。 现在，请创建另一个租户，看看这对已部署的应用程序的影响。 在 Wingtip 应用中，用于预配新租户的工作流在[预配和目录教程](saas-dbpertenant-provision-and-catalog.md)中进行了说明。 在此阶段，要创建新的租户，此过程不超过 1 分钟。
 
-1. 在 PowerShell ISE 中打开 ...\\Learning Modules\Provision and Catalog\\*Demo-ProvisionAndCatalog.ps1*。
+1. 新打开一个 PowerShell ISE。
+1. 打开 ...\\Learning Modules\Provision and Catalog\\Demo-ProvisionAndCatalog.ps1。
 2. 按 **F5** 运行脚本。 （暂时保留默认值。）
 
    > [!NOTE]
@@ -249,18 +243,18 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载。 以下步骤�
 
 LoadGenerator.ps1 运行几分钟后，可提供足够的数据，用于开始查看某些监视功能。 这些功能内置于池和数据库中。
 
-浏览到服务器 tenants1-dpt-&lt;USER&gt;，并单击“Pool1”查看池的资源利用率。 在以下图表中，负载生成器已运行一个小时。
+浏览到服务器 tenants1-dpt-&lt;user&gt;，并单击“Pool1”查看池的资源利用率。 在以下图表中，负载生成器已运行一个小时。
 
    ![监视池](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
 - 第一个图表标记为“资源利用率”，显示池 eDTU 利用率。
-- 第二个图表显示池中前五个数据库的 eDTU 利用率。
+- 第二个图表显示池中最活跃的前五个数据库的 eDTU 利用率。
 
-这两个图表说明了弹性池和 SQL 数据库非常适合用于 SaaS 应用程序工作负载。
+这两个图表说明了弹性池和 SQL 数据库非常适合用于不可预测的 SaaS 应用程序工作负载。
 这些图表显示 4 个数据库中的每个数据库都激增到高达 40 eDTU，但所有数据库均可由一个 50 eDTU 池轻松提供支持。 50 eDTU 池甚至还可支持更大的工作负载。
 如果将它们预配为独立数据库，则每一个都需要为 S2 (50 DTU) 级以支持突发情况。
 4 个独立 S2 数据库的成本几乎是池价格的 3 倍。
-在实际情况下，SQL 数据库客户当前在 200 eDTU 的池中最多可运行 500 个数据库。
+在实际情况下，SQL 数据库客户在 200 eDTU 的池中最多可运行 500 个数据库。
 有关详细信息，请参阅[性能监视教程](saas-dbpertenant-performance-monitoring.md)。
 
 ## <a name="additional-resources"></a>其他资源

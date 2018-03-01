@@ -23,28 +23,28 @@
 
 ## <a name="before-you-start"></a>开始之前
 
-在为设备编写任何代码之前，必须先预配远程监视预配置解决方案，并在该解决方案中预配新的自定义设备。
+在为设备编写任何代码之前，部署远程监视预配置解决方案，并向该解决方案添加一个新的物理设备。
 
-### <a name="provision-your-remote-monitoring-preconfigured-solution"></a>预配远程监视预配置解决方案
+### <a name="deploy-your-remote-monitoring-preconfigured-solution"></a>部署远程监视预配置解决方案
 
 本教程中创建的**冷却器**设备会将数据发送到[远程监视](../articles/iot-suite/iot-suite-remote-monitoring-explore.md)预配置解决方案的实例中。 如果尚未在 Azure 帐户中预配远程监视预配置解决方案，请参阅[部署远程监视预配置解决方案](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md)
 
-远程监视解决方案的预配过程完成之后，请单击“启动”，在浏览器中打开解决方案仪表板。
+当远程监视解决方案的部署过程完成后，单击“启动”，以在浏览器中打开解决方案仪表板。
 
 ![解决方案仪表板](media/iot-suite-selector-connecting/dashboard.png)
 
-### <a name="provision-your-device-in-the-remote-monitoring-solution"></a>在远程监视方案中预配设备
+### <a name="add-your-device-to-the-remote-monitoring-solution"></a>将设备添加到远程监视解决方案
 
 > [!NOTE]
-> 如果已在解决方案中预配了设备，则可以跳过此步骤。 创建客户端应用程序时需要设备连接字符串（可以从 Azure 门户中检索）。
+> 如果已在解决方案中添加了设备，则可以跳过此步骤。 不过，下一步骤需要设备连接字符串。 可以从 [Azure 门户](https://portal.azure.com)或使用 [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) CLI 工具检索设备的连接字符串。
 
-对于连接到预配置解决方案的设备，该设备必须使用有效的凭据将自身标识到 IoT 中心。 将设备添加到解决方案时，有机会保存包含凭据的设备连接字符串。 在本教程中，稍后会在客户端应用程序中添加设备连接字符串。
+对于连接到预配置解决方案的设备，该设备必须使用有效的凭据将自身标识到 IoT 中心。 将设备添加到解决方案时，有机会保存包含这些凭据的设备连接字符串。 在本教程中，稍后会在客户端应用程序中添加设备连接字符串。
 
 若要在远程监视解决方案中添加设备，请在解决方案中的“设备”页上完成以下步骤：
 
 1. 选择“+ 新建设备”，并选择“物理”作为**设备类型**：
 
-    ![预配物理设备](media/iot-suite-selector-connecting/devicesprovision.png)
+    ![添加物理设备](media/iot-suite-selector-connecting/devicesprovision.png)
 
 1. 输入 **Physical-chiller** 作为设备 ID。 选择“对称密钥”和“自动生成密钥”选项：
 
@@ -54,9 +54,7 @@
 
     ![检索凭据](media/iot-suite-selector-connecting/credentials.png)
 
-若要找到设备在连接到预配置解决方案时必须使用的凭据，请在浏览器中导航到 Azure 门户。 登录到订阅。
-
-现已在远程监视预配置解决方案中预配了一个物理设备。 在以下部分中，我们将会实现使用设备凭据连接到解决方案的客户端应用程序。
+现在，你已向远程监视预配置解决方案添加了物理设备，并记下了其设备连接字符串。 在以下各部分中，你将实现使用设备连接字符串连接到解决方案的客户端应用程序。
 
 客户端应用程序实现内置的**冷却器**设备模型。 预配置解决方案设备模型指定有关设备的以下信息：
 

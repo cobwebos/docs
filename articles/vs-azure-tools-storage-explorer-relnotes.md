@@ -14,25 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: fb47ceb63d45a3e896d55d8c304562cc667d0414
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: d23ddfb881695b2310d379a9112e6ab8305c0cce
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure 存储资源管理器（预览版）发行说明
 
-本文包含 Azure 存储资源管理器 0.9.4（预览版）及先前版本的发行说明。
+本文包含 Azure 存储资源管理器 0.9.5（预览版）及先前版本的发行说明。
 
 [Microsoft Azure 存储资源管理器（预览版）](./vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。
+
+## <a name="version-095"></a>版本 0.9.5
+2018/02/06
+
+### <a name="download-azure-storage-explorer-095-preview"></a>下载 Azure 存储资源管理器 0.9.5（预览版）
+- [适用于 Windows 的 Azure 存储资源管理器 0.9.5（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 0.9.5（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 0.9.5（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>新建
+
+* 对文件共享快照的支持：
+    * 创建和管理文件共享快照。
+    * 浏览时在文件共享快照之间轻松切换视图。
+    * 还原文件的先前版本。
+* 预览对 Azure Data Lake Store 的支持：
+    * 跨多个帐户连接到 ADLS 资源。
+    * 使用 ADL URI 连接到资源并共享 ADLS。
+    * 按递归方式执行基本文件/文件夹操作。
+    * 将单个文件夹固定到“快速访问”中。
+    * 显示文件夹统计信息。
+
+### <a name="fixes"></a>修复项
+* 启动性能得到改进。
+* 修复了多个 Bug。
+
+### <a name="known-issues"></a>已知问题
+* 存储资源管理器不支持 ADFS 帐户。
+* 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
+* 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是此处介绍的“取消筛选”解决办法。
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
+* 帐户设置面板可能显示需重新输入凭据以筛选订阅。
+* 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
+* 尽管 Azure Stack 当前不支持文件共享，但附加 Azure Stack 存储帐户下仍会显示“文件共享”节点。
+* 存储资源管理器使用的 Electron shell 在进行某项 GPU（图形处理单元）硬件加速时出现问题。 如果存储资源管理器显示了一个空白（空的）主窗口，则可以尝试从命令行启动存储资源管理器，并通过添加 `--disable-gpu` 开关禁用 GPU 加速。
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* 对于 Ubuntu 14.04 用户，需确保 GCC 是最新版本 - 为此，可运行以下命令并重启计算机：
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* 对于 Ubuntu 17.04 用户，需要安装 GConf - 通过运行以下命令，然后重启计算机即可完成：
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-094--093"></a>版本 0.9.4 / 0.9.3
 2018 年 1 月 21 日
 
 ### <a name="download-azure-storage-explorer-094-preview"></a>下载 Azure 存储资源管理器 0.9.4（预览版）
-- [适用于 Windows 的 Azure 存储资源管理器 0.9.4（预览版）](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [适用于 Mac 的 Azure 存储资源管理器 0.9.4（预览版）](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 Azure 存储资源管理器 0.9.4（预览版）](https://go.microsoft.com/fwlink/?LinkId=722418)
+* [下载适用于 Windows 的 Azure 存储资源管理器 0.9.4（预览版）](https://go.microsoft.com/fwlink/?LinkId=809306)
+* [下载适用于 Mac 的 Azure 存储资源管理器 0.9.4（预览版）](https://go.microsoft.com/fwlink/?LinkId=809307)
+* [下载适用于 Linux 的 Azure 存储资源管理器 0.9.4（预览版）](https://go.microsoft.com/fwlink/?LinkId=809308)
 
 ### <a name="new"></a>新建
 * 在以下情况下，将重新使用现有的存储资源管理器窗口：
@@ -76,15 +130,30 @@ ms.lasthandoff: 01/23/2018
     sudo apt-get install libgconf-2-4
     ```
 
+## <a name="previous-releases"></a>以前的版本
+
+* [版本 0.9.2](#version-092)
+* [版本 0.9.1/0.9.0](#version-091)
+* [版本 0.8.16](#version-0816)
+* [版本 0.8.14](#version-0814)
+* [版本 0.8.13](#version-0813)
+* [版本 0.8.12/0.8.11/0.8.10](#version-0812--0811--0810)
+* [版本 0.8.9/0.8.8](#version-089--088)
+* [版本 0.8.7](#version-087)
+* [版本 0.8.6](#version-086)
+* [版本 0.8.5](#version-085)
+* [版本 0.8.4](#version-084)
+* [版本 0.8.3](#version-083)
+* [版本 0.8.2](#version-082)
+* [版本 0.8.0](#version-080)
+* [版本 0.7.20160509.0](#version-07201605090)
+* [版本 0.7.20160325.0](#version-07201603250)
+* [版本 0.7.20160129.1](#version-07201601291)
+* [版本 0.7.20160105.0](#version-07201601050)
+* [版本 0.7.20151116.0](#version-07201511160)
+
 ## <a name="version-092"></a>版本 0.9.2
 2017/11/01
-
-### <a name="download-azure-storage-explorer-092-preview"></a>下载 Azure 存储资源管理器 0.9.2（预览版）
-* [下载适用于 Windows 的 Azure 存储资源管理器 0.9.2（预览版）](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [下载适用于 Mac 的 Azure 存储资源管理器 0.9.2（预览版）](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [下载适用于 Linux 的 Azure 存储资源管理器 0.9.2（预览版）](https://go.microsoft.com/fwlink/?LinkId=809308)
-
-
 
 ### <a name="hotfixes"></a>修补程序
 * 根据本地时区编辑表实体的 Edm.DateTime 值时，可能发生意外的数据更改。 编辑器现使用纯文本文本框，以便始终如一地精确控制 Edm.DateTime 值。
@@ -144,32 +213,6 @@ ms.lasthandoff: 01/23/2018
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-
-
-
-
-
-## <a name="previous-releases"></a>以前的版本
-
-* [版本 0.9.1/0.9.0](#version-091)
-* [版本 0.8.16](#version-0816)
-* [版本 0.8.14](#version-0814)
-* [版本 0.8.13](#version-0813)
-* [版本 0.8.12/0.8.11/0.8.10](#version-0812--0811--0810)
-* [版本 0.8.9/0.8.8](#version-089--088)
-* [版本 0.8.7](#version-087)
-* [版本 0.8.6](#version-086)
-* [版本 0.8.5](#version-085)
-* [版本 0.8.4](#version-084)
-* [版本 0.8.3](#version-083)
-* [版本 0.8.2](#version-082)
-* [版本 0.8.0](#version-080)
-* [版本 0.7.20160509.0](#version-07201605090)
-* [版本 0.7.20160325.0](#version-07201603250)
-* [版本 0.7.20160129.1](#version-07201601291)
-* [版本 0.7.20160105.0](#version-07201601050)
-* [版本 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-091--090-preview"></a>版本 0.9.1 / 0.9.0（预览版）
 10/20/2017

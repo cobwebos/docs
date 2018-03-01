@@ -1,30 +1,12 @@
----
-title: "SQL 错误代码 - 数据库连接错误 | Microsoft 文档"
-description: "了解有关 SQL 数据库客户端应用程序的 SQL 错误代码，例如常见的数据库连接错误、数据库复制问题和常规错误。 "
-keywords: "SQL 错误代码, 访问 SQL, 数据库连接错误, SQL 错误代码"
-services: sql-database
-documentationcenter: 
-author: stevestein
-manager: jhubbard
-editor: 
-ms.assetid: 2a23e4ca-ea93-4990-855a-1f9f05548202
-ms.service: sql-database
-ms.custom: develop apps
-ms.workload: Active
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 09/28/2017
-ms.author: sstein
-ms.openlocfilehash: 34e7142b5ca13ad8de5a4dbd380377abdf055c04
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ ---
+title: SQL 错误代码 - 数据库连接错误 | Microsoft Docs description: '了解有关 SQL 数据库客户端应用程序的 SQL 错误代码，例如常见的数据库连接错误、数据库复制问题和常规错误。 ' keywords: sql 错误代码,访问 sql,数据库连接错误,sql 错误代码 services: sql-database documentationcenter: '' author: stevestein manager: jhubbard editor: ''
+
+ms.assetid: 2a23e4ca-ea93-4990-855a-1f9f05548202 ms.service: sql-database ms.custom: develop apps ms.workload: "Active" ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 09/28/2017 ms.author: sstein
+
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题
 
-本文列出了 SQL 数据库客户端应用程序的 SQL 错误代码，包括数据库连接错误、暂时性错误（也称为暂时性故障）、资源调控错误、数据库复制问题、弹性池和其他错误。 大多数类别特定于 Azure SQL 数据库，并不适用于 Microsoft SQL Server。
+本文列出了 SQL 数据库客户端应用程序的 SQL 错误代码，包括数据库连接错误、暂时性错误（也称为暂时性故障）、资源调控错误、数据库复制问题、弹性池和其他错误。 大多数类别特定于 Azure SQL 数据库，并不适用于 Microsoft SQL Server。 另请参阅[系统错误消息](https://technet.microsoft.com/en-us/library/cc645603(v=sql.105).aspx)。
 
 ## <a name="database-connection-errors-transient-errors-and-other-temporary-errors"></a>数据库连接错误、暂时性错误和其他临时错误
 下表涵盖了应用程序尝试访问 SQL 数据库时，可能遇到的连接丢失错误和其他暂时性错误的 SQL 错误代码。 有关如何连接到 Azure SQL 数据库的入门教程，请参阅[连接到 Azure SQL 数据库](sql-database-libraries.md)。
@@ -52,7 +34,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 ### <a name="transient-fault-error-codes"></a>暂时性故障错误代码
 以下错误为暂时性错误，并且应在应用程序逻辑中重试： 
 
-| 错误代码 | 严重性 | 说明 |
+| 错误代码 | Severity | 说明 |
 | ---:| ---:|:--- |
 | 4060 |16 |无法打开该登录请求的数据库“%.&#x2a;ls”。 登录失败。 |
 | 40197 |17 |该服务在处理请求时遇到错误。 请重试。 错误代码 %d。<br/><br/>当服务由于软件或硬件升级、硬件故障或任何其他故障转移问题而关闭时，将收到此错误。 错误 40197 的消息中嵌入的错误代码 (%d) 提供有关所发生的故障或故障转移类型的其他信息。 错误 40197 的消息中嵌入的错误代码的一些示例有 40020、40143、40166 和 40540。<br/><br/>重新连接到 SQL 数据库服务器会将你自动连接到数据库的正常运行副本。 应用程序必须捕获错误 40197、记录该消息中嵌入的错误代码 (%d) 以供进行故障排除，并尝试重新连接到 SQL 数据库，直到资源可用且再次建立连接为止。 |
@@ -66,7 +48,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 ## <a name="database-copy-errors"></a>数据库复制错误
 在 Azure SQL 数据库中复制数据库时，可能会发生以下错误。 有关详细信息，请参阅[复制 Azure SQL 数据库](sql-database-copy.md)。
 
-| 错误代码 | 严重性 | 说明 |
+| 错误代码 | Severity | 说明 |
 | ---:| ---:|:--- |
 | 40635 |16 |IP 地址为“%.&#x2a;ls”的客户端已暂时禁用。 |
 | 40637 |16 |创建数据库副本当前处于禁用状态。 |
@@ -94,7 +76,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 * 以下位置提供了更多详细信息：[Azure SQL 数据库资源限制](sql-database-service-tiers.md)。
 
-| 错误代码 | 严重性 | 说明 |
+| 错误代码 | Severity | 说明 |
 | ---:| ---:|:--- |
 | 10928 |20 |资源 ID：%d。 数据库的 %s 限制是 %d 且已达到该限制。 有关详细信息，请参阅 [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637)。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅：<br/>• [Azure SQL 数据库资源限制](sql-database-service-tiers.md)。 |
 | 10929 |20 |资源 ID：%d。 %s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 有关详细信息，请参阅 [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637)。 否则，请稍后重试。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅：<br/>• [Azure SQL 数据库资源限制](sql-database-service-tiers.md)。 |
@@ -141,7 +123,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 ## <a name="general-errors"></a>常规错误
 以下错误不属于前面的任何类别。
 
-| 错误代码 | 严重性 | 说明 |
+| 错误代码 | Severity | 说明 |
 | ---:| ---:|:--- |
 | 15006 |16 |(AdministratorLogin) 不是有效的名称，因为它包含无效字符。 |
 | 18452 |14 |登录失败。 该登录来自不受信任的域，不能用于 Windows 身份验证。%.&#x2a;ls（此版本的 SQL Server 不支持 Windows 登录。） |

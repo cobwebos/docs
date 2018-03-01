@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: e6b11145506780f9a08799c4c9daf55ba17b366d
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: b9e3127a6b055a1fe013fa91714676a7c56686c5
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-and-publish-a-product"></a>创建和发布产品  
 
@@ -81,12 +81,6 @@ ms.lasthandoff: 12/22/2017
 2. 选择“API”选项卡。
 3. 单击“+ API”。
 4. 选择 API 并单击“创建”。
-
-## <a name="video"></a>视频
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Using-Products/player]
-> 
-> 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: d61b29f1327f57bc32b2c53de3fe58e53fcf3cac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2510a4aed34b6a156cc9a9da6215de5956aac023
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="protect-personal-data-with-network-security-features-azure-application-gateway-and-network-security-groups"></a>使用网络安全功能保护个人数据：Azure 应用程序网关和网络安全组
 
@@ -59,23 +59,14 @@ Azure WAF 可以应对各种攻击类别，包括 SQL 注入、跨站点脚本�
 
 若要创建启用 WAF 的新应用程序网关，请执行以下操作：
 
-1. 登录到 Azure 门户，在门户的“收藏夹”窗格中单击“新建”
-
-2. 在“新建”边栏选项卡中，单击“网络”。
-
-3. 单击“应用程序网关”。
-
-4. 导航到 Azure 门户，单击“新建”\>“网络”\>“应用程序网关”。
-
-   ![创建应用程序网关](media/protect-netsec/app-gateway-01.png)
-
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 选择“创建资源” > “网络” > “应用程序网关”。
 5. 在显示的“基本信息”边栏选项卡中，输入以下字段的值：“名称”、“层”（“标准”或“WAF”）、“SKU 大小”（“小”、“中”或“大”）、“实例计数”（输入2 实现高可用性）、“订阅”、“资源组”和“位置”。
-
 6. 在“虚拟网络”下的“设置”边栏选项卡中，单击“选择虚拟网络”。 执行此步骤后，会打开“选择虚拟网络”边栏选项卡。
 
 7. 单击“新建”打开“创建虚拟网络”边栏选项卡。
 
-8. 输入以下值：“名称”、“地址空间”、“子网名称”、“子网地址范围”。 单击 **“确定”**。
+8. 输入以下值：“名称”、“地址空间”、“子网名称”、“子网地址范围”。 单击“确定”。
 
 9. 在“设置”边栏选项卡上的“前端 IP 配置”下选择“IP 地址类型”。
 
@@ -126,7 +117,7 @@ NSG 规则包含九个属性：名称、协议（TCP、 UDP 或 \*，包括 ICMP
 
 若要在现有 NSG 中创建入站规则，请执行以下操作：
 
-1. 依次单击“浏览”、“网络安全组”。
+1. 单击“所有服务”，并单击“网络安全组”。
 
 2. 在 NSG 列表中，依次单击“NSG-FrontEnd”、“入站安全规则”。
 

@@ -1,6 +1,6 @@
 ---
 title: "为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略: Azure 资源管理器: PowerShell | Microsoft Docs"
-description: "本文逐步讲解如何使用 Azure 资源管理器和 PowerShell 为 S2S 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略。"
+description: "使用 Azure 资源管理器和 PowerShell 通过 Azure VPN 网关为 S2S 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略。"
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 323c008f7da833d627b35621a24cc29db1283847
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 19233ccd306f507ef2e36bee878aa9705c115780
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略
 
@@ -103,7 +103,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 | **Diffie-Hellman 组**  | **DHGroup**              | **PFSGroup** | 密钥长度 |
 | --- | --- | --- | --- |
 | 1                         | DHGroup1                 | PFS1         | 768 位 MODP   |
-| #N/A                         | DHGroup2                 | PFS2         | 1024 位 MODP  |
+| 2                         | DHGroup2                 | PFS2         | 1024 位 MODP  |
 | 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048 位 MODP  |
 | 19                        | ECP256                   | ECP256       | 256 位 ECP    |
 | 20                        | ECP384                   | ECP284       | 384 位 ECP    |

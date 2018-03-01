@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 02/15/2018
 ms.author: danoble
-ms.openlocfilehash: 40d7b8a52f67d116ab764b9716c917d5c7865467
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 2512ba4ea89bd3477c7901cda29ab3682d834195
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>将 Azure Cosmos DB 模拟器用于本地开发和测试
 
@@ -195,6 +195,11 @@ Azure Cosmos DB 模拟器启动时，会在浏览器中自动打开 Azure Cosmos
   <td></td>
 </tr>
 <tr>
+  <td>GetStatus</td>
+  <td>获取 Azure Cosmos DB 模拟器的状态。 状态由退出代码指示：1 = 正在启动，2 = 正在运行，3 = 已停止。 退出代码为负表示发生了错误。 不生成其他输出。</td>
+  <td>CosmosDB.Emulator.exe /GetStatus</td>
+  <td></td>
+<tr>
   <td>关机</td>
   <td>关闭 Azure Cosmos DB 模拟器。</td>
   <td>CosmosDB.Emulator.exe /Shutdown</td>
@@ -318,6 +323,40 @@ Azure Cosmos DB 模拟器启动时，会在浏览器中自动打开 Azure Cosmos
 4. 安装最新版的 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)。
 5. 通过设置一个 <= 250 的值启动具有 PartitionCount 标志的模拟器。 例如：`C:\Program Files\Azure CosmosDB Emulator>CosmosDB.Emulator.exe /PartitionCount=100`。
 
+## <a name="controlling-the-emulator"></a>控制模拟器
+
+模拟器附带一个 PowerShell 模块，用于启动、停止、卸载和检索服务的状态。 使用方式：
+
+```powershell
+Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
+```
+
+或者将 `PSModules` 目录置于 `PSModulesPath` 并导入，如下所示：
+
+```powershell
+$env:PSModulesPath += "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules"
+Import-Module Microsoft.Azure.CosmosDB.Emulator
+```
+
+下面汇总的命令用于通过 PowerShell 来控制模拟器：
+
+### `Get-CosmosDbEmulatorStatus`
+
+返回以下 ServiceControllerStatus 值之一：ServiceControllerStatus.StartPending、ServiceControllerStatus.Running 或 ServiceControllerStatus.Stopped。
+
+### `Start-CosmosDbEmulator [-NoWait]`
+
+启动模拟器。 默认情况下，此命令会一直等待，直至模拟器做好接受请求的准备。 如果希望 cmdlet 在启动模拟器后立即返回，请使用 -NoWait 选项。
+
+### `Stop-CosmosDbEmulator [-NoWait]`
+
+停止模拟器。 默认情况下，此命令会一直等待，直至模拟器完全关闭。 如果希望 cmdlet 在模拟器开始关闭后立即返回，请使用 -NoWait 选项。
+
+### `Uninstall-CosmosDbEmulator [-RemoveData]`
+
+卸载模拟器，并可视需要删除 $env:LOCALAPPDATA\CosmosDbEmulator 的完整内容。
+此 cmdlet 可确保在卸载模拟器之前，模拟器已停止。
+
 ## <a name="running-on-docker"></a>在 Docker 上运行
 
 可以在 Docker for Windows 上运行 Azure Cosmos DB 模拟器。 该模拟器不适合于用于 Oracle Linux 的 Docker。
@@ -416,7 +455,29 @@ cd $env:LOCALAPPDATA\CosmosDBEmulatorCert
 
 可以通过右键单击任务栏上的本地模拟器图标并单击“关于”菜单项来查看版本号。
 
-### <a name="120-released-on-january-26-2018"></a>2018 年 1 月 26 日发布的 1.20 版
+### <a name="1201084-released-on-february-14-2018"></a>1.20.108.4 在 2018 年 2 月 14 日发布
+
+此版本有一项新功能，并有两个 Bug 修复。 感谢帮我们找到并修复这些问题的客户。
+
+#### <a name="bug-fixes"></a>Bug 修复
+
+1. 模拟器现在适用于带 1 个或 2 个核心（或虚拟 CPU）的计算机
+
+   Cosmos DB 分配的任务可执行各种服务。 分配的任务数是主机上核心数的倍数。 默认的倍数适用于核心数很大的生产环境。 但在配置了 1 个或 2 个处理器的计算机上，应用该倍数时，并不会分配用于执行这些服务的任务。
+
+   我们通过向模拟器添加替代配置纠正了此问题。 我们现在应用的倍数为 1。 现在，分配用来执行各项服务的任务数等于主机上的核心数。
+
+   对于此版本来说，最重要的是解决此问题。 我们发现，许多开发/测试环境托管的模拟器有 1 到 2 个核心。
+
+2. 模拟器不再要求安装 Microsoft Visual C++ 2015 Redistributable。
+
+   我们发现，Windows（台式机版本和服务器版本）的全新安装不包括这个可再发行软件包。 因此，我们现在将这个可再发行二进制文件与模拟器捆绑在一起。
+
+#### <a name="features"></a>功能
+
+我们交谈过的许多客户都说：如果模拟器是可编脚本的就好了。 因此，在此版本中，我们添加了一些脚本功能。 模拟器现在包括一个用于自行启动、停止、获取状态和卸载的 PowerShell 模块：`Microsoft.Azure.CosmosDB.Emulator`。 
+
+### <a name="120911-released-on-january-26-2018"></a>2018 年 1 月 26 日发布 1.20.91.1 版
 
 * 默认情况下启用了 MongoDB 聚合管道。
 

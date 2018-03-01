@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 7562e43f58f303ea34a08b8b9e056a0c3d0c10d0
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 378330149aebc1936846472a522631308fe3eb80
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>对 Azure 文件同步（预览版）进行故障排除
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -43,6 +43,10 @@ StorageSyncAgent.msi /l*v Installer.log
 > [!Note]  
 > 如果将计算机设置为使用 Microsoft 更新，代理安装将会失败，并且 Windows 更新服务不会运行。
 
+<a id="agent-installation-on-DC"></a>**Active Directory 域控制器上代理安装失败** 如果尝试在 Active Directory 域控制器上安装同步代理，且该控制器中 PDC 角色所有者位于 Windows Server 2008R2 上或更低的 OS 版本上，则可能遇到同步代理安装失败的问题。
+
+要解决此问题，请将 PDC 角色转移到另一运行 Windows Server 2012R2 或更高版本的域控制器，然后安装同步。
+
 <a id="agent-installation-websitename-failure"></a>**代理安装失败，并出现以下错误：“存储同步代理向导提前结束”**  
 如果更改了 IIS 网站的默认名称，则可能出现此问题。 要解决此问题，请将 IIS 默认网站重命名为“默认 Web 站点”，然后重试安装。 代理的未来更新中会修复此问题。 
 
@@ -51,6 +55,8 @@ StorageSyncAgent.msi /l*v Installer.log
 1. 登录到要注册的服务器。
 2. 打开文件资源管理器，然后转到存储同步代理安装目录（默认位置为 C:\Program Files\Azure\StorageSyncAgent）。 
 3. 运行 ServerRegistration.exe 并完成向导中的操作，将服务器注册到存储同步服务。
+
+
 
 <a id="server-already-registered"></a>**服务器注册在安装 Azure 文件同步代理期间显示以下消息：“此服务器已注册”** 
 
@@ -95,9 +101,7 @@ Reset-StorageSyncServer
 
 以下内置角色具有所需的 Microsoft 授权权限：  
 * 所有者
-* 用户访问管理员
-
-若要确定自己的用户帐户角色色否具有适当的权限，请执行以下操作：  
+* 用户访问管理员 要确定用户帐户角色是否具有适当的权限，请执行以下操作：  
 1. 在 Azure 门户中，选择“资源组”。
 2. 选择存储帐户所在的资源组，再选择“访问控制(IAM)”。
 3. 选择用户帐户的**角色**（如“所有者”或“参与者”）。
@@ -105,11 +109,24 @@ Reset-StorageSyncServer
     * “角色分配”应具有“读取”和“写入”权限。
     * “角色定义”应具有“读取”和“写入”权限。
 
-<a id="server-endpoint-createjobfailed"></a>**服务器终结点创建失败，并出现以下错误：“MgmtServerJobFailed”（错误代码：-2134375898）**                                                                                                                           
+<a id="server-endpoint-createjobfailed"></a>**服务器终结点创建失败，并出现以下错误：“MgmtServerJobFailed”（错误代码：-2134375898）**                                                                                                                    
 如果服务器终结点路径位于系统卷上并启用了云分层，则会出现此问题。 系统卷上不支持云分层。 要在系统卷上创建服务器终结点，请在创建服务器终结点时禁用云分层。
 
 <a id="server-endpoint-deletejobexpired"></a>**服务器终结点删除失败，并出现以下错误：“MgmtServerJobExpired”**                
 如果服务器处于脱机状态或无网络连接，则会出现此问题。 如果服务器不再可用，请在门户中注销要删除服务器终结点的服务器。 要删除服务器终结点，请按照[使用 Azure 文件同步注销服务器](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)中所述的步骤操作。
+
+<a id="server-endpoint-provisioningfailed"></a>**无法打开服务器终结点属性页或更新云分层策略**
+
+如果服务器终结点上的管理操作失败，则可能出现此问题。 如果未在 Azure 门户中打开服务器终结点属性页，则在服务器中使用 PowerShell 命令更新服务器终结点可修复此问题。 
+
+```PowerShell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+# Get the server endpoint id based on the server endpoint DisplayName property
+Get-AzureRmStorageSyncServerEndpoint -SubscriptionId mysubguid -ResourceGroupName myrgname -StorageSyncServiceName storagesvcname -SyncGroupName mysyncgroup
+
+# Update the free space percent policy for the server endpoint
+Set-AzureRmStorageSyncServerEndpoint -Id serverendpointid -CloudTiering true -VolumeFreeSpacePercent 60
+```
 
 ## <a name="sync"></a>同步
 <a id="afs-change-detection"></a>**我通过 SMB 或门户在 Azure 文件共享中直接创建了一个文件，该文件同步到同步组中的服务器需要多长时间？**  

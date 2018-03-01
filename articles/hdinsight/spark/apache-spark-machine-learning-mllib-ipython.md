@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: jgao
-ms.openlocfilehash: 864d34306dad2915a15b032a27600cefdc632bb9
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 0e1d7b46aeaf8f21fdf2942f986643746dad3313
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Spark MLlib 生成机器学习应用程序并分析数据集
 
@@ -79,9 +79,9 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
         from pyspark.sql.types import *
 
 ## <a name="construct-an-input-dataframe"></a>构造输入数据帧
-可以使用 `sqlContext` 对结构化数据执行转换。 第一个任务是将示例数据 ((**Food_Inspections1.csv**)) 加载到 Spark SQL *数据帧*中。
+可使用 `sqlContext` 来转换结构化数据。 第一个任务是将示例数据 ((**Food_Inspections1.csv**)) 加载到 Spark SQL *数据帧*中。
 
-1. 由于原始数据是 CSV 格式，所以需要使用 Spark 上下文将文件的每一行拉取到内存中作为非结构化文本，并使用 Python 的 CSV 库单独分析每一行。
+1. 由于原始数据是 CSV 格式，因此需使用 Spark 上下文将文件的每一行拉取到内存中作为非结构化文本，并使用 Python 的 CSV 库单独分析每一行。
 
         def csvParse(s):
             import csv
@@ -93,7 +93,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
         inspections = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
                         .map(csvParse)
-1. 现在将 CSV 文件作为 RDD。  从 RDD 中检索一行以了解数据的构架。
+1. 现将 CSV 文件作为 RDD。  从 RDD 中检索一行以了解数据的构架。
 
         inspections.take(1)
 
@@ -130,7 +130,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
         df = sqlContext.createDataFrame(inspections.map(lambda l: (int(l[0]), l[1], l[12], l[13])) , schema)
         df.registerTempTable('CountResults')
-1. 现在便有了一个可在其上执行分析操作的 *数据帧*`df`。 还有名为 **CountResults** 的临时表。 数据帧中已包含四个所需的列：“ID”、“名称”、“结果”和“违规行为”。
+1. 现在便有了一个可在其上执行分析的数据帧 `df`。 还有一个名为 CountResults 的临时表。 数据帧中已包含四个所需的列：“ID”、“名称”、“结果”和“违规行为”。
 
     现在来获取一个小的数据示例：
 
@@ -172,7 +172,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
         |  Pass w/ Conditions|
         |     Out of Business|
         +--------------------+
-1. 快速可视化有助于解释这些结果的分布。 临时表 **CountResults** 中已存在数据。 可以针对此表运行以下 SQL 查询以便更好地理解结果分布的方式。
+1. 快速可视化有助于解释这些结果的分布。 临时表 CountResults 中已存在数据。 可以针对此表运行以下 SQL 查询以便更好地理解结果分布的方式。
 
         %%sql -o countResultsdf
         SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
@@ -207,8 +207,8 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
    * 通过但有情况
    * 停止经营
 
-     我们根据违规行为开发一个可以猜测食物检测结果的模型。 由于逻辑回归是二元分类方法，因此有必要将数据分为两个类别：“失败”和“通过”。 “通过但有情况”仍然是“通过”，因此在训练模型时，会将这两个结果视为等效。 得到其他结果（“未找到企业”或“停止经营”）的数据没有用，所以将其从训练集中删除。 这应该没有问题，因为这两个类别只占结果中非常小的百分比。
-1. 继续操作并将现有数据帧 (`df`) 转换为新的数据帧，其中每个检测以“违规行为标签对”表示。 在本例中，`0.0` 标签表示失败，`1.0` 标签表示成功，`-1.0` 标签表示除了这两个以外的结果。 计算新数据帧时，将筛选出这些其他结果。
+     我们根据违规行为开发一个可以猜测食物检测结果的模型。 由于逻辑回归是二元分类方法，因此有必要将数据分为两个类别：“失败”和“通过”。 “通过但有条件”仍然是“通过”，因此在训练模型时，会将这两个结果视为等效。 得到其他结果（“未找到企业”或“停止经营”）的数据没有用，所以将其从训练集中删除。 这应该没有问题，因为这两个类别只占结果中非常小的百分比。
+1. 继续操作并将现有数据帧 (`df`) 转换为新的数据帧，其中每个检测以“违规行为标签对”表示。 在本例中，`0.0` 标签表示失败，`1.0` 标签表示成功，`-1.0` 标签表示除了这两个以外的结果。 计算新的数据帧时，将筛选出这些其他结果。
 
         def labelForResults(s):
             if s == 'Fail':
@@ -237,7 +237,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
 处理自然语言的一种标准机器学习方法是为每个不同单词分配一个“索引”，并将一个向量传递到机器学习算法，以便每个索引值包含文本字符串中该单词的相对频率。
 
-MLlib 提供一种简单方法来执行此操作。 首先，“标记”每个违规行为字符串以获取每个字符串中的单个单词。 然后使用 `HashingTF` 将每组令牌转换为功能向量，随后可将向量传递到逻辑回归算法以构造模型。 将使用“管道”按顺序执行所有这些步骤。
+MLlib 提供一种简单方法来执行此操作。 首先，“标记”每个违规行为字符串以获取每个字符串中的单个单词。 然后使用 `HashingTF` 将每组令牌转换为功能向量，随后可将向量传递到逻辑回归算法以构造模型。 利用“管道”按序列执行上述所有步骤。
 
     tokenizer = Tokenizer(inputCol="violations", outputCol="words")
     hashingTF = HashingTF(inputCol=tokenizer.getOutputCol(), outputCol="features")
@@ -247,7 +247,7 @@ MLlib 提供一种简单方法来执行此操作。 首先，“标记”每个�
     model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-on-a-separate-test-dataset"></a>评估单独测试数据集上的模型
-根据观察到的违规行为，可以使用之前创建的模型来*预测*新检测的结果。 在数据集 **Food_Inspections1.csv** 上训练此模型。 使用第二个数据集 **Food_Inspections2.csv** 来*评估*此模型对新数据的功能性。 第二个数据集 (**Food_Inspections2.csv**) 应已存在于与群集关联的默认存储容器中。
+可使用先前创建的模型基于所观察到的违规行为来预测后续检查将产生哪些结果。 通过数据集 Food_Inspections1.csv 来训练此模型。 使用第二个数据集 **Food_Inspections2.csv** 来*评估*此模型对新数据的功能性。 第二个数据集 (**Food_Inspections2.csv**) 应已存在于与群集关联的默认存储容器中。
 
 1. 以下代码片段将创建新的数据帧 **predictionsDf**，其中包含由模型生成的预测。 该代码片段还根据数据帧创建一个名为 **Predictions** 的临时表。
 
@@ -279,7 +279,7 @@ MLlib 提供一种简单方法来执行此操作。 首先，“标记”每个�
         predictionsDf.take(1)
 
    将显示针对测试数据集中第一项的预测。
-1. `model.transform()` 方法会将相同转换应用于任何具有相同构架的新数据，并成功预测如何对数据进行分类。 可以执行一些简单的统计以了解预测的准确性：
+1. `model.transform()` 方法会将相同转换应用于任何具有相同构架的新数据，并成功预测如何对数据进行分类。 可执行一些简单的统计，了解预测的准确度如何：
 
         numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
                                               (prediction = 1 AND (results = 'Pass' OR
@@ -301,9 +301,9 @@ MLlib 提供一种简单方法来执行此操作。 首先，“标记”每个�
     将逻辑回归与 Spark 配合使用可得到关于违规行为（中文）描述和给定企业是通过还是未通过食物检测之间关系的准确模型。
 
 ## <a name="create-a-visual-representation-of-the-prediction"></a>创建预测的直观表示形式
-现在可以构造最终可视化以解释本测试的结果。
+现可够着一个最终可视化，帮助我们推论出此测试的结果。
 
-1. 首先，提取之前创建的 **Predictions** 临时表中的不同预测和结果。 以下查询将输出分为 *true_positive*、*false_positive*、*true_negative* 和 *false_negative*。 在以下查询中，将使用 `-q` 关闭可视化，还会（使用 `-o`）将输出保存为随后可与 `%%local` magic 配合使用的数据帧。
+1. 首先，提取之前创建的“Predictions”临时表中的不同预测和结果。 以下查询将输出分为 *true_positive*、*false_positive*、*true_negative* 和 *false_negative*。 在以下查询中，使用 `-q` 关闭可视化，同时使用 `-o` 将输出保存为随后可用于 `%%local` 幻数的数据帧。
 
         %%sql -q -o true_positive
         SELECT count(*) AS cnt FROM Predictions WHERE prediction = 0 AND results = 'Fail'
@@ -343,7 +343,6 @@ MLlib 提供一种简单方法来执行此操作。 首先，“标记”每个�
 ### <a name="scenarios"></a>方案
 * [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](apache-spark-use-bi-tools.md)
 * [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](apache-spark-eventhub-streaming.md)
 * [使用 HDInsight 中的 Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>创建和运行应用程序

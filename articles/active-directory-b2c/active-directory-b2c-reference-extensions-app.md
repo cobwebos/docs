@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/06/2017
 ms.author: parja
-ms.openlocfilehash: b28a1bb6287a0e30eda21d9a7c03abbf14b5d8d9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 450a7a5051cdbd6a3c8105a06fd3ebae10d5388e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C：扩展应用
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/11/2017
 
 要验证此 b2c-extensions-app 是否存在：
 
-1. 在 Azure AD B2C 租户内，单击左侧导航菜单中的“更多服务”。
+1. 在 Azure AD B2C 租户内，单击左侧导航菜单中的“所有服务”。
 1. 搜索并打开“应用注册”。
 1. 查找以“b2c-extensions-app”开头的应用
 

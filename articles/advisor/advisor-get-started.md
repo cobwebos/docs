@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-ms.openlocfilehash: dc89cd29e1e8038f0ff317ff6acee332218ebce7
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: d15f91c91281eae28ddaff52af3ee8e617f142c1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure 顾问入门
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/08/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在左窗格中，单击“顾问”。  如果左窗格中未显示“顾问”，请单击“更多服务”。  在服务菜单窗格中，在“监视和管理”下，单击“顾问”。
+2. 在左窗格中，单击“顾问”。  如果左窗格中未显示“顾问”，请单击“所有服务”。  在服务菜单窗格中，在“监视和管理”下，单击“顾问”。
  将显示顾问仪表板。
 
    ![使用 Azure 门户访问 Azure 顾问](./media/advisor-get-started/advisor-portal-menu.png) 

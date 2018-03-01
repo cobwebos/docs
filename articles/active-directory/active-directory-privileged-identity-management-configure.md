@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/18/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: c35b0c4171d411bd0c0483866f88780757cb3ee8
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 94855cf102764532fa0a6718541beffe93230fd1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -54,7 +54,7 @@ Azure AD Privileged Identity Management 可帮助组织实现以下目的：
 
 1. 以目录的全局管理员身份登录 [Azure 门户](https://portal.azure.com/) 。
 2. 如果组织有多个目录，请在 Azure 门户的右上角选择用户名。 选择会在其中使用 Azure AD Privileged Identity Management 的目录。
-3. 选择“更多服务”，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”。
+3. 选择“所有服务”，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”。
 4. 选中“固定到仪表板”，并单击“创建”。 Privileged Identity Management 应用程序打开。
 
 如果你是在目录中使用 Azure AD Privileged Identity Management 的第一个人并导航到 Azure AD 目录角色，[安全向导](active-directory-privileged-identity-management-security-wizard.md)会引导你进行初始分配体验。 然后，将自动成为该目录的第一个**安全管理员**和**特权角色管理员**。

@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5fed3b5b127a2b398b99ab2b46c762920e9dc249
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 765931d8a888432e0cc77ff86d597b6e2a029a2a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric 应用程序升级
 Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，Service Fabric 将新的[应用程序清单](service-fabric-application-and-service-manifests.md)与以前的版本进行比较，并确定应用程序中的哪些服务需要升级。 Service Fabric 会将服务清单中的版本号与前一版中的版本号进行比较。 如果服务未更改，则不升级服务。
@@ -47,16 +47,16 @@ Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，S
 不受监视的手动模式在每次对更新域升级之后都需要人工干预，以开始进行下一个更新域的升级。 系统不会执行任何 Service Fabric 运行状况检查。 管理员开始在下一个更新域中升级之前，需执行状况或状态检查。
 
 ## <a name="upgrade-default-services"></a>升级默认服务
-可在应用程序升级过程中升级 Service Fabric 应用程序中的默认服务。 在[应用程序清单](service-fabric-application-and-service-manifests.md)中定义默认服务。 升级默认服务的标准规则包括：
+在应用程序升级过程中，还可以升级在[应用程序清单](service-fabric-application-and-service-manifests.md)中定义的某些默认服务参数。 在升级过程中，只能更改支持通过 [Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) 进行更改的服务参数。 在应用程序升级过程中更改默认服务的行为如下所述：
 
-1. 创建该群集中不存在的新[应用程序清单](service-fabric-application-and-service-manifests.md)中的默认服务。
+1. 创建新的应用程序清单中在群集中尚不存在的默认服务。
+2. 更新在以前的和新的应用程序清单中都存在的默认服务。 新的应用程序清单中默认服务的参数将覆盖现有服务的参数。 如果更新某个默认服务失败，则会自动回滚应用程序升级。
+3. 新的应用程序清单中不存在的默认服务将被删除（如果它们存在于群集中）。 **请注意，删除某个默认服务将导致删除该服务的所有状态，并且无法撤消。**
+
+当回滚应用程序升级时，会将默认服务参数恢复为开始升级之前的旧值，但是无法使用已删除服务的旧状态重新创建这些服务。
+
 > [!TIP]
-> 需将 [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) 设置为 true，以便启用以下规则。 从 v5.5 支持此功能。
-
-2. 更新默认服务，这些服务同时存在于以前的[应用程序清单](service-fabric-application-and-service-manifests.md)及新版清单中。 新版中的服务说明会覆盖群集已有的说明。 默认服务更新失败时会自动回滚应用程序升级。
-3. 删除以前的[应用程序清单](service-fabric-application-and-service-manifests.md)中有的但新版本中没有的默认服务。 **请注意，删除的默认服务不能还原。**
-
-如果发生应用程序升级回滚，默认服务将还原至升级开始前的状态。 但是，永远无法创建已删除的服务。
+> [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) 群集配置设置必须为 *true* 才能启用上面的规则 2) 和 3)（默认服务更新和删除）。 从 Service Fabric 版本 5.5 开始，将支持此功能。
 
 ## <a name="application-upgrade-flowchart"></a>应用程序升级流程图
 本段落后面的流程图可帮助理解 Service Fabric 应用程序的升级过程。 具体而言，该流程描述当一个更新域的升级被认为成功或失败时，超时（包括 *HealthCheckStableDuration*、*HealthCheckRetryTimeout* 和 *UpgradeHealthCheckInterval*）如何为控制提供帮助。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
-ms.openlocfilehash: 2de788fabcae501d1a388bcea6b7759c9ea269cc
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 793f35bfd2e5e6b22e0804f01a69c0c20990d211
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>使用端到端密钥轮替和审核设置 Azure 密钥保管库
 ## <a name="introduction"></a>介绍
@@ -255,12 +255,12 @@ Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id
 
 1. 创建服务总线命名空间（如果要在本示例中使用现有的命名空间，请跳到步骤 2）。
 2. 在 Azure 门户中浏览到服务总线，并选择要在其中创建队列的命名空间。
-3. 选择“新建”，依次选择“服务总线”>“队列”并输入所需的详细信息。
+3. 依次选择“创建资源”、“企业集成”、“服务总线”，并输入所需的详细信息。
 4. 通过选择命名空间并单击“连接信息”，获取服务总线连接信息。 在下一部分需要用到此信息。
 
 接下来，[创建 Azure 函数](../azure-functions/functions-create-first-azure-function.md)以轮询存储帐户中的密钥保管库日志并选取新的事件。 这是一个按计划触发的函数。
 
-若要创建 Azure 函数，请在 Azure 门户中依次选择“新建”>“Function App”。 在创建过程中，可以使用现有的托管计划，或创建新的计划。 也可以选择动态托管。 有关托管选项的函数的更多详细信息，请参阅[如何缩放 Azure Functions](../azure-functions/functions-scale.md)。
+若要创建 Azure 函数，请选择“创建资源”，在 Marketplace 中搜索 _Function App_，并单击“创建”。 在创建过程中，可以使用现有的托管计划，或创建新的计划。 也可以选择动态托管。 有关托管选项的函数的更多详细信息，请参阅[如何缩放 Azure Functions](../azure-functions/functions-scale.md)。
 
 创建 Azure 函数后，导航到它并选择计时器函数和 C\#。 然后单击“创建此函数”。
 

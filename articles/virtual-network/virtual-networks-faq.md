@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/18/2017
 ms.author: jdial
-ms.openlocfilehash: c71e188b74ebfd9420f840957e83190cf476b584
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2042bc44df7d3d61bf52d28a910dae1b125b9fdb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -44,7 +44,7 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 它是�
 
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>是否可以在 VNet 之间或者 VNet 与本地数据中心之间执行 WAN 优化？
 
-是的。 可以通过 Azure 应用商店部署许多供应商提供 [WAN 优化网络虚拟设备](https://azure.microsoft.com/marketplace/?term=wan+optimization)。
+是的。 可以通过 Azure Marketplace 部署许多供应商提供 [WAN 优化网络虚拟设备](https://azure.microsoft.com/marketplace/?term=wan+optimization)。
 
 ## <a name="configuration"></a>配置
 
@@ -72,22 +72,22 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 它是�
 我们支持的最小子网为 /29，最大为 /8（使用 CIDR 子网定义）。
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>是否可以使用 VNet 将 VLAN 引入 Azure 中？
-不能。 VNet 是第 3 层重叠。 Azure 不支持任何第 2 层语义。
+不会。 VNet 是第 3 层重叠。 Azure 不支持任何第 2 层语义。
 
 ### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets"></a>是否可以在 VNet 和子网上指定自定义路由策略？
 是的。 可以使用用户定义路由 (UDR)。 有关 UDR 的详细信息，请访问[用户定义的路由和 IP 转发](virtual-networks-udr-overview.md)。
 
 ### <a name="do-vnets-support-multicast-or-broadcast"></a>VNet 是否支持多播或广播？
-不能。 不支持多播或广播。
+不会。 不支持多播或广播。
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>在 VNet 中可以使用哪些协议？
-可以在 VNet 中使用 TCP、UDP 和 ICMP TCP/IP 协议。 VNet 中会阻止多播、广播、在 IP 里面封装 IP 的数据包以及通用路由封装 (GRE) 数据包。 
+可以在 VNet 中使用 TCP、UDP 和 ICMP TCP/IP 协议。 VNet 内支持单播放，但通过单播（源端口 UDP/68/目标端口 UDP/67）的动态主机配置协议 (DCHP) 除外。 VNet 中会阻止多播、广播、在 IP 里面封装 IP 的数据包以及通用路由封装 (GRE) 数据包。 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>是否可以在 VNet 中 ping 默认路由器？
-没有。
+不会。
 
 ### <a name="can-i-use-tracert-to-diagnose-connectivity"></a>是否可以使用 tracert 诊断连接？
-没有。
+不会。
 
 ### <a name="can-i-add-subnets-after-the-vnet-is-created"></a>创建 VNet 后是否可以添加子网？
 是的。 只要子网地址不属于 VNet 中另一个子网的一部分，就能随时会子网添加到 VNet 中。
@@ -102,10 +102,10 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 它是�
 是的。 VNet 中部署的所有服务都可以连接到 Internet。 Azure 中部署的每个云服务都具有分配到它的可公开寻址的 VIP。 必须定义 PaaS 角色的输入终结点和虚拟机的终结点，以使这些服务可以接受 Internet 的连接。
 
 ### <a name="do-vnets-support-ipv6"></a>VNet 是否支持 IPv6？
-不能。 目前不能将 IPv6 用于 VNet。
+不会。 目前不能将 IPv6 用于 VNet。
 
 ### <a name="can-a-vnet-span-regions"></a>VNet 是否可以跨区域？
-不能。 一个 VNet 限制为单个区域。
+不会。 一个 VNet 限制为单个区域。
 
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>是否可以将 VNet 连接到 Azure 中的另一个 VNet？
 是的。 可使用以下方式将一个 VNet 连接到另一个 VNet：
@@ -138,7 +138,7 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。 Azure 在�
 是的。 可以基于每个云服务设置 DNS 服务器，以重写默认网络设置。 但是，我们建议使用尽可能多的整个网络的 DNS。
 
 ### <a name="can-i-bring-my-own-dns-suffix"></a>是否可以引入我自己的 DNS 后缀？
-不能。 不能为 VNet 指定自定义的 DNS 后缀。
+不会。 不能为 VNet 指定自定义的 DNS 后缀。
 
 ## <a name="connecting-virtual-machines"></a>连接虚拟机
 
@@ -165,7 +165,7 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。 Azure 在�
 是的。 可在[如何将 VM 或角色实例移到其他子网](virtual-networks-move-vm-role-to-subnet.md)一文中找到详细信息。
 
 ### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>是否可以为我的 VM 配置静态 MAC 地址？
-不能。 MAC 地址不能以静态方式配置。
+不会。 MAC 地址不能以静态方式配置。
 
 ### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-it-has-been-created"></a>创建 MAC 后，其地址是否在 VM 中保持不变？
 是的，通过资源管理器和经典部署模型部署的 VM 在被删除之前，其 MAC 地址将保持不变。 以前，如果停止（解除分配）VM，会释放 MAC 地址，但现在，即使 VM 处于解除分配状态，也会保留其 MAC 地址。
@@ -189,7 +189,7 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。 Azure 在�
 是的。 必须将 VMSS 连接到 VNet。
 
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>是否可以将服务移入和移出 VNet？
-不能。 不能将服务移入和移出 VNet。 必须删除并重新部署该服务，以将其移动到另一个 VNet 中。
+不会。 不能将服务移入和移出 VNet。 必须删除并重新部署该服务，以将其移动到另一个 VNet 中。
 
 ## <a name="security"></a>“安全”
 
@@ -200,7 +200,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间完�
 是的。 可向 VNet 中的单个子网和/或附加到 VNet 的 NIC 应用[网络安全组](virtual-networks-nsg.md)。
 
 ### <a name="can-i-implement-a-firewall-between-vnet-connected-resources"></a>是否可在与 VNet 连接的资源之间实施防火墙？
-是的。 可以通过 Azure 应用商店部署许多供应商提供[防火墙网络虚拟设备](https://azure.microsoft.com/en-us/marketplace/?term=firewall)。
+是的。 可以通过 Azure Marketplace 部署许多供应商提供[防火墙网络虚拟设备](https://azure.microsoft.com/en-us/marketplace/?term=firewall)。
 
 ### <a name="is-there-information-available-about-securing-vnets"></a>是否有介绍如何保护 VNet 的信息？
 是的。 有关详细信息，请参阅 [Azure 网络安全概述](../security/security-network-overview.md)一文。

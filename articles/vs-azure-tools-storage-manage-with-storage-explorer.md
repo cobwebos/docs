@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 7f86c5abb47cdd69cf07410570b02ba0076d1c18
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 27b3775d81ec6dc093dae4ee46167c5d5a9c9e19
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>存储资源管理器（预览版）入门
 ## <a name="overview"></a>概述
@@ -28,6 +28,16 @@ Azure 存储资源管理器（预览版）是一款独立应用，可用于在 W
 
 ## <a name="prerequisites"></a>先决条件
 * [下载并安装存储资源管理器（预览版）](http://www.storageexplorer.com)
+
+> [!NOTE]
+> 对于 Ubuntu 16.04 以外的 Linux 发行版，可能需要手动安装某些依赖项。 一般情况下，以下包是必需的：
+> * libgconf-2-4
+> * libsecret
+> * 最新 GCC
+>
+> 具体取决于你的发行版，可能还需要安装其他包。 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)包含用于某些发行版的特定步骤。
+>
+>
 
 ## <a name="connect-to-a-storage-account-or-service"></a>连接到存储帐户或服务
 存储资源管理器（预览版）提供了多种连接到存储帐户的方式。 例如，可以：

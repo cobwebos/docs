@@ -13,11 +13,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: cynthn
-ms.openlocfilehash: da00c48f7da5a9be146f4fdb626c93db746c0f9b
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 152c5a1103d32af27f689086cfcc9cc1a7acc5d3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-snapshot"></a>创建快照 
 
@@ -65,14 +65,14 @@ az snapshot create -g myResourceGroup --source "$osDiskId" --name osDisk-backup
 ## <a name="use-azure-portal-to-take-a-snapshot"></a>使用 Azure 门户拍摄快照 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 首先在左上角单击“新建”并搜索“快照”。
+2. 首先在左上角单击“创建资源”并搜索“快照”。
 3. 在“快照”边栏选项卡中，单击“创建”。
 4. 输入快照的“名称”。
 5. 选择现有的[资源组](../../azure-resource-manager/resource-group-overview.md#resource-groups)，或键入新资源组的名称。 
 6. 选择 Azure 数据中心的位置。  
 7. 对于**源磁盘**，选择要获取其快照的托管磁盘。
 8. 选择用于存储快照的“帐户类型”。 建议使用 **Standard_LRS**，除非需要将其存储在高性能磁盘上。
-9. 单击“创建” 。
+9. 单击“创建”。
 
 如果计划使用快照创建托管磁盘并将其附加到需要具有高性能的 VM，请结合使用 `az snapshot create` 命令和参数 `--sku Premium_LRS`。 这会创建快照，以便将其存储为高级托管磁盘。 高级托管磁盘性能更好，因为它们是固态硬盘 (SSD)，但成本高于标准磁盘 (HDD)。
 

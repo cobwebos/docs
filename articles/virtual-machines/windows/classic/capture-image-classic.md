@@ -16,13 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 6f7d8e8b3d1ed7c8a06f7e11fea492eec8b60409
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ee6371faa9c3cc72104ba0eb05d17226679fa420
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>捕获使用经典部署模型创建的 Azure Windows 虚拟机的映像。
+# <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>捕获使用经典部署模型创建的 Azure Windows 虚拟机的映像
 > [!IMPORTANT]
 > Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关资源管理器模型信息，请参阅[在 Azure 中捕获通用 VM 的托管映像](../capture-image-resource.md)。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
@@ -57,7 +57,7 @@ Azure 将映像存储在“VM 映像(经典)”下，这是查看所有 Azure �
 
    ![运行 Sysprep](./media/capture-image/SysprepGeneral.png)
 5. Sysprep 将关闭虚拟机，这会在 Azure 门户中将虚拟机的状态更改为“已停止”。
-6. 在 Azure 门户中，单击“虚拟机(经典)”，并选择要捕获的虚拟机。 查看“更多服务”时，“VM 映像(经典)”组在“计算”下列出。
+6. 在 Azure 门户中，单击“虚拟机(经典)”，并选择要捕获的虚拟机。 查看“全部服务”时，“VM 映像(经典)”组在“计算”下列出。
 
 7. 在命令栏中，单击“捕获”。
 
@@ -74,7 +74,7 @@ Azure 将映像存储在“VM 映像(经典)”下，这是查看所有 Azure �
     ![成功捕获映像](./media/capture-image/VMCapturedImageAvailable.png)
 
 ## <a name="next-steps"></a>后续步骤
-该映像已就绪，可用于创建虚拟机了。 为此，通过在服务菜单底部选择“更多服务”菜单项，并在“计算”组中选择“VM 映像(经典)”来创建虚拟机。 有关说明，请参阅[从映像创建虚拟机](createportal.md)。
+该映像已就绪，可用于创建虚拟机了。 为此，通过在服务菜单底部选择“全部服务”菜单项，并在“计算”组中选择“VM 映像(经典)”来创建虚拟机。 有关说明，请参阅[从映像创建虚拟机](createportal.md)。
 
 [How to sign in to a virtual machine running Windows Server]:connect-logon.md
 [How to Use Sysprep: An Introduction]: http://technet.microsoft.com/library/bb457073.aspx

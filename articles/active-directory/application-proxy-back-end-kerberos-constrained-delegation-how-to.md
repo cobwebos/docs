@@ -3,7 +3,7 @@ title: "排查应用程序代理的 Kerberos 约束委派配置问题 | Microsof
 description: "排查应用程序代理的 Kerberos 约束委派配置问题。"
 services: active-directory
 documentationcenter: 
-author: daveba
+author: MarkusVi
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 7b31f53e14e3f9a175e5dda95a18eb89dbca99dc
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.date: 02/09/2018
+ms.author: markvi
+ms.reviewer: harshja
+ms.openlocfilehash: a580b0afbd34623986ea8a3f60147a937c423e5e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>排查应用程序代理的 Kerberos 约束委派配置问题
 
@@ -33,11 +34,11 @@ ms.lasthandoff: 01/12/2018
 
 -   发布的目标应用程序以 Kerberos 的 IIS 和 Microsoft 实现为基础。
 
--   服务器和应用程序主机驻留在单个 Active Directory 域中。 有关跨域和林方案的详细信息可在我们的 [KCD 白皮书](http://aka.ms/KCDPaper)中找到。
+-   服务器和应用程序主机驻留在单个 Active Directory 域中。 有关跨域和林方案的详细信息可在我们的 [KCD 白皮书](https://aka.ms/KCDPaper)中找到。
 
 -   主题应用程序发布在启用预身份验证的 Azure 租户中，并且用户需要通过基于表单的身份验证方法进行 Azure 身份验证。 本文未涵盖丰富的客户端身份验证方案，但在将来的某个时候会添加这些内容。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 Azure 应用程序代理可部署到许多类型的基础结构或环境中，而体系结构无疑会因组织的不同而不同。 引发与 KCD 相关的问题的一个最常见原因不是环境本身，而是简单的配置错误或疏忽大意。
 
@@ -51,7 +52,7 @@ Azure 应用程序代理可部署到许多类型的基础结构或环境中，�
 
 -   应尽可能避免在连接器主机和 DC 之间放置任何正在使用的 IPS/IDS 设备，因为这些设备有时会过度侵入并干扰核心 RPC 流量。
 
-建议在最简单的方案中测试委派。 引入的变量越多，需要应对的变量也越多。 例如，将测试限制为测试单个连接器可节省宝贵的时间，并且在问题解决后可添加其他连接器。
+应当在最简单的方案中测试委派。 引入的变量越多，需要应对的变量也越多。 例如，将测试限制为测试单个连接器可节省宝贵的时间，并且在问题解决后可添加其他连接器。
 
 某些环境因素也可能导致问题。 在测试过程中，请尽量限制体系结构的大小，以免出现这些环境因素。 例如，内部防火墙 ACL 配置错误并不少见，所以尽可能让来自允许的连接器的所有流量直接流向 DC 和后端应用程序。 
 
@@ -79,7 +80,7 @@ Azure 应用程序代理可部署到许多类型的基础结构或环境中，�
 
 **客户端预身份验证** - 外部用户通过浏览器进行 Azure 身份验证。
 
-能够进行 Azure 预身份验证是让 KCD SSO 运行的必要条件。 如果存在任何问题，应首先对此进行测试和解决。 预身份验证阶段与 KCD 或发布的应用程序无关。 应该可以轻松更正任何差异，只需通过对主题帐户进行健全性检查，确认该帐户在 Azure 中存在并且未被禁用/阻止。 浏览器中的错误响应通常提供了足够的描述，可以让人了解原因。 如果不确定，还可以查看我们其他的故障排除文档。
+能够进行 Azure 预身份验证是让 KCD SSO 运行的必要条件。 应当进行测试，如果存在任何问题，请解决问题。 预身份验证阶段与 KCD 或发布的应用程序无关。 应该可以轻松更正任何差异，只需通过对主题帐户进行健全性检查，确认该帐户在 Azure 中存在并且未被禁用/阻止。 浏览器中的错误响应通常提供了足够的描述，可以让人了解原因。 如果不确定，还可以查看我们其他的故障排除文档。
 
 **委派服务** - Azure 代理连接器代表用户从 KDC（Kerberos 分发中心）获取 Kerberos 服务票证。
 
@@ -103,13 +104,13 @@ Azure 应用程序代理可部署到许多类型的基础结构或环境中，�
 
 -   查看是否在强制实施域策略以限制[发布的 Kerberos 令牌的最大大小](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/)，因为这会阻止连接器获取过大的令牌。
 
-为了获取关于这些问题的更详细信息，下一步是使用网络跟踪捕获连接器主机和域 KDC 之间的交换内容。 有关更多详细信息，请参阅[深入进行故障排查](https://aka.ms/proxytshootpaper)一文。
+为了获取关于这些问题的更详细信息，下一步是使用网络跟踪捕获连接器主机和域 KDC 之间的交换内容。 有关详细信息，请参阅[深入进行故障排除白皮书](https://aka.ms/proxytshootpaper)。
 
-如果票证看起来正常，则应在日志中看到一个事件，声明身份验证因应用程序返回 401 而失败。 通常，这表示目标应用程序已拒绝票证，所以请继续转到下一个阶段。
+如果票证看起来正常，则应在日志中看到一个事件，声明身份验证因应用程序返回 401 而失败。 通常，这表示目标应用程序已拒绝票证，所以请继续转到下一个阶段：
 
 **目标应用程序** - 连接器提供的 Kerberos 票证的使用者
 
-在此阶段，连接器需要将 Kerberos 服务票证发送至后端，作为在第一个应用程序请求中的标头。
+在此阶段，连接器需要将 Kerberos 服务票证发送至后端，作为第一个应用程序请求中的标头。
 
 -   通过使用门户中定义的应用程序内部 URL，验证该应用程序可从连接器主机上的浏览器直接访问。 然后就可以成功登录。 有关此操作的详细信息可在连接器“故障排除”页面上找到。
 
@@ -125,7 +126,7 @@ Azure 应用程序代理可部署到许多类型的基础结构或环境中，�
 
 2.  暂时从 IIS 站点的提供程序列表中删除 NTLM，并从连接器主机上的 IE 直接访问应用。 当 NTLM 不在提供程序列表中时，应仅能够通过 Kerberos 访问应用程序。 如果此操作失败，则表示应用程序配置存在问题，并且 Kerberos 身份验证不起作用。
 
-如果 Kerberos 不可用，则检查 IIS 中的应用程序身份验证设置，确保 negotiate 列在最顶端，下方紧挨着 NTLM。 （不是 Negotiate: kerberos 或 Negotiate: PKU2U）。 仅在 Kerberos 起作用时继续。
+如果 Kerberos 不可用，则检查 IIS 中的应用程序身份验证设置，确保 negotiate 列在最顶端，下方紧挨着 NTLM。 （不协商：Kerberos，或协商：PKU2U）。 仅在 Kerberos 起作用时继续。
 
    ![Windows 身份验证提供程序](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
    
@@ -152,6 +153,16 @@ Azure 应用程序代理可部署到许多类型的基础结构或环境中，�
 -   转到 IIS，为应用程序选择“配置编辑器”选项，并导航至 **system.webServer/security/authentication/windowsAuthentication** 以确保 **UseAppPoolCredentials** 值设置为 **True**
 
    ![IIS 配置应用池凭据选项](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
+
+将此值更改为 **True** 后，需要从后端服务器中删除所缓存的所有 Kerberos 票证。 可以通过运行以下命令来执行此操作：
+
+```powershell
+Get-WmiObject Win32_LogonSession | Where-Object {$_.AuthenticationPackage -ne 'NTLM'} | ForEach-Object {klist.exe purge -li ([Convert]::ToString($_.LogonId, 16))}
+``` 
+
+有关详细信息，请参阅 [Purge the Kerberos client ticket cache for all sessions](https://gallery.technet.microsoft.com/scriptcenter/Purge-the-Kerberos-client-b56987bf)（清除所有会话的 Kerberos 客户端票证缓存）。
+
+
 
 将内核模式保留为启用状态虽然在提升 Kerberos 操作的性能方面很有用，但也导致所请求的服务的票证可使用计算机帐户解密。 这也称为本地系统，因此当应用程序在场中多个服务器上托管时，将它设置为 true 可中断 KCD。
 

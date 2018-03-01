@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 7176ebd0515008147bd3797dcb760f35e2d85d45
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: e68b70ce87a6fedab1b85bf2800a50e512910dea
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>针对对象无法同步到 Azure AD 进行故障排除
 
 如果对象未能按照预期同步到 Azure AD，则可能存在多种原因。 如果收到来自 Azure AD 的有关错误的电子邮件，或者在 Azure AD Connect Health 中看到错误，请参阅[解决导出错误](active-directory-aadconnect-troubleshoot-sync-errors.md)。 但是，如果要解决的问题所涉及的对象不在 Azure AD 中，则应使用本主题作为参考。 本主题介绍如何在本地组件 Azure AD Connect 同步中查找错误。
+
+>[!IMPORTANT]
+>对于 <verison> 或更高版本的 Azure Active Directory (AAD) Connect 部署，请使用向导中的[故障排除任务](active-directory-aadconnect-troubleshoot-objectsync.md)来排查对象同步问题。 
 
 若要查找错误，需要按以下顺序查看几个不同位置的内容：
 
@@ -78,7 +81,7 @@ ms.lasthandoff: 01/18/2018
 
 另一种有用的搜索是选择 Azure AD 连接器，在“作用域”中，选择“挂起的导入”，并选择“添加”复选框。 此搜索提供 Azure AD 中不能与本地对象相关联的所有已同步对象。  
 ![连接器空间搜索孤立](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssearchorphan.png)  
-这些对象已由其他同步引擎或具有不同筛选配置的同步引擎创建。 此视图是不再托管的**孤立**对象的列表。 应查看此列表并考虑使用 [Azure AD PowerShell](http://aka.ms/aadposh) cmdlet 删除这些对象。
+这些对象已由其他同步引擎或具有不同筛选配置的同步引擎创建。 此视图是不再托管的**孤立**对象的列表。 应查看此列表并考虑使用 [Azure AD PowerShell](https://aka.ms/aadposh) cmdlet 删除这些对象。
 
 ### <a name="cs-import"></a>CS 导入
 打开 cs 对象时，顶端会出现数个选项卡。 “导入”选项卡显示导入后暂存的数据。  

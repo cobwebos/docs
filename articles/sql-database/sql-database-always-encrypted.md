@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: sstein
-ms.openlocfilehash: 47154202d0a8f7704561676fa645b5ccdb5b8c01
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 8e86648195811a666a197b6ee06ad610a1c8d568
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>始终加密：保护 SQL 数据库中的敏感数据并将加密密钥存储在 Windows 证书存储中
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/31/2017
 
 ## <a name="create-a-blank-sql-database"></a>创建空的 SQL 数据库
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击“新建” > “数据 + 存储” > “SQL 数据库”。
+2. 单击“创建资源” > “数据 + 存储” > “SQL 数据库”。
 3. 在新服务器或现有服务器上创建名为 **Clinic** 的**空**数据库。 如需在 Azure 门户中创建数据库的详细说明，请参阅[第一个 Azure SQL 数据库](sql-database-get-started-portal.md)。
    
     ![创建空数据库](./media/sql-database-always-encrypted/create-database.png)
@@ -107,7 +107,7 @@ SSMS 提供了一个向导，通过设置 CMK、CEK 和已加密列即可轻松�
 
 加密每位患者的“SSN”和“出生日期”信息。 **SSN** 列将使用确定性加密，该加密支持相等性查找、联接和分组方式。 **BirthDate** 列将使用随机加密，该加密不支持操作。
 
-将 **SSN** 列的“加密类型”设置为“确定”，并将 **BirthDate** 列设置为“随机”。 单击“下一步”。
+将 **SSN** 列的“加密类型”设置为“确定”，并将 **BirthDate** 列设置为“随机”。 单击“资源组名称” 的 Azure 数据工厂。
 
 ![加密列](./media/sql-database-always-encrypted/column-selection.png)
 

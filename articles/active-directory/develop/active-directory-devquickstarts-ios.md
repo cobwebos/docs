@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 36c6f6d2449d1e137f85e0f657f0399f9df8ee55
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 93df6f5e6c966fdf4909a4c21ebc36bff4283a59
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-ios-getting-started"></a>Azure AD iOS 入门
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -63,7 +63,7 @@ ms.lasthandoff: 01/03/2018
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在顶部栏上，单击帐户。 在“目录”列表下选择要注册应用程序的 Active Directory 租户。
-3. 在最左侧的导航窗格中单击“更多服务”，并选择“Azure Active Directory”。
+3. 在最左侧的导航窗格中单击“所有服务”，并选择“Azure Active Directory”。
 4. 单击“应用注册”，并选择“添加”。
 5. 根据提示创建新的“本机客户端应用程序”。
   * 应用程序的**名称**向最终用户描述该应用程序。

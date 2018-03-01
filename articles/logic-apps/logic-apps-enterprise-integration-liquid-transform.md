@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: c1a1a5530c19d39a8e37d122235c8340caa88570
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 4bb003afd757faac675a9af8599a781247717a64
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="perform-advanced-json-transformations-with-a-liquid-template"></a>使用 Liquid 模板执行高级 JSON 转换
 
@@ -110,7 +110,46 @@ Azure 逻辑应用支持通过撰写或分析 JSON 等本机数据操作完成�
 
 通过 [Postman](https://www.getpostman.com/postman) 或类似工具，将 JSON 输入发布到逻辑应用。 逻辑应用转换后的 JSON 输出如此示例中所示：
   
-![示例输出](./media/logic-apps-enterprise-integration-liquid-transform/example-output.png)
+![示例输出](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
+
+## <a name="more-liquid-action-examples"></a>更多 Liquid 操作示例
+Liquid 并非仅可用于 JSON 转换。 下面列出了使用 Liquid 的其他可用转换操作。
+
+* 将 JSON 转换为文本
+  
+  下面是用于此示例的 Liquid 模板：
+   
+   ``` json
+   {{content.firstName | Append: ' ' | Append: content.lastName}}
+   ```
+   下面是输入和输出示例：
+  
+   ![将 JSON 输出为文本的示例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
+
+* 将 XML 转换为 JSON
+  
+  下面是用于此示例的 Liquid 模板：
+   
+   ``` json
+   [{% JSONArrayFor item in content -%}
+        {{item}}
+    {% endJSONArrayFor -%}]
+   ```
+   下面是输入和输出示例：
+
+   ![将 XML 输出为 JSON 的示例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
+
+* 将 XML 转换为文本
+  
+  下面是用于此示例的 Liquid 模板：
+
+   ``` json
+   {{content.firstName | Append: ' ' | Append: content.lastName}}
+   ```
+
+   下面是输入和输出示例：
+
+   ![将 XML 输出为文本的示例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
 ## <a name="next-steps"></a>后续步骤
 

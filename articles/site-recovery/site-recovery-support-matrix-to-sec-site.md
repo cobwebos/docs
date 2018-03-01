@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 02/22/2018
 ms.author: raynew
-ms.openlocfilehash: da120d8e325867eaf9eb8b9be1ae8d9152db54c4
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 256bad0c3c06182b6be2b647ae27db90fe69724d
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>用于使用 Azure Site Recovery 复制到辅助站点的支持矩阵
 
@@ -117,7 +117,7 @@ RDM | 是 | 不适用
 
 ## <a name="vaults"></a>保管库
 
-**操作** | **VMware/物理服务器** | **Hyper-V（包含 VMM）**
+**Action** | **VMware/物理服务器** | **Hyper-V（包含 VMM）**
 --- | --- | ---
 跨资源组移动保管库（订阅内或跨订阅移动） | 否 | 否
 跨资源组移动存储、网络和 Azure VM（订阅内或跨订阅移动） | 否 | 否

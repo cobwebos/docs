@@ -14,14 +14,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 02/22/2018
 ms.author: jgao
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 04f76d15f12b52d7b47011010a5ce20cc45174ee
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 5bb2ee2b9b838cc9feca60eca6b2c721ca58ed45
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>使用 Microsoft Avro Library 序列化 Hadoop 中的数据
 
@@ -605,7 +605,7 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
 ## <a name="sample-4-serialization-using-object-container-files-and-serialization-with-generic-record"></a>示例 4：使用对象容器文件进行序列化与使用通用记录进行序列化
 此示例与<a href="#Scenario2">第二个示例</a>中使用 JSON 显式指定架构的方案类似。 除了本示例假设要将架构反序列化的读取器不知道架构以外。
 
-测试数据集将通过显式定义的 JSON 架构收集到 [**AvroRecord**](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) 对象列表中，并存储在由 [**AvroContainer**](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) 类表示的对象容器文件中。 此容器文件将创建一个写入器，该写入器用于将未压缩的数据序列化到内存流，并将该内存流保存到文件中。 创建读取器时所用的 [Codec.Null](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.codec.null.aspx) 参数指定不压缩此数据。
+测试数据集将通过显式定义的 JSON 架构收集到 [**AvroRecord**](http://msdn.microsoft.com/library/microsoft.hadoop.avro.avrorecord.aspx) 对象列表中，然后存储在由 [**AvroContainer**](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.avrocontainer.aspx) 类表示的对象容器文件中。 此容器文件将创建一个写入器，该写入器用于将未压缩的数据序列化到内存流，并将该内存流保存到文件中。 创建读取器时所用的 [Codec.Null](http://msdn.microsoft.com/library/microsoft.hadoop.avro.container.codec.null.aspx) 参数指定不压缩此数据。
 
 然后，从文件中读取数据，并将数据反序列化为对象的集合。 将此集合与 Avro 记录的初始列表进行比较，以确认它们相同。
 
@@ -1366,7 +1366,7 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
 该示例将执行以下任务：
 
 * 连接到现有的 HDInsight 服务群集。
-* 序列化多个 CSV 文件并将结果上传到 Azure Blob 存储。 （CSV 文件随着示例一起分发，而且代表 [Infochimps](http://www.infochimps.com/) 在 1970 年到 2010 年期间提取自 AMEX 股票的历史记录数据。 该示例将读取 CSV 文件数据、将记录转换为 **Stock** 类的实例，并使用反射序列化这些实例。 Stock 类型定义是使用 Microsoft Avro Library 代码生成实用工具从 JSON 架构创建的。
+* 序列化多个 CSV 文件并将结果上传到 Azure Blob 存储。 （CSV 文件随着示例一起分发，而且代表 [Infochimps](http://www.infochimps.com/) 在 1970 年到 2010 年期间提取自 AMEX 股票的历史记录数据。 该示例将读取 CSV 文件数据、将记录转换为 **Stock** 类的实例，然后使用反射序列化这些实例。 Stock 类型定义是使用 Microsoft Avro Library 代码生成实用工具从 JSON 架构创建的。
 * 在 Hive 中创建名为 **Stocks** 的新外部表，并将它链接到前一个步骤中上传的数据。
 * 使用 Hive 对 **Stocks** 表执行查询。
 

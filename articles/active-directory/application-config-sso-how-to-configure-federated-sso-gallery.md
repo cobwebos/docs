@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: d8c22d20151fa70ba33ef017ab24c787f71fe6e0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e71480910432c6475ca97d20853a72b864195faa
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>如何配置 Azure AD 库应用程序的联合单一登录
 
@@ -44,13 +44,13 @@ ms.lasthandoff: 12/11/2017
 
 1.  打开 [Azure 门户](https://portal.azure.com)，并以“全局管理员”或“共同管理员”身份登录
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“企业应用程序”边栏选项卡右上角的“添加”按钮。
+5.  在“企业应用程序”窗格的右上角，单击“添加”按钮。
 
 6.  在“从库中添加”部分的“输入名称”文本框中，键入应用程序的名称。
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 12/11/2017
 
 9.  单击“添加”按钮，添加该应用程序。
 
-稍等片刻，就能看到应用程序的配置边栏选项卡了。
+稍等片刻，便可看到应用程序的配置窗格。
 
 ## <a name="configure-single-sign-on-for-an-application-from-the-azure-ad-gallery"></a>为 Azure AD 库中的应用程序配置单一登录
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 12/11/2017
 
 9.  在“域和 URL”中输入所需的值。 应从应用程序供应商处获取这些值。
 
-   1. 要将应用程序配置为 SP 启动的 SSO，“登录 URL”是必需值。 对于某些应用程序，“标识符”也是必需值。
+   1. 要将应用程序配置为 SP 启动的 SSO，则“登录 URL”是必需值。 对于某些应用程序，“标识符”也是必需值。
 
    2. 要将应用程序配置为 IdP 启动的 SSO，“回复 URL”是必需值。 对于某些应用程序，“标识符”也是必需值。
 
@@ -96,13 +96,13 @@ ms.lasthandoff: 12/11/2017
 
 12. **可选：**单击“查看和编辑其他所有用户属性”，以编辑在用户登录时要发送至应用程序（位于 SAML 令牌中）的属性。
 
-  添加属性：
+  若要添加属性：
    
    1. 单击“添加属性”。 输入“名称”，并从下拉列表中选择“值”。
 
    1. 单击“保存”。 然后就能在表中看到新属性了。
 
-13. 单击“配置 &lt;应用程序名称&gt;”以访问关于了解如何在应用程序中配置单一登录的文档。 此外，用户还拥有通过应用程序设置 SSO 所需的元数据 URL 和证书。
+13. 单击“配置 &lt;应用程序名称&gt;”以访问关于了解如何在应用程序中配置单一登录的文档。 此外，你还拥有通过应用程序设置 SSO 所需的元数据 URL 和证书。
 
 14. 单击“保存”以保存配置。
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 12/11/2017
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -137,11 +137,11 @@ ms.lasthandoff: 12/11/2017
 
 9.  若要添加用户属性，请单击“查看和编辑所有其他用户属性”，以编辑在用户登录时要发送至应用程序（位于 SAML 令牌中）的属性。
 
-   添加属性：
+   若要添加属性：
   
    1. 单击“添加属性”。 输入“名称”，并从下拉列表中选择“值”。
 
-   2. 单击“保存” 。 然后就能在表中看到新属性了。
+   2. 单击“ **保存**”。 然后就能在表中看到新属性了。
 
 ## <a name="download-the-azure-ad-metadata-or-certificate"></a>下载 Azure AD 元数据或证书
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 12/11/2017
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -173,7 +173,7 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -181,15 +181,15 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6.  从列表中选择要向其分配用户的应用程序。
 
 7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
-8.  单击“用户和组”列表顶部的“添加”按钮，打开“添加分配”边栏选项卡。
+8.  单击“用户和组”列表顶部的“添加”按钮，以打开“添加分配”窗格。
 
-9.  在“添加分配”边栏选项卡中，单击“用户和组”选择器。
+9.  在“添加分配”窗格中，单击“用户和组”选择器。
 
 10. 在“按名称或电子邮件地址搜索”搜索框中，键入要分配的用户的**全名**或**电子邮件地址**。
 
@@ -199,7 +199,7 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 
-14. **可选：**单击“添加分配”边栏选项卡中的“选择角色”选择器可选择要分配给所选用户的角色。
+14. **可选：**单击“添加分配”窗格中的“选择角色”选择器，选择一个角色来分配给所选用户。
 
 15. 单击“分配”按钮，将应用程序分配给选定用户。
 
@@ -207,7 +207,7 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 ## <a name="customizing-the-saml-claims-sent-to-an-application"></a>自定义发送到应用程序的 SAML 声明
 
-若要了解如何自定义发送到应用程序的 SAML 属性声明，请参阅 [Azure Active Directory 中的声明映射](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)，了解详细信息。
+若要了解如何自定义发送到应用程序的 SAML 属性声明，请参阅 [Azure Active Directory 中的声明映射](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)获取详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 [使用应用程序代理为应用提供单一登录](active-directory-application-proxy-sso-using-kcd.md)

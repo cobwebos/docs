@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: b70290a78255905a92e2bb5432369c499fca3f3b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f4c67961316c4b78b691a46b35bd0c19bb409fd8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>使用深层链接登录应用程序时出现的问题
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/11/2017
 
 -   务必确认应用程序**配置**正确。
 
--   确保用户帐户**已启用**进行登录。
+-   确保用户的帐户**已启用**登录功能。
 
 -   确保用户的帐户**未被锁定**。
 
@@ -51,11 +51,11 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="checking-the-deeplink"></a>检查深层链接
 
-若要检查是否具有正确的深层链接，请按照以下步骤操作：
+若要检查是否具有正确的深层链接，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -63,11 +63,11 @@ ms.lasthandoff: 12/11/2017
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-7.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+7.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 8.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 12/11/2017
 
 10. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 11. 选择要检查其深层链接的应用程序。
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安装访问面板浏览器扩展
 
-若要安装访问面板浏览器扩展，请按照以下步骤操作：
+若要安装访问面板浏览器扩展，请执行以下步骤：
 
 1.  在某个支持的浏览器中打开[访问面板](https://myapps.microsoft.com)，并在 Azure AD 中以“用户”身份登录。
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 12/11/2017
 
 3.  在出现询问是否安装该软件的提示时，选择“立即安装”。
 
-4.  根据浏览器的情况，用户将定向到下载链接。 将扩展“添加”到浏览器中。
+4.  将根据你的浏览器将你定向到下载链接。 将扩展“添加”到浏览器中。
 
 5.  如果浏览器出现提示，选择“启用”或“允许”扩展。
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>如何配置 Azure AD 库应用程序的密码单一登录
 
-若要从 Azure AD 库配置应用程序，需要：
+若要从 Azure AD 库配置应用程序，必须：
 
 -   [从 Azure AD 库添加应用程序](#add-an-application-from-the-Azure-AD-gallery)
 
@@ -115,17 +115,17 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="add-an-application-from-the-azure-ad-gallery"></a>从 Azure AD 库添加应用程序
 
-若要从 Azure AD 库添加应用程序，请按照以下步骤操作：
+若要从 Azure AD 库添加应用程序，请执行以下步骤：
 
 1.  打开 [Azure 门户](https://portal.azure.com)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“企业应用程序”边栏选项卡右上角的“添加”按钮。
+5.  在“企业应用程序”窗格的右上角，单击“添加”按钮。
 
 6.  在“从库中添加”部分的“输入名称”文本框中，键入应用程序的名称。
 
@@ -133,17 +133,17 @@ ms.lasthandoff: 12/11/2017
 
 8.  在添加应用程序前，可以在“名称”文本框中更改名称。
 
-9.  单击“添加”按钮，添加该应用程序。
+9.  若要添加应用程序，请单击“添加”。
 
-稍等片刻，便能看到应用程序的配置边栏选项卡。
+稍等片刻，便可看到应用程序的配置窗格。
 
 ### <a name="configure-the-application-for-password-single-sign-on"></a>将应用程序配置为密码单一登录
 
-若要为应用程序配置单一登录，请按照以下步骤操作：
+若要为应用程序配置单一登录，请执行以下步骤：
 
-1.  打开[“Azure 门户”](https://portal.azure.com/)，以“全局管理员”或“共同管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -165,7 +165,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的密码单一登录
 
-若要从 Azure AD 库配置应用程序，需要：
+若要从 Azure AD 库配置应用程序，必须：
 
 -   [添加非库应用程序](#add-a-non-gallery-application)
 
@@ -173,31 +173,31 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="add-a-non-gallery-application"></a>添加非库应用程序
 
-若要从 Azure AD 库添加应用程序，请按照以下步骤操作：
+若要从 Azure AD 库添加应用程序，请执行以下步骤：
 
 1.  打开 [Azure 门户](https://portal.azure.com)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“企业应用程序”边栏选项卡右上角的“添加”按钮。
+5.  在“企业应用程序”窗格的右上角，单击“添加”按钮。
 
 6.  单击“非库应用程序”。
 
 7.  在“名称”文本框中输入应用程序的名称。 选择“添加”。
 
-稍等片刻，便能看到应用程序的配置边栏选项卡。
+稍等片刻，便可看到应用程序的配置窗格。
 
 ### <a name="configure-the-application-for-password-single-sign-on"></a>将应用程序配置为密码单一登录
 
-若要为应用程序配置单一登录，请按照以下步骤操作：
+若要为应用程序配置单一登录，请执行以下步骤：
 
-1.  打开[“Azure 门户”](https://portal.azure.com/)，以“全局管理员”或“共同管理员”身份登录。
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -213,7 +213,7 @@ ms.lasthandoff: 12/11/2017
 
 8.  选择“基于密码的登录”模式。
 
-9.  输入“登录 URL”。 这就是用户在其中输入用户名和密码进行登录时的 URL。 确保登录字段在 URL 中可见。
+9.  输入**登录 URL**，这是用户将在其中输入用户名和密码以进行登录的 URL。 确保登录字段在 URL 中可见。
 
 10. 将用户分配到应用程序。
 
@@ -221,11 +221,11 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="how-to-assign-a-user-to-an-application-directly"></a>如何直接将用户分配到应用程序
 
-要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
+若要直接将一个或多个用户分配到应用程序，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -233,25 +233,25 @@ ms.lasthandoff: 12/11/2017
 
 5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-  * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+  * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6.  从列表中选择要向其分配用户的应用程序。
 
 7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
-8.  单击“用户和组”列表顶部的“添加”按钮，打开“添加分配”边栏选项卡。
+8.  单击“用户和组”列表顶部的“添加”按钮，以打开“添加分配”窗格。
 
-9.  在“添加分配”边栏选项卡中，单击“用户和组”选择器。
+9.  在“添加分配”窗格中，单击“用户和组”选择器。
 
 10. 在“按名称或电子邮件地址搜索”搜索框中，键入要分配的用户的**全名**或**电子邮件地址**。
 
-11. 将鼠标悬停在列表中的“用户”上方以显示“复选框”。 单击用户个人资料头像或徽标旁边的复选框，将用户添加到“已选择”列表。
+11. 将鼠标悬停在列表中的“用户”上方以显示“复选框”。 若要将用户添加到“已选择”列表，请单击用户个人资料照片或徽标旁边的复选框。
 
 12. **可选：**如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**全名**或**电子邮件地址**，然后单击复选框以将此用户添加到“已选择”列表。
 
 13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 
-14. **可选：**单击“添加分配”边栏选项卡中的“选择角色”选择器可选择要分配给所选用户的角色。
+14. **可选：**单击“添加分配”窗格中的“选择角色”选择器，选择一个角色来分配给所选用户。
 
 15. 单击“分配”按钮，将应用程序分配给选定用户。
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>如果这些故障排除步骤未解决此问题。 
 
-打开支持票证并提供以下信息（如果有）：
+打开支持票证，并提供以下信息（如有）：
 
 -   相关错误 ID
 

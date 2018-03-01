@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: a75ad760fe7f9663c5b43500581170d5f8671a13
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 2879daf4b5ba072a3a9b11ec87c01e5904b6a5dc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="data-preparations-user-guide"></a>数据准备用户指南 
 Azure 机器学习数据准备体验提供大量的丰富功能。 本文阐述该体验的最深入部分。
@@ -89,7 +89,7 @@ Azure 机器学习数据准备体验提供大量的丰富功能。 本文阐述�
 4. 在“条件”的后面，选择“创建包含筛选出的行的数据流”，以将非显示结果集分支到新数据流。
 
 
-这种做法通常用于分离一组需要额外准备的数据。 在处理分支数据集之后，通常会将数据与原始数据流中的结果集合并。 若要执行“合并”（与“分支”操作相反），请使用以下操作之一：
+这种做法通常用于分离一组需要额外准备的数据。 在准备分支数据集之后，通常会将数据与原始数据流中的结果集合并。 若要执行“合并”（与“分支”操作相反），请使用以下操作之一：
 
 - 追加行。 垂直合并两个或多个数据流（按行）。 
 - 追加列。 水平合并两个或多个数据流（按列）。

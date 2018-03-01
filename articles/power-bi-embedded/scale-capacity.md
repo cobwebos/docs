@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/19/2018
 ms.author: asaxton
-ms.openlocfilehash: 7eb64cce37f2655b72ab9b5fadedf7581fe007fb
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 9b7d0bc31946d6022e9bfae463f4a22eb12c2a58
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="scale-your-power-bi-embedded-capacity"></a>缩放 Power BI Embedded 容量
 
@@ -33,9 +33,9 @@ ms.lasthandoff: 01/20/2018
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“更多服务” > “Power BI Embedded”以查看容量。
+2. 选择“所有服务” > “Power BI Embedded”以查看容量。
 
-    ![Azure 门户中的“更多服务”](media/scale-capacity/azure-portal-more-services.png)
+    ![Azure 门户中的“所有服务”](media/scale-capacity/azure-portal-more-services.png)
 
 3. 选择要缩放的容量。
 

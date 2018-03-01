@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
-ms.openlocfilehash: 7ce6297d7d6b61ac95df58db3fa1a2a0a123a64e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 397161cf2eaea9712fec352a45f5fc49e8da486c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>使用 Azure 报告工具来阐述对个人数据的保护
 
@@ -144,7 +144,7 @@ Log Analytics 中的分析工具（例如日志搜索、视图和解决方案）
 
 - 可以使用 Azure Monitor REST API、CLI 命令、[PowerShell](https://docs.microsoft.com/powershell/) cmdlet 或 .NET SDK 查询数据。
 
-若要开始使用 Azure Monitor，请在 Azure 门户中选择“更多服务”。
+若要开始使用 Azure Monitor，请在 Azure 门户中选择“所有服务”。
 
 1. 在“监视和管理”部分中向下滚动到“Monitor”。
 

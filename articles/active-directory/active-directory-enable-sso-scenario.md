@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: e825e6be79efad5dfb385f96901a2b5682027963
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: f4035e4c1ef2bc78256ed842bc4b1ac65ecf8b53
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>使用 Azure Active Directory 管理应用程序
 除了实际工作流或内容以外，企业对所有应用程序还会提出两个基本要求：
@@ -90,7 +90,7 @@ SSO 过程分为两个步骤：
 在现代企业中，IT 部门不一定了解它们正在使用的所有云应用程序。 Cloud App Discovery 与 Azure AD 的组合提供了检测这些应用程序的解决方案。
 
 ## <a name="account-management"></a>帐户管理
-管理不同应用程序中的帐户一直以来都是组织中 IT 或支持人员手动执行的过程。 Azure AD 可以全自动管理服务提供商集成的所有应用程序，以及 Microsoft 集成的、支持自动用户预配或 SAML JIT 的应用程序中的帐户。
+管理不同应用程序中的帐户一直以来都是组织中的 IT 或支持人员手动执行的过程。 Azure AD 可在服务提供商集成的所有应用程序，以及 Microsoft 预先集成的、支持自动用户预配或 SAML 实时预配的应用程序中完全自动地执行帐户管理。
 
 ## <a name="automated-user-provisioning"></a>自动用户预配
 某些应用程序提供了自动化接口用于创建和删除（或停用）帐户。 如果提供商提供了这种接口，Azure AD 就会利用该接口。 由于管理任务会自动进行，因此可以降低运营成本；此外，由于减少了未授权访问的可能性，因此可以提高环境的安全性。

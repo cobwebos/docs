@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 5e1c3df24b0fc3e733981ab3f8814a9e6641f5f1
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: b58a4b215b13d2e57a69a94a60e3e37471c926c8
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Accessing diagnostic logs for Azure Data Lake Store（访问 Azure Data Lake Store 的诊断日志）
 了解如何启用 Data Lake Store 帐户诊断日志记录以及如何查看为帐户收集的日志。
 
 组织可启用 Azure Data Lake Store 帐户诊断记录来收集数据访问审核跟踪（会提供访问数据的用户列表、数据的访问频率和帐户中存储的数据量等信息）。启用后，会最大程度地记录诊断和/或请求。 仅在针对服务终结点发出请求时才会创建请求和诊断日志条目。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Store 帐户**。 遵循[使用 Azure 门户，实现 Azure Data Lake Store 入门](data-lake-store-get-started-portal.md)中的说明。
 
@@ -114,27 +114,27 @@ ms.lasthandoff: 01/08/2018
     }
 
 #### <a name="request-log-schema"></a>请求日志架构
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
-| time |字符串 |日志时间戳（采用 UTC） |
-| resourceId |字符串 |操作发生所在的资源的 ID |
-| category |字符串 |日志类别。 例如，“请求”。 |
-| operationName |字符串 |被记录的操作的名称。 例如 getfilestatus。 |
-| resultType |字符串 |操作状态，例如，200。 |
-| callerIpAddress |字符串 |作出请求的客户端 的IP 地址 |
-| correlationId |字符串 |可用于将一组相关日志条目组合在一起的日志的 ID |
+| time |String |日志时间戳（采用 UTC） |
+| resourceId |String |操作发生所在的资源的 ID |
+| category |String |日志类别。 例如，“请求”。 |
+| operationName |String |被记录的操作的名称。 例如 getfilestatus。 |
+| resultType |String |操作状态，例如，200。 |
+| callerIpAddress |String |作出请求的客户端 的IP 地址 |
+| correlationId |String |可用于将一组相关日志条目组合在一起的日志的 ID |
 | identity |对象 |生成日志的标识 |
 | 属性 |JSON |详细信息参见以下内容 |
 
 #### <a name="request-log-properties-schema"></a>请求日志属性架构
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
-| HttpMethod |字符串 |用于此操作的 HTTP 方法。 例如 GET。 |
-| 路径 |字符串 |操作执行所在的路径 |
+| HttpMethod |String |用于此操作的 HTTP 方法。 例如 GET。 |
+| 路径 |String |操作执行所在的路径 |
 | RequestContentLength |int |HTTP 请求的内容长度 |
-| ClientRequestId |字符串 |唯一标识此请求的 ID |
-| StartTime |字符串 |服务器接收请求的时间 |
-| EndTime |字符串 |服务器发送响应的时间 |
+| ClientRequestId |String |唯一标识此请求的 ID |
+| StartTime |String |服务器接收请求的时间 |
+| EndTime |String |服务器发送响应的时间 |
 
 ### <a name="audit-logs"></a>审核日志
 此处是 JSON 格式的审核日志中的一个示例条目。 每个 Blob 具有一个名为 **records** 的根对象，该对象包含一组日志对象
@@ -160,21 +160,21 @@ ms.lasthandoff: 01/08/2018
     }
 
 #### <a name="audit-log-schema"></a>审核日志架构
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
-| time |字符串 |日志时间戳（采用 UTC） |
-| resourceId |字符串 |操作发生所在的资源的 ID |
-| category |字符串 |日志类别。 例如，“审核”。 |
-| operationName |字符串 |被记录的操作的名称。 例如 getfilestatus。 |
-| resultType |字符串 |操作状态，例如，200。 |
-| correlationId |字符串 |可用于将一组相关日志条目组合在一起的日志的 ID |
+| time |String |日志时间戳（采用 UTC） |
+| resourceId |String |操作发生所在的资源的 ID |
+| category |String |日志类别。 例如，“审核”。 |
+| operationName |String |被记录的操作的名称。 例如 getfilestatus。 |
+| resultType |String |操作状态，例如，200。 |
+| correlationId |String |可用于将一组相关日志条目组合在一起的日志的 ID |
 | identity |对象 |生成日志的标识 |
 | 属性 |JSON |详细信息参见以下内容 |
 
 #### <a name="audit-log-properties-schema"></a>审核日志属性架构
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
-| StreamName |字符串 |操作执行所在的路径 |
+| StreamName |String |操作执行所在的路径 |
 
 ## <a name="samples-to-process-the-log-data"></a>日志数据处理示例
 将日志从 Azure Data Lake Store 发送到 Azure Log Analytics 时（有关如何使用 Log Analytics 的详细信息，请参阅[查看或分析使用 Log Analytics 日志搜索收集的数据](../log-analytics/log-analytics-tutorial-viewdata.md)），以下查询会返回一个表，其中列出了用户显示名称、事件时间和事件时间的事件计数并包含一个可视图表。 可轻松修改该查询，以显示用户 GUID 或其他属性：

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
-ms.openlocfilehash: ae9bd30b76786f94f0d836a39137da696fdb94a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 86867a9d6d2c43e6505b1a06672546a017172bfe
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="using-load-balancing-services-in-azure"></a>在 Azure 中使用负载均衡服务
 
@@ -39,11 +39,11 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 * **应用程序网关**以服务形式提供应用程序传送控制器 (ADC)，借此为应用程序提供各种第 7 层负载均衡功能。 客户可以用它将 CPU 密集型 SSL 终止卸载到应用程序网关，优化 Web 场工作效率。 其他第 7 层路由功能包括传入流量的轮循机制分布、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后托管多个网站的功能。 可以将应用程序网关配置为面向 Internet 的网关、仅限内部访问的网关或二者合一的网关。 应用程序网关完全受 Azure 管理，可缩放且高度可用。 它提供丰富的诊断和日志记录功能以改进可管理性。
 * **负载均衡器**是 Azure SDN 堆栈的组成部分，为所有 UDP 和 TCP 协议提供高性能、低延迟的第 4 层负载均衡服务。 它管理入站和出站连接。 可以配置公共和内部负载均衡终结点，定义规则将入站连接映射到后端池目标，并在其中包含 TCP 和 HTTP 运行状况探测选项来管理服务的可用性。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 本示例方案使用一个简单的网站，该网站提供两种类型的内容：图像和动态呈现的网页。 此网站必须在地理上冗余，应从最靠近用户的位置（延迟最低的位置）为用户提供服务。 应用程序开发人员决定通过一个专用的 VM 池（不同于 Web 场中的其他池）来提供与模式 /images/* 匹配的所有 URL。
 
-此外，提供动态内容的默认 VM 池需要与高可用性群集上托管的后端数据库通信。 整个部署是通过 Azure Resource Manager 设置的。
+此外，提供动态内容的默认 VM 池需要与高可用性群集上托管的后端数据库通信。 整个部署是通过 Azure 资源管理器设置的。
 
 使用流量管理器、应用程序网关和负载均衡器，可以在此网站中实现以下设计目标：
 
@@ -63,8 +63,8 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 
 ### <a name="step-1-create-a-traffic-manager-profile"></a>第 1 步：创建流量管理器配置文件
 
-1. 在 Azure 门户中，单击“新建”，并在应用商店中搜索“流量管理器配置文件”。
-2. 在“创建流量管理器配置文件”边栏选项卡中，输入以下基本信息：
+1. 在 Azure 门户中，单击“创建资源” > “网络” > “流量管理器配置文件” > “创建”。
+2. 输入以下基本信息：
 
   * **名称**：为流量管理器配置文件提供 DNS 前缀名称。
   * **路由方法**：选择流量路由方法策略。 有关这些方法的详细信息，请参阅[关于流量管理器流量路由方法](traffic-manager-routing-methods.md)。
@@ -78,7 +78,7 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 
 ### <a name="step-2-create-the-application-gateways"></a>步骤 2：创建应用程序网关
 
-1. 在 Azure 门户的左窗格中，依次单击“新建” > “网络” > “应用程序网关”。
+1. 在 Azure 门户的右侧窗格中，单击“创建资源” > “网络” > “应用程序网关”。
 2. 输入有关应用程序网关的下述基本信息：
 
   * **名称**：应用程序网关的名称。
@@ -86,10 +86,10 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
   * **实例计数**：实例的数目，其值介于 2 到 10 之间。
   * **资源组**：包含应用程序网关的资源组。 可以是现有资源组，也可以是新的资源组。
   * **位置**：应用程序网关所在的区域，与资源组的位置相同。 位置很重要，因为虚拟网络和公共 IP 必须与网关位于同一位置。
-3. 单击 **“确定”**。
+3. 单击“确定”。
 4. 定义应用程序网关的虚拟网络、子网、前端 IP 和侦听器配置。 在本方案中，前端 IP 地址是**公共**地址，因此稍后可将它作为终结点添加到流量管理器配置文件中。
 5. 使用以下选项之一配置侦听器：
-    * 如果使用 HTTP，则无须进行任何配置。 单击 **“确定”**。
+    * 如果使用 HTTP，则无须进行任何配置。 单击“确定”。
     * 如果使用 HTTPS，则需进一步配置。 请参阅[创建应用程序网关](../application-gateway/application-gateway-create-gateway-portal.md)，从第 9 步开始。 完成配置以后，单击“确定”。
 
 #### <a name="configure-url-routing-for-application-gateways"></a>为应用程序网关配置 URL 路由
@@ -100,15 +100,15 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 
 1. 从资源组转到在前面部分创建的应用程序网关实例。
 2. 在“设置”下面选择“后端池”，并选择“添加”，添加要与 Web 层后端池关联的 VM。
-3. 在“添加后端池”边栏选项卡中，输入后端池的名称，以及驻留在池中的计算机的所有 IP 地址。 在此方案中，我们将连接虚拟机的两个后端服务器池。
+3. 输入后端池的名称，以及驻留在池中的计算机的所有 IP 地址。 在此方案中，我们将连接虚拟机的两个后端服务器池。
 
-  ![应用程序网关“添加后端池”边栏选项卡](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
+  ![应用程序网关的“添加后端池”](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
 4. 在应用程序网关的“设置”下面选择“规则”，并单击“基于路径”按钮添加规则。
 
   ![应用程序网关规则“基于路径”按钮](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
 
-5. 在“添加基于路径的规则”边栏选项卡中，提供以下信息来配置规则。
+5. 请提供以下信息来配置规则。
 
    基本设置：
 
@@ -138,13 +138,13 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 
   ![流量管理器终结点“添加”按钮](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
 
-3. 在“添加终结点”边栏选项卡中输入以下信息，创建一个终结点：
+3. 输入以下信息来创建一个终结点：
 
   * **类型**：选择要进行负载均衡的终结点的类型。 在此方案中，请选择“Azure 终结点”，因为我们会将其连接到以前配置的应用程序网关实例。
   * **名称**：输入终结点的名称。
   * **目标资源类型**：选择“公共 IP 地址”，并在“目标资源”下选择以前配置的应用程序网关的公共 IP。
 
-   ![流量管理器“添加终结点”边栏选项卡](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
+   ![流量管理器的“添加终结点”](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
 4. 现在可以通过使用流量管理器配置文件的 DNS（在本示例中为 TrafficManagerScenario.trafficmanager.net）访问设置，对设置进行测试。 测试设置时，可以重新发送请求、打开/关闭在不同区域中创建的 VM 和 Web 服务器，以及更改流量管理器配置文件设置。
 
@@ -156,8 +156,8 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 
 有关配置内部负载均衡器的详细信息，请参阅[在 Azure 门户中创建内部负载均衡器](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)。
 
-1. 在 Azure 门户的左窗格中，依次单击“新建” > “网络” > “负载均衡器”。
-2. 在“创建负载均衡器”边栏选项卡中，为负载均衡器选择一个名称。
+1. 在 Azure 门户的左侧窗格中，单击“创建资源” > “网络” > “负载均衡器”。
+2. 为负载均衡器选择一个名称。
 3. 将“类型”设置为“内部”，然后选择相应的虚拟网络和子网以供负载均衡器驻留。
 4. 在“IP 地址分配”下，选择“动态”或“静态”。
 5. 在“资源组”下面，选择负载均衡器的资源组。
@@ -169,18 +169,18 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 1. 在资源组中，找到在前面步骤中创建的负载均衡器。
 2. 在“设置”下面，单击“后端池”，并单击“添加”添加后端池。
 
-  ![负载均衡器“添加后端池”边栏选项卡](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
+  ![负载均衡器的“添加后端池”](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
-3. 在“添加后端池”边栏选项卡中，输入后端池的名称。
+3. 输入后端池的名称。
 4. 项后端池添加单独的计算机或可用性集。
 
 #### <a name="configure-a-probe"></a>配置探测
 
 1. 在负载均衡器的“设置”下面选择“探测”，并单击“添加”添加探测。
 
- ![负载均衡器“添加探测”边栏选项卡](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
+ ![负载均衡器的“添加探测”](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
-2. 在“添加探测”边栏选项卡中，输入探测的名称。
+2. 输入探测的名称。
 3. 为探测选择“**协议**”。 对于数据库，可能需要使用 TCP 探测而不是 HTTP 探测。 若要详细了解负载均衡器探测，请参阅[了解负载均衡器探测](../load-balancer/load-balancer-custom-probe-overview.md)。
 4. 输入访问探测时使用的数据库**端口**。
 5. 在“时间间隔”下，指定探测应用程序的频率。
@@ -190,7 +190,7 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 #### <a name="configure-the-load-balancing-rules"></a>配置负载均衡规则
 
 1. 在负载均衡器的“设置”下面选择“负载均衡规则”，并单击“添加”创建规则。
-2. 在“添加负载均衡规则”边栏选项卡中，输入负载均衡规则的**名称**。
+2. 输入负载均衡规则的“名称”。
 3. 选择负载均衡器的**前端 IP 地址**、**协议**和**端口**。
 4. 在“后端端口”下面，指定要在后端池中使用的端口。
 5. 选择在前面步骤中创建的**后端池**和**探测**，对其应用规则。
@@ -201,7 +201,7 @@ Microsoft Azure 提供了多种服务，以便可以管理网络流量的分布�
 
 ### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>步骤 5：将 Web 层 VM 连接到负载均衡器
 
-现在，已在 Web 层 VM 上运行的应用程序中配置了 IP 地址和负载均衡器前端端口，可建立任何数据库连接。 此配置特定于这些 VM 上运行的应用程序。 若要配置目标 IP 地址和端口，请参阅应用程序文档。 若要查找前端的 IP 地址，请在 Azure 门户中转到“负载均衡器设置”边栏选项卡上的前端 IP 池。
+现在，已在 Web 层 VM 上运行的应用程序中配置了 IP 地址和负载均衡器前端端口，可建立任何数据库连接。 此配置特定于这些 VM 上运行的应用程序。 若要配置目标 IP 地址和端口，请参阅应用程序文档。 若要查找前端的 IP 地址，请在 Azure 门户中转到“负载均衡器设置”上的前端 IP 池。
 
 ![负载均衡器“前端 IP 池”导航窗格](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81602766848a91331c8d811ea1c8ec3ffae44b96
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a59ea7c9e111f8ae5b0d9bd620faa5495c3924b7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建虚拟网络
 
@@ -39,9 +39,9 @@ Azure 有两个部署模型：Azure 资源管理器模型和经典模型。 Micr
 - [PowerShell（经典）](virtual-networks-create-vnet-classic-netcfg-ps.md)
 - [CLI（经典）](virtual-networks-create-vnet-classic-cli.md)
 
-将了解如何从 GitHub 下载并修改现有 ARM 模板，以及如何通过 GitHub、PowerShell 和 Azure CLI 部署该模板。
+了解如何通过 GitHub 下载 Azure 资源管理器模板和修改现有模板，以及如何通过 GitHub、PowerShell 和 Azure CLI 部署模板。
 
-如果只是直接从 GitHub 部署 ARM 模板，而不进行任何更改，请跳到 [从 github 部署模板](#deploy-the-arm-template-by-using-click-to-deploy)。
+如果只需直接通过 GitHub 部署 Azure 资源管理器模板而不做任何更改，请跳到[通过 GitHub 部署模板](#deploy-the-arm-template-by-using-click-to-deploy)。
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
@@ -52,11 +52,11 @@ Azure 有两个部署模型：Azure 资源管理器模型和经典模型。 Micr
 2. 单击 **azuredeploy.json**，并单击 **RAW**。
 3. 将该文件保存到计算机上的本地文件夹。
 4. 如果熟悉模板，则跳到步骤 7。
-5. 打开刚保存的文件，并查看 **parameters** 下第 5 行中的内容。 ARM 模板参数提供了在部署过程中可以填充的值的占位符。
+5. 打开所保存的文件，查看第 5 行“参数”下的内容。 Azure 资源管理器模板参数提供了在部署过程中可以填充的值的占位符。
    
    | 参数 | 说明 |
    | --- | --- |
-   | **位置** |要在其中创建 VNet 的 Azure 区域 |
+   | **位置** |创建 VNet 的 Azure 区域 |
    | **vnetName** |新 VNet 的名称 |
    | **addressPrefix** |VNet 的地址空间，采用 CIDR 格式 |
    | **subnet1Name** |第一个 VNet 的名称 |
@@ -71,7 +71,7 @@ Azure 有两个部署模型：Azure 资源管理器模型和经典模型。 Micr
 6. 查看 **resources** 下的内容，并注意以下项：
    
    * **type**。 模板创建的资源的类型。 在此实例中为 **Microsoft.Network/virtualNetworks**，表示 VNet。
-   * **name**。 资源的名称。 请注意使用 **[parameters('vnetName')]**，这意味着在部署过程中由用户或参数文件作为输入提供该名称。
+   * **name**。 资源的名称。 请记下 [parameters('vnetName')] 的使用情况，该项表示用户提供作为输入的名称或部署期间的参数文件。
    * **properties**。 资源的属性列表。 此模板在 VNet 创建期间使用地址空间和子网属性。
 7. 导航回 [示例模板页](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)。
 8. 单击 **azuredeploy-paremeters.json**，并单击 **RAW**。
@@ -231,7 +231,7 @@ Azure 有两个部署模型：Azure 资源管理器模型和经典模型。 Micr
    
     ![在预览门户中提交部署磁贴](./media/virtual-networks-create-vnet-arm-template-click-include/figure4.png)
 
-10. 部署完成后，在 Azure 门户中单击“**更多服务**”，在出现的筛选器框中键入“*虚拟网络*”，并单击“虚拟网络”查看“虚拟网络”边栏选项卡。 在边栏选项卡中，单击“*TestVNet*”。 在“*TestVNet*”边栏选项卡中，单击“**子网**”查看创建的子网，如下图中所示：
+10. 部署完成后，即可在 Azure 门户中单击“所有服务”，在显示的筛选框中键入“虚拟网络”，然后单击虚拟网络以查看虚拟网络边栏选项卡。 在边栏选项卡中，单击“*TestVNet*”。 在“*TestVNet*”边栏选项卡中，单击“**子网**”查看创建的子网，如下图中所示：
     
      ![在预览门户中创建 VNet](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.png)
 

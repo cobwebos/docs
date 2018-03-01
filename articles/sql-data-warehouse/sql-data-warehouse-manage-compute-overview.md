@@ -1,6 +1,6 @@
 ---
-title: "管理 Azure SQL 数据仓库的计算能力（概述）| Microsoft Docs"
-description: "Azure SQL 数据仓库中的性能横向扩展功能。 通过调整 DWU 数目进行横向扩展，或者通过暂停和恢复计算资源来节省成本。"
+title: "管理 Azure SQL 数据仓库中的计算资源 | Microsoft Docs"
+description: "了解 Azure SQL 数据仓库中的性能横向扩展功能。 调整 DWU 可以实现横向扩展，暂停数据仓库可以降低成本。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -13,36 +13,30 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 3/23/2017
+ms.date: 02/20/2018
 ms.author: elbutter
-ms.openlocfilehash: d795abe5254d47a72a468b0989e46829a5c5142a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 7e6ae6e59b53dd79dab5e2504cf7a43a30e55353
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>管理 Azure SQL 数据仓库中的计算能力（概述）
-> [!div class="op_single_selector"]
-> * [概述](sql-data-warehouse-manage-compute-overview.md)
-> * [Portal](sql-data-warehouse-manage-compute-portal.md)
-> * [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
-> * [REST](sql-data-warehouse-manage-compute-rest-api.md)
-> * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
->
->
+# <a name="manage-compute-in-azure-sql-data-warehouse"></a>管理 Azure SQL 数据仓库中的计算资源
+了解如何管理 Azure SQL 数据仓库中的计算资源。 可以通过暂停数据仓库来降低成本，或者根据性能需求缩放数据仓库。 
 
-SQL 数据仓库的体系结构对存储和计算功能进行了分隔，允许每项功能单独进行缩放。 因此，可以独立于数据量，根据性能需求缩放计算资源。 此体系结构的自然结果是，计算和存储的[计费][billed]是独立的。 
+## <a name="what-is-compute-management"></a>计算管理是什么？
+SQL 数据仓库的体系结构对存储和计算功能进行了分隔，允许每项功能单独进行缩放。 因此，可以独立于数据存储，根据性能需求缩放计算资源。 还可以暂停和恢复计算资源。 此体系结构的自然结果是，计算和存储的[计费](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)是独立的。 如果有一段时间不需要使用数据仓库，可以通过暂停计算来节省计算成本。 
 
-本概述文章介绍如何扩展 SQL 数据仓库，以及如何利用 SQL 数据仓库的暂停、恢复和缩放功能。 
+## <a name="scaling-compute"></a>缩放计算资源
+调整数据仓库的[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)设置，可以横向扩展或还原计算资源。 添加更多的数据仓库单位后，加载和查询性能可线性提高。 SQL 数据仓库提供数据仓库单位的[服务级别](performance-tiers.md#service-levels)，确保在横向扩展或还原后性能不会有明显的变化。 
 
-## <a name="how-compute-management-operations-work-in-sql-data-warehouse"></a>SQL 数据仓库中计算管理操作的工作原理
-SQL 数据仓库的体系结构由控制节点、计算节点和跨 60 个分布区的存储层组成。 
+有关横向扩展的步骤，请参阅适用于 [Azure 门户](quickstart-scale-compute-portal.md)、[PowerShell](quickstart-scale-compute-powershell.md) 或 [T-SQL](quickstart-scale-compute-tsql.md) 的快速入门。 也可以使用 [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) 执行横向扩展操作。
 
-在 SQL 数据仓库中，系统的头节点管理元数据，并且包含分布式的查询优化器中的正常活动会话。 此头节点下是计算节点和存储层。 对于 DWU 400，系统具有一个头节点、四个计算节点和存储层，包含 60 个分布区。 
+若要执行缩放操作，SQL 数据仓库首先会终止所有传入的查询，并会回滚事务以确保一致的状态。 缩放只会在事务回滚完成后发生。 对于缩放操作，系统会从计算节点分离存储层、添加计算节点，然后将存储层重新附加到计算层。 每个数据仓库存储为在计算节点之间平均分布的 60 个分布区。 添加更多计算节点可提高计算能力。 随着计算节点的增加，每个计算节点的分布区数目会减少，因此可为查询提供更高的计算能力。 同样，减少数据仓库单位会减少计算节点数目，从而减少用于查询的计算资源。
 
-进行缩放或暂停操作时，系统将首先将终止所有传入的查询，并会回滚事务以确保一致的状态。 为缩放操作，缩放仅后会进行此事务回滚已完成。 对于向上缩放操作，额外的所需数量的系统设置计算节点，并重新附加到的存储层的计算节点开始。 对于缩减操作，不需要的节点将发布和剩余的计算节点重新自身附加到相应数量的分发。 对于暂停操作，所有计算节点的发行和系统将进行各种元数据操作，以使最终系统处于稳定状态。
+下表显示了当数据仓库单位数发生变化时，每个计算节点的分布区数目如何变化。  DWU6000 提供 60 个计算节点，实现的查询性能比 DWU100 高得多。 
 
-| DWU  | 计算节点的 \# | 每个节点的分布区 \# |
+| 数据仓库单位数  | 计算节点数 \# | 每个节点的分布区 \# |
 | ---- | ------------------ | ---------------------------- |
 | 100  | 1                  | 60                           |
 | 200  | 2                  | 30                           |
@@ -57,163 +51,72 @@ SQL 数据仓库的体系结构由控制节点、计算节点和跨 60 个分布
 | 3000 | 30                 | 2                            |
 | 6000 | 60                 | 1                            |
 
-用于管理计算的三个主要功能是：
 
-1. 暂停
-2. 恢复
-3. 缩放
+## <a name="finding-the-right-size-of-data-warehouse-units"></a>找到数据仓库单位的适当大小
 
-其中每项操作可能需要几分钟才能完成。 如果自动将缩放/暂停/继续，可能想要实现逻辑，确保某些操作具有已完成，然后再继续进行另一项操作。 
+若要体验横向扩展带来的性能优势（尤其是对于较大的数据仓库单位），可以至少使用 1 TB 的数据集。 若要找到数据仓库的最佳数据仓库单位数目，请尝试纵向扩展和缩减。 加载数据后，使用不同数量的数据仓库单位运行几个查询。 由于缩放很快就能完成，可以在一个小时或更少时间内尝试一些不同级别的性能。 
 
-检查通过不同的终结点的数据库状态将允许为了正确地实现这种操作的自动化。 门户将提供完成后通知运算和数据库的当前状态，但不允许对以编程方式检查状态。 
+有关找到最佳数据仓库单位数目的建议：
 
->  [!NOTE]
->
->  计算所有终结点之间不存在管理功能。
->
->  
+- 对于正在开发的数据仓库，可以从少量的数据仓库单位开始。  一个好的起点为 DW400 或 DW200。
+- 监视应用程序性能，将所选数据仓库单位数目与观测到的性能变化进行比较。
+- 采用线性缩放，确定需要以多大的增量来增加或减少数据仓库单位。 
+- 继续进行调整，直到达到业务要求的最佳性能级别。
 
-|              | 暂停/恢复 | 缩放 | 检查数据库状态 |
-| ------------ | ------------ | ----- | -------------------- |
-| Azure 门户 | 是          | 是   | **否**               |
-| PowerShell   | 是          | 是   | 是                  |
-| REST API     | 是          | 是   | 是                  |
-| T-SQL        | **否**       | 是   | 是                  |
+## <a name="when-to-scale-out"></a>何时横向扩展
+横向扩展数据仓库单位会影响性能的以下方面：
 
+- 以线性方式改善系统的扫描、聚合和 CTAS 语句性能。
+- 增加用于加载数据的读取器和编写器数量。
+- 并发查询和并发槽的最大数量。
 
+有关何时横向扩展数据仓库单位的建议：
 
-<a name="scale-compute-bk"></a>
+- 执行繁重的数据加载或转换操作时，可以横向扩展以更快速地获取数据。
+- 高峰业务时段，可以横向扩展以容纳更大数量的并发查询。 
 
-## <a name="scale-compute"></a>缩放计算
+## <a name="what-if-scaling-out-does-not-improve-performance"></a>如果横向扩展无法提高性能怎么办？
 
-SQL 数据仓库中的性能以 [数据仓库单位 (DWU)][数据仓库单位 (DWU)] 度量，这是 CPU、内存和 I/O 带宽等计算资源的抽象度量值。 想要缩放其系统性能的用户可以通过不同的方式实现此目的，例如通过门户、T-SQL 和 REST API。 
+添加数据仓库单位可提高并行度。 如果工作在计算节点之间均匀拆分，则更高的并行度可以提高查询性能。 有几种原因会导致横向扩展不能改变性能。 数据可能在分布区中扭曲，或者查询可能引入了大量的数据移动操作。 若要调查查询性能问题，请参阅[排查性能问题](sql-data-warehouse-troubleshoot.md#performance)。 
 
-### <a name="how-do-i-scale-compute"></a>如何缩放计算资源？
-可通过更改 DWU 设置来管理 SQL 数据仓库的计算能力。 为特定的操作添加更多 DWU 后，性能会线性提高。  我们提供确保性能将更改显著时是向上或向下扩展系统的 DWU 产品。 
+## <a name="pausing-and-resuming-compute"></a>暂停和恢复计算资源
+暂停计算资源会导致存储层从计算节点分离。 将从帐户中释放计算资源。 暂停计算资源时，不会产生计算费用。 恢复计算资源会将存储重新附加到计算节点，并且恢复计算费用。 暂停数据仓库时：
 
-若要调整 DWU，可以使用以下任何单个方法。
+* 计算和内存资源返回到数据中心的可用资源池中
+* 暂停期间，数据仓库单位的费用为零。
+* 不影响数据存储，数据保持不变。 
+* SQL 数据仓库将取消所有正在运行或已排队的操作。
 
-* [通过 Azure 门户缩放计算能力][Scale compute power with Azure portal]
-* [通过 PowerShell 缩放计算能力][Scale compute power with PowerShell]
-* [通过 REST API 缩放计算能力][Scale compute power with REST APIs]
-* [通过 TSQL 缩放计算能力][Scale compute power with TSQL]
+恢复数据仓库时：
 
-### <a name="how-many-dwus-should-i-use"></a>应该使用多少 DWU？
+* SQL 数据仓库将获取数据仓库单位设置的计算和内存资源。
+* 数据仓库单位的计算费用将会恢复。
+* 数据可用。
+* 数据仓库联机后，需要重启工作负荷查询。
 
-若要了解理想的 DWU 值，请尝试在加载数据之后增加和减少 DWU 并运行几个查询。 由于缩放很快就能完成，可以在一个小时或更少时间内尝试一些不同级别的性能。 
+如果希望随时可访问数据仓库，请考虑将其缩减到最小大小，而不是暂停。 
 
-> [!Note] 
-> SQL 数据仓库旨在处理大量数据。 若要了解数据仓库的真正缩放功能，尤其是大规模 DWU 处理能力，可以使用接近或超过 1 TB 的大型数据集。
+有关暂停和恢复步骤，请参阅适用于 [Azure 门户](pause-and-resume-compute-portal.md)或 [PowerShell](pause-and-resume-compute-powershell.md) 的快速入门。 也可以使用[暂停 REST API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) 或[恢复 REST API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute)。
 
-针对工作负荷查找最佳 DWU 时，建议：
+## <a name="drain-transactions-before-pausing-or-scaling"></a>暂停或缩放之前清空事务
+在启动暂停或缩放操作之前，我们建议先让现有事务完成。
 
-1. 对于正在开发的数据仓库，可以从较小的 DWU 性能级别开始。  一个好的起点为 DW400 或 DW200。
-2. 监视应用程序性能，将所选 DWU 数目与观测到的性能变化进行比较。
-3. 通过假设线性缩放，判断需要将性能加快或减慢多少才能达到要求的最佳性能级别。
-4. 如果要加快或减慢工作负荷的执行速度，则可按比例相应地提高或降低 DWU 数目。 
-5. 继续进行调整，直到达到业务要求的最佳性能级别。
+在暂停或缩放 SQL 数据仓库时，用户一发起暂停或缩放请求，系统就会在后台取消查询。  取消简单的 SELECT 查询是很快的操作，对于暂停或缩放实例所花费的时间几乎没有什么影响。  但是，事务性查询（将修改数据或结构）可能无法快速地停止。  **按定义，事务性查询必须完全完成或回退更改。**  回滚事务性查询已完成的任务可能需要很长时间，甚至比查询应用原始更改更久。  例如，如果取消的删除行查询已经运行一小时，系统可能需要一个小时重新插入已删除的行。  如果在事务运行中运行暂停或缩放，暂停或缩放操作可能需要一些时间，因为暂停和缩放必须等回滚完成才能继续。
 
-> [!NOTE]
->
-> 此外，如果可以计算节点之间拆分工作，与多个并行化只会增加查询性能。 如果发现缩放未更改性能，请查看我们的性能优化文章，以检查是否没有数据均匀分布，或者如果正在引入大量的数据移动。 
+另请参阅[了解事务](sql-data-warehouse-develop-transactions.md)和 [优化事务][优化事务](sql-data-warehouse-develop-best-practices-transactions.md)。
 
-### <a name="when-should-i-scale-dwus"></a>何时应进行 DWU 缩放？
-缩放 DWU 会改变以下重要方案：
+## <a name="automating-compute-management"></a>将计算管理自动化
+若要将计算管理操作自动化，请参阅[使用 Azure Functions 管理计算](manage-compute-with-azure-functions.md)。
 
-1. 以线性方式更改系统对扫描、聚合和 CTAS 语句的性能
-2. 使用 PolyBase 加载时增加读取器和编写器的数
-3. 并发查询和并发槽的最大数量
+每项横向扩展、暂停和恢复操作可能需要几分钟才能完成。 如果自动执行缩放、暂停或恢复操作，我们建议实现相应的逻辑来确保先完成特定的操作，然后再继续其他操作。 通过不同的终结点检查数据仓库状态可以正确实现此类操作的自动化。 
 
-关于何时进行 DWU 缩放的建议：
+若要检查数据仓库状态，请参阅适用于 [PowerShell](quickstart-scale-compute-powershell.md#check-database-state) 或 [T-SQL](quickstart-scale-compute-tsql.md#check-database-state) 的快速入门。 也可以使用 [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state) 检查数据仓库状态。
 
-1. 执行繁重的数据加载或转换操作时，增加 DWU 数目即可更快速地获取数据。
-2. 高峰业务时段，扩大规模以容纳更大数量的并发查询。 
-
-<a name="pause-compute-bk"></a>
-
-## <a name="pause-compute"></a>暂停计算
-[!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
-
-若要暂停数据库，请使用下列任意方法之一。
-
-* [通过 Azure 门户暂停计算][Pause compute with Azure portal]
-* [通过 PowerShell 暂停计算][Pause compute with PowerShell]
-* [通过 REST API 暂停计算][Pause compute with REST APIs]
-
-<a name="resume-compute-bk"></a>
-
-## <a name="resume-compute"></a>恢复计算
-[!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
-
-若要恢复数据库，请使用下列任意方法之一。
-
-* [通过 Azure 门户恢复计算][Resume compute with Azure portal]
-* [通过 PowerShell 恢复计算][Resume compute with PowerShell]
-* [通过 REST API 恢复计算][Resume compute with REST APIs]
-
-<a name="check-compute-bk"></a>
-
-## <a name="check-database-state"></a>检查数据库状态 
-
-若要恢复数据库，请使用下列任意方法之一。
-
-- [使用 T-SQL 检查数据库状态][Check database state with T-SQL]
-- [使用 PowerShell 检查数据库状态][Check database state with PowerShell]
-- [使用 REST API 检查数据库状态][Check database state with REST APIs]
 
 ## <a name="permissions"></a>权限
 
-缩放数据库需要 [ALTER DATABASE][ALTER DATABASE] 中所述的权限。  暂停和恢复需要 [SQL DB 参与者][SQL DB Contributor]权限，具体说来就是 Microsoft.Sql/servers/databases/action。
+缩放数据仓库需要 [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse.md) 中所述的权限。  暂停和恢复需要 [SQL DB 参与者](../active-directory/role-based-access-built-in-roles.md#sql-db-contributor)权限，具体而言是 Microsoft.Sql/servers/databases/action 权限。
 
-<a name="next-steps-bk"></a>
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章，了解其他一些重要性能概念：
-
-* [工作负荷和并发管理][Workload and concurrency management]
-* [表设计概述][Table design overview]
-* [表分发][Table distribution]
-* [表索引][Table indexing]
-* [表分区][Table partitioning]
-* [表统计信息][Table statistics]
-* [最佳做法][Best practices]
-
-<!--Image reference-->
-
-<!--Article references-->
-[billed]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
-[Scale compute power with Azure portal]: ./sql-data-warehouse-manage-compute-portal.md#scale-compute-power
-[Scale compute power with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#scale-compute-bk
-[Scale compute power with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#scale-compute-bk
-[Scale compute power with TSQL]: ./sql-data-warehouse-manage-compute-tsql.md#scale-compute-bk
-
-[capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
-
-[Pause compute with Azure portal]:  ./sql-data-warehouse-manage-compute-portal.md
-[Pause compute with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#pause-compute-bk
-[Pause compute with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#pause-compute-bk
-
-[Resume compute with Azure portal]:  ./sql-data-warehouse-manage-compute-portal.md
-[Resume compute with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#resume-compute-bk
-[Resume compute with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#resume-compute-bk
-
-[Check database state with T-SQL]: ./sql-data-warehouse-manage-compute-tsql.md#check-database-state-and-operation-progress
-[Check database state with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#check-database-state
-[Check database state with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#check-database-state
-
-[Workload and concurrency management]: ./sql-data-warehouse-develop-concurrency.md
-[Table design overview]: ./sql-data-warehouse-tables-overview.md
-[Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Table indexing]: ./sql-data-warehouse-tables-index.md
-[Table partitioning]: ./sql-data-warehouse-tables-partition.md
-[Table statistics]: ./sql-data-warehouse-tables-statistics.md
-[Best practices]: ./sql-data-warehouse-best-practices.md
-[development overview]: ./sql-data-warehouse-overview-develop.md
-
-[SQL DB Contributor]: ../active-directory/role-based-access-built-in-roles.md#sql-db-contributor
-
-<!--MSDN references-->
-[ALTER DATABASE]: https://msdn.microsoft.com/library/mt204042.aspx
-
-<!--Other Web references-->
-[Azure portal]: http://portal.azure.com/
+计算资源管理工作的另一方面是为单个查询分配不同的计算资源。 有关详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。

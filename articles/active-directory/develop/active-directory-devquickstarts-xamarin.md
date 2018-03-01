@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 94a7d35115420d455fe94e1173abf76622172f6f
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 77ac6a7cfe089fa934592c412c75a9f33efde5e8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-xamarin-getting-started"></a>Azure AD Xamarin 入门
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/24/2018
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在顶部栏上，单击帐户。 然后，在“目录”列表下选择要注册应用的 Active Directory 租户。
-3. 在左窗格中，单击“更多服务”，然后选择“Azure Active Directory”。
+3. 在左窗格中，单击“所有服务”，并选择“Azure Active Directory”。
 4. 单击“应用注册”，并选择“添加”。
 5. 若要创建新的“本机客户端应用程序”，请遵照提示操作。
   * “名称”向用户描述应用。

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: genemi
-ms.openlocfilehash: 2daf05513127c2d1ab8e4b0196b578e18b6e03e7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: fbc63cebe8c1456f5eb34666d15f4e00fd55fe5b
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的独立单租户应用程序
 
@@ -100,9 +100,7 @@ ms.lasthandoff: 02/09/2018
 请看看一些已部署的资源：
 
 1. 在 [Azure 门户](http://portal.azure.com)中，浏览到资源组列表。
-2. 请参阅 **wingtip-sa-catalog-&lt;user&gt;** 资源组。
-    - 在此资源组中，已部署 **catalog-sa-&lt;user&gt;** 服务器。 服务器包含 **tenantcatalog** 数据库。
-    - 还将看到三个租户资源组。
+2. 应能看到三个租户资源组。
 3. 打开 wingtip-sa-fabrikam-&lt;user&gt; 资源组，其中包括“Fabrikam 爵士乐俱乐部”这一部署的资源。  fabrikamjazzclub-&lt;user&gt; 服务器包括 fabrikamjazzclub 数据库。
 
 每个租户数据库都是一个 50 DTU 的 独立数据库。
@@ -131,6 +129,6 @@ ms.lasthandoff: 02/09/2018
 > * 关于构成该应用的服务器和数据库。
 > * 如何删除示例资源以停止相关计费。
 
-接下来，请尝试[预配和编录](saas-standaloneapp-provision-and-catalog.md)教程。
+接下来，请尝试[预配和目录](saas-standaloneapp-provision-and-catalog.md)教程，你将在其中了解租户目录的用途，该目录可实现大量跨租户方案，如架构管理和租户分析。
  
 

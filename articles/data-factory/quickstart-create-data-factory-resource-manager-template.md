@@ -3,21 +3,21 @@ title: "使用资源管理器模板创建 Azure 数据工厂 | Microsoft Docs"
 description: "本教程使用 Azure 资源管理器模板创建一个示例 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: douglaslMS
 manager: jhubbard
-editor: monicar
+editor: 
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/22/2018
-ms.author: spelluru
-ms.openlocfilehash: 77b30610072fb7f573597d035dcc161b4739ec7c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: douglasl
+ms.openlocfilehash: 50f6bebffbf9eb88ec2c725184793d1ea9291312
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板创建 Azure 数据工厂
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

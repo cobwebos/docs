@@ -13,17 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/24/2018
+ms.date: 02/15/2018
 ms.author: saurinsh
-ms.openlocfilehash: 6284b246c071fb99a8b47845aca34b6262e5b856
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: b4d71eeb0aab75e67e851f867f194ed7578d0d1c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-domain-joined-hdinsight-sandbox-environment"></a>配置已加入域的 HDInsight 沙盒环境
 
-了解如何使用独立的Active Directory 和 [Apache Ranger](http://hortonworks.com/apache/ranger/) 安装 Azure HDInsight 群集，以便利用强身份验证和丰富的基于角色的访问控制 (RBAC) 策略。 有关详细信息，请参阅[引入已加入域的 HDInsight 群集](apache-domain-joined-introduction.md)。
+了解如何使用独立的Active Directory 和 [Apache Ranger](http://hortonworks.com/apache/ranger/) 安装 Azure HDInsight 群集，以便利用强身份验证和丰富的基于角色的访问控制 (RBAC) 策略。 有关详细信息，请参阅[引入已加入域的 HDInsight 群集](apache-domain-joined-introduction.md)。 
+
+> [!IMPORTANT]
+> 默认情况下，此设置只能在使用 Azure 存储帐户时使用。 若要用于 Azure Data Lake Store，请将 Active Directory 同步到新的 Azure Active Directory。
 
 如果没有已加入域的 HDInsight 群集，每个群集只能有一个 Hadoop HTTP 用户帐户和一个 SSH 用户帐户。  可使用以下服务实现多用户身份验证：
 
@@ -40,6 +43,7 @@ ms.lasthandoff: 01/25/2018
     - 创建 HDInsight 群集
 
 > [!IMPORTANT]
+> 
 > 在加入域的 HDInsight 上未启用 Oozie。
 
 ## <a name="prerequisite"></a>先决条件
@@ -201,12 +205,12 @@ ms.lasthandoff: 01/25/2018
 
         ![已加入域的 HDInsight 高级设置域](./media/apache-domain-joined-configure/hdinsight-domain-joined-portal-advanced-domain-settings.png)
         
-        - 域名：输入在[创建 Active Directory](#create-an-active-directory)中使用的域名。
-        - 域用户名：输入在[创建 Active Directory](#create-an-active-directory)中使用的 AD 管理员用户名。
+        - 域名：输入在“创建 Active Directory”[](#create-an-active-directory)中使用的域名。
+        - 域用户名：输入在“创建 Active Directory”[](#create-an-active-directory)中使用的 AD 管理员用户名。
         - 组织单位：相关示例请参阅屏幕截图。
         - LDAPS URL：相关示例请参阅屏幕截图
-        - 访问用户组：输入在[创建 AD 用户和组](#optionally-createad-users-and-groups)中创建的用户组名称
-    - 虚拟网络：选择在[创建 Active Directory](#create-an-active-directory)中创建的虚拟网络。 模板中所用的默认名称为 **adVNET**。
+        - 访问用户组：输入在“创建 AD 用户和组”[](#optionally-createad-users-and-groups)中创建的用户组名称
+    - 虚拟网络：选择在“创建 Active Directory”[](#create-an-active-directory)中创建的虚拟网络。 模板中所用的默认名称为 **adVNET**。
     - 子网：模板中所用的默认名称为 **adSubnet**。
 
 

@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 08426b6142dd125a5981d65635ecc55336cb3d15
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 21a050373a9901220e106534464a8c13565bb3d8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的限制
 
@@ -33,7 +33,6 @@ Azure Cloud Shell 有以下已知限制：
 * 使用装载的存储时，仅持久保存 `clouddrive` 目录中的修改。 在 Bash 中，`$Home` 目录也会持久保存。
 * 仅可从[已分配区域](persisting-shell-storage.md#mount-a-new-clouddrive)内部装载 Azure 文件共享。
   * 在 Bash 中，运行 `env` 可以找到设置为 `ACC_LOCATION` 的区域。
-* Azure 文件仅支持本地冗余存储和异地冗余存储帐户。
 
 ### <a name="browser-support"></a>浏览器支持
 
@@ -55,18 +54,11 @@ Cloud Shell 适用于交互式用例。 因此，任何长时间运行的非交�
 
 ### <a name="user-permissions"></a>用户权限
 
-权限设置为普通用户，不具有 sudo 访问权限。 不会保留 `$Home` 目录外部的任何安装。
-
-### <a name="clouddrive-smb-limited-permissions"></a>Clouddrive SMB 限制的权限
-`clouddrive` 目录内的某些命令（如 `git clone`）没有读取/写入某些文件的适当权限。 如果遇到此问题，请尝试从没有 SMB 限制的 `$Home` 目录再次尝试。
+权限设置为普通用户，不具有 sudo 访问权限。 不会保留 `$Home` 或 `clouddrive` 目录外部的任何安装。
 
 ### <a name="editing-bashrc"></a>编辑 .bashrc
 
-编辑 .bashr 时要小心，执行这一操作可能导致 Cloud Shell 出现意外错误。
-
-### <a name="bashhistory"></a>.bash_history
-
-由于 Cloud Shell 会话中断或并发会话，bash 命令的历史记录可能不一致。
+编辑 .bashrc 时要小心，执行这一操作可能导致 Bash in Cloud Shell 出现意外错误。
 
 ## <a name="powershell-limitations"></a>PowerShell 限制
 

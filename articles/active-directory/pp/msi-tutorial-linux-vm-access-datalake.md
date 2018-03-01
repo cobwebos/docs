@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: dc3ebf3ba232241677dc7aace4f835cee0cf54a7
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: e2a2b885dd0dc5b240aef234ef1ff139d788de3c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>使用 Linux VM 托管服务标识 (MSI) 访问 Azure Data Lake Store
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/03/2018
 
 本教程将新建一个 Linux VM。 另外，还可以在现有 VM 上启用 MSI。
 
-1. 单击 Azure 门户左上角的“新建”按钮。
+1. 单击 Azure 门户左上角的“创建资源”。
 2. 选择“计算”，然后选择“Ubuntu Server 16.04 LTS”。
 3. 输入虚拟机信息。 对于“身份验证类型”，选择“SSH 公钥”或“密码”。 使用创建的凭据可以登录 VM。
 

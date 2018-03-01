@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 01/25/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: b2fc8a622549a9858c6c769a7e648fe07a3d01c1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2cb32ddc67060d9860d172b90cc399622c52b04b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-cli"></a>使用 Azure CLI 创建虚拟网络
 
-本文将介绍如何创建虚拟网络。 创建虚拟网络后，向虚拟网络中部署两个虚拟机，并让它们互相私下通信。
+本文将介绍如何创建虚拟网络。 创建好虚拟网络后，在虚拟网络中部署两个虚拟机，并让它们互相私下通信。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -81,7 +81,7 @@ az vm create \
   --no-wait
 ```
 
-Azure 会在“myVirtualNetwork”虚拟网络的“default”子网中自动创建虚拟机，因为虚拟网络存在于资源组中，并且命令中未指定任何虚拟网络或子网。 创建期间，Azure DHCP 自动将 10.0.0.4 分配到虚拟机，因为它是“default”子网中的第一个可用地址。 虚拟机创建的位置必须与虚拟网络在同一位置。 虽然在本文中虚拟机在同一资源组，但实际上并无此要求。
+Azure 会在“myVirtualNetwork”虚拟网络的“default”子网中自动创建虚拟机，因为虚拟网络存在于资源组中，并且命令中未指定任何虚拟网络或子网。 创建期间，Azure DHCP 自动将 10.0.0.4 分配到虚拟机，因为它是“default”子网中的第一个可用地址。 虚拟机创建的位置必须与虚拟网络在同一位置。 虽然在本文中虚拟网络位于同一资源组，但实际上并无此要求。
 
 创建第二个虚拟机。 默认情况下，Azure 还是在“default”子网中创建此虚拟机。
 

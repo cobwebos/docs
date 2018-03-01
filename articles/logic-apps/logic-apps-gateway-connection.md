@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: f385d832deed2eaf8ea21eb75d62944cbbf3d13d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 216745f9f540235ee48661eae922a5ae0e716e01
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="connect-to-data-sources-on-premises-from-logic-apps-with-on-premises-data-gateway"></a>通过本地数据网关，从逻辑应用连接到本地数据源
 
@@ -63,21 +63,19 @@ ms.lasthandoff: 10/11/2017
   > [!NOTE]
   > Windows 服务帐户与用于连接到本地数据源的帐户或用于登录到云服务的 Azure 工作或学校帐户不同。
 
-## <a name="set-up-the-data-gateway-connection"></a>设置数据网关连接
-
-### <a name="1-install-the-on-premises-data-gateway"></a>1.安装本地数据网关
+## <a name="install-the-on-premises-data-gateway"></a>安装本地数据网关
 
 请执行[安装本地数据网关的步骤](logic-apps-gateway-install.md)（如果尚未安装）。 在继续执行其他步骤之前，请确保已在本地计算机上安装数据网关。
 
 <a name="create-gateway-resource"></a>
 
-### <a name="2-create-an-azure-resource-for-the-on-premises-data-gateway"></a>2.创建本地数据网关的 Azure 资源
+## <a name="create-an-azure-resource-for-the-on-premises-data-gateway"></a>创建本地数据网关的 Azure 资源
 
 在本地计算机上安装网关以后，必须在 Azure 中以资源形式创建数据网关。 此步骤还将网关资源与 Azure 订阅相关联。
 
 1. 登录 [Azure 门户](https://portal.azure.com "Azure portal")。 请确保所使用的 Azure 工作或学校电子邮件地址是曾经用于安装网关的。
 
-2. 在 Azure 主菜单上，选择“新建” > “企业集成” > “本地数据网关”，如下所示：
+2. 在 Azure 主菜单上，选择“创建资源” > “企业集成” > “本地数据网关”：
 
    ![查找“本地数据网关”](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
 
@@ -115,7 +113,7 @@ ms.lasthandoff: 10/11/2017
 
 <a name="connect-logic-app-gateway"></a>
 
-### <a name="3-connect-your-logic-app-to-the-on-premises-data-gateway"></a>3.将逻辑应用连接到本地数据网关
+## <a name="connect-your-logic-app-to-the-on-premises-data-gateway"></a>将逻辑应用连接到本地数据网关
 
 创建数据网关资源并将 Azure 订阅与该资源关联以后，即可在逻辑应用和数据网关之间创建一个连接。
 
@@ -157,6 +155,7 @@ ms.lasthandoff: 10/11/2017
    > 如果更新未生效，请尝试[停止网关 Windows 服务，并重新启动该服务](./logic-apps-gateway-install.md#restart-gateway)。
 
 <a name="change-delete-gateway-resource"></a>
+
 ## <a name="switch-or-delete-your-on-premises-data-gateway-resource"></a>切换或删除本地数据网关资源
 
 要创建其他网关资源、将网关与其他资源相关联，或者移除网关资源，则可删除网关资源，不影响网关安装。 
@@ -166,6 +165,7 @@ ms.lasthandoff: 10/11/2017
 3. 选择“本地数据网关”，并在资源工具栏上，选择“删除”。
 
 <a name="faq"></a>
+
 ## <a name="frequently-asked-questions"></a>常见问题
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]

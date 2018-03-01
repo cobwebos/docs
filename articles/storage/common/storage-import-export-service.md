@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: muralikk
-ms.openlocfilehash: 37860425460496c5fc2451713d1d3ec58ac9106d
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0c34b7ce028ef0fae77322513f62557fa9f9929c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>使用 Microsoft Azure 导入/导出服务将数据传输到 Azure 存储中
 本文分步介绍如何使用 Azure 导入/导出服务将磁盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure 存储传输到硬盘驱动器，然后再寄送到本地站点。 可将单个内部 SATA 磁盘驱动器中的数据导入 Azure Blob 存储或 Azure 文件。 
@@ -87,7 +87,7 @@ ms.lasthandoff: 01/16/2018
 本部分列出了使用此服务需要满足的先决条件。 在寄送驱动器之前仔细查看这些先决条件。
 
 ### <a name="storage-account"></a>存储帐户
-必须拥有 Azure 订阅以及一个或多个存储帐户才能使用导入/导出服务。 每个作业只能用于将数据传输到一个存储帐户或者从一个存储帐户传输数据。 换言之，一个导入/导出作业不能跨多个存储帐户。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-create-storage-account.md#create-a-storage-account)。
+必须拥有 Azure 订阅以及一个或多个存储帐户才能使用导入/导出服务。 Azure 导入/导出仅支持经典、Blob 存储帐户和常规用途 v1 存储帐户。 每个作业只能用于将数据传输到一个存储帐户或者从一个存储帐户传输数据。 换言之，一个导入/导出作业不能跨多个存储帐户。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-create-storage-account.md#create-a-storage-account)。
 
 ### <a name="data-types"></a>数据类型
 可使用 Azure 导入/导出服务将数据复制到“块”Blob、“页”Blob 或文件中。 与之相反，只能使用此服务从 Azure 存储中导出**块** Blob、**页** Blob 或**追加** Blob。 该服务仅支持将 Azure 文件导入到 Azure 存储。 当前暂不支持导出 Azure 文件。
@@ -299,7 +299,7 @@ Azure 门户中的此映像会显示示例作业的驱动器状态：
 
 **事务成本**
 
-将数据导入 Azure 存储没有事务费用。 将数据从 Blob 存储导出时，需支付标准的传出费用。 有关事务费用的更多详细信息，请参阅[数据传输定价。](https://azure.microsoft.com/pricing/details/data-transfers/)
+将数据导入 Azure 存储时，除标准存储事务成本外没有任何事务成本。 将数据从 Blob 存储导出时，需支付标准的传出费用。 有关事务费用的更多详细信息，请参阅[数据传输定价。](https://azure.microsoft.com/pricing/details/data-transfers/)
 
 
 

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 92521bab2082f63fa01e816151e3da9400effe6d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: e17d8076a00cab2cf608fe1a690e4a780a69d56f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用逻辑应用自动执行 Application Insights 过程
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/01/2017
 
 ### <a name="step-1-create-a-logic-app"></a>步骤 1：创建逻辑应用
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在“新建”窗格中，选择“Web + 移动”，然后选择“逻辑应用”。
+2. 单击“创建资源”，选择“Web + 移动”，然后选择“逻辑应用”。
 
     ![新建逻辑应用窗口](./media/automate-with-logic-apps/logicapp1.png)
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 11/01/2017
 
    c. 单击“正文”框中的任意位置，然后在右侧打开的动态内容菜单中选择“正文”。
 
-   d. 单击“显示高级选项”。
+   d.单击“下一步”。 单击“显示高级选项”。
 
       ![Office 365 Outlook 配置](./media/automate-with-logic-apps/flow5.png)
 

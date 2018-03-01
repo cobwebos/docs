@@ -1,10 +1,11 @@
-- name: Azure Time Series Insights
+- name: Azure Time Series Insights 文档
   href: index.yml
 - name: 概述
   items:
     - name: 关于时序见解
       href: time-series-insights-overview.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 探索时序见解
       href: time-series-quickstart.md

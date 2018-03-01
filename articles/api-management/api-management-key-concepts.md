@@ -14,21 +14,15 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 010c4619a2a4d8ae477ebd6e66747c55cde0fc08
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 0410e0176d5c853e1110fe3460c7d9314e7fd397
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="what-is-api-management"></a>什么是 API 管理？
 
 API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和内部开发人员，以充分发挥其数据和服务的潜力。 所有企业都想要作为数字平台扩大其运营、创建新渠道、查找新客户和深化与现有的契合。 API 管理通过开发人员参与、商业洞察力、分析、安全性和保护提供了核心竞争力以确保成功的 API 程序。 可以使用 Azure API 管理处理任何后端，并基于它发布正式的 API 程序。
-
-观看以下视频，概要了解 Azure API 管理，并学习如何使用 API 管理将更多功能添加到 API，包括访问控制、速率限制、监视、事件日志记录和响应缓存，将工作量降至最低。
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-API-Management-Overview/player]
-> 
-> 
 
 本文概述了涉及 APIM 的常用方案，  并简单介绍了 APIM 系统的主要组件， 然后较详细地介绍了每个组件。
 

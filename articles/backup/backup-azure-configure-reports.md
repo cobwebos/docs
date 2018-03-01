@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40433df5ebe90aec3a9294f2c5a6083c4567b161
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: e32e84eacee3a43b948b0a4b4177ab956b34ca3c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 本文逐步介绍了如何使用恢复服务保管库配置 Azure 备份报表，以及如何使用 Power BI 访问这些报表。 执行这些步骤后，可直接转到 Power BI，以便查看所有报表、自定义和创建报表。 
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="configure-storage-account-for-reports"></a>配置报表的存储帐户
 请按照下列步骤操作，使用 Azure 门户配置恢复服务保管库的存储帐户。 存储帐户只需配置一次。配置后，便可以直接转到 Power BI，从而查看内容包并利用报表。
-1. 如果已打开恢复服务保管库，请转到下一步。 如果未打开恢复服务保管库，而是位于 Azure 门户中，请在“中心”菜单中单击“浏览”。
+1. 如果已打开恢复服务保管库，请转到下一步。 如果未打开恢复服务保管库，而是位于 Azure 门户中，请单击“所有服务”。
 
    * 在资源列表中，键入“恢复服务”。
    * 开始键入时，会根据输入筛选该列表。 出现“恢复服务保管库”时，请单击它。
@@ -150,7 +150,7 @@ ms.lasthandoff: 11/10/2017
 ## <a name="troubleshooting-errors"></a>排查错误
 | 错误详细信息 | 解决方法 |
 | --- | --- |
-| 为备份报表设置存储帐户后，“存储帐户”仍显示“未配置”。 | 如果已成功配置存储帐户，报告数据将忽略此问题而流通。 若要解决此问题，请转到“Azure 门户”>“更多服务”>“诊断设置”>“RS 保管库”>“编辑设置”。 删除以前配置的设置，然后从同一边栏选项卡中创建新设置。 此时请将“名称”字段设置为“服务”。 这应会显示配置的存储帐户。 |
+| 为备份报表设置存储帐户后，“存储帐户”仍显示“未配置”。 | 如果已成功配置存储帐户，报告数据将忽略此问题而流通。 若要解决此问题，请转到“Azure 门户”>“所有服务”>“诊断设置”>“RS 保管库”>“编辑设置”。 删除以前配置的设置，然后从同一边栏选项卡中创建新设置。 此时请将“名称”字段设置为“服务”。 这应会显示配置的存储帐户。 |
 |在 Power BI 中导入 Azure 备份内容包后，出现错误“404 - 未找到容器”。 | 如本文档中的建议，在恢复服务保管库中配置报表后，必须等待 24 小时，Power BI 中才会正确显示报表。 如果在 24 小时内尝试访问报表，将收到此错误，因为尚不存在完整的数据，无法显示有效报表。 |
 
 ## <a name="next-steps"></a>后续步骤

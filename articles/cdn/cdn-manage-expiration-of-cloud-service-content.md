@@ -3,8 +3,8 @@ title: "在 Azure 内容交付网络中管理 Web 内容的到期时间 | Micros
 description: "了解如何管理 Azure CDN 中 Azure Web 应用/云服务、ASP.NET 或 IIS 内容的过期问题。"
 services: cdn
 documentationcenter: .NET
-author: zhangmanling
-manager: erikre
+author: dksimpson
+manager: akucer
 editor: 
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
 ms.service: cdn
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 02/15/2018
 ms.author: mazha
-ms.openlocfilehash: dca6ca5f21f4a4f1701af57eb40d92094b6a4754
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: db7b5053cb926d2ec86c7feea4ac411acbeb1ae2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>在 Azure 内容交付网络中管理 Web 内容的到期时间
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.lasthandoff: 12/21/2017
 > * [Azure Blob 存储](cdn-manage-expiration-of-blob-content.md)
 > 
 
-来自任何可公开访问的源 Web 服务器的文件均可在 Azure 内容交付网络 (CDN) 中进行缓存，直到其生存时间 (TTL) 结束。 TTL 由来自源服务器的 HTTP 响应中的 `Cache-Control` 标头决定。 本文介绍如何为 Microsoft Azure 应用服务的 Web 应用功能、Azure 云服务、ASP.NET 应用程序和 Internet Information Services (IIS) 网站设置 `Cache-Control` 标头，所有标头的配置方式都类似。 可以使用配置文件或以编程方式设置 `Cache-Control` 标头。 
+来自可公开访问的源 Web 服务器的文件均可缓存在 Azure 内容交付网络 (CDN) 中，直到其生存时间 (TTL) 结束。 TTL 由来自源服务器的 HTTP 响应中的 `Cache-Control` 标头决定。 本文介绍如何为 Microsoft Azure 应用服务的 Web 应用功能、Azure 云服务、ASP.NET 应用程序和 Internet Information Services (IIS) 网站设置 `Cache-Control` 标头，所有标头的配置方式都类似。 可以使用配置文件或以编程方式设置 `Cache-Control` 标头。 
 
-此外，还可以通过设置 [CDN 缓存规则](cdn-caching-rules.md)从 Azure 门户控制缓存设置。 如果已设置了一个或多个缓存规则并已将其缓存行为设置为“替代”或“绕过缓存”，则将忽略本文中讨论的源提供的缓存设置。 有关一般缓存概念的信息，请参阅[缓存工作原理](cdn-how-caching-works.md)。
+此外，还可以通过设置 [CDN 缓存规则](cdn-caching-rules.md)从 Azure 门户控制缓存设置。 如果创建了一个或多个缓存规则并将其缓存行为设置为“替代”或“绕过缓存”，则将忽略本文中讨论的源提供的缓存设置。 有关一般缓存概念的信息，请参阅[缓存工作原理](cdn-how-caching-works.md)。
 
 > [!TIP]
 > 可以选择不对文件设置 TTL。 在这种情况下，Azure CDN 将自动应用默认 TTL（七天），除非已在 Azure 门户中设置了缓存规则。 此默认 TTL 仅适用于常规 Web 交付优化。 对于大型文件优化，默认 TTL 为一天；对于媒体流优化，默认 TTL 为一年。
@@ -36,16 +36,64 @@ ms.lasthandoff: 12/21/2017
 > 有关 Azure CDN 如何加速访问文件和其他资源的详细信息，请参阅 [Azure 内容交付网络概述](cdn-overview.md)。
 > 
 
+## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>使用 CDN 缓存规则设置 Cache-Control 标头
+设置 Web 服务器的 `Cache-Control` 标头的首选方法是使用 Azure 门户中的缓存规则。 有关 CDN 缓存规则的详细信息，请参阅[使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)。
+
+> [!NOTE] 
+> 缓存规则仅适用于 **Azure CDN from Verizon Standard** 和 **Azure CDN from Akamai Standard** 配置文件。 对于 **Azure CDN from Verizon Premium** 配置文件，必须在**管理**门户中使用 [Azure CDN 规则引擎](cdn-rules-engine.md)来获得类似的功能。
+
+**导航到 CDN 缓存规则页**：
+
+1. 在 Azure 门户中，选择一个 CDN 配置文件，然后选择 Web 服务器的终结点。
+
+2. 在左窗格中的“设置”下，选择“缓存规则”。
+
+   ![CDN 缓存规则按钮](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-rules-btn.png)
+
+   “缓存规则”页随即出现。
+
+   ![CDN 缓存页](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-page.png)
+
+
+**使用全局缓存规则设置 Web 服务器的 Cache-Control 标头：**
+
+1. 在“全局缓存规则”下，将“查询字符串缓存行为”设置为“忽略查询字符串”，将“缓存行为”设置为“覆盖”。
+      
+2. 对于“缓存过期持续时间”，在“秒”框中输入 3600，或者在“小时”框中输入 1。 
+
+   ![CDN 全局缓存规则示例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-global-caching-rules-example.png)
+
+   此全局缓存规则设置为期一小时的缓存持续时间，并会影响发送到终结点的所有请求。 它会替代由终结点指定的源服务器发送的所有 `Cache-Control` 或 `Expires` HTTP 标头。   
+
+3. 选择“保存”。
+
+**使用自定义缓存规则设置 Web 服务器文件的 Cache-Control 标头：**
+
+1. 在“自定义缓存规则”下，创建两个匹配条件：
+
+     a. 对于第一个匹配条件，将“匹配条件”设置为“路径”，对于“匹配值”输入 `/webfolder1/*`。 将“缓存行为”设置为“替代”，并在“小时”框中输入 4。
+
+     b. 对于第二个匹配条件，将“匹配条件”设置为“路径”，对于“匹配值”输入 `/webfolder1/file1.txt`。 将“缓存行为”设置为“替代”，并在“小时”框中输入 2。
+
+    ![CDN 自定义缓存规则示例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
+
+    第一个自定义缓存规则为终结点指定的源服务器上的 `/webfolder1` 文件夹中的所有文件设置为期四小时的缓存持续时间。 第二个规则仅替代 `file1.txt` 文件的第一个规则，并且为它设置为期两小时的缓存持续时间。
+
+2. 选择“保存”。
+
+
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>使用配置文件设置 Cache-Control 标头
-对于静态内容（如图像和样式表），可以通过修改 Web 应用程序的 **applicationHost.config** 或 **Web.config** 配置文件来控制更新频率。 其中任一文件的 `<system.webServer>/<staticContent>/<clientCache>` 元素会设置内容的 `Cache-Control` 标头。
+对于静态内容（如图像和样式表），可以通过修改 Web 应用程序的 **applicationHost.config** 或 **Web.config** 配置文件来控制更新频率。 若要设置内容的 `Cache-Control` 标头，请在任一文件中使用 `<system.webServer>/<staticContent>/<clientCache>` 元素。
 
 ### <a name="using-applicationhostconfig-files"></a>使用 ApplicationHost.config 文件
 **ApplicationHost.config** 文件是 IIS 配置系统的根文件。 **ApplicationHost.config** 文件中的配置设置会影响站点上的所有应用程序，但可通过 Web 应用程序的任何 **Web.config** 文件的设置进行重写。
 
 ### <a name="using-webconfig-files"></a>使用 Web.config 文件
-使用 **Web.config** 文件，可以自定义整个 Web 应用程序或 Web 应用程序的特定目录的行为方式。 通常情况下，Web 应用程序的根文件夹中至少有一个**Web.config** 文件。 对于特定文件夹中的每个 **Web.config** 文件，配置设置将影响该文件夹及所有子文件夹中的所有内容，除非这些设置由另一 **Web.config** 文件在子文件夹级别进行了重写。 例如，可以设置 Web 应用程序根文件夹的 **Web.config** 文件中的 `<clientCache>` 元素，以便将 Web 应用程序的所有静态内容缓存 3 天。 还可以在包含更多可变内容的子文件夹（例如，`\frequent`）中添加 **Web.config** 文件并设置其 `<clientCache>` 元素，以便将该子文件夹的内容缓存 6 小时。 最终结果是，除了 `\frequent` 目录中的任何内容（这些内容将仅仅缓存 6 小时）之外，整个网站的内容将缓存 3 天。  
+使用 **Web.config** 文件，可以自定义整个 Web 应用程序或 Web 应用程序的特定目录的行为方式。 通常情况下，Web 应用程序的根文件夹中至少有一个**Web.config** 文件。 对于特定文件夹中的每个 **Web.config** 文件，配置设置将影响该文件夹及其子文件夹中的所有内容，除非这些设置由另一 **Web.config** 文件在子文件夹级别进行了重写。 
 
-以下 XML 示例演示如何设置配置文件中的 `<clientCache>` 元素，将最长存在时间指定为 3 天：  
+例如，可以设置 Web 应用程序根文件夹的 **Web.config** 文件中的 `<clientCache>` 元素，以便将 Web 应用程序的所有静态内容缓存 3 天。 还可以在包含更多可变内容的子文件夹（例如，`\frequent`）中添加 **Web.config** 文件并设置其 `<clientCache>` 元素，以便将该子文件夹的内容缓存 6 小时。 最终结果是，除了 `\frequent` 目录中的任何内容（这些内容将仅仅缓存 6 小时）之外，整个网站的内容将缓存 3 天。  
+
+以下 XML 配置文件示例展示了如何设置 `<clientCache>` 元素来将最长存在时间指定为 3 天：  
 
 ```xml
 <configuration>

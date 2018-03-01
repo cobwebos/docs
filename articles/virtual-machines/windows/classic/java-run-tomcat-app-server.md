@@ -15,15 +15,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: robmcm
-ms.openlocfilehash: 768c94fe0d2d6cfafc1f8b57256012e01de0f7a9
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: b166d2af56051b7d90eba0d50e1ea41f96c1109e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>如何在使用经典部署模型创建的虚拟机上运行 Java 应用程序服务器
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 有关使用 Java 8 和 Tomcat 部署 webapp 的 Resource Manager 模板，请参阅[此处](https://azure.microsoft.com/documentation/templates/201-web-app-java-tomcat/)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关使用 Java 8 和 Tomcat 部署 webapp 的 Resource Manager 模板，请参阅[此处](https://azure.microsoft.com/documentation/templates/201-web-app-java-tomcat/)。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 通过 Azure，可使用虚拟机提供服务器功能。 例如，在 Azure 上运行的虚拟机可配置为托管 Java 应用程序服务器，如 Apache Tomcat。
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/08/2017
 
 ## <a name="to-create-a-virtual-machine"></a>创建虚拟机
 1. 登录到 [Azure 门户](https://portal.azure.com)。  
-2. 依次单击“新建”和“计算”，并在“特色应用”中单击“全部查看”。
+2. 依次单击“创建资源”和“计算”，并在“特别推荐的应用”中单击“查看全部”。
 3. 单击“JDK”，并在“JDK”窗格中单击“JDK 8”。  
    如果安装的是尚不能在 JDK 8 中运行的旧版应用程序，可选择支持 **JDK 6** 和 **JDK 7** 的虚拟机映像。
 4. 在 JDK 8 窗格中，选择“经典”，并单击“创建”。
@@ -55,7 +55,7 @@ ms.lasthandoff: 11/08/2017
    4. 选择适当的**订阅**。
    5. 对于“资源组”，请单击“新建”并输入的新资源组的名称。 或者单击“使用现有项”并选择某个可用资源组。
    6. 选择虚拟机所在的位置，例如**美国中南部**。
-6. 单击“下一步”。
+6. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在“虚拟机映像大小”边栏选项卡中，选择“A1 标准”或其他合适映像。
 8. 单击“选择”。
 

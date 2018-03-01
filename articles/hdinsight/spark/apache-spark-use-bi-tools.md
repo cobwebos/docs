@@ -15,23 +15,22 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 02/14/2018
 ms.author: jgao
-ms.openlocfilehash: 074415ba50ecdb1799093a3ead3bdd22fd02cc15
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 97305ec6774e89e776653adbcdcf86b1cd63642f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="apache-spark-bi-using-data-visualization-tools-with-azure-hdinsight"></a>使用 Azure HDInsight 上的数据可视化工具的 Apache Spark BI
 
-了解如何使用 [Microsoft Power BI](http://powerbi.microsoft.com) 和 [Tableau](http://www.tableau.com) 在 Azure HDInsight 上直观显示 Apache Spark 群集中的数据。
+了解如何使用 [Microsoft Power BI](http://powerbi.microsoft.com) 在 Azure HDInsight 上直观显示 Apache Spark 群集中的数据。
 
 ## <a name="prerequisites"></a>先决条件
 
 * **完成学习[在 HDInsight 中的 Spark 群集上运行交互式查询](./apache-spark-load-data-run-query.md)一文**。
 * **Power BI**[：Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) 和 [Power BI 试用订阅](https://app.powerbi.com/signupredirect?pbi_source=web)（可选）。
-* **Tableau**：[Tableau Desktop](http://www.tableau.com/products/desktop) 和 [Microsoft Spark ODBC 驱动程序](http://go.microsoft.com/fwlink/?LinkId=616229)。
 
 
 ## <a name="hivetable"></a>验证数据
@@ -183,47 +182,49 @@ Power BI 服务允许在整个组织中共享报表和仪表板。 在本部分�
 
 视觉对象已固定到仪表板 - 可在报表中添加其他视觉对象，并将其固定在同一仪表板上。 有关报表和仪表板的详细信息，请参阅 [Power BI 中的报表](https://powerbi.microsoft.com/documentation/powerbi-service-reports/)和 [Power BI 中的仪表板](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)。
 
-## <a name="tableau"></a>使用 Tableau Desktop 
+<!--
+## <a name="tableau"></a>Use Tableau Desktop 
 
 > [!NOTE]
-> 本部分仅适用于在 Azure HDInsight 中创建的 Spark 1.5.2 群集。
+> This section is applicable only for Spark 1.5.2 clusters created in Azure HDInsight.
 >
 >
 
-1. 在运行本 Apache Spark BI 教程的计算机上安装 [Tableau Desktop](http://www.tableau.com/products/desktop)。
+1. Install [Tableau Desktop](http://www.tableau.com/products/desktop) on the computer where you are running this Apache Spark BI tutorial.
 
-2. 确保该计算机上还安装了 Microsoft Spark ODBC 驱动程序。 可从[此处](http://go.microsoft.com/fwlink/?LinkId=616229)安装该驱动程序。
+2. Make sure that computer also has Microsoft Spark ODBC driver installed. You can install the driver from [here](http://go.microsoft.com/fwlink/?LinkId=616229).
 
-1. 启动 Tableau Desktop。 在左窗格中，从要连接到的服务器列表中单击“Spark SQL”。 如果左窗格中未按默认列出 Spark SQL，可以单击“更多服务器”来找到它。
-2. 在 Spark SQL 连接对话框中，按以下屏幕截图中所示提供值，并单击“确定”。
+1. Launch Tableau Desktop. In the left pane, from the list of server to connect to, click **Spark SQL**. If Spark SQL is not listed by default in the left pane, you can find it by click **More Servers**.
+2. In the Spark SQL connection dialog box, provide the values as shown in the screenshot, and then click **OK**.
 
-    ![连接到 Apache Spark BI 的群集](./media/apache-spark-use-bi-tools/connect-to-tableau-apache-spark-bi.png "连接到 Apache Spark BI 的群集")
+    ![Connect to a cluster for Apache Spark BI](./media/apache-spark-use-bi-tools/connect-to-tableau-apache-spark-bi.png "Connect to a cluster for Apache Spark BI")
 
-    仅当已在计算机上安装了 [Microsoft Spark ODBC 驱动程序](http://go.microsoft.com/fwlink/?LinkId=616229)时，身份验证下拉列表才将“Microsoft Azure HDInsight 服务”列作一个选项。
-3. 在下一个屏幕上，从“架构”下拉列表中单击“查找”图标，并单击“默认”。
+    The authentication drop-down lists **Microsoft Azure HDInsight Service** as an option, only if you installed the [Microsoft Spark ODBC Driver](http://go.microsoft.com/fwlink/?LinkId=616229) on the computer.
+3. On the next screen, from the **Schema** drop-down, click the **Find** icon, and then click **default**.
 
-    ![为 Apache Spark BI 查找架构](./media/apache-spark-use-bi-tools/tableau-find-schema-apache-spark-bi.png "为 Apache Spark BI 查找架构")
-4. 对于“表”字段，请再次单击“查找”图标以列出群集中的所有 Hive 表。 应会看到以前使用笔记本创建的 **hvac** 表。
+    ![Find schema for Apache Spark BI](./media/apache-spark-use-bi-tools/tableau-find-schema-apache-spark-bi.png "Find schema for Apache Spark BI")
+4. For the **Table** field, click the **Find** icon again to list all the Hive tables available in the cluster. You should see the **hvac** table you created earlier using the notebook.
 
-    ![为 Apache Spark BI 查找表](./media/apache-spark-use-bi-tools/tableau-find-table-apache-spark-bi.png "为 Apache Spark BI 查找表")
-5. 将表拖放到右侧顶部的框中。 Tableau 将导入数据，并以红色框突出显示架构。
+    ![Find table for Apache Spark BI](./media/apache-spark-use-bi-tools/tableau-find-table-apache-spark-bi.png "Find table for Apache Spark BI")
+5. Drag and drop the table to the top box on the right. Tableau imports the data and displays the schema as highlighted by the red box.
 
-    ![为 Apache Spark BI 将表添加到 Tableau](./media/apache-spark-use-bi-tools/tableau-add-table-apache-spark-bi.png "为 Apache Spark BI 将表添加到 Tableau")
-6. 单击左下角的“工作表 1”选项卡。 针对每个日期生成一种视觉效果，用于显示所有建筑物的目标温度和实际温度平均值。 将“日期”和“建筑物 ID”拖到“列”，将“实际温度”/“目标温度”拖到“行”。 在“标记”下面选择“区域”，以使用区域映射进行 Spark 数据可视化。
+    ![Add tables to Tableau for Apache Spark BI](./media/apache-spark-use-bi-tools/tableau-add-table-apache-spark-bi.png "Add tables to Tableau for Apache Spark BI")
+6. Click the **Sheet1** tab at the bottom left. Make a visualization that shows the average target and actual temperatures for all buildings for each date. Drag **Date** and **Building ID** to **Columns** and **Actual Temp**/**Target Temp** to **Rows**. Under **Marks**, select **Area** to use an area map for Spark data visualization.
 
-     ![添加用于 Spark 数据可视化的字段](./media/apache-spark-use-bi-tools/spark-data-visualization-add-fields.png "添加用于 Spark 数据可视化的字段")
-7. 默认情况下，温度字段显示为聚合值。 如果想要改为显示平均温度，可以从下拉列表中执行该操作，如以下屏幕截图所示：
+     ![Add fields for Spark data visualization](./media/apache-spark-use-bi-tools/spark-data-visualization-add-fields.png "Add fields for Spark data visualization")
+7. By default, the temperature fields are shown as aggregate. If you want to show the average temperatures instead, you can do so from the drop-down, as shown in the following screenshot:
 
-    ![将温度用于 Spark 数据可视化](./media/apache-spark-use-bi-tools/spark-data-visualization-average-temperature.png "将温度用于 Spark 数据可视化")
+    ![Take average of temperature for Spark data visualization](./media/apache-spark-use-bi-tools/spark-data-visualization-average-temperature.png "Take average of temperature for Spark data visualization")
 
-8. 也可以将一个温度映射叠加在另一个温度映射之上，以更好地感受目标温度和实际温度之间的差异。 将鼠标移到下方区域映射的角落，直到出现以红色圆圈突出显示的控点形状为止。 将该映射拖到另一映射的顶部。看到以红色矩形突出显示的形状时松开鼠标。
+8. You can also super-impose one temperature map over the other to get a better feel of difference between target and actual temperatures. Move the mouse to the corner of the lower area map until you see the handle shape highlighted in a red circle. Drag the map to the other map on the top and release the mouse when you see the shape highlighted in red rectangle.
 
-    ![合并用于 Spark 数据可视化的映射](./media/apache-spark-use-bi-tools/spark-data-visualization-merge-maps.png "合并用于 Spark 数据可视化的映射")
+    ![Merge maps for Spark data visualization](./media/apache-spark-use-bi-tools/spark-data-visualization-merge-maps.png "Merge maps for Spark data visualization")
 
-     数据可视化效果应会发生变化，如屏幕截图中所示：
+     Your data visualization should change as shown in the screenshot:
 
-    ![Spark 数据可视化的 Tableau 输出](./media/apache-spark-use-bi-tools/spark-data-visualization-tableau-output.png "Spark 数据可视化的 Tableau 输出")
-9. 单击“保存”以保存工作表。 可以创建仪表板，并在其中添加一个或多个工作表。
+    ![Tableau output for Spark data visualization](./media/apache-spark-use-bi-tools/spark-data-visualization-tableau-output.png "Tableau output for Spark data visualization")
+9. Click **Save** to save the worksheet. You can create dashboards and add one or more sheets to it.
+-->
 
 ## <a name="next-steps"></a>后续步骤
 

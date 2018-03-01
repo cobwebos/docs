@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2330ccf734944a8a563f9031a9d51902255c30d5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 895741c6a33434633b8c35df959b3c68d005ba3e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="using-java-command-line-app-to-access-an-api-with-azure-ad"></a>通过 Azure AD 使用 Java 命令行应用访问 API
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -46,7 +46,7 @@ ms.lasthandoff: 12/11/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在顶栏上单击帐户，并在“目录”列表下选择要注册应用程序的 Active Directory 租户。
-3. 单击左侧导航栏中的“更多服务”，并选择“Azure Active Directory”。
+3. 单击左侧导航栏中的“所有服务”，并选择“Azure Active Directory”。
 4. 单击“应用注册”并选择“添加”。
 5. 根据提示创建一个新的 **Web 应用程序和/或 WebAPI**。
   * 应用程序的“名称”向最终用户描述应用程序

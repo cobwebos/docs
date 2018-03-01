@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68bf84d0f848b60885d3976d3991b606e77ed074
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: f6ec6dd46d28518baf6f105dd232a4b0e77a8c6f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>将 Azure Log Analytics 管理解决方案添加到工作区
 
@@ -46,8 +46,7 @@ Azure 应用商店包含 [Log Analytics 的管理解决方案](https://azuremark
 
 ## <a name="add-a-management-solution"></a>添加管理解决方案
 1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请使用 Azure 订阅登录。
-2. 在“新建”边栏选项卡中，在“Marketplace”下，选择“监视 + 管理”。
-3. 在“监视 + 管理”边栏选项卡中，单击“查看所有”。  
+2. 选择“创建资源” > “监视 + 管理” > “查看全部”。  
     ![“监视 + 管理”边栏选项卡](./media/log-analytics-add-solutions/monitoring-management-blade.png)  
 4. 在“管理解决方案”的右侧，单击“更多”。
 5. 在“管理解决方案”边栏选项卡中，选择要添加到工作区的管理解决方案。  

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 020e2996f40ed4a48affd3776e44e382c40cb3c0
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 96b92690cd164b1012380f82a1d1bd3336350e57
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何创建和部署云服务
 Azure 门户提供两种创建和部署云服务的方法：*快速创建*和*自定义创建*。
@@ -59,15 +59,15 @@ Azure 门户提供两种创建和部署云服务的方法：*快速创建*和*�
 
 ## <a name="create-and-deploy"></a>创建和部署
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击“新建”>“计算”，向下滚动到“云服务”并单击它。
+2. 单击“创建资源”>“计算”，向下滚动到“云服务”并单击它。
 
     ![发布云服务](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
-3. 在新的“**云服务**”边栏选项卡中，输入“**DNS 名称**”的值。
+3. 在新的“云服务”窗格中，输入“DNS 名称”的值。
 4. 创建一个新“**资源组**”或选择一个现有的资源组。
 5. 选择“位置” 。
-6. 单击“**包**”。 此时会打开“**上传包**”边栏选项卡。 填写必填字段。 如果任何角色包含单个实例，请确保选中“**即使一个或多个角色包含单个实例也进行部署**”。
+6. 单击“**包**”。 这将打开“上载包”窗格。 填写必填字段。 如果任何角色包含单个实例，请确保选中“**即使一个或多个角色包含单个实例也进行部署**”。
 7. 请确保选中“**开始部署**”。
-8. 单击“**确定**”，此时会关闭“**上传包**”边栏选项卡。
+8. 单击“确定”，这将关闭“上载包”窗格。
 9. 如果不添加任何证书，请单击“**创建**”。
 
     ![发布云服务](media/cloud-services-how-to-create-deploy-portal/select-package.png)
@@ -75,9 +75,9 @@ Azure 门户提供两种创建和部署云服务的方法：*快速创建*和*�
 ## <a name="upload-a-certificate"></a>上传证书
 如果部署包已[配置为使用证书](cloud-services-configure-ssl-certificate-portal.md#modify)，现在就可以上传证书。
 
-1. 选择“**证书**”，并在“**添加证书**”边栏选项卡中，选择 SSL 证书 .pfx 文件，并提供证书的“**密码**”，
-2. 单击“**附加证书**”，并单击“**添加证书**”边栏选项卡上的“**确定**”。
-3. 单击“**云服务**”边栏选项卡上的“**创建**”。 当部署达到“**就绪**”状态时，可以继续执行后续步骤。
+1. 选择“证书”，并在“添加证书”窗格中，选择 SSL 证书 .pfx 文件，并提供证书的**密码**，
+2. 单击“附加证书”，然后在“添加证书”窗格上单击“确定”。
+3. 在“云服务”窗格上单击“创建”。 当部署达到“**就绪**”状态时，可以继续执行后续步骤。
 
     ![发布云服务](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: giladm
-ms.openlocfilehash: 9be945493cf013f472566a2c7a1dda05fd9b0ca9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0994bdc7e6c86e10f7002649830fc59ad3d1a045
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核还可：
@@ -39,8 +39,11 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
 
 可按[为数据库设置审核](#subheading-2)部分中所述，为不同类型的事件类别配置审核。
 
-审核日志会写入 Azure 订阅中的 Azure Blob 存储。
-
+> [!IMPORTANT]
+> 审核日志会写入 Azure 订阅的 Azure Blob 存储中的追加 Blob。
+>
+> * 追加 Blob 目前不支持高级存储。
+> * 目前不支持 VNet 中的存储。
 
 ## <a id="subheading-8"></a>定义服务器级和数据库级审核策略
 
@@ -80,7 +83,7 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
    >若要充分利用审核报告模板，请为所有审核的数据库使用相同的存储帐户。
 
     <a id="storage-screenshot"></a> ![导航窗格][4]
-6. 若要自定义已审核的事件，可通过 PowerShell 或 REST API 执行此操作。 
+6. 若要自定义已审核的事件，可通过 PowerShell 或 REST API 执行此操作。
 7. 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](sql-database-threat-detection-get-started.md)。
 8. 单击“ **保存**”。
 

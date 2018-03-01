@@ -15,28 +15,28 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 122dbdb838377a36020f9ec692b38544004e676c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 846ec63d47ebc787fa1edbf1968f1a843e96ac9d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中管理企业应用的用户帐户预配
 本文介绍如何使用 [Azure 门户](https://portal.azure.com)为支持用户帐户自动预配和取消预配功能的应用程序（尤其是已从 [Azure Active Directory 应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)的“特色”类别添加的应用程序）管理该功能。 若要了解有关用户帐户自动预配及其工作原理的详细信息，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](active-directory-saas-app-provisioning.md)。
 
 ## <a name="finding-your-apps-in-the-portal"></a>在门户中查找应用
-所有由目录管理员在目录中使用 [Azure Active Directory 应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)进行过单一登录配置的应用程序均可在 [Azure 门户](https://portal.azure.com)中查看和管理。 这些应用程序可在门户的“更多服务”&gt;“企业应用程序”部分中找到。 企业应用是在组织内部署和使用的应用。
+所有由目录管理员在目录中使用 [Azure Active Directory 应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)进行过单一登录配置的应用程序均可在 [Azure 门户](https://portal.azure.com)中查看和管理。 这些应用程序可在门户的“所有服务”&gt;“企业应用程序”部分中找到。 企业应用是在组织内部署和使用的应用。
 
-![“企业应用程序”边栏选项卡][0]
+![“企业应用程序”窗格][0]
 
-选择左侧的“所有应用程序”链接会显示包含所有已配置应用的列表，包括那些已从库中添加的应用。 选择某个应用时，会加载该应用的资源边栏选项卡，可在其中查看该应用的报告，以及管理各种设置。
+选择左侧的“所有应用程序”链接会显示包含所有已配置应用的列表，包括那些已从库中添加的应用。 选择某个应用时，会加载该应用的资源窗格，可在其中查看该应用的报告，以及管理各种设置。
 
 选择左侧的“预配”即可管理用户帐户预配设置。
 
-![“应用程序资源”边栏选项卡][1]
+![应用程序资源窗格][1]
 
 ## <a name="provisioning-modes"></a>预配模式
-在“预配”边栏选项卡中，一开始是“模式”菜单，其中显示了企业应用程序支持的预配模式，可以对这些模式进行配置。 可用选项包括：
+在“预配”窗格中，一开始是“模式”菜单，其中显示了企业应用程序支持的预配模式，可以对这些模式进行配置。 可用选项包括：
 
 * **自动** - 如果 Azure AD 支持按 API 自动预配和/或取消预配此应用程序的用户帐户，则会显示此选项。 选择此模式会显示一个界面，该界面引导管理员配置可连接到应用程序的用户管理 API 的 Azure AD、创建用于定义用户帐户数据如何在 Azure AD 和应用之间流动的帐户映射和工作流，以及管理 Azure AD 预配服务。
 * **手动** - 如果 Azure AD 不支持自动预配此应用程序的用户帐户，则会显示此选项。 此选项意味着，必须根据该应用程序提供的用户管理和预配功能（可能包括 SAML 实时预配），通过外部流程对存储在应用程序中的用户帐户记录进行管理。
@@ -54,7 +54,7 @@ ms.lasthandoff: 12/11/2017
 
 在 Azure AD 用户对象和每个 SaaS 应用的用户对象之间存在预先配置的映射组。 某些应用可管理其他类型的对象，例如“组”或“联系人”。 选择表中的一个此类映射会在右侧显示映射编辑器，可在该编辑器中查看和自定义此类映射。
 
-![“应用程序资源”边栏选项卡][2]
+![应用程序资源窗格][2]
 
 支持的自定义项包括：
 
@@ -81,6 +81,6 @@ ms.lasthandoff: 12/11/2017
 我们希望你喜欢 Azure AD 体验。 敬请不时地向我们发送反馈！ 欢迎在[反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)的**管理员门户**版块中发表有关改进的意见和想法。  我们热衷于不断推出炫酷的新功能，确实遵从用户的指导来塑造和定义后续版本。
 
 
-[0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-blade.PNG
+[0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.PNG
 [1]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.PNG
 [2]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.PNG

@@ -1,27 +1,14 @@
----
-title: "导入 Postman 集合"
-description: "本文提供了用于 Azure 媒体服务 REST 调用的 Postman 集合的定义。"
-services: media-services
-documentationcenter: 
-author: Juliako
-manager: cfowler
-editor: 
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/04/2017
-ms.author: juliako
-ms.openlocfilehash: 9d1937f11d379910437a2e4ea21d4a963aacbc9a
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
----
-# <a name="import-the-postman-collection"></a>导入 Postman 集合
+ ---
+标题：使用 Azure 按需流式处理操作导入 Postman 集合 说明：本文提供了用于 Azure 媒体服务 REST 调用的 Postman 集合的定义。
+services: media-services documentationcenter: '' author: Juliako manager: cfowler editor: ''
 
-本文包含 **Postman** 集合的定义，该集合包含调用媒体服务 REST API 的分组 HTTP 请求。 [配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程将使用此定义。
+ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 01/04/2017 ms.author: juliako
+
+---
+
+# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>使用按需流式处理操作导入一个 Postman 集合
+
+本文包含 Postman 集合的定义，该集合包含调用 Azure 媒体服务 REST API 的分组 HTTP 请求。 有关如何配置 Postman 以用于调用媒体服务 REST API 的信息，请参阅[配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程。
 
 ```
 {

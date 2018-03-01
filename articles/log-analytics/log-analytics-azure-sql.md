@@ -3,7 +3,7 @@ title: "Log Analytics 中的 Azure SQL Analytics 解决方案 | Microsoft 文档
 description: "Azure SQL Analytics 解决方案可帮助用户管理 Azure SQL 数据库。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: b2712749-1ded-40c4-b211-abc51cc65171
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
-ms.author: magoedte;banders
-ms.openlocfilehash: e2176a41a115d77a60a8348d2d1b5928109dd65b
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: magoedte
+ms.openlocfilehash: 624c861db9bb318c368cef04965da0a73dd028d8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>在 Log Analytics 中使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -31,7 +31,7 @@ Azure Log Analytics 中的 Azure SQL Analytics 解决方案收集和可视化重
 与其他适用于 Log Analytics 的解决方案一样，Azure SQL Analytics 解决方案可以帮助用户监视和接收有关 Azure 资源（在此示例中为 Azure SQL 数据库）运行状况的通知。 Microsoft Azure SQL 数据库是可缩放的关系数据库服务，为运行在 Azure 云中的应用程序提供熟悉的类似于 SQL Server 的功能。 Log Analytics 可帮助用户收集、关联和可视化结构化和非结构化数据。
 
 有关使用 Azure SQL Analytics 解决方案的实践概述和典型使用方案，请观看嵌入视频：
-          
+
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
@@ -59,15 +59,15 @@ Azure SQL Analytics 解决方案不使用代理连接 Log Analytics 服务。
 
 执行以下步骤，将 Azure SQL Analytics 解决方案添加到你的工作区。
 
-1. 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview) 或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Azure SQL Analytics 解决方案添加到工作区。
-2. 在 Azure 门户中，单击“新建”（+ 符号），并在资源列表中，选择“监视 + 管理”。  
+1. 从 [Azure 应用商店](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview)或使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，将 Azure SQL Analytics 解决方案添加到工作区。
+2. 在 Azure 门户中，单击“创建资源” > “监视 + 管理”。  
     ![监视 + 管理](./media/log-analytics-azure-sql/monitoring-management.png)
 3. 在“监视 + 管理”列表中，单击“全部查看”。
 4. 在“推荐”列表中，单击“更多”，并在新列表中找到并选中“Azure SQL Analytics (预览版)”。  
     ![Azure SQL Analytics 解决方案](./media/log-analytics-azure-sql/azure-sql-solution-portal.png)
-5. 在“Azure SQL Analytics (预览版)”边栏选项卡中，单击“创建”。  
+5. 在“Azure SQL Analytics (预览版)”区域中，单击“创建”。  
     ![创建](./media/log-analytics-azure-sql/portal-create.png)
-6. 在“创建新的解决方案”边栏选项卡中，选择要向其添加解决方案的工作区，并单击“创建”。  
+6. 在“创建新的解决方案”区域中，选择要向其添加解决方案的工作区，并单击“创建”。  
     ![添加到工作区](./media/log-analytics-azure-sql/add-to-workspace.png)
 
 
@@ -97,15 +97,15 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ### <a name="viewing-azure-sql-analytics-data"></a>查看 Azure SQL Analytics 数据
 
-单击“Azure SQL Analytics”磁贴打开“Azure SQL Analytics”仪表板。 该仪表板包含通过不同透视监视的所有数据库的概览。 要使不同透视起效，必须允许将有关 SQL 资源的适当指标或日志流式传输到 Azure Log Analytics 工作区。 
+单击“Azure SQL Analytics”磁贴打开“Azure SQL Analytics”仪表板。 该仪表板包含通过不同透视监视的所有数据库的概览。 要使不同透视起效，必须允许将有关 SQL 资源的适当指标或日志流式传输到 Azure Log Analytics 工作区。
 
 ![Azure SQL Analytics 概述](./media/log-analytics-azure-sql/azure-sql-sol-overview.png)
 
-选择任意磁贴，打开特定透视的向下钻取报告。 选择透视后，将打开向下钻取报告。
+选择任意磁贴，打开特定透视的向下钻取报告。 选择透视后，可看到向下钻取报表。
 
 ![Azure SQL Analytics 超时](./media/log-analytics-azure-sql/azure-sql-sol-timeouts.png)
 
-每个透视提供有关订阅、服务器、弹性池和数据库级别的概述。 此外，每个透视在右侧显示特定于透视的报表。 从列表选择订阅、服务器、池或数据库会继续向下钻取。
+每个透视都提供了有关订阅、服务器、弹性池和数据库级别的概述。 此外，每个透视在右侧都显示了特定于透视的报表。 从列表选择订阅、服务器、池或数据库会继续向下钻取。
 
 | 透视 | 说明 |
 | --- | --- |
@@ -140,9 +140,9 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ### <a name="analyze-data-and-create-alerts"></a>分析数据和创建警报
 
-可以使用来自 Azure SQL 数据库资源的数据轻松创建警报。 以下是几个有用的可用于警报的[日志搜索](log-analytics-log-searches.md)查询：
+可以使用来自 Azure SQL 数据库资源的数据轻松创建警报。 以下是部分有用的可用于警报的[日志搜索](log-analytics-log-searches.md)查询：
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 
 *Azure SQL 数据库上的高 DTU*

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: ef0dc1b820f42b73af3af3882085729ecc21230c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2741ea2931ddd7989fc05e1cddbeedb80bf30410
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>如何创建应用服务环境 v1 
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="before-you-create-your-ase"></a>创建 ASE 前的准备工作
 请务必了解不能更改的事项。 创建 ASE 后，不能更改的方面包括：
 
-* 位置
+* Location
 * 订阅
 * 资源组
 * 使用的 VNet
@@ -42,12 +42,12 @@ ms.lasthandoff: 10/11/2017
 选择 VNet 及指定子网时，请确保大小足够容纳任何未来增长。 
 
 ### <a name="creating-an-app-service-environment-v1"></a>创建应用服务环境 v1
-若要创建应用服务环境 v1，需要在 Azure Marketplace 中搜索“应用服务环境 v1”，或者访问“新建”->“Web + 移动”->“应用服务环境”。 若要创建 ASEv1，请执行以下操作：
+若要创建应用服务环境 v1，可以在 Azure Marketplace 中搜索“应用服务环境 v1”，或者访问“创建资源” -> “Web + 移动” -> “应用服务环境”。 若要创建 ASEv1，请执行以下操作：
 
-1. 提供 ASE 的名称。 为 ASE 指定的名称用于在 ASE 中创建的应用。 如果 ASE 名称为 appsvcenvdemo，则子域名称将是 *appsvcenvdemo.p.azurewebsites.net*。 因此，如果创建了名为 *mytestapp* 的应用，则可在 *mytestapp.appsvcenvdemo.p.azurewebsites.net* 中访问它。 不能在 ASE 名称中使用空格。 如果在名称中使用大写字符，域名将为该名称的全小写形式。 如果使用 ILB，则不在子域中使用 ASE 名称，但会在 ASE 创建过程中显式声明该名称
+1. 提供 ASE 的名称。 为 ASE 指定的名称将用于在 ASE 中创建的应用。 如果 ASE 的名称为 appsvcenvdemo，则子域名称将是：*appsvcenvdemo.p.azurewebsites.net*。 因此，如果创建了名为 *mytestapp* 的应用，则可在 *mytestapp.appsvcenvdemo.p.azurewebsites.net* 中访问它。 不能在 ASE 名称中使用空格。 如果在名称中使用大写字符，域名将为该名称的全小写形式。 如果使用 ILB，则不在子域中使用 ASE 名称，但会在 ASE 创建过程中显式声明该名称。
    
     ![][1]
-2. 选择订阅。 用于 ASE 的订阅也会是用于创建该 ASE 中的所有应用的订阅。 不能将 ASE 放入位于其他订阅中的 VNet
+2. 选择订阅。 用于 ASE 的订阅还将应用于在该 ASE 中创建的所有应用。 不能将 ASE 放入位于其他订阅中的 VNet。
 3. 选择或指定新的资源组。 用于 ASE 的资源组必须与用于 VNet 的资源组相同。 如果选择预先存在的 VNet，则 ASE 的资源组选择会更新，以反映 VNet 的资源组。
    
     ![][2]

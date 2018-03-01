@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 880be5f27ca4198004511e01e63cdb3d72f107d5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1dc727f46785d2896544d8ef9098259f9ab994d1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 ## <a name="problems-signing-in-to-a-microsoft-application"></a>登录 Microsoft 应用程序时出现的问题
 
@@ -47,7 +47,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ## <a name="steps-to-troubleshoot-microsoft-application-access"></a>对 Microsoft 应用程序访问进行故障排除的步骤
 
-以下是当用户无法登录到 Microsoft 应用程序时他们遇到的一些常见问题。
+下面是当用户无法登录到 Microsoft 应用程序时遇到的一些常见问题。
 
 -   首先要检查的常规问题
 
@@ -89,7 +89,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ## <a name="problems-with-the-users-account"></a>用户帐户问题
 
-由于已分配到应用程序的用户出现问题，应用程序访问可能会遭到阻止。 以下是可以用来进行故障排除并解决用户及其帐户设置问题的一些方法：
+由于已分配到应用程序的用户出现问题，应用程序访问可能会遭到阻止。 下面是可以用来排除和解决用户及其帐户设置存在的问题的一些方法：
 
 -   [检查在 Azure Active Directory 中是否存在用户帐户](#check-if-a-user-account-exists-in-azure-active-directory)
 
@@ -111,11 +111,11 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>检查在 Azure Active Directory 中是否存在用户帐户
 
-若要检查是否存在用户帐户，请按照以下步骤操作：
+若要检查是否存在某个用户帐户，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -129,11 +129,11 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="check-a-users-account-status"></a>检查用户帐户的状态
 
-若要检查用户的帐户状态，请按照以下步骤操作：
+若要检查用户帐户的状态，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -149,11 +149,11 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="reset-a-users-password"></a>重置用户的密码
 
-若要重置用户的密码，请按照以下步骤操作：
+若要重置用户的密码，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -163,9 +163,9 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 6.  **搜索**感兴趣的用户，并**单击对应的行**进行选择。
 
-7.  单击用户边栏选项卡顶部的“重置密码”按钮。
+7.  单击用户窗格顶部的“重置密码”按钮。
 
-8.  在出现的“重置密码”边栏选项卡上，单击“重置密码”按钮。
+8.  在出现的“重置密码”窗格上，单击“重置密码”按钮。
 
 9.  为用户复制**临时密码**或**输入新密码**。
 
@@ -185,7 +185,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -193,7 +193,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 5.  单击“所有用户”。
 
-6.  单击边栏选项卡顶部的“多重身份验证”按钮。
+6.  单击窗格顶部的“多重身份验证”按钮。
 
 7.  在**多重身份验证管理门户**加载后，确保位于“用户”选项卡上。
 
@@ -205,11 +205,11 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="check-a-users-authentication-contact-info"></a>检查用户的身份验证联系信息
 
-若要检查用于多重身份验证、条件访问、Identity Protection 和密码重置的用户身份验证联系信息，请按照以下步骤操作：
+若要检查用于多重身份验证、条件访问、Identity Protection 和密码重置的用户身份验证联系信息，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -227,11 +227,11 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="check-a-users-group-memberships"></a>检查用户的组成员身份
 
-若要检查用户的组成员身份，请按照以下步骤操作：
+若要检查用户的组成员身份，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -245,11 +245,11 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="check-a-users-assigned-licenses"></a>检查用户的已分配许可证
 
-若要检查用户的已分配许可证，请按照以下步骤操作：
+若要检查用户的已分配许可证，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -263,11 +263,11 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="assign-a-user-a-license"></a>为用户分配许可证 
 
-要将许可证分配给用户，请按照以下步骤操作：
+若要将许可证分配给用户，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -289,7 +289,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ## <a name="problems-with-groups"></a>组问题
 
-由于已分配到应用程序的组出现问题，应用程序访问可能会遭到阻止。 以下是可以用来进行故障排除并解决组和组成员身份问题的一些方法：
+由于已分配到应用程序的组出现问题，应用程序访问可能会遭到阻止。 下面是可以用来进行故障排除并解决组和组成员身份问题的一些方法：
 
 -   [检查组的成员身份](#check-a-groups-membership)
 
@@ -303,11 +303,11 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="check-a-groups-membership"></a>检查组的成员身份
 
-若要检查组的成员身份，请按照以下步骤操作：
+若要检查组的成员身份，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -321,11 +321,11 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="check-a-dynamic-groups-membership-criteria"></a>检查动态组的成员身份条件 
 
-若要检查动态组的成员身份条件，请按照以下步骤操作：
+若要检查动态组的成员身份条件，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -341,11 +341,11 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="check-a-groups-assigned-licenses"></a>检查组的已分配许可证
 
-若要检查组的已分配许可证，请按照以下步骤操作：
+若要检查组的已分配许可证，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -359,11 +359,11 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="reprocess-a-groups-licenses"></a>重新处理组的许可证
 
-若要重新处理组的已分配许可证，请按照以下步骤操作：
+若要重新处理组的已分配许可证，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -384,11 +384,11 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="assign-a-group-a-license"></a>为组分配许可证
 
-要将许可证分配给组，请按照以下步骤操作：
+若要将许可证分配给组，请执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -421,7 +421,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -444,7 +444,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -476,7 +476,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单底部单击“更多服务”，打开“Azure Active Directory 扩展”。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
 3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
@@ -490,7 +490,7 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ## <a name="problems-with-application-consent"></a>应用程序许可问题
 
-由于相应的权限许可操作并未发生，应用程序访问可能会遭到阻止。 以下是可以用来进行故障排除并解决应用程序许可问题的一些方法：
+由于相应的权限许可操作并未发生，应用程序访问可能会遭到阻止。 下面是可以用来进行故障排除并解决应用程序许可问题的一些方法：
 
 -   [执行用户级许可操作](#perform-a-user-level-consent-operation)
 
@@ -514,13 +514,13 @@ Microsoft 应用程序（如 Office 365 Exchange、SharePoint、Yammer 等）的
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>为单租户应用程序执行管理员级许可
 
--   对于请求权限的**单租户应用程序**（如组织内正在开发或组织拥有的应用程序），可以通过以全局管理员”身份登录，并单击“应用程序注册表”-&gt;“所有应用程序”-&gt; 选择应用 -&gt;“所需权限”边栏选项卡顶部的“授予权限”按钮，代表所有用户执行“管理级许可”操作。
+-   对于请求权限的**单租户应用程序**（如组织内正在开发或组织拥有的应用程序），可以通过以全局管理员”身份登录，并单击“应用程序注册表”-&gt;“所有应用程序”-&gt; 选择应用 -&gt;“所需权限”窗格顶部的“授予权限”按钮，代表所有用户执行“管理级许可”操作。
 
 -   对于**使用 V1 或 V2 应用程序模型开发的任何应用程序**，可以按照[使用管理员许可终结点](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)的“向目录管理员请求权限”部分下的说明强制执行此管理员级许可。
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>为多租户应用程序执行管理员级许可
 
--   对于请求权限的**多租户应用程序**（如第三方或 Microsoft 开发的应用程序），可以执行“管理级许可”操作。 以“全局管理员”身份登录，并在“企业应用程序”-&gt;“所有应用程序”-&gt; 选择应用 -&gt;“权限”边栏选项卡（即将可用）下单击“授予权限”按钮。
+-   对于请求权限的**多租户应用程序**（如第三方或 Microsoft 开发的应用程序），可以执行“管理级许可”操作。 以“全局管理员”身份登录，并在“企业应用程序”-&gt;“所有应用程序”-&gt; 选择应用 -&gt;“权限”窗格（即将可用）下单击“授予权限”按钮。
 
 -   还可以按照[使用管理员许可终结点](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)的“向目录管理员请求权限”部分下的说明强制执行此管理员级许可。
 

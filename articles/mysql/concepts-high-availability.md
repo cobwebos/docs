@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for MySQL 中的高可用性概念 | Microsoft Docs"
+title: "Azure Database for MySQL 中的高可用性概念"
 description: "本主题介绍了使用 Azure Database for MySQL 时的高可用性概念"
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/31/2017
-ms.openlocfilehash: 5b63a1ac666a14354b5b93f22722b624244a7aa2
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.date: 02/28/2018
+ms.openlocfilehash: 58f10f0a0938da5887d44959f65b9016dfa88f2c
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的高可用性概念
 Azure Database for MySQL 服务提供有保证的高级别可用性。 有资金支持的服务级别协议 (SLA) 在正式版本发布后的可用性为 99.99%。 使用此服务期间，几乎没有应用程序故障时间。

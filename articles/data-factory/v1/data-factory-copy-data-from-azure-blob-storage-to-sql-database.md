@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 41ead775c8ce1919d8c3813b58c8a4d648c8bc64
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: e166e73ba45e229d8049738fa4a79f5dc117d806
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>教程：使用数据工厂将数据从 Blob 存储复制到 SQL 数据库
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ ms.lasthandoff: 01/23/2018
 要完成本教程，需使用 Azure 存储帐户的帐户名和帐户密钥。 记下 Azure 存储帐户的**帐户名**和**帐户密钥**。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击左侧菜单上的“更多服务”，并选择“存储帐户”。
+2. 单击左侧菜单上的“所有服务”，并选择“存储帐户”。
 
     ![浏览存储帐户](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
 3. 在“存储帐户”边栏选项卡中，选择要在本教程中使用的“Azure 存储帐户”。
@@ -70,7 +70,7 @@ ms.lasthandoff: 01/23/2018
 ## <a name="collect-sql-server-database-user-names"></a>收集 SQL Server、数据库和用户的名称
 要完成本教程，需提供 Azure SQL Server、数据库和用户的名称。 记下用于 Azure SQL 数据库的**服务器**、**数据库**和**用户**的名称。
 
-1. 在 **Azure 门户**中，单击左侧的“更多服务”，并选择“SQL 数据库”。
+1. 在 **Azure 门户**中，单击左侧的“所有服务”，并选择“SQL 数据库”。
 2. 在“SQL 数据库”边栏选项卡中，选择要在本教程中使用的“数据库”。 记下**数据库名称**。  
 3. 在“SQL 数据库”边栏选项卡的“设置”下，单击“属性”。
 4. 记下**服务器名称**和**服务器管理员登录名**的值。
@@ -79,7 +79,7 @@ ms.lasthandoff: 01/23/2018
 ## <a name="allow-azure-services-to-access-sql-server"></a>允许 Azure 服务访问 SQL Server
 确保 Azure SQL Server 的“允许访问 Azure 服务”设置处于“打开”状态，以便数据工厂服务可以访问 Azure SQL Server。 若要验证并启用此设置，请执行以下步骤：
 
-1. 单击左侧的“更多服务”中心，并单击“SQL Server”。
+1. 单击左侧的“所有服务”中心，然后单击“SQL Server”。
 2. 选择服务器，并单击“设置”下的“防火墙”。
 3. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。
 4. 单击“X”关闭所有边栏选项卡。

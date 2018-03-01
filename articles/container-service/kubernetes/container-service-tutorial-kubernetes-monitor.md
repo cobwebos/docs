@@ -6,14 +6,14 @@ author: dlepow
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 07/25/2017
+ms.date: 02/26/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 948e3aeea34a0355c3d958f29008c26499e19ba4
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 965ce4b7e154684fc1d171c90f17498afc828a66
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="monitor-a-kubernetes-cluster-with-operations-management-suite"></a>使用 Operations Management Suite 监视 Kubernetes 群集
 

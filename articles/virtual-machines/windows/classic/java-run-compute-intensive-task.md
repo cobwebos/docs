@@ -15,15 +15,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 76997f2e31f3edd6260b2ae19631236bc1c0c1b6
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: ccccdf58fbb84605bc5dff29d870b373134f1f97
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>如何在虚拟机上通过 Java 运行计算密集型任务
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 借助 Azure，可以使用虚拟机来处理计算密集型任务。 例如，虚拟机可以处理任务并将结果传送给客户端计算机或移动应用程序。 阅读完本文后，将了解如何创建运行可由其他 Java 应用程序监视的、计算密集型 Java 应用程序的虚拟机。
@@ -52,23 +52,23 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="to-create-a-virtual-machine"></a>创建虚拟机
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 依次单击“新建”、“计算”、“虚拟机”和“从库中”。
+2. 依次单击“创建资源”、“计算”、“虚拟机”和“从库中”。
 3. 在“虚拟机映像选择”对话框中，选择“JDK 7 Windows Server 2012”。
    请注意，万一安装的是尚不能在 JDK 7 中运行的旧版应用程序，则可选择“JDK 6 Windows Server 2012”。
-4. 单击“下一步”。
+4. 单击“资源组名称” 的 Azure 数据工厂。
 5. 在“虚拟机配置”对话框中：
    1. 指定虚拟机的名称。
    2. 指定要用于虚拟机的大小。
    3. 在“用户名”字段中输入管理员的名称。 请记住接下来要输的名称和密码，此名称和密码用于远程登录虚拟机。
    4. 在“新密码”字段中输入密码，并在“确认”字段中再次输入密码。 这是“管理员”帐户密码。
-   5. 单击“下一步”。
+   5. 单击“资源组名称” 的 Azure 数据工厂。
 6. 在下一个“虚拟机配置”对话框中：
    1. 对于“云服务”，使用默认的“创建新的云服务”。
    2. “云服务 DNS 名称”的值在 cloudapp.net 中必须唯一。 如有必要，请修改此值，使 Azure 能够将其指示为唯一值。
    3. 指定区域、地缘组或虚拟网络。 在本教程中，请指定区域，如“美国西部”。
    4. 对于“存储帐户”框，请选择“使用自动生成的存储帐户”。
    5. 对于“可用性集”，请选择“(无)”。
-   6. 单击“下一步”。
+   6. 单击“资源组名称” 的 Azure 数据工厂。
 7. 在最后一个“虚拟机配置”对话框中：
    1. 接受默认的终结点项。
    2. 单击“完成”。

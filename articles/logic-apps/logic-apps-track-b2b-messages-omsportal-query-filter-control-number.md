@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 69e8735417bc006296b8a6e5168d9fbeff052247
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: bc1ea42c9fb81fe1e2a2594fda48500132cbb539
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="query-for-as2-x12-and-edifact-messages-in-the-microsoft-operations-management-suite-oms"></a>在 Microsoft Operations Management Suite (OMS) 中查询 AS2、X12 和 EDIFACT 消息
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 01/19/2018
 > [!TIP] 
 > 如果你知道自己的 OMS 工作区名称，请转到工作区主页 (`https://{your-workspace-name}.portal.mms.microsoft.com`)，然后从步骤 4 开始操作。 否则，从步骤 1 开始。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“更多服务”。 搜索“日志分析”，然后选择“Log Analytics”，如下所示：
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 搜索“日志分析”，然后选择“Log Analytics”，如下所示：
 
    ![查找 Log Analytics](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/browseloganalytics.png)
 

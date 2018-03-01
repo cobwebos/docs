@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 02/23/2018
 ms.author: maheshu
-ms.openlocfilehash: d55abe651f69e3539e7584b40a7aedf419bccda1
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 8b6c1dec6f97311e5fb92f2adef8685b59cbeb2c
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>为 Azure AD 域服务托管域配置安全 LDAP (LDAPS)
 
@@ -113,7 +113,6 @@ ms.lasthandoff: 12/16/2017
 ## <a name="troubleshooting"></a>故障排除
 如果在使用安全 LDAP 连接到托管域时遇到问题，请执行以下故障排除步骤：
 * 请确保安全 LDAP 证书的证书颁发者链在客户端上受信任。 要建立信任，可选择向客户端上受信任的根证书存储添加根证书颁发机构。
-* 验证安全 LDAP 证书的颁发机构不是陌生 Windows 计算机上默认不受信用的中间证书颁发机构。
 * 验证 LDAP 客户端（例如 ldp.exe）连接到安全 LDAP 终结点时使用的是 DNS 名称，而不是 IP 地址。
 * 验证 LDAP 客户端所连接的 DNS 名称解析为托管域上安全 LDAP 的公共 IP 地址。
 * 验证托管域的安全 LDAP 证书具有“使用者”或“使用者可选名称”属性中的 DNS 名称。

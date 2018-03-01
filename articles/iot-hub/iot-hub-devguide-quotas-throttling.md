@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: e16c8b9e8bfb75226d7dec32e545da72cba107e9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7aa963e7f7463dbc06ba98e4876ea5d98f6921c8
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -31,6 +31,8 @@ SKU 还确定了 IoT 中心对所有操作强制实施的限制。
 
 ## <a name="operation-throttles"></a>操作限制
 操作限制是在分钟范围内应用的速率限制，主要是为了防止不当使用。 IoT 中心会尽可能避免返回错误，但如果违反限制太久，就会开始返回异常。
+
+无论何时，都可通过增加 IoT 中心预配的单位数来提高配额或限制。
 
 下表显示了强制限制。 值与单个中心相关。
 
@@ -50,15 +52,11 @@ SKU 还确定了 IoT 中心对所有操作强制实施的限制。
 
 <sup>1</sup>限制计量大小为 8 KB
 
-> [!IMPORTANT]
-> “设备连接”限制控制与 IoT 中心建立新设备连接的速率。 “设备连接”限制不控制同时连接的最大设备数。 该限制取决于为 IoT 中心预配的单位数。
+“设备连接”限制控制与 IoT 中心建立新设备连接的速率。 “设备连接”限制不控制同时连接的最大设备数。 该限制取决于为 IoT 中心预配的单位数。
 
 例如，如果购买的是单一 S1 单位，则限制为每秒 100 个连接。 因此，若要连接 100,000 台设备，至少需要花费 1000 秒（大约 16 分钟）。 但是，同时连接的设备数可与用户在标识注册表中注册的设备数相同。
 
 有关 IoT 中心限制行为的深入讨论，请参阅博客文章 [IoT 中心限制与你息息相关][lnk-throttle-blog]。
-
-> [!NOTE]
-> 无论何时，都可通过增加 IoT 中心预配的单位数来提高配额或限制。
 
 > [!IMPORTANT]
 > 标识注册表操作用于设备管理与预配方案中的运行时使用。 通过[导入和导出作业][lnk-importexport]可以支持读取或更新大量的设备标识。

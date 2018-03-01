@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2017
+ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 815d2f289e18a97eff0a05ad1d7dfe4cad1fdfc5
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 843582a980280a14f033c6d27965867c063039e2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -34,6 +34,73 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 所需的权限 | 有关应用更新时所需的权限，请参阅[帐户和权限](./active-directory-aadconnect-accounts-permissions.md#upgrade)。
 
 下载| [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)。
+
+## <a name="117490"></a>1.1.749.0
+状态：已分发给选定客户
+
+>[!NOTE]
+>完成到此新版本的升级以后，将会自动触发针对 Azure AD 连接器的完全同步和完全导入，以及针对 AD 连接器的完全同步。 由于这可能需要一定的时间（具体取决于 Azure AD Connect 环境的大小），因此请确保已采取必要的支持措施，否则需推迟升级，直至找到合适的升级时间。
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+#### <a name="fixed-issues"></a>修复的问题
+* 修复了“分区筛选”页的后台任务的计时窗口问题
+* 修复了在切换到下一页时，“分区筛选”页的后台任务的计时窗口问题。
+
+* 修复了在 ConfigDB 自定义操作过程中导致访问冲突的 Bug
+
+* 修复了 Bug，因此可以从 SQL 连接超时恢复。
+
+* 修复了带 SAN 通配符的证书无法通过先决条件检查的 Bug
+
+* 修复了在 Azure AD 连接器导出过程中导致 miiserver.exe 崩溃的 Bug。
+
+* 修复了在运行 Azure AD Connect 向导来更改配置后，可以通过不断地尝试密码登录 DC 的 Bug。
+
+
+#### <a name="new-features-and-improvements"></a>新增功能和改进
+
+* 为一般数据保护条例 (GDPR) 添加隐私设置。  GDPR 要求我们表明与 Microsoft 共享的客户数据的类型（遥测、运行状况等）、提供详细的联机文档的链接，以及向客户提供更改首选项的方式。  此签入添加以下内容：
+
+
+    - 在全新安装的 EULA 页面上的数据共享和隐私通知。
+    - 在升级页面上的数据共享和隐私通知。
+    - 一项新增加的任务：隐私设置，允许用户更改其首选项。
+
+* 应用程序遥测 - 管理员可以随意切换此类数据的开/关设置
+
+* Azure AD 运行状况数据 - 管理员必须访问运行状况门户才能控制其运行状况设置。
+   等到服务策略更改以后，代理就会读取并强制实施它。
+
+* 添加了设备写回配置操作以及用于页面初始化的进度栏
+
+* 改进了 HTML 报表的常规诊断功能以及 ZIP-Text/HTML 报表的完整数据收集功能
+
+* 提高了自动升级的可靠性并增加了更多的遥测，确保可以确定服务器的运行状况
+
+* 限制提供给以 AD 连接器帐户为基础的特权帐户的权限
+
+  * 进行全新安装时，向导会限制特权帐户拥有的针对 MSOL 帐户的权限（前提是 MSOL 帐户已创建）。
+
+这些更改将针对以下事项：
+1. 快速安装
+2. 用于自动创建帐户的自定义安装
+
+* 更改了安装程序，因此在进行 Azure AD Connect 的全新安装时，不需要 SA 权限
+
+* 添加了新的实用程序，用于排查特定对象的同步问题。 该实用程序位于 Azure AD Connect 向导的“排查其他任务的问题”的“排查对象同步问题”选项下。 目前，该实用程序用于检查以下问题：
+
+  * Azure AD 租户中的已同步用户对象和用户帐户之间出现 UserPrincipalName 不匹配的情况。
+  * 是否已通过域筛选将对象从同步中筛选出来
+  * 是否已通过组织单位 (OU) 筛选将对象从同步中筛选出来
+
+* 添加了一个新的实用程序，用于同步当前的密码哈希，该哈希存储在针对特定用户帐户的本地 Active Directory 中。
+
+该实用程序不需要更改密码。 该实用程序位于 Azure AD Connect 向导的“排查其他任务的问题”的“排查密码哈希同步问题”选项下。
+
+
+
+
+
 
 ## <a name="116540"></a>1.1.654.0
 状态：2017 年 12 月 12 日

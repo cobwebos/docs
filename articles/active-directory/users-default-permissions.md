@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: 83d23323f050f670680499ecb428c07c94096418
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 880eaedcba2c0cdfe057ddb2460cf6a19bf8298e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限
 
@@ -59,7 +59,7 @@ Directory | 读取所有公司信息<br>读取所有域<br>读取所有合作伙
 管理员和充当来宾邀请者角色的用户可以邀请来宾 | 将此选项设置为“否”可阻止所有用户邀请来宾。 请参阅“为成员用户配置默认权限”。 有关详细信息，请参阅 [Azure Active Directory 中的应用、权限和许可](active-directory-apps-permissions-consent.md)。
 成员可以邀请来宾 | 将此选项设置为“否”可阻止用户邀请来宾。 全局管理员、用户帐户管理员和来宾邀请者仍可邀请来宾。 有关详细信息，请参阅 [Azure Active Directory 中的应用、权限和许可](active-directory-apps-permissions-consent.md)。
 限制访问 Azure AD 管理门户 | 将此选项设置为“否”可阻止用户访问 Azure Active Directory 门户。
-能够读取其他用户 | 有关详细信息，请参阅 [Azure Active Directory 中的应用、权限和许可](active-directory-apps-permissions-consent.md)。
+能够读取其他用户 | 此设置仅可在 PowerShell 中使用。 将此设置为 $false 可阻止非管理员的用户从目录读取用户信息。 这不会阻止读取其他 Microsoft 服务（如 Exchange Online）中的用户信息。 此设置适用于特殊情况，因此不建议将此设置为 $false。
 
 ## <a name="object-ownership"></a>对象所有权
 

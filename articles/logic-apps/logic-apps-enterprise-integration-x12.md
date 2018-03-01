@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: bfad01d8c14cdd972ebe8e4038f226ffe0da93b1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7a274ad33b7181d238203290cf63937df5f13bbc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 X12 消息以实现企业集成
 
@@ -39,12 +39,12 @@ ms.lasthandoff: 12/18/2017
 
 ## <a name="create-an-x12-agreement"></a>创建 X12 协议
 
-1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“更多服务”。 
+1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“所有服务”。 
 
     > [!TIP]
-    > 如果未看到“更多服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
+    > 如果未看到“所有服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
 
-    ![在左侧菜单中，选择“更多服务”](./media/logic-apps-enterprise-integration-x12/account-1.png)
+    ![在左侧菜单中，选择“所有服务”](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
 2.  在搜索框中，键入“集成”作为筛选器。 在结果列表中，选择“集成帐户”。  
 

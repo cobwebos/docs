@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: e246abaf8d1d7939765e1c878f6dfaf6375294f6
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: aa71a1cc48449c6ef48365b301bf9e297c0597ae
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>保护 Azure Data Lake Store 中存储的数据
 保护 Azure Data Lake Store 中的数据包含三个步骤。
@@ -78,7 +78,7 @@ ms.lasthandoff: 11/28/2017
     ![添加安全组](./media/data-lake-store-secure-data/adl.add.user.2.png "添加安全组")
    
     如果要添加未列出的组/用户，可通过使用“邀请”图标并指定该用户/组的电子邮件地址将其邀入。
-6. 单击 **“确定”**。 已添加的安全组如下所示。
+6. 单击“确定”。 已添加的安全组如下所示。
    
     ![已添加的安全组](./media/data-lake-store-secure-data/adl.add.user.3.png "已添加的安全组")
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 11/28/2017
 4. 单击“添加”图标打开“添加自定义访问”边栏选项卡。 在此边栏选项卡中，单击“选择用户或组”，并在“选择用户或组”边栏选项卡中，查找之前在 Azure Active Directory 中创建的安全组。 如果搜索范围中存在大量的组，请使用顶部的文本框筛选组名称。 单击要添加的组，并单击“选择”。
    
     ![添加组](./media/data-lake-store-secure-data/adl.acl.3.png "添加组")
-5. 单击“选择权限”，选择权限以及是将这些权限分配为默认 ACL、访问 ACL 还是同时分配为这两类。 单击 **“确定”**。
+5. 单击“选择权限”，选择权限以及是将这些权限分配为默认 ACL、访问 ACL 还是同时分配为这两类。 单击“确定”。
    
     ![分配权限给组](./media/data-lake-store-secure-data/adl.acl.4.png "分配权限给组")
    
@@ -154,7 +154,7 @@ Azure Data Lake Store 允许进一步在网络级别锁定访问权限。 可启
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)
 * [从 Azure 存储 Blob 复制数据到 Data Lake Store](data-lake-store-copy-data-azure-storage-blob.md)
 * [配合使用 Azure Data Lake Analytic 和 Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Use Azure HDInsight with Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [配合使用 Azure HDInsight 和 Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [ PowerShell 实现 Data Lake Store 入门](data-lake-store-get-started-powershell.md)
 * [通过 .NET SDK 实现 Data Lake Store 入门](data-lake-store-get-started-net-sdk.md)
 * [获取 Data Lake Store 的诊断日志](data-lake-store-diagnostic-logs.md)

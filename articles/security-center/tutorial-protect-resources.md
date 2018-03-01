@@ -9,16 +9,17 @@ editor:
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/08/2018
+ms.date: 02/22/2018
 ms.author: terrylan
-ms.openlocfilehash: f0a32f90e68101f805a52427fab2d5bb29b94939
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: cda204f5b54aef239cc0795b62c6fa484a27ebb5
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>教程：使用 Azure 安装中心来保护资源
 安全中心使用访问控制和应用程序控制来阻止恶意活动，限制威胁所造成的危害。 可以通过恰时虚拟机 (VM) 访问拒绝对 VM 的永久性访问，减少自己遭受攻击的可能性。 仅在需要的情况下，才提供对 VM 的受控且经过审核的访问权限。 自适应应用程序控制可以对哪些应用程序能够在 VM 上运行进行控制，从而强化 VM 对抗恶意软件的能力。 安全中心使用机器学习来分析在 VM 中运行的进程，帮助你运用此智能来应用允许列表规则。
@@ -31,7 +32,7 @@ ms.lasthandoff: 01/08/2018
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 若要逐步执行本教程中介绍的功能，你必须位于安全中心的“标准”定价层。 可以尝试安全中心标准版，头 60 天免费。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。
 
 ## <a name="manage-vm-access"></a>管理 VM 访问权限

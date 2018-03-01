@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 02/15/2018
 ms.author: terrylan
-ms.openlocfilehash: fd238f0b2d877f7f57a27ce495dae8de1ab9c066
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3b57cacec729bd2f2dd4acdbb9c15e69ab9f5c85
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Azure 安全中心支持的平台
-使用经典部署模式和 Resource Manager 部署模式创建的虚拟机 (VM) 支持安全状态监视和建议。
+使用经典部署模式和资源管理器部署模式创建的虚拟机 (VM) 和计算机支持安全状态监视和建议。
 
 > [!NOTE]
 > 了解 Azure 资源的[经典部署模型和 Resource Manager 部署模型](../azure-classic-rm.md)。
 >
 >
 
-## <a name="supported-platforms-for-windows-vms"></a>适用于 Windows VM 的支持的平台
+## <a name="supported-platforms-for-windows-computers-and-vms"></a>Windows 计算机和 VM 支持的平台
 支持的 Windows 操作系统：
 
 * Windows Server 2008
@@ -38,7 +38,7 @@ ms.lasthandoff: 12/08/2017
 * Windows Server 2016
 
 
-## <a name="supported-platforms-for-linux-vms"></a>适用于 Linux VM 的支持的平台
+## <a name="supported-platforms-for-linux-computers-and-vms"></a>Linux 计算机和 VM 支持的平台
 支持的 Linux 操作系统：
 
 * Ubuntu 版本 12.04、14.04、16.04、16.10

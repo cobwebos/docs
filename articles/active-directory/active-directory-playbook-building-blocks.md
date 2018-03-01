@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: bc0bc80b45e97efc048d9a9c26b8dd5d5f39ce8d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b37ca3c6ca528551ef09a90159e92fd31e0fabf2
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
@@ -26,13 +26,13 @@ ms.lasthandoff: 12/11/2017
 
 | 角色 | 说明 | 概念证明 (PoC) 责任 |
 | --- | --- | --- |
-| **标识体系结构/开发团队** | 此团队通常负责设计解决方案、实现原型、推动审批但最终不涉及运营 | 他们提供环境，并从可管理性角度评估不同的方案 |
+| 标识体系结构/开发团队 | 此团队通常负责设计解决方案、实现原型、推动审批但最终不涉及运营 | 他们提供环境，并从可管理性角度评估不同的方案 |
 | **本地标识运营团队** | 管理不同的本地标识源：Active Directory 林、LDAP 目录、HR 系统和联合身份验证标识提供程序。 | 提供 PoC 方案所需的对本地资源的访问权限。<br/>他们应尽量少涉及|
 | **应用程序技术所有者** | 将与 Azure AD 集成的不同云应用和服务的技术所有者 | 提供有关 SaaS 应用程序（可能是用于测试的实例）的详细信息 |
 | **Azure AD 全局管理员** | 管理 Azure AD 配置 | 提供用于配置同步服务的凭据。 在 PoC 过程中通常与标识体系结构是同一团队，但是在运营阶段通常是独立团队|
 | **数据库团队** | 数据库基础结构的所有者 | 提供对 SQL 环境（ADFS 或 Azure AD Connect）的访问权限，为特定方案做准备工作。<br/>他们应尽量少涉及 |
 | **网络团队** | 网络基础结构的所有者 | 提供同步服务器在网络级别的所需访问权限，以便正常访问数据源和云服务（防火墙规则、打开的端口、IPSec 规则等） |
-| **安全团队** | 定义安全策略、分析来自各种源的安全报告并遵循分析结果。 | 提供目标安全评估方案 |
+| 安全团队 | 定义安全策略、分析来自各种源的安全报告并遵循分析结果。 | 提供目标安全评估方案 |
 
 ## <a name="common-prerequisites-for-all-building-blocks"></a>所有构建基块的常见先决条件
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 12/11/2017
 | --- | --- |
 | 所有的 POC 用户都属于安全组（云中或本地上） | [在 Azure Active Directory 中创建组并添加成员](active-directory-groups-create-azure-portal.md) |
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -142,7 +142,7 @@ ms.lasthandoff: 12/11/2017
 | 对 ServiceNow 管理控制台的管理员访问权限 | [教程：Azure Active Directory 与 ServiceNow 集成](active-directory-saas-servicenow-tutorial.md) |
 | 要分配应用程序的目标用户群。 建议使用包含 PoC 用户的安全组。 <br/>如果无法创建组，请直接向用户分配应用程序进行 PoC | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -178,7 +178,7 @@ ms.lasthandoff: 12/11/2017
 | 要分配应用程序的目标用户群。 建议使用包含用户的安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -213,7 +213,7 @@ ms.lasthandoff: 12/11/2017
 | 至少两位将访问同一帐户的团队成员的凭据。 两位成员必须都属于安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -268,7 +268,7 @@ ms.lasthandoff: 12/11/2017
 估计完成时间：60 分钟
 
 > [!IMPORTANT]
-> 这是一项高级配置，需要对 FIM/MIM 有一定的了解。 如果在生产环境中使用，我们建议浏览[顶级支持](https://support.microsoft.com/premier)了解有关此配置的问题。
+> 这是一项高级配置，需要对 FIM/MIM 有一定的了解。 如果在生产环境中使用，我们建议通过[顶级支持](https://support.microsoft.com/premier)解答有关此配置的问题。
 
 ### <a name="pre-requisites"></a>先决条件
 
@@ -279,7 +279,7 @@ ms.lasthandoff: 12/11/2017
 | 用户使用的工作负荷列表，以及与这些工作负荷关联的属性列表 | [Azure AD Connect 同步：与 Azure Active Directory 同步的属性](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
 
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -294,7 +294,7 @@ ms.lasthandoff: 12/11/2017
 ### <a name="considerations"></a>注意事项
 
 > [!IMPORTANT]
-> 这是一项高级配置，需要对 FIM/MIM 有一定的了解。 如果在生产环境中使用，我们建议浏览[顶级支持](https://support.microsoft.com/premier)了解有关此配置的问题。
+> 这是一项高级配置，需要对 FIM/MIM 有一定的了解。 如果在生产环境中使用，我们建议通过[顶级支持](https://support.microsoft.com/premier)解答有关此配置的问题。
 
 ## <a name="groups---delegated-ownership"></a>组 - 委派的所有权
 
@@ -310,7 +310,7 @@ ms.lasthandoff: 12/11/2017
 | 已标识访问应用的信息辅助角色的凭据 | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
 
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -334,7 +334,7 @@ ms.lasthandoff: 12/11/2017
 | 已标识访问应用的信息辅助角色的凭据 | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
 
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -384,14 +384,14 @@ ms.lasthandoff: 12/11/2017
 | 标识将使用此功能的 PoC 用户，并确保这些用户是安全组的成员。 这些用户不能是管理员，这样才能完全展示此功能 | [自定义：Azure AD 密码管理：限制对密码重置的访问](active-directory-passwords-writeback.md) |
 
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
 | 导航到 Azure AD 管理门户：密码重置 | [Azure AD 管理门户：密码重置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset) |
 | 确定密码重置策略。 可以使用电话呼叫和问题解答进行 POC。建议启用登录到访问面板时所需的注册 |  |
 | 以辅助角色身份注销和登录 |  |
-| 提供在步骤 2 中配置的自助密码重置数据 | http://aka.ms/ssprsetup |
+| 提供在步骤 2 中配置的自助密码重置数据 | https://aka.ms/ssprsetup |
 | 关闭浏览器 |  |
 | 以步骤 4 中使用的辅助角色身份启动登录过程 |  |
 | 重置密码 | [更新自己的密码：重置我的密码](active-directory-passwords-update-your-own-password.md) |
@@ -414,7 +414,7 @@ ms.lasthandoff: 12/11/2017
 | 标识将使用 MFA 的 POC 用户  |  |
 | 用于接收 MFA 质询的信号良好的电话  | [什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md) |
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -442,7 +442,7 @@ ms.lasthandoff: 12/11/2017
 | 已配置 SaaS 应用程序 |  |
 | 已将 PoC 用户分配给应用程序 |  |
 | 提供给 POC 用户的凭据可用 |  |
-| POC 用户已注册 MFA。 使用的手机信号良好 | http://aka.ms/ssprsetup |
+| POC 用户已注册 MFA。 使用的手机信号良好 | https://aka.ms/ssprsetup |
 | 内部网络中的设备。 已配置内部地址范围中的 IP 地址 | 查看 IP 地址：https://www.bing.com/search?q=what%27s+my+ip |
 | 外部网络中的设备（可以是使用运营商的移动网络的手机） |  |
 
@@ -501,7 +501,7 @@ ms.lasthandoff: 12/11/2017
 | 下载并安装了 Tor 浏览器设备 | [下载 Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | 对 POC 用户授予访问权限，以便进行登录 | [Azure Active Directory Identity Protection 演练手册](active-directory-identityprotection-playbook.md) |
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -528,12 +528,12 @@ ms.lasthandoff: 12/11/2017
 | 已注册 MFA 的 POC 用户。 请务必使用信号良好的手机 | 构建基块：[通过电话呼叫进行 Azure 多重身份验证](#azure-multi-factor-authentication-with-phone-calls) |
 
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
 | 以全局管理员的份登录到 https://portal.azure.com 并打开 Identity Protection 边栏选项卡 | https://aka.ms/aadipgetstarted |
-| 启用登录风险策略，如下所示：<br/>- 分配到：POC 用户<br/>- 条件：登录风险中或高（从匿名位置进行登录被认为是中等风险级别）<br/>- 控件：需要 MFA | [Azure Active Directory Identity Protection 操作手册：登录风险](active-directory-identityprotection-playbook.md#sign-in-risk) |
+| 启用登录风险策略，如下所示：<br/>- 分配到：POC 用户<br/>- 条件：登录风险中或高（从匿名位置进行登录被认为是中等风险级别）<br/>- 控件：需要 MFA | [Azure Active Directory Identity Protection 操作手册：登录风险](active-directory-identityprotection-playbook.md) |
 | 打开 tor 浏览器 | [下载 Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | 使用 PoC 用户帐户登录到 https://myapps.microsoft.com |  |
 | 请注意 MFA 质询 | [Azure AD Identity Protection 中的登录体验：有风险的登录恢复](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
@@ -554,7 +554,7 @@ ms.lasthandoff: 12/11/2017
 | 与 ADFS 联合的 Azure AD 域 | [Azure AD Connect 和联合身份验证](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory 证书服务概述](https://technet.microsoft.com/library/hh831740.aspx)|
 | iOS 设备需要安装 Microsoft Authenticator 应用 | [Microsoft Authenticator 应用入门](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |

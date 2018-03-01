@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 9212e2a0063446cc6f1fd5faeb7ee61888fc0ecf
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7c3107d7385413d15445a8b3a3cd2476973ab632
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>在基于 Linux 的 Azure 应用服务中生成 PHP 和 MySQL Web 应用
 
@@ -320,7 +320,7 @@ git commit -m "database.php updates"
 Laravel 应用程序在 _/public_ 目录中启动。 适用于应用服务的默认 PHP Docker 映像使用 Apache，不允许为 Laravel 自定义 `DocumentRoot`。 但是，可以使用 `.htaccess` 来重写所有请求，使之指向 _/public_ 而不是根目录。 在存储库根目录中，已针对此目的添加了 `.htaccess`。 有了它即可部署 Laravel 应用程序。
 
 > [!NOTE] 
-> 如果不希望使用 _.htaccess_ 重写，可以改用[自定义 Docker 映像](quickstart-custom-docker-image.md)来部署 Laravel 应用程序。
+> 如果不希望使用 _.htaccess_ 重写，可以改用[自定义 Docker 映像](quickstart-docker-go.md)来部署 Laravel 应用程序。
 >
 >
 

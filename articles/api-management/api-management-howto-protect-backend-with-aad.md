@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 1ba7a415a56f5147e73faa48fcd51151c3c818a8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 695db2f5e6ffe794d76d0b9126dc231ed8a87d2c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>如何使用 Azure Active Directory 和 API 管理保护 Web API 后端
 下面的视频演示了如何生成 Web API 后端，并使用具有 Azure Active Directory 和 API 管理的 OAuth 2.0 协议对其进行保护。  本文提供视频中步骤的概述及其他信息。 此视频演示了以下内容，时长 24 分钟：
@@ -33,16 +33,16 @@ ms.lasthandoff: 02/09/2018
 > 
 
 ## <a name="create-an-azure-ad-directory"></a>创建 Azure AD 目录
-若要使用 Azure Active Directory 保护 Web API 后端，必须首先拥有 AAD 租户。 本视频中使用租户 **APIMDemo**。 若要创建 AAD 租户，请登录 [Azure 经典门户](https://manage.windowsazure.com)，单击“新建”->“应用服务”->“Active Directory”->“目录”->“自定义创建”。 
+若要使用 Azure Active Directory 保护 Web API 后端，必须首先拥有 AAD 租户。 本视频中使用了租户 **APIMDemo**。 若要创建 AAD 租户，请登录 [Azure 经典门户](https://manage.windowsazure.com)，单击“新建”->“应用服务”->“Active Directory”->“目录”->“自定义创建”。 
 
 ![Azure Active Directory][api-management-create-aad-menu]
 
-此示例中使用默认域 **DemoAPIM.onmicrosoft.com** 创建目录 **APIMDemo**。整个视频都将使用此目录。
+此示例创建了一个名为 **APIMDemo** 的目录，其中包含名为 **DemoAPIM.onmicrosoft.com** 的默认域。整个视频都将使用此目录。
 
 ![Azure Active Directory][api-management-create-aad]
 
 ## <a name="create-a-web-api-service-secured-by-azure-active-directory"></a>创建由 Azure Active Directory 保护的 Web API 服务
-此步骤使用 Visual Studio 2013 创建 Web API 后端。 视频中的此步骤从 1:30 开始。 要在 Visual Studio 中创建 Web API 后端项目，单击“文件”->“新建”->“项目”，并从“Web”模板列表中选择“ASP.NET Web 应用程序”。 在本视频中，此项目的名称为 **APIMAADDemo**。 单击“确定”以创建该项目  。 
+此步骤使用 Visual Studio 2013 创建 Web API 后端。 视频中的此步骤从 1:30 开始。 要在 Visual Studio 中创建 Web API 后端项目，单击“文件”->“新建”->“项目”，并从“Web”模板列表中选择“ASP.NET Web 应用程序”。 在本视频中，项目被命名为 **APIMAADDemo**。 单击“确定”以创建该项目  。 
 
 ![Visual Studio][api-management-new-web-app]
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 02/09/2018
 
 ![新建项目][api-management-new-project]
 
-单击“组织帐户”，并指定 AAD 租户的“域”。 此示例中的域是 **DemoAPIM.onmicrosoft.com**。可从目录的“域”选项卡获取域的目录。
+单击“组织帐户”，并指定 AAD 租户的“域”。 在此示例中，域为 **DemoAPIM.onmicrosoft.com**。可从目录的“域”选项卡获取域的目录。
 
 ![域][api-management-aad-domains]
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 02/09/2018
 
 ![配置][api-management-configure-web-app]
 
-此示例中指定了一个新的“应用服务计划”**APIMAADDemo**。
+此示例中指定了一个新的名为 **APIMAADDemo** 的“应用服务计划”。
 
 单击“确定”配置 Web 应用和创建项目。
 
@@ -192,7 +192,7 @@ public class CalcController : ApiController
 
 可将操作[手动添加到 API](api-management-howto-add-operations.md)，也可以导入操作。 在此视频中，以 Swagger 格式导入操作，从 6:40 开始。
 
-创建包含以下内容的文件 `calcapi.json` 并将其保存到计算机。 确保 `host` 属性指向 Web API 后端。 此示例使用 `"host": "apimaaddemo.azurewebsites.net"`。
+创建包含以下内容的文件 `calcapi.json` 并将其保存到计算机。 确保 `host` 属性指向 Web API 后端。 此示例中使用了 `"host": "apimaaddemo.azurewebsites.net"`。
 
 ```json
 {
@@ -375,7 +375,7 @@ public class CalcController : ApiController
 ## <a name="register-the-developer-portal-as-an-aad-application"></a>将开发人员门户注册为 AAD 应用程序
 将开发人员门户配置为使用 OAuth 2.0 向开发人员授权的第一步是：将开发人员门户注册为 AAD 应用程序。 视频中的此演示从 8:27 开始。
 
-通过本视频的第一步导航到 Azure AD 租户（此示例中的租户为“APIMDemo”），并导航到“应用程序”选项卡。
+通过本视频的第一步导航到 Azure AD 租户（在本例中为“APIMDemo”），并导航到“应用程序”选项卡。
 
 ![新建应用程序][api-management-aad-new-application-devportal]
 
@@ -383,13 +383,13 @@ public class CalcController : ApiController
 
 ![新建应用程序][api-management-new-aad-application-menu]
 
-选择“Web 应用程序和/或 Web API”，输入一个名称，并单击下一步箭头。 此示例中使用“APIMDeveloperPortal”。
+选择“Web 应用程序和/或 Web API”，输入一个名称，并单击下一步箭头。 此示例中使用了“APIMDeveloperPortal”。
 
 ![新建应用程序][api-management-aad-new-application-devportal-1]
 
-对于“登录 URL”，请输入 API 管理服务的 URL，并追加 `/signin`。 此示例使用 `https://contoso5.portal.azure-api.net/signin`。
+对于“登录 URL”，请输入 API 管理服务的 URL，并追加 `/signin`。 此示例中使用了 `https://contoso5.portal.azure-api.net/signin`。
 
-对于“应用 ID URL”，请输入 API 管理服务的 URL，并追加某些唯一字符。 这些类型可以是任何所需字符，在此示例中使用了 `https://contoso5.portal.azure-api.net/dp`。 配置所需“应用属性”后，单击复选标记创建应用程序。
+对于“应用 ID URL”，请输入 API 管理服务的 URL，并追加某些唯一字符。 这些类型可以是任何所需字符，此示例中使用了 `https://contoso5.portal.azure-api.net/dp`。 配置所需“应用属性”后，单击复选标记创建应用程序。
 
 ![新建应用程序][api-management-aad-new-application-devportal-2]
 
@@ -400,9 +400,9 @@ public class CalcController : ApiController
 
 ![添加授权服务器][api-management-add-authorization-server]
 
-在“名称”和“说明”字段中输入名称和可选说明。 这些字段用于标识 API 管理服务实例中的 OAuth 2.0 授权服务器。 此示例中使用“授权服务器演示”。 稍后指定要用于 API 身份验证的 OAuth 2.0 服务器时，需选择此名称。
+在“名称”和“说明”字段中输入名称和可选说明。 这些字段用于标识 API 管理服务实例中的 OAuth 2.0 授权服务器。 此示例中使用了“授权服务器演示”。 稍后指定要用于 API 身份验证的 OAuth 2.0 服务器时，需选择此名称。
 
-对于“客户端注册页 URL”，请输入占位符值，如 `http://localhost`。  “客户端注册页 URL”指向供用户针对 OAuth 2.0 提供程序创建和配置其自己的帐户的页面，这些提供程序支持用户管理帐户。 在此示例中，用户不会创建和配置自己的帐户，因此使用占位符。
+对于“客户端注册页 URL”，请输入占位符值，如 `http://localhost`。  “客户端注册页 URL”指向供用户针对 OAuth 2.0 提供程序创建和配置其自己的帐户的页面，这些提供程序支持用户管理帐户。 在此示例中，用户不创建和配置自己的帐户，因此使用了占位符。
 
 ![添加授权服务器][api-management-add-authorization-server-1]
 
@@ -434,7 +434,7 @@ public class CalcController : ApiController
 
 要获取“客户端 ID”，请导航到用于开发人员门户的 AAD 应用程序的“配置”选项卡，并复制“客户端 ID”。
 
-要获取“客户端机密”，请单击“密钥”部分中的“选择持续时间”下拉列表，并指定时间间隔。 此示例中使用 1 年。
+要获取“客户端机密”，请单击“密钥”部分中的“选择持续时间”下拉列表，并指定时间间隔。 此示例中使用了 1 年。
 
 ![客户端 ID][api-management-aad-client-id]
 
@@ -495,7 +495,7 @@ public class CalcController : ApiController
 视频中的下一过程从 16:30 开始，配置一个简单的桌面应用程序来调用 API。 第一步是在 Azure AD 中注册桌面应用程序，并向其授予访问目录和后端服务的权限。 18:25 开始演示桌面应用程序调用计算器 API 上的操作。
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>配置 JWT 验证策略以对请求进行预授权
-视频中的最后一个过程从 20:48 开始，演示如何使用[验证 JWT](https://msdn.microsoft.com/library/azure/034febe3-465f-4840-9fc6-c448ef520b0f#ValidateJWT) 策略通过验证每个传入请求的访问令牌来对请求进行预授权。 如果请求未通过“验证 JWT”策略进行验证，则将受到 API 管理的阻止且不会传递到后端。
+视频中的最后一个过程从 20:48 开始，演示如何使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略通过验证每个传入请求的访问令牌来对请求进行预授权。 如果请求未通过“验证 JWT”策略进行验证，则将受到 API 管理的阻止且不会传递到后端。
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

@@ -14,24 +14,24 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: bb5557eb0672b9ad137bc5817e47bf4f89e1c34d
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: de7847055c00fe9d0d1cc08cf5ba5d2ab54a9fc0
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 群集的已知问题
 
 本文档记述了 HDInsight Spark 公共预览版的所有已知问题。  
 
 ## <a name="livy-leaks-interactive-session"></a>Livy 泄漏交互式会话
-在某个交互式会话仍保持活动状态的情况下，Livy 重新启动（从 Ambari 重新启动，或者由于头节点 0 虚拟机重新启动），同时交互式作业会话泄漏。 因此，新作业可能陷于“已接受”状态中，且无法启动。
+如果 Livy 在某个交互式会话仍保持活动状态的情况下重启（通过 Ambari 重启或由于头节点 0 虚拟机重启导致），则会泄漏交互式作业会话。 因此，新作业可能卡在“已接受”状态且无法启动。
 
 **缓解：**
 
-使用以下过程解决该问题：
+请使用以下步骤解决该问题：
 
 1. 通过 SSH 连接到头节点。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/29/2017
    
         yarn application –list
    
-    如果作业是通过未指定明确名称的 Livy 交互式会话启动的，则默认的作业名称将是 Livy；对于 Jupyter 笔记本启动的 Livy 会话，作业名称以 remotesparkmagics_* 开头。 
+    如果在未指定显式名称的情况下通过 Livy 交互式对话启动作业，则默认的作业名称将为 Livy。 对于由 Jupyter 笔记本启动的 Livy 对话，作业名称以 remotesparkmagics_* 开头。 
 3. 运行以下命令以终止这些作业。 
    
         yarn application –kill <Application ID>
@@ -69,13 +69,13 @@ ms.lasthandoff: 11/29/2017
 
 **缓解：**
 
-必须改用 Spark-HBase 连接器。 有关说明，请参阅[如何使用 Spark-HBase 连接器](https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)。
+必须改用 Spark-HBase 连接器。 相关说明请参阅[如何使用 Spark-HBase 连接器](https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)。
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter 笔记本的相关问题
 下面是与 Jupyter 笔记本相关的一些已知问题。
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>笔记本的文件名中包含非 ASCII 字符
-可在 Spark HDInsight 群集中使用的 Jupyter 笔记本的文件名不应包含非 ASCII 字符。 如果尝试通过 Jupyter UI 上传文件名中包含非 ASCII 字符的文件，操作会失败且不发出提示（即，Jupyter 不允许上传该文件，但同时也不引发可视的错误）。 
+可在 Spark HDInsight 群集中使用的 Jupyter 笔记本的文件名不应包含非 ASCII 字符。 如果尝试通过 Jupyter UI 上传文件名中包含非 ASCII 字符的文件，操作会失败且不显示提示（即 Jupyter 禁止上传该文件，但也不引发可视的错误）。 
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>加载大型笔记本时发生错误
 加载大型笔记本时，可能会看到错误 **`Error loading notebook`**。  
@@ -84,11 +84,11 @@ ms.lasthandoff: 11/29/2017
 
 收到此错误并不表示数据已损坏或丢失。  笔记本仍在磁盘上的 `/var/lib/jupyter` 中，可以通过 SSH 连接到群集来访问它。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-一旦使用 SSH 连接到群集后，即可将笔记本从群集复制到本地计算机（使用 SCP 或 WinSCP）作为备份，以免丢失笔记本中的重要数据。 然后，可以使用端口 8001 通过 SSH 隧道（不通过网关）连接到头节点来访问 Jupyter。  可以从该处清除笔记本的输出，并将其重新保存，以在最大程度上缩小笔记本的大小。
+一旦使用 SSH 连接到群集后，即可将笔记本从群集复制到本地计算机（使用 SCP 或 WinSCP）作为备份，以免丢失笔记本中的重要数据。 然后，可以使用端口 8001 通过 SSH 隧道（不通过网关）连接到头节点来访问 Jupyter。  可从该处清除笔记本的输出并将其重新保存，以尽量减小笔记本的大小。
 
 若要防止今后发生此错误，必须遵循一些最佳实践：
 
-* 必须保持较小的笔记本大小。 发回到 Jupyter 的所有 Spark 作业输出都将保存在笔记本中。  一般而言，Jupyter 的最佳实践是避免对大型 RDD 或数据帧运行 `.collect()`；相反，如果想要查看 RDD 的内容，请考虑运行 `.take()` 或 `.sample()`，这样输出便不会变得太大。
+* 必须保持较小的笔记本大小。 发回到 Jupyter 的所有 Spark 作业输出都将保存在笔记本中。  一般而言，Jupyter 的最佳用法是避免对大型 RDD 或数据帧运行 `.collect()`；相反，如果想要查看 RDD 的内容，请考虑运行 `.take()` 或 `.sample()`，以使输出不至于过大。
 * 此外，在保存笔记本时，请清除所有输出单元以减小大小。
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>笔记本初次启动花费的时间比预期要长
@@ -99,7 +99,7 @@ ms.lasthandoff: 11/29/2017
 这发生在运行第一个代码单元时。 它在后台启动设置会话配置，以及设置 SQL、Spark 和 Hive 上下文。 设置这些上下文后，第一个语句才运行，因此让人觉得完成语句需要花费很长时间。
 
 ### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>创建会话时 Jupyter 笔记本超时
-如果 Spark 群集的资源不足，Jupyter 笔记本中的 Spark 和 Pyspark 内核在尝试创建会话时会超时。 
+如果 Spark 群集的资源不足，Jupyter 笔记本中的 Spark 和 PySpark 内核在尝试创建会话时会超时。 
 
 **缓解措施：** 
 
@@ -116,7 +116,6 @@ ms.lasthandoff: 11/29/2017
 * [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](apache-spark-use-bi-tools.md)
 * [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](apache-spark-eventhub-streaming.md)
 * [使用 HDInsight 中的 Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>创建和运行应用程序

@@ -5,6 +5,7 @@
     - name: 关于 Azure 搜索
       href: search-what-is-azure-search.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 创建服务
       href: search-create-service-portal.md

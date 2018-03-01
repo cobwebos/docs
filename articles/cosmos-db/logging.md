@@ -12,36 +12,61 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 02/20/2018
 ms.author: mimig
-ms.openlocfilehash: b8f92953634f9294805521d8b925ed67d121a17d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0d76e3bea8b3d24c4232c699354320f6b873722e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 诊断日志记录
 
-开始使用一个或多个 Azure Cosmos DB 数据库后，可能需要监视数据库的访问方式和时间。 可利用 Azure Cosmos DB 中的诊断日志记录执行此监视。 启用诊断日志记录，可将日志发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将日志流式传输到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并/或将日志导出到 [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) 包含的 [Log Analytics](https://azure.microsoft.com/services/log-analytics/)。
+开始使用一个或多个 Azure Cosmos DB 数据库后，可能需要监视数据库的访问方式和时间。 本文概述了在 Azure 平台上提供的所有日志，然后说明了如何启用监视用的诊断日志记录，以便将日志发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将其流式传输到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，以及/或者将其导出至 [Log Analytics](https://azure.microsoft.com/services/log-analytics/)，后者是 [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) 的一部分。
+
+## <a name="logs-available-in-azure"></a>在 Azure 中可用的日志
+
+在探讨如何监视 Azure Cosmos DB 帐户之前，让我们先澄清一些有关日志记录和监视的事项。 Azure 平台上有不同类型的日志。 有 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)、[Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)、[指标](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)日志、事件日志、检测信号监视日志、操作日志，等等。有很多的日志。 可以在 Azure 门户的 [Azure Log Analytics](https://azure.microsoft.com/en-us/services/log-analytics/) 中看到日志的完整列表。 
+
+下图显示所提供的不同种类的 Azure 日志。
+
+![不同种类的 Azure 日志](./media/logging/azurelogging.png)
+
+让我们重点讨论 Azure 活动日志、Azure 诊断日志和指标日志。 这三类日志有何差异？ 
+
+### <a name="azure-activity-log"></a>Azure 活动日志
+
+Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级别事件的订阅日志。 活动日志在“管理”类别下报告订阅的控制平面事件。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作、谁操作和操作时间”等信息。 还可以了解该操作和其他相关属性的状态。 
+
+活动日志不同于诊断日志。 活动日志提供有关从外部（“控制面”）对资源所执行操作的数据。 在 Azure Cosmos DB 上下文中，部分控制平面操作包括：创建集合、列出密钥、删除密钥、列出数据库，等等。诊断日志由资源发出，并提供有关该资源（“数据面”）的操作信息。 部分数据平面诊断日志示例包括：删除、插入、readfeed 操作，等等。
+
+活动日志（控制平面操作）在本质上可能要丰富得多，可能包括：调用方的完整电子邮件地址、调用方 IP 地址、资源名称、操作名称、TenantId，等等。活动日志包含多个数据[类别](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)。 有关这些类别的架构的完整详细信息，请参阅 [Azure 活动日志事件架构](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)。  但是，诊断日志在本质上可能是限制性的，因为通常会将 PII 数据从这些日志中剥离出来。 因此，你可能有调用方的 IP 地址，但最后的八进制数已删除。
+
+### <a name="azure-metrics"></a>Azure 指标
+
+[Azure 指标](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics)，包含最重要的 Azure 遥测数据类型（也称为性能计数器），是大多数 Azure 资源发出的。 可以通过指标来查看与吞吐量、存储、一致性、可用性以及 Azure Cosmos DB 资源的延迟相关的信息。 有关详细信息，请参阅[使用 Azure Cosmos DB 中的指标进行监视和调试](use-metrics.md)。
+
+### <a name="azure-diagnostic-logs"></a>Azure 诊断日志
+
+Azure 诊断日志是由资源发出的日志，提供与该资源的操作相关的各种频繁生成的数据。 这些日志的内容因资源类型而异。 资源级诊断日志来宾 OS 级诊断日志也不相同。 来宾 OS 级诊断日志是由在虚拟机内部或其他受支持的资源类型中运行的代理收集的日志。 资源级诊断日志不需要代理并从 Azure 平台本身捕获特定于资源的数据，而来宾 OS 级诊断日志从操作系统和在虚拟机上运行的应用程序捕获数据。
 
 ![利用 Log Analytics 将诊断日志记录到存储、事件中心或 Operations Management Suite](./media/logging/azure-cosmos-db-logging-overview.png)
 
-在本教程中，开始通过 Azure 门户、CLI 或 PowerShell 使用 Azure Cosmos DB 日志记录。
-
-## <a name="what-is-logged"></a>记录哪些内容？
+### <a name="what-is-logged-by-azure-diagnostic-logs"></a>Azure 诊断日志记录哪些内容？
 
 * 记录所有 API 中所有已经过身份验证的后端请求 (TCP/REST)，包括由于访问权限、系统错误或错误请求而发生的失败请求。 目前不支持用户启动的图形、Cassandra 和表 API 请求。
 * 对数据库本身的操作，包括对所有文档、容器和数据库的 CRUD 操作。
 * 对帐户密钥的操作，包括创建、修改或删除这些密钥。
 * 导致出现 401 响应的未经身份验证的请求。 例如，请求不包含持有者令牌、格式不正确或已过期，或者包含无效的令牌。
 
-## <a name="prerequisites"></a>先决条件
-要完成本教程，必须备好以下资源：
+<a id="#turn-on"></a>
+## <a name="turn-on-logging-in-the-azure-portal"></a>在 Azure 门户中启用日志记录
+
+若要启用诊断日志记录，必须具有以下资源：
 
 * 现有的 Azure Cosmos DB 帐户、数据库和容器。 有关创建这些资源的说明，请参阅[使用 Azure 门户创建数据库帐户](create-sql-api-dotnet.md#create-a-database-account)、[CLI 示例](cli-samples.md)或 [PowerShell 示例](powershell-samples.md)。
 
-<a id="#turn-on"></a>
-## <a name="turn-on-logging-in-the-azure-portal"></a>在 Azure 门户中启用日志记录
+若要在 Azure 门户中启用诊断日志记录，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com)的 Azure Cosmos DB 帐户中，单击左侧导航栏中的“诊断日志”，然后单击“启用诊断”。
 
@@ -98,7 +123,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="turn-on-logging-using-powershell"></a>使用 PowerShell 启用日志记录
 
-要使用 PowerShell 启用日志记录，需具备版本最低为 1.0.1 的 Azure Powershell。
+若要使用 PowerShell 启用诊断日志记录，需要版本最低为 1.0.1 的 Azure Powershell。
 
 要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
@@ -315,7 +340,7 @@ $blobs | Get-AzureStorageBlobContent `
 
 ## <a name="managing-your-logs"></a>管理日志
 
-自执行 Azure Cosmos DB 操作起两小时，即可在帐户中使用日志。 存储帐户中的日志完全由你管理：
+自执行 Azure Cosmos DB 操作起两小时，即可在帐户中使用诊断日志。 存储帐户中的日志完全由你管理：
 
 * 请使用标准的 Azure 访问控制方法限制可访问日志的人员，以此保护日志。
 * 删除不想继续保留在存储帐户中的日志。
@@ -325,7 +350,7 @@ $blobs | Get-AzureStorageBlobContent `
 <a id="#view-in-loganalytics"></a>
 ## <a name="view-logs-in-log-analytics"></a>在 Log Analytics 中查看日志
 
-如果在启用日志记录时选择了“发送到 Log Analytics”选项，则集合中的诊断数据会在两个小时内转发到 Log Analytics。 这意味着，如果在启用日志记录之后立即查看 Log Analytics，将看不到任何数据。 请等待两个小时并重试。 
+如果在启用诊断日志记录时选择了“发送到 Log Analytics”选项，则集合中的诊断数据会在两个小时内转发到 Log Analytics。 这意味着，如果在启用日志记录之后立即查看 Log Analytics，将看不到任何数据。 请等待两个小时并重试。 
 
 在查看日志之前，需要检查并确定 Log Analytics 工作区是否已升级为使用新的 Log Analytics 查询语言。 若要检查，请打开 [Azure 门户](https://portal.azure.com)，在最左侧单击“Log Analytics”，选择工作区名称，如下图所示。 此时会显示“OMS 工作区”页，如下图所示。
 

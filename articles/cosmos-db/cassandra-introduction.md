@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: fe911b69278021262f1d90f2157bb78ca48db0db
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 62e56a611d3f720172ace83a4b407a962ec69ea8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="introduction-to-apache-cassandra-api-for-azure-cosmos-db"></a>Apache Cassandra API for Azure Cosmos DB 简介
 
@@ -64,7 +64,7 @@ Azure Cosmos DB 提供的 Cassandra API（预览版）适用于为 Apache Cassan
 
 如果已经有 Azure 订阅，则可以在 [Azure 门户](https://aka.ms/cosmosdb-cassandra-signup)中注册，以加入 Cassandra API（预览版）计划。  如果是 Azure 新手，请注册[免费试用版](https://azure.microsoft.com/free)，获取对 Azure Cosmos DB 12 个月的免费访问权限。 请完成以下步骤，以请求访问 Cassandra API（预览版）计划。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“新建” > “数据库” > “Azure Cosmos DB”。 
+1. 在 [Azure 门户](https://portal.azure.com)中，单击“创建资源” > “数据库” > “Azure Cosmos DB”。 
 
 2. 在“新建帐户”页中，选择 API 框中的“Cassandra”。 
 

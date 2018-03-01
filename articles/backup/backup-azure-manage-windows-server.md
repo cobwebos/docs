@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: markgal
-ms.openlocfilehash: 58080d0e045f1825e89287fc421b7e84db36331e
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 925aa88d32f6f5cea252616cf079faf35857eb8a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>监视和管理适用于 Windows 计算机的 Azure 恢复服务保管库和服务器
 
@@ -32,13 +32,11 @@ ms.lasthandoff: 11/11/2017
 恢复服务保管库仪表板显示恢复服务保管库的详细信息或属性。
 
 1. 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在“中心”菜单上，单击“更多服务”。
-
-    ![打开恢复服务保管库列表步骤 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png) <br/>
+2. 单击“所有服务”。 
 
 3. 如果要打开恢复服务保管库。 在对话框中，开始键入“恢复服务”。 开始键入时，会根据输入筛选该列表。 单击“恢复服务保管库”，显示订阅中恢复服务保管库的列表。
 
-    ![创建恢复服务保管库步骤 1](./media/backup-azure-manage-windows-server/browse-to-rs-vaults-2.png) <br/>
+     ![打开恢复服务保管库列表步骤 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png) <br/>
 
     此时会打开恢复服务保管库列表。
 
@@ -74,9 +72,9 @@ ms.lasthandoff: 11/11/2017
 ## <a name="alerts-for-backups-using-azure-backup-agent"></a>使用 Azure 备份代理进行备份的警报：
 | 警报级别 | 已发送的警报 |
 | --- | --- |
-| 严重 |备份失败、恢复失败 |
-| 警告 |备份已完成，但出现警告（由于损坏问题，有不到 100 个文件尚未备份，且成功了备份 1,000,000 多个文件） |
-| 信息性 |无 |
+| 严重 | 适用于备份失败、恢复失败和延迟删除（即，当有人通过删除数据停止保护时） |
+| 警告 | 适用于备份已完成，但出现警告（由于损坏问题，有不到 100 个文件尚未备份，且成功备份了 1,000,000 多个文件） |
+| 信息性 | 目前，信息性警报不可用于 Azure 备份代理 |
 
 ## <a name="manage-backup-alerts"></a>管理备份警报
 单击“备份警报”磁贴即可打开“备份警报”菜单对警报进行管理。
@@ -244,7 +242,7 @@ Azure 备份代理提供的“限制”选项卡可让你控制在数据传输�
     启用限制后，指定在“**工作时间**”和“**非工作时间**”允许使用多少带宽进行备份数据传输。
 
     带宽值从每秒 512 千字节 (Kbps) 开始，最高可为每秒 1023 兆字节 (Mbps)。 还可以指定“**工作时间**”的开始和结束时间，以及一周中有哪几天被视为工作日。 在指定的工作时间之外的时间被视为非工作时间。
-3. 单击 **“确定”**。
+3. 单击“确定”。
 
 ## <a name="manage-exclusion-settings"></a>管理排除设置
 1. 打开 **Microsoft Azure 备份代理**（可以通过在计算机中搜索 *Microsoft Azure 备份*来找到它）。
