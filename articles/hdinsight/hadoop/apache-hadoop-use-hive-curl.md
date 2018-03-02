@@ -16,11 +16,19 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/26/2018
 ms.author: larryfr
+<<<<<<< HEAD
 ms.openlocfilehash: c830abdf8220f222a06b771b8c9fc905146420b4
 ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2018
+=======
+ms.openlocfilehash: dfe9efdb57a0ce2506abd251267f39020568d081
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/28/2018
+>>>>>>> 80a94c7d4609de719926150462f483c267c962e6
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>使用 REST 在 HDInsight 中通过 Hadoop 运行 Hive 查询
 
@@ -77,7 +85,12 @@ ms.lasthandoff: 02/21/2018
     
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/status" `
+<<<<<<< HEAD
        -Credential $creds
+=======
+       -Credential $creds `
+       -UseBasicParsing
+>>>>>>> 80a94c7d4609de719926150462f483c267c962e6
     $resp.Content
     ```
 
@@ -100,7 +113,12 @@ ms.lasthandoff: 02/21/2018
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/version/hive" `
+<<<<<<< HEAD
        -Credential $creds
+=======
+       -Credential $creds `
+       -UseBasicParsing
+>>>>>>> 80a94c7d4609de719926150462f483c267c962e6
     $resp.Content
     ```
 
@@ -122,7 +140,12 @@ ms.lasthandoff: 02/21/2018
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/hive" `
        -Credential $creds `
        -Body $reqParams `
+<<<<<<< HEAD
        -Method POST
+=======
+       -Method POST `
+       -UseBasicParsing
+>>>>>>> 80a94c7d4609de719926150462f483c267c962e6
     $jobID = (ConvertFrom-Json $resp.Content).id
     $jobID
     ```
@@ -162,7 +185,12 @@ ms.lasthandoff: 02/21/2018
     $reqParams=@{"user.name"="admin"}
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/jobs/$jobID" `
        -Credential $creds `
+<<<<<<< HEAD
        -Body $reqParams
+=======
+       -Body $reqParams `
+       -UseBasicParsing
+>>>>>>> 80a94c7d4609de719926150462f483c267c962e6
     # ConvertFrom-JSON can't handle duplicate names with different case
     # So change one to prevent the error
     $fixDup=$resp.Content.Replace("jobID","job_ID")

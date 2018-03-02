@@ -1,4 +1,4 @@
----
+﻿---
 title: "使用 Visual Studio Code 通过 Azure IoT Edge 开发 C# 模块 | Microsoft Docs"
 description: "在 Visual Studio Code 中在不切换上下文的情况下开发 C# 模块并通过 Azure IoT Edge 进行部署。"
 services: iot-edge

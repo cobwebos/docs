@@ -1,4 +1,4 @@
----
+﻿---
 title: "面向物联网的 Azure 解决方案（IoT 套件）| Microsoft 文档"
 description: "示例 IoT 解决方案体系结构的概述，以及它如何与设备、Azure IoT 中心服务、Azure IoT 设备 SDK、Azure IoT 服务 SDK 和其他 Azure 服务相关。"
 services: iot-hub
