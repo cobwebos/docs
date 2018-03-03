@@ -1,20 +1,20 @@
 ---
-title: "用于 MySQL 关系数据库服务的 Azure 数据库的概述 | Microsoft Docs"
+title: "Azure Database for MySQL 关系数据库服务概述"
 description: "用于 MySQL 关系数据库服务的 Azure 数据库的概述。"
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 02/28/2018
 ms.custom: mvc
-ms.openlocfilehash: 2a9efdd9285dfa5fca450ede64e5f6ee54cbc72b
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 82d96424569daf481e31ab04c08dcb5e63e58476
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="what-is-azure-database-for-mysql"></a>什么是用于 MySQL 的 Azure 数据库？
 用于 MySQL 的 Azure 数据库是 Microsoft 云中基于 [MySQL 社区版](https://www.mysql.com/products/community/)数据库引擎的一种关系数据库服务。 此服务目前以公共预览版提供。 用于 MySQL 的 Azure 数据库提供以下功能：
@@ -38,10 +38,10 @@ ms.lasthandoff: 10/23/2017
 - [用于 MySQL 的 Azure 数据库的 Azure CLI 示例](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>几秒钟内调整性能和规模
-在预览版中，Azure Database for MySQL 服务提供两个服务层：基本和标准。 每个层提供不同的性能和功能，以支持从轻型到重型的数据库工作负荷。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为所需的资源付费。 有关详细信息，请参阅[定价层](concepts-service-tiers.md)。
+在预览版中，Azure Database for MySQL 服务提供多个服务层：“基本”、“常规用途”和“内存优化”。 每个层提供不同的性能和功能，以支持从轻型到重型的数据库工作负荷。 可以在一个月内花费很少的费用基于小型数据库构建第一个应用，然后根据解决方案的需求调整缩放。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需在需要资源时为所需的资源付费。 有关详细信息，请参阅[定价层](concepts-service-tiers.md)。
 
 ## <a name="monitoring-and-alerting"></a>监视和警报
-如何决定何时调高和调低？ 将内置的性能监视和警报功能与基于计算单位的性能等级组合使用。 使用这些工具，可以根据当前的或预计的性能需求，快速评估调高或调低计算单位产生的影响。 有关详细信息，请参阅[警报](howto-alert-on-metric.md)。
+如何决定何时调高和调低？ 将内置的性能监视和警报功能与基于 vCore 的性能等级组合使用。 使用这些工具，可以根据当前的或预计的性能需求，快速评估调高或调低 vCore 数产生的影响。 有关详细信息，请参阅[警报](howto-alert-on-metric.md)。
 
 ## <a name="keep-your-app-and-business-running"></a>使应用和业务持续运转
 Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（由 Microsoft 管理的数据中心的全球网络提供支持），有助于保持应用全天候运行。 对于每个用于 MySQL 服务器的 Azure 数据库，可以利用内置的安全性、容错和数据保护功能。使用其他产品时可能需要另外购买或设计、构建并管理这些功能。 使用用于 MySQL 的 Azure 数据库，可以使用时间点还原将服务器还原到以前的状态，最多可还原到 35 天前。
