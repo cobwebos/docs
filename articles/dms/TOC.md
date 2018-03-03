@@ -18,4 +18,5 @@
 ## [定价](https://aka.ms/dms-pricing)
 ## [先决条件概述](pre-reqs.md)
 ## [常见问题](faq.md)
+## [服务更新](https://azure.microsoft.com/en-us/updates/?product=database-migration)
 

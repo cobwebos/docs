@@ -1,8 +1,11 @@
+# [Azure AD 域服务文档](index.md)
+
 # 概述
 ## [什么是 Azure AD 域服务？](active-directory-ds-overview.md)
 ## 它是否适合你？
 ### [与 Windows Server AD 进行比较](active-directory-ds-comparison.md)
 ### [与 Azure AD 加入进行比较](active-directory-ds-compare-with-azure-ad-join.md)
+## [新增功能](https://azure.microsoft.com/updates/?product=active-directory-ds)
 ## [功能](active-directory-ds-features.md)
 ## [方案](active-directory-ds-scenarios.md)
 ## [同步的工作原理](active-directory-ds-synchronization.md)
@@ -16,8 +19,10 @@
 ## [任务 5：启用密码同步](active-directory-ds-getting-started-password-sync.md)
 
 # 如何
+## [检查托管域的运行状况](active-directory-ds-check-health.md)
 ## [使用 Azure CSP 订阅中的 Azure AD 域服务](active-directory-ds-csp.md)
 ## [使用 PowerShell 启用 Azure AD 域服务](active-directory-ds-enable-using-powershell.md)
+## [检查域的运行状况](active-directory-ds-check-health.md)
 ## 加入托管域
 ### [Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [通过模板将 Windows Server VM 加入托管域](active-directory-ds-join-windows-vm-template.md)
@@ -28,7 +33,6 @@
 ## 管理托管域
 ### [管理托管域](active-directory-ds-admin-guide-administer-domain.md)
 ### [管理托管域上的 DNS](active-directory-ds-admin-guide-administer-dns.md)
-### [检查域的运行状况](active-directory-ds-check-health.md)
 ### 为托管域配置安全 LDAP
 #### [任务 1：获取安全 LDAP 的证书](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [任务 2：导出安全 LDAP 证书](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)

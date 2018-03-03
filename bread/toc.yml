@@ -126,8 +126,8 @@
       tocHref: /azure/cloud-services/
       topicHref: /azure/cloud-services/
     - name: 认知服务
-      tocHref: /azure/cognitive-services/
-      topicHref: /azure/cognitive-services/
+      tocHref: '/azure/#pivot=products&panel=ai'
+      topicHref: '/azure/#pivot=products&panel=ai'
       items:
         - name: 必应自定义搜索
           tocHref: /azure/cognitive-services/bing-custom-search/
