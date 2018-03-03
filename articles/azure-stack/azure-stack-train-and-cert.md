@@ -2,17 +2,18 @@
 title: "Azure 堆栈培训和认证"
 description: "了解有关 Azure 堆栈培训证书颁发机会的信息"
 services: azure-stack
-author: vhorne
+author: mattbriggs
+manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 9/25/2017
-ms.author: victorh
+ms.date: 02/28/2018
+ms.author: mabrigg
 keywords: 
-ms.openlocfilehash: 9112e43cbe3b075dd5665dff37a02c1eb0b05db8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 3ac1d83c4f40bd8bbd072486489b72de73084ade
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-training-and-certification"></a>Azure 堆栈培训和认证
 
@@ -29,6 +30,6 @@ ms.lasthandoff: 10/11/2017
 ## <a name="certification"></a>认证
 Azure 堆栈认证目前正在开发中。 请检查以便获得最新的更新。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 
-[Azure 堆栈文档](https://docs.microsoft.com/en-us/azure/azure-stack/)
+[Azure 堆栈文档](https://docs.microsoft.com/azure/azure-stack/)

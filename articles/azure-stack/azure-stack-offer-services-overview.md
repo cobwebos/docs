@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/25/2017
 ms.author: brenduns
 ms.reviewer: 
-ms.openlocfilehash: 7a0fe4e02cf7a5feee90c3a0bf5596b44d5f9038
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7e2b98391bab5806b59d8a16ec7dc24295a0d224
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>提供 Azure 堆栈中的服务的概述
 
@@ -43,6 +43,6 @@ ms.lasthandoff: 02/21/2018
 
 **委派提供程序**： 你可以授予其他人创建你的环境中提供的功能。 例如，如果你的服务提供商，你可以[委托](azure-stack-delegated-provider.md)到你的经销商此功能。 或者，如果你是组织，你可以委托到其他部门/子公司。
 
-## <a name="next-steps"></a>后续步骤
-[了解有关产品/服务、 计划、 配额和订阅的详细信息](azure-stack-plan-offer-quota-overview.md)
+## <a name="next-steps"></a>接下来的步骤
+[在 Azure 堆栈中创建提议](azure-stack-create-offer.md)
 

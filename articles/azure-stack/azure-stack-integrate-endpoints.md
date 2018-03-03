@@ -3,31 +3,32 @@ title: "Azure 堆栈数据中心集成-发布终结点"
 description: "了解如何在你的数据中心中发布 Azure 堆栈终结点"
 services: azure-stack
 author: jeffgilb
+manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: 
-ms.openlocfilehash: 8af533147f3cc12f2334a43e7b672c69d0d25802
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8dec686b9ccf87009a23cedf6023f15b84a0f155
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure 堆栈数据中心集成-发布终结点
-Azure 堆栈设置了多个虚拟 IP 地址 (Vip) 及其基础结构角色。 这些 Vip 是从公共 IP 地址池分配的。 每个 VIP 访问控制列表 (ACL) 中的软件定义网络层保护。 Acl 还跨物理交换机 （TORs 和 BMC） 用于进一步强化处理解决方案。 为每个终结点在部署时指定的外部 DNS 区域中创建 DNS 条目。
+Azure 堆栈将设置为其基础结构角色的虚拟 IP 地址 (Vip)。 这些 Vip 是从公共 IP 地址池分配的。 每个 VIP 访问控制列表 (ACL) 中的软件定义网络层保护。 Acl 还跨物理交换机 （TORs 和 BMC） 用于进一步强化处理解决方案。 为每个终结点在部署时指定的外部 DNS 区域中创建 DNS 条目。
 
 
 下面的体系结构关系图显示了不同的网络层和 Acl:
 
-![体系结构图](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
+![结构化的图片](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
 
 ## <a name="ports-and-protocols-inbound"></a>端口和协议 （入站）
 
-下面列出了所需的到外部网络的发布 Azure 堆栈终结点的基础结构 Vip。 此列表显示每个终结点、 所需的端口和协议。 终结点所需的 SQL 资源提供程序和其他人，等其他资源提供程序特定的资源提供程序部署文档中介绍。
+一组基础结构的 Vip 所需的到外部网络的发布 Azure 堆栈终结点。 *终结点 (VIP)*表显示了每个终结点、 所需的端口和协议。 请参阅需要额外的资源提供程序，如 SQL 资源提供程序的终结点的特定资源提供程序部署文档。
 
-未列出 Vip，因为它们不需要发布 Azure 堆栈的内部基础结构。
+Vip 未列出，因为它们不需要发布 Azure 堆栈的内部基础结构。
 
 > [!NOTE]
 > 用户 Vip 是动态的由用户自行通过 Azure 堆栈运算符没有控件的定义。
@@ -40,7 +41,7 @@ Azure 堆栈设置了多个虚拟 IP 地址 (Vip) 及其基础结构角色。 �
 |Azure 资源管理器 （管理员）|Adminmanagement。*&lt;区域 >。&lt;fqdn >*|HTTPS|443<br>30024|
 |门户 （用户）|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12649<br>13001<br>13010<br>13011<br>13020<br>13021<br>30015<br>13003|
 |Azure 资源管理器 （用户）|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
-|图形|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Graph|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |证书吊销列表|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.*&lt;region>.&lt;fqdn>*|TCP 和 UDP|53|
 |密钥保管库 （用户）|&#42;.vault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
@@ -60,7 +61,7 @@ Azure 堆栈设置了多个虚拟 IP 地址 (Vip) 及其基础结构角色。 �
 Azure 堆栈仅支持透明的代理服务器。 在部署中其中透明代理的上行以传统的代理服务器，你必须允许下列端口和 Url 用于出站通信：
 
 
-|目的|代码|协议|端口|
+|目的|URL|协议|端口|
 |---------|---------|---------|---------|
 |标识|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net|HTTP<br>HTTPS|80<br>443|
 |应用商店联合|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|
@@ -69,5 +70,6 @@ Azure 堆栈仅支持透明的代理服务器。 在部署中其中透明代理�
 |使用情况|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.com|HTTPS|443|
 
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
+
 [Azure 堆栈 PKI 要求](azure-stack-pki-certs.md)

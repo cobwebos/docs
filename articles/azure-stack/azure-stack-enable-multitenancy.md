@@ -3,21 +3,21 @@ title: "启用 Azure 堆栈中的多租户 |Microsoft 文档"
 description: "了解如何支持 Azure 堆栈中的多个 Azure Active Directory 目录"
 services: azure-stack
 documentationcenter: 
-author: HeathL17
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: bdf92b8b73dca55e819545913931c0a79a366486
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: 66689d80cbee0be36b3e8c9951a43d0d43fa01be
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="enable-multi-tenancy-in-azure-stack"></a>启用 Azure 堆栈中的多租户
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/14/2018
 
 本指南提供了所需的步骤，在此方案中，上下文中配置多租户 Azure 堆栈中。  在此方案中，你和 Mary 必须完成步骤以使用户从 Fabrikam 登录并使用从 Azure 堆栈部署在 Contoso 中的服务。  
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 有几个先决条件，来应对之前在 Azure 堆栈中配置多租户：
   
  - 你和 Mary 必须协调跨 Azure 堆栈 (Contoso) 中的安装的目录和来宾目录 (Fabrikam) 的管理步骤。  

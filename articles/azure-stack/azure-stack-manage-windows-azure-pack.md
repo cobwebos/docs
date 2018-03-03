@@ -3,8 +3,8 @@ title: "管理 Windows Azure 包虚拟机从 Azure 堆栈 |Microsoft 文档"
 description: "了解如何从 Azure 堆栈中的用户门户中管理 Windows Azure Pack (WAP) Vm。"
 services: azure-stack
 documentationcenter: 
-author: walterov
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 213c2792-d404-4b44-8340-235adf3f8f0b
 ms.service: azure-stack
@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: walterov
-ms.openlocfilehash: b07a18055d149e20cd605a892063eccecf3df8a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: a7e4896c84938b392a86f4d9609c4932324c785d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="manage-windows-azure-pack-virtual-machines-from-azure-stack"></a>从 Azure 堆栈管理 Windows Azure 包虚拟机
 
@@ -65,7 +65,7 @@ Windows Azure 包租户 API 必须信任 Azure 堆栈安全令牌服务 (STS)。
 
 在开发工具包环境中，Windows Azure Pack 和 Azure 堆栈具有独立的标识提供程序。 这两个标识提供程序中，从 Azure 堆栈门户访问这两个环境的用户必须具有相同的用户主体名称 (UPN) 名称。 例如，帐户 *azurestackadmin@azurestack.local* 还应存在于 Windows Azure Pack 的 STS。 在 AD FS 不设置以支持出站信任关系，将 AD FS 的 Azure 堆栈实例从 Windows Azure Pack 组件 (租户 API) 建立信任关系。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="download-the-windows-azure-pack-connector"></a>下载 Windows Azure 包连接器
 上[Microsoft Download Center](https://aka.ms/wapconnectorazurestackdlc)，请下载的.exe 文件，并将其解压缩到本地计算机。 更高版本，你的内容复制到可以访问你的 Windows Azure Pack 环境的计算机。
@@ -95,9 +95,9 @@ Windows Azure 包租户 API 必须信任 Azure 堆栈安全令牌服务 (STS)。
 
 |  参数 | 说明 | 示例 |   
 | -------- | ------------- | ------- |  
-| AzurePackClouds | Windows Azure 包连接器的 Uri。 这些 Uri 应对应于 Windows Azure Pack 租户门户。 | @{CloudName ="AzurePack1";CloudEndpoint ="https://waptenantportal1:40005"},@{CloudName ="AzurePack2";CloudEndpoint ="https://waptenantportal2:40005"}<br><br>  （默认情况下，将端口值为 40005。） |  
+| AzurePackClouds | Windows Azure 包连接器的 Uri。 这些 Uri 应对应于 Windows Azure Pack 租户门户。 | @{CloudName = "AzurePack1"; CloudEndpoint = "https://waptenantportal1:40005"},@{CloudName = "AzurePack2"; CloudEndpoint = "https://waptenantportal2:40005"}<br><br>  （默认情况下，将端口值为 40005。） |  
 | AzureStackCloudName | 来表示本地 Azure 堆栈云的标签。| "AzureStack" |
-| DisableMultiCloud | 要禁用多云模式的交换机。| 不适用 |
+| DisableMultiCloud | 要禁用多云模式的交换机。| N/A |
 | | |
 
 立即部署后，或更高版本，您可以运行添加 AzurePackConnector.ps1 脚本。 若要在部署后立即运行脚本，使用同一个 Windows PowerShell 会话，其中 Azure 堆栈部署完成。 否则，你可以打开新的 Windows PowerShell 会话以管理员身份 （azurestackadmin 帐户作为登录）。
@@ -161,13 +161,13 @@ Windows Azure 包租户 API 必须信任 Azure 堆栈安全令牌服务 (STS)。
 
     .\Install-Connector.ps1
     ```
-     d.单击“下一步”。 将目录更改为**c:\inetpub**并验证是否安装了三个新站点：
+     d.单击“验证存储凭据”以验证存储帐户。 将目录更改为**c:\inetpub**并验证是否安装了三个新站点：
 
-       * MgmtSvc 连接器
+       * MgmtSvc-Connector
 
-       * MgmtSvc ConnectorExtension
+       * MgmtSvc-ConnectorExtension
 
-       * MgmtSvc ConnectorController
+       * MgmtSvc-ConnectorController
 
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 从同一个**c:\temp\wapconnector\setup\scripts**文件夹中，运行**配置 Certificates.ps1**脚本来安装证书。 默认情况下，它将使用相同的证书可用于在 Windows Azure Pack 租户门户网站。 请确保这是 （Azure 堆栈 AzS WASP01 虚拟机和访问 Azure 堆栈门户任何客户端计算机信任） 的有效证书。 否则，通信不起作用。 (或者，你可以将显式传递证书指纹作为参数使用-指纹参数。)
 
@@ -177,7 +177,7 @@ Windows Azure 包租户 API 必须信任 Azure 堆栈安全令牌服务 (STS)。
         .\Configure-Certificates.ps1
     ```
 
-    f. 若要完成这三项服务的配置，运行**配置 WapConnector.ps1**脚本以更新 Web.config 文件参数。
+    f.单击“保存”以保存设置。 若要完成这三项服务的配置，运行**配置 WapConnector.ps1**脚本以更新 Web.config 文件参数。
 
     |  参数 | 说明 | 示例 |   
     | -------- | ------------- | ------- |  
@@ -201,7 +201,7 @@ Windows Azure 包租户 API 必须信任 Azure 堆栈安全令牌服务 (STS)。
 
     c. 更早版本，保存的 AzurePackConnectorOutput.txt 文件复制到**c:\temp\WAPConnector**。
 
-    d.单击“下一步”。 打开控制台或 RDP 连接到租户 API 虚拟机复制到文件。
+    d.单击“验证存储凭据”以验证存储帐户。 打开控制台或 RDP 连接到租户 API 虚拟机复制到文件。
     
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 将目录更改为**c:\temp\wapconnector\setup\scripts**，并运行**更新 TenantAPI.ps1**。 此新版本的 WAP 租户 API 包含的更改，以启用信任关系使用当前的 STS，不仅能还与 Azure 堆栈中的 AD FS 的实例。
 
@@ -211,12 +211,12 @@ Windows Azure 包租户 API 必须信任 Azure 堆栈安全令牌服务 (STS)。
     .\Update-TenantAPI.ps1
     ```
 
-    f.  重复步骤 2 运行租户 API 的任何其他虚拟机上。
+    f.单击“保存”以保存设置。  重复步骤 2 运行租户 API 的任何其他虚拟机上。
 3. 从**只有一个**的租户 API 虚拟机，运行用于添加 Azure 堆栈上的租户 API 和 AD FS 实例之间的信任关系的配置 TrustAzureStack.ps1 脚本。 你必须使用具有访问 Microsoft.MgmtSvc.Store 数据库的 sysadmin 权限的帐户。 此脚本具有以下参数：
 
     | 参数 | 说明 | 示例 |
     | --------- | ------------| ------- |
-   | Sql Server | 包含 Microsoft.MgmtSvc.Store 数据库的 SQL server 名称。 此参数是必需的。 | Sql Server | 
+   | SqlServer | 包含 Microsoft.MgmtSvc.Store 数据库的 SQL server 名称。 此参数是必需的。 | SQLServer | 
    | 数据文件 | 已在更早版本的 Azure 堆栈多云模式的配置过程中生成输出文件。 此参数是必需的。 | AzurePack-06-27-15-50.txt | 
    | PromptForSqlCredential | 指示该脚本应提示你以交互方式输入要连接到 SQL Server 实例时使用的 SQL 身份验证凭据。 给定的凭据必须具有足够的权限来卸载数据库，架构，以及删除用户登录名。 如果未提供，该脚本假设该当前用户上下文具有访问权限。 | 需要没有值。 |
    |  |  |
@@ -277,5 +277,5 @@ cd C:\temp\WAPConnector\Setup\Scripts
 4. 有关已知问题，请参阅[Microsoft Azure 堆栈疑难解答](azure-stack-troubleshooting.md)。
 
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 [在 Azure 堆栈中使用的管理员和用户门户](azure-stack-manage-portals.md)

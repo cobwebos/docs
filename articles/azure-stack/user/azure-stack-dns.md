@@ -3,22 +3,21 @@ title: "Azure 堆栈中的 DNS |Microsoft 文档"
 description: "Azure Stack 中的 DNS"
 services: azure-stack
 documentationcenter: 
-author: ScottNapolitan
-manager: byronr
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/25/2017
-ms.author: victorh
-ms.openlocfilehash: ac93b5eb4228cef373428b7b69932d5993d54fa0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: 394abe5295af4ed99e48d50b5886ac93af87e875
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="dns-in-azure-stack"></a>Azure Stack 中的 DNS
 
@@ -68,7 +67,7 @@ Azure 堆栈中的 DNS 是类似于在 Azure 中，DNS 具有两种主要的例�
 
 Azure 堆栈 DNS 支持在 DNS 区域资源上使用 Azure 资源管理器标记。 它不支持标记上 DNS 记录集，尽管 DNS 记录因为在支持的替代方法元数据设置下一步所述。
 
-**元数据**
+Metadata
 
 记录集标记的替代方法，为 Azure 堆栈 DNS 支持对使用元数据的记录集进行批注。 与标记相类似，通过元数据可将名称/值对与每个记录集相关联。 例如，这可用于记录每个记录集的用途。 与标记不同的是，元数据不能用于提供 Azure 帐单的筛选视图，且不能在 Azure 资源管理器策略中指定。
 
@@ -82,9 +81,9 @@ Azure 堆栈 DNS 使用 Etag 来安全地处理对同一资源的并发更改。
 
 Azure DNS REST API，堆栈级别，使用 HTTP 标头指定的 Etag。 下表给出了它们的行为：
 
-| 标头 | 行为|
+| 页眉 | 行为|
 |--------|---------|
-| 无   | PUT 始终成功（没有 Etag 检查）|
+| None   | PUT 始终成功（没有 Etag 检查）|
 | 如果匹配| 只有当资源存在并且 Etag 匹配时，PUT 才会成功|
 | If-match *| 只有当资源存在时，PUT 才会成功|
 | If-none-match *| 只有当资源不存在时，PUT 才会成功|
@@ -99,5 +98,5 @@ Azure DNS REST API，堆栈级别，使用 HTTP 标头指定的 Etag。 下表�
 | 每个区域的记录集数| 5000|
 | 每个记录集的记录数| 20|
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 [为 Azure 堆栈引入 Idn](azure-stack-understanding-dns.md)

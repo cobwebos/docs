@@ -3,21 +3,21 @@ title: "创建用于 Azure 堆栈的服务主体 |Microsoft 文档"
 description: "描述如何创建新的服务主体可以用于基于角色的访问控制 Azure 资源管理器中用来管理对资源的访问。"
 services: azure-resource-manager
 documentationcenter: na
-author: heathl17
-manager: byronr
+author: mattbriggs
+manager: femila
 ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2017
-ms.author: helaw
-ms.openlocfilehash: 96d5cdfc28759fd516eab5fd97c6cf444af08cf6
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.date: 02/25/2018
+ms.author: mabrigg
+ms.openlocfilehash: 64c424ee7045ae20b3fba6433166039580387d76
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>提供对 Azure 堆栈的应用程序访问
 
@@ -31,9 +31,9 @@ ms.lasthandoff: 10/18/2017
 
 * 可以将权限分配给服务主体，有别于你自己的帐户权限。 通常情况下，这些权限仅限于应用需执行的操作。
 * 职责变化时，无需更改应用的凭据。
-* 执行无人参与的脚本时，可使用证书自动进行身份验证。  
+* 执行无人参与的脚本时，可以使用证书自动执行身份验证。  
 
-## <a name="getting-started"></a>入门
+## <a name="getting-started"></a>开始使用
 
 具体取决于如何部署 Azure 堆栈后，你首先创建服务主体。  本文档将指导你逐步完成创建两个服务主体[Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad)和[Active Directory 联合身份验证 Services(AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs)。  创建服务主体后, 一套常见到 AD FS 和 Azure Active Directory 的步骤是用于[委派权限](azure-stack-create-service-principals.md#assign-role-to-service-principal)到角色。     
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/18/2017
 
 1. 通过 [Azure 门户](https://portal.azure.com)登录 Azure 帐户。
 2. 选择**Azure Active Directory** > **应用程序注册** > **添加**   
-3. 为应用提供名称和 URL。 选择“Web 应用/API”或“本机”作为要创建的应用程序的类型。 设置这些值后，选择“创建”。
+3. 为应用提供名称和 URL。 选择“Web 应用/API”或“本机”作为要创建的应用程序的类型。 。
 
 已为你的应用程序来创建服务主体。
 
@@ -58,11 +58,11 @@ ms.lasthandoff: 10/18/2017
 2. 复制“应用程序 ID”并将其存储在应用程序代码中。 [示例应用程序](#sample-applications)部分的应用程序引用此值作为客户端 ID。
 
      ![客户端 ID](./media/azure-stack-create-service-principal/image12.png)
-3. 若要生成身份验证密钥，请选择“密钥”。
+3. 若要生成身份验证密钥，请选择“密钥” 。
 
-4. 提供密钥说明和密钥持续时间。 完成后，选择“保存”。
+4. 提供密钥说明和密钥持续时间。 完成后，选择“保存” 。
 
-保存密钥后, 会显示密钥的值。 复制此值，因为稍后不能检索密钥。 使用应用程序 ID 进行签名的应用程序提供的密钥的值。 将密钥值存储在应用程序可检索的位置。
+保存密钥后，密钥的值显示。 复制此值，因为稍后不能检索密钥。 使用应用程序 ID 进行签名的应用程序提供的密钥的值。 将密钥值存储在应用程序可检索的位置。
 
 ![保存的密钥](./media/azure-stack-create-service-principal/image15.png)
 
@@ -78,14 +78,14 @@ ms.lasthandoff: 10/18/2017
 要求：
 - 经过认证是必需的。
 
-**参数**
+**Parameters**
 
 以下信息是必需的作为输入的自动化参数：
 
 
 |参数|说明|示例|
 |---------|---------|---------|
-|名称|SPN 帐户名称|MyAPP|
+|姓名|SPN 帐户名称|MyAPP|
 |ClientCertificates|证书对象的数组|X509 证书|
 |ClientRedirectUris<br>(可选)|应用程序重定向 URI|         |
 
@@ -111,7 +111,7 @@ ms.lasthandoff: 10/18/2017
 
 2. 自动化完成后，它将显示所需的详细信息，以使用该 SPN。 
 
-   例如：
+   例如:
 
    ```
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -121,7 +121,7 @@ ms.lasthandoff: 10/18/2017
    PSComputerName        : azs-ercs01
    RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
    ```
-### <a name="assign-a-role"></a>将角色分配
+### <a name="assign-a-role"></a>分配角色
 创建服务主体后，你必须[向角色分配](azure-stack-create-service-principals.md#assign-role-to-service-principal)
 
 ### <a name="sign-in-through-powershell"></a>通过 PowerShell 登录
@@ -138,29 +138,29 @@ Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
 ## <a name="assign-role-to-service-principal"></a>将角色分配给服务主体
 要访问订阅中的资源，必须将应用程序分配到角色。 决定哪个角色表示应用程序的相应权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。
 
-可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域将继承权限。 例如，将某个应用程序添加到资源组的“读取者”角色意味着该应用程序可以读取该资源组及其包含的所有资源。
+可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域会继承权限。 例如，将某个应用程序添加到资源组的“读取者”角色意味着该应用程序可以读取该资源组及其包含的所有资源。
 
-1. 在 Azure 堆栈门户中，导航到您想要分配到应用程序的作用域的级别。 例如，若要在订阅范围内分配角色，选择“订阅”。 可改为选择资源组或资源。
+1. 在 Azure 堆栈门户中，导航到您想要分配到应用程序的作用域的级别。 例如，若要在订阅范围内分配角色，选择“订阅” 。 可改为选择资源组或资源。
 
-2. 选择特定订阅（资源组或资源），向其中分配应用程序。
+2. 选择要将应用程序分配到的特定订阅（资源组或资源）。
 
      ![选择进行分配的订阅](./media/azure-stack-create-service-principal/image16.png)
 
-3. 选择“访问控制 (IAM)”。
+3. 选择“访问控制(IAM)”。
 
      ![选择访问权限](./media/azure-stack-create-service-principal/image17.png)
 
-4. 选择“添加”。
+4. 选择“设置” （应用程序对象和服务主体对象）。
 
 5. 选择要分配到应用程序的角色。
 
-6. 搜索你的应用程序，并选择它。
+6. 搜索用户的应用程序，并选择它。
 
-7. 选择“确定”完成角色分配。 该应用程序会显示在分配到该范围角色的用户列表中。
+7. 选择“确定”  完成角色分配。 该应用程序会显示在分配到该范围角色的用户列表中。
 
 既然你已经创建服务主体，并分配的角色，你可以开始使用此应用程序中访问 Azure 堆栈的资源。  
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 
 [将用户添加为 ADFS](azure-stack-add-users-adfs.md)
 [管理用户权限](azure-stack-manage-permissions.md)

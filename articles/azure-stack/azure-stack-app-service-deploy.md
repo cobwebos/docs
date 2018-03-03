@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: d4394463be02d067b8228099acd30a0421ce4be9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 570ef0b782e073220af8bc7299cc4ad388d47136
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>添加到 Azure 堆栈的 App Service 资源提供程序
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
@@ -70,7 +70,7 @@ App Service 资源提供程序安装到 Azure 堆栈环境可以花费一个小�
 
     ![App Service 安装程序](media/azure-stack-app-service-deploy/image03.png)
 
-7. 输入你的文件共享的信息，然后单击**下一步**。 文件共享的地址必须使用完全限定域名为文件服务器，例如\\\appservicefileserver.local.cloudapp.azurestack.external\websites 或 IP 地址，例如\\\10.0.0.1\websites。
+7. 输入你的文件共享的信息，然后单击**下一步**。 文件共享的地址必须使用完全限定域名的文件服务器或 IP 地址。 例如， \\\appservicefileserver.local.cloudapp.azurestack.external\websites，或\\\10.0.0.1\websites。
 
     ![App Service 安装程序](media/azure-stack-app-service-deploy/image04.png)
 
@@ -83,7 +83,7 @@ App Service 资源提供程序安装到 Azure 堆栈环境可以花费一个小�
 
     ![App Service 安装程序](media/azure-stack-app-service-deploy/image05.png)
 
-9. 每三个证书文件框，请单击**浏览**并导航到适当的证书文件。 你必须为每个证书提供密码。 这些证书是在中创建那些[创建所需的证书步骤](azure-stack-app-service-deploy.md#create-the-required-certificates)。 单击**下一步**后输入的所有信息。
+9. 每三个证书文件框，请单击**浏览**并导航到适当的证书文件。 为每个证书提供密码。 这些证书是在中创建那些[创建所需的证书步骤](azure-stack-app-service-deploy.md#create-the-required-certificates)。 单击**下一步**后输入的所有信息。
 
     | Box | 证书文件名称示例 |
     | --- | --- |
@@ -106,12 +106,12 @@ App Service 资源提供程序安装到 Azure 堆栈环境可以花费一个小�
     >
     >
 
-    | 角色 | 最小实例 | 最小的 SKU | 说明 |
+    | 角色 | 最小实例 | 最小的 SKU | 注意 |
     | --- | --- | --- | --- |
     | 控制器 | 1 | Standard_A1-（1 vCPU、 1792 MB） | 管理和维护 App Service 云的运行状况。 |
     | 管理 | 1 | Standard_A2-（2 Vcpu、 3584 MB） | 管理的应用程序服务 Azure 资源管理器和 API 终结点、 门户 （管理员、 租户、 函数门户） 的扩展和数据服务。 若要支持故障转移，增加到 2 的建议的实例。 |
     | 发布者 | 1 | Standard_A1-（1 vCPU、 1792 MB） | 发布通过 FTP 和 web 部署的内容。 |
-    | FrontEnd | 1 | Standard_A1-（1 vCPU、 1792 MB） | 将请求路由到 App Service 应用程序。 |
+    | 前端 | 1 | Standard_A1-（1 vCPU、 1792 MB） | 将请求路由到 App Service 应用程序。 |
     | 共享工作线程 | 1 | Standard_A1-（1 vCPU、 1792 MB） | 主机 web API 应用和 Azure 函数应用。 你可能想要添加更多实例。 作为一个操作员，你可以定义您的产品，并选择任何 SKU 层。 层必须具有一个 vCPU 的最小值。 |
 
     ![App Service 安装程序](media/azure-stack-app-service-deploy/image08.png)    
@@ -185,7 +185,7 @@ App Service 资源提供程序安装到 Azure 堆栈环境可以花费一个小�
 
 3. 如果您还部署了 SQL Server 资源提供程序，你可以部署 DNN 网站从应用商店。 当系统提示你输入数据库参数时，请在运行连接到资源提供程序的 SQL Server 的计算机中选择的数据库。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 
 你还可以试用其他[平台即服务 (PaaS) 服务](azure-stack-tools-paas-services.md)。
 

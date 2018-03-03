@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 02/28/2018
 ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 06690d5251954b204b28928b3fe670669000aa7c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 287bc04660664facbe99d2cb80ae6c92e41c4111
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="delegate-offers-in-azure-stack"></a>在 Azure Stack 中委托产品/服务
 
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
 
-作为 Azure 堆栈操作员中，你通常想要将负责创建提议和注册用户的其他人。 例如，如果你是服务提供商，你可能想客户注册和管理它们代表你的经销商。 或者，如果你在企业中的中心 IT 小组的一部分，你可能想子公司注册用户无需你干预。
+作为 Azure 堆栈操作员中，你通常想要将负责创建提议和注册用户的其他人。 例如，如果你的服务提供商，你可能想客户注册和管理它们代表你的经销商。 或者，如果你在企业中的中心 IT 小组的一部分，你可能想子公司注册用户无需你干预。
 
 通过使访问和管理更多用户不是你可以直接中，委派帮助您对这些任务。 下图显示了一个级别的委派，但 Azure 堆栈支持多个级别。 委派的提供程序 (Dp) 可以反过来委托给其他提供程序，最多五个级别。
 
@@ -58,7 +58,7 @@ Azure 堆栈运算符可以通过使用的委派功能委托给其他用户的�
 
 ## <a name="set-up-roles"></a>设置角色
 
-若要查看在工作的委派提供程序，你需要其他 Azure AD 帐户，除了你的 Azure 堆栈运算符帐户。 如果你没有它们，创建两个帐户。 帐户可以属于任何 Azure AD 用户。 我们将它们用作委派的提供程序和用户。
+若要查看在工作的委派提供程序，你需要其他 Azure AD 帐户，除了你的 Azure 堆栈运算符帐户。 如果没有这两个帐户，则创建它们。 这些帐户可以属于任何 Azure AD 用户和统称为委派的提供程序和用户。
 
 | **角色** | **组织的权限** |
 | --- | --- |
@@ -71,9 +71,9 @@ Azure 堆栈运算符可以通过使用的委派功能委托给其他用户的�
 2. 创建提议，使用户能够成为委派的提供程序：
    
    a.  [创建计划](azure-stack-create-plan.md)。
-       此计划应包括仅订阅服务。 在本文中，我们将使用计划调用**PlanForDelegation**。
+       此计划应包括仅订阅服务。 本文章将使用计划调用**PlanForDelegation**。
    
-   b.  [创建提议](azure-stack-create-offer.md)基于该计划。 在本文中，我们将使用调用提议**OfferToDP**。
+   b.  [创建提议](azure-stack-create-offer.md)基于该计划。 本文章将使用调用提议**OfferToDP**。
    
    c.  提议的创建操作完成后，添加到此产品/服务作为订阅服务器的委派的提供程序。 执行此操作通过选择**订阅** > **添加** > **新租户订阅**。
    
@@ -86,9 +86,9 @@ Azure 堆栈运算符可以通过使用的委派功能委托给其他用户的�
 
 ## <a name="azure-stack-operator-creates-the-delegated-offer"></a>Azure 堆栈运算符创建委派的提议
 
-你现在已经建立了你的委派提供程序。 下一步是创建计划和想要委托，，和你的客户将使用哪些产品/服务。 它是完全按照你希望看到它，因为委派的提供程序将无法更改计划和配额，它包含客户定义此产品/服务的一个好办法。
+你现在已经建立了你的委派提供程序。 下一步是创建计划和想要委托，，和你的客户将使用哪些产品/服务。 它是完全按照你希望看到它，因为委派的提供程序不能更改的计划和配额，它包含客户定义此产品/服务的一个好办法。
 
-1. 作为 Azure 堆栈操作员，[创建计划](azure-stack-create-plan.md)和[提议](azure-stack-create-offer.md)其为基础。 对于本文中，我们使用称为提议**DelegatedOffer。**
+1. 作为 Azure 堆栈操作员，[创建计划](azure-stack-create-plan.md)和[提议](azure-stack-create-offer.md)其为基础。 本文章将使用调用提议**DelegatedOffer。**
    
    > [!NOTE]
    > 此优惠不必是公共的。 如果选择，你可以将其公开。 在大多数情况下，但是，你仅希望委派提供程序能够对其进行访问。 以下步骤中所述委派私有优惠后，委派的提供程序将有权访问它。
@@ -104,14 +104,14 @@ Azure 堆栈运算符可以通过使用的委派功能委托给其他用户的�
 
 ## <a name="delegated-provider-customizes-the-offer"></a>委派的提供程序自定义产品/服务
 
-作为委派的提供程序登录到用户门户。 通过使用委派的提议作为模板，然后创建新提议。
+登录到用户门户作为委派的提供程序并使用委派的提议作为模板，然后创建新提议。
 
 1. 选择**新** > **租户提供 + 计划** > **提供**。
 
     ![创建新提议](media/azure-stack-delegated-provider/image5.png)
 
 
-1. 为服务分配一个名称。 在这里，我们选择**ResellerOffer**。 选择要基于它，然后选择所依据的委派的产品**创建**。
+1. 为服务分配一个名称。 本文章将使用**ResellerOffer**。 选择要基于它，然后选择所依据的委派的产品**创建**。
    
    ![指定一个名称](media/azure-stack-delegated-provider/image6.png)
 
@@ -122,7 +122,7 @@ Azure 堆栈运算符可以通过使用的委派功能委托给其他用户的�
 
 2. 委派的提供程序公开这些服务通过自己门户 URL。 这些服务提供商只能通过委派门户可见。 若要查找和更改此 URL:
    
-    a.  选择**浏览** > **更多的服务** >  **订阅**。 然后选择的委派提供程序订阅。 在本例中，它具有**DPSubscription** > **属性**。
+    a.  选择**浏览** > **更多的服务** > **订阅**。 然后选择的委派提供程序订阅。 例如， **DPSubscription** > **属性**。
    
     b.  门户将复制到单独的位置，如记事本的 URL。
    
@@ -134,7 +134,7 @@ Azure 堆栈运算符可以通过使用的委派功能委托给其他用户的�
 1. 在新浏览器窗口中，转到委派门户上一步中保存的 URL。 以用户身份登录到门户。 
    
    >[!NOTE]
-   > 使用委派的门户执行此步骤。 否则不可见的委派的产品/服务。
+   >委派的提供不可见，除非你使用委派的门户。 
 
 2. 在仪表板中，选择**获取订阅**。 你会看到仅的委派产品/服务创建的委派提供程序会呈现给用户：
 
@@ -150,6 +150,6 @@ Azure 堆栈运算符可以通过使用的委派功能委托给其他用户的�
 
 若要创建多个层的优惠委派，委派的提供程序会将优惠反过来委托给下一个提供程序。 过程是相同的委派提供程序按照原样 Azure 堆栈运算符 (请参阅[Azure 堆栈运算符创建委派的优惠](#cloud-operator-creates-the-delegated-offer))。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 [设置虚拟机](azure-stack-provision-vm.md)
 

@@ -3,22 +3,21 @@ title: "连接到 Azure 堆栈订阅的存储资源管理器"
 description: "了解如何连接到 Azure 堆栈订阅的存储 Exporer"
 services: azure-stack
 documentationcenter: 
-author: xiaofmao
-manager: 
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
+ms.date: 02/28/2018
 ms.author: xiaofmao
-ms.openlocfilehash: c7e6d70148d39fd74f6409a0a239833f8e9f7614
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: bad4b6b0d829fb68dc25e84406a453071a36476a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription"></a>连接到 Azure 堆栈订阅的存储资源管理器
 
@@ -84,8 +83,7 @@ Azure 存储资源管理器 （预览版） 是一个独立应用，可用于轻
     每个字段的详细信息如下所示：
 
     * **环境名称**：用户可以自定义此字段。
-    * 
-            **ARM 资源终结点**：Azure 资源管理器资源终结点的示例：
+    * **ARM 资源终结点**：Azure 资源管理器资源终结点的示例：
 
         * 为云运算符：<br> https://adminmanagement.local.azurestack.external   
         * 租户：<br> https://management.local.azurestack.external
@@ -99,7 +97,7 @@ Azure 存储资源管理器 （预览版） 是一个独立应用，可用于轻
 
     ![存储帐户列表，其中包括 Azure Stack 订阅帐户][31]
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 * [存储资源管理器 （预览版） 入门](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Azure 堆栈存储： 差异和注意事项](azure-stack-acs-differences.md)
 

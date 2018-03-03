@@ -3,22 +3,21 @@ title: "Azure 堆栈存储空间简介"
 description: "了解有关 Azure 堆栈存储空间"
 services: azure-stack
 documentationcenter: 
-author: xiaofmao
-manager: 
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: 092aba28-04bc-44c0-90e1-e79d82f4ff42
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
-ms.author: xiaofmao
-ms.openlocfilehash: 8777aa486a627cf8b2d8ba443e115638354d10da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/29/2018
+ms.author: mabrigg
+ms.openlocfilehash: dbc2ffb7540feb91b14c3d502e7f4007a0751ebd
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="introduction-to-azure-stack-storage"></a>Azure 堆栈存储空间简介
 
@@ -84,7 +83,7 @@ Blob 存储提供了三种类型的 blob:
 
 存储帐户可以包含任意数目的队列，和一个队列可以包含任意数目的消息，直至达到存储帐户容量限制。 每条消息最大可以为 64 KB。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 * [Azure 一致存储： 差异和注意事项](azure-stack-acs-differences.md)
 
 * 若要了解有关 Azure 存储空间的详细信息，请参阅[Microsoft Azure 存储空间简介](../../storage/common/storage-introduction.md)

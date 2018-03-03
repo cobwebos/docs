@@ -8,15 +8,15 @@ editor:
 ms.assetid: 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 9/25/2017
+ms.date: 02/28/2018
 ms.author: brenduns
 ms.reviewer: anajod
 keywords: 
-ms.openlocfilehash: 6e4c1145b8ff4665024b4532cf9cc9ac6a0a24a1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: cb8ac5435b7a5c6deb9d4571696c79b2ed15c93a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>在 Azure 堆栈中提供虚拟机规模集
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 02/21/2018
 
 虚拟机缩放集是 Azure 堆栈计算资源。 你可以使用它们来部署和管理一组相同的虚拟机。 对于所有虚拟机配置相同，不需要预设置的虚拟机缩放集。 它是更轻松地生成面向大计算、 大数据和容器化工作负荷的大规模服务。
 
-本主题将指导您完成使缩放集 Azure 堆栈应用商店中可用的过程。 完成此过程之后，你的用户可以将虚拟机规模集对它们的订阅添加。
+本文将指导您完成使缩放集 Azure 堆栈应用商店中可用的过程。 完成此过程之后，你的用户可以将虚拟机规模集对它们的订阅添加。
 
 Azure 堆栈上的虚拟机规模集就像在 Azure 上的虚拟机规模集。 有关详细信息，请参阅以下视频：
 * [Mark Russinovich talks Azure scale sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)（Mark Russinovich 谈论 Azure 规模集）
@@ -32,7 +32,7 @@ Azure 堆栈上的虚拟机规模集就像在 Azure 上的虚拟机规模集。 
 
 在 Azure 堆栈上虚拟机规模集不支持自动缩放。 可以将多个实例添加到缩放集使用 Azure 堆栈门户、 资源管理器模板或 PowerShell。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 * **Powershell 和工具**
 
    安装和配置适用于 Azure 堆栈的 PowerShell 和 Azure 堆栈工具。 请参阅[获取启动并运行 Azure 堆栈中的 PowerShell](azure-stack-powershell-configure-quickstart.md)。
@@ -81,9 +81,9 @@ Add-AzsVMSSGalleryItem -Location $Location
     Remove-AzsVMSSGalleryItem
 
 > [!NOTE]
-> 不能立即删除库项。 你可能需要刷新门户几次，才能从应用商店中删除。
+> 不能立即删除库项。 夜晚你需要刷新几次门户之前的项将显示删除从应用商店。
 
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 [Azure 堆栈的常见问题](azure-stack-faq.md)
 

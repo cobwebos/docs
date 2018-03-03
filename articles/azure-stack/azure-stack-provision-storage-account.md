@@ -3,22 +3,21 @@ title: "Azure 堆栈中的存储帐户 |Microsoft 文档"
 description: "了解如何创建 Azure 堆栈存储帐户。"
 services: azure-stack
 documentationcenter: 
-author: vhorne
-manager: byronr
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: e1152110-b756-4c1a-9fa2-73fe3ab0ad8e
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 3/1/2017
-ms.author: victorh
-ms.openlocfilehash: 41c9ee37c43d4ad41c51ea2ed023d3b47d460dd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: a599d809ba3da8487a6c5d115bf04922a546e6ad
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Azure 堆栈中的存储帐户
 存储帐户包括 Blob 和表服务和存储数据对象的唯一命名空间。 默认情况下，你的帐户中的数据是仅提供给你的存储帐户所有者。
@@ -33,9 +32,8 @@ ms.lasthandoff: 10/11/2017
 
     ![](media/azure-stack-provision-storage-account/image03.png)
 
-### <a name="next-steps"></a>后续步骤
-
-            [使用 Azure 资源管理器模板](user/azure-stack-arm-templates.md)
+### <a name="next-steps"></a>接下来的步骤
+[使用 Azure Resource Manager 模板](user/azure-stack-arm-templates.md)
 
 [了解有关 Azure 存储帐户](../storage/common/storage-create-storage-account.md)
 

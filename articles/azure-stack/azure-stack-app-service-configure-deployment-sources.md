@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: 310bea356ac611a92d9e3899da5d4fb19c50e94e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 277ed277b14886d386e097e0ce4bef8add5d4ba1
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="configure-deployment-sources"></a>配置部署源
 *适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/21/2018
 
 Azure Stack 上的应用服务支持从多个源代码管理提供程序执行按需部署。 此功能允许应用程序开发人员从其源控件存储库部署直接。 如果用户想要配置 App Service，连接到其存储库，云操作员必须首先配置 Azure 堆栈上的 App Service 和源代码管理提供程序之间的集成。  
 
-除了本地 Git 以外，支持的源代码管理提供程序还有：
+除了本地 Git 支持以下源代码管理提供程序：
 
 * GitHub
 * BitBucket
@@ -56,8 +56,8 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序执行�
 7.  在新浏览器选项卡或窗口中登录到 Azure 堆栈管理员门户 (https://adminportal.local.azurestack.external) 作为服务管理员。
 8.  浏览到“资源提供程序”并选择“应用服务资源提供程序管理”。
 9. 单击“源代码管理配置”。
-10. 将“客户端 ID”和“客户端机密”复制并粘贴到 GitHub 的相应输入框中。
-11. 单击“ **保存**”。
+10. 复制并粘贴**客户端 ID**和**客户端机密**到相应的输入框对 GitHub。
+11. 单击“保存” 。
 
 ## <a name="configure-bitbucket"></a>配置 BitBucket
 
@@ -74,13 +74,13 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序执行�
 7. 选择**权限**需要：
     - **存储库**:*读取*
     - **Webhook**:*读取和写入*
-8. 单击“ **保存**”。  现在，“OAuth 使用者”下面会显示此新应用程序以及**密钥**和**机密**。
+8. 单击“保存” 。  现在，“OAuth 使用者”下面会显示此新应用程序以及**密钥**和**机密**。
     ![BitBucket 应用程序列表][9]
 9.  在新浏览器选项卡或窗口中登录到 Azure 堆栈管理员门户 (https://adminportal.local.azurestack.external) 作为服务管理员。
 10.  浏览到“资源提供程序”并选择“应用服务资源提供程序管理”。
 11. 单击“源代码管理配置”。
-12. 将“密钥”和“机密”分别复制并粘贴到 BitBucket 的“客户端 ID”和“客户端机密”输入框。
-13. 单击“ **保存**”。
+12. 复制并粘贴**密钥**到**客户端 ID**输入的框和**机密**到**客户端机密**BitBucket 的输入的框。
+13. 单击“保存” 。
 
 
 ## <a name="configure-onedrive"></a>配置 OneDrive
@@ -94,7 +94,8 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序执行�
 2. 下**我的应用程序**，单击**添加应用程序**。
 ![OneDrive 应用程序][10]
 3. 输入新应用程序注册的**名称**，输入“Azure Stack 上的应用服务”，并单击“创建应用程序”
-4. 以下屏幕列出了新应用程序的属性。 记录**应用程序 Id**。![OneDrive 应用程序属性][11]
+4. 以下屏幕列出了新应用程序的属性。 记录**应用程序 ID**。
+![OneDrive 应用程序属性][11]
 5. 下**应用程序机密**，单击**生成新密码**。 记下**生成的新密码**。 这是你的应用程序密码，则在单击后不可检索**确定**在此阶段。
 6. 下**平台**单击**添加平台**和选择**Web**。
 7. 输入“重定向 URI”。  在默认 Azure 堆栈部署中，重定向 URI 是在窗体 https://portal.local.azurestack.external/tokenauthorize，如果你使用的运行不同的域替代在域中的查找 azurestack.local ![OneDrive 应用程序-添加Web 平台][12]
@@ -102,12 +103,12 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序执行�
     - **Files.ReadWrite.AppFolder**
     - **User.Read**  
       ![OneDrive 应用程序 - Graph 权限][13]
-9. 单击“ **保存**”。
+9. 单击“保存” 。
 10.  在新浏览器选项卡或窗口中登录到 Azure 堆栈管理员门户 (https://adminportal.local.azurestack.external) 作为服务管理员。
 11.  浏览到“资源提供程序”并选择“应用服务资源提供程序管理”。
 12. 单击“源代码管理配置”。
-13. 将“应用程序 ID”和“密码”分别复制并粘贴到 OneDrive 的“客户端 ID”和“客户端机密”输入框。
-14. 单击“ **保存**”。
+13. 复制并粘贴**应用程序 ID**到**客户端 ID**输入的框和**密码**到**客户端机密**为 OneDrive 的输入的框。
+14. 单击“保存” 。
 
 ## <a name="configure-dropbox"></a>配置 DropBox
 
@@ -130,8 +131,8 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序执行�
 9.  在新浏览器选项卡或窗口中登录到 Azure 堆栈管理员门户 (https://adminportal.local.azurestack.external) 作为服务管理员。
 10.  浏览到“资源提供程序”并选择“应用服务资源提供程序管理”。
 11. 单击“源代码管理配置”。
-12. 将“应用程序密钥”和“应用机密”分别复制并粘贴到 DropBox 的“客户端 ID”和“客户端机密”输入框。
-13. 单击“ **保存**”。
+12. 复制并粘贴**应用程序密钥**到**客户端 ID**输入的框和**应用程序密钥**到**客户端机密**DropBox 的输入的框。
+13. 单击“保存” 。
 
 
 <!--Image references-->
@@ -152,6 +153,6 @@ Azure Stack 上的应用服务支持从多个源代码管理提供程序执行�
 [15]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin-Dropbox-application-registration.png
 [16]: ./media/azure-stack-app-service-configure-deployment-sources/App-service-provider-admin-Dropbox-application-configuration.png
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 
 用户现在可以使用的部署源如下事物[连续部署](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)，[本地 Git 部署](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-local-git)，和[云文件夹同步](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-content-sync)。

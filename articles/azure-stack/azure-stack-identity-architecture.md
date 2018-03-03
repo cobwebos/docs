@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/22/2018
+ms.date: 2/28/2018
 ms.author: brenduns
 ms.reviewer: 
-ms.openlocfilehash: 0f3e28f7726afab02211902b5ba2e478ae8065df
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7f2ec78da38f3c97fde810fb8fc965cfbb6fda08
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="identity-architecture-for-azure-stack"></a>标识 Azure 堆栈的体系结构
 选择要与 Azure 堆栈使用的标识提供程序之前，了解 Azure Active Directory (Azure AD) 的选项和 Active Directory 联合服务 (AD FS) 的重要区别。 
@@ -31,16 +31,16 @@ ms.lasthandoff: 02/24/2018
 
 |功能或方案        |Azure AD  |AD FS  |
 |------------------------------|----------|-------|
-|连接到 internet     |是       |可选|
-|适用于多组织支持     |是       |否      |
-|应用商店联合       |是       |是-要求使用[脱机 Marketplace 联合](azure-stack-download-azure-marketplace-item.md#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity)工具。|
-|Active Directory 身份验证库 (ADAL) 的支持 |是 |是|
-|Azure 命令行界面 (CLI)，Visual Studio (VS) 和 PowerShell 之类的工具的支持  |是 |是|
-|创建服务主体通过门户     |是 |否|
-|使用证书创建服务主体      |是 |是|
-|使用机密 （键） 创建服务主体    |是 |否|
-|应用程序可以使用 Graph 服务           |是 |否|
-|应用程序可用于标识提供程序登录 |是 |是-要求应用程序进行与你的本地联合 AD FS。 |
+|连接到 internet     |“是”       |可选|
+|适用于多组织支持     |“是”       |“否”      |
+|应用商店联合       |“是”       |是-要求使用[脱机 Marketplace 联合](azure-stack-download-azure-marketplace-item.md#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity)工具。|
+|Active Directory 身份验证库 (ADAL) 的支持 |“是” |“是”|
+|Azure 命令行界面 (CLI)，Visual Studio (VS) 和 PowerShell 之类的工具的支持  |“是” |“是”|
+|创建服务主体通过门户     |“是” |“否”|
+|使用证书创建服务主体      |“是” |“是”|
+|使用机密 （键） 创建服务主体    |“是” |“否”|
+|应用程序可以使用 Graph 服务           |“是” |“否”|
+|应用程序可用于标识提供程序登录 |“是” |是-要求应用程序进行与你的本地联合 AD FS。 |
 
 ## <a name="topologies"></a>拓扑
 以下部分提供有关你可以使用的标识拓扑的信息。
@@ -86,7 +86,7 @@ ms.lasthandoff: 02/24/2018
 
   若要与你的 AD 交互，Graph API 需要具有只读权限的用户凭据从你的 AD AD。 
   - 内置的 AD FS 基于 Server 2016。 
-  - Server 2012 或更低版本，则必须基于你的 AD FS 和 AD。 
+  - Server 2012 或更高版本，则必须基于你的 AD FS 和 AD。  
   
   你的 AD，内置的 AD FS，交互不限于 OpenID Connect，并且可以使用任何相互支持的协议。  
   - 用户帐户创建和管理在你的本地 AD。
@@ -94,6 +94,6 @@ ms.lasthandoff: 02/24/2018
 
 
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 - [标识概述](azure-stack-identity-overview.md)   
 - [数据中心集成的标识](azure-stack-integrate-identity.md)

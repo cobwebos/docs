@@ -3,17 +3,18 @@ title: "Azure 堆栈数据中心集成的 DNS"
 description: "了解如何将与你的数据中心 DNS 集成 Azure 堆栈 DNS"
 services: azure-stack
 author: jeffgilb
+manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 504cbabe6ea4b7ad71601186dac853515f8c4709
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5bdac2f3e6082f9449800fe2d4b303e2d59ade46
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Azure 堆栈数据中心集成的 DNS
 若要能够访问 Azure 堆栈终结点 (`portal`， `adminportal`， `management`，`adminmanagement`等。) 从外部 Azure 堆栈，你需要与托管你想要使用 Azure 堆栈中的 DNS 区域的 DNS 服务器集成的 Azure 堆栈 DNS 服务。
@@ -123,10 +124,10 @@ Azure 堆栈 DNS 服务器的 Fqdn 具有以下格式：
 
 在其中指定你外部 Azure 堆栈 DNS 区域为类似于你公司的域的名称的子域的情况下，不能用于条件转发。 必须配置 DNS 委派。
 
-示例：
+例如:
 
-- 企业 DNS 域名：`contoso.com`
-- Azure 堆栈外部的 DNS 域名：`azurestack.contoso.com`
+- 企业 DNS 域名： `contoso.com`
+- Azure 堆栈外部的 DNS 域名： `azurestack.contoso.com`
 
 ## <a name="delegating-the-external-dns-zone-to-azure-stack"></a>委托到 Azure 堆栈的外部 DNS 区域
 
@@ -136,6 +137,6 @@ Azure 堆栈 DNS 服务器的 Fqdn 具有以下格式：
 
 大部分 DNS 注册机构要求你提供最少两个 DNS 服务器以完成委派。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 
 [防火墙集成](azure-stack-firewall.md)

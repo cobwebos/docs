@@ -3,8 +3,8 @@ title: "了解 Azure 堆栈中的 DNS |Microsoft 文档"
 description: "了解 DNS 功能和 Azure 堆栈中的功能"
 services: azure-stack
 documentationcenter: 
-author: ScottNapolitan
-manager: darmour
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 60f5ac85-be19-49ac-a7c1-f290d682b5de
 ms.service: azure-stack
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
-ms.author: scottnap
-ms.openlocfilehash: 381947a5c936b2bbcae1cf61cdd36eb1653be30b
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: 86ed2805e93bd147841e22a773b52d1451f8c353
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="introducing-idns-for-azure-stack"></a>为 Azure 堆栈引入 Idn
 

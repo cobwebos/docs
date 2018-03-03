@@ -2,18 +2,19 @@
 title: "Azure 堆栈数据中心集成的标识"
 description: "了解如何将与你的数据中心 AD FS 集成 Azure 堆栈 AD FS"
 services: azure-stack
-author: mattbriggs
+author: jeffgilb
+manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/01/2018
+ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 03dc26ba3fcf10b52f6d6b77445de3f6770c4162
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9e71707f13a14cb4cd0bc9cc7cd7d13dd7bb38e5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure 堆栈数据中心集成的标识
 你可以部署 Azure 堆栈使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供程序。 在部署 Azure 堆栈之前，必须做出的选择。 使用 AD FS 部署也被称为在断开模式中部署 Azure 堆栈。
@@ -54,7 +55,7 @@ ms.lasthandoff: 02/09/2018
 
 |组件|要求|
 |---------|---------|
-|图形|Microsoft Active Directory 2012/2012 R2/2016|
+|Graph|Microsoft Active Directory 2012/2012 R2/2016|
 |AD FS|Windows Server 2012/2012 R2/2016|
 
 ## <a name="setting-up-graph-integration"></a>设置关系图的集成
@@ -103,7 +104,7 @@ ms.lasthandoff: 02/09/2018
 
 Azure 堆栈中的 graph 服务使用以下协议和端口与目标 Active Directory 进行通信：
 
-|Type|端口|协议|
+|类型|端口|协议|
 |---------|---------|---------|
 |LDAP|389|TCP 和 UDP|
 |LDAP SSL|636|TCP|
@@ -285,7 +286,7 @@ Microsoft 提供了配置信赖方信任，包括声明转换规则的脚本。 
 有关创建 SPN 的详细信息，请参阅[为 AD FS 创建服务主体](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs)。
 
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="configuration-rollback"></a>配置回滚
 
@@ -331,6 +332,6 @@ Microsoft 提供了配置信赖方信任，包括声明转换规则的脚本。 
    ```
 
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 
 [注册 Azure 堆栈](azure-stack-registration.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/08/2017
 ms.author: jeffgilb
-ms.openlocfilehash: 0fa0d00112e731a9f2effd453ba74f5561fca358
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2410b1a3c3c2856cceda87ced7e66f140ea0c323
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure 堆栈部署先决条件
 
@@ -28,12 +28,12 @@ ms.lasthandoff: 12/13/2017
 
 
 ## <a name="hardware"></a>硬件
-| 组件 | 最小值 | 建议 |
+| 组件 | 最小 | 推荐 |
 | --- | --- | --- |
 | 磁盘驱动器： 操作系统 |1 个 OS 磁盘的最小值为 200 GB 供系统分区 （SSD 或 HDD） |1 个 OS 磁盘的最小值为 200 GB 供系统分区 （SSD 或 HDD） |
 | 磁盘驱动器： 常规开发工具包数据 * |4 个磁盘。 每个磁盘提供最少 140 GB 的容量 （SSD 或 HDD）。 将使用所有可用的磁盘。 |4 个磁盘。 每个磁盘提供 250 GB 的容量 （SSD 或 HDD） 的最小值。 将使用所有可用的磁盘。 |
 | 计算： CPU |双套接字： 12 物理内核数 （总计） |双套接字： 16 物理内核数 （总计） |
-| 计算： 内存 |96 GB 的 RAM |128 GB RAM （这是最小值，以支持 PaaS 资源提供程序）。|
+| 计算： 内存 |96 GB RAM |128 GB RAM （这是最小值，以支持 PaaS 资源提供程序）。|
 | 计算： BIOS |HYPER-V 启用 （具有 SLAT 支持） |HYPER-V 启用 （具有 SLAT 支持） |
 | 网络： NIC |Windows Server 2012 R2 认证所需的 NIC;没有所需的专用的功能 |Windows Server 2012 R2 认证所需的 NIC;没有所需的专用的功能 |
 | 硬件徽标认证 |[针对 Windows Server 2012 R2 认证](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[针对 Windows Server 2012 R2 认证](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
@@ -56,9 +56,9 @@ ms.lasthandoff: 12/13/2017
 * RAID SSD (如果为未指定/未知的媒体类型\*)
 * SATA SSD + SATA HDD
 * SAS SSD + SAS HDD
-* 使用 NVMe
+* NVMe
 
-\*如果不使用传递的功能的 RAID 控制器无法识别的媒体类型。 此类控制器会将 HDD 和 SSD 标记为未指定。 在这种情况下，固态硬盘将用作而不是缓存设备的持久存储。 因此，你可以部署这些各个 Ssd 上的开发工具包。
+\* 如果不使用传递的功能的 RAID 控制器无法识别的媒体类型。 此类控制器会将 HDD 和 SSD 标记为未指定。 在这种情况下，固态硬盘将用作而不是缓存设备的持久存储。 因此，你可以部署这些各个 Ssd 上的开发工具包。
 
 **示例 Hba**: LSI 9207 8i、 LSI 9300 8i 或在传递模式下的 LSI-9265-8i
 
@@ -90,13 +90,13 @@ ms.lasthandoff: 12/13/2017
    
    | **Azure Active Directory 帐户** | **支持？** |
    | --- | --- |
-   | 与有效的公共 Azure 订阅的工作或学校帐户 |是 |
-   | 与有效的公共 Azure 订阅的 Microsoft 帐户 |是 |
-   | 与有效中国 Azure 订阅的工作或学校帐户 |是 |
-   | 与有效的美国政府 Azure 订阅的工作或学校帐户 |是 |
+   | 与有效的公共 Azure 订阅的工作或学校帐户 |“是” |
+   | 与有效的公共 Azure 订阅的 Microsoft 帐户 |“是” |
+   | 与有效中国 Azure 订阅的工作或学校帐户 |“是” |
+   | 与有效的美国政府 Azure 订阅的工作或学校帐户 |“是” |
 
 ## <a name="network"></a>网络
-### <a name="switch"></a>Switch
+### <a name="switch"></a>切换
 用于开发工具包机的交换机上的一个可用端口。  
 
 开发工具包计算机支持连接到交换机访问端口或 trunk 端口。 没有特殊的功能需要在交换机上。 如果你正在使用 trunk 端口，或者如果你需要配置 VLAN ID，你必须提供作为部署参数的 VLAN ID。 你可以看到中的示例[的部署参数列表](azure-stack-run-powershell-script.md)。
@@ -119,12 +119,12 @@ ms.lasthandoff: 12/13/2017
 ### <a name="dhcp"></a>DHCP
 请确保 DHCP 服务器可用上没有 NIC 连接到网络。 如果 DHCP 不可用，你必须准备其他静态 IPv4 网络除了主机所使用的一个。 必须提供该 IP 地址和网关作为部署参数。 你可以看到中的示例[的部署参数列表](azure-stack-run-powershell-script.md)。
 
-### <a name="internet-access"></a>Internet 访问权限
+### <a name="internet-access"></a>Internet 访问
 Azure 堆栈需要访问 Internet，直接或通过透明的代理。 Azure 堆栈不支持的 web 代理，以启用 Internet 访问权限的配置。 主机 IP 和新的 IP 分配给 MA BGPNAT01 （通过 DHCP 还是静态 IP） 必须能够访问 Internet。 在位于域 graph.windows.net 和 login.microsoftonline.com 域下使用端口 80 和 443。
 
+问： 是否可以在 Azure VM 上运行 ASDK？ 答：没有。 从现在起，它是未正式受到支持。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 [下载 Azure 堆栈开发工具包部署包](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
 
 [部署 Azure 堆栈开发工具包](azure-stack-run-powershell-script.md)
-

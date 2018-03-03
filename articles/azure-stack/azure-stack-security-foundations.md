@@ -3,8 +3,8 @@ title: "了解 Azure 堆栈的安全控制 |Microsoft 文档"
 description: "作为服务管理员，了解有关应用于 Azure 堆栈的安全控件"
 services: azure-stack
 documentationcenter: 
-author: Heathl17
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: 106fcf7b0edc095a52e82d58ad48a73084b65d1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: fa0800f03d823769dcd9f01601689122b0d09ec5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure 堆栈基础结构安全状况
 
@@ -31,10 +31,10 @@ ms.lasthandoff: 10/11/2017
 ## <a name="security-approach"></a>安全方法
 Azure 堆栈旨在提供安全状况来抵御现代威胁，并生成以满足从主要法规遵从性标准的要求。 因此，Azure 堆栈基础结构的安全状况基于两个重要元素：
 
- - **假定漏洞。** 系统已受到侵犯假设从开始，我们重点*检测和限制的违反情况的影响*而不是只想要防止攻击。 
- - **默认情况下强制写入。**  由于基础结构上定义完善的硬件和软件，将运行我们*启用、 配置和验证安全功能*通常留给客户能够实现。
+ - **假定漏洞。** 系统已受到侵犯假设从开始，专注于*检测和限制的违反情况的影响*而不是只想要防止攻击。 
+ - **默认情况下强制写入。**  由于基础结构上定义完善的硬件和软件，将运行*启用、 配置和验证安全功能*，从左到客户能够实现。
 
-由于已将 Azure 堆栈发送作为一个集成系统，由 Microsoft 定义 Azure 堆栈基础结构的安全状况。  就像在 Azure 中，租户负责定义其租户工作负载的安全状况。 本文档提供有关 Azure 堆栈基础结构的安全状况的基础知识。
+由于已将 Azure 堆栈发送作为一个集成系统，由 Microsoft 定义 Azure 堆栈基础结构的安全状况。 就像在 Azure 中，租户负责定义其租户工作负载的安全状况。 本文档提供有关 Azure 堆栈基础结构的安全状况的基础知识。
 
 ## <a name="data-at-rest-encryption"></a>在 rest 加密的数据
 使用 Bitlocker 的其余部分进行加密所有 Azure 堆栈的基础结构和租户数据。 这种加密可防止物理丢失或被盗 Azure 堆栈存储组件。 
@@ -61,7 +61,7 @@ Device Guard 策略还可以防止运行在 Azure 堆栈基础结构中的第三
 ## <a name="credential-guard"></a>凭据保护
 Azure 堆栈中的另一个 Windows Server 2016 安全功能是 Windows Defender 凭据保护，用于防止传递哈希和传递票证攻击中的 Azure 堆栈基础结构凭据。
 
-## <a name="antimalware"></a>反恶意软件
+## <a name="antimalware"></a>Antimalware
 Azure 堆栈 （HYPER-V 主机和虚拟机） 中的每个组件进行保护，Windows Defender 防病毒软件。
 
 ## <a name="constrained-administration-model"></a>约束的管理模型
@@ -71,7 +71,7 @@ Azure 堆栈中的管理控制通过使用三个入口点，每个都有特定�
 3. 对于特定的低级别操作，例如数据中心集成或支持方案，Azure 堆栈公开 PowerShell 终结点调用[特权终结点](azure-stack-privileged-endpoint.md)。 此终结点公开只有列入允许一组 cmdlet，并很大程度审核。
 
 ## <a name="network-controls"></a>网络控件
-Azure 堆栈的基础结构附带的网络访问控制 List(ACL) 的多个层。  防止未经授权的访问的基础结构组件和限制与仅的路径以其能够正常运行所需的基础结构通信的 Acl。 
+Azure 堆栈的基础结构附带的网络访问控制 List(ACL) 的多个层。 防止未经授权的访问的基础结构组件和限制与仅的路径以其能够正常运行所需的基础结构通信的 Acl。 
 
 在三个层中实施网络 Acl:
 1.  机架顶部的切换

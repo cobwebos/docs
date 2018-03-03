@@ -3,17 +3,18 @@ title: "Azure 堆栈数据中心集成的安全"
 description: "了解如何将 Azure 堆栈安全集成数据中心安全"
 services: azure-stack
 author: jeffgilb
+manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 16d97765c9340555bfc0db22975a43227cc6b517
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8ce9045a3e4fd12d61e9b1600ee98880762bc544
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-datacenter-integration---security"></a>Azure 堆栈数据中心集成的安全
 Azure 堆栈的设计和构建考虑到了安全性。 Azure 堆栈是锁定的系统，因此不支持软件安全代理安装。
@@ -59,7 +60,7 @@ Azure 堆栈收集操作系统和安全事件的基础结构角色和缩放单�
 
    c. 下**存储终结点域**，选择**其他**，并指定存储终结点**[Region]。 [DomainName]**。
 
-   d.单击“下一步”。 选择**使用 HTTP**复选框。
+   d.单击“验证存储凭据”以验证存储帐户。 选择**使用 HTTP**复选框。
 
    ![附加外部存储](media/azure-stack-integrate-security/attach-storage.png)
 
@@ -89,6 +90,6 @@ Azure 堆栈中的所有物理设备可以发送 Syslog 消息。 Azure 堆栈�
 
 Syslog 目标地址是收集有关部署，一个可选参数，但它还可添加后期部署。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>接下来的步骤
 
 [维护策略](azure-stack-servicing-policy.md)
