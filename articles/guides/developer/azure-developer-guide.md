@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 8eb3cae792a09fc530b84243f2baa01ecc5d13dc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e740b655cbd22a08aab988e83a057cc770e8dfe3
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -151,7 +151,7 @@ Azure 提供了多种方式以便在应用程序中使用容器。
 
     >何时使用：在 Linux 上将 Web 应用部署到 Docker 映像时使用。
 
-    >开始使用：[在 Linux 上使用应用服务的自定义 Docker 映像](../../app-service/containers/quickstart-custom-docker-image.md)。
+    >开始使用：[在 Linux 上使用应用服务的自定义 Docker 映像](../../app-service/containers/quickstart-docker-go.md)。
 
 ### <a name="authentication"></a>身份验证
 
@@ -222,7 +222,7 @@ Azure 提供了两种方式（通过使用 Bash、终端、命令提示符或你
 
 ### <a name="azure-portal"></a>Azure 门户
 
-Azure 门户是一个基于 Web 的应用程序，可用于创建、管理和删除 Azure 资源及服务。 Azure 门户位于 <https://portal.azure.com>。它包括可自定义的仪表板、用于管理 Azure 资源的工具，以及对订阅设置和计费信息的访问权限。 有关详细信息，请参阅 [Azure 门户概述](../../azure-portal-overview.md)。
+Azure 门户是一个基于 Web 的应用程序，可用于创建、管理和删除 Azure 资源及服务。 Azure 门户位于 <https://portal.azure.com>。 它包括可自定义的仪表板、用于管理 Azure 资源的工具，以及对订阅设置和计费信息的访问权限。 有关详细信息，请参阅 [Azure 门户概述](../../azure-portal-overview.md)。
 
 ### <a name="rest-apis"></a>REST API
 

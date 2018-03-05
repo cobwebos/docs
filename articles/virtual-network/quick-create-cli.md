@@ -16,21 +16,21 @@ ms.workload: infrastructure
 ms.date: 01/25/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 2cb32ddc67060d9860d172b90cc399622c52b04b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 792b92731f89f3d0bab4f23221223e469ddf9550
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-cli"></a>使用 Azure CLI 创建虚拟网络
 
-本文将介绍如何创建虚拟网络。 创建好虚拟网络后，在虚拟网络中部署两个虚拟机，并让它们互相私下通信。
+本文将介绍如何创建虚拟网络。 创建虚拟网络后，在虚拟网络中部署两个虚拟机，以测试它们之间的专用网络通信。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 要查找已安装的版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.4 或更高版本。 要查找已安装的版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -66,9 +66,11 @@ az network vnet create \
 
 返回的另一部分信息是命令中指定的 default 子网的地址前缀 10.0.0.0/24。 虚拟网络包含零个或多个子网。 该命令创建了名为“default”的单个子网，但子网未指定任何地址前缀。 如果虚拟网络或子网未指定地址前缀时，默认情况下，Azure 会定义 10.0.0.0/24 作为第一个子网的地址前缀。 结果，子网虽然包含 10.0.0.0-10.0.0.254，但可用的地址仅限 10.0.0.4-10.0.0.254，因为 Azure 保留了每个子网中的前四个地址 (0-3) 和最后一个地址。
 
-## <a name="create-virtual-machines"></a>创建虚拟机
+## <a name="test-network-communication"></a>测试网络通信
 
-虚拟网络能让几种类型的 Azure 资源互相私下通信。 虚拟机是一种能部署到虚拟网络的资源类型。 在虚拟网络中创建两个虚拟机，以便在稍后的步骤中验证和了解虚拟机在虚拟网络中互相通信的原理。
+虚拟网络能让几种类型的 Azure 资源互相私下通信。 虚拟机是一种能部署到虚拟网络的资源类型。 在虚拟网络中创建两个虚拟机，以便在稍后的步骤中验证它们之间的专用通信。
+
+### <a name="create-virtual-machines"></a>创建虚拟机
 
 使用 [az vm create](/cli/azure/vm#az_vm_create) 命令创建虚拟机。 以下示例创建一个名为“myVm1”的虚拟机： 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 `--no-wait` 选项会在后台创建虚拟机，因此可继续执行下一步。
 
@@ -110,7 +112,7 @@ az vm create \
 
 在示例中，可以看到 privateIpAddress 是 10.0.0.5。 Azure DHCP 自动将 10.0.0.5 分配到虚拟机，因为它是“default”子网中下一个可用地址。 记下 publicIpAddress。 在稍后的步骤中会使用此地址通过 Internet 访问虚拟机。 公共 IP 地址不是从虚拟网络或子网地址前缀分配的。 公共 IP 地址是从[分配给各 Azure 区域的地址池](https://www.microsoft.com/download/details.aspx?id=41653)分配的。 虽然 Azure 知晓虚拟机分配的公共 IP 地址，但在虚拟机上运行的操作系统却不知道分配给它的任何公共 IP 地址。
 
-## <a name="connect-to-a-virtual-machine"></a>连接到虚拟机
+### <a name="connect-to-a-virtual-machine"></a>连接到虚拟机
 
 使用以下命令创建与 myVm2 虚拟机的 SSH 会话。 将 `<publicIpAddress>` 替换为虚拟机的公共 IP 地址。 在上面的示例中，IP 地址是 40.68.254.142。
 
@@ -118,7 +120,7 @@ az vm create \
 ssh <publicIpAddress>
 ```
 
-## <a name="validate-communication"></a>验证通信
+### <a name="validate-communication"></a>验证通信
 
 使用以下命令来确认从 myVm2 与 myVm1 进行的通信：
 
@@ -136,9 +138,11 @@ ping bing.com -c 4
 
 从 bing.com 接收了四个回复。默认情况下，虚拟网络中的任意虚拟机都可以与 Internet 进行出站通信。
 
+退出 VM 的 SSH 会话。
+
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除。 退出 SSH 会话，返回 VM，然后删除资源.。
+如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group#az_group_delete) 命令将其删除：
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
@@ -146,8 +150,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-本文将使用一个子网和两个虚拟机来部署默认虚拟网络。 要了解如何使用多个子网创建自定义虚拟网络并执行基本管理任务，请继续参阅教程的创建和管理自定义虚拟网络部分。
-
+本文将使用一个子网部署默认虚拟网络。 若要了解如何使用多个子网创建自定义虚拟网络，请继续参阅教程的创建自定义虚拟网络部分。
 
 > [!div class="nextstepaction"]
-> [创建和管理自定义虚拟网络](virtual-networks-create-vnet-arm-pportal.md#azure-cli)
+> [创建自定义虚拟网络](virtual-networks-create-vnet-arm-pportal.md#azure-cli)

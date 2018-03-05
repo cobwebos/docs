@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 02/22/2018
 ms.author: sethm
-ms.openlocfilehash: dac0bf117e56c788adf46bc0647f684eccf8cf42
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: d2e3fc7c59e0b57e77d2239ff73368f96426ef39
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服务总线事务处理概述
-本文将讨论 Azure 服务总线的事务功能。 很多讨论已在 [Atomic Transactions with Service Bus sample](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)（服务总线中的原子事务示例）中进行了说明。 本文仅限于概述服务总线中的事务处理和发送方式功能，虽然原子事务示例在作用域内更广泛且更复杂。
+
+本文将讨论 Microsoft Azure 服务总线的事务功能。 很多讨论已在 [Atomic Transactions with Service Bus sample](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)（服务总线中的原子事务示例）中进行了说明。 本文仅限于概述服务总线中的事务处理和发送方式功能，虽然原子事务示例在作用域内更广泛且更复杂。
 
 ## <a name="transactions-in-service-bus"></a>服务总线中的事务
+
 一个[*事务*](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions#what-are-transactions)将两个或更多操作组合成*执行作用域*。 就本质而言，此类事务必须确保所有操作属于给定的操作组，无论联合成功还是失败。 在这方面，事务作为一个单元进行操作，通常称为原子性。 
 
 服务总线是事务性消息代理，并确保针对其消息存储的所有内部操作的事务完整性。 服务总线内部的所有消息传输，如将消息移到 [dead-letter queue](service-bus-dead-letter-queues.md) 或在实体之间[自动转发](service-bus-auto-forwarding.md)消息，都是事务性的。 因此，如果服务总线接受一条消息，则该消息已存储并标有一个序列号。 从那时起，服务总线内的任何消息传输都是实体之间协调的操作，将从不会导致消息丢失（源成功而目标失败）或重复（源失败而目标成功）。
@@ -31,6 +33,7 @@ ms.lasthandoff: 10/13/2017
 服务总线支持对事务作用域内的消息传送实体（队列、主题、订阅）执行分组操作。 例如，可以从事务作用域内将多条消息发送到一个队列，在事务成功完成时，这些消息将仅提交到该队列的日志。
 
 ## <a name="operations-within-a-transaction-scope"></a>事务作用域内的操作
+
 可以在事务作用域内执行的操作如下所示：
 
 * **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)、[MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender)、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**：Send、SendAsync、SendBatch、SendBatchAsync 
@@ -41,11 +44,13 @@ ms.lasthandoff: 10/13/2017
 然后，消息的处置（完成、放弃、死信、延迟）会在事务作用域内进行，并依赖于在事务处理的整体结果。
 
 ## <a name="transfers-and-send-via"></a>传输和“发送方式”
+
 要启用将数据从队列到处理器，然后到另一个队列的事务性移交，服务总线支持传输。 在传输操作中，发送程序先将消息发送到“传输队列”，然后传输队列立即使用自动转发功能依赖的同一可靠传输实现代码，将消息移到预期的目标队列。 消息永远不会以对传输队列的使用者可见的方式提交到传输队列的日志中。
 
 当传输队列本身是发送方的输入消息的源时，此事务功能的优势越明显。 换而言之，服务总线可以“通过”传输队列将消息传输到目标队列中，同时对输入消息执行完成（或延迟/死信）操作，所有这一切都通过一个原子操作完成。 
 
 ### <a name="see-it-in-code"></a>在代码中查看它
+
 若要设置此类传输，需创建通过传输队列以目标队列为目标的消息发送方。 还将设置接收方，以便从该同一队列拉取消息。 例如：
 
 ```csharp

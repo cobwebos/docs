@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 36b9379f88ce024c1dcbf9977a873d95076d10df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4388a1e933a0ebf211b5a7621c74b0622be41a4c
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="log-analytics-for-azure-load-balancer"></a>Azure 负载均衡器的 Log Analytics
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/11/2017
 5. 在“诊断”窗格中，在“状态”下选择“开”。
 6. 单击“存储帐户”。
 7. 在“日志”下，选择现有存储帐户或创建新存储帐户。 使用滑块来确定事件数据值得在事件日志中存储的天数。 
-8. 单击“保存” 。
+8. 单击“ **保存**”。
 
     ![门户 - 诊断日志](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
 

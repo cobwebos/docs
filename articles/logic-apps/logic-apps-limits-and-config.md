@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 8de3cc6665fc3861aedcf4f36cdce4a4a776e80d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5c4597ede16f01c36e147dc0d70acf4b4f5635e8
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>逻辑应用限制和配置
 
@@ -58,15 +58,22 @@ ms.lasthandoff: 02/09/2018
 
 这些限制适用于单个逻辑应用运行。
 
-| 名称 | 限制 | 
-| ---- | ----- | 
-| 运行持续时间 | 90 天 | 
-| 存储保留期 | 90 天（从运行开始时间计算） | 
-| 最小重复间隔 | 1 秒 </br>对于带有应用服务计划的逻辑应用：15 秒 | 
-| 最大重复间隔 | 500 天 | 
-||| 
+| 名称 | 默认 | 限制 |
+| ---- | ------- | ----- |
+| 运行持续时间   | 90 天 | 7 到 90 天 |
+| 存储保留期 | 90 天（从运行开始时间计算） |  7 到 90 天（从运行开始时间计算） |
+||||
 
 若要在正常处理流中超出运行持续时间或存储保留期限制，请[与产品团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
+
+
+### <a name="recurrence-interval"></a>重复间隔
+
+| 名称 | 限制 |
+| ---- | ------- |
+| 最小重复间隔 | 1 秒 </br>对于带有应用服务计划的逻辑应用：15 秒 |
+| 最大重复间隔 | 500 天 |
+|||
 
 ### <a name="looping-and-debatching-limits"></a>循环和解除批处理限制
 

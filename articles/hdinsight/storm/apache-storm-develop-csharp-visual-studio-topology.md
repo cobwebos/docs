@@ -1,5 +1,5 @@
 ---
-title: "使用 Visual Studio 和 C# 的 Apache Storm 拓扑 — Azure HDInsight | Microsoft 文档"
+title: "使用 Visual Studio 和 C# 的 Apache Storm 拓扑 — Azure HDInsight | Microsoft Docs"
 description: "了解如何用 C# 创建 Storm 拓扑。 在 Visual Studio 中使用针对 Visual Studio 的 Hadoop 工具创建简单的字数统计拓扑。"
 services: hdinsight
 documentationcenter: 
@@ -9,18 +9,19 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 380d804f-a8c5-4b20-9762-593ec4da5a0d
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: 
 ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/27/2017
 ms.author: larryfr
-ms.openlocfilehash: d777d467b3f0d4ef6101dffa551ec5c85feb209c
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ROBOTS: NOINDEX
+ms.openlocfilehash: c89556cf66526f793ab81383e205ff45075385a3
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
 
@@ -43,9 +44,6 @@ ms.lasthandoff: 11/28/2017
 > [!IMPORTANT]
 > 基于 Linux 的群集上的 C# 拓扑必须使用 .NET 4.5，并使用 Mono 在 HDInsight 群集上运行。 查看 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)了解可能的不兼容问题。
 
-> [!WARNING]
-> 如果你在构建使用 SCP.NET 版本 1.0.0.x 的项目时遇到问题，请联系 Microsoft 支持部门以寻求帮助。
-
 ## <a name="install-visual-studio"></a>安装 Visual Studio
 
 通过安装以下 Visual Studio 版本之一，可以使用 SCP.NET 开发 C# 拓扑：
@@ -64,7 +62,7 @@ ms.lasthandoff: 11/28/2017
 
 ## <a name="install-java"></a>安装 Java
 
-从 Visual Studio 提交 Storm 拓扑时，SCP.NET 生成一个包含拓扑和依赖项的 zip 文件。 这些 zip 文件用 Java 创建，因为该语言使用的格式与基于 Linux 的群集更兼容。
+从 Visual Studio 提交 Storm 拓扑时，SCP.NET 生成一个包含拓扑和依赖关系的 zip 文件。 这些 zip 文件用 Java 创建，因为该语言使用的格式与基于 Linux 的群集更兼容。
 
 1. 在开发环境中安装 Java 开发人员工具包 (JDK) 7 或更高版本。 可以从 [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 获取 Oracle JDK。 也可以使用[其他 Java 分发](http://openjdk.java.net/)。
 
@@ -124,7 +122,7 @@ namespace ConsoleApplication2
 | Storm 示例 |基本的字数统计拓扑。 |
 
 > [!WARNING]
-> 并非所有的模板都可用于基于 Linux 的 HDInsight。 模板使用的 NuGet 程序包可能与 Mono 不兼容。 查看 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)文档并使用 [.NET Portability Analyzer](../hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis) 确定潜在问题。
+> 并非所有模板都可用于基于 Linux 的 HDInsight。 模板使用的 NuGet 程序包可能与 Mono 不兼容。 查看 [Mono 兼容性](http://www.mono-project.com/docs/about-mono/compatibility/)文档并使用 [.NET Portability Analyzer](../hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis) 确定潜在问题。
 
 在本文档的步骤中，使用基本 Storm 应用程序项目类型创建拓扑。
 
@@ -169,7 +167,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
 
    * **失败**（仅限事务拓扑）：处理无法处理拓扑中其他组件的元组。 实现失败方法可以重新发出元组，以便可以再次处理。
 
-2. 将 **Spout** 类的内容替换为以下文本。 此 Spout 随机将句子发出到拓扑中。
+2. 将 **Spout** 类的内容替换为以下文本：此 Spout 将句子随机发送到拓扑。
 
     ```csharp
     private Context ctx;
@@ -290,7 +288,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
     }
     ```
 
-5. 打开 **Counter.cs** 并将类内容替换为以下内容：
+5. 打开 **Counter.cs** 并将类内容替换为以下代码：
 
     ```csharp
     private Context ctx;
@@ -352,7 +350,7 @@ Spout 和 Bolt 以图形方式排列，用于定义数据在组件之间的流�
 
 句子从 Spout 发出，分布到 Splitter Bolt 的实例。 Splitter Bolt 将句子分割成多个单词，并将这些单词分布到 Counter Bolt。
 
-因为字数会本地保留在 Counter 实例中，所以我们想要确保特定单词流向相同的 Counter Bolt 实例。 每个实例均跟踪特定单词。 由于 Splitter Bolt 不维护任何状态，因此哪个拆分器实例收到哪个句子并不重要。
+因为字数会本地保留在 Counter 实例中，所以想要确保特定单词流向相同的 Counter Bolt 实例。 每个实例均跟踪特定单词。 由于 Splitter Bolt 不维护任何状态，因此哪个拆分器实例收到哪个句子并不重要。
 
 打开 **Program.cs**。 重要的方法是 **GetTopologyBuilder**，它用于定义提交到 Storm 的拓扑。 将 **GetTopologyBuilder** 的内容替换为以下代码，以实现上面所述的拓扑：
 
@@ -472,16 +470,16 @@ return topologyBuilder;
   > 此版本还演示了如何使用文本文件中的 clojure 代码作为 Java 组件。
 
 
-若要切换在提交项目时使用的拓扑，只需将 `[Active(true)]` 语句移到要在提交给群集之前使用的拓扑。
+若要切换在提交项目时使用的拓扑，请将 `[Active(true)]` 语句移到要在提交给群集之前使用的拓扑。
 
 > [!NOTE]
 > 在 **JavaDependency** 文件夹中，所需的所有 Java 文件都会提供为此项目的一部分。
 
 创建和提交混合拓扑时，需注意以下事项：
 
-* 必须使用 **JavaComponentConstructor** 创建 Spout 或 Bolt 的 Java 类实例。
+* 使用 **JavaComponentConstructor** 创建 Spout 或 Bolt 的 Java 类实例。
 
-* 应使用 **microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer** 将传入或传出 Java 组件的数据从 Java 对象序列化为 JSON。
+* 使用 **microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer** 将传入或传出 Java 组件的数据从 Java 对象序列化为 JSON。
 
 * 将拓扑提交到服务器时，必须使用“其他配置”选项指定 **Java 文件路径**。 指定的路径应该是包含 JAR 文件的目录，而 JAR 文件包含 Java 类
 
@@ -545,7 +543,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 > 如果项目是通过未使用 NuGet 的旧版 SCP.NET 创建的，则必须执行以下步骤以更新到更新版本：
 >
 > 1. 在“解决方案资源管理器”中，右键单击项目，然后选择“管理 NuGet 包”。
-> 2. 使用“搜索”字段搜索 **Microsoft.SCP.Net.SDK**，并将其添加到项目中。
+> 2. 使用“搜索”字段搜索 **Microsoft.SCP.Net.SDK**，然后将其添加到项目中。
 
 ## <a name="troubleshoot-common-issues-with-topologies"></a>排查使用拓扑的常见问题
 
@@ -703,7 +701,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 ### <a name="log-information"></a>记录信息
 
-可以使用 `Context.Logger` 轻松记录拓扑组件中的信息。 例如，以下代码会创建一个信息日志条目：
+可以使用 `Context.Logger` 轻松记录拓扑组件中的信息。 例如，以下命令会创建一个信息日志条目：
 
 ```csharp
 Context.Logger.Info("Component started");

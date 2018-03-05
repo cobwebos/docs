@@ -1,6 +1,6 @@
 ---
-title: "将 Azure Service Fabric 应用程序部署到合作群集 | Microsoft Docs"
-description: "了解如何将应用程序部署到合作群集。"
+title: "将 Azure Service Fabric 应用程序部署到群集 | Microsoft Docs"
+description: "本教程介绍如何将应用程序部署到 Service Fabric 群集。"
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 91d4398589707e8007c4b93639ddb568e39f51a7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 35ddf77b1e9a9b355ed2cee4731e3c5d87c4a701
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="deploy-an-application-to-a-party-cluster-in-azure"></a>将应用程序部署到 Azure 中的合作群集
-本教程是一个系列的第二部分，介绍如何将 Azure Service Fabric 应用程序部署到 Azure 中的合作群集。
+# <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>教程：将应用程序部署到 Azure 中的 Service Fabric 群集
+本教程是一个系列的第二部分，介绍如何将 Azure Service Fabric 应用程序部署到在 Azure 中运行的群集。
 
 在该系列教程的第二部分中，你会学习如何：
 > [!div class="checklist"]

@@ -1,22 +1,22 @@
 ---
-title: "使用 Azure 成本管理管理成本 | Microsoft 文档"
-description: "使用成本分摊和报销与退款报表管理成本。"
+title: "教程 - 使用 Azure 成本管理管理成本 | Microsoft Docs"
+description: "本教程介绍如何使用成本分摊和报销与退款报表来管理成本。"
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 804b50d6ba054bbb0eb60b659c98f161ea5272ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7e9f11e702dbbe8864f8a0c307777c922e5f028d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="manage-costs-by-using-azure-cost-management"></a>使用 Azure 成本管理管理成本
+# <a name="tutorial-manage-costs-by-using-azure-cost-management"></a>教程：使用 Azure 成本管理管理成本
 
 通过 Cloudyn 基于标记分摊成本在 Azure 成本管理中管理成本和生成报销报表。 成本分摊过程可根据耗用的云资源进行成本分配。 当所有资源均使用标记进行分类时，成本将可以实现完全分摊。 完成成本分摊后，可以通过仪表板或报表向用户提供报销或退款。 但是，当你开始使用成本管理时，许多资源可能会无标记或不可标记。
 
@@ -27,6 +27,13 @@ ms.lasthandoff: 02/01/2018
 > [!div class="checklist"]
 > * 使用自定义标记分摊成本。
 > * 创建报销和退款报表。
+
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+## <a name="prerequisites"></a>先决条件
+
+- 必须具有 Azure 帐户。
+- 必须有 Azure 成本管理的试用注册版或付费订阅版。
 
 ## <a name="use-custom-tags-to-allocate-costs"></a>使用自定义标记分摊成本
 
@@ -122,7 +129,7 @@ Cloudyn 实体标记和手动创建的标记显示在所有成本报表中。
 
 
 
-转到 Cloudyn 文档，详细了解 Cloudyn 入门及其功能使用。
+请转到下一教程，了解对数据访问的控制。
 
 > [!div class="nextstepaction"]
-> [Cloudyn 文档](https://support.cloudyn.com/hc/)
+> [控制对数据的访问](tutorial-user-access.md)

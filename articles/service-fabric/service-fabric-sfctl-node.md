@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: b94c5a7d6c3c74e1dd66559dea288238c35d664c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 50c7fe38d8bf7b14adf437f85c758e465e7d231d
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-node"></a>sfctl node
 管理构成群集的节点。
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/18/2018
 |    disable       | 根据指定的停用意图停用 Service Fabric 群集节点。|
 |    enable        | 激活当前已停用的 Service Fabric 群集节点。|
 |    health        | 获取 Service Fabric 节点的运行状况。|
-|    info          | 获取 Service Fabric 群集中的节点的列表。|
+|    info          | 获取有关 Service Fabric 群集中特定节点的信息。|
 |    list          | 获取 Service Fabric 群集中的节点的列表。|
 |    load          | 获取 Service Fabric 节点的负载信息。|
 |    remove-state  | 告知 Service Fabric，节点上的保留状态已被永久删除或丢失。|
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/18/2018
 |参数|说明|
 | --- | --- |
 | --node-name [必需]| 节点的名称。|
-| --deactivation-intent | 描述停用节点的意图或原因。 可能的值如下。 - Pause - 指示应该暂停节点。 值为 1。 - Restart - 指示意图是在短暂的一段时间后重启节点。 值为 2。 - RemoveData - 指示意图是让节点删除数据。 值为 3。 。|
+| --deactivation-intent | 描述停用节点的意图或原因。 |
 | --timeout -t       | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数
@@ -109,9 +109,9 @@ ms.lasthandoff: 01/18/2018
 | --verbose                | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-node-info"></a>sfctl node info
-获取 Service Fabric 群集中的节点的列表。
+获取有关 Service Fabric 群集中特定节点的信息。
 
-获取有关 Service Fabric 群集中特定节点的信息。 响应包括有关节点的名称、状态、ID、运行状况、运行时间和其他详细信息。
+获取有关 Service Fabric 群集中特定节点的信息。响应包含名称、状态、ID、运行状况、运行时间和有关节点的其他详细信息。
 
 ### <a name="arguments"></a>参数
 
@@ -133,14 +133,14 @@ ms.lasthandoff: 01/18/2018
 ## <a name="sfctl-node-list"></a>sfctl node list
 获取 Service Fabric 群集中的节点的列表。
 
-Nodes 终结点返回有关 Service Fabric 群集中节点的信息。 响应包括有关节点的名称、状态、ID、运行状况、运行时间和其他详细信息。
+获取 Service Fabric 群集中的节点的列表。 响应包括名称、状态、ID、运行状况、运行时间和有关节点的其他详细信息。
 
 ### <a name="arguments"></a>参数
 
 |参数|说明|
 | --- | --- |
 | --continuation-token| 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。      当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。|
-| --node-status-filter| 用于根据 NodeStatus 筛选节点。 仅返回与指定的筛选器值匹配的节点。 筛选器值可以是下列其中一项。 - default - 此筛选器值匹配除状态为 Unknown 或 Removed 的节点以外的其他所有节点。 -all - 此筛选器值匹配所有节点。 - up - 此筛选器值匹配已启动的节点。 - down - 此筛选器值匹配已关闭的节点。 - enabling - 此筛选器值匹配正在启用且状态为 Enabling 的节点。 - disabling - 此筛选器值匹配正在禁用且状态为 Disabling 的节点。 - disabled - 此筛选器值匹配已禁用的节点。 - unknown - 此筛选器值匹配状态为 Unknown 的节点。 如果 Service Fabric 未获得有关某个节点的权威信息，则该节点将处于 Unknown（未知）状态。 如果系统在运行时才了解某个节点，则可能会出现此情况。 - removed - 此筛选器值匹配状态为 Removed 的节点。 这些节点是使用 RemoveNodeState API 从群集中删除的节点。 。      默认值：default。|
+| --node-status-filter| 用于根据 NodeStatus 筛选节点。 仅返回与指定的筛选器值匹配的节点。 筛选器值可以是下列其中一项。 默认值：default。|
 | --timeout -t     | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数
@@ -156,7 +156,7 @@ Nodes 终结点返回有关 Service Fabric 群集中节点的信息。 响应包
 ## <a name="sfctl-node-load"></a>sfctl node load
 获取 Service Fabric 节点的负载信息。
 
-获取 Service Fabric 节点的负载信息。
+在 Service Fabric 节点的负载信息中检索已定义负载或容量的所有指标。
 
 ### <a name="arguments"></a>参数
 
@@ -203,7 +203,7 @@ Nodes 终结点返回有关 Service Fabric 群集中节点的信息。 响应包
 启动或停止群集节点。
 
 启动或停止群集节点。  群集节点是一个进程，而不是 OS 实例本身。
-若要启动节点，请为 NodeTransitionType 参数传入“Start”。 若要停止节点，请为 NodeTransitionType 参数传入“Stop”。 此 API 启动操作 - API 返回时，节点可能尚未完成转换。 结合相同的 OperationId 调用 GetNodeTransitionProgress 可获取操作进度。 。
+若要启动节点，请为 NodeTransitionType 参数传入“Start”。 若要停止节点，请为 NodeTransitionType 参数传入“Stop”。 此 API 启动操作 - API 返回时，节点可能尚未完成转换。 结合相同的 OperationId 调用 GetNodeTransitionProgress 可获取操作进度。 
 
 ### <a name="arguments"></a>参数
 
@@ -211,7 +211,7 @@ Nodes 终结点返回有关 Service Fabric 群集中节点的信息。 响应包
 | --- | --- |
 | --node-instance-id         [必需]| 目标节点的节点实例 ID。 可通过 GetNodeInfo API 确定此信息。|
 | --node-name                [必需]| 节点的名称。|
-| --node-transition-type     [必需]| 指示要执行的转换类型。                       NodeTransitionType.Start 启动已停止的节点。                       NodeTransitionType.Stop 停止已启动的节点。 - Invalid - 保留值。  不传入 API。 - Start - 将已停止的节点转换为启动状态。 - Stop - 将已启动的节点转换为停止状态。 。|
+| --node-transition-type     [必需]| 指示要执行的转换类型。                       NodeTransitionType.Start 启动已停止的节点。                       NodeTransitionType. Stop 停止已启动的节点。 |
 | --operation-id             [必需]| 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。|
 | --stop-duration-in-seconds [必需]| 使节点保持停止状态的持续时间，以秒为单位。  最小值为 600，最大值为 14400。 此时间过后，节点会自动恢复启动状态。|
 | --timeout -t                      | 服务器超时，以秒为单位。  默认值：60。|

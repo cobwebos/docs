@@ -1,6 +1,6 @@
 ---
 title: "监视和诊断 Azure Service Fabric 中的 Windows 容器 | Microsoft 文档"
-description: "设置对 Azure Service Fabric 上安排的 Windows 容器的监视和诊断。"
+description: "在本教程中，请设置对 Azure Service Fabric 上安排的 Windows 容器的监视和诊断。"
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8fe3266cfcb7141684f9e1b5dfa74d6569c23b24
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: de77d10e4875173c7a067e945e473887d3cc7422
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="monitor-windows-containers-on-service-fabric-using-oms"></a>使用 OMS 监视 Service Fabric 上的 Windows 容器
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-oms"></a>教程：使用 OMS 监视 Service Fabric 上的 Windows 容器
 
 这是教程的第三部分，将详细介绍设置 OMS，以监视 Service Fabric 上安排的 Windows 容器的过程。
 

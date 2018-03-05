@@ -12,16 +12,16 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 23adc7fa6ee53d1c5edd10b2772f8825dbcef2a8
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 7c8563539ca8507f05fa99fdeffbf511b1540a6a
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl"></a>sfctl 
-用于管理 Service Fabric 群集和实体的命令。 此版本与 Service Fabric 6.0 运行时兼容。 命令遵循名词谓词模式，有关详细信息，请参阅下列子组。
+用于管理 Service Fabric 群集和实体的命令。 此版本与 Service Fabric 6.1 运行时兼容。 命令遵循名词谓词模式，有关详细信息，请参阅下列子组。
 
 ## <a name="subgroups"></a>子组
 |子组|说明|
@@ -33,6 +33,7 @@ ms.lasthandoff: 01/18/2018
 | [is](service-fabric-sfctl-is.md)      | 查询并向基础结构服务发送命令。|
 | [node](service-fabric-sfctl-node.md)    | 管理构成群集的节点。|
 | [partition](service-fabric-sfctl-partition.md)  | 查询和管理任何服务的分区。|
+| 属性  | 在 Service Fabric 名称下存储和查询属性。|
 | [rpm](service-fabric-sfctl-rpm.md)        | 查询并向修复管理器服务发送命令。|
 | [replica](service-fabric-sfctl-replica.md) | 管理属于服务分区的副本。|
 | [service](service-fabric-sfctl-service.md) | 创建、删除和管理服务、服务类型和服务包。|

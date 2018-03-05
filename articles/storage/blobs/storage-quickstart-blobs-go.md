@@ -1,22 +1,22 @@
 ---
-title: "Azure 快速入门 - 使用 Go 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象 | Microsoft Docs"
-description: "快速了解如何使用 Go 语言将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象"
+title: "Azure 快速入门 - 使用 Go 在 Azure 存储中上传、下载和列出 Blob | Microsoft Docs"
+description: "在本快速入门中，请创建存储帐户和容器。 然后，使用适用于 Go 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。"
 services: storage
 author: seguler
-manager: jahogg
+manager: jeconnoc
+ms.custom: mvc
 ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: go
 ms.topic: quickstart
-ms.date: 01/29/2018
+ms.date: 02/22/2018
 ms.author: seguler
-ms.openlocfilehash: 4ba9721dc12bc50b20ad85019b1df51a56b52ebc
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: a30d012ea663b04028a4b0ebb2880532a596500b
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/24/2018
 ---
-#  <a name="transfer-objects-tofrom-azure-blob-storage-using-go"></a>使用 Go 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
+# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>快速入门：使用 Go 上传、下载和列出 Blob
+
 本快速入门介绍如何使用 Go 编程语言上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 
 
 ## <a name="prerequisites"></a>先决条件

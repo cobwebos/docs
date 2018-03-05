@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: f21561269e90e3643ef5d8d48ee28712ee7f611c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: db6ad8b83ce34a8b86de822bc074e8a13345a1b4
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>设置 Windows 开发人员计算机上的 Linux Service Fabric 群集
 
@@ -29,7 +29,6 @@ ms.lasthandoff: 12/08/2017
 
 * 至少 4 GB RAM
 * 最新版的 [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)
-* 访问 Service Fabric 单机 Docker 容器[映像](https://hub.docker.com/r/servicefabricoss/service-fabric-onebox/)
 
 >[!TIP]
 > * 可以按照官方 Docker [文档](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions)中提及的步骤，在 Windows 上安装 Docker。 
@@ -42,7 +41,7 @@ ms.lasthandoff: 12/08/2017
 1. 从 Docker 中心存储库拉取映像：
 
     ```powershell
-    docker pull servicefabricoss/service-fabric-onebox
+    docker pull microsoft/service-fabric-onebox
     ```
 
 2. 使用以下内容更新主机上的 Docker 守护程序配置并重启 Docker 守护程序： 
@@ -58,11 +57,11 @@ ms.lasthandoff: 12/08/2017
 3. 启动带映像的 Service Fabric 单机容器实例：
 
     ```powershell
-    docker run -itd -p 19080:19080 --name sfonebox servicefabricoss/service-fabric-onebox
+    docker run -itd -p 19080:19080 --name sfonebox microsoft/service-fabric-onebox
     ```
     >[!TIP]
     > * 可通过指定容器实例的名称，以更具可读性的方式对其进行处理。 
-    > * 如果应用程序正在侦听特定端口，则必须使用附加 -p 标记指定它。 例如，如果应用程序正在侦听端口 8080，则运行 docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox servicefabricoss/service-fabric-onebox
+    > * 如果应用程序正在侦听特定端口，则必须使用附加 -p 标记指定它。 例如，如果应用程序正在侦听端口 8080，则运行 docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox
 
 4. 以交互式 ssh 模式登录到 Docker 容器：
 

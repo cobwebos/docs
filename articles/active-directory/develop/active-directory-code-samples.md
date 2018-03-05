@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/19/2017
 ms.author: mbaldwin
 ms.custom: aaddev
-ms.openlocfilehash: ba8356a018605331dc4b9cc9ff401929cd8793bf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5f47f03594e64281b55161edb1c391ed0be83a73
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-active-directory-code-samples"></a>Azure Active Directory 代码示例
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -83,15 +83,21 @@ ms.lasthandoff: 12/11/2017
 | C#/.NET |[Daemon-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-daemon) |一个控制台应用程序，它调用了一个 Web API。 客户端凭据是一个密码。 |
 | C#/.NET |[Daemon-CertificateCredential-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) |一个控制台应用程序，它调用了一个 Web API。 客户端凭据是一个证书。 |
 
+## <a name="calling-microsoft-graph-api"></a>调用 Microsoft 图形 API
+这些代码示例展示了如何构建调用 Microsoft 图形 API 以读取和写入目录数据的应用程序。
+
+| 语言/平台 | 示例 | 说明 |
+| --- | --- | --- |
+| C#/.NET |[WebApp-MSGraphAPI-DotNet](https://github.com/microsoftgraph/aspnet-snippets-sample) |一个 Web 应用程序，它使用 Microsoft 图形 API 访问 Azure AD 目录数据。 |
+| C#/.NET |[UWPApp-MSGraphAPI-DotNet](https://github.com/microsoftgraph/uwp-csharp-snippets-sample) |此通用 Windows 平台应用演示如何通过在 Windows 10 应用中向 Microsoft 图形 API 发出请求来访问多个资源，包括 Microsoft Azure Active Directory (AD) 和 Office 365 API。 |
+
 ## <a name="calling-azure-ad-graph-api"></a>调用 Azure AD Graph API
-这些代码示例展示了如何构建应用程序来调用 Azure AD Graph API 以读取和写入目录数据。
+这些代码示例展示了如何构建调用 Azure AD 图形 API 以读取和写入目录数据的应用程序。
 
 | 语言/平台 | 示例 | 说明 |
 | --- | --- | --- |
 | Java |[WebApp-GraphAPI-Java](https://github.com/Azure-Samples/active-directory-java-graphapi-web) |一个 Web 应用程序，它使用图形 API 访问 Azure AD 目录数据。 |
 | PHP |[WebApp-GraphAPI-PHP](https://github.com/Azure-Samples/active-directory-php-graphapi-web) |一个 Web 应用程序，它使用图形 API 访问 Azure AD 目录数据。 |
-| C#/.NET |[WebApp-GraphAPI-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-web) |一个 Web 应用程序，它使用图形 API 访问 Azure AD 目录数据。 |
-| C#/.NET |[ConsoleApp-GraphAPI-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-console) |这是一个控制台应用程序，它展示了对图形 API 的常用读取和写入调用，并展示了如何执行用户许可证分配以及更新用户的缩略图照片和链接。 |
 | C#/.NET |[ConsoleApp-GraphAPI-DiffQuery-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-diffquery) |一个控制台应用程序，它使用图形 API 中的差异查询来获取对 Azure AD 中的用户对象的定期更改。 |
 | C#/.NET |[WebApp-GraphAPI-DirectoryExtensions-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-graphapi-directoryextensions-web) |一个 MVC 应用程序，它使用图形 API 查询生成简单的公司组织图。 |
 | PHP |[WebApp-GraphAPI-DirectoryExtensions-PHP](https://github.com/Azure-Samples/active-directory-php-graphapi-directoryextensions-web) |一个 PHP 应用程序，它调用图形 API 来注册一个扩展，并读取、更新和删除扩展属性中的值。 |

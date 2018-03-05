@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: 91ea23b732f520b02af7e9a9dd77ee62190a520c
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: d72e10332263fac0b0ca0f937d394d2832d88781
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>使用 Hive 查询创建用于 Hadoop 群集中数据的功能
 本文档将演示如何使用 Hive 查询创建用于 Hadoop 群集中数据的功能。 这些 Hive 查询使用嵌入式 Hive 用户的定义函数 (UDF) 以及为其提供的脚本。
@@ -93,14 +93,14 @@ Hive 附带一组用于处理日期时间字段的 UDF。 在 Hive 中，默认�
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-此 Hive 查询假定 *&lt;日期时间字段&gt;* 使用的是默认日期时间格式。
+此 Hive 查询假定 *<datetime field>* 使用的是默认日期时间格式。
 
 如果日期时间字段并未使用默认格式，则需要先将日期时间字段转换为 Unix 时间戳，然后将 Unix 时间戳转换为默认格式的日期时间字符串。 如果日期时间使用默认格式，那么用户可以应用嵌入的日期时间 UDF 以提取功能。
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-在此查询中，如果 *<日期时间字段>* 具有类似 *03/26/2015 12:04:39* 的模式，那么*“<日期时间字段的模式>”*应该为 `'MM/dd/yyyy HH:mm:ss'`。 若要对其进行测试，用户可以运行
+在此查询中，如果 *<datetime field>* 的模式类似于 *03/26/2015 12:04:39*，则 *<pattern of the datetime field>* 应为 `'MM/dd/yyyy HH:mm:ss'`。 若要对其进行测试，用户可以运行
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;

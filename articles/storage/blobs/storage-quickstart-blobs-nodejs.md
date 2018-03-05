@@ -1,21 +1,21 @@
 ---
-title: "Azure 快速入门 - 使用 Node.js 从 Azure Blob 存储转入/转出对象 | Microsoft 文档"
-description: "快速了解如何使用 Node.js 从 Azure Blob 存储转入/转出对象"
+title: "Azure 快速入门 - 使用 Node.js 在 Azure 存储中上传、下载和列出 Blob | Microsoft Docs"
+description: "在本快速入门中，请创建存储帐户和容器。 然后，使用适用于 Node.js 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。"
 services: storage
-author: tamram
+author: craigshoemaker
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/06/2018
-ms.author: tamram
-ms.openlocfilehash: 07845d0e1917c00dbd6098ef2bfbd9dcbbf2f97b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 02/22/2018
+ms.author: cshoe
+ms.openlocfilehash: ad0d4a2242aef99e0307f732175e0c50010580ce
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="transfer-objects-tofrom-azure-blob-storage-using-nodejs"></a>使用 Node.js 从 Azure Blob 存储转入/转出对象
+# <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>快速入门：使用 Node.js 上传、下载和列出 Blob
 
 本快速入门介绍如何使用 Node.js 上传、下载和列出 Azure Blob 存储中容器内的块 blob。
 

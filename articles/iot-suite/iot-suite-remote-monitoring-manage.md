@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 02/22/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: fab3fd4163141aadc06b385f5759c19eece7fd14
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 66005b78a368c15a463844b3f098eac9fd64f621
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>管理和配置设备
 
@@ -42,11 +42,11 @@ Contoso 订购了新的机器，以扩建其某处生产场地来提高产量。
 
 ## <a name="add-a-simulated-device"></a>添加模拟设备
 
-在解决方案中导航到“设备”页，然后选择“新建设备”。 在“新建设备”面板中，选择“模拟”：
+在解决方案中导航到“设备”页，然后选择“+ 新建设备”。 在“新建设备”面板中，选择“模拟”：
 
 ![预配模拟设备](media/iot-suite-remote-monitoring-manage/devicesprovision.png)
 
-将要预配的设备数保留设置为 **1**。 选择“故障引擎”作为“设备模型”，并选择“应用”创建模拟设备：
+将要预配的设备数保留设置为 **1**。 选择“故障引擎”设备模型，并选择“应用”以创建模拟设备：
 
 ![预配模拟引擎设备](media/iot-suite-remote-monitoring-manage/devicesprovisionengine.png)
 

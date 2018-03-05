@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/23/2017
 ms.author: saveenr
-ms.openlocfilehash: 8817b511d779029421491194b50120d51ec9dbad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d327a3c28e928550b361c07569df74060cfcac0d
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="overview-of-microsoft-azure-data-lake-analytics"></a>Microsoft Azure Data Lake Analytics 概述
 ## <a name="what-is-azure-data-lake-analytics"></a>什么是 Azure Data Lake Analytics？
-Azure Data Lake Analytics 是一项按需分析作业服务，用于简化大数据分析。 可以专注于编写、运行和管理作业，而不是运行分布式基础结构。 无需部署、配置和调整硬件，只需编写查询即可转换数据并提取有价值的见解。 通过将表盘设置为所需值，该分析服务就可以立即处理任何规模的作业。 只需为运行作业付费，让服务变得更为经济高效。 该分析服务支持 Azure Active Directory，让用户可管理访问和角色，并与用户的本地识别系统集成。 它还包括了 U-SQL 语言，有效结合了 SQL 的优点和用户代码的表达力。 U-SQL 的可缩放分布式运行时可让用户高效地分析存储中的数据，以及跨 Azure 中的 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库的数据。
+Azure Data Lake Analytics 是一项按需分析作业服务，用于简化大数据。 无需部署、配置和调整硬件，只需编写查询即可转换数据并提取有价值的见解。 通过将表盘设置为所需值，该分析服务就可以立即处理任何规模的作业。 只需为运行作业付费，让服务变得更为经济高效。 此分析服务支持 U-SQL，这是一种有效结合了 SQL 的优点和强制性代码的功能的语言。 U-SQL 允许跨 Data Lake Store、Azure 中的 SQL Server、Azure SQL 数据库和 Azure SQL 数据仓库来分析数据。
 
 ## <a name="key-capabilities"></a>关键功能
 * **动态缩放**
@@ -37,9 +37,11 @@ Azure Data Lake Analytics 是一项按需分析作业服务，用于简化大数
 * **与 IT 投资无缝集成**
   
     Data Lake Analytics 可以使用现有的 IT 投资进行识别、管理、安全和数据仓库工作来应对这个挑战。 此方法简化了数据管理，使当前的数据应用程序更容易扩展。 Data Lake Analytics 与适用于用户管理和权限的 Active Directory 集成且随附内置监视与审核功能。
+
 * **价格合理且经济高效**
   
-    Data Lake Analytics 是用于运行大数据工作负荷的经济高效的解决方案。 处理数据时按每个作业付费。 无需硬件、许可证或服务特定的支持协议。 作业开始和完成时，系统自动缩放大小，所以你永远无需为你所需之外的东西付费。
+    Data Lake Analytics 是用于运行大数据工作负荷的经济高效的解决方案。 处理数据时按每个作业付费。 无需硬件、许可证或服务特定的支持协议。 作业开始和完成时，系统自动缩放大小，所以你永远无需为你所需之外的东西付费。 [详细了解如何控制成本和节省资金](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c)。
+    
 * **可用于所有 Azure 数据**
   
     Data Lake Analytics 已针对搭配使用 Azure Data Lake 而优化，可为大数据工作负荷提供最高级别的性能、吞吐量和并行化。  Data Lake Analytics 还可与 Azure Blob 存储和 Azure SQL 数据库搭配使用。
@@ -48,4 +50,4 @@ Azure Data Lake Analytics 是一项按需分析作业服务，用于简化大数
  
   * 通过 [Azure 门户](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI](data-lake-analytics-get-started-cli2.md) 使用 Data Lake Analytics 入门
   * 使用 [Azure 门户](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Node.js](data-lake-analytics-manage-use-nodejs.md) 管理 Azure Data Lake Analytics
-  * [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md) 
+  * [如何使用 Data Lake Analytics 控制成本和节省资金](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c)

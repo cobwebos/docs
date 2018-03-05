@@ -1,3 +1,5 @@
+# [虚拟机规模集文档](index.md)
+
 # 概述
 ## [什么是虚拟机规模集？](virtual-machine-scale-sets-overview.md)
 
@@ -12,6 +14,7 @@
 # 如何
 ## 规划和设计
 ### [设计注意事项](virtual-machine-scale-sets-design-overview.md)
+### [了解实例 ID](virtual-machine-scale-sets-instance-ids.md)
 
 ## 创建模板
 ### [了解规模集模板](virtual-machine-scale-sets-mvss-start.md)

@@ -1,26 +1,26 @@
 ---
-title: "为 Azure 机器学习服务（预览版）部署模型 | Microsoft Docs"
-description: "本完整教程端到端演示如何使用 Azure 机器学习服务（预览版）。 这是第三部分，讨论部署模型。"
+title: "为 Azure 机器学习服务（预览版）部署模型的教程 | Microsoft Docs"
+description: "本教程的完整内容包括关于如何使用 Azure 机器学习服务（预览版）的端到端演示。 这是第三部分，讨论部署模型。"
 services: machine-learning
 author: raymondl
-ms.author: raymondl, aashishb
+ms.author: raymondl, j-martens, aashishb
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/29/2017
-ms.openlocfilehash: 54f81a93876549d624cef6c37dd659af084d0b37
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 02/28/2018
+ms.openlocfilehash: d7e07104153aed36a3e426e053847551d2b2093c
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="classify-iris-part-3-deploy-a-model"></a>鸢尾花分类（第 3 部分）：部署模型
-Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，适用于专业数据科学家。 数据科学家可以使用它以云的规模准备数据、开发试验和部署模型。
+# <a name="tutorial-classify-iris-part-3-deploy-a-model"></a>教程：鸢尾花分类（第 3 部分）：部署模型
+Azure 机器学习（预览版）是一个集成式的端到端数据科学和高级分析解决方案，适用于专业数据科学家。 数据科学家可以使用它以云的规模准备数据、开发试验和部署模型。
 
-本教程是由三个部分构成的系列教程的第三部分。 在教程的此部分，请使用 Azure 机器学习服务（预览版）执行以下操作：
+本教程是由三个部分构成的系列教程的第三部分。 在本教程的此部分，请使用机器学习（预览版）来执行以下操作：
 
 > [!div class="checklist"]
 > * 找到模型文件。
@@ -30,21 +30,22 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 > * 运行实时 Web 服务。
 > * 检查输出 Blob 数据。 
 
- 本教程使用了永久[鸢尾花卉数据集](https://en.wikipedia.org/wiki/iris_flower_data_set)。 屏幕截图来自 Windows，但 Mac OS 上的体验几乎相同。
+本教程使用了永久[鸢尾花卉数据集](https://en.wikipedia.org/wiki/iris_flower_data_set)。 屏幕截图来自 Windows，但 Mac OS 上的体验几乎相同。
+
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 先完成本系列教程的前两个部分：
 
    * 遵循[准备数据教程](tutorial-classifying-iris-part-1.md)创建机器学习资源，并安装 Azure Machine Learning Workbench 应用程序。
-
-   * 遵循[生成模型教程](tutorial-classifying-iris-part-2.md)在 Azure 机器学习中创建逻辑回归模型。
+   * 遵循[“生成模型”教程](tutorial-classifying-iris-part-2.md)，在机器学习中创建逻辑回归模型。
 
 需在本地安装并运行 Docker 引擎。 也可以将其部署到 Azure 中的 Azure 容器服务群集。
 
 ## <a name="download-the-model-pickle-file"></a>下载模型 pickle 文件
 在本教程的前一部分，已在 Machine Learning Workbench 中以本地方式运行了 iris_sklearn.py 脚本。 该操作已使用流行的 Python 对象序列化包 [pickle](https://docs.python.org/2/library/pickle.html) 序列化了逻辑回归模型。 
 
-1. 打开 Machine Learning Workbench 应用程序，然后打开在本系列教程前一部分创建的 myIris 项目。
+1. 打开 Machine Learning Workbench 应用程序， 然后打开在本系列教程前一部分创建的 myIris 项目。
 
 2. 打开项目后，选择左侧窗格中的“文件”按钮（文件夹图标），打开项目文件夹中的文件列表。
 
@@ -65,19 +66,22 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    
    运行 **iris_sklearn.py** 脚本时，模型文件已写入名为 **model.pkl** 的 **outputs** 文件夹。 此文件夹驻留在选择用于运行脚本的执行环境中，而不是驻留在本地项目文件夹中。 
    
-   - 若要找到该文件，请选择左窗格中的“运行”按钮（时钟图标），打开“所有运行”列表。  
-   - 此时会打开“所有运行”选项卡。 在运行表中，选择一个目标为 local 且脚本名称为 iris_sklearn.py 的最近运行。 
-   - 此时会打开“运行属性”窗格。 在窗格的右上部分，可以看到“输出”部分。 
-   - 若要下载 pickle 文件，请选中 model.pkl 文件旁边的复选框，然后选择“下载”按钮。 将该文件保存到项目文件夹的根目录。 后续步骤需要该文件。
+   a. 若要找到该文件，请选择左窗格中的“运行”按钮（时钟图标），打开“所有运行”列表。 
+
+   b. 此时会打开“所有运行”选项卡。 在运行表中，选择一个目标为 local 且脚本名称为 iris_sklearn.py 的最近运行。 
+
+   c. 此时会打开“运行属性”窗格。 在窗格的右上部分，可以看到“输出”部分。
+
+   d.单击“下一步”。 若要下载 pickle 文件，请选中 model.pkl 文件旁边的复选框，然后选择“下载”。 将文件保存到项目文件夹的根目录。 后续步骤需要该文件。
 
    ![下载 pickle 文件](media/tutorial-classifying-iris/download_model.png)
 
-   在[如何读取和写入大型数据文件](how-to-read-write-files.md)一文中详细了解 `outputs` 文件夹。
+   在[如何读取和写入大型数据文件](how-to-read-write-files.md)中详细了解 `outputs` 文件夹。
 
 ## <a name="get-the-scoring-script-and-schema-files"></a>获取评分脚本和架构文件
-若要连同模型文件一起部署 Web 服务，还需要一个评分脚本，以及 Web 服务输入数据的架构（可选）。 评分脚本从当前文件夹加载 **model.pkl** 文件，并使用它来生成新预测的 Iris 类。  
+若要部署 Web 服务和模型文件，还需一个评分脚本。 也可能需要适用于 Web 服务输入数据的架构。 评分脚本从当前文件夹加载 **model.pkl** 文件，并使用它来生成新预测的 Iris 类。
 
-1. 打开 Azure Machine Learning Workbench 应用程序，然后打开在本系列教程前一部分创建的 myIris 项目。
+1. 打开 Machine Learning Workbench 应用程序， 然后打开在本系列教程前一部分创建的 myIris 项目。
 
 2. 打开项目后，选择左侧窗格中的“文件”按钮（文件夹图标），打开项目文件夹中的文件列表。
 
@@ -85,13 +89,13 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    ![评分文件](media/tutorial-classifying-iris/model_data_collection.png)
 
-4. 若要获取架构文件，请运行该脚本。 在命令栏中选择 local 环境和 score_iris.py 脚本，然后选择“运行”按钮。 
+4. 若要获取架构文件，请运行该脚本。 在命令栏中选择 local 环境和 score_iris.py 脚本，然后选择“运行”。 
 
 5. 该脚本在“输出”部分创建一个 JSON 文件，用于捕获模型所需的输入数据架构。
 
 6. 请注意“项目仪表板”窗格右侧的“作业”窗格。 等待最新的 score_iris.py 作业显示绿色的“已完成”状态。 然后选择最新作业运行对应的超链接 score_iris.py [1]，查看 score_iris.py 运行的运行详细信息。 
 
-7. 在“运行属性”窗格的“输出”部分，选择新建的 service_schema.json 文件。  选中文件名旁边的复选框，然后选择“下载”。 将该文件保存到项目根文件夹。
+7. 在“运行属性”窗格的“输出”部分，选择新建的 service_schema.json 文件。 选中文件名旁边的复选框，然后选择“下载”。 将该文件保存到项目根文件夹。
 
 8. 返回到在其中打开了 score_iris.py 脚本的前一选项卡。 使用数据收集即可从 Web 服务捕获模型输入和预测。 以下步骤专用于数据收集。
 
@@ -103,19 +107,19 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 10. 查看 init() 函数中用于实例化 ModelDataCollector 的以下代码行：
 
-   ```python
-   global inputs_dc, prediction_dc
-   inputs_dc = ModelDataCollector('model.pkl',identifier="inputs")
-   prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")`
-   ```
+      ```python
+      global inputs_dc, prediction_dc
+      inputs_dc = ModelDataCollector('model.pkl',identifier="inputs")
+      prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")`
+      ```
 
 11. 查看 run(input_df) 函数中的以下代码行，因为这些行用于收集输入和预测数据：
 
-   ```python
-   global clf2, inputs_dc, prediction_dc
-   inputs_dc.collect(input_df)
-   prediction_dc.collect(pred)
-   ```
+      ```python
+      global clf2, inputs_dc, prediction_dc
+      inputs_dc.collect(input_df)
+      prediction_dc.collect(pred)
+      ```
 
 现在可以准备环境来操作化模型。
 
@@ -130,19 +134,19 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 >如果本地没有 Docker 引擎，仍可通过在 Azure 中创建用于部署的群集来继续操作。 只是需要确保在完成教程后删除该群集，以免持续产生费用。
 
 1. 打开命令行界面 (CLI)。
-   在 Azure Machine Learning Workbench 应用程序的“文件”菜单上，选择“打开命令提示符”。
+   在 Machine Learning Workbench 应用程序的“文件”菜单上，选择“打开命令提示符”。
 
    命令行提示符会在当前项目文件夹位置 **c:\temp\myIris>** 中打开。
 
 2. 创建环境。 必须针对每个环境运行此步骤一次。 例如，针对开发环境运行一次，针对生产环境运行一次。 对于这第一个环境，请使用“本地模式”。 稍后可尝试在以下命令中使用 `-c` 或 `--cluster` 开关，以“群集模式”设置环境。
 
-   请注意，以下设置命令要求你具有订阅的“参与者”访问权限。 如果你没有该权限，则至少应具有要将内容部署到其中的资源组的“参与者”访问权限。 若要执行后一操作，需在设置命令中使用 `-g` 标志来指定资源组名称。 
+   以下设置命令要求你具有订阅的“参与者”访问权限。 如果没有该权限，则至少应具有要将内容部署到其中的资源组的“参与者”访问权限。 若要执行后一操作，需在设置命令中使用 `-g` 标志来指定资源组名称。 
 
    ```azurecli
    az ml env setup -n <new deployment environment name> --location <e.g. eastus2>
    ```
    
-   遵照屏幕说明预配一个用于存储 Docker 映像的存储帐户、一个用于列出 Docker 映像的 Azure 容器注册表，以及一个用于收集遥测数据的 AppInsight 帐户。 如果使用了 `-c` 开关，则也会创建 Azure 容器服务群集。
+   遵照屏幕说明预配一个用于存储 Docker 映像的存储帐户、一个用于列出 Docker 映像的 Azure 容器注册表，以及一个用于收集遥测数据的 Azure Application Insights 帐户。 如果使用了 `-c` 开关，则也会创建容器服务群集。
    
    可以参考群集名称识别环境。 位置应该与在 Azure 门户中创建的模型管理帐户的位置相同。
 
@@ -152,17 +156,17 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    az ml env show -n <deployment environment name> -g <existing resource group name>
    ```
 
-   在步骤 5 中设置环境之前，请确保“预配状态”的值为“成功”（如下所示）。
+   在步骤 5 中设置环境之前，请确保“Provisioning State”的值为“Succeeded”，如下所示：
 
    ![预配状态](media/tutorial-classifying-iris/provisioning_state.png)
  
    
-3. 创建模型管理帐户。 （这是一次性设置。）  
+3. 创建模型管理帐户。 这是一次性设置。
    ```azurecli
    az ml account modelmanagement create --location <e.g. eastus2> -n <new model management account name> -g <existing resource group name> --sku-name S1
    ```
    
-4. 设置模型管理帐户。  
+4. 设置模型管理帐户。
    ```azurecli
    az ml account modelmanagement set -n <youracctname> -g <yourresourcegroupname>
    ```
@@ -195,11 +199,17 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    此命令生成稍后可用的 Web 服务 ID。
 
    可将以下开关与 **az ml service create realtime** 命令结合使用：
+
    * `-n`：应用名称，必须全部采用小写形式。
+
    * `-f`：评分脚本文件名。
+
    * `--model-file`：模型文件。 在此示例中，它是 pickle model.pkl 文件。
+
    * `-r`：模型的运行时。 在此示例中，它是 Python 模型。 有效的运行时为 `python` 和 `spark-py`。
-   * `--collect-model-data true`：此项启用数据收集功能。
+
+   * `--collect-model-data true`：此开关启用数据收集功能。
+
    * `-c`：在其中指定了其他包的 conda 依赖项文件的路径。
 
    >[!IMPORTANT]
@@ -212,6 +222,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    在部署过程中，会在本地计算机上创建 Web 服务的 HTTP REST 终结点。 几分钟后，该命令应会完成并返回成功消息，Web 服务已准备好运行。
 
 3. 若要查看正在运行的 Docker 容器，请使用 docker ps 命令：
+
    ```azurecli
    docker ps
    ```
@@ -259,27 +270,21 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 ## <a name="run-the-real-time-web-service"></a>运行实时 Web 服务
 
-若要测试正在运行的 irisapp Web 服务，请使用 JSON 编码的记录（其中包含由四个随机数构成的数组）：
+若要测试正在运行的 irisapp Web 服务，请使用 JSON 编码的记录（其中包含由四个随机数构成的数组）。
 
-1. 该 Web 服务包括示例数据。 以本地模式运行时，可以调用 **az ml service usage realtime** 命令。 该调用会检索可用于测试服务的示例运行命令。 该调用还会检索可用于将服务合并到你自己的自定义应用中的评分 URL：
+1. 该 Web 服务包括示例数据。 以本地模式运行时，可以调用 **az ml service usage realtime** 命令。 该调用会检索可用于测试服务的示例运行命令。 该调用还会检索可用于将服务合并到你自己的自定义应用中的评分 URL。
 
    ```azurecli
    az ml service usage realtime -i <web service ID>
    ```
 
 2. 若要测试服务，请执行返回的服务运行命令：
-
     
    ```azurecli
    az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
    ```
+
    输出为 "2"，即预测的类。 （你的结果可能不同。） 
-
-3. 若要从 CLI 外部运行服务，需获取用于身份验证的密钥：
-
-   ```azurecli
-   az ml service keys realtime -i <web service ID>
-   ```
 
 ## <a name="view-the-collected-data-in-azure-blob-storage"></a>查看在 Azure Blob 存储中收集的数据
 
@@ -293,7 +298,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    > [!TIP]
    > 若要确定哪个存储帐户正在使用，请执行以下操作：
-   > 1. 打开 Azure Machine Learning Workbench。
+   > 1. 打开 Machine Learning Workbench。
    > 2. 选择正在处理的项目。
    > 3. 从“文件”菜单打开命令行提示符。
    > 4. 在命令行提示符处输入 `az ml env show -v` 并查看 storage_account 值。 这是存储帐户的名称。
@@ -310,19 +315,27 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 6. 可以从 Azure Blob 存储使用此数据。 有多种使用 Microsoft 软件和开源工具的工具，例如：
 
-   - Azure 机器学习：打开 CSV 文件，方法是将 CSV 文件作为数据源来添加。 
-   - Excel：将日常 CSV 文件作为电子表格打开。
-   - [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)：使用从 Blob 中的 CSV 数据提取的数据创建图表。
-   - [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started)：将 CSV 数据加载到 Hive 表中，直接对 Blob 执行 SQL 查询。
-   - [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview)：使用大部分 CSV 数据创建数据帧。
+   * 机器学习：打开 CSV 文件，方法是将 CSV 文件作为数据源来添加。
+
+   * Excel：将日常 CSV 文件作为电子表格打开。
+
+   * [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)：使用从 Blob 中的 CSV 数据提取的数据创建图表。
+
+   * [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started)：将 CSV 数据加载到 Hive 表中，直接对 Blob 执行 SQL 查询。
+
+   * [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview)：使用大部分 CSV 数据创建数据帧。
 
       ```python
       var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")
       ```
 
 
+## <a name="clean-up-resources"></a>清理资源
+
+[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
+
 ## <a name="next-steps"></a>后续步骤
-由三个部分构成的系列教程的此第三部分已介绍如何使用 Azure 机器学习服务来执行以下操作：
+由三个部分构成的系列教程的此第三部分已介绍如何使用机器学习来执行以下操作：
 > [!div class="checklist"]
 > * 找到模型文件。
 > * 生成评分脚本和架构文件。
@@ -335,4 +348,4 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 现在可以进行高级数据准备：
 > [!div class="nextstepaction"]
-> [高级数据准备](tutorial-bikeshare-dataprep.md)
+> [教程 4 - 高级数据准备](tutorial-bikeshare-dataprep.md)

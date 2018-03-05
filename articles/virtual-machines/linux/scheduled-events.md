@@ -3,7 +3,7 @@ title: "Azure 中 Linux VM 的计划事件 | Microsoft Docs"
 description: "通过为 Linux 虚拟机使用 Azure 元数据服务来计划事件。"
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: 
-author: zivraf
+author: ericrad
 manager: timlt
 editor: 
 tags: 
@@ -13,23 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2017
-ms.author: zivr
-ms.openlocfilehash: ae9955253647f3277729e7905baf7bb07645de42
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.date: 02/22/2018
+ms.author: ericrad
+ms.openlocfilehash: e697a8f1160aff5774dc416c81819220c316707a
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="azure-metadata-service-scheduled-events-preview-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件（预览）
+# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
 
-> [!NOTE] 
-> 同意使用条款即可使用预览版。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-
-计划事件是 Azure 元数据服务下的一个子服务，可提供应用程序时间用于准备虚拟机 (VM) 维护。 它提供有关即将发生的维护事件的信息（例如重新启动），以便应用程序可以为其进行准备并限制中断。 它可用于 Windows 和 Linux 上的所有 Azure 虚拟机类型（包括 PaaS 和 IaaS）。 
+计划事件是一个 Azure 元数据服务，可提供应用程序时间用于准备虚拟机 (VM) 维护。 它提供有关即将发生的维护事件的信息（例如重新启动），以便应用程序可以为其进行准备并限制中断。 它可用于 Windows 和 Linux 上的所有 Azure 虚拟机类型（包括 PaaS 和 IaaS）。 
 
 有关 Windows 上计划事件的信息，请参阅 [Windows VM 的计划事件](../windows/scheduled-events.md)。
+
+> [!Note] 
+> 计划事件在所有 Azure 区域中正式发布。 有关最新版本信息，请参阅[版本和区域可用性](#version-and-region-availability)。
 
 ## <a name="why-use-scheduled-events"></a>为何使用计划事件？
 
@@ -62,47 +61,39 @@ ms.lasthandoff: 01/06/2018
 
 因此，应查看事件中的 `Resources` 字段，确定哪些 VM 会受到影响。
 
-### <a name="discover-the-endpoint"></a>发现终结点
-对于为虚拟网络启用的 VM，预定事件的最新版本的完整终结点是： 
+### <a name="endpoint-discovery"></a>终结点发现
+对于启用了 VNET 的 VM，元数据服务可通过不可路由的静态 IP (`169.254.169.254`) 使用。 最新版本的计划事件的完整终结点是： 
 
  > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
 
-在虚拟网络中创建 VM 的情况下，元数据服务可从不可路由的静态 IP `169.254.169.254` 获得。
 如果不是在虚拟网络中创建 VM（云服务和经典 VM 的默认情况），则需使用额外的逻辑以发现要使用的 IP 地址。 请参阅此示例，了解如何[发现主机终结点](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)。
 
-### <a name="versioning"></a>版本控制 
+### <a name="version-and-region-availability"></a>版本和区域可用性
 计划事件服务受版本控制。 版本是必需的，当前版本为 `2017-08-01`。
 
-| 版本 | 发行说明 | 
-| - | - | 
-| 2017-08-01 | <li> 已从 Iaas VM 的资源名称中删除下划线<br><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | <li>公共预览版
+| 版本 | 发布类型 | 区域 | 发行说明 | 
+| - | - | - | - | 
+| 2017-08-01 | 正式版 | 全部 | <li> 已从 Iaas VM 的资源名称中删除下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | 预览 | 全部 | <li>初始版本
 
 
 > [!NOTE] 
 > 支持的计划事件的早期预览版发布 {最新} 为 api-version。 此格式不再受支持，并且会在未来被弃用。
 
-### <a name="use-headers"></a>使用标头
-查询元数据服务时，必须提供标头 `Metadata:true`，以确保不会意外将请求重定向。 `Metadata:true` 标头对于所有预定事件请求是必需的。 不在请求中包含标头会导致元数据服务发出的“错误的请求”响应。
+### <a name="enabling-and-disabling-scheduled-events"></a>启用和禁用计划事件
+首次为事件发出请求时，为服务启用了计划事件。 首次调用时应该会延迟响应最多两分钟。
 
-### <a name="enable-scheduled-events"></a>启用计划事件
-第一次请求计划事件时，Azure 会在 VM 上隐式启用该功能。 因此，第一次调用时应该会延迟响应最多两分钟。
-
-> [!NOTE]
-> 如果服务有 1 天未调用终结点，会自动为服务禁用预定事件。 为服务禁用计划事件后，不会为用户启动的维护创建任何事件。
+如果 24 小时未发出请求，将为服务禁用计划事件。
 
 ### <a name="user-initiated-maintenance"></a>用户启动的维护
 用户通过 Azure 门户、API、CLI 或 PowerShell 启动的 VM 维护会生成计划事件。 然后便可以在应用程序中测试维护准备逻辑，并可以针对用户启动的维护让应用程序做准备。
 
 如果重新启动 VM，会计划一个 `Reboot` 类型的事件。 如果重新部署 VM，会计划一个 `Redeploy` 类型的事件。
 
-> [!NOTE] 
-> 目前，可以同时计划最多 100 个用户启动的维护操作。
-
-> [!NOTE] 
-> 目前，生成计划事件的用户启动的维护不可配置。 可配置性已计划在将来的版本中推出。
-
 ## <a name="use-the-api"></a>使用 API
+
+### <a name="headers"></a>标头
+查询元数据服务时，必须提供标头 `Metadata:true`，以确保不会意外将请求重定向。 `Metadata:true` 标头对于所有预定事件请求是必需的。 不在请求中包含标头会导致元数据服务发出的“错误的请求”响应。
 
 ### <a name="query-for-events"></a>查询事件
 可通过进行以下调用查询计划事件：
@@ -218,6 +209,7 @@ if __name__ == '__main__':
 ```
 
 ## <a name="next-steps"></a>后续步骤 
+- 观看 [Azure Friday 上的计划事件](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)以查看演示。 
 - 在 [Azure 实例元数据计划事件 Github 存储库](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)中查看预定事件代码示例。
 - 详细了解[实例元数据服务](instance-metadata-service.md)中可用的 API。
 - 了解 [Azure 中 Linux 虚拟机的计划内维护](planned-maintenance.md)。

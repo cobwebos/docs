@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: 9d709a0ec2b7de985ac08fe9ee2935848e7a371c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 01dd1900fe765618e5da20bd289b9c3a021ea9a3
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 查询和管理任何服务的分区。
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/18/2018
 获取指定 Service Fabric 分区的运行状况。
 
 获取指定分区的运行状况信息。 使用 EventsHealthStateFilter 可以根据运行状态筛选针对服务报告的运行状况事件的集合。
-使用 ReplicasHealthStateFilter 可以筛选分区上 ReplicaHealthState 对象的集合。 如果指定运行状况存储中不存在的分区，此 cmdlet 会返回错误。 。
+使用 ReplicasHealthStateFilter 可以筛选分区上 ReplicaHealthState 对象的集合。 如果指定运行状况存储中不存在的分区，此 cmdlet 会返回错误。
 
 ### <a name="arguments"></a>参数
 
@@ -101,7 +101,7 @@ Partitions 终结点返回有关指定的分区的信息。 响应包括分区 I
 
 |参数|说明|
 | --- | --- |
-| --service-id [必需]| 服务的标识。 这通常是不带“fabric:”URI 方案的服务全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果服务名称为“fabric://myapp/app1/svc1”，则 6.0 及更高版本中的服务标识为“myapp~app1~svc1”，在以前的版本中为“myapp/app1/svc1”。|
+| --service-id [必需]| 服务的标识。 这通常是不带“fabric:”URI 方案的服务全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果服务名称为“fabric:/myapp/app1/svc1”，则 6.0 及更高版本中的服务标识为“myapp~app1~svc1”，在以前的版本中为“myapp/app1/svc1”。|
 | --continuation-token| 继续标记参数用于获取下一组结果。         如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。|
 | --timeout -t        | 服务器超时，以秒为单位。  默认值：60。|
 
@@ -162,7 +162,7 @@ Partitions 终结点返回有关指定的分区的信息。 响应包括分区 I
 ## <a name="sfctl-partition-restart"></a>sfctl partition restart
 此 API 重启指定分区的部分或所有副本或者实例。
 
-此 API 可用于测试故障转移。 如果用于针对无状态服务分区，RestartPartitionMode 必须是 AllReplicasOrInstances。 使用相同的 OperationId 调用 GetPartitionRestartProgress API 可获取进度。 。
+此 API 可用于测试故障转移。 如果用于针对无状态服务分区，RestartPartitionMode 必须是 AllReplicasOrInstances。 使用相同的 OperationId 调用 GetPartitionRestartProgress API 可获取进度。
 
 ### <a name="arguments"></a>参数
 
@@ -170,8 +170,8 @@ Partitions 终结点返回有关指定的分区的信息。 响应包括分区 I
 | --- | --- |
 | --operation-id           [必需]| 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。|
 | --partition-id           [必需]| 分区的标识。|
-| --restart-partition-mode [必需]| - Invalid - 保留值。  不传入 API。 - AllReplicasOrInstances - 重启分区中的所有副本或实例一次。 -OnlyActiveSecondaries - 仅重启辅助副本。 。|
-| --service-id             [必需]| 服务的标识。 这通常是不带“fabric:”URI 方案的服务全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果服务名称为“fabric://myapp/app1/svc1”，则 6.0 及更高版本中的服务标识为“myapp~app1~svc1”，在以前的版本中为“myapp/app1/svc1”。|
+| --restart-partition-mode [必需]| 描述要重新启动哪些分区。|
+| --service-id             [必需]| 服务的标识。 这通常是不带“fabric:”URI 方案的服务全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果服务名称为“fabric:/myapp/app1/svc1”，则 6.0 及更高版本中的服务标识为“myapp~app1~svc1”，在以前的版本中为“myapp/app1/svc1”。|
 | --timeout -t                    | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数

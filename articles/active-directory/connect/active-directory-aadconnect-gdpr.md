@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: billmath
-ms.openlocfilehash: 68b36e1806d3338b07d4c2c400de233aff270132
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c3956dd379961b119f65bdebe1f5a8038c4fa8f0
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="gdpr-compliance-and-azure-ad-connect"></a>GDPR 符合性和 Azure AD Connect 
 
@@ -33,7 +33,7 @@ Microsoft 产品和服务可立即用于帮助你满足 GDPR 要求。 请访问
 1.  根据请求提取用户的数据以及从安装项中删除该用户的数据
 2.  确保数据保留时长均不超过 48 小时。
 
-Azure AD Connect 推荐采用第二种方法。  原因是至今为止，该方法最容易实施和维护。
+Azure AD Connect 团队建议使用第二个选项，因为它更易于实施和维护。
 
 Azure AD Connect 同步服务器会存储符合 GDPR 的以下数据：
 1.  Azure AD Connect 数据库中的用户相关数据

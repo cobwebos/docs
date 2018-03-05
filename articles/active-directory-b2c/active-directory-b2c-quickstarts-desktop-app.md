@@ -1,120 +1,107 @@
 ---
-title: "试用 Azure AD B2C 桌面应用程序 | Microsoft Docs"
-description: "使用 Azure AD B2C 测试环境进行登录、注册、编辑个人资料和重置密码等用户体验的试用"
+title: "体验启用了 Azure AD B2C 的桌面应用"
+description: "快速入门：尝试使用示例性的 ASP.NET 桌面应用，通过 Azure Active Directory B2C 进行用户登录。"
 services: active-directory-b2c
-documentationcenter: .net
-author: saraford
+author: PatAltimore
 manager: mtillman
-editor: PatAltimore
-ms.assetid: 86293627-26fb-4e96-a76b-f263f9a945bd
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 10/31/2017
-ms.author: saraford
-ms.openlocfilehash: 51f5643f0bd975beb939c2d5a8853810fb609ec9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.topic: quickstart
+ms.custom: mvc
+ms.date: 2/13/2018
+ms.author: patricka
+ms.openlocfilehash: 18c378f82255df3a999703bc319d551af4b2705c
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="test-drive-a-desktop-application-configured-with-azure-ad-b2c"></a>试用配置了 Azure AD B2C 的桌面应用程序
+# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-desktop-app"></a>快速入门：体验启用了 Azure AD B2C 的桌面应用
 
-Azure Active Directory B2C 提供云身份管理来保护应用程序、业务和客户。  本快速入门使用示例 Windows Presentation Foundation (WPF) 桌面应用演示以下操作：
+Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序、业务和客户。 应用可以使用 Azure AD B2C 通过开放式标准协议对社交帐户和企业帐户进行身份验证。
 
-* 使用“注册或登录”策略创建社交标识提供者或使用电子邮箱地址的本地帐户，或者通过它们登录。 
-* 调用 API 从 Azure AD B2C 保护的资源检索显示名称。
-
-## <a name="prerequisites"></a>先决条件
-
-* 使用以下工作负荷安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)：
-    - .NET 桌面开发
-
-* Facebook、Google、Microsoft 或 Twitter 中的社交帐户。 如果没有社交帐户，则必须提供有效的电子邮件地址。
+在本教程中，请使用启用了 Azure AD B2C 的示例 Windows Presentation Foundation (WPF) 桌面应用通过社交标识提供者来登录，并调用受 Azure AD B2C 保护的 Web API。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+## <a name="prerequisites"></a>先决条件
+
+* 带有 ASP.NET 和 Web 开发工作负荷的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。 
+* Facebook、Google、Microsoft 或 Twitter 中的社交帐户。
+
 ## <a name="download-the-sample"></a>下载示例
 
-从 GitHub [下载或克隆示例应用程序](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)。
+从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip)或克隆示例 Web 应用。
+
+```
+git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.git
+```
 
 ## <a name="run-the-app-in-visual-studio"></a>在 Visual Studio 中运行应用
 
-在示例应用程序项目文件夹中，打开 Visual Studio 中的 `active-directory-b2c-wpf.sln` 解决方案。 
+在示例应用程序项目文件夹中，打开 Visual Studio 中的 `active-directory-b2c-wpf.sln` 解决方案。
 
-选择“调试”>“开始调试”生成并运行应用程序。 
+按 **F5** 调试应用程序。
 
 ## <a name="create-an-account"></a>创建帐户
 
-单击“登录”开始“注册或登录”工作流。 创建帐户时，可以使用现有社交标识提供者帐户或者电子邮件帐户。
+单击“登录”，启动基于 Azure AD B2C 策略的“注册或登录”工作流。
 
 ![示例应用程序](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
 
+此示例支持多个注册选项，包括使用社交标识提供者，或者使用电子邮件地址来创建本地帐户。 对于本快速入门，将使用 Facebook、Google、Microsoft 或 Twitter 社交标识提供者帐户。 
+
 ### <a name="sign-up-using-a-social-identity-provider"></a>使用社交标识提供者注册
 
-要使用社交标识提供者注册，请单击要使用的标识提供者按钮。 如果希望使用电子邮件地址，请跳转到[使用电子邮件地址注册](#sign-up-using-an-email-address)部分。
+Azure AD B2C 为示例 Web 应用的虚构品牌“Wingtip Toys”提供了一个自定义登录页。 
 
-![登录或注册提供程序](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
+1. 要使用社交标识提供者注册，请单击要使用的标识提供者按钮。 
 
-需使用社交帐户凭据进行身份验证（登录）并授权应用程序读取社交帐户的信息。 通过授予访问权限，应用程序可以从社交帐户检索个人资料信息，如姓名和城市。 
+    ![登录或注册提供程序](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
 
-![使用社交帐户进行身份验证和授权](media/active-directory-b2c-quickstarts-desktop-app/twitter-authenticate-authorize-wpf.png)
+    请使用社交帐户凭据进行身份验证（登录）并授权应用程序读取社交帐户的信息。 通过授予访问权限，应用程序可以从社交帐户检索个人资料信息，如姓名和城市。 
 
-新帐户个人资料详细信息已预先填充社交帐户的信息。 按需修改详细信息并单击“继续”。
+2. 完成标识提供者的登录进程。 例如，如果你选择 Twitter，请输入你的 Twitter 凭据，然后单击“登录”。
 
-![新帐户注册个人资料详细信息](media/active-directory-b2c-quickstarts-desktop-app/new-account-sign-up-profile-details-wpf.png)
+    ![使用社交帐户进行身份验证和授权](media/active-directory-b2c-quickstarts-desktop-app/twitter-authenticate-authorize-wpf.png)
 
-你已成功创建使用标识提供者的新 Azure AD B2C 用户帐户。 登录后，访问令牌显示在“令牌信息”文本框中。 访问令牌在访问 API 资源时使用。
+    新帐户个人资料详细信息已预先填充社交帐户的信息。 
 
-![授权令牌](media/active-directory-b2c-quickstarts-desktop-app/twitter-auth-token.png)
+3. 按需修改详细信息并单击“继续”。 输入的值用于 Azure AD B2C 用户帐户个人资料。
 
-下一步：[跳转以编辑个人资料](#edit-your-profile)部分。
+    ![新帐户注册个人资料详细信息](media/active-directory-b2c-quickstarts-desktop-app/new-account-sign-up-profile-details-wpf.png)
 
-### <a name="sign-up-using-an-email-address"></a>使用电子邮件地址注册
-
-如果选择不使用社交帐户来提供身份验证，可以使用有效电子邮件地址创建 Azure AD B2C 用户帐户。 Azure AD B2C 本地用户帐户将 Azure Active Directory 用作标识提供者。 要使用电子邮件地址，请单击“没有帐户?立即注册”链接。
-
-![使用电子邮件登录或注册](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-email-wpf.png)
-
-输入有效的电子邮件地址，然后单击“发送验证码”。 需要一个有效的电子邮件地址，用于接收来自 Azure AD B2C 的验证码。
-
-输入电子邮件中收到的验证码，然后单击“验证码”。
-
-添加个人资料信息，然后单击“创建”。
-
-![通过使用电子邮件的新帐户注册](media/active-directory-b2c-quickstarts-desktop-app/sign-up-new-account-profile-email-wpf.png)
-
-你已成功创建新的 Azure AD B2C 本地用户帐户。 登录后，访问令牌显示在“令牌信息”文本框中。 访问令牌在访问 API 资源时使用。
-
-![授权令牌](media/active-directory-b2c-quickstarts-desktop-app/twitter-auth-token.png)
+    你已成功创建使用标识提供者的新 Azure AD B2C 用户帐户。 登录后，访问令牌显示在“令牌信息”文本框中。 访问令牌在访问 API 资源时使用。
 
 ## <a name="edit-your-profile"></a>编辑个人资料
 
-Azure Active Directory B2C 提供允许用户更新个人资料的功能。 单击“编辑个人资料”编辑创建的个人资料。
+Azure Active Directory B2C 提供允许用户更新个人资料的功能。  示例 Web 应用对工作流使用 Azure AD B2C 编辑配置文件策略。 
 
-![编辑个人资料](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
+1. 单击“编辑个人资料”编辑创建的个人资料。
 
-选择与创建的帐户相关联的标识提供者。 例如，如果创建帐户时使用 Twitter 作为标识提供者，那么选择使用 Twitter 来修改关联的个人资料详细信息。
+    ![编辑个人资料](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
 
-![选择与要编辑的个人资料关联的提供程序](media/active-directory-b2c-quickstarts-desktop-app/edit-account-choose-provider-wpf.png)
+2. 选择与创建的帐户相关联的标识提供者。 例如，如果创建帐户时使用 Twitter 作为标识提供者，那么选择使用 Twitter 来修改关联的个人资料详细信息。
 
-更改“显示名称”或“城市”。 
+3. 更改“显示名称”或“城市”，然后单击“继续”。
 
-![更新配置文件](media/active-directory-b2c-quickstarts-desktop-app/update-profile-wpf.png)
+    新的访问令牌显示在“令牌信息”文本框中。 如果要验证对个人资料的更改，将访问令牌复制并粘贴到令牌解码器 (https://jwt.ms) 中。
 
-新的访问令牌显示在“令牌信息”文本框中。 如果要验证对个人资料的更改，将访问令牌复制并粘贴到令牌解码器 (https://jwt.ms) 中。
+## <a name="access-a-protected-web-api-resource"></a>访问受保护的 Web API 资源
 
-![授权令牌](media/active-directory-b2c-quickstarts-desktop-app/twitter-auth-token.png)
-
-## <a name="access-a-resource"></a>访问资源
-
-单击“调用 API”对 Azure AD B2C 保护的资源 https://fabrikamb2chello.azurewebsites.net/hello 提出请求。 
+单击“调用 API”，向 Azure AD B2C 所保护的资源 https://fabrikamb2chello.azurewebsites.net/hello 提出请求。 
 
 ![调用 API](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
 
-应用程序包括请求的“令牌信息”文本框中显示的访问令牌。 API 发送回包含在访问令牌中的显示名称。
+应用程序在对受保护的 Web API 资源的请求中包括 Azure AD 访问令牌。 Web API 发送回包含在访问令牌中的显示名称。
+
+你已成功使用 Azure AD B2C 用户帐户对受 Azure AD B2C 保护的 Web API 进行授权调用。
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果打算尝试其他 Azure AD B2C 快速入门或教程，可以使用 Azure AD B2C 租户。 可以在不再需要时[删除 Azure AD B2C 租户](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant)。
 
 ## <a name="next-steps"></a>后续步骤
 

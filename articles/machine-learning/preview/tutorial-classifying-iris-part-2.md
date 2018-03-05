@@ -1,23 +1,23 @@
 ---
-title: "为 Azure 机器学习服务（预览版）生成模型 | Microsoft Docs"
-description: "本完整教程端到端演示如何使用 Azure 机器学习服务（预览版）。 这是第二部分，讨论试验。"
+title: "为 Azure 机器学习服务（预览版）生成模型的教程 | Microsoft Docs"
+description: "本教程的完整内容包括关于如何使用 Azure 机器学习服务（预览版）的端到端演示。 这是第二部分，讨论试验。"
 services: machine-learning
 author: hning86
-ms.author: haining
+ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/06/2017
-ms.openlocfilehash: 3337ba9fa6845deb98813259821f77ff713f9eb1
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 02/28/2018
+ms.openlocfilehash: f52d4268c3983b419a6393bbd651301022688029
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="classify-iris-part-2-build-a-model"></a>鸢尾花分类（第 2 部分）：生成模型
+# <a name="tutorial-classify-iris-part-2---build-a-model"></a>教程：鸢尾花分类（第 2 部分）- 生成模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
 
 本教程是由三个部分构成的系列教程的第二部分。 在教程的此部分，请使用 Azure 机器学习服务（预览版）执行以下操作：
@@ -32,7 +32,9 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 > * 在远程 Docker 环境中执行脚本。
 > * 在云 Azure HDInsight 环境中执行脚本。
 
-本教程使用了永久[鸢尾花卉数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)。 屏幕截图与 Windows 相关，但 Mac OS 上的体验几乎相同。
+本教程使用了历久弥新的[鸢尾花卉数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)。 屏幕截图来自 Windows，但 Mac OS 上的体验几乎相同。
+
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 完成本系列教程的第一部分。 开始本教程的步骤之前，请遵循[准备数据教程](tutorial-classifying-iris-part-1.md)创建 Azure 机器学习资源，并安装 Azure Machine Learning Workbench 应用程序。
@@ -374,6 +376,10 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    >针对远程 HDInsight 群集执行时，还可以使用 `admin` 用户帐户在 `https://<cluster_name>.azurehdinsight.net/yarnui` 上查看 Yet Another Resource Negotiator (YARN) 作业执行详细信息。
 
 
+## <a name="clean-up-resources"></a>清理资源
+
+[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
+
 ## <a name="next-steps"></a>后续步骤
 由三个部分构成的系列教程的此第二部分已介绍如何使用 Azure 机器学习服务来执行以下操作：
 > [!div class="checklist"]
@@ -389,4 +395,4 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 现在，可以继续学习系列教程的第三部分。 创建逻辑回归模型后，即可将其部署为实时 Web 服务。
 
 > [!div class="nextstepaction"]
-> [部署模型](tutorial-classifying-iris-part-3.md)
+> [教程 3 - 鸢尾花分类：部署模型](tutorial-classifying-iris-part-3.md)

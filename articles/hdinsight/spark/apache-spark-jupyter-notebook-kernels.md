@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 02/22/2018
 ms.author: nitinme
-ms.openlocfilehash: 2be4477528c9109151c4737eabc16741cc020ce8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 87e60bcc097157c733c1e08356b7cd9ea48bb868
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Spark 群集上的 Jupyter 笔记本的内核 
 
@@ -135,7 +135,11 @@ HDInsight Spark 群集提供可在 Spark 上的 Jupyter 笔记本中用于测试
 
 ## <a name="where-are-the-notebooks-stored"></a>笔记本存储在何处？
 
-Jupyter 笔记本保存在与 **/HdiNotebooks** 文件夹下面的群集关联的存储帐户中。  可以从存储帐户访问在 Jupyter 内部创建的笔记本、文本文件和文件夹。  例如，如果使用 Jupyter 创建文件夹 **myfolder** 和笔记本 **myfolder/mynotebook.ipynb**，可在存储帐户中通过 `/HdiNotebooks/myfolder/mynotebook.ipynb` 访问该笔记本。  反之亦然，如果直接将笔记本上传到 `/HdiNotebooks/mynotebook1.ipynb` 中的存储帐户，则可以从 Jupyter 查看该笔记本。  即使删除了群集，笔记本也仍会保留在存储帐户中。
+如果群集使用 Azure 存储作为默认存储帐户，Jupyter notebook 将保存到 **/HdiNotebooks** 文件夹下的存储帐户。  可以从存储帐户访问在 Jupyter 内部创建的笔记本、文本文件和文件夹。  例如，如果使用 Jupyter 创建文件夹 **myfolder** 和笔记本 **myfolder/mynotebook.ipynb**，可在存储帐户中通过 `/HdiNotebooks/myfolder/mynotebook.ipynb` 访问该笔记本。  反之亦然，如果直接将笔记本上传到 `/HdiNotebooks/mynotebook1.ipynb` 中的存储帐户，则可以从 Jupyter 查看该笔记本。  即使删除了群集，笔记本也仍会保留在存储帐户中。
+
+> [!NOTE]
+> 将 Azure Data Lake Store 作为默认存储的 HDInsight 群集不在关联的存储中存储 notebook。
+>
 
 将笔记本保存到存储帐户的方式与 HDFS 兼容。 因此，如果通过 SSH 访问群集，可按以下代码片段中所示使用文件管理命令：
 
@@ -143,8 +147,7 @@ Jupyter 笔记本保存在与 **/HdiNotebooks** 文件夹下面的群集关联�
     hdfs dfs –copyToLocal /HdiNotebooks                    # Download the contents of the HdiNotebooks folder
     hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
 
-
-笔记本还会保存到头节点 `/var/lib/jupyter`，以防止访问群集的存储帐户时出现问题。
+不论群集是使用 Azure 存储还是 Azure Data Lake Store 作为默认存储帐户，notebook 还会保存在群集头节点上的 `/var/lib/jupyter` 中。
 
 ## <a name="supported-browser"></a>支持的浏览器
 

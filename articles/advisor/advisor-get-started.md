@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-ms.openlocfilehash: d15f91c91281eae28ddaff52af3ee8e617f142c1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5a7864597e50294c8e1227cbab7a3be73dde0a7f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure 顾问入门
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 02/21/2018
 
     ![顾问搜索筛选条件](./media/advisor-get-started/advisor-filters.png)
 
-## <a name="snooze-or-dismiss-advisor-recommendations"></a>推迟或解除顾问建议
+## <a name="postpone-or-dismiss-advisor-recommendations"></a>推迟或消除顾问建议
 
 1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 02/21/2018
 
 4. 单击“推迟”。 
 
-5. 指定推迟时间段，或选择“从不”以解除该建议。
+5. 指定推迟时间段，或选择“从不”以消除该建议。
 
 ## <a name="exclude-subscriptions-or-resource-groups-from-advisor"></a>从顾问中排除订阅或资源组
 

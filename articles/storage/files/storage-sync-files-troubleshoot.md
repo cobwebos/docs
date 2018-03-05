@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 378330149aebc1936846472a522631308fe3eb80
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 506781ac83e75d558badbd3a8842533e314a8dfa
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>对 Azure 文件同步（预览版）进行故障排除
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -145,15 +145,14 @@ Set-AzureRmStorageSyncServerEndpoint -Id serverendpointid -CloudTiering true -Vo
 <a id="replica-not-ready"></a>**同步失败，并出现以下错误：“0x80c8300f - 副本未准备就绪，无法执行所需的操作”**  
 如果创建云终结点并使用包含数据的 Azure 文件共享，则可能会出现此问题。 在 Azure 文件共享上完成更改检测作业后（最长可能需要 24 小时），同步应会开始正常工作。
 
-<a id="broken-sync-files"></a>**排查单个文件无法同步的问题**  
-如果单个文件无法同步：
-1. 在事件查看器中检查位于 Applications and Services\Microsoft\FileSync\Agent 下的操作日志和诊断事件日志。
-2. 验证文件中是否不存在打开的句柄。
 
     > [!NOTE]
-    > Azure 文件同步会定期创建 VSS 快照以同步具有打开的句柄的文件。
+    > Azure File Sync periodically takes VSS snapshots to sync files that have open handles.
 
 当前不支持将资源移动到另一个订阅或不同的 Azure AD 租户。  如果将订阅移动到不同的租户，基于所有权变更的服务会无法访问 Azure 文件共享。 如果租户已发生更改，则需要删除服务器终结点和云终结点（请参阅“同步组管理”部分，了解如何清除要重新使用的 Azure 文件共享），然后重新创建同步组。
+
+<a id="doesnt-have-enough-free-space"></a>**“这台电脑的可用空间不足”错误**  
+如果门户显示状态“这台电脑的可用空间不足”，问题可能是卷上剩余的可用空间小于 1 GB。  例如，如果有 1.5GB 卷，同步仅能利用 .5GB；如果遇到此问题，请扩大服务器终结点所使用的卷大小。
 
 ## <a name="cloud-tiering"></a>云分层 
 云分层中存在两个故障路径：

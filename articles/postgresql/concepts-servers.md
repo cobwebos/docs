@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for PostgreSQL 中的服务器概念 | Microsoft Docs"
-description: "本主题提供配置和管理 Azure Database for PostgreSQL 服务器的注意事项和指南。"
+title: "Azure Database for PostgreSQL 中的服务器概念"
+description: "本文提供配置和管理 Azure Database for PostgreSQL 服务器的注意事项和指南。"
 services: postgresql
-author: SaloniSonpal
-ms.author: salonis
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 12/02/2017
-ms.openlocfilehash: d7eec2735e48f57500eb2ea822f0949d2ec2e585
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.date: 02/28/2018
+ms.openlocfilehash: 2db18b014606799bdf5707c4c19f363bbc323e5c
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL 服务器
 本文提供使用 Azure Database for PostgreSQL 服务器的注意事项和指南。
@@ -33,7 +33,7 @@ Azure Database for PostgreSQL 服务器：
 - 在多个版本内可用。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](concepts-supported-versions.md)。
 - 用户可将其进行扩展。 有关详细信息，请参阅 [PostgreSQL 扩展](concepts-extensions.md)。
 
-在 Azure Database for PostgreSQL 数据库中，可创建一个或多个数据库。 可以选择为每个服务器创建单一数据库来使用所有资源，还可以创建多个数据库来共享资源。 按服务器根据定价层、计算单位和存储 (GB) 的配置采用结构化定价。 有关详细信息，请参阅[定价层](./concepts-service-tiers.md)。
+在 Azure Database for PostgreSQL 数据库中，可创建一个或多个数据库。 可以选择为每个服务器创建单一数据库来使用所有资源，还可以创建多个数据库来共享资源。 按服务器根据定价层、vCore 和存储 (GB) 的配置采用结构化定价。 有关详细信息，请参阅[定价层](./concepts-pricing-tiers.md)。
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>如何连接到 Azure Database for PostgreSQL 服务器并向其进行身份验证？
 以下元素有助于确保安全地访问数据库：
@@ -56,6 +56,6 @@ PostgreSQL 服务器参数可确定服务器的配置。 在 Azure Database for 
 
 ## <a name="next-steps"></a>后续步骤
 - 有关该服务的概述，请参阅 [Azure Database for PostgreSQL 概述](overview.md)。
-- 有关基于服务层的具体资源配额和限制的信息，请参阅[服务层](concepts-service-tiers.md)。
+- 有关基于服务层的具体资源配额和限制的信息，请参阅[服务层](concepts-pricing-tiers.md)。
 - 有关连接到服务的信息，请参阅 [Azure Database for PostgreSQL 的连接库](concepts-connection-libraries.md)。
 - 通过 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 查看和编辑服务器参数。

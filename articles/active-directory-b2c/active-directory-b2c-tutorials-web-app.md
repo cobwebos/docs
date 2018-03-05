@@ -1,6 +1,6 @@
 ---
 title: "“使用 Azure Active Directory B2C 在 ASP.NET Web 应用中进行用户身份验证”教程"
-description: "有关如何使用 Azure Active Directory B2C 在 ASP.NET Web 应用中进行用户登录和注册的教程。"
+description: "有关如何使用 Azure Active Directory B2C 为 ASP.NET Web 应用提供用户登录功能的教程。"
 services: active-directory-b2c
 author: PatAltimore
 ms.author: patricka
@@ -9,11 +9,11 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: ee006476f9e40e9d1a6e7213cb1881ca46ea75c2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1d1e0ce51d86ebcdbf0a2a423ff64b3814413d86
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>教程：使用 Azure Active Directory B2C 在 ASP.NET Web 应用中进行用户身份验证
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/09/2018
 
 2. 在 B2C 设置中，单击“应用程序”，然后单击“添加”。
 
-    若要在租户中注册示例 Web 应用，请使用以下设置。
+    若要在租户中注册示例 Web 应用，请使用以下设置：
 
     ![添加新应用](media/active-directory-b2c-tutorials-web-app/web-app-registration.png)
 
@@ -147,7 +147,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 示例解决方案中有两个项目：
 
-**Web 应用示例应用 (TaskWebApp)：**用于创建和编辑任务列表的 Web 应用。 此 Web 应用使用**注册或登录**策略，通过电子邮件地址注册或登录用户。
+**Web 应用示例应用 (TaskWebApp)：**用于创建和编辑任务列表的 Web 应用。 此 Web 应用使用**注册或登录**策略来注册或登录用户。
 
 **Web API 示例应用 (TaskService)：**一个 Web API，支持创建、读取、更新和删除任务列表的功能。 此 Web API 受 Azure AD B2C 保护，可以通过 Web 应用进行调用。
 
@@ -178,7 +178,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 按 **F5** 启动 Web 应用。 默认浏览器将启动到本地网站地址 `https://localhost:44316/`。 
 
-示例应用支持注册、登录、配置文件编辑和密码重置。 下面介绍用户如何通过电子邮件地址来注册使用该应用。 可以自行尝试其他方案。
+示例应用支持注册、登录、配置文件编辑和密码重置。 本教程重点介绍用户如何使用电子邮件地址注册，以便使用应用。 可以自行探索其他方案。
 
 ### <a name="sign-up-using-an-email-address"></a>使用电子邮件地址注册
 
@@ -205,4 +205,4 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 本教程介绍了如何创建 Azure AD B2C 租户、如何创建策略，以及如何更新示例 Web 应用，以便使用 Azure AD B2C 租户。 若要了解如何注册、配置和调用受 Azure AD B2C 租户保护的 ASP.NET Web API，请继续完成下一教程。
 
 > [!div class="nextstepaction"]
-> [使用 Azure Active Directory B2C 保护 ASP.NET Web API](active-directory-b2c-tutorials-web-api.md)
+> [教程：使用 Azure Active Directory B2C 保护 ASP.NET Web API](active-directory-b2c-tutorials-web-api.md)

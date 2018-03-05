@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: 314f528a1fcef2c7afb0eedba012023f3bc9502b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 039306b093d92b66883edcca10e42f7b1dbc7245
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -172,7 +172,7 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
 #r "Microsoft.Azure.WebJobs.Host.dll"
 #endif
 
-open Sytem
+open System
 open Microsoft.Azure.WebJobs.Host
 
 let Run(blob: string, output: byref<string>, log: TraceWriter) =
@@ -184,7 +184,7 @@ Azure 函数执行代码时，它可以处理带有 `COMPILED` 定义的源，�
 <a name="package"></a>
 
 ## <a name="package-management"></a>包管理
-要在 F # 函数中使用 NuGet 包，可将 `project.json` 文件添加到函数应用程序的文件系统中的函数的文件夹。 下面是一个示例 `project.json` 文件，其中将 NuGet 包引用添加到 `Microsoft.ProjectOxford.Face` 1.1.0 版：
+若要在 F# 函数中使用 NuGet 包，可将 `project.json` 文件添加到函数应用的文件系统中函数的文件夹。 下面是一个示例 `project.json` 文件，其中将 NuGet 包引用添加到 `Microsoft.ProjectOxford.Face` 1.1.0 版：
 
 ```json
 {

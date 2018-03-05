@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.openlocfilehash: 68009b74a410f7e854de675a1d8d0c32e310d2c9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4b1ea9966add3cf0d5f75988f11cda57fa4e4cf6
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 EDIFACT 消息以实现企业集成
 
@@ -32,65 +32,63 @@ ms.lasthandoff: 02/21/2018
 
 下面是需要准备好的项：
 
-* 已定义的、与 Azure 订阅关联的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)  
+* 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)  
 * 已在集成帐户中至少定义了两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 
 > [!NOTE]
 > 创建协议时，与合作伙伴之间相互接收或发送的消息中的内容必须与协议类型匹配。
 
-[创建集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)并[添加合作伙伴](logic-apps-enterprise-integration-partners.md)之后，可以遵循以下步骤来创建 EDIFACT 协议。
+[创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)并[添加合作伙伴](logic-apps-enterprise-integration-partners.md)之后，可以遵循以下步骤来创建 EDIFACT 协议。
 
 ## <a name="create-an-edifact-agreement"></a>创建 EDIFACT 协议 
 
-1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“所有服务”。
+1. 登录 [Azure 门户](http://portal.azure.com "Azure portal")。 
 
-    > [!TIP]
-    > 如果未看到“所有服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
+2. 在 Azure 主菜单中，选择“所有服务”。 在搜索框中输入“集成”，然后选择“集成帐户”。
 
-    ![在左侧菜单中，选择“所有服务”](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
+   ![查找集成帐户](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
-2. 在搜索框中，为筛选器键入“集成”。 在结果列表中，选择“集成帐户”。
+   > [!TIP]
+   > 如果未显示“所有服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示文本标签”。
 
-    ![筛选“集成”，选择“集成帐户”](./media/logic-apps-enterprise-integration-edifact/edifact-1-3.png)
+3. 在“集成帐户”下，选择要创建协议的集成帐户。
 
-3. 在打开的“集成帐户”边栏选项卡中，选择要在其中创建协议的集成帐户。
-如果未看到任何集成帐户，请[先创建一个集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "有关集成帐户的详细信息")。  
+   ![选择要在其中创建协议的集成帐户](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
 
-    ![选择要在其中创建协议的集成帐户](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
+4. 选择“协议”。 如果未添加“协议”磁贴，请先添加该磁贴。   
 
-4. 选择“协议”磁贴。 如果未添加“协议”磁贴，请先添加该磁贴。   
+   ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
 
-    ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
+5. 在“协议”页上，选择“添加”。
 
-5. 在打开的“协议”边栏选项卡中，选择“添加”。
-
-    ![选择“添加”](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
+   ![选择“添加”](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
 6. 在“添加”下面，输入协议的**名称**。 对于“协议类型”，请选择“EDIFACT”。 为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。
 
-    ![提供协议详细信息](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
+   ![提供协议详细信息](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
-    | 属性 | 说明 |
-    | --- | --- |
-    | 名称 |协议的名称 |
-    | 协议类型 | 应为 EDIFACT |
-    | 管理方 |协议需要有管理方和托管方。 宿主合作伙伴代表配置协议的组织。 |
-    | 管理方标识 |管理方的标识符 |
-    | 托管方 |协议需要有管理方和托管方。 托管方代表与管理方进行交易的组织。 |
-    | 托管方标识 |托管方的标识符 |
-    | 接收设置 |这些属性适用于协议接收的所有消息。 |
-    | 发送设置 |这些属性适用于协议发送的所有消息。 |
+   | 属性 | 说明 |
+   | --- | --- |
+   | 名称 |协议的名称 |
+   | 协议类型 | 应为 EDIFACT |
+   | 管理方 |协议需要有管理方和托管方。 宿主合作伙伴代表配置协议的组织。 |
+   | 管理方标识 |管理方的标识符 |
+   | 托管方 |协议需要有管理方和托管方。 托管方代表与管理方进行交易的组织。 |
+   | 托管方标识 |托管方的标识符 |
+   | 接收设置 |这些属性适用于协议接收的所有消息。 |
+   | 发送设置 |这些属性适用于协议发送的所有消息。 |
+   ||| 
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>配置协议如何处理收到的消息
 
 设置协议属性后，可以配置此协议如何识别和处理从合作伙伴接收的传入消息。
 
-1.  在“添加”下面，选择“接收设置”。
+1. 在“添加”下面，选择“接收设置”。
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
-    “接收设置”划分为以下部分：“标识符”、“确认”、“架构”、“控制编号”、“验证”和“内部设置”。
+   “接收设置”划分为以下部分：“标识符”、“确认”、“架构”、“控制编号”、“验证”和“内部设置”。
 
-    ![配置“接收设置”](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
+   ![配置“接收设置”](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
 
 2. 完成后，请务必选择“确定”保存设置。
 
@@ -240,13 +238,13 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="find-your-created-agreement"></a>查找创建的协议
 
-1.  设置完所有协议属性后，请在“添加”边栏选项卡中选择“确定”来完成创建协议，并返回到集成帐户边栏选项卡。
+1.  设置完所有协议属性后，请在“添加”页中选择“确定”来完成创建协议，并返回到集成帐户。
 
     新添加的协议随即会出现在“协议”列表中。
 
-2.  还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，并选择“协议”磁贴。 
+2.  还可以在集成帐户概述中查看协议。 在集成帐户菜单中选择“概述”，并选择“协议”磁贴。 
 
-    ![选择“协议”磁贴可查看所有协议](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="view-swagger-file"></a>查看 Swagger 文件
 若要查看 EDIFACT 连接器的 Swagger 详细信息，请参阅 [EDIFACT](/connectors/edifact/)。

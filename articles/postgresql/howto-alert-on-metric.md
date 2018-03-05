@@ -1,19 +1,19 @@
 ---
-title: "在 Azure 门户中为 Azure Database for PostgreSQL 配置指标警报 | Microsoft Docs"
+title: "在 Azure 门户中为 Azure Database for PostgreSQL 配置指标警报"
 description: "本文介绍如何通过 Azure 门户配置和访问针对 Azure Database for PostgreSQL 的指标警报。"
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 10/24/2017
-ms.openlocfilehash: 3a09be8131b57381eb470027a134109c116467ed
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 02/28/2018
+ms.openlocfilehash: b4b15998276dd6c32e9c15622aa0251c6c066085
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>使用 Azure 门户设置针对 Azure Database for PostgreSQL 指标的警报 
 
@@ -27,12 +27,12 @@ ms.lasthandoff: 10/25/2017
 * 调用 Webhook。
 
 可使用以下项配置并获取预警规则相关信息：
-* [Azure 门户](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [Azure portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
 * [命令行接口 (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
 * [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>通过 Azure 门户针对指标创建预警规则
+## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>通过 Azure 门户针对指标创建警报规则
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择要监视的 Azure Database for PostgreSQL 服务器。
 
 2. 在边栏的“监视”部分，选择“预警规则”，如下所示：
@@ -47,8 +47,8 @@ ms.lasthandoff: 10/25/2017
 
    | 设置 | 说明  |
    |---------|---------|
-   | 名称 | 为预警规则提供一个名称。 此值将在警报通知电子邮件中发送。 |
-   | 说明 | 提供预警规则的简短说明。 此值将在警报通知电子邮件中发送。 |
+   | 名称 | 为警报规则提供一个名称。 此值将在警报通知电子邮件中发送。 |
+   | 说明 | 提供警报规则的简短说明。 此值将在警报通知电子邮件中发送。 |
    | 警报对象 | 对于此类警报，请选择“指标”。 |
    | 订阅 | 此字段预填充了托管 Azure Database for PostgreSQL 的订阅。 |
    | 资源组 | 此字段预填充了 Azure Database for PostgreSQL 的资源组。 |
@@ -60,13 +60,13 @@ ms.lasthandoff: 10/25/2017
 
    基于示例，警报查找超过 85% 的时间超过 30 分钟的存储百分比。 当平均存储百分比超过 85% 的时间超过 30 分钟时，触发该警报。 第一次触发结束后，当平均存储百分比低于 85% 的时间超过 30 分钟时，将再次触发。
 
-5. 为预警规则选择所需通知方式。 
+5. 为警报规则选择所需通知方式。 
 
-   触发警报时，如果希望向订阅管理员和共同管理员发送电子邮件，请选择“电子邮件所有者、参与者和读者”。
+   如果希望在警报触发时向订阅管理员和共同管理员发送电子邮件，请选择“电子邮件所有者、参与者和读者”。
 
-   触发警报时，如果希望其他电子邮件收到通知，请将其添加到“其他管理员电子邮件”字段。 用分号隔开多个电子邮件 - *email@contoso.com;email2@contoso.com*
+   如果希望在警报触发时有其他电子邮件收到通知，请将其添加到“其他管理员电子邮件”字段。 用分号隔开多个电子邮件 - *email@contoso.com;email2@contoso.com*
 
-   （可选）触发警报时，如果希望调用有效的 URI，请将其放入“Webhook”字段。
+   （可选）如果希望在警报触发时调用有效的 URI，请将其放入“Webhook”字段。
 
 6. 选择“确定”以创建警报。
 

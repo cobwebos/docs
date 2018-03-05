@@ -2,48 +2,34 @@
 title: "设置源环境（VMware 到 Azure）| Microsoft 文档"
 description: "本文介绍如何设置本地环境，以便开始将 VMware 虚拟机复制到 Azure。"
 services: site-recovery
-documentationcenter: 
 author: AnoopVasudavan
 manager: gauravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/23/2017
+ms.date: 02/22/2018
 ms.author: anoopkv
-ms.openlocfilehash: 32a3f7498d3c8891178818436e33221f91ae2f8f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 2b6b0e5cc95f28b5596e7e898f5f035e3647d9c5
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="set-up-the-source-environment-vmware-to-azure"></a>设置源环境（VMware 到 Azure）
 > [!div class="op_single_selector"]
 > * [VMware 到 Azure](./site-recovery-set-up-vmware-to-azure.md)
 > * [物理机到 Azure](./site-recovery-set-up-physical-to-azure.md)
 
-本文介绍如何设置本地环境，以便开始将 VMware 上运行的虚拟机复制到 Azure。
+本文介绍如何设置源、本地环境，以便将 VMware 上运行的虚拟机复制到 Azure。 它包括以下相关步骤：选择复制方案、将本地计算机设置为 Site Recovery 配置服务器和自动发现本地 VM。 
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设已创建：
-- [Azure 门户](http://portal.azure.com "Azure 门户")中的恢复服务保管库。
-- VMware vCenter 中可用于[自动发现](./site-recovery-vmware-to-azure.md)的专用帐户。
-- 用于安装配置服务器的虚拟机。
+本文假设已完成以下操作：
+- 在 [Azure 门户](http://portal.azure.com)中[设置资源](tutorial-prepare-azure.md)。
+- [设置本地 VMware](tutorial-prepare-on-premises-vmware.md)，包括用于自动发现的专用帐户。
 
-## <a name="configuration-server-minimum-requirements"></a>配置服务器的最低要求
-下表列出了配置服务器的最低硬件、软件和网络要求。
 
-> [!IMPORTANT]
-> 部署配置服务器以保护 VMware 虚拟机时，我们建议将其部署为高可用性 (HA) 虚拟机。
-
-[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
-
-> [!NOTE]
-> 配置服务器不支持基于 HTTPS 的代理服务器。
 
 ## <a name="choose-your-protection-goals"></a>选择保护目标
 
@@ -55,39 +41,21 @@ ms.lasthandoff: 12/21/2017
 
     ![选择目标](./media/site-recovery-set-up-vmware-to-azure/choose-goals2.png)
 
-## <a name="set-up-the-source-environment"></a>设置源环境
-设置源环境涉及两个主要活动：
+## <a name="set-up-the-configuration-server"></a>设置配置服务器
 
-- 使用 Site Recovery 安装和注册配置服务器。
-- 通过将 Site Recovery 连接到本地 VMware vCenter 或 vSphere EXSi 主机来发现本地虚拟机。
+使用开放虚拟化格式 (OVF) 模板将配置服务器设置为本地 VMware VM。 [详细了解](concepts-vmware-to-azure-architecture.md)将在 VMware VM 上安装的组件。 
 
-### <a name="step-1-install-and-register-a-configuration-server"></a>步骤 1：安装和注册配置服务器
+1. 了解配置服务器部署的[先决条件](how-to-deploy-configuration-server.md#prerequisites)。 [检查容量数字](how-to-deploy-configuration-server.md#capacity-planning)以便进行部署。
+2. [下载](how-to-deploy-configuration-server.md#download-the-template)并[导入](how-to-deploy-configuration-server.md#import-the-template-in-vmware) OVF 模板 (how-to-deploy-configuration-server.md)，设置运行配置服务器的本地 VMware VM。
+3. 打开 VMware VM，并将其[注册](how-to-deploy-configuration-server.md#register-the-configuration-server)到恢复服务保管库中。
 
-1. 单击“步骤 1: 准备基础结构” > “源”。 如果没有配置服务器，请在“准备源”中单击“+配置服务器”添加一个。
 
-    ![设置源](./media/site-recovery-set-up-vmware-to-azure/set-source1.png)
-2. 在“添加服务器”边栏选项卡中，检查“配置服务器”是否已出现在“服务器类型”中。
-4. 下载站点恢复统一安装程序安装文件。
-5. 下载保管库注册密钥。 运行统一安装程序时，需要注册密钥。 生成的密钥有效期为 5 天。
-
-    ![设置源](./media/site-recovery-set-up-vmware-to-azure/set-source2.png)
-6. 在用作配置服务器的计算机上，运行 **Azure Site Recovery 统一安装程序**以安装配置服务器、进程服务器和主目标服务器。
-
-#### <a name="run-azure-site-recovery-unified-setup"></a>运行 Azure Site Recovery 统一安装程序
-
-> [!TIP]
-> 如果计算机上的系统时钟时间与本地时间相差五分钟以上，则配置服务器注册会失败。 开始安装前，请将系统时钟与[时间服务器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)同步。
-
-[!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
-
-> [!NOTE]
-> 可以通过命令行安装配置服务器。 有关详细信息，请参阅[使用命令行工具安装配置服务器](http://aka.ms/installconfigsrv)。
-
-#### <a name="add-the-vmware-account-for-automatic-discovery"></a>添加用于自动发现的 VMware 帐户
+## <a name="add-the-vmware-account-for-automatic-discovery"></a>添加用于自动发现的 VMware 帐户
 
 [!INCLUDE [site-recovery-add-vcenter-account](../../includes/site-recovery-add-vcenter-account.md)]
 
-### <a name="step-2-add-a-vcenter"></a>步骤 2：添加 vCenter
+## <a name="connect-to-the-vmware-server"></a>连接到 VMware 服务器
+
 要允许 Azure Site Recovery 发现本地环境中运行的虚拟机，需要将 VMware vCenter 服务器或 vSphere ESXi 主机与 Site Recovery 连接。
 
 选择“+vCenter”开始连接 VMware vCenter 服务器或 VMware vSphere ESXi 主机。

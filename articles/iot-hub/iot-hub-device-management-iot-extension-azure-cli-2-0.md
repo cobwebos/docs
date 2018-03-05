@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 760a6a30513308aa59c5e253e3b91e28cf9e3241
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: e83aa590cc41abcd661e6f0fef450833c816dac4
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="use-the-iot-extension-for-azure-cli-20-for-azure-iot-hub-device-management"></a>针对 Azure IoT 中心设备管理，使用适用于 Azure CLI 2.0 的 IoT 扩展
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 01/18/2018
 - 安装 IoT 扩展。 最简单的方法是运行 `az extension add --name azure-cli-iot-ext`。 [IoT 扩展自述文件](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md)介绍了该扩展的多种安装方法。
 
 
-## <a name="login-to-your-azure-account"></a>登录到 Azure 帐户
+## <a name="log-in-to-your-azure-account"></a>登录到 Azure 帐户
 
 通过运行以下命令登录到 Azure 帐户：
 
@@ -74,13 +74,13 @@ ms.lasthandoff: 01/18/2018
 az login
 ```
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-direct-methods"></a>通过直接方法使用适用于 Azure CLI 2.0 的 IoT 扩展
+## <a name="direct-methods"></a>直接方法
 
 ```bash
 az iot hub invoke-device-method --device-id <your device id> --hub-name <your hub name> --method-name <the method name> --method-payload <the method payload>
 ```
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-twins-desired-properties"></a>通过孪生所需属性使用适用于 Azure CLI 2.0 的 IoT 扩展
+## <a name="device-twin-desired-properties"></a>设备孪生所需属性
 
 通过运行以下命令将所需属性间隔设置为 3000：
 
@@ -90,7 +90,7 @@ az iot hub device-twin update -n <your hub name> -d <your device id> --set prope
 
 可从设备读取此属性。
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-twins-reported-properties"></a>通过孪生报告属性使用适用于 Azure CLI 2.0 的 IoT 扩展
+## <a name="device-twin-reported-properties"></a>设备孪生报告属性
 
 通过运行以下命令获取报告的设备属性：
 
@@ -100,7 +100,7 @@ az iot hub device-twin update -n <your hub name> -d <your device id> --set prope
 
 其中一个属性是 $metadata.$lastUpdated，它显示该设备上次发送或接收消息的时间。
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-twins-tags"></a>通过孪生标记使用适用于 Azure CLI 2.0 的 IoT 扩展
+## <a name="device-twin-tags"></a>设备孪生标记
 
 通过运行以下命令显示设备的标记和属性：
 
@@ -114,7 +114,7 @@ az iot hub device-twin show --hub-name <your hub name> --device-id <your device 
 az iot hub device-twin update --hub-name <your hub name> --device-id <your device id> --set tags = '{"role":"temperature&humidity"}}'
 ```
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-device-twins-queries"></a>通过设备孪生查询使用适用于 Azure CLI 2.0 的 IoT 扩展
+## <a name="device-twin-queries"></a>设备孪生查询
 
 通过运行以下命令查询角色标记 =“温度和湿度”的设备：
 

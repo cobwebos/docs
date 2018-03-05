@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 7a274ad33b7181d238203290cf63937df5f13bbc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c644dd98d468a8c99625c45bad3f06031ff22b4e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 X12 消息以实现企业集成
 
@@ -31,37 +31,34 @@ ms.lasthandoff: 02/21/2018
 
 下面是需要准备好的项：
 
-* 已定义的、与 Azure 订阅关联的[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)
+* 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)
 * 在集成帐户中至少定义了两个[合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)，并且在“企业标识”下面配置了这些合作伙伴的 X12 标识符    
-* 要上传到[集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)的所需[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)
+* 可以上传到集成帐户的所需[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)
 
-[创建集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md)、[添加合作伙伴](logic-apps-enterprise-integration-partners.md)并定义想要使用的[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)之后，可以遵循以下步骤来创建 X12 协议。
+[创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)、[添加合作伙伴](logic-apps-enterprise-integration-partners.md)并定义想要使用的[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)之后，可以遵循以下步骤来创建 X12 协议。
 
 ## <a name="create-an-x12-agreement"></a>创建 X12 协议
 
-1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。 在左侧菜单中，选择“所有服务”。 
+1. 登录 [Azure 门户](http://portal.azure.com "Azure portal")。 
 
-    > [!TIP]
-    > 如果未看到“所有服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
+2. 在 Azure 主菜单中，选择“所有服务”。 在搜索框中输入“集成”，然后选择“集成帐户”。  
 
-    ![在左侧菜单中，选择“所有服务”](./media/logic-apps-enterprise-integration-x12/account-1.png)
+   ![查找集成帐户](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
-2.  在搜索框中，键入“集成”作为筛选器。 在结果列表中，选择“集成帐户”。  
+   > [!TIP]
+   > 如果未显示“所有服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
 
-    ![筛选“集成”，选择“集成帐户”](./media/logic-apps-enterprise-integration-x12/account-2.png)
+3. 在“集成帐户”下，选择要添加协议的集成帐户。
 
-3. 在打开的“集成帐户”边栏选项卡中，选择要在其中添加协议的集成帐户。
-如果未看到任何集成帐户，请[先创建一个集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "有关集成帐户的详细信息")。
-
-    ![选择要在其中创建协议的集成帐户](./media/logic-apps-enterprise-integration-x12/account-3.png)
+   ![选择要在其中创建协议的集成帐户](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
 4. 选择“概述”，并选择“协议”磁贴。 如果未添加“协议”磁贴，请先添加该磁贴。 
 
-    ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+   ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
-5. 在打开的“协议”边栏选项卡中，选择“添加”。
+5. 在“协议”下，选择“添加”。
 
-    ![选择“添加”](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
+   ![选择“添加”](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
 
 6. 在“添加”下面，输入协议的**名称**。 对于协议类型，请选择“X12”。 为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。 有关属性的详细信息，请参阅本步骤中的表格。
 
@@ -291,13 +288,13 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="find-your-created-agreement"></a>查找创建的协议
 
-1.  设置完所有协议属性后，请在“添加”边栏选项卡中选择“确定”来完成创建协议，并返回到集成帐户边栏选项卡。
+1.  设置完所有协议属性后，请在“添加”页中选择“确定”来完成创建协议，并返回到集成帐户。
 
     新添加的协议随即会出现在“协议”列表中。
 
-2.  还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，并选择“协议”磁贴。
+2.  还可以在集成帐户概述中查看协议。 在集成帐户菜单中选择“概述”，并选择“协议”磁贴。
 
-    ![选择“协议”磁贴可查看所有协议](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
+    ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
 ## <a name="view-the-swagger"></a>查看 Swagger
 请参阅 [Swagger 详细信息](/connectors/x12/)。 

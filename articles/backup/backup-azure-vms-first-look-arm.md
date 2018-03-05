@@ -16,11 +16,11 @@ ms.topic: hero-article
 ms.date: 01/05/2018
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b91da3e3c99cec3a63d747062d4ae9f62720a872
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fdaf1349ddf623e2634360e891d959105c504093
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>将 Azure 虚拟机备份到恢复服务保管库
 
@@ -239,7 +239,7 @@ ms.lasthandoff: 02/21/2018
 
     ![选择工作负荷](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-    所选虚拟机已验证。 如果未看到应出现的虚拟机，请检查它们是否在恢复服务保管库所在的同一 Azure 位置中。 恢复服务保管库的位置显示在保管库仪表板上。
+    所选虚拟机已验证。 如果未看到所需的虚拟机，请检查它们是否在恢复服务保管库所在的同一个 Azure 位置，以及是否尚未受保护。 恢复服务保管库的位置显示在保管库仪表板上。
 
 6. 现在已定义保管库的所有设置，接下来请在“备份”边栏选项卡中，单击“启用备份”将策略部署到保管库和 VM。 部署备份策略不会创建虚拟机的初始恢复点。
 

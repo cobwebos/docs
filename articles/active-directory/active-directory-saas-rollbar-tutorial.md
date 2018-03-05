@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/04/2017
 ms.author: jeedes
-ms.openlocfilehash: bb8a81327163513ab721d2ad72da19173b59bc1f
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 43dc50d0a5381ace8bcfeb3cae39e249ba743876
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>教程：Azure Active Directory 与 Rollbar 的集成
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/05/2018
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Rollbar 的集成，需要具有以下各项：
 
@@ -149,11 +149,14 @@ ms.lasthandoff: 01/05/2018
 
     c. 单击“ **保存**”。
 
-11. 单击保存按钮后，屏幕将如下所示。 在此部分中执行以下步骤：
+11. 单击“保存”按钮后，屏幕将如下所示：
     
     ![配置](./media/active-directory-saas-rollbar-tutorial/configure3.png)
+    > [!NOTE] 
+    > 若要完成以下步骤，必须先将自己作为用户添加到 Azure 中的 Rollbar 应用。
+    a. 如果想要要求所有用户通过 Azure 进行身份验证，则单击“通过标识提供者登录”通过 Azure 重新进行身份验证。  
 
-    a. 选中“要求通过 SAML 标识提供者进行登录”复选框。
+    b.  返回到屏幕后，选中“要求通过 SAML 标识提供者进行登录”复选框。
 
     b. 单击“ **保存**”。
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2018
+ms.date: 02/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 30c8911105e95860899385caf40f8a250c1c340e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7e4a65d81a7dade9ae63a24657d15a97a3a588b2
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问
 
@@ -108,7 +108,7 @@ ms.lasthandoff: 02/21/2018
 
 ### <a name="license-requirements-for-using-conditional-access"></a>使用条件访问的许可证要求
 
-使用条件访问需要 Azure AD Premium/企业移动性 + 安全性许可证。 若要查找满足要求的合适许可证，请参阅[企业移动性 + 安全性方案](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-pricing)。
+使用条件访问需要 Azure AD Premium 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版、基本版和高级版的正式发布功能](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features)。
 
 
 ## <a name="next-steps"></a>后续步骤

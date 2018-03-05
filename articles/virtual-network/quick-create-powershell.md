@@ -16,21 +16,21 @@ ms.workload: infrastructure
 ms.date: 01/25/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 091e7e6cabf325cdd9d4289e7d22e71c583d91db
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: dd8203763eb6abd19e2b3483636dc4d80f7effdf
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-a-virtual-network-using-powershell"></a>使用 PowerShell 创建虚拟网络
 
-本文将介绍如何创建虚拟网络。 创建虚拟网络后，向虚拟网络中部署两个虚拟机，并让它们互相私下通信。
+本文将介绍如何创建虚拟网络。 创建虚拟网络后，在虚拟网络中部署两个虚拟机，以测试它们之间的专用网络通信。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.1.1 或更高版本。 要查找已安装的版本，请运行 ` Get-Module -ListAvailable AzureRM`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 AzureRM PowerShell 模块 5.1.1 或更高版本。 要查找已安装的版本，请运行 ` Get-Module -ListAvailable AzureRM`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -71,9 +71,11 @@ $subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="create-virtual-machines"></a>创建虚拟机
+## <a name="test-network-communication"></a>测试网络通信
 
-虚拟网络能让几种类型的 Azure 资源互相私下通信。 虚拟机是一种能部署到虚拟网络的资源类型。 在虚拟网络中创建两个虚拟机，以便在稍后的步骤中验证和了解虚拟机在虚拟网络中互相通信的原理。
+虚拟网络能让几种类型的 Azure 资源互相私下通信。 虚拟机是一种能部署到虚拟网络的资源类型。 在虚拟网络中创建两个虚拟机，以便在稍后的步骤中验证它们之间的专用通信。
+
+### <a name="create-virtual-machines"></a>创建虚拟机
 
 使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) 创建虚拟机。 运行此步骤时，会提示输入凭据。 输入的值将配置为用于虚拟机的用户名和密码。 虚拟机创建的位置必须与虚拟网络在同一位置。 虽然在本文中虚拟机在同一资源组，但实际上并无此要求。 `-AsJob` 参数允许命令在后台运行，因此可以继续下一项任务。
 
@@ -108,7 +110,7 @@ New-AzureRmVm `
 ```
 创建虚拟机需花费几分钟的时间。 创建后，Azure 会返回有关已创建虚拟机的输出。 尽管不在返回的输出中，Azure 还是将 10.0.0.5 分配给了 myVm2 虚拟机，因为它是子网中下一个可用地址。
 
-## <a name="connect-to-a-virtual-machine"></a>连接到虚拟机
+### <a name="connect-to-a-virtual-machine"></a>连接到虚拟机
 
 使用 [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 命令返回虚拟机的公共 IP 地址。 默认情况下，Azure 将向各虚拟机分配公共的、通过 Internet 进行连接的 IP 地址。 从[分配给各 Azure 区域的地址池](https://www.microsoft.com/download/details.aspx?id=41653)将公共 IP 地址分配给虚拟机。 虽然 Azure 知晓虚拟机分配的公共 IP 地址，但在虚拟机上运行的操作系统却不知道分配给它的任何公共 IP 地址。 以下示例返回了 myVm1 虚拟机的公共 IP 地址：
 
@@ -124,7 +126,7 @@ mstsc /v:<publicIpAddress>
 
 此时会创建远程桌面协议 (.rdp) 文件，并下载到计算机，同时打开该文件。 输入在创建虚拟机时指定的用户名和密码，然后单击“确定”。 你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。
 
-## <a name="validate-communication"></a>验证通信
+### <a name="validate-communication"></a>验证通信
 
 尝试 ping Windows 虚拟机失败，因为默认情况下 Windows 防火墙不允许 ping。 要允许 ping myVm1，请从命令提示符中输入以下命令：
 
@@ -152,9 +154,11 @@ ping bing.com
 
 从 bing.com 接收了四个回复。默认情况下，虚拟网络中的任意虚拟机都可以与 Internet 进行出站通信。
 
+退出远程桌面会话。 
+
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组及其包含的所有资源，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 命令将其删除。 退出远程登录会话，然后从计算机运行以下命令以删除资源组：
+如果不再需要资源组及其包含的所有资源，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 命令将其删除：
 
 ```azurepowershell-interactive 
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -162,8 +166,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-本文将使用一个子网和两个虚拟机来部署默认虚拟网络。 要了解如何使用多个子网创建自定义虚拟网络并执行基本虚拟网络管理任务，请继续参阅教程的创建和管理自定义虚拟网络部分。
-
+本文将使用一个子网部署默认虚拟网络。 若要了解如何使用多个子网创建自定义虚拟网络，请继续参阅教程的创建自定义虚拟网络部分。
 
 > [!div class="nextstepaction"]
-> [创建和管理自定义虚拟网络](virtual-networks-create-vnet-arm-pportal.md#powershell)
+> [创建自定义虚拟网络](virtual-networks-create-vnet-arm-pportal.md#powershell)

@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/23/2017
 ms.author: joeyong;barbkess;kavithaj
-ms.openlocfilehash: 122646f73b6e4e7c62eb0e6d4b6672b603d8acb2
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: c76fb73c9beda93c407d1af29e157682c7fe58c0
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="resource-classes-for-workload-management"></a>用于工作负荷管理的资源类
 有关使用资源类来管理并发运行的并发查询数，以及计算 Azure SQL 数据仓库中查询的资源的指导。
@@ -62,7 +62,7 @@ SQL 数据仓库为多用户环境提供工作负荷管理功能。 数据仓库
 
 - 不管当前服务级别是什么，**静态资源类**都会分配相同的内存量（以[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)表示）。 这种静态分配意味着在使用更高的服务级别时，可在每个资源类中运行更多的查询。  静态资源类名为 staticrc10、staticrc20、staticrc30、staticrc40、staticrc50、staticrc60、staticrc70 和 staticrc80。 这些资源类最适合用于可提高资源类来获取更多计算资源的解决方案。
 
-- **动态资源类**根据当前服务级别分配可变内存量。 扩展到更高的服务级别时，查询可自动获得更多的内存。 动态资源类命名为 smallrc、mediumrc、largerc 和 xlargerc。 这些资源类最适合用于可提高计算规模来获取更多资源的解决方案。 
+- **动态资源类**根据当前服务级别分配可变内存量。 提升到更高的服务级别时，查询可自动获得更多的内存。 动态资源类命名为 smallrc、mediumrc、largerc 和 xlargerc。 这些资源类最适合用于可提高计算规模来获取更多资源的解决方案。 
 
 [性能层](performance-tiers.md)使用相同的资源类名称，但具有不同的[内存和并发性规范](performance-tiers.md)。 
 
@@ -84,6 +84,11 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 ```
 
 服务管理员的资源类是固定的，不可更改。  服务管理员是预配过程中创建的用户。
+
+> [!NOTE]
+> 定义为 Active Directory 管理员的用户或组也是服务管理员。
+>
+>
 
 ### <a name="default-resource-class"></a>默认资源类
 默认情况下，每个用户都是小型资源类 (**smallrc**) 的成员。 

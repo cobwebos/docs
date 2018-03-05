@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: laviswa
-ms.openlocfilehash: 69466b15d2a37bee0353a283c9bab59563f3670e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8425c9eae1bb7b50edec1d36d4e7c80b49b243ac
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos DB 的 SQL 查询
 
@@ -937,7 +937,7 @@ TOP 关键字可用于限制来自查询中的值的数量。 当 TOP 与 ORDER 
 也可基于数组迭代的结果进行聚合。 有关详细信息，请参阅[查询中的数组迭代](#Iteration)。
 
 > [!NOTE]
-> 请注意，使用 Azure 门户的查询浏览器时，聚合查询可能会通过查询页返回部分聚合的结果。 SDK 跨所有页面生成单个累计值。 
+> 请注意，使用 Azure 门户的数据资源管理器时，聚合查询可能会通过查询页返回部分聚合的结果。 SDK 跨所有页面生成单个累计值。 
 > 
 > 若要使用代码执行聚合查询，用户需要 .NET SDK 1.12.0、.NET Core SDK 1.1.0，或者 Java SDK 1.9.5 或更高版本。    
 >

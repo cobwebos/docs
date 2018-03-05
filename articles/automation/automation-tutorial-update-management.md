@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/14/2017
+ms.date: 02/28/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 615618e0e78f97e3f41dc2c0e1ca9a6e4b1b47bf
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 614b5bd7a2663c3b61f511dcc6b6a49218ac439a
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="manage-windows-updates-with-azure-automation"></a>使用 Azure 自动化管理 Windows 更新
 
@@ -65,12 +65,9 @@ ms.lasthandoff: 01/23/2018
 验证过程还会检查 VM 是否预配了 Microsoft Monitoring Agent (MMA) 和自动化混合 Runbook 辅助角色。
 此代理用于与虚拟机通信并获取关于更新状态的信息。
 
-如果不满足这些先决条件，则会显示一个横幅，其中提供了启用该解决方案的选项。
+选择 Log analytics 工作区和自动化帐户，然后单击“启用”即可启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
 
-![更新管理载入配置横幅](./media/automation-tutorial-update-management/manageupdates-onboard-solution-banner.png)
-
-若要启用该解决方案，请单击横幅。
-如果在验证后发现缺少下列任何先决条件，则会自动添加这些条件：
+如果在载入过程中发现缺少下列任何先决条件，则会自动添加这些条件：
 
 * [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) 工作区
 * [自动化](./automation-offering-get-started.md)

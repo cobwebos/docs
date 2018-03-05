@@ -5,15 +5,15 @@ services: automation
 keywords: "更改, 跟踪, 自动化"
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 12/14/2017
+ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0aefa175d676bd7e98841d3a1e9ff5a8c90b7deb
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: f0af493036740b854609cea07e01136aac808579
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>排查环境中的更改错误
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/10/2018
 > * 触发事件
 > * 查看更改
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 
@@ -47,37 +47,19 @@ ms.lasthandoff: 01/10/2018
 就本教程来说，首先需为 VM 启用更改跟踪和清单。 如果以前已为 VM 启用其他自动化解决方案，则此步骤不是必需的。
 
 1. 在左侧菜单上选择“虚拟机”，然后从列表中选择一个 VM。
-1. 在左侧菜单的“操作”部分单击“清单”。 此时会打开“启用更改跟踪和清单”页。
+1. 在左侧菜单的“操作”部分单击“清单”。 此时会打开“更改跟踪”页。
 
-执行验证是为了确定是否为该 VM 启用了更改跟踪和清单。
-验证包括检查 Log Analytics 工作区和链接的自动化帐户，以及解决方案是否在工作区中。
+![启用更改](./media/automation-tutorial-troubleshoot-changes/enableinventory.png) 此时会打开“更改跟踪”屏幕。 配置要使用的位置、Log Analytics 工作区和自动化帐户，然后单击“启用”。 如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
 
 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) 工作区用于收集由功能和服务（如清单）生成的数据。
 工作区提供了一个位置来查看和分析来自多个数据源的数据。
 
-验证过程还会检查 VM 是否预配了 Microsoft Monitoring Agent (MMA) 和混合辅助角色。
+在载入期间，VM 预配了 Microsoft Monitoring Agent (MMA) 和混合辅助角色。
 此代理用于与 VM 通信并获取有关已安装软件的信息。
-验证过程还会检查 VM 是否预配了 Microsoft Monitoring Agent (MMA) 和自动化混合 Runbook 辅助角色。
-
-如果不满足这些先决条件，则会显示一个横幅，其中提供了启用该解决方案的选项。
-
-![更改跟踪和清单载入配置横幅](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
-
-若要启用该解决方案，请单击横幅。
-如果在验证后发现缺少下列任何先决条件，则会自动添加这些条件：
-
-* [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) 工作区
-* [自动化](./automation-offering-get-started.md)
-* VM 上已启用[混合 runbook 辅助角色](./automation-hybrid-runbook-worker.md)
-
-此时会打开“更改跟踪和清单”屏幕。 配置要使用的位置、Log Analytics 工作区和自动化帐户，然后单击“启用”。 如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
-
-![“启用更改跟踪解决方案”窗口](./media/automation-tutorial-troubleshoot-changes/installed-software-enable.png)
 
 启用解决方案最多可能需要 15 分钟。 在此期间，不应关闭浏览器窗口。
 启用该解决方案后，VM 中有关已安装软件和更改的信息会流向 Log Analytics。
 这些数据需花费 30 分钟到 6 小时的时间才能用于分析。
-
 
 ## <a name="using-change-tracking-in-log-analytics"></a>在 Log Analytics 中使用更改跟踪
 
@@ -107,40 +89,47 @@ ConfigurationChange
 1. 在“Windows 注册表”选项卡上，选择“添加”。
     “添加 Windows 注册表以跟踪更改”窗口随即打开。
 
-   ![更改跟踪添加注册表](./media/automation-vm-change-tracking/change-add-registry.png)
+3. 在“添加用于更改跟踪的 Windows 注册表”中，输入要求该项进行跟踪的信息，然后单击“保存”
 
-2. 在“已启用”下，选择“True”。
-3. 在“项名称”框中，输入一个友好名称。
-4. （可选）在“组”框中，输入一个组名称。
-5. 在“Windows 注册表项”框中，输入要跟踪的注册表项的名称。
-6. 选择“保存”。
+|属性  |说明  |
+|---------|---------|
+|已启用     | 确定是否应用了设置        |
+|项目名称     | 要跟踪的文件的友好名称        |
+|组     | 一个组名，用于对文件进行逻辑分组        |
+|Windows 注册表项   | 用于查看文件的路径，例如“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
 
 ### <a name="add-a-windows-file"></a>添加 Windows 文件
 
 1. 在“Windows 文件”选项卡上，选择“添加”。 “添加 Windows 文件以跟踪更改”窗口随即打开。
 
-   ![更改跟踪添加 Windows 文件](./media/automation-vm-change-tracking/change-add-win-file.png)
+1. 在“添加用于更改跟踪的 Windows 文件”中，输入要求该文件或目录进行跟踪的信息，然后单击“保存”
 
-2. 在“已启用”下，选择“True”。
-3. 在“项名称”框中，输入一个友好名称。
-4. （可选）在“组”框中，输入一个组名称。
-5. 在“输入路径”框中，输入要跟踪的文件的完整路径和文件名。
-6. 选择“保存”。
+|属性  |说明  |
+|---------|---------|
+|已启用     | 确定是否应用了设置        |
+|项目名称     | 要跟踪的文件的友好名称        |
+|组     | 一个组名，用于对文件进行逻辑分组        |
+|输入路径     | 用于查看文件的路径，例如“c:\temp\myfile.txt”       |
 
 ### <a name="add-a-linux-file"></a>添加 Linux 文件
 
 1. 在“Linux 文件”选项卡上，选择“添加”。 “添加 Linux 文件以跟踪更改”窗口随即打开。
 
-   ![更改跟踪添加 Linux 文件](./media/automation-vm-change-tracking/change-add-linux-file.png)
+1. 在“添加用于更改跟踪的 Linux 文件”中，输入要求该文件或目录进行跟踪的信息，然后单击“保存”
 
-2. 在“已启用”下，选择“True”。
-3. 在“项名称”框中，输入一个友好名称。
-4. （可选）在“组”框中，输入一个组名称。
-5. 在“输入路径”框中，输入要跟踪的文件的完整路径和文件名。
-6. 在“路径类型”框中，选择“文件”或“目录”。
-7. 在“递归”下，若要跟踪指定路径以及其下所有文件和路径的更改，请选择“打开”。 若要仅跟踪指定路径或文件，选择“关闭”。
-8. 在“使用 Sudo”下，若要跟踪需要 `sudo` 命令进行访问的文件，请选择“打开”。 否则，选择“关闭。
-9. 选择“保存”。
+|属性  |说明  |
+|---------|---------|
+|已启用     | 确定是否应用了设置        |
+|项目名称     | 要跟踪的文件的友好名称        |
+|组     | 一个组名，用于对文件进行逻辑分组        |
+|输入路径     | 用于查看文件的路径，例如“/etc/*.conf”       |
+|路径类型     | 要跟踪的项的类型，可能值为“文件”和“目录”        |
+|递归     | 确定在查找要跟踪的项时是否使用递归。        |
+|使用 Sudo     | 此设置决定了在查找该项时是否使用 Sudo。         |
+|链接     | 此设置决定了在遍历目录时如何处理符号链接。<br> **忽略** - 忽略符号链接，不包括引用的文件/目录<br>**追随** - 在递归期间追随符号链接，并且包括引用的文件/目录<br>**管理** - 追随符号链接并允许修改返回内容的处置方式      |
+
+   > [!NOTE]   
+   > 不建议使用“管理”链接选项。 不支持文件内容检索。
 
 ## <a name="enable-activity-log-connection"></a>启用活动日志连接
 
@@ -188,4 +177,4 @@ ConfigurationChange
 继续阅读更改跟踪和清单解决方案的概述可以了解其详细信息。
 
 > [!div class="nextstepaction"]
-> [变更管理和清单解决方案](../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json)
+> [变更管理和清单解决方案](automation-change-tracking.md)

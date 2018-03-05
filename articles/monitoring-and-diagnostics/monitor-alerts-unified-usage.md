@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: 5e4068cc694b623f67d998f410f207356efd873f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b537bb42d43c4232c100061322e09bf492f2a20f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>使用 Azure Monitor 创建、查看和管理警报 - 警报（预览版）
 
@@ -28,14 +28,14 @@ ms.lasthandoff: 02/09/2018
 - 条件：特定的条件或逻辑，出现在“信号”中时，应触发操作
 - 操作：发送到通知接收方 - 电子邮件、短信、Webhook 等的特定调用。
 
-警报（预览版）使用术语**日志警报**来描述警报，其中的信号是基于 [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 的自定义查询。 在现有警报体验中称为[准实时指标警报](monitoring-near-real-time-metric-alerts.md)的指标警报功能在警报（预览版）中称为**指标警报**。 在“指标警报”中，某些资源类型为特定的 Azure 资源提供[多维指标](monitoring-metric-charts.md)，因此，可以使用其他筛选器根据维度针对此类资源发出更具体的警报；此类警报称为**多维指标警报**。
+警报（预览版）使用术语**日志警报**来描述警报，其中的信号是基于 [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 或 [Azure Application Insights](../application-insights/app-insights-analytics.md) 的自定义查询。 在现有警报体验中称为[准实时指标警报](monitoring-near-real-time-metric-alerts.md)的指标警报功能在警报（预览版）中称为**指标警报**。 在“指标警报”中，某些资源类型为特定的 Azure 资源提供[多维指标](monitoring-metric-charts.md)，因此，可以使用其他筛选器根据维度针对此类资源发出更具体的警报；此类警报称为**多维指标警报**。
 Azure 警报（预览版）还提供所有警报规则的统一视图，可让用户在单个位置管理这些规则，包括查看任何未解决的警报。 [Azure 警报（预览版）- 概述](monitoring-overview-unified-alerts.md)中详细介绍了该功能。
 
 > [!NOTE]
 > 同时，Azure 警报（预览版）还提供新的增强体验，用于在 Azure 中创建警报。 现有的 [Azure 警报](monitoring-overview-alerts.md)体验仍然可用
 >
 
-下面详细介绍了有关使用 Azure 警报（预览版）的分步指南。
+下面详细介绍有关使用 Azure 警报（预览版）的分步指南。
 
 ## <a name="create-an-alert-rule-with-the-azure-portal"></a>使用 Azure 门户创建警报规则
 1. 在[门户](https://portal.azure.com/)中选择“监视器”，然后在“监视器”部分下选择“警报(预览版)”。  
@@ -81,16 +81,13 @@ Azure 警报（预览版）还提供所有警报规则的统一视图，可让�
 
     ![配置多维指标的信号逻辑](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
-8. *日志警报*：确保“资源类型”是分析源（例如 *Log Analytics*/*Application Insights*），选择相应的**资源**，然后单击“完成”。 接下来，使用“添加条件”按钮查看适用于该资源的信号选项列表，并针对所选日志监视服务（如 *Log Analytics*/*Application Insights*）从信号列表中选择“自定义日志搜索”选项。
+8. *日志警报*：确保“资源类型”是分析源（例如 *Log Analytics* 或 *Application Insights*），选择相应的**资源**，然后单击“完成”。 接下来，使用“添加条件”按钮查看适用于该资源的信号选项列表，并针对所选日志监视服务（如 *Log Analytics* 或 *Application Insights*）从信号列表中选择“自定义日志搜索”选项。
 
    ![选择资源 - 自定义日志搜索](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
 
-   > 当所选资源是 Log Analytics 时，**警报预览**会列出已保存的日志搜索作为信号类型 - 日志（已保存的查询）。
-   以便你可以完善 Analytics 中的查询，然后保存这些查询供将来使用（有关详细信息，请参阅[在 Log Analytics 中使用日志搜索](../log-analytics/log-analytics-log-searches.md)）。 然后可以直接基于这些查询创建警报规则，如以下显示保存的搜索的示例屏幕中所示：
-
-   ![选择资源 - 自定义日志搜索](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
+   > 警报（预览版）列表可以导入分析查询作为信号类型 - **日志（已保存查询）**，如上图中所示。 这样用户便能够在 Analytics 中完善查询，然后保存这些查询供将来在警报中使用 - 有关使用保存的查询的详细信息，请参阅[在 Log Analytics 中使用日志搜索](../log-analytics/log-analytics-log-searches.md)或 [Application Insights Analytics 中的共享查询](../log-analytics/log-analytics-overview.md)。 
 
 9.  *日志警报*：选择后，可以在“搜索查询”字段中指定警报查询；如果查询语法不正确，该字段将以红色显示错误。 如果查询语法正确 - 将以图表形式显示指定查询的历史数据供参考，同时显示用于调整时间范围（过去六个小时到过去一周）的选项。
 
@@ -125,7 +122,7 @@ Azure 警报（预览版）还提供所有警报规则的统一视图，可让�
     对于**日志警报**，提供了一些附加功能用于替代默认操作：
 
     - **电子邮件通知**：替代通过操作组发送的电子邮件中的主题。 不能修改邮件正文。
-    - **包括自定义 JSON 有效负载**：替代操作组使用的 Webhook JSON，并将默认有效负载替换为自定义有效负载。 有关 Webhook 格式的更多详细信息，请参阅[针对日志警报的 Webhook 操作](monitor-alerts-unified-log-webhook.md)
+    - **包括自定义 JSON 有效负载**：替代操作组使用的 Webhook JSON，并将默认有效负载替换为自定义有效负载。 有关 Webhook 格式的详细信息，请参阅[针对日志警报的 Webhook 操作](monitor-alerts-unified-log-webhook.md)
 
         ![日志警报的操作替代](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
 

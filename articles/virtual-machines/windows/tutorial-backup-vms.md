@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 20760650b093216a2929de580f5971c45e0534a8
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 9638c7148d4347bb9cbc9e48022037ee6cb983d7
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="back-up-windows-virtual-machines-in-azure"></a>在 Azure 中备份 Windows 虚拟机
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 12/13/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习了如何执行以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 创建 VM 的备份
@@ -104,7 +104,7 @@ ms.lasthandoff: 12/13/2017
 请转到下一教程，了解如何监视虚拟机。
 
 > [!div class="nextstepaction"]
-> [监视虚拟机](tutorial-monitoring.md)
+> [控制虚拟机](tutorial-govern-resources.md)
 
 
 

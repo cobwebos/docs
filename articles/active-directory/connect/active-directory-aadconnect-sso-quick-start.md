@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 02/23/2017
 ms.author: billmath
-ms.openlocfilehash: 2d172b22d00f21062237a1af1742bad6a03c864c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 58ca992f9fcf9a03d917f0dc250a292c4d5f49e5
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
    - 值名称：要将 Kerberos 票证转发到的 Azure AD URL。
    - 值（数据）：1 指示 Intranet 区域。
 
-   结果如下所示：
+    结果如下所示：
 
     值：https://autologon.microsoftazuread-sso.com
   
@@ -129,7 +129,7 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 1. 运行 Firefox 并在地址栏中输入 `about:config`。 关闭你看到的任何通知。
 2. 搜索 network.negotiate-auth.trusted-uris 首选项。 此首选项列出了用于 Kerberos 身份验证的 Firefox 的受信任站点。
 3. 右键单击并选择“修改”。
-4. 在该字段内输入 https://autologon.microsoftazuread-sso.com、https://aadg.windows.net.nsatc.net。
+4. 在字段中输入 https://autologon.microsoftazuread-sso.com。
 5. 选择“确定”，然后重新打开浏览器。
 
 #### <a name="safari-mac-os"></a>Safari（Mac 操作系统）
@@ -138,7 +138,7 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome（所有平台）
 
-如果已替代环境中的 [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) 或 [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) 策略设置，请确保向其添加 Azure AD 的 URL（https://autologon.microsoftazuread-sso.com 和 https://aadg.windows.net.nsatc.net）。
+如果已替代环境中的 [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) 或 [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) 策略设置，请确保也向其添加 Azure AD 的 URL (https://autologon.microsoftazuread-sso.com)。
 
 #### <a name="google-chrome-mac-os-only"></a>Google Chrome（仅限 Mac 操作系统）
 

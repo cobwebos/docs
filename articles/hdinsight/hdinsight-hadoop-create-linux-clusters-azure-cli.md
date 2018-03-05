@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 0ae573922938b775900b839a24a917e4211fbadc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 983e167d248d711efde9c64a70f59d5a9e81769a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 创建 HDInsight 群集
 
@@ -29,8 +29,9 @@ ms.lasthandoff: 12/11/2017
 本文介绍了使用 Azure CLI 1.0 创建 HDInsight 3.5 群集的相关步骤。
 
 > [!IMPORTANT]
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
-
+> 本主题介绍如何使用 Azure CLI 1.0 创建 HDInsight 群集。 此版本的 CLI 已弃用，并且对创建 HDInsight 群集的支持尚未添加到 Azure CLI 2.0。
+>
+> 也可以使用 Azure PowerShell 来创建和管理 HDInsight 群集。 有关详细信息，请参阅[使用 Azure PowerShell 创建 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)文档。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 12/11/2017
 * **Azure CLI**。 本文档中的步骤最近已使用 Azure CLI 版本 0.10.14 进行测试。
 
     > [!IMPORTANT]
-    > 本文中的步骤不适用于 Azure CLI 2.0。 Azure CLI 2.0 不支持创建 HDInsight 群集。
+    > Azure CLI 1.0 已弃用，并且对创建 HDInsight 群集的支持尚未添加到 Azure CLI 2.0。
 
 ## <a name="log-in-to-your-azure-subscription"></a>登录到 Azure 订阅
 
@@ -102,7 +103,7 @@ ms.lasthandoff: 12/11/2017
     * 将 `Hadoop` 替换为希望创建的群集类型。 例如，`Hadoop`、`HBase`、`Kafka`、`Spark` 或 `Storm`。
 
      > [!IMPORTANT]
-     > HDInsight 群集具有各种不同的类型，与该群集进行优化的工作负荷或技术相对应。 不支持在一个群集上创建合并了多个类型（如 Storm 和 HBase）的群集。
+     > HDInsight 群集具有各种不同的类型，与该群集进行优化的工作负荷或技术相对应。 没有任何方法支持创建组合多种类型的群集，如一个群集同时具有 Storm 和 HBase 类型。
 
     * 将 `location` 替换为上一步中使用的同一位置。
 

@@ -1,48 +1,24 @@
+-- title: 使用 Azure Active Directory 和 API 管理保护 Web API 后端 | Microsoft Docs description: 了解如何使用 Azure Active Directory 和 API 管理保护 Web API 后端。
+services: api-management documentationcenter: '' author: juliako manager: cfowler editor: ''
+
+ms.service: api-management ms.workload: mobile ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 10/30/2017 ms.author: apimpm
 ---
-title: "使用 Azure Active Directory 和 API 管理保护 Web API 后端 | Microsoft 文档"
-description: "了解如何使用 Azure Active Directory 和 API 管理保护 Web API 后端。"
-services: api-management
-documentationcenter: 
-author: juliako
-manager: cfowler
-editor: 
-ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/30/2017
-ms.author: apimpm
-ms.openlocfilehash: 695db2f5e6ffe794d76d0b9126dc231ed8a87d2c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
----
+
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>如何使用 Azure Active Directory 和 API 管理保护 Web API 后端
-下面的视频演示了如何生成 Web API 后端，并使用具有 Azure Active Directory 和 API 管理的 OAuth 2.0 协议对其进行保护。  本文提供视频中步骤的概述及其他信息。 此视频演示了以下内容，时长 24 分钟：
 
-* 如何生成 Web API 后端并使用 AAD 进行保护 - 从 1:30 开始
-* 如何将 API 导入到 API 管理 - 从 7:10 开始
-* 如何配置开发人员门户以调用 API - 从 9:09 开始
-* 如何配置桌面应用程序以调用 API - 从 18:08 开始
-* 如何配置 JWT 验证策略以对请求进行预授权 - 从 20:47 开始
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Protecting-Web-API-Backend-with-Azure-Active-Directory-and-API-Management/player]
-> 
-> 
+本主题演示如何生成 Web API 后端，并使用 Azure Active Directory 和 API 管理通过 OAuth 2.0 协议对其进行保护。  
 
 ## <a name="create-an-azure-ad-directory"></a>创建 Azure AD 目录
-若要使用 Azure Active Directory 保护 Web API 后端，必须首先拥有 AAD 租户。 本视频中使用了租户 **APIMDemo**。 若要创建 AAD 租户，请登录 [Azure 经典门户](https://manage.windowsazure.com)，单击“新建”->“应用服务”->“Active Directory”->“目录”->“自定义创建”。 
+若要使用 Azure Active Directory 保护 Web API 后端，必须先拥有 AAD 租户。 若要创建 AAD 租户，请登录 [Azure 经典门户](https://manage.windowsazure.com)，单击“新建”->“应用服务”->“Active Directory”->“目录”->“自定义创建”。 
 
 ![Azure Active Directory][api-management-create-aad-menu]
 
-此示例创建了一个名为 **APIMDemo** 的目录，其中包含名为 **DemoAPIM.onmicrosoft.com** 的默认域。整个视频都将使用此目录。
+此示例创建了一个名为 **APIMDemo** 的目录，其中包含名为 **DemoAPIM.onmicrosoft.com** 的默认域。 
 
 ![Azure Active Directory][api-management-create-aad]
 
 ## <a name="create-a-web-api-service-secured-by-azure-active-directory"></a>创建由 Azure Active Directory 保护的 Web API 服务
-此步骤使用 Visual Studio 2013 创建 Web API 后端。 视频中的此步骤从 1:30 开始。 要在 Visual Studio 中创建 Web API 后端项目，单击“文件”->“新建”->“项目”，并从“Web”模板列表中选择“ASP.NET Web 应用程序”。 在本视频中，项目被命名为 **APIMAADDemo**。 单击“确定”以创建该项目  。 
+此步骤使用 Visual Studio 2013 创建 Web API 后端。 要在 Visual Studio 中创建 Web API 后端项目，单击“文件”->“新建”->“项目”，并从“Web”模板列表中选择“ASP.NET Web 应用程序”。 
 
 ![Visual Studio][api-management-new-web-app]
 
@@ -75,7 +51,6 @@ ms.lasthandoff: 02/21/2018
 单击“确定”配置 Web 应用和创建项目。
 
 ## <a name="add-the-code-to-the-web-api-project"></a>将代码添加到 Web API 项目
-视频的下一步是将代码添加到 Web API 项目。 此步骤从 4:35 开始。
 
 此示例中的 Web API 使用模型和控制器实现基本计算器服务。 要为服务添加模型，请右键单击“解决方案资源管理器”中的“模型”，并依次选择“添加”、“类”。 将类命名为 `CalcInput`，然后单击“添加”。
 
@@ -161,14 +136,13 @@ public class CalcController : ApiController
 按 **F6** 生成并验证解决方案。
 
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
-此步骤中将 Visual Studio 项目发布到 Azure。 视频中的此步骤从 5:45 开始。
 
 要将项目发布到 Azure，请右键单击 Visual Studio 中的“APIMAADDemo”项目，然后选择“发布”。 保留“发布 Web”对话框中的默认设置，并单击“发布”。
 
 ![Web 发布][api-management-web-publish]
 
 ## <a name="grant-permissions-to-the-azure-ad-backend-service-application"></a>向 Azure AD 后端服务应用程序授予权限
-在配置和发布 Web API 项目的过程中，会在 Azure AD 目录中创建适用于后端服务的新应用程序。 此步骤将向 Web API 后端授予权限，在视频中从 6:13 开始。
+在配置和发布 Web API 项目的过程中，会在 Azure AD 目录中创建适用于后端服务的新应用程序。
 
 ![Application][api-management-aad-backend-app]
 
@@ -352,7 +326,7 @@ public class CalcController : ApiController
 导入 API 后，该 API 的摘要页会显示在发布者门户中。
 
 ## <a name="call-the-api-unsuccessfully-from-the-developer-portal"></a>从开发人员门户调用 API 失败
-此时，该 API 已导入 API 管理，但无法从开发人员门户成功调用，因为后端服务受 Azure AD 身份验证保护。 视频中使用以下步骤对此进行演示，从 7:40 开始。
+此时，该 API 已导入 API 管理，但无法从开发人员门户成功调用，因为后端服务受 Azure AD 身份验证保护。 
 
 单击发布者门户右上角中的“开发人员门户” 。
 
@@ -373,9 +347,9 @@ public class CalcController : ApiController
 请求未经授权，因为后端 API 受 Azure Active Directory 保护。 要成功调用 API，必须首先将开发人员门户配置为使用 OAuth 2.0 向开发人员授权。 此过程在以下部分中介绍。
 
 ## <a name="register-the-developer-portal-as-an-aad-application"></a>将开发人员门户注册为 AAD 应用程序
-将开发人员门户配置为使用 OAuth 2.0 向开发人员授权的第一步是：将开发人员门户注册为 AAD 应用程序。 视频中的此演示从 8:27 开始。
+将开发人员门户配置为使用 OAuth 2.0 向开发人员授权的第一步是：将开发人员门户注册为 AAD 应用程序。 
 
-通过本视频的第一步导航到 Azure AD 租户（在本例中为“APIMDemo”），并导航到“应用程序”选项卡。
+导航到 Azure AD 租户。 在此示例中，选择 **APIMDemo** 并导航到“应用程序”选项卡。
 
 ![新建应用程序][api-management-aad-new-application-devportal]
 
@@ -394,7 +368,7 @@ public class CalcController : ApiController
 ![新建应用程序][api-management-aad-new-application-devportal-2]
 
 ## <a name="configure-an-api-management-oauth-20-authorization-server"></a>配置 API 管理 OAuth 2.0 授权服务器
-下一步是在 API 管理中配置 OAuth 2.0 授权服务器。 视频中的此步骤演示从 9:43 开始。
+下一步是在 API 管理中配置 OAuth 2.0 授权服务器。 
 
 在左侧的“API 管理”菜单中单击“安全”，并单击“OAuth 2.0”和“添加授权服务器”。
 
@@ -466,7 +440,7 @@ public class CalcController : ApiController
 ![添加权限][api-management-aad-add-delegated-permissions]
 
 ## <a name="enable-oauth-20-user-authorization-for-the-calculator-api"></a>为计算器 API 启用 OAuth 2.0 用户授权
-配置 OAuth 2.0 服务器后，便可在安全设置针对 API 指定该服务器。 视频中的此步骤演示从 14:30 开始。
+配置 OAuth 2.0 服务器后，便可在安全设置针对 API 指定该服务器。 
 
 单击左侧菜单中的“API”，并单击“计算器”查看和配置其设置。
 
@@ -477,7 +451,7 @@ public class CalcController : ApiController
 ![计算器 API][api-management-enable-aad-calculator]
 
 ## <a name="successfully-call-the-calculator-api-from-the-developer-portal"></a>成功从开发人员门户调用计算器 API
-由于 OAuth 2.0 授权已在 API 上完成配置，因此可从开发人员中心成功调用其操作。 视频中的此步骤演示从 15:00 开始。
+由于 OAuth 2.0 授权已在 API 上完成配置，因此可从开发人员中心成功调用其操作。 
 
 在开发人员门户中，导回到计算器服务的“添加两个整数”操作，并单击“试用”。 请注意，“授权”部分中的新项与刚添加的授权服务器对应。
 
@@ -492,10 +466,12 @@ public class CalcController : ApiController
 ![计算器 API][api-management-devportal-response]
 
 ## <a name="configure-a-desktop-application-to-call-the-api"></a>配置桌面应用程序以调用 API
-视频中的下一过程从 16:30 开始，配置一个简单的桌面应用程序来调用 API。 第一步是在 Azure AD 中注册桌面应用程序，并向其授予访问目录和后端服务的权限。 18:25 开始演示桌面应用程序调用计算器 API 上的操作。
+
+配置一个简单桌面应用程序以调用 API。 第一步是在 Azure AD 中注册桌面应用程序，并向其授予访问目录和后端服务的权限。 
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>配置 JWT 验证策略以对请求进行预授权
-视频中的最后一个过程从 20:48 开始，演示如何使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略通过验证每个传入请求的访问令牌来对请求进行预授权。 如果请求未通过“验证 JWT”策略进行验证，则将受到 API 管理的阻止且不会传递到后端。
+
+使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略通过验证每个传入请求的访问令牌来对请求进行预授权。 如果请求未通过“验证 JWT”策略进行验证，则将受到 API 管理的阻止且不会传递到后端。
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -508,7 +484,7 @@ public class CalcController : ApiController
 </validate-jwt>
 ```
 
-有关配置和使用此策略的其他演示，请参阅 [Cloud Cover 第 177 集：更多 API 管理功能](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)并快进到 13:50。 快进到 15:00，观看在策略编辑器中配置的策略，然后快进到 18:50，观看对使用和不使用所需授权令牌从开发人员门户调用操作的演示。
+有关详细信息，请参阅 [Cloud Cover 第 177 集：更多 API 管理功能](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)并快进到 13:50。 快进到 15:00，观看在策略编辑器中配置的策略，然后快进到 18:50，观看对使用和不使用所需授权令牌从开发人员门户调用操作的演示。
 
 ## <a name="next-steps"></a>后续步骤
 * 观看有关 API 管理的更多[视频](https://azure.microsoft.com/documentation/videos/index/?services=api-management)。

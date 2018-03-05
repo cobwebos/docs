@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: backup
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: d37e119709bc9d4643fcaa9512b5209d4139515e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 3d09914c93d0f48b8f6bed405202682aaf925a5f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 本文回答了有关如何备份 Azure 文件的常见问题。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -24,38 +24,36 @@ ms.lasthandoff: 02/22/2018
 ## <a name="configuring-the-backup-job-for-azure-files"></a>为 Azure 文件配置备份作业
 
 ### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-file-shares-br"></a>为什么我看不到需要保护的部分存储帐户？这些帐户中包含的文件共享都是有效的。 <br/>
-Azure 文件备份目前为预览版，只有受支持的存储帐户才能进行备份配置。 请确保要找的存储帐户是受支持的存储帐户。
+在预览期间，Azure 文件共享的备份并不支持所有类型的存储帐户。 请参阅[此处](troubleshoot-azure-files.md#preview-boundaries)的列表，了解一系列受支持的存储帐户。
 
 ### <a name="why-cant-i-see-some-of-my-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>尝试配置备份时，为什么看不到存储帐户中的部分文件共享？ <br/>
-检查是否已在同一恢复服务保管库中对文件共享进行保护。 确保最近没有删除要保护的文件共享。
+检查是否已在同一恢复服务保管库中对文件共享进行保护，或者已在最近将其删除。
 
 ### <a name="why-cant-i-protect-file-shares-connected-to-a-sync-group-in-azure-files-sync-br"></a>为什么无法保护已连接到 Azure 文件同步中的某个同步组的文件共享？ <br/>
 保护连接到同步组的 Azure 文件共享这一功能为“有限预览”功能。 若要请求访问权限，请向 [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com) 发送邮件并附上你的订阅 ID。 
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>可以在哪些地理区域备份 Azure 文件共享？ <br/>
-Azure 文件共享备份目前为预览版，只在以下地理区域提供。 
--   加拿大中部 (CNC)
--   加拿大东部 (CE) 
+Azure 文件共享备份目前为预览版，只在以下地理区域提供： 
+-   澳大利亚东南部 (ASE) 
+- 巴西南部 (BRS)
+- 加拿大中部 (CNC)
+-   加拿大东部 (CE)
 -   美国中部 (CUS)
 -   东亚 (EA)
 -   东澳大利亚 (AE) 
+-   美国东部 (EUS)
+-   美国东部 2 (EUS2)
 -   印度中部 (INC) 
 -   美国中北部 (NCUS) 
--   英国南部 (UKS) 
--   英国西部 (UKW) 
--   美国中西部 (WCUS)
--   美国西部 2 (WUS 2)
-
-自 2 月 23 日起，以下地理区域将提供 Azure 文件共享备份。
--   澳大利亚东南部 (ASE) 
--   巴西南部 (BRS) 
--   美国东部 (EUS) 
--   美国东部 2 (EUS2) 
 -   北欧 (NE) 
 -   美国中南部 (SCUS) 
 -   东南亚 (SEA)
+-   英国南部 (UKS) 
+-   英国西部 (UKW) 
 -   西欧 (WE) 
--   美国西部 (WUS)  
+-   美国西部 (WUS)
+-   美国中西部 (WCUS)
+-   美国西部 2 (WUS 2)
 
 如果需要在上面没有列出的特定地理区域使用，请向 [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com) 发送邮件。
 
@@ -65,15 +63,15 @@ Azure 文件共享备份目前为预览版，只在以下地理区域提供。
 ## <a name="backup"></a>备份
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>每个文件共享可以进行多少个按需备份？ <br/>
-不管什么时候，一个文件共享的快照最多可以有 200 个，包括 Azure 备份根据策略的定义生成的快照。 如果备份因达到此限制而开始发生故障，请相应地删除按需还原点。
+在任何时间点，最多可以有一个文件共享的 200 个快照。 此限制包括由 Azure 备份根据策略的定义创建的快照。 如果在达到此限制后无法进行备份，请删除按需还原点，以便将来能够成功地进行备份。
 
 ### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>在存储帐户上启用虚拟网络以后，就无法在帐户中备份文件共享。 为什么？
-启用了虚拟网络的存储帐户目前不支持 Azure 文件备份。 请禁用要备份的存储帐户中的虚拟网络。 
+Azure 文件共享的备份不支持启用了虚拟网络的存储帐户。 在存储帐户中禁用虚拟网络即可成功地进行备份。 
 
 ## <a name="restore"></a>还原
 
 ### <a name="can-i-recover-from-a-deleted-file-share-br"></a>能否从已删除的文件共享进行恢复？ <br/>
-尝试删除文件共享时，会显示一个备份列表，其中的备份在继续操作的情况下也会被删除。会要求你进行确认。 不能从已删除的文件共享还原。
+删除文件共享时，系统会显示也会被删除的备份的列表，并会要求你进行确认。 无法还原已删除的文件共享。
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-a-file-share-br"></a>在停止对文件共享进行保护的情况下，是否能从备份还原？ <br/>
 是的。 如果在停止保护时选择了“保留备份数据”，则可从所有现有的还原点还原。
@@ -81,7 +79,7 @@ Azure 文件共享备份目前为预览版，只在以下地理区域提供。
 ## <a name="manage-backup"></a>管理备份
 
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it-br"></a>能否访问 Azure 备份生成的快照并将其装载？ <br/>
-可以访问 Azure 备份生成的所有快照，只需在门户、PowerShell 或 CLI 中查看快照即可。 可以使用此处的过程装载它们。
+可以访问 Azure 备份生成的所有快照，只需在门户、PowerShell 或 CLI 中查看快照即可。 可以使用[此处](../storage/files/storage-how-to-use-files-snapshots.md#mount-a-file-share)的过程装载它们。
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups-br"></a>可以为备份配置的最长保留期是多长？ <br/>
 Azure 文件共享备份允许保留每日备份长达 120 天。

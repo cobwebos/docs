@@ -1,25 +1,24 @@
 ---
-title: "关于使用 Site Recovery 复制 VMM 云中的 Hyper-V VM 时的网络映射 | Microsoft Docs"
+title: "关于使用 Site Recovery 进行 Hyper-V VM（使用 VMM）复制到 Azure 的网络映射 | Microsoft Docs"
 description: "介绍了如何设置网络映射，以便使用 Azure Site Recovery 复制 VMM 云中托管的 Hyper-V VM。"
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 02/22/2018
 ms.author: raynew
-ms.openlocfilehash: 5b8ebf3bd118a7b082949b3f3c6ef60a07641ba1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 524de918bd24d51680110dc2af213bf328e349fd
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="about-network-mapping-for-hyper-v-vm-with-vmm-replication"></a>关于复制 VMM 中的 Hyper-V VM 时的网络映射 
+# <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>准备网络映射以将 Hyper-V VM 复制到 Azure
 
 
-本文有助于理解及规划使用 [Azure Site Recovery 服务](site-recovery-overview.md)复制 System Center Virtual Machine Manager (VMM) 云中的 Hyper-V VM 时的网络映射。
+本文有助于理解及准备使用 [Azure Site Recovery](site-recovery-overview.md) 服务将 System Center Virtual Machine Manager (VMM) 云中的 Hyper-V VM 复制到 Azure 或辅助站点时的网络映射。
 
-将 VMM 云中托管的 Hyper-V VM 复制到辅助 VMM 云或复制到 Azure 时需使用网络映射。
 
 ## <a name="prepare-network-mapping-for-replication-to-azure"></a>为复制到 Azure 准备网络映射
 
@@ -123,4 +122,5 @@ VMNetwork1-Chicago 的网络映射发生变化。 | VM-1 连接现映射到 VMNe
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解](hyper-v-vmm-networking.md)在故障转移到辅助 VMM 站点后的 IP 寻址。
+- [了解](hyper-v-vmm-networking.md)在故障转移到辅助 VMM 站点后的 IP 寻址。
+- [了解](concepts-on-premises-to-azure-networking.md)在故障转移到 Azure 后的 IP 寻址。

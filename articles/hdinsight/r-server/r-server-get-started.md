@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/14/2017
 ms.author: bradsev
-ms.openlocfilehash: e688068efb41cdccbeb23de3c8ad7a09021e5b3f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: aa7f2e6f44036738756391ecaa265c57c093c42c
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="get-started-with-r-server-on-hdinsight"></a>R Server on HDInsight 入门
 
@@ -61,7 +61,7 @@ Azure HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此
 4. 选择“群集类型”，打开“群集配置”窗格。 在“群集配置”窗格中选择以下选项：
 
     * **群集类型**：选择“R Server”。
-    * **版本**：选择要在群集上安装的 R Server 版本。 当前可用的版本是 R Server 9.1 (HDI 3.6)。 可在 [MSDN](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes) 上获取 R Server 可用版本的发行说明。
+    * **版本**：选择要在群集上安装的 R Server 版本。 当前可用的版本是 R Server 9.1 (HDI 3.6)。 可在 [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-r-server#r-server-91) 上获取 R Server 可用版本的发行说明。
     * **R Server 的 R Studio 社区版**：此基于浏览器的 IDE 默认安装在边缘节点上。 如果不想安装它，则清除复选框。 如果选择安装它，则可在创建群集后，在群集的门户应用程序窗格中找到用于访问 RStudio Server 登录界面的 URL。
     * 将其他选项保留为默认值，然后使用“选择”按钮保存群集类型。
 
@@ -98,11 +98,11 @@ Azure HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此
 
         chmod 600 <private-key-filename>
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 结合使用私钥文件和 SSH 进行远程登录：
+   e. 结合使用私钥文件和 SSH 进行远程登录：
 
         ssh –i <private-key-filename> remoteuser@<hostname public ip>
 
-      或者，使用私钥文件作为客户端上 R Server 的 Hadoop Spark 计算上下文的部分定义。 有关详细信息，请参阅[为 Spark 创建计算上下文](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)。
+      或者，使用私钥文件作为客户端上 R Server 的 Hadoop Spark 计算上下文的部分定义。 有关详细信息，请参阅[为 Spark 创建计算上下文](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark)。
 
 8. 可以通过“快速创建”转到“存储”窗格。 在该窗格中选择存储帐户设置，将其用于群集所用 HDFS 文件系统的主位置。 选择新的或现有的 Azure 存储帐户，或者选择现有的 Azure Data Lake Store 帐户。
 
@@ -379,7 +379,7 @@ Azure HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此
 
 ## <a name="use-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>从 Microsoft R Server 或 Microsoft R Client 的远程实例使用 R Server on HDI
 
-可从台式机或笔记本电脑上运行的 Microsoft R Server 或 Microsoft R Client 远程实例设置对 HDI Hadoop Spark 计算上下文的访问。 有关详细信息，请参阅[创建 Spark 计算上下文](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started.md)中的“使用 Microsoft R Server 作为 Hadoop 客户端”部分。 为此，请在笔记本电脑上定义 RxSpark 计算上下文时指定以下选项：hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches 和 sshProfileScript。 下面是一个示例：
+可从台式机或笔记本电脑上运行的 Microsoft R Server 或 Microsoft R Client 远程实例设置对 HDI Hadoop Spark 计算上下文的访问。 有关详细信息，请参阅[创建 Spark 计算上下文](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)中的“使用 Microsoft R Server 作为 Hadoop 客户端”部分。 为此，请在笔记本电脑上定义 RxSpark 计算上下文时指定以下选项：hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches 和 sshProfileScript。 下面是一个示例：
 
 
     myNameNode <- "default"
@@ -683,7 +683,7 @@ Azure HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此
 
    d.单击“下一步”。 确认 `Overall Health = pass`。
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 退出管理员实用程序。
+   e. 退出管理员实用程序。
 
    f. 退出 SSH。
 
@@ -705,7 +705,7 @@ Azure HDInsight 提供可集成到 HDInsight 群集中的 R Server 选项。 此
     rxSparkConnect(reset = TRUE)
 
 
-在此阶段，操作化的配置已完成。 现在可以使用 R Client 上的 mrsdeploy 包连接到边缘节点上的操作化。 然后即可使用其功能，例如[远程执行](https://msdn.microsoft.com/microsoft-r/operationalize/remote-execution)和 [Web 服务](https://msdn.microsoft.com/microsoft-r/mrsdeploy/mrsdeploy-websrv-vignette)。 可能需要通过 SSH 登录设置端口转发隧道，具体取决于群集是否设置在虚拟网络上。
+在此阶段，操作化的配置已完成。 现在可以使用 R Client 上的 mrsdeploy 包连接到边缘节点上的操作化。 然后即可使用其功能，例如[远程执行](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely)和 [Web 服务](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)。 可能需要通过 SSH 登录设置端口转发隧道，具体取决于群集是否设置在虚拟网络上。
 
 ### <a name="r-server-cluster-on-a-virtual-network"></a>虚拟网络上的 R Server 群集
 

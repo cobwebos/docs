@@ -13,58 +13,58 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
-ms.date: 11/21/2016
+ms.date: 02/23/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 5eebae624ea024f2ff8c1fa4764027c05220a15f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 59cebb6c0b86f4e3c4e16a5b6d2ada7b3e7a44a2
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>在集成帐户中为逻辑应用管理项目元数据
 
-可以在集成帐户中定义项目的自定义元数据，并且在运行时期间为逻辑应用检索该元数据。 例如，可以指定项目的元数据（如合作伙伴、协议、架构和映射）- 所有使用键/值对的存储元数据。 目前，项目无法通过 UI 创建元数据，但可以使用 REST API 创建元数据。 若要在 Azure 门户中创建或选择合作伙伴、协议或架构时添加元数据，请选择“编辑”。 若要在逻辑应用中检索项目元数据，可以使用集成帐户项目查找功能。
+可以在集成帐户中定义项目的自定义元数据，并且在运行时期间为逻辑应用检索该元数据。 例如，可以指定项目的元数据（如合作伙伴、协议、架构和映射）- 所有使用键/值对的存储元数据。 
 
 ## <a name="add-metadata-to-artifacts-in-integration-accounts"></a>在集成帐户中将元数据添加到项目
 
-1. 创建[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。
+1. 在 Azure 门户中，创建[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。
 
-2. 将项目添加到集成帐户，例如[合作伙伴](logic-apps-enterprise-integration-partners.md#how-to-create-a-partner)、[协议](logic-apps-enterprise-integration-agreements.md#how-to-create-agreements)或[架构](logic-apps-enterprise-integration-schemas.md)。
+2. 将项目添加到集成帐户，例如[合作伙伴](logic-apps-enterprise-integration-partners.md)、[协议](logic-apps-enterprise-integration-agreements.md)或[架构](logic-apps-enterprise-integration-schemas.md)。
 
-3.  选择项目，选择“编辑”并输入元数据详细信息。
+3. 选择项目，选择“编辑”并输入元数据详细信息。
 
-    ![输入元数据](media/logic-apps-enterprise-integration-metadata/image1.png)
+   ![输入元数据](media/logic-apps-enterprise-integration-metadata/image1.png)
 
 ## <a name="retrieve-metadata-from-artifacts-for-logic-apps"></a>从项目中为逻辑应用检索元数据
 
-1. 创建[逻辑应用](quickstart-create-first-logic-app-workflow.md)。
+1. 在 Azure 门户中，创建一个[逻辑应用](quickstart-create-first-logic-app-workflow.md)。
 
 2. 创建[从逻辑应用到集成帐户的链接](logic-apps-enterprise-integration-create-integration-account.md#link-an-integration-account-to-a-logic-app)。 
 
 3. 在逻辑应用设计器中，将触发器（如请求或 HTTP）添加到逻辑应用。
 
-4.  选择“下一步” > “添加操作”。 搜索集成以便找到并选择“集成帐户 - 集成帐户项目查找”。
+4. 在该触发器下，选择“新建步骤” > “添加操作”。 搜索“集成帐户”以便找到并选择此操作：“集成帐户 - 集成帐户项目查找”
 
-    ![选择“集成帐户项目查找”](media/logic-apps-enterprise-integration-metadata/image2.png)
+   ![选择“集成帐户项目查找”](media/logic-apps-enterprise-integration-metadata/image2.png)
 
-5. 选择“项目类型”并提供“项目名称”。
+5. 选择“项目类型”并提供“项目名称”。 例如：
 
-    ![选择项目类型并指定项目名称](media/logic-apps-enterprise-integration-metadata/image3.png)
+   ![选择项目类型并指定项目名称](media/logic-apps-enterprise-integration-metadata/image3.png)
 
 ## <a name="example-retrieve-partner-metadata"></a>示例：检索合作伙伴元数据
 
-合作伙伴元数据含有以下 `routingUrl` 详细信息：
+假设该合作伙伴具有此元数据和 `routingUrl` 详细信息：
 
 ![查找合作伙伴“routingURL”元数据](media/logic-apps-enterprise-integration-metadata/image6.png)
 
-1. 在逻辑应用中，添加触发器、用于合作伙伴的“集成帐户 - 集成帐户项目查找”操作和“HTTP”。
+1. 在逻辑应用中，添加触发器、用于合作伙伴的“集成帐户 - 集成帐户项目查找”操作和“HTTP”操作，例如：
 
-    ![将触发器、项目查找和“HTTP”添加到逻辑应用](media/logic-apps-enterprise-integration-metadata/image4.png)
+   ![将触发器、“项目查找”操作和“HTTP”操作添加到逻辑应用](media/logic-apps-enterprise-integration-metadata/image4.png)
 
-2. 若要检索 URI，请转到逻辑应用的代码视图。 逻辑应用定义应如以下示例所示：
+2. 若要检索 URI，请在逻辑应用设计器工具栏上，针对逻辑应用选择“代码视图”。 逻辑应用定义应如以下示例所示：
 
-    ![搜索查找](media/logic-apps-enterprise-integration-metadata/image5.png)
-
+   ![搜索查找](media/logic-apps-enterprise-integration-metadata/image5.png)
 
 ## <a name="next-steps"></a>后续步骤
-* [了解有关协议的详细信息](logic-apps-enterprise-integration-agreements.md "了解企业集成协议")  
+
+* [了解有关协议的详细信息](logic-apps-enterprise-integration-agreements.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/23/2017
 ms.author: mahi
-ms.openlocfilehash: 65bf5928428b21e98c893a9de8ca596329329411
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd81e9d6c91387b3873593b84e952ca4f2546c57
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -99,13 +99,13 @@ New-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla -Location $location -
 Get-AdlAnalyticsAccount -Name $adla
 ```
 
-检查是否存在特定的 Data Lake Analytics 帐户。 cmdlet 返回 `True` 或 `False`。
+检查是否存在特定的 Data Lake Analytics 帐户。 cmdlet 返回 `$true` 或 `$false`。
 
 ```powershell
 Test-AdlAnalyticsAccount -Name $adla
 ```
 
-检查是否存在特定的 Data Lake Store 帐户。 cmdlet 返回 `True` 或 `False`。
+检查是否存在特定的 Data Lake Store 帐户。 cmdlet 返回 `$true` 或 `$false`。
 
 ```powershell
 Test-AdlStoreAccount -Name $adls
@@ -154,8 +154,6 @@ Set-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $sta
 ```powershell
 Remove-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName
 ```
-
-
 
 允许 Azure IP 地址。
 
@@ -239,7 +237,6 @@ $script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 ```
 
-
 ### <a name="submit-a-file-as-a-u-sql-script"></a>以 U-SQL 脚本形式提交文件
 
 ```powershell
@@ -258,15 +255,13 @@ Submit-AdlJob -AccountName $adla –ScriptPath $scriptpath -Name "Demo"
 Get-AdlJob -Account $adla
 ```
 
+### <a name="list-the-top-n-jobs"></a>列出前 N 个作业
 
-### <a name="list-a-specific-number-of-jobs"></a>列出特定数量的作业
-
-默认情况下，作业的列表按提交时间进行排序。 因此，最近提交的作业第一个出现。 默认情况下，ADLA 帐户会在 180 天内记住帐户，但是 Ge-AdlJob cmdlet 在默认情况下只返回前 500 个。 使用 -Top 参数可列出特定数量的作业。
+默认情况下，作业的列表按提交时间进行排序。 因此，最近提交的作业第一个出现。 默认情况下，ADLA 帐户会在 180 天内记住作业，但是 Get-AdlJob cmdlet 在默认情况下只返回前 500 个作业。 使用 -Top 参数可列出特定数量的作业。
 
 ```powershell
 $jobs = Get-AdlJob -Account $adla -Top 10
 ```
-
 
 ### <a name="list-jobs-based-on-the-value-of-job-property"></a>基于作业属性的值列出作业
 
@@ -308,7 +303,6 @@ Get-AdlJob -Account $adla -State Ended -Result Succeeded
 Get-AdlJob -Account $adla -State Ended -Result Failed
 ```
 
-
 `-Submitter` 参数用于标识作业的提交者。
 
 ```powershell
@@ -338,7 +332,6 @@ Get-AdlJob -Account $adla -SubmittedAfter $d
 
 ```powershell
 $pipelines = Get-AdlJobPipeline -Account $adla
-
 $pipeline = Get-AdlJobPipeline -Account $adla -PipelineId "<pipeline ID>"
 ```
 

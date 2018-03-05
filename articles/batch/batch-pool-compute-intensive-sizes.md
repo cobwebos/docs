@@ -12,13 +12,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/21/2018
 ms.author: danlep
-ms.openlocfilehash: dc28c3a9d46baa8e8d2136ffccbb4e7ff6675b1e
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 181e9bd7c17e4618edd63dd92d70947a61c68758
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>在 Batch 池中使用支持 RDMA 或启用 GPU 的实例
 
@@ -33,9 +33,11 @@ ms.lasthandoff: 01/29/2018
 
 ## <a name="subscription-and-account-limits"></a>订阅和帐户限制
 
-* **配额** - [每个 Batch 帐户的专用内核配额](batch-quota-limit.md#resource-quotas)可能会限制添加到 Batch 池的节点数量或类型。 当选择支持 RDMA、启用 GPU 或其他多核 VM 大小时，更有可能会达到配额。 默认情况下，该配额为 20 个内核。 如果使用它们，单独的配额也将适用于[低优先级 VM](batch-low-pri-vms.md)。 
+* **配额和限制** - [每个 Batch 帐户的专用核心配额](batch-quota-limit.md#resource-quotas)可能会限制添加到 Batch 池的节点数量或类型。 当选择支持 RDMA、启用 GPU 或其他多核 VM 大小时，更有可能会达到配额。 如果使用它们，单独的配额也将适用于[低优先级 VM](batch-low-pri-vms.md)。 
 
-如果需要请求增加配额，可免费建立[联机客户支持请求](../azure-supportability/how-to-create-azure-support-request.md)。
+  此外，由于容量有限，限制在 Batch 帐户中使用某些 VM 系列（如 NCv2 和 ND）。 只有请求增加配额（默认值为 0 个核心），才能使用这些系列。  
+
+  如果需要请求增加配额，可免费建立[联机客户支持请求](../azure-supportability/how-to-create-azure-support-request.md)。
 
 * 区域可用性 - 计算密集型 VM 在创建 Batch 帐户的区域可能无法使用。 若要检查大小是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/services/)。
 
@@ -50,10 +52,10 @@ ms.lasthandoff: 01/29/2018
 | 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS、<br/>SUSE Linux Enterprise Server 12 HPC 或<br/>基于 CentO 的 HPC<br/>(Microsoft Azure Marketplace) | Intel MPI 5 | 启用节点间通信，禁用并发任务执行 |
-| [NC、NCv2、ND 系列*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla GPU（因系列而异） | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 或<br/>基于 CentOS 的 7.3<br/>(Microsoft Azure Marketplace) | NVIDIA CUDA Toolkit 9.1 驱动程序 | 不适用 | 
-| [NV 系列](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 或<br/>基于 CentOS 的 7.3<br/>(Microsoft Azure Marketplace) | NVIDIA GRID 4.3 驱动程序 | 不适用 |
+| [NC、NCv2、ND 系列*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla GPU（因系列而异） | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 或 7.4、<br/>CentOS 7.3 或 7.4<br/>(Microsoft Azure Marketplace) | NVIDIA CUDA Toolkit 驱动程序 | 不适用 | 
+| [NV 系列](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 或<br/>CentOS 7.3<br/>(Microsoft Azure Marketplace) | NVIDIA GRID 驱动程序 | 不适用 |
 
-*基于 Ubuntu 16.04 LTS 或 CentOS 且具有 Intel MPI 的 7.3 HPC （来自 Azure Marketplace）支持在 NC24r、NC24r_v2 和 ND24r VM 上连接 RDMA。
+*具有 Intel MPI 的 Ubuntu 16.04 LTS （来自 Azure Marketplace）支持在 NC24r、NC24rs_v2 和 ND24r VM 上连接 RDMA。
 
 
 
@@ -61,11 +63,11 @@ ms.lasthandoff: 01/29/2018
 
 | 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | ------ | -------- | -------- | ----- |
-| [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2012 R2 或<br/>Windows Server 2012 (Microsoft Azure Marketplace) | Microsoft MPI 2012 R2 或更高版本，或<br/> Intel MPI 5<br/><br/>HpcVMDrivers Azure VM 扩展 | 启用节点间通信，禁用并发任务执行 |
-| [NC、NCv2、ND 系列*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Windows Server 2016 或 <br/>Windows Server 2012 R2 (Microsoft Azure Marketplace) | NVIDIA Tesla 驱动程序或 CUDA Toolkit 9.1 驱动程序| 不适用 | 
-| [NV 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 或<br/>Windows Server 2012 R2 (Microsoft Azure Marketplace) | NVIDIA GRID 4.3 驱动程序 | 不适用 |
+| [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016、2012 R2 或<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 或更高版本，或<br/> Intel MPI 5<br/><br/>HpcVMDrivers Azure VM 扩展 | 启用节点间通信，禁用并发任务执行 |
+| [NC、NCv2、ND 系列*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Windows Server 2016 或 <br/>2012 R2 (Azure Marketplace) | NVIDIA Tesla 驱动程序或 CUDA Toolkit 驱动程序| 不适用 | 
+| [NV 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 或<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID 驱动程序 | 不适用 |
 
-*具有 HpcVMDrivers 扩展和 Microsoft MPI 或 Intel MPI 的 Windows Server 2012 R2（来自 Azure Marketplace）支持在 NC24r、NC24r_v2 和 ND24r VM 上连接 RDMA。
+*具有 HpcVMDrivers 扩展和 Microsoft MPI 或 Intel MPI 的 Windows Server 2016 或 Windows Server 2012 R2（来自 Azure Marketplace）支持在 NC24r、NC24rs_v2 和 ND24rs VM 上连接 RDMA。
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows 池 - 云服务配置
 
@@ -75,7 +77,7 @@ ms.lasthandoff: 01/29/2018
 
 | 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | ------- | -------- | -------- | ----- |
-| [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2012 R2、<br/>Windows Server 2012 或<br/>Windows Server 2008 R2（来宾 OS 系列） | Microsoft MPI 2012 R2 或更高版本，或<br/>Intel MPI 5<br/><br/>HpcVMDrivers Azure VM 扩展 | 启用节点间通信，<br/> 禁用并发任务执行 |
+| [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016、2012 R2、2012 或<br/>2008 R2（来宾 OS 系列） | Microsoft MPI 2012 R2 或更高版本，或<br/>Intel MPI 5<br/><br/>HpcVMDrivers Azure VM 扩展 | 启用节点间通信，<br/> 禁用并发任务执行 |
 
 
 

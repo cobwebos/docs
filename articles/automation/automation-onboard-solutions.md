@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2017
+ms.date: 02/28/2018
 ms.author: eamono
 ms.custom: mvc
-ms.openlocfilehash: e277aa44dfe625780d72a78010f0638c73a6b182
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4c97cda2f16c769d0510b6a661bd03b20f488b62
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>将更新和更改跟踪解决方案加入 Azure 自动化
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/10/2018
 > * 导入载入 Runbook
 > * 启动 Runbook
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 完成本教程需要以下各项：
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/10/2018
 
 ## <a name="onboard-an-azure-vm"></a>载入 Azure VM
 
-要自动载入 Azure 虚拟机，须使用更改跟踪或更新管理解决方案载入现有 VM。 在此步骤中，使用更新管理和更改跟踪载入虚拟机。
+可以通过多种方式来载入虚拟机。可以通过[虚拟机](automation-onboard-solutions-from-vm.md)、[自动化帐户](automation-onboard-solutions-from-automation-account.md)或 Runbook 载入解决方案。 本教程详细介绍了如何通过 Runbook 启用更新管理。 若要大规模载入 Azure 虚拟机，须使用更改跟踪或更新管理解决方案载入现有 VM。 在此步骤中，使用更新管理和更改跟踪载入虚拟机。
 
 ### <a name="enable-change-tracking-and-inventory"></a>启用更改跟踪和清单
 

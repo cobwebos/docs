@@ -43,7 +43,7 @@
           href: app-service-web-tutorial-java-mysql.md
         - name: 将 Python 与 PostgreSQL 配合使用
           href: app-service-web-tutorial-python-postgresql.md
-    - name: 1 - 创建 RESTful API
+    - name: 1 - 托管 RESTful API
       href: app-service-web-tutorial-rest-api.md
     - name: 2 - 映射自定义域
       href: app-service-web-tutorial-custom-domain.md
@@ -57,6 +57,8 @@
       href: app-service-cli-samples.md
     - name: Azure PowerShell
       href: app-service-powershell-samples.md
+    - name: 资源管理器模板
+      href: app-service-rm-template-samples.md
 - name: 概念
   items:
     - name: 应用服务的工作方式
@@ -111,6 +113,8 @@
           href: app-service-deployment-credentials.md
         - name: 创建过渡环境
           href: web-sites-staged-publishing.md
+        - name: 资源管理器模板指南
+          href: web-sites-rm-template-guidance.md
     - name: 映射自定义域
       items:
         - name: 购买域
@@ -226,7 +230,7 @@
     - name: Cookbook
       items:
         - name: 参考体系结构
-          href: ../guidance/guidance-ra-app-service.md
+          href: /azure/architecture/reference-architectures/app-service-web-app/
         - name: 部署脚本
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: 故障排除

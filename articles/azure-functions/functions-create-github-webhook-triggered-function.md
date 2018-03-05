@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: cdfb5db7b304a18d6945328abc0ca7ebf2f9ec6a
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 98632c3276e7d9cccf29d05b903c2fac62a7d68e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>创建由 GitHub Webhook 触发的函数
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 12/14/2017
 
 ## <a name="configure-the-webhook"></a>配置 Webhook
 
-1. 在 GitHub 中，导航到自己的存储库。 还可以使用已分叉的任何存储库。 如果需要分叉存储库，请使用 <https://github.com/Azure-Samples/functions-quickstart>。
+1. 在 GitHub 中，导航到自己的存储库。 还可以使用已分叉的任何存储库。 如果需要创建存储库的分库，请使用 <https://github.com/Azure-Samples/functions-quickstart>。
 
 1. 依次单击“设置”、“Webhook”和“添加 Webhook”。
 
@@ -80,8 +80,8 @@ ms.lasthandoff: 12/14/2017
 | 设置 | 建议的值 | 说明 |
 |---|---|---|
 | **有效负载 URL** | 复制的值 | 使用“</> 获取函数 URL”返回的值。 |
-| **机密**   | 复制的值 | 使用“</> 获取 GitHub 机密”返回的值。 |
 | **内容类型** | application/json | 该函数需要 JSON 有效负载。 |
+| **机密**   | 复制的值 | 使用“</> 获取 GitHub 机密”返回的值。 |
 | 事件触发器 | 让我选择单个事件 | 我们只想在发生问题注释事件时触发。  |
 | | 问题注释 |  |
 
@@ -107,7 +107,7 @@ ms.lasthandoff: 12/14/2017
 
 ## <a name="next-steps"></a>后续步骤
 
-已创建从 GitHub webhook 收到请求时运行的函数。
+已创建从 GitHub Webhook 收到请求时触发的函数。
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

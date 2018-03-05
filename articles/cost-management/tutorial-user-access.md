@@ -1,22 +1,22 @@
 ---
-title: "在 Azure 成本管理中分配访问权限 | Microsoft Docs"
-description: "使用定义对实体的访问级别的用户帐户分配对成本管理数据的访问权限。"
+title: "教程 - 在 Azure 成本管理中分配访问权限 | Microsoft Docs"
+description: "本教程介绍如何使用定义对实体的访问级别的用户帐户分配对成本管理数据的访问权限。"
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 89639e6d9c06edf110dc8432fbefe1fbfd1298c9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0e2edc946c5d6ada1049fbd6a960ec138f7088f2
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="assign-access-to-cost-management-data"></a>分配对成本管理数据的访问权限
+# <a name="tutorial-assign-access-to-cost-management-data"></a>教程：分配对成本管理数据的访问权限
 
 对成本管理数据的访问权限通过用户或实体管理提供。 Cloudyn 用户帐户确定对实体和管理功能的访问权限。 有两种类型的访问权限：管理员和用户。 除非按用户进行修改，否则管理员访问权限允许用户在 Cloudyn 门户中不受限制地使用所有功能，包括：用户管理、收件人列表管理以及对所有实体数据的根实体访问权限。 用户访问权限旨在供最终用户使用他们对实体数据拥有的访问权限来查看报表和创建报表。
 
@@ -29,7 +29,12 @@ ms.lasthandoff: 02/01/2018
 > * 创建拥有用户访问权限的用户
 > * 创建实体
 
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+## <a name="prerequisites"></a>先决条件
+
+- 必须具有 Azure 帐户。
+- 必须有 Azure 成本管理的试用注册版或付费订阅版。
 
 ## <a name="create-a-user-with-admin-access"></a>创建拥有管理员访问权限的用户
 
@@ -83,7 +88,7 @@ ms.lasthandoff: 02/01/2018
 > * 创建拥有用户访问权限的用户
 > * 创建实体
 
-进入下一个教程，了解如何使用历史数据预测支出。
+如果尚未为帐户启用 Azure 资源管理器 API 访问权限，请参阅以下文章。
 
 > [!div class="nextstepaction"]
-> [预测将来的支出](tutorial-forecast-spending.md)
+> [激活 Azure 订阅和帐户](activate-subs-accounts.md)

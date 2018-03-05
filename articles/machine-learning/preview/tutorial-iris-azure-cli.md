@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 10/15/2017
-ms.openlocfilehash: 21fb0bca08bca0fe6384bbc9ba2511f7d8b746cf
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ad81cd02ba0c46cbe58de7071d2164aaefea6514
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>教程：使用命令行接口将鸢尾花分类
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -28,14 +28,16 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 > * 提升并注册已训练的模型
 > * 部署 Web 服务以便为新数据评分
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
 ## <a name="prerequisites"></a>先决条件
-- 需要能够访问 Azure 订阅，并有权在该订阅中创建资源。 
-- 需要遵循[安装和创建快速入门](quickstart-installation.md)安装 Azure Machine Learning Workbench 应用程序。 
+要完成本教程，需要：
+- 能够访问 Azure 订阅，并有权在该订阅中创建资源。 
+  
+  如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-  >[!NOTE]
-  >只需在本地 Azure Machine Learning Workbench。 只需遵循标题为“安装 Azure Machine Learning Workbench”的部分中的步骤，因为创建帐户和创建新项目的步骤将由本文中的命令行完成。
+- 根据[快速入门：安装和启动 Azure 机器学习服务](quickstart-installation.md)中的说明安装 Azure Machine Learning Workbench 应用程序。 
+
+  >[!IMPORTANT]
+  >请勿创建 Azure 机器学习服务帐户，因为你将在本文中使用 CLI 来创建该帐户。
  
 ## <a name="getting-started"></a>入门
 使用 Azure 机器学习命令行接口 (CLI) 可以执行端到端数据科学工作流所需的所有任务。 可通过以下方式访问 CLI 工具：
@@ -45,13 +47,13 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 ![找不到帐户](media/tutorial-iris-azure-cli/no_account_found.png)
 
-在对话框中单击“命令行窗口”链接启动命令行窗口。
+在对话框中单击“命令行窗口”链接，启动命令行窗口。
 
 ### <a name="option-2-launch-azure-ml-cli-from-azure-ml-workbench-app"></a>选项 2. 从 Azure ML Workbench 应用启动 Azure 机器学习 CLI
-如果已有权访问试验帐户，则可以成功登录。 然后，可以单击“文件” --> “打开命令提示符”菜单打开命令行窗口。
+如果已有权访问试验帐户，则可以成功登录。 然后可以单击“文件” --> “打开命令提示符”菜单，打开命令行窗口。
 
 ### <a name="option-3-enable-azure-ml-cli-in-an-arbitrary-command-line-window"></a>选项 3. 在任意命令行窗口中启用 Azure 机器学习 CLI
-也可以在任何命令行窗口中启用 Azure 机器学习 CLI。 只需启动命令窗口并输入以下命令：
+也可以在任何命令行窗口中启用 Azure 机器学习 CLI。 为此，请启动命令窗口并输入以下命令：
 
 ```sh
 # Windows Command Prompt
@@ -69,9 +71,9 @@ PATH=$HOME/Library/Caches/AmlWorkbench/Python/bin:$PATH
 >可通过设置上述环境变量，在偏好的终端窗口中启用 Azure CLI。
 
 ## <a name="step-1-log-in-to-azure"></a>步骤 1. 登录 Azure
-第一步是从 AMLWorkbench 应用打开 CLI（“文件”>“打开命令提示符”）。 这可以确保使用正确的 Python 环境，并能够使用机器学习 CLI 命令。 
+第一步是从 AMLWorkbench 应用打开 CLI（“文件”>“打开命令提示符”）。 这样做可以确保使用正确的 Python 环境，并能够使用提供的 ML CLI 命令。 
 
-然后，需要在 CLI 中设置正确的上下文来访问和管理 Azure 资源。
+现在可以在 CLI 中设置正确的上下文，以便访问和管理 Azure 资源。
  
 ```azure-cli
 # log in
@@ -85,7 +87,8 @@ $ az account set -s <subscription id or name>
 ```
 
 ## <a name="step-2-create-a-new-azure-machine-learning-experimentation-account-and-workspace"></a>步骤 2. 创建新的 Azure 机器学习试验帐户和工作区
-首先，创建新的试验帐户和新的工作区。 有关试验帐户和工作区的更多详细信息，请参阅 [Azure 机器学习的概念](overview-general-concepts.md)。
+
+在此步骤中，请创建新的试验帐户和新的工作区。 有关试验帐户和工作区的更多详细信息，请参阅 [Azure 机器学习的概念](overview-general-concepts.md)。
 
 > [!NOTE]
 > 试验帐户需要一个用于存储试验运行输出的存储帐户。 该存储帐户的名称必须在 Azure 中全局唯一，因为它有一个关联的 URL。 如果未指定现有的存储帐户，系统会使用试验帐户名称创建新的存储帐户。 请确保使用唯一名称，否则会收到类似于“名为 \<storage_account_name> 的存储帐户已被占用”的错误。 或者，可以使用 `--storage` 参数来提供现有存储帐户。
@@ -105,7 +108,7 @@ az ml workspace create --name <workspace name> --account <experimentation accoun
 ```
 
 ## <a name="step-2a-optional-share-a-workspace-with-co-worker"></a>步骤 2.a（可选）：与同事共享工作区
-现在，我们探讨如何与同事共享对工作区的访问权限。 共享试验帐户的访问权限与共享项目的访问权限的步骤相同。 只需更新获取 Azure 资源 ID 的方式。
+在这里，可以探讨如何与同事共享对工作区的访问权限。 共享试验帐户的访问权限与共享项目的访问权限的步骤相同。 只需更新获取 Azure 资源 ID 的方式。
 
 ```azure-cli
 # find the workspace Azure Resource ID
@@ -163,7 +166,7 @@ az ml project create --name <project name> --workspace <workspace name> --accoun
 以下步骤假设已创建一个包含鸢尾花样本的项目（请参阅[从在线示例创建新项目](#sample_create)）。
 
 ### <a name="prepare-your-environment"></a>准备环境 
-对于鸢尾花示例，需要安装 matplotlib。
+对于鸢尾花示例，必须安装 matplotlib。
 
 ```azure-cli
 $ pip install matplotlib
@@ -206,7 +209,7 @@ $ az ml history info --run <run id> --artifact <artifact location>
 ```
 
 ## <a name="step-6-promote-artifacts-of-a-run"></a>步骤 6. 提升运行的项目 
-执行的某个运行具有更好的 AUC，因此，我们希望使用它来创建评分 Web 服务，以部署到生产环境。 为此，首先需要将项目提升到资产。
+其中一个运行具有更好的 AUC，因此，可以使用它来创建评分 Web 服务，以便部署到生产环境。 为此，首先需要将项目提升到资产中。
 
 ```azure-cli
 $ az ml history promote --run <run id> --artifact-path outputs/model.pkl --name model.pkl
@@ -215,14 +218,14 @@ $ az ml history promote --run <run id> --artifact-path outputs/model.pkl --name 
 这会在项目目录中创建一个包含 `model.pkl.link` 文件的 `assets` 文件夹。 此链接文件用于引用提升的资产。
 
 ## <a name="step-7-download-the-files-to-be-operationalized"></a>步骤 7. 下载要操作化的文件
-现在需要下载提升的模型，以便可以使用这些文件创建预测 Web 服务。 
+请下载提升的模型，以便使用这些文件创建预测 Web 服务。 
 
 ```azure-cli
 $ az ml asset download --link-file assets\pickle.link -d asset_download
 ```
 
-## <a name="step-8-setup-your-model-management-environment"></a>步骤 8。 设置模型管理环境 
-创建环境用于部署 Web 服务。 可以使用 Docker 在本地计算机上运行该 Web 服务。 或者将其部署到 ACS 群集进行大规模操作。 
+## <a name="step-8-set-up-your-model-management-environment"></a>步骤 8。 设置模型管理环境 
+创建用于部署 Web 服务的环境。 可以使用 Docker 在本地计算机上运行该 Web 服务。 或者将其部署到 ACS 群集进行大规模操作。 
 
 ```azure-cli
 # Create new local operationalization environment
@@ -239,14 +242,14 @@ $ az ml account modelmanagement create -n <model management account name> -g <re
 ```
 
 ## <a name="step-10-create-a-web-service"></a>步骤 10. 创建 Web 服务
-然后，使用部署的模型创建一个可返回预测数据的 Web 服务。 
+使用部署的模型创建一个可返回预测数据的 Web 服务。 
 
 ```azure-cli
 $ az ml service create realtime -m asset_download/model.pkl -f score_iris.py -r python –n <web service name>
 ```
 
-## <a name="step-10-run-the-web-service"></a>步骤 10. 运行 Web 服务
-使用前一步骤的输出中的 Web 服务 ID，可以调用该 Web 服务并对其进行测试。 
+## <a name="step-11-run-the-web-service"></a>步骤 11. 运行 Web 服务
+使用前一步骤的输出中的 Web 服务 ID，调用该 Web 服务并对其进行测试。 
 
 ```azure-cli
 # Get web service usage infomration
@@ -256,22 +259,22 @@ $ az ml service usage realtime -i <web service id>
 $ az ml service run realtime -i <web service id> -d <input data>
 ```
 
-## <a name="deleting-all-the-resources"></a>删除所有资源 
-在本教程的最后，让我们删除已创建的所有资源，除非想要继续使用！ 
+## <a name="step-12-deleting-all-the-resources"></a>步骤 12. 删除所有资源 
+在本教程的最后，让我们删除已创建的所有资源，除非你想要继续使用它们。 
 
-为此，只需删除包含所有资源的资源组即可。 
+为此，请删除包含这些资源的资源组。 
 
 ```azure-cli
 az group delete --name <resource group name>
 ```
 
 ## <a name="next-steps"></a>后续步骤
-本教程已介绍如何使用 Azure 机器学习预览版功能来执行以下操作 
+本教程介绍了如何使用 Azure 机器学习来执行以下操作： 
 > [!div class="checklist"]
 > * 设置试验帐户并创建工作区
 > * 创建项目
 > * 将试验提交到多个计算目标
 > * 提升并注册已训练的模型
 > * 创建模型管理帐户用于模型管理
-> * 创建环境用于部署 Web 服务
+> * 创建用于部署 Web 服务的环境
 > * 部署 Web 服务并使用新数据评分

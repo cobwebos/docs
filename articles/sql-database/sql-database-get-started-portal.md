@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 425e2186d4eba5db358ebb3a014c3563c4443eb5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 56fb52cb2dbca1939aac2eb9dd4971a93bf8c0dc
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>在 Azure 门户中创建 Azure SQL 数据库
 
@@ -157,7 +157,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 
    ![查询编辑器结果](./media/sql-database-get-started-portal/query-editor-results.png)
 
-5. 关闭“数据资源管理器”页，单击“确定”放弃未保存的编辑内容。
+5. 关闭“查询编辑器”页，单击“确定”放弃未保存的编辑内容。
 
 ## <a name="clean-up-resources"></a>清理资源
 

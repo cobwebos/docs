@@ -1,64 +1,87 @@
 ---
 title: "在 Azure 机器学习服务（预览版）中为鸢尾花分类教程准备数据 | Microsoft Docs"
-description: "本完整教程端到端演示如何使用 Azure 机器学习服务（预览版）。 这是第一部分，讨论数据准备。"
+description: "本教程的完整内容包括关于如何使用 Azure 机器学习服务（预览版）的端到端演示。 这是第一部分，讨论数据准备。"
 services: machine-learning
 author: hning86
-ms.author: haining
+ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: mvc
 ms.topic: tutorial
-ms.date: 09/28/2017
-ms.openlocfilehash: 4e558518a5a1fb7b4cd0a58fe2453fd4c083b46a
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.date: 02/28/2018
+ms.openlocfilehash: 0bef557ee1394e3c786fd2c54e821b5dea28fabf
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="classify-iris-part-1-prepare-the-data"></a>鸢尾花分类（第 1 部分）：准备数据
+# <a name="tutorial-classify-iris-part-1---preparing-the-data"></a>教程：鸢尾花分类（第 1 部分）- 准备数据
+
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
 
 本教程是由三个部分构成的系列教程的第一部分。 本教程逐步讲解 Azure 机器学习服务（预览版）的基础知识。 学习如何：
-> [!div class="checklist"]
-> * 在 Azure Machine Learning Workbench 中创建项目。
-> * 创建数据准备包。
-> * 生成可调用数据准备包的 Python/PySpark 代码。
 
-本教程使用了永久[鸢尾花卉数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)。 屏幕截图与 Windows 相关，但 Mac OS 上的体验几乎相同。
+> [!div class="checklist"]
+> * 在 Azure Machine Learning Workbench 中创建项目
+> * 创建数据准备包
+> * 生成可调用数据准备包的 Python/PySpark 代码
+
+本教程使用了历久弥新的[鸢尾花卉数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)。 屏幕截图与 Windows 相关，但 macOS 上的体验几乎相同。
 
 ## <a name="prerequisites"></a>先决条件
-- 创建 Azure 机器学习试验帐户。
-- 安装 Azure Machine Learning Workbench。
 
-可以遵循[安装和创建快速入门](quickstart-installation.md)一文中的说明来安装 Azure Machine Learning Workbench 应用程序。 此安装还包括 Azure 跨平台命令行工具，即 Azure CLI。
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-new-project-in-azure-machine-learning-workbench"></a>在 Azure Machine Learning Workbench 中创建新项目
-1. 打开 Azure Machine Learning Workbench 应用，并根据需要登录。 在“项目”窗格中选择加号 (+) ，创建新项目。
+若要完成本教程，必须满足以下先决条件：
+- 一个 Azure 机器学习试验帐户
+- 已安装 Azure Machine Learning Workbench
+
+如果尚不具备这两个条件，请按[快速入门：安装和启动](quickstart-installation.md)一文中的步骤设置该帐户并安装 Azure Machine Learning Workbench 应用程序。 
+
+## <a name="create-a-new-project-in-workbench"></a>在 Workbench 中创建新项目
+
+如果已按[快速入门：安装和启动](quickstart-installation.md)一文中的步骤操作，则应该已经有了该项目，可以跳到下一部分。
+
+1. 打开 Azure Machine Learning Workbench 应用，并根据需要登录。 
+   
+   + 在 Windows 上，请使用 **Machine Learning Workbench** 桌面快捷方式来启动它。 
+   + 在 macOS 上，请在 Launchpad 中选择“Azure ML Workbench”。
+
+1. 在“项目”窗格中选择加号 (+)，然后选择“新建项目”。  
 
    ![新建工作区](media/tutorial-classifying-iris/new_ws.png)
 
-2. 在“创建新项目”中填写详细信息： 
+1. 填充各窗体字段，然后选择“创建”按钮在 Workbench 中创建新项目。
+
+   字段|针对教程建议的值|说明
+   ---|---|---
+   项目名称 | myIris |输入用于标识帐户的唯一名称。 可以使用自己的名称，或者能够最好地标识试验的部门或项目名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 
+   项目目录 | c:\Temp\ | 指定在其中创建项目的目录。
+   项目说明 | 留空 | 用于描述项目的可选字段。
+   Visualstudio.com |留空 | 可选字段。 还可以在 Visual Studio Team Services 中将项目与 Git 存储库进行关联，以便进行源代码管理和协作。 [了解如何进行该设置](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)。 
+   工作区 | IrisGarden（如果存在） | 在 Azure 门户中选择一个已经为试验帐户创建的工作区。 <br/>如果是按本快速入门进行的操作，则应该已经有了一个名为 IrisGarden 的工作区。 如果还没有该工作区，则请选择一个在创建试验帐户时创建的工作区，或者任何其他需要使用的工作区。
+   项目模板 | 鸢尾花分类 | 模板包含的脚本和数据可以用来探索产品的功能。 此模板包含的脚本和数据是本快速入门以及此文档站点中的其他教程所需要的。 
 
    ![新建项目](media/tutorial-classifying-iris/new_project.png)
-
-   - 在“项目名称”框中填写项目的名称。 例如，使用值 **myIris**。
-   - 选择在其中创建项目的“项目目录”。 例如，使用值 `C:\Temp\`。 
-   - 输入可选的“项目说明”。 
-   - “Git 存储库”字段也是可选的，可以留空。 可以提供 Visual Studio Team Services 上的现有空 Git 存储库（不带主分支的存储库）。 如果使用已存在的 Git 存储库，可以在以后启用漫游和共享方案。 有关详细信息，请参阅[使用 Git 存储库](using-git-ml-project.md)。 
-   - 选择一个工作区，例如，本教程使用 IrisGarden。 
-   - 从项目模板列表中选择“鸢尾花分类”模板。 
-
-3. 选择“创建”按钮。 现在会创建并打开一个项目。
+ 
+ 此时会创建新的项目，并会打开包含该项目的项目仪表板。 此时，可以浏览项目主页、数据源、Notebook 和源代码文件。 
 
 ## <a name="create-a-data-preparation-package"></a>创建数据准备包
-1. 从“文件视图”打开 **iris.csv** 文件。 该文件是一个表，包含 5 列和 150 行。 其中有四个数字特征列和一个字符串目标列。 该表不带列标题。
+
+在教程的此部分，请浏览数据并开始数据准备过程。 在 Azure Machine Learning Workbench 中准备数据时，在 Workbench 中进行的转换的 JSON 表示形式存储在本地数据准备包（*.dprep 文件）中。 此数据准备包是存储 Workbench 中的数据准备工作的主要容器。
+
+此数据准备包可以传递给运行时（例如 local-C#/CoreCLR、Scala/Spark 或 Scala/HDI）来执行。 可以在其中为适当的运行时生成可供执行的代码。 
+
+1. 选择文件夹图标来打开文件视图，然后选择 **iris.csv** 来打开该文件。  
+
+   该文件是一个表，包含 5 列和 150 行。 其中有四个数字特征列和一个字符串目标列。 该表不带列标题。
 
    ![iris.csv](media/tutorial-classifying-iris/show_iris_csv.png)
 
    >[!NOTE]
-   > 不要在项目文件夹中包含数据文件，尤其是文件大小较大时。 为了演示，我们在此模板中包含了 iris.csv，因为该文件较小。 有关详细信息，请参阅[如何读取和写入大型数据文件](how-to-read-write-files.md)。
+   > 不要在项目文件夹中包含数据文件，尤其是文件较大时。 为了演示，我们在此模板中包含了 iris.csv，因为该文件较小。 有关详细信息，请参阅[如何读取和写入大型数据文件](how-to-read-write-files.md)。
 
 2. 在“数据视图”中选择加号 (+) ，添加新的数据源。 此时会打开“添加数据源”页。 
 
@@ -95,21 +118,21 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    ![Iris 数据视图](media/tutorial-classifying-iris/new_dprep.png)
 
-   随后会在数据准备编辑器中创建并打开名为 iris-1.dprep 的新数据准备包。
+   此时会创建并在数据准备编辑器中打开名为 iris-1.dprep 的新数据准备包。
 
-9. 现在，让我们进行一些基本的数据准备工作。 将列重命名。 选择每个列标题，使标题文本可编辑。 
+9. 现在，让我们进行一些基本的数据准备工作。 选择每个列标题，使标题文本可编辑，然后重命名每个列，如下所示： 
 
-   分别在五个列中输入“花萼长度”、“花萼宽度”、“花瓣长度”、“花瓣宽度”和“物种”。
+   按顺序分别在五个列中输入“花萼长度”、“花萼宽度”、“花瓣长度”、“花瓣宽度”和“物种”。
 
    ![将列重命名](media/tutorial-classifying-iris/rename_column.png)
 
 10. 若要统计非重复值，请选择“物种”列，然后右键单击它进行选择。 从下拉菜单中选择“值计数”。 
 
+   此操作打开数据下面的“检查器”窗格。 会显示包含四个条形的直方图。 目标列包含三个非重复值：Iris_virginica、Iris_versicolor、Iris-setosa，以及一个 (null) 值。
+
    ![选择“值计数”](media/tutorial-classifying-iris/value_count.png)
 
-   此操作会打开“检查器”窗格并显示包含四个条形的直方图。 目标列包含三个非重复值：Iris_virginica、Iris_versicolor、Iris-setosa，以及一个 (null) 值。
-
-11. 若要筛选出 null 值，请在图形中选择表示 null 值的条形。 有一个包含 **(null)** 值的行。 若要删除此行，请选择减号 (-)。
+11. 若要筛选掉 null 值，请选择“Null”标签，然后选择减号 (**-**)。 然后，Null 行变成灰色，表示它已被筛选掉。 
 
    ![值计数直方图](media/tutorial-classifying-iris/filter_out.png)
 
@@ -121,11 +144,15 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 ## <a name="generate-pythonpyspark-code-to-invoke-a-data-preparation-package"></a>生成可调用数据准备包的 Python/PySpark 代码
 
-1. 右键单击 iris 1.dprep 文件打开上下文菜单，然后选择“生成数据访问代码文件”。 
+<!-- The output/results of a Package can be explored in Python or via a Jupyter Notebook. A Package can be executed across multiple runtimes including local Python, Spark (including in Docker), and HDInsight. A Package contains one or more Dataflows that are the steps and transforms applied to the data. A Package may use another Package as a Data Source (referred to as a Reference Data Flow). -->
+
+1. 在“数据准备”选项卡下找到 **iris-1.dprep** 文件。
+
+1. 右键单击 **iris-1.dprep** 文件，然后从上下文菜单中选择“生成数据访问代码文件”。 
 
    ![生成代码](media/tutorial-classifying-iris/generate_code.png)
 
-2. 此时会打开包含以下代码行的名为 iris-1.py 的新文件：
+   此时会打开名为 **iris-1.py** 的新文件，其中包含以下代码行，用于调用以数据准备包形式创建的逻辑：
 
    ```python
    # Use the Azure Machine Learning data preparation package
@@ -144,17 +171,22 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    df.head(10)
    ```
 
-   此代码片段调用作为数据准备包创建的逻辑。 `df` 表示各种类型的数据帧，具体取决于此代码的运行上下文。 在 Python 运行时中执行时，使用 [pandas 数据帧](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)；在 Spark 上下文中执行时，使用 [Spark 数据帧](https://spark.apache.org/docs/latest/sql-programming-guide.html)。 
+   `df` 表示各种类型的数据帧，具体取决于此代码的运行上下文。 在 Python 运行时中执行时，使用 [pandas 数据帧](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)；在 Spark 上下文中执行时，使用 [Spark 数据帧](https://spark.apache.org/docs/latest/sql-programming-guide.html)。 
+   
+   若要了解如何在 Azure Machine Learning Workbench 中准备数据，请参阅[数据准备入门](data-prep-getting-started.md)指南。
 
-   有关如何在 Azure Machine Learning Workbench 中准备数据的详细信息，请参阅[数据准备入门](data-prep-getting-started.md)指南。
+## <a name="clean-up-resources"></a>清理资源
+
+[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>后续步骤
-在由三个部分构成的系列教程的此第一部分，已使用 Azure Machine Learning Workbench 执行了以下操作：
-> [!div class="checklist"]
-> * 创建新项目。 
-> * 创建数据准备包。
-> * 生成可调用数据准备包的 Python/PySpark 代码。
 
-现在可以转到此系列教程的下一部分，了解如何生成 Azure 机器学习模型：
+本教程介绍了如何使用 Azure Machine Learning Workbench 执行以下操作：
+> [!div class="checklist"]
+> * 创建新项目
+> * 创建数据准备包
+> * 生成可调用数据准备包的 Python/PySpark 代码
+
+现在可以转到此教程系列的下一部分，了解如何生成 Azure 机器学习模型：
 > [!div class="nextstepaction"]
-> [生成模型](tutorial-classifying-iris-part-2.md)
+> [教程 2 - 生成模型](tutorial-classifying-iris-part-2.md)

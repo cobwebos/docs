@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: fa61bbecc51c4f3163bd1cc077391bb102662297
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8c6dbc507cd1b79fe9424071bc3eb8bf24331a16
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>使用逻辑应用交换 AS2 消息以实现企业集成
 
@@ -40,23 +40,22 @@ ms.lasthandoff: 02/21/2018
 
 1.  登录 [Azure 门户](http://portal.azure.com "Azure portal")。  
 
-2.  在左侧菜单中，选择“所有服务”。 在搜索框中，输入“集成”作为筛选器。 在结果列表中，选择“集成帐户”。
+2. 在 Azure 主菜单中，选择“所有服务”。 在搜索框中输入“集成”，然后选择“集成帐户”。
 
-    > [!TIP]
-    > 如果未看到“所有服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示菜单”。
+   ![查找集成帐户](./media/logic-apps-enterprise-integration-as2/overview-1.png)
 
-    ![在“所有服务”中筛选“集成”，选择“集成帐户”](./media/logic-apps-enterprise-integration-as2/overview-1.png)
+   > [!TIP]
+   > 如果未看到“所有服务”，可能需要先展开菜单。 在折叠的菜单顶部，选择“显示文本标签”。
 
-3. 在打开的“集成帐户”边栏选项卡中，选择要在其中创建协议的集成帐户。
-如果未看到任何集成帐户，请[先创建一个集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "有关集成帐户的详细信息")。  
+3. 在“集成帐户”下，选择要创建协议的集成帐户。
 
-    ![选择要在其中创建协议的集成帐户](./media/logic-apps-enterprise-integration-overview/overview-3.png)
+   ![选择要在其中创建协议的集成帐户](./media/logic-apps-enterprise-integration-overview/overview-3.png)
 
 4. 选择“协议”磁贴。 如果未添加“协议”磁贴，请先添加该磁贴。
 
     ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
-5. 在打开的“协议”边栏选项卡中，选择“添加”。
+5. 在“协议”下，选择“添加”。
 
     ![选择“添加”](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
 
@@ -166,13 +165,13 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="find-your-created-agreement"></a>查找创建的协议
 
-1.  设置完所有协议属性后，请在“添加”边栏选项卡中选择“确定”来完成创建协议，并返回到集成帐户边栏选项卡。
+1. 设置完所有协议属性后，请在“添加”页中选择“确定”来完成创建协议，并返回到集成帐户。
 
     新添加的协议随即会出现在“协议”列表中。
 
-2.  还可以在集成帐户概述中查看协议。 在集成帐户边栏选项卡中选择“概述”，并选择“协议”磁贴。 
+2. 还可以在集成帐户概述中查看协议。 在集成帐户菜单中选择“概述”，并选择“协议”磁贴。 
 
-    ![选择“协议”磁贴可查看所有协议](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
+   ![选择“协议”磁贴可查看所有协议](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
 
 ## <a name="view-the-swagger"></a>查看 Swagger
 请参阅 [Swagger 详细信息](/connectors/as2/)。 

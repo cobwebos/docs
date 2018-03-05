@@ -1,20 +1,20 @@
 ---
-title: "使用 Azure CLI 访问 Azure Database for MySQL 中的服务器日志 | Microsoft Docs"
+title: "使用 Azure CLI 访问 Azure Database for MySQL 中的服务器日志"
 description: "本文介绍了如何使用 Azure CLI 命令行实用工具访问 Azure Database for MySQL 中的服务器日志。"
 services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 11/28/2017
-ms.openlocfilehash: 908f28d8bd3d0dcbd03636e69cd47b5c47f3cfde
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.date: 02/28/2018
+ms.openlocfilehash: 8cd83722569eef503030b7e7438a73209cb812d6
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="configure-and-access-server-logs-using-azure-cli"></a>使用 Azure CLI 配置和访问服务器日志
 可以使用 Azure CLI（Azure 的命令行实用工具）列出和下载 Azure Database for MySQL 服务器日志。
@@ -33,25 +33,25 @@ ms.lasthandoff: 11/29/2017
 
 例如，以下 CLI 命令将启用慢查询日志、将长查询时间设置为 10 秒并禁用对慢管理语句的日志记录。 最后，它将列出配置选项供复查。
 ```azurecli-interactive
-az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server myserver4demo --value ON
-az mysql server configuration set --name long_query_time --resource-group myresourcegroup --server myserver4demo --value 10
-az mysql server configuration set --name log_slow_admin_statements --resource-group myresourcegroup --server myserver4demo --value OFF
-az mysql server configuration list --resource-group myresourcegroup --server myserver4demo
+az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
+az mysql server configuration set --name long_query_time --resource-group myresourcegroup --server mydemoserver --value 10
+az mysql server configuration set --name log_slow_admin_statements --resource-group myresourcegroup --server mydemoserver --value OFF
+az mysql server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
 
 ## <a name="list-logs-for-azure-database-for-mysql-server"></a>列出 Azure Database for MySQL 服务器的日志
 若要列出服务器的可用日志文件，请运行 [az mysql server-logs list](/cli/azure/mysql/server-logs#az_mysql_server_logs_list) 命令。
 
-可以列出资源组 **myresourcegroup** 下的服务器 **myserver4demo.mysql.database.azure.com** 的日志文件，并将其定向到名为 **log\_files\_list.txt** 的文本文件。
+可以列出资源组 **myresourcegroup** 下的服务器 **mydemoserver.mysql.database.azure.com** 的日志文件，并将其定向到名为 **log\_files\_list.txt** 的文本文件。
 ```azurecli-interactive
-az mysql server-logs list --resource-group myresourcegroup --server myserver4demo > log_files_list.txt
+az mysql server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>从服务器下载日志
 可以使用 [az mysql server-logs download](/cli/azure/mysql/server-logs#az_mysql_server_logs_download) 命令下载服务器的各个日志文件。 
 
-此示例演示了将资源组 **myresourcegroup** 下的服务器 **myserver4demo.mysql.database.azure.com** 的特定日志文件下载到本地环境。
+此示例演示了将资源组 **myresourcegroup** 下的服务器 **mydemoserver.mysql.database.azure.com** 的特定日志文件下载到本地环境。
 ```azurecli-interactive
-az mysql server-logs download --name 20170414-myserver4demo-mysql.log --resource-group myresourcegroup --server myserver4demo
+az mysql server-logs download --name 20170414-mydemoserver-mysql.log --resource-group myresourcegroup --server mydemoserver
 ```
 
 ## <a name="next-steps"></a>后续步骤

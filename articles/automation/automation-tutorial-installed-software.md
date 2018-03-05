@@ -5,16 +5,16 @@ services: automation
 keywords: "清单, 自动化, 更改, 跟踪"
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 12/14/2017
+ms.date: 02/28/2018
 ms.topic: tutorial
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: bdd638d0612a8ddee1a0ddb4fd4579f8da14b887
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 97cd2c91ca2c70b044518c43d49356918202d5ff
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>发现在 Azure 计算机和非 Azure 计算机上安装的软件
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/10/2018
 > * 查看已安装软件
 > * 在清单日志中搜索已安装软件
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 
@@ -41,35 +41,17 @@ ms.lasthandoff: 01/10/2018
 
 ## <a name="enable-change-tracking-and-inventory"></a>启用更改跟踪和清单
 
-就本教程来说，首先需为 VM 启用更改跟踪和清单。 如果以前已为 VM 启用其他自动化解决方案，则此步骤不是必需的。
+就本教程来说，首先需为 VM 启用更改跟踪和清单。 如果以前已为 VM 启用**更改跟踪**解决方案，则此步骤不是必需的。
 
 1. 在左侧菜单上选择“虚拟机”，然后从列表中选择一个 VM。
 2. 在左侧菜单的“操作”部分单击“清单”。 此时会打开“启用更改跟踪和清单”页。
 
-执行验证是为了确定是否为该虚拟机启用了清单。
-验证包括检查 Log Analytics 工作区和链接的自动化帐户，以及解决方案是否在工作区中。
+![清单载入配置横幅](./media/automation-tutorial-installed-software/enableinventory.png)
+
+若要启用此解决方案，请配置要使用的位置、Log Analytics 工作区和自动化帐户，然后单击“启用”。 如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
 
 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) 工作区用于收集由功能和服务（如清单）生成的数据。
 工作区提供了一个位置来查看和分析来自多个数据源的数据。
-
-验证过程还会检查 VM 是否预配了 Microsoft Monitoring Agent (MMA) 和混合辅助角色。
-此代理用于与 VM 通信并获取有关已安装软件的信息。
-验证过程还会检查 VM 是否预配了 Microsoft Monitoring Agent (MMA) 和自动化混合 Runbook 辅助角色。
-
-如果不满足这些先决条件，则会显示一个横幅，其中提供了启用该解决方案的选项。
-
-![清单载入配置横幅](./media/automation-tutorial-installed-software/enableinventory.png)
-
-若要启用该解决方案，请单击横幅。
-如果在验证后发现缺少下列任何先决条件，则会自动添加这些条件：
-
-* [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) 工作区
-* [自动化](./automation-offering-get-started.md)
-* VM 上已启用[混合 runbook 辅助角色](./automation-hybrid-runbook-worker.md)
-
-此时会打开“更改跟踪和清单”屏幕。 配置要使用的位置、Log Analytics 工作区和自动化帐户，然后单击“启用”。 如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
-
-![“启用更改跟踪解决方案”窗口](./media/automation-tutorial-installed-software/installed-software-enable.png)
 
 启用解决方案最多可能需要 15 分钟。 在此期间，不应关闭浏览器窗口。
 启用该解决方案后，VM 中有关已安装软件和更改的信息会流向 Log Analytics。
@@ -137,4 +119,4 @@ ConfigurationData
 继续阅读更改跟踪和清单解决方案的概述可以了解其详细信息。
 
 > [!div class="nextstepaction"]
-> [变更管理和清单解决方案](../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json)
+> [变更管理和清单解决方案](automation-change-tracking.md)

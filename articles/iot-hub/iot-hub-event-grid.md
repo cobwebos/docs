@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 6123039ba5eeb720e0ca590fa69af915da91367c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7c75a65714898f27ab0008ad5a30a5714d7174f4
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions---preview"></a>通过使用事件网格触发操作来响应 IoT 中心事件 - 预览版
 
@@ -28,14 +28,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="regional-availability"></a>区域可用性
 
-事件网格集成为公共预览版，可以在有限的若干区域中使用。 以下区域包含适用于 IoT 中心的集成：
-
-* 美国中部
-* 美国东部
-* 美国东部 2
-* 美国中西部
-* 美国西部
-* 美国西部 2
+事件网格集成适用于支持事件网格的区域中的 IoT 中心。 有关区域的最新列表，请参阅 [Azure 事件网格简介][lnk-eg-overview]。 
 
 ## <a name="event-types"></a>事件类型
 

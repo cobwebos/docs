@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 7e6bb974565810ebb8d8e21d1c274d42d6d39e55
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 905c257ab40057f05081e54e8680bd818023d886
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>对 Linux 上的 Azure 应用服务的 SSH 支持
 
@@ -29,7 +29,7 @@ Linux 应用服务对应用容器提供了 SSH 支持，每个内置 Docker 映�
 
 ![运行时堆栈](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
 
-还可以通过以下方式将 SSH 与自定义 Docker 映像配合使用：将 SSH 服务器包括为映像的一部分并按本主题中所述对其进行配置。
+还可以通过以下方式将 SSH 与自定义 Docker 映像配合使用：将 SSH 服务器包括为映像的一部分并按本文中所述对其进行配置。
 
 ## <a name="making-a-client-connection"></a>建立客户端连接
 
@@ -49,7 +49,7 @@ https://<your sitename>.scm.azurewebsites.net/webssh/host
 
 若要使自定义 Docker 映像支持在容器与 Azure 门户中的客户端之间进行 SSH 通信，必须针对 Docker 映像执行以下步骤。
 
-作为[示例](https://github.com/Azure-App-Service/node/blob/master/6.9.3/)提供的 Azure 应用服务存储库中显示了这些步骤。
+这些步骤作为[示例](https://github.com/Azure-App-Service/node/blob/master/6.9.3/)显示在 Azure 应用服务存储库中。
 
 1. 在映像的 Dockerfile 中的 [`RUN` 指令](https://docs.docker.com/engine/reference/builder/#run)中包括 `openssh-server` 安装，并将根帐户的密码设置为 `"Docker!"`。
 
@@ -82,28 +82,30 @@ https://<your sitename>.scm.azurewebsites.net/webssh/host
     EXPOSE 2222 80
     ```
 
-1. 请确保使用 */bin* 目录中的 shell 脚本[启动 ssh 服务](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)。
+1. 请确保使用 shell 脚本启动 SSH 服务（请参见 [init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh) 中的示例）。
 
     ```bash
     #!/bin/bash
     service ssh start
     ```
 
-Dockerfile 使用 [`CMD` 指令](https://docs.docker.com/engine/reference/builder/#cmd)来运行该脚本。
+Dockerfile 使用 [`ENTRYPOINT` 指令](https://docs.docker.com/engine/reference/builder/#entrypoint)来运行该脚本。
 
     ```docker
-    COPY init_container.sh /bin/
+    COPY startup /opt/startup
     ...
-    RUN chmod 755 /bin/init_container.sh
+    RUN chmod 755 /opt/startup/init_container.sh
     ...
-    CMD ["/bin/init_container.sh"]
+    ENTRYPOINT ["/opt/startup/init_container.sh"]
     ```
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅以下链接，详细了解用于容器的 Web 应用。 如有问题和疑问，请在[我们的论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)上发帖。
+如有问题和疑问，请在 [Azure 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)上发帖。
 
-* [如何对用于容器的 Web 应用使用自定义 Docker 映像](quickstart-custom-docker-image.md)
+有关用于容器的 Web 应用的详细信息，请参阅：
+
+* [如何对用于容器的 Web 应用使用自定义 Docker 映像](quickstart-docker-go.md)
 * [在 Linux 上的 Azure 应用服务中使用 .NET Core](quickstart-dotnetcore.md)
 * [在 Linux 上的 Azure 应用服务中使用 Ruby](quickstart-ruby.md)
 * [用于容器的 Azure 应用服务 Web 应用常见问题解答](app-service-linux-faq.md)

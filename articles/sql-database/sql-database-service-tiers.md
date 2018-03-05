@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 02/12/2018
+ms.date: 02/26/2018
 ms.author: carlrab
-ms.openlocfilehash: c0dc3181d3cd5c642dfca1c0f6031b83726478c0
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: b36af32d900f9426424dd08c43946e7dcb5b39b9
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>什么是 Azure SQL 数据库服务层？
 
@@ -35,8 +35,8 @@ ms.lasthandoff: 02/14/2018
 |运行时间 SLA|99.99%|99.99%|99.99%|在预览版中不适用|
 |备份保留|7 天|35 天|35 天|
 |CPU|低|低、中、高|中、高|
-|IO 吞吐量|低  | 中型 | 数量级高于标准版|
-|IO 延迟|高于高级版|高于高级版|低于基本版和标准版|
+|IO 吞吐量（近似） |每个 DTU 2.5 IOPS  | 每个 DTU 2.5 IOPS | 每个 DTU 48 IOPS|
+|IO 延迟（近似）|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
 |列存储索引和内存中 OLTP|不适用|不适用|支持|
 |||||
 

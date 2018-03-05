@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 422c19dfa9a204d98a898f76bc1af92a05c054d0
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: ba67a2a20d3f3e8e9fbccb2674cea500bfbde3fb
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 管理属于服务分区的副本。
@@ -64,7 +64,7 @@ ms.lasthandoff: 01/18/2018
 ## <a name="sfctl-replica-health"></a>sfctl replica health
 获取 Service Fabric 有状态服务副本或无状态服务实例的运行状况。
 
-获取 Service Fabric 副本的运行状况。 使用 EventsHealthStateFilter 可以根据运行状态筛选针对副本报告的运行状况事件的集合。 。
+获取 Service Fabric 副本的运行状况。 使用 EventsHealthStateFilter 可以根据运行状态筛选针对副本报告的运行状况事件的集合。
 
 ### <a name="arguments"></a>参数
 
@@ -82,13 +82,13 @@ ms.lasthandoff: 01/18/2018
 | --debug                  | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h                | 显示此帮助消息并退出。|
 | --output -o              | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query                  | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                  | JMESPath 查询字符串。 有关详细信息，请参阅 http://jmespath.org/。|
 | --verbose                | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-replica-info"></a>sfctl replica info
 获取有关 Service Fabric 分区的副本的信息。
 
-响应包括 ID、 角色、 状态、 运行状况、 节点名称、 运行时间、 和副本有关其他详细信息。
+响应包括 ID、角色、状态、运行状况、节点名称、运行时间和有关副本的其他详细信息。
 
 ### <a name="arguments"></a>参数
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 01/18/2018
 | --debug               | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h             | 显示此帮助消息并退出。|
 | --output -o           | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query               | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query               | JMESPath 查询字符串。 有关详细信息，请参阅 http://jmespath.org/。|
 | --verbose             | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-replica-list"></a>sfctl replica list

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 372e9465eec1a373ff2b59209673e65fa1f994b6
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 4449dfa1b189f51292d24af884ba9d2addf1fe24
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
@@ -35,7 +35,7 @@ Azure HDInsight 群集提供基于熟悉的 Linux 环境并在 Azure 云中运�
 
 * [cURL](https://curl.haxx.se/) - 用于与基于 Web 的服务进行通信
 * [jq](https://stedolan.github.io/jq/) - 用于分析 JSON 文档
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2)（预览版）- 用于远程管理 Azure 服务
+* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) - 用于远程管理 Azure 服务
 
 ## <a name="users"></a>用户
 
@@ -53,7 +53,7 @@ Azure HDInsight 群集提供基于熟悉的 Linux 环境并在 Azure 云中运�
 
 将 **CLUSTERNAME** 替换为群集名称。 出现提示时，请输入管理员帐户的密码。 此命令返回包含群集中主机列表的 JSON 文档。 Jq 用于为每个主机提取 `host_name` 元素值。
 
-如果要查找某个特定服务的节点名称，可以查询该组件的 Ambari。 例如，若要查找 HDFS 名称节点的主机，请使用以下命令：
+如果要查找某个特定服务的节点名称，可以在 Ambari 中查询该组件。 例如，若要查找 HDFS 名称节点的主机，请使用以下命令：
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 

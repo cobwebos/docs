@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: d6a19334b369c54ff6bad3404b4cf2ffe3b47c70
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: cc609d7c7b28fc4aef6eb1e25ee46fd77edd4102
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密
 Microsoft Azure 坚决致力于确保数据隐私权和数据所有权，通过各种先进技术来加密、控制和管理加密密钥，以及控制和审核对数据的访问，让用户能够控制 Azure 托管的数据。 这样，Azure 客户便可以灵活选择最符合其业务需求的解决方案。 在本文中，我们会介绍新的技术解决方案“适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密”，以帮助你保护数据，使组织能够信守在安全性与合规性方面所做的承诺。 本文提供有关如何使用 Azure 磁盘加密功能的详细指导，包括支持的方案和用户体验。
@@ -141,34 +141,7 @@ Azure 磁盘加密管理解决方案可以解决以下业务需求：
 > [!NOTE]
 > 对于 Windows Server 2008 R2，必须安装 .NET Framework 4.5 才能在 Azure 中启用加密。 可通过安装可选更新“适用于 Windows Server 2008 R2 x64 系统的 Microsoft .NET Framework 4.5.2 ([KB2901983](https://support.microsoft.com/kb/2901983))”，从 Windows 更新安装它。
 
-* 在以下基于 Azure 库的 Linux 服务器分发和版本上支持 Azure 磁盘加密：
-
-| Linux 分发 | 版本 | 支持加密的卷类型|
-| --- | --- |--- |
-| Ubuntu | 16.04-DAILY-LTS | OS 和数据磁盘 |
-| Ubuntu | 14.04.5-DAILY-LTS | OS 和数据磁盘 |
-| Ubuntu | 12.10 | 数据磁盘 |
-| Ubuntu | 12.04 | 数据磁盘 |
-| RHEL | 7.4 | OS 和数据磁盘 |
-| RHEL | 7.3 | OS 和数据磁盘 |
-| RHEL | LVM 7.3 | OS 和数据磁盘 |
-| RHEL | 7.2 | OS 和数据磁盘 |
-| RHEL | 6.8 | OS 和数据磁盘 |
-| RHEL | 6.7 | 数据磁盘 |
-| CentOS | 7.3 | OS 和数据磁盘 |
-| CentOS | 7.2n | OS 和数据磁盘 |
-| CentOS | 6.8 | OS 和数据磁盘 |
-| CentOS | 7.1 | 数据磁盘 |
-| CentOS | 7.0 | 数据磁盘 |
-| CentOS | 6.7 | 数据磁盘 |
-| CentOS | 6.6 | 数据磁盘 |
-| CentOS | 6.5 | 数据磁盘 |
-| openSUSE | 13.2 | 数据磁盘 |
-| SLES | 12 SP1 | 数据磁盘 |
-| SLES | 12-SP1（高级） | 数据磁盘 |
-| SLES | HPC 12 | 数据磁盘 |
-| SLES | 11-SP4（高级） | 数据磁盘 |
-| SLES | 11 SP4 | 数据磁盘 |
+* 仅基于特定 Azure 库的 Linux 服务器分发和版本支持 Azure 磁盘加密。  有关当前受支持版本的列表，请参阅 [Azure 磁盘加密常见问题解答](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq)。
 
 * Azure 磁盘加密要求 Key Vault 和 VM 位于同一 Azure 区域和订阅。
 
@@ -820,7 +793,7 @@ OSVolumeEncrypted 和 DataVolumesEncrypted 设置值为“Encrypted”，表明�
 * （针对 RHEL 和 CentOS）禁用 SELinux。 若要禁用 SELinux，请参阅 [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)（SELinux 用户和管理员指南）中针对 VM 的“4.4.2. Disabling SELinux（4.4.2. 禁用 SELinux）”。
 * 禁用 SELinux 后，重启 VM 至少一次。
 
-##### <a name="steps"></a>步骤
+##### <a name="steps"></a>Steps
 1. 通过之前指定的分发版之一创建 VM。
 
  对于 CentOS 7.2，通过专门的映像支持 OS 磁盘加密。 若要使用此映像，请在创建 VM 时将“7.2n”指定为 SKU：
@@ -1284,9 +1257,6 @@ to
             -DiskEncryptionKeyUrl $SecretUrl `
             -KeyEncryptionKeyVaultId $KeyVault.ResourceId `
             -KeyEncryptionKeyURL $KeyEncryptionKey.Id
-
-## <a name="download-this-guide"></a>下载此指南
-可以从 [TechNet 库](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)下载此指南。
 
 ## <a name="for-more-information"></a>更多信息
 [Explore Azure Disk Encryption with Azure PowerShell - Part 1](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/16/explore-azure-disk-encryption-with-azure-powershell.aspx?wa=wsignin1.0)（了解如何使用 Azure PowerShell 启用 Azure 磁盘加密 - 第 1 部分）  

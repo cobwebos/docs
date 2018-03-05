@@ -1,33 +1,33 @@
 ---
-title: "在 Azure 门户中为 Azure Database for MySQL 配置指标警报 | Microsoft Docs"
+title: "在 Azure 门户中为 Azure Database for MySQL 配置指标警报"
 description: "本文介绍了如何通过 Azure 门户配置和访问针对 Azure Database for MySQL 的指标警报。"
 services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/24/2017
-ms.openlocfilehash: 5b4263e76f89ae27b9c9f317db3038def01e3e6b
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 02/28/2018
+ms.openlocfilehash: 025e7089f797b0accf8ee7d14028e5b5ab23c113
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>使用 Azure 门户设置针对 Azure Database for MySQL 指标的警报 
 
 本文介绍了如何使用 Azure 门户设置 Azure Database for MySQL 警报。 你可以收到基于 Azure 服务的监视指标的警报。
 
-当指定的指标值越过了分配的阈值时，就会触发此警报。 当首次满足条件时，以及之后不再满足条件时，都会触发此警报。 
+当指定的指标值越过了分配的阈值时，就会触发此警报。 首次满足条件时，以及之后不再满足条件时，都会触发此警报。 
 
 可配置警报，使警报触发时执行以下操作：
 * 向服务管理员和共同管理员发送电子邮件通知
 * 将电子邮件发送到指定的其他电子邮件地址。
 * 调用 Webhook
 
-可使用以下项配置并获取有关警报规则的信息：
-* [Azure 门户](../monitoring-and-diagnostics/insights-alerts-portal.md)
+可使用以下项配置并获取预警规则相关信息：
+* [Azure portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
 * [命令行接口 (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
 * [Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
@@ -41,9 +41,9 @@ ms.lasthandoff: 10/25/2017
 
 3. 选择“添加指标警报”（“+”图标）。 
 
-4. 此时将打开如下所示的“添加规则”页面。  填写所需信息：
+4. 随即打开如下所示的“添加规则”页面。  填写所需信息：
 
-   ![“添加指标警报”窗体](./media/howto-alert-on-metric/2-add-rule-form.png)
+   ![添加指标警报窗体](./media/howto-alert-on-metric/2-add-rule-form.png)
 
    | 设置 | 说明  |
    |---------|---------|
@@ -76,7 +76,7 @@ ms.lasthandoff: 10/25/2017
 创建警报后，可选择它并执行以下操作：
 
 * 查看图，了解与此警报相关的指标阈值和前一天实际值。
-* 编辑或删除警报规则。
+* 编辑或删除预警规则。
 * 如果要暂时停止或恢复接收通知，可禁用或启用警报。
 
 

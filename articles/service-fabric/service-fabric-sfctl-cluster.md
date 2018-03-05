@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5eeff271fea67cd859dff598cae0010cf3b8e13f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c83dc3eeb6ca0d66b0c70236354fd7bab80f355f
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 选择、管理和操作 Service Fabric 群集。
@@ -144,7 +144,7 @@ ms.lasthandoff: 01/18/2018
 ## <a name="sfctl-cluster-unprovision"></a>sfctl cluster unprovision
 取消预配 Service Fabric 群集的代码包或配置包。
 
-取消预配 Service Fabric 群集的代码包或配置包。
+取消预配 Service Fabric 群集的代码包或配置包。 支持分别取消预配代码和配置。
 
 ### <a name="arguments"></a>参数
 |参数|说明|

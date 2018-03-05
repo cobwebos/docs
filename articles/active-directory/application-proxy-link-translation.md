@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 02/23/2018
 ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e4d143b4937a1f6c1c21783ae357dbe617816e73
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: d5d704dac58d65dd7d62bc3eca400f9541714d5d
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理重定向已发布应用的硬编码链接
 
@@ -27,7 +27,7 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 
 确保链接在企业网络内部和外部都能够正常工作的最佳方式是，将应用的外部 URL 与其内部 URL 配置为相同的。 使用[自定义域](active-directory-application-proxy-custom-domains.md)来配置你的外部 URL，以获取企业域名，而不是默认的应用程序代理域。
 
-如果不能在租户中使用自定义域，则应用程序代理的链接转换功能将使链接保持正常运作，而不管用户在哪里。 如果具有直接指向内部终结点或端口的应用，可以将这些内部 URL 映射到已发布的外部应用程序代理服务器 URL 中。 启用链接转换时，应用程序代理将通过 HTML、CSS 和选择 JavaScript 标记来搜索已发布的内部链接。 然后应用程序代理服务会对其进行转换，从而让用户获得不间断的体验。
+如果不能在租户中使用自定义域，则应用程序代理的链接转换功能将使链接保持正常运作，而不管用户在哪里。 如果具有直接指向内部终结点或端口的应用，可以将这些内部 URL 映射到已发布的外部应用程序代理服务器 URL 中。 如果启用了链接转换，并且应用程序代理通过 HTML 和 CSS 搜索发布的内部链接，则应用程序代理服务将转换这些链接，以便让用户获得不间断的体验。
 
 >[!NOTE]
 >链接转换功能适用于无论什么原因都无法使用自定义域的租户，以使其应用具有相同的内部和外部 URL。 启用此功能之前，请查看 [Azure AD 应用程序代理中的自定义域](active-directory-application-proxy-custom-domains.md)对你是否适用。
@@ -64,7 +64,7 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 为了提高性能和安全性，不会转换某些链接：
 
 - 代码标记外的链接。 
-- HTML、CSS 或 JavaScript 外的链接。 
+- 不在 HTML 或 CSS 中的链接。 
 - 从其他程序打开的内部链接。 不会转换通过电子邮件或即时消息发送或其他文档中包含的链接。 用户需要了解转到外部 URL。
 
 如果需要支持这两个方案之一，请使用相同的内部和外部 URL，而不是链接转换。  
@@ -84,7 +84,7 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 
 ## <a name="send-feedback"></a>发送反馈
 
-我们希望获得你的帮助，使此功能适用于所有应用。 我们搜索了 HTML 和 CSS 中 30 个以上的标记，并正在考虑支持哪些 JavaScript 用例。 如果有尚未进行转换的生成链接示例，请向[应用程序代理反馈](mailto:aadapfeedback@microsoft.com)发送一个代码片段。 
+我们希望获得你的帮助，使此功能适用于所有应用。 在 HTML 和 CSS 中搜索 30 多个标记。 如果有尚未进行转换的生成链接示例，请向[应用程序代理反馈](mailto:aadapfeedback@microsoft.com)发送一个代码片段。 
 
 ## <a name="next-steps"></a>后续步骤
 [通过 Azure AD 应用程序代理使用自定义域](active-directory-application-proxy-custom-domains.md)，以便具有相同的内部和外部 URL

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2018
 ms.author: kumud
-ms.openlocfilehash: cf7be370ab0d79be9068534f0c43b88f454bc024
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8f98fd7773acb960ae79e743663aceb216f217c4
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Azure 负载均衡器标准版概述（预览版）
 
@@ -302,9 +302,11 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 
 1. 根据需要创建新的标准版资源（负载均衡器和公共 IP）。 重新创建规则和探测定义。
 
-2. 如果适用，从所有 VM 实例中删除基本 SKU 资源（负载均衡器和公共 IP）。 确保还会删除可用性集的所有 VM 实例。
+2. 为 NIC 或子网创建新的 NSG 或更新现有 NSG，以便将负载均衡流量、探测以及你想要允许的任何其他流量加入允许列表。
 
-3. 将所有 VM 实例附加到新的标准 SKU 资源。
+3. 如果适用，从所有 VM 实例中删除基本 SKU 资源（负载均衡器和公共 IP）。 确保还会删除可用性集的所有 VM 实例。
+
+4. 将所有 VM 实例附加到新的标准 SKU 资源。
 
 ### <a name="migrate-from-standard-to-basic-sku"></a>从标准 SKU 迁移到基本 SKU
 

@@ -1,22 +1,25 @@
 ---
-title: "在 Azure 成本管理中查看使用情况和成本 | Microsoft 文档"
-description: "查看使用情况和成本以跟踪趋势、检测低效情况并创建警报。"
+title: "教程：在 Azure 成本管理中查看使用情况和成本 | Microsoft Docs"
+description: "在本教程中，请查看使用情况和成本以跟踪趋势、检测低效情况并创建警报。"
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 72c5c9ff13577e7b4008c42133742d8de4904ae0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e8f09a90ae9a4dd54d81335de2494f0dcbe09485
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="review-usage-and-costs"></a>查看使用情况和成本
+<!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
+-->
+
+# <a name="tutorial-review-usage-and-costs"></a>教程：查看使用情况和成本
 
 通过 Cloudyn 提供的 Azure 成本管理将显示使用情况和成本，以便可以跟踪趋势、检测低效情况并创建警报。 所有使用情况和成本数据都将显示在 Cloudyn 仪表板和报表中。 本教程中将举例说明如何使用仪表板和报表查看使用情况和成本。 本教程介绍如何执行下列操作：
 
@@ -25,7 +28,12 @@ ms.lasthandoff: 02/01/2018
 > * 检测低效使用情况
 > * 针对异常支出或超支情况创建警报
 
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+## <a name="prerequisites"></a>先决条件
+
+- 必须具有 Azure 帐户。
+- 必须有 Azure 成本管理的试用注册版或付费订阅版。
 
 ## <a name="open-the-cloudyn-portal"></a>打开 Cloudyn 门户
 
@@ -98,7 +106,7 @@ ms.lasthandoff: 02/01/2018
 > * 针对异常支出或超支情况创建警报
 
 
-请转到下一教程，了解对数据访问的控制。
+进入下一个教程，了解如何使用历史数据预测支出。
 
 > [!div class="nextstepaction"]
-> [控制对数据的访问](tutorial-user-access.md)
+> [预测将来的支出](tutorial-forecast-spending.md)

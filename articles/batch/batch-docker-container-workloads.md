@@ -8,13 +8,13 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 12/01/2017
+ms.date: 02/26/2018
 ms.author: danlep
-ms.openlocfilehash: 2fa5f9335a4d00f489f11c0db23322ab971a224f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a26d786ffcb74bb28fb9bd065e49398d52d2b662
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-* SDK 版本：Batch SDK 支持以下版本中的容器映像：
+* SDK 版本：Batch SDK 支持到以下版本为止的容器映像：
     * Batch REST API 版本 2017-09-01.6.0
     * Batch .NET SDK 版本 8.0.0
     * Batch Python SDK 版本 4.0
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/01/2018
 
     若要从 Azure 门户获取此映像 ID，请打开“所有资源”，选择自定义映像，并从映像边栏选项卡的“概述”部分，复制“资源 ID”中的路径。
 
-* 如果正在使用 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?page=1&subcategories=windows-based) 映像，则提供一组描述映像的参数：产品/服务类型、发布者、SKU 和映像版本，如[虚拟机映像列表](batch-linux-nodes.md#list-of-virtual-machine-images)中所示：
+* 如果使用的是 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?page=1&subcategories=windows-based) 映像，则提供一组描述映像的参数：发布者、产品/服务类型、SKU 和映像版本，如[虚拟机映像列表](batch-linux-nodes.md#list-of-virtual-machine-images)中所示：
 
   ```csharp
   // Provide a reference to an Azure Marketplace image for
@@ -239,7 +239,7 @@ CloudTask containerTask = new CloudTask (
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Batch 深入概述的信息，请参阅[使用 Batch 开发大规模并行计算解决方案](batch-api-basics.md)。
+* 另请参阅 [Batch Shipyard](https://github.com/Azure/batch-shipyard) 工具包，以便通过 [Shipyard 窍门](https://github.com/Azure/batch-shipyard/tree/master/recipes)在 Azure Batch 上轻松部署容器工作负荷。
 
 * 有关在 Linux 上安装和使用 Docker CE 的详细信息，请参阅 [Docker](https://docs.docker.com/engine/installation/) 文档。
 

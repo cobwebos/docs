@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5657df412b1f2b7d4d43d7551289620ae4d77de2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ecf77a614922ef58cdfb2b2c8174f66e01ea9b46
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>排查已加入混合 Azure Active Directory 的下层设备问题 
 
@@ -55,7 +55,6 @@ ms.lasthandoff: 02/21/2018
 
 - 重新安装操作系统或者手动取消注册再重新注册可能会在 Azure AD 上创建新的注册，并导致 Azure 门户中的“用户信息”选项卡下出现多个条目。 
 
-
 ## <a name="step-1-retrieve-the-registration-status"></a>步骤 1：检索注册状态 
 
 **验证注册状态：**  
@@ -87,13 +86,14 @@ ms.lasthandoff: 02/21/2018
     
     1. 如果已登录的用户不是域用户（例如，是本地用户）。 低级别设备上的混合 Azure AD 联接仅支持域用户。
     
-    2. 如果出于任何原因，Autoworkplace.exe 无法以无提示方式通过 Azure AD 或 AD FS 进行身份验证。 几个可能的原因可能是：到 Azure AD URL 的出站网络连接出现问题（请检查先决条件），或者为用户启用/配置了 MFA 但没有在联合服务器上配置 WIAORMUTLIAUTHN（请检查配置步骤）。 另一种可能性是主领域发现 (HRD) 页面正在等待用户交互，阻止了 Autoworkplace.exe 以无提示方式获取令牌。 
+    2. 如果出于任何原因，Autoworkplace.exe 无法以无提示方式通过 Azure AD 或 AD FS 进行身份验证。 几个可能的原因可能是：到 Azure AD URL 的出站网络连接出现问题（请检查先决条件），或者为用户启用/配置了 MFA 但没有在联合服务器上配置 WIAORMUTLIAUTHN（请检查配置步骤）。 另一种可能性是主领域发现 (HRD) 页面正在等待用户交互，从而阻止了 Autoworkplace.exe 以无提示方式获取令牌。
     
     3. 组织在使用 Azure AD 无缝单一登录，设备的 IE intranet 设置中不存在以下 URL：
-    - https://autologon.microsoftazuread-sso.com
-    - https://aadg.windows.net.nsatc.net
     
-    并且必须为 Intranet 区域启用“允许通过脚本更新状态栏”设置。
+       - https://autologon.microsoftazuread-sso.com
+       - https://aadg.windows.net.nsatc.net
+    
+       并且必须为 Intranet 区域启用“允许通过脚本更新状态栏”设置。
 
 - 已达到配额
 

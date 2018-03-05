@@ -1,6 +1,6 @@
 ---
 title: "使用 Azure PowerShell 导出 Resource Manager 模板 | Microsoft Docs"
-description: "使用 Azure Resource Manager 和 Azure PowerShell 从资源组导出模板。"
+description: "使用 Azure 资源管理器和 Azure PowerShell 从资源组导出模板。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2017
+ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7543811eb9448222b6e7c266756e68debc7d54be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a6e36e12717eea61477f55d2d98c00bff31ec643
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="export-azure-resource-manager-templates-with-powershell"></a>使用 PowerShell 导出 Azure Resource Manager 模板
+# <a name="export-azure-resource-manager-templates-with-powershell"></a>使用 PowerShell 导出 Azure 资源管理器模板
 
 使用 Resource Manager 可从订阅中的现有资源导出 Resource Manager 模板。 可以使用该生成的模板了解模板语法，或根据需要自动重新部署解决方案。
 
 必须注意的是，可以使用两种不同的方式来导出模板：
 
-* 可以导出已用于部署的实际模板。 导出的模板中包括的所有参数和变量与原始模板中显示的完全一样。 如果需要检索模板，此方法非常有用。
-* 可以导出表示资源组当前状态的模板。 导出的模板不基于任何已用于部署的模板。 与之相反，它所创建的模板为资源组的快照。 导出的模板会有许多硬编码的值，其参数可能没有定义的那么多。 如果已修改资源组，则可以使用此方法。 现在，需要捕获资源组作为模板。
+* 可以导出用于部署的实际模板。 导出的模板中包括的所有参数和变量与原始模板中显示的完全一样。 如果需要检索模板，此方法非常有用。
+* 可以导出已生成的表示资源组当前状态的模板。 导出的模板不基于任何已用于部署的模板。 与之相反，它所创建的模板为资源组的“快照”或“备份”。 导出的模板会有许多硬编码的值，其参数可能没有定义的那么多。 使用此选项可将资源重新部署到同一资源组。 若要将此模板用于其他资源组，可能需要对其进行大幅修改。
 
-本主题演示这两种方法。
+本文介绍了这两种方法。
 
 ## <a name="deploy-a-solution"></a>部署解决方案
 
@@ -61,7 +61,7 @@ C:\Users\exampleuser\NewStorage.json
 
 ## <a name="export-resource-group-as-template"></a>将资源组导出为模板
 
-可以使用 [Export-AzureRmResourceGroup](/powershell/module/azurerm.resources/export-azurermresourcegroup) 命令检索表示资源组当前状态的模板，而不是从部署历史记录中检索模板。 如果对资源组进行了许多更改，并且现有模板未表示所有更改，则可以使用此命令。
+可以使用 [Export-AzureRmResourceGroup](/powershell/module/azurerm.resources/export-azurermresourcegroup) 命令检索表示资源组当前状态的模板，而不是从部署历史记录中检索模板。 如果对资源组进行了许多更改，并且现有模板未表示所有更改，则可以使用此命令。 它旨在作为资源组的快照，可用于重新部署到同一资源组。 若要将导出的模板用于其他解决方案，必须大幅修改它。
 
 ```powershell
 Export-AzureRmResourceGroup -ResourceGroupName ExampleGroup
@@ -218,6 +218,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup `
 重新部署已修改的模板。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关使用门户导出模板的信息，请参阅[从现有资源导出 Azure Resource Manager 模板](resource-manager-export-template.md)。
+* 有关使用门户导出模板的信息，请参阅[从现有资源导出 Azure 资源管理器模板](resource-manager-export-template.md)。
 * 若要在模板中定义参数，请参阅[创作模板](resource-group-authoring-templates.md#parameters)。
-* 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。
+* 有关解决常见部署错误的提示，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](resource-manager-common-deployment-errors.md)。

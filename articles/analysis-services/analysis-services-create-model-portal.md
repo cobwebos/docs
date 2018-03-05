@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 038cfb72cfc98fdddaca6751b321c11066527e56
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ff2f1dd89796a30d4e0fee0810ff45ff57f5f8bf
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-a-model-in-azure-portal"></a>在 Azure 门户中创建模型
 
@@ -27,15 +27,19 @@ Azure 门户的 Azure Analysis Services Web 设计器（预览）功能提供了
 
 请记住，Web 设计器是预览版。 虽然会不断推出新功能，但预览版中的功能会受到限制。 对于更高级的模型开发和测试，最好使用 Visual Studio (SSDT) 和 SQL Server Management Studio (SSMS)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="before-you-begin"></a>开始之前
 
 - 位于标准层或开发人员层的 Azure Analysis Services 服务器。 使用 Web 设计器创建的新模型是 DirectQuery，且仅支持上述这些层。
 - 作为数据源的 Azure SQL 数据库、Azure SQL 数据仓库或 Power BI Desktop (.pbix) 文件。 从 Power BI Desktop 文件创建的新模型支持 Azure SQL 数据库、Azure SQL 数据仓库、Oracle 和 Teradata 数据源。
 - 用于连接到 Azure SQL 数据库或 Azure SQL 数据仓库数据源的 SQL Server 帐户和密码。
 
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
+
+登录到 [Azure 门户](https://portal.azure.com/)。
+
 ## <a name="to-create-a-new-tabular-model"></a>创建新的表格模型
 
-1. 在服务器的“概述”边栏选项卡 >“Web 设计器”中，单击“打开”。
+1. 在服务器的“概述” > “Web 设计器”中，单击“打开”。
 
     ![在 Azure 门户中创建模型](./media/analysis-services-create-model-portal/aas-create-portal-overview-wd.png)
 

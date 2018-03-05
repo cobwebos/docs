@@ -1,20 +1,20 @@
 ---
-title: "如何在 Azure Database for MySQL 中备份和还原服务器 | Microsoft Docs"
+title: "如何在 Azure Database for MySQL 中备份和还原服务器"
 description: "了解如何使用 Azure CLI 在 Azure Database for MySQL 中备份和还原服务器。"
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 11/28/2017
-ms.openlocfilehash: 44b3c68b8df4006d3fe087e5ad4118d7616d3d9a
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.date: 02/28/2018
+ms.openlocfilehash: b954e26c9ecb1767b971117fc9102e8573beaaac
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-by-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MySQL 中备份和还原服务器
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/29/2017
 ## <a name="backup-happens-automatically"></a>自动进行备份
 使用 Azure Database for MySQL 时，数据库服务每 5 分钟自动备份一次服务。 
 
-对于基本层，备份将保留 7 天。 对于标准层，备份将保留 35 天。 有关详细信息，请参阅 [Azure Database for MySQL 定价层](concepts-service-tiers.md)。
+对于基本层，备份将保留 7 天。 对于标准层，备份将保留 35 天。 有关详细信息，请参阅 [Azure Database for MySQL 定价层](concepts-pricing-tiers.md)。
 
 使用此自动备份功能，可将服务器及其数据库还原到以前的某个日期或时间点。
 
@@ -46,16 +46,16 @@ ms.lasthandoff: 11/29/2017
 若要还原服务器，请在 Azure CLI 命令提示符下输入以下命令：
 
 ```azurecli-interactive
-az mysql server restore --resource-group myResourceGroup --name myserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server myserver4demo
+az mysql server restore --resource-group myresourcegroup --name myserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server mydemoserver
 ```
 
 `az mysql server restore` 命令需要以下参数：
 | 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
-| resource-group | myResourceGroup |  源服务器所在的资源组。  |
+| resource-group | myresourcegroup |  源服务器所在的资源组。  |
 | 名称 | myserver-restored | 通过还原命令创建的新服务器的名称。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 选择要还原到的时间点。 此日期和时间必须在源服务器的备份保留期限内。 使用 ISO8601 日期和时间格式。 例如，可以使用自己的本地时区，如 `2017-04-13T05:59:00-08:00`。 也可以使用 UTC Zulu 格式，如 `2017-04-13T13:59:00Z`。 |
-| source-server | myserver4demo | 要从其还原的源服务器的名称或 ID。 |
+| source-server | mydemoserver | 要从其还原的源服务器的名称或 ID。 |
 
 将服务器还原到以前的某个时间点时，会创建新服务器。 原始服务器及其从指定时间点开始创建的数据库会复制到新服务器。
 

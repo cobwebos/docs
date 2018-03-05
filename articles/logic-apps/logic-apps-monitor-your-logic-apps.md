@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: f0376070a8bec7d97f54e9a198d5d67a9751334c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0dc8bc81ca6125d40d1784ce39fd0facaf9e736a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>针对 Azure 逻辑应用监视状态、设置诊断日志记录，并启用警报
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 02/21/2018
 
 5. 在搜索框中，指定要查找的字段，然后按下 Enter 键。 开始输入时，OMS 会显示你可以使用的可能的匹配和操作。 
 
-   例如，要查找发生的前 10 个事件，请输入并选择以下搜索查询：Category=WorkflowRuntime |top 10
+   例如，要查找发生的前 10 个事件，请输入并选择此搜索查询：search Category == "WorkflowRuntime" | limit 10
 
    ![输入搜索字符串](media/logic-apps-monitor-your-logic-apps/oms-start-query.png)
 

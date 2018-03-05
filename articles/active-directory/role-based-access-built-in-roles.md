@@ -11,15 +11,15 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 01/30/2018
+ms.date: 02/23/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 82fa6d3f04dc528c0e2d95dae82e7a7f8787ea7c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e49f555b2ae972cd3a0437fc44d2331aaeb5e955
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>用于 Azure 基于角色的访问控制的内置角色
 Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和服务的内置角色。 不能修改内置角色的定义。 但是，可以创建 [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)，以满足组织的特定需要。
@@ -51,6 +51,7 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | [BizTalk 参与者](#biztalk-contributor) |可管理 BizTalk 服务 |
 | [ClearDB MySQL DB 参与者](#cleardb-mysql-db-contributor) |可管理 ClearDB MySQL 数据库 |
 | [参与者](#contributor) |可管理除访问权限以外的一切内容。 |
+| [Cosmos DB 帐户读者角色](#cosmos-db-account-reader-role) |可以读取 Azure Cosmos DB 帐户数据 |
 | [数据工厂参与者](#data-factory-contributor) |可创建和管理数据工厂，以及它们包含的子资源。 |
 | [实验室用户](#devtest-labs-user) |可查看一切内容，并可连接、启动、重启和关闭虚拟机 |
 | [DNS 区域参与者](#dns-zone-contributor) |可以管理 DNS 区域和记录 |
@@ -311,6 +312,19 @@ Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和
 | --- | --- |
 | Microsoft.Authorization/*/Delete |无法删除角色和角色分配 |
 | Microsoft.Authorization/*/Write |无法创建角色和角色分配 |
+
+### <a name="cosmos-db-account-reader-role"></a>Cosmos DB 帐户读者角色
+可以读取 Azure Cosmos DB 帐户数据。 请参阅 [Cosmos DB 帐户参与者](#documentdb-account-contributor)，了解如何管理 Azure Cosmos DB 帐户。
+
+| **操作** |  |
+| --- | --- |
+|Microsoft.Authorization/*/read|读取角色和角色分配，可以读取授予每个用户的权限|
+|Microsoft.DocumentDB/*/read|读取任何集合|
+|Microsoft.DocumentDB/databaseAccounts/readonlykeys/action|读取只读密钥窗格|
+|Microsoft.Insights/Metrics/read|读取帐户指标|
+|Microsoft.Insights/MetricDefinitions/read|读取指标定义|
+|Microsoft.Resources/subscriptions/resourceGroups/read|读取资源组|
+|Microsoft.Support/*|创建和管理支持票证|
 
 ### <a name="data-factory-contributor"></a>数据工厂参与者
 创建和管理数据工厂，以及它们包含的子资源。

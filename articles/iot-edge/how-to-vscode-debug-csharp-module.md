@@ -9,11 +9,11 @@ ms.author: xshi
 ms.date: 12/06/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 46d9ca0bf6c9ddf95c147fc2eb62d275c973845e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5ed517cf8d70cd279a55b79ad448709116cf511b
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="use-visual-studio-code-to-debug-a-c-module-with-azure-iot-edge"></a>使用 Visual Studio Code 通过 Azure IoT Edge 调试 C# 模块
 本文提供了有关使用 [Visual Studio Code](https://code.visualstudio.com/) 作为主要开发工具来调试 Azure IoT Edge 模块的详细说明。
@@ -47,7 +47,7 @@ ms.lasthandoff: 02/01/2018
 
 2. 在 `launch.json` 中，浏览到 **Debug IoT Edge Custom Module (.NET Core)** 节。 在 **pipeArgs** 下，填写 `<container_name>`。 在本教程中，它应为 `filtermodule`。
 
-    ![VS Code 调试窗口的屏幕截图](./media/how-to-debug-csharp-module/f5-debug-option.png)
+    ![VS Code launch.json 的屏幕截图](./media/how-to-debug-csharp-module/add-container-name.png)
 
 3. 导航到 **Program.cs**。 在 `method static async Task<MessageResponse> FilterModule(Message message, object userContext)` 中添加一个断点。
 4. 再次按 **F5**，然后选择要附加到的进程。 在本教程中，该进程名称应为 `FilterModule.dll`。

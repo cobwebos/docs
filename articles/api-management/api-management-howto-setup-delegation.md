@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: e94d920c7d55ad643ed81deda43e8ce96c304346
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: fc8c5774eb616c33c00ecebeacd31e2a07b36e0c
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派用户注册和产品订阅
 可以通过委派使用现有网站处理开发人员的登录/注册和产品订阅事项，不需使用开发人员门户中的 内置功能。 这样就可以让网站拥有用户数据，并通过自定义方式对这些步骤进行验证。
@@ -38,7 +38,7 @@ ms.lasthandoff: 01/24/2018
 ![“委派”页][api-management-delegation-signin-up]
 
 * 确定特殊委派终结点的 URL，将其输入“委派终结点 URL”字段中。 
-* 在”委派身份验证密钥”字段中输入一个密钥，该密钥用于计算提供给用户进行验证的签名，确保请求确实来自 Azure API 管理。 单击“生成”按钮即可让 API 管理随机生成一个密钥。
+* 在”委派身份验证密钥”字段中输入一个密钥，该密钥用于计算提供给用户进行验证的签名，确保请求确实来自 Azure API 管理。 可以单击“生成”按钮让 API 管理随机生成一个密钥。
 
 现在需创建“委派终结点”。 该终结点需执行多项操作：
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 01/24/2018
      > 
    * 将用户重定向到上述生成的 URL
 
-除了 **SignIn** 操作，还可以执行帐户管理，只需按上述步骤使用以下某个操作即可。
+除了 **SignIn** 操作，还可以执行帐户管理，只需按上述步骤使用以下某个操作即可：
 
 * **ChangePassword**
 * **ChangeProfile**
@@ -117,13 +117,13 @@ ms.lasthandoff: 01/24/2018
    * **sig**：计算的安全哈希，用于与用户自行计算的哈希进行比较
 2. 验证请求是否来自 Azure API 管理（可选，但强烈推荐执行以确保安全）
    
-   * 根据 **productId**、**userId** 和 **salt** 查询参数计算字符串的 HMAC-SHA512：
+   * 根据 **productId**、**userId 和 **salt** 查询参数计算字符串的 HMAC-SHA512：
      
      > HMAC(**salt** + '\n' + **productId** + '\n' + **userId**)
      > 
      > 
    * 将上面计算的哈希与 **sig** 查询参数的值进行比较。 如果两个哈希匹配，则转到下一步，否则拒绝该请求。
-3. 根据在 **operation** 中请求的操作的类型（例如请求计费信息、提问更多问题，等等）进行产品订阅处理。
+3. 根据在 **operation** 中请求的操作类型（例如请求计费信息、提问更多问题，等等）进行产品订阅处理。
 4. 在这一端成功为用户订阅产品以后，即可[调用产品订阅 REST API] 为用户订阅 API 管理产品。
 
 ## <a name="delegate-example-code"> </a> 示例代码
@@ -164,7 +164,7 @@ var signature = digest.toString('base64');
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关委派的详细信息，请观看以下视频。
+有关委派的详细信息，请观看以下视频：
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Delegating-User-Authentication-and-Product-Subscription-to-a-3rd-Party-Site/player]
 > 

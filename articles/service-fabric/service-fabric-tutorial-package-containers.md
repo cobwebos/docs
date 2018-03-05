@@ -1,6 +1,6 @@
 ---
 title: "打包和部署 Service Fabric 容器应用程序 | Microsoft Docs"
-description: "了解如何使用 Yeoman 生成 Azure Service Fabric 应用程序定义并打包应用程序。"
+description: "本教程介绍如何使用 Yeoman 生成 Azure Service Fabric 应用程序定义并将应用程序打包。"
 services: service-fabric
 documentationcenter: 
 author: suhuruli
@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: eb838903802de5a04084a60924fc52d988180c11
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 6e3200676807bbd9a15c5c7b19312a2e0c18d77a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>打包容器并将其部署为 Service Fabric 应用程序
+# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application"></a>教程：将容器打包并部署为 Service Fabric 应用程序
 
 本教程是一个系列中的第二部分。 在本教程中，模板生成器工具 (Yeoman) 用于生成 Service Fabric 应用程序定义。 然后此应用程序可用于将容器部署到 Service Fabric。 本教程介绍如何执行下列操作： 
 

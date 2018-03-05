@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 02/22/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d26275b6b03115b775990c9efb5d4706fcb829d1
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: dd01246075a5c0db0ed49133ed51fb56d8fcf8e5
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>排查和修正设备问题
 
@@ -58,6 +58,8 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 
 ![确认警报](media/iot-suite-remote-monitoring-maintain/maintenanceacknowledge.png)
 
+确认警报时，发生项的状态将更改为“已确认”。
+
 在列表中，可以看到负责触发温度警报的**原型**设备：
 
 ![导致生成警报的设备列表](media/iot-suite-remote-monitoring-maintain/maintenanceresponsibledevice.png)
@@ -74,7 +76,7 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 
 ![创建用于降低温度的作业](media/iot-suite-remote-monitoring-maintain/maintenancecreatejob.png)
 
-若要在“维护”页上跟踪作业状态，请选择“作业”。 使用“作业”视图跟踪解决方案中的所有作业和方法调用：
+若要在“维护”页上跟踪作业的状态，请选择“作业”。 使用“作业”视图跟踪解决方案中的所有作业和方法调用：
 
 ![监视用于降低温度的作业](media/iot-suite-remote-monitoring-maintain/maintenancerunningjob.png)
 
@@ -84,7 +86,7 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已介绍以下操作：
+本教程介绍如何执行下列操作：
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]

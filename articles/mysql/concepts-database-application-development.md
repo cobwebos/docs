@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for MySQL 数据库应用程序开发概述 | Microsoft Docs"
+title: "Azure Database for MySQL 数据库应用程序开发概述"
 description: "介绍开发人员为连接 Azure Database for MySQL 而编写应用程序代码时应遵循的设计注意事项"
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/29/2017
-ms.openlocfilehash: 6a9bd8f88383b5186e470163bc67f9233172fd49
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.openlocfilehash: 1a3f517221c7e22d87dec5d0fc6f11c1bed16505
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Azure Database for MySQL 应用程序开发概述 
 本文介绍开发人员为连接 Azure Database for MySQL 而编写应用程序代码时应遵循的设计注意事项。 
@@ -32,7 +32,7 @@ Azure Database for MySQL 使用两种不同机制管理可用于服务器的资�
 - 资源调控。
 - 强制实施限制。
 
-## <a name="security"></a>安全
+## <a name="security"></a>“安全”
 Azure Database for MySQL 提供用于在 MySQL Database 中限制访问、保护数据、配置用户和角色及监视活动的资源。
 
 ## <a name="authentication"></a>身份验证

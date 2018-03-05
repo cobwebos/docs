@@ -1,48 +1,45 @@
 ---
-title: "试用 Azure AD B2C 单页应用程序 | Microsoft Docs"
-description: "使用 Azure AD B2C 测试环境进行登录、注册、编辑个人资料和重置密码等用户体验的试用"
+title: "体验启用了 Azure AD B2C 的单页应用"
+description: "快速入门：尝试使用示例性的单页应用，通过 Azure Active Directory B2C 进行用户身份验证和注册。"
 services: active-directory-b2c
 documentationcenter: 
-author: saraford
+author: PatAltimore
 manager: mtillman
-editor: PatAltimore
-ms.assetid: 5a8a46af-28bb-4b70-a7f0-01a5240d0255
+ms.reviewer: saraford
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: article
-ms.date: 10/31/2017
-ms.author: saraford
-ms.openlocfilehash: ba8ee4657309ab2a541f4c7b3fd4879542eee63c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.topic: quickstart
+ms.date: 2/13/2018
+ms.author: patricka
+ms.openlocfilehash: e659fd228c2294313a62b331c8e530b7d34073ac
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="test-drive-a-single-page-application-configured-with-azure-ad-b2c"></a>试用配置了 Azure AD B2C 的单页应用程序
+# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-single-page-app"></a>快速入门：体验启用了 Azure AD B2C 的单页应用
 
-## <a name="about-this-sample"></a>关于此示例
+Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序、业务和客户。 应用可以使用 Azure AD B2C 通过开放式标准协议对社交帐户和企业帐户进行身份验证。
 
-Azure Active Directory B2C 提供云身份管理来保护应用程序、业务和客户。  本快速入门使用示例单页应用程序演示以下操作：
-
-* 使用“注册或登录”策略创建社交标识提供者或使用电子邮箱地址的本地帐户，或者通过它们登录。 
-* 调用 API 从 Azure AD B2C 保护的资源检索显示名称。
-
-## <a name="prerequisites"></a>先决条件
-
-* 使用以下工作负荷安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)：
-    - **ASP.NET 和 Web 开发**
-
-* 安装 [Node.js](https://nodejs.org/en/download/)
-
-* Facebook、Google、Microsoft 或 Twitter 中的社交帐户。 如果没有社交帐户，则必须提供有效的电子邮件地址。
+在本教程中，请使用启用了 Azure AD B2C 的示例单页应用通过社交标识提供者来登录，并调用受 Azure AD B2C 保护的 Web API。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+## <a name="prerequisites"></a>先决条件
+
+* 带有 ASP.NET 和 Web 开发工作负荷的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+* 安装 [Node.js](https://nodejs.org/en/download/)
+* Facebook、Google、Microsoft 或 Twitter 中的社交帐户。
+
 ## <a name="download-the-sample"></a>下载示例
 
-从 GitHub [下载或克隆示例应用程序](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)。
+从 GitHub [下载 zip 文件](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)或克隆示例 Web 应用。
+
+```
+git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
+```
 
 ## <a name="run-the-sample-application"></a>运行示例应用程序
 
@@ -54,64 +51,57 @@ npm install && npm update
 node server.js
 ```
 
-控制台窗口显示计算机上运行的 Web 应用程序的端口号。
+Node.js 应用输出在 localhost 中侦听的端口号。
 
 ```
 Listening on port 6420...
 ```
 
-在 Web 浏览器中打开 `http://localhost:6420`访问 Web 应用程序。
-
+在 Web 浏览器中浏览到应用的 URL `http://localhost:6420`。
 
 ![浏览器中的示例应用](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
 
 ## <a name="create-an-account"></a>创建帐户
 
-单击“登录”按钮启动 Azure AD B2C “注册或登录”工作流。 创建帐户时，可以使用现有社交标识提供者帐户或者电子邮件帐户。
+单击“登录”按钮，启动基于 Azure AD B2C 策略的 Azure AD B2C “注册或登录”工作流。 
+
+此示例支持多个注册选项，包括使用社交标识提供者，或者使用电子邮件地址来创建本地帐户。 对于本快速入门，将使用 Facebook、Google、Microsoft 或 Twitter 社交标识提供者帐户。 
 
 ### <a name="sign-up-using-a-social-identity-provider"></a>使用社交标识提供者注册
 
-要使用社交标识提供者注册，请单击要使用的标识提供者按钮。 如果希望使用电子邮件地址，请跳转到[使用电子邮件地址注册](#sign-up-using-an-email-address)部分。
+Azure AD B2C 为示例 Web 应用的虚构品牌“Wingtip Toys”提供了一个自定义登录页。 
 
-![登录或注册提供程序](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+1. 要使用社交标识提供者注册，请单击要使用的标识提供者按钮。
 
-需使用社交帐户凭据进行身份验证（登录）并授权应用程序读取社交帐户的信息。 通过授予访问权限，应用程序可以从社交帐户检索个人资料信息，如姓名和城市。 
+    ![登录或注册提供程序](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
 
-![使用社交帐户进行身份验证和授权](media/active-directory-b2c-quickstarts-spa/twitter-authenticate-authorize-spa.png)
+    请使用社交帐户凭据进行身份验证（登录）并授权应用程序读取社交帐户的信息。 通过授予访问权限，应用程序可以从社交帐户检索个人资料信息，如姓名和城市。 
 
-新帐户个人资料详细信息已预先填充社交帐户的信息。 
+2. 完成标识提供者的登录进程。 例如，如果你选择 Twitter，请输入你的 Twitter 凭据，然后单击“登录”。
 
-![新帐户注册个人资料详细信息](media/active-directory-b2c-quickstarts-spa/new-account-sign-up-profile-details-spa.png)
+    ![使用社交帐户进行身份验证和授权](media/active-directory-b2c-quickstarts-spa/twitter-authenticate-authorize-spa.png)
 
-更新“显示名称”、“职务”、“城市”字段，并单击“继续”。  输入的值用于 Azure AD B2C 用户帐户个人资料。
+    新帐户个人资料详细信息已预先填充社交帐户的信息。 
 
-你已成功创建使用标识提供者的新 Azure AD B2C 用户帐户。 
+3. 更新“显示名称”、“职务”、“城市”字段，并单击“继续”。  输入的值用于 Azure AD B2C 用户帐户个人资料。
 
-下一步：[调用资源](#call-a-resource)部分。
+    你已成功创建使用标识提供者的新 Azure AD B2C 用户帐户。 
 
-### <a name="sign-up-using-an-email-address"></a>使用电子邮件地址注册
+## <a name="access-a-protected-web-api-resource"></a>访问受保护的 Web API 资源
 
-如果选择不使用社交帐户来提供身份验证，可以使用有效电子邮件地址创建 Azure AD B2C 用户帐户。 Azure AD B2C 本地用户帐户将 Azure Active Directory 用作标识提供者。 要使用电子邮件地址，请单击“没有帐户?立即注册”链接。
-
-![使用电子邮件登录或注册](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-email-spa.png)
-
-输入有效的电子邮件地址，然后单击“发送验证码”。 需要一个有效的电子邮件地址，用于接收来自 Azure AD B2C 的验证码。 
-
-输入电子邮件中收到的验证码，然后单击“验证码”。
-
-添加个人资料信息，然后单击“创建”。
-
-![通过使用电子邮件的新帐户注册](media/active-directory-b2c-quickstarts-spa/sign-up-new-account-profile-email-web.png)
-
-你已成功创建新的 Azure AD B2C 本地用户帐户。
-
-## <a name="call-a-resource"></a>调用资源
-
-登录后，可以单击“调用 Web API”按钮，使显示名称作为 JSON 项目从 Web API 调用返回。 
+单击“调用 Web API”按钮，使显示名称作为 JSON 对象从 Web API 调用返回。 
 
 ![Web API 响应](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
 
+示例性的单页应用在对受保护的 Web API 资源的请求中包括了 Azure AD 访问令牌，该请求的目的是执行返回 JSON 对象的操作。
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果打算尝试其他 Azure AD B2C 快速入门或教程，可以使用 Azure AD B2C 租户。 可以在不再需要时[删除 Azure AD B2C 租户](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant)。
+
 ## <a name="next-steps"></a>后续步骤
+
+本快速入门介绍了如何使用启用了 Azure AD B2C 的示例 ASP.NET 应用执行以下操作：使用自定义登录页登录、使用社交标识提供者登录、创建 Azure AD B2C 帐户，以及调用受 Azure AD B2C 保护的 Web API。 
 
 下一步是创建自己的 Azure AD B2C 租户并将示例配置为使用租户运行。 
 

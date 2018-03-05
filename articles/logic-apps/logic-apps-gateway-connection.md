@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: 216745f9f540235ee48661eae922a5ae0e716e01
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5160913b2f08a04f0a985d8ddadd6641a664b258
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="connect-to-data-sources-on-premises-from-logic-apps-with-on-premises-data-gateway"></a>通过本地数据网关，从逻辑应用连接到本地数据源
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 02/21/2018
 
 1. 登录 [Azure 门户](https://portal.azure.com "Azure portal")。 请确保所使用的 Azure 工作或学校电子邮件地址是曾经用于安装网关的。
 
-2. 在 Azure 主菜单上，选择“创建资源” > “企业集成” > “本地数据网关”：
+2. 在 Azure 主菜单上，选择“创建资源” > “企业集成” > “本地数据网关”。
 
    ![查找“本地数据网关”](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
 
@@ -107,9 +107,10 @@ ms.lasthandoff: 02/21/2018
 
     ![提供创建本地数据网关所需的详细信息](./media/logic-apps-gateway-connection/createblade.png)
 
-    若要随时查找或查看数据网关，请从 Azure 主菜单中，转到“更多服务”>“企业集成”>“本地数据网关”。
+    若要随时查找或查看数据网关，请从 Azure 主菜单中选择“所有服务”。 
+    在搜索框中，输入“本地数据网关”，然后选择“本地数据网关”。
 
-    ![转到“更多服务”、“企业集成”、“本地数据网关”](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
+    ![查找“本地数据网关”](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
 
 <a name="connect-logic-app-gateway"></a>
 

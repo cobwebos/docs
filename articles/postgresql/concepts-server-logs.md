@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for PostgreSQL 中的服务器日志 | Microsoft Docs"
-description: "在 Azure Database for PostgreSQL 中生成查询和错误日志。"
+title: "Azure Database for PostgreSQL 中的服务器日志"
+description: "本文介绍 Azure Database for PostgreSQL 如何生成查询和错误日志，以及配置多长时间的保留期。"
 services: postgresql
-author: SaloniSonpal
-ms.author: salonis
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 09/26/2017
-ms.openlocfilehash: 696af85cd5609171a719a7e77efbfcdeba0aaaaa
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 02/28/2018
+ms.openlocfilehash: a8d560aa8906e3ba1f65758239b645cd1b1df032
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的服务器日志 
 Azure Database for PostgreSQL 生成查询和错误日志。 但不支持访问事务日志。 查询和错误日志可用于识别、排除和修复配置错误和性能不佳问题。 有关详细信息，请参阅[错误报告和日志记录](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html)。

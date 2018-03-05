@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: 131a1f77fa9c8d8e7b9ac5b01dee655b1aa1c3df
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: aa4df1854b15198ede1ee143afeff47b24dc567f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure 门户：使用 SQL 查询编辑器进行连接并查询数据
 
@@ -33,18 +33,19 @@ SQL 查询编辑器是一款浏览器查询工具，可以轻松有效地在 Azu
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
+> [!NOTE]
+> 确保在 SQL Server 防火墙设置中将“允许访问 Azure 服务”选项设置为“打开”。 此选项允许 SQL 查询编辑器访问数据库和数据仓库。
+
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 登录到 [Azure 门户](https://portal.azure.com/)。
 
 
 ## <a name="connect-using-sql-authentication"></a>使用 SQL 身份验证进行连接
-> [!NOTE]
-> 确保在 SQL Server 防火墙设置中将“允许访问 Azure 服务”选项设置为“打开”。 此选项允许 SQL 查询编辑器访问数据库和数据仓库。
 
 1. 单击左侧菜单中的“SQL 数据库”，然后单击要查询的数据库。
 
-2. 在数据库的 SQL 数据库页的左侧菜单中找到并单击“数据资源管理器(预览)”。
+2. 在数据库的 SQL 数据库页的左侧菜单中找到并单击“查询编辑器(预览)”。
 
     ![查找查询编辑器](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 

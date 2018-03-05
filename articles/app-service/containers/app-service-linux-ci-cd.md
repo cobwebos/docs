@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
-ms.author: aelnably;wesmc
-ms.openlocfilehash: cccbd4952c66d3d8140e2a03e3b76afaa5ba3fbf
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.author: aelnably;msangapu
+ms.openlocfilehash: e61c767ada31fc32e28bfd9a2a4e843e9ca88053
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>使用用于容器的 Web 应用进行持续部署
 
@@ -34,14 +34,14 @@ ms.lasthandoff: 10/25/2017
 你可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 并执行以下命令来启用连续部署功能
 
 ```azurecli-interactive
-az webapp deployment container config -n sname -g rgname -e true
+az webapp deployment container config --name name --resource-group myResourceGroup --enable-cd true
 ```
 
 在 [Azure 门户](https://portal.azure.com/)中，单击页面左侧的“应用服务”选项。
 
 单击要为其配置 Docker 中心持续部署的应用的名称。
 
-在“应用设置”中，添加名为 `DOCKER_ENABLE_CI`、值为 `true` 的应用设置。
+在“Docker 容器”中，选择“启用”，然后按“保存”以启用持续部署。
 
 ![插入应用设置的图像](./media/app-service-webapp-service-linux-ci-cd/step2.png)
 
@@ -50,7 +50,7 @@ az webapp deployment container config -n sname -g rgname -e true
 你可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 并执行以下命令来获取 Webhook URL
 
 ```azurecli-interactive
-az webapp deployment container show-cd-url -n sname1 -g rgname
+az webapp deployment container show-cd-url --name sname1 --resource-group rgname
 ```
 
 对于 Webhook URL，需要使用以下终结点：`https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`。
@@ -89,6 +89,6 @@ az webapp deployment container show-cd-url -n sname1 -g rgname
 * [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)
 * [在 Linux 上的 Azure 应用服务中使用 .NET Core](quickstart-dotnetcore.md)
 * [在 Linux 上的 Azure 应用服务中使用 Ruby](quickstart-ruby.md)
-* [如何对用于容器的 Web 应用使用自定义 Docker 映像](quickstart-custom-docker-image.md)
+* [如何对用于容器的 Web 应用使用自定义 Docker 映像](quickstart-docker-go.md)
 * [用于容器的 Azure 应用服务 Web 应用常见问题解答](./app-service-linux-faq.md)
 * [使用 Azure CLI 2.0 管理用于容器的 Web 应用](./app-service-linux-cli.md)

@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: b611a447dd6669a09ca16c816de74acd7f3e8c7e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d3a4c7a308bdf7132cebffc13a5e7214ec73eaf2
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-is"></a>sfctl is
 查询并向基础结构服务发送命令。
@@ -34,14 +34,14 @@ ms.lasthandoff: 01/18/2018
 ## <a name="sfctl-is-command"></a>sfctl is command
 针对给定基础结构服务实例调用管理命令。
 
-对于配置了一个或多个基础结构服务实例的群集，使用此 API 可向特定基础结构服务实例发送特定于基础结构的命令。 可用命令及其相应的响应格式因运行群集的基础结构而异。 此 API 支持 Service Fabric 平台；不应从代码直接使用它。 。
+对于配置了一个或多个基础结构服务实例的群集，使用此 API 可向特定基础结构服务实例发送特定于基础结构的命令。 可用命令及其相应的响应格式因运行群集的基础结构而异。 此 API 支持 Service Fabric 平台；不应从代码直接使用它。 
 
 ### <a name="arguments"></a>参数
 
 |参数|说明|
 | --- | --- |
-| --command [必需]| 将调用的命令文本。 命令内容特定于基础结构。  默认值：is command。|
-| --service-id     | 基础结构服务标识。 这是不包含“fabric:”URI 方案的基础结构服务全名。 只有运行多个基础结构服务实例的群集才需要此参数。|
+| --command [必需]| 将调用的命令文本。 命令内容特定于基础结构。 |
+| --service-id     | 基础结构服务标识。 此 ID 是不包含“fabric:”URI 方案的基础结构服务全名。 只有运行多个基础结构服务实例的群集才需要此参数。|
 | --timeout -t     | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数
@@ -63,8 +63,8 @@ ms.lasthandoff: 01/18/2018
 
 |参数|说明|
 | --- | --- |
-| --command [必需]| 将调用的命令文本。 命令内容特定于基础结构。  默认值：is query。|
-| --service-id     | 基础结构服务标识。 这是不包含“fabric:”URI 方案的基础结构服务全名。 只有运行多个基础结构服务实例的群集才需要此参数。|
+| --command [必需]| 将调用的命令文本。 命令内容特定于基础结构。|
+| --service-id     | 基础结构服务标识。 此 ID 是不包含“fabric:”URI 方案的基础结构服务全名。 只有运行多个基础结构服务实例的群集才需要此参数。|
 | --timeout -t     | 服务器超时，以秒为单位。  默认值：60。|
 
 ### <a name="global-arguments"></a>全局参数

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: 1144533cd64e80ed2b15c70732c94e332ea06c3d
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: f3cb11bc13ad2561e62c096d840c0b8e4471d271
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-disk-encryption-faq"></a>Azure 磁盘加密 FAQ
 
@@ -49,10 +49,11 @@ ms.lasthandoff: 01/24/2018
 | --- | --- |--- |
 | Ubuntu | 16.04-DAILY-LTS | OS 和数据磁盘 |
 | Ubuntu | 14.04.5-DAILY-LTS | OS 和数据磁盘 |
-| RHEL | 7.3 | OS 和数据磁盘 |
-| RHEL | 7.2 | OS 和数据磁盘 |
-| RHEL | 6.8 | OS 和数据磁盘 |
-| RHEL | 6.7 | 数据磁盘 |
+| RHEL | 7.4 | 数据磁盘* |
+| RHEL | 7.3 | 数据磁盘* |
+| RHEL | 7.2 | 数据磁盘* |
+| RHEL | 6.8 | 数据磁盘* |
+| RHEL | 6.7 | 数据磁盘* |
 | CentOS | 7.3 | OS 和数据磁盘 |
 | CentOS | 7.2n | OS 和数据磁盘 |
 | CentOS | 6.8 | OS 和数据磁盘 |
@@ -67,6 +68,8 @@ ms.lasthandoff: 01/24/2018
 | SLES | HPC 12 | 数据磁盘 |
 | SLES | Priority:11-SP4 | 数据磁盘 |
 | SLES | 11 SP4 | 数据磁盘 |
+
+*__RHEL 支持将 ADE 用于数据磁盘。当前的 ADE 实现适用于 OS 磁盘，但当前并非联合支持。Microsoft 和 Red Hat 都在努力实现联合支持解决方案。在此期间，可以在[此处](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)参考用于 Linux OS 磁盘加密的 ADE 白皮书。__
 
 问：如何开始使用 Azure 磁盘加密？
 

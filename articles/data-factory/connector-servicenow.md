@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 02/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 28ecdc541bc7e95dfa6d7c1b2d984cba0654699f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 64b0982ab1d0b212120d962d4c47a1b8db8ca025
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory-beta"></a>使用 Azure 数据工厂（Beta 版本）从 ServiceNow 复制数据
 
@@ -114,11 +114,11 @@ ServiceNow 链接服务支持以下属性：
 
 在查询中指定 ServiceNow 的架构和列时，请注意以下事项：
 
-- **架构：**查询 ServiceNow 时需要将架构指定为 `Actual` 或 `Display`，调用 [ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) 可以将其视为参数 `sysparm_display_value`，其值为 true 或 false。 
-- **列：**实际值的列名是 `[columne name]_value`，用于显示的值为 `[columne name]_display_value`。
+- **架构：**在 ServiceNow 查询中将架构指定为 `Actual` 或 `Display`，从而在调用 [ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) 时可以将其视为参数 `sysparm_display_value`，其值为 true 或 false。 
+- **列：** `Actual` 架构下实际值的列名是 `[columne name]_value`，而 `Display` 架构下显示值的列名为 `[columne name]_display_value`。 请注意，列名需要映射到查询中所使用的架构。
 
 **示例查询：**
-`SELECT distinct col_value, col_display_value FROM Actual.alm_asset` 或 `SELECT distinct col_value, col_display_value FROM Display.alm_asset`
+`SELECT col_value FROM Actual.alm_asset` 或 `SELECT col_display_value FROM Display.alm_asset`
 
 **示例：**
 

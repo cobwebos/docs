@@ -9,7 +9,7 @@
   ```
   sudo ./install -d <Install Location> -r MS -v VmWare -q
   ```
-3. 安装完成后，需将移动服务注册到配置服务器。 运行以下命令，将移动服务注册到配置服务器。
+3. 安装完成后，必须将移动服务注册到配置服务器。 运行以下命令，将移动服务注册到配置服务器：
 
   ```
   /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
@@ -24,10 +24,10 @@ Usage:
 
 |参数|Type|说明|可能的值|
 |-|-|-|-|
-|-r |必需|指定是应安装移动服务 (MS) 还是 MasterTarget(MT)|MS </br> MT|
-|-d |可选|移动服务要安装到的位置|/usr/local/ASR|
-|-v|必需|指定一个平台，以便在其上安装移动服务 </br> </br>- **VMware：使用此值的前提是，在 VM 上安装移动服务，而该 VM 运行在 VMware vSphere ESXi 主机、*Hyper-V 主机和物理服务器上 </br> - **Azure：使用此值的前提是，在 Azure IaaS VM 上安装代理| VMware </br> Azure|
-|-q|可选|指定在静默模式下运行安装程序| 不适用|
+|-r |必需|指定是应安装移动服务 (MS) 还是 MasterTarget(MT)。|MS </br> MT|
+|-d |可选|移动服务安装到的位置。|/usr/local/ASR|
+|-v|必需|指定一个平台，以便在其上安装移动服务。 </br> </br>- **VMware**：使用此值的前提是，在 VM 上安装移动服务，而该 VM 运行在 VMware vSphere ESXi 主机、Hyper-V 主机和物理服务器上。 </br> - **Azure**：使用此值的前提是，在 Azure IaaS VM 上安装代理。| VMware </br> Azure|
+|-q|可选|指定在静默模式下运行安装程序。| 不适用|
 
 
 #### <a name="mobility-service-configuration-command-line"></a>移动服务配置命令行

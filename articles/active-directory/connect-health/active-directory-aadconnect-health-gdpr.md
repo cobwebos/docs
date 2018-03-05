@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2018
 ms.author: billmath
-ms.openlocfilehash: b9a0b9027bbead00300040186e453933b3a7f46b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d66f717f546271a5e5c3c49d6cbaef1c190d18d8
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="gdpr-compliance-and-azure-ad-connect-health"></a>GDPR 符合性和 Azure AD Connect Health 
 
@@ -35,6 +35,8 @@ Azure AD Connect Health 属于 GDPR 的数据处理器类别。 该服务作为�
 
 ## <a name="data-retention-policy"></a>数据保留策略
 Azure AD Connect Health 不生成报告、不进行分析，也不提供 30 天之前的见解。 因此，Azure AD Connect Health 不存储、处理或保留任何 30 天以前的数据。 此设计符合 GDPR 法规要求、Microsoft 隐私符合性规定和 Azure AD 数据保留策略。 
+
+连续 30 天以上显示活动的“运行状况服务数据不是最新”**错误**警报的服务器表明在该时间范围内没有数据到达 Connect Health。 这些服务器将被禁用，并且不显示在 Connect Health 门户中。 若要重新启用这些服务器，必须卸载并[重新安装运行状况代理](active-directory-aadconnect-health-agent-install.md)。 请注意，这不适用于具有相同警报类型的**警告**。 警告指示向你发出警报的服务器中缺少部分数据。 
  
 ## <a name="disable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>在 Azure AD Connect Health 中禁用数据收集和监视
 借助 Azure AD Connect Health，可针对所监视的单独服务器或所监视服务的实例停止数据收集功能。 例如，可针对使用 Azure AD Connect Health 进行监视的单独 ADFS（Active Directory 联合身份验证服务）服务器停止数据收集功能。 还可针对当前通过 Azure AD Connect Health 监视的整个 ADFS 实例停止数据收集功能。 选择停止此功能后，会在停止数据收集后从 Azure AD Connect Health 门户删除相应的服务器。 
@@ -53,7 +55,7 @@ Azure AD Connect Health 不生成报告、不进行分析，也不提供 30 天�
 - 按照 Microsoft Azure 数据保留策略删除所监视服务的实例中的所有数据。
 
 ### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>对所监视服务器禁用数据收集和监视
-请参阅[如何从 Azure AD Connect Health 中删除服务器](active-directory-aadconnect-health-operations.md#to-delete-a-server-from-the-azure-ad-connect-health-service)。
+请参阅[如何从 Azure AD Connect Health 中删除服务器](active-directory-aadconnect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service)。
 
 ### <a name="disable-data-collection-and-monitoring-for-an-instance-of-a-monitored-service"></a>对所监视服务的实例禁用数据收集和监视
 请参阅[如何删除 Azure AD Connect Health 中的服务实例](active-directory-aadconnect-health-operations.md#delete-a-service-instance-from-azure-ad-connect-health-service)。

@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 63fb091166dcb3773354221e6c6628f6205bb308
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8e64ab3214633ae2f34234514dca5e7bb7b1896e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>部署 Azure 容器服务 (AKS) 群集
 
@@ -39,6 +39,7 @@ az provider register -n Microsoft.ContainerService
 ## <a name="create-a-resource-group"></a>创建资源组
 
 使用 [az group create][az-group-create] 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。
+创建资源组时，系统会要求你指定一个位置，该位置是资源在 Azure 中进行存储的地方。 当 AKS 为预览版时，只有部分位置选项可用。 这些选项包括：`eastus, westeurope, centralus, canadacentral, canadaeast`。
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
@@ -88,7 +89,7 @@ az aks install-cli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点的列表。
+若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点的列表。 请注意，可能需要几分钟才会显示。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -103,9 +104,9 @@ k8s-myAKSCluster-36346190-0   Ready     agent     2m        v1.7.7
 
 ## <a name="run-the-application"></a>运行应用程序
 
-Kubernetes 清单文件用于定义群集的所需状态，例如，应该运行什么容器图像。 就此示例来说，清单用于创建运行 Azure Vote 应用程序所需的所有对象。
+Kubernetes 清单文件用于定义群集的所需状态，例如，应该运行什么容器图像。 就此示例来说，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 提供的映像是一个示例应用程序，但你可以根据[创建映像](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-prepare-app)和[部署到 Azure 容器注册表](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-prepare-acr)中的说明来使用自己的。
 
-创建名为 `azure-vote.yaml` 的文件，并将以下 YAML 代码复制到其中。 如果在 Azure Cloud Shell 中操作，则可使用 vi 或 Nano 来创建此文件，就像在虚拟或物理系统中操作一样。
+创建名为 `azure-vote.yaml` 的文件，并将以下 YAML 代码复制到其中。 如果在 Azure Cloud Shell 中操作，则可使用 vi 或 Nano 来创建此文件，就像在虚拟或物理系统中操作一样。 如果是在本地操作，可以使用 Visual Studio Code 来创建该文件，只需运行 `code azure-vote.yaml` 即可。
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -231,7 +232,7 @@ az group delete --name myResourceGroup --yes --no-wait
 若要详细了解 AKS 并演练部署示例的完整代码，请继续阅读“Kubernetes 群集”教程。
 
 > [!div class="nextstepaction"]
-> [管理 AKS 群集][aks-tutorial]：
+> [ASK 教程][aks-tutorial]：
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git

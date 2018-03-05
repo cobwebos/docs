@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 8ae99c7ce6382626657777d003a1cb82348c4aba
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a4096b11a828cf6676aa22b11c4dd4d75f3b0286
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure 顾问简介
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 02/21/2018
 
 选择推荐的操作以实现该建议。  系统将打开一个简单界面以帮助你实现建议，或为你提供有助于实现建议的参考文档。  顾问确认建议已实现的时间可能长达一天。
 
-如果不打算立即采取建议的操作，可将它推迟指定时间段或解除。  如果不想接收某个特定订阅或资源组的相关建议，可通过配置，使顾问仅生成某些指定订阅和资源组的相关建议。
+如果不打算立即采取建议的操作，可将它推迟指定时间段或将其消除。  如果不想接收某个特定订阅或资源组的相关建议，可通过配置，使顾问仅生成某些指定订阅和资源组的相关建议。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -69,9 +69,9 @@ ms.lasthandoff: 02/21/2018
 
 顾问为虚拟机、可用性集、应用程序网关、应用服务、SQL 服务器、SQL 数据库和 Redis 缓存提供建议。
 
-### <a name="can-i-snooze-or-dismiss-a-recommendation"></a>是否可以暂停或关闭建议？
+### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>是否可以推迟或消除建议？
 
-若要推迟或消除建议，请单击“推迟”链接。 可指定暂停时间段或选择“从不”以关闭该建议。
+若要推迟或消除建议，请单击“推迟”链接。 可以指定推迟时间段，或选择“从不”以消除该建议。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -258,6 +258,8 @@
               href: mongodb-robomongo.md
             - name: 使用 Mongoose
               href: mongodb-mongoose.md
+            - name: 使用读取首选项
+              href: mongodb-readpreference.md
             - name: MongoDB 功能支持
               href: mongodb-feature-support.md
             - name: Angular 教程系列
@@ -395,6 +397,8 @@
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cosmos-db'
     - name: SQL API
       items:
+        - name: 异步 Java
+          href: sql-api-sdk-async-java.md
         - name: Java
           href: sql-api-sdk-java.md
         - name: .NET

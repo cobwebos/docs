@@ -1,11 +1,11 @@
--- title: 创建适用于 Service Fabric 的 .NET 应用程序 | Microsoft Docs description: 了解如何使用 ASP.NET Core 前端和有状态可靠服务后端创建一个应用程序，然后将其部署到群集。
+-- title: 创建适用于 Service Fabric 的 .NET 应用程序 | Microsoft Docs description: 本教程介绍如何使用 ASP.NET Core 前端和有状态可靠服务后端创建一个应用程序，然后将其部署到群集。
 services: service-fabric documentationcenter: .net author: rwike77 manager: timlt editor: ''
 
 ms.assetid: ms.service: service-fabric ms.devlang: dotNet ms.topic: tutorial ms.tgt_pltfrm: NA ms.workload: NA ms.date: 01/29/2018 ms.author: ryanwi ms.custom: mvc
 
 ---
 
-# <a name="create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>使用 ASP.NET Core Web API 前端服务和有状态后端服务创建并部署应用程序
+# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教程：使用 ASP.NET Core Web API 前端服务和有状态后端服务创建并部署应用程序
 本教程是一个系列中的第一部分。  其中介绍了如何使用 ASP.NET Core Web API 前端和有状态后端服务创建 Azure Service Fabric 应用程序以存储数据。 完成后，将生成一个投票应用程序，其中包含 ASP.NET Core Web 前端，用于将投票结果保存到群集的有状态后端服务中。 如果不想手动创建投票应用程序，可以[下载已完成应用程序的源代码](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)，跳到[大致了解投票示例应用程序](#walkthrough_anchor)。
 
 ![应用程序关系图](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
