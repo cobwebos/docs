@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 885315b9f610d5f1703acd0f292f7b3347462b34
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: afa5c6a07432456d703020c0b8c5c3606478b8fe
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
 API 管理提供的功能可确保使用客户端证书安全地访问 API 的后端服务。 本指南介绍如何在 API 发布者门户中管理证书，以及如何将 API 配置为使用证书访问其后端服务。
@@ -27,7 +27,7 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API 的�
 ## <a name="prerequisites"> </a>先决条件
 本指南介绍如何将 API 管理服务实例配置为使用客户端证书身份验证访问 API 的后端服务。 执行本主题中的步骤之前，用户应将后端服务配置为进行客户端证书身份验证（[要在 Azure 网站中配置证书身份验证，请参阅此文][to configure certificate authentication in Azure WebSites refer to this article]），并能够访问证书及证书的密码，以便在 API 管理发布者门户中执行上传操作。
 
-## <a name="step1"> </a>上传客户端证书
+## <a name="step1"></a>上传客户端证书
 若要开始，请单击 API 管理服务的 Azure 门户中的“发布者门户”。 这会转到 API 管理发布者门户。
 
 ![API 发布者门户][api-management-management-console]
@@ -114,13 +114,6 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API 的�
 $context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
 New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
-
-## <a name="next-steps"></a>后续步骤
-如需详细了解如何通过其他方式（例如 HTTP 基本密钥或共享密钥身份验证）确保后端服务的安全，请观看以下视频。
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Last-mile-Security/player]
-> 
-> 
 
 [api-management-management-console]: ./media/api-management-howto-mutual-certificates/api-management-management-console.png
 [api-management-security-client-certificates]: ./media/api-management-howto-mutual-certificates/api-management-security-client-certificates.png
