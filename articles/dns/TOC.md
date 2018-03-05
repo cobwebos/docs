@@ -1,3 +1,5 @@
+# [DNS 文档](index.md)
+
 # 概述
 
 ## [什么是 Azure DNS？](dns-overview.md)
@@ -9,7 +11,7 @@
 # 入门
 
 ## 创建 DNS 区域和记录
-### [Azure 门户](dns-getstarted-portal.md)
+### [Azure portal](dns-getstarted-portal.md)
 ### [Azure PowerShell](dns-getstarted-powershell.md)
 ### [Azure CLI](dns-getstarted-cli.md)
 
@@ -21,12 +23,12 @@
 # 如何
 
 ## 管理 DNS 区域
-### [Azure 门户](dns-operations-dnszones-portal.md)
+### [Azure portal](dns-operations-dnszones-portal.md)
 ### [Azure PowerShell](dns-operations-dnszones.md)
 ### [Azure CLI](dns-operations-dnszones-cli.md)
 
 ## 管理 DNS 记录
-### [Azure 门户](dns-operations-recordsets-portal.md)
+### [Azure portal](dns-operations-recordsets-portal.md)
 ### [Azure PowerShell](dns-operations-recordsets.md)
 ### [Azure CLI](dns-operations-recordsets-cli.md)
 

@@ -1,3 +1,5 @@
+# [服务总线中继文档](index.md)
+
 # 概述
 ## [什么是中继？](relay-what-is-it.md)
 ## [常见问题](relay-faq.md)

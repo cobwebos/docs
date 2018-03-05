@@ -1,3 +1,5 @@
+# [通知中心文档](index.md)
+
 # 概述
 ## [什么是 Azure 通知中心](notification-hubs-push-notification-overview.md)
 # 入门

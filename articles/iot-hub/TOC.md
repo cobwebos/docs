@@ -1,3 +1,5 @@
+# [IoT 中心文档](index.md)
+
 # 概述
 ## [Azure 和 IoT](iot-hub-what-is-azure-iot.md)
 ## [Azure IoT 中心是什么？](iot-hub-what-is-iot-hub.md)

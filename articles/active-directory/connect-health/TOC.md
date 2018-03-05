@@ -11,8 +11,12 @@
 ## [Azure AD Connect Health 操作](active-directory-aadconnect-health-operations.md)
 ## [同步过程中出错](../active-directory-aadconnect-troubleshoot-sync-errors.md)
 
+# 故障排除
+## [Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq.md)
+## [运行状况服务数据不是最新的](active-directory-aadconnect-health-data-freshness.md)
+
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Azure AD Connect Health 版本历史记录](active-directory-aadconnect-health-version-history.md)
 ## [GDPR 符合性和 Azure AD Connect Health](active-directory-aadconnect-health-gdpr.md)
 
@@ -23,5 +27,4 @@
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
-##[Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq.md)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

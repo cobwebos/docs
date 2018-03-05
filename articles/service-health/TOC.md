@@ -1,3 +1,5 @@
+# [Azure 服务运行状况](index.md)
+
 # 概述
 ## [什么是 Azure 服务运行状况？](service-health-overview.md)
 ## [什么是 Azure 资源运行状况？](resource-health-overview.md)

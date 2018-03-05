@@ -1,3 +1,5 @@
+# [SQL Server Stretch Database 文档](index.md)
+
 # 概述
 ## [什么是 Stretch Database？](/sql/sql-server/stretch-database/stretch-database)
 ## [限制与阻碍性问题](/sql/sql-server/stretch-database/limitations-for-stretch-database)
@@ -16,7 +18,7 @@
 ### [暂停和恢复迁移](/sql/sql-server/stretch-database/pause-and-resume-data-migration-stretch-database)
 ### [管理和故障排除](/sql/sql-server/stretch-database/manage-and-troubleshoot-stretch-database)
 ### [备份](/sql/sql-server/stretch-database/backup-stretch-enabled-databases-stretch-database)
-### [还原](/sql/sql-server/stretch-database/restore-stretch-enabled-databases-stretch-database)
+### [Restore](/sql/sql-server/stretch-database/restore-stretch-enabled-databases-stretch-database)
 ### [禁用 Stretch Database](/sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data)
 
 # 引用

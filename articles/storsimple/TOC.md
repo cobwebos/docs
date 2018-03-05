@@ -1,3 +1,5 @@
+# [StorSimple 文档](index.md)
+
 # StorSimple 虚拟阵列
 
 ## 概述

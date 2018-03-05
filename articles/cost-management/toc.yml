@@ -17,12 +17,12 @@
   items:
     - name: 1 - 查看使用情况和成本
       href: tutorial-review-usage.md
-    - name: 2 - 控制对数据的访问
-      href: tutorial-user-access.md
-    - name: 3 - 预测支出
+    - name: 2 - 预测支出
       href: tutorial-forecast-spending.md
-    - name: 4 - 管理成本
+    - name: 3 - 管理成本
       href: tutorial-manage-costs.md
+    - name: 4 - 控制对数据的访问
+      href: tutorial-user-access.md
 - name: 概念
   items:
     - name: 了解成本报表

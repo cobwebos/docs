@@ -19,7 +19,7 @@
       href: automation-watchers-tutorial.md
     - name: 管理 VM 的更新
       href: automation-tutorial-update-management.md
-    - name: 载入更新和更改跟踪
+    - name: 通过 Runbook 载入更新和更改跟踪
       href: automation-onboard-solutions.md
     - name: 标识 VM 上的软件
       href: automation-tutorial-installed-software.md
@@ -27,20 +27,24 @@
       href: automation-tutorial-troubleshoot-changes.md
 - name: 如何
   items:
+    - name: 登记
+      items:
+        - name: 从 Azure VM 载入
+          href: automation-onboard-solutions-from-vm.md
+        - name: 从自动化帐户加入
+          href: automation-onboard-solutions-from-automation-account.md
     - name: 更新管理
       items:
-        - name: 概述
-          href: ../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2fautomation%2ftoc.json
+        - name: 更新管理概述
+          href: automation-update-management.md
         - name: 管理多个 VM 的更新
           href: manage-update-multi.md
-        - name: 将 SCCM 与 OMS 更新管理集成
+        - name: 将 SCCM 与更新管理集成
           href: oms-solution-updatemgmt-sccmintegration.md
     - name: 更改跟踪
       items:
-        - name: 概述
-          href: ../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json
-        - name: 跟踪 VM 中的更改
-          href: automation-vm-change-tracking.md
+        - name: 更改跟踪概述
+          href: automation-change-tracking.md
     - name: 清单
       items:
         - name: 使用清单集合管理 VM

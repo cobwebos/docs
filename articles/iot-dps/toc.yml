@@ -7,8 +7,10 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 设置自动预配
+    - name: 设置自动预配 - 门户
       href: quick-setup-auto-provision.md
+    - name: 设置自动预配 - 模板
+      href: quick-setup-auto-provision-rm.md
     - name: 创建模拟设备
       items:
         - name: TPM
@@ -91,6 +93,8 @@
       href: how-to-revoke-device-access-portal.md
     - name: 取消预配设备
       href: how-to-unprovision-devices.md
+    - name: 针对 X.509 CA 证书进行所有权证明
+      href: how-to-verify-certificates.md
     - name: 将 HSM 与 SDK 配合使用
       href: use-hsm-with-sdk.md
     - name: 控制对预配服务的访问
@@ -99,6 +103,8 @@
       href: how-to-manage-dps-with-cli.md
     - name: 使用 SDK 工具进行开发
       href: how-to-use-sdk-tools.md
+    - name: 连接到 MXChip IoT DevKit
+      href: how-to-connect-mxchip-iot-devkit.md
 - name: 引用
   items:
     - name: REST

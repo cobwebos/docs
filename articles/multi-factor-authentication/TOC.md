@@ -1,3 +1,5 @@
+# [多重身份验证文档](index.md)
+
 # 概述
 ## [什么是 Azure 多重身份验证？](multi-factor-authentication.md)
 ## [工作原理](multi-factor-authentication-how-it-works.md)

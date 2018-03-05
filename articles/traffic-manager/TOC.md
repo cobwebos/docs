@@ -1,3 +1,5 @@
+# [流量管理器文档](index.md)
+
 # 概述
 ## [什么是流量管理器？](traffic-manager-overview.md)
 ## [路由方法](traffic-manager-routing-methods.md)

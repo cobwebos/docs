@@ -1,3 +1,5 @@
+# [数据目录文档](index.md)
+
 # 概述
 ## [什么是数据目录？](data-catalog-what-is-data-catalog.md)
 ## [常见方案](data-catalog-common-scenarios.md)

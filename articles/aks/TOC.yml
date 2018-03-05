@@ -77,6 +77,10 @@
       items:
         - name: 使用 Kubernetes 仪表板
           href: kubernetes-dashboard.md
+    - name: 故障排除
+      items:
+        - name: SSH 节点访问权限
+          href: aks-ssh.md
 - name: 引用
   items:
     - name: Azure CLI

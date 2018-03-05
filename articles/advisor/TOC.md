@@ -1,3 +1,5 @@
+# [Azure 顾问文档](index.md)
+
 # 概述
 ## [什么是 Azure 顾问？](advisor-overview.md)
 

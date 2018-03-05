@@ -1,3 +1,4 @@
+# [服务总线文档](index.md)
 # [服务总线](/azure/service-bus-messaging)
 # [中继](/azure/service-bus-relay)
 # 资源

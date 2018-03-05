@@ -1,3 +1,5 @@
+# [服务总线消息传送文档](index.md)
+
 # 概述
 ## [什么是服务总线消息传送？](service-bus-messaging-overview.md)
 ## [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)

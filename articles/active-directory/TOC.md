@@ -1,3 +1,5 @@
+# [Azure Active Directory 文档](index.md)
+
 # 概述
 ## [什么是 Azure Active Directory？](active-directory-whatis.md)
 ## [关于 Azure 标识管理](identity-fundamentals.md)
@@ -248,6 +250,13 @@
 ##### [配置](active-directory-application-config-content-map.md)
 ##### [登录](active-directory-application-sign-in-content-map.md)
 ##### [预配](active-directory-application-provisioning-content-map.md)
+###### [验证用户是否已预配](application-provisioning-when-will-provisioning-finish-specific-user.md)
+###### [预配需要很长时间](application-provisioning-when-will-provisioning-finish.md)
+###### [如何配置用户预配](application-provisioning-config-how-to.md)
+###### [配置预配时出现问题](application-provisioning-config-problem.md)
+###### [保存管理员凭据时出现问题](application-provisioning-config-problem-storage-limit.md)
+###### [没有用户正在进行预配](application-provisioning-config-problem-no-users-provisioned.md)
+###### [正在对错误的用户进行预配](application-provisioning-config-problem-wrong-users-provisioned.md)
 ##### [管理访问](active-directory-application-access-content-map.md)
 ##### [访问面板](active-directory-application-access-panel-content-map.md)
 ##### [应用程序代理](active-directory-application-proxy-content-map.md)
