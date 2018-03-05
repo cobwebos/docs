@@ -12,23 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2017
+ms.date: 03/02/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 2410b1a3c3c2856cceda87ced7e66f140ea0c323
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 03682e7f5867360cc3d854f0dff2bc5d1c1c9619
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure 堆栈部署先决条件
 
 *适用范围： Azure 堆栈开发工具包*
 
-在部署之前[Azure 堆栈开发工具包](azure-stack-poc.md)，请确保你的计算机满足以下要求：
+在部署之前[Azure 堆栈开发工具包 (ASDK)](azure-stack-poc.md)，请确保你开发工具包的主机计算机满足本文中所述的要求。
 
+> [!NOTE]
+> ASDK 必须安装在物理主机计算机上。 不支持的 Azure VM 上安装 ASDK。
 
 ## <a name="hardware"></a>硬件
-| 组件 | 最小 | 推荐 |
+| 组件 | 最小值 | 建议 |
 | --- | --- | --- |
 | 磁盘驱动器： 操作系统 |1 个 OS 磁盘的最小值为 200 GB 供系统分区 （SSD 或 HDD） |1 个 OS 磁盘的最小值为 200 GB 供系统分区 （SSD 或 HDD） |
 | 磁盘驱动器： 常规开发工具包数据 * |4 个磁盘。 每个磁盘提供最少 140 GB 的容量 （SSD 或 HDD）。 将使用所有可用的磁盘。 |4 个磁盘。 每个磁盘提供 250 GB 的容量 （SSD 或 HDD） 的最小值。 将使用所有可用的磁盘。 |
@@ -90,13 +92,13 @@ ms.lasthandoff: 03/02/2018
    
    | **Azure Active Directory 帐户** | **支持？** |
    | --- | --- |
-   | 与有效的公共 Azure 订阅的工作或学校帐户 |“是” |
-   | 与有效的公共 Azure 订阅的 Microsoft 帐户 |“是” |
-   | 与有效中国 Azure 订阅的工作或学校帐户 |“是” |
-   | 与有效的美国政府 Azure 订阅的工作或学校帐户 |“是” |
+   | 与有效的公共 Azure 订阅的工作或学校帐户 |是 |
+   | 与有效的公共 Azure 订阅的 Microsoft 帐户 |是 |
+   | 与有效中国 Azure 订阅的工作或学校帐户 |是 |
+   | 与有效的美国政府 Azure 订阅的工作或学校帐户 |是 |
 
 ## <a name="network"></a>网络
-### <a name="switch"></a>切换
+### <a name="switch"></a>Switch
 用于开发工具包机的交换机上的一个可用端口。  
 
 开发工具包计算机支持连接到交换机访问端口或 trunk 端口。 没有特殊的功能需要在交换机上。 如果你正在使用 trunk 端口，或者如果你需要配置 VLAN ID，你必须提供作为部署参数的 VLAN ID。 你可以看到中的示例[的部署参数列表](azure-stack-run-powershell-script.md)。
@@ -119,12 +121,11 @@ ms.lasthandoff: 03/02/2018
 ### <a name="dhcp"></a>DHCP
 请确保 DHCP 服务器可用上没有 NIC 连接到网络。 如果 DHCP 不可用，你必须准备其他静态 IPv4 网络除了主机所使用的一个。 必须提供该 IP 地址和网关作为部署参数。 你可以看到中的示例[的部署参数列表](azure-stack-run-powershell-script.md)。
 
-### <a name="internet-access"></a>Internet 访问
+### <a name="internet-access"></a>Internet 访问权限
 Azure 堆栈需要访问 Internet，直接或通过透明的代理。 Azure 堆栈不支持的 web 代理，以启用 Internet 访问权限的配置。 主机 IP 和新的 IP 分配给 MA BGPNAT01 （通过 DHCP 还是静态 IP） 必须能够访问 Internet。 在位于域 graph.windows.net 和 login.microsoftonline.com 域下使用端口 80 和 443。
 
-问： 是否可以在 Azure VM 上运行 ASDK？ 答：没有。 从现在起，它是未正式受到支持。
 
-## <a name="next-steps"></a>接下来的步骤
+## <a name="next-steps"></a>后续步骤
 [下载 Azure 堆栈开发工具包部署包](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
 
 [部署 Azure 堆栈开发工具包](azure-stack-run-powershell-script.md)

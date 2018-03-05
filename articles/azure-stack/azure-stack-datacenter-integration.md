@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 03/02/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: f93fc95d6bed517cae3adb706f690941f97c366e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 25ef6ba9ff105486f39cee8b6181a8c63e64ec13
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>有关集成 Azure 堆栈系统的数据中心集成注意事项
 如果你感兴趣的集成的 Azure 堆栈系统，你应了解一些围绕部署和系统如何适应你的数据中心的主要规划注意事项。 本文概述了这些注意事项，可帮助你做出你 Azure 堆栈的多节点系统的重要的基础结构决策。 使用你的 OEM 硬件供应商联系，与它们部署到你的数据中心的 Azure 堆栈时，可帮助了解这些注意事项。  
@@ -30,6 +30,15 @@ ms.lasthandoff: 02/09/2018
 若要部署 Azure 堆栈，你需要在部署开始帮助转迅速和顺利地进程之前给你的解决方案提供商提供规划信息。 将必需的范围信息跨网络、 安全和标识信息与很多可能需要从许多不同的区域和决策者的知识的重要决策。 因此，你可能需要拉入与你的组织中的多个团队的人员，以确保部署开始之前已准备好所有必需的信息。 它可以帮助进行对话硬件供应商时收集此信息，因为它们可能具有建议对你决定有所帮助。
 
 时研究和收集所需的信息，你可能需要对你的网络环境进行一些预部署配置更改。 这可能包括保留 Azure 堆栈解决方案中，配置你的路由器、 交换机和防火墙来准备新的 Azure 堆栈解决方案交换机连接的 IP 地址空间。 请确保有帮助你规划主题区域专家达内联。
+
+## <a name="capacity-planning-considerations"></a>容量规划注意事项
+评估时获取 Azure 堆栈解决方案，则必须进行硬件的配置选择上的总容量的自己的 Azure 堆栈解决方案具有直接的影响。 其中包括 CPU、 内存密度，存储配置和整体解决方案数值范围 （例如服务器） 的经典选项。 与传统的虚拟化解决方案，这些组件以确定可用容量的简单算术不适用于。 第一个原因是 Azure 堆栈设计为可承载解决方案本身中的基础结构或管理组件。 第二个原因是容量的某些解决方案保留以复原能力; 支持以最大程度减少中断租户工作负载的一种解决方案的软件更新。 
+
+[Azure 堆栈容量规划器电子表格](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822)可帮助你做出明智的决策方面规划容量两种方式： 任一通过选择一种硬件产品，然后尝试适合组合的资源或通过定义Azure 堆栈的工作负荷用于运行要查看可用的硬件可以支持它的 Sku。 最后，该电子表格将用作 Azure 堆栈规划和配置相关的指导帮助做出决策。 
+
+不旨在作为替代的你自己的调查和分析电子表格。  Microsoft 对任何表述或担保，明示或暗示的在电子表格中提供的信息。
+
+
 
 ## <a name="management-considerations"></a>管理注意事项
 Azure 堆栈是一个密封的系统，其中基础结构已被锁定同时从权限和网络透视。 网络访问控制列表 (Acl) 应用来阻止所有未经授权的传入流量和基础结构组件之间的所有不必要通信。 这使难未经授权的用户访问系统。
