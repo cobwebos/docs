@@ -13,13 +13,22 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/15/2017
   ms.author: nitinme
-  ms.openlocfilehash: 11d900597fecce1a0f421f21d1cce231f7108fcf
-  ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+  ms.openlocfilehash: cc51070b4ff41107700585160cff8bbe41cc5d7d
+  ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/29/2017
+  ms.lasthandoff: 03/05/2018
 abstract:
   description: "使用快速入门和此处提供的其他链接，了解如何使用 Azure Databricks。 Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行优化。 我们与 Apache Spark 的创建者一起设计了 Databricks，并将其与 Azure 集成以提供一键式安装程序、简化的工作流程以及交互式工作区，从而使数据科学家、数据工程师和业务分析员之间可以进行合作。"
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/index/video.png
+      width: 250
+    title: "Azure Databricks 简介 (3:38)"
+    href: https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/
+    width: 250
 sections:
 - title: "5 分钟快速入门"
   items:

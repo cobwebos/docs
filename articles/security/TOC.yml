@@ -1,0 +1,280 @@
+- name: Azure 安全文档
+  href: index.md
+- name: 体系结构和设计
+  href: azure-security.md
+  expanded: true
+  items:
+    - name: 高级威胁检测
+      href: azure-threat-detection.md
+    - name: Azure 日志记录和审核
+      href: azure-log-audit.md
+    - name: Azure 网络安全
+      href: azure-network-security.md
+    - name: 实现运营安全
+      href: azure-operational-security.md
+    - name: Azure 中的监管
+      href: governance-in-azure.md
+    - name: Azure 云中的隔离
+      href: azure-isolation.md
+    - name: 安全混合网络体系结构
+      href: 'https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json'
+    - name: 安全技术功能
+      href: azure-security-technical-capabilities.md
+- name: 数据安全与加密
+  href: security-azure-encryption-overview.md
+  items:
+    - name: 数据库安全
+      href: azure-database-security-overview.md
+      items:
+        - name: 最佳实践
+          href: azure-database-security-best-practices.md
+        - name: 安全清单
+          href: azure-database-security-checklist.md
+    - name: 磁盘加密
+      items:
+        - name: 最佳实践
+          href: azure-security-data-encryption-best-practices.md
+        - name: 静态数据加密
+          href: azure-security-encryption-atrest.md
+        - name: IaaS VM 的磁盘加密
+          href: azure-security-disk-encryption.md
+          items:
+            - name: 磁盘加密常见问题解答
+              href: azure-security-disk-encryption-faq.md
+            - name: 故障排除
+              href: azure-security-disk-encryption-tsg.md
+        - name: 加密 Azure VM
+          href: ../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json
+    - name: Azure 存储安全
+      href: security-storage-overview.md
+    - name: 存储安全指南
+      href: ../storage/common/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json
+- name: 平台和基础结构
+  items:
+    - name: Microsoft 反恶意软件
+      href: azure-security-antimalware.md
+    - name: IaaS 安全
+      href: security-virtual-machines-overview.md
+      items:
+        - name: 最佳做法 - Azure VM
+          href: azure-security-best-practices-vms.md
+        - name: 最佳做法 - IaaS 工作负荷
+          href: azure-security-iaas.md
+        - name: Azure Marketplace 映像
+          href: security-recommendations-azure-marketplace-images.md
+    - name: 身份管理
+      href: security-identity-management-overview.md
+      items:
+        - name: 最佳实践
+          href: azure-security-identity-management-best-practices.md
+    - name: 网络安全
+      href: security-network-overview.md
+      items:
+        - name: 最佳实践
+          href: azure-security-network-security-best-practices.md
+        - name: 边界安全
+          href: ../best-practices-network-security.md?toc=%2fazure%2fsecurity%2ftoc.json
+- name: Application
+  items:
+    - name: PaaS
+      href: security-paas-deployments.md
+      items:
+        - name: 适用于 PaaS 的 Azure 应用服务
+          href: security-paas-applications-using-app-services.md
+        - name: 适用于 PaaS 的 Azure 存储
+          href: security-paas-applications-using-storage.md
+        - name: 适用于 PaaS 的 DB 最佳做法
+          href: security-paas-applications-using-sql.md
+        - name: IoT
+          href: security-internet-of-things-overview.md
+          items:
+            - name: IoT 安全最佳实践
+              href: ../iot-suite/iot-security-best-practices.md
+            - name: IoT 安全
+              href: '../iot-suite/iot-security-architecture.md#security-in-iot'
+            - name: 保护 IoT 部署
+              href: ../iot-suite/iot-suite-security-deployment.md
+    - name: Azure Service Fabric 安全
+      href: azure-service-fabric-security-overview.md
+      items:
+        - name: 最佳实践
+          href: azure-service-fabric-security-best-practices.md
+        - name: 安全清单
+          href: azure-service-fabric-security-checklist.md
+- name: 监视、审核和操作
+  href: security-management-and-monitoring-overview.md
+  items:
+    - name: 审核和日志记录
+      items:
+        - name: 安全管理
+          href: ../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json
+        - name: 远程管理安全
+          href: azure-security-management.md
+        - name: Azure 日志集成
+          items:
+            - name: 介绍
+              href: security-azure-log-integration-overview.md
+            - name: 入门
+              href: security-azure-log-integration-get-started.md
+            - name: 集成 Azure AD 审核日志
+              href: security-azure-log-integration-ad.md
+            - name: 集成安全中心警报
+              href: security-azure-log-integration-security-center.md
+            - name: 集成 Key Vault 中的日志
+              href: security-azure-log-integration-keyvault-eventhub.md
+            - name: 常见问题
+              href: security-azure-log-integration-faq.md
+    - name: 运营安全
+      href: azure-operational-security-overview.md
+      items:
+        - name: 最佳实践
+          href: azure-operational-security-best-practices.md
+        - name: 安全清单
+          href: azure-operational-security-checklist.md
+- name: 管理和符合性
+  items:
+    - name: 适用于受管制工作负荷的金融服务
+      href: ./blueprints/financial-services-regulated-workloads.md
+    - name: GDPR
+      items:
+        - name: 管理个人数据
+          href: manage-personal-data-azure.md
+        - name: 发现、识别个人数据并对其进行分类
+          href: how-to-discover-classify-personal-data-azure.md
+        - name: 在 Azure 中保护个人数据
+          href: protect-personal-data-azure.md
+        - name: 使用安全中心保护个人数据
+          href: protect-personal-data-azure-security-center.md
+        - name: 使用应用程序网关保护个人数据
+          href: protect-personal-data-network-security.md
+        - name: 通过使用标识和访问控制保护个人数据
+          href: protect-personal-data-identity-access-controls.md
+        - name: 通过使用加密保护静态个人数据
+          href: protect-personal-data-at-rest.md
+        - name: 通过使用加密保护正在传输的个人数据
+          href: protect-personal-data-in-transit-encryption.md
+        - name: 通过使用 Azure 报告工具保护个人数据
+          href: protection-personal-data-azure-reporting-tools.md
+    - name: FEDRAMP
+      href: ./blueprints/fedramp.md
+      items:
+        - name: 安全控制概述
+          href: ./blueprints/fedramp-controls-overview.md
+        - name: 访问控制
+          href: ./blueprints/fedramp-access-controls.md
+        - name: 审核和责任
+          href: ./blueprints/fedramp-audit-accountability-controls.md
+        - name: 意识和培训
+          href: ./blueprints/fedramp-awareness-training-controls.md
+        - name: 配置管理
+          href: ./blueprints/fedramp-configuration-manager-controls.md
+        - name: 应变规划
+          href: ./blueprints/fedramp-contingency-planning-controls.md
+        - name: 识别和身份验证
+          href: ./blueprints/fedramp-identification-authentication-controls.md
+        - name: 事件响应
+          href: ./blueprints/fedramp-incident-response-controls.md
+        - name: 维护
+          href: ./blueprints/fedramp-maintenance-controls.md
+        - name: 媒体保护
+          href: ./blueprints/fedramp-media-protection-controls.md
+        - name: 人员安全
+          href: ./blueprints/fedramp-personnel-security-controls.md
+        - name: 物理保护和环境保护
+          href: ./blueprints/fedramp-physical-environmental-protection-controls.md
+        - name: 规划
+          href: ./blueprints/fedramp-planning-controls.md
+        - name: 风险评估
+          href: ./blueprints/fedramp-risk-assessment-controls.md
+        - name: 安全评估和授权
+          href: ./blueprints/fedramp-security-assessment-authorization-controls.md
+        - name: 系统和通信保护
+          href: ./blueprints/fedramp-system-communications-protection-controls.md
+        - name: 系统和信息完整性
+          href: ./blueprints/fedramp-system-information-integrity-controls.md
+        - name: 系统和服务获取
+          href: ./blueprints/fedramp-system-services-acquisition-controls.md
+    - name: PCI DSS
+      href: ./blueprints/payment-processing-blueprint.md
+      items:
+        - name: 要求概述
+          href: ./blueprints/pci-dss-requirements-overview.md
+        - name: 要求 1 - 防火墙
+          href: ./blueprints/pci-dss-requirement-1-firewall.md
+        - name: 要求 2 - 密码
+          href: ./blueprints/pci-dss-requirement-2-password.md
+        - name: 要求 3 - CHD
+          href: ./blueprints/pci-dss-requirement-3-chd.md
+        - name: 要求 4 - 加密
+          href: ./blueprints/pci-dss-requirement-4-encryption.md
+        - name: 要求 5 - 恶意软件
+          href: ./blueprints/pci-dss-requirement-5-malware.md
+        - name: 要求 6 - 安全系统
+          href: ./blueprints/pci-dss-requirement-6-secure-system.md
+        - name: 要求 7 - 访问
+          href: ./blueprints/pci-dss-requirement-7-access.md
+        - name: 要求 8 - 身份
+          href: ./blueprints/pci-dss-requirement-8-identity.md
+        - name: 要求 9 - 物理访问
+          href: ./blueprints/pci-dss-requirement-9-physical-access.md
+        - name: 要求 10 - 监视
+          href: ./blueprints/pci-dss-requirement-10-monitoring.md
+        - name: 要求 11 - 测试
+          href: ./blueprints/pci-dss-requirement-11-testing.md
+        - name: 要求 12 - 策略
+          href: ./blueprints/pci-dss-requirement-12-policy.md
+    - name: UK-OFFICIAL
+      href: ./blueprints/uk-official-three-tier-applications-overview.md
+      items:
+        - name: 原则概述
+          href: ./blueprints/uk-official-three-tier-applications-principles-overview.md
+    - name: HIPAA/HITRUST 运行状况数据和 AI
+      href: ./blueprints/azure-health.md
+- name: 白皮书
+  href: security-white-papers.md
+- name: 技术概述
+  href: security-overviews.md
+- name: 最佳实践
+  href: security-best-practices-and-patterns.md
+- name: 资源
+  items:
+    - name: Azure 安全 MVP 计划
+      href: azure-security-mvp.md
+    - name: 网络安全咨询
+      href: azure-security-cyber-services.md
+    - name: 记录安全事件支持票证
+      href: azure-security-event-support-ticket.md
+    - name: 渗透测试
+      href: azure-security-pen-testing.md
+    - name: Microsoft 威胁建模工具
+      href: azure-security-threat-modeling-tool.md
+      items:
+        - name: 入门
+          href: azure-security-threat-modeling-tool-getting-started.md
+        - name: 功能概述
+          href: azure-security-threat-modeling-tool-feature-overview.md
+        - name: 威胁
+          href: azure-security-threat-modeling-tool-threats.md
+        - name: 缓解措施
+          href: azure-security-threat-modeling-tool-mitigations.md
+          items:
+            - name: 审核和日志记录
+              href: azure-security-threat-modeling-tool-auditing-and-logging.md
+            - name: 身份验证
+              href: azure-security-threat-modeling-tool-authentication.md
+            - name: 授权
+              href: azure-security-threat-modeling-tool-authorization.md
+            - name: 通信安全
+              href: azure-security-threat-modeling-tool-communication-security.md
+            - name: 配置管理
+              href: azure-security-threat-modeling-tool-configuration-management.md
+            - name: 加密
+              href: azure-security-threat-modeling-tool-cryptography.md
+            - name: 异常管理
+              href: azure-security-threat-modeling-tool-exception-management.md
+            - name: 输入验证
+              href: azure-security-threat-modeling-tool-input-validation.md
+            - name: 敏感数据
+              href: azure-security-threat-modeling-tool-sensitive-data.md
+            - name: 会话管理
+              href: azure-security-threat-modeling-tool-session-management.md

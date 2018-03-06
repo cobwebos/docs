@@ -113,6 +113,7 @@
 #### [配置命名位置](active-directory-named-locations.md)
 #### [查找活动报表](active-directory-reporting-migration.md)
 #### [使用 Azure Active Directory Power BI 内容包](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [修复已标记为存在风险的用户](active-directory-report-security-user-at-risk-remediation.md)
 ### 引用
 #### [保留](active-directory-reporting-retention.md)
 #### [延迟](active-directory-reporting-latencies-azure-portal.md)

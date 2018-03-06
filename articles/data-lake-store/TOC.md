@@ -5,6 +5,7 @@
 ## [Azure Data Lake Store 与 Azure 存储的比较](data-lake-store-comparison-with-blob-storage.md)
 ## [使用 Azure Data Lake Store 处理大数据](data-lake-store-data-scenarios.md)
 ## [使用 Azure Data Lake Store 的开源应用程序](data-lake-store-compatible-oss-other-applications.md)
+## [使用 Data Lake Store 的最佳做法](data-lake-store-best-practices.md)
 
 # 入门
 ## [使用门户](data-lake-store-get-started-portal.md)

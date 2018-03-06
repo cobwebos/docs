@@ -42,12 +42,13 @@
 
 ## 创建和管理池
 ### [自动缩放计算节点](batch-automatic-scaling.md)
-### [计算密集型 VM](batch-pool-compute-intensive-sizes.md)
+### [选择计算节点的 VM 大小](batch-pool-vm-sizes.md)
 ### [配置对计算节点的访问权限](pool-endpoint-configuration.md)
 ### [使用自定义映像创建池](batch-custom-images.md)
 ### [在虚拟网络中创建池](batch-virtual-network.md)
-### [Linux 计算节点](batch-linux-nodes.md)
-### [低优先级 VM](batch-low-pri-vms.md)
+### [使用计算密集型 VM](batch-pool-compute-intensive-sizes.md)
+### [使用 Linux 计算节点](batch-linux-nodes.md)
+### [使用低优先级 VM](batch-low-pri-vms.md)
 
 ## 管理作业和任务
 ### [作业准备与作业完成任务](batch-job-prep-release.md)
