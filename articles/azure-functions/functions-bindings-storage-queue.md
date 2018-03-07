@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: ce28b6eea9843ce423b57e539a844b4dacb552aa
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e2f9c75ba6e43f93aeb742b9eceebf846ec85cbf
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 队列存储绑定
 
@@ -234,16 +234,16 @@ module.exports = function (context) {
 
 ## <a name="trigger---message-metadata"></a>触发器 - 消息元数据
 
-队列触发器提供了几个元数据属性。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些值的语义与 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) 相同。
+[队列触发器提供了数个元数据属性。](functions-triggers-bindings.md#binding-expressions---trigger-metadata) 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些值的语义与 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) 相同。
 
 |属性|Type|说明|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是字符串，则 `QueueTrigger` 包含的值与 *function.json* 中 `name` 属性命名的变量的值相同。|
 |`DequeueCount`|`int`|此消息取消排队的次数。|
-|`ExpirationTime`|`DateTimeOffset?`|消息过期的时间。|
+|`ExpirationTime`|`DateTimeOffset`|消息过期的时间。|
 |`Id`|`string`|队列消息 ID。|
-|`InsertionTime`|`DateTimeOffset?`|消息添加到队列的时间。|
-|`NextVisibleTime`|`DateTimeOffset?`|消息下一次可见的时间。|
+|`InsertionTime`|`DateTimeOffset`|消息添加到队列的时间。|
+|`NextVisibleTime`|`DateTimeOffset`|消息下一次可见的时间。|
 |`PopReceipt`|`string`|消息的 pop 接收方。|
 
 ## <a name="trigger---poison-messages"></a>触发器 - 有害消息
@@ -251,6 +251,18 @@ module.exports = function (context) {
 队列触发函数失败时，Azure Functions 会针对给定的队列消息重试该函数最多 5 次（包括第一次尝试）。 如果 5 次尝试全部失败，函数运行时会将一条消息添加到名为 *&lt;originalqueuename>-poison* 的队列。 可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。
 
 若要手动处理有害消息，请检查队列消息的 [dequeueCount](#trigger---message-metadata)。
+
+## <a name="trigger---polling-algorithm"></a>触发器 - 轮询算法
+
+队列触发器实现了随机指数退让算法，以降低空闲队列轮询对存储交易成本造成的影响。  当找到消息时，运行时将等待两秒钟，然后检查另一条消息；如果未找到消息，它将等待大约四秒，然后重试。 如果后续尝试获取队列消息失败，则等待时间会继续增加，直到达到最长等待时间（默认为 1 分钟）。 可以通过 [host.json 文件](functions-host-json.md#queues)中的 `maxPollingInterval` 属性配置最大等待时间。
+
+## <a name="trigger---concurrency"></a>触发器 - 并发
+
+当有多个队列消息在等待时，队列触发器会检索一批消息并以并发方式调用函数实例来处理它们。 默认情况下，批大小为 16。 当处理的数量下降到 8 时，运行时可获取另一个批，并开始处理这些消息。 因此，单个虚拟机 (VM) 上每个函数处理的最大并发消息数是 24。 此限制分别应用于每个 VM 上各个队列触发的函数。 如果你的函数应用横向扩展到多个 VM，则每个 VM 将等待触发器并尝试运行函数。 例如，如果某个函数应用横向扩展到 3 个 VM，则每个队列触发的函数的默认最大并发实例数是 72。
+
+可以在 [host.json 文件](functions-host-json.md#queues)中配置用于获取新批的批大小和阈值。 如果希望在函数应用中最大程度地降低查询触发的函数的并行执行，可以将批大小设置为 1。 只有当函数在单个虚拟机 (VM) 上运行时，此设置才可消除并发。 
+
+队列触发器会自动阻止函数多次处理队列消息；无需将函数编写为幂等函数。
 
 ## <a name="trigger---hostjson-properties"></a>触发器 - host.json 属性
 

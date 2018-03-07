@@ -11,55 +11,208 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 74f99dd6f31ecff7c838d8f710a7fe4279ce0ea9
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: e9fb3e68db66449d9ca3b43e6974910cb9477e62
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>用于 ASP.NET Core 的 Application Insights
-使用 [Application Insights](app-insights-overview.md) 可以监视 Web 应用程序的可用性、性能和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
 
-![示例](./media/app-insights-asp-net-core/sample.png)
+Azure Application Insights 提供 Web 应用程序的监视信息，深度可达代码级别。 使用它可以轻松监视 Web 应用程序的可用性、性能和使用情况。 还可以快速确定并诊断应用程序中的错误，而无需等待用户报告这些错误。
 
-需要 [Microsoft Azure](http://azure.com) 订阅。 使用 Microsoft 帐户登录，该帐户可能适用于 Windows、XBox Live 或其他 Microsoft 云服务。 团队可能拥有 Azure 组织订阅：要求所有者使用 Microsoft 帐户你将加入其中。
+本文逐步讲解如何在 Visual Studio 中创建一个 ASP.NET Core [Razor 页面](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/?tabs=visual-studio)示例应用程序，以及如何开始使用 Azure Application Insights 进行监视。
 
-## <a name="getting-started"></a>入门
+## <a name="prerequisites"></a>先决条件
 
-* 在 Visual Studio 解决方案资源管理器中，右键单击项目，并选择“配置 Application Insights”或“添加”>“Application Insights”。 [了解详细信息](app-insights-asp-net.md)。
-* 如果未看到这些菜单命令，则请遵循[手动获取入门指南](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started)进行操作。 如果创建项目时所用的版本低于 Visual Studio 2017，则可能需要执行此操作。
+- NET Core 2.0.0 SDK 或更高版本。
+- 装有 ASP.NET 和 Web 开发工作负荷的 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 版本 15.3 或以上。
 
-## <a name="using-application-insights"></a>使用 Application Insights
-登录到 [Microsoft Azure 门户](https://portal.azure.com)，选择“所有资源”或“Application Insights”，并选择为监视应用而创建的资源。
+## <a name="create-an-aspnet-core-project-in-visual-studio"></a>在 Visual Studio 中创建 ASP.NET Core 项目
 
-在单独的浏览器窗口中，使用应用一段时间。 会看到数据显示在 Application Insights 图表中。 （可能需要单击“刷新”。）开发时可能只有少量数据，但在发布应用并且有许多用户后，这些图表才会完整显示。 
+1. 单击右键，并管理员身份启动 **Visual Studio 2017**。
+2. 选择“文件” > “新建” > “项目”(Ctrl-Shift-N)。
 
-可在概述页了解主要的性能图表：服务器响应时间、页面加载时间和失败请求计数。 单击任何图表，查看更多图表和数据。
+   ![Visual Studio 中“文件”>“新建”>“项目”菜单的屏幕截图](./media/app-insights-asp-net-core/0001-file-new-project.png)
 
-门户中的视图分为 3 大主要类别：
+3. 展开“Visual C#”，选择“.NET Core” > “ASP.NET Core Web 应用程序”。 输入“名称” > “解决方案名称”，选中“创建新的 Git 存储库”。
 
-* [指标资源管理器](app-insights-metrics-explorer.md)显示了指标和计数（例如响应时间、故障率）或你通过 [API](app-insights-api-custom-events-metrics.md) 自行创建的指标的关系图和表。 按属性值筛选和细分数据，以便更好地了解应用及其用户。
-* [搜索资源管理器](app-insights-diagnostic-search.md)列出了单独事件（例如特定请求、异常、日志跟踪）或你通过 [API](app-insights-api-custom-events-metrics.md) 自行创建的事件。 在事件中筛选和搜索，并在相关事件中导航以调查问题。
-* [分析](app-insights-analytics.md)允许通过遥测运行类似 SQL 的查询，它是一个功能强大的分析和诊断工具。
+   ![Visual Studio 中“文件”>“新建”>“项目”向导的屏幕截图](./media/app-insights-asp-net-core/0002-new-project-web-application.png)
 
-## <a name="alerts"></a>警报
-* 将自动获取[主动诊断警报](app-insights-proactive-diagnostics.md)，告知你有关失败率和其他指标的异常更改。
-* 设置[可用性测试](app-insights-monitor-web-app-availability.md)，从全球位置持续测试网站并在任意测试失败后立即获取电子邮件。
-* 设置[指标警报](app-insights-monitor-web-app-availability.md)，了解响应时间或异常率等指标是否超出可接受的限制。
+4. 选择“.Net Core” > “ASP.NET Core 2.0 Web 应用程序” > “确定”。
+
+    ![Visual Studio 中“文件”>“新建”>“项目”选择菜单的屏幕截图](./media/app-insights-asp-net-core/0003-dot-net-core.png)
+
+## <a name="add-application-insights-telemetry"></a>添加 Application Insights 遥测
+
+1. 选择“项目” > “添加 Application Insights 遥测...”（或者，可以右键单击“连接的服务”并选择“添加连接的服务”。）
+
+    ![Visual Studio 中“文件”>“新建”>“项目”选择菜单的屏幕截图](./media/app-insights-asp-net-core/0004-add-application-insights-telemetry.png)
+
+2. 选择“免费开始”。
+
+    ![Visual Studio 中“文件”>“新建”>“项目”选择菜单的屏幕截图](./media/app-insights-asp-net-core/0005-start-free.png)
+
+3. 选择相应的“订阅” > “资源”，指定是否允许每月收集超过 1 GB 数据，选择“注册”。
+
+    ![Visual Studio 中“文件”>“新建”>“项目”选择菜单的屏幕截图](./media/app-insights-asp-net-core/0006-register.png)
+
+## <a name="changes-made-to-your-project"></a>对项目所做的更改
+
+Application Insights 的系统开销很低。 通过添加 Application Insights 遥测来查看对项目所做的修改：
+
+选择“视图” > “团队资源管理器”(Ctrl+\, Ctrl+M) >“项目” > “更改”
+
+- 共有四项更改：
+
+  ![通过添加 Application Insights 更改文件的屏幕截图](./media/app-insights-asp-net-core/0007-changes.png)
+
+- 创建了一个新文件：
+
+   **ConnectedService.json**
+
+  ![通过添加 Application Insights 更改文件的屏幕截图](./media/app-insights-asp-net-core/0008-connectedservice-json.png)
+
+- 修改了三个文件：
+
+  **appsettings.json**
+
+   ![通过添加 Application Insights 更改文件的屏幕截图](./media/app-insights-asp-net-core/0009-appsettings-json.png)
+
+  **ContosoDotNetCore.csproj**
+
+   ![通过添加 Application Insights 更改文件的屏幕截图](./media/app-insights-asp-net-core/0010-contoso-netcore-csproj.png)
+
+   **Program.cs**
+
+   ![通过添加 Application Insights 更改文件的屏幕截图](./media/app-insights-asp-net-core/0011-program-cs.png)
+
+## <a name="synthetic-transactions-with-powershell"></a>使用 PowerShell 创建综合事务
+
+启动应用，然后手动单击各个链接来生成测试流量。 但是，在 PowerShell 中创建简单的综合事务通常很有帮助。
+
+1. 单击 IIS Express 运行应用 ![Visual Studio 中 IIS Express 图标的屏幕截图](./media/app-insights-asp-net-core/0012-iis-express.png)
+
+2. 复制浏览器地址栏中的 URL。 该 URL 采用 http://localhost:{随机端口号} 格式
+
+   ![浏览器 URL 地址栏的屏幕截图](./media/app-insights-asp-net-core/0013-copy-url.png)
+
+3. 运行以下 PowerShell 循环，针对测试应用创建 100 个综合事务。 修改 **localhost:** 后面的端口号，使之与上一步骤中复制的 URL 相匹配。
+
+   ```PS
+   for ($i = 0 ; $i -lt 100; $i++)
+   {
+    Invoke-WebRequest -uri http://localhost:50984/
+   }
+   ```
+
+## <a name="open-application-insights-portal"></a>打开 Application Insights 门户
+
+运行上一部分所述的 PowerShell 后，启动 Application Insights 查看事务并确认正在收集数据。 
+
+在 Visual Studio 菜单中，选择“项目” > “Application Insights” > “打开 Application Insights 门户”
+
+   ![Application Insights 概述的屏幕截图](./media/app-insights-asp-net-core/0014-portal-01.png)
+
+> [!NOTE]
+> 在上面的示例屏幕截图中，目前尚未收集“实时流”、“页面视图加载时间”和“失败的请求数”。 下一部分将逐步讲解如何添加每项设置。 如果已开始收集“实时流”和“页面视图加载时间”，则只需遵循“失败的请求数”的步骤。
+
+## <a name="collect-failed-requests-live-stream--page-view-load-time"></a>收集“失败的请求数”、“实时流”和“页面视图加载时间”
+
+### <a name="failed-requests"></a>失败的请求数
+
+从技术上讲，系统已开始收集“失败的请求数”，但目前并未发生失败的请求。 为了加速该过程，可将一个自定义异常添加到现有项目，以模拟真实的异常。 如果在“停止调试”(Shift+F5) 之前应用仍在 Visual Studio 中运行
+
+1. 在“解决方案资源管理器”中展开“页面” > “About.cshtml”，打开“About.cshtml.cs”。
+
+   ![Visual Studio 解决方案资源管理器的屏幕截图](./media/app-insights-asp-net-core/0015-solution-explorer-about.png)
+
+2. 在 ``Message=`` 下面添加一个异常，然后保存对该文件所做的更改。
+
+   ```C#
+   throw new Exception("Test Exception");
+   ```
+
+   ![异常代码的屏幕截图](./media/app-insights-asp-net-core/000016-exception.png)
+
+### <a name="live-stream"></a>实时流
+
+若要使用 ASP.NET Core 访问 Application Insights 的实时流功能，请更新到 **Microsoft.ApplicationInsights.AspNetCore 2.2.0** NuGet 包。
+
+在 Visual Studio 中，选择“项目” > “管理 NuGet 包” > “Microsoft.ApplicationInsights.AspNetCore”>“版本 **2.2.0**” > “更新”。
+
+  ![NuGet 包管理器的屏幕截图](./media/app-insights-asp-net-core/0017-update-nuget.png)
+
+系统会显示多条确认提示，请阅读提示，并确认是否同意更改。
+
+### <a name="page-view-load-time"></a>页面视图加载时间
+
+1. 在 Visual Studio 中，导航到“解决方案资源管理器” > “页面”。需要修改两个文件：**_Layout.cshtml** 和 **_ViewImports.cshtml**
+
+2. 在 **_ViewImports.cshtml** 中添加：
+
+   ```C#
+   @using Microsoft.ApplicationInsights.AspNetCore
+   @inject JavaScriptSnippet snippet
+   ```
+     ![_ViewImports.cshtml 中的代码更改屏幕截图](./media/app-insights-asp-net-core/00018-view-imports.png)
+
+3. 在 **Layout.cshtml** 中的 ``</head>`` 标记前面添加以下行。该行必须添加在其他任何脚本的前面。
+
+    ```C#
+    @Html.Raw(snippet.FullScript)
+    ```
+    ![layout.cshtml 中的代码更改屏幕截图](./media/app-insights-asp-net-core/0018-layout-cshtml.png)
+
+### <a name="test-failed-requests-page-view-load-time-live-stream"></a>测试“失败的请求数”、“页面视图加载时间”和“实时流”
+
+完成前面的步骤后，可以测试并确认一切是否正常。
+
+1. 单击 IIS Express 运行应用 ![Visual Studio 中 IIS Express 图标的屏幕截图](./media/app-insights-asp-net-core/0012-iis-express.png)
+
+2. 导航到“关于”页，触发测试异常。 （如果在调试模式下运行，则需要在 Visual Studio 中单击“继续”，然后，Application Insights 才会拾取该异常。）
+
+3. 重新运行前面所述的模拟 PowerShell 事务脚本（可能需要调整脚本中的端口号。）
+
+4. 如果“Applications Insights 概述”仍未打开，请在 Visual Studio 菜单中选择“项目” > “Application Insights” > “打开 Applications Insights 门户”。 
+
+   > [!TIP]
+   > 如果仍未看到新流量，请检查“时间范围”并单击“刷新”。
+
+   ![“概述”窗口的屏幕截图](./media/app-insights-asp-net-core/0019-overview-updated.png)
+
+5. 选择“实时流”
+
+   ![“实时指标流”的屏幕截图](./media/app-insights-asp-net-core/0020-live-metrics-stream.png)
+
+   （如果 PowerShell 脚本仍在运行，则应会看到实时指标；如果该脚本已停止，请在打开“实时流”的情况下再次运行该脚本。）
+
+## <a name="app-insights-sdk-comparison"></a>Application Insights SDK 的比较
+
+Application Insights 产品小组一直在努力使[完整版 .NET Framework SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) 与 .Net Core SDK 的功能尽量接近。 适用于 Application Insights 的 [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore) 版本 2.2.0 已经基本填补了两者的功能差距。
+
+了解 [.NET 与 .NET Core](https://docs.microsoft.com/en-us/dotnet/standard/choosing-core-framework-server) 之间的差异与利弊。
+
+   | SDK 比较 | ASP.NET        | ASP.NET Core 2.1.0    | ASP.NET Core 2.2.0 |
+  |:-- | :-------------: |:------------------------:|:----------------------:|
+   | **实时指标**      | **+** |**-** | **+** |
+   | **服务器遥测通道** | **+** |**-** | **+**|
+   |**自适应采样**| **+** | **-** | **+**|
+   | **SQL 依赖项调用**     | **+** |**-** | **+**|
+   | **性能计数器*** | **+** | **-**| **-**|
+
+在此上下文中，_性能计数器_是指[服务器端性能计数器](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-performance-counters)，例如处理器、内存和磁盘利用率。
+
+## <a name="open-source-sdk"></a>开源 SDK
+[阅读代码或为其做出贡献](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
 
 ## <a name="video"></a>视频
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player] 
 
-## <a name="open-source"></a>开放源
-[阅读代码或为其做出贡献](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
-
-
 ## <a name="next-steps"></a>后续步骤
-* [将遥测添加到网页](app-insights-javascript.md)，监视页面使用情况和性能。
-* [监视依赖项](app-insights-asp-net-dependencies.md)，查看 REST、SQL 或其他外部资源是否会降低性能。
+* [浏览用户流](app-insights-usage-flows.md)，了解用户如何在应用中导航。
 * [使用 API](app-insights-api-custom-events-metrics.md)，发送自己的事件和指标以获取应用的性能和使用情况的更详细视图。
-* [可用性测试](app-insights-monitor-web-app-availability.md)从世界各地不断检查应用。 
-
+* [可用性测试](app-insights-monitor-web-app-availability.md)从世界各地不断检查应用。

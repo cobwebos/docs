@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 02/26/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7cdeb0a996835f976e6c80e9831479a2ff917434
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a30b5d08377594b8ad7e10b63a23e2a9d168af9c
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -41,6 +41,256 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 本页面每月更新，请不时回来查看。
 
 
+
+## <a name="february-2018"></a>2018 年 2 月
+ 
+
+### <a name="improved-navigation-for-managing-users-and-groups"></a>改进了用于管理用户和组的导航界面
+
+**类型：**更改计划  
+**服务类别：**目录管理  
+**产品功能：**目录
+ 
+
+已简化用于管理用户和组的导航体验。 现在，可以从目录概述直接导航到所有用户的列表，并更轻松地访问已删除用户的列表。 还可以从目录概述直接导航到所有组的列表，并更轻松地访问组管理设置。 在目录概述页中，还可以搜索用户、组、企业应用程序或应用注册。
+ 
+
+---
+
+
+### <a name="availability-of-sign-ins-and-audit-reports-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>世纪互联运营的 Microsoft Azure（Azure 中国区世纪互联）提供登录和审核报告
+
+**类型：**新功能  
+**服务类别：**主权云  
+**产品功能：**监视和报告
+ 
+
+世纪互联运营的 Microsoft Azure（Azure 中国区世纪互联）实例现在提供 Azure AD 活动日志报告。 包括以下日志：
+
+- **登录活动日志** - 包括与租户关联的所有登录日志。
+
+- **自助密码审核日志** - 包括所有 SSPR 审核日志。
+
+- **目录管理审核日志** - 包括目录管理（例如用户管理、应用管理等）相关的所有审核日志。
+
+使用这些日志，可以洞察环境的工作情况。 可以将提供的数据用于：
+
+- 确定用户如何使用你的应用和服务。
+
+- 排查妨碍用户完成其工作的问题。
+
+有关如何使用这些报告的详细信息，请参阅 [Azure Active Directory 报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)。
+ 
+
+---
+
+
+### <a name="use-report-reader-role-non-admin-role-to-view-azure-ad-activity-reports"></a>使用“报告读取者”角色（非管理员角色）查看 Azure AD 活动报告
+
+**类型：**新功能  
+**服务类别：**报告  
+**产品功能：**监视和报告
+ 
+
+由于某些客户反映他们想要启用非管理员角色来访问 Azure AD 活动日志，我们为充当“报告读取者”角色的用户启用了该功能，让他们使用 Azure 门户或图形 API 访问登录和审核活动。 
+
+有关如何使用这些报告的详细信息，请参阅 [Azure Active Directory 报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)。 
+
+---
+ 
+
+
+### <a name="employeeid-claim-available-as-user-attribute-and-user-identifier"></a>以用户属性和用户标识符的形式提供 EmployeeID 声明
+
+**类型：**新功能  
+**服务类别：**企业应用  
+**产品功能：**SSO
+ 
+
+可以通过企业应用程序 UI，将基于 SAML 登录的应用程序中的成员用户和 B2B 来宾的 **EmployeeID** 配置为用户标识符和用户属性。
+
+有关详细信息，请参阅[在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)。
+ 
+
+---
+
+
+### <a name="simplified-application-management-using-wildcards-in-azure-ad-application-proxy"></a>在 Azure AD 应用程序代理中使用通配符简化了应用程序管理
+
+**类型：**新功能  
+**服务类别：**应用代理  
+**产品功能：**用户身份验证
+ 
+
+为了简化应用程序部署并减少管理开销，我们现在支持使用通配符发布应用程序。 若要发布通配符应用程序，可以遵循标准的应用程序发布流，但需要在内部和外部 URL 中使用通配符。
+
+有关详细信息，请参阅 [Azure Active Directory 应用程序代理中的通配符应用程序](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-wildcard)。
+
+ 
+
+---
+ 
+### <a name="new-cmdlets-to-support-configuration-of-application-proxy"></a>开发了新的 cmdlet 用于支持应用程序代理配置
+
+**类型：**新功能  
+**服务类别：**应用代理  
+**产品功能：**平台
+ 
+
+最新版本的 AzureAD PowerShell 预览版模块包含新的 cmdlet，可让客户使用 PowerShell 来配置应用程序代理应用程序。
+
+新 cmdlet 如下： 
+
+- Get-AzureADApplicationProxyApplication
+- Get-AzureADApplicationProxyApplicationConnectorGroup
+- Get-AzureADApplicationProxyConnector
+- Get-AzureADApplicationProxyConnectorGroup
+- Get-AzureADApplicationProxyConnectorGroupMembers
+- Get-AzureADApplicationProxyConnectorMemberOf
+- New-AzureADApplicationProxyApplication
+- New-AzureADApplicationProxyConnectorGroup
+- Remove-AzureADApplicationProxyApplication
+- Remove-AzureADApplicationProxyApplicationConnectorGroup
+- Remove-AzureADApplicationProxyConnectorGroup
+- Set-AzureADApplicationProxyApplication
+- Set-AzureADApplicationProxyApplicationConnectorGroup
+- Set-AzureADApplicationProxyApplicationCustomDomainCertificate
+- Set-AzureADApplicationProxyApplicationSingleSignOn
+- Set-AzureADApplicationProxyConnector
+- Set-AzureADApplicationProxyConnectorGroup
+
+
+ 
+
+---
+ 
+
+### <a name="new-cmdlets-to-support-configuration-of-groups"></a>开发了新的 cmdlet 用于支持组配置
+
+**类型：**新功能  
+**服务类别：**应用代理  
+**产品功能：**平台
+ 
+
+最新版本的 AzureAD PowerShell 模块包含用于在 Azure AD 中管理组的 cmdlet。 这些 cmdlet 以前在 AzureADPreview 模块中提供，现已添加到 AzureAD 模块
+
+现已推出正式版的 Goup cmdlet 为： 
+
+- Get-AzureADMSGroup
+- New-AzureADMSGroup
+- Remove-AzureADMSGroup
+- Set-AzureADMSGroup
+- Get-AzureADMSGroupLifecyclePolicy
+- New-AzureADMSGroupLifecyclePolicy
+- Remove-AzureADMSGroupLifecyclePolicy
+- Add-AzureADMSLifecyclePolicyGroup
+- Remove-AzureADMSLifecyclePolicyGroup
+- Reset-AzureADMSLifeCycleGroup   
+- Get-AzureADMSLifecyclePolicyGroup
+ 
+
+---
+ 
+### <a name="a-new-release-of-azure-ad-connect-is-available"></a>推出了新版 Azure AD Connect
+
+**类型：**新功能  
+**服务类别：**AD Sync  
+**产品功能：**平台
+ 
+
+Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Active Directory 和 LDAP）之间同步数据的首选的工具。
+
+**重要说明**
+ 
+此版本引入了架构和同步规则更改。 Azure AD Connect 同步服务在升级后将触发完全导入和完全同步步骤。 有关如何更改此行为的信息，请参阅[如何在升级后推迟完全同步](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#how-to-defer-full-synchronization-after-upgrade)。
+
+此版本提供以下更新和更改：
+
+**已修复的问题**
+
+- 修复了在切换到下一页时，“分区筛选”页的后台任务的计时窗口问题。
+- 修复了在 ConfigDB 自定义操作过程中导致访问冲突的 Bug。
+- 修复了 Bug，因此可以从 SQL 连接超时恢复。
+- 修复了带 SAN 通配符的证书无法通过先决条件检查的 Bug。
+- 修复了在 AAD 连接器导出过程中导致 miiserver.exe 崩溃的 Bug。
+- 修复了在运行 AAD Connect 向导来更改配置后，可以通过不断地尝试密码登录 DC 的 Bug。
+
+**新增功能和改进**
+
+- GDPR 要求我们表明与 Microsoft 共享的客户数据的类型（遥测、运行状况等）、提供详细的联机文档的链接，以及提供更改首选项的方式。  此签入添加以下内容：
+    - 在全新安装的 EULA 页面上的数据共享和隐私通知。
+
+    - 在升级页面上的数据共享和隐私通知。
+
+    - 一项新增的任务：**隐私设置**，允许用户更改其首选项。
+ 
+- 应用程序遥测 - 管理员可以切换此类数据的开/关设置。
+
+- Azure AD 运行状况数据 - 管理员必须访问运行状况门户才能控制其运行状况设置。 等到服务策略更改以后，代理就会读取并强制实施它。
+
+- 添加了设备写回配置操作以及用于页面初始化的进度栏。
+
+- 改进了 HTML 报表的常规诊断功能以及 ZIP-Text/HTML 报表的完整数据收集功能。
+
+- 提高了自动升级的可靠性并增加了更多的遥测，确保可以确定服务器的运行状况。
+
+- 限制提供给以 AD 连接器帐户为基础的特权帐户的权限。 进行全新安装时，向导会限制特权帐户拥有的针对 MSOL 帐户的权限（前提是 MSOL 帐户已创建）。 这些更改会影响使用 Auto-Create 帐户执行的快速安装和自定义安装。
+
+- 更改了安装程序。在进行 AADConnect 全新安装时，不需要 SA 特权。
+
+- 添加了新的实用工具用于排查特定对象的同步问题。 目前，该实用程序用于检查以下问题：
+
+    - Azure AD 租户中的已同步用户对象和用户帐户之间出现 UserPrincipalName 不匹配的情况。
+  
+    - 是否已通过域筛选将对象从同步中筛选出来
+  
+    - 是否已通过组织单位 (OU) 筛选将对象从同步中筛选出来
+
+- 添加了新的实用工具，用于同步当前的密码哈希，该哈希存储在针对特定用户帐户的本地 Active Directory 中。 该实用程序不需要更改密码。 
+ 
+
+---
+ 
+
+### <a name="applications-supporting-intune-app-protection-policies-added-for-use-with-azure-ad-application-based-conditional-access"></a>添加了支持 Intune 应用保护策略的应用程序以便在基于 Azure AD 应用程序的条件访问中使用
+
+**类型：**已更改的功能  
+**服务类别：**条件访问  
+**产品功能：**标识安全和保护
+ 
+
+我们添加了更多支持基于应用程序的条件访问的应用程序。 现在，可以使用这些批准的客户端应用来访问 Office 365 和其他已连接到 Azure AD 的云应用。
+
+在 2 月底之前将添加以下应用程序 
+
+- Microsoft PowerBI
+
+- Microsoft Launcher
+
+- Microsoft Invoicing
+
+有关详细信息，请参阅：
+
+- [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Azure AD 基于应用的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+
+ 
+
+---
+ 
+
+### <a name="terms-of-use-update-to-mobile-experience"></a>移动体验的使用条款更新 
+
+**类型：**已更改的功能  
+**服务类别：**使用条款  
+**产品功能：**调控
+ 
+
+显示使用条款时，现在可以单击“浏览时遇到问题？请单击此处”。 单击此链接会在设备本地打开使用条款。 不管文档中的字体大小或设备屏幕大小如何，都可以根据需要进行缩放，以方便阅读文档。 
+ 
+
+---
+ 
 ## <a name="january-2018"></a>2018 年 1 月
  
 

@@ -2,24 +2,17 @@
 title: "Azure 页 Blob 的独特功能 | Microsoft Docs"
 description: "有关 Azure 页 Blob 的概述及其优势、用例和示例脚本。"
 services: storage
-documentationcenter: 
 author: anasouma
-manager: timlt
-editor: 
-tags: azure-resource-manager
-ms.assetid: 
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: wielriac
-ms.openlocfilehash: 019b793f6d2b4cb70514d867b78c9501240baeda
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 56e8c4c9f7ab9b40a210f284960f959a437a4e20
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="unique-features-of-azure-page-blobs"></a>Azure 页 Blob 的独特功能
 
@@ -35,21 +28,21 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 让我们从 Azure IaaS 磁盘着手，讨论页 Blob 的几种用例。 Azure 页 Blob 是 Azure IaaS 虚拟磁盘平台的主干。 Azure OS 磁盘和数据磁盘都实现为虚拟磁盘，其中的数据持久保存在 Azure 存储平台中，然后传送到虚拟机以获得最大性能。 Azure 磁盘以 Hyper-V [VHD 格式](https://technet.microsoft.com/library/dd979539.aspx)保存，并在 Azure 存储中存储为[页 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)。 除了对 Azure IaaS VM 使用虚拟磁盘以外，页 Blob 还可实现 PaaS 和 DBaaS 方案，例如 Azure SQL 数据库服务，该服务使用页 Blob 存储 SQL 数据，以便针对数据库快速执行随机读写操作。 另一个示例是，如果使用 PaaS 服务作为共享媒体来访问协作式视频编辑应用程序，则页 Blob 可以实现对媒体中随机位置的快速访问。 此外，多个用户可以使用页 Blob 快速高效地编辑和合并同一媒体。 
 
 第一方 Microsoft 服务（例如 Azure Site Recovery 和 Azure 备份）以及许多第三方开发商已使用页 Blob 的 REST 接口实现了行业领先的创新。 下面是在 Azure 上实现的一些独特方案： 
-* 应用程序主导的增量快照管理：应用程序可以利用页 Blob 快照和 REST API 来保存应用程序检查点，而不会产生高昂的数据复制成本。 可能的原因是我们支持页 Blob 的本地快照，而这些快照不需要复制整个数据。 使用这些公共快照 API 还可以访问和复制快照之间的增量数据。
+* 应用程序主导的增量快照管理：应用程序可以利用页 Blob 快照和 REST API 来保存应用程序检查点，而不会产生高昂的数据复制成本。 Azure 存储支持页 Blob 的本地快照，这类快照不要求复制整个 blob。 使用这些公共快照 API 还可以访问和复制快照之间的增量数据。
 * 将应用程序和数据从本地实时迁移到云中：复制本地数据并使用 REST API 将数据直接写入 Azure 页 Blob，同时，本地 VM 可继续保持运行。 与目标同步后，可以使用该数据快速故障转移到 Azure VM。 这样，便可以在几乎不造成停机的情况下，将 VM 和虚拟磁盘从本地迁移到云中，因为数据迁移在后台发生，同时我们可以继续使用 VM，并且故障转移所需的停机时间很短（以分钟计）。
 * [基于 SAS](../common/storage-dotnet-shared-access-signature-part-1.md) 的共享访问，可以实现支持并发控制的方案，例如多个读取者和单个写入者。
 
 ## <a name="page-blob-features"></a>页 Blob 的功能
 
 ### <a name="rest-api"></a>REST API
-请参阅以下文档开始[使用页 Blob 进行开发](storage-dotnet-how-to-use-blobs.md)。 我们举例说明如何使用适用于 .NET 的存储客户端库来访问页 Blob。 
+请参阅以下文档开始[使用页 Blob 进行开发](storage-dotnet-how-to-use-blobs.md)。 作为示例，请查看如何使用适用于 .NET 的存储客户端库来访问页 Blob。 
 
 下图描绘了帐户、容器和页 Blob 之间的整体关系。
 
 ![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure1.png)
 
 #### <a name="creating-an-empty-page-blob-of-a-certain-size"></a>创建特定大小的空页 Blob
-为了创建页 Blob，让我们先创建一个 CloudBlobClient 对象，其中包含用于访问存储帐户（图 1 中的 pbaccount）的 Blob 存储的基 URI；另外创建 StorageCredentialsAccountAndKey 对象，如下所示。  然后，该示例演示如何创建对 CloudBlobContainer 对象的引用，并创建容器 (testvhds)（如果不存在）。  然后，我们可以使用 CloudBlobContainer 对象，通过指定所要访问的页 Blob 名称 (os4.vhd)，来创建对 CloudPageBlob 对象的引用。 然后，为了创建页 Blob，我们将调用所要创建的 Blob 的最大大小中传递的 [CloudPageBlob.Create](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.create?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Create_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_)。  blobSize 必须是 512 字节的倍数。
+为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount*）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例中所示。 然后，该示例展示了如何创建对 **CloudBlobContainer** 对象的引用，然后创建容器 (*testvhds*)（如果它尚未存在）。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 若要创建页 Blob，请调用 [CloudPageBlob.Create](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.create?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Create_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) 并传入要创建的 blob 的最大大小。 *blobSize* 必须是 512 字节的倍数。
 
 ```csharp
 using Microsoft.WindowsAzure.StorageClient;
@@ -78,7 +71,8 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 ```
 
 #### <a name="writing-pages-to-a-page-blob"></a>将页面写入页 Blob
-若要写入页面，请使用 [CloudPageBlob.WritePages](/library/microsoft.windowsazure.storageclient.cloudpageblob.writepages.aspx) 方法。  这样，便可以写入一组有序页面（最大 4MB）。 写入的偏移量必须在某个 512 字节边界处 (startingOffset % 512 == 0) 开始，在某个 512 边界 - 1 处结束。  以下代码演示了针对所要访问的 Blob 对象调用 WritePages 的示例：
+若要写入页面，请使用 [CloudPageBlob.WritePages](/library/microsoft.windowsazure.storageclient.cloudpageblob.writepages.aspx) 方法。  这样，便可以写入一组有序页面（最大 4MB）。 写入的偏移量必须在某个 512 字节边界处 (startingOffset % 512 == 0) 开始，在某个 512 边界 - 1 处结束。  下面的代码示例展示了如何对 blob 调用 **WritePages**：
+
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
 ```
@@ -123,14 +117,14 @@ foreach (PageRange range in pageRanges)
 #### <a name="leasing-a-page-blob"></a>租赁页 Blob
 “租赁 Blob”操作在 Blob 上针对写入与删除操作建立和管理一把锁。 如果要从多个客户端访问页 Blob，则此操作非常有用，因为它可以确保每次只有一个客户端能够写入 Blob。 例如，Azure 磁盘利用此租赁机制来确保磁盘只能由一个 VM 管理。 锁的持续时间可以是 15 到 60 秒，也可以是无限期。 有关更多详细信息，请参阅[此文档](/rest/api/storageservices/lease-blob)。
 
-> 使用以下链接获取适用于其他许多应用程序方案的[代码示例](/resources/samples/?service=storage&term=blob&sort=0)。 
+> 使用以下链接获取适用于其他许多应用程序方案的[代码示例](/resources/samples/?service=storage&term=blob&sort=0 )。 
 
 除了丰富的 REST API 以外，页 Blob 还提供共享访问、持久性和增强的安全性。 后续的篇幅将更详细地介绍这些优势。 
 
 ### <a name="concurrent-access"></a>并发访问
 页 Blob REST API 及其租赁机制可让应用程序从多个客户端访问页 Blob。 例如，假设你需要构建一个要与多个用户共享存储对象的分布式云服务。 该服务可能是向多个用户提供大型图像集合的 Web 应用程序。 实现此目的的方法之一是使用包含附加磁盘的 VM。 此方法的弊端包括：(i) 存在只能将一个磁盘附加到一个 VM 的约束，因此限制了可伸缩性和灵活性，并增大了风险。 如果该 VM 或其上运行的服务出现问题，则由于租赁机制，只能在租约过期或中断之后，才能访问图像；(ii) 使用 IaaS VM 会产生额外的成本。 
 
-一种替代做法是直接通过 Azure 存储 REST API 使用页 Blob。 使用此方法不会产生高昂的 IaaS VM 使用成本；可直接从多个客户端访问页 Blob，因此获得完全的灵活性；不需要附加/分离磁盘，因此简化了服务管理；可消除 VM 出现问题的风险。 此外，在随机读/写操作方面，此方法提供的性能级别与使用磁盘时相同
+一种替代做法是直接通过 Azure 存储 REST API 使用页 Blob。 使用此方法不会产生高昂的 IaaS VM 使用成本；可直接从多个客户端访问页 Blob，因此获得完全的灵活性；不需要附加/分离磁盘，因此简化了经典部署模型；可消除 VM 出现问题的风险。 此外，在随机读/写操作方面，此方法提供的性能级别与使用磁盘时相同
 
 ### <a name="durability-and-high-availability"></a>持久性和高可用性
 标准存储和高级存储都属于持久性存储，其中的页 Blob 数据始终得到复制，以确保持久性和高可用性。 有关 Azure 存储冗余的详细信息，请参阅[此文档](../common/storage-redundancy.md)。 Azure 为 IaaS 磁盘和页 Blob 不断提供企业级持久性，[年化故障率](https://en.wikipedia.org/wiki/Annualized_failure_rate)为 0%，达到行业领先水平。 也就是说，Azure 永远不会丢失客户的页 Blob 数据。 
@@ -141,7 +135,3 @@ foreach (PageRange range in pageRanges)
 此外，许多企业已在本地数据中心运行关键工作负荷。 若要将工作负荷迁移到云中，一个主要的考虑因素是复制数据时需要多长时间的停机，以及在交接之后出现不可预见问题的风险。 在许多情况下，停机时间可能是迁移到云的一个阻碍因素。 Azure 使用页 Blob REST API 解决了此问题，可以在几乎不会对关键工作负荷造成干扰的情况下实现云迁移。 
 
 有关如何创建快照以及如何从快照还原页 Blob 的示例，请参阅[使用增量快照设置备份过程](../../virtual-machines/windows/incremental-snapshots.md)一文。
-
-
-## <a name="summary"></a>摘要
-Azure 致力于为客户提供同类最佳的体验。 我们构建了具有企业级数据持久性的存储平台，我们的客户可以放心使用 Azure 来存储其关键数据。 Azure 为页 Blob 提供独特的 API 支持和开发人员体验，这是其他公有云平台所不能提供的。 此体验成就了众多的第一方和第三方创新，例如无缝云迁移、卓越的备份/灾难恢复体验、PaaS 和 DBaaS 支持、分布式存储解决方案和 IaaS VM/磁盘的其他创新。 总体而言，凭借这些独特的功能，Azure 在所有公有云平台中出类拔萃，Azure 客户可以受益于其他任何云平台都不能提供的这些附加价值。
