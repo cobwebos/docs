@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e54630d97dee2388ffc9c8877faeac269df1609
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 60430f08f54232db619efd054ca3a7d9a44f4cdc
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>教程：Azure Active Directory 与 Palo Alto Networks - 管理 UI 集成
 
@@ -106,11 +106,14 @@ ms.lasthandoff: 01/19/2018
 
 3. 在“Palo Alto Networks - 管理 UI 域和 URL”上，执行以下步骤：
 
-    ![Palo Alto Networks - 管理 UI 域和 URL 单一登录信息](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_url.png)
-
+    ![Palo Alto Networks - 管理 UI 域和 URL 单一登录信息](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_general_show_advanced_url.png)
+    
     a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<Customer Firewall FQDN>/php/login.php`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<Customer Firewall FQDN>/SAML20/SP`
+    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<Customer Firewall FQDN>:443/SAML20/SP`
+    
+    c. 在“回复 URL”文本框中，使用以下模式键入断言使用者服务 (ACS) URL：`https://<Customer Firewall FQDN>:443/SAML20/SP/ACS`
+    
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请联系 [Palo Alto Networks - 管理 UI 客户端支持团队](https://support.paloaltonetworks.com/support)。 
@@ -136,7 +139,7 @@ ms.lasthandoff: 01/19/2018
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d.单击“下一步”。 单击“确定”
+    d. 单击“确定”
 
     > [!NOTE]
     > 有关属性的详细信息，可参阅以下文章。
@@ -163,13 +166,71 @@ ms.lasthandoff: 01/19/2018
 
 11. 在“导入”窗口执行以下操作
 
-    ![配置 Palo Alto 单一登录](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_admin3.png)
+    ![配置 Palo Alto 单一登录](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp.png)
 
-    a. 在“配置文件名称”文本框中提供名称，如 Azure AD 管理 UI。
+    a. 在“配置文件名称”文本框中，提供一个名称，例如 AzureAD Admin UI。
     
     b. 在“标识提供者元数据”中，单击“浏览”并选择从 Azure 门户下载的元数据 xml 文件。
     
-    c. 单击 **“确定”**
+    c. 取消选择“验证标识提供者证书”。
+    
+    d. 单击 **“确定”**
+    
+    e. 通过选择“提交”按钮提交有关防火墙的配置。
+
+12. 从左侧导航栏中选择“SAML 标识提供者”，然后单击在前面的步骤中创建的 SAML 标识提供者配置文件（例如 AzureAD Admin UI）。 
+    
+  ![配置 Palo Alto 网络单一登录](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_idp_select.png)
+
+13. 在“SAML 标识提供者服务器配置文件”窗口中执行以下操作
+
+  ![配置 Palo Alto 网络单一注销](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
+  
+  a. 在“标识提供者 SLO URL”文本框中，删除之前导入的 SLO URL 并添加以下 URL：`https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0`
+  
+  b. 单击 **“确定”**
+
+
+14. 在 Palo Alto 网络防火墙的管理 UI 上，单击“设备”，并选择“管理员角色”。
+
+15. 单击“添加”按钮。 在“管理员角色配置文件”窗口中，为管理员角色提供一个名称（例如 fwadmin）。 此管理员角色名称应当与标识提供者发送的 SAML 管理员角色属性名称匹配。 在步骤 5 中，创建了管理员角色名称和值。 
+
+  ![配置 Palo Alto 网络管理员角色](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_adminrole.png)
+  
+16. 在防火墙的管理 UI 上，单击“设备”并选择“身份验证配置文件”
+
+17. 单击“添加”按钮。 在“身份验证配置文件”窗口中，执行以下操作： 
+
+ ![配置 Palo Alto 网络身份验证配置文件](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_authentication_profile.png)
+
+   a. 在“名称”文本框中，提供一个名称，例如 AzureSAML_Admin_AuthProfile
+    
+   b. 在“类型”下拉列表中，选择“SAML” 
+   
+   c. 在“IdP 服务器配置文件”下拉列表中，选择合适的 SAML 标识提供者服务器配置文件（例如 AzureAD Admin UI）
+   
+   c. 选中“启用单一注销”复选框
+    
+   d. 在“管理员角色属性”文本框中输入属性名称（例如 adminrole）。 
+   
+   e. 选择“高级”选项卡，然后单击“允许列表”窗格中的“添加”按钮。 选择可以通过此配置文件进行身份验证的所有或特定用户和组。 当用户进行身份验证时，防火墙将根据此列表中的条目来匹配关联的用户名或组。 如果你未添加条目，则没有用户可以进行身份验证。
+   
+   ![配置 Palo Alto 网络身份验证配置文件](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_allowlist.png)
+   
+   f. 单击 **“确定”**
+
+18. 若要使管理员能够通过 SAML SSO 来使用 Azure，请单击“设备”并选择“设置”。 在“设置”窗格中，选择“管理”选项卡，然后单击“身份验证设置”下的齿轮图标。 
+
+ ![配置 Palo Alto 网络身份验证设置](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsetup.png)
+
+19. 选择在步骤 17 中创建的 SAML 身份验证配置文件。 （例如 AzureSAML_Admin_AuthProfile）
+
+ ![配置 Palo Alto 网络身份验证设置](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_authsettings.png)
+
+20. 单击 **“确定”**
+
+21. 通过选择“提交”按钮来提交配置。
+
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -205,7 +266,7 @@ ms.lasthandoff: 01/19/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-a-palo-alto-networks---admin-ui-test-user"></a>创建 Palo Alto Networks - 管理 UI 测试用户
 

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 02/23/2018
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 7ceb4bf97c29a18d6879af55615eea46037c51ce
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 89513d6c1b9aa9f4709359d6d7681bff9c291618
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
 本教程说明如何使用 Azure 资源管理器模板来部署和集成 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) Web 应用以及示例 Web 应用程序。
@@ -35,16 +35,14 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="prerequisites"></a>先决条件
 > [!TIP]
-> 虽然本教程不会假设先前有使用 Azure 资源管理器模板或 JSON 的经验，但是，如果想修改引用的模板或部署选项，则需要有其中每个领域的知识。
+> 虽然本教程不会假设先前有使用 Azure 资源管理器模板或 JSON 的经验，但是，如果想修改引用的模板或部署选项，则需要掌握有关其中每个领域的知识。
 > 
 > 
 
-在按照本教程中的说明操作之前，请确保已有下列各项：
-
-* Azure 订阅。 Azure 是基于订阅的平台。  有关获取订阅的详细信息，请参阅[购买选项](https://azure.microsoft.com/pricing/purchase-options/)、[成员优惠](https://azure.microsoft.com/pricing/member-offers/)或[免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+在按照本教程中的说明操作之前，请确保具有 Azure 订阅。 Azure 是基于订阅的平台。  有关获取订阅的详细信息，请参阅[购买选项](https://azure.microsoft.com/pricing/purchase-options/)、[成员优惠](https://azure.microsoft.com/pricing/member-offers/)或[免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a id="CreateDB"></a>步骤 1：下载模板文件
-让我们从下载模板文件开始，我们会在本教程中使用这些文件。
+首先，让我们下载本教程所需的模板文件。
 
 1. 将[创建 Azure Cosmos DB 帐户、Web 应用和部署演示应用程序示例](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json)模板下载到本地文件夹（例如 C:\Azure Cosmos DBTemplates）。 此模板将部署 Azure Cosmos DB 帐户、应用服务 Web 应用和 Web 应用程序。  它还会自动配置 Web 应用程序，以连接到 Azure Cosmos DB 帐户。
 2. 将[创建 Azure Cosmos DB 帐户和 Web 应用示例](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json)模板下载到本地文件夹（例如 C:\Azure Cosmos DBTemplates）。 此模板将部署 Azure Cosmos DB 帐户、应用服务 Web 应用，并修改站点的应用程序设置以便轻松地呈现 Azure Cosmos DB 连接信息，但不包含 Web 应用程序。  
@@ -52,10 +50,10 @@ ms.lasthandoff: 12/05/2017
 <a id="Build"></a>
 
 ## <a name="step-2-deploy-the-azure-cosmos-db-account-app-service-web-app-and-demo-application-sample"></a>步骤 2：部署 Azure Cosmos DB 帐户、应用服务 Web 应用和演示应用程序示例
-现在让我们来部署第一个模板。
+现在，让我们来部署第一个模板。
 
 > [!TIP]
-> 该模板不会验证下面输入的 Web 应用名称和 Azure Cosmos DB 帐户名称是否 a) 有效以及 b) 可用。  强烈建议在提交部署之前，先确认打算提供的名称的可用性。
+> 该模板不会验证在下面的模板中输入的 Web 应用名称和 Azure Cosmos DB 帐户名称是否 a) 有效以及 b) 可用。  强烈建议在提交部署之前，先确认打算提供的名称的可用性。
 > 
 > 
 
@@ -77,16 +75,13 @@ ms.lasthandoff: 12/05/2017
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment5.png)
 6. 依次单击“查看法律条款”、“购买”和“创建”以开始部署。  选择“固定到仪表板”，让生成的部署轻松显示在 Azure 门户的主页上。
    ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment6.png)
-7. 部署完成后，会打开“资源组”边栏选项卡。
-   ![资源组边栏选项卡的屏幕截图](./media/create-website/TemplateDeployment7.png)  
-8. 若要使用应用程序，只需导航到 Web 应用 URL（上述示例中的 URL 是 http://mydemodocdbwebapp.azurewebsites.net）。  会看到下列 Web 应用程序：
+7. 部署完成后，“资源组”窗格会打开。
+   ![资源组窗格的屏幕截图](./media/create-website/TemplateDeployment7.png)  
+8. 若要使用应用程序，请导航到 Web 应用 URL（上述示例中的 URL 是 http://mydemodocdbwebapp.azurewebsites.net）。  会看到下列 Web 应用程序：
    
    ![示例待办事项应用程序](./media/create-website/image2.png)
-9. 继续在 Web 应用中创建几个任务，并返回到 Azure 门户中的资源组边栏选项卡。 单击“资源”列表中的“Azure Cosmos DB 帐户”资源，并单击“查询浏览器”。
-    ![屏幕截图：突出显示 Web 应用的“摘要”可重用功能区](./media/create-website/TemplateDeployment8.png)  
+9. 继续在 Web 应用中创建几个任务，并返回到 Azure 门户中的资源组窗格。 单击“资源”列表中的“Azure Cosmos DB 帐户”资源，并单击“数据浏览器”。
 10. 运行默认查询“SELECT * FROM c”，并检查结果。  请注意，查询已检索在上述步骤 7 中创建的待办事项的 JSON 表示形式。  随意尝试查询；例如，尝试运行 SELECT * FROM c WHERE c.isComplete = true，返回所有标记为完成的待办事项。
-    
-    ![屏幕截图：显示查询结果的“查询资源管理器”和“结果”边栏选项卡](./media/create-website/image5.png)
 11. 任意体验 Azure Cosmos DB 门户，或修改示例待办事项应用程序。  准备好时，让我们来部署另一个模板。
 
 <a id="Build"></a> 
@@ -117,8 +112,8 @@ ms.lasthandoff: 12/05/2017
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment5.png)
 6. 依次单击“查看法律条款”、“购买”和“创建”以开始部署。  选择“固定到仪表板”，让生成的部署轻松显示在 Azure 门户的主页上。
    ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment6.png)
-7. 部署完成后，会打开“资源组”边栏选项卡。
-   ![资源组边栏选项卡的屏幕截图](./media/create-website/TemplateDeployment7.png)  
+7. 部署完成后，“资源组”窗格会打开。
+   ![资源组窗格的屏幕截图](./media/create-website/TemplateDeployment7.png)  
 8. 单击“资源”列表中的“Web 应用”资源，然后单击“应用程序设置”![资源组的屏幕截图](./media/create-website/TemplateDeployment9.png)  
 9. 注意，Azure Cosmos DB 终结点和每个 Azure Cosmos DB 主密钥都存在相应的应用程序设置。
 
@@ -135,7 +130,7 @@ ms.lasthandoff: 12/05/2017
 * 若要了解有关 Azure 资源管理器模板的详细信息，请单击[此处](https://msdn.microsoft.com/library/azure/dn790549.aspx)。
 
 ## <a name="whats-changed"></a>发生的更改
-* 有关从网站更改为应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
+* 有关从网站更改为 应用服务的指南，请参阅 [Azure 应用服务及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
 > 如果想要在注册 Azure 帐户之前开始使用 Azure 应用服务，请转到[试用应用服务](http://go.microsoft.com/fwlink/?LinkId=523751)，可以通过该页面在应用服务中立即创建一个生存期较短的入门 Web 应用。 不需要使用信用卡，也不需要做出承诺。

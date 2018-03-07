@@ -4,13 +4,13 @@ description: "概述 Azure Migrate 服务中的已知问题，并针对常见错
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: troubleshooting
-ms.date: 12/12/2017
+ms.date: 02/21/2018
 ms.author: raynew
-ms.openlocfilehash: 1fcc9e12e63eda73d53ae2085bc2a64d31ea2067
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 249de45dbd9bedf1b3c2d2a5957acf31d6c0d243
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/12/2017
 
 收集器不能使用从门户复制的项目 ID 和密钥连接到项目。
 
-请确保你已复制和粘贴正确信息。 若要排查问题，请按照以下步骤安装 Microsoft Monitoring Agent (MMA)：
+请确保你已复制和粘贴正确信息。 若要进行故障排除，请安装 Microsoft Monitoring Agent (MMA)，并验证 MMA 是否可以连接到该项目，如下所述：
 
 1. 在收集器 VM 上，下载 [MMA](https://go.microsoft.com/fwlink/?LinkId=828603)。
 2. 请双击下载文件，开始安装。
@@ -69,9 +69,9 @@ ms.lasthandoff: 12/12/2017
 
 **问题** | **修补程序**
 --- | ---
-不支持启动类型 | 在运行迁移之前更改为 BIOS。
+引导类型不受支持 | Azure 不支持引导类型为 EFI 的 VM。 建议在运行迁移之前将引导类型转换为 BIOS。 <br/><br/>可以使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/tutorial-migrate-on-premises-to-azure) 执行此类 VM 的迁移，因为它在迁移期间会将 VM 的引导类型转换为 BIOS。
 磁盘计数超过限制 | 在迁移之前从计算机中删除未使用的磁盘。
-磁盘大小超过限制 | 在迁移之前将磁盘压缩至小于 4 TB。 
+磁盘大小超过限制 | Azure 支持大小最高为 4 TB 的磁盘。 在迁移之前将磁盘压缩至小于 4 TB。 
 指定位置中磁盘不可用 | 在迁移之前请确保磁盘已在目标位置。
 不可用于指定冗余的磁盘 | 磁盘应使用在评估设置中定义的冗余存储类型（默认为 LRS）。
 由于内部错误无法确定磁盘适用性 | 请尝试为组创建一个新评估。 
@@ -83,12 +83,15 @@ ms.lasthandoff: 12/12/2017
 由于内部错误，无法确定一个或多个网络适配器的适用性。 | 请尝试为组创建一个新评估。
 未找到所需存储性能的 VM。 | 计算机所需的存储性能（IOPS/吞吐量）超出了 Azure VM 支持范围。 在迁移之前，减少计算机的存储需求。
 未找到具有所需网络性能的 VM。 | 计算机所需的网络性能（输入/输出）超出了 Azure VM 支持。 减少计算机的网络要求。 
-未找到具有指定定价层的 VM。 | 检查定价层设置。 
+在指定的定价层未找到 VM。 | 如果定价层设置为“标准”，请考虑在迁移到 Azure 之前缩小 VM。 如果大小调整为“基本”，请考虑将评估的定价层更改为“标准”。 
 未在指定位置找到 VM。 | 在迁移之前使用不同目标位置。
-Linux OS 支持问题 | 请确保使用这些支持的[操作系统](../virtual-machines/linux/endorsed-distros.md)运行 64 位应用。
-Windows OS 支持问题 | 请确保正在运行受支持的操作系统。 [了解详细信息](concepts-assessment-calculation.md#azure-suitability-analysis)
-未知操作系统。 | 请检查 vCenter 中指定的操作系统是否正确，并重复发现过程。
-需要 Visual Studio 订阅。 | Visual Studio (MSDN) 订阅上仅支持 Windows 客户端操作系统。
+未知操作系统 | VM 的操作系统在 vCenter Server 中指定为“其他”，因此，Azure Migrate 无法识别 VM 的 Azure 迁移就绪性。 在迁移计算机之前，请确保 Azure [支持](https://aka.ms/azureoslist)计算机中运行的 OS。
+有条件支持的 Windows OS | OS 已过了其支持日期结束时间，并且需要一个自定义支持协议 (CSA) 才能[在 Azure 中受支持](https://aka.ms/WSosstatement)，请考虑在迁移到 Azure 之前升级 OS。
+不受支持的 Windows OS | Azure 仅支持[所选的 Windows OS 版本](https://aka.ms/WSosstatement)，请考虑在迁移到 Azure 之前升级计算机的 OS。 
+有条件认可的 Linux OS | Azure 仅认可[所选的 Linux OS 版本](../virtual-machines/linux/endorsed-distros.md)，请考虑在迁移到 Azure 之前升级计算机的 OS。
+未经认可的 Linux OS | 计算机可以在 Azure 中引导，但是 Azure 未提供 OS 支持，请考虑在迁移到 Azure 之前将 OS 升级到[经认可的 Linux 版本](../virtual-machines/linux/endorsed-distros.md)
+不受支持的 OS 位数 | 采用 32 位 OS 的 VM 可以在 Azure 中引导，但建议在迁移到 Azure 之前将 VM 的 OS 从 32 位升级到 64 位。
+需要 Visual Studio 订阅。 | 计算机中运行了一个仅在 Visual Studio 订阅中受支持的 Windows 客户端 OS。
 
 
 ## <a name="collect-logs"></a>收集日志
