@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 456e5bd722d103f10779aa0cd99bf01fdcf8a7fe
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 2601d386bdacbe005b2930a44db531a0b58fb7b5
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,9 +35,15 @@ ms.lasthandoff: 02/13/2018
 
 具体而言，此 Azure SQL 数据仓库连接器支持：
 
-- 使用 SQL 身份验证复制数据。
+- 将 **SQL 身份验证**和 **Azure Active Directory 应用程序令牌身份验证**与服务主体或托管的服务标识 (MSI) 配合使用来复制数据。
 - 作为源，使用 SQL 查询或存储过程检索数据。
 - 作为接收器，使用 PolyBase 或大容量插入加载数据。 若要获得更好的复制性能，**建议**使用前者。
+
+> [!IMPORTANT]
+> 请注意，PolyBase 仅支持 SQL 身份验证，不支持 Azure Active Directory 身份验证。
+
+> [!IMPORTANT]
+> 如果使用 Azure Integration Runtime 复制数据，请将 [Azure SQL Server 防火墙](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)配置为[允许 Azure 服务访问服务器](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 如果使用自我托管的集成运行时复制数据，请将 Azure SQL Server 防火墙配置为允许合适的 IP 范围，包括用来连接到 Azure SQL 数据库的计算机 IP。
 
 ## <a name="getting-started"></a>入门
 
@@ -52,14 +58,21 @@ Azure SQL 数据仓库链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureSqlDW** | 是 |
-| connectionString |为 connectionString 属性指定连接到 Azure SQL 数据仓库实例所需的信息。 仅支持基本身份验证。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
+| connectionString |为 connectionString 属性指定连接到 Azure SQL 数据仓库实例所需的信息。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
+| servicePrincipalId | 指定应用程序的客户端 ID。 | 将 AAD 身份验证与服务主体配合使用时是必需的。 |
+| servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 将 AAD 身份验证与服务主体配合使用时是必需的。 |
+| tenant | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 将 AAD 身份验证与服务主体配合使用时是必需的。 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure 集成运行时或自承载集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
+有关各种身份验证类型，请参阅分别关于先决条件和 JSON 示例的以下各部分：
 
-> [!IMPORTANT]
-> 配置 [Azure SQL 数据仓库防火墙](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)和数据库服务器以[允许 Azure 服务访问该服务器](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)。 此外，如果将数据从 Azure 外部（包括配有自我托管集成运行时的本地数据源）复制到 Azure SQL 数据仓库，请针对将数据发送到 Azure SQL 数据仓库的计算机配置适当的 IP 地址范围。
+- [使用 SQL 身份验证](#using-sql-authentication)
+- [使用 AAD 应用程序令牌身份验证 - 服务主体](#using-service-principal-authentication)
+- [使用 AAD 应用程序令牌身份验证 - 托管的服务标识](#using-managed-service-identity-authentication)
 
-**示例：**
+### <a name="using-sql-authentication"></a>使用 SQL 身份验证
+
+**使用 SQL 身份验证的链接服务示例：**
 
 ```json
 {
@@ -70,6 +83,113 @@ Azure SQL 数据仓库链接服务支持以下属性：
             "connectionString": {
                 "type": "SecureString",
                 "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="using-service-principal-authentication"></a>使用服务主体身份验证
+
+若要使用基于服务主体的 AAD 应用程序令牌身份验证，请执行以下步骤：
+
+1. **[从 Azure 门户创建 Azure Active Directory 应用程序](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)。**  记下应用程序名称，以及用来定义链接服务的以下值：
+
+    - 应用程序 ID
+    - 应用程序密钥
+    - 租户 ID
+
+2. 使用 Azure 门户为 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**（如果尚未这样做）。 AAD 管理员可以是 AAD 用户或 AAD 组。 如果你向具有 MSI 的组授予了管理员角色，请跳过下面的步骤 3 和 4，因为管理员对 DB 具有完全访问权限。
+
+3. **为服务主体创建包含的数据库用户**：使用至少具有 ALTER ANY USER 权限的 AAD 标识，通过 SSMS 之类的工具连接到要从中复制或要将数据复制到的数据仓库，并执行以下 T-SQL。 可从[此处](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)了解有关包含的数据库用户的详细信息。
+    
+    ```sql
+    CREATE USER [your application name] FROM EXTERNAL PROVIDER;
+    ```
+
+4. 像通常对 SQL 用户所做的那样**向服务主体授予所需的权限**，例如，通过执行以下命令：
+
+    ```sql
+    EXEC sp_addrolemember '[your application name]', 'readonlyuser';
+    ```
+
+5. 在 ADF 中，配置 Azure SQL 数据仓库链接服务。
+
+
+**使用服务主体身份验证的链接服务示例：**
+
+```json
+{
+    "name": "AzureSqlDWLinkedService",
+    "properties": {
+        "type": "AzureSqlDW",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+            },
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="using-managed-service-identity-authentication"></a>使用托管服务标识身份验证
+
+可将数据工厂与代表此特定数据工厂的[托管服务标识 (MSI)](data-factory-service-identity.md) 相关联。 可以使用此服务标识进行 Azure SQL 数据仓库身份验证，这允许此指定的工厂访问数据仓库并从中复制数据或将数据复制到其中。
+
+若要使用基于 MSI 的 AAD 应用程序令牌身份验证，请执行以下步骤：
+
+1. **在 Azure AD 中创建一个组，并使工厂 MSI 成为该组的成员**。
+
+    a. 从 Azure 门户中找到数据工厂服务标识。 转到你的数据工厂 ->“属性”-> 复制**服务标识 ID**。
+
+    b. 安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) 模块，使用 `Connect-AzureAD` 命令进行登录，运行以下命令来创建组并将数据工厂 MSI 添加为成员。
+    ```powershell
+    $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
+    Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
+    ```
+
+2. 使用 Azure 门户为 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**（如果尚未这样做）。
+
+3. **为 AAD 组创建包含的数据库用户**：使用至少具有 ALTER ANY USER 权限的 AAD 标识，通过 SSMS 之类的工具连接到要从中复制或要将数据复制到的数据仓库，并执行以下 T-SQL。 可从[此处](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)了解有关包含的数据库用户的详细信息。
+    
+    ```sql
+    CREATE USER [your AAD group name] FROM EXTERNAL PROVIDER;
+    ```
+
+4. 像通常对 SQL 用户所做的那样**向 AAD 组授予所需的权限**，例如，通过执行以下命令：
+
+    ```sql
+    EXEC sp_addrolemember '[your AAD group name]', 'readonlyuser';
+    ```
+
+5. 在 ADF 中，配置 Azure SQL 数据仓库链接服务。
+
+**使用 MSI 身份验证的链接服务示例：**
+
+```json
+{
+    "name": "AzureSqlDWLinkedService",
+    "properties": {
+        "type": "AzureSqlDW",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30"
             }
         },
         "connectVia": {
@@ -259,6 +379,9 @@ GO
 
 * 如果源数据位于 **Azure Blob 或 Azure Data Lake Store** 中，并且格式与 PolyBase 兼容，则可使用 PolyBase 直接复制到 Azure SQL 数据仓库。 有关详细信息，请参阅**[使用 PolyBase 直接复制](#direct-copy-using-polybase)**。
 * 如果 PolyBase 最初不支持源数据存储和格式，可改用**[使用 PolyBase 的暂存复制](#staged-copy-using-polybase)**功能。 通过自动将数据转换为 PolyBase 兼容的格式并将数据存储在 Azure Blob 存储中，它还可提供更高的吞吐量。 然后，它会将数据载入 SQL 数据仓库。
+
+> [!IMPORTANT]
+> 请注意，PolyBase 仅支持 Azure SQL 数据仓库 SQL 身份验证，不支持 Azure Active Directory 身份验证。
 
 ### <a name="direct-copy-using-polybase"></a>使用 PolyBase 直接复制
 
