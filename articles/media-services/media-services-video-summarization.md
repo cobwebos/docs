@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 92c730addb69bc4d12708ccd789edce0c2336c80
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4f40c9364d02929fe5bb193b4e8eb0a0157d34d2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒体视频缩略图创建视频摘要
 ## <a name="overview"></a>概述
@@ -44,7 +44,11 @@ ms.lasthandoff: 12/11/2017
 ## <a name="task-configuration-preset"></a>任务配置（预设）
 使用 **Azure Media Video Thumbnails** 创建视频缩略图任务时，必须指定配置预设值。 以上缩略图示例使用以下 JSON 基本配置创建：
 
-    {"version":"1.0"}
+```json
+    {
+        "version":"1.0"
+    }
+```
 
 当前你可更改以下参数：
 
@@ -63,6 +67,7 @@ ms.lasthandoff: 12/11/2017
 
 下面的 JSON 设置可用的参数。
 
+```json
     {
         "version": "1.0",
         "options": {
@@ -71,6 +76,7 @@ ms.lasthandoff: 12/11/2017
             "fadeInFadeOut": "true"
         }
     }
+```
 
 ## <a name="net-sample-code"></a>.NET 示例代码
 
@@ -78,15 +84,18 @@ ms.lasthandoff: 12/11/2017
 
 1. 创建资产并将媒体文件上传到资产。
 2. 使用基于配置文件的视频缩略图任务创建一个作业，该配置文件包含以下 json 预设值： 
-   
-        {                
-            "version": "1.0",
-            "options": {
-                "outputAudio": "true",
-                "maxMotionThumbnailDurationInSecs": "30",
-                "fadeInFadeOut": "false"
+    
+    ```json
+            {                
+                "version": "1.0",
+                "options": {
+                    "outputAudio": "true",
+                    "maxMotionThumbnailDurationInSecs": "30",
+                    "fadeInFadeOut": "false"
+                }
             }
-        }
+    ```
+
 3. 下载输出文件。 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
@@ -95,6 +104,7 @@ ms.lasthandoff: 12/11/2017
 
 #### <a name="example"></a>示例
 
+```csharp
     using System;
     using System.Configuration;
     using System.IO;
@@ -262,6 +272,7 @@ ms.lasthandoff: 12/11/2017
 
         }
     }
+```
 
 ### <a name="video-thumbnail-output"></a>视频缩略图输出
 [视频缩略图输出](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)

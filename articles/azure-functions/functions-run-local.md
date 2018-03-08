@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: f19fa1ac4dd970ca3df2c0fdbf8e0778e171c43d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 59a15697641dd8e4bdfdb974436d46a34b47ffb5
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
 
@@ -35,14 +35,6 @@ ms.lasthandoff: 02/28/2018
 
 >[!NOTE]  
 > 在安装任一版本之前，必须[安装包含 npm 的 NodeJS](https://docs.npmjs.com/getting-started/installing-node)。 对于 2.x 版工具，仅支持 Node.js 8.5 和更高版本。 
-
-### <a name="version-1x-runtime"></a>1.x 版运行时
-
-工具的原始版本使用 Functions 1.x 运行时。 此版本使用 .NET Framework，仅在 Windows 计算机上受支持。 使用以下命令安装 1.x 版工具：
-
-```bash
-npm install -g azure-functions-core-tools
-```
 
 ### <a name="version-2x-runtime"></a>2.x 版运行时
 
@@ -69,6 +61,14 @@ sudo npm install -g azure-functions-core-tools@core
 
 ```bash
 sudo npm install -g azure-functions-core-tools@core --unsafe-perm true
+```
+
+### <a name="version-1x-runtime"></a>1.x 版运行时
+
+工具的原始版本使用 Functions 1.x 运行时。 此版本使用 .NET Framework，仅在 Windows 计算机上受支持。 使用以下命令安装 1.x 版工具：
+
+```bash
+npm install -g azure-functions-core-tools
 ```
 
 ## <a name="run-azure-functions-core-tools"></a>运行 Azure Functions Core Tools

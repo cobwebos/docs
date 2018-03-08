@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: adegeo
-ms.openlocfilehash: 304d22c14f6877138213db14333773f1e293c57a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1130ce3231b9e96a03d3e8dc5f75721dd0415928
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>在 Azure Service Fabric 上托管 Node.js 应用程序
 
@@ -95,7 +95,7 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
   </Resources>
 ```
 
-## <a name="deploy-to-azure"></a>部署到 Azure
+## <a name="deploy-to-azure"></a>“部署到 Azure”
 
 如果通过按 F5 来运行项目，则会将其部署到本地群集。 但请将其部署到 Azure。
 

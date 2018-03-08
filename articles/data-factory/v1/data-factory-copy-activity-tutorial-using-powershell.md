@@ -3,9 +3,9 @@ title: "教程：使用 Azure PowerShell 创建移动数据的管道 | Microsoft
 description: "本教程使用 Azure PowerShell 创建包含复制活动的 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+author: linda33wj
+manager: 
+editor: 
 ms.assetid: 71087349-9365-4e95-9847-170658216ed8
 ms.service: data-factory
 ms.workload: data-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
-ms.author: spelluru
+ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 66e054aa13c7a3555758268be676e93ff7a3b5d1
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: dc9476e6a9ee4f4832862ad45dc5a9fbae6ccce6
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建移动数据的数据工厂管道
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/23/2018
 - 完成[教程先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)一文中列出的先决条件步骤。
 - 安装 **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps) 中的说明。
 
-## <a name="steps"></a>步骤
+## <a name="steps"></a>Steps
 下面是本教程中要执行的步骤：
 
 1. 创建 Azure **数据工厂**。 本步骤创建名为 ADFTutorialDataFactoryPSH 的数据工厂。 
@@ -108,7 +108,7 @@ ms.lasthandoff: 01/23/2018
     ```
     此名称可能已使用。 因此，可以通过添加前缀或后缀（例如：ADFTutorialDataFactoryPSH05152017）使数据工厂的名称变得唯一，并再次运行该命令。  
 
-注意以下几点：
+请注意以下几点：
 
 * Azure 数据工厂的名称必须全局唯一。 如果收到以下错误，请更改名称（例如改为 yournameADFTutorialDataFactoryPSH）。 执行本教程中的步骤时，请使用此名称取代 ADFTutorialFactoryPSH。 对于数据工厂项目，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md)（数据工厂 - 命名规则）。
 
@@ -418,7 +418,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
       }
     } 
     ```
-    注意以下几点：
+    请注意以下几点：
    
     - 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。 在数据工厂解决方案中，也可以使用[数据转换活动](data-factory-data-transformation-activities.md)。
     - 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。 

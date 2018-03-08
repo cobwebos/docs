@@ -3,7 +3,7 @@ title: "动态组和 Azure Active Directory B2B 协作 | Microsoft 文档"
 description: "说明如何将 Azure AD 动态组与 Azure Active Directory B2B 协作一起使用"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 12/14/2017
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: d60b7f70332d6183a67003c1dceb96241fc6bae4
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: cbb700e513947034a783c6b6574c8daddf96844b
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>动态组和 Azure Active Directory B2B 协作
 

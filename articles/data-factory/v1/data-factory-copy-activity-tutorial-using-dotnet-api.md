@@ -3,7 +3,7 @@ title: "教程：使用 .NET API 创建包含复制活动的管道 | Microsoft D
 description: "本教程使用 .NET API 创建包含复制活动的 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: linda33wj
 manager: jhubbard
 editor: monicar
 ms.assetid: 58fc4007-b46d-4c8e-a279-cb9e479b3e2b
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
-ms.author: spelluru
+ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d6ffaf132cf2407c3bd3a609b087508c94bb0e46
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: eba262239c759677e445d8e3f8b8fae72804f176
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>教程：使用 .NET API 创建包含复制活动的管道
 > [!div class="op_single_selector"]
@@ -403,7 +403,7 @@ ms.lasthandoff: 01/23/2018
         });
     ```
 
-    注意以下几点：
+    请注意以下几点：
    
     - 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。 在数据工厂解决方案中，也可以使用[数据转换活动](data-factory-data-transformation-activities.md)。
     - 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。 

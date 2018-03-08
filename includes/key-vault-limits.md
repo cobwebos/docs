@@ -13,6 +13,6 @@
 | 所有事务 |2000 |
 |
 
-有关超出这些限制时如何处理限制的信息，请参阅 [Azure Key Vault 限制指南](../key-vault/key-vault-ovw-throttling.md)。
+有关超出这些限制时如何处理限制的信息，请参阅 [Azure Key Vault 限制指南](../articles/key-vault/key-vault-ovw-throttling.md)。
 
 <sup>1</sup> 所有事务类型都没有订阅范围的限制，即每个密钥保管库限制的 5 倍。 例如，每个订阅的 HSM- 其他事务数限制为 10 秒内 5000 个事务。

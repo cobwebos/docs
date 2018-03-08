@@ -1,9 +1,24 @@
--- title: 使用 Azure Active Directory 和 API 管理保护 Web API 后端 | Microsoft Docs description: 了解如何使用 Azure Active Directory 和 API 管理保护 Web API 后端。
-services: api-management documentationcenter: '' author: juliako manager: cfowler editor: ''
-
-ms.service: api-management ms.workload: mobile ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 10/30/2017 ms.author: apimpm
 ---
-
+title: "使用 Azure Active Directory 和 API 管理保护 Web API 后端 | Microsoft 文档"
+description: "了解如何使用 Azure Active Directory 和 API 管理保护 Web API 后端。"
+services: api-management
+documentationcenter: 
+author: juliako
+manager: cfowler
+editor: 
+ms.service: api-management
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/30/2017
+ms.author: apimpm
+ms.openlocfilehash: 2a5be24aba8a675290045b282cc64dda4b7c594e
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/02/2018
+---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>如何使用 Azure Active Directory 和 API 管理保护 Web API 后端
 
 本主题演示如何生成 Web API 后端，并使用 Azure Active Directory 和 API 管理通过 OAuth 2.0 协议对其进行保护。  

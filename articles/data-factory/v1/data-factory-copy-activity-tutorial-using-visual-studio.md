@@ -3,7 +3,7 @@ title: "教程：使用 Visual Studio 创建包含复制活动的管道 | Micros
 description: "在本教程中，通过使用 Visual Studio 创建带有复制活动的 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: linda33wj
 manager: jhubbard
 editor: monicar
 ms.assetid: 1751185b-ce0a-4ab2-a9c3-e37b4d149ca3
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
-ms.author: spelluru
+ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4f517a4be012f88d9b7a5e19042ce22493cfe5f3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: a26403383c21d089cfca5bbdb23a9c73fe505ba2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>教程：使用 Visual Studio 创建带有复制活动的管道
 > [!div class="op_single_selector"]
@@ -326,7 +326,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
  
    ![部署状态页](media/data-factory-copy-activity-tutorial-using-visual-studio/deployment-status.png)
 
-注意以下几点： 
+请注意以下几点： 
 
 * 如果收到错误：“该订阅未注册为使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，尝试再次发布： 
   

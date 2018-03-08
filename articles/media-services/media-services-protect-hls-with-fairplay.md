@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 2ab743cadf91be05e1d2b2edf3143d8c14ae2bdb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 91f117c3b1b166a069b93c238380140f19e49280
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>使用 Apple FairPlay 或 Microsoft PlayReady 保护 HLS 内容
 使用 Azure 媒体服务，可使用以下格式动态加密 HTTP Live Streaming (HLS) 内容：  
@@ -146,8 +146,10 @@ ms.lasthandoff: 12/11/2017
 1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 2. 将以下元素添加到 app.config 文件中定义的 **appSettings**：
 
-        <add key="Issuer" value="http://testacs.com"/>
-        <add key="Audience" value="urn:test"/>
+    ```xml
+            <add key="Issuer" value="http://testacs.com"/>
+            <add key="Audience" value="urn:test"/>
+    ```
 
 ## <a name="example"></a>示例
 
@@ -160,7 +162,7 @@ ms.lasthandoff: 12/11/2017
 
 请务必将变量更新为指向输入文件所在的文件夹。
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Configuration;

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 54b9c38d1122d898dd584a189b9ea2e3405dc6f5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 91461af20cdb189ab23671fee0f3dea182ec0bb1
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>使用 PlayReady 和/或 Widevine DRM 动态通用加密
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 01/10/2018
 致力于开发应用程序的开发人员可以参考本文，了解如何让应用程序传送受多个 DRM（例如 PlayReady 和 Widevine）保护的媒体。 本文介绍如何使用授权策略来配置 PlayReady 许可证传送服务，确保只有经过授权的客户端才能接收 PlayReady 或 Widevine 许可证。 此外，还介绍如何通过 DASH 使用 PlayReady 或 Widevine DRM 进行动态加密。
 
 >[!NOTE]
->创建媒体服务帐户后，会将一个处于“已停止”状态的默认流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，必须确保流式处理终结点处于“正在运行”状态，以便从其流式传输内容。 
+>创建媒体服务帐户时，会将一个处于“已停止”状态的默认流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，必须确保流式处理终结点处于“正在运行”状态，以便从其流式传输内容。 
 
 ## <a name="download-the-sample"></a>下载示例
 可以从 [GitHub 上的 Azure 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)下载本文所述的示例。
@@ -135,6 +135,7 @@ ms.lasthandoff: 01/10/2018
 ## <a name="get-a-test-token"></a>获取测试令牌
 获取用于密钥授权策略的基于令牌限制的测试令牌。
 
+```csharp
     // Deserializes a string containing an XML representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate =
@@ -145,7 +146,7 @@ ms.lasthandoff: 01/10/2018
     //so you have to add it in front of the token string.
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate);
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
-
+```
 
 可以使用 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)来测试流。
 
@@ -155,8 +156,10 @@ ms.lasthandoff: 01/10/2018
 
 2. 将以下元素添加到 app.config 文件中定义的 **appSettings**：
 
+```xml
         <add key="Issuer" value="http://testacs.com"/>
         <add key="Audience" value="urn:test"/>
+```
 
 ## <a name="example"></a>示例
 
@@ -171,7 +174,7 @@ ms.lasthandoff: 01/10/2018
 
 请务必将变量更新为指向输入文件所在的文件夹。
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Configuration;

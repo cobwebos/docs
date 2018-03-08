@@ -3,7 +3,7 @@ title: "SQL Server 存储过程活动"
 description: "了解如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库或 Azure SQL 数据仓库中的存储过程。"
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: douglaslMS
 manager: jhubbard
 editor: monicar
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
+ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: be0bdf771327e57a75a4f95b513f9e80aeaef5a4
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f6da8c18c1ac8fbcea217f41c34d50a86b001b11
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -311,7 +311,7 @@ ms.lasthandoff: 01/23/2018
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| name | 活动名称 |是 |
+| 名称 | 活动名称 |是 |
 | description |描述活动用途的文本 |否 |
 | type | 必须设置为：**SqlServerStoredProcedure** | 是 |
 | inputs | 可选。 如果指定了输入数据集，则它必须可供使用（“就绪”状态），存储过程才能运行。 该输入数据集无法在存储过程中用作参数。 它仅用于在开始存储过程活动前检查依赖项。 |否 |

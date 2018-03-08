@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 739e80633f828e8c14f024dc22971e7d8858cf78
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 03b9de7374880cdb2741821edae246bffaf3f921
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>使用 Azure 媒体分析将视频文件中的文本内容转换为数字文本
 ## <a name="overview"></a>概述
@@ -51,6 +51,7 @@ ms.lasthandoff: 12/11/2017
 
 #### <a name="json-preset-example"></a>JSON 预设示例
 
+```json
     {
         "Version":1.0, 
         "Options": 
@@ -69,8 +70,11 @@ ms.lasthandoff: 12/11/2017
              ]
         }
     }
+```
 
 #### <a name="xml-preset-example"></a>XML 预设示例
+
+```xml
     <?xml version=""1.0"" encoding=""utf-16""?>
     <VideoOcrPreset xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" Version=""1.0"" xmlns=""http://www.windowsazure.com/media/encoding/Preset/2014/03"">
       <Options>
@@ -88,6 +92,7 @@ ms.lasthandoff: 12/11/2017
        <TextOrientation>Up</TextOrientation>
       </Options>
     </VideoOcrPreset>
+```
 
 ## <a name="ocr-output-files"></a>OCR 输出文件
 OCR 媒体处理器的输出是一个 JSON 文件。
@@ -118,6 +123,7 @@ OCR 媒体处理器的输出是一个 JSON 文件。
 ### <a name="json-output-example"></a>JSON 输出示例
 以下输出示例包含常规视频信息和多个视频片段。 每个视频片段包含 OCR MP 检测到的每个区域及其语言和文本方向。 区域还包含此区域中的每个单词行，以及该行的文本、位置及其中每个单词的信息（单词内容、位置和置信度）。 下面是一个示例，我在其中嵌入了一些注释。
 
+```json
     {
         "version": 1, 
         "timescale": 90000, 
@@ -170,6 +176,7 @@ OCR 媒体处理器的输出是一个 JSON 文件。
             }
         ]
     }
+```
 
 ## <a name="net-sample-code"></a>.NET 示例代码
 
@@ -185,7 +192,7 @@ OCR 媒体处理器的输出是一个 JSON 文件。
 
 #### <a name="example"></a>示例
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

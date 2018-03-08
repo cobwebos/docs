@@ -3,7 +3,7 @@ title: "了解 Azure AD B2B 协作中的用户令牌 | Microsoft Docs"
 description: "Azure Active Directory B2B 协作的用户令牌参考"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/25/2017
-ms.author: sasubram
-ms.openlocfilehash: 7d19a6ff42ec905d68133e9940366f173140f916
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: 6afa7d01282d6c35b042ad69fcdcb5714c92de10
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>了解 Azure AD B2B 协作中的用户令牌
 
@@ -42,7 +43,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ilk0dWVLMm9hSU
 
 * [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [B2B 协作用户属性](active-directory-b2b-user-properties.md)
-* [向角色添加 B2B 协作用户](active-directory-b2b-add-guest-to-role.md)
+* [将 B2B 协作用户添加到角色](active-directory-b2b-add-guest-to-role.md)
 * [委托 B2B 协作邀请](active-directory-b2b-delegate-invitations.md)
 * [动态组和 B2B 协作](active-directory-b2b-dynamic-groups.md)
 * [B2B 协作代码和 PowerShell 示例](active-directory-b2b-code-samples.md)

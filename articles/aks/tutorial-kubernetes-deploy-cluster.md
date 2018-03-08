@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: bb8ad6d9defcbaef255065b20a9a9b542e74d73d
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 975069dbe9283c98482d7d0d5741a595ef323b35
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>部署 Azure 容器服务 (AKS) 群集
 
@@ -49,59 +49,6 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 ```
 
 几分钟后，部署完成并返回有关 AKS 部署的 JSON 格式信息。
-
-```azurecli
-{
-  "additionalProperties": {},
-  "agentPoolProfiles": [
-    {
-      "additionalProperties": {},
-      "count": 1,
-      "dnsPrefix": null,
-      "fqdn": null,
-      "name": "nodepool1",
-      "osDiskSizeGb": null,
-      "osType": "Linux",
-      "ports": null,
-      "storageProfile": "ManagedDisks",
-      "vmSize": "Standard_DS1_v2",
-      "vnetSubnetId": null
-    }
-    ...
-```
-
-## <a name="getting-information-about-your-cluster"></a>获取群集的信息
-
-部署群集以后，即可使用 `az aks show` 来查询群集并检索重要信息。 在群集上执行更复杂的操作时，可以将此数据用作参数。 例如，如果需要在群集中运行的 Linux 配置文件的相关信息，可以运行以下命令。
-
-```azurecli
-az aks show --name myAKSCluster --resource-group myResourceGroup --query "linuxProfile"
-
-{
-  "additionalProperties": {},
-  "adminUsername": "azureuser",
-  "ssh": {
-    "additionalProperties": {},
-    "publicKeys": [
-      {
-        "additionalProperties": {},
-        "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADA...
-      }
-    ]
-  }
-}
-```
-
-这样就会显示管理用户和 SSH 公钥的相关信息。 也可运行更详细的查询，只需将 JSON 属性追加到查询字符串上即可，如下所示。
-
-```azurecli
-az aks show -n myakscluster  -g my-group --query "{name:agentPoolProfiles[0].name, nodeCount:agentPoolProfiles[0].count}"
-{
-  "name": "nodepool1",
-  "nodeCount": 1
-}
-```
-这可以用来快速访问已部署群集的相关数据。 在[此处](http://jmespath.org/tutorial.html)查看有关 JMESPath 查询的详细信息。
 
 ## <a name="install-the-kubectl-cli"></a>安装 kubectl CLI
 
@@ -143,19 +90,19 @@ k8s-myAKSCluster-36346190-0   Ready     49m       v1.7.9
 首先，获取为 AKS 配置的服务主体的 ID。 更新资源组名称和 AKS 群集名称，使之与环境相匹配。
 
 ```azurecli
-$CLIENT_ID = $(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
+CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId" --output tsv)
 ```
 
 获取 ACR 注册表资源 ID。将注册表名称更新为 ACR 注册表的名称，将资源组更新为 ACR 注册表所在的资源组。
 
 ```azurecli
-$ACR_ID = $(az acr show --name myACRRegistry --resource-group myResourceGroup --query "id" --output tsv)
+ACR_ID=$(az acr show --name myACRRegistry --resource-group myResourceGroup --query "id" --output tsv)
 ```
 
 创建角色分配，以便授予相应的访问权限。
 
 ```azurecli
-az role assignment create --assignee $CLIENT_ID --role Contributor --scope $ACR_ID
+az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
 ```
 
 ## <a name="next-steps"></a>后续步骤

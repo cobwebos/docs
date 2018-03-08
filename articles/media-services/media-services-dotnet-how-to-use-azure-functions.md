@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: f99fe340b6cfebaafb04af9dba8abf9cb0f09a2b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 999f2cef7d70c4f1b45076300312664defdeb3f5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="develop-azure-functions-with-media-services"></a>开发使用媒体服务的 Azure Functions
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/11/2017
     
 ## <a name="create-a-function-app"></a>创建函数应用
 
-1. 转到 [Azure 门户](http://portal.azure.com)，然后使用 Azure 帐户登录。
+1. 转到 [Azure 门户](http://portal.azure.com)，并使用 Azure 帐户登录。
 2. 根据[此文](../azure-functions/functions-create-function-app-portal.md)中所述创建 Function App。
 
 >[!NOTE]
@@ -69,7 +69,7 @@ ms.lasthandoff: 12/11/2017
 
     ![文件](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. 单击“创建” 。 
+4. 单击“创建”。 
 
 ## <a name="files"></a>文件
 
@@ -86,7 +86,7 @@ Function.json 文件定义函数绑定和其他配置设置。 运行时使用�
 
 将现有 function.json 文件的内容替换为以下代码：
 
-```
+```json
 {
   "bindings": [
     {
@@ -107,7 +107,7 @@ project.json 文件包含依赖项。 下面是一个 **project.json** 文件示
 
 向 project.json 添加以下定义。 
 
-```
+```json
 {
   "frameworks": {
     "net46":{
@@ -136,7 +136,7 @@ project.json 文件包含依赖项。 下面是一个 **project.json** 文件示
 
 使用以下代码替换现有 run.csx 文件的内容：函数定义完成后，单击“保存并运行”。
 
-```
+```csharp
 #r "Microsoft.WindowsAzure.Storage"
 #r "Newtonsoft.Json"
 #r "System.Web"

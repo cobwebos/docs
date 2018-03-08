@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 21a050373a9901220e106534464a8c13565bb3d8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 245e2e1ca52e7d3c5bd22d5f2569e3e8d7ae6671
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的限制
 
@@ -54,11 +54,11 @@ Cloud Shell 适用于交互式用例。 因此，任何长时间运行的非交�
 
 ### <a name="user-permissions"></a>用户权限
 
-权限设置为普通用户，不具有 sudo 访问权限。 不会保留 `$Home` 或 `clouddrive` 目录外部的任何安装。
+权限设置为普通用户，不具有 sudo 访问权限。 不会保留 `$Home` 目录外部的任何安装。
 
 ### <a name="editing-bashrc"></a>编辑 .bashrc
 
-编辑 .bashrc 时要小心，执行这一操作可能导致 Bash in Cloud Shell 出现意外错误。
+编辑 .bashr 时要小心，执行这一操作可能导致 Cloud Shell 出现意外错误。
 
 ## <a name="powershell-limitations"></a>PowerShell 限制
 
@@ -68,7 +68,7 @@ PowerShell in Azure Cloud Shell（预览版）最长可能需要 60 秒才能完
 
 ### <a name="no-home-directory-persistence"></a>$Home 目录没有持久性
 
-由任何应用程序（例如 git、vim，等等）写入 `$Home` 的数据不会在 PowerShell 会话之间持久保留。 有关解决方法，请[参阅此文](troubleshooting.md#powershell-resolutions)。
+由任何应用程序（例如 git、vim，等等）写入 `$Home` 的数据不会在 PowerShell 会话之间持久保留。 有关解决方法，请[参阅此文](troubleshooting.md#powershell-troubleshooting)。
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>从 Azure 驱动器创建时的默认文件位置：
 

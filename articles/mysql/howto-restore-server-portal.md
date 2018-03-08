@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 5dac5343551bed709486d97d85ae0ff3a49d1851
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 5bef3f11d0b546fbd6b1161b20d7dfb81e975f99
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中备份和还原服务器
 
@@ -75,22 +75,6 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 
 >[!Note]
 >请注意，通过时间点还原创建的新服务器具有在所选时间点对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”页更改密码。
-
-## <a name="geo-restore"></a>异地还原
-如果为服务器配置了异地冗余备份，则可以从该现有服务器的备份创建新服务器。 可以在 Azure Database for MySQL 可用的任何区域中创建此新服务器。  
-
-1. 选择门户左上角的“新建”按钮 (+)。 选择“数据库” > “Azure Database for MySQL”。
-
-   ![“Azure Database for MySQL”选项](./media/howto-restore-server-portal/1-create-database.png)
-
-2. 在窗体的“选择源”下拉列表中，选择“备份”。 此操作将加载已启用异地冗余备份的服务器列表。 选择这些备份之一作为新服务器的源。
-   ![选择源：备份和异地冗余备份的列表](./media/howto-restore-server-portal/2-georestore.png)
-
-3. 根据需要填写窗体的其余部分。 可以选择任意**位置**。 选择位置后，可以选择**定价层**。 默认情况下将显示要从中还原的现有服务器的参数。 可以单击“确定”，以不进行任何更改继承这些设置。 也可以更改**计算的代**（如果在所选区域中可用）、**vCore** 数、**备份保留期**和**备份冗余选项**。 不支持在还原过程中更改**定价层**（“基本”、“常规用途”或“内存优化”）或**存储**大小。
-
->[!Note]
->通过异地还原创建的新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”页更改密码。
-
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解服务的[备份](concepts-backup.md)。

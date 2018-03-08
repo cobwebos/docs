@@ -3,9 +3,9 @@ title: "从 Azure 数据工厂调用 Spark 程序 | Microsoft Docs"
 description: "了解如何使用 MapReduce 活动从 Azure 数据工厂调用 Spark 程序。"
 services: data-factory
 documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+author: sharonlo101
+manager: 
+editor: 
 ms.assetid: fd98931c-cab5-4d66-97cb-4c947861255c
 ms.service: data-factory
 ms.workload: data-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f03c3b6e275c0bc97df9e687a20acf45956664d2
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: b39e6012365c426e95a38d5c5a40790f584ba473
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>从 Azure 数据工厂管道调用 Spark 程序
 
@@ -216,7 +216,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
         }
     }
     ```
-    注意以下几点：
+    请注意以下几点：
 
     a. **type** 属性设置为 **HDInsightSpark**。
 
@@ -329,7 +329,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 | 属性 | 说明 | 必选 |
 | -------- | ----------- | -------- |
-| name | 管道中活动的名称。 | 是 |
+| 名称 | 管道中活动的名称。 | 是 |
 | description | 描述活动用途的文本。 | 否 |
 | type | 此属性必须设置为 HDInsightSpark。 | 是 |
 | linkedServiceName | 运行 Spark 程序的 HDInsight 链接服务的名称。 | 是 |

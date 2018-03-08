@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 69750db615460b3ac69ba9ffe707a970ca8e2e11
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: fd4c28c2317356cbc6e3fd4d46a10509c029d530
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>使用 EventFlow 进行事件聚合和收集
 
@@ -32,12 +32,12 @@ EventFlow 二进制文件都可用作一组 NuGet 包。 要将 EventFlow 添加
 
 将显示一个不同包的列表，带有“输入”和“输出”标记。 EventFlow 支持不同日志提供程序和分析器。 托管 EventFlow 的服务应包括相应的包，具体取决于应用程序日志的源和目标。 除核心 ServiceFabric 包外，至少还需配置一个输入和输出。 例如，可添加下列包将 EventSource 事件发送到 Application Insights：
 
-* `Microsoft.Diagnostics.EventFlow.Input.EventSource`（从该服务的 EventSource 类和标准 EventSource 捕获数据，例如 Microsoft-ServiceFabric-Services 和 Microsoft-ServiceFabric-Actors）
-* `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights`（我们会将日志发送到 Azure Application Insights 资源）
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`（从该服务的 EventSource 类和标准 EventSource 捕获数据，例如 Microsoft-ServiceFabric-Services 和 Microsoft-ServiceFabric-Actors）
+* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`（我们会将日志发送到 Azure Application Insights 资源）
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric`（允许初始化来自 Service Fabric 服务配置的 EventFlow 管道，并以 Service Fabric 运行状况报表的形式报告发送诊断数据的任何相关问题）
 
 >[!NOTE]
->`Microsoft.Diagnostics.EventFlow.Input.EventSource` 包要求服务项目面向.NET Framework 4.6 或更高版本。 请确保在项目属性中设置相应的目标框架，再安装此包。
+>`Microsoft.Diagnostics.EventFlow.Inputs.EventSource` 包要求服务项目面向.NET Framework 4.6 或更高版本。 请确保在项目属性中设置相应的目标框架，再安装此包。
 
 安装所有的包后，下一步是在服务中配置和启用 EventFlow。
 

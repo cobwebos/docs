@@ -3,7 +3,7 @@ title: "Azure Active Directory 中的 B2B 协作用户声明映射 | Microsoft �
 description: "Azure Active Directory B2B 协作的声明映射参考"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
-ms.author: sasubram
-ms.openlocfilehash: 439219087d0a5027c729e9d0e0ecb90bd2a9de3c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: 3fe75e96c153a7cbcad638d606d0fbc248bd983a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Azure Active Directory 中的 B2B 协作用户声明映射
 
@@ -42,7 +43,7 @@ Azure Active Directory (Azure AD) 支持自定义 B2B 协作用户的 SAML 令�
 
 * [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [B2B 协作用户属性](active-directory-b2b-user-properties.md)
-* [向角色添加 B2B 协作用户](active-directory-b2b-add-guest-to-role.md)
+* [将 B2B 协作用户添加到角色](active-directory-b2b-add-guest-to-role.md)
 * [委派 B2bB 协作邀请](active-directory-b2b-delegate-invitations.md)
 * [动态组和 B2B 协作](active-directory-b2b-dynamic-groups.md)
 * [B2B 协作代码和 PowerShell 示例](active-directory-b2b-code-samples.md)

@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 63ae975426f1057b178171ef89ce98402ff18725
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 81d08d3d3d08e9cc96b39cbdf2d639e939fdf3d4
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
-本文旨在帮助你跟踪已发布的版本，并帮助你了解是否需要更新到最新版本。
+
+本文旨在帮助你跟踪已发布的版本，并了解你是否需要更新为最新版本。
 
 下面是相关主题的列表：
 
@@ -42,7 +43,6 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>修复的问题
-* 修复了“分区筛选”页的后台任务的计时窗口问题
 * 修复了在切换到下一页时，“分区筛选”页的后台任务的计时窗口问题。
 
 * 修复了在 ConfigDB 自定义操作过程中导致访问冲突的 Bug

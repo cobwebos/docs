@@ -3,9 +3,9 @@ title: "构建第一个数据工厂 (PowerShell) | Microsoft Docs"
 description: "本教程使用 Azure PowerShell 创建一个示例 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+author: sharonlo101
+manager: 
+editor: 
 ms.assetid: 22ec1236-ea86-4eb7-b903-0e79a58b90c7
 ms.service: data-factory
 ms.workload: data-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/22/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: cc26d314eb6406e14ab4267416cf7d7ec6bf4bbd
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: bea8f944e59774abdb70f0f1cad37cfe0749b195
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>教程：使用 Azure PowerShell 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -77,7 +77,7 @@ ms.lasthandoff: 01/23/2018
     ```PowerShell
     New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
     ```
-注意以下几点：
+请注意以下几点：
 
 * Azure 数据工厂的名称必须全局唯一。 如果收到错误：“数据工厂名称 ‘FirstDataFactoryPSH’ 不可用”，请更改名称（例如 yournameFirstDataFactoryPSH）。 执行本教程中的步骤时，请使用此名称取代 ADFTutorialFactoryPSH。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。
 * 只有 Azure 订阅的参与者/管理员才可以创建数据工厂实例
@@ -165,7 +165,7 @@ ms.lasthandoff: 01/23/2018
    | TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
    | linkedServiceName |指定用于存储 HDInsight 生成的日志的存储帐户 |
 
-    注意以下几点：
+    请注意以下几点：
 
    * 数据工厂使用 JSON 创建**基于 Linux** 的 HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
    * 可以使用 **自己的 HDInsight 群集** ，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) （HDInsight 链接服务）。

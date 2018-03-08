@@ -2,7 +2,7 @@
 title: "PowerShell 脚本 - 使用数据工厂转换云中的数据 | Microsoft Docs"
 description: "此 PowerShell 脚本通过在 Azure HDInsight Spark 群集上运行 Spark 程序转换云中的数据。"
 services: data-factory
-author: spelluru
+author: sharonlo101
 manager: jhubbard
 editor: 
 ms.service: data-factory
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
-ms.author: spelluru
-ms.openlocfilehash: 195b7276346827479fbbe10dfaaaa9ed1d754967
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.author: shlo
+ms.openlocfilehash: f83d9d2e862f909d6eaa0c02ecac745909aab83a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell 脚本 - 使用 Azure 数据工厂转换云中的数据
 

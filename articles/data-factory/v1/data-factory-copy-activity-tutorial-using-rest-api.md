@@ -3,9 +3,9 @@ title: "教程：使用 REST API 创建 Azure 数据工厂管道 | Microsoft Doc
 description: "本教程使用 REST API 创建带复制活动的 Azure 数据工厂管道，以便将数据从 Azure Blob 存储复制到 Azure SQL 数据库。"
 services: data-factory
 documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+author: linda33wj
+manager: 
+editor: 
 ms.assetid: 1704cdf8-30ad-49bc-a71c-4057e26e7350
 ms.service: data-factory
 ms.workload: data-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
-ms.author: spelluru
+ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 74f96d2712c28c8b49e0b92ee88e560193428836
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 0b7383c8b984c5f9e9600c0f04be703f6bc20711
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>教程：使用 REST API 创建用于复制数据的 Azure 数据工厂管道 
 > [!div class="op_single_selector"]
@@ -276,7 +276,7 @@ ms.lasthandoff: 01/23/2018
 }
 ```
 
-注意以下几点：
+请注意以下几点：
 
 - 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。 有关复制活动的详细信息，请参阅[数据移动活动](data-factory-data-movement-activities.md)。 在数据工厂解决方案中，也可以使用[数据转换活动](data-factory-data-transformation-activities.md)。
 - 活动的输入设置为 **AzureBlobInput**，活动的输出设置为 **AzureSqlOutput**。 
@@ -348,7 +348,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     Write-Host $results
     ```
 
-注意以下几点：
+请注意以下几点：
 
 * Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘ADFCopyTutorialDF’ 不可用”，请执行以下步骤：   
   

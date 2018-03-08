@@ -15,11 +15,11 @@ ms.devlang: JavaScript
 ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: 376348c3af0ff97162f1b2ed865a5edd47f52546
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 33ef17f1556822c78783cc56b8ea7867eef2ec71
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="send-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>使用 Azure 通知中心向 Chrome 应用发送推送通知
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -71,7 +71,7 @@ ms.lasthandoff: 02/27/2018
         ![Azure 通知中心 - Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 ## <a id="connect-app"></a>将 Chrome 应用连接到通知中心
-通知中心现在已配置为使用 GCM，并且你有连接字符串用于注册应用以接收和发送推送通知。 LK
+通知中心现在已配置为使用 GCM，并且你有连接字符串用于注册应用以接收和发送推送通知。
 
 ### <a name="create-a-new-chrome-app"></a>新建 Chrome 应用
 以下示例基于 [Chrome 应用 GCM 示例]，使用推荐的方式来创建 Chrome 应用。 本部分重点介绍特定于 Azure 通知中心的步骤。 

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: na
-ms.date: 02/07/2017
+ms.date: 03/02/2018
 ms.author: magoedte; gwallace
-ms.openlocfilehash: c84f1671d8e23e5ff222455192e020700f1ff51e
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: b267f64a836851e1142475568556eebf74adf2dd
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>在 Azure 自动化 DSC 中编译配置
 
@@ -238,7 +238,7 @@ Azure 自动化 DSC 配置和 Runbook 中的资产引用是相同的。 有关�
 
 ### <a name="credential-assets"></a>凭据资产
 
-尽管 Azure 自动化中的 DSC 配置可以使用 **Get-AzureRmAutomationCredential** 引用凭据资产，但如果需要，也可以通过参数传入凭据资产。 如果配置采用属于 **PSCredential** 类型的参数，则需要将 Azure 自动化凭据资产的字符串名称传递为该参数的值，而不是 PSCredential 对象。 在后台将检索具有该名称的 Azure 自动化凭据资产并将其传递给配置。
+尽管 Azure 自动化中的 DSC 配置可以使用 **Get-AutomationPSCredential** 引用凭据资产，但如果需要，也可以通过参数传入凭据资产。 如果配置采用属于 **PSCredential** 类型的参数，则需要将 Azure 自动化凭据资产的字符串名称传递为该参数的值，而不是 PSCredential 对象。 在后台将检索具有该名称的 Azure 自动化凭据资产并将其传递给配置。
 
 要在节点配置（MOF 配置文档）中保持凭据的安全，需要在节点配置 MOF 文件中为凭据加密。 Azure 自动化进一步执行此步骤并加密整个 MOF 文件。 不过，目前必须告知 PowerShell DSC 在节点配置 MOF 生成期间以纯文本形式输出凭据是可行的，因为 PowerShell DSC 并不知道在通过编译作业生成 MOF 文件之后 Azure 自动化将加密整个文件。
 
@@ -249,7 +249,7 @@ Azure 自动化 DSC 配置和 Runbook 中的资产引用是相同的。 有关�
 ```powershell
 Configuration CredentialSample
 {
-    $Cred = Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAcct" -Name "SomeCredentialAsset"
+    $Cred = Get-AutomationPSCredential "SomeCredentialAsset"
 
     Node $AllNodes.NodeName
     {

@@ -3,7 +3,7 @@ title: "构建第一个数据工厂 (REST) | Microsoft Docs"
 description: "本教程使用数据工厂 REST API 创建一个示例 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: sharonlo101
 manager: jhubbard
 editor: monicar
 ms.assetid: 7e0a2465-2d85-4143-a4bb-42e03c273097
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/01/2017
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4caff18728f2f0f1246f4a05ac121cecdaaeaf04
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: deee54fe55aeab6b97c0b31064b6893e334f6796
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -127,7 +127,7 @@ ms.lasthandoff: 01/20/2018
 | TimeToLive |指定 HDInsight 群集在被删除之前的空闲时间。 |
 | linkedServiceName |指定用于存储 HDInsight 生成的日志的存储帐户 |
 
-注意以下几点：
+请注意以下几点：
 
 * 数据工厂使用上面的 JSON 创建**基于 Linux** 的 HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
 * 可以使用 **自己的 HDInsight 群集** ，而不使用按需 HDInsight 群集。 有关详细信息，请参阅 [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) （HDInsight 链接服务）。
@@ -313,7 +313,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     Write-Host $results
     ```
 
-注意以下几点：
+请注意以下几点：
 
 * Azure 数据工厂的名称必须全局唯一。 如果在结果中看到错误：“数据工厂名称 ‘FirstDataFactoryREST’ 不可用”，请执行以下步骤： 
   1. 在 **datafactory.json** 文件中更改名称（例如，yournameFirstDataFactoryREST）。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。

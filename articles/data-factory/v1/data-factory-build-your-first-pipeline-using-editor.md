@@ -3,9 +3,9 @@ title: "构建第一个数据工厂（Azure 门户）| Microsoft Docs"
 description: "本教程使用 Azure 门户中的数据工厂编辑器创建一个示例 Azure 数据工厂管道。"
 services: data-factory
 documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+author: sharonlo101
+manager: 
+editor: 
 ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
 ms.service: data-factory
 ms.workload: data-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/22/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 995abf497e7267434b5e87132d30183e3c293af3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c4fe0e01936ebc131b10f011b98e9d0c1782179b
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教程：使用 Azure 门户生成第一个数据工厂
 > [!div class="op_single_selector"]
@@ -154,7 +154,7 @@ ms.lasthandoff: 01/23/2018
    | timeToLive | 指定 HDInsight 群集在被删除之前的空闲时间。 |
    | linkedServiceName | 指定用于存储 HDInsight 生成的日志的存储帐户。 |
 
-    注意以下几点：
+    请注意以下几点：
 
      a. 数据工厂使用 JSON 属性创建基于 Linux 的 HDInsight 群集。 有关详细信息，请参阅[按需 HDInsight 链接服务](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。
 

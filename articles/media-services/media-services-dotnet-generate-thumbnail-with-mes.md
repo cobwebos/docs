@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: f7a8b60e26b42668e505b3d466bfc447d0cfb48b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 02bbeafd9cd8ca93f22cf9e1a2c107e01c082ba3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何使 Media Encoder Standard 通过 .NET 来生成缩略图
 
@@ -34,6 +34,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="json-preset"></a>JSON 预设
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -58,9 +59,11 @@ ms.lasthandoff: 12/11/2017
         }
       ]
     }
+```
     
 ### <a name="xml-preset"></a>XML 预设
 
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -79,6 +82,7 @@ ms.lasthandoff: 12/11/2017
         </Output>
       </Outputs>
     </Preset>
+```
 
 ## <a name="example-of-a-series-of-jpeg-images-preset"></a>“一系列 JPEG 图像”预设的示例
 
@@ -86,6 +90,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="json-preset"></a>JSON 预设
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -113,9 +118,11 @@ ms.lasthandoff: 12/11/2017
         }
       ]
     }
+```
 
 ### <a name="xml-preset"></a>XML 预设
     
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -135,6 +142,7 @@ ms.lasthandoff: 12/11/2017
         </Output>
       </Outputs>
     </Preset>
+```
 
 ## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>“在特定时间戳处生成一个图像”预设示例
 
@@ -142,6 +150,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="json-preset"></a>JSON 预设
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -169,9 +178,10 @@ ms.lasthandoff: 12/11/2017
         }
       ]
     }
-    
+```
+
 ### <a name="xml-preset"></a>XML 预设
-    
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -191,7 +201,8 @@ ms.lasthandoff: 12/11/2017
         </Output>
       </Outputs>
     </Preset>
-    
+```
+
 ## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>“不同分辨率的缩略图”预设示例
 
 可使用以下预设在同一个任务中的不同解决方案下生成缩略图。 在该示例中，当输入时间线位于 5%、15%、…、95% 时，编码器会在输入视频分辨率的 100% 处和 50% 处各生成一个图像。
@@ -200,6 +211,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="json-preset"></a>JSON 预设
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -234,9 +246,10 @@ ms.lasthandoff: 12/11/2017
         }
       ]
     }
+```
 
 ### <a name="xml-preset"></a>XML 预设
-
+```xml
     <?xml version="1.0" encoding="utf-8"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
     <Encoding>
@@ -261,7 +274,8 @@ ms.lasthandoff: 12/11/2017
       </Output>
     </Outputs>
     </Preset>
-    
+```
+
 ## <a name="example-of-generating-a-thumbnail-while-encoding"></a>在编码时生成缩略图的示例
 
 上述所有示例都在讨论如何提交仅生成图像的编码任务，但还可以将视频/音频编码与缩略图生成结合起来。 以下的 JSON 和 XML 预设指示 Media Encoder Standard 在编码过程中生成一个缩略图。
@@ -269,6 +283,7 @@ ms.lasthandoff: 12/11/2017
 ### <a id="json"></a>JSON 预设
 有关架构的信息，请参阅[此](https://msdn.microsoft.com/library/mt269962.aspx)文。
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -328,10 +343,12 @@ ms.lasthandoff: 12/11/2017
         }
       ]
     }
+```
 
 ### <a id="xml"></a>XML 预设
 有关架构的信息，请参阅[此](https://msdn.microsoft.com/library/mt269962.aspx)文。
-    
+
+```csharp
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -381,6 +398,7 @@ ms.lasthandoff: 12/11/2017
         </Output>
       </Outputs>
     </Preset>   
+```
 
 ## <a id="code_sample"></a>编码视频并使用 .NET 生成缩略图
 
@@ -400,7 +418,7 @@ ms.lasthandoff: 12/11/2017
 
 有关如何设置开发环境的指导，请参阅[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)一文。
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

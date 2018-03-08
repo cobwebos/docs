@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 1903655a262583f1ba78b728bf404a81278e2275
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 091cfaaf8fa1cccf2f8b819732946bbbd08fd426
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
@@ -122,7 +122,7 @@ ms.lasthandoff: 02/22/2018
 若要了解如何使用 Active Directory 联合身份验证 (AD FS) 安全配置 OAuth 2.0 授权服务器，请参阅[在 API 管理中使用 ADFS](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/)。
 
 ### <a name="what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations"></a>API 管理使用何种路由方法部署到多个地理位置？
-API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-routing-methods.md#priority)部署到多个地理位置。 传入流量路由到最近的 API 网关。 如果一个区域处于脱机状态，则传入流量自动路由到下一个最近的网关。 在[流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)中了解有关路由方法的详细信息。
+API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-routing-methods.md#performance)部署到多个地理位置。 传入流量路由到最近的 API 网关。 如果一个区域处于脱机状态，则传入流量自动路由到下一个最近的网关。 在[流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)中了解有关路由方法的详细信息。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>是否可以使用 Azure 资源管理器模板创建 API 管理服务实例？
 是的。 请参阅 [Azure API 管理服务](http://aka.ms/apimtemplate)快速入门模板。

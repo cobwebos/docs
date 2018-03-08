@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
 ms.openlocfilehash: af0670a44937bb14df9afc206ea4601c0b9289a2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="azure-ad-domain-services"></a>Azure AD 域服务
 ## <a name="features"></a>功能
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 * **简单的部署体验：**只需单击几下鼠标，就能为 Azure AD 租户启用 Azure AD 域服务。 无论 Azure AD 租户是云租户还是与本地目录同步，都能快速预配托管域。
 * **支持加入域：**可以在提供托管域的 Azure 虚拟网络中轻松将计算机加入域。 在 Windows 客户端和服务器操作系统上的域加入体验可针对 Azure AD 域服务所服务的域顺畅运行。 还可以针对此类域使用自动化域加入工具。
 * **每个 Azure AD 目录都有一个域实例：**可以针对每个 Azure AD 目录创建单个 Active Directory 域。
-* **使用自定义名称创建域：**可以使用 Azure AD 域服务创建具有自定义名称的域（例如“contoso100.com”）。 可以使用已验证或未验证的域名。 还可以选择性地使用 Azure AD 目录提供的内置域后缀（即“* .onmicrosoft.com”）来创建域。
+* **使用自定义名称创建域：**可以使用 Azure AD 域服务创建具有自定义名称的域（例如“contoso100.com”）。 可以使用已验证或未验证的域名。 还可以选择性地使用 Azure AD 目录提供的内置域后缀（即“*.onmicrosoft.com”）来创建域。
 * **与 Azure AD 集成：**无需配置或管理向 Azure AD 域服务的复制。 Azure AD 域服务中自动提供来自 Azure AD 目录的用户帐户、组成员身份和用户凭据（密码）。 新用户、组或者对 Azure AD 租户或本地目录中的属性所做的更改会自动同步到 Azure AD 域服务。
 * **NTLM 和 Kerberos 身份验证：**借助对 NTLM 和 Kerberos 身份验证的支持，可以部署依赖于 Windows 集成身份验证的应用程序。
 * **使用企业凭据/密码：**Azure AD 租户中用户的密码可与 Azure AD 域服务配合使用。 用户可以使用其企业凭据将计算机加入域，以交互方式或通过远程桌面登录，以及针对托管域进行身份验证。

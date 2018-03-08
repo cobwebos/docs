@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: juliako
-ms.openlocfilehash: 013c14c00096c9958a732d1f0eaacc9248f57da9
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 2d1a635c1e2bde140df19f8c26f6ae5a6978eff5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>使用 AES-128 动态加密和密钥传递服务
 > [!div class="op_single_selector"]
@@ -126,6 +126,7 @@ ms.lasthandoff: 01/05/2018
 ## <a name="get-a-test-token"></a>获取测试令牌
 获取用于密钥授权策略的基于令牌限制的测试令牌。
 
+```csharp
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate = 
@@ -136,6 +137,7 @@ ms.lasthandoff: 01/05/2018
     //so you have to add it in front of the token string. 
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate);
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+```
 
 可以使用 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)来测试流。
 
@@ -145,6 +147,7 @@ ms.lasthandoff: 01/05/2018
 ### <a name="manifest-files"></a>清单文件
 客户端需要从清单文件提取 URL（也包含内容密钥 ID [kid]）值。 然后，客户端将尝试从密钥传送服务获取加密密钥。 客户端还需要提取 IV 值，并使用该值来解密流。 下面的代码片段演示平滑流式处理清单的 <Protection> 元素。
 
+```xml
     <Protection>
       <ProtectionHeader SystemID="B47B251A-2409-4B42-958E-08DBAE7B4EE9">
         <ContentProtection xmlns:sea="urn:mpeg:dash:schema:sea:2012" schemeIdUri="urn:mpeg:dash:sea:2012">
@@ -156,6 +159,7 @@ ms.lasthandoff: 01/05/2018
         </ContentProtection>
       </ProtectionHeader>
     </Protection>
+```
 
 对于 HLS，根清单将划分成段文件。 
 
@@ -191,6 +195,7 @@ ms.lasthandoff: 01/05/2018
 
 以下代码演示如何使用密钥传送 Uri（从清单提取）和令牌，向媒体服务密钥传送服务发送请求。 （本文不讨论如何从 STS 获取 SWT。）
 
+```csharp
     private byte[] GetDeliveryKey(Uri keyDeliveryUri, string token)
     {
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(keyDeliveryUri);
@@ -230,6 +235,7 @@ ms.lasthandoff: 01/05/2018
         Array.Copy(buffer, key, length);
         return key;
     }
+```
 
 ## <a name="protect-your-content-with-aes-128-by-using-net"></a>在 .NET 中使用 AES-128 保护内容
 
@@ -239,8 +245,10 @@ ms.lasthandoff: 01/05/2018
 
 2. 将以下元素添加到 app.config 文件中定义的 appSettings：
 
-        <add key="Issuer" value="http://testacs.com"/>
-        <add key="Audience" value="urn:test"/>
+    ```xml
+            <add key="Issuer" value="http://testacs.com"/>
+            <add key="Audience" value="urn:test"/>
+    ```
 
 ### <a id="example"></a>示例
 
@@ -251,7 +259,9 @@ ms.lasthandoff: 01/05/2018
 
 请务必将变量更新为指向输入文件所在的文件夹。
 
+```csharp
     [!code-csharp[Main](../../samples-mediaservices-encryptionaes/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs)]
+```
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

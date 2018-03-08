@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: 98517b546fe5a00ad17d8478e94bc78a012c2de8
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: f88a9a732099f2bd63f46d3f45e5ff96f7441f03
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 开始传送点播内容
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 本教程介绍了在 Azure 媒体服务 .NET SDK 中使用 Azure 媒体服务 (AMS) 应用程序实施基本的视频点播 (VoD) 内容传送服务的步骤。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 以下是完成本教程所需具备的条件：
 
@@ -95,6 +95,7 @@ ms.lasthandoff: 01/05/2018
 > [!NOTE]
 > 会收到编译错误，直到为所有在本文后面部分进行定义的函数添加定义为止。
 
+```csharp
     class Program
     {
         // Read values from the App.config file.
@@ -145,7 +146,7 @@ ms.lasthandoff: 01/05/2018
             Console.ReadLine();
         }
         }
-    
+```
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>创建新资产并上传视频文件
 
@@ -167,6 +168,7 @@ ms.lasthandoff: 01/05/2018
 
 将以下方法添加到 Program 类。
 
+```csharp
     static public IAsset UploadFile(string fileName, AssetCreationOptions options)
     {
         IAsset inputAsset = _context.Assets.CreateFromFile(
@@ -181,7 +183,7 @@ ms.lasthandoff: 01/05/2018
 
         return inputAsset;
     }
-
+```
 
 ## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a>将源文件编码为一组自适应比特率 MP4 文件
 将资产引入媒体服务后，即可对媒体进行编码、传输复用、打水印等处理，然后将其传送至客户端。 将根据多个后台角色实例调度把那个运行这些活动，以确保较高的性能和可用性。 这些活动称为作业，每个作业由原子任务构成，这些原子任务在资产文件上完成具体的工作。
@@ -196,6 +198,7 @@ ms.lasthandoff: 01/05/2018
 
 将以下方法添加到 Program 类。
 
+```csharp
     static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
     {
 
@@ -229,6 +232,7 @@ ms.lasthandoff: 01/05/2018
 
         return outputAsset;
     }
+```
 
 ## <a name="publish-the-asset-and-get-urls-for-streaming-and-progressive-download"></a>发布资产并获取用于流式处理和渐进式下载的 URL
 
@@ -261,6 +265,7 @@ ms.lasthandoff: 01/05/2018
 
 将以下方法添加到 Program 类。
 
+```csharp
     static public void PublishAssetGetURLs(IAsset asset)
     {
         // Publish the output asset by creating an Origin locator for adaptive streaming,
@@ -325,6 +330,7 @@ ms.lasthandoff: 01/05/2018
 
         Console.WriteLine("Output asset files available at '{0}'.", Path.GetFullPath(outputFolder));
     }
+```
 
 ## <a name="test-by-playing-your-content"></a>通过播放内容进行测试
 

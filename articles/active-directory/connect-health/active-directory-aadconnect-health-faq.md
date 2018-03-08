@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: bd93b3473143f425b47f141efb3af3007614794f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 312980ded8fad84f2ea4a41078597dd3a6cb8ca7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/18/2018
 | 注册的代理数 | 所需的许可证数 | 示例监视配置 |
 | ------ | --------------- | --- |
 | 1 | 1 | 1 个 Azure AD Connect 服务器 |
-| #N/A | 26| 1 个 Azure AD Connect 服务器和 1 个域控制器 |
+| 2 | 26| 1 个 Azure AD Connect 服务器和 1 个域控制器 |
 | 3 | 51 | 1 个 Active Directory 联合身份验证服务 (AD FS) 服务器、1 个 AD FS 代理和 1 个域控制器 |
 | 4 | 76 | 1 个 AD FS 服务器、1 个 AD FS 代理和 2 个域控制器 |
 | 5 | 101 | 1 个 Azure AD Connect 服务器、1 个 AD FS 服务器、1 个 AD FS 代理和 2 个域控制器 |
@@ -128,12 +128,7 @@ Azure AD Connect Health 包含 Azure 德国的[安装](active-directory-aadconne
 
 **问：我收到有关“Health 服务数据不是最新”的警报。如何解决此问题？**
 
-如果过去两小时内未从服务器收到所有数据点，Azure AD Connect Health 将生成此警报。 生成此警报的原因有多种。
-
-* 该代理无法与所需的终结点通信，因为防火墙阻止流量。 这在 Web 应用程序代理服务器上尤其常见。 请确保已允许出站通信到所需终结点和端口。 有关详细信息，请参阅[要求部分](active-directory-aadconnect-health-agent-install.md#requirements)。
-* 网络层会对出站通信进行 SSL 检查。 这会导致代理使用的证书被检查服务器/实体替换，并且将数据上传到 Azure AD Connect Health 服务的过程将失败。
-* 可以使用代理中内置的连接命令。 [了解详细信息](active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)。
-* 代理还支持通过未经身份验证的 HTTP 代理进行出站连接。 [了解详细信息](active-directory-aadconnect-health-agent-install.md##configure-azure-ad-connect-health-agents-to-use-http-proxy)。
+如果过去两小时内未从服务器收到所有数据点，Azure AD Connect Health 将生成此警报。 [了解详细信息](active-directory-aadconnect-health-data-freshness.md)。
 
 ## <a name="operations-questions"></a>操作问题
 **问：我需要在 Web 应用程序代理服务器上启用审核吗？**

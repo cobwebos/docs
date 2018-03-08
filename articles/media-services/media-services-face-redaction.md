@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako;
-ms.openlocfilehash: 2e936379968f74eb8bea420916acea2b8d96bb24
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 73d2f7135e85b829b1ecbd9eb0264024df36244a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订
 ## <a name="overview"></a>概述
@@ -57,6 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 #### <a name="output-example"></a>输出示例：
 
+```json
     {
       "version": 1,
       "timescale": 24000,
@@ -103,6 +104,7 @@ ms.lasthandoff: 12/11/2017
             ],
 
     … truncated
+```
 
 ### <a name="redact-mode"></a>修订模式
 工作流的第二步使用更大数量的输入，这些输入必须合并为单个资产。
@@ -138,7 +140,9 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="example-json"></a>示例 JSON：
 
+```json
     {'version':'1.0', 'options': {'Mode': 'Combined', 'BlurType': 'High'}}
+```
 
 #### <a name="low"></a>低
 
@@ -172,8 +176,16 @@ ms.lasthandoff: 12/11/2017
 
 1. 创建资产并将媒体文件上传到资产。
 2. 基于包含以下 json 预设的配置文件创建含有人脸编修任务的作业： 
-   
-        {'version':'1.0', 'options': {'mode':'combined'}}
+
+    ```json
+            {
+                'version':'1.0',
+                'options': {
+                    'mode':'combined'
+                }
+            }
+    ```
+
 3. 下载输出 JSON 文件。 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
@@ -182,7 +194,7 @@ ms.lasthandoff: 12/11/2017
 
 #### <a name="example"></a>示例
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;
