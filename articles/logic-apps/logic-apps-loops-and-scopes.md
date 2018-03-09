@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/29/2016
 ms.author: estfan; LADocs
 ms.openlocfilehash: 24a19ef7d93b4b0d006dfb0aed38f88d3d821d99
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/03/2018
 ---
 # <a name="logic-apps-loops-scopes-and-debatching"></a>逻辑应用循环、范围和解除批处理
   

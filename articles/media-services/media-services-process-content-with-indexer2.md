@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: adsolank;juliako;
-ms.openlocfilehash: 075daadae42340dfc9c7510a8010e337210e6e01
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c78a4d2d3a1b0f84d488e7358c875c9708ac6107
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>使用 Azure Media Indexer 2 预览版为媒体文件编制索引
 ## <a name="overview"></a>概述
@@ -56,6 +56,7 @@ Azure Media Indexer 2 预览版媒体处理器 (MP) 让你能够使媒体文件�
 
 下面的 JSON 设置可用的参数。
 
+```json
     {
       "version":"1.0",
       "Features":
@@ -69,6 +70,7 @@ Azure Media Indexer 2 预览版媒体处理器 (MP) 让你能够使媒体文件�
            "Type":"SpReco"
         }]
     }
+```
 
 ## <a name="supported-languages"></a>支持的语言
 Azure Media Indexer 2 预览版支持以下语言的语音转换为文本功能（在任务配置中指定语言名称时，使用括号中的 4 个字符的代码，如下所示）：
@@ -96,20 +98,23 @@ Azure Media Indexer 2 预览版支持以下语言的语音转换为文本功能�
 
 1. 创建资产并将媒体文件上传到资产。
 2. 基于包含以下 json 预设值的配置文件，使用索引任务创建作业：
-   
-        {
-          "version":"1.0",
-          "Features":
-            [
-               {
-               "Options": {
-                    "Formats":["WebVtt","ttml"],
-                    "Language":"enUs",
-                    "Type":"RecoOptions"
-               },
-               "Type":"SpReco"
-            }]
-        }
+
+    ```json
+            {
+            "version":"1.0",
+            "Features":
+                [
+                {
+                "Options": {
+                        "Formats":["WebVtt","ttml"],
+                        "Language":"enUs",
+                        "Type":"RecoOptions"
+                },
+                "Type":"SpReco"
+                }]
+            }
+    ```
+    
 3. 下载输出文件。 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
@@ -118,7 +123,7 @@ Azure Media Indexer 2 预览版支持以下语言的语音转换为文本功能�
 
 #### <a name="example"></a>示例
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

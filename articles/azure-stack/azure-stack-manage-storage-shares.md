@@ -3,7 +3,7 @@ title: "管理 Azure 堆栈中的存储容量 |Microsoft 文档"
 description: "监视和管理 Azure 堆栈可用存储空间。"
 services: azure-stack
 documentationcenter: 
-author: brenduns
+author: mattbriggs
 manager: femila
 editor: 
 ms.assetid: b0e694e4-3575-424c-afda-7d48c2025a62
@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2017
-ms.author: brenduns
+ms.date: 02/22/2017
+ms.author: mabrigg
 ms.reviewer: jiahan
-ms.openlocfilehash: 30e5265fbad66ab3c68bc5d5e90687b1a968167b
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 749a02b38d6b074d4136bc7bb44910ee7c947b05
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>管理 Azure 堆栈的存储容量
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 这篇文章中的信息可帮助 Azure 堆栈云运算符监视器和管理其 Azure 堆栈部署的存储容量。 Azure 堆栈存储基础结构分配的 Azure 堆栈部署的总存储容量以用于子集**存储服务**。 存储服务在与部署的节点相对应的卷上的共享存储租户的数据。
 

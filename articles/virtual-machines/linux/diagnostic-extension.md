@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
 ms.openlocfilehash: 1eae6d302827c977b9258174dec68fd8f3009a11
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -22,7 +22,7 @@ ms.lasthandoff: 01/04/2018
 > [!IMPORTANT]
 > 有关 2.3 版和更早版本，请参阅[此文档](./classic/diagnostic-extension-v2.md)。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM 的运行状况。 它具有以下功能：
 
@@ -50,7 +50,7 @@ Azure 门户不能用于启用或配置 LAD 3.0。 相反，它可用于安装�
 
 可下载配置只是一个示例；请对其进行修改以适应你的需求。
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>先决条件
 
 * Azure Linux 代理 2.2.0 版或更高版本。 大部分 Azure VM Linux 库映像包含 2.2.7 版或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请按照[以下说明](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)将其更新。
 * **Azure CLI**。 在计算机上[设置 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) 环境。
@@ -127,7 +127,7 @@ az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnost
 }
 ```
 
-名称​​ | 值
+名称 | 值
 ---- | -----
 storageAccountName | 扩展写入数据的存储帐户的名称。
 storageAccountEndPoint | （可选）标识存储帐户所在云的终结点。 如果缺少此设置，则 LAD 默认为 Azure 公有云`https://core.windows.net`。 若要使用 Azure Germany、Azure 政府或 Azure China 中的存储帐户，请相应地设置此值。
@@ -169,7 +169,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 
 元素 | 值
 ------- | -----
-name | 在扩展配置中其他位置用于引用此接收器的字符串。
+名称 | 在扩展配置中其他位置用于引用此接收器的字符串。
 type | 要定义的接收器的类型。 确定此类型实例中的其他值（如果有）。
 
 Linux 诊断扩展 3.0 版支持两种接收器类型：EventHub 和 JsonBlob。

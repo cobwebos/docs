@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 5741a484dcda05e3143b5f896ddee2e8591dabee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7a16745fc21d03f81ca6140ace54f84468749364
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒体分析检测面部和情绪
 ## <a name="overview"></a>概述
@@ -64,12 +64,14 @@ ms.lasthandoff: 12/11/2017
 ### <a name="task-configuration-preset"></a>任务配置（预设）
 使用 **Azure Media Face Detector** 创建任务时，必须指定配置预设。 以下配置预设仅适用于人脸检测。
 
+```json
     {
       "version":"1.0",
       "options":{
           "TrackingMode": "Fast"
       }
     }
+```
 
 #### <a name="attribute-descriptions"></a>属性说明
 | 属性名称 | 说明 |
@@ -79,6 +81,7 @@ ms.lasthandoff: 12/11/2017
 ### <a name="json-output"></a>JSON 输出
 下面是 JSON 输出被截断的示例。
 
+```json
     {
     "version": 1,
     "timescale": 30000,
@@ -123,8 +126,8 @@ ms.lasthandoff: 12/11/2017
                 "height": 0.151389
             }
             ],
+```
 
-        . . . 
 
 ## <a name="emotion-detection-input-and-output-example"></a>情绪检测输入和输出示例
 ### <a name="input-video"></a>输入视频
@@ -133,6 +136,7 @@ ms.lasthandoff: 12/11/2017
 ### <a name="task-configuration-preset"></a>任务配置（预设）
 使用 **Azure Media Face Detector** 创建任务时，必须指定配置预设。 以下配置预设指定基于情绪检测创建 JSON。
 
+```json
     {
       "version": "1.0",
       "options": {
@@ -141,6 +145,7 @@ ms.lasthandoff: 12/11/2017
         "aggregateEmotionIntervalMs": "342"
       }
     }
+```
 
 
 #### <a name="attribute-descriptions"></a>属性说明
@@ -155,12 +160,13 @@ ms.lasthandoff: 12/11/2017
 
 || 默认值 | 最大值 | 最小值 |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0.5 |#N/A |0.25|
+| AggregateEmotionWindowMs |0.5 |2 |0.25|
 | AggregateEmotionIntervalMs |0.5 |1 |0.25|
 
 ### <a name="json-output"></a>JSON 输出
 聚合情绪的 JSON 输出（已截断）：
 
+```json
     {
      "version": 1,
      "timescale": 30000,
@@ -311,6 +317,7 @@ ms.lasthandoff: 12/11/2017
                  "anger": 0,
                  "disgust": 0,
                  "fear": 0,
+```
 
 ## <a name="limitations"></a>限制
 * 支持的输入视频格式包括 MP4、MOV 和 WMV。
@@ -324,10 +331,12 @@ ms.lasthandoff: 12/11/2017
 
 1. 创建资产并将媒体文件上传到资产。
 2. 使用基于包含以下 json 预设值的配置文件的人脸检测任务创建一个作业： 
-   
-        {
-            "version": "1.0"
-        }
+
+    ```json
+            {
+                "version": "1.0"
+            }
+    ```
 3. 下载输出 JSON 文件。 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
@@ -336,7 +345,7 @@ ms.lasthandoff: 12/11/2017
 
 #### <a name="example"></a>示例
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

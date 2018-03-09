@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: 39782bd687c9c1b50699c05e61e57d9c767a8d32
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: e215b21c8010bce6fb2a6ac540ba925f4c1a79a2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -56,7 +56,7 @@ ms.lasthandoff: 12/21/2017
 开放限制意味着系统会将密钥传送到发出密钥请求的任何用户。 此限制可能适用于测试用途。
 
 以下示例创建开放授权策略，并将其添加到内容密钥：
-
+```csharp
     static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
     {
         // Create ContentKeyAuthorizationPolicy with Open restrictions
@@ -92,14 +92,14 @@ ms.lasthandoff: 12/21/2017
         IContentKey updatedKey = contentKey.UpdateAsync().Result;
         Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
     }
-
+```
 
 ### <a name="token-restriction"></a>令牌限制
 本部分介绍如何创建内容密钥授权策略，以及如何将其与内容密钥相关联。 授权策略描述了必须达到什么授权要求才能确定用户是否有权接收密钥。 例如，“验证密钥”列表是否包含为令牌签名时使用的密钥？
 
 若要配置令牌限制选项，需要使用 XML 来描述令牌的授权要求。 令牌限制配置 XML 必须符合以下 XML 架构：
-
-#### <a name="token-restriction-schema"></a>令牌限制架构
+```csharp
+#### Token restriction schema
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:complexType name="TokenClaim">
@@ -146,12 +146,12 @@ ms.lasthandoff: 12/21/2017
       </xs:complexType>
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
-
+```
 配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含为令牌签名时使用的密钥。 颁发者是颁发令牌的 STS。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
 
 使用用于 .NET 的媒体服务 SDK 时，可以使用 TokenRestrictionTemplate 类来生成限制令牌。
 以下示例创建包含令牌限制的授权策略。 在此示例中，客户端必须出示令牌，其中包含：签名密钥 (VerificationKey)、令牌颁发者和必需的声明。
-
+```csharp
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
     {
         string tokenTemplateString = GenerateTokenRequirements();
@@ -205,10 +205,10 @@ ms.lasthandoff: 12/21/2017
 
         return TokenRestrictionTemplateSerializer.Serialize(template);
     }
-
+```
 #### <a name="test-token"></a>测试令牌
 若要获取用于密钥授权策略的基于令牌限制的测试令牌，请执行以下操作：
-
+```csharp
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate =
@@ -224,7 +224,7 @@ ms.lasthandoff: 12/21/2017
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey);
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
     Console.WriteLine();
-
+```
 
 ## <a name="playready-dynamic-encryption"></a>PlayReady 动态加密
 可以使用媒体服务配置相应的权限和限制，这样当用户尝试播放受保护的内容时，PlayReady DRM 运行时就会强制实施这些权限和限制。 
@@ -238,6 +238,7 @@ ms.lasthandoff: 12/21/2017
 
 以下示例创建开放授权策略，并将其添加到内容密钥：
 
+```csharp
     static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
     {
 
@@ -274,10 +275,12 @@ ms.lasthandoff: 12/21/2017
         contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
         contentKey = contentKey.UpdateAsync().Result;
     }
+```
 
 ### <a name="token-restriction"></a>令牌限制
 若要配置令牌限制选项，需要使用 XML 来描述令牌的授权要求。 令牌限制配置 XML 必须遵循“[令牌限制架构](#token-restriction-schema)”部分所示的 XML 架构。
 
+```csharp
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
     {
         string tokenTemplateString = GenerateTokenRequirements();
@@ -383,20 +386,25 @@ ms.lasthandoff: 12/21/2017
 
         return MediaServicesLicenseTemplateSerializer.Serialize(responseTemplate);
     }
-
+```
 
 若要获取基于令牌限制（用于密钥授权策略）的测试令牌，请参阅“[测试令牌](#test-token)”部分。 
 
 ## <a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
 ### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+
+```csharp
     public enum ContentKeyRestrictionType
     {
         Open = 0,
         TokenRestricted = 1,
         IPRestricted = 2,
     }
+```
 
 ### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+
+```csharp 
     public enum ContentKeyDeliveryType
     {
       None = 0,
@@ -404,14 +412,18 @@ ms.lasthandoff: 12/21/2017
       BaselineHttp = 2,
       Widevine = 3
     }
+```
 
 ### <a id="TokenType"></a>TokenType
+
+```csharp
     public enum TokenType
     {
         Undefined = 0,
         SWT = 1,
         JWT = 2,
     }
+```
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

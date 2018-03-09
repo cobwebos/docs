@@ -4,7 +4,7 @@ description: "了解什么是网络接口，以及如何创建、删除网络接
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: da29ecaaa0f694be3e96baebfd80c09069d7c4a8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e8a6722c74f044b5310ce0fcb937002f5a1e8fa2
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>创建、更改或删除网络接口
 
@@ -30,12 +30,12 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="before-you-begin"></a>开始之前
 
-在完成本文的任何部分中的任何步骤之前完成以下任务：
+在完成本文任何部分中的步骤之前，请完成以下任务：
 
-- 查看 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文，了解网络接口的限制。
-- 使用 Azure 帐户登录到 Azure [门户](https://portal.azure.com)、Azure 命令行接口 (CLI) 或 Azure PowerShell。 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
-- 如果使用 PowerShell 命令来完成本文中的任务，请[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure PowerShell commandlet。 若要获取 PowerShell 命令的帮助和示例，请键入 `get-help <command> -full`。
-- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请[安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 请勿安装 CLI 及其必备组件，可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的 Cloud Shell >_ 按钮。
+- 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
+- 如果使用门户，请打开 https://portal.azure.com，并使用 Azure 帐户登录。
+- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 5.2.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
+- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.26 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 ## <a name="create-a-network-interface"></a>创建网络接口
 
@@ -163,7 +163,7 @@ IP 转发使网络接口附加到的虚拟机能够：
 
 ## <a name="delete-a-network-interface"></a>删除网络接口
 
-只要网络接口未附加到虚拟机，即可删除此接口。 如果已将其附加到虚拟机，则必须先将虚拟机置于停止（解除分配）状态，再从虚拟机分离网络接口，然后才能删除网络接口。 若要从虚拟机中分离网络接口，请完成[添加或删除网络接口](virtual-network-network-interface-vm.md)一文的[从虚拟机中分离网络接口](virtual-network-network-interface-vm.md#vm-remove-nic)部分中的步骤。 删除虚拟机会分离其上附加的所有网络接口，但不会删除网络接口。
+只要网络接口未附加到虚拟机，即可删除此接口。 如果已将其附加到虚拟机，则必须先将虚拟机置于停止（解除分配）状态，再从虚拟机分离网络接口，然后才能删除网络接口。 若要从虚拟机中分离网络接口，请完成[添加或删除网络接口](virtual-network-network-interface-vm.md)一文的[从虚拟机中分离网络接口](virtual-network-network-interface-vm.md#remove-a-network-interface-from-a-vm)部分中的步骤。 删除虚拟机会分离其上附加的所有网络接口，但不会删除网络接口。
 
 1. 使用已分配订阅的“网络参与者”角色权限（最低权限）的帐户登录到 [Azure 门户](https://portal.azure.com)。 请参阅[用于 Azure 基于角色的访问控制的内置角色](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)一文，详细了解如何将角色和权限分配给帐户。
 2. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“网络接口”。 当“网络接口”出现在搜索结果中时，请单击它。

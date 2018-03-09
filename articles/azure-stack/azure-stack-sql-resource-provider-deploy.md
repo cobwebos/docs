@@ -3,25 +3,26 @@ title: "使用 Azure 堆栈上的 SQL 数据库 |Microsoft 文档"
 description: "了解如何部署 SQL 数据库作为 Azure 堆栈和快速步骤来部署 SQL Server 资源提供程序适配器上的服务。"
 services: azure-stack
 documentationCenter: 
-author: JeffGoldner
-manager: bradleyb
+author: mattbriggs
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
-ms.author: JeffGo
-ms.openlocfilehash: bf52ed4986b4e0930b57721c0e38bbf748045a36
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.date: 03/06/2018
+ms.author: mabrigg
+ms.reviewer: jeffgo
+ms.openlocfilehash: 805e39dfdee3a23d4ddc196085be59788cee912a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 SQL 数据库
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 使用 SQL Server 资源提供程序适配器来公开 SQL 数据库作为一项服务的[Azure 堆栈](azure-stack-poc.md)。 安装资源提供程序并将其连接到一个或多个 SQL Server 实例后，可以创建你和你的用户：
 - 对于云本机应用程序的数据库。
@@ -40,9 +41,12 @@ ms.lasthandoff: 02/01/2018
 
 你必须创建一个 （或多个） 的 SQL Server 的实例和/或提供对外部的 SQL Server 实例的访问。
 
+> [!NOTE]
+> 宿主在 Azure 堆栈安装的服务器必须从租户订阅创建集成的系统。 无法从默认提供程序订阅中创建它们。 从租户门户或使用相应登录的 PowerShell 会话，必须创建它们。 所有宿主服务器是应计费 Vm，并且必须具有合适的许可证。 服务管理员可以是租户订阅的所有者。
+
 ## <a name="deploy-the-resource-provider"></a>部署资源提供程序
 
-1. 如果尚未这样做，注册你开发工具包，并下载可下载通过应用商店管理 Windows Server 2016 数据中心 Core 映像。 你必须使用 Windows Server 2016 Core 映像。 你还可以使用脚本创建[Windows Server 2016 映像](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image)。 （请务必选择核心选项）。 .NET 3.5 运行时不再是必需的。
+1. 如果尚未这样做，注册你开发工具包，并下载可下载通过应用商店管理 Windows Server 2016 数据中心 Core 映像。 你必须使用 Windows Server 2016 Core 映像。 你还可以使用脚本创建[Windows Server 2016 映像](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image)。 （请务必选择核心选项。）
 
 2. 登录到可以访问特权终结点 VM 的主机。
 
@@ -57,16 +61,17 @@ ms.lasthandoff: 02/01/2018
 3. 下载二进制 SQL 资源提供程序。 然后运行自解压缩程序中，若要将内容提取到临时目录。
 
     >[!NOTE] 
-    > 资源提供程序生成对应于 Azure 堆栈生成。 请务必下载正确版本的正在运行的 Azure 堆栈的二进制文件。
+    > 资源提供程序具有最小相应 Azure 堆栈生成。 请务必下载正确版本的正在运行的 Azure 堆栈的二进制文件。
 
     | Azure 堆栈生成 | SQL 资源提供程序安装程序 |
     | --- | --- |
-    |1.0.180102.3、 1.0.180103.2 或 1.0.180106.1 （多节点） | [SQL RP 版本 1.1.14.0](https://aka.ms/azurestacksqlrp1712) |
-    | 1.0.171122.1 | [SQL RP 版本 1.1.12.0](https://aka.ms/azurestacksqlrp1711) |
-    | 1.0.171028.1 | [SQL RP 版本 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
+    | 1802: 1.0.180302.1 | [SQL RP 版本 1.1.18.0](https://aka.ms/azurestacksqlrp1802) |
+    | 1712: 1.0.180102.3、 1.0.180103.2 或 1.0.180106.1 （多节点） | [SQL RP 版本 1.1.14.0](https://aka.ms/azurestacksqlrp1712) |
+    | 1711: 1.0.171122.1 | [SQL RP 版本 1.1.12.0](https://aka.ms/azurestacksqlrp1711) |
+    | 1710: 1.0.171028.1 | [SQL RP 版本 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
   
 
-4. 从特权终结点中检索 Azure 堆栈根证书。 为 Azure 堆栈 SDK 中,，将创建一个自签名的证书作为此过程的一部分。 对于多节点，你必须提供适当的证书。
+4. 从特权终结点中检索 Azure 堆栈根证书。 为 Azure 堆栈 SDK 中,，将创建一个自签名的证书作为此过程的一部分。 对于集成系统，你必须提供适当的证书。
 
    若要提供自己的证书，放置在一个.pfx 文件**DependencyFilesLocalPath** ，如下所示：
 
@@ -74,7 +79,7 @@ ms.lasthandoff: 02/01/2018
 
     - 此证书必须受信任。 即，信任链必须存在而无需中间证书。
 
-    - 只有一个单个证书文件所在 DependencyFilesLocalPath。
+    - 只有一个单个证书文件可以存在于由 DependencyFilesLocalPath 参数指向的目录。
 
     - 文件名称必须不包含任何特殊字符。
 
@@ -91,10 +96,10 @@ ms.lasthandoff: 02/01/2018
     - 使用在步骤 1 中创建，然后安装资源提供程序的 Windows Server 2016 映像部署 VM。
     - 注册映射到你的资源提供程序 VM 的本地 DNS 记录。
     - 注册资源提供程序与本地 Azure 资源管理器 （用户和管理员）。
+    - （可选） 在 RP 安装过程中安装的单个 Windows 更新
 
-> [!NOTE]
-> 如果安装需要超过 90 分钟的时间，可能会失败。 如果失败，你看到失败消息，在屏幕上，在日志文件中，但部署的重试从失败的步骤。 不符合建议的内存和 vCPU 规范的系统可能不能部署 SQL 资源提供程序。
->
+8. 我们建议你从应用商店管理下载最新的 Windows Server 2016 Core 映像。 如果你需要安装更新，你可以将单个。MSU 本地依赖项路径中的包。 如果多个。MSU 文件找不到，则脚本将失败。
+
 
 下面是可以从 PowerShell 提示符下运行的一个示例。 （请务必更改的帐户信息和根据需要的密码。）
 
@@ -104,11 +109,11 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack and the default prefix is AzS.
-# For integrated systems, the domain and the prefix are the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
-$prefix = "AzS"
-$privilegedEndpoint = "$prefix-ERCS01"
+
+# For integrated systems, use the IP address of one of the ERCS virtual machines
+$privilegedEndpoint = "AzS-ERCS01"
 
 # Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\SQLRP'
@@ -118,7 +123,7 @@ $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set credentials for the new Resource Provider VM.
+# Set credentials for the new resource provider VM local administrator account
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
 
@@ -170,14 +175,17 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 
 ## <a name="update-the-sql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>更新 SQL 资源提供程序适配器 （多节点仅，生成 1710年及更高版本）
-每当更新 Azure 堆栈生成时，新的 SQL 资源提供程序适配器将被释放。 现有适配器可能会继续工作。 但是，我们建议更新到最新版本越早越好后更新 Azure 堆栈。 
+更新 Azure 堆栈生成时，可能会发布新的 SQL 资源提供程序适配器。 虽然现有适配器将继续工作，我们建议尽快更新到最新版本。 必须按顺序安装更新： 不能跳过版本 （请参阅上表）。
 
 更新过程是类似于前面所述的安装过程。 使用最新的资源提供程序代码中创建新的 VM。 此外，你将设置迁移到此新实例，包括数据库和托管服务器信息。 您也将迁移的必要的 DNS 记录。
 
 UpdateSQLProvider.ps1 脚本使用前面所述的相同自变量。 你必须也提供此处所证书。
 
+我们建议你从应用商店管理下载最新的 Windows Server 2016 Core 映像。 如果你需要安装更新，你可以将单个。MSU 本地依赖项路径中的包。 如果多个。MSU 文件找不到，则脚本将失败。
+
+
 > [!NOTE]
-> 此更新过程仅支持在多节点的系统上。
+> 在更新过程仅适用于集成的系统。
 
 ```
 # Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
@@ -185,11 +193,11 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack and the default prefix is AzS.
-# For integrated systems, the domain and the prefix are the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
-$prefix = "AzS"
-$privilegedEndpoint = "$prefix-ERCS01"
+
+# For integrated systems, use the IP address of one of the ERCS virtual machines
+$privilegedEndpoint = "AzS-ERCS01"
 
 # Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\SQLRP'
@@ -237,6 +245,103 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 | **DebugMode** | 阻止失败的自动清理。 | 否 |
 
 
+## <a name="collect-diagnostic-logs"></a>收集诊断日志
+SQL 资源提供程序是锁定停止虚拟机。 如果有必要对从虚拟机，PowerShell Just Enough Administration (JEA) 终结点收集日志_DBAdapterDiagnostics_为该目的提供。 有两个命令可通过此终结点：
+
+* Get AzsDBAdapterLog-准备包含 RP 诊断日志的 zip 包，并将其放在会话用户驱动器上。 该命令可以不带任何参数调用，并将收集最后一个四个小时的日志。
+* 删除-AzsDBAdapterLog-清理资源提供程序 VM 上的现有日志包
+
+用户帐户调用_dbadapterdiag_ RP 部署或更新用于连接到用于提取 RP 日志的诊断终结点期间创建。 此帐户的密码是部署/更新的过程中提供的本地管理员帐户的密码相同。
+
+若要使用这些命令，将需要创建与资源提供程序虚拟机的远程 PowerShell 会话和调用该命令。 你可以根据需要提供 FromDate 和 ToDate 参数。 如果你不指定一个或这两种，FromDate 将为当前时间前四个小时，ToDate 将当前时间。
+
+此示例脚本演示如何使用这些命令：
+
+```
+# Create a new diagnostics endpoint session.
+$databaseRPMachineIP = '<RP VM IP>'
+$diagnosticsUserName = 'dbadapterdiag'
+$diagnosticsUserPassword = '<see above>'
+
+$diagCreds = New-Object System.Management.Automation.PSCredential `
+        ($diagnosticsUserName, $diagnosticsUserPassword)
+$session = New-PSSession -ComputerName $databaseRPMachineIP -Credential $diagCreds `
+        -ConfigurationName DBAdapterDiagnostics
+
+# Sample captures logs from the previous one hour
+$fromDate = (Get-Date).AddHours(-1)
+$dateNow = Get-Date
+$sb = {param($d1,$d2) Get-AzSDBAdapterLog -FromDate $d1 -ToDate $d2}
+$logs = Invoke-Command -Session $session -ScriptBlock $sb -ArgumentList $fromDate,$dateNow
+
+# Copy the logs
+$sourcePath = "User:\{0}" -f $logs
+$destinationPackage = Join-Path -Path (Convert-Path '.') -ChildPath $logs
+Copy-Item -FromSession $session -Path $sourcePath -Destination $destinationPackage
+
+# Cleanup logs
+$cleanup = Invoke-Command -Session $session -ScriptBlock {Remove- AzsDBAdapterLog }
+# Close the session
+$session | Remove-PSSession
+```
+
+## <a name="maintenance-operations-integrated-systems"></a>维护操作 （集成系统）
+SQL 资源提供程序是锁定停止虚拟机。 更新资源提供程序虚拟机的安全可以通过 PowerShell Just Enough Administration (JEA) 终结点_DBAdapterMaintenance_。
+
+使用 RP 的安装包，以便这些操作提供了一个脚本。
+
+### <a name="update-the-virtual-machine-operating-system"></a>更新虚拟机操作系统
+有几种方法更新 Windows Server VM:
+* 安装最新的资源提供程序包以使用当前修补的 Windows Server 2016 Core 映像
+* 在安装或更新的 RP 的过程中安装 Windows 更新包
+
+
+### <a name="update-the-virtual-machine-windows-defender-definitions"></a>更新虚拟机 Windows Defender 定义
+
+请按照下列步骤来更新 Defender 定义：
+
+1. Windows Defender 定义更新从下载[Windows Defender 定义](https://www.microsoft.com/en-us/wdsi/definitions)
+
+    在该页上，在"手动下载和安装定义"下载"Windows Defender 防病毒软件的 Windows 10 和 Windows 8.1"64 位文件。 
+    
+    直接链接： https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
+
+2. 创建与 SQL RP 适配器虚拟机维护终结点的 PowerShell 会话
+3. 将定义更新文件复制到使用维护终结点会话 DB 适配器计算机
+4. 维护 PowerShell 会话调用_更新 DBAdapterWindowsDefenderDefinitions_命令
+5. 安装后，建议删除用于的定义更新文件。 在上维护会话使用，则可以移除_删除 ItemOnUserDrive)_命令。
+
+
+下面是示例脚本来更新 （替换的地址或实际值的虚拟机的名称） 的 Defender 定义：
+
+```
+# Set credentials for the diagnostic user
+$diagPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$diagCreds = New-Object System.Management.Automation.PSCredential `
+    ("dbadapterdiag", $vmLocalAdminPass)$diagCreds = Get-Credential
+
+# Public IP Address of the DB adapter machine
+$databaseRPMachine  = "XX.XX.XX.XX"
+$localPathToDefenderUpdate = "C:\DefenderUpdates\mpam-fe.exe"
+ 
+# Download Windows Defender update definitions file from https://www.microsoft.com/en-us/wdsi/definitions. 
+Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64 `
+    -Outfile $localPathToDefenderUpdate 
+
+# Create session to the maintenance endpoint
+$session = New-PSSession -ComputerName $databaseRPMachine `
+    -Credential $diagCreds -ConfigurationName DBAdapterMaintenance
+# Copy defender update file to the db adapter machine
+Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
+     -Destination "User:\mpam-fe.exe"
+# Install the update file
+Invoke-Command -Session $session -ScriptBlock `
+    {Update-AzSDBAdapterWindowsDefenderDefinitions -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
+# Cleanup the definitions package file and session
+Invoke-Command -Session $session -ScriptBlock `
+    {Remove-AzSItemOnUserDrive -ItemPath "User:\mpam-fe.exe"}
+$session | Remove-PSSession
+```
 
 ## <a name="remove-the-sql-resource-provider-adapter"></a>删除 SQL 资源提供程序适配器
 

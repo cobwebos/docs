@@ -3,21 +3,21 @@ title: "在 Azure 数据工厂中监视集成运行时 | Microsoft Docs"
 description: "了解如何在 Azure 数据工厂中监视不同类型的集成运行时。"
 services: data-factory
 documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+author: douglaslMS
+manager: 
+editor: 
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
-ms.author: spelluru
-ms.openlocfilehash: b243115eef7e59279fbb1df2a3e3c288477a5b8c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: douglasl
+ms.openlocfilehash: 74a4ad6438f9e66331f76e87d20d1eb8b29e8451
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：

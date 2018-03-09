@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
 ms.openlocfilehash: fdf1c49c644a97ff2f66a8b217ee54896ed54131
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>使用 Linux VM 的托管服务标识访问 Azure Data Lake Store
 

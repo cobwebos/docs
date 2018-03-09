@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 02850243caaa66a354f06b650a5505a79d7aee54
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 82c01419d65e00ddf27dfeb8fd444d5d3d81803c
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis 缓存常见问题
 了解常见问题的答案，以及有关 Azure Redis 缓存的模式和最佳实践。
@@ -246,9 +246,7 @@ Azure Redis 缓存没有本地模拟器，但可以在本地计算机上从 [Red
 * 还可以使用 Redis 命令行工具。 若要使用它们，请执行以下步骤：
 * 下载 [Redis 命令行工具](https://github.com/MSOpenTech/redis/releases/)。
 * 使用 `redis-cli.exe` 连接到缓存。 使用 -h 开关传入缓存终结点，使用 -a 传入密钥，如以下示例中所示：
-* `redis-cli -h <your cache="" name="">
-  .redis.cache.windows.net -a <key>
-  `
+* `redis-cli -h <redis cache name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
 > Redis 命令行工具对 SSL 端口不起作用，但是，可以[根据适用于 Redis 预览版的 ASP.NET 会话状态提供程序通告](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)中的说明，使用 `stunnel` 等实用程序安全地将这些工具连接到 SSL。

@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/27/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: d5b77bb43c48bd286708ca96699b20be0f761baa
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb9575cb7bb3d8d3f3a18a1f5577ff0330bda24c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>向 Azure 注册 Azure 堆栈
 Azure 堆栈可以注册 Azure 下载从 Azure 应用商店项以及设置回向 Microsoft 报告的商业数据。 注册 Azure 堆栈后，使用情况报告给 Azure 商务。 你可以在用于注册的订阅下看到它。
@@ -54,6 +54,7 @@ Azure 堆栈工具 GitHub 存储库包含 PowerShell 模块，支持 Azure 堆�
 cd \
 
 # Download the tools archive.
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
   invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/master.zip `
   -OutFile master.zip
@@ -167,7 +168,7 @@ Register-AzsEnvironment -RegistrationToken $registrationToken
 
 ## <a name="verify-azure-stack-registration"></a>验证 Azure 堆栈注册
 使用以下步骤来验证 Azure 堆栈已成功向 Azure 注册。
-1. 登录到 Azure 堆栈[管理员门户](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https &#58; / / adminportal。*&lt;区域 >。&lt;fqdn >*。
+1. 登录到 Azure 堆栈[管理员门户](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;/ / adminportal。*&lt;区域 >。&lt;fqdn >*。
 2. 单击**更多的服务** > **应用商店管理** > **添加从 Azure**。
 
 如果你看到的项 （如 WordPress) 的 Azure 上提供的列表，已成功激活。

@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 8ffd310573d0800593bd9d93d74da4bcece61fa4
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: dd7e332eb1c935ee70a617124bd4d86e160366c7
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="creating-filters-with-azure-media-services-net-sdk"></a>使用 Azure 媒体服务 .NET SDK 创建筛选器
 > [!div class="op_single_selector"]
@@ -46,6 +46,7 @@ ms.lasthandoff: 12/08/2017
 ## <a name="createupdatereaddelete-global-filters"></a>创建/更新/读取/删除全局筛选器
 以下代码演示如何使用 .NET 创建、更新、读取和删除资产筛选器。
 
+```csharp
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
 
     List<FilterTrackSelectStatement> filterTrackSelectStatements = new List<FilterTrackSelectStatement>();
@@ -70,11 +71,12 @@ ms.lasthandoff: 12/08/2017
 
     // Delete
     filter.Delete();
-
+```
 
 ## <a name="createupdatereaddelete-asset-filters"></a>创建/更新/读取/删除资产筛选器
 以下代码演示如何使用 .NET 创建、更新、读取和删除资产筛选器。
 
+```csharp
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
     var asset = _context.Assets.Create(assetName, AssetCreationOptions.None);
 
@@ -100,7 +102,7 @@ ms.lasthandoff: 12/08/2017
     // Delete
     filterUpdated.Delete();
 
-
+```
 
 
 ## <a name="build-streaming-urls-that-use-filters"></a>生成使用筛选器的流 URL

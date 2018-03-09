@@ -15,10 +15,10 @@ ms.workload:
 ms.date: 02/22/2018
 ms.author: nisoneji
 ms.openlocfilehash: 27b38eafd9ab5da11d66ede4d446a4952e30c534
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>安装 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 

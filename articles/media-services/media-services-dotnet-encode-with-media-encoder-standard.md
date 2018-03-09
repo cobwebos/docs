@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 793dc7d4c06b18e01242726eff476253e3a3ea88
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6f9108beba69e52398f16e2b9055c7a2f2d04f48
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>使用 .NET 通过 Media Encoder Standard 对资产进行编码
 编码作业是媒体服务中最常见的处理操作之一。 可通过创建编码作业将媒体文件从一种编码转换为另一种编码。 进行编码时，可以使用媒体服务内置的 Media Encoder。 另外，也可以使用媒体服务合作伙伴提供的编码器；第三方编码器可通过 Azure Marketplace 购得。 
@@ -71,7 +71,7 @@ Media Encoder Standard 使用[此处](http://go.microsoft.com/fwlink/?linkid=618
 
 #### <a name="example"></a>示例 
 
-```
+```csharp
 using System;
 using System.Linq;
 using System.Configuration;

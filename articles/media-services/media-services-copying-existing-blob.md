@@ -13,11 +13,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 5a6e1b5bc377d3fc4ad47fdfb37da4853c3bb827
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7c94f59eaa079677223083339f111cf73b13632e
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>将现有 Blob 复制到媒体服务资产中
 本文介绍如何使用 [Azure 媒体服务 .NET SDK 扩展](https://github.com/Azure/azure-sdk-for-media-services-extensions/)将 Blob 从存储帐户复制到新的 Azure 媒体服务 (AMS) 资产中。
@@ -51,7 +51,7 @@ ms.lasthandoff: 12/11/2017
 1. 按照[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述来设置开发环境。 
 2. 将 appSettings 节添加到 .config 文件，并根据媒体服务帐户、目标存储帐户和源资产 ID 更新值。  
 
-```   
+```xml
 <appSettings>
     <add key="AMSSourceAADTenantDomain" value="tenant"/>
     <add key="AMSSourceRESTAPIEndpoint" value="endpoint"/>
@@ -77,7 +77,7 @@ ms.lasthandoff: 12/11/2017
 
 以下代码使用单个扩展通过扩展的 **IAsset.Copy** 方法将源资产中的所有文件复制到目标资产。
 
-```
+```csharp
 using System;
 using Microsoft.WindowsAzure.MediaServices.Client;
 using System.Linq;
@@ -167,7 +167,7 @@ namespace CopyExistingBlobsIntoAsset
 1. 按照[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述来设置开发环境。 
 2. 将 appSettings 节添加到 .config 文件，并根据源存储帐户和目标 AMS 帐户更新值。
 
-```
+```xml
 <appSettings>
     <add key="SourceStorageAccountName" value="name" />
     <add key="SourceStorageAccountKey" value="key" />
@@ -189,7 +189,7 @@ namespace CopyExistingBlobsIntoAsset
 >[!NOTE]
 >不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)文章。
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.Linq;
@@ -371,6 +371,7 @@ namespace CopyExistingBlobsIntoAsset
     }
 }
 ```
+
 ## <a name="next-steps"></a>后续步骤
 
 现在可以对上传的资产进行编码。 有关详细信息，请参阅 [对资产进行编码](media-services-portal-encode.md)。

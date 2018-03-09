@@ -3,7 +3,7 @@ title: "管理 Azure 堆栈存储帐户 |Microsoft 文档"
 description: "了解如何查找、 管理、 恢复和回收 Azure 堆栈存储帐户"
 services: azure-stack
 documentationcenter: 
-author: brenduns
+author: mattbriggs
 manager: femila
 editor: 
 ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 4/6/2017
-ms.author: brenduns
+ms.date: 02/22/2018
+ms.author: mabrigg
 ms.reviewer: anirudha
-ms.openlocfilehash: 3ef9a66095d0ed5fc865dc3c22961f9f7bdcedd9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 395cd113e21bf747c796ff28026f552f30656b47
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>管理 Azure 堆栈中的存储帐户
 了解如何管理 Azure 堆栈以查找，恢复，并回收根据业务需要的存储容量中的存储帐户。
@@ -29,13 +29,13 @@ ms.lasthandoff: 02/21/2018
 
 1. 在 Internet 浏览器，导航到 https://adminportal.local.azurestack.external。
 2. 为云运算符 （使用你在部署过程中提供的凭据） 登录到 Azure 堆栈管理门户
-3. 在默认的仪表板 – 找到**区域管理**列表，然后单击你想要浏览的区域。 例如**(本地**)。
+3. 在默认的仪表板 – 找到**区域管理**列表，然后单击你想要探索，例如的区域**(本地**)。
    
    ![](media/azure-stack-manage-storage-accounts/image1.png)
 4. 选择**存储**从**资源提供程序**列表。
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. 现在，在存储资源提供程序管理员边栏选项卡 – 上向下滚动到**存储帐户**选项卡上，单击它。
+5. 现在，在存储资源提供程序的管理员窗格中 – 上向下滚动到**存储帐户**选项卡上，单击它。
    
    ![](media/azure-stack-manage-storage-accounts/image3.png)
    
@@ -52,34 +52,34 @@ ms.lasthandoff: 02/21/2018
 
 **若要筛选的帐户：**
 
-1. 单击**筛选器**边栏选项卡的顶部。
-2. 在筛选器边栏选项卡，它允许你指定**帐户名称**，**订阅 ID**或**状态**微调的存储帐户，要显示的列表。 根据需要将它们。
+1. 单击**筛选器**窗格的顶部。
+2. 在筛选器窗格中，它允许你指定**帐户名称**，* * 订阅 ID，或**状态**微调的存储帐户，要显示的列表。 根据需要将它们。
 3. 单击“更新”。 应相应地刷新列表。
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)
 4. 若要重置筛选器： 单击**筛选器**、 清除所做的选择和更新。
 
-（顶部的存储帐户列表边栏选项卡） 的搜索文本框中，可以突出显示的帐户列表中选定的文本。 完整名称或 id 无法轻松地访问时，这是在这种情况中非常方便。
+（顶部存储帐户列表窗格中） 的搜索文本框中，可以突出显示的帐户列表中选定的文本。 如果完整名称或 ID 不是易于使用，则可以使用此工具。
 
 你可以使用此处免费文本来帮助查找你感兴趣的帐户。
 
 ![](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>查看帐户的详细信息
-一旦找到你感兴趣查看的帐户，你可以单击要查看某些详细信息的特定帐户。 新的边栏选项卡将打开，其中的帐户详细信息如： 帐户、 创建时间、 位置等的类型。
+一旦找到你感兴趣查看的帐户，你可以单击要查看某些详细信息的特定帐户。 新窗格将打开，其中的帐户详细信息如： 帐户、 创建时间、 位置等的类型。
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
 ## <a name="recover-a-deleted-account"></a>恢复已删除的帐户
 你可能需要恢复已删除的帐户的情况下。
 
-Azure 堆栈中没有非常简单的方法来做到这一点：
+在 Azure 堆栈是一种简单的方法来做到这一点：
 
 1. 浏览到存储帐户列表。 请参阅[查找存储帐户](#find)有关详细信息的本主题中。
 2. 列表中找到该特定帐户。 你可能需要进行筛选。
 3. 检查*状态*的帐户。 它应该显示**已删除**。
-4. 单击打开帐户详细信息边栏选项卡的帐户。
-5. 基于此边栏选项卡，找到**恢复**按钮，然后单击它。
+4. 单击打开帐户详细信息窗格的帐户。
+5. 基于此窗格中，找到**恢复**按钮，然后单击它。
 6. 单击“是”确认。
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
@@ -93,10 +93,10 @@ Azure 堆栈中没有非常简单的方法来做到这一点：
 ### <a name="some-gotchas"></a>某些问题
 * 你已删除的帐户将显示状态作为**外保留**。
   
-  这意味着已删除的帐户已超出的保持期，可能无法恢复。
+  超出保留方式已删除的帐户已超出的保持期，可能不是可恢复。
 * 你已删除的帐户不显示帐户列表中。
   
-  这可能意味着已删除的帐户已垃圾回收。 在这种情况下无法恢复它。 请参阅[回收容量](#reclaim)本主题中。
+  在已删除的帐户已进行了垃圾收集您的帐户可能不会显示帐户列表。 在这种情况下，无法恢复它。 请参阅[回收容量](#reclaim)本主题中。
 
 ## <a name="set-the-retention-period"></a>设置保持期
 保持期设置允许云运算符来指定在其间可能可以恢复已删除的任何帐户 （介于 0 和 9999 天） 之间的天内的时间段。 默认保持期设置为 15 天。 将该值设置为"0"表示任何已删除的帐户立即不保留，并且标记为定期垃圾回收。
@@ -107,7 +107,7 @@ Azure 堆栈中没有非常简单的方法来做到这一点：
 2. 为云运算符 （使用你在部署过程中提供的凭据） 登录到 Azure 堆栈管理门户
 3. 在默认的仪表板 – 找到**区域管理**列表，然后单击你想要探索 – 例如的区域**(本地**)。
 4. 选择**存储**从**资源提供程序**列表。
-5. 单击**设置**顶部以打开设置边栏选项卡。
+5. 单击**设置**顶部以打开设置窗格。
 6. 单击**配置**然后编辑保持期值。
 
    设置的天数，然后保存它。
@@ -122,8 +122,8 @@ Azure 堆栈中没有非常简单的方法来做到这一点：
 你可以回收容量使用门户或 PowerShell。
 
 **若要回收容量使用门户：**
-1. 导航到存储帐户边栏选项卡。 请参阅[查找存储帐户](#find)。
-2. 单击**回收空间**边栏选项卡的顶部。
+1. 导航到存储帐户窗格。 请参阅[查找存储帐户](#find)。
+2. 单击**回收空间**窗格的顶部。
 3. 读取消息，然后单击**确定**。
 
     ![](media/azure-stack-manage-storage-accounts/image11.png)
@@ -142,13 +142,13 @@ Azure 堆栈中没有非常简单的方法来做到这一点：
 2. 运行以下 cmdlet：
 
 > [!NOTE]
-> 如果运行此 cmdlet 永久删除的帐户，而且其内容。 不可恢复。 使用此方法时要小心。
+> 如果你运行此 cmdlet，永久删除的帐户，而且其内容。 不可恢复。 使用此方法时要小心。
 
 
         Clear-ACSStorageAccount -ResourceGroupName system.local -FarmName <farm ID>
 
 
-有关更多详细信息，请参阅[Azure 堆栈 powershell 文档。](https://msdn.microsoft.com/library/mt637964.aspx)
+有关详细信息，请参阅[Azure 堆栈 powershell 文档。](https://msdn.microsoft.com/library/mt637964.aspx)
  
 
 ## <a name="migrate-a-container"></a>迁移容器
@@ -187,7 +187,7 @@ Azure 堆栈中没有非常简单的方法来做到这一点：
     `$destinationshares`
 
     ![](media/azure-stack-manage-storage-accounts/image14.png)
-6. 启动容器的迁移，请注意这是异步的实现，因此一个可循环共享中的所有容器和跟踪使用返回的作业 id 的状态。
+6. 启动容器的迁移，请注意这是异步的实现，因此一个可以循环共享中的所有容器，跟踪状态使用返回的作业 id。
 
     `$jobId = Start-ACSContainerMigration -ResourceGroupName system.local -FarmName $farm.farmname -ContainerToMigrate $containers[1] -DestinationShareUncPath $destinationshares.UncPath`
 
@@ -197,7 +197,7 @@ Azure 堆栈中没有非常简单的方法来做到这一点：
    $jobId
    d1d5277f-6b8d-4923-9db3-8bb00fa61b65
    ```
-7. 按作业 id 检查的迁移作业的状态。当容器迁移完成后时，MigrationStatus 设置为"已完成"。
+7. 检查作业 id 的迁移作业的状态 当容器迁移完成后时，将 MigrationStatus 设置为"已完成。"
 
     `Get-ACSContainerMigrationStatus -ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
 
@@ -209,7 +209,7 @@ Azure 堆栈中没有非常简单的方法来做到这一点：
 
     ![](media/azure-stack-manage-storage-accounts/image16.png)
 
-    你可以再次检查迁移取消的状态：
+    你可以检查再次取消迁移的状态：
 
     `Get-ACSContainerMigrationStatus-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
 

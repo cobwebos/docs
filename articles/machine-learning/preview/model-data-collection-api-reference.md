@@ -4,18 +4,18 @@ description: "Azure 机器学习模型数据收集 API 参考。"
 services: machine-learning
 author: aashishb
 ms.author: aashishb
-manager: neerajkh
-ms.reviewer: garyericson, jasonwhowell, mldocs
+manager: hjerez
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 7a0fda8a44d13bcaba84b4124d9b693c05874154
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2de5e8bc8880fea5e7f57c88590e32a9fbb60ac6
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-model-data-collection-api-reference"></a>Azure 机器学习模型数据收集 API 参考
 
@@ -53,14 +53,14 @@ dc = ModelDataCollector(model_name, identifier='default', feature_names=None, mo
 请参阅“类和参数详细信息”：
 
 ### <a name="class"></a>类
-| Name | 说明 |
+| 名称 | 说明 |
 |--------------------|--------------------|
 | ModelDataCollector | azureml.datacollector 命名空间中的类。 此类的实例将用于收集模型数据。 单个评分文件可以包含多个 ModelDataCollectors。 每个实例应该用于收集评分文件中一个离散位置中的数据，以使收集的数据架构保持一致（即，输入和预测）|
 
 
 ### <a name="parameters"></a>parameters
 
-| Name | 类型 | 说明 |
+| 名称 | Type | 说明 |
 |-------------|------------|-------------------------|
 | model_name | 字符串 | 要收集其数据的模型的名称 |
 | 标识符 | 字符串 | 即标识此数据的代码中位置'RawInput' 或 'Prediction' |
@@ -83,14 +83,14 @@ dc = ModelDataCollector(model_name, identifier='default', feature_names=None, mo
 请参阅“方法和参数详细信息”：
 
 ### <a name="method"></a>方法
-| Name | 说明 |
+| 名称 | 说明 |
 |--------------------|--------------------|
 | collect | 用于收集模型输入或预测的数据|
 
 
 ### <a name="parameters"></a>parameters
 
-| Name | 类型 | 说明 |
+| 名称 | Type | 说明 |
 |-------------|------------|-------------------------|
 | input_data | 多个类型 | 要收集的数据（目前接受类型列表、numpy.array、pandas.DataFrame、pyspark.sql.DataFrame）。 对于数据帧类型，如果存在包含功能名称的标头，则数据目标中将包含此信息（无需在 ModelDataCollector 构造函数中显式传递功能名称） |
 | user_correlation_id | 字符串 | 可选的关联 ID，用户可以提供它来关联此预测 |

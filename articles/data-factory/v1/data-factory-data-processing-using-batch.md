@@ -3,7 +3,7 @@ title: "使用数据工厂和 Batch 来处理大规模数据集 | Microsoft Docs
 description: "描述如何使用 Azure Batch 的并行处理功能在 Azure 数据工厂管道中处理大量数据。"
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: sharonlo101
 manager: jhubbard
 editor: monicar
 ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: af2c12cac5846ae1c4bc693bacaf72ab327fb87f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 3b886babe07a0bd1fa725286b5471055fc626dc1
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -668,7 +668,7 @@ test custom activity Microsoft test custom activity Microsoft
     | **切片** | **开始时间**          |
     |-----------|-------------------------|
     | 1         | 2015-11-16T**00**:00:00 |
-    | #N/A         | 2015-11-16T**01**:00:00 |
+    | 2         | 2015-11-16T**01**:00:00 |
     | 3         | 2015-11-16T**02**:00:00 |
     | 4         | 2015-11-16T**03**:00:00 |
     | 5         | 2015-11-16T**04**:00:00 |
@@ -678,7 +678,7 @@ test custom activity Microsoft test custom activity Microsoft
     | **切片** | **开始时间**          | **输入文件夹**  |
     |-----------|-------------------------|-------------------|
     | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
-    | #N/A         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
+    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
     | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02** |
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
     | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
@@ -725,7 +725,7 @@ test custom activity Microsoft test custom activity Microsoft
     | **切片** | **开始时间**          | **输出文件**       |
     |-----------|-------------------------|-----------------------|
     | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
-    | #N/A         | 2015-11-16T**01**:00:00 | 2015-11-16-**01.txt** |
+    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01.txt** |
     | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02.txt** |
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
     | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04.txt** |
@@ -789,7 +789,7 @@ test custom activity Microsoft test custom activity Microsoft
       }
     }
     ```
-   注意以下几点：
+   请注意以下几点：
 
    * 管道中仅包含一个活动，其类型为 **DotNetActivity**。
    * **AssemblyName** 设置为 DLL **MyDotNetActivity.dll** 的名称。
@@ -803,7 +803,7 @@ test custom activity Microsoft test custom activity Microsoft
     - **isPaused** 属性默认设置为 false。 在此示例中管道会立即运行，因为切片从过去启动。 可将此属性设置为 **true** 以暂停管道，然后将其设置回 **false** 以重新启动。
     -   **开始**和**结束**时间相差五小时。 切片会每小时生成，因此管道会生成五个切片。
 
-3. 选择命令栏上的“部署”来部署管道。
+3. 选择命令栏中的“部署”来部署管道。
 
 #### <a name="step-5-test-the-pipeline"></a>步骤 5：测试管道
 在此步骤中，将文件拖放到输入文件夹以测试管道。 首先，通过每个输入文件夹对应一个文件的方式来测试管道。
@@ -968,7 +968,7 @@ test custom activity Microsoft test custom activity Microsoft
 * [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [数据工厂服务简介](data-factory-introduction.md)
-  * [](data-factory-build-your-first-pipeline.md)
+  * [数据工厂入门](data-factory-build-your-first-pipeline.md)
   * [在数据工厂管道中使用自定义活动](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 

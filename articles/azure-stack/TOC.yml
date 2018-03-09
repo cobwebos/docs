@@ -10,6 +10,8 @@
           href: azure-stack-asdk-release-notes.md
         - name: 集成的系统发行说明
           items:
+            - name: 1802 更新
+              href: azure-stack-update-1802.md
             - name: 1712 更新
               href: azure-stack-update-1712.md
             - name: 1711 更新
@@ -45,7 +47,7 @@
           items:
             - name: 网络集成
               href: azure-stack-network.md
-            - name: 边框连接
+            - name: 边界连接
               href: azure-stack-border-connectivity.md
             - name: DNS 集成
               href: azure-stack-integrate-dns.md
@@ -133,14 +135,18 @@
           href: azure-stack-monitor-health.md
         - name: 管理网络资源
           href: azure-stack-viewing-public-ip-address-consumption.md
-        - name: 管理存储资源
-          href: azure-stack-manage-storage-accounts.md
-        - name: 管理存储容量
-          href: azure-stack-manage-storage-shares.md
         - name: 管理 Windows Azure Pack VM
           href: azure-stack-manage-windows-azure-pack.md
         - name: 启动和停止 Azure 堆栈
           href: azure-stack-start-and-stop.md
+        - name: 管理容量
+          items:
+            - name: 管理存储资源
+              href: azure-stack-manage-storage-accounts.md
+            - name: 管理存储容量
+              href: azure-stack-manage-storage-shares.md
+            - name: 管理 Azure 堆栈的物理存储容量
+              href: azure-stack-manage-storage-physical-capacity.md
         - name: 更换硬件
           items:
             - name: 节点操作
@@ -151,14 +157,14 @@
               href: azure-stack-replace-disk.md
             - name: 更换的组件
               href: azure-stack-replace-component.md
-        - name: 备份 Azure 堆栈
+        - name: 备份 Azure Stack
           href: azure-stack-backup-infrastructure-backup.md
           items:
             - name: 为 Azure 堆栈启用备份，从管理控制台
               href: azure-stack-backup-enable-backup-console.md
-            - name: 使用 PowerShell 的 Azure 堆栈启用备份
+            - name: 使用 PowerShell 为 Azure Stack 启用备份
               href: azure-stack-backup-enable-backup-powershell.md
-            - name: 备份 Azure 堆栈
+            - name: 备份 Azure Stack
               href: azure-stack-backup-back-up-azure-stack.md
             - name: 从灾难性数据丢失中恢复
               href: azure-stack-backup-recover-data.md
@@ -230,6 +236,10 @@
               href: azure-stack-app-service-deploy.md
             - name: 脱机部署应用服务
               href: azure-stack-app-service-deploy-offline.md
+            - name: 更新 App Service 资源提供程序
+              href: azure-stack-app-service-update.md
+            - name: 更新 App Service 资源提供程序脱机
+              href: azure-stack-app-service-update-offline.md
             - name: 添加更多 Web 辅助角色
               href: azure-stack-app-service-add-worker-roles.md
             - name: 配置部署源

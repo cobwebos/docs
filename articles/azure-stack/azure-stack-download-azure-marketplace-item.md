@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/22/2018
+ms.date: 02/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 3437bc9f164cbdc6c923498b978291ced6278744
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: cdadf48aa23e3dd76d8a511794f00725f073611d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>从 Azure 应用商店项下载到 Azure 堆栈
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 
 当您决定在 Azure 堆栈应用商店中包括哪些内容，应考虑从 Azure 应用商店的可用内容。 你可以从策展已预先测试，在 Azure 堆栈上运行的 Azure 应用商店项列表中进行下载。 新项经常会添加到此列表，因此请务必不久后回来查看新内容。
@@ -75,6 +75,7 @@ ms.lasthandoff: 02/28/2018
 
    ```PowerShell
    # Download the tools archive.
+   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
    invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip `
      -OutFile master.zip
 

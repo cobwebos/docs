@@ -73,6 +73,7 @@
 ### [使用开放源代码工具可视化网络流量模式](network-watcher-using-open-source-tools.md)
 ## 分析 NSG 流日志
 ### [读取 NSG 流日志](network-watcher-read-nsg-flow-logs.md)
+### [使用流量分析](traffic-analytics.md)
 ### [使用 Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 ### [使用 Elastic Stack](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ### [使用 Grafana](network-watcher-nsg-grafana.md)

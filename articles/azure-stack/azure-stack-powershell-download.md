@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 02/27/2018
 ms.author: mabrigg
-ms.openlocfilehash: e730df58c54f7804d77b052a699d827bb82e5204
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 219fd8e4e164df8c3002044719a90a7be56a9edf
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="download-azure-stack-tools-from-github"></a>从 GitHub 下载 Azure 堆栈工具
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 **AzureStack 工具**是承载 PowerShell 模块，用于管理和将资源部署到 Azure 堆栈的 GitHub 存储库。 如果你打算建立 VPN 连接，你可以下载这些 PowerShell 模块，到 Azure 堆栈开发工具包中，或基于 Windows 的外部客户端。 若要获取这些工具，克隆的 GitHub 存储库或下载**AzureStack 工具**通过运行以下脚本的文件夹：
 
@@ -31,6 +31,7 @@ ms.lasthandoff: 12/11/2017
 cd \
 
 # Download the tools archive.
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/master.zip `
   -OutFile master.zip

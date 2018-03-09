@@ -2,7 +2,7 @@
 title: "PowerShell 脚本：使用 Azure 数据工厂以增量方式加载数据 | Microsoft Docs"
 description: "此 PowerShell 脚本演示如何使用 Azure 数据工厂以增量方式将数据从 Azure SQL 数据库复制到 Azure Blob 存储。"
 services: data-factory
-author: spelluru
+author: linda33wj
 manager: jhubbard
 editor: 
 ms.service: data-factory
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
-ms.author: spelluru
-ms.openlocfilehash: 36a8c8c4ed83a56dfd0f487ec4bcf030e3890ef6
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: jingwang
+ms.openlocfilehash: daa7368de4b6f063f6e461909dd69eb1d79e7d62
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell 脚本 - 使用 Azure 数据工厂以增量方式加载数据
 将源中的数据初始完全复制到接收器后，此示例 PowerShell 脚本仅从源数据存储将新的或已更新记录加载到接收器数据存储。  

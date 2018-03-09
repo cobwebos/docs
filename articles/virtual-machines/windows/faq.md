@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: cynthn
-ms.openlocfilehash: d8f457569ef1e9dfe400266982596ab53ec4f10d
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 9aa316e59fb78373cc044f8e18f5d24ea9c5258f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>有关 Windows 虚拟机的常见问题
 本文讨论了在 Azure 中使用 Resource Manager 部署模型创建的 Windows 虚拟机的一些常见问题。 有关本主题的 Linux 版本，请参阅[有关 Linux 虚拟机的常见问题](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -53,7 +53,7 @@ Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的�
 可以通过移动页面文件和重新分配驱动器号来更改驱动器号，但需确保按特定顺序执行这些步骤。 有关说明，请参阅[更改 Windows 临时磁盘的驱动器号](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
 ## <a name="can-i-add-an-existing-vm-to-an-availability-set"></a>我是否可以将现有 VM 添加到可用性集？
-否。 不可以。如果希望 VM 成为可用性集的一部分，需要在该集内创建 VM。 目前不支持在创建 VM 之后再将其添加到可用性集。
+不会。 不可以。如果希望 VM 成为可用性集的一部分，需要在该集内创建 VM。 目前不支持在创建 VM 之后再将其添加到可用性集。
 
 ## <a name="can-i-upload-a-virtual-machine-to-azure"></a>我是否可以将虚拟机上传到 Azure？
 是的。 相关说明，请参阅[将本地 VM 迁移到Azure](on-prem-to-azure.md)。
@@ -64,9 +64,9 @@ Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的�
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>我是否可以复制或克隆现有的 Azure VM？
 是的。 借助托管映像，可创建虚拟机的映像，并使用该映像生成多个新的 VM。 相关说明，请参阅[创建 VM 的自定义映像](tutorial-custom-images.md)。
 
-## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>为什么在 Azure Resource Manager 中看不到加拿大中部和加拿大东部区域？
+## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>为什么在 Azure 资源管理器中看不到加拿大中部和加拿大东部区域？
 
-针对现有 Azure 订阅创建的虚拟机不会自动注册到加拿大中部和加拿大东部这两个新区域。 通过 Azure 门户使用 Azure Resource Manager 将虚拟机部署到其他任何区域时，会自动完成注册。 将虚拟机部署到其他任何 Azure 区域后，新区域可供后续虚拟机使用。
+针对现有 Azure 订阅创建的虚拟机不会自动注册到加拿大中部和加拿大东部这两个新区域。 通过 Azure 门户使用 Azure 资源管理器将虚拟机部署到其他任何区域时，会自动完成注册。 将虚拟机部署到其他任何 Azure 区域后，新区域可供后续虚拟机使用。
 
 ## <a name="does-azure-support-linux-vms"></a>Azure 是否支持 Linux VM？
 是的。 若要快速创建 Linux VM 进行试用，请参阅[使用门户在 Azure 上创建 Linux VM](../linux/quick-create-portal.md)。
@@ -78,7 +78,7 @@ Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的�
 是的。 计算机名称的最大长度为 15 个字符。 有关命名资源的详细信息，请参阅[命名约定规则和限制](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>是否存在资源组名称要求？
-是的。 资源组名称的最大长度为 90 个字符。 有关资源组的详细信息，请参阅[命名约定规则和限制](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+是的。 资源组名称的最大长度为 90 个字符。 有关资源组的详细信息，请参阅[命名约定规则和限制](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)。
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>创建 VM 时，用户名有什么要求？
 

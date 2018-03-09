@@ -20,6 +20,10 @@
 ## [备份和还原](analysis-services-backup.md)
 ## [使用 REST API 进行刷新](analysis-services-async-refresh.md)
 ## [配置横向扩展](analysis-services-scale-out.md)
+## 自动执行管理任务
+### [创建服务主体 - Azure 门户](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+### [创建服务主体 - PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)
 ## 服务器管理
 ### [配置服务器名称别名](analysis-services-server-alias.md)
 ### [管理服务器](analysis-services-manage.md)

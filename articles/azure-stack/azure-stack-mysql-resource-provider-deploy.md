@@ -4,24 +4,25 @@ description: "了解如何部署 MySQL 资源提供程序和提供作为 Azure �
 services: azure-stack
 documentationCenter: 
 author: mattbriggs
-manager: bradleyb
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 03/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3273f435cb65411c85e3a22369682d51e7a12baf
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.reviewer: jeffgo
+ms.openlocfilehash: 067e478548ba840ece14737cdf3e6d5d4da28be0
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 MySQL 数据库
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 你可以部署 Azure 堆栈上的 MySQL 资源提供程序。 在部署资源提供程序后，你可以创建 MySQL 服务器和数据库通过 Azure 资源管理器部署模板。 你还可以作为一种服务提供 MySQL 数据库。 
 
@@ -45,7 +46,7 @@ MySQL 数据库，共有网站，支持多个网站平台。 例如，在部署�
 - 下载并部署从 Azure 应用商店创建 MySQL 服务器。
 
 > [!NOTE]
-> 从租户订阅，必须创建宿主的多节点 Azure 堆栈实现安装的服务器。 无法从默认提供程序订阅中创建它们。 从租户门户或使用相应登录的 PowerShell 会话，必须创建它们。 所有宿主服务器是应计费 Vm，并且必须具有合适的许可证。 服务管理员可以是租户订阅的所有者。
+> 宿主在 Azure 堆栈安装的服务器必须从租户订阅创建集成的系统。 无法从默认提供程序订阅中创建它们。 从租户门户或使用相应登录的 PowerShell 会话，必须创建它们。 所有宿主服务器是应计费 Vm，并且必须具有合适的许可证。 服务管理员可以是租户订阅的所有者。
 
 ### <a name="required-privileges"></a>必需的权限
 系统帐户必须具有以下权限：
@@ -55,7 +56,7 @@ MySQL 数据库，共有网站，支持多个网站平台。 例如，在部署�
 
 ## <a name="deploy-the-resource-provider"></a>部署资源提供程序
 
-1. 如果尚未这样做，注册你开发工具包，并下载可下载通过应用商店管理 Windows Server 2016 数据中心 Core 映像。 你必须使用 Windows Server 2016 Core 映像。 你还可以使用脚本创建[Windows Server 2016 映像](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image)。 （请务必选择核心选项。）.NET 3.5 运行时不再是必需的。
+1. 如果尚未这样做，注册你开发工具包，并下载可下载通过应用商店管理 Windows Server 2016 数据中心 Core 映像。 你必须使用 Windows Server 2016 Core 映像。 你还可以使用脚本创建[Windows Server 2016 映像](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image)。 （请务必选择核心选项。）
 
 
 2. 登录到可以访问特权终结点 VM 的主机。
@@ -64,19 +65,20 @@ MySQL 数据库，共有网站，支持多个网站平台。 例如，在部署�
     - 在多节点系统中，主机必须是一个系统，可以访问特权终结点。
     
     >[!NOTE]
-    > 系统在其运行该脚本*必须*要安装的.NET 运行时的最新版本的 Windows 10 或 Windows Server 2016 系统。 安装否则将失败。 Azure SDK 主机满足此条件。
+    > 系统在其运行该脚本*必须*要安装的.NET 运行时的最新版本的 Windows 10 或 Windows Server 2016 系统。 安装否则将失败。 Azure 堆栈 SDK 主机都能满足此条件。
     
 
 3. 下载二进制 MySQL 资源提供程序。 然后运行自解压缩程序中，若要将内容提取到临时目录。
 
     >[!NOTE] 
-    > 资源提供程序生成对应于 Azure 堆栈生成。 请务必下载正确版本的正在运行的 Azure 堆栈的二进制文件。
+    > 资源提供程序具有最小相应 Azure 堆栈生成。 请务必下载正确版本的正在运行的 Azure 堆栈的二进制文件。
 
     | Azure 堆栈生成 | MySQL RP 安装程序 |
     | --- | --- |
-    | 1.0.180102.3 或 1.0.180106.1 （多节点） | [MySQL RP 版本 1.1.14.0](https://aka.ms/azurestackmysqlrp1712) |
-    | 1.0.171122.1 | [MySQL RP 版本 1.1.12.0](https://aka.ms/azurestackmysqlrp1711) |
-    | 1.0.171028.1 | [MySQL RP 版本 1.1.8.0](https://aka.ms/azurestackmysqlrp1710) |
+    | 1802: 1.0.180302.1 | [MySQL RP 版本 1.1.18.0](https://aka.ms/azurestackmysqlrp1802) |
+    | 1712: 1.0.180102.3 或 1.0.180106.1 （多节点） | [MySQL RP 版本 1.1.14.0](https://aka.ms/azurestackmysqlrp1712) |
+    | 1711: 1.0.171122.1 | [MySQL RP 版本 1.1.12.0](https://aka.ms/azurestackmysqlrp1711) |
+    | 1710: 1.0.171028.1 | [MySQL RP 版本 1.1.8.0](https://aka.ms/azurestackmysqlrp1710) |
 
 4.  从特权终结点中检索 Azure 堆栈根证书。 针对 Azure SDK 中，将创建一个自签名的证书作为此过程的一部分。 对于多节点，你必须提供适当的证书。
 
@@ -121,11 +123,11 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure SDK, the default is AzureStack, and the default prefix is AzS.
-# For integrated systems, the domain and the prefix are the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
-$prefix = "AzS"
-$privilegedEndpoint = "$prefix-ERCS01"
+
+# For integrated systems, use the IP address of one of the ERCS virtual machines
+$privilegedEndpoint = "AzS-ERCS01"
 
 # Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\MYSQLRP'
@@ -135,7 +137,7 @@ $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set the credentials for the new resource provider VM.
+# Set the credentials for the new resource provider VM local administrator account
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("mysqlrpadmin", $vmLocalAdminPass)
 
@@ -176,14 +178,6 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 | **卸载** | 中删除资源提供程序和所有关联的资源 （请参阅以下说明）。 | 否 |
 | **DebugMode** | 阻止失败的自动清理。 | 否 |
 | **AcceptLicense** | 跳过的提示时接受 GPL 许可证。  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
-
-
-
-具体取决于系统的性能和下载速度，安装可能需要最小为 20 分钟或长时间为几个小时。 如果**MySQLAdapter**边栏选项卡不可用，请刷新管理门户。
-
-> [!NOTE]
-> 如果安装需要超过 90 分钟的时间，可能会失败。 如果是这样，你会看到失败消息，在屏幕上，在日志文件中。 从失败的步骤重试部署。 不符合建议的内存和核心规范的系统可能不能部署 MySQL RP。
-
 
 
 ## <a name="verify-the-deployment-by-using-the-azure-stack-portal"></a>使用 Azure 堆栈门户验证部署
@@ -272,14 +266,14 @@ SKU 名称应反映的属性，以便租户可以适当地将其数据库。 在
 ![更新管理员密码](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
 
 ## <a name="update-the-mysql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>更新 MySQL 资源提供程序适配器 （多节点仅，生成 1710年及更高版本）
-每当更新 Azure 堆栈生成时，新的 MySQL 资源提供程序适配器将被释放。 现有适配器可能会继续工作。 但是，我们建议更新到最新版本越早越好后更新 Azure 堆栈。 
+更新 Azure 堆栈生成时，可能会发布新的 SQL 资源提供程序适配器。 虽然现有适配器继续工作，我们建议尽快更新到最新版本。 
 
 更新过程是类似于前面所述的安装过程。 使用最新的资源提供程序代码中创建新的 VM。 然后你将设置迁移到此新实例，包括数据库和托管服务器信息。 您也将迁移的必要的 DNS 记录。
 
 UpdateMySQLProvider.ps1 脚本使用前面所述的相同自变量。 也提供此处的证书。
 
 > [!NOTE]
-> 在多节点的系统上仅支持更新。
+> 在更新过程仅适用于集成的系统。
 
 ```
 # Install the AzureRM.Bootstrapper module, set the profile, and install AzureRM and AzureStack modules.
@@ -287,14 +281,14 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure SDK, the default is AzureStack and the default prefix is AzS.
-# For integrated systems, the domain and the prefix are the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
-$prefix = "AzS"
-$privilegedEndpoint = "$prefix-ERCS01"
+
+# For integrated systems, use the IP address of one of the ERCS virtual machines
+$privilegedEndpoint = "AzS-ERCS01"
 
 # Point to the directory where the resource provider installation files were extracted.
-$tempDir = 'C:\TEMP\SQLRP'
+$tempDir = 'C:\TEMP\MYSQLRP'
 
 # The service admin account (can be Azure Active Directory or Active Directory Federation Services).
 $serviceAdmin = "admin@mydomain.onmicrosoft.com"
@@ -339,6 +333,107 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 | **卸载** | 删除资源提供程序和所有关联的资源 （请参阅以下说明）。 | 否 |
 | **DebugMode** | 阻止失败的自动清理。 | 否 |
 | **AcceptLicense** | 跳过的提示时接受 GPL 许可证。  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
+
+
+## <a name="collect-diagnostic-logs"></a>收集诊断日志
+MySQL 资源提供程序是锁定停止虚拟机。 如果有必要对从虚拟机，PowerShell Just Enough Administration (JEA) 终结点收集日志_DBAdapterDiagnostics_为该目的提供。 有两个命令可通过此终结点：
+
+* Get AzsDBAdapterLog-准备包含 RP 诊断日志的 zip 包，并将其放在会话用户驱动器上。 该命令可以不带任何参数调用，并将收集最后一个四个小时的日志。
+* 删除-AzsDBAdapterLog-清理资源提供程序 VM 上的现有日志包
+
+用户帐户调用_dbadapterdiag_ RP 部署或更新用于连接到用于提取 RP 日志的诊断终结点期间创建。 此帐户的密码是部署/更新的过程中提供的本地管理员帐户的密码相同。
+
+若要使用这些命令，你需要创建与资源提供程序虚拟机的远程 PowerShell 会话和调用该命令。 你可以根据需要提供 FromDate 和 ToDate 参数。 如果你不指定一个或这两种，FromDate 将为当前时间前四个小时，ToDate 将当前时间。
+
+此示例脚本演示如何使用这些命令：
+
+```
+# Create a new diagnostics endpoint session.
+$databaseRPMachineIP = '<RP VM IP>'
+$diagnosticsUserName = 'dbadapterdiag'
+$diagnosticsUserPassword = '<see above>'
+
+$diagCreds = New-Object System.Management.Automation.PSCredential `
+        ($diagnosticsUserName, $diagnosticsUserPassword)
+$session = New-PSSession -ComputerName $databaseRPMachineIP -Credential $diagCreds `
+        -ConfigurationName DBAdapterDiagnostics
+
+# Sample captures logs from the previous one hour
+$fromDate = (Get-Date).AddHours(-1)
+$dateNow = Get-Date
+$sb = {param($d1,$d2) Get-AzSDBAdapterLog -FromDate $d1 -ToDate $d2}
+$logs = Invoke-Command -Session $session -ScriptBlock $sb -ArgumentList $fromDate,$dateNow
+
+# Copy the logs
+$sourcePath = "User:\{0}" -f $logs
+$destinationPackage = Join-Path -Path (Convert-Path '.') -ChildPath $logs
+Copy-Item -FromSession $session -Path $sourcePath -Destination $destinationPackage
+
+# Cleanup logs
+$cleanup = Invoke-Command -Session $session -ScriptBlock {Remove- AzsDBAdapterLog }
+# Close the session
+$session | Remove-PSSession
+```
+
+## <a name="maintenance-operations-integrated-systems"></a>维护操作 （集成系统）
+MySQL 资源提供程序是锁定停止虚拟机。 更新资源提供程序虚拟机的安全可以通过 PowerShell Just Enough Administration (JEA) 终结点_DBAdapterMaintenance_。
+
+使用 RP 的安装包，以便这些操作提供了一个脚本。
+
+
+### <a name="update-the-virtual-machine-operating-system"></a>更新虚拟机操作系统
+有几种方法更新 Windows Server VM:
+* 安装最新的资源提供程序包以使用当前修补的 Windows Server 2016 Core 映像
+* 在安装或更新的 RP 的过程中安装 Windows 更新包
+
+
+### <a name="update-the-virtual-machine-windows-defender-definitions"></a>更新虚拟机 Windows Defender 定义
+
+请按照下列步骤来更新 Defender 定义：
+
+1. Windows Defender 定义更新从下载[Windows Defender 定义](https://www.microsoft.com/en-us/wdsi/definitions)
+
+    在该页上，在"手动下载和安装定义"下载"Windows Defender 防病毒软件的 Windows 10 和 Windows 8.1"64 位文件。 
+    
+    直接链接： https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
+
+2. 创建 MySQL RP 适配器虚拟机维护终结点的 PowerShell 会话
+3. 将定义更新文件复制到使用维护终结点会话 DB 适配器计算机
+4. 维护 PowerShell 会话调用_更新 DBAdapterWindowsDefenderDefinitions_命令
+5. 安装后，建议删除用于的定义更新文件。 在上维护会话使用，则可以移除_删除 ItemOnUserDrive)_命令。
+
+
+下面是示例脚本来更新 （替换的地址或实际值的虚拟机的名称） 的 Defender 定义：
+
+```
+# Set credentials for the diagnostic user
+$diagPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$diagCreds = New-Object System.Management.Automation.PSCredential `
+    ("dbadapterdiag", $vmLocalAdminPass)$diagCreds = Get-Credential
+
+# Public IP Address of the DB adapter machine
+$databaseRPMachine  = "XX.XX.XX.XX"
+$localPathToDefenderUpdate = "C:\DefenderUpdates\mpam-fe.exe"
+ 
+# Download Windows Defender update definitions file from https://www.microsoft.com/en-us/wdsi/definitions. 
+Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64 `
+    -Outfile $localPathToDefenderUpdate 
+
+# Create session to the maintenance endpoint
+$session = New-PSSession -ComputerName $databaseRPMachine `
+    -Credential $diagCreds -ConfigurationName DBAdapterMaintenance
+# Copy defender update file to the db adapter machine
+Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
+     -Destination "User:\mpam-fe.exe"
+# Install the update file
+Invoke-Command -Session $session -ScriptBlock `
+    {Update-AzSDBAdapterWindowsDefenderDefinitions -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
+# Cleanup the definitions package file and session
+Invoke-Command -Session $session -ScriptBlock `
+    {Remove-AzSItemOnUserDrive -ItemPath "User:\mpam-fe.exe"}
+$session | Remove-PSSession
+```
+
 
 ## <a name="remove-the-mysql-resource-provider-adapter"></a>删除 MySQL 资源提供程序适配器
 

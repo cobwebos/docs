@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/8/2018
+ms.date: 2/27/2018
 ms.author: jeffgilb
-ms.openlocfilehash: b58b3fc538d2237c12a860d268d550c4223155ba
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 8d520e1917d63b56a2adf3823ddbb741721fe751
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>注册你的 Azure 订阅的 Azure 堆栈
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 你可以注册[Azure 堆栈](azure-stack-poc.md)与 Azure 下载从 Azure 应用商店项以及设置回向 Microsoft 报告的商业数据。
 

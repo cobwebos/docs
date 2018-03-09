@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 02/27/2018
 ms.author: jeffgilb
-ms.reviewer: unknown
-ms.openlocfilehash: 6c02ec42874e4e3221c53e6d6e85378bbe2e414a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.reviewer: 
+ms.openlocfilehash: b773ddc5da12f92960ef3378decac8569dac9ab9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack 中的重要功能和概念
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 如果不太熟悉 Microsoft Azure Stack，本文的术语和功能说明可能会有所帮助。
 
@@ -91,6 +91,7 @@ Azure Stack 区域是规模与管理的基本要素。 组织可以创建多个�
 
 对于管理员，在部署过程时，会创建默认提供程序订阅。 此订阅可以用于管理 Azure 堆栈，进一步部署资源提供程序，并为租户创建计划，并提供。 不应该用于运行客户工作负荷和应用程序。 
 
+
 ## <a name="azure-resource-manager"></a>Azure 资源管理器
 借助 Azure 资源管理器，可在基于模板的声明性模型中使用基础结构资源。   它提供可用于部署和管理你的解决方案组件的单一界面。 有关完整信息和指南，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)。
 
@@ -127,6 +128,25 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 在�
 
 ### <a name="keyvault"></a>KeyVault
 KeyVault RP 针对密码和证书等机密提供管理与审核。 例如，在 VM 部署期间，租户可以使用 KeyVault RP 来提供管理员密码或密钥。
+
+## <a name="high-availability-for-azure-stack"></a>Azure 堆栈的高可用性
+*适用范围： Azure 堆栈 1802年或更高版本*
+
+若要实现多 VM 生产系统在 Azure 中的高可用性，Vm 放置在一个可用性集，其中会将它们分布在多个容错域和更新域中。 这种方式，[在可用性集中部署的 Vm](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)是以物理方式相互隔离的单独服务器架下图中所示的情况下以便故障复原上：
+
+  ![Azure 堆栈高可用性](media/azure-stack-key-features/high-availability.png)
+
+### <a name="availablity-sets-in-azure-stack"></a>Azure 堆栈中的可用性集
+已能够弹性应对故障 Azure 堆栈的基础结构时，基础技术 （故障转移群集） 仍会产生停机一段时间的 Vm 在受影响的物理服务器上出现硬件故障时。 Azure 堆栈支持具有可用性集最多为三个容错域与 Azure 相一致。
+
+- **故障域**。 通过使它们尽可能均匀地分布于多个容错域 （Azure 堆栈节点），会以物理方式相互隔离的 Vm 放在一个可用性集中。 出现硬件故障，从失败的容错域的 Vm 将在其他容错域上，重新启动，但是，如果可能，在同一可用性集中其他 vm 保留在单独的容错域中。 当硬件重新联机时，Vm 将重新平衡，以维持高可用性。 
+ 
+- **更新域**。 更新域是提供在可用性集中的高可用性的另一个 Azure 概念。 更新域是可以在同一时间执行维护的基础硬件的逻辑组。 计划内维护期间，将在一起启 Vm 位于同一更新域。 租户创建 Vm 在可用性集中，Azure 平台会自动将分布 Vm 到这些更新域。 在 Azure 堆栈 Vm 是实时更新其基础主机之前，在群集中其他联机主机之间迁移。 由于主机更新的过程中没有不租户停机的情况，Azure 堆栈上的更新域功能将仅存在于与 Azure 的模板兼容。 
+
+### <a name="upgrade-scenarios"></a>升级方案 
+Vm 在可用性集中创建之前 Azure 堆栈版本 1802年提供容错和更新域默认数 (1 和 1 分别)。 若要在这些预先存在的可用性集的 Vm 中实现高可用性，你必须首先删除现有的 Vm，然后将它们重新部署到新的可用性集与正确的容错和更新域计数中所述[更改为 Windows 的 VM 设置可用性](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set)。 
+
+VM 缩放集，可用性集内部创建与默认容错域和更新域计数 (3 和 5 分别)。 任何 VM 缩放集创建之前 1802年更新将被放入可用性集与默认容错和更新域计数 (1 和 1 分别)。 若要更新这些 VM 缩放集实例，以实现较新的跨页，通过向外扩展 VM 缩放集的 1802年更新之前存在，然后删除 VM 缩放集的较旧实例的实例数。 
 
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 可以使用 RBAC 向已获授权的用户、组和服务授予系统访问权限：在订阅、资源组或单个资源的级别为其分配角色即可。 每个角色定义了用户、组或服务对 Microsoft Azure Stack 资源拥有的访问级别。

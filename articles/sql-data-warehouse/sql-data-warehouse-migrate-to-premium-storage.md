@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 11/29/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 1e3cdb4aa3af3067b27b6a85212e2a3d27542cc3
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 751f553c277cec579327771beb2f3256664452b1
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>将数据仓库迁移到高级存储
 Azure SQL 数据仓库最近推出了[具有更好的性能可预测性的高级存储][premium storage for greater performance predictability]。 现在可以将标准存储上现有的数据仓库迁移到高级存储。 可以利用自动迁移，如果想要控制迁移时间（这涉及某种停机时间），也可自己执行迁移操作。
@@ -173,7 +173,7 @@ go
 [Pause]: sql-data-warehouse-manage-compute-portal.md
 [Restore]: sql-data-warehouse-restore-database-portal.md
 [steps to rename during migration]: #optional-steps-to-rename-during-migration
-[scale compute power]: sql-data-warehouse-manage-compute-portal.md#scale-compute-power
+[scale compute power]: quickstart-scale-compute-portal.md
 [mediumrc role]: sql-data-warehouse-develop-concurrency.md
 
 <!--MSDN references-->

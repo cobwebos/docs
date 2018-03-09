@@ -47,9 +47,13 @@
           href: delete-cluster.md
     - name: 配置数据卷
       items:
-        - name: Azure 磁盘
+        - name: Kubernetes 卷 - 磁盘
+          href: azure-disk-volume.md
+        - name: Kubernetes 卷 - 文件
+          href: azure-files-volume.md
+        - name: 永久性卷 - 磁盘
           href: azure-disks-dynamic-pv.md
-        - name: Azure 文件
+        - name: 永久性卷 - 文件
           href: azure-files-dynamic-pv.md
     - name: 配置网络
       items:
@@ -73,6 +77,8 @@
           href: integrate-azure.md
         - name: Jenkins 持续部署
           href: jenkins-continuous-deployment.md
+        - name: 将 OpenFaaS 与 AKS 配合使用
+          href: openfaas.md
     - name: Kubernetes 基础知识
       items:
         - name: 使用 Kubernetes 仪表板

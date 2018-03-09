@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/15/2017
+ms.date: 02/27/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 470a45aea253e1e238983527427b600117e413fe
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 6a5912117a475c7af028f01ea47a7042677992ca
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>部署 Azure 堆栈开发工具包
 
-*适用范围： Azure 堆栈开发工具包*
+*适用于：Azure Stack 开发工具包*
 
 若要部署[Azure 堆栈开发工具包](azure-stack-poc.md)，必须完成以下步骤：
 
@@ -70,6 +70,7 @@ ms.lasthandoff: 12/16/2017
 3. 运行以下脚本以从下载开发工具包安装程序文件 (asdk installer.ps1) [Azure 堆栈 GitHub 工具存储库](https://github.com/Azure/AzureStack-Tools)到**C:\AzureStack_Installer**上的文件夹你开发工具包主机计算机：
 
   ```powershell
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
   # Variables
   $Uri = 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/Deployment/asdk-installer.ps1'
   $LocalPath = 'C:\AzureStack_Installer'
@@ -102,7 +103,7 @@ ms.lasthandoff: 12/16/2017
 ### <a name="deploy-the-development-kit-using-a-guided-experience"></a>部署使用引导式的体验开发工具包
 在准备好 ASDK 主机计算机后, ASDK 可以部署到 CloudBuilder.vhdx 映像使用以下步骤。 
 1. 主机计算机已成功启动到 CloudBuilder.vhdx 映像后，使用前面的步骤中指定的管理员凭据登录。 
-2. 打开已提升权限的 PowerShell 控制台并运行**\AzureStack_Installer\asdk-installer.ps1**脚本 （其中现在可能会在 CloudBuilder.vhdx 映像中的其他驱动器上）。 单击“安装” 。
+2. 打开已提升权限的 PowerShell 控制台并运行**\AzureStack_Installer\asdk-installer.ps1**脚本 （其中现在可能会在 CloudBuilder.vhdx 映像中的其他驱动器上）。 单击“安装”。
 3. 在**类型**下拉列表框中，选择**Azure 云**或**AD FS**。
     - **Azure 云**： 配置 Azure Active Directory (Azure AD) 为标识提供程序。 若要使用此选项，你将需要 internet 连接，Azure AD 的完整名称的窗体中的目录租户*domainname*。 onmicrosoft.com 或 Azure AD 验证自定义域的名称和全局管理员凭据指定的目录。 
     - **AD FS**： 目录服务将用作为标识提供程序的默认戳。 用于登录的默认帐户是azurestackadmin@azurestack.local，且要使用的密码正是作为安装的一部分提供。
@@ -215,18 +216,18 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -NatIPv4Subnet 10.10.10.0/24 -NatIPv4Address 10.10.10.3 -NatIPv4DefaultGateway 10.10.10.1 -TimeServer 10.222.112.26
 ```
 
-### <a name="asdk-installazurestackpocps1-optional-parameters"></a>ASDK InstallAzureStackPOC.ps1 可选参数
+### <a name="asdk-installazurestackpocps1-optional-parameters"></a>ASDK InstallAzureStackPOC.ps1 optional parameters
 |参数|必需/可选|说明|
 |-----|-----|-----|
-|AdminPassword|必选|作为开发工具包部署的一部分创建的所有虚拟机上设置本地管理员帐户和所有其他用户帐户。 此密码必须匹配当前主机上的本地管理员密码。|
-|InfraAzureDirectoryTenantName|必选|设置租户目录。 使用此参数来指定特定目录的 AAD 帐户有权管理多个目录的位置。 完整的 AAD 目录租户中的格式的名称。 onmicrosoft.com 或 Azure AD 验证自定义域名。|
-|时间服务器|必选|使用此参数来指定特定时间服务器。 此参数必须提供有效的时间服务器 IP 地址。 不支持服务器名称。|
+|AdminPassword|需要|作为开发工具包部署的一部分创建的所有虚拟机上设置本地管理员帐户和所有其他用户帐户。 此密码必须匹配当前主机上的本地管理员密码。|
+|InfraAzureDirectoryTenantName|需要|设置租户目录。 使用此参数来指定特定目录的 AAD 帐户有权管理多个目录的位置。 完整的 AAD 目录租户中的格式的名称。 onmicrosoft.com 或 Azure AD 验证自定义域名。|
+|TimeServer|需要|使用此参数来指定特定时间服务器。 此参数必须提供有效的时间服务器 IP 地址。 不支持服务器名称。|
 |InfraAzureDirectoryTenantAdminCredential|可选|设置 Azure Active Directory 用户名和密码。 这些 Azure 凭据必须是一个 Org id。|
 |InfraAzureEnvironment|可选|选择你想要注册此 Azure 堆栈部署的 Azure 环境。 选项包括公共 Azure，Azure-中国 Azure 的美国政府。|
 |DNSForwarder|可选|作为 Azure 堆栈部署的一部分创建的 DNS 服务器。 若要允许解析外部戳的名称的解决方案内的计算机，提供你现有的基础结构 DNS 服务器。 在戳 DNS 服务器将转发到此服务器的未知的名称解析请求。|
 |NatIPv4Address|DHCP NAT 支持所需的|MA BGPNAT01 设置静态 IP 地址。 如果 DHCP 无法分配一个有效的 IP 地址访问 Internet，仅使用此参数。|
 |NatIPv4Subnet|DHCP NAT 支持所需的|NAT 支持通过使用适用于 DHCP 的 IP 子网前缀。 如果 DHCP 无法分配一个有效的 IP 地址访问 Internet，仅使用此参数。|
-|PublicVlanId|可选|设置 VLAN id。 如果主机和 MA BGPNAT01 必须配置要访问的物理网络 （和 Internet） 的 VLAN ID，只能使用此参数。 例如，.\InstallAzureStackPOC.ps1-Verbose PublicVLan 305|
+|PublicVlanId|可选|设置 VLAN id。 如果主机和 MA BGPNAT01 必须配置要访问的物理网络 （和 Internet） 的 VLAN ID，只能使用此参数。 For example, .\InstallAzureStackPOC.ps1 -Verbose -PublicVLan 305|
 |重新运行|可选|使用此标志重新运行部署。 使用所有的前一个输入。 不支持以前提供的重新输入数据，因为几个唯一值是生成和用于部署。|
 
 ## <a name="activate-the-administrator-and-tenant-portals"></a>激活管理员和租户门户

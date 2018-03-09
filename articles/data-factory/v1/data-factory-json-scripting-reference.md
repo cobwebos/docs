@@ -3,7 +3,7 @@ title: "Azure 数据工厂 - JSON 脚本参考 | Microsoft Docs"
 description: "提供数据工厂实体的 JSON 架构。"
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: sharonlo101
 manager: jhubbard
 editor: 
 ms.service: data-factory
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9457e90f378cf7b30810ca9cadfcad139e91e2d4
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 519a762e5f89533f4425d38e4a1ca76d8e3dd40f
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
 > [!NOTE]
@@ -47,7 +47,7 @@ ms.lasthandoff: 01/23/2018
 
 | 属性 | 说明 | 必选
 -------- | ----------- | --------
-| name | 管道的名称。 指定一个名称，表示配置为活动或管道要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
+| 名称 | 管道的名称。 指定一个名称，表示配置为活动或管道要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description |描述活动或管道用途的文本 | 否 |
 | 活动 | 包含活动列表。 | 是 |
 | start |管道的开始日期-时间。 必须为 [ISO 格式](http://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41。 <br/><br/>可指定本地时间，如 EST 时间。 下面是一个示例：`2016-02-27T06:00:00**-05:00`（美国东部标准时间上午 6 点）。<br/><br/>start 和 end 属性共同指定管道的活动期限。 仅在此活动期限内生成输出切片。 |否<br/><br/>如果要指定 end 属性值，必须指定 start 属性值。<br/><br/>创建管道时，开始和结束时间均可为空。 必须指定这两个值，才能设置管道运行的活动期限。 如果创建管道时未指定开始和结束时间，可稍后使用 Set-AzureRmDataFactoryPipelineActivePeriod cmdlet 进行设置。 |
@@ -85,7 +85,7 @@ ms.lasthandoff: 01/23/2018
 
 | 标记 | 说明 | 必选 |
 | --- | --- | --- |
-| name |活动的名称。 指定一个名称，表示活动配置要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
+| 名称 |活动的名称。 指定一个名称，表示活动配置要执行的操作<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\\”</li></ul> |是 |
 | description |描述活动用途的文本。 |否 |
 | type |指定活动的类型。 请参阅[数据存储](#data-stores)和[数据转换活动](#data-transformation-activities)部分，了解不同的活动类型。 |是 |
 | inputs |活动使用的输入表<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |对于 HDInsightStreaming 和 SqlServerStoredProcedure 活动，为“否” <br/> <br/> 对于其他所有活动，为“是” |
@@ -159,7 +159,7 @@ ms.lasthandoff: 01/23/2018
 } 
 ```
 
-注意以下几点：
+请注意以下几点：
 
 * 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
 * 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。
@@ -217,7 +217,7 @@ ms.lasthandoff: 01/23/2018
 }
 ```
 
-注意以下几点： 
+请注意以下几点： 
 
 * 在 activities 节中，只有一个活动的 **type** 设置为 **HDInsightHive**。
 * Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 scriptLinkedService 指定，名为 **AzureStorageLinkedService**）中，以及 **adfgetstarted** 容器的 **script** 文件夹中。
@@ -245,7 +245,7 @@ ms.lasthandoff: 01/23/2018
 
 | 属性 | 说明 | 必选 |
 | -------- | ----------- | -------- | 
-| name | 链接服务的名称。 | 是 | 
+| 名称 | 链接服务的名称。 | 是 | 
 | properties - type | 链接服务的类型。 例如：Azure 存储、Azure SQL 数据库。 |
 | typeProperties | typeProperties 节中的元素根据每个数据存储或计算环境的不同而不同。 有关所有数据存储链接服务，请参阅[数据存储](#datastores)部分；有关所有计算链接服务，请参阅[计算环境](#compute-environments) |   
 
@@ -284,7 +284,7 @@ ms.lasthandoff: 01/23/2018
 
 | 属性 | 说明 | 必选 | 默认 |
 | --- | --- | --- | --- |
-| name | 数据集名称。 若要了解命名规则，请参阅 [Azure 数据工厂 - 命名规则](data-factory-naming-rules.md)。 |是 |不可用 |
+| 名称 | 数据集名称。 若要了解命名规则，请参阅 [Azure 数据工厂 - 命名规则](data-factory-naming-rules.md)。 |是 |不可用 |
 | type | 数据集的类型。 指定 Azure 数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 有关数据工厂支持的所有数据存储和数据集类型，请参阅[数据存储](#data-stores)部分。 | 
 | structure | 数据集的架构。 其中包含列及其类型，等等。 | 否 |不可用 |
 | typeProperties | 对应于所选类型的属性。 有关支持的类型及其属性，请参阅[数据存储](#data-stores)部分。 |是 |不可用 |
@@ -296,7 +296,7 @@ ms.lasthandoff: 01/23/2018
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| name |列的名称。 |是 |
+| 名称 |列的名称。 |是 |
 | type |列的数据类型。  |否 |
 | culture |指定类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认为 `en-us`。 |否 |
 | 格式 |指定类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 |否 |
@@ -5382,7 +5382,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
     }
 }
 ```
-注意以下几点： 
+请注意以下几点： 
 
 - **type** 属性设置为 **HDInsightSpark**。
 - **rootPath** 设置为 **adfspark\\pyFiles**，其中，adfspark 是 Azure Blob 容器，pyFiles 是该容器中的文件夹。 在此示例中，Azure Blob 存储是与 Spark 群集关联的存储。 可将文件上传到不同的 Azure 存储。 如果这样做，请创建 Azure 存储链接服务，将该存储帐户链接到数据工厂。 然后，将该链接的服务的名称指定为 **sparkJobLinkedService** 属性的值。 请参阅 [Spark 活动属性](#spark-activity-properties)，了解有关 Spark 活动支持的此属性及其他属性的详细信息。

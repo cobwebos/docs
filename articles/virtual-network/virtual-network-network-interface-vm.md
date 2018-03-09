@@ -4,7 +4,7 @@ description: "了解如何向虚拟机中添加网络接口或从中删除网络
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: jdial
-ms.openlocfilehash: 30e6950a976307023bd5232fa1c1f1342c1d012b
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: bb21690865cd9384fe3d3c82e60f11e0fc64114c
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>向虚拟机中添加网络接口或从中删除网络接口
 
@@ -29,12 +29,12 @@ ms.lasthandoff: 02/11/2018
 
 ## <a name="before-you-begin"></a>开始之前
 
-在执行本文任何部分中的步骤之前，请完成以下任务：
+在完成本文任何部分中的步骤之前，请完成以下任务：
 
-- 使用 Azure 帐户登录到 Azure [门户](https://portal.azure.com)、Azure CLI 或 Azure PowerShell。 如果还没有 Azure 帐户，请注册[免费试用版](https://azure.microsoft.com/free)。
-- 如果使用 PowerShell 命令来完成本文中的任务，请[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保安装最新版本的 Azure PowerShell cmdlet。 若要获取 PowerShell 命令的帮助和示例，请键入 `get-help <command> -full`。 
-- 或者，可以使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 PowerShell。 它预安装有 PowerShell，并配置为与帐户一起使用。 若要使用此选项，请在[门户](https://portal.azure.com)顶部选择 Cloud Shell **>_** 按钮，然后在左上角选择 PowerShell。
-- 如果使用 Azure CLI 命令来完成本文中的任务，请[安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 
+- 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
+- 如果使用门户，请打开 https://portal.azure.com，并使用 Azure 帐户登录。
+- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 5.2.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
+- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.26 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 ## <a name="add-existing-network-interfaces-to-a-new-vm"></a>将现有网络接口添加到新 VM
 

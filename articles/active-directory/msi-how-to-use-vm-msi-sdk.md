@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
 ms.openlocfilehash: bd2f03f47cebec52aecb84ef2e97a745ede670ff
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-with-azure-sdks"></a>如何将 Azure VM 托管服务标识 (MSI) 与 Azure SDK 配合使用 
 

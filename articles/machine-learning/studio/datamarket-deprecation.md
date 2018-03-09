@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 03/01/2018
 ms.author: LuisCa
-ms.openlocfilehash: e40b69f97878a6072a64912f017f8e5621ba6e71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cec301869b08f9f3811c0536c85366619738945a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="datamarket-is-now-deprecated"></a>DataMarket 现已弃用
 
@@ -32,9 +32,3 @@ ms.lasthandoff: 10/11/2017
 认知服务文本分析 API 支持早期 DataMarket 版本支持的所有方案，以及语言检测和主题检测等其他方案。
 
 
-## <a name="recommendations-api"></a>建议 API 
-
-以前的 DataMarket 建议 API 客户应开始使用[认知服务建议 API](https://www.microsoft.com/cognitive-services/recommendations-api)。
-认知服务建议 API 支持早期 DataMarket 版本支持的所有方案，以及批处理支持和更优脱机指标等其他方案以评估模型的质量。 
-
-若要详细了解如何开始使用认知服务建议 API，请参阅[迁移到 Azure 认知服务建议 API](http://aka.ms/recomigrate)。

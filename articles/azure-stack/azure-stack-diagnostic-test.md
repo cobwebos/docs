@@ -11,21 +11,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/26/2018
 ms.author: mabrigg
-ms.openlocfilehash: 53ef19628b40c4a008143c867c9e7867ac91854d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 4f86397d4db5a0e67b294befd92087166d6b8109
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>为 Azure 堆栈运行验证测试
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
  
 你可以验证 Azure 堆栈的状态。 当你遇到问题时，请联系 Microsoft 客户服务支持。 支持要求你从你管理的节点上运行测试 AzureStack。 验证测试隔离失败。 支持可以然后分析详细的日志、 重点放在发生错误的区域和工作与你解决此问题。
 
-## <a name="run-test-azurestack"></a>运行测试 AzureStack
+## <a name="run-test-azurestack"></a>Run Test-AzureStack
 
 当你遇到问题时，请联系 Microsoft 客户服务支持，然后运行**运行的测试 AzureStack**。
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 01/12/2018
 
 本部分概述了适合测试 AzureStack cmdlet，并验证报表的摘要。
 
-### <a name="test-azurestack"></a>测试 AzureStack
+### <a name="test-azurestack"></a>Test-AzureStack
 
 验证 Azure 堆栈的状态。 该 cmdlet 报告 Azure 堆栈硬件和软件的状态。 支持人员可以使用此报表以减少解决 Azure 堆栈支持案例的时间。
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 01/12/2018
 | ServiceAdminCredentials | PSCredential    | 否       | FALSE   |
 | DoNotDeployTenantVm     | SwitchParameter | 否       | FALSE   |
 | AdminCredential         | PSCredential    | 否       | 不可用      |
-| StorageConnectionString | String          | 否       | 不可用      |
+<!-- | StorageConnectionString | String          | 否       | 不可用      | 不支持在 1802年-->
 | 列出                    | SwitchParameter | 否       | FALSE   |
 | 忽略                  | String          | 否       | 不可用      |
 | 包括                 | String          | 否       | 不可用      |

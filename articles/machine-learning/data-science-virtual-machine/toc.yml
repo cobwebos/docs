@@ -8,6 +8,8 @@
       href: overview.md
     - name: 什么是深度学习 VM？
       href: deep-learning-dsvm-overview.md
+    - name: 什么是地理 AI 数据科学 VM？
+      href: geo-ai-dsvm-overview.md
 - name: 入门
   items:
     - name: 创建 Windows 数据科学 VM
@@ -18,6 +20,8 @@
       href: linux-dsvm-intro.md
     - name: 创建深度学习 VM
       href: provision-deep-learning-dsvm.md
+    - name: 创建地理 AI 数据科学 VM
+      href: provision-geo-ai-dsvm.md
 - name: 如何
   items:
     - name: 使用 Windows 数据科学 VM
@@ -26,6 +30,8 @@
       href: linux-dsvm-walkthrough.md
     - name: 使用深度学习 VM
       href: use-deep-learning-dsvm.md
+    - name: 使用地理 AI 数据科学 VM
+      href: use-geo-ai-dsvm.md
 - name: 引用
   expanded: true
   items:

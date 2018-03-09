@@ -3,8 +3,8 @@ title: "在部署 Azure 堆栈上的 App Service 之前 |Microsoft 文档"
 description: "若要完成部署 Azure 堆栈上的应用程序服务之前的步骤"
 services: azure-stack
 documentationcenter: 
-author: brenduns
-manager: femila
+author: apwestgarth
+manager: stefsch
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -12,17 +12,17 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
-ms.author: brenduns
-ms.reviewer: anwestg
-ms.openlocfilehash: 27f0255c023382a14368915b0d19a49d133154d8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 03/02/2018
+ms.author: anwestg
+ms.openlocfilehash: f400180bc71efc6766b73b098c1f82542eec86f7
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>之前开始使用 Azure 堆栈上的 App Service
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 在部署 Azure 堆栈上的 Azure App Service 之前，必须完成这篇文章中的先决条件。
 
@@ -44,10 +44,18 @@ ms.lasthandoff: 02/21/2018
 
 Azure 堆栈上的 azure App Service 目前无法提供高可用性，因为 Azure 堆栈部署工作负载分配到仅一个容错域。
 
-若要准备 Azure 堆栈上的 Azure App Service，以实现高可用性，部署的所需的文件服务器和高度可用配置中的 SQL Server 实例。 当 Azure 堆栈支持多个容错域时，我们将提供有关如何在高度可用的配置中启用 Azure 堆栈上的 Azure App Service 的指南。
-
+若要准备 Azure 堆栈上的 Azure App Service，以实现高可用性，部署的所需的文件服务器和高度可用配置中的 SQL Server 实例。 当 Azure 堆栈支持多个容错域时，指南将提供有关如何在高度可用的配置中启用 Azure 堆栈上的 Azure App Service 中。
 
 ## <a name="get-certificates"></a>获取证书
+
+### <a name="azure-resource-manager-root-certificate-for-azure-stack"></a>Azure 堆栈的 azure 资源管理器根证书
+
+在 PowerShell 会话中作为 azurestack\CloudAdmin 在可以访问 Azure 堆栈集成系统或 Azure 堆栈开发工具包主机上的特权终结点的计算机上运行，请从从中提取的文件夹运行 Get AzureStackRootCert.ps1 脚本帮助程序脚本中。 该脚本作为 App Service 需要用于创建证书的脚本的相同文件夹中创建的根证书。
+
+| Get-AzureStackRootCert.ps1 parameter | 必需还是可选 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| PrivilegedEndpoint | 需要 | AzS-ERCS01 | 特权的终结点 |
+| CloudAdminCredential | 需要 | AzureStack\CloudAdmin | Azure 堆栈云管理员的的域帐户凭据 |
 
 ### <a name="certificates-required-for-the-azure-stack-development-kit"></a>所需的 Azure 堆栈开发工具包证书
 
@@ -56,9 +64,9 @@ Azure 堆栈上的 azure App Service 目前无法提供高可用性，因为 Azu
 | 文件名 | 用途 |
 | --- | --- |
 | _.appservice.local.azurestack.external.pfx | 应用程序服务默认 SSL 证书 |
-| Api.appservice.local.azurestack.external.pfx | 应用程序服务 API SSL 证书 |
+| api.appservice.local.azurestack.external.pfx | 应用程序服务 API SSL 证书 |
 | ftp.appservice.local.azurestack.external.pfx | App Service 发布服务器 SSL 证书 |
-| Sso.appservice.local.azurestack.external.pfx | 应用程序服务标识应用程序证书 |
+| sso.appservice.local.azurestack.external.pfx | 应用程序服务标识应用程序证书 |
 
 在 Azure 堆栈开发工具包主机上运行脚本，并确保你作为 azurestack\CloudAdmin 运行 PowerShell:
 
@@ -74,18 +82,19 @@ Azure 堆栈上的 azure App Service 目前无法提供高可用性，因为 Azu
 
 ### <a name="certificates-required-for-a-production-deployment-of-azure-app-service-on-azure-stack"></a>Azure 堆栈上的 Azure App Service 的生产部署所需证书
 
-若要运行在生产环境中的资源提供程序，必须提供以下四个证书。
+若要运行在生产环境中的资源提供程序，必须提供以下四个证书：
 
 #### <a name="default-domain-certificate"></a>默认域证书
 
 默认域证书放置在前端角色。 用于提出通配或默认域请求到 Azure App Service 的用户应用程序使用此证书。 证书还用于源代码管理操作 (Kudu)。
 
-证书必须是.pfx 格式，并且应为双使用者通配证书。 这允许一个证书，以涵盖的默认域和 SCM 终结点源代码管理操作。
+证书必须是.pfx 格式，并应为三个使用者通配证书。 这允许一个证书，以涵盖的默认域和 SCM 终结点源代码管理操作。
 
 | 格式 | 示例 |
 | --- | --- |
 | \*.appservice.\<region\>.\<DomainName\>.\<extension\> | \*.appservice.redmond.azurestack.external |
-| \*.scm.appservice.<region>.<DomainName>.<extension> | \*.appservice.scm.redmond.azurestack.external |
+| \*.scm.appservice.<region>.<DomainName>.<extension> | \*.scm.appservice.redmond.azurestack.external |
+| \*.sso.appservice.<region>.<DomainName>.<extension> | \*.sso.appservice.redmond.azurestack.external |
 
 #### <a name="api-certificate"></a>API 证书
 
@@ -101,11 +110,12 @@ API 证书放置在管理角色。 资源提供程序使用它来帮助安全 AP
 
 | 格式 | 示例 |
 | --- | --- |
-| ftp.appservice.\<region\>.\<DomainName\>.\<extension\> | api.appservice.redmond.azurestack.external |
+| ftp.appservice.\<region\>.\<DomainName\>.\<extension\> | ftp.appservice.redmond.azurestack.external |
 
 #### <a name="identity-certificate"></a>标识证书
 
 标识应用程序的证书能够：
+
 - Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) directory、 Azure 堆栈和服务之间集成应用程序以支持与计算资源提供程序集成。
 - 单一登录方案 Azure 堆栈上的 Azure App Service 中的高级开发人员工具。
 
@@ -115,15 +125,15 @@ API 证书放置在管理角色。 资源提供程序使用它来帮助安全 AP
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
 
-### <a name="azure-resource-manager-root-certificate-for-azure-stack"></a>Azure 堆栈的 azure 资源管理器根证书
+## <a name="virtual-network"></a>虚拟网络
 
-在 PowerShell 会话中作为 azurestack\CloudAdmin 运行，从提取帮助程序脚本的文件夹中运行 Get AzureStackRootCert.ps1 脚本。 脚本在 App Service 需要用于创建证书的脚本所在的文件夹中创建四个证书。
+Azure 堆栈上的 azure App Service，可将资源提供程序部署到现有的虚拟网络。  这使内部 Ip 连接到的文件服务器和 Azure 堆栈上的 Azure App Service 所要求的 SQL server 使用。  在安装 Azure 堆栈上的 Azure 应用程序服务之前，必须使用以下地址范围和子网配置虚拟网络：
 
-| Get-AzureStackRootCert.ps1 parameter | 必需还是可选 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| PrivelegedEndpoint | 需要 | AzS-ERCS01 | 特权的终结点 |
-| CloudAdminCredential | 需要 | AzureStack\CloudAdmin | Azure 堆栈云管理员的的域帐户凭据 |
+虚拟网络-/ 16
 
+子网
+
+ControllersSubnet/24 ManagementServersSubnet/24 FrontEndsSubnet/24 PublishersSubnet/24 WorkersSubnet /21
 
 ## <a name="prepare-the-file-server"></a>准备文件服务器
 
@@ -131,8 +141,11 @@ Azure 应用程序服务要求使用文件服务器。 对于生产部署，文�
 
 对于 Azure 堆栈开发工具包部署，你可以使用[示例 Azure 资源管理器部署模板](https://aka.ms/appsvconmasdkfstemplate)部署配置的单节点文件服务器。 单节点文件服务器将在工作组中。
 
-### <a name="provision-groups-and-accounts-in-active-directory"></a>配置组和 Active Directory 中的帐户
+>[!IMPORTANT]
+> 如果你选择部署的现有虚拟网络中的 App Service 文件服务器应部署到单独的子网从 App Service 中。
+>
 
+### <a name="provision-groups-and-accounts-in-active-directory"></a>配置组和 Active Directory 中的帐户
 
 1. 创建以下 Active Directory 全局安全组：
    - FileShareOwners
@@ -216,6 +229,7 @@ net localgroup Administrators FileShareOwners /add
 文件服务器上或作为当前群集资源所有者的故障转移群集节点上的提升的命令提示符下运行以下命令。 将以斜体显示的值替换为特定于你的环境的值。
 
 #### <a name="active-directory"></a>Active Directory
+
 ```DOS
 set DOMAIN=<DOMAIN>
 set WEBSITES_FOLDER=C:\WebSites
@@ -228,6 +242,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 ```
 
 #### <a name="workgroup"></a>工作组
+
 ```DOS
 set WEBSITES_FOLDER=C:\WebSites
 icacls %WEBSITES_FOLDER% /reset
@@ -250,15 +265,21 @@ Azure 堆栈上的 Azure App Service 的 SQL Server 实例必须是可从所有 
 
 对于任何 SQL Server 角色，你可以使用默认实例或命名的实例。 如果你使用的命名的实例，请务必手动启动 SQL Server Browser 服务，然后打开端口 1434年。
 
+>[!IMPORTANT]
+> 如果你选择部署的现有虚拟网络中的 App Service 应将 SQL Server 部署到 App Service 和文件服务器从单独的子网中。
+>
+
 ## <a name="create-an-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 
 配置可支持以下 Azure AD 服务主体：
-- 虚拟机规模集在辅助角色层上的集成
-- Azure 函数门户和高级开发人员工具的 SSO
+
+- 虚拟机规模集在辅助角色层上的集成。
+- Azure 函数门户和高级开发人员工具的 SSO。
 
 这些步骤适用于仅限 Azure AD 保护 Azure 堆栈环境。
 
 管理员必须配置为 SSO:
+
 - 启用应用程序服务 (Kudu) 中的高级开发人员工具。
 - 启用了 Azure 函数门户体验的使用。
 
@@ -276,7 +297,8 @@ Azure 堆栈上的 Azure App Service 的 SQL Server 实例必须是可从所有 
 10. 选择**应用程序注册**。
 11. 搜索返回的第 7 步一部分的应用程序 ID。 列出的应用程序服务应用程序。
 12. 选择**应用程序**列表中。
-13. 选择**所需的权限** > **授予权限** > **是**。
+13. 单击“设置”。
+14. 选择**所需的权限** > **授予权限** > **是**。
 
 | Create-AADIdentityApp.ps1  parameter | 必需还是可选 | 默认值 | 说明 |
 | --- | --- | --- | --- |
@@ -290,10 +312,12 @@ Azure 堆栈上的 Azure App Service 的 SQL Server 实例必须是可从所有 
 ## <a name="create-an-active-directory-federation-services-application"></a>创建 Active Directory 联合身份验证服务应用程序
 
 对于 Azure 堆栈 AD FS 保护的环境，你必须配置才能支持以下 AD FS 服务主体：
-- 虚拟机规模集在辅助角色层上的集成
-- Azure 函数门户和高级开发人员工具的 SSO
+
+- 虚拟机规模集在辅助角色层上的集成。
+- Azure 函数门户和高级开发人员工具的 SSO。
 
 管理员必须配置为 SSO:
+
 - 在辅助角色层上配置虚拟机缩放集集成服务主体。
 - 启用应用程序服务 (Kudu) 中的高级开发人员工具。
 - 启用了 Azure 函数门户体验的使用。
@@ -303,9 +327,9 @@ Azure 堆栈上的 Azure App Service 的 SQL Server 实例必须是可从所有 
 1. 以 azurestack\AzureStackAdmin 打开的 PowerShell 实例。
 2. 转到你下载并提取中的脚本的位置[先决条件步骤](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts)。
 3. [安装适用于 Azure 堆栈 PowerShell](azure-stack-powershell-install.md)。
-4.  运行**创建 ADFSIdentityApp.ps1**脚本。
-5.  在**凭据**窗口中，输入你的 AD FS 云管理帐户和密码。 选择“确定”。
-6.  提供的证书文件路径和证书密码[前面创建的证书](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)。 默认情况下的此步骤是创建的证书**sso.appservice.local.azurestack.external.pfx**。
+4. 运行**创建 ADFSIdentityApp.ps1**脚本。
+5. 在**凭据**窗口中，输入你的 AD FS 云管理帐户和密码。 选择“确定”。
+6. 提供的证书文件路径和证书密码[前面创建的证书](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)。 默认情况下的此步骤是创建的证书**sso.appservice.local.azurestack.external.pfx**。
 
 | Create-ADFSIdentityApp.ps1  parameter | 必需还是可选 | 默认值 | 说明 |
 | --- | --- | --- | --- |
@@ -315,7 +339,6 @@ Azure 堆栈上的 Azure App Service 的 SQL Server 实例必须是可从所有 
 | CertificateFilePath | 需要 | Null | 标识应用程序的证书 PFX 文件的路径。 |
 | CertificatePassword | 需要 | Null | 可帮助保护证书的私钥的密码。 |
 
-
 ## <a name="next-steps"></a>后续步骤
 
-[安装 App Service 资源提供程序](azure-stack-app-service-deploy.md)
+[安装应用服务资源提供程序](azure-stack-app-service-deploy.md)

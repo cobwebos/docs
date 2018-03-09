@@ -201,8 +201,6 @@
           href: maintenance-notifications.md
         - name: 缓解推理执行
           href: mitigate-se.md
-        - name: 加速维护常见问题解答
-          href: accelerated-maintenance.md
         - name: 计划事件
           href: scheduled-events.md
         - name: 监视元数据

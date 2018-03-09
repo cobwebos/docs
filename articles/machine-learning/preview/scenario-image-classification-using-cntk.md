@@ -6,16 +6,16 @@ documentationcenter:
 author: PatrickBue
 ms.author: pabuehle
 manager: mwinkle
-ms.reviewer: mawah, marhamil, mldocs, garyericson, jasonwhowell
+ms.reviewer: marhamil, mldocs, garyericson, jasonwhowell
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: c3ad1cf8651858a2cb1fdadc2beed4e5c7bef56c
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 03fdd1265464355a2787eff897eb4f70faa095b0
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>使用 Azure 机器学习 Workbench 进行图像分类
 
@@ -59,6 +59,7 @@ DNN 不仅使得图像分类领域取得了巨大进步，而且在其他计算�
     - `pip install -U numpy`
     - `pip install bqplot`
     - `jupyter nbextension enable --py --sys-prefix bqplot`
+    - `jupyter nbextension enable --py widgetsnbextension`
 
 ### <a name="troubleshooting--known-bugs"></a>疑难解答/已知问题
 - 第 2 部分需要使用 GPU，否则在尝试优化 DNN 时会引发错误：“尚未实现在 CPU 上进行批量规范化训练”。
@@ -259,7 +260,7 @@ Azure 机器训练 Workbench 将每次运行的历史记录存储在 Azure 上�
 
 ### <a name="using-a-custom-dataset"></a>使用自定义数据集
 
-首先，让我们来看看服装纹理数据的文件夹结构。 请注意，具有不同属性的所有图像在 DATA_DIR/images/fashionTexture/ 中是如何划分到不同子文件夹“圆点”、“豹纹”和“条纹” *\* 中。 此外，还要注意图像文件夹名称如何出现在 `PARAMETERS.py` 文件中：
+首先，让我们来看看服装纹理数据的文件夹结构。 请注意，具有不同属性的所有图像在 DATA_DIR/images/fashionTexture/ 中是如何划分到不同子文件夹“圆点”、“豹纹”和“条纹”中。 此外，还要注意图像文件夹名称如何出现在 `PARAMETERS.py` 文件中：
 ```python
 datasetName = "fashionTexture"
 ```

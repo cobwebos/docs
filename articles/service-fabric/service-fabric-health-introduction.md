@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 271d02bf5793ccb4ca8cbc4eeb8a6c5cfdd74f03
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: d226b8f8b3252fe82cd5077d235f301cfaa83654
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric 运行状况监视简介
 Azure Service Fabric 引入了一个运行状况模型，该模型提供丰富、灵活且可扩展的运行状况评估和报告。 使用该模型可对群集及其中运行的服务的状态进行近乎实时的监视。 可以轻松获取运行状况信息，并在潜在问题级联和造成大规模停机之前予以更正。 在典型的模型中，服务基于其本地视图发送报告，并聚合信息，以提供整体的群集级别视图。

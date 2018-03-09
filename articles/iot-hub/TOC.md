@@ -40,6 +40,9 @@
 ### [使用适用于 Azure CLI 2.0 的 IoT 扩展进行设备管理](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
 ### [使用逻辑应用执行远程监视和发送通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
+## 使用 MXChip IoT DevKit
+### [使用 Azure 认知服务转换语音邮件](iot-hub-arduino-iot-devkit-az3166-translator.md)
+
 # 操作指南
 ## 计划
 ### [比较 IoT 中心与事件中心](iot-hub-compare-event-hubs.md)

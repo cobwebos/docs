@@ -33,6 +33,9 @@
 #### [使用 PowerShell 在可用性区域中创建公共 IP 地址](../virtual-network/create-public-ip-availability-zone-powershell.md)
 #### [使用 CLI 在可用性区域中创建公共 IP 地址](../virtual-network/create-public-ip-availability-zone-cli.md)
 
+### SQL 数据库
+#### [将可用性区域与 SQL 数据库配合使用](../sql-database/sql-database-high-availability.md#availability-zones)
+
 ### 存储
 #### [区域冗余存储](../storage/common/storage-redundancy.md#zone-redundant-storage)
 

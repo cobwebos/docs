@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/14/2017
 ms.author: dobett
 ms.openlocfilehash: 934f4deb3139c136c871ab0125ba45267e1d1b05
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="opc-publisher-for-azure-iot-edge"></a>Azure IoT Edge 的 OPC 发布服务器
 

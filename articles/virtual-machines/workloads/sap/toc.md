@@ -14,7 +14,11 @@
 ## [单实例 SAP HANA 安装](hana-get-started.md)
 ## [S/4 HANA 或 BW/4 HANA SAP CAL 部署指南](cal-s4h.md)
 ## [Azure 上的 SAP HANA 操作指南](hana-vm-operations.md)
-## [Azure VM 中的 SAP HANA 高可用性](sap-hana-high-availability.md)
+## Azure 虚拟机中的 SAP HANA 可用性
+### [Azure 上的 SAP HANA 可用性概述](sap-hana-availability-overview.md)
+### [一个 Azure 区域内的 Azure 上的 SAP HANA 可用性](sap-hana-availability-one-region.md)
+### [跨 Azure 区域的 Azure 上的 SAP HANA 可用性](sap-hana-availability-across-regions.md)
+## [在 Azure VM 中设置 SAP HANA 系统复制](sap-hana-high-availability.md)
 ## [SAP HANA 备份概述](sap-hana-backup-guide.md)
 ## [SAP HANA 文件级备份](sap-hana-backup-file-level.md)
 ## [SAP HANA 存储快照备份](sap-hana-backup-storage-snapshots.md)

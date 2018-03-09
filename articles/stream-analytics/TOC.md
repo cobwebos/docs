@@ -58,13 +58,14 @@
 
 ## 故障排除
 ### [故障排除指南](stream-analytics-troubleshooting-guide.md)
+### [常见故障排除问题](stream-analytics-common-troubleshooting-issues.md)
 ### [“资源运行状况”边栏选项卡](stream-analytics-resource-health.md)
 ### [作业关系图和指标](stream-analytics-job-diagram-with-metrics.md)
 ### [SELECT INTO 调试](stream-analytics-select-into.md)
 ### [事件排序注意事项](stream-analytics-out-of-order-and-late-events.md)
 ### [事件中心读取器限制](stream-analytics-event-hub-consumer-groups.md)
 ### [诊断日志](stream-analytics-job-diagnostic-logs.md)
-### [获取格式不正确的事件](stream-analytics-malformed-events.md)
+
 
 ## 自动化
 ### [使用 Management .NET SDK](stream-analytics-dotnet-management-sdk.md)
