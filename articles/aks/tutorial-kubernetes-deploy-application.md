@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4ee59782a0e40f9d09023a75862ab0f8415e6d12
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0639a2b7e71878103542d3e037040f8a7444976f
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="run-applications-in-azure-container-service-aks"></a>在 Azure 容器服务 (AKS) 中运行应用程序
 
@@ -52,12 +52,26 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 vi azure-vote-all-in-one-redis.yaml
 ```
 
+另外，如果是在 Windows 中工作，则可使用 Visual Studio Code。
+
+```console
+code azure-vote-all-in-one-redis.yaml
+```
+
 将 `microsoft` 替换为 ACR 登录服务器名称。 此值位于清单文件的第 47 行。
 
 ```yaml
 containers:
 - name: azure-vote-front
   image: microsoft/azure-vote-front:v1
+```
+
+然后，上述代码将如下所示：
+
+```yaml
+containers:
+- name: azure-vote-front
+  image: <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
 保存并关闭该文件。

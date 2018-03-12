@@ -28,10 +28,7 @@
 #### [使用 PowerShell 创建区域冗余的负载均衡器标准](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
 #### [使用 CLI 创建区域冗余的公共负载均衡器标准](../load-balancer/load-balancer-get-started-internet-az-cli.md)
 
-### 公共 IP 地址
-#### [使用 Azure 门户在可用性区域中创建公共 IP 地址](../virtual-network/create-public-ip-availability-zone-portal.md)
-#### [使用 PowerShell 在可用性区域中创建公共 IP 地址](../virtual-network/create-public-ip-availability-zone-powershell.md)
-#### [使用 CLI 在可用性区域中创建公共 IP 地址](../virtual-network/create-public-ip-availability-zone-cli.md)
+### [公共 IP 地址](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
 ### SQL 数据库
 #### [将可用性区域与 SQL 数据库配合使用](../sql-database/sql-database-high-availability.md#availability-zones)

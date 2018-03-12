@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 01/22/2018
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 55211e29149cd334421bd8723d47278a19afbfbb
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 146c6fdada651551c05b2cbcadc3e1248a40b613
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="load-data-with-bcp"></a>使用 bcp 加载数据
 
@@ -120,15 +120,15 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20150101 |1 |3 |
 | 20150201 |1 |3 |
 | 20150301 |1 |3 |
-| 20150401 |#N/A |4 |
-| 20150501 |#N/A |4 |
-| 20150601 |#N/A |4 |
+| 20150401 |2 |4 |
+| 20150501 |2 |4 |
+| 20150601 |2 |4 |
 | 20150701 |3 |1 |
 | 20150801 |3 |1 |
 | 20150801 |3 |1 |
-| 20151001 |4 |#N/A |
-| 20151101 |4 |#N/A |
-| 20151201 |4 |#N/A |
+| 20151001 |4 |2 |
+| 20151101 |4 |2 |
+| 20151201 |4 |2 |
 
 ### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>步骤 4：基于新加载的数据创建统计信息
 加载数据后，最后一步是创建或更新统计信息。 这有助于提升查询性能。 有关详细信息，请参阅[统计信息](sql-data-warehouse-tables-statistics.md)。 以下 sqlcmd 示例在包含新加载的数据的表中创建统计信息。
@@ -174,7 +174,7 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 > 
 
 ## <a name="next-steps"></a>后续步骤
-若要设计加载过程，请参阅 [加载概述] (sql-data-warehouse-design-elt-data-loading]。  
+若要设计加载过程，请参阅[加载概述](sql-data-warehouse-design-elt-data-loading)。  
 
 
 

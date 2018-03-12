@@ -16,11 +16,11 @@ ms.topic: hero-article
 ms.date: 01/05/2018
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdaf1349ddf623e2634360e891d959105c504093
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6cd6e9ba575a0efe6e612a2185076d5a6c189525
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>将 Azure 虚拟机备份到恢复服务保管库
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 02/28/2018
 
   ![启用备份向导](./media/backup-azure-vms-first-look-arm/vm-blade-enable-backup.png)
 
-  如果没有恢复服务保管库，或想要使用新的保管库，可单击“新建”并提供新保管库的名称。 将在与虚拟机相同的资源组和相同的位置中创建新保管库。 如果想要使用不同的值创建恢复服务保管库，请参阅如何[创建恢复服务保管库](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm)部分。
+  如果没有恢复服务保管库，或想要使用新的保管库，可单击“新建”并提供新保管库的名称。 将在与虚拟机相同的资源组和相同的区域中创建新保管库。 如果想要使用不同的值创建恢复服务保管库，请参阅如何[创建恢复服务保管库](backup-azure-vms-first-look-arm.md#create-a-recovery-services-vault-for-a-vm)部分。
 
 6. 若要查看备份策略的详细信息，请单击“备份策略”。
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 02/28/2018
 恢复服务保管库是存储所有按时间创建的备份和恢复点的实体。 恢复服务保管库还包含应用到受保护 VM 的备份策略。
 
 > [!NOTE]
-> 备份 VM 是在本地执行的过程。 无法将某个位置的 VM 备份到另一个位置的恢复服务保管库。 因此，对于包含要备份的 VM 的具有 Azure 位置，必须至少有一个恢复服务保管库。
+> 备份 VM 是在本地执行的过程。 无法将某个区域的 VM 备份到另一个区域的恢复服务保管库。 因此，每个有 VM 需要备份的 Azure 区域都必须至少存在一个恢复服务保管库。
 >
 >
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 02/28/2018
 7. 单击“位置”，为保管库选择地理区域  。 此选项决定了备份数据要发送到的地理区域。
 
   > [!IMPORTANT]
-  > 如果不确定 VM 的所在位置，请关闭保管库创建对话框，并转到门户中的虚拟机列表。 如果多个区域中有虚拟机，请在每个区域中创建恢复服务保管库。 请先在第一个位置创建保管库，然后转到下一个位置。 无需指定用于存储备份数据的存储帐户 - 恢复服务保管库和 Azure 备份服务会自动处理存储。
+  > 如果不确定 VM 的所在区域，请关闭保管库创建对话框，并转到门户中的虚拟机列表。 如果多个区域中有虚拟机，请在每个区域中创建恢复服务保管库。 请先在第一个区域创建保管库，然后转到下一个区域。 无需指定用于存储备份数据的存储帐户 - 恢复服务保管库和 Azure 备份服务会自动处理存储。
   >
 
 8. 在恢复服务保管库边栏选项卡的底部，单击“创建”。

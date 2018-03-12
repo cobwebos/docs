@@ -6,13 +6,13 @@ author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: overview
-ms.date: 01/11/2018
+ms.date: 02/27/2018
 ms.author: marsma
-ms.openlocfilehash: baf93d4a2a4ba1e05bbf558d0c056fa3aa833fef
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 008b07402cb0b937174488982cac64811baa5d5d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure 容器实例的配额和区域可用性
 
@@ -28,10 +28,14 @@ Azure 容器实例在具有指定 CPU 和内存限制的以下区域中可用。
 
 | Location | 操作系统 | CPU | 内存 (GB) |
 | -------- | -- | :---: | :-----------: |
-| 西欧、美国西部、美国东部、东南亚 | Linux | 4 | 14 |
-| 西欧、美国西部、美国东部、东南亚  | Windows | 4 | 14 |
+| 西欧、美国西部、美国东部 | Linux | 4 | 14 |
+| 东南亚  | Linux | 1 | 1.5 |
+| 西欧、美国西部、美国东部 | Windows | 4 | 14 |
+| 东南亚  | Windows | 2 | 3.5 |
 
 在这些资源限制内创建的容器实例受部署区域内可用性的限制。 某个区域负载较重时，部署实例时可能会失败。 若要减少此类部署失败，请尝试部署具有较低 CPU 和内存设置的实例，或稍后尝试部署。
+
+如果需要其他区域，或者需要提高 CPU/内存限制，请告知我们的团队，网址为：[aka.ms/aci/feedback](https://aka.ms/aci/feedback)。
 
 有关容器实例部署故障排除的详细信息，请参阅[排查 Azure 容器实例的部署问题](container-instances-troubleshooting.md)。
 

@@ -1,10 +1,26 @@
--- title: 创建适用于 Service Fabric 的 .NET 应用程序 | Microsoft Docs description: 本教程介绍如何使用 ASP.NET Core 前端和有状态可靠服务后端创建一个应用程序，然后将其部署到群集。
-services: service-fabric documentationcenter: .net author: rwike77 manager: timlt editor: ''
-
-ms.assetid: ms.service: service-fabric ms.devlang: dotNet ms.topic: tutorial ms.tgt_pltfrm: NA ms.workload: NA ms.date: 01/29/2018 ms.author: ryanwi ms.custom: mvc
-
 ---
-
+title: "创建适用于 Service Fabric 的 .NET 应用程序 | Microsoft Docs"
+description: "本教程介绍如何使用 ASP.NET Core 前端和 Reliable Services 有状态后端创建一个应用程序，然后将其部署到群集。"
+services: service-fabric
+documentationcenter: .net
+author: rwike77
+manager: timlt
+editor: 
+ms.assetid: 
+ms.service: service-fabric
+ms.devlang: dotNet
+ms.topic: tutorial
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 01/29/2018
+ms.author: ryanwi
+ms.custom: mvc
+ms.openlocfilehash: f8d9733b7dad4c6beeed9bcc950910ed6b426585
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/02/2018
+---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教程：使用 ASP.NET Core Web API 前端服务和有状态后端服务创建并部署应用程序
 本教程是一个系列中的第一部分。  其中介绍了如何使用 ASP.NET Core Web API 前端和有状态后端服务创建 Azure Service Fabric 应用程序以存储数据。 完成后，将生成一个投票应用程序，其中包含 ASP.NET Core Web 前端，用于将投票结果保存到群集的有状态后端服务中。 如果不想手动创建投票应用程序，可以[下载已完成应用程序的源代码](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)，跳到[大致了解投票示例应用程序](#walkthrough_anchor)。
 

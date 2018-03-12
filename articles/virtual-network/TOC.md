@@ -28,13 +28,13 @@
 
 ## 部署
 ### 虚拟网络
-#### [Azure portal](virtual-networks-create-vnet-arm-pportal.md)
+#### [Azure 门户](virtual-networks-create-vnet-arm-pportal.md)
 #### [Azure PowerShell](virtual-networks-create-vnet-arm-ps.md)
 #### [Azure CLI](virtual-networks-create-vnet-arm-cli.md)
 #### [模板](virtual-networks-create-vnet-arm-template-click.md)
 
 ### 网络安全组
-#### [Azure portal](virtual-networks-create-nsg-arm-pportal.md)
+#### [Azure 门户](virtual-networks-create-nsg-arm-pportal.md)
 #### [Azure PowerShell](virtual-networks-create-nsg-arm-ps.md)
 #### [Azure CLI](virtual-networks-create-nsg-arm-cli.md)
 #### [模板](virtual-networks-create-nsg-arm-template.md)
@@ -44,7 +44,7 @@
 ##### [Azure CLI 1.0](virtual-networks-create-nsg-classic-cli.md)
 
 ### 路由表
-#### [Azure portal](tutorial-create-route-table-portal.md)
+#### [Azure 门户](tutorial-create-route-table-portal.md)
 #### [Azure PowerShell](tutorial-create-route-table-powershell.md)
 #### [Azure CLI](tutorial-create-route-table-cli.md)
 #### [模板](virtual-network-create-udr-arm-template.md)
@@ -54,7 +54,7 @@
 
 ### 虚拟网络对等互连
 #### 同一部署模型 - 同一订阅
-##### [Azure portal](tutorial-connect-virtual-networks-portal.md)
+##### [Azure 门户](tutorial-connect-virtual-networks-portal.md)
 ##### [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md)
 ##### [Azure CLI](tutorial-connect-virtual-networks-cli.md)
 #### [同一部署模型 - 不同订阅](create-peering-different-subscriptions.md)
@@ -63,15 +63,10 @@
 
 ### [虚拟网络服务终结点](virtual-network-service-endpoints-configure.md)
 
-### 公共 IP 地址 - 可用性区域
-#### [Azure portal](create-public-ip-availability-zone-portal.md)
-#### [Azure CLI](create-public-ip-availability-zone-cli.md)
-#### [PowerShell](create-public-ip-availability-zone-powershell.md)
-
 ### 虚拟机
 #### [虚拟机网络吞吐量](virtual-machine-network-throughput.md)
 #### 创建具有静态公共 IP 地址的 VM
-##### [Azure portal](virtual-network-deploy-static-pip-arm-portal.md)
+##### [Azure 门户](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [Azure PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
 ##### [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
 ##### [模板](virtual-network-deploy-static-pip-arm-template.md)
@@ -79,11 +74,11 @@
 ###### [Azure PowerShell](virtual-networks-reserved-public-ip.md)
 
 #### 创建 VM - 静态专用 IP 地址
-##### [Azure portal](virtual-networks-static-private-ip-arm-pportal.md)
+##### [Azure 门户](virtual-networks-static-private-ip-arm-pportal.md)
 ##### [Azure PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 ##### [Azure CLI](virtual-networks-static-private-ip-arm-cli.md)
 ##### 经典
-###### [Azure portal](virtual-networks-static-private-ip-classic-pportal.md)
+###### [Azure 门户](virtual-networks-static-private-ip-classic-pportal.md)
 ###### [Azure PowerShell](virtual-networks-static-private-ip-classic-ps.md)
 ###### [Azure CLI](virtual-networks-static-private-ip-classic-cli.md)
 
@@ -97,7 +92,7 @@
 ###### [Azure CLI](virtual-network-deploy-multinic-classic-cli.md)
 
 #### 创建 VM - 多个 IP 地址
-##### [Azure portal](virtual-network-multiple-ip-addresses-portal.md)
+##### [Azure 门户](virtual-network-multiple-ip-addresses-portal.md)
 ##### [Azure PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
 ##### [Azure CLI](virtual-network-multiple-ip-addresses-cli.md)
 ##### [模板](virtual-network-multiple-ip-addresses-template.md)
@@ -126,7 +121,7 @@
 
 ### 经典
 #### [虚拟网络](create-virtual-network-classic.md)
-##### [Azure portal](virtual-networks-create-vnet-classic-pportal.md)
+##### [Azure 门户](virtual-networks-create-vnet-classic-pportal.md)
 ##### [Azure PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
 ##### [Azure CLI](virtual-networks-create-vnet-classic-cli.md)
 #### [在虚拟网络配置文件中指定 DNS 设置](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
@@ -147,18 +142,18 @@
 
 ### 经典
 #### 访问控制列表
-##### [Azure portal](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Azure 门户](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 ##### [Azure PowerShell](virtual-networks-acl-powershell.md)
 
 ## 管理
-### [虚拟网络](virtual-network-manage-network.md)
+### [虚拟网络](manage-virtual-network.md)
 #### [子网](virtual-network-manage-subnet.md)
 #### [对等互连](virtual-network-manage-peering.md)
 #### 经典
 ##### [网络配置文件](virtual-networks-using-network-configuration-file.md)
 ##### [从地缘组迁移到区域](virtual-networks-migrate-to-regional-vnet.md)
 ### 网络安全组
-#### [Azure portal](virtual-network-manage-nsg-arm-portal.md)
+#### [Azure 门户](virtual-network-manage-nsg-arm-portal.md)
 #### [Azure PowerShell](virtual-network-manage-nsg-arm-ps.md)
 #### [Azure CLI](virtual-network-manage-nsg-arm-cli.md)
 
@@ -171,15 +166,15 @@
 #### [将 VM 移到其他子网](virtual-networks-move-vm-role-to-subnet.md)
 ### [公共 IP 地址](virtual-network-public-ip-address.md)
 ### DDoS 保护
-#### [Azure portal](ddos-protection-manage-portal.md)
+#### [Azure 门户](ddos-protection-manage-portal.md)
 #### [Azure PowerShell](ddos-protection-manage-ps.md)
 
 ## 故障排除
 ### 网络安全组
-#### [Azure portal](virtual-network-nsg-troubleshoot-portal.md)
+#### [Azure 门户](virtual-network-nsg-troubleshoot-portal.md)
 #### [Azure PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
 ### 路由
-#### [Azure portal](virtual-network-routes-troubleshoot-portal.md)
+#### [Azure 门户](virtual-network-routes-troubleshoot-portal.md)
 #### [Azure PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 ### [吞吐量测试](virtual-network-bandwidth-testing.md)
 ### [无法删除虚拟网络](virtual-network-troubleshoot-cannot-delete-vnet.md)

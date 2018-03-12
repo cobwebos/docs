@@ -13,11 +13,11 @@
 
 # 资源
 ## [用户语音反馈](https://feedback.azure.com/forums/906100-azure-database-migration-service)
-## [Azure 路线图](https://azure.microsoft.com/en-us/roadmap/)
+## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [数据库迁移指南](https://aka.ms/datamigration)
 ## [Data Migration Assistant](https://aka.ms/dma)
 ## [定价](https://aka.ms/dms-pricing)
 ## [先决条件概述](pre-reqs.md)
 ## [常见问题](faq.md)
-## [服务更新](https://azure.microsoft.com/en-us/updates/?product=database-migration)
+## [服务更新](https://azure.microsoft.com/updates/?product=database-migration)
 ## [Azure SQL DB 托管实例迁移的网络拓扑](resource-network-topologies.md)

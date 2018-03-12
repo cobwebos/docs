@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 03/07/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 805e39dfdee3a23d4ddc196085be59788cee912a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4d2a00f04e5b07aeb3585fb3ab6c8966e0de7e19
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>使用 Microsoft Azure 堆栈上的 SQL 数据库
 
@@ -175,14 +175,17 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 
 ## <a name="update-the-sql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>更新 SQL 资源提供程序适配器 （多节点仅，生成 1710年及更高版本）
-更新 Azure 堆栈生成时，可能会发布新的 SQL 资源提供程序适配器。 虽然现有适配器将继续工作，我们建议尽快更新到最新版本。 必须按顺序安装更新： 不能跳过版本 （请参阅上表）。
+更新 Azure 堆栈生成时，可能会发布新的 SQL 资源提供程序适配器。 虽然现有适配器继续工作，我们建议尽快更新到最新版本。 必须按顺序安装更新： 不能跳过版本 (请参阅表中的第 3 步[部署资源提供程序](#deploy-the-resource-provider))。
 
-更新过程是类似于前面所述的安装过程。 使用最新的资源提供程序代码中创建新的 VM。 此外，你将设置迁移到此新实例，包括数据库和托管服务器信息。 您也将迁移的必要的 DNS 记录。
+你使用的资源提供程序的更新*UpdateSQLProvider.ps1*脚本。 此过程是到用于安装资源提供程序，如中所述的过程类似[部署资源提供程序](#deploy-the-resource-provider)部分中的所述。 该脚本下载所随附的资源提供程序。
 
-UpdateSQLProvider.ps1 脚本使用前面所述的相同自变量。 你必须也提供此处所证书。
+*UpdateSQLProvider.ps1*脚本使用最新的资源提供程序代码创建新的 VM，并将设置从旧的虚拟机迁移到新的 VM。 迁移的设置包括数据库和托管服务器信息，并需要 DNS 记录。
+
+该脚本 DeploySqlProvider.ps1 脚本需要使用所述的相同自变量。 也提供此处的证书。 
 
 我们建议你从应用商店管理下载最新的 Windows Server 2016 Core 映像。 如果你需要安装更新，你可以将单个。MSU 本地依赖项路径中的包。 如果多个。MSU 文件找不到，则脚本将失败。
 
+以下是一种*UpdateSQLProvider.ps1*可以从 PowerShell 提示符下运行的脚本。 请务必更改的帐户信息和根据需要的密码： 
 
 > [!NOTE]
 > 在更新过程仅适用于集成的系统。

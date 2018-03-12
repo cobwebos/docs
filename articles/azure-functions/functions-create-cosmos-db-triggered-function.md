@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 12/07/2017
 ms.author: glenga
 ms.custom: 
-ms.openlocfilehash: ff0c468179ef7b71151b64426bf2e6701d5032fe
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 9ee3eddda53052c47f2cecff80f971f5eadac414
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>创建由 Azure Cosmos DB 触发的函数
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 01/11/2018
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | 数据库的名称 | Azure Cosmos DB 数据库的唯一 ID  |
     | **API** | SQL (DocumentDB) | 本主题使用文档数据库 API。  |
-    | **订阅** | Azure 订阅 | Azure 订阅  |
+    | **订阅** | Azure 订阅 | 要在其下创建此新 Cosmos DB 帐户的订阅。  |
     | **资源组** | myResourceGroup |  使用包含函数应用的现有资源组。 |
     | **位置**  | 西欧 | 选择一个靠近函数应用的位置，或者一个靠近的其他应用使用已存储文档的位置。  |
 

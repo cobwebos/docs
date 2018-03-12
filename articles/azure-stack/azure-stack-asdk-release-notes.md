@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Azure 堆栈开发工具包发行说明 |Microsoft 文档"
-description: "改进、 修复和 Azure 堆栈开发工具包的已知的问题。"
+description: "Azure Stack 开发工具包的改进、修复和已知问题。"
 services: azure-stack
 documentationcenter: 
 author: brenduns
@@ -15,25 +15,25 @@ ms.topic: article
 ms.date: 03/06/2018
 ms.author: brenduns
 ms.reviewer: chjoy
-ms.openlocfilehash: ccde5186d45700eb328ad7be27d330afc184918b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: deef5d5383fcfd8e13c8088cb7901b07621f53a7
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="azure-stack-development-kit-release-notes"></a>Azure 堆栈开发工具包发行说明
+# <a name="azure-stack-development-kit-release-notes"></a>Azure Stack 开发工具包发行说明
 
 *适用于：Azure Stack 开发工具包*
 
-这些发行说明提供有关改进、 修复和 Azure 堆栈开发工具包中的已知的问题的信息。 如果你不确定你正在运行哪个版本，则可以[使用门户检查](azure-stack-updates.md#determine-the-current-version)。
+这些发行说明提供 Azure Stack 开发工具包的改进、修复和已知问题的相关信息。 如果不确定所运行的版本，可以[使用门户检查版本](azure-stack-updates.md#determine-the-current-version)。
 
 ## <a name="build-201803021"></a>生成 20180302.1
 
-### <a name="new-features-and-fixes"></a>新功能和修补程序
+### <a name="new-features-and-fixes"></a>新功能和修复
 请参阅[新功能和修复](azure-stack-update-1802.md#new-features-and-fixes)Azure 堆栈的 Azure 堆栈 1802年更新发行说明的部分集成系统。
 
 > [!IMPORTANT]    
-> 中列出的项的某些**新功能和修复**部分中有仅与 Azure 堆栈集成系统。
+> **新功能和修复**部分所列的某些项仅与 Azure Stack 集成系统相关。
 
 
 ### <a name="known-issues"></a>已知问题
@@ -44,11 +44,11 @@ ms.lasthandoff: 03/08/2018
 
 - <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.  
 
-- 当您查看的资源或资源组的属性时**移动**按钮处于禁用状态。 此行为被预期行为。 当前不支持资源组或订阅之间移动资源或资源组。
+- 当您查看的资源或资源组的属性时**移动**按钮处于禁用状态。 这是预期的行为。 当前不支持资源组或订阅之间移动资源或资源组。
  
-- 你看到**所需的激活**建议您注册你的 Azure 堆栈开发工具包的警告性警报。 此行为被预期行为。
+- 你看到**所需的激活**建议您注册你的 Azure 堆栈开发工具包的警告性警报。 这是预期的行为。
 
-- 删除孤立资源导致的用户订阅。 解决方法是，首先删除用户资源或整个资源组中，，然后再删除用户订阅。
+- 删除用户订阅生成孤立的资源。 解决方法是先删除用户资源或整个资源组，然后再删除用户订阅。
 
 - 到你的订阅使用 Azure 堆栈门户，你无法查看权限。 解决方法是，使用 PowerShell 来验证权限。
 
@@ -64,14 +64,14 @@ ms.lasthandoff: 03/08/2018
 
 
 #### <a name="marketplace"></a>Marketplace
-- 用户可以浏览没有订阅，但完整的应用商店，并可以看到等计划，并提供管理项目。 这些项是向用户无法正常工作。
+- 用户无需订阅就能浏览整个 Marketplace，并且将会看到计划和产品等管理项。 对用户而言，这些项是非功能性的。
  
 #### <a name="compute"></a>计算
-- 缩放设置的虚拟机规模集不是在门户中提供的。 作为一种解决方法，你可以使用[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，你必须使用`-Name`参数而不是`-VMScaleSetName`。
+- 无法在门户中使用虚拟机规模集的缩放设置。 解决方法是使用 [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，必须使用 `-Name` 参数，而不是 `-VMScaleSetName`。
 
 - Azure 堆栈支持仅使用固定的类型的 Vhd。 通过 Azure 堆栈上应用商店提供一些映像使用动态 Vhd，但删除这些。 动态磁盘附加到它的大小调整虚拟机 (VM) 使处于失败状态的 VM。
 
-  若要缓解此问题，而不删除 VM 的磁盘，VHD blob 存储帐户中删除 VM。 然后将 VHD 从动态磁盘转换为固定磁盘，然后重新创建虚拟机。
+  若要解决此问题，请删除 VM，但不删除 VM 的磁盘（存储帐户中的 VHD Blob）。 然后将 VHD 从动态磁盘转换为固定磁盘，然后重新创建虚拟机。
 
 - 当 Azure 堆栈用户门户上创建虚拟机时，门户将显示可以将附加到的 DS 系列 VM 的数据磁盘数目不正确。 DS 系列 Vm 可以容纳尽可能多的数据磁盘作为 Azure 配置。
 
@@ -87,13 +87,13 @@ ms.lasthandoff: 03/08/2018
 
 
 #### <a name="networking"></a>网络
-- 下**网络**，如果你单击**连接**设置 VPN 连接， **VNet 到 VNet**列为可能的连接类型。 不选择此选项。 目前，仅**站点到站点 (IPsec)**支持选项。
+- 如果在“网络”下单击“连接”来设置 VPN 连接，会列出“VNet 到 VNet”作为可能的连接类型。 请不要选择此选项。 目前，仅支持“站点到站点(IPsec)”选项。
 
 - 创建 VM 并将其与公共 IP 地址相关联后，你无法解除该虚拟机与该 IP 地址的关联。 解除关联看似工作，但之前分配的公共 IP 地址仍保留与原始 VM 相关联。
 
   目前，你必须使用仅新公共 IP 地址为你创建的新 Vm。
 
-  如果即使重新分配到新的 VM 的 IP 地址，则会发生此行为 (通常称为*VIP 交换*)。 所有未来都尝试连接通过在连接中，于最初关联的 VM，而不适用于新一个此 IP 地址结果。
+  即使将 IP 地址重新分配给新的 VM（通常名为“VIP 交换”），也还会发生这种行为。 以后尝试通过此 IP 地址建立连接都会导致连接到原先关联的 VM，而不是新的 VM。
 
 - 内部负载平衡 (ILB) 不正确 MAC 地址为处理后端 Vm，这将导致产生 ILB 在后端网络上使用 Linux 实例时中断。  ILB Windows 实例，并用在上正常工作后端网络。
 
@@ -181,7 +181,7 @@ ms.lasthandoff: 03/08/2018
 - 以横向扩展基础结构 （工作进程、 管理、 前端角色），你必须使用 PowerShell 中所述的发行说明的计算。
  
 #### <a name="usage-and-billing"></a>使用情况和计费
-- 公共 IP 地址使用情况计数数据演示如何将相同*EventDateTime*而不是每个记录的值*TimeDate*显示时已创建了记录的 stamp。 目前，不能使用此数据来执行的公共 IP 地址使用情况的准确记帐。
+- 公共 IP 地址使用计量数据针对每条记录显示相同的 *EventDateTime* 值，而不是创建记录时显示的 *TimeDate* 时间戳。 目前，无法使用此数据来执行公共 IP 地址用量的准确计帐。
 
 <!--
 #### Identity
@@ -201,209 +201,144 @@ ms.lasthandoff: 03/08/2018
 
 
 
-## <a name="build-201801032"></a>生成 20180103.2
+## <a name="build-201801032"></a>内部版本 20180103.2
 
-### <a name="new-features-and-fixes"></a>新功能和修补程序
+### <a name="new-features-and-fixes"></a>新功能和修复
 
-- 请参阅[新功能和修复](azure-stack-update-1712.md#new-features-and-fixes)Azure 堆栈的 Azure 堆栈 1712年更新发行说明的部分集成系统。
+- 请参阅 Azure Stack 集成系统的 Azure Stack 1712 更新版发行说明的[新功能和修复](azure-stack-update-1712.md#new-features-and-fixes)部分。
 
     > [!IMPORTANT]
-    > 中列出的项的某些**新功能和修复**部分中有仅与 Azure 堆栈集成系统。
+    > **新功能和修复**部分所列的某些项仅与 Azure Stack 集成系统相关。
 
 ### <a name="known-issues"></a>已知问题
  
 #### <a name="deployment"></a>部署
-- 必须在部署期间通过 IP 地址中指定的时间服务器。
+- 在部署期间，必须使用 IP 地址指定时间服务器。
 
 #### <a name="infrastructure-management"></a>基础结构管理
-- 不要在上启用基础结构备份**基础结构备份**边栏选项卡。
-- 缩放单元节点的基本信息中不显示基板管理控制器 (BMC) IP 地址和模型。 Azure 堆栈开发工具包中需要此行为。
+- 请不要在“基础架构备份”边栏选项卡上启用基础结构备份。
+- 缩放单位节点的概要信息中不显示基础板管理控制器 (BMC) IP 地址和模型。 这是 Azure Stack 开发工具包中的预期行为。
 
 #### <a name="portal"></a>门户
-- 你可能会看到在门户中的空白仪表板。 若要恢复仪表板，门户中，右上角选择齿轮图标，然后选择**还原默认设置**。
-- 在查看资源组的属性时**移动**按钮处于禁用状态。 此行为被预期行为。 当前不支持订阅之间移动资源组。
--  对于任何工作流，其中在下拉列表中选择订阅、 资源组或位置，你可能会遇到一个或多个以下问题：
+- 可能会在门户中看到空白的仪表板。 若要恢复仪表板，请选择门户右上角的齿轮图标，然后选择“还原默认设置”。
+- 查看资源组的属性时，“移动”按钮已禁用。 这是预期的行为。 目前不支持在订阅之间移动资源组。
+-  对于可在下拉列表中选择订阅、资源组或位置的任何工作流，可能会遇到一个或多个以下问题：
 
-   - 你可能会看到在列表顶部的空行。 你仍应将能够按预期方式选择一个项。
-   - 如果下拉列表中项的列表很短，可能无法查看任何项名称。
-   - 如果你有多个用户订阅，资源组下拉列表可能为空。 
+   - 可能会在列表顶部看到一个空白行。 应该仍能按预期选择项。
+   - 如果下拉列表中的项列表很短，可能无法查看任何项名称。
+   - 如果有多个用户订阅，资源组的下拉列表可能是空的。 
 
-   若要解决的最后两个问题，你可键入名称的订阅或资源组 （如果你知道它），也可以改为使用 PowerShell。
+   若要解决后两个问题，可以输入订阅或资源组的名称（如果知道），或者可以改用 PowerShell。
 
-- 你将看到**所需的激活**建议您注册你的 Azure 堆栈开发工具包的警告性警报。 此行为被预期行为。
-- 如果**组件**从任何单击链接**基础结构角色**警报，生成**概述**边栏选项卡中尝试进行加载，并且无法正常工作。 此外 * * 概述 * * 边栏选项卡不会超时。
-- 删除孤立资源导致的用户订阅。 解决方法是，首先删除用户资源或整个资源组中，，然后再删除用户订阅。
-- 你不能通过使用 Azure 堆栈门户查看到你的订阅的权限。 一种解决方法，可以通过使用 PowerShell 来验证权限。
+- 看到“需要激活”警告警报，提示注册 Azure Stack 开发工具包。 这是预期的行为。
+- 如果在任何“基础结构角色”警报中单击“组件”链接，生成的“概述”边栏选项卡会尝试加载但失败。 此外，“概述”边栏选项卡不会超时。
+- 删除用户订阅生成孤立的资源。 解决方法是先删除用户资源或整个资源组，然后再删除用户订阅。
+- 无法使用 Azure Stack 门户查看订阅的权限。 解决方法是使用 PowerShell 验证权限。
  
 #### <a name="marketplace"></a>Marketplace
-- 要在此版本中由于兼容性问题删除一些应用商店项。 在进一步验证之后，这些将是重新启用。
-- 用户可以浏览没有订阅，但完整的应用商店，并可以看到等计划，并提供管理项目。 这些项是向用户无法正常工作。
+- 出于兼容性考虑，此版本中将会删除一些 Marketplace 项。 在进一步验证后，会重新启用这些项。
+- 用户无需订阅就能浏览整个 Marketplace，并且将会看到计划和产品等管理项。 对用户而言，这些项是非功能性的。
  
 #### <a name="compute"></a>计算
-- 为用户提供的选项以使用地域冗余存储创建虚拟机。 此配置导致虚拟机创建失败。 
-- 你可以配置虚拟机的可用性仅使用容错域之一，以及一个更新域设置。
-- 没有任何应用商店体验，以创建虚拟机规模集。 你可以创建缩放集使用的模板。
-- 缩放设置的虚拟机规模集不是在门户中提供的。 作为一种解决方法，你可以使用[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，你必须使用`-Name`参数而不是`-VMScaleSetName`。
+- 用户可以使用相应的选项创建包含异地冗余存储的虚拟机。 此配置会导致虚拟机创建失败。 
+- 可以配置只包含一个容错域和一个更新域的虚拟机可用性集。
+- 没有任何可用于创建虚拟机规模集的 Marketplace 体验。 可以使用模板来创建规模集。
+- 无法在门户中使用虚拟机规模集的缩放设置。 解决方法是使用 [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，必须使用 `-Name` 参数，而不是 `-VMScaleSetName`。
 
 #### <a name="networking"></a>网络
-- 使用门户，不能具有公共 IP 地址创建负载平衡器。 一种解决方法，你可以使用 PowerShell 创建负载平衡器。
-- 创建一个网络负载平衡时，必须创建网络地址转换 (NAT) 规则。 如果没有，你将收到错误，当你尝试创建负载平衡器后添加的 NAT 规则。
-- 下**网络**，如果你单击**连接**设置 VPN 连接， **VNet 到 VNet**列为可能的连接类型。 不选择此选项。 目前，仅**站点到站点 (IPsec)**支持选项。
-- 创建 VM 并将其与该 IP 地址相关联后，无法解除虚拟机 (VM) 中的公共 IP 地址的关联。 解除关联看起来工作，但之前分配的公共 IP 地址保留与原始 VM 相关联。 如果即使重新分配到新的 VM 的 IP 地址，则会发生此行为 (通常称为*VIP 交换*)。 所有未来都尝试连接通过在连接中，于最初关联的 VM，而不适用于新一个此 IP 地址结果。 目前，仅必须使用用于新 VM 创建的新公共 IP 地址。
-- Azure 堆栈运算符可能不能部署、 删除、 修改 Vnet 或网络安全组。 在同一个包的后续更新尝试主要出现此问题。 这被引起更新其中我们正在调查打包问题。
-- 内部负载平衡 (ILB) 不正确处理的中断 Linux 实例后端 Vm 的 MAC 地址。
+- 无法使用门户创建采用公共 IP 地址的负载均衡器。 解决方法是使用 PowerShell 创建负载均衡器。
+- 创建网络负载均衡器时，必须创建网络地址转换 (NAT) 规则。 否则，在创建负载均衡器之后尝试添加 NAT 规则时会收到错误。
+- 如果在“网络”下单击“连接”来设置 VPN 连接，会列出“VNet 到 VNet”作为可能的连接类型。 请不要选择此选项。 目前，仅支持“站点到站点(IPsec)”选项。
+- 创建 VM 并与公共 IP 地址创建关联之后，无法取消该 IP 地址与虚拟机 (VM) 的关联。 取消关联看似正常运行，但以前分配的公共 IP 地址仍与原始 VM 相关联。 即使将 IP 地址重新分配给新的 VM（通常名为“VIP 交换”），也还会发生这种行为。 以后尝试通过此 IP 地址建立连接都会导致连接到原先关联的 VM，而不是新的 VM。 目前只有在创建新的 VM 时，才能使用新的公共 IP 地址。
+- Azure Stack 操作员可能无法部署、删除、修改 VNET 或网络安全组。 此问题主要出现于同一个包的后续更新尝试。 此问题的原因是发生了目前正在调查的更新打包问题。
+- 内部负载均衡 (ILB) 对 MAC 地址的后端 VM 进行不恰当的处理，导致 Linux 实例损坏。
  
 #### <a name="sqlmysql"></a>SQL/MySQL 
-- 它可能需要一小时之前租户可以在新的 SQL 或 MySQL SKU 中创建数据库。 
-- 直接在 SQL 和 MySQL 宿主服务器不由资源提供程序执行上的项目创建不支持，并且可能会导致不匹配的状态。
+- 最长可能需要在一小时后，租户才能在新的 SQL 或 MySQL SKU 中创建数据库。 
+- 不支持在 SQL 和 MySQL 托管服务器中直接创建不是由资源提供程序执行的项，这可能导致不匹配的状态。
 
 #### <a name="app-service"></a>应用服务
-- 在订阅中创建其第一个 Azure 函数之前，用户必须注册存储资源提供程序。
+- 在订阅中创建第一个 Azure 函数之前，用户必须先注册存储资源提供程序。
  
 #### <a name="usage-and-billing"></a>使用情况和计费
-- 公共 IP 地址使用情况计数数据演示如何将相同*EventDateTime*而不是每个记录的值*TimeDate*显示时已创建了记录的 stamp。 目前，不能使用此数据来执行的公共 IP 地址使用情况的准确记帐。
+- 公共 IP 地址使用计量数据针对每条记录显示相同的 *EventDateTime* 值，而不是创建记录时显示的 *TimeDate* 时间戳。 目前，无法使用此数据来执行公共 IP 地址用量的准确计帐。
 
 #### <a name="identity"></a>标识
 
-在 Azure Active Directory 联合身份验证服务 (ADFS) 已部署环境， **azurestack\azurestackadmin**帐户不再是默认提供程序订阅的所有者。 而不是登录到**管理门户 / adminmanagement 终结点**与**azurestack\azurestackadmin**，你可以使用**azurestack\cloudadmin**帐户，因此你可以管理并使用默认提供程序订阅。
+在已部署 Azure Active Directory 联合身份身份验证服务 (ADFS) 的环境中，**azurestack\azurestackadmin** 帐户不再是默认提供程序订阅的所有者。 如果不使用 **azurestack\azurestackadmin** 登录到**管理门户/adminmanagement 终结点**，可以使用 **azurestack\cloudadmin** 帐户，以便可以管理和使用默认提供程序订阅。
 
 > [!IMPORTANT]
-> 即使**azurestack\cloudadmin**帐户是在 ADFS 部署环境中的默认提供程序订阅的所有者，它没有到 RDP 到主机的权限。 继续使用**azurestack\azurestackadmin**帐户或本地管理员帐户才能登录、 访问和管理主机，根据需要。
+> 即使 **azurestack\cloudadmin** 帐户是 ADFS 部署环境中默认提供程序订阅的所有者，它也没有通过 RDP 连接到主机的权限。 根据需要继续使用 **azurestack\azurestackadmin** 帐户或本地管理员帐户来登录、访问和管理主机。
 
-## <a name="build-201711221"></a>生成 20171122.1
+## <a name="build-201711221"></a>内部版本 20171122.1
 
-### <a name="new-features-and-fixes"></a>新功能和修补程序
+### <a name="new-features-and-fixes"></a>新功能和修复
 
-- 请参阅[新功能和修复](azure-stack-update-1711.md#new-features-and-fixes)Azure 堆栈的 Azure 堆栈 1711年更新发行说明的部分集成系统。
+- 请参阅 Azure Stack 集成系统的 Azure Stack 1711 更新版发行说明的[新功能和修复](azure-stack-update-1711.md#new-features-and-fixes)部分。
 
     > [!IMPORTANT]
-    > 中列出的项的某些**新功能和修复**部分中有仅与 Azure 堆栈集成系统。
+    > **新功能和修复**部分所列的某些项仅与 Azure Stack 集成系统相关。
 
 ### <a name="known-issues"></a>已知问题
  
 #### <a name="deployment"></a>部署
-- 必须在部署期间通过 IP 地址中指定的时间服务器。
+- 在部署期间，必须使用 IP 地址指定时间服务器。
 
 #### <a name="infrastructure-management"></a>基础结构管理
-- 不要在上启用基础结构备份**基础结构备份**边栏选项卡。
-- 缩放单元节点的基本信息中不显示基板管理控制器 (BMC) IP 地址和模型。 Azure 堆栈开发工具包中需要此行为。
+- 请不要在“基础架构备份”边栏选项卡上启用基础结构备份。
+- 缩放单位节点的概要信息中不显示基础板管理控制器 (BMC) IP 地址和模型。 这是 Azure Stack 开发工具包中的预期行为。
 
 #### <a name="portal"></a>门户
-- 你可能会看到在门户中的空白仪表板。 若要恢复仪表板，门户中，右上角选择齿轮图标，然后选择**还原默认设置**。
-- 在查看资源组的属性时**移动**按钮处于禁用状态。 此行为被预期行为。 当前不支持订阅之间移动资源组。
--  对于任何工作流，其中在下拉列表中选择订阅、 资源组或位置，你可能会遇到一个或多个以下问题：
+- 可能会在门户中看到空白的仪表板。 若要恢复仪表板，请选择门户右上角的齿轮图标，然后选择“还原默认设置”。
+- 查看资源组的属性时，“移动”按钮已禁用。 这是预期的行为。 目前不支持在订阅之间移动资源组。
+-  对于可在下拉列表中选择订阅、资源组或位置的任何工作流，可能会遇到一个或多个以下问题：
 
-   - 你可能会看到在列表顶部的空行。 你仍应将能够按预期方式选择一个项。
-   - 如果下拉列表中项的列表很短，可能无法查看任何项名称。
-   - 如果你有多个用户订阅，资源组下拉列表可能为空。 
+   - 可能会在列表顶部看到一个空白行。 应该仍能按预期选择项。
+   - 如果下拉列表中的项列表很短，可能无法查看任何项名称。
+   - 如果有多个用户订阅，资源组的下拉列表可能是空的。 
 
-   若要解决的最后两个问题，你可键入名称的订阅或资源组 （如果你知道它），也可以改为使用 PowerShell。
+   若要解决后两个问题，可以输入订阅或资源组的名称（如果知道），或者可以改用 PowerShell。
 
-- 你将看到**所需的激活**建议您注册你的 Azure 堆栈开发工具包的警告性警报。 此行为被预期行为。
-- 如果**组件**从任何单击链接**基础结构角色**警报，生成**概述**边栏选项卡中尝试进行加载，并且无法正常工作。 此外**概述**边栏选项卡不会超时。
-- 删除孤立资源导致的用户订阅。 解决方法是，首先删除用户资源或整个资源组中，，然后再删除用户订阅。
-- 你不能通过使用 Azure 堆栈门户查看到你的订阅的权限。 一种解决方法，可以通过使用 PowerShell 来验证权限。
+- 看到“需要激活”警告警报，提示注册 Azure Stack 开发工具包。 这是预期的行为。
+- 如果在任何“基础结构角色”警报中单击“组件”链接，生成的“概述”边栏选项卡会尝试加载但失败。 此外，“概述”边栏选项卡不会超时。
+- 删除用户订阅生成孤立的资源。 解决方法是先删除用户资源或整个资源组，然后再删除用户订阅。
+- 无法使用 Azure Stack 门户查看订阅的权限。 解决方法是使用 PowerShell 验证权限。
  
 #### <a name="marketplace"></a>Marketplace
-- 当你尝试通过将项添加到 Azure 堆栈市场**从 Azure 中的添加**选项，并非所有的项可能下载可见。
-- 用户可以浏览没有订阅，但完整的应用商店，并可以看到等计划，并提供管理项目。 这些项是向用户无法正常工作。
+- 尝试使用“从 Azure 添加”选项将项添加到 Azure Stack Marketplace 时，可能无法看到所有可供下载的项。
+- 用户无需订阅就能浏览整个 Marketplace，并且将会看到计划和产品等管理项。 对用户而言，这些项是非功能性的。
  
 #### <a name="compute"></a>计算
-- 为用户提供的选项以使用地域冗余存储创建虚拟机。 此配置导致虚拟机创建失败。 
-- 你可以配置虚拟机的可用性仅使用容错域之一，以及一个更新域设置。
-- 没有任何应用商店体验，以创建虚拟机规模集。 你可以创建缩放集使用的模板。
-- 缩放设置的虚拟机规模集不是在门户中提供的。 作为一种解决方法，你可以使用[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，你必须使用`-Name`参数而不是`-VMScaleSetName`。
+- 用户可以使用相应的选项创建包含异地冗余存储的虚拟机。 此配置会导致虚拟机创建失败。 
+- 可以配置只包含一个容错域和一个更新域的虚拟机可用性集。
+- 没有任何可用于创建虚拟机规模集的 Marketplace 体验。 可以使用模板来创建规模集。
+- 无法在门户中使用虚拟机规模集的缩放设置。 解决方法是使用 [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，必须使用 `-Name` 参数，而不是 `-VMScaleSetName`。
 
 #### <a name="networking"></a>网络
-- 使用门户，不能具有公共 IP 地址创建负载平衡器。 一种解决方法，你可以使用 PowerShell 创建负载平衡器。
-- 创建一个网络负载平衡时，必须创建网络地址转换 (NAT) 规则。 如果没有，你将收到错误，当你尝试创建负载平衡器后添加的 NAT 规则。
-- 下**网络**，如果你单击**连接**设置 VPN 连接， **VNet 到 VNet**列为可能的连接类型。 不选择此选项。 目前，仅**站点到站点 (IPsec)**支持选项。
-- 创建 VM 并将其与该 IP 地址相关联后，无法解除虚拟机 (VM) 中的公共 IP 地址的关联。 解除关联看起来工作，但之前分配的公共 IP 地址保留与原始 VM 相关联。 如果即使重新分配到新的 VM 的 IP 地址，则会发生此行为 (通常称为*VIP 交换*)。 所有未来都尝试连接通过在连接中，于最初关联的 VM，而不适用于新一个此 IP 地址结果。 目前，仅必须使用用于新 VM 创建的新公共 IP 地址。
-- Azure 堆栈运算符可能不能部署、 删除、 修改 Vnet 或网络安全组。 在同一个包的后续更新尝试主要出现此问题。 这被引起更新其中我们正在调查打包问题。
-- 内部负载平衡 (ILB) 不正确处理的中断 Linux 实例后端 Vm 的 MAC 地址。
+- 无法使用门户创建采用公共 IP 地址的负载均衡器。 解决方法是使用 PowerShell 创建负载均衡器。
+- 创建网络负载均衡器时，必须创建网络地址转换 (NAT) 规则。 否则，在创建负载均衡器之后尝试添加 NAT 规则时会收到错误。
+- 如果在“网络”下单击“连接”来设置 VPN 连接，会列出“VNet 到 VNet”作为可能的连接类型。 请不要选择此选项。 目前，仅支持“站点到站点(IPsec)”选项。
+- 创建 VM 并与公共 IP 地址创建关联之后，无法取消该 IP 地址与虚拟机 (VM) 的关联。 取消关联看似正常运行，但以前分配的公共 IP 地址仍与原始 VM 相关联。 即使将 IP 地址重新分配给新的 VM（通常名为“VIP 交换”），也还会发生这种行为。 以后尝试通过此 IP 地址建立连接都会导致连接到原先关联的 VM，而不是新的 VM。 目前只有在创建新的 VM 时，才能使用新的公共 IP 地址。
+- Azure Stack 操作员可能无法部署、删除、修改 VNET 或网络安全组。 此问题主要出现于同一个包的后续更新尝试。 此问题的原因是发生了目前正在调查的更新打包问题。
+- 内部负载均衡 (ILB) 对 MAC 地址的后端 VM 进行不恰当的处理，导致 Linux 实例损坏。
  
 #### <a name="sqlmysql"></a>SQL/MySQL 
-- 它可能需要一小时之前租户可以在新的 SQL 或 MySQL SKU 中创建数据库。 
-- 直接在 SQL 和 MySQL 宿主服务器不由资源提供程序执行上的项目创建不支持，并且可能会导致不匹配的状态。
+- 最长可能需要在一小时后，租户才能在新的 SQL 或 MySQL SKU 中创建数据库。 
+- 不支持在 SQL 和 MySQL 托管服务器中直接创建不是由资源提供程序执行的项，这可能导致不匹配的状态。
 
     > [!NOTE]
-    > 请参阅个人[SQL](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)和[MySQL](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)设置有关版本兼容性指南的文章。
+    > 分别参阅 [SQL](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy) 和 [MySQL](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy) 安装文章，获取版本兼容性指南。
 
 #### <a name="app-service"></a>应用服务
-- 在订阅中创建其第一个 Azure 函数之前，用户必须注册存储资源提供程序。
+- 在订阅中创建第一个 Azure 函数之前，用户必须先注册存储资源提供程序。
  
 #### <a name="usage-and-billing"></a>使用情况和计费
-- 公共 IP 地址使用情况计数数据演示如何将相同*EventDateTime*而不是每个记录的值*TimeDate*显示时已创建了记录的 stamp。 目前，不能使用此数据来执行的公共 IP 地址使用情况的准确记帐。
+- 公共 IP 地址使用计量数据针对每条记录显示相同的 *EventDateTime* 值，而不是创建记录时显示的 *TimeDate* 时间戳。 目前，无法使用此数据来执行公共 IP 地址用量的准确计帐。
 
 #### <a name="identity"></a>标识
 
-在 Azure Active Directory 联合身份验证服务 (ADFS) 已部署环境， **azurestack\azurestackadmin**帐户不再是默认提供程序订阅的所有者。 而不是登录到**管理门户 / adminmanagement 终结点**与**azurestack\azurestackadmin**，你可以使用**azurestack\cloudadmin**帐户，因此你可以管理并使用默认提供程序订阅。
+在已部署 Azure Active Directory 联合身份身份验证服务 (ADFS) 的环境中，**azurestack\azurestackadmin** 帐户不再是默认提供程序订阅的所有者。 如果不使用 **azurestack\azurestackadmin** 登录到**管理门户/adminmanagement 终结点**，可以使用 **azurestack\cloudadmin** 帐户，以便可以管理和使用默认提供程序订阅。
 
 > [!IMPORTANT]
-> 即使**azurestack\cloudadmin**帐户是在 ADFS 部署环境中的默认提供程序订阅的所有者，它没有到 RDP 到主机的权限。 继续使用**azurestack\azurestackadmin**帐户或本地管理员帐户才能登录、 访问和管理主机，根据需要。
+> 即使 **azurestack\cloudadmin** 帐户是 ADFS 部署环境中默认提供程序订阅的所有者，它也没有通过 RDP 连接到主机的权限。 根据需要继续使用 **azurestack\azurestackadmin** 帐户或本地管理员帐户来登录、访问和管理主机。
 
-
-## <a name="build-201710201"></a>生成 20171020.1
-
-### <a name="improvements-and-fixes"></a>改进和修复
-
-若要查看的改进和 20171020.1 生成中的修复的列表，请参阅[改进和修复](azure-stack-update-1710.md#improvements-and-fixes)Azure 堆栈的 1710年发行说明的部分集成系统。 某些"其他质量的改进和修补程序"一节中列出的项是仅与集成的系统。
-
-此外，已进行了下列修补程序：
-- 修复了问题的计算资源提供程序在其中显示未知的状态。
-- 修复了问题其中配额可能不会显示在管理员门户后您创建它们，然后尝试查看计划的详细信息。
-
-### <a name="known-issues"></a>已知问题
-
-#### <a name="powershell"></a>PowerShell
-- AzureRM 1.2.11 PowerShell 模块的版本附带的重大更改的列表。 有关从 1.2.10 升级版本，请参阅[迁移指南](https://aka.ms/azspowershellmigration)。
- 
-#### <a name="deployment"></a>部署
-- 必须在部署期间通过 IP 地址中指定的时间服务器。
-
-#### <a name="infrastructure-management"></a>基础结构管理
-- 不要在上启用基础结构备份**基础结构备份**边栏选项卡。
-- 缩放单元节点的基本信息中不显示基板管理控制器 (BMC) IP 地址和模型。 Azure 堆栈开发工具包中需要此行为。
-
-#### <a name="portal"></a>门户
-- 你可能会看到在门户中的空白仪表板。 若要恢复仪表板，门户中，右上角选择齿轮图标，然后选择**还原默认设置**。
-- 在查看资源组的属性时**移动**按钮处于禁用状态。 此行为被预期行为。 当前不支持订阅之间移动资源组。
--  对于任何工作流，其中在下拉列表中选择订阅、 资源组或位置，你可能会遇到一个或多个以下问题：
-
-   - 你可能会看到在列表顶部的空行。 你仍应将能够按预期方式选择一个项。
-   - 如果下拉列表中项的列表很短，可能无法查看任何项名称。
-   - 如果你有多个用户订阅，资源组下拉列表可能为空。 
-
-   若要解决的最后两个问题，你可键入名称的订阅或资源组 （如果你知道它），也可以改为使用 PowerShell。
-
-- 你将看到**所需的激活**建议您注册你的 Azure 堆栈开发工具包的警告性警报。 此行为被预期行为。
-- 在**所需的激活**警告警报详细信息，请不要单击的链接**AzureBridge**组件。 如果这样做，**概述**边栏选项卡将不成功尝试加载，且不会超时。
-- 在管理员门户中，你可能会看到**错误提取租户**中的错误**通知**区域。 你可以放心地忽略此错误。
-- 删除孤立资源导致的用户订阅。 解决方法是，首先删除用户资源或整个资源组中，，然后再删除用户订阅。
-- 你不能通过使用 Azure 堆栈门户查看到你的订阅的权限。 一种解决方法，可以通过使用 PowerShell 来验证权限。
- 
-#### <a name="marketplace"></a>Marketplace
-- 当你尝试通过将项添加到 Azure 堆栈市场**从 Azure 中的添加**选项，并非所有的项可能下载可见。
-- 用户可以浏览没有订阅，但完整的应用商店，并可以看到等计划，并提供管理项目。 这些项是向用户无法正常工作。
- 
-#### <a name="compute"></a>计算
-- 为用户提供的选项以使用地域冗余存储创建虚拟机。 此配置导致虚拟机创建失败。 
-- 你可以配置虚拟机的可用性仅使用容错域之一，以及一个更新域设置。
-- 没有任何应用商店体验，以创建虚拟机规模集。 你可以创建缩放集使用的模板。
-- 缩放设置的虚拟机规模集不是在门户中提供的。 作为一种解决方法，你可以使用[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，你必须使用`-Name`参数而不是`-VMScaleSetName`。
-
-#### <a name="networking"></a>网络
-- 使用门户，不能具有公共 IP 地址创建负载平衡器。 一种解决方法，你可以使用 PowerShell 创建负载平衡器。
-- 创建一个网络负载平衡时，必须创建网络地址转换 (NAT) 规则。 如果没有，你将收到错误，当你尝试创建负载平衡器后添加的 NAT 规则。
-- 下**网络**，如果你单击**连接**设置 VPN 连接， **VNet 到 VNet**列为可能的连接类型。 不选择此选项。 目前，仅**站点到站点 (IPsec)**支持选项。
-- 创建 VM 并将其与该 IP 地址相关联后，无法解除虚拟机 (VM) 中的公共 IP 地址的关联。 解除关联看起来工作，但之前分配的公共 IP 地址保留与原始 VM 相关联。 如果即使重新分配到新的 VM 的 IP 地址，则会发生此行为 (通常称为*VIP 交换*)。 所有未来都尝试连接通过在连接中，于最初关联的 VM，而不适用于新一个此 IP 地址结果。 目前，仅必须使用用于新 VM 创建的新公共 IP 地址。
- 
-#### <a name="sqlmysql"></a>SQL/MySQL 
-- 它可能需要一小时之前租户可以在新的 SQL 或 MySQL SKU 中创建数据库。 
-- 直接在 SQL 和 MySQL 宿主服务器不由资源提供程序执行上的项目创建不支持，并且可能会导致不匹配的状态。
-
-#### <a name="app-service"></a>应用服务
-- 在订阅中创建其第一个 Azure 函数之前，用户必须注册存储资源提供程序。
- 
-#### <a name="usage-and-billing"></a>使用情况和计费
-- 公共 IP 地址使用情况计数数据演示如何将相同*EventDateTime*而不是每个记录的值*TimeDate*显示时已创建了记录的 stamp。 目前，不能使用此数据来执行的公共 IP 地址使用情况的准确记帐。

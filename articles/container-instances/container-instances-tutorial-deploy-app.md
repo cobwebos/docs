@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 99bd03bf4c3ca2d7b1ced51ebfe8be669f271c1c
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0532d255b271b2155ae3115f8f96c4cbb53916e4
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="deploy-a-container-to-azure-container-instances"></a>将容器部署到 Azure 容器实例
 
@@ -50,7 +50,7 @@ az acr show --name <acrName> --query loginServer
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-若要从容器注册表部署容器映像且资源请求为 1 个 CPU 核心和 1 GB 内存，请运行以下命令。 将 `<acrLoginServer>` 和 `<acrPassword>` 替换为之前两个命令获得的值。 将 `<acrName>` 替换为容器注册表的名称。
+需[提前准备][prepare-app]应用程序；若要从容器注册表部署容器映像且资源请求为 1 个 CPU 核心和 1 GB 内存，请运行下面的 [az container create][az-container-create] 命令。 将 `<acrLoginServer>` 和 `<acrPassword>` 替换为之前两个命令获得的值。 将 `<acrName>` 替换为容器注册表的名称；也可将 `aci-tutorial-app` 替换为要提供给新应用程序的名称。
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
@@ -123,6 +123,7 @@ az group delete --name myResourceGroup
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- LINKS - internal -->
+[az-container-create]: /cli/azure/container#az_container_create
 [az-container-show]: /cli/azure/container#az_container_show
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli

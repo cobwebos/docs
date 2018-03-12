@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2018
+ms.date: 03/01/2018
 ms.author: jgao
-ms.openlocfilehash: a96612e09e51db8941a7828f8fe9cb7bbced837d
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 11c0a583ab671b27a5c5a65c4bb36032a8582466
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight"></a>Hadoop 教程：开始使用 HDInsight 中的 Hadoop
 
-了解如何在 HDInsight 中创建 [Hadoop](http://hadoop.apache.org/) 群集，以及如何在 HDInsight 中运行 Hive 作业。 [Apache Hive](https://hive.apache.org/) 是 Hadoop 生态系统中最热门的组件。 目前，HDInsight 附带[七个不同的群集类型](apache-hadoop-introduction.md#overview)。 每个群集类型都支持一组不同的组件。 所有群集类型都支持 Hive。 有关 HDInsight 中受支持组件的列表，请参阅 [HDInsight 提供的 Hadoop 群集版本中有哪些新功能？](../hdinsight-component-versioning.md)  
+了解如何在 HDInsight 中创建 [Hadoop](http://hadoop.apache.org/) 群集，以及如何在 HDInsight 中运行 Hive 作业。 [Apache Hive](https://hive.apache.org/) 是 Hadoop 生态系统中最热门的组件。 目前，HDInsight 附带[七个不同的群集类型](./apache-hadoop-introduction.md#cluster-types-in-hdinsight)。 每个群集类型都支持一组不同的组件。 所有群集类型都支持 Hive。 有关 HDInsight 中受支持组件的列表，请参阅 [HDInsight 提供的 Hadoop 群集版本中有哪些新功能？](../hdinsight-component-versioning.md)  
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -45,16 +45,16 @@ ms.lasthandoff: 02/14/2018
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-ssh-password%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. 输入或选择下列值：
-   
-    ![门户中的 HDInsight Linux 入门 Resource Manager 模板](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "使用 Azure 门户和资源组管理器模板在 HDInsigut 中部署 Hadoop 群集")。
-   
+
     * **订阅**：选择 Azure 订阅。
     * **资源组**：创建资源组或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 
     * **位置**：选择要在其中创建群集的 Azure 位置。  选择的位置与你越靠近，性能就越好。 
     * **群集类型**：对于本教程，选择“Hadoop”。
     * **群集名称**：输入 Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 请注意，名称的第一个和最后一个字符不能为连字符。
-    * **群集登录名和密码**：默认登录名是 **admin**。
-    * **SSH 用户名和密码**：默认用户名是 **sshuser**。  可以重命名它。 
+    * **群集登录名和密码**：默认登录名是 **admin**。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 
+    * **SSH 用户名和密码**：默认用户名是 **sshuser**。  可以重命名 SSH 用户名。  SSH 用户密码的要求与群集登录密码的要求相同。   
+   
+    ![门户中的 HDInsight Linux 入门 Resource Manager 模板](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "使用 Azure 门户和资源组管理器模板在 HDInsigut 中部署 Hadoop 群集")。
      
     某些属性已在模板中硬编码。  可以通过模板配置这些值。
     
@@ -124,9 +124,11 @@ ms.lasthandoff: 02/14/2018
 
 **删除群集和/或默认存储帐户**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在门户仪表板中，单击显示了创建群集时所用资源组名称的磁贴。
-3. 单击“删除资源组”，删除包含群集和默认存储帐户的资源组；或者单击“资源”磁贴中的群集名称，然后单击“删除”。 注意，删除资源组会删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
+1. 返回到包含 Azure 门户的浏览器选项卡。 你应该在群集概览页上。 如果希望删除群集但保留默认的存储帐户，则可单击“删除”：
+
+    ![删除 HDInsight 群集](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-delete-cluster.png "删除 HDInsight 群集")
+1. 在右侧单击资源组名称（已在上一屏幕快照中突出显示），打开资源组页。
+2. 单击“删除资源组”，删除包含群集和默认存储帐户的资源组；或者单击“资源”磁贴中的群集名称，然后单击“删除”。 注意，删除资源组会删除存储帐户。 如果想要保留存储帐户，请选择仅删除群集。
 
 ## <a name="troubleshoot"></a>故障排除
 

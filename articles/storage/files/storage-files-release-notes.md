@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 9b6dfec6465482efcbf55d0441e44a0278f44a22
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5f57edb33770acd7a97287d5cfd650b7fe8366f4
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-file-sync-agent-release-notes"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
@@ -30,11 +30,25 @@ Azure 文件同步支持以下版本：
 
 | 代理版本号 | 发行日期 | 支持截止至 |
 |----------------------|--------------|------------------|
+| 2.1.0.0 | 2018-02-28 | 当前版本 |
 | 2.0.11.0 | 2018-02-08 | 当前版本 |
 | 1.1.0.0 | 2017-09-26 | 2018-07-30 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-2100"></a>代理版本 2.1.0.0
+以下发行说明适用于 2018 年 2 月 28 日发布的代理版本 2.1.0。 这些是附加到下面针对版本 2.0.11.0 的发行说明的
+
+对此每月更新进行的特定更改包括：
+- 对群集故障转移处理的改进。
+- 对分层文件处理的改进，处理更可靠。
+- 允许在添加到 2008R2 域环境的域控制器计算机上进行代理安装。
+- 修复了在包含许多文件的服务器上生成诊断过多的问题。
+- 改进了会话故障时的错误处理。
+- 改进了出现文件传输问题时的错误处理。
+- 将运行云分层（如果已在服务器终结点上启用）的默认时间间隔更改为一小时。 
+- 临时阻止将 Azure 文件同步（存储同步服务）资源移到新的 Azure 订阅
 
 ## <a name="agent-version-20110"></a>代理版本 2.0.11.0
 以下发行说明适用于 2018 年 2 月 9 日发布的代理版本 2.0.11.0。 

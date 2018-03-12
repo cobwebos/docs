@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 01/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 5c5402c89091b84cd3b49815d892c9fa0d59e22a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 52ec8afa693e6ac3c8c73f070f748a01116ec68f
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="design-your-first-azure-sql-database"></a>设计你的第一个 Azure SQL 数据库
 
@@ -139,7 +139,7 @@ SQL 数据库服务在服务器级别创建一个防火墙。除非创建了防�
 请在 Azure 门户中获取 Azure SQL 数据库服务器的完全限定服务器名称。 请使用 SQL Server Management Studio 通过完全限定的服务器名称连接到服务器。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 从左侧菜单中选择“SQL 数据库”，并单击“SQL 数据库”页上的数据库。 
+2. 从左侧菜单中选择“SQL 数据库”，然后单击“SQL 数据库”页上的数据库。 
 3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。
 
    ![连接信息](./media/sql-database-get-started-portal/server-name.png)

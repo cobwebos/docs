@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 14e5e7613fd5df650625cf8997d569b754ceb689
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 2f1ae92c05e02dffa22fb2c64c6c076a0adfc176
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 Java 设备和服务 SDK 与组登记来创建和预配模拟的 X.509 设备
 
@@ -39,9 +39,7 @@ ms.lasthandoff: 01/20/2018
     > 此步骤需要 [OpenSSL](https://www.openssl.org/)，可以通过源代码生成并安装此工具，也可以通过[第三方软件](https://wiki.openssl.org/index.php/Binaries)（例如[此软件](https://sourceforge.net/projects/openssl/)）下载并安装此工具。 如果已创建根证书、中间证书和设备证书，则可以跳过此步骤。
     >
 
-1. 创建登记组信息：
-
-    1. 运行**步骤 1** 到**步骤 2** 以创建根证书和中间证书。
+    1. 运行头两个步骤即可创建根证书和中间证书。
 
     1. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开预配服务。
 
@@ -56,16 +54,16 @@ ms.lasthandoff: 01/20/2018
 
         1. 选择新建的证书：
             - 单击“生成验证码”。 复制生成的代码。
-            - 运行整个**步骤 3**。 输入验证码，或者在运行的 PowerShell 窗口中右键单击进行粘贴。  按 **Enter**。
+            - 运行验证步骤。 输入验证码，或者在运行的 PowerShell 窗口中右键单击进行粘贴。  按 **Enter**。
             - 在 Azure 门户中选择新建的 **_verifyCert4.pem_** 文件。 单击“验证”。
 
             ![验证证书](./media/tutorial-group-enrollments/validate-certificate.png)
 
-1. 最后，运行**步骤 4** 和**步骤 5** 以创建设备证书并清理资源。
+    1. 最后，请运行创建设备证书并清理资源的步骤。
 
-> [!NOTE]
-> 创建设备证书时，请确保只在设备名称中使用小写字母数字和连字符。
->
+    > [!NOTE]
+    > 创建设备证书时，请确保只在设备名称中使用小写字母数字和连字符。
+    >
 
 
 ## <a name="create-a-device-enrollment-entry"></a>创建设备注册项

@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: ac57996e7dced5ef0f0a993889bfc13b1d064167
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9501f3c8fa1abb6bcbfee086c542139596ab5504
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>使用 Azure Location Based Services 查找不同行驶模式的路线
 
@@ -209,9 +209,10 @@ ms.lasthandoff: 02/21/2018
     ```
     此代码片段将创建一个 [XMLHttpRequest](https://xhr.spec.whatwg.org/)，并添加事件处理程序以分析传入的响应。 对于成功的响应，它创建返回路线的坐标数组并将其添加地图的 `truckRouteLayerName` 层。 
     
-    此代码片段还会将查询发送到路线服务，为帐户密钥获取指定起点和终点的路线。 以下可选参数用于指示重型卡车的路线：- 参数 `travelMode=truck` 将行驶模式指定为“卡车”。 支持的其他行驶模式有“出租车”、“公交车”、“货车”、“摩托车”和默认的“汽车”。
-        - 参数 `vehicleWidth`、`vehicleHeight` 和 `vehicleLength` 以米为单位指定车辆的尺寸，仅在行驶模式为“卡车”时考虑这些参数。
-        - `vehicleLoadType` 将货物分类为危险物品，并在部分道路上是受限的。 目前也只有“卡车”模式考虑此参数。
+    此代码片段还会将查询发送到路线服务，为帐户密钥获取指定起点和终点的路线。 以下可选参数用于指示重型卡车的路线：
+   - 参数 `travelMode=truck` 将行驶模式指定为“卡车”。 支持的其他行驶模式有“出租车”、“公交车”、“货车”、“摩托车”和默认的“汽车”。
+   - 参数 `vehicleWidth`、`vehicleHeight` 和 `vehicleLength` 以米为单位指定车辆的尺寸，仅在行驶模式为“卡车”时考虑这些参数。
+   - `vehicleLoadType` 将货物分类为危险物品，在部分道路上是受限的。 目前也只有“卡车”模式考虑此参数。
 
 2. 添加以下 JavaScript 代码，以使用路线服务获取一辆汽车的路线：
 

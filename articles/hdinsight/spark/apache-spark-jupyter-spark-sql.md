@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/18/2018
+ms.date: 03/01/2018
 ms.author: jgao
-ms.openlocfilehash: 1dbad36b7420791e70066263a566f1820823ad27
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: baad137a6f982df987faf95d7c7c595698e8e399
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>在 Azure HDInsight 中创建 Apache Spark 群集
 
@@ -47,8 +47,8 @@ ms.lasthandoff: 01/19/2018
     * **资源组**：创建资源组，或选择现有的资源组。 资源组用于管理项目的 Azure 资源。
     * **位置**：选择资源组的位置。 模板将此位置用于创建群集，以及用于默认群集存储。
     * ClusterName：为要创建的 HDInsight 群集输入名称。
-    * **群集登录名和密码**：默认登录名是 admin。
-    * **SSH 用户名和密码**。
+    * **群集登录名和密码**：默认登录名是 admin。选择用于群集登录的密码。
+    * **SSH 用户名和密码**。 选择用于 SSH 用户的密码。
 
 3. 选择“我同意上述条款和条件”，选择“固定到仪表板”，并单击“购买”。 此时会出现标题为“正在部署模板”的新磁贴。 创建群集大约需要 20 分钟时间。
 
@@ -103,16 +103,17 @@ Spark SQL 同时支持将 SQL 和 HiveQL 作为查询语言。 其功能包括�
 
     ![HDInsight Spark 中的 Hive 查询](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "HDInsight Spark 中的 Hive 查询")
 
-2. 内核准备就绪后，请将以下代码粘贴到一个空单元格中，然后按 **SHIFT + ENTER** 来运行这些代码。 输出应列出默认情况下在群集上可用的 `hivesampletable`。
+2. 内核准备就绪后，请将以下代码粘贴到一个空单元格中，然后按 **SHIFT + ENTER** 来运行这些代码。 此命令列出群集上的 Hive 表：
 
     ```PySpark
     %%sql
     SHOW TABLES
     ```
+    将 Jupyter Notebook 与 HDInsight Spark 群集配合使用时，会获得一个预设的 `sqlContext`，可以使用它通过 Spark SQL 来运行 Hive 查询。 `%%sql` 指示 Jupyter Notebook 使用预设 `sqlContext` 运行 Hive 查询。 该查询从默认情况下所有 HDInsight 群集都带有的 Hive 表 (hivesampletable) 检索前 10 行。 需要大约 30 秒才能获得结果。 输出如下所示： 
 
     ![HDInsight Spark 中的 Hive 查询](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "HDInsight Spark 中的 Hive 查询")
 
-    将 Jupyter Notebook 与 HDInsight Spark 群集配合使用时，会获得一个预设的 `sqlContext`，可以使用它通过 Spark SQL 来运行 Hive 查询。 `%%sql` 指示 Jupyter Notebook 使用预设 `sqlContext` 运行 Hive 查询。 该查询从默认情况下所有 HDInsight 群集都带有的 Hive 表 (hivesampletable) 检索前 10 行。 有关 `%%sql` magic 和预设上下文的详细信息，请参阅[适用于 HDInsight 群集的 Jupyter 内核](apache-spark-jupyter-notebook-kernels.md)。
+    有关 `%%sql` magic 和预设上下文的详细信息，请参阅[适用于 HDInsight 群集的 Jupyter 内核](apache-spark-jupyter-notebook-kernels.md)。
 
     每次在 Jupyter 中运行查询时，Web 浏览器窗口标题中都会显示“(繁忙)”状态和 Notebook 标题。 右上角“PySpark”文本的旁边还会出现一个实心圆。
     

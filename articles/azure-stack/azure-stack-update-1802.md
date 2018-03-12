@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 03/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: b5e52e30b99e1d59c2f8bde17b31b0f1cb3d6d70
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 247f13717971d3660b3ec0ee94821bd593c5fed0
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure 堆栈 1802年更新
 
@@ -37,10 +37,6 @@ Azure 堆栈 1802年更新生成号是**20180302.1**。
 ## <a name="before-you-begin"></a>开始之前    
 > [!IMPORTANT]    
 > 不要尝试在此更新的安装过程中创建虚拟机。 有关管理更新的详细信息，请参阅[管理 Azure 堆栈概述中的更新](/azure-stack-updates#plan-for-updates)。
-
-> [!IMPORTANT]    
-> 当你使用[SQL](/azure-stack-sql-resource-provider-deploy)或[MySQL](/azure-stack-mysql-resource-provider-deploy)资源提供程序，它们必须运行版本 1712 之前启动 Azure 堆栈版本 1802年的安装。 如果提供程序是 1711年或更早版本以及已安装 Azure 堆栈版本 1802年，你将不再更新为更高版本的这些资源提供程序。
-
 
 
 ### <a name="prerequisites"></a>必备组件
@@ -63,7 +59,7 @@ Azure 堆栈 1802年更新生成号是**20180302.1**。
 *有更新 1802年无更新后的步骤。*
 
 
-### <a name="new-features-and-fixes"></a>新功能和修补程序
+### <a name="new-features-and-fixes"></a>新功能和修复
 此更新包括以下改进和修复 Azure 堆栈。
 
 - **针对以下的 Azure 存储服务 API 版本添加了支持**:
@@ -113,11 +109,11 @@ Azure 堆栈 1802年更新生成号是**20180302.1**。
 
 - 它可能无法在管理员门户中查看计算或存储资源。 此问题的原因会导致更新会错误地报告为成功的更新安装过程时出错。 如果出现此问题，请与 Microsoft 客户支持服务以获取帮助。
 
-- 你可能会看到在门户中的空白仪表板。 若要恢复仪表板，门户中，右上角选择齿轮图标，然后选择**还原默认设置**。
+- 你可能会看到在门户中的空白仪表板。 若要恢复仪表板，请选择门户右上角的齿轮图标，然后选择“还原默认设置”。
 
-- 当您查看的资源或资源组的属性时**移动**按钮处于禁用状态。 此行为被预期行为。 当前不支持资源组或订阅之间移动资源或资源组。
+- 当您查看的资源或资源组的属性时**移动**按钮处于禁用状态。 这是预期的行为。 当前不支持资源组或订阅之间移动资源或资源组。
 
-- 删除孤立资源导致的用户订阅。 解决方法是，首先删除用户资源或整个资源组中，，然后再删除用户订阅。
+- 删除用户订阅生成孤立的资源。 解决方法是先删除用户资源或整个资源组，然后再删除用户订阅。
 
 - 到你的订阅使用 Azure 堆栈门户，你无法查看权限。 解决方法是，使用 PowerShell 来验证权限。
 
@@ -132,14 +128,14 @@ Azure 堆栈 1802年更新生成号是**20180302.1**。
 在更新到 1802年后没有已知的问题。
 
 #### <a name="marketplace"></a>Marketplace
-- 用户可以浏览而无需订阅完整应用商店，并可以看到等计划，并提供管理项目。 这些项是向用户无法正常工作。
+- 用户可以浏览而无需订阅完整应用商店，并可以看到等计划，并提供管理项目。 对用户而言，这些项是非功能性的。
 
 #### <a name="compute"></a>计算
-- 缩放设置的虚拟机规模集不是在门户中提供的。 作为一种解决方法，你可以使用[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，你必须使用`-Name`参数而不是`-VMScaleSetName`。
+- 无法在门户中使用虚拟机规模集的缩放设置。 解决方法是使用 [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，必须使用 `-Name` 参数，而不是 `-VMScaleSetName`。
 
 - Azure 堆栈支持仅使用固定的类型的 Vhd。 通过 Azure 堆栈上应用商店提供一些映像使用动态 Vhd，但删除这些。 动态磁盘附加到它的大小调整虚拟机 (VM) 使处于失败状态的 VM。
 
-  若要缓解此问题，而不删除 VM 的磁盘，VHD blob 存储帐户中删除 VM。 然后将 VHD 从动态磁盘转换为固定磁盘，然后重新创建虚拟机。
+  若要解决此问题，请删除 VM，但不删除 VM 的磁盘（存储帐户中的 VHD Blob）。 然后将 VHD 从动态磁盘转换为固定磁盘，然后重新创建虚拟机。
 
 - 当你创建可用性集在门户中通过转到**新建** > **计算** > **可用性集**，你只能创建可用性集的容错域和更新域 1。 一种解决方法，创建新的虚拟机时，创建可用性集使用 PowerShell、 CLI，或在该门户。
 
@@ -163,7 +159,7 @@ Azure 堆栈 1802年更新生成号是**20180302.1**。
 
   目前，你必须使用仅新公共 IP 地址为你创建的新 Vm。
 
-  如果即使重新分配到新的 VM 的 IP 地址，则会发生此行为 (通常称为*VIP 交换*)。 所有未来都尝试连接通过在连接中，于最初关联的 VM，而不适用于新一个此 IP 地址结果。
+  即使将 IP 地址重新分配给新的 VM（通常名为“VIP 交换”），也还会发生这种行为。 以后尝试通过此 IP 地址建立连接都会导致连接到原先关联的 VM，而不是新的 VM。
 
 - 内部负载平衡 (ILB) 不正确 MAC 地址为处理后端 Vm，这将导致产生 ILB 在后端网络上使用 Linux 实例时中断。  ILB Windows 实例，并用在上正常工作后端网络。
 

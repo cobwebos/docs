@@ -16,9 +16,9 @@
 ### [联机价格计算器](http://azure.microsoft.com/pricing/calculator)
 ### [设置计费警报](../../billing/billing-set-up-alerts.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
-## [Azure Resource Manager](azure-operations-guide.md#azure-resource-manager)
+## [Azure 资源管理器](azure-operations-guide.md#azure-resource-manager)
 
-### [创作 Azure Resource Manager 模板](../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [创作 Azure 资源管理器模板](../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ###[使用 Azure 门户部署模板](../../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ###[使用 Azure PowerShell 部署模板](../../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ###[使用 Azure CLI 部署模板](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -75,7 +75,7 @@
 ### [Azure Blob 存储](../../storage/blobs/storage-blob-storage-tiers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [通过 .NET 开始使用 Azure Blob 存储](../../storage/blobs/storage-dotnet-how-to-use-blobs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [在 Windows 上开始使用 Azure 文件存储](../../storage/files/storage-how-to-use-files-windows.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
-### [如何将 Azure 文件存储与 Linux 配合使用](../../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [如何配合使用 Azure 文件存储与 Linux ](../../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure 表存储入门](../../cosmos-db/table-storage-how-to-use-dotnet.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure 队列存储入门](../../storage/queues/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [创建存储帐户](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
@@ -88,9 +88,9 @@
 
 
 ## [虚拟网络](azure-operations-guide.md#azure-virtual-network)
-### [使用 Azure 门户创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [使用 Azure PowerShell 创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [使用 Azure CLI 创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [使用 Azure 门户创建虚拟网络](../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [使用 Azure PowerShell 创建虚拟网络](../../virtual-network/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [使用 Azure CLI 创建虚拟网络](../../virtual-network/quick-create-cli.md#create-a-virtual-network?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [使用网络安全组筛选网络流量](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### 虚拟网络教程
 #### [对 VM 进行负载均衡](../../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)

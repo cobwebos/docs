@@ -11,18 +11,20 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 03/01/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: f7ec8872849ad7881fb46bca5831c2985d003c13
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0112e5bf53f24150708b9c03440cd6183601f069
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
 本快速入门介绍如何创建一个 Azure Databricks 工作区，并在该工作区中创建一个 Apache Spark 群集。 最后，介绍如何在 Databricks 群集中运行 Spark 作业。 有关 Azure Databricks 的详细信息，请参阅[什么是 Azure Databricks？](what-is-azure-databricks.md)
+
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -62,7 +64,8 @@ ms.lasthandoff: 02/21/2018
     ![在 Azure 上创建 Databricks Spark 群集](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
 
     * 输入群集的名称。
-    * 请务必选中“在活动超过 ___ 分钟后终止”复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
+    * 在本文中，请创建运行时为 **4.0 (beta)** 的群集。 
+    * 请务必选中“在不活动超过 ____ 分钟后终止”复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
     * 接受其他所有默认值。 
     * 单击“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
 
@@ -70,7 +73,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="run-a-spark-sql-job"></a>运行 Spark SQL 作业
 
-开始学习本部分之前，必须完成以下操作：
+开始学习本部分之前，必须完成以下先决条件：
 
 * [创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。 
 * [从 Github](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 下载示例 JSON 文件。 
@@ -88,10 +91,26 @@ ms.lasthandoff: 02/21/2018
 
     单击“创建”。
 
-3. 在以下代码片段中，请将 `{YOUR STORAGE ACCOUNT NAME}` 替换为所创建的 Azure 存储帐户名称，将 `{YOUR STORAGE ACCOUNT ACCESS KEY}` 替换为存储帐户访问密钥。 在笔记本上的某个空白单元中粘贴该代码片段，并按 SHIFT + ENTER 运行该代码单元。 此代码片段会将笔记本配置为从 Azure Blob 存储读取数据。
+3. 在此步骤中，请将 Azure 存储帐户与 Databricks Spark 群集相关联。 可以通过两种方式来完成此操作：将 Azure 存储帐户装载到 Databricks 文件系统 (DBFS)，或者直接从创建的应用程序访问 Azure 存储帐户。  
 
-       spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
-    
+    > [!IMPORTANT]
+    >本文使用**通过 DBFS 装载存储的方式**。 此方式可确保装载的存储与群集文件系统本身相关联。 因此，任何访问群集的应用程序也都可以使用关联的存储。 直接访问方式仅限通过其配置访问权限的应用程序。
+    >
+    > 若要使用装载方式，必须创建一个 Databricks 运行时版本为 **4.0 (beta)** 的 Spark 群集，该群集是本文中选择的。
+
+    在以下代码片段中，将 `{YOUR CONTAINER NAME}`、`{YOUR STORAGE ACCOUNT NAME}`、`{YOUR STORAGE ACCOUNT ACCESS KEY}` 替换为你的 Azure 存储帐户的相应值。 在笔记本上的某个空白单元中粘贴该代码片段，并按 SHIFT + ENTER 运行该代码单元。
+
+    * **使用 DBFS 装载存储帐户（推荐）**。 在此代码片段中，Azure 存储帐户路径装载到 `/mnt/mypath`。 因此，在将来访问 Azure 存储帐户时，不需要提供完整路径。 可以直接使用 `/mnt/mypath`。
+
+          dbutils.fs.mount(
+            source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
+            mountPoint = "/mnt/mypath",
+            extraConfigs = Map("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net" -> "{YOUR STORAGE ACCOUNT ACCESS KEY}"))
+
+    * **直接访问存储帐户**
+
+          spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
+
     有关如何检索存储帐户密钥的说明，请参阅[管理存储访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)。
 
     > [!NOTE]
@@ -101,10 +120,11 @@ ms.lasthandoff: 02/21/2018
 
     ```sql
     %sql 
-    CREATE TEMPORARY TABLE radio_sample_data
+    DROP TABLE IF EXISTS radio_sample_data
+    CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/small_radio_json.json"
+     path "/mnt/mypath/small_radio_json.json"
     )
     ```
 

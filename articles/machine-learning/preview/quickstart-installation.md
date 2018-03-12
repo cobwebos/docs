@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 2/22/2018
-ms.openlocfilehash: 186a7b5632c1680e80e087e8f855eaacf3448207
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 33ced510dc9579248b75fb21520d55bd747a6a5c
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>快速入门：安装并开始使用 Azure 机器学习服务
 Azure 机器学习服务（预览版）是集成式的端到端数据科学和高级分析解决方案。 它可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -29,7 +29,9 @@ Azure 机器学习服务（预览版）是集成式的端到端数据科学和�
 * 访问命令行界面 (CLI)
 
 
-如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+作为 Microsoft Azure 产品组合的一部分，Azure 机器学习服务需要 Azure 订阅。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+此外，必须具有足够权限，才能创建诸如资源组、虚拟机之类的资产。 
 
 <a name="prerequisites"></a>可以将 Azure Machine Learning Workbench 应用程序安装在以下操作系统上：
 - Windows 10 或 Windows Server 2016
@@ -63,7 +65,7 @@ Azure 机器学习服务（预览版）是集成式的端到端数据科学和�
    Location | _离用户最近的区域_ | 选择最靠近用户和数据资源的位置。
    席位数 | 2 | 输入席位数。 了解[席位如何影响定价](https://azure.microsoft.com/pricing/details/machine-learning/)。<br/><br/>本快速入门只需要两个座位。 可以根据需要在 Azure 门户中添加或删除席位。
    存储帐户 | 唯一的名称 | 选择“新建”，然后提供一个名称，用于创建 [Azure 存储帐户](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal)。 或者选择“使用现有资源组”，并从下拉列表中选择现有的存储帐户。 存储帐户是必需的，用于保存项目内容和运行历史记录数据。 
-   试验帐户的工作区 | IrisGarden | 提供此帐户的工作区的名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 此工作空间包含创建、管理和发布试验所需的工具。
+   试验帐户的工作区 | IrisGarden<br/>（在教程中使用的名称） | 提供此帐户的工作区的名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 此工作空间包含创建、管理和发布试验所需的工具。
    分配工作区的所有者 | 你的帐户 | 选择自己的帐户作为工作区所有者。
    创建模型管理帐户 | **勾选标记** |现在请创建一个模型管理帐户，这样就可以在需要以实时 Web 服务的方式部署和管理模型时使用此资源。 <br/><br/>建议在创建试验帐户的同时创建模型管理帐户，当然这是可选操作。
    帐户名 | 唯一的名称 | 选择用于标识模型管理帐户的唯一名称。 可以使用自己的名称，或者能够最好地标识试验的部门或项目名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 

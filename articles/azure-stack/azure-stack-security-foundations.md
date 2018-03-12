@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: fa0800f03d823769dcd9f01601689122b0d09ec5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c1d92f8f2ed9e8ab504afc65bab861e1f7bb3689
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure 堆栈基础结构安全状况
 
-*适用范围： Azure 堆栈集成系统*
+*适用于：Azure Stack 集成系统*
 
 安全注意事项和法规遵从性要求包括使用混合云的主要驱动程序。 Azure 堆栈旨在用于这些情况下，而且，务必时采用 Azure 堆栈了解已经存在的控件。
 
@@ -31,8 +31,12 @@ ms.lasthandoff: 03/02/2018
 ## <a name="security-approach"></a>安全方法
 Azure 堆栈旨在提供安全状况来抵御现代威胁，并生成以满足从主要法规遵从性标准的要求。 因此，Azure 堆栈基础结构的安全状况基于两个重要元素：
 
- - **假定漏洞。** 系统已受到侵犯假设从开始，专注于*检测和限制的违反情况的影响*而不是只想要防止攻击。 
- - **默认情况下强制写入。**  由于基础结构上定义完善的硬件和软件，将运行*启用、 配置和验证安全功能*，从左到客户能够实现。
+ - **假定漏洞。**  
+系统已受到侵犯假设从开始，专注于*检测和限制的违反情况的影响*而不是只想要防止攻击。 
+ - **默认情况下强制写入。**  
+由于基础结构上定义完善的硬件和软件，将运行我们*启用、 配置和验证所有的安全功能*默认情况下。
+
+
 
 由于已将 Azure 堆栈发送作为一个集成系统，由 Microsoft 定义 Azure 堆栈基础结构的安全状况。 就像在 Azure 中，租户负责定义其租户工作负载的安全状况。 本文档提供有关 Azure 堆栈基础结构的安全状况的基础知识。
 
@@ -61,7 +65,7 @@ Device Guard 策略还可以防止运行在 Azure 堆栈基础结构中的第三
 ## <a name="credential-guard"></a>凭据保护
 Azure 堆栈中的另一个 Windows Server 2016 安全功能是 Windows Defender 凭据保护，用于防止传递哈希和传递票证攻击中的 Azure 堆栈基础结构凭据。
 
-## <a name="antimalware"></a>Antimalware
+## <a name="antimalware"></a>反恶意软件
 Azure 堆栈 （HYPER-V 主机和虚拟机） 中的每个组件进行保护，Windows Defender 防病毒软件。
 
 ## <a name="constrained-administration-model"></a>约束的管理模型

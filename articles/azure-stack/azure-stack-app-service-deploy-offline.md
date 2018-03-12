@@ -1,10 +1,10 @@
 ---
-title: "在脱机状态的环境中部署应用程序服务： Azure 堆栈 |Microsoft 文档"
+title: "在 Azure 堆栈中的脱机环境中部署应用程序服务 |Microsoft 文档"
 description: "如何在 AD FS 保护的连接断开的 Azure 堆栈环境中部署应用程序服务的详细的指南。"
 services: azure-stack
 documentationcenter: 
-author: brenduns
-manager: femila
+author: apwestgarth
+manager: stefsch
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -12,26 +12,27 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
-ms.author: brenduns
-ms.reviewer: anwestg
-ms.openlocfilehash: c42aaabd27afeb9e7fdd0b9add3de62a2d00eeaf
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 03/07/2018
+ms.author: anwestg
+ms.openlocfilehash: 042ebb0acc82a0cecabac7f2bc7c3b68e3ed362f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将 App Service 资源提供程序添加到 AD FS 保护的连接断开的 Azure 堆栈环境
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 按照这篇文章中的说明进行操作，你可以安装[App Service 资源提供程序](azure-stack-app-service-overview.md)到是 Azure 堆栈环境：
-- 未连接到 internet
+
+- 未连接到 Internet
 - 由 Active Directory 联合身份验证服务 (AD FS) 保护。
 
 若要添加到脱机 Azure 堆栈部署 App Service 资源提供程序，必须完成这些最高级任务：
 
 1. 完成[必需的步骤](azure-stack-app-service-before-you-get-started.md)（如购买证书，这可能需要几天才能接收）。
-2. [下载并安装和帮助器文件提取](azure-stack-app-service-before-you-get-started.md)到机连接到 internet。
+2. [下载并安装和帮助器文件提取](azure-stack-app-service-before-you-get-started.md)到机连接到 Internet。
 3. 创建脱机安装包。
 4. 运行 appservice.exe 安装程序文件。
 
@@ -43,165 +44,180 @@ ms.lasthandoff: 03/02/2018
 
 2. 单击**高级** > **创建脱机安装包**。
 
-    ![App Service 安装程序](media/azure-stack-app-service-deploy-offline/image01.png)   
+    ![应用服务安装程序][1]
 
 3. App Service 安装程序创建脱机安装包，并显示的路径。 你可以单击**打开文件夹**以在你的文件资源管理器中打开文件夹。
 
-    ![App Service 安装程序](media/azure-stack-app-service-deploy-offline/image02.png)   
+    ![应用服务安装程序](media/azure-stack-app-service-deploy-offline/image02.png)
 
 4. 将安装程序 (AppService.exe) 和脱机安装包复制到 Azure 堆栈主机上。
 
 ## <a name="complete-the-offline-installation-of-app-service-on-azure-stack"></a>完成 Azure 堆栈上的应用程序服务的脱机安装
 
-1. 在断开连接的 Azure 堆栈主机计算机，作为 azurestack\clouadmin 中运行 appservice.exe。
+1. 从可以访问 Azure 堆栈管理 Azure 资源管理终结点的计算机，以管理员身份运行 appservice.exe。
 
 2. 单击**高级** > **完成脱机安装**。
 
-    ![App Service 安装程序](media/azure-stack-app-service-deploy-offline/image03.png)   
+    ![应用服务安装程序][2]
 
-3. 浏览到以前创建的脱机安装包的位置，然后单击**下一步**。
+3. 浏览到之前创建的脱机安装包的位置，然后单击**下一步**。
 
-    ![App Service 安装程序](media/azure-stack-app-service-deploy-offline/image04.png)   
+    ![应用服务安装程序](media/azure-stack-app-service-deploy-offline/image04.png)
 
-4. 查看并接受 Microsoft 软件许可条款，然后单击**下一步**。
+4. 查看并接受 Microsoft 软件许可条款，，然后单击**下一步**。
 
-5. 查看并接受第三方许可条款，然后单击**下一步**。
+5. 查看并接受第三方许可条款，，然后单击**下一步**。
 
-6. 请确保应用程序服务的云配置信息正确。 如果你在 Azure 堆栈开发工具包部署过程中使用的默认设置，你可以接受默认值此处。 但是，如果你自定义选项，你在部署 Azure 堆栈时，你必须编辑此窗口以反映该中的值。 例如，如果你使用域后缀 mycloud.com，你的终结点必须将更改为 management.mycloud.com。确认你的信息后，单击**下一步**。
+6. 请确保应用服务云配置信息正确无误。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以在此处接受默认值。 但是，如果你自定义选项，在部署 Azure 堆栈或在集成的系统上部署时，你必须编辑此窗口以反映该中的值。 例如，如果你使用域后缀 mycloud.com，你的 Azure 堆栈租户 Azure 资源管理器终结点必须将更改为管理。<region>。 mycloud.com。确认信息后，单击“下一步”。
 
-    ![App Service 安装程序](media/azure-stack-app-service-deploy/image02.png)
+    ![应用服务安装程序][3]
 
 7. 在下一页上：
-    1. 单击**连接**按钮旁边**Azure 堆栈订阅**框。
-        - 如果你使用 Azure Active Directory (Azure AD)，输入你的 Azure AD 管理员帐户和你在部署 Azure 堆栈时提供的密码。 单击**登录**。
-        - 如果你使用 Active Directory 联合身份验证服务 (AD FS)，提供你的管理员帐户。 例如，cloudadmin@azurestack.local。 输入你的密码，然后单击**登录**。
-    2. 在**Azure 堆栈订阅**框中，选择你的订阅。
-    3. 在**Azure 堆栈位置**框中，选择对应于要部署到的区域的位置。 例如，选择**本地**如果你部署到 Azure 堆栈开发工具包。
-    4. 输入**资源组名称**为你的 App Service 部署。 默认情况下，它设置为**APPSERVICE 本地**。
-    5. 输入**存储帐户名称**你想要作为安装的一部分创建的应用程序服务。 默认情况下，它设置为**appsvclocalstor**。
-    6. 单击“下一步”。
+    1. 单击“Azure Stack 订阅”框旁边的“连接”按钮。
+        - 提供你的管理员帐户。 例如，cloudadmin@azurestack.local。 输入密码，并单击“登录”。
+    2. 在“Azure Stack 订阅”框中，选择订阅。
+    3. 在“Azure Stack 位置”框中，选择要部署到的区域所对应的位置。 例如，如果要部署到 Azure Stack 开发工具包，请选择“本地”。
+    4. 单击“下一步”。
 
-    ![App Service 安装程序](media/azure-stack-app-service-deploy/image03.png)
+    ![应用服务安装程序][4]
 
-8. 输入你的文件共享的信息，然后单击**下一步**。 文件共享的地址必须使用你的文件服务器，完全限定的域名或 IP 地址。 例如， \\\appservicefileserver.local.cloudapp.azurestack.external\websites，或\\\10.0.0.1\websites。
+8. 你现在可以选择配置完成的步骤将部署到现有的虚拟网络[此处](azure-stack-app-service-before-you-get-started.md#virtual-network)，或允许该应用程序服务的安装程序创建虚拟网络和关联的子网。
+    1. 选择**使用默认设置创建 VNet**，接受默认值，，然后单击**下一步**，或;
+    2. 选择**使用现有的 VNet 和子网**。
+        1. 选择**资源组**，其中包含你的虚拟网络;
+        2. 选择正确**虚拟网络**您想要部署到; 名称
+        3. 选择正确**子网**为每个所需的角色的子网; 的值
+        4. 单击“下一步”
 
-    ![App Service 安装程序](media/azure-stack-app-service-deploy/image04.png)
+    ![应用服务安装程序][5]
 
-9. 在下一页上：
-    1. 在**标识应用程序 ID**框中，输入将用于标识应用程序的 GUID。
-    2. 在**标识应用程序证书文件**框中，输入 （或浏览到） 证书文件的位置。
-    3. 在**标识应用程序证书密码**框中，为证书输入密码。 此密码是你记下的时使用脚本来创建证书。
-    4. 在**Azure 资源管理器的根证书文件**框中，输入 （或浏览到） 证书文件的位置。
-    5. 单击“下一步”。
-
-    ![App Service 安装程序](media/azure-stack-app-service-deploy/image05.png)
-
-10. 每三个证书文件框，请单击**浏览**并导航到适当的证书文件，然后键入一个密码。 这些证书是在中创建那些[创建所需的证书步骤](azure-stack-app-service-deploy.md)。 单击**下一步**后输入的所有信息。
-
-    | Box | 证书文件名称示例 |
-    | --- | --- |
-    | **应用程序服务默认 SSL 证书文件** | \_.appservice.local.AzureStack.external.pfx |
-    | **App Service API SSL 证书文件** | api.appservice.local.AzureStack.external.pfx |
-    | **应用程序服务发布服务器 SSL 证书文件** | ftp.appservice.local.AzureStack.external.pfx |
-
-    如果你在创建证书时，你可以使用不同的域后缀，不要使用你的证书文件名称*本地。AzureStack.external*。 相反，使用你的自定义域的信息。
-
-    ![App Service 安装程序](media/azure-stack-app-service-deploy/image06.png)    
-
-11. 输入用于承载应用程序服务资源提供程序数据库，然后单击的服务器实例的 SQL Server 详细信息**下一步**。 安装程序验证的 SQL 连接属性。
-
-    ![App Service 安装程序](media/azure-stack-app-service-deploy/image07.png)    
-
-12. 查看角色实例和 SKU 选项。 默认值填充实例和 ASDK 部署中的每个角色的最小 SKU 的最小数。 VCPU 和内存要求的摘要可用于帮助规划你的部署。 进行选择后，单击**下一步**。
-
-     > [!NOTE]
-     > 对于生产部署，按照中的指导[容量规划 Azure 堆栈中的 Azure App Service 服务器角色](azure-stack-app-service-capacity-planning.md)。
-     >
-     >
-
-    | 角色 | 最小实例 | 最小的 SKU | 注意 |
-    | --- | --- | --- | --- |
-    | 控制器 | 1 | Standard_A1-（1 vCPU、 1792 MB） | 管理和维护 App Service 云的运行状况。 |
-    | 管理 | 1 | Standard_A2-（2 Vcpu、 3584 MB） | 管理的应用程序服务 Azure 资源管理器和 API 终结点、 门户 （管理员、 租户、 函数门户） 的扩展和数据服务。 若要支持故障转移，增加到 2 的建议的实例。 |
-    | 发布者 | 1 | Standard_A1-（1 vCPU、 1792 MB） | 发布通过 FTP 和 web 部署的内容。 |
-    | 前端 | 1 | Standard_A1-（1 vCPU、 1792 MB） | 将请求路由到 App Service 应用程序。 |
-    | 共享工作线程 | 1 | Standard_A1-（1 vCPU、 1792 MB） | 主机 web API 应用和 Azure 函数应用。 你可能想要添加更多实例。 作为一个操作员，你可以定义您的产品，并选择任何 SKU 层。 层必须具有一个 vCPU 的最小值。 |
-
-    ![App Service 安装程序](media/azure-stack-app-service-deploy/image08.png)    
-
-    > [!NOTE]
-    > **Windows Server 2016 Core 不用于 Azure 堆栈上的 Azure App Service 是受支持的平台映像**。
-
-13. 在**选择平台映像**框中，选择从 App Service 云计算资源提供程序中提供的那些你部署 Windows Server 2016 的虚拟机映像。 单击“下一步”。
-
-14. 在下一页上：
-     1. 输入辅助角色虚拟机管理员用户名和密码。
-     2. 输入其他角色虚拟机管理员用户名和密码。
-     3. 单击“下一步”。
-
-    ![App Service 安装程序](media/azure-stack-app-service-deploy/image09.png)    
-
-15. 在摘要页上：
-    1. 验证你所做的选择。 若要进行更改，请使用**上一步**按钮访问以前的页面。
-    2. 如果配置不正确，则选中的复选框。
-    3. 若要开始部署，请单击**下一步**。
-
-    ![App Service 安装程序](media/azure-stack-app-service-deploy/image10.png)    
-
-16. 在下一页上：
-    1. 跟踪安装进度。 Azure 堆栈上的 app Service 需要大约 60 分钟部署基于默认选择。
-    2. 安装程序成功完成后，单击**退出**。
-
-    ![App Service 安装程序](media/azure-stack-app-service-deploy/image11.png)    
-
-
-## <a name="validate-the-app-service-on-azure-stack-installation"></a>验证 Azure 堆栈安装上的应用程序服务
-
-1. 在 Azure 堆栈管理员门户中，转到**管理的 App Service**。
-
-2. 在下状态的概述，请检查是否，**状态**显示**所有角色都就**。
-
-    ![应用程序服务管理](media/azure-stack-app-service-deploy/image12.png)    
-
-
-## <a name="test-drive-app-service-on-azure-stack"></a>测试 Azure 堆栈上的驱动器 App Service
-
-部署并注册应用程序服务资源提供程序后，测试它以确保用户可以部署 web 应用和 API 应用。
+9. 输入文件共享的信息，然后单击“下一步”。 文件共享的地址必须使用完全限定的域名或你的文件服务器的 IP 地址。 例如， \\\appservicefileserver.local.cloudapp.azurestack.external\websites，或\\\10.0.0.1\websites。
 
 > [!NOTE]
-> 你需要创建产品具有在计划内的 Microsoft.Web 命名空间。 然后，你需要具有订阅此产品/服务的租户订阅。 有关详细信息，请参阅[创建优惠](azure-stack-create-offer.md)和[创建计划](azure-stack-create-plan.md)。
+> 安装程序将尝试测试连接到文件共享，然后再继续。  但是，如果你选择要在现有虚拟网络中部署，安装程序将可能无法连接到文件共享，并显示一条警告，询问您是否要继续。  请验证文件共享信息并继续它们是否正确。
 >
-你*必须*具有要创建使用 Azure 堆栈的 App Service 应用程序的租户订阅。 与 App Service 的资源提供程序管理相关的服务管理员可以在管理门户内完成的唯一功能。 这些功能包括添加容量、 配置部署源和添加辅助角色层和 Sku。
+>
+
+   ![应用服务安装程序][8]
+
+10. 在下一页上：
+    1. 在“标识应用程序 ID”框中，输入要用于标识的应用程序 GUID（来自 Azure AD）。
+    2. 在“标识应用程序证书文件”框中，输入（或浏览到）证书文件的位置。
+    3. 在“标识应用程序证书密码”框中，输入证书的密码。 此密码是在使用脚本创建证书时记下的密码。
+    4. 在“Azure 资源管理器根证书文件”框中，输入（或浏览到）证书文件的位置。
+    5. 单击“下一步”。
+
+    ![应用服务安装程序][10]
+
+11. 每三个证书文件框，请单击**浏览**然后导航到适当的证书文件。 必须为每个证书提供密码。 这些证书是在[创建所需证书步骤](azure-stack-app-service-before-you-get-started.md#get-certificates)中创建的。 输入所有信息后，单击“下一步”。
+
+    | Box | 证书文件名示例 |
+    | --- | --- |
+    | **应用服务默认 SSL 证书文件** | \_.appservice.local.AzureStack.external.pfx |
+    | **应用服务 API SSL 证书文件** | api.appservice.local.AzureStack.external.pfx |
+    | **应用服务发布者 SSL 证书文件** | ftp.appservice.local.AzureStack.external.pfx |
+
+    如果在创建证书时使用了不同域后缀，证书文件名不要使用 *local.AzureStack.external*， 而是改用自定义域信息。
+
+    ![应用服务安装程序][11]
+
+12. 输入用于承载应用程序服务资源提供程序数据库，然后单击的服务器实例的 SQL Server 详细信息**下一步**。 安装程序将验证 SQL 连接属性。
+
+> [!NOTE]
+> 安装程序将尝试测试连接到 SQl Server，然后再继续。  但是，如果你选择要在现有虚拟网络中部署，则安装可能无法连接到 SQL Server，并显示一个警告，询问是否要继续。  请验证 SQL Server 信息并继续它们是否正确。
+>
+>
+   
+   ![应用服务安装程序][12]
+
+13. 查看角色实例和 SKU 选项。 使用 ASDK 部署中每个角色的最小实例数和最小 SKU 填充默认值。 将提供 vCPU 和内存要求摘要以帮助你规划部署。 完成选择后，单击“下一步”。
+
+     > [!NOTE]
+     > 对于生产部署，请按照中的指导[容量规划 Azure 堆栈中的 Azure App Service 服务器角色](azure-stack-app-service-capacity-planning.md)。
+     >
+     >
+
+    | 角色 | 最小实例数 | 最小 SKU | 说明 |
+    | --- | --- | --- | --- |
+    | 控制器 | 1 | Standard_A1 -（1 个 vCPU，1792 MB） | 管理和维护应用服务云的运行状况。 |
+    | 管理 | 1 | Standard_A2 -（2 个 vCPU，3584 MB） | 管理应用服务 Azure 资源管理器和 API 终结点、门户扩展（管理员门户、租户门户、Functions 门户）和数据服务。 若要支持故障转移，请将建议的实例数增加到 2 个。 |
+    | 发布者 | 1 | Standard_A1 -（1 个 vCPU，1792 MB） | 通过 FTP 和 Web 部署发布内容。 |
+    | FrontEnd | 1 | Standard_A1 -（1 个 vCPU，1792 MB） | 将请求路由到应用服务应用程序。 |
+    | 共享辅助角色 | 1 | Standard_A1 -（1 个 vCPU，1792 MB） | 托管 Web 应用程序或 API 应用程序和 Azure Functions 应用。 建议添加更多实例。 作为操作员，可以定义产品/服务，并选择任何 SKU 层。 这些层必须至少具有一个 vCPU。 |
+
+    ![应用服务安装程序][14]
+
+    > [!NOTE]
+    > **Windows Server 2016 Core 不用于 Azure 堆栈上的 Azure App Service 是受支持的平台映像。请勿在生产部署中使用评估映像。**
+
+14. 在“选择平台映像”框中，从应用服务云的计算资源提供程序中提供的映像中选择部署 Windows Server 2016 虚拟机映像。 单击“下一步”。
+
+15. 在下一页上：
+     1. 输入“辅助角色”虚拟机管理员用户名和密码。
+     2. 输入“其他角色”虚拟机管理员用户名和密码。
+     3. 单击“下一步”。
+
+    ![应用服务安装程序][16]
+
+16. 在摘要页上：
+    1. 验证所做的选择。 若要进行更改，请使用“上一步”按钮访问前面的页。
+    2. 如果配置正确，则选中复选框。
+    3. 若要开始部署，请单击“下一步”。
+
+    ![应用服务安装程序][17]
+
+17. 在下一页上：
+    1. 跟踪安装进度。 Azure Stack 上的应用服务基于默认选择部署大约需要 60 分钟。
+    2. 安装程序成功完成后，单击“退出”。
+
+    ![应用服务安装程序][18]
+
+## <a name="validate-the-app-service-on-azure-stack-installation"></a>验证 Azure Stack 上的应用服务安装
+
+1. 在 Azure Stack 管理员门户中，转到“管理 - 应用服务”。
+
+2. 在状态下的概述中，检查“状态”是否显示“所有角色已就绪”。
+
+    ![应用服务管理](media/azure-stack-app-service-deploy/image12.png)
+
+## <a name="test-drive-app-service-on-azure-stack"></a>体验版 Azure Stack 上的应用服务
+
+部署并注册应用服务资源提供程序后，对其进行测试以确保用户可以部署 Web 应用和 API 应用。
+
+> [!NOTE]
+> 需要创建在计划中具有 Microsoft.Web 命名空间的产品/服务。 然后，需要具有订阅此产品/服务的租户订阅。 有关详细信息，请参阅[创建产品/服务](azure-stack-create-offer.md)和[创建计划](azure-stack-create-plan.md)。
+>
+*必须*具有租户订阅，才能创建使用 Azure Stack 上的应用服务的应用程序。 服务管理员只能在管理员门户中完成的功能与应用服务的资源提供程序管理相关。 这些功能包括添加容量、配置部署源以及添加辅助角色层和 SKU。
 >
 截至第三个 technical preview 中，创建 web、 API 和 Azure 函数应用，必须使用租户门户，并且有租户订阅。
 
-1. 在 Azure 堆栈租户门户中，单击**新建** > **Web + 移动** > **Web 应用**。
+1. 在 Azure Stack 租户门户中，单击“新建” > “Web + 移动” > “Web 应用”。
 
-2. 上**Web 应用**边栏选项卡中键入名称**Web 应用**框。
+2. 在“Web 应用”边栏选项卡上的“Web 应用”框中键入名称。
 
-3. 下**资源组**，单击**新建**。 中键入一个名称**资源组**框。
+3. 在“资源组”下单击“新建”。 在“资源组”框中键入名称。
 
 4. 单击“应用服务计划/位置” > “新建”。
 
-5. 上**App Service 计划**边栏选项卡中键入名称**App Service 计划**框。
+5. 在“应用服务计划”边栏选项卡上的“应用服务计划”框中键入名称。
 
-6. 单击**定价层** > **免费共享**或**共享共享** > **选择** >  **确定** > **创建**。
+6. 单击“定价层” > “免费共享”或“共享共享” > “选择” > “确定” > “创建”。
 
-7. 在下一分钟，新的 web 应用的磁贴将显示在仪表板上。 单击该磁贴。
+7. 在不到一分钟之内，新的 Web 应用的磁贴将显示在仪表板上。 单击该磁贴。
 
-8. 上**Web 应用**边栏选项卡，单击**浏览**若要查看此应用程序的默认网站。
+8. 在“Web 应用”边栏选项卡上，单击“浏览”查看此应用的默认网站。
 
-## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>部署 WordPress、 DNN 或 Django 网站 （可选）
+## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>部署 WordPress、DNN 或 Django 网站（可选）
 
-1. 在 Azure 堆栈租户门户中，单击 **+** ，转到 Azure 应用商店、 部署 Django 网站，并等待成功完成。 Django web 平台使用文件系统基于的数据库。 它不需要任何其他资源提供程序，如 SQL 或 MySQL。
+1. 在 Azure Stack 租户门户中，单击 **+**，转到 Azure Marketplace，部署 Django 网站并等待成功完成。 Django Web 平台使用基于文件系统的数据库。 它不需要任何其他资源提供程序，如 SQL 或 MySQL。
 
-2. 如果您还部署了 MySQL 资源提供程序，你可以部署应用商店中的 WordPress 网站。 当系统提示你输入数据库参数时，输入作为用户名 *User1@Server1* 、 具有用户名称和所选的服务器名称。
+2. 如果还部署了 MySQL 资源提供程序，则可以从 Marketplace 部署 WordPress 网站。 当系统提示输入数据库参数时，请将用户名输入为 *User1@Server1*（使用所选的用户名和服务器名称）。
 
-3. 如果您还部署了 SQL Server 资源提供程序，你可以部署 DNN 网站从应用商店。 当系统提示你输入数据库参数时，请在运行连接到资源提供程序的 SQL Server 的计算机中选择的数据库。
+3. 如果还部署了 SQL Server 资源提供程序，则可以从 Marketplace 部署 DNN 网站。 当系统提示输入数据库参数时，请在运行 SQL Server 的计算机中选择已连接到资源提供程序的数据库。
 
-## <a name="next-steps"></a>接下来的步骤
+## <a name="next-steps"></a>后续步骤
 
-你还可以试用其他[平台即服务 (PaaS) 服务](azure-stack-tools-paas-services.md)。
+还可以试用其他[平台即服务 (PaaS) 服务](azure-stack-tools-paas-services.md)。
 
 - [SQL Server 资源提供程序](azure-stack-sql-resource-provider-deploy.md)
 - [MySQL 资源提供程序](azure-stack-mysql-resource-provider-deploy.md)
@@ -210,3 +226,23 @@ ms.lasthandoff: 03/02/2018
 [Azure_Stack_App_Service_preview_installer]: http://go.microsoft.com/fwlink/?LinkID=717531
 [App_Service_Deployment]: http://go.microsoft.com/fwlink/?LinkId=723982
 [AppServiceHelperScripts]: http://go.microsoft.com/fwlink/?LinkId=733525
+
+<!--Image references-->
+[1]: ./media/azure-stack-app-service-deploy-offline/app-service-exe-advanced-create-package.png
+[2]: ./media/azure-stack-app-service-deploy-offline/app-service-exe-advanced-complete-offline.png
+[3]: ./media/azure-stack-app-service-deploy-offline/app-service-azure-stack-arm-endpoints.png
+[4]: ./media/azure-stack-app-service-deploy-offline/app-service-azure-stack-subscription-information.png
+[5]: ./media/azure-stack-app-service-deploy-offline/app-service-default-VNET-config.png
+[6]: ./media/azure-stack-app-service-deploy-offline/app-service-custom-VNET-config.png
+[7]: ./media/azure-stack-app-service-deploy-offline/app-service-custom-VNET-config-with-values.png
+[8]: ./media/azure-stack-app-service-deploy-offline/app-service-fileshare-configuration.png
+[9]: ./media/azure-stack-app-service-deploy-offline/app-service-fileshare-configuration-error.png
+[10]: ./media/azure-stack-app-service-deploy-offline/app-service-identity-app.png
+[11]: ./media/azure-stack-app-service-deploy-offline/app-service-certificates.png
+[12]: ./media/azure-stack-app-service-deploy-offline/app-service-sql-configuration.png
+[13]: ./media/azure-stack-app-service-deploy-offline/app-service-sql-configuration-error.png
+[14]: ./media/azure-stack-app-service-deploy-offline/app-service-cloud-quantities.png
+[15]: ./media/azure-stack-app-service-deploy-offline/app-service-windows-image-selection.png
+[16]: ./media/azure-stack-app-service-deploy-offline/app-service-role-credentials.png
+[17]: ./media/azure-stack-app-service-deploy-offline/app-service-azure-stack-deployment-summary.png
+[18]: ./media/azure-stack-app-service-deploy-offline/app-service-deployment-progress.png

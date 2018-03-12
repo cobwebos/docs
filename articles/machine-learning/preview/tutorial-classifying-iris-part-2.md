@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/28/2018
-ms.openlocfilehash: f52d4268c3983b419a6393bbd651301022688029
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9a1613e2137e178d00a24f9f5b3c802f8a894b15
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-classify-iris-part-2---build-a-model"></a>教程：鸢尾花分类（第 2 部分）- 生成模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
 
-本教程是由三个部分构成的系列教程的第二部分。 在教程的此部分，请使用 Azure 机器学习服务（预览版）执行以下操作：
+本教程是**由三个部分构成的系列教程的第二部分**。 在教程的此部分，请使用 Azure 机器学习服务（预览版）执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure Machine Learning Workbench。

@@ -166,7 +166,7 @@
               href: azure-stack-backup-enable-backup-powershell.md
             - name: 备份 Azure Stack
               href: azure-stack-backup-back-up-azure-stack.md
-            - name: 从灾难性数据丢失中恢复
+            - name: 在发生灾难性数据丢失后进行恢复
               href: azure-stack-backup-recover-data.md
             - name: 备份的最佳实践
               href: azure-stack-backup-best-practices.md
@@ -236,10 +236,6 @@
               href: azure-stack-app-service-deploy.md
             - name: 脱机部署应用服务
               href: azure-stack-app-service-deploy-offline.md
-            - name: 更新 App Service 资源提供程序
-              href: azure-stack-app-service-update.md
-            - name: 更新 App Service 资源提供程序脱机
-              href: azure-stack-app-service-update-offline.md
             - name: 添加更多 Web 辅助角色
               href: azure-stack-app-service-add-worker-roles.md
             - name: 配置部署源

@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 7b7625b3250d7e5b4cdb4090f34072eb58dda07c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 5b1c443cae8481d98c32a3f4d9e3899621d1dd89
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>使用 Azure 存储实现应用程序数据的高可用性
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 02/22/2018
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Name** | mystorageaccount | 存储帐户的唯一值 |
    | **部署模型** | 资源管理器  | “资源管理器”包含最新功能。|
-   | **帐户种类** | 常规用途 | 若要详细了解帐户类型，请参阅[存储帐户类型](../common/storage-introduction.md#types-of-storage-accounts) |
+   | **帐户种类** | StorageV2 | 若要详细了解帐户类型，请参阅[存储帐户类型](../common/storage-introduction.md#types-of-storage-accounts) |
    | **性能** | 标准 | “标准”足以满足示例方案需求。 |
    | **复制**| 读取访问异地冗余存储 (RA-GRS) | 此为示例正常运行所必需。 |
    |**需要安全传输** | 已禁用| 对于此方案，无需安全传输。 |
@@ -77,7 +77,7 @@ ms.lasthandoff: 02/22/2018
    |**ResourceGroup** | myResourceGroup |如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
    |**位置** | 美国东部 | 选择一个位置。 |
 
-![创建存储帐户](media/storage-create-geo-redundant-storage/figure1.png)
+![创建存储帐户](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>下载示例
 
