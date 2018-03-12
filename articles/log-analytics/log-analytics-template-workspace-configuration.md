@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 03/05/2018
 ms.author: richrund
-ms.openlocfilehash: cea25429dc6e5f9f12f472d17e8743d272135257
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: db9b941e84c018a3a56dd683c118e47ee808259d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics
 可以使用 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
@@ -31,7 +31,6 @@ ms.lasthandoff: 01/10/2018
 * 从 Linux 和 Windows 计算机中收集性能计数器
 * 从 Linux 计算机的 syslog 中收集事件 
 * 从 Windows 事件日志中收集事件
-* 收集自定义事件日志
 * 将日志分析代理添加到 Azure 虚拟机
 * 配置 Log Analytics 以为使用 Azure 诊断收集的数据编制索引
 
@@ -60,7 +59,6 @@ ms.lasthandoff: 01/10/2018
 7. 从 Linux 计算机中收集 syslog 事件
 8. 从 Windows 计算机的应用程序事件日志中收集错误和警告事件
 9. 从 Windows 计算机中收集可用内存 (MB) 性能计数器
-10. 收集自定义日志 
 11. 收集由 Azure 诊断写入存储帐户的 IIS 日志和 Windows 事件日志
 
 ```json
@@ -291,61 +289,6 @@ ms.lasthandoff: 01/10/2018
           "kind": "LinuxPerformanceCollection",
           "properties": {
             "state": "Enabled"
-          }
-        },
-        {
-          "apiVersion": "2015-11-01-preview",
-          "type": "datasources",
-          "name": "sampleCustomLog1",
-          "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
-          ],
-          "kind": "CustomLog",
-          "properties": {
-            "customLogName": "sampleCustomLog1",
-            "description": "test custom log datasources",
-            "inputs": [
-              {
-                "location": {
-                  "fileSystemLocations": {
-                    "windowsFileTypeLogPaths": [ "e:\\iis5\\*.log" ],
-                    "linuxFileTypeLogPaths": [ "/var/logs" ]
-                  }
-                },
-                "recordDelimiter": {
-                  "regexDelimiter": {
-                    "pattern": "\\n",
-                    "matchIndex": 0,
-                    "matchIndexSpecified": true,
-                    "numberedGroup": null
-                  }
-                }
-              }
-            ],
-            "extractions": [
-              {
-                "extractionName": "TimeGenerated",
-                "extractionType": "DateTime",
-                "extractionProperties": {
-                  "dateTimeExtraction": {
-                    "regex": null,
-                    "joinStringRegex": null
-                  }
-                }
-              }
-            ]
-          }
-        },
-        {
-          "apiVersion": "2015-11-01-preview",
-          "type": "datasources",
-          "name": "sampleCustomLogCollection1",
-          "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
-          ],
-          "kind": "CustomLogCollection",
-          "properties": {
-            "state": "LinuxLogsEnabled"
           }
         },
         {
