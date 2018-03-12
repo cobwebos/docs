@@ -1,6 +1,6 @@
 ---
 title: "在 Azure 堆栈中的脱机环境中部署应用程序服务 |Microsoft 文档"
-description: "如何在 AD FS 保护的连接断开的 Azure 堆栈环境中部署应用程序服务的详细的指南。"
+description: "有关如何在受 AD FS 保护且已断开连接的 Azure Stack 环境中部署应用服务的详细指南。"
 services: azure-stack
 documentationcenter: 
 author: apwestgarth
@@ -12,51 +12,56 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 042ebb0acc82a0cecabac7f2bc7c3b68e3ed362f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7a44c5d182aa3c66c07c3dad8c82e171429f2ee4
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
-# <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将 App Service 资源提供程序添加到 AD FS 保护的连接断开的 Azure 堆栈环境
+# <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>将应用服务资源提供程序添加到受 AD FS 保护且已断开连接的 Azure Stack 环境
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-按照这篇文章中的说明进行操作，你可以安装[App Service 资源提供程序](azure-stack-app-service-overview.md)到是 Azure 堆栈环境：
+> [!IMPORTANT]
+> 将 1802年更新应用于你的 Azure 堆栈集成系统，或在部署 Azure App Service 之前部署的最新的 Azure 堆栈开发工具包。
+>
+>
+
+按照本文中的说明操作即可将[应用服务资源提供程序](azure-stack-app-service-overview.md)安装到符合以下条件的 Azure Stack 环境：
 
 - 未连接到 Internet
-- 由 Active Directory 联合身份验证服务 (AD FS) 保护。
+- 受 Active Directory 联合身份验证服务 (AD FS) 保护。
 
-若要添加到脱机 Azure 堆栈部署 App Service 资源提供程序，必须完成这些最高级任务：
+若要将应用服务资源提供程序添加到脱机的 Azure Stack 部署，必须完成以下顶级任务：
 
-1. 完成[必需的步骤](azure-stack-app-service-before-you-get-started.md)（如购买证书，这可能需要几天才能接收）。
+1. 完成[先决条件步骤](azure-stack-app-service-before-you-get-started.md)（例如购买证书，可能需要数天才能接收到）。
 2. [下载并安装和帮助器文件提取](azure-stack-app-service-before-you-get-started.md)到机连接到 Internet。
 3. 创建脱机安装包。
 4. 运行 appservice.exe 安装程序文件。
 
 ## <a name="create-an-offline-installation-package"></a>创建脱机安装包
 
-若要在连接断开的环境中部署 App Service，必须首先在连接到 Internet 的计算机上创建脱机安装包。
+若要在断开连接的环境中部署应用服务，必须先在连接到 Internet 的计算机上创建脱机安装包。
 
-1. 连接到 Internet 的计算机上运行 AppService.exe 安装程序。
+1. 在连接到 Internet 的计算机上运行 AppService.exe 安装程序。
 
-2. 单击**高级** > **创建脱机安装包**。
+2. 单击“高级” > “创建脱机安装包”。
 
     ![应用服务安装程序][1]
 
-3. App Service 安装程序创建脱机安装包，并显示的路径。 你可以单击**打开文件夹**以在你的文件资源管理器中打开文件夹。
+3. 应用服务安装程序创建脱机安装包并显示其路径。 可以单击“打开文件夹”，在文件资源管理器中打开该文件夹。
 
     ![应用服务安装程序](media/azure-stack-app-service-deploy-offline/image02.png)
 
-4. 将安装程序 (AppService.exe) 和脱机安装包复制到 Azure 堆栈主机上。
+4. 将安装程序 (AppService.exe) 和脱机安装包复制到 Azure Stack 主机。
 
-## <a name="complete-the-offline-installation-of-app-service-on-azure-stack"></a>完成 Azure 堆栈上的应用程序服务的脱机安装
+## <a name="complete-the-offline-installation-of-app-service-on-azure-stack"></a>在 Azure Stack 上完成应用服务的脱机安装
 
 1. 从可以访问 Azure 堆栈管理 Azure 资源管理终结点的计算机，以管理员身份运行 appservice.exe。
 
-2. 单击**高级** > **完成脱机安装**。
+2. 单击“高级” > “完成脱机安装”。
 
     ![应用服务安装程序][2]
 
@@ -68,11 +73,11 @@ ms.lasthandoff: 03/08/2018
 
 5. 查看并接受第三方许可条款，，然后单击**下一步**。
 
-6. 请确保应用服务云配置信息正确无误。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以在此处接受默认值。 但是，如果你自定义选项，在部署 Azure 堆栈或在集成的系统上部署时，你必须编辑此窗口以反映该中的值。 例如，如果你使用域后缀 mycloud.com，你的 Azure 堆栈租户 Azure 资源管理器终结点必须将更改为管理。<region>。 mycloud.com。确认信息后，单击“下一步”。
+6. 请确保应用服务云配置信息正确无误。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果你自定义选项，在部署 Azure 堆栈或在集成的系统上部署时，你必须编辑此窗口以反映该中的值。 例如，如果你使用域后缀 mycloud.com，你的 Azure 堆栈租户 Azure 资源管理器终结点必须将更改为管理。<region>。 mycloud.com。确认信息后，单击“下一步”。
 
     ![应用服务安装程序][3]
 
-7. 在下一页上：
+7. 在下一页上执行以下操作：
     1. 单击“Azure Stack 订阅”框旁边的“连接”按钮。
         - 提供你的管理员帐户。 例如，cloudadmin@azurestack.local。 输入密码，并单击“登录”。
     2. 在“Azure Stack 订阅”框中，选择订阅。
@@ -117,7 +122,7 @@ ms.lasthandoff: 03/08/2018
     | **应用服务 API SSL 证书文件** | api.appservice.local.AzureStack.external.pfx |
     | **应用服务发布者 SSL 证书文件** | ftp.appservice.local.AzureStack.external.pfx |
 
-    如果在创建证书时使用了不同域后缀，证书文件名不要使用 *local.AzureStack.external*， 而是改用自定义域信息。
+    如果在创建证书时使用了其他域后缀，证书文件名不要使用 *local.AzureStack.external*， 而要改用自定义域信息。
 
     ![应用服务安装程序][11]
 
@@ -130,7 +135,7 @@ ms.lasthandoff: 03/08/2018
    
    ![应用服务安装程序][12]
 
-13. 查看角色实例和 SKU 选项。 使用 ASDK 部署中每个角色的最小实例数和最小 SKU 填充默认值。 将提供 vCPU 和内存要求摘要以帮助你规划部署。 完成选择后，单击“下一步”。
+13. 查看角色实例和 SKU 选项。 使用 ASDK 部署中每个角色的最小实例数和最小 SKU 填充默认值。 提供 vCPU 和内存要求摘要是为了帮助你规划部署。 进行选择后，单击“下一步”。
 
      > [!NOTE]
      > 对于生产部署，请按照中的指导[容量规划 Azure 堆栈中的 Azure App Service 服务器角色](azure-stack-app-service-capacity-planning.md)。
@@ -139,35 +144,35 @@ ms.lasthandoff: 03/08/2018
 
     | 角色 | 最小实例数 | 最小 SKU | 说明 |
     | --- | --- | --- | --- |
-    | 控制器 | 1 | Standard_A1 -（1 个 vCPU，1792 MB） | 管理和维护应用服务云的运行状况。 |
-    | 管理 | 1 | Standard_A2 -（2 个 vCPU，3584 MB） | 管理应用服务 Azure 资源管理器和 API 终结点、门户扩展（管理员门户、租户门户、Functions 门户）和数据服务。 若要支持故障转移，请将建议的实例数增加到 2 个。 |
-    | 发布者 | 1 | Standard_A1 -（1 个 vCPU，1792 MB） | 通过 FTP 和 Web 部署发布内容。 |
-    | FrontEnd | 1 | Standard_A1 -（1 个 vCPU，1792 MB） | 将请求路由到应用服务应用程序。 |
-    | 共享辅助角色 | 1 | Standard_A1 -（1 个 vCPU，1792 MB） | 托管 Web 应用程序或 API 应用程序和 Azure Functions 应用。 建议添加更多实例。 作为操作员，可以定义产品/服务，并选择任何 SKU 层。 这些层必须至少具有一个 vCPU。 |
+    | 控制器 | 1 | Standard_A1 -（1 vCPU，1792 MB） | 管理和维护应用服务云的运行状况。 |
+    | 管理 | 1 | Standard_A2 -（2 vCPU，3584 MB） | 管理应用服务 Azure 资源管理器和 API 终结点、门户扩展（管理员门户、租户门户、Functions 门户）和数据服务。 为了支持故障转移，已将建议的实例数增加到 2 个。 |
+    | 发布者 | 1 | Standard_A1 -（1 vCPU，1792 MB） | 通过 FTP 和 Web 部署发布内容。 |
+    | FrontEnd | 1 | Standard_A1 -（1 vCPU，1792 MB） | 将请求路由到应用服务应用程序。 |
+    | 共享辅助角色 | 1 | Standard_A1 -（1 vCPU，1792 MB） | 托管 Web 应用程序或 API 应用程序和 Azure Functions 应用。 可能需要添加更多实例。 作为操作员，可以定义产品/服务，并选择任何 SKU 层。 这些层必须至少具有一个 vCPU。 |
 
     ![应用服务安装程序][14]
 
     > [!NOTE]
     > **Windows Server 2016 Core 不用于 Azure 堆栈上的 Azure App Service 是受支持的平台映像。请勿在生产部署中使用评估映像。**
 
-14. 在“选择平台映像”框中，从应用服务云的计算资源提供程序中提供的映像中选择部署 Windows Server 2016 虚拟机映像。 单击“下一步”。
+14. 在“选择平台映像”框中选择部署型 Windows Server 2016 虚拟机映像，该映像由应用服务云的计算资源提供程序提供。 单击“下一步”。
 
-15. 在下一页上：
-     1. 输入“辅助角色”虚拟机管理员用户名和密码。
-     2. 输入“其他角色”虚拟机管理员用户名和密码。
+15. 在下一页上执行以下操作：
+     1. 输入辅助角色虚拟机管理员用户名和密码。
+     2. 输入其他角色虚拟机管理员用户名和密码。
      3. 单击“下一步”。
 
     ![应用服务安装程序][16]
 
-16. 在摘要页上：
-    1. 验证所做的选择。 若要进行更改，请使用“上一步”按钮访问前面的页。
-    2. 如果配置正确，则选中复选框。
+16. 在摘要页上执行以下操作：
+    1. 验证所做的选择。 若要进行更改，请使用“上一步”按钮访问前面的页面。
+    2. 如果配置正确，则选中此复选框。
     3. 若要开始部署，请单击“下一步”。
 
     ![应用服务安装程序][17]
 
-17. 在下一页上：
-    1. 跟踪安装进度。 Azure Stack 上的应用服务基于默认选择部署大约需要 60 分钟。
+17. 在下一页上执行以下操作：
+    1. 跟踪安装进度。 Azure Stack 上的应用服务大约需要 60 分钟才能完成基于默认选择的部署。
     2. 安装程序成功完成后，单击“退出”。
 
     ![应用服务安装程序][18]
@@ -176,20 +181,20 @@ ms.lasthandoff: 03/08/2018
 
 1. 在 Azure Stack 管理员门户中，转到“管理 - 应用服务”。
 
-2. 在状态下的概述中，检查“状态”是否显示“所有角色已就绪”。
+2. 在状态下的概览中，检查“状态”是否显示“所有角色已就绪”。
 
     ![应用服务管理](media/azure-stack-app-service-deploy/image12.png)
 
-## <a name="test-drive-app-service-on-azure-stack"></a>体验版 Azure Stack 上的应用服务
+## <a name="test-drive-app-service-on-azure-stack"></a>体验 Azure Stack 上的应用服务
 
 部署并注册应用服务资源提供程序后，对其进行测试以确保用户可以部署 Web 应用和 API 应用。
 
 > [!NOTE]
-> 需要创建在计划中具有 Microsoft.Web 命名空间的产品/服务。 然后，需要具有订阅此产品/服务的租户订阅。 有关详细信息，请参阅[创建产品/服务](azure-stack-create-offer.md)和[创建计划](azure-stack-create-plan.md)。
+> 需要创建在计划中有 Microsoft.Web 命名空间的产品/服务。 然后，需要有订阅此产品/服务的租户订阅。 有关详细信息，请参阅[创建产品/服务](azure-stack-create-offer.md)和[创建计划](azure-stack-create-plan.md)。
 >
-*必须*具有租户订阅，才能创建使用 Azure Stack 上的应用服务的应用程序。 服务管理员只能在管理员门户中完成的功能与应用服务的资源提供程序管理相关。 这些功能包括添加容量、配置部署源以及添加辅助角色层和 SKU。
+必须有租户订阅，才能创建使用 Azure Stack 上的应用服务的应用程序。 服务管理员只能在管理员门户中完成的功能与资源提供程序对应用服务的管理相关。 这些功能包括添加容量、配置部署源以及添加辅助角色层和 SKU。
 >
-截至第三个 technical preview 中，创建 web、 API 和 Azure 函数应用，必须使用租户门户，并且有租户订阅。
+至于第三个技术预览版，若要创建 Web 应用、API 应用和 Azure Functions 应用，必须使用租户门户并有租户订阅。
 
 1. 在 Azure Stack 租户门户中，单击“新建” > “Web + 移动” > “Web 应用”。
 
@@ -205,15 +210,15 @@ ms.lasthandoff: 03/08/2018
 
 7. 在不到一分钟之内，新的 Web 应用的磁贴将显示在仪表板上。 单击该磁贴。
 
-8. 在“Web 应用”边栏选项卡上，单击“浏览”查看此应用的默认网站。
+8. 在“Web 应用”边栏选项卡上单击“浏览”，查看此应用的默认网站。
 
 ## <a name="deploy-a-wordpress-dnn-or-django-website-optional"></a>部署 WordPress、DNN 或 Django 网站（可选）
 
-1. 在 Azure Stack 租户门户中，单击 **+**，转到 Azure Marketplace，部署 Django 网站并等待成功完成。 Django Web 平台使用基于文件系统的数据库。 它不需要任何其他资源提供程序，如 SQL 或 MySQL。
+1. 在 Azure Stack 租户门户中，单击“+”，转到 Azure Marketplace，部署 Django 网站并等待成功完成。 Django Web 平台使用基于文件系统的数据库。 它不需要任何其他资源提供程序，如 SQL 或 MySQL。
 
-2. 如果还部署了 MySQL 资源提供程序，则可以从 Marketplace 部署 WordPress 网站。 当系统提示输入数据库参数时，请将用户名输入为 *User1@Server1*（使用所选的用户名和服务器名称）。
+2. 如果还部署了 MySQL 资源提供程序，则可从 Marketplace 部署 WordPress 网站。 当系统提示输入数据库参数时，请输入用户名，其格式为 *User1@Server1*（使用所选的用户名和服务器名称）。
 
-3. 如果还部署了 SQL Server 资源提供程序，则可以从 Marketplace 部署 DNN 网站。 当系统提示输入数据库参数时，请在运行 SQL Server 的计算机中选择已连接到资源提供程序的数据库。
+3. 如果还部署了 SQL Server 资源提供程序，则可从 Marketplace 部署 DNN 网站。 当系统提示输入数据库参数时，请在运行 SQL Server 的计算机中选择连接到资源提供程序的数据库。
 
 ## <a name="next-steps"></a>后续步骤
 

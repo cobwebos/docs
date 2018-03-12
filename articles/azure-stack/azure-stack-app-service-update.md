@@ -12,18 +12,22 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 7c5c77e57a1cfc6b99c0f7baa91ec8de92be37ec
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 151456bbb7f9331730e640e4bece3872c3c92f8d
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>更新 Azure 堆栈上的 Azure App Service
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
+> [!IMPORTANT]
+> 将 1802年更新应用于你的 Azure 堆栈集成系统，或在部署 Azure App Service 之前部署的最新的 Azure 堆栈开发工具包。
+>
+>
 
 按照这篇文章中的说明进行操作，你可以升级[App Service 资源提供程序](azure-stack-app-service-overview.md)连接到 Internet 的 Azure 堆栈环境中部署。
 
@@ -62,11 +66,11 @@ ms.lasthandoff: 03/08/2018
 
 5. 查看并接受第三方许可条款，然后单击“下一步”。
 
-6. 请确保 Azure 堆栈 Azure 资源管理器终结点和 Active Directory 租户信息是否正确。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以在此处接受默认值。 但是，如果在部署 Azure Stack 时自定义了选项，则必须编辑此窗口中的值以反映该自定义。 例如，如果你使用的域后缀*mycloud.com*，必须将你的 Azure 堆栈 Azure 资源管理器终结点更改为*management.region.mycloud.com*。确认信息后，单击“下一步”。
+6. 请确保 Azure 堆栈 Azure 资源管理器终结点和 Active Directory 租户信息是否正确。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack 时自定义了选项，则必须根据自定义的情况编辑此窗口中的值。 例如，如果你使用的域后缀*mycloud.com*，必须将你的 Azure 堆栈 Azure 资源管理器终结点更改为*management.region.mycloud.com*。确认信息后，单击“下一步”。
 
     ![Azure 堆栈云信息][2]
 
-7. 在下一页上：
+7. 在下一页上执行以下操作：
 
    1. 单击“Azure Stack 订阅”框旁边的“连接”按钮。
         * 如果使用 Azure Active Directory (Azure AD)，请输入在部署 Azure Stack 时提供的 Azure AD 管理员帐户和密码。 单击**登录**。
@@ -78,9 +82,9 @@ ms.lasthandoff: 03/08/2018
 
     ![检测到的应用程序服务安装][3]
 
-8. 在摘要页上：
-   1. 验证所做的选择。 若要进行更改，请使用“上一步”按钮访问前面的页。
-   2. 如果配置正确，则选中复选框。
+8. 在摘要页上执行以下操作：
+   1. 验证所做的选择。 若要进行更改，请使用“上一步”按钮访问前面的页面。
+   2. 如果配置正确，则选中此复选框。
    3. 若要开始升级，请单击**下一步**。
 
        ![App Service 升级摘要][4]

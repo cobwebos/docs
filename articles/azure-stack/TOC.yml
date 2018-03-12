@@ -264,14 +264,24 @@
           items:
             - name: 概述
               href: azure-stack-billing-and-chargeback.md
-            - name: 使用情况数据报告
-              href: azure-stack-usage-reporting.md
-            - name: 提供者使用情况 API
-              href: azure-stack-provider-resource-api.md
-            - name: 租户使用情况 API
-              href: azure-stack-tenant-resource-usage-api.md
-            - name: 使用情况常见问题
-              href: azure-stack-usage-related-faq.md
+            - name: 管理使用情况和计费作为 CSP
+              href: azure-stack-add-manage-billing-as-a-csp.md
+            - name: 添加租户为使用情况和计费
+              href: azure-stack-csp-howto-register-tenants.md
+            - name: 管理租户注册
+              href: azure-stack-csp-ref-operations.md
+            - name: 使用情况和计费引用
+              items:
+                - name: 使用情况数据报告
+                  href: azure-stack-usage-reporting.md
+                - name: 使用情况报告为云服务提供商的基础结构
+                  href: azure-stack-csp-ref-infrastructure.md
+                - name: 提供者使用情况 API
+                  href: azure-stack-provider-resource-api.md
+                - name: 租户使用情况 API
+                  href: azure-stack-tenant-resource-usage-api.md
+                - name: 使用情况常见问题
+                  href: azure-stack-usage-related-faq.md
         - name: 连接到 Azure
           items:
             - name: 使用 VPN 进行连接

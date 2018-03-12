@@ -6,25 +6,25 @@ documentationcenter:
 author: mattbriggs
 manager: femila
 editor: 
-ms.assetid: 2A397C83-1A6C-4290-B0EF-FDC34EE290CD
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
-ms.author: mabrigg;AlfredoPizzirani
-ms.openlocfilehash: 451e8c604e48d9cfc42284f2413fa5ed4fea03bc
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 02/22/2018
+ms.author: mabrigg
+ms.reviewer: alfredop
+ms.openlocfilehash: 29d53f63bf3d551823ca27df04f0e385a92cdec7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>向 Azure 报告 Azure 堆栈使用情况数据 
 
 使用情况数据，也称为消耗数据，表示使用的资源量。 
 
-使用基于的消费的计费模式的 azure 堆栈多节点系统应报告使用情况数据到 Azure 计费目的。  Azure 堆栈运算符应配置到 Azure 的报告使用情况数据其 Azure 堆栈实例。
+使用基于消费的计费模型的 azure 堆栈多节点系统应出于计费目的，向 Azure 报告使用情况数据。  Azure 堆栈运算符应配置到 Azure 的报告使用情况数据其 Azure 堆栈实例。
 
 > [!NOTE]
 > 使用情况数据报告是必需的 Azure 堆栈多节点许可证的用户作为你的使用付费模式下。 它是可选的容量模式下许可证的用户 (请参阅[如何购买页面](https://azure.microsoft.com/overview/azure-stack/how-to-buy/ to learn more about pricing in Azure Stack))。 对于 Azure 堆栈开发工具包用户，Azure 堆栈运算符可以报告使用情况数据，并测试功能。 但是，用户不会收取它们会产生任何使用。 
@@ -76,7 +76,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="are-users-charged-for-the-infrastructure-vms"></a>用户会对基础结构 Vm 进行收费？
 
-不能。 某些 Azure 堆栈资源提供程序的虚拟机的使用情况数据报告给 Azure，但这些 Vm，或在部署期间创建的 Vm，若要启用 Azure 堆栈基础结构没有费用是多少。  
+不会。 某些 Azure 堆栈资源提供程序的虚拟机的使用情况数据报告给 Azure，但这些 Vm，或在部署期间创建的 Vm，若要启用 Azure 堆栈基础结构没有费用是多少。  
 
 用户仅收取在租户订阅下运行的 Vm。 所有工作负荷必须部署在租户订阅，以符合 Azure 堆栈的许可条款。
 
@@ -108,3 +108,4 @@ ms.lasthandoff: 12/11/2017
 * [提供者使用情况 API](azure-stack-provider-resource-api.md)  
 * [租户使用情况 API](azure-stack-tenant-resource-usage-api.md)
 * [使用情况常见问题](azure-stack-usage-related-faq.md)
+* [管理使用情况和计费作为云服务提供商](azure-stack-add-manage-billing-as-a-csp.md)

@@ -12,22 +12,27 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 5b71c9fd58636e9871bf592904d5dca4bc0ec966
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 61a3169229cc121c078a934f6b979bdaffafd565
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>脱机 Azure 堆栈上的 Azure 应用服务更新
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
+> [!IMPORTANT]
+> 将 1802年更新应用于你的 Azure 堆栈集成系统，或在部署 Azure App Service 之前部署的最新的 Azure 堆栈开发工具包。
+>
+>
+
 按照这篇文章中的说明进行操作，你可以升级[App Service 资源提供程序](azure-stack-app-service-overview.md)是 Azure 堆栈环境中部署：
 
 * 未连接到 Internet
-* 由 Active Directory 联合身份验证服务 (AD FS) 保护。
+* 受 Active Directory 联合身份验证服务 (AD FS) 保护。
 
 > [!IMPORTANT]
 > 在运行升级之前, 请确保你已经完成[Azure 堆栈资源提供程序上的 Azure 应用程序服务的部署](azure-stack-app-service-deploy-offline.md)
@@ -62,7 +67,7 @@ ms.lasthandoff: 03/08/2018
 
     ![高级应用程序服务安装程序][2]
 
-3. App Service 安装程序创建脱机升级包，并显示的路径。  你可以单击**打开文件夹**以在你的文件资源管理器中打开文件夹。
+3. App Service 安装程序创建脱机升级包，并显示的路径。  可以单击“打开文件夹”，在文件资源管理器中打开该文件夹。
 
 4. 将安装程序 (AppService.exe) 和脱机的升级包复制到 Azure 堆栈主机上。
 
@@ -87,11 +92,11 @@ ms.lasthandoff: 03/08/2018
 
 5. 查看并接受第三方许可条款，然后单击“下一步”。
 
-6. 请确保 Azure 堆栈 Azure 资源管理器终结点和 Active Directory 租户信息是否正确。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以在此处接受默认值。 但是，如果在部署 Azure Stack 时自定义了选项，则必须编辑此窗口中的值以反映该自定义。 例如，如果你使用的域后缀*mycloud.com*，必须将你的 Azure 堆栈 Azure 资源管理器终结点更改为*management.region.mycloud.com*。确认信息后，单击“下一步”。
+6. 请确保 Azure 堆栈 Azure 资源管理器终结点和 Active Directory 租户信息是否正确。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack 时自定义了选项，则必须根据自定义的情况编辑此窗口中的值。 例如，如果你使用的域后缀*mycloud.com*，必须将你的 Azure 堆栈 Azure 资源管理器终结点更改为*management.region.mycloud.com*。确认信息后，单击“下一步”。
 
     ![Azure 堆栈云信息][3]
 
-7. 在下一页上：
+7. 在下一页上执行以下操作：
 
    1. 单击“Azure Stack 订阅”框旁边的“连接”按钮。
         * 如果使用 Azure Active Directory (Azure AD)，请输入在部署 Azure Stack 时提供的 Azure AD 管理员帐户和密码。 单击**登录**。
@@ -103,9 +108,9 @@ ms.lasthandoff: 03/08/2018
 
     ![检测到的应用程序服务安装][4]
 
-8. 在摘要页上：
-   1. 验证所做的选择。 若要进行更改，请使用“上一步”按钮访问前面的页。
-   2. 如果配置正确，则选中复选框。
+8. 在摘要页上执行以下操作：
+   1. 验证所做的选择。 若要进行更改，请使用“上一步”按钮访问前面的页面。
+   2. 如果配置正确，则选中此复选框。
    3. 若要开始升级，请单击**下一步**。
 
        ![App Service 升级摘要][5]
