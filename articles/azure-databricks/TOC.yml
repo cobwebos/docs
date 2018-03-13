@@ -26,7 +26,7 @@
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=analytics'
     - name: 定价
-      href: 'https://azure.microsoft.com/pricing/'
+      href: 'https://azure.microsoft.com/pricing/details/databricks/'
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-databricks'
     - name: 上市区域
