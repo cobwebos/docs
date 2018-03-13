@@ -91,8 +91,10 @@
           maintainContext: true
     - name: Spark 流式处理
       items:
-        - name: 概述
+        - name: 流式处理概述
           href: apache-spark-streaming-overview.md
+        - name: 结构化流概述
+          href: apache-spark-structured-streaming-overview.md
         - name: 在 YARN 中创建高度可用的 Spark 流式处理作业
           href: apache-spark-streaming-high-availability.md
         - name: 使用事件中心进行结构化流式处理

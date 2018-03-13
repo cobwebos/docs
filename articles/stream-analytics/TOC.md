@@ -41,7 +41,7 @@
 ### [Twitter 情绪分析](stream-analytics-twitter-sentiment-analysis-trends.md)
 ### [实时欺诈检测](stream-analytics-real-time-fraud-detection.md)
 ### [在 IoT Edge 上运行作业](stream-analytics-edge.md) 
-### [运行 Javascript UDA](stream-analytics-javascript-user-defined-aggregates.md)
+### [运行 JavaScript UDA](stream-analytics-javascript-user-defined-aggregates.md)
 ### [高频交易](stream-analytics-high-frequency-trading.md)
 ### [运行 Azure Functions](stream-analytics-with-azure-functions.md)
 
@@ -77,7 +77,7 @@
 
 ## 与机器学习集成
 ### [使用 ML 模型进行情绪分析](stream-analytics-machine-learning-integration-tutorial.md)
-### [异常检测](stream-analytics-machine-learning-anomaly-detection.md)
+### [异常情况检测](stream-analytics-machine-learning-anomaly-detection.md)
 ### [使用 REST API](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 
 

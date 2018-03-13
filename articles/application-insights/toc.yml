@@ -121,6 +121,10 @@
               href: app-insights-configuration-with-applicationinsights-config.md
             - name: 快照调试器
               href: app-insights-snapshot-debugger.md
+        - name: ASP.NET Core
+          items:
+            - name: 用于 Linux 应用服务的探查器
+              href: app-insights-profiler-aspnetcore-linux.md
         - name: J2EE
           items:
             - name: 日志跟踪

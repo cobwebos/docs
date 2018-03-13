@@ -12,6 +12,8 @@
       href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 使用 Blob - Azure 门户
       href: storage-quickstart-blobs-portal.md
+    - name: 使用 Blob - 存储资源管理器
+      href: storage-quickstart-blobs-storage-explorer.md
     - name: 使用 Blob - PowerShell
       href: storage-quickstart-blobs-powershell.md
     - name: 使用 Blob - CLI
@@ -28,8 +30,8 @@
       href: storage-quickstart-blobs-ruby.md
     - name: 使用 Blob - Node.js
       href: storage-quickstart-blobs-nodejs.md
-    - name: 使用 Blob - 存储资源管理器
-      href: storage-quickstart-blobs-storage-explorer.md
+    - name: 使用 Blob - PHP
+      href: storage-quickstart-blobs-php.md
 - name: 教程
   items:
     - name: 上传和处理图像

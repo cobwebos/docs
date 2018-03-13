@@ -44,7 +44,7 @@
 ## 管理
 ### [Azure PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
-### [Azure portal](resource-group-portal.md)
+### [Azure 门户](resource-group-portal.md)
 ### [使用标记来组织资源](resource-group-using-tags.md)
 ### [将资源移到新组或订阅](resource-group-move-resources.md)
 ### [创建管理组](management-groups-create.md)
@@ -55,7 +55,7 @@
 ### 创建服务主体
 #### [Azure PowerShell](resource-group-authenticate-service-principal.md)
 #### [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-#### [Azure portal](resource-group-create-service-principal-portal.md)
+#### [Azure 门户](resource-group-create-service-principal-portal.md)
 ### [用于访问订阅的身份验证 API](resource-manager-api-authentication.md)
 ### [锁定资源](resource-group-lock-resources.md)
 
@@ -64,21 +64,20 @@
 ### [查看部署操作](resource-manager-deployment-operations.md)
 
 ## 故障排除
-### [常见部署错误](resource-manager-common-deployment-errors.md)
-#### [AccountNameInvalid](resource-manager-storage-account-name-errors.md)
-#### [InvalidTemplate](resource-manager-invalid-template-errors.md)
-#### [Linux 部署问题](../virtual-machines/linux/troubleshoot-deploy-vm.md)
-#### [NoRegisteredProviderFound](resource-manager-register-provider-errors.md)
-#### [NotFound](resource-manager-not-found-errors.md)
-#### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
-#### [Linux 预配和分配问题](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)
-#### [Windows 预配和分配问题](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)
-#### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
-#### [ReservedResourceName](resource-manager-reserved-resource-name.md)
-#### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
-#### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
-#### [Windows 部署问题](../virtual-machines/windows/troubleshoot-deploy-vm.md)
-### [了解部署错误](resource-manager-troubleshoot-tips.md)
+### [排查部署错误](resource-manager-common-deployment-errors.md)
+### [AccountNameInvalid](resource-manager-storage-account-name-errors.md)
+### [InvalidTemplate](resource-manager-invalid-template-errors.md)
+### [Linux 部署问题](../virtual-machines/linux/troubleshoot-deploy-vm.md)
+### [NoRegisteredProviderFound](resource-manager-register-provider-errors.md)
+### [NotFound](resource-manager-not-found-errors.md)
+### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
+### [Linux 预配和分配问题](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)
+### [Windows 预配和分配问题](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)
+### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
+### [ReservedResourceName](resource-manager-reserved-resource-name.md)
+### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
+### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
+### [Windows 部署问题](../virtual-machines/windows/troubleshoot-deploy-vm.md)
 
 # 引用
 ## [模板格式](/azure/templates/)

@@ -66,6 +66,7 @@
 ### [创建新的模拟设备](iot-suite-remote-monitoring-test.md)
 ### [自定义解决方案](iot-suite-remote-monitoring-customize.md)
 ### [使用 CLI 进行部署](iot-suite-remote-monitoring-deploy-cli.md)
+### [本地部署](iot-suite-remote-monitoring-deploy-local.md)
 ### 连接物理设备
 #### [Windows 上的 C](iot-suite-connecting-devices.md)
 #### [Linux 上的 C](iot-suite-connecting-devices-linux.md)
