@@ -27,6 +27,7 @@
 ### [身份验证和安全模型概述](event-hubs-authentication-and-security-model-overview.md)
 ### [可用性和一致性](event-hubs-availability-and-consistency.md)
 ### [自动缩放吞吐量单位](event-hubs-auto-inflate.md)
+### [将 Apache Spark 与事件中心集成](event-hubs-spark-connector.md)
 ## 开发
 ### [使用 .NET Framework 发送事件](event-hubs-dotnet-framework-getstarted-send.md)
 ### [使用 .NET Framework 接收事件](event-hubs-dotnet-framework-getstarted-receive-eph.md)

@@ -97,7 +97,7 @@
       items:
         - name: 部署应用
           items:
-            - name: 部署 ZIP 文件
+            - name: 部署 ZIP 或 WAR
               href: app-service-deploy-zip.md
             - name: 通过 FTP 进行部署
               href: app-service-deploy-ftp.md

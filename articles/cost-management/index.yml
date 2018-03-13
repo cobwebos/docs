@@ -3,7 +3,7 @@ documentType: LandingData
 title: "Azure 成本管理文档"
 metadata:
   title: "成本管理文档 - 教程和 API 参考 | Microsoft Docs"
-  description: "Cloudyn 提供的 Azure 成本管理是一个多云成本管理解决方案，可帮助客户使用 Azure 和其他云资源。 使用快速入门和教程，了解如何查看用量与成本、主动管理成本、预测开支以及优化成本。"
+  description: "Azure 成本管理是一个多云成本管理解决方案，可帮助你使用 Azure 和其他云资源。 使用快速入门和教程，了解如何查看用量与成本、主动管理成本、预测开支以及优化成本。"
   services: cost-management
   author: czeumault
   manager: carolz
@@ -13,13 +13,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/18/2017
   ms.author: carolz
-  ms.openlocfilehash: d277487ff94578643fd455e460e49299938590d7
-  ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+  ms.openlocfilehash: c88a093c75122c2ff32060ff2780bd4bf4d83f34
+  ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/07/2017
+  ms.lasthandoff: 03/09/2018
 abstract:
-  description: "Cloudyn 提供的 Azure 成本管理是一个多云成本管理解决方案，可帮助客户最充分地利用 Azure 和其他云资源。 使用快速入门和教程，了解如何查看用量与成本、主动管理成本、预测开支以及优化成本。"
+  description: "Cloudyn（一家 Microsoft 子公司）授权的 Azure 成本管理是一个多云成本管理解决方案，可帮助你最佳地利用并管理 Azure 和其他云资源。 使用快速入门和教程，了解如何查看用量与成本、主动管理成本、预测开支以及优化成本。"
 sections:
 - title: "5 分钟快速入门"
   items:

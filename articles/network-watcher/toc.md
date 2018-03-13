@@ -15,19 +15,19 @@
 # 入门
 ## [配置网络观察程序](network-watcher-create.md)
 ## 管理数据包捕获
-### [Azure portal](network-watcher-packet-capture-manage-portal.md)
+### [Azure 门户](network-watcher-packet-capture-manage-portal.md)
 ### [Azure PowerShell](network-watcher-packet-capture-manage-powershell.md)
 ### [Azure CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
 ### [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 ### [REST](network-watcher-packet-capture-manage-rest.md)
 ## 验证流入和流出 VM 的 IP
-### [Azure portal](network-watcher-check-ip-flow-verify-portal.md)
+### [Azure 门户](network-watcher-check-ip-flow-verify-portal.md)
 ### [Azure PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
 ### [Azure CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
 ### [Azure CLI](network-watcher-check-ip-flow-verify-cli.md)
 ### [REST](network-watcher-check-ip-flow-verify-rest.md)
 ## 分析下一跃点
-### [Azure portal](network-watcher-check-next-hop-portal.md)
+### [Azure 门户](network-watcher-check-next-hop-portal.md)
 ### [Azure PowerShell](network-watcher-check-next-hop-powershell.md)
 ### [Azure CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
 ### [Azure CLI](network-watcher-check-next-hop-cli.md)
@@ -38,7 +38,7 @@
 ### [Azure CLI](network-watcher-topology-cli.md)
 ### [REST](network-watcher-topology-rest.md)
 ## VPN 网关和连接故障排除
-### [Azure portal](network-watcher-troubleshoot-manage-portal.md)
+### [Azure 门户](network-watcher-troubleshoot-manage-portal.md)
 ### [Azure PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 ### [Azure CLI 1.0](network-watcher-troubleshoot-manage-cli-nodejs.md)
 ### [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
@@ -49,12 +49,12 @@
 ### [Azure CLI](network-watcher-security-group-view-cli.md)
 ### [REST](network-watcher-security-group-view-rest.md)
 ## 排查连接问题
-### [Azure portal](network-watcher-connectivity-portal.md)
+### [Azure 门户](network-watcher-connectivity-portal.md)
 ### [Azure PowerShell](network-watcher-connectivity-powershell.md)
 ### [Azure CLI](network-watcher-connectivity-cli.md)
 ### [REST](network-watcher-connectivity-rest.md)
 ## 配置 NSG 流日志
-### [Azure portal](network-watcher-nsg-flow-logging-portal.md)
+### [Azure 门户](network-watcher-nsg-flow-logging-portal.md)
 ### [Azure PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 ### [Azure CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
 ### [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
@@ -73,7 +73,9 @@
 ### [使用开放源代码工具可视化网络流量模式](network-watcher-using-open-source-tools.md)
 ## 分析 NSG 流日志
 ### [读取 NSG 流日志](network-watcher-read-nsg-flow-logs.md)
-### [使用流量分析](traffic-analytics.md)
+### 流量分析
+#### [使用流量分析](traffic-analytics.md)
+#### [常见问题](traffic-analytics-faq.md)
 ### [使用 Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 ### [使用 Elastic Stack](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ### [使用 Grafana](network-watcher-nsg-grafana.md)

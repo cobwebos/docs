@@ -42,6 +42,7 @@
 
 ## 使用 MXChip IoT DevKit
 ### [使用 Azure 认知服务转换语音邮件](iot-hub-arduino-iot-devkit-az3166-translator.md)
+### [使用 Azure Functions 检索 Twitter 消息](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 
 # 操作指南
 ## 计划
