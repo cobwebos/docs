@@ -15,17 +15,17 @@ ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
 ms.openlocfilehash: 629e0bbaa7c62ef5d381085588c6a99c203c41cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: HT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: MT Enhanced
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 Twitter 作为 OAuth1 标识提供者
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 本文介绍了如何使用[自定义策略](active-directory-b2c-overview-custom.md)，使 Twitter 帐户用户能够登录。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤。
 
 ## <a name="step-1-create-a-twitter-account-application"></a>步骤 1：创建 Twitter 帐户应用程序
@@ -74,7 +74,7 @@ ms.lasthandoff: 12/11/2017
 
 7. 使用“加密”作为“密钥用法”。
 
-8. 选择“创建” 。
+8. 选择“创建”。
 
 9. 确认已创建 `B2C_1A_TwitterSecret` 密钥。
 

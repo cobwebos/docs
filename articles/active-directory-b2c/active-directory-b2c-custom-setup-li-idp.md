@@ -15,17 +15,17 @@ ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
 ms.openlocfilehash: 77e2b9b283e4051370ffb905681135c27512834e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: HT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: MT Enhanced
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略将 LinkedIn 添加为标识提供者
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 本文介绍如何使用[自定义策略](active-directory-b2c-overview-custom.md)来让 LinkedIn 帐户用户登录。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤。
 
 ## <a name="step-1-create-a-linkedin-account-application"></a>步骤 1：创建 LinkedIn 帐户应用程序
@@ -45,7 +45,7 @@ ms.lasthandoff: 12/11/2017
 
     d.单击“下一步”。 在“网站 URL”框中，粘贴 **https://login.microsoftonline.com**。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 键入**办公电子邮件**地址和**办公电话**号码。
+    e. 键入**办公电子邮件**地址和**办公电话**号码。
 
     f. 在页面底部，阅读并接受使用条款，选择“提交”。
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 12/11/2017
 
 7. 对于“密钥用法”，请选择“加密”。
 
-8. 选择“创建” 。 
+8. 选择“创建”。 
 
 9. 确认已创建 `B2C_1A_LinkedInSecret` 密钥。
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 12/11/2017
 
 2. 搜索 `<ClaimsProviders>` 元素。
 
-3. 在 `<ClaimsProviders>` 元素中添加以下 XML 片段： 
+3. 在 `<ClaimsProviders>` 元素中添加以下 XML 代码片段： 
 
     ```xml
     <ClaimsProvider>
