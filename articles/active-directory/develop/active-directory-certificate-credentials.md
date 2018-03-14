@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 9267a7d2b27930fbcd0aa70ec9e2ddc62b6b0b2a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d05456912324c06a0895cd4cf049b60c9d126904
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>应用程序身份验证的证书凭据
 
-Azure Active Directory 允许应用程序使用自己的凭据进行身份验证，例如，在 OAuth 2.0 客户端凭据授予流程和 On-Behalf-Of 流中就是如此。
+Azure Active Directory 允许应用程序使用自己的凭据进行身份验证，例如，在 OAuth 2.0 客户端凭据授予流 ([v1](active-directory-protocols-oauth-service-to-service.md) [v2](active-directory-v2-protocols-oauth-client-creds.md)) 和代理流 ([v1](active-directory-protocols-oauth-on-behalf-of.md) [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)) 中就是如此。
 可以使用的凭据的一种形式是使用应用程序拥有的证书进行签名的 JSON Web 令牌 (JWT) 断言。
 
 ## <a name="format-of-the-assertion"></a>断言的格式

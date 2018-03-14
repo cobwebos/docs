@@ -2,7 +2,7 @@
 title: "限制和配置 - Azure 逻辑应用 | Microsoft Docs"
 description: "Azure 逻辑应用的服务限制和配置值"
 services: logic-apps
-documentationcenter: .net,nodejs,java
+documentationcenter: 
 author: jeffhollan
 manager: anneta
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5c4597ede16f01c36e147dc0d70acf4b4f5635e8
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 54a35607e107a09188373cc5f71bb3068b4c6bab
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>逻辑应用限制和配置
 
@@ -28,13 +28,13 @@ ms.lasthandoff: 02/28/2018
 
 ### <a name="http-request-limits"></a>HTTP 请求限制
 
-这些限制适用于单个 HTTP 请求或连接器调用。
+以下限制适用于单个 HTTP 请求或连接器调用：
 
 #### <a name="timeout"></a>超时
 
 | 名称 | 限制 | 说明 | 
 | ---- | ----- | ----- | 
-| 请求超时 | 120 秒 | [异步模式](../logic-apps/logic-apps-create-api-app.md)或 [Until 循环](logic-apps-loops-and-scopes.md)可以根据需要进行补偿 |
+| 请求超时 | 120 秒 | [异步模式](../logic-apps/logic-apps-create-api-app.md)或 [Until 循环](logic-apps-control-flow-loops.md)可以根据需要进行补偿 | 
 |||| 
 
 #### <a name="message-size"></a>消息大小
@@ -56,28 +56,21 @@ ms.lasthandoff: 02/28/2018
 
 ### <a name="run-duration-and-retention"></a>运行持续时间和保留期
 
-这些限制适用于单个逻辑应用运行。
+下面是针对单个逻辑应用运行的限制：
 
-| 名称 | 默认 | 限制 |
-| ---- | ------- | ----- |
-| 运行持续时间   | 90 天 | 7 到 90 天 |
-| 存储保留期 | 90 天（从运行开始时间计算） |  7 到 90 天（从运行开始时间计算） |
-||||
+| 名称 | 限制 | 
+| ---- | ----- | 
+| 运行持续时间 | 90 天 | 
+| 存储保留期 | 90 天（从运行开始时间计算） | 
+| 最小重复间隔 | 1 秒 </br>对于带有应用服务计划的逻辑应用：15 秒 | 
+| 最大重复间隔 | 500 天 | 
+||| 
 
-若要在正常处理流中超出运行持续时间或存储保留期限制，请[与产品团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
-
-
-### <a name="recurrence-interval"></a>重复间隔
-
-| 名称 | 限制 |
-| ---- | ------- |
-| 最小重复间隔 | 1 秒 </br>对于带有应用服务计划的逻辑应用：15 秒 |
-| 最大重复间隔 | 500 天 |
-|||
+若要在正常处理流中超出运行持续时间或存储保留期限制，请[与逻辑应用团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
 
 ### <a name="looping-and-debatching-limits"></a>循环和解除批处理限制
 
-这些限制适用于单个逻辑应用运行。
+下面是针对单个逻辑应用运行的限制：
 
 | 名称 | 限制 | 说明 | 
 | ---- | ----- | ----- | 
@@ -89,22 +82,22 @@ ms.lasthandoff: 02/28/2018
 
 ### <a name="throughput-limits"></a>吞吐量限制
 
-这些限制适用于单个逻辑应用资源。
+下面是针对单个逻辑应用实例的限制：
 
 | 名称 | 限制 | 说明 | 
 | ----- | ----- | ----- | 
-| 每 5 分钟执行的操作数 | 100,000 |<p>以 `High Througput` 模式运行逻辑应用可以将此限制提高到 300,000。 可以通过将工作流资源的 `runtimeConfiguration` 下的 `operationOptions` 属性设置为 `OptimizedForHighThroughput` 来配置高吞吐量模式。 <p>请注意高吞吐量模式处于预览状态。 也可以根据需要在多个应用之间分配工作负荷。 | 
+| 每 5 分钟执行的操作数 | 100,000 | 若要将限制增加到 300,000，可以在 `High Througput` 模式下运行逻辑应用。 若要配置高吞吐量模式，请在工作流资源的 `runtimeConfiguration` 下，将 `operationOptions` 属性设置为 `OptimizedForHighThroughput`。 <p>**请注意**：高吞吐量模式处于预览状态。 另外，还可以根据需要在多个应用之间分配工作负荷。 | 
 | 操作并发传出调用数 | ~2,500 | 减少并发请求数，或根据需要减少持续时间。 | 
 | 运行时终结点：并发传入调用数 |~1,000 | 减少并发请求数，或根据需要减少持续时间。 | 
 | 运行时终结点：每 5 分钟读取的调用数  | 60,000 | 可以根据需要在多个应用之间分配工作负荷。 | 
 | 运行时终结点：每 5 分钟调用的调用数| 45,000 |可以根据需要在多个应用之间分配工作负荷。 | 
 |||| 
 
-若要在正常处理中超过这些限制，或要运行可能超过这些限制的负载测试，请[与产品团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
+若要在正常处理中超过这些限制，或要运行可能超过这些限制的负载测试，请[与逻辑应用团队联系](mailto://logicappsemail@microsoft.com)，获取满足要求的帮助。
 
 ### <a name="logic-app-definition-limits"></a>逻辑应用定义限制
 
-这些限制适用于单个逻辑应用定义。
+下面是针对单个逻辑应用定义的限制：
 
 | 名称 | 限制 | 说明 | 
 | ---- | ----- | ----- | 
@@ -136,7 +129,7 @@ ms.lasthandoff: 02/28/2018
 
 ### <a name="integration-account-limits"></a>集成帐户限制
 
-这些限制适用于可添加到集成帐户的项目。
+下面介绍了可添加到集成帐户的项目所要遵循的限制。
 
 | 名称 | 限制 | 说明 | 
 | ---- | ----- | ----- | 
@@ -155,7 +148,7 @@ ms.lasthandoff: 02/28/2018
 | 名称 | 限制 | 说明 | 
 | ---- | ----- | ----- | 
 | 协议 | 10 | | 
-| 其他项目类型 | 25 |项目类型包括合作伙伴、架构、证书和地图。 每种类型包含的项目数量不得超过上限。 | 
+| 其他项目类型 | 25 | 项目类型包括合作伙伴、架构、证书和地图。 每种类型包含的项目数量不得超过上限。 | 
 |||| 
 
 #### <a name="standard-pricing-tier"></a>标准定价层
@@ -167,7 +160,7 @@ ms.lasthandoff: 02/28/2018
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>B2B 协议（AS2、X12、EDIFACT）消息大小
 
-这些限制适用于 B2B 协议。
+以下限制适用于 B2B 协议：
 
 | 名称 | 限制 | 说明 | 
 | ---- | ----- | ----- | 

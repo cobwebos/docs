@@ -4,20 +4,20 @@ description: "了解如何在 Azure Active Directory 和 Slack 之间配置单�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: ffc5e73f-6c38-4bbb-876a-a7dd269d4e1c
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2017
+ms.date: 02/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 67d95b48520cd990428447dc775d9af22528c0f0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cd0cecde7f98e73911e7dec734cffeeee6f09a72
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>教程：Azure Active Directory 与 Slack 集成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Slack
 - 可以让用户使用其 Azure AD 帐户自动登录到 Slack（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Slack 的集成，需要具有以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Slack 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -121,6 +121,9 @@ ms.lasthandoff: 12/11/2017
     
     ![配置单一登录](./media/active-directory-saas-slack-tutorial/tutorial_slack_attribute.png)
 
+    > [!NOTE] 
+    > 如果用户有使 Office365 分配的**电子邮件地址**，则只会填充该地址，否则**电子邮件地址**声明将不会出现在 SAML 令牌中。
+
 5. 在“单一登录”对话框上的“用户属性”部分中，选择“user.mail”作为**用户标识符**，并针对下表中所示的每一行，执行以下步骤：
     
     | 属性名称 | 属性值 |
@@ -137,8 +140,10 @@ ms.lasthandoff: 12/11/2017
     a. 在“名称”文本框中，键入为该行显示的属性名称。
     
     b. 在“值”列表中，选择为该行显示的属性值。
+
+    c. 将“命名空间”留空。
     
-    c. 单击 **“确定”**
+    d.单击“下一步”。 单击 **“确定”**
 
 6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -148,7 +153,7 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-slack-tutorial/tutorial_general_400.png)
 
-8. 在“Slack 配置”部分中，单击“配置 Slack ”打开“配置登录”窗口。 从“快速参考”部分中复制 SAML 实体 ID 和 SAML 单一登录服务 URL。
+8. 在“Slack 配置”部分中，单击“配置 Slack ”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/active-directory-saas-slack-tutorial/tutorial_slack_configure.png) 
 
@@ -172,9 +177,9 @@ ms.lasthandoff: 12/11/2017
 
     c.  在记事本中打开下载的证书，将其内容复制到剪贴板，并将其粘贴到“公共证书”文本框中。
 
-    d. 根据 Slack 团队的需要配置上述三个设置。 有关设置的详细信息，请在此处查看 **Slack 的 SSO 配置指南**。 `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
+    d.单击“下一步”。 根据 Slack 团队的需要配置上述三个设置。 有关设置的详细信息，请在此处查看 **Slack 的 SSO 配置指南**。 `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。  单击“保存配置”。
+    e.  单击“保存配置”。
      
     <!-- Deselect **Allow users to change their email address**.
 
@@ -211,11 +216,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d.单击“下一步”。 单击“创建”。
  
 ### <a name="creating-a-slack-test-user"></a>创建 Slack 测试用户
 
@@ -265,7 +270,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 

@@ -7,7 +7,7 @@
 | 每个 Batch 帐户的池数 | 20 - 100 | 2500 |
 
 > [!NOTE]
-> 默认限制因用于创建 Batch 帐户的订阅类型而异。 显示的核心配额适用于 Batch 服务模式下的 Batch 帐户。
+> 默认限制因用于创建 Batch 帐户的订阅类型而异。 显示的核心配额适用于 Batch 服务模式下的 Batch 帐户。 [查看 Batch 帐户中的配额](../articles/batch/batch-quota-limit.md#view-batch-quotas)。 
 
 <sup>1</sup> 可以增加每个批处理帐户的专用核心数，但不指定其最大数目。 请联系 Azure 支持以讨论增加选项。
 

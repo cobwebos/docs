@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: dab336da4e010d0a78de9a2bdd62536d8fdd9bf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: klam; LADocs
+ms.openlocfilehash: de4f4ee086fbf3799fcac1f1b008d9237b5e7a09
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流
 
@@ -30,12 +30,12 @@ ms.lasthandoff: 10/11/2017
 
 * [请求](../connectors/connectors-native-reqres.md)
 
-* [API 连接 Webhook](logic-apps-workflow-actions-triggers.md#api-connection-trigger)
+* [API 连接 Webhook](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnection-trigger)
 
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 
    > [!NOTE]
-   > 尽管本文中的示例使用“请求”触发器，但也可使用任何所列的 HTTP 触发器，所有原理同样适用于其他触发器类型。
+   > 尽管这些示例使用“请求”触发器，但也可使用任何所列的 HTTP 触发器，所有原理同样适用于其他触发器类型。
 
 ## <a name="set-up-an-http-endpoint-for-your-logic-app"></a>设置逻辑应用的 HTTP 终结点
 
@@ -166,6 +166,7 @@ ms.lasthandoff: 10/11/2017
     `Hello 123456`
 
 <a name="generated-tokens"></a>
+
 ### <a name="tokens-generated-from-json-schemas-for-your-logic-app"></a>从 JSON 架构为逻辑应用生成的令牌
 
 在“请求”触发器中提供 JSON 架构时，逻辑应用设计器会在该架构中生成属性的令牌。 然后，可以使用这些令牌通过逻辑应用工作流传递数据。
@@ -206,6 +207,9 @@ ms.lasthandoff: 10/11/2017
 
 创建 HTTP 终结点之后，可以通过针对整个 URL 执行 `POST` 方法来触发逻辑应用。 逻辑应用对直接访问终结点提供内置支持。
 
+> [!NOTE] 
+> 在任何时候若要手动运行逻辑应用，请在逻辑应用设计器或逻辑应用代码视图工具栏上，选择“运行”。
+
 ## <a name="reference-content-from-an-incoming-request"></a>引用传入请求中的内容
 
 如果内容的类型为 `application/json`，可以引用传入请求中的属性。 否则，内容被视为可以传递给其他 API 的单个二进制单元。 若要引用工作流中的此内容，则必须转换此内容。 例如，如果传递 `application/xml` 内容，可以使用 `@xpath()` 执行 XPath 提取，或使用 `@json()` 将 XML 转换为 JSON。 了解[处理内容类型](../logic-apps/logic-apps-content-type.md)。
@@ -234,7 +238,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="construct-the-response"></a>构造响应
 
-可以在响应正文中包含多个标头和任何类型的内容。 在我们的示例响应中，标头指定响应的内容类型为 `application/json`。 正文根据前面为“请求”触发器更新的 JSON 架构包含 `title` 和 `name`。
+可以在响应正文中包含多个标头和任何类型的内容。 在示例响应中，标头指定响应的内容类型为 `application/json`。 正文根据前面为“请求”触发器更新的 JSON 架构包含 `title` 和 `name`。
 
 ![HTTP 响应操作][3]
 

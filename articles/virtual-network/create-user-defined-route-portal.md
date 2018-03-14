@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2017
 ms.author: jdial
 ms.openlocfilehash: 0319029277091611673f15c94604604850cbfcbe
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="create-a-user-defined-route---azure-portal"></a>创建用户定义的路由 - Azure 门户
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 11/11/2017
         |密码和确认密码|输入所选密码|
         |订阅|选择订阅|
         |资源组|单击“使用现有资源组”，然后单击“myResourceGroup”|
-        |位置|美国东部|
+        |Location|美国东部|
     - 在所显示的“选择大小”边栏选项卡上单击“DS1_V2 标准”，并单击“选择”。
     - 在显示的“设置”边栏选项卡上，单击“虚拟网络”。 在所显示的“选择虚拟网络”边栏选项卡中，单击“myVnet”。
     - 在“设置”边栏选项卡中，单击“子网”。 在所显示的“选择子网”边栏选项卡中单击“DMZ”。 
@@ -82,7 +82,7 @@ ms.lasthandoff: 11/11/2017
     - 在门户顶部的“搜索资源”框中输入 myVm-Nva。
     - 单击出现在搜索结果中的“myVm-Nva”。
     - 在左侧“设置”下单击“网络”。
-    - 在“myVm-Nva - 网络接口”下单击网络接口名称。 名称是 myvm-nvaX，其中 X 是门户分配的数字。
+    - 在“myVm-Nva - 网络接口”下单击网络接口名称。 名称是**myvm-nva***X*，其中 *X* 是门户分配的数字。
     - 在网络接口的“设置”下，单击“IP 配置”，如下图所示：
 
         ![网络接口设置](./media/create-user-defined-route/network-interface-settings.png)
@@ -105,7 +105,7 @@ ms.lasthandoff: 11/11/2017
         |名称|myRouteTable-Public|
         |订阅|选择订阅|
         |资源组|选择“使用现有资源组”，然后单击“myResourceGroup”|
-        |位置|美国东部|
+        |Location|美国东部|
     
     - 再次完成步骤 8 的上一个分步，将路由表命名为 myRouteTable-Private。
 9. 将路由添加到 myRouteTable-Private 路由表中，并将此路由表与“公共”子网关联：

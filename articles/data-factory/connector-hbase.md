@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 02/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 47a4f6a56c1e5a47f70bb6d6ba2dd980346653ad
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 543d0ec5d0c94b793b1e825d44356039b366908a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>使用 Azure 数据工厂从 HBase 复制数据 
 
@@ -45,7 +45,7 @@ HBase 链接服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**HBase** | 是 |
-| host | HBase 服务器的 IP 地址或主机名。 （即 192.168.222.160）  | 是 |
+| host | HBase 服务器的 IP 地址或主机名。 （即 192.168.222.160，[clustername].azurehdinsight.net）  | 是 |
 | 端口 | HBase 实例用来侦听客户端连接的 TCP 端口。 默认值为 9090。  | 否 |
 | httpPath | 对应于 HBase 服务器的部分 URL。 （即 /gateway/sandbox/hbase/version）  | 否 |
 | authenticationType | 用于连接到 HBase 服务器的身份验证机制。 <br/>允许的值为：Anonymous、Basic | 是 |
@@ -57,7 +57,7 @@ HBase 链接服务支持以下属性：
 | allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果可以公开访问数据存储，则可以使用自承载集成运行时或 Azure 集成运行时。 如果未指定，则使用默认 Azure 集成运行时。 |否 |
 
-**示例：**
+**HDInsights HBase 的示例：**
 
 ```json
 {
@@ -65,9 +65,36 @@ HBase 链接服务支持以下属性：
     "properties": {
         "type": "HBase",
         "typeProperties": {
-            "host" : "<host>",
+            "host" : "<cluster name>.azurehdinsight.net",
+            "port" : "443",
+            "httpPath" : "<e.g. hbaserest>",
+            "authenticationType" : "Basic",
+            "username" : "<username>",
+            "password": {
+                 "type": "SecureString",
+                 "value": "<password>"
+            },
+            "enableSsl" : true
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**通用 HBase 的示例：**
+
+```json
+{
+    "name": "HBaseLinkedService",
+    "properties": {
+        "type": "HBase",
+        "typeProperties": {
+            "host" : "<host e.g. 192.168.222.160>",
             "port" : "<port>",
-            "httpPath" : "/gateway/sandbox/hbase/version",
+            "httpPath" : "<e.g. /gateway/sandbox/hbase/version>",
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {

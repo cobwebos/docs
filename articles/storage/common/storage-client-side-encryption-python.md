@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.openlocfilehash: bf6696cfdfe9fc18dd2f000162a4e787a7ca6e21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c925b41d1654bd5c9b40438c4b6b9f402ec4bac2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>针对 Microsoft Azure 存储使用 Python 的客户端加密
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -106,6 +106,10 @@ ms.lasthandoff: 10/11/2017
 请注意，使用批的加密策略将实例插入批时，会将实体加密（使用 tableservice 的加密策略提交批时不会加密实体）。
 
 ### <a name="queries"></a>查询
+> [!NOTE]
+> 由于实体已加密，因此不能运行根据已加密属性进行筛选的查询。  如果尝试运行，结果将会不正确，因为该服务会尝试将已加密的数据与未加密的数据进行比较。
+> 
+>
 若要执行查询操作，必须指定一个能够解析结果集中的所有密钥的密钥解析程序。 如果查询结果中包含的实体不能解析为提供程序，则客户端库将引发错误。 对于执行服务器端投影的任何查询，在默认情况下，客户端库将为所选列添加特殊的加密元数据属性（\_ClientEncryptionMetadata1 和 \_ClientEncryptionMetadata2）。
 
 > [!IMPORTANT]

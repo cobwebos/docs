@@ -3,7 +3,7 @@ title: "在 Windows Server 和 Linux 上创建 Azure Service Fabric 群集 | Mic
 description: "Service Fabric 群集会在 Windows Server 或 Linux 上运行，这意味着可以在能够运行 Windows Server 和 Linux 的任何位置部署和承载 Service Fabric 应用程序。"
 services: service-fabric
 documentationcenter: .net
-author: Chackdan
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/19/2017
-ms.author: chackdan
-ms.openlocfilehash: e3cfad19e42af24edd68befd7b1eac8cef41a1d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: dekapur
+ms.openlocfilehash: 63b7bfa5ca357470f5ed36a4cdf943cee779f0fc
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>在 Windows Server 或 Linux 上创建 Service Fabric 群集
 Azure Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 群集中的计算机或 VM 称为群集节点。 群集可以扩展到数千个节点。 如果向群集添加新节点，Service Fabric 会在新增加的节点间重新平衡服务分区副本和实例。 应用程序总体性能提高，访问内存的争用减少。 如果没有高效使用群集中的节点，可以减少群集中节点的数量。 Service Fabric 会再次在减少的节点间重新平衡分区副本和实例以更加充分利用每个节点上的硬件。
@@ -33,7 +33,12 @@ Azure Service Fabric 群集是一组通过网络连接在一起的虚拟机或�
 
 * Windows Server 2012 R2
 * Windows Server 2016 
-* Linux Ubuntu 16.04  
+* Windows Server 1709
+* Linux Ubuntu 16.04
+
+> [!NOTE]
+> 如果决定要在 Windows Server 1709 上部署 Service Fabric，请注意，(1) 它不是长期服务分支，因此你可能必须在将来迁移版本 (2) 如果部署容器，基于 Windows Server 2016 构建的容器不适用于 Windows Server 1709，反之亦然（你必须重新生成它们才能对其进行部署）。
+>
 
 ## <a name="create-service-fabric-standalone-clusters-on-premises-or-with-any-cloud-provider"></a>在本地或者与任何云提供商合作创建 Service Fabric 独立群集
 Service Fabric 提供一个安装包，用于在本地或者与任何云提供商合作创建独立的 Service Fabric 群集。
@@ -65,7 +70,7 @@ Service Fabric 提供一个安装包，用于在本地或者与任何云提供�
 在 Azure 上运行 Service Fabric 群集相对于本地运行具有一些优势，因此，如果对于群集的运行位置没有特定需求，则我们建议在 Azure 上运行它们。 在 Azure 上，我们提供与其他 Azure 功能和服务的集成，这样可使群集的操作和管理更容易且更可靠。
 
 * **Azure 门户：**Azure 门户使群集易于创建和管理。
-* **Azure Resource Manager：**使用 Azure Resource Manager 可以单元的形式方便地管理群集使用的所有资源，并简化了成本跟踪和计费。
+* **Azure 资源管理器：**使用 Azure 资源管理器可以单元的形式方便地管理群集使用的所有资源，并简化了成本跟踪和计费。
 * **用作 Azure 资源的 Service Fabric 群集** Service Fabric 群集是一种 Azure 资源，因此可以像在 Azure 中对其他资源建模一样为它建模。
 * **与 Azure 基础结构集成** Service Fabric 与适用于 OS、网络和其他升级的 Azure 基础结构相协调，以提高应用程序的可用性与可靠性。  
 * **诊断：**在 Azure 中，我们提供与 Azure 诊断和 Log Analytics 的集成。

@@ -13,26 +13,24 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/21/2017
+ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 568509eba47facfc5966d06dff5a1b32dce1008f
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 62e047d706bdc42abbe44340c87267e59eb84369
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>准备环境以备份 Resource Manager 部署的虚拟机
 
-本文提供有关准备环境以备份 Azure 资源管理器部署的虚拟机 (VM) 的步骤。 过程中显示的步骤将使用 Azure 门户。  
-
-Azure 备份服务提供两种类型的保管库用于保护 VM：备份保管库和恢复服务保管库。 借助备份保管库可通过经典部署模型保护部署的 VM。 借助恢复服务保管库可保护经典部署的 VM 和资源管理器部署的 VM。 如果想要保护资源管理器部署的 VM，必须使用恢复服务保管库。
+本文提供有关准备环境以备份 Azure 资源管理器部署的虚拟机 (VM) 的步骤。 过程中显示的步骤将使用 Azure 门户。 在恢复服务保管库中存储虚拟机备份数据。 该保管库可保存经典部署虚拟机和资源管理器部署虚拟机的备份数据。
 
 > [!NOTE]
 > Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。
 
-请确保符合以下先决条件，这样才能保护或备份资源管理器部署的虚拟机：
+在保护（或备份）资源管理器部署虚拟机之前，请确保符合以下先决条件：
 
-* 在与 VM 相同的位置创建恢复服务保管库（或标识现有的恢复服务保管库）。
+* 在 VM 所在区域中创建恢复服务保管库（或标识现有的恢复服务保管库）。
 * 选择方案、定义备份策略并定义要保护的项。
 * 检查虚拟机上的 VM 代理安装。
 * 检查网络连接。
@@ -44,7 +42,7 @@ Azure 备份服务提供两种类型的保管库用于保护 VM：备份保管�
  * **Linux**：Azure 备份支持 [Azure 认可的分发版列表](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，但 CoreOS Linux 除外。 
  
     > [!NOTE] 
-    > 只要虚拟机上装有 VM 代理且支持 Python，其他自带 Linux 分发版应该也能正常运行。 但是，我们并未认证可将这些分发版用于备份。
+    > 只要虚拟机上装有 VM 代理且支持 Python，其他自带 Linux 发行版应该也能正常运行。 但是，不支持这些发行版。
  * **Windows Server**：不支持低于 Windows Server 2008 R2 的版本。
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>备份和还原 VM 时的限制
@@ -54,16 +52,17 @@ Azure 备份服务提供两种类型的保管库用于保护 VM：备份保管�
 * 不支持备份数据磁盘大小超过 1,023 GB 的虚拟机。
 
   > [!NOTE]
-  > 我们提供了个人预览版以支持带有 > 1TB 磁盘的 VM 的备份。 有关详细信息，请参阅[支持大型磁盘 VM 备份的专用预览版](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)。
+  > 我们提供了个人预览版以支持带有大于 1 TB 磁盘的 VM 的备份。 有关详细信息，请参阅[支持大型磁盘 VM 备份的专用预览版](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)。
   >
 
 * 不支持备份使用保留 IP 地址且未定义终结点的虚拟机。
-* 不支持备份仅通过 BitLocker 加密密钥 (BEK) 加密的 VM。 不支持备份通过 Linux 统一密钥设置 (LUKS) 加密法加密的 Linux VM。
+* 不支持备份通过 Linux 统一密钥设置 (LUKS) 加密法加密的 Linux VM。
 * 不建议备份包含群集共享卷 (CSV) 或横向扩展文件服务器配置的 VM。 这些操作涉及到在执行快照任务执行期间包含在群集配置中的所有 VM。 Azure 备份不支持多 VM 一致性。 
 * 备份数据不包括连接到 VM 的网络挂载驱动器。
 * 不支持在恢复过程中替换现有虚拟机。 如果在 VM 存在时尝试还原 VM，还原操作会失败。
 * 不支持跨区域备份和还原。
-* 当前不支持在应用了网络规则的存储帐户中备份和还原使用非托管磁盘的虚拟机。 配置备份时，请确保存储帐户的“防火墙和虚拟网络”设置允许从“所有网络”进行访问。
+* 不支持在应用了网络规则的存储帐户中备份和还原使用非托管磁盘的虚拟机。 
+* 配置备份时，请确保“防火墙和虚拟网络”存储帐户设置允许从“所有网络”进行访问。
 * 可以在 Azure 的所有公共区域中备份虚拟机。 （请参阅支持区域的[清单](https://azure.microsoft.com/regions/#services)。）在创建保管库期间，如果要寻找的区域目前不受支持，则不会在下拉列表中显示它。
 * 仅支持通过 PowerShell 还原属于多 DC 配置的域控制器 (DC) VM。 有关详细信息，请参阅[还原多 DC 域控制器](backup-azure-arm-restore-vms.md#restore-domain-controller-vms)。
 * 仅支持通过 PowerShell 还原采用以下特殊网络配置的虚拟机。 还原操作完成后，在 UI 中通过还原工作流创建的 VM 将不采用这些网络配置。 若要了解详细信息，请参阅[还原采用特殊网络配置的 VM](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations)。
@@ -106,7 +105,7 @@ Azure 备份服务提供两种类型的保管库用于保护 VM：备份保管�
 现已创建保管库，接下来请了解如何设置存储复制。
 
 ## <a name="set-storage-replication"></a>设置存储复制
-使用存储复制选项可在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，保管库具有异地冗余存储。 如果这是主要备份，请将选项保持设置为异地冗余存储。 如果想要一个更便宜、但持久性不高的选项，请选择“本地冗余存储”。
+使用存储复制选项可在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，保管库具有异地冗余存储。 对于主要备份，请将选项保持设置为异地冗余存储。 如果想要一个更便宜、但持久性不高的选项，请选择“本地冗余存储”。
 
 若要编辑存储复制设置，请执行以下操作：
 
@@ -126,9 +125,7 @@ Azure 备份服务提供两种类型的保管库用于保护 VM：备份保管�
 选择保管库的存储选项后，可以开始将 VM 与保管库相关联。 若要开始关联，请发现及注册 Azure 虚拟机。
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>选择备份目标、设置策略并定义要保护的项
-向保管库注册 VM 之前，请先执行发现过程，确保能够识别任何添加到订阅中的新虚拟机。 该过程会在 Azure 上查询订阅中的虚拟机列表和云服务名称、区域等信息。 
-
-在 Azure 门户中，方案是指要放入恢复服务保管库中的项。 策略是有关恢复点创建频率和时间的计划。 策略还包含恢复点的保留范围。
+向恢复服务保管库注册虚拟机之前，请运行发现过程以确定是否有任何新的虚拟机已添加到订阅。 发现过程将在 Azure 中查询订阅中的虚拟机列表。 如果找到新的虚拟机，门户将显示云服务名称和关联的区域。 在 Azure 门户中，*方案*是你在恢复服务保管库中输入的内容。 策略是有关恢复点创建频率和时间的计划。 策略还包含恢复点的保留范围。
 
 1. 如果已打开恢复服务保管库，请转到步骤 2。 如果尚未打开恢复服务保管库，请打开 [Azure 门户](https://portal.azure.com/)。 在“中心”菜单中，选择“更多服务”。
 
@@ -170,7 +167,7 @@ Azure 备份服务提供两种类型的保管库用于保护 VM：备份保管�
 
    ![“选择虚拟机”窗格](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-   所选虚拟机已验证。 如果未看到所需的虚拟机，请检查它们是否在恢复服务保管库所在的同一个 Azure 位置，并且是否尚未在其他保管库中受保护。 保管库仪表板将显示恢复服务保管库的位置。
+   所选虚拟机已验证。 如果未看到所需的虚拟机，请检查这些虚拟机是否位于恢复服务保管库所在的同一个 Azure 区域。 如果仍看不到虚拟机，请检查它们是否尚未受其他保管库保护。 保管库仪表板将显示恢复服务保管库所在的区域。
 
 6. 定义保管库的所有设置后，请在“备份”窗格中选择“启用备份”。 此步骤将策略部署到保管库和 VM。 此步骤不会创建虚拟机的初始恢复点。
 

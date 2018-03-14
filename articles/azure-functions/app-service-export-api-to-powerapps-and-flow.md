@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: mahender; mblythe
-ms.openlocfilehash: 7482ca27c2edcb281180fb8fbbfb1884a515d379
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 2d7ef0d4b2669b774b1d218d244052083e883517
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>将 Azure 托管的 API 导出到 PowerApps 和 Microsoft Flow
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/18/2017
 同样，希望在组织内较大范围公开其 API 的开发人员可向应用和流生成器提供其 API。 本主题说明如何导出使用 [Azure Functions](../azure-functions/functions-overview.md) 或 [Azure App Service](../app-service/app-service-web-overview.md) 生成的 API。 导出的 API 将成为自定义连接器，它在 PowerApps 和 Microsoft Flow 中的用法与内置连接器类似。
 
 ## <a name="create-and-export-an-api-definition"></a>创建并导出 API 定义
-导出 API 前，必须使用 OpenAPI 定义（以前称为 [Swagger](http://swagger.io/) 文件）描述 API。 此定义中包含的信息涉及 API 中哪些操作可用，以及 API 的请求和响应数据应采用怎样的结构。 PowerApps 和 Microsoft Flow 可为任意 OpenAPI 2.0 定义创建自定义连接器。 Azure Functions 和 Azure App Service 具有内置支持，用于创建、托管和管理 OpenAPI 定义。 有关详细信息，请参阅[在 Azure Web 应用中创建 RESTful API](../app-service/app-service-web-tutorial-rest-api.md)。
+导出 API 前，必须使用 OpenAPI 定义（以前称为 [Swagger](http://swagger.io/) 文件）描述 API。 此定义中包含的信息涉及 API 中哪些操作可用，以及 API 的请求和响应数据应采用怎样的结构。 PowerApps 和 Microsoft Flow 可为任意 OpenAPI 2.0 定义创建自定义连接器。 Azure Functions 和 Azure App Service 具有内置支持，用于创建、托管和管理 OpenAPI 定义。 有关详细信息，请参阅[在 Azure 应用服务中使用 CORS 托管 RESTful API](../app-service/app-service-web-tutorial-rest-api.md)。
 
 > [!NOTE]
 > 也可以在 PowerApps 和 Microsoft Flow UI 中生成自定义连接器，而不使用 OpenAPI 定义。 有关详细信息，请参阅[注册并使用自定义连接器 (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) 以及[注册并使用自定义连接器 (Microsoft Flow)](https://flow.microsoft.com/documentation/register-custom-api/)。

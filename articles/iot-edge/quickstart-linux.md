@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 440b70f4d04728973d77e54e7f6303e1ad7fcd89
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 827fe91c14a44cbaf8a9bb5921e5c9962d984414
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>快速入门：将第一个 IoT Edge 模块部署到 Linux 或 Mac 设备 - 预览
 
@@ -21,7 +21,7 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 在本主题中�
 
 如果没有可用的 Azure 订阅，可以在开始前创建一个[免费帐户][lnk-account]。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 本快速入门使用计算机或虚拟机，如物联网设备。 若要将计算机转换为 IoT Edge 设备，需要以下服务：
 
@@ -70,22 +70,22 @@ Azure IoT Edge 将云带来的价值转移至物联网设备。 在本主题中�
 IoT Edge 运行时部署在所有 IoT Edge 设备上。 它由两个模块组成。 首先，IoT Edge 代理协助部署和监视 IoT Edge 设备上的模块。 其次，IoT Edge 中心管理 IoT Edge 设备模块之间以及设备和 IoT 中心之间的通信。 
 
 在即将运行 IoT Edge 设备的计算机上，下载 IoT Edge 控件脚本：
-```cmd
+```bash
 sudo pip install -U azure-iot-edge-runtime-ctl
 ```
 
 使用上一节的 IoT Edge 设备连接字符串配置运行时：
-```cmd
+```bash
 sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
 ```
 
 启动运行时：
-```cmd
+```bash
 sudo iotedgectl start
 ```
 
 检查 Docker，查看 IoT Edge 代理是否正作为模块运行：
-```cmd
+```bash
 sudo docker ps
 ```
 
@@ -101,7 +101,7 @@ sudo docker ps
 
 在运行模拟设备的计算机上再次打开命令提示符。 确认从云中部署的模块正在 IoT Edge 设备上运行：
 
-```cmd
+```bash
 sudo docker ps
 ```
 
@@ -109,7 +109,7 @@ sudo docker ps
 
 查看从 tempSensor 模块发送到云的消息：
 
-```cmd
+```bash
 sudo docker logs -f tempSensor
 ```
 
@@ -118,6 +118,12 @@ sudo docker logs -f tempSensor
 还可使用 [IoT 中心资源管理器工具][lnk-iothub-explorer]查看设备正在发送的遥测。 
 
 ## <a name="clean-up-resources"></a>清理资源
+
+如果想要删除已创建的模拟设备以及已为每个模块启动的 Docker 容器，请使用以下命令： 
+
+```bash
+sudo iotedgectl uninstall
+```
 
 当不再需要创建的 IoT 中心时，可以使用 [az iot hub delete][lnk-delete] 命令删除资源和与资源相关联的设备：
 

@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: d7c33dc0a3c1f01cc53a91e05feb33272cb21f47
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 1266c7b6c1539f84eafea1007999fb4360184857
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>使用本地编码器实时传送视频流以创建多比特率流
 ## <a name="overview"></a>概述
@@ -209,6 +209,10 @@ ms.lasthandoff: 11/15/2017
 下面是与使用频道及其相关组件相关的其他注意事项：
 
 * 每次重新配置实时编码器时，可调用频道上的**重置**方法。 在重置频道之前，必须停止节目。 在重置频道后，重新启动节目。
+
+  > [!NOTE]
+  > 重新启动节目时，需要将其与新资产相关联，并创建新定位符。 
+  
 * 只有当频道处于“正在运行”状态且频道中的所有节目都已停止时，才能停止频道。
 * 默认情况下，只能向媒体服务帐户添加五个频道。 有关详细信息，请参阅[配额和限制](media-services-quotas-and-limitations.md)。
 * 仅当频道处于“正在运行”状态时才会向你收费。 有关详细信息，请参阅[频道状态和计费](media-services-live-streaming-with-onprem-encoders.md#states)部分。

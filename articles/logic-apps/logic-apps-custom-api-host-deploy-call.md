@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: LADocs; stepsic
-ms.openlocfilehash: 3df59ec172b037daaeed9e3eb69ffb990d70d8a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c7a240bf5b7ed5e7780b90f438d2e336ee79f0b3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="deploy-and-call-custom-apis-from-logic-app-workflows"></a>从逻辑应用工作流部署和调用自定义 API
 
@@ -39,13 +39,13 @@ ms.lasthandoff: 10/11/2017
 
    ![链接到自定义 API 的 OpenAPI 文件](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
-3. 在“API”下，选择“CORS”。 将“允许的来源”的 CORS 策略设置为 **'*'**（允许所有）。
+3. 在“API”下，选择“CORS”。 将“允许的源”的 CORS 策略设置为 **'*'**（允许所有）。
 
    此设置允许来自逻辑应用设计器的请求。
 
    ![允许从逻辑应用设计器向自定义 API 发送请求](./media/logic-apps-custom-api-deploy-call/custom-api-cors.png)
 
-有关详细信息，请参阅[生成 Node.js RESTful API](../app-service/app-service-web-tutorial-rest-api.md)。
+有关详细信息，请参阅[在 Azure 应用服务中使用 CORS 托管 RESTful API](../app-service/app-service-web-tutorial-rest-api.md)。
 
 ## <a name="call-your-custom-api-from-logic-app-workflows"></a>从逻辑应用工作流调用自定义 API
 

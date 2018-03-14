@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: e1d623c831a912598db72ccd0242cf827c88ee6c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2a6fe85c2c3d6d4f44dc197db6c28ebbc2b1d431
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -318,7 +318,7 @@ RequestBin 并不适合在高吞吐量方案中使用。 如果一次推送多�
 http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={methodname}
 ``` 
 
-`functionName` 参数必须是方法名称，而不能是 `FunctionName` 特性中指定的名称。 因此，如果项目包含多个函数，则这些函数需要使用唯一的方法名称（不能全部命名为 `Run`）才能对事件网格触发器进行本地测试。
+`functionName` 参数必须是在 `FunctionName` 特性中指定的名称。
 
 以下屏幕截图显示了 Postman 中的标头和请求正文：
 
@@ -379,7 +379,7 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
 https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={methodname}
 ``` 
 
-`functionName` 参数必须是方法名称，而不能是 `FunctionName` 特性中指定的名称。 因此，如果项目包含多个函数，则这些函数需要使用唯一的方法名称（不能全部命名为 `Run`）才能对事件网格触发器进行本地测试。
+`functionName` 参数必须是在 `FunctionName` 特性中指定的名称。
 
 下面是使用 Azure CLI 的示例：
 

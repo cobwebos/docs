@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 02/20/2018
+ms.date: 02/28/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: dce848d75e2ce89e8e6003108f1cd5371cbb0f31
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: cc3ea7f81a924f3f4baa6fd2866c4e552b7c160e
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>在 Azure Active Directory 中为 Office 365 组实施命名策略（预览版）
 
@@ -100,7 +100,9 @@ ms.lasthandoff: 02/21/2018
   Import-Module AzureADPreview
   Connect-AzureAD
   ````
-在打开的“登录到你的帐户”屏幕上，输入管理员帐户和密码以连接到服务，然后选择“登录”。
+  在打开的“登录到你的帐户”屏幕上，输入管理员帐户和密码以连接到服务，然后选择“登录”。
+
+3. 按照[用于配置组设置的 Azure Active Directory cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md) 中的步骤创建此租户的组设置。
 
 ### <a name="view-the-current-settings"></a>查看当前设置
 
@@ -140,7 +142,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="export-or-import-the-list-of-custom-blocked-words"></a>导出或导入自定义阻止字词列表
 
-有关详细信息，请参阅[用于配置组设置的 Azure Active Directory cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
+有关详细信息，请参阅[用于配置组设置的 Azure Active Directory cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md) 一文。
 
 下面的 PowerShell 脚本示例可导出多个阻止字词：
 

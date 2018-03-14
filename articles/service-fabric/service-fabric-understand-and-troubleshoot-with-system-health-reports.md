@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: f2a07d58938ae77701d8df8099ec0aedf1524d6b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: def4f1cdcd173e26964f9be11266d0e1a20fcafa
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
 Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还将这些实体组织为层次结构以捕获实体交互。
@@ -31,7 +31,7 @@ Azure Service Fabric 组件提供有关现成群集中所有实体的系统运�
 使用系统运行状况报告，不仅可以查看群集和应用程序功能，还能标记问题。 对于应用程序和服务，系统运行状况报告从 Service Fabric 的角度验证实体得到实现并且正常运行。 报告既不监视服务的业务逻辑运行状况，也不检测挂起的进程。 用户服务可以使用其逻辑的特有信息来丰富运行状况数据。
 
 > [!NOTE]
-> 用户监视程序发送的运行状况报告仅在系统组件创建实体后才可见。 如果实体遭到删除，运行状况存储会自动删除与实体相关联的所有运行状况报告。 如果新建的是实体的新实例，也同样如此；例如，当新建有状态持久化服务副本实例时。 所有与旧实例关联的报告都将从存储中删除并清除。
+> 用户监视程序发送的运行状况报告仅在系统组件创建实体后才可见。 如果实体遭到删除，运行状况存储会自动删除与实体相关联的所有运行状况报告。 这同样适用于创建实体的新实例。 例如，创建新的有状态持久化服务副本实例时， 所有与旧实例关联的报告都将从存储中删除并清除。
 > 
 > 
 
@@ -40,7 +40,7 @@ Azure Service Fabric 组件提供有关现成群集中所有实体的系统运�
 接下来，将以一些系统报告为例，介绍是什么触发生成这些报告，以及如何纠正报告指出的潜在问题。
 
 > [!NOTE]
-> Service Fabric 会继续添加报告，让用户更清楚地了解群集中的情况，并且会在应用程序现有报告中添加更多详细信息，有助于用户更快地排查问题。
+> Service Fabric 会继续添加报告，让用户更清楚地了解群集和应用程序中的情况。 还可在现有报告中添加更多详细信息，以帮助用户更快地排查问题。
 > 
 > 
 
@@ -54,22 +54,25 @@ Azure Service Fabric 组件提供有关现成群集中所有实体的系统运�
 
 * **SourceId**：System.Federation
 * **属性**：以 Neighborhood 开头，包含节点信息。
-* **后续步骤**：调查邻近区域丢失原因；例如，检查群集节点之间的通信。
+* **后续步骤**：调查邻近区域丢失的原因。 例如，检查群集节点之间的通信。
 
 ### <a name="rebuild"></a>重新生成
 
-“故障转移管理器”服务 (FM) 管理有关群集节点的信息。 当 FM 失去数据并陷入数据丢失时，将无法保证它具有关于群集节点的最新信息。 在这种情况下，系统将经历“重新生成”，并且 System.FM 将从群集中的所有节点收集数据，以便重新生成其状态。 有时，由于网络或节点问题，重新生成可能会陷入卡滞或停滞。 “故障转移主管理器”服务 (FMM) 也可能会发生这种情况。 FMM 是一项无状态的系统服务，用于跟踪所有 FM 在群集中的位置。 FMM 主节点始终是 ID 最接近 0 的节点。 如果删除该节点，将触发“重新生成”。
-当出现上面任意一种情况，System.FM 或 System.FMM 将通过错误报表对其进行标记。 重新生成可能会卡滞在以下两个阶段之一：
+“故障转移管理器(FM)”服务管理有关群集节点的信息。 当 FM 失去其数据并陷入数据丢失时，将无法保证它具有关于群集节点的最新信息。 在这种情况下，系统将经历重新生成，并且 System.FM 将从群集中的所有节点收集数据，以便重新生成其状态。 有时，由于网络或节点问题，重新生成可能会陷入卡滞或停滞。 “故障转移主管理器(FMM)”服务也可能会发生这种情况。 FMM 是一项无状态的系统服务，用于跟踪所有 FM 在群集中的位置。 FMM 主节点始终是 ID 最接近 0 的节点。 如果删除该节点，将触发重新生成。
+如果出现上面任意一种情况，System.FM 或 System.FMM 将通过错误报表对其进行标记。 重新生成可能会卡滞在以下两个阶段之一：
 
-* 正在等待广播：FM/FMM 等待其他节点的广播消息回复。 后续步骤：调查节点之间是否存在网络连接问题。   
-* 正在等待节点：FM/FMM 已收到来自其他节点的广播答复，正在等待特定节点的答复。 运行状况报告列出 FM/FMM 正在等待发出响应的节点。 后续步骤：调查 FM/FMM 和列出节点之间的网络连接。 调查每个列出的节点是否存在其他可能问题。
+* **等待广播**：FM/FMM 等待其他节点的广播消息答复。
+
+  * **后续步骤**：调查节点之间是否存在网络连接问题。
+* **等待节点**：FM/FMM 已收到来自其他节点的广播答复，正在等待特定节点的答复。 运行状况报告列出 FM/FMM 正在等待其响应的节点。
+   * **后续步骤**：调查 FM/FMM 和所列出节点之间的网络连接。 调查每个列出的节点是否存在其他可能问题。
 
 * SourceID：System.FM 或 System.FMM
 * 属性：重新生成。
 * 后续步骤：调查节点之间的网络连接，以及在运行状况报告的说明中列出的任何特定节点的状态。
 
 ## <a name="node-system-health-reports"></a>节点系统运行状况报告
-**System.FM** 表示故障转移管理器 (Failover Manager) 服务，是管理群集节点信息的主管服务。 每个节点应该都有一个来自 System.FM 的报告，显示其状态。 节点实体随节点状态一起删除。 有关详细信息，请参阅 [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync)。
+System.FM 表示“故障转移管理器”服务，是管理群集节点相关信息的主管服务。 每个节点应该都有一个来自 System.FM 的报告，显示其状态。 节点实体随节点状态一起删除。 有关详细信息，请参阅 [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync)。
 
 ### <a name="node-updown"></a>节点开启/节点关闭
 当节点加入环时，System.FM 报告为正常（节点已启动且正在运行）。 当节点离开环时，则报告错误（节点已关闭进行升级，或只是发生故障）。 运行状况存储生成的运行状况层次结构对与 System.FM 节点报告相关的已部署实体起作用。 它将节点视为所有已部署实体的虚拟父项。 如果 System.FM 报告节点处于开启状态，且拥有的实例与在该节点上部署的实体相关联的实例相同，则可以通过查询看到这些实体。 如果 System.FM 报告节点停止运行或重启（作为新实例），运行状况存储会自动清理只能位于停止运行的节点或节点的上一实例上的已部署实体。
@@ -115,21 +118,21 @@ HealthEvents          :
 * **后续步骤**：检查已提供的指标，并查看节点上的当前容量。
 
 ### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>资源调控指标的节点容量不匹配
-如果在群集清单中定义的节点容量大于资源调控指标（内存和 CPU 内核）的实际节点容量，System.Hosting 将报告一个警告。 首个使用[资源调控](service-fabric-resource-governance.md)的服务包在指定节点上注册时，将显示运行状况报告。
+如果群集清单中定义的节点容量大于资源调控指标（内存和 CPU 核心）的实际节点容量，System.Hosting 将报告一个警告。 首个使用[资源调控](service-fabric-resource-governance.md)的服务包在指定节点上注册时，将显示运行状况报告。
 
 * **SourceId**：System.Hosting
-* 属性：ResourceGovernance
-* 后续步骤：这可能是一个问题，因为服务包不会按预期进行强制调控并且[资源调控](service-fabric-resource-governance.md)工作不正常。 使用这些指标的正确节点容量更新群集清单，或根本不指定，让 Service Fabric 自动检测可用资源。
+* **属性**：**ResourceGovernance**。
+* **后续步骤**：此问题可能会造成问题，因为服务包不会按预期进行强制调控并且[资源调控](service-fabric-resource-governance.md)不正常工作。 使用这些指标的正确节点容量更新群集清单，或者不指定节点容量，让 Service Fabric 自动检测可用资源。
 
 ## <a name="application-system-health-reports"></a>应用程序系统运行状况报告
-**System.CM** 表示群集管理器服务，是管理应用程序信息的主管服务。
+System.CM 表示群集管理器服务，是管理应用程序相关信息的主管服务。
 
 ### <a name="state"></a>State
-当创建或更新应用程序时，System.CM 报告正常。 它会在应用程序遭到删除时通知运行状况存储，以便将它从存储中删除。
+当创建或更新应用程序时，System.CM 报告正常。 当删除应用程序时，它会通知运行状况存储，以便从存储中删除应用程序。
 
 * **SourceId**：System.CM
 * **属性**：State。
-* **后续步骤**：如果已创建或更新应用程序，它就应该包含群集管理器运行状况报告。 否则，通过发出查询（例如，PowerShell cmdlet Get-ServiceFabricApplication -ApplicationName applicationName），检查应用程序的状态。
+* **后续步骤**：如果已创建或更新应用程序，它就应该包含群集管理器运行状况报告。 否则，请通过发出查询检查应用程序的状态。 例如，使用 PowerShell cmdlet **Get-ServiceFabricApplication -ApplicationName** *applicationName*。
 
 以下示例显示 **fabric:/WordCount** 应用程序上的状态事件：
 
@@ -155,10 +158,10 @@ HealthEvents                    :
 ```
 
 ## <a name="service-system-health-reports"></a>服务系统运行状况报告
-**System.FM** 表示故障转移管理器服务，是管理服务信息的主管服务。
+System.FM 表示故障转移管理器服务，是管理服务相关信息的主管服务。
 
 ### <a name="state"></a>State
-当已创建服务时，System.FM 报告正常。 当已删除服务时，它从运行状况存储删除实体。
+当已创建服务时，System.FM 报告正常。 删除服务时，它会从运行状况存储中删除实体。
 
 * **SourceId**：System.FM
 * **属性**：State。
@@ -193,11 +196,11 @@ HealthEvents          :
 检测到更新服务与形成关联链的其他服务相关时，System.PLB 会报告错误。 更新成功后会清除报告。
 
 * **SourceId**：System.PLB
-* **属性**：ServiceDescription。
+* **属性**：**ServiceDescription**。
 * **后续步骤**：检查相关服务说明。
 
 ## <a name="partition-system-health-reports"></a>分区系统运行状况报告
-**System.FM** 表示故障转移管理器服务，是管理服务分区信息的主管服务。
+System.FM 表示故障转移管理器服务，是管理服务分区相关信息的主管服务。
 
 ### <a name="state"></a>State
 创建分区并且分区正常时，System.FM 报告正常。 当删除分区时，它从运行状况存储删除实体。
@@ -407,7 +410,7 @@ HealthEvents          :
 ### <a name="replicaopenstatus-replicaclosestatus-replicachangerolestatus"></a>ReplicaOpenStatus, ReplicaCloseStatus, ReplicaChangeRoleStatus
 此属性用于在用户尝试打开副本、关闭副本或将副本从一个角色转换为另一个角色时，指示警告或故障。 有关详细信息，请参阅[副本生命周期](service-fabric-concepts-replica-lifecycle.md)。 这些故障可能是 API 调用抛出的异常，也可能是在这段时间内服务主机进程发生的故障。 对于因 C# 代码中的 API 调用而发生的故障，Service Fabric 会在运行状况报告中添加异常和堆栈跟踪。
 
-这些运行状况警告是在本地重试操作数次（具体取决于策略）后发出的。 Service Fabric 重试操作的次数不得超过最大阈值。 达到最大阈值后，它可能会尝试采取措施来纠正这种情况。 这样的尝试可能会导致这些警告遭到清除，因为它放弃对此节点执行操作。 例如，如果副本无法在节点上打开，Service Fabric 会发出运行状况警告。 如果副本仍无法打开，Service Fabric 会进行自我修复。 此操作可能会涉及在另一个节点上尝试同一操作。 这就会导致针对此副本发出的警告遭到清除。 
+这些运行状况警告是在本地重试操作数次（具体取决于策略）后发出的。 Service Fabric 重试操作的次数不得超过最大阈值。 达到最大阈值后，它可能会尝试采取措施来纠正这种情况。 这样的尝试可能会导致这些警告遭到清除，因为它放弃对此节点执行操作。 例如，如果副本无法在节点上打开，Service Fabric 会发出运行状况警告。 如果副本仍无法打开，Service Fabric 会进行自我修复。 此操作可能会涉及在另一个节点上尝试同一操作。 该尝试会导致针对此副本发出的警告遭到清除。 
 
 * **SourceId**：System.RA
 * **属性**：ReplicaOpenStatus、ReplicaCloseStatus 和 ReplicaChangeRoleStatus。
@@ -622,7 +625,7 @@ HealthEvents          :
                         
 ```
 
-属性和文本指明了哪些 API 无法运行。 后续步骤因无法运行的 API 是哪个而异。 IStatefulServiceReplica 或 IStatelessServiceInstance 上的任何 API 通常都是服务代码中的 bug。 下面的部分介绍了如何将上述内容转换为 [Reliable Services 模型](service-fabric-reliable-services-lifecycle.md)：
+属性和文本指明了哪些 API 无法运行。 对不同卡滞 API 采取的后续步骤是不同的。 IStatefulServiceReplica 或 IStatelessServiceInstance 上的任何 API 通常都是服务代码中的 bug。 下面的部分介绍了如何将上述内容转换为 [Reliable Services 模型](service-fabric-reliable-services-lifecycle.md)：
 
 - **IStatefulServiceReplica.Open**：此警告指明无法调用 `CreateServiceInstanceListeners`、`ICommunicationListener.OpenAsync` 或 `OnOpenAsync`（若已重写）。
 
@@ -634,7 +637,7 @@ HealthEvents          :
 
 可能会在 IReplicator 接口上无法调用其他 API。 例如：
 
-- **IReplicator.CatchupReplicaSet**：此警告指明发生以下两个事件之一。 up 副本不足，可通过查看分区中副本的副本状态或指明无法运行重新配置的 System.FM 运行状况报告来确定。 或副本不确认操作。 PowerShell command-let `Get-ServiceFabricDeployedReplicaDetail` 可用于确定所有副本的进度。 问题在于，某些副本的 `LastAppliedReplicationSequenceNumber` 落后于主要副本的 `CommittedSequenceNumber`。
+- **IReplicator.CatchupReplicaSet**：此警告指明发生以下两个事件之一。 已启动的副本不足。 若要查看是否是这种情况，请查看分区中的副本的副本状态，或查看卡滞重新配置的 System.FM 运行状况报告。 或副本不确认操作。 PowerShell cmdlet `Get-ServiceFabricDeployedReplicaDetail` 可用于确定所有副本的进度。 问题在于，某些副本的 `LastAppliedReplicationSequenceNumber` 值落后于主要副本的 `CommittedSequenceNumber` 值。
 
 - **IReplicator.BuildReplica (<Remote ReplicaId>)**：此警告指明生成过程有问题。 有关详细信息，请参阅[副本生命周期](service-fabric-concepts-replica-lifecycle.md)。 这可能是由于复制器地址配置错误所致。 有关详细信息，请参阅[配置有状态可靠服务](service-fabric-reliable-services-configuration.md)和[在服务清单中指定资源](service-fabric-service-manifest-resources.md)。 也可能是远程节点有问题。
 
@@ -644,14 +647,14 @@ System.Replicator 报告警告。 在主要副本上，由于一个或多个次�
 
 * **SourceId**：System.Replicator
 * **属性**：PrimaryReplicationQueueStatus 或 SecondaryReplicationQueueStatus（视副本角色而定）。
-* **后续步骤**：如果报告位于主要副本上，请检查群集中节点间的连接。 如果所有连接都正常，则可能至少有一个慢速次要副本在应用操作时具有高磁盘延迟。 如果报告位于次要副本上，请首先检查节点上的磁盘使用情况和性能，然后检查慢速节点到主要副本之间的传出连接。
+* **后续步骤**：如果报告位于主要副本上，请检查群集中节点间的连接。 如果所有连接都正常，则可能至少有一个慢速次要副本在应用操作时具有高磁盘延迟。 如果报告位于次要副本上，则先检查节点上的磁盘使用情况和性能。 然后检查从慢速节点到主要副本的传出连接。
 
 **RemoteReplicatorConnectionS状态：**当辅助（远程）复制器的连接不正常时，主要副本上的
 **System.Replicator** 会报告警告。 报告的信息中会显示远程复制器的地址，这样可以更方便地检测是否传入了错误的配置，或者复制器之间是否存在网络问题。
 
 * **SourceId**：System.Replicator
-* **属性**：**RemoteReplicatorConnectionStatus**
-* **下一步**：请检查错误消息，确保正确配置远程复制器地址（例如，如果使用“localhost”侦听地址打开了远程复制器，则它不可从外部访问）。 如果地址看上去正确，请检查主节点和远程地址间的连接，以找出任何潜在的网络问题。
+* **属性**：**RemoteReplicatorConnectionStatus**。
+* **后续步骤**：检查错误消息并确保已正确配置远程复制器地址。 例如，如果使用“localhost”侦听地址打开远程复制器，则无法从外部访问。 如果地址看上去正确，请检查主节点和远程地址间的连接，以找出任何潜在的网络问题。
 
 ### <a name="replication-queue-full"></a>复制队列已满
 如果复制队列已满，则 **System.Replicator** 报告警告。 在主要副本上，由于一个或多个次要副本确认操作的速度较慢，复制队列通常会达到已满状态。 在辅助副本上，当服务应用操作的速度较慢时，通常会发生这种情况。 当队列不再满时，警告被清除。
@@ -660,18 +663,18 @@ System.Replicator 报告警告。 在主要副本上，由于一个或多个次�
 * **属性**：PrimaryReplicationQueueStatus 或 SecondaryReplicationQueueStatus（视副本角色而定）。
 
 ### <a name="slow-naming-operations"></a>命名操作速度慢
-如果命名操作耗时超过可接受范围，System.NamingService 会报告主要副本的运行状况。 [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) 或 [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) 都是命名操作的示例。 在 FabricClient 下可找到更多方法，例如，可在[服务管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient)或[属性管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)下找到更多方法。
+如果命名操作耗时超过可接受范围，System.NamingService 会报告主要副本的运行状况。 [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) 或 [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) 都是命名操作的示例。 可以在 FabricClient 下找到更多方法。 例如，可在[服务管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient)或[属性管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)下找到更多方法。
 
 > [!NOTE]
-> 命名服务将服务名称解析到群集中的某个位置，并允许用户管理服务名称和属性。 它是 Service Fabric 分区持久化服务。 其中一个分区代表“颁发机构所有者”，内含与所有 Service Fabric 名称和服务相关的元数据。 Service Fabric 名称映射到不同的分区，这些分区称为“名称所有者”分区，因此服务是可扩展的。 有关详细信息，请参阅[命名服务](service-fabric-architecture.md)。
+> 命名服务会将服务名称解析为群集中的某个位置。 用户可以使用它来管理服务名称和属性。 它是 Service Fabric 分区持久化服务。 其中一个分区代表“颁发机构所有者”，内含与所有 Service Fabric 名称和服务相关的元数据。 Service Fabric 名称映射到不同的分区，这些分区称为“名称所有者”分区，因此服务是可扩展的。 有关详细信息，请参阅[命名服务](service-fabric-architecture.md)。
 > 
 > 
 
 如果命名操作耗时超出预期，则会在为操作提供服务的命名服务分区的主要副本上使用警告报告对操作进行标记。 如果操作成功完成，将会清除警告。 如果操作在完成时出现错误，则运行状况报告中会包括有关该错误的详细信息。
 
 * **SourceId**：System.NamingService
-* **属性**：以前缀“Duration_”开头，用于发现速度慢的操作以及其上应用了操作的 Service Fabric 名称。 例如，如果名称 fabric:/MyApp/MyService 处的创建服务操作耗时过长，则属性为 Duration_AOCreateService.fabric:/MyApp/MyService。 “AO”指向此名称和操作的命名分区角色。
-* **后续步骤**：查看命名操作失败的原因。 每个操作可能会有不同的根本原因。 例如，可能无法删除服务。 服务可能会无法运行，因为应用程序主机总是在节点上发生故障，原因是服务代码中存在用户 bug。
+* **属性**：以前缀“Duration_”开头，用于发现速度慢的操作以及对其应用了操作的 Service Fabric 名称。 例如，如果名称 fabric:/MyApp/MyService 处的创建服务操作耗时过长，则属性为 Duration_AOCreateService.fabric:/MyApp/MyService。 “AO”指向此名称和操作的命名分区角色。
+* **后续步骤**：查看命名操作失败的原因。 每个操作可能会有不同的根本原因。 例如，可能无法删除服务。 服务可能会卡滞，因为应用程序主机总是在节点上发生故障，原因是服务代码中存在用户 bug。
 
 以下示例显示了创建服务操作。 该操作花的时间超过配置的持续时间。 “AO”重试并将工作发送到“NO”。 “NO”在完成上一个操作时出现超时。 在这种情况下，同一个副本对于“AO”和“NO”角色来说都是主要副本。
 
@@ -727,7 +730,7 @@ HealthEvents          :
 当应用程序在节点上成功激活时，System.Hosting 报告正常。 否则报告错误。
 
 * **SourceId**：System.Hosting
-* **属性**：Activation，包括滚动更新版本。
+* **属性**：**Activation**，包括推出版本。
 * **后续步骤**：如果应用程序不正常，则调查激活失败的原因。
 
 下面的示例展示了成功激活：
@@ -762,7 +765,7 @@ HealthEvents                       :
 如果应用程序包下载失败，System.Hosting 会报告错误。
 
 * **SourceId**：System.Hosting
-* **属性**：下载：RolloutVersion.
+* **属性**：**Download**，包括推出版本。
 * **后续步骤**：调查在节点上下载失败的原因。
 
 ## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage 系统运行状况报告
@@ -840,7 +843,7 @@ HealthEvents               :
 如果服务包下载失败，System.Hosting 报告错误。
 
 * **SourceId**：System.Hosting
-* **属性**：下载：RolloutVersion.
+* **属性**：**Download**，包括推出版本。
 * **后续步骤**：调查在节点上下载失败的原因。
 
 ### <a name="upgrade-validation"></a>升级验证
@@ -851,18 +854,18 @@ HealthEvents               :
 * **说明**：指向遇到的错误。
 
 ### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>资源调控指标的节点容量未定义
-如果未在群集清单中定义节点容量，且自动检测被配置为关闭，则 System.Hosting 将报告一个警告。 只要使用[资源调控](service-fabric-resource-governance.md)的服务包在指定节点上注册，Service Fabric 就会引发一个运行状况警报。
+如果未在群集清单中定义节点容量，且自动检测被配置为已关闭，则 System.Hosting 将报告一个警告。 只要使用[资源调控](service-fabric-resource-governance.md)的服务包在指定节点上注册，Service Fabric 就会引发一个运行状况警报。
 
 * **SourceId**：System.Hosting
-* 属性：ResourceGovernance
+* **属性**：**ResourceGovernance**。
 * 后续步骤：要解决此问题，首选方法是更改群集清单以启用可用资源的自动检测功能。 另一种方法是使用为这些指标正确指定的节点容量来更新群集清单。
 
 ## <a name="next-steps"></a>后续步骤
-[查看 Service Fabric 运行状况报告](service-fabric-view-entities-aggregated-health.md)
+* [查看 Service Fabric 运行状况报告](service-fabric-view-entities-aggregated-health.md)
 
-[如何报告和检查服务运行状况](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+* [如何报告和检查服务运行状况](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
-[在本地监视和诊断服务](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+* [在本地监视和诊断服务](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-[Service Fabric 应用程序升级](service-fabric-application-upgrade.md)
+* [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)
 

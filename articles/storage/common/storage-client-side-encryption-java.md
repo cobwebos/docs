@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.openlocfilehash: 9f9ed8043d3671beacb9fabeb9e96604a8f065ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4f3814ac2dbc8b74cef8f5fcb0540b7509efa0d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>针对 Microsoft Azure 存储使用 Java 的客户端加密和 Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -59,7 +59,7 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-下载已加密的 Blob 需要使用 download/openInputStream* 便捷方法检索整个 Blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
+下载已加密的 Blob 需要使用 **download*/openInputStream** 便捷方法检索整个 Blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
 
 下载已加密的 Blob 中的任意范围（**downloadRange*** 方法）涉及调整用户提供的范围以获取少量的可用于成功解密所请求的范围的附加数据。  
 
@@ -99,6 +99,10 @@ ms.lasthandoff: 10/11/2017
 在批处理操作中，将对该批处理操作中的所有行使用同一 KEK，因为客户端库仅允许每个批处理操作使用一个选项对象（因此是一个策略/KEK）。 但是，客户端库将为批处理中的每行在内部生成一个新的随机 IV 和随机 CEK。 用户还可以选择通过在加密解析程序中定义此行为来加密批处理中的每个操作的不同属性。
 
 ### <a name="queries"></a>查询
+> [!NOTE]
+> 由于实体已加密，因此不能运行根据已加密属性进行筛选的查询。  如果尝试运行，结果将会不正确，因为该服务会尝试将已加密的数据与未加密的数据进行比较。
+> 
+>
 若要执行查询操作，必须指定一个能够解析结果集中的所有密钥的密钥解析程序。 如果查询结果中包含的实体不能解析为提供程序，则客户端库将引发错误。 对于执行服务器端投影的任何查询，在默认情况下，客户端库将为所选列添加特殊的加密元数据属性（_ClientEncryptionMetadata1 和 _ClientEncryptionMetadata2）。
 
 ## <a name="azure-key-vault"></a>Azure 密钥保管库

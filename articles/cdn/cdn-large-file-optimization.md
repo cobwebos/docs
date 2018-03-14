@@ -1,5 +1,5 @@
 ---
-title: "通过 Azure 内容交付网络实现大型文件下载优化"
+title: "通过 Azure CDN 优化大型文件下载"
 description: "深入介绍大型文件下载优化"
 services: cdn
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 7a5d5d1d0de24ebb0a5115ede1e572f38454bd78
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e6266fdaaac6a1a1a5d3a5595c10f79fd9f01a7
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="large-file-download-optimization-via-the-azure-content-delivery-network"></a>通过 Azure 内容交付网络实现大型文件下载优化
+# <a name="large-file-download-optimization-via-azure-cdn"></a>通过 Azure CDN 优化大型文件下载
 
 得益于增强的功能、改进的图形和丰富的媒体内容，通过 Internet 交付内容的文件大小持续增长。 这一增长存在许多推动因素：宽带渗透、容量更大的存储设备、高清晰度视频的普遍增长以及连接到 Internet 的设备 (IoT)。 为了确保顺畅和愉快的使用者体验，为大型文件提供快速高效的交付机制至关重要。
 
@@ -34,7 +34,7 @@ Akamai 的 Azure 内容交付网络现在提供一种功能，可在全球范围
 
 ## <a name="configure-a-cdn-endpoint-to-optimize-delivery-of-large-files"></a>配置 CDN 终结点以优化大型文件交付
 
-可以配置 CDN 终结点，以优化通过 Azure 门户的大型文件交付。 可以使用 REST API 或任意客户端 SDK 执行此操作。 下面的步骤演示了通过 Azure 门户的交付过程。
+可以配置 CDN 终结点，以优化通过 Azure 门户的大型文件交付。 也可以使用 REST API 或任意客户端 SDK 执行此操作。 下面的步骤演示了通过 Azure 门户的交付过程。
 
 1. 若要添加新的终结点，请在“CDN 配置文件”页上，选择“终结点”。
 

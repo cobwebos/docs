@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/11/2018
+ms.date: 03/01/2018
 ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: 028a3f4411e6984b70e0f98c5cf3284e5be1c3b2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.reviewer: calebb
+ms.openlocfilehash: c9712cf0cf20bbcfc089eb18896370f9e02eb571
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的位置条件 
 
@@ -120,9 +120,12 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
 
 条件访问策略的评估时机： 
 
-- 用户首次登录时 
+- 当用户最初登录到 Web 应用、移动应用或桌面应用程序时。 
 
-- Azure AD 为已设置条件访问的云应用颁发令牌。 
+- 当使用新式身份验证的移动应用或桌面应用程序使用刷新令牌来获取新的访问令牌时。 默认情况下此操作一小时进行一次。 
+
+对于使用新式身份验证的移动应用和桌面应用程序，这意味着，在更改网络位置的一小时内会检测到位置更改。 对于不使用新式身份验证的移动应用和桌面应用程序，此策略将应用于每个令牌请求。 请求的频率可能会因应用程序而异。 同样，对于 Web 应用程序，此策略在初始登录时应用，并适合用于 Web 应用程序的会话生存期。 由于不同应用程序的会话生存期不同，因此策略评估间隔的时间也会有所不同。 每次应用程序请求新的登录令牌时，就会应用一次此策略。
+
 
 默认情况下，Azure AD 每小时颁发一个令牌。 在移出企业网络后的一小时内，将使用新式身份验证对应用程序实施该策略。
 

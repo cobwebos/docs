@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/21/2017
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: da589905babd20b46ea7bc0baba753415b3b5d5b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2e829ae90aa0366964f96b3c43f88503c7f3e894
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>有关 Azure 备份服务的问题
 本文回答有关 Azure 备份组件的常见问题。 某些答案提供内含全面信息的文章的链接。 单击“评论”（右侧）即可提问有关 Azure 备份的问题。 评论显示在本文末尾。 需要使用 Livefyre 帐户发表评论。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/09/2018
 ## <a name="recovery-services-vault"></a>恢复服务保管库
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription-br"></a>在每个 Azure 订阅中可以创建的保管库数量是否有任何限制？ <br/>
-是的。 从 2016 年 9 月起，可以为每个订阅创建 25 个恢复服务保管库。 在 Azure 备份支持的区域中，可以为每个订阅最多创建 25 个恢复服务保管库。 如果需要更多保管库，请创建另一订阅。
+是的。 从 2018 年 1 月开始，在 Azure 备份支持的每个区域中，可以为每个订阅最多创建 25 个恢复服务保管库。 如果需要更多保管库，请创建另一订阅。
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>可针对每个保管库注册的服务器/计算机数量是否有限制？ <br/>
 每个保管库最多可以注册 200 个 Azure 虚拟机。 如果使用 MAB 代理，每个保管库最多可以注册 50 个 MAB 代理。 可以将 50 个 MAB 服务器/DPM 服务器注册到一个保管库。

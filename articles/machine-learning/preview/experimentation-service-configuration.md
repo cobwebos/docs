@@ -5,21 +5,21 @@ services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
 manager: haining
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: bd152cc79c08124a1acab2aefc8652c7d162ea2c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: f93c74d0c2f66e6a5001289efca07f074e3d3c5a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="configuring-azure-machine-learning-experimentation-service"></a>配置 Azure 机器学习试验服务
 
 ## <a name="overview"></a>概述
-凭借 Azure 机器学习试验服务，数据科学家可使用 Azure 机器学习的执行和运行管理功能来执行其试验。 它通过快速迭代提供敏捷试验的框架。 使用 Azure Machine Learning Workbench，可从计算机上的本地运行开始，轻松纵向和横向扩展到其他环境，如使用 GPU 的远程数据科学 VM 或运行 Spark 的 HDInsight 群集。
+凭借 Azure 机器学习试验服务，数据科学家可使用 Azure 机器学习的执行和运行管理功能来执行其试验。 它通过快速迭代提供敏捷试验的框架。 使用 Azure Machine Learning Workbench，可从计算机上的本地运行开始使用，还可轻松纵向和横向扩展到其他环境，如使用 GPU 的远程数据科学 VM 或运行 Spark 的 HDInsight 群集。
 
 试验服务旨在为试验提供隔离、可重现且一致的运行。 它可帮助管理计算目标、执行环境和运行配置。 通过使用 Azure Machine Learning Workbench 执行和运行管理功能，可以在不同环境之间轻松移动。 
 
@@ -27,9 +27,10 @@ ms.lasthandoff: 12/11/2017
 
 可在以下环境中运行脚本： 
 
-* 通过 Workbench 安装在本地计算机上的 Python (3.5.2) 环境。
+* 通过 Workbench 安装在本地计算机上的 Python (3.5.2) 环境
 * 本地计算机上 Docker 容器内部的 Conda Python 环境
-* 远程 Linux 计算机上 Docker 容器内部的 Conda Python 环境。 例如，[Azure 上基于 Ubuntu 的 DSVM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
+* 在远程 Linux 计算机上拥有和管理的 Python 环境
+* 远程 Linux 计算机上 Docker 容器内部的 Conda Python 环境。 例如，[Azure 上基于 Ubuntu 的 DSVM] (https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
 * Azure 上的 [HDInsight for Spark](https://azure.microsoft.com/services/hdinsight/apache-spark/)
 
 >[!IMPORTANT]
@@ -47,6 +48,7 @@ ms.lasthandoff: 12/11/2017
 支持的计算目标为：
 * 通过 Workbench 安装在计算机上的本地 Python (3.5.2) 环境。
 * 计算机上的本地 Docker
+* 远程 Linux-Ubuntu VM 上用户托管的 Python 环境。 例如，[Azure 上基于 Ubuntu 的 DSVM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
 * Linux Ubuntu VM 上的远程 Docker。 例如，[Azure 上基于 Ubuntu 的 DSVM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu)
 * Azure 上的 [HDInsight for Spark 群集](https://azure.microsoft.com/services/hdinsight/apache-spark/)
 
@@ -69,14 +71,14 @@ Conda 用于管理本地 Docker 和远程 Docker 执行，以及基于 HDInsight
 ### <a name="run-configuration"></a>运行配置
 除了计算目标和执行环境，Azure 机器学习还提供定义和更改运行配置的框架。 在迭代试验中，试验的不同执行可能需要不同的配置。 可能需要覆盖不同的参数范围、使用不同的数据源并微调 spark 参数。 试验服务提供管理运行配置的框架。
 
-运行 az ml computetarget attach 命令将在项目的 aml_config 文件夹中生成两个文件：.compute 和 .runconfig.compute，命名规则为 <your_computetarget_name>.compute 和 <your_computetarget_name>.runconfig。 方便起见，创建计算目标时，将自动创建 .runconfig 文件。 可在 CLI 中使用 az ml runconfigurations 命令创建和管理其他运行配置。 还可在文件系统中创建和编辑运行配置。
+运行 _az ml computetarget attach_ 命令将在项目的 **aml_config** 文件夹中生成两个文件：.compute 和 .runconfig，文件名遵循以下约定：_<your_computetarget_name>.compute_ 和 _<your_computetarget_name>.runconfig_。 方便起见，创建计算目标时，将自动创建 .runconfig 文件。 可在 CLI 中使用 az ml runconfigurations 命令创建和管理其他运行配置。 还可在文件系统中创建和编辑运行配置。
 
 Workbench 中的运行配置可指定环境变量。 通过在 .runconfig 文件中添加以下部分，可指定环境变量并在代码中使用它们。 
 
 ```
 EnvironmentVariables:
-"EXAMPLE_ENV_VAR1": "Example Value1"
-"EXAMPLE_ENV_VAR2": "Example Value2"
+    "EXAMPLE_ENV_VAR1": "Example Value1"
+    "EXAMPLE_ENV_VAR2": "Example Value2"
 ```
 
 可在代码中访问这些环境变量。 例如，此 phyton 代码片段将打印名为“EXAMPLE_ENV_VAR1”的环境变量
@@ -84,14 +86,14 @@ EnvironmentVariables:
 print(os.environ.get("EXAMPLE_ENV_VAR1"))
 ```
 
-下图显示初始试验运行的简要流程。__
+下图显示初始试验运行的简要流程。
 ![](media/experimentation-service-configuration/experiment-execution-flow.png)
 
 ## <a name="experiment-execution-scenarios"></a>试验执行方案
 在本部分中，我们将深入探讨执行方案，并了解 Azure 机器学习如何运行试验，特别是如何在本地、远程 VM 和 HDInsight 群集上运行试验。 本部分将从创建计算目标演示到执行试验。
 
 >[!NOTE]
->对于本文的其余部分，我们将使用 CLI（命令行界面）命令来展示概念和功能。 此处所述的功能也可从 Workbench 使用。
+>对于本文的其余部分，我们将使用 CLI（命令行接口）命令来演示概念和功能。 此处所述的功能也可从 Workbench 使用。
 
 ## <a name="launching-the-cli"></a>启动 CLI
 快速启动 CLI 的方法是在 Workbench 中打开项目，导航到“打开”-->“打开命令提示符”。
@@ -101,7 +103,7 @@ print(os.environ.get("EXAMPLE_ENV_VAR1"))
 此命令将启动终端窗口，可在其中输入执行当前项目文件夹中脚本的命令。 此终端窗口配置了使用 Workbench 安装的 Python 3.5.2 环境。
 
 >[!NOTE]
-> 从命令窗口执行任何 az ml 命令，都需要通过 Azure 身份验证。 CLI 使用独立的身份验证缓存和桌面应用程序，因此登录到 Workbench 并不意味着已在 CLI 环境中进行身份验证。 要进行身份验证，请执行以下步骤。 身份验证令牌将在本地缓存一段时间，因此令牌过期后重复这些步骤即可。 如果令牌过期或看到身份验证错误，请执行以下命令：
+> 从命令窗口执行任何 az ml 命令，都需要通过 Azure 身份验证。 CLI 使用独立的身份验证缓存和桌面应用程序，因此登录到 Workbench 并不意味着已在 CLI 环境中进行身份验证。 若要进行身份验证，请使用以下步骤。 身份验证令牌将在本地缓存一段时间，因此令牌过期后重复这些步骤即可。 如果令牌过期或看到身份验证错误，请执行以下命令：
 
 ```
 # to authenticate 
@@ -124,7 +126,7 @@ $ az account show
 ## <a name="running-scripts-and-experiments"></a>运行脚本和试验
 凭借 Workbench，可以使用 _az ml experiment submit_ 命令，执行针对各种计算目标的 Python 和 PySpark 脚本。 此命令要求运行配置定义。 
 
-创建计算目标时，Workbench 会创建相应的 .runconfig 文件，但可使用 _az ml runconfiguration create_ 命令创建其他运行配置。 还可以手动编辑运行配置文件。
+创建计算目标时，Workbench 会创建相应的 runconfig 文件，但可使用 _az ml runconfiguration create_ 命令创建其他运行配置。 还可以手动编辑运行配置文件。
 
 Workbench 中的试验运行体验将显示运行配置。 
 
@@ -213,9 +215,50 @@ $ az ml experiment submit -c remotevm myscript.py
 >[!TIP]
 >若要避免由于构建第一次运行的 Docker 映像引入的延迟，可先使用以下命令准备计算目标，再执行脚本。 az ml experiment prepare -c remotedocker
 
-
-远程 VM 执行 Python 脚本概述：__
+远程 VM 执行 Python 脚本概述：
 ![](media/experimentation-service-configuration/remote-vm-run.png)
+
+## <a name="running-a-script-on-a-remote-vm-targeting-user-managed-environments"></a>在针对远程 VM 的用户管理环境中运行脚本
+试验服务还支持在远程 Ubuntu 虚拟机内部用户自己的 Python 环境中运行脚本。 这允许你管理自己的执行环境，并仍使用 Azure 机器学习功能。 
+
+请按照以下步骤在自己的环境中运行脚本。
+* 在远程 Ubuntu VM 或 DSVM 上准备 Python 环境并安装依赖项。
+* 使用以下命令安装 Azure 机器学习所需项。
+
+```
+pip install -I --index-url https://azuremldownloads.azureedge.net/python-repository/preview --extra-index-url https://pypi.python.org/simple azureml-requirements
+```
+
+>[!TIP]
+>在某些情况下，可能需要以 sudo 模式运行此命令，具体取决于你的特权。 
+```
+sudo pip install -I --index-url https://azuremldownloads.azureedge.net/python-repository/preview --extra-index-url https://pypi.python.org/simple azureml-requirements
+```
+ 
+* 使用以下命令可同时为远程 VM 执行上的用户管理运行创建计算目标定义和运行配置。
+```
+az ml computetarget attach remote --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --password "sshpassword" 
+```
+>[!NOTE]
+>这会将 .compute 配置文件中的“userManagedEnvironment”参数设置为 true。
+
+* 在 .compute 文件中设置 Python 运行时可执行文件的位置。 应引用 python 可执行文件的完整路径。 
+```
+pythonLocation: python3
+```
+
+配置计算目标后，可使用以下命令运行脚本。
+```
+$ az ml experiment submit -c remotevm myscript.py
+```
+
+>[!NOTE]
+> 在 DSVM 上运行时，应使用以下命令
+
+如果要直接在 DSVM 的全局 python 环境中运行，请运行此命令。
+```
+sudo /anaconda/envs/py35/bin/pip install <package>
+```
 
 
 ## <a name="running-a-script-on-an-hdinsight-cluster"></a>在 HDInsight 群集上运行脚本
@@ -247,7 +290,7 @@ Workbench 使用 Conda 在 HDInsight 群集上准备和管理执行环境。 通
 >[!NOTE]
 >支持的配置是运行 Linux（具有 Python/PySpark 3.5.2 和 Spark 2.1.11 的 Ubuntu）的 HDInsight Spark 群集。
 
-基于 HDInsight 执行 PySpark 脚本概述__
+基于 HDInsight 执行 PySpark 脚本概述
 ![](media/experimentation-service-configuration/hdinsight-run.png)
 
 

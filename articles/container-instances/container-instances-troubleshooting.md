@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 1fd3b2c251860e883519744b11fcfc2b925cd2fa
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 561729e5e495500222ccec5b4b536a3152cb25e3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>排查 Azure 容器实例的部署问题
 
@@ -91,6 +91,10 @@ az container show --resource-group myResourceGroup --name mycontainer
 ## <a name="common-deployment-issues"></a>常见部署问题
 
 一些常见问题导致了大部分部署错误。
+
+## <a name="image-version-not-supported"></a>不支持映像版本
+
+如果指定了 Azure 容器实例不支持的映像，则将返回 `ImageVersionNotSupported` 格式的错误。 错误的值将显示 `The version of image '{0}' is not supported.`。 此错误当前适用于 Windows 1709 映像，以减少使用 LTS Windows 映像。 对 Windows 1709 映像的支持正在研发中。
 
 ## <a name="unable-to-pull-image"></a>无法请求映像
 

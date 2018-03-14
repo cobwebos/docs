@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: adsolank;juliako;johndeu
-ms.openlocfilehash: f75be3280ffd869339972859c028a178ec728480
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9893372fe00cf1a6b15f9b358b64d77ee5d34872
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>使用 Azure Media Indexer 为媒体文件编制索引
 使用 Azure Media Indexer，可以使媒体文件内容可供搜索，并为隐藏的字幕和关键字生成全文本脚本。 可以只处理一个媒体文件，也可以一次处理多个媒体文件。  
 
 > [!IMPORTANT]
-> 在编制内容的索引时，请确保使用语音极其清晰的媒体文件（没有背景音乐、噪音、特效音或麦克风电流嘶嘶声）。 适当内容的某些示例包括：录制的会议、讲座或演示内容。 以下内容可能不适合用于编制索引：电影、电视剧、混合了音频和声音特效的任何内容、带有背景噪音（电流嘶嘶声）的不当录制内容。
+> 在编制内容的索引时，请确保使用语音清晰的媒体文件（没有背景音乐、噪音、特效音或麦克风电流嘶嘶声）。 适当内容的某些示例包括：录制的会议、讲座或演示内容。 以下内容可能不适合用于编制索引：电影、电视剧、混合了音频和声音特效的任何内容、带有背景噪音（电流嘶嘶声）的不当录制内容。
 > 
 > 
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
   
     有关详细信息，请参阅 [Using AIB Files with Azure Media Indexer and SQL Server](https://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/)（在 Azure 媒体索引器和 SQL Server 中使用 AIB 文件）。
 
-本主题介绍如何创建索引作业，以便**为资产编制索引**以及**为多个文件编制索引**。
+本文介绍如何创建索引作业，以便**为资产编制索引**以及**为多个文件编制索引**。
 
 有关最新的 Azure 媒体索引器更新，请参阅[媒体服务博客](#preset)。
 
@@ -52,8 +52,9 @@ ms.lasthandoff: 10/11/2017
 ## <a name="index-an-asset"></a>为资产编制索引
 以下方法将媒体文件上传为资产，并创建为资产编制索引的作业。
 
-请注意，如果未指定配置文件，则将使用默认设置为媒体文件编制索引。
+如果未指定配置文件，则将使用所有默认设置为媒体文件编制索引。
 
+```csharp
     static bool RunIndexingJob(string inputMediaFilePath, string outputFolder, string configurationFile = "")
     {
         // Create an asset and upload the input media file to storage.
@@ -140,6 +141,8 @@ ms.lasthandoff: 10/11/2017
 
         return processor;
     }  
+```
+
 <!-- __ -->
 ### <a id="output_files"></a>输出文件
 默认情况下，索引作业生成以下输出文件。 这些文件将存储在第一个输出资产中。
@@ -148,7 +151,7 @@ ms.lasthandoff: 10/11/2017
 
 | 文件名 | 说明 |
 | --- | --- |
-| **InputFileName.aib** |音频索引 Blob 文件。 <br/><br/> 音频索引 Blob (AIB) 文件是二进制文件，可使用全文本搜索在 Microsoft SQL Server 中对其进行搜索。  AIB 文件比简单的字幕文件功能更强大，因为它包含每个单词的替代项，能够提供更丰富的搜索体验。 <br/> <br/>它要求在运行 Microsoft SQL Server 2008 或更高版本的计算机上安装 Indexer SQL 外接程序。 使用 Microsoft SQL Server 全文搜索对 AIB 进行搜索时，搜索结果比搜索由 WAMI 生成的隐藏字幕文件要准确。 这是因为，AIB 包含发音类似单词的替代项，而隐藏字幕文件包含每个音频段的最高信任度单词。 如果搜索说过的话很重要，则建议将 AIB 与 Microsoft SQL Server 结合使用。<br/><br/> 若要下载外接程序，请单击 <a href="http://aka.ms/indexersql">Azure Media Indexer SQL 外接程序</a>。 <br/><br/>此外，还可以利用其他搜索引擎，如 Apache Lucene/Solr，仅根据隐藏字幕文件和关键字 XML 文件为视频编制索引，但这会导致搜索结果不太准确。 |
+| **InputFileName.aib** |音频索引 Blob 文件。 <br/><br/> 音频索引 Blob (AIB) 文件是二进制文件，可使用全文本搜索在 Microsoft SQL Server 中对其进行搜索。  AIB 文件比简单的字幕文件功能更强大，因为它包含每个单词的替代项，能够提供更丰富的搜索体验。 <br/> <br/>它要求在运行 Microsoft SQL Server 2008 或更高版本的计算机上安装 Indexer SQL 外接程序。 使用 Microsoft SQL Server 全文搜索对 AIB 进行搜索时，搜索结果比搜索由 WAMI 生成的隐藏字幕文件要准确。 这是因为，AIB 包含发音类似的单词替代项，而隐藏式字幕文件包含每个音频段的最高置信度单词。 如果搜索说过的话很重要，则建议将 AIB 与 Microsoft SQL Server 结合使用。<br/><br/> 若要下载外接程序，请单击 <a href="http://aka.ms/indexersql">Azure Media Indexer SQL 外接程序</a>。 <br/><br/>此外，还可以利用其他搜索引擎，如 Apache Lucene/Solr，仅根据隐藏字幕文件和关键字 XML 文件为视频编制索引，但这会导致搜索结果不太准确。 |
 | **InputFileName.smi**<br/>**InputFileName.ttml**<br/>**InputFileName.vtt** |采用 SAMI、TTML 和 WebVTT 格式的隐藏字幕 (CC) 文件。<br/><br/>这些文件可用于使听力障碍用户能够访问音频和视频文件。<br/><br/>隐藏式字幕文件包含名为 <b>Recognizability</b> 的标记，该标记可以根据源视频中的语音辨别度对索引作业评分。  可以使用 <b>Recognizability</b> 的值筛选可用的输出文件。 如果分数较低，则表示索引结果由于音频质量问题而不佳。 |
 | **InputFileName.kw.xml<br/>InputFileName.info** |关键字和信息文件。 <br/><br/>关键字文件是 XML 文件，其中包含从语音内容中提取的关键字，以及频率和偏移量信息。 <br/><br/>信息文件是一种纯文本文件，其中包含有关每个已识别术语的详细信息。 第一行很特别，包含 Recognizability 评分。 后续每一行是使用制表符分隔的以下数据的列表：开始时间、结束时间、单词/短语、置信度。 时间以秒为单位，置信度为数字 0-1。 <br/><br/>示例行：“1.20    1.45    word    0.67” <br/><br/>这些文件可用于各种目的，如执行语音分析，公开给必应、Google 或 Microsoft SharePoint 等搜索引擎以使媒体文件更容易被发现，甚至用于传送更具相关性的广告。 |
 | **JobResult.txt** |输出清单（仅在为多个文件编制索引时存在），包含以下信息：<br/><br/><table border="1"><tr><th>InputFile</th><th>别名</th><th>MediaLength</th><th>错误</th></tr><tr><td>a.mp4</td><td>Media_1</td><td>300</td><td>0</td></tr><tr><td>b.mp4</td><td>Media_2</td><td>0</td><td>3000</td></tr><tr><td>c.mp4</td><td>Media_3</td><td>600</td><td>0</td></tr></table><br/> |
@@ -158,8 +161,9 @@ ms.lasthandoff: 10/11/2017
 ## <a name="index-multiple-files"></a>为多个文件编制索引
 以下方法将多个媒体文件上传为资产，并创建一次性为所有这些文件编制索引的作业。
 
-将创建扩展名为 .lst 的清单文件，并上传到资产中。 该清单文件包含所有资产文件的列表。 有关详细信息，请参阅 [Task Preset for Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx)（Azure 媒体索引器的任务预设）。
+创建具有“.lst”扩展名的清单文件，并将其上传到资产。 该清单文件包含所有资产文件的列表。 有关详细信息，请参阅 [Task Preset for Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx)（Azure 媒体索引器的任务预设）。
 
+```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
     {
         // Create an asset and upload to storage.
@@ -232,6 +236,7 @@ ms.lasthandoff: 10/11/2017
 
         return asset;
     }
+```
 
 ### <a name="partially-succeeded-job"></a>部分成功的作业
 如果没有为所有输入媒体文件成功编制索引，索引编制作业会失败，错误代码为 4000。 有关详细信息，请参阅[错误代码](#error_codes)。
@@ -245,7 +250,7 @@ ms.lasthandoff: 10/11/2017
 | --- | --- | --- |
 | **input** |false |要编制索引的资产文件。</p><p>Azure 媒体索引器支持以下格式的媒体文件：MP4、WMV、MP3、M4A、WMA、AAC、WAV。</p><p>可以在 **input** 元素的“名称”或“列表”属性中指定文件名（如下所示）。如果不指定要编制索引的文件，则选择主文件。 如果未设置主资产文件，则为输入资产中的第一个文件编制索引。</p><p>若要显式指定资产文件名，请执行：<br/>`<input name="TestFile.wmv">`<br/><br/>还可以一次为多个资产文件编制索引（最多 10 个文件）。 为此，请按以下步骤操作：<br/><br/><ol class="ordered"><li><p>创建一个文本文件（清单文件），并为其指定扩展名 .lst。 </p></li><li><p>将输入资产中所有资产文件名的列表添加到此清单文件。 </p></li><li><p>将该清单文件添加（上传）到资产。  </p></li><li><p>在输入的列表属性中指定清单文件的名称。<br/>`<input list="input.lst">`</li></ol><br/><br/>请注意：如果在清单文件中添加了 10 个以上的文件，则索引作业会失败并显示 2006 错误代码。 |
 | **metadata** |false |用于词汇自适应的指定资产文件的元数据。  在准备索引器以使其能够识别非标准词汇（例如专有名词）时，该元素非常有用。<br/>`<metadata key="..." value="..."/>` <br/><br/>可以提供预定义**键**的**值**。 当前支持以下键：<br/><br/>“title”和“description”- 用于词汇适应，以微调作业的语言模型及改进语音辨识准确度。  值将植入 Internet 搜索以查找上下文相关的文本文档，并在执行索引任务期间使用内容来扩大内部字典。<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
-| **features** <br/><br/> 在版本 1.2 中添加。 目前，唯一支持的功能是语音识别（“ASR”）。 |false |语音识别功能具有以下设置键：<table><tr><th><p>键</p></th>        <th><p>说明</p></th><th><p>示例值</p></th></tr><tr><td><p>语言</p></td><td><p>要在多媒体文件中识别的自然语言。</p></td><td><p>英语、西班牙语</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>以分号分隔的所需输出字幕格式的列表（如果有）</p></td><td><p>ttml; sami; webvtt</p></td></tr><tr><td><p>GenerateAIB</p></td><td><p>布尔标志，指定是否需要 AIB 文件（用于 SQL Server 和客户索引器 IFilter）。  有关详细信息，请参阅 <a href="http://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/">Using AIB Files with Azure Media Indexer and SQL Server</a>（在 Azure 媒体索引器和 SQL Server 中使用 AIB 文件）。</p></td><td><p>True; False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>布尔标志，指定是否需要关键字 XML 文件。</p></td><td><p>True；False。 </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>布尔型标志，指定是否强制完整字幕（不考虑可信度）。  </p><p>默认值为 false，在此情况下，将忽略最终字幕输出中可信度小于 50% 的单词和短语并将其替换为省略号（“...”）。  省略号可用于字幕质量控制和审核。</p></td><td><p>True；False。 </p></td></tr></table> |
+| **features** <br/><br/> 在版本 1.2 中添加。 目前，唯一支持的功能是语音识别（“ASR”）。 |false |语音识别功能具有以下设置键：<table><tr><th><p>密钥</p></th>        <th><p>说明</p></th><th><p>示例值</p></th></tr><tr><td><p>语言</p></td><td><p>要在多媒体文件中识别的自然语言。</p></td><td><p>英语、西班牙语</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>以分号分隔的所需输出字幕格式的列表（如果有）</p></td><td><p>ttml; sami; webvtt</p></td></tr><tr><td><p>GenerateAIB</p></td><td><p>布尔标志，指定是否需要 AIB 文件（用于 SQL Server 和客户索引器 IFilter）。  有关详细信息，请参阅 <a href="http://azure.microsoft.com/blog/2014/11/03/using-aib-files-with-azure-media-indexer-and-sql-server/">Using AIB Files with Azure Media Indexer and SQL Server</a>（在 Azure 媒体索引器和 SQL Server 中使用 AIB 文件）。</p></td><td><p>True; False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>布尔标志，指定是否需要关键字 XML 文件。</p></td><td><p>True；False。 </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>布尔型标志，指定是否强制完整字幕（不考虑可信度）。  </p><p>默认值为 false，在此情况下，将忽略最终字幕输出中可信度小于 50% 的单词和短语并将其替换为省略号（“...”）。  省略号可用于字幕质量控制和审核。</p></td><td><p>True；False。 </p></td></tr></table> |
 
 ### <a id="error_codes"></a>错误代码
 如果发生错误，Azure Media Indexer 应返回以下错误代码之一：

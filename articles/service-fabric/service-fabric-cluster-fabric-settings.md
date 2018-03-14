@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 23f063d89c5030d440d50765eee9d121b4d8f5ba
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: e55dbe4bd8fde8293c7fcd681bb18967dc4edad6
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>自定义 Service Fabric 群集设置和结构升级策略
 本文档说明如何为 Service Fabric 群集自定义各种结构设置和结构升级策略。 可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板完成自定义。
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 下面的步骤演示如何将新设置 *MaxDiskQuotaInMB* 添加到“诊断”部分。
 
 1. 请转到 https://resources.azure.com
-2. 导航到订阅：展开“订阅” -> “资源组” -> “Microsoft.ServiceFabric” -> “\<群集名称>”
+2. 通过展开“订阅” -> \<你的订阅> -> “resourceGroups” -> \<你的资源组> -> “提供程序” -> “Microsoft.ServiceFabric” -> “群集” -> \<你的群集名称>导航到你的订阅
 3. 选择右上角的“读/写”。
 4. 选择“编辑”，更新 `fabricSettings` JSON 元素并添加新元素：
 
@@ -385,6 +385,7 @@ ms.lasthandoff: 02/11/2018
 |CommonName2Ntlmx509StoreLocation|string，默认值为 L"LocalMachine"| 静态|使用 NTLM 身份验证时，用于在 CommonName2NtlmPasswordSecret 上生成 HMAC 的 X509 证书的存储位置 |
 |CommonName2Ntlmx509StoreName|string，默认值为 L"MY"|静态| 使用 NTLM 身份验证时，用于在 CommonName2NtlmPasswordSecret 上生成 HMAC 的 X509 证书的存储名称 |
 |CommonName2Ntlmx509CommonName|string，默认值为 L""|静态|使用 NTLM 身份验证时，用于在 CommonName2NtlmPasswordSecret 上生成 HMAC 的 X509 证书的公用名 |
+|GenerateV1CommonNameAccount| bool，默认值为 TRUE|静态|指定是否要使用用户名 V1 生成算法生成帐户。 从 Service Fabric 6.1 版开始，始终创建具有 v2 生成的帐户。 从/到不支持 V2 生成的版本升级需要 V1 帐户（6.1 版以前）。|
 
 ### <a name="section-name-imagestoreservice"></a>节名称：ImageStoreService
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |

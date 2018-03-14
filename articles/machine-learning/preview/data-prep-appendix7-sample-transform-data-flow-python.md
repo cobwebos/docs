@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 8146c2a41a2b8fc241131a42ec74227795867609
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: aa213a3b1a8949f0fca5e4bbb7ec5a6a775ae6ec
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="sample-of-custom-data-flow-transforms-python"></a>自定义数据流转换示例 (Python) 
 菜单中的转换名称为“转换数据流(脚本)”。 阅读本附录前，请先阅读 [Python 扩展性概述](data-prep-python-extensibility-overview.md)。
@@ -42,8 +42,8 @@ ms.lasthandoff: 02/03/2018
 
 ## <a name="transform-data-flow"></a>转换数据流
 ### <a name="fill-down"></a>向下填充 
-向下填充需要两个转换。 它假设数据如下所示：
 
+向下填充需要两个转换。 它假设数据如下表所示：
 
 |State         |城市       |
 |--------------|-----------|
@@ -58,16 +58,17 @@ ms.lasthandoff: 02/03/2018
 |              |San Antonio|
 |              |Houston    |
 
-首先创建包含以下代码的“添加列(脚本)”转换：
+1. 使用以下代码创建“添加列(脚本)”转换：
 ```python
     row['State'] if len(row['State']) > 0 else None
 ```
-现在创建包含以下代码的“转换数据流(脚本)”转换：
+
+2. 创建包含以下代码的“转换数据流(脚本)”转换：
 ```python
     df = df.fillna( method='pad')
 ```
 
-数据现在如下所示：
+数据现在如下表所示：
 
 |State         |newState         |城市       |
 |--------------|--------------|-----------|

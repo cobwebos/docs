@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 76c818cb48b4691b03ad5cc601d4eab5504945eb
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 979fcebd60d62c714a1c521013cf391ebf18a73c
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -27,6 +27,7 @@ ms.lasthandoff: 12/18/2017
 > * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
+> * [异步 Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/documentdb/)
@@ -36,6 +37,8 @@ ms.lasthandoff: 12/18/2017
 > 
 
 [!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
+SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API Async Java SDK](sql-api-sdk-async-java.md)。 
 
 <table>
 
@@ -167,7 +170,7 @@ ms.lasthandoff: 12/18/2017
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK
 
-## <a name="release--retirement-dates"></a>发布和停用日期
+## <a name="release-and-retirement-dates"></a>发布日期和停用日期
 Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。
 
 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新 SDK 版本。

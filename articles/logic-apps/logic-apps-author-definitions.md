@@ -1,7 +1,7 @@
 ---
-title: "使用 JSON 定义工作流 - Azure 逻辑应用 | Microsoft 文档"
-description: "如何在 JSON 中为逻辑应用编写工作流定义"
-author: jeffhollan
+title: "使用 JSON 根据逻辑应用定义生成 - Azure 逻辑应用| Microsoft Docs"
+description: "添加参数、处理字符串、创建参数映射和使用日期函数获取数据"
+author: ecfan
 manager: anneta
 editor: 
 services: logic-apps
@@ -13,197 +13,202 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
-ms.date: 03/29/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 7dde5bc4733af1aba34199f332379d2faf566725
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.date: 01/31/2018
+ms.author: LADocs; estfan
+ms.openlocfilehash: d05f7e34cbe670db6733c199e3420c810c304a84
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="create-workflow-definitions-for-logic-apps-using-json"></a>使用 JSON 为逻辑应用创建工作流定义
+# <a name="build-on-your-logic-app-definition-with-json"></a>使用 JSON 根据逻辑应用定义生成
 
-可以使用简单的声明性 JSON 语言为 [Azure 逻辑应用](logic-apps-overview.md)创建工作流定义。 首先请查看[如何使用逻辑应用设计器创建第一个逻辑应用](quickstart-create-first-logic-app-workflow.md)（如果尚未这样做）。 另请参阅[工作流定义语言参考大全](http://aka.ms/logicappsdocs)。
+若要使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)执行更高级的任务，可以使用代码视图编辑逻辑应用定义，该定义使用简单的声明性 JSON 语言。 首先请查看[如何创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)（如果尚未这样做）。 另请参阅[工作流定义语言参考大全](http://aka.ms/logicappsdocs)。
 
-## <a name="repeat-steps-over-a-list"></a>针对一个列表重复执行步骤
+> [!NOTE]
+> 仅当在逻辑应用定义的代码视图中工作时，某些 Azure 逻辑应用功能（如参数）才可用。 使用参数可在整个逻辑应用中重复使用值。 例如，如果要在多个操作中使用同一电子邮件地址，请将该电子邮件地址定义为参数。
 
-若要循环访问多达 10,000 个项的数组并对每个项执行一个操作，请使用 [foreach 类型](logic-apps-loops-and-scopes.md)。
+## <a name="view-and-edit-your-logic-app-definitions-in-json"></a>查看和编辑 JSON 格式的逻辑应用定义
 
-## <a name="handle-failures-if-something-goes-wrong"></a>在出现故障时处理故障
+1. 登录 [Azure 门户](https://portal.azure.com "Azure portal")。
 
-通常需包含*修复步骤* — *当且仅当* 一个或多个调用失败时执行的某种逻辑。 本示例从多个位置获取数据，但如果调用失败，则需在某处发布一条消息，方便以后跟踪该失败：  
+2. 在左侧菜单中选择“更多服务”。 在“Enterprise Integration”下选择“逻辑应用”。 选择逻辑应用。
 
+3. 在逻辑应用菜单的“开发工具”下，选择“逻辑应用代码视图”。
+
+   此时代码视图窗口将打开并显示逻辑应用定义。
+
+## <a name="parameters"></a>parameters
+
+使用参数可以在整个逻辑应用中重复使用值，适合替换可能经常更改的值。 例如，如果要在多个位置使用某个电子邮件地址，应将该电子邮件地址定义为参数。 
+
+另外，当需要在不同的环境中重写参数时，参数也很有用。有关详细信息，请参阅[用于部署的参数](#deployment-parameters)和 [Azure 逻辑应用适用的 REST API 文档](https://docs.microsoft.com/rest/api/logic)。
+
+> [!NOTE]
+> 仅可以在代码视图中使用参数。
+
+在[第一个示例逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)中，将创建工作流以在网站的 RSS 源中出现新帖子时发送电子邮件。 该源的 URL 是硬编码，因此此示例演示如何将查询值替换为参数，以便更轻松地更改该源的 URL。
+
+1. 在代码视图中找到 `parameters : {}` 对象，然后添加 `currentFeedUrl` 对象：
+
+   ``` json
+     "currentFeedUrl" : {
+      "type" : "string",
+            "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
+   }
+   ```
+
+2. 在 `When_a_feed-item_is_published` 操作中，找到 `queries` 部分，然后将该查询值替换为 `"feedUrl": "#@{parameters('currentFeedUrl')}"`。 
+
+   **之前**
+   ``` json
+   }
+      "queries": {
+          "feedUrl": "https://s.ch9.ms/Feeds/RSS"
+       }
+   },   
+   ```
+
+   **之后**
+   ``` json
+   }
+      "queries": {
+          "feedUrl": "#@{parameters('currentFeedUrl')}"
+       }
+   },   
+   ```
+
+   若要联接两个或更多符串，还可以使用 `concat` 函数。 
+   例如，`"@concat('#',parameters('currentFeedUrl'))"` 的工作方式与前面的示例相同。
+
+3.  完成后，选择“保存”。 
+
+现在，可通过将其他 URL 传递到 `currentFeedURL` 对象来更改网站的 RSS 源。
+
+<a name="deployment-parameters"></a>
+
+## <a name="deployment-parameters-for-different-environments"></a>适用于不同环境的部署参数
+
+通常，部署生命周期具有用于开发、过渡和生产环境。 例如，用户可能会将同一逻辑应用定义用于所有这些环境，但使用不同的数据库。 同样，可能会需要在不同区域中使用同一定义以实现高可用性，但需要每个逻辑应用实例使用该区域的数据库。 
+
+> [!NOTE] 
+> 这种情况不同于在*运行时*使用参数，后一情况应改用 `trigger()` 函数。
+
+下面是基本定义：
+
+``` json
+{
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "uri": {
+            "type": "string"
+        }
+    },
+    "triggers": {
+        "request": {
+          "type": "request",
+          "kind": "http"
+        }
+    },
+    "actions": {
+        "readData": {
+            "type": "Http",
+            "inputs": {
+                "method": "GET",
+                "uri": "@parameters('uri')"
+            }
+        }
+    },
+    "outputs": {}
+}
 ```
+在逻辑应用的实际 `PUT` 请求中，可以提供参数 `uri`。 在每个环境中，可为 `connection` 参数提供不同值。 默认值不再存在，因此逻辑应用有效负载需要以下参数：
+
+``` json
+{
+    "properties": {},
+        "definition": {
+          /// Use the definition from above here
+        },
+        "parameters": {
+            "connection": {
+                "value": "https://my.connection.that.is.per.enviornment"
+            }
+        }
+    },
+    "location": "westus"
+}
+``` 
+
+若要了解详细信息，请参阅 [Azure 逻辑应用适用的 REST API 文档](https://docs.microsoft.com/rest/api/logic/)。
+
+## <a name="process-strings-with-functions"></a>使用函数处理字符串
+
+逻辑应用具有各种用于处理字符串的函数。 例如，假设你想要将订单中的公司名称传递到另一个系统。 但是，你不确定是否能正确处理字符编码。 你可以对此字符串执行 base64 编码，但为了避免在 URL 中进行转义，可以改为替换几个字符。 另外，你只需公司名称的子字符串，因为不使用前五个字符。 
+
+``` json
 {
   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {},
+  "parameters": {
+    "order": {
+      "defaultValue": {
+        "quantity": 10,
+        "id": "myorder1",
+        "companyName": "NAME=Contoso"
+      },
+      "type": "Object"
+    }
+  },
   "triggers": {
-    "Request": {
-      "type": "request",
-      "kind": "http"
-    }
-  },
-  "actions": {
-    "readData": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      }
-    },
-    "postToErrorMessageQueue": {
-      "type": "ApiConnection",
-      "inputs": "...",
-      "runAfter": {
-        "readData": [
-          "Failed"
-        ]
-      }
-    }
-  },
-  "outputs": {}
-}
-```
-
-例如，若要指定 `postToErrorMessageQueue` 仅在 `readData` `Failed`后运行，请使用 `runAfter` 属性指定一系列可能的值，使 `runAfter` 可以为 `["Succeeded", "Failed"]`。
-
-最后，因为此示例现在可处理错误，我们不再将运行标记为 `Failed`。 由于我们已在此示例中添加该步骤来处理此故障，运行 `Succeeded`，虽然一个步骤 `Failed`。
-
-## <a name="execute-two-or-more-steps-in-parallel"></a>并行执行两个或更多个步骤
-
-若要并行运行多个操作，运行时的 `runAfter` 属性必须相同。 
-
-```
-{
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "triggers": {
-    "Request": {
-      "kind": "http",
-      "type": "Request"
-    }
-  },
-  "actions": {
-    "readData": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      }
-    },
-    "branch1": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    },
-    "branch2": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    }
-  },
-  "outputs": {}
-}
-```
-
-在此示例中，`branch1` 和 `branch2` 均设置为在 `readData` 后运行。 因此，这两个分支并行运行。 这两个分支的时间戳完全相同。
-
-![并行](media/logic-apps-author-definitions/parallel.png)
-
-## <a name="join-two-parallel-branches"></a>联接两个并行分支
-
-可以像前面的示例一样向 `runAfter` 属性添加项，以便将设置为并行运行的两个操作联接起来。
-
-```
-{
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-04-01-preview/workflowdefinition.json#",
-  "actions": {
-    "readData": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {}
-    },
-    "branch1": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    },
-    "branch2": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    },
-    "join": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "branch1": [
-          "Succeeded"
-        ],
-        "branch2": [
-          "Succeeded"
-        ]
-      }
-    }
-  },
-  "parameters": {},
-  "triggers": {
-    "Request": {
+    "request": {
       "type": "Request",
-      "kind": "Http",
+      "kind": "Http"
+    }
+  },
+  "actions": {
+    "order": {
+      "type": "Http",
       "inputs": {
-        "schema": {}
+        "method": "GET",
+        "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
       }
     }
   },
-  "contentVersion": "1.0.0.0",
   "outputs": {}
 }
 ```
 
-![并行](media/logic-apps-author-definitions/join.png)
+以下步骤介绍此示例如何处理该字符串，从内到外进行操作：
 
-## <a name="map-list-items-to-a-different-configuration"></a>将列表项映射到其他配置
-
-接下来，假设我们需要根据属性的值获取不同的内容。 我们可以创建值到目标的映射，并将其作为参数。  
-
+``` 
+"uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
+
+1. 获取公司名称的 [`length()`](../logic-apps/logic-apps-workflow-definition-language.md)，以便获取字符总数。
+
+2. 若要获取较短的字符串，请减去 `5`。
+
+3. 现在使用 [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md) 获取子字符串。 从索引 `5` 开始，提取字符串的其余部分。
+
+4. 将此子字符串转换为 [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) 字符串。
+
+5. 现在使用 [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) 将所有 `+` 字符替换为 `-` 字符。
+
+6. 最后，使用 [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) 将所有 `/` 字符替换为 `_` 字符。
+
+## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>将列表项映射到属性值，然后使用映射作为参数
+
+若要基于属性的值获得不同的结果，可以创建映射将每个属性值与结果匹配，然后使用映射作为参数。 
+
+例如，此工作流定义一些类别作为参数，并定义一个将这些类别与特定 URL 进行匹配的映射。 首先，此工作流获取文章列表。 然后，此工作流使用映射找到与每篇文章的类别匹配的 URL。
+
+*   [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md) 函数检查类别是否与某个已知的已定义类别匹配。
+
+*   获取匹配的类别后，此示例使用方括号从映射中拉取项：`parameters[...]`
+
+``` json
 {
   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
   "contentVersion": "1.0.0.0",
@@ -271,21 +276,29 @@ ms.lasthandoff: 01/19/2018
 }
 ```
 
-在这种情况下，我们首先获取文章的列表。 第二步使用映射查找获取内容所需的 URL，具体取决于作为参数定义的类别。
+## <a name="get-data-with-date-functions"></a>使用日期函数获取数据
 
-请注意： 
+若要从本质上不支持*触发器*的数据源中获取数据，可以改用日期函数处理时间和日期。 例如，此表达式可算出该工作流的步骤执行多长时间，从内到外进行操作：
 
-*   [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) 函数检查类别是否与某个已知的已定义类别匹配。
-
-*   在获取类别后，可以使用方括号提取映射的项：`parameters[...]`
-
-## <a name="process-strings"></a>处理字符串
-
-可以使用各种函数来操作字符串。 例如，假设我们需要将一个字符串传递给某个系统，但不确定如何正确处理才能进行字符编码。 一种选择是对字符串进行 base64 编码。 但为了避免在 URL 中转义，我们要替换几个字符。 
-
-我们还想要订购方名称的子字符串，因为不使用前五个字符。
-
+``` json
+"expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
+
+1. 从 `order` 操作提取 `startTime`。 
+2. 使用 `utcNow()` 获取当前时间。
+3. 减去 1 秒：
+
+   [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md) 
+
+   可以使用其他时间单位，例如`minutes`或`hours`。 
+
+3. 现在，可以比较这两个值。 
+
+   如果第一个值小于第二个值，则意味着从首次下订单开始过去了 1 秒以上的时间。
+
+若要设置日期格式，可以使用字符串格式化程序。 例如，若要获取 RFC1123，可以使用 [`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md)。 详细了解[日期格式设置](../logic-apps/logic-apps-workflow-definition-language.md)。
+
+``` json
 {
   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
   "contentVersion": "1.0.0.0",
@@ -293,58 +306,7 @@ ms.lasthandoff: 01/19/2018
     "order": {
       "defaultValue": {
         "quantity": 10,
-        "id": "myorder1",
-        "orderer": "NAME=Contoso"
-      },
-      "type": "Object"
-    }
-  },
-  "triggers": {
-    "request": {
-      "type": "request",
-      "kind": "http"
-    }
-  },
-  "actions": {
-    "order": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').orderer,5,sub(length(parameters('order').orderer), 5) )),'+','-') ,'/' ,'_' )}"
-      }
-    }
-  },
-  "outputs": {}
-}
-```
-
-从内到外处理：
-
-1. 获取订购方名称的 [`length()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#length)，这可以返回字符总数。
-
-2. 减 5（因为想要更短的字符串）。
-
-3. 实际使用的是 [`substring()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring)。 我们从索引处 `5` 开始，提取字符串的其余部分。
-
-4. 将此子字符串转换为 [`base64()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) 字符串。
-
-5. 将所有 `+` 字符 [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) 为 `-` 字符。
-
-6. 将所有 `/` 字符 [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) 为 `_` 字符。
-
-## <a name="work-with-date-times"></a>使用日期时间
-
-日期时间可能很有用，特别是尝试从不支持*触发器* 的数据源中提取数据的时候。 还可以使用日期时间找出各个步骤需要花费的时间。
-
-```
-{
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "order": {
-      "defaultValue": {
-        "quantity": 10,
-        "id": "myorder1"
+        "id": "myorder-id"
       },
       "type": "Object"
     }
@@ -386,67 +348,13 @@ ms.lasthandoff: 01/19/2018
 }
 ```
 
-在本例中，我们提取前一步的 `startTime`。 然后，我们获取当前时间，并从中减去 1 秒：
 
-[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) 
+## <a name="next-steps"></a>后续步骤
 
-可以使用其他时间单位，例如`minutes`或`hours`。 最后，比较这两个值。 如果第一个值小于第二个值，则意味着从首次下订单开始过去了 1 秒以上的时间。
-
-若要设置日期格式，可以使用字符串格式化程序。 例如，若要获取 RFC1123，可以使用 [`utcnow('r')`](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow)。 若要了解日期格式设置，请参阅 [Workflow Definition Language](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow)（工作流定义语言）。
-
-## <a name="deployment-parameters-for-different-environments"></a>适用于不同环境的部署参数
-
-通常情况下，部署生命周期涉及开发环境、过渡环境和生产环境。 例如，用户可以将同一定义用于所有这些环境，但使用不同的数据库。 同样，用户可能需要在不同区域中使用同一定义以实现高可用性，但又需要每个逻辑应用实例与该区域的数据库通信。
-这种情况不同于在*运行时*使用参数，后一情况应像前面的示例一样改用 `trigger()` 函数。
-
-可以首先编写一个基本的定义，如以下示例所示：
-
-```
-{
-    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "uri": {
-            "type": "string"
-        }
-    },
-    "triggers": {
-        "request": {
-          "type": "request",
-          "kind": "http"
-        }
-    },
-    "actions": {
-        "readData": {
-            "type": "Http",
-            "inputs": {
-                "method": "GET",
-                "uri": "@parameters('uri')"
-            }
-        }
-    },
-    "outputs": {}
-}
-```
-
-在逻辑应用的实际 `PUT` 请求中，可以提供参数 `uri`。 默认值不再存在，因此逻辑应用有效负载需要以下参数：
-
-```
-{
-    "properties": {},
-        "definition": {
-          // Use the definition from above here
-        },
-        "parameters": {
-            "connection": {
-                "value": "https://my.connection.that.is.per.enviornment"
-            }
-        }
-    },
-    "location": "westus"
-}
-``` 
-
-在每个环境中，可为 `connection` 参数提供不同值。 
-
-如需用于创建和管理逻辑应用的所有选项，请参阅 [REST API 文档](https://msdn.microsoft.com/library/azure/mt643787.aspx)。 
+* [基于条件运行步骤（条件语句）](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [基于不同的值运行步骤（switch 语句）](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [运行并重复执行步骤（循环）](../logic-apps/logic-apps-control-flow-loops.md)
+* [运行或合并并行步骤（分支）](../logic-apps/logic-apps-control-flow-branches.md)
+* [基于分组的操作状态运行步骤（作用域）](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* 详细了解 [Azure 逻辑应用的工作流定义语言架构](../logic-apps/logic-apps-workflow-definition-language.md)
+* 详细了解 [Azure 逻辑应用的工作流操作和触发器](../logic-apps/logic-apps-workflow-actions-triggers.md)

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 02/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: c6c47d1f9776f9e45711d8139661255dcd44c2a1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f80de47f8e9ba326fc224a8bc09f8029b5afd1ca
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD 域服务 - 安全 LDAP 配置疑难解答
 
@@ -51,6 +51,16 @@ ms.lasthandoff: 02/09/2018
 > [!TIP]
 > 端口 636 不是 Azure AD 域服务要平稳地运行所需的唯一规则。 若要了解详细信息，请访问[网络准则](active-directory-ds-networking.md)或[解决 NSG 配置问题](active-directory-ds-troubleshoot-nsg.md)文章。
 >
+
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502：安全 LDAP 证书到期
+
+**警报消息：**
+
+*托管域的安全 LDAP 证书将于 XX 到期。*
+
+**补救方法：**
+
+按照[配置安全 LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md) 一文中所述的步骤创建新的安全 LDAP 证书。
 
 ## <a name="contact-us"></a>联系我们
 欢迎联系 Azure Active Directory 域服务产品团队[分享看法或请求支持](active-directory-ds-contact-us.md)。

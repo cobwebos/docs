@@ -13,32 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/01/2018
+ms.date: 03/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 421e594f7bd4df1bc1c5faedc2c8bfab0540ca61
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 201734661873c7ac7f7a5dd710009eb324cedc86
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 
 若要利用运行 Linux 的 Azure N 系列 VM 的 GPU 功能，请安装支持的 NVIDIA 图形驱动程序。 部署 N 系列 VM 后，本文提供了驱动程序安装步骤。 针对 [Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 也提供了驱动程序安装信息。
 
-
 有关 N 系列 VM 规格、存储容量和磁盘详细信息，请参阅 [GPU Linux VM 大小](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
-
-
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
-## <a name="install-cuda-drivers-for-nc-ncv2-and-nd-vms"></a>安装适用于 NC、NCv2 和 ND VM 的 CUDA 驱动程序
+## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>为 NC、NCv2、NCv3 和 ND 系列 VM 安装 CUDA 驱动程序
 
-从 NVIDIA CUDA 工具包在 Linux NC VM 上安装 NVIDIA 驱动程序的步骤如下。 
+从 NVIDIA CUDA 工具包在 N 系列 VM 上安装 NVIDIA 驱动程序的步骤如下。 
 
 C 和 C++ 开发人员可以选择安装完整的工具包来生成 GPU 加速应用程序。 有关详细信息，请参阅 [CUDA 安装指南](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)。
-
 
 > [!NOTE]
 > 在本文发布时，此处提供的 CUDA 驱动程序下载链接是最新的。 有关最新 CUDA 驱动程序，请访问 [NVIDIA](https://developer.nvidia.com/cuda-zone) 网站。
@@ -113,9 +109,9 @@ sudo reboot
 2. Install the latest Linux Integration Services for Hyper-V.
 
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.4.tar.gz
  
-  tar xvzf lis-rpms-4.2.3-5.tar.gz
+  tar xvzf lis-rpms-4.2.4.tar.gz
  
   cd LISISO
  
@@ -152,16 +148,13 @@ sudo reboot
 
 5. 重新启动 VM，并继续验证安装。
 
-
 ### <a name="verify-driver-installation"></a>验证驱动程序安装
-
 
 要查询 GPU 设备状态，请建立到 VM 的 SSH 连接，并运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。 
 
 如果安装了驱动程序，将看到如下输出。 请注意，除非当前正在 VM 上运行 GPU 工作负荷，否则 GPU-Util 将显示 0%。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
 
 ![NVIDIA 设备状态](./media/n-series-driver-setup/smi.png)
-
 
 ## <a name="rdma-network-connectivity"></a>RDMA 网络连接
 
@@ -180,9 +173,9 @@ sudo reboot
 > 
 
 
-## <a name="install-grid-drivers-for-nv-vms"></a>安装适用于 NV VM 的 GRID 驱动程序
+## <a name="install-grid-drivers-for-nv-series-vms"></a>为 NV 系列 VM 安装 GRID 驱动程序
 
-若要在 NV VM 上安装 NVIDIA GRID 驱动程序，请通过 SSH 连接到每个 VM，并执行 Linux 发行版的步骤。 
+若要在 NV 系列 VM 上安装 NVIDIA GRID 驱动程序，请通过 SSH 连接到每个 VM，并执行 Linux 发行版的步骤。 
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
@@ -265,9 +258,9 @@ sudo reboot
 3. 重新启动 VM、重新进行连接并安装适用于 Hyper-V 的最新 Linux 集成服务：
  
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.4.tar.gz
 
-  tar xvzf lis-rpms-4.2.3-5.tar.gz
+  tar xvzf lis-rpms-4.2.4.tar.gz
 
   cd LISISO
 
@@ -348,7 +341,6 @@ if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; 
 ## <a name="troubleshooting"></a>故障排除
 
 * 可以使用 `nvidia-smi` 设置持久性模式，以便在需要查询卡时该命令的输出更快。 若要设置持久性模式，请执行 `nvidia-smi -pm 1`。 请注意，如果重启 VM，此模式设置将消失。 你可以始终将该模式设置编写为在启动时执行。
-
 
 ## <a name="next-steps"></a>后续步骤
 

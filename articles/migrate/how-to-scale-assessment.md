@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: d1063d1f2777095c880896b49249f6de4cda6f3a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9d9ebef66be269c63a62d393eda76254946b13e7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>发现和评估大型 VMware 环境
 
@@ -30,22 +30,24 @@ ms.lasthandoff: 02/27/2018
 | **实体** | **计算机限制** |
 | ---------- | ----------------- |
 | Project    | 1,500              | 
-| 发现  | 1,000              |
-| 评估 | 400               |
+| 发现  | 1,500              |
+| 评估 | 1,500               |
 
-- 如果要发现和评估的计算机少于 400 台，则需要使用单个项目和单次发现。 根据具体要求，可以在单次评估中评估所有计算机，也可将机拆分到多次评估。 
-- 如果要发现的计算机介于 400 到 1,000 台之间，则需要使用单个项目和单次发现。 但需要通过多次评估来评估这些计算机，因为单次评估只能容纳至多 400 台计算机。
-- 如果要发现的计算机介于 1,001 到 1,500 台之间，则需要使用包含两次发现的单个项目。
-- 如果要发现的计算机超过 1,500 台，则需要创建多个项目，并根据需求执行多次发现。 例如：
-    - 如果要发现的计算机为 3,000 台，可以设置两个包含两次发现的项目，或三个包含单次发现的项目。
-    - 如果拥有 5,000 台计算机，可以设置 4 个项目：其中 3 个项目分别发现 1,500 台计算机，另外 1 个项目发现 500 台计算机。 或者，也可以设置含有单次发现的 5 个项目。 
+<!-- 
+- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments. 
+- If you have 400 to 1,000 machines to discover, you need a single project with a single discovery. But you will need multiple assessments to assess these machines, because a single assessment can hold up to 400 machines.
+- If you have 1,001 to 1,500 machines, you need a single project with two discoveries in it.
+- If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
+    - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
+    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one. 
+-->
 
 ## <a name="plan-multiple-discoveries"></a>计划多次发现
 
 可以使用同一 Azure Migrate 收集器，对一个或多个项目进行多次发现。 请记住以下计划注意事项：
  
 - 使用 Azure Migrate 收集器进行发现时，可将发现范围设置为 vCenter Server 文件夹、数据中心、群集或主机。
-- 若要执行多个发现操作，请在 vCenter Server 中验证要发现的 VM 是否位于支持 1,000 台计算机限制的文件夹、数据中心、群集或主机中。
+- 若要执行多个发现操作，请在 vCenter Server 中验证要发现的 VM 是否位于支持 1,500 台计算机限制的文件夹、数据中心、群集或主机中。
 - 出于评估需要，建议让计算机在相同的项目和评估中保持相互依赖关系。 在 vCenter Server 中，出于评估需要，请确保依赖计算机位于同一文件夹、数据中心或群集中。
 
 
@@ -83,6 +85,14 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
    用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. 确保生成的哈希与以下设置匹配。
+
+    适用于 OVA 版本 1.0.9.5
+
+    **算法** | **哈希值**
+    --- | ---
+    MD5 | fb11ca234ed1f779a61fbb8439d82969
+    SHA1 | 5bee071a6334b6a46226ec417f0d2c494709a42e
+    SHA256 | b92ad637e7f522c1d7385b009e7d20904b7b9c28d6f1592e8a14d88fbdd3241c  
 
     适用于 OVA 版本 1.0.9.2
 

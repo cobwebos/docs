@@ -3,22 +3,16 @@ title: "使用 Azure 导入/导出将数据传入/传出 Azure 存储 | Microsof
 description: "了解如何在 Azure 门户中创建导入和导出作业，以便将数据传入/传出到 Azure 存储。"
 author: muralikk
 manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 668f53f2-f5a4-48b5-9369-88ec5ea05eb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: 0c34b7ce028ef0fae77322513f62557fa9f9929c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e9fce2530bc4e654304b946cea1715ac8e2ce6fa
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>使用 Microsoft Azure 导入/导出服务将数据传输到 Azure 存储中
 本文分步介绍如何使用 Azure 导入/导出服务将磁盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure 存储传输到硬盘驱动器，然后再寄送到本地站点。 可将单个内部 SATA 磁盘驱动器中的数据导入 Azure Blob 存储或 Azure 文件。 
@@ -31,25 +25,34 @@ ms.lasthandoff: 02/21/2018
 如果将磁盘上的数据导入 Azure 存储，请执行以下步骤。
 ### <a name="step-1-prepare-the-drives-using-waimportexport-tool-and-generate-journal-files"></a>步骤 1：使用 WAImportExport 工具准备驱动器，并生成日志文件。
 
-1.  标识要导入 Azure 存储的数据。 导入的数据可以是本地服务器或网络共享中的目录和独立文件。
+1.  标识要导入 Azure 存储的数据。 可以导入本地服务器或网络共享中的目录和独立文件。
 2.  根据数据的总大小，采购所需数目的 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II 或 III 硬盘驱动器。
 3.  直接使用 SATA 或通过外部 USB 适配器将硬盘驱动器附加到 Windows 计算机。
-4.  在每个硬盘驱动器上创建一个 NTFS 卷，并向该卷分配一个驱动器号。 没有装入点。
-5.  若要在 Windows 计算机上启用加密，请启用 NTFS 卷上的 bit locker 加密。 使用 https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx 上的说明。
-6.  使用复制粘贴或拖放操作，或使用 RoboCopy 或任何类似的工具将数据完全复制到磁盘上这些加密的 NTFS 卷。
+1.  在每个硬盘驱动器上创建一个 NTFS 卷，并向该卷分配一个驱动器号。 没有装入点。
+2.  若要在 Windows 计算机上启用加密，请启用 NTFS 卷上的 bit locker 加密。 使用 https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx 上的说明。
+3.  使用复制粘贴或拖放操作，或使用 RoboCopy 或任何类似的工具将数据完全复制到磁盘上这些加密的 NTFS 卷。
 7.  从 https://www.microsoft.com/en-us/download/details.aspx?id=42659 下载 WAImportExport V1
 8.  解压缩到默认文件夹 waimportexportv1。 例如，C:\WaImportExportV1  
 9.  以管理员身份运行并打开 PowerShell 或命令行，并将目录更改为解压缩的文件夹。 例如，cd C:\WaImportExportV1
-10. 将以下命令行复制到记事本并进行编辑，创建命令行。
-  ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:== /t:D /bk: /srcdir:D:\ /dstdir:ContainerName/ /skipwrite
+10. 将以下命令行复制到文本编辑器并进行编辑，以创建命令行：
+
+    ```
+    ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ 
+    ```
     
-    /j：扩展名为 .jrn 的“日志文件”的文件名。 在每个驱动器上生成一个日志文件，因此建议使用磁盘序列号作为日志文件名。
-    /sk：Azure 存储帐户密钥。 /t：要寄送的磁盘的驱动器号。 例如，D /bk 是驱动器的 bit locker 密钥，/srcdir 是要寄送的磁盘的驱动器号，后跟 :\。 例如，D:\
-    /dstdir：要向其导入数据的 Azure 存储容器的名称。
-    /skipwrite 
-    
-11. 为每个需要寄送的磁盘重复步骤 10。
-12. 每次运行命令行时，都会创建使用 /j： 参数提供名称的日志文件。
+    下表介绍了这些命令行选项：
+
+    |选项  |说明  |
+    |---------|---------|
+    |/j:     |带有 .jrn 扩展名的日志文件的名称。 会为每个驱动器生成一个日志文件。 建议使用磁盘序列号作为日志文件名。         |
+    |/sk:     |Azure 存储帐户密钥。         |
+    |/t:     |要寄送的磁盘的驱动器号。 例如，驱动器 `D`。         |
+    |/bk:     |驱动器的 BitLocker 密钥。         |
+    |/srcdir:     |要寄送的磁盘的驱动器号后跟 `:\`。 例如，`D:\`。         |
+    |/dstdir:     |Azure 存储中的目标容器的名称         |
+
+1. 为每个需要寄送的磁盘重复步骤 10。
+2. 每次运行命令行时，都会创建使用 /j： 参数提供名称的日志文件。
 
 ### <a name="step-2-create-an-import-job-on-azure-portal"></a>步骤 2：在 Azure 门户中创建导入作业。
 
@@ -88,6 +91,11 @@ ms.lasthandoff: 02/21/2018
 
 ### <a name="storage-account"></a>存储帐户
 必须拥有 Azure 订阅以及一个或多个存储帐户才能使用导入/导出服务。 Azure 导入/导出仅支持经典、Blob 存储帐户和常规用途 v1 存储帐户。 每个作业只能用于将数据传输到一个存储帐户或者从一个存储帐户传输数据。 换言之，一个导入/导出作业不能跨多个存储帐户。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-create-storage-account.md#create-a-storage-account)。
+
+> [!IMPORTANT] 
+> Azure 导入导出服务不支持已启用[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)功能的存储帐户。 
+> 
+> 
 
 ### <a name="data-types"></a>数据类型
 可使用 Azure 导入/导出服务将数据复制到“块”Blob、“页”Blob 或文件中。 与之相反，只能使用此服务从 Azure 存储中导出**块** Blob、**页** Blob 或**追加** Blob。 该服务仅支持将 Azure 文件导入到 Azure 存储。 当前暂不支持导出 Azure 文件。

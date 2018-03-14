@@ -12,17 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 03/01/2018
 ms.author: jodehavi;stgriffi
-ms.openlocfilehash: 793f35bfd2e5e6b22e0804f01a69c0c20990d211
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: edc9a870257536235c2bef139dc4d1ead7dd7a8f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>使用端到端密钥轮替和审核设置 Azure 密钥保管库
 ## <a name="introduction"></a>介绍
 创建密钥保管库后，可以开始使用该保管库存储密钥和机密。 应用程序不再需要保存密钥或机密，而会根据需要从密钥保管库请求密钥或机密。 这样，便可以更新密钥和机密，不会影响应用程序的行为，同时可以各种可能的方法管理密钥和机密。
+
+>[!IMPORTANT]
+> 本文中的示例仅用于说明目的， 它们不应在生产环境中使用。 
 
 本文介绍了一个使用 Azure 密钥保管库存储机密的示例；在本例中，为应用程序将访问的 Azure 存储帐户密钥。 还介绍了该存储帐户密钥的计划轮替的实现。 最后，介绍了如何监视密钥保管库审核日志，并在收到意外请求时发出警报。
 

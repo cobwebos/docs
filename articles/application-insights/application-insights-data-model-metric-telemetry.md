@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: bd09e2a21c25097fa4b378cb2dbe2787edbb1967
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 4139e3675e2202cc42b6b8d7ff7562e9c9d693bb
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>指标遥测：Application Insights 数据模型
 
@@ -31,7 +31,7 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 | **.NET 名称**             | **与平台无关的名称** | **REST API 名称** | **说明**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | 工作正在进行... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | 总计算机 CPU 百分比
-| `\Memory\Available Bytes`                 | 工作正在进行... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | 磁盘上的可用内存量
+| `\Memory\Available Bytes`                 | 工作正在进行... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | 显示可用于计算机上运行的进程的物理内存量（以字节为单位）。 通过对清零、可用和备用内存列表上的空间量进行求和来进行计算。 可用内存可供使用；清零内存包含填充了零的内存页，可防止后面的进程看到前面进程使用的数据；备用内存是指已从进程的工作集（其物理内存）中删除、在前往磁盘途中但仍可被重新调用的内存。 请参阅[内存对象](https://msdn.microsoft.com/library/ms804008.aspx)
 | `\Process(??APP_WIN32_PROC??)\% Processor Time` | 工作正在进行... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | 托管应用程序的进程的 CPU 百分比
 | `\Process(??APP_WIN32_PROC??)\Private Bytes`      | 工作正在进行... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | 托管应用程序的进程所占用的内存量
 | `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | 工作正在进行... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | 托管应用程序的进程运行的 I/O 操作速率
@@ -40,7 +40,7 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | 工作正在进行... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | 平均请求执行时间
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | 工作正在进行... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | 队列中等待处理的请求数
 
-## <a name="name"></a>Name
+## <a name="name"></a>名称
 
 想要在 Application Insights 门户和 UI 中看到的指标的名称。 
 
@@ -48,7 +48,7 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 
 度量的单个值。 要聚合的各个度量值的总和。
 
-## <a name="count"></a>计数
+## <a name="count"></a>Count
 
 聚合指标的指标权重。 不应为度量设置。
 

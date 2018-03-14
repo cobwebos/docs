@@ -5,16 +5,16 @@ services: machine-learning
 author: serinakaye
 ms.author: serinak
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 94c6576f92b5a004e0fd509c1dc6e091c294658a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 46d026802668fd77ae184b374439ca78cf51393d
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure 机器学习常见问题
 
@@ -23,14 +23,6 @@ ms.lasthandoff: 12/18/2017
 **什么是 Azure 机器学习？**
 
 Azure 机器学习是一种完全托管的 Azure 服务，可供你创建、测试、管理及部署机器学习和 AI 模型。 我们的新服务和可下载的应用程序可提供一种代码优先方法，该方法利用云、本地和边缘来提供兼具功效、速度和灵活性的培训模型、部署模型、管理模型和监视模型。 此外，Azure 机器学习工作室还可提供基于浏览器的可视化拖放编写环境，无需进行任何编码。 
-
-**如何开始使用预览版？**
-
-在 Azure 中注册试验服务是最简单的开始方法。 通过该门户，还可以下载免费的工作台应用程序，或者注册模型管理帐户。 此外，还可以访问我们的文档站点，获取操作方法文章、视频、演示代码等。 
-
-**我没有 Azure 订阅。是否仍可以试用新服务？**
-
-作为 Microsoft Azure 产品组合的一部分，我们的新服务需要 Azure 订阅。 此外，必须具有足够权限，才能创建诸如资源组、虚拟机等资产。 
 
 **哪些区域提供新服务？**
 
@@ -52,7 +44,7 @@ SQL Server 2017 中的机器学习服务是一个可扩展的可缩放平台，�
 
 **Azure 机器学习如何与适用于 Spark 的 Microsoft 机器学习相关联？**
 
-答：MMLSpark 可为 Apache Spark 提供深度学习和数据科学工具，侧重于工作效率、简化试验和先进算法。 MMLSpark 将 Spark 机器学习管道与 Microsoft 认知工具包和 OpenCV 相集成。 可为映像和文本数据创建功能强大、高度可缩放的预测模型和分析模型。 MMLSpark 基于开源许可证提供，作为一组可使用模型和算法包含在 AML Workbench 中。 有关 MMLSpark 的详细信息，请访问我们的产品文档。 
+MMLSpark 可为 Apache Spark 提供深度学习和数据科学工具，侧重于工作效率、简化试验和先进算法。 MMLSpark 将 Spark 机器学习管道与 Microsoft 认知工具包和 OpenCV 相集成。 可为映像和文本数据创建功能强大、高度可缩放的预测模型和分析模型。 MMLSpark 基于开源许可证提供，作为一组可使用模型和算法包含在 AML Workbench 中。 有关 MMLSpark 的详细信息，请访问我们的产品文档。 
 
 **新工具和服务支持哪些版本的 Spark？顶部**
 
@@ -135,7 +127,7 @@ Azure Machine Learning Workbench 是为专业数据科学家打造的助手应�
 
 **是否支持命令行功能？**
 
-答：是，Azure 机器学习提供了一个完整的 CLI 接口。 Machine Learning CLI 默认随 Azure Machine Learning Workbench 一同安装。 它还可在 Azure 上作为 Linux 数据科学虚拟机的一部分提供，将集成到 [Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) 中
+是，Azure 机器学习提供了一个完整的 CLI 接口。 Machine Learning CLI 默认随 Azure Machine Learning Workbench 一同安装。 它还可在 Azure 上作为 Linux 数据科学虚拟机的一部分提供，将集成到 [Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) 中
 
 
 **是否可以通过 Workbench 使用 Jupyter Notebook？**
@@ -144,7 +136,7 @@ Azure Machine Learning Workbench 是为专业数据科学家打造的助手应�
 
 **支持哪些 Jupyter Notebook 内核？**
 
-答：Workbench 随附的当前版本的 Jupyter 可为 aml_config 文件夹中的每个“runconfig”文件启动一个 Python 3 内核和一个附加内核。 支持的配置包括：
+Workbench 随附的当前版本的 Jupyter 可为 aml_config 文件夹中的每个“runconfig”文件启动一个 Python 3 内核和一个附加内核。 支持的配置包括：
 - 本地 Python
 - 本地或远程 Docker 中的 Python
 
@@ -176,7 +168,7 @@ Workbench 中的数据准备工具当前支持以下格式的引入：
 
 **Azure Machine Learning Workbench、试验或模型管理是否会对数据大小强制执行限制？**
 
-答：不会，新的服务不会实施任何数据限制。 不过，执行数据准备、模型训练、试验或部署所在的环境会引入限制。 例如，如果面向本地环境进行训练，会受到硬盘驱动器内可用空间的限制。 此外，如果面向 HDInsight，会受到任何关联尺寸或计算约束的限制。 
+不会，新的服务不会实施任何数据限制。 不过，执行数据准备、模型训练、试验或部署所在的环境会引入限制。 例如，如果面向本地环境进行训练，会受到硬盘驱动器内可用空间的限制。 此外，如果面向 HDInsight，会受到任何关联尺寸或计算约束的限制。 
 
 ## <a name="algorithms-and-libraries"></a>算法和库
 
@@ -187,45 +179,3 @@ Workbench 中的数据准备工具当前支持以下格式的引入：
 **Azure 机器学习如何与 Microsoft 认知工具包相关联？**
 
 [Microsoft 认知工具包](https://www.microsoft.com/cognitive-toolkit/)是我们的新工具和服务支持的众多框架之一。 认知工具包是统一的深度学习工具包，可供使用和组合常用的机器学习模型，包括前馈深层神经网络、卷积网络、序列到序列和循环网络。 有关 Microsoft 认知工具包的详细信息，请访问我们的[产品文档](https://docs.microsoft.com/cognitive-toolkit/)。 
-
-## <a name="pricing-and-billing"></a>定价和计费
-
-**在预览期间，是否需要为 Azure 机器学习付费？** 
-
-答：Azure Machine Learning Workbench 应用程序免费提供给 Azure 订阅者。 试验服务和模型管理提供免费层以及付费层，在使用公共预览版期间可按折扣价购买付费层。
-
-**是否将根据运行的试验数量来收费？**
-
-否。借助试验服务，可以根据需要运行任意数目的试验，仅根据用户数量进行收费。 试验计算资源将单独收费。  我们建议你执行多次试验，以便找到最适合自己的解决方案的模型。 
-
-**是否将根据调用 Web 服务的次数进行收费？**
-
-不会。 可以随时按需调用 Web 服务，不会产生任何的模型管理费用。 可以完全控制部署的缩放以满足应用程序需求。
-
-**如何在 Azure 机器学习模型管理中对已购买单位的数量进行缩放？**
-
-可以使用 Azure 门户或 CLI 向上或向下更改单位数量。 
-
-**将如何进行计费？**
-
-帐单将按日生成。 为方便计费，一天从午夜 UTC 算起。 帐单将按月生成。 与 Azure 机器学习一起使用的任何 Azure 服务都会单独计费。 费用可能包括但不限于： 
-- 计算费用
-- HDInsight
-- Azure 容器服务
-- Azure 容器注册表 
-- Azure Blob 存储
-- Application Insights
-- Azure 密钥保管库
-- Visual Studio Team Services
-- Azure 事件中心
-- Azure 流分析 有关更多详细信息，或想要查看示例帐单，请访问我们的定价页。 
-
-## <a name="support-and-training"></a>支持和培训
-
-**在哪里可以获得 Azure 机器学习的培训？**
-
-[Azure 机器学习文档中心](./overview-what-is-azure-ml.md)提供视频教程和操作指南。 这些分步指南提供服务介绍，并对数据科学生命周期进行了说明。 我们会持续更新机器学习中心的内容。 可以在用户反馈论坛中提交有关其他学习材料的请求。
-
-**如何获取 Azure 机器学习的支持？**
-
-有关技术支持，请转到 Azure 支持，然后选择“机器学习”。 Azure 机器学习还在 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上设有一个活动社区，标记为“Azure-Machine-Learning”，由团队监视。  可以在 [Azure 机器学习反馈](https://feedback.azure.com/forums/257792-machine-learning)站点上提交建议和功能请求。 

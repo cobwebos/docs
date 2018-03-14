@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 ADP Federated SSO 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 ADP Federated SSO 之间配置单一登录。"
+title: "教程：Azure Active Directory 与 ADP 集成 | Microsoft Docs"
+description: "了解如何在 Azure Active Directory 和 ADP 之间配置单一登录。"
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,32 +12,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 02/27/2018
 ms.author: jeedes
-ms.openlocfilehash: ad12dfd525afe1bde7026535dceb25556abf0a96
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1e0a35fd76f9eb6335685f05b8936b0b5105f6b2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adp-federated-sso"></a>教程：Azure Active Directory 与 ADP Federated SSO 的集成
+# <a name="tutorial-azure-active-directory-integration-with-adp"></a>教程：Azure Active Directory 与 ADP 集成
 
-本教程介绍如何将 ADP Federated SSO 与 Azure Active Directory (Azure AD) 集成。
+本教程介绍如何将 ADP 与 Azure Active Directory (Azure AD) 集成。
 
-将 ADP Federated SSO 与 Azure AD 集成具有以下优势：
+将 ADP 与 Azure AD 集成可提供以下优势：
 
-- 可在 Azure AD 中控制谁有权访问 ADP Federated SSO
-- 可使用户通过其 Azure AD 帐户自动登录 ADP Federated SSO（单一登录）
+- 可在 Azure AD 中控制谁有权访问 ADP。
+- 可以让用户使用其 Azure AD 帐户自动登录到 ADP（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 ADP Federated SSO 的集成，需要以下项目：
+若要配置 Azure AD 与 ADP 的集成，需要以下项：
 
 - Azure AD 订阅
-- 启用了 ADP Federated SSO 的订阅
+- 已启用 ADP 的订阅
 
 > [!NOTE]
 > 为了测试本教程中的步骤，我们不建议使用生产环境。
@@ -50,13 +50,13 @@ ms.lasthandoff: 02/24/2018
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-1. 从库中添加 ADP Federated SSO
+1. 从库中添加 ADP
 2. 配置和测试 Azure AD 单一登录
 
-## <a name="adding-adp-federated-sso-from-the-gallery"></a>从库中添加 ADP Federated SSO
-若要配置 ADP Federated SSO 与 Azure AD 的集成，需要从库中将 ADP Federated SSO 添加到托管 SaaS 应用列表。
+## <a name="adding-adp-from-the-gallery"></a>从库中添加 ADP
+若要配置 ADP 与 Azure AD 的集成，需要从库中将 ADP 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 ADP Federated SSO，请执行以下步骤：**
+**若要从库中添加 ADP，请执行以下步骤：**
 
 1.  以管理员身份登录到 Microsoft Azure 标识提供者环境。
 
@@ -72,35 +72,35 @@ ms.lasthandoff: 02/24/2018
 
     ![“新增应用程序”按钮][3]
 
-5. 在搜索框中键入 **ADP Federated SSO**，在结果面板中选择“ADP Federated SSO”，单击“添加”按钮添加该应用程序。
+5. 在搜索框中，键入“ADP”，在结果面板中选择“ADP”，然后单击“添加”按钮添加该应用程序。
 
-    ![结果列表中的 ADP Federated SSO](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_addfromgallery.png)
+    ![结果列表中的 ADP](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-本部分需根据名为“Britta Simon”的测试用户的情况，配置和测试 ADP Federated SSO 的 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 ADP 的 Azure AD 单一登录。
 
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 ADP Federated SSO 用户。 换句话说，需要建立 Azure AD 用户与 ADP Federated SSO 中相关用户之间的链接关系。
+若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 ADP 用户。 换句话说，需要建立 Azure AD 用户与 ADP 中相关用户之间的链接关系。
 
-在 ADP Federated SSO 中，将 Azure AD 中“用户名”的值指定为“用户名”的值来建立此链接关系。
+通过将 Azure AD 中“用户名”的值指定为 ADP 中“用户名”的值来建立此链接关系。
 
-若要通过 ADP Federated SSO 配置和测试 Azure AD 单一登录，需要完成以下构建基块：
+若要配置和测试 ADP 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 ADP Federated SSO 测试用户](#create-an-adp-federated-sso-test-user)** - 在 ADP Federated SSO 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+3. **[创建 ADP 测试用户](#create-an-adp-test-user)** - 在 ADP 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 ADP Federated SSO 应用程序中配置单一登录。
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 ADP 应用程序中配置单一登录。
 
-**若要配置 ADP Federated SSO 的 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 ADP 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 门户中的 **ADP Federated SSO** 应用程序集成页上，单击“属性”选项卡并执行以下步骤： 
+1. 在 Azure 门户中的 **ADP** 应用程序集成页上，单击“属性”选项卡并执行以下步骤： 
 
-    ![单一登录属性](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_prop.png)
+    ![单一登录属性](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_prop.png)
 
     a. 将“允许用户登录”字段值设置为“是”。
 
@@ -110,25 +110,25 @@ ms.lasthandoff: 02/24/2018
 
     d.单击“下一步”。 将“对用户可见”字段值设置为“否”。
 
-2. 在 **ADP Federated SSO** 应用程序集成页上，单击“单一登录”。
+2. 在 **ADP** 应用程序集成页上，单击“单一登录”。
 
     ![配置单一登录链接][4]
 
 3. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
-    ![“单一登录”对话框](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_samlbase.png)
+    ![“单一登录”对话框](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_samlbase.png)
 
-4. 在“ADP Federated SSO 域和 URL”部分中，执行以下步骤：
+4. 在“ADP 域和 URL”部分中，执行以下步骤：
 
-    ![ADP Federated SSO 域和 URL 单一登录信息](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_url.png)
+    ![ADP 域和 URL 单一登录信息](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_url.png)
 
     在“标识符”文本框中，键入一个 URL：`https://fed.adp.com/` 
     
-5. ADP Federated SSO 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示一个示例。 声明名称始终是“PersonImmutableID”，其值已映射到 **employeeid**。 
+5. ADP 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示一个示例。 声明名称始终是“PersonImmutableID”，其值已映射到 **employeeid**。 
 
-    此处，将用户从 Azure AD 映射到 ADP Federated SSO 是在 **employeeid** 上完成的，但可将其映射到基于应用程序设置的其他值。 因此，首先请与 [ADP 支持团队](https://www.adp.com/contact-us/overview.aspx)协作，使用用户的正确标识符，并将该值与“PersonImmutableID”声明一起映射。
+    此处，将用户从 Azure AD 映射到 ADP 是在 **employeeid** 上完成的，但可将其映射到基于应用程序设置的其他值。 因此，首先请与 [ADP 支持团队](https://www.adp.com/contact-us/overview.aspx)协作，使用用户的正确标识符，并将该值与“PersonImmutableID”声明一起映射。
 
-    ![配置单一登录](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_attribute.png)
+    ![配置单一登录](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_attribute.png)
 
 6. 在“单一登录”对话框的“用户属性”部分，按图中所示配置 SAML 令牌属性，然后执行以下步骤：
     
@@ -153,9 +153,9 @@ ms.lasthandoff: 02/24/2018
 
 7. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
-    ![证书下载链接](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_certificate.png) 
+    ![证书下载链接](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_certificate.png) 
 
-8. 若要在 **ADP Federated SSO** 端配置单一登录，需在 [ADP Federated SSO 网站](https://adpfedsso.adp.com/public/login/index.fcc)中上传已下载的**元数据 XML**。
+8. 若要在 **ADP** 端配置单一登录，需要在 [ADP 网站](https://adpfedsso.adp.com/public/login/index.fcc)中上传已下载的**元数据 XML**。
 
 > [!NOTE]  
 > 此过程可能需要几天时间。 
@@ -178,13 +178,13 @@ ms.lasthandoff: 02/24/2018
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中键入 **ADP Federated SSO**，在结果面板中选择“ADP Federated SSO”，单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“ADP”，在结果面板中选择“ADP”，然后单击“添加”按钮添加该应用程序。
 
-    ![结果列表中的 ADP Federated SSO](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_addservicegallery.png)
+    ![结果列表中的 ADP](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_addservicegallery.png)
 
-5. 在 Azure 门户中的 **ADP Federated SSO** 应用程序集成页上，单击“属性”选项卡并执行以下步骤：  
+5. 在 Azure 门户中的 **ADP** 应用程序集成页上，单击“属性”选项卡并执行以下步骤：  
 
-    ![单一登录 linkedproperties](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linkedproperties.png)
+    ![单一登录 linkedproperties](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
     a.  将“允许用户登录”字段值设置为“是”。
 
@@ -192,19 +192,19 @@ ms.lasthandoff: 02/24/2018
 
     c.  将“对用户可见”字段值设置为“是”。
 
-6. 在 **ADP Federated SSO** 应用程序集成页上，单击“单一登录”。
+6. 在 **ADP** 应用程序集成页上，单击“单一登录”。
 
     ![配置单一登录链接][4]
 
-7. 在“单一登录”对话框中，将“模式”选择为“链接登录”，将应用程序链接到“ADP 联合 SSO”。
+7. 在“单一登录”对话框中，选择“模式”作为“链接登录”。 将应用程序链接到 **ADP**。
 
-    ![单一登录已链接](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linked.png)
+    ![单一登录已链接](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_linked.png)
 
 8. 导航到“配置登录 URL”部分，执行以下步骤：
 
-    ![单一登录属性](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linkedsignon.png)
+    ![单一登录属性](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
                                                               
-    a. 粘贴从上述**属性选项卡**复制的“用户访问 URL”（在 ADP Federated SSO 主应用中）。
+    a. 粘贴从上述“属性”选项卡复制的“用户访问 URL”（在 ADP 主应用中）。
                                                              
     b. 以下 5 个不同的应用支持“中继状态 URL”。 必须手动将特定应用程序的相应“中继状态 URL”值追加到“用户访问 URL”。
     
@@ -274,25 +274,25 @@ ms.lasthandoff: 02/24/2018
 
     d.单击“下一步”。 单击“创建”。
  
-### <a name="create-an-adp-federated-sso-test-user"></a>创建 ADP Federated SSO 测试用户
+### <a name="create-an-adp-test-user"></a>创建 ADP 测试用户
 
-本部分要在 ADP Federated SSO 中创建名为“Britta Simon”的用户。 请与 [ADP 支持团队](https://www.adp.com/contact-us/overview.aspx)协作，在 ADP Federated SSO 帐户中添加用户。
+本部分要在 ADP 中创建名为“Britta Simon”的用户。 请与 [ADP 支持团队](https://www.adp.com/contact-us/overview.aspx)协作，将用户添加到 ADP 帐户中。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-本部分通过授予 Britta Simon 访问 ADP Federated SSO 的权限，使其能够使用 Azure 单一登录。
+在本部分中，通过授予 Britta Simon 访问 ADP 的权限，允许她使用 Azure 单一登录。
 
 ![分配用户角色][200] 
 
-**若要将 Britta Simon 分配到 ADP Federated SSO，请执行以下步骤：**
+**若要将 Britta Simon 分配到 ADP，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
-2. 在“应用程序列表”中，选择“ADP Federated SSO”。
+2. 在应用程序列表中，选择“ADP”。
 
-    ![应用程序列表中的 ADP Federated SSO 链接](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_app.png)  
+    ![应用程序列表中的 ADP 链接](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_app.png)  
 
 3. 在左侧菜单中，单击“用户和组”。
 
@@ -312,15 +312,13 @@ ms.lasthandoff: 02/24/2018
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击 ADP Federated SSO 磁贴时，应会自动登录到 ADP Federated SSO 应用程序。
+单击访问面板中的“ADP”磁贴时，应当会自动登录到 ADP 应用程序。
 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

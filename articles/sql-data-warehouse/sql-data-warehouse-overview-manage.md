@@ -15,14 +15,14 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: d7b81c12c31fe7de40acca6baa8972e65c306ee0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: acf521bdc15dfab4c7e43081159bc1385768838e
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="manage-databases-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中管理数据库
-SQL 数据仓库自动执行管理数据库的许多方面的操作。 例如，要缩放性能，只需调整相应级别的计算资源并为这些资源付费，然后即可让 SQL 数据仓库执行向外扩展和缩减的所有工作。
+SQL 数据仓库自动执行管理数据库的许多方面的操作。 例如，要缩放性能，只需调整相应级别的计算资源并为这些资源付费，即可让 SQL 数据仓库执行向外扩展和缩减的所有工作。
 
 肯定需要监视工作负荷以确定所需性能，并对长时间运行的查询进行故障排除。 还需要执行几个安全任务来管理用户和登录名的权限。
 
@@ -84,8 +84,8 @@ DMV 是管理 SQL 数据仓库的必备工具。 在门户中显示的所有信�
 
 若要了解管理安全性，请直接访问[安全性概述][Security overview]。
 
-## <a name="backup-and-restore"></a>备份和还原
-创建数据的可靠备份是任何生产数据库必不可少的组成部分。 SQL 数据仓库可通过定期自动备份活动数据库来使数据保持安全。 通过这些备份可以从损坏了数据或是意外删除了数据或数据库的情形中恢复。  有关数据备份计划、保留策略以及如何还原数据库，请参阅[从快照还原][Restore from snapshot]。
+## <a name="back-up-and-restore"></a>备份和还原
+创建数据的可靠备份是任何生产数据库必不可少的部分。 SQL 数据仓库可通过定期自动备份活动数据库来使数据保持安全。 通过这些备份可以从损坏了数据或是意外删除了数据或数据库的情形中恢复。  有关数据备份计划、保留策略以及如何还原数据库，请参阅[从快照还原][Restore from snapshot]。
 
 ## <a name="next-steps"></a>后续步骤
 使用好的数据库设计原则可更轻松地在 SQL 数据仓库中管理数据库。 若要了解详细信息，请直接访问[开发概述][Development overview]。
@@ -100,10 +100,10 @@ DMV 是管理 SQL 数据仓库的必备工具。 在门户中显示的所有信�
 [Connect and query with sqlcmd]: sql-data-warehouse-get-started-connect-sqlcmd.md
 [Development overview]: sql-data-warehouse-overview-develop.md
 [Monitor your workload using DMVs]: sql-data-warehouse-manage-monitor.md
-[Pause compute]: sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
+[Pause compute]: pause-and-resume-compute-portal.md#pause-compute
 [Restore from snapshot]: sql-data-warehouse-restore-database-overview.md
-[Resume compute]: sql-data-warehouse-manage-compute-overview.md#resume-compute-bk
-[缩放性能]: sql-data-warehouse-manage-compute-overview.md#scale-compute
+[Resume compute]: pause-and-resume-compute-portal.md#resume-compute
+[缩放性能]: quickstart-scale-compute-portal.md#scale-compute
 [Security overview]: sql-data-warehouse-overview-manage-security.md
 [SQL Data Warehouse Best Practices]: sql-data-warehouse-best-practices.md
 [SQL Data Warehouse system views]: sql-data-warehouse-reference-tsql-system-views.md

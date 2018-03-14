@@ -1,5 +1,5 @@
 ---
-title: "通过 Azure 内容交付网络实现媒体流式处理优化"
+title: "通过 Azure CDN 进行媒体流式处理优化"
 description: "优化流媒体文件，以实现顺畅交付"
 services: cdn
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 02cd0fe30a2a14f42a16ed12f714d496bbb23b36
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c953baad9ca5def916800e6abe7032b4572def5a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="media-streaming-optimization-via-the-azure-content-delivery-network"></a>通过 Azure 内容交付网络实现媒体流式处理优化 
+# <a name="media-streaming-optimization-via-azure-cdn"></a>通过 Azure CDN 进行媒体流式处理优化 
  
 随着 Internet 上高清晰度视频的使用日渐增多，这对于高效交付大型文件是一个挑战。 客户希望能够在各种网络和世界各地的客户端上流畅播放点播视频或实时视频资产。 因此，为媒体流文件提供快速高效的交付机制至关重要，可确保顺畅和愉快的使用者体验。  
 
@@ -28,13 +28,13 @@ ms.lasthandoff: 10/11/2017
 
 流式处理的请求模式也会带来一些新的挑战。 当发布热门实时流或针对点播视频发布新系列时，可能有数百万观众同时请求同一视频流。 在这种情况下，如果尚未缓存资产，则请务必执行智能请求合并，以免覆盖源服务器。
  
-Akamai 的 Azure 内容交付网络现在提供一种功能，可在全球范围内向用户高效地交付流媒体资产。 该功能可减少延迟，因为它减少了源服务器上的负载。 此功能适用于标准 Akamai 定价层。 
+**Akamai 的 Azure CDN** 提供一种功能，可在全球范围内大规模地向用户高效地交付流媒体资产。 该功能可减少延迟，因为它减少了源服务器上的负载。 此功能适用于标准 Akamai 定价层。 
 
-Verizon 的 Azure 内容交付网络可直接以常规 Web 交付优化类型交付流媒体。
+**Verizon 的 Azure CDN** 可直接以“常规 Web 交付”优化类型交付流媒体。
  
-## <a name="configure-an-endpoint-to-optimize-media-streaming-in-the-azure-content-delivery-network-from-akamai"></a>配置终结点以在 Akamai 的 Azure 内容交付网络中优化媒体流式处理
+## <a name="configure-an-endpoint-to-optimize-media-streaming"></a>配置终结点以优化媒体流式处理
  
-你可以配置内容交付网络 (CDN) 终结点，以优化通过 Azure 门户的大型文件交付。 可以使用 REST API 或任意客户端 SDK 执行此操作。 下面的步骤演示了通过 Azure 门户的交付过程：
+你可以配置内容交付网络 (CDN) 终结点，以优化通过 Azure 门户的大型文件交付。 也可以使用 REST API 或任意客户端 SDK 执行此操作。 下面的步骤演示了通过 Azure 门户使用“Akamai 的 Azure CDN”配置文件的交付过程：
 
 1. 若要添加新的终结点，请在“CDN 配置文件”页上，选择“终结点”。
   
@@ -46,16 +46,15 @@ Verizon 的 Azure 内容交付网络可直接以常规 Web 交付优化类型交
  
 创建 CDN 终结点后，它会将优化应用于符合特定条件的所有文件。 以下部分介绍了此过程。 
  
-## <a name="media-streaming-optimizations-for-the-azure-content-delivery-network-from-akamai"></a>通过 Akamai 的 Azure 内容交付网络实现媒体流式处理优化
+## <a name="media-streaming-optimizations-for-azure-cdn-from-akamai"></a>Akamai 的 Azure CDN 的流媒体优化
  
-Akamai 的媒体流式处理优化对于使用个别媒体片段进行交付的实时或点播视频媒体流很有效。 此过程与通过渐进式下载或使用字节范围请求进行传输的单个大型资产不同。 有关这种形式的媒体交付的信息，请查看[大型文件优化](cdn-large-file-optimization.md)。
-
+**Akamai 的 Azure CDN** 的媒体流式处理优化对于使用单个媒体片段进行交付的实时或点播视频流媒体很有效。 此过程与通过渐进式下载或使用字节范围请求进行传输的单个大型资产不同。 有关这种形式的媒体交付的信息，请查看[大型文件优化](cdn-large-file-optimization.md)。
 
 常规媒体交付或点播视频媒体交付优化类型使用具备后端优化能力的 CDN 来更快地交付媒体资产。 它们还基于随着时间推移总结出的最佳做法使用媒体资产的配置。
 
 ### <a name="caching"></a>缓存
 
-如果 Akamai 的 Azure 内容交付网络检测到资产属于流式处理清单或片段，则使用与常规 Web 交付不同的缓存过期时间。 （请参阅下表中的完整列表。）与往常一样，遵循从源发送的 Cache-Control 或 Expires 标头。 如果该资产不是媒体资产，则通过用于常规 Web 交付的过期时间进行缓存。
+如果 **Akamai 的 Azure CDN** 检测到资产属于流式处理清单或片段，则使用与常规 Web 交付不同的缓存到期时间。 （请参阅下表中的完整列表。）与往常一样，遵循从源发送的 Cache-Control 或 Expires 标头。 如果该资产不是媒体资产，则通过用于常规 Web 交付的过期时间进行缓存。
 
 如果多个用户请求尚不存在的片段，较短的负缓存时间对于源卸载很有用。 例如，在那一秒无法从源获取实时流的数据包。 较长的缓存间隔时间还有助于从源卸载请求，因为通常不会修改视频内容。
  
@@ -82,13 +81,13 @@ Akamai 的媒体流式处理优化对于使用个别媒体片段进行交付的�
 Apple HLS | m3u8、m3u、m3ub、key、ts、aac
 Adobe HDS | f4m、f4x、drmmeta、bootstrap、f4f、<br>Seg-Frag URL 结构 <br> （匹配正则表达式： ^(/.*)Seq(\d+)-Frag(\d+)
 DASH | mpd、dash、divx、ismv、m4s、m4v、mp4、mp4v、 <br> sidx、webm、mp4a、m4a、isma
-顺畅流式处理 | /manifest/,/QualityLevels/Fragments/
+顺畅流式处理 | /manifest/、/QualityLevels/Fragments/
   
 
  
-## <a name="media-streaming-optimizations-for-the-azure-content-delivery-network-from-verizon"></a>针对 Verizon 的 Azure 内容交付网络的媒体流式处理优化
+## <a name="media-streaming-optimizations-for-azure-cdn-from-verizon"></a>Verizon 的 Azure CDN 的流媒体优化
 
-Verizon 的 Azure 内容交付网络可直接使用常规 Web 交付优化类型交付流媒体资产。 默认情况下，CDN 上还有几个功能可直接协助交付媒体资产。
+**Verizon 的 Azure CDN** 可直接使用常规 Web 交付优化类型交付流媒体资产。 默认情况下，CDN 上还有几个功能可直接协助交付媒体资产。
 
 ### <a name="partial-cache-sharing"></a>部分缓存共享
 

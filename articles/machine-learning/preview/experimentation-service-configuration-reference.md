@@ -5,16 +5,16 @@ services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
 manager: haining
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: aaa9705aed59b5cf78100eda9997bb1ca74845b9
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 00e98ff07d144db791fcf074699614f1e664634b
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure 机器学习试验服务配置文件
 
@@ -29,12 +29,12 @@ ms.lasthandoff: 02/23/2018
     - \<run configuration name>.runconfig
 
 >[!NOTE]
->你通常有一个计算目标文件，并为你创建的每个计算目标运行配置文件。 但是，你可以独立地创建这些文件，并且有多个指向同一计算目标的运行配置文件。
+>你通常有一个计算目标文件，并为你创建的每个计算目标运行配置文件。 但是，你可以独立地创建这些文件，并将多个运行配置文件指向同一计算目标。
 
 ## <a name="condadependenciesyml"></a>conda_dependencies.yml
 此文件是 [conda 环境文件](https://conda.io/docs/using/envs.html#create-environment-file-by-hand)，它指定 Python 运行时版本以及代码所依赖的包。 当 Azure ML Workbench 在 Docker 容器或 HDInsight 群集中执行脚本时，它将创建用于运行脚本的 [conda 环境](https://conda.io/docs/using/envs.html)。 
 
-在此文件中，指定脚本需要用于执行的 Python 包。 Azure ML 试验服务根据依赖项列表在 Docker 映像中创建 conda 环境。 此处的包列表必须可供执行引擎访问。 因此，包需要在以下通道中列出：
+在此文件中，指定脚本需要用于执行的 Python 包。 Azure ML 试验服务根据依赖项列表创建 conda 环境。 此处列出的包必须可供执行引擎通过如下通道进行访问：
 
 * [continuum.io](https://anaconda.org/conda-forge/repo)
 * [PyPI](https://pypi.python.org/pypi)
@@ -43,7 +43,7 @@ ms.lasthandoff: 02/23/2018
 * 可供执行引擎访问的其他包
 
 >[!NOTE]
->在 HDInsight 群集上运行时，Azure ML Workbench 将创建仅用于运行的 conda 环境。 这样不同的用户可以在同一群集的不同 python 环境上运行。  
+>在 HDInsight 群集上运行时，Azure ML Workbench 将创建用于特定运行的 conda 环境。 这样不同的用户可以在同一群集的不同 python 环境上运行。  
 
 下面是一个典型的 conda_dependencies.yml 文件示例。
 ```yaml
@@ -68,13 +68,13 @@ dependencies:
      - C:\temp\my_private_python_pkg.whl
 ```
 
-只要 conda_dependencies.yml 保持不变，Azure ML Workbench 会使用相同的 conda 环境而无需重新生成。 但是，如果此文件中有任何内容发生更改，就会导致重新生成 Docker 映像。
+只要 conda_dependencies.yml 保持不变，Azure ML Workbench 会使用相同的 conda 环境而无需重新生成环境。 如果依赖项更改，则将重新生成环境。
 
 >[!NOTE]
 >如果针对本地计算上下文运行执行，则不会使用 conda_dependencies.yml 文件。 需要手动安装本地 Azure ML Workbench Python 环境的包依赖项。
 
 ## <a name="sparkdependenciesyml"></a>spark_dependencies.yml
-在提交 PySpark 脚本和需要安装的 Spark 包时，此文件指定 Spark 应用程序名称。 你还可以指定任何公共 Maven 存储库，以及可在这些 Maven 存储库中找到的 Spark 包。
+在提交 PySpark 脚本和需要安装的 Spark 包时，此文件指定 Spark 应用程序名称。 你还可以指定公共 Maven 存储库，以及可在这些 Maven 存储库中找到的 Spark 包。
 
 下面是一个示例：
 
@@ -103,13 +103,13 @@ packages:
 ```
 
 >[!NOTE]
->群集优化参数（如辅助角色大小、内核）应置于 spark_dependecies.yml 文件中的“配置”部分 
+>群集优化参数（如辅助角色大小、内核）应在 spark_dependecies.yml 文件的“configuration”节中配置 
 
 >[!NOTE]
->如果在 Python 环境中执行该脚本，spark_dependencies.yml文件将被忽略。 只有在针对 Spark（无论是在 Docker 上还是在 HDInsight 群集上）运行时它才会起作用。
+>如果在 Python 环境中执行该脚本，spark_dependencies.yml文件将被忽略。 只有在针对 Spark（无论是在 Docker 上还是在 HDInsight 群集上）运行时，才使用它。
 
 ## <a name="run-configuration"></a>运行配置
-若要指定特定的运行配置，需要一对文件。 它们通常使用 CLI 命令生成。 但也可以克隆现有文件、重命名它们，并对其进行编辑。
+若要指定特定的运行配置，需要 .compute 文件和 .runconfig 文件。 这些文件通常使用 CLI 命令生成。 你也可以克隆现有文件、对其进行重命名，并对其进行编辑。
 
 ```azurecli
 # create a compute target pointing to a VM via SSH
@@ -125,10 +125,11 @@ $ az ml computetarget attach cluster -n <compute target name> -a <IP address or 
 > 运行配置文件的本地或 docker 名称是任意的。 为方便起见，在你创建一个空白项目时，Azure ML Workbench 会添加这两个运行配置。 你可以重命名附带项目模板的“<run configuration name>.runconfig”文件，或使用任意名称创建新文件。
 
 ### <a name="compute-target-namecompute"></a>\<compute target name>.compute
-_\<compute target name>.compute_ 文件指定计算目标的连接和配置信息。 它是一个名称/值对列表。 以下是支持的设置。
+_\<compute target name>.compute_ 文件指定计算目标的连接和配置信息。 它是一个名称/值对列表。 以下是支持的设置：
 
 类型：计算环境类型。 支持的值是：
   - local
+  - remote
   - docker
   - remotedocker
   - cluster
@@ -146,6 +147,8 @@ sharedVolumes：用于指示执行引擎应使用 Docker 共享卷功能来回�
 **nvidiaDocker**：当设置为 true 时，此标志指示 Azure ML 试验服务使用 nvidia-docker 命令（而不是常规的 docker 命令）来启动 Docker 映像。 nvidia-docker 引擎允许 Docker 容器访问 GPU 硬件。 如果要在 Docker 容器中运行 GPU 执行，则此设置是必需的。 仅 Linux 主机支持 nvidia-docker。 例如，Azure 中基于 Linux 的 DSVM 使用 nvidia docker 进行传送。 Windows 当前不支持 nvidia-docker。
 
 nativeSharedDirectory：此属性指定基目录（例如：_~/.azureml/share/_），可以在其中保存文件，以便在同一计算目标上运行时共享。 如果在 Docker 容器上运行时使用此设置，则 sharedVolumes 必须设置为 true。 否则，执行将失败。
+
+**userManagedEnvironment**：此属性指定该计算目标是直接由用户管理还是通过试验服务进行管理。  
 
 ### <a name="run-configuration-namerunconfig"></a>\<run configuration name>.runconfig
 _\<run configuration name>.runconfig_ 指定 Azure ML 试验执行行为。 可以配置执行行为，例如跟踪运行历史记录、要使用的计算目标，等等。 运行配置文件的名称用于填充 Azure ML Workbench 桌面应用程序中的执行上下文下拉列表。
@@ -170,7 +173,7 @@ EnvironmentVariables:
   "EXAMPLE_ENV_VAR2": "Example Value2"
 ```
 
-可以在用户代码中访问这些环境变量。 例如，此 phyton 代码将打印名为“EXAMPLE_ENV_VAR”的环境变量
+可以在用户代码中访问这些环境变量。 例如，此 Python 代码将输出名为“EXAMPLE_ENV_VAR”的环境变量
 ```
 print(os.environ.get("EXAMPLE_ENV_VAR1"))
 ```
@@ -189,7 +192,7 @@ UseSampling：UseSampling 指定是否将数据源的活动示例数据集用于
 
 DataSourceSettings：此配置部分指定数据源设置。 在此部分中，用户指定特定数据源用作运行一部分的现有数据示例。 
 
-以下配置设置指定名为“MySample”的示例用于名为“MyDataSource”的数据源
+以下配置设置指定将名为“MySample”的示例用于名为“MyDataSource”的数据源
 ```
 DataSourceSettings:
     MyDataSource.dsource:

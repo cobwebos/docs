@@ -1,29 +1,13 @@
----
-title: "管理 Azure Service Fabric 群集中的证书 | Microsoft Docs"
-description: "介绍如何向 Service Fabric 群集添加新的证书、滚动更新证书和从群集中删除证书。"
-services: service-fabric
-documentationcenter: .net
-author: ChackDan
-manager: timlt
-editor: 
-ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
-ms.service: service-fabric
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/09/2017
-ms.author: chackdan
-ms.openlocfilehash: c433e8683755e454f9561f094269c3daccf78a62
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+-- title: 在 Azure Service Fabric 群集中管理证书 | Microsoft Docs description: 介绍如何在 Service Fabric 群集中添加新证书、滚动更新证书和删除证书。
+services: service-fabric documentationcenter: .net author: ChackDan manager: timlt editor: ''
+
+ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74 ms.service: service-fabric ms.devlang: dotnet ms.topic: article ms.tgt_pltfrm: na ms.workload: na ms.date: 02/23/2018 ms.author: chackdan
+
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
 
-在创建群集期间配置证书安全性时，Service Fabric 允许指定两个群集证书（主要证书和辅助证书）以及客户端证书。 请参阅[通过门户创建 Azure 群集](service-fabric-cluster-creation-via-portal.md)或[通过 Azure Resource Manager 创建 Azure 群集](service-fabric-cluster-creation-via-arm.md)，了解在创建时进行相关设置的详细信息。 如果创建时只指定了一个群集证书，将使用该证书作为主要证书。 在创建群集后，可以添加一个新证书作为辅助证书。
+在创建群集期间配置证书安全性时，Service Fabric 允许指定两个群集证书（主要证书和辅助证书）以及客户端证书。 请参阅[通过门户创建 Azure 群集](service-fabric-cluster-creation-via-portal.md)或[通过 Azure 资源管理器创建 Azure 群集](service-fabric-cluster-creation-via-arm.md)，了解在创建时进行相关设置的详细信息。 如果创建时只指定了一个群集证书，将使用该证书作为主要证书。 在创建群集后，可以添加一个新证书作为辅助证书。
 
 > [!NOTE]
 > 对于安全群集，始终需要至少部署一个有效的（未吊销或过期）群集证书（主要或辅助），否则，群集无法正常运行。 在所有有效证书过期前的 90 天，系统将针对节点生成警告跟踪和警告运行状况事件。 Service Fabric 当前不会针对此主题发送电子邮件或其他任何通知。 
@@ -49,6 +33,8 @@ ms.lasthandoff: 10/11/2017
 如果目的是删除标记为主要的证书，则需要首先将其与辅助证书交换，然后在升级完成后删除辅助证书。
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>使用 Resource Manager Powershell 添加辅助证书
+> [!UPDATE] 我们现在可以使用 [Add-AzureRmServiceFabricClusterCertificate](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate?view=azurermps-5.3.0) 更好、更轻松地添加辅助证书。 如果使用 Add-AzureRmServiceFabricClusterCertificate，则无需执行本部分中的其余步骤。
+
 
 执行以下步骤的前提是，熟悉 Resource Manager 的工作原理，并已使用 Resource Manager 模板至少部署了一个 Service Fabric 群集，同时已准备好你在设置此群集时使用的模板。 此外，还有一个前提就是，可以熟练使用 JSON。
 
@@ -300,7 +286,7 @@ Get-ServiceFabricClusterHealth
 ## <a name="next-steps"></a>后续步骤
 有关群集管理的详细信息，请阅读以下文章：
 
-* [Service Fabric 群集升级过程和用户预期](service-fabric-cluster-upgrade.md)
+* [Service Fabric 群集升级过程与期望](service-fabric-cluster-upgrade.md)
 * [为客户端设置基于角色的访问](service-fabric-cluster-security-roles.md)
 
 <!--Image references-->

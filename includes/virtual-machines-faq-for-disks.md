@@ -141,7 +141,7 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 **迁移是否影响 Azure Site Recovery (ASR) 通过 Azure 到 Azure 复制保护的 Azure VM？**
 
-是的。 包含托管磁盘的 VM 不支持 ASR Azure 到 Azure 保护。 2018 日历年第一季度末将会支持这种保护。 
+是的。 目前，对包含托管磁盘的 VM 的 ASR Azure 到 Azure 保护仅以公共预览版服务的形式提供。
 
 **是否可以迁移位于存储帐户中现在或以前已加密的 VM 的非托管磁盘迁移到托管磁盘？**
 

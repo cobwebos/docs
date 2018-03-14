@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: e6eacdb437d28eb733da522280cb2c7d8c24d9ba
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8efc0bff4764a7265a5f1bcdd995979af0b22234
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>创建、更改或删除公共 IP 地址
 
@@ -29,21 +29,20 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="before-you-begin"></a>开始之前
 
-在完成本文的任何部分中的任何步骤之前完成以下任务：
+在完成本文任何部分中的步骤之前，请完成以下任务：
 
-- 查看 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文，了解对公共 IP 地址的限制。
-- 使用 Azure 帐户登录到 Azure [门户](https://portal.azure.com)、Azure 命令行接口 (CLI) 或 Azure PowerShell。 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
-- 如果使用 PowerShell 命令来完成本文中的任务，请[安装和配置 Azure PowerShell](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure PowerShell commandlet。 若要获取 PowerShell 命令的帮助和示例，请键入 `get-help <command> -full`。
-- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请[安装和配置 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 确保已安装最新版本的 Azure CLI。 若要获取 CLI 命令的帮助，请键入 `az <command> --help`。 请勿安装 CLI 及其必备组件，可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 若要使用 Cloud Shell，请单击[门户](https://portal.azure.com)顶部的 Cloud Shell >_ 按钮。
+- 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
+- 如果使用门户，请打开 https://portal.azure.com，并使用 Azure 帐户登录。
+- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 5.2.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
+- 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.26 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 公共 IP 地址会产生少许费用。 若要查看定价，请参阅 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses)页。 
 
 ## <a name="create-a-public-ip-address"></a>创建公共 IP 地址
 
-1. 使用已分配订阅的“网络参与者”角色权限（最低权限）的帐户登录到 [Azure 门户](https://portal.azure.com)。 请参阅[用于 Azure 基于角色的访问控制的内置角色](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)一文，详细了解如何将角色和权限分配给帐户。
-2. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“公共 IP 地址”。 当“公共 IP 地址”出现在搜索结果中时，请单击它。
-3. 在出现的“公共 IP 地址”边栏选项卡中单击“+ 添加”。
-4. 在出现的“创建公共 IP 地址”边栏选项卡中，输入或选择以下设置的值，并单击“创建”：
+1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“公共 IP 地址”。 当“公共 IP 地址”出现在搜索结果中时，请单击它。
+2. 在出现的“公共 IP 地址”边栏选项卡中单击“+ 添加”。
+3. 在出现的“创建公共 IP 地址”边栏选项卡中，输入或选择以下设置的值，并单击“创建”：
 
     |设置|必需？|详细信息|
     |---|---|---|
@@ -73,10 +72,9 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="view-change-settings-for-or-delete-a-public-ip-address"></a>查看、删除公共 IP 地址或更改其设置
 
-1. 使用已分配订阅的“网络参与者”角色权限（最低权限）的帐户登录到 [Azure 门户](https://portal.azure.com)。 请参阅[用于 Azure 基于角色的访问控制的内置角色](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)一文，详细了解如何将角色和权限分配给帐户。
-2. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“公共 IP 地址”。 当“公共 IP 地址”出现在搜索结果中时，请单击它。
-3. 在出现的“公共 IP 地址”边栏选项卡中，单击要查看、更改其设置或要删除的公共 IP 地址的名称。
-4. 在出现的公共 IP 地址边栏选项卡中，根据是要查看、删除还是更改公共 IP 地址，完成以下选项之一。
+1. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入“公共 IP 地址”。 当“公共 IP 地址”出现在搜索结果中时，请单击它。
+2. 在出现的“公共 IP 地址”边栏选项卡中，单击要查看、更改其设置或要删除的公共 IP 地址的名称。
+3. 在出现的公共 IP 地址边栏选项卡中，根据是要查看、删除还是更改公共 IP 地址，完成以下选项之一。
     - **查看**：边栏选项卡的“概述”部分显示公共 IP 地址的主要设置，例如与之关联的网络接口（如果地址与某个网络接口关联）。 门户不显示地址的版本（IPv4 或 IPv6）。 若要查看版本信息，请使用 PowerShell 或 CLI 命令查看公共 IP 地址。 如果 IP 地址版本为 IPv6，则门户、PowerShell 或 CLI 不显示分配的地址。 
     - **删除**：若要删除公共 IP 地址，请在边栏选项卡的“概述”部分中单击“删除”。 如果该地址当前已关联到某个 IP 配置，则无法将其删除。 如果该地址当前已关联到某个配置，请单击“取消关联”，从该 IP 配置中取消关联该地址。
     - **更改**：单击“配置”。 使用本文[创建公共 IP 地址](#create-a-public-ip-address)部分所述的步骤 4 中的信息更改设置。 要将 IPv4 地址的分配方法从静态更改为动态，必须先从该公共 IPv4 地址关联的 IP 配置中取消关联该地址。 然后，可将分配方法更改为动态，并单击“关联”将该 IP 地址关联到相同或不同的 IP 配置，或者让它保持取消关联状态。 若要取消关联公共 IP 地址，请在“概述”部分中单击“取消关联”。
@@ -98,16 +96,12 @@ ms.lasthandoff: 02/09/2018
 
 创建标准 SKU 公共 IP 地址之前，必须先注册预览版。 完成以下步骤，注册预览版：
 
-1. 安装并配置 [Azure PowerShell](/powershell/azure/install-azurerm-ps)。
-2. 运行 `Get-Module -ListAvailable AzureRM` 命令，查看已安装的 AzureRM 模块的版本。 已安装版本必须为 4.4.0 版本或更高版本。 如果版本不符，可从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureRM)中下载最新版本。
-3. 使用 `login-azurermaccount` 命令登录到 Azure。
-4. 输入如下命令，注册预览版：
+1. 在 PowerShell 中，输入以下命令以注册预览版：
    
     ```powershell
     Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
     ```
-
-5. 输入以下命令，确认已针对预览版进行了注册：
+2. 输入以下命令，确认已针对预览版进行了注册：
 
     ```powershell
     Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network

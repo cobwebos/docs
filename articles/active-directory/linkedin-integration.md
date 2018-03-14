@@ -9,21 +9,21 @@ ms.workload: identity
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 02/28/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 5ebc44d0ef6200baeacf4f1f8c4371e2d1eed9db
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cdfb5458b020e9d3a3f33cecbeb0ee7b9a48909d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="linkedin-integration-for-office-applications"></a>Office 应用程序的 LinkedIn 集成
 本文介绍如何将用户访问权限限制给 Azure Active Directory (Azure AD) 中提供了 LinkedIn 集成的用户。 将 LinkedIn 集成添加到租户时，默认会启用该集成，这样，用户便可以在其某些 Microsoft 应用中访问公开的 LinkedIn 数据。 每个用户可以独立地选择将其工作或学校帐户连接到其 LinkedIn 帐户。
 
 > [!IMPORTANT]
-> 不会同时将 LinkedIn 集成部署到所有 Azure AD 租户。 将 LinkedIn 集成推出到 Azure 租户后，默认会启用该集成。 LinkedIn 集成 不可用于本地化租户、主权租户和政府租户。 
+> 不会同时将 LinkedIn 集成部署到所有 Azure AD 租户。 将 LinkedIn 集成推出到 Azure 租户后，默认会启用该集成。 LinkedIn 集成 不可用于本地化租户、主权租户和政府租户。 有关推出信息的最新视图，请参阅 [Office 365 路线图](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc)页。
 
 ## <a name="linkedin-integration-from-the-user-perspective"></a>从用户的角度来看 LinkedIn 集成
 当组织中的用户将其 LinkedIn 帐户连接到其工作或学校帐户时，即表示[他们允许 LinkedIn 提供所需的数据](https://www.linkedin.com/help/linkedin/answer/84077)，以便在组织提供的 Microsoft 应用和服务中使用。 [用户可以断开连接帐户](https://www.linkedin.com/help/linkedin/answer/85097)，这样，便会删除 LinkedIn 与 Microsoft 共享数据的权限。 LinkedIn 集成使用公开的 LinkedIn 配置文件信息。 用户可以使用 LinkedIn 隐私设置（包括是否可以在 Microsoft 应用中查看其个人资料），来[控制其自己的 LinkedIn 个人资料的查看方式](https://www.linkedin.com/help/linkedin/answer/83)。
@@ -37,8 +37,8 @@ ms.lasthandoff: 02/01/2018
 ### <a name="enable-or-disable-linkedin-integration-for-your-organization-in-the-azure-portal"></a>在 Azure 门户中为组织启用或禁用 LinkedIn 集成
 
 1. 使用 Azure AD 租户的全局管理员帐户登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)。
-2. 选择“用户和组”。
-3. 在“用户和组”边栏选项卡中，选择“用户设置”。
+2. 选择“用户”。
+3. 在“用户”边栏选项卡中，选择“用户设置”。
 4. 在“LinkedIn 集成”下，选择“是”或“否”，以启用或禁用 LinkedIn 集成。
    ![启用 LinkedIn 集成](./media/linkedin-integration/LinkedIn-integration.PNG)
 

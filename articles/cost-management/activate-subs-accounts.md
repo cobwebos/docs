@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/29/2018
+ms.date: 03/01/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: c2728545aeb202bdd216e00fd4a7e464e483b1da
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 66b2ef53e613a9c61eea17746a25357119cf6900
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>使用 Azure 成本管理激活 Azure 订阅和帐户
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 02/01/2018
 
 ### <a name="update-a-subscription"></a>更新订阅
 
-1. 若要在“帐户管理”中更新 Azure 成本管理中已存在的未激活订阅，请单击“租户 GUID”右侧的编辑铅笔符号。
+1. 若要在“帐户管理”中更新 Azure 成本管理中已存在的_未激活_订阅，请单击父_租户 GUID_ 右侧的编辑铅笔符号。 订阅已归属于父租户，因此应避免单独激活订阅。
     ![重新发现订阅](./media/activate-subs-accounts/existing-sub.png)
 2. 根据必要输入租户 ID。 如果不知道自己的租户 ID，可使用以下步骤找到它：
     1. 登录到 [Azure 门户](https://portal.azure.com)。

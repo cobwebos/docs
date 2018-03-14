@@ -14,13 +14,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 05099e868e62f612be0a3354eb8b339507ac7e4a
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 46cdd8523117e1100e7ce2a29ade9eb2dc0afe75
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="stateful-singletons-in-durable-functions---counter-sample"></a>Durable Functions 中的有状态单一实例 - 计数器示例
+
+> [!NOTE]
+> 我们正在重写此示例。 已删除这些代码片段，包含新示例的新文章将替换它。
 
 有状态单一实例是长时间运行（可能永久运行）的业务流程协调程序函数，可存储状态，也可由其他函数调用和查询。 在分布式计算中，有状态单一实例类似于[参与者模式](https://en.wikipedia.org/wiki/Actor_model)。
 
@@ -55,11 +58,11 @@ Durable Functions 使实现此类方案变得简单，因为业务流程实例�
 
 function.json 文件：
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_Counter/function.json)]
+<!-- [!code-json[Main](~/samples-durable-functions/samples/csx/E3_Counter/function.json)] -->
 
 run.csx 文件：
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Counter/run.csx)]
+<!-- [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Counter/run.csx)] -->
 
 ### <a name="precompiled-c"></a>预编译 C# 
 
@@ -67,7 +70,7 @@ run.csx 文件：
 
 下面的代码可实现业务流程协调程序函数：
 
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Counter.cs)]
+<!-- [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Counter.cs)] -->
 
 ### <a name="explanation-of-the-code"></a>代码说明
 

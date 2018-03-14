@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2017
+ms.date: 02/23/2018
 ms.author: genli
-ms.openlocfilehash: bf20a0f15b1bc285a598c64c7e9f2de0082b2904
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 3884eec0e65f856be87505d45c25cad7d3742bab
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
@@ -40,7 +40,9 @@ ms.lasthandoff: 02/28/2018
 
 若要解决该问题，请执行以下步骤：
 
-1. 请确保已正确的位置安装下列证书：
+1. 打开证书管理器：单击“开始”，键入“管理计算机证书”，然后单击搜索结果中的“管理计算机证书”。
+
+2. 请确保已正确的位置安装下列证书：
 
     | 证书 | Location |
     | ------------- | ------------- |
@@ -48,7 +50,7 @@ ms.lasthandoff: 02/28/2018
     | Azuregateway-GUID.cloudapp.net  | Current User\Trusted Root Certification Authorities|
     | AzureGateway-GUID.cloudapp.net、AzureRoot.cer    | Local Computer\Trusted Root Certification Authorities|
 
-2. 转到 Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID>，在用户和计算机的存储上手动安装证书（*.cer 文件）。
+3. 转到 Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID>，在用户和计算机的存储上手动安装证书（*.cer 文件）。
 
 若要详细了解如何安装客户端证书，请参阅[为点到站点连接生成并导出证书](vpn-gateway-certificates-point-to-site.md)。
 

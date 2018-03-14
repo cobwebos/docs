@@ -1,18 +1,43 @@
-### <a name="prerequisites"></a>先决条件
-* 一个 [GitHub](http://GitHub.com) 帐户 
+---
+title: "include 文件"
+description: "include 文件"
+services: logic-apps
+author: MandiOhlinger
+ms.service: logic-apps
+ms.topic: include
+ms.date: 03/02/2018
+ms.author: mandia
+ms.custom: include file
+ms.openlocfilehash: ec5b3ca9ccd139cbdf17768056eb1d835336e7a7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/05/2018
+---
+1. 在 [Azure 门户](https://portal.azure.com)中，创建一个空白逻辑应用。 
 
-可以在逻辑应用中使用 GitHub 帐户之前，必须先授权该逻辑应用可以连接到 GitHub 帐户。 好在，可以从 Azure 门户中的逻辑应用内轻松地执行此操作。 
+2. 在逻辑应用设计器中，输入“github”作为筛选器。 
 
-下面介绍授权逻辑应用连接到 GitHub 帐户的步骤：
+3. 选择 GitHub 连接器和要使用的触发器。
 
-1. 要创建与 GitHub 的连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”，并在搜索框中输入“GitHub”。 选择要使用的触发器或操作：  
-   ![](./media/connectors-create-api-github/github-1.png)
-2. 如果以前尚未创建任何与 GitHub 的连接，系统会提示提供 GitHub 凭据。 这些凭据用于授权逻辑应用连接到 GitHub 帐户，然后访问该帐户中的数据：  
-   ![](./media/connectors-create-api-github/github-2.png)
-3. 提供 GitHub 用户名和密码，对逻辑应用进行授权：  
-   ![](./media/connectors-create-api-github/github-3.png)   
-4. 确认意图：  
-   ![](./media/connectors-create-api-github/github-4.png)   
-5. 请注意，连接已在门户中完成创建。 现在可以继续创建逻辑应用，并在该应用中使用 GitHub：   
-   ![](./media/connectors-create-api-github/github-5.png)   
+   ![选择 GitHub 连接器和一个触发器](./media/connectors-create-api-github/github-connector.png)
+
+   > [!NOTE]
+   > 所有逻辑应用工作流都必须以触发器开头。 仅当逻辑工作流已以触发器开头时，才可以选择操作。 
+
+4. 如果以前未创建连接，请选择“登录”以便在出现提示时提供 GitHub 凭据。  
+
+   ![使用 GitHub 凭据登录](./media/connectors-create-api-github/github-connector-sign-in-credentials.png)
+
+   逻辑应用使用这些凭据授权连接和访问 GitHub 帐户的数据。 
+
+5. 提供 GitHub 用户名和密码，然后确认授权。
+
+   ![提供凭据并确认授权](./media/connectors-create-api-github/github-connector-authorize.png)   
+
+   现已在 Azure 门户中创建连接，并且该连接可供使用。
+
+6. 继续定义逻辑应用工作流。
+
+   ![将更多操作添加到逻辑应用工作流](./media/connectors-create-api-github/github-connector-logic-app.png)
 

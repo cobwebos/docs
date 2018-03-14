@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: a9c7c5dbbc50ccf8c5383be28e96dfb82af48559
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 3ed607d80e6d40a9a466c5277eca636203c13ec2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>向 Xamarin.Forms 应用添加推送通知
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/11/2018
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 对于 iOS，用户需要 [Apple 开发人员计划成员身份](https://developer.apple.com/programs/ios/)和物理 iOS 设备。 [iOS 模拟器不支持推送通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
 
 ## <a name="configure-hub"></a>配置通知中心
@@ -152,6 +152,7 @@ ms.lasthandoff: 01/11/2018
         using Android.App;
         using Android.Content;
         using Android.Media;
+        using Android.Support.V7.App;
         using Android.Util;
         using Firebase.Messaging;
 
@@ -182,7 +183,7 @@ ms.lasthandoff: 01/11/2018
                 intent.AddFlags(ActivityFlags.ClearTop);
                 var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
 
-                var notificationBuilder = new Notification.Builder(this)
+                var notificationBuilder = new NotificationCompat.Builder(this)
                     .SetSmallIcon(Resource.Drawable.ic_stat_ic_notification)
                     .SetContentTitle("New Todo Item")
                     .SetContentText(messageBody)
@@ -202,7 +203,7 @@ ms.lasthandoff: 01/11/2018
 ### <a name="test-push-notifications-in-your-android-app"></a>在 Android 应用中测试推送通知
 只有在模拟器上测试时才需要前两个步骤。
 
-1. 请确保在将 Google API 设置为目标的虚拟设备上部署或调试，如下方的 Android 虚拟设备管理器所示。
+1. 请确保部署到配置了 Google Play Services 的设备或模拟器，或者在该设备或模拟器上进行调试。 这可以通过检查设备或模拟器上是否安装了“播放”应用来进行验证。
 2. 单击“应用” > “设置” > “添加帐户”，将 Google 帐户添加到 Android 设备。 然后按提示操作，将现有的 Google 帐户添加到设备，或者新建一个。
 3. 在 Visual Studio 或 Xamarin Studio 中，右键单击 **Droid** 项目，并单击“设为启动项目”。
 4. 单击“运行”生成项目，并在 Android 设备或模拟器中启动应用。

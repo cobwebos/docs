@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2018
+ms.date: 02/28/2018
 ms.author: ergreenl
-ms.openlocfilehash: 8a0b30e6c975bd8f3bfbe70a64c085b729115f24
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2f2ebb1dcc8bed86348389d6a5a7c274194efde0
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD 域服务 - 排查警报问题
 本文提供有关排查托管域中可能出现的任何警报问题的指南。
@@ -34,6 +34,13 @@ ms.lasthandoff: 02/09/2018
 | AADDS102 | 已从 Azure AD 目录中删除 Azure AD 域服务正常工作所需的服务主体。此配置影响 Microsoft 监视、管理、修补和同步托管域的功能。 | [缺少服务主体](active-directory-ds-troubleshoot-service-principals.md) |
 | AADDS103 | 已启用 Azure AD 域服务的虚拟网络的 IP 地址范围在公共 IP 范围内。*必须在具有专用 IP 地址范围的虚拟网络中启用 Azure AD 域服务。此配置影响 Microsoft 监视、管理、修补和同步托管域的功能。* | [地址在公共 IP 范围内](#aadds103-address-is-in-a-public-ip-range) |
 | AADDS104 | Microsoft 程序无法访问此托管域的域控制器。*如果虚拟网络上配置的网络安全组 (NSG) 阻止访问托管域，则可能会发生这种情况。另一个可能的原因为，如果有用户定义的路由阻止来自 Internet 的传入流量。* | [网络错误](active-directory-ds-troubleshoot-nsg.md) |
+| AADDS500 | *托管域上次于 {0} 与 Azure AD 进行同步。用户可能无法登录到托管域，或者组成员身份可能未与 Azure AD 同步。* | [已在一段时间内未进行同步](#aadds500-synchronization-has-not-completed-in-a-while) |
+| AADDS501 | *托管域上次于 XX 进行备份。* | [已在一段时间内未执行备份](#aadds501-a-backup-has-not-been-taken-in-a-while) |
+| AADDS502 | *托管域的安全 LDAP 证书将于 XX 到期。* | [安全 LDAP 证书即将到期](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |
+| AADDS503 | *由于与域关联的 Azure 订阅未处于活动状态，托管域已暂停。* | [由于订阅禁用而暂停](#aadds503-suspension-due-to-disabled-subscription) |
+| AADDS504 | *由于配置无效，托管域已暂停。服务已很长时间无法为托管域管理、修补或更新域控制器。* | [由于配置无效而暂停](#aadds504-suspension-due-to-an-invalid-configuration) |
+
+
 
 ## <a name="aadds100-missing-directory"></a>AADDS100：缺少目录
 **警报消息：**
@@ -75,7 +82,7 @@ ms.lasthandoff: 02/09/2018
 
 开始之前，请阅读[本文](https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces)的“专用 IP v4 地址空间”部分。
 
-在虚拟网络内部，计算机可能会向为子网配置的资源在同一 IP 地址范围的 Azure 资源发出请求。 但是，由于为此范围配置了虚拟网络，因此这些请求将在虚拟网络中进行路由，而不会到达预期的 Web 资源。 这可能导致 Azure AD 域服务出现不可预知的错误。
+在虚拟网络内部，计算机可能会向为子网配置的资源在同一 IP 地址范围的 Azure 资源发出请求。 但是，由于为此范围配置了虚拟网络，因此这些请求将在虚拟网络中进行路由，而不会到达预期的 Web 资源。 此配置可能导致 Azure AD 域服务出现不可预知的错误。
 
 **如果你在 Internet 中拥有为虚拟网络配置的 IP 地址范围，则可以忽略此警报。但是，Azure AD 域服务使用此配置无法承诺 [SLA](https://azure.microsoft.com/support/legal/sla/active-directory-ds/v1_0/)，因为它可能会导致不可预知的错误。**
 
@@ -93,6 +100,47 @@ ms.lasthandoff: 02/09/2018
 4. 要将虚拟机加入新的域，请按照[本指南](active-directory-ds-admin-guide-join-windows-vm-portal.md)操作。
 8. 若要确保警报已解决，请在两个小时内检查域的运行状况。
 
+## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500：同步在一段时间内未完成
+
+**警报消息：**
+
+*托管域上次于 {0} 与 Azure AD 进行同步。用户可能无法登录到托管域，或者组成员身份可能未与 Azure AD 同步。*
+
+**补救方法：**
+
+[检查域的运行状况](active-directory-ds-check-health.md)，看是否有任何警报指示托管域的配置有问题。 有时，配置问题可能会阻止 Microsoft 对托管域进行同步操作。 如果能够解决任何警报，请等待两个小时再返回检查同步是否已已完成。
+
+
+## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501：已在一段时间内未执行备份
+
+**警报消息：**
+
+*托管域上次于 XX 进行备份。*
+
+**补救方法：**
+
+[检查域的运行状况](active-directory-ds-check-health.md)，看是否有任何警报指示托管域的配置有问题。 有时，配置问题可能会阻止 Microsoft 对托管域进行同步操作。 如果能够解决任何警报，请等待两个小时再返回检查同步是否已已完成。
+
+
+## <a name="aadds503-suspension-due-to-disabled-subscription"></a>AADDS503：由于订阅禁用而暂停
+
+**警报消息：**
+
+*由于与域关联的 Azure 订阅未处于活动状态，托管域已暂停。*
+
+**补救方法：**
+
+若要还原服务，请[续订与托管域关联的 Azure 订阅](https://docs.microsoft.com/en-us/azure/billing/billing-subscription-become-disable)。
+
+## <a name="aadds504-suspension-due-to-an-invalid-configuration"></a>AADDS504：由于配置无效而暂停
+
+**警报消息：**
+
+*由于配置无效，托管域已暂停。服务已很长时间无法为托管域管理、修补或更新域控制器。*
+
+**补救方法：**
+
+[检查域的运行状况](active-directory-ds-check-health.md)，看是否有任何警报指示托管域的配置有问题。 如果可以解决其中任何警报，请这样做。 之后，请联系支持人员以重新启用订阅。
 
 ## <a name="contact-us"></a>联系我们
 欢迎联系 Azure Active Directory 域服务产品团队[分享看法或请求支持](active-directory-ds-contact-us.md)。

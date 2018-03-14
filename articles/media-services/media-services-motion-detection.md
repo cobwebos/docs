@@ -13,17 +13,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: dd422308ed728ed4e8bc35daee3bd50f0f02aaac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9c391101c82868eb3c9cc92dc55c920fdbd5f4e8
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>使用 Azure 媒体分析检测动作
 ## <a name="overview"></a>概述
 借助 **Azure Media Motion Detector** 媒体处理器 (MP)，用户可在冗长且平淡的视频中有效识别出感兴趣的部分。 可以对静态相机数据片段使用动作检测，以识别视频中有动作的部分。 它会生成 JSON 文件，其中包含带时间戳的元数据，以及发生事件的边界区域。
 
-此技术面向安全视频提要，它可以将动作分类为相关事件和误报（例如阴影或光源变化）。 这样，便可以在无需查看无止境的不相关事件的情况下，从相机输出生成安全警报，并从长时间的监控视频中提取感兴趣的片段。
+此技术面向安全视频提要，它可以将动作分类为相关事件和误报（例如阴影或光源变化）。 这样，便可以在不会被发送无止境的不相关事件的情况下，从相机源生成安全警报，同时能够从长时间的监控视频中提取感兴趣的片段。
 
 **Azure Media Motion Detector** MP 目前以预览版提供。
 
@@ -41,12 +41,14 @@ ms.lasthandoff: 12/11/2017
 | 名称 | 选项 | 说明 | 默认 |
 | --- | --- | --- | --- |
 | sensitivityLevel |字符串：'low'、'medium'、'high' |设置报告动作情况的敏感度级别。 调整此项是为了调整误报数量。 |'medium' |
-| frameSamplingValue |正整数 |设置算法的运行频率。 1 等于每个帧，2 是指每隔一个帧，如此类推。 |1 |
+| frameSamplingValue |正整数 |设置算法的运行频率。 1 等于每个帧，2 是指每 2 个帧，如此类推。 |1 |
 | detectLightChange |布尔值：'true'、'false' |设置是否在结果中报告轻微的更改 |'False' |
 | mergeTimeThreshold |Xs-time: Hh:mm:ss<br/>示例：00:00:03 |指定动作事件之间的时间窗口，其中的 2 个事件将组合成 1 个事件进行报告。 |00:00:00 |
 | detectionZones |检测区域的一个数组：<br/>- 检测区域是一个包含 3 个或 3 个以上点的数组<br/>- 点是从 0 到 1 的 x 和 y 坐标。 |描述要使用的多边形检测区域列表。<br/>报告结果时还将报告以 ID 表示的区域，其中第一个是 ‘id’:0 |单个区域，涵盖整个帧。 |
 
 ### <a name="json-example"></a>JSON 示例
+
+```json
     {
       "version": "1.0",
       "options": {
@@ -74,7 +76,7 @@ ms.lasthandoff: 12/11/2017
         ]
       }
     }
-
+```
 
 ## <a name="motion-detector-output-files"></a>动作检测器输出文件
 动作检测作业会在输出资产中返回 JSON 文件，该文件描述视频中的动作警报及其类别。 该文件将包含有关在视频中检测到的动作的时间和持续时间的信息。
@@ -97,18 +99,19 @@ ms.lasthandoff: 12/11/2017
 | Framerate |视频的每秒帧数。 |
 | Width, Height |表示视频的宽度和高度（以像素为单位）。 |
 | 开始 |开始时间戳（以“刻度”为单位）。 |
-| 持续时间 |事件的长度（以“刻度”为单位）。 |
+| Duration |事件的长度（以“刻度”为单位）。 |
 | 时间间隔 |事件中每个条目的间隔（以“刻度”为单位）。 |
-| 事件 |每个事件片段包含在该持续时间内检测到的动作。 |
-| 类型 |在当前版本中，对于一般动作，该属性始终为“2”。 此标签可让视频 API 在将来的版本中灵活地为动作分类。 |
+| 活动 |每个事件片段包含在该持续时间内检测到的动作。 |
+| Type |在当前版本中，对于一般动作，该属性始终为“2”。 此标签可让视频 API 在将来的版本中灵活地为动作分类。 |
 | RegionID |如上所述，在此版本中此属性始终为 0。 此标签可让视频 API 在将来的版本中灵活地查找各区域中的动作。 |
 | 区域 |表示你关注的动作在视频中的区域。 <br/><br/>-“id”表示区域面积 - 且在此版本中只有一个，ID 0。 <br/>#NAME? 目前支持“rectangle”和“polygon”。<br/> 如果指定了 "rectangle"，则区域具有以 X、Y、宽度及高度表示的维。 X 和 Y 坐标表示规范化 0.0 到 1.0 比例中的区域的左上角 XY 坐标。 宽度和高度表示规范化 0.0 到 1.0 比例中的区域的大小。 在当前版本中，X、Y、宽度和高度始终固定为 0、0、1、1。 <br/>如果指定了“polygon”，则区域的维度以点来表示。 <br/> |
 | Fragments |元数据划分成称为“片段”的不同段。 每个片段包含开始时间、持续时间、间隔数字和事件。 没有事件的片段表示在该开始时间和持续时间内没有检测到任何动作。 |
 | 括号 [] |每个括号表示事件中的单个间隔。 如果该间隔显示空括号，则表示没有检测到动作。 |
 | 位置 |事件下的此新项列出发生动作的位置。 这比检测区域更具体。 |
 
-下面是 JSON 输出示例
+以下 JSON 示例显示输出：
 
+```json
     {
       "version": 2,
       "timescale": 23976,
@@ -150,8 +153,8 @@ ms.lasthandoff: 12/11/2017
                 "regionId": 0
               }
             ],
+```
 
-    …
 ## <a name="limitations"></a>限制
 * 支持的输入视频格式包括 MP4、MOV 和 WMV。
 * 动作检测已针对固定背景视频优化。 算法专注于降低误报，例如光源变化和阴影。
@@ -164,33 +167,36 @@ ms.lasthandoff: 12/11/2017
 1. 创建资产并将媒体文件上传到资产。
 2. 基于包含以下 json 预设的配置文件，使用视频动作检测任务创建作业： 
    
-        {
-          "Version": "1.0",
-          "Options": {
-            "SensitivityLevel": "medium",
-            "FrameSamplingValue": 1,
-            "DetectLightChange": "False",
-            "MergeTimeThreshold":
-            "00:00:02",
-            "DetectionZones": [
-              [
-                {"x": 0, "y": 0},
-                {"x": 0.5, "y": 0},
-                {"x": 0, "y": 1}
-               ],
-              [
-                {"x": 0.3, "y": 0.3},
-                {"x": 0.55, "y": 0.3},
-                {"x": 0.8, "y": 0.3},
-                {"x": 0.8, "y": 0.55},
-                {"x": 0.8, "y": 0.8},
-                {"x": 0.55, "y": 0.8},
-                {"x": 0.3, "y": 0.8},
-                {"x": 0.3, "y": 0.55}
-              ]
-            ]
-          }
-        }
+    ```json
+            {
+            "Version": "1.0",
+            "Options": {
+                "SensitivityLevel": "medium",
+                "FrameSamplingValue": 1,
+                "DetectLightChange": "False",
+                "MergeTimeThreshold":
+                "00:00:02",
+                "DetectionZones": [
+                [
+                    {"x": 0, "y": 0},
+                    {"x": 0.5, "y": 0},
+                    {"x": 0, "y": 1}
+                ],
+                [
+                    {"x": 0.3, "y": 0.3},
+                    {"x": 0.55, "y": 0.3},
+                    {"x": 0.8, "y": 0.3},
+                    {"x": 0.8, "y": 0.55},
+                    {"x": 0.8, "y": 0.8},
+                    {"x": 0.55, "y": 0.8},
+                    {"x": 0.3, "y": 0.8},
+                    {"x": 0.3, "y": 0.55}
+                ]
+                ]
+            }
+            }
+    ```
+
 3. 下载输出 JSON 文件。 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
@@ -199,7 +205,7 @@ ms.lasthandoff: 12/11/2017
 
 #### <a name="example"></a>示例
 
-```
+```csharp
 
 using System;
 using System.Configuration;

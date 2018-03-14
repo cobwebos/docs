@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 02/28/2018
 ms.author: mimig
-ms.openlocfilehash: b63c778f02b88bea4d68206f441aef7b32172c24
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: d263c4f5ad14f6692a7c8f6e66429b439a52a84a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位数
 现已推出：Azure Cosmos DB [请求单位计算器](https://www.documentdb.com/capacityplanner)。 了解[估计吞吐量需求](request-units.md#estimating-throughput-needs)。
@@ -92,6 +92,10 @@ await client.ReplaceOfferAsync(offer);
 ```
 
 更改吞吐量不会影响容器的可用性。 通常，新的保留吞吐量在几秒内就会在应用程序上生效。
+
+## <a name="throughput-isolation-in-globally-distributed-databases"></a>全局分布式数据库中的吞吐量隔离
+
+将数据库复制到多个区域后，Azure Cosmos DB 将提供吞吐量隔离，以确保一个区域中的 RU 使用不会影响另一个区域中的 RU 使用。 例如，如果将数据写入到一个区域，并从另一个区域读取数据，用于在区域 A 中执行写入操作的 RU 不会减损用于区域 B 中读取操作的 RU。RU 不会拆分到已部署的所有区域中。 数据库所复制到的每个区域预配了全部数量的 RU。 有关全局复制的详细信息，请参阅[如何使用 Azure Cosmos DB 进行全局数据分配](distribute-data-globally.md)。
 
 ## <a name="request-unit-considerations"></a>请求单位注意事项
 在估计为 Azure Cosmos DB 容器保留的请求单位数量时，请务必考虑以下变量：
@@ -209,7 +213,7 @@ await client.ReplaceOfferAsync(offer);
 6. 根据给定的预计每秒运行的操作估计数计算所需的请求单位。
 
 ## <a id="GetLastRequestStatistics"></a>使用 API for MongoDB 的 GetLastRequestStatistics 命令
-API for MongoDB 支持使用自定义命令 *getLastRequestStatistics* 来检索指定操作的请求费用。
+MongoDB API 支持使用自定义命令 *getLastRequestStatistics* 来检索指定操作的请求费用。
 
 例如，在 Mongo Shell 中，执行所需的操作来验证请求费用。
 ```
@@ -235,10 +239,10 @@ API for MongoDB 支持使用自定义命令 *getLastRequestStatistics* 来检索
 > 
 > 
 
-## <a name="use-api-for-mongodbs-portal-metrics"></a>使用 API for MongoDB 的门户指标
-准确估算 API for MongoDB 数据库请求单位费用的最简单方法是使用 [Azure 门户](https://portal.azure.com)指标。 使用“请求数”和“请求费用”图表，可以估算每个操作消耗的请求单位数，以及每个操作相对于其他操作消耗的请求单位数。
+## <a name="use-mongodb-api-portal-metrics"></a>使用 MongoDB API 门户指标
+准确估算 MongoDB API 数据库请求单位费用的最简单方法是使用 [Azure 门户](https://portal.azure.com)指标。 使用“请求数”和“请求费用”图表，可以估算每个操作消耗的请求单位数，以及每个操作相对于其他操作消耗的请求单位数。
 
-![API for MongoDB 门户指标][6]
+![MongoDB API 门户指标][6]
 
 ## <a name="a-request-unit-estimation-example"></a>请求单位估计示例
 请考虑以下 ~1 KB 文档：
@@ -343,8 +347,8 @@ API for MongoDB 支持使用自定义命令 *getLastRequestStatistics* 来检索
 
 如果存在多个高于请求速率的请求操作，则默认重试行为可能无法满足需要，这时客户端就会向应用程序引发 DocumentClientException，其状态代码为 429。 在这种情况下，可以考虑处理重试行为和应用程序错误处理例程中的逻辑，或为容器增加保留的吞吐量。
 
-## <a id="RequestRateTooLargeAPIforMongoDB"></a>超过 API for MongoDB 中保留的吞吐量限制
-超过为集合预配的请求单位数的应用程序将受到限制，直到比率下降到保留级别以下。 受限制时，后端将提前结束请求并返回 *16500* 错误代码 -“请求过多”。 默认情况下，在返回“请求过多”错误代码之前，API for MongoDB 会自动重试最多 10 次。 如果收到大量的“请求过多”错误代码，可以考虑在应用程序的错误处理例程中添加重试行为，或者[提高集合的保留吞吐量](set-throughput.md)。
+## <a id="RequestRateTooLargeAPIforMongoDB"></a>超过 MongoDB API 中保留的吞吐量限制
+超过为集合预配的请求单位数的应用程序将受到限制，直到比率下降到保留级别以下。 受限制时，后端将提前结束请求并返回 *16500* 错误代码 -“请求过多”。 默认情况下，在返回“请求过多”错误代码之前，MongoDB API 会自动重试最多 10 次。 如果收到大量的“请求过多”错误代码，可以考虑在应用程序的错误处理例程中添加重试行为，或者[提高集合的保留吞吐量](set-throughput.md)。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure Cosmos DB 数据库的保留吞吐量的详细信息，请浏览以下资源：

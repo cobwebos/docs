@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: ad829fc771bf67953315f3f42abd66eaa2628c13
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4b9714bc456ad28d9dd46742ca16f52e68c61399
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -300,7 +300,7 @@ namespace SampleApp
 
 ## <a name="difference-between-custom-activity-in-azure-data-factory-version-2-and-custom-dotnet-activity-in-azure-data-factory-version-1"></a>Azure 数据工厂版本 2 中的自定义活动和 Azure 数据工厂版本 1 中的（自定义） DotNet 活动之间的差异
 
-  在 Azure 数据工厂版本 1 中，通过使用实现 IDotNetActivity 接口 Execute 方法的类创建 .NET 类库项目来实现（自定义）DotNet 活动代码。 链接服务、数据集和（自定义）DotNet 活动 JSON 负载中的扩展属性作为强类型对象传递到执行方法。 有关详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 因此，需要在 .Net Framework 4.5.2 中编写自定义代码，并需要在基于 Windows 上的 Azure Batch 池节点上执行该代码。 
+  在 Azure 数据工厂版本 1 中，通过使用实现 IDotNetActivity 接口 Execute 方法的类创建 .NET 类库项目来实现（自定义）DotNet 活动代码。 链接服务、数据集和（自定义）DotNet 活动 JSON 负载中的扩展属性作为强类型对象传递到执行方法。 有关详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 由于此实现，需要使用 .Net Framework 4.5.2 编写自定义代码，并需要在基于 Windows 上的 Azure Batch 池节点上执行该代码。 
 
   在 Azure 数据工厂 V2 自定义活动中，无需实现 .Net 接口。 现在可以直接运行命令、脚本，并可运行自己已编译为可执行文件的自定义代码。 可以通过指定 Command 属性和 folderPath 属性来实现此目的。 自定义活动会将可执行文件和依赖项上传到 folderpath，并执行命令。 
 
@@ -317,7 +317,7 @@ namespace SampleApp
 |自定义逻辑的执行环境      |Windows 或 Linux      |Windows (.Net Framework 4.5.2)      |
 |执行脚本      |直接支持执行脚本（如 Windows VM 上的“cmd /c echo hello world”）      |需要在 .Net DLL 中实施      |
 |所需数据集      |可选      |需要链接活动并传递信息      |
-|将信息从活动传递到自定义逻辑      |通过 ReferenceObjects（LinkedServices 和数据集）与 ExtendedProperties（自定义属性）以及      |通过 ExtendedProperties（自定义属性）、输入和输出数据集      |
+|将信息从活动传递到自定义逻辑      |通过 ReferenceObjects（LinkedServices 和数据集）与 ExtendedProperties（自定义属性）      |通过 ExtendedProperties（自定义属性）、输入和输出数据集      |
 |在自定义逻辑中检索信息      |粘贴可执行文件所在文件夹中存储的 activity.json、linkedServices.json 和 datasets.json      |通过 .Net SDK (.Net Frame 4.5.2)      |
 |日志记录      |直接写入到 STDOUT      |在 .Net DLL 中实施记录器      |
 

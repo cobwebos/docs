@@ -1,24 +1,24 @@
 ---
-title: "了解 Azure 成本管理中的成本报表 | Microsoft 文档"
-description: "本文可帮助你了解 Cloudyn 报表的基本结构和功能。"
+title: "了解 Azure 成本管理中的成本管理报表 | Microsoft Docs"
+description: "本文可帮助你了解 Cloudyn 成本管理报表的基本结构和功能。"
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 03/01/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 38c1313f42a58403e158cad9c2930b6541da5adc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4effd63fbd9cb972a0d130826a7347dd34561792
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="understanding-cost-reports"></a>了解成本报表
+# <a name="understanding-cost-management-reports"></a>了解成本管理报表
 
-本文可帮助你了解 Cloudyn 报表的基本结构和功能。 大多数 Cloudyn 报表都较为直观，具有统一的外观。 在阅读本文后，即可使用所有的报表。 许多标准功能在各种报表中都可用，使你能够轻松导航报表。 报表是可自定义的，你可以从多个选项中进行选择以计算和显示结果。
+本文可帮助你了解 Cloudyn 成本管理报表的基本结构和功能。 大多数 Cloudyn 报表都较为直观，具有统一的外观。 阅读本文后，即可使用所有成本管理报表。 许多标准功能在各种报表中都可用，使你能够轻松导航报表。 报表是可自定义的，你可以从多个选项中进行选择以计算和显示结果。
 
 ## <a name="report-fields-and-options"></a>报表字段和选项
 
@@ -131,6 +131,27 @@ ms.lasthandoff: 02/01/2018
 14. **操作**
 
     使用操作可保存、导出或计划报表。
+
+## <a name="save-and-schedule-reports"></a>保存和计划报表
+
+创建报表后，可以将其保存供将来使用。 已保存的报表可在“我的工具” > “我的报表”中找到。 如果对现有报表进行更改并将其保存，则该报表将保存为新版本。 或者，可以将其另存为新报表。
+
+### <a name="save-a-report-to-the-cloudyn-portal"></a>将报表保存到 Cloudyn 门户
+
+查看任何报表时，单击“操作”，然后选择“保存到我的报表”。 为报表命名，然后添加自己的 URL 或使用自动创建的 URL。 可以选择与组织中的其他人公开**共享**报表，也可以将其共享到你的实体。 如果不共享报表，报表将始终是个人报表，只有你可以查看。 保存报表。
+
+
+### <a name="save-a-report-to-cloud-provider-storage"></a>将报表保存到云提供商存储
+
+若要将报表保存到云服务提供商，必须已配置存储帐户。 查看任何报表时，单击“操作”，然后选择“计划报表”。 为报表命名，然后添加自己的 URL 或使用自动创建的 URL。 选择“保存到存储”，然后选择存储帐户或添加一个新存储帐户。 输入将添加到报表文件名中的前缀。 选择 CSV 或 JSON 文件格式，然后保存报表。
+
+### <a name="schedule-a-report"></a>计划报表
+
+可以按计划的间隔运行报表，可以将报表发送到收件人列表或云服务提供商存储帐户。 查看任何报表时，单击“操作”，然后选择“计划报表”。 可以通过电子邮件发送报表，并保存到存储帐户。 在“计划”下，选择时间间隔（每日、每周或每月）。 对于每周和每月，选择要发送的天或日期，并选择时间。 保存计划的报表。 如果选择 Excel 报表格式，报表将作为附件发送。 选择电子邮件内容格式时，以图表格式显示的报表结果将作为图形发送。
+
+### <a name="export-a-report-as-a-csv-file"></a>将报表导出为 CSV 文件
+
+查看任何报表时，单击“操作”，然后选择“导出所有报表数据”。 将显示一个弹出窗口，并下载 CSV 文件。
 
 ## <a name="next-steps"></a>后续步骤
 

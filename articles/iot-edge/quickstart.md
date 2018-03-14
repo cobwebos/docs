@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 803b0bbff12c8ce471c0bff5e22e24601b8ce07f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 16d9431ec0a0425c8433557fe384864bb599bf1f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>快速入门：将第一个 IoT Edge 模块从 Azure 门户部署到 Windows 设备 - 预览
 
@@ -122,6 +122,12 @@ docker logs -f tempSensor
 
 还可使用 [IoT 中心资源管理器工具][lnk-iothub-explorer]查看设备正在发送的遥测。 
 ## <a name="clean-up-resources"></a>清理资源
+
+如果想要删除已创建的模拟设备以及已为每个模块启动的 Docker 容器，请使用以下命令： 
+
+```cmd
+iotedgectl uninstall
+```
 
 当不再需要创建的 IoT 中心时，可以使用 [az iot hub delete][lnk-delete] 命令删除资源和与资源相关联的设备：
 

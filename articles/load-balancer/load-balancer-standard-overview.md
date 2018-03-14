@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2018
 ms.author: kumud
-ms.openlocfilehash: 8f98fd7773acb960ae79e743663aceb216f217c4
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: ddbfb415f062396f022f0f58cb975f6e3a5f1807
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Azure 负载均衡器标准版概述（预览版）
 
@@ -466,6 +466,7 @@ Azure 的[网络服务限制](https://docs.microsoft.com/azure/azure-subscriptio
 - 在可用性区域的上下文中，区域公共 IP 地址不能从一个区域转移到另一个区域。
 - 目前不支持 [Azure Monitor 警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
 - 门户尚不支持扩展的预览区域。  请使用模板、Azure CLI 2.0 或 PowerShell 等客户端工具作为解决方法。
+- 不支持移动订阅操作。
 
 
 ## <a name="next-steps"></a>后续步骤

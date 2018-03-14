@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 20b12da7dedb9c5ac76a09785b68fb384789c2d7
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: d2a61f5f51e3c4a1de6baa79493cb2c7380c76b6
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -371,7 +371,7 @@ namespace functionapp0915
             System.Environment.GetEnvironmentVariable(
                 "APPINSIGHTS_INSTRUMENTATIONKEY", EnvironmentVariableTarget.Process);
 
-        private static TelemetryClient telemetry = 
+        private static TelemetryClient telemetryClient = 
             new TelemetryClient() { InstrumentationKey = key };
 
         [FunctionName("HttpTrigger2")]
@@ -395,13 +395,13 @@ namespace functionapp0915
          
             // Track an Event
             var evt = new EventTelemetry("Function called");
-            UpdateTelemetryContext(evt.Context, context, userName);
-            telemetry.TrackEvent(evt);
+            UpdateTelemetryContext(evt.Context, context, name);
+            telemetryClient.TrackEvent(evt);
             
             // Track a Metric
             var metric = new MetricTelemetry("Test Metric", DateTime.Now.Millisecond);
-            UpdateTelemetryContext(metric.Context, context, userName);
-            telemetry.TrackMetric(metric);
+            UpdateTelemetryContext(metric.Context, context, name);
+            telemetryClient.TrackMetric(metric);
             
             // Track a Dependency
             var dependency = new DependencyTelemetry
@@ -413,8 +413,8 @@ namespace functionapp0915
                     Duration = DateTime.UtcNow - start,
                     Success = true
                 };
-            UpdateTelemetryContext(dependency.Context, context, userName);
-            telemetry.TrackDependency(dependency);
+            UpdateTelemetryContext(dependency.Context, context, name);
+            telemetryClient.TrackDependency(dependency);
             
             return name == null
                 ? req.CreateResponse(HttpStatusCode.BadRequest, 
@@ -436,11 +436,7 @@ namespace functionapp0915
 
 请勿调用 `TrackRequest` 或 `StartOperation<RequestTelemetry>`，因为你将看到函数调用的重复请求。  Functions 运行时自动跟踪请求。
 
-在每次启动函数时，将 `telemetry.Context.Operation.Id` 设置为调用 ID。 这样就可以为给定的函数调用关联所有遥测项。
-
-```cs
-telemetry.Context.Operation.Id = context.InvocationId.ToString();
-```
+不要设置 `telemetryClient.Context.Operation.Id`。 这是一种全局设置，在许多函数同时运行时，会导致不正确的关联。 请改为创建新的遥测实例（`DependencyTelemetry`、`EventTelemetry`）并修改其 `Context` 属性。 然后将遥测实例传入到 `TelemetryClient` 的相应 `Track` 方法（`TrackDependency()`、`TrackEvent()`）。 这可确保遥测具有当前函数调用的正确关联详细信息。
 
 ## <a name="custom-telemetry-in-javascript-functions"></a>JavaScript 函数中的自定义遥测
 

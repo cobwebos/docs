@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2017
 ms.author: glenga
-ms.openlocfilehash: f174766d4ab909fea0feea517a17b9d648722c2a
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 2aa35cf814f8de2af89c6f7e0eda1f919301d6a3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>如何在 Azure 门户中管理 Function App 
 
@@ -119,7 +119,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 | | |
 |-|-|
-| ![Azure 门户中的 Function App API Swagger 定义](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Functions 支持 Swagger，以便使客户更轻松地使用 HTTP 触发的函数。 有关使用 Swagger 创建 API 定义的详细信息，请访问 [Azure 中的 API 应用和 Swagger 入门](../app-service/app-service-web-tutorial-rest-api.md)。 还可以使用函数代理来定义多个函数的单个 API 图面。 有关详细信息，请参阅[使用 Azure Functions 代理](functions-proxies.md)。 |
+| ![Azure 门户中的 Function App API Swagger 定义](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Functions 支持 Swagger，以便使客户更轻松地使用 HTTP 触发的函数。 有关使用 Swagger 创建 API 定义的详细信息，请访问[在 Azure 应用服务中使用 CORS 托管 RESTful API](../app-service/app-service-web-tutorial-rest-api.md)。 还可以使用函数代理来定义多个函数的单个 API 图面。 有关详细信息，请参阅[使用 Azure Functions 代理](functions-proxies.md)。 |
 
 ![配置函数应用的 API](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-apidef.png)
 

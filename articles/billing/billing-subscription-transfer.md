@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 12/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f061197cbe9fd52594d9fb000d8f3bcbd2d5285
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: ff694ee7c2ecf7f8ee5ea89902fa77efad3f501c
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/22/2017
 
 > [!IMPORTANT]
 > 
-> 目前不支持免费试用版或 [Azure 开放许可 (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) 订阅的订阅转让。 若要暂时避开此问题，请参阅[将资源移动到新的资源组或订阅中](../azure-resource-manager/resource-group-move-resources.md)。
+> 如果将订阅转让给新的 Azure AD 租户，则[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 中的所有角色分配都将从源租户中永久删除，不会迁移到目标租户。
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>转让 Azure 订阅的所有权
 
@@ -49,7 +49,12 @@ ms.lasthandoff: 12/22/2017
    ![Azure 帐户订阅选项卡](./media/billing-subscription-transfer/image1.png)
 1. 指定接收方。
 
+   > [!IMPORTANT]
+   > 
+   > 如果将订阅转让给新的 Azure AD 租户，则[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 中的所有角色分配都将从源租户中永久删除，不会迁移到目标租户。
+
    ![“转让订阅”对话框](./media/billing-subscription-transfer/image2.PNG)
+
 1. 接收方会自动收到含有接受链接的电子邮件。
 
    ![向接收方发送的订阅转让电子邮件](./media/billing-subscription-transfer/image3.png)
@@ -80,7 +85,7 @@ ms.lasthandoff: 12/22/2017
 
 ## <a name="whats-supported"></a>支持的操作：
 
-自助服务订阅转让适用于下表中列出的产品/服务或订阅类型。 要转让其他订阅，例如[赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)或支持计划，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+自助服务订阅转让适用于下表中列出的产品/服务或订阅类型。 目前不能转让免费试用版订阅或 [Azure 开放式许可 (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) 订阅。 若要暂时避开此问题，请参阅[将资源移动到新的资源组或订阅中](../azure-resource-manager/resource-group-move-resources.md)。 若要转让其他订阅（例如[赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)或支持计划），请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 | 产品名称                                                                             | 产品编号 |
 |----------------------------------------------------------------------------------------|--------------|

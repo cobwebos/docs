@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 506781ac83e75d558badbd3a8842533e314a8dfa
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 5558a69756075dd83f890d5e9e00c9944d841591
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>对 Azure 文件同步（预览版）进行故障排除
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -29,6 +29,9 @@ ms.lasthandoff: 02/27/2018
 2. [Azure 存储论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)。
 3. [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。 
 4. Microsoft 支持部门。 若要创建新的支持请求，请在 Azure 门户中的“帮助”选项卡上，选择“帮助和支持”按钮，然后选择“新建支持请求”。
+
+## <a name="storage-sync-service-object-management"></a>存储同步服务对象管理
+如果从一个订阅中将资源移动到另一订阅，会阻止文件同步（存储同步服务）资源进行移动。 
 
 ## <a name="agent-installation-and-server-registration"></a>代理安装和服务器注册
 <a id="agent-installation-failures"></a>**排查代理安装失败问题**  

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5eb53d13ed85093616f43b79b58d43ba62ffbd67
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 203e36b198186db63b7e902db296adeaa9ffb4ee
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>如何配置联接到混合 Azure Active Directory 的设备
 
@@ -33,6 +33,8 @@ ms.lasthandoff: 01/16/2018
 开始在环境中配置联接到混合 Azure AD 的设备之前，应该熟悉支持的方案和约束。  
 
 如果要依赖于[系统准备工具 (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10))，请确保从尚未向 Azure AD 注册的 Windows 安装创建映像。
+
+完成下面所述的配置步骤后，当设备重启或用户登录时，运行 Windows 10 周年更新和 Windows Server 2016 的所有已加入域的设备会自动注册到 Azure AD。 如果不想要此自动注册行为或需要控制推出，请先按照下面的“控制部署和推出”部分中的说明进行操作以有选择地启用或禁用自动推出，然后再执行其他配置步骤。  
 
 为了方便阅读介绍内容，本主题使用了以下术语： 
 
@@ -566,7 +568,8 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
    > [!NOTE]
    > 已从早期版本的组策略管理控制台对该组策略模板进行了重命名。 如果使用早期版本的控制台，请转到 `Computer Configuration > Policies > Administrative Templates > Windows Components > Workplace Join > Automatically workplace join client computers`。 
 
-7. 选择“已启用”，并单击“应用”。
+7. 选择“已启用”，并单击“应用”。 如果想要策略阻止此组策略控制的设备自动向 Azure AD 注册，必须选择“禁用”。
+
 8. 单击“确定”。
 9. 将该组策略对象链接到所选位置。 例如，可以将其链接到特定的组织单位。 还可以将其链接到自动联接 Azure AD 的特定安全计算机组。 要为组织中所有已加入域的 Windows 10 和 Windows Server 2016 计算机设置此策略，请将此组策略对象链接到相应域。
 
