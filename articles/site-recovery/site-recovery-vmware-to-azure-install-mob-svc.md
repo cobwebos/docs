@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: anoopkv
 ms.openlocfilehash: 7210a6d754f2c13c915955f2b401d19f3a55649e
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="install-mobility-service-vmware-or-physical-to-azure"></a>安装移动服务（VMware/物理到 Azure）
 Azure Site Recovery 移动服务捕获计算机上的数据写入，然后将其转发到进程服务器。 将移动服务部署到要复制到 Azure 的每台计算机（VMware VM 或物理服务器）上。 可使用以下方法将移动服务部署到需要保护的服务器上：

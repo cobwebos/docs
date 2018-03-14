@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: web
-ms.date: 12/11/2017
+ms.date: 02/28/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 04a60bf021ec6e265a3880264386ad32ec7e8177
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 557b21340a0ba4e5381d7505b14a172aa3478b84
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="build-a-project-in-azure-using-jenkins-and-azure-container-instances"></a>使用 Jenkins 和 Azure 容器实例在 Azure 中生成项目
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/12/2018
 > * 安装和配置适用于 Jenkins 的 Azure 容器代理插件
 > * 使用 Azure 容器实例生成 [Spring PetClinic 示例应用程序](https://github.com/spring-projects/spring-petclinic)
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 - **Azure 订阅** - 若要了解 Azure 购买选项，请参阅[如何购买 Azure](https://azure.microsoft.com/pricing/purchase-options/) 或[免费试用一个月](https://azure.microsoft.com/pricing/free-trial/)。
 

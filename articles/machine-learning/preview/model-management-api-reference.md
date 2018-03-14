@@ -4,19 +4,19 @@ description: "本文介绍为 Web 服务创建 Docker 映像的步骤。"
 services: machine-learning
 author: chhavib
 ms.author: chhavib
-manager: neerajkh
+manager: hjerez
 editor: jasonwhowell
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 134971e4a663baefa4e1051f087038d3debcb969
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: f7f9cbd34d84f89d6ce193daf79531617c97ddd3
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Azure 机器学习模型管理帐户 API 参考
 
@@ -110,7 +110,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 | accountName | 路径 | 模型管理帐户的名称。 | 是 | 字符串 |
 | api-version | query | 要使用的 Microsoft.Machine.Learning 资源提供程序 API 的版本。 | 是 | 字符串 |
 | 授权 | 标头的值开始缓存响应 | 授权令牌。 令牌应类似于“Bearer XXXXXX”。 | 是 | 字符串 |
-| name | query | 对象名称。 | 否 | 字符串 |
+| 名称 | query | 对象名称。 | 否 | 字符串 |
 | 标记 | query | 模型标记。 | 否 | 字符串 |
 | 计数 | query | 要在页中检索的项数。 | 否 | 字符串 |
 | $skipToken | query | 用于检索下一页的继续标记。 | 否 | 字符串 |

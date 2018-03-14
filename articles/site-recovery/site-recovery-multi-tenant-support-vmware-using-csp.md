@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
 ms.openlocfilehash: 532dd399d2d5fcbab616744dd02f4a95078cbb1b
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="multi-tenant-support-in-azure-site-recovery-for-replicating-vmware-virtual-machines-to-azure-through-csp"></a>Azure Site Recovery 中通过 CSP 将 VMware 虚拟机复制到 Azure 的多租户支持
 

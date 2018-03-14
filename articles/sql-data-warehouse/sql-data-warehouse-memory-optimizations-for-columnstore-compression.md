@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/23/2017
 ms.author: barbkess
-ms.openlocfilehash: 0476afb875616ed0758835aa52fb2334b63959a9
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 6640ed8958f6b05c015fb6c61d07aeea95b18022
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
@@ -120,7 +120,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 数据库会在查询的所有运算符之间共享查询的内存授予。 如果加载查询的排序和联接复杂，可用于压缩的内存将减少。
 
-请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，并将临时表加载到列存储索引中。 也可先加载数据，然后使用 MPP 系统来转换数据。
+请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，然后将临时表加载到列存储索引中。 也可先加载数据，然后使用 MPP 系统来转换数据。
 
 ### <a name="adjust-maxdop"></a>调整 MAXDOP
 
@@ -139,7 +139,7 @@ OPTION (MAXDOP 1);
 
 DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要增加加载查询的内存授予，可增加 DWU 的数量或增加资源类。
 
-- 若要增加 DWU，请参阅[如何进行性能缩放？](sql-data-warehouse-manage-compute-overview.md#scale-compute)
+- 若要增加 DWU，请参阅[如何进行性能缩放？](quickstart-scale-compute-portal.md)
 - 若要更改查询的资源类，请参阅[更改用户资源类示例](sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example)。
 
 例如，使用 DWU 100 时，smallrc 资源类中的用户在每次分发时可使用 100 MB 的内存。 有关详细信息，请参阅 [SQL 数据仓库中的并发](sql-data-warehouse-develop-concurrency.md)。

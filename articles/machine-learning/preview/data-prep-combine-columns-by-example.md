@@ -5,17 +5,17 @@ services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 528d7ff5f74948fd1ae7b829d4b2fc38fa2f1109
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 469fefa48ea795a56b0e7525f99634c5149a780f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="combine-columns-by-example-transformation"></a>“按示例合并列”转换
 此转换允许用户通过组合多个列的值来添加一个新列。 用户可以指定分隔符或提供组合值的示例来执行此转换。 在用户提供组合示例时，将由“按示例派生列”转换中使用的同一个“按示例”引擎来处理转换。

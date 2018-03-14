@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/22/2018
+ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: 7c5aeca5afe8921ab39040e9afc2921b1711c447
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: ae91ad29b867ad4ab00831ee40102bcec2fc890c
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 管理组是一些容器，可以帮助你跨多个订阅管理访问权限、策略和符合性。 可以创建这些容器来构建可以与 [Azure 策略](../azure-policy/azure-policy-introduction.md)和 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)配合使用的有效且高效的层次结构。 有关管理组的详细信息，请参阅[使用 Azure 管理组来组织资源](management-groups-overview.md)。 
@@ -47,14 +47,14 @@ ms.lasthandoff: 02/23/2018
 在 PowerShell 中，需要使用 Add-AzureRmManagementGroups cmdlet。   
 
 ```azurepowershell-interactive
-C:\> Add-AzureRmManagementGroup -GroupName Contoso 
+C:\> New-AzureRmManagementGroup -GroupName Contoso 
 ```
 **GroupName** 是要创建的唯一标识符。 此 ID 由其他命令用来引用此组，并且以后无法更改。
 
 如果希望管理组在 Azure 门户中显示一个不同的名称，则通过字符串添加 **DisplayName** 参数。 例如，如果希望创建一个 GroupName 为 Contoso 且显示名称为“Contoso Group”的管理组，需要使用以下 cmdlet： 
 
 ```azurepowershell-interactive
-C:\> Add-AzureRmManagementGroup -GroupName Contoso -DisplayName "Contoso Group" -ParentId ContosoTenant
+C:\> New-AzureRmManagementGroup -GroupName Contoso -DisplayName "Contoso Group" -ParentId ContosoTenant
 ``` 
 可以使用 **ParentId** 参数将此管理组创建到另一个管理组下。  
 
@@ -68,7 +68,7 @@ C:\ az account management-group create --group-name <YourGroupName>
 ---
 
 ## <a name="next-steps"></a>后续步骤 
-若要了解有关管理组的详细信息，请参阅： 
+若要详细了解管理组，请参阅： 
 - [使用 Azure 管理组来组织资源](management-groups-overview.md)
 - [如何更改、删除或管理你的管理组](management-groups-manage.md)
 - [安装 Azure Powershell 模块](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)
