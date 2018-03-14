@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 9294d19ea78a2b9cf4282d627eddd16e6588d3ee
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6ef2719a100ff65d69caa8d05ccfee23851adbcb
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/21/2018
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> 不支持[仅限 Blob 的存储帐户](../storage/common/storage-create-storage-account.md#blob-storage-accounts)。 Blob 存储触发器和绑定需要使用常规用途存储帐户。 
+> blob 触发器不支持[仅限 Blob 的存储帐户](../storage/common/storage-create-storage-account.md#blob-storage-accounts)。 Blob 存储触发器需要使用常规用途存储帐户。 对于输入和输出绑定，可以使用仅限 blob 的存储帐户。
 
 ## <a name="trigger"></a>触发器
 
@@ -63,6 +63,8 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
+blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
+
 有关 `BlobTrigger` 特性的详细信息，请参阅[触发器 - 特性](#trigger---attributes)。
 
 ### <a name="trigger---c-script-example"></a>触发器 - C# 脚本示例
@@ -79,14 +81,16 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
             "name": "myBlob",
             "type": "blobTrigger",
             "direction": "in",
-            "path": "samples-workitems",
+            "path": "samples-workitems/{name}",
             "connection":"MyStorageAccountAppSetting"
         }
     ]
 }
 ```
 
-[配置](#trigger---configuration)部分解释了这些属性。
+blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
+
+有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的“配置”部分。[](#trigger---configuration)
 
 下面是绑定到 `Stream` 的 C# 脚本代码：
 
@@ -112,7 +116,7 @@ public static void Run(CloudBlockBlob myBlob, string name, TraceWriter log)
 
 ### <a name="trigger---javascript-example"></a>触发器 - JavaScript 示例
 
-以下示例演示 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [JavaScript 代码] (functions-reference-node.md)。 在 `samples-workitems` 容器中添加或更新 Blob 时，该函数会写入日志。
+以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [JavaScript 代码](functions-reference-node.md)。 在 `samples-workitems` 容器中添加或更新 Blob 时，该函数会写入日志。
 
 *function.json* 文件如下所示：
 
@@ -124,14 +128,16 @@ public static void Run(CloudBlockBlob myBlob, string name, TraceWriter log)
             "name": "myBlob",
             "type": "blobTrigger",
             "direction": "in",
-            "path": "samples-workitems",
+            "path": "samples-workitems/{name}",
             "connection":"MyStorageAccountAppSetting"
         }
     ]
 }
 ```
 
-[配置](#trigger---configuration)部分解释了这些属性。
+blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
+
+有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的“配置”部分。[](#trigger---configuration)
 
 JavaScript 代码如下所示：
 
@@ -214,12 +220,13 @@ module.exports = function(context) {
 
 ## <a name="trigger---usage"></a>触发器 - 用法
 
-在 C# 和 C# 脚本中，可以使用 `T paramName` 等方法参数访问 Blob 数据。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以绑定到以下任何类型：
+在 C# 和 C# 脚本中，可以为触发 blob 使用以下参数类型：
 
 * `Stream`
 * `TextReader`
-* `Byte[]`
 * `string`
+* `Byte[]`
+* 可序列化为 JSON 的 POCO
 * `ICloudBlob`（需要在 *function.json* 中指定“inout”绑定方向）
 * `CloudBlockBlob`（需要在 *function.json* 中指定“inout”绑定方向）
 * `CloudPageBlob`（需要在 *function.json* 中指定“inout”绑定方向）
@@ -227,9 +234,9 @@ module.exports = function(context) {
 
 如上所述，其中某些类型需要在 *function.json* 中指定 `inout` 绑定方向。 此方向不受 Azure 门户中的标准编辑器支持，因此必须使用高级编辑器。
 
-如果需要文本 Blob，则可以绑定到 `string` 类型。 由于整个 blob 内容都会加载到内存，因此仅建议 blob 比较小时才这么做。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。 有关详细信息，请参阅本文后面的[并发和内存使用情况](#trigger---concurrency-and-memory-usage)。
+由于整个 Blob 内容都会加载到内存中，因此，只有当 Blob 较小时才建议绑定到 `string`、`Byte[]` 或 POCO。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。 有关详细信息，请参阅本文后面的[并发和内存使用情况](#trigger---concurrency-and-memory-usage)。
 
-在 JavaScript 中，可以使用 `context.bindings.<name>` 访问输入 Blob 数据。
+在 JavaScript 中，可以使用 `context.bindings.<name from function.json>` 访问输入 Blob 数据。
 
 ## <a name="trigger---blob-name-patterns"></a>触发器 - Blob 名称模式
 
@@ -276,13 +283,28 @@ module.exports = function(context) {
 
 Blob 触发器提供了几个元数据属性。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些值的语义与 [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) 类型相同。
 
-
 |属性  |Type  |说明  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|触发 Blob 的路径。|
 |`Uri`|`System.Uri`|主位置的 blob 的 URI。|
 |`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties)|Blob 的系统属性。 |
 |`Metadata` |`IDictionary<string,string>`|Blob 的用户定义元数据。|
+
+例如，以下 C# 脚本和 JavaScript 示例会记录触发 blob 的路径，包括容器：
+
+```csharp
+public static void Run(string myBlob, string blobTrigger, TraceWriter log)
+{
+    log.Info($"Full blob path: {blobTrigger}");
+} 
+```
+
+```javascript
+module.exports = function (context, myBlob) {
+    context.log("Full blob path:", context.bindingData.blobTrigger);
+    context.done();
+};
+```
 
 ## <a name="trigger---blob-receipts"></a>触发器 - Blob 回执
 
@@ -316,9 +338,9 @@ Blob 触发器可在内部使用队列，因此并发函数调用的最大数量
 
 [消耗计划](functions-scale.md#how-the-consumption-plan-works)将虚拟机 (VM) 上的函数应用限制为 1.5 GB 内存。 内存由每个并发执行函数实例和函数运行时本身使用。 如果 blob 触发的函数将整个 blob 加载到内存中，该函数使用的仅用于 blob 的最大内存为 24 * 最大 blob 大小。 例如，包含 3 个由 blob 触发的函数的函数应用和默认设置，其每 VM 最大并发为 3*24 = 72 个函数调用。
 
-JavaScript 函数可将整个 blob 加载到内存中，并且如果绑定到 `string`，C# 函数也会如此。
+JavaScript 函数会将整个 blob 加载到内存中，并且如果绑定到 `string`、`Byte[]` 或 POCO，则 C# 函数也会如此。
 
-## <a name="trigger---polling-for-large-containers"></a>触发器 - 轮询大型容器
+## <a name="trigger---polling"></a>触发器 - 轮询
 
 如果受监视的 blob 容器包含 10,000 多个 blob，则 Functions 运行时将扫描日志文件，监视新的或更改的 blob。 此过程可能会导致延迟。 创建 blob 之后数分钟或更长时间内可能仍不会触发函数。 此外，[将“尽力”创建存储日志](/rest/api/storageservices/About-Storage-Analytics-Logging)。 不保证捕获所有事件。 在某些情况下可能会遗漏某些日志。 如果需要更快或更可靠的 blob 处理，在创建 blob 时，请考虑创建[队列消息](../storage/queues/storage-dotnet-how-to-use-queues.md)。 然后，使用[队列触发器](functions-bindings-storage-queue.md)而不是 Blob 触发器来处理 Blob。 另一个选项是使用事件网格；请参阅教程[使用事件网格自动调整上传图像的大小](../event-grid/resize-images-on-storage-blob-upload-event.md)。
 
@@ -498,12 +520,12 @@ public static void Run(
 
 ## <a name="input---usage"></a>输入 - 用法
 
-在 C# 类库和 C# 脚本中，可以使用 `Stream paramName` 等方法参数访问 blob。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以绑定到以下任何类型：
+在 C# 和 C# 脚本中，可以为 blob 输入绑定使用以下参数类型：
 
+* `Stream`
 * `TextReader`
 * `string`
 * `Byte[]`
-* `Stream`
 * `CloudBlobContainer`
 * `CloudBlobDirectory`
 * `ICloudBlob`（需要在 *function.json* 中指定“inout”绑定方向）
@@ -513,9 +535,9 @@ public static void Run(
 
 如上所述，其中某些类型需要在 *function.json* 中指定 `inout` 绑定方向。 此方向不受 Azure 门户中的标准编辑器支持，因此必须使用高级编辑器。
 
-读取文本 Blob 时，可以绑定到 `string` 类型。 由于整个 Blob 内容都会载入内存，因此我们建议只在 Blob 较小时才使用此类型。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。
+由于整个 Blob 内容都会加载到内存中，因此，只有当 Blob 较小时才建议绑定到 `string` 或 `Byte[]`。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。 有关详细信息，请参阅本文前文中的[并发和内存使用情况](#trigger---concurrency-and-memory-usage)。
 
-在 JavaScript 中，可以使用 `context.bindings.<name>` 访问 Blob 数据。
+在 JavaScript 中，可以使用 `context.bindings.<name from function.json>` 访问 Blob 数据。
 
 ## <a name="output"></a>输出
 
@@ -709,7 +731,7 @@ public static void Run(
 
 ## <a name="output---usage"></a>输出 - 用法
 
-在 C# 类库和 C# 脚本中，可以使用 `Stream paramName` 等方法参数访问 blob。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以绑定到以下任何类型：
+在 C# 和 C# 脚本中，可以为 blob 输出绑定使用以下参数类型：
 
 * `TextWriter`
 * `out string`
@@ -725,9 +747,12 @@ public static void Run(
 
 如上所述，其中某些类型需要在 *function.json* 中指定 `inout` 绑定方向。 此方向不受 Azure 门户中的标准编辑器支持，因此必须使用高级编辑器。
 
-读取文本 Blob 时，可以绑定到 `string` 类型。 由于整个 Blob 内容都会载入内存，因此我们建议只在 Blob 较小时才使用此类型。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。
+在异步函数中，请使用返回值或 `IAsyncCollector` 而非 `out` 参数。
 
-在 JavaScript 中，可以使用 `context.bindings.<name>` 访问 Blob 数据。
+由于整个 Blob 内容都会加载到内存中，因此，只有当 Blob 较小时才建议绑定到 `string` 或 `Byte[]`。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。 有关详细信息，请参阅本文前文中的[并发和内存使用情况](#trigger---concurrency-and-memory-usage)。
+
+
+在 JavaScript 中，可以使用 `context.bindings.<name from function.json>` 访问 Blob 数据。
 
 ## <a name="exceptions-and-return-codes"></a>异常和返回代码
 
