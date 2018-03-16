@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
-ms.openlocfilehash: 5c099a7fd8848c2934603ec9b2db8947885226f9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 6c9df11e528601d94cb72a8e3ef0868dc7781e12
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>使用 Azure 命令行接口管理基于角色的访问控制
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/22/2018
 
 若要使用 Azure CLI 来管理 RBAC，必须具备以下先决条件：
 
-* [Azure CLI 2.0](/cli/azure/overview)。 可以通过 [Azure Cloud Shell](../cloud-shell/overview.md) 在浏览器中使用它，也可以将其[安装](/cli/azure/install-azure-cli)在 macOS、Linux 和 Windows 上，然后从命令行运行它。
+* [Azure CLI 2.0](/cli/azure)。 可以通过 [Azure Cloud Shell](../cloud-shell/overview.md) 在浏览器中使用它，也可以将其[安装](/cli/azure/install-azure-cli)在 macOS、Linux 和 Windows 上，然后从命令行运行它。
 
 ## <a name="list-roles"></a>列出角色
 

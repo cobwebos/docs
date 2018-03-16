@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 03/05/2018
 ms.author: sethm
-ms.openlocfilehash: e037d0e291384849739825ae7ad59064a135db95
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: a581b7039a3631b7f1dc35816175242f892bd7dd
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="event-hubs-samples"></a>事件中心示例 
 
@@ -61,10 +61,6 @@ Azure 事件中心集示例集演示了 [Azure 事件中心](/azure/event-hubs/)
 
 [扩大事件处理](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3)示例演示如何使用[事件处理器主机](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)分配事件中心流消耗工作负荷。 它演示如何实现用于管理事件流的 **EventProcessor** 和 **EventProcessorFactory** 对象。 
 
-### <a name="pull-web-data-into-an-event-hub"></a>将 Web 数据提取到事件中心 
-
-[从 Web 导入数据](https://github.com/Azure-Samples/event-hubs-dotnet-importfromweb)示例演示如何从公共源（例如运输部的流量信息源）提取数据，并将其推送到事件中心。
-
 ## <a name="next-steps"></a>后续步骤
 
 访问以下链接了解有关 .NET Framework 版本的详细信息：
@@ -75,5 +71,5 @@ Azure 事件中心集示例集演示了 [Azure 事件中心](/azure/event-hubs/)
 参阅以下文章可以了解有关事件中心的详细信息：
 
 - [事件中心概述](event-hubs-what-is-event-hubs.md)
-- [创建事件中心](event-hubs-create.md)
+- [事件中心功能](event-hubs-features.md)
 - [事件中心常见问题](event-hubs-faq.md)

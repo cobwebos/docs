@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5bea41999f59fe8be7ae0a0bd5b726527beeddd5
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 8cdfd80f436a9ef39426da9d3f2f76ae59677847
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="assign-a-user-assigned-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>使用 Azure CLI 向用户分配的托管服务标识 (MSI) 分配对资源的访问权限
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/03/2018
 若要运行本教程中的 CLI 脚本示例，你有两种选择：
 
 - 从 Azure 门户中或者通过每个代码块右上角的“试用”按钮使用 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)。
-- 如果喜欢使用本地 CLI 控制台，请[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.23 或更高版本）。 然后使用 [az login](/cli/azure/#az_login) 登录到 Azure。 使用与要在其下部署用户分配的 MSI 和 VM 的 Azure 订阅关联的帐户：
+- 如果喜欢使用本地 CLI 控制台，请[安装最新版 CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.23 或更高版本）。 然后使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure。 使用与要在其下部署用户分配的 MSI 和 VM 的 Azure 订阅关联的帐户：
 
    ```azurecli
    az login

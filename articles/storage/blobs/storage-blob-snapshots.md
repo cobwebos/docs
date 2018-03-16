@@ -6,13 +6,13 @@ author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: cba28ada79ea806ead4ae9165abba2dc4e04f001
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1a27dfd61850d9dfa1f232eacf7f09d66202cafe
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-blob-snapshot"></a>创建 Blob 快照
 
@@ -31,8 +31,6 @@ Blob 的快照与其基本 Blob 相同，不过，Blob URI 的后面追加了一
 任何与基本 Blob 关联的租约都不会影响快照。 无法获取快照上的租约。
 
 VHD 文件用于存储 VM 磁盘的当前信息和状态。 可以将磁盘从 VM 分离或者关闭 VM，然后拍摄其 VHD 文件的快照。 可以在以后使用该快照文件检索该时间点的 VHD 文件并重新创建 VM。
-
-如果为 Blob 所在的存储帐户启用了存储服务加密 (SSE)，则会对该 Blob 的任何快照进行静息加密。
 
 ## <a name="create-a-snapshot"></a>创建快照
 以下代码示例演示如何使用[用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)创建快照。 本示例在创建快照时为其指定了其他元数据。

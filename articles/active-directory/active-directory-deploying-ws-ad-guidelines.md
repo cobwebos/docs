@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
-ms.openlocfilehash: 61f84233b90cb3c82ed928d59ad2a090f7eb50b7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 7a56876dfa545d273807444b105de3645dd79d34
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>有关在 Azure 虚拟机上部署 Windows Server Active Directory 的指导
 本文阐述在本地部署 Windows Server Active Directory 域服务 (AD DS) 和 Active Directory 联合身份验证服务 (AD FS) 与在 Microsoft Azure 虚拟机上部署这些服务的重要区别。
@@ -51,7 +51,7 @@ ms.lasthandoff: 03/05/2018
 
 建议首先查看涉及以下主题的教程、指南和视频：
 
-* [在 Azure 门户中配置仅限云的虚拟网络](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
+* [在 Azure 门户中配置仅限云的虚拟网络](../virtual-network/quick-create-portal.md)
 * [在 Azure 门户中配置站点到站点 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md)
 * [在 Azure 虚拟网络中安装新的 Active Directory 林](active-directory-new-forest-virtual-machine.md)
 * [在 Azure 上安装副本 Active Directory 域控制器](active-directory-install-replica-active-directory-domain-controller.md)

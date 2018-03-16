@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: d4c8dc8083fbffc46e94673230241075b763b444
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: d460da197c6e9f0bface402d83d4788f8164cc9c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
@@ -32,8 +32,8 @@ ms.lasthandoff: 02/28/2018
 完成本教程：
 
 - 请确保了解[方案体系结构和组件](physical-azure-architecture.md)。
-- 查看所有组件的[支持要求](site-recovery-support-matrix-to-azure.md)。
-- 请确保想要复制的服务器符合 [Azure VM 要求](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
+- 查看所有组件的[支持要求](vmware-physical-secondary-support-matrix.md)。
+- 请确保想要复制的服务器符合 [Azure VM 要求](vmware-physical-secondary-support-matrix.md#replicated-vm-support)。
 - 准备 Azure。 需要 Azure 订阅、Azure 虚拟网络和存储帐户。
 - 准备一个帐户用于在要复制的每个服务器上自动安装移动服务。
 

@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: nepeters
-ms.openlocfilehash: 11d30931bd549f7e877264b4a33f8e06c6b1c802
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e54ea62b7b7a7adb4874866a540ed9a6a097fc42
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="using-the-azure-cli-on-windows"></a>在 Windows 上使用 Azure CLI
 
 Azure 命令行接口 (CLI) 提供的命令行和脚本编写环境用于创建和管理 Azure 资源。 Azure CLI 适用于 macOS、Linux 和 Windows 操作系统。 在这些操作系统上，CLI 命令是相同的，但特定于操作系统的脚本语法可能有所不同。
 
-本文档详细介绍可以在 Windows 上安装和运行 Azure CLI 的方法，并详细介绍每种方式的语法注意事项。 若要深入了解 Azure CLI 文档，请参阅 [Azure CLI 文档]( https://docs.microsoft.com/cli/azure/overview)。
+本文档详细介绍可以在 Windows 上安装和运行 Azure CLI 的方法，并详细介绍每种方式的语法注意事项。 若要深入了解 Azure CLI 文档，请参阅 [Azure CLI 文档]( https://docs.microsoft.com/cli/azure)。
 
 ## <a name="windows-subsystem-for-linux"></a>适用于 Linux 的 Windows 子系统
 

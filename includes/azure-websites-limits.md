@@ -1,4 +1,4 @@
-| 资源 | 免费 | 共享（预览） | 基本 | 标准 | 高级（预览）</th> |
+| 资源 | 免费 | 共享（预览） | 基本 | 标准 | 高级 </th> |
 | --- | --- | --- | --- | --- | --- |
 | 每个[应用服务计划](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)的 [Web 应用、移动应用或 API 应用数](https://azure.microsoft.com/services/app-service/)<sup>1</sup> |10 |100 |无限制<sup>2</sup> |无限制<sup>2</sup> |无限制<sup>2</sup> |
 | 每个[应用服务计划](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)的[逻辑应用数](https://azure.microsoft.com/services/app-service/logic/)</a><sup>1</sup> |10 |10 |10 |每个核心 20 个 |每个核心 20 个 |

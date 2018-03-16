@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: e821a640d3d75e712c022bd681eb07b83da91911
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 5d4abbf8194d633305877275e3dd273352906ad3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -53,7 +53,7 @@ Application Insights 数据模型定义了以下两个字段来解决此问题�
 
 在结果视图中可以看到，所有遥测项共享根 `operation_Id`。 从该页面发出 ajax 调用后，会将新的唯一 ID `qJSXU` 分配给依赖项遥测，并将 pageView 的 ID 用作 `operation_ParentId`。 接着，服务器请求将 ajax 的 ID 用作 `operation_ParentId`，等等。
 
-| itemType   | name                      | id           | operation_ParentId | operation_Id |
+| itemType   | 名称                      | id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock 页面                |              | STYz               | STYz         |
 | dependency | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
@@ -98,7 +98,7 @@ Application Insights 为关联 HTTP 协议定义了[扩展](https://github.com/l
 
 ASP.NET Core 2.0 支持提取 Http 标头和启动新的活动。 
 
-从版本 `<fill in>` 开始，`System.Net.HttpClient` 支持自动注入关联 Http 标头和以活动形式跟踪 http 调用。
+从版本 `4.1.0` 开始，`System.Net.HttpClient` 支持自动注入关联 Http 标头和以活动形式跟踪 http 调用。
 
 ASP.NET Classic 有一个新的 Http 模块 [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)。 此模块使用 DiagnosticsSource 实现遥测关联。 它会基于传入的请求标头启动活动。 它还会关联不同请求处理阶段的遥测， 即使每个 IIS 处理阶段在不同的管理线程上运行，它也能做到这一点。
 

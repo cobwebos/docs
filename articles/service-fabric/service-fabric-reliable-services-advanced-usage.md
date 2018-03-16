@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2017
+ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 694d75807d978ece6296b945bf348f08688d3b5d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 48504f258b13a7ff5f4c91db2d9de09269e92424
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="advanced-usage-of-the-reliable-services-programming-model"></a>Reliable Services 编程模型的高级用法
 Azure Service Fabric 可简化可靠的无状态服务和有状态服务的编写与管理。 本指南讨论 Reliable Services 的高级用法，以便针对服务获得更多控制和灵活性。 阅读本指南之前，自己应熟悉 [Reliable Services 编程模型](service-fabric-reliable-services-introduction.md)。
@@ -40,11 +40,6 @@ Azure Service Fabric 可简化可靠的无状态服务和有状态服务的编�
 * `void OnAbort() - C# / void onAbort() - Java`：当要强制关闭无状态服务实例时调用 OnAbort。 当在节点上检测到永久性故障时，或者当 Service Fabric 由于内部错误而无法可靠地管理服务实例的生命周期时，通常会调用此方法。
 
 ## <a name="stateful-service-replica-lifecycle"></a>有状态服务副本生命周期
-
-> [!NOTE]
-> Java 目前不支持有状态的 Reliable Services。
->
->
 
 有状态服务副本的生命周期比无状态服务实例复杂得多。 除了打开、关闭和中止事件，有状态服务副本还会在其生存期内经历角色更改。 当有状态服务副本更改角色时，会触发 `OnChangeRoleAsync` 事件：
 

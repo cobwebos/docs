@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 0639a2b7e71878103542d3e037040f8a7444976f
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 095bfe328f3e3ed220de71b3410e34b9be86cff1
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="run-applications-in-azure-container-service-aks"></a>在 Azure 容器服务 (AKS) 中运行应用程序
 
@@ -46,16 +46,10 @@ ms.lasthandoff: 03/02/2018
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-此清单文件已预创建，其中包含 `microsoft` 的登录服务器名称。 使用任意文本编辑器打开此文件。 在此示例中，清单文件是使用 `vi` 打开的。
+此清单文件已预创建，其中包含 `microsoft` 的登录服务器名称。 使用任意文本编辑器打开此文件。 在此示例中，清单文件是使用 `nano` 打开的。
 
 ```console
-vi azure-vote-all-in-one-redis.yaml
-```
-
-另外，如果是在 Windows 中工作，则可使用 Visual Studio Code。
-
-```console
-code azure-vote-all-in-one-redis.yaml
+nano azure-vote-all-in-one-redis.yaml
 ```
 
 将 `microsoft` 替换为 ACR 登录服务器名称。 此值位于清单文件的第 47 行。

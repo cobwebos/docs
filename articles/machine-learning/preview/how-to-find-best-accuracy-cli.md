@@ -5,16 +5,16 @@ services: machine-learning
 author: totekp
 ms.author: kefzhou
 manager: akannava
-ms.reviewer: akannava, haining, mldocs, garyericson, jasonwhowell
+ms.reviewer: akannava, haining, mldocs, jmartens, jasonwhowell
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
-ms.openlocfilehash: 40e066fe602e8c4680043158f1d401a884e07c19
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: bd8888d911730831435b87d3a60b48a7797eea98
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>查找准确度最高且持续时间最短的运行
 假定有多个运行，一个用例是查找具有最高准确度的运行。 一种方法是通过命令行接口 (CLI) 使用 [JMESPath](http://jmespath.org/) 查询。 有关如何在 Azure CLI 中使用 JMESPath 的详细信息，请参阅[通过 Azure CLI 2.0 使用 JMESPath 查询](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest)。 在下面的示例中，创建了准确度值为 0、0.98、1 和 1 的四个运行。 当 `Threshold = .03` 时，如果运行处于范围 `[MaxAccuracy-Threshold, MaxAccuracy]` 中，则会对运行进行筛选。

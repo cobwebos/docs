@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 2a954ca10bdec3343dbd8796b50053a1c8c40ff4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 84fa2e051c46e178e3e72709886babc8c3db7b9d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>在位于不同区域的 Azure 虚拟机上配置 Always On 可用性组
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 02/21/2018
 
 若要在远程数据中心中创建副本，请执行以下步骤：
 
-1. [在新区域中创建虚拟网络](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)。
+1. [在新区域中创建虚拟网络](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)。
 
 1. [使用 Azure 门户配置 VNet 到 VNet 连接](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)。
 

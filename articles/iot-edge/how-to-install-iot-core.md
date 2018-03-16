@@ -1,4 +1,4 @@
-﻿---
+---
 title: "在 IoT Core 上安装 Azure IoT Edge | Microsoft Docs"
 description: "在 Windows IoT Core 设备上安装 Azure IoT Edge 运行时"
 services: iot-edge
@@ -7,14 +7,14 @@ author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: veyalla
-ms.date: 12/06/2017
+ms.date: 03/05/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: cc34e5cecafe485608ba428395b690ba57f71e9c
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 75d2b370ed6118a30153a001a4b654d7212b56cd
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>在 Windows IoT Core 上安装 IoT Edge 运行时 - 预览
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/07/2017
 1. 在 PowerShell 控制台中，安装容器运行时： 
 
    ```powershell
-   Invoke-WebRequest https://master.dockerproject.org/windows/x86_64/docker-17.06.0-dev.zip -o temp.zip
+   Invoke-WebRequest https://master.dockerproject.org/windows/x86_64/docker-0.0.0-dev.zip -o temp.zip
    Expand-Archive .\temp.zip $env:ProgramFiles -f
    Remove-Item .\temp.zip
    $env:Path += ";$env:programfiles\docker"
@@ -40,7 +40,7 @@ ms.lasthandoff: 12/07/2017
    ```
 
    >[!NOTE]
-   >此容器运行时来自 Moby 项目生成服务器，仅用于评估目的。 它未经过 Docker 测试、认可或支持。
+   >此容器运行时来自 Moby 项目生成服务器，仅用于评估目的。 它未经过 Docker 测试、背书或支持。
 
 1. 安装 IoT Edge 运行时并验证配置：
 

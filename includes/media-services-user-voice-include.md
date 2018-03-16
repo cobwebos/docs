@@ -5,6 +5,6 @@
 * [编码和处理](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)
 * [实时传送视频流](https://feedback.azure.com/forums/169396-media-services/category/144414-live-streaming/)
 * [媒体分析](https://feedback.azure.com/forums/169396-media-services/category/146181-media-analytics)
-* [Azure portal](https://feedback.azure.com/forums/169396-media-services/category/144432-portal/)
+* [Azure 门户](https://feedback.azure.com/forums/169396-media-services/category/144432-portal/)
 * [REST API 和平台](https://feedback.azure.com/forums/169396-media-services/category/144423-rest-api-and-platform/)
 * [点播视频流式处理](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)

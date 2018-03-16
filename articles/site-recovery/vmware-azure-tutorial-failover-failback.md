@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: dec4beef44e4086e1b41e3c20bea6585db385c9c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 618e2bb7ef124883af2d73264e01922ad2329d12
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>对复制到 Azure 的 VMware VM 和物理服务器进行故障转移和故障回复
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 02/28/2018
 
 ## <a name="verify-vm-properties"></a>验证 VM 属性
 
-验证 VM 属性，确保 VM 符合 [Azure 要求](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
+验证 VM 属性，确保 VM 符合 [Azure 要求](vmware-physical-azure-support-matrix.md#replicated-machines)。
 
 1. 在“受保护的项”中，单击“复制的项”>“VM”。
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 02/28/2018
 
 - 出于测试目的，如果具有 Azure ExpressRoute 连接，可使用自动安装于配置服务器上的本地进程服务器。
 - 如果具有 VPN 连接，或者在生产环境中运行故障回复，为进行故障回复则必须将 Azure VM 设置为基于 Azure 的进程服务器。
-- 若要在 Azure 中设置进程服务器，请按照[本文](site-recovery-vmware-setup-azure-ps-resource-manager.md)说明进行操作。
+- 若要在 Azure 中设置进程服务器，请按照[本文](vmware-azure-set-up-process-server-azure.md)说明进行操作。
 
 ## <a name="configure-the-master-target-server"></a>配置主目标服务器
 

@@ -14,23 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/31/2017
 ms.author: kraigb
-ms.openlocfilehash: 75dcc603327b50718b279f3ce055663ec0bc2596
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fbd11777c86a19d2b6b8e5125e467d2413b5d736
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="accessing-azure-virtual-machines-from-server-explorer"></a>从服务器资源管理器访问 Azure 虚拟机
-通过使用 Visual Studio 中的服务器资源管理器可以显示有关 Azure 托管的虚拟机的信息。
 
-## <a name="accessing-virtual-machines-in-server-explorer"></a>在服务器资源管理器中访问 Azure 虚拟机
 如果有 Azure 托管的虚拟机，可以在服务器资源管理器中访问它们。 必须首先登录到 Azure 订阅才能查看移动服务。 若要登录，请在服务器资源管理器中打开“Azure”节点的快捷菜单，并选择“连接到 Microsoft Azure”。
 
-### <a name="to-get-information-about-your-virtual-machines"></a>获取有关虚拟机的信息
 1. 在 Cloud Explorer 中选择虚拟机，并选择 F4 键显示其属性窗口。
-   
+
     下表显示了可用的属性，但这些属性都是只读的。 若要更改这些属性，请使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。
-   
+
    | 属性 | 说明 |
    | --- | --- |
    | DNS 名称 |包含虚拟机 Internet 地址的 URL。 |
@@ -41,14 +38,10 @@ ms.lasthandoff: 10/11/2017
    | 订阅 ID |Azure 帐户的订阅 ID。 可以通过在 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)上查看订阅的属性来显示此信息。 |
 2. 选择一个终结点节点，并查看“属性”窗口。
 3. 下表描述了可用的终结点属性，但这些属性都是只读的。 若要添加或编辑虚拟机的终结点，请使用 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)。 
-   
+
    | 属性 | 说明 |
    | --- | --- |
    | 名称 |终结点的标识符。 |
    | 专用端口 |应用程序的内部网络访问端口。 |
    | 协议 |此终结点的传输层使用的协议：TCP 或 UDP。 |
    | 公用端口 |用于公开访问应用程序的端口。 |
-
-## <a name="next-steps"></a>后续步骤
-要了解有关在 Visual Studio 中使用 Azure 角色的详细信息，请参阅[将远程桌面与 Azure 角色一起使用](vs-azure-tools-remote-desktop-roles.md)。
-

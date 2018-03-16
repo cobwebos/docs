@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: 90510520e5f6bbfa8aea4026d7437a4a4881984f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 7747092d5613a40fa0aff09cfbdfb9b786b37954
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="set-up-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>通过多租户 Azure SQL 数据库 SaaS 应用设置和使用 Log Analytics (OMS)
 
@@ -132,7 +132,7 @@ Log Analytics 是一种需要配置的单独服务。 Log Analytics 在日志分
 
 Log Analytics 和 OMS 中的监视和警报功能基于工作区中的数据查询，不像在 Azure 门户的每个资源上定义的警报功能。 通过让警报基于查询，可以定义一个监视所有数据库的警报，而不必每个数据库都定义一个。 查询仅受工作区中提供的数据的限制。
 
-若要详细了解如何使用 OMS 来查询和设置警报，请参阅[使用 Log Analytics 中的警报规则](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-alerts-creating)。
+若要详细了解如何使用 OMS 来查询和设置警报，请参阅[使用 Log Analytics 中的警报规则](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating)。
 
 适用于 SQL 数据库的 Log Analytics 按工作区中的数据量计费。 在本教程中，创建了一个免费的工作区，其限制是每天 500 MB。 达到该限制后，不再向工作区添加数据。
 

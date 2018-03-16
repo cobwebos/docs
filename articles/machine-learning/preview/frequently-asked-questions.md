@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 46d026802668fd77ae184b374439ca78cf51393d
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 86ef8acf46cef2b057596d8224c6c29f3a0f534d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure 机器学习常见问题
 
@@ -127,7 +127,7 @@ Azure Machine Learning Workbench 是为专业数据科学家打造的助手应�
 
 **是否支持命令行功能？**
 
-是，Azure 机器学习提供了一个完整的 CLI 接口。 Machine Learning CLI 默认随 Azure Machine Learning Workbench 一同安装。 它还可在 Azure 上作为 Linux 数据科学虚拟机的一部分提供，将集成到 [Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) 中
+是，Azure 机器学习提供了一个完整的 CLI 接口。 Machine Learning CLI 默认随 Azure Machine Learning Workbench 一同安装。 它还可在 Azure 上作为 Linux 数据科学虚拟机的一部分提供，将集成到 [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中
 
 
 **是否可以通过 Workbench 使用 Jupyter Notebook？**

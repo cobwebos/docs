@@ -16,17 +16,17 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 02/05/2018
 ms.author: v-daljep
-ms.openlocfilehash: a1b10c1a12d9a9215022cc77615901a0e4d144f8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 611c30639b5fb36bb08ebd3e73c90f8aa2bd09d4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自动优化的电子邮件通知
 
 SQL 数据库优化建议由 Azure SQL 数据库[自动优化](sql-database-automatic-tuning.md)生成。 此解决方案持续监视和分析 SQL 数据库的工作负载，为与索引创建、索引删除和查询执行计划优化相关的每个数据库提供自定义优化建议。
 
-SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal.md)中查看，使用 [REST API](https://docs.microsoft.com/en-us/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) 调用或通过 [T-SQL](https://azure.microsoft.com/en-us/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) 和 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) 命令可以进行检索。 本文立足于使用 PowerShell 脚本检索自动优化建议。
+SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal.md)中查看，使用 [REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) 调用或通过 [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) 和 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) 命令可以进行检索。 本文立足于使用 PowerShell 脚本检索自动优化建议。
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>自动发送有关自动优化建议的电子邮件通知
 
@@ -34,7 +34,7 @@ SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal
 
 ## <a name="create-azure-automation-account"></a>创建 Azure 自动化帐户
 
-要使用 Azure 自动化，第一步是创建自动化帐户并使用 Azure 资源配置该帐户，以用于 PowerShell 脚本的执行。 要了解 Azure 自动化及其功能的详细信息，请参阅 [Azure 自动化入门](https://docs.microsoft.com/en-us/azure/automation/automation-offering-get-started)。
+要使用 Azure 自动化，第一步是创建自动化帐户并使用 Azure 资源配置该帐户，以用于 PowerShell 脚本的执行。 要了解 Azure 自动化及其功能的详细信息，请参阅 [Azure 自动化入门](https://docs.microsoft.com/azure/automation/automation-offering-get-started)。
 
 请通过从 Marketplace 选择和配置自动化应用的方法，执行以下步骤来创建 Azure 自动化帐户：
 
@@ -47,7 +47,7 @@ SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal
 
 - 进入“创建自动化帐户”窗格后，单击“创建”
 - 填充所需信息：输入此自动化帐户的名称，选择要用于 PowerShell 脚本执行的 Azure 订阅 ID 和 Azure 资源
-- 对于“创建 Azure 运行方式帐户”选项，选择“是”以配置 PowerShell 脚本借助 Azure 自动化来运行所使用的帐户的类型。 要了解有关帐户类型的详细信息，请参阅[运行方式帐户](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account)
+- 对于“创建 Azure 运行方式帐户”选项，选择“是”以配置 PowerShell 脚本借助 Azure 自动化来运行所使用的帐户的类型。 要了解有关帐户类型的详细信息，请参阅[运行方式帐户](https://docs.microsoft.com/azure/automation/automation-create-runas-account)
 - 通过单击“创建”确定自动化帐户的创建
 
 > [!TIP]
@@ -58,7 +58,7 @@ SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal
 
 ## <a name="update-azure-automation-modules"></a>更新 Azure 自动化模块
 
-检索自动优化建议的 PowerShell 脚本使用 [Get-azurermresource](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Resources/Get-AzureRmResource) 和 [Get AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction) 命令，为此需要将 Azure 模块更新到版本 4 及更高版本。
+检索自动优化建议的 PowerShell 脚本使用 [Get-azurermresource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Get-AzureRmResource) 和 [Get AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction) 命令，为此需要将 Azure 模块更新到版本 4 及更高版本。
 
 请按照以下步骤更新 Azure PowerShell 模块：
 
@@ -195,7 +195,7 @@ Write-Output $table
 2. “Azure 自动化 - 获取作业输出”- 用于检索已执行的 PowerShell 脚本的输出
 3. “Office 365 Outlook - 发送电子邮件”- 用于发送电子邮件。 电子邮件使用创建此流的个人的 Office 365 帐户发送。
 
-要了解有关 Microsoft Flow 功能的详细信息，请参阅[开始使用 Microsoft Flow](https://docs.microsoft.com/en-us/flow/getting-started)。
+要了解有关 Microsoft Flow 功能的详细信息，请参阅[开始使用 Microsoft Flow](https://docs.microsoft.com/flow/getting-started)。
 
 此步骤的先决条件是注册 [Microsoft Flow](https://flow.microsoft.com) 帐户并登录。 进入解决方案后，请按照以下步骤设置新流
 

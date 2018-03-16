@@ -3,7 +3,7 @@ title: "使用 Python 将设备上的文件上传到 Azure IoT 中心 | Microsof
 description: "如何使用适用于 Python 的 Azure IoT 设备 SDK 将文件上的设备上传到云端。 上传的文件存储在 Azure 存储 Blob 容器中。"
 services: iot-hub
 documentationcenter: python
-author: msebolt
+author: kgremban
 manager: timlt
 editor: 
 ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
@@ -12,13 +12,13 @@ ms.devlang: python
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/16/2018
-ms.author: v-masebo
-ms.openlocfilehash: ac871a03ebb93dac3b91f7df2220cd5f4506498b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 03/05/2018
+ms.author: kgremban
+ms.openlocfilehash: 5939f87684e92e1f95d39ea5bd52b424ca683acc
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>使用 IoT 中心将文件从设备上传到云
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 02/21/2018
 
 本部分中操作将会创建可将文件上传到 IoT 中心的设备应用。
 
-1. 在命令提示符处，运行以下命令以安装 azure-iothub-device-client 包：
+1. 在命令提示符处，运行以下命令来安装 **azure-iothub-device-client** 包：
 
     ```cmd/sh
     pip install azure-iothub-device-client

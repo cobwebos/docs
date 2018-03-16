@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: billgib
-ms.openlocfilehash: a13eeb79320360da078ee19a61cc32a2e1f35354
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: dd43ede94d6f219f3b551091fc6e4b59f56386d1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>使用“每租户一个应用程序”的 SaaS 模式预配和编录新租户
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/22/2018
     * 该教程使用能够适应“每租户一个独立应用”模式的 Wingtip Tickets SaaS 示例应用程序。
 
 ## <a name="standalone-application-per-tenant-pattern"></a>“每租户一个独立应用程序”模式
-“每租户一个独立应用”模式是多租户 SaaS 应用程序的诸多模式之一。  在此模式中，将为每个租户预配一个独立应用。 应用程序包含应用程序级组件和 SQL 数据库。  每个租户应用都可在供应商的订阅中进行部署。  或者，应用也可通过 Azure 提供的[托管应用程序计划](https://docs.microsoft.com/en-us/azure/managed-applications/overview)，在租户的订阅中进行部署，并由供应商代表租户进行管理。 
+“每租户一个独立应用”模式是多租户 SaaS 应用程序的诸多模式之一。  在此模式中，将为每个租户预配一个独立应用。 应用程序包含应用程序级组件和 SQL 数据库。  每个租户应用都可在供应商的订阅中进行部署。  或者，应用也可通过 Azure 提供的[托管应用程序计划](https://docs.microsoft.com/azure/managed-applications/overview)，在租户的订阅中进行部署，并由供应商代表租户进行管理。 
 
    ![“每租户一个应用”模式](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/22/2018
 租户目录保留租户标识符和租户数据库之间的映射，使标识符能够被解析为服务器和数据库名称。  在 Wingtip SaaS 应用中，租户标识符根据租户名称的哈希确定，但也可使用其他架构。  尽管独立应用程序不需要目录即可管理连接，但目录可用来将其他操作的范围限制为一组租户数据库。 例如，弹性查询可以使用目录确定通过其分配查询实现跨租户报告的一组数据库。
 
 ## <a name="elastic-database-client-library"></a>弹性数据库客户端库
-在 Wingtip 示例应用程序中，目录通过使用[弹性数据库客户端库 (EDCL)](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-elastic-database-client-library) 的“分片管理”功能来实现。  该库允许应用程序创建、管理和使用存储在数据库中的分片映射。 在 Wingtip Tickets 示例中，目录存储在租户目录数据库中。  分片可将租户密钥映射到在其中存储租户数据的分片（数据库）中。  EDCL 函数管理存储在租户目录数据库的表格中的全局分片映射和存储在每个分片中的本地分片映射。
+在 Wingtip 示例应用程序中，目录通过使用[弹性数据库客户端库 (EDCL)](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) 的“分片管理”功能来实现。  该库允许应用程序创建、管理和使用存储在数据库中的分片映射。 在 Wingtip Tickets 示例中，目录存储在租户目录数据库中。  分片可将租户密钥映射到在其中存储租户数据的分片（数据库）中。  EDCL 函数管理存储在租户目录数据库的表格中的全局分片映射和存储在每个分片中的本地分片映射。
 
 EDCL 函数通过应用程序或 PowerShell 脚本进行调用，以创建和管理分片映射中的条目。 其他 EDCL 函数用于检索分片组或连接到给定租户密钥的正确数据库。 
     
@@ -69,7 +69,7 @@ Azure 资源管理器模板可用于部署和配置应用程序，创建租户�
 ## <a name="prerequisites"></a>先决条件
 若要完成本教程，请确保已完成了以下先决条件： 
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
-* 部署三个示例租户应用。 若要在五分钟内完成这些部署，请参阅[部署和浏览 Wingtip Tickets SaaS 独立应用程序模式](https://docs.microsoft.com/en-us/azure/sql-database/saas-standaloneapp-get-started-deploy)。
+* 部署三个示例租户应用。 若要在五分钟内完成这些部署，请参阅[部署和浏览 Wingtip Tickets SaaS 独立应用程序模式](https://docs.microsoft.com/azure/sql-database/saas-standaloneapp-get-started-deploy)。
 
 ## <a name="provision-the-catalog"></a>预配目录
 在此任务中，你将了解如何预配用来注册所有租户数据库的目录。 将能够： 
@@ -149,4 +149,4 @@ Azure 资源管理器模板可用于部署和配置应用程序，创建租户�
 > * 关于构成该应用的服务器和数据库。
 > * 如何删除示例资源以停止相关计费。
 
-可使用“每租户一个数据库”版本的 [Wingtip Tickets SaaS 应用程序](https://docs.microsoft.com/en-us/azure/sql-database/saas-dbpertenant-wingtip-app-overview)了解如何使用目录支持各种跨租户方案。  
+可使用“每租户一个数据库”版本的 [Wingtip Tickets SaaS 应用程序](https://docs.microsoft.com/azure/sql-database/saas-dbpertenant-wingtip-app-overview)了解如何使用目录支持各种跨租户方案。  

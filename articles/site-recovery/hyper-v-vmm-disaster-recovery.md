@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: bf6d7c8b831e670db9fff28218c8f36391a73c9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 13dcc0794c1d89bd27c79cbe6636397da4f008f9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>为 Hyper-V VM 设置到辅助本地站点的灾难恢复
 
@@ -33,9 +33,8 @@ ms.lasthandoff: 02/21/2018
 完成本方案：
 
 - 查看[方案体系结构和组件](hyper-v-vmm-architecture.md)。
-- 查看所有组件的[支持要求](site-recovery-support-matrix-to-sec-site.md)。
-- 确保 VMM 服务器和 Hyper-V 主机符合[支持要求](site-recovery-support-matrix-to-sec-site.md)。
-- 确保要复制的 VM 符合[复制计算机支持](site-recovery-support-matrix-to-sec-site.md#support-for-replicated-machine-os-versions)。
+- 确保 VMM 服务器和 Hyper-V 主机符合[支持要求](hyper-v-vmm-secondary-support-matrix.md)。
+- 确保要复制的 VM 符合[复制计算机支持](hyper-v-vmm-secondary-support-matrix.md#replicated-vm-support)。
 - 准备 VMM 服务器进行网络映射。
 
 ### <a name="prepare-for-network-mapping"></a>准备网络映射

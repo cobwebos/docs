@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 08845355be0bfb7e7dde52d19949fee4a68ed54b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: e4b7113f27e5e15d69dfdd1efd13e255ef4a8ab7
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="match-conditions-for-the-azure-cdn-rules-engine"></a>Azure CDN 规则引擎匹配条件
+# <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN 规则引擎匹配条件 
 本文列出了 Azure 内容交付网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用匹配条件的详细说明。
 
 规则的第二部分是匹配条件。 可以使用匹配条件来确定特定类型的请求，以便执行一组相应的功能。
@@ -178,7 +178,7 @@ AS 编号网络由其自治系统编号 (ASN) 定义。
 ### <a name="cookie-parameter"></a>Cookie 参数
 “匹配”/“不匹配”选项用于确定在哪种条件下满足 Cookie 参数匹配条件。
 - **匹配**：需要请求包含指定的 Cookie，其值与此匹配条件中定义的至少一个值匹配。
-- **不匹配**：需要请求满足以下条件之一：
+- **不匹配**：要求请求满足以下条件之一：
   - 它不包含指定的 Cookie。
   - 它包含指定的 Cookie，但其值与此匹配条件中定义的任何值都不匹配。
   

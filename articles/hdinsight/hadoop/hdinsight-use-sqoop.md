@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: e2f4601daf9aa3537f9170c3516d62ab1bd602e5
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: e96003de4a0dd4a5d8b060bb5883e51291827316
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>将 Sqoop 与 HDInsight 中的 Hadoop 配合使用
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -118,7 +118,7 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
   > 
   > 
   
-  * 若要创建和配置虚拟网络，请参阅[使用 Azure 门户创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)。
+  * 若要创建和配置虚拟网络，请参阅[使用 Azure 门户创建虚拟网络](../../virtual-network/quick-create-portal.md)。
     
     * 在数据中心使用 SQL Server 时，必须将虚拟网络配置为“站点到站点”或“点到站点”。
       

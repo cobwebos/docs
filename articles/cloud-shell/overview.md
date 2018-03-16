@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: da415f4fb276f3d86d3ff1634a08fa11eabe6e7f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 72338a4c168b4d3b7c918fbb16758724f73fefc2
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
 Azure Cloud Shell 是一个用于管理 Azure 资源的交互式的可通过浏览器访问的 shell。
@@ -54,7 +54,7 @@ Cloud Shell 由 Microsoft 管理，因此附带了常用的命令行工具和语
 Cloud Shell 是一个灵活的工具，可以通过以下项使用：
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Azure CLI 2.0“试用”文档](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)
+* [Azure CLI 2.0“试用”文档](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
 * [Azure 移动应用](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [VS Code Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 

@@ -5,20 +5,15 @@ services: site-recovery
 documentationcenter: 
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: 3192c67938fe118e79aa68ee6194e76f21d65d98
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8305a354588875926cab52a55d99d3a29bcfb509
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>将 Azure 流量管理器与 Azure Site Recovery 配合使用
 
@@ -49,11 +44,11 @@ ms.lasthandoff: 02/28/2018
 
 根据业务要求，在发生灾难时，**公司 A** 可以选择以更高或更低的[探测频率](../traffic-manager/traffic-manager-monitoring.md)在本地与 Azure 之间切换，并确保将用户停机时间减到最小。
 
-遏制灾难后，**公司 A** 可以使用 Azure Site Recovery 从 Azure 故障回复到其本地环境（[VMware](site-recovery-how-to-failback-azure-to-vmware.md) 或 [Hyper-V](site-recovery-failback-from-azure-to-hyper-v.md)）。 当流量管理器检测到**主要**终结点再次正常后，可在其 DNS 响应中自动利用**主要**终结点。
+遏制灾难后，**公司 A** 可以使用 Azure Site Recovery 从 Azure 故障回复到其本地环境（[VMware](vmware-azure-failback.md) 或 [Hyper-V](hyper-v-azure-failback.md)）。 当流量管理器检测到**主要**终结点再次正常后，可在其 DNS 响应中自动利用**主要**终结点。
 
 ## <a name="on-premises-to-azure-migration"></a>本地到 Azure 的迁移
 
-除灾难恢复以外，Azure Site Recovery 还支持[迁移到 Azure](site-recovery-migrate-to-azure.md)。 使用 Azure Site Recovery 的强大测试故障转移功能，客户可以在 Azure 上评估应用程序性能，而不影响其本地环境。 当客户准备好迁移时，可以选择统一迁移整个工作负荷，或选择逐渐迁移和缩放。
+除灾难恢复以外，Azure Site Recovery 还支持[迁移到 Azure](migrate-overview.md)。 使用 Azure Site Recovery 的强大测试故障转移功能，客户可以在 Azure 上评估应用程序性能，而不影响其本地环境。 当客户准备好迁移时，可以选择统一迁移整个工作负荷，或选择逐渐迁移和缩放。
 
 Azure 流量管理器的[加权](../traffic-manager/traffic-manager-configure-weighted-routing-method.md)路由方法可用于将一部分传入流量定向到 Azure，同时将大部分流量定向到本地环境。 此方法有助于评估缩放性能，因为在将越来越多的工作负荷迁移到 Azure 时，可以不断地增大分配给 Azure 的权重。
 

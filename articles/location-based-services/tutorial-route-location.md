@@ -3,8 +3,8 @@ title: "使用 Azure Location Based Services 查找路线 | Microsoft Docs"
 description: "使用 Azure Location Based Services 查找兴趣点的路线"
 services: location-based-services
 keywords: 
-author: dsk-2015
-ms.author: dkshir
+author: kgremban
+ms.author: kgremban
 ms.date: 11/28/2017
 ms.topic: tutorial
 ms.service: location-based-services
@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 7303347444952d9c09dc6c04eea5b962e18729b4
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: b54d97afb4e762a7d252acf7cf53a5deac01d43f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="route-to-a-point-of-interest-using-azure-location-based-services"></a>使用 Azure Location Based Services 查找兴趣点的路线
 

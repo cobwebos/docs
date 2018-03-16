@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 9f51c35be09af6f3a8dde7061dcf57a9c4cc9fdb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 563a5a1c177b1f18be18d9b3cc9f3f9a7ee8ae4a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-new-simulated-device"></a>创建新的模拟设备
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 02/09/2018
 
 在 [www.azureiotsuite.com](https://www.azureiotsuite.com) 中创建远程监视解决方案时，已选择了一个解决方案名称。 该解决方案名称将是包含解决方案所用的各个已部署资源的 Azure 资源组的名称。 以下命令使用名为 **Contoso-01** 的资源组，应将 **Contoso-01** 替换为自己的资源组名称。
 
-以下命令使用 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) 中的 `az` 命令。 可以在开发计算机上安装 Azure CLI 2.0，或者在 [Azure 门户](http://portal.azure.com)中使用 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。 Cloud Shell 中已预装 Azure CLI 2.0。
+以下命令使用 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中的 `az` 命令。 可以在开发计算机上安装 Azure CLI 2.0，或者在 [Azure 门户](http://portal.azure.com)中使用 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。 Cloud Shell 中已预装 Azure CLI 2.0。
 
 1. 若要验证包含远程监视资源的资源组的名称，请运行以下命令：
 

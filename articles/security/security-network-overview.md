@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: d3ce4d5c6766c41fe32164ebfe623ea8c06b58f9
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: e477ce9a5f9f35d88a6faeb68ee4e0403f64c030
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 Microsoft Azure 包括可靠的网络基础结构以支持应用程序和服务连接要求。 Azure 中的资源之间、本地资源与 Azure 托管的资源之间以及 Internet 与 Azure 之间都可能存在网络连接。
@@ -218,7 +218,7 @@ Azure 网络支持以下安全远程访问方案：
 了解更多：
 
 * [虚拟网络概述](../virtual-network/virtual-networks-overview.md)
-* [管理虚拟网络 (VNet) 使用的 DNS 服务器](../virtual-network/virtual-network-manage-network.md#dns-servers)
+* [管理虚拟网络 (VNet) 使用的 DNS 服务器](../virtual-network/manage-virtual-network.md#change-dns-servers)
 
 对于外部 DNS 解析，有两个选项：
 

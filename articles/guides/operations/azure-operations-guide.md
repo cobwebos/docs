@@ -15,11 +15,11 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 4a913e188dd40b0306be375b016b9e8a3739ed72
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8d7cbe27e5acfe741aeb5ed85756bf3c7ce2160b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>云计算和 Microsoft Azure 简介
 
@@ -104,7 +104,7 @@ Azure 在其云计算平台中提供多种服务。 这些服务包括：
 
 -   Microsoft Azure StorSimple
 
--   Azure Redis Cache
+-   Azure Redis 缓存
 
 ### <a name="application-services"></a>应用程序服务
 
@@ -491,19 +491,19 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 **门户**
 
-要使用 Azure 门户部署 Azure 虚拟网络，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的虚拟网络部署到新的或现有资源组中。 从门户创建新的虚拟机时，可选择现有虚拟网络或创建一个新的虚拟网络。 有关详细信息，请参阅[使用 Azure 门户创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)。
+要使用 Azure 门户部署 Azure 虚拟网络，只需要具有一个有效的 Azure 订阅，以及对 Web 浏览器的访问权限。 可将新的虚拟网络部署到新的或现有资源组中。 从门户创建新的虚拟机时，可选择现有虚拟网络或创建一个新的虚拟网络。 有关详细信息，请参阅[使用 Azure 门户创建虚拟网络](../../virtual-network/quick-create-portal.md)。
 
 使用 Azure 门户，除了部署 Azure 虚拟网络之外，还可以部署 Azure 资源管理器模板。 这将部署并配置模板中定义的所有资源，包括任何虚拟网络资源。 有关详细信息，请参阅[使用资源管理器模板和 Azure 门户部署资源](../../azure-resource-manager/resource-group-template-deploy-portal.md)。
 
 **PowerShell**
 
-使用 PowerShell 部署 Azure 虚拟网络，可以完全自动化地部署存储帐户。 有关详细信息，请参阅[使用 PowerShell 创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-ps.md)。
+使用 PowerShell 部署 Azure 虚拟网络，可以完全自动化地部署存储帐户。 有关详细信息，请参阅[使用 PowerShell 创建虚拟网络](../../virtual-network/quick-create-powershell.md)。
 
 除了单独部署 Azure 资源之外，还可以使用 Azure PowerShell 模块来部署 Azure 资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)。
 
 **命令行接口 (CLI)**
 
-与 PowerShell 模块一样，Azure 命令行接口也可实现部署自动化，并且可用于 Windows、OS X 或 Linux 系统。 可使用 Azure CLI“network vnet create”命令创建虚拟网络。 有关详细信息，请参阅[使用 Azure CLI 创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-cli.md)。
+与 PowerShell 模块一样，Azure 命令行接口也可实现部署自动化，并且可用于 Windows、OS X 或 Linux 系统。 可使用 Azure CLI“network vnet create”命令创建虚拟网络。 有关详细信息，请参阅[使用 Azure CLI 创建虚拟网络](../../virtual-network/quick-create-cli.md)。
 
 同样，可以使用 Azure CLI 部署 Azure 资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)。
 

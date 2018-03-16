@@ -7,13 +7,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: 71e28d7c91526de07e64a294873d3f25fe5378f7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: df5f40a49aa7359c082b0feb9e047818a642a871
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>使用 Azure Site Recovery 保护 Active Directory 和 DNS
 
@@ -73,14 +73,14 @@ ms.lasthandoff: 02/21/2018
 
 大多数应用程序需要域控制器和 DNS 服务器。 因此，在对应用程序进行故障转移之前，必须在用于测试故障转移的独立网络中创建域控制器。 最简单的方法是使用 Site Recovery 复制托管域控制器或 DNS 的虚拟机。 然后，在对应用程序的恢复计划运行测试故障转移之前，先对域控制器虚拟机运行测试故障转移。 下面介绍了操作方法：
 
-1. 使用 Site Recovery [复制](site-recovery-replicate-vmware-to-azure.md)托管域控制器或 DNS 的虚拟机。
+1. 使用 Site Recovery [复制](vmware-azure-tutorial.md)托管域控制器或 DNS 的虚拟机。
 2. 创建独立的网络。 默认情况下，在 Azure 中创建的任何虚拟网络均独立于其他网络。 建议对此网络使用与生产网络相同的 IP 地址范围。 不要在此网络上启用站点到站点连接。
 3. 在独立网络中提供 DNS IP 地址。 使用 DNS 虚拟机预计应会获取的 IP 地址。 如果要复制到 Azure，请提供用于故障转移的虚拟机的 IP 地址。 若要输入 IP 地址，请在复制的虚拟机的“计算和网络”设置中，选择“目标 IP”设置。
 
     ![Azure 测试网络](./media/site-recovery-active-directory/azure-test-network.png)
 
     > [!TIP]
-    > Site Recovery 尝试在名称相同的子网中创建测试虚拟机，并使用虚拟机的“计算与网络”设置中提供的同一 IP 地址。 如果为测试故障转移提供的 Azure 虚拟网络中没有名称相同的子网，则会按字母顺序在第一个子网中创建测试虚拟机。 
+    > Site Recovery 尝试在名称相同的子网中创建测试虚拟机，并使用虚拟机的“计算与网络”设置中提供的同一 IP 地址。 如果为测试故障转移提供的 Azure 虚拟网络中没有名称相同的子网，则会按字母顺序在第一个子网中创建测试虚拟机。
     >
     > 如果目标 IP 地址归属于所选子网，则 Site Recovery 会尝试使用该目标 IP 地址创建测试故障转移虚拟机。 如果目标 IP 不属于所选子网，则会使用所选子网中下一个可用 IP 创建测试故障转移虚拟机。
     >
@@ -110,7 +110,7 @@ ms.lasthandoff: 02/21/2018
 
 重置 VM-GenerationID 时，AD DS 数据库的 InvocationID 值也会被重置。 除此之外，还放弃了 RID 池，将 SYSVOL 标记为非授权。 有关详细信息，请参阅 [Active Directory 域服务虚拟化简介](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)和[安全虚拟化 DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)。
 
-故障转移到 Azure 可能会导致 VM-GenerationID重置。 域控制器虚拟机在 Azure 中启动时，重置 VM-GenerationID会触发额外的安全措施。 尝试登录域控制器虚拟机时，这可能会导致严重的延迟。 
+故障转移到 Azure 可能会导致 VM-GenerationID重置。 域控制器虚拟机在 Azure 中启动时，重置 VM-GenerationID会触发额外的安全措施。 尝试登录域控制器虚拟机时，这可能会导致严重的延迟。
 
 由于该域控制器仅用于测试故障转移，因此不需要实施虚拟化安全措施。 要确保域控制器虚拟机的 VM-GenerationID 值不改变，可在本地域控制器中将下述 DWORD 的值更改为 4：
 
@@ -165,20 +165,20 @@ ms.lasthandoff: 02/21/2018
 如果满足上述条件，则域控制器很可能运行良好。 否则，请完成以下步骤：
 
 1. 对域控制器执行授权还原。 请牢记以下信息：
-    * 虽然不推荐 [FRS 复制](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)，但如果使用了 FRS 复制，请按照步骤执行授权还原。 [使用 BurFlags 注册表项重新初始化文件复制服务](https://support.microsoft.com/kb/290762)中介绍了该过程。 
-    
+    * 虽然不推荐 [FRS 复制](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)，但如果使用了 FRS 复制，请按照步骤执行授权还原。 [使用 BurFlags 注册表项重新初始化文件复制服务](https://support.microsoft.com/kb/290762)中介绍了该过程。
+
         有关 BurFlags 的详细信息，请参阅博客文章 [D2 和 D4：它的作用是什么？](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/)。
-    * 如果使用 DFSR 复制，请完成授权还原步骤。 [强制进行 DFSR 复制的 SYSVOL（如 FRS 的“D4/D2”）的授权和非授权同步](https://support.microsoft.com/kb/2218556)中介绍了该过程。 
-    
+    * 如果使用 DFSR 复制，请完成授权还原步骤。 [强制进行 DFSR 复制的 SYSVOL（如 FRS 的“D4/D2”）的授权和非授权同步](https://support.microsoft.com/kb/2218556)中介绍了该过程。
+
         还可以使用 PowerShell 函数。 有关详细信息，请参阅 [DFSR-SYSVOL 授权/非授权还原 PowerShell 函数](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/)。
 
-2. 在本地域控制器中将以下注册表项设置为 0，绕过初始同步要求。 如果 DWORD 不存在，可在“Parameters”节点下创建。 
+2. 在本地域控制器中将以下注册表项设置为 0，绕过初始同步要求。 如果 DWORD 不存在，可在“Parameters”节点下创建。
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
     有关详细信息，请参阅[解决 DNS 事件 ID 4013：DNS 服务器不能加载 AD 集成的 DNS 区域](https://support.microsoft.com/kb/2001093)。
 
-3. 禁用需要全局编录服务器才能验证用户登录的要求。 为此，请在本地域控制器中，将以下注册表项设置为 1。 如果 DWORD 不存在，可在“Lsa”节点下创建。 
+3. 禁用需要全局编录服务器才能验证用户登录的要求。 为此，请在本地域控制器中，将以下注册表项设置为 1。 如果 DWORD 不存在，可在“Lsa”节点下创建。
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 

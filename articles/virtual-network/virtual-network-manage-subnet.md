@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: f8b60a27e760ae74c7f068844fad1ae0d4324366
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 902c0eee88f0de8a20b9c8bf9c0dae6e3c3a7d79
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>添加、更改或删除虚拟网络子网
 
-了解如何添加、更改或删除虚拟网络子网。 如果不熟悉虚拟网络，建议在添加、更改或删除子网之前阅读 [Azure 虚拟网络概述](virtual-networks-overview.md)和[创建、更改或删除虚拟网络](virtual-network-manage-network.md)。 部署到虚拟网络的所有 Azure 资源都将部署到虚拟网络内的子网中。
+了解如何添加、更改或删除虚拟网络子网。 如果不熟悉虚拟网络，建议在添加、更改或删除子网之前阅读 [Azure 虚拟网络概述](virtual-networks-overview.md)和[创建、更改或删除虚拟网络](manage-virtual-network.md)。 部署到虚拟网络的所有 Azure 资源都将部署到虚拟网络内的子网中。
  
 ## <a name="before-you-begin"></a>开始之前
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 02/11/2018
     - 名称：名称在虚拟网络中必须唯一。
     - 地址范围：此范围在该虚拟网络的地址空间内必须唯一。 其范围不能与虚拟网络中其他子网地址范围重叠。 必须使用无类别域际路由选择 (CIDR) 表示法指定地址空间。 例如，在地址空间为 10.0.0.0/16 的虚拟网络中，可将子网地址空间定义为 10.0.0.0/24。 可以指定的最小范围为 /29，为子网提供八个 IP 地址。 Azure 保留每个子网中的第一个地址和最后一个地址，以确保协议一致性。 此外还会保留三个地址供 Azure 服务使用。 因此，使用 /29 地址范围定义子网时，子网中会有三个可用 IP 地址。 如果打算将虚拟网络连接到 VPN 网关，必须创建一个网关子网。 详细了解[网关子网地址范围具体考虑事项](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)。 在特定条件下，可在添加子网后更改地址范围。 若要了解有关如何更改子网地址范围的相关信息，请参阅[更改子网设置](#change-subnet-settings)。
     - **网络安全组**：可将零个或一个现有的网络安全组关联到子网，以筛选子网的入站和出站网络流量。 网络安全组必须存在于与虚拟网络相同的订阅和位置。 若要详细了解[网络安全组](security-overview.md)，请参阅[如何创建网络安全组](virtual-networks-create-nsg-arm-pportal.md)。
-    - **路由表**：可以选择将现有的路由表关联到子网，控制目标为其他网络的网络流量路由。 路由表必须存在于与虚拟网络相同的订阅和位置。 详细了解 [Azure 路由](virtual-networks-udr-overview.md)和[如何创建路由表](create-user-defined-route-portal.md)
+    - **路由表**：可以选择将现有的路由表关联到子网，控制目标为其他网络的网络流量路由。 路由表必须存在于与虚拟网络相同的订阅和位置。 详细了解 [Azure 路由](virtual-networks-udr-overview.md)和[如何创建路由表](tutorial-create-route-table-portal.md)
     - **服务终结点：**子网可以有零个或多个为其启用的服务终结点。 若要启用的服务的服务终结点，选择的服务或服务，想要启用服务终结点从**服务**列表。 若要删除的服务终结点，请取消选择你想要删除的服务终结点的服务。 若要详细了解服务终结点，请参阅[虚拟网络服务终结点](virtual-network-service-endpoints-overview.md) 一旦启用服务的服务终结点，还必须启用与服务创建的资源的子网的网络访问权限。 例如，如果启用的服务终结点*Microsoft.Storage*，还必须启用到你想要授予对网络访问权限的所有 Azure 存储帐户的网络访问权限。 有关如何启用到为启用服务终结点的子网的网络访问的详细信息，请参阅各个启用的服务终结点的服务的文档。
 6. 单击“确定”，将子网添加到所选的虚拟网络。
 

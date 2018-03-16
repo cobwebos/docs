@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: d05492425381649a7893b872c4b1c49e9f241b50
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4f4c4e9749eb5f0f6ba1950521f459f140cb5221
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 
@@ -45,7 +45,7 @@ Azure 自动创建系统路由，并将路由分配到虚拟网络中的每个�
 
 上表中列出的下一跃点类型表示 Azure 如何路由目标为所列地址前缀的流量。 下面是下一跃点类型的说明：
 
-- **虚拟网络**：在虚拟网络的[地址空间](virtual-network-manage-network.md#add-address-spaces)中的地址范围之间路由流量。 Azure 使用地址前缀创建路由，该前缀对应的每个地址范围是在虚拟网络的地址空间中定义的。 如果虚拟网络地址空间定义了多个地址范围，Azure 会为每个地址范围创建单个路由。 Azure 使用为每个地址范围创建的路由在子网之间自动路由流量。 不需为 Azure 定义在子网之间路由流量的网关。 虽然虚拟网络包含子网，且每个子网都有定义的地址范围，但 Azure 不为子网地址范围创建默认路由，因为每个子网地址范围都是在虚拟网络地址空间的地址范围之内。
+- **虚拟网络**：在虚拟网络的[地址空间](manage-virtual-network.md#add-or-remove-an-address-range)中的地址范围之间路由流量。 Azure 使用地址前缀创建路由，该前缀对应的每个地址范围是在虚拟网络的地址空间中定义的。 如果虚拟网络地址空间定义了多个地址范围，Azure 会为每个地址范围创建单个路由。 Azure 使用为每个地址范围创建的路由在子网之间自动路由流量。 不需为 Azure 定义在子网之间路由流量的网关。 虽然虚拟网络包含子网，且每个子网都有定义的地址范围，但 Azure 不为子网地址范围创建默认路由，因为每个子网地址范围都是在虚拟网络地址空间的地址范围之内。
 
 - **Internet**：将地址前缀指定的流量路由到 Internet。 系统默认路由指定 0.0.0.0/0 地址前缀。 如果不替代 Azure 的默认路由，Azure 会将不是通过虚拟网络中的地址范围指定的地址的流量路由到 Internet，但有一个例外。 如果目标地址是用于某个 Azure 服务的，Azure 会将流量通过 Azure 的主干网络直接路由到该服务，而不是将流量路由到 Internet。 Azure 服务之间的流量不跨越 Internet，不管虚拟网络存在于哪个 Azure 区域，也不管 Azure 服务的实例部署在哪个 Azure 区域。 可以将 0.0.0.0/0 地址前缀对应的 Azure 默认系统路由替代为[自定义路由](#custom-routes)。
 
@@ -203,7 +203,7 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 |ID  |Source |State  |地址前缀    |下一跃点类型          |下一跃点 IP 地址|用户定义路由的名称| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |默认|无效|10.0.0.0/16         |虚拟网络        |                   |              |
-|#N/A   |用户   |活动 |10.0.0.0/16         |虚拟设备      |10.0.100.4         |Within-VNet1  |
+|2   |用户   |活动 |10.0.0.0/16         |虚拟设备      |10.0.100.4         |Within-VNet1  |
 |3   |用户   |活动 |10.0.0.0/24         |虚拟网络        |                   |Within-Subnet1|
 |4   |默认|无效|10.1.0.0/16         |VNet 对等互连           |                   |              |
 |5   |默认|无效|10.2.0.0/16         |VNet 对等互连           |                   |              |
@@ -250,7 +250,7 @@ Subnet2 的路由表包含所有 Azure 创建的默认路由，以及可选的 V
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建包含路由和网络虚拟设备的用户定义路由表](create-user-defined-route-portal.md)
+- [创建包含路由和网络虚拟设备的用户定义路由表](tutorial-create-route-table-portal.md)
 - [为 Azure VPN 网关配置 BGP](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [将 BGP 与 ExpressRoute 配合使用](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
 - [查看子网的所有路由](virtual-network-routes-troubleshoot-portal.md)。 用户定义路由表仅显示子网的用户定义路由，不显示其默认路由和 BGP 路由。 查看所有路由时，会显示网络接口所在子网的默认路由、BGP 路由和用户定义路由。

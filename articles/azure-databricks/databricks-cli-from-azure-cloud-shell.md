@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2018
 ms.author: nitinme
-ms.openlocfilehash: 212789e8189abf362bb8eaf12e4c551b113b7adb
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 8e4213813ff23586ac683556d4a3c0c587edea58
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>从 Azure Cloud Shell 中使用 Databricks CLI
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 03/05/2018
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解有关 Azure CLI 的详细信息，请参阅 [Azure CLI 概述](../cloud-shell/overview.md)
-* 若要查看 Azure CLI 命令的列表，请参阅 [Azure CLI 参考](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
+* 若要查看 Azure CLI 命令的列表，请参阅 [Azure CLI 参考](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest)
 * 若要查看 Databricks CLI 命令的列表，请参阅 [Databricks CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
 
 

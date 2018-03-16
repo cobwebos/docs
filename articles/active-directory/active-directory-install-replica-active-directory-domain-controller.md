@@ -16,11 +16,11 @@ ms.date: 11/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 3f7624d588e958985a73c5b40e8010e18e8879cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f4e64fbc6c2fda026297b69bd54471d49b6785a1
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="install-a-replica-active-directory-domain-controller-in-an-azure-virtual-network"></a>在 Azure 虚拟网络中安装副本 Active Directory 域控制器
 本文介绍如何在 Azure 虚拟网络中的 Azure 虚拟机 (VM) 上为本地 Active Directory 域安装用作副本 DC 的域控制器 (DC)。 也可以[在 Azure 虚拟网络中安装 Windows Server Active Directory 林](active-directory-new-forest-virtual-machine.md)。 有关如何在 Azure 虚拟网络上安装 Active Directory 域服务 (AD DS)，请参阅[在 Azure 虚拟机上部署 Windows Server Active Directory 的指南](https://msdn.microsoft.com/library/azure/jj156090.aspx)。
@@ -62,7 +62,7 @@ Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddr
 
 ## <a name="reconfigure-dns-server-for-the-virtual-network"></a>重新配置虚拟网络的 DNS 服务器
 1. 若要获取虚拟网络名称的列表，请在 [Azure 门户](https://portal.azure.com)中搜索“虚拟网络”，然后选择“虚拟网络”查看该列表。 
-2. 打开想要管理的虚拟网络，然后[重新配置虚拟网络的 DNS 服务器 IP 地址](../virtual-network/virtual-network-manage-network.md#dns-servers)，以便使用分配到副本 DC 的静态 IP 地址，而不是本地 DNS 服务器的 IP 地址。
+2. 打开想要管理的虚拟网络，然后[重新配置虚拟网络的 DNS 服务器 IP 地址](../virtual-network/manage-virtual-network.md#change-dns-servers)，以便使用分配到副本 DC 的静态 IP 地址，而不是本地 DNS 服务器的 IP 地址。
 3. 若要确保虚拟网络中的所有副本 DC VM 配置为使用虚拟网络上的 DNS 服务器：
   1. 选择“虚拟机”。
   2. 选择 VM，然后选择“重启”。 

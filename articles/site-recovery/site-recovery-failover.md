@@ -2,23 +2,17 @@
 title: "Site Recovery 中的故障转移 | Microsoft Docs"
 description: "Azure Site Recovery 可以协调虚拟机和物理服务器的复制、故障转移与恢复。 了解有关故障转移到 Azure 或辅助数据中心的信息。"
 services: site-recovery
-documentationcenter: 
-author: prateek9us
-manager: gauravd
-editor: 
-ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 09/25/2017
-ms.author: pratshar
-ms.openlocfilehash: afdab6e5ee5ae3bb8bc553afd93ff8f1ee18147f
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 03/09/2018
+ms.author: ponatara
+ms.openlocfilehash: f7a60cd82508629ad3cf46882564aa68995ba3e6
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="failover-in-site-recovery"></a>Site Recovery 中的故障转移
 本文介绍如何故障转移受 Site Recovery 保护的虚拟机和物理服务器。
@@ -29,7 +23,7 @@ ms.lasthandoff: 02/14/2018
 
 通过下表了解 Azure Site Recovery 提供的故障转移选项。 所列选项针对不同的故障转移方案。
 
-| 场景 | 应用程序恢复要求 | Hyper V 工作流 | VMware 工作流
+| 方案 | 应用程序恢复要求 | Hyper V 工作流 | VMware 工作流
 |---|--|--|--|
 |由于即将到来的数据中心故障时间而计划的故障转移| 执行计划活动时应用程序的零数据丢失| 对于 Hyper-V，ASR 以用户指定的复制频率复制数据。 使用计划的故障转移在启动故障转移之前覆盖频率并复制最终更改。 <br/> <br/> 1.  根据你的业务变更管理流程规划维护时段。 <br/><br/> 2.通知用户即将到来的故障时间。 <br/><br/> 3.使面向用户的应用程序脱机运行。<br/><br/>4.使用 ASR 门户启动计划的故障转移。 本地虚拟机将自动关闭。<br/><br/>有效的应用程序数据丢失 = 0 <br/><br/>对于希望使用较早恢复点的用户，还可以提供保留期内的恢复点日志。 （对于 HYPER-V，保留期为 24 小时）。| 对于 VMware，ASR 使用 CDP 持续复制数据。 故障转移可以让用户选择故障转移到最新数据（包括应用程序关闭后）<br/><br/> 1.根据变更管理流程规划维护时段 <br/><br/>2.通知用户即将到来的故障时间 <br/><br/>3.  使面向用户的应用程序脱机运行。 <br/><br/>4.在应用程序脱机后，使用 ASR 门户启动到最新点的计划故障转移。 使用门户上的“计划外的故障转移”选项，并选择最新点进行故障转移。 本地虚拟机将自动关闭。<br/><br/>有效的应用程序数据丢失 = 0 <br/><br/>对于希望使用较早恢复点的用户，可以提供保留期内的恢复点日志。 （对于 VMware，保留期为 72 小时）。
 |由于计划外的数据中心故障时间（自然或 IT 灾难）而执行的故障转移 | 应用程序的最小数据丢失 | 1.启动组织的 BCP 计划 <br/><br/>2.使用 ASR 门户启动到最新点或保留期（日志）内的某个点的计划外故障转移。| 1.启动组织的 BCP 计划。 <br/><br/>2.使用 ASR 门户启动到最新点或保留期（日志）内的某个点的计划外故障转移。
@@ -96,18 +90,18 @@ ms.lasthandoff: 02/14/2018
 在某些情况下，虚拟机的故障转移需要额外的中间步骤，中间步骤通常耗费约 8 到 10 分钟才能完成。 在以下情况下，故障转移所需的时间比通常更多：
 
 * VMware 虚拟机所使用的移动服务版本早于 9.8
-* 物理服务器 
+* 物理服务器
 * VMware Linux 虚拟机
 * 作为物理服务器受到保护的 Hyper-V 虚拟机
-* VMware 虚拟机，其中下列驱动程序不作为启动驱动程序 
-    * storvsc 
-    * vmbus 
-    * storflt 
-    * intelide 
+* VMware 虚拟机，其中下列驱动程序不作为启动驱动程序
+    * storvsc
+    * vmbus
+    * storflt
+    * intelide
     * atapi
 * 未启用 DHCP 服务的 VMware 虚拟机（无论它们使用 DHCP 还是使用静态 IP 地址）
 
-在其他所有情况下，此中间步骤都非必需，因而故障转移的耗时会减少。 
+在其他所有情况下，此中间步骤都非必需，因而故障转移的耗时会减少。
 
 
 
@@ -118,7 +112,7 @@ ms.lasthandoff: 02/14/2018
 
 ## <a name="post-failover-considerations"></a>故障转移后注意事项
 故障转移后，可能需要考虑以下建议：
-### <a name="retaining-drive-letter-after-failover"></a>在故障转移后保留驱动器号 
+### <a name="retaining-drive-letter-after-failover"></a>在故障转移后保留驱动器号
 若要在故障转移后保留虚拟机上的驱动器号，可将虚拟机的“SAN 策略”设置为 **OnlineAll**。 [了解详细信息](https://support.microsoft.com/en-us/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure)。
 
 
@@ -126,8 +120,8 @@ ms.lasthandoff: 02/14/2018
 ## <a name="next-steps"></a>后续步骤
 
 > [!WARNING]
-> 故障转移虚拟机并且本地数据中心可用后，应该在本地数据中心[**重新保护**](site-recovery-how-to-reprotect.md) VMware 虚拟机。
+> 故障转移虚拟机并且本地数据中心可用后，应该在本地数据中心[**重新保护**](vmware-azure-reprotect.md) VMware 虚拟机。
 
-使用[**计划的故障转移**](site-recovery-failback-from-azure-to-hyper-v.md)选项可将 Hyper-V 虚拟机从 Azure **故障回复**到本地。
+使用[**计划的故障转移**](hyper-v-azure-failback.md)选项可将 Hyper-V 虚拟机从 Azure **故障回复**到本地。
 
 如果已将 Hyper-V 虚拟机故障转移到 VMM 服务器管理的另一个本地数据中心并且主数据中心可用，请使用“反向复制”选项开始复制回到主数据中心。

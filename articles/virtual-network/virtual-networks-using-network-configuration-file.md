@@ -16,17 +16,17 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: f1e3ae26b6525f2235a6b0d53546b334dc027b94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1bb75b8bd1d525f3104fb517cb4a09b2e33caaca
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>使用网络配置文件配置虚拟网络（经典）
 > [!IMPORTANT]
 > Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 部署模型。
 
-可以在 Azure 命令行接口 (CLI) 1.0 或 Azure PowerShell 中使用使用网络配置文件来创建和配置虚拟网络（经典）。 无法通过 Azure Resource Manager 部署模型使用网络配置文件创建或修改虚拟网络。 无法在 Azure 门户中使用网络配置文件来创建或修改虚拟网络（经典），但可以直接在 Azure 门户中创建虚拟网络（经典），而无需使用网络配置文件。
+可以在 Azure 命令行接口 (CLI) 1.0 或 Azure PowerShell 中使用使用网络配置文件来创建和配置虚拟网络（经典）。 无法通过 Azure 资源管理器部署模型使用网络配置文件创建或修改虚拟网络。 无法在 Azure 门户中使用网络配置文件来创建或修改虚拟网络（经典），但可以直接在 Azure 门户中创建虚拟网络（经典），而无需使用网络配置文件。
 
 使用网络配置文件创建和配置虚拟网络（经典）需要导出、更改和导入该文件。
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="create-or-modify-a-network-configuration-file"></a>创建或修改网络配置文件
 
-网络配置文件是一个 XML 文件（使用 PowerShell 时）或一个 json 文件（使用 Azure CLI 时）。 可在任何文本或 XML/json 编辑器中编辑该文件。 [网络配置文件架构设置](https://msdn.microsoft.com/library/azure/jj157100.aspx)一文中提供了所有设置的详细信息。 有关设置的更多说明，请参阅[查看虚拟网络和设置](virtual-network-manage-network.md#view-vnet)。 对文件所做的更改：
+网络配置文件是一个 XML 文件（使用 PowerShell 时）或一个 json 文件（使用 Azure CLI 时）。 可在任何文本或 XML/json 编辑器中编辑该文件。 [网络配置文件架构设置](https://msdn.microsoft.com/library/azure/jj157100.aspx)一文中提供了所有设置的详细信息。 有关设置的更多说明，请参阅[查看虚拟网络和设置](manage-virtual-network.md#view-virtual-networks-and-settings)。 对文件所做的更改：
 
 - 必须符合架构，否则导入网络配置文件将会失败。
 - 覆盖订阅的所有现有网络设置，因此，在修改时请格外小心。 例如，请参考下面的示例网络配置文件。 假设原始文件包含两个 **VirtualNetworkSite** 实例，而你如示例中所示更改了此文件。 导入文件时，Azure 会删除你在该文件中删除的 **VirtualNetworkSite** 的虚拟网络实例。 这种简化方案假设虚拟网络中没有任何资源，如果有，则无法删除虚拟网络，并且导入将会失败。

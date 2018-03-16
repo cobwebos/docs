@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 7c34d7a225be63da95f664525b0366ff89b28838
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="using-the-azure-stack-portal"></a>使用 Azure 堆栈门户
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 作为 Azure 堆栈服务的使用者，你可以使用 Azure 堆栈门户订阅公共产品，并使用可用于通过这些产品/服务的服务。 如果你已使用 Azure 门户之前，你已熟悉的用户界面。
 
@@ -30,14 +30,14 @@ ms.lasthandoff: 12/11/2017
 
 你的 Azure 堆栈运算符 （服务提供商或你组织中的管理员），将让你知道正确的 URL 以访问门户。 
 
-- 对于集成系统，URL 将取决于运算符的区域和外部的域名，并将采用格式 https://portal。&lt;*区域*&gt;。&lt;*FQDN*&gt;。
-- 如果你使用 Azure 堆栈开发工具包，该门户的地址是 https://portal.local.azurestack.external。
+- 对于集成系统，URL 根据操作员所在的区域和外部域名的不同而异，格式为 https://portal.&lt;*区域*&gt;.&lt;*FQDN*&gt;。
+- 如果你使用 Azure 堆栈开发工具包，该门户的地址是https://portal.local.azurestack.external。
 
 ![Azure 堆栈用户门户的屏幕截图](media/azure-stack-use-portal/UserPortal.png)
 
 ## <a name="customize-the-dashboard"></a>自定义仪表板
 
-仪表板包含一组默认磁贴。 你可以单击**编辑仪表板**修改默认的仪表板，或单击**新仪表板**添加自定义仪表板。 你可以轻松添加到仪表板的磁贴。 例如，你可以单击**新建**，右键单击**计算**，然后单击**固定到仪表板**。
+仪表板包含一组默认磁贴。 可以单击“编辑仪表板”来修改默认仪表板，或者单击“新建仪表板”来添加自定义仪表板。 可以轻松地将磁贴添加到仪表板中。 例如，你可以单击**新建**，右键单击**计算**，然后单击**固定到仪表板**。
 
 ## <a name="create-subscription-and-browse-available-resources"></a>创建订阅并浏览可用资源
  

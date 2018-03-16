@@ -1,5 +1,5 @@
 ---
-title: "Azure 配额错误 | Microsoft 文档"
+title: "Azure 配额错误 | Microsoft Docs"
 description: "介绍如何解决资源配额错误。"
 services: azure-resource-manager,azure-portal
 documentationcenter: 
@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 11/27/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3ed3da2d9730d8c30d8170ddf40fe4895dfa5dec
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: d2cc760bf516e8ee96629886120a1bb092932a82
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解决资源配额错误
 
@@ -47,9 +47,9 @@ please delete some resources of this type before creating a new one.
 已按资源组、订阅、帐户和其他范围应用配额。 例如，订阅可能配置为限制某个区域的核心数目。 如果尝试部署超过允许核心数目的虚拟机，则会收到指出超过配额的错误消息。
 有关完整的配额信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-subscription-service-limits.md)。
 
-## <a name="solution"></a>解决方案
+## <a name="troubleshooting"></a>故障排除
 
-### <a name="solution-1"></a>解决方案 1
+### <a name="azure-cli"></a>Azure CLI
 
 对于 Azure CLI，可使用 `az vm list-usage` 命令查找虚拟机配额。
 
@@ -73,7 +73,7 @@ az vm list-usage --location "South Central US"
 ]
 ```
 
-### <a name="solution-2"></a>解决方案 2
+### <a name="powershell"></a>PowerShell
 
 对于 PowerShell，可使用 Get-AzureRmVMUsage 命令查找虚拟机配额。
 
@@ -91,7 +91,7 @@ Total Regional Cores                         0   100 Count
 Virtual Machines                             0 10000 Count
 ```
 
-### <a name="solution-3"></a>解决方案 3
+## <a name="solution"></a>解决方案
 
 若要请求增加配额，请转到门户并提出支持问题。 在支持问题中，为你想要在其中进行部署的区域请求增加配额。
 

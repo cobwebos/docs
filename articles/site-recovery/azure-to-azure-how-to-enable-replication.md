@@ -6,13 +6,13 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2017
+ms.date: 03/09/2018
 ms.author: asgang
-ms.openlocfilehash: 5a0e1f638d68131c3c9f1cac36d63795b87e8f41
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 39d81ed6408e5f2c434a4fbaa681efc4c0b19a63
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>将 Azure 虚拟机复制到另一个 Azure 区域
 
@@ -79,4 +79,3 @@ ms.lasthandoff: 02/13/2018
 # <a name="next-steps"></a>后续步骤
 
 [详细了解](site-recovery-test-failover-to-azure.md)如何运行测试故障转移。
-

@@ -63,14 +63,14 @@ Upgrade_VMSizeNotSupported 或 GeneralError
 
 **解决方法**
 
-如果错误是 Upgrade_VMSizeNotSupported\*，请尝试使用不同的 VM 大小。 如果使用不同的 VM 大小不可行，但可接受使用不同的虚拟 IP 地址 (VIP)，则创建新的云服务来托管新的 VM，并将新的云服务添加到运行现有 VM 的区域虚拟网络中。 如果现有的云服务未使用区域虚拟网络，用户仍然可以为新的云服务创建新的虚拟网络，然后[将现有虚拟网络连接到新的虚拟网络](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。 详细了解[区域虚拟网络](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)。
+如果错误是 Upgrade_VMSizeNotSupported*，请尝试使用不同的 VM 大小。 如果使用不同的 VM 大小不可行，但可接受使用不同的虚拟 IP 地址 (VIP)，则创建新的云服务来托管新的 VM，并将新的云服务添加到运行现有 VM 的区域虚拟网络中。 如果现有的云服务未使用区域虚拟网络，用户仍然可以为新的云服务创建新的虚拟网络，然后[将现有虚拟网络连接到新的虚拟网络](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。 详细了解[区域虚拟网络](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)。
 
-如果错误是 GeneralError\*，很可能是因为群集虽然支持资源的类型（例如特定的 VM 大小），但群集目前没有可用的资源。 类似上述，通过创建新的云服务（请注意，新的云服务必须使用不同的 VIP）尝试添加所需的计算资源，并使用区域虚拟网络连接云服务。
+如果错误是 GeneralError*，很可能是因为群集虽然支持资源的类型（例如特定的 VM 大小），但群集目前没有可用的资源。 类似上述，通过创建新的云服务（请注意，新的云服务必须使用不同的 VIP）尝试添加所需的计算资源，并使用区域虚拟网络连接云服务。
 
 ## <a name="allocation-scenario-restart-partially-stopped-deallocated-vms"></a>分配案例：重新启动部分停止（已解除分配）的 VM
 **错误**
 
-GeneralError\*
+GeneralError*
 
 **群集固定的原因**
 
@@ -86,7 +86,7 @@ GeneralError\*
 ## <a name="allocation-scenario-restart-fully-stopped-deallocated-vms"></a>分配案例：重新启动完全停止（已解除分配）的 VM
 **错误**
 
-GeneralError\*
+GeneralError*
 
 **群集固定的原因**
 
@@ -166,7 +166,7 @@ Upgrade_VMSizeNotSupported\* 或 GeneralError\*
 ## <a name="allocation-scenario-restart-partially-stopped-deallocated-vms"></a>分配案例：重新启动部分停止（已解除分配）的 VM
 **错误**
 
-GeneralError\*
+GeneralError*
 
 **群集固定的原因**
 
@@ -179,7 +179,7 @@ GeneralError\*
 ## <a name="allocation-scenario-restart-fully-stopped-deallocated"></a>分配案例：重新启动完全停止（已解除分配）的 VM
 **错误**
 
-GeneralError\*
+GeneralError*
 
 **群集固定的原因**
 
@@ -192,19 +192,19 @@ GeneralError\*
 <a name="Error string lookup"></a>
 
 ## <a name="error-string-lookup"></a>错误字符串查找
-**New_VMSizeNotSupported**\*
+**New_VMSizeNotSupported***
 
 “由于部署请求约束，无法预配此部署所需的 VM 大小（或 VM 大小的组合）。 可能的话，请尝试放宽约束（例如虚拟网络绑定）、部署到不具有其他部署的托管服务及不同的地缘组（或不具有地缘组的托管服务），或尝试部署到不同的区域。”
 
-**New_General**\*
+**New_General***
 
 “分配失败；无法满足请求中的约束。 请求的新服务部署绑定至地缘组，或以虚拟网络为目标，或此托管服务下已经有部署。 上述任一情况都会将新的部署局限于特定的 Azure 资源。 请稍后重试，或尝试减少 VM 大小或角色实例数目。 或者，可能的话，删除先前提到的约束，或尝试部署到不同的区域。”
 
-**Upgrade_VMSizeNotSupported**\*
+**Upgrade_VMSizeNotSupported***
 
 “无法升级部署。 在支持现有部署的资源中，可能没有所请求的 VM 大小 XXX。 请稍后再试，尝试使用不同的 VM 大小或较少的角色实例，或在空的托管服务下以创建新的地缘组或没有地缘组绑定来创建部署。”
 
-**GeneralError**\*
+**GeneralError***
 
 “服务器遇到内部错误。 请重试请求。” 或者“无法为服务生成分配。”
 

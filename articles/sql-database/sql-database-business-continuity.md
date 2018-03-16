@@ -17,10 +17,10 @@ ms.workload: On Demand
 ms.date: 08/25/2017
 ms.author: sashan
 ms.openlocfilehash: c2c5f18b736c83c281d56e0bdda977a9f8c48101
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
 
@@ -85,7 +85,7 @@ SQL 数据库每周自动执行完整数据库备份，每小时自动执行差�
 >
 
 ## <a name="recover-a-database-after-a-user-or-application-error"></a>在用户或应用程序错误之后恢复数据库
-\*人无完人。 用户可能会不小心删除某些数据、无意中删除重要的表，甚至删除整个数据库。 或者，应用程序可能因为自身缺陷，意外以错误数据覆盖正确数据。
+*人无完人。 用户可能会不小心删除某些数据、无意中删除重要的表，甚至删除整个数据库。 或者，应用程序可能因为自身缺陷，意外以错误数据覆盖正确数据。
 
 在此方案中，可使用以下恢复选项。
 

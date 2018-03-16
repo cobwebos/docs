@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: f4a1562983ffa68dbd6586a2ae3a569f766387b5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ec6d8d5327ec6d5ebb92e125cb4c52a7a929c0e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>创建包含多个子网的虚拟网络（经典）
 
 > [!IMPORTANT]
-> Azure 有两个用于创建和处理资源的[不同部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)：资源管理器和经典模型。 本文介绍使用经典部署模型。 Microsoft 建议通过[资源管理器](virtual-networks-create-vnet-arm-pportal.md)部署模型新建大多数虚拟网络。
+> Azure 有两个用于创建和处理资源的[不同部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)：资源管理器和经典模型。 本文介绍使用经典部署模型。 Microsoft 建议通过[资源管理器](quick-create-portal.md)部署模型新建大多数虚拟网络。
 
 本教程介绍如何创建包含独立公共子网和专用子网的基本 Azure 虚拟网络（经典）。 可以在子网中创建虚拟机和云服务等 Azure 资源。 在虚拟网络（经典）中创建的资源可以彼此通信，并可以与连接到虚拟网络的其他网络中的资源通信。
 
-详细了解所有[虚拟网络](virtual-network-manage-network.md)和[子网](virtual-network-manage-subnet.md)设置。
+详细了解所有[虚拟网络](manage-virtual-network.md)和[子网](virtual-network-manage-subnet.md)设置。
 
 > [!WARNING]
 > [禁用订阅](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit)后，Azure 会立即删除虚拟网络（经典）。 不管虚拟网络（经典）中是否存在资源，都会删除虚拟网络。 如果以后重新启用订阅，必须重新创建虚拟网络中存在的资源。
@@ -161,7 +161,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关所有虚拟网络和子网设置的信息，请参阅[管理虚拟网络](virtual-network-manage-network.md)和[管理虚拟网络子网](virtual-network-manage-subnet.md)。 在生产环境中有使用虚拟网络和子网的多种选项，以满足不同的要求。
+- 若要了解有关所有虚拟网络和子网设置的信息，请参阅[管理虚拟网络](manage-virtual-network.md)和[管理虚拟网络子网](virtual-network-manage-subnet.md)。 在生产环境中有使用虚拟网络和子网的多种选项，以满足不同的要求。
 - 若要筛选入站和出站子网流量，请创建[网络安全组](virtual-networks-nsg.md)并将其应用到子网。
 - 创建 [Windows](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机，并将其连接到现有的虚拟网络。
 - 若要在同一 Azure 位置连接两个虚拟网络，请在虚拟网络之间创建[虚拟网络对等互连](create-peering-different-deployment-models.md)。 可将虚拟网络（资源管理器）对等互连到虚拟网络（经典），但不能在两个虚拟网络（经典）之间创建对等互连。

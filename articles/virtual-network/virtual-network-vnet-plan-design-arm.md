@@ -4,7 +4,7 @@ description: "了解如何基于隔离、连接性和位置要求规划和设计
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 3a4a9aea-7608-4d2e-bb3c-40de2e537200
 ms.service: virtual-network
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: 9a0126235c9ff3fec05d7709bdee95ab4832a33b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ecdc3a847821fd83718f9cfc42308667460feabc
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>规划和设计 Azure 虚拟网络
-创建用于试验的 VNet 非常简单，但却可能是，会在一段时间内部署多个 VNet 以支持组织的生产需要。 通过进行一些规划和设计，能够更有效地部署 VNet 和连接所需的资源。 如果不熟悉 VNet，我们建议先[了解 VNet](virtual-networks-overview.md) 以及[如何部署](virtual-networks-create-vnet-arm-pportal.md) VNet，再继续阅读本文。
+创建用于试验的 VNet 非常简单，但却可能是，会在一段时间内部署多个 VNet 以支持组织的生产需要。 通过进行一些规划和设计，能够更有效地部署 VNet 和连接所需的资源。 如果不熟悉 VNet，我们建议先[了解 VNet](virtual-networks-overview.md) 以及[如何部署](quick-create-portal.md) VNet，再继续阅读本文。
 
 ## <a name="plan"></a>计划
 深入了解 Azure 订阅、区域和网络资源是取得成功的关键。 可以使用下面的注意事项列表作为起点。 了解这些注意事项后，便可以定义网络设计要求了。
@@ -89,7 +89,7 @@ VNet 包含以下属性。
 ### <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 可以使用 [Azure RBAC](../active-directory/role-based-access-built-in-roles.md) 来控制不同用户可能对 Azure 中的不同资源拥有的访问权限级别。 这样就可以根据团队的需要分隔团队完成的工作。
 
-就虚拟网络而言，拥有**网络参与者**角色的用户可以完全控制 Azure Resource Manager 虚拟网络资源。 同样，拥有**经典网络参与者**角色的用户可以完全控制经典虚拟网络资源。
+就虚拟网络而言，拥有**网络参与者**角色的用户可以完全控制 Azure 资源管理器虚拟网络资源。 同样，拥有**经典网络参与者**角色的用户可以完全控制经典虚拟网络资源。
 
 > [!NOTE]
 > 还可以[创建自己的角色](../active-directory/role-based-access-control-configure.md)来区分管理需求。
@@ -110,7 +110,7 @@ VNet 包含以下属性。
 ### <a name="subscription-and-vnet-design-patterns"></a>订阅和 VNet 设计模式
 下表展示了有关使用订阅和 VNet 的一些常用设计模式。
 
-| 方案 | 图表 | 优点 | 缺点 |
+| 场景 | 图表 | 优点 | 缺点 |
 | --- | --- | --- | --- |
 | 一个订阅，每个应用两个 VNet |![一个订阅](./media/virtual-network-vnet-plan-design-arm/figure1.png) |只有一个订阅要管理。 |每个 Azure 区域的 Vnet 数量上限。 之后需要更多订阅。 有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md#networking-limits)一文。 |
 | 每个应用一个订阅，每个应用两个 VNet |![一个订阅](./media/virtual-network-vnet-plan-design-arm/figure2.png) |每个订阅仅使用两个 Vnet。 |当有太多应用时，难于管理。 |
@@ -210,13 +210,13 @@ VNet 包含以下属性。
 | --- | --- | --- | --- |
 | BU1 |ProdBU1US1 |美国西部 |172.16.0.0/16 |
 | BU1 |ProdBU1US2 |美国东部 |172.17.0.0/16 |
-| BU1 |ProdBU1EU1 |欧洲北部 |172.18.0.0/16 |
+| BU1 |ProdBU1EU1 |北欧 |172.18.0.0/16 |
 | BU1 |ProdBU1EU2 |欧洲西部 |172.19.0.0/16 |
 | BU1 |TestDevBU1 |美国西部 |172.20.0.0/16 |
 | BU2 |TestDevBU2 |美国西部 |172.21.0.0/16 |
 | BU2 |ProdBU2US1 |美国西部 |172.22.0.0/16 |
 | BU2 |ProdBU2US2 |美国东部 |172.23.0.0/16 |
-| BU2 |ProdBU2EU1 |欧洲北部 |172.24.0.0/16 |
+| BU2 |ProdBU2EU1 |北欧 |172.24.0.0/16 |
 | BU2 |ProdBU2EU2 |欧洲西部 |172.25.0.0/16 |
 
 **子网和 NSG 的数量**
