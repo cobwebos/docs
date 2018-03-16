@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 03/12/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: a198ff5fe7135e17301025d6a712236b76be0ede
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 04cfe3c4ac6011b9c3d31b7d4ac3c018c350d67b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="network-connectivity"></a>网络连接
 本文提供了 Azure 堆栈网络基础结构信息来帮助你决定如何最好地将 Azure 堆栈集成到你现有的网络环境。 
@@ -53,7 +53,9 @@ Azure 堆栈的网络基础结构包含的交换机配置的多个逻辑网络�
 ![逻辑网络关系图和交换机连接](media/azure-stack-network/NetworkDiagram.png)
 
 ### <a name="bmc-network"></a>BMC 网络
-到管理网络情况下，此网络专用于连接的所有基板管理控制器 （也称为服务处理器，例如，iDRAC、 iLO、 iBMC 等）。 如果有，(HLH) 硬件生命周期主机位于此网络上，并可能会提供为硬件维护和/或监控 OEM 特定软件。 
+到管理网络情况下，此网络专用于连接的所有基板管理控制器 （也称为服务处理器，例如，iDRAC、 iLO、 iBMC 等）。 如果存在，硬件生命周期主机 (HLH) 位于此网络上，可以提供 OEM 特定软件的硬件维护或监视。 
+
+HLH 还承载部署 VM (DVM)。 DVM Azure 堆栈部署过程中使用，并且部署完成后被删除。 DVM 需要 internet 连接的部署方案，以便测试、 验证和访问多个组件中的访问权限。 这些组件可以是内部和外部企业网络;例如 NTP、 DNS 和 Azure。 有关连接要求的详细信息，请参阅[Azure 堆栈防火墙集成中的 NAT 部分](azure-stack-firewall.md#network-address-translation)。 
 
 ### <a name="private-network"></a>专用网络
 (254 主机 IP 的) 网络是专用的到 Azure 堆栈区域 （也不会扩展超出 Azure 堆栈区域的边框交换机设备），而且划分为两个子网此/24:

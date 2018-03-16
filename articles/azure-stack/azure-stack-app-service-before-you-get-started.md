@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 3261a312cde9ebdf41f6dadb82c14d108715f8f7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 5323fe505adfd9b3495dd85ce41d6f141125184b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>在 Azure Stack 上开始使用应用服务之前
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/12/2018
 
 ## <a name="high-availability"></a>高可用性
 
-由于 Azure 堆栈，增加了对容错域支持，1802年版本 Azure 堆栈上的 Azure App Service 的新部署将分布在容错域，并提供容错能力。  对于在 1802年发布前已部署的现有部署 Azure 堆栈上的 Azure App Service 的更新，请参阅有关如何重新平衡部署 (azure-stack-app-service-fault-domain-update.md) 的文档。
+由于 Azure 堆栈，增加了对容错域支持，1802年版本 Azure 堆栈上的 Azure App Service 的新部署将分布在容错域，并提供容错能力。  对于在 1802年发布前已部署的现有部署 Azure 堆栈上的 Azure App Service 的更新，请参阅[文档](azure-stack-app-service-fault-domain-update.md)有关如何重新平衡部署。
 
 此外，Azure 堆栈中的高可用性的 Azure App Service 部署的所需的文件服务器和高度可用配置中的 SQL Server 实例。 
 

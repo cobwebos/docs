@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 堆栈中可用的进行虚拟机规模集 |Microsoft 文档"
-description: "了解如何云操作员可以向 Azure 堆栈应用商店中添加虚拟机规模"
+title: "在 Azure Stack 中提供虚拟机规模集 | Microsoft Docs"
+description: "了解云操作员如何向 Azure Stack 应用商店中添加虚拟机规模集"
 services: azure-stack
 author: brenduns
 manager: femila
@@ -8,48 +8,48 @@ editor:
 ms.assetid: 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/13/2018
 ms.author: brenduns
 ms.reviewer: anajod
 keywords: 
-ms.openlocfilehash: cb8ac5435b7a5c6deb9d4571696c79b2ed15c93a
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a4c854bdd659a05f032f5ee232074bc38ff677ef
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>在 Azure 堆栈中提供虚拟机规模集
+# <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>在 Azure Stack 中提供虚拟机规模集
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-虚拟机缩放集是 Azure 堆栈计算资源。 你可以使用它们来部署和管理一组相同的虚拟机。 对于所有虚拟机配置相同，不需要预设置的虚拟机缩放集。 它是更轻松地生成面向大计算、 大数据和容器化工作负荷的大规模服务。
+虚拟机规模集是一种 Azure Stack 计算资源。 可以使用它们部署和管理一组相同的虚拟机。 由于所有虚拟机的配置都相同，因此规模集不需要预配虚拟机。 可以更方便地构建面向大型计算、大数据、容器化工作负荷的大规模服务。
 
-本文将指导您完成使缩放集 Azure 堆栈应用商店中可用的过程。 完成此过程之后，你的用户可以将虚拟机规模集对它们的订阅添加。
+本文将指导您完成使缩放集 Azure 堆栈应用商店中可用的过程。 完成此过程之后，用户将可以将虚拟机规模集添加到其订阅。
 
-Azure 堆栈上的虚拟机规模集就像在 Azure 上的虚拟机规模集。 有关详细信息，请参阅以下视频：
+Azure Stack 上的虚拟机规模集与 Azure 上的虚拟机规模集类似。 有关详细信息，请参阅以下视频：
 * [Mark Russinovich talks Azure scale sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)（Mark Russinovich 谈论 Azure 规模集）
 * [Guy Bowerman 介绍虚拟机规模集](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
-在 Azure 堆栈上虚拟机规模集不支持自动缩放。 可以将多个实例添加到缩放集使用 Azure 堆栈门户、 资源管理器模板或 PowerShell。
+在 Azure Stack 上，虚拟机规模集不支持自动缩放。 可以使用 Azure Stack 门户、资源管理器模板或 PowerShell 将更多实例添加到规模集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * **Powershell 和工具**
 
-   安装和配置适用于 Azure 堆栈的 PowerShell 和 Azure 堆栈工具。 请参阅[获取启动并运行 Azure 堆栈中的 PowerShell](azure-stack-powershell-configure-quickstart.md)。
+   安装并配置适用于 Azure Stack 的 PowerShell 和 Azure Stack 工具。 请参阅[在 Azure Stack 中启动并运行 PowerShell](azure-stack-powershell-configure-quickstart.md)。
 
-   安装 Azure 堆栈工具后，请确保你导入以下的 PowerShell 模块 (相对于的路径。 \ComputeAdmin 文件夹 AzureStack 工具主文件夹中的):
+   安装 Azure Stack 工具后，请确保导入以下 PowerShell 模块（路径相对于 AzureStack-Tools-master 文件夹中的 .\ComputeAdmin 文件夹）：
 
         Import-Module .\AzureStack.ComputeAdmin.psm1
 
 * **操作系统映像**
 
-   如果你尚未添加到 Azure 堆栈应用商店的操作系统映像，请参阅[将 Windows Server 2016 VM 映像添加到 Azure 堆栈 marketplace](azure-stack-add-default-image.md)。
+   如果尚未将操作系统映像添加到 Azure Stack 应用商店，请参阅[将 Windows Server 2016 VM 映像添加到 Azure Stack 应用商店](azure-stack-add-default-image.md)。
 
-   Linux 支持下载 Ubuntu Server 16.04 并将其使用添加```Add-AzsVMImage```使用以下参数： ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"```。
+   若要支持 Linux，请下载 Ubuntu Server 16.04 并使用带以下参数的 ```Add-AzsVMImage``` 添加它：```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"```。
 
 ## <a name="add-the-virtual-machine-scale-set"></a>添加虚拟机规模集
 
-编辑你的环境的以下 PowerShell 脚本，然后运行它，以便添加到你的 Azure 堆栈 Marketplace 设置虚拟机规模。 
+针对环境编辑以下 PowerShell 脚本，然后运行该脚本，以便将虚拟机规模集添加到 Azure Stack 应用商店。 
 
 ``$User`` 是用于连接管理员门户的帐户。 例如，serviceadmin@contoso.onmicrosoft.com。
 
@@ -67,7 +67,6 @@ $Creds =  New-Object System.Management.Automation.PSCredential $User, $Password
 
 $AzsEnv = Get-AzureRmEnvironment AzureStackAdmin
 $AzsEnvContext = Add-AzureRmAccount -Environment $AzsEnv -Credential $Creds
-Select-AzureRmProfile -Profile $AzsEnvContext
 
 Select-AzureRmSubscription -SubscriptionName "Default Provider Subscription"
 
@@ -76,14 +75,14 @@ Add-AzsVMSSGalleryItem -Location $Location
 
 ## <a name="remove-a-virtual-machine-scale-set"></a>删除虚拟机规模集
 
-若要删除虚拟机缩放集库项，运行以下 PowerShell 命令：
+若要删除虚拟机规模集库项，请运行以下 PowerShell 命令：
 
     Remove-AzsVMSSGalleryItem
 
 > [!NOTE]
-> 不能立即删除库项。 夜晚你需要刷新几次门户之前的项将显示删除从应用商店。
+> 库项可能不会立即删除。 夜晚你需要刷新几次门户之前的项将显示删除从应用商店。
 
 
-## <a name="next-steps"></a>接下来的步骤
-[Azure 堆栈的常见问题](azure-stack-faq.md)
+## <a name="next-steps"></a>后续步骤
+[Azure Stack 常见问题解答](azure-stack-faq.md)
 

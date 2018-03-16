@@ -232,14 +232,22 @@
               href: azure-stack-app-service-capacity-planning.md
             - name: 准备工作
               href: azure-stack-app-service-before-you-get-started.md
+            - name: 如何重新 Azure 堆栈上的 Azure App Service 发布跨容错域
+              href: azure-stack-app-service-fault-domain-update.md
             - name: 部署应用服务资源提供程序
               href: azure-stack-app-service-deploy.md
             - name: 脱机部署应用服务
               href: azure-stack-app-service-deploy-offline.md
+            - name: 更新应用服务
+              href: azure-stack-app-service-update.md
+            - name: 更新应用服务处于脱机状态
+              href: azure-stack-app-service-update-offline.md
             - name: 添加更多 Web 辅助角色
               href: azure-stack-app-service-add-worker-roles.md
             - name: 配置部署源
               href: azure-stack-app-service-configure-deployment-sources.md
+            - name: 应用服务更新一个发行说明
+              href: azure-stack-app-service-release-notes-update-one.md
         - name: 充实 Marketplace
           items:
             - name: Marketplace 概述
