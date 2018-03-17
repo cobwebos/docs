@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: brenduns
-ms.openlocfilehash: 2b39ff3665a4cc3aeddf81b83e0c90c7f770da72
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 50c0f293ac669ade4e45a5f45b0adf9a7c4b6c36
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Azure 堆栈中的虚拟机的注意事项
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 虚拟机是按需，由 Azure 堆栈提供可缩放计算资源。 当你使用虚拟机时，你必须了解有在 Azure 中提供的功能和 Azure 堆栈之间的差异。 本文概述了虚拟机和 Azure 堆栈中的其功能的唯一注意事项。 若要了解有关高级 Azure 堆栈和 Azure 之间的差异信息，请参阅[密钥注意事项](azure-stack-considerations.md)文章。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/27/2018
 | 虚拟机网络 | 分配给租户虚拟机的公共 IP 地址是可访问 Internet。<br><br><br>Azure 虚拟机都具有固定的 DNS 名称 | 分配给租户虚拟机的公共 IP 地址是在仅 Azure 堆栈开发工具包环境中访问。 用户必须有权访问通过 Azure 堆栈开发工具包[RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)或[VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)以连接到在 Azure 堆栈中创建的虚拟机。<br><br>特定 Azure 堆栈实例中创建的虚拟机具有 DNS 名称由云管理员配置的值。 |
 | 虚拟机存储 | 支持[托管磁盘。](../../virtual-machines/windows/managed-disks-overview.md) | 在 Azure 堆栈中尚不支持被管理的磁盘。 |
 | API 版本 | Azure 始终具有最新的 API 版本，所有虚拟机功能。 | Azure 堆栈支持这些服务的特定 Azure 服务和特定的 API 版本。 若要查看支持的 API 版本的列表，请参阅[API 版本](#api-versions)部分中的所述。 |
-|虚拟机可用性集|多个容错域 （2 或 3 每个区域）<br>多个更新域<br>管理磁盘支持|单个故障域<br>单个更新域<br>不管理的磁盘支持|
+|虚拟机可用性集|多个容错域 （2 或 3 每个区域）<br>多个更新域<br>管理磁盘支持|多个容错域 （2 或 3 每个区域）<br>（最多 20) 的多个更新域<br>不管理的磁盘支持|
 |虚拟机规模集|自动缩放支持|不支持的自动缩放。<br>将多个实例添加到缩放集使用门户、 资源管理器模板或 PowerShell。
 
 ## <a name="virtual-machine-sizes"></a>虚拟机大小
