@@ -380,7 +380,6 @@
             - name: 预配租户
               href: saas-standaloneapp-provision-and-catalog.md
         - name: 每个租户一个数据库
-          href: saas-dbpertenant-wingtip-app-overview.md
           items:
             - name: 教程简介
               href: saas-dbpertenant-wingtip-app-overview.md
