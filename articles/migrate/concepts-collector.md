@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: fcf6d2bf13af785eae26ff60035a4754f6ec702e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 49f3d5ba55a9c1abfcd6dcb50058ed7a001a2eec
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="collector-appliance"></a>收集器设备
 
@@ -23,9 +23,23 @@ ms.lasthandoff: 03/02/2018
 
 Azure Migrate 收集器是一种轻量设备，可以用来发现本地 vCenter 环境。 此设备可发现本地 VMware 计算机，并将其相关元数据发送到 Azure Migrate 服务。
 
-收集器设备是一种 OVF，可以从 Azure Migrate 项目中下载。 它可以实例化带有 4 核心、8 GB RAM 和一个 80 GB 磁盘的 VMware 虚拟机。 此设备的操作系统是 Windows Server 2012 R2（64 位）
+收集器设备是一种 OVF，可以从 Azure Migrate 项目中下载。 它可以实例化带有 4 核心、8 GB RAM 和一个 80 GB 磁盘的 VMware 虚拟机。 此设备的操作系统是 Windows Server 2012 R2（64 位）。
 
 可以按照此处的步骤创建收集器：[如何创建收集器 VM](tutorial-assessment-vmware.md#create-the-collector-vm)。
+
+## <a name="collector-communication-diagram"></a>收集器通信关系图
+
+![收集器通信关系图](./media/tutorial-assessment-vmware/portdiagram.PNG)
+
+
+| 组件      | 通信对象   | 所需端口                            | 原因                                   |
+| -------------- | --------------------- | ---------------------------------------- | ---------------------------------------- |
+| 收集器      | Azure Migrate 服务 | TCP 443                                  | 收集器应该能够通过 SSL 端口 443 与服务通信 |
+| 收集器      | vCenter Server        | 默认值 443                             | 收集器应能够与 vCenter 服务器进行通信。 它默认情况下通过 443 连接到 vCenter。 如果 vCenter 在另一端口上侦听，则该端口应作为收集器上的传出端口提供 |
+| 收集器      | RDP|   | TCP 3389 | 使你能够通过 RDP 登录到收集器计算机 |
+
+
+
 
 
 ## <a name="collector-pre-requisites"></a>收集器先决条件
@@ -158,6 +172,32 @@ Azure Migrate 收集器服务应该正在计算机上运行。 此服务在计�
 收集器仅发现计算机数据，然后将其发送到项目。 项目可能还需要花一些时间才会将发现的数据显示在门户中，然后你就可以开始创建评估。
 
 根据所选范围中虚拟机数目的不同，可能需要长达 15 分钟的时间才能将静态元数据发送到项目。 静态元数据在门户中可用以后，就会在门户中看到计算机的列表，此时就可以开始创建组。 必须等到收集作业完成且项目已处理数据后，才能创建评估。 收集器上的收集作业完成后，可能需要长达一小时的时间才能在门户中提供性能数据，具体取决于所选范围中虚拟机的数目。
+
+## <a name="how-to-upgrade-collector"></a>如何升级收集器
+
+无需再次下载 OVA，即可将收集器升级到最新版本。
+
+1. 下载最新[升级包](https://aka.ms/migrate/col/latestupgrade)。
+2. 若要确保下载的修补程序安全，请打开管理员命令窗口并运行以下命令生成 ZIP 文件的哈希。 生成的哈希应与针对特定版本提到的哈希匹配：
+
+    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+    
+    （用法示例 C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.5.zip SHA256）
+3. 将 zip 文件复制到 Azure Migrate 收集器虚拟机（收集器设备）。
+4. 右键单击 zip 文件并选择“全部提取”。
+5. 右键单击 Setup.ps1 并选择“使用 PowerShell 运行”，然后按照屏幕上的说明来安装更新。
+
+### <a name="list-of-updates"></a>更新列表
+
+#### <a name="upgrade-to-version-1095"></a>升级到版本 1.0.9.5
+
+若要升级到版本 1.0.9.5，请下载[包](https://aka.ms/migrate/col/upgrade_9_5)
+
+**算法** | **哈希值**
+--- | ---
+MD5 | d969ebf3bdacc3952df0310d8891ffdf
+SHA1 | f96cc428eaa49d597eb77e51721dec600af19d53
+SHA256 | 07c03abaac686faca1e82aef8b80e8ad8eca39067f1f80b4038967be1dc86fa1
 
 ## <a name="next-steps"></a>后续步骤
 

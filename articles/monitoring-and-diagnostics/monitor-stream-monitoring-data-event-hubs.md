@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/13/2018
+ms.date: 3/05/2018
 ms.author: johnkem
-ms.openlocfilehash: d449be98cd59756e2bafc584e0501b8c83c594eb
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 1b1c50f106be8848fb1f32deefa6cb9acb7a298a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>将 Azure 监视数据流式传输到事件中心以便外部工具使用
 
@@ -36,7 +36,18 @@ Azure Monitor 提供了获取 Azure 环境中所有监视数据访问权限的�
 
 可将任何层的数据发送到事件中心，以便将其拉取到合作伙伴工具。 以下各节描述了如何将每层数据配置为流式传输到事件中心。 这些步骤假定你拥有处于要监视的层的资产。
 
-开始之前，需[创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 此命名空间和事件中心是所有监视数据的目标。
+## <a name="set-up-an-event-hubs-namespace"></a>设置事件中心命名空间
+
+开始之前，需[创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 此命名空间和事件中心是所有监视数据的目标。 事件中心命名空间是共享相同访问策略的事件中心的逻辑分组，就像存储帐户中有各个 blob 一样。 请注意有关所创建的事件中心命名空间和事件中心的一些详细信息：
+* 我们建议使用标准事件中心命名空间。
+* 通常，只需要一个吞吐量单位。 如果需要在日志使用量增加时纵向扩展，以后始终可以手动增加命名空间的吞吐量单位数或启用自动膨胀。
+* 使用吞吐量单位数，可增加事件中心的吞吐量规模。 使用分区数可以在多个使用者之间并行使用。 单个分区最多可以执行 20MBps，或者大约每秒 20,000 条消息。 不一定支持从多个分区使用，具体取决于使用数据的工具。 如果不确定要设置的分区数，我们建议从四个分区开始。
+* 我们建议将事件中心的消息保留期设置为 7 天。 如果使用的工具多天出现故障，这可确保该工具可以从它中断的位置重新开始（因为事件最多可保存 7 天）。
+* 我们建议将默认使用者组用于事件中心。 除非你打算使用两个不同的工具使用同一事件中心内的相同数据，否则无需创建其他使用者组或使用单独的使用者组。
+* 对于 Azure 活动日志，可选择事件中心命名空间，Azure Monitor 将在该命名空间内创建名为“insights-logs-operationallogs”的事件中心。 对于其他日志类型，可以选择现有事件中心（可以重复使用同一 insights-logs-operationallogs 事件中心），也可以让 Azure Monitor 为每个日志类别创建一个事件中心。
+* 通常，必须在使用事件中心数据的计算机上打开端口 5671 和端口 5672。
+
+另请参阅 [Azure 事件中心常见问题解答](../event-hubs/event-hubs-faq.md)。
 
 ## <a name="how-do-i-set-up-azure-platform-monitoring-data-to-be-streamed-to-an-event-hub"></a>如何将 Azure 平台监视数据设置为流式传输到事件中心？
 

@@ -6,13 +6,13 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: d24376c57c468a562fc6d6dd52b4e9b01b53c3da
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 47056c85c6cb66a7fa28d623a4472b827d970dab
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保护已故障转移到主要区域的 Azure VM
 
@@ -25,11 +25,11 @@ ms.lasthandoff: 02/13/2018
 
 使用 [Azure Site Recovery](site-recovery-overview.md) 将 Azure VM 从一个区域[故障转移](site-recovery-failover.md)到另一个区域后，VM 将在次要区域中启动，且不受保护。 如果将 VM 故障转移回到主要区域，则需要执行以下操作：
 
-- 在次要区域中重新保护 VM，以便它们开始复制到主要区域。 
+- 在次要区域中重新保护 VM，以便这些 VM 开始复制到主要区域。 
 - 重新保护完成并且 VM 开始复制后，可将 VM 从次要区域故障转移到主要区域。
 
 > [!WARNING]
-> 如果是将计算机从主要区域[迁移](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)到了次要区域、将 VM 转移到了另一个资源组，或者删除了 Azure VM，则无法重新保护或故障回复 VM。
+> 如果是将计算机从主要区域[迁移](migrate-overview.md#what-do-we-mean-by-migration)到了次要区域、将 VM 转移到了另一个资源组，或者删除了 Azure VM，则无法重新保护或故障回复 VM。
 
 
 ## <a name="prerequisites"></a>先决条件

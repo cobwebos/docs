@@ -8,11 +8,11 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 50cabbaa584671e52c1ea7efbd2ad990b8438272
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: c174f5120ba2e5bf8018cce0f0e34c1fc3f8eb3f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>排查 SQL 数据同步（预览版）的问题
 
@@ -135,7 +135,7 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
 
 尝试使用客户端代理时收到以下消息：
 
-“同步失败并显示异常：尝试反序列化参数 www.microsoft.com/.../05:GetBatchInfoResult 时出错。 有关详细信息，请参阅 InnerException。”
+“同步失败并显示异常：尝试反序列化参数 www.microsoft.com/.../05:GetBatchInfoResult 时出错。” 有关详细信息，请参阅 InnerException。”
 
 “内部异常消息：类型 “Microsoft.Synchronization.ChangeBatch” 是无效的集合类型，因为它没有默认的构造函数。”
 
@@ -361,7 +361,7 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
     b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果窗格的“程序”部分，双击“服务”。  
     d.单击“下一步”。 右键单击“SQL 数据同步(预览版)”服务。  
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 如果该服务正在运行，请将其停止。  
+    e. 如果该服务正在运行，请将其停止。  
     f. 右键单击该服务，并选择“启动”。  
     g. 检查数据库是否仍已注册。 如果已不再注册数据库，则操作完成。 否则，请继续执行下一步。
 2. 打开客户端代理应用 (SqlAzureDataSyncAgent)。

@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Andromeda SCM 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Andromeda SCM 之间配置单一登录。"
+title: "教程：Azure Active Directory 与 Andromeda 集成 | Microsoft Docs"
+description: "了解如何在 Azure Active Directory 和 Andromeda 之间配置单一登录。"
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,32 +12,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 72b66eec34995c334c6d65a1d03637fe21b9dc80
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7e2a140ba6dc4825283801ed4f3435136b307153
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-andromeda-scm"></a>教程：Azure Active Directory 与 Andromeda SCM 集成
+# <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>教程：Azure Active Directory 与 Andromeda 集成
 
-在本教程中，了解如何将 Andromeda SCM 与 Azure Active Directory (Azure AD) 集成。
+在本教程中，了解如何将 Andromeda 与 Azure Active Directory (Azure AD) 集成。
 
-将 Andromeda SCM 与 Azure AD 集成提供以下优势：
+将 Andromeda 与 Azure AD 集成可提供以下优势：
 
-- 可在 Azure AD 中控制谁有权访问 Andromeda SCM
-- 可以让用户通过其 Azure AD 帐户自动登录到 Andromeda SCM（单一登录）。
+- 可在 Azure AD 中控制谁有权访问 Andromeda。
+- 可以让用户通过其 Azure AD 帐户自动登录到 Andromeda（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 Andromeda SCM 的集成，需要具有以下项：
+若要配置 Azure AD 与 Andromeda 的集成，需要以下项：
 
 - Azure AD 订阅
-- 启用了 Andromeda SCM 单一登录的订阅
+- 启用了 Andromeda 单一登录的订阅
 
 > [!NOTE]
 > 为了测试本教程中的步骤，我们不建议使用生产环境。
@@ -50,13 +50,13 @@ ms.lasthandoff: 02/27/2018
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-1. 从库添加 Andromeda SCM
+1. 从库中添加 Andromeda
 2. 配置和测试 Azure AD 单一登录
 
-## <a name="adding-andromeda-scm-from-the-gallery"></a>从库添加 Andromeda SCM
-要配置 Andromeda SCM 与 Azure AD 的集成，需要从库中将 Andromeda SCM 添加到托管 SaaS 应用列表。
+## <a name="adding-andromeda-from-the-gallery"></a>从库中添加 Andromeda
+若要配置 Andromeda 与 Azure AD 的集成，需要从库中将 Andromeda 添加到托管的 SaaS 应用列表。
 
-**若要从库添加 Andromeda SCM，请执行以下步骤：**
+**若要从库中添加 Andromeda，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
 
@@ -70,31 +70,31 @@ ms.lasthandoff: 02/27/2018
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“Andromeda SCM”，在结果面板中选择“Andromeda SCM”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“Andromeda”，在结果面板中选择“Andromeda”，然后单击“添加”按钮添加该应用程序。
 
-    ![结果列表中的 Andromeda SCM](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_addfromgallery.png)
+    ![结果列表中的 Andromeda](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，根据名为“Britta Simon”的测试用户的指示配置和测试 Andromeda SCM 的 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 Andromeda 的 Azure AD 单一登录。
 
-对于单一登录到工作帐户，Azure AD 需要知道 Azure AD 用户在 Andromeda SCM 中的对应用户是谁。 换句话说，需要建立 Azure AD 用户与 Andromeda SCM 中相关用户之间的关联关系。
+若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Andromeda 用户。 换句话说，需要建立 Azure AD 用户与 Andromeda 中相关用户之间的链接关系。
 
-若要配置和测试 Andromeda SCM 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置和测试 Andromeda 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Andromeda SCM 测试用户](#create-an-andromeda-scm-test-user)** - 在 Andromeda SCM 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 Andromeda 测试用户](#create-an-andromeda-test-user)** - 在 Andromeda 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Andromeda SCM 应用程序中配置单一登录。
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Andromeda 应用程序中配置单一登录。
 
-**若要配置 Andromeda SCM 的 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 Andromeda 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 门户中的 Andromeda SCM 应用程序集成页上，单击“单一登录”。
+1. 在 Azure 门户中的 Andromeda 应用程序集成页上，单击“单一登录”。
 
     ![配置单一登录链接][4]
 
@@ -102,24 +102,24 @@ ms.lasthandoff: 02/27/2018
  
     ![“单一登录”对话框](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_samlbase.png)
 
-3. 在“Andromeda SCM 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
+3. 在“Andromeda 域和 URL”部分中，如果要在“IDP”发起的模式下配置应用程序，请执行以下步骤：
 
-    ![Andromeda SCM 域和 URL 单一登录信息](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url.png)
+    ![Andromeda 域和 URL 单一登录信息](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantURL>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<tenantURL>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
-    ![Andromeda SCM 域和 URL 单一登录信息](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url1.png)
+    ![Andromeda 域和 URL 单一登录信息](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url1.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantURL>/SAMLLogon.aspx`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
      
     > [!NOTE] 
     > 上面的值不是实际值。 本教程稍后将介绍如何使用实际的登录 URL 和标识符来更新该值。
 
-5. Andromeda SCM 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
+5. Andromeda 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 以下屏幕截图显示一个示例。
     
     ![配置单一登录 attb](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_attribute.png)
 
@@ -129,10 +129,10 @@ ms.lasthandoff: 02/27/2018
 6. 在“单一登录”对话框的“用户属性”部分，按图中所示配置 SAML 令牌属性，然后执行以下步骤：
     
     | 属性名称 | 属性值 |
-    | ------------------- | -------------------- |    
-    | role        | DEMO |
-    | type        | DEFAULT |
-    | company       | COMP02    |
+    | -------------- | -------------------- |    
+    | role        | 应用特定的角色 |
+    | type        | 应用类型 |
+    | company       | CompanyName    |
 
     > [!NOTE]
     > 这些不是实际值。 这些值仅用于演示，请使用组织角色。
@@ -159,31 +159,31 @@ ms.lasthandoff: 02/27/2018
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-andromedascm-tutorial/tutorial_general_400.png)
     
-9. 在“Andromeda SCM 配置”部分中，单击“配置 Andromeda SCM”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
+9. 在“Andromeda 配置”部分中，单击“配置 Andromeda”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”
 
-    ![Andromeda SCM 配置](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_configure.png)
+    ![Andromeda 配置](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_configure.png)
 
-10. 以管理员身份登录 Andromeda SCM 公司站点。
+10. 以管理员身份登录 Andromeda 公司站点。
 
 11. 在菜单栏顶部单击“管理”并导航到“管理”。
 
-    ![Andromeda SCM 管理](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_admin.png)
+    ![Andromeda 管理员](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_admin.png)
 
 12. 在工具栏左侧的“界面”部分下面，单击“SAML 配置”。
 
-    ![Andromeda SCM saml](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_saml.png)
+    ![Andromeda saml](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_saml.png)
 
 13. 在“SAML 配置”部分的页面上，执行以下步骤：
 
-    ![Andromeda SCM 配置](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_config.png)
+    ![Andromeda 配置](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_config.png)
 
     a. 选中“使用 SAML 启用 SSO”。
 
-    b. 在“Andromeda 信息”部分下，复制“SP 标识”值并将其粘贴到“Andromeda SCM 域和 URL”部分的“标识符”文本框中。
+    b. 在“Andromeda 信息”部分下，复制“SP 标识”值并将其粘贴到“Andromeda 域和 URL”部分的“标识符”文本框中。
 
-    c. 复制“使用者 URL”值，并将其粘贴到“Andromeda SCM 域和 URL”部分的“回复 URL”文本框中。
+    c. 复制“使用者 URL”值，并将其粘贴到“Andromeda 域和 URL”部分的“回复 URL”文本框中。
 
-    d.单击“下一步”。 复制“登录 URL”值，并将其粘贴到“Andromeda SCM 域和 URL”部分的“登录 URL”文本框中。
+    d.单击“下一步”。 复制“登录 URL”值，并将其粘贴到“Andromeda 域和 URL”部分的“登录 URL”文本框中。
 
     e. 在“SAML 标识提供者”部分下，键入 IDP 名称。
 
@@ -191,9 +191,9 @@ ms.lasthandoff: 02/27/2018
 
     g. 在记事本中打开从 Azure 门户下载的 **Base64 编码证书**，将其粘贴到“X 509 证书”文本框中。
     
-    h. 将以下属性映射到相应的值，以便于从 Azure AD 进行 SSO 登录。 登录时必须使用“用户 ID”属性。 预配时，必须使用“电子邮件”、“公司”、“UserType”和“角色”。 本部分定义要关联到 Azure 门户中定义的值的属性映射（名称和值）
+    h. 将以下属性映射到相应的值，以便于从 Azure AD 进行 SSO 登录。 登录时必须使用“用户 ID”属性。 预配时，必须使用“电子邮件”、“公司”、“用户类型”和“角色”。 本部分定义要关联到 Azure 门户中定义的值的属性映射（名称和值）
 
-    ![Andromeda SCM attbmap](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+    ![Andromeda attbmap](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
 
     i. 单击“ **保存**”。
 
@@ -232,28 +232,28 @@ ms.lasthandoff: 02/27/2018
 
     d.单击“下一步”。 单击“创建”。
  
-### <a name="create-an-andromeda-scm-test-user"></a>创建 Andromeda SCM 测试用户
+### <a name="create-an-andromeda-test-user"></a>创建 Andromeda 测试用户
 
-本部分的目的是在 Andromeda SCM 中创建名为 Britta Simon 的用户。 Andromeda SCM 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果用户尚不存在，则在尝试访问 Andromeda SCM 期间会创建一个新用户。
+本部分的目的是在 Andromeda 中创建名为 Britta Simon 的用户。 Andromeda 支持在默认情况下启用的实时预配。 此部分不存在任何操作项。 如果用户尚不存在，则在尝试访问 Andromeda 期间会创建一个新用户。
 
 >[!Note]
->如果需要手动创建用户，请联系 [Andromeda SCM 客户端支持团队](https://www.ngcsoftware.com/support/)。
+>如果需要手动创建用户，请联系 [Andromeda 客户端支持团队](https://www.ngcsoftware.com/support/)。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 Andromeda SCM 的权限，以支持其使用 Azure 单一登录。
+在本部分中，通过授予 Britta Simon 访问 Andromeda 的权限，允许其使用 Azure 单一登录。
 
 ![分配用户角色][200] 
 
-**若要将 Britta Simon 分配到 Andromeda SCM，请执行以下步骤：**
+**若要将 Britta Simon 分配到 Andromeda，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“Andromeda SCM”。
+2. 在应用程序列表中，选择“Andromeda”。
 
-    ![应用程序列表中的 Andromeda SCM 链接](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_app.png)  
+    ![应用程序列表中的 Andromeda 链接](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_app.png)  
 
 3. 在左侧菜单中，单击“用户和组”。
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 02/27/2018
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-当在访问面板中单击 Andromeda SCM 磁贴时，应该会自动登录 Andromeda SCM 应用程序。
+单击访问面板中的“Andromeda”磁贴时，应当会自动登录到 Andromeda 应用程序。
 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源
@@ -296,4 +296,3 @@ ms.lasthandoff: 02/27/2018
 [201]: ./media/active-directory-saas-andromedascm-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-andromedascm-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-andromedascm-tutorial/tutorial_general_203.png
-

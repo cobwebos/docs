@@ -15,10 +15,10 @@ ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 742b76e17b7ad00a70b0d18895c0b59ebe044d47
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>使用 Windows VM 托管服务标识 (MSI) 访问 Azure Data Lake Store
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Windows 虚拟机
 
@@ -100,7 +100,7 @@ Azure Data Lake Store 原生支持 Azure AD 身份验证，因此可以直接接
 1. 在门户中，导航到“虚拟机”，转到 Windows VM，然后在“概述”中，单击“连接”。
 2. 输入创建 Windows VM 时添加的用户名和密码。 
 3. 现在，已经创建了与虚拟机的远程桌面连接，请在远程会话中打开 PowerShell。 
-4. 使用 PowerShell 的 `Invoke-WebRequest` 向本地 MSI 终结点发出请求，获取 Azure Data Lake Store 的访问令牌。  Data Lake Store 资源标识符是“https://datalake.azure.net/”。  Data Lake 对资源标识符执行完全匹配，因此尾部反斜杠非常重要。
+4. 使用 PowerShell 的 `Invoke-WebRequest` 向本地 MSI 终结点发出请求，获取 Azure Data Lake Store 的访问令牌。  Data Lake Store 的资源标识符是“https://datalake.azure.net/”。  Data Lake 对资源标识符执行完全匹配，因此尾部反斜杠非常重要。
 
    ```powershell
    $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://datalake.azure.net/"} -Headers @{Metadata="true"}

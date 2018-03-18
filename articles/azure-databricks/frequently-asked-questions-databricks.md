@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: nitinme
 ms.openlocfilehash: 5da6ffc346cc0e7f0f83bf4a4c33600b668a17ca
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>有关 Azure Databricks 的常见问题解答
 
@@ -46,7 +46,7 @@ Databricks 预配过程中会创建新的虚拟网络。 不能在此版本中�
 
 #### <a name="error-message"></a>错误消息
 
-“该订阅未注册为使用命名空间‘Microsoft.Databricks’。 请参阅 https://aka.ms/rps-not-found 了解如何注册订阅。 （代码：MissingSubscriptionRegistration）”
+“该订阅未注册为使用命名空间‘Microsoft.Databricks’。 有关如何注册订阅，请参阅 https://aka.ms/rps-not-found。 （代码：MissingSubscriptionRegistration）”
 
 #### <a name="solution"></a>解决方案
 
@@ -101,7 +101,7 @@ Databricks 群集为每个节点使用一个公共 IP 地址。 如果订阅已�
 #### <a name="error-message"></a>错误消息
 
 “云提供程序启动故障: 在设置群集时遇到云提供程序错误。 有关详细信息，请参阅“Databricks 指南”。
-Azure 错误代码：MissingSubscriptionRegistration；Azure 错误消息：订阅未注册为使用命名空间“Microsoft.Databricks”。 请参阅 https://aka.ms/rps-not-found 了解如何注册订阅。”
+Azure 错误代码：MissingSubscriptionRegistration；Azure 错误消息：订阅未注册为使用命名空间“Microsoft.Databricks”。 有关如何注册订阅，请参阅 https://aka.ms/rps-not-found。
 
 #### <a name="solution"></a>解决方案
 

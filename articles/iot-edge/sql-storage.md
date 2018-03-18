@@ -9,11 +9,11 @@ ms.author: kgremban, ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4b66a699e4c58662cadd799cf6aec83b9d34b7e6
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: ce3c3abd00dba23887b5f811af6cab8d2c83323d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>使用 SQL Server 数据库存储边缘中的数据
 
@@ -48,7 +48,7 @@ x64 处理器体系结构中的 Windows 和 Linux 容器适用于本教程。 SQ
 
 ## <a name="deploy-a-sql-server-container"></a>部署 SQL Server 容器
 
-在此部分，我们将一个 MS-SQL 数据库添加到模拟的 IoT Edge 设备。 使用适用于 [Windows](https://hub.docker.com/r/microsoft/mssql-server-windows-developer/) 和 [Linux](https://hub.docker.com/r/microsoft/mssql-server-linux/) 的 SQL Server 2017 docker 容器映像。 
+在此部分，我们将一个 MS-SQL 数据库添加到模拟的 IoT Edge 设备。 使用 SQL Server 2017 docker 容器映像，该映像以 [Windows](https://hub.docker.com/r/microsoft/mssql-server-windows-developer/) 容器和 [Linux](https://hub.docker.com/r/microsoft/mssql-server-linux/) 容器的形式提供。 
 
 ### <a name="deploy-sql-server-2017"></a>部署 SQL Server 2017
 
@@ -100,14 +100,14 @@ x64 处理器体系结构中的 Windows 和 Linux 容器适用于本教程。 SQ
 
       ```json
       "image": "microsoft/mssql-server-windows-developer",
-      "createOptions": "{\r\n\t"Env": [\r\n\t\t"ACCEPT_EULA=Y",\r\n\t\t"sa_password=Strong!Passw0rd"\r\n\t],\r\n\t"HostConfig": {\r\n\t\t"Mounts": [{\r\n\t\t\t"Target": "C:\\\\mssql",\r\n\t\t\t"Source": "sqlVolume",\r\n\t\t\t"Type": "volume"\r\n\t\t}],\r\n\t\t"PortBindings": {\r\n\t\t\t"1433/tcp": [{\r\n\t\t\t\t"HostPort": "1401"\r\n\t\t\t}]\r\n\t\t}\r\n\t}\r\n}"
+      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}"
       ```
 
    * Linux：
 
       ```json
       "image": "microsoft/mssql-server-linux:2017-latest",
-      "createOptions": "{\r\n\t"Env": [\r\n\t\t"ACCEPT_EULA=Y",\r\n\t\t"MSSQL_SA_PASSWORD=Strong!Passw0rd"\r\n\t],\r\n\t"HostConfig": {\r\n\t\t"Mounts": [{\r\n\t\t\t"Target": "/var/opt/mssql",\r\n\t\t\t"Source": "sqlVolume",\r\n\t\t\t"Type": "volume"\r\n\t\t}],\r\n\t\t"PortBindings": {\r\n\t\t\t"1433/tcp": [{\r\n\t\t\t\t"HostPort": "1401"\r\n\t\t\t}]\r\n\t\t}\r\n\t}\r\n}"
+      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"/var/opt/mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
 4. 保存文件。 
@@ -125,31 +125,31 @@ x64 处理器体系结构中的 Windows 和 Linux 容器适用于本教程。 SQ
 
 在命令行工具中连接到数据库： 
 
-* Windows
+* Windows 容器
    ```cmd
-   Docker exec -it sql cmd
+   docker exec -it sql cmd
    ```
 
-* Linux    
+* Linux 容器
    ```bash
-   Docker exec -it sql 'bash'
+   docker exec -it sql bash
    ```
 
 打开 SQL 命令工具： 
 
-* Windows
+* Windows 容器
    ```cmd
    sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
    ```
 
-* Linux
+* Linux 容器
    ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
    ```
 
 创建数据库： 
 
-* Windows
+* Windows 容器
    ```sql
    CREATE DATABASE MeasurementsDB
    ON
@@ -157,7 +157,7 @@ x64 处理器体系结构中的 Windows 和 Linux 容器适用于本教程。 SQ
    GO
    ```
 
-* Linux
+* Linux 容器
    ```sql
    CREATE DATABASE MeasurementsDB
    ON
@@ -302,24 +302,24 @@ IoT Edge 还能通过 docker 解析容器名称的 DNS，因此你无需按 IP �
 
 在命令行工具中连接到数据库： 
 
-* Windows
+* Windows 容器
    ```cmd
-   Docker exec -it sql cmd
+   docker exec -it sql cmd
    ```
 
-* Linux    
+* Linux 容器
    ```bash
-   Docker exec -it sql 'bash'
+   docker exec -it sql bash
    ```
 
 打开 SQL 命令工具： 
 
-* Windows
+* Windows 容器
    ```cmd
    sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
    ```
 
-* Linux
+* Linux 容器
    ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
    ```
@@ -327,7 +327,7 @@ IoT Edge 还能通过 docker 解析容器名称的 DNS，因此你无需按 IP �
 查看数据： 
 
    ```sql
-   Select * FROM MeasurementsDB.dbo.TemperatureMeasurements
+   SELECT * FROM MeasurementsDB.dbo.TemperatureMeasurements
    GO
    ```
 

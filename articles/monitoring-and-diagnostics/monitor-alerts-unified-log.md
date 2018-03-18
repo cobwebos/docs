@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: vinagara
-ms.openlocfilehash: 438776e7f0885dbdb0d66ccdd18d854e14beb299
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0cee8bf77e0facc12159b823152b8859ce5cedd8
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Azure Monitor - 警报（预览版）中的日志警报
-本文详细说明了 Analytics 中的警报规则在 Azure 警报（预览版）中如何工作，并介绍了不同类型的日志警报规则之间的差异。
+本文详细说明了 Analytics 中的警报规则在 Azure 警报（预览版）中如何工作，并介绍了不同类型的日志警报规则之间的差异。 有关使用日志的指标警报的详细信息，请参阅[准实时指标警报](monitoring-near-real-time-metric-alerts.md)
 
 目前，Azure 警报（预览版）支持与来自 [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 和 [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) 的查询相关的日志警报。
 
@@ -75,7 +75,7 @@ Log Analytics 中的预警规则均为以下两种类型之一。  这些类型�
 **警报频率：**五分钟<br>
 **阈值：**大于 0<br>
 
-然后，警报将每隔 5 分钟运行一次查询，在 30 分钟的数据中查找结果代码为 500 的任何记录。 如果一个这样的记录都找不到，则它会引发警报并触发所配置的操作。
+然后，警报将每隔 5 分钟运行一次查询，在 30 分钟的数据中查找结果代码为 500 的任何记录。 即使找到一条这样的记录，它也会引发警报并触发所配置的操作。
 
 ## <a name="metric-measurement-alert-rules"></a>指标度量警报规则
 
@@ -96,7 +96,7 @@ Log Analytics 中的预警规则均为以下两种类型之一。  这些类型�
 
 **间隔**：定义一个时间间隔，在该间隔内对数据进行聚合。  例如，如果指定“五分钟”，则会在为警报指定的时间范围内，为分组字段（按 5 分钟间隔进行聚合）的每个实例创建一个记录。
 > [!NOTE]
-> 必须在查询中使用 Bin 函数。 另外，如果通过使用 Bin 函数为时间窗口生成了不均匀的时间间隔 - 则警报将改用 bin_at function 来确保存在一个固定点
+> 必须在查询中使用 Bin 函数。 由于 Bin() 可能生成不相等的时间间隔，警报会在运行时对相应的时间改用 bin_at 函数，以确保结果包含固定点
 
 **阈值**：“指标度量”警报规则的阈值通过一个聚合值和一个违规次数来定义。  如果日志搜索中的某数据点超出该值，则被视为违规。  如果结果中某对象的违规次数超出指定值，则会针对该对象创建警报。
 

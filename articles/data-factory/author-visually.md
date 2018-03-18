@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/9/2018
 ms.author: shlo
-ms.openlocfilehash: 81b97bb6b6abb5431bedd4efec5f807fa577c4e4
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 209afba99ac2b43c252d93c32930908ec1f957f9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
 Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部署资源为你的数据工厂而无需编写任何代码。 通过此无代码的界面，可将活动拖放到管道画布上、执行测试运行、以迭代方式进行调试，以及部署和监视管道运行。 可通过两种方法使用 UX 执行视觉对象创作：
@@ -39,6 +39,9 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 ## <a name="author-with-vsts-git-integration"></a>使用 VSTS Git 集成进行创作
 使用 VSTS Git 集成进行创作允许在创作数据工厂管道时进行源代码管理和协作。 用户可以选择将数据工厂与 VSTS Git 帐户存储库相关联，以进行源代码管理、协作和版本控制等。 单个的 VSTS Git 帐户可以有多个存储库，但 VSTS Git 存储库可以只有一个数据工厂与相关联。 如果你没有 VSTS 帐户或存储库，请按照[这些说明](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student)创建你的资源。
+
+> [!NOTE]
+> 数据工厂管道无法访问 VSTS Git 存储库中存储的文件。 因此，不能在 VSTS Git 存储库中存储数据工厂管道活动使用的文件 - 例如，数据文件和脚本文件。
 
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>使用 Azure 数据工厂配置 VSTS Git 存储库
 用户可通过两种方法使用数据工厂配置 VSTS GIT 存储库。

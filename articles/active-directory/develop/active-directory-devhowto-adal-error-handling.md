@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
+ms.date: 02/27/2017
 ms.custom: 
-ms.openlocfilehash: 275ab65569a1861f046c8ee77914e0859d41d5f7
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2b4c945f5707c158c76c8edbd233d1a8b034111f
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory 身份验证库 (ADAL) 客户端的错误处理最佳做法
 
@@ -479,6 +479,9 @@ catch (AdalException e) {
 
 ## <a name="error-and-logging-reference"></a>错误和日志记录引用
 
+### <a name="logging-personal-identifiable-information-pii--organizational-identifiable-information-oii"></a>记录个人身份信息 (PII) 和组织身份信息 (OII)
+默认情况下，ADAL 日志记录不会捕获或记录任何 PII 或 OII。 库允许应用开发人员通过 Logger 类中的资源库启用该功能。 启用 PII 或 OII 后，应用负责安全地处理高度敏感的数据并遵守任何法规要求。
+
 ### <a name="net"></a>.NET
 
 #### <a name="adal-library-errors"></a>ADAL 库错误
@@ -487,7 +490,7 @@ catch (AdalException e) {
 
 #### <a name="guidance-for-error-logging-code"></a>错误日志记录代码指南
 
-根据所在平台不同，ADAL .NET 日志记录有所更改。 有关如何启用日志记录的信息，请参阅[日志记录文档](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet#diagnostics)。
+根据所在平台不同，ADAL .NET 日志记录有所更改。 有关如何启用日志记录的代码，请参阅[日志记录 wiki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Logging-in-ADAL.Net)。
 
 ### <a name="android"></a>Android
 
@@ -497,14 +500,9 @@ catch (AdalException e) {
 
 #### <a name="operating-system-errors"></a>操作系统错误
 
-Android OS 错误通过 ADAL 中的 AuthenticationException 显示，可识别为“SERVER_INVALID_REQUEST”，并且可通过错误描述进一步细化。 应用可选择在 UI 上显示以下两个重要信息：
+Android OS 错误通过 ADAL 中的 AuthenticationException 显示，可识别为“SERVER_INVALID_REQUEST”，并且可通过错误描述进一步细化。 
 
-- SSL 错误 
-  - [最终用户使用 Chrome 53](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/SSL-Certificate-Validation-Issue)
-  - [证书链中的某个证书被标记为额外下载（用户需与 IT 管理员联系）](https://vkbexternal.partners.extranet.microsoft.com/VKBWebService/ViewContent.aspx?scid=KB;EN-US;3203929)
-  - 设备不信任的根 CA。 请与 IT 管理员联系。 
-- 网络相关错误 
-  - [可能与 SSL 证书验证相关的网络问题](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/SSL-Certificate-Validation-Issue)，可尝试进行一次重试
+有关常见错误以及应用或最终用户遇到这些错误时要执行的步骤的完整列表，请参阅 [ADAL Android Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki)。 
 
 #### <a name="guidance-for-error-logging-code"></a>错误日志记录代码指南
 
@@ -521,6 +519,15 @@ Logger.getInstance().setExternalLogger(new ILogger() {
 
 // 2. Set the log level
 Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
+
+// By default, the `Logger` does not capture any PII or OII
+
+// PII or OII will be logged
+Logger.getInstance().setEnablePII(true);
+
+// To STOP logging PII or OII, use the following setter
+Logger.getInstance().setEnablePII(false);
+
 
 // 3. Send logs to logcat.
 adb logcat > "C:\logmsg\logfile.txt";

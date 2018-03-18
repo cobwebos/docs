@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
 ms.custom: 
-ms.openlocfilehash: afdd82617c47f0dee22c229feba87bdf79b90a69
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a7553e4155df0d4ee49b798f44ca636dc7ecdcd2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>使用新的警报（预览版）体验创建活动日志警报
 
@@ -111,7 +111,7 @@ ms.lasthandoff: 02/09/2018
 
         ![ criteria selected](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
 
-4. 在“定义警报规则”下提供以下详细信息：
+4. 在“定义警报规则详细信息”下提供以下详细信息：
 
     - **警报规则名称** – 新警报规则的名称
     - **说明** – 新警报规则的说明

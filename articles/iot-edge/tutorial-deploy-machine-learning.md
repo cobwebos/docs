@@ -1,4 +1,4 @@
-﻿---
+---
 title: "使用 Azure IoT Edge 部署 Azure 机器学习 | Microsoft 文档"
 description: "将 Azure 机器学习作为一个模块部署到 Edge 设备"
 services: iot-edge
@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 12/13/2017
+ms.date: 03/06/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a0131fdbbf926d59eae06089cde109649a1433b8
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: e2314f589456f604c8c008e10fb8084e0524575d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>将 Azure 机器学习作为 IoT Edge 模块进行部署 - 预览版
 
@@ -27,14 +27,13 @@ ms.lasthandoff: 01/12/2018
 > * 将 Azure 机器学习模块部署到 loT Edge 设备
 > * 查看生成的数据
 
-本教程中创建的 Azure 机器学习模块将读取设备生成的温度数据，并且在检测到故障（称为异常）时仅将消息向上游发送到 Azure IoT 中心。 
+本教程中创建的 Azure 机器学习模块将读取设备生成的环境数据，并将消息标记为异常或正常。 
 
-
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * 已通过快速入门或第一个教程创建 Azure IoT Edge 设备。
 * IoT 中心连接字符串适用于 IoT Edge 设备连接到的 IoT 中心。
-* 一个 Azure 机器学习帐户。 若要创建帐户，请按照[创建 Azure 机器学习帐户和安装 Azure Machine Learning Workbench](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-accounts) 中的说明进行操作。 对于本教程，不需要安装 Workbench 应用程序。 
+* 一个 Azure 机器学习帐户。 若要创建帐户，请按照[创建 Azure 机器学习帐户和安装 Azure Machine Learning Workbench](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-services-accounts) 中的说明进行操作。 对于本教程，不需要安装 Workbench 应用程序。 
 * 计算机上的“Azure ML 模块管理”。 若要设置环境并创建帐户，请按照[模型管理设置](https://docs.microsoft.com/azure/machine-learning/preview/deployment-setup-configuration)中的说明进行操作。
 
 ## <a name="create-the-azure-ml-container"></a>创建 Azure ML 容器
@@ -108,7 +107,7 @@ Windows:
 
 ## <a name="view-generated-data"></a>查看生成的数据
 
-可以使用 Visual Studio Code 的 Azure IoT Toolkit 扩展查看 IoT Edge 设备发送的设备到云消息。 
+可以使用 [IoT 中心资源管理器](https://github.com/azure/iothub-explorer)或 Visual Studio Code 的 Azure IoT Toolkit 扩展查看 IoT Edge 设备发送的设备到云消息。 
 
 1. 在 Visual Studio Code 中，选择“IoT 中心设备”。 
 2. 选择 **...**，然后从菜单中选择“设置 IoT 中心连接字符串”。 
@@ -117,7 +116,7 @@ Windows:
 
 3. 在页面顶部打开的文本框中，输入你的 IoT 中心的 iothubowner 连接字符串。 你的 IoT Edge 设备应当会出现在“IoT 中心设备”列表中。
 4. 再次选择 **...**，然后选择“开始监视 D2C 消息”。
-5. 观察每五秒钟来自 tempSensor 的消息，machinelearningmodule 将这些消息附加到其对设备运行状况的评估中。 
+5. 观察每五秒来自 tempSensor 的消息。 消息正文包含 machinelearningmodule 提供的名为 **anomaly**、值为 true 或 false 的属性。 如果模型成功运行，**AzureMLResponse** 属性包含值“OK”。 
 
    ![消息正文中的 Azure ML 响应](./media/tutorial-deploy-machine-learning/ml-output.png)
 

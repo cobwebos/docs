@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 81a38f471ee1f2f8064a956eca121fd0e6feb235
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8f8c157be0a369817099afa211015ba7587017e3
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>连接 Google Cloud Platform 帐户
 
@@ -73,4 +73,4 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关 Cloudyn 提供的 Azure 成本管理的详细信息，请继续学习成本管理的[查看用量和成本](./tutorial-review-usage.md)教程。
+- 若要了解有关 Azure 成本管理的详细信息，请继续学习成本管理的[查看使用量和成本](./tutorial-review-usage.md)教程。

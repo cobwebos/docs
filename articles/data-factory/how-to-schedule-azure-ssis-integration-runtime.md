@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 522e9b6831c31a90337126380ccc9f2cb6d8713b
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 5a9d1ba4d72bc6d4b297695c478438079d34c6e7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>如何计划 Azure SSIS 集成运行时的启动和停止 
 运行 Azure SSIS (SQL Server Integration Services) 集成运行时 (IR) 会产生相关的费用。 因此我们希望，只有需要在 Azure 中运行 SSIS 包时才运行 IR，在不需要该包时停止 IR。 可以使用数据工厂 UI 或 Azure PowerShell 来[手动启动或停止 Azure SSIS IR](manage-azure-ssis-integration-runtime.md)。 本文介绍如何使用 Azure 自动化和 Azure 数据工厂来计划 Azure SSIS 集成运行时 (IR) 的启动和停止。 下面是本文所述的概要步骤：
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/28/2018
 1. **创建并测试 Azure 自动化 Runbook。** 此步骤使用脚本创建一个 PowerShell Runbook 用于启动或停止 Azure SSIS IR。 然后，在“启动”和“停止”方案中测试该 Runbook，并确认 IR 是否已启动或停止。 
 2. **为 Runbook 创建两个计划。** 对于第一个计划，请在 Runbook 中将“启动”配置为操作。 对于第二个计划，请在 Runbook 中将“停止”配置为操作。 针对这两个计划，指定运行 Runbook 的频率。 例如，可将第一个 Runbook 计划为在每天的上午 8 点运行，将第二个 Runbook 计划为在每天的晚上 11 点运行。 第一个 Runbook 在运行时将启动 Azure SSIS IR。 第二个 Runbook 在运行时将停止 Azure SSIS IR。 
 3. **为 Runbook 创建两个 Webhook**，一个用于“启动”操作，另一个用于“停止”操作。 在数据工厂管道中配置 Web 活动时，将使用这些 Webhook 的 URL。 
-4. **创建数据工厂管道**。 创建的管道由四个活动组成。 第一个 **Web** 活动调用第一个 Webhook 来启动 Azure SSIS IR。 **等待**活动等待 30 分钟（1800 秒）让 Azure SSIS IR 启动。 **存储过程**活动运行一个 SQL 脚本来运行 SSIS 包。 第二个 **Web** 活动停止 Azure SSIS IR。 有关使用存储过程活动从数据工厂管道调用 SSIS 包的详细信息，请参阅[调用 SSIS 包](how-to-invoke-ssis-package-stored-procedure-activity.md)。 然后，创建一个计划触发器，用于将管道计划为按指定的频率运行。
+4. **创建数据工厂管道**。 创建的管道由三个活动组成。 第一个 **Web** 活动调用第一个 Webhook 来启动 Azure SSIS IR。 **存储过程**活动运行一个 SQL 脚本来运行 SSIS 包。 第二个 **Web** 活动停止 Azure SSIS IR。 有关使用存储过程活动从数据工厂管道调用 SSIS 包的详细信息，请参阅[调用 SSIS 包](how-to-invoke-ssis-package-stored-procedure-activity.md)。 然后，创建一个计划触发器，用于将管道计划为按指定的频率运行。
 
 > [!NOTE]
 > 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅[在版本 1 中使用存储过程活动调用 SSIS 包](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)。
@@ -223,12 +223,11 @@ ms.lasthandoff: 02/28/2018
 ## <a name="create-and-schedule-a-data-factory-pipeline-that-startsstops-the-ir"></a>创建和计划用于启动/停止 IR 的数据工厂管道
 本部分介绍如何使用 Web 活动来调用在上一部分创建 Webhook。
 
-创建的管道由四个活动组成。 
+创建的管道由三个活动组成。 
 
 1. 第一个 **Web** 活动调用第一个 Webhook 来启动 Azure SSIS IR。 
-2. **等待**活动等待 30 分钟（1800 秒）让 Azure SSIS IR 启动。 
-3. **存储过程**活动运行一个 SQL 脚本来运行 SSIS 包。 第二个 **Web** 活动停止 Azure SSIS IR。 有关使用存储过程活动从数据工厂管道调用 SSIS 包的详细信息，请参阅[调用 SSIS 包](how-to-invoke-ssis-package-stored-procedure-activity.md)。 
-4. 第二个 **Web** 活动调用 Webhook 来停止 Azure SSIS IR。 
+2. **存储过程**活动运行一个 SQL 脚本来运行 SSIS 包。 第二个 **Web** 活动停止 Azure SSIS IR。 有关使用存储过程活动从数据工厂管道调用 SSIS 包的详细信息，请参阅[调用 SSIS 包](how-to-invoke-ssis-package-stored-procedure-activity.md)。 
+3. 第二个 **Web** 活动调用 Webhook 来停止 Azure SSIS IR。 
 
 创建并测试管道后，请创建一个计划触发器，并将其与管道相关联。 计划触发器定义管道的计划。 假设要创建一个计划在每天晚上 11 点运行的触发器。 该触发器在每天的晚上 11 点运行管道。 该管道启动 Azure SSIS IR、执行 SSIS 包，然后停止 Azure SSIS IR。 
 
@@ -279,11 +278,6 @@ ms.lasthandoff: 02/28/2018
     3. 对于“正文”，请输入 `{"message":"hello world"}`。 
    
         ![第一个 Web 活动 -“设置”选项卡](./media/how-to-schedule-azure-ssis-integration-runtime/first-web-activity-settnigs-tab.png)
-4. 在“活动”工具箱中展开“迭代和条件”，然后将“等待”活动拖放到管道设计图面。 在“常规”选项卡中，将活动名称更改为 **WaitFor30Minutes**。 
-5. 切换到“属性”窗口中的“设置”选项卡。 在“等待时间(秒)”中，输入 **1800**。 
-6. 连接“Web”活动和“等待”活动。 若要连接两者，请将附加到“Web”活动的绿色方块拖放到“等待”活动。 
-
-    ![连接“Web”和“等待”活动](./media/how-to-schedule-azure-ssis-integration-runtime/connect-web-wait.png)
 5. 从“活动”工具箱的“常规”部分拖放“存储过程”活动。 将活动名称设置为 **RunSSISPackage**。 
 6. 切换到“属性”窗口中的“SQL 帐户”选项卡。 
 7. 对于“链接服务”，请单击“+ 新建”。
@@ -296,7 +290,7 @@ ms.lasthandoff: 02/28/2018
     5. 对于“密码”，输入该用户的密码。 
     6. 单击“测试连接”按钮，测试与数据库之间的连接。
     7. 单击“保存”按钮保存链接服务。
-1. 在“属性”窗口中，从“SQL 帐户”选项卡切换到“存储过程”选项卡，然后执行以下步骤： 
+9. 在“属性”窗口中，从“SQL 帐户”选项卡切换到“存储过程”选项卡，然后执行以下步骤： 
 
     1. 对于“存储过程名称”，请选择“编辑”选项，然后输入 **sp_executesql**。 
     2. 在“存储过程参数”部分选择“+ 新建”。 
@@ -307,12 +301,37 @@ ms.lasthandoff: 02/28/2018
         在 SQL 查询中，指定 **folder_name**、**project_name** 和 **package_name** 参数的右侧值。 
 
         ```sql
-        DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END   
-        ```
-10. 将“等待”活动连接到“存储过程”活动。 
+        DECLARE       @return_value int, @exe_id bigint, @err_msg nvarchar(150)
 
-    ![连接“等待”和“存储过程”活动](./media/how-to-schedule-azure-ssis-integration-runtime/connect-wait-sproc.png)
-11. 将“Web”活动拖放到“存储过程”活动的右侧。 将活动名称设置为 **StopIR**。 
+        -- Wait until Azure-SSIS IR is started
+        WHILE NOT EXISTS (SELECT * FROM [SSISDB].[catalog].[worker_agents] WHERE IsEnabled = 1 AND LastOnlineTime > DATEADD(MINUTE, -10, SYSDATETIMEOFFSET()))
+        BEGIN
+            WAITFOR DELAY '00:00:01';
+        END
+
+        EXEC @return_value = [SSISDB].[catalog].[create_execution] @folder_name=N'YourFolder',
+            @project_name=N'YourProject', @package_name=N'YourPackage',
+            @use32bitruntime=0, @runincluster=1, @useanyworker=1,
+            @execution_id=@exe_id OUTPUT 
+
+        EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1
+
+        EXEC [SSISDB].[catalog].[start_execution] @execution_id = @exe_id, @retry_count = 0
+
+        -- Raise an error for unsuccessful package execution, check package execution status = created (1)/running (2)/canceled (3)/failed (4)/
+        -- pending (5)/ended unexpectedly (6)/succeeded (7)/stopping (8)/completed (9) 
+        IF (SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id = @exe_id) <> 7 
+        BEGIN
+            SET @err_msg=N'Your package execution did not succeed for execution ID: '+ CAST(@execution_id as nvarchar(20))
+            RAISERROR(@err_msg, 15, 1)
+        END
+
+        ```
+10. 将“Web”活动连接到“存储过程”活动。 
+
+    ![连接“Web”和“存储过程”活动](./media/how-to-schedule-azure-ssis-integration-runtime/connect-web-sproc.png)
+
+11. 将另一个“Web”活动拖放到“存储过程”活动的右侧。 将活动名称设置为 **StopIR**。 
 12. 在“属性”窗口中切换到“设置”选项卡，然后执行以下操作： 
 
     1. 对于“URL”，请粘贴用于停止 Azure SSIS IR 的 Webhook 的 URL。 
@@ -372,7 +391,7 @@ ms.lasthandoff: 02/28/2018
 6. 若要监视触发器运行和管道运行，请使用左侧的“监视”选项卡。 有关详细步骤，请参阅[监视管道](quickstart-create-data-factory-portal.md#monitor-the-pipeline)。
 
     ![管道运行](./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png)
-7. 若要查看与管道运行关联的活动运行，请在“操作”列中选择第一个链接（“查看活动运行”）。 可以看到与管道中每个活动关联的四个活动运行（第一个“Web”活动、“等待”活动、“存储过程”活动和第二个“Web”活动）。 若要切换回到管道运行视图，请选择顶部的“管道”链接。
+7. 若要查看与管道运行关联的活动运行，请在“操作”列中选择第一个链接（“查看活动运行”）。 可以看到与管道中每个活动关联的三个活动运行（第一个“Web”活动、“存储过程”活动和第二个“Web”活动）。 若要切换回到管道运行视图，请选择顶部的“管道”链接。
 
     ![活动运行](./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png)
 8. 还可以通过在顶部“管道运行”旁边的下拉列表中选择“触发器运行”，来查看触发器运行。 

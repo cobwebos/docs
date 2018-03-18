@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 03/05/2018
 ms.author: owend
-ms.openlocfilehash: 1f31c05554db16d604a9825ef9b1317a0f281456
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4c317736af30b4181fa975713258a41b42ed0da3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
 使用支持 REST 调用的任何编程语言，可以针对 Azure Analysis Services 表格模型执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
@@ -67,8 +67,11 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 所有调用必须使用 Authorization 标头中的有效 Azure Active Directory (OAuth 2) 令牌进行身份验证，并且必须满足以下要求：
 
 - 令牌必须是用户令牌或应用程序服务主体。
-- 用户或应用程序必须在服务器或模型中具有足够的权限才能发出请求的调用。 权限级别由模型或者服务器上的管理员组中的角色确定。
 - 在令牌中，必须将正确的受众设置为 `https://*.asazure.windows.net`。
+- 用户或应用程序必须在服务器或模型中具有足够的权限才能发出请求的调用。 权限级别由模型或者服务器上的管理员组中的角色确定。
+
+    > [!IMPORTANT]
+    > 目前，**服务器管理员**角色权限是必需的。
 
 ## <a name="post-refreshes"></a>POST /refreshes
 

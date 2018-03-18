@@ -8,11 +8,11 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 8683b3aec569f210529c1188cbbf514f7956b340
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: be1423026af633ab024980dc6b12b0977639ba3a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>使用 OMS Log Analytics 监视 SQL 数据同步（预览版） 
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 02/21/2018
 
     2.  同步组信息。
 
-    3.  OMS 信息。 在 OMS 门户查找此信息 |设置 |连接的源。 有关将数据发送到 Log Analytics 的详细信息，请参阅[使用 HTTP 数据收集器 API（公共预览版）将数据发送到 Log Analytics](../log-analytics/log-analytics-data-collector-api.md)。
+    3.  OMS 信息。 在 OMS 门户查找此信息 |设置 |连接的源。 有关将数据发送到 Log Analytics 的详细信息，请参阅[使用 HTTP 数据收集器 API（预览版）将数据发送到 Log Analytics](../log-analytics/log-analytics-data-collector-api.md)。
 
 11. 在“测试”窗格中运行 runbook。 检查以确保它已运行成功。
 

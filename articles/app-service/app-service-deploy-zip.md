@@ -1,6 +1,6 @@
 ---
-title: "使用 zip 文件将应用部署到 Azure 应用服务 | Microsoft Docs"
-description: "了解如何使用 zip 文件将应用部署到 Azure 应用服务。"
+title: "使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务 | Microsoft Docs"
+description: "了解如何使用 ZIP 文件（或者对于 Java 开发人员而言使用 WAR 文件）将应用部署到 Azure 应用服务。"
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 03/07/2018
 ms.author: cephalin;sisirap
-ms.openlocfilehash: a0e4df0ef0a1c873f1efcac1d8dbfe3cada18218
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 41fb529f6b4ae923f2920919306324c86a2baa45
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="deploy-your-app-to-azure-app-service-with-a-zip-file"></a>使用 zip 文件将应用部署到 Azure 应用服务
+# <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务
 
-本文演示如何使用 zip 文件将 Web 应用部署到 [Azure 应用服务](app-service-web-overview.md)。 
+本文演示如何使用 ZIP 或 WAR 文件将 Web 应用部署到 [Azure 应用服务](app-service-web-overview.md)。 
 
 此 .zip 文件部署使用相同的 Kudu 服务，支持基于持续集成的部署。 对于 .zip 文件部署，Kudu 支持以下功能： 
 
@@ -31,6 +31,10 @@ ms.lasthandoff: 12/14/2017
 - 部署日志。 
 
 有关详细信息，请参阅 [Kudu 文档](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)。
+
+WAR 文件部署将 [WAR](https://wikipedia.org/wiki/WAR_(file_format)) 文件部署到应用服务，以运行 Java Web 应用。 请参阅[部署 WAR 文件](#deploy-war-file)。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,23 +62,13 @@ zip -r <file-name>.zip .
 Compress-Archive -Path * -DestinationPath <file-name>.zip
 ``` 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="deploy-zip-file-with-azure-cli"></a>使用 Azure CLI 部署 ZIP 文件
 
-## <a name="upload-zip-file-to-cloud-shell"></a>将 zip 文件上传到 Cloud Shell
+请确保 Azure CLI 版本是 2.0.21 或更高版本。 要查看已有版本，请在终端窗口中运行 `az --version` 命令。
 
-如果改为选择从本地终端运行 Azure CLI，请跳过此步骤。
-
-按此处的步骤操作，将 zip 文件上传到 Cloud Shell。 
-
-[!INCLUDE [app-service-web-upload-zip.md](../../includes/app-service-web-upload-zip-no-h.md)]
-
-有关详细信息，请参阅[在 Azure Cloud Shell 中持久保存文件](../cloud-shell/persisting-shell-storage.md)。
-
-## <a name="deploy-zip-file"></a>部署 ZIP 文件
-
-使用 [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_zip) 命令将上传的 zip 文件部署到 Web 应用。 如果选择不使用 Cloud Shell，请确保 Azure CLI 的版本为 2.0.21 或更高版本。 要查看已有版本，请在本地终端窗口中运行 `az --version` 命令。 
+使用 [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_zip) 命令将上传的 zip 文件部署到 Web 应用。  
 
 下面的示例部署上传的 zip 文件。 使用 Azure CLI 的本地安装时，请为 `--src` 指定本地 zip 文件的路径。   
 
@@ -84,9 +78,34 @@ az webapp deployment source config-zip --resource-group myResouceGroup --name <a
 
 此命令将 zip 文件中的文件和目录部署到默认的应用服务应用程序文件夹 (`\home\site\wwwroot`) 并重启应用。 如果配置了任何其他自定义生成过程，则也会运行该过程。 有关详细信息，请参阅 [Kudu 文档](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)。
 
-要查看此应用的部署列表，必须使用 REST API（请参阅下一节）。 
-
 [!INCLUDE [app-service-deploy-zip-push-rest](../../includes/app-service-deploy-zip-push-rest.md)]  
+
+## <a name="deploy-war-file"></a>部署 WAR 文件
+
+若要将 WAR 文件部署到应用服务，请将 POST 请求发送到 https://<app_name>.scm.azurewebsites.net/api/wardeploy。 POST 请求必须在消息正文中包含此 .war 文件。 应用的部署凭据是通过使用 HTTP BASIC 身份验证在请求中提供的。 
+
+对于 HTTP 基本身份验证，需要使用应用服务部署凭据。 若要了解如何设置部署凭据，请参阅[设置和重置用户级别凭据](app-service-deployment-credentials.md#userscope)。
+
+### <a name="with-curl"></a>使用 cURL
+
+以下示例使用 cURL 工具部署 .war 文件。 替换占位符 `<username>`、`<war_file_path>` 和 `<app_name>`。 出现 cURL 提示时，键入密码。
+
+```bash
+curl -X POST -u <username> --data-binary @"<war_file_path>" https://<app_name>.scm.azurewebsites.net/api/wardeploy
+```
+
+### <a name="with-powershell"></a>使用 PowerShell
+
+以下示例使用 [Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) 发送包含 .war 文件的请求。 替换占位符 `<deployment_user>`、`<deployment_password>`、`<zip_file_path>` 和 `<app_name>`。
+
+```PowerShell
+$username = "<deployment_user>"
+$password = "<deployment_password>"
+$filePath = "<war_file_path>"
+$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/wardeploy"
+$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
+Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Method POST -InFile $filePath -ContentType "multipart/form-data"
+```
 
 ## <a name="next-steps"></a>后续步骤
 

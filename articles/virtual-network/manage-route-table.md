@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 7edc73f337a72c24fd24d94468ee590b75dfa7df
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 7630fd82cf62f1fcb0df80cec5b5e0030da81a85
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-change-or-delete-a-route-table"></a>创建、更改或删除路由表
 
-Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 若要更改 Azure 的任何默认路由，可以创建一个路由表。 如果你不熟悉 Azure 路由，我们建议在完成本文中所述的任务之前，先阅读[路由概述](virtual-networks-udr-overview.md)并完成[使用路由表路由网络流量](create-user-defined-route-portal.md)教程。
+Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 若要更改 Azure 的任何默认路由，可以创建一个路由表。 如果你不熟悉 Azure 路由，我们建议在完成本文中所述的任务之前，先阅读[路由概述](virtual-networks-udr-overview.md)并完成[使用路由表路由网络流量](tutorial-create-route-table-portal.md)教程。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -38,7 +38,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 在每个 Azure 位置和订阅中可创建的路由表数目有限制。 有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
-1. 在门户左上角选择“+ 新建”。
+1. 在门户左上角选择“+ 创建资源”。
 2. 依次选择“网络”、“路由表”。
 3. 输入路由表的**名称**，选择自己的**订阅**，创建新的**资源组**或选择现有的资源组，选择一个**位置**，然后选择“创建”。 “禁用 BGP 路由传播”选项会阻止通过 BGP 将本地路由传播到 Azure 虚拟网络。 如果虚拟网络未连接到 Azure 网络网关（VPN 或 ExpressRoute），请清除“已禁用”选项。 
 

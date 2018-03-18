@@ -5,13 +5,13 @@ services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 7fe68f072ef438e21f3e6d3d52aee9e86e537687
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 2fdccade577788d3fc5bc076604547b2ab6690d9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>为物理服务器灾难恢复管理配置服务器
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 02/23/2018
 | IIS | - 无预先存在的默认网站 <br> - 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - 启用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 设置  <br> - 端口 443 上没有预先存在的网站/应用程序侦听<br>|
 | NIC 类型 | VMXNET3（部署为 VMware VM 时） |
 | IP 地址类型 | 静态 |
-| Internet 访问权限 | 服务器需要以下 URL 的访问权限： <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi（横向扩展进程服务器不需要此 URL） <br> - time.nist.gov <br> - time.windows.com |
+| Internet 访问权限 | 服务器需要以下 URL 的访问权限： <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi（横向扩展进程服务器不需要此 URL） <br> - time.nist.gov <br> - time.windows.com |
 | 端口 | 443（控制通道协调）<br>9443（数据传输）|
 
 ## <a name="download-the-latest-installation-file"></a>下载最新的安装文件
@@ -164,7 +164,7 @@ ProxyPassword="Password"
   ```
 
   >[!WARNING]
-  如果向配置服务器附加了更多的进程服务器，则需要在部署中[修复所有横向扩展进程服务器上的代理设置](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#modifying-proxy-settings-for-scale-out-process-server)。
+  如果向配置服务器附加了更多的进程服务器，则需要在部署中[修复所有横向扩展进程服务器上的代理设置](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server)。
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>将配置服务器重新注册到同一保管库
   1. 登录到配置服务器。
@@ -184,7 +184,7 @@ ProxyPassword="Password"
       ```
 
   >[!WARNING]
-  如果有多个进程服务器，则需要[重新注册它们](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#re-registering-a-scale-out-process-server)。
+  如果有多个进程服务器，则需要[重新注册它们](vmware-azure-manage-process-server.md#reregister-a-process-server)。
 
 ## <a name="register-a-configuration-server-with-a-different-vault"></a>将配置服务器注册到不同的保管库
 
@@ -233,8 +233,8 @@ ProxyPassword="Password"
 > [!WARNING]
 > 在开始解除配置服务器之前，请务必执行以下操作。
 > 1. 针对此配置服务器下的所有虚拟机[禁用保护](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)。
-> 2. 从配置服务器中[取消关联](site-recovery-setup-replication-settings-vmware.md#dissociate-a-configuration-server-from-a-replication-policy)和[删除](site-recovery-setup-replication-settings-vmware.md#delete-a-replication-policy)所有复制策略。
-> 3. [删除](site-recovery-vmware-to-azure-manage-vCenter.md#delete-a-vcenter-in-azure-site-recovery)所有与配置服务器关联的 vCenters 服务器/vSphere 主机。
+> 2. 从配置服务器中[取消关联](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)和[删除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)所有复制策略。
+> 3. [删除](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)所有与配置服务器关联的 vCenters 服务器/vSphere 主机。
 
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>从 Azure 门户中删除配置服务器
