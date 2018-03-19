@@ -11,6 +11,7 @@
 ## [IPv6 支持](load-balancer-ipv6-overview.md)
 ## [多个 VIP](load-balancer-multivip-overview.md)
 ## [了解出站连接](load-balancer-outbound-connections.md)
+## [标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)
 
 # 入门
 
@@ -49,6 +50,7 @@
 ### [对 Azure 负载均衡器进行故障排除](load-balancer-troubleshoot.md)
 
 ## 经典部署模型文章
+### [出站连接（经典）](load-balancer-outbound-connections-classic.md)
 ### [为云服务配置内部负载均衡器](load-balancer-get-started-ilb-classic-cloud.md)
 #### [为云服务配置内部负载均衡器 (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
 #### [为云服务配置内部负载均衡器 (CLI)](load-balancer-get-started-ilb-classic-cli.md)

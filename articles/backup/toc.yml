@@ -107,6 +107,8 @@
               href: backup-azure-vms-encryption.md
             - name: 在创建 VM 期间启用 VM 备份
               href: backup-during-vm-creation.md
+            - name: 升级到 VM 备份堆栈 V2
+              href: backup-upgrade-to-vm-backup-stack-v2.md
         - name: 管理和监视 VM
           items:
             - name: 在 Azure 门户中管理 Azure VM 备份

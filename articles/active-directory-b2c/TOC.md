@@ -61,6 +61,7 @@
 ## [语言自定义](active-directory-b2c-reference-language-customization.md)
 ## [使用报告 API](active-directory-b2c-reference-usage-reporting-api.md)
 ## [迁移用户](active-directory-b2c-user-migration.md)
+## [迁移社交标识](active-directory-b2c-social-migration.md)
 
 # 标识体验框架
 ## [自定义策略](active-directory-b2c-overview-custom.md)

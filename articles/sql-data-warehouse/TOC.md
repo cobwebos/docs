@@ -18,7 +18,7 @@
 
 
 # 教程
-## [1 - 从 blob 加载数据](load-data-from-azure-blob-storage-using-polybase.md)
+## [1 - 加载 WideWorldImporters](load-data-wideworldimportersdw.md)
 
 # 概念
 ## 服务功能
@@ -101,6 +101,7 @@
 
 
 ## 加载和移动数据
+### [纽约出租车数据](load-data-from-azure-blob-storage-using-polybase.md)
 ### [Contoso 公共数据](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 ### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)

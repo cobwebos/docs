@@ -92,6 +92,8 @@
           href: tutorial-control-flow-portal.md
         - name: .NET
           href: tutorial-control-flow.md
+    - name: 9 - 使用 Azure Databricks 转换数据
+      href: transform-data-using-databricks-notebook.md
 - name: 示例
   items:
     - name: 代码示例
@@ -290,8 +292,6 @@
           href: transform-data-using-stored-procedure.md
         - name: Data Lake U-SQL 活动
           href: transform-data-using-data-lake-analytics.md
-        - name: Databricks Notebook 活动
-          href: transform-data-using-databricks-notebook.md
         - name: 自定义活动
           href: transform-data-using-dotnet-custom-activity.md
         - name: 计算链接服务

@@ -62,6 +62,8 @@
           href: module-development.md
         - name: 组合
           href: module-composition.md
+        - name: Edge 代理和中心属性
+          href: module-edgeagent-edgehub.md
     - name: IoT Edge 运行时
       href: iot-edge-runtime.md
     - name: 部署

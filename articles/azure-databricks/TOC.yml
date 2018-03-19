@@ -9,6 +9,10 @@
   items:
     - name: 创建 Databricks 工作区
       href: quickstart-create-databricks-workspace-portal.md
+- name: 教程
+  items:
+    - name: 使用事件中心对事件进行流式传输
+      href: databricks-stream-from-eventhubs.md
 - name: 操作指南
   items:
     - name: 使用 Excel、R 和 Python 连接

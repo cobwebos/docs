@@ -31,6 +31,18 @@
           href: service-fabric-tutorial-deploy-app-with-cicd-vsts.md
         - name: 4 - 监视和诊断
           href: service-fabric-tutorial-monitoring-aspnet.md
+    - name: 部署 Java 应用
+      items:
+        - name: 1- 生成 Java 应用程序
+          href: service-fabric-tutorial-create-java-app.md
+        - name: 2- 调试应用程序
+          href: service-fabric-tutorial-debug-log-local-cluster.md
+        - name: 3- 部署应用程序
+          href: service-fabric-tutorial-java-deploy-azure.md
+        - name: 4 - 监视和诊断
+          href: service-fabric-tutorial-java-elk.md
+        - name: 5- 配置 CI/CD
+          href: service-fabric-tutorial-java-jenkins.md
     - name: 将现有 .NET 应用容器化
       items:
         - name: 1 - 使用 Docker Compose 部署 .NET 应用
@@ -129,6 +141,8 @@
               href: service-fabric-reliable-actors-reentrancy.md
             - name: 类型序列化
               href: service-fabric-reliable-actors-notes-on-actor-type-serialization.md
+        - name: 来宾可执行文件
+          href: service-fabric-guest-executables-introduction.md
     - name: 应用程序和服务
       items:
         - name: 应用程序模型

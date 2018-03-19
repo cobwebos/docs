@@ -26,9 +26,9 @@
 #### [将 Intel Edison 与 Node.js 配合使用](iot-hub-intel-edison-kit-node-get-started.md)
 #### [将 Intel Edison 与 C 配合使用](iot-hub-intel-edison-kit-c-get-started.md)
 
-#### [将 Adafruit Feather HUZZAH ESP8266 与 Arduino IDE 配合使用](iot-hub-arduino-huzzah-esp8266-get-started.md)
-#### [将 Sparkfun ESP8266 Thing Dev 与 Arduino IDE 配合使用](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
-#### [将 Adafruit Feather M0 与 Arduino IDE 配合使用](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+#### [将 Adafruit Feather HUZZAH ESP8266 与 Arduino 配合使用](iot-hub-arduino-huzzah-esp8266-get-started.md)
+#### [将 Sparkfun ESP8266 Thing Dev 与 Arduino 配合使用](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
+#### [将 Adafruit Feather M0 与 Arduino 配合使用](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 
 ## 扩展的 IoT 方案
 ### [使用 iothub-explorer 管理云设备消息传送](iot-hub-explorer-cloud-device-messaging.md)

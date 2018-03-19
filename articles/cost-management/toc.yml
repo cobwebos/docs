@@ -21,7 +21,9 @@
       href: tutorial-forecast-spending.md
     - name: 3 - 管理成本
       href: tutorial-manage-costs.md
-    - name: 4 - 控制对数据的访问
+    - name: 4 - 优化保留实例
+      href: tutorial-optimize-reserved-instances.md
+    - name: 5 - 控制对数据的访问
       href: tutorial-user-access.md
 - name: 概念
   items:

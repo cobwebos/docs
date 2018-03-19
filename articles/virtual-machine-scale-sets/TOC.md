@@ -38,6 +38,7 @@
 #### [使用 Azure CLI 2.0](virtual-machine-scale-sets-encrypt-disks-cli.md)
 ### [使用大型规模集](virtual-machine-scale-sets-placement-groups.md)
 ### [将规模集模板转换为使用托管磁盘](virtual-machine-scale-sets-convert-template-to-md.md)
+### [使用低优先级](virtual-machine-scale-sets-use-low-priority.md)
 
 ## 管理
 ### 常见管理任务

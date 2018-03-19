@@ -190,11 +190,10 @@
 #### [针对自动用户预配进行报告](active-directory-saas-provisioning-reporting.md)
 #### [排查用户预配问题](active-directory-application-provisioning-content-map.md)
 
-
-
 ### [使用应用代理远程访问应用](active-directory-application-proxy-get-started.md)
 #### 入门
 ##### [启用应用代理](active-directory-application-proxy-enable.md)
+##### [GDPR 支持](active-directory-application-proxy-gdpr.md)
 ##### [发布应用](application-proxy-publish-azure-portal.md)
 ##### [自定义域](active-directory-application-proxy-custom-domains.md)
 #### [单一登录](application-proxy-sso-overview.md)

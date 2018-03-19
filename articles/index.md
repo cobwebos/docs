@@ -6,11 +6,11 @@ description: "了解如何使用 Microsoft Azure 云服务构建和管理功能�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 1d4ea845bf2b62e982db560580e63a3d54845d00
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6d188cc25d858cc2d07fc49450d6b2d4a4a04c09
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -199,7 +199,7 @@ ms.lasthandoff: 03/09/2018
                                                 </ul>
                                                 <h4>AI 和认知服务</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/machine-learning/preview">机器学习服务</a></li>
+                                                    <li><a class="barLink" href="/azure/machine-learning/">机器学习</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/computer-vision/">计算机视觉 API</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/face/">人脸 API</a></li>
                                                 </ul>
@@ -600,9 +600,9 @@ ms.lasthandoff: 03/09/2018
                                     <h3>AI + 机器学习</h3>
                                     <ul>
                                         <li>
-                                            <a href="/azure/machine-learning/preview">
+                                            <a href="/azure/machine-learning/">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>机器学习服务</p>
+                                                <p>机器学习</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2545,7 +2545,7 @@ ms.lasthandoff: 03/09/2018
                                 <h2>人工智能</h2>
                             </li>
                             <li>
-                                <a href="/azure/machine-learning/preview">
+                                <a href="/azure/machine-learning/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2555,7 +2555,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>机器学习服务</h3>
+                                                    <h3>机器学习</h3>
                                                     <p>通过试验和模型管理，使用端到端、可缩放的可信平台，让所有人都能够获得 AI 体验</p>
                                                 </div>
                                             </div>
@@ -2733,10 +2733,10 @@ ms.lasthandoff: 03/09/2018
                                                                 <a class="barLink" href="/azure/cognitive-services/Bing-Autosuggest"><img src="media/index/API_Bing_AutoSuggest.svg" alt="" />必应自动建议</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search"><img src="media/index/API_Bing_Custom_Search.svg" alt="" /><span>必应自定义搜索</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search"><img src="media/index/API_Bing_Custom_Search.svg" alt="" />必应自定义搜索</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/"><img src="media/index/API_Bing_Entity_Search.svg" alt="" /><span>必应实体搜索&nbsp;<sup style="font-size:70%">预览版</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/"><img src="media/index/API_Bing_Entity_Search.svg" alt="" />必应实体搜索</a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-image-search"><img src="media/index/API_Bing_Image_Search.svg" alt="" />必应图像搜索</a>
