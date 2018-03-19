@@ -22,7 +22,6 @@
 ## [检查托管域的运行状况](active-directory-ds-check-health.md)
 ## [使用 Azure CSP 订阅中的 Azure AD 域服务](active-directory-ds-csp.md)
 ## [使用 PowerShell 启用 Azure AD 域服务](active-directory-ds-enable-using-powershell.md)
-## [检查域的运行状况](active-directory-ds-check-health.md)
 ## 加入托管域
 ### [Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [通过模板将 Windows Server VM 加入托管域](active-directory-ds-join-windows-vm-template.md)

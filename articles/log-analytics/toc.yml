@@ -50,7 +50,7 @@
     - name: 日志搜索
       items:
         - name: 日志搜索概述
-          href: log-analytics-log-search-new.md
+          href: log-analytics-log-search.md
         - name: 日志搜索门户
           href: log-analytics-log-search-portals.md
 - name: 操作指南
@@ -117,20 +117,6 @@
           href: log-analytics-flow-tutorial.md
         - name: 日志搜索 API
           href: 'https://dev.loganalytics.io/'
-    - name: 旧式日志搜索
-      items:
-        - name: 日志搜索概述
-          href: log-analytics-log-searches.md
-        - name: 搜索参考
-          href: log-analytics-search-reference.md
-          items:
-            - name: 正则表达式
-              href: log-analytics-log-searches-regex.md
-        - name: 日志搜索 API
-          href: log-analytics-log-search-api.md
-          items:
-            - name: Python
-              href: log-analytics-log-search-api-python.md
     - name: 分析数据
       items:
         - name: 仪表板

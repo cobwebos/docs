@@ -10,15 +10,15 @@ metadata:
   manager: carolz
   ms.service: sql-database
   ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.devlang: 
   ms.topic: landing-page
   ms.date: 05/03/2017
   ms.author: carolz
-  ms.openlocfilehash: 662d4f32cb6abb8694253a50d17daa242b55e409
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.openlocfilehash: 4acc092e4c6006263dda31ab2a54038e60e57651
+  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 03/16/2018
 abstract:
   description: "Azure SQL 数据库是使用 Microsoft SQL Server 引擎的关系数据库即服务。 SQL 数据库是高性能、可靠且安全的数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。"
   aside:
