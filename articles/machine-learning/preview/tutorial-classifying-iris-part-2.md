@@ -5,17 +5,17 @@ services: machine-learning
 author: hning86
 ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 02/28/2018
-ms.openlocfilehash: 9a1613e2137e178d00a24f9f5b3c802f8a894b15
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 3/7/2018
+ms.openlocfilehash: 3e7f1b25757dc627f0f42a34c1a42b2d421c06c9
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-classify-iris-part-2---build-a-model"></a>教程：鸢尾花分类（第 2 部分）- 生成模型
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -66,13 +66,13 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    - 使用 [scikit-learn](http://scikit-learn.org/stable/index.html) 机器学习库生成逻辑回归模型。 
 
-   - 将 [pickle](https://docs.python.org/2/library/pickle.html) 库插入 `outputs` 文件夹中的某个文件，使模型序列化。 然后，脚本会将其加载并反序列化回内存中。
+   - 将 [pickle](https://docs.python.org/3/library/pickle.html) 库插入 `outputs` 文件夹中的某个文件，使模型序列化。 然后，脚本会将其加载并反序列化回内存中。
 
    - 使用反序列化的模型基于新记录进行预测。 
 
    - 使用 [matplotlib](https://matplotlib.org/) 库绘制两个图，一个混淆矩阵，一个多类接收者操作特性 (ROC) 曲线，然后将其保存在 `outputs` 文件夹中。
 
-   - 始终使用 `run_logger` 对象来记录正则化率并将准确性建模到日志中。 日志自动在运行历史记录中绘制。
+   - 始终使用 `run_logger` 对象将正则化率和模型准确性记录到日志中。 这些值自动在运行历史记录中绘制。
 
 
 ## <a name="execute-irissklearnpy-script-in-a-local-environment"></a>在本地环境中执行 iris_sklearn.py 脚本
@@ -92,30 +92,31 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 3. 返回到 Workbench 应用窗口。 
 
-4. 在 iris_sklearn.py 选项卡顶部的工具栏中，选择打开“保存”图标旁边的下拉菜单，然后选择“运行配置”。 选择“local”作为执行环境，然后输入 `iris_sklearn.py` 作为要运行的脚本。
+4. 在“iris_sklearn.py”选项卡顶部的工具栏中，选择 **local** 作为执行环境，选择 `iris_sklearn.py` 作为要运行的脚本。
 
-5. 接下来转到工具栏的右侧，在“参数”字段中输入 `0.01`。 
+5. 接下来转到工具栏的右侧，在“参数”字段中输入 `0.01`。 此值对应于逻辑回归模型的正则化率。
 
    ![“运行”控件](media/tutorial-classifying-iris/run_control.png)
 
 6. 选择“运行”按钮。 随后会立即计划一个作业。 该作业列在 Workbench 窗口右侧的“作业”窗格中。 
 
-7. 片刻之后，该作业的状态会从“正在提交”转换为“正在运行”，然后转换为“已完成”。
+7. 片刻之后，该作业的状态会从“正在提交”转换为“正在运行”，最后转换为“已完成”。
 
    ![运行 sklearn](media/tutorial-classifying-iris/run_sklearn.png)
 
-8. 在“作业”窗格的作业状态文本中选择“已完成”。 此时会打开一个弹出窗口，其中显示了正在运行的脚本的标准输出 (stdout) 文本。 若要关闭 stdout 文本，请选择弹出窗口右上角的“关闭”(x) 按钮。
+8. 在“作业”窗格的作业状态文本中选择“已完成”。 此时会打开一个弹出窗口，其中显示了该运行的标准输出 (stdout) 文本。 若要关闭 stdout 文本，请选择弹出窗口右上角的“关闭”(x) 按钮。
 
-9. 在“作业”窗格的同一作业状态中，选择紧靠在“已完成”状态和开始时间上方的蓝色文本“iris_sklearn.py [n]”（n 为运行编号）。 此时会打开“运行属性”窗口，显示该特定运行的以下信息：
+9. 在“作业”窗格的同一作业状态中，选择紧靠在“已完成”状态和开始时间上方的蓝色文本“iris_sklearn.py [n]”（_n_ 为运行编号）。 此时会打开“运行属性”窗口，显示该特定运行的以下信息：
    - 运行属性信息
-   - 输出文件
+   - **输出**
+   - **指标**
    - 可视化效果（如果有）
    - **日志** 
 
    完成运行后，弹出窗口会显示以下结果：
 
    >[!NOTE]
-   >由于前面在训练集中引入了某种随机化，因此确切的结果可能不同于此处显示的结果。
+   >由于前面在训练集中引入了某种随机化，因此结果可能不同于此处显示的结果。
 
    ```text
    Python version: 3.5.2 |Continuum Analytics, Inc.| (default, Jul  5 2016, 11:41:13) [MSC v.1900 64 bit (AMD64)]
@@ -148,9 +149,9 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 10. 关闭“运行属性”选项卡，然后返回到“iris_sklearn.py”选项卡。 
 
-11. 重复额外的运行。 
+11. 重复操作即可完成额外的运行。 
 
-    在“参数”字段中输入从 `0.001` 到 `10` 的一系列不同数值。 选择“运行”，再执行几次代码。 每次更改的参数值会馈送到代码中的逻辑回归算法，因而每次都会生成不同的结果。
+    在“参数”字段中输入从 `0.001` 到 `10` 的一系列值。 选择“运行”，再执行几次代码。 每次更改的参数值会馈送到代码中的逻辑回归模型，因而每次都会生成不同的结果。
 
 ## <a name="review-the-run-history-in-detail"></a>查看详细的运行历史记录
 在 Azure Machine Learning Workbench 中，每次脚本执行被作为一条运行历史记录捕获。 如果打开“运行”视图，则可查看特定脚本的运行历史记录。
@@ -175,16 +176,16 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 ## <a name="execute-scripts-in-the-local-docker-environment"></a>在本地 Docker 环境中执行脚本
 
-使用机器学习可以轻松配置其他执行环境（例如 Docker）并在这些环境中运行脚本。 
+可以轻松配置其他执行环境（例如 Docker）并在这些环境中运行脚本。 
 
 >[!IMPORTANT]
->若要完成此步骤，必须在本地安装并启动 Docker 引擎。 有关详细信息，请参阅 Docker 安装说明。
+>若要完成此步骤，必须在本地安装并启动 Docker 引擎。 有关详细信息，请参阅 [Docker 安装说明](https://docs.docker.com/install/)。
 
 1. 在左侧窗格中选择“文件夹”图标，打开项目的“文件”列表。 展开 `aml_config` 文件夹。 
 
-2. 已预配置了多个环境，例如 docker-python、docker-spark、local。 
+2. 已预配置了多个环境：docker-python、docker-spark、local。 
 
-   每个环境包含两个文件，例如 `docker-python.compute` 和 `docker-python.runconfig`。 打开每个文件可以发现，某些选项可在文本编辑器中配置。  
+   每个环境包含两个文件，例如 `docker.compute`（适用于 **docker-python** 和 **docker-spark**）和 `docker-python.runconfig`。 打开每个文件可以发现，某些选项可在文本编辑器中配置。  
 
    若要进行清理，请在任何已打开文本编辑器的选项卡上选择“关闭”(x)。
 
@@ -213,7 +214,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    最后，看到的结果应与使用 local 作为目标时的结果完全相同。
 
-5. 现在，让我们试试 Spark。 Docker 基本映像包含预先安装并配置的 Spark 实例。 由于存在此实例，可在其中执行 PySpark 脚本。 这是开发和测试 Spark 程序的一种简便方法，无需花费时间自行安装和配置 Spark。 
+5. 现在，让我们试试 Spark。 Docker 基本映像包含预先安装并配置的 Spark 实例，该实例可以用来执行 PySpark 脚本。 这是开发和测试 Spark 程序的一种简便方法，无需花费时间自行安装和配置 Spark。 
 
    打开 `iris_spark.py` 文件。 此脚本加载 `iris.csv` 数据文件，并使用 Spark 机器学习库中的逻辑回归算法将“鸢尾花”数据集分类。 现在，将运行环境更改为 docker-spark，将脚本更改为 iris_spark.py，然后再次运行。 由于必须在 Docker 容器中创建并启动 Spark 会话，因此此过程所需的时间稍长一些。 还可以看到，stdout 不同于 `iris_spark.py` 的 stdout。
 
@@ -242,7 +243,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    az account list -o table
    
    REM sets the current Azure subscription to the one you want to use
-   az account set -s <subscriptionId>
+   az account set -s <SubscriptionId>
    
    REM verifies that your current subscription is set correctly
    az account show
@@ -269,6 +270,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    REM executes iris_spark.py in the local Docker container Spark environment
    az ml experiment submit -c docker-spark .\iris_spark.py 0.1
    ```
+
 6. 在 Workbench 中选择左侧窗格中的“文件夹”图标，列出项目文件，然后打开名为 run.py 的 Python 脚本。 
 
    此脚本适用于针对各种正则化率执行循环操作。 使用这些正则化率多次运行试验。 此脚本启动 `iris_sklearn.py` 作业时，使用的正则化率为 `10.0`（此数字过大）。 然后，此脚本在下次运行时将该正则化率减半，依此类推，直至正则化率不小于 `0.005`。 
@@ -283,22 +285,22 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
        reg = reg / 2
    ```
 
-   若要从命令行打开 run.py 脚本，请运行以下命令：
+   若要从命令行执行 run.py 脚本，请运行以下命令：
 
    ```cmd
    REM submits iris_sklearn.py multiple times with different regularization rates
    python run.py
    ```
 
-   `run.py` 完成时，Workbench 的运行历史记录列表视图中会出现一个图形。
+   当 `run.py` 完成时，可以看到 Workbench 的运行历史记录列表视图中不同指标的图形。
 
 ## <a name="execute-in-a-docker-container-on-a-remote-machine"></a>在远程计算机上执行 Docker 容器
-若要在远程 Linux 计算机上的 Docker 容器中执行脚本，需要通过 SSH 访问（使用用户名和密码）该远程计算机。 此外，该远程计算机必须已安装并运行 Docker 引擎。 获取此类 Linux 计算机的最简单方法是在 Azure 上创建基于 Ubuntu 的数据科学虚拟机 (DSVM)。 了解[如何创建要在 Azure ML Workbench 中使用的 Ubuntu DSVM](how-to-create-dsvm-hdi.md#create-an-ubuntu-dsvm-in-azure-portal)。
+若要在远程 Linux 计算机上的 Docker 容器中执行脚本，需要通过 SSH 访问（使用用户名和密码）该远程计算机。 此外，该计算机必须已安装并运行 Docker 引擎。 获取此类 Linux 计算机的最简单方法是在 Azure 上创建基于 Ubuntu 的数据科学虚拟机 (DSVM)。 了解[如何创建要在 Azure ML Workbench 中使用的 Ubuntu DSVM](how-to-create-dsvm-hdi.md#create-an-ubuntu-dsvm-in-azure-portal)。
 
 >[!NOTE] 
 >不支持基于 CentOS 的 DSVM。
 
-1. 创建 VM 后，可将 VM 附加为执行环境，前提是生成 `.runconfig` 和 `.compute` 文件对。 请使用以下命令生成这两个文件。 让我们将新环境命名为 `myvm`。
+1. 创建 VM 后，可将 VM 附加为执行环境，方法是生成 `.runconfig` 和 `.compute` 文件对。 请使用以下命令生成这两个文件。 让我们将新环境命名为 `myvm`。
  
    ```azurecli
    REM creates an myvm compute target
@@ -306,7 +308,10 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    ```
    
    >[!NOTE]
-   >IP 地址也可以是可公开寻址的完全限定的域名 (FQDN)，例如 `vm-name.southcentralus.cloudapp.azure.com`。 最好是将 FQDN 添加到 DSVM，然后将其用在此处，而不要使用 IP 地址。 之所以要这样做，是因为有时可能需关闭 VM 以节省成本。 此外，下次启动 VM 时，IP 地址可能会更改。
+   >IP 地址也可以是可公开寻址的完全限定域名 (FQDN)，例如 `vm-name.southcentralus.cloudapp.azure.com`。 最好是将 FQDN 添加到 DSVM，用它来代替 IP 地址。 之所以要这样做，是因为有时可能需关闭 VM 以节省成本。 此外，下次启动 VM 时，IP 地址可能会更改。
+
+   >[!NOTE]
+   >除了用户名和密码身份验证，还可以使用 `--private-key-file` 和 `--private-key-passphrase` 选项（后者为可选）指定私钥和相应的通行短语（如果有）。
 
    接下来运行以下命令，在 VM 中构造 Docker 映像，使之做好运行脚本的准备：
    
@@ -317,15 +322,15 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    >[!NOTE]
    >还可将 `myvm.runconfig` 中 `PrepareEnvironment` 的值从默认值 `false` 更改为 `true`。 这样更改以后，就会在首次运行时自动准备 Docker 容器。
 
-2. 编辑在 `aml_config` 下生成的 `myvm.runconfig` 文件，并将框架从默认的 `PySpark` 更改为 `Python`：
+2. 编辑在 `aml_config` 下生成的 `myvm.runconfig` 文件，并将框架从默认值 `PySpark` 更改为 `Python`：
 
    ```yaml
-   "Framework": "Python"
+   Framework: Python
    ```
    >[!NOTE]
-   >如果将框架设置保留为 PySpark，则也应可行。 但是，如果实际上并不需要在 Spark 会话中运行 Python 脚本，则使用该设置会降低效率。
+   >如果实际上并不需要 Spark 会话就可以运行 Python 脚本，则使用 Python 会更有效，虽然也可以使用 PySpark。
 
-3. 与前面一样在 CLI 窗口中发出相同的命令，但这次以 myvm 为目标：
+3. 与前面一样在 CLI 窗口中发出相同的命令，这次使用目标 myvm：
    ```azurecli
    REM executes iris_sklearn.py in a remote Docker container
    az ml experiment submit -c myvm iris_sklearn.py
@@ -334,18 +339,18 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 4. 让我们在容器中试用 Spark。 打开文件资源管理器。 如果熟悉基本的文件操作命令，则也可通过 CLI 窗口执行此操作。 创建 `myvm.runconfig` 文件的副本并将其命名为 `myvm-spark.runconfig`。 编辑新文件，将 `Framework` 设置从 `Python` 更改为 `PySpark`：
    ```yaml
-   "Framework": "PySpark"
+   Framework: PySpark
    ```
-   不要对 `myvm.compute` 文件进行任何更改。 同一 VM 上的同一 Docker 映像用于 Spark 执行。 在新的 `myvm-spark.runconfig` 中，`target` 字段根据名称 `myvm` 指向同一 `myvm.compute` 文件。
+   不要对 `myvm.compute` 文件进行任何更改。 同一 VM 上的同一 Docker 映像用于 Spark 执行。 在新的 `myvm-spark.runconfig` 中，`Target` 字段根据名称 `myvm` 指向同一 `myvm.compute` 文件。
 
-5. 键入以下命令，在远程 Docker 容器的 Spark 实例中运行此文件：
+5. 键入以下命令，在 Spark 实例中运行 **iris_spark.py** 脚本，而该实例在远程 Docker 容器中运行：
    ```azureli
    REM executes iris_spark.py in a Spark instance on a remote Docker container
    az ml experiment submit -c myvm-spark .\iris_spark.py
    ```
 
 ## <a name="execute-script-in-an-hdinsight-cluster"></a>在 HDInsight 群集中执行脚本
-还可以在 HDInsight Spark 群集中运行此脚本。 了解[如何创建要在 Azure ML Workbench 中使用的 HDInsight Spark 群集](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal)。
+还可以在 HDInsight Spark 群集中运行此脚本。 了解[如何创建在 Azure ML Workbench 中使用的 HDInsight Spark 群集](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal)。
 
 >[!NOTE] 
 >HDInsight 群集必须使用 Azure Blob 作为主存储。 尚不支持使用 Azure Data Lake 存储。
@@ -365,7 +370,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    >[!NOTE]
    >`username` 是群集的 SSH 用户名。 默认值为 `sshuser`（如果在 HDInsight 设置期间未更改）。 该值不是 `admin`，这是在设置期间为了能够访问群集管理员网站而创建的另一个用户。 
 
-2. 运行以下命令，脚本将在 HDInsight 群集中运行：
+2. 运行以下命令，以便在 HDInsight 群集中运行 **iris_spark.py** 脚本：
 
    ```azurecli
    REM executes iris_spark on the HDInsight cluster
@@ -374,7 +379,6 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    >[!NOTE]
    >针对远程 HDInsight 群集执行时，还可以使用 `admin` 用户帐户在 `https://<cluster_name>.azurehdinsight.net/yarnui` 上查看 Yet Another Resource Negotiator (YARN) 作业执行详细信息。
-
 
 ## <a name="clean-up-resources"></a>清理资源
 

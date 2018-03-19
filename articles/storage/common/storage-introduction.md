@@ -2,23 +2,17 @@
 title: "Azure 存储简介 | Microsoft 文档"
 description: "Microsoft 的云中数据存储 - Azure 存储的简介。"
 services: storage
-documentationcenter: 
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/21/2018
+ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: 088a58bf5bfe3736a158d2384c69cb5928b53556
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 799636d0a702407be06bbe8cebae552b34d860db
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure 存储简介
 
@@ -137,7 +131,7 @@ Blob 存储帐户是专用于存储块 Blob 和追加 Blob 的存储帐户。 �
 
 静态 Azure 存储服务加密 (SSE) 可帮助保护数据，使组织能够信守在安全性与符合性方面所做的承诺。 使用此功能，Azure 存储可以先自动加密数据，再将数据保存到存储，并在检索之前解密数据。 加密、解密和密钥管理对于用户而言是完全透明的。
 
-可以为 Blob 存储或 Azure 文件（预览版）启用存储服务加密 (SSE)。 如果启用此功能，所有写入到特定服务的数据都会在写入前加密。 读取数据时，数据会在返回前解密。
+SSE 自动加密所有性能层（标准和高级）、所有部署模型（Azure 资源管理器和经典）、所有 Azure 存储服务（Blob、队列、表和文件）中的数据。 SSE 不影响 Azure 存储性能。
 
 有关 SSE 静态加密的详细信息，请参阅[静态数据的 Azure 存储服务加密](storage-service-encryption.md)。
 

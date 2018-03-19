@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: 93eabc0bdf4889d89f8dc3fc30f99dafa1b3a47a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d6a0355874e9fc98e551a2a05c776109c916d90a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="what-is-azure-batch"></a>什么是 Azure Batch？
 
@@ -85,7 +85,7 @@ Batch 的常用方案涉及在计算节点池中横向扩展本质并行工作�
 
 请记住，这只是使用 Batch 的一种方式，此方案只介绍它的部分功能。 例如，可以在每个计算节点上执行[多个并行任务](batch-parallel-node-tasks.md)。 也可以使用[作业准备和完成任务](batch-job-prep-release.md)为作业准备节点，然后进行事后清理。 
 
-请参阅[适用于开发人员的 Batch 功能概述](batch-api-basics.md)，详细了解池、节点、作业、任务，以及生成 Batch 应用程序时可以使用的许多 API 功能。 
+请参阅[适用于开发人员的 Batch 功能概述](batch-api-basics.md)，详细了解池、节点、作业、任务，以及生成 Batch 应用程序时可以使用的许多 API 功能。 另请参阅最新的 [Batch 服务更新](https://azure.microsoft.com/updates/?product=batch)。
 
 ## <a name="next-steps"></a>后续步骤
 

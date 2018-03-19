@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 35142cb40560db848c71da266bbaa1881f12e15d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 20046d8bb475ddce8962915e5bd8215117261ac6
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="tutorial-forecast-future-spending"></a>教程：预测将来的支出
 
-Cloudyn 提供的 Azure 成本管理可帮助你根据历史使用情况和支出数据预测将来的支出。 可以使用 Cloudyn 报表查看所有成本预测数据。 本教程中的示例将引导你完成使用报表查看成本预测的过程。 本教程介绍如何执行下列操作：
+可以使用 Azure 成本管理，根据历史使用情况和支出数据预测将来的支出。 可以使用 Cloudyn 报表查看所有成本预测数据。 本教程中的示例将引导你完成使用报表查看成本预测的过程。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 预测将来的支出

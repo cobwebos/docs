@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e8f09a90ae9a4dd54d81335de2494f0dcbe09485
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 558dcd65051c0134a87205dcd8bbf432d7763fd2
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
 
 # <a name="tutorial-review-usage-and-costs"></a>教程：查看使用情况和成本
 
-通过 Cloudyn 提供的 Azure 成本管理将显示使用情况和成本，以便可以跟踪趋势、检测低效情况并创建警报。 所有使用情况和成本数据都将显示在 Cloudyn 仪表板和报表中。 本教程中将举例说明如何使用仪表板和报表查看使用情况和成本。 本教程介绍如何执行下列操作：
+Azure 成本管理将显示使用情况和成本，以便可以跟踪趋势、检测低效情况并创建警报。 所有使用情况和成本数据都将显示在 Cloudyn 仪表板和报表中。 本教程中将举例说明如何使用仪表板和报表查看使用情况和成本。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 跟踪使用情况和成本趋势
@@ -57,7 +57,7 @@ ms.lasthandoff: 02/28/2018
 
 在该示例中，可以清楚地看到 Azure 存储成本从 2017 年 8 月 31 日起开始下降，而其他 Azure 服务的支出持平。 那么，是什么导致了支出缩减呢？ 在此示例中，某些员工正在休假，因而没有使用存储服务。
 
-若要观看有关跟踪使用情况和成本趋势的教程视频，请参阅[使用 Cloudyn 提供的 Azure 成本管理分析云计费数据与时间](https://youtu.be/7LsVPHglM0g)。
+若要观看有关如何跟踪使用情况和成本趋势的教程视频，请参阅[使用 Azure 成本管理分析云计费数据与时间](https://youtu.be/7LsVPHglM0g)。
 
 ## <a name="detect-usage-inefficiencies"></a>检测低效使用情况
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 02/28/2018
 
 ![候选项列表](./media/tutorial-review-usage/sizing03.png)
 
-若要观看有关检测使用效率较低的教程视频，请参阅[在 Cloudyn 提供的 Azure 成本管理中优化 VM 大小](https://youtu.be/1xaZBNmV704)。
+若要观看教程视频，了解如何检测使用效率较低的情况，请参阅[在 Azure 成本管理中优化 VM 大小](https://youtu.be/1xaZBNmV704)。
 
 ## <a name="create-alerts-for-unusual-spending"></a>针对异常支出创建警报
 

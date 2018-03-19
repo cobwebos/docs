@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 03/08/2018
 ms.author: yurid
-ms.openlocfilehash: 42cbc442d03cdca04d380d05d9e904355476099e
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 48648c2e84d2a2e4de01f04495fb08df603c6017
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -63,7 +63,15 @@ ms.lasthandoff: 11/22/2017
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>管理集成式 Azure 安全解决方案和其他数据源
 
-部署以后，可以查看集成式 Azure 安全解决方案的运行状况信息，并执行基本的管理任务。 还可以连接其他类型的安全数据源，例如通用事件格式 (CEF) 的 Azure Active Directory Identity Protection 警报和防火墙日志。 在安全中心仪表板中选择“安全解决方案”。
+1. 登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)。
+
+2. 在 **Microsoft Azure 菜单**上选择“安全中心”。 此时会打开“安全中心 - 概览”。
+
+  ![安全中心概述](./media/security-center-partner-integration/overview.png)
+
+3. 在“概览”下，选择“安全解决方案”。
+
+在“安全解决方案”下，可以查看集成式 Azure 安全解决方案的运行状况信息，并执行基本的管理任务。 还可以连接其他类型的安全数据源，例如通用事件格式 (CEF) 的 Azure Active Directory Identity Protection 警报和防火墙日志。
 
 ### <a name="connected-solutions"></a>已连接解决方案
 
@@ -71,13 +79,22 @@ ms.lasthandoff: 11/22/2017
 
 ![已连接解决方案](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
 
+请参阅[管理连接的合作伙伴解决方案](security-center-partner-solutions.md)，了解详细信息。
+
 ### <a name="discovered-solutions"></a>已发现解决方案
 
-“已发现解决方案”部分显示通过 Azure 添加的所有解决方案。 它还显示安全中心建议的应连接到其中的所有解决方案。
+安全中心自动发现在 Azure 中运行但未连接到安全中心的安全解决方案，然后在“发现的解决方案”部分显示这些解决方案。 其中包括 Azure 解决方案，例如 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)，以及合作伙伴解决方案。
+
+> [!NOTE]
+> “发现的解决方案”功能在安全中心的标准层上可用。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
+>
+>
+
+在解决方案下选择“连接”，以便集成安全中心，获取有关安全警报的通知。
 
 ![已发现解决方案](./media/security-center-partner-integration/security-center-partner-integration-fig5.png)
 
-安全中心自动发现在 Azure 中运行的其他安全解决方案。 其中包括 Azure 解决方案，例如 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)，以及在 Azure 中运行的合作伙伴解决方案。 若要将这些解决方案与安全中心集成，请选择“连接”。
+安全中心还发现部署在订阅中的那些能够转发常见事件格式 (CEF) 日志的解决方案。 了解如何[连接安全解决方案](quick-security-solutions.md)，以便将使用 CEF 日志的安全解决方案连接到安全中心。
 
 ### <a name="add-data-sources"></a>添加数据源
 
@@ -90,7 +107,6 @@ ms.lasthandoff: 11/22/2017
 
 本文介绍了如何在安全中心集成合作伙伴的解决方案。 若要详细了解安全中心，请参阅以下文章：
 
-* [安全中心规划和操作指南](security-center-planning-and-operations-guide.md)
 * [将 Microsoft Advanced Threat Analytics 连接到 Azure 安全中心](security-center-ata-integration.md)
 * [将 Azure Active Directory Identity Protection 连接到 Azure 安全中心](security-center-aadip-integration.md)
 * [在安全中心进行安全运行状况监视](security-center-monitoring.md)。 了解如何监视 Azure 资源的运行状况。

@@ -5,17 +5,17 @@ services: machine-learning
 author: hning86
 ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 02/28/2018
-ms.openlocfilehash: 12cba3d4acf0e6018cea6e76df9208bcf380d976
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 3/7/2018
+ms.openlocfilehash: caddfff329d0e8f4c4007386b377ea56a51249a5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-classify-iris-part-1---preparing-the-data"></a>教程：鸢尾花分类（第 1 部分）- 准备数据
 
@@ -60,8 +60,8 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    项目名称 | myIris |输入用于标识帐户的唯一名称。 可以使用自己的名称，或者能够最好地标识试验的部门或项目名称。 名称应介于 2 到 32 个字符之间， 只应包含字母数字字符和短划线 (-) 字符。 
    项目目录 | c:\Temp\ | 指定在其中创建项目的目录。
    项目说明 | 留空 | 用于描述项目的可选字段。
-   Visualstudio.com |留空 | 可选字段。 可以在 Visual Studio Team Services 中将项目与 Git 存储库关联，以便进行源代码管理和协作。 [了解如何进行该设置](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)。 
-   工作区 | IrisGarden（如果存在） | 在 Azure 门户中选择一个已经为试验帐户创建的工作区。 <br/>如果是按本快速入门进行的操作，则应该已经有了一个名为 IrisGarden 的工作区。 如果还没有该工作区，则请选择一个在创建试验帐户时创建的工作区，或者任何其他需要使用的工作区。
+   Visualstudio.com GIT 存储库 URL |留空 | 可选字段。 可以在 Visual Studio Team Services 中将项目与 Git 存储库关联，以便进行源代码管理和协作。 [了解如何进行该设置](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)。 
+   所选工作区 | IrisGarden（如果存在） | 在 Azure 门户中选择一个已经为试验帐户创建的工作区。 <br/>如果是按本快速入门进行的操作，则应该已经有了一个名为 IrisGarden 的工作区。 如果还没有该工作区，则请选择一个在创建试验帐户时创建的工作区，或者任何其他需要使用的工作区。
    项目模板 | 鸢尾花分类 | 模板包含的脚本和数据可以用来探索产品的功能。 此模板包含的脚本和数据是本快速入门以及此文档站点中的其他教程所需要的。 
 
    ![新建项目](media/tutorial-classifying-iris/new_project.png)
@@ -73,11 +73,11 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 ## <a name="create-a-data-preparation-package"></a>创建数据准备包
 
-接下来即可在 Azure Machine Learning Workbench 中浏览数据并开始准备数据。 在 Workbench 中执行的每次转换都以 JSON 格式存储在本地数据准备包（*.dprep 文件）中。 此数据准备包是存储 Workbench 中的数据准备工作的主要容器。
+接下来即可在 Azure Machine Learning Workbench 中进行浏览，并开始准备数据。 在 Workbench 中执行的每次转换都以 JSON 格式存储在本地数据准备包（*.dprep 文件）中。 此数据准备包是存储 Workbench 中的数据准备工作的主要容器。
 
 此数据准备包可以稍后传递给运行时，例如 local-C#/CoreCLR、Scala/Spark 或 Scala/HDI。 
 
-1. 选择文件夹图标来打开文件视图，然后选择 **iris.csv** 来打开该文件。  
+1. 选择文件夹图标来打开“文件”视图，然后选择 **iris.csv** 来打开该文件。
 
    该文件包含一个表，表中有 5 列和 50 行。 四个列是数字特征列。 第五列是字符串目标列。 没有任何列有标头名称。
 
@@ -90,28 +90,25 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    ![Azure Machine Learning Workbench 中的数据视图](media/tutorial-classifying-iris/data_view.png)
 
-3. 选择“文本文件(*.csv、.json、.txt....)”，单击“下一步”。
+3. 选择“文本文件(\*.csv、\*.json、\*.txt...)”，然后单击“下一步”。
    ![Azure Machine Learning Workbench 中的数据源](media/tutorial-classifying-iris/data-source.png)
-   
 
-4. 浏览到文件 **iris.csv**，然后单击“下一步”。  
+4. 浏览到 **iris.csv** 文件，然后单击“完成”。 这将使用参数（例如分隔符和数据类型）的默认值。
 
    >[!IMPORTANT]
    >确保从本练习的当前项目目录内部选择 iris.csv 文件， 否则后续步骤可能失败。
  
    ![选择 iris](media/tutorial-classifying-iris/select_iris_csv.png)
    
-5. 保留默认值，并单击“完成”。
-
-6. 此时会创建名为 iris-1.dsource 的新文件。 使用短划线“-1”为该文件进行唯一的命名，因为示例项目附带了没有编号的 iris.dsource 文件。  
+5. 此时会创建名为 iris-1.dsource 的新文件。 使用短划线“-1”为该文件进行唯一的命名，因为示例项目附带了没有编号的 iris.dsource 文件。  
 
    此时会打开文件并显示数据。 “列 1”到“列 5”的一系列列标题会自动添加到此数据集。 滚动到底部。可以看到，数据集的最后一行是空的。 该行为空是因为 CSV 文件中有一个额外的换行符。
 
    ![Iris 数据视图](media/tutorial-classifying-iris/iris_data_view.png)
 
-1. 选择“指标”按钮。 此时会生成直方图并将其显示在屏幕上。
+1. 选择“指标”按钮。 此时会生成并显示直方图。
 
-   选择“数据”按钮即可切换回数据视图。 
+   可以通过选择“数据”按钮切换回数据视图。
    
    ![Iris 数据视图](media/tutorial-classifying-iris/iris_data_view_metrics.png)
 
@@ -121,7 +118,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 8. 选择“准备”按钮，开始创建数据准备包。 此时会打开“准备”对话框。 
 
-   默认情况下，示例项目包含一个 **iris.dprep** 数据准备 文件。 
+   示例项目包含一个默认选中的 **iris.dprep** 数据准备 文件。 
 
    ![Iris 数据视图](media/tutorial-classifying-iris/prepare.png)
 
@@ -129,7 +126,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    ![Iris 数据视图](media/tutorial-classifying-iris/prepare_new.png)
 
-1. 输入一个新值作为包名称，使用 **iris-1**，然后选择“确定”。
+1. 输入一个新值作为包名称（使用 **iris-1**），然后选择“确定”。
 
    此时会创建并在数据准备编辑器中打开名为 iris-1.dprep 的新数据准备包。
 
@@ -148,7 +145,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    1. 右键单击将其选中。 
    1. 从下拉菜单中选择“值计数”。 
 
-   此时会打开数据下面的“检查器”窗格。 会显示包含四个条形的直方图。 目标列包含三个非重复值：Iris_virginica、Iris_versicolor、Iris-setosa，以及一个 (null) 值。
+   此时会打开数据下面的“检查器”窗格。 会显示包含四个条形的直方图。 目标列包含四个非重复值：Iris-virginica、Iris-versicolor、Iris-setosa，以及一个 (null) 值。
 
    ![选择“值计数”](media/tutorial-classifying-iris/value_count.png)
 
@@ -160,7 +157,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
    ![筛选掉 null](media/tutorial-classifying-iris/filter_out2.png)
 
-1. 注意“步骤”窗格中详述的各个数据准备步骤。 在重命名列并筛选 null 值行时，系统将每个操作作为数据准备步骤记录。 可以编辑各个步骤以调整设置、为步骤重新排序，以及删除步骤。
+1. 注意“步骤”窗格中详述的各个数据准备步骤。 在重命名列并筛选 null 值行时，系统将每个操作作为数据准备步骤记录。 可以编辑各个步骤以调整其设置、为步骤重新排序，以及删除步骤。
 
    ![步骤](media/tutorial-classifying-iris/steps.png)
 
@@ -197,7 +194,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
    df.head(10)
    ```
 
-   `df` 表示一类数据帧，具体取决于此代码的运行上下文。 
+   `df` 表示另一类 DataFrame，具体取决于此代码的运行上下文：
    + 在 Python 运行时中执行时，使用 [pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)。
    + 在 Spark 上下文中执行时，使用 [Spark DataFrame](https://spark.apache.org/docs/latest/sql-programming-guide.html)。 
    

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 06/28/2017
 ms.author: daredis
-ms.openlocfilehash: 90c03f1538197e1cd1c90165417a4ec74c9c5961
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 678f3ae09a57cbbbb486d256f81f0f58563b482c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="secure-your-azure-sql-database"></a>保护 Azure SQL 数据库
 
@@ -184,10 +184,10 @@ Azure SQL 数据库审核跟踪数据库事件，并将事件写入 Azure 存储
    > 请对所有已审核的数据库使用同一存储帐户，以充分利用审核报告模板。
    > 
 
-5. 单击“保存” 。
+5. 单击“ **保存**”。
 
 > [!IMPORTANT]
-> 如果希望自定义审核事件，可通过 PowerShell 或 REST API 实现 - 请参阅 [SQL 数据库审核](sql-database-auditing.md)了解详细信息。
+> 如果希望自定义审核事件，可通过 PowerShell 或 REST API 实现 - 请参阅 [SQL 数据库审核](sql-database-auditing.md)，了解详细信息。
 >
 
 ## <a name="enable-sql-database-threat-detection"></a>启用 SQL 数据库威胁检测

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 5eca18ca2f34097d98ce947c61c635abc6ab27b8
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: bd15b7786552d21c8791eeb307aa8c87066b2bcd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>使用网络安全组筛选网络流量
 
 网络安全组 (NSG) 包含一系列安全规则，这些规则可以允许或拒绝流向连接到 Azure 虚拟网络 (VNet) 的资源的网络流量。 可以将 NSG 关联到子网、单个 VM（经典）或附加到 VM 的单个网络接口 (NIC) (Resource Manager)。 将 NSG 关联到子网时，规则适用于连接到该子网的所有资源。 也可通过将 NSG 关联到 VM 或 NIC 来进一步限制流量。
-
+ 
 > [!NOTE]
 > Azure 具有用于创建和处理资源的两个不同的部署模型：[Resource Manager 和经典](../resource-manager-deployment-model.md)。 这篇文章介绍如何使用这两种模型，但 Microsoft 建议大多数最新部署使用 Resource Manager 模型。
 
@@ -98,7 +98,7 @@ NSG 包含两组规则：入站规则和出站规则。 在每组中，规则的
 
 * **VM（仅经典部署模型）：**安全规则适用于所有出入 VM 的流量。 
 * **NIC（仅 Resource Manager 部署模型）：**安全规则适用于所有与 NSG 关联的出入 NIC 的流量。 在多 NIC VM 中，可以为每个 NIC 单独应用不同（或相同）的 NSG。 
-* **子网（Resource Manager 部署模型和经典部署模型）：**安全规则适用于出入任何连接到 VNet 的资源的任何流量。
+* **子网（资源管理器部署模型和经典部署模型）：**安全规则适用于出入任何连接到子网的资源的任何流量。
 
 可以将不同的 NSG 关联到 VM（或 NIC，具体取决于部署模型）以及 NIC 或 VM 连接到的子网。 安全规则在每个 NSG 中按优先级参照以下顺序应用到流量：
 

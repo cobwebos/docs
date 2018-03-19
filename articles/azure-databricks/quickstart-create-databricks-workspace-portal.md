@@ -11,14 +11,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/01/2018
+ms.date: 03/09/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 0112e5bf53f24150708b9c03440cd6183601f069
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6a0e69e1ab2c52586b447d8a249b52b09bbff705
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -48,12 +48,17 @@ ms.lasthandoff: 03/05/2018
     * 对于“订阅”，请从下拉列表中选择自己的 Azure 订阅。
     * 对于“资源组”，指定是要创建新的资源组还是使用现有资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/resource-group-overview.md)。
     * 对于“位置”，请选择“美国东部 2”。 有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。
+    * 对于“定价层”，请选择“标准”或“高级”。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。
 
-4. 单击“创建”。
+    单击“创建”。
+
+4. 创建帐户需要几分钟时间。 在创建帐户过程中，门户会在右侧显示“正在提交 Azure Databricks 的部署”磁贴。 可能需要在仪表板上向右滚动才能看到此磁贴。 另外，还会在屏幕顶部附近显示进度条。 你可以查看任一区域来了解进度。
+
+    ![Databricks 部署磁贴](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Databricks 部署磁贴")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中创建 Spark 群集
 
-1. 在 Azure 门户中，转到所创建的 Databricks 工作区，单击“初始化工作区”。
+1. 在 Azure 门户中，转到所创建的 Databricks 工作区，然后单击“启动工作区”。
 
 2. 随后将会重定向到 Azure Databricks 门户。 在该门户中，单击“群集”。
 
@@ -64,7 +69,7 @@ ms.lasthandoff: 03/05/2018
     ![在 Azure 上创建 Databricks Spark 群集](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
 
     * 输入群集的名称。
-    * 在本文中，请创建运行时为 **4.0 (beta)** 的群集。 
+    * 在本文中，请创建运行时为 **4.0** 的群集。 
     * 请务必选中“在不活动超过 ____ 分钟后终止”复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
     * 接受其他所有默认值。 
     * 单击“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
@@ -96,7 +101,7 @@ ms.lasthandoff: 03/05/2018
     > [!IMPORTANT]
     >本文使用**通过 DBFS 装载存储的方式**。 此方式可确保装载的存储与群集文件系统本身相关联。 因此，任何访问群集的应用程序也都可以使用关联的存储。 直接访问方式仅限通过其配置访问权限的应用程序。
     >
-    > 若要使用装载方式，必须创建一个 Databricks 运行时版本为 **4.0 (beta)** 的 Spark 群集，该群集是本文中选择的。
+    > 若要使用装载方式，必须创建一个 Databricks 运行时版本为 **4.0** 的 Spark 群集，该群集是本文中选择的。
 
     在以下代码片段中，将 `{YOUR CONTAINER NAME}`、`{YOUR STORAGE ACCOUNT NAME}`、`{YOUR STORAGE ACCOUNT ACCESS KEY}` 替换为你的 Azure 存储帐户的相应值。 在笔记本上的某个空白单元中粘贴该代码片段，并按 SHIFT + ENTER 运行该代码单元。
 

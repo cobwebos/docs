@@ -5,13 +5,13 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/31/2017
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: f7dc5e2df95a64685a8b70d25e839c371d4fc2de
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 2ac15e4da411efa6f018a3e3fb620023bc8964cc
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>运行 Azure 灾难恢复演练
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/02/2018
 
 ## <a name="verify-vm-properties"></a>验证虚拟机属性
 
-运行测试故障转移前，验证虚拟机属性，确保虚拟机符合 [Azure 要求](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
+运行测试性故障转移前，请验证 VM 属性，确保 Hyper-V VM[hyper-v-azure-support-matrix.md#replicated-vms]、[VMware VM 或物理服务器](vmware-physical-azure-support-matrix.md#replicated-machines)符合 Azure 要求。
 
 1. 在“受保护的项”中，单击“复制的项”>“虚拟机”。
 2. “复制的项”窗格中具有 VM 信息、运行状况状态和最新可用恢复点的摘要。 单击“属性”可查看更多详细信息。
@@ -66,4 +66,4 @@ ms.lasthandoff: 01/02/2018
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [为本地 VMware VM 运行故障转移和故障回复](tutorial-vmware-to-azure-failover-failback.md)。
+> [为本地 VMware VM 运行故障转移和故障回复](vmware-azure-tutorial-failover-failback.md)。

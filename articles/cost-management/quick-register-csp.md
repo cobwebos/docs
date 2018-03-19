@@ -1,6 +1,6 @@
 ---
 title: "使用 CSP 合作伙伴信息注册 Azure 成本管理 | Microsoft Docs"
-description: "使用 CSP 合作伙伴信息注册由 Cloudyn 提供的 Azure 成本管理。"
+description: "使用 CSP 合作伙伴信息注册到 Azure 成本管理。"
 services: cost-management
 keywords: 
 author: bandersmsft
@@ -10,15 +10,15 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 0e5e247182335b88f109aa6624a40bc782975b97
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cf4fb7e82529388a030fd37da9469bf17c8dc343
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>注册 CSP 合作伙伴计划并查看成本数据
 
-作为 CSP 合作伙伴，可以注册由 Cloudyn 提供的 Azure 成本管理。 注册后可以访问 Cloudyn 门户。 本快速入门将详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。 此外，还将演示如何立即开始查看成本数据。
+作为 CSP 合作伙伴，你可以注册到 Azure 成本管理。 注册后可以访问 Cloudyn 门户。 本快速入门将详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。 此外，还将演示如何立即开始查看成本数据。
 
 
 >[!NOTE]
@@ -71,7 +71,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，使用 CSP 信息注册了成本管理。 此外，还会登录到 Cloudyn 门户并开始查看成本数据。 若要了解有关 Cloudyn 提供的 Azure 成本管理的详细信息，请继续学习成本管理教程。
+在本快速入门中，使用 CSP 信息注册了成本管理。 此外，还会登录到 Cloudyn 门户并开始查看成本数据。 若要详细了解 Azure 成本管理，请继续学习成本管理教程。
 
 > [!div class="nextstepaction"]
 > [查看使用情况和成本](./tutorial-review-usage.md)

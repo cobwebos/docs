@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: jimdial
-ms.openlocfilehash: f4908963e0650be9b12b745f6868a1ba6ad933e4
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: c0017b8759a1f01b010172be562ed869d1d51a25
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的 Windows 虚拟机
 
 > [!IMPORTANT] 
-> 必须创建启用加速网络的虚拟机。 现有虚拟机不能启用此功能。 可按照以下步骤启用加速网络
+> 必须创建启用加速网络的虚拟机。 现有虚拟机不能启用此功能。 若要启用加速网络，请完成以下步骤：
 >   1. 删除虚拟机
 >   2. 重新创建启用加速网络的虚拟机
 >
@@ -60,6 +60,8 @@ Microsoft Windows Server 2012 R2 Datacenter 和 Windows Server 2016。
 * **网络接口创建：**只能为新 NIC 启用加速网络。 不能为现有 NIC 启用。
 * **VM 创建：**已启用加速网络的 NIC 只能在创建 VM 时附加到该 VM。 该 NIC 无法附加到现有 VM。 如果将 VM 添加到现有可用性集，可用性集中的所有 VM 也必须启用加速网络。
 * **仅通过 Azure 资源管理器部署：**不能部署具有加速网络的虚拟机（经典）。
+
+尽管本文提供了使用 Azure PowerShell 创建具有加速网络的虚拟机的步骤，但也可以[使用 Azure 门户创建具有加速网络的虚拟机](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在门户中创建具有支持的操作系统和 VM 大小的虚拟机时，请在“设置”的“加速网络”下，选择“启用”。 创建虚拟机后，需要按照[确认操作系统中安装了驱动程序](#confirm-the-driver-is-installed-in-the-operating-system)中的说明完成操作。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 

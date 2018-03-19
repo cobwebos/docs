@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 03/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6b5c16e5b4136acc06c4ace4b16e8eb0e3522d24
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 07f62775c9286250d33635febe01dbad4362df12
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>准备本地 VMware 服务器用于灾难恢复到 Azure
 
@@ -86,7 +86,7 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 **VM 名称** | 介于 1 和 63 个字符之间。<br/><br/> 限制为字母、数字和连字符。 VM 名称必须以字母或数字开始或结尾。
 **VM 类型** | 第 1 代 - Linux 或 Windows<br/><br/>第 2 代 - 仅限 Windows
 
-VM 还必须运行受支持的操作系统。 有关受支持版本的完整列表，请参阅 [Site Recovery 支持矩阵](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)。
+VM 还必须运行受支持的操作系统。 有关受支持版本的完整列表，请参阅 [VMware 和物理服务器支持矩阵](vmware-physical-azure-support-matrix.md#replicated-machines)。
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>准备在故障转移后连接到 Azure VM
 

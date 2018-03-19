@@ -6,20 +6,20 @@ author: neilpeterson
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 12/07/2017
+ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: a74a1ce5c9401d6445f5feec4af8d5cb771d2c64
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: db1fb3deec4b70a9341753a59910aeb0e002bca0
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-container-registry-using-the-azure-cli"></a>使用 Azure CLI 创建容器注册表
 
-Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何使用 Azure CLI 创建 Azure 容器注册表实例。
+Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何通过 Azure CLI 创建一个 Azure 容器注册表实例，如何将容器映像推送到注册表中，以及如何最终将容器从注册表部署到 Azure 容器实例 (ACI) 中。
 
-本快速入门需要运行 Azure CLI 2.0.25 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0][azure-cli]。
+本快速入门需要运行 Azure CLI 2.0.27 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0][azure-cli]。
 
 还必须在本地安装 Docker。 Docker 提供的包可在任何 [Mac][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
 
@@ -29,13 +29,13 @@ Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专
 
 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
-```azurecli-interactive
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-在本快速入门中，我们将创建基本注册表。 Azure 容器注册表以多个不同 SKU 提供，下表对此进行了简要说明。 有关每个 SKU 的更多详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
+在本快速入门中，请创建基本注册表。 Azure 容器注册表以多个不同 SKU 提供，下表对此进行了简要说明。 有关每个 SKU 的更多详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
 
 [!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
@@ -70,7 +70,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry007 --s
 }
 ```
 
-本快速入门的剩余部分使用 `<acrName>` 作为容器注册表名称的占位符。
+在本快速入门的剩余部分，`<acrName>` 是容器注册表名称的占位符。
 
 ## <a name="log-in-to-acr"></a>登录到 ACR
 
@@ -138,20 +138,64 @@ Result
 v1
 ```
 
+## <a name="deploy-image-to-aci"></a>将映像部署到 ACI
+
+若要从创建的注册表部署容器实例，必须在部署时提供注册表凭据。 在生产方案中，应该使用[服务主体][container-registry-auth-aci]进行容器注册表访问，但为了简洁起见，本快速入门使用以下命令在注册表上启用管理员用户：
+
+```azurecli
+az acr update --name <acrName> --admin-enabled true
+```
+
+启用管理员以后，用户名就是注册表名称，然后即可使用以下命令检索密码：
+
+```azurecli
+az acr credential show --name <acrName> --query "passwords[0].value"
+```
+
+若要使用 1 个 CPU 核心和 1 GB 内存来部署容器映像，请运行以下命令。 将 `<acrName>`、`<acrLoginServer>`、`<acrPassword>` 替换为从之前的命令中获得的值。
+
+```azurecli
+az container create --resource-group myResourceGroup --name acr-quickstart --image <acrLoginServer>/aci-helloworld:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
+```
+
+此时会返回 Azure 资源管理器的初始响应，其中包含容器的详细信息。 若要监视容器的状态并查看其何时运行，请重复 [az container show][az-container-show] 命令。 应该只需要不到一分钟的时间。
+
+```azurecli
+az container show --resource-group myResourceGroup --name acr-quickstart --query instanceView.state
+```
+
+## <a name="view-the-application"></a>查看应用程序
+
+成功部署到 ACI 以后，请使用 [az container show][az-container-show] 命令检索容器的 FQDN：
+
+```azurecli
+az container show --resource-group myResourceGroup --name acr-quickstart --query ipAddress.fqdn
+```
+
+示例输出：`"aci-demo.eastus.azurecontainer.io"`
+
+若要查看正在运行的应用程序，请从喜欢的浏览器中导航到此公共 IP 地址。
+
+![浏览器中的 Hello World 应用][aci-app-browser]
+
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要资源组、ACR 实例和所有容器映像，可以使用 [az group delete][az-group-delete] 命令将其删除。
 
-```azurecli-interactive
+```azurecli
 az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，你已使用 Azure CLI 创建 Azure 容器注册表。 如果要对 Azure 容器实例使用 Azure 容器注册表，请继续学习 Azure 容器实例教程。
+本快速入门介绍了如何使用 Azure CLI 创建 Azure 容器注册表，如何将容器映像推送到注册表，以及如何通过 Azure 容器实例启动该注册表的一个实例。 若要加深对 ACI 的了解，请继续阅读 Azure 容器实例教程。
 
 > [!div class="nextstepaction"]
 > [Azure 容器实例教程][container-instances-tutorial-prepare-app]
+
+<!-- IMAGES> -->
+[aci-app-browser]: ../container-instances/media/container-instances-quickstart/aci-app-browser.png
+
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -167,5 +211,7 @@ az group delete --name myResourceGroup
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli]: /cli/azure/install-azure-cli
+[az-container-show]: /cli/azure/container#az_container_show
 [container-instances-tutorial-prepare-app]: ../container-instances/container-instances-tutorial-prepare-app.md
 [container-registry-skus]: container-registry-skus.md
+[container-registry-auth-aci]: container-registry-auth-aci.md

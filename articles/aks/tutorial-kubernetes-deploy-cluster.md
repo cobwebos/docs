@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 975069dbe9283c98482d7d0d5741a595ef323b35
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d02229739e3f358e4a6510dfbb0585939e947f9c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>部署 Azure 容器服务 (AKS) 群集
 
@@ -85,7 +85,7 @@ k8s-myAKSCluster-36346190-0   Ready     49m       v1.7.9
 
 ## <a name="configure-acr-authentication"></a>配置 ACR 身份验证
 
-需要在 AKS 群集和 ACR 注册表之间配置身份验证。 这涉及到授予 ACS 标识相应的权限，以便从 ACR 注册表拉取映像。
+需要在 AKS 群集和 ACR 注册表之间配置身份验证。 这涉及到授予 AKS 标识相应的权限，以便从 ACR 注册表拉取映像。
 
 首先，获取为 AKS 配置的服务主体的 ID。 更新资源组名称和 AKS 群集名称，使之与环境相匹配。
 

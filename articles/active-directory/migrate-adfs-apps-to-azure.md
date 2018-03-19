@@ -9,13 +9,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/29/2018
+ms.date: 03/02/2018
 ms.author: billmath
-ms.openlocfilehash: ec0731534da2543d48bedc575bf882b790fa136b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f1256e2fefe1ad3d37403f37804888ab9dcf6e99
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>将 AD FS 本地应用迁移到 Azure 
 
@@ -166,7 +166,7 @@ SAML 2.0 应用程序可以通过 Azure AD 应用程序库与 Azure AD 集成，
 - 令牌功能中的声明
     - 以声明的方式颁发本地组名称
     - 除 Azure AD 之外的存储中的声明
-    - 复杂声明颁发转换规则（请参阅此文档和此文档，了解支持的声明映射）
+    - 复杂声明颁发转换规则（请参阅此[文档](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)和此[文档](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)，了解支持的声明映射）
     - 以声明方式颁发目录扩展
     - NameID 格式的自定义规范
     - 颁发多值属性

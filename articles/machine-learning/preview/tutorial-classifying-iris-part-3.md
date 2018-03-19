@@ -5,17 +5,17 @@ services: machine-learning
 author: raymondl
 ms.author: raymondl, j-martens, aashishb
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 02/28/2018
-ms.openlocfilehash: 761e7193cc64699e8aa25a1fd625ba45f65eed88
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 3/7/2018
+ms.openlocfilehash: 13ddc0ef8c7eac86e6cd7abb684ce35ae18fba84
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-classify-iris-part-3-deploy-a-model"></a>教程：鸢尾花分类（第 3 部分）：部署模型
 Azure 机器学习（预览版）是一个集成式的端到端数据科学和高级分析解决方案，适用于专业数据科学家。 数据科学家可以使用它以云的规模准备数据、开发试验和部署模型。
@@ -43,9 +43,9 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 需在本地安装并运行 Docker 引擎。 也可以将其部署到 Azure 中的 Azure 容器服务群集。
 
 ## <a name="download-the-model-pickle-file"></a>下载模型 pickle 文件
-在本教程的前一部分，已在 Machine Learning Workbench 中以本地方式运行了 iris_sklearn.py 脚本。 该操作已使用流行的 Python 对象序列化包 [pickle](https://docs.python.org/2/library/pickle.html) 序列化了逻辑回归模型。 
+在本教程的前一部分，已在 Machine Learning Workbench 中以本地方式运行了 iris_sklearn.py 脚本。 该操作已使用流行的 Python 对象序列化包 [pickle](https://docs.python.org/3/library/pickle.html) 序列化了逻辑回归模型。 
 
-1. 打开 Machine Learning Workbench 应用程序， 然后打开在本系列教程前一部分创建的 myIris 项目。
+1. 打开 Machine Learning Workbench 应用程序， 然后打开在本系列教程前面部分创建的 myIris 项目。
 
 2. 打开项目后，选择左侧窗格中的“文件”按钮（文件夹图标），打开项目文件夹中的文件列表。
 
@@ -79,7 +79,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
    在[如何读取和写入大型数据文件](how-to-read-write-files.md)中详细了解 `outputs` 文件夹。
 
 ## <a name="get-the-scoring-script-and-schema-files"></a>获取评分脚本和架构文件
-若要部署 Web 服务和模型文件，还需一个评分脚本。 也可能需要适用于 Web 服务输入数据的架构。 评分脚本从当前文件夹加载 **model.pkl** 文件，并使用它来生成新预测的 Iris 类。
+若要部署 Web 服务和模型文件，还需一个评分脚本。 也可能需要适用于 Web 服务输入数据的架构。 评分脚本从当前文件夹加载 **model.pkl** 文件，并使用它来生成新预测。
 
 1. 打开 Machine Learning Workbench 应用程序， 然后打开在本系列教程前一部分创建的 myIris 项目。
 
@@ -93,13 +93,13 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
 5. 该脚本在“输出”部分创建一个 JSON 文件，用于捕获模型所需的输入数据架构。
 
-6. 请注意“项目仪表板”窗格右侧的“作业”窗格。 等待最新的 score_iris.py 作业显示绿色的“已完成”状态。 然后选择最新作业运行对应的超链接 score_iris.py [1]，查看 score_iris.py 运行的运行详细信息。 
+6. 请注意“项目仪表板”窗格右侧的“作业”窗格。 等待最新的 score_iris.py 作业显示绿色的“已完成”状态。 然后选择最新作业运行对应的超链接 **score_iris.py**，查看运行详细信息。 
 
 7. 在“运行属性”窗格的“输出”部分，选择新建的 service_schema.json 文件。 选中文件名旁边的复选框，然后选择“下载”。 将该文件保存到项目根文件夹。
 
 8. 返回到在其中打开了 score_iris.py 脚本的前一选项卡。 使用数据收集即可从 Web 服务捕获模型输入和预测。 以下步骤专用于数据收集。
 
-9. 查看文件导入类 ModelDataCollector 顶部的代码，因为其中包含模型数据收集功能：
+9. 查看文件顶部用于导入 **ModelDataCollector** 类的代码，因为其中包含模型数据收集功能：
 
    ```python
    from azureml.datacollector import ModelDataCollector
@@ -107,31 +107,28 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
 10. 查看 init() 函数中用于实例化 ModelDataCollector 的以下代码行：
 
-      ```python
-      global inputs_dc, prediction_dc
-      inputs_dc = ModelDataCollector('model.pkl',identifier="inputs")
-      prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")`
-      ```
+    ```python
+    global inputs_dc, prediction_dc
+    inputs_dc = ModelDataCollector('model.pkl',identifier="inputs")
+    prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")`
+    ```
 
 11. 查看 run(input_df) 函数中的以下代码行，因为这些行用于收集输入和预测数据：
 
-      ```python
-      global clf2, inputs_dc, prediction_dc
-      inputs_dc.collect(input_df)
-      prediction_dc.collect(pred)
-      ```
+    ```python
+    inputs_dc.collect(input_df)
+    prediction_dc.collect(pred)
+    ```
 
 现在可以准备环境来操作化模型。
-
-
 
 ## <a name="prepare-to-operationalize-locally"></a>在本地准备操作化
 使用“本地模式”部署在本地计算机上的 Docker 容器中运行。
 
-可以使用“本地模式”进行开发和测试。 若要完成以下步骤来操作化模型，必须在本地运行 Docker 引擎。 可以在命令末尾使用 `-h` 标志获取命令帮助。
+可以使用“本地模式”进行开发和测试。 若要完成以下步骤来操作化模型，必须在本地运行 Docker 引擎。 可以在每个命令尾部使用 `-h` 标志来显示相应的帮助消息。
 
 >[!NOTE]
->如果本地没有 Docker 引擎，仍可通过在 Azure 中创建用于部署的群集来继续操作。 只是需要确保在完成教程后删除该群集，以免持续产生费用。
+>如果没有本地 Docker 引擎，仍可通过在 Azure 中创建用于部署的群集来继续操作。 只是需要确保在完成教程后删除该群集，以免持续产生费用。
 
 1. 打开命令行界面 (CLI)。
    在 Machine Learning Workbench 应用程序的“文件”菜单上，选择“打开命令提示符”。
@@ -140,13 +137,13 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
 2. 创建环境。 必须针对每个环境运行此步骤一次。 例如，针对开发环境运行一次，针对生产环境运行一次。 对于这第一个环境，请使用“本地模式”。 稍后可尝试在以下命令中使用 `-c` 或 `--cluster` 开关，以“群集模式”设置环境。
 
-   以下设置命令要求你具有订阅的“参与者”访问权限。 如果没有该权限，则至少应具有要将内容部署到其中的资源组的“参与者”访问权限。 若要执行后一操作，需在设置命令中使用 `-g` 标志来指定资源组名称。 
+   以下设置命令要求你具有订阅的“参与者”访问权限。 如果没有该权限，则至少应具有要将内容部署到其中的资源组的“参与者”访问权限。 如果属于后一种情况，需在设置命令中使用 `-g` 标志来指定资源组名称。 
 
    ```azurecli
    az ml env setup -n <new deployment environment name> --location <e.g. eastus2>
    ```
    
-   遵照屏幕说明预配一个用于存储 Docker 映像的存储帐户、一个用于列出 Docker 映像的 Azure 容器注册表，以及一个用于收集遥测数据的 Azure Application Insights 帐户。 如果使用了 `-c` 开关，则也会创建容器服务群集。
+   遵照屏幕说明预配一个用于存储 Docker 映像的存储帐户、一个用于列出 Docker 映像的 Azure 容器注册表，以及一个用于收集遥测数据的 Azure Application Insights 帐户。 如果使用 `-c` 开关，此命令会额外创建容器服务群集。
    
    可以参考群集名称识别环境。 位置应该与在 Azure 门户中创建的模型管理帐户的位置相同。
 
@@ -160,8 +157,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    ![预配状态](media/tutorial-classifying-iris/provisioning_state.png)
  
-   
-3. 创建模型管理帐户。 这是一次性设置。
+3. 如果尚未在本教程前面部分创建模型管理帐户，请现在就创建。 这是一次性设置。
    ```azurecli
    az ml account modelmanagement create --location <e.g. eastus2> -n <new model management account name> -g <existing resource group name> --sku-name S1
    ```
@@ -200,11 +196,13 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    可将以下开关与 **az ml service create realtime** 命令结合使用：
 
-   * `-n`：应用名称，必须全部采用小写形式。
-
    * `-f`：评分脚本文件名。
 
    * `--model-file`：模型文件。 在此示例中，它是 pickle model.pkl 文件。
+
+   * `-s`：服务架构。 这是在前面的步骤中生成的，方法是在本地运行 **score_iris.py** 脚本。
+
+   * `-n`：应用名称，必须全部采用小写形式。
 
    * `-r`：模型的运行时。 在此示例中，它是 Python 模型。 有效的运行时为 `python` 和 `spark-py`。
 
@@ -219,7 +217,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    此命令会在本地将该映像提取到计算机，然后启动基于该映像的 Docker 容器。 如果环境是以群集模式配置的，则 Docker 容器会改为部署到 Azure 云服务 Kubernetes 群集中。
 
-   在部署过程中，会在本地计算机上创建 Web 服务的 HTTP REST 终结点。 几分钟后，该命令应会完成并返回成功消息，Web 服务已准备好运行。
+   在部署过程中，会在本地计算机上创建 Web 服务的 HTTP REST 终结点。 几分钟后，该命令会完成并返回成功消息。 Web 服务已准备好运行！
 
 3. 若要查看正在运行的 Docker 容器，请使用 docker ps 命令：
 
@@ -230,7 +228,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 ## <a name="create-a-real-time-web-service-by-using-separate-commands"></a>使用单独的命令创建实时 Web 服务
 除了前面所示的 az ml service create realtime 命令以外，还可以单独执行这些步骤。 
 
-先注册模型， 再生成清单，然后生成 Docker 映像，最后创建 Web 服务。 这种循序渐进的方法能够更灵活地控制每个步骤。 此外，可以重复使用前一步骤生成的实体，仅当需要时才重新生成实体。
+先注册模型， 再生成清单，然后生成 Docker 映像，最后创建 Web 服务。 这种循序渐进的方法能够更灵活地控制每个步骤。 此外，可以重复使用前述步骤生成的实体，仅当需要时才重新生成实体。
 
 1. 通过提供 pickle 文件名注册模型。
 
@@ -253,7 +251,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
    若要创建 Docker 映像，请使用以下命令并提供前一步骤生成的清单 ID 值输出。 也可选择使用 `-c` 开关来包括 conda 依赖项。
 
    ```azurecli
-   az ml image create -n irisimage --manifest-id <manifest ID> -c amlconfig\conda_dependencies.yml
+   az ml image create -n irisimage --manifest-id <manifest ID> -c aml_config\conda_dependencies.yml
    ```
    此命令生成 Docker 映像 ID。
    
@@ -284,7 +282,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
    az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
    ```
 
-   输出为 "2"，即预测的类。 （你的结果可能不同。） 
+   输出为“Iris-setosa”，即预测的类。 （你的结果可能不同。） 
 
 ## <a name="view-the-collected-data-in-azure-blob-storage"></a>查看在 Azure Blob 存储中收集的数据
 
@@ -303,7 +301,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
    > 3. 从“文件”菜单打开命令行提示符。
    > 4. 在命令行提示符处输入 `az ml env show -v` 并查看 storage_account 值。 这是存储帐户的名称。
 
-5. 当“存储帐户”窗格打开后，在左侧的列表中选择“容器”。 找到名为 **modeldata** 的容器。 
+5. 当“存储帐户”窗格打开后，从“服务”部分选择“Blob”。 找到名为 **modeldata** 的容器。 
  
    如果看不到任何数据，可能需要在发出第一个 Web 服务请求之后，最长等待 10 分钟才能看到数据传播到存储帐户。
 
@@ -323,12 +321,11 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 
    * [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started)：将 CSV 数据加载到 Hive 表中，直接对 Blob 执行 SQL 查询。
 
-   * [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview)：使用大部分 CSV 数据创建数据帧。
+   * [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview)：使用大部分 CSV 数据创建 DataFrame。
 
       ```python
       var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")
       ```
-
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -344,7 +341,7 @@ Azure 机器学习（预览版）是一个集成式的端到端数据科学和�
 > * 运行实时 Web 服务。
 > * 检查输出 Blob 数据。 
 
-现已成功地在各种计算环境中运行训练脚本、创建模型、序列化模型，并通过基于 Docker 的 Web 服务将模型操作化。 
+现已成功地在各种计算环境中运行训练脚本， 并且还创建模型、序列化模型，并通过基于 Docker 的 Web 服务将模型操作化。 
 
 现在可以进行高级数据准备：
 > [!div class="nextstepaction"]

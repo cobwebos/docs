@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7e9f11e702dbbe8864f8a0c307777c922e5f028d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 238964540bffaf8d05148c587462256ce20d87f4
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="tutorial-manage-costs-by-using-azure-cost-management"></a>教程：使用 Azure 成本管理管理成本
 
-通过 Cloudyn 基于标记分摊成本在 Azure 成本管理中管理成本和生成报销报表。 成本分摊过程可根据耗用的云资源进行成本分配。 当所有资源均使用标记进行分类时，成本将可以实现完全分摊。 完成成本分摊后，可以通过仪表板或报表向用户提供报销或退款。 但是，当你开始使用成本管理时，许多资源可能会无标记或不可标记。
+通过基于标记分摊成本在 Azure 成本管理中管理成本和生成报销报表。 成本分摊过程可根据耗用的云资源进行成本分配。 当所有资源均使用标记进行分类时，成本将可以实现完全分摊。 完成成本分摊后，可以通过仪表板或报表向用户提供报销或退款。 但是，当你开始使用成本管理时，许多资源可能会无标记或不可标记。
 
 例如，你可能需要报销工程费用。 你需要能够根据资源成本向工程团队出示你需要报销的一个具体金额。 此时，你可以向他们提供所有已使用的标记为“工程”的资源。
 

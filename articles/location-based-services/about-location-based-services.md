@@ -3,23 +3,27 @@ title: "Azure Location Based Services 概述 | Microsoft 文档"
 description: "Azure Location Based Services（预览版）简介"
 services: location-based-services
 keywords: 
-author: dsk-2015
-ms.author: dkshir
-ms.date: 02/05/2017
+author: kgremban
+ms.author: kgremban
+ms.date: 02/05/2018
 ms.topic: overview
 ms.service: location-based-services
 documentationcenter: 
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 9e6236f7d69556d7636962c98886d9f9508445ac
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 91df49aa3f522ea765698a1d64ed2686606f71f3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="an-introduction-to-azure-location-based-services-preview"></a>Azure Location Based Services（预览版）简介
 Azure Location Based Services 是一项地理空间服务组合，包括适用于地图、搜索、路线、交通和时区的服务 API。 借助这组与 Azure OneAPI 兼容的服务，可让你使用熟悉的开发人员工具快速开发和缩放将位置信息集成到 Azure 解决方案中的解决方案。 Azure Location Based Services 向开发人员提供各个行业强大的地理空间功能，并搭配所需的全新地图数据，以便为 Web 和移动应用程序提供地理环境。 Azure Location Based Services 是与 Azure One API 兼容的一组 REST API，随基于 Web 的 JavaScript 控件一起提供，使得开发极其简单、灵活且可跨多个媒体移植。 
+
+下面的视频介绍 Azure Location Based Services。
+
+<iframe src="https://channel9.msdn.com/Shows/Azure-Friday/Azure-Location-Based-Services/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
 Azure Location Based Services 由五项主要服务组成，以支持需要地理环境的 Azure 应用程序。 下面将逐一详细介绍上述的每项服务。
 
@@ -64,6 +68,16 @@ Azure Location Based Services 由五项主要服务组成，以支持需要地�
 Azure Location Based Services 是针对移动性而构建的，可以支持跨平台的应用程序，因为编程模型是不可知的，并且通过 REST API 支持输出 JSON。 此外，Azure LBS 还提供了一个简单的编程模型和方便的 JavaScript Map Control，可以快速轻松地开发 Web 和移动应用程序。 
 
 Azure Location Based Services 使用基于密钥的身份验证方案，因此，访问这些服务需要导航到 [Azure 门户](http://portal.azure.com)，并创建一个 Azure Location Based Services 帐户。 你的帐户将附带为你预生成的两个密钥。 首先将这些位置功能直接集成到你的应用程序，方法是使用请求 Azure Location Based Services 服务的任一密钥。
+
+## <a name="unsupported-regions"></a>不受支持的区域
+我们的 API 目前在以下国家/地区不可用。 请检查当前的 IP 地址，并确认该 IP 地址的位置不在下面所列的某个不受支持国家/地区。
+
+* 阿根廷
+* 中国
+* 印度
+* 摩洛哥
+* 巴基斯坦
+* 韩国
 
 ## <a name="relationship-with-bing-maps"></a>与必应地图的关系
 本文档中介绍的 Azure Location Based Services 不同于必应地图提供的。  虽然二者的很多功能是相同的，但这两项服务既不相同，也不相关。  在 Azure 中提供这项将会单独管理的新服务对必应地图产品的提供或路线图没有影响。

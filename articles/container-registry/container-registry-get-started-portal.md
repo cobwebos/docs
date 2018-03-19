@@ -6,18 +6,18 @@ author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 12/06/2017
+ms.date: 03/03/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 1a4c5b365b93b30987ff6541aba762cbf8a4b7a5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: db112f7f8f486093509a86f9781c30133925c25f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>使用 Azure 门户创建容器注册表
 
-Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中存储和管理专用 Docker 容器映像。 在本快速入门教程中，你会使用 Azure 门户创建容器注册表。
+Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中存储和管理专用 Docker 容器映像。 在本快速入门中，请通过 Azure 门户创建一个容器注册表，将容器映像推送到注册表中，并最终将容器从注册表部署到 Azure 容器实例 (ACI) 中。
 
 要完成本快速入门，必须在本地安装 Docker。 Docker 提供的包可在任何 [Mac][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
 
@@ -73,13 +73,13 @@ docker pull microsoft/aci-helloworld
 
 将映像推送到注册表之前，必须使用 ACR 登录服务器名称标记映像。 使用 [docker tag][docker-tag] 命令标记映像。 使用之前记录的登录服务器名称替换登录服务器。
 
-```
+```bash
 docker tag microsoft/aci-helloworld <login server>/aci-helloworld:v1
 ```
 
 最后，使用 [docker push][docker-push] 将映像推送到 ACR 实例。 使用 ACR 实例的登录服务器名称替换登录服务器。
 
-```
+```bash
 docker push <login server>/aci-helloworld:v1
 ```
 
@@ -104,15 +104,43 @@ v1: digest: sha256:f2867748615cc327d31c68b1172cc03c0544432717c4d2ba2c1c2d34b18c6
 
 ![在 Azure 门户中创建容器注册表][qs-portal-09]
 
+## <a name="deploy-image-to-aci"></a>将映像部署到 ACI
+
+若要从注册表部署到某个实例，需导航到存储库 (aci-helloworld)，然后单击 v1 旁边的省略号。
+
+![从门户启动 Azure 容器实例][qs-portal-10]
+
+显示上下文菜单后，请选择“运行实例”：
+
+![启动 ACI 上下文菜单][qs-portal-11]
+
+填写“容器名称”，确保选择正确的订阅，然后选择现有的**资源组**“myResourceGroup”，再单击“确定”以启动 Azure 容器实例。
+
+![启动 ACI 部署选项][qs-portal-12]
+
+启动部署时，会在门户仪表板上个放置一个磁贴，用于指示部署进度。 部署完成后，将更新该磁贴以显示新的 **mycontainer** 容器组。
+
+![ACI 部署状态][qs-portal-13]
+
+选择 mycontainer 容器组，以显示该容器组的属性。 请记下该容器组的“IP 地址”，以及容器的“状态”。
+
+![ACI 容器详细信息][qs-portal-14]
+
+## <a name="view-the-application"></a>查看应用程序
+
+容器处于“正在运行”状态后，请通过喜欢的浏览器导航到在上一步中记下的 IP 地址，以显示应用程序。
+
+![浏览器中的 Hello World 应用][qs-portal-15]
+
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要时，删除 myResourceGroup 资源组。 此操作会删除资源组、ACR 实例和所有容器映像。
+若要清理资源，请导航到门户中的 **myResourceGroup** 资源组。 加载资源组以后，请单击“删除资源组”，以便删除资源组、Azure 容器注册表以及所有 Azure 容器实例。
 
 ![在 Azure 门户中创建容器注册表][qs-portal-08]
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，已使用 Azure 门户创建了 Azure 容器注册表。 如果要对 Azure 容器实例使用 Azure 容器注册表，请继续学习 Azure 容器实例教程。
+本快速入门介绍了如何使用 Azure CLI 创建 Azure 容器注册表，以及如何通过 Azure 容器实例启动该注册表的一个实例。 若要加深对 ACI 的了解，请继续阅读 Azure 容器实例教程。
 
 > [!div class="nextstepaction"]
 > [Azure 容器实例教程][container-instances-tutorial-prepare-app]
@@ -127,6 +155,12 @@ v1: digest: sha256:f2867748615cc327d31c68b1172cc03c0544432717c4d2ba2c1c2d34b18c6
 [qs-portal-07]: ./media/container-registry-get-started-portal/qs-portal-07.png
 [qs-portal-08]: ./media/container-registry-get-started-portal/qs-portal-08.png
 [qs-portal-09]: ./media/container-registry-get-started-portal/qs-portal-09.png
+[qs-portal-10]: ./media/container-registry-get-started-portal/qs-portal-10.png
+[qs-portal-11]: ./media/container-registry-get-started-portal/qs-portal-11.png
+[qs-portal-12]: ./media/container-registry-get-started-portal/qs-portal-12.png
+[qs-portal-13]: ./media/container-registry-get-started-portal/qs-portal-13.png
+[qs-portal-14]: ./media/container-registry-get-started-portal/qs-portal-14.png
+[qs-portal-15]: ./media/container-registry-get-started-portal/qs-portal-15.png
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

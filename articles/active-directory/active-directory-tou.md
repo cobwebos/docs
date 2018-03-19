@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2017
+ms.date: 03/06/2018
 ms.author: billmath
-ms.openlocfilehash: c01ea7c6a05c77244ab29fe6eec00ed1e49b6f7e
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: e29e842a54d286e19d23c1c91c08d55933a0eada
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-active-directory-terms-of-use-feature-preview"></a>Azure Active Directory 使用条款功能（预览）
 Azure AD 使用条款提供了一个简单方法，组织可以使用它向最终用户显示信息。  这可确保用户看到法律要求或合规性要求的相关免责声明。
@@ -59,7 +59,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。   此 PDF 可以是任意�
 6. **选择**使用条款的语言。  可以通过语言选项上传多个版本的使用条款，每个版本的语言各不相同。  最终用户看到的使用条款版本取决于其浏览器首选项。
 7. 对于“要求用户展开使用条款”这一功能，可选择“启用”或“禁用”。  如果将此功能设置为“启用”，则最终用户在接受使用条款之前必须先进行查看。
 8. 可以在“条件访问”部分使用模板或自定义条件访问策略**强制执行**已上传的使用条款。  可以使用自定义条件访问条款策略将使用条款细化，可向下细化到特定云应用程序或用户组。  有关详细信息，请参阅[配置条件访问策略](active-directory-conditional-access-best-practices.md)
-9. 单击“创建” 。
+9. 单击“创建”。
 10. 选择自定义条件访问模板后，将出现新的屏幕，可以通过此屏幕自定义 CA 策略。
 11. 现在应能看到你的新使用条款。</br>
 
@@ -128,7 +128,7 @@ Azure AD 使用条款提供了易于使用的审核功能，使你可以看到�
 答：是的，管理员可以更改使用条款的条款，这需要用户重新接受新的条款。
 
 **问：使用条款是否支持多种语言？**</br>
-答：不支持，目前单个使用条款中无法包含多种语言。  但是，可以将范围设定到某个组（例如，适用于法国的使用条款不同于适用于英国的使用条款）。 
+答：是的。  目前，管理员可以为单个使用条款配置 18 种不同的语言。 
 
 **问：什么时候会触发使用条款？**</br>
 答：在登录体验期间触发使用条款。

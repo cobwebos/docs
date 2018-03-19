@@ -1,6 +1,6 @@
 ---
-title: "Cloudyn 提供的 Azure 成本管理概述 | Microsoft Docs"
-description: "Cloudyn 提供的 Azure 成本管理是一个多云成本管理解决方案，可帮助客户使用 Azure 和其他云资源。"
+title: "Azure 成本管理概述 | Microsoft Docs"
+description: "Azure 成本管理是一个多云成本管理解决方案，可帮助你使用 Azure 和其他云资源。"
 services: cost-management
 keywords: 
 author: bandersmsft
@@ -10,17 +10,17 @@ ms.topic: overview
 ms.service: cost-management
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f09bb135d4521325ab3e3e12af2f69d862434b75
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e2f12a989eb275e645c8b3bde3494928c5cbdb47
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="what-is-azure-cost-management"></a>Azure 成本管理是什么？
 
-使用 Cloudyn 提供的 Azure 成本管理可以跟踪 Azure 资源和其他云提供商（包括 AWS 和 Google）的云使用量和开支。 便于理解的仪表板报告也有助于成本分配和 Showback/Chargeback。 成本管理通过确定可供稍后管理和调整的未充分利用的资源，帮助优化云支出。
+使用 Cloudyn（一家 Microsoft 子公司）许可的 Azure 成本管理可以跟踪 Azure 资源和其他云提供商（包括 AWS 和 Google）的云使用量和开支。 便于理解的仪表板报告也有助于成本分配和 Showback/Chargeback。 成本管理通过确定可供稍后管理和调整的未充分利用的资源，帮助优化云支出。
 
-若要观看介绍性视频，请参阅 [Cloudyn 提供的 Azure 成本管理简介](https://youtu.be/NWIRny6Wpsk)。
+若要观看介绍性视频，请参阅 [Azure 成本管理简介](https://youtu.be/NWIRny6Wpsk)。
 
 ## <a name="monitor-usage-and-spending"></a>监视使用量和支出
 

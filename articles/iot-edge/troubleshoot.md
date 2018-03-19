@@ -10,11 +10,11 @@ ms.date: 12/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5de069eb35e88c1dce6dcfa5a1661e8ab87302b1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7b9f9f8295aac0920ae4726289c535aae12c4482
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -30,10 +30,10 @@ ms.lasthandoff: 02/21/2018
    docker logs <container name>
    ```
 
-* 查看经过 Edge 中心的消息，并通过来自运行时容器的详细 日志收集有关设备属性更新的见解。
+* 查看经过 Edge 中心的消息，并通过来自运行时容器的详细 日志收集有关设备属性更新的见解。 如果是按快速入门文章进行操作，则可能需要添加“--auto-cert-gen-force-no-passwords”选项。
 
    ```cmd
-   iotedgectl setup --runtime-log-level DEBUG
+   iotedgectl setup --connection-string "{device connection string}" --runtime-log-level debug
    ```
 
 * 如果遇到连接问题，请检查边缘设备环境变量，例如设备连接字符串：
@@ -96,6 +96,23 @@ Edge 代理无权访问某个模块的映像。
 
 ### <a name="resolution"></a>解决方法
 尝试再次运行 `iotedgectl login` 命令。
+
+## <a name="iotedgectl-cant-find-docker"></a>iotedgectl 找不到 Docker
+iotedgectl 无法执行设置或启动命令，因此向日志输出了以下消息：
+```output
+File "/usr/local/lib/python2.7/dist-packages/edgectl/host/dockerclient.py", line 98, in get_os_type
+  info = self._client.info()
+File "/usr/local/lib/python2.7/dist-packages/docker/client.py", line 174, in info
+  return self.api.info(*args, **kwargs)
+File "/usr/local/lib/python2.7/dist-packages/docker/api/daemon.py", line 88, in info
+  return self._result(self._get(self._url("/info")), True)
+```
+
+### <a name="root-cause"></a>根本原因
+iotedgectl 找不到 Docker，而后者是先决条件。
+
+### <a name="resolution"></a>解决方法
+安装 Docker，确保其正在运行，然后重试。
 
 ## <a name="next-steps"></a>后续步骤
 认为在 IoT Edge 平台中发现了 bug？ 请[提交问题](https://github.com/Azure/iot-edge/issues)以便我们可以持续改进。 

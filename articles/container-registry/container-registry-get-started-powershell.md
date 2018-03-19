@@ -6,18 +6,18 @@ author: neilpeterson
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 02/12/2018
+ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 80b5055dee35cd6efe62ee949c05aef386a3ba14
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 2bae45955cf3c2b157acce2544b1f35fbddd0170
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-an-azure-container-registry-using-powershell"></a>使用 PowerShell 创建 Azure 容器注册表
 
-Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何使用 PowerShell 创建 Azure 容器注册表实例。
+Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何通过 PowerShell 创建一个 Azure 容器注册表实例，如何将容器映像推送到注册表中，以及如何最终将容器从注册表部署到 Azure 容器实例 (ACI) 中。
 
 本快速入门需要 Azure PowerShell 模块 3.6 版或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
@@ -59,7 +59,7 @@ $creds = Get-AzureRmContainerRegistryCredential -Registry $registry
 
 接下来，使用 [docker login][docker-login] 命令登录到 ACR 实例。
 
-```bash
+```powershell
 docker login $registry.LoginServer -u $creds.Username -p $creds.Password
 ```
 
@@ -69,31 +69,61 @@ docker login $registry.LoginServer -u $creds.Username -p $creds.Password
 
 要将映像推送到 Azure 容器注册表，首先必须具有一个映像。 如有必要，请运行以下命令，从 Docker 中心拉取预先创建的映像。
 
-```bash
+```powershell
 docker pull microsoft/aci-helloworld
 ```
 
-必须使用 ACR 登录服务器名称标记此映像。 运行 [Get-AzureRmContainerRegistry](/powershell/module/containerregistry/Get-AzureRmContainerRegistry) 命令来返回 ACR 实例的登录服务器名称。
+必须使用 ACR 登录服务器名称标记此映像。 为此，请使用 [docker tag][docker-tag] 命令。 
 
 ```powershell
-Get-AzureRmContainerRegistry | Select Loginserver
+$image = $registry.LoginServer + "/aci-helloworld:v1"
+docker tag microsoft/aci-helloworld $image
 ```
 
-使用 [docker tag][docker-tag] 命令标记映像。 将 *acrLoginServer* 替换为你的 ACR 实例的登录服务器名称。
+最后，使用 [docker push][docker-push] 将映像推送到 ACR。
 
-```bash
-docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
+```powershell
+docker push $image
 ```
 
-最后，使用 [docker push][docker-push] 将映像推送到 ACR 实例。 将 *acrLoginServer* 替换为你的 ACR 实例的登录服务器名称。
+## <a name="deploy-image-to-aci"></a>将映像部署到 ACI
+若要在 Azure 容器实例 (ACI) 中将映像部署为容器实例，请首先将注册表凭据转换为 PSCredential。
 
-```bash
-docker push <acrLoginServer>/aci-helloworld:v1
+```powershell
+$secpasswd = ConvertTo-SecureString $creds.Password -AsPlainText -Force
+$pscred = New-Object System.Management.Automation.PSCredential($creds.Username, $secpasswd)
 ```
+
+若要从容器注册表部署包含 1 个 CPU 核心和 1 GB 内存的容器映像，请运行以下命令：
+
+```powershell
+New-AzureRmContainerGroup -ResourceGroup myResourceGroup -Name mycontainer -Image $image -Cpu 1 -MemoryInGB 1 -IpAddressType public -Port 80 -RegistryCredential $pscred
+```
+
+此时会返回 Azure 资源管理器的初始响应，其中包含容器的详细信息。 若要监视容器的状态并查看其何时运行，请重复 [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] 命令。 应该只需要不到一分钟的时间。
+
+```powershell
+(Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer).ProvisioningState
+```
+
+示例输出：`Succeeded`
+
+## <a name="view-the-application"></a>查看应用程序
+成功部署到 ACI 以后，请使用 [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] 命令检索容器的公用 IP 地址：
+
+```powershell
+(Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer).IpAddress
+```
+
+示例输出：`"13.72.74.222"`
+
+若要查看正在运行的应用程序，请从喜欢的浏览器中导航到此公共 IP 地址。 应该会看到类似下面的屏幕：
+
+![浏览器中的 Hello World 应用][qs-portal-15]
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、ACR 实例和所有容器映像，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 命令将其删除。
+如果不再需要资源组、Azure 容器注册表和所有 Azure 容器实例，可以使用 [Remove-AzureRmResourceGroup][Remove-AzureRmResourceGroup] 命令将其删除。
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -101,7 +131,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，你已使用 Azure CLI 创建 Azure 容器注册表。 如果要对 Azure 容器实例使用 Azure 容器注册表，请继续学习 Azure 容器实例教程。
+本快速入门介绍了如何使用 Azure CLI 创建 Azure 容器注册表，以及如何在 Azure 容器实例中启动该注册表的一个实例。 若要加深对 ACI 的了解，请继续阅读 Azure 容器实例教程。
 
 > [!div class="nextstepaction"]
 > [Azure 容器实例教程](../container-instances/container-instances-tutorial-prepare-app.md)
@@ -113,3 +143,10 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 [docker-push]: https://docs.docker.com/engine/reference/commandline/push/
 [docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
 [docker-windows]: https://docs.docker.com/docker-for-windows/
+
+<!-- Links - internal -->
+[Get-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/get-azurermcontainergroup
+[Remove-AzureRmResourceGroup]: /powershell/module/azurerm.resources/remove-azurermresourcegroup
+
+<!-- IMAGES> -->
+[qs-portal-15]: ./media/container-registry-get-started-portal/qs-portal-15.png
