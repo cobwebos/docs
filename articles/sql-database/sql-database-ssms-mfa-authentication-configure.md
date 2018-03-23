@@ -1,26 +1,19 @@
 ---
-title: "配置多重身份验证 - Azure SQL | Microsoft Docs"
-description: "了解如何将多重身份验证与 SSMS 搭配用于 SQL 数据库和 SQL 数据仓库。"
+title: 配置多重身份验证 - Azure SQL | Microsoft Docs
+description: 了解如何将多重身份验证与 SSMS 搭配用于 SQL 数据库和 SQL 数据仓库。
 services: sql-database
-documentationcenter: 
 author: GithubMirek
-manager: johammer
-editor: 
-tags: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
 ms.date: 09/27/2017
 ms.author: mireks
-ms.openlocfilehash: fe056288fbc04db0a6892c9a501c58ed85967734
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 7b74cd6b62686fd03d9f42316701f44daf99eed8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>为 SQL Server Management Studio 和 Azure AD 配置多重身份验证
 

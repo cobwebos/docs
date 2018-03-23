@@ -1,11 +1,11 @@
 ---
-title: "在逻辑应用中添加 Azure Blob 存储连接器 | Microsoft Docs"
-description: "入门并在逻辑应用中配置 Azure Blob 存储连接器"
-services: 
-documentationcenter: 
-author: MandiOhlinger
+title: 在逻辑应用中添加 Azure Blob 存储连接器 | Microsoft Docs
+description: 入门并在逻辑应用中配置 Azure Blob 存储连接器
+services: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: b5dc3f75-6bea-420b-b250-183668d2848d
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/02/2017
-ms.author: mandia; ladocs
-ms.openlocfilehash: e12669abd41f09d161fab786af29955da54a1633
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 7aaff2ac78201c4484105c6cacc5f0fef19ca7b5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-the-azure-blob-storage-connector-in-a-logic-app"></a>在逻辑应用中使用 Azure Blob 存储连接器
 使用 Azure Blob 存储连接器上传、更新、获取和删除存储帐户中的 Blob，一切操作皆在逻辑应用中完成。  

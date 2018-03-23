@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 门户缩放媒体处理 | Microsoft Docs"
-description: "本教程逐步介绍了如何使用 Azure 门户缩放媒体处理。"
+title: 使用 Azure 门户缩放媒体处理 | Microsoft Docs
+description: 本教程逐步介绍了如何使用 Azure 门户缩放媒体处理。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: e500f733-68aa-450c-b212-cf717c0d15da
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/04/2017
 ms.author: juliako
-ms.openlocfilehash: d2312803a4471e207d3696ca8350a86e3c4761e6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f65ba489d70a3844169780c4680fcc43b3064b54
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="change-the-reserved-unit-type"></a>更改保留单位类型
 > [!div class="op_single_selector"]
@@ -54,11 +54,10 @@ ms.lasthandoff: 12/21/2017
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
 2. 在“设置”窗口中，选择“媒体保留单位”。
    
-    若要更改所选保留单位类型的保留单位数，请使用“媒体保留单位”滑块。
+    若要更改所选保留单位类型的保留单位数，请使用屏幕顶部的“媒体保留单位”滑块。
    
-    若要更改“保留单位类型”，请按“S1”、“S2”或“S3”。
+    若要更改“保留单位类型”，请单击“保留处理单位的速度”栏。 然后，选择所需的定价层：S1、S2 或 S3。
    
-    ![“处理器”页](./media/media-services-portal-scale-media-processing/media-services-scale-media-processing.png)
 3. 按“保存”按钮保存更改。
    
     按“保存”后，会立即分配新的保留单位。

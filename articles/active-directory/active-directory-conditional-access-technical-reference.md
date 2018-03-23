@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory 条件访问设置参考 | Microsoft Docs"
-description: "获取 Azure Active Directory 条件访问策略中受支持设置的概述。"
+title: Azure Active Directory 条件访问设置参考 | Microsoft Docs
+description: 获取 Azure Active Directory 条件访问策略中受支持设置的概述。
 services: active-directory.
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2018
+ms.date: 03/07/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: fd82d77e79f05a67f8e818095753b8dc22ccf314
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ba93e1b597bb6bdb752563f2873b8e0c5f7a8181
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -136,9 +136,19 @@ ms.lasthandoff: 02/09/2018
 | macOS                  | Chrome、Safari                      | ![勾选标记][1] |
 
 
-> [!NOTE]
-> 对于 Chrome 支持，必须使用 Windows 10 创意者更新（版本 1703）或更高版本。<br>
-> 可安装[此扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。
+
+#### <a name="chrome-support"></a>Chrome 支持
+
+对于 Windows 10 创意者更新（版本 1703）或更高版本中的 Chrome 支持，请安装[此扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。
+
+对于 Windows 8.1 和 7 中的 Chrome 支持，请创建以下注册表项：
+
+|    |    |
+|--- | ---|
+|路径 | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+|名称 | 1 |
+|Type | REG_SZ (String) |
+|数据 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。 
 
@@ -183,6 +193,10 @@ ms.lasthandoff: 02/09/2018
 此设置适用于以下客户端应用：
 
 
+- Microsoft Intune Managed Browser
+- Microsoft PowerBI
+- Microsoft Invoicing
+- Microsoft Launcher
 - Microsoft Azure 信息保护
 - Microsoft Excel
 - Microsoft Kaizala 

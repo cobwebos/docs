@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 SCC LifeCycle 集成 | Microsoft Docs"
-description: "了解如何使用 SCC LifeCycle 与 Azure Active Directory 来启用单一登录、自动化预配和其他功能！"
+title: 教程：Azure Active Directory 与 SCC LifeCycle 集成 | Microsoft Docs
+description: 了解如何使用 SCC LifeCycle 与 Azure Active Directory 来启用单一登录、自动化预配和其他功能！
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.openlocfilehash: 943698311d10b479879fd92d2482d827650e2b0c
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>教程：Azure Active Directory 与 SCC LifeCycle 集成
 本教程的目的是说明 Azure 与 SCC LifeCycle 的集成。  
@@ -75,7 +75,7 @@ ms.lasthandoff: 01/05/2018
 2. 在“你希望用户如何登录 SCC LifeCycle”页上，选择“Microsoft Azure AD 单一登录”，并单击“下一步”。
    
     ![配置单一登录](./media/active-directory-saas-scc-lifecycle-tutorial/IC794123.png "配置单一登录")
-3. 在“配置应用 URL”页上的“登录 URL”文本框中，使用以下模式键入用户用于登录 SCC LifeCycle 应用程序的 URL：*https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx*，并单击“下一步”。
+3. 在“配置应用 URL”页上的“登录 URL”文本框中，使用以下模式键入用户用于登录 SCC LifeCycle 应用程序的 URL：“https://bs1.scc.com/lc7/welcome/customer/PICTtest.aspx”，然后单击“下一步”。
    
     ![配置应用 URL](./media/active-directory-saas-scc-lifecycle-tutorial/IC794124.png "配置应用 URL")
 4. 在“配置 SCC LifeCycle 的单一登录”页上，单击“下载元数据”，然后将元数据文件本地保存在计算机上。

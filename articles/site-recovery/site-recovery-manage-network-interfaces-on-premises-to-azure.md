@@ -1,26 +1,20 @@
 ---
-title: "管理用于本地到 Azure 方案的 Azure Site Recovery 中的网络接口 | Microsoft 文档"
-description: "介绍如何管理使用 Azure Site Recovery 实现的本地到 Azure 方案中的网络接口"
+title: 管理用于本地到 Azure 复制的 Azure Site Recovery 中的网络接口 | Microsoft 文档
+description: 介绍如何管理使用 Azure Site Recovery 实现从本地到 Azure 复制中的网络接口
 services: site-recovery
-documentationcenter: 
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: ab8582d9c32cf13bd7b21a59031af8fde58effbf
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: a0d42608dc689e5f084f4ec91858531feeac8033
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-scenarios"></a>管理用于本地到 Azure 方案的虚拟机网络接口
+# <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-replication"></a>管理用于本地到 Azure 复制的虚拟机网络接口
 
 Azure 中的虚拟机 (VM) 必须附加有至少一个网络接口。 它可以附加 VM 的大小所能够支持的网络接口数量。
 

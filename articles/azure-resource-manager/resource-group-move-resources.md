@@ -1,8 +1,8 @@
 ---
-title: "将 Azure 资源移到新的订阅或资源组 | Microsoft 文档"
-description: "使用 Azure 资源管理器将资源移到新的资源组或订阅。"
+title: 将 Azure 资源移到新的订阅或资源组 | Microsoft 文档
+description: 使用 Azure 资源管理器将资源移到新的资源组或订阅。
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6a1d56a270ae0c44db18f26091cc3c550a37e420
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c4bf3871b4636ce769dd8d84a637b88d4a00db97
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 03/05/2018
 * 将资源移到新的 Azure 帐户（和 Azure Active Directory 租户），并且对于上一部分中的说明需要帮助。
 * 移动经典资源时遇到限制方面的问题。
 
-## <a name="services-that-enable-move"></a>可移动的服务
+## <a name="services-that-can-be-moved"></a>可以移动的服务
 
 支持同时移动到新资源组和订阅的服务包括：
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 03/05/2018
 * 虚拟网络 - 请参阅[虚拟网络限制](#virtual-networks-limitations)
 * VPN 网关
 
-## <a name="services-that-do-not-enable-move"></a>不支持移动的服务
+## <a name="services-that-cannot-be-moved"></a>无法移动的服务
 
 目前不可移动资源的服务包括：
 
@@ -307,7 +307,7 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 若要在资源组之间移动在 Azure 备份中注册的 VM：
  1. 暂时停止备份并保留备份数据
  2. 将 VM 移至目标资源组
- 3. 在相同/新保管库中对其进行重新保护 用户可以从在移动操作之前创建的可用还原点进行还原。
+ 3. 在相同/新保管库中对其进行重新保护，用户可以从在移动操作之前创建的可用还原点进行还原。
 如果用户跨订阅移动备份 VM，则步骤 1 和步骤 2 保持相同。 在步骤 3 中，用户需要在目标订阅中存在/创建的新保管库下保护 VM。 恢复服务保管库不支持跨订阅备份。
 
 ## <a name="hdinsight-limitations"></a>HDInsight 限制

@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 支持条款 | Microsoft Docs"
-description: "介绍适用于 StorSimple 8000 系列企业存储客户的支持选项。"
+title: StorSimple 支持条款 | Microsoft Docs
+description: 介绍适用于 StorSimple 8000 系列企业存储客户的支持选项。
 services: storsimple
 documentationcenter: NA
 author: GabiSocoteanu
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -114,13 +114,13 @@ StorSimple 8000 系列存储阵列支持根据 StorSimple 阵列的购买方式�
 |:---------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **标准支持** <br></br> [CWZ-00023] <br></br>AzureStorSimple ShrdSvr ALNG SubsVL MVL StdSpprt<br><br><br><br><br>                         |包括。<br><br><br><br><br><br><br><br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |<ul> <li>在下一个 EA 周年纪念日前，向预先购买的客户提供。<li> 客户在后续几年中必须购买支持，因为没有可用的 StorSimple 支持合同，就无法调度硬件更换部件。<br>   <br><br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | **高级*** **支持** <br></br> [CWZ-00024] <br></br> AzureStorSimple ShrdSvr ALNG SubsVL MVL PremSpprt <br><br><br><br><br><br>                         | 由于订阅自动包含标准支持，因此请参阅“标准到高级升级”。      <br><br><br><br><br><br><br><br><br> <br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                    | <ul> <li>Microsoft 高级支持合同包含的客户应参阅“标准到高级升级”。 <li>未包含在 Microsoft 高级支持合同且希望享受 StorSimple 高级支持的客户应在续订时购买此 SKU。<br><br><br><br><br><br><br><br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| **标准到高级****升级 <br></br> [CWZ- 00025] <br></br> AzureStorSimple ShrdSvr ALNG SubsVL MVL Spprt- StepuptoPrem <br><br><br><br><br><br><br><br><br>| 购买 StorSimple 时的 Microsoft 高级支持合同覆盖的客户，在其剩余的高级支持时间内将自动免费升级为 StorSimple 高级支持。  如果客户稍后获取 StorSimple 高级支持，可通过 SSSupOps@microsoft.com 请求获得免费升级。 <br></br>非高级客户可在企业协议 (EA) 合同期间，随时购买 StorSimple 标准到高级升级 SKU [CWZ-00025]。<br><br><br><br><br><br><br><br> | <ul><li> Microsoft 高级支持合同包含的客户可购买标准支持 SKU [CWZ-00023]，StorSimple 标准支持合同将在高级支持剩余的时间自动升级，无需任何费用。 <li> 如果客户稍后获取 StorSimple 高级支持，可通过 SSSupOps@microsoft.com 请求获得免费升级。 <li> StorSimple 标准支持包含的非高级版客户可在企业协议 (EA) 合同期间，随时购买 StorSimple 高级升级 SKU [CWZ-00025]。 下一年，客户续订支持合同时，应直接购买高级支持 SKU [CWZ-00024]，而不仅仅是升级 SKU [CWZ-00025]。<br><br> |
+| **标准到高级**\*\*升级 <br></br> [CWZ- 00025] <br></br> AzureStorSimple ShrdSvr ALNG SubsVL MVL Spprt- StepuptoPrem <br><br><br><br><br><br><br><br><br>| 购买 StorSimple 时的 Microsoft 高级支持合同覆盖的客户，在其剩余的高级支持时间内将自动免费升级为 StorSimple 高级支持。  如果客户稍后获取 StorSimple 高级支持，可通过 SSSupOps@microsoft.com 请求获得免费升级。 <br></br>非高级客户可在企业协议 (EA) 合同期间，随时购买 StorSimple 标准到高级升级 SKU [CWZ-00025]。<br><br><br><br><br><br><br><br> | <ul><li> Microsoft 高级支持合同包含的客户可购买标准支持 SKU [CWZ-00023]，StorSimple 标准支持合同将在高级支持剩余的时间自动升级，无需任何费用。 <li> 如果客户稍后获取 StorSimple 高级支持，可通过 SSSupOps@microsoft.com 请求获得免费升级。 <li> StorSimple 标准支持包含的非高级版客户可在企业协议 (EA) 合同期间，随时购买 StorSimple 高级升级 SKU [CWZ-00025]。 下一年，客户续订支持合同时，应直接购买高级支持 SKU [CWZ-00024]，而不仅仅是升级 SKU [CWZ-00025]。<br><br> |
 
 
 
 <text> * 高级支持覆盖范围并不适用于所有位置*。请在购买 StorSimple 高级支持之前与 Microsoft (SSSupOps@microsoft.com) 联系，了解地理覆盖范围。*
 
-必须在高级支持覆盖的区域部署 StorSimple 设备，才能符合免费升级到高级 StorSimple 支持的条件**。
+**\*必须在高级支持覆盖的区域部署 StorSimple 设备，才能符合免费升级到高级 StorSimple 支持的条件。*
 
 
 ASAP+ 客户可切换到包含标准支持的订阅模型。 使用 StorSimple 定价计算器进行订阅定价，如有任何疑问，请联系 SSSupOps@microsoft.com。 只能从 ASAP+ 单向切换到订阅。

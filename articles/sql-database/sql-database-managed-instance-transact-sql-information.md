@@ -1,20 +1,20 @@
 ---
-title: "Azure SQL 数据库托管实例的 T-SQL 差异 | Microsoft Docs"
-description: "本文讨论 Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异。"
+title: Azure SQL 数据库托管实例的 T-SQL 差异 | Microsoft Docs
+description: 本文讨论 Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异。
 services: sql-database
 author: jovanpop-msft
 ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 03/16/2018
 ms.author: jovanpop
-manager: cguyer
-ms.openlocfilehash: 27be2b9a5f2b9aaf2d4464a6c927ec2a1694131a
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+manager: craigg
+ms.openlocfilehash: bd8733590819faa3c4286c1940f0b9258842c930
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异 
 
@@ -30,11 +30,11 @@ Azure SQL 数据库托管实例（预览版）与本地 SQL Server 数据库引�
 ### <a name="always-on-availability"></a>Always-On 可用性
 
 [高可用性](sql-database-high-availability.md)内置在托管实例中，不能由用户控制。 不支持以下语句：
- - [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql.md)
- - [CREATE AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql.md)
- - [ALTER AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-availability-group-transact-sql.md)
- - [DROP AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql.md)
- - [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) 语句的 [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr.md) 子句
+ - [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
+ - [CREATE AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql)
+ - [ALTER AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-availability-group-transact-sql)
+ - [DROP AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
+ - [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) 语句的 [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) 子句
 
 ### <a name="auditing"></a>审核 
  

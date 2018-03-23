@@ -1,29 +1,29 @@
 ---
-title: "使用 Azure 网络安全功能保护个人数据 | Microsoft Docs"
-description: "使用 Azure 网络安全功能保护个人数据"
+title: 使用 Azure 网络安全功能保护个人数据 | Microsoft Docs
+description: 使用 Azure 网络安全功能保护个人数据。 这可用于遵守一般数据保护条例 (GDPR)
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 2510a4aed34b6a156cc9a9da6215de5956aac023
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: ''
+ms.openlocfilehash: 54aeb22a501e248105931df341d23e524448155a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-with-network-security-features-azure-application-gateway-and-network-security-groups"></a>使用网络安全功能保护个人数据：Azure 应用程序网关和网络安全组
 
-本文提供可帮助你使用 Azure 应用程序网关和网络安全组保护个人数据的信息与过程。
+本文提供可帮助你使用 Azure 应用程序网关和网络安全组保护个人数据的信息与过程。 此信息可能有助于遵守一般数据保护条例 (GDPR)。
 
 用于保护个人数据隐私性的多分层安全策略的一个要素是防范 SQL 注入或跨站点脚本等常见漏洞攻击。 将不需要的网络流量隔离在 Azure 虚拟网络外部有助于防范潜在的敏感数据泄漏，此外，Microsoft Azure 提供了相应的工具来帮助防止数据受到攻击。
 

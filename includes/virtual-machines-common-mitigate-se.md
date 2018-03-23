@@ -1,17 +1,23 @@
 
 
 
-**上次文档更新**：太平洋标准时间 1 月 22 日下午 3:00。
+**上次文档更新时间**：太平洋标准时间 3 月 6 日上午 10:00。
 
 最近发现了一种称为推理执行旁道攻击的[新型 CPU 漏洞](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)，这使想要了解其详情的客户向我们提出了问题。  
 
 运行 Azure 并将客户工作负荷相互隔离的基础结构是受保护的。  这意味着 Azure 上运行的其他客户无法使用这些漏洞攻击你的应用程序。
 
 > [!NOTE] 
-> 以前于 2018 年 1 月 3 日公布的 Azure 缓解措施不受 Intel 提供的最新[更新指南](https://newsroom.intel.com/news/root-cause-of-reboot-issue-identified-updated-guidance-for-customers-and-partners/)影响。 由于此新信息，客户 VM 上将没有附加的维护活动。
+> 2018 年 2 月 下旬，Intel Corporation 发布了关于微代码发布状态的更新版 [Microcode Revision Guidance](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf)（微代码修订指南），这不仅提升了稳定性还缓解了 [Google Project Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html) 披露的最新漏洞。 Azure 于 [2018 年 1 月 3 日](https://azure.microsoft.com/en-us/blog/securing-azure-customers-from-cpu-vulnerability/)实施的缓解措施不会受到 Intel 微代码更新的影响。 Microsoft 已经采取强有力的措施，保护 Azure 客户免受其他 Azure 租户的影响。  
 >
-> 当我们从硬件供应商收到微代码更新时，我们将继续更新这些最佳做法。 请返回查看是否有更新指南。
+> Intel 的微代码地址变体 2 Spectre ([CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715)) 仅可避免在 Azure 的 VM 上运行共享或不受信任的工作负荷所造成的攻击。 在面向 Azure 客户推出之前，我们的工程师正在测试稳定性，最大程度地降低微代码对性能的影响。  由于只有极少数客户会在 VM 上运行不受信任的工作负荷，因此发布后大多数客户都不需要启用此功能。 
 >
+> 有更多信息可用时，我们会更新此页面。  
+
+
+
+
+
 
 ## <a name="keeping-your-operating-systems-up-to-date"></a>使操作系统保持最新
 
@@ -43,7 +49,7 @@
 
 
 ### <a name="windows"></a>Windows 
-如果使用 Windows 且托管不受信任的代码，还应启用一种称为内核虚拟地址 (KVA) 映射的 Windows 功能，该功能提供额外的保护来防御推理执行旁道漏洞。 此功能在默认情况下处于关闭状态，如果启用，可能会影响性能。 请按照 [Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) 中“在服务器上启用保护”的说明执行操作。 如果正在运行 Azure 云服务，请验证是否正在运行 WA-GUEST-OS-5.15_201801-01 或 WA-GUEST-OS-4.50_201801-01（从 1 月 10 日起提供），并通过启动任务启用注册表项。
+如果使用 Windows 且托管不受信任的代码，还应启用一种称为内核虚拟地址 (KVA) 映射的 Windows 功能，该功能提供额外的保护来防御推理执行旁道漏洞。 此功能在默认情况下处于关闭状态，如果启用，可能会影响性能。 请按照 [Windows Server KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) 中“在服务器上启用保护”的说明执行操作。 如果正在运行 Azure 云服务，请验证是否正在运行 WA-GUEST-OS-5.15_201801-01 或 WA-GUEST-OS-4.50_201801-01（从 2018 年 1 月 10 日起提供），并通过启动任务启用注册表项。
 
 
 ### <a name="linux"></a>Linux

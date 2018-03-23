@@ -1,34 +1,33 @@
 ---
-title: "Azure 利用加密保护个人静态数据 | Microsoft Docs"
-description: "本文属于旨在帮助用户使用 Azure 保护个人数据的系列文章"
+title: Azure 利用加密保护个人静态数据 | Microsoft Docs
+description: 本文可用于符合行业或政府的要求，如一般保护数据条例 (GDPR)。
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 31e41f9befd9319115e5d147b473756486100c6e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.custom: ''
+ms.openlocfilehash: 37da3d91df4be871d6647b6290768ea4999a5010
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-at-rest-with-encryption"></a>Azure 加密技术：使用加密保护个人静态数据
 
 本文帮助读者了解 Azure 加密技术保护以及如何使用它来保护静态数据。
 
-静态数据的加密至关重要，它是保护敏感数据或个人数据，满足法规遵从和数据隐私要求的最佳做法。
-静态加密旨在防止攻击者访问未加密的数据，其方法是确保这些数据在磁盘上时是加密的。
+静态数据的加密至关重要，它是保护敏感数据或个人数据，满足法规遵从和数据隐私要求的最佳做法。 静态加密旨在防止攻击者访问未加密的数据，其方法是确保这些数据在磁盘上时是加密的。 本文中包含的信息可用于遵守一般数据保护条例 (GDPR)。
 
-## <a name="scenario"></a>方案 
+## <a name="scenario"></a>场景 
 
 总部位于美国的一家大型邮轮公司正在拓展其运营，以便在地中海和波罗的海以及英属岛屿提供路线。 为支持这些工作，该公司并购了意大利、德国、丹麦和英国的几家小型邮轮公司。
 

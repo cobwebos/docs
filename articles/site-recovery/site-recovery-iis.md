@@ -1,34 +1,20 @@
 ---
-title: "使用 Azure Site Recovery 复制基于 IIS 的多层 Web 应用程序 | Microsoft Docs"
-description: "了解如何使用 Azure Site Recovery 复制 IIS Web 场虚拟机。"
+title: 使用 Azure Site Recovery 复制基于 IIS 的多层 Web 应用程序 | Microsoft Docs
+description: 了解如何使用 Azure Site Recovery 复制 IIS Web 场虚拟机。
 services: site-recovery
-documentationcenter: 
 author: nsoneji
 manager: gauravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/05/2018
 ms.author: nisoneji
-<<<<<<< HEAD
-ms.openlocfilehash: 7ed7df2451a44075a79f514cf67efbf479a2ebb1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ed0184ac76b5fb3e607458559327da5e8fe90c5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-=======
-ms.openlocfilehash: a4a8ea14fecac73b187c9c7d3f9ca318bb2671c5
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="replicate-a-multi-tier-iis-based-web-application-by-using-site-recovery"></a>使用 Site Recovery 复制基于 IIS 的多层 Web 应用程序
+# <a name="replicate-a-multi-tier-iis-based-web-application"></a>复制基于 IIS 的多层 Web 应用程序
 
 应用程序软件是组织中业务生产力的引擎。 各种 Web 应用程序可在组织中发挥不同的作用。 某些应用程序，例如工资单处理应用程序、财务应用程序和面向客户的网站，对于组织而言可能至关重要。 组织必须不间断地运转这些应用程序以防止工作中断。 更重要的是，使这些应用程序保持连续运行有助于防止组织的品牌形象受到损害。
 
@@ -44,7 +30,7 @@ ms.lasthandoff: 02/24/2018
 
 在开始之前，请确保知道如何执行以下任务：
 
-* [将虚拟机复制到 Azure](site-recovery-vmware-to-azure.md)
+* [将虚拟机复制到 Azure](vmware-azure-tutorial.md)
 * [设计恢复网络](site-recovery-network-design.md)
 * [执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)
 * [执行到 Azure 的故障转移](site-recovery-failover.md)
@@ -83,7 +69,7 @@ Azure|不可用|是
 
 若要开始将所有 IIS Web 场虚拟机复制到 Azure，请遵照[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)中的指导。
 
-如果使用的是静态 IP，可以指定希望虚拟机采用的 IP 地址。 若要设置 IP 地址，请转到“**计算和网络设置**” > “[**目标 IP**](./site-recovery-replicate-vmware-to-azure.md#view-and-manage-vm-properties)”。
+如果使用的是静态 IP，可以指定希望虚拟机采用的 IP 地址。 若要设置 IP 地址，请转到“计算和网络设置” > “目标 IP”。
 
 ![演示如何在 Site Recovery 的“计算和网络”窗格中设置目标 IP 的屏幕截图](./media/site-recovery-active-directory/dns-target-ip.png)
 

@@ -1,26 +1,20 @@
 ---
-title: "在多租户 SaaS 应用中监视多个 Azure SQL 数据库的性能 | Microsoft 文档"
-description: "在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能"
-keywords: "sql 数据库教程"
+title: 在多租户 SaaS 应用中监视多个 Azure SQL 数据库的性能 | Microsoft Docs
+description: 在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
+keywords: sql 数据库教程
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: sstein
-ms.openlocfilehash: 289f1f99b1661e499fa7132887e2f65e086ad689
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 352b0d48ab223a236b96c633526f792b6f8a703d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 
@@ -86,7 +80,7 @@ New-TenantBatch 脚本使用嵌套或链接形式的一组[资源管理器](../a
 
 | 演示 | 方案 |
 |:--|:--|
-| #N/A | 生成正常强度负载（约 40 DTU） |
+| 2 | 生成正常强度负载（约 40 DTU） |
 | 3 | 生成单个数据库的突发时间更长且频率更高的负载|
 | 4 | 生成单个数据库的 DTU 突发更高的负载（约 80 DTU）|
 | 5 | 在正常负载的基础上生成单个租户的高负载（约 95 DTU）|

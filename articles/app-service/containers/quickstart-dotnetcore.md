@@ -1,12 +1,12 @@
 ---
-title: "创建 .NET Core Web 应用并将其部署到 Linux 应用服务 | Microsoft Docs"
-description: "在数分钟内将第一个 .NET Core Hello World 应用部署到 Linux 应用服务。"
-keywords: "azure 应用服务、web 应用、dotnet、core、linux、oss"
+title: 创建 .NET Core Web 应用并将其部署到 Linux 应用服务 | Microsoft Docs
+description: 在数分钟内将第一个 .NET Core Hello World 应用部署到 Linux 应用服务。
+keywords: azure 应用服务、web 应用、dotnet、core、linux、oss
 services: app-service
-documentationCenter: 
+documentationCenter: ''
 author: cephalin
 manager: syntaxc4
-editor: 
+editor: ''
 ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
 ms.service: app-service
 ms.workload: web
@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 9fc7f2e05d0f02081dd438c515a201025ccb8a4f
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 0f40d2d953f028f2014c88a22f9ad31fed705b76
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 .NET Core Web 应用
 
@@ -85,13 +85,13 @@ git commit -m "first commit"
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group.md)]
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-no-h.md)]
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
 浏览到新建的 Web 应用。 将 _&lt;应用名称>_ 替换为 Web 应用名称。
 

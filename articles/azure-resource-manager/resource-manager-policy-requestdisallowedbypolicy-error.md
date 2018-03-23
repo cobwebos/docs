@@ -1,23 +1,23 @@
 ---
-title: "Azure 资源策略的 RequestDisallowedByPolicy 错误 | Microsoft Docs"
-description: "说明 RequestDisallowedByPolicy 错误的原因。"
+title: Azure 资源策略的 RequestDisallowedByPolicy 错误 | Microsoft Docs
+description: 说明 RequestDisallowedByPolicy 错误的原因。
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 11/03/2017
+ms.date: 03/09/2018
 ms.author: genli
-ms.openlocfilehash: 2e821c0369c6f01a7f09361c1093259429a79fa6
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 5a9efa6b807e933726104e7af315589ede5d9b74
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure 资源策略的 RequestDisallowedByPolicy 错误
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/06/2017
 
 ## <a name="symptom"></a>症状
 
-尝试在部署过程中执行操作时，可能会收到阻止完成操作的 **RequestDisallowedByPolicy** 错误。 以下示例显示错误：
+部署过程中，可能会收到阻止创建资源的 RequestDisallowedByPolicy 错误。 以下示例显示错误：
 
 ```json
 {
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/06/2017
 
 若要检索有关阻止部署的策略的详细信息，请使用以下方法之一：
 
-### <a name="method-1"></a>方法 1
+### <a name="powershell"></a>PowerShell
 
 在 PowerShell 中，提供该策略标识符作为 `Id` 参数，检索有关阻止部署的策略的详细信息。
 
@@ -48,9 +48,9 @@ ms.lasthandoff: 11/06/2017
 (Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
 ```
 
-### <a name="method-2"></a>方法 2 
+### <a name="azure-cli"></a>Azure CLI
 
-在 Azure CLI 2.0 中，提供策略定义的名称： 
+在 Azure CLI 2.0 中，提供策略定义的名称：
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
@@ -58,10 +58,10 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>解决方案
 
-为了安全性或合规性，IT 部门可能会强制执行禁止创建公共 IP 地址、网络安全组、用户定义路由或路由表的资源策略。 **症状**部分中的错误消息显示名为 **regionPolicyDefinition** 的策略。 你的策略可能具有不同的名称。
-若要解决此问题，请协助 IT 部门查看资源策略，并确定如何执行符合这些策略的请求操作。
+为了安全性和符合性，订阅管理员可能会分配限制资源部署方式的策略。 例如，订阅可能具有阻止创建公共 IP 地址、网络安全组、用户定义的路由或路由表的策略。 “症状”部分中的错误消息显示策略的名称。
+要解决此问题，请查看资源策略，并确定如何部署符合这些策略的资源。
 
 有关详细信息，请参阅以下文章：
 
-- [资源策略概述](resource-manager-policy.md)
-- [通过门户查看策略分配](resource-manager-policy-portal.md)
+- [什么是 Azure 策略？](../azure-policy/azure-policy-introduction.md)
+- [创建和管理策略以强制实施符合性](../azure-policy/create-manage-policy.md)

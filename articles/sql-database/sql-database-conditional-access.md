@@ -1,6 +1,6 @@
 ---
-title: "条件性访问 - Azure SQL 数据库和数据仓库 | Microsoft Docs"
-description: "了解如何配置 Azure SQL 数据库和数据仓库的条件性访问。"
+title: 条件性访问 - Azure SQL 数据库和数据仓库 | Microsoft Docs
+description: 了解如何配置 Azure SQL 数据库和数据仓库的条件性访问。
 services: sql-database
 author: GithubMirek
 manager: johammer
@@ -9,18 +9,17 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: mireks
-ms.workload: Inactive
-ms.openlocfilehash: b1c569e414de292b59e0915483d45bf011edb1a6
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: f32928805275c9d797c8cb15bb731fe172d5903f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Azure SQL 数据库和数据仓库的条件性访问 (MFA)  
 
 SQL 数据库和 SQL 数据仓库均支持 Microsoft 条件性访问。 下列步骤演示如何配置 SQL 数据库以强制实施条件性访问策略。  
 
-## <a name="prerequisites"></a>系统必备  
+## <a name="prerequisites"></a>先决条件  
 - 若要支持 Azure Active Directory 身份验证，必须配置 SQL 数据库或 SQL 数据仓库。 有关具体步骤，请参阅[使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证](sql-database-aad-authentication-configure.md)。  
 - 启用多重身份验证后，必须使用受支持的工具（如最新版 SSMS）进行连接。 有关详细信息，请参阅[配置 SQL Server Management Studio 的 Azure SQL 数据库多重身份验证](sql-database-ssms-mfa-authentication-configure.md)。  
 

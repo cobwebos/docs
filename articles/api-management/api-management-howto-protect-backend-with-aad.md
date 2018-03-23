@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure Active Directory 和 API 管理保护 Web API 后端 | Microsoft 文档"
-description: "了解如何使用 Azure Active Directory 和 API 管理保护 Web API 后端。"
+title: 使用 Azure Active Directory 和 API 管理保护 Web API 后端 | Microsoft 文档
+description: 了解如何使用 Azure Active Directory 和 API 管理保护 Web API 后端。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 2a5be24aba8a675290045b282cc64dda4b7c594e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: b7fc48412799aea0c4bba971102b4912dbb18e05
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>如何使用 Azure Active Directory 和 API 管理保护 Web API 后端
 
@@ -179,7 +179,7 @@ public class CalcController : ApiController
 
 ![发布者门户][api-management-management-console]
 
-可将操作[手动添加到 API](api-management-howto-add-operations.md)，也可以导入操作。 在此视频中，以 Swagger 格式导入操作，从 6:40 开始。
+可将操作[手动添加到 API](api-management-howto-add-operations.md)，也可以导入操作。
 
 创建包含以下内容的文件 `calcapi.json` 并将其保存到计算机。 确保 `host` 属性指向 Web API 后端。 此示例中使用了 `"host": "apimaaddemo.azurewebsites.net"`。
 

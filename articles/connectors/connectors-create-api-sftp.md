@@ -1,11 +1,11 @@
 ---
-title: "了解如何在逻辑应用中使用 SFTP 连接器 | Microsoft Docs"
-description: "使用 Azure 应用服务创建逻辑应用。 连接到 SFTP API 以发送和接收文件。 可以执行各种操作，如创建、更新、获取或删除文件。"
+title: 了解如何在逻辑应用中使用 SFTP 连接器 | Microsoft Docs
+description: 使用 Azure 应用服务创建逻辑应用。 连接到 SFTP API 以发送和接收文件。 可以执行各种操作，如创建、更新、获取或删除文件。
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.service: logic-apps
@@ -14,17 +14,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/20/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 1abc15daaa96e834aedd121a88b543067e53641b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: ee4dd59bd7b4c09cccadfff29868029559955c28
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-sftp-connector"></a>SFTP 连接器入门
 使用 SFTP 连接器访问 SFTP 帐户以发送和接收文件。 可以执行各种操作，如创建、更新、获取或删除文件。  
 
-若要使用 [任何连接器](apis-list.md)，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 开始操作。
+若要使用[“任何连接器”](apis-list.md)，首先需要创建逻辑应用。 可通过 [立即创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md) 开始操作。
 
 ## <a name="connect-to-sftp"></a>连接到 SFTP
 在逻辑应用访问任何服务之前，必须先创建到该服务的*连接*。 [连接](connectors-overview.md)提供逻辑应用和其他服务之间的连接性。  

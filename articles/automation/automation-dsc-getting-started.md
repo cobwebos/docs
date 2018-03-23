@@ -1,24 +1,20 @@
 ---
-title: "Azure Automation DSC 入门 | Microsoft Docs"
-description: "Azure 自动化所需状态配置 (DSC) 中最常见任务的说明和示例"
+title: Azure 自动化 DSC 入门
+description: Azure 自动化所需状态配置 (DSC) 中最常见任务的说明和示例
 services: automation
-documentationcenter: na
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: a3816593-70a3-403b-9a43-d5555fd2cee2
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: powershell
-ms.workload: na
-ms.date: 11/21/2016
-ms.author: magoedte;gwallace
-ms.openlocfilehash: ff23b4f5022597763728ccf301966c34c5423b34
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: e6e4df6fce783e7b4cc33d7f3c26136680ceb44f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Azure Automation DSC 入门
 本文说明如何使用 Azure Automation Desired State Configuration (DSC) 执行最常见的任务，例如创建、导入、编译配置，登记要管理的计算机和查看报表。 若要大致了解什么是 Azure Automation DSC，请参阅 [ DSC 概述](automation-dsc-overview.md)。 有关 DSC 文档，请参阅 [Windows PowerShell Desired State Configuration 概述](https://msdn.microsoft.com/PowerShell/dsc/overview)。

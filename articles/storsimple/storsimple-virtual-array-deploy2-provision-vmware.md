@@ -1,11 +1,11 @@
 ---
-title: "在 VMware 中预配 StorSimple 虚拟阵列 | Microsoft 文档"
-description: "此教程为 StorSimple 虚拟阵列部署系列的第二个教程，介绍如何在 VMware 中预配虚拟设备。"
+title: 在 VMware 中预配 StorSimple 虚拟阵列 | Microsoft 文档
+description: 此教程为 StorSimple 虚拟阵列部署系列的第二个教程，介绍如何在 VMware 中预配虚拟设备。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 495ef6a93ee06423495269306ad06e76dda13e10
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: be737550aa1cff22bc413ee8ce243f8d8588f6a5
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>部署 StorSimple 虚拟阵列 - 在 VMware 中预配
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -119,7 +119,7 @@ ms.lasthandoff: 11/14/2017
 14. 返回到 vSphere 客户端窗口。 选中 ESXi 服务器后，右键单击并选择“新建虚拟机”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image15.png)
-15. 此时会显示“创建新的虚拟机”窗口。 在“配置”页上选择“自定义”选项。 单击“下一步”。
+15. 此时会显示“创建新的虚拟机”窗口。 在“配置”页上选择“自定义”选项。 单击“资源组名称” 的 Azure 数据工厂。
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image16.png)
 16. 在“名称和位置”页上，指定虚拟机的名称。 该名称应与此前在步骤 8 中指定的文件夹名称配置（建议的最佳做法）。
 
@@ -127,16 +127,16 @@ ms.lasthandoff: 11/14/2017
 17. 在“存储”页上，选择要用于预配 VM 的数据存储。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image18.png)
-18. 在“虚拟机版本”页上，选择“虚拟机版本: 8”。 版本 8 到 11 均受支持。
+18. 在“虚拟机版本”页上，选择“虚拟机版本: 8”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
 19. 在“来宾操作系统”页上，选择“Windows”作为“来宾操作系统”。 从下拉列表中选择“Microsoft Windows Server 2012 (64 位)”作为“版本”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
-20. 在“CPU”页上调整“虚拟插槽数”和“每个虚拟插槽的核心数”，使“总核心数”为 4（或 4 以上）。 单击“下一步”。
+20. 在“CPU”页上调整“虚拟插槽数”和“每个虚拟插槽的核心数”，使“总核心数”为 4（或 4 以上）。 单击“资源组名称” 的 Azure 数据工厂。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image21.png)
-21. 在“内存”页上，将 RAM 指定为 8 GB（或 8 GB 以上）。 单击“下一步”。
+21. 在“内存”页上，将 RAM 指定为 8 GB（或 8 GB 以上）。 单击“资源组名称” 的 Azure 数据工厂。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image22.png)
 22. 在“网络”页上，指定网络接口的数目。 最低要求是一个网络接口。
@@ -145,10 +145,10 @@ ms.lasthandoff: 11/14/2017
 23. 在“SCSI 控制器”页上，接受默认的“LSI 逻辑 SAS 控制器”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image24.png)
-24. 在“选择磁盘”页上，选择“使用现有虚拟磁盘”。 单击“下一步”。
+24. 在“选择磁盘”页上，选择“使用现有虚拟磁盘”。 单击“资源组名称” 的 Azure 数据工厂。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image25.png)
-25. 在“选择现有磁盘”页的“磁盘文件路径”下，单击“浏览”。 此时会打开“浏览数据存储”对话框。 导航到上传 VMDK 的位置。 此时在数据存储中只会看到一个文件，因为最初上传的两个文件已合并。 选择该文件，并单击“确定”。 单击“下一步”。
+25. 在“选择现有磁盘”页的“磁盘文件路径”下，单击“浏览”。 此时会打开“浏览数据存储”对话框。 导航到上传 VMDK 的位置。 此时在数据存储中只会看到一个文件，因为最初上传的两个文件已合并。 选择该文件，并单击“确定”。 单击“资源组名称” 的 Azure 数据工厂。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
 26. 在“高级选项”页上，接受默认值，并单击“下一步”。
@@ -163,10 +163,10 @@ ms.lasthandoff: 11/14/2017
 29. 此时会显示“添加硬件”窗口。 在“设备类型”页的“选择要添加的设备类型”下选择“硬盘”，并单击“下一步”。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image30.png)
-30. 在“选择磁盘”页上，选择“创建新的虚拟磁盘”。 单击“下一步”。
+30. 在“选择磁盘”页上，选择“创建新的虚拟磁盘”。 单击“资源组名称” 的 Azure 数据工厂。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. 在“创建磁盘”页上，将“磁盘大小”更改为 500 GB（或 500 GB 以上）。 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践文档](storsimple-ova-best-practices.md)的“调整大小”部分。 在“磁盘预配”下，选择“精简预配”。 单击“下一步”。
+31. 在“创建磁盘”页上，将“磁盘大小”更改为 500 GB（或 500 GB 以上）。 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 如需详细了解要预配的磁盘的大小，请查看[最佳实践文档](storsimple-ova-best-practices.md)的“调整大小”部分。 在“磁盘预配”下，选择“精简预配”。 单击“资源组名称” 的 Azure 数据工厂。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. 在“高级选项”页上，接受默认值。

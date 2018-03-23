@@ -1,11 +1,11 @@
 ---
-title: "如何使用 Linux VM 托管服务标识 (MSI) 访问 Azure Data Lake Store"
-description: "本教程介绍如何使用 Linux VM 托管服务标识 (MSI) 访问 Azure Data Lake Store。"
+title: 如何使用 Linux VM 托管服务标识 (MSI) 访问 Azure Data Lake Store
+description: 本教程介绍如何使用 Linux VM 托管服务标识 (MSI) 访问 Azure Data Lake Store。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e2a2b885dd0dc5b240aef234ef1ff139d788de3c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>使用 Linux VM 托管服务标识 (MSI) 访问 Azure Data Lake Store
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
 
@@ -103,7 +103,7 @@ Azure Data Lake Store 原生支持 Azure AD 身份验证，因此可以直接接
 
 1. 在门户中，转到 Linux VM，并单击“概述”中的“连接”。  
 2. 使用所选的 SSH 客户端连接到 VM。 
-3. 在终端窗口中，使用 CURL 向本地 MSI 终结点发出请求，获取访问 Data Lake Store 系统所需的访问令牌。  Data Lake Store 资源标识符是“https://datalake.azure.net/”。  请务必在资源标识符中包含尾部反斜杠。
+3. 在终端窗口中，使用 CURL 向本地 MSI 终结点发出请求，获取访问 Data Lake Store 系统所需的访问令牌。  Data Lake Store 的资源标识符是“https://datalake.azure.net/”。  请务必在资源标识符中包含尾部反斜杠。
     
    ```bash
    curl http://localhost:50342/oauth2/token --data "resource=https://datalake.azure.net/" -H Metadata:true   

@@ -1,26 +1,20 @@
 ---
-title: "在使用 Azure SQL 数据库的多租户应用中预配新租户 | Microsoft Docs"
-description: "了解如何在 Azure SQL 数据库多租户 SaaS 应用中预配和编录新租户"
-keywords: "sql 数据库教程"
+title: 在使用 Azure SQL 数据库的多租户应用中预配新租户 | Microsoft Docs
+description: 了解如何在 Azure SQL 数据库多租户 SaaS 应用中预配和编录新租户
+keywords: sql 数据库教程
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: sstein
-ms.openlocfilehash: 79b3743054f73914c6755a3c9b102b613b1944f2
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 21f0bca3a16164ead4e0990842a968fd9b95c33f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>了解如何预配新租户并将其注册到目录中
 
@@ -99,8 +93,8 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 
 以下不是要明确执行的步骤，而是在调试脚本期间逐步执行的工作流的说明：
 
-1. **导入 SubscriptionManagement.psm1** 模块，该模块包含用于登录 Azure 和选择所使用 Azure 订阅的函数。
 1. **导入 CatalogAndDatabaseManagement.psm1** 模块，该模块通过[分片管理](sql-database-elastic-scale-shard-map-management.md)函数提供目录和租户级抽象。 此模块封装目录模式的大部分，值得浏览。
+1. **导入 SubscriptionManagement.psm1** 模块，该模块包含用于登录 Azure 和选择所使用 Azure 订阅的函数。
 1. **获取配置详细信息**。 逐语句执行 Get-Configuration（使用 F11）并了解如何指定应用配置。 资源名称和其他特定于应用的值在此处定义，但请勿更改这些值，除非已熟悉脚本。
 1. **获取目录对象**。 单步执行 Get-Catalog，其撰写并返回在更高级别的脚本中使用的目录对象。  此函数使用从“AzureShardManagement.psm1”导入的分片管理功能。 目录对象由以下元素组成：
    * $catalogServerFullyQualifiedName 是使用标准主干加上用户名构造而成的：_catalog-\<user\>.database.windows.net_。

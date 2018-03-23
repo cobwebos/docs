@@ -1,26 +1,20 @@
 ---
-title: "设计灾难恢复解决方案 - Azure SQL 数据库 | Microsoft Docs"
-description: "了解如何通过选择合适的故障转移模式来设计可实现灾难恢复的云解决方案。"
+title: 设计灾难恢复解决方案 - Azure SQL 数据库 | Microsoft Docs
+description: 了解如何通过选择合适的故障转移模式来设计可实现灾难恢复的云解决方案。
 services: sql-database
-documentationcenter: 
 author: anosov1960
-manager: jhubbard
-editor: monicar
-ms.assetid: 2db99057-0c79-4fb0-a7f1-d1c057ec787f
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.date: 12/13/2017
+ms.date: 03/05/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.workload: Inactive
-ms.openlocfilehash: 9d12fb8a7dbd3bb763e42fd0981d7ef18b57248b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 6ec202237a0b3fb1b7f0b7158c0aa454b4d65770
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>使用 SQL 数据库弹性池的应用程序的灾难恢复策略
 这些年来，我们已经认识到云服务并不能做到万无一失，并且会发生灾难性事件。 SQL 数据库具备许多功能，可在发生这些事件时保证应用程序的业务连续性。 [弹性池](sql-database-elastic-pool.md)和单一数据库支持相同类型的灾难恢复功能。 本文介绍了几种针对利用这些 SQL 数据库业务连续性功能的弹性池的 DR 策略。
@@ -30,6 +24,9 @@ ms.lasthandoff: 12/14/2017
 <i>基于现代云的 Web 应用程序为每位最终用户都预配了一个 SQL 数据库。ISV 拥有大量客户，因此会使用多个数据库，称为租户数据库。由于租户数据库的活动模式通常不可预测，因此 ISV 通常使用弹性池，以使数据库成本在很长时间段内具有高度可预测性。弹性池还简化了用户活动达到高峰时的性能管理。除租户数据库之外，应用程序还使用多个数据库来管理用户配置文件、安全性、收集使用模式等。各个租户的可用性整体上不会影响应用程序的可用性。但是，管理数据库的可用性和性能对应用程序的功能至关重要，如果管理数据库处于脱机状态，则整个应用程序也同样处于脱机状态。</i>  
 
 本文将通过各种方案（从节约成本的启动应用程序到具有严格可用性要求的应用程序）讨论 DR 策略。
+
+> [!NOTE]
+> 如果正在使用高级数据库和池，可以通过将它们转换为区域冗余部署配置（当前为预览状态），使它们能够适应区域性的中断。 请参阅[区域冗余数据库](sql-database-high-availability.md)。
 
 ## <a name="scenario-1-cost-sensitive-startup"></a>方案 1. 关注成本的创业公司
 <i>我们是一家创业公司，非常关注成本问题。我希望简化应用程序的部署和管理，并可为各个客户提供有限的 SLA。但是我希望确保应用程序整体不会脱机。</i>

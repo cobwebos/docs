@@ -1,55 +1,44 @@
 ---
-title: "创建并管理 Azure SQL 服务器和数据库 | Microsoft Docs"
-description: "了解 Azure SQL 数据库服务器和数据库的概念，以及如何创建和管理服务器和数据库。"
+title: 创建并管理 Azure SQL 服务器和数据库 | Microsoft Docs
+description: 了解 Azure SQL 数据库服务器和数据库的概念，以及如何创建和管理服务器和数据库。
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 10/11/2017
+ms.date: 02/28/2018
 ms.author: carlrab
-ms.openlocfilehash: 469db4f3faf12cbd778f18b7bc74ec6b86b412c7
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 0e2dabc5cc0b816f2623fce5f8fb09a7004039c7
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>创建并管理 Azure SQL 数据库服务器和数据库
 
-Azure SQL 数据库是 Microsoft Azure 中的托管数据库，通过一组定义的[针对不同工作负载的计算和存储资源](sql-database-service-tiers.md)在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建而成。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。 
+SQL 数据库提供了三种类型的数据库：
 
-## <a name="an-azure-sql-database-can-be-a-single-pooled-or-partitioned-database"></a>Azure SQL 数据库可以是单一数据库、共用数据库或分区数据库
+- 可以使用定义的一组[用于不同工作负载的计算和存储资源](sql-database-service-tiers.md)，在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建单个数据库。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。
+- 使用定义的一组[用于不同工作负载的计算和存储资源](sql-database-service-tiers.md)（这些计算和存储资源由池中的所有数据库共享）在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建数据库，作为[数据库池](sql-database-elastic-pool.md)的部分。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。
+- 使用定义的一组用于服务器实例上所有数据库的计算和存储资源，在 [Azure 资源](../azure-resource-manager/resource-group-overview.md)组中创建 [SQL 服务器的实例](sql-database-managed-instance.md)。 一个托管实例同时包含系统和用户数据库。 使用托管实例可将数据库即时转移到完全托管的 PaaS，而无需重新设计应用程序。 托管实例与本地 SQL Server 编程模型高度兼容，支持大多数 SQL Server 功能，并支持随附的工具和服务。  
 
-Azure SQL 数据库可以是：
+Microsoft Azure SQL 数据库支持表格格式数据流 (TDS) 协议客户端 7.3 版或更高版本，并仅允许加密的 TCP/IP 连接。
 
-- 具有其[自己的一组资源](sql-database-single-database-resources.md)的单一数据库
-- 共享一组资源的[弹性池](sql-database-elastic-pool.md)的一部分
-- [向外扩展的一组共享数据库](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling)的一部分，可以是单一数据库，也可以是入池数据库
-- 参与[多租户 SaaS 设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)的一组数据库的一部分，数据库可以是单一数据库或入池数据库（或两者） 
-
-> [!TIP]
-> 如需有效的数据库名称，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 
->
- 
-- Microsoft Azure SQL 数据库使用的默认数据库排序规则是 **SQL_LATIN1_GENERAL_CP1_CI_AS**。其中，**LATIN1_GENERAL** 是英语（美国），**CP1** 是代码页 1252，**CI** 是不区分大小写，**AS** 是区分重音。 有关如何设置排序规则的详细信息，请参阅 [COLLATE (Transact-SQL)](https://msdn.microsoft.com/library/ms184391.aspx)。
-- Microsoft Azure SQL 数据库支持表格格式数据流 (TDS) 协议客户端 7.3 版或更高版本。
-- 只允许 TCP/IP 连接。
+> [!IMPORTANT]
+> SQL 数据库托管实例（当前处于公共预览状态）提供单个常规用途服务层。 有关详细信息，请参阅 [SQL 数据库托管实例](sql-database-managed-instance.md)。 本文剩余部分不适用于托管实例。
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>什么是 Aure SQL 逻辑服务器？
 
-逻辑服务器用作多个数据库的中心管理点，包括[弹性池](sql-database-elastic-pool.md)、[登录名](sql-database-manage-logins.md)、[防火墙规则](sql-database-firewall-configure.md)、[审核规则](sql-database-auditing.md)、[威胁检测策略](sql-database-threat-detection.md)和[故障转移组](sql-database-geo-replication-overview.md)。 逻辑服务器可以与其资源组位于不同的区域。 必须先创建逻辑服务器，然后才能创建 Azure SQL 数据库。 服务器上的所有数据库都在逻辑服务器所在的同一区域内创建而成。 
+逻辑服务器用作多个单一或[已共用](sql-database-elastic-pool.md)数据库的中心管理点，包括[登录名](sql-database-manage-logins.md)[防火墙规则](sql-database-firewall-configure.md)[审核规则](sql-database-auditing.md)[威胁检测策略](sql-database-threat-detection.md)和[故障转移组](sql-database-geo-replication-overview.md)。 逻辑服务器可以与其资源组位于不同的区域。 必须先创建逻辑服务器，然后才能创建 Azure SQL 数据库。 服务器上的所有数据库都在逻辑服务器所在的同一区域内创建而成。
 
-
-> [!IMPORTANT]
-> 在 SQL 数据库中，服务器是一个逻辑构造，它不同于在本地环境中可能已熟悉的 SQL Server 实例。 具体而言，SQL 数据库服务不保证数据库相对于其逻辑服务器的位置，并且不公开实例级访问权限或功能。
-> 
+逻辑服务器是一种逻辑构造，它不同于在本地环境中可能已熟悉的 SQL Server 实例。 具体而言，SQL 数据库服务不保证数据库相对于其逻辑服务器的位置，并且不公开实例级访问权限或功能。 相反，SQL 数据库托管实例中的服务器与你可能熟悉的本地环境中的 SQL Server 实例相似。
 
 创建逻辑服务器时，提供服务器登录帐户和密码，此凭据有权管理服务器上的 master 数据库及其上创建的所有数据库。 这一初始帐户就是 SQL 登录帐户。 Azure SQL 数据库支持结合使用 SQL 身份验证和 Azure Active Directory 身份验证以进行身份验证。 若要详细了解登录名和身份验证，请参阅[在 Azure SQL 数据库中管理数据库和登录名](sql-database-manage-logins.md)。 不支持 Windows 身份验证。 
 
@@ -74,6 +63,7 @@ Azure 数据库逻辑服务器：
 - 是在包含资源上启用的功能的版本控制作用域 
 - 服务器级主体登录名可以管理服务器上的所有数据库
 - 可以包含与本地 SQL Server 实例中的登录名类似的登录名，这些登录名有权访问服务器上的一个或多个数据库，并可以向这些登录名授予有限的管理权限。 有关详细信息，请参阅[登录名](sql-database-manage-logins.md)。
+- 用于所有在逻辑服务器上创建的用户数据库的默认排序规则是 `SQL_LATIN1_GENERAL_CP1_CI_AS`，其中 `LATIN1_GENERAL` 为英语（美国），`CP1` 为代码页 1252，`CI` 不区分大小写，`AS` 区分重音符。
 
 ## <a name="azure-sql-databases-protected-by-sql-database-firewall"></a>Azure SQL 数据库受 SQL 数据库防火墙保护
 
@@ -96,6 +86,8 @@ Azure 数据库逻辑服务器：
 > [!IMPORTANT]
 > 有关如何选择数据库定价层的信息，请参阅[服务层](sql-database-service-tiers.md)。
 >
+
+要创建托管实例，请参阅[创建托管实例](sql-database-managed-instance-tutorial-portal.md)
 
 ### <a name="manage-an-existing-sql-server"></a>管理现有 SQL 服务器
 
@@ -140,7 +132,7 @@ Azure 数据库逻辑服务器：
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure SQL 服务器、数据库和防火墙
 
-若要使用 [Azure CLI](/cli/azure/overview) 创建并管理 Azure SQL 服务器、数据库和防火墙，请运行 [Azure CLI SQL 数据库](/cli/azure/sql/db)命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 若要创建并管理弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
+若要使用 [Azure CLI](/cli/azure) 创建并管理 Azure SQL 服务器、数据库和防火墙，请运行 [Azure CLI SQL 数据库](/cli/azure/sql/db)命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 若要创建并管理弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
 
 | Cmdlet | 说明 |
 | --- | --- |
@@ -211,7 +203,7 @@ Azure 数据库逻辑服务器：
 |[Servers - List By Resource Group](/rest/api/sql/servers/listbyresourcegroup)|返回资源组中服务器的列表。|
 |[Servers - Update](/rest/api/sql/servers/update)|更新现有服务器。|
 |[Servers - Sql](/rest/api/sql/servers%20-%20sql)|判断是否能使用指定名称创建资源。|
-|[Databases - Create Or Update](/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
+|[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
 |[数据库 - 获取](/rest/api/sql/databases/get)|获取数据库。|
 |[数据库 - 按弹性池获取](/rest/api/sql/databases/getbyelasticpool)|获取弹性池内的数据库。|
 |[数据库 - 按推荐的弹性池获取](/rest/api/sql/databases/getbyrecommendedelasticpool)|获取推荐弹性池内的数据库。|
@@ -226,7 +218,5 @@ Azure 数据库逻辑服务器：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何使用弹性池来共用数据库，请参阅[弹性池](sql-database-elastic-pool.md)。
-- 若要了解 Azure SQL 数据库服务，请参阅[什么是 SQL 数据库？](sql-database-technical-overview.md)。
 - 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](sql-database-cloud-migrate.md)。
 - 有关支持的功能的信息，请参阅[功能](sql-database-features.md)。

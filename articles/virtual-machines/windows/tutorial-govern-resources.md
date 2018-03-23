@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure PowerShell 控制 Azure 虚拟机 | Microsoft Docs"
-description: "教程 - 通过使用 Azure PowerShell 应用 RBAC、策略、锁和标记管理 Azure 虚拟机"
+title: 使用 Azure PowerShell 控制 Azure 虚拟机 | Microsoft Docs
+description: 教程 - 通过使用 Azure PowerShell 应用 RBAC、策略、锁和标记管理 Azure 虚拟机
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9952660dc177b542d8477dc85c62d76d16e8c54e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9fbe9318e52f8299c3ef46f73c3be177de6d4a0c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="virtual-machine-governance-with-azure-powershell"></a>使用 Azure PowerShell 控制虚拟机
 
-[!include[Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
+[!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/27/2018
 
 ## <a name="understand-scope"></a>了解范围
 
-[!include[Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
+[!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
 在本教程中，你将所有管理设置应用于一个资源组，以便在完成后可以轻松地删除这些设置。
 
@@ -76,7 +76,7 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 
 ## <a name="azure-policies"></a>Azure 策略
 
-[!include[Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
+[!INCLUDE [Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
 
 ### <a name="apply-policies"></a>应用策略
 
@@ -176,7 +176,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 可以将[标记](../../azure-resource-manager/resource-group-using-tags.md)应用于 Azure 资源，以逻辑方式按类别对其进行组织。 每个标记包含一个名称和一个值。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
-[!include[Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
+[!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
 若要将标记应用于虚拟机，请使用 [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) 命令：
 
@@ -206,7 +206,7 @@ Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.Reso
 
 ### <a name="view-costs-by-tag-values"></a>按标记值查看成本
 
-[!include[Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
+[!INCLUDE [Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 

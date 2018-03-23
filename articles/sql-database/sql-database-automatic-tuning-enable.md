@@ -1,25 +1,19 @@
 ---
-title: "为 Azure SQL 数据库启动自动优化 | Microsoft Docs"
-description: "可轻松对 Azure SQL 数据库启用自动优化。"
+title: 为 Azure SQL 数据库启动自动优化 | Microsoft Docs
+description: 可轻松对 Azure SQL 数据库启用自动优化。
 services: sql-database
-documentationcenter: 
 author: veljko-msft
 manager: drasumic
-editor: vvasic
-ms.assetid: 
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
 ms.date: 09/19/2016
-ms.author: veljko-msft
-ms.openlocfilehash: b599273874a4b5a3bbcb78284d69b4c8d02b5f2c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: vvasic
+ms.openlocfilehash: cfee95f5978073277a5351b976156cafefb87c16
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="enable-automatic-tuning"></a>启用自动优化
 

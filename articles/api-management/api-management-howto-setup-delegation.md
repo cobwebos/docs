@@ -1,11 +1,11 @@
 ---
-title: "如何委派用户注册和产品订阅"
-description: "了解如何在 Azure API 管理中将用户注册和产品订阅委派给第三方。"
+title: 如何委派用户注册和产品订阅
+description: 了解如何在 Azure API 管理中将用户注册和产品订阅委派给第三方。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: antonba
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8b7ad5ee-a873-4966-a400-7e508bbbe158
 ms.service: api-management
 ms.workload: mobile
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: fc8c5774eb616c33c00ecebeacd31e2a07b36e0c
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派用户注册和产品订阅
 可以通过委派使用现有网站处理开发人员的登录/注册和产品订阅事项，不需使用开发人员门户中的 内置功能。 这样就可以让网站拥有用户数据，并通过自定义方式对这些步骤进行验证。
@@ -44,7 +44,7 @@ ms.lasthandoff: 02/28/2018
 
 1. 接收以下形式的请求：
    
-   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={源页的 URL}&salt={字符串}&sig={字符串}*
+   > http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL of source page}&salt={string}&sig={string}
    > 
    > 
    
@@ -70,7 +70,7 @@ ms.lasthandoff: 02/28/2018
    * 通过 API 管理 REST API [请求单一登录 (SSO) 令牌]
    * 将 returnUrl 查询参数追加到从上述 API 调用接收的 SSO URL：
      
-     > 例如 https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > 例如，https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
      > 
      > 
    * 将用户重定向到上述生成的 URL
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/28/2018
 
 1. 接收以下形式的请求：
    
-   > *http://www.yourwebsite.com/apimdelegation?operation={操作}&productId={要订阅的产品}&userId={提出请求的用户}&salt={字符串}&sig={字符串}*
+   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product to subscribe to}&userId={user making request}&salt={string}&sig={string}*
    > 
    > 
    

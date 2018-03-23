@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: virtual-machines
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: d4075f644ed1ce42479e35544f0e1442488f78eb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/16/2018
+---
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 首先在左上角单击“创建资源” > “计算” > “Windows Server 2016 Datacenter”。

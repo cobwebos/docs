@@ -1,18 +1,18 @@
 ---
-title: "include 文件"
-description: "include 文件"
+title: include 文件
+description: include 文件
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 02/16/2018
+ms.date: 03/13/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 13aa40331849c775898913129f8048a06a1f8456
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 69c67f437d2f0b7bd6c1f5311eb5ba1d962d889a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 可以将标记应用到 Azure 资源，以逻辑方式按类别对其进行组织。 每个标记包含一个名称和一个值。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
@@ -24,4 +24,4 @@ ms.lasthandoff: 02/21/2018
 * 标记名称不能超过 512 个字符，标记值不能超过 256 个字符。 对于存储帐户，标记名称不能超过 128 个字符，标记值不能超过 256 个字符。
 * 应用于资源组的标记不会被该资源组中的资源继承。
 * 不能将标记应用到云服务等经典资源。
-* 不支持这些字符：`<`、`>`、`%`、`&`、`\\`、`?`、`/`
+* 标记名称不能包含以下字符：`<`、`>`、`%`、`&`、`\`、`?`、`/`

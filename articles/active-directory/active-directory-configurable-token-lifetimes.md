@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory 中可配置的令牌生存期 | Microsoft Docs"
-description: "了解如何设置 Azure AD 颁发的令牌的生存期。"
+title: Azure Active Directory 中可配置的令牌生存期 | Microsoft Docs
+description: 了解如何设置 Azure AD 颁发的令牌的生存期。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: eaf9e7088c8c88140ea690c13ff7e0c7026b8f86
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 568bf5f0a4cf3eb77b528af2550d9729dcc59878
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Azure Active Directory 中可配置的令牌生存期（公共预览版）
 可以指定 Azure Active Directory (Azure AD) 颁发的令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。
@@ -34,6 +34,11 @@ ms.lasthandoff: 02/21/2018
 
 可将某个策略指定为组织的默认策略。 该策略将应用到组织中的任何应用程序，只要此策略不被更高优先级的策略覆盖即可。 此外，还可以将策略分配到特定的应用程序。 优先顺序根据策略类型的不同而异。
 
+> [!NOTE]
+> SharePoint Online 不支持可配置的令牌生存期策略。  即使可以通过 PowerShell 创建策略，SharePoint Online 也不会承认此策略。 了解有关配置空闲会话超时的详细信息，请参阅 [SharePoint Online 博客](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208)。
+>* SharePoint Online 访问令牌的默认生存期为 1 个小时。 
+>* SharePoint Online 刷新令牌的默认停用时间最长为 90 天。
+>
 
 ## <a name="token-types"></a>令牌类型
 

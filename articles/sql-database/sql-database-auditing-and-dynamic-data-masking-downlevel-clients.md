@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL 数据库的表审核、TDS 重定向和 IP 终结点 | Microsoft Docs"
-description: "了解在 Azure SQL 数据库中实现表审核时，审核、TDS 重定向和 IP 终结点的变化。"
+title: Azure SQL 数据库的表审核、TDS 重定向和 IP 终结点 | Microsoft Docs
+description: 了解在 Azure SQL 数据库中实现表审核时，审核、TDS 重定向和 IP 终结点的变化。
 services: sql-database
-documentationcenter: 
 author: giladm
-manager: jhubbard
-editor: 
-ms.assetid: 4ef19ed1-e798-43a2-ad99-0e563f93ab53
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: giladm
-ms.openlocfilehash: 42c89f09eee4394fec7d2f33f51ddc5875587530
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 1053869ed26739463ab6035692052d7b6b34bff0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL 数据库 - 针对表审核的下层客户端支持和 IP 终结点更改
 
@@ -71,9 +65,9 @@ ms.lasthandoff: 10/31/2017
 | 日本东部 |104.41.179.1、40.115.253.81、23.102.64.207、40.115.250.196 |
 | 日本西部 |104.214.140.140、104.214.146.31、191.233.32.34、104.214.146.198 |
 | 美国中北部 |191.236.155.178、23.96.192.130、23.96.177.169、23.96.193.231 |
-| 欧洲北部 |104.41.209.221、40.85.139.245、137.116.251.66、40.85.142.176 |
+| 北欧 |104.41.209.221、40.85.139.245、137.116.251.66、40.85.142.176 |
 | 美国中南部 |191.238.184.128、40.84.190.84、23.102.160.153、40.84.186.66 |
-| 亚洲东南部 |104.215.198.156、13.76.252.200、23.97.51.109、13.76.252.113 |
+| 东南亚 |104.215.198.156、13.76.252.200、23.97.51.109、13.76.252.113 |
 | 欧洲西部 |104.40.230.120、13.80.23.64、137.117.171.161、13.80.8.37、104.47.167.215、40.118.56.193、104.40.176.73、40.118.56.20 |
 | 美国西部 |191.236.123.146、138.91.163.240、168.62.194.148、23.99.6.91 |
 | 美国西部 2 |13.66.224.156, 13.66.227.8 |

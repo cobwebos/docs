@@ -1,11 +1,11 @@
 ---
-title: "在 Linux 上的 Azure 应用服务中创建 Java Web 应用"
-description: "数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Java Hello World。"
+title: 在 Linux 上的 Azure 应用服务中创建 Java Web 应用
+description: 数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Java Hello World。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: msangapu
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
 ms.workload: web
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 46c97ae5bd6f53857f0b7df12462102a03e8e857
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 2c37151c09c7b180993056532c07ff081f576b83
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="preview-create-a-java-web-app-in-app-service-on-linux"></a>预览版：在 Linux 上的应用服务中创建 Java Web 应用
 
@@ -50,19 +50,7 @@ Linux 上的应用服务目前提供一项支持 Java Web 应用的预览版功�
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
-
-## <a name="create-a-resource-group"></a>创建资源组
-
-在 Cloud Shell 中，使用 [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) 命令创建资源组。 以下示例在“西欧”位置创建名为“myResourceGroup”的资源组。 若要查看应用服务支持的所有位置，请运行 [`az appservice list-locations`](/cli/azure/appservice?view=azure-cli-latest#az_appservice_list_locations) 命令。
-
-```azurecli-interactive
-az group create --name myResourceGroup --location "West US"
-```
-
-通常在附近的区域中创建资源组和资源。 
-
-此命令完成后，JSON 输出会显示资源组属性。
-
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
@@ -189,7 +177,7 @@ curl -T war_file_path -u "app_name\username" ftp://webappFTPURL/site/wwwroot/web
 * `war_file_path` - 使用本地 WAR 文件路径。
 * `app_name` - 使用以前创建的应用名称。
 * `username` - 使用以前创建的部署凭据用户名。
-* `webappFTPURL` - 将 **FTP 主机名**值用于以前复制的 Web 应用。 FTP 主机名也列在 **Azure 门户**的 Web 应用的“概览”边栏选项卡中。[](https://portal.azure.com/)
+* `webappFTPURL` - 将 **FTP 主机名**值用于以前复制的 Web 应用。 FTP 主机名也列在 **Azure 门户**的 Web 应用的“概览”边栏选项卡中。[Azure portal](https://portal.azure.com/)
 
 执行此命令。 出现 cURL 提示时，键入部署凭据的密码。
 

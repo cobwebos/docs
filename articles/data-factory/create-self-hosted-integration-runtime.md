@@ -1,8 +1,8 @@
 ---
-title: "在 Azure 数据工厂中创建自承载的集成运行时 | Microsoft Docs"
-description: "了解如何在 Azure 数据工厂中创建自承载的集成运行时，从而允许数据工厂访问私有网络中存储的数据。"
+title: 在 Azure 数据工厂中创建自承载的集成运行时 | Microsoft Docs
+description: 了解如何在 Azure 数据工厂中创建自承载的集成运行时，从而允许数据工厂访问私有网络中存储的数据。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
 manager: jhubbard
 editor: monicar
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 92f773d3bbabe763d342366f0d56a77621829487
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 3f1b55f2752821de447e6c03bcbf79f01d9f8264
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>如何创建和配置自承载的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用正式版 (GA) 1 版本的数据工厂服务，请参阅 [数据工厂版本 1 文档](v1/data-factory-introduction.md)。
 
 自承载集成运行时能够在云数据存储和专用网络中数据存储之间运行复制活动，并针对本地或 Azure 虚拟网络中的计算资源调度转换活动。 在本地计算机或专用网络中的虚拟机上安装自承载集成运行时的需求。  
 
@@ -65,6 +65,7 @@ ms.lasthandoff: 01/23/2018
 - 自承载集成运行时必须用于支持 Azure 虚拟网络内的数据集成。
 - 即使使用 **ExpressRoute**，也要将数据源视为本地数据源（位于防火墙之后）。 使用自承载集成运行时在服务和数据源之间建立连接。
 - 即使数据存储位于 **Azure IaaS 虚拟机**上的云中，也必须使用自承载集成运行时。
+- Windows Server 上安装的 Integration Runtime（自承载）中的任务可能会失败，因为 Windows Server 中启用了符合 FIPS 标准的加密。 要解决此问题，请禁用服务器上符合 FIPS 标准的加密。 要禁用符合 FIPS 标准的加密，请将以下注册表值从 1（启用）更改为 0（禁用）：`HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -120,7 +121,7 @@ ms.lasthandoff: 01/23/2018
 
 - 证书必须是公共可信的 X509 v3 证书。 建议使用公共（即第三方）证书颁发机构 (CA) 颁发的证书。
 - 每个集成运行时节点必须信任此证书。
-- 支持通配符证书。 如果 FQDN 名称为 node1.domain.contoso.com，可以使用 *.domain.contoso.com 作为证书的使用者名称。
+- 支持通配符证书。 如果 FQDN 名称为 **node1.domain.contoso.com** ，可以使用 ***.domain.contoso.com** 作为证书的使用者名称。
 - 不建议使用 SAN 证书，因为鉴于当前限制，只会使用使用者可选名称的最后一项，其他所有项都会遭忽略。 例如 有一个 SAN 证书，其中 SAN 为 node1.domain.contoso.com 和 node2.domain.contoso.com，那么只能在 FQDN 为 node2.domain.contoso.com 的计算机上使用此证书。
 - 针对 SSL 证书支持受 Windows Server 2012 R2 支持的任何密钥大小。
 - 不支持使用 CNG 密钥的证书。 不支持使用 CNG 密钥的证书。

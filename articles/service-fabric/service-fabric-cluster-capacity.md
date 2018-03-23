@@ -1,11 +1,11 @@
 ---
-title: "规划 Service Fabric 群集容量 | Microsoft 文档"
-description: "Service Fabric 群集容量规划注意事项。 节点类型、操作、耐久性和可靠性层"
+title: 规划 Service Fabric 群集容量 | Microsoft 文档
+description: Service Fabric 群集容量规划注意事项。 节点类型、操作、耐久性和可靠性层
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4c584f4a-cb1f-400c-b61f-1f797f11c982
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: 8e2fceaf7e8a0d6c177d3122bd07de5b8c11f295
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: ad5f396cd71eb0136fe683bbccb9360291be2d59
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 对于任何生产部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
@@ -88,10 +88,11 @@ ms.lasthandoff: 01/05/2018
  
 1. 部署到虚拟机规模集和其他相关 Azure 资源可能会由于群集中的问题或基础结构级别的问题而延迟、超时或被完全阻止。 
 2. 由于 Azure 基础结构操作期间发生的自动节点停用而增加了[副本生命周期事件](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle )（例如，主交换）的数量。
+3. 执行 Azure 平台的软件更新或硬件维护活动时，将节点暂停服务一段时间。 在这些活动期间，你可能会看到状态为“正在禁用”/“已禁用”的节点。 这会暂时降低群集的容量，但不应影响群集或应用程序的可用性。
 
 ### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>有关何时使用“白银”或“黄金”耐久性级别的建议
 
-对于托管要频繁缩小规模（减小 VM 实例计数）的有状态服务并且你愿意延迟部署操作以利于简化这些“缩小规模”操作的所有节点类型，请使用“白银”或“黄金”耐久性。 “扩大规模”的情况（添加 VM 实例）不会受所选耐久性层的影响，只有“缩小规模”的情况才受其影响。
+对于托管要频繁缩小规模（减小 VM 实例计数）的有状态服务，并且你愿意延迟部署操作并减少容量以利于简化这些“缩小规模”操作的所有节点类型，请使用“白银”或“黄金”耐久性。 “扩大规模”的情况（添加 VM 实例）不会受所选耐久性层的影响，只有“缩小规模”的情况才受其影响。
 
 ### <a name="changing-durability-levels"></a>更改耐久性级别
 - 耐久性级别为“白银”或“黄金”的节点类型不能降级为“青铜”。

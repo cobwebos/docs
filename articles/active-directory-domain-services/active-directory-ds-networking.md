@@ -1,8 +1,8 @@
 ---
-title: "Azure AD 域服务：网络指导原则 | Microsoft 文档"
-description: "Azure Active Directory 域服务的网络注意事项"
+title: Azure AD 域服务：网络指导原则 | Microsoft 文档
+description: Azure Active Directory 域服务的网络注意事项
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: a6f0089f13de10ba8bc1f9a656a2d21f9c559047
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: eee7905db4faedef3217118e8d491e2cb019fa30
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD 域服务的网络注意事项
 ## <a name="how-to-select-an-azure-virtual-network"></a>如何选择 Azure 虚拟网络
@@ -53,6 +53,7 @@ ms.lasthandoff: 01/18/2018
 * 不要将 NSG 应用到专用子网。 如果必须将 NSG 应用到专用子网，请确保**不要阻止维护和管理域时所要使用的端口**。
 * 不要过度限制专用子网中可供托管域使用的 IP 地址数。 这种限制会阻止服务向托管域提供两个域控制器。
 * 不要在虚拟网络的**网关子网中启用 Azure AD 域服务**。
+* 不要阻止启用托管域的子网的出站访问。
 
 > [!WARNING]
 > 将 NSG 与已启用 Azure AD 域服务的子网相关联时，可能会导致 Microsoft 无法维护和管理域。 此外，Azure AD 租户与托管域之间的同步会中断。 **如果在部署中应用的 NSG 会阻止 Azure AD 域服务更新和管理域，SLA 将不适用于此类部署。**
@@ -89,6 +90,8 @@ Azure AD 域服务需要使用以下端口来维护和管理托管域。 确保�
 * 此端口用于启用通过 Internet 对托管域进行安全 LDAP 访问。
 * 可以选择性地通过 NSG 打开此端口。 仅当已启用通过 Internet 进行安全 LDAP 访问时，才需要打开此端口。
 * 可将此端口的入站访问限制为预期要通过安全 LDAP 从中建立连接的源 IP 地址。
+
+**出站访问** AAD 域服务需要出站访问其他各种 Azure 服务，以管理、备份和监视托管域。 不要阻止启用托管域的专用子网的出站访问。
 
 
 ## <a name="network-security-groups"></a>网络安全组

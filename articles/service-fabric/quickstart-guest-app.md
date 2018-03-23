@@ -1,12 +1,12 @@
 ---
-title: "将现有应用快速部署到 Azure Service Fabric 群集"
-description: "通过 Visual Studio 使用 Azure Service Fabric 群集来托管现有的 Node.js 应用程序。"
+title: 将现有应用快速部署到 Azure Service Fabric 群集
+description: 通过 Visual Studio 使用 Azure Service Fabric 群集来托管现有的 Node.js 应用程序。
 services: service-fabric
 documentationcenter: nodejs
 author: thraka
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: adegeo
-ms.openlocfilehash: 1130ce3231b9e96a03d3e8dc5f75721dd0415928
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 65185a2d594a4a251cf87ece6f758ab3db223d7d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>在 Azure Service Fabric 上托管 Node.js 应用程序
 
@@ -136,7 +136,7 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
 请勿忘记删除为本快速入门教程创建的所有资源，因为系统会对这些资源收费。
 
 ## <a name="next-steps"></a>后续步骤
-阅读更多有关[来宾可执行文件](service-fabric-deploy-existing-app.md)的内容。
+阅读更多有关[来宾可执行文件](service-fabric-guest-executables-introduction.md)的内容。
 
 <!-- Image References -->
 

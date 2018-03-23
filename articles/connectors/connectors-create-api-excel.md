@@ -1,11 +1,11 @@
 ---
-title: "添加 Excel 连接器 | Microsoft Docs"
-description: "使用 REST API 参数的 Excel 连接器概述"
-services: 
-documentationcenter: 
-author: MandiOhlinger
+title: 添加 Excel 连接器 | Microsoft Docs
+description: 使用 REST API 参数的 Excel 连接器概述
+services: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 03af8652-9223-4348-9490-602872a680f0
 ms.service: multiple
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 4d62bee573aba4c8b0445b1f4c44190496fb3a18
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: estfan; ladocs
+ms.openlocfilehash: 774cf3134e36c50e181a562019cbab3e6de1249d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-excel-connector"></a>Excel 连接器入门
 逻辑应用中没有 Excel 连接器。 

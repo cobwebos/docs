@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect：无缝单一登录 - 常见问题 | Microsoft Docs"
-description: "提供了有关 Azure Active Directory 无缝单一登录常见问题的解答。"
+title: Azure AD Connect：无缝单一登录 - 常见问题 | Microsoft Docs
+description: 提供了有关 Azure Active Directory 无缝单一登录常见问题的解答。
 services: active-directory
-keywords: "什么是 Azure AD Connect, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录"
-documentationcenter: 
+keywords: 什么是 Azure AD Connect, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: bbaed9ee5db895810fac476ea5bf560800b0bdec
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 8a91960f150e9298515cd52fe192ec1abdd89f9c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
@@ -38,7 +38,16 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>哪些应用程序可以利用无缝 SSO 的 `domain_hint` 或 `login_hint` 参数功能？
 
-我们正在编译能够/无法发送这些参数的应用程序列表。 如果你有感兴趣的应用程序，请在备注部分告诉我们。
+下面列出的是将这些参数发送到 Azure AD 的应用程序的非详尽列表，因此使用无缝 SSO 可为用户提供无提示登录体验：
+
+| 应用程序名称 | 可供使用的应用程序 URL |
+| -- | -- |
+| 访问面板 | myapps.microsoft.com/contoso.com |
+| Outlook 网页版 | outlook.office365.com/contoso.com |
+
+在上表中，将"contoso.com"替换为域名，为租户获取正确的应用程序 URL。
+
+如果你有其他感兴趣的应用程序，请在备注部分告诉我们。
 
 ## <a name="does-seamless-sso-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>无缝 SSO 是否支持将 `Alternate ID` 作为用户名（而不是 `userPrincipalName`）？
 
@@ -66,7 +75,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 ### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>步骤 1. 获取已在其中启用了无缝 SSO 的 AD 林列表
 
 1. 首先，下载并安装 [Microsoft Online Services 登录助手](http://go.microsoft.com/fwlink/?LinkID=286152)。
-2. 然后下载并安装[用于 Windows PowerShell 的 64 位 Azure Active Directory 模块](http://go.microsoft.com/fwlink/p/?linkid=236297)。
+2. 然后下载并安装[用于 Windows PowerShell 的 64 位 Azure Active Directory 模块](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)。
 3. 导航到 `%programfiles%\Microsoft Azure Active Directory Connect` 文件夹。
 4. 使用以下命令导入无缝 SSO PowerShell 模块：`Import-Module .\AzureADSSO.psd1`。
 5. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令可提供一个弹出窗口，用以输入租户的全局管理员凭据。

@@ -1,9 +1,9 @@
 ---
-title: "Azure AD 直通身份验证 - 快速入门 | Microsoft 文档"
-description: "本文介绍如何开始使用 Azure Active Directory (Azure AD) 直通身份验证。"
+title: Azure AD 直通身份验证 - 快速入门 | Microsoft 文档
+description: 本文介绍如何开始使用 Azure Active Directory (Azure AD) 直通身份验证。
 services: active-directory
-keywords: "Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需组件, SSO, 单一登录"
-documentationcenter: 
+keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需组件, SSO, 单一登录
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: 1da7c064030501b5c6547b65c091b1a50da93899
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b592eb8ca43e5bf3eebe2b0c47d8f17dbec7b238
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory 直通身份验证：快速入门
 
@@ -116,20 +116,38 @@ Set-OrganizationConfig -PerTenantSwitchToESTSEnabled:$true
 
 ## <a name="step-5-ensure-high-availability"></a>步骤 5：确保高可用性
 
-如果计划在生产环境中部署直通身份验证，则应安装独立身份验证代理。 在另一个服务器上（而非运行 Azure AD Connect 和第一个身份验证代理的服务器）安装第二个身份验证代理。 此设置可提供登录请求的高可用性。 请按照以下说明部署独立身份验证代理：
+如果计划在生产环境中部署直通身份验证，则应至少再安装一个独立身份验证代理。 在没有运行 Azure AD Connect 的服务器上安装这些身份验证代理。 此设置可提供用户登录请求的高可用性。
 
-1. 下载最新版本的身份验证代理（版本 1.5.193.0 或更高）。 使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
+请按照以下说明下载身份验证代理软件：
+
+1. 若要下载最新版身份验证代理（版本 1.5.193.0 或更高版本），请使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 2. 在左窗格中选择“Azure Active Directory”。
 3. 依次选择“Azure AD Connect”、“直通身份验证”和“下载代理”。
 4. 选择“接受条款并下载”按钮。
-5. 通过运行上一步中下载的可执行文件安装最新版本的身份验证代理。 出现提示时，提供租户的全局管理员凭据。
 
 ![Azure Active Directory 管理中心：“下载身份验证代理”按钮](./media/active-directory-aadconnect-pass-through-authentication/pta9.png)
 
 ![Azure Active Directory 管理中心：“下载代理”窗格](./media/active-directory-aadconnect-pass-through-authentication/pta10.png)
 
 >[!NOTE]
->此外，也可下载 [Azure Active Directory 身份验证代理](https://aka.ms/getauthagent)。 确保在安装身份验证代理_之前_查看并接受其[服务条款](https://aka.ms/authagenteula)。
+>也可以从[此处](https://aka.ms/getauthagent)直接下载身份验证代理软件。 安装身份验证代理之前，请查看并接受其[服务条款](https://aka.ms/authagenteula)。
+
+以下是部署独立身份验证代理的两种方法：
+
+首先，可以只运行已下载的身份验证代理可执行文件，并在出现提示时提供租户的全局管理员凭据来交互式地执行此操作。
+
+其次，还可以创建并运行无人参与的部署脚本。 如果希望同时部署多个身份验证代理，或在没有启用用户界面的 Windows 服务器上安装身份验证代理，或无法使用远程桌面进行访问时，这种方法非常有用。 以下是如何使用此方法的说明：
+
+1. 运行以下命令以安装身份验证代理：`AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`。
+2. 可以通过我们的服务使用 Windows PowerShell 注册身份验证代理。 创建包含租户全局管理用户名和密码的 PowerShell 凭据对象 `$cred`。 运行以下命令，替换 \<用户名\> 和 \<密码\>：
+   
+        $User = "<username>"
+        $PlainPassword = '<password>'
+        $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
+3. 转到 C:\Program Files\Microsoft Azure AD Connect Authentication Agent 并使用创建的 `$cred` 对象运行以下脚本：
+   
+        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>后续步骤
 - [智能锁定](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)：了解如何在租户中配置智能锁定功能以保护用户帐户。

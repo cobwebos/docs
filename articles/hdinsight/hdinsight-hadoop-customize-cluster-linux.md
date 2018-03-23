@@ -1,8 +1,8 @@
 ---
-title: "使用脚本操作自定义 HDInsight 群集 — Azure | Microsoft Docs"
-description: "使用脚本操作将自定义组件添加到基于 Linux 的 HDInsight 群集。 脚本操作是 Bash 脚本，可用于自定义群集配置，或者添加 Hue、Solr 或 R 等其他服务和实用工具。"
+title: 使用脚本操作自定义 HDInsight 群集 — Azure | Microsoft Docs
+description: 使用脚本操作将自定义组件添加到基于 Linux 的 HDInsight 群集。 脚本操作是 Bash 脚本，可用于自定义群集配置，或者添加 Hue、Solr 或 R 等其他服务和实用工具。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -160,13 +160,13 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
 | 名称 | 脚本 |
 | --- | --- |
-| **添加 Azure 存储帐户** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh。请参阅[将其他存储添加到 HDInsight 群集中](hdinsight-hadoop-add-storage.md)。 |
-| **安装 Hue** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh。请参阅[在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
-| **安装 Presto** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh。请参阅[在 HDInsight 群集上安装并使用 Presto](hdinsight-hadoop-install-presto.md)。 |
-| **安装 Solr** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh。请参阅[在 HDInsight 群集上安装并使用 Solr](hdinsight-hadoop-solr-install-linux.md)。 |
-| **安装 Giraph** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh。请参阅[在 HDInsight 群集上安装并使用 Giraph](hdinsight-hadoop-giraph-install-linux.md)。 |
-| **预加载 Hive 库** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh。请参阅[在 HDInsight 群集上添加 Hive 库](hdinsight-hadoop-add-hive-libraries.md)。 |
-| **安装或更新 Mono** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash。 请参阅[在 HDInsight 上安装或更新 Mono](hdinsight-hadoop-install-mono.md)。 |
+| **添加 Azure 存储帐户** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh.请参阅 [将其他存储添加到 HDInsight 群集中](hdinsight-hadoop-add-storage.md). |
+| **安装 Hue** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh.请参阅 [在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md). |
+| **安装 Presto** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh.请参阅 [在 HDInsight 群集上安装并使用 Presto](hdinsight-hadoop-install-presto.md). |
+| **安装 Solr** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh.请参阅 [在 HDInsight 群集上安装并使用 Solr](hdinsight-hadoop-solr-install-linux.md). |
+| **安装 Giraph** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh.请参阅 [在 HDInsight 群集上安装并使用 Giraph](hdinsight-hadoop-giraph-install-linux.md). |
+| **预加载 Hive 库** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh.请参阅 [在 HDInsight 群集上添加 Hive 库](hdinsight-hadoop-add-hive-libraries.md). |
+| **安装或更新 Mono** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash. 请参阅 [在 HDInsight 上安装或更新 Mono](hdinsight-hadoop-install-mono.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>在创建群集期间使用脚本操作
 

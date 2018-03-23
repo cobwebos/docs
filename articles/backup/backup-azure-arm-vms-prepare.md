@@ -1,12 +1,12 @@
 ---
-title: "Azure 备份：准备备份虚拟机 | Microsoft 文档"
-description: "确保对环境进行准备，以便在 Azure 中备份虚拟机。"
+title: Azure 备份：准备备份虚拟机 | Microsoft 文档
+description: 确保对环境进行准备，以便在 Azure 中备份虚拟机。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "备份; 正在备份;"
+editor: ''
+keywords: 备份; 正在备份;
 ms.assetid: e87e8db2-b4d9-40e1-a481-1aa560c03395
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 62e047d706bdc42abbe44340c87267e59eb84369
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: cd8274ab6b50eee83bc3e41ea543930aa309e790
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>准备环境以备份 Resource Manager 部署的虚拟机
 
@@ -49,12 +49,6 @@ ms.lasthandoff: 03/05/2018
 准备环境之前，请务必了解限制：
 
 * 不支持备份超过 16 个数据磁盘的虚拟机。
-* 不支持备份数据磁盘大小超过 1,023 GB 的虚拟机。
-
-  > [!NOTE]
-  > 我们提供了个人预览版以支持带有大于 1 TB 磁盘的 VM 的备份。 有关详细信息，请参阅[支持大型磁盘 VM 备份的专用预览版](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)。
-  >
-
 * 不支持备份使用保留 IP 地址且未定义终结点的虚拟机。
 * 不支持备份通过 Linux 统一密钥设置 (LUKS) 加密法加密的 Linux VM。
 * 不建议备份包含群集共享卷 (CSV) 或横向扩展文件服务器配置的 VM。 这些操作涉及到在执行快照任务执行期间包含在群集配置中的所有 VM。 Azure 备份不支持多 VM 一致性。 

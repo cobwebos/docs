@@ -1,11 +1,11 @@
 ---
-title: "查看 Azure Application Insights 应用数据 | Microsoft Docs"
-description: "可以使用 Application Insights 连接器解决方案来诊断性能问题，以及了解用户在使用 Application Insights 监视的应用中执行的操作。"
+title: 查看 Azure Application Insights 应用数据 | Microsoft Docs
+description: 可以使用 Application Insights 连接器解决方案来诊断性能问题，以及了解用户在使用 Application Insights 监视的应用中执行的操作。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: magoedte
-ms.openlocfilehash: bf3259909a84e1e1f5325ff4e39d5c10f1abc831
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 1556e91710990351d6723325789201afa99b1943
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights 连接器管理解决方案（预览版）
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 02/13/2018
 要记住的其他要点：
 
 - 只能将 Application Insights 应用链接到一个 Log Analytics 工作区。
-- 只能将[标准或高级 Application Insights 资源](https://azure.microsoft.com/pricing/details/application-insights)链接到 Log Analytics。 但是，可以使用 Log Analytics 的免费层。
+- 只能将[基本或企业 Application Insights 资源](https://azure.microsoft.com/pricing/details/application-insights)链接到 Log Analytics。 但是，可以使用 Log Analytics 的免费层。
 
 ## <a name="management-packs"></a>管理包
 

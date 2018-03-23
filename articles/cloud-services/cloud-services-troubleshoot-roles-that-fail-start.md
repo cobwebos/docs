@@ -1,11 +1,11 @@
 ---
-title: "对未能启动的角色进行故障排除 | Microsoft Docs"
-description: "以下是云服务角色无法启动的一些常见原因。 此外还提供了这些问题的解决方案。"
+title: 对未能启动的角色进行故障排除 | Microsoft Docs
+description: 以下是云服务角色无法启动的一些常见原因。 此外还提供了这些问题的解决方案。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: d24a55fd3b93760035f852a24537c1cec9e4bab2
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 36966151b616a14e429807feb63df93503e7b249
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>对无法启动的云服务角色进行故障排除
 以下是一些与无法启动的 Azure 云服务角色相关的常见问题和解决方案。
@@ -62,7 +62,7 @@ DLL 或程序集缺失的症状可能为：
 可使用远程桌面来访问角色并远程查看更完整的错误信息。 通过以下步骤使用远程桌面来查看错误：
 
 1. 确保安装了 Azure SDK 1.3 或更高版本。
-2. 在使用 Visual Studio 部署解决方案的过程中，选择“配置远程桌面连接”。 有关配置远程桌面连接的详细信息，请参阅[将远程桌面与 Azure 角色一起使用](../vs-azure-tools-remote-desktop-roles.md)。
+2. 在使用 Visual Studio 部署解决方案的过程中，启用远程桌面。 有关详细信息，请参阅[使用 Visual Studio 为 Azure 云服务中的角色启用远程桌面连接](cloud-services-role-enable-remote-desktop-visual-studio.md)。
 3. 在 Microsoft Azure 门户中，一旦实例显示“就绪”状态，则远程连接到该实例。 有关通过云服务使用远程桌面的详细信息，请参阅[远程连接到角色实例](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances)。
 5. 使用在远程桌面配置期间指定的凭据登录到虚拟机。
 6. 打开命令窗口。

@@ -1,24 +1,24 @@
 ---
-title: "使用 Azure Log Analytics 收集环境中的数据 | Microsoft Docs"
-description: "本主题有助于了解如何使用 Log Analytics 收集数据并监视托管在本地或其他云环境中的计算机。"
+title: 使用 Azure Log Analytics 收集环境中的数据 | Microsoft Docs
+description: 本主题有助于了解如何使用 Log Analytics 收集数据并监视托管在本地或其他云环境中的计算机。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 85fde471f0d99b976e319d552c6a031d63854cf4
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9346e9a9ad310a21c6d6ce388b76ce491041289c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>使用 Log Analytics 从环境中的计算机收集数据
 
@@ -77,14 +77,14 @@ Windows 代理正式支持以下版本的 Windows 操作系统：
 * SUSE Linux Enterprise Server 11 和 12 (x86/x64)
 
 #### <a name="network-configuration"></a>网络配置
-下面的信息列出了实现 Linux 代理与 Log Analytics 通信所必需的代理和防火墙配置信息。 流量从网络传出到 Log Analytics 服务。 
+下面的信息列出了实现 Linux 代理与 Log Analytics 通信所必需的代理和防火墙配置信息。  
 
-|代理资源| 端口 |  
-|------|---------|  
-|*.ods.opinsights.azure.com | 端口 443|   
-|*.oms.opinsights.azure.com | 端口 443|   
-|* .blob.core.windows.net | 端口 443|   
-|* .azure-automation.net | 端口 443|  
+|代理资源| 端口 | 方向 |  
+|------|---------|--------|  
+|*.ods.opinsights.azure.com | 端口 443 | 入站和出站|  
+|*.oms.opinsights.azure.com | 端口 443 | 入站和出站|  
+|* .blob.core.windows.net | 端口 443 | 入站和出站|  
+|* .azure-automation.net | 端口 443 | 入站和出站|  
 
 Linux 代理支持使用 HTTPS 协议通过代理服务器或 OMS 网关与 Log Analytics 服务进行通信。  并同时支持匿名身份验证和基本身份验证（用户名/密码）。  可在安装期间指定代理服务器，也可在安装后通过修改 proxy.conf 配置文件来指定。  
 

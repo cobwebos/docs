@@ -1,23 +1,23 @@
 ---
-title: "Azure SKU 不可用错误 | Microsoft Docs"
-description: "介绍如何在部署过程中解决 SKU 不可用错误。"
+title: Azure SKU 不可用错误 | Microsoft Docs
+description: 介绍如何在部署过程中解决 SKU 不可用错误。
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: a6cccfa5097847429d3e402e3d522addc14b8c31
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: b0cbd3c232e5df831031cc8e436f8dbb24b0e72c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用的错误
 
@@ -37,13 +37,9 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 当所选的资源 SKU（如 VM 大小）不可用于所选的位置时，会收到此错误。
 
-## <a name="solution"></a>解决方案
+## <a name="solution-1---powershell"></a>解决方案 1 - PowerShell
 
-要解决此问题，需要确定区域中可用的 SKU。 可使用 PowerShell、门户或 REST 操作查找可用的 SKU。
-
-### <a name="solution-1"></a>解决方案 1
-
-在 PowerShell 中使用 [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) 命令。 按位置筛选结果。 必须拥有最新版本 PowerShell 才能运行此命令。
+要确定区域中可用的 SKU，请使用 [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) 命令。 按位置筛选结果。 必须拥有最新版本 PowerShell 才能运行此命令。
 
 ```powershell
 Get-AzureRmComputeResourceSku | where {$_.Locations -icontains "southcentralus"}
@@ -61,9 +57,9 @@ virtualMachines      Standard_A1 southcentralus
 virtualMachines      Standard_A2 southcentralus
 ```
 
-### <a name="solution-2"></a>解决方案 2
+## <a name="solution-2---azure-cli"></a>解决方案 2 - Azure CLI
 
-在 Azure CLI 中，使用 `az vm list-skus` 命令。 然后，可以使用 `grep` 或类似的实用工具来筛选输出。
+要确定区域中可用的 SKU，请使用 `az vm list-skus` 命令。 然后，可以使用 `grep` 或类似的实用工具来筛选输出。
 
 ```bash
 $ az vm list-skus --output table
@@ -79,15 +75,15 @@ availabilitySets  centralus           Classic                 MaximumPlatformFau
 availabilitySets  centralus           Aligned                 MaximumPlatformFaultDomainCount=3
 ```
 
-### <a name="solution-3"></a>解决方案 3
+## <a name="solution-3---azure-portal"></a>解决方案 3 - Azure 门户
 
-使用[门户](https://portal.azure.com)。 登录到门户，并通过接口添加资源。 设置值时，可看到该资源的可用 SKU。 无需完成该部署。
+要确定区域中可用的 SKU，请使用[门户](https://portal.azure.com)。 登录到门户，并通过接口添加资源。 设置值时，可看到该资源的可用 SKU。 无需完成该部署。
 
 ![可用的 SKU](./media/resource-manager-sku-not-available-errors/view-sku.png)
 
-### <a name="solution-4"></a>解决方案 4
+## <a name="solution-4---rest"></a>解决方案 4 - REST
 
-将 REST API 用于虚拟机。 发送以下请求：
+要确定区域中可用的 SKU，请对虚拟机使用 REST API。 发送以下请求：
 
 ```HTTP 
 GET

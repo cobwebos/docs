@@ -1,11 +1,11 @@
 ---
-title: "Azure SQL 数据仓库速查表 | Microsoft Docs"
-description: "查找链接和最佳做法，以便快速生成 Azure SQL 数据仓库解决方案。"
+title: Azure SQL 数据仓库速查表 | Microsoft Docs
+description: 查找链接和最佳做法，以便快速生成 Azure SQL 数据仓库解决方案。
 services: sql-data-warehouse
 documentationcenter: NA
 author: acomet
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 51f1e444-9ef7-4e30-9a88-598946c45196
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 02/20/2018
 ms.author: acomet
-ms.openlocfilehash: 6c8278be32ae6c6452283ba946a36f363dd4d76d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c67d56ff63f70baa052be17c119d943c558d398f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库速查表
 此速查表提供有关生成 Azure SQL 数据仓库解决方案的有用提示和最佳做法。 在开始之前，请阅读 [Azure SQL 数据仓库的工作负荷模式和对立模式](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns)中的每个详细步骤，其中解释了 SQL 数据仓库的定义。
@@ -146,12 +146,12 @@ SQL 数据仓库的一个重要功能是可以[管理计算资源](sql-data-ware
 [草图]:media/sql-data-warehouse-cheat-sheet/picture-flow.png
 
 <!--Article references-->
-[数据加载]:./design-elt-data-loading.md
-[deeper guidance]: ./guidance-for-loading-data.md
-[索引]:./sql-data-warehouse-tables-index.md
-[分区]:./sql-data-warehouse-tables-partition.md
-[统计信息]:./sql-data-warehouse-tables-statistics.md
-[资源类和并发]:./sql-data-warehouse-develop-concurrency.md
+[数据加载]:design-elt-data-loading.md
+[deeper guidance]:guidance-for-loading-data.md
+[索引]:sql-data-warehouse-tables-index.md
+[分区]:sql-data-warehouse-tables-partition.md
+[统计信息]:sql-data-warehouse-tables-statistics.md
+[资源类和并发]:resource-classes-for-workload-management.md
 
 <!--MSDN references-->
 

@@ -1,30 +1,26 @@
 ---
-title: "Azure SQL 数据库服务 | Microsoft Docs"
-description: "了解单一数据库和池数据库的服务层以提供性能级别和存储大小。"
-keywords: 
+title: Azure SQL 数据库服务 | Microsoft Docs
+description: 了解单一数据库和池数据库的服务层以提供性能级别和存储大小。
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: f5c5c596-cd1e-451f-92a7-b70d4916e974
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 02/26/2018
+ms.date: 03/15/2018
 ms.author: carlrab
-ms.openlocfilehash: b36af32d900f9426424dd08c43946e7dcb5b39b9
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 6153616de763eee1b20fff40d38816eca8b455de
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>什么是 Azure SQL 数据库服务层？
 
-[Azure SQL 数据库](sql-database-technical-overview.md)可同时向[单一数据库](sql-database-single-database-resources.md)和[弹性池](sql-database-elastic-pool.md)提供“基本”、“标准”和“高级”服务层。 服务层的区别主要在于性能级别、存储大小选择和价格。  所有服务层都能够灵活变动性能级别和存储大小。  单一数据库和弹性池根据服务层、性能级别和存储大小按小时计费。   
+[Azure SQL 数据库](sql-database-technical-overview.md)可同时向[单一数据库](sql-database-single-database-resources.md)和[弹性池](sql-database-elastic-pool.md)提供“基本”、“标准”和“高级”服务层。 SQL 数据库提供适用于 [Azure SQL 数据库托管实例](sql-database-managed-instance.md#managed-instance-service-tier)的常规用途服务层。 服务层的区别主要在于性能级别、存储大小选择和价格。  所有服务层都能够灵活变动性能级别和存储大小。  单一数据库和弹性池根据服务层、性能级别和存储大小按小时计费。   
+
+> [!IMPORTANT]
+> SQL 数据库托管实例（当前处于公共预览状态）提供单个常规用途服务层。 有关详细信息，请参阅 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)。 本文剩余部分不适用于托管实例。
 
 ## <a name="choosing-a-service-tier"></a>选择服务层
 

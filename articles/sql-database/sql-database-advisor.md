@@ -1,25 +1,19 @@
 ---
-title: "性能建议 - Azure SQL 数据库 | Microsoft Docs"
-description: "Azure SQL 数据库提供有关 SQL 数据库的建议，以提升当前查询性能。"
+title: 性能建议 - Azure SQL 数据库 | Microsoft Docs
+description: Azure SQL 数据库提供有关 SQL 数据库的建议，以提升当前查询性能。
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: monicar
-ms.assetid: 1db441ff-58f5-45da-8d38-b54dc2aa6145
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 09/20/2017
-ms.author: 
-ms.openlocfilehash: b3cd5f2138f4d16a1a1590b025d020410ebcce3c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: sstein
+ms.openlocfilehash: 47e93d270aa3596430ab5892b2bd9323fba1d12e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL 数据库性能建议
 

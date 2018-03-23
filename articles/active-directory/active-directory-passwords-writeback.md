@@ -1,26 +1,26 @@
 ---
-title: "Azure AD SSPR 与密码写回 | Microsoft Docs"
-description: "使用 Azure AD 和 Azure AD Connect 将密码写回本地目录"
+title: Azure AD SSPR 与密码写回 | Microsoft Docs
+description: 使用 Azure AD 和 Azure AD Connect 将密码写回本地目录
 services: active-directory
-keywords: "Active Directory 密码管理, 密码管理, Azure AD 自助密码重置"
-documentationcenter: 
+keywords: Active Directory 密码管理, 密码管理, Azure AD 自助密码重置
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: b4a14d3c79f93988eeac1525da09cf70dc2de634
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: bcb7074a6d590a08ad683c8746156245bc60c5e8
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="password-writeback-overview"></a>密码写回概述
 
@@ -31,6 +31,7 @@ ms.lasthandoff: 01/12/2018
 * **提供零延迟反馈**：密码写回是一项同步操作。 如果用户的密码不符合策略或因任何原因而无法重置或更改，用户会立即收到通知。
 * **支持使用 Active Directory 联合身份验证服务 (AD FS) 或其他联合技术的用户重置密码**：使用密码写回服务，只要联合用户帐户同步到 Azure AD 租户，用户就可以在云中管理本地 Active Directory 密码。
 * **支持使用[密码哈希同步](./connect/active-directory-aadconnectsync-implement-password-synchronization.md)的用户重置密码**：如果密码重置服务检测到同步用户帐户已启用密码哈希同步，我们会同时重置此帐户的本地密码和云密码。
+* 支持使用直通身份验证的用户重置密码：使用密码写回服务，只要直通身份验证帐户同步到 Azure AD 租户，用户就可以在云中管理本地 Active Directory 密码。
 * **支持在访问面板和 Office 365 中更改密码**：如果联合用户或密码同步用户更改已到期或未到期的密码，我们会将这些密码写回本地 Active Directory 环境。
 * **支持管理员在 Azure 门户中重置密码时写回密码**：无论何时管理员在 [Azure 门户](https://portal.azure.com)中重置用户密码，只要是联合用户或密码同步用户，我们就还会在本地 Active Directory 中设置管理员选择的密码。 Office 管理门户暂不支持此功能。
 * **强制实施本地 Active Directory 密码策略**：如果用户重置密码，我们会先确保它符合本地 Active Directory 策略要求，然后再将重置密码提交到相应目录。 此评审包括检查历史记录、复杂性、期限、密码筛选器，以及已在本地 Active Directory 中定义的其他任何密码限制。

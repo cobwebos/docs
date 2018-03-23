@@ -1,6 +1,6 @@
 ---
-title: "共享自行车教程 - 使用 Azure Machine Learning Workbench 执行高级数据准备"
-description: "本教程介绍如何使用 Azure Machine Learning Workbench 执行端到端数据准备任务"
+title: 共享自行车教程 - 使用 Azure Machine Learning Workbench 执行高级数据准备
+description: 本教程介绍如何使用 Azure Machine Learning Workbench 执行端到端数据准备任务
 services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: ca7239fd3e31c7a6cfc6fb64e04afb376e01c190
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: f1d4b58d0fe0628aa00b8229a1383d3ada414f62
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>教程：使用 Azure Machine Learning Workbench 进行高级数据准备（共享自行车数据）
 Azure 机器学习（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。
@@ -736,7 +736,7 @@ df.head(10)
 3. 创建 HDInsight 运行配置需要群集的名称和 `sshuser` 密码。
 
     ```azurecli
-    az ml computetarget attach --name hdinsight --address <yourclustername>.azurehdinsight.net --username sshuser --password <your password> --type cluster
+    az ml computetarget attach cluster --name hdinsight --address <yourclustername>.azurehdinsight.net --username sshuser --password <your password>
     az ml experiment prepare -c hdinsight
     ```
 > [!NOTE]

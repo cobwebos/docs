@@ -1,11 +1,11 @@
 ---
-title: "登录到配置为联合单一登录的非库应用程序时出现的问题 | Microsoft Docs"
-description: "关于使用 Azure AD 登录到配置为基于 SAML 的联合单一登录的应用程序时可能遇到的具体问题的指南"
+title: 登录到配置为联合单一登录的非库应用程序时出现的问题 | Microsoft Docs
+description: 关于使用 Azure AD 登录到配置为基于 SAML 的联合单一登录的应用程序时可能遇到的具体问题的指南
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: cfd4e478850783983caa3042cbbb2b096a576292
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的非库应用程序时出现的问题
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="application-not-found-in-directory"></a>在目录中未找到应用程序
 
-*错误 AADSTS70001: 在目录中未找到标识符为“https://contoso.com”的应用程序*。
+错误 AADSTS70001: 目录中未找到标识符为“https://contoso.com”的应用程序。
 
 **可能的原因**
 
@@ -63,7 +63,7 @@ SAML 请求中从应用程序发送给 Azure AD 的颁发者属性与应用程�
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>回复地址与为应用程序配置的回复地址不匹配。 
 
-*错误 AADSTS50011: 回复地址 "https://contoso.com" 与为应用程序配置的回复地址不匹配* 
+错误 AADSTS50011：回复地址“https://contoso.com”与为应用程序配置的回复地址不匹配 
 
 **可能的原因** 
 
@@ -123,7 +123,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 7.  在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
-8.  单击“用户和组”列表顶部的“添加”按钮，打开“添加分配”窗格。
+8.  单击“用户和组”列表顶部的“添加”按钮，以打开“添加分配”窗格。
 
 9.  在“添加分配”窗格中，单击“用户和组”选择器。
 
@@ -135,7 +135,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 
-14. **可选：**单击“添加分配”窗格中的“选择角色”选择器可选择要分配给所选用户的角色。
+14. **可选：**单击“添加分配”窗格中的“选择角色”选择器，选择一个角色来分配给所选用户。
 
 15. 单击“分配”按钮，将应用程序分配给选定用户。
 

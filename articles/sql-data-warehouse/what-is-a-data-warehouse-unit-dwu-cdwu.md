@@ -1,25 +1,24 @@
 ---
-title: "什么是 Azure SQL 数据仓库中的数据仓库单位（DWU、cDWU）？ | Microsoft Docs"
-description: "Azure SQL 数据仓库中的性能横向扩展功能。 通过调整 DWU、cDWU 数目进行横向扩展，或者通过暂停和恢复计算资源来节省成本。"
+title: 什么是 Azure SQL 数据仓库中的数据仓库单位（DWU、cDWU）？ | Microsoft Docs
+description: Azure SQL 数据仓库中的性能横向扩展功能。 通过调整 DWU、cDWU 数目进行横向扩展，或者通过暂停和恢复计算资源来节省成本。
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: 
-ms.assetid: e13a82b0-abfe-429f-ac3c-f2b6789a70c6
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 11/10/2017
+ms.date: 03/15/2018
 ms.author: jrj;barbkess
-ms.openlocfilehash: 02998c48dcab5d3ed191b168665c9e47bbfbd232
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: f634bdde2c71f7563df11f686d7ce217311df81d
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>数据仓库单位 (DWU) 和计算数据仓库单位 (cDWU)
 介绍 Azure SQL 数据仓库的数据仓库单位 (DWU) 和计算数据仓库单位 (cDWU)。 包括针对如何选择合适的数据仓库单位数以及如何更改其数目的建议。 
@@ -101,7 +100,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置。
 
-3. 单击“保存” 。 此时会显示确认消息。 单击“是”以确认或“否”以取消。
+3. 单击“ **保存**”。 此时会显示确认消息。 单击“是”以确认或“否”以取消。
 
 ### <a name="powershell"></a>PowerShell
 要更改 DWU 或 cDWU，请使用 [Set-AzureRmSqlDatabase][Set-AzureRmSqlDatabase] PowerShell cmdlet。 以下示例将托管在服务器 MyServer 上的数据库 MySQLDW 的服务级别目标设置为 DW1000。
@@ -201,7 +200,7 @@ AND       major_resource_id = 'MySQLDW'
 [Check database state with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#check-database-state
 [Check database state with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#check-database-state
 
-[Workload and concurrency management]: ./sql-data-warehouse-develop-concurrency.md
+[Workload and concurrency management]: ./resource-classes-for-workload-management.md
 [Table design overview]: ./sql-data-warehouse-tables-overview.md
 [Table distribution]: ./sql-data-warehouse-tables-distribute.md
 [Table indexing]: ./sql-data-warehouse-tables-index.md

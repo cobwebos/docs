@@ -1,19 +1,19 @@
 ---
-title: "Azure SQL 数据库托管实例 - 连接应用程序 | Microsoft Docs"
-description: "本文介绍如何将应用程序连接到 Azure SQL 数据库托管实例。"
+title: Azure SQL 数据库托管实例 - 连接应用程序 | Microsoft Docs
+description: 本文介绍如何将应用程序连接到 Azure SQL 数据库托管实例。
 ms.service: sql-database
 author: srdjan-bozovic
-manager: cguyer
+manager: craigg
 ms.custom: managed instance
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 243dfd09df5eaac05608f57a0b2abf6e757f00e8
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f02311026e3f28d4cf41dfe9b155f928885ae938
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>将应用程序连接到 Azure SQL 数据库托管实例
 

@@ -1,11 +1,11 @@
 ---
-title: "如何使用 PowerShell 创建 X.509 证书 | Microsoft Docs"
-description: "如何使用 PowerShell 在本地创建 X.509 证书，以及在模拟环境下在 Azure IoT 中心启用基于 X.509 的安全性。"
+title: 如何使用 PowerShell 创建 X.509 证书 | Microsoft Docs
+description: 如何使用 PowerShell 在本地创建 X.509 证书，以及在模拟环境下在 Azure IoT 中心启用基于 X.509 的安全性。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dsk-2015
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 12/10/2017
 ms.author: dkshir
 ms.openlocfilehash: b2f78e8debd367f86ee9bb06bf7de50590c61ad7
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>用于管理 CA 签名的 X.509 证书的 PowerShell 脚本
 

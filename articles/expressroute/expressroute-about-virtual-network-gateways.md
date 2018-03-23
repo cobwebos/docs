@@ -1,11 +1,11 @@
 ---
-title: "关于 ExpressRoute 虚拟网络网关 | Microsoft Docs"
-description: "了解 ExpressRoute 的虚拟网络网关。"
+title: 关于 ExpressRoute 虚拟网络网关 | Microsoft Docs
+description: 了解 ExpressRoute 的虚拟网络网关。
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager, azure-service-management
 ms.assetid: 7e0d9658-bc00-45b0-848f-f7a6da648635
 ms.service: expressroute
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/05/2017
+ms.date: 03/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: a6363fa380d0bab05d7500141cc6019d1d3f68b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0517caed3a7d6632c1a5650147f4db240dbe0a17
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>关于 ExpressRoute 的虚拟网络网关
 虚拟网络网关用于在 Azure 虚拟网络和本地位置之间发送网络流量。 配置 ExpressRoute 连接时，必须创建并配置虚拟网络网关和虚拟网络网关连接。
@@ -48,11 +48,12 @@ ms.lasthandoff: 10/11/2017
 ## <a name="resources"></a>REST API 和 PowerShell cmdlet
 有关将 REST API 和 PowerShell cmdlet 用于虚拟网络网关配置的其他技术资源和特定语法要求，请参阅以下页面：
 
-| **经典** | **Resource Manager** |
+| **经典** | **资源管理器** |
 | --- | --- |
 | [PowerShell](https://msdn.microsoft.com/library/mt270335.aspx) |[PowerShell](https://msdn.microsoft.com/library/mt163510.aspx) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
 ## <a name="next-steps"></a>后续步骤
-有关可用连接配置的详细信息，请参阅 [ExpressRoute 概述](expressroute-introduction.md)。 
+有关可用连接配置的详细信息，请参阅 [ExpressRoute 概述](expressroute-introduction.md)。
 
+有关创建 ExpressRoute 网关的详细信息，请参阅[创建 ExpressRoute 的虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)。

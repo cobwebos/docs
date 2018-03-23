@@ -1,11 +1,11 @@
 ---
-title: "将现有 Azure 数据仓库迁移到高级存储 | Microsoft 文档"
-description: "有关将现有数据仓库迁移到高级存储的说明"
+title: 将现有 Azure 数据仓库迁移到高级存储 | Microsoft 文档
+description: 有关将现有数据仓库迁移到高级存储的说明
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: barbkess
-editor: 
+editor: ''
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: migrate
-ms.date: 11/29/2016
+ms.date: 03/15/2018
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 751f553c277cec579327771beb2f3256664452b1
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 3b43bc17b7f9cf80a9520c5c573be3a48d82e4e7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>将数据仓库迁移到高级存储
 Azure SQL 数据仓库最近推出了[具有更好的性能可预测性的高级存储][premium storage for greater performance predictability]。 现在可以将标准存储上现有的数据仓库迁移到高级存储。 可以利用自动迁移，如果想要控制迁移时间（这涉及某种停机时间），也可自己执行迁移操作。
@@ -31,13 +31,13 @@ Azure SQL 数据仓库最近推出了[具有更好的性能可预测性的高级
 
 | **区域** | **在此日期之前创建的数据仓库** |
 |:--- |:--- |
-| 澳大利亚东部 |高级存储尚不可用 |
+| 澳大利亚东部 |2018 年 1 月 1 日 |
 | 中国东部 |2016 年 11 月 1 日 |
 | 中国北部 |2016 年 11 月 1 日 |
 | 德国中部 |2016 年 11 月 1 日 |
 | 德国东北部 |2016 年 11 月 1 日 |
-| 印度西部 |高级存储尚不可用 |
-| 日本西部 |高级存储尚不可用 |
+| 印度西部 |2018 年 2 月 1 日 |
+| 日本西部 |2018 年 2 月 1 日 |
 | 美国中北部 |2016 年 11 月 10 日 |
 
 ## <a name="automatic-migration-details"></a>自动迁移的详细信息
@@ -69,14 +69,14 @@ Microsoft 执行以下步骤来完成迁移（这些步骤不需要用户参与�
 
 | **区域** | **预计开始日期** | **预计结束日期** |
 |:--- |:--- |:--- |
-| 澳大利亚东部 |尚未决定 |尚未决定 |
-| 中国东部 |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
-| 中国北部 |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
-| 德国中部 |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
-| 德国东北部 |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
-| 印度西部 |尚未决定 |尚未决定 |
-| 日本西部 |尚未决定 |尚未决定 |
-| 美国中北部 |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
+| 澳大利亚东部 |2018 年 3 月 19 日 |2018 年 3 月 20 日 |
+| 中国东部 |已迁移 |已迁移 |
+| 中国北部 |已迁移 |已迁移 |
+| 德国中部 |已迁移 |已迁移 |
+| 德国东北部 |已迁移 |已迁移 |
+| 印度西部 |2018 年 3 月 19 日 |2018 年 3 月 20 日 |
+| 日本西部 |2018 年 3 月 19 日 |2018 年 3 月 20 日 |
+| 美国中北部 |已迁移 |已迁移 |
 
 ## <a name="self-migration-to-premium-storage"></a>自行迁移到高级存储
 如果要控制何时发生停机时间，则可以使用以下步骤将标准存储上的现有数据仓库迁移到高级存储。 如果选择此选项，则必须在该区域的自动迁移开始之前，完成自行迁移。 这可确保避免导致冲突的自动迁移的任何风险（请参阅[自动迁移计划][automatic migration schedule]）。
@@ -84,11 +84,14 @@ Microsoft 执行以下步骤来完成迁移（这些步骤不需要用户参与�
 ### <a name="self-migration-instructions"></a>自行迁移说明
 若要自行迁移数据仓库，请使用备份和还原功能。 在迁移过程的还原部分中，对于每个数据仓库中每 TB 的存储，预计将花费大约 1 小时。 如果想在迁移完成后保留相同的名称，请按照[迁移期间重命名的步骤][steps to rename during migration]进行操作。
 
-1. [暂停][Pause]数据仓库。 这会执行自动备份。
+1. [暂停][Pause]数据仓库。 
 2. 从最新的快照进行[还原][Restore]。
 3. 删除标准存储上的现有数据仓库。 **如果此步骤失败，需要为两个数据仓库支付费用。**
 
 > [!NOTE]
+>
+> 还原数据仓库时，请验证数据仓库暂停之后出现的最新可用还原点。
+>
 > 以下设置不会在迁移过程中留存：
 >
 > * 需要重新启用数据库级别的审核。
@@ -105,60 +108,13 @@ Microsoft 执行以下步骤来完成迁移（这些步骤不需要用户参与�
    ```
    ALTER DATABASE CurrentDatabasename MODIFY NAME = NewDatabaseName;
    ```
-2. [暂停][Pause]“MyDW_BeforeMigration”。 这会执行自动备份。
+2. [暂停][Pause]“MyDW_BeforeMigration”。 
 3. 从最新的快照进行[还原][Restore]，并使用它以前的名称（例如，“MyDW”）创建一个新数据库。
 4. 删除“MyDW_BeforeMigration”。 **如果此步骤失败，需要为两个数据仓库支付费用。**
 
 
 ## <a name="next-steps"></a>后续步骤
 通过对高级存储的更改，我们还增加了数据仓库基础结构中的数据库 blob 文件的数量。 若要充分利用此更改的性能优势，请使用以下脚本重新生成聚集列存储索引。 该脚本的工作原理是强制将一些现有数据分发到其他 blob。 如果不采取任何操作，当将更多数据加载到表时，这些数据将随着时间的推移自然地重新分发。
-
-**先决条件：**
-
-- 数据仓库应以 1,000 或更高的数据仓库单位运行（请参阅[缩放计算能力][scale compute power]）。
-- 执行脚本的用户应具有 [mediumrc 角色][mediumrc role]或更高级的角色。 要将用户添加到此角色中，请执行以下语句：````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
-
-````sql
--------------------------------------------------------------------------------
--- Step 1: Create table to control index rebuild
--- Run as user in mediumrc or higher
---------------------------------------------------------------------------------
-create table sql_statements
-WITH (distribution = round_robin)
-as select
-    'alter index all on ' + s.name + '.' + t.NAME + ' rebuild;' as statement,
-    row_number() over (order by s.name, t.name) as sequence
-from
-    sys.schemas s
-    inner join sys.tables t
-        on s.schema_id = t.schema_id
-where
-    is_external = 0
-;
-go
-
---------------------------------------------------------------------------------
--- Step 2: Execute index rebuilds. If script fails, the below can be re-run to restart where last left off.
--- Run as user in mediumrc or higher
---------------------------------------------------------------------------------
-
-declare @nbr_statements int = (select count(*) from sql_statements)
-declare @i int = 1
-while(@i <= @nbr_statements)
-begin
-      declare @statement nvarchar(1000)= (select statement from sql_statements where sequence = @i)
-      print cast(getdate() as nvarchar(1000)) + ' Executing... ' + @statement
-      exec (@statement)
-      delete from sql_statements where sequence = @i
-      set @i += 1
-end;
-go
--------------------------------------------------------------------------------
--- Step 3: Clean up table created in Step 1
---------------------------------------------------------------------------------
-drop table sql_statements;
-go
-````
 
 如果有任何关于数据仓库的问题，请[创建支持票证][create a support ticket]，并引用“迁移到高级存储”作为可能的原因。
 
@@ -174,7 +130,7 @@ go
 [Restore]: sql-data-warehouse-restore-database-portal.md
 [steps to rename during migration]: #optional-steps-to-rename-during-migration
 [scale compute power]: quickstart-scale-compute-portal.md
-[mediumrc role]: sql-data-warehouse-develop-concurrency.md
+[mediumrc role]: resource-classes-for-workload-management.md
 
 <!--MSDN references-->
 

@@ -1,11 +1,11 @@
 ---
-title: "在 Azure Active Directory 中使用 SCIM 自动预配应用 | Microsoft Docs"
-description: "Azure Active Directory 可以使用 SCIM 协议规范中定义的接口，自动将用户和组预配到以 Web 服务为前端的任何应用程序或标识存储"
+title: 在 Azure Active Directory 中使用 SCIM 自动预配应用 | Microsoft Docs
+description: Azure Active Directory 可以使用 SCIM 协议规范中定义的接口，自动将用户和组预配到以 Web 服务为前端的任何应用程序或标识存储
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4d86f3dc-e2d3-4bde-81a3-4a0e092551c0
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 17732ae616339020f11bc8973dc57b6d0fff4884
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 3b7f2f104046313e7d60cea4ef296f265d204aec
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统将用户和组从 Azure Active Directory 自动预配到应用程序
 
@@ -685,7 +685,7 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 ## <a name="group-provisioning-and-de-provisioning"></a>组预配和取消预配
 下图显示了 Azure AD 发送到 SCIM 服务以管理其他标识存储中的组生命周期的消息。  这些消息在以下三个方面与用户相关的消息不同： 
 
-* 组资源架构会标识为 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group。  
+* 组资源的架构标识为 `http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group`。  
 * 检索组的请求规定将成员属性从请求响应中提供的任何资源中排除。  
 * 确定引用属性是否具有特定值的请求是有关成员属性的请求。  
 

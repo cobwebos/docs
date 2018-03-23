@@ -1,26 +1,26 @@
 ---
-title: "Azure 安全中心和 Azure 中的 Linux 虚拟机 | Microsoft Docs"
-description: "通过 Azure 安全中心了解 Azure Linux 虚拟机的安全性。"
+title: Azure 安全中心和 Azure 中的 Linux 虚拟机 | Microsoft Docs
+description: 通过 Azure 安全中心了解 Azure Linux 虚拟机的安全性。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/07/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dbba39f5b9f18aaca6449e08aa584224fc2126d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b791b2e1dbaffc90145c325dea7a85bd8abd98c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>使用 Azure 安全中心监视虚拟机安全
 

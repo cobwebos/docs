@@ -1,11 +1,11 @@
 ---
-title: "Azure SQL 数据库资源限制 | Microsoft 文档"
-description: "本页介绍 Azure SQL 数据库的一些常见资源限制。"
+title: Azure SQL 数据库资源限制 | Microsoft 文档
+description: 本页介绍 Azure SQL 数据库的一些常见资源限制。
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 884e519f-23bb-4b73-a718-00658629646a
 ms.service: sql-database
 ms.custom: DBs & servers
@@ -13,25 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-<<<<<<< HEAD
-ms.date: 02/12/2018
+ms.date: 02/28/2018
 ms.author: carlrab
-ms.openlocfilehash: 47f42c10a791caa8ab20401574fb853ad3e4f0e9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: eea4362e33ff2587758601758db463ffa82382b3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-=======
-ms.date: 02/27/2018
-ms.author: carlrab
-ms.openlocfilehash: 839705b902b8e1343c1e0bda97a2ec1dc6b47042
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Azure SQL 数据库资源限制
+
+> [!IMPORTANT]
+> 有关 Azure SQL 数据库托管实例的资源限制，请参阅 [SQL 数据库托管实例](sql-database-managed-instance.md#managed-instance-service-tier)。
 
 ## <a name="single-database-storage-sizes-and-performance-levels"></a>单一数据库：存储大小和性能级别
 
@@ -89,7 +82,6 @@ ms.lasthandoff: 02/28/2018
 
 > [!NOTE]
 > 弹性池中各个数据库的资源限制通常与池外部基于 DTU 和服务层的各个数据库相同。 例如，S2 数据库的最大并发辅助进程数为 120 个。 因此，如果池中每个数据库的最大 DTU 是 50 个 DTU（这等效于 S2），则标准池中数据库的最大并发辅助进程数也是 120 个辅助进程。
->
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 

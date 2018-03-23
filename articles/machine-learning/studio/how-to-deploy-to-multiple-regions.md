@@ -1,10 +1,10 @@
 ---
-title: "如何将 Web 服务部署到多个区域 | Microsoft Docs"
-description: "将新的 Web 服务部署（复制）到其他区域的步骤。"
+title: 如何将 Web 服务部署到多个区域 | Microsoft Docs
+description: 将新的 Web 服务部署（复制）到其他区域的步骤。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: raymondl
+documentationcenter: ''
+author: aashishb
+manager: hjerez
 editor: cgronlun
 ms.assetid: 36c60411-f2db-4ee2-9b66-b1f1d77a8f44
 ms.service: machine-learning
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: raymondl
-ms.openlocfilehash: 58c0f5b0ac8e96c2457db4b86dcf2483f68289c6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: aashishb
+ms.openlocfilehash: 68ebd388b46199710cbe8f314b705e4733e2440e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="how-to-deploy-a-web-service-to-multiple-regions"></a>如何将 Web 服务部署到多个区域
 借助新的 Azure Web 服务，无需多个订阅或工作区即可轻松地将 Web 服务部署到多个区域。 

@@ -1,11 +1,11 @@
 ---
-title: "工作流定义语言架构 - Azure 逻辑应用 | Microsoft Docs"
-description: "定义基于 Azure 逻辑应用工作流定义架构的工作流"
+title: 工作流定义语言架构 - Azure 逻辑应用 | Microsoft Docs
+description: 定义基于 Azure 逻辑应用工作流定义架构的工作流
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
 ms.service: logic-apps
 ms.workload: integration
@@ -126,14 +126,14 @@ ms.lasthandoff: 03/08/2018
 > [!NOTE]
 > 某些表达式从运行时操作获取其值，而这些操作在开始执行时可能不存在。 可以使用**函数**来帮助检索其中的某些值。  
   
-表达式可出现在 JSON 字符串值中的任何位置，始终生成另一个 JSON 值。 将某个 JSON 值判定为表达式时，会通过删除 @ 符号来提取表达式的正文。 如果需要以 @ 开头的文本字符串，必须使用 @@ 将它转义。 以下示例演示了如何计算表达式。  
+表达式可出现在 JSON 字符串值中的任何位置，始终生成另一个 JSON 值。 将某个 JSON 值判定为表达式时，会通过删除 \@ 符号来提取表达式的正文。 如果需要以 \@ 开头的文本字符串，必须使用 \@@ 将它转义。 以下示例演示了如何计算表达式。  
   
 |JSON 值|结果|  
 |----------------|------------|  
 |"parameters"|返回字符“parameters”。|  
 |"parameters[1]"|返回字符“parameters[1]”。|  
-|"@@"|返回包含“@”的、由 1 个字符构成的字符串。|  
-|" @"|返回包含“@”的、由 2 个字符构成的字符串。|  
+|\"\@\@\"|返回包含\“\@\”的、由 1 个字符构成的字符串。|  
+|\" \@\"|返回包含\“\@\”的、由 2 个字符构成的字符串。|  
   
 如果使用*字符串内插*，表达式还可以显示在 `@{ ... }` 中包装表达式的字符串内。 例如： <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
 
@@ -142,12 +142,12 @@ ms.lasthandoff: 03/08/2018
 |JSON 值|结果|  
 |----------------|------------|  
 |"@parameters('myString')"|返回字符串形式的 `sampleString`。|  
-|"@{parameters('myString')}"|返回字符串形式的 `sampleString`。|  
+|\"\@{parameters('myString')}"|返回字符串形式的 `sampleString`。|  
 |"@parameters('myNumber')"|返回*数字*形式的 `42`。|  
-|"@{parameters('myNumber')}"|返回*字符串*形式的 `42`。|  
-|"Answer is: @{parameters('myNumber')}"|返回字符串 `Answer is: 42`。|  
+|\"\@{parameters('myNumber')}"|返回*字符串*形式的 `42`。|  
+|"Answer is: \@{parameters('myNumber')}"|返回字符串 `Answer is: 42`。|  
 |"@concat('Answer is: ', string(parameters('myNumber')))"|返回字符串 `Answer is: 42`|  
-|"Answer is: @@{parameters('myNumber')}"|返回字符串 `Answer is: @{parameters('myNumber')}`。|  
+|"Answer is: \@\@{parameters('myNumber')}"|返回字符串 `Answer is: @{parameters('myNumber')}`。|  
   
 ## <a name="operators"></a>运算符  
 

@@ -76,10 +76,16 @@
               href: tutorial-incremental-copy-change-tracking-feature-powershell.md
     - name: 6 - 转换云中的数据
       items:
-        - name: 用户界面 (UI)
-          href: tutorial-transform-data-spark-portal.md
-        - name: Azure PowerShell
-          href: tutorial-transform-data-spark-powershell.md
+        - name: HDInsight Spark
+          items:
+            - name: 用户界面 (UI)
+              href: tutorial-transform-data-spark-portal.md
+            - name: Azure PowerShell
+              href: tutorial-transform-data-spark-powershell.md
+        - name: Databricks Notebook
+          items:
+            - name: 用户界面 (UI)
+              href: transform-data-using-databricks-notebook.md
     - name: 7 - 转换虚拟网络中的数据
       items:
         - name: 用户界面 (UI)
@@ -92,8 +98,6 @@
           href: tutorial-control-flow-portal.md
         - name: .NET
           href: tutorial-control-flow.md
-    - name: 9 - 使用 Azure Databricks 转换数据
-      href: transform-data-using-databricks-notebook.md
 - name: 示例
   items:
     - name: 代码示例
@@ -292,6 +296,8 @@
           href: transform-data-using-stored-procedure.md
         - name: Data Lake U-SQL 活动
           href: transform-data-using-data-lake-analytics.md
+        - name: Databricks Notebook 活动
+          href: transform-data-databricks-notebook.md
         - name: 自定义活动
           href: transform-data-using-dotnet-custom-activity.md
         - name: 计算链接服务

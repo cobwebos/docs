@@ -1,5 +1,19 @@
-
-
+---
+title: include 文件
+description: include 文件
+services: virtual-machines
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: 7b5bc37be660ea3958bf224d2911c5c2d4577524
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/16/2018
+---
 ## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>使用门户将 VM 移到其他订阅
 可以使用门户将 VM 及其关联的资源移到其他订阅。
 

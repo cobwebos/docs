@@ -1,19 +1,19 @@
 ---
-title: "Azure 数据工厂中支持的文件格式 | Microsoft Docs"
-description: "本主题说明 Azure 数据工厂中基于文件的连接器支持的文件格式和压缩代码。"
+title: Azure 数据工厂中支持的文件格式 | Microsoft Docs
+description: 本主题说明 Azure 数据工厂中基于文件的连接器支持的文件格式和压缩代码。
 author: linda33wj
 manager: jhubbard
 editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 03/07/2018
 ms.author: jingwang
-ms.openlocfilehash: e583c6952e02c4a93f56594f6392f1d9a260dce0
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 26f29355f53a586ea21551831f48ddf8898d3c9f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
 
@@ -360,7 +360,7 @@ ms.lasthandoff: 11/22/2017
 | ID | order_date | order_price | order_by |
 | --- | --- | --- | --- |
 | 1 | 20170119 | 2000 | David |
-| #N/A | 20170120 | 3500 | Patrick |
+| 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
 每个记录将按以下格式写入到 JSON 对象中：
@@ -376,7 +376,7 @@ ms.lasthandoff: 11/22/2017
 }
 ```
 
-**JsonFormat** 类型的输出数据集定义如下（部分定义，仅包含相关部件）。 更具体说来，`structure` 节用于定义目标文件中的自定义属性名称，`nestingSeparator`（默认为“.”）则用于标识名称中的嵌套层。 本节为**可选**，除非需要根据源列名更改属性名称，或者需要嵌套部分属性。
+**JsonFormat** 类型的输出数据集定义如下（部分定义，仅包含相关部件）。 更具体说来，`structure` 节用于定义目标文件中的自定义属性名称，`nestingSeparator`（默认为“.”）则用于标识名称中的嵌套层。 本节为**可选**，除非需要将属性名称更改为与源列名不同的名称，或者需要嵌套部分属性。
 
 ```json
 "properties": {
@@ -420,7 +420,7 @@ ms.lasthandoff: 11/22/2017
 
 若要在 Hive 表中使用 Avro 格式，可以参考 [Apache Hive 教程](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)。
 
-注意以下几点：
+请注意以下几点：
 
 * 不支持[复杂数据类型](http://avro.apache.org/docs/current/spec.html#schema_complex)（记录、枚举、数组、映射、联合与固定值）。
 
@@ -436,10 +436,10 @@ ms.lasthandoff: 11/22/2017
 ```
 
 > [!IMPORTANT]
-> 如果不是在本地与云数据存储之间**按原样**复制 ORC 文件，则需要在网关计算机上安装 JRE 8（Java 运行时环境）。 64 位网关需要 64 位 JRE，32 位网关需要 32 位 JRE。 可以从[此处](http://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。 请选择适当的版本。
+> 对于自托管 Integration Runtime（如在本地与云数据存储之间）授权的复制，如果不是按原样复制 ORC 文件，则需要在 IR 计算机上安装 JRE 8（Java 运行时环境）。 64 位 IR 需要 64 位 JRE。 可以从[此处](http://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。
 >
 
-注意以下几点：
+请注意以下几点：
 
 * 不支持复杂数据类型（STRUCT、MAP、LIST、UNION）
 * ORC 文件有三个[压缩相关的选项](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)：NONE、ZLIB、SNAPPY。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 ORC 文件时，数据工厂会选择 ZLIB，这是 ORC 的默认选项。 目前没有任何选项可以重写此行为。
@@ -456,10 +456,10 @@ ms.lasthandoff: 11/22/2017
 ```
 
 > [!IMPORTANT]
-> 如果不是在本地与云数据存储之间**按原样**复制 Parquet 文件，则需要在网关计算机上安装 JRE 8（Java 运行时环境）。 64 位网关需要 64 位 JRE，32 位网关需要 32 位 JRE。 可以从[此处](http://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。 请选择适当的版本。
+> 对于自托管 Integration Runtime（如在本地与云数据存储之间）授权的复制，如果不是按原样复制 Parquet 文件，则需要在 IR 计算机上安装 JRE 8（Java 运行时环境）。 64 位 IR 需要 64 位 JRE。 可以从[此处](http://go.microsoft.com/fwlink/?LinkId=808605)找到这两个版本。
 >
 
-注意以下几点：
+请注意以下几点：
 
 * 不支持复杂数据类型（MAP、LIST）
 * Parquet 文件提供以下压缩相关的选项：NONE、SNAPPY、GZIP 和 LZO。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 Parquet 文件时，数据工厂会选择 SNAPPY，这是 Parquet 格式的默认选项。 目前没有任何选项可以重写此行为。

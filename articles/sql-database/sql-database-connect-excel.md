@@ -1,26 +1,20 @@
 ---
-title: "将 Excel 连接到 SQL 数据库 | Microsoft Docs"
-description: "了解如何将 Microsoft Excel 连接到在云中的 Azure SQL 数据库。 将数据导入 Excel 以进行报告和数据探索。"
+title: 将 Excel 连接到 SQL 数据库 | Microsoft Docs
+description: 了解如何将 Microsoft Excel 连接到在云中的 Azure SQL 数据库。 将数据导入 Excel 以进行报告和数据探索。
 services: sql-database
-keywords: "将 excel 连接到 sql, 将数据导入 excel"
-documentationcenter: 
+keywords: 将 excel 连接到 sql, 将数据导入 excel
 author: joseidz
 manager: jhubbard
-editor: 
-ms.assetid: 906924bc-2707-48d3-bac6-397976a0409d
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2017
-ms.author: jhubbard
-ms.openlocfilehash: 34ff5c479cfcf1e861a82205eef93dfee01cb4a2
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.author: craigg
+ms.openlocfilehash: 64896e87bf049c3ccd58f060ac27f35787d4ce4a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库并创建报表
 
@@ -51,7 +45,7 @@ ms.lasthandoff: 10/31/2017
     ![选择数据库和表。](./media/sql-database-connect-excel/select-database-and-table.png)
    
     此时会打开“保存数据连接文件并完成”对话框，请在其中提供 Excel 使用的 Office 数据库连接 (*.odc) 文件的相关信息。 可以保留默认值，或自定义选择项。
-6. 可以保留默认值，但要特意记下“文件名”。 “说明”、“友好名称”和“搜索关键字”可帮助你和其他用户记住所要连接到的目标，以及查找连接。 如果希望将连接信息存储在 odc 文件中以便在连接时进行更新，请单击“始终尝试使用此文件来刷新数据”，然后单击“完成”。
+6. 可以保留默认值，但要特意记下“文件名”。 “说明”、“友好名称”和“搜索关键字”可帮助你和其他用户记住所要连接到的目标，以及查找连接。 如果希望将连接信息存储在 odc 文件中以便在连接时进行更新，请单击“始终尝试使用此文件来刷新数据”，并单击“完成”。
    
     ![保存 odc 文件](./media/sql-database-connect-excel/save-odc-file.png)
    

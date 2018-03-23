@@ -1,25 +1,25 @@
 ---
-title: "Azure Windows VM 大小 - HPC | Microsoft Docs"
-description: "列出 Azure 中适用于 Windows 高性能计算虚拟机的各种大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。"
+title: Azure Windows VM 大小 - HPC | Microsoft Docs
+description: 列出 Azure 中适用于 Windows 高性能计算虚拟机的各种大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: jonbeck7
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/21/2018
+ms.date: 03/15/2018
 ms.author: jonbeck
-ms.openlocfilehash: dfeb6b0cbd74ff5a5b11b730c6413df189096ab8
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 6f2c72689811d26f95a64fdf5f473606f3ea3f7d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="high-performance-compute-vm-sizes"></a>高性能计算 VM 大小
 
@@ -29,16 +29,8 @@ ms.lasthandoff: 02/22/2018
 
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
-## <a name="rdma-capable-instances"></a>支持 RDMA 的实例
-计算密集型实例（H16r、H16mr、A8 和 A9）的子集具有远程直接内存访问 (RDMA) 连接的网络接口。 此接口是对可供其他 VM 大小使用的标准 Azure 网络接口的补充。 
-  
-此接口允许支持 RDMA 的实例在 InfiniBand 网络上通信，对 H16r 和 H16mr 虚拟机以 FDR 速率运行，对 A8 和 A9 虚拟机以 QDR 速率运行。 这些 RDMA 功能可以提高消息传递接口 (MPI) 应用程序的可伸缩性和性能。
-
-支持 RDMA 的 Windows VM 可以访问 Azure RDMA 网络的要求如下： 
 
 * **操作系统** - Windows Server 2016、Windows Server 2012 R2、Windows Server 2012
-
-* **可用性集或云服务** – 在同一个可用性集中（使用 Azure 资源管理器部署模型时）或同一个云服务中（使用经典部署模型时）部署支持 RDMA 的 VM。 如果使用 Azure Batch，则支持 RDMA 的VM 必须位于同一池中。
 
 * **MPI**：Microsoft MPI (MS-MPI) 2012 R2 或更高版本、Intel MPI Library 5.x
 
@@ -61,7 +53,6 @@ ms.lasthandoff: 02/22/2018
 ## <a name="using-hpc-pack"></a>使用 HPC Pack
 
 [Microsoft HPC Pack](https://technet.microsoft.com/library/jj899572.aspx)：Microsoft 的免费 HPC 群集和作业管理解决方案，它是一个方便在 Azure 中创建计算群集来运行基于 Windows 的 MPI 应用程序和其他 HPC 工作负荷的选项。 HPC Pack 2012 R2 和更高版本包括用于 MS-MPI 的、在支持 RDMA 的 VM 上部署时使用 Azure RDMA 网络的运行时环境。
-
 
 
 

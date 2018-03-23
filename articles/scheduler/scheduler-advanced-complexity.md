@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 计划程序生成复杂的计划和高级循环"
-description: "了解如何使用 Azure 计划程序生成复杂的计划和高级循环。"
+title: 使用 Azure 计划程序生成复杂的计划和高级循环
+description: 了解如何使用 Azure 计划程序生成复杂的计划和高级循环。
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -136,7 +136,7 @@ Azure 计划程序作业的核心是计划。 计划确定了计划程序何时�
 ## <a name="examples-recurrence-schedules"></a>示例：循环计划
 以下示例演示各种循环计划。 这些示例着重于计划对象及其子元素。
 
-这些计划假设 **interval** 设置为 1\.。 此外，这些示例假设正确的**频率**值符合 **schedule**。 例如，不能在使用 "day" 作为**频率**的同时，在**计划**中使用 **monthDays** 修改项。 本文前面已描述这些限制。
+这些计划假设 **interval** 设置为 1\. 此外，这些示例假设正确的**频率**值符合 **schedule**。 例如，不能在使用 "day" 作为**频率**的同时，在**计划**中使用 **monthDays** 修改项。 本文前面已描述这些限制。
 
 | 示例 | 说明 |
 |:--- |:--- |

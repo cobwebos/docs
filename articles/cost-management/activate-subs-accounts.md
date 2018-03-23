@@ -1,20 +1,20 @@
 ---
-title: "激活 Azure 订阅和帐户 | Microsoft Docs"
-description: "使用适用于新帐户和现有帐户的 Azure 资源管理器 API 实现访问，并解决常见的帐户问题。"
+title: 激活 Azure 订阅和帐户 | Microsoft Docs
+description: 使用适用于新帐户和现有帐户的 Azure 资源管理器 API 实现访问，并解决常见的帐户问题。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/01/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 66b2ef53e613a9c61eea17746a25357119cf6900
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.custom: ''
+ms.openlocfilehash: a0dc2ee201c1729b10cd363553cdf5d61ec87748
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>使用 Azure 成本管理激活 Azure 订阅和帐户
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 03/02/2018
 
     如果有一个或多个订阅未显示绿色勾选标记符号，则表示你无权为订阅创建读取器应用 (CloudynCollector)。 具有更高订阅权限的用户需要重复此过程。
 
-观看[使用 Cloudyn 提供的 Azure 成本管理连接到 Azure 资源管理器](https://youtu.be/oCIwvfBB6kk)视频，其中逐步演示了该过程。
+观看[使用 Azure 成本管理连接到 Azure 资源管理器](https://youtu.be/oCIwvfBB6kk)视频，其中逐步演示了该过程。
 
 >[!VIDEO https://www.youtube.com/embed/oCIwvfBB6kk?ecver=1]
 

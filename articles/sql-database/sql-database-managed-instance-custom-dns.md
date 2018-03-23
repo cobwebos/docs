@@ -1,20 +1,20 @@
 ---
-title: "Azure SQL 数据库托管实例自定义 DNS | Microsoft Docs"
-description: "本主题介绍使用 Azure SQL 数据库托管实例的自定义 DNS 的配置选项。"
+title: Azure SQL 数据库托管实例自定义 DNS | Microsoft Docs
+description: 本主题介绍使用 Azure SQL 数据库托管实例的自定义 DNS 的配置选项。
 services: sql-database
 author: srdjan-bozovic
-manager: cguyer
+manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: e660174038aa46ef496f5de67ac616bcd41b1f81
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 993ff518a1987581ad7de4797611f104080c2c2f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置自定义 DNS
 

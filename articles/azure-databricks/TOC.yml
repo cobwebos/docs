@@ -11,8 +11,10 @@
       href: quickstart-create-databricks-workspace-portal.md
 - name: 教程
   items:
-    - name: 使用事件中心对事件进行流式传输
+    - name: 使用事件中心对数据进行流式传输
       href: databricks-stream-from-eventhubs.md
+    - name: 使用认知服务进行情绪分析
+      href: databricks-sentiment-analysis-cognitive-services.md
 - name: 操作指南
   items:
     - name: 使用 Excel、R 和 Python 连接

@@ -1,11 +1,11 @@
 ---
-title: "管理 Azure Marketplace 中的虚拟机映像 | Microsoft Docs"
-description: "有关如何在初始发布后管理 Azure Marketplace 中的虚拟机映像的详细指南"
+title: 管理 Azure Marketplace 中的虚拟机映像 | Microsoft Docs
+description: 有关如何在初始发布后管理 Azure Marketplace 中的虚拟机映像的详细指南
 services: Azure Marketplace
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: cc8648d4-59c2-4678-b47d-992300677537
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
-ms.author: hascipio;
-ms.openlocfilehash: e1f90650e71345957c2d353774cb8bef62c1868b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin;
+ms.openlocfilehash: 19f60de4a6c651885da7ff1fb7612a77f3d0c8f1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>有关 Azure Marketplace 中的虚拟机产品/服务的发布后指南
 本文介绍如何在 Azure Marketplace 中更新实时虚拟机产品。 其中将指导你完成将一个或多个新 SKU 添加到现有产品的过程。 此外，还将引导你完成删除从 Marketplace 的实时虚拟机产品或 SKU 的过程。
@@ -44,7 +44,7 @@ ms.lasthandoff: 10/11/2017
 若要将新版本添加到已列出的 SKU 并重新发布产品，请执行以下步骤：
 
 1. 登录到[发布门户](https://publish.windowsazure.com)。
-2. 转到“虚拟机”选项卡并选择你的产品。
+2. 转到“虚拟机”选项卡并选择产品。
 3. 在左侧菜单中，单击“VM 映像”选项卡。
 4. 在“SKU”部分中，找到要更新的 SKU。
 5. 添加新的 SKU 版本号并单击 **+** 按钮。 新版本格式应为 X.Y.Z，其中 X、Y、Z 为整数。 版本只应进行增量更改。
@@ -54,7 +54,7 @@ ms.lasthandoff: 10/11/2017
    > 无法递增/递减已列出的 SKU 的数据磁盘计数。 在此情况下，需要创建新的 SKU。 有关详细指导，请参阅[在已列出的产品下添加新 SKU](#add-a-new-sku-under-a-listed-offer) 部分。
    >
    >
-7. 转到“发布”选项卡，然后单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
+7. 转到“发布”选项卡，并单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
 8. 在过渡环境中测试产品后，导航到发布门户中的“发布”选项卡。 单击“请求批准推送到生产”按钮，在 Marketplace 中重新发布产品。
 
     ![VM 映像](media/marketplace-publishing-vm-image-post-publishing/img01_07.png)
@@ -66,7 +66,7 @@ ms.lasthandoff: 10/11/2017
 若要更新产品详细信息并重新发布产品，请执行以下步骤：
 
 1. 登录到[发布门户](https://publish.windowsazure.com)。
-2. 转到“虚拟机”选项卡并选择你的产品。
+2. 转到“虚拟机”选项卡并选择产品。
 3. 在左侧菜单中，单击“市场营销”选项卡。
 4. 单击“英语(美国)”。
 5. 单击“详细信息”选项卡。在“说明”部分中，更新产品的“标题”、“摘要”和“详细摘要”，然后保存更改。
@@ -86,7 +86,7 @@ ms.lasthandoff: 10/11/2017
    > 特大图标是可选的。 可以选择不上传特大图标。 但是，上传特大图标后，无法通过任何预配将其从发布门户中删除。 请遵守[特大图标准则](marketplace-publishing-push-to-staging.md#step-1-provide-marketplace-marketing-content)。
    >
    >
-7. 转到“发布”选项卡，然后单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
+7. 转到“发布”选项卡，并单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
 8. 在过渡环境中测试产品后，导航到发布门户中的“发布”选项卡。 单击“请求批准推送到生产”按钮，在 Marketplace 中重新发布产品。
 
     ![徽标](media/marketplace-publishing-vm-image-post-publishing/img02.1_08.png)
@@ -95,7 +95,7 @@ ms.lasthandoff: 10/11/2017
 若要更新 SKU 详细信息并重新发布产品，请执行以下步骤：
 
 1. 登录到[发布门户](https://publish.windowsazure.com)。
-2. 转到“虚拟机”选项卡并选择你的产品。
+2. 转到“虚拟机”选项卡并选择产品。
 3. 在左侧菜单中，单击“市场营销”选项卡。
 4. 单击“英语(美国)”。
 5. 单击“计划”选项卡。在“SKU”部分中，更新 SKU 的“标题”、“摘要”和“说明”，然后保存更改。
@@ -107,7 +107,7 @@ ms.lasthandoff: 10/11/2017
    * 不要在 SKU 标题和产品摘要下输入重复文本。
    >
    >
-6. 转到“发布”选项卡，然后单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
+6. 转到“发布”选项卡，并单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
 7. 在过渡环境中测试产品后，导航到发布门户中的“发布”选项卡。 单击“请求批准推送到生产”按钮，在 Marketplace 中重新发布产品。
 
     ![计划](media/marketplace-publishing-vm-image-post-publishing/img02.2_07.png)
@@ -116,7 +116,7 @@ ms.lasthandoff: 10/11/2017
 若要更改现有链接或添加新链接，然后重新发布产品，请执行以下步骤：
 
 1. 登录到[发布门户](https://publish.windowsazure.com)。
-2. 转到“虚拟机”选项卡并选择你的产品。
+2. 转到“虚拟机”选项卡并选择产品。
 3. 在左侧菜单中，单击“市场营销”选项卡。
 4. 单击“英语(美国)”。
 5. 单击“链接”选项卡。
@@ -143,7 +143,7 @@ ms.lasthandoff: 10/11/2017
 >
 
 1. 登录到[发布门户](https://publish.windowsazure.com)。
-2. 转到“虚拟机”选项卡并选择你的产品。
+2. 转到“虚拟机”选项卡并选择产品。
 3. 在左侧菜单中，单击“市场营销”选项卡。
 4. 单击“英语(美国)”。
 5. 单击“示例图像”选项卡。
@@ -152,7 +152,7 @@ ms.lasthandoff: 10/11/2017
    > [!NOTE]
    > 包括示例图像是一个可选步骤。
    >
-7. 转到“发布”选项卡，然后单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
+7. 转到“发布”选项卡，并单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
 8. 在过渡环境中测试产品后，导航到发布门户中的“发布”选项卡。 单击“请求批准推送到生产”按钮，在 Marketplace 中重新发布产品。
 
     ![示例图像](media/marketplace-publishing-vm-image-post-publishing/img02.4_09.png)
@@ -161,12 +161,12 @@ ms.lasthandoff: 10/11/2017
 若要更新法律内容并重新发布产品，请执行以下步骤：
 
 1. 登录到[发布门户](https://publish.windowsazure.com)。
-2. 转到“虚拟机”选项卡并选择你的产品。
+2. 转到“虚拟机”选项卡并选择产品。
 3. 在左侧菜单中，单击“市场营销”选项卡。
 4. 单击“英语(美国)”。
 5. 单击“法律”选项卡。在“法律”部分中，更新策略/使用条款。 在“使用条款”文本框中输入或粘贴策略/条款并保存更改。
 6. 法律使用条款的字符数限制为 100 万个字符。
-7. 转到“发布”选项卡，然后单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
+7. 转到“发布”选项卡，并单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
 8. 在过渡环境中测试产品后，导航到发布门户中的“发布”选项卡。 单击“请求批准推送到生产”按钮，在 Marketplace 中重新发布产品。
 
     ![合法](media/marketplace-publishing-vm-image-post-publishing/img02.5_08.png)
@@ -184,7 +184,7 @@ ms.lasthandoff: 10/11/2017
    > 如果只想提供电子邮件支持，请在“客户支持”部分中输入虚构的电话号码。 在此情况下，将改用提供的电子邮件。
    >
    >
-6. 转到“发布”选项卡，然后单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
+6. 转到“发布”选项卡，并单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
 7. 在过渡环境中测试产品后，导航到发布门户中的“发布”选项卡。 单击“请求批准推送到生产”按钮，在 Marketplace 中重新发布产品。
 
     ![支持](media/marketplace-publishing-vm-image-post-publishing/img02.6_07.png)
@@ -193,10 +193,10 @@ ms.lasthandoff: 10/11/2017
 若要更新产品的类别部分并重新发布产品，请执行以下步骤：
 
 1. 登录到[发布门户](https://publish.windowsazure.com)。
-2. 转到“虚拟机”选项卡并选择你的产品。
+2. 转到“虚拟机”选项卡并选择产品。
 3. 在左侧菜单中，单击“类别”选项卡。
 4. 在“类别”部分中，更新产品类别并保存更改。 可以为 Azure Marketplace 库选择最多五个类别。
-5. 转到“发布”选项卡，然后单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
+5. 转到“发布”选项卡，并单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
 6. 在过渡环境中测试产品后，导航到发布门户中的“发布”选项卡。 单击“请求批准推送到生产”按钮，在 Marketplace 中重新发布产品。
 
     ![Categories](media/marketplace-publishing-vm-image-post-publishing/img02.7_06.png)
@@ -205,7 +205,7 @@ ms.lasthandoff: 10/11/2017
 若要在实时产品中添加新 SKU，请执行以下步骤：
 
 1. 登录到[发布门户](https://publish.windowsazure.com)。
-2. 转到“虚拟机”选项卡并选择你的产品。
+2. 转到“虚拟机”选项卡并选择产品。
 3. 在左侧菜单中，单击“SKU”选项卡。然后单击“添加 SKU”。 
 4. 在对话框中，以小写形式输入“SKU 标识符”。 若要使用 BYOL 计费模型发布新 SKU，请选中“自带许可(BYOL)模型”复选框。 否则，请清除该复选框。 单击勾选标记创建新 SKU。 如果未选择 BYOL 计费模型，则计费模型将自动设置为“每小时”。 如果想要为每小时计费模型启用 30 天免费试用，请针对“是否提供免费试用?”单击“一个月”。 否则，选择“无试用”。 （仅当创建新 SKU 时未选择 BYOL 时，才显示选项“是否提供免费试用?”。）
 
@@ -247,7 +247,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 登录到[发布门户](https://publish.windowsazure.com)。
 
-2. 转到“虚拟机”选项卡并选择你的产品。
+2. 转到“虚拟机”选项卡并选择产品。
 3. 在左侧窗格中，单击“SKU”选项卡。
 4. 选择要删除的 SKU，然后单击“删除”按钮。
 5. 转到发布门户中的“发布”选项卡。 单击“请求批准推送到生产”按钮，在 Azure Marketplace 中重新发布产品。
@@ -258,7 +258,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 登录到[发布门户](https://publish.windowsazure.com)。
 
-2. 转到“虚拟机”选项卡并选择你的产品。
+2. 转到“虚拟机”选项卡并选择产品。
 3. 在左侧菜单中，单击“VM 映像”选项卡。
 4. 选择要删除其当前版本的 SKU，然后单击“删除”按钮。
 5. 转到发布门户中的“发布”选项卡。 单击“请求批准推送到生产”按钮，在 Azure Marketplace 中重新发布产品。
@@ -299,7 +299,7 @@ ms.lasthandoff: 10/11/2017
     对于“查看版本”，请选择“草稿”；对于“比较”，请选择“生产”。 如果看不到任何定价差别，则表示定价已成功还原为生产值。
 
     ![查看摘要和更改](media/marketplace-publishing-vm-image-post-publishing/img08-11.png)
-12. 转到“发布”选项卡，然后单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
+12. 转到“发布”选项卡，并单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
 13. 在过渡环境中测试产品后，导航到发布门户中的“发布”选项卡。 单击“请求批准推送到生产”按钮，在 Marketplace 中重新发布产品。
 
 ## <a name="revert-the-billing-model-to-production-values"></a>将计费模型还原为生产值
@@ -307,13 +307,13 @@ ms.lasthandoff: 10/11/2017
 
 1. 登录到[发布门户](https://publish.windowsazure.com)。
 
-2. 转到“虚拟机”选项卡并选择你的产品。
+2. 转到“虚拟机”选项卡并选择产品。
 3. 在左侧菜单中，单击“SKU”选项卡。
 4. 单击“编辑”按钮还原计费模型。 在打开的窗口中，选中或清除“计费和许可从 Azure 外部完成(也称为自带许可)”复选框。
 
     ![编辑计费](media/marketplace-publishing-vm-image-post-publishing/img09-04.png)
 5. 请遵循本文“将定价还原为生产值”中的步骤。
-6. 转到“发布”选项卡，然后单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
+6. 转到“发布”选项卡，并单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
 7. 在过渡环境中测试产品后，导航到发布门户中的“发布”选项卡。 单击“请求批准推送到生产”按钮，在 Marketplace 中重新发布产品。
 
 ## <a name="revert-the-visibility-setting-of-a-listed-sku-to-the-production-value"></a>将列出的 SKU 的可见性设置还原为生产值
@@ -321,7 +321,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 登录到[发布门户](https://publish.windowsazure.com)。
 
-2. 转到“虚拟机”选项卡并选择你的产品。
+2. 转到“虚拟机”选项卡并选择产品。
 3. 在左侧菜单中，单击“SKU”选项卡。
 4. 选择 SKU，并将该 SKU 的可见性设置还原为生产值。
 

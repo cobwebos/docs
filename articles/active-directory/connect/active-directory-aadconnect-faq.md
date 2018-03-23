@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Connect：常见问题 - Azure | Microsoft 文档"
-description: "此页包含有关 Azure AD Connect 的常见问题。"
+title: Azure Active Directory Connect：常见问题 - Azure | Microsoft 文档
+description: 此页包含有关 Azure AD Connect 的常见问题。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 ms.assetid: 4e47a087-ebcd-4b63-9574-0c31907a39a3
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2017
+ms.date: 03/09/2017
 ms.author: billmath
-ms.openlocfilehash: 13f12f39fb72bd7d4e32056753a012c38034f807
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 07b0209ef94f91c00b98b8801323a58cd9d14494
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Azure Active Directory Connect 常见问题
 
@@ -66,7 +66,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 
 ## <a name="environment"></a>环境
 **问：安装 Azure AD Connect 之后，是否支持重命名服务器？**  
-否。 更改服务器名称将导致同步引擎无法连接到 SQL 数据库，并且服务将无法启动。
+不会。 更改服务器名称将导致同步引擎无法连接到 SQL 数据库，并且服务将无法启动。
 
 ## <a name="identity-data"></a>标识数据
 **问：Azure AD 中的 UPN (userPrincipalName) 属性与本地 UPN 不匹配，这是为什么？**  
@@ -78,7 +78,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 还可以根据 [Azure AD Connect 同步服务功能](active-directory-aadconnectsyncservice-features.md)中所述配置 Azure AD，以允许同步引擎更新 userPrincipalName。
 
 **问：是否支持本地 AD 组/联系人对象与现有 Azure AD 组/联系人对象的软匹配？**  
-不能，目前不支持。
+是，这将取决于 proxyAddress。  未启用邮件的组不支持软匹配。
 
 **问：是否支持手动设置现有 Azure AD 组/联系人对象的 ImmutableId 属性，以将其硬匹配到本地 AD 组/联系人对象？**  
 不能，目前不支持。
@@ -97,7 +97,7 @@ Azure AD Connect 不支持纯 IPv6 环境。
 目前不支持修改登录页的 HTML 属性。 我们目前正在开发一种功能，它将允许使用自定义 Javascript 向密码字段添加任何属性。 此功能应当会在 2017 年的下半年推出。
 
 **问：是否有方法来阻止并发会话？**</br>
-否。
+不会。
 
 ## <a name="troubleshooting"></a>故障排除
 **问：如何获取有关 Azure AD Connect 的帮助？**

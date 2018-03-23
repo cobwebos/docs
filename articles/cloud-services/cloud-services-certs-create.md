@@ -1,11 +1,11 @@
 ---
-title: "云服务和管理证书 | Microsoft Docs"
-description: "了解如何使用 Microsoft Azure 创建和使用证书"
+title: 云服务和管理证书 | Microsoft Docs
+description: 了解如何使用 Microsoft Azure 创建和使用证书
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc70d00d-899b-4771-855f-44574dc4bfc6
 ms.service: cloud-services
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: 4032a429901c675436cb5e7fb04aa5645925fa30
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 6a1e4f5316cc0321c1409f9e48daeae6ee483bf6
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure 云服务证书概述
 证书在 Azure 中用于云服务（[服务证书](#what-are-service-certificates)）以及用于通过管理 API 进行身份验证（[管理证书](#what-are-management-certificates)）。 本主题同时提供了有关这两种证书类型的一般概述，并说明了如何[创建](#create)并将其[部署](#deploy)到 Azure。
@@ -47,8 +47,6 @@ Azure 使用的证书可以包含一个私钥或公钥。 证书具有指纹，�
 
 ### <a name="limitations"></a>限制
 每个订阅限最多可具有 100 个管理证书。 特定服务管理员的用户 ID 下的所有订阅同样最多只能具有 100 个管理证书。 如果帐户管理员的用户 ID 已用于添加 100 个管理证书且需要更多证书，可以添加共同管理员以添加额外的证书。 
-
-在添加 100 个以上证书之前，请检查你是否可重用现有证书。 使用共同管理员将可能会给证书管理流程增加不必要的复杂性。
 
 <a name="create"></a>
 ## <a name="create-a-new-self-signed-certificate"></a>创建新的自签名证书

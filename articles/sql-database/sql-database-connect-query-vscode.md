@@ -1,27 +1,20 @@
 ---
-title: "VS Code：在 Azure SQL 数据库中进行连接和数据查询 | Microsoft Docs"
-description: "了解如何通过使用 Visual Studio Code 连接到 Azure 上的 SQL 数据库。 然后，通过运行 Transact-SQL (T-SQL) 语句来查询和编辑数据。"
-metacanonical: 
-keywords: "连接到 sql 数据库"
+title: VS Code：在 Azure SQL 数据库中进行连接和数据查询 | Microsoft Docs
+description: 了解如何通过使用 Visual Studio Code 连接到 Azure 上的 SQL 数据库。 然后，通过运行 Transact-SQL (T-SQL) 语句来查询和编辑数据。
+keywords: 连接到 sql 数据库
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 676bd799-a571-4bb8-848b-fb1720007866
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/22/2017
 ms.author: carlrab
-ms.openlocfilehash: c52ac86ad5f3ad97a2e6dca38a84444b45bd73e5
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 689b54704b46f852f62f7d97496c7c04649f2ff1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL 数据库：使用 Visual Studio Code 进行连接和数据查询
 
@@ -94,7 +87,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
    | 设置       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | \*\*服务器名称 | 完全限定的服务器名称 | 该名称应类似于：mynewserver20170313.database.windows.net。 |
+   | **服务器名称 | 完全限定的服务器名称 | 该名称应类似于：mynewserver20170313.database.windows.net。 |
    | **数据库名称** | mySampleDatabase | 要连接到其中的数据库的名称。 |
    | **身份验证** | SQL 登录名| SQL 身份验证是本教程中配置的唯一身份验证类型。 |
    | **用户名** | 服务器管理员帐户 | 这是在创建服务器时指定的帐户。 |

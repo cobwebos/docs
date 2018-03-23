@@ -1,11 +1,11 @@
 ---
-title: "Azure 逻辑应用的连接器 | Microsoft Docs"
-description: "从所有可用的 Microsoft 连接器中进行选择，以生成并创建逻辑应用"
+title: Azure 逻辑应用的连接器 | Microsoft Docs
+description: 从所有可用的 Microsoft 连接器中进行选择，以生成并创建逻辑应用
 services: logic-apps
-documentationcenter: 
-author: MandiOhlinger
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: f1f1fd50-b7f9-4d13-824a-39678619aa7a
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/21/2017
-ms.author: mandia; ladocs
-ms.openlocfilehash: ec532ce0871d11fea222050bb08ec73afe5f2be3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: estfan; ladocs
+ms.openlocfilehash: f140f1a3d751b5d83b139edde931a6193334b6ee
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connectors-list"></a>连接器列表
 若要查找每个连接器的 Swagger 说明和连接器限制所定义的触发器和操作，请参阅[连接器详细信息](/connectors/)。

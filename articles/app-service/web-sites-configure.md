@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 应用服务中配置 Web 应用"
-description: "如何在 Azure 应用服务中配置 Web 应用"
+title: 在 Azure 应用服务中配置 Web 应用
+description: 如何在 Azure 应用服务中配置 Web 应用
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.service: app-service
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 3f735b8742f22110b4de264bfb5661651a899afb
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 58c27c0872978c3a6a4c47be37e6fa6078309286
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>在 Azure 应用服务中配置 Web 应用
 
@@ -129,12 +129,12 @@ Web 应用可能会使用根据 URL 路由的模块，而不是提供静态内�
 
 ## <a name="other-configuration-tasks"></a>其他配置任务
 ### <a name="ssl"></a>SSL
-在“基本”或“标准”模式下，你可为自定义域上传 SSL 证书。 有关详细信息，请参阅[为 Web 应用启用 HTTPS]。 
+在“基本”或“标准”模式下，可为自定义域上传 SSL 证书。 有关详细信息，请参阅[为 Web 应用启用 HTTPS](app-service-web-tutorial-custom-ssl.md)。 
 
 若要查看上传的证书，请单击“所有设置” > “自定义域和 SSL”。
 
 ### <a name="domain-names"></a>域名
-添加 Web 应用的自定义域名。 有关详细信息，请参阅[为 Azure 应用服务中的 Web 应用配置自定义域名]。
+添加 Web 应用的自定义域名。 有关详细信息，请参阅[为 Azure 应用服务中的 Web 应用配置自定义域名](app-service-web-tutorial-custom-domain.md)。
 
 若要查看域名，请单击“所有设置” > “自定义域和 SSL”。
 

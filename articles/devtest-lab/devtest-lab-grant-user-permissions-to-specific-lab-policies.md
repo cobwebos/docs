@@ -1,11 +1,11 @@
 ---
-title: "向用户授予特定实验室策略的权限 |Microsoft Docs"
-description: "了解如何根据各个客户的需求在开发测试实验室中向用户授予特定实验室策略的权限"
+title: 向用户授予特定实验室策略的权限 |Microsoft Docs
+description: 了解如何根据各个客户的需求在开发测试实验室中向用户授予特定实验室策略的权限
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 5ca829f0-eb69-40a1-ae26-03a629db1d7e
 ms.service: devtest-lab
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: v-craic
 ms.openlocfilehash: f92ad5e991bdb066bb9680b4865501076d43f450
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>向用户授予特定实验室策略的权限
 ## <a name="overview"></a>概述
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/02/2018
 若要了解有关 RBAC 中自定义角色的详细信息，请参阅[自定义角色的访问控制](../active-directory/role-based-access-control-custom-roles.md)。
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>使用 PowerShell 创建实验室自定义角色
-开始前，需要请阅读以下文章，该文介绍了如何安装和配置 Azure PowerShell cmdlet：[https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre)。
+开始前，需要阅读以下文章，该文介绍了如何安装和配置 Azure PowerShell cmdlet：[https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre)。
 
 一旦设置了 Azure PowerShell cmdlet，即可执行以下任务：
 

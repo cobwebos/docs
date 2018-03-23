@@ -1,8 +1,8 @@
 ---
-title: "将 Azure-SSIS 集成运行时加入虚拟网络 | Microsoft Docs"
-description: "了解如何将 Azure-SSIS 集成运行时加入 Azure 虚拟网络。"
+title: 将 Azure-SSIS 集成运行时加入虚拟网络 | Microsoft Docs
+description: 了解如何将 Azure-SSIS 集成运行时加入 Azure 虚拟网络。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
 manager: jhubbard
 editor: monicar
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 3a5b68729d587e1365c42125108e610705965c86
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 4f1100b7e4fa2250baf282b53ef83c5f1aaa1c0e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 对于以下情况，请将 Azure-SSIS 集成运行时 (IR) 加入 Azure 虚拟网络： 
@@ -176,7 +176,9 @@ ms.lasthandoff: 02/28/2018
 # Register to the Azure Batch resource provider
 if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
-    $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName "MicrosoftAzureBatch").Id
+    $BatchApplicationId = "ddbf3205-c6bd-46ae-8127-60eb93363864"
+    $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
+
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
     while(!(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
     {
@@ -211,6 +213,11 @@ $AzureSSISName = "<Specify Azure-SSIS IR name>"
 $VnetId = "<Name of your Azure virtual network>"
 $SubnetName = "<Name of the subnet in the virtual network>"
 ```
+
+#### <a name="guidelines-for-selecting-a-subnet"></a>有关选择子网的指导
+-   不要选择 GatewaySubnet 用于部署 Azure-SSIS 集成运行时，因为它专用于虚拟网络网关。
+-   请确保选择的子网具有足够的可用地址空间以供 Azure-SSIS IR 使用。 在可用 IP 地址中至少保留 2 个 * IR 节点编号。 Azure 会保留每个子网中的某些 IP 地址，但是这些地址不能使用。 子网的第一个和最后一个 IP 地址仅为协议一致性而保留，其他三个地址用于 Azure 服务。 有关详细信息，请参阅[使用这些子网中的 IP 地址是否有任何限制？](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)。
+
 
 ### <a name="stop-the-azure-ssis-ir"></a>停止 Azure-SSIS IR
 停止 Azure-SSIS 集成运行时，然后才能将其加入虚拟网络。 此命令释放该运行时的所有节点并停止计费：
@@ -264,6 +271,22 @@ Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupNa
 
 ```
 此命令需要 20 到 30 分钟才能完成。
+
+## <a name="use-azure-expressroute-with-the-azure-ssis-ir"></a>使用 Azure ExpressRoute 与 Azure-SSIS IR
+
+可以将 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 线路连接到虚拟网络基础结构，从而将其本地网络扩展到 Azure。 
+
+常见配置是使用强制隧道（播发 BGP 路由 0.0.0.0/0 到 VNet），以强制 VNet 的入站 Internet 流量流向本地网络设备，以进行检查和记录。 该流量流使用独立的 Azure 数据工厂服务中断了 VNet 中 Azure-SSIS IR 之间的连接。 解决方法是在包含 Azure-SSIS IR 缓存的子网上定义一个或多个[用户定义的路由 (UDR)](../virtual-network/virtual-networks-udr-overview.md)。 UDR 定义了要遵循的子网特定路由，而不是 BGP 路由。
+
+如果可以，请使用以下配置：
+-   ExpressRoute 配置播发 0.0.0.0/0 并默认使用强制隧道将所有输出流量发送到本地。
+-   应用于包含 Azure-SSIS IR 的子网的 UDR 将下一个跃点类型的 0.0.0.0/0 路由定义为“Internet”。
+- 
+这些步骤的组合效应是子网级 UDR 将优先于 ExpressRoute 强制隧道，从而确保来自 Azure-SSIS IR 的出站 Internet 访问。
+
+如果担心无法检查来自该子网的出站 Internet 流量，还可以在子网上添加 NSG 规则，将出站目标限制为 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)。
+
+有关示例，请参阅[此 PowerShell 脚本](https://gallery.technet.microsoft.com/scriptcenter/Adds-Azure-Datacenter-IP-dbeebe0c)。 必须每周运行脚本，使 Azure 数据中心 IP 地址列表保持最新。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure-SSIS 运行时的详细信息，请参阅以下主题： 

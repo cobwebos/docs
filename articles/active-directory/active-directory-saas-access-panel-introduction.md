@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory 中的访问面板是什么？ | Microsoft Docs"
-description: "了解如何使用各种形式的访问面板（Web 浏览器、Android 应用、iPhone 和 iPad 应用）来访问 SaaS 应用。"
+title: Azure Active Directory 中的访问面板是什么？ | Microsoft Docs
+description: 了解如何使用各种形式的访问面板（Web 浏览器、Android 应用、iPhone 和 iPad 应用）来访问 SaaS 应用。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: c0252d01-7e6e-4f79-a70e-600479577dfd
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/06/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9069cb0b46ddc1155c64bd63a7fcd8a685abbad
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c9b647e8f731995537a8797ab28248a1c42b6460
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-the-access-panel"></a>访问面板是什么？
 
@@ -67,6 +67,9 @@ ms.lasthandoff: 01/29/2018
 ## <a name="web-browser-requirements"></a>Web 浏览器要求
 
 访问面板的最低要求是使用支持 JavaScript 且已启用 CSS 的浏览器。 为了让用户通过基于密码的单一登录 (SSO) 登录到应用程序，必须在浏览器中安装“访问面板”扩展。 选择某个已配置基于密码的 SSO 的应用程序时，会自动下载此扩展。
+
+安装程序特定于体系结构。 如果单击下载链接，则仅获取适用于当前正在运行的 OS 体系结构的安装程序。 如果你是应用程序部署管理员，请确保从 64 位和 32 位设备访问下载链接以同时获取这两个安装程序。
+
 
 访问面板扩展插件当前适用于：
 - **Edge**：Windows 10 周年纪念版或更高版本上。 

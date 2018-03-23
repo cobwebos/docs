@@ -1,6 +1,6 @@
 ---
-title: "Azure 机器学习试验服务配置文件"
-description: "本文档详细介绍 Azure ML 试验服务的配置设置。"
+title: Azure 机器学习试验服务配置文件
+description: 本文档详细介绍 Azure ML 试验服务的配置设置。
 services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 00e98ff07d144db791fcf074699614f1e664634b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 75b55b45c355f585fd73bdc1d97bc6adbbc4e9a0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure 机器学习试验服务配置文件
 
@@ -206,7 +206,7 @@ DataSourceSubstitutions：用户想要在不更改代码的情况下从一个数
  
 ```
 DataSourceSubstitutions:
-    myocal.dsource: myremote.dsource
+    mylocal.dsource: myremote.dsource
 ```
 
 根据以上替换，下面的代码示例现在从“myremote.dsource”而不是“mylocal.dsource”进行读取，且用户不需更改其代码。

@@ -1,12 +1,12 @@
 ---
-title: "适用于 Windows 的 Azure 性能诊断 VM 扩展 | Microsoft 文档"
-description: "介绍适用于 Windows 的 Azure 性能诊断 VM 扩展。"
+title: 适用于 Windows 的 Azure 性能诊断 VM 扩展 | Microsoft 文档
+description: 介绍适用于 Windows 的 Azure 性能诊断 VM 扩展。
 services: virtual-machines-windows'
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
 editor: na
-tags: 
+tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 5a7dc313f1d6453562e4d5a11ceca03e4459b043
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 8f6f3fc8325fb2587dc09b982efa52fbe663e2a9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>适用于 Windows 的 Azure 性能诊断 VM 扩展
 
@@ -29,7 +29,7 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 此扩展可以安装在 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016 上。 它还可以安装在 Windows 8.1 和 Windows 10 上。
 
 ## <a name="extension-schema"></a>扩展架构
-以下 JSON 显示了 Azure 性能诊断 VM 扩展的架构。 此扩展需要存储帐户的名称和密钥来存储诊断输出和报告。 这些值很敏感，应存储在受保护的设置配置中。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**storageAccountName** 和 **storageAccountKey** 区分大小写。 以下部分列出了其他必需参数。
+以下 JSON 显示了 Azure 性能诊断 VM 扩展的架构。 此扩展需要存储帐户的名称和密钥来存储诊断输出和报告。 这些值很敏感。 存储帐户密钥应存储在受保护的设置配置中。 Azure VM 扩展保护的设置数据已加密，并且只能在目标虚拟机上解密。 请注意，**storageAccountName** 和 **storageAccountKey** 区分大小写。 以下部分列出了其他必需参数。
 
 ```JSON
     {
@@ -43,19 +43,19 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
+            "storageAccountName": "[parameters('storageAccountName')]",
             "performanceScenario": "[parameters('performanceScenario')]",
-                  "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "perfCounterTrace": "[parameters('perfCounterTrace')]",
-                  "networkTrace": "[parameters('networkTrace')]",
-                  "xperfTrace": "[parameters('xperfTrace')]",
-                  "storPortTrace": "[parameters('storPortTrace')]",
+            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+            "perfCounterTrace": "[parameters('perfCounterTrace')]",
+            "networkTrace": "[parameters('networkTrace')]",
+            "xperfTrace": "[parameters('xperfTrace')]",
+            "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
             "requestTimeUtc":  "[parameters('requestTimeUtc')]"
         },
-          "protectedSettings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
+        "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"        
-            }
+        }
       }
     }
 ```
@@ -71,16 +71,17 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 |performanceScenario|基本|需为其捕获数据的性能方案。 有效值为：“基本”、“vmslow”、“azurefiles”和“自定义”。
 |traceDurationInSeconds|300|在选择任意跟踪选项的情况下的跟踪持续时间。
 |perfCounterTrace|p|启用性能计数器跟踪的选项。 有效值为“p”或空值。 如果不希望捕获此跟踪，请将该值留空。
-|networkTrace|n|启用网络跟踪的选项。 有效值为 **n** 或空值。 如果不希望捕获此跟踪，请将该值留空。
+|networkTrace|n|启用网络跟踪的选项。 有效值为 n 或空值。 如果不希望捕获此跟踪，请将该值留空。
 |xperfTrace|x|启用 XPerf 跟踪的选项。 有效值为“x”或空值。 如果不希望捕获此跟踪，请将该值留空。
 |storPortTrace|s|启用 StorPort 跟踪的选项。 有效值为 **s** 或空值。 如果不希望捕获此跟踪，请将该值留空。
 |srNumber|123452016365929|支持票证编号（如果有）。 将此值留空（如果没有此值）。
+|requestTimeUtc|2017-09-28T22:08:53.736Z|UTC 格式的当前日期时间。 如果使用门户来安装此扩展，则不需要提供此值。
 |storageAccountName|mystorageaccount|用于存储诊断日志和结果的存储帐户名称。
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|存储帐户的密钥。
 
 ## <a name="install-the-extension"></a>安装扩展
 
-请按照这些步骤在 Windows 虚拟机上安装扩展：
+请按照这些说明在 Windows 虚拟机上安装扩展：
 
 1. 登录到 [Azure 门户](http://portal.azure.com)。
 2. 选择你想要安装此扩展的虚拟机。
@@ -182,19 +183,19 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
+            "storageAccountName": "[parameters('storageAccountName')]",
             "performanceScenario": "[parameters('performanceScenario')]",
-                  "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "perfCounterTrace": "[parameters('perfCounterTrace')]",
-                  "networkTrace": "[parameters('networkTrace')]",
-                  "xperfTrace": "[parameters('xperfTrace')]",
-                  "storPortTrace": "[parameters('storPortTrace')]",
+            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+            "perfCounterTrace": "[parameters('perfCounterTrace')]",
+            "networkTrace": "[parameters('networkTrace')]",
+            "xperfTrace": "[parameters('xperfTrace')]",
+            "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
             "requestTimeUtc":  "[parameters('requestTimeUtc')]"
         },
-          "protectedSettings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
+        "protectedSettings": {            
             "storageAccountKey": "[parameters('storageAccountKey')]"        
-            }
+        }
       }
     }
   ]
@@ -202,13 +203,13 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 ````
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
-可以使用 `Set-AzureRmVMExtension` 命令将 Azure 性能诊断 VM 扩展部署到现有的虚拟机。 运行命令之前，请将公共和专用配置存储在 PowerShell 哈希表中。
+可以使用 `Set-AzureRmVMExtension` 命令将 Azure 性能诊断 VM 扩展部署到现有的虚拟机。
 
 PowerShell
 
 ````
-$PublicSettings = @{ "performanceScenario":"basic","traceDurationInSeconds":300,"perfCounterTrace":"p","networkTrace":"","xperfTrace":"","storPortTrace":"","srNumber":"","requestTimeUtc":"2017-09-28T22:08:53.736Z" }
-$ProtectedSettings = @{"storageAccountName":"mystorageaccount","storageAccountKey":"mystoragekey"}
+$PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z" }
+$ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
 Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -ResourceGroupName "myResourceGroup" `
@@ -218,7 +219,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -TypeHandlerVersion 1.0 `
     -Settings $PublicSettings `
     -ProtectedSettings $ProtectedSettings `
-    -Location WestUS `
+    -Location WestUS
 ````
 
 ## <a name="information-on-the-data-captured"></a>有关捕获的数据信息
@@ -234,7 +235,7 @@ Microsoft 可能会使用此 SAS 链接下载诊断数据，为从事票证支�
 
 若要查看报告，请解压缩 zip 文件，然后打开 **PerfInsights Report.html** 文件。
 
-也可以通过选择该扩展直接从门户下载 zip 文件。
+应该也可以通过选择该扩展直接从门户下载 zip 文件。
 
 ![性能诊断详细状态的屏幕截图](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 

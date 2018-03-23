@@ -1,6 +1,6 @@
 ---
-title: "Marketplace 中的 Azure 托管应用程序 | Microsoft 文档"
-description: "介绍通过 Marketplace 提供的 Azure 托管应用程序。"
+title: Marketplace 中的 Azure 托管应用程序 | Microsoft 文档
+description: 介绍通过 Marketplace 提供的 Azure 托管应用程序。
 services: azure-resource-manager
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 01/18/2018
+ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: fccc2dbb7623f4ceb0d3decc7037f75a05858910
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 61815098a4935983f19b3dcea6e001230aee4771
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace 中的 Azure 托管应用程序
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/19/2018
 
 1. 创建 Microsoft ID：使用属于公司的域（而不是属于个人）的电子邮件地址创建 Microsoft 帐户。 此电子邮件地址同时用于 Microsoft 开发人员中心和云合作伙伴门户。 有关详细信息，请参阅 [Azure Marketplace 发布者指南](https://aka.ms/sellerguide)。
 1. 提交 [Azure Marketplace 提名表格](https://aka.ms/ampnomination)：对于“你要发布的解决方案?”，选择“托管应用程序”。 一旦提交表格，Marketplace Onboarding 团队就会对应用程序进行评审并核实该申请。 审批过程可能需要一到三天。 提名获得批准后，你会收到一个促销代码，可免除开发人员中心注册费用。 如果**不**完成 Marketplace 提名表格，你就需要支付 99 美元的注册费用。
-1. 在[开发人员中心](https://developer.microsoft.com)注册：Microsoft 会核实你的组织在进行注册的国家/地区是否为有效的合法实体以及是否具有有效的税号标识。 审批过程可能需要 5 到 10 天。 若要免除注册费用，请使用在提名过程中以电子邮件形式收到的促销代码。 有关详细信息，请参阅 [Azure Marketplace 发布者指南](https://aka.ms/sellerguide)。
+1. 在[开发人员中心](http://dev.windows.com/registration?accountprogram=azure)注册：Microsoft 会核实你的组织在进行注册的国家/地区是否为有效的合法实体以及是否具有有效的税号标识。 审批过程可能需要 5 到 10 天。 若要免除注册费用，请使用在提名过程中以电子邮件形式收到的促销代码。 有关详细信息，请参阅 [Azure Marketplace 发布者指南](https://aka.ms/sellerguide)。
 1. 登录到[云合作伙伴门户](https://cloudpartner.azure.com)：在发布者个人资料中，将开发人员中心帐户与 Marketplace 发布者个人资料相关联。 有关详细信息，请参阅 [Azure Marketplace 发布者指南](https://aka.ms/sellerguide)。
 
 ## <a name="create-a-new-azure-application-offer"></a>创建新的 Azure 应用程序产品/服务

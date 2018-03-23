@@ -1,11 +1,11 @@
 ---
-title: "如何配置联接到混合 Azure Active Directory 的设备 | Microsoft Docs"
-description: "了解如何配置联接到混合 Azure Active Directory 的设备。"
+title: 如何配置联接到混合 Azure Active Directory 的设备 | Microsoft Docs
+description: 了解如何配置联接到混合 Azure Active Directory 的设备。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 203e36b198186db63b7e902db296adeaa9ffb4ee
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 188f02aa69d7b39bc5bc4873b437825107a7ae4e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>如何配置联接到混合 Azure Active Directory 的设备
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/05/2018
 
 如果要依赖于[系统准备工具 (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10))，请确保从尚未向 Azure AD 注册的 Windows 安装创建映像。
 
-完成下面所述的配置步骤后，当设备重启或用户登录时，运行 Windows 10 周年更新和 Windows Server 2016 的所有已加入域的设备会自动注册到 Azure AD。 如果不想要此自动注册行为或需要控制推出，请先按照下面的“控制部署和推出”部分中的说明进行操作以有选择地启用或禁用自动推出，然后再执行其他配置步骤。  
+完成下面所述的配置步骤后，当设备重启或用户登录时，运行 Windows 10 周年更新和 Windows Server 2016 的所有已加入域的设备会自动注册到 Azure AD。 如果不想要此自动注册行为或需要控制推出，请先按照下面的“步骤 4：控制部署和推出”部分中的说明进行操作以有选择地启用或禁用自动推出，然后再执行其他配置步骤。  
 
 为了方便阅读介绍内容，本主题使用了以下术语： 
 
@@ -88,7 +88,7 @@ Azure AD Connect：
 
 
 
-| Steps                                      | Windows 当前设备与密码哈希同步 | Windows 当前设备与联合 | Windows 下层设备 |
+| 步骤                                      | Windows 当前设备与密码哈希同步 | Windows 当前设备与联合 | Windows 下层设备 |
 | :--                                        | :-:                                    | :-:                            | :-:                |
 | 步骤 1：配置服务连接点 | ![勾选标记][1]                            | ![勾选标记][1]                    | ![勾选标记][1]        |
 | 步骤 2：设置声明颁发           |                                        | ![勾选标记][1]                    | ![勾选标记][1]        |
@@ -542,7 +542,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 ### <a name="remarks"></a>备注
 
-- 可以使用组策略对象来控制推出已加入域的 Windows 10 和 Windows Server 2016 计算机的自动注册。
+- 可以使用组策略对象来控制推出已加入域的 Windows 10 和 Windows Server 2016 计算机的自动注册。 如果不想将这些设备自动注册到 Azure AD 或想要控制注册，则在开始配置步骤之前，必须首先推出对所有这些设备禁用自动注册的组策略。 配置完成后，在测试准备就绪时，必须推出仅对测试设备启用自动注册，然后再对选择的所有其他设备启用自动注册的组策略。
 
 - 仅当已设置实施组策略对象时，Windows 10 2015 年 11 月更新才会自动联接到 Azure AD。
 

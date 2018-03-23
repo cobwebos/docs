@@ -1,6 +1,6 @@
 ---
-title: "Azure 虚拟网络常见问题 | Microsoft 文档"
-description: "有关 Microsoft Azure 虚拟网络的常见问题的解答。"
+title: Azure 虚拟网络常见问题 | Microsoft 文档
+description: 有关 Microsoft Azure 虚拟网络的常见问题的解答。
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jdial
-ms.openlocfilehash: 8800dc59306c349daba8f4d9703e0c713eed06ec
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: a5b4bac9e0d8bc10defaff251557129a70d8a022
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -57,7 +57,7 @@ Azure 虚拟网络 (VNet) 是自己的网络在云中的表示形式。 它是�
 [RFC 1918](http://tools.ietf.org/html/rfc1918)中定义的任何 IP 地址范围。 例如 10.0.0.0/16。
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>我的 VNet 中是否可以有公共 IP 地址？
-是的。 有关公用 IP 地址范围的详细信息，请参阅[创建虚拟网络](virtual-network-manage-network.md#create-a-virtual-network)。 无法从 Internet 直接访问公用 IP 地址。
+是的。 有关公用 IP 地址范围的详细信息，请参阅[创建虚拟网络](manage-virtual-network.md#create-a-virtual-network)。 无法从 Internet 直接访问公用 IP 地址。
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>VNet 中的子网数量是否有限制？
 是的。 有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)。 子网地址空间不能相互重叠。
@@ -218,6 +218,6 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 
 ### <a name="is-there-tooling-support-for-vnets"></a>是否有 VNet 的工具支持？
 是的。 详细了解以下操作：
-- 使用 Azure 门户通过 [Azure 资源管理器](virtual-networks-create-vnet-arm-pportal.md)和[经典](virtual-networks-create-vnet-classic-pportal.md)部署模型部署 VNet。
+- 使用 Azure 门户通过 [Azure 资源管理器](manage-virtual-network.md#create-a-virtual-network)和[经典](virtual-networks-create-vnet-classic-pportal.md)部署模型部署 VNet。
 - 使用 PowerShell 管理通过[资源管理器](/powershell/module/azurerm.network)和[经典](/powershell/module/azure/?view=azuresmps-3.7.0)部署模型部署的 VNet。
 - 使用 Azure 命令行接口 (CLI) 管理通过[资源管理器](/cli/azure/network/vnet)和[经典](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources)部署模型部署的 VNet。  

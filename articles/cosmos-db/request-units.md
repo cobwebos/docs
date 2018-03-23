@@ -1,11 +1,11 @@
 ---
-title: "请求单位和估计吞吐量 - Azure Cosmos DB | Microsoft Docs"
-description: "了解如何理解、指定和估计 Azure Cosmos DB 中的请求单位需求。"
+title: 请求单位和估计吞吐量 - Azure Cosmos DB | Microsoft Docs
+description: 了解如何理解、指定和估计 Azure Cosmos DB 中的请求单位需求。
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: mimig
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: d0a3c310-eb63-4e45-8122-b7724095c32f
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: mimig
-ms.openlocfilehash: d263c4f5ad14f6692a7c8f6e66429b439a52a84a
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3679aa76d4a6b9fd6335371e1639f1f246867fa5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位数
 现已推出：Azure Cosmos DB [请求单位计算器](https://www.documentdb.com/capacityplanner)。 了解[估计吞吐量需求](request-units.md#estimating-throughput-needs)。
@@ -35,9 +35,9 @@ Azure Cosmos DB 支持不同操作（范围从简单读取、写入到复杂图�
 阅读本文之后，能够回答以下问题：  
 
 * 什么是请求单位和请求费用？
-* 如何指定集合的请求单位容量？
+* 如何指定容器的请求单位容量？
 * 如何评估应用程序的请求单位需求？
-* 如果超过集合的请求单位容量会发生什么情况？
+* 如果超过容器的请求单位容量会发生什么情况？
 
 由于 Azure Cosmos DB 是多模型数据库，因此请务必注意，本文针对文档 API 引用集合/文档，针对图形 API 引用图形/节点，针对表 API 引用表/实体。 本文引用集合、图形或表的概念并将其视为容器，还引用文档、节点或实体的概念并将其视为项。
 
@@ -53,14 +53,14 @@ Azure Cosmos DB 通过保留资源提供了快速且可预测的性能，以满�
 > 
 
 ## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>指定 Azure Cosmos DB 中的请求单位容量
-启用新集合、表或图形时，指定希望保留的每秒请求单位数（每秒 RU 数）。 Azure Cosmos DB 会根据预配的吞吐量分配物理分区来托管集合，并拆分/重新均衡分区中不断增长的数据。
+启用新容器时，指定希望保留的每秒请求单位数（每秒 RU 数）。 Azure Cosmos DB 会根据预配的吞吐量分配物理分区来托管容器，并拆分/重新均衡分区中不断增长的数据。
 
-可以“固定”或“无限制”模式创建 Azure Cosmos DB 容器。 固定大小的容器最大限制为 10 GB，10,000 RU/s 吞吐量。 若要创建无限制容器，必须指定最低 1,000 RU/秒的吞吐量和一个[分区键](partition-data.md)。 由于数据可能需要跨多个分区拆分，因此需要选择一个基数较高（一百到几百万个非重复值）的分区键。 通过选择具有大量非重复值的分区键，可以确保 Azure Cosmos DB 能够统一缩放集合/表/图形与请求。 
+可以“固定”或“无限制”模式创建 Azure Cosmos DB 容器。 固定大小的容器最大限制为 10 GB，10,000 RU/s 吞吐量。 若要创建无限制容器，必须指定最低 1,000 RU/秒的吞吐量和一个[分区键](partition-data.md)。 由于数据可能需要跨多个分区拆分，因此需要选择一个基数较高（一百到几百万个非重复值）的分区键。 通过选择具有大量非重复值的分区键，可以确保 Azure Cosmos DB 能够统一缩放容器/表/图形与请求。 
 
 > [!NOTE]
 > 分区键是一个逻辑边界而不是物理边界。 因此，不需要限制非重复分区键值的数目。 事实上，分区键值宁多勿少，因为 Azure Cosmos DB 提供的负载均衡选项较多。
 
-以下代码片段使用 .NET SDK 创建每秒 3,000 个请求单位的集合：
+以下代码片段使用 .NET SDK 创建每秒 3,000 个请求单位的容器：
 
 ```csharp
 DocumentCollection myCollection = new DocumentCollection();
@@ -75,7 +75,7 @@ await client.CreateDocumentCollectionAsync(
 
 Azure Cosmos DB 运行一个保留模型来预配吞吐量。 也就是说，用户需要根据保留的吞吐量付费，不管实际使用的吞吐量是多少。 随着应用程序的负载、数据和使用情况模式的更改，可以通过 SDK 或使用 [Azure 门户](https://portal.azure.com)轻松增加和减少保留的 RU 量。
 
-每个集合/表/图形映射到 Azure Cosmos DB 中的 `Offer` 资源，该资源包含有关预配吞吐量的元数据。 可以通过查找容器的相应服务资源，并使用新的吞吐量值来对它进行更新，来更改分配的吞吐量。 以下代码片段使用 .NET SDK 将集合的吞吐量更改为每秒 5,000 个请求单位：
+将每个容器映射到 Azure Cosmos DB 中的 `Offer` 资源，该资源包含有关预配吞吐量的元数据。 可以通过查找容器的相应服务资源，并使用新的吞吐量值来对它进行更新，来更改分配的吞吐量。 以下代码片段使用 .NET SDK 将容器的吞吐量更改为每秒 5,000 个请求单位：
 
 ```csharp
 // Fetch the resource to be updated
@@ -334,10 +334,10 @@ MongoDB API 支持使用自定义命令 *getLastRequestStatistics* 来检索指�
 | 按食品组进行选择 |10 |700 |
 | 选择前 10 个 |15 |总计 150 |
 
-在此示例中，预计的平均吞吐量需求为 1,275 RU/s。  舍入到最接近的百位数，我们会将此应用程序的集合设置为 1,300 RU/s。
+在此示例中，预计的平均吞吐量需求为 1,275 RU/s。  舍入到最接近的百位数，我们会将此应用程序的容器设置为 1,300 RU/s。
 
 ## <a id="RequestRateTooLarge"></a>超过 Azure Cosmos DB 中保留的吞吐量限制
-前面提到，如果预算为空，请求单位消耗以每秒速率进行评估。 对于超过容器预配的请求单位速率的应用程序，将限制对该集合的请求数，直到速率降低到保留级别之下。 被限制时，服务器将抢先结束请求、引发 RequestRateTooLargeException（HTTP 状态代码 429）并返回 x-ms-retry-after-ms 标头，该标头指示重试请求前用户必须等待的时间（以毫秒为单位）。
+前面提到，如果预算为空，请求单位消耗以每秒速率进行评估。 对于超过容器预配的请求单位速率的应用程序，将限制对该容器的请求数，直到速率降低到保留级别之下。 被限制时，服务器将抢先结束请求、引发 RequestRateTooLargeException（HTTP 状态代码 429）并返回 x-ms-retry-after-ms 标头，该标头指示重试请求前用户必须等待的时间（以毫秒为单位）。
 
     HTTP Status 429
     Status Line: RequestRateTooLarge
@@ -348,7 +348,7 @@ MongoDB API 支持使用自定义命令 *getLastRequestStatistics* 来检索指�
 如果存在多个高于请求速率的请求操作，则默认重试行为可能无法满足需要，这时客户端就会向应用程序引发 DocumentClientException，其状态代码为 429。 在这种情况下，可以考虑处理重试行为和应用程序错误处理例程中的逻辑，或为容器增加保留的吞吐量。
 
 ## <a id="RequestRateTooLargeAPIforMongoDB"></a>超过 MongoDB API 中保留的吞吐量限制
-超过为集合预配的请求单位数的应用程序将受到限制，直到比率下降到保留级别以下。 受限制时，后端将提前结束请求并返回 *16500* 错误代码 -“请求过多”。 默认情况下，在返回“请求过多”错误代码之前，MongoDB API 会自动重试最多 10 次。 如果收到大量的“请求过多”错误代码，可以考虑在应用程序的错误处理例程中添加重试行为，或者[提高集合的保留吞吐量](set-throughput.md)。
+超过为容器预配的请求单位数的应用程序将受到限制，直到比率下降到保留级别以下。 受限制时，后端将提前结束请求并返回 *16500* 错误代码 -“请求过多”。 默认情况下，在返回“请求过多”错误代码之前，MongoDB API 会自动重试最多 10 次。 如果收到大量的“请求过多”错误代码，可以考虑在应用程序的错误处理例程中添加重试行为，或者[提高容器的保留吞吐量](set-throughput.md)。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure Cosmos DB 数据库的保留吞吐量的详细信息，请浏览以下资源：

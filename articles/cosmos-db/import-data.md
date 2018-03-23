@@ -1,12 +1,12 @@
 ---
-title: "适用于 Azure Cosmos DB 的数据库迁移工具 | Microsoft Docs"
-description: "了解如何使用开源 Azure Cosmos DB 数据迁移工具从各种源将数据导入 Azure Cosmos DB 中，这些源包括 MongoDB、SQL Server、表存储、Amazon DynamoDB、CSV 和 JSON 文件。 将 CSV 转换为 JSON。"
-keywords: "csv 到 json, 数据库迁移工具, 将 csv 转换为 json"
+title: 适用于 Azure Cosmos DB 的数据库迁移工具 | Microsoft Docs
+description: 了解如何使用开源 Azure Cosmos DB 数据迁移工具从各种源将数据导入 Azure Cosmos DB 中，这些源包括 MongoDB、SQL Server、表存储、Amazon DynamoDB、CSV 和 JSON 文件。 将 CSV 转换为 JSON。
+keywords: csv 到 json, 数据库迁移工具, 将 csv 转换为 json
 services: cosmos-db
 author: andrewhoh
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: d173581d-782a-445c-98d9-5e3c49b00e25
 ms.service: cosmos-db
 ms.workload: data-services
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 036683698c49b8acb8a83117ac823c90fef0b2b3
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: cf8b0e6a06f787c5b38622e9343e893d5d7daa12
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB：数据迁移工具
 
@@ -477,7 +477,7 @@ Azure Cosmos DB - 顺序记录导入程序具有下列高级附加选项：
 工具提供的策略模板包括︰
 
 * 默认。 针对字符串执行等式查询并针对数值使用 ORDER BY、范围和等式查询时，此策略最佳。 与范围模板相比，此策略的索引存储开销较低。
-* 范围。 针对数字和字符串使用 ORDER BY、范围和等式查询时，此策略最佳。 与默认或哈希模板相比，此策略的索引存储开销较高。
+* 范围。 此策略最适合对数字和字符串同时使用 ORDER BY、范围和等式查询的情况。 与默认或哈希模板相比，此策略的索引存储开销较高。
 
 ![Azure Cosmos DB 索引策略高级选项的屏幕截图](./media/import-data/indexingpolicy2.png)
 

@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 门户管理设备 | Microsoft Docs"
-description: "了解如何使用 Azure 门户管理设备。"
+title: 使用 Azure 门户管理设备 | Microsoft Docs
+description: 了解如何使用 Azure 门户管理设备。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1e0d40b996e181a606d16d26633f890b9169ecbb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 85447809cbc803c13ad731b5328e94a1b03abba8
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>使用 Azure 门户管理设备
 
@@ -112,6 +112,7 @@ Azure 门户提供了用于管理设备的集中场所。 可以使用[直接链
 
 ![所有设备](./media/device-management-azure-portal/51.png)
 
+对于某些 iOS 设备，包含单引号的设备名可能会使用看起来像单引号的不同字符。 因此搜索此类设备时会有点困难 - 如果没有看到正确的搜索结果，请确保搜索字符串包含匹配的单引号字符。
 
 ## <a name="device-management-tasks"></a>设备管理任务
 

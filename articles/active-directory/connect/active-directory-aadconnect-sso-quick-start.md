@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect：无缝单一登录 - 快速入门 | Microsoft 文档"
-description: "本文介绍如何开始使用 Azure Active Directory 无缝单一登录"
+title: Azure AD Connect：无缝单一登录 - 快速入门 | Microsoft 文档
+description: 本文介绍如何开始使用 Azure Active Directory 无缝单一登录
 services: active-directory
-keywords: "什么是 Azure AD Connect, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录"
-documentationcenter: 
+keywords: 什么是 Azure AD Connect, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/23/2017
 ms.author: billmath
 ms.openlocfilehash: 58ca992f9fcf9a03d917f0dc250a292c4d5f49e5
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -87,7 +87,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>为什么需要修改用户的 Intranet 区域设置？
 
-默认情况下，浏览器将自动从特定 URL 计算正确的区域（Internet 或 Intranet）。 例如，“http://contoso/”将映射到 Intranet 区域，而“http://intranet.contoso.com/”将映射到 Internet 区域（因为此 URL 包含句点）。 浏览器不会将 Kerberos 票证发送到云终结点（例如 Azure AD URL），除非将此 URL 显式添加到浏览器的 Intranet 区域。
+默认情况下，浏览器将自动从特定 URL 计算正确的区域（Internet 或 Intranet）。 例如，“http://contoso/”映射到 Intranet 区域，而“http://intranet.contoso.com/”映射到 Internet 区域（因为此 URL 包含句点）。 浏览器不会将 Kerberos 票证发送到云终结点（例如 Azure AD URL），除非将此 URL 显式添加到浏览器的 Intranet 区域。
 
 ### <a name="detailed-steps"></a>详细步骤
 
@@ -138,7 +138,7 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome（所有平台）
 
-如果已替代环境中的 [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) 或 [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) 策略设置，请确保也向其添加 Azure AD 的 URL (https://autologon.microsoftazuread-sso.com)。
+如果已替代环境中的 [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) 或 [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) 策略设置，请确保也向其添加 Azure AD 的 URL (https://autologon.microsoftazuread-sso.com))。
 
 #### <a name="google-chrome-mac-os-only"></a>Google Chrome（仅限 Mac 操作系统）
 
@@ -159,11 +159,11 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
   - 你可以通过组策略[将此功能扩展到用户](##step-3-roll-out-the-feature)。
 
 要测试用户仅输入用户名而不是密码的场景：
-   - 在新的私人浏览器会话中登录到 https://myapps.microsoft.com/。
+   - 在新的专用浏览器会话中登录到 https://myapps.microsoft.com/。
 
 要测试用户并非必须输入用户名或密码的场景，请使用以下步骤之一： 
-   - 在新的私人浏览器会话中登录到 https://myapps.microsoft.com/contoso.onmicrosoft.com。 将“contoso”替换为租户的名称。
-   - 在新的私人浏览器会话中登录到 https://myapps.microsoft.com/contoso.com。 将“contoso.com”替换为租户中的已验证域（而不是联盟域）。
+   - 在新的专用浏览器会话中登录到 https://myapps.microsoft.com/contoso.onmicrosoft.com。 将“contoso”替换为租户的名称。
+   - 在新的专用浏览器会话中登录到 https://myapps.microsoft.com/contoso.com。 将“contoso.com”替换为租户中的已验证域（而不是联盟域）。
 
 ## <a name="step-5-roll-over-keys"></a>步骤 5：滚动更新密钥
 

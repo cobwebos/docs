@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory B2C：参考：使用自定义策略来自定义用户旅程的 UI | Microsoft Docs"
-description: "有关 Azure Active Directory B2C 自定义策略的主题"
+title: Azure Active Directory B2C：参考：使用自定义策略来自定义用户旅程的 UI | Microsoft Docs
+description: 有关 Azure Active Directory B2C 自定义策略的主题
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: rojasja
 manager: mtillman
 editor: rojasja
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
 ms.openlocfilehash: 40245c25a7f80db27a25a0d34eb20f1057fc5e02
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>使用自定义策略来自定义用户旅程的 UI
 
@@ -122,7 +122,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 
 若要验证托管内容的存储是否已启用 CORS，请继续执行以下步骤：
 
-1. 打开浏览会话，并使用页面 *unified.html* 在存储帐户中的位置的完整 URL `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` 导航到该页面。 例如 https://contoso369b2c.blob.core.windows.net/b2c/unified.html。
+1. 打开浏览会话，并使用页面 *unified.html* 在存储帐户中的位置的完整 URL `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` 导航到该页面。 例如，https://contoso369b2c.blob.core.windows.net/b2c/unified.html。
 2. 导航到 http://test-cors.org。在此站点中，可以验证所用的页面是否已启用 CORS。  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)

@@ -1,12 +1,12 @@
 ---
-title: "IoT DevKit 到云：将 IoT DevKit AZ3166 连接到 Azure IoT 中心 | Microsoft Docs"
-description: "本教程介绍了如何将 IoT DevKit AZ3166 上的传感器的状态发送到Azure IoT 套件以用于监视和可视化。"
+title: IoT DevKit 到云：将 IoT DevKit AZ3166 连接到 Azure IoT 中心 | Microsoft Docs
+description: 本教程介绍了如何将 IoT DevKit AZ3166 上的传感器的状态发送到Azure IoT 套件以用于监视和可视化。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: liydu
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
@@ -50,7 +50,7 @@ ms.lasthandoff: 02/27/2018
 3. 输入解决方案名称，选择订阅和区域，然后单击“创建解决方案”。 解决方案可能要花费一段时间才能完成预配。
   ![创建解决方案](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-solution.png)
 
-4. 在预配完成后，单击“启动”。 在预配过程中会为解决方案创建一些模拟设备。 可以单击”设备”****来了解它们。![仪表板](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-solution-created.png)
+4. 在预配完成后，单击“启动”。 在预配过程中会为解决方案创建一些模拟设备。 可以单击 **设备** 来了解它们。![仪表板](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-solution-created.png)
   ![控制台](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-console.png)
 
 5. 单击“添加设备”。

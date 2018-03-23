@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions 的单一实例 - Azure"
-description: "如何使用 Azure Functions 的 Durable Functons 扩展中的单一实例。"
+title: Durable Functions 的单一实例 - Azure
+description: 如何使用 Azure Functions 的 Durable Functons 扩展中的单一实例。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 8384d17405653a29207cdfa4f6143504d0db2022
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: ea8b5db946d6b35ea4583d9170ec36e5f95e16cd
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions 中的单一实例业务流程协调程序 (Azure Functions)
 
@@ -65,6 +65,3 @@ public static async Task<HttpResponseMessage> RunSingle(
 
 > [!div class="nextstepaction"]
 > [了解如何调用子业务流程](durable-functions-sub-orchestrations.md)
-
-> [!div class="nextstepaction"]
-> [运行示例单一实例](durable-functions-counter.md)

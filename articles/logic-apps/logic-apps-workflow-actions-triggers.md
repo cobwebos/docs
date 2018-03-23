@@ -1,11 +1,11 @@
 ---
-title: "工作流触发器和操作 - Azure 逻辑应用 | Microsoft Docs"
-description: "了解使用逻辑应用创建自动化工作流和进程时的触发器和操作"
+title: 工作流触发器和操作 - Azure 逻辑应用 | Microsoft Docs
+description: 了解使用逻辑应用创建自动化工作流和进程时的触发器和操作
 services: logic-apps
-author: MandiOhlinger
+author: divyaswarnkar
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 86a53bb3-01ba-4e83-89b7-c9a7074cb159
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: klam; LADocs
-ms.openlocfilehash: af30fd30f389cdc2070c45ae3b6e2cb1165239e7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 28d28888ce66c354da39dc636579655aadbb9e51
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="triggers-and-actions-for-logic-app-workflows"></a>逻辑应用工作流触发器和操作
 

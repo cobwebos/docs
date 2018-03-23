@@ -1,8 +1,8 @@
 ---
-title: "为 Azure 云服务资源上托管的应用程序启用 Application Insights Profiler | Microsoft Docs"
-description: "了解如何为 Azure 云服务中运行的应用程序设置 Application Insights Profiler。"
+title: 为 Azure 云服务资源上托管的应用程序启用 Application Insights Profiler | Microsoft Docs
+description: 了解如何为 Azure 云服务中运行的应用程序设置 Application Insights Profiler。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: ramach-msft
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: 278d8241ddd67b6df64b7280d4a17c6d3152f223
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: a24695f7bbb5fb0546e27c934319a60a3418b9e1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>为 Azure VM、Service Fabric 和 Azure 云服务启用 Application Insights Profiler
 
@@ -46,8 +46,7 @@ ms.lasthandoff: 03/05/2018
 
    ![检测密钥的位置](./media/enable-profiler-compute/CopyAIKey.png)
 
-3. 若要完成为 Profiler 设置 Application Insights 实例，请完成[启用 Profiler](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler) 中所述的过程。  
-    不需要链接 Web 应用，因为步骤特定于应用程序服务资源。 确保在“配置 Profiler”窗格中启用了 Profiler。
+3. 若要完成为 Profiler 设置 Application Insights 实例，请完成 [ 启用 Profiler 中所述的过程。 不需要链接 Web 应用，因为步骤特定于应用程序服务资源。 确保在“配置 Profiler”窗格中启用了 Profiler。
 
 
 ## <a name="set-up-the-application-source-code"></a>设置应用程序源代码
@@ -157,6 +156,8 @@ ms.lasthandoff: 03/05/2018
 
       若要了解如何将诊断扩展添加到部署模板，请参阅[将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
+> [!TIP]
+> 对于虚拟机，上述基于 json 的步骤的替代方法是在 Azure 门户中导航到“虚拟机” > “诊断设置” > “接收器”>，将向 Application Insights 发送诊断数据设置为“已启用”，然后选择 Application Insights 帐户或特定的 ikey。
 
 ### <a name="azure-cloud-services"></a>Azure 云服务
 
@@ -196,7 +197,7 @@ ms.lasthandoff: 03/05/2018
 
 1. 部署修改后的环境部署定义。  
 
-   通常情况下，为了应用修改，会涉及完整的模板部署或者通过 PowerShell cmdlet 或 Visual Studio 进行的云服务发布。  
+   要应用修改，通常会涉及完整的模板部署或者通过 PowerShell cmdlet 或 Visual Studio 进行的基于云服务的发布。  
 
    下面将介绍用于现有虚拟机的一种替代方法，该方法仅涉及 Azure 诊断扩展：  
 

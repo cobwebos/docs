@@ -1,8 +1,8 @@
 ---
-title: "在 Azure 上预配深度学习数据科学虚拟机 | Microsoft Docs"
-description: "在 Azure 上配置和创建深度学习数据科学虚拟机，用于进行分析和机器学习。"
+title: 在 Azure 上预配深度学习数据科学虚拟机 | Microsoft Docs
+description: 在 Azure 上配置和创建深度学习数据科学虚拟机，用于进行分析和机器学习。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -11,13 +11,13 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: db1360fa54d82c50adc04194697d994925338296
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 03/16/2018
+ms.author: gokuma
+ms.openlocfilehash: 75baef65b8a826009cdbaac3a260d021559504da
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>在 Azure 上预配深度学习虚拟机 
 

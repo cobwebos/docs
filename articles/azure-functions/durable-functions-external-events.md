@@ -1,12 +1,12 @@
 ---
-title: "在 Durable Functions 中处理外部事件 - Azure"
-description: "了解如何在 Azure Functions 的 Durable Functions 扩展中处理外部事件。"
+title: 在 Durable Functions 中处理外部事件 - Azure
+description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处理外部事件。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 1f581be0abaff542285abc0d4c2f4bffe7281d20
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 5ffbe6a7d74f0be2193d711d304f19e62ab08741
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions 中处理外部事件 (Azure Functions)
 
@@ -128,7 +128,7 @@ public static async Task Run(
 > [了解如何设置永久业务流程](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [运行等待外部事件的示例](durable-functions-counter.md)
+> [运行等待外部事件的示例](durable-functions-phone-verification.md)
 
 > [!div class="nextstepaction"]
 > [运行等待人机交互的示例](durable-functions-phone-verification.md)

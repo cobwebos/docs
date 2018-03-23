@@ -1,8 +1,8 @@
 ---
-title: "使用数据工厂向/从 Azure Cosmos DB 复制数据 | Microsoft Docs"
-description: "了解如何使用数据工厂将数据从支持的源数据存储复制到 Azure Cosmos DB，或从 Cosmos DB 复制到支持的接收器存储。"
+title: 使用数据工厂向/从 Azure Cosmos DB 复制数据 | Microsoft Docs
+description: 了解如何使用数据工厂将数据从支持的源数据存储复制到 Azure Cosmos DB，或从 Cosmos DB 复制到支持的接收器存储。
 services: data-factory, cosmosdb
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: c791f335bfa9ec6073eb83149068571ceb253f82
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b54aba19ecb92867bc817cbbb921f4e6537ef70c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Cosmos DB 复制数据
 
@@ -162,7 +162,7 @@ Azure Cosmos DB 链接的服务支持以下属性：
 
 ### <a name="azure-cosmos-db-as-sink"></a>Azure Cosmos DB 作为接收器
 
-要从 Azure Cosmos DB 复制数据，请将复制活动中的接收器类型设置为“DocumentDbCollectionSink”。 复制活动**源**部分支持以下属性：
+要将数据复制到 Azure Cosmos DB 数据，请将复制活动中的接收器类型设置为“DocumentDbCollectionSink”。 复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |

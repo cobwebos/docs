@@ -1,25 +1,20 @@
 ---
-title: "拆分/合并安全配置 | Microsoft 文档"
-description: "使用拆分/合并服务设置用于加密的 x409 证书以实现弹性缩放。"
+title: 拆分/合并安全配置 | Microsoft 文档
+description: 使用拆分/合并服务设置用于加密的 x409 证书以实现弹性缩放。
 metakeywords: Elastic Database certificates security
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: torsteng
-ms.assetid: f9e89c57-61a0-484f-b787-82dae2349cb6
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
-ms.author: torsteng
-ms.openlocfilehash: 98f046a943c1fe33b421b3ab6830d78e6c4304a0
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.author: sstein
+ms.openlocfilehash: c07ba1e74daace546bae4f4209842312136914a3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="split-merge-security-configuration"></a>拆分/合并安全配置
 若要使用拆分/合并服务，必须正确配置安全性。 该服务是 Microsoft Azure SQL 数据库弹性扩展功能的一部分。 有关详细信息，请参阅[弹性缩放拆分和合并服务教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。
@@ -391,7 +386,7 @@ ms.lasthandoff: 12/14/2017
 4. 单击 **“添加”**。
 5. 选择证书存储位置。
 6. 单击“完成” 。
-7. 单击 **“确定”**。
+7. 单击“确定”。
 8. 展开“证书”。
 9. 展开证书存储节点。
 10. 展开证书子节点。
@@ -400,18 +395,18 @@ ms.lasthandoff: 12/14/2017
 ## <a name="export-certificate"></a>导出证书
 在**证书导出向导**中：
 
-1. 单击“下一步”。
+1. 单击“资源组名称” 的 Azure 数据工厂。
 2. 选择“是”，并选择“导出私钥”。
-3. 单击“下一步”。
+3. 单击“资源组名称” 的 Azure 数据工厂。
 4. 选择所需的输出文件格式。
 5. 选中所需的选项。
 6. 选中“密码”。
 7. 输入强密码并进行确认。
-8. 单击“下一步”。
+8. 单击“资源组名称” 的 Azure 数据工厂。
 9. 在证书的存储位置键入或浏览文件名（使用 .PFX 扩展名）。
 10. 单击“下一步”。
 11. 单击“完成” 。
-12. 单击 **“确定”**。
+12. 单击“确定”。
 
 ## <a name="import-certificate"></a>导入证书
 在证书导入向导中：
@@ -420,7 +415,7 @@ ms.lasthandoff: 12/14/2017
    
    * 如果只有在当前用户下运行的进程将访问该服务，请选择“当前用户”
    * 如果此计算机中的其他进程将访问该服务，请选择“本地计算机”
-2. 单击“下一步”。
+2. 单击“资源组名称” 的 Azure 数据工厂。
 3. 如果要从文件中导入，请确认文件路径。
 4. 如果要导入 .PFX 文件，请执行以下操作：
    1. 输入用于保护私钥的密码

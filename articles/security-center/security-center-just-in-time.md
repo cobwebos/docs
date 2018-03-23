@@ -1,31 +1,31 @@
 ---
-title: "Azure 安全中心中的恰时虚拟机访问 | Microsoft Docs"
-description: "本文档说明 Azure 安全中心中的恰时 VM 访问可以如何帮助你控制对 Azure 虚拟机的访问。"
+title: Azure 安全中心中的恰时虚拟机访问 | Microsoft Docs
+description: 本文档说明 Azure 安全中心中的恰时 VM 访问可以如何帮助你控制对 Azure 虚拟机的访问。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2018
+ms.date: 03/06/2018
 ms.author: terrylan
-ms.openlocfilehash: a15857f0df5c967031aed00d89e71b3199eed0c4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f1ea31d1081bc263cf85cf4dcc3d73d4cc0b842d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="manage-virtual-machine-access-using-just-in-time-preview"></a>使用恰时功能管理虚拟机访问（预览版）
+# <a name="manage-virtual-machine-access-using-just-in-time"></a>使用恰时功能管理虚拟机访问
 
 恰时虚拟机 (VM) 访问可以用来锁定发往 Azure VM 的入站流量，降低遭受攻击的可能性，同时在需要时还允许轻松连接到 VM。
 
 > [!NOTE]
-> 实时功能处于预览状态，并在安全中心的标准层上可用。  若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
+> 实时功能在安全中心的标准层上可用。  若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
 >
 >
 

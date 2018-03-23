@@ -1,10 +1,10 @@
 ---
-title: "Azure 流分析和机器学习集成 | Microsoft Docs"
-description: "如何在流分析作业中使用用户定义的函数和机器学习"
-keywords: 
-documentationcenter: 
+title: Azure 流分析和机器学习集成 | Microsoft Docs
+description: 如何在流分析作业中使用用户定义的函数和机器学习
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
-author: samacha
+author: SnehaGunda
 manager: jhubbard
 editor: cgronlun
 ms.assetid: cfced01f-ccaa-4bc6-81e2-c03d1470a7a2
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 07/06/2017
-ms.author: samacha
-ms.openlocfilehash: d06681c687f5cd3eb10d375499266c7e78be1558
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 03/01/2018
+ms.author: sngun
+ms.openlocfilehash: 10d514aeb50dcd24f28ed879875b23b25578cebb
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>使用 Azure 流分析和 Azure 机器学习执行情绪分析
 本文介绍了如何快速设置集成了 Azure 机器学习的简单 Azure 流分析作业。 你将使用 Cortana Intelligence 库中的机器学习情绪分析模型来实时分析流文本数据并确定情绪分数。 可以使用 Cortana Intelligence Suite 完成此任务，不必担心构建情绪分析模型的复杂性。
@@ -57,9 +57,7 @@ ms.lasthandoff: 02/21/2018
 ## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>创建一个存储容器并上传 CSV 输入文件
 对于此步骤，可以使用任何 CSV 文件，例如从 GitHub 获取的文件。
 
-1. 在 Azure 门户中，单击“创建资源”&gt;“存储”&gt;“存储帐户”。
-
-   ![创建新存储帐户](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-create-storage-account.png)
+1. 在 Azure 门户中，单击“创建资源” > “存储” > “存储帐户”。
 
 2. 提供一个名称（在本例中为 `samldemo`）。 该名称只能使用小写字母和数字，并且在 Azure 中必须唯一。 
 
@@ -81,9 +79,7 @@ ms.lasthandoff: 02/21/2018
 
     ![容器的“上传”按钮](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
-8. 在“上传 blob”边栏选项卡中，指定要用于本教程的 CSV 文件。 对于“Blob 类型”，选择“块 blob”并将块大小设置为 4 MB，这对于本教程已足够。
-
-    ![上传 blob 文件](./media/stream-analytics-machine-learning-integration-tutorial/create-sa4.png)
+8. 在“上传 Blob”边栏选项卡中，上传之前下载的 sampleinput.csv 文件。 对于“Blob 类型”，选择“块 blob”并将块大小设置为 4 MB，这对于本教程已足够。
 
 9. 单击边栏选项卡底部的“上传”按钮。
 
@@ -130,8 +126,6 @@ ms.lasthandoff: 02/21/2018
 
 2. 单击“创建资源” > “物联网” > “流分析作业”。 
 
-   ![到达新的流分析作业的 Azure 门户路径](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-new-iot-sa-job.png)
-   
 3. 将作业命名为 `azure-sa-ml-demo`，指定一个订阅，指定一个现有资源组或新建一个资源组，然后为作业选择位置。
 
    ![指定新的流分析作业的设置](./media/stream-analytics-machine-learning-integration-tutorial/create-job-1.png)
@@ -140,46 +134,43 @@ ms.lasthandoff: 02/21/2018
 ### <a name="configure-the-job-input"></a>配置作业输入
 该作业从之前上传到 blob 存储的 CSV 文件获取其输入。
 
-1. 在创建作业后，在作业边栏选项卡中的“作业拓扑”下，单击“输入”框。  
+1. 在创建作业后，在作业边栏选项卡中的“作业拓扑”下，单击“输入”选项。    
+
+2. 在“输入”边栏选项卡中，单击“添加流输入” >“Blob 存储”
+
+3. 使用以下值填写“Blob 存储”边栏选项卡：
+
    
-   ![流分析作业边栏选项卡中的“输入”框](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input.png)  
+   |字段  |值  |
+   |---------|---------|
+   |**输入别名** | 使用名称 `datainput` 并选择“从订阅选择 Blob 存储”       |
+   |**存储帐户**  |  选择前面创建的存储帐户。  |
+   |**容器**  | 选择前面创建的容器 (`azuresamldemoblob`)        |
+   |**事件序列化格式**  |  选择“CSV”       |
 
-2. 在“输入”边栏选项卡中，单击“+ 添加”。
+   ![新作业输入的设置](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
-   ![用于向流分析作业添加输入的“添加”按钮](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input-button.png)  
-
-3. 使用以下值填写“新输入”边栏选项卡：
-
-    * **输入别名**：使用名称 `datainput`。
-    * **源类型**：选择“数据流”。
-    * **源**：选择“Blob 存储”。
-    * **导入选项**：选择“从当前订阅使用 blob 存储”。 
-    * **存储帐户**： 选择前面创建的存储帐户。
-    * **容器**： 选择前面创建的容器 (`azuresamldemoblob`)。
-    * **事件序列化格式**： 选择“CSV”。
-
-    ![新作业输入的设置](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
-
-4. 单击“创建”。
+4. 单击“ **保存**”。
 
 ### <a name="configure-the-job-output"></a>配置作业输出
 作业将结果发送到它从中获取输入的同一 blob 存储。 
 
-1. 在作业边栏选项卡中的“作业拓扑”下，单击“输出”框。  
-  
-   ![为流分析作业创建新输出](./media/stream-analytics-machine-learning-integration-tutorial/create-output.png)  
+1. 在作业边栏选项卡中的“作业拓扑”下，单击“输出”选项。  
 
-2. 在“输出”边栏选项卡中，单击“+ 添加”，然后添加别名为 `datamloutput` 的输出。 
+2. 在“输出”边栏选项卡中，单击“添加” >“Blob 存储”，然后添加别名为 `datamloutput` 的输出。 
 
-3. 对于“接收器”，选择“Blob 存储”。 然后，使用为 blob 存储的输入使用的相同值填写输出设置的其余部分：
+3. 使用以下值填写“Blob 存储”边栏选项卡：
 
-    * **存储帐户**： 选择前面创建的存储帐户。
-    * **容器**： 选择前面创建的容器 (`azuresamldemoblob`)。
-    * **事件序列化格式**： 选择“CSV”。
+   |字段  |值  |
+   |---------|---------|
+   |**输出别名** | 使用名称 `datainput` 并选择“从订阅选择 Blob 存储”       |
+   |**存储帐户**  |  选择前面创建的存储帐户。  |
+   |**容器**  | 选择前面创建的容器 (`azuresamldemoblob`)        |
+   |**事件序列化格式**  |  选择“CSV”       |
 
    ![新作业输出的设置](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
 
-4. 单击“创建”。   
+4. 单击“ **保存**”。   
 
 
 ### <a name="add-the-machine-learning-function"></a>添加机器学习函数 
@@ -189,22 +180,19 @@ ms.lasthandoff: 02/21/2018
 
 1. 请确保具有之前在 Excel 工作簿中下载的 Web 服务 URL 和 API 密钥。
 
-2. 返回到作业概述边栏选项卡。
+2. 导航到作业边栏选项卡 >“函数” > “+ 添加” > “AzureML”
 
-3. 在“设置”下，选择“函数”，然后单击“+ 添加”。
+3. 使用以下值填写“Azure 机器学习函数”边栏选项卡：
 
-   ![向流分析作业添加函数](./media/stream-analytics-machine-learning-integration-tutorial/create-function1.png) 
-
-4. 输入 `sentiment` 作为函数别名并使用以下值填写边栏选项卡的其余部分：
-
-    * **函数类型**：选择“Azure ML”。
-    * **导入选项**：选择“从其他订阅导入”。 这提供了一个机会来输入 URL 和密钥。
-    * **URL**：粘贴 Web 服务 URL。
-    * **密钥**：粘贴 API 密钥。
+   |字段  |值  |
+   |---------|---------|
+   | **函数别名** | 使用名称 `sentiment` 并选择“手动提供 Azure 机器学习函数设置”，该选项会提供输入 URL 和密钥的选项。      |
+   | **URL**| 粘贴 Web 服务 URL。|
+   |**键** | 粘贴 API 密钥。 |
   
-    ![用于向流分析作业添加机器学习函数的设置](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
+   ![用于向流分析作业添加机器学习函数的设置](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
     
-5. 单击“创建”。
+4. 单击“ **保存**”。
 
 ### <a name="create-a-query-to-transform-the-data"></a>创建查询来转换数据
 
@@ -213,8 +201,6 @@ ms.lasthandoff: 02/21/2018
 1. 返回到作业概述边栏选项卡。
 
 2.  在“作业拓扑”下，单击“查询”框。
-
-    ![为流分析作业创建查询](./media/stream-analytics-machine-learning-integration-tutorial/create-query.png)  
 
 3. 输入以下查询：
 
@@ -241,8 +227,6 @@ ms.lasthandoff: 02/21/2018
 1. 返回到作业概述边栏选项卡。
 
 2. 单击边栏选项卡顶部的“启动”。
-
-    ![为流分析作业创建查询](./media/stream-analytics-machine-learning-integration-tutorial/start-job.png)  
 
 3. 在“启动作业”中，选择“自定义”，然后选择将 CSV 文件上传到 Blob 存储之前的某一天。 完成后，单击“启动”。  
 

@@ -52,6 +52,7 @@ sql-database-single-database-resources.md
 | 最大并发会话数 | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
+
 > [!IMPORTANT]
 > \* 超出所包括存储量的存储大小为预览版，需额外付费。 有关详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 
 >
@@ -59,3 +60,4 @@ sql-database-single-database-resources.md
 > 
 >\*\* 标准池中每个数据库的最大 DTU 数至少为 200 DTU 的为预览版。
 >
+

@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect 同步：了解默认配置 | Microsoft Docs"
-description: "本文介绍 Azure AD Connect 同步中的默认配置。"
+title: Azure AD Connect 同步：了解默认配置 | Microsoft Docs
+description: 本文介绍 Azure AD Connect 同步中的默认配置。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 87f513ffd2e8854085d9dfcd399148082de37698
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: dba7a6fcf936e9610a5f1f04e367d32e9aae6643
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同步：了解默认配置
 本文介绍现成的配置规则。 其中说明这些规则及其对配置将有何影响。 此外还将逐步介绍如何完成 Azure AD Connect 同步的默认配置。其目的是让读者了解配置模型（名为声明性预配）在实际示例中的运行情形。 本文假设已使用安装向导安装并配置了 Azure AD Connect 同步。
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/18/2018
 * 不同步不在 Exchange Online 中运行的对象。
   `CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))`  
   此位掩码 (&H21C07000) 将筛选出以下对象：
-  * 支持邮件的公共文件夹
+  * 启用电子邮件的公用文件夹（在版本 1.1.524.0 的预览版中）
   * 系统助理邮箱
   * 邮箱数据库邮箱（系统邮箱）
   * 通用安全组（不适用于用户，但由于历史原因而存在）

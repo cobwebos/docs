@@ -1,12 +1,12 @@
 ---
-title: "Azure 负载均衡器标准版概述 | Microsoft Docs"
-description: "Azure 负载均衡器标准版功能概述"
+title: Azure 负载均衡器标准版概述 | Microsoft Docs
+description: Azure 负载均衡器标准版功能概述
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2018
 ms.author: kumud
-ms.openlocfilehash: ddbfb415f062396f022f0f58cb975f6e3a5f1807
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7e4fa38145ac21aaca8efa37250cc32ef1b1655c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Azure 负载均衡器标准版概述（预览版）
 
@@ -327,7 +327,7 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 
 ## <a name="region-availability"></a>上市区域
 
-负载均衡器标准版目前已在所有公有云区域推出。
+负载均衡器标准版目前已在所有公有云区域（美国西部除外）推出。
 
 >[!IMPORTANT]
 > 在短时间内，访问初始启动区域（美国东部 2、美国中部、北欧、美国中西部、西欧、东南亚）之外的区域需要注册其他订阅功能（AllowLBPreviewWave2 和AllowLBPreviewWave3）。  [请执行以下步骤](#additionalpreviewregions)。 请执行所有这些步骤，即使以前已注册了 AllowLBPreview 也是如此。
@@ -467,6 +467,7 @@ Azure 的[网络服务限制](https://docs.microsoft.com/azure/azure-subscriptio
 - 目前不支持 [Azure Monitor 警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
 - 门户尚不支持扩展的预览区域。  请使用模板、Azure CLI 2.0 或 PowerShell 等客户端工具作为解决方法。
 - 不支持移动订阅操作。
+- 在美国西部不可用。
 
 
 ## <a name="next-steps"></a>后续步骤

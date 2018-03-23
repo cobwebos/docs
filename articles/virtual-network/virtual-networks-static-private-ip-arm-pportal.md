@@ -1,6 +1,6 @@
 ---
-title: "为 VM 配置专用 IP 地址 - Azure 门户 | Microsoft 文档"
-description: "了解如何使用 Azure 门户为虚拟机配置专用 IP 地址。"
+title: 为 VM 配置专用 IP 地址 - Azure 门户 | Microsoft 文档
+description: 了解如何使用 Azure 门户为虚拟机配置专用 IP 地址。
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2679c7cb75c438402f3ab64c3e14c964cb8a85d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d551758277373995a6f92e1a25a59d170464fe5e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>使用 Azure 门户为虚拟机配置专用 IP 地址
 
 > [!div class="op_single_selector"]
-> * [Azure portal](virtual-networks-static-private-ip-arm-pportal.md)
+> * [Azure 门户](virtual-networks-static-private-ip-arm-pportal.md)
 > * [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 > * [Azure CLI](virtual-networks-static-private-ip-arm-cli.md)
 > * [Azure 门户（经典）](virtual-networks-static-private-ip-classic-pportal.md)
@@ -41,7 +41,7 @@ ms.lasthandoff: 02/21/2018
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-需要已创建一个简单的环境才能执行以下示例步骤。 如果想要运行本文档中所显示的步骤，首先需要生成[创建 Vnet](virtual-networks-create-vnet-arm-pportal.md) 中所述的测试环境。
+需要已创建一个简单的环境才能执行以下示例步骤。 若要运行本文档中所显示的步骤，请先生成[创建虚拟网络](quick-create-portal.md) 中所述的测试环境。
 
 ## <a name="how-to-create-a-vm-for-testing-static-private-ip-addresses"></a>如何创建用于测试静态专用 IP 地址的 VM
 在 Resource Manager 部署模型中创建 VM 时，不能使用 Azure 门户设置静态专用 IP 地址。 必须先创建 VM，然后再将其专用 IP 设置为静态。

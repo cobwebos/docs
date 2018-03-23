@@ -1,24 +1,24 @@
 ---
-title: "Azure 中逻辑应用的错误和异常处理 | Microsoft Docs"
-description: "逻辑应用中的错误和异常处理模式。"
+title: Azure 中逻辑应用的错误和异常处理 | Microsoft Docs
+description: 逻辑应用中的错误和异常处理模式。
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: dereklee
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: e50ab2f2-1fdc-4d2a-be40-995a6cc5a0d4
 ms.service: logic-apps
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/2018
 ms.author: deli; LADocs
-ms.openlocfilehash: 91819d0fba30dd2ada981435fa13b8ae0a7fcc45
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 2ae4f0ae9782ada23089d364e8a1700144ef5ff7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="handle-errors-and-exceptions-in-logic-apps"></a>处理逻辑应用中的错误和异常
 
@@ -68,32 +68,32 @@ ms.lasthandoff: 03/05/2018
 
 如果将 **retryPolicy** 设置为 **none**，则此策略不重试失败的请求。
 
-| 元素名称 | 必需 | 类型 | 说明 | 
+| 元素名称 | 必选 | Type | 说明 | 
 | ------------ | -------- | ---- | ----------- | 
-| type | 是 | String | **none** | 
+| type | 是 | String | **无** | 
 ||||| 
 
 ### <a name="fixed-interval"></a>固定间隔
 
 如果将 **retryPolicy** 设置为 **fixed**，则此策略将等待指定的时间间隔，然后发送下一个请求来重试失败的请求。
 
-| 元素名称 | 必需 | 类型 | 说明 |
+| 元素名称 | 必选 | Type | 说明 |
 | ------------ | -------- | ---- | ----------- |
 | type | 是 | String | **fixed** |
-| count | 是 | Integer | 重试尝试次数，它必须介于 1 和 90 之间 | 
+| 计数 | 是 | Integer | 重试尝试次数，它必须介于 1 和 90 之间 | 
 | interval | 是 | String | 采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重试时间间隔，它必须介于 PT5S 和 PT1D 之间 | 
 ||||| 
 
 <a name="exponential-interval"></a>
 
-### <a name="exponential-interval"></a>指数时间间隔
+### <a name="exponential-interval"></a>指数间隔
 
 如果将 **retryPolicy** 设置为 **exponential**，则此策略将在指数级增长范围中一个随机的时间间隔后重试失败的请求。 此策略还保证以大于 **minimumInterval** 且小于 **maximumInterval** 的随机时间间隔发送每次重试尝试。 指数策略还需要 **count** 和 **interval**，而 **minimumInterval** 和 **maximumInterval** 的值是可选的。 如果希望分别替代 PT5S 和 PT1D 默认值，则可以添加这些值。
 
-| 元素名称 | 必需 | 类型 | 说明 |
+| 元素名称 | 必选 | Type | 说明 |
 | ------------ | -------- | ---- | ----------- |
 | type | 是 | String | **exponential** |
-| count | 是 | Integer | 重试尝试次数，它必须介于 1 和 90 之间  |
+| 计数 | 是 | Integer | 重试尝试次数，它必须介于 1 和 90 之间  |
 | interval | 是 | String | 采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重试时间间隔，它必须介于 PT5S 和 PT1D 之间。 |
 | minimumInterval | 否 | String | 采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重试最小时间间隔，它必须介于 PT5S 和 **interval** 之间 |
 | maximumInterval | 否 | String | 采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重试最小时间间隔，它必须介于 **interval** 和 PT1D 之间 | 
@@ -280,8 +280,6 @@ ms.lasthandoff: 03/05/2018
 
 * [了解如何使用 Azure 逻辑应用构建错误处理逻辑](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [查找更多逻辑应用示例和方案](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [了解如何创建逻辑应用的自动部署](../logic-apps/logic-apps-create-deploy-template.md)
-* [使用 Visual Studio 构建和部署逻辑应用](logic-apps-deploy-from-vs.md)
 
 <!-- References -->
 [retryPolicyMSDN]: https://docs.microsoft.com/rest/api/logic/actions-and-triggers#Anchor_9

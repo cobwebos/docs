@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 逻辑应用连接到 GitHub | Microsoft Docs"
-description: "使用 Azure 逻辑应用自动执行 GitHub 的工作流"
+title: 使用 Azure 逻辑应用连接到 GitHub | Microsoft Docs
+description: 使用 Azure 逻辑应用自动执行 GitHub 的工作流
 services: logic-apps
-documentationcenter: 
-author: MandiOhlinger
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 8f873e6c-f4c0-4c2e-a5bd-2e953efe5e2b
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 03/02/2018
-ms.author: mandia; ladocs
-ms.openlocfilehash: cd7cd3babbfb7efc5917d3a7ec5b9d10112ba791
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.author: estfan; ladocs
+ms.openlocfilehash: 830c3e6b5462c5d2d917388c0d0924e444342f93
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-to-github"></a>连接到 GitHub
 

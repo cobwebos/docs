@@ -1,7 +1,7 @@
 ---
-title: "将 HDInsight 连接到本地网络 - Azure HDInsight | Microsoft Docs"
-description: "了解如何在 Azure 虚拟网络中创建 HDInsight 群集，并将其连接到本地网络。 了解如何使用自定义 DNS 服务器配置 HDInsight 与本地网络之间的名称解析。"
-documentationcenter: 
+title: 将 HDInsight 连接到本地网络 - Azure HDInsight | Microsoft Docs
+description: 了解如何在 Azure 虚拟网络中创建 HDInsight 群集，并将其连接到本地网络。 了解如何使用自定义 DNS 服务器配置 HDInsight 与本地网络之间的名称解析。
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 03214f25858ae340908a1d1b7f3ff7f62d545dc9
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9470e052b4f57e52fa140b53fa7c32d199c58e1e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>将 HDInsight 连接到本地网络
 
@@ -273,13 +273,13 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 > [!WARNING]
 > HDInsight 需要来自 Azure 云中的特定 IP 地址的入站访问权限以及不受限制的出站访问权限。 如果使用 NSG 或 UDR 来控制流量，必须执行以下步骤：
->
-> 1. 查找包含虚拟网络的位置的 IP 地址。 若要获取按位置划分的所需 IP 列表，请参阅[所需 IP 地址](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)。
->
-> 2. 允许来自 IP 地址的入站流量。
->
->    * NSG：允许端口 443 来自 Internet 的入站流量。
->    * UDR：将路由的“下一个跃点”类型设为 Internet。
+
+1. 查找包含虚拟网络的位置的 IP 地址。 若要获取按位置划分的所需 IP 列表，请参阅[所需 IP 地址](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)。
+
+2. 对于步骤 1 中确定的 IP 地址，允许该 IP 地址的入站流量。
+
+   * 如果使用 NSG：在端口 443上允许该 IP地址的入站流量。
+   * 如果使用 UDR：为该 IP 地址将路由的下一个跃点类型设置为“Internet”。
 
 有关使用 Azure PowerShell 或 Azure CLI 创建 NSG 的示例，请参阅[使用 Azure 虚拟网络扩展 HDInsight](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg) 文档。
 

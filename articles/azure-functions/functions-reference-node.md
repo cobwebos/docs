@@ -1,26 +1,26 @@
 ---
-title: "Azure Functions JavaScript 开发人员参考 | Microsoft 文档"
-description: "了解如何使用 JavaScript 开发函数。"
+title: Azure Functions JavaScript 开发人员参考 | Microsoft 文档
+description: 了解如何使用 JavaScript 开发函数。
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"
+editor: ''
+tags: ''
+keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.service: functions
 ms.devlang: nodejs
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 03/04/2018
 ms.author: tdykstra
-ms.openlocfilehash: f613e480f6699b323c18402f01873e565768f10f
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 0a436a929696f759cdbe9807faa2a15902b7ce6d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -265,7 +265,15 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
     ```  
 
 ## <a name="node-version-and-package-management"></a>节点版本和包管理
-当前节点版本被锁定为 `6.5.0`。 我们正在调查添加对更多版本的支持，并使其可配置。
+
+下表显示了 Functions 运行时的每个主要版本使用的 Node.js 版本：
+
+| Functions 版本 | Node.js 版本 | 
+|---|---|
+| 1.x | 6.11.2（运行时锁定） |
+| 2.x  |>=8.4.0，建议使用当前的 LTS 8.9.4。 使用 WEBSITE_DEFAULT_NODE_VERSION [应用设置](functions-how-to-use-azure-function-app-settings.md#settings)来设置版本。|
+
+可以通过打印任何函数的 `process.version` 来查看运行时正在使用的当前版本。
 
 可以通过以下步骤在 Function App 中包括包： 
 
@@ -273,7 +281,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 2. 单击“调试控制台”，选择“CMD”。 > 
 
-3. 转到 `D:\home\site\wwwroot`，并将 package.json 文件拖到页面上半部分中的 **wwwroot** 文件夹上。  
+3. 转到 `D:\home\site\wwwroot`，然后将 package.json 文件拖到页面上半部分中的 **wwwroot** 文件夹上。  
     还可采用其他方式将文件上传到 Function App。 有关详细信息，请参阅[如何更新 Function App 文件](functions-reference.md#fileupdate)。 
 
 4. 上传 package.json 文件后，在 **Kudu 远程执行控制台**中运行 `npm install` 命令。  

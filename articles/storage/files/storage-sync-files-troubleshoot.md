@@ -1,8 +1,8 @@
 ---
-title: "对 Azure 文件同步（预览版）进行故障排除 | Microsoft Docs"
-description: "对 Azure 文件同步的常见问题进行故障排除"
+title: 对 Azure 文件同步（预览版）进行故障排除 | Microsoft Docs
+description: 对 Azure 文件同步的常见问题进行故障排除
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 5558a69756075dd83f890d5e9e00c9944d841591
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4f022bf227c8d460d014ea9bbc5dc426f0ada511
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>对 Azure 文件同步（预览版）进行故障排除
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -51,7 +51,7 @@ StorageSyncAgent.msi /l*v Installer.log
 要解决此问题，请将 PDC 角色转移到另一运行 Windows Server 2012R2 或更高版本的域控制器，然后安装同步。
 
 <a id="agent-installation-websitename-failure"></a>**代理安装失败，并出现以下错误：“存储同步代理向导提前结束”**  
-如果更改了 IIS 网站的默认名称，则可能出现此问题。 要解决此问题，请将 IIS 默认网站重命名为“默认 Web 站点”，然后重试安装。 代理的未来更新中会修复此问题。 
+如果更改了 IIS 网站的默认名称，则版本 1.x 代理可能出现此问题。 若要解决此问题，请使用 2.0.11+ 代理。
 
 <a id="server-registration-missing"></a>**服务器未在 Azure 门户中的“已注册的服务器”下列出**  
 如果对于存储同步服务，服务器未在“已注册的服务器”下列出：

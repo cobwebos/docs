@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Site Recovery 将 AWS 中的 VM 迁移到 Azure | Microsoft Docs"
-description: "本文介绍如何使用 Azure Site Recovery 将 Amazon Web Services (AWS) 中运行的 Windows VM 迁移到 Azure。"
+title: 使用 Azure Site Recovery 将 AWS 中的 VM 迁移到 Azure | Microsoft Docs
+description: 本文介绍如何使用 Azure Site Recovery 将 Amazon Web Services (AWS) 中运行的 Windows VM 迁移到 Azure。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -133,7 +133,7 @@ ms.lasthandoff: 02/28/2018
 
 6. 在 VM 上运行 **cspsconfigtool.exe**，以在配置服务器上创建一个或多个管理帐户。 请确保管理帐户在要迁移的 EC2 实例上具有管理员权限。
 
-完成配置服务器设置后，请返回门户，选择刚刚为“配置服务器”创建的服务器，然后单击“确定”* 前往步骤 3“目标准备”。
+完成配置服务器设置后，请返回门户，选择刚刚为 **配置服务器** 创建的服务器，然后单击 *确定** 前往步骤 3“目标准备”。
 
 ### <a name="3-target-prepare"></a>3 目标准备
 

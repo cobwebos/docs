@@ -1,11 +1,11 @@
 ---
-title: "测试应用商店的 VM 产品/服务 | Microsoft Docs"
-description: "了解如何测试 Azure 应用商店的 VM 映像。"
+title: 测试 Marketplace 的 VM 产品/服务 | Microsoft Docs
+description: 了解如何测试 Azure Marketplace 的 VM 映像。
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 7a41c3c6-625c-4478-b804-e124dee89040
 ms.service: marketplace
 ms.devlang: na
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
-ms.author: hascipio
-ms.openlocfilehash: 26f856059b381be91b9cdd1f98a11dc90813c0c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 7f225f113dd465f79d5d195b59a809fe3be6a1f8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>在过渡环境中测试 Azure 应用商店的 VM 产品/服务
-过渡表示将 SKU 部署到专用“沙盒”，可在其中测试和验证它的功能，然后再部署到应用商店。 SKU 出现在过渡环境中，就像客户已对它进行部署一样。 VM 映像必须经过认证才能推送到过渡环境。
+# <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>在过渡环境中测试 Azure Marketplace 的 VM 产品/服务
+过渡表示将 SKU 部署到专用“沙盒”，可在其中测试和验证它的功能，然后再部署到 Marketplace。 SKU 出现在过渡环境中，就像客户已对它进行部署一样。 VM 映像必须经过认证才能推送到过渡环境。
 
 ## <a name="step-1-push-your-offer-to-staging"></a>步骤 1：将产品/服务推送到过渡环境
 1. 在“发布”选项卡上，单击“推送到过渡环境”。
@@ -44,7 +44,7 @@ ms.lasthandoff: 10/11/2017
 1. 使用上一步中列出的 Azure 订阅之一，登录到 [Azure 预览门户](https://portal.azure.com)。
 2. 找到产品/服务并验证 VM 映像点：
    
-   * 请确保市场营销内容正确显示在应用商店中。
+   * 请确保市场营销内容正确显示在 Marketplace 中。
    * VM 映像的端到端部署。
      
       ![img-map-portal](media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg)
@@ -60,5 +60,5 @@ ms.lasthandoff: 10/11/2017
 现在产品/服务“已暂存”并且已测试其功能和市场营销内容，可以继续到最后发布阶段步骤 4：[将产品/服务部署到 Marketplace](marketplace-publishing-push-to-production.md)。
 
 ## <a name="see-also"></a>另请参阅
-* [入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)
+* [入门：如何将产品/服务发布到 Azure Marketplace](marketplace-publishing-getting-started.md)
 

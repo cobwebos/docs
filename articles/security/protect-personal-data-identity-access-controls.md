@@ -1,29 +1,29 @@
 ---
-title: "使用 Azure 标识和访问控制保护个人数据 | Microsoft 文档"
-description: "使用 Azure 标识和访问控制来帮助保护个人数据"
+title: 使用 Azure 标识和访问控制保护个人数据 | Microsoft Docs
+description: Azure 标识和访问控制有助于保护个人数据，以及遵守一般数据保护条例 (GDPR)
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/13/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: e6de9526a1a72cfc81caca51207e000f8b3673cc
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.custom: ''
+ms.openlocfilehash: fd3beb57cda4993f922fb935263b0e962b38da6a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory 和多重身份验证：使用标识和访问控制保护个人数据
 
-本文提供使用 Azure Active Directory 和多重身份验证安全功能与服务保护个人数据时可以使用的信息和过程。
+本文提供使用 Azure Active Directory 和多重身份验证安全功能与服务保护个人数据时可以使用的信息和过程。 本文中包含的信息有助于遵守一般数据保护条例 (GDPR)。
 
 ## <a name="scenario"></a>方案
 

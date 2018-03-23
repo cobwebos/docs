@@ -1,12 +1,12 @@
 ---
-title: "Azure 备份故障排除：客户代理状态不可用 | Microsoft Docs"
-description: "与代理、扩展和磁盘相关的 Azure 备份失败的症状、原因及解决方法。"
+title: Azure 备份故障排除：客户代理状态不可用 | Microsoft Docs
+description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、原因及解决方法。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
-keywords: "Azure 备份；VM 代理；网络连接；"
+editor: ''
+keywords: Azure 备份；VM 代理；网络连接；
 ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: c205023b025a477ee05ddcbfc536573f31426167
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: a18718aba3ef7f70caa541c6eb56311082d02bed
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -30,9 +30,6 @@ ms.lasthandoff: 02/01/2018
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>VM 代理无法与 Azure 备份进行通信
 
 错误消息：“VM 代理无法与 Azure 备份进行通信”
-
-> [!NOTE]
-> 如果 Azure Linux VM 备份从 2018 年 1 月 4 日开始失败，请在 VM 中运行以下命令，然后重试备份：`sudo rm -f /var/lib/waagent/*.[0-9]*.xml`
 
 注册并计划备份服务的 VM 后，备份将通过与 VM 代理进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：
 
@@ -58,9 +55,8 @@ ms.lasthandoff: 02/01/2018
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
 **原因 1：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 2：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
-**原因 3：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**  
-**原因 4：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**原因 5：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**原因 3：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**原因 4：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>由于 VM 代理无响应，备份失败
 
@@ -168,7 +164,7 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 如果我们需要 waagent 的详细日志记录，请执行以下步骤：
 
 1. 在 /etc/waagent.conf 文件中，找到以下行：**Enable verbose logging (y|n)**
-2. 将 Logs.Verbose 值从 n 更改为 *y*。
+2. 将 **Logs.Verbose** 值从 n 更改为 y。
 3. 保存更改，然后遵循本部分前面所述的步骤重启 waagent。
 
 ###  <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>无法检索快照状态或无法创建快照
@@ -179,7 +175,6 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
 | 原因 | 解决方案 |
 | --- | --- |
-| VM 具有已配置的 SQL Server 备份。 | 默认情况下，VM 备份在 Windows VM 上运行卷影复制服务 (VSS) 完整备份。 在运行基于 SQL Server 的服务器并配置了 SQL Server 备份的 VM 上，快照执行可能发生延迟。<br><br>如果由于快照问题而导致备份失败，请设置以下注册表项：<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
 | 由于在远程桌面协议 (RDP) 中关闭了 VM，VM 状态报告不正确。 | 如果在 RDP 中关闭了 VM，请检查门户，确定 VM 状态是否正确。 如果不正确，请在门户中使用 VM 仪表板上的“关闭”选项来关闭 VM。 |
 | VM 无法从 DHCP 获取主机或结构地址。 | 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。 如果 VM 无法从 DHCP 响应 245 获取主机或结构地址，则无法下载或运行任何扩展。 如果需要静态专用 IP 地址，请通过平台配置该 IP。 VM 内的 DHCP 选项应保持启用。 有关详细信息，请参阅[设置静态内部专用 IP](../virtual-network/virtual-networks-reserved-private-ip.md)。 |
 
@@ -188,12 +183,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
 #### <a name="solution"></a>解决方案
 
-**对于 Windows 来宾：**确认 iaasvmprovider 服务已启用，并且启动类型为自动。 如果该服务的配置并非如此，请启用该服务以确定下一次备份是否成功。
-
-**对于 Linux 来宾：**确认 VMSnapshot for Linux（备份使用的扩展）的最新版本是 1.0.91.0。<br>
-
-
-如果还是无法更新或加载备份扩展，可以卸载扩展来强制重新加载 VMSnapshot 扩展。 下一次备份尝试将重新加载扩展。
+卸载扩展以强制重新加载 VMSnapshot 扩展。 下一次备份尝试将重新加载扩展。
 
 卸载扩展：
 

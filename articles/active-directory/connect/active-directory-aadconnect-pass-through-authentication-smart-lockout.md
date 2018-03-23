@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect：传递身份验证 - 智能锁定 | Microsoft Docs"
-description: "本文介绍 Azure Active Directory (Azure AD) 传递身份验证如何保护本地帐户免受云中的暴力密码搜索攻击"
+title: Azure AD Connect：传递身份验证 - 智能锁定 | Microsoft Docs
+description: 本文介绍 Azure Active Directory (Azure AD) 传递身份验证如何保护本地帐户免受云中的暴力密码搜索攻击
 services: active-directory
-keywords: "Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录"
-documentationcenter: 
+keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: fc46fe1d68538757ba5a8c5aa1acb4b51f8a171b
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 9477d47824213d7ea15bcf6c6b615a220bae2e48
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Azure Active Directory 传递身份验证：智能锁定
 
 ## <a name="overview"></a>概述
 
-Azure Active Directory (Azure AD) 可防止暴力密码搜索攻击，并防止在 Office 365 和 SaaS 应用程序中锁定正版用户。 此功能称为“智能锁定”，使用传递身份验证方法登录时支持此功能。 默认为所有租户启用“智能锁定”，该功能可持续保护用户帐户。
+Azure Active Directory (Azure AD) 可防止暴力密码搜索攻击，并防止在 Office 365 和 SaaS 应用程序中锁定正版用户。 此功能称为“智能锁定”，使用传递身份验证方法登录时支持此功能。 默认为所有租户启用“智能锁定”，而不仅是使用传递身份验证的租户，该功能可持续保护用户帐户。
 
 智能锁定会持续跟踪失败的登录尝试。 在达到某个锁定阈值后，它将启动“锁定持续时间”。 在锁定持续时间内，智能锁定将拒绝来自攻击者的任何登录尝试。 如果攻击继续，则在锁定持续时间结束后发生的后续失败登录尝试将导致更长的锁定持续时间。
 

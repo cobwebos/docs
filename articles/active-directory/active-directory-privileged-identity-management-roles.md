@@ -1,25 +1,25 @@
 ---
-title: "Azure AD Privileged Identity Management 中的角色 | Microsoft 文档"
-description: "了解可以在 Azure Privileged Identity Management 扩展中针对特权标识使用哪些角色。"
+title: Azure AD Privileged Identity Management 中的角色 | Microsoft 文档
+description: 了解可以在 Azure Privileged Identity Management 扩展中针对特权标识使用哪些角色。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ac812ccc-cf4e-4ac2-b981-69598056c9ed
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/31/2017
+ms.date: 03/04/2018
 ms.author: billmath
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: bba26a947607a3679d191a2cd8164d27f61e2ba1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 500fb11627fa0ce7ac838c650a582dd9d49b598c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Azure Active Directory PIM 中的不同管理角色
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -50,7 +50,7 @@ Azure AD Privileged Identity Management (PIM) 可以管理针对 Azure AD 中具
   > 
 * **用户管理管理员**：重置密码、监视服务运行状况，以及管理用户帐户、用户组和服务请求。 用户管理管理员无法删除全局管理员、创建其他管理员角色，或重置计费管理员、全局管理员和服务管理员的密码。
 * **Exchange 管理员**：具有通过 Exchange 管理中心 (EAC) 访问 Exchange Online 的管理权限，可在 Exchange Online 中执行几乎所有的任务。
-* **SharePoint 管理员**：具有通过 SharePoint Online 管理中心访问 SharePoint Online 的管理权限，可在 SharePoint Online 中执行几乎所有的任务。
+* **SharePoint 管理员（预览）**：具有通过 SharePoint Online 管理中心访问 SharePoint Online 的管理权限，可在 SharePoint Online 中执行几乎所有的任务。 此角色目前处于预览状态。 在 PIM 中激活后，符合条件的用户在 SharePoint 中使用此角色可能会发生延迟。
 * **Skype for Business 管理员**：具有通过 Skype for Business 管理中心访问 Skype for Business 的管理权限，可在 Skype for Business Online 中执行几乎所有的任务。
 
 有关详细信息，请参阅文章[在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)以及[在 Office 365 中分配管理员角色](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504)。

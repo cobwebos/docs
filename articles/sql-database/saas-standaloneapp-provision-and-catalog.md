@@ -1,26 +1,20 @@
 ---
-title: "多租户 SaaS 教程 - Azure SQL 数据库 | Microsoft 文档"
-description: "使用独立应用程序模式预配和编录新租户"
-keywords: "sql 数据库教程"
+title: 多租户 SaaS 教程 - Azure SQL 数据库 | Microsoft 文档
+description: 使用独立应用程序模式预配和编录新租户
+keywords: sql 数据库教程
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: SaaS
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: billgib
-ms.openlocfilehash: dd43ede94d6f219f3b551091fc6e4b59f56386d1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 148a50d07d4cea7adda493b283766d22d26b81e2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>使用“每租户一个应用程序”的 SaaS 模式预配和编录新租户
 

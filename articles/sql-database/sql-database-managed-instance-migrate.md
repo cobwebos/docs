@@ -1,21 +1,21 @@
 ---
-title: "将 SQL Server 实例迁移到 Azure SQL 数据库托管实例 | Microsoft Docs"
-description: "了解如何将 SQL Server 实例迁移到 Azure SQL 数据库托管实例。"
-keywords: "数据库迁移, SQL Server 数据库迁移, 数据库迁移工具, 迁移数据库, 迁移 SQL 数据库"
+title: 将 SQL Server 实例迁移到 Azure SQL 数据库托管实例 | Microsoft Docs
+description: 了解如何将 SQL Server 实例迁移到 Azure SQL 数据库托管实例。
+keywords: 数据库迁移, SQL Server 数据库迁移, 数据库迁移工具, 迁移数据库, 迁移 SQL 数据库
 services: sql-database
 author: bonova
 ms.reviewer: carlrab
-manager: cguyer
+manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: bonova
-ms.openlocfilehash: 2ff8c6cad7f9c63fe6403fbf292fa3eab3373aed
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: fd8225b2c5c4f897bbf3d7e1b2ba7659f564409d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 

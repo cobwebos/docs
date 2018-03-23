@@ -1,7 +1,7 @@
 ---
-title: "SQL 数据库多租户应用示例指南 - Wingtip SaaS | Microsoft Docs"
-description: "提供有关安装和运行使用 Azure SQL 数据库（Wingtip Tickets SaaS 示例）的示例多租户应用程序的步骤和指南。"
-keywords: "sql 数据库教程"
+title: SQL 数据库多租户应用示例指南 - Wingtip SaaS | Microsoft Docs
+description: 提供有关安装和运行使用 Azure SQL 数据库（Wingtip Tickets SaaS 示例）的示例多租户应用程序的步骤和指南。
+keywords: sql 数据库教程
 services: sql-database
 author: MightyPen
 manager: craigg
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: genemi
-ms.openlocfilehash: ebf1c4948816746fa02b867d1ea66afc64b882b0
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 13ac12377887684143d32d08e4bd5de107183105
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>使用 Wingtip Tickets 示例 SaaS 应用的一般指南
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/22/2017
 3. 单击“下载 zip”并保存文件。
 4. 右键单击 zip 文件并选择“属性”。 zip 文件名与存储库名称对应。 （例如： WingtipTicketsSaaS-DbPerTenant-master.zip）
 5. 在“常规”选项卡上，选择“取消阻止”。
-6. 单击 **“确定”**。
+6. 单击“确定”。
 7. 解压缩文件。
 
 脚本位于 ..\\Learning Modules 文件夹中。

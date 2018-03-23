@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN 规则引擎匹配条件 | Microsoft Docs"
-description: "有关 Azure 内容交付网络规则引擎匹配条件的参考文档。"
+title: Azure CDN 规则引擎匹配条件 | Microsoft Docs
+description: 有关 Azure 内容交付网络规则引擎匹配条件的参考文档。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -737,7 +737,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
     
 - 可以指定多个 URL 路径，并使用单个空格分隔每个路径。
 
-   例如：/marketing/asset.* /sales/*.htm
+   例如： /marketing/asset.\* /sales/\*.htm
 
 - 将忽略 URL 中的查询字符串。
     
@@ -753,11 +753,11 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 值                   | 相对于    | 结果 
 ------------------------|----------------|-------
-*/test.html */test.php  | 根或源 | 针对任何文件夹中名为“test.html”或“test.php”的资产发出的请求匹配此模式。
+\*/test.html \*/test.php  | 根或源 | 针对任何文件夹中名为“test.html”或“test.php”的资产发出的请求匹配此模式。
 /80ABCD/origin/text/*   | 根           | 当请求的资产满足以下条件时匹配此模式： <br />- 该资产必须位于名为“origin”的客户来源位置。 <br />- 相对路径必须以名为“text”的文件夹开头。 即，请求的资产可以位于“text”文件夹中，或者位于该文件夹的某个递归子文件夹中。
 */css/* */js/*          | 根或源 | 包含 css 或 js 文件夹的所有 CDN 或边缘 CNAME URL 都匹配此模式。
 *.jpg *.gif *.png       | 根或源 | 以 .jpg、.gif 或 .png 结尾的所有 CDN 或边缘 CNAME URL 都匹配此模式。 指定此模式的一种替代方式是使用 [URL 路径扩展名匹配条件](#url-path-extension)。
-/images/* /media/*      | 源         | 相对路径以“images”或“media”文件夹开头的 CDN 或边缘 CNAME URL 匹配此模式。 <br />- CDN URL：http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/images/sales/event1.png<br />- 示例边缘 CNAME URL：http:\//cdn.mydomain.com/images/sales/event1.png
+/images/\* /media/\*      | 源         | 相对路径以“images”或“media”文件夹开头的 CDN 或边缘 CNAME URL 匹配此模式。 <br />- CDN URL：http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/images/sales/event1.png<br />- 示例边缘 CNAME URL：http:\//cdn.mydomain.com/images/sales/event1.png
 
 [返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
 

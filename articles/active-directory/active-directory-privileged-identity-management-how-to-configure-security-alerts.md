@@ -1,11 +1,11 @@
 ---
-title: "如何配置安全警报 | Microsoft 文档"
-description: "了解如何为 Azure Privileged Identity Management 扩展配置安全警报。"
+title: 如何配置安全警报 | Microsoft 文档
+description: 了解如何为 Azure Privileged Identity Management 扩展配置安全警报。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4e0c911a-36c6-42a0-8f79-a01c03d2d04f
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 52a03624b8e3841f559caef564712ff74a614365
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8037942cb3700f8e46d3be24b5fed04004333335
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中配置安全警报
 ## <a name="security-alerts"></a>安全警报
@@ -27,13 +27,18 @@ ms.lasthandoff: 12/11/2017
 
 ![PIM 仪表板安全警报 - 屏幕截图][1]
 
-| 警报 | 触发器 | 建议 |
-| --- | --- | --- |
-| **在 PIM 之外分配的角色** |管理员已在 PIM 接口之外永久分配给角色。 |审阅新角色分配 由于其他服务仅可以分配永久管理员，如有必要，将其更改为符合条件的分配。 |
-| **角色激活过于频繁** |在设置中允许的时间内，重新激活同一角色的次数过多。 |请与用户联系，了解他们为何激活该角色这么多次。 可能是时间限制太短，他们无法完成任务，也可能是他们使用脚本自动激活角色。 |
-| **角色无需多重身份验证进行激活** |存在未在设置中启用 MFA 的角色。 |对于大多数高特权角色，我们需要 MFA，但强烈建议为激活所有角色启用 MFA。 |
-| **管理员不使用其特权角色** |存在最近未激活其角色的符合条件的管理员。 |开始访问审阅，确定不再需要访问的用户。 |
-| **全局管理员过多** |存在的全局管理员数量多于建议数量。 |如果有大量全局管理员，用户获取的权限可能超出需求。 将用户移到较少特权的角色，或使某些用户符合角色条件，而非永久分配。 |
+| 警报 | Severity | 触发器 | 建议 |
+| --- | --- | --- | --- |
+| **在 PIM 之外分配的角色** |高 |用户已在 PIM 接口之外永久分配特权角色。 |检查列表中的用户，并取消他们从 PIM 以外分配到的特权角色。 |
+| **角色激活过于频繁** |中型 |在设置中允许的时间内，重新激活同一角色的次数过多。 |请与用户联系，了解他们为何激活该角色这么多次。 可能是时间限制太短，他们无法完成任务，也可能是他们使用脚本自动激活角色。 请确保用户角色的激活持续时间设置得足够长，以便他们能够执行任务。 |
+| **角色无需多重身份验证进行激活** |中型 |存在未在设置中启用 MFA 的角色。 |对于大多数高特权角色，我们需要 MFA，但强烈建议为激活所有角色启用 MFA。 |
+| **用户不使用其特权角色** |低 |存在最近未激活其角色的符合条件的管理员。 |开始访问审阅，确定不再需要访问的用户。 |
+| **全局管理员过多** |低 |存在的全局管理员数量多于建议数量。 |如果有大量全局管理员，用户获取的权限可能超出需求。 将用户移到较少特权的角色，或使某些用户符合角色条件，而非永久分配。 |
+
+### <a name="severity"></a>Severity
+* **高**：因策略冲突需要立即采取措施。 
+* **中**：不需要立即采取措施但有潜在的策略冲突。
+* **低**：不需要立即采取措施，但建议考虑可取的策略更改。
 
 ## <a name="configure-security-alert-settings"></a>配置安全警报设置
 可以在 PIM 中自定义某些安全警报，以处理环境和安全目标。 按照以下步骤访问设置边栏选项卡：

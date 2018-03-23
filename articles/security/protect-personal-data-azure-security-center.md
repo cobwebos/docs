@@ -1,29 +1,29 @@
 ---
-title: "使用 Azure 安全中心保护个人数据 | Microsoft Docs"
-description: "使用 Azure 安全中心保护个人数据"
+title: 使用 Azure 安全中心保护个人数据 | Microsoft Docs
+description: 使用安全中心保护个人数据。 这可在工作中用于遵守一般数据保护条例 (GDPR)
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 3a941389713a4d3dbffbbfe8a717409927d85c6d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 118752a030a1c300306aa3e05571bb9b624a2c20
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-from-breaches-and-attacks-azure-security-center"></a>防范个人数据遭受破解和攻击：Azure 安全中心
 
-本文帮助读者了解如何使用 Azure 安全中心来防范个人数据遭受破解和攻击。
+本文帮助读者了解如何使用 Azure 安全中心来防范个人数据遭受破解和攻击。 此处包含的信息可帮助你在工作中遵守一般数据保护条例 (GDPR)。
 
 ## <a name="scenario"></a>方案 
 

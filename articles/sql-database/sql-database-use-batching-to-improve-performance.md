@@ -1,25 +1,19 @@
 ---
-title: "如何使用批处理来改善 Azure SQL 数据库应用程序的性能"
-description: "本主题提供有关数据库批处理操作大幅改善 Azure SQL 数据库应用程序速度和缩放性的证据。 尽管这些批处理方法适用于任何 SQL Server 数据库，但本文将重点放在 Azure 上。"
+title: 如何使用批处理来改善 Azure SQL 数据库应用程序的性能
+description: 本主题提供有关数据库批处理操作大幅改善 Azure SQL 数据库应用程序速度和缩放性的证据。 尽管这些批处理方法适用于任何 SQL Server 数据库，但本文将重点放在 Azure 上。
 services: sql-database
-documentationcenter: na
 author: stevestein
-manager: jhubbard
-editor: 
-ms.assetid: 563862ca-c65a-46f6-975d-10df7ff6aa9c
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 07/12/2016
 ms.author: sstein
-ms.openlocfilehash: 8622bddc809c9d95f7acf359ff708d5ab31cf620
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 5c7846fdd8d6a7584cab2b4f3811151332171ba4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>如何使用批处理来改善 SQL 数据库应用程序的性能
 对 Azure SQL 数据库执行批处理操作可以大幅改善应用程序的性能和缩放性。 为了帮助你了解优点，本文的第一部分包含一些示例测试结果用于比较对 SQL 数据库发出的顺序请求和分批请求。 本文的余下部分介绍了帮助你在 Azure 应用程序中成功使用批处理的方法、方案和注意事项。
@@ -306,7 +300,7 @@ SQL 批量复制是另一种向目标数据库中插入大量数据的方法。 
 | 批大小 | 迭代 | 表值参数（毫秒） |
 | --- | --- | --- |
 | 1000 |1 |347 |
-| 500 |#N/A |355 |
+| 500 |2 |355 |
 | 100 |10 |465 |
 | 50 |20 |630 |
 

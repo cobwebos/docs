@@ -1,11 +1,11 @@
 ---
-title: "排查网络安全组问题 - 门户 | Microsoft 文档"
-description: "了解如何使用 Azure 门户在 Azure 资源管理器部署模型中排查网络安全组问题。"
+title: 排查网络安全组问题 - 门户 | Microsoft 文档
+description: 了解如何使用 Azure 门户在 Azure 资源管理器部署模型中排查网络安全组问题。
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 ms.openlocfilehash: 5998aa0e0b281ead859c24d792c3e175e3cca899
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>使用 Azure 门户排查网络安全组问题
 > [!div class="op_single_selector"]
-> * [在 Azure 应用服务中创建 Java Web 应用](virtual-network-nsg-troubleshoot-portal.md)
+> * [Azure 门户](virtual-network-nsg-troubleshoot-portal.md)
 > * [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
 > 
 > 
@@ -95,7 +95,7 @@ ms.lasthandoff: 02/21/2018
 ### <a name="nic"></a>查看网络接口的有效安全规则
 如果特定的 NIC 影响了 VM 流量流，可以完成以下步骤，从网络接口上下文查看 NIC 的完整有效规则列表：
 
-1. 登录到 Azure 门户网站 https://portal.azure.com。
+1. 登录到位于 https://portal.azure.com 的 Azure 门户。
 2. 单击“所有服务”，并在显示的列表中单击“网络接口”。
 3. 选择一个网络接口。 在下图中，已选择名为 *VM1-NIC1* 的 NIC。
    
@@ -112,7 +112,7 @@ ms.lasthandoff: 02/21/2018
 ## <a name="nsg"></a>查看网络安全组 (NSG) 的有效安全规则
 修改 NSG 规则时，可以查看在特定 VM 上添加规则产生的影响。 可以查看应用了给定 NSG 的所有 NIC 的完整有效安全规则列表，而无需从给定 NSG 的边栏选项卡切换上下文。 若要排查 NSG 中有效规则的问题，请完成以下步骤：
 
-1. 登录到 Azure 门户网站 https://portal.azure.com。
+1. 登录到位于 https://portal.azure.com 的 Azure 门户。
 2. 单击“所有服务”，并在显示的列表中单击“网络安全组”。
 3. 选择一个 NSG。 在下图中，已选择名为 VM1-nsg 的 NSG。
    

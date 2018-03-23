@@ -1,11 +1,11 @@
 ---
-title: "将经典虚拟网络连接到 Azure 资源管理器 VNet：门户 | Microsoft Docs"
-description: "使用 VPN 网关和门户在经典 VNet 和资源管理器 VNet 之间创建 VPN 连接"
+title: 将经典虚拟网络连接到 Azure 资源管理器 VNet：门户 | Microsoft Docs
+description: 使用 VPN 网关和门户在经典 VNet 和资源管理器 VNet 之间创建 VPN 连接
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 5a90498c-4520-4bd3-a833-ad85924ecaf9
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: 40a380a04088e948a7e81625963a5915980764c3
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 90a3c51fa9acbcd9701d4c2b135688ef5148bbf8
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>通过门户从不同部署模型中连接虚拟网络
 
@@ -149,7 +149,7 @@ SKU = VpnGw1 <br>
 * 地址范围 = 192.168.1.0/24 <br>
 
 
-如果还没有资源管理器 VNet 并且运行这些步骤进行练习，则可以使用[此文章](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)以及上文中的示例设置值创建 VNet。
+如果还没有资源管理器 VNet 并且运行这些步骤进行练习，则可以使用[创建虚拟网络](../virtual-network/quick-create-portal.md)中的步骤以及示例设置值创建虚拟网络。
 
 ### <a name="2-create-a-gateway-subnet"></a>2.创建网关子网
 

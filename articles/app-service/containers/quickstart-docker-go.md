@@ -1,7 +1,7 @@
 ---
-title: "在用于容器的 Azure Web 应用中部署 Docker/Go 应用"
-description: "如何将运行 Go 应用程序的 Docker 映像部署到用于容器的 Azure Web 应用。"
-keywords: "azure 应用服务, web 应用, go, docker, 容器"
+title: 在用于容器的 Azure Web 应用中部署 Docker/Go 应用
+description: 如何将运行 Go 应用程序的 Docker 映像部署到用于容器的 Azure Web 应用。
+keywords: azure 应用服务, web 应用, go, docker, 容器
 services: app-service
 author: msangapu
 manager: cfowler
@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 01/17/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 710e0fc898dcd46816bfe52501d7db456d9756f2
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: b8fb814aa56465f9dce51de29de37f93213bf58f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-a-dockergo-web-app-in-web-app-for-containers"></a>在用于容器的 Web 应用中部署 Docker/Go Web 应用
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/23/2018
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group.md)]
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 

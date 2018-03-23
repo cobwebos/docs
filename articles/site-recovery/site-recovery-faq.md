@@ -1,20 +1,20 @@
 ---
-title: "Azure Site Recovery：常见问题解答 | Microsoft 文档"
-description: "本文讨论了有关 Azure Site Recovery 的常见问题。"
+title: Azure Site Recovery：常见问题解答 | Microsoft 文档
+description: 本文讨论了有关 Azure Site Recovery 的常见问题。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: 1a7d57c1f1f84e7ce3b931c2911ae7394b066f8d
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 5d1010a65a112b97124a8d7d46caceb3d61e2cac
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery：常见问题 (FAQ)
+# <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery：常见问题解答 (FAQ)
 本文包含有关 Azure Site Recovery 的常见问题。 如果在阅读本文后有任何问题，请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)上发布问题。
 
 ## <a name="general"></a>常规
@@ -55,14 +55,14 @@ ms.lasthandoff: 02/22/2018
 是的。 可以将 VMM 云中 Hyper-V 服务器上的 VM 复制到 Azure，或者在同一台服务器上的 VMM 云之间进行复制。 对于本地到本地复制，我们建议在主站点与辅助站点中都部署一个 VMM 服务器。  
 
 ### <a name="what-physical-servers-can-i-protect"></a>我可以保护哪些物理服务器？
-可以将运行 Windows 或 Linux 的物理服务器复制到 Azure 或辅助站点。 [了解](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)操作系统要求。  无论是将物理服务器复制到 Azure 还是辅助站点，都需要满足相同的要求。
+可以将运行 Windows 或 Linux 的物理服务器复制到 Azure 或辅助站点。 了解[复制到 Azure](vmware-physical-azure-support-matrix.md#replicated-machines) 和[复制到辅助站点](vmware-physical-secondary-support-matrix.md#replicated-vm-support)的相关要求。
 
 
 请注意，如果本地服务器关闭，物理服务器会在 Azure 中以 VM 的形式运行。 当前不支持故障回复到本地物理服务器。 对于作为物理机进行保护的计算机，只能故障回复到 VMware 虚拟机。
 
 ### <a name="what-vmware-vms-can-i-protect"></a>我可以保护哪些 VMware VM？
 
-若要保护 VMware VM，则需要 vSphere 虚拟机监控程序和运行 VMware 工具的虚拟机。 我们还建议使用 VMware vCenter 服务器托管虚拟机监控程序。 [了解](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)有关复制 VMware 服务器和 VM 到 Azure 或辅助站点的精确要求。
+若要保护 VMware VM，则需要 vSphere 虚拟机监控程序和运行 VMware 工具的虚拟机。 我们还建议使用 VMware vCenter 服务器托管虚拟机监控程序。 了解[复制到 Azure](vmware-physical-azure-support-matrix.md#replicated-machines) 或[复制到辅助站点](vmware-physical-secondary-support-matrix.md#replicated-vm-support)的相关要求的详细信息。
 
 
 ### <a name="can-i-manage-disaster-recovery-for-my-branch-offices-with-site-recovery"></a>我可以使用站点恢复来管理分支机构的灾难恢复吗？
@@ -93,9 +93,9 @@ Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户�
 能，可以使用 ExpressRoute 将虚拟机复制到 Azure。 Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户。 需要设置[公共对等互连](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)将 ExpressRoute 用于 Site Recovery 复制。 将虚拟机故障转移到 Azure 虚拟网络以后，即可使用通过 Azure 虚拟网络设置的[专用对等互连](../expressroute/expressroute-circuit-peerings.md#azure-private-peering)对其进行访问。
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>将虚拟机复制到 Azure 需要满足任何先决条件吗？
-要复制到 Azure 的虚拟机应符合 [Azure 要求](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)。
+要复制到 Azure 的 [VMware VM](vmware-physical-azure-support-matrix.md#replicated-machines) 和 [Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) 应符合 Azure 要求。
 
-Azure 用户帐户需要具有某些[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)，才能启用新的虚拟机到 Azure 的复制。
+Azure 用户帐户需要具有某些[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)，才能将新的虚拟机复制到 Azure。
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>我可以将 Hyper-V 第 2 代虚拟机复制到 Azure 吗？
 是的。 站点恢复在故障转移过程中将从第 2 代转换成第 1 代。 在故障回复时，计算机将转换回到第 2 代。 [了解详细信息](http://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。
@@ -106,8 +106,9 @@ Azure 用户帐户需要具有某些[权限](site-recovery-role-based-linked-acc
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>是否可以使用 SDK 自动化 Site Recovery 方案？
 是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将站点恢复工作流自动化。 当前支持的使用 PowerShell 部署站点恢复的方案：
 
-* [将 VMM 云中的 Hyper-V VM 复制到 Azure PowerShell Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
-* [将 Hyper-V VM 复制（不使用 VMM）到 Azure PowerShell Resource Manager](site-recovery-deploy-with-powershell-resource-manager.md)
+* [将 VMM 云中的 Hyper-V VM 复制到 Azure PowerShell Resource Manager](hyper-v-vmm-powershell-resource-manager.md)
+* [将 Hyper-V VM 复制（不使用 VMM）到 Azure PowerShell Resource Manager](hyper-v-azure-powershell-resource-manager.md)
+* [使用 PowerShell 资源管理器将 VMware 复制到 Azure](vmware-azure-disaster-recovery-powershell.md)
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-do-i-need"></a>如果要复制到 Azure，我需要哪种存储帐户？
 需要 LRS 或 GRS 存储帐户。 建议使用 GRS，以便在发生区域性故障或无法恢复主要区域时，能够复原数据。 该帐户必须位于与恢复服务保管库相同的区域中。 在 Azure 门户中部署 Site Recovery 时，支持将高级存储用于 VMware VM、Hyper-V VM 和物理服务器复制。
@@ -123,7 +124,7 @@ Azure 用户帐户需要具有某些[权限](site-recovery-role-based-linked-acc
 不支持此操作。 请在[反馈论坛](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)中请求此功能。
 
 ### <a name="can-i-exclude-specific-disks-from-replication"></a>可以从复制中排除特定的磁盘吗？
-使用 Azure 门户将 [VMware VM 和 Hyper-V VM 复制](site-recovery-exclude-disk.md)到 Azure 时支持此操作。
+使用 Azure 门户将 VMware VM 和 Hyper-V VM 复制到 Azure 时支持此操作。
 
 ### <a name="can-i-replicate-virtual-machines-with-dynamic-disks"></a>可以使用动态磁盘来复制虚拟机吗？
 复制 Hyper-V 虚拟机时，支持使用动态磁盘。 将 VMware VM 和物理计算机复制到 Azure 时也支持使用动态磁盘。 操作系统磁盘必须为基本磁盘。
@@ -162,7 +163,7 @@ Azure 具有复原能力。 站点恢复已经能够根据需要故障转移到�
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-failover-back-to-a-different-host"></a>如果我的本地主机未响应或崩溃，我是否可以故障转移回到另一个主机？
 是，可以使用备用位置恢复从 Azure 故障回复到另一个主机。 有关这些选项的详细信息，请参阅针对 VMware 和 Hyper-V 虚拟机的以下链接。
 
-* [针对 VMware 虚拟机](concepts-types-of-failback.md#alternate-location-recovery-alr)
+* [对于 VMware 虚拟机](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [针对 Hyper-V 虚拟机](hyper-v-azure-failback.md#perform-failback)
 
 ## <a name="service-providers"></a>服务提供商

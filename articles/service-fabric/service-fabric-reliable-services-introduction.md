@@ -1,6 +1,6 @@
 ---
-title: "Service Fabric Reliable Service 编程模型概述 | Microsoft 文档"
-description: "了解 Service Fabric 的 Reliable Service 编程模型，并开始编写自己的服务。"
+title: Service Fabric Reliable Service 编程模型概述 | Microsoft 文档
+description: 了解 Service Fabric 的 Reliable Service 编程模型，并开始编写自己的服务。
 services: Service-Fabric
 documentationcenter: .net
 author: masnider
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider;
-ms.openlocfilehash: cf647c078728c9fbe357fea5bef4aa6dfb86c975
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1cbc116a8d595cfea0e87cd17b556e005f276774
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="reliable-services-overview"></a>Reliable Services 概述
 Azure Service Fabric 可简化无状态和有状态 Reliable Services 的编写与管理。 本主题的内容：
@@ -34,7 +34,7 @@ Service Fabric 通过 [Service Fabric 应用程序管理](service-fabric-deploy-
 ## <a name="what-are-reliable-services"></a>什么是 Reliable Services？
 Reliable Services 提供简单且功能强大的顶级编程模型，以帮助你表达对应用程序至关重要的内容。 借助 Reliable Services 编程模型，可以：
 
-* 访问其余的 Service Fabric 编程 API。 与建模为[来宾可执行文件](service-fabric-deploy-existing-app.md)的 Service Fabric Services 不同，Reliable Services 往往直接使用其余的 Service Fabric API。 这样，服务便可以：
+* 访问其余的 Service Fabric 编程 API。 与建模为[来宾可执行文件](service-fabric-guest-executables-introduction.md)的 Service Fabric Services 不同，Reliable Services 往往直接使用其余的 Service Fabric API。 这样，服务便可以：
   * 查询系统
   * 报告群集中实体的运行状况
   * 接收有关配置和代码更改的通知

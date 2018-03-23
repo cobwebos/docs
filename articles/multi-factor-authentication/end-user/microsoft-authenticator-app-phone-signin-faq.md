@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Authenticator 手机登录 - Azure 和 Microsoft 帐户 | Microsoft Docs"
-description: "使用手机登录 Microsoft 帐户，而不是键入密码。 本文提供有关此功能的常见问题解答。"
+title: Microsoft Authenticator 手机登录 - Azure 和 Microsoft 帐户 | Microsoft Docs
+description: 使用手机登录 Microsoft 帐户，而不是键入密码。 本文提供有关此功能的常见问题解答。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
 ms.openlocfilehash: 86cf6ba2f2ec86a609b4ec60cc143b07d9e542b3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>使用手机（而不是密码）登录
 
@@ -72,7 +72,7 @@ iOS 和 Android 设备提供此功能，此功能适用于 Microsoft 个人帐�
 
 ### <a name="what-if-i-lose-my-phone-or-dont-have-it-with-me-how-can-i-access-my-account"></a>如果手机遗失或未随身携带，应如何访问我的帐户？  
 
-可以单击登录页中的“改用密码”，切换回使用密码登录。 请记住，如果使用双重验证，则仍需要第二种方法来验证登录。 因此，强烈建议确保帐户具有最新的额外安全信息。 可在 https://account.live.com/proofs/manage 管理安全信息。
+可以单击登录页中的“改用密码”，切换回使用密码登录。 请记住，如果使用双重验证，则仍需要第二种方法来验证登录。 因此，强烈建议确保帐户具有最新的额外安全信息。 可以在 https://account.live.com/proofs/manage 管理安全信息。
  
 ### <a name="how-do-i-stop-using-this-feature-and-go-back-to-entering-my-password"></a>如何停用此功能，并切换回通过输入密码登录？
 

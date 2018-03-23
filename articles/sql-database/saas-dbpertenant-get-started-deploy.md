@@ -1,26 +1,20 @@
 ---
-title: "租户各有数据库 SaaS 教程 - Azure SQL 数据库 | Microsoft 文档"
-description: "部署和浏览 Wingtip Tickets SaaS 多租户应用程序，该应用程序使用 Azure SQL 数据库演示“每个租户各有数据库”和其他 SaaS 模式。"
-keywords: "sql 数据库教程"
+title: 租户各有数据库 SaaS 教程 - Azure SQL 数据库 | Microsoft 文档
+description: 部署和浏览 Wingtip Tickets SaaS 多租户应用程序，该应用程序使用 Azure SQL 数据库演示“每个租户各有数据库”和其他 SaaS 模式。
+keywords: sql 数据库教程
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: genemi
-ms.openlocfilehash: cbe8a04abbf2dada7cc43e57e823c3a41bf83fe7
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8aa4c8691093779bd8febee80fca88efad93dc00
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-and-explore-a-multi-tenant-saas-application-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>部署和探索多租户 SaaS 应用程序，该应用程序通过“每个租户各有数据库”模式使用 Azure SQL 数据库
 
@@ -53,7 +47,7 @@ ms.lasthandoff: 02/22/2018
 #### <a name="plan-the-names"></a>对名称进行计划
 
 通过执行本部分中的步骤，提供用户值，用于确保资源名称为全局唯一，以及一个资源组的名称，该资源组包含部署应用时创建的所有资源。 如果一个人名叫 Ann Finley，则建议输入以下名称：
-- 用户：af1（首字母缩写加数字。如果是第二次部署应用，则使用不同的值，例如 af2。）
+- 用户：af1（首字母缩写加数字。如果是第二次部署应用，则使用不同的值，例如 af2。）*
 - 资源组：wingtip-dpt-af1（wingtip-dpt 指示这是“每租户一个数据库”应用*。追加用户名 af1 会将资源组名称与它包含的资源的名称相关联。）*
 
 现在请选择自己的名称，并将其写下来。 

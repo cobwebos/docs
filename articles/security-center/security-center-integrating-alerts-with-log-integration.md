@@ -1,24 +1,24 @@
 ---
-title: "集成 Azure 安全中心警报和 Azure 日志集成 | Microsoft Docs"
-description: "本文有助于开始集成安全中心警报和 Azure 日志集成。"
+title: 集成 Azure 安全中心警报和 Azure 日志集成 | Microsoft Docs
+description: 本文有助于开始集成安全中心警报和 Azure 日志集成。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: d2d088d3-d38d-47ff-a062-c78e0fd59226
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2017
-ms.author: terrylan
-ms.openlocfilehash: d13e5b87c446e587091551b22d80fe568d5d8093
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 03/13/2018
+ms.author: barclayn
+ms.openlocfilehash: 229f83d4d74837e506c30a0fd8c704da2b7dc12a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="integrating-azure-security-center-alerts-with-azure-log-integration"></a>集成 Azure 安全中心警报和 Azure 日志集成
 许多安全操作和事件响应团队依靠安全信息和事件管理 (SIEM) 解决方案作为会审和调查安全警报的起始点。 通过 Azure 日志集成，可将 Azure 安全中心警报与 SIEM 解决方案集成。
@@ -28,7 +28,7 @@ Azure 日志集成当前支持 HP ArcSight、Splunk 和 IBM QRadar。
 ## <a name="what-logs-can-i-integrate"></a>可以集成哪些日志？
 Azure 针对每个服务生成大量日志记录。 这些日志分类如下：
 
-* **控制/管理日志**，使 Azure Resource Manager 的 CREATE、UPDATE 和 DELETE 操作可见。 这些控件平面事件显示在 Azure 活动日志中
+* **控制/管理日志**，使 Azure 资源管理器的 CREATE、UPDATE 和 DELETE 操作可见。 这些控件平面事件显示在 Azure 活动日志中
 * **数据平面日志**，可让使用 Azure 资源时引发的事件可见。 Windows 事件日志是一个例子，可在其中从事件查看器的安全通道获取安全事件信息。 数据平面事件（由虚拟机或 Azure 服务生成）通过 Azure 诊断日志显示。
 
 Azure 日志集成当前支持以下集成：

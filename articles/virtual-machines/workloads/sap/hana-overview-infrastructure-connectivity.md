@@ -1,11 +1,11 @@
 ---
-title: "Azure 上的 SAP HANA（大型实例）的基础结构和连接 | Microsoft 文档"
-description: "配置所需的连接基础结构，以使用 Azure 上的 SAP HANA（大型实例）。"
+title: Azure 上的 SAP HANA（大型实例）的基础结构和连接 | Microsoft 文档
+description: 配置所需的连接基础结构，以使用 Azure 上的 SAP HANA（大型实例）。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a44fdbfb973d75c21aa87e9b9d0eea8fb2b3392
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: d94e491d12ac43a4d85a638c79bcd3b24a4bc0ef
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Azure 上的 SAP HANA（大型实例）的基础结构和连接 
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 11/01/2017
 >[!Note]
 >必须使用 Azure 资源管理器部署模型为 HANA 大型实例创建 Azure VNet。 HANA 大型实例解决方案不支持旧 Azure 部署模型（通常称为“经典部署模型”）。
 
-可以使用 Azure 门户、PowerShell、Azure 模板或 Azure CLI 创建 VNet（请参阅[使用 Azure 门户创建虚拟网络](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)）。 在以下示例中，我们将探讨通过 Azure 门户创建的 VNet。
+可以使用 Azure 门户、PowerShell、Azure 模板或 Azure CLI 创建 VNet（请参阅[使用 Azure 门户创建虚拟网络](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)）。 在以下示例中，我们将探讨通过 Azure 门户创建的 VNet。
 
 让我们分析通过 Azure 门户创建的 Azure VNet 的一些定义，并确定这些定义与我们列出的 IP 地址范围不同的定义关系如何。 我们所述的“地址空间”是指允许 Azure VNet 使用的地址空间。 此地址空间也是 VNet 用于 BGP 路由传播的地址范围。 可在以下位置看到**地址空间**：
 
@@ -250,7 +250,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $myConnectionName `
 
 在这种情况下，建议将新 IP 地址范围作为新范围添加到 VNet 地址空间，而不是生成新的聚合范围。 在任一情况下，都需要将此项更改提交给 Microsoft，以便在客户端中将该新 IP 地址范围连接到 HANA 大型实例单元。 可以发起 Azure 支持请求来添加新的 VNet 地址空间。 收到确认后，请执行后续步骤。
 
-若要通过 Azure 门户预览创建其他子网，请参阅[使用 Azure 门户预览版创建虚拟网络](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)一文；若要使用 PowerShell，请参阅[使用 PowerShell 创建虚拟网络](../../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+若要通过 Azure 门户预览创建其他子网，请参阅[使用 Azure 门户预览版创建虚拟网络](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)一文；若要使用 PowerShell，请参阅[使用 PowerShell 创建虚拟网络](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)。
 
 ## <a name="adding-vnets"></a>添加 VNet
 
@@ -277,15 +277,13 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $myConnectionName `
 
 若要删除 VNet 子网，可以使用 Azure 门户、PowerShell 或 CLI。 如果 Azure VNet IP 地址范围/Azure VNet 地址空间在聚合范围内，则不需要与 Microsoft 协调。 不过，VNet 仍会传播包含已删除的子网的 BGP 路由地址空间。 如果已将 Azure VNet IP 地址范围/Azure VNet 地址空间定义为多个 IP 地址范围，并且其中的某个范围已分配到已删除的子网，则应在 VNet 地址空间中删除该范围，随后告知 Azure 上的 SAP HANA 服务管理部门，让他们从允许 Azure 上的 SAP HANA（大型实例）通信的范围中删除该范围。
 
-Azure.com 上有关删除子网的专门指南中所述的过程，就是添加子网的相反过程，不过，尚未提供具体的步骤。 若要详细了解如何创建子网，请参阅[使用 Azure 门户创建虚拟网络](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)一文。
+若要删除子网，请参阅[删除子网](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet)以获取有关创建子网的详细信息。
 
 ## <a name="deleting-a-vnet"></a>删除 VNet
 
-可以使用 Azure 门户、PowerShell 或 CLI 删除 VNet。 Azure 上的 SAP HANA 服务管理部门将删除 Azure 上的 SAP HANA（大型实例）ExpressRoute 线路中的现有授权，并删除用来与 HANA 大型实例通信的 Azure VNet IP 地址范围/Azure VNet 地址空间。
+若要删除虚拟网络，请参阅[删除虚拟网络](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network)。 Azure 上的 SAP HANA 服务管理部门将删除 Azure 上的 SAP HANA（大型实例）ExpressRoute 线路中的现有授权，并删除用来与 HANA 大型实例通信的 Azure VNet IP 地址范围/Azure VNet 地址空间。
 
 删除 VNet 后，请提出 Azure 支持请求并提供要删除的 IP 地址空间范围。
-
-Azure.com 上有关删除 VNet 的专门指南中所述的过程，就是添加 VNet（如前所述）的相反过程，不过，尚未提供具体的步骤。 有关创建 VNet 的详细信息，请参阅文章[使用 Azure 门户创建虚拟网络](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)和[使用 PowerShell 创建虚拟网络](../../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 为了确保删除所有组件，请删除以下各项：
 

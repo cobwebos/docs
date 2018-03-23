@@ -1,25 +1,19 @@
 ---
-title: "安装弹性数据库作业 | Microsoft 文档"
-description: "演练如何安装弹性作业功能。"
+title: 安装弹性数据库作业 | Microsoft 文档
+description: 演练如何安装弹性作业功能。
 services: sql-database
-documentationcenter: 
-manager: jhubbard
+manager: craigg
 author: ddove
-editor: 
-ms.assetid: cbe0aa2b-17e3-4b6f-a16f-6ebc1f5a66af
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: ef5a8931eeda0f7ddc485632acaf2d76b71dccde
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.author: sstein
+ms.openlocfilehash: 7e5258e0ccb88c8e2f3fe3277f69444ae5424cd0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>安装弹性数据库作业概述
 可以通过 PowerShell 或 Azure 门户安装[**弹性数据库作业**](sql-database-elastic-jobs-overview.md)。只有安装了 PowerShell 程序包，才能获取使用 PowerShell API 创建和管理作业的权限。 此外，PowerShell API 目前提供的功能明显多于门户。

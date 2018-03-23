@@ -1,11 +1,11 @@
 ---
-title: "Azure 示例基础结构演练 | Microsoft Docs"
-description: "了解用于在 Azure 中部署示例基础结构的关键设计和实施准则。"
-documentationcenter: 
+title: Azure 示例基础结构演练 | Microsoft Docs
+description: 了解用于在 Azure 中部署示例基础结构的关键设计和实施准则。
+documentationcenter: ''
 services: virtual-machines-windows
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 7032b586-e4e5-4954-952f-fdfc03fc1980
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c3f47739f28e0b0b2a24fcea61b055071cba7d5
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: c532657951d6d0241a5d8d25a56bb237ad481567
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>适用于 Windows VM 的 Azure 示例基础结构演练
 本文将逐步讲述如何构建示例应用程序基础结构。 我们将详细介绍如何设计简单在线商店的基础结构，此在线商店可将关于命名约定、可用性集、虚拟网络及负载均衡器的所有准则和决策聚集在一起；以及如何实际部署虚拟机 (VM)。
@@ -61,7 +61,7 @@ Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序�
 Adventure Works Cycles 使用名为 Adventure Works 企业订阅的企业订阅为此 IT 工作负荷提供计费。
 
 ## <a name="storage"></a>存储
-Adventure Works Cycles 确定其应使用 Azure 托管磁盘。 创建 VM 时，会使用两种存储可用的存储层：
+Adventure Works Cycles 确定其应使用 Azure 托管磁盘。 创建 VM 时，会使用两种可用的存储层：
 
 * **标准存储**用于 Web 服务器、应用程序服务器和域控制器及其数据磁盘。
 * **高级存储**用于 SQL Server VM 及其数据磁盘。

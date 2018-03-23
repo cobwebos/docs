@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure Databricks 预览版文档"
+title: Azure Databricks 预览版文档
 metadata:
-  title: "Azure Databricks 文档 - 教程 | Microsoft Docs"
-  description: "使用快速入门和此处提供的其他链接，了解如何使用 Azure Databricks。 Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行优化。"
+  title: Azure Databricks 文档 - 教程 | Microsoft Docs
+  description: 使用快速入门和此处提供的其他链接，了解如何使用 Azure Databricks。 Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行优化。
   services: azure-databricks
   author: nitinme
   manager: cgronlun
@@ -13,44 +13,45 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/15/2017
   ms.author: nitinme
-  ms.openlocfilehash: c94a3e7ecaf89612238b80ed83474af792c3efc4
-  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+  ms.openlocfilehash: 8bbb8bb020c8c64e11d072729b59074a406a03ca
+  ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/16/2018
+  ms.lasthandoff: 03/17/2018
 abstract:
-  description: "使用快速入门和此处提供的其他链接，了解如何使用 Azure Databricks。 Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行优化。 我们与 Apache Spark 的创建者一起设计了 Databricks，并将其与 Azure 集成以提供一键式安装程序、简化的工作流程以及交互式工作区，从而使数据科学家、数据工程师和业务分析员之间可以进行合作。"
+  description: 使用快速入门和此处提供的其他链接，了解如何使用 Azure Databricks。 Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行优化。 我们与 Apache Spark 的创建者一起设计了 Databricks，并将其与 Azure 集成以提供一键式安装程序、简化的工作流程以及交互式工作区，从而使数据科学家、数据工程师和业务分析员之间可以进行合作。
   aside:
     image:
       alt: 
       height: 110
       src: media/index/video.png
       width: 250
-    title: "Azure Databricks 简介 (3:38)"
+    title: Azure Databricks 简介 (3:38)
     href: https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/
     width: 250
 sections:
-- title: "5 分钟快速入门"
+- title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: "了解如何创建 Azure Databricks 工作区、Spark 群集以及如何通过以下方式运行作业："
+    text: 了解如何创建 Azure Databricks 工作区、Spark 群集以及如何通过以下方式运行作业：
   - type: list
     style: icon48
     items:
     - image:
         src: /azure/azure-databricks/media/index/portal.svg
-      text: "Azure 门户"
+      text: Azure 门户
       href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
-- title: "分步教程"
+- title: 分步教程
   items:
   - type: paragraph
-    text: "了解如何使用 Azure Databricks："
+    text: 了解如何使用 Azure Databricks：
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/azure-databricks/databricks-stream-from-eventhubs\">使用 Azure Databricks 从事件中心对数据进行流式传输</a>"
-    - html: "<a href=\"https://go.microsoft.com/fwlink/?linkid=864083\" target=\"_blank\">从 Azure 存储导入数据</a>"
+    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">使用 Azure Databricks 从事件中心对数据进行流式传输</a>
+    - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">使用 Azure Databricks 和认知服务进行情绪分析</a>
+    - html: <a href="https://go.microsoft.com/fwlink/?linkid=864083" target="_blank">从 Azure 存储导入数据</a>
     - hmtl: <a href="https://go.microsoft.com/fwlink/?linkid=864084" target="_blank">Import data from Azure Data Lake Store</a>
-    - html: "<a href=\"https://docs.azuredatabricks.net/user-guide/notebooks/index.html\" target=\"_blank\">使用笔记本</a>"
-    - html: "<a href=\"https://docs.azuredatabricks.net/user-guide/jobs.html\" target=\"_blank\">运行 Spark 作业</a>"
-    - html: "<a href=\"https://docs.azuredatabricks.net/spark/latest/data-sources/index.html\" target=\"_blank\">使用 Spark 数据源</a>"
+    - html: <a href="https://docs.azuredatabricks.net/user-guide/notebooks/index.html" target="_blank">使用笔记本</a>
+    - html: <a href="https://docs.azuredatabricks.net/user-guide/jobs.html" target="_blank">运行 Spark 作业</a>
+    - html: <a href="https://docs.azuredatabricks.net/spark/latest/data-sources/index.html" target="_blank">使用 Spark 数据源</a>

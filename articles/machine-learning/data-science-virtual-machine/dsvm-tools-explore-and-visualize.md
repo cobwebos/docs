@@ -1,25 +1,25 @@
 ---
-title: "数据探索和可视化工具 - Azure | Microsoft Docs"
-description: "数据科学虚拟机的数据浏览和可视化工具。"
-keywords: "数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学"
+title: 数据探索和可视化工具 - Azure | Microsoft Docs
+description: 数据科学虚拟机的数据浏览和可视化工具。
+keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2017
+ms.date: 03/16/2018
 ms.author: gokuma;bradsev
-ms.openlocfilehash: d8f0616f17dbaa02082492cc1c68f1d989ea5aae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96f8d1bcf5a7e51823ed55a1b924d1397eba9da5
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>数据科学虚拟机上的数据浏览和可视化工具
 

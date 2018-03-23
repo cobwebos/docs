@@ -1,8 +1,8 @@
 ---
-title: "在 Azure 上预配 Windows 数据科学虚拟机 | Microsoft Docs"
-description: "在 Azure 上配置和创建数据科学虚拟机，用于进行分析和机器学习。"
+title: 在 Azure 上预配 Windows 数据科学虚拟机 | Microsoft Docs
+description: 在 Azure 上配置和创建数据科学虚拟机，用于进行分析和机器学习。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 6f933c75d4829e3b2c5198aeee324f15490d8a93
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9f01ba69f6511a3f9a7f99e379522be3c00554f5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows 数据科学虚拟机
 Microsoft 数据科学虚拟机是一种 Windows Azure 虚拟机 (VM) 映像，它已预装并配置了多个常用于数据分析和机器学习的热门工具。 这些工具包括：
@@ -39,8 +39,7 @@ Microsoft 数据科学虚拟机是一种 Windows Azure 虚拟机 (VM) 映像，�
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/)：Java 中的可视数据挖掘和机器学习软件。
   * [Apache Drill](https://drill.apache.org/)：面向 Hadoop、NoSQL 和云存储的无架构 SQL 查询引擎。  支持使用 ODBC 和 JDBC 接口通过 PowerBI、Excel、Tableau 等标准 BI 工具查询 NoSQL 和文件。
 * R 和 Python 中的库，供 Azure 机器学习和其他 Azure 服务使用
-* 包含 Git Bash 的 Git，可配合源代码存储库（包括 GitHub、Visual Studio Team Services）使用
-* 提供 Windows 端口，包含可通过命令提示符访问的多个流行 Linux 命令行实用工具（包括 awk、sed、perl、grep、find、wget 及 curl 等）。 
+* Git 包含与源代码存储库（包括 GitHub、Visual Studio Team Services）一起工作的 Git Bash，并提供一些常用的 Linux 命令行实用程序（包括 awk、sed、perl、grep、find、wget、curl 等），它们都可以在 git-bash 和命令提示符上进行访问。 
 
 执行数据科学涉及对一系列任务的迭代：
 
@@ -73,7 +72,7 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 它支持处理各
    1. **基础知识**
       
       1. **名称**：待创建的数据科学服务器的名称。
-      2. **VM 磁盘类型**：选择 SSD 或 HDD。 对于 GPU（NC 系列），请选择“HDD”作为磁盘类型。 
+      2. **VM 磁盘类型**：选择 SSD 或 HDD。 对于 NC_v1 GPU 实例（基于 NVidia Tesla K80），请选择“HDD”作为磁盘类型。 
       3. **用户名**：管理员帐户登录 ID。
       4. **密码**：管理员帐户密码。
       5. **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。
@@ -99,35 +98,28 @@ Microsoft 数据科研虚拟机可快速启动分析项目。 它支持处理各
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Microsoft 数据科研虚拟机上安装的工具
 
-### <a name="azure-machine-learning-workbench"></a>Azure Machine Learning Workbench
 
-Azure Machine Learning Workbench 是一个桌面应用程序和命令行接口。 Workbench 包含内置的数据准备功能，可在执行数据准备步骤时进行学习。 它还提供项目管理、运行历史记录和 Notebook 集成，大幅提高工作效率。 可以利用 TensorFlow、认知工具包、Spark ML 和 scikit-learn 等优秀开源框架来开发模型。 DSVM 上提供了一个桌面图标 (InstallAMLFromLocal)，用于在本地将 Azure Machine Learning Workbench 提取到每个用户的 %LOCALAPPDATA% 目录。 要使用 Workbench 的每个用户需要执行一次性的操作：双击 InstallAMLFromLocal 桌面图标安装 Workbench 的实例。 Azure 机器学习还会创建并使用已提取到 %LOCALAPPDATA%\amlworkbench\python 中的按用户 Python 环境。
 
 ### <a name="microsoft-ml-server-developer-edition"></a>Microsoft ML Server Developer Edition
 如果想要使用可缩放 R 或 Python 的 Microsoft 企业库进行分析，VM 上已安装 Microsoft ML Server Developer Edition（以前称为 Microsoft R Server）。 Microsoft ML Server 是一个可广泛部署的企业级分析平台，可用于 R 和 Python，可缩放，受商业用途的支持且非常安全。 ML Server 支持各种大数据统计、预测建模和机器学习功能，因此可支持各种类型的分析 – 浏览、分析、可视化和建模。 通过利用和扩展开源 R 和 Python，Microsoft ML Server 与 R/Python 脚本、函数和 CRAN/pip/Conda 包完全兼容，可分析企业级数据。 此外，它具有数据并行处理和区块式处理能力，可解决开源 R 的内存限制。 因此，可分析的数据量可以远远超过主内存的容量。  VM 随附的 Visual Studio Community Edition 包含针对 Visual Studio 的 R 工具和针对 Visual Studio 的 Python 工具扩展，提供可配合 R 或 Python 使用的完整 IDE。 我们还在 VM 上其他 IDE，例如 [RStudio](http://www.rstudio.com) 和 [PyCharm Community Edition](https://www.jetbrains.com/pycharm/)。 
 
 ### <a name="python"></a>Python
-为方便使用 Python 进行开发，已安装 Anaconda Python 分发版 2.7 和 3.5。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。 可以使用 Visual Studio 2015 Community Edition 中安装的用于 Visual Studio 的 Python 工具 (PTVS)，或 Anaconda 随附的 IDE 之一，例如 IDLE 或 Spyder。 可以通过在搜索栏（**Win** + **S** 键）中进行搜索来启动其中的某个工具。
+为方便使用 Python 进行开发，已安装 Anaconda Python 分发版 2.7 和 3.6。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。 可以使用 Visual Studio 2017 Community Edition 中安装的针对 Visual Studio 的 Python 工具 (PTVS)，或 Anaconda 随附的 IDE 之一，例如 IDLE 或 Spyder。 可以通过在搜索栏（**Win** + **S** 键）中进行搜索来启动其中的某个工具。
 
 > [!NOTE]
-> 要将用于 Visual Studio 的 Python 工具指向 Anaconda Python 2.7 和 3.5，需要为每个版本创建自定义环境。 要在 Visual Studio 2015 Community Edition 中设置这些环境路径，请导航到“工具” -> “Python 工具” -> “Python 环境”，并单击“+ 自定义”。 
+> 要将针对 Visual Studio 的 Python 工具指向 Anaconda Python 2.7，需要为每个版本创建自定义环境。 要在 Visual Studio 2017 Community Edition 中设置这些环境路径，请导航到“工具” -> “Python 工具” -> “Python 环境”，然后单击“+ 自定义”。 
 > 
 > 
 
-Anaconda Python 2.7 安装在 C:\Anaconda 下面，Anaconda Python 3.5 安装在 C:\Anaconda\envs\py35 下面。 有关详细步骤，请参阅 [PTVS 文档](/visualstudio/python/python-environments.md#selecting-and-installing-python-interpreters)。 
+Anaconda Python 3.6 安装在 C:\Anaconda 下，Anaconda Python 2.7 安装在 C:\Anaconda\envs\python2 下。 有关详细步骤，请参阅 [PTVS 文档](/visualstudio/python/python-environments.md#selecting-and-installing-python-interpreters)。 
 
 ### <a name="jupyter-notebook"></a>Jupyter 笔记本
-Anaconda 分发版还附带 Jupyter 笔记本 - 用于共享代码和分析的环境。 Jupyter Notebook 服务器上已预先配置 Python 2.7、Python 3.5、PySpark、Julia 和 R 内核。 可通过名为“Jupyter Notebook”的桌面图标启动 Jupyter 服务器，并启动浏览器来访问 Notebook 服务器。 
-
-> [!NOTE]
-> 如果收到任何证书警告，请选择继续。 
-> 
-> 
+Anaconda 分发版还附带 Jupyter 笔记本 - 用于共享代码和分析的环境。 Jupyter Notebook 服务器上已预先配置 Python 2.7、Python 3.x、PySpark、Julia 和 R 内核。 可通过名为“Jupyter Notebook”的桌面图标启动 Jupyter 服务器，并启动浏览器来访问 Notebook 服务器。 
 
 我们已使用 Python 和 R 格式打包了多个 Notebook 示例。访问 Jupyter 之后，Jupyter Notebook 将演示如何使用 Microsoft ML Server、SQL Server ML Services（数据库内部分析）、Python、Microsoft 认知工具包、Tensorflow 和其他 Azure 技术。 使用在前面步骤中创建的密码向 Jupyter 笔记本进行身份验证后，可以在笔记本主页上看到示例的链接。 
 
 ### <a name="visual-studio-2017-community-edition"></a>Visual Studio 2017 Community Edition
-VM 上安装的 Visual Studio Community Edition。 它是 Microsoft 免费提供的流行 IDE 版本，适合小型团队用来进行评估。 可以在[此处](https://www.visualstudio.com/support/legal/mt171547)查看许可条款。  双击桌面图标或者通过“开始”菜单打开 Visual Studio。 也可以使用 **Win** + **S** 并输入“Visual Studio”来搜索程序。 然后，便可以使用 C#、Python、R 和 node.js 等语言来创建项目。 另外，该版本中还安装了插件，以方便使用 Azure 数据目录、Azure HDInsight（Hadoop、Spark）和 Azure Data Lake 等 Azure 服务。 
+VM 上安装的 Visual Studio Community Edition。 它是 Microsoft 免费提供的流行 IDE 版本，适合小型团队用来进行评估。 可以在[此处](https://www.visualstudio.com/support/legal/mt171547)查看许可条款。  双击桌面图标或者通过“开始”菜单打开 Visual Studio。 也可以使用 **Win** + **S** 并输入“Visual Studio”来搜索程序。 然后，便可以使用 C#、Python、R 和 node.js 等语言来创建项目。 另外，该版本中还安装了插件，以方便使用 Azure 数据目录、Azure HDInsight（Hadoop、Spark）和 Azure Data Lake 等 Azure 服务。 现在还有名为 ```Visual Studio Tools for AI``` 的插件，可以无缝集成到 Azure 机器学习，并有助于快速生成 AI 应用程序。 
 
 > [!NOTE]
 > 可能会有一条消息指出评估期已过。 在此情况下，输入 Microsoft 帐户凭据或新建一个免费帐户即可获取 Visual Studio Community Edition 的访问权限。 
@@ -170,6 +162,10 @@ VM 上安装了多个 Azure 工具：
 > 
 > 
 
+### <a name="azure-machine-learning-workbench"></a>Azure Machine Learning Workbench
+
+Azure Machine Learning Workbench 是一个桌面应用程序和命令行接口。 Workbench 包含内置的数据准备功能，可在执行数据准备步骤时进行学习。 它还提供项目管理、运行历史记录和 Notebook 集成，大幅提高工作效率。 可以利用 TensorFlow、认知工具包、Spark ML 和 scikit-learn 等优秀开源框架来开发模型。 DSVM 上提供了一个桌面图标，用于将 Azure Machine Learning Workbench 安装到每个用户的 %LOCALAPPDATA% 目录。 要使用 Workbench 的每个用户需要执行一次性的操作：双击 ```AzureML Workbench Setup``` 桌面图标安装 Workbench 的实例。 Azure 机器学习还会创建并使用已提取到 %LOCALAPPDATA%\amlworkbench\python 中的按用户 Python 环境。
+
 ## <a name="additional-microsoft-development-tools"></a>其他 Microsoft 开发工具
 [**Microsoft Web 平台安装程序**](https://www.microsoft.com/web/downloads/platform.aspx)可用于发现和下载其他 Microsoft 开发工具。 Microsoft 数据科研虚拟机桌面上也提供了该工具的快捷方式。  
 
@@ -177,10 +173,10 @@ VM 上安装了多个 Azure 工具：
 | Item | Directory |
 | --- | --- |
 | Jupyter 笔记本服务器配置	 |C:\ProgramData\jupyter |
-| Jupyter 笔记本示例主目录 |c:\dsvm\notebooks |
+| Jupyter 笔记本示例主目录 |c:\dsvm\notebooks and c:\users\<username>\notebooks|
 | 其他示例 |c:\dsvm\samples |
-| Anaconda（默认：Python 2.7） |c:\Anaconda |
-| Anaconda Python 3.5 环境 |c:\Anaconda\envs\py35 |
+| Anaconda（默认：Python 3.6） |c:\Anaconda |
+| Anaconda Python 2.7 环境 |c:\Anaconda\envs\python2 |
 | Microsoft ML Server 独立版 (Python)  | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
 | 默认 R 实例（ML Server 独立版） |C:\Program Files\Microsoft\ML Server\R_SERVER |
 | SQL ML Services 数据库内部实例目录 |C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
@@ -188,7 +184,7 @@ VM 上安装了多个 Azure 工具：
 | 其他工具 |c:\dsvm\tools |
 
 > [!NOTE]
-> 在低于 1.5.0 的版本（2016 年 9 月 3 日以前）中创建的 Microsoft 数据科研虚拟机实例使用的目录结构与上表中指定的结构稍有不同。 
+> 在 DSVM 的 Windows Server 2012 版本和 2018 年 3 月之前的 Windows Server 2016 版本中，默认 Anaconda 环境是 Python 2.7。 辅助环境是位于 c:\Anaconda\envs\py35 的 Python 3.5。 
 > 
 > 
 

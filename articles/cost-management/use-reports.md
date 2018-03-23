@@ -1,20 +1,20 @@
 ---
-title: "在 Azure 成本管理中使用成本管理报表 | Microsoft Docs"
-description: "本文介绍如何在 Cloudyn 门户中使用各种成本管理报表。"
+title: 在 Azure 成本管理中使用成本管理报表 | Microsoft Docs
+description: 本文介绍如何在 Cloudyn 门户中使用各种成本管理报表。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 0a4f6a5940ccffe897a5609b837ddaeea98d87aa
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.custom: ''
+ms.openlocfilehash: 8078591b1e2ad120190a23dd29800bd0f1ae33ea
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-cost-management-reports"></a>使用成本管理报表
 
@@ -152,7 +152,7 @@ Cloudyn 通过应用帐户关联，确保分配结果保持每个链接帐户的
 3. 添加组。
 4. 选择之前创建的成本模型。
 5. 选择实际成本或摊销成本。
-6. 选择是否应用分配规则来查看原始计费数据视图或 Cloudyn 重新计算的成本视图。
+6. 选择是否应用分配规则来查看原始计费数据视图或重新计算的成本视图。
 
 下面是一个报表示例。
 

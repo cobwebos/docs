@@ -1,29 +1,29 @@
 ---
-title: "在 Microsoft Azure 中保护个人数据 | Microsoft Docs"
-description: "介绍如何使用 Azure 保护个人数据的系列教程中的第一篇文章"
+title: 在 Microsoft Azure 中保护个人数据 | Microsoft Docs
+description: 本文有助于使用 Azure 来保护个人数据，并遵守一般数据保护条例 (GDPR)
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 4dbdb2dc11bdc515fb3856dd45203868122c7726
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 741fb17be315faacef6483cbaaa565136622cb45
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-in-microsoft-azure"></a>在 Microsoft Azure 中保护个人数据
 
-本文介绍一系列可帮助读者使用 Azure 安全技术和服务来保护个人数据的文章。 许多企业和行业法规遵从与监管措施中都规定了这一项关键要求。 本文描述了方案、问题陈述和公司目标。
+本文介绍一系列可帮助读者使用 Azure 安全技术和服务来保护个人数据的文章。 许多企业和行业法规遵从与监管措施中都规定了这一项关键要求。 例如，可以使用此系列文章中提供的信息来遵守一般数据保护法规 (GDPR)。 本文描述了方案、问题陈述和公司目标。
 
 ## <a name="scenario-and-problem-statement"></a>方案与问题陈述
 

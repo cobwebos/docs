@@ -1,12 +1,12 @@
 ---
-title: "在 Visual Studio 中构建无服务器应用 | Microsoft Docs"
-description: "参考这篇有关在 Visual Studio 中创建、部署和管理应用的指南开始构建第一个无服务器应用。"
-keywords: 
+title: 在 Visual Studio 中构建无服务器应用 | Microsoft Docs
+description: 参考这篇有关在 Visual Studio 中创建、部署和管理应用的指南开始构建第一个无服务器应用。
+keywords: ''
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 3672beda8a502e5fe2c8182076a8edef7ee9ebf6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3cd509a0073e45bf910e9a74a279d678ff03b63
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="build-a-serverless-app-in-visual-studio-with-logic-apps-and-functions"></a>使用逻辑应用和 Functions 在 Visual Studio 中构建无服务器应用
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>后续步骤
 
 * [了解如何构建无服务器社交仪表板](logic-apps-scenario-social-serverless.md)
-* [通过 Visual Studio Cloud Explorer 管理逻辑应用](logic-apps-manage-from-vs.md)
+* [通过 Visual Studio Cloud Explorer 管理逻辑应用](manage-logic-apps-with-visual-studio.md)
 * [逻辑应用工作流定义语言](logic-apps-workflow-definition-language.md)
 
 <!-- Image references -->

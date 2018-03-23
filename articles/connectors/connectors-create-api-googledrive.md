@@ -1,12 +1,12 @@
 ---
-title: "在逻辑应用中添加 Google Drive 连接器 | Microsoft Docs"
-description: "使用 REST API 参数的 Google Drive 连接器概述"
-services: 
-suite: 
-documentationcenter: 
-author: MandiOhlinger
+title: 在逻辑应用中添加 Google Drive 连接器 | Microsoft Docs
+description: 使用 REST API 参数的 Google Drive 连接器概述
+services: ''
+suite: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: b2bcebc5-02d2-435b-b0da-ef53bc51c4b6
 ms.service: multiple
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 05d6efa3f48c9b0b8c21badd96a0e13a63542b30
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 9cea2ea13b93e798912e4feea012f6bd64b90cac
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-google-drive-connector"></a>Google Drive 连接器入门
 连接到 Google Drive，创建文件、获取行等。 通过 Google Drive，可以： 

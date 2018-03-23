@@ -1,31 +1,29 @@
 ---
-title: "使用 Azure 中的加密保护传输中的个人数据 | Microsoft Docs"
-description: "使用 Azure 中的加密保护个人数据"
+title: 使用 Azure 中的加密保护传输中的个人数据 | Microsoft Docs
+description: 使用 Azure 加密来保护个人数据有助于遵守一般数据保护条例 (GDPR) 的相关信息。
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 461ddfda796bfe6639e27f6c4cd53e82b4e397d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 6975358d40206a497a53de16731d16ef374db905
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-in-transit-with-encryption"></a>Azure 加密技术：使用加密保护传输中的个人数据
 
-本文帮助读者了解 Azure 加密技术保护以及如何使用它来保护传输中的数据。 
-
-在网络中传输个人数据时保护数据的隐私性，是多层深层防御安全策略的必不可少的组成部分。 传输中加密旨在防止攻击者截获传输内容，从而能够查看或利用这些数据。
+本文帮助读者了解 Azure 加密技术保护以及如何使用它来保护传输中的数据。 在网络中传输个人数据时保护数据的隐私性，是多层深层防御安全策略的必不可少的组成部分。 传输中加密旨在防止攻击者截获传输内容，从而能够查看或利用这些数据。 本文中包含的信息可能有助于组织遵守一般数据保护条例 (GDPR)。
 
 ## <a name="scenario"></a>方案
 
@@ -47,7 +45,7 @@ ms.lasthandoff: 10/11/2017
 
 Azure 服务提供多种工具和技术来帮助保护传输中的个人数据。
 
-### <a name="azure-storage"></a>Azure 存储空间
+### <a name="azure-storage"></a>Azure 存储
 
 云中存储的数据必须从客户端（可以在世界上的任何实际位置）传输到 Azure 数据中心。 当用户检索数据时，数据以相反的方向再次传输。 通过公共 Internet 传输的数据始终存在被攻击者截获的风险。 在不同的位置之间移动个人数据时，必须使用传输级加密来保护数据，以确保数据的隐私性。
 

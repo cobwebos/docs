@@ -1,8 +1,8 @@
 ---
-title: "常见问题 - Azure Active Directory 域服务 | Microsoft 文档"
-description: "有关 Azure Active Directory 域服务的常见问题"
+title: 常见问题 - Azure Active Directory 域服务 | Microsoft 文档
+description: 有关 Azure Active Directory 域服务的常见问题
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 1963931f30808e861445c9555a04f933514239c3
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 1cfd0570315d5a1c6587ade164edf0a837453406
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory 域服务：常见问题 (FAQ)
 本页面解答有关 Azure Active Directory 域服务的常见问题。 请随时返回查看更新信息。
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/11/2018
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>是否可以在 Azure CSP（云解决方案提供商）订阅中启用 Azure AD 域服务？
 是的。 查看如何启用[Azure CSP 订阅中的 Azure AD 域服务](active-directory-ds-csp.md)。
 
-### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-use-adfs-to-authenticate-users-for-access-to-office-365-and-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>能否启用联合 Azure AD 目录中的 Azure AD 域服务？ 我使用 ADFS 对访问 Office 365 的用户进行身份验证，而不是将密码哈希同步到 Azure AD。 能否为此目录启用 Azure AD 域服务？
+### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>能否启用联合 Azure AD 目录中的 Azure AD 域服务？ 我不会将密码哈希同步到 Azure AD。 能否为此目录启用 Azure AD 域服务？
 不会。 Azure AD 域服务需要访问用户帐户的密码哈希，以便通过 NTLM 或 Kerberos 验证用户身份。 在联合目录中，密码哈希未存储于 Azure AD 目录中。 因此，Azure AD 域服务不适用于此类 Azure AD 目录。
 
 ### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>是否可以在订阅中的多个虚拟网络内使用 Azure AD 域服务？
@@ -53,6 +53,9 @@ ms.lasthandoff: 01/11/2018
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>是否可将域控制器添加到 Azure AD 域服务托管域？
 不会。 Azure AD 域服务提供的域是托管域。 无需预配、配置或管理此域的域控制器 - Microsoft 以服务的形式提供这些管理活动。 因此，无法为托管域添加其他域控制器（读写或只读）。
+
+### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>邀请到我的目录中的来宾用户能否使用 Azure AD 域服务？
+不会。 使用 [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) 邀请进程邀请到 Azure AD 目录的来宾用户会同步到 Azure Active Directory 域服务托管域。 但这些用户的密码不会存储在 Azure AD 目录中。 因此，Azure AD 域服务无法将这些用户的 NTLM 和 Kerberos 哈希同步到托管域。 所以，这些用户无法登录到托管域，也无法将计算机加入托管域。
 
 ## <a name="administration-and-operations"></a>管理和操作
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>是否可以使用远程桌面连接到托管域的域控制器？
@@ -75,6 +78,9 @@ ms.lasthandoff: 01/11/2018
 
 ### <a name="can-i-modify-or-add-dns-records-in-my-managed-domain"></a>是否可以在托管域中修改或添加 DNS 记录？
 是的。 “AAD DC 管理员”组的成员具有“DNS 管理员”权限，可在托管域中修改 DNS 记录。 他们可在已加入托管域且运行 Windows Server 的计算机上使用 DNS 管理器控制台管理 DNS。 若要使用 DNS 管理器控制台，请在服务器上安装“远程服务器管理工具”可选功能中包含的“DNS 服务器工具”。 TechNet 上提供了有关[用于管理、监视 DNS 以及对其进行故障排除的实用工具](https://technet.microsoft.com/library/cc753579.aspx)的详细信息。
+
+### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>什么是托管域上的密码生存期策略？
+Azure AD 域服务托管域上的默认密码生存期为 90 天。 此密码生存期与在 Azure AD 中配置的密码生存期不同步。 因此，可能会出现用户密码在托管域中已过期，但在 Azure AD 中仍然有效的情况。 在这种情况下，用户需要更改 Azure AD 中的密码，并且将新密码同步到托管域。 此外，用户帐户的“password-does-not-expire”和“user-must-change-password-at-next-logon”属性不会同步到托管域。
 
 ## <a name="billing-and-availability"></a>计费和可用性
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Azure AD 域服务是付费服务吗？

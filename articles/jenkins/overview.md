@@ -1,6 +1,6 @@
 ---
-title: "Jenkins 和 Azure 概述 | Microsoft 文档"
-description: "在 Azure 中托管 Jenkins 生成和部署自动化服务器，并使用 Azure 计算和存储资源来扩展持续集成及部署 (CI/CD) 管道。"
+title: Jenkins 和 Azure 概述 | Microsoft 文档
+description: 在 Azure 中托管 Jenkins 生成和部署自动化服务器，并使用 Azure 计算和存储资源来扩展持续集成及部署 (CI/CD) 管道。
 services: jenkins
 author: rloutlaw
 manager: justhe
@@ -11,11 +11,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: routlaw
 ms.custom: mvc
-ms.openlocfilehash: 69bb79a1f02e601b9ed0104dde00211612473adc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 08906939ecc80999de94ad7e7141081f959fb6f2
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-and-jenkins"></a>Azure 和 Jenkins
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/09/2018
 - [Azure 虚拟机](/azure/virtual-machines/linux/overview)。 请参阅我们的[教程](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)，在 VM 上创建 Jenkins 实例。
 - 有关在 [Azure 容器服务](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)中运行的 Kubernetes 群集，请参阅我们的[操作指南](/azure/container-service/kubernetes/container-service-kubernetes-jenkins)。
 
-使用 [Log Analytics](/azure/log-analytics/log-analytics-overview)、[Operations Management Suite](/azure/operations-management-suite/operations-management-suite-overview)，和 [Azure CLI] (/cli/azure/overview) 来监视和管理 Azure Jenkins 部署。
+使用 [Log Analytics](/azure/log-analytics/log-analytics-overview)、[Operations Management Suite](/azure/operations-management-suite/operations-management-suite-overview)和 [Azure CLI](/cli/azure) 来监视和管理 Azure Jenkins 部署。
 
 ## <a name="scale-your-build-automation-on-demand"></a>按需扩展生成自动化
 

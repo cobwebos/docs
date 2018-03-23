@@ -1,26 +1,20 @@
 ---
-title: "SQL (PaaS) 数据库与云中 VM 上的 SQL Server (IaaS) | Microsoft Docs"
-description: "了解哪个云 SQL Server 选项适合应用程序：Azure SQL (PaaS) 数据库或 Azure 虚拟机上云中的 SQL Server。"
+title: SQL (PaaS) 数据库与云中 VM 上的 SQL Server (IaaS) | Microsoft Docs
+description: 了解哪个云 SQL Server 选项适合应用程序：Azure SQL (PaaS) 数据库或 Azure 虚拟机上云中的 SQL Server。
 services: sql-database, virtual-machines
-keywords: "SQL Server 云, 云中 SQL Server, PaaS 数据库, 云 SQL Server, DBaaS"
-documentationcenter: 
+keywords: SQL Server 云, 云中 SQL Server, PaaS 数据库, 云 SQL Server, DBaaS
 author: CarlRabeler
-manager: jhubbard
-editor: cjgronlund
-ms.assetid: 7467f422-b77d-4b60-9cb5-0f1ec17ec565
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.workload: Active
-ms.tgt_pltfrm: vm-windows-sql-server
-ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 4a0fbb2a1f468493e5b22b12518be42fdd9d5ce6
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: a7fde828c7a88f440cf69e3a4b26bb6c75cdaafb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>选择云 SQL Server 选项：Azure SQL (PaaS) 数据库或 Azure VM 上的 SQL Server (IaaS)
 Azure 有两个选项可用于在 Microsoft Azure 中托管 SQL Server 工作负荷：

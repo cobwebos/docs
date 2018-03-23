@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 逻辑应用中使用 Dropbox 连接器 | Microsoft Docs"
-description: "使用 Azure 应用服务创建逻辑应用。 连接到 Dropbox 管理文件。 可以在 Dropbox 中执行各种操作，例如上传、更新、获取和删除文件。"
+title: 在 Azure 逻辑应用中使用 Dropbox 连接器 | Microsoft Docs
+description: 使用 Azure 应用服务创建逻辑应用。 连接到 Dropbox 管理文件。 可以在 Dropbox 中执行各种操作，例如上传、更新、获取和删除文件。
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: cb0ae033-aba7-4ac9-beaa-be561a0f0cac
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 3fecdc33a08c82d9ad13226e75d0d704a5557f98
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 7ac72cf5b18fa19bc0294abc67bf0a7089774a89
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-dropbox-connector"></a>Dropbox 连接器入门
 连接到 Dropbox 管理文件。 可以在 Dropbox 中执行各种操作，例如上传、更新、获取和删除文件。

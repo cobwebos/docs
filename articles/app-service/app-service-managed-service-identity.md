@@ -1,28 +1,28 @@
 ---
-title: "应用服务和 Azure Functions 中的托管服务标识 |Microsoft Docs"
-description: "Azure App Service 和 Azure Functions 中托管服务标识支持的概念性参考和安装指南"
+title: 应用服务和 Azure Functions 中的托管服务标识 |Microsoft Docs
+description: Azure App Service 和 Azure Functions 中托管服务标识支持的概念性参考和安装指南
 services: app-service
 author: mattchenderson
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 736a82d282e5769fb403c66ffd5d44107c6d3218
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 09e848abaf09811ff3f2b8ad009cd23dedb6645d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>如何在应用服务和 Azure Functions 中使用 Azure 托管服务标识（公共预览版）
 
 > [!NOTE] 
 > 应用服务和 Azure Functions 的托管服务标识目前提供预览版。
 
-本主题介绍如何为应用服务和 Azure Functions 应用程序创建托管应用标识，以及如何使用它来访问其他资源。 借助 Azure Active Directory 的托管服务标识，应用可以轻松访问其他受 AAD 保护的资源（如 Azure Key Vault）。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关托管服务标识的详细信息，请参阅[托管服务标识概述](../active-directory/msi-overview.md)。
+本主题介绍如何为应用服务和 Azure Functions 应用程序创建托管应用标识，以及如何使用它来访问其他资源。 借助 Azure Active Directory 的托管服务标识，应用可以轻松访问其他受 AAD 保护的资源（如 Azure Key Vault）。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关托管服务标识的详细信息，请参阅[托管服务标识概述](../active-directory/managed-service-identity/overview.md)。
 
 ## <a name="creating-an-app-with-an-identity"></a>创建有标识的应用
 
@@ -126,7 +126,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 应用程序可以使用其标识获取其他受 AAD 保护的资源（如 Azure Key Vault）的令牌。 这些令牌代表访问资源的应用程序，而不是应用程序的任何特定用户。 
 
 > [!IMPORTANT]
-> 可能需要配置目标资源，允许从应用程序进行访问。 例如，如果请求 Key Vault 的令牌，需要确保已添加包含应用程序标识的访问策略。 否则，对 Key Vault 的调用将被拒绝，即使其中包含令牌。 若要详细了解支持托管服务标识令牌的资源，请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/pp/msi-overview.md#which-azure-services-support-managed-service-identity)。
+> 可能需要配置目标资源，允许从应用程序进行访问。 例如，如果请求 Key Vault 的令牌，需要确保已添加包含应用程序标识的访问策略。 否则，对 Key Vault 的调用将被拒绝，即使其中包含令牌。 若要详细了解支持托管服务标识令牌的资源，请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-service-identity/overview.md#which-azure-services-support-managed-service-identity)。
 
 在应用服务和 Azure Functions 中，使用简单的 REST 协议获取令牌。 对于 .NET 应用程序，Microsoft.Azure.Services.AppAuthentication 库提供此协议的摘要并支持本地开发体验。
 

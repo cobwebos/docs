@@ -1,29 +1,29 @@
 ---
-title: "在 Microsoft Azure 中发现、识别个人数据并对其进行分类 | Microsoft Docs"
-description: "了解有关搜索、分类、发现和识别数据的信息"
+title: 在 Microsoft Azure 中发现、识别个人数据并对其进行分类 | Microsoft Docs
+description: 在 Azure 中搜索、分类、发现和标识数据可能有助于遵守一般数据保护条例 (GDPR)
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
 editor: TShinder
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 011fe26c297ff991af1282c1ff3914031a99f1e4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: ''
+ms.openlocfilehash: 21308faf5d3efd3908eccab4f37acb0cfccdcb8e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>在 Microsoft Azure 中发现、识别个人数据并对其进行分类
 
-本文介绍如何在多个 Azure 工具和服务中发现、识别个人数据并对其进行分类，包括 Azure 数据目录、Azure Active Directory、SQL 数据库、用于 Azure HDInsight 中 Hadoop 群集的 Power Query、Azure 信息保护、Azure 搜索和用于 Azure Cosmos DB 的 SQL 查询。
+本文介绍如何在多个 Azure 工具和服务中发现、识别个人数据并对其进行分类，包括 Azure 数据目录、Azure Active Directory、SQL 数据库、用于 Azure HDInsight 中 Hadoop 群集的 Power Query、Azure 信息保护、Azure 搜索和用于 Azure Cosmos DB 的 SQL 查询。 这些工具和流程可用于遵守一般数据保护条例 (GDPR)
 
 ## <a name="scenario-problem-statement-and-goal"></a>情景、问题陈述和目标
 
@@ -114,7 +114,7 @@ New-AzureRmSQLDatabase -ResourceGroupName $resourcegroupname `
 >[!Note]
 Windows 管理员倾向于使用 PowerShell，但是其中一些更喜欢 Azure CLI。
 
-### <a name="how-do-i-search-for-personal-data-in-sql-database-in-the-azure-portal"></a>如何在 Azure 门户中搜索 SQL 数据库中的个人数据？**
+### <a name="how-do-i-search-for-personal-data-in-sql-database-in-the-azure-portal"></a>如何在 Azure 门户中搜索 SQL 数据库中的个人数据？
 
 可以使用 Azure 门户中内置的查询编辑器工具搜索个人数据。 使用 SQL 服务器管理员登录名和密码登录该工具，然后输入查询。
 

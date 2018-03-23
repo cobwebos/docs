@@ -1,11 +1,11 @@
 ---
-title: "页面上的链接对应用程序代理应用程序不适用 | Microsoft Docs"
-description: "如何对与 Azure AD 集成的应用程序代理应用程序上断开的链接问题进行故障排除"
+title: 页面上的链接对应用程序代理应用程序不适用 | Microsoft Docs
+description: 如何对与 Azure AD 集成的应用程序代理应用程序上断开的链接问题进行故障排除
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 17f2afb0aaf3b899784a504b77f33a1284f0a232
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>页面上的链接对应用程序代理应用程序不起作用
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/11/2017
 
 3.  如果这些选项都不可行，可加入新功能的预览以便进行 URL 转换/重写。 使用此选项，应用程序 HTML 正文中存在的内部 URL 或链接将转换为或“映射”到已发布的外部应用代理 URL。 此方法仅适用于 HTML 或 CSS 中的链接，不适用于通过 JS 生成的链接。 
 
-因此，我们强烈建议尽可能使用[自定义域](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains)解决方案。 如果确实想要加入预览，请将电子邮件发送到 <aadapfeedback@microsoft.com>，其中包含 applicationId。
+因此，我们强烈建议尽可能使用[自定义域](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains)解决方案。 如果确实想要加入预览，请将电子邮件发送到 <aadapfeedback@microsoft.com>（随附 applicationId）。
 
 ## <a name="next-steps"></a>后续步骤
 [使用现有的本地代理服务器](application-proxy-working-with-proxy-servers.md)

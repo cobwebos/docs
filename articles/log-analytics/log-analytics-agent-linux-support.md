@@ -1,24 +1,24 @@
 ---
-title: "Azure Log Analytics Linux 代理故障排除 | Microsoft Docs"
-description: "针对 Log Analytics Linux 代理的最常见问题，描述症状、原因和解决方法。"
+title: Azure Log Analytics Linux 代理故障排除 | Microsoft Docs
+description: 针对 Log Analytics Linux 代理的最常见问题，描述症状、原因和解决方法。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 03/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 895a77a66f50b4c5217ec7d672f6441b85bf1856
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 80d7e39b284554ebfa8cac4488e1663b3e3648e8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-troubleshoot-issues-with-the-linux-agent-for-log-analytics"></a>如何排查 Log Analytics Linux 代理问题
 
@@ -37,12 +37,12 @@ ms.lasthandoff: 02/01/2018
 2. 请查看[更新代理设置](log-analytics-agent-manage.md#update-proxy-settings)部分，验证是否已将代理正确配置为通过代理服务器进行通信。    
 * 仔细检查下列 Log Analytics 服务终结点是否在允许列表中：
 
-    |代理资源| 端口 |  
-    |------|---------|  
-    |*.ods.opinsights.azure.com | 端口 443|   
-    |*.oms.opinsights.azure.com | 端口 443|   
-    |ods.systemcenteradvisor.com | 端口 443|   
-    |*.blob.core.windows.net/ | 端口 443|   
+    |代理资源| 端口 | 方向 |
+    |------|---------|----------|  
+    |*.ods.opinsights.azure.com | 端口 443| 入站和出站 |  
+    |*.oms.opinsights.azure.com | 端口 443| 入站和出站 |  
+    |* .blob.core.windows.net | 端口 443| 入站和出站 |  
+    |* .azure-automation.net | 端口 443| 入站和出站 | 
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>问题：尝试载入时收到 403 错误
 

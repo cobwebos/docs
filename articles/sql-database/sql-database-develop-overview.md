@@ -1,25 +1,20 @@
 ---
-title: "SQL 数据库应用程序开发概述 | Microsoft Docs"
-description: "了解可用于连接到 SQL 数据库的连接库和最佳实践。"
+title: SQL 数据库应用程序开发概述 | Microsoft Docs
+description: 了解可用于连接到 SQL 数据库的连接库和最佳实践。
 services: sql-database
-documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: genemi
-ms.assetid: 67c02204-d1bd-4622-acce-92115a7cde03
+manager: craigg
+ms.reviewer: genemi
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: Active
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-ms.openlocfilehash: 5948db9a52dc24d75f3fecc4ed166dd327061b37
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: ec3569d37d399590b0c306a85f199221e7812253
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-database-application-development-overview"></a>SQL 数据库应用程序开发概述
 本文逐步讲解开发人员在编写代码以连接到 Azure SQL 数据库时应考虑的基本注意事项。
@@ -41,7 +36,7 @@ Azure SQL 数据库使用两种不同的机制管理可用于数据库的资源�
 
 * 详细信息：[Azure SQL 数据库资源限制](sql-database-service-tiers.md)。
 
-## <a name="security"></a>安全
+## <a name="security"></a>“安全”
 Azure SQL 数据库提供用于在 SQL 数据库中限制访问、保护数据和监视活动的资源。
 
 * 详细信息：[保护 SQL 数据库](sql-database-security-overview.md)。

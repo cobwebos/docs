@@ -1,6 +1,6 @@
 ---
-title: "使用 OMS Log Analytics 监视 Azure SQL 数据同步 | Microsoft 文档"
-description: "了解如何通过使用 OMS Log Analytics 监视 Azure SQL 数据同步"
+title: 使用 OMS Log Analytics 监视 Azure SQL 数据同步 | Microsoft 文档
+description: 了解如何通过使用 OMS Log Analytics 监视 Azure SQL 数据同步
 services: sql-database
 ms.date: 11/07/2017
 ms.topic: article
@@ -8,11 +8,12 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: be1423026af633ab024980dc6b12b0977639ba3a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.custom: data-sync
+ms.openlocfilehash: 423614227b16ad6cfa6dadfab1c5f2b93c5bbe62
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>使用 OMS Log Analytics 监视 SQL 数据同步（预览版） 
 

@@ -1,8 +1,8 @@
 ---
-title: "在 Azure 数据工厂管道中使用自定义活动"
-description: "了解如何创建自定义活动并在 Azure 数据工厂管道中使用。"
+title: 在 Azure 数据工厂管道中使用自定义活动
+description: 了解如何创建自定义活动并在 Azure 数据工厂管道中使用。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 4b9714bc456ad28d9dd46742ca16f52e68c61399
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6aaeaaacdc9ee67ebbed3ea3090455dde2357c3d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -298,40 +298,40 @@ namespace SampleApp
   > - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 对于本例，activity.json、linkedServices.json 和 datasets.json 存储在“https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/”路径中。 必要时需要单独清理它们。 
   > - 对于使用自承载集成运行时的链接服务，将通过自承载集成运行时对敏感信息（例如密钥或密码）进行加密，以确保凭据保留在客户定义的专用网络环境中。 以此方式在自定义应用程序代码中进行引用时，可能会丢掉一些敏感字段。 如果需要，请在 extendedProperties 中使用 SecureString 而非使用链接服务引用。 
 
-## <a name="difference-between-custom-activity-in-azure-data-factory-version-2-and-custom-dotnet-activity-in-azure-data-factory-version-1"></a>Azure 数据工厂版本 2 中的自定义活动和 Azure 数据工厂版本 1 中的（自定义） DotNet 活动之间的差异
+## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a>比较 v2 自定义活动和版本 1（自定义）DotNet 活动
 
-  在 Azure 数据工厂版本 1 中，通过使用实现 IDotNetActivity 接口 Execute 方法的类创建 .NET 类库项目来实现（自定义）DotNet 活动代码。 链接服务、数据集和（自定义）DotNet 活动 JSON 负载中的扩展属性作为强类型对象传递到执行方法。 有关详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 由于此实现，需要使用 .Net Framework 4.5.2 编写自定义代码，并需要在基于 Windows 上的 Azure Batch 池节点上执行该代码。 
+  在 Azure 数据工厂版本 1 中，通过使用实现 `IDotNetActivity` 接口的 `Execute` 方法的类创建 .Net 类库项目来实现（自定义）DotNet 活动。 （自定义）DotNet 活动的 JSON 负载中的链接服务、数据集和扩展属性作为强类型对象传递到执行方法。 有关版本 1 行为的详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 由于此实现，版本 1 DotNet 活动节点必须面向 .Net Framework 4.5.2。 版本 1 DotNet 活动还必须在基于 Windows 的 Azure Batch 池节点上执行。 
 
-  在 Azure 数据工厂 V2 自定义活动中，无需实现 .Net 接口。 现在可以直接运行命令、脚本，并可运行自己已编译为可执行文件的自定义代码。 可以通过指定 Command 属性和 folderPath 属性来实现此目的。 自定义活动会将可执行文件和依赖项上传到 folderpath，并执行命令。 
+  在 Azure 数据工厂 V2 自定义活动中，不需要实现 .Net 接口。 现在可以直接运行命令、脚本和自己的已编译为可执行文件的自定义代码。 要配置该实现，请指定 `Command` 属性和 `folderPath` 属性。 自定义活动会将可执行文件及其依赖项上传到 `folderpath`，并执行命令。 
 
-  可执行文件可以将链接服务、数据集（在 referenceObjects 中定义）和自定义活动的 JSON 负载中定义的扩展属性作为 JSON 文件进行访问。 可以使用 JSON 序列化程序访问所需的属性，如前面的 SampleApp.exe 代码示例所示。 
+  可执行文件可以将链接服务、数据集（在 referenceObjects 中定义）和数据工厂 v2 自定义活动的 JSON 有效负载中定义的扩展属性作为 JSON 文件进行访问。 可以使用 JSON 序列化程序访问所需的属性，如前面的 SampleApp.exe 代码示例所示。 
 
-  借助 Azure 数据工厂 V2 自定义活动中引入的更改，你可以随意使用自己喜欢的语言编写自定义代码，并可在 Azure Batch 支持的 Windows 和 Linux 操作系统上执行这些代码。 
+  借助数据工厂 V2 自定义活动中引入的更改，可以使用自己喜欢的语言编写自定义代码逻辑，然后在 Azure Batch 支持的 Windows 和 Linux 操作系统上执行该代码逻辑。 
 
   下表介绍数据工厂 V2 自定义活动和数据工厂版本 1（自定义）DotNet 活动之间的差异： 
 
 
 |差异      |版本 2 自定义活动      | 版本 1（自定义）DotNet 活动      |
 | ---- | ---- | ---- |
-|如何定义自定义逻辑      |通过运行任何可执行文件（现有可执行文件或实施你自己的可执行文件）      |通过实施 .Net DLL      |
+|如何定义自定义逻辑      |通过提供可执行文件      |通过实施 .Net DLL      |
 |自定义逻辑的执行环境      |Windows 或 Linux      |Windows (.Net Framework 4.5.2)      |
 |执行脚本      |直接支持执行脚本（如 Windows VM 上的“cmd /c echo hello world”）      |需要在 .Net DLL 中实施      |
 |所需数据集      |可选      |需要链接活动并传递信息      |
 |将信息从活动传递到自定义逻辑      |通过 ReferenceObjects（LinkedServices 和数据集）与 ExtendedProperties（自定义属性）      |通过 ExtendedProperties（自定义属性）、输入和输出数据集      |
-|在自定义逻辑中检索信息      |粘贴可执行文件所在文件夹中存储的 activity.json、linkedServices.json 和 datasets.json      |通过 .Net SDK (.Net Frame 4.5.2)      |
+|在自定义逻辑中检索信息      |分析可执行文件所在文件夹中存储的 activity.json、linkedServices.json 和 datasets.json      |通过 .Net SDK (.Net Frame 4.5.2)      |
 |日志记录      |直接写入到 STDOUT      |在 .Net DLL 中实施记录器      |
 
 
-  如果有针对版本 1（自定义）DotNet 活动编写的现有 .Net 代码，则需要按照以下高级准则修改代码，使其可用于版本 2 自定义活动：  
+  如果有针对版本 1（自定义）DotNet 活动编写的现有 .Net 代码，则需要修改代码，使其可用于版本 2 自定义活动。 按照以下高级准则更新代码：  
 
    - 将项目从 .Net 类库更改到控制台应用。 
-   - 使用 Main 方法启动应用程序，将不再需要 IDotNetActivity 接口的 Execute 方法。 
-   - 使用 JSON 序列化程序读取和分析链接服务、数据集和活动，而不是将它们作为强类型对象，然后将所需属性的值传递到主自定义代码逻辑。 可将前面的 SampleApp.exe 代码作为示例进行参考。 
-   - 将不再支持 Logger 对象，可将可执行文件输出传输到控制台，并保存到 stdout.txt。 
-   - 将不再需要 Microsoft.Azure.Management.DataFactories NuGet 包。 
-   - 编译代码，将可执行文件和依赖项上传到 Azure 存储，并在 folderPath 属性中定义路径。 
+   - 使用 `Main` 方法启动应用程序。 不再需要 `IDotNetActivity` 接口的 `Execute` 方法。 
+   - 使用 JSON 序列化程序并且不作为强类型对象读取和分析链接服务、数据集和活动。 将所需属性的值传递到主要自定义代码逻辑。 可将前面的 SampleApp.exe 代码作为示例进行参考。 
+   - 不再支持 Logger 对象。 可将可执行文件的输出打印到控制台并保存到 stdout.txt。 
+   - 不再需要 Microsoft.Azure.Management.DataFactories NuGet 包。 
+   - 编译代码，将可执行文件及其依赖项上传到 Azure 存储，并在 `folderPath` 属性中定义路径。 
 
-有关端到端 DLL 和数据工厂版本 1 文档[在 Azure 数据工厂管道中使用自定义活动](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)中所述的管道示例如何重写到数据工厂版本 2 自定义活动样式中的完整示例。 请参阅[数据工厂版本 2 自定义活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)。 
+有关端到端 DLL 和数据工厂版本 1 文章[在 Azure 数据工厂管道中使用自定义活动](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)中所述的管道示例如何重写为数据工厂版本 2 自定义活动的完整示例，请参阅[数据工厂版本 2 自定义活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)。 
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch 的自动缩放
 还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量不使用专用 VM 但使用自动缩放公式创建 Azure 批处理池。 

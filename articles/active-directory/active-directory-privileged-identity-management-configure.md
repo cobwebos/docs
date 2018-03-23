@@ -1,32 +1,40 @@
 ---
-title: "配置 Azure AD Privileged Identity Management | Microsoft 文档"
-description: "本主题介绍什么是 Azure AD Privileged Identity Management，以及如何使用 PIM 来提升云安全性。"
+title: 配置 Azure AD Privileged Identity Management | Microsoft 文档
+description: 本主题介绍什么是 Azure AD Privileged Identity Management，以及如何使用 PIM 来提升云安全性。
 services: active-directory
-documentationcenter: 
-author: barclayn
+documentationcenter: ''
+author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c548ed2e-06e3-4eaf-a63d-0f02ee72da25
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
-ms.author: barclayn
+ms.date: 03/07/2018
+ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 94855cf102764532fa0a6718541beffe93230fd1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 827e3521be8918f4de00113fd9eaf4e01679cac5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
 使用 Azure Active Directory (AD) Privileged Identity Management，可以管理、控制和监视组织内的访问。 这包括访问 Azure AD、Azure 资源（预览版）和其他 Microsoft Online Services（例如 Office 365 或 Microsoft Intune）中的资源。
 
 > [!NOTE]
-> 授权你的管理员使用 Azure Active Directory 高级 P2 版后，整个组织都可使用 Privileged Identity Management。 有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
+> 为租户启用特权身份管理时，每位与该服务交互或从中受益的用户都需要有效的 Azure AD Premium P2 或企业移动性 + 安全性 E5 付费版或试用版许可证。 示例包括用户/一个组中的用户，即：
+>
+>- 分配给特权角色管理员角色 
+>- 指定为可通过 PIM 管理的符合条件的其他目录角色 
+>- 能够批准/拒绝 PIM 中的请求 
+>- 使用及时或直接（基于时间）的分配，分配给 Azure 资源角色  
+>- 分配给访问审查
+>
+>有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
 
 组织希望尽量减少拥有访问权限的人员以保护信息或资源安全，因为这样做可以减小恶意用户获得相应访问权限，或者已授权用户无意中影响敏感资源的可能性。  但是，用户仍需在 Azure AD、Azure、Office 365 或 SaaS 应用中执行特权操作。 组织可能会授予用户对订阅和 Azure AD 等 Azure 资源的特许访问权限。 在这种情况下，需要监督这些用户使用其管理特权执行了哪些操作。 Azure AD Privileged Identity Management 有助于缓解访问权限过度、不必要或滥用的风险。
 

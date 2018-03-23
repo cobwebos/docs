@@ -1,8 +1,8 @@
 ---
-title: "ApplicationInsights.config 参考 - Azure | Microsoft Docs"
-description: "启用或禁用数据收集模块，并添加性能计数器和其他参数。"
+title: ApplicationInsights.config 参考 - Azure | Microsoft Docs
+description: 启用或禁用数据收集模块，并添加性能计数器和其他参数。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: OlegAnaniev-MSFT
 editor: mrbullwinkle
 manager: carmonm
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 980b297db87c2829f3c393ae867780f263f8d87c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: a35da5c84e4e79d7bc6f2167ec7e172970992612
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
 Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 可以通过调整配置文件来启用或禁用遥测模块和初始值设定项并为其设置参数。
@@ -28,6 +28,9 @@ Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](http://ww
 没有同等的文件可以控制[网页中的 SDK][client]。
 
 本文档说明配置文件中显示的节、控制 SDK 组件的方式，以及哪些 NuGet 包会加载这些组件。
+
+> [!NOTE]
+> ApplicationInsights.config 和 .xml 指令不适用于 .NET Core SDK。 对于 .NET Core 应用程序的更改，我们通常使用 appsettings.json 文件。 可在 [Snapshot Debugger 文档](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)中找到此示例。
 
 ## <a name="telemetry-modules-aspnet"></a>遥测模块 (ASP.NET)
 每个遥测模块收集特定类型的数据，并使用核心 API 来发送数据。 不同的 NuGet 包会安装这些模块，同时在 .config 文件中添加所需的行。

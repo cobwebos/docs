@@ -1,9 +1,9 @@
 ---
-title: "使用 Azure Monitor 创建、查看和管理警报 - 警报（预览版）| Microsoft Docs"
-description: "使用新的统一 Azure 警报体验从一个位置创建、查看和管理指标与日志警报规则。"
+title: 使用 Azure Monitor 创建、查看和管理警报 - 警报（预览版）| Microsoft Docs
+description: 使用新的统一 Azure 警报体验从一个位置创建、查看和管理指标与日志警报规则。
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 36729da3-e002-4a64-86b2-2513ca2cbb58
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: b537bb42d43c4232c100061322e09bf492f2a20f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b6b6bfee5b9e9036a6d7ff17ff1a8d4de542bbd3
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>使用 Azure Monitor 创建、查看和管理警报 - 警报（预览版）
 
@@ -65,13 +65,13 @@ Azure 警报（预览版）还提供所有警报规则的统一视图，可让�
 
     > 统一的警报（预览版）还支持活动日志警报。 [了解详细信息](monitoring-activity-log-alerts-new-experience.md)。
 
-5. *指标警报*：确保“资源类型”是选定的平台或监视器服务（不是 *Log Analytics*）；选择适当的**资源**后，请单击“完成”按钮返回到“创建警报”。 接下来，使用“添加条件”按钮从信号选项列表中选择特定的信号及其监视服务和所列的类型（适用于前面选择的资源）。
+5. *指标警报*：确保已选择资源类型，且信号类型为“指标”；选择适当的“资源”后，请单击“完成”按钮返回到“创建警报”。 接下来，使用“添加条件”按钮从信号选项列表中选择特定的信号及其监视服务和所列的类型（适用于前面选择的资源）。
 
     ![选择资源](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 
     > [!NOTE]
 
-    > 为加快警报速度而引入的新指标功能只会作为指标包含在平台服务的信号类型中
+    >  列出了有监控服务平台且信号类型为“指标”的所有[准实时警报](monitoring-near-real-time-metric-alerts.md)可用资源
 
 6. *指标警报*：选择信号后，可以指定用于触发警报的逻辑。 作为参考，界面中会显示信号的历史数据，以及用于通过“显示历史记录”调整时间范围的选项（从过去六个小时到过去一周）。 打开可视化效果后，可以从显示的“条件”、“聚合”和“阈值”选项中选择“警报逻辑”。 由于提供了逻辑预览，条件将连同信号历史记录一起显示在可视化效果中，以指示何时触发了警报。 最后，通过选择“时间段”选项来指定警报服务要在哪个时限内查找指定的条件，并通过选择“频率”来指警报服务的运行频率。
 
@@ -81,7 +81,7 @@ Azure 警报（预览版）还提供所有警报规则的统一视图，可让�
 
     ![配置多维指标的信号逻辑](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
-8. *日志警报*：确保“资源类型”是分析源（例如 *Log Analytics* 或 *Application Insights*），选择相应的**资源**，然后单击“完成”。 接下来，使用“添加条件”按钮查看适用于该资源的信号选项列表，并针对所选日志监视服务（如 *Log Analytics* 或 *Application Insights*）从信号列表中选择“自定义日志搜索”选项。
+8. *日志警报*：确保“资源类型”是分析源（例如 Log Analytics 或 Application Insights），且信号类型为“日志”，并选择相应的资源，然后单击“完成”。 接下来，使用“添加条件”按钮查看适用于该资源的信号选项列表，并针对所选日志监视服务（如 *Log Analytics* 或 *Application Insights*）从信号列表中选择“自定义日志搜索”选项。
 
    ![选择资源 - 自定义日志搜索](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
 
@@ -121,8 +121,8 @@ Azure 警报（预览版）还提供所有警报规则的统一视图，可让�
 
     对于**日志警报**，提供了一些附加功能用于替代默认操作：
 
-    - **电子邮件通知**：替代通过操作组发送的电子邮件中的主题。 不能修改邮件正文。
-    - **包括自定义 JSON 有效负载**：替代操作组使用的 Webhook JSON，并将默认有效负载替换为自定义有效负载。 有关 Webhook 格式的详细信息，请参阅[针对日志警报的 Webhook 操作](monitor-alerts-unified-log-webhook.md)
+    - **电子邮件通知**：替代电子邮件中的电子邮件主题，通过操作组发送；如果所述操作组中存在一个或多个操作。 无法修改邮件正文，并且该字段不能用于电子邮件地址。
+    - **包括自定义 Json 有效负载**：替代操作组所使用的 Webhook JSON；如果所述操作组中存在一个或多个 Webhook 操作。 用户可以指定所有在关联的操作组中配置的 Webhook 所使用的 JSON 格式；有关 Webhook 格式的详细信息，请参阅[针对日志警报的 Webhook 操作](monitor-alerts-unified-log-webhook.md)。 “测试 Webhook”选项用于检查格式并根据采用示例 JSON 的目的进行处理，正如标记所指，此选项仅用于测试目的。
 
         ![日志警报的操作替代](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
 

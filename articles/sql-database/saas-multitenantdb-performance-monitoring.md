@@ -1,26 +1,20 @@
 ---
-title: "在多租户 SaaS 应用中监视分片多租户 Azure SQL 数据库的性能 | Microsoft 文档"
-description: "在多租户 SaaS 应用中监视和管理分片多租户 Azure SQL 数据库的性能"
-keywords: "sql 数据库教程"
+title: 在多租户 SaaS 应用中监视分片多租户 Azure SQL 数据库的性能 | Microsoft 文档
+description: 在多租户 SaaS 应用中监视和管理分片多租户 Azure SQL 数据库的性能
+keywords: sql 数据库教程
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: sstein
-ms.openlocfilehash: 3e97f0635a856256dd08c29d33d8058be9c8d8b4
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 53d8c099d68fd7eb3f00fb4d1be7ec54404521ff
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理分片多租户 Azure SQL 数据库的性能
 
@@ -81,7 +75,7 @@ New-TenantBatch 脚本在分片多租户数据库内使用唯一的租户密钥�
 
 | 演示 | 方案 |
 |:--|:--|
-| #N/A | 生成正常强度的负载（约 30 DTU） |
+| 2 | 生成正常强度的负载（约 30 DTU） |
 | 3 | 生成单个租户的突发时间更长的负载|
 | 4 | 生成单个租户的 DTU 突发个数更高的负载（约 70 个 DTU）|
 | 5 | 在单个租户上生成高强度负载（约 90 个 DTU）和在所有其他租户上生成正常强度负载 |

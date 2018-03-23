@@ -1,8 +1,8 @@
 ---
-title: "在基于 Linux 的 Azure 应用服务中生成 PHP 和 MySQL Web 应用 | Microsoft Docs"
-description: "了解如何创建一个可在 Azure 中运行的 PHP 应用，并将其连接到 MySQL 数据库。"
+title: 在基于 Linux 的 Azure 应用服务中生成 PHP 和 MySQL Web 应用 | Microsoft Docs
+description: 了解如何创建一个可在 Azure 中运行的 PHP 应用，并将其连接到 MySQL 数据库。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 ms.service: app-service-web
@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7c3107d7385413d15445a8b3a3cd2476973ab632
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 5d1e1e448ce4cf6f1b6f617a68eb4d89333c180d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>在基于 Linux 的 Azure 应用服务中生成 PHP 和 MySQL Web 应用
 
@@ -155,7 +155,7 @@ php artisan serve
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-no-h.md)] 
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
 ### <a name="create-a-mysql-server"></a>创建 MySQL 服务器
 
@@ -334,7 +334,7 @@ Laravel 应用程序在 _/public_ 目录中启动。 适用于应用服务的默
 
 ### <a name="create-a-web-app"></a>创建 Web 应用
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-no-h.md)] 
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
 ### <a name="configure-database-settings"></a>配置数据库设置
 

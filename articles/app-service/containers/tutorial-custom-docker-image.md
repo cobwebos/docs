@@ -1,12 +1,12 @@
 ---
-title: "为用于容器的 Web 应用使用自定义 Docker 映像 - Azure | Microsoft Docs"
-description: "如何对用于容器的 Web 应用使用自定义 Docker 映像。"
-keywords: "azure 应用服务、web 应用、linux、docker、容器"
+title: 为用于容器的 Web 应用使用自定义 Docker 映像 - Azure | Microsoft Docs
+description: 如何对用于容器的 Web 应用使用自定义 Docker 映像。
+keywords: azure 应用服务、web 应用、linux、docker、容器
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: SyntaxC4
 manager: SyntaxC4
-editor: 
+editor: ''
 ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.service: app-service
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: b7f05f02249f86e6bee7f89c6ecf8016ede9c4fb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: acfe066d9ad4882bcff85b7fd51dc7d3b2278235
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>对用于容器的 Web 应用使用自定义 Docker 映像
 
@@ -193,7 +193,7 @@ v1.0.0: digest: sha256:21f2798b20555f4143f2ca0591a43b4f6c8138406041f2d32ec908974
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-no-h.md)] 
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
 ### <a name="create-a-linux-app-service-plan"></a>创建 Linux 应用服务计划
 
@@ -347,7 +347,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 
 ## <a name="use-a-private-image-from-docker-hub-optional"></a>使用 Docker 中心的专用映像（可选）
 
-在[“创建 Web 应用”](#create-a-web-app)中，使用 `az webapp create` 命令指定 Docker 中心的映像。 这完全适用于公共映像。 若要使用专用映像，需在 Azure Web 应用中配置 Docker 帐户 ID 和密码。
+在[创建 Web 应用](#create-a-web-app)中，使用 `az webapp create` 命令指定 Docker 中心的映像。 这完全适用于公共映像。 若要使用专用映像，需在 Azure Web 应用中配置 Docker 帐户 ID 和密码。
 
 在 Cloud Shell 中，请在 `az webapp create` 命令之后执行 [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set)。 替换 *\<app_name>*，同时将 _\<docker-id>_ 和 _\<password>_ 替换为 Docker ID 和密码。
 

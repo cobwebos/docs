@@ -1,8 +1,8 @@
 ---
-title: "使用用于 Visual Studio 的 Azure 流分析工具 | Microsoft Docs"
-description: "用于 Visual Studio 的 Azure 流分析工具入门教程"
+title: 使用用于 Visual Studio 的 Azure 流分析工具 | Microsoft Docs
+description: 用于 Visual Studio 的 Azure 流分析工具入门教程
 keywords: visual studio
-documentationcenter: 
+documentationcenter: ''
 services: stream-analytics
 author: su-jie
 manager: jhubbard
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
+ms.date: 03/05/2018
 ms.author: sujie
-ms.openlocfilehash: b06eae6b85f2ca41390955cde2499af2531e2e12
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 71e7247226f9432b3f9590ca87ac33883ea576ce
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>使用用于 Visual Studio 的 Azure 流分析工具
 用于 Visual Studio 的 Azure 流分析工具现已推出正式版。 这些工具为流分析用户带来了更丰富的体验，可让他们进行故障排除以及编写复杂的查询，甚至可以在本地编写查询。 还可将流分析作业导出到 Visual Studio 项目中。
 
 ## <a name="introduction"></a>介绍
-本教程介绍如何使用用于 Visual Studio 的流分析工具来创建、编写、本地测试、管理和调试流分析作业。 
+本教程介绍如何使用用于 Visual Studio 的流分析工具来创建、编写、本地测试、管理和调试流分析作业。 创建作业后，可使用 CI/CD Nuget 包安装 Azure 的持续集成和部署进程。若要了解详细信息，请参阅[使用流分析 VS 工具安装 CI/CD 管道](stream-analytics-tools-for-visual-studio-cicd.md)一文。
 
 完成本教程之后，能够：
 

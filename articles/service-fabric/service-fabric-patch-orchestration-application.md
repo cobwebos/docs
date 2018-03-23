@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric 修补业务流程应用程序 | Microsoft Docs"
-description: "用于在 Service Fabric 群集中自动修补操作系统的应用程序。"
+title: Azure Service Fabric 修补业务流程应用程序 | Microsoft Docs
+description: 用于在 Service Fabric 群集中自动修补操作系统的应用程序。
 services: service-fabric
 documentationcenter: .net
 author: novino
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/16/2018
+ms.date: 3/07/2018
 ms.author: nachandr
-ms.openlocfilehash: bb3afdd3afa81664589f738945a63d20013d5291
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 43a0675b1613e7bcf338537c1203de7df9a02fc4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
@@ -136,7 +136,9 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="download-the-app-package"></a>下载应用包
 
-从该[下载链接](https://go.microsoft.com/fwlink/P/?linkid=849590)下载应用程序。
+可以从[存档链接](https://go.microsoft.com/fwlink/?linkid=869566)下载应用程序和安装脚本。
+
+可以从 [sfpkg 链接](https://go.microsoft.com/fwlink/?linkid=869567)下载 sfpkg 格式的应用程序。 这对[基于 Azure 资源管理器的应用程序部署](service-fabric-application-arm-resource.md)非常有用。
 
 ## <a name="configure-the-app"></a>配置应用
 
@@ -361,8 +363,12 @@ A. 某些产品更新仅会显示在其各自的更新/修补历史记录中。 
 ### <a name="version-111"></a>版本 1.1.1
 - 修复了 NodeAgentService 的 SetupEntryPoint 中的 bug，可阻止安装 NodeAgentNTService。
 
-### <a name="version-120-latest"></a>版本 1.2.0（最新版本）
+### <a name="version-120"></a>版本 1.2.0
 
 - 系统重启工作流中的 Bug 修复。
 - 由于修复任务准备过程中的运行状况检查，RM 任务创建过程中的 Bug 修复未能按预期方式进行。
 - 将窗口服务 POANodeSvc 的启动模式从自动更改为延时自动。
+
+### <a name="version-121-latest"></a>版本 1.2.1（最新）
+
+- 群集缩减工作流中的 Bug 修复。 引入了针对不存在节点中 POA 修复任务的垃圾回收逻辑。

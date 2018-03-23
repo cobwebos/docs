@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 逻辑应用中使用 ProjectOnline 连接器 | Microsoft Docs"
-description: "使用 Azure 应用服务创建逻辑应用。 Project Online 是用于项目组合管理 (PPM) 和 Microsoft 日常工作的灵活联机解决方案。 通过 Office 365 交付的 Project Online 允许组织快速开始使用强大的项目管理功能，以便在几乎所有设备上随时随地规划、管理项目和项目组合投资，并设置优先顺序。"
+title: 在 Azure 逻辑应用中使用 ProjectOnline 连接器 | Microsoft Docs
+description: 使用 Azure 应用服务创建逻辑应用。 Project Online 是用于项目组合管理 (PPM) 和 Microsoft 日常工作的灵活联机解决方案。 通过 Office 365 交付的 Project Online 允许组织快速开始使用强大的项目管理功能，以便在几乎所有设备上随时随地规划、管理项目和项目组合投资，并设置优先顺序。
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: be1fc1dd5b9122a62bfb1810ff29f6a38900c9b3
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: d1fe1707fc71e91436e51ad29c20500dab88957d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-projectonline-connector"></a>ProjectOnline 连接器入门
 Project Online 是用于项目组合管理 (PPM) 和 Microsoft 日常工作的灵活联机解决方案。 通过 Office 365 交付的 Project Online 允许组织快速开始使用强大的项目管理功能，以便在几乎所有设备上随时随地规划、管理项目和项目组合投资，并设置优先顺序。

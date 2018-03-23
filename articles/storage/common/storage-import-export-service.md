@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 导入/导出将数据传入/传出 Azure 存储 | Microsoft Docs"
-description: "了解如何在 Azure 门户中创建导入和导出作业，以便将数据传入/传出到 Azure 存储。"
+title: 使用 Azure 导入/导出将数据传入/传出 Azure 存储 | Microsoft Docs
+description: 了解如何在 Azure 门户中创建导入和导出作业，以便将数据传入/传出到 Azure 存储。
 author: muralikk
 manager: syadav
 services: storage
@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: e9fce2530bc4e654304b946cea1715ac8e2ce6fa
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7eaf4c3c9b390e87dd8494cd6bfb2ea155451608
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>使用 Microsoft Azure 导入/导出服务将数据传输到 Azure 存储中
 本文分步介绍如何使用 Azure 导入/导出服务将磁盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure 存储传输到硬盘驱动器，然后再寄送到本地站点。 可将单个内部 SATA 磁盘驱动器中的数据导入 Azure Blob 存储或 Azure 文件。 
@@ -294,7 +294,7 @@ Azure 门户中的此映像会显示示例作业的驱动器状态：
 | 不适用 | 不属于任何作业的驱动器将作为其他作业的一部分送至数据中心。 | 完成与原始包裹关联的作业后，驱动器将标记为额外驱动器并寄回给客户。 |
 
 ### <a name="time-to-process-job"></a>处理作业的时间
-处理导入/导出作业的时间各不相同，取决于不同的因素，例如寄送时间、作业类型、要复制的数据的类型和大小，以及所提供磁盘的大小。 导入/导出服务没有 SLA，但在收到磁盘之后，服务力求在 7 到 10 天内完成复制。 可以通过 REST API 更密切地跟踪作业进度。 在“列出作业”操作中有一个完成百分比参数，该参数指示复制进度。 如果需要估算何时才能完成时间要求紧的导入/导出作业，请联系我们。
+处理导入/导出作业的时间各不相同，取决于很多因素，例如寄送时间、数据中心的加载、要复制的数据的作业类型和大小，以及作业中的磁盘数量。 导入/导出服务没有 SLA，但在收到磁盘之后，服务力求在 7 到 10 天内完成复制。 除了在 Azure 门户上发布的状态以外，REST API 还可用于跟踪作业进度。 作业操作 API 调用的列表中的完成百分比参数提供了复制进度的百分比。
 
 ### <a name="pricing"></a>定价
 **驱动器处理费用**

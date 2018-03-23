@@ -1,8 +1,8 @@
 ---
-title: "Microsoft Authenticator 应用的帮助和支持 | Microsoft Docs"
-description: "提供与 Microsoft Authenticator 应用和 Azure 多重身份验证相关的常见问题与解答列表。"
+title: Microsoft Authenticator 应用的帮助和支持 | Microsoft Docs
+description: 提供与 Microsoft Authenticator 应用和 Azure 多重身份验证相关的常见问题与解答列表。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: f04d5bce-e99e-4f75-82d1-ef6369be3402
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
-ms.author: barlan
+ms.date: 03/08/2018
+ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user
-ms.openlocfilehash: 2c109a53866f9fff8c61a157cf1194fe4dd6e1ac
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: aa3c6bb9196a17ae41c05458533f73f3ec315bd8
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator 应用常见问题解答
 
@@ -28,6 +28,14 @@ ms.lasthandoff: 01/29/2018
 Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使用 Azure 多重身份验证时使用该应用。 Microsoft 验证器应用适用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594) 和 [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
+
+### <a name="what-data-does-the-authenticator-store-on-my-behalf-and-how-can-i-delete-it"></a>哪些数据是 Authenticator 以我的名义存储的，我如何删除它？
+
+Microsoft Authenticator 存储添加帐户时创建的帐户信息。 使用 Authenticator 时，创建诊断日志以进行调试，并存储有用的数据，帮助 Microsoft 诊断任何不可预见的问题。 可以通过依次打开“帮助” > “发送日志” > “查看日志”来访问日志数据。
+
+可以通过删除帐户磁贴来删除数据。 这将删除应用程序正在使用的所有帐户信息，包括日志。 
+
+有关 Microsoft 如何使用你的数据的详细信息，请访问：https://servicetrust.microsoft.com/ViewPage/PrivacyGettingStarted
 
 ### <a name="what-are-the-codes-in-the-app-for-why-does-the-number-keep-counting-down"></a>此应用中的代码有哪些用途？ 为什么数字会保持倒计数？
 

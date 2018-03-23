@@ -1,11 +1,11 @@
 ---
-title: "如何使用访问控制 (Java) | Microsoft Docs"
-description: "了解如何在 Azure 中以 Java 开发和使用访问控制。"
+title: 如何使用访问控制 (Java) | Microsoft Docs
+description: 了解如何在 Azure 中以 Java 开发和使用访问控制。
 services: active-directory
 documentationcenter: java
 author: rmcmurray
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 247dfd59-0221-4193-97ec-4f3ebe01d3c7
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
 ms.openlocfilehash: b555ef40fae8156d2957643697d6450ef22b215a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>如何使用 Eclipse 在 Azure Access Control 服务上对 Web 用户进行身份验证
 本指南将说明如何在 Azure Toolkit for Eclipse 中使用 Azure 访问控制服务 (ACS)。 有关 ACS 的详细信息，请参阅[后续步骤](#next_steps)部分。
@@ -80,7 +80,7 @@ Azure ACS 在基于声明的标识的主体的基础上构建，它是一种创�
 * Java 开发人员工具包 (JDK) 1.6 版或更高版本。
 * Eclipse IDE for Java EE Developers, Indigo 或更高版本。 可从 <http://www.eclipse.org/downloads/> 下载。 
 * 分发基于 Java 的 Web 服务器或应用程序服务器，例如 Apache Tomcat、GlassFish、JBoss 应用程序服务器或 Jetty。
-* Azure 订阅，可从 <http://www.microsoft.com/windowsazure/offers/> 获得。
+* 一种 Azure 订阅，可从 <http://www.microsoft.com/windowsazure/offers/> 获取。
 * Azure Toolkit for Eclipse 2014 年 4 月版或更高版本。 有关详细信息，请参阅[安装用于 Eclipse 的 Azure 工具包](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx)。
 * 要用于应用程序的 X.509 证书。 需要此证书的公用证书 (.cer) 格式版和个人信息交换 (.PFX) 格式版。 （本教程后面介绍用于创建此证书的选项）。
 * 熟悉[在 Eclipse 中创建 Azure 的 Hello World 应用程序](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)中介绍的 Azure 计算模拟器和部署技术。
@@ -94,7 +94,7 @@ Azure ACS 在基于声明的标识的主体的基础上构建，它是一种创�
 4. 输入该命名空间的名称。 Azure 会验证该名称是否是唯一的。
 5. 选择在其中使用该命名空间的区域。 为了获得最佳性能，请使用要在其中部署应用程序的区域。
 6. 如果具有多个订阅，请选择用于 ACS 命名空间的订阅。
-7. 单击“创建” 。
+7. 单击“创建”。
 
 Azure 将创建并激活该命名空间。 请等到新命名空间的状态变为“活动”，再继续操作。 
 
@@ -121,7 +121,7 @@ Windows Live ID 现已作为 ACS 命名空间的 IP 启用。 紧接着，将 Ja
    4. 在“返回 URL”中，键入 ACS 将安全令牌返回到的 URL。 对于此任务，请键入 **http://localhost:8080/MyACSHelloWorld/index.jsp**
       ![要在计算模拟器中使用的信赖方返回 URL][relying_party_return_url_emulator]
    5. 接受其余字段中的默认值。
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 现在已成功完成对 Java Web 应用程序的配置，该应用程序在 Azure 计算模拟器（位于 http://localhost:8080/）中运行时会作为 ACS 命名空间中的 RP。 接下来，创建 ACS 用于处理 RP 的声明的规则。
 
@@ -169,7 +169,7 @@ Windows Live ID 现已作为 ACS 命名空间的 IP 启用。 紧接着，将 Ja
    
     ![为 ACS 示例添加 JSP 文件][add_jsp_file_acs]
    
-    单击“下一步”。
+    单击“资源组名称” 的 Azure 数据工厂。
 4. 在“选择 JSP 模板”对话框中，选择“新建 JSP 文件 (html)”，并单击“完成”。
 5. 在 Eclipse 中打开 index.jsp 文件后，添加文本以显示 **Hello ACS World!** 在现有 `<body>` 元素中。 更新后的 `<body>` 内容应与下图中所示类似：
    
@@ -205,10 +205,10 @@ Windows Live ID 现已作为 ACS 命名空间的 IP 启用。 紧接着，将 Ja
 4. 单击“完成” 。
 5. 单击“在 Azure 模拟器中运行”按钮。
 6. 当 Java Web 应用程序在计算模拟器中启动后，请关闭浏览器的所有实例（以便任何当前浏览器会话不会妨碍 ACS 登录测试）。
-7. 通过在浏览器中打开 <http://localhost:8080/MyACSHelloWorld/>（如果选中“需要 HTTPS 连接”，则打开 <https://localhost:8080/MyACSHelloWorld/>）来运行应用程序。 系统会提示输入 Windows Live ID 登录名，随后会被定向到为信赖方应用程序指定的返回 URL。
+7. 运行应用程序，方法是打开浏览器中的 <http://localhost:8080/MyACSHelloWorld/>（或者如果选中了“需要 HTTPS 连接”，则打开 <https://localhost:8080/MyACSHelloWorld/>）。 系统会提示输入 Windows Live ID 登录名，随后会被定向到为信赖方应用程序指定的返回 URL。
 8. 查看完应用程序后，请单击“重置 Azure 模拟器”按钮。
 
-## <a name="deploy-to-azure"></a>部署到 Azure
+## <a name="deploy-to-azure"></a>“部署到 Azure”
 要部署到 Azure，需要更改 ACS 命名空间的信赖方领域和返回 URL。
 
 1. 在 Azure 管理门户的“编辑信赖方应用程序”页中，将“领域”修改为已部署站点的 URL。 将 **example** 替换为为部署指定的 DNS 名称。
@@ -233,7 +233,7 @@ Windows Live ID 现已作为 ACS 命名空间的 IP 启用。 紧接着，将 Ja
 14. 单击“确定”关闭“MyACSHelloWorld 的属性”对话框。
 15. 在 Eclipse 中，单击“发布到 Azure 云”按钮。 像在[在 Eclipse 中创建 Azure 的 Hello World 应用程序](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)主题的**将应用程序部署到 Azure**部分中一样对提示进行响应。 
 
-部署 Web 应用程序后，关闭任何打开的浏览器会话，运行 Web 应用程序，系统会提示使用 Windows Live ID 凭据登录，然后将这些凭据发送到信赖方应用程序的返回 URL。
+部署 Web 应用程序后，关闭任何打开的浏览器会话，运行 Web 应用程序，系统将提示使用 Windows Live ID 凭据登录，并将这些凭据发送到信赖方应用程序的返回 URL。
 
 使用完 ACS Hello World 应用程序后，请务必删除部署（可在[在 Eclipse 中创建 Azure 的 Hello World 应用程序](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)主题中了解如何删除部署）。
 

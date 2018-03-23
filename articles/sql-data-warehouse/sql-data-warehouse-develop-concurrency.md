@@ -1,11 +1,11 @@
 ---
-title: "SQL 数据仓库中的并发和工作负荷管理 | Microsoft 文档"
-description: "在开发解决方案之前，了解 SQL 数据仓库中的并发性和工作负荷管理。"
+title: SQL 数据仓库中的并发和工作负荷管理 | Microsoft 文档
+description: 在开发解决方案之前，了解 SQL 数据仓库中的并发性和工作负荷管理。
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: performance
 ms.date: 08/23/2017
 ms.author: joeyong;barbkess;kavithaj
 ms.openlocfilehash: eaf2d43286dbaa52ada1430fbb7ce1e37f41c0d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="concurrency-and-workload-management-in-sql-data-warehouse"></a>SQL 数据仓库中的并发性和工作负荷管理
 若要大规模提供可预测性能，可以通过 Microsoft Azure SQL 数据仓库控制并发级别和资源分配（例如内存和 CPU 优先级）。 本文介绍并发性和工作负荷管理的概念，说明如何实现这两种功能，以及如何在数据仓库中控制它们。 SQL 数据仓库工作负荷管理旨在协助提供多用户环境支持。 它不适用于多租户工作负荷。
@@ -154,9 +154,9 @@ SQL 数据仓库对在更高资源类级别中运行的查询赋予了更多内�
 ### <a name="allocation-and-consumption-of-concurrency-slots-for-dynamic-resource-classes"></a>动态资源类并发槽的分配和使用  
 | DWU | 并发查询数上限 | 分配的并发槽数 | smallrc 使用的槽数 | mediumrc 使用的槽数 | largerc 使用的槽数 | xlargerc 使用的槽数 |
 |:--- |:---:|:---:|:---:|:---:|:---:|:---:|
-| DW100 |4 |4 |1 |1 |#N/A |4 |
-| DW200 |8 |8 |1 |#N/A |4 |8 |
-| DW300 |12 |12 |1 |#N/A |4 |8 |
+| DW100 |4 |4 |1 |1 |2 |4 |
+| DW200 |8 |8 |1 |2 |4 |8 |
+| DW300 |12 |12 |1 |2 |4 |8 |
 | DW400 |16 |16 |1 |4 |8 |16 |
 | DW500 |20 |20 |1 |4 |8 |16 |
 | DW600 |24 |24 |1 |4 |8 |16 |
@@ -170,18 +170,18 @@ SQL 数据仓库对在更高资源类级别中运行的查询赋予了更多内�
 ### <a name="allocation-and-consumption-of-concurrency-slots-for-static-resource-classes"></a>静态资源类并发槽的分配和使用  
 | DWU | 并发查询数上限 | 分配的并发槽数 |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:--- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| DW100 |4 |4 |1 |#N/A |4 |4 |4 |4 |4 |4 |
-| DW200 |8 |8 |1 |#N/A |4 |8 |8 |8 |8 |8 |
-| DW300 |12 |12 |1 |#N/A |4 |8 |8 |8 |8 |8 |
-| DW400 |16 |16 |1 |#N/A |4 |8 |16 |16 |16 |16 |
-| DW500 | 20| 20| 1| #N/A| 4| 8| 16| 16| 16| 16|
-| DW600 | 24| 24| 1| #N/A| 4| 8| 16| 16| 16| 16|
-| DW1000 | 32| 40| 1| #N/A| 4| 8| 16| 32| 32| 32|
-| DW1200 | 32| 48| 1| #N/A| 4| 8| 16| 32| 32| 32|
-| DW1500 | 32| 60| 1| #N/A| 4| 8| 16| 32| 32| 32|
-| DW2000 | 32| 80| 1| #N/A| 4| 8| 16| 32| 64| 64|
-| DW3000 | 32| 120| 1| #N/A| 4| 8| 16| 32| 64| 64|
-| DW6000 | 32| 240| 1| #N/A| 4| 8| 16| 32| 64| 128|
+| DW100 |4 |4 |1 |2 |4 |4 |4 |4 |4 |4 |
+| DW200 |8 |8 |1 |2 |4 |8 |8 |8 |8 |8 |
+| DW300 |12 |12 |1 |2 |4 |8 |8 |8 |8 |8 |
+| DW400 |16 |16 |1 |2 |4 |8 |16 |16 |16 |16 |
+| DW500 | 20| 20| 1| 2| 4| 8| 16| 16| 16| 16|
+| DW600 | 24| 24| 1| 2| 4| 8| 16| 16| 16| 16|
+| DW1000 | 32| 40| 1| 2| 4| 8| 16| 32| 32| 32|
+| DW1200 | 32| 48| 1| 2| 4| 8| 16| 32| 32| 32|
+| DW1500 | 32| 60| 1| 2| 4| 8| 16| 32| 32| 32|
+| DW2000 | 32| 80| 1| 2| 4| 8| 16| 32| 64| 64|
+| DW3000 | 32| 120| 1| 2| 4| 8| 16| 32| 64| 64|
+| DW6000 | 32| 240| 1| 2| 4| 8| 16| 32| 64| 128|
 
 从这些表格中可以看到，以 DW1000 运行的 SQL 数据仓库可分配最多 32 个并发查询和总共 40 个并发槽。 如果所有用户都在 smallrc 中运行，则允许 32 个并发查询，因为每个查询只使用 1 个并发槽。 如果 DW1000 上的所有用户均在 mediumrc 中运行，则在每个分布中对每个查询分配 800 MB 内存，每个查询将总共分配 47 GB 内存，同时将用户的并发数限制为 5 个（40 个并发槽 / 每个 mediumrc 用户 8 个槽）。
 
@@ -562,7 +562,7 @@ SQL 数据仓库通过使用工作负荷组来实现资源类。 总共有八个
 | 工作负荷组 | 并发槽映射 | MB / 分布区 | 重要性映射 |
 |:--- |:---:|:---:|:--- |
 | SloDWGroupC00 |1 |100 |中型 |
-| SloDWGroupC01 |#N/A |200 |中型 |
+| SloDWGroupC01 |2 |200 |中型 |
 | SloDWGroupC02 |4 |400 |中型 |
 | SloDWGroupC03 |8 |800 |中型 |
 | SloDWGroupC04 |16 |1,600 |高 |
@@ -573,14 +573,14 @@ SQL 数据仓库通过使用工作负荷组来实现资源类。 总共有八个
 从**分配和使用并发槽**图中可以看到，对于 smallrc、mediumrc、largerc 和 xlargerc，DW500 分别使用 1、4、8 和 16 个并发槽。 可以在上面的图中查找这些值，以找到每个资源类的重要性。
 
 ### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500 的资源类到重要性的映射
-| 资源类 | 工作负荷组 | 使用的并发槽数 | MB / 分布区 | 重要性 |
+| 资源类 | 工作负荷组 | 使用的并发槽数 | MB / 分布区 | Importance |
 |:--- |:--- |:---:|:---:|:--- |
 | smallrc |SloDWGroupC00 |1 |100 |中型 |
 | mediumrc |SloDWGroupC02 |4 |400 |中型 |
 | largerc |SloDWGroupC03 |8 |800 |中型 |
 | xlargerc |SloDWGroupC04 |16 |1,600 |高 |
 | staticrc10 |SloDWGroupC00 |1 |100 |中型 |
-| staticrc20 |SloDWGroupC01 |#N/A |200 |中型 |
+| staticrc20 |SloDWGroupC01 |2 |200 |中型 |
 | staticrc30 |SloDWGroupC02 |4 |400 |中型 |
 | staticrc40 |SloDWGroupC03 |8 |800 |中型 |
 | staticrc50 |SloDWGroupC03 |16 |1,600 |高 |

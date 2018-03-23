@@ -1,11 +1,11 @@
 ---
-title: "在 Azure Log Analytics 中使用日志搜索门户 | Microsoft Docs"
-description: "本文所含教程介绍如何使用日志搜索门户创建日志搜索并分析存储在 Log Analytics 工作区中的数据。  本教程包括运行一些简单的查询，返回不同类型的数据和分析结果。"
+title: 在 Azure Log Analytics 中使用日志搜索门户 | Microsoft Docs
+description: 本文所含教程介绍如何使用日志搜索门户创建日志搜索并分析存储在 Log Analytics 工作区中的数据。  本教程包括运行一些简单的查询，返回不同类型的数据和分析结果。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 3a2e8803d51d81ab0eda3dc814d01822e17bc14e
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 37213012e817f0fae21a47a4334a519bbbca206b
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>在 Azure Log Analytics 中使用日志搜索门户创建日志搜索
 

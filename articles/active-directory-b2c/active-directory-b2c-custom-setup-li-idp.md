@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory B2C：使用自定义策略将 LinkedIn 添加为 OAuth2 标识提供者"
-description: "有关如何使用 OAuth2 协议和自定义策略设置 LinkedIn 应用程序的操作指南文章"
+title: Azure Active Directory B2C：使用自定义策略将 LinkedIn 添加为 OAuth2 标识提供者
+description: 有关如何使用 OAuth2 协议和自定义策略设置 LinkedIn 应用程序的操作指南文章
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: yoelhor
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
 ms.openlocfilehash: 77e2b9b283e4051370ffb905681135c27512834e
-ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
-ms.translationtype: MT Enhanced
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略将 LinkedIn 添加为标识提供者
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 本文介绍如何使用[自定义策略](active-directory-b2c-overview-custom.md)来让 LinkedIn 帐户用户登录。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)一文中的步骤。
 
 ## <a name="step-1-create-a-linkedin-account-application"></a>步骤 1：创建 LinkedIn 帐户应用程序
@@ -43,7 +43,7 @@ ms.lasthandoff: 01/29/2018
 
     c. 选择一种**应用程序用途**。
 
-    d.单击“下一步”。 在“网站 URL”框中，粘贴 **https://login.microsoftonline.com**。
+    d.单击“下一步”。 在“网站 URL”框中，粘贴 https://login.microsoftonline.com。
 
     e. 键入**办公电子邮件**地址和**办公电话**号码。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 01/29/2018
 
 3. 选择“身份验证”，记下“客户端 ID”和“客户端机密”值。
 
-4. 在“已授权的重定向 URL”框中，粘贴 **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp**。 将 {*tenant*} 替换为你自己的租户名称（例如 contosob2c.onmicrosoft.com）。 请务必使用 HTTPS 方案。 
+4. 在“已授权的重定向 URL”框中，粘贴 https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp。 将 {*tenant*} 替换为你自己的租户名称（例如 contosob2c.onmicrosoft.com）。 请务必使用 HTTPS 方案。 
 
     ![LinkedIn 帐户 - 设置已授权的重定向 URL](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app3.png)
 

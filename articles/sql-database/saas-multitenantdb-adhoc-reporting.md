@@ -1,26 +1,23 @@
 ---
-title: "针对多个 Azure SQL 数据库运行特别报告查询 | Microsoft 文档"
-description: "在多租户应用示例中针对多个 SQL 数据库运行特别报告查询。"
-keywords: "sql 数据库教程"
+title: 针对多个 Azure SQL 数据库运行特别报告查询 | Microsoft Docs
+description: 在多租户应用示例中针对多个 SQL 数据库运行特别报告查询。
+keywords: sql 数据库教程
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: Inactive
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: ''
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: AyoOlubeko
-ms.openlocfilehash: c0ed3eb344ea8ec7e2d3e86125d60c8cc28f723d
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: d33b95cf4dc05f4eb9f79509cda56e8ab51b7701
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>针对多个 Azure SQL 数据库运行即席分析查询
 

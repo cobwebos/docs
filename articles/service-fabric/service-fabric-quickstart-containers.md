@@ -1,12 +1,12 @@
 ---
-title: "创建 Azure Service Fabric Windows 容器应用程序 | Microsoft Docs"
-description: "在本快速入门中，请在 Azure Service Fabric 上创建第一个 Windows 容器应用程序。"
+title: 创建 Azure Service Fabric Windows 容器应用程序 | Microsoft Docs
+description: 在本快速入门中，请在 Azure Service Fabric 上创建第一个 Windows 容器应用程序。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
 editor: vturecek
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: quickstart
@@ -26,7 +26,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 在 Service Fabric 群集上运行 Windows 容器中的现有应用程序不需要对应用程序进行任何更改。 本快速入门介绍如何在 Service Fabric 应用程序中部署预建的 Docker 容器映像。 完成后，你会有一个正在运行的 Windows Server 2016 Nano Server 和 IIS 容器。 本快速入门介绍如何部署 Windows 容器。若要部署 Linux 容器，请阅读[此快速入门](service-fabric-quickstart-containers-linux.md)。
 
-![IIS default web page][iis-default]
+![iis-default][iis-default]
 
 可以通过此快速入门了解如何：
 > [!div class="checklist"]

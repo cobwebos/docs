@@ -1,11 +1,11 @@
 ---
-title: "部署 Azure 资源的多个实例 | Microsoft Docs"
-description: "在部署资源时使用 Azure 资源管理器模板中的复制操作和数组执行多次迭代。"
+title: 部署 Azure 资源的多个实例 | Microsoft Docs
+description: 在部署资源时使用 Azure 资源管理器模板中的复制操作和数组执行多次迭代。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 94d95810-a87b-460f-8e82-c69d462ac3ca
 ms.service: azure-resource-manager
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: e19833cb58f37f5f8b83d5558d74255583137684
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 8dfb664c7041d70f3ece812edb76df38a35e41f1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中部署资源或属性的多个实例
 本文演示如何按条件部署资源，以及如何在 Azure 资源管理器模板中进行迭代操作以创建资源的多个实例。
@@ -344,6 +344,8 @@ Resource Manager 在部署期间扩展 `copy` 数组。 数组的名称将成为
     "outputs": {}
 }
 ```
+
+<a id="looping-on-a-nested-resource" />
 
 ## <a name="iteration-for-a-child-resource"></a>子资源的迭代
 不能对子资源使用 copy 循环。 要创建通常定义为嵌套在另一个资源中的资源的多个实例，必须将该资源创建为顶级资源。 通过 type 和 name 属性定义与父资源的关系。

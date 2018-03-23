@@ -1,11 +1,11 @@
 ---
-title: "在工作流中使用 XML 消息 - Azure 逻辑应用 | Microsoft 文档"
-description: "使用 Enterprise Integration Pack 处理、验证、转换和扩展逻辑应用和业务方案中的 XML 消息"
+title: 在工作流中使用 XML 消息 - Azure 逻辑应用 | Microsoft 文档
+description: 使用 Enterprise Integration Pack 处理、验证、转换和扩展逻辑应用和业务方案中的 XML 消息
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: divyaswarnkar
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.service: logic-apps
 ms.workload: integration
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 02/27/2017
-ms.author: LADocs; mandia
-ms.openlocfilehash: 3fec4935f5317be4bf8c9e05f1c24a7c05381b1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: LADocs; divswa
+ms.openlocfilehash: 495cb44219ee9d8ca20ea17c373545668839f4c5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="validate-and-transform-xml-encode-and-decode-flat-files-and-enrich-messages-features-in-logic-apps"></a>在逻辑应用中验证和转换 XML、编码和解码平面文件，以及扩展消息功能
 

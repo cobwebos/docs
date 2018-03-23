@@ -1,6 +1,6 @@
 ---
-title: "教程：使用 Azure Active Directory 为 Workday 配置自动用户预配 | Microsoft Docs"
-description: "了解如何将 Workday 用作 Active Directory 和 Azure Active Directory 的标识数据源。"
+title: 教程：使用 Azure Active Directory 为 Workday 配置自动用户预配 | Microsoft Docs
+description: 了解如何将 Workday 用作 Active Directory 和 Azure Active Directory 的标识数据源。
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 2db9e60fe2807b1aa8ed7cab7eed6f7db8059a89
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 825bf3f6a3ea07cb229f00c81ad699d792ac53f9
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
 
@@ -426,8 +426,8 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 1. 打开 **Services.msc**，并停止 **Microsoft Azure AD Connect Provisioning Agent** 服务。
 2. 转到代理安装文件夹（例如：C:\Program Files\Microsoft Azure AD Connect Provisioning Agent）。
 3. 在文本编辑器中打开 **SyncAgnt.exe.config**。
-4. 将 https://manage.hub.syncfabric.windowsazure.com/Management 替换为 **https://eu.manage.hub.syncfabric.windowsazure.com/Management**
-5. 将 https://provision.hub.syncfabric.windowsazure.com/Provisioning 替换为 **https://eu.provision.hub.syncfabric.windowsazure.com/Provisioning**
+4. 将 https://manage.hub.syncfabric.windowsazure.com/Management 替换为 https://eu.manage.hub.syncfabric.windowsazure.com/Management
+5. 将 https://provision.hub.syncfabric.windowsazure.com/Provisioning 替换为 https://eu.provision.hub.syncfabric.windowsazure.com/Provisioning
 6. 保存 **SyncAgnt.exe.config** 文件。
 7. 打开 **Services.msc**，并启动 **Microsoft Azure AD Connect Provisioning Agent** 服务。
 
@@ -654,7 +654,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 1. 下载并安装 [Workday Studio](https://community.workday.com/studio-download)。 需要使用 Workday 社区帐户来访问安装程序。
 
-2. 从以下 URL 下载 Workday Human_Resources WDSL 文件：https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl
+2. 从此 URL 中下载 Workday Human_Resources WDSL 文件：https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl
 
 3. 启动 Workday Studio。
 
@@ -768,12 +768,27 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 * 以前存在的，审核日志在位于欧盟的 Azure AD 租户中不显示的问题现已得到解决。 但是，需要对欧盟的 Azure AD 租户进行附加的代理配置。 有关详细信息，请参阅[第 3 部分：配置本地同步代理](#Part 3: Configure the on-premises synchronization agent)
 
+## <a name="gdpr-compliance"></a>GDPR 符合性
 
-## <a name="additional-resources"></a>其他资源
-* [教程：在 Workday 与 Azure Active Directory 之间配置单一登录](active-directory-saas-workday-tutorial.md)
-* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+[一般数据保护条例 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) 是欧盟 (EU) 的一项数据保护和隐私法律。 GDPR 针对向欧盟居民提供产品及服务，或收集和分析欧盟居民相关信息的公司、政府机构、非营利组织和其他组织制定了规则。 
+
+Azure AD 预配服务与 Microsoft 的其他服务和功能一样，都符合 GDPR。 若要详细了解 Microsoft 的 GDPR 案例，请参阅[服务条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)。
+
+但是，由于 Active Directory 的 Workday 预配解决方案需要在加入域的服务器上安装同步代理，因此需要监视某些事件以保证符合 GDPR。
+ 
+此代理在 Windows 事件日志中创建日志，其中可以包含个人身份信息。
+
+以下是保证符合 GDPR 的两种方式：
+
+1. 根据请求提取用户的数据，并从 Windows 事件日志项中删除该用户的数据。 
+2. 将源自 AADSyncAgent 进程的 Windows 事件日志保留时间控制在 48 小时以内
+
+有关如何为 Windows 事件日志配置数据保留的详细信息，请参阅[事件日志的设置](https://technet.microsoft.com/en-us/library/cc952132.aspx)。 有关 Windows 事件日志的常规信息，请参阅[本文](https://msdn.microsoft.com/en-us/library/windows/desktop/aa385772.aspx)。
+
 
 ## <a name="next-steps"></a>后续步骤
 
 * [了解如何查看日志并获取有关预配活动的报告](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
+* [了解如何在 Workday 和 Azure Active Directory 之间配置单一登录](active-directory-saas-workday-tutorial.md)
+* [了解如何将其他 SaaS 应用程序与 Azure Active Directory 进行集成](active-directory-saas-tutorial-list.md)
+

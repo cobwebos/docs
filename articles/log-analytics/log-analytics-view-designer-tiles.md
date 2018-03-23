@@ -1,11 +1,11 @@
 ---
-title: "Azure Log Analytics 中视图设计器磁贴的参考指南 | Microsoft Docs"
-description: "使用 Log Analytics 中的视图设计器，可在 Azure 门户中创建自定义视图，用于显示 Log Analytics 工作区中的各种数据可视化效果。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。"
+title: Azure Log Analytics 中视图设计器磁贴的参考指南 | Microsoft Docs
+description: 使用 Log Analytics 中的视图设计器，可在 Azure 门户中创建自定义视图，用于显示 Log Analytics 工作区中的各种数据可视化效果。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: 41787c8f-6c13-4520-b0d3-5d3d84fcf142
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: a14a6bf196c165bdffa0a9d5d343c0430cff7f29
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f341cb9430c7750909c1fc1f50c15f0620e74366
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Log Analytics 中视图设计器磁贴的参考指南
 使用 Azure Log Analytics 中的视图设计器，可在 Azure 门户中创建自定义视图，用于显示 Log Analytics 工作区中的各种数据可视化效果。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。
@@ -28,8 +28,6 @@ ms.lasthandoff: 02/21/2018
 * [视图设计器](log-analytics-view-designer.md)：概述视图设计器以及创建和编辑自定义视图的过程。
 * [可视化部件参考](log-analytics-view-designer-parts.md)：针对自定义视图中可用的可视化部件，提供了设置方面的参考指南。
 
-> [!NOTE]
-> 如果工作区已升级到[新 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则必须使用[新查询语言](https://go.microsoft.com/fwlink/?linkid=856078)编写所有视图中的查询。 将自动转换工作区升级前创建的任何视图。
 
 下表描述了可用的视图设计器磁贴：  
 

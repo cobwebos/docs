@@ -1,29 +1,27 @@
 ---
-title: "将 SQL Server 数据库迁移到 Azure SQL 数据库 | Microsoft 文档"
-description: "了解如何将 SQL Server 数据库迁移到云中的 Azure SQL 数据库。"
-keywords: "数据库迁移, SQL Server 数据库迁移, 数据库迁移工具, 迁移数据库, 迁移 SQL 数据库"
+title: 将 SQL Server 数据库迁移到 Azure SQL 数据库 | Microsoft 文档
+description: 了解如何将 SQL Server 数据库迁移到云中的 Azure SQL 数据库。
+keywords: 数据库迁移, SQL Server 数据库迁移, 数据库迁移工具, 迁移数据库, 迁移 SQL 数据库
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 9cf09000-87fc-4589-8543-a89175151bc2
+manager: craigg
 ms.service: sql-database
 ms.custom: migrate
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Active
-ms.date: 11/07/2017
+ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 8a31ed948fe9387720db61018e0edded530cd900
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 59ee56e225623295dd63bf5ae303bfe1aa8e95cf
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>将 SQL Server 数据库迁移到云中的 SQL 数据库
-本文介绍两种将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库的主要方法。 第一种方法相对简单，但需要在迁移过程中进行一定时间（可能较长）的停机。 第二种方法更复杂些，但在迁移过程中的停机时间大大缩短。
+# <a name="sql-server-database-migration-to-azure-sql-database"></a>将 SQL Server 数据库迁移到 Azure SQL 数据库
+
+本文介绍将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库中的单个或共用数据库的主要方法。 有关迁移到托管实例的信息，请参阅[将 SQL Server 实例迁移到 Azure SQL 数据库托管实例（预览）](sql-database-managed-instance-migrate.md)。 
+
+## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>迁移到单个数据库或共用数据库
+将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库中的单个或共用数据库有两种主要方法。 第一种方法相对简单，但需要在迁移过程中进行一定时间（可能较长）的停机。 第二种方法更复杂些，但在迁移过程中的停机时间大大缩短。
 
 两种方法均需使用 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) 确保源数据库与 Azure SQL 数据库兼容。 SQL 数据库 V12 除了要解决服务器级操作和跨数据库操作的相关问题之外，还要解决与 SQL Server 的[功能对等性](sql-database-features.md)问题。 依赖[部分支持或不受支持的函数](sql-database-transact-sql-information.md)的数据库和应用程序需要进行某种程度的[重新设计来修复这些不兼容性](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues)，才能迁移 SQL Server 数据库。
 
@@ -31,19 +29,22 @@ ms.lasthandoff: 12/08/2017
 > 要将非 SQL Server 数据库（包括 Microsoft Access、Sybase、MySQL Oracle 和 DB2）迁移到 Azure SQL 数据库，请参阅 [SQL Server 迁移助手](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/)。
 > 
 
-## <a name="method-1-migration-with-downtime-during-the-migration"></a>方法 1：在迁移过程中需停机的迁移
+### <a name="method-1-migration-with-downtime-during-the-migration"></a>方法 1：在迁移过程中需停机的迁移
 
- 如果可以承受一定的停机时间，或者正在针对以后的迁移执行生产数据库的测试迁移，请使用此方法。 有关教程，请参阅[迁移 SQL Server 数据库](sql-database-migrate-your-sql-server-database.md)。
+ 如果可以承受一定的停机时间，或者正在针对以后的迁移执行生产数据库的测试迁移，请使用此方法迁移到单个或共用数据库。 有关教程，请参阅[迁移 SQL Server 数据库](sql-database-migrate-your-sql-server-database.md)。
 
-以下列表包含使用此方法进行 SQL Server 数据库迁移的常规工作流。
+下面的列表包含使用此方法将 SQL Server 数据库迁移到单个或共用数据库的常规工作流。 有关迁移到托管实例的信息，请参阅[迁移到托管实例](sql-database-managed-instance-migrate.md)。
 
   ![VSSSDT 迁移示意图](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
 1. 使用最新版[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) [评估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)数据库的兼容性。
 2. 以 Transact-SQL 脚本形式准备任何必需的修补程序。
-3. 对要迁移的源数据库进行事务一致性复制 - 确保不对源数据库进行进一步的更改（也可在迁移完成后手动应用任何此类更改）。 有许多方法可以使数据库处于静默状态，例如禁用客户端连接以创建[数据库快照](https://msdn.microsoft.com/library/ms175876.aspx)。
+3. 进行迁移时，创建正在迁移的源数据库的事务一致副本，或暂停源数据库中发生的新事务。 实现后一种选择的方法包括禁用客户端连接或创建[数据库快照](https://msdn.microsoft.com/library/ms175876.aspx)。 迁移后，可以使用事务复制来更新已迁移的数据库，该数据库包含迁移的截止时间点后发生的更改。 请参阅[使用事务迁移进行迁移](sql-database-cloud-migrate.md#method-2-use-transactional-replication)。  
 4. 部署 Transact-SQL 脚本，将修补程序应用到数据库副本。
 5. 通过使用数据迁移助手，将数据库副本[迁移](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql)到新的 Azure SQL 数据库。
+
+> [!NOTE]
+> 还可以使用 BACPAC 文件，而不是 DMA。 请参阅[将 BACPAC 文件导入到新的 Azure SQL 数据库](sql-database-import.md)。
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>优化迁移过程中的数据传输性能 
 
@@ -60,7 +61,7 @@ ms.lasthandoff: 12/08/2017
 
 在迁移完成后[更新统计信息](https://msdn.microsoft.com/library/ms187348.aspx)并进行完全扫描。
 
-## <a name="method-2-use-transactional-replication"></a>方法 2：使用事务复制
+### <a name="method-2-use-transactional-replication"></a>方法 2：使用事务复制
 
 如果在发生迁移时你无法承受从生产中删除 SQL Server 数据库的后果，可以使用 SQL Server 事务复制作为迁移解决方案。 若要使用此方法，源数据库必须满足[事务复制要求](https://msdn.microsoft.com/library/mt589530.aspx)且兼容 Azure SQL 数据库。 有关使用 AlwaysOn 的 SQL 复制的信息，请参阅[配置 AlwaysOn 可用性组 (SQL Server) 的复制](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server)。
 
@@ -90,16 +91,16 @@ ms.lasthandoff: 12/08/2017
    -  [使用 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_0)
    -  [使用 Transact-SQL](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
 
-### <a name="some-tips-and-differences-for-migrating-to-sql-database"></a>迁移到 SQL 数据库的一些提示和差异
+迁移到 SQL 数据库的一些提示和差异
 
-1. 使用本地分发服务器 
+- 使用本地分发服务器 
    - 这会对服务器产生性能影响。 
    - 如果性能影响无法接受，可使用其他服务器，但会增加管理的复杂性。
-2. 选择快照文件夹时，请确保所选文件夹足以保留想要复制的每张表的 BCP。 
-3. 在完成之前，创建快照会锁定相关联的表，因此请适当进行快照计划。 
-4. Azure SQL 数据库仅支持推送订阅。 只能从源数据库添加订阅服务器。
+- 选择快照文件夹时，请确保所选文件夹足以保留想要复制的每张表的 BCP。 
+- 在完成之前，创建快照会锁定相关联的表，因此请适当进行快照计划。 
+- Azure SQL 数据库仅支持推送订阅。 只能从源数据库添加订阅服务器。
 
-## <a name="resolving-database-migration-compatibility-issues"></a>解决数据库迁移的兼容性问题
+### <a name="resolving-database-migration-compatibility-issues"></a>解决数据库迁移的兼容性问题
 根据源数据库中的 SQL Server 版本以及正在迁移的数据库复杂性，可能会发现各种不同的不兼容性问题。 旧版 SQL Server 的兼容性问题更多。 除了使用所选搜索引擎的目标 Internet 搜索以外，还可以使用以下资源：
 
 * [Azure SQL 数据库中不支持的 SQL Server 数据库功能](sql-database-transact-sql-information.md)
@@ -110,6 +111,10 @@ ms.lasthandoff: 12/08/2017
 * [SQL Server 2005 中已停用的数据库引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
 
 除了搜索 Internet 和使用这些资源，还可以使用 [MSDN SQL Server 社区论坛](https://social.msdn.microsoft.com/Forums/sqlserver/home?category=sqlserver)或 [StackOverflow](http://stackoverflow.com/)。
+
+> [!IMPORTANT]
+> 使用 SQL 数据库托管实例可迁移现有 SQL Server 实例及其数据库，而几乎不会出现兼容性问题。 请参阅[什么是托管实例](sql-database-managed-instance.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 Azure SQL EMEA 工程师博客中的脚本[监视迁移过程中的 tempdb 使用情况](https://blogs.msdn.microsoft.com/azuresqlemea/2016/12/28/lesson-learned-10-monitoring-tempdb-usage/)。

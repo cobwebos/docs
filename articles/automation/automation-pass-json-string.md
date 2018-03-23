@@ -1,23 +1,21 @@
 ---
-title: "将 JSON 对象传递到 Azure 自动化 Runbook | Microsoft Docs"
-description: "如何将参数作为 JSON 对象传递给 runbook"
+title: 将 JSON 对象传递到 Azure 自动化 Runbook
+description: 如何将参数作为 JSON 对象传递给 runbook
 services: automation
-documentationcenter: dev-center-name
-author: georgewallace
-manager: carmonm
-keywords: "powershell, runbook, json, azure 自动化"
 ms.service: automation
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: powershell
-ms.workload: TBD
-ms.date: 06/15/2017
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: 5390ba34a25713aed84d6e778335e30f27c2b1f8
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.date: 03/16/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+keywords: powershell, runbook, json, azure 自动化
+ms.openlocfilehash: c5ceced9f37cb76c8c760a7f2d1c680f98e704c3
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>将 JSON 对象传递到 Azure 自动化 Runbook
 
@@ -29,7 +27,7 @@ ms.lasthandoff: 12/14/2017
 PowerShell Runbook 会启动一个 Azure VM，从传入的 JSON 获取 VM 的参数。
 
 ## <a name="prerequisites"></a>先决条件
-若要完成本教程，需要以下各项：
+要完成本教程，需要以下各项：
 
 * Azure 订阅。 如果还没有帐户，则可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或<a href="/pricing/free-account/" target="_blank">[注册免费帐户](https://azure.microsoft.com/free/)。
 * [自动化帐户](automation-sec-configure-azure-runas-account.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。  此帐户必须有权启动和停止虚拟机。

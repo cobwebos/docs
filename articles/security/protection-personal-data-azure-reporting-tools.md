@@ -1,29 +1,28 @@
 ---
-title: "使用 Azure 报告工具来阐述对个人数据的保护 | Microsoft Docs"
-description: "如何使用 Azure 报告服务和技术来帮助保护个人数据的隐私。"
+title: 使用 Azure 报告工具来阐述对个人数据的保护 | Microsoft Docs
+description: 使用 Azure Reporting Services 主动保护个人数据的隐私，以遵守一般数据保护条例 (GDPR)。
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 397161cf2eaea9712fec352a45f5fc49e8da486c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2c677a1dea001c6a414304fbaa683c3787b355b1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>使用 Azure 报告工具来阐述对个人数据的保护
 
-本文介绍如何使用 Azure 报告服务和技术来帮助保护个人数据的隐私。
-
+本文介绍如何使用 Azure 报告服务和技术来帮助保护个人数据的隐私。 此信息可用于遵守行业或政府法规，如一般保护数据条例 (GDPR)。
 ## <a name="scenario"></a>方案
 
 总部位于美国的一家大型邮轮公司正在拓展其运营，以便在地中海、亚得里亚海和波罗的海以及英属岛屿提供路线。 为帮助实现这些目的，该公司并购了意大利、德国、丹麦和英国的几家小型邮轮公司。

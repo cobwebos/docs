@@ -1,12 +1,12 @@
 ---
-title: "如何在 Microsoft Azure 中使用 PerfInsights | Microsoft Docs"
-description: "了解如何使用 PerfInsights 来排查 Windows VM 性能问题。"
+title: 如何在 Microsoft Azure 中使用 PerfInsights | Microsoft Docs
+description: 了解如何使用 PerfInsights 来排查 Windows VM 性能问题。
 services: virtual-machines-windows'
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
 editor: na
-tags: 
+tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: f15875610e2035c6f4c10c36e19c02f3e045b3ea
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: ee8334cbe9256b7a5ecd5e96afa2f15d6389afa8
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights 
 
-[PerfInsights](http://aka.ms/perfinsightsdownload) 是自动执行的脚本，可收集有用的诊断信息。 它还可以运行 I/O 压力负载以及提供分析报告，以帮助排查 Azure 中的 Windows 虚拟机性能问题。 安装 [Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md)后，它可以作为独立脚本在虚拟机上运行，或直接从门户运行。
+[PerfInsights](http://aka.ms/perfinsightsdownload) 是一种自助诊断工具，用于收集和分析诊断数据，并提供报告以帮助解决 Azure 中的 Windows 虚拟机性能问题。 安装 [Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md)后，PerfInsights 可以作为独立工具在虚拟机上运行，或直接从门户运行。
 
-如果你遇到虚拟机性能问题，我们建议在联系支持人员之前先运行此脚本。
+如果遇到虚拟机性能问题，我们建议在联系支持人员之前先运行此工具。
 
 ## <a name="supported-troubleshooting-scenarios"></a>支持的故障排除方案
 
@@ -42,8 +42,6 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 -   任务列表，用于当前在系统中运行的所有应用程序
 
--   由 msinfo32 针对虚拟机创建的信息文件
-
 -   Microsoft SQL Server 数据库配置设置（前提是已确定 VM 为运行 SQL Server 的服务器）
 
 -   存储可靠性计数器
@@ -55,7 +53,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 这属于被动收集信息，不会影响系统。 
 
 >[!Note]
->此方案自动包括在下述每个方案中。
+>此方案自动包括在下述每个方案中：
 
 ### <a name="benchmarking"></a>基准测试
 
@@ -67,15 +65,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 ### <a name="slow-vm-analysis"></a>慢速 VM 分析 
 
-此方案使用在 Generalcounters.txt 文件中指定的计数器运行[性能计数器](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx)跟踪。 如果确定该 VM 是运行 SQL Server 的服务器，它会运行性能计数器跟踪。 为此，该 VM 会使用 Sqlcounters.txt 中的计数器，并包含性能诊断数据。
-
-### <a name="slow-vm-analysis-and-benchmarking"></a>慢速 VM 分析和基准测试
-
-此方案运行[性能计数器](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx)跟踪，随后运行 [Diskspd](https://github.com/Microsoft/diskspd) 基准测试。 
-
-> [!Note]
-> 此方案可能影响系统，不应在实时生产系统中运行。 必要时可在专用维护时段运行此方案，以免出现问题。 因跟踪或基准测试而导致工作负荷增加时，可能会对 VM 性能造成负面影响。
->
+此方案使用在 RuleEngineConfig.json 文件中指定的计数器运行[性能计数器](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx)跟踪。 如果 VM 确定为运行 SQL Server 的服务器，则会运行性能计数器跟踪。 通过使用在 RuleEngineConfig.json 文件中找到的计数器，它也会执行此操作。 此方案还包括性能诊断数据。
 
 ### <a name="azure-files-analysis"></a>Azure 文件分析 
 
@@ -101,40 +91,40 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 ### <a name="custom-slow-vm-analysis"></a>自定义慢速 VM 分析 
 
-运行自定义的慢速 VM 分析时，可以选择要并行运行的跟踪。 如果需要，可以运行所有这些跟踪（性能计数器、Xperf、网络和 StorPort）。 跟踪完成后，工具将运行 Diskspd 基准测试（如果已选择）。 
+运行自定义的慢速 VM 分析时，可以选择要并行运行的跟踪。 如果需要，可以运行所有这些跟踪（性能计数器、Xperf、网络和 StorPort）。  
 
 > [!Note]
 > 此方案可能影响系统，不应在实时生产系统中运行。 必要时可在专用维护时段运行此方案，以免出现问题。 因跟踪或基准测试而导致工作负荷增加时，可能会对 VM 性能造成负面影响。
 >
 
-## <a name="what-kind-of-information-is-collected-by-the-script"></a>脚本收集哪类信息？
+## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>PerfInsights 收集哪类信息？
 
 将会收集有关 Windows VM、磁盘或存储池配置、性能计数器、日志和各种跟踪的信息。 收集的内容取决于所用的性能方案。 下表提供了详细信息：
 
 |收集的数据                              |  |  | 性能方案 |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                              | 收集基本配置 | 基准测试 | 慢速 VM 分析 | 慢速 VM 分析和基准测试 | Azure 文件分析 | 自定义慢速 VM 分析 |
-| 事件日志中的信息      | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| 系统信息               | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| 卷映射                       | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| 磁盘映射                         | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| 正在运行的任务                    | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| 存储可靠性计数器     | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| 存储信息              | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| Fsutil 输出                    | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| 筛选驱动程序信息               | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| Netstat 输出                   | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| 网络配置            | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| 防火墙配置           | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| SQL Server 配置         | 是                        | 是                                | 是                      | 是                            | 是                  | 是                  |
-| 性能诊断跟踪 * | 是                        | 是                                | 是                      |                                | 是                  | 是                  |
-| 性能计数器跟踪 **     |                            |                                    |                          |                                |                      | 是                  |
-| SMB 计数器跟踪 **             |                            |                                    |                          |                                | 是                  |                      |
-| SQL Server 计数器跟踪 **      |                            |                                    |                          |                                |                      | 是                  |
-| Xperf 跟踪                      |                            |                                    |                          |                                |                      | 是                  |
-| StorPort 跟踪                   |                            |                                    |                          |                                |                      | 是                  |
-| 网络跟踪                    |                            |                                    |                          |                                | 是                  | 是                  |
-| Diskspd 基准跟踪 ***      |                            | 是                                |                          | 是                            |                      |                      |
+|                               | 收集基本配置 | 基准测试 | 慢速 VM 分析 | Azure 文件分析 | 自定义慢速 VM 分析 |
+| 事件日志中的信息       | 是                        | 是                                | 是                      | 是                  | 是                  |
+| 系统信息                | 是                        | 是                                | 是                      | 是                  | 是                  |
+| 卷映射                        | 是                        | 是                                | 是                      | 是                  | 是                  |
+| 磁盘映射                          | 是                        | 是                                | 是                      | 是                  | 是                  |
+| 正在运行的任务                     | 是                        | 是                                | 是                      | 是                  | 是                  |
+| 存储可靠性计数器      | 是                        | 是                                | 是                      | 是                  | 是                  |
+| 存储信息               | 是                        | 是                                | 是                      | 是                  | 是                  |
+| Fsutil 输出                     | 是                        | 是                                | 是                      | 是                  | 是                  |
+| 筛选驱动程序信息                | 是                        | 是                                | 是                      | 是                  | 是                  |
+| Netstat 输出                    | 是                        | 是                                | 是                      | 是                  | 是                  |
+| 网络配置             | 是                        | 是                                | 是                      | 是                  | 是                  |
+| 防火墙配置            | 是                        | 是                                | 是                      | 是                  | 是                  |
+| SQL Server 配置          | 是                        | 是                                | 是                      | 是                  | 是                  |
+| 性能诊断跟踪 *  | 是                        | 是                                | 是                      | 是                  | 是                  |
+| 性能计数器跟踪 **      |                            |                                    | 是                      |                      | 是                  |
+| SMB 计数器跟踪 **              |                            |                                    |                          | 是                  |                      |
+| SQL Server 计数器跟踪 **       |                            |                                    | 是                      |                      | 是                  |
+| Xperf 跟踪                       |                            |                                    |                          |                      | 是                  |
+| StorPort 跟踪                    |                            |                                    |                          |                      | 是                  |
+| 网络跟踪                     |                            |                                    |                          | 是                  | 是                  |
+| Diskspd 基准跟踪 ***       |                            | 是                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>性能诊断跟踪 (*)
@@ -168,116 +158,87 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 ### <a name="diskspd-benchmark-trace-"></a>Diskspd 基准跟踪 (***)
 Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
 
-## <a name="run-the-perfinsights-script-on-your-vm"></a>在 VM 上运行 PerfInsights 脚本
+## <a name="run-the-perfinsights-tool-on-your-vm"></a>在 VM 上运行 PerfInsights 工具
 
-### <a name="what-do-i-have-to-know-before-i-run-the-script"></a>在运行此脚本之前，必须了解什么？ 
+### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>在运行此工具之前，必须了解什么？ 
 
-#### <a name="script-requirements"></a>脚本要求
+#### <a name="tool-requirements"></a>工具要求
 
--  此脚本必须在有性能问题的 VM 上运行。 
+-  此工具必须在有性能问题的 VM 上运行。 
 
 -  支持以下操作系统：Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016、Windows 8.1 和 Windows 10。
 
-#### <a name="possible-problems-when-you-run-the-script-on-production-vms"></a>在生产 VM 上运行该脚本时可能会出现的问题：
+#### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>在生产 VM 上运行该工具时可能会出现的问题
 
--  对于任何基准测试方案或配置为使用 Xperf 或 Diskspd 的“自定义慢速 VM 分析”方案，该脚本可能对 VM 的性能造成负面影响。 不应在生产环境中运行这些方案。
+-  对于基准测试方案或配置为使用 Xperf 或 Diskspd 的“自定义慢速 VM 分析”方案，该工具可能对 VM 的性能造成负面影响。 不应在实时生产环境中运行这些方案。
 
--  对于任何基准测试方案或配置为使用 Diskspd 的“自定义慢速 VM 分析”方案，请确保没有其他后台活动干扰 I/O 工作负荷。
+-  对于基准测试方案或配置为使用 Diskspd 的“自定义慢速 VM 分析”方案，请确保没有其他后台活动干扰 I/O 工作负荷。
 
--  默认情况下，此脚本使用临时存储驱动器来收集数据。 如果跟踪保持启用状态较长的时间，则收集的数据量会与之相关。 这会降低临时磁盘上空间的可用性，因此可能影响任何依赖于该驱动器的应用程序。
+-  默认情况下，此工具使用临时存储驱动器来收集数据。 如果跟踪保持启用状态较长的时间，则收集的数据量会与之相关。 这会降低临时磁盘上空间的可用性，因此可能影响任何依赖于该驱动器的应用程序。
 
 ### <a name="how-do-i-run-perfinsights"></a>如何运行 PerfInsights？ 
 
-可以通过安装 [Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md)在虚拟机上运行 PerfInsights。 也可以将其作为独立脚本运行。 
+可以通过安装 [Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md)在虚拟机上运行 PerfInsights。 也可以将其作为独立工具运行。 
 
 **安装和运行来自 Azure 门户的 PerfInsights**
 
 有关此选项的详细信息，请参阅[安装 Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md#install-the-extension)。  
 
-**在独立模式下运行 PerfInsights 脚本**
+**在独立模式下运行 PerfInsights**
 
-若要运行 PerfInsights 脚本，请按照以下步骤操作：
+要运行 PerfInsights 工具，请按照以下步骤操作：
 
 
 1. 下载 [PerfInsights.zip](http://aka.ms/perfinsightsdownload)。
 
-2. 取消阻止 PerfInsights.zip 文件。 为此，请右键单击 PerfInsights.zip 文件，并选择“属性”。 在“常规”选项卡上，选择“取消阻止”，然后选择“确定”。 这可以确保运行脚本时不会出现其他任何安全提示。  
+2. 取消阻止 PerfInsights.zip 文件。 为此，请右键单击 PerfInsights.zip 文件，并选择“属性”。 在“常规”选项卡上，选择“取消阻止”，然后选择“确定”。 这可以确保运行工具时不会出现其他任何安全提示。  
 
     ![PerfInsights 的“属性”屏幕截图，其中突出显示了“解除锁定”](media/how-to-use-perfInsights/unlock-file.png)
 
-3.  将压缩的 PerfInsights.zip 文件展开到临时驱动器（默认情况下，通常为 D 驱动器）中。 压缩的文件应包含以下文件和文件夹：
+3.  将压缩的 PerfInsights.zip 文件展开到临时驱动器（默认情况下，通常为 D 驱动器）中。 
 
-    ![zip 文件夹中的文件屏幕截图](media/how-to-use-perfInsights/file-folder.png)
-
-4.  以管理员身份打开 Windows PowerShell，然后运行 PerfInsights.ps1 脚本。
+4.  以管理员身份打开 Windows 命令提示符，然后运行 PerfInsights.exe 以查看可用的命令行参数。
 
     ```
-    cd <the path of PerfInsights folder >
-    Powershell.exe -ExecutionPolicy UnRestricted -NoProfile -File .\\PerfInsights.ps1
+    cd <the path of PerfInsights folder>
+    PerfInsights
     ```
-
-    可能需要输入“y”确认想要更改执行策略。
-
-    在“声明和许可”对话框中，可以选择将诊断信息与 Microsoft 支持部门共享。 此外还必须同意许可协议才能继续。 做出选择，然后选择“运行脚本”。
-
-    ![“声明和许可”对话框屏幕截图](media/how-to-use-perfInsights/disclaimer.png)
-
-5.  运行脚本时，请提交案例号（如果已提供）。 然后选择“确定”。
+    ![PerfInsights 命令行输出的屏幕快照](media/how-to-use-perfInsights/PerfInsightsCommandline.png)
     
-    ![支持 ID 对话框的屏幕截图](media/how-to-use-perfInsights/enter-support-number.png)
+    运行 PerfInsights 方案的基本语法是：
+    
+    ```
+    PerfInsights /run <ScenarioName> [AdditionalOptions]
+    ```
 
-6.  选择临时存储驱动器。 该脚本可以自动检测驱动器的驱动器号。 如果此阶段出现问题，系统可能会提示你选择驱动器（默认驱动器为 D）。 生成的日志存储在此处的 log\_collection 文件夹中。 输入或接受驱动器号后，选择“确定”。
+    可以使用以下示例运行 5 分钟慢速 VM 方案：
+    
+    ```
+    PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics
+    ```
 
-    ![临时驱动器对话框的屏幕截图](media/how-to-use-perfInsights/enter-drive.png)
+    可以使用以下示例运行 5 分钟 Xperf 和性能计数器跟踪的自定义方案：
+    
+    ```
+    PerfInsights /run custom xp /d 300 /AcceptDisclaimerAndShareDiagnostics
+    ```
 
-7.  从提供的列表中选择故障排除方案。
+    可以使用 /list 命令查找所有可用方案和选项：
+    
+    ```
+    PerfInsights /list
+    ```
 
-       ![故障排除方案列表的屏幕截图](media/how-to-use-perfInsights/select-scenarios.png)
+    >[!Note]
+    >运行方案之前，PerfInsights 会提示用户同意共享诊断信息并同意 EULA。 使用“/AcceptDisclaimerAndShareDiagnostics”选项跳过这些提示。 
+    >
+    >如果具有 Microsoft 的活跃支持票证，以及根据所合作的支持工程师的请求正在运行的 PerfInsights，请确保使用 /sr 选项提供支持票证编号。
+    >
+    >默认情况下，PerfInsights 将尝试将其更新到最新版本（如果可用）。 使用 /SkipAutoUpdate 或 /sau 参数跳过自动更新。  
+    >
+    >如果未指定持续时间开关 /d，PerfInsights 将在运行 vmslow、azurefiles 和自定义方案时提示重现该问题。 
 
-还可以在没有 UI 的情况下运行 PerfInsights。 在没有 UI 的情况下，以下命令可以运行“慢速 VM 分析”故障排除方案。 它会提示你同意免责声明和 EULA（与在步骤 4 中提到的相同）。
-
-        powershell.exe -ExecutionPolicy UnRestricted -NoProfile -Command ".\\PerfInsights.ps1 -NoGui -Scenario vmslow -TracingDuration 30"
-
-如果希望 PerfInsights 在无提示模式下运行，请使用 -AcceptDisclaimerAndShareDiagnostics 参数。 例如，使用以下命令：
-
-        powershell.exe -ExecutionPolicy UnRestricted -NoProfile -Command ".\\PerfInsights.ps1 -NoGui -Scenario vmslow -TracingDuration 30 -AcceptDisclaimerAndShareDiagnostics"
-
-### <a name="how-do-i-troubleshoot-issues-while-running-the-script"></a>如何在运行脚本时排查问题？
-
-如果脚本异常终止，可以通过将脚本与 cleanup 开关一起运行来恢复一致状态，如下所示：
-
-    powershell.exe -ExecutionPolicy UnRestricted -NoProfile -Command ".\\PerfInsights.ps1 -Cleanup"
-
-如果在自动检测临时驱动器时出现问题，系统可能会提示你选择驱动器（默认驱动器为 D）。
-
-![临时驱动器对话框的屏幕截图](media/how-to-use-perfInsights/enter-drive.png)
-
-脚本会卸载实用程序工具并删除临时文件夹。
-
-### <a name="troubleshoot-other-script-issues"></a>排查其他脚本问题 
-
-如果运行脚本时出现问题，请按 Ctrl+C 中断脚本。 如果在多次尝试后仍遇到脚本失败问题，请以调试模式运行脚本，方法是在启动时使用“-Debug”参数选项。
-
-故障发生后，请复制 PowerShell 控制台的完整输出，并将其发送给 Microsoft 支持部门代理，后者会协助你排查问题。
-
-### <a name="how-do-i-run-the-script-in-custom-slow-vm-analysis-mode"></a>如何在“自定义慢速 VM 分析”模式下运行脚本？
-
-选择“自定义慢速 VM 分析”可以启用多个并行跟踪（使用 Shift 键可选择多个跟踪）：
-
-![方案列表的屏幕截图](media/how-to-use-perfInsights/select-scenario.png)
-
-选择“性能计数器跟踪”、“Xperf 跟踪”、“网络跟踪”或“Storport 跟踪”方案时，请遵照后续对话框中的说明操作。 尝试在启动跟踪后重现性能变慢的问题。
-
-通过以下对话框启动跟踪：
-
-![“启动性能计数器跟踪”对话框的屏幕截图](media/how-to-use-perfInsights/start-trace-message.png)
-
-若要停止跟踪，必须在第二个对话框中确认命令。
-
-![“停止性能计数器跟踪”对话框的屏幕截图](media/how-to-use-perfInsights/stop-trace-message.png)
-![“停止所有跟踪”对话框的屏幕截图](media/how-to-use-perfInsights/ok-trace-message.png)
-
-完成跟踪或操作后，D:\\log\_collection （或临时驱动器）中会出现一个新文件。 该文件的名称为 **CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip**。 可将此文件发送给支持代理进行分析。
+完成跟踪或操作后，D:\\log\_collection （或临时驱动器）中会出现一个新文件。 该文件的名称为 **CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip**。 可以将此文件发送给支持代理进行分析，或打开 zip 文件里的报告以查看结果和建议。
 
 ## <a name="review-the-diagnostics-report"></a>查看诊断报告
 

@@ -52,11 +52,12 @@
 ### [SQL 数据库弹性查询](how-to-use-elastic-query-with-sql-data-warehouse.md)
 
 
-## 监视和优化
-### [工作负荷管理](resource-classes-for-workload-management.md)
+## 查询性能
+### [资源类](resource-classes-for-workload-management.md)
 ### [列存储压缩](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
-### [监视](sql-data-warehouse-manage-monitor.md)
-### [故障排除](sql-data-warehouse-troubleshoot.md)
+
+## [监视](sql-data-warehouse-manage-monitor.md)
+
 
 ## 开发数据仓库
 ### [概述](sql-data-warehouse-overview-develop.md)
@@ -87,6 +88,8 @@
 #### [用户定义的架构](sql-data-warehouse-develop-user-defined-schemas.md)
 #### [变量赋值](sql-data-warehouse-develop-variable-assignment.md)
 #### [视图](sql-data-warehouse-develop-views.md)
+
+## [故障排除](sql-data-warehouse-troubleshoot.md)
 
 # 操作指南
 ## 服务功能

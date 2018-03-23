@@ -1,6 +1,6 @@
 ---
-title: "为 Azure 应用服务购买和配置 SSL 证书 | Microsoft Docs"
-description: "了解如何购买应用服务证书并将其绑定到应用服务应用"
+title: 为 Azure 应用服务购买和配置 SSL 证书 | Microsoft Docs
+description: 了解如何购买应用服务证书并将其绑定到应用服务应用
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
 ms.openlocfilehash: 6c0125bf0bd22912a21372b5a7da6846e924e6cd
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/08/2017
 
 ## <a name="step-1---log-in-to-azure"></a>步骤 1 - 登录 Azure
 
-通过 http://portal.azure.com 登录到 Azure 门户
+在 http://portal.azure.com 登录 Azure 门户
 
 ## <a name="step-2---place-an-ssl-certificate-order"></a>步骤 2 - 订购 SSL 证书
 

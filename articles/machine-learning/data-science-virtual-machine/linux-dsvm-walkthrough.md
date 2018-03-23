@@ -1,8 +1,8 @@
 ---
-title: "Azure 上的 Linux 数据科学虚拟机中的数据科学 | Microsoft Docs"
-description: "如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。"
+title: Azure 上的 Linux 数据科学虚拟机中的数据科学 | Microsoft Docs
+description: 如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 03/16/2018
 ms.author: bradsev;paulsh
-ms.openlocfilehash: 650b11d66f3ca32266b9842af77c909e125b4e4d
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 9b8a9b9bba242fd7c86dc285a77317a5821948df
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure 上的 Linux 数据科学虚拟机中的数据科学
-本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松向上扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。
+本演练显示如何通过 Linux 数据科研 VM 执行几个常见的数据科学任务。 Linux 数据科研虚拟机 (DSVM) 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux 数据科研虚拟机](linux-dsvm-intro.md)主题中逐项列出了主要的软件组件。 VM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 如有必要，可以轻松扩展 VM，并在不使用时停止 VM。 因此，此资源既具有弹性，又具有成本效益。
 
 在本演练中演示的数据科学任务遵循了 [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/data-science-process/) 中所概述的步骤。 此过程针对数据科学任务提供了系统的方法，允许数据科学家团队在构建智能应用程序的生命周期内有效地协作。 数据科学过程还为数据科学提供了可供个人遵循迭代框架。
 
@@ -477,7 +477,7 @@ DSVM 已预安装 PostgreSQL。 PostgreSQL 是一个复杂的开源关系数据�
 * 将其命名为*垃圾邮件数据库*，在“驱动程序”下拉列表中，选择“PostgreSQL”。
 * 将 URL 设置为 *jdbc:postgresql://localhost/spam*。
 * 输入*用户名*和*密码*。
-* 单击 **“确定”**。
+* 单击“确定”。
 * 若要打开“连接”窗口，请双击***垃圾邮件数据库***别名。
 * 选择“连接”。
 

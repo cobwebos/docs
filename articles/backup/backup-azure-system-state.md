@@ -1,12 +1,12 @@
 ---
-title: "将 Windows 系统状态备份到 Azure | Microsoft Docs"
-description: "了解如何将 Windows Server 的系统状态和/或 Windows 计算机备份到 Azure。"
+title: 将 Windows 系统状态备份到 Azure | Microsoft Docs
+description: 了解如何将 Windows Server 的系统状态和/或 Windows 计算机备份到 Azure。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: saurabhsensharma
 manager: carmonm
-editor: 
-keywords: "如何备份; 备份文件和文件夹"
+editor: ''
+keywords: 如何备份; 备份文件和文件夹
 ms.assetid: 5b15ebf1-2214-4722-b937-96e2be8872bb
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: saurse;markgal
-ms.openlocfilehash: e7dce94e56a8b51dd1c47e306aeb1d11d0dfb45c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: df2565be7c543be061c3297f4d87aeae5eae4b8e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>备份资源管理器部署中的 Windows 系统状态
 本文介绍了如何将 Windows Server 系统状态备份到 Azure。 本教程旨在引导完成基本操作。
@@ -138,6 +138,8 @@ ms.lasthandoff: 02/21/2018
 > [!NOTE]
 > 保管库凭据只能保存到打算使用代理的 Windows Server 的本地位置。 
 >
+
+[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="install-and-register-the-agent"></a>安装并注册代理
 

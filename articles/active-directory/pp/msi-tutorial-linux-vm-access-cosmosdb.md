@@ -1,11 +1,11 @@
 ---
-title: "使用 Linux VM 上用户分配的托管服务标识 (MSI) 访问 Azure Cosmos DB"
-description: "本教程介绍使用 Linux VM 上用户分配的托管服务标识 (MSI) 访问 Azure Cosmos DB 的过程。"
+title: 使用 Linux VM 上用户分配的托管服务标识 (MSI) 访问 Azure Cosmos DB
+description: 本教程介绍使用 Linux VM 上用户分配的托管服务标识 (MSI) 访问 Azure Cosmos DB 的过程。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 02/14/2018
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 2c0c3597999e80af86f079385653d94ddfcab245
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: dbb5e9e8f9accd618599010ab2bbb4a8760e534f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-cosmos-db"></a>使用 Linux VM 上用户分配的托管服务标识 (MSI) 访问 Azure Cosmos DB 
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
 
@@ -158,10 +158,10 @@ az role assignment create --assignee <MSI PRINCIPALID> --role '<ROLE NAME>' --sc
 3. 接下来，系统会提示你输入创建“Linux VM”时添加的“密码”。 然后应可以成功登录。  
 4. 使用 CURL 获取 Azure 资源管理器的访问令牌。  
 
-    下面是针对访问令牌的 CURL 请求和响应。  将 <CLIENT ID> 替换为用户分配的 MSI 的 clientId 值：
+    下面是针对访问令牌的 CURL 请求和响应。  将 <CLIENT ID> 替换为用户分配的 MSI 的 clientId 值： 
     
     ```bash
-    curl 'http://localhost:50342/oauth2/token?resource=https://management.azure.com/&client_id=<CLIENT ID>' -H "Metadata:true"
+    curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<MSI CLIENT ID>" 
     ```
     
     > [!NOTE]

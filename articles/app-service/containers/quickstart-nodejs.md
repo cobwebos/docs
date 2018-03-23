@@ -1,11 +1,11 @@
 ---
-title: "在 Linux 上的 Azure 应用服务中创建 Node.js | Microsoft Docs"
-description: "数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Node.js Hello World。"
+title: 在 Linux 上的 Azure 应用服务中创建 Node.js | Microsoft Docs
+description: 数分钟内在 Linux 上的 Azure 应用服务中部署第一个 Node.js Hello World。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: syntaxc4
-editor: 
+editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
 ms.workload: web
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a0648832c43e2aa82b64194a103cf03f4dbd6ca8
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: a2643e65b74f44ee05001d5df26c7c77a430fbb2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中创建 Node.js Web 应用
 
@@ -78,13 +78,13 @@ npm start
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group.md)]
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-nodejs-no-h.md)]
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-nodejs-linux-no-h.md)]
 
 浏览到新建的 Web 应用。 将 _&lt;应用名称>_ 替换为 Web 应用名称。
 

@@ -1,12 +1,12 @@
 ---
-title: "在 Azure Functions 中使用代理 | Microsoft Docs"
-description: "有关如何使用 Azure Functions 代理的概述"
+title: 在 Azure Functions 中使用代理 | Microsoft Docs
+description: 有关如何使用 Azure Functions 代理的概述
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 75b568c12fd58d5599b6878dedb6c2266b6cb649
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 0e7fe474c3b247baa6550770c661af62e83b3737
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>使用 Azure Functions 代理
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 02/13/2018
 
 ## <a name="debugProxies"></a>对代理进行故障排除
 
-通过将标志 `"debug":true` 添加到 `proxy.json` 中的任何代理，将启用调试日志记录。 日志存储在 `D:\home\LogFiles\Application\Proxies\DetailedTrace` 中，可通过高级工具 (kudu) 访问。 任何 HTTP 响应也将包含 `Proxy-Trace-Location` 标头，其中包含用于访问日志文件的 URL。
+通过将标志 `"debug":true` 添加到 `proxies.json` 中的任何代理，将启用调试日志记录。 日志存储在 `D:\home\LogFiles\Application\Proxies\DetailedTrace` 中，可通过高级工具 (kudu) 访问。 任何 HTTP 响应也将包含 `Proxy-Trace-Location` 标头，其中包含用于访问日志文件的 URL。
 
 可以通过添加设置为 `true` 的 `Proxy-Trace-Enabled` 标头来从客户端调试代理。 这还会将跟踪结果记录到文件系统，并以响应中标头的形式返回跟踪 URL。
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 02/13/2018
 
 出于安全原因，你可能不想允许任何人调用服务生成跟踪。 没有登录凭据这些人将无法访问跟踪内容，但生成跟踪会占用资源并公开你正在使用函数代理。
 
-通过将 `"debug":false` 添加到 `proxy.json` 中的任何特定代理可完全禁用跟踪。
+通过将 `"debug":false` 添加到 `proxies.json` 中的任何特定代理可完全禁用跟踪。
 
 ## <a name="advanced-configuration"></a>高级配置
 

@@ -1,24 +1,20 @@
 ---
-title: "Azure 自动化入门 | Microsoft Docs"
-description: "本文简要介绍了 Azure 自动化服务。 它回顾了相关设计和实现细节，为从 Azure Marketplace 载入该服务做准备。"
+title: Azure 自动化入门
+description: 本文简要介绍了 Azure 自动化服务。 它回顾了相关设计和实现细节，为从 Azure Marketplace 载入该服务做准备。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: 
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 08/31/2017
-ms.author: magoedte
-ms.openlocfilehash: d6ee5c35ce9866f6106c7b5dbc51599b666c3eb1
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: dab404178b45828732e137835213046cedaf0d03
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="get-started-with-azure-automation"></a>Azure 自动化入门
 

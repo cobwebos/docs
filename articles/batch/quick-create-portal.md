@@ -1,6 +1,6 @@
 ---
-title: "Azure 快速入门 - 运行 Batch 作业 - 门户"
-description: "快速了解如何使用 Azure 门户运行 Batch 作业。"
+title: Azure 快速入门 - 运行 Batch 作业 - 门户
+description: 快速了解如何使用 Azure 门户运行 Batch 作业。
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -24,7 +24,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="sign-in-to-azure"></a>登录 Azure 
 
-登录 Azure 门户 (https://portal.azure.com)。
+登录 Azure 门户 ( https://portal.azure.com )。
 
 ## <a name="create-a-batch-account"></a>创建批处理帐户
 

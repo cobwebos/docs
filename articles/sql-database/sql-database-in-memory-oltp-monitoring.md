@@ -1,25 +1,19 @@
 ---
-title: "监视 XTP 内存中存储 | Microsoft 文档"
-description: "估算和监视 XTP 内存中存储用量与容量；解决容量错误 41823"
+title: 监视 XTP 内存中存储 | Microsoft 文档
+description: 估算和监视 XTP 内存中存储用量与容量；解决容量错误 41823
 services: sql-database
-documentationcenter: 
 author: jodebrui
-manager: jhubbard
-editor: 
-ms.assetid: b617308e-692c-4938-8fa2-070034a3ecef
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jodebrui
-ms.openlocfilehash: 1e7088e80cc86e3c7cf8ae8ea180d797de613e71
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c1adc6e98f7d101a6e5f3227f44b0035d9b9d157
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>监视内存中 OLTP 存储
 使用[内存中 OLTP](sql-database-in-memory.md) 时，内存优化表中的数据和表变量将驻留在内存中 OLTP 存储内。 每个高级服务层都有最大的内存中 OLTP 存储大小，详见文档[单一数据库资源限制](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels)和[弹性池资源限制](sql-database-resource-limits.md#elastic-pool-change-storage-size)。 一旦超过此限制，可能会导致插入和更新操作失败，出现错误 41823（针对独立数据库）和错误 41840（针对弹性池）。 到时，需要删除数据以回收内存，或升级数据库的性能层。

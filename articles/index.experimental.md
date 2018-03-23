@@ -1,13 +1,13 @@
 ---
 layout: HubPage
-hide_bc: True
-title: "Microsoft Azure 文档"
-description: "了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。"
-ms.openlocfilehash: 85745cf147296e053824a879108c1ea607343f57
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+hide_bc: ''
+title: Microsoft Azure 文档
+description: 了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。
+ms.openlocfilehash: 5084e6f9ab8d73e2c8ffefc95a376bc85222320c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -134,6 +134,11 @@ ms.lasthandoff: 12/11/2017
                                                         <span>Python</span>
                                                     </a>
                                                 </div>
+                                                <div class="ico48Link">
+                                                    <a href="/go/azure/">
+                                                        <span>转到</span>
+                                                    </a>
+                                                </div>
                                                 <div>
                                                     <h4>应用模型</h4>
                                                     <ul class="noBullet">
@@ -179,7 +184,7 @@ ms.lasthandoff: 12/11/2017
                                             <div class="cardText">
                                                 <h3>命令行工具</h3>
                                                 <div class="ico48Link">
-                                                    <a href="/cli/azure/overview">
+                                                    <a href="/cli/azure">
                                                         <img src="media/index/azure_dev-7.svg" alt="">
                                                         <span>Azure<br />CLI</span>
                                                     </a>
@@ -258,7 +263,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/batch/">
                                                 <img src="media/index/Batch.svg" alt="" />
-                                                <p>批处理</p>
+                                                <p>Batch</p>
                                             </a>
                                         </li>
                                         
@@ -322,7 +327,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/data-factory/">
                                                 <img src="media/index/DataFactory.svg" alt="" />
-                                                <p>Data Factory</p>
+                                                <p>数据工厂</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -355,7 +360,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/batch/">
                                                 <img src="media/index/Batch.svg" alt="" />
-                                                <p>批处理</p>
+                                                <p>Batch</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -400,7 +405,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/biztalk-services/">
                                                 <img src="media/index/BizTalkServices.svg" alt="" />
-                                                <p>Biztalk 服务</p>
+                                                <p>BizTalk 服务</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -427,7 +432,7 @@ ms.lasthandoff: 12/11/2017
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>联网</h3>
+                                    <h3>网络</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/networking/networking-overview">
@@ -733,7 +738,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/data-lake-analytics/">
                                                 <img src="media/index/DataLakeStore.svg" alt="" />
-                                                <p>Data Lake Analytics</p>
+                                                <p>数据湖分析</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1156,7 +1161,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>批处理</h3>
+                                                    <h3>Batch</h3>
                                                     <p>使用容器运行计算作业</p>
                                                 </div>
                                             </div>
@@ -1764,7 +1769,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>批处理</h3>
+                                                    <h3>Batch</h3>
                                                     <p>使用容器运行计算作业</p>
                                                 </div>
                                             </div>
@@ -2178,7 +2183,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Lake Analytics</h3>
+                                                    <h3>数据湖分析</h3>
                                                     <p>简化大数据分析的分布式分析服务</p>
                                                 </div>
                                             </div>
@@ -2568,7 +2573,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Biztalk 服务</h3>
+                                                    <h3>BizTalk 服务</h3>
                                                     <p>将企业与云无缝集成</p>
                                                 </div>
                                             </div>
@@ -3249,6 +3254,29 @@ ms.lasthandoff: 12/11/2017
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>
+                                                    <a href="/go/azure/">获取 Go SDK</a>
+                                                </h3>
+                                                <p>
+                                                    <a href="/go/azure/azure-sdk-go-qs-vm">入门</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">参考</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
                                                     <img src="media/index/azure_dev-6.svg" alt="" />
                                                 </div>
                                             </div>
@@ -3284,7 +3312,7 @@ ms.lasthandoff: 12/11/2017
                                             <div class="cardText">
                                                 <h3>Azure CLI 2.0 </h3>
                                                 <p>
-                                                    <a href="/cli/azure/overview">入门</a>
+                                                    <a href="/cli/azure">入门</a>
                                                 </p>
                                                 <p>
                                                     <a href="/cli/azure/install-azure-cli">下载 Azure CLI 2.0</a>

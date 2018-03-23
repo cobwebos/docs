@@ -1,9 +1,9 @@
 ---
-title: "在基于 HDInsight Linux 的群集上将 Hue 与 Hadoop 配合使用 — Azure | Microsoft Docs"
-description: "了解如何在 HDInsight 群集上安装 Hue，并使用隧道将请求路由至 Hue。 使用 Hue 浏览存储和运行 Hive 或 Pig。"
+title: 在基于 HDInsight Linux 的群集上将 Hue 与 Hadoop 配合使用 — Azure | Microsoft Docs
+description: 了解如何在 HDInsight 群集上安装 Hue，并使用隧道将请求路由至 Hue。 使用 Hue 浏览存储和运行 Hive 或 Pig。
 keywords: hue hadoop
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: nitinme
 ms.openlocfilehash: 5cef5e72af8a8b7c007b688b029f875e89d163ae
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Hue
 
@@ -48,7 +48,7 @@ Hue 是一组 Web 应用程序，用来与 Hadoop 群集交互。 可以使用 H
 
 ## <a name="install-hue-using-script-actions"></a>使用脚本操作安装 Hue
 
-有关用于在基于 Linux 的 HDInsight 群集上安装 Hue 的脚本，可访问 https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh。使用此脚本，可在 Azure 存储 Blob (WASB) 或 Azure Data Lake Store 作为默认存储的群集上安装 Hue。
+https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh 可提供在基于 Linux 的 HDInsight 群集上安装色调的脚本。使用此脚本，可在 Azure 存储 Blob (WASB) 或 Azure Data Lake Store 作为默认存储的群集上安装 Hue。
 
 本部分说明如何在使用 Azure 门户预配群集时使用脚本。
 

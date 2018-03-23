@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure 虚拟数据中心 | Microsoft Docs"
-description: "了解如何在 Azure 中生成虚拟数据中心"
+title: Microsoft Azure 虚拟数据中心：网络透视图 | Microsoft Docs
+description: 了解如何在 Azure 中生成虚拟数据中心
 services: networking
 author: tracsman
 manager: rossort
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jonor
-ms.openlocfilehash: 7dcc6b77bde8b8a7b485525105c1a07c53301f8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c4693d91fe81ce55c6faa6610ea19219ac5cfcb5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
-# <a name="microsoft-azure-virtual-data-center"></a>Microsoft Azure 虚拟数据中心
+# <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure 虚拟数据中心：网络透视图
 **Microsoft Azure**：更快更省地迁移、集成本地应用和数据
 
 ## <a name="overview"></a>概述
@@ -124,7 +124,7 @@ vDC 通过在多个辐射之间使用共享中心基础结构来降低总体成�
 ##### <a name="subscription-limits-and-multiple-hubs"></a>订阅限制和多个中心
 在 Azure 中，每个组件（无论何种类型）都通过 Azure 订阅进行部署。 不同 Azure 订阅中的 Azure 组件的隔离可满足不同 LOB 的需求，如设置不同级别的访问和授权。
 
-尽管与每个 IT 系统一样具有平台限制，单个 vDC 仍能增加到大量辐射。 中心部署与特定的 Azure 订阅绑定，该订阅具有相关的约束和限制（如 VNet 对等互连上限 - 请参阅 [Azure 订阅和服务限制、配额和约束条件][Limits]获取详细信息）。 如果出现限制问题，体系结构可以通过将模型从单个中心辐射型扩展为中心辐射群集实现进一步增加。 位于一个或多个 Azure 区域的多个中心可以使用 ExpressRoute 或站点到站点 VPN 实现互连。
+尽管与每个 IT 系统一样具有平台限制，单个 vDC 仍能增加到大量辐射。 中心部署与特定的 Azure 订阅绑定，该订阅具有相关的约束和限制（如 VNet 对等互连上限 - 请参阅 [Azure 订阅和服务限制、配额和约束条件][Limits]获取详细信息）。 如果出现限制问题，体系结构可以通过将模型从单个中心辐射型扩展为中心辐射群集实现进一步纵向扩展。 位于一个或多个 Azure 区域的多个中心可以使用 ExpressRoute 或站点到站点 VPN 实现互连。
 
 [![2]][2]
 
@@ -213,7 +213,7 @@ NAT 在本地边缘路由器或 Azure 环境中时可避免 IP 地址冲突，�
 
 [![7]][7]
 
-上方关系图显示通过访问 Internet 和本地网络加强两个外围，这两个外围都位于中心。 在单个中心内，可以增加连接到 Internet 的外围网络，通过使用多个 Web 应用程序防火墙 (WAF) 和/或防火墙场支持大量的 LOB。
+上方关系图显示通过访问 Internet 和本地网络加强两个外围，这两个外围都位于中心。 在单个中心内，可以扩展连接到 Internet 的外围网络，通过使用多个 Web 应用程序防火墙 (WAF) 和/或防火墙场支持大量的 LOB。
 
 [**虚拟网络**][VNet] 通常在 VNet 上生成中心，提供多个子网托管不同类型的服务，并通过 NVA、WAF 和 Azure 应用程序网关筛选和检查流入或流出 Internet 的流量。
 

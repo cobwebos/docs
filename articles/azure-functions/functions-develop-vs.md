@@ -1,11 +1,11 @@
 ---
-title: "使用 Visual Studio 开发 Azure Functions | Microsoft Docs"
-description: "了解如何使用用于 Visual Studio 2017 的 Azure Functions 工具开发和测试 Azure Functions。"
+title: 使用 Visual Studio 开发 Azure Functions | Microsoft Docs
+description: 了解如何使用用于 Visual Studio 2017 的 Azure Functions 工具开发和测试 Azure Functions。
 services: functions
 documentationcenter: .net
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: dotnet
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: ec9258a123774607ffee8705a1bc5391525567f5
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 26df11bb010414ba979077c45d01e66f17f6b12e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>用于 Visual Studio 的 Azure Functions 工具  
 
@@ -52,14 +52,15 @@ Azure Functions Tools 随附在 [Visual Studio 2017 版本 15.4](https://www.vis
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
-
-## <a name="configure-the-project-for-local-development"></a>为本地开发配置项目
-
-使用 Azure Functions 模板创建新项目时，将会获得一个包含以下文件的空 C# 项目：
+此项目模板创建 C# 项目，安装 `Microsoft.NET.Sdk.Functions` NuGet 包，并设置目标框架。 Functions 1.x 面向 .NET Framework，而 Functions 2.x 则面向 .NET Standard。 新项目包含以下文件：
 
 * **host.json**：用于配置 Functions 主机。 在本地和 Azure 中运行时，都会应用这些设置。 有关详细信息，请参阅 [host.json 参考](functions-host-json.md)。
     
 * **local.settings.json**：维护本地运行函数时使用的设置。 Azure 不使用这些设置，它们由 [Azure Functions 核心工具](functions-run-local.md)使用。 使用此文件可以在其他 Azure 服务中指定设置（例如连接字符串）。 针对项目中的函数所需的每个连接，请将新键添加到 **Values** 数组。 有关详细信息，请参阅 Azure Functions 核心工具主题中的[本地设置文件](functions-run-local.md#local-settings-file)。
+
+有关详细信息，请参阅 [Functions 类库项目](functions-dotnet-class-library.md#functions-class-library-project)。
+
+## <a name="configure-the-project-for-local-development"></a>为本地开发配置项目
 
 Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 
 
@@ -147,5 +148,6 @@ Azure Functions Core Tools 允许在本地开发计算机上运行 Azure Functio
 
 有关 Azure Functions 工具的详细信息，请参阅 [Visual Studio 2017 Tools for Azure Functions](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/)（用于 Azure Functions 的 Visual Studio 2017 工具）博客文章中的“Common Questions”（常见问题）部分。
 
-若要详细了解 Azure Functions 核心工具，请参阅[在本地编写 Azure 函数代码并对其进行测试](functions-run-local.md)。  
+若要详细了解 Azure Functions 核心工具，请参阅[在本地编写 Azure 函数代码并对其进行测试](functions-run-local.md)。
+
 若要了解有关以 .NET 类库开发函数的详细信息，请参阅 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)。 本主题还举例说明了如何使用属性来声明 Azure Functions 支持的各种类型的绑定。    

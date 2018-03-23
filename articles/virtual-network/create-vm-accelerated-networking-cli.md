@@ -1,13 +1,13 @@
 ---
-title: "创建具有加速网络的 Azure 虚拟机 | Microsoft Docs"
-description: "了解如何创建具有加速网络的 Linux 虚拟机。"
+title: 创建具有加速网络的 Azure 虚拟机 | Microsoft Docs
+description: 了解如何创建具有加速网络的 Linux 虚拟机。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 82a0a336e8315d7fe9862e22e47a6847f94bfcb1
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.custom: ''
+ms.openlocfilehash: 5c09ffe6867972e772334ae7ae1dd655cdac431f
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的 Linux 虚拟机
 
 > [!IMPORTANT] 
-> 必须创建启用加速网络的虚拟机。 现有虚拟机不能启用此功能。 可按照以下步骤启用加速网络：
+> 必须创建启用加速网络的虚拟机。 现有虚拟机不能启用此功能。 若要启用加速网络，请完成以下步骤：
 >   1. 删除虚拟机。
 >   2. 重新创建启用加速网络的虚拟机。
 >
@@ -66,9 +66,11 @@ ms.lasthandoff: 02/23/2018
 * **VM 创建：**已启用加速网络的 NIC 只能在创建 VM 时附加到该 VM。 该 NIC 无法附加到现有 VM。 如果将 VM 添加到现有可用性集，可用性集中的所有 VM 也必须启用加速网络。
 * **仅通过 Azure 资源管理器部署：**不能部署具有加速网络的虚拟机（经典）。
 
+尽管本文提供了使用 Azure CLI 创建具有加速网络的虚拟机的步骤，但也可以[使用 Azure 门户创建具有加速网络的虚拟机](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在门户中创建具有支持的操作系统和 VM 大小的虚拟机时，请在“设置”的“加速网络”下，选择“启用”。 创建虚拟机后，需要按照[确认已启用加速网络](#confirm-that-accelerated-networking-is-enabled)中的说明完成操作。
+
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/#az_login) 登录到 Azure 帐户。 在以下示例中，请将示例参数名称替换为自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVm。
+安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户。 在以下示例中，请将示例参数名称替换为自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVm。
 
 使用 [az group create](/cli/azure/group#az_group_create) 创建资源组。 以下示例在 centralus 位置创建名为 myResourceGroup 的资源组：
 

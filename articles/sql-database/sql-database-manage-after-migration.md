@@ -1,28 +1,22 @@
 ---
-title: "迁移后管理 - Azure SQL 数据库 | Microsoft Docs"
-description: "了解如何在迁移到 Azure SQL 数据库后管理数据库。"
+title: 迁移后管理 - Azure SQL 数据库 | Microsoft Docs
+description: 了解如何在迁移到 Azure SQL 数据库后管理数据库。
 services: sql-database
-documentationcenter: 
 author: joesackmsft
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: migrate
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
-ms.date: 12/06/2016
-ms.author: Joe.Sack
+ms.date: 03/16/2018
+ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: ee1d847e04e1f1fa0472d8702c7022d622b9fe0f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4e50a1be3437ab1b027c1ca0f160402239e13e92
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>云中的新 DBA - 在 Azure SQL 数据库中管理数据库
 

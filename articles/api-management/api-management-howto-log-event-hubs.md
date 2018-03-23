@@ -1,11 +1,11 @@
 ---
-title: "如何在 Azure API 管理中将事件记录到 Azure 事件中心 | Microsoft Docs"
-description: "了解如何在 Azure API 管理中将事件记录到 Azure 事件中心。"
+title: 如何在 Azure API 管理中将事件记录到 Azure 事件中心 | Microsoft Docs
+description: 了解如何在 Azure API 管理中将事件记录到 Azure 事件中心。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 88f6507d-7460-4eb2-bffd-76025b73f8c4
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 77c3e41dd4b1fdf7e518de67b353f69fcb758c60
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3f4da70d94d28496f5b08035ead0ef7acf1ca3bc
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何在 Azure API 管理中将事件记录到 Azure 事件中心
 Azure 事件中心是一个高度可缩放的数据引入服务，每秒可以引入数百万的事件，从而使你能够处理和分析连接设备和应用程序生成的海量数据。 事件中心充当事件管道“前门”，将数据收集到事件中心后，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储这些数据。 事件中心可将事件流的生成与这些事件的使用分离开来，因此，事件使用者可以根据自己的计划访问事件。
@@ -36,7 +36,7 @@ Azure 事件中心是一个高度可缩放的数据引入服务，每秒可以�
 
 若要创建记录器，请使用以下 URL 模板发出 HTTP PUT 请求：
 
-`https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2014-02-14-preview`
+`https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2017-03-01`
 
 * 将 `{your service}` 替换为 API 管理服务实例的名称。
 * 将 `{new logger name}` 替换为新记录器的所需名称。 配置 [log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) 策略时，将引用此名称
@@ -51,7 +51,7 @@ Azure 事件中心是一个高度可缩放的数据引入服务，每秒可以�
 
 ```json
 {
-  "loggertype" : "AzureEventHub",
+  "loggerType" : "AzureEventHub",
   "description" : "Sample logger description",
   "credentials" : {
     "name" : "Name of the Event Hub from the Azure Classic Portal",
@@ -60,7 +60,7 @@ Azure 事件中心是一个高度可缩放的数据引入服务，每秒可以�
 }
 ```
 
-* `loggertype` 必须设置为 `AzureEventHub`。
+* `loggerType` 必须设置为 `AzureEventHub`。
 * `description` 提供记录器的可选说明，并且可在需要时为零长度。
 * `credentials` 包含 Azure 事件中心的 `name` 和 `connectionString`。
 

@@ -1,11 +1,11 @@
 ---
-title: "监视 Azure 虚拟机的备份警报 | Microsoft Docs"
-description: "监视 Azure 虚拟机备份作业的事件和警报。 基于警报发送电子邮件。"
+title: 监视 Azure 虚拟机的备份警报 | Microsoft Docs
+description: 监视 Azure 虚拟机备份作业的事件和警报。 基于警报发送电子邮件。
 services: backup
 documentationcenter: dev-center-name
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: fed32015-2db2-44f8-b204-d89f6fd1bea2
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: markgal;trinadhk;giridham;
-ms.openlocfilehash: 0f92d63d6eabe48bfac444b79bc10e090df239ca
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fbdce5c244d733a2978d473f01c8d875cbeaa65e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>监视 Azure 虚拟机备份的警报
 警报是服务发出的响应，指出已达到或超过了某个事件阈值。 了解问题何时开始出现可能是控制业务成本的关键所在。 警报通常不会按计划发生，因此在警报发生后尽快知晓将很有用。 例如，当备份或还原作业失败时，在失败后的 5 分钟内发生警报。 在保管库仪表板中，“备份警报”磁贴显示了“关键”和“警告”级别的事件。 在“备份警报”设置中，可以查看所有事件。 但是，如果在处理某个单独的问题时发生警报，该怎么办呢？ 如果不知道警报何时发生，则无法确定相关的问题只是一个小小的麻烦，还是会导致数据透露。 为了确保适当的人员能够意识到发生了警报（何时发生警报），可以将服务配置为通过电子邮件发送警报通知。 有关设置电子邮件通知的详细信息，请参阅 [Configure notifications](backup-azure-monitor-vms.md#configure-notifications)（配置通知）。
 
 ## <a name="how-do-i-find-information-about-the-alerts"></a>如何查找有关警报的信息？
-若要查看有关引发警报的事件的信息，必须打开“备份警报”边栏选项卡。 有两种方法可以打开“备份警报”边栏选项卡：通过保管库仪表板中的“备份警报”磁贴，或者通过“警报和事件”边栏选项卡。
+若要查看有关引发警报的事件的信息，必须打开“备份警报”部分。 有两种方法可以打开“备份警报”部分：通过保管库仪表板中的“备份警报”磁贴，或者通过“警报和事件”部分。
 
 若要从“备份警报”磁贴打开“备份警报”边栏选项卡，请执行以下操作：
 
@@ -32,16 +32,16 @@ ms.lasthandoff: 02/24/2018
 
     ![“备份警报”磁贴](./media/backup-azure-monitor-vms/backup-alerts-tile.png)
 
-若要从“警报和事件”边栏选项卡打开“备份警报”边栏选项卡，请执行以下操作：
+要从“警报和事件”部分打开“备份警报”边栏选项卡，请执行以下操作：
 
 1. 在保管库仪表板中，单击“**所有设置**”。 ![“所有设置”按钮](./media/backup-azure-monitor-vms/all-settings-button.png)
 2. 在“**设置**”边栏选项卡中，单击“**警报和事件**”。 ![“警报和事件”按钮](./media/backup-azure-monitor-vms/alerts-and-events-button.png)
 3. 在“**警报和事件**”边栏选项卡中，单击“**备份警报**”。 ![“备份警报”按钮](./media/backup-azure-monitor-vms/backup-alerts.png)
 
-    “**备份警报**”边栏选项卡会打开并显示筛选的警报。
+    “备份警报”部分会打开并显示筛选的警报。
 
     ![“备份警报”磁贴](./media/backup-azure-monitor-vms/backup-alerts-critical.png)
-4. 若要查看有关特定警报的详细信息，请在事件列表中单击该警报打开其“**详细信息**”边栏选项卡。
+4. 要查看有关特定警报的详细信息，请在事件列表中单击该警报打开其“详细信息”部分。
 
     ![事件详细信息](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
 
@@ -56,10 +56,10 @@ ms.lasthandoff: 02/24/2018
 
     ![“备份警报”菜单](./media/backup-azure-monitor-vms/backup-alerts-menu.png)
 
-    “配置通知”边栏选项卡会打开。
+    “配置通知”部分会打开。
 
     ![“配置通知”边栏选项卡](./media/backup-azure-monitor-vms/configure-notifications.png)
-2. 在“配置通知”边栏选项卡中，单击“电子邮件通知”旁边的“**打开**”。
+2. 在“配置通知”部分中，单击“电子邮件通知”旁边的“打开”。
 
     “收件人”和“严重性”对话框旁边出现了星号，因为这些信息是必填的。 至少提供一个电子邮件地址，并至少选择一个严重性。
 3. 在“**收件人（电子邮件）**”对话框中，键入通知接收者的电子邮件地址。 使用以下格式：username@domainname.com。使用分号 (;) 分隔多个电子邮件地址。
@@ -82,135 +82,53 @@ ms.lasthandoff: 02/24/2018
 * 某个备份作业被触发但随后失败，而另一个备份作业正在进行。
 * 为启用 Resource Manager 的 VM 启动了计划的备份作业，但该 VM 不再存在。
 
-## <a name="customize-your-view-of-events"></a>自定义事件视图
-“**审核日志**”设置附带了一组预定义的筛选器和列，其中显示操作事件信息。 可以自定义视图，以便在“**事件**”边栏选项卡打开时显示你所需的信息。
+## <a name="using-activity-logs-to-get-notifications-for-successful-backups"></a>使用活动日志获取成功备份的通知
 
-1. 在[保管库仪表板](backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard)中，浏览到“**审核日志**”并单击该选项，打开“**事件**”边栏选项卡。
+如果想要在成功备份后收到通知，则可以使用基于保管库[活动日志](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)的警报。
 
-    ![审核日志](./media/backup-azure-monitor-vms/audit-logs-1606-1.png)
+### <a name="login-into-azure-portal"></a>登录到 Azure 门户
+登录到 Azure 门户并转到相关的 Azure 恢复服务保管库，单击属性中的“活动日志”部分。
 
-    “**事件**”边栏选项卡打开到仅针对当前保管库筛选的操作事件。
+### <a name="identify-appropriate-log"></a>找出相应日志
 
-    ![审核日志筛选器](./media/backup-azure-monitor-vms/audit-logs-filter.png)
+应用下图所示的筛选器，验证是否接收到成功备份的活动日志。 相应地更改时间跨度以查看视图。
 
-    该边栏选项卡显示在过去一周发生的“严重”事件、“错误”事件、“警告”事件和“信息”事件的列表。 时间跨度是在“**筛选器**”中设置的默认值。 “**事件**”边栏选项卡还显示一个跟踪事件发生时间的条形图。 如果不希望看到条形图，可在“**事件**”菜单中，单击“**隐藏图表**”将图表切换到关闭状态。 “事件”的默认视图显示“操作”、“级别”、“状态”、“资源”和“时间”信息。 有关公开其他事件属性的信息，请参阅[扩展事件信息](backup-azure-monitor-vms.md#view-additional-event-attributes)部分。
-2. 有关操作事件的更多信息，请在“**操作**”列中，单击某个操作事件打开其边栏选项卡。 该边栏选项卡包含有关事件的详细信息。 事件已按其关联 ID 分组，并且会列出时间跨度内发生的事件。
+![活动日志](./media/backup-azure-monitor-vms/activity-logs-identify.png)
 
-    ![操作详细信息](./media/backup-azure-monitor-vms/audit-logs-details-window.png)
-3. 若要查看有关特定事件的详细信息，请在事件列表中单击该事件打开其“**详细信息**”边栏选项卡。
+可以单击“JSON”段，获取更多详细信息，并将其复制粘贴到文本编辑器进行查看。 其中应该显示出保管库详细信息和触发活动日志的项（即备份项）。
 
-    ![事件详细信息](./media/backup-azure-monitor-vms/audit-logs-details-window-deep.png)
+然后单击“添加活动日志警报”，生成所有此类日志的警报。
 
-    事件级信息将尽可能详细。 如果想要查看有关每个事件的这种信息量，并想要将这种详细程度添加到“**事件**”边栏选项卡，请参阅[扩展事件信息](backup-azure-monitor-vms.md#view-additional-event-attributes)部分。
+### <a name="add-activity-log-alert"></a>添加活动日志警报
 
-## <a name="customize-the-event-filter"></a>自定义事件筛选器
-使用“**筛选器**”可以调整或选择特定边栏选项卡中显示的信息。 若要筛选事件信息，请执行以下操作：
+单击“添加活动日志警报”后会显示如下所示的屏幕
 
-1. 在[保管库仪表板](backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard)中，浏览到“**审核日志**”并单击该选项，打开“**事件**”边栏选项卡。
+![活动日志警报](./media/backup-azure-monitor-vms/activity-logs-alerts-successful.png)
+    
+订阅和资源组用于存储警报。 条件将预先填充。 请确保所有的值都与要求相关。
 
-    ![审核日志](./media/backup-azure-monitor-vms/audit-logs-1606-1.png)
+若成功备份，“级别”会标记为“信息性”，而状态则标记为“成功”。
 
-    “**事件**”边栏选项卡打开到仅针对当前保管库筛选的操作事件。
+如果选择上述“资源”，在记录该资源或保管库的活动日志时，将生成警报。 如果想要规则适用于所有保管库，请将“资源”留空。
 
-    ![审核日志筛选器](./media/backup-azure-monitor-vms/audit-logs-filter.png)
-2. 在“**事件**”菜单中，单击“**筛选器**”打开该边栏选项卡。
+### <a name="define-action-on-alert-firing"></a>定义触发警报时的操作
 
-    ![打开筛选器边栏选项卡](./media/backup-azure-monitor-vms/audit-logs-filter-button.png)
-3. 在“**筛选器**”边栏选项卡中，调整“**级别**”、“**时间跨度**”和“**调用方**”筛选器。 其他筛选器将不可用，因为已将它们设置为提供恢复服务保管库的当前信息。
+使用“操作组”定义生成警报时的操作。 可以单击“操作类型”来了解有关可用操作（例如电子邮件/短信/与 ITSM 集成等）的详细信息。
 
-    ![审核日志 - 查询详细信息](./media/backup-azure-monitor-vms/filter-blade.png)
+![活动日志操作组](./media/backup-azure-monitor-vms/activity-logs-alerts-action-group.png)
 
-    可以指定事件的“**级别**”：“关键”、“错误”、“警告”或“信息”。 可以选择任意组合的事件级别，但必须选择至少一个级别。 通过切换打开或关闭级别。 可以通过“**时间跨度**”筛选器指定捕获事件的时间长度。 如果使用自定义时间跨度，则可设置开始时间和结束时间。
-4. 做好使用筛选器查询操作日志的准备以后，即可单击“**更新**”。 结果显示在“**事件**”边栏选项卡中。
 
-    ![操作详细信息](./media/backup-azure-monitor-vms/edited-list-of-events.png)
-
-### <a name="view-additional-event-attributes"></a>查看其他事件属性
-使用“**列**”按钮可使其他事件属性显示在“**事件**”边栏选项卡上的列表中。 事件的默认列表显示“操作”、“级别”、“状态”、“资源”和“时间”信息。 若要启用其他属性，请执行以下操作：
-
-1. 在“**事件**”边栏选项卡中，单击“**列**”。
-
-    ![打开列](./media/backup-azure-monitor-vms/audi-logs-column-button.png)
-
-    此时会打开“**选择列**”边栏选项卡。
-
-    ![“列”边栏选项卡](./media/backup-azure-monitor-vms/columns-blade.png)
-2. 若要选择属性，请单击相应的复选框。 属性复选框的状态将切换为打开或关闭。
-3. 单击“**重置**”以重置“**事件**”边栏选项卡中的属性列表。 在列表中添加或删除属性后，使用“**重置**”查看“事件”属性的新列表。
-4. 单击“**更新**”以更新“事件”属性中的数据。 下表提供有关每个属性的信息。
-
-| 列名称 | 说明 |
-| --- | --- |
-| Operation |操作的名称 |
-| 级别 |操作级别，值可以是：“信息”、“警告”、“错误”或“关键” |
-| 状态 |操作的描述状态 |
-| 资源 |用于标识资源的 URL；也称为资源 ID |
-| 时间 |发生事件的时间，从当前时间算起 |
-| 调用方 |事件的调用者或触发者；可以是系统或用户 |
-| Timestamp |触发事件的时间 |
-| 资源组 |关联的资源组 |
-| 资源类型 |Resource Manager 使用的内部资源类型 |
-| 订阅 ID |关联的订阅 ID |
-| 类别 |事件的类别 |
-| 相关性 ID |相关事件的通用 ID |
-
-## <a name="use-powershell-to-customize-alerts"></a>使用 PowerShell 自定义警报
-可以获取门户中作业的自定义警报通知。 若要获取这些作业，请针对操作日志事件定义基于 PowerShell 的警报规则。 使用 *PowerShell 1.3.0 或更高版本*。
-
-若要定义自定义通知以便在备份失败时发出警报，可使用类似于以下脚本的命令：
-
-```
-PS C:\> $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail contoso@microsoft.com
-PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -ResourceGroup RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US -OperationName Microsoft.RecoveryServices/recoveryServicesVault/Backup -Status Failed -TargetResourceId /subscriptions/86eeac34-eth9a-4de3-84db-7a27d121967e/resourceGroups/RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US/providers/Microsoft.RecoveryServices/vaults/trinadhVault -Actions $actionEmail
-```
-
-**ResourceId**：可以从审核日志获取 ResourceId。 ResourceId 是操作日志的“资源”列中提供的 URL。
-
-**OperationName**：OperationName 采用“Microsoft.RecoveryServices/recoveryServicesVault/*EventName*”格式，其中的 *EventName* 可以是：<br/>
-
-* 注册 <br/>
-* 注销 <br/>
-* ConfigureProtection <br/>
-* 备份 <br/>
-* 还原 <br/>
-* StopProtection <br/>
-* DeleteBackupData <br/>
-* CreateProtectionPolicy <br/>
-* DeleteProtectionPolicy <br/>
-* UpdateProtectionPolicy <br/>
-
-**Status**：支持的值为 Started、Succeeded 或 Failed。
-
-**ResourceGroup**：这是资源所属的资源组。 可以将“资源组”列添加到生成的日志。 资源组是一种可用的事件信息类型。
-
-**Name**：警报规则的名称。
-
-**CustomEmail**：指定要向其发送警报通知的自定义电子邮件地址。
-
-**SendToServiceOwners**：此选项会将警报通知发送给订阅的所有管理员和共同管理员。 可以在 **New-AzureRmAlertRuleEmail** cmdlet 中使用
+单击“确定”后，将生成活动日志警报，并且用于记录成功备份的后续活动日志将触发操作组中定义的操作。
 
 ### <a name="limitations-on-alerts"></a>对警报的限制
 基于事件的警报存在以下限制：
 
 1. 警报在恢复服务保管库的所有虚拟机上触发。 无法针对恢复服务保管库中的一部分虚拟机自定义警报。
-2. 此功能以预览版提供。 [了解详细信息](../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts)
-3. 从“alerts-noreply@mail.windowsazure.com”发送警报。 目前无法修改电子邮件发件人。
+2. 从“alerts-noreply@mail.windowsazure.com”发送警报。 目前无法修改电子邮件发件人。
 
 ## <a name="next-steps"></a>后续步骤
-通过事件日志，可以针对备份操作进行很好的事后总结和审核。 将记录以下操作：
+有关如何从恢复点重新创建虚拟机的信息，请查看 [Restore Azure VMs](backup-azure-arm-restore-vms.md)（还原 Azure VM）。
 
-* 注册
-* 注销
-* 配置保护
-* 备份（二者均可以按需备份的形式进行计划）
-* 还原
-* 停止保护
-* 删除备份数据
-* 添加策略
-* 删除策略
-* 更新策略
-* 取消作业
+如果需要有关如何保护虚拟机的信息，请参阅 [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md)（初步了解：将 VM 备份到恢复服务保管库）。 
 
-有关 Azure 服务中事件、操作和审核日志的详细说明，请参阅 [View events and audit logs](../monitoring-and-diagnostics/insights-debugging-with-events.md)（查看事件和审核日志）一文。
-
-有关如何从恢复点重新创建虚拟机的信息，请查看 [Restore Azure VMs](backup-azure-arm-restore-vms.md)（还原 Azure VM）。 如果需要有关如何保护虚拟机的信息，请参阅 [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md)（初步了解：将 VM 备份到恢复服务保管库）。 有关 VM 备份管理任务的信息，请参阅 [Manage Azure virtual machine backups](backup-azure-manage-vms.md)（管理 Azure 虚拟机备份）一文。
+有关 VM 备份管理任务的详细信息，请参阅[管理 Azure 虚拟机备份](backup-azure-manage-vms.md)。

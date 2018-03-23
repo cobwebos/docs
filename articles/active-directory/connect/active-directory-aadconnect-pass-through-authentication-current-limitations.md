@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect：直通身份验证 - 当前限制 | Microsoft Docs"
-description: "本文介绍 Azure Active Directory (Azure AD) 直通身份验证的当前限制"
+title: Azure AD Connect：直通身份验证 - 当前限制 | Microsoft Docs
+description: 本文介绍 Azure Active Directory (Azure AD) 直通身份验证的当前限制
 services: active-directory
-keywords: "Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录"
-documentationcenter: 
+keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: aee90f278476a899e0d47fc572c4f375bf926de2
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: ac085bf972885819f7c79996b0f6638fc01fc00d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 直通身份验证：当前限制
 
@@ -31,18 +31,18 @@ ms.lasthandoff: 01/11/2018
 
 - 用户登录到所有基于 Web 浏览器的应用程序
 - 用户登录到支持[新式身份验证](https://aka.ms/modernauthga)的 Office 应用程序：_带有_新式身份验证的 Office 2016 和 Office 2013
+- 用户使用旧版协议（例如 Exchange ActiveSync、SMTP、POP 和 IMAP）登录 Outlook 客户端。
 - 用户登录到支持新式身份验证的 Skype for Business，包括联机和混合拓扑。 在[此处](https://technet.microsoft.com/library/mt803262.aspx)详细了解受支持的拓扑。
 - 适用于 Windows 10 设备的 Azure AD 域加入
-- Exchange ActiveSync 支持
+- 进行多重身份验证的应用密码。
 
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
 _不_支持以下方案：
 
-- 用户登录到旧版 Office 客户端应用程序：不带新式身份验证的 Office 2010 和 Office 2013。 我们建议组织在可能的情况下改用新式身份验证。 新式身份验证允许直通身份验证支持。 此外，它还通过使用[条件访问](../active-directory-conditional-access-azure-portal.md)功能（如 Azure 多重身份验证）来帮助保护你的用户帐户的安全。
+- 用户登录到旧版 Office 客户端应用程序（不包括 Outlook）：不带新式身份验证的 Office 2010 和 Office 2013。 我们建议组织在可能的情况下改用新式身份验证。 新式身份验证允许直通身份验证支持。 此外，它还通过使用[条件访问](../active-directory-conditional-access-azure-portal.md)功能（如 Azure 多重身份验证）来帮助保护你的用户帐户的安全。
 - 用户登录到_不带_新式身份验证的 Skype for Business 客户端应用程序。
 - 用户登录到 PowerShell 版本 1.0。 建议使用 PowerShell 版本 2.0。
-- 进行多重身份验证的应用密码。
 - 检测[凭据泄露](../active-directory-reporting-risk-events.md#leaked-credentials)的用户。
 - Azure AD 域服务需要在租户上启用密码哈希同步。 因此，_仅_使用传递身份验证的租户不适用于需要 Azure AD 域服务的方案。
 - 直通身份验证未与 [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md) 集成。
@@ -63,4 +63,3 @@ _不_支持以下方案：
 - [深入了解安全性](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)：深入了解有关直通身份验证功能的技术信息。
 - [Azure AD 无缝 SSO](active-directory-aadconnect-sso.md)：深入了解此补充功能。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)：使用 Azure Active Directory 论坛来提交新的功能请求。
-

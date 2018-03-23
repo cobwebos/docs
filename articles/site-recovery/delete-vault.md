@@ -1,24 +1,19 @@
 ---
-title: "删除 Site Recovery 保管库"
-description: "了解如何根据 Site Recovery 方案删除 Azure Site Recovery 保管库。"
+title: 删除 Site Recovery 保管库
+description: 了解如何根据 Site Recovery 方案删除 Azure Site Recovery 保管库。
 service: site-recovery
-documentationcenter: 
 author: rajani-janaki-ram
 manager: rochakm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 02/22/2018
+ms.date: 03/05/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 4cb5c387319b9659b16f0c98dc38cb79d72987e2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 89ab1e7c8b2fa0f4014ecfa0e677b398e601e6fa
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="delete-a-site-recovery-vault"></a>删除 Site Recovery 保管库
 依赖项可能会阻止删除 Azure Site Recovery 保管库。 需要采取的措施因 Site Recovery 方案而异：VMware 到 Azure、Hyper-V（含和不含 System Center Virtual Machine Manager）到 Azure 和 Azure 备份。 若要删除用于 Azure 备份的保管库，请参阅[删除 Azure 备份保管库](../backup/backup-azure-delete-vault.md)。
@@ -32,11 +27,11 @@ ms.lasthandoff: 02/24/2018
 
 1. 按照[禁用 VMware 保护](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)中的步骤操作，删除所有受保护的 VM。
 
-2. 按照[删除复制策略](site-recovery-setup-replication-settings-vmware.md##delete-a-replication-policy)中的步骤操作，删除所有复制策略。
+2. 按照[删除复制策略](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)中的步骤操作，删除所有复制策略。
 
-3. 按照[删除 vCenter](site-recovery-vmware-to-azure-manage-vCenter.md##delete-a-vcenter-in-azure-site-recovery) 中的步骤操作，删除对 vCenter 的引用。
+3. 按照[删除 vCenter 服务器](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)中的步骤操作，删除对 vCenter 的引用。
 
-4. 按照[解除配置服务器授权](site-recovery-vmware-to-azure-manage-configuration-server.md##delete-or-unregister-a-configuration-server)中的步骤操作，删除配置服务器。
+4. 按照[解除配置服务器授权](vmware-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server)中的步骤操作，删除配置服务器。
 
 5. 删除保管库。
 

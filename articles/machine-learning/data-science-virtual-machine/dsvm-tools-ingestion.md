@@ -1,13 +1,13 @@
 ---
-title: "数据科学虚拟机数据引入工具 - Azure | Microsoft 文档"
-description: "数据科学虚拟机数据引入工具"
-keywords: "数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学"
+title: 数据科学虚拟机数据引入工具 - Azure | Microsoft 文档
+description: 数据科学虚拟机数据引入工具
+keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: a2422d8a79d102accb72476f6934bae38603973a
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8526e949aee2935824a03a0972d9e45c71d6601b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>数据科学虚拟机数据引入工具
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 02/22/2018
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 将多个 blob 从 Azure 存储复制到 Azure Data Lake Store。      |
 |  如何使用/运行它？    |   打开命令提示符，然后键入 `adlcopy` 获取帮助。    |
-| 示例链接      | [使用 AdlCopy]https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| 示例链接      | [使用 AdlCopy](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
 | DSVM 上的相关工具      | AzCopy、Azure 命令行     |
 
 ## <a name="azure-command-line"></a>Azure 命令行
@@ -46,7 +46,7 @@ ms.lasthandoff: 02/22/2018
 | 支持的 DSVM 版本      | Windows、Linux     |
 | 典型用途      | 从 Azure 存储、Azure Data Lake Store 导出数据或将数据导入其中      |
 |  如何使用/运行它？    |   打开命令提示符，然后键入 `az` 获取帮助。    |
-| 示例链接      | [使用 Azure CLI](https://docs.microsoft.com/cli/azure/?viee-cli-latest)     |
+| 示例链接      | [使用 Azure CLI](https://docs.microsoft.com/cli/azure)     |
 | DSVM 上的相关工具      | AzCopy、AdlCopy      |
 
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 02/22/2018
 | 支持的 DSVM 版本      | Linux      |
 | 典型用途      | 读取和写入到容器中的 blob      |
 |  如何使用/运行它？    |   在终端中运行 _blobfuse_。    |
-| 示例链接      | [GitHub 上的 blobfuse)[https://github.com/Azure/azure-storage-fuse]      |
+| 示例链接      | [GitHub 上的 blobfuse](https://github.com/Azure/azure-storage-fuse)      |
 | DSVM 上的相关工具      | Azure 命令行      |
 
 

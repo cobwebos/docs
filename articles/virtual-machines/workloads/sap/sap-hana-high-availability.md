@@ -1,23 +1,23 @@
 ---
-title: "Azure 虚拟机 (VM) 上的 SAP HANA 高可用性 | Microsoft Docs"
-description: "在 Azure 虚拟机 (VM) 上建立 SAP HANA 的高可用性。"
+title: 在 Azure 虚拟机 (VM) 上设置 SAP HANA 系统复制 | Microsoft Docs
+description: 在 Azure 虚拟机 (VM) 上建立 SAP HANA 的高可用性。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: MSSedusch
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2017
+ms.date: 12/12/2017
 ms.author: sedusch
-ms.openlocfilehash: 5f6ef18e93b8f77162b3524f31cb632e1db38f80
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 2bf9ed176f37c315aa4496894315f2318370ce7f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Azure 虚拟机 (VM) 上的 SAP HANA 高可用性
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/08/2017
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged%2Fazuredeploy.json
 
 在本地，可以使用 HANA 系统复制或共享存储来建立 SAP HANA 的高可用性。
-目前，仅支持在 Azure 上设置 HANA 系统复制。 SAP HANA 复制由一个主节点和至少一个从属节点组成。 对主节点上数据所做的更改以同步或异步方式复制到从属节点。
+在 Azure VM 上，Azure 上的 HANA 系统复制是目前唯一受支持的高可用性功能。 SAP HANA 复制由一个主节点和至少一个辅助节点组成。 对主节点上数据所做的更改以同步或异步方式复制到辅助节点。
 
 本文介绍如何部署虚拟机、配置虚拟机、安装群集框架，以及安装和配置 SAP HANA 系统复制。
 在示例配置和安装命令等内容中，使用了实例编号 03 和 HANA 系统 ID HDB。
@@ -83,16 +83,16 @@ Azure Marketplace 中包含 SUSE Linux Enterprise Server for SAP Applications 12
 1. 创建可用性集  
    设置最大更新域
 1. 创建负载均衡器（内部）  
-   为上述步骤选择 VNET
-1. 创建虚拟机 1  
-   请至少使用 SLES4SAP 12 SP1，在此示例中，我们将使用 SLES4SAP 12 SP1 BYOS 映像（https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1）  
-   SLES For SAP Applications 12 SP1 (BYOS)  
-   选择存储帐户 1  
+   选择在第二步中创建的 VNET
+1. 创建虚拟机 1   
+   请至少使用 SLES4SAP 12 SP1，此示例中使用 SLES4SAP 12 SP1 BYOS 映像 https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
+   使用 SLES For SAP Applications 12 SP1 (BYOS)  
+   选择存储帐户 1   
    选择可用性集  
-1. 创建虚拟机 2  
-   请至少使用 SLES4SAP 12 SP1，在此示例中，我们将使用 SLES4SAP 12 SP1 BYOS 映像（https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1）  
-   SLES For SAP Applications 12 SP1 (BYOS)  
-   选择存储帐户 2   
+1. 创建虚拟机 2   
+   请至少使用 SLES4SAP 12 SP1，此示例中使用 SLES4SAP 12 SP1 BYOS 映像 https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
+   使用 SLES For SAP Applications 12 SP1 (BYOS)  
+   选择存储帐户 2    
    选择可用性集  
 1. 添加数据磁盘
 1. 配置负载均衡器
@@ -124,13 +124,14 @@ Azure Marketplace 中包含 SUSE Linux Enterprise Server for SAP Applications 12
         1. 针对端口 3**03**17 重复上述步骤
 
 ### <a name="deploy-with-template"></a>使用模板进行部署
-可以使用 github 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。请遵照以下步骤部署模板：
+可以使用 github 上的某个快速启动模板部署全部所需资源。 该模板将部署虚拟机、负载均衡器、可用性集，等等。若要部署模板，请执行以下步骤：
 
-1. 在 Azure 门户中打开[数据库模板][template-multisid-db]或[聚合模板][template-converged]。数据库模板仅创建数据库的负载均衡规则，聚合模板还可以创建 ASCS/SCS 和 ERS（仅限 Linux）实例的负载均衡规则。 如果打算安装基于 SAP NetWeaver 的系统，同时想要在同一台计算机上安装 ASCS/SCS 实例，请使用[聚合模板][template-converged]。
+1. 在 Azure 门户中打开[数据库模板][template-multisid-db]或[聚合模板][template-converged]。 
+   数据库模板仅创建数据库的负载均衡规则，而聚合模板还会创建 ASCS/SCS 和 ERS（仅限 Linux）实例的负载均衡规则。 如果打算安装基于 SAP NetWeaver 的系统，同时想要在同一台计算机上安装 ASCS/SCS 实例，请使用[聚合模板][template-converged]。
 1. 输入以下参数
     1. SAP 系统 ID  
-       输入要安装的 SAP 系统的 SAP 系统 ID。 该 ID 将用作所要部署的资源的前缀。
-    1. 堆栈类型（仅当使用聚合模板时才适用）  
+       输入要安装的 SAP 系统的 SAP 系统 ID。 此 ID 将用作已部署资源的前缀。
+    1. 堆栈类型（仅当使用聚合模板时才适用）   
        选择 SAP NetWeaver 堆栈类型
     1. OS 类型  
        选择一个 Linux 发行版。 对于本示例，请选择“SLES 12 BYOS”
@@ -145,7 +146,7 @@ Azure Marketplace 中包含 SUSE Linux Enterprise Server for SAP Applications 12
     1. 新子网或现有子网  
        确定是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择现有虚拟网络。
     1. 子网 ID  
-    虚拟机应当连接到的子网的 ID。 选择用于将虚拟机连接到本地网络的 VPN 或 Express Route 虚拟网络的子网。 ID 通常类似于 /subscriptions/`<subscription ID`>/resourceGroups/`<resource group name`>/providers/Microsoft.Network/virtualNetworks/`<virtual network name`>/subnets/`<subnet name`>
+    虚拟机应当连接到的子网的 ID。 若要将虚拟机连接到本地网络，请选择 VPN 或 Express Route 虚拟网络的子网。 ID 通常类似于 /subscriptions/`<subscription ID`>/resourceGroups/`<resource group name`>/providers/Microsoft.Network/virtualNetworks/`<virtual network name`>/subnets/`<subnet name`>
 
 ## <a name="setting-up-linux-ha"></a>设置 Linux HA
 
@@ -201,7 +202,7 @@ Azure Marketplace 中包含 SUSE Linux Enterprise Server for SAP Applications 12
 
 1. [A] 设置磁盘布局
     1. LVM  
-    我们通常建议对存储数据和日志文件的卷使用 LVM。 以下示例假设虚拟机上附加了四个应用于创建两个卷的数据磁盘。
+    我们通常建议对存储数据和日志文件的卷使用 LVM。 以下示例假设虚拟机上附加了四个应该用于创建两个卷的数据磁盘。
         * 为想要使用的所有磁盘创建物理卷。
     <pre><code>
     sudo pvcreate /dev/sdc
@@ -310,7 +311,7 @@ Azure Marketplace 中包含 SUSE Linux Enterprise Server for SAP Applications 12
     
     ```
 
-1. [A] 将 corosync 配置为使用其他传输，并添加 nodelist。 否则，群集不会工作。
+1. [A] 将 corosync 配置为使用其他传输，并添加 nodelist。 否则群集将不会工作。 
     ```bash
     sudo vi /etc/corosync/corosync.conf    
     
@@ -352,7 +353,7 @@ Azure Marketplace 中包含 SUSE Linux Enterprise Server for SAP Applications 12
 
 ## <a name="installing-sap-hana"></a>安装 SAP HANA
 
-遵循 [SAP HANA SR 性能优化方案指南][suse-hana-ha-guide]的第 4 章安装 SAP HANA 系统复制。
+若要安装 SAP HANA 系统复制，请遵循 [SAP HANA SR 性能优化方案指南][suse-hana-ha-guide]的第 4 章。
 
 1. [A] 从 HANA DVD 运行 hdblcm
     * 选择安装 -> 1
@@ -362,7 +363,7 @@ Azure Marketplace 中包含 SUSE Linux Enterprise Server for SAP Applications 12
     * 是否要将其他主机添加到系统? (y/n) [n]：-> 按 ENTER
     * 输入 SAP HANA 系统 ID：<SID of HANA e.g. HDB>
     * 输入实例编号 [00]：   
-  HANA 实例编号。 如果使用了 Azure 模板或者遵循了上述示例，请使用 03
+  HANA 实例编号。 如果使用了 Azure 模板或者遵循了手动部署步骤，请使用 03
     * 选择数据库模式/输入索引 [1]：-> 按 ENTER
     * 选择系统用途/输入索引 [4]：  
   选择系统用途
@@ -381,7 +382,7 @@ Azure Marketplace 中包含 SUSE Linux Enterprise Server for SAP Applications 12
     * 输入数据库用户 (SYSTEM) 密码：
     * 确认数据库用户 (SYSTEM) 密码：
     * 重新引导计算机后是否重新启动系统? [n]：-> 按 ENTER
-    * 是否继续? (y/n)：  
+    * 是否继续? (y/n)：   
   验证摘要并输入 y 继续
 1. [A] 升级 SAP 主机代理  
   从 [SAP 软件中心][sap-swcenter]下载最新的 SAP 主机代理存档，并运行以下命令升级代理。 替换存档的路径，使其指向已下载的文件。
@@ -446,11 +447,11 @@ sudo crm configure load update crm-defaults.txt
 
 ### <a name="create-stonith-device"></a>创建 STONITH 设备
 
-STONITH 设备使用服务主体对 Microsoft Azure 授权。 请遵循以下步骤创建服务主体。
+STONITH 设备使用服务主体对 Microsoft Azure 授权。 若要创建服务主体，请遵循以下步骤。
 
 1. 转到 <https://portal.azure.com>
 1. 打开“Azure Active Directory”边栏选项卡  
-   转到“属性”并记下目录 ID。 这是“租户 ID”。
+   转到“属性”并记下目录 ID。 此 ID 为“租户 ID”。
 1. 单击“应用注册”
 1. 单击“添加”
 1. 输入名称，选择应用程序类型“Web 应用/API”，输入登录 URL（例如 http://localhost），并单击“创建”
@@ -460,7 +461,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请遵循以下步
 1. 记下值。 此值用作服务主体的**密码**
 1. 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
 
-默认情况下，服务主体无权访问 Azure 资源。 需要为服务主体授予启动和停止（解除分配）群集所有虚拟机的权限。
+默认情况下，服务主体无权访问 Azure 资源。 为服务主体授予启动和停止（解除分配）群集的所有虚拟机的权限。
 
 1. 转到 https://portal.azure.com
 1. 打开“所有资源”边栏选项卡
@@ -468,7 +469,7 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请遵循以下步
 1. 选择“访问控制(IAM)”
 1. 单击“添加”
 1. 选择“所有者”角色
-1. 输入前面创建的应用程序名称
+1. 输入在前面的步骤中创建的应用程序名称
 1. 单击“确定”
 
 编辑虚拟机的权限后，可以在群集中配置 STONITH 设备。
@@ -553,7 +554,7 @@ sudo crm configure load update crm-saphana.txt
 </pre>
 
 ### <a name="test-cluster-setup"></a>测试群集设置
-下一章介绍如何测试设置。 每项测试都假设你是根用户，且 SAP HANA 主机在虚拟机 saphanavm1 上运行。
+本章介绍如何测试设置。 每项测试都假设你是根用户，且 SAP HANA 主机在虚拟机 saphanavm1 上运行。
 
 #### <a name="fencing-test"></a>隔离测试
 
@@ -566,7 +567,7 @@ sudo ifdown eth0
 现在，虚拟机应会根据群集配置重新启动或停止。
 如果将 stonith-action 设置为 off，虚拟机会停止，资源将迁移到正在运行的虚拟机。
 
-如果设置 AUTOMATED_REGISTER ="false"，则再次启动虚拟机后，SAP HANA 资源将无法作为辅助节点启动。 在这种情况下，需要执行以下命令，将 HANA 实例配置为辅助节点：
+如果设置 AUTOMATED_REGISTER ="false"，则再次启动虚拟机后，SAP HANA 资源将无法作为辅助节点启动。 在这种情况下，请执行以下命令，将 HANA 实例配置为辅助节点：
 
 <pre><code>
 su - <b>hdb</b>adm
@@ -587,7 +588,7 @@ crm resource cleanup msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm1</b>
 service pacemaker stop
 </code></pre>
 
-故障转移后，可以再次启动该服务。 如果设置 AUTOMATED_REGISTER ="false"，saphanavm1 上的 SAP HANA 资源将无法作为辅助节点启动。 在这种情况下，需要执行以下命令，将 HANA 实例配置为辅助节点：
+故障转移后，可以再次启动该服务。 如果设置 AUTOMATED_REGISTER ="false"，saphanavm1 上的 SAP HANA 资源将无法作为辅助节点启动。 在这种情况下，请执行以下命令，将 HANA 实例配置为辅助节点：
 
 <pre><code>
 service pacemaker start
@@ -598,7 +599,7 @@ sapcontrol -nr <b>03</b> -function StopWait 600 10
 hdbnsutil -sr_register --remoteHost=<b>saphanavm2</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE1</b> 
 
 
-# switch back to root and cleanup the failed state
+# Switch back to root and cleanup the failed state
 exit
 crm resource cleanup msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm1</b>
 </code></pre>
@@ -611,8 +612,8 @@ crm resource migrate msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm2</b>
 crm resource migrate g_ip_<b>HDB</b>_HDB<b>03</b> <b>saphanavm2</b>
 </code></pre>
 
-这应会将 SAP HANA 主控节点以及包含虚拟 IP 地址的组迁移到 saphanavm2。
-如果设置 AUTOMATED_REGISTER ="false"，saphanavm1 上的 SAP HANA 资源将无法作为辅助节点启动。 在这种情况下，需要执行以下命令，将 HANA 实例配置为辅助节点：
+如果设置 AUTOMATED_REGISTER="false"，此命令序列应将 SAP HANA 主控节点以及包含虚拟 IP 地址的组迁移到 saphanavm2。
+saphanavm1 上的 SAP HANA 资源将无法作为辅助节点启动。 在这种情况下，请执行以下命令，将 HANA 实例配置为辅助节点：
 
 <pre><code>
 su - <b>hdb</b>adm
@@ -627,14 +628,14 @@ hdbnsutil -sr_register --remoteHost=<b>saphanavm2</b> --remoteInstance=<b>03</b>
 <pre><code>
 crm configure edited
 
-# delete location constraints that are named like the following contraint. You should have two constraints, one for the SAP HANA resource and one for the IP address group.
+# Delete location constraints that are named like the following contraint. You should have two constraints, one for the SAP HANA resource and one for the IP address group.
 location cli-prefer-g_ip_<b>HDB</b>_HDB<b>03</b> g_ip_<b>HDB</b>_HDB<b>03</b> role=Started inf: <b>saphanavm2</b>
 </code></pre>
 
 此外，还需要清理辅助节点资源的状态
 
 <pre><code>
-# switch back to root and cleanup the failed state
+# Switch back to root and cleanup the failed state
 exit
 crm resource cleanup msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm1</b>
 </code></pre>

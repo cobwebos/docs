@@ -1,8 +1,8 @@
 ---
-title: "使用 Data Lake Analytics Java SDK 开发应用程序 | Microsoft Docs"
-description: "使用 Azure Data Lake Analytics Java SDK 开发应用程序"
+title: 使用 Data Lake Analytics Java SDK 开发应用程序 | Microsoft Docs
+description: 使用 Azure Data Lake Analytics Java SDK 开发应用程序
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
-ms.author: edmaca
-ms.openlocfilehash: 795d9ec0b0cac5d74673404f1d0d851393336df0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: saveenr
+ms.openlocfilehash: 5b283e91daf25d4fad3e92c69f8ddde9ddb097b4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-java-sdk"></a>通过 Java SDK 开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 了解如何使用 Azure Data Lake Analytics Java SDK 来创建 Azure Data Lake 帐户以及执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户和处理作业。 有关 Data Lake 的详细信息，请参阅 [Azure Data Lake Analytics](data-lake-analytics-overview.md)。
 
-在本教程中，将开发一个 Java 控制台应用程序，其中包含常见的管理任务示例以及创建测试数据和提交作业示例。  若要通过其他支持的工具来完成此教程，请单击本节顶部的选项卡。
+在本教程中，将开发一个 Java 控制台应用程序，其中包含常见的管理任务示例以及创建测试数据和提交作业示例。  若要通过其他支持的工具来完成此教程，请单击本部分顶部的选项卡。
 
 ## <a name="prerequisites"></a>先决条件
 * Java 开发工具包 (JDK) 8（使用 Java 1.8 版）。

@@ -1,25 +1,25 @@
 ---
-title: "机器学习和数据科学工具 - Azure | Microsoft 文档"
-description: "机器学习和数据科学工具"
-keywords: "数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学"
+title: 机器学习和数据科学工具 - Azure | Microsoft 文档
+description: 机器学习和数据科学工具
+keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2017
+ms.date: 03/16/2018
 ms.author: gokuma;bradsev
-ms.openlocfilehash: c772fa16b94d09e0fc0450ce86503553c26f8a24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1897f793b5907a304af0859a1ab321a06d1ce808
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="machine-learning-and-data-science-tools"></a>机器学习和数据科学工具
 数据科学虚拟机 (DSVM) 拥有丰富的工具和库，可用于 Python、R、Julia 等热门语言的机器学习。 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 | 典型用途      | 常规 ML 库      |
 | 如何在 DSVM 上配置/安装它？      |  使用 GPU 支持安装   |
 | 如何使用/运行它？      | 作为 Python 库（2.7 和 3.5）、R 程序包，以及 on path 路径命令行工具（`C:\dsvm\tools\xgboost\bin\xgboost.exe` 适用于 Windows，`/dsvm/tools/xgboost/xgboost` 适用于 Linux）运行    |
-| 到示例的链接      | 示例包含在虚拟机上，在 Linux 上位于 `/dsvm/tools/xgboost/demo` 中，在 Windows 上位于 `C:\dsvm\tools\xgboost\demo` 中   |
+| 示例链接      | 示例包含在虚拟机上，在 Linux 上位于 `/dsvm/tools/xgboost/demo` 中，在 Windows 上位于 `C:\dsvm\tools\xgboost\demo` 中   |
 | DSVM 上的相关工具      | LightGBM、MXNet   |
 
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 | 典型用途      | 常规 ML 库      |
 | 如何在 DSVM 上配置/安装它？      |  Windows-msi 安装程序、Linux apt-get |
 | 如何使用/运行它？      | 作为 on path 路径命令行工具（Windows 上为 `C:\Program Files\VowpalWabbit\vw.exe`，Linux 上为 `/usr/bin/vw`）    |
-| 到示例的链接      | [VowPal Wabbit 示例](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
+| 示例链接      | [VowPal Wabbit 示例](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
 | DSVM 上的相关工具      |LightGBM、MXNet、XGBoost   |
 
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 10/11/2017
 | 支持的 DSVM 版本      | Windows、Linux    |
 | 典型用途      | 常规用途的梯度提升框架      |
 | 如何在 DSVM 上配置/安装它？      | 在 Windows 上，LightGBM 作为 Python 程序包安装。 在 Linux 上，命令行可执行文件位于 `/opt/LightGBM/lightgbm` 中，安装了 R 程序包，并安装了 Python 程序包。     |
-| 到示例的链接      | [LightGBM 指南](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
+| 示例链接      | [LightGBM 指南](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
 | DSVM 上的相关工具      | MXNet、XgBoost  |
 
 ## <a name="h2o"></a>H2O
@@ -89,7 +89,7 @@ ms.lasthandoff: 10/11/2017
 | 典型用途      | 常规用途的分布式可缩放 ML   |
 | 如何在 DSVM 上配置/安装它？      | H2O 安装在 `/dsvm/tools/h2o` 中。      |
 | 如何使用/运行它？      | 使用 X2Go 连接到虚拟机。 启动新的终端并运行 `java -jar /dsvm/tools/h2o/current/h2o.jar`。 然后启动 Web 浏览器并连接到 `http://localhost:54321`。      |
-| 到示例的链接      | 在 `h2o` 目录的 Jupyter 中的虚拟机上提供有示例。      |
+| 示例链接      | 在 `h2o` 目录的 Jupyter 中的虚拟机上提供有示例。      |
 | DSVM 上的相关工具      | Apache Spark、MXNet、XGBoost、Sparkling Water、Deep Water    |
 
 DSVM 上还有其他几个 ML 库，如热门的 `scikit-learn` 程序包，它作为安装在 DSVM 上的 Anaconda Python 发行版的一部分。 请务必通过运行相应的程序包管理器来查看 Python、R 和 Julia 中可用的程序包列表。 

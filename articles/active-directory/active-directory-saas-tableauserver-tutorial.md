@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Tableau Server 集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 Tableau Server 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Tableau Server 集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 和 Tableau Server 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 9ba94f4f90f49fb7850f4cad2bb49ab4faa3fa92
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3b0390c8b95a46b2c134252532bef118ea4df52d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>教程：Azure Active Directory 与 Tableau Server 集成
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Tableau Server 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Tableau Server 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 12/11/2017
     
     | 属性名称 | 属性值 |
     | ---------------| --------------- |    
-    | username | *user.displayname* |
+    | username | user.mailnickname |
 
     a. 单击“添加属性”，打开“添加属性”对话框。
 
@@ -135,11 +135,11 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-tableauserver-tutorial/tutorial_officespace_05.png)
     
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d. 单击“确定”
+    d.单击“下一步”。 单击“确定”
 
 
 6. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
@@ -160,7 +160,7 @@ ms.lasthandoff: 12/11/2017
    
    c. Tableau Server 返回 URL（Tableau Server 用户将要访问的 URL），例如 http://tableau_server。 不建议使用 http://localhost。 不支持使用带尾部反斜杠的 URL（例如，http://tableau_server/）。 在“Tableau Server 域和 URL”部分中，复制“Tableau Server 返回 URL”并将其粘贴到 Azure AD“登录 URL”文本框中。
    
-   d. SAML 实体 ID - 此实体 ID 唯一标识安装到 IdP 的 Tableau Server。 可以在此处再次输入 Tableau Server URL（如果需要），但它不必须是 Tableau Server URL。 在“Tableau Server 域和 URL”部分中，复制“SAML 实体 ID”并将其粘贴到 Azure AD“标识符”文本框中。
+   d.单击“下一步”。 SAML 实体 ID - 此实体 ID 唯一标识安装到 IdP 的 Tableau Server。 可以在此处再次输入 Tableau Server URL（如果需要），但它不必须是 Tableau Server URL。 在“Tableau Server 域和 URL”部分中，复制“SAML 实体 ID”并将其粘贴到 Azure AD“标识符”文本框中。
      
    e. 单击“导出元数据文件”，并在文本编辑器应用程序中打开该文件。 找到包含 Http Post 和索引 0 的断言使用者服务 URL 并复制该 URL。 现在将其粘贴到“Tableau Server 域和 URL”部分中的 Azure AD“答复 URL”文本框中。
    
@@ -203,11 +203,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d.单击“下一步”。 单击“创建”。
  
 ### <a name="creating-a-tableau-server-test-user"></a>创建 Tableau Server 测试用户
 
@@ -252,7 +252,7 @@ ms.lasthandoff: 12/11/2017
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
-在本部分中，将使用访问面板测试 Azure AD 单一登录配置。
+在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 单击访问面板中的“Tableau Server”磁贴时，用户应自动登录到 Tableau Server 应用程序。
 有关访问面板的详细信息，请参阅 [introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586)（访问面板简介）。 
@@ -260,7 +260,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 

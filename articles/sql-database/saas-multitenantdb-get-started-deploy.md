@@ -1,25 +1,21 @@
 ---
-title: "部署使用 Azure SQL 数据库的分片多租户数据库 SaaS 应用程序 | Microsoft 文档"
-description: "部署和浏览分片 Wingtip Tickets SaaS 多租户数据库应用程序，演示使用 Azure SQL 数据库的 SaaS 模式。"
-keywords: "sql 数据库教程"
+title: 部署使用 Azure SQL 数据库的分片多租户数据库 SaaS 应用程序 | Microsoft 文档
+description: 部署和浏览分片 Wingtip Tickets SaaS 多租户数据库应用程序，演示使用 Azure SQL 数据库的 SaaS 模式。
+keywords: sql 数据库教程
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: billgib;anjangsh
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: genemi
-ms.openlocfilehash: 3bbfdccd020f5efc7510d9688ea38f5e1af4ebde
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 82983c8926bdf3c7256c529448e5b4f3b2c2381c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的分片多租户应用程序
 
@@ -60,12 +56,12 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 #### <a name="plan-the-names"></a>对名称进行计划
 
 通过执行本部分中的步骤，提供用户值，用于确保资源名称为全局唯一，以及一个资源组的名称，该资源组包含部署应用时创建的所有资源。 如果一个人名叫 Ann Finley，则建议输入以下名称：
-- 用户：af1（首字母缩写加数字。如果是第二次部署应用，则使用不同的值，例如 af2。）
+- 用户：af1（首字母缩写加数字。如果是第二次部署应用，则使用不同的值，例如 af2。）*
 - 资源组：wingtip-dpt-af1（wingtip-dpt 指示这是“每租户一个数据库”应用*。追加用户名 af1 会将资源组名称与它包含的资源的名称相关联。）*
 
 现在请选择自己的名称，并将其写下来。 
 
-#### <a name="steps"></a>步骤
+#### <a name="steps"></a>Steps
 
 1. 单击下面的“部署到 Azure”蓝色按钮。
     - 带有 Wingtip Tickets SaaS 部署模板的 Azure 门户随即打开。

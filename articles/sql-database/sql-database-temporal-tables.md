@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL 数据库中的临时表入门 | Microsoft 文档"
-description: "了解如何开始使用 Azure SQL 数据库中的临时表。"
+title: Azure SQL 数据库中的临时表入门 | Microsoft 文档
+description: 了解如何开始使用 Azure SQL 数据库中的临时表。
 services: sql-database
-documentationcenter: 
 author: bonova
-manager: jhubbard
-editor: 
-ms.assetid: c8c0f232-0751-4a7f-a36e-67a0b29fa1b8
+manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 01/10/2017
 ms.author: bonova
-ms.openlocfilehash: 58f97c142ba0b9282d8988fc1bc037b9c0c69986
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 8e76d78e402d2cdc58ca26767c55c413f83226d9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL 数据库中的临时表入门
 时态表是 Azure SQL 数据库中新的可编程功能，可让你跟踪和分析数据更改的完整历史记录，而无需编写自定义代码。 临时表保存与时间上下文密切相关的数据，因此，只有特定时段内的存储事实才会解译为有效。 临时表的这种属性可让用户执行基于时间的有效分析，并从数据演变中获得见解。
@@ -34,7 +28,7 @@ ms.lasthandoff: 10/31/2017
 幸运的是，无需在应用上花费过多的精力就能维护此活动信息。 可以使用临时表将过程自动化：使你在网站设计过程中保有完全的弹性并节省更多的时间，从而将重心放在数据分析本身。 唯一要做的事就是确保将 **WebSiteInfo** 表配置为[版本由系统控制的临时表](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0)。 下面描述了在此方案中使用临时表的确切步骤。
 
 ## <a name="step-1-configure-tables-as-temporal"></a>步骤 1：将表配置为临时表
-根据是要开始新的开发工作，还是升级现有的应用程序，可以创建临时表，或者通过添加临时属性来修改现有表。 在一般情况下，方案可能混用了这两个选项。 使用 [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS)、[SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) 或其他任何 Transact-SQL 开发工具执行以下操作。
+根据是要开始新的开发工作，还是升级现有的应用程序，可以创建时态表，或者通过添加临时属性来修改现有表。 在一般情况下，方案可能混用了这两个选项。 使用 [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS)、[SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) 或其他任何 Transact-SQL 开发工具执行以下操作。
 
 > [!IMPORTANT]
 > 建议始终使用最新版本的 Management Studio 以保持与 Microsoft Azure 和 SQL 数据库的更新同步。 [更新 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)。
@@ -42,7 +36,7 @@ ms.lasthandoff: 10/31/2017
 > 
 
 ### <a name="create-new-table"></a>创建新表
-在 SSMS 对象资源管理器中使用上下文菜单项“新建版本由系统控制的表”打开包含临时表模板脚本的查询编辑器，并使用“指定模板参数的值”(Ctrl+Shift+M) 来填充模板：
+在 SSMS 对象资源管理器中使用上下文菜单项“新建版本由系统控制的表”打开包含时态表模板脚本的查询编辑器，并使用“指定模板参数的值”(Ctrl+Shift+M) 来填充模板：
 
 ![SSMSNewTable](./media/sql-database-temporal-tables/AzureTemporal2.png)
 
@@ -50,7 +44,7 @@ ms.lasthandoff: 10/31/2017
 
 ![SSDTNewTable](./media/sql-database-temporal-tables/AzureTemporal3.png)
 
-也可以通过直接指定 Transact-SQL 语句来创建临时表，如以下示例中所示。 请注意，每个临时表的必需元素为 PERIOD 定义以及可引用将存储历史行版本的另一个用户表的 SYSTEM_VERSIONING 子句：
+也可以通过直接指定 Transact-SQL 语句来创建时态表，如以下示例中所示。 请注意，每个时态表的必需元素为 PERIOD 定义以及可引用将存储历史行版本的另一个用户表的 SYSTEM_VERSIONING 子句：
 
 ````
 CREATE TABLE WebsiteUserInfo 
@@ -65,9 +59,9 @@ CREATE TABLE WebsiteUserInfo
  WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.WebsiteUserInfoHistory));
 ````
 
-创建版本由系统控制的临时表时，会自动创建随附默认配置的历史记录表。 默认历史记录表包含期限列（结束、开始）上启用页压缩的聚集 B 树目录索引。 此配置非常适合使用临时表的大部分方案，特别是用于[数据审核](https://msdn.microsoft.com/library/mt631669.aspx#Anchor_0)。 
+创建版本由系统控制的时态表时，会自动创建随附默认配置的历史记录表。 默认历史记录表包含期限列（结束、开始）上启用页压缩的聚集 B 树目录索引。 此配置非常适合使用时态表的大部分方案，特别是用于[数据审核](https://msdn.microsoft.com/library/mt631669.aspx#Anchor_0)。 
 
-在此特定案例中，我们的目标是针对一段较长的数据历史记录以及较大的数据集，执行基于时间的趋势分析，因此历史记录表的存储选择为聚集列存储索引。 聚集列存储为分析查询提供极佳的压缩和性能。 临时表允许灵活且完全独立地在当前表和临时表中配置索引。 
+在此特定案例中，我们的目标是针对一段较长的数据历史记录以及较大的数据集，执行基于时间的趋势分析，因此历史记录表的存储选择为聚集列存储索引。 聚集列存储为分析查询提供极佳的压缩和性能。 时态表允许灵活且完全独立地在当前表和时态表中配置索引。 
 
 > [!NOTE]
 > 只能在高级服务层中使用列存储索引。
@@ -162,7 +156,7 @@ WHERE [UserID] = 1;
 ![TemporalGraph](./media/sql-database-temporal-tables/AzureTemporal6.png)
 
 ## <a name="evolving-table-schema"></a>不断演变的表架构
-通常，需要在开发应用时更改临时表架构。 为此，只需运行正则 ALTER TABLE 语句，Azure SQL 数据库就能正确传播历史记录表的更改。 以下脚本演示如何添加要跟踪的其他属性：
+通常，需要在开发应用时更改时态表架构。 为此，只需运行正则 ALTER TABLE 语句，Azure SQL 数据库就能正确传播历史记录表的更改。 以下脚本演示如何添加要跟踪的其他属性：
 
 ````
 /*Add new column for tracking source IP address*/
@@ -186,10 +180,10 @@ ALTER TABLE dbo.WebsiteUserInfo
     DROP COLUMN TemporaryColumn; 
 ````
 
-或者，在已连接到数据库（联机模式）或正在开发数据库项目（脱机模式）时，使用最新的 [SSDT](https://msdn.microsoft.com/library/mt204009.aspx) 来更改临时表架构。
+或者，在已连接到数据库（联机模式）或正在开发数据库项目（脱机模式）时，使用最新的 [SSDT](https://msdn.microsoft.com/library/mt204009.aspx) 来更改时态表架构。
 
 ## <a name="controlling-retention-of-historical-data"></a>控制历史数据的保留期
-使用版本由系统控制的临时表时，历史记录表可能比常规表更容易增大数据库大小。 大型以及不断增长的历史记录表可能会成为一个问题，这不单单体现在存储成本的增加上，而且还会降低临时查询的性能。 因此，针对管理历史记录表中的数据制定一个数据保留策略，是规划和管理每个临时表的生命周期的一个重要方面。 使用 Azure SQL 数据库，可以通过以下方法来管理临时历史记录表中的历史数据：
+使用版本由系统控制的时态表时，历史记录表可能比常规表更容易增大数据库大小。 大型以及不断增长的历史记录表可能会成为一个问题，这不单单体现在存储成本的增加上，而且还会降低临时查询的性能。 因此，针对管理历史记录表中的数据制定一个数据保留策略，是规划和管理每个时态表的生命周期的一个重要方面。 使用 Azure SQL 数据库，可以通过以下方法来管理时态表中的历史数据：
 
 * [表分区](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_2)
 * [自定义清理脚本](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_3)

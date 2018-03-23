@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 中的声明映射（公共预览版）| Microsoft Docs"
-description: "本页介绍 Azure Active Directory 声明映射。"
+title: Azure Active Directory 中的声明映射（公共预览版）| Microsoft Docs
+description: 本页介绍 Azure Active Directory 声明映射。
 services: active-directory
 author: billmath
 manager: mtillman
@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: 1bc669dfa5a41e38b35751af62560ff650575a08
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b0dae074734b13046fb0d90e178e05f81399b5c6
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Azure Active Directory 中的声明映射（公共预览版）
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/11/2018
 - 选择或更改在特定声明中发出的数据的源。
 
 >[!NOTE]
->此功能目前以公共预览版提供。 应准备好还原或删除所做的任何更改。 在公共预览版推出期间，可在任何 Azure Active Directory (Azure AD) 订阅中使用此功能。 但是，在正式版推出后，某些功能可能需要使用 Azure Active Directory Premium 订阅。
+>此功能目前以公共预览版提供。 应准备好还原或删除所做的任何更改。 在公共预览版推出期间，可在任何 Azure Active Directory (Azure AD) 订阅中使用此功能。 但是，在正式版推出后，某些功能可能需要使用 Azure Active Directory Premium 订阅。 此功能支持配置适用于 WS-Fed、SAML、OAuth 和 OpenID Connect 协议的声明映射策略。
 
 ## <a name="claims-mapping-policy-type"></a>声明映射策略类型
 在 Azure AD 中，**策略**对象表示针对组织中的单个应用程序或所有应用程序强制实施的一组规则。 每种类型的策略都有一个唯一的结构，其中的一组属性将应用于它们所分配到的对象。
@@ -419,7 +419,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 在 Azure AD 中，在可以为特定服务主体自定义令牌中发出的声明时，可以实现许多方案。 在此部分中，我们会演练几个常见方案，它们可帮助你理解如何使用声明映射策略类型。
 
-#### <a name="prerequisites"></a>系统必备
+#### <a name="prerequisites"></a>先决条件
 在以下示例中，会为服务主体创建、更新、链接和删除策略。 如果你是 Azure AD 新手，我们建议在继续学习这些示例之前，先了解如何获取 Azure AD 租户。 
 
 若要开始，请执行以下步骤：

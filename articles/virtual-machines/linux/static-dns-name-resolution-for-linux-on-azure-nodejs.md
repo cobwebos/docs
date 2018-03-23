@@ -1,13 +1,13 @@
 ---
-title: "在 Azure 上使用内部 DNS 进行 VM 名称解析 | Microsoft Docs"
-description: "在 Azure 上使用内部 DNS 进行 VM 名称解析。"
+title: 在 Azure 上使用内部 DNS 进行 VM 名称解析 | Microsoft Docs
+description: 在 Azure 上使用内部 DNS 进行 VM 名称解析。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2016
 ms.author: v-livech
-ms.openlocfilehash: bfba2cf38a0624e8480a32bf153f391d820da5a1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e73e780123f4582c9fa78975324e7904c85f87be
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="using-internal-dns-for-vm-name-resolution-on-azure"></a>在 Azure 上使用内部 DNS 进行 VM 名称解析
 
@@ -85,7 +85,7 @@ _将任何示例替换为自己的命名。_
 
 ## <a name="create-the-resource-group"></a>创建资源组
 
-需要使用资源组来组织在本演练中创建的所有内容。  有关 Azure 资源组的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+需要使用资源组来组织在本演练中创建的所有内容。  有关 Azure 资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ```azurecli
 azure group create myResourceGroup \
@@ -94,7 +94,7 @@ azure group create myResourceGroup \
 
 ## <a name="create-the-vnet"></a>创建 VNet
 
-第一步是生成将 VM 启动到其中的 VNet。  该 VNet 包含本演练的一个子网。  有关 Azure VNet 的详细信息，请参阅[使用 Azure CLI 创建虚拟网络](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+第一步是生成将 VM 启动到其中的 VNet。  该 VNet 包含本演练的一个子网。  有关 Azure VNet 的详细信息，请参阅[创建虚拟网络](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)
 
 ```azurecli
 azure network vnet create myVNet \

@@ -1,19 +1,19 @@
 ---
-title: "将 Azure 文件与 AKS 配合使用"
-description: "将 Azure 磁盘与 AKS 配合使用"
+title: 将 Azure 文件与 AKS 配合使用
+description: 将 Azure 磁盘与 AKS 配合使用
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 1/04/2018
+ms.date: 03/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ce37cfdd70f95822a912f6ea71b9e4a3f9a30a14
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: a5126bc4c5e7c9cd9832f33fc908e6c8b9e02b91
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="persistent-volumes-with-azure-files"></a>含 Azure 文件的持久卷
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 02/13/2018
 
 有关 Kubernetes 永久性卷的详细信息，请参阅 [Kubernetes 永久性卷][kubernetes-volumes]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="create-storage-account"></a>创建存储帐户
 
 将 Azure 文件共享动态预配为 Kubernetes 卷时，可以使用任何存储帐户，只要该帐户与 AKS 群集包含在同一资源组中。 根据需要在 AKS 群集所在的资源组中创建一个存储帐户。 
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/13/2018
 az group list --output table
 ```
 
-以下示例输出显示了资源组，二者都与 AKS 群集相关联。 名称类似于 *MC_myAKSCluster_myAKSCluster_eastus* 的资源组包含 AKS 群集资源，是需要在其中创建存储帐户的地方。 
+你在查找名称类似 `MC_clustername_clustername_locaton` 的资源组，其中 clustername 为 AKS 群集的名称，location 为部署群集的 Azure 区域。
 
 ```
 Name                                 Location    Status
@@ -40,17 +40,21 @@ MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
 myAKSCluster                         eastus      Succeeded
 ```
 
-确定资源组以后，即可使用 [az storage account create][az-storage-account-create] 命令创建存储帐户。
+可使用 [az storage account create][az-storage-account-create] 命令创建存储帐户。 
+
+使用此示例，将 `--resource-group` 更新为资源组的名称，并将 `--name` 更新为你选择的名称。
 
 ```azurecli-interactive
-az storage account create --resource-group  MC_myAKSCluster_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
+az storage account create --resource-group MC_myAKSCluster_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
 ```
 
 ## <a name="create-storage-class"></a>创建存储类
 
-存储类用于定义动态创建的永久性卷的配置方法。 可以在存储类对象中定义 Azure 存储帐户名称、SKU、区域之类的项。 有关 Kubernetes 存储类的详细信息，请参阅 [Kubernetes 存储类][kubernetes-storage-classes]。
+存储类用于定义如何创建 Azure 文件共享。 可在此类中指定特定的存储帐户。 如果未指定存储帐户，必须指定 `skuName` 和 `location`，并评估关联的资源组中的所有存储帐户的匹配度。
 
-以下示例指定，在请求存储时，可以使用 `eastus` 区域中 SKU 类型为 `Standard_LRS` 的任何存储帐户。 
+有关 Azure 文件的 Kubernetes 存储类的详细信息，请参阅 [Kubernetes 存储类][kubernetes-storage-classes]。
+
+创建名为 `azure-file-sc.yaml` 的文件，并将其复制到以下清单中。 将 `storageAccount` 更新为目标存储帐户的名称。
 
 ```yaml
 kind: StorageClass
@@ -59,29 +63,22 @@ metadata:
   name: azurefile
 provisioner: kubernetes.io/azure-file
 parameters:
-  skuName: Standard_LRS
+  storageAccount: mystorageaccount
 ```
 
-若要使用特定的存储帐户，可以使用 `storageAccount` 参数。
+使用 [kubectl create][kubectl-create] 命令创建存储类。
 
-```yaml
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: azurefile
-provisioner: kubernetes.io/azure-file
-parameters:
-  storageAccount: azure_storage_account_name
+```azurecli-interactive
+kubectl create -f azure-file-sc.yaml
 ```
 
 ## <a name="create-persistent-volume-claim"></a>创建永久性卷声明
 
-永久性卷声明使用存储类对象来动态预配存储块。 使用 Azure 文件时，请在存储帐户（在存储类对象中选择或指定）中创建一个 Azure 文件共享。
+永久性卷声明 (PVC) 使用存储类对象来动态预配 Azure 文件共享。 
 
->  [!NOTE]
->   确保已在 AKS 群集资源所在的资源组中预先创建了合适的存储帐户。 此资源组的名称类似于 *MC_myAKSCluster_myAKSCluster_eastus*。 如果存储帐户不可用，则永久性卷声明将无法预配 Azure 文件共享。 
+可以使用以下清单创建大小为 `5GB`、访问权限为 `ReadWriteOnce` 的永久性卷声明。
 
-可以使用以下清单创建大小为 `5GB`、访问权限为 `ReadWriteOnce` 的永久性卷声明。 有关 PVC 访问模式的详细信息，请参阅[访问模式][access-modes]。
+创建名为 `azure-file-pvc.yaml` 的文件，并将其复制到以下清单中。 请确保 `storageClassName` 与上一步骤中创建的存储类匹配。
 
 ```yaml
 apiVersion: v1
@@ -97,9 +94,19 @@ spec:
       storage: 5Gi
 ```
 
+使用 [kubectl create][kubectl-create] 命令创建永久性卷声明。
+
+```azurecli-interactive
+kubectl create -f azure-file-pvc.yaml
+```
+
+完成此步骤后，文件共享即创建完毕。 同时还会创建一个包含连接信息和凭据的 Kubernetes 机密。
+
 ## <a name="using-the-persistent-volume"></a>使用永久性卷
 
-创建永久性卷声明并成功预配存储以后，即可创建可以访问卷的 Pod。 以下清单创建的 Pod 使用永久性卷声明 `azurefile` 将 Azure 文件共享装载到 `/var/www/html` 路径。 
+以下清单创建的 Pod 使用永久性卷声明 `azurefile` 将 Azure 文件共享装载到 `/mnt/azure` 路径。
+
+创建名为 `azure-pvc-files.yaml` 的文件，并将其复制到以下清单中。 请确保 `claimName` 与上一步骤中创建的 PVC 匹配。
 
 ```yaml
 kind: Pod
@@ -111,7 +118,7 @@ spec:
     - name: myfrontend
       image: nginx
       volumeMounts:
-      - mountPath: "/var/www/html"
+      - mountPath: "/mnt/azure"
         name: volume
   volumes:
     - name: volume
@@ -119,36 +126,13 @@ spec:
         claimName: azurefile
 ```
 
-## <a name="mount-options"></a>装载选项
+使用 [kubectl create][kubectl-create] 命令创建 Pod。
 
-默认的 fileMode 和 dirMode 值的 Kubernetes 版本有差异，如下表所述。 
-
-| 版本 | 值 |
-| ---- | ---- |
-| v1.6.x、v1.7.x | 0777 |
-| v1.8.0-v1.8.5 | 0700 |
-| v1.8.6 或更高版本 | 0755 |
-| v1.9.0 | 0700 |
-| v1.9.1 或更高版本 | 0755 |
-
-如果使用 1.8.5 或更高版本的群集，则可在存储类对象上指定装载选项。 以下示例设置 `0777`。 
-
-```yaml
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: azurefile
-provisioner: kubernetes.io/azure-file
-mountOptions:
-  - dir_mode=0777
-  - file_mode=0777
-  - uid=1000
-  - gid=1000
-parameters:
-  skuName: Standard_LRS
+```azurecli-interactive
+kubectl create -f azure-pvc-files.yaml
 ```
 
-如果使用版本为 1.8.0 - 1.8.4 的群集，则可在指定安全性上下文时，将 `runAsUser` 值设置为 `0`。 有关 Pod 安全性上下文的详细信息，请参阅[配置安全性上下文][kubernetes-security-context]。
+现在你有一个正在运行的 Pod，其中 Azure 磁盘被装载到 `/mnt/azure` 目录中。 通过 `kubectl describe pod mypod` 检查 pod 时，可以看到此卷装载。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -164,7 +148,7 @@ parameters:
 [kubernetes-files]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_file/README.md
 [kubernetes-secret]: https://kubernetes.io/docs/concepts/configuration/secret/
 [kubernetes-security-context]: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-[kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/
+[kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/#azure-file
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
 <!-- LINKS - internal -->

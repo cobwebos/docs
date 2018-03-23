@@ -1,9 +1,9 @@
 ---
-title: "使用 Azure SQL 数据库设计高可用性服务 | Microsoft Docs"
-description: "了解使用 Azure SQL 数据库对应用程序设计高可用性服务。"
-keywords: "云灾难恢复, 灾难恢复解决方案, 应用数据备份, 异地复制, 业务连续性规划"
+title: 使用 Azure SQL 数据库设计高可用性服务 | Microsoft Docs
+description: 了解使用 Azure SQL 数据库对应用程序设计高可用性服务。
+keywords: 云灾难恢复, 灾难恢复解决方案, 应用数据备份, 异地复制, 业务连续性规划
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 author: anosov1960
 manager: jhubbard
 editor: monicar
@@ -13,19 +13,22 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.date: 12/13/2017
 ms.workload: On Demand
+ms.date: 03/07/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 3d6ad95c1ca316b2e7c3f722315d2ddec03a3716
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: aa6a032a9d42038502cf074ef8aeff8e2e8b0b31
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>使用 Azure SQL 数据库设计高可用性服务
 
 在 Azure SQL 数据库上生成和部署高度的可用服务时，可使用[故障转移组和活动异地复制](sql-database-geo-replication-overview.md)在发生区域中断和灾难性故障时进行复原。 它还可实现快速恢复到辅助数据库。 本文主要介绍常见应用程序模式并讨论每种模式的优势和选择时应考虑的因素。 有关弹性池的活动异地复制的信息，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
+
+> [!NOTE]
+> 如果正在使用高级数据库和池，可以通过将它们转换为区域冗余部署配置（当前为预览状态），使它们能够适应区域性的中断。 请参阅[区域冗余数据库](sql-database-high-availability.md)。  
 
 ## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>方案 1：使用两个 Azure 区域来实现业务连续性，同时将停机时间减至最小
 在此方案中，应用程序具有以下特征： 
@@ -47,8 +50,7 @@ ms.lasthandoff: 12/14/2017
 主要区域服务中断后，SQL 数据库服务会检测到主数据库不可访问，并基于自动故障转移策略的参数触发到次要区域的故障转移 (1)。 可以配置一个宽限期来控制断电检测和故障转移本身之间的时间，具体取决于应用程序 SLA。 流量管理器可能会在故障转移组触发数据库故障转移前启动终结点故障转移。 在这种情况下，Web 应用程序无法立即重新连接到数据库。 但在数据库故障转移完成后，会立即自动实现重新连接。 当失败的区域还原并恢复联机状态时，旧的主数据库自动作为新的辅助数据库进行重新连接。 下图显示故障转移后的配置。
  
 > [!NOTE]
-> 故障转移后提交的事物会在重新连接时丢失。 故障转移完成后，区域 B 中的应用程序能重新连接并重新开始处理用户请求。 现在 Web 应用程序和主数据库均位于区域 B 并始终存在于同一位置。 
-n>
+> 故障转移后提交的事物会在重新连接时丢失。 故障转移完成后，区域 B 中的应用程序能重新连接并重新开始处理用户请求。 现在 Web 应用程序和主数据库均位于区域 B 并始终存在于同一位置。 n>
 
 ![方案 1. 故障转移后的配置](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
 

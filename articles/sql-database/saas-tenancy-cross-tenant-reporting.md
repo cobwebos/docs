@@ -1,26 +1,21 @@
 ---
-title: "针对多个 Azure SQL 数据库运行报告查询 | Microsoft Docs"
-description: "使用分布式查询实现跨租户报告。"
-keywords: "sql 数据库教程"
+title: 针对多个 Azure SQL 数据库运行报告查询 | Microsoft Docs
+description: 使用分布式查询实现跨租户报告。
+keywords: sql 数据库教程
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: articles
 ms.date: 11/13/2017
-ms.author: billgib; sstein; AyoOlubeko
-ms.openlocfilehash: 531d284798e455622faa1bfe7b0c8f178b3642fd
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.author: billgib
+ms.reviewer: sstein; AyoOlubeko
+ms.openlocfilehash: b470a9cf4e3c08e582bda3f0b02378e68de7c8cf
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>使用分布式查询实现跨租户报告
 
@@ -115,7 +110,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 
 在下一节中将架构添加到数据库，使其可用于运行分布式查询。
 
-## <a name="configure-the-head-database-for-running-distributed-queries"></a>配置用于运行分布式查询的“头像”数据库
+## <a name="configure-the-head-database-for-running-distributed-queries"></a>配置用于运行分布式查询的“head”数据库
 
 此练习将架构（外部数据源和外部表定义）添加到特别报告数据库，实现针对所有租户数据库进行查询。
 
@@ -172,7 +167,7 @@ SaaS 应用程序具有诸多优势，包括可让你使用云端存储的大量
 
    ![远程和本地数据联接](media/saas-tenancy-cross-tenant-reporting/query2-plan.png)
 
-6. 现在选择“哪天售票量多大?”查询，然后按 F5。
+6. 现在选择“哪天销售的票证最多?”查询，然后按 F5。
 
    此查询执行稍微有些复杂的联接和聚合操作。 大多数处理操作远程执行。  仅向头像数据库返回包含每个位置每天售票数量的单个行。
 
