@@ -1,25 +1,25 @@
 ---
-title: "准备 Azure 堆栈开发工具包 (ASDK) 主机计算机 |Microsoft 文档"
-description: "描述如何准备 Azure 堆栈开发工具包 (ASDK) 主机计算机上 ASDK 安装。"
+title: 准备 Azure 堆栈开发工具包 (ASDK) 主机计算机 |Microsoft 文档
+description: 描述如何准备 Azure 堆栈开发工具包 (ASDK) 主机计算机上 ASDK 安装。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 8b1a6298ab32dc364aa1543e4a8d5db47b02a098
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 5de25f574cb876701ffce74f1dca8c4bb9764157
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="prepare-the-asdk-host-computer"></a>准备 ASDK 主计算机
 你可以在主计算机上安装 ASDK 之前，必须安装准备 ASDK 环境。 当已准备好开发工具包主机计算机时，它将从 CloudBuilder.vhdx 虚拟机硬盘空间，以开始 ASDK 部署进行启动。
@@ -36,6 +36,8 @@ ms.lasthandoff: 03/17/2018
   $LocalPath = 'C:\AzureStack_Installer'
   # Create folder
   New-Item $LocalPath -Type directory
+  # Enforce usage of TLSv1.2 to download from GitHub
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
   # Download file
   Invoke-WebRequest $uri -OutFile ($LocalPath + '\' + 'asdk-installer.ps1')
   ```

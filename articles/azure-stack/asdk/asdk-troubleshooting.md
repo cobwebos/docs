@@ -1,25 +1,25 @@
 ---
-title: "Microsoft Azure 堆栈疑难解答 |Microsoft 文档"
-description: "Azure 堆栈开发工具包 (ASDK) 疑难解答信息。"
+title: Microsoft Azure 堆栈疑难解答 |Microsoft 文档
+description: Azure 堆栈开发工具包 (ASDK) 疑难解答信息。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 6ed3fb7c7c4de9edbf31fb2c47290e2e39ceadcd
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6c715f07f75c9196b7cf2cc8659c6e541e1260da
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Microsoft Azure 堆栈开发工具包 (ASDK) 疑难解答
 本文档提供 ASDK 的常见故障排除信息。 如果遇到未记录的问题，请务必检查[Azure 堆栈 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)需进一步的帮助和信息。  
@@ -31,7 +31,12 @@ ms.lasthandoff: 03/17/2018
 
 ## <a name="deployment"></a>部署
 ### <a name="deployment-failure"></a>部署失败
-如果安装期间发生失败，可以使用部署脚本的 -rerun 选项从失败的步骤重新开始部署。  
+如果在安装过程中遇到失败，你可以通过使用来重新启动失败的步骤中的部署-重新运行的选项的部署脚本，如以下示例所示：
+
+  ```powershell
+  cd C:\CloudDeployment\Setup
+  .\InstallAzureStackPOC.ps1 -Rerun
+  ```
 
 ### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>部署结束时，PowerShell 会话仍保持打开状态，但不显示任何输出
 此行为可能是选择 PowerShell 命令窗口后的默认行为。 开发工具包部署已成功完成，但选择窗口时，该脚本已暂停。 可以通过在命令窗口的标题栏中查找“select”一词，来验证安装是否已完成。 按 ESC 键取消选择窗口，然后即会显示完成消息。

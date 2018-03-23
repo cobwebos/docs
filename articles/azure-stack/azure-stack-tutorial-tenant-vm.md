@@ -1,164 +1,161 @@
 ---
-title: "让 Azure 堆栈用户能够使用虚拟机 |Microsoft 文档"
-description: "若要使虚拟机在 Azure 堆栈上可用的教程"
+title: 将虚拟机提供给 Azure Stack 用户使用 | Microsoft Docs
+description: 有关使虚拟机可在 Azure Stack 上使用的教程
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2017
-ms.author: brenduns
-ms.reviewer: 
+ms.date: 03/22/2018
+ms.author: jeffgilb
+ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: d169a18df8916cfb8dd30b00248099a3d374aacc
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: af97f32736959f8ebf8f3c4fbca400d6b0c41f3e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>让 Azure 堆栈用户能够使用虚拟机
+# <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>将虚拟机提供给 Azure Stack 用户使用
+Azure Stack 云管理员可以创建产品供用户（有时称为租户）订阅。 然后，用户可以通过其订阅来使用 Azure Stack 服务。
 
-*适用范围： Azure 堆栈集成系统和 Azure 堆栈开发工具包*
+本文介绍如何创建产品，然后对其进行测试。 测试时，需要以用户身份登录到门户，订阅产品，然后使用订阅创建虚拟机。
 
-作为 Azure 堆栈云管理员，你可以创建你的用户 （有时称为租户） 可以订阅的产品/服务。 使用其订阅，用户便可以使用 Azure 堆栈服务。
-
-这篇文章演示了如何创建优惠后，，然后测试它。 为了使测试，你将在登录到门户的用户，订阅产品，，然后创建使用订阅的虚拟机。
-
-你将学习：
+要学习的知识：
 
 > [!div class="checklist"]
 > * 创建产品
-> * 添加图像
-> * 测试产品/服务
+> * 添加映像
+> * 测试产品
 
 
-Azure 堆栈中传递给使用订阅、 服务和计划的用户的服务。 用户可以订阅多个产品/服务。 产品可以包含一个或多个计划，计划可以包含一个或多个服务。
+在 Azure Stack 中，可通过订阅、产品和计划将服务交付给用户。 用户可以订阅多个产品。 产品可以包含一个或多个计划，计划可以包含一个或多个服务。
 
-![订阅、 服务和计划](media/azure-stack-key-features/image4.png)
+![订阅、产品和计划](media/azure-stack-key-features/image4.png)
 
-若要了解详细信息，请参阅[主要功能和 Azure 堆栈中的概念](azure-stack-key-features.md)。
+有关详细信息，请参阅 [Azure Stack 中的重要功能和概念](azure-stack-key-features.md)。
 
 ## <a name="create-an-offer"></a>创建产品
 
-现在，你可以收到操作准备好你的用户。 当你启动该过程时，你首先系统提示创建产品/服务，则某一计划、 和最后的配额。
+现在可为用户做好准备。 开始执行此过程时，系统首先会提示依次创建产品、计划和配额。
 
 3. **创建产品/服务**
 
-   提供是组的一个或多个提供程序显示给用户购买或订阅的计划。
+   产品是提供者提供给用户购买或订阅的一个或多个计划。
 
-   a. [登录](azure-stack-connect-azure-stack.md)到与云管理员联系，然后单击门户**新建** > **提供 + 计划** > **提供**。
-   ![新提议](media/azure-stack-tutorial-tenant-vm/image01.png)
+   a. 以云管理员的身份[登录](azure-stack-connect-azure-stack.md)到门户，单击“新建” > “产品 + 计划” > “产品”。
+   ![新建产品](media/azure-stack-tutorial-tenant-vm/image01.png)
 
-   b. 在**新提供**部分中，填写**显示名称**和**资源名称**，然后选择一个新的或现有**资源组**。 显示名称是产品/服务的友好名称。 仅云操作员可以查看资源名称。 它是管理员使用，以便为 Azure 资源管理器资源提供的名称。
+   b. 在“新建产品”部分填写“显示名称”和“资源名称”，然后选择一个新的或现有的**资源组**。 “显示名称”是产品的友好名称。 只有云操作员可以看到“资源名称”。 管理员使用此名称将该产品/服务作为 Azure 资源管理器资源处理。
 
    ![显示名称](media/azure-stack-tutorial-tenant-vm/image02.png)
 
-   c. 单击**基本计划**，然后在**计划**部分中，单击**添加**到产品/服务中添加新的计划。
+   c. 单击“基本计划”，在“计划”部分单击“添加”，将新计划添加到产品。
 
    ![添加计划](media/azure-stack-tutorial-tenant-vm/image03.png)
 
-   d.单击“下一步”。 在**新的计划**部分中，填写**显示名称**和**资源名称**。 显示名称是用户看到的计划的友好名称。 仅云操作员可以查看资源名称。 它是云操作员用于在使用 Azure 资源管理器资源作为计划的名称。
+   d.单击“下一步”。 在“新建计划”部分填写“显示名称”和“资源名称”。 显示名称是用户可看到的计划的友好名称。 只有云操作员可以看到“资源名称”。 云操作员使用该名称以 Azure 资源管理器资源的形式处理计划。
 
-   ![计划的显示名称](media/azure-stack-tutorial-tenant-vm/image04.png)
+   ![计划显示名称](media/azure-stack-tutorial-tenant-vm/image04.png)
 
-   e. 单击**服务**，选择**Microsoft.Compute**， **Microsoft.Network**，和**Microsoft.Storage**，然后单击**选择**。
+   e. 单击“服务”，选择 **Microsoft.Compute**、**Microsoft.Network** 和 **Microsoft.Storage**，然后单击“选择”。
 
    ![计划服务](media/azure-stack-tutorial-tenant-vm/image05.png)
 
-   f. 单击**配额**，然后选择你想要创建的配额的第一个服务。 对于 IaaS 配额，请按照这些步骤的计算、 网络和存储服务。
+   f. 单击“配额”，选择要为其创建配额的第一个服务。 对于 IaaS 配额，请遵循适用于计算、网络和存储服务的步骤。
 
-   在此示例中，我们首先要创建计算服务的配额。 在命名空间列表中，选择**Microsoft.Compute**命名空间，然后单击**创建新配额**。
+   本示例先为计算服务创建配额。 在命名空间列表中，选择“Microsoft.Compute”命名空间，然后单击“创建新配额”。
    
    ![创建新配额](media/azure-stack-tutorial-tenant-vm/image06.png)
 
-   g. 上**创建配额**节中，键入配额的名称和设置配额然后单击所需的参数**确定**。
+   g. 在“创建配额”部分，输入配额名称并为配额设置所需的参数，然后单击“确定”。
 
    ![配额名称](media/azure-stack-tutorial-tenant-vm/image07.png)
 
-   h. 现在，要使**Microsoft.Compute**，选择你创建的配额。
+   h. 现在，对于 **Microsoft.Compute**，请选择创建的配额。
 
    ![选择配额](media/azure-stack-tutorial-tenant-vm/image08.png)
 
-   对于网络和存储服务，请重复上述步骤，然后单击**确定**上**配额**部分。
+   针对网络和存储服务重复这些步骤，然后单击“配额”部分中的“确定”。
 
-   i. 单击**确定**上**新计划**部分。
+   i. 单击“新建计划”部分中的“确定”。
 
-   j. 上**计划**部分，选择新的计划并单击**选择**。
+   j. 在“计划”部分，选择新计划并单击“选择”。
 
-   k. 上**新提议**部分中，单击**创建**。 创建提议后，你会看到一个通知。
+   k. 在“新建产品”部分单击“创建”。 创建产品后，会看到通知。
 
-   l. 在仪表板菜单上，单击**提供**，然后单击你创建的提议。
+   l. 在仪表板菜单中单击“产品”，然后单击创建的产品。
 
-   m. 单击**更改状态**，然后单击**公共**。
+   m. 依次单击“更改状态”、“公共”。
 
    ![公共状态](media/azure-stack-tutorial-tenant-vm/image09.png)
 
-## <a name="add-an-image"></a>添加图像
+## <a name="add-an-image"></a>添加映像
 
-你可以设置虚拟机之前，你必须将映像添加到 Azure 堆栈应用商店。 您可以添加您的选择，包括 Linux 映像，从 Azure 应用商店的映像。
+预配虚拟机之前，必须先将一个映像添加到 Azure Stack Marketplace。 可以从 Azure Marketplace 添加所选的映像，包括 Linux 映像。
 
-如果你正在连接方案中工作，并且如果你向 Azure 注册你的 Azure 堆栈实例，然后你可以下载 Windows Server 2016 VM 映像从 Azure 应用商店使用中所述的步骤[下载应用商店从 Azure 到 Azure 堆栈的项](azure-stack-download-azure-marketplace-item.md)主题。
+如果在连接方案中操作，且已向 Azure 注册 Azure Stack 实例，则可以使用[将 Marketplace 项从 Azure 下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md) 主题中所述的步骤，从 Azure Marketplace 下载 Windows Server 2016 VM 映像。
 
-有关将不同的项添加到应用商店的信息，请参阅[Azure 堆栈应用商店](azure-stack-marketplace.md)。
+有关将不同的项添加到 Marketplace 的信息，请参阅 [Azure Stack Marketplace](azure-stack-marketplace.md)。
 
-## <a name="test-the-offer"></a>测试产品/服务
+## <a name="test-the-offer"></a>测试产品
 
-现在，你已创建某项服务，你可以对其进行测试。 以用户身份登录并订阅产品并将虚拟机。
+创建产品后，可对其进行测试。 以用户身份登录并订阅该产品，然后添加虚拟机。
 
 1. **订阅产品/服务**
 
-   现在你可以登录到门户以用户订阅产品。
+   现在，可以用户身份登录到门户，以订阅产品。
 
-   a. 某个用户，然后单击以登录到用户门户**获取订阅**。
-   - 对于集成系统，URL 将取决于运算符的区域和外部的域名，并将采用格式 https://portal。&lt;*区域*&gt;。&lt;*FQDN*&gt;。
-   - 如果你使用 Azure 堆栈开发工具包，该门户的地址是 https://portal.local.azurestack.external。
+   a. 以用户身份登录到用户门户，并单击“获取订阅”。
+   - 对于集成系统，URL 根据操作员所在的区域和外部域名的不同而异，格式为 https://portal.&lt;*区域*&gt;.&lt;*FQDN*&gt;。
+   - 如果使用 Azure Stack 开发工具包，则门户地址为 https://portal.local.azurestack.external。
 
    ![获取订阅](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 
-   b. 在**显示名称**字段中，键入你的订阅的名称，单击**提供**，单击一个产品/服务**选择提议**部分，并依次**创建**。
+   b. 在“显示名称”字段中键入订阅的名称，单击“产品”，单击“选择产品”部分中的某个产品，然后单击“创建”。
 
    ![创建产品](media/azure-stack-subscribe-plan-provision-vm/image02.png)
 
-   c. 若要查看你创建的订阅，请单击**更多的服务**，单击**订阅**，然后单击你的新订阅。  
+   c. 若要查看创建的订阅，请单击“更多服务”、单击“订阅”，然后单击新订阅。  
 
-   在订阅产品/服务后，刷新门户后，若要确定哪些服务正在新订阅的一部分。
+   订阅产品之后，请刷新门户以查看哪些服务是新订阅的一部分。
 
 2. **预配虚拟机**
 
-   现在你可以登录到门户设置虚拟机使用订阅的用户。 
+   现在，可以用户身份登录到门户，以使用订阅预配虚拟机。 
 
    a. 以用户身份登录到用户门户。
-      - 对于集成系统，URL 将取决于运算符的区域和外部的域名，并将采用格式 https://portal。&lt;*区域*&gt;。&lt;*FQDN*&gt;。
-   - 如果你使用 Azure 堆栈开发工具包，该门户的地址是 https://portal.local.azurestack.external。
+      - 对于集成系统，URL 根据操作员所在的区域和外部域名的不同而异，格式为 https://portal.&lt;*区域*&gt;.&lt;*FQDN*&gt;。
+   - 如果使用 Azure Stack 开发工具包，则门户地址为 https://portal.local.azurestack.external。
 
-   b.  在仪表板中，单击**新建** > **计算** > **Windows Server 2016 数据中心 Eval**，然后单击**创建**.
+   b.  在仪表板上，单击“新建” > “计算” > “Windows Server 2016 Datacenter Eval”，然后单击“创建”。
 
-   c. 在**基础知识**部分中，键入**名称**，**用户名**，和**密码**，选择**订阅**，创建**资源组**（或选择一个现有），然后单击**确定**。
+   c. 在“基本信息”部分，输入“名称”、“用户名”和“密码”，选择“订阅”，创建一个**资源组**，然后单击“确定”。
 
-   d.单击“下一步”。 在**选择大小**部分中，单击**A1 标准**，然后单击**选择**。  
+   d.单击“下一步”。 在“选择大小”部分单击“A1 标准”，然后单击“选择”。  
 
-   e. 在**设置**部分中，单击**虚拟网络**。 在**选择虚拟网络**部分中，单击**新建**。 在**创建虚拟网络**部分，接受所有默认值，然后单击**确定**。 在**设置**部分中，单击**确定**。
+   e. 在“设置”部分单击“虚拟网络”。 在“选择虚拟网络”部分单击“新建”。 在“创建虚拟网络”部分接受所有默认值，然后单击“确定”。 在“设置”部分单击“确定”。
 
    ![创建虚拟网络](media/azure-stack-provision-vm/image04.png)
 
-   f. 在**摘要**部分中，单击**确定**创建虚拟机。  
+   f. 在“摘要”部分，单击“确定”创建虚拟机。  
 
-   g. 若要查看新的虚拟机，单击**的所有资源**，然后搜索虚拟机并单击其名称。
+   g. 若要查看新虚拟机，请单击“所有资源”，然后搜索该虚拟机并单击其名称。
 
     ![所有资源](media/azure-stack-provision-vm/image06.png)
 
-什么您学习了在本教程中：
+本教程已介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建产品
-> * 添加图像
-> * 测试产品/服务
+> * 添加映像
+> * 测试产品
 
 > [!div class="nextstepaction"]
-> [向 Azure 堆栈用户提供 web、 移动和 API 应用](azure-stack-tutorial-app-service.md)
+> [将 Web、移动和 API 应用提供给 Azure Stack 用户使用](azure-stack-tutorial-app-service.md)

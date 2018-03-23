@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 堆栈中使用 PowerShell 创建 Linux 虚拟机 |Microsoft 文档"
-description: "使用 Azure 堆栈中的 PowerShell 创建 Linux 虚拟机。"
+title: 在 Azure Stack 中使用 PowerShell 创建 Linux 虚拟机 | Microsoft Docs
+description: 在 Azure Stack 中使用 PowerShell 创建 Linux 虚拟机。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 03EE5929-4F05-47D7-B246-EA93D6FC47CD
 ms.service: azure-stack
 ms.workload: na
@@ -15,29 +15,29 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 97847c0c2fcc4ab7d5fe8e4e5badd5809b7e2363
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 5446f00b698fbe1fe1bae9c52bf3e73fe0d1c506
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-a-linux-virtual-machine-by-using-powershell-in-azure-stack"></a>在 Azure 堆栈中使用 PowerShell 创建 Linux 虚拟机 
+# <a name="create-a-linux-virtual-machine-by-using-powershell-in-azure-stack"></a>在 Azure Stack 中使用 PowerShell 创建 Linux 虚拟机 
 
-*适用范围： Azure 堆栈集成系统*
+*适用于：Azure Stack 集成系统*
 
-Azure PowerShell 用于创建和管理在 Azure 堆栈从命令行或脚本中的资源。  此指南详细介绍如何使用 PowerShell 创建运行 Ubuntu server Azure 堆栈中的虚拟机。
+Azure PowerShell 用于通过命令行或脚本在 Azure Stack 中创建和管理资源。  本指南详细介绍如何使用 PowerShell 在 Azure Stack 中创建运行 Ubuntu 服务器的虚拟机。
 
 ## <a name="prerequisites"></a>必备组件 
 
-* 请确保 Azure 堆栈运算符具有"Ubuntu Server 16.04 LTS"将图像添加到 Azure 堆栈市场。  
+* 确保 Azure Stack 运营商已将“Ubuntu Server 16.04 LTS”映像添加到 Azure Stack Marketplace。  
 
-* Azure 堆栈需要特定版本的 Azure PowerShell 创建和管理的资源。 如果你没有配置为 Azure 堆栈的 PowerShell，登录到[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)，或基于 Windows 的外部客户端如果你是[通过 VPN 连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)并遵循相关步骤，为[安装](azure-stack-powershell-install.md)和[配置](azure-stack-powershell-configure-user.md)PowerShell。    
+* Azure Stack 需要使用特定版本的 Azure PowerShell 来创建和管理资源。 如果尚未针对 Azure Stack 配置 PowerShell，请登录到[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)，或登录到基于 Windows 的外部客户端（如果[通过 VPN 建立了连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)），遵循相应的步骤[安装](azure-stack-powershell-install.md)并[配置](azure-stack-powershell-configure-user.md) PowerShell。    
 
-* 应在 Windows 用户配置文件的.ssh 目录中创建与名称 id_rsa.pub SSH 公钥。 有关创建 SSH 密钥的详细信息，请参阅[创建 SSH 密钥在 Windows 上的](../../virtual-machines/linux/ssh-from-windows.md)。  
+* 应在 Windows 用户配置文件的 .ssh 目录中创建名为 id_rsa.pub 的 SSH 公钥。 有关创建 SSH 密钥的详细信息，请参阅[在 Windows 上创建 SSH 密钥](../../virtual-machines/linux/ssh-from-windows.md)。  
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是到哪些 Azure 堆栈部署和管理资源的逻辑容器。 从开发工具包或集成的 Azure 堆栈系统中，运行下面的代码块，来创建资源组。 我们已分配了本文档中的所有变量的值，你可以使用它们也将分配一个不同的值。
+资源组是在其中部署和管理 Azure Stack 资源的逻辑容器。 在开发工具包或 Azure Stack 集成系统中，运行以下代码块创建资源组。 我们已为本文档中的所有变量赋值，可以按原样使用这些值，或分配不同的值。
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -51,7 +51,7 @@ New-AzureRmResourceGroup `
 
 ## <a name="create-storage-resources"></a>创建存储资源
 
-创建存储帐户和一个存储容器来存储 Ubuntu Server 16.04 LTS 映像。
+创建存储帐户和存储容器用于存储 Ubuntu Server 16.04 LTS 映像。
 
 ```powershell
 # Create variables to store the storage account name and the storage account SKU information
@@ -78,7 +78,7 @@ $container = New-AzureStorageContainer `
 
 ## <a name="create-networking-resources"></a>创建网络资源
 
-创建虚拟网络、子网和公共 IP 地址。 这些资源用于提供网络连接到虚拟机。
+创建虚拟网络、子网和公共 IP 地址。 这些资源用来与虚拟机建立网络连接。
 
 ```powershell
 # Create a subnet configuration
@@ -106,7 +106,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>创建网络安全组和网络安全组规则
 
-网络安全组使用入站和出站规则保护虚拟机。 让我们创建针对端口 3389，以允许传入远程桌面连接的入站的规则，并为端口 80 以允许传入的 web 流量的入站的规则。
+网络安全组使用入站和出站规则保护虚拟机。 让我们创建端口 3389 的入站规则以允许传入的远程桌面连接，并创建端口 80 的入站规则以允许传入的 Web 流量。
 
 ```powershell
 # Create an inbound network security group rule for port 22
@@ -189,7 +189,7 @@ Add-AzureRmVMSshPublicKey -VM $VirtualMachine `
  -KeyData $sshPublicKey `
  -Path "/home/azureuser/.ssh/authorized_keys"
 
-#Create the virtual machine.
+# Create the virtual machine.
 New-AzureRmVM `
   -ResourceGroupName $ResourceGroupName `
  -Location $location `
@@ -204,16 +204,16 @@ New-AzureRmVM `
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-从使用 SSH 安装系统，使用以下命令以连接到虚拟机。 如果你正在 Windows 上，则可以使用[Putty](http://www.putty.org/)才能创建连接。
+在装有 SSH 的系统中，使用以下命令连接到虚拟机。 如果在 Windows 上操作，可以使用 [Putty](http://www.putty.org/) 创建连接。
 
 ```
 ssh <Public IP Address>
 ```
 
-出现提示时，登录用户名为 azureuser。 如果在创建 SSH 密钥时输入了通行短语，还需要输入此通行短语。
+出现提示时，请输入登录用户名 azureuser。 如果在创建 SSH 密钥时输入了通行短语，还需要输入此通行短语。
 
 ## <a name="clean-up-resources"></a>清理资源
-当不再需要可以使用[Remove-azurermresourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1)命令删除资源组，VM，以及所有相关资源：
+如果不再需要资源组、VM 和所有相关的资源，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1) 命令将其删除。
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -221,4 +221,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程，你已部署简单的 Linux 虚拟机。 若要了解有关 Azure 堆栈的虚拟机的详细信息，继续到[Azure 堆栈中的虚拟机的注意事项](azure-stack-vm-considerations.md)。
+在本快速入门中，我们部署了一个简单的 Linux 虚拟机。 有关 Azure Stack 虚拟机的详细信息，请转到 [Azure Stack 中虚拟机的注意事项](azure-stack-vm-considerations.md)。

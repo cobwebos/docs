@@ -1,40 +1,40 @@
 ---
-title: "安装和配置 PowerShell 以 Azure 堆栈快速入门 |Microsoft 文档"
-description: "了解如何安装和配置 PowerShell 的 Azure 堆栈。"
+title: 有关安装和配置适用于 Azure Stack 的 PowerShell 的快速入门 | Microsoft Docs
+description: 了解如何安装和配置适用于 Azure Stack 的 PowerShell。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 6996DFC1-5E05-423A-968F-A9427C24317C
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: cba6f8295e5d4b75192e566d4931cbd617e7dc8d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7725c5a9a7b6359257efadcc46366a7a360ec69c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="get-up-and-running-with-powershell-in-azure-stack"></a>获取启动并运行 Azure 堆栈中的 PowerShell
+# <a name="get-up-and-running-with-powershell-in-azure-stack"></a>在 Azure Stack 中使用 PowerShell 启动并运行
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-本快速入门教程可帮助你安装和使用 PowerShell 配置 Azure 堆栈环境。 我们在本文中提供的脚本作用域为**Azure 堆栈运算符**仅。
+本快速入门帮助你使用 PowerShell 来安装和配置 Azure Stack 环境。 本文中提供的脚本仅面向 **Azure Stack 操作员**。
 
-本文是中所述的步骤的简要的版本[安装 PowerShell]( azure-stack-powershell-install.md)，[下载工具]( azure-stack-powershell-download.md)，和[配置 Azure 堆栈运算符 PowerShell 环境]( azure-stack-powershell-configure-admin.md)文章。 通过使用本主题中的脚本，你可以将设置 PowerShell 为 Azure 堆栈环境与 Azure Active Directory 或 Active Directory 联合身份验证服务 (AD FS) 部署。  
+本文是[安装 PowerShell]( azure-stack-powershell-install.md)、[下载工具]( azure-stack-powershell-download.md)和[配置 Azure Stack 操作员的 PowerShell 环境]( azure-stack-powershell-configure-admin.md)文章中所述步骤的精简版本。 使用本主题中的脚本，可以设置连同 Azure Active Directory 或 Active Directory 联合身份验证服务 (AD FS) 一起部署的 Azure Stack PowerShell 环境。  
 
 
-## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>基于 Azure Active Directory 的部署设置 PowerShell
+## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>设置 PowerShell 进行基于 Azure Active Directory 的部署
 
-如果你通过 VPN 连接，登录到 Azure 堆栈开发工具包中或基于 Windows 的外部客户端。 打开提升的 PowerShell ISE 会话，，然后运行以下脚本。 请确保更新**TenantName**， **ArmEndpoint**，和**GraphAudience**根据你环境的配置变量：
+登录到 Azure Stack 开发工具包；如果已通过 VPN 建立连接，请登录到基于 Windows 的外部客户端。 打开权限提升的 PowerShell ISE 会话，然后运行以下脚本。 确保根据需要更新环境配置的 **TenantName**、**ArmEndpoint** 和 **GraphAudience** 变量：
 
 > [!IMPORTANT]
-> AzureRM 1.2.11 PowerShell 模块的版本附带的重大更改的列表。 若要从 1.2.10 升级版本，请参阅[迁移指南](https://aka.ms/azspowershellmigration)。
+> AzureRM 1.2.11 PowerShell 模块版本随附了重大更改列表。 若要从 1.2.10 升级版本，请参阅[迁移指南](https://aka.ms/azspowershellmigration)。
 
 ```powershell
 # Specify Azure Active Directory tenant name.
@@ -84,10 +84,6 @@ Import-Module .\Connect\AzureStack.Connect.psm1
 # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
-# For Azure Stack development kit, this value is adminvault.local.azurestack.external 
-$KeyvaultDnsSuffix = "<Keyvault DNS suffix for your environment>"
-
-
 # Register an AzureRM environment that targets your Azure Stack instance
   Add-AzureRMEnvironment `
     -Name "AzureStackAdmin" `
@@ -104,9 +100,9 @@ $KeyvaultDnsSuffix = "<Keyvault DNS suffix for your environment>"
     -TenantId $TenantID 
 ```
 
-## <a name="set-up-powershell-for-ad-fs-based-deployments"></a>为 AD FS 基于部署设置 PowerShell
+## <a name="set-up-powershell-for-ad-fs-based-deployments"></a>设置 PowerShell 进行基于 AD FS 的部署
 
-如果你正在 Azure 堆栈连接到 internet 时，可以使用以下脚本。 但是如果你正在 Azure 堆栈没有 internet 连接，使用[断开连接的安装 PowerShell 的方式](azure-stack-powershell-install.md#install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity)和配置 PowerShell 的 cmdlet 将保持相同，此脚本中所示。 如果你通过 VPN 连接，登录到 Azure 堆栈开发工具包中或基于 Windows 的外部客户端。 打开提升的 PowerShell ISE 会话，，然后运行以下脚本。 请确保更新**ArmEndpoint**和**GraphAudience**根据你环境的配置变量：
+如果在连接到 Internet 的情况下运行 Azure Stack，则可以使用以下脚本。 但是，如果在未建立 Internet 连接的情况下运行 Azure Stack，请使用[脱机安装 PowerShell](azure-stack-powershell-install.md#install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) 的方法，用于配置 PowerShell 的 cmdlet 与此脚本中所示相同。 登录到 Azure Stack 开发工具包；如果已通过 VPN 建立连接，请登录到基于 Windows 的外部客户端。 打开权限提升的 PowerShell ISE 会话，然后运行以下脚本。 确保根据需要更新环境配置的 **ArmEndpoint** 和 **GraphAudience** 变量：
 
 ```powershell
 
@@ -154,9 +150,6 @@ Import-Module .\Connect\AzureStack.Connect.psm1
 # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
 $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
-# For Azure Stack development kit, this value is adminvault.local.azurestack.external 
-$KeyvaultDnsSuffix = "<Keyvault DNS suffix for your environment>"
-
 # Register an AzureRM environment that targets your Azure Stack instance
 Add-AzureRMEnvironment `
     -Name "AzureStackAdmin" `
@@ -175,13 +168,13 @@ Login-AzureRmAccount `
 
 ## <a name="test-the-connectivity"></a>测试连接
 
-现在，你已配置 PowerShell，你可以通过创建资源组来测试配置：
+配置 PowerShell 后，可以通过创建资源组来测试配置：
 
 ```powershell
 New-AzureRMResourceGroup -Name "ContosoVMRG" -Location Local
 ```
 
-创建资源组后，**预配状态**属性设置为**Succeeded**。
+创建资源组后，“预配状态”属性会设置为“成功”。
 
 ## <a name="next-steps"></a>后续步骤
 

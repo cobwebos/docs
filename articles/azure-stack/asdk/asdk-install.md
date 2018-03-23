@@ -1,25 +1,25 @@
 ---
-title: "安装 Azure 堆栈开发工具包 (ASDK) |Microsoft 文档"
-description: "描述如何安装 Azure 堆栈开发工具包 (ASDK)。"
+title: 安装 Azure 堆栈开发工具包 (ASDK) |Microsoft 文档
+description: 描述如何安装 Azure 堆栈开发工具包 (ASDK)。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e1f4cfb74d83cb23631e5a16a6e6f2dba98027ef
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7b8fe61731a9412c61152bc58e55deebb611d011
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>安装 Azure 堆栈开发工具包 (ASDK)
 后[准备 ASDK 主机计算机](asdk-prepare-host.md)，ASDK 可以部署到此文章中使用以下步骤 CloudBuilder.vhdx 映像。
@@ -55,8 +55,10 @@ ms.lasthandoff: 03/17/2018
     - **DHCP**（默认）：虚拟机 DHCP 服务器获取 IP 网络配置。
     - **静态**：仅当 DHCP 无法为 Azure Stack 分配可访问 Internet 的有效 IP 地址时，才使用此选项。 **必须使用的子网掩码长度以 CIDR 格式 (例如，10.0.0.5/24) 指定静态 IP 地址**。
     - 中是有效类型**时间服务器 IP**地址。 此必需的字段设置为供开发工具包的时间服务器。 必须以有效的时间服务器 IP 地址的形式提供此参数。 服务器名称不受支持。
+
       > [!TIP]
       > 若要查找时间服务器 IP 地址，请访问 [pool.ntp.org](http:\\pool.ntp.org) 或 ping time.windows.com。 
+
     - **（可选)**，设置以下值：
         - **VLAN ID**：设置 VLAN ID。 仅当主机和 AzS-BGPNAT01 必须通过配置 VLAN ID 来访问物理网络（和 Internet）时，才使用此选项。 
         - **DNS 转发器**：在 Azure Stack 部署过程中会创建 DNS 服务器。 若要允许解决方案中的计算机解析标记外部的名称，请提供现有的基础结构 DNS 服务器。 标记内 DNS 服务器将未知的名称解析请求转发至此服务器。
@@ -88,10 +90,10 @@ ms.lasthandoff: 03/17/2018
 
 如果出于某种原因，部署将失败，则可以[重新部署](asdk-redeploy.md)从从头开始或使用以下 PowerShell 命令，从同一个提升的 PowerShell 窗口，重新启动成功的最后一步中的部署：
 
-    ```powershell
-    cd C:\CloudDeployment\Setup
-    .\InstallAzureStackPOC.ps1 -Rerun
-    ```
+  ```powershell
+  cd C:\CloudDeployment\Setup
+  .\InstallAzureStackPOC.ps1 -Rerun
+  ```
 
 ## <a name="next-steps"></a>后续步骤
 [部署配置后](asdk-post-deploy.md)

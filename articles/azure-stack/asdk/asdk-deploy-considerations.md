@@ -1,25 +1,25 @@
 ---
-title: "Azure 堆栈开发工具包 (ASDK) 部署先决条件 |Microsoft 文档"
-description: "查看有关 Azure 堆栈开发工具包 (ASDK) 的环境和硬件要求。"
+title: Azure 堆栈开发工具包 (ASDK) 部署先决条件 |Microsoft 文档
+description: 查看有关 Azure 堆栈开发工具包 (ASDK) 的环境和硬件要求。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/21/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 24a766ada1cdd1cb854b6869d571acd73e376327
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f4b55bb3287f67792b3257c3f62256437f5625ca
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure 堆栈部署规划注意事项
 在部署 Azure 堆栈开发工具包 (ASDK) 之前，确保你开发工具包的主机计算机满足本文中所述的要求。
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/17/2018
 | 计算：内存 |96 GB RAM |128 GB RAM（这是支持 PaaS 资源提供程序所需的最低设置。）|
 | 计算：BIOS |Hyper-V 已启用（提供 SLAT 支持） |Hyper-V 已启用（提供 SLAT 支持） |
 | 网络：NIC |对于 NIC，Windows Server 2012 R2 认证是必需的，不要求专用功能 |对于 NIC，Windows Server 2012 R2 认证是必需的，不要求专用功能 |
-| 硬件徽标认证 |[针对 Windows Server 2012 R2 的认证](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[针对 Windows Server 2012 R2 的认证](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
+| 硬件徽标认证 |[针对 Windows Server 2012 R2 的认证](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Certified for Windows Server 2016](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
 <sup>*</sup> 你需要更多不是如果你计划将添加的许多建议容量这样[应用商店项](asdk-marketplace-item.md)从 Azure。
 

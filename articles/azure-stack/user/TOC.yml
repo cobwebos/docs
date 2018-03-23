@@ -131,13 +131,15 @@
   items:
     - name: Azure Stack 操作员文档
       href: /azure/azure-stack/
+    - name: ASDK 文档
+      href: /azure/azure-stack/asdk/
 - name: 资源
   items:
-    - name: Azure 堆栈路线图
+    - name: Azure Stack 路线图
       href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
-    - name: Azure 堆栈 MSDN 论坛
+    - name: Azure Stack MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
-    - name: Azure 堆栈文档反馈
+    - name: Azure Stack 文档反馈
       href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: 定价信息
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'

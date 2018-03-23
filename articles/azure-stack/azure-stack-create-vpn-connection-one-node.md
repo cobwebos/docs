@@ -1,11 +1,11 @@
 ---
-title: "创建在不同的 Azure 堆栈开发工具包环境中的两个虚拟网络之间的站点到站点 VPN 连接 |Microsoft 文档"
-description: "云管理员用于创建两个单节点 Azure 堆栈开发工具包环境之间的站点到站点 VPN 连接的分步过程。"
+title: 在不同 Azure Stack 开发工具包环境中的两个虚拟网络之间创建站点到站点 VPN 连接 | Microsoft Docs
+description: 逐步指导云管理员在两个单节点 Azure Stack 开发工具包环境之间创建站点到站点 VPN 连接。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3f1b4e02-dbab-46a3-8e11-a777722120ec
 ms.service: azure-stack
 ms.workload: na
@@ -15,38 +15,38 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: brenduns
 ms.reviewer: scottnap
-ms.openlocfilehash: 886d56169c5500c9175b7ddc43edfc29c5142fbb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8bb10be63ef31ebe6241c15a79dafe71923a4cf7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>创建在不同的 Azure 堆栈开发工具包环境中的两个虚拟网络之间的站点到站点 VPN 连接
+# <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>在不同 Azure Stack 开发工具包环境中的两个虚拟网络之间创建站点到站点 VPN 连接
 ## <a name="overview"></a>概述
-这篇文章演示了如何创建在两个单独的 Azure 堆栈开发工具包环境中的两个虚拟网络之间的站点到站点 VPN 连接。 虽然配置连接时，你了解 Azure 堆栈中的 VPN 网关的工作方式。
+本文介绍如何在两个单独的 Azure Stack 开发工具包环境中的两个虚拟网络之间创建站点到站点 VPN 连接。 在配置连接过程中，读者可以了解 Azure Stack 中 VPN 网关的工作方式。
 
 ### <a name="connection-diagram"></a>连接关系图
-下图显示什么连接配置应如下所示完成后。
+下图显示了完成后的连接配置示意图：
 
 ![站点到站点 VPN 连接配置](media/azure-stack-create-vpn-connection-one-node-tp2/OneNodeS2SVPN.png)
 
 ### <a name="before-you-begin"></a>开始之前
-若要完成的连接配置，确保你拥有以下项目，在开始之前：
+若要完成连接配置，请确保在开始之前准备好以下各项：
 
-* 满足 Azure 堆栈开发工具包硬件要求，从而通过定义的两个服务器[Azure 堆栈部署先决条件](azure-stack-deploy.md)。 确保在出现的其他先决条件[文章](azure-stack-deploy.md)太满足。
-* [Azure 堆栈开发工具包](https://azure.microsoft.com/en-us/overview/azure-stack/try/)部署包。
+* 两个服务器和中所述满足 Azure 堆栈开发工具包的硬件需求，其他先决条件[快速入门： 评估 Azure 堆栈开发工具包](azure-stack-deploy-overview.md)。 
+* [Azure Stack 开发工具包](https://azure.microsoft.com/en-us/overview/azure-stack/try/)部署包。
 
-## <a name="deploy-the-azure-stack-development-kit-environments"></a>部署 Azure 堆栈开发工具包环境
-若要完成的连接配置，你必须部署两个 Azure 堆栈开发工具包环境。
+## <a name="deploy-the-azure-stack-development-kit-environments"></a>部署 Azure Stack 开发工具包环境
+若要完成连接配置，必须部署两个 Azure Stack 开发工具包环境。
 > [!NOTE] 
-> 对于每个部署的 Azure 堆栈开发工具包，请按照[部署说明](azure-stack-run-powershell-script.md)。 在本文中，称为 Azure 堆栈开发工具包环境*POC1*和*POC2*。
+> 对于部署的每个 Azure Stack 开发工具包，请遵照[部署说明](azure-stack-run-powershell-script.md)。 在本文中，Azure Stack 开发工具包环境名为 *POC1* 和 *POC2*。
 
 
-## <a name="prepare-an-offer-on-poc1-and-poc2"></a>准备 POC1 和 POC2 产品/服务
-在 POC1 和 POC2，准备提议，以便用户可以订阅到产品/服务和部署虚拟机。 有关如何创建产品的信息，请参阅[让 Azure 堆栈用户能够使用虚拟机](azure-stack-tutorial-tenant-vm.md)。
+## <a name="prepare-an-offer-on-poc1-and-poc2"></a>在 POC1 和 POC2 中准备产品
+在 POC1 和 POC2 中准备一个产品，使用户能够订阅该产品并部署虚拟机。 有关如何创建产品的信息，请参阅[向 Azure Stack 用户提供虚拟机](azure-stack-tutorial-tenant-vm.md)。
 
-## <a name="review-and-complete-the-network-configuration-table"></a>查看并完成网络配置表
-下表总结了这两个 Azure 堆栈开发工具包环境的网络配置。 使用显示在要添加特定于你的网络的外部 BGPNAT 地址的表后面的过程。
+## <a name="review-and-complete-the-network-configuration-table"></a>查看并填写网络配置表
+下表汇总了这两个 Azure Stack 开发工具包环境的网络配置。 使用此表格后面提供的过程来添加网络特定的外部 BGPNAT 地址。
 
 **网络配置表**
 |   |POC1|POC2|
@@ -59,12 +59,12 @@ ms.lasthandoff: 02/21/2018
 |外部 BGPNAT 地址     |         |         |
 
 > [!NOTE]
-> 示例环境中的外部 BGPNAT IP 地址是为 POC1，10.16.167.195 和 POC2 的 10.16.169.131。 使用以下过程来为你的 Azure 堆栈开发工具包主机，确定外部 BGPNAT IP 地址，然后将它们添加到以前的网络配置表。
+> 示例环境中的外部 BGPNAT IP 地址是 10.16.167.195（用于 POC1）和 10.16.169.131（用于 POC2）。 使用以下过程确定Azure Stack 开发工具包主机的外部 BGPNAT IP 地址，然后将这些地址添加到前面的网络配置表。
 
 
 ### <a name="get-the-ip-address-of-the-external-adapter-of-the-nat-vm"></a>获取 NAT VM 的外部适配器的 IP 地址
-1. 登录到 Azure 堆栈物理机 POC1。
-2. 编辑以下的 Powershell 代码，以将你的管理员密码，然后运行 POC 主机上的代码:
+1. 登录到 POC1 的 Azure Stack 物理机。
+2. 编辑以下 Powershell 代码以替换管理员密码，然后在 POC 主机上运行该代码：
 
    ```powershell
    cd \AzureStack-Tools-master\connect
@@ -76,199 +76,199 @@ ms.lasthandoff: 02/21/2018
     -HostComputer "AzS-bgpnat01" `
     -Password $Password
    ```
-3. 将 IP 地址添加到上一节中出现的网络配置表。
+3. 将 IP 地址添加到上一部分中的网络配置表。
 
-4. 上重复此过程 POC2。
+4. 在 POC2 上重复运行此过程。
 
-## <a name="create-the-network-resources-in-poc1"></a>在 POC1 中创建的网络资源
-现在，您创建您需要设置您的网关向上 POC1 网络资源。 下面的说明演示了如何通过使用用户门户中创建资源。 PowerShell 代码还可用于创建资源。
+## <a name="create-the-network-resources-in-poc1"></a>在 POC1 中创建网络资源
+现在，创建设置网关所需的 POC1 网络资源。 以下说明介绍如何使用用户门户来创建资源。 也可以使用 PowerShell 代码来创建资源。
 
 ![用于创建资源的工作流](media/azure-stack-create-vpn-connection-one-node-tp2/image2.png)
 
-### <a name="sign-in-as-a-tenant"></a>作为租户登录
-服务管理员可以登录作为租户以测试计划、 服务和其租户可能使用的订阅。 如果你还没有一个，[创建的租户帐户](azure-stack-add-new-user-aad.md)在登录之前。
+### <a name="sign-in-as-a-tenant"></a>以租户身份登录
+服务管理员可以租户身份登录，以便对其租户可能使用的计划、产品和订阅进行测试。 请在登录之前[创建租户帐户](azure-stack-add-new-user-aad.md)（如何尚未这样做）。
 
 ### <a name="create-the-virtual-network-and-vm-subnet"></a>创建虚拟网络和 VM 子网
 1. 使用租户帐户登录到用户门户。
-2. 在用户门户中，选择**新建**。
+2. 在用户门户中，选择“新建”。
 
-    ![创建新的虚拟网络](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
+    ![创建新虚拟网络](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
 
-3. 转到**Marketplace**，然后选择**网络**。
+3. 转到“Marketplace”，然后选择“网络”。
 4. 选择“虚拟网络”。
-5. 有关**名称**，**地址空间**，**子网名称**，和**子网地址范围**，使用前面在网络中显示的值配置表。
-6. 在**订阅**，先前创建的订阅显示。
-7. 有关**资源组**，你可以创建资源组，也可以已经拥有一个帐户，如果选择**使用现有**。
+5. 对于“名称”、“地址空间”、“子网名称”和“子网地址范围”，请使用前面网络配置表中显示的值。
+6. “订阅”中显示了前面创建的订阅。
+7. 对于“资源组”，可以创建资源组，也可以选择“使用现有项”（如果已有了一个）。
 8. 验证默认位置。
 9. 选择“固定到仪表板”。
 10. 选择“创建”。
 
 ### <a name="create-the-gateway-subnet"></a>创建网关子网
-1. 在仪表板中，打开你前面创建的 VNET-01 虚拟网络资源。
+1. 在仪表板上，打开前面创建的 VNET-01 虚拟网络资源。
 2. 在“设置”边栏选项卡中，选择“子网”。
-3. 若要将网关子网添加到虚拟网络中，选择**网关子网**。
+3. 若要将网关子网添加到虚拟网络，请选择“网关子网”。
    
     ![添加网关子网](media/azure-stack-create-vpn-connection-one-node-tp2/image4.png)
 
-4. 默认情况下，子网名称设置为**GatewaySubnet**。
-   网关的子网是特殊的。 若要正常运行，它们必须使用*GatewaySubnet*名称。
-5. 在**地址范围**，验证地址是否**10.0.11.0/24**。
-6. 选择**确定**创建网关子网。
+4. 子网名称默认设置为 **GatewaySubnet**。
+   网关子网相当特殊。 若要正常运行，它们必须使用 *GatewaySubnet* 名称。
+5. 在“地址范围”中，确认地址是 **10.0.11.0/24**。
+6. 选择“确定”创建网关子网。
 
 ### <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
-1. 在 Azure 门户中，选择**新建**。 
-2. 转到**Marketplace**，然后选择**网络**。
-3. 从网络资源的列表中选择**虚拟网络网关**。
-4. 在**名称**，输入**GW1**。
-5. 选择**虚拟网络**项选择虚拟网络。
-   选择**VNET-01**从列表中。
-6. 选择**公共 IP 地址**菜单项。 当**选择公共 IP 地址**边栏选项卡将打开，选择**新建**。
-7. 在**名称**，输入**GW1 PiP**，然后选择**确定**。
-8.  默认情况下，为**VPN 类型**，**基于路由的**选择。
-    保留**基于路由的**VPN 类型。
-9. 验证“订阅”和“位置”是否正确。 你可以固定到仪表板的资源。 选择“创建”。
+1. 在 Azure 门户中，选择“新建”。 
+2. 转到“Marketplace”，然后选择“网络”。
+3. 从网络资源列表中选择“虚拟网络网关”。
+4. 在“名称”中输入 **GW1**。
+5. 选择“虚拟网络”项以选择虚拟网络。
+   从列表中选择“VNET-01”。
+6. 选择“公共 IP 地址”菜单项。 当“选择公共 IP 地址”边栏选项卡打开时，选择“新建”。
+7. 在“名称”中输入 **GW1-PiP**，然后选择“确定”。
+8.  对于“VPN 类型”，默认已选择“基于路由”。
+    保留“基于路由”VPN 类型。
+9. 验证“订阅”和“位置”是否正确。 可将资源固定到仪表板。 选择“创建”。
 
 ### <a name="create-the-local-network-gateway"></a>创建本地网关
 在此 Azure Stack 评估部署中实现*本地网关* 稍微不同于实际 Azure 部署中的情况。
 
-在 Azure 部署中，本地网络网关表示的本地 （在租户中） 物理设备，用于连接到 Azure 虚拟网络网关。 在此 Azure 堆栈评估部署中，连接两端是虚拟网络网关 ！
+在 Azure 部署中，本地网关代表一个本地（租户处）物理设备，用于连接到 Azure 中的虚拟网络网关。 在此 Azure Stack 评估部署中，连接的两端都是虚拟网络网关！
 
-更广义考虑这一方法是，本地网络网关资源始终指示远程网关连接另一端。 由于 Azure 堆栈开发工具包旨在的方法，你需要提供外部网络适配器的 IP 地址在网络地址转换 (NAT) 的其他 Azure 堆栈开发工具包的公共 IP 地址的 VM 上的本地网络网关。 然后情况下，若要确保两个 ends 连接正确 NAT VM 上需要创建 NAT 映射。
+从更通用的角度来看，存在本地网关资源通常意味着在连接的另一端存在远程网关。 由于Azure Stack 开发工具包的设计方式，必须提供另一个Azure Stack 开发工具包的网络地址转换 (NAT) VM 上的外部网络适配器 IP 地址作为局域网络网关的公共 IP 地址。 然后需要在 NAT VM 上创建 NAT 映射，确保正确连接两端。
 
 
-### <a name="create-the-local-network-gateway-resource"></a>创建本地网络网关资源
-1. 登录到 Azure 堆栈物理机 POC1。
-2. 在用户门户中，选择**新建**。
-3. 转到**Marketplace**，然后选择**网络**。
-4. 从资源的列表中选择**本地网络网关**。
-5. 在**名称**，输入**POC2 GW**。
-6. 在**IP 地址**，输入 POC2 外部 BGPNAT 地址。 此地址将显示在网络配置表的前面部分中。
-7. 在**地址空间**，对于更高版本创建的 POC2 VNET 的地址空间中，输入**10.0.20.0/23**。
-8. 验证你**订阅**，**资源组**，和**位置**正确无误，，然后选择**创建**。
+### <a name="create-the-local-network-gateway-resource"></a>创建本地网关资源
+1. 登录到 POC1 的 Azure Stack 物理机。
+2. 在用户门户中，选择“新建”。
+3. 转到“Marketplace”，然后选择“网络”。
+4. 从资源列表中选择“本地网络网关”。
+5. 在“名称”中输入 **POC2-GW**。
+6. 在“IP 地址”中，输入 POC2 的外部 BGPNAT 地址。 此地址已显示在前面的网络配置表中。
+7. 在“地址空间”中，对于稍后要创建的 POC2 VNET 的地址空间，输入 **10.0.20.0/23**。
+8. 确认“订阅”、“资源组”和“位置”正确无误，然后选择“创建”。
 
 ### <a name="create-the-connection"></a>创建连接
-1. 在用户门户中，选择**新建**。
-2. 转到**Marketplace**，然后选择**网络**。
-3. 从资源的列表中选择**连接**。
-4. 上**基础知识**设置边栏选项卡，为**连接类型**，选择**站点到站点 (IPSec)**。
-5. 选择**订阅**，**资源组**，和**位置**，然后选择**确定**。
-6. 上**设置**边栏选项卡，选择**虚拟网络网关**，然后选择**GW1**。
-7. 选择**本地网络网关**，然后选择**POC2 GW**。
-8. 在**连接名称**，输入**POC1 POC2**。
-9. 在**共享密钥 (PSK)**，输入**12345**，然后选择**确定**。
-10. 上**摘要**边栏选项卡，选择**确定**。
+1. 在用户门户中，选择“新建”。
+2. 转到“Marketplace”，然后选择“网络”。
+3. 从资源列表中选择“连接”。
+4. 在“基本”设置边栏选项卡上，针对“连接类型”选择“站点到站点(IPSec)”。
+5. 选择“订阅”、“资源组”和“位置”，然后选择“确定”。
+6. 在“设置”边栏选项卡上，依次选择“虚拟网络网关”、“GW1”。
+7. 依次选择“本地网络网关”、“POC2-GW”。
+8. 在“连接名称”中，输入 **POC1-POC2**。
+9. 在“共享密钥(PSK)”中输入 **12345**，然后选择“确定”。
+10. 在“摘要”边栏选项卡上，选择“确定”。
 
 ### <a name="create-a-vm"></a>创建 VM
-若要验证的数据，通过 VPN 连接，你需要要发送和接收数据，每个 Azure 堆栈开发工具包中的虚拟机。 现在，在 POC1 中创建虚拟机，然后在虚拟网络中，将其置于你的 VM 子网。
+若要验证通过 VPN 连接传输的数据，需要使用虚拟机在每个 Azure Stack 开发工具包中发送和接收数据。 现在请在 POC1 中创建虚拟机，然后将它放在虚拟网络的 VM 子网上。
 
-1. 在 Azure 门户中，选择**新建**。
-2. 转到**Marketplace**，然后选择**计算**。
-3. 在虚拟机映像的列表中，选择**Windows Server 2016 数据中心 Eval**映像。
-4. 上**基础知识**边栏选项卡，请在**名称**，输入**VM01**。
-5. 输入有效的用户名和密码。 此帐户用于登录到 VM，将在创建后。
-6. 提供**订阅**，**资源组**，和**位置**，然后选择**确定**。
-7. 上**大小**边栏选项卡，此实例中，选择虚拟机大小，然后选择**选择**。
-8. 上**设置**边栏选项卡中，接受默认设置。 确保**VNET-01**选择虚拟网络。 验证子网是否设置为**10.0.10.0/24**。 然后选择“确定”。
-9. 上**摘要**边栏选项卡，查看设置，，然后选择**确定**。
+1. 在 Azure 门户中，选择“新建”。
+2. 转到“Marketplace”，选择“计算”。
+3. 在虚拟机映像列表中，选择“Windows Server 2016 Datacenter Eval”映像。
+4. 在“基本”边栏选项卡的“名称”中，输入 **VM01**。
+5. 输入有效的用户名和密码。 创建 VM 之后，将使用此帐户来登录 VM。
+6. 提供“订阅”、“资源组”和“位置”，并选择“确定”。
+7. 在“大小”边栏选项卡上，为此实例选择一种虚拟机大小，然后选择“选择”。
+8. 在“设置”边栏选项卡上接受默认值。 务必选择 **VNET-01** 虚拟网络。 确认子网已设置为 **10.0.10.0/24**。 然后选择“确定”。
+9. 在“摘要”边栏选项卡上检查设置，并选择“确定”。
 
 
 
-## <a name="create-the-network-resources-in-poc2"></a>在 POC2 中创建的网络资源
+## <a name="create-the-network-resources-in-poc2"></a>在 POC2 中创建网络资源
 
-下一步是为 POC2 创建网络资源。 下面的说明演示如何通过使用用户门户中创建资源。
+下一步骤是创建 POC2 的网络资源。 以下说明介绍如何使用用户门户来创建资源。
 
-### <a name="sign-in-as-a-tenant"></a>作为租户登录
-服务管理员可以登录作为租户以测试计划、 服务和其租户可能使用的订阅。 如果你还没有一个，[创建的租户帐户](azure-stack-add-new-user-aad.md)在登录之前。
+### <a name="sign-in-as-a-tenant"></a>以租户身份登录
+服务管理员可以租户身份登录，以便对其租户可能使用的计划、产品和订阅进行测试。 请在登录之前[创建租户帐户](azure-stack-add-new-user-aad.md)（如何尚未这样做）。
 
 ### <a name="create-the-virtual-network-and-vm-subnet"></a>创建虚拟网络和 VM 子网
 
-1. 通过使用租户帐户登录。
-2. 在用户门户中，选择**新建**。
-3. 转到**Marketplace**，然后选择**网络**。
+1. 使用租户帐户登录。
+2. 在用户门户中，选择“新建”。
+3. 转到“Marketplace”，然后选择“网络”。
 4. 选择“虚拟网络”。
-5. 使用前面在网络配置表中显示的信息以确定的值为 POC2**名称**，**地址空间**，**子网名称**，和**子网地址范围**。
-6. 在**订阅**，先前创建的订阅显示。
-7. 有关**资源组**，创建新的资源组或如果你已经有一个，则选择**使用现有**。
-8. 验证默认**位置**。
+5. 使用前面网络配置表中显示的信息来识别 POC2 的“名称”、“地址空间”、“子网名称”和“子网地址范围”的值。
+6. “订阅”中显示了前面创建的订阅。
+7. 对于“资源组”，可以创建新的资源组，也可以选择“使用现有项”（如果已有了一个）。
+8. 确认默认“位置”。
 9. 选择“固定到仪表板”。
 10. 选择“创建”。
 
 ### <a name="create-the-gateway-subnet"></a>创建网关子网
-1. 打开刚才创建的虚拟网络资源 (**VNET-02**) 从仪表板。
+1. 从仪表板打开刚创建的虚拟网络资源 (**VNET-02**)。
 2. 在“设置”边栏选项卡中，选择“子网”。
-3. 选择**网关子网**将网关子网添加到虚拟网络。
+3. 选择“网关子网”，将网关子网添加到虚拟网络。
 4. 默认情况下，子网的名称设置为 **GatewaySubnet**。
    网关子网很特殊，必须使用该特定名称才能正常运行。
-5. 在**地址范围**字段中，验证地址是否**10.0.21.0/24**。
-6. 选择**确定**创建网关子网。
+5. 在“地址范围”字段中，检查地址是否为 **10.0.21.0/24**。
+6. 选择“确定”创建网关子网。
 
 ### <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
-1. 在 Azure 门户中，选择**新建**。  
-2. 转到**Marketplace**，然后选择**网络**。
-3. 从网络资源的列表中选择**虚拟网络网关**。
-4. 在**名称**，输入**GW2**。
-5. 若要选择一个虚拟网络，选择**虚拟网络**。 然后选择**VNET-02**从列表中。
-6. 选择**公共 IP 地址**。 当**选择公共 IP 地址**边栏选项卡将打开，选择**新建**。
-7. 在**名称**，输入**GW2 PiP**，然后选择**确定**。
-8. 默认情况下，为**VPN 类型**，**基于路由的**选择。
-    保留**基于路由的**VPN 类型。
-9. 验证“订阅”和“位置”是否正确。 你可以固定到仪表板的资源。 选择“创建”。
+1. 在 Azure 门户中，选择“新建”。  
+2. 转到“Marketplace”，然后选择“网络”。
+3. 从网络资源列表中选择“虚拟网络网关”。
+4. 在“名称”中输入 **GW2**。
+5. 若要选择虚拟网络，请选择“虚拟网络”。 然后从列表中选择 **VNET-02**。
+6. 选择“公共 IP 地址”。 当“选择公共 IP 地址”边栏选项卡打开时，选择“新建”。
+7. 在“名称”中输入 **GW2-PiP**，然后选择“确定”。
+8. 对于“VPN 类型”，默认已选择“基于路由”。
+    保留“基于路由”VPN 类型。
+9. 验证“订阅”和“位置”是否正确。 可将资源固定到仪表板。 选择“创建”。
 
-### <a name="create-the-local-network-gateway-resource"></a>创建本地网络网关资源
+### <a name="create-the-local-network-gateway-resource"></a>创建本地网关资源
 
-1. 在 POC2 用户门户中，选择**新建**。 
-4. 转到**Marketplace**，然后选择**网络**。
-5. 从资源的列表中选择**本地网络网关**。
-6. 在**名称**，输入**POC1 GW**。
-7. 在**IP 地址**，输入网络配置表中的前面列出的 POC1 外部 BGPNAT 地址。
-8. 在**地址空间**，从 POC1，输入**10.0.10.0/23**地址空间的**VNET-01**。
-9. 验证你**订阅**，**资源组**，和**位置**正确无误，，然后选择**创建**。
+1. 在 POC2 用户门户中，选择“新建”。 
+4. 转到“Marketplace”，然后选择“网络”。
+5. 从资源列表中选择“本地网络网关”。
+6. 在“名称”中输入 **POC1-GW**。
+7. 在“IP 地址”中，输入前面网络配置表中所列的 POC1 外部 BGPNAT 地址。
+8. 在 POC1 的“地址空间”字段中，输入 **VNET-01** 的地址空间 **10.0.10.0/23**。
+9. 确认“订阅”、“资源组”和“位置”正确无误，然后选择“创建”。
 
 ## <a name="create-the-connection"></a>创建连接
-1. 在用户门户中，选择**新建**。 
-2. 转到**Marketplace**，然后选择**网络**。
-3. 从资源的列表中选择**连接**。
-4. 上**基本**设置边栏选项卡，为**连接类型**，选择**站点到站点 (IPSec)**。
-5. 选择**订阅**，**资源组**，和**位置**，然后选择**确定**。
-6. 上**设置**边栏选项卡，选择**虚拟网络网关**，然后选择**GW2**。
-7. 选择**本地网络网关**，然后选择**POC1 GW**。
-8. 在**连接名称**，输入**POC2 POC1**。
-9. 在**共享密钥 (PSK)**，输入**12345**。 如果你选择不同的值，请记住它*必须*匹配你在 POC1 创建的共享密钥的值。 选择“确定”。
-10. 查看**摘要**边栏选项卡，，然后选择**确定**。
+1. 在用户门户中，选择“新建”。 
+2. 转到“Marketplace”，然后选择“网络”。
+3. 从资源列表中选择“连接”。
+4. 在“基本”设置边栏选项卡中，选择“站点到站点(IPSec)”作为“连接类型”。
+5. 选择“订阅”、“资源组”和“位置”，然后选择“确定”。
+6. 在“设置”边栏选项卡上，依次选择“虚拟网络网关”、“GW2”。
+7. 依次选择“本地网络网关”、“POC1-GW”。
+8. 在“连接名称”中，输入 **POC2-POC1**。
+9. 在“共享密钥(PSK)”中，输入 **12345**。 如果选择其他值，请记住，该值必须与在 POC1 上创建的共享密钥的值匹配。 选择“确定”。
+10. 查看“摘要”边栏选项卡，然后选择“确定”。
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
-现在，在 POC2 中创建虚拟机并将其放在虚拟网络中你的 VM 子网。
+现在请在 POC2 中创建虚拟机，并将其放在虚拟网络中的 VM 子网上。
 
-1. 在 Azure 门户中，选择**新建**。
-2. 转到**Marketplace**，然后选择**计算**。
-3. 在虚拟机映像的列表中，选择**Windows Server 2016 数据中心 Eval**映像。
-4. 上**基础知识**边栏选项卡，为**名称**，输入**VM02**。
-5. 输入有效的用户名和密码。 此帐户用于登录到虚拟机将在创建后。
-6. 提供**订阅**，**资源组**，和**位置**，然后选择**确定**。
-7. 上**大小**边栏选项卡，选择虚拟机大小调整为此实例，然后选择**选择**。
-8. 上**设置**边栏选项卡，你可以接受默认值。 确保**VNET-02**虚拟网络已选中，然后验证子网是否设置为**10.0.20.0/24**。 选择“确定”。
-9. 上查看设置**摘要**边栏选项卡，，然后选择**确定**。
+1. 在 Azure 门户中，选择“新建”。
+2. 转到“Marketplace”，选择“计算”。
+3. 在虚拟机映像列表中，选择“Windows Server 2016 Datacenter Eval”映像。
+4. 在“基本”边栏选项卡上的“名称”中，输入 **VM02**。
+5. 输入有效的用户名和密码。 创建虚拟机之后，将使用此帐户来登录虚拟机。
+6. 提供“订阅”、“资源组”和“位置”，并选择“确定”。
+7. 在“大小”边栏选项卡上，为此实例选择一种虚拟机大小，然后选择“选择”。
+8. 在“设置”边栏选项卡上，可以接受默认值。 确保选择 **VNET-02** 虚拟网络，并确认子网已设置为 **10.0.20.0/24**。 选择“确定”。
+9. 在“摘要”边栏选项卡上检查设置，然后选择“确定”。
 
-## <a name="configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal"></a>在网关遍历每个 Azure 堆栈开发工具包上配置 NAT 虚拟机
-因为 Azure 堆栈开发工具包是自包含且独立于部署的物理主机网络*外部*网关连接到的 VIP 网络不会实际外部。 相反，VIP 网络隐藏执行网络地址转换的路由器后面。 
+## <a name="configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal"></a>在每个 Azure Stack 开发工具包上配置 NAT 虚拟机以进行网关遍历
+由于 Azure Stack 开发工具包是自主性的并独立于已部署物理主机所在的网络，因此网关连接到的外部 VIP 网络实际上并非位于外部， 而是隐藏在执行网络地址转换的路由器后面。 
 
-路由器是 Windows Server 虚拟机，调用*AzS bgpnat01*，Azure 堆栈开发工具包基础结构中运行路由和远程访问服务 (RRAS) 角色。 你必须以允许站点到站点 VPN 连接来连接两端 AzS bgpnat01 虚拟机上配置 NAT。 
+该路由器是一个名为 *AzS-bgpnat01* 的 Windows Server 虚拟机，在 Azure Stack 开发工具包基础结构中充当路由和远程访问服务 (RRAS) 角色。 必须对 AzS-bgpnat01 虚拟机上的 NAT 进行配置，允许站点到站点 VPN 连接在两端进行连接。 
 
-若要配置 VPN 连接，必须创建到边缘网关池的 VIP 映射 BGPNAT 虚拟机上的外部接口的静态 NAT 映射路由。 静态 NAT 映射路由是必需的 VPN 连接中的每个端口。
+若要配置 VPN 连接，必须创建静态 NAT 映射路由，将 BGPNAT 虚拟机上的外部接口映射到边缘网关池的 VIP。 VPN 连接中的每个端口都必须有一个静态 NAT 映射路由。
 
 > [!NOTE]
-> 此配置是必需的仅限 Azure 堆栈开发工具包环境。
+> 只有 Azure Stack 开发工具包环境才需要此配置。
 > 
 > 
 
 ### <a name="configure-the-nat"></a>配置 NAT
 > [!IMPORTANT]
-> 你必须完成此过程为*同时*Azure 堆栈开发工具包环境。
+> 必须针对两个 Azure Stack 开发工具包环境完成此过程。
 
-1. 确定**内部 IP 地址**以下 PowerShell 脚本中使用。 打开虚拟网络网关 （GW1 和 GW2），然后在**概述**边栏选项卡，保存的值**公共 IP 地址**以供将来使用。
+1. 确定要在以下 PowerShell 脚本中使用的“内部 IP 地址”。 打开虚拟网络网关（GW1 和 GW2），然后在“概述”边栏选项卡上，保存“公共 IP 地址”的值供稍后使用。
 ![内部 IP 地址](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
-2. 登录到 Azure 堆栈物理机 POC1。
-3. 复制和编辑以下 PowerShell 脚本。 若要在每个 Azure 堆栈开发工具包配置 NAT，请在提升的 Windows PowerShell ISE 中运行脚本。 在脚本中，将值添加到*外部 BGPNAT 地址*和*内部 IP 地址*占位符：
+2. 登录到 POC1 的 Azure Stack 物理机。
+3. 复制并编辑以下 PowerShell 脚本。 若要在每个 Azure Stack 开发工具包中配置 NAT，请在权限提升的 Windows PowerShell ISE 中运行该脚本。 在脚本中，将值添加到“外部 BGPNAT 地址”和“内部 IP 地址”占位符：
 
    ```powershell
    # Designate the external NAT address for the ports that use the IKE authentication.
@@ -310,25 +310,25 @@ ms.lasthandoff: 02/21/2018
       -InternalPort 4500}
    ```
 
-4. 上重复此过程 POC2。
+4. 在 POC2 上重复运行此过程。
 
 ## <a name="test-the-connection"></a>测试连接
-现在，建立站点到站点连接时，你应验证就可以流量流向通过它。 若要验证，登录到你在这两种 Azure 堆栈开发工具包环境中创建的虚拟机之一。 然后，执行 ping 操作在其他环境中创建的虚拟机。 
+建立站点到站点连接以后，应验证其流量是否正常。 若要验证，请登录到在任一 Azure Stack 开发工具包环境中创建的虚拟机之一。 然后，ping 另一环境中创建的虚拟机。 
 
-若要确保发送的流量通过站点到站点连接，确保 ping 远程子网，不 VIP 上的虚拟机的直接 IP (DIP) 地址。 若要执行此操作，找到连接的另一端上的 DIP 地址。 保存以供将来使用的地址。
+为了确保流量通过站点到站点连接，必须 ping 远程子网上虚拟机的直接 IP (DIP) 地址，而不是 VIP。 为此，请找到连接另一端的 DIP 地址。 保存该地址供稍后使用。
 
-### <a name="sign-in-to-the-tenant-vm-in-poc1"></a>登录到租户中 POC1 VM
-1. 登录到 Azure 堆栈物理计算机并 POC1，，然后使用租户帐户登录到用户门户。
-2. 在左侧的导航栏中，选择**计算**。
-3. 在虚拟机列表中，查找**VM01** ，以前，创建，然后选择它。
-4. 在虚拟机的边栏选项卡，单击**连接**，然后打开 VM01.rdp 文件。
+### <a name="sign-in-to-the-tenant-vm-in-poc1"></a>登录到 POC1 中的租户 VM
+1. 登录 POC1 的 Azure Stack 物理机，然后使用租户帐户登录到用户门户。
+2. 在左导航栏中，选择“计算”。
+3. 在 VM 列表中，找到前面创建的 **VM01**，并选择它。
+4. 在虚拟机的边栏选项卡上，单击“连接”，然后打开 VM01.rdp 文件。
    
-     ![连接按钮](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
-5. 使用在创建虚拟机时配置的帐户登录。
-6. 打开提升**Windows PowerShell**窗口。
-7. 输入**ipconfig /all**。
-8. 在输出中，查找**IPv4 地址**，然后将保存以供将来使用的地址。 这是将从 POC2 ping 的地址。 在示例环境中，该地址为 **10.0.10.4**，但用户环境中的该地址可能有所不同。 它不应超过**10.0.10.0/24**你之前创建的子网。
-9. 若要创建允许要在响应 ping 的虚拟机的防火墙规则，运行以下 PowerShell 命令：
+     ![“连接”按钮](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
+5. 使用创建虚拟机时所配置的帐户登录。
+6. 打开权限提升的 **Windows PowerShell** 窗口。
+7. 输入 **ipconfig /all**。
+8. 在输出中找到“IPv4 地址”，然后保存该地址供稍后使用。 这是要从 POC2 ping 的地址。 在示例环境中，该地址为 **10.0.10.4**，但用户环境中的该地址可能有所不同。 该地址应在此前创建的 **10.0.10.0/24** 子网范围内。
+9. 若要创建允许虚拟机响应 ping 的防火墙规则，请运行以下 PowerShell 命令：
 
    ```powershell
    New-NetFirewallRule `
@@ -336,16 +336,16 @@ ms.lasthandoff: 02/21/2018
     –Protocol ICMPv4
    ```
 
-### <a name="sign-in-to-the-tenant-vm-in-poc2"></a>登录到租户中 POC2 VM
-1. 登录到 Azure 堆栈物理计算机并 POC2，，然后使用租户帐户登录到用户门户。
-2. 在左侧的导航栏中，单击**计算**。
-3. 从虚拟机列表中，找到**VM02** ，以前，创建，然后选择它。
+### <a name="sign-in-to-the-tenant-vm-in-poc2"></a>登录到 POC2 中的租户 VM
+1. 登录 POC2 的 Azure Stack 物理机，然后使用租户帐户登录到用户门户。
+2. 在左侧导航栏中，单击“计算”。
+3. 在虚拟机列表中，找到前面创建的 **VM02**，并选择它。
 4. 在虚拟机边栏选项卡上，单击“连接”。
-5. 使用在创建虚拟机时配置的帐户登录。
-6. 打开提升**Windows PowerShell**窗口。
-7. 输入**ipconfig /all**。
-8. 你应看到范围内的 IPv4 地址**10.0.20.0/24**。 在示例环境中，该地址是**10.0.20.4**，但你的地址可能会不同。
-9. 若要创建允许要在响应 ping 的虚拟机的防火墙规则，运行以下 PowerShell 命令：
+5. 使用创建虚拟机时所配置的帐户登录。
+6. 打开权限提升的 **Windows PowerShell** 窗口。
+7. 输入 **ipconfig /all**。
+8. 应会看到 IPv4 地址位于 **10.0.20.0/24** 范围内。 在示例环境中，该地址为 **10.0.20.4**，但你的地址可能有所不同。
+9. 若要创建允许虚拟机响应 ping 的防火墙规则，请运行以下 PowerShell 命令：
 
    ```powershell
    New-NetFirewallRule `
@@ -353,17 +353,17 @@ ms.lasthandoff: 02/21/2018
     –Protocol ICMPv4
    ```
 
-10. 从 POC2 上的虚拟机，进行 ping 操作上 POC1，通过隧道的虚拟机。 若要执行此操作，你 ping 记录从 VM01 的 DIP。
-   在示例环境中，这是**10.0.10.4**，但请确保你的实验室中记下的地址执行 ping 操作。 你应看到如下所示的结果：
+10. 在 POC2 上的虚拟机中，通过隧道 ping POC1 上的虚拟机。 为此，请 ping 从 VM01 中记录的 DIP。
+   在示例环境中，该地址为 **10.0.10.4**，但请确保 ping 实验室中记下的地址。 应会看到如下所示的结果：
    
-    ![成功 ping](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
-11. 从远程虚拟机的回复表明成功的测试 ！ 你可以关闭虚拟机窗口。 若要测试你的连接，你可以尝试其他类型的类似文件复制的数据传输。
+    ![ping 成功](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
+11. 获得远程虚拟机的答复表示测试成功！ 可以关闭虚拟机窗口。 若要测试连接，可以尝试其他类型的数据传输，例如文件复制。
 
 ### <a name="viewing-data-transfer-statistics-through-the-gateway-connection"></a>通过网关连接查看数据传输统计信息
-如果你想要知道多少数据通过站点到站点连接，此信息位于**连接**边栏选项卡。 此测试也是另一种方法验证刚刚发送 ping 实际经历 VPN 连接。
+若要了解通过站点到站点连接传送的数据量，可在“连接”边栏选项卡中查看该信息。 也可利用此测试来验证刚发送的 ping 是否确实通过了 VPN 连接。
 
-1. 而你要登录到 POC2 中的租户虚拟机，使用你的租户帐户登录到用户门户。
-2. 转到**的所有资源**，然后选择**POC2 POC1**连接。 **连接**显示。
-4. 上**连接**边栏选项卡、 的统计信息**中的数据**和**输出数据量**显示。 在以下屏幕截图中，较大的数字归因于另外的文件传输。 你应看到那里一些非零值。
+1. 在已登录到 POC2 中租户虚拟机的情况下，使用租户帐户登录到用户门户。
+2. 转到“所有资源”，选择“POC2-POC1”连接。 此时会显示“连接”。
+4. 在“连接”边栏选项卡上显示了“传入数据”和“传出数据”的统计信息。 在以下屏幕截图中，较大的数字是附加的文件传输造成的。 应会看到其中有一些非零值。
    
-    ![数据流入和流出](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)
+    ![传入和传出数据](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)
