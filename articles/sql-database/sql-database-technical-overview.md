@@ -1,27 +1,19 @@
 ---
-title: "什么是 Azure SQL 数据库服务？ | Microsoft Docs"
-description: "获取 SQL 数据库简介：Microsoft 在云中的关系数据库管理系统 (RDBMS) 的技术详细信息与功能。"
-keywords: "SQL 简介, 什么是 SQL 数据库"
+title: 什么是 Azure SQL 数据库服务？ | Microsoft Docs
+description: 获取 SQL 数据库简介：Microsoft 在云中的关系数据库管理系统 (RDBMS) 的技术详细信息与功能。
+keywords: SQL 简介, 什么是 SQL 数据库
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
+manager: craigg
 ms.service: sql-database
-ms.custom: overview
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.date: 03/07/2018
-ms.workload: Active
 ms.author: carlrab
-ms.reviewer: carlrab
-ms.openlocfilehash: a1c4426acec8e9e006c2349b886297f45cc8ecb2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7a06ed8433ebcf728c7b090f5e984d4e3ebeb846
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？ 
 
@@ -37,7 +29,8 @@ SQL 数据库与 [Microsoft SQL Server 数据库引擎](https://docs.microsoft.c
 
 SQL 数据库在多个服务级别提供可预测的、动态可缩放的性能，主要表现在：无停机时间、内置智能优化、全局可伸缩性和可用性，以及高级安全选项 - 一切几乎不用人工管理。 借助这些功能，用户可将注意力集中在如何快速进行应用开发、加快推向市场，而不需要投入宝贵的时间和资源来管理虚拟机与基础结构。 SQL 数据库服务目前在世界各地有 38 个数据中心，且有更多数据中心定期上线，因此你可以在附近的数据中心运行数据库。
 
-> [!IMPORATNT] SQL 数据库托管实例目前为预览版，仅在单一服务级别提供。 有关详细信息，请参阅 [SQL 数据库托管实例](sql-database-managed-instance.md)。
+> [!IMPORTANT]
+> SQL 数据库托管实例目前为预览版，仅在单一服务级别提供。 有关详细信息，请参阅 [SQL 数据库托管实例](sql-database-managed-instance.md)。
 >
 
 ## <a name="scalable-performance-and-pools"></a>可缩放的性能和池

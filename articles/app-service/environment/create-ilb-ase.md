@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 应用服务环境中创建和使用内部负载均衡器"
-description: "有关如何创建和使用与 Internet 隔离的 Azure 应用服务环境的详细信息"
+title: 在 Azure 应用服务环境中创建和使用内部负载均衡器
+description: 有关如何创建和使用与 Internet 隔离的 Azure 应用服务环境的详细信息
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 7480c1f71a64e31b65cc76f28734df6f424a6b3f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0d08d140ab338d8c742277835fdfb4316862f07b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>在应用服务环境中创建和使用内部负载均衡器 #
 
@@ -139,7 +139,7 @@ ILB ASE 需要有效的 SSL 证书。 可使用内部证书颁发机构、向外
 
 若想创建自签名证书，可以使用下面的 PowerShell 命令。 务必使用用户的 ILB ASE 域名而不是 *internal.contoso.com*： 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "\*.internal-contoso.com","\*.scm.internal-contoso.com"
+    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
     
     $certThumbprint = "cert:\localMachine\my\" +$certificate.Thumbprint
     $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
@@ -174,9 +174,9 @@ ILB ASE 需要有效的 SSL 证书。 可使用内部证书颁发机构、向外
 
     b. 若要测试 Web 部署发布或访问高级控制台，请为 _mytestapp.scm.ilbase.com_ 创建一条记录。
 
-7. 在该 VM 上使用浏览器转到 http://mytestapp.ilbase.com 。（或者转到域中的任意 Web 应用名称。）
+7. 在该 VM 上使用浏览器并转到 http://mytestapp.ilbase.com。（或者转到域中的任意 Web 应用名称。）
 
-8. 在该 VM 上使用浏览器转到 https://mytestapp.ilbase.com 。如果使用自签名证书，则需接受安全性不足的缺点。
+8. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com。如果使用自签名证书，则需接受安全性不足的缺点。
 
     ILB 的 IP 地址在“IP 地址”下列出。 此列表还包含由外部 VIP 用于入站流量管理的 IP 地址。
 

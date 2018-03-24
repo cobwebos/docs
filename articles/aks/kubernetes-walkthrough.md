@@ -1,19 +1,19 @@
 ---
-title: "快速入门 - 适用于 Linux 的 Azure Kubernetes 群集"
-description: "快速学习在 AKS 中使用 Azure CLI 为 Linux 容器创建 Kubernetes 群集。"
+title: 快速入门 - 适用于 Linux 的 Azure Kubernetes 群集
+description: 快速学习在 AKS 中使用 Azure CLI 为 Linux 容器创建 Kubernetes 群集。
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 02/26/2018
+ms.date: 03/14/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 817b204cde8708ff06507c30e1725c0e46185877
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3005023e45bc6516732f077f152aed93564be38b
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>部署 Azure 容器服务 (AKS) 群集
 
@@ -27,10 +27,14 @@ ms.lasthandoff: 03/08/2018
 
 如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.27 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
-## <a name="enabling-aks-preview-for-your-azure-subscription"></a>为 Azure 订阅启用 AKS 预览版
-AKS 为预览版时，创建新群集需要订阅上的功能标记。 可以为任意数量的订阅请求此功能，只要你想使用。 使用 `az provider register` 命令注册 AKS 提供程序：
+## <a name="enabling-aks-preview"></a>启用 AKS 预览版
+
+确保使用 `az provider register` 命令启用所需的 Azure 服务提供程序。 
 
 ```azurecli-interactive
+az provider register -n Microsoft.Network
+az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Compute
 az provider register -n Microsoft.ContainerService
 ```
 
@@ -64,7 +68,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-aks-cluster"></a>创建 AKS 群集
 
-以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。
+使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
@@ -76,14 +80,14 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。
 
-如果使用的是 Azure Cloud Shell，则 kubectl 已安装。 如果要在本地安装它，请运行以下命令。
+如果使用的是 Azure Cloud Shell，则 kubectl 已安装。 若要在本地安装，请使用 [az aks install-cli][az-aks-install-cli] 命令。
 
 
 ```azurecli
 az aks install-cli
 ```
 
-若要配置 kubectl 以连接到 Kubernetes 群集，请运行以下命令。 此步骤下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
+若要将 kubectl 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此步骤下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -244,7 +248,9 @@ az group delete --name myResourceGroup --yes --no-wait
 
 <!-- LINKS - internal -->
 [az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az_aks_browse
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az_aks_create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
+[az aks install-cli]: /cli/azure/aks?view=azure-cli-latest#az_aks_install_cli
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli

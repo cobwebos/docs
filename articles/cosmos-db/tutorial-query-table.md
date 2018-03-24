@@ -1,28 +1,28 @@
 ---
-title: "如何查询 Azure Cosmos DB 中的表数据？ | Microsoft 文档"
-description: "了解如何查询 Azure Cosmos DB 中的表数据"
+title: 如何查询 Azure Cosmos DB 中的表数据？ | Microsoft Docs
+description: 了解如何查询 Azure Cosmos DB 中的表数据
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: kanshiG
 manager: jhubbard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 14bcb94e-583c-46f7-9ea8-db010eb2ab43
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: 80fed91c45ae19193f6b8dfcaef747f8c4253dee
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 969b16457b32cedb7140bb032c1830e95ebed9be
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api"></a>Azure Cosmos DB：如何使用表 API 查询表数据
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>教程：使用表 API 查询 Azure Cosmos DB
 
 Azure Cosmos DB [表 API](table-introduction.md) 支持针对键/值（表）数据进行 OData 和 [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) 查询。  
 
@@ -33,7 +33,7 @@ Azure Cosmos DB [表 API](table-introduction.md) 支持针对键/值（表）数
 
 本文中的查询使用如下示例 `People` 表：
 
-| PartitionKey | RowKey | 电子邮件 | PhoneNumber |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -57,7 +57,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 ```
 **结果**
 
-| PartitionKey | RowKey | 电子邮件 | PhoneNumber |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -83,7 +83,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 **结果**
 
-| PartitionKey | RowKey | 电子邮件 | PhoneNumber |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Ben |Smith | Ben@contoso.com| 425-555-0102 |
 

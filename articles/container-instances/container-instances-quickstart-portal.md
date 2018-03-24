@@ -1,21 +1,21 @@
 ---
-title: "快速入门 - 使用 Azure 门户创建首个 Azure 容器实例容器"
-description: "Azure 容器实例部署和入门"
+title: 快速入门 - 使用 Azure 门户创建首个 Azure 容器实例容器
+description: 在本快速入门中，我们将使用 Azure 门户在 Azure 容器实例中部署一个容器
 services: container-instances
 author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 03/19/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 63f22544276da07ec98e779cc524879603655db6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 18238c94ba9acff15497a666a63b65b95779d4ac
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="create-your-first-container-in-azure-container-instances"></a>在 Azure 容器实例中创建你的第一个容器
+# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>快速入门：在 Azure 容器实例中创建第一个容器
 
 可以通过 Azure 容器实例在 Azure 中轻松创建和管理容器。 在此快速入门中，将在 Azure 中创建容器，再通过公共 IP 地址向 Internet 公开该容器。 通过使用 Azure 门户完成此操作。 只需单击几下，就会在浏览器中看到以下图像：
 

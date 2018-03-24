@@ -1,20 +1,20 @@
 ---
-title: "Azure 策略概述 | Microsoft 文档"
-description: "Azure 策略是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。"
+title: Azure 策略概述 | Microsoft 文档
+description: Azure 策略是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders; nini
-ms.date: 01/17/2018
+ms.date: 03/14/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: bb6f08e8e6252233c51c47c63ca0aec4636247dd
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 72b3e46e4755d50589eeefeeb0478ab9af49e97b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure 策略？
 
@@ -30,6 +30,9 @@ Azure 策略是 Azure 中的一项服务，可用于创建、分配和管理策�
 
 - 定义策略的 `Microsoft.Authorization/policydefinitions/write` 权限。
 - 分配策略的 `Microsoft.Authorization/policyassignments/write` 权限。
+- 定义计划的 `Microsoft.Authorization/policySetDefinitions/write` 权限。
+- 分配计划的 `Microsoft.Authorization/policyassignments/write` 权限。
+
 
 **参与者**角色中未包括这些权限。
 

@@ -28,7 +28,7 @@
 - name: 概念
   items:
     - name: 了解成本报表
-      href: understading-cost-reports.md
+      href: understanding-cost-reports.md
 - name: 操作指南
   items:
     - name: 激活 Azure 订阅和帐户

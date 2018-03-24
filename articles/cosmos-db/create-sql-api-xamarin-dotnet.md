@@ -1,31 +1,34 @@
 ---
-title: "Azure Cosmos DB：构建使用 Xamarin 和 Facebook 身份验证的 Web 应用 | Microsoft Docs"
-description: "演示一个可以用来连接和查询 Azure Cosmos DB 的 .NET 代码示例"
+title: Azure Cosmos DB：构建使用 Xamarin 和 Facebook 身份验证的 Web 应用 | Microsoft Docs
+description: 演示一个可以用来连接和查询 Azure Cosmos DB 的 .NET 代码示例
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: dfaa8d05d999f5528daff875d89e38d4fc442992
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 5074034b18bdf842c34b1208e6cc6312d7a3e6b2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-web-app-with-net-xamarin-and-facebook-authentication"></a>Azure Cosmos DB：构建使用 .NET、Xamarin 和 Facebook 身份验证的 Web 应用
 
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。
+
+> [!NOTE]
+> 在 GitHub 上的[此文档](https://github.com/xamarinhq/app-geocontacts)中，可以找到整个规范示例 Xamarin 应用的示例代码，其中展示了多个 Azure 产品，包括 CosmosDB。 此应用演示如何查看地理分散的联系人，并让这些联系人更新其位置。
 
 本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB 帐户、文档数据库和集合。 然后，构建并部署一个基于 [SQL .NET API](sql-api-sdk-dotnet.md)、[Xamarin](https://www.xamarin.com/) 和 Azure Cosmos DB 授权引擎的待办事项列表 Web 应用。 该待办事项列表 Web 应用实现基于用户的数据模式，使用户能够使用 Facebook 身份验证登录并管理其自己的待办事项。
 
@@ -48,7 +51,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在，请克隆 GitHub 中的 SQL API 应用，设置连接字符串，并运行该应用。 会看到以编程方式处理数据是多么容易。 
 
-1. 打开 git 终端窗口（例如 git bash）并使用 `cd` 切换到工作目录。  
+1. 打开 git 终端窗口（例如 git bash）并使用 `cd` 切换到工作目录。
 
 2. 运行以下命令克隆示例存储库。 
 
@@ -56,7 +59,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     git clone https://github.com/Azure/azure-documentdb-dotnet.git
     ```
 
-3. 然后，在 Visual Studio 中打开 samples/xamarin/UserItems/xamarin.forms 文件夹中的 DocumentDBTodo.sln 文件。 
+3. 然后，在 Visual Studio 中打开 samples/xamarin/UserItems/xamarin.forms 文件夹中的 DocumentDBTodo.sln 文件。
 
 ## <a name="review-the-code"></a>查看代码
 
@@ -75,7 +78,7 @@ Xamarin 文件夹中的代码包含：
 * 应用使用资源令牌访问用户的待办事项。
 
 ![包含示例数据的“待办事项”应用](./media/create-sql-api-xamarin-dotnet/tokenbroker.png)
-    
+
 ## <a name="update-your-connection-string"></a>更新连接字符串
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
@@ -90,7 +93,7 @@ Xamarin 文件夹中的代码包含：
 
     `<add key="accountUrl" value="{Azure Cosmos DB account URL}"/>`
 
-4. 然后从门户复制“主密钥”值，并在 Web.config 中将其设为 accountKey 的值。 
+4. 然后从门户复制“主密钥”值，并在 Web.config 中将其设为 accountKey 的值。
 
     `<add key="accountKey" value="{Azure Cosmos DB secret}"/>`
 
@@ -119,14 +122,14 @@ Xamarin 文件夹中的代码包含：
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下： 
+如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下：
 
-1. 在 Azure 门户的左侧菜单中单击“资源组”，并单击刚刚创建的资源的名称。 
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。
 2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门教程已介绍如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建集合，以及构建和部署控制台应用。 现在可以将其他数据导入 Cosmos DB 帐户。 
+本快速入门教程已介绍如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建集合，以及构建和部署控制台应用。 现在可以将其他数据导入 Cosmos DB 帐户。
 
 > [!div class="nextstepaction"]
 > [将数据导入 Azure Cosmos DB](import-data.md)

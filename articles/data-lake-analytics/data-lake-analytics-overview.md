@@ -1,8 +1,8 @@
 ---
-title: "Microsoft Azure Data Lake Analytics 概述 | Microsoft Docs"
-description: "有了 Data Lake Analytics，就可以通过在任何规模的云数据中获取的见解来驱动业务。"
+title: Microsoft Azure Data Lake Analytics 概述 | Microsoft Docs
+description: 有了 Data Lake Analytics，就可以通过在任何规模的云数据中获取的见解来驱动业务。
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/23/2017
 ms.author: saveenr
-ms.openlocfilehash: a788c7ad6eca0abea6f6ab400cbe2d0e5914eed8
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4ee0bdf486fa59c2d32b0d28ee25618996a57c6e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="overview-of-azure-data-lake-analytics"></a>Azure Data Lake Analytics 概述
 
@@ -46,7 +46,7 @@ Data Lake Analytics 是用于运行大数据工作负荷的经济高效的解决
     
 ### <a name="works-with-all-your-azure-data"></a>可用于所有 Azure 数据
   
-Data Lake Analytics 适用于 Azure Data Lake Store，可以最大程度地提高性能、吞吐量和并行化；同时还适用于 Azure 存储 Blob、Azure SQL 数据库、Azure 仓库。
+Data Lake Analytics 适用于 Azure Data Lake Store，可以最大程度地提高性能、吞吐量和并行化；同时还适用于 Azure 存储 Blob、Azure SQL 数据库和 Azure 仓库。
 
 ### <a name="next-steps"></a>后续步骤
  

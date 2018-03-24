@@ -1,24 +1,21 @@
 ---
-title: "Azure 门户：创建 SQL 数据库托管实例 | Microsoft Docs"
-description: "在 VNet 中创建 Azure SQL 数据库托管实例，并使用 SSMS 还原 Wide World Importers 数据库备份。"
-keywords: "sql 数据库教程, 创建 sql 数据库托管实例"
+title: Azure 门户：创建 SQL 数据库托管实例 | Microsoft Docs
+description: 在 VNet 中创建 Azure SQL 数据库托管实例，并使用 SSMS 还原 Wide World Importers 数据库备份。
+keywords: sql 数据库教程, 创建 sql 数据库托管实例
 services: sql-database
 author: bonova
 ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
-ms.workload: Active
-ms.tgt_pltfrm: portal
-ms.devlang: 
 ms.topic: tutorial
-ms.date: 03/07/2018
+ms.date: 03/14/2018
 ms.author: bonova
-manager: cguyer
-ms.openlocfilehash: 0d6261392dfdab0d48cb0c524d1fcf416c85d72c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+manager: craigg
+ms.openlocfilehash: 774a761465cfd886b85378a35dd43ac656a7ee48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>在 Azure 门户中创建 Azure SQL 数据库托管实例
 
@@ -26,6 +23,9 @@ ms.lasthandoff: 03/12/2018
 
 如果你还没有 Azure 订阅，可以在开始前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
+> [!IMPORTANT]
+> 有关目前支持托管实例的区域列表，请参阅[使用 Azure SQL 数据库托管实例将数据库迁移到完全托管的服务](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/)。
+ 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 登录到 [Azure 门户](https://portal.azure.com/#create/Microsoft.SQLManagedInstance)。
@@ -56,7 +56,7 @@ ms.lasthandoff: 03/12/2018
 以下步骤说明如何创建新的可供托管实例使用的 [Azure 资源管理器](../azure-resource-manager/resource-manager-deployment-model.md)虚拟网络 (VNet)。 有关 VNet 配置的详细信息，请参阅[托管实例 VNet 配置](sql-database-managed-instance-vnet-configuration.md)。
 
 1. 在 Azure 门户的左上角单击“创建资源”。
-2. 找到并单击“虚拟网络”，验证是否已选择“资源管理器”作为部署模型，然后单击“创建”。
+2. 找到并单击“虚拟网络”，确认是否已选择“资源管理器”作为部署模型，然后单击“创建”。
 
    ![虚拟网络“创建”按钮](./media/sql-database-managed-instance-tutorial/virtual-network-create.png)
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 03/12/2018
    |**服务终结点**|已禁用|请为此子网启用一个或多个服务终结点|
    ||||
 
-   ![虚拟网络“创建”窗体](./media/sql-database-managed-instance-tutorial/virtual-network-create-form.png)
+   ![虚拟网络创建窗体](./media/sql-database-managed-instance-tutorial/virtual-network-create-form.png)
 
 4. 单击“创建”。
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 03/12/2018
    |**禁用 BCP 路由传播**|已禁用||
    ||||
 
-   ![路由表“创建”窗体](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)
+   ![路由表创建窗体](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)
 
 4. 单击“创建”。
 5. 创建路由表后，打开新创建的路由表。
@@ -137,7 +137,7 @@ ms.lasthandoff: 03/12/2018
 
 12. 单击“保存”
 
-    ![设置路由表-保存](./media/sql-database-managed-instance-tutorial/set-route-table-save.png)
+    ![设置路由表 - 保存](./media/sql-database-managed-instance-tutorial/set-route-table-save.png)
 
 ## <a name="create-a-managed-instance"></a>创建托管实例
 
@@ -284,7 +284,7 @@ ms.lasthandoff: 03/12/2018
     ![internet explorer 增强的安全性配置](./media/sql-database-managed-instance-tutorial/internet-explorer-security-configuration.png)  
 4. 从任务栏打开 **Internet Explorer**。
 5. 选择“使用推荐的安全性和兼容性设置”，然后单击“确定”，完成 Internet Explorer 11 的设置。
-6. 在 URL 地址框中输入 https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms，然后单击 **Enter**。 
+6. 在 URL 地址框中输入 https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms，并单击 **Enter**。 
 7. 下载最新版本的 SQL Server Management Studio，在系统提示时单击“运行”。
 8. 在系统提示时，单击“安装”即可开始。
 9. 安装完成后，单击“关闭”。
@@ -299,7 +299,7 @@ ms.lasthandoff: 03/12/2018
 
 通过以下步骤下载 Wide World Importers - 标准备份文件。
 
-使用 Internet Explorer 在 URL 地址框中输入 https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Standard.bak，然后在系统提示时单击“保存”，将该文件保存在 **Downloads** 文件夹中。
+在 Internet Explorer 的 URL 地址框中输入 https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Standard.bak，然后在出现提示时，单击“保存”将此文件保存到“下载”文件夹。
 
 ## <a name="create-azure-storage-account-and-upload-backup-file"></a>创建 Azure 存储帐户并上传备份文件
 

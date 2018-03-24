@@ -1,19 +1,19 @@
 ---
-title: "准备本地 VMware 服务器用于将 VMware VM 灾难恢复到 Azure| Microsoft 文档"
-description: "了解如何准备本地 VMware 服务器使用 Azure Site Recovery 服务灾难恢复到 Azure。"
+title: 准备本地 VMware 服务器用于将 VMware VM 灾难恢复到 Azure| Microsoft 文档
+description: 了解如何准备本地 VMware 服务器使用 Azure Site Recovery 服务灾难恢复到 Azure。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 03/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07f62775c9286250d33635febe01dbad4362df12
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6898f725d1d3cbf3f8d9d90faeafc13fbc8cb201
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>准备本地 VMware 服务器用于灾难恢复到 Azure
 
@@ -59,34 +59,16 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 3. 若要在 Linux VM 上安装，则需在源 Linux 服务器上准备一个根帐户。
 
 
-## <a name="check-vmware-server-requirements"></a>检查 VMware 服务器要求
+## <a name="check-vmware-requirements"></a>检查 VMware 要求
 
-请确保 VMware 服务器满足以下要求。
+确保 VMware 服务器和 VM 符合要求。
 
-**组件** | **要求**
---- | ---
-**vCenter 服务器** | vCenter 6.5、6.0 或 5.5
-**vSphere 主机** | vSphere 6.5、6.0、5.5
+1. [验证](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers) VMware 服务器要求。
+2. 对于 Linux，请[检查](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)文件系统和存储要求。 
+3. 检查本地[网络](vmware-physical-azure-support-matrix.md#network)和[存储](vmware-physical-azure-support-matrix.md#storage)支持。 
+4. 故障转移后，检查 [Azure 网络](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[存储](vmware-physical-azure-support-matrix.md#azure-storage)和[计算](vmware-physical-azure-support-matrix.md#azure-compute)支持的功能。
+5. 复制到 Azure 的本地 VM 必须符合 [Azure VM 要求](vmware-physical-azure-support-matrix.md#azure-vm-requirements)。
 
-## <a name="check-vmware-vm-requirements"></a>检查 VMware VM 要求
-
-请确保 VM 符合下表中总结的 Azure 要求。
-
-**VM 要求** | **详细信息**
---- | ---
-**操作系统磁盘大小** | 最大 2048 GB
-**操作系统磁盘计数** | 1
-**数据磁盘计数** | 64 或更少
-**数据磁盘 VHD 大小** | 最大 4095 GB
-**网络适配器** | 支持多个适配器
-**共享 VHD** | 不支持
-**FC 磁盘** | 不支持
-**硬盘格式** | VHD 或 VHDX。<br/><br/> 尽管 Azure 当前不支持 VHDX，但故障转移到 Azure 时，站点恢复会自动将 VHDX 转换为 VHD。 故障回复到本地时，VM 将继续使用 VHDX 格式。
-**Bitlocker** | 不支持。 为 VM 启用复制之前禁用。
-**VM 名称** | 介于 1 和 63 个字符之间。<br/><br/> 限制为字母、数字和连字符。 VM 名称必须以字母或数字开始或结尾。
-**VM 类型** | 第 1 代 - Linux 或 Windows<br/><br/>第 2 代 - 仅限 Windows
-
-VM 还必须运行受支持的操作系统。 有关受支持版本的完整列表，请参阅 [VMware 和物理服务器支持矩阵](vmware-physical-azure-support-matrix.md#replicated-machines)。
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>准备在故障转移后连接到 Azure VM
 

@@ -1,22 +1,22 @@
 ---
-title: "使用 Azure 资源管理器模板设置设备预配 | Microsoft Docs"
-description: "Azure 快速入门 - 使用模板设置 Azure IoT 中心设备预配服务"
+title: 使用 Azure 资源管理器模板设置设备预配 | Microsoft Docs
+description: Azure 快速入门 - 使用模板设置 Azure IoT 中心设备预配服务
 services: iot-dps
-keywords: 
+keywords: ''
 author: JimacoMS2
 ms.author: v-jamebr
 ms.date: 02/26/2018
 ms.topic: hero-article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 827be2be6915b0f0c9892e73b8f0a293a9659b6e
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 389691bddf1a7d6cab0845ca0a0cf1bde1152507
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板设置 IoT 中心设备预配服务
 
@@ -340,7 +340,7 @@ az iot hub delete --name {your iot hub name} --resource-group {your resource gro
 az group delete --name {your resource group name}
 ```
 
-也可以在删除资源组和单个资源时，使用 Azure 门户、PowerShell 或 REST API，或者针对 Azure 资源管理器或 IoT 中心和设备预配服务发布的受支持的平台 SDK。
+也可以使用 Azure 门户、PowerShell 或 REST API，或者针对 Azure 资源管理器或 IoT 中心设备预配服务发布的受支持平台 SDK，来删除资源组和单个资源。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,24 +1,24 @@
 ---
-title: "Azure StorSimple 文档 - 教程 | Microsoft 文档"
-description: "了解如何使用 Azure StorSimple（集成的存储解决方案，用于管理本地设备与 Azure 云存储之间的存储任务）。"
+title: Azure StorSimple 文档 - 教程 | Microsoft 文档
+description: 了解如何使用 Azure StorSimple（集成的存储解决方案，用于管理本地设备与 Azure 云存储之间的存储任务）。
 services: storsimple
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: storsimple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 579fe32f75e051e679e6cbbaea5f99c7fcd6037b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0115c1794878296df826e7d04724a561464125d6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="storsimple-documentation"></a>StorSimple 文档
+# <a name="storsimple-documentation"></a>StorSimple 文档
 
 了解如何使用 Azure StorSimple（集成的存储解决方案，用于管理本地设备与 Azure 云存储之间的存储任务）。 教程和其他文档介绍了如何设置存储管理、与位置无关的备份以及灾难恢复。
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 10/11/2017
 
 ---
 
-##<a name="other-storsimple-solutions"></a>其他 StorSimple 解决方案
+## <a name="other-storsimple-solutions"></a>其他 StorSimple 解决方案
 
 <ul class="panelContent cardsW">
     <li>

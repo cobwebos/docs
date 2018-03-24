@@ -6,8 +6,6 @@
       href: apache-domain-joined-introduction.md
     - name: 已加入域的群集的计划
       href: apache-domain-joined-architecture.md
-    - name: 配置已加入域的沙盒环境
-      href: apache-domain-joined-configure.md
     - name: 使用 Azure AD DS 配置已加入域的群集
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: 将 Azure AD 用户同步到 HDInsight 群集

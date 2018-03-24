@@ -1,27 +1,27 @@
 ---
-title: "在 Azure 中使用 Visual Studio 创建你的第一个函数 | Microsoft Docs"
-description: "使用 Azure Functions Tools for Visual Studio 创建一个简单的 HTTP 触发的函数并将其发布到 Azure。"
+title: 在 Azure 中使用 Visual Studio 创建你的第一个函数 | Microsoft Docs
+description: 使用 Azure Functions Tools for Visual Studio 创建一个简单的 HTTP 触发的函数并将其发布到 Azure。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "azure functions, functions, 事件处理, 计算, 无服务器体系结构"
+editor: ''
+tags: ''
+keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.service: functions
 ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/17/2018
+ms.date: 03/13/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fa17a021526a728c6fabc9607b1d00f5521cbb21
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9b43ec7106c70b7d9b326208043d2fe874fb7e20
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 创建你的第一个函数
 
@@ -37,11 +37,13 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/overview/ser
 
 完成本教程：
 
-* 安装 [Visual Studio 2017 版本 15.4](https://www.visualstudio.com/vs/) 或更高版本，包括 **Azure 开发**工作负荷。
+* 安装 [Visual Studio 2017 版本 15.5](https://www.visualstudio.com/vs/) 或更高版本，包括 **Azure 开发**工作负荷。
 
     ![使用 Azure 开发工作负荷安装 Visual Studio 2017](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
-* 确保已更新到最新版本的 Azure Functions 和 Web 作业工具。 请在“扩展和更新”中的“更新” > “Visual Studio Marketplace”下执行此更新。
+    如果已安装 Visual Studio，请确保安装所有等待应用的更新。 
+
+* 如果连同 Visual Studio 2017 版本 15.4 或更低版本一起安装了 Azure 开发工作负荷，可能还需要[更新 Azure Functions 工具](functions-develop-vs.md#check-your-tools-version)。 
     
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 

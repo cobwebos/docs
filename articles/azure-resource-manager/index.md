@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Manager 文档 - 教程和 API 参考 | Microsoft 文档"
-description: "了解如何使用 Resource Manager 以组的形式部署和管理解决方案资源，以便创建一个模板来以一致的、可重复的方式进行资源部署。"
+title: Azure 资源管理器文档 - 教程和 API 参考 | Microsoft 文档
+description: 了解如何使用 Resource Manager 以组的形式部署和管理解决方案资源，以便创建一个模板来以一致的、可重复的方式进行资源部署。
 services: azure-resource-manager
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: ab6725298c9e9c496d2e20b4e68ff72af1432bb2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 471ed43d5eec54a138262b7c4c89802020683fdc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="azure-resource-manager-documentation"></a>Azure Resource Manager 文档
+# <a name="azure-resource-manager-documentation"></a>Azure 资源管理器文档
 
 了解如何使用 Resource Manager 以组的形式部署、监视和管理解决方案资源。 教程、API 参考和其他文档介绍了如何设置资源组和创建模板，以进行一致、可重复的部署。
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>了解 Azure Resource Manager</h3>
+                        <h3>了解 Azure 资源管理器</h3>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/11/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Resource Manager 视频库</h3>
+                        <h3>Azure 资源管理器视频库</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/11/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Resource Manager 入门</h3>
+                        <h3>Azure 资源管理器入门</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@ ms.lasthandoff: 10/11/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>在 Azure Resource Manager 模板中开始创建依赖关系</h3>
+                        <h3>在 Azure 资源管理器模板中开始创建依赖关系</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ ms.lasthandoff: 10/11/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>在 Azure Resource Manager 中开始创建多个资源实例</h3>
+                        <h3>在 Azure 资源管理器中开始创建多个资源实例</h3>
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@ ms.lasthandoff: 10/11/2017
 
 ---
  
-<h2>参考</h2>
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">

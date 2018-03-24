@@ -1,12 +1,12 @@
 ---
-title: "创建第一个自动化工作流 - Azure 逻辑应用 | Microsoft Docs"
-description: "本快速入门介绍如何使用 Azure 逻辑应用自动完成第一个工作流，以便执行系统集成和企业应用程序集成 (EAI) 方案，从而集成系统和云服务"
+title: 创建第一个自动化工作流 - Azure 逻辑应用 | Microsoft Docs
+description: 本快速入门介绍如何使用 Azure 逻辑应用自动完成第一个工作流，以便执行系统集成和企业应用程序集成 (EAI) 方案，从而集成系统和云服务
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-keywords: "工作流, 云服务, 系统集成, 企业应用程序集成, EAI"
-documentationcenter: 
+keywords: 工作流, 云服务, 系统集成, 企业应用程序集成, EAI
+documentationcenter: ''
 ms.assetid: ce3582b5-9c58-4637-9379-75ff99878dcd
 ms.service: logic-apps
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 1/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: d382144c202b2b7f5623f2cca2a82c384387e8ca
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ccd00fbb3c5dc0f78a31adcaed31bbe6e4a6e785
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>快速入门：生成第一个逻辑应用工作流 - Azure 门户
 
@@ -60,6 +60,8 @@ ms.lasthandoff: 02/21/2018
    ![选择空白逻辑应用模板](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
 接下来请添加一个[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)，该触发器在出现新的 RSS 源项时触发。 每个逻辑应用都必须从触发器开始，该触发器在发生特定事件或特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例来启动并运行工作流。
+
+<a name="add-rss-trigger"></a>
 
 ## <a name="check-rss-feed-with-a-trigger"></a>使用触发器检查 RSS 源
 
@@ -144,7 +146,7 @@ ms.lasthandoff: 02/21/2018
       ![添加电子邮件正文内容](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
       | 设置 | 说明 | 
-      | ----- | ----------- | 
+      | ------- | ----------- | 
       | 源标题 | 项的标题 | 
       | 源发布日期 | 项的发布日期和时间 | 
       | 源主链接 | 项的 URL | 
@@ -156,15 +158,16 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="run-your-logic-app"></a>运行逻辑应用
 
-若要手动启动逻辑应用，可在设计器工具栏中选择“运行”。 或者，等待逻辑应用按指定计划运行（每分钟运行一次）。 如果 RSS 源有新项，逻辑应用会为每个新项发送一封电子邮件。 但如果源没有新项，逻辑应用会跳过触发器的触发，等待下次再进行检查。 
+若要手动启动逻辑应用，可在设计器工具栏中选择“运行”。 或者，等待逻辑应用根据指定的计划（每隔一分钟）检索 RSS 源。 如果 RSS 源有新项，逻辑应用会为每个新项发送一封电子邮件。 否则，逻辑应用会等到下一个间隔已过，然后才执行检查。 
 
-例如，下面是此逻辑应用发送的一封示例电子邮件：
+例如，下面是此逻辑应用发送的一封示例电子邮件。 如果没有收到任何电子邮件，请检查垃圾邮件文件夹。
 
 ![针对新的 RSS 源项发送的电子邮件](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-如果没有收到任何电子邮件，请检查电子邮件的垃圾邮件文件夹。 垃圾电子邮件筛选器可能会将这些类型的邮件重定向。 
+从技术上讲，当触发器检查 RSS 源并找到新项时，触发器将会激发，并且逻辑应用引擎会创建一个逻辑应用工作流实例，用于运行工作流中的操作。
+如果触发器未找到新项，则触发器不会激发，而是“跳过”实例化工作流的操作。
 
-祝贺！你已生成并运行第一个逻辑应用。
+祝贺你，现已使用 Azure 门户成功生成并运行了第一个逻辑应用！
 
 ## <a name="clean-up-resources"></a>清理资源
 

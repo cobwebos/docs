@@ -1,24 +1,24 @@
 ---
-title: "Azure 负载均衡器文档 - 教程和 API 参考 | Microsoft 文档"
-description: "了解如何使用负载均衡器提高应用的网络性能。 管理虚拟机、云资源和跨界虚拟网络中的流量。"
+title: Azure 负载均衡器文档 - 教程和 API 参考 | Microsoft 文档
+description: 了解如何使用负载均衡器提高应用的网络性能。 管理虚拟机、云资源和跨界虚拟网络中的流量。
 services: load-balancer
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: load-balancer
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 169ca89ccd80e5a70f3e9ab07b3c34358c154be7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4642b0108343b417dc09bbc5978b6a18a58d39a9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="load-balancer-documentation"></a>负载均衡器文档
+# <a name="load-balancer-documentation"></a>负载均衡器文档
 
 了解如何配置负载均衡器，提高应用程序的可用性和网络性能。 文档介绍了如何对传入和传出虚拟机、云资源和跨界虚拟网络的流量进行负载均衡。
 

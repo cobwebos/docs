@@ -1,24 +1,24 @@
 ---
-title: "Azure SQL Server Stretch Database 文档 - 教程 | Microsoft 文档"
-description: "了解在不更改查询或应用程序的情况下，如何使用 SQL Server Stretch Database 将冷数据安全迁移到 Azure。 教程和其他文档。"
+title: Azure SQL Server Stretch Database 文档 - 教程 | Microsoft 文档
+description: 了解在不更改查询或应用程序的情况下，如何使用 SQL Server Stretch Database 将冷数据安全迁移到 Azure。 教程和其他文档。
 services: sql-server-stretch-database
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: sql-server-stretch-database
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: cbdd210f2fe46228daa8c138815826df2b3b0fd7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d40cd906abbee8b1d33f9e67c1940918ba4acb28
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="sql-server-stretch-database-documentation"></a>SQL Server Stretch Database 文档
+# <a name="sql-server-stretch-database-documentation"></a>SQL Server Stretch Database 文档
 
 了解如何使用 SQL Server Stretch Database 透明、安全地将冷数据迁移到 Azure 云。 教程和其他文档可帮助用户以经济高效的方式使不经常使用的数据保持可用性，且无需对现有查询或应用程序做出更改。
 

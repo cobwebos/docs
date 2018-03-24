@@ -1,24 +1,24 @@
 ---
-title: "Azure 开发测试实验室文档 - 教程 | Microsoft 文档"
-description: "了解如何使用可重用项目快速创建应用程序测试环境。 教程、视频和其他资源演示了如何创建、管理和保护实验室。"
+title: Azure 开发测试实验室文档 - 教程 | Microsoft 文档
+description: 了解如何使用可重用项目快速创建应用程序测试环境。 教程、视频和其他资源演示了如何创建、管理和保护实验室。
 services: devtest-lab
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: devtest-lab
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 92aab190dfba196d48feacbfcc81a0097102b810
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41b7ae5ecf87f4ca544e03c3e62b6c850cf799d0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="devtest-labs-documentation"></a>开发测试实验室文档
+# <a name="devtest-labs-documentation"></a>开发测试实验室文档
 
 了解如何使用可重用项目通过开发测试实验室快速创建应用程序测试环境。 教程、视频和其他文档演示了如何创建、管理和保护实验室，以及添加和管理项目。
 

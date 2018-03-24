@@ -1,6 +1,6 @@
 ---
-title: "教程 - 使用 Azure 门户设计第一个 Azure Database for PostgreSQL"
-description: "本教程演示如何使用 Azure 门户设计第一个 Azure Database for PostgreSQL。"
+title: 教程：使用 Azure 门户设计 Azure Database for PostgreSQL
+description: 本教程演示如何使用 Azure 门户设计第一个 Azure Database for PostgreSQL。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -10,13 +10,13 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 02/28/2018
-ms.openlocfilehash: df8f308b17879d7fd22d033fb535b59bd8a85086
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9f4d886bbbf2b9111d736e291e420b822de9766a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-design-your-first-azure-database-for-postgresql-using-the-azure-portal"></a>教程：使用 Azure 门户设计第一个 Azure Database for PostgreSQL
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>教程：使用 Azure 门户设计 Azure Database for PostgreSQL
 
 用于 PostgreSQL 的 Azure 数据库是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 使用 Azure 门户可以轻松管理服务器和设计数据库。
 

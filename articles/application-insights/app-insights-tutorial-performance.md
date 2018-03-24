@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure Application Insights 诊断性能问题| Microsoft Docs"
-description: "本教程介绍如何使用 Azure Application Insights 查找和诊断应用程序中的性能问题。"
+title: 使用 Azure Application Insights 诊断性能问题| Microsoft Docs
+description: 本教程介绍如何使用 Azure Application Insights 查找和诊断应用程序中的性能问题。
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/18/2017
@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 26f5acf369dd80d7877ab760806e0e08a49cfe6d
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 8489992303425cc00c15994b55ade958d77549e4
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>使用 Azure Application Insights 查找和诊断性能问题
 
@@ -38,10 +38,10 @@ Azure Application Insights 从应用程序收集遥测，以帮助分析操作�
 - 对应用程序[启用 Application Insights profiler](app-insights-profiler.md#installation)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
 
 ## <a name="identify-slow-server-operations"></a>识别缓慢的服务器操作
-Application Insights 收集应用程序中不同操作的性能详细信息。  识别持续时间最长的操作，可以诊断潜在问题，或更有针对性地进行开发，以提高应用程序总体性能。
+Application Insights 收集应用程序中不同操作的性能详细信息。 识别持续时间最长的操作，可以诊断潜在问题，或更有针对性地进行开发，以提高应用程序总体性能。
 
 1. 选择“Application Insights”，然后选择订阅。  
 1. 选择“调查”下的“性能”菜单或单击“服务器响应时间”图，打开“性能”面板。

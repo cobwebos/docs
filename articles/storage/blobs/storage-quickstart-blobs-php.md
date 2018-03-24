@@ -1,6 +1,6 @@
 ---
-title: "Azure 快速入门 - 使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象 | Microsoft Docs"
-description: "快速了解如何使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象"
+title: Azure 快速入门 - 使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象 | Microsoft Docs
+description: 快速了解如何使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 services: storage
 author: roygara
 manager: jeconnoc
@@ -8,13 +8,13 @@ ms.service: storage
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: quickstart
-ms.date: 03/09/2018
+ms.date: 03/15/2018
 ms.author: rogarana
-ms.openlocfilehash: 474c03921369035cd7334fdddd9806f8f90b7d58
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4adad6fe3da16653bbd654a3e93e14f9e68b7c90
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 本快速入门介绍如何使用 PHP 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/12/2018
 
 完成本快速入门教程： 
 * 安装 [PHP](http://php.net/downloads.php)
-* 安装[用于 PHP 的 Azure SDK](https://github.com/Azure/azure-storage-php)
+* 安装[用于 PHP 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-php)
 
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -196,6 +196,13 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 是最常用的 
     echo "<br />";
     unlink($fileToUpload);   
 ```
+
+## <a name="resources-for-developing-php-applications-with-blobs"></a>用于开发包含 Blob 的 PHP 应用程序的资源
+
+查看以下附加资源，了解如何使用 Blob 存储进行 PHP 开发：
+
+- 在 GitHub 上查看、下载并安装 Azure 存储的 [PHP 客户端库源代码](https://github.com/Azure/azure-storage-php)。
+- 浏览使用 PHP 客户端库编写的 [Blob 存储示例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=php&term=blob)。
 
 ## <a name="next-steps"></a>后续步骤
  

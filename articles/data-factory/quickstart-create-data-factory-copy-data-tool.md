@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure 复制数据工具复制数据 | Microsoft Docs"
-description: "创建一个 Azure 数据工厂，然后使用“复制数据”工具将数据从 Azure Blob 存储中的一个文件夹复制到另一个文件夹。"
+title: 使用 Azure 复制数据工具复制数据 | Microsoft Docs
+description: 创建一个 Azure 数据工厂，然后使用“复制数据”工具将数据从 Azure Blob 存储中的一个位置复制到另一个位置。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 01/16/2018
 ms.author: jingwang
-ms.openlocfilehash: aa9cdba4f4e891d5321eb8af6349d8b141faee03
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: d09422f31a2dda5e14fb891fa07f65fdcceb72c1
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>使用“复制数据”工具复制数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/25/2018
 > [!NOTE]
 > 如果你对 Azure 数据工厂不太熟悉，请在学习本快速入门之前参阅 [Azure 数据工厂简介](data-factory-introduction.md)。 
 >
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用版本 1 的服务（即正式版 (GA)），请参阅[数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用版本 1 的服务（即正式版 (GA)），请参阅[数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
@@ -47,7 +47,7 @@ ms.lasthandoff: 01/25/2018
 3. 对于“订阅”，请选择要在其中创建数据工厂的 Azure 订阅。 
 4. 对于“资源组”，请使用以下步骤之一：
      
-   - 选择“使用现有项”，并从列表中选择现有的资源组。 
+   - 选择“使用现有”，并从列表中选择现有的资源组。 
    - 选择“新建”，并输入资源组的名称。   
          
    若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/resource-group-overview.md)。  

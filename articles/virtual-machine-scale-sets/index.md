@@ -1,24 +1,24 @@
 ---
-title: "Azure 虚拟机规模集文档 - 教程和 API 参考 | Microsoft 文档"
-description: "了解如何使用虚拟机规模集为大型计算、大数据和容器化解决方案创建自动缩放的 Windows 或 Linux VM。"
+title: Azure 虚拟机规模集文档 - 教程和 API 参考 | Microsoft 文档
+description: 了解如何使用虚拟机规模集为大型计算、大数据和容器化解决方案创建自动缩放的 Windows 或 Linux VM。
 services: virtual-machine-scale-sets
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f6c51a605a3fe28fb906e8c35a68a885a46136ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53a6db483ff760c143d98a209e622e1214762ce3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="virtual-machine-scale-sets-documentation"></a>虚拟机规模集文档
+# <a name="virtual-machine-scale-sets-documentation"></a>虚拟机规模集文档
 
 了解如何使用虚拟机规模集来部署和管理一组相同的、自动缩放的 Windows 或 Linux VM。 文档介绍了如何使用规模集来支持面向大型计算、大数据和容器化解决方案的服务。
 

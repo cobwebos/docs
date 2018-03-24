@@ -1,6 +1,6 @@
 ---
-title: "通过 Python 连接到 Azure Database for MySQL"
-description: "本快速入门提供了多个 Python 代码示例，你可以使用它来连接到 Azure Database for MySQL 并查询其中的数据。"
+title: 通过 Python 连接到 Azure Database for MySQL
+description: 本快速入门提供了多个 Python 代码示例，你可以使用它来连接到 Azure Database for MySQL 并查询其中的数据。
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 4003c1258fcc0a6d04c4ae8d234eba4d0224b8a0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 08725493f9d050da762a6527363b77af6eeed6e6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Python 进行连接并查询数据
 本快速入门演示了如何使用 [Python](https://python.org) 连接到 Azure Database for MySQL。 该语言可以通过 Mac OS、Ubuntu Linux 和 Windows 平台，使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 Python 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/28/2018
 1. 在 Linux (Ubuntu) 中，通常会在默认安装过程中安装 Python。
 2. 通过启动 Bash Shell 来检查 Python 安装。 使用大写 V 开关运行 `python -V` 命令，查看版本号。
 3. 通过运行 `pip show pip -V` 命令来查看版本号，检查 PIP 安装。 
-4. PIP 可能包括在某些版本的 Python 中。 如果 PIP 未安装，可以通过运行 `sudo apt-get install python-pip` 命令来安装 [PIP] (https://pip.pypa.io/en/stable/installing/) 包。
+4. PIP 可能包括在某些版本的 Python 中。 如果未安装 PIP，可以运行命令 `sudo apt-get install python-pip` 来安装 [PIP](https://pip.pypa.io/en/stable/installing/) 包。
 5. 通过运行 `pip install -U pip` 命令将 PIP 更新到最新版本。
 6. 使用以下 PIP 命令，安装用于 Python 的 MySQL 连接器及其依赖项：
 

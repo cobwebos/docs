@@ -1,25 +1,23 @@
 ---
-title: "快速入门 - 使用 PowerShell 创建首个 Azure 容器实例容器"
-description: "通过使用 PowerShell 创建 Windows 容器实例，可开始使用 Azure 容器实例。"
+title: 快速入门 - 使用 PowerShell 创建首个 Azure 容器实例容器
+description: 在本快速入门中，我们将使用 Azure PowerShell 在 Azure 容器实例中部署一个 Windows 容器
 services: container-instances
 author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 03/19/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 18a342fed7e99e82082764d6f5a3429a3ce794b7
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 6e43a525010ac57a75f6db4c43f6f1407dab93a8
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="create-your-first-container-in-azure-container-instances"></a>在 Azure 容器实例中创建你的第一个容器
+# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>快速入门：在 Azure 容器实例中创建第一个容器
 
-使用 Azure 容器实例，可以在 Azure 中轻松创建和管理 Docker 容器，无需预配虚拟机或采用更高级别的服务。
-
-在此快速入门中，将在 Azure 中创建 Windows 容器，然后通过公共 IP 地址向 Internet 公开该容器。 此操作通过单个命令完成。 就在几分钟之内，便可在浏览器中看到正在运行的应用程序：
+使用 Azure 容器实例，可以在 Azure 中轻松创建和管理 Docker 容器，无需预配虚拟机或采用更高级别的服务。 在本快速入门中，我们将在 Azure 中创建一个 Windows 容器，并使用完全限定的域名 (FQDN) 向 Internet 公开此容器。 此操作通过单个命令完成。 就在几分钟之内，便可在浏览器中看到正在运行的应用程序：
 
 ![在浏览器中显示的使用 Azure 容器实例部署的应用][qs-powershell-01]
 
@@ -27,7 +25,7 @@ ms.lasthandoff: 01/09/2018
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块版本 3.6 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 5.5 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -39,23 +37,28 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>创建容器
 
-在 [New-AzureRmContainerGroup][New-AzureRmContainerGroup] cmdlet 中提供名称、Docker 映像和 Azure 资源组可创建容器。 可以选择通过公共 IP 地址向 Internet 公开容器。 在这种情况下，我们将使用运行 Internet Information Services (IIS) 的 Nano Server 容器。
+在 [New-AzureRmContainerGroup][New-AzureRmContainerGroup] cmdlet 中提供名称、Docker 映像和 Azure 资源组可创建容器。 可以选择性地使用 DNS 名称标签向 Internet 公开容器。
+
+执行以下命令，启动运行 Internet Information Services (IIS) 的 Nano Server 容器。 `-DnsNameLabel` 值必须在创建实例时所在的 Azure 区域中唯一，因此可能需要对此值进行修改，以确保唯一性。
 
  ```azurepowershell-interactive
-New-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -IpAddressType Public
+New-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
 ```
 
-在数秒内，便可获得请求的响应。 容器一开始处于“正在创建”状态，但会在一两分钟内启动。 可以使用 [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] cmdlet 检查状态：
+在数秒内应该就会收到请求的响应。 容器一开始处于“正在创建”状态，但会在一两分钟内启动。 可以使用 [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] cmdlet 检查部署状态：
 
  ```azurepowershell-interactive
 Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
-容器的预配状态和 IP 地址会显示在 cmdlet 的输出中：
+容器的预配状态、完全限定的域名 (FQDN) 和 IP 地址会显示在 cmdlet 的输出中：
 
-```
+```console
+PS Azure:\> Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
+
+
 ResourceGroupName        : myResourceGroup
-Id                       : /subscriptions/12345678-1234-1234-1234-12345678abcd/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
+Id                       : /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
 Name                     : mycontainer
 Type                     : Microsoft.ContainerInstance/containerGroups
 Location                 : eastus
@@ -63,14 +66,18 @@ Tags                     :
 ProvisioningState        : Creating
 Containers               : {mycontainer}
 ImageRegistryCredentials :
-RestartPolicy            :
-IpAddress                : 40.71.248.73
+RestartPolicy            : Always
+IpAddress                : 52.226.19.87
+DnsNameLabel             : aci-demo-win
+Fqdn                     : aci-demo-win.eastus.azurecontainer.io
 Ports                    : {80}
 OsType                   : Windows
 Volumes                  :
+State                    : Pending
+Events                   : {}
 ```
 
-在容器的 **ProvisioningState** 变成 `Succeeded` 后，即可在浏览器中使用所提供的 IP 地址来访问它。
+容器的 **ProvisioningState** 变成 `Succeeded` 后，请在浏览器中导航到容器的 `Fqdn`：
 
 ![在浏览器中显示的使用 Azure 容器实例部署的 IIS][qs-powershell-01]
 

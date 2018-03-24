@@ -1,24 +1,24 @@
 ---
-title: "Azure HDInsight 文档 - 教程和 API 参考 | Microsoft 文档"
-description: "了解 HDInsight 上的 Hadoop。 文档介绍了如何使用 Hadoop、Spark、HBase、R-Server 和其他技术来处理、分析大数据以及从中获得见解。"
+title: Azure HDInsight 文档 - 教程和 API 参考 | Microsoft 文档
+description: 了解 HDInsight 上的 Hadoop。 文档介绍了如何使用 Hadoop、Spark、HBase、R-Server 和其他技术来处理、分析大数据以及从中获得见解。
 services: hdinsight
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 12/05/2017
 ms.author: carolz
-ms.openlocfilehash: 12fbfada95f9356b1d32c0edd3346a57c6ffa26f
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 6d00f3194f7cf02d9c0218ed768f3c3350efdd16
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="azure-hdinsight-documentation"></a>Azure HDInsight 文档
+# <a name="azure-hdinsight-documentation"></a>Azure HDInsight 文档
 
 了解如何使用 Azure HDInsight 来分析流数据或历史数据。 教程和其他文档介绍了如何使用最常用的开源框架（例如 Hadoop、Spark、Hive、LLAP、Kafka、Storm、R 等）来创建群集、处理与分析大数据，以及开发解决方案。 
 

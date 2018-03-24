@@ -1,8 +1,8 @@
 ---
-title: "快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业 | Microsoft Docs"
-description: "本快速入门介绍如何使用 Azure 门户创建 Azure Databricks 工作区和 Apache Spark 群集，以及如何运行 Spark 作业。"
+title: 快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业 | Microsoft Docs
+description: 本快速入门介绍如何使用 Azure 门户创建 Azure Databricks 工作区和 Apache Spark 群集，以及如何运行 Spark 作业。
 services: azure-databricks
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 03/09/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 6a0e69e1ab2c52586b447d8a249b52b09bbff705
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9eff06934eefa44db94de3d01be470ca69a2d88c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -40,17 +40,21 @@ ms.lasthandoff: 03/12/2018
 
 2. 在“Azure Databricks (预览版)”下，单击“创建”。
 
-3. 在“Azure Databricks 服务”下提供以下值：
+3. 在“Azure Databricks 服务”下，提供所需的值以创建 Databricks 工作区。
 
     ![创建 Azure Databricks 工作区](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "创建 Azure Databricks 工作区")
 
-    * 对于“工作区名称”，请提供 Databricks 工作区的名称。
-    * 对于“订阅”，请从下拉列表中选择自己的 Azure 订阅。
-    * 对于“资源组”，指定是要创建新的资源组还是使用现有资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/resource-group-overview.md)。
-    * 对于“位置”，请选择“美国东部 2”。 有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。
-    * 对于“定价层”，请选择“标准”或“高级”。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。
+    提供以下值： 
+     
+    |属性  |说明  |
+    |---------|---------|
+    |**工作区名称**     | 提供 Databricks 工作区的名称        |
+    |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
+    |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/resource-group-overview.md)。 |
+    |**位置**     | 选择“美国东部 2”。 有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
+    |定价层     |  选择“标准”或“高级”。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
-    单击“创建”。
+    选择“固定到仪表板”，并单击“创建”。
 
 4. 创建帐户需要几分钟时间。 在创建帐户过程中，门户会在右侧显示“正在提交 Azure Databricks 的部署”磁贴。 可能需要在仪表板上向右滚动才能看到此磁贴。 另外，还会在屏幕顶部附近显示进度条。 你可以查看任一区域来了解进度。
 
@@ -84,7 +88,7 @@ ms.lasthandoff: 03/12/2018
 * [从 Github](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 下载示例 JSON 文件。 
 * 将示例 JSON 文件上传到所创建的 Azure 存储帐户。 可以使用 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)上传该文件。
 
-执行以下步骤在 Databricks 中创建笔记本、将该笔记本配置为从 Azure Blob 存储帐户读取数据，然后针对这些数据运行 Spark SQL 作业。
+执行以下任务在 Databricks 中创建笔记本、将该笔记本配置为从 Azure Blob 存储帐户读取数据，然后针对这些数据运行 Spark SQL 作业。
 
 1. 在左窗格中，单击“工作区”。 在“工作区”下拉列表中，依次单击“创建”、“笔记本”。
 
@@ -96,7 +100,7 @@ ms.lasthandoff: 03/12/2018
 
     单击“创建”。
 
-3. 在此步骤中，请将 Azure 存储帐户与 Databricks Spark 群集相关联。 可以通过两种方式来完成此操作：将 Azure 存储帐户装载到 Databricks 文件系统 (DBFS)，或者直接从创建的应用程序访问 Azure 存储帐户。  
+3. 在此步骤中，请将 Azure 存储帐户与 Databricks Spark 群集相关联。 可通过两种方法来实现此关联。 可将 Azure 存储帐户装载到 Databricks 文件系统 (DBFS)，或者直接从创建的应用程序访问 Azure 存储帐户。  
 
     > [!IMPORTANT]
     >本文使用**通过 DBFS 装载存储的方式**。 此方式可确保装载的存储与群集文件系统本身相关联。 因此，任何访问群集的应用程序也都可以使用关联的存储。 直接访问方式仅限通过其配置访问权限的应用程序。
@@ -171,15 +175,15 @@ ms.lasthandoff: 03/12/2018
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果在创建 Spark 群集时选中了复选框“不活动超过 __ 分钟后终止”，在处于非活动状态达到指定的时间后，该群集会自动终止。
+完成本文后，可以终止群集。 为此，请在 Azure Databricks 工作区的左窗格中选择“群集”。 针对想要终止的群集，将光标移到“操作”列下面的省略号上，选择“终止”图标。
 
-如果未选中该复选框，则必须手动终止群集。 为此，请在 Azure Databricks 工作区的左窗格中，单击“群集”。 针对想要终止的群集，将光标移到“操作”列下面的省略号上，单击“终止”图标。
+![停止 Databricks 群集](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "停止 Databricks 群集")
 
-![终止 Databricks 群集](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "终止 Databricks 群集")
+如果不手动终止群集，但在创建群集时选中了“在不活动 __ 分钟后终止”复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们已在 Azure Databricks 中创建一个 Spark 群集，并使用 Azure 存储中的数据运行了一个 Spark 作业。 我们还可以查看 [Spark 数据源](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)，了解如何将其他数据源中的数据导入 Azure Databricks。 请继续学习下一篇文章，了解如何对 Azure Databricks 使用 Azure Data Lake Store。
+在本文中，我们已在 Azure Databricks 中创建一个 Spark 群集，并使用 Azure 存储中的数据运行了一个 Spark 作业。 我们还可以查看 [Spark 数据源](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)，了解如何将其他数据源中的数据导入 Azure Databricks。 请继续学习下一篇文章，了解如何使用事件中心将数据流式传输到 Azure Databricks。
 
 > [!div class="nextstepaction"]
->[对 Azure Databricks 使用 Data Lake Store](https://go.microsoft.com/fwlink/?linkid=864084)
+>[使用事件中心将数据流式传输到 Azure Databricks](databricks-stream-from-eventhubs.md)

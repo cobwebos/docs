@@ -1,25 +1,25 @@
 ---
-title: "Apache Kafka 入门 - Azure HDInsight | Microsoft Docs"
-description: "了解如何在 Azure HDInsight 上创建 Apache Kafka 群集。 了解如何创建主题、订阅服务器和使用者。"
+title: Apache Kafka 入门 - Azure HDInsight | Microsoft Docs
+description: 了解如何在 Azure HDInsight 上创建 Apache Kafka 群集。 了解如何创建主题、订阅服务器和使用者。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 43585abf-bec1-4322-adde-6db21de98d7f
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
+ms.devlang: ''
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: e00ab06a26d60dd5beca11362df58f35812491d9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 27e6472480dac104de799ebf0e7579a7987f6c4c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight 入门
 
@@ -39,6 +39,15 @@ ms.lasthandoff: 02/22/2018
 
     * **群集名称**：HDInsight 群集的名称。 此名称必须唯一。
     * **订阅**：选择要使用的订阅。
+    * **群集类型**：选择此项，然后在“群集配置”中设置以下值：
+
+        * **群集类型**：Kafka
+        * 版本：Kafka 0.10.0 (HDI 3.6)
+
+        使用“选择”按钮保存群集类型设置。
+
+        ![选择群集类型](./media/apache-kafka-get-started/set-hdinsight-cluster-type.png)
+
     * **群集登录用户名**和**群集登录密码**：通过 HTTPS 访问群集时的登录凭据。 可以使用这些凭据访问 Ambari Web UI 或 REST API 等服务。
     * **安全外壳 (SSH) 用户名**：通过 SSH 访问群集时使用的登录名。 默认情况下，密码与群集登录密码相同。
     * **资源组**：要在其中创建群集的资源组。
@@ -49,24 +58,15 @@ ms.lasthandoff: 02/22/2018
    
  ![选择订阅](./media/apache-kafka-get-started/hdinsight-basic-configuration.png)
 
-3. 选择“群集类型”，然后在“群集配置”中设置以下值：
-   
-    * **群集类型**：Kafka
-    * 版本：Kafka 0.10.0 (HDI 3.6)
+3. 使用“下一步”按钮完成基本配置。
 
-    最后使用“选择”按钮保存设置。
-     
- ![选择群集类型](./media/apache-kafka-get-started/set-hdinsight-cluster-type.png)
-
-4. 选择群集类型后，使用“选择”按钮设置群集类型。 接下来，使用“下一步”按钮完成基本配置。
-
-5. 在“存储”中选择或创建存储帐户。 对于本文档中的步骤，请让其他字段保留默认值。 使用“下一步”按钮保存存储配置。
+4. 在“存储”中选择或创建存储帐户。 对于本文档中的步骤，请让其他字段保留默认值。 使用“下一步”按钮保存存储配置。
 
     ![设置 HDInsight 的存储帐户设置](./media/apache-kafka-get-started/set-hdinsight-storage-account.png)
 
-6. 在“应用程序(可选)”中，选择“下一步”继续。 此示例不需要任何应用程序。
+5. 在“应用程序(可选)”中，选择“下一步”继续。 此示例不需要任何应用程序。
 
-7. 在“群集大小”中，选择“下一步”继续。
+6. 在“群集大小”中，选择“下一步”继续。
 
     > [!WARNING]
     > 若要确保 Kafka on HDInsight 的可用性，群集必须至少包含 3 个辅助节点。 有关详细信息，请参阅[数据高可用性](#data-high-availability)部分。
@@ -76,9 +76,9 @@ ms.lasthandoff: 02/22/2018
     > [!IMPORTANT]
     > “每个辅助角色节点的磁盘数”条目配置 Kafka on HDInsight 的可伸缩性。 Kafka on HDInsight 在群集中使用虚拟机的本地磁盘。 由于 Kafka 的 I/O 很高，因此会使用 [Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)提供高吞吐量，并为每个节点提供更多存储。 托管磁盘的类型可以为“标准”(HDD) 或“高级”(SSD)。 高级磁盘可与 DS 和 GS 系列 VM 一起使用。 所有其他的 VM 类型使用“标准”。
 
-8. 在“高级设置”中，选择“下一步”继续。
+7. 在“高级设置”中，选择“下一步”继续。
 
-9. 在“摘要”中，查看群集的配置。 使用“编辑”链接更改不正确的设置。 最后，使用“创建”按钮创建群集。
+8. 在“摘要”中，查看群集的配置。 使用“编辑”链接更改不正确的设置。 最后，使用“创建”按钮创建群集。
    
     ![群集配置摘要](./media/apache-kafka-get-started/hdinsight-configuration-summary.png)
    

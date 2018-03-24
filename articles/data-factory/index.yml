@@ -1,49 +1,49 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure 数据工厂 V2 预览版文档"
+title: Azure 数据工厂 V2 预览版文档
 metadata:
-  title: "Azure 数据工厂文档 - 教程和 API 参考 | Microsoft 文档"
-  description: "了解如何使用数据工厂来与本地源与云源建立自动化数据管道，以便移动和处理要分析的数据。"
+  title: Azure 数据工厂文档 - 教程和 API 参考 | Microsoft 文档
+  description: 了解如何使用数据工厂来与本地源与云源建立自动化数据管道，以便移动和处理要分析的数据。
   services: data-factory
-  author: spelluru
-  manager: jhubbard
+  author: douglaslMS
+  manager: craigg
   ms.service: data-factory
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 09/08/2017
-  ms.author: spelluru
-  ms.openlocfilehash: 0eb34f3b8cd287624e4a8a6930e8cc145d5e8fbb
-  ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+  ms.author: douglasl
+  ms.openlocfilehash: e31500a02bc3470e338f727771eebe887dcc493f
+  ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/01/2018
+  ms.lasthandoff: 03/23/2018
 abstract:
-  description: "了解如何使用数据工厂（云数据集成服务）将数据存储服务、移动服务和处理服务组合成自动化数据管道。 教程和其他文档介绍了如何设置和管理数据管线，以及移动和转换要分析的数据。 <p>数据工厂 V2 版目前为预览版。 V1 版本已正式发布。 如果使用的是 V1 版数据工厂服务，请参阅 <a href=/azure/data-factory/v1/data-factory-introduction>V1 版文档</a>。</p>"
+  description: 了解如何使用数据工厂（云数据集成服务）将数据存储服务、移动服务和处理服务组合成自动化数据管道。 教程和其他文档介绍了如何设置和管理数据管线，以及移动和转换要分析的数据。 <p>数据工厂 V2 版目前为预览版。 V1 版本已正式发布。 如果使用的是 V1 版数据工厂服务，请参阅 <a href=/azure/data-factory/v1/data-factory-introduction>V1 版文档</a>。</p>
   aside:
     image:
       alt: 
       height: 110
       src: media/index/video.png
       width: 250
-    title: "直观地生成 Azure 数据工厂 V2 的管道 (19:31)"
+    title: 直观地生成 Azure 数据工厂 V2 的管道 (19:31)
     href: https://azure.microsoft.com/en-us/resources/videos/azure-friday-visually-build-pipelines-for-azure-data-factory-v2
     width: 250
 sections:
-- title: "5 分钟快速入门"
+- title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: "了解如何使用以下方式创建数据工厂："
+    text: 了解如何使用以下方式创建数据工厂：
   - type: list
     style: icon48
     items:
     - image:
         src: /azure/data-factory/media/index/portal.svg
-      text: "数据工厂 UI"
+      text: 数据工厂 UI
       href: /azure/data-factory/quickstart-create-data-factory-portal
     - image:
         src: /azure/data-factory/media/index/copy-data-tool.png
-      text: "复制数据工具"
+      text: 复制数据工具
       href: /azure/data-factory/quickstart-create-data-factory-copy-data-tool
     - image:
         src: /azure/data-factory/media/index/logo_powershell.svg
@@ -63,41 +63,41 @@ sections:
       href: /azure/data-factory/quickstart-create-data-factory-rest-api
     - image:
         src: /azure/data-factory/media/index/logo_azure_resource_manager.svg
-      text: "资源管理器模板"
+      text: 资源管理器模板
       href: /azure/data-factory/quickstart-create-data-factory-resource-manager-template
-- title: "分步教程"
+- title: 分步教程
   items:
   - type: paragraph
-    text: "了解如何创建和监视数据工厂："
+    text: 了解如何创建和监视数据工厂：
   - type: list
     style: ordered
     items:
-    - html: "将 SSIS 包部署到 Azure - <a href=\"/azure/data-factory/tutorial-create-azure-ssis-runtime-portal\">数据工厂 UI</a> | <a href=\"/azure/data-factory/tutorial-deploy-ssis-packages-azure\">Azure PowerShell</a>"
-    - html: "在云中复制数据 - <a href=\"/azure/data-factory/tutorial-copy-data-tool\">复制数据工具</a> | <a href=\"/azure/data-factory/tutorial-copy-data-portal\">数据工厂 UI</a> | <a href=\"/azure/data-factory/tutorial-copy-data-dot-net\">.NET</a>"
-    - html: "将本地数据复制到云 - <a href=\"/azure/data-factory/tutorial-hybrid-copy-data-tool\">复制数据工具 | <a href=\"/azure/data-factory/tutorial-hybrid-copy-portal\">数据工厂 UI</a> | <a href=\"/azure/data-factory/tutorial-hybrid-copy-powershell\">Azure PowerShell</a>"
-    - html: "批量复制数据 - <a href=\"/azure/data-factory/tutorial-bulk-copy-portal\">数据工厂 UI</a> | <a href=\"/azure/data-factory/tutorial-bulk-copy\">Azure PowerShell</a>"
-    - html: "增量复制数据 - <a href=\"/azure/data-factory/tutorial-incremental-copy-portal\">数据工厂 UI</a> | <a href=\"/azure/data-factory/tutorial-incremental-copy-powershell\">Azure PowerShell</a>"
-    - html: "使用 Spark 转换云中的数据 - <a href=\"/azure/data-factory/tutorial-transform-data-spark-portal\">数据工厂 UI</a> | <a href=\"/azure/data-factory/tutorial-transform-data-spark-powershell\">Azure PowerShell</a>"
-    - html: "转换虚拟网络中的数据 - <a href=\"/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal\">数据工厂 UI</a> | <a href=\"/azure/data-factory/tutorial-transform-data-hive-virtual-network\">Azure PowerShell</a>"
-    - html: "控制流 - <a href=\"/azure/data-factory/tutorial-control-flow-portal\">数据工厂 UI</a> | <a href=\"/azure/data-factory/tutorial-control-flow\">.NET</a>"
-- title: "示例"
+    - html: 将 SSIS 包部署到 Azure - <a href="/azure/data-factory/tutorial-create-azure-ssis-runtime-portal">数据工厂 UI</a> | <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure PowerShell</a>
+    - html: 在云中复制数据 - <a href="/azure/data-factory/tutorial-copy-data-tool">复制数据工具</a> | <a href="/azure/data-factory/tutorial-copy-data-portal">数据工厂 UI</a> | <a href="/azure/data-factory/tutorial-copy-data-dot-net">.NET</a>
+    - html: 将本地数据复制到云 - <a href="/azure/data-factory/tutorial-hybrid-copy-data-tool">复制数据工具 | <a href="/azure/data-factory/tutorial-hybrid-copy-portal">数据工厂 UI</a> | <a href="/azure/data-factory/tutorial-hybrid-copy-powershell">Azure PowerShell</a>
+    - html: 批量复制数据 - <a href="/azure/data-factory/tutorial-bulk-copy-portal">数据工厂 UI</a> | <a href="/azure/data-factory/tutorial-bulk-copy">Azure PowerShell</a>
+    - html: 增量复制数据 - <a href="/azure/data-factory/tutorial-incremental-copy-portal">数据工厂 UI</a> | <a href="/azure/data-factory/tutorial-incremental-copy-powershell">Azure PowerShell</a>
+    - html: 使用 Spark 转换云中的数据 - <a href="/azure/data-factory/tutorial-transform-data-spark-portal">数据工厂 UI</a> | <a href="/azure/data-factory/tutorial-transform-data-spark-powershell">Azure PowerShell</a>
+    - html: 转换虚拟网络中的数据 - <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network-portal">数据工厂 UI</a> | <a href="/azure/data-factory/tutorial-transform-data-hive-virtual-network">Azure PowerShell</a>
+    - html: 控制流 - <a href="/azure/data-factory/tutorial-control-flow-portal">数据工厂 UI</a> | <a href="/azure/data-factory/tutorial-control-flow">.NET</a>
+- title: 示例
   items:
   - type: paragraph
-    text: "参考以下示例来使用数据工厂"
+    text: 参考以下示例来使用数据工厂
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="/azure/data-factory/samples-powershell">PowerShell</a>
-- title: "引用"
+- title: 引用
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "命令行"
+    - title: 命令行
       html: <p><a href="/powershell/module/azurerm.datafactoryv2/">Azure PowerShell</a></p>
-    - title: "语言"
+    - title: 语言
       html: <p><a href="/dotnet/api/microsoft.azure.management.datafactory">.NET</a></p><p><a href="/python/api/overview/azure/datafactory?view=azure-python">Python</a></p>
     - title: REST
       html: <p><a href="/rest/api/datafactory">REST API</a></p>

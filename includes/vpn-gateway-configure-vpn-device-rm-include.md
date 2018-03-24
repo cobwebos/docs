@@ -1,10 +1,14 @@
-**请参阅以下链接，了解配置信息：**
+**下载 VPN 设备配置脚本：**
+
+根据所用的 VPN 设备，有时可以下载 VPN 设备配置脚本。 有关详细信息，请参阅[下载 VPN 设备配置脚本](../articles/vpn-gateway/vpn-gateway-download-vpndevicescript.md)。
+
+**参阅以下链接了解其他配置信息：**
 
 - 有关兼容 VPN 设备的信息，请参阅 [VPN 设备](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md)。
 
 - 在配置 VPN 设备之前，对于要使用的 VPN 设备，请查看是否存在任何[已知的设备兼容性问题](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#known)。
 
-- 有关设备配置设置的链接，请参阅[已验证的 VPN 设备](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)。 我们会尽力提供各种设备配置链接。 如需最新的配置信息，最好是咨询设备制造商。 我们提供的列表会显示已测试的版本。 如果你的 OS 不在该列表中，则仍有可能版本是兼容的。 请与设备制造商联系以验证 VPN 设备的 OS 版本是否兼容。
+- 有关设备配置设置的链接，请参阅[已验证的 VPN 设备](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)。 我们会尽力提供各种设备配置链接。 如需最新的配置信息，最好是咨询设备制造商。 列表中显示了我们已测试的版本。 如果你的 OS 不在该列表中，则仍有可能版本是兼容的。 请与设备制造商联系以验证 VPN 设备的 OS 版本是否兼容。
 
 - 有关 VPN 设备配置的概述，请参阅[第三方 VPN 设备配置概述](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md)。
 

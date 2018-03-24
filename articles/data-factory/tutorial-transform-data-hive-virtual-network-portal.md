@@ -1,8 +1,8 @@
 ---
-title: "在 Azure 虚拟网络中使用 Hive 转换数据 | Microsoft Docs"
-description: "本教程提供有关在 Azure 数据工厂中使用 Hive 活动转换数据的分步说明。"
+title: 在 Azure 虚拟网络中使用 Hive 转换数据 | Microsoft Docs
+description: 本教程提供有关在 Azure 数据工厂中使用 Hive 活动转换数据的分步说明。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2018
 ms.author: shengc
-ms.openlocfilehash: a7575549225d47e5266ca7e1778c3e61835de1cc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8711d7ed1d02f0960ef00c1cf5053e97aa00ad5c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
 本教程使用 Azure 门户创建一个数据工厂管道，该管道可以使用 HDInsight 群集上的 Hive 活动转换 Azure 虚拟网络 (VNet) 中的数据。 在本教程中执行以下步骤：
@@ -114,7 +114,7 @@ ms.lasthandoff: 02/09/2018
 2. 在“集成运行时安装”窗口中，选择“执行数据移动并将活动分发到外部计算”选项，然后单击“下一步”。 
 
    ![选择执行数据移动并分发活动选项](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-perform-data-movement-compute-option.png)
-3. 选择“公共网络”，然后单击“下一步”。
+3. 选择“专用网络”，单击“下一步”。
     
    ![选择专用网络](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-private-network.png)
 4. 在“名称”中输入 **MySelfHostedIR**，然后单击“下一步”。 

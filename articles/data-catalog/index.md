@@ -1,24 +1,24 @@
 ---
-title: "Azure 数据目录文档 - 教程和 API 参考 | Microsoft 文档"
-description: "了解如何设置组织可在其中查找、了解和使用数据源的数据目录。 教程、API 参考和其他文档。"
+title: Azure 数据目录文档 - 教程和 API 参考 | Microsoft 文档
+description: 了解如何设置组织可在其中查找、了解和使用数据源的数据目录。 教程、API 参考和其他文档。
 services: data-catalog
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: data-catalog
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/25/2017
 ms.author: carolz
-ms.openlocfilehash: c901562753be86613ac4ca4dec1e727d1383e626
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ec21b9b55015c247cef3f216dbb14f4ddc30e8d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="data-catalog-documentation"></a>数据目录文档
+# <a name="data-catalog-documentation"></a>数据目录文档
 
 了解如何使用可帮助组织与团队发现、了解和使用数据源的数据目录。 教程、REST API 参考和其他文档介绍了如何规划和设置数据存储库，数据使用者可在其中发现可用数据源，学习主题专家分享的知识。
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 10/11/2017
 
 ---
  
-<h2>参考</h2>
+<h2>引用</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">

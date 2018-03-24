@@ -1,29 +1,29 @@
 ---
-title: "ExpressRoute 概述：通过专用连接将本地网络扩展到 Azure | Microsoft Docs"
-description: "此 ExpressRoute 技术概述介绍了如何使用 ExpressRoute 连接，以便用户通过专用连接将本地网络扩展到 Azure。"
+title: ExpressRoute 概述：通过专用连接将本地网络扩展到 Azure | Microsoft Docs
+description: 此 ExpressRoute 技术概述介绍了如何使用 ExpressRoute 连接，以便用户通过专用连接将本地网络扩展到 Azure。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fd95dcd5-df1d-41d6-85dd-e91d0091af05
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2017
+ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: e5584eee07121fa4644e09e23e3ba6b59fdd5a6e
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 75d69669945d31fbc9876d0c1e709b37f96aee6d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="expressroute-overview"></a>ExpressRoute 概述
 使用 Microsoft Azure ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 Dynamics 365 等 Microsoft 云服务建立连接。
 
-可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。 要了解如何使用 ExpressRoute 将网络连接到 Microsoft，请参阅 [ExpressRoute 连接模型](expressroute-connectivity-models.md)。
+可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 建立的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。 要了解如何使用 ExpressRoute 将网络连接到 Microsoft，请参阅 [ExpressRoute 连接模型](expressroute-connectivity-models.md)。
 
 ![](./media/expressroute-introduction/expressroute-connection-overview.png)
 
@@ -48,7 +48,6 @@ Microsoft 采用行业标准动态路由协议 (BGP)，在本地网络、Azure �
 每个 ExpressRoute 线路有两道连接，用于从连接服务提供商/网络边缘连接到两个 Microsoft 企业边缘路由器 (MSEE)。 Microsoft 要求从连接服务提供商/一端建立双重 BGP 连接 – 各自连接到每个 MSEE。 可以选择不要在一端部署冗余设备/以太网路线。 但是，连接服务提供商会使用冗余设备，确保以冗余方式将连接移交给 Microsoft。 冗余的第 3 层连接配置是 Microsoft [SLA](https://azure.microsoft.com/support/legal/sla/) 生效的条件。
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>与 Microsoft 云服务建立连接
-[!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 通过 ExpressRoute 连接可访问以下服务：
 
@@ -56,18 +55,22 @@ Microsoft 采用行业标准动态路由协议 (BGP)，在本地网络、Azure �
 * Microsoft Office 365 服务
 * Microsoft Dynamics 365
 
-可以访问 [ExpressRoute 常见问题](expressroute-faqs.md) 页，以获取通过 ExpressRoute 支持的服务的详细列表。
+> [!NOTE]
+> [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
+> 
+
+有关通过 ExpressRoute 支持的服务的详细列表，请访问 [ExpressRoute 常见问题解答](expressroute-faqs.md)页。 
 
 ### <a name="connectivity-to-all-regions-within-a-geopolitical-region"></a>与地缘政治区域中的所有区域建立连接
 可以在我们的某个 [对等位置](expressroute-locations.md) 连接到 Microsoft，并访问该地缘政治区域中的所有区域。 
 
-例如，如果在阿姆斯特丹通过 ExpressRoute 连接到 Microsoft，则就能够访问在欧洲北部和欧洲西部托管的所有 Microsoft 云服务。 有关地缘政治地区、关联的 Microsoft 云区域和对应的 ExpressRoute 对等位置的概述，请参阅 [ExpressRoute 合作伙伴和对等位置](expressroute-locations.md)。
+例如，如果在阿姆斯特丹通过 ExpressRoute 连接到 Microsoft，则就能够访问在欧洲北部和欧洲西部托管的所有 Microsoft 云服务。 有关地缘政治区域、关联的 Microsoft 云区域和对应的 ExpressRoute 对等位置的概述，请参阅 [ExpressRoute 合作伙伴和对等位置](expressroute-locations.md)一文。
 
 ### <a name="global-connectivity-with-expressroute-premium-add-on"></a>使用 ExpressRoute 高级版附加组件建立全球连接
 可以启用 ExpressRoute 高级版附加功能，将连接扩展为跨越地缘政治边界。 例如，如果在阿姆斯特丹通过 ExpressRoute 连接到 Microsoft，则就能够访问全球所有区域托管的所有 Microsoft 云服务（不包括国家/地区云）。 就像访问欧洲北部和西部区域一样，还可以访问部署在南美洲或澳大利亚的服务。
 
 ### <a name="rich-connectivity-partner-ecosystem"></a>丰富的连接合作伙伴生态系统
-ExpressRoute 的连接服务提供商和 SI 合作伙伴生态系统不断发展。 有关最新信息，请参阅 [ExpressRoute 提供商和位置](expressroute-locations.md) 一文。
+ExpressRoute 的连接服务提供商和 SI 合作伙伴生态系统不断发展。 有关最新信息，请参阅 [ExpressRoute 提供商和位置](expressroute-locations.md)一文。
 
 ### <a name="connectivity-to-national-clouds"></a>与国家/地区云建立连接
 Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。 有关国家/地区云和提供商的列表，请参阅 [ExpressRoute 提供商和位置](expressroute-locations.md) 页。
@@ -112,4 +115,4 @@ Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。 
   * [创建 ExpressRoute 线路](expressroute-howto-circuit-portal-resource-manager.md)
   * [配置 ExpressRoute 线路的对等互连](expressroute-howto-routing-portal-resource-manager.md)
   * [将虚拟网络连接到 ExpressRoute 线路](expressroute-howto-linkvnet-portal-resource-manager.md)
-* 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
+* 了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。

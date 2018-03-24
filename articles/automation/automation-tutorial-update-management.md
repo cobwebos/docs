@@ -1,25 +1,18 @@
 ---
-title: "管理 Azure Windows VM 的更新和修补程序 | Microsoft Docs"
-description: "本文概述了如何使用 Azure 自动化 - 更改管理来管理 Azure Windows VM 的更新和修补程序。"
+title: 管理 Azure Windows VM 的更新和修补程序
+description: 本文概述了如何使用 Azure 自动化 - 更改管理来管理 Azure Windows VM 的更新和修补程序。
 services: automation
-documentationcenter: 
 author: zjalexander
-manager: jwhit
-editor: 
-ms.assetid: 
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/28/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 614b5bd7a2663c3b61f511dcc6b6a49218ac439a
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: bded1621dc56a6e621408e567ce39a3107bec7c9
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="manage-windows-updates-with-azure-automation"></a>使用 Azure 自动化管理 Windows 更新
 
@@ -65,7 +58,7 @@ ms.lasthandoff: 02/28/2018
 验证过程还会检查 VM 是否预配了 Microsoft Monitoring Agent (MMA) 和自动化混合 Runbook 辅助角色。
 此代理用于与虚拟机通信并获取关于更新状态的信息。
 
-选择 Log analytics 工作区和自动化帐户，然后单击“启用”即可启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
+选择 Log analytics 工作区和自动化帐户，然后单击“启用”以启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
 
 如果在载入过程中发现缺少下列任何先决条件，则会自动添加这些条件：
 
