@@ -7,20 +7,40 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建 Databricks 工作区
+    - name: 创建 Databricks 工作区 - 门户
       href: quickstart-create-databricks-workspace-portal.md
+    - name: 创建 Databricks 工作区 - 资源管理器模板
+      href: quickstart-create-databricks-workspace-resource-manager-template.md
 - name: 教程
   items:
+    - name: 执行 ETL 操作
+      href: databricks-extract-load-sql-data-warehouse.md
     - name: 使用事件中心对数据进行流式传输
       href: databricks-stream-from-eventhubs.md
     - name: 使用认知服务进行情绪分析
       href: databricks-sentiment-analysis-cognitive-services.md
+    - name: 从 HDInsight Kafka 对数据进行流式传输
+      href: 'https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html'
 - name: 操作指南
   items:
+    - name: 创建 Spark 群集
+      href: 'https://docs.azuredatabricks.net/user-guide/clusters/index.html'
+    - name: 使用笔记本
+      href: 'https://docs.azuredatabricks.net/user-guide/notebooks/index.html'
+    - name: 运行 Spark 作业
+      href: 'https://docs.azuredatabricks.net/user-guide/jobs.html'
+    - name: 连接到数据源
+      href: databricks-connect-to-data-sources.md
     - name: 使用 Excel、R 和 Python 连接
       href: connect-databricks-excel-python-r.md
     - name: 从 Azure Cloud Shell 中使用 Databricks CLI
       href: databricks-cli-from-azure-cloud-shell.md
+    - name: 使用 BI 工具
+      href: 'https://docs.azuredatabricks.net/user-guide/bi/index.html'
+- name: 引用
+  items:
+    - name: REST API
+      href: /rest/api/databricks
 - name: 资源
   items:
     - name: 常见问题

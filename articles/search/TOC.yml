@@ -77,11 +77,15 @@
           href: search-performance-optimization.md
     - name: “安全”
       items:
-        - name: 数据和操作安全性
+        - name: 安全概述
           href: search-security-overview.md
-        - name: 使用标识筛选器进行保护
+        - name: 服务密钥管理
+          href: search-security-api-keys.md
+        - name: 基于角色的管理员访问权限
+          href: search-security-rbac.md
+        - name: 安全筛选器
           href: search-security-trimming-for-azure-search.md
-        - name: 使用 Active Directory 进行保护
+        - name: AAD 标识筛选器
           href: search-security-trimming-for-azure-search-with-aad.md
     - name: 开发
       items:

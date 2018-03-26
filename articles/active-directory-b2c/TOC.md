@@ -91,7 +91,8 @@
 #### [密码复杂性](active-directory-b2c-reference-password-complexity-custom.md)
 #### [密码更改](active-directory-b2c-reference-password-change-custom.md)
 #### [启用“使我保持登录状态”](active-directory-b2c-reference-kmsi-custom.md)
-### 故障排除
+### 故障排除和事件日志
+#### [使用 Application Insights 创建自定义事件](active-directory-b2c-custom-guide-eventlogger-appins.md)
 #### [使用 Application Insights 收集日志](active-directory-b2c-troubleshoot-custom.md)
 ## 引用
 ### [发行说明](active-directory-b2c-developer-notes-custom.md)

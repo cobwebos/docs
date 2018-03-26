@@ -1,6 +1,6 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Databricks 预览版文档
+title: Azure Databricks 文档
 metadata:
   title: Azure Databricks 文档 - 教程 | Microsoft Docs
   description: 使用快速入门和此处提供的其他链接，了解如何使用 Azure Databricks。 Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行优化。
@@ -11,13 +11,13 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/15/2017
+  ms.date: 03/19/2018
   ms.author: nitinme
-  ms.openlocfilehash: 8bbb8bb020c8c64e11d072729b59074a406a03ca
-  ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+  ms.openlocfilehash: 2c0bbbe6d9799258b983723c5d6980754a9908ae
+  ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/17/2018
+  ms.lasthandoff: 03/23/2018
 abstract:
   description: 使用快速入门和此处提供的其他链接，了解如何使用 Azure Databricks。 Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Azure 云服务平台进行优化。 我们与 Apache Spark 的创建者一起设计了 Databricks，并将其与 Azure 集成以提供一键式安装程序、简化的工作流程以及交互式工作区，从而使数据科学家、数据工程师和业务分析员之间可以进行合作。
   aside:
@@ -41,6 +41,10 @@ sections:
         src: /azure/azure-databricks/media/index/portal.svg
       text: Azure 门户
       href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
+    - image:
+        src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
+      text: 资源管理器模板
+      href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
 - title: 分步教程
   items:
   - type: paragraph
@@ -48,10 +52,15 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">使用 Azure Databricks 从事件中心对数据进行流式传输</a>
-    - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">使用 Azure Databricks 和认知服务进行情绪分析</a>
-    - html: <a href="https://go.microsoft.com/fwlink/?linkid=864083" target="_blank">从 Azure 存储导入数据</a>
-    - hmtl: <a href="https://go.microsoft.com/fwlink/?linkid=864084" target="_blank">Import data from Azure Data Lake Store</a>
-    - html: <a href="https://docs.azuredatabricks.net/user-guide/notebooks/index.html" target="_blank">使用笔记本</a>
-    - html: <a href="https://docs.azuredatabricks.net/user-guide/jobs.html" target="_blank">运行 Spark 作业</a>
-    - html: <a href="https://docs.azuredatabricks.net/spark/latest/data-sources/index.html" target="_blank">使用 Spark 数据源</a>
+    - html: <a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">提取、转换和加载数据</a>
+    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">从事件中心对数据进行流式传输</a>
+    - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">使用认知服务进行情绪分析</a>
+    - html: <a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">从 HDInsight Kafka 对数据进行流式传输</a>
+- title: 引用
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: REST
+      html: <p><a href="/rest/api/databricks">REST API</a></p>

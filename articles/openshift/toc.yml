@@ -1,0 +1,21 @@
+- name: OpenShift 文档
+  href: index.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: OpenShift：社区模板
+      href: 'https://azure.microsoft.com/en-us/resources/templates/openshift-origin-rhel/'
+- name: 教程
+  items:
+    - name: 部署到 Azure VM
+      href: /azure/virtual-machines/linux/openshift-get-started
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: OpenShift 容器模板
+      href: 'https://github.com/Microsoft/openshift-container-platform'
+    - name: OpenShift Origin
+      href: 'https://docs.openshift.org/latest/getting_started/index.html'
+    - name: OpenShift 站点
+      href: 'https://docs.openshift.org/latest/welcome/index.html'

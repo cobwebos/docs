@@ -18,6 +18,7 @@
 # 引用
 ## [代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Azure AD Connect Health 版本历史记录](active-directory-aadconnect-health-version-history.md)
+## [Azure AD Connect Health 警报目录](active-directory-aadconnect-health-alert-catalog.md)
 ## [GDPR 符合性和 Azure AD Connect Health](active-directory-aadconnect-health-gdpr.md)
 
 # 相关内容

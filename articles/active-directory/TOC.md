@@ -77,7 +77,8 @@
 ## [管理组和成员](active-directory-manage-groups.md)
 ### 管理组
 #### [Azure 门户](active-directory-groups-create-azure-portal.md)
-#### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure PowerShell Azure 资源管理器模型](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure PowerShell 经典部署模型](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### [管理组成员](active-directory-groups-members-azure-portal.md)
 ### [管理组所有者](active-directory-accessmanagement-managing-group-owners.md)
 ### [管理组成员身份](active-directory-groups-membership-azure-portal.md)
@@ -94,9 +95,8 @@
 ### [查看所有组](active-directory-groups-view-azure-portal.md)
 ### [添加对 SaaS 应用的组访问权限](active-directory-accessmanagement-group-saasapps.md)
 ### [还原已删除的 Office 365 组](active-directory-groups-restore-azure-portal.md)
-### 管理组设置
-#### [Azure 门户](active-directory-groups-settings-azure-portal.md)
-#### [Cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
+### [管理组设置](active-directory-groups-settings-azure-portal.md)
+
 ### 创建高级规则
 #### [Azure 门户](active-directory-groups-dynamic-membership-azure-portal.md)
 ### [设置自助服务组](active-directory-accessmanagement-self-service-group-management.md)
@@ -215,12 +215,12 @@
 ##### [自定义主页](application-proxy-office365-app-launcher.md)
 ##### [转换内联链接](application-proxy-link-translation.md)
 ##### [通配符应用程序](active-directory-application-proxy-wildcard.md)
-
+##### [Azure AD 应用程序代理和 Qlik Sense](active-directory-application-proxy-qlik.md) 
 #### 发布演练
 ##### [远程桌面](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
-#### [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)
+#### [PowerShell](https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
 #### [故障排除](active-directory-application-proxy-troubleshoot.md)
 
 

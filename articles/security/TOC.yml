@@ -2,7 +2,7 @@
   href: index.md
 - name: 体系结构和设计
   href: azure-security.md
-  expanded: true
+  expanded: false
   items:
     - name: 高级威胁检测
       href: azure-threat-detection.md
@@ -67,6 +67,8 @@
       items:
         - name: 最佳实践
           href: azure-security-identity-management-best-practices.md
+        - name: 对订阅管理员强制实施 MFA
+          href: azure-security-global-admin.md
     - name: 网络安全
       href: security-network-overview.md
       items:

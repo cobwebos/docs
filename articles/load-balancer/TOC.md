@@ -3,47 +3,41 @@
 # 概述
 ## [什么是负载均衡器？](load-balancer-overview.md)
 ## [什么是负载均衡器标准？](load-balancer-standard-overview.md)
-## [公共负载均衡器](load-balancer-internet-overview.md)
-## [内部负载均衡器](load-balancer-internal-overview.md)
-## [了解负载均衡器探测](load-balancer-custom-probe-overview.md)
-## [了解高可用性端口](load-balancer-ha-ports-overview.md)
-## [Azure 资源管理器支持](load-balancer-arm.md)
+## [负载均衡器探测](load-balancer-custom-probe-overview.md)
+## [高可用性端口](load-balancer-ha-ports-overview.md)
 ## [IPv6 支持](load-balancer-ipv6-overview.md)
-## [多个 VIP](load-balancer-multivip-overview.md)
-## [了解出站连接](load-balancer-outbound-connections.md)
+## [多个前端](load-balancer-multivip-overview.md)
+## [出站连接](load-balancer-outbound-connections.md)
 ## [标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)
+## [标准负载均衡器指标和诊断](load-balancer-standard-diagnostics.md)
 
 # 入门
+## [创建基本负载均衡器](load-balancer-get-started-internet-portal.md)
+### [创建基本负载均衡器 (CLI)](load-balancer-get-started-internet-arm-cli.md)
+### [创建基本负载均衡器 (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
+## [创建标准负载均衡器](load-balancer-standard-public-portal.md)
+### [创建标准负载均衡器 (CLI)](load-balancer-standard-public-cli.md)
 
-## [配置内部负载均衡器](load-balancer-get-started-ilb-arm-portal.md)
-### [配置内部负载均衡器 (PowerShell)](load-balancer-get-started-ilb-arm-ps.md)
-### [配置内部负载均衡器 (CLI)](load-balancer-get-started-ilb-arm-cli.md)
-### [配置内部负载均衡器（模板）](load-balancer-get-started-ilb-arm-template.md)
-
-## [配置公共负载均衡器](load-balancer-get-started-internet-portal.md)
-### [配置公共负载均衡器 (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
-### [配置公共负载均衡器 (CLI)](load-balancer-get-started-internet-arm-cli.md)
-### [配置公共负载均衡器（模板）](load-balancer-get-started-internet-arm-template.md)
+# 如何
 
 ## [使用 IPv6 创建公共负载均衡器](load-balancer-ipv6-internet-ps.md)
 ### [使用 IPv6 创建公共负载均衡器 (CLI)](load-balancer-ipv6-internet-cli.md)
 ### [使用 IPv6 创建公共负载均衡器（模板）](load-balancer-ipv6-internet-template.md)
-
 ## [创建区域冗余的公共负载均衡器标准版](load-balancer-get-started-internet-az-portal.md)
 ### [创建区域冗余的公共负载均衡器标准版 (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
 ### [创建区域冗余的公共负载均衡器标准版 (CLI)](load-balancer-get-started-internet-az-cli.md)
-
-# 如何
+## [创建基本负载均衡器（模板）](load-balancer-get-started-internet-arm-template.md)
+## [配置内部负载均衡器](load-balancer-get-started-ilb-arm-portal.md)
+### [配置内部负载均衡器 (PowerShell)](load-balancer-get-started-ilb-arm-ps.md)
+### [配置内部负载均衡器 (CLI)](load-balancer-get-started-ilb-arm-cli.md)
+### [配置内部负载均衡器（模板）](load-balancer-get-started-ilb-arm-template.md)
 ## [配置负载均衡器的 TCP 空闲超时](load-balancer-tcp-idle-timeout.md)
 ## [配置负载均衡器的分布模式](load-balancer-distribution-mode.md)
-## [为 SQL AlwaysOn 配置内部负载均衡器](load-balancer-configure-sqlao.md)
-## [为云服务配置多个 VIP](load-balancer-multivip.md)
 ## [结合使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 ## [使用多个 IP 配置](load-balancer-multiple-ip.md)
 ### [使用多个 IP 配置 (CLI)](load-balancer-multiple-ip-cli.md)
 ### [使用多个 IP 配置 (PowerShell)](load-balancer-multiple-ip-powershell.md)
 ## [Azure 负载均衡器的 Log Analytics](load-balancer-monitor-log.md)
-## [为 Linux VM 配置 DHCPv6](load-balancer-ipv6-for-linux.md)
 ## [为内部负载均衡器配置高可用性端口](load-balancer-configure-ha-ports.md)
 
 ## 故障排除
@@ -51,6 +45,7 @@
 
 ## 经典部署模型文章
 ### [出站连接（经典）](load-balancer-outbound-connections-classic.md)
+## [为云服务配置多个 VIP](load-balancer-multivip.md)
 ### [为云服务配置内部负载均衡器](load-balancer-get-started-ilb-classic-cloud.md)
 #### [为云服务配置内部负载均衡器 (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
 #### [为云服务配置内部负载均衡器 (CLI)](load-balancer-get-started-ilb-classic-cli.md)

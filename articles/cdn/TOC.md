@@ -74,7 +74,9 @@
 ## [REST](/rest/api/cdn/)
 
 # 资源
-## [Azure CDN 的 POP 位置](cdn-pop-locations.md)
+## Azure CDN 的 POP 位置
+### [按区域列出的 POP 位置](cdn-pop-locations.md)
+### [按缩写列出的 POP 位置](cdn-pop-abbreviations.md)
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/)
 ## [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
 ## [定价](https://azure.microsoft.com/pricing/details/cdn/)

@@ -7,7 +7,7 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 根据指标状况发出警报
+    - name: 根据指标状况发出警报（经典）
       href: monitor-quick-resource-metric-alert-portal.md
     - name: 根据订阅活动发出警报
       href: monitor-quick-audit-notify-action-in-subscription.md
@@ -21,66 +21,45 @@
   items:
     - name: 监视数据源
       href: monitoring-data-sources.md
+    - name: Azure 监视器
+      href: monitoring-overview-azure-monitor.md
+    - name: 度量值
+      href: monitoring-overview-metrics.md
+    - name: 自动缩放
+      href: monitoring-overview-autoscale.md
+    - name: 诊断日志
+      href: monitoring-overview-of-diagnostic-logs.md
+    - name: 活动日志
+      href: monitoring-overview-activity-logs.md
+    - name: 警报
+      href: monitoring-overview-unified-alerts.md
+    - name: 警报（经典）
+      href: monitoring-overview-alerts.md
+    - name: 日志警报
+      href: monitor-alerts-unified-log.md
+    - name: 活动日志警报（预览版）
+      href: monitoring-activity-log-alerts-new-experience.md
+    - name: 将警报从 OMS 扩展到 Azure
+      href: monitoring-alerts-extend.md
+    - name: 操作组
+      href: monitoring-action-groups.md
+    - name: Azure 诊断扩展
+      href: azure-diagnostics.md
     - name: 角色权限和安全
       href: monitoring-roles-permissions-security.md
     - name: 合作伙伴集成
       href: monitoring-partners.md
-    - name: 其他概述
-      items:
-        - name: Azure 监视器
-          href: monitoring-overview-azure-monitor.md
-        - name: 度量值
-          href: monitoring-overview-metrics.md
-        - name: 警报
-          href: monitoring-overview-alerts.md
-        - name: 警报（预览版）
-          href: monitoring-overview-unified-alerts.md
-        - name: 日志警报
-          href: monitor-alerts-unified-log.md
-        - name: 自动缩放
-          href: monitoring-overview-autoscale.md
-        - name: 活动日志
-          href: monitoring-overview-activity-logs.md
-        - name: 活动日志警报（预览版）
-          href: monitoring-activity-log-alerts-new-experience.md
-        - name: 操作组
-          href: monitoring-action-groups.md
-        - name: 诊断日志
-          href: monitoring-overview-of-diagnostic-logs.md
-        - name: Azure 诊断扩展
-          href: azure-diagnostics.md
-    - name: 架构
-      items:
-        - name: Azure 诊断扩展架构
-          href: azure-diagnostics-schema.md
-          items:
-            - name: 1
-              href: azure-diagnostics-schema-1dot0.md
-            - name: 1.2
-              href: azure-diagnostics-schema-1dot2.md
-            - name: 1.3 和更高版本
-              href: azure-diagnostics-schema-1dot3-and-later.md
 - name: 操作指南
   items:
-    - name: 演练
-      items:
-        - name: Azure Monitor 演练
-          href: monitoring-get-started.md
-        - name: 自动缩放演练
-          href: monitoring-autoscale-get-started.md
-        - name: 多维指标资源管理器
-          href: monitoring-metric-charts.md
-        - name: Azure CLI 1.0 示例
-          href: insights-cli-samples.md
-        - name: Azure PowerShell 示例
-          href: insights-powershell-samples.md
+    - name: Azure Monitor 演练
+      href: monitoring-get-started.md
     - name: 使用警报
       items:
-        - name: 在 Azure 门户中配置近乎实时的警报
+        - name: 在 Azure 门户中配置新警报
           href: monitoring-near-real-time-metric-alerts.md
-        - name: 在 Azure 门户中配置警报
+        - name: 在 Azure 门户中配置经典警报
           href: insights-alerts-portal.md
-        - name: 在 Azure 门户的警报（预览版）中配置指标或日志警报
+        - name: 在 Azure 门户中配置指标或日志警报
           href: monitor-alerts-unified-usage.md
         - name: 使用 CLI 配置警报
           href: insights-alerts-command-line-interface.md
@@ -90,8 +69,12 @@
           href: monitor-alerts-unified-log-webhook.md
         - name: 使用 Resource Manager 模板创建指标警报
           href: monitoring-enable-alerts-using-template.md
+        - name: 开始将警报从 OMS 扩展到 Azure
+          href: monitoring-alerts-extend-tool.md
     - name: 使用自动缩放
       items:
+        - name: 自动缩放演练
+          href: monitoring-autoscale-get-started.md
         - name: 了解自动缩放设置
           href: monitoring-understanding-autoscale-settings.md
         - name: 最佳实践
@@ -151,10 +134,6 @@
         - name: 使用资源管理器模板启用诊断设置
           href: monitoring-enable-diagnostic-logs-using-template.md
     - name: 使用 REST API
-      items:
-        - name: REST API 用法演练
-          href: monitoring-rest-api-walkthrough.md
-    - name: 使用 Azure 诊断扩展
       items:
         - name: 发送到 Application Insights
           href: azure-diagnostics-configure-application-insights.md

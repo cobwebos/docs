@@ -56,7 +56,10 @@
 #### [不同部署模型 - 同一订阅](create-peering-different-deployment-models.md)
 #### [不同部署模型 - 不同订阅](create-peering-different-deployment-models-subscriptions.md)
 
-### [虚拟网络服务终结点](virtual-network-service-endpoints-configure.md)
+### 虚拟网络服务终结点
+#### [Azure 门户](tutorial-restrict-network-access-to-resources.md)
+#### [Azure PowerShell](tutorial-restrict-network-access-to-resources-powershell.md)
+#### [Azure CLI](tutorial-restrict-network-access-to-resources-cli.md)
 
 ### 虚拟机
 #### [虚拟机网络吞吐量](virtual-machine-network-throughput.md)
@@ -176,8 +179,12 @@
 ### [VM 到 VM 连接问题](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
 ### [为 SMTP 标题检查配置 PTR](create-ptr-for-smtp-service.md)
 
+## 示例脚本
+### [Azure CLI](cli-samples.md)
+### [Azure PowerShell](powershell-samples.md)
+
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=virtual-network)
 ## [Azure PowerShell（资源管理器）](/powershell/module/azurerm.network)
 ## [Azure PowerShell（经典）](/powershell/module/azure/)
 ## [Azure CLI](/cli/azure/network)

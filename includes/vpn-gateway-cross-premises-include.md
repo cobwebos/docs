@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: fa9c27457b1da4d233aaea2a6621af9f5d01149d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/23/2018
+---
 |  | **点到站点** | **站点到站点** | **ExpressRoute** |
 | --- | --- | --- | --- |
 | **Azure 支持的服务** |云服务和虚拟机 |云服务和虚拟机 |[服务列表](../articles/expressroute/expressroute-faqs.md#supported-services) |
@@ -10,4 +26,3 @@
 | **定价** |[定价](https://azure.microsoft.com/pricing/details/vpn-gateway/) |[定价](https://azure.microsoft.com/pricing/details/vpn-gateway/) |[定价](https://azure.microsoft.com/pricing/details/expressroute/) |
 | **技术文档** |[VPN 网关文档](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[VPN 网关文档](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[ExpressRoute 文档](https://azure.microsoft.com/documentation/services/expressroute/) |
 | **常见问题** |[VPN 网关常见问题](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[VPN 网关常见问题](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[ExpressRoute 常见问题](../articles/expressroute/expressroute-faqs.md) |
-

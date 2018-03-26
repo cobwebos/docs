@@ -237,8 +237,6 @@
                   href: sql-api-python-samples.md
             - name: 资源
               items:
-                - name: SQL 语法备忘单
-                  href: sql-api-sql-query-cheat-sheet.md
                 - name: 视频
                   href: 'https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db'
                 - name: 服务更新
@@ -435,6 +433,8 @@
           href: graph-sdk-dotnet.md
 - name: 资源
   items:
+    - name: 查询备忘单
+      href: query-cheat-sheet.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 免费试用 Azure Cosmos DB

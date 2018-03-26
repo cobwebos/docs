@@ -1,0 +1,33 @@
+- name: Docker 文档
+  href: index.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: Docker Marketplace 模板
+      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS'
+- name: 教程
+  items:
+    - name: 使用 Docker 和 PostgreSQL 的 Python Web 应用
+      href: /azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app
+    - name: 将 CI/CD 与 Docker Swarm 和 VSTS 配合使用
+      href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
+    - name: 将 CI/CD 与 Docker、Jenkins 和 Linux 配合使用
+      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+- name: 操作指南
+  items:
+    - name: Docker VM 扩展
+      href: /azure/virtual-machines/linux/dockerextension
+    - name: Docker 计算机
+      href: /azure/virtual-machines/linux/docker-machine
+    - name: Docker 容器注册表
+      href: /azure/container-registry/container-registry-get-started-portal
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Docker Azure 驱动程序
+      href: 'https://docs.docker.com/machine/drivers/azure/'
+    - name: Docker Azure 站点
+      href: 'https://www.docker.com/docker-azure'
+    - name: Docker 站点
+      href: 'https://docker.com'

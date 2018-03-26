@@ -7,28 +7,31 @@
 ## [使用 Azure DNS 进行 DNS 委派](dns-domain-delegation.md)
 ## [DNS 常见问题](dns-faq.md)
 ## [使用专用 DNS 区域](private-dns-overview.md)
+## [专用 DNS 方案](private-dns-scenarios.md)
+
 
 # 入门
 
 ## 创建 DNS 区域和记录
-### [Azure portal](dns-getstarted-portal.md)
+### [Azure 门户](dns-getstarted-portal.md)
 ### [Azure PowerShell](dns-getstarted-powershell.md)
 ### [Azure CLI](dns-getstarted-cli.md)
 
 ## 创建专用 DNS 区域和记录
 ### [PowerShell](private-dns-getstarted-powershell.md)
+### [Azure CLI](private-dns-getstarted-cli.md)
 ## [将域委托给 Azure DNS](dns-delegate-domain-azure-dns.md)
 ## [为 Web 应用创建自定义 DNS 记录](dns-web-sites-custom-domain.md)
 
 # 如何
 
 ## 管理 DNS 区域
-### [Azure portal](dns-operations-dnszones-portal.md)
+### [Azure 门户](dns-operations-dnszones-portal.md)
 ### [Azure PowerShell](dns-operations-dnszones.md)
 ### [Azure CLI](dns-operations-dnszones-cli.md)
 
 ## 管理 DNS 记录
-### [Azure portal](dns-operations-recordsets-portal.md)
+### [Azure 门户](dns-operations-recordsets-portal.md)
 ### [Azure PowerShell](dns-operations-recordsets.md)
 ### [Azure CLI](dns-operations-recordsets-cli.md)
 
