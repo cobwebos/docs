@@ -64,8 +64,8 @@ ms.lasthandoff: 02/28/2018
 
 在迁移（故障转移）后创建的 Azure VM 会加入此网络。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，单击“创建资源”****>****“网络”>
-   ****“虚拟网络”。
+1. 在 [Azure 门户](https://portal.azure.com) 中 ，单击 **创建资源** > **网络** >
+   **虚拟网络**。
 3. 对于“名称”，键入 *myMigrationNetwork*。
 4. 保留“地址空间”的默认值。
 5. 对于“订阅”，选择相应订阅。
