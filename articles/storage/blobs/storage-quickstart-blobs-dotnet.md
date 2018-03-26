@@ -1,19 +1,19 @@
 ---
-title: "Azure 快速入门 - 使用 .NET 在 Azure 存储中上传、下载和列出 Blob | Microsoft Docs"
-description: "在本快速入门中，请创建存储帐户和容器。 然后，使用适用于 .NET 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。"
+title: Azure 快速入门 - 使用 .NET 在 Azure 存储中上传、下载和列出 Blob | Microsoft Docs
+description: 在本快速入门中，请创建存储帐户和容器。 然后，使用适用于 .NET 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
 services: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/01/2018
+ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: 8d1f09a39e865500aa8e4d093473d4989f134c3d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 716e61840f4bfb5a68a995683e67dae0b43d3854
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>快速入门：使用 .NET 上传、下载和列出 Blob
 
@@ -148,7 +148,7 @@ else
 
 接下来，此示例创建一个容器并设置其权限，使容器中的任何 Blob 都是公开的。 如果某个 Blob 是公开的，则任何客户端都可以对其进行匿名访问。
 
-若要创建容器，请先创建 CloudBlobClient[](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) 对象的实例，该对象指向存储帐户中的 Blob 存储。 接下来，请创建 CloudBlobContainer[](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer) 对象的实例，然后创建容器。 
+若要创建容器，请先创建 [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) 对象的实例，该对象指向存储帐户中的 Blob 存储。 接下来，请创建 [CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer) 对象的实例，然后创建容器。 
 
 在此示例中，示例调用 [CreateAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createasync) 方法来创建容器。 GUID 值会追加到容器名称，确保其是唯一的。 在生产环境中，通常情况下，首选使用 [CreateIfNotExistsAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexistsasync) 方法来创建容器的前提是该方法不存在，以免出现名称冲突。
 
@@ -253,13 +253,13 @@ File.Delete(destinationFile);
 
 ### <a name="binaries-and-source-code"></a>二进制文件和源代码
 
-- 下载最新版 [Storage .NET 客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)的 NuGet 包。 
-- 查看 GitHub 上的[存储 .NET 客户端库源代码](https://github.com/Azure/azure-storage-net)。
+- 下载 Azure 存储的最新版 [.NET 客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)的 NuGet 包。 
+- 查看 GitHub 上的 [.NET 客户端库源代码](https://github.com/Azure/azure-storage-net)。
 
 ### <a name="client-library-reference-and-samples"></a>客户端库参考和示例
 
-- 请参阅[存储 .NET API 参考](https://docs.microsoft.com/dotnet/api/overview/azure/storage)，详细了解客户端库。
-- 浏览使用存储 .NET 客户端库编写的 [Blob 存储示例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)。
+- 参阅 [.NET API 参考](https://docs.microsoft.com/dotnet/api/overview/azure/storage)，详细了解 .NET 客户端库。
+- 浏览使用 .NET 客户端库编写的 [Blob 存储示例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)。
 
 ## <a name="next-steps"></a>后续步骤
 
