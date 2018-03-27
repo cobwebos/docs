@@ -120,7 +120,7 @@ StorSimple 8000 系列存储阵列支持根据 StorSimple 阵列的购买方式�
 
 <text> * 高级支持覆盖范围并不适用于所有位置*。请在购买 StorSimple 高级支持之前与 Microsoft (SSSupOps@microsoft.com) 联系，了解地理覆盖范围。*
 
-**\*必须在高级支持覆盖的区域部署 StorSimple 设备，才能符合免费升级到高级 StorSimple 支持的条件。*
+** *必须在高级支持覆盖的区域部署 StorSimple 设备，才能符合免费升级到高级 StorSimple 支持的条件。*
 
 
 ASAP+ 客户可切换到包含标准支持的订阅模型。 使用 StorSimple 定价计算器进行订阅定价，如有任何疑问，请联系 SSSupOps@microsoft.com。 只能从 ASAP+ 单向切换到订阅。
