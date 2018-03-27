@@ -1,6 +1,6 @@
 ---
-title: "将 Azure 应用服务环境配置为采用强制隧道"
-description: "在通过强制隧道传输出站流量时，启用应用服务环境来使其正常工作"
+title: 将 Azure 应用服务环境配置为采用强制隧道
+description: 在通过强制隧道传输出站流量时，使应用服务环境能够正常运行
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/10/2017
+ms.date: 3/6/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 4caaf0df3f1dd4b2cb9b76283a6beed897531c1c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 92073cd29f29c1ddf5863e23c4a12dfdf8e21598
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>使用强制隧道配置应用服务环境
 
-应用服务环境是指在 Azure 虚拟网络的实例中部署 Azure App Service。 许多客户使用 VPN 或 Azure ExpressRoute 连接将其虚拟网络配置为本地网络的扩展。 由于公司政策或其他安全约束，他们会配置路由用于将所有出站流量发送到本地，然后将流量外发到 Internet。 更改虚拟网络的路由，使来自虚拟网络的出站流量能够通过 VPN 或 ExpressRoute 连接流向本地，这一过程称为强制隧道。 
+应用服务环境 (ASE) 是部署在客户的 Azure 虚拟网络中的 Azure 应用服务。 许多客户使用 VPN 或 Azure ExpressRoute 连接将其 Azure 虚拟网络配置为本地网络的扩展。 强制隧道是指将本应发往 Internet 的流量重定向到 VPN 或虚拟设备。 这通常是安全要求的一部分，目的是检查和审核所有出站流量。 
 
-强制隧道会导致应用服务环境出现问题。 应用服务环境具有许多外部依赖项，请参见[应用服务环境网络体系结构][network]文档中的枚举。 默认情况下，应用服务环境要求所有出站通信都通过应用服务环境中预配的 VIP 进行。
+ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][network]文档中的说明。 通常情况下，所有 ASE 出站依赖项流量必须通过 ASE 中预配的 VIP。 如果更改了出入 ASE 的流量的路由而没有遵循以下说明，则 ASE 会停止运行。
 
-强制隧道的定义及其用法都离不开路由。 在 Azure 虚拟网络中，路由是基于最长前缀匹配 (LPM) 实现的。 如果有多个路由的 LPM 匹配情况相同，则按以下顺序根据路由源来选择路由：
+在 Azure 虚拟网络中，路由是基于最长前缀匹配 (LPM) 实现的。 如果有多个路由的 LPM 匹配情况相同，则按以下顺序根据路由源来选择路由：
 
 * 用户定义的路由 (UDR)
 * BGP 路由（当使用 ExpressRoute 时）
@@ -34,80 +34,105 @@ ms.lasthandoff: 12/04/2017
 
 若要详细了解虚拟网络中的路由，请参阅[用户定义的路由和 IP 转发][routes]。 
 
-如果希望在强制隧道虚拟网络中运行应用服务环境，有以下两种选择：
+如果需要将 ASE 出站流量路由到其他地方而不是直接路由到 Internet，则有以下选择：
 
-* 启用应用服务环境，获得直接访问 Internet 的权限。
-* 更改应用服务环境的出口终结点。
+* 让 ASE 获得直接 Internet 访问权限
+* 将 ASE 子网配置为使用 Azure SQL 和 Azure 存储的服务终结点
+* 将自己的 IP 添加到 ASE Azure SQL 防火墙
 
 ## <a name="enable-your-app-service-environment-to-have-direct-internet-access"></a>启用应用服务环境，获得直接访问 Internet 的权限
 
-当虚拟网络已配置 ExpressRoute 连接时，为使应用服务环境正常工作，可以：
+若要让 ASE 在 Azure 虚拟网络配置了 ExpressRoute 的情况下也直接转到 Internet，可执行以下操作：
 
-* 将 ExpressRoute 配置为播发 0.0.0.0/0。 默认情况下，它强制通过隧道传递所有本地出站流量。
-* 创建 UDR。 并使用地址前缀 0.0.0.0/0 和下一跃点类型 Internet，将其应用到包含应用服务环境的子网。
+* 将 ExpressRoute 配置为播发 0.0.0.0/0。 默认情况下，它路由所有本地出站流量。
+* 创建地址前缀为 0.0.0.0/0、下一跃点类型为 Internet 的 UDR，将其应用到 ASE 子网。
 
-如果执行这两项更改，则不会强制由应用服务环境子网发往 Internet 的流量通过 ExpressRoute 连接，且应用服务环境可正常工作。
+如果执行这两项更改，则不会强制由应用服务环境子网发往 Internet 的流量通过 ExpressRoute 连接。
 
 > [!IMPORTANT]
 > UDR 中定义的路由必须足够明确，以便优先于 ExpressRoute 配置所播发的任何路由。 上述示例使用了广泛的 0.0.0.0/0 地址范围。 因此很困意外地被使用更具体地址范围的路由播发重写。
 >
-> 交叉播发从公共对等路径到专用对等路径的路由的 ExpressRoute 配置不支持应用服务环境。 已配置公共对等互连的 ExpressRoute 配置将收到来自 Microsoft 的路由播发。 这些播发包含大量的 Microsoft Azure IP 地址范围。 如果这些地址范围在专用对等路径上交叉播发，则来自应用服务环境子网的所有出站网络数据包均强制通过隧道发送至客户的本地网络基础结构。 默认情况下，应用服务环境目前不支持此网络流。 一个解决方法是停止公共对等路径到专用对等路径的交叉播发路由。 另一种解决方法是使应用服务环境能够在强制隧道配置中正常工作。
+> 交叉播发从公共对等路径到专用对等路径的路由的 ExpressRoute 配置不支持应用服务环境。 已配置公共对等互连的 ExpressRoute 配置将收到来自 Microsoft 的路由播发。 这些播发包含大量的 Microsoft Azure 地址范围。 如果这些地址范围在专用对等路径上交叉播发，则来自应用服务环境子网的所有出站网络数据包均路由至客户的本地网络基础结构。 默认情况下，应用服务环境不支持此网络流。 一个解决方法是停止公共对等路径到专用对等路径的交叉播发路由。 另一种解决方法是使应用服务环境能够在强制隧道配置中正常工作。
 
-## <a name="change-the-egress-endpoint-for-your-app-service-environment"></a>更改应用服务环境的出口终结点 ##
+![直接 Internet 访问][1]
 
-本部分介绍如何通过更改应用服务环境所用的出口终结点，使其能够在强制隧道配置中正常工作。 如果来自应用服务环境的出站流量通过强制隧道传输到本地网络，则需要允许流量源自除应用服务环境 VIP 地址以外的 IP 地址。
+## <a name="configure-your-ase-with-service-endpoints"></a>为 ASE 配置服务终结点
 
-应用服务环境不仅具有外部依赖项，还必须侦听入站流量并对其作出响应。 回复无法从其他地址发回，因为这样会中断 TCP。 更改应用服务环境的出口终结点需要执行三个步骤：
+若要路由来自 ASE 的所有出站流量（到 Azure SQL 和 Azure 存储的除外），请执行以下步骤：
 
-1. 设置一个路由表，确保能够从同一 IP 地址发出入站管理流量。
+1. 创建一个路由表，将其分配给 ASE 子网。 若要查找与区域相匹配的地址，请参阅[应用服务环境管理地址][management]。 为下一跃点为 Internet 的那些地址创建路由。 之所以需要这个，是因为应用服务环境入站管理流量必须从发送到的地址进行回复。   
 
-2. 添加用作应用服务环境防火墙出口的 IP 地址。
+2. 为 ASE 子网启用 Azure SQL 和 Azure 存储的服务终结点
 
-3. 设置应用服务环境的出站流量路由，使其通过隧道传输。
+可以通过服务终结点将多租户服务的访问权限限制给一组 Azure 虚拟网络和子网。 若要详细了解服务终结点，可参阅[虚拟网络服务终结点][serviceendpoints]文档。 
 
-   ![强制隧道网络流][1]
+在资源上启用服务终结点时，有些已创建路由的优先级高于所有其他路由。 如果将服务终结点与强制隧道 ASE 配合使用，则 Azure SQL 和 Azure 存储管理流量不会通过强制隧道进行重定向。 其他 ASE 依赖项流量会通过强制隧道重定向，不能丢失，否则 ASE 会功能失常。
 
-在应用服务环境启动并运行后，可使用不同的出口地址对其进行配置，也可在应用服务环境部署期间对其进行设置。
+在包含 Azure SQL 实例的子网上启用服务终结点时，所有与该子网有连接的 Azure SQL 实例必定会启用服务终结点。 如果需要从同一子网访问多个 Azure SQL 实例，则不能在一个 Azure SQL 实例上启用服务终结点，而在另一个实例上不启用。  Azure 存储的表现与 Azure SQL 不同。  对 Azure 存储启用服务终结点时，可以锁定从子网对该资源进行的访问，但仍可访问其他 Azure 存储帐户，即使这些帐户未启用服务终结点。  
 
-### <a name="change-the-egress-address-after-the-app-service-environment-is-operational"></a>在应用服务环境运行之后，更改出口地址 ###
-1. 获取要用作应用服务环境出口 IP 的 IP 地址。 如果正在执行强制隧道，则这些地址来自 NAT 或网关 IP。 若要通过 NVA 路由应用服务环境出站流量，则出口地址为 NVA 的公共 IP。
+如果为强制隧道配置网络筛选设备，则请记住，除了 Azure SQL 和 Azure 存储，ASE 还有许多依赖项。 必须允许此类流量，否则 ASE 会功能失常。
 
-2. 在应用服务环境配置信息中设置出口地址。 转到 resource.azure.com，再转到 Subscription/<subscription id>/resourceGroups/<ase resource group>/providers/Microsoft.Web/hostingEnvironments/<ase name>。 然后即可看到描述应用服务环境的 JSON 代码。 确保代码的顶部显示“读/写”。 选择“编辑”。 向下滚动到底部，并将“userWhitelistedIpRanges”值从“null”更改为类似于以下内容的值。 使用要设置为出口地址范围的地址。 
+![使用服务终结点的强制隧道][2]
+
+## <a name="add-your-own-ips-to-the-ase-azure-sql-firewall"></a>将自己的 IP 添加到 ASE Azure SQL 防火墙 ##
+
+若要让来自 ASE 的所有出站流量（到 Azure 存储的除外）进入隧道，请执行以下步骤：
+
+1. 创建一个路由表，将其分配给 ASE 子网。 若要查找与区域相匹配的地址，请参阅[应用服务环境管理地址][management]。 为下一跃点为 Internet 的那些地址创建路由。 之所以需要这个，是因为应用服务环境入站管理流量必须从发送到的地址进行回复。 
+
+2. 为 ASE 子网启用 Azure 存储的服务终结点
+
+3. 获取可供所有从应用服务环境到 Internet 的出站流量使用的地址。 如果在本地路由流量，则这些地址为 NAT 或网关 IP。 若要通过 NVA 路由应用服务环境出站流量，则出口地址为 NVA 的公共 IP。
+
+4. _若要在现有的应用服务环境中设置传出地址：_请转到 resource.azure.com，再转到 Subscription/<subscription id>/resourceGroups/<ase resource group>/providers/Microsoft.Web/hostingEnvironments/<ase name>。 然后即可看到描述应用服务环境的 JSON 代码。 确保代码的顶部显示“读/写”。 选择“编辑”。 向下滚动到底部。 将“userWhitelistedIpRanges”值从“null”更改为类似于以下内容的值。 使用要设置为出口地址范围的地址。 
 
         "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 
    选择顶部的“PUT”。 此选项会触发应用服务环境的缩放操作，并对防火墙进行调整。
- 
-3. 创建或编辑路由表并填充规则，以允许访问映射到应用服务环境位置的管理地址，或从中进行访问。 若要查找管理地址，请参阅[应用服务环境管理地址][management]。
 
-4. 使用路由表或 BGP 路由调整应用到应用服务环境子网的路由。 
+_若要使用传出地址创建 ASE_：请按[使用模板创建应用服务环境][template]中的说明操作，拉取相应的模板。  编辑 azuredeploy.json 文件中的 "resources" 节，但 "properties" 块除外，并添加一行，用于 **userWhitelistedIpRanges**（含值）。
 
-如果应用服务环境在门户中无响应，则表示所做的更改存在问题。 问题可能是出口地址列表不完整、流量丢失或流量被阻止。 
+    "resources": [
+      {
+        "apiVersion": "2015-08-01",
+        "type": "Microsoft.Web/hostingEnvironments",
+        "name": "[parameters('aseName')]",
+        "kind": "ASEV2",
+        "location": "[parameters('aseLocation')]",
+        "properties": {
+          "name": "[parameters('aseName')]",
+          "location": "[parameters('aseLocation')]",
+          "ipSslAddressCount": 0,
+          "internalLoadBalancingMode": "[parameters('internalLoadBalancingMode')]",
+          "dnsSuffix" : "[parameters('dnsSuffix')]",
+          "virtualNetwork": {
+            "Id": "[parameters('existingVnetResourceId')]",
+            "Subnet": "[parameters('subnetName')]"
+          },
+        "userWhitelistedIpRanges":  ["11.22.33.44/32", "55.66.77.0/30"]
+        }
+      }
+    ]
 
-### <a name="create-a-new-app-service-environment-with-a-different-egress-address"></a>使用不同的出口地址创建新的应用服务环境 ###
+进行这些更改后，即可将流量直接从 ASE 发送到 Azure 存储，并且可以从 ASE 的 VIP 之外的其他地址访问 Azure SQL。
 
-如果虚拟网络已配置为通过强制隧道传输所有流量，则需要执行一些额外步骤来创建应用服务环境，使其能够成功启动。 需要在创建应用服务环境期间启用另一个出口终结点。 为此，需要使用已指定允许的出口地址的模板创建应用服务环境。
+   ![使用 SQL 允许列表的强制隧道][3]
 
-1. 获取要用作应用服务环境出口地址的 IP 地址。
+## <a name="preventing-issues"></a>防止问题 ##
 
-2. 预先创建应用服务环境要使用的子网。 设置路由时需要此子网；另外，模板也需要此子网。
+如果 ASE 与其依赖项之间的通信中断，ASE 会进入不正常状态。  如果保持不正常状态的时间过长，ASE 会暂停。 若要取消 ASE 的暂停，请按 ASE 门户中的说明操作。
 
-3. 使用映射到应用服务环境位置的管理 IP 创建路由表。 将其分配到应用服务环境。
-
-4. 请按照[使用模板创建应用服务环境][template]中的说明进行操作。 拉取相应的模板。
-
-5. 编辑 azuredeploy.json 文件中的“资源”部分。 包含 userWhitelistedIpRanges 行并在其中指定如下值：
-
-       "userWhitelistedIpRanges":  ["11.22.33.44/32", "55.66.77.0/30"]
-
-如果此部分已正确配置，应用服务环境应正常启动。 
+除了直接中断通信，还可以引入过高的延迟，对 ASE 造成负面影响。 如果 ASE 与本地网络相距过远，则可能会造成延迟过高。  例如，如果需要跨洋过洲来访问本地网络，则表明相距过远。 如果出现 Intranet 拥塞或存在出站带宽约束，则也可能会导致延迟。
 
 
 <!--IMAGES-->
-[1]: ./media/forced-tunnel-support/forced-tunnel-flow.png
+[1]: ./media/forced-tunnel-support/asedependencies.png
+[2]: ./media/forced-tunnel-support/forcedtunnelserviceendpoint.png
+[3]: ./media/forced-tunnel-support/forcedtunnelexceptstorage.png
 
 <!--Links-->
 [management]: ./management-addresses.md
 [network]: ./network-info.md
 [routes]: ../../virtual-network/virtual-networks-udr-overview.md
 [template]: ./create-from-template.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
