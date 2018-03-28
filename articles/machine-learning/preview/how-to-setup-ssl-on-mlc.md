@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 机器学习计算 (MLC) 群集上启用 SSL | Microsoft Docs"
-description: "获取有关在 Azure 机器学习计算 (MLC) 群集上针对评分调用设置 SSL 的说明"
+title: 在 Azure 机器学习计算 (MLC) 群集上启用 SSL | Microsoft Docs
+description: 获取有关在 Azure 机器学习计算 (MLC) 群集上针对评分调用设置 SSL 的说明
 services: machine-learning
 author: SerinaKaye
 ms.author: serinak
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/24/2018
-ms.openlocfilehash: b76fe7c0caa4a9aca76a9a3f50d1fced0ab67cba
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 444803eeb77e79a8bfe3271ddf27bd428042c875
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="enable-ssl-on-an-azure-machine-learning-compute-mlc-cluster"></a>在 Azure 机器学习计算 (MLC) 群集上启用 SSL 
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/08/2018
 
 完成先决条件后，将获得两个文件：
 
-* 一个证书文件，例如 `cert.pem`
+* 一个证书文件，例如 `cert.pem`。 请确保该文件包含完整的证书链。
 * 一个密钥文件，例如 `key.pem`
 
 
@@ -55,7 +55,7 @@ Set-AzureRmMlOpCluster -ResourceGroupName my-rg -Name my-cluster -SslStatus Enab
 
 ## <a name="map-the-cname-and-the-ip-address"></a>映射 CNAME 和 IP 地址
 
-在先决条件中选择的 CNAME 和实时前端 (FE) 的 IP 地址之间创建映射。 若要发现 FE 的 IP 地址，请运行以下命令。 输出会显示一个名为“publicIpAddress”的字段，其中包含实时群集前端的 IP 地址。 请参阅 DNS 提供程序的说明，设置 CNAME 记录。
+在先决条件中选择的 CNAME 和实时前端 (FE) 的 IP 地址之间创建映射。 若要发现 FE 的 IP 地址，请运行以下命令。 输出会显示一个名为“publicIpAddress”的字段，其中包含实时群集前端的 IP 地址。 请参阅 DNS 提供程序的说明，从 CNAME 中使用的 FQDN 到公共 IP 地址建立一条记录。
 
 
 

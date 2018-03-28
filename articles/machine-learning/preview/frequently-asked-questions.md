@@ -1,6 +1,6 @@
 ---
-title: "Azure 机器学习 2017 预览版常见问题解答 | Microsoft Docs"
-description: "本文包含 Azure 机器学习预览功能的常见问题和解答"
+title: Azure 机器学习 2017 预览版常见问题解答 | Microsoft Docs
+description: 本文包含 Azure 机器学习预览功能的常见问题和解答
 services: machine-learning
 author: serinakaye
 ms.author: serinak
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 86ef8acf46cef2b057596d8224c6c29f3a0f534d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6146e1ce98144a05bef2ca29705f451aa3f5fb50
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure 机器学习常见问题
 
@@ -32,7 +32,7 @@ Azure 机器学习是一种完全托管的 Azure 服务，可供你创建、测�
 
 **需要哪些其他 Azure 服务？**
 
-为了充分体验 Azure 机器学习的全部功能，Azure 机器学习将使用 Visual Studio VSTS 帐户、Azure Blob 存储、Azure 容器注册表、数据科学 VM 或 HDInsight 计算以及 Azure 容器服务。
+Azure 机器学习使用 Azure Blob 存储和 Azure 容器注册表。 此外，还需要预配计算资源，如数据科学 VM 或 HDInsight 群集。 部署 Web 服务（如 [Azure 容器服务](https://docs.microsoft.com/azure/aks)）时，还需要计算和托管功能。
 
 **Azure 机器学习如何与 SQL Server 2017 中的 Microsoft 机器学习服务相关联？**   
 
@@ -46,7 +46,7 @@ SQL Server 2017 中的机器学习服务是一个可扩展的可缩放平台，�
 
 MMLSpark 可为 Apache Spark 提供深度学习和数据科学工具，侧重于工作效率、简化试验和先进算法。 MMLSpark 将 Spark 机器学习管道与 Microsoft 认知工具包和 OpenCV 相集成。 可为映像和文本数据创建功能强大、高度可缩放的预测模型和分析模型。 MMLSpark 基于开源许可证提供，作为一组可使用模型和算法包含在 AML Workbench 中。 有关 MMLSpark 的详细信息，请访问我们的产品文档。 
 
-**新工具和服务支持哪些版本的 Spark？顶部**
+**新工具和服务支持哪些版本的 Spark？**
 
 Workbench 当前包括并支持与 Apache Spark 2.1 兼容的 MMLSpark 版本 0.8。 还可以选择在 Linux 虚拟机上使用 MMLSpark 0.8 的支持 GPU 的 Docker 映像。
 
@@ -119,7 +119,7 @@ Azure Machine Learning Workbench 是为专业数据科学家打造的助手应�
 
 **Workbench 是否是一个 IDE？**
 
-不会。 Machine Learning Workbench 设计成为诸如 Jupyter Notebook、Visual Studio Code 和 PyCharm 等常用 IDE 的助手，并非是一个具备完整功能的 IDE。 Machine Learning Workbench 可提供一些基本的文本编辑功能，但并不支持调试、智能感知和其他常用 IDE 功能。 我们建议你使用最喜欢的 IDE 来进行代码开发、编辑和调试。 
+不会。 Machine Learning Workbench 设计成为诸如 Jupyter Notebook、Visual Studio Code 和 PyCharm 等常用 IDE 的助手，并非是一个具备完整功能的 IDE。 Machine Learning Workbench 可提供一些基本的文本编辑功能，但并不支持调试、智能感知和其他常用 IDE 功能。 我们建议你使用最喜欢的 IDE 来进行代码开发、编辑和调试。 你可能还想要尝试[用于 AI 的 Visual Studio Code 工具](https://www.visualstudio.com/downloads/ai-tools-vscode)。
 
 **是否要为使用 Azure Machine Learning Workbench 付费？**
 

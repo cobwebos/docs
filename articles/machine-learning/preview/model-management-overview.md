@@ -1,6 +1,6 @@
 ---
-title: "Azure 机器学习模型管理的概念性概述 | Microsoft Docs"
-description: "本文档解释 Azure 机器学习的模型管理概念。"
+title: Azure 机器学习模型管理的概念性概述 | Microsoft Docs
+description: 本文档解释 Azure 机器学习的模型管理概念。
 services: machine-learning
 author: nk773
 ms.author: padou
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 931dfae740996325cc62071a861e81ef5f67548b
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 89f95753248f74c7f6cb9ca1f680a01b07dd43d1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure 机器学习模型管理
 
@@ -99,27 +99,27 @@ Azure 机器学习模型管理提供可用于重新训练模型的 API。 还可
 ![](media/model-management-overview/modelmanagementworkflow.png)
 
 ## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ) 
-- 支持哪些数据类型？ 是否可以直接传递 NumPy 数组作为 Web 服务的输入？
+- **支持哪些数据类型？是否可以直接传递 NumPy 数组作为 Web 服务的输入？**
 
    如果提供使用 generate_schema SDK 创建的架构文件，则可以传递 NumPy 和/或 Pandas DF。 还可以传递任何 JSON 可序列化输入。 还可以二进制编码字符串的形式传递映像。
 
-- Web 服务是否支持多个输入或分析不同的输入？ 
+- **Web 服务是否支持多个输入或分析不同的输入？**
 
    是的，可将一个 JSON 请求中打包的多个输入用作字典。 每个输入对应于单个唯一的字典键。
 
-- 向 Web 服务发出的请求所激活的调用是阻塞调用还是异步调用？
+- **向 Web 服务发出的请求所激活的调用是阻塞调用还是异步调用？**
 
    如果服务是使用 CLI 或 API 附带的实时选项创建的，则调用是阻塞/同步调用。 它的实时速度预期较快。 不过，在客户端上，可以使用异步 HTTP 库来调用服务，以免阻塞客户端线程。
 
-- Web 服务可以同时处理多少个请求？
+- **Web 服务可以同时处理多少个请求？**
 
    这取决于群集和 Web 服务的规模。 可将服务横向扩展到副本数的 100 倍，然后，服务便可以并发处理许多的请求。 还可以配置每个副本的最大并发请求数，以提高服务吞吐量。
 
-- Web 服务可将多少个请求排队？
+- **Web 服务可将多少个请求排队？**
 
    这是可以配置的。 默认情况下，设一个副本的排队请求数设置为大约 10 个，但可以根据应用程序的要求增大/减小该数字。 通常，增大请求排队数会提高服务吞吐量，但会导致延迟率变得更糟。 为了保持一致的延迟，可将排队数设置为较小的值 (1-5)，并增加副本数来处理吞吐量。 还可以启用自动缩放，使副本数能够根据负载自动调整。 
 
-- 是否可对多个 Web 服务终结点使用同一个计算机或群集？
+- **是否可对多个 Web 服务终结点使用同一个计算机或群集？**
 
    绝对是。 可在同一个群集上运行 100 倍个服务/终结点。 
 

@@ -1,30 +1,27 @@
 ---
-title: "Azure SQL 数据库托管实例概述 | Microsoft Docs"
-description: "本主题介绍 Azure SQL 数据库托管实例，解释其工作原理，并说明它与 Azure SQL 数据库中的单一数据库的差别。"
+title: Azure SQL 数据库托管实例概述 | Microsoft Docs
+description: 本主题介绍 Azure SQL 数据库托管实例，解释其工作原理，并说明它与 Azure SQL 数据库中的单一数据库的差别。
 services: sql-database
-documentationcenter: na
 author: bonova
 ms.reviewer: carlrab
-manager: cguyer
-editor: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 03/07/2018
+ms.date: 03/16/2018
 ms.author: bonova
-ms.openlocfilehash: dc3c93a1a13f3e10f9159d26411d6337c0269722
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: bc9c16462f28d129efa8c47183c6325e69bb64f3
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>什么是托管实例（预览版）？
 
 Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项新功能，几乎与本地 SQL Server 100% 兼容。它提供一个本机[虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 实现来解决常见的安全问题，并提供本地 SQL Server 客户惯用的[业务模型](https://azure.microsoft.com/pricing/details/sql-database/)。 托管实例允许现有 SQL Server 客户将其本地应用程序即时转移到云中，而只需对应用程序和数据库做出极少量的更改。 同时，托管实例保留了所有 PaaS 功能（自动修补和版本更新、备份、高可用性），可大幅降低管理开销和总拥有成本。
+
+> [!IMPORTANT]
+> 有关目前支持托管实例的区域列表，请参阅[使用 Azure SQL 数据库托管实例将数据库迁移到完全托管的服务](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/)。
  
 下图概括描绘了托管实例的主要功能：
 
@@ -42,7 +39,7 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 | | 使用方案 | 
 | --- | --- | 
 |托管实例 |对于想要从本地或 IaaS 迁移大量自我构建的或 ISV 提供的应用，并且希望尽量减少迁移工作量的客户，可能推荐托管实例。 使用 Azure 中完全自动化的[数据迁移服务 (DMS)](/sql/dma/dma-overview)，客户可将其本地 SQL Server 即时转移到托管实例，从而实现与本地 SQL Server 的兼容，并通过本机 VNET 支持实现客户实例的完全隔离。  借助软件保障，可以使用 [SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)交换现有许可证，以获得 SQL 数据库托管实例的折扣价格。  SQL 数据库托管实例是 SQL Server 实例在云中的最佳迁移目标，需要很高的安全性和丰富的编程接口。 |
-|Azure SQL 数据库 |对于开发新 SaaS 多租户应用程序或有意将现有本地应用转换为 SaaS 多租户应用的客户，可以推荐弹性池。 此模型的优点包括： <br><ul><li>将业务模式从销售许可证转换为销售服务订阅（适用于 ISV）</li></ul><ul><li>简单且高度安全的租户隔离</li></ul><ul><li>以数据库为中心的简化编程模型</li></ul><ul><li>在不超出硬性限制的情况下横向扩展的可能性</li></ul>对于想要开发除 SaaS 多租户应用以外的应用，并且其工作负荷较为稳定且可预测的客户，可以推荐单一数据库。 此模型的优点包括：<ul><li>以数据库为中心的简化编程模型</li></ul>  <ul><li>每个数据库的性能可预测</li></ul>|
+|Azure SQL 数据库 |**弹性池**：对于开发新 SaaS 多租户应用程序或有意将现有本地应用转换为 SaaS 多租户应用的客户，建议弹性池。 此模型的优点包括： <br><ul><li>将业务模式从销售许可证转换为销售服务订阅（适用于 ISV）</li></ul><ul><li>简单且高度安全的租户隔离</li></ul><ul><li>以数据库为中心的简化编程模型</li></ul><ul><li>在不超出硬性限制的情况下横向扩展的可能性</li></ul>**单一数据库**：对于想要开发除 SaaS 多租户应用以外的应用，并且其工作负荷较为稳定且可预测的客户，建议单一数据库。 此模型的优点包括：<ul><li>以数据库为中心的简化编程模型</li></ul>  <ul><li>每个数据库的性能可预测</li></ul>|
 |SQL IaaS |对于需要自定义操作系统或数据库服务器，或者在配合 SQL Server 运行第三方应用（在同一 VM 上）方面有特定要求的客户，可以推荐 SQL VM/IaaS 作为最佳解决方案|
 |||
 

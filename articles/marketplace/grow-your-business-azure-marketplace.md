@@ -1,24 +1,24 @@
 ---
-title: "通过 Azure Marketplace 扩展业务"
-description: "面向 Azure Marketplace 新发布者的分步指南和发布清单"
+title: 通过 Azure Marketplace 扩展业务
+description: 面向 Azure Marketplace 新发布者的分步指南和发布清单
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: 
+documentationcenter: ''
 author: ellacroi
 manager: msmbaldwin
-editor: 
+editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 51cc413d61e4951f28e9247efcee934af23572e5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 85baba61d5603539641f45f7ab1d722ca98514ad
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="grow-your-business-by-using-the-azure-marketplace"></a>通过 Azure Marketplace 扩展业务
 
@@ -129,7 +129,8 @@ Marketplace 的新列表中的客户将有资格获得免费的 Marketplace GTM 
 >[!NOTE]
 >商业合作伙伴目录（OCP 目录）是 Microsoft 合作伙伴网络中成员的一项权益。 
 
-![Marketplace GTM 权益](./media/marketplace-publishers-guide/marketplace-gtm-promotion.png)
+[Marketplace GTM 权益](./media/marketplace-publishers-guide/marketplace-gtm-current-march-8.png)
+
 
 如需支持，请访问 [Microsoft Go To Market](https://www.microsoftgotomarket.com)（Microsoft 走向市场）。 在那里可以找到模板、Web 内容、培训和工具，这些都可以用于促进业务。
 

@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure CLI 创建 IoT 中心 (azure.js) | Microsoft Docs"
-description: "如何使用跨平台的 Azure CLI (azure.js) 创建 Azure IoT 中心。"
+title: 使用 Azure CLI 创建 IoT 中心 (azure.js) | Microsoft Docs
+description: 如何使用跨平台的 Azure CLI (azure.js) 创建 Azure IoT 中心。
 services: iot-hub
 documentationcenter: .net
 author: BeatriceOltean
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 46a17831-650c-41d9-b228-445c5bb423d3
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: boltean
-ms.openlocfilehash: 5e37c6c5e8625ce446ab203f19f9a8b2f1cd5a46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ad0efeeacbdb5dd0185c6336e9bf0e4d7937c99
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>使用 Azure CLI 创建 IoT 中心
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 * Azure CLI (azure.js) – 如本文所述，用于经典部署模型和资源管理部署模型的 CLI。
 * [Azure CLI 2.0 (az.py)](iot-hub-create-using-cli.md) - 适用于资源管理部署模型的下一代 CLI。
 
-若要完成本教程，需要以下各项：
+要完成本教程，需要以下各项：
 
 * 有效的 Azure 帐户。 如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。
 * [Azure CLI 0.10.4][lnk-CLI-install] 或更高版本。 如果已经安装 Azure CLI，则可在命令提示符处使用以下命令验证当前版本：
@@ -43,7 +43,7 @@ azure --version
 ```
 
 > [!NOTE]
-> Azure 提供了用于创建和使用资源的两个不同部署模型：[Azure Resource Manager 模型和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 Azure CLI 必须处于 Azure Resource Manager 模式：
+> Azure 提供了用于创建和使用资源的两个不同部署模型：[Azure 资源管理器模型和经典模型](../azure-resource-manager/resource-manager-deployment-model.md)。 Azure CLI 必须处于 Azure 资源管理器模式：
 >
 > ```azurecli
 > azure config mode arm
@@ -88,7 +88,7 @@ azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u
 ```
 
 * **resource-group**。 资源组名称。 格式为 1-64 位长度不区分大小写的字母数字、下划线和连字符。
-* **name**。 要创建的 IoT 中心的名称。 格式为 3-50 位长度不区分大小写的字母数字、下划线和连字符。
+* **name**。 要创建的 IoT 中心的名称。 格式为 3-50 位长度不区分大小写的字母数字和连字符。
 * **location**。 要预配 IoT 中心的位置（Azure 区域/数据中心）。
 * **sku-name**。 sku 的名称，以下值之一：[F1, S1, S2, S3]。 有关最新的完整列表，请参阅 IoT 中心的定价页。
 * **units**。 预配的单位数。 范围：F1 [1-1]: S1、S2 [1-200] : S3 [1-10]。 IoT Hub 单位数基于总消息计数和要连接的设备数。

@@ -1,13 +1,13 @@
 ---
-title: "关于 Log Analytics 中的网络监视 | Microsoft Docs"
-description: "概述了网络监视解决方案，包括 NPM，它们用来在云、本地和混合环境中管理网络。"
+title: 关于 Log Analytics 中的网络监视 | Microsoft Docs
+description: 概述了网络监视解决方案，包括 NPM，它们用来在云、本地和混合环境中管理网络。
 services: monitoring-and-diagnostics
 documentationcenter: na
 author: agummadi
-manager: 
-editor: 
+manager: ''
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 6d93821b59e1f69a48c3d5eeda96dad2edddb188
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7b9f42607f313f5570f414e810eafc6775ea18b9
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
 
@@ -34,7 +34,9 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 * 任务关键型多层应用程序/微服务
 * 用户位置和基于 web 的应用程序 (HTTP/HTTPs) 
 
-## <a name="performance-monitor"></a>性能监视器
+性能监视器、ExpressRoute 监视器和服务终结点监视器用于监视 NPM 中的功能，如下所述。
+
+## <a name="performance-monitor"></a>性能监视
 
 性能监视器是 NPM 的一部分，是适用于云、混合和本地环境的网络监视功能。 你可以跨远程分支和现场办事处、门店位置、数据中心和云来监视网络连接。 可以在你的用户产生抱怨之前检测到网络问题。 主要优势包括：
 
@@ -82,6 +84,37 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 * [配置用于监视服务终结点的网络性能监视器](https://aka.ms/applicationconnectivitymonitorguide)
 * [博客文章](https://aka.ms/svcendptmonitor)
+
+## <a name="traffic-analytics"></a>流量分析
+流量分析是一种基于云的解决方案，可查看云网络上的用户和应用程序活动。 分析 NSG 流日志可深入了解以下内容：
+
+* Azure 和 Internet、公有云区域、VNET 和子网之间的网络上的通信流
+* 网络上的应用程序和协议，而无需探测器或专用流收集器设备
+* 最活跃的通信方、聊天应用程序、云中的 VM 对话、流量热点
+* VNET 上的流量源和流量目标、关键业务服务和应用程序之间的相互关系
+* 安全性 - 恶意流量、向 Internet 开放的端口、尝试访问 Internet 的应用程序或 VM...
+* 容量使用量 - 通过监视 VPN 网关和其他服务的利用率趋势可帮助你消除过度预配或使用不足的问题
+
+流量分析可以提供可操作的信息，帮助你审核组织的网络活动、保护应用程序和数据、优化工作负荷性能和保持符合性。
+
+![显示各区域流量的地图](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+
+相关链接：
+* [博客文章](https://aka.ms/trafficanalytics)、[文档](https://aka.ms/trafficanalyticsdocs)、[常见问题解答](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+
+## <a name="dns-analytics"></a>DNS Analytics
+此解决方案专为 DNS 管理员构建，可收集、分析和关联 DNS 日志，以提供与安全性、操作和性能相关的见解。  一些功能包括：
+
+* 确定尝试解析恶意域的客户端
+* 确定过时的资源记录
+* 查看经常查询的域名和请求频繁的 DNS 客户端
+* 查看 DNS 服务器上的请求负载
+* 监视动态 DNS 注册错误
+
+![DNS Analytics 仪表板](./media/network-monitoring-overview/dns-analytics-overview.png) 
+
+相关链接：
+* [博客文章](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/)、[文档](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,12 +1,12 @@
 ---
-title: "生物医学实体识别 - Team Data Science Process - Azure 机器学习 | Microsoft 文档"
-description: "Team Data Science Process 项目快速入门，在 Azure Machine Learning Workbench 中使用深度学习了解生物医学实体识别。"
+title: 生物医学实体识别 - Team Data Science Process - Azure 机器学习 | Microsoft 文档
+description: Team Data Science Process 项目快速入门，在 Azure Machine Learning Workbench 中使用深度学习了解生物医学实体识别。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 7de3a30e477fcec66ce703b6c3fec7d17d79d3ab
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4e8450cc20718185a3cea02bf8fbb6b97dd91ddb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>使用 Team Data Science Process (TDSP) 模板的生物医学实体识别
 
-实体提取是信息提取的一项子任务（又称为 [Named-entity recognition (NER)](https://en.wikipedia.org/wiki/Named-entity_recognition)（命名实体标识 (NER)），即实体分块和实体标识）。 这个真实场景旨在重点介绍如何使用 Azure 机器学习工作台来解决复杂的自然语言处理 (NLP) 任务，如非结构化文本的实体提取：
+实体提取是信息提取的一项子任务（又称为[命名实体识别 (NER)](https://en.wikipedia.org/wiki/Named-entity_recognition)、实体分块和实体识别）。 这个真实场景旨在重点介绍如何使用 Azure 机器学习工作台来解决复杂的自然语言处理 (NLP) 任务，如非结构化文本的实体提取：
 
 1. 如何使用 [Spark Word2Vec 实现](https://spark.apache.org/docs/latest/mllib-feature-extraction.html#word2vec)在大约有 1,800 万条 PubMed 摘要的文本语料库中培训一个神经词嵌入模型。
 2. 如何在 Azure 中支持 GPU 的 Azure 数据科学虚拟机 (GPU DS VM) 上构建用于实体提取的深度长短期记忆 (LSTM) 循环神经网络模型。
@@ -32,13 +32,13 @@ ms.lasthandoff: 12/18/2017
 
 4. 在 Azure Machine Learning Workbench 中演示以下功能：
 
-    * 实例化 [Team Data Science Process (TDSP) 结构和模板](how-to-use-tdsp-in-azure-ml.md)。
+    * 实例化 [Team Data Science Process (TDSP) 结构和模板](how-to-use-tdsp-in-azure-ml.md)
     * 对项目依赖项的自动管理，包括下载和安装
-    * 在不同计算环境中执行 Python 脚本。
-    * 对 Python 脚本运行历史记录跟踪。
-    * 使用 HDInsight Spark 2.1 群集在远程 Spark 计算上下文中执行作业。
-    * 在 Azure 的远程 GPU VM 中执行作业。
-    * 在 Azure 容器服务中轻松将深度学习模型实施为 Web 服务 (ACS)。
+    * 在不同计算环境中执行 Python 脚本
+    * 对 Python 脚本运行历史记录跟踪
+    * 使用 HDInsight Spark 2.1 群集在远程 Spark 计算上下文中执行作业
+    * 在 Azure 的远程 GPU VM 中执行作业
+    * 在 Azure 容器服务 (ACS) 中轻松将深度学习模型实施为 Web 服务
 
 ## <a name="use-case-overview"></a>用例概述
 生物医学命名实体识别是复杂生物医学 NLP 任务的关键步骤，如： 
@@ -79,7 +79,7 @@ ms.lasthandoff: 12/18/2017
 
 ### <a name="2-lstm-model-training-data"></a>2.LSTM 模型训练数据
 
-神经实体提取模型已经在公开提供的数据集内训练和评估。 要获得有关这些数据集的详细说明，可以参考以下来源：
+神经实体提取模型已针对公开可用的数据集进行训练和评估。 要获得有关这些数据集的详细说明，可以参考以下来源：
  * [Bio-Entity Recognition Task at BioNLP/NLPBA 2004](http://www.nactem.ac.uk/tsujii/GENIA/ERtask/report.html)（BioNLP/NLPBA 2004 中的生物实体识别任务）
  * [BioCreative V CDR task corpus](http://www.biocreative.org/tasks/biocreative-v/track-3-cdr/)（BioCreative V CDR 任务语料库）
  * [Semeval 2013 - Task 9.1 (Drug Recognition)](https://www.cs.york.ac.uk/semeval-2013/task9/)（Semeval 2013 - 任务 9.1 (药物识别)）
@@ -106,7 +106,7 @@ ms.lasthandoff: 12/18/2017
 
 ### <a name="python-packages"></a>Python 包
 
-所有必需的依赖关系都在场景项目文件夹下的 aml_config/conda_dependencies.yml 文件中定义。 将自动设置此文件中定义的依赖关系，以针对 Docker、VM 和 HDI 群集目标运行。 有关 Conda 环境文件格式的详细信息，请参阅[此处](https://conda.io/docs/using/envs.html#create-environment-file-by-hand)。
+所有必需的依赖关系都在场景项目文件夹下的 aml_config/conda_dependencies.yml 文件中定义。 将自动预配此文件中定义的依赖关系，以针对 Docker、VM 和 HDI 群集目标运行。 有关 Conda 环境文件格式的详细信息，请参阅[此处](https://conda.io/docs/using/envs.html#create-environment-file-by-hand)。
 
 * [TensorFlow](https://www.tensorflow.org/install/)
 * [CNTK 2.0](https://docs.microsoft.com/cognitive-toolkit/using-cntk-with-keras)
@@ -136,17 +136,17 @@ ms.lasthandoff: 12/18/2017
 
 原始的 MEDLINE 语料库共有 2,700 万条摘要，其中大约 1,000 万篇文章包含空的摘要字段。 Azure HDInsight Spark 用于处理大数据，大数据无法作为 [Pandas DataFrame ](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html) 加载到单个计算机的内存中。 首先，将数据下载到 Spark 群集。 然后在 [Spark DataFrame](https://spark.apache.org/docs/latest/sql-programming-guide.html) 上执行以下步骤： 
 * 使用 Medline XML 分析程序分析 XML 文件
-* 预处理摘要文本，包括断句、词汇切分和大小写规范化。
+* 预处理摘要文本，包括句子拆分、词汇切分和大小写规范化。
 * 排除摘要字段为空或具有短文本的文章 
 * 基于训练摘要创建词汇表
-* 训练词嵌入神经模型。 有关更多详细信息，请参阅 [GitHub 代码连接](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/code/01_data_acquisition_and_understanding/ReadMe.md)以开始使用。
+* 训练词嵌入神经模型。 有关详细信息，请参阅 [GitHub 代码链接](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/code/01_data_acquisition_and_understanding/ReadMe.md)以开始使用。
 
 
 分析 XML 文件之后，数据采用以下格式： 
 
 ![数据示例](./media/scenario-tdsp-biomedical-recognition/datasample.png)
 
-神经实体提取模型已经在公开提供的数据集内训练和评估。 要获得有关这些数据集的详细说明，可以参考以下来源：
+神经实体提取模型已针对公开可用的数据集进行训练和评估。 要获得有关这些数据集的详细说明，可以参考以下来源：
  * [Bio-Entity Recognition Task at BioNLP/NLPBA 2004](http://www.nactem.ac.uk/tsujii/GENIA/ERtask/report.html)（BioNLP/NLPBA 2004 中的生物实体识别任务）
  * [BioCreative V CDR task corpus](http://www.biocreative.org/tasks/biocreative-v/track-3-cdr/)（BioCreative V CDR 任务语料库）
  * [Semeval 2013 - Task 9.1 (Drug Recognition)](https://www.cs.york.ac.uk/semeval-2013/task9/)（Semeval 2013 - 任务 9.1 (药物识别)）
@@ -156,7 +156,7 @@ ms.lasthandoff: 12/18/2017
 请参阅[建模](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling)。
 
 建模是我们展示如何使用上一节中下载的数据来培训自己的词嵌入模型并将其用于其他下游任务的阶段。 虽然我们正在使用 PubMed 数据，但生成嵌入内容的管道是通用的，可以重用于任何其他域的词嵌入。 为了使嵌入内容成为准确的数据表示，必须对 word2vec 进行大量数据的训练。
-我们准备好词嵌入后，就可以训练一个使用学习嵌入的深度神经网络模型来初始化嵌入层。 我们将嵌入层标记为不可训练、但不是必需的层。 词嵌入模型的训练无需监督，因此我们可以利用未标记的文本。 但是，实体识别模型的训练是受监督的学习任务，其准确性取决于手动注释数据的数量和质量。 
+我们准备好词嵌入后，就可以训练一个使用学习嵌入的深度神经网络模型来初始化嵌入层。 我们将嵌入层标记为不可训练、但不是必需的层。 词嵌入模型的训练无需监督，因此我们可以利用未标记的文本。 但是，实体识别模型的训练是受监督的学习任务，其准确性取决于手动批注数据的数量和质量。 
 
 
 #### <a name="21-feature-generation"></a>2.1. 特征生成
@@ -198,7 +198,7 @@ Word2Vec 是未标记的训练语料库中训练神经网络模型的词嵌入�
 
 请参阅[训练神经实体提取器](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/02_model_creation/ReadMe.md)。
 
-前馈神经网络体系结构存在的问题是，它们认为每个输入和输出都独立于其他输入和输出。 该体系结构不能对诸如机器翻译和实体提取之类的序列到序列标签任务进行建模。 循环神经网络模型克服了这个困难，因为它们可以将到目前为止计算的信息传递到下一个节点。 该属性在网络中被认为是有记忆的，因为它能够使用以前计算的信息，如下图所示：
+前馈神经网络体系结构存在的问题是，它们将每个输入和输出都视为独立于其他输入和输出。 该体系结构不能对诸如机器翻译和实体提取之类的序列到序列标签任务进行建模。 循环神经网络模型克服了这个困难，因为它们可以将到目前为止计算的信息传递到下一个节点。 该属性在网络中被认为是有记忆的，因为它能够使用以前计算的信息，如下图所示：
 
 ![RNN](./media/scenario-tdsp-biomedical-recognition/rnn-expanded.png)
 
@@ -244,7 +244,7 @@ Vanilla RNN 实际上会受到[梯度消失问题](https://en.wikipedia.org/wiki
 ![模型比较 5](./media/scenario-tdsp-biomedical-recognition/mc5.png)
 
 #### <a name="tensorflow-versus-cntk"></a>TensorFlow 与 CNTK
-所有报告的模型都使用 Kens 和作为后端的 TensorFlow 进行训练。 具有 CNTK 后端的 Keras 在完成此工作时不支持“反向”。 因此，为了比较，我们已经通过 CNTK 后端训练了单向 LSTM 模型，并将其与具有 TensorFlow 后端的单向 LSTM 模型进行了比较。 从[此处](https://docs.microsoft.com/cognitive-toolkit/using-cntk-with-keras)安装 CNTK 2.0 for Keras。 
+所有报告模型都使用 Keras 和作为后端的 TensorFlow 进行训练。 具有 CNTK 后端的 Keras 在完成此工作时不支持“反向”。 因此，为了比较，我们已经通过 CNTK 后端训练了单向 LSTM 模型，并将其与具有 TensorFlow 后端的单向 LSTM 模型进行了比较。 从[此处](https://docs.microsoft.com/cognitive-toolkit/using-cntk-with-keras)安装 CNTK 2.0 for Keras。 
 
 ![模型比较 6](./media/scenario-tdsp-biomedical-recognition/mc6.png)
 
@@ -266,7 +266,7 @@ Vanilla RNN 实际上会受到[梯度消失问题](https://en.wikipedia.org/wiki
 
 * Tomas Mikolov、Kai Chen、Greg Corrado 和 Jeffrey Dean。 2013a. Efficient estimation of word representations in vector space（有效评估矢量空间中的词表示形式）。 ICLR 论文集。
 * Tomas Mikolov、Ilya Sutskever、Kai Chen、Greg S Corrado 和 Jeff Dean。 2013b. Distributed representations of words and phrases and their compositionality（单词和短语的分布式表示形式及其组成）。 ICLR 论文集第 3111–3119 页。
-* Billy Chiu、 Gamal Crichton、Anna Korhonen 和 Sampo Pyysalo。 2016. [How to Train Good Word Embeddings for Biomedical NLP](http://aclweb.org/anthology/W/W16/W16-2922.pdf)（如何训练良好的生物医学 NLP 词嵌入模型），第十五届生物医学自然语言处理研讨会论文集第 166-174 页。
+* Billy Chiu、Gamal Crichton、Anna Korhonen 和 Sampo Pyysalo。 2016. 第十五届生物医学自然语言处理研讨会论文集第 166-174 页中的 [How to Train Good Word Embeddings for Biomedical NLP](http://aclweb.org/anthology/W/W16/W16-2922.pdf)（如何训练良好的生物医学 NLP 词嵌入模型）。
 * [词的矢量表示形式](https://www.tensorflow.org/tutorials/word2vec)
 * [循环神经网络](https://www.tensorflow.org/tutorials/recurrent)
 * [使用 Spark ml Word2Vec 遇到的问题](https://intothedepthsofdataengineering.wordpress.com/2017/06/26/problems-encountered-with-spark-ml-word2vec/)

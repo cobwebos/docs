@@ -1,11 +1,11 @@
 ---
-title: "用于部署 Windows HPC 群集的 PowerShell 脚本 | Microsoft Docs"
-description: "运行 PowerShell 脚本，以在 Azure 虚拟机中部署 Windows HPC Pack 2012 R2 群集"
+title: 用于部署 Windows HPC 群集的 PowerShell 脚本 | Microsoft Docs
+description: 运行 PowerShell 脚本，以在 Azure 虚拟机中部署 Windows HPC Pack 2012 R2 群集
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 286b2be8-2533-40df-b02a-26156b1f1133
 ms.service: virtual-machines-windows
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 85b125ab19671b61d2541af6378c95feb88bf952
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82aa2942a6a4fe6a3ac1c3ec2c0710e39f4282b1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-windows-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>使用 HPC Pack IaaS 部署脚本创建 Windows 高性能计算 (HPC) 群集
-运行 HPC Pack IaaS 部署 PowerShell 脚本，以便在 Azure 虚拟机中部署适用于 Windows 工作负荷的完整 HPC Pack 2012 R2 群集。 群集包含运行 Windows Server 和 Microsoft HPC Pack 的已加入 Active Directory 的头节点以及指定的其他 Windows 计算资源。 如果想要在 Azure 中部署适用于 Linux 工作负荷的 HPC Pack 群集，请参阅[使用 HPC Pack IaaS 部署脚本创建 Linux HPC 群集](../../linux/classic/hpcpack-cluster-powershell-script.md)。 还可以使用 Azure Resource Manager 模板来部署 HPC Pack 群集。 有关示例，请参阅[创建 HPC 群集](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)和[使用自定义计算节点映像创建 HPC 群集](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)。
+运行 HPC Pack IaaS 部署 PowerShell 脚本，以便在 Azure 虚拟机中部署适用于 Windows 工作负荷的完整 HPC Pack 2012 R2 群集。 群集包含运行 Windows Server 和 Microsoft HPC Pack 的已加入 Active Directory 的头节点以及指定的其他 Windows 计算资源。 如果想要在 Azure 中部署适用于 Linux 工作负荷的 HPC Pack 群集，请参阅[使用 HPC Pack IaaS 部署脚本创建 Linux HPC 群集](../../linux/classic/hpcpack-cluster-powershell-script.md)。 
 
 > [!IMPORTANT] 
-> 本文中介绍的 PowerShell 脚本使用经典部署模型在 Azure 中创建 Microsoft HPC Pack 2012 R2 群集。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
-> 此外，本文中所述的脚本不支持 HPC Pack 2016。
+> 本文中介绍的 PowerShell 脚本使用经典部署模型在 Azure 中创建 Microsoft HPC Pack 2012 R2 群集。 Microsoft 建议大多数新部署使用资源管理器模型。
+> 此外，本文中所述的脚本不支持 HPC Pack 2016。 有关用于 HPC Pack 2012 R2 和 HPC Pack 2016 的资源管理器模板的信息，请参阅 [Azure 中的 HPC Pack 群集部署选项](../hpcpack-cluster-options.md)。
 
 [!INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
@@ -261,8 +261,8 @@ ms.lasthandoff: 10/11/2017
   如果发生此错误，请对失败的部署再次运行该脚本。
 * **从 Azure 虚拟网络访问 Internet 时出现问题** - 如果使用部署脚本创建具有新域控制器的群集，或将头节点 VM 手动提升为域控制器，则将 VM 连接到 Internet 时可能会遇到问题。 如果已在域控制器上自动配置转发器 DNS 服务器，但此转发器 DNS 服务器未正确解析，则会出现此问题。
   
-    若要解决此问题，请登录到域控制器，删除转发器配置设置或配置一个有效的转发器 DNS 服务器。 要配置此设置，请在服务器管理器中单击 **工具** >
-    **DNS** 打开 DNS 管理器，并双击 **转发器**。
+    若要解决此问题，请登录到域控制器，删除转发器配置设置或配置一个有效的转发器 DNS 服务器。 要配置此设置，请在服务器管理器中单击“工具” >
+    “DNS”打开 DNS 管理器，并双击“转发器”。
 * **从计算密集型 VM 访问 RDMA 网络时出现问题** - 如果使用支持 RDMA 的大小（例如 A8 或 A9）添加 Windows Server 计算节点 VM 或代理节点 VM，则在将这些 VM 连接到 RDMA 应用程序网络时可能会遇到问题。 出现此问题的原因之一是，在将 VM 添加到群集时未正确安装 HpcVmDrivers 扩展。 例如，该扩展可能会停滞在安装状态。
   
     若要解决此问题，请先检查 VM 中扩展的状态。 如果该扩展未正确安装，请尝试从 HPC 群集中删除节点，再重新添加节点。 例如，可以通过使用 Add-HpcIaaSNode.ps1 脚本添加计算节点 VM。

@@ -1,11 +1,11 @@
 ---
-title: "如何在创建 VHD 期间对常见问题进行故障排除 | Microsoft Docs"
-description: "创建 VHD 时常见疑难解答问题和难题的答案。"
+title: 如何在创建 VHD 期间对常见问题进行故障排除 | Microsoft Docs
+description: 创建 VHD 时常见疑难解答问题和难题的答案。
 services: Azure Marketplace
-documentationcenter: 
-author: HannibalSII
-manager: 
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: ''
+editor: ''
 ms.assetid: e39563d8-8646-4cb7-b078-8b10ac35b494
 ms.service: marketplace
 ms.devlang: na
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 09/26/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: c4e88a9fbb15dd90d619b159ae1065dfacc1907f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 65361ad5bd7c3311c428b64b8476ec8f2ea2d17b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-troubleshoot-common-issues-encountered-during-vhd-creation"></a>如何对 VHD 创建期间遇到的常见问题进行故障排除
-提供本文的目的是在发布或管理虚拟机解决方案时，帮助可能遇到问题或有常见问题的 Azure 应用商店发布者和/或联合管理员。
+提供本文的目的是在发布或管理虚拟机解决方案时，帮助可能遇到问题或有常见问题的 Azure Marketplace 发布者和/或联合管理员。
 
 1. 如何更改主机名称？
    
@@ -32,13 +32,13 @@ ms.lasthandoff: 10/11/2017
    * [用于 Linux VM 的参考](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
 3. 如何生成新 ssh 证书？
    
-   请参阅以下链接： [https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+   请参阅以下链接：[https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
 4. 如何配置开放式的 VPN 证书？
    
    请参阅以下链接：[https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/](https://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/)
 5. 在 Microsoft Azure 虚拟机环境中运行 Microsoft 服务器软件（基础结构即服务）的支持策略是什么？
    
-   请参阅以下链接： [https://support.microsoft.com/kb/2721672](https://support.microsoft.com/kb/2721672)
+   请参阅以下链接：[https://support.microsoft.com/kb/2721672](https://support.microsoft.com/kb/2721672)
 6. 虚拟机有唯一标识符吗？
    
    Azure 在每台 VM 中为 Azure VM 唯一 ID 编码。 请参阅此博客和文档中的详细信息。
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 8. 如何使用上传到高级存储的 VHD 在 Azure 门户中创建 VM？
    
    我们尚不支持此功能。
-9. Azure 应用商店支持 32 位应用吗？
+9. Azure Marketplace 支持 32 位应用吗？
    
    有关支持策略的详细信息，请参阅以下链接：[https://support.microsoft.com/kb/2721672](https://support.microsoft.com/kb/2721672)
 10. 每当我尝试从 VHD 中创建图像时，都会在 PowerShell 中收到错误“VHD 已通过图像存储库注册为资源”。 我之前没有创建任何图像，也没在 Azure 中找到任何带有此名称的图像。 如何解决此问题？

@@ -1,28 +1,27 @@
 ---
-title: "使用 DMV 监视工作负荷 | Microsoft 文档"
-description: "了解如何使用 DMV 监视工作负荷。"
+title: 使用 DMV 监视工作负荷 | Microsoft 文档
+description: 了解如何使用 DMV 监视工作负荷。
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
-ms.assetid: 69ecd479-0941-48df-b3d0-cf54c79e6549
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 12/14/2017
+ms.date: 03/15/2018
 ms.author: joeyong;barbkess;kevin
-ms.openlocfilehash: 1895e9c6174dfb05212991040cc265b8cb6e0651
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7e25a1f8d807fa317e8ce246fd49de034182af96
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>使用 DMV 监视工作负荷
-本文介绍如何使用动态管理视图 (DMV) 在 Azure SQL 数据仓库中监视工作负荷及调查查询执行情况。
+本文介绍如何使用动态管理视图 (DMV) 监视工作负荷。 这包括调查 Azure SQL 数据仓库中的查询执行情况。
 
 ## <a name="permissions"></a>权限
 若要查询本文中的 DMV，需具有 VIEW DATABASE STATE 或 CONTROL 权限。 通常情况下，首选授予 VIEW DATABASE STATE 权限，因为该权限的限制要大得多。
@@ -72,7 +71,7 @@ WHERE   [label] = 'My Query';
 
 从前面的查询结果中，记下想要调查的查询的**请求 ID**。
 
-处于**已暂停**状态的查询是指因并发限制而排队的查询。 这些查询也出现在类型为 UserConcurrencyResourceType 的 sys.dm_pdw_waits 等待查询中。 有关并发限制的详细信息，请参阅[并发和工作负荷管理][Concurrency and workload management]。 查询也可能因其他原因（如对象锁定）处于等待状态。  如果查询正在等待资源，请参阅本文后面的[调查等待资源的查询][Investigating queries waiting for resources]。
+处于**已暂停**状态的查询是指因并发限制而排队的查询。 这些查询也出现在类型为 UserConcurrencyResourceType 的 sys.dm_pdw_waits 等待查询中。 有关并发限制的信息，请参阅[性能层](performance-tiers.md)或[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。 查询也可能因其他原因（如对象锁定）处于等待状态。  如果查询正在等待资源，请参阅本文后面的[调查等待资源的查询][Investigating queries waiting for resources]。
 
 为了简化在 sys.dm_pdw_exec_requests 表中查找查询的过程，请使用 [LABEL][LABEL] 将注释分配给可在 sys.dm_pdw_exec_requests 视图中查找的查询。
 
@@ -135,7 +134,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
 * 检查 *total_elapsed_time* 列，以查看是否有特定分布在数据移动上比其他分布花费了更多时间。
-* 对于长时间运行的分布，请检查 *rows_processed* 列，以查看从该分布移动的行数是否远远多于其他分布。 如果是这样，这可能表示底层数据的偏斜。
+* 对于长时间运行的分布，请检查 *rows_processed* 列，以查看从该分布移动的行数是否远远多于其他分布。 如果是这样，此发现可能指示基础数据倾斜。
 
 如果查询正在运行，则可以使用 [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] 检索特定分发中当前正在运行的 SQL 步骤的 SQL Server 计划高速缓存中的 SQL Server 估计计划。
 
@@ -174,9 +173,9 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 如果查询正在主动等待另一个查询中的资源，则状态将为 **AcquireResources**。  如果查询具有全部所需资源，则状态将为 **Granted**。
 
 ## <a name="monitor-tempdb"></a>监视 tempdb
-高 tempdb 使用率可能是性能不佳和内存不足问题的根本原因。 如果发现 tempdb 在查询执行期间达到其限制，请考虑缩放数据仓库。 下面介绍如何确定每个节点上每个查询的 tempdb 使用情况。 
+高 tempdb 使用率可能是性能不佳和内存不足问题的根本原因。 如果发现 tempdb 在查询执行期间达到其限制，请考虑缩放数据仓库。 以下信息说明如何确定每个节点上每个查询的 tempdb 使用情况。 
 
-创建以下视图，为 sys.dm_pdw_sql_requests 关联相应的节点 ID。 如此，即可通过 sys.dm_pdw_sql_requests 利用其他直通 DMV 并联接这些表。
+创建以下视图，为 sys.dm_pdw_sql_requests 关联相应的节点 ID。 有了节点 ID 后，即可使用其他直通 DMV 将这些表与 sys.dm_pdw_sql_requests 联接。
 
 ```sql
 -- sys.dm_pdw_sql_requests with the correct node id
@@ -200,7 +199,7 @@ CREATE VIEW sql_requests AS
 FROM sys.pdw_distributions AS d
 RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
 ```
-运行以下查询来监视 tempdb：
+若要监视 tempdb，请运行以下查询：
 
 ```sql
 -- Monitor tempdb
@@ -258,7 +257,7 @@ pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-size"></a>监视事务日志大小
-下面的查询将返回每个分布区的事务日志大小。 如果其中一个日志文件将达到 160 GB，则应考虑扩展实例或限制事务大小。 
+下面的查询将返回每个分布区的事务日志大小。 如果其中一个日志文件将达到 160 GB，则应考虑纵向扩展实例或限制事务大小。 
 ```sql
 -- Transaction log size
 SELECT
@@ -284,8 +283,8 @@ GROUP BY t.pdw_node_id, nod.[type]
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅[系统视图][System views]，了解 DMV 的详细信息。
-有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse best practices]
+有关 DMV 的详细信息，请参阅[系统视图][System views]。
+
 
 <!--Image references-->
 
@@ -294,7 +293,6 @@ GROUP BY t.pdw_node_id, nod.[type]
 [SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
 [System views]: ./sql-data-warehouse-reference-tsql-system-views.md
 [Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Concurrency and workload management]: ./sql-data-warehouse-develop-concurrency.md
 [Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
 
 <!--MSDN references-->

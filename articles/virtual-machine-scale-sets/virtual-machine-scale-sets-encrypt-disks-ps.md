@@ -1,102 +1,158 @@
 ---
-title: "Azure 虚拟机规模集加密磁盘 | Microsoft Docs"
-description: "了解如何对虚拟机规模集中附加的磁盘进行加密。"
+title: Azure 虚拟机规模集磁盘加密 | Microsoft Docs
+description: 了解如何使用 Azure PowerShell 来加密虚拟机规模集中的 VM 实例和附加的磁盘
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/09/2018
 ms.author: iainfou
-ms.openlocfilehash: dddcece9f7566961b256369330661e5dbd5d4665
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 856d4bc7dd636b3a2f3d072a10989cafd7efd6a6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set"></a>对虚拟机规模集中的操作系统和附加的数据磁盘进行加密
-Azure [虚拟机规模集](/azure/virtual-machine-scale-sets/)支持 Azure 磁盘加密 (ADE)。  可针对 Windows 和 Linux 虚拟机启用 Azure 磁盘加密，用于通过符合行业标准的加密技术来保护静态的规模集数据。 有关详细信息，请了解针对 Windows 和 Linux 虚拟机的 Azure 磁盘加密。
+虚拟机规模集支持 Azure 磁盘加密 (ADE)，可让用户使用行业标准的加密技术来保护静态数据。 可为 Windows 和 Linux 虚拟机规模集启用加密。 有关详细信息，请参阅[适用于 Windows 和 Linux 的 Azure 磁盘加密](../security/azure-security-disk-encryption.md)。
 
 > [!NOTE]
->  目前已公开发布针对虚拟机规模集的 Azure 磁盘加密，可在所有 Azure 公共区域使用。
+>  适用于虚拟机规模集的 Azure 磁盘加密目前以预览版提供，可在所有 Azure 公共区域中使用。 
+>
+> 不可在当前预览版中升级规模集 VM 和重置其映像。 只建议在测试环境中使用规模集加密预览版。 在需要升级 OS 映像的生产环境中，请不要启用磁盘加密预览版。
 
 下述项支持 Azure 磁盘加密：
 - 使用托管磁盘创建的规模集，本机（或未托管）磁盘规模集不受支持。
 - Windows 规模集中的 OS 和数据卷。 可对 Windows 规模集的 OS 和数据卷禁用加密功能。
 - Linux 规模集中的数据卷。 Linux 规模集的当前预览版中不支持 OS 磁盘加密。
 
-不可在当前预览版中升级规模集 VM 和重置其映像。 建议仅在测试环境中对虚拟机规模集预览版进行 Azure 磁盘加密。 请勿在预览版的生产环境中启用磁盘加密功能，因为你可能需要在加密的规模集中升级 OS 映像。
 
 ## <a name="prerequisites"></a>先决条件
-安装最新版本的 [Azure Powershell](https://github.com/Azure/azure-powershell/releases)，该版本包含加密命令。
+本文需要 Azure PowerShell 模块 5.3.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
-要对虚拟机规模集预览版使用 Azure 磁盘加密功能，需要使用以下 PowerShell 命令自行注册订阅： 
+使用 [Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature) 为虚拟机规模集磁盘加密预览版注册 Azure 订阅： 
 
 ```powershell
 Login-AzureRmAccount
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
-请稍等 10 分钟左右，直到以下命令返回“已注册”状态： 
+等待大约 10 分钟让 [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) 返回 *Registered* 状态，然后重新注册 `Microsoft.Compute` 提供程序： 
 
 ```powershell
 Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>创建 Azure Key Vault（针对磁盘加密启用）
-在包含规模集的订阅和区域新建一个 Key Vault，并设置“EnabledForDiskEncryption”访问策略。
+
+## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>创建支持磁盘加密的 Azure Key Vault
+Azure 密钥保管库可以存储能够在应用程序和服务中安全实现的密钥、机密或密码。 使用软件保护将加密密钥存储在 Azure 密钥保管库中，或者，可在已通过 FIPS 140-2 级别 2 标准认证的硬件安全模块 (HSM) 中导入或生成密钥。 这些加密密钥用于加密和解密附加到 VM 的虚拟磁盘。 可以控制这些加密密钥，以及审核对它们的使用。
+
+使用 [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault) 创建 Key Vault。 若要将 Key Vault 用于磁盘加密，请设置 *EnabledForDiskEncryption* 参数。 以下示例还会定义资源组名称、Key Vault 名称和位置的变量。 请提供自己的唯一 Key Vault 名称：
 
 ```powershell
-$rgname="windatadiskencryptiontest"
-$VaultName="encryptionvault321"
+$rgName="myResourceGroup"
+$vaultName="myuniquekeyvault"
+$location = "EastUS"
 
-New-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $rgName -Location southcentralus -EnabledForDiskEncryption
-``` 
-
-或者在包含规模集的订阅和区域中启用一个现有的 Key Vault 进行磁盘加密。
-
-```powershell
-$VaultName="encryptionvault321"
-Set-AzureRmKeyVaultAccessPolicy -VaultName $VaultName -EnabledForDiskEncryption
+New-AzureRmResourceGroup -Name $rgName -Location $location
+New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location -EnabledForDiskEncryption
 ```
+
+
+### <a name="use-an-existing-key-vault"></a>使用现有的密钥保管库
+仅当你要将现有的 Key Vault 用于磁盘加密时，才需要执行此步骤。 如果在上一部分中创建了 Key Vault，请跳过此步骤。
+
+可以使用 [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/AzureRM.KeyVault/Set-AzureRmKeyVaultAccessPolicy)，在规模集所在的同一订阅和区域中启用现有的 Key Vault 进行磁盘加密。 按如下所示，在 *$vaultName* 变量中定义现有 Key Vault 的名称：
+
+```powershell
+$vaultName="myexistingkeyvault"
+Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -EnabledForDiskEncryption
+```
+
+
+## <a name="create-a-scale-set"></a>创建规模集
+首先，使用 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置 VM 实例的管理员用户名和密码：
+
+```powershell
+$cred = Get-Credential
+```
+
+现在，使用 [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) 创建虚拟机规模集。 若要将流量分配到单独的 VM 实例，则还要创建负载均衡器。 负载均衡器包含的规则可在 TCP 端口 80 上分配流量，并允许 TCP 端口 3389 上的远程桌面流量，以及 TCP 端口 5985 上的 PowerShell 远程流量：
+
+```powershell
+$vmssName="myScaleSet"
+
+New-AzureRmVmss `
+    -ResourceGroupName $rgName `
+    -VMScaleSetName $vmssName `
+    -Location $location `
+    -VirtualNetworkName "myVnet" `
+    -SubnetName "mySubnet" `
+    -PublicIpAddressName "myPublicIPAddress" `
+    -LoadBalancerName "myLoadBalancer" `
+    -UpgradePolicy "Automatic" `
+    -Credential $cred
+```
+
 
 ## <a name="enable-encryption"></a>启用加密功能
-以下命令可使用同一资源组中的 Key Vault 对正在运行的规模集中的数据磁盘进行加密。 还可使用模板对正在运行的 [Windows 规模集](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)或 [Linux 规模集](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)中的磁盘进行加密。
+若要在规模集中加密 VM 实例，请先使用 [Get-AzureRmKeyVault](/powershell/module/AzureRM.KeyVault/Get-AzureRmKeyVault) 获取有关 Key Vault URI 和资源 ID 的某些信息。 然后，可以使用 [Set-AzureRmVmssDiskEncryptionExtension](/powershell/module/AzureRM.Compute/Set-AzureRmVmssDiskEncryptionExtension) 结合这些变量来启动加密过程：
 
 ```powershell
-$rgname="windatadiskencryptiontest"
-$VmssName="nt1vm"
-$DiskEncryptionKeyVaultUrl="https://encryptionvault321.vault.azure.net"
-$KeyVaultResourceId="/subscriptions/0754ecc2-d80d-426a-902c-b83f4cfbdc95/resourceGroups/windatadiskencryptiontest/providers/Microsoft.KeyVault/vaults/encryptionvault321"
+$diskEncryptionKeyVaultUrl=(Get-AzureRmKeyVault -ResourceGroupName $rgName -Name $vaultName).VaultUri
+$keyVaultResourceId=(Get-AzureRmKeyVault -ResourceGroupName $rgName -Name $vaultName).ResourceId
 
-Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $VmssName `
-    -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId –VolumeType Data
+Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vmssName `
+    -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId –VolumeType "All"
 ```
+
+出现提示时，请键入 *y*，以便继续对规模集 VM 实例执行磁盘加密过程。
+
 
 ## <a name="check-encryption-progress"></a>查看加密进度
-使用以下命令显示规模集的加密状态。
+若要检查磁盘加密状态，请使用 [Get-AzureRmVmssDiskEncryption](/powershell/module/AzureRM.Compute/Get-AzureRmVmssDiskEncryption)：
 
 ```powershell
-$rgname="windatadiskencryptiontest"
-$VmssName="nt1vm"
-Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssName
-
-Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssName -InstanceId "4"
+Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
+
+加密 VM 实例后，*EncryptionSummary* 代码会报告 *ProvisioningState/succeeded*，如以下示例输出所示：
+
+```powershell
+ResourceGroupName            : myResourceGroup
+VmScaleSetName               : myScaleSet
+EncryptionSettings           :
+  KeyVaultURL                : https://myuniquekeyvault.vault.azure.net/
+  KeyEncryptionKeyURL        :
+  KeyVaultResourceId         : /subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myuniquekeyvault
+  KekVaultResourceId         :
+  KeyEncryptionAlgorithm     :
+  VolumeType                 : All
+  EncryptionOperation        : EnableEncryption
+EncryptionSummary[0]         :
+  Code                       : ProvisioningState/succeeded
+  Count                      : 2
+EncryptionEnabled            : True
+EncryptionExtensionInstalled : True
+```
+
 
 ## <a name="disable-encryption"></a>禁用加密功能
-使用以下命令禁止对正在运行的虚拟机规模集进行加密。 还可使用模板禁止对正在运行的 [Windows 规模集](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)或 [Linux 规模集](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)进行加密。
+如果不再想要使用加密的 VM 实例磁盘，可以使用 [Disable-AzureRmVmssDiskEncryption](/powershell/module/AzureRM.Compute/Disable-AzureRmVmssDiskEncryption) 禁用加密，如下所示：
 
 ```powershell
-$rgname="windatadiskencryptiontest"
-$VmssName="nt1vm"
-Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssName
+Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
+
+
+## <a name="next-steps"></a>后续步骤
+在本文中，我们已使用 Azure PowerShell 加密了虚拟机规模集。 也可以使用 [Azure CLI 2.0](virtual-machine-scale-sets-encrypt-disks-cli.md)，或适用于 [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) 或 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox) 的模板。

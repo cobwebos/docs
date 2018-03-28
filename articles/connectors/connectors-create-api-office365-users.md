@@ -1,11 +1,11 @@
 ---
-title: "在逻辑应用中添加 Office 365 用户连接器 | Microsoft Docs"
-description: "使用 REST API 参数的 Office 365 用户连接器概述"
-services: 
-documentationcenter: 
-author: MandiOhlinger
+title: 在逻辑应用中添加 Office 365 用户连接器 | Microsoft Docs
+description: 使用 REST API 参数的 Office 365 用户连接器概述
+services: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: b2146481-9105-4f56-b4c2-7ae340cb922f
 ms.service: multiple
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 2e7827e32a03b6f6af46f5bc65f0ed74f3065f86
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 3d281bcb8e1d0ba4d1eb0b636bdd618340399898
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-office-365-users-connector"></a>Office 365 用户连接器入门
 连接到 Office 365 用户，获取配置文件、搜索用户等。 通过 Office 365 用户，可以：
@@ -36,7 +36,7 @@ ms.lasthandoff: 01/19/2018
 > 
 > 
 
-创建连接后，输入 Office 365 用户属性，如用户 ID。 本主题中的 **REST API 参考**介绍了这些属性。
+创建连接后，输入 Office 365 用户属性，如用户 ID。 本文中的 **REST API 参考**介绍了这些属性。
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 

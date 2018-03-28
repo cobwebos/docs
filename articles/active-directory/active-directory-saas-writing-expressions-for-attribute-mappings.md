@@ -1,8 +1,8 @@
 ---
-title: "在 Azure Active Directory 中编写属性映射的表达式 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 中自动预配 SaaS 应用对象期间，使用表达式映射将属性值转换为可接受的格式。"
+title: 在 Azure Active Directory 中编写属性映射的表达式 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 中自动预配 SaaS 应用对象期间，使用表达式映射将属性值转换为可接受的格式。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: b13c51cd-1bea-4e5e-9791-5d951a518943
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: 5549fb8f20ac2eb07b52b3b8e1c418873e467c93
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: f1cf83044eb4f001ba341cabd0771b267c3f996d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。
@@ -78,7 +78,7 @@ ms.lasthandoff: 01/16/2018
 | 名称 | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **separator** |必选 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
-| ** source1  … sourceN ** |必选，次数可变 |String |要联接在一起的字符串值。 |
+| **source1  … sourceN ** |必选，次数可变 |String |要联接在一起的字符串值。 |
 
 - - -
 ### <a name="mid"></a>Mid
@@ -108,7 +108,7 @@ ms.lasthandoff: 01/16/2018
 
 - - -
 ### <a name="replace"></a>将
-**函数：**<br> ObsoleteReplace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
+**函数：**<br> Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **说明：**<br>
 替换字符串中的值。 其工作方式取决于提供的参数：
@@ -119,13 +119,13 @@ ms.lasthandoff: 01/16/2018
 * 当提供 **oldValue** 和 **template** 时：
   
   * 将 **template** 中出现的所有 **oldValue** 都替换为 **source** 值
-* 当提供 **oldValueRegexPattern**、**oldValueRegexGroupName** 和 **replacementValue** 时：
+* 当提供 **regexPattern**、**regexGroupName**、**replacementValue** 时：
   
   * 将源字符串中与 oldValueRegexPattern 匹配的所有值都替换为 replacementValue
-* 当提供 **oldValueRegexPattern**、**oldValueRegexGroupName** 和 **replacementPropertyName** 时：
+* 当提供 **regexPattern**、**regexGroupName**、**replacementPropertyName** 时：
   
-  * 如果 **source** 具有值，则返回 **source**
-  * 如果 **source** 没有值，则使用 **oldValueRegexPattern** 和 **oldValueRegexGroupName** 从具有 **replacementPropertyName** 的属性中提取替换值。 替换值作为结果返回
+  * 如果 **source** 没有值，则返回 **source**
+  * 如果 **source** 有值，则使用 **regexPattern** 和 **regexGroupName** 从具有 **replacementPropertyName** 的属性中提取替换值。 替换值作为结果返回
 
 **参数：**<br> 
 
@@ -213,6 +213,17 @@ ms.lasthandoff: 01/16/2018
 * **输入** (givenName)：“John”
 * **输入** (surname)：“Doe”
 * **输出**：“JohDoe”
+
+### <a name="remove-diacritics-from-a-string-and-convert-to-lowercase"></a>从字符串中删除音调符号并转换为小写
+需要从字符串中删除特殊字符，并将大写字符转换为小写。
+
+**表达式：** <br>
+`Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace([givenName], , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , )`
+
+**示例输入/输出：** <br>
+
+* **输入** (givenName)：“Zoë”
+* **输出**：“zoe”
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>输出日期是一种特定格式的字符串
 需要以某种格式将日期发送到 SaaS 应用程序。 <br>

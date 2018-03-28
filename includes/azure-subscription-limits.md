@@ -8,7 +8,7 @@
 | 每个订阅的 SQL 数据库服务器数 |6 |150 |
 | 每个订阅的 DNS 服务器 |9 |100 |
 | 每个订阅的保留的 IP |20 |100 |
-| 每个订阅的托管服务证书数 |400 |400 |
+| 每个订阅的托管服务证书数 |199 |199 |
 | 每个订阅的[地缘组数](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) |256 |256 |
 
 

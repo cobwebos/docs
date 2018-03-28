@@ -1,33 +1,33 @@
 ---
-title: "加载 - Azure Data Lake Store 到 SQL 数据仓库 | Microsoft 文档"
-description: "了解如何使用 PolyBase 外部表将数据从 Azure Data Lake Store 加载到 Azure SQL 数据仓库中。"
+title: 加载 - Azure Data Lake Store 到 SQL 数据仓库 | Microsoft 文档
+description: 了解如何使用 PolyBase 外部表将数据从 Azure Data Lake Store 加载到 Azure SQL 数据仓库中。
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: barbkess
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
-ms.date: 12/14/2017
+ms.date: 3/14/2018
 ms.author: cakarst;barbkess
-ms.openlocfilehash: a2a7d15eb51374b828d1d641e0e6754115f7aaf6
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: f8cd293236255e227f80a42e78d25aebd8789bdd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>将数据从 Azure Data Lake Store 加载到 SQL 数据仓库中
 本文档提供了使用 PolyBase 将数据从 Azure Data Lake Store (ADLS) 加载到 SQL 数据仓库中所要执行的所有步骤。
-虽然能够使用外部表对 ADLS 中存储的数据运行即席查询，但最佳做法是，建议将数据导入 SQL 数据仓库。
+虽然能够使用外部表对 ADLS 中存储的数据运行即席查询，但是建议将数据导入 SQL 数据仓库以获得最佳性能。
 
 在本教程中，将了解如何：
 
-1. 创建要从 Azure Data Lake Store 加载的外部数据库对象。
+1. 创建需要从 Azure Data Lake Store 加载的数据库对象。
 2. 连接到 Azure Data Lake Store 目录。
 3. 将数据载入 Azure SQL 数据仓库。
 
@@ -42,9 +42,9 @@ ms.lasthandoff: 12/15/2017
 
 * SQL Server Management Studio 或 SQL Server Data Tools，若要下载 SSMS 并进行连接，请参阅[查询 SSMS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms)
 
-* 若要创建 Azure SQL 数据仓库，请遵循：https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
+* Azure SQL 数据仓库，若要创建一个，请按照以下网页操作：https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
 
-* 若要创建 Azure Data Lake Store，请遵循：https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
+* Azure Data Lake Store，若要创建一个，请按照以下网页操作：https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
 
 
 ###  <a name="create-a-credential"></a>创建凭据
@@ -82,7 +82,7 @@ WITH
 
 
 ### <a name="create-the-external-data-source"></a>创建外部数据源
-使用此 [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] 命令存储数据的位置。 要在 Azure 门户中查找 ADL URI，请导航到 Azure Data Lake Store，然后查看“概要”面板。
+使用此 [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] 命令存储数据的位置。 
 
 ```sql
 -- C: Create an external data source
@@ -99,8 +99,8 @@ WITH (
 ```
 
 ## <a name="configure-data-format"></a>配置数据格式
-若要从 ADLS 导入数据，需要指定外部文件格式。 此命令具有格式特定的选项，用于描述数据。
-请查看我们的 T-SQL 文档，获取 [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] 的完整列表
+若要从 ADLS 导入数据，需要指定外部文件格式。 此对象定义在 ADLS 中写入文件的方式。
+有关完整列表，请查看我们的 T-SQL 文档 [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT]（创建外部文件格式）
 
 ```sql
 -- D: Create an external file format
@@ -155,9 +155,9 @@ WITH
 外部表经过强类型化。 这意味着所引入的每行数据必须满足表架构定义。
 如果某个行不符合架构定义，则该行会被拒绝加载。
 
-使用 REJECT_TYPE 和 REJECT_VALUE 可以定义在最终表中必须存在的数据行数或数据的百分比。在加载过程中，如果达到拒绝值，则加载会失败。 行被拒绝的最常见原因是架构定义不匹配。 例如，当文件中的数据是字符串时，如果错误地为列指定了 int 的架构，则每一行都将无法加载。
+使用 REJECT_TYPE 和 REJECT_VALUE 可以定义在最终表中必须存在的数据行数或数据的百分比。 在加载过程中，如果达到拒绝值，则加载会失败。 行被拒绝的最常见原因是架构定义不匹配。 例如，当文件中的数据是字符串时，如果错误地为列指定了 int 的架构，则每一行都将无法加载。
 
- Azure Data Lake 存储使用基于角色的访问控制 (RBAC) 控制对数据的访问。 也就是说，服务主体必须拥有对位置参数中定义的目录以及最终目录和文件的子项的读取权限。 这样一来，PolyBase 可以进行身份验证，并加载读取相应数据。 
+ Azure Data Lake 存储使用基于角色的访问控制 (RBAC) 控制对数据的访问。 也就是说，服务主体必须拥有对位置参数中定义的目录以及最终目录和文件的子项的读取权限。 这样一来，PolyBase 就可以进行身份验证，并加载该数据。 
 
 ## <a name="load-the-data"></a>加载数据
 若要从 Azure Data Lake Store 加载数据，请使用 [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] 语句。 
@@ -201,7 +201,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 已成功地将数据载入 Azure SQL 数据仓库。 干得不错！
 
 ## <a name="next-steps"></a>后续步骤
-加载数据是使用 SQL 数据仓库开发数据仓库解决方案的第一步。 请在[表](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)和 [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops.md) 中查看我们的开发资源。
+加载数据是使用 SQL 数据仓库开发数据仓库解决方案的第一步。 请在[表](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)和 [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops) 中查看我们的开发资源。
 
 
 <!--Image references-->

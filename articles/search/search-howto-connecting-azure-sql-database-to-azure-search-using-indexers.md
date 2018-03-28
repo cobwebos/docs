@@ -1,24 +1,24 @@
 ---
-title: "使用索引器将 Azure SQL 数据库连接到 Azure 搜索 | Microsoft Docs"
-description: "了解如何使用索引器将数据从 Azure SQL 数据库提取到 Azure 搜索索引。"
+title: 使用索引器将 Azure SQL 数据库连接到 Azure 搜索 | Microsoft Docs
+description: 了解如何使用索引器将数据从 Azure SQL 数据库提取到 Azure 搜索索引。
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: chaosrealm
 manager: pablocas
-editor: 
+editor: ''
 ms.assetid: e9bbf352-dfff-4872-9b17-b1351aae519f
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/13/2017
+ms.date: 08/12/2018
 ms.author: eugenesh
-ms.openlocfilehash: 2ec1e02ccc8d8916f6d9d50ce787f2562f33fd7d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 5f85b81e894cba7354fb146d6e9a1aa987be7dc5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>使用索引器将 Azure SQL 数据库连接到 Azure 搜索
 
@@ -57,6 +57,9 @@ ms.lasthandoff: 01/09/2018
 | 数据类型是兼容的 | Azure 搜索索引中支持大多数但并非全部 SQL 类型。 有关列表，请参阅[映射数据类型](#TypeMapping)。 |
 | 不需要进行实时数据同步 | 索引器最多每五分钟可以为表重新编制索引。 如果数据频繁更改并且所做更改需要在数秒或数分钟内反映在索引中，建议使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) 或 [.NET SDK](search-import-data-dotnet.md) 来直接推送更新的行。 |
 | 可以进行增量索引编制 | 如果具有大型数据集并打算按计划运行索引器，则 Azure 搜索必须能够有效地标识新的、更改的或删除的行。 只有按需（而非按计划）编制索引时或者为少于 100,000 行的数据编制索引时，才允许非增量索引编制。 有关详细信息，请参阅下文中的[捕获更改和删除的行](#CaptureChangedRows)。 |
+
+> [!NOTE] 
+> Azure 搜索仅支持 SQL Server 身份验证。 如果需要支持 Azure Active Directory 密码身份验证，请为此 [UserVoice 建议](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica)投票。
 
 ## <a name="create-an-azure-sql-indexer"></a>创建 Azure SQL 索引器
 

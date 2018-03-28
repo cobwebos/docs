@@ -1,24 +1,18 @@
 ---
-title: "Azure 文件同步代理（预览版）发行说明 | Microsoft Docs"
-description: "Azure 文件同步代理（预览版）发行说明"
+title: Azure 文件同步代理（预览版）发行说明 | Microsoft Docs
+description: Azure 文件同步代理（预览版）发行说明。
 services: storage
-documentationcenter: 
 author: wmgries
-manager: klaasl
-editor: tamram
-ms.assetid: 
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 10/08/2017
+ms.topic: article
+ms.date: 03/12/2018
 ms.author: wgries
-ms.openlocfilehash: fabfb02a199744c63c3a2191589fd450cfdd0304
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b42287580078b4391ddbc5b8ff2835131c64236d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent-preview"></a>Azure 文件同步代理（预览版）发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -28,14 +22,25 @@ ms.lasthandoff: 03/08/2018
 ## <a name="supported-versions"></a>支持的版本
 以下版本是 Azure 文件同步代理支持的：
 
-| 版本 | 发行日期 | 支持结束日期 |
-|---------|--------------|------------------|
-| 2.1.0.0 | 2018 年 2 月 28 日 | 当前版本 |
-| 2.0.11.0 | 2018 年 2 月 8 日 | 当前版本 |
-| 1.1.0.0 | 2017 年 9 月 26 日 | 2018 年 7 月 30 日 |
+| 里程碑 | 代理版本号 | 发行日期 | 状态 |
+|----|----------------------|--------------|------------------|
+| 3 月更新汇总 | 2.2.0.0 | 2018 年 3 月 12 日 | 支持（建议的版本） |
+| 2 月更新汇总 | 2.1.0.0 | 2018 年 2 月 28 日 | 支持 |
+| 刷新 1 | 2.0.11.0 | 2018 年 2 月 8 日 | 支持 |
+| 1 月更新汇总 | 1.4.0.0 | 2018 年 1 月 8 日 | 支持截止至 2018 年 5 月 8 日<sup>1</sup> |
+| 11 月更新汇总 | 1.3.0.0 | 2017 年 11 月 30 日 | 支持截止至 2018 年 5 月 8 日<sup>1</sup> |
+| 10 月更新汇总 | 1.2.0.0 | 2017 年 10 月 31 日 | 支持截止至 2018 年 5 月 8 日<sup>1</sup> |
+| 初始预览版 | 1.1.0.0 | 2017 年 9 月 26 日 | 支持截止至 2018 年 5 月 8 日<sup>1</sup> |
+
+\[1\]：预览期间的 Azure 文件同步代理版本有意不符合更新策略。 从 Azure 文件同步声明正式版后的第一个代理发行版开始，强制执行更新策略。
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-2200"></a>代理版本 2.2.0.0
+以下发行说明适用于 Azure 文件同步代理版本 2.2.0.0（2018 年 3 月 12 日发布）。  这些说明是对针对版本 2.1.0.0 和 2.0.11.0 列出的发行说明的补充
+
+由于 FileSyncSvc 未停止，某些客户的 v2.1.0.0 安装会失败。 此更新可修复该问题。
 
 ## <a name="agent-version-2100"></a>代理版本 2.1.0.0
 以下发行说明适用于 2018 年 2 月 28 日发布的 Azure 文件同步代理版本 2.1.0.0。 这些说明附加到针对版本 2.0.11.0 列出的发行说明。

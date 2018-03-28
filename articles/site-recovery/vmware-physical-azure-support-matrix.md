@@ -1,18 +1,18 @@
 ---
-title: "使用 Azure Site Recovery 将 VMware VM 和物理服务器复制到 Azure 时的支持矩阵 | Microsoft Docs"
-description: "汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器复制到 Azure 时支持的操作系统和组件。"
+title: 使用 Azure Site Recovery 将 VMware VM 和物理服务器复制到 Azure 时的支持矩阵 | Microsoft Docs
+description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器复制到 Azure 时支持的操作系统和组件。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/15/2018
 ms.author: raynew
-ms.openlocfilehash: 413234204175b9361cd2a837e0b318bf5220f58f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c4fb466443e2f29fb79c3707ce142895f140f9a7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware 和物理服务器到 Azure 的复制支持矩阵
 
@@ -22,15 +22,15 @@ ms.lasthandoff: 03/09/2018
 
 **方案** | **详细信息**
 --- | ---
-**VMware VM** | 可以针对本地 VMware VM 执行到 Azure 的灾难恢复。 可以在 Azure 门户中部署此方案，也可使用 PowerShell 进行部署。
-**物理服务器** | 可以针对本地 Windows/Linux 物理服务器执行到 Azure 的灾难恢复。 可以在 Azure 门户中部署此方案。
+VMware VM | 可以针对本地 VMware VM 执行到 Azure 的灾难恢复。 可以在 Azure 门户中部署此方案，也可使用 PowerShell 进行部署。
+物理服务器 | 可以针对本地 Windows/Linux 物理服务器执行到 Azure 的灾难恢复。 可以在 Azure 门户中部署此方案。
 
-## <a name="on-premises-virtualizationhost-servers"></a>本地虚拟化/主机服务器
+## <a name="on-premises-virtualization-servers"></a>本地虚拟化服务器
 
 **服务器** | **要求** | **详细信息**
 --- | --- | ---
-**VMware** | vCenter Server 6.5、6.0、5.5 或 vSphere 6.5、6.0、5.5 | 建议使用 vCenter 服务器。
-**物理服务器** | 不适用
+VMware | vCenter Server 6.5、6.0、5.5 或 vSphere 6.5、6.0、5.5 | 建议使用 vCenter 服务器。
+物理 | 不适用
 
 
 ## <a name="replicated-machines"></a>复制的计算机
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/09/2018
 
 **组件** | **详细信息**
 --- | ---
-计算机设置 | 复制到 Azure 的计算机必须满足 [Azure 要求](#failed-over-azure-vm-requirements)。
+计算机设置 | 复制到 Azure 的计算机必须满足 [Azure 要求](#azure-vm-requirements)。
 Windows 操作系统 | 64 位 Windows Server 2016（服务器核心，带桌面体验的服务器）、Windows Server 2012 R2、Windows Server 2012、带 SP1（或更高版本）的 Windows Server 2008 R2。 不支持 Windows 2016 Nano Server。
 Linux 操作系统 | Red Hat Enterprise Linux：5.2 到 5.11、6.1 到 6.9、7.0 到 7.4 <br/><br/>CentOS：5.2 到 5.11、6.1 到 6.9、7.0 到 7.4 <br/><br/>Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7/Debian 8<br/><br/>Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核），或 Unbreakable Enterprise Kernel Release 3 (UEK3) <br/><br/>SUSE Linux Enterprise Server 11 SP3、SUSE Linux Enterprise Server 11 SP4 <br/><br/>不支持将复制计算机从 SP3 升级到 SP4。 若要升级，请禁用复制并在升级后重新启用它。
 
@@ -68,13 +68,13 @@ Linux 操作系统 | Red Hat Enterprise Linux：5.2 到 5.11、6.1 到 6.9、7.0
 
 **组件** | **支持**
 --- | ---
-文件系统 | ext3、ext4、ReiserFS（仅限 Suse Linux Enterprise Server）和 XFS
-卷管理器 | LVM2
-多路径软件 | 设备映射器
+文件系统 | ext3、ext4、ReiserFS（仅限 Suse Linux Enterprise Server）和 XFS。
+卷管理器 | LVM2。
+多路径软件 | 设备映射程序。
 半虚拟化存储设备 | 不支持半虚拟化驱动程序导出的设备。
 多队列块 IO 设备 | 不支持。
 具有 HP CCISS 存储控制器的物理服务器 | 不支持。
-目录 | 下列目录（如果设置为单独的分区/文件系统）必须位于源服务器上的同一 OS 磁盘：/ (root)、/boot、/usr、/usr/local、/var 和 /etc。</br></br> /boot 应位于磁盘分区上，而不是位于 LVM 卷上<br/><br/>
+目录 | 下列目录（如果设置为单独的分区/文件系统）都必须位于源服务器上的同一 OS 磁盘：/(root)、/boot、/usr、/usr/local、/var 和 /etc。</br></br> /boot 应位于磁盘分区上，而不是位于 LVM 卷上。<br/><br/>
 可用空间要求| /root 分区上的 2 GB <br/><br/> 安装文件夹中的 250 MB
 XFSv5 | 从版本 9.10 开始，移动服务支持 XFS 文件系统上的 XFSv5 功能，例如元数据校验和。 可使用 xfs_info 实用工具来检查分区的 XFS 超级块。 如果 ftyp 设置为 1，则表示正在使用 XFSv5 功能。
 
@@ -85,15 +85,15 @@ XFSv5 | 从版本 9.10 开始，移动服务支持 XFS 文件系统上的 XFSv5 
 **组件** | **支持**
 --- | ---
 主机网络 NIC 组合 | 对于 VMware VM，受支持。 <br/><br/>对于物理计算机复制，不支持。
-主机网络 VLAN | 是
-主机网络 IPv4 | 是
-主机网络 IPv6 | 否
-来宾/服务器网络 NIC 组合 | 否
-来宾/服务器网络 IPv4 | 是
-来宾/服务器网络 IPv6 | 否
-来宾/服务器网络静态 IP (Windows) | 是
-来宾/服务器网络静态 IP (Linux) | 是 <br/><br/>VM 配置为在故障回复时使用 DHCP。  
-来宾/服务器网络多个 NIC | 是
+主机网络 VLAN | 是的。
+主机网络 IPv4 | 是的。
+主机网络 IPv6 | 不会。
+来宾/服务器网络 NIC 组合 | 不会。
+来宾/服务器网络 IPv4 | 是的。
+来宾/服务器网络 IPv6 | 不会。
+来宾/服务器网络静态 IP (Windows) | 是的。
+来宾/服务器网络静态 IP (Linux) | 是的。 <br/><br/>VM 配置为在故障回复时使用 DHCP。
+来宾/服务器网络多个 NIC | 是的。
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure VM 网络（故障转移后）
@@ -113,11 +113,11 @@ Azure 虚拟网络服务终结点<br/><br/> （Azure 存储防火墙和虚拟网
 ## <a name="storage"></a>存储
 **组件** | **支持**
 --- | ---
-主机 NFS | VMware 支持<br/><br/> 物理服务器不支持。
+主机 NFS | VMware 支持<br/><br/> 物理服务器不支持
 主机 SAN (ISCSI) | 是
 主机多路径 (MPIO) | 是，针对以下项进行了测试：Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON
 来宾/服务器 VMDK | 是
-来宾/服务器 EFI/UEFI| 部分（只有 Windows Server 2012 及更高版本的 VMware 虚拟机可迁移到 Azure） </br></br> 请参阅表末尾的说明。
+来宾/服务器 EFI/UEFI| 部分（只有 Windows Server 2012 及更高版本的 VMware 虚拟机可迁移到 Azure） </br></br> 请参阅表末尾的说明
 来宾/服务器共享群集磁盘 | 否
 来宾/服务器加密磁盘 | 否
 来宾/服务器 NFS | 否
@@ -126,7 +126,7 @@ Azure 虚拟网络服务终结点<br/><br/> （Azure 存储防火墙和虚拟网
 > 1 TB 的来宾/服务器磁盘 | 是<br/><br/>最大 4,095 GB
 逻辑和物理扇区大小均为 4K 的来宾/服务器磁盘 | 是
 逻辑扇区大小为 4K 且物理扇区大小为 512 字节 的来宾/服务器磁盘 | 是
-具有 > 4 TB 的条带化磁盘的来宾/服务器卷 <br><br/>LVM 逻辑卷管理 | 是
+包含 > 4 TB 的条带化磁盘的来宾/服务器卷 <br><br/>逻辑卷管理 (LVM)| 是
 来宾/服务器 - 存储空间 | 否
 来宾/服务器热添加/删除磁盘 | 否
 来宾/服务器 - 排除磁盘 | 是
@@ -144,13 +144,13 @@ Azure 虚拟网络服务终结点<br/><br/> （Azure 存储防火墙和虚拟网
 
 **组件** | **支持**
 --- | ---
-LRS | 是
-GRS | 是
-RA-GRS | 是
+本地冗余存储 | 是
+异地冗余存储 | 是
+读取访问异地冗余存储 | 是
 冷存储 | 否
 热存储| 否
 块 Blob | 否
-静态加密 (SSE)| 是
+静态加密（存储服务加密）| 是
 高级存储 | 是
 导入/导出服务 | 否
 虚拟网络服务终结点<br/><br/> 在目标存储/缓存存储帐户（用来存储复制数据）上配置的存储防火墙和虚拟网络 | 否
@@ -161,7 +161,7 @@ RA-GRS | 是
 **功能** | **支持**
 --- | ---
 可用性集 | 是
-HUB | 是   
+HUB | 是
 托管磁盘 | 是
 
 ## <a name="azure-vm-requirements"></a>Azure VM 要求
@@ -170,20 +170,18 @@ HUB | 是
 
 **组件** | **要求** | **详细信息**
 --- | --- | ---
-**来宾操作系统** | 验证[支持的操作系统](#replicated machines)。 | 如果不支持，检查会失败。 
-**来宾操作系统体系结构** | 64 位 | 如果不支持，检查会失败。 
-**操作系统磁盘大小** | 最大 2048 GB | 如果不支持，检查会失败。 
-**操作系统磁盘计数** | 1 | 如果不支持，检查会失败。  
-**数据磁盘计数** | 64 或更少 | 如果不支持，检查会失败。  
-**数据磁盘 VHD 大小** | 最大 4,095 GB | 如果不支持，检查会失败。 
-**网络适配器** | 支持多个适配器。 | 
-**共享 VHD** | 不支持。 | 如果不支持，检查会失败。 
-**FC 磁盘** | 不支持。 | 如果不支持，检查会失败。 
-**硬盘格式** | VHD <br/><br/> VHDX | Azure 当前不支持 VHDX，但在故障转移后，Site Recovery 会自动将 VHDX 转换为 VHD。 故障回复到本地时，VM 将继续使用 VHDX 格式。
-**BitLocker** | 不支持 | 为计算机启用复制之前，必须先禁用 BitLocker。 | 
-**VM 名称** | 1 到 63 个字符<br/><br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
-**VM 类型** | 第 1 代、第 2 代（仅限 Windows） |  第 2 代 VM 必须具有基本 OS 磁盘（或包括格式化为 VHDX 的两个数据卷）和小于 300 GB 的磁盘空间 
-不支持 Linux 第 2 代 VM。 
+来宾操作系统 | 验证[支持的操作系统](#replicated machines)。 | 如果不支持，检查会失败。 
+来宾操作系统体系结构 | 64 位。 | 如果不支持，检查会失败。 
+操作系统磁盘大小 | 最大 2,048 GB。 | 如果不支持，检查会失败。 
+操作系统磁盘计数 | 1 | 如果不支持，检查会失败。  
+数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。  
+数据磁盘 VHD 大小 | 最大 4,095 GB | 如果不支持，检查会失败。 
+网络适配器 | 支持多个适配器。 | 
+共享 VHD | 不支持。 | 如果不支持，检查会失败。 
+FC 磁盘 | 不支持。 | 如果不支持，检查会失败。 
+BitLocker | 不支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。 | 
+VM 名称 | 1 到 63 个字符。<br/><br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
+
 
 ## <a name="vault-tasks"></a>保管库任务
 
@@ -197,8 +195,8 @@ HUB | 是
 
 **Name** | **说明** | **最新版本** | **详细信息**
 --- | --- | --- | --- | ---
-**Azure Site Recovery 统一安装程序** | 协调本地 VMware 服务器与 Azure 之间的通信 <br/><br/> 在本地 VMware 服务器上安装 | 9.12.4653.1（可从门户获取） | [最新功能和修复](https://aka.ms/latest_asr_updates)
-**移动服务** | 协调本地 VMware 服务器/物理服务器和 Azure/辅助站点之间的复制<br/><br/> 在想要复制的 VMware VM 或物理服务器上安装 | 9.12.4653.1（可从门户获取） | [最新功能和修复](https://aka.ms/latest_asr_updates)
+Azure Site Recovery 统一安装程序 | 协调本地 VMware 服务器与 Azure 之间的通信 <br/><br/> 在本地 VMware 服务器上安装 | 9.12.4653.1（可从门户获取） | [最新功能和修复](https://aka.ms/latest_asr_updates)
+移动服务 | 协调本地 VMware 服务器/物理服务器和 Azure/辅助站点之间的复制<br/><br/> 在想要复制的 VMware VM 或物理服务器上安装 | 9.12.4653.1（可从门户获取） | [最新功能和修复](https://aka.ms/latest_asr_updates)
 
 
 ## <a name="next-steps"></a>后续步骤

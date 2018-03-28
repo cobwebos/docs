@@ -1,6 +1,6 @@
 ---
-title: "配置 Service Fabric 应用程序的升级 | Microsoft 文档"
-description: "了解如何使用 Microsoft Visual Studio 来配置 Service Fabric 应用程序的升级设置。"
+title: 配置 Service Fabric 应用程序的升级 | Microsoft 文档
+description: 了解如何使用 Microsoft Visual Studio 来配置 Service Fabric 应用程序的升级设置。
 services: service-fabric
 documentationcenter: na
 author: mikkelhegn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: 314b29a56e4651222822f40a116af97a7372ff2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ff85991e87a4996890520a566b3909d331ed27f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>在 Visual Studio 中配置 Service Fabric 应用程序的升级
 Azure Service Fabric 的 Visual Studio 工具提供发布到本地或远程群集的升级支持。 在测试和调试期间将应用程序升级到较新的版本而不是替换应用程序的三种方案：
@@ -86,4 +86,4 @@ Service Fabric 应用程序中的每个服务可能有自身的运行状况策�
 </Policies>
 ```
 ## <a name="next-steps"></a>后续步骤
-有关部署应用程序的详细信息，请参阅[在 Azure Service Fabric 中部署现有应用程序](service-fabric-deploy-existing-app.md)。
+有关升级应用程序的详细信息，请参阅[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)。

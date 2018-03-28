@@ -1,24 +1,20 @@
 ---
-title: "使用 Chocolatey 进行 Azure 自动化 DSC 持续部署 | Microsoft Docs"
-description: "使用 Azure Automation DSC 和 Chocolatey 包管理器进行 DevOps 持续部署。  包含完整 JSON ARM 模板和 PowerShell 源代码的示例。"
+title: 使用 Chocolatey 进行 Azure 自动化 DSC 持续部署
+description: 使用 Azure Automation DSC 和 Chocolatey 包管理器进行 DevOps 持续部署。  包含完整 JSON ARM 模板和 PowerShell 源代码的示例。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: c0baa411-eb76-4f91-8d14-68f68b4805b6
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: na
-ms.date: 10/29/2016
-ms.author: golive
-ms.openlocfilehash: f9957d745ed910fbdcbeeee7d9ddb24a51da141b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: 8c1427bd40a6fd75a755c4709d88a4b8e4c55571
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>用例：使用 Automation DSC 和 Chocolatey 持续部署到虚拟机
 DevOps 领域中有许多工具可帮助你处理持续集成管道中的各个点。  Azure Automation Desired State Configuration (DSC) 是 DevOps 团队可以采用的新选项。  本文演示如何为 Windows 计算机设置持续部署 (CD)。  可以轻松扩展技术，在角色（例如网站）中按需要添加更多 Windows 计算机，还能从该角色扩展到其他角色。
@@ -164,7 +160,7 @@ New-ConfigurationScript.ps1：
 每当有某个版本通过 QA 和部署批准时，即会创建包，更新 nuspec 和 nupkg 并将其部署到 NuGet 服务器。  此外，还必须更新配置（上述步骤 4）以便与新版本号匹配。  配置必须发送到“拉”服务器并进行编译。  然后，依赖于该配置的 VM 将提取并安装更新。  其中的每项更新都很简单 - 只需一两行的 PowerShell 命令。  以 Visual Studio Team Services 为例，有些更新封装在可一起链接到内部版本内的生成任务中。  [本文](https://www.visualstudio.com/en-us/docs/alm-devops-feature-index#continuous-delivery)提供更多详细信息。  此 [GitHub 存储库](https://github.com/Microsoft/vso-agent-tasks)详细介绍了各种可用的生成任务。
 
 ## <a name="notes"></a>说明
-本用例开头的 VM 来自于 Azure 库的通用 Windows Server 2012 R2 映像。  可以从任何存储的映像开始，然后使用 DSC 配置对其进行调整。  不过，更改已刻入映像的配置要比使用 DSC 动态更新配置难得多。
+本用例开头的 VM 来自于 Azure 库的通用 Windows Server 2012 R2 映像。  可以从任何存储的映像开始，并使用 DSC 配置对其进行调整。  不过，更改已刻入映像的配置要比使用 DSC 动态更新配置难得多。
 
 将此技巧运用于 VM 时，不需要使用 ARM 模板和 VM 扩展。  即使 VM 不在 Azure 上，也能由 CD 管理。  只需在 VM 上安装 Chocolatey 并配置 LCM，以使其知道“拉”服务器的所在位置即可。  
 

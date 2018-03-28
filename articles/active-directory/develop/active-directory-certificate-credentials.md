@@ -1,11 +1,11 @@
 ---
-title: "Azure AD 中的证书凭据 |Microsoft 文档"
-description: "本文讨论注册和使用证书凭据进行应用程序身份验证"
+title: Azure AD 中的证书凭据 |Microsoft 文档
+description: 本文讨论注册和使用证书凭据进行应用程序身份验证
 services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: d05456912324c06a0895cd4cf049b60c9d126904
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 68de6295b84385f54eaadd6d24e8309a32fae9ce
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>应用程序身份验证的证书凭据
 
@@ -32,7 +32,7 @@ Azure Active Directory 允许应用程序使用自己的凭据进行身份验证
 #### <a name="header"></a>标头
 
 | 参数 |  备注 |
-| --- | --- | --- |
+| --- | --- |
 | `alg` | 应为 **RS256** |
 | `typ` | 应为 **JWT** |
 | `x5t` | 应为 X.509 证书 SHA-1 指纹 |
@@ -40,7 +40,7 @@ Azure Active Directory 允许应用程序使用自己的凭据进行身份验证
 #### <a name="claims-payload"></a>声明（有效负载）
 
 | 参数 |  备注 |
-| --- | --- | --- |
+| --- | --- |
 | `aud` | 受众：应为 **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** |
 | `exp` | 到期日期：令牌的到期日期。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌有效期到期的秒数。|
 | `iss` | 颁发者：应为 client_id（客户端服务的应用程序 ID） |
@@ -49,9 +49,11 @@ Azure Active Directory 允许应用程序使用自己的凭据进行身份验证
 | `sub` | 使用者：`iss` 应为 client_id（客户端服务的应用程序 ID） |
 
 #### <a name="signature"></a>签名
+
 使用证书计算签名，如 [JSON Web 令牌 RFC7519 规范](https://tools.ietf.org/html/rfc7519)中所述
 
 ### <a name="example-of-a-decoded-jwt-assertion"></a>已解码的 JWT 断言示例
+
 ```
 {
   "alg": "RS256",
@@ -73,6 +75,7 @@ Azure Active Directory 允许应用程序使用自己的凭据进行身份验证
 ```
 
 ### <a name="example-of-an-encoded-jwt-assertion"></a>已编码的 JWT 断言示例
+
 以下字符串是已编码的断言的示例。 仔细查看会发现由句点 (.) 分隔的三部分。
 第一部分编码标头，第二部分编码有效负载，最后一部分是使用前两部分内容中的证书进行计算的签名。
 ```
@@ -81,14 +84,17 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
 ### <a name="register-your-certificate-with-azure-ad"></a>使用 Azure AD 注册证书
+
 要将 Azure AD 中的证书凭据与客户端应用程序相关联，则需要编辑应用程序清单。
 拥有证书后需计算：
+
 - `$base64Thumbprint`，证书哈希的 base64 编码
 - `$base64Value`，证书原始数据的 base64 编码
 
-还需要提供 GUID 来标识应用程序清单中的密钥 (`$keyId`)
+还需要提供 GUID 来标识应用程序清单中的密钥 (`$keyId`)。
 
 在 Azure 应用注册客户端应用程序过程中，打开应用程序清单，并使用以下架构将 keyCredentials 属性替换为新的证书信息：
+
 ```
 "keyCredentials": [
     {

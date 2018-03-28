@@ -1,12 +1,12 @@
 ---
-title: "使用深度学习和 Azure 机器学习进行情绪分析 |Microsoft Docs"
-description: "如何使用深度学习和 Azure ML Workbench 进行情绪分析。"
+title: 使用深度学习和 Azure 机器学习进行情绪分析 |Microsoft Docs
+description: 如何使用深度学习和 Azure ML Workbench 进行情绪分析。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: miprasad
 manager: kristin.tolle
 editor: miprasad
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2018
 ms.author: miprasad
-ms.openlocfilehash: 3b0a5bfc911f3edf91367cbf4fde907cbf98e114
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ead8edcefa8705af82f4b223512a671c1245718a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sentiment-analysis-using-deep-learning-with-azure-machine-learning"></a>使用深度学习和 Azure 机器学习进行情绪分析
 
 情绪分析是自然语言处理领域中的已知任务。 假如有一组文本，目的是确定该文本的情绪。 此解决方案旨在使用深入学习从电影评论中预测情绪。
 
-该解决方案位于 https://github.com/Azure/MachineLearningSamples-SentimentAnalysis
+此解决方案位于 https://github.com/Azure/MachineLearningSamples-SentimentAnalysis
 
 ## <a name="link-to-the-gallery-github-repository"></a>库 GitHub 存储库的链接
 
@@ -68,8 +68,8 @@ ms.lasthandoff: 02/01/2018
 | 顺序| 文件名 | 相关的文件 |
 |--|-----------|------|
 | 1 | [`SentimentAnalysisDataPreparation.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisDataPreparation.md) | 'data/sampleReviews.txt' |
-| #N/A | [`SentimentAnalysisModelingKeras.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisModelingKeras.md) | 'SentimentExtraction.py' |
-| 4 | [`SentimentAnalysisOperationalization.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisOperationalization.md) | 'Operaionalization' |
+| 2 | [`SentimentAnalysisModelingKeras.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisModelingKeras.md) | 'SentimentExtraction.py' |
+| 3 | [`SentimentAnalysisOperationalization.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisOperationalization.md) | 'Operaionalization' |
 
 ## <a name="conclusion"></a>结束语
 

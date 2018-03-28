@@ -1,9 +1,9 @@
 ---
-title: "Service Fabric 编程模型概述 | Microsoft 文档"
-description: "Service Fabric 提供了两个框架用于构建服务：执行组件框架和服务框架。 它们在简单性和控制力方面具有截然不同的取舍。"
+title: Service Fabric 编程模型概述 | Microsoft 文档
+description: Service Fabric 提供了两个框架用于构建服务：执行组件框架和服务框架。 它们在简单性和控制力方面具有截然不同的取舍。
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: vturecek
 manager: timlt
 editor: vturecek
 ms.assetid: 974b2614-014e-4587-a947-28fcef28b382
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: a68db62f87bca5c641db310823588df6fb74f75e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6c4503b3e05f7d78f64a161f620b1fbd6cd38ab1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric 编程模型概述
-Service Fabric 提供了多种方法来编写和管理服务。 服务可以选择使用 Service Fabric API 来充分利用平台的功能和应用程序框架。 服务还可以是采用任何语言编写的任意已编译可执行程序，也可以是在 Service Fabric 群集上直接托管的容器中运行的代码。
+Service Fabric 提供了多种方法来编写和管理服务。 服务可以选择使用 Service Fabric API 来充分利用平台的功能和应用程序框架。 服务还可以是采用任何语言编写的任意已编译可执行程序，也可以是在 Service Fabric 群集上托管的容器中运行的代码。
 
 ## <a name="guest-executables"></a>来宾可执行文件
-[来宾可执行文件](service-fabric-deploy-existing-app.md)是（采用任何语言编写的）任意现有可执行文件，可在应用程序中作为服务运行。 来宾可执行文件不直接调用 Service Fabric SDK API。 但是，它们仍受益于平台提供的功能，如服务可发现性、自定义运行状况和负载报告（通过调用 Service Fabric 公开的 REST API）。 它们还具有完整的应用程序生命周期支持。
+[来宾可执行文件](service-fabric-guest-executables-introduction.md)是（采用任何语言编写的）任意现有可执行文件，可在应用程序中作为服务运行。 来宾可执行文件不直接调用 Service Fabric SDK API。 但是，它们仍受益于平台提供的功能，如服务可发现性、自定义运行状况和负载报告（通过调用 Service Fabric 公开的 REST API）。 它们还具有完整的应用程序生命周期支持。
 
 从部署第一个[来宾可执行文件应用程序](service-fabric-deploy-existing-app.md)开始使用来宾可执行文件。
 
@@ -50,7 +50,7 @@ ASP.NET Core 是新的开源跨平台框架，用于构建现代基于云的连�
 ## <a name="reliable-actors"></a>Reliable Actors
 Reliable Actor 框架在 Reliable Services 的基础上构建，是根据执行组件设计模式实现虚拟执行组件模式的应用程序框架。 Reliable Actor 框架使用称为执行组件的单线程执行的独立的计算单元和状态。 Reliable Actor 为执行组件提供内置通信，以及提供预设的状态暂留和扩展配置。
 
-由于 Reliable Actors 自身是在 Reliable Services 基础上构建的应用程序框架，所以它完全与 Service Fabric 平台集成，并且获益于平台所提供的完整功能集。
+由于 Reliable Actors 是在 Reliable Services 基础上构建的应用程序框架，因此它完全与 Service Fabric 平台集成，并且受益于平台所提供的完整功能集。
 
 [详细了解 Reliable Actors](service-fabric-reliable-actors-introduction.md)，或开始[编写首个 Reliable Actors 服务](service-fabric-reliable-actors-get-started.md)
 

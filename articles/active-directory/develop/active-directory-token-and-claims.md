@@ -1,11 +1,11 @@
 ---
-title: "了解 Azure AD 支持的不同令牌和声明类型 | Microsoft Docs"
-description: "本指南帮助你了解和评估 Azure Active Directory (AAD) 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 令牌中的声明"
+title: 了解 Azure AD 支持的不同令牌和声明类型 | Microsoft Docs
+description: 本指南帮助你了解和评估 Azure Active Directory (AAD) 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 令牌中的声明
 documentationcenter: na
-author: dstrockis
+author: hpsin
 services: active-directory
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/07/2017
-ms.author: dastrock
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3104b47d7ff8585142674b0ee545012f1e291ddd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ca8a34c0a29ffad21e6384feac055d7a292311a5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD 令牌参考
 Azure Active Directory (Azure AD) 在每个身份验证流的处理中发出多种安全令牌。 本文档说明每种令牌的格式、安全特征和内容。
@@ -50,7 +50,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 
 #### <a name="claims-in-idtokens"></a>Id_tokens 中的声明
 > [!div class="mx-codeBreakAll"]
-| JWT 声明 | Name | 说明 |
+| JWT 声明 | 名称 | 说明 |
 | --- | --- | --- |
 | `appid` |应用程序 ID |标识使用令牌访问资源的应用程序。 该应用程序可以自身名义或者代表用户进行操作。 应用程序 ID 通常表示应用程序对象，但它还可以表示 Azure AD 中的服务主体对象。 <br><br> **JWT 值示例**： <br> `"appid":"15CB020F-3984-482A-864D-1D92265E8268"` |
 | `aud` |目标受众 |令牌的目标接收方。 接收令牌的应用程序必须验证受众值是否正确，并拒绝任何针对其他受众的令牌。 <br><br> **SAML 值示例**： <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **JWT 值示例**： <br> `"aud":"https://contoso.com"` |
@@ -64,11 +64,11 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | `iat` |IssuedAt |存储颁发令牌的时间。 它通常用于度量令牌新鲜度。 <br><br> **SAML 值示例**： <br> `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` <br><br> **JWT 值示例**： <br> `"iat": 1390234181` |
 | `iss` |颁发者 |标识构造并返回令牌的安全令牌服务 (STS)。 在 Azure AD 返回的令牌中，颁发者是 sts.windows.net。 颁发者声明值中的 GUID 是 Azure AD 目录的租户 ID。 租户 ID 是目录的固定不变且可靠的标识符。 <br><br> **SAML 值示例**： <br> `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` <br><br> **JWT 值示例**： <br>  `"iss":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
 | `family_name` |姓氏 |按照 Azure AD 用户对象中的定义，指定用户的姓。 <br><br> **SAML 值示例**： <br> `<Attribute Name=” http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname”>`<br>`<AttributeValue>Miller<AttributeValue>` <br><br> **JWT 值示例**： <br> `"family_name": "Miller"` |
-| `unique_name` |Name |提供了一个用户可读值，用于标识令牌使用者。 此值不一定在租户中唯一，它旨在仅用于显示目的。 <br><br> **SAML 值示例**： <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”>`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>` <br><br> **JWT 值示例**： <br> `"unique_name": "frankm@contoso.com"` |
+| `unique_name` |名称 |提供了一个用户可读值，用于标识令牌使用者。 此值不一定在租户中唯一，它旨在仅用于显示目的。 <br><br> **SAML 值示例**： <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”>`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>` <br><br> **JWT 值示例**： <br> `"unique_name": "frankm@contoso.com"` |
 | `oid` |对象 ID |包含 Azure AD 中的对象的唯一标识符。 此值是固定不变的，无法重新分配或重复使用。 在对 Azure AD 进行的查询中，可使用对象 ID 来标识对象。 <br><br> **SAML 值示例**： <br> `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` <br><br> **JWT 值示例**： <br> `"oid":"528b2ac2-aa9c-45e1-88d4-959b53bc7dd0"` |
 | `roles` |角色 |表示直接和间接通过组成员身份授予使用者的所有应用程序角色，可用于实施基于角色的访问控制。 可通过应用程序清单的 `appRoles` 属性，对每个应用程序定义应用程序角色。 每个应用程序角色的 `value` 属性是角色声明中显示的值。 <br><br> **SAML 值示例**： <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`<br>`<AttributeValue>Admin</AttributeValue>` <br><br> **JWT 值示例**： <br> `“roles”: ["Admin", … ]` |
 | `scp` |范围 |表示向客户端应用程序授予的模拟权限。 默认权限为 `user_impersonation`。 受保护资源的所有者可在 Azure AD 中注册其他值。 <br><br> **JWT 值示例**： <br> `"scp": "user_impersonation"` |
-| `sub` |使用者 |标识令牌断言信息的主体，例如应用程序的用户。 此值不可变且不能重新分配或重复使用，因此可以使用它来安全地执行授权检查。 因为使用者始终会在 Azure AD 颁发的令牌中存在，我们建议在通用授权系统中使用此值。 <br> `SubjectConfirmation` 不是声明。 它描述如何对令牌的使用者进行验证。 `Bearer` 指示通过其拥有的令牌确认使用者。 <br><br> **SAML 值示例**： <br> `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>` <br><br> **JWT 值示例**： <br> `"sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"` |
+| `sub` |主题 |标识令牌断言信息的主体，例如应用程序的用户。 此值不可变且不能重新分配或重复使用，因此可以使用它来安全地执行授权检查。 因为使用者始终会在 Azure AD 颁发的令牌中存在，我们建议在通用授权系统中使用此值。 <br> `SubjectConfirmation` 不是声明。 它描述如何对令牌的使用者进行验证。 `Bearer` 指示通过其拥有的令牌确认使用者。 <br><br> **SAML 值示例**： <br> `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>` <br><br> **JWT 值示例**： <br> `"sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"` |
 | `tid` |租户 ID |一个不可变且不能重复使用的标识符，用于标识颁发令牌的目录租户。 可以使用此值访问多租户应用程序中特定于租户的目录资源。 例如，可以在调用 Graph API 时使用此值标识租户。 <br><br> **SAML 值示例**： <br> `<Attribute Name=”http://schemas.microsoft.com/identity/claims/tenantid”>`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>` <br><br> **JWT 值示例**： <br> `"tid":"cbb1a5ac-f33b-45fa-9bf5-f37db0fed422"` |
 | `nbf`, `exp` |令牌生存期 |定义令牌保持有效状态的时间间隔。 服务验证令牌的当前日期是否在令牌生存期内，如果不是，则拒绝令牌。 考虑到 Azure AD 与服务之间可能存在时钟时间差异（“时间偏差”），服务可能允许超出令牌生存期最多五分钟。 <br><br> **SAML 值示例**： <br> `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br><br> **JWT 值示例**： <br> `"nbf":1363289634, "exp":1363293234` |
 | `upn` |用户主体名称 |存储用户主体的用户名。<br><br> **JWT 值示例**： <br> `"upn": frankm@contoso.com` |
@@ -90,7 +90,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 
 刷新令牌属于多资源令牌。  也就是说，在一个资源的令牌请求期间收到的刷新令牌可以兑换完全不同资源的访问令牌。 为此，请在目标资源的请求中设置 `resource` 参数。
 
-刷新令牌对应用完全不透明。 它们属于长效令牌，但你不应将应用编写成预期刷新令牌将持续任何一段时间。  刷新令牌可能由于各种原因而随时失效。  让应用知道刷新令牌是否有效的唯一方式就是对 Azure AD 令牌终结点发出令牌请求以尝试兑换刷新令牌。
+刷新令牌对应用完全不透明。 它们属于长效令牌，但你不应将应用编写成预期刷新令牌将持续任何一段时间。  刷新令牌可能由于各种原因而随时失效 - 请参阅[令牌吊销](#token-revocation)了解这些原因。  让应用知道刷新令牌是否有效的唯一方式就是对 Azure AD 令牌终结点发出令牌请求以尝试兑换刷新令牌。
 
 使用刷新令牌兑换新的访问令牌时，会在令牌响应中收到新的刷新令牌。  应该保存新颁发的刷新令牌，并替换请求中使用的刷新令牌。  这会保证刷新令牌尽可能长期保持有效。
 
@@ -146,6 +146,24 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 * 等等...
 
 有关应用对 ID 令牌应该执行的声明验证的完整列表，请参阅 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation) 规范。 这些声明的预期值详细信息包含在前面的 [id_token](#id-tokens) 部分中。
+
+## <a name="token-revocation"></a>令牌吊销
+
+刷新令牌可能由于各种原因而随时失效或吊销。  这些原因主要分为两个类别：超时和吊销。 
+* 令牌超时
+  * MaxInactiveTime：如果在 MaxInactiveTime 指定的时间内未使用刷新令牌，刷新令牌将不再有效。 
+  * MaxSessionAge：如果 MaxAgeSessionMultiFactor 或 MaxAgeSessionSingleFactor 已设置为其默认值（“直到吊销”）以外的值，则在经过 MaxAgeSession* 中设置的时间后，将需要重新进行身份验证。  
+  * 示例:
+    * 租户的 MaxInactiveTime 为 5 天，用户去度假一周，因此 AAD 在 7 天内未看到用户发出的新令牌请求。  下次用户请求新令牌时，他们将看到其刷新令牌已被吊销，他们必须重新输入其凭据。 
+    * 敏感应用程序的 MaxAgeSessionSingleFactor 为 1 天。  如果用户在星期一登录，则在星期二（已经过 25 个小时后），他们将需要重新进行身份验证。  
+* 吊销
+  * 自愿密码更改：如果用户更改了其密码，他们可能需要在其某些应用程序中重新进行身份验证，具体取决于获得令牌的方式。  请参阅下面的注释，了解例外情况。 
+  * 非自愿密码更改：如果管理员强制用户更改其密码或重置密码，则使用其密码获得的用户令牌将会失效。  请参阅下面的注释，了解例外情况。 
+  * 安全漏洞：如果出现安全漏洞（例如本地存储的密码泄露），管理员可以撤消当前颁发的所有刷新令牌。  这将强制所有用户重新进行身份验证。 
+
+注意： 
+
+如果使用了非密码的身份验证方法（Windows Hello、Authenticator 应用、面部或指纹等生物识别）来获得令牌，更改用户的密码不会强制用户重新进行身份验证（但它会强制其 Authenticator 应用重新进行身份验证）。  这是因为其所选身份验证输入（例如面部）并未发生更改，因此可再次使用进行重新身份验证。
 
 ## <a name="sample-tokens"></a>示例令牌
 

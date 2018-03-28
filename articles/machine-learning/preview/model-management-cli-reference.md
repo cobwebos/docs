@@ -1,9 +1,9 @@
 ---
-title: "Azure 机器学习模型管理命令行接口参考 | Microsoft Docs"
-description: "Azure 机器学习模型管理命令行接口参考。"
+title: Azure 机器学习模型管理命令行接口参考 | Microsoft Docs
+description: Azure 机器学习模型管理命令行接口参考。
 services: machine-learning
-author: raymondl
-ms.author: raymondl, aashishb
+author: aashishb
+ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/08/2017
-ms.openlocfilehash: 219c61d1842369caadaf8e85dcb039242c37ef6c
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 27361c5b92a8748a026d457875fadfc1f3529076
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="model-management-command-line-interface-reference"></a>模型管理命令行接口参考
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/23/2018
 
 **创建模型管理帐户**
 
-使用以下命令创建模型管理帐户。 此帐户将用于计费。
+使用以下命令创建用于计费的模型管理帐户：
 
 `az ml account modelmanagement create --location [Azure region e.g. eastus2] --name [new account name] --resource-group [resource group name to store the account in]`
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 02/23/2018
 
 `az ml env setup [-c] --location [location of environment resources] --name[name of environment]`
 
-此项使用订阅中创建的存储帐户、ACR 注册表和 App Insights 服务初始化 Azure 机器学习环境。 默认情况下，仅当未指定任何标志时，才会为本地部署（无 ACS）初始化环境。 如果需要缩放服务，请指定 `--cluster`（或 `-c`）标志以创建 ACS 群集。
+此命令使用订阅中创建的存储帐户、ACR 注册表和 App Insights 服务初始化 Azure 机器学习环境。 默认情况下，仅当未指定任何标志时，才会为本地部署（无 ACS）初始化环境。 如果需要缩放服务，请指定 `--cluster`（或 `-c`）标志以创建 ACS 群集。
 
 命令详细信息：
 
@@ -89,12 +89,12 @@ ms.lasthandoff: 02/23/2018
     --cluster -c                   : Flag to provision ACS cluster. Off by default; specify this to force an ACS cluster deployment.
     --key-pem                      : Path to .pem file with certificate key.
     --master-count -m              : Number of master nodes to provision in the ACS cluster. Acceptable values: 1, 3, 5. Default: 1.
-    --resource-group -g            : Resource group in which to create compute resource. Will be created if it does not exist.
-                                     If not provided, resource group will be created with 'rg' appended to 'name.'.
+    --resource-group -g            : Resource group in which to create compute resource. Is created if it does not exist.
+                                     If not provided, resource group is created with 'rg' appended to 'name.'.
     --service-principal-app-id -a  : App ID of service principal to use for configuring ML compute.
     --service-principal-password -p: Password associated with service principal.
     --storage -s                   : ARM ID of storage account to associate with this environment.
-    --yes -y                       : Flag to answer 'yes' to any prompts. Command will fail if user is not logged in.
+    --yes -y                       : Flag to answer 'yes' to any prompts. Command fails if user is not logged in.
 
 全局参数
 ```
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/23/2018
 
 **创建清单**
 
-创建模型的清单文件。 
+以下命令创建模型的清单文件。 
 
 `az ml manifest create --manifest-name [your new manifest name] -f [path to code file] -r [runtime for the image, e.g. spark-py]`
 
@@ -289,7 +289,7 @@ ms.lasthandoff: 02/23/2018
 
 请注意用于附加依赖项的 `-d` 标志：如果传递未捆绑（zip、tar 等）的目录的名称，则该目录会自动打包成 tar 文件并传递下去，然后自动在另一端解除捆绑。 
 
-如果传入已捆绑的目录，我们会将其视为文件，并将其按原样传递。 它不会自动解除捆绑。应在代码中进行相关处理。
+如果传入已捆绑的目录，我们会将该目录视为文件，并将其按原样传递。 它会自动解除捆绑；应在代码中进行相关处理。
 
 **获取服务详细信息**
 

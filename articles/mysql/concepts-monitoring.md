@@ -1,6 +1,6 @@
 ---
-title: "在 Azure Database for MySQL 中进行监视"
-description: "本文介绍了用于对 Azure Database for MySQL 进行监视并发出警报的指标，包括 CPU、限制、存储和连接统计信息。"
+title: 在 Azure Database for MySQL 中进行监视
+description: 本文介绍了用于对 Azure Database for MySQL 进行监视并发出警报的指标，包括 CPU、存储和连接统计信息。
 services: mysql
 author: rachel-msft
 ms.author: raagyema
@@ -8,22 +8,18 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 7ecfb8151cd81fb588f964fdfa3a74aacab24874
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/15/2018
+ms.openlocfilehash: c3cba00077fd65239382d6fdd98e73a55f926b3b
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行监视
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for MySQL 提供了各种指标来帮助用户深入了解为 MySQL 服务器提供支持的资源的行为。 
 
 ## <a name="metrics"></a>度量值
-所有 Azure 指标的频率都是一分钟，每个指标提供 30 天的历史记录。 
-
-可针对指标配置警报。 有关分步指南，请参阅[如何设置警报](howto-alert-on-metric.md)。 
-
-其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+所有 Azure 指标的频率都是一分钟，每个指标提供 30 天的历史记录。 可针对指标配置警报。 有关分步指南，请参阅[如何设置警报](howto-alert-on-metric.md)。 其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
 
 ### <a name="list-of-metrics"></a>指标列表
 这些指标适用于 Azure Database for MySQL：
@@ -31,8 +27,6 @@ ms.lasthandoff: 02/28/2018
 |指标|指标显示名称|单位|说明|
 |---|---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用的 CPU 百分比。|
-|compute_limit|计算单位限制|Count|此服务器的最大计算单位数|
-|compute_consumption_percent|计算单位百分比|百分比|所用计算单位数占服务器最大计算单位数的百分比。|
 |memory_percent|内存百分比|百分比|使用的内存百分比。|
 |io_consumption_percent|IO 百分比|百分比|使用的 IO 百分比。|
 |storage_percent|存储百分比|百分比|所用存储占服务器最大存储的百分比。|
@@ -43,5 +37,5 @@ ms.lasthandoff: 02/28/2018
 
 
 ## <a name="next-steps"></a>后续步骤
-- 有关分步指南，请参阅[如何设置警报](howto-alert-on-metric.md)。 
+- 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-on-metric.md)。
 - 若要深入了解如何使用 Azure 门户、REST API 或 CLI 访问和导出指标，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
