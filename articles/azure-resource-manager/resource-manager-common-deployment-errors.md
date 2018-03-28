@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2cf31b32e02923aa573d5586b8ca24bf30b7d97b
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f251fe11c43dc4b3f29c70f937f5bfcb6af6c44e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure 资源管理器时的常见 Azure 部署错误
 
@@ -38,6 +38,7 @@ ms.lasthandoff: 03/12/2018
 | 冲突 | 请求的操作在资源的当前状态下不受允许。 例如，仅当创建 VM 或该 VM 已解除分配时，才允许调整磁盘大小。 | |
 | DeploymentActive | 等待此资源组上的并发部署完成。 | |
 | DeploymentFailed | DeploymentFailed 错误为常规错误，不提供解决错误所需的详细信息。 请查看错误代码的错误详情，其中提供了详细信息。 | [查找错误代码](#find-error-code) |
+| DeploymentQuotaExceeded | 如果达到每个资源组的部署数限制 800，则会从历史记录中删除不再需要的部署。 可以使用 Azure CLI 的 [az group deployment delete](/cli/azure/group/deployment#az_group_deployment_delete) 或 PowerShell 中的 [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) 删除历史记录中的条目。 从部署历史记录中删除条目不会影响部署资源。 | |
 | DnsRecordInUse | DNS 记录名称必须唯一。 提供不同的名称，或修改现有记录。 | |
 | ImageNotFound | 检查 VM 映像设置。 |  |
 | InUseSubnetCannotBeDeleted | 如果尝试更新资源，但已通过删除并创建资源处理了请求，则可能会遇到此错误。 确保指定所有未更改值。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -49,10 +50,13 @@ ms.lasthandoff: 03/12/2018
 | InvalidResourceNamespace | 检查在 **type** 属性中指定的资源命名空间。 | [模板参考](/azure/templates/) |
 | InvalidResourceReference | 资源尚不存在，或错误地引用了它。 检查是否需要添加依赖项。 验证所用的 **reference** 函数是否包含方案所需的参数。 | [解决依赖项问题](resource-manager-not-found-errors.md) |
 | InvalidResourceType | 检查在 **type** 属性中指定的资源类型。 | [模板参考](/azure/templates/) |
+| InvalidSubscriptionRegistrationState | 将订阅注册到资源提供程序。 | [解决注册问题](resource-manager-register-provider-errors.md) |
 | InvalidTemplate | 检查模板语法是否有错误。 | [解决模板无效问题](resource-manager-invalid-template-errors.md) |
+| InvalidTemplateCircularDependency | 删除不必要的依赖项。 | [解决循环依赖项](resource-manager-invalid-template-errors.md#circular-dependency) |
 | LinkedAuthorizationFailed | 检查帐户所属的租户是否与要部署到的资源组所属的租户相同。 | |
 | LinkedInvalidPropertyId | 无法正确解析资源的资源 ID。 检查是否为资源 ID 提供了所有必需值，包括订阅 ID、资源组名称、资源类型、父资源名称（如果需要）和资源名称。 | |
 | LocationRequired | 提供资源的位置。 | [设置位置](resource-manager-templates-resources.md#location) |
+| MismatchingResourceSegments | 请确保嵌套资源的名称和类型中包含正确数量的段。 | [解决资源段](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
 | MissingRegistrationForLocation | 检查资源提供程序注册状态和支持的位置。 | [解决注册问题](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | 将订阅注册到资源提供程序。 | [解决注册问题](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | 检查资源提供程序注册状态。 | [解决注册问题](resource-manager-register-provider-errors.md) |
@@ -73,6 +77,8 @@ ms.lasthandoff: 03/12/2018
 | StorageAccountAlreadyTaken | 为存储帐户提供唯一名称。 | [解析存储帐户名称](resource-manager-storage-account-name-errors.md) |
 | StorageAccountNotFound | 检查尝试使用的存储帐户的订阅、资源组和名称。 | |
 | SubnetsNotInSameVnet | 一个虚拟机只能有一个虚拟网络。 部署多个 NIC 时，请确保它们属于同一虚拟网络。 | [多个 NIC](../virtual-machines/windows/multiple-nics.md) |
+| TemplateResourceCircularDependency | 删除不必要的依赖项。 | [解决循环依赖项](resource-manager-invalid-template-errors.md#circular-dependency) |
+| TooManyTargetResourceGroups | 减少单个部署的资源组数。 | [跨资源组部署](resource-manager-cross-resource-group-deployment.md) |
 
 ## <a name="find-error-code"></a>查找错误代码
 

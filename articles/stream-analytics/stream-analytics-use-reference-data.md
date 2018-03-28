@@ -1,10 +1,10 @@
 ---
-title: "在流分析中使用引用数据和查找表 |Microsoft 文档"
-description: "在流分析查询中使用引用数据"
-keywords: "查找表, 引用数据"
+title: 在流分析中使用引用数据和查找表 |Microsoft 文档
+description: 在流分析查询中使用引用数据
+keywords: 查找表, 引用数据
 services: stream-analytics
-documentationcenter: 
-author: samacha
+documentationcenter: ''
+author: jseb225
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 06103be5-553a-4da1-8a8d-3be9ca2aff54
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 438ec565f3c6e06ab7ec92cf1bbfbdde88f99b6d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: f7366b4b7d78add47ebab4a6fc72717107814f1f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="using-reference-data-or-lookup-tables-in-a-stream-analytics-input-stream"></a>在流分析的输入流中使用引用数据或查找表
 引用数据（也称为查找表）是一个静态的或本质上缓慢变化的有限数据集，用于执行查找或与数据流相关联。 为了在 Azure 流分析作业中利用引用数据，通常会在查询中使用[引用数据联合](https://msdn.microsoft.com/library/azure/dn949258.aspx)。 流分析使用 Azure Blob 存储作为引用数据的存储层，并且通过 Azure 数据工厂，可以从[基于云和本地的任意数量的数据存储](../data-factory/copy-activity-overview.md)将引用数据转换和/或复制到 Azure Blob 存储，以用作引用数据。 引用数据建模为 blob 序列（在输入配置中定义），这些 blob 按blob 名称中指定的日期/时间顺序升序排列。 它**仅**支持使用**大于**序列中最后一个 blob 指定的日期/时间的日期/时间添加到序列的末尾。
@@ -95,7 +95,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="tips-on-refreshing-your-reference-data"></a>有关刷新引用数据的提示
 1. 覆盖引用数据 blob 不会导致流分析重新加载 blob，并且在某些情况下，它可能会导致作业失败。 更改引用数据的建议方法是使用作业输入中定义的相同容器和路径模式添加新的 blob，并且使用的日期/时间**大于**序列中最后一个 blob 指定的日期/时间。
 2. 引用数据 blob 并**不**按 blob 的“上次修改”时间排序，而是按 blob 名称中使用 {date} 和 {time} 替换项指定的日期和时间排序。
-3. 有时，作业必须按时返回，因此不能变更或删除引用数据 blob。
+3. 为了避免必须列出大量 blob，请考虑删除不再对其进行处理的非常旧的 blob。 请注意，在某些情况下（如重新启动），ASA 可能需要重新处理一小部分 blob。
 
 ## <a name="get-help"></a>获取帮助
 如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)

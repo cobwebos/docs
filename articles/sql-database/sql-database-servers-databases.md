@@ -2,24 +2,18 @@
 title: 创建并管理 Azure SQL 服务器和数据库 | Microsoft Docs
 description: 了解 Azure SQL 数据库服务器和数据库的概念，以及如何创建和管理服务器和数据库。
 services: sql-database
-documentationcenter: na
 author: CarlRabeler
-manager: jhubbard
-editor: ''
-ms.assetid: ''
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
-ms.date: 02/28/2018
+ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 0e2dabc5cc0b816f2623fce5f8fb09a7004039c7
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 2e05be2131ca89a084da5eeffc0b025b38432a8d
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>创建并管理 Azure SQL 数据库服务器和数据库
 
@@ -27,7 +21,7 @@ SQL 数据库提供了三种类型的数据库：
 
 - 可以使用定义的一组[用于不同工作负载的计算和存储资源](sql-database-service-tiers.md)，在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建单个数据库。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。
 - 使用定义的一组[用于不同工作负载的计算和存储资源](sql-database-service-tiers.md)（这些计算和存储资源由池中的所有数据库共享）在 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建数据库，作为[数据库池](sql-database-elastic-pool.md)的部分。 Azure SQL 数据库与在特定 Azure 区域内创建的 Azure SQL 数据库逻辑服务器相关联。
-- 使用定义的一组用于服务器实例上所有数据库的计算和存储资源，在 [Azure 资源](../azure-resource-manager/resource-group-overview.md)组中创建 [SQL 服务器的实例](sql-database-managed-instance.md)。 一个托管实例同时包含系统和用户数据库。 使用托管实例可将数据库即时转移到完全托管的 PaaS，而无需重新设计应用程序。 托管实例与本地 SQL Server 编程模型高度兼容，支持大多数 SQL Server 功能，并支持随附的工具和服务。  
+- 使用定义的一组用于服务器实例上所有数据库的计算和存储资源，在 [Azure 资源](../azure-resource-manager/resource-group-overview.md)组中创建 [SQL 服务器的实例](sql-database-managed-instance.md)（托管实例）。 一个托管实例同时包含系统和用户数据库。 使用托管实例可将数据库即时转移到完全托管的 PaaS，而无需重新设计应用程序。 托管实例与本地 SQL Server 编程模型高度兼容，支持大多数 SQL Server 功能，并支持随附的工具和服务。  
 
 Microsoft Azure SQL 数据库支持表格格式数据流 (TDS) 协议客户端 7.3 版或更高版本，并仅允许加密的 TCP/IP 连接。
 
@@ -146,7 +140,7 @@ Azure 数据库逻辑服务器：
 |[az group create](/cli/azure/group#az_group_create)|创建资源组|
 |[az sql server create](/cli/azure/sql/server#az_sql_server_create)|创建服务器|
 |[az sql server list](/cli/azure/sql/server#az_sql_server_list)|列出服务器|
-|[az sql server list-usages](/cli/azure/sql/server#az_sql_server_list-usages)|返回服务器使用情况|
+|[az sql server list-usages](/cli/azure/sql/server#az_sql_server_list_usages)|返回服务器使用情况|
 |[az sql server show](/cli/azure/sql/server#az_sql_server_show)|获取服务器|
 |[az sql server update](/cli/azure/sql/server#az_sql_server_update)|更新服务器|
 |[az sql server delete](/cli/azure/sql/server#az_sql_server_delete)|删除服务器|
@@ -202,13 +196,12 @@ Azure 数据库逻辑服务器：
 |[Servers - List](/rest/api/sql/servers/list)|返回服务器的列表。|
 |[Servers - List By Resource Group](/rest/api/sql/servers/listbyresourcegroup)|返回资源组中服务器的列表。|
 |[Servers - Update](/rest/api/sql/servers/update)|更新现有服务器。|
-|[Servers - Sql](/rest/api/sql/servers%20-%20sql)|判断是否能使用指定名称创建资源。|
 |[数据库 - 创建或更新](/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
 |[数据库 - 获取](/rest/api/sql/databases/get)|获取数据库。|
 |[数据库 - 按弹性池获取](/rest/api/sql/databases/getbyelasticpool)|获取弹性池内的数据库。|
 |[数据库 - 按推荐的弹性池获取](/rest/api/sql/databases/getbyrecommendedelasticpool)|获取推荐弹性池内的数据库。|
 |[数据库 - 按弹性池列出](/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
-|[数据库 - 按推荐的弹性池列出](/rest/api/sql/databases/listbyrecommendedelasticpool)|返回推荐弹性池内的数据库列表。|
+|[数据库 - 按推荐的弹性池列出](/rest/api/sql/databases/listbyrecommendedelasticpool)|返回推荐的弹性池内的数据库列表。|
 |[数据库 - 按服务器列出](/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
 |[数据库 - 更新](/rest/api/sql/databases/update)|更新现有的数据库。|
 |[Firewall Rules - Create Or Update](/rest/api/sql/firewallrules/createorupdate)|创建或更新防火墙规则。|

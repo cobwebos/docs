@@ -1,27 +1,20 @@
 ---
-title: "适用于 Azure SQL 数据库的虚拟网络服务终结点和规则 | Microsoft Docs"
-description: "将子网标记为虚拟网络服务终结点。 然后将终结点标记为适用于 Azure SQL 数据库 ACL 的虚拟网络规则。 然后，SQL 数据库就会接受来自子网上所有虚拟机和其他节点的通信。"
+title: 适用于 Azure SQL 数据库的虚拟网络服务终结点和规则 | Microsoft Docs
+description: 将子网标记为虚拟网络服务终结点。 然后将终结点标记为适用于 Azure SQL 数据库 ACL 的虚拟网络规则。 然后，SQL 数据库就会接受来自子网上所有虚拟机和其他节点的通信。
 services: sql-database
-documentationcenter: 
+ms.service: sql-database
 author: MightyPen
 manager: craigg
-editor: 
-tags: 
-ms.assetid: 
-ms.service: sql-database
 ms.custom: VNet Service endpoints
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
-ms.date: 02/20/2018
+ms.date: 03/15/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: c1bb1698723af60544b89f4b3168c44a32d31afd
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7622c6e6ffb1410cc2cbd42f6ac3601d281832da
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>使用适用于 Azure SQL 数据库的虚拟网络服务终结点和规则
 
@@ -45,7 +38,7 @@ ms.lasthandoff: 02/24/2018
 
 虚拟网络：可以让虚拟网络与 Azure 订阅相关联。
 
-**子网：**虚拟网络包含子网。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
+****子网：虚拟网络包含子网。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
 虚拟网络服务终结点：[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。
 
@@ -237,6 +230,12 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 PowerShell 脚本也可创建虚拟网络规则。 重要的 cmdlet New-AzureRmSqlServerVirtualNetworkRule。 如果有兴趣，可以参阅[使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点和规则][sql-db-vnet-service-endpoint-rule-powershell-md-52d]。
 
+#### <a name="rest-api-alternative"></a>REST API 替代项
+
+在内部，用于 SQL VNet 操作的 PowerShell cmdlet 调用 REST API。 可以直接调用 REST API。
+
+- [虚拟网络规则：操作][rest-api-virtual-network-rules-operations-862r]
+
 #### <a name="prerequisites"></a>先决条件
 
 必须有一个子网已经使用特定的虚拟网络服务终结点类型名称进行标记，且该名称必须与 Azure SQL 数据库相关。
@@ -296,6 +295,8 @@ Azure SQL 数据库的虚拟网络规则功能已在 2017 年 9 月末推出。
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点，然后创建虚拟网络规则。][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
+- 使用 REST API 的[虚拟网络规则：操作][rest-api-virtual-network-rules-operations-862r]
+
 
 
 <!-- Link references, to images. -->
@@ -336,6 +337,7 @@ Azure SQL 数据库的虚拟网络规则功能已在 2017 年 9 月末推出。
 
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
 
+[rest-api-virtual-network-rules-operations-862r]: https://docs.microsoft.com/rest/api/sql/virtualnetworkrules
 
 
 

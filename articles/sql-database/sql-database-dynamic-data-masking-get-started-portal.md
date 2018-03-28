@@ -1,25 +1,19 @@
 ---
-title: "Azure 门户：SQL 数据库动态数据掩码 | Microsoft Docs"
-description: "如何开始在 Azure 门户中使用 SQL 数据库动态数据掩码"
+title: Azure 门户：SQL 数据库动态数据掩码 | Microsoft Docs
+description: 如何开始在 Azure 门户中使用 SQL 数据库动态数据掩码
 services: sql-database
-documentationcenter: 
 author: ronitr
-manager: jhubbard
-editor: 
-ms.assetid: "2"
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 11/22/2016
 ms.author: ronitr
-ms.openlocfilehash: 20d344bc6ae971012bd181d14d130432263a3b76
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 2db546d8165956dc6f9fad21f66af315ba301c11
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Azure 门户的 SQL 数据库动态数据掩码入门
 
@@ -27,14 +21,14 @@ ms.lasthandoff: 12/14/2017
 
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>使用 Azure 门户为数据库设置动态数据掩码
-1. 在 [https://portal.azure.com](https://portal.azure.com) 上启动 Azure 门户。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中启动 Azure 门户。
 2. 导航到要掩码的敏感数据所在数据库的设置页。
 3. 单击“动态数据掩码”磁贴，这会启动“动态数据掩码”配置页。
    
    * 或者，可以向下滚动到“操作”部分并单击“动态数据屏蔽”。
      
      ![导航窗格](./media/sql-database-dynamic-data-masking-get-started/4_ddm_settings_tile.png)<br/><br/>
-4. 在“动态数据掩码”配置页中，可能会看到一些数据库列，建议引擎已将这些列标记为需要进行掩码。 要接受这些建议，可直接针对一个或多个列单击“添加掩码”，系统就会根据该列的默认类型来创建掩码。 可以更改屏蔽函数，只需单击屏蔽规则，然后将屏蔽字段格式编辑成你所选择的其他格式即可。 请确保单击“保存”以保存设置。
+4. 在“动态数据掩码”配置页中，可能会看到一些数据库列，建议引擎已将这些列标记为需要进行掩码。 要接受这些建议，可直接针对一个或多个列单击“添加掩码”，系统就会根据该列的默认类型来创建掩码。 可以更改屏蔽函数，只需单击屏蔽规则，并将屏蔽字段格式编辑成所选的其他格式即可。 请确保单击“保存”以保存设置。
    
     ![导航窗格](./media/sql-database-dynamic-data-masking-get-started/5_ddm_recommendations.png)<br/><br/>
 5. 若要为数据库中的任意列添加掩码，请在“动态数据掩码”配置页的顶部单击“添加掩码”以打开“添加掩码规则”配置页。

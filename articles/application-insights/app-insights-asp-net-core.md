@@ -1,6 +1,6 @@
 ---
-title: "适用于 ASP.NET Core 的 Azure Application Insights | Microsoft Docs"
-description: "监视 Web 应用程序的可用性、性能和使用情况。"
+title: 适用于 ASP.NET Core 的 Azure Application Insights | Microsoft Docs
+description: 监视 Web 应用程序的可用性、性能和使用情况。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: e9fb3e68db66449d9ca3b43e6974910cb9477e62
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 77c48a22f974e027b4e8858d5e38018bbf5bb54f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>用于 ASP.NET Core 的 Application Insights
 
@@ -214,5 +214,6 @@ Application Insights 产品小组一直在努力使[完整版 .NET Framework SDK
 
 ## <a name="next-steps"></a>后续步骤
 * [浏览用户流](app-insights-usage-flows.md)，了解用户如何在应用中导航。
+* [配置快照收集](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)，以便在引发异常时了解源代码和变量的状态。
 * [使用 API](app-insights-api-custom-events-metrics.md)，发送自己的事件和指标以获取应用的性能和使用情况的更详细视图。
 * [可用性测试](app-insights-monitor-web-app-availability.md)从世界各地不断检查应用。

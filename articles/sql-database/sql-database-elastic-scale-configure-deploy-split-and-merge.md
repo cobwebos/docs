@@ -1,25 +1,19 @@
 ---
-title: "部署拆分 / 合并服务 | Microsoft 文档"
-description: "可使用拆分/合并工具在分片数据库之间移动数据。"
+title: 部署拆分 / 合并服务 | Microsoft 文档
+description: 可使用拆分/合并工具在分片数据库之间移动数据。
 services: sql-database
-documentationcenter: 
-author: ddove
-manager: jhubbard
-editor: 
-ms.assetid: 9a993c0f-7052-46cd-aa59-073bea8d535a
+author: stevestein
+manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: 4505aebc8919a5d7b8f3debe0db9f49b465176bf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: sstein
+ms.openlocfilehash: ed5545df8d09192eeed21dd2ac379e255b049e30
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-a-split-merge-service"></a>部署拆分/合并服务
 可使用拆分/合并工具在分片数据库之间移动数据。 请参阅[在扩展云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -149,7 +143,7 @@ ms.lasthandoff: 02/21/2018
    ```
 
 * 确保服务器名称不以 **https://** 开头。
-* 确保 Azure SQL DB 服务器允许 Azure 服务与其连接。 要执行此操作，请打开 https://manage.windowsazure.com、依次单击左侧的“SQL 数据库 s”和顶部的“服务器”，并选择你的服务器。 在顶部单击“配置”并确保将“Azure 服务”设置为“是”。 （请参阅此文章顶部的“先决条件”部分）。
+* 确保 Azure SQL DB 服务器允许 Azure 服务与其连接。 为此，请打开 https://manage.windowsazure.com，依次单击左侧的“SQL 数据库”和顶部的“服务器”，并选择你的服务器。 在顶部单击“配置”并确保将“Azure 服务”设置为“是”。 （请参阅此文章顶部的“先决条件”部分）。
 
 ## <a name="test-the-service-deployment"></a>测试服务部署
 ### <a name="connect-with-a-web-browser"></a>使用 Web 浏览器建立连接

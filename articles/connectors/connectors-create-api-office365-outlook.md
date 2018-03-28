@@ -1,11 +1,11 @@
 ---
-title: "在逻辑应用中添加 Office 365 Outlook 连接器 | Microsoft Docs"
-description: "使用 Office 365 连接器创建逻辑应用，启用与 Office 365 的交互。 例如：创建、编辑和更新联系人和日历项。"
-services: 
-documentationcenter: 
-author: MandiOhlinger
+title: 在逻辑应用中添加 Office 365 Outlook 连接器 | Microsoft Docs
+description: 使用 Office 365 连接器创建逻辑应用，启用与 Office 365 的交互。 例如：创建、编辑和更新联系人和日历项。
+services: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: b2f6cc2c-bba2-493a-b0ba-841785462a80
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 51b8e3de639b5cce954547adb77ff13b79ad6747
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: ea0b2f657f808bb6ba4bf427497955b9e520c669
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Office 365 Outlook 连接器入门
 Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使用此连接器创建、编辑和更新联系人和日历项，还可以获取、发送和回复电子邮件。
@@ -30,7 +30,7 @@ Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使
 * 在存在新电子邮件时、更新日历项时等情况下，使用触发器启动工作流。
 * 使用发送电子邮件、创建新日历事件等操作。 例如，当 Salesforce 中存在新对象时（触发器），向 Office 365 Outlook 发送一封电子邮件（操作）。 
 
-本主题演示了如何在逻辑应用中使用 Office 365 Outlook 连接器，还列出了触发器和操作。
+本文演示如何在逻辑应用中使用 Office 365 Outlook 连接器，还列出了触发器和操作。
 
 > [!NOTE]
 > 此文章版本适用于逻辑应用正式版 (GA)。

@@ -1,8 +1,8 @@
 ---
-title: "使用 Application Insights 排查自定义策略问题 - Azure AD B2C | Microsoft Docs"
-description: "如何设置 Application Insights 来跟踪自定义策略的执行"
+title: 使用 Application Insights 排查自定义策略问题 - Azure AD B2C | Microsoft Docs
+description: 如何设置 Application Insights 来跟踪自定义策略的执行
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: saeedakhter-msft
 manager: mtillman
 editor: parakhj
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: saeda
-ms.openlocfilehash: 65a39479b4d4b86d569501636e4a0678b052d426
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 4f71380917a5a29497da9831791cd9f86ec4c8ca
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C：收集日志
 
@@ -105,6 +105,8 @@ traces \| where timestamp > ago(1d) | 查看 Azure AD B2C 为前一天生成的�
 
 >[!NOTE]
 >社区已开发一个用户旅程查看器来帮助标识开发人员。  Microsoft 不支持它，严格按原样提供。  它将读取 Application Insights 实例，并提供用户旅程事件的有序视图。  可以获取源代码并将其部署在自己的解决方案中。
+
+从 Application Insights 读取事件的查看器版本位于[此处](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
 
 >[!NOTE]
 >目前，此处所述的详细活动日志仅用来帮助开发自定义策略。 请勿在生产中使用开发模式。  日志收集在开发过程中发送到标识提供者以及从中发出的所有声明。  如果在生产中使用，则开发人员对他们所拥有的 App Insights 日志中收集的 PII（私人身份信息）负责。  仅当策略处于“开发模式”时才会收集这些详细日志。

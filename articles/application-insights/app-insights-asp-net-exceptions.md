@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Application Insights 诊断 Web 应用中的故障和异常 | Microsoft Docs"
-description: "从 ASP.NET 应用中捕获异常以及请求遥测。"
+title: 使用 Azure Application Insights 诊断 Web 应用中的故障和异常 | Microsoft Docs
+description: 从 ASP.NET 应用中捕获异常以及请求遥测。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: d6a0b945bad36842142d16a4840c9c3d69e1564e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ee04fc3338dec7893f9f33322bd6b9af932199e7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
 [Application Insights](app-insights-overview.md) 可报告实时 Web 应用中的异常。 可以将失败的请求与异常关联到客户端和服务器上的其他事件，从而快速诊断原因。
@@ -113,8 +113,7 @@ Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应
 ## <a name="reporting-exceptions-explicitly"></a>显式报告异常
 最简单的方法是在异常处理程序中插入对 TrackException() 的调用。
 
-JavaScript
-
+```javascript
     try
     { ...
     }
@@ -124,9 +123,9 @@ JavaScript
         {Game: currentGame.Name,
          State: currentGame.State.ToString()});
     }
+```
 
-C#
-
+```csharp
     var telemetry = new TelemetryClient();
     ...
     try
@@ -144,9 +143,9 @@ C#
        // Send the exception telemetry:
        telemetry.TrackException(ex, properties, measurements);
     }
+```
 
-VB
-
+```VB
     Dim telemetry = New TelemetryClient
     ...
     Try
@@ -162,6 +161,7 @@ VB
       ' Send the exception telemetry:
       telemetry.TrackException(ex, properties, measurements)
     End Try
+```
 
 属性和测量参数是可选的，但对于[筛选和添加](app-insights-diagnostic-search.md)额外信息很有用。 例如，如果有一个可运行多个游戏的应用，可查找与特定游戏相关的所有异常报表。 可向每个字典添加任意数量的项目。
 
@@ -175,8 +175,7 @@ VB
 
 但是，如果有活动重定向，在 Global.asax.cs 中将以下行添加到 Application_Error 函数。 （如果还没有活动重定向，则添加 Global.asax 文件）。
 
-*C#*
-
+```csharp
     void Application_Error(object sender, EventArgs e)
     {
       if (HttpContext.Current.IsCustomErrorEnabled && Server.GetLastError  () != null)
@@ -186,11 +185,28 @@ VB
          ai.TrackException(Server.GetLastError());
       }
     }
-
+```
 
 ## <a name="mvc"></a>MVC
+从 Application Insights Web SDK 2.6 版（beta3 及更高版本）开始，Application Insights 会自动收集 MVC 5+ 控制器方法中引发的未经处理异常。 如果之前已添加自定义处理程序以跟踪此类异常（如下面的示例中所述），则可以删除该处理程序以避免对异常进行双重跟踪。
+
+存在大量无法处理异常筛选器的情况。 例如：
+
+* 从控制器构造函数引发的异常。
+* 从消息处理程序引发的异常。
+* 在路由过程中引发的异常。
+* 在响应内容序列化期间引发的异常。
+* 在应用程序启动过程中引发的异常。
+* 在后台任务中引发的异常。
+
+仍需要手动跟踪应用程序*处理*的所有异常。 源自控制器的未经处理异常通常会导致 500“内部服务器错误”响应。 如果此类响应是由于处理异常而手动构造的（或根本没有异常），则可在 `ResultCode` 为 500 的相应请求遥测中跟踪它，但是 Application Insights SDK 无法跟踪相应异常。
+
+### <a name="prior-versions-support"></a>以前版本支持
+如果使用 Application Insights Web SDK 2.5（及更低版本）的 MVC 4（及更低版本），请参照以下示例跟踪异常。
+
 如果 [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) 配置为 `Off`，[HTTP 模块](https://msdn.microsoft.com/library/ms178468.aspx)将可以收集异常。 但是，如果它是 `RemoteOnly`（默认值）或 `On`，异常将清除，并且 Application Insights 无法自动收集它。 可通过替换 [System.Web.Mvc.HandleErrorAttribute 类](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)并应用替换类修复该问题，如下面针对不同的 MVC 版本所示（[github 源](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)）：
 
+```csharp
     using System;
     using System.Web.Mvc;
     using Microsoft.ApplicationInsights;
@@ -215,22 +231,26 @@ VB
         }
       }
     }
+```
 
 #### <a name="mvc-2"></a>MVC 2
 将 HandleError 属性替换为控制器中的新属性。
 
+```csharp
     namespace MVC2App.Controllers
     {
        [AiHandleError]
        public class HomeController : Controller
        {
     ...
+```
 
 [示例](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
 将 `AiHandleErrorAttribute` 注册为 Global.asax.cs 中的全局筛选器：
 
+```csharp
     public class MyMvcApplication : System.Web.HttpApplication
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -238,12 +258,14 @@ VB
          filters.Add(new AiHandleErrorAttribute());
       }
      ...
+```
 
 [示例](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4、MVC5
 将 AiHandleErrorAttribute 注册为 FilterConfig.cs 中的全局筛选器：
 
+```csharp
     public class FilterConfig
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -252,12 +274,31 @@ VB
         filters.Add(new AiHandleErrorAttribute());
       }
     }
+```
 
 [示例](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
-## <a name="web-api-1x"></a>Web API 1.x
+## <a name="web-api"></a>Web API
+从 Application Insights Web SDK 2.6 版（beta3 及更高版本）开始，Application Insights 会自动收集 WebAPI 2+ 控制器方法中引发的未经处理异常。 如果之前已添加自定义处理程序以跟踪此类异常（如下面的示例中所述），则可以删除该处理程序以避免对异常进行双重跟踪。
+
+存在大量无法处理异常筛选器的情况。 例如：
+
+* 从控制器构造函数引发的异常。
+* 从消息处理程序引发的异常。
+* 在路由过程中引发的异常。
+* 在响应内容序列化期间引发的异常。
+* 在应用程序启动过程中引发的异常。
+* 在后台任务中引发的异常。
+
+仍需要手动跟踪应用程序*处理*的所有异常。 源自控制器的未经处理异常通常会导致 500“内部服务器错误”响应。 如果此类响应是由于处理异常而手动构造的（或根本没有异常），则可在 `ResultCode` 为 500 的相应请求遥测中跟踪它，但是 Application Insights SDK 无法跟踪相应异常。
+
+### <a name="prior-versions-support"></a>以前版本支持
+如果使用 Application Insights Web SDK 2.5（及更低版本）的 WebAPI 1（及更低版本），请参照以下示例跟踪异常。
+
+#### <a name="web-api-1x"></a>Web API 1.x
 替换 System.Web.Http.Filters.ExceptionFilterAttribute：
 
+```csharp
     using System.Web.Http.Filters;
     using Microsoft.ApplicationInsights;
 
@@ -276,9 +317,11 @@ VB
         }
       }
     }
+```
 
 可将此替换属性添加到特定控制器，或者将其添加到 WebApiConfig 类中的全局筛选器配置：
 
+```csharp
     using System.Web.Http;
     using WebApi1.x.App_Start;
 
@@ -298,19 +341,14 @@ VB
         }
       }
     }
+```
 
 [示例](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-存在大量无法处理异常筛选器的情况。 例如：
-
-* 从控制器构造函数引发的异常。
-* 从消息处理程序引发的异常。
-* 在路由过程中引发的异常。
-* 在响应内容序列化期间引发的异常。
-
-## <a name="web-api-2x"></a>Web API 2.x
+#### <a name="web-api-2x"></a>Web API 2.x
 添加 IExceptionLogger 的实现：
 
+```csharp
     using System.Web.Http.ExceptionHandling;
     using Microsoft.ApplicationInsights;
 
@@ -329,9 +367,11 @@ VB
         }
       }
     }
+```
 
 将其添加到 WebApiConfig 中的服务：
 
+```csharp
     using System.Web.Http;
     using System.Web.Http.ExceptionHandling;
     using ProductsAppPureWebAPI.App_Start;
@@ -355,7 +395,8 @@ VB
             config.Services.Add(typeof(IExceptionLogger), new AiExceptionLogger());
         }
       }
-  }
+     }
+```
 
 [示例](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
@@ -367,6 +408,7 @@ VB
 ## <a name="wcf"></a>WCF
 添加可扩展属性并实现 IErrorHandler 和 IServiceBehavior 的类。
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -416,7 +458,7 @@ VB
       }
     }
 
-将属性添加到服务实现：
+Add the attribute to the service implementations:
 
     namespace WcfService4
     {
@@ -424,6 +466,7 @@ VB
         public class Service1 : IService1
         {
          ...
+```
 
 [示例](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 

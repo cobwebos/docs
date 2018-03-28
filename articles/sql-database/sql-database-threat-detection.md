@@ -2,23 +2,18 @@
 title: 威胁检测 - Azure SQL 数据库 | Microsoft 文档
 description: 威胁检测会检测异常的数据库活动，指出数据库有潜在的安全威胁。
 services: sql-database
-documentationcenter: ''
 author: rmatchoro
-manager: shaik
-editor: v-romcal
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 06/19/2017
 ms.author: ronmat
-ms.openlocfilehash: a01721b10305ac45082943fbe4fb7fb199a0e49f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4cb31eef4ba4b85ea28a58bb9b947b4e07cb0b58
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-database-threat-detection"></a>SQL 数据库威胁检测
 
@@ -33,7 +28,7 @@ SQL 威胁检测提供新的安全层，在发生异常活动时会提供安全�
 SQL 威胁检测功能将警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，且每个受保护的 SQL 数据库服务器都将按与 Azure 安全中心标准层相同的价格（即 $15/节点/月）进行计费，其中每个受保护的 SQL 数据库服务器均计为 1 个节点。  
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>在 Azure 门户中为数据库设置威胁检测
-1. 在 [https://portal.azure.com](https://portal.azure.com) 上启动 Azure 门户。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中启动 Azure 门户。
 2. 导航到要监视的 SQL 数据库的“配置”页。 在“设置”页中，选择“审核和威胁检测”。 
     ![导航窗格][1]
 3. 在“审核和威胁检测”配置页中，将审核设置为“打开”，随后会显示威胁检测设置。

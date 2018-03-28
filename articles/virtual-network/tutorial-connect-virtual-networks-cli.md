@@ -1,41 +1,42 @@
 ---
-title: "使用虚拟网络对等互连连接虚拟网络 - Azure CLI | Microsoft Docs"
-description: "了解如何使用虚拟网络对等互连连接虚拟网络。"
+title: 使用虚拟网络对等互连连接虚拟网络 - Azure CLI | Microsoft Docs
+description: 了解如何使用虚拟网络对等互连连接虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/06/2018
+ms.date: 03/13/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: df56f2e3e13f80e7ce2c2b6c9cffeac3d03776e5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.custom: ''
+ms.openlocfilehash: bbf2e757e2d9ad76c59394ba0138a61fd4029d15
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>通过 Azure CLI 使用虚拟网络对等互连连接虚拟网络
 
-可以使用虚拟网络对等互连将虚拟网络互相连接。 将虚拟网络对等互连后，两个虚拟网络中的资源将能够以相同的延迟和带宽相互通信，就像这些资源位于同一个虚拟网络中一样。 本文介绍如何创建两个虚拟网络并将其对等互连。 学习如何：
+可以使用虚拟网络对等互连将虚拟网络互相连接。 将虚拟网络对等互连后，两个虚拟网络中的资源将能够以相同的延迟和带宽相互通信，就像这些资源位于同一个虚拟网络中一样。 在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 创建两个虚拟网络
-> * 创建虚拟网络间的对等互连
-> * 测试对等互连
+> * 使用虚拟网络对等互连连接两个虚拟网络。
+> * 将虚拟机 (VM) 部署到每个虚拟网络
+> * VM 之间进行通信
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli)。 
 
 ## <a name="create-virtual-networks"></a>创建虚拟网络
 
@@ -45,7 +46,7 @@ ms.lasthandoff: 03/08/2018
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建虚拟网络。 以下示例使用地址前缀 *10.0.0.0/16* 创建一个名为 *myVirtualNetwork1* 的虚拟网络。
+使用 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 创建虚拟网络。 以下示例创建地址前缀为 *10.0.0.0/16* 且名为 *myVirtualNetwork1* 的虚拟网络。
 
 ```azurecli-interactive 
 az network vnet create \
@@ -56,7 +57,7 @@ az network vnet create \
   --subnet-prefix 10.0.0.0/24
 ```
 
-使用地址前缀 *10.1.0.0/16* 创建一个名为 *myVirtualNetwork2* 的虚拟网络。 该地址前缀不与 *myVirtualNetwork1* 虚拟网络的地址前缀重叠。 不能对等互连地址前缀重叠的虚拟网络。
+使用地址前缀 *10.1.0.0/16* 创建一个名为 *myVirtualNetwork2* 的虚拟网络：
 
 ```azurecli-interactive 
 az network vnet create \
@@ -120,17 +121,13 @@ az network vnet peering show \
 
 在两个虚拟网络中的对等互连的 **peeringState** 为“已连接”之前，在一个虚拟网络中的资源无法与另一个虚拟网络中的资源通信。 
 
-对等互连在两个虚拟网络之间进行，但不可传递。 因此，举例来说，如果还想要将 *myVirtualNetwork2* 对等互连到 *myVirtualNetwork3*，则需要另外在虚拟网络 *myVirtualNetwork2* 和 *myVirtualNetwork3* 创建对等互连。 即使 *myVirtualNetwork1* 已与 *myVirtualNetwork2* 对等互连，也仅当 *myVirtualNetwork1* 也与 *myVirtualNetwork3* 对等互连时，*myVirtualNetwork1* 中的资源才能访问 *myVirtualNetwork3* 中的资源。 
+## <a name="create-virtual-machines"></a>创建虚拟机
 
-将生产虚拟网络对等互连之前，建议全面了解[对等互连概述](virtual-network-peering-overview.md)、[管理对等互连](virtual-network-manage-peering.md)和[虚拟网络限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 尽管本文介绍了同一订阅和位置中两个虚拟网络之间的对等互连，但也可将[不同区域](#register)和[不同 Azure 订阅](create-peering-different-subscriptions.md#cli)中的虚拟网络对等互连。 还可以使用对等互连创建[中心辐射型网络设计](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)。
+在稍后的步骤中，会在每个虚拟网络中创建一个 VM，以便可以在它们之间进行通信。
 
-## <a name="test-peering"></a>测试对等互连
+### <a name="create-the-first-vm"></a>创建第一个 VM
 
-若要通过对等互连测试不同虚拟网络中的虚拟机之间的网络通信，请将虚拟机部署到每个子网，然后在虚拟机之间进行通信。 
-
-### <a name="create-virtual-machines"></a>创建虚拟机
-
-使用 [az vm create](/cli/azure/vm#az_vm_create) 创建虚拟机。 以下示例在 *myVirtualNetwork1* 虚拟网络中创建一个名为“myVm1”的虚拟机。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 `--no-wait` 选项会在后台创建虚拟机，因此可继续执行下一步。
+使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 以下示例在 *myVirtualNetwork1* 虚拟网络中创建一个名为 *myVm1* 的 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 `--no-wait` 选项会在后台创建 VM，因此可继续执行下一步。
 
 ```azurecli-interactive
 az vm create \
@@ -143,9 +140,9 @@ az vm create \
   --no-wait
 ```
 
-Azure 会自动分配 10.0.0.4 作为虚拟机的专用 IP 地址，因为 10.0.0.4 是 *myVirtualNetwork1* 的 *Subnet1* 中的第一个可用 IP 地址。 
+### <a name="create-the-second-vm"></a>创建第二个 VM
 
-在 *myVirtualNetwork2* 虚拟网络中创建虚拟机。
+在 *myVirtualNetwork2* 虚拟网络中创建 VM。
 
 ```azurecli-interactive 
 az vm create \
@@ -157,7 +154,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-创建虚拟机需花费几分钟的时间。 创建虚拟机后，Azure CLI 会显示类似以下示例的信息： 
+创建 VM 需要几分钟时间。 创建 VM 之后，Azure CLI 将显示类似于以下示例的信息： 
 
 ```azurecli 
 {
@@ -172,25 +169,25 @@ az vm create \
 }
 ```
 
-在示例输出中，可以看到 privateIpAddress 是 10.1.0.4。 Azure DHCP 会自动将 10.1.0.4 分配给虚拟机，因为它是 *myVirtualNetwork2* 的 *Subnet1* 中的第一个可用地址。 记下 publicIpAddress。 在稍后的步骤中会使用此地址通过 Internet 访问虚拟机。
+记下 publicIpAddress。 在稍后的步骤中会使用此地址通过 Internet 访问 VM。
 
-### <a name="test-virtual-machine-communication"></a>测试虚拟机通信
+## <a name="communicate-between-vms"></a>VM 之间进行通信
 
-使用以下命令创建与 myVm2 虚拟机的 SSH 会话。 将 `<publicIpAddress>` 替换为虚拟机的公共 IP 地址。 在前一示例中，公共 IP 地址为 *13.90.242.231*。
+使用以下命令来与 *myVm2* VM 建立 SSH 会话。 将 `<publicIpAddress>` 替换为 VM 的公共 IP 地址。 在前一示例中，公共 IP 地址为 *13.90.242.231*。
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-对 *myVirtualNetwork1* 中的虚拟机进行 ping 操作。
+对 *myVirtualNetwork1* 中的 VM 执行 Ping 操作。
 
 ```bash 
 ping 10.0.0.4 -c 4
 ```
 
-将收到四个回复。 如果按虚拟机的名称 (*myVm1*) 而不是其 IP 地址进行 ping 操作，ping 操作会失败，因为 *myVm1* 是未知的主机名。 Azure 的默认名称解析在同一虚拟网络中的虚拟机之间可以正常工作，但在不同虚拟网络中的虚拟机之间无法正常工作。 若要跨虚拟网络解析名称，必须[部署自己的 DNS 服务器](virtual-networks-name-resolution-for-vms-and-role-instances.md)或使用 [Azure DNS 专用域](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+会收到四条回复。 
 
-关闭与 *myVm2* 虚拟机的 SSH 会话。 
+关闭与 *myVm2* VM 的 SSH 会话。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -200,7 +197,7 @@ ping 10.0.0.4 -c 4
 az group delete --name myResourceGroup --yes
 ```
 
-**<a name="register"></a>注册全局虚拟网络对等互连预览版**
+**<a name="register"></a>注册全局虚拟网络对等互连（预览版）**
 
 在同一区域中的虚拟网络之间建立对等互连的功能已推出正式版。 在不同区域的虚拟网络之间建立对等互连目前处于预览版状态。 有关可用区域，请参阅[虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)。 若要跨区域在虚拟网络之间建立对等互连，必须先通过完成以下步骤（在要对等互连的每个虚拟网络所在的订阅中执行）来注册预览版：
 
@@ -217,13 +214,13 @@ az group delete --name myResourceGroup --yes
   az feature show --name AllowGlobalVnetPeering --namespace Microsoft.Network
   ```
 
-  对于这两个订阅，如果在输入前一个命令后收到的 **RegistrationState** 输出为“已注册”之前，尝试将不同区域中的虚拟网络对等互连，则对等互连将失败。
+  对于这两个订阅，在输入上一个命令后收到的 **RegistrationState** 输出为 **Registered** 之前，如果尝试将不同区域中的虚拟网络对等互连，则对等互连将失败。
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何使用虚拟网络对等互连连接两个网络。 可以通过 VPN [将自己的计算机连接到虚拟网络](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，并可与虚拟网络或对等虚拟网络中的资源进行交互。
+本文已介绍如何使用虚拟网络对等互连来连接两个网络。 本文已介绍如何使用虚拟网络对等互连来连接同一 Azure 位置中的两个网络。 此外，还可以将[不同区域](#register)、[不同 Azure 订阅](create-peering-different-subscriptions.md#portal)中的虚拟网络对等互连，并且可以使用对等互连创建[中心辐射型网络设计](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)。 将生产虚拟网络对等互连之前，建议全面了解[对等互连概述](virtual-network-peering-overview.md)、[管理对等互连](virtual-network-manage-peering.md)和[虚拟网络限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
-继续学习可重用脚本的脚本示例，以完成虚拟网络文章中涉及的许多任务。
+可以通过 VPN [将自己的计算机连接到虚拟网络](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，并可与虚拟网络或对等虚拟网络中的资源进行交互。 请继续学习可重用脚本的脚本示例，以完成虚拟网络文章中涉及的许多任务。
 
 > [!div class="nextstepaction"]
 > [虚拟网络脚本示例](../networking/cli-samples.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

@@ -1,25 +1,21 @@
 ---
-title: "我在 Azure 自动化中的第一个图形 Runbook | Microsoft Docs"
-description: "本教程指导完成创建、 测试和发布一个简单图形 Runbook。"
+title: 我在 Azure 自动化中的第一个图形 Runbook
+description: 本教程指导完成创建、 测试和发布一个简单图形 Runbook。
+keywords: runbook, runbook 模板, runbook 自动化, azure runbook
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: 
-keywords: "runbook, runbook 模板, runbook 自动化, azure runbook"
-ms.assetid: dcb88f19-ed2b-4372-9724-6625cd287c8a
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 05/17/2017
-ms.author: magoedte;bwren
-ms.openlocfilehash: 948510eaaf55854bbc14d49bf78a8584c43f182d
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: 85902975d6871eccc69ffd441aec509f9f63ec2f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="my-first-graphical-runbook"></a>我的第一个图形 Runbook
 
@@ -32,7 +28,7 @@ ms.lasthandoff: 01/10/2018
 
 本教程指导在 Azure 自动化中创建 [图形 Runbook](automation-runbook-types.md#graphical-runbooks)。 从一个简单的 Runbook 开始，目的是测试和发布该 Runbook，同时了解如何跟踪 Runbook 作业的状态。 然后，通过修改 Runbook 来实际管理 Azure 资源，这种情况下会启动 Azure 虚拟机。 然后添加 Runbook 参数和条件链接，使该 Runbook 更稳健，从而完成本教程。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要以下各项：
 

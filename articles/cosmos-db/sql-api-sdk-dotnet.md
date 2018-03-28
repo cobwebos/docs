@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB：SQL .NET API、SDK 和资源 | Microsoft Docs"
-description: "了解有关 SQL .NET API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB .NET SDK 各版本之间所做的更改。"
+title: Azure Cosmos DB：SQL .NET API、SDK 和资源 | Microsoft Docs
+description: 了解有关 SQL .NET API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB .NET SDK 各版本之间所做的更改。
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 825b2657cc6aa7b4e116f44020767beff911b1fc
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 5dd2fb353246120f58840914e8a4e5527d7a4486
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -54,6 +54,11 @@ ms.lasthandoff: 03/12/2018
 </table></br>
 
 ## <a name="release-notes"></a>发行说明
+### <a name="a-name12111211"></a><a name="1.21.1"/>1.21.1
+
+* 修复了临界情况下跨分区 order by 查询出现的 KeyNotFoundException。
+* 修复了在 LINQ 查询的 select 子句中不接受 JsonPropery 属性的 bug。
+
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
 * 修复了在某些争用情况下出现的 bug，该 bug 导致在使用会话一致性级别时出现间歇性错误“Microsoft.Azure.Documents.NotFoundException: 读取会话不可用于输入会话令牌”。
@@ -290,6 +295,8 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.21.1](#1.20.1) |2018 年 3 月 9 日 |--- |
+| [1.20.2](#1.20.1) |2018 年 2 月 21 日 |--- |
 | [1.20.1](#1.20.1) |2018 年 2 月 5 日 |--- |
 | [1.19.1](#1.19.1) |2017 年 11 月 16 日 |--- |
 | [1.19.0](#1.19.0) |2017 年 11 月 10 日 |--- |

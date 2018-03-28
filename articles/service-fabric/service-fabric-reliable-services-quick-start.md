@@ -1,24 +1,24 @@
 ---
-title: "使用 C# 创建第一个 Service Fabric 应用程序 | Microsoft 文档"
-description: "介绍如何创建具有无状态服务和有状态服务的 Microsoft Azure Service Fabric 应用程序。"
+title: 使用 C# 创建第一个 Service Fabric 应用程序 | Microsoft 文档
+description: 介绍如何创建具有无状态服务和有状态服务的 Microsoft Azure Service Fabric 应用程序。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d9b44d75-e905-468e-b867-2190ce97379a
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 101ea717816fa2eb9fa9ae25cef21df67cf6ef9c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: dbd8508a7f55b8b5fdf53912d2189a18ef504193
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Azure Service Fabric 应用程序包含一个或多个运行代码的服务。 �
 
 ![使用“新建项目”对话框新建 Service Fabric 应用程序](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
-然后，创建一个名为 HelloWorldStateless 的无状态服务项目：
+然后，使用 **.Net Core 2.0** 创建一个名为 *HelloWorldStateless* 的无状态服务项目：
 
 ![在第二个对话框中，创建无状态服务项目](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
@@ -97,7 +97,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        ServiceEventSource.Current.ServiceMessage(this, "Working-{0}", ++iterations);
+        ServiceEventSource.Current.ServiceMessage(this.Context, "Working-{0}", ++iterations);
 
         await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
     }
@@ -128,7 +128,7 @@ Service Fabric 引入了一种新的有状态服务。 有状态服务能够可�
 
 ![向 Service Fabric 应用程序添加服务](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-选择“**有状态服务**”并将其命名为 *HelloWorldStateful*。 单击“确定”。
+选择“.Net Core 2.0”->“有状态服务”并将其命名为 *HelloWorldStateful*。 单击“确定”。
 
 ![使用“新建项目”对话框新建 Service Fabric 有状态服务](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
@@ -154,7 +154,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
         {
             var result = await myDictionary.TryGetValueAsync(tx, "Counter");
 
-            ServiceEventSource.Current.ServiceMessage(this, "Current Counter Value: {0}",
+            ServiceEventSource.Current.ServiceMessage(this.Context, "Current Counter Value: {0}",
                 result.HasValue ? result.Value.ToString() : "Value does not exist.");
 
             await myDictionary.AddOrUpdateAsync(tx, "Counter", 0, (key, value) => ++value);

@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory 中的命名位置 | Microsoft Docs"
-description: "了解命名位置的定义及其配置方法。"
+title: 在 Azure Active Directory 中配置命名位置 | Microsoft Docs
+description: 了解如何配置命名位置。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 03/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b6f80cde24edcbec68309ba033d4da16ee97b731
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3b7bd6f4bea111815f647af09ebaa868696b25bc
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="named-locations-in-azure-active-directory"></a>Azure Active Directory 中的命名位置
+# <a name="configure-named-locations-in-azure-active-directory"></a>在 Azure Active Directory 中配置命名位置
 
 通过命名位置，可在组织中标记受信任的 IP 地址范围。 Azure Active Directory 在以下情况中使用命名位置：
 
@@ -89,22 +89,14 @@ ms.lasthandoff: 02/09/2018
 
 
 
-## <a name="what-you-should-know"></a>要点
-
-批量更新：创建或更新命名位置时，若要进行批量更新，可以上传或下载含 IP 范围的 CSV 文件。 上传会会在文件中的 IP 范围添加到列表而不是覆盖列表。
-
-![上传和下载链接](./media/active-directory-named-locations/09.png)
-
-
-限制：可以定义最多 60 个命名位置，其中每个都分配有一个 IP 范围。 如果只配置了一个命名位置，则可为其定义最多 500 个 IP 范围。
-
-
 ## <a name="next-steps"></a>后续步骤
 
-详细了解以下内容：
+有关详细信息，请参阅：
 
-- 风险事件，请参阅 [Azure Active Directory 风险事件](active-directory-reporting-risk-events.md)。
+- [Azure Active Directory 中的条件访问](active-directory-conditional-access-azure-portal.md)。
 
-- 条件性访问，请参阅 [Azure Active Directory 中的条件访问](active-directory-conditional-access-azure-portal.md)。
+- [Azure Active Directory 条件访问中的位置条件](active-directory-conditional-access-locations.md)
 
-- 有风险的登录报告，请参阅 [Azure Active Directory 门户中的“有风险的登录”报告](active-directory-reporting-security-risky-sign-ins.md)。  
+- [Azure Active Directory 风险事件](active-directory-reporting-risk-events.md)。
+
+- [Azure Active Directory 门户中的“有风险的登录”报告](active-directory-reporting-security-risky-sign-ins.md)。  

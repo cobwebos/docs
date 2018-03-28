@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: tdykstra
-ms.openlocfilehash: 0a436a929696f759cdbe9807faa2a15902b7ce6d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9d63c95c849c8ef6011557c72240e56071ba614f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -271,7 +271,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 | Functions 版本 | Node.js 版本 | 
 |---|---|
 | 1.x | 6.11.2（运行时锁定） |
-| 2.x  |>=8.4.0，建议使用当前的 LTS 8.9.4。 使用 WEBSITE_DEFAULT_NODE_VERSION [应用设置](functions-how-to-use-azure-function-app-settings.md#settings)来设置版本。|
+| 2.x  |>=8.4.0，建议使用当前的 LTS 8.9.4。 使用 WEBSITE_NODE_DEFAULT_VERSION [应用设置](functions-how-to-use-azure-function-app-settings.md#settings)来设置版本。|
 
 可以通过打印任何函数的 `process.version` 来查看运行时正在使用的当前版本。
 

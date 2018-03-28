@@ -57,10 +57,12 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
     高级存储帐户仅支持使用本地冗余存储作为复制选项。 本地冗余存储在单个区域中保留三个数据副本。 对于区域性灾难恢复，必须使用 [Azure 备份](../articles/backup/backup-introduction-to-azure-backup.md)在不同区域中备份 VM 磁盘。 此外，必须使用异地冗余存储 (GRS) 帐户作为备份保管库。 
 
-    Azure 使用存储帐户作为非托管磁盘的容器。 如果使用非托管磁盘创建 Azure DS、DSv2、GS 或 Fs 系列 VM 并选择高级存储帐户，操作系统和数据磁盘会存储在该存储帐户中。
+    Azure 使用存储帐户作为非托管磁盘的容器。 如果使用非托管磁盘创建支持高级存储的 Azure VM 并选择高级存储帐户，则操作系统和数据磁盘会存储在该存储帐户中。
 
 ## <a name="supported-vms"></a>支持的 VM
-高级存储支持 DS 系列、DSv2 系列、GS 系列、Ls 系列、Fs 系列和 B 系列 VM。 可将标准和高级存储磁盘用于这些 VM 类型。 不能在不兼容高级存储的 VM 系列中使用高级存储磁盘。
+
+高级存储支持 B 系列、DS 系列、DSv2 系列、DSv3 系列、GS 系列、Ls 系列、M 系列和 Fs 系列 VM。 可将标准和高级存储磁盘用于这些 VM 类型。 不能在不兼容高级存储的 VM 系列中使用高级存储磁盘。
+
 
 有关 Azure 中适用于 Windows 的 VM 类型和大小的信息，请参阅 [Windows VM 大小](../articles/virtual-machines/windows/sizes.md)。 有关 Azure 中适用于 Linux 的 VM 类型和大小的信息，请参阅 [Linux VM 大小](../articles/virtual-machines/linux/sizes.md)。
 

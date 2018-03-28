@@ -1,11 +1,11 @@
 ---
-title: "准备 Azure 中的 Debian Linux VHD | Microsoft 文档"
-description: "了解如何创建 Debian 7 和 8 的 VHD 文件，以便在 Azure 中进行部署。"
+title: 准备 Azure 中的 Debian Linux VHD | Microsoft 文档
+description: 了解如何创建 Debian 7 和 8 的 VHD 文件，以便在 Azure 中进行部署。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: szarkos
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: a6de7a7c-cc70-44e7-aed0-2ae6884d401a
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 7802ac701dfb865186beac3889ea2a5b4d0c4770
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 9b32b298f141e9ee54b4c42d3ee9c15174daf8b7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>为 Azure 准备 Debian VHD
 ## <a name="prerequisites"></a>先决条件
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/22/2018
 * Azure 不支持更新的 VHDX 格式。 可使用 Hyper-V 管理器或 **convert-vhd** cmdlet 将磁盘转换为 VHD 格式。
 * 在安装 Linux 系统时，建议使用标准分区而不是 LVM（通常是许多安装的默认值）。 这会避免 LVM 与克隆 VM 发生名称冲突，特别是在 OS 磁盘需要连接到另一台 VM 以进行故障排除的情况下。 如果需要，可以在数据磁盘上使用 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 不要在操作系统磁盘上配置交换分区。 可以配置 Azure Linux 代理，以在临时资源磁盘上创建交换文件。 可以在下面的步骤中找到有关此内容的详细信息。
-* 所有 VHD 的大小必须是 1 MB 的倍数。
+* Azure 上的所有 VHD 必须已将虚拟大小调整为 1MB。 从原始磁盘转换为 VHD 时，必须确保在转换前原始磁盘大小是 1MB 的倍数。 有关详细信息，请参阅 [Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)。
 
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>使用 Azure-Manage 来创建 Debian VHD
 有工具可用于生成适用于 Azure 的 Debian VHD，如来自 [credativ](http://www.credativ.com/) 的 [azure-manage](https://github.com/credativ/azure-manage) 脚本。 这是建议的方法，而不是从头开始创建映像。 例如，要创建 Debian 8 VHD，运行以下命令来下载 azure-manage（以及依赖关系），并运行 azure_build_image 脚本：

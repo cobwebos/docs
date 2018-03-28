@@ -1,6 +1,6 @@
 ---
-title: "已知问题和故障排除指南 | Microsoft Docs"
-description: "已知问题列表和帮助故障排除指南"
+title: 已知问题和故障排除指南 | Microsoft Docs
+description: 已知问题列表和帮助故障排除指南
 services: machine-learning
 author: svankam
 ms.author: svankam
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: d1e3a4fd4415afb995f614ac687096f6fb8ece95
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 62207fa20c4660d1e828053ee73953cb68af1b9d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 已知问题和故障排除指南 
 作为使用 Azure Machine Learning Workbench 应用程序的一部分，本文帮助你查找和更正错误或遇到的问题。 
@@ -23,7 +23,7 @@ ms.lasthandoff: 01/13/2018
 与支持团队沟通时，请务必提供 Workbench 应用的版本号。 在 Windows 上，可以通过单击“帮助”菜单并选择“关于 Azure ML Workbench”找到版本号。 在 macOS 上，可以单击 **Azure ML Workbench** 菜单，然后选择“关于 Azure ML Workbench”。
 
 ## <a name="machine-learning-msdn-forum"></a>机器学习 MSDN 论坛
-我们开通了 MSDN 论坛，可以在其上发布问题。 产品团队会主动监视该论坛。 论坛 URL 为 [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum)。 
+我们开通了 MSDN 论坛，可以在其上发布问题。 产品团队会主动监视该论坛。 论坛 URL 是 [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum)。 
 
 ## <a name="gather-diagnostics-information"></a>收集诊断信息
 如果在请求帮助时可以提供诊断信息，有时会很有帮助。 下面是日志文件所在的位置：
@@ -185,7 +185,7 @@ username ALL=(ALL) NOPASSWD:ALL
 
 必须将该行放在 #includedir "/etc/sudoers.d" 的后面，否则其他规则可能会重写它。
 
-如果使用了更复杂的 sudo 配置，可能需要查阅以下网页中适用于 Ubuntu 的 sudo 文档：https://help.ubuntu.com/community/Sudoers
+如果使用了更复杂的 sudo 配置，可能需要查阅此处提供的适用于 Ubuntu 的 sudo 文档：https://help.ubuntu.com/community/Sudoers
 
 如果未在 Azure 中使用基于 Ubuntu 的 Linux VM 作为执行目标，也可能会发生上述错误。 仅支持将基于 Ubuntu 的 Linux VM 用于远程执行。 
 
@@ -203,11 +203,14 @@ $ docker system prune -a
 或者，可以扩展 OS 磁盘，这样就不需要更改 Docker 引擎配置。 了解[如何扩展 OS 磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks)。
 
 ```azure-cli
-#Deallocate VM (stopping will not work)
+# Deallocate VM (stopping will not work)
 $ az vm deallocate --resource-group myResourceGroup  --name myVM
 
-# Update Disc Size
-$ az disk update --resource-group myResourceGroup --name myVM --size-gb 250
+# Get VM's Disc Name
+az disk list --resource-group myResourceGroup --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
+
+# Update Disc Size using above name
+$ az disk update --resource-group myResourceGroup --name myVMdisc --size-gb 250
     
 # Start VM    
 $ az vm start --resource-group myResourceGroup  --name myVM

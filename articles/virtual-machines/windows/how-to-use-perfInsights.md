@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: ee8334cbe9256b7a5ecd5e96afa2f15d6389afa8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 06b3b246d5c350f0982faa9b1d5f5692cd0c428e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights 
 
@@ -238,11 +238,11 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
     >
     >如果未指定持续时间开关 /d，PerfInsights 将在运行 vmslow、azurefiles 和自定义方案时提示重现该问题。 
 
-完成跟踪或操作后，D:\\log\_collection （或临时驱动器）中会出现一个新文件。 该文件的名称为 **CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip**。 可以将此文件发送给支持代理进行分析，或打开 zip 文件里的报告以查看结果和建议。
+完成跟踪或操作后，PerfInsights 所在的文件夹中会出现一个新文件。 该文件的名称为 **CollectedData\_yyyy-MM-dd\_hh-mm-ss-fff.zip**。 可以将此文件发送给支持代理进行分析，或打开 zip 文件里的报告以查看结果和建议。
 
 ## <a name="review-the-diagnostics-report"></a>查看诊断报告
 
-在 **CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip** 文件中，可以找到一份 HTML 报告，其中详细说明了 PerfInsights 的发现结果。 若要查看该报告，请展开 CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip 文件，然后打开 PerfInsights Report.html 文件。
+在 **CollectedData\_yyyy-MM-dd\_hh-mm-ss-fff.zip** 文件中，可以找到一份 HTML 报告，其中详细说明了 PerfInsights 的发现结果。 若要查看该报告，请展开 **CollectedData\_yyyy-MM-dd\_hh-mm-ss-fff.zip** 文件，然后打开 **PerfInsights Report.html** 文件。
 
 选择“发现”选项卡。
 
@@ -307,4 +307,4 @@ Xperf 是一个命令行工具，用于通过 Windows 性能工具包捕获跟�
 
 请遵照消息中的说明访问文件传输工作区。 为了提高安全性，首次使用时必须更改密码。
 
-登录后，可以通过一个对话框来上传 PerfInsights 收集的 **CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip** 文件。
+登录后，可以找到一个对话框，用于上传 PerfInsights 收集的 **CollectedData\_yyyy-MM-dd\_hh-mm-ss-fff.zip** 文件。

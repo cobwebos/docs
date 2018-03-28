@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 8f6f3fc8325fb2587dc09b982efa52fbe663e2a9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3e2f8be0f77e220da483dcfb18d6b324d3f203ed
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>适用于 Windows 的 Azure 性能诊断 VM 扩展
 
@@ -227,9 +227,7 @@ PerfInsights 工具将收集各种日志、配置和诊断数据，具体视所�
 
 ## <a name="view-and-share-the-results"></a>查看和共享结果
 
-扩展的输出存储在文件夹中。 该文件夹名为 log_collection，默认存储在 Temp 驱动器（通常为 D:\log_collection）中。 在此文件夹下，可以看到包含诊断日志和报告（提供发现和建议）的 zip 文件。
-
-也可在安装时提供的存储帐户中找到该 zip 文件。 该文件通过[共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 进行为期 30 天的共享。 另外，还会在 log_collection 文件夹中创建一个名为“zipfilename”_saslink.txt 的文本文件。 此文件包含创建的 SAS 链接，用于下载 zip 文件。 拥有此链接的任何人都可以下载 zip 文件。
+扩展的输出可以在上传到安装期间指定的存储帐户的 zip 文件中找到，并使用[共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 共享 30 天。 此 zip 文件包含诊断日志和一个包含发现和建议的报告。 输出 zip 文件的 SAS 链接可以在 **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\\\<version>** 文件夹下名为 *zipfilename*_saslink.txt 的文本文件中找到。 拥有此链接的任何人都可以下载 zip 文件。
 
 Microsoft 可能会使用此 SAS 链接下载诊断数据，为从事票证支持工作的支持工程师提供帮助。
 
@@ -240,7 +238,7 @@ Microsoft 可能会使用此 SAS 链接下载诊断数据，为从事票证支�
 ![性能诊断详细状态的屏幕截图](media/performance-diagnostics-vm-extension/view-detailed-status.png)
 
 > [!NOTE]
-> 门户中显示的 SAS 链接可能无法使用。 这可能是由编码和解码操作中出现的 URL 格式破坏造成的。 可以改为直接从 VM 的 *_saslink.tx 文件获取链接。
+> 有时，门户中显示的 SAS 链接可能无法使用。 这可能是由编码和解码操作中出现的 URL 格式破坏造成的。 可以改为直接从 VM 的 *_saslink.tx 文件获取链接。
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
@@ -249,6 +247,6 @@ Microsoft 可能会使用此 SAS 链接下载诊断数据，为从事票证支�
     只要扩展状态指示已成功预配扩展，就可以放心忽略此问题。
 - 安装过程中的某些问题可使用扩展日志来解决。 扩展执行输出将记录到在以下目录中发现的文件：
 
-        C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics
+        C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
 
 如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

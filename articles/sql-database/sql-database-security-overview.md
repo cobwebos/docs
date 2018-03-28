@@ -2,25 +2,19 @@
 title: Azure SQL 数据库安全概述 | Microsoft 文档
 description: 了解 Azure SQL 数据库和 SQL Server 的安全性，包括云与本地 SQL Server 之间的差异。
 services: sql-database
-documentationcenter: ''
 author: giladm
-manager: shaik
+manager: craigg
 ms.reviewer: carlrab
-editor: ''
-ms.assetid: a012bb85-7fb4-4fde-a2fc-cf426c0a56bb
 ms.service: sql-database
 ms.custom: security
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
-ms.date: 01/29/2018
+ms.date: 03/12/2018
 ms.author: giladm
-ms.openlocfilehash: 41051944af863c4c50595ea843e2adf3513b3a12
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1dc34f021fa6482c65cce0e922951ae329987c43
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="securing-your-sql-database"></a>保护 SQL 数据库
 
@@ -62,7 +56,6 @@ SQL 数据库通过限制对数据库的访问来保护数据，具体措施包�
 
 ### <a name="authentication"></a>身份验证
 SQL 数据库身份验证是指连接到数据库时如何证明用户的身份。 SQL 数据库支持两种类型的身份验证：
-
 * **SQL 身份验证**，使用用户名和密码。 在为数据库创建逻辑服务器时，已指定一个包含用户名和密码的“服务器管理员”登录名。 通过这些凭据，可以使用数据库所有者（即“dbo”）的身份通过服务器上任何数据库的身份验证。 
 * **Azure Active Directory 身份验证**，使用 Azure Active Directory 管理的标识，支持托管域和集成域。 请[尽可能](https://msdn.microsoft.com/library/ms144284.aspx)使用 Active Directory 身份验证（集成安全性）。 如果想要使用 Azure Active Directory 身份验证，则必须创建名为“Azure AD 管理员”的另一个服务器管理员，用于管理 Azure AD 用户和组。 此管理员还能执行普通服务器管理员可以执行的所有操作。 有关如何创建 Azure AD 管理员以启用 Azure Active Directory 身份验证的演练，请参阅[通过使用 Azure Active Directory 身份验证连接到 SQL 数据库](sql-database-aad-authentication.md)。
 
@@ -86,6 +79,21 @@ Azure SQL 数据库审核可跟踪数据库活动，通过将数据库事件记�
  
 ## <a name="compliance"></a>合规性
 除了上述有助于应用程序符合各项安全要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。 有关详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)，可以从中找到 [SQL 数据库法规认证](https://azure.microsoft.com/support/trust-center/services/)的最新列表。
+
+
+## <a name="security-management"></a>安全管理
+
+SQL 数据库通过提供数据库扫描和集中式安全仪表板（使用 [SQL 漏洞评估](sql-vulnerability-assessment.md)）可帮助你管理数据安全性。
+
+**漏洞评估**：[SQL 漏洞评估](sql-vulnerability-assessment.md)（目前处于预览状态）是一个内置于 Azure SQL 数据库中的易于配置的工具，可帮助你发现、跟踪和修正潜在的数据库漏洞。 该评估在数据库上执行漏洞扫描并生成报告（让你了解安全状态），其中包括用于解决安全问题和提高数据库安全性的可操作步骤。 可以通过为权限配置、功能配置和数据库设置设置可接受的基线，来为环境自定义评估报告。 此评估可以帮助你：
+
+- 满足需要数据库扫描报告的符合性要求。 
+
+- 满足数据隐私标准。 
+
+- 监视其中难以追踪变化的动态数据库环境。
+
+有关详细信息，请参阅 [SQL 漏洞评估](sql-vulnerability-assessment.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

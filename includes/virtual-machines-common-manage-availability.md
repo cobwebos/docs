@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: virtual-machines
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: 1f4bd0d81d16997a9d627f918d77cb8e770a5b53
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/16/2018
+---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
 
@@ -15,7 +31,7 @@
 
 * [在可用性集中配置多个虚拟机以确保冗余]
 * [在可用性集中对 VM 使用托管磁盘]
-* [使用计划的事件对影响 VM 的事件进行主动响应] (https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [使用计划事件主动响应影响事件的 VM] (https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
 * [将每个应用程序层配置到不同的可用性集中]
 * [将负载均衡器与可用性集组合在一起]
 * [使用可用性区域防范数据中心级故障]

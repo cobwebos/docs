@@ -1,33 +1,32 @@
 ---
-title: "使用组来管理对 SaaS 应用程序的访问 | Microsoft 文档"
-description: "如何在 Azure Active Directory Premium 或 Basic 中使用组来分配与 Azure Active Directory 集成的 SaaS 应用程序的访问权限。"
+title: 使用组来管理对 SaaS 应用程序的访问 | Microsoft 文档
+description: 如何在 Azure Active Directory Premium 或 Basic 中使用组来分配与 Azure Active Directory 集成的 SaaS 应用程序的访问权限。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ab8dee63-bedc-46ca-8852-234f5c16ae98
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2017
+ms.date: 03/14/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: it-pro
-ms.openlocfilehash: 49a2c86516f0882f341597876d2a44ea3a312ea8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4aee5b28fd42be98fac8f9c7d61538319e3efd9a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>使用组来管理对 SaaS 应用程序的访问
-通过 Azure AD Premium 或 Azure AD Basic 许可证使用 Azure Active Directory (Azure AD) 时，可以使用组来分配与 Azure AD 集成的 SaaS 应用程序的访问权限。 例如，如果要为营销部分配使用五个不同 SaaS 应用程序所需的访问权限，则可以创建一个包含销售部用户的组，并将该组分配给营销部所需的这五个 SaaS 应用程序。 这样就可以在一个位置管理营销部的成员身份，从而节省了时间。 之后，当将用户添加为营销组的成员时，这些用户将分配到应用程序；当将用户从营销组中删除时，也会从应用程序中删除为其分配的权限。 此功能适用于可从 Azure AD 应用程序库中添加的数百个应用程序。
+通过 Azure AD Premium 或 Azure AD Basic 许可证使用 Azure Active Directory (Azure AD) 时，可以使用组来分配与 Azure AD 集成的 SaaS 应用程序的访问权限。 例如，如果要为营销部分配使用五个不同 SaaS 应用程序所需的访问权限，则可以创建一个包含销售部用户的组，然后将该组分配给营销部所需的这五个 SaaS 应用程序。 这样就可以在一个位置管理营销部的成员身份，从而节省了时间。 之后，当将用户添加为营销组的成员时，这些用户将分配到应用程序；当将用户从营销组中删除时，也会从应用程序中删除为其分配的权限。 此功能适用于可从 Azure AD 应用程序库中添加的数百个应用程序。
 
 > [!IMPORTANT]
-> 只有在开始试用 Azure AD Premium 或购买 Azure AD Premium/Azure AD Basic 许可证后，才能使用此功能。
-> 目前应用程序的基于组的分配不支持嵌套的组成员身份。
+> 只有在开始试用 Azure AD Premium 或购买 Azure AD Premium/Azure AD Basic 许可证后，才能使用此功能。 基于组的分配仅适用于安全组。 目前应用程序的基于组的分配不支持嵌套的组成员身份。
 
 **授予用户或组对 SaaS 应用程序的访问权限的具体步骤**
 

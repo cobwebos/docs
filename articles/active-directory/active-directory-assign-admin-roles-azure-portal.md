@@ -1,25 +1,25 @@
 ---
-title: "在 Azure Active Directory 中分配管理员角色 | Microsoft Docs"
-description: "管理员角色可以添加用户、分配管理角色、重置用户密码、管理用户许可证，或者管理域。 分配为管理员角色的用户在组织已订阅的所有云服务中具有相同的权限。"
+title: 在 Azure Active Directory 中分配管理员角色 | Microsoft Docs
+description: 管理员角色可以添加用户、分配管理角色、重置用户密码、管理用户许可证，或者管理域。 分配为管理员角色的用户在组织已订阅的所有云服务中具有相同的权限。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 1fed14fc117c7652e677a245625502c1810068ff
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 8ba4787852902f194deb3eee27ff9f0fc28fa5aa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中分配管理员角色
 
@@ -61,9 +61,9 @@ ms.lasthandoff: 02/14/2018
   >
   >
 
-* **来宾邀请者**：此角色中的用户可以管理 Azure Active Directory B2B 来宾用户邀请当“邀请成员”用户设置设置为“否”。 [关于 Azure AD B2B 协作预览版](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)中提供了有关 B2B 协作的详细信息。 它不包括任何其他权限。
+* **来宾邀请者**：此角色中的用户可以管理 Azure Active Directory B2B 来宾用户邀请当“邀请成员”用户设置设置为“否”。 [关于 Azure AD B2B 协作](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)中提供了有关 B2B 协作的详细信息。 它不包括任何其他权限。
 
-* **信息保护管理员(预览)**：具有此角色的用户仅对 Azure 信息保护服务具有用户权限。 他们未被授予对 Identity Protection Center、Privileged Identity Management、监视 Office 365 服务运行状况或 Office 365 安全与合规中心的用户权限。 他们可以配置 Azure 信息保护策略的标签、管理保护模板，以及激活保护。
+* **信息保护管理员**：具有此角色的用户仅对 Azure 信息保护服务具有用户权限。 他们未被授予对 Identity Protection Center、Privileged Identity Management、监视 Office 365 服务运行状况或 Office 365 安全与合规中心的用户权限。 他们可以配置 Azure 信息保护策略的标签、管理保护模板，以及激活保护。
 
 * **Intune 服务管理员**：具有此角色的用户在 Microsoft Intune Online（如果存在此服务）中拥有全局权限。 此外，此角色包含管理以关联策略，以及创建和管理组的用户和设备的能力。
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 02/14/2018
 | --- | --- |
 | <p>查看公司信息和用户信息</p><p>管理 Office 支持票证</p><p>只能为用户和其他支持管理员更改密码</p>|<p>为 Office 产品执行计费和采购操作</p><p>创建和管理用户视图</p><p>创建、编辑和删除用户与组，以及管理用户许可证</p><p>管理域</p><p>管理公司信息</p><p>向其他人委派管理角色</p><p>使用目录同步</p><p>查看报告</p>|
 
-### <a name="information-protection-administrator-preview"></a>信息保护管理员（预览）
+### <a name="information-protection-administrator"></a>信息保护管理员
 In | 有权执行的操作
 -------- | ---------
 Azure 信息保护 | <li>配置全局策略和作用域内策略中的标签和设置<li>配置和管理保护模板<li>激活或停用保护--

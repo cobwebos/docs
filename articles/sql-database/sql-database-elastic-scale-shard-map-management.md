@@ -1,32 +1,26 @@
 ---
-title: "扩大 Azure SQL 数据库 | Microsoft Docs"
-description: "如何使用弹性数据库客户端库 ShardMapManager"
+title: 扩大 Azure SQL 数据库 | Microsoft Docs
+description: 如何使用弹性数据库客户端库 ShardMapManager
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: 0e9d647a-9ba9-4875-aa22-662d01283439
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
-ms.author: ddove
-ms.openlocfilehash: fe4c8b7b2a9d199c85faf11fcd35382d586fc009
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.date: 03/16/2018
+ms.author: sstein
+ms.openlocfilehash: cf8d4427cddbe6368ac265fe9ecc0f408f7fb1fb
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>使用分片映射管理器扩大数据库
 若要轻松地扩大 SQL Azure 上的数据库，请使用分片映射管理器。 分片映射管理器是一个特殊的数据库，它维护一个分片集中有关所有分片 （数据库）的全局映射信息。 元数据允许应用程序基于**分片键**值连接到正确的数据库。 此外，在集中的每个分片都包含跟踪本地分片数据的映射 （称为 **shardlet**）。 
 
 ![分片映射管理](./media/sql-database-elastic-scale-shard-map-management/glossary.png)
 
-了解如何构建这些映射对于分片映射管理至关重要。 使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)中发现的 ShardMapManager 类（[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager)、[.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)）来完成此操作。  
+了解如何构建这些映射对于分片映射管理至关重要。 使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)中的 ShardMapManager 类（[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)）来完成此操作。  
 
 ## <a name="shard-maps-and-shard-mappings"></a>分片映射
 对每个分片而言必须选择要创建的分片映射类型。 选择取决于数据库架构： 
@@ -67,7 +61,7 @@ ms.lasthandoff: 12/08/2017
 ### <a name="list-shard-maps"></a>列表分片映射
 **分片**包含 **shardlet**，shardlet 到分片的映射由分片映射维护。 **列表分片映射**是可标识 shardlet 的单独键值和可用作分片的数据库之间的关联项。  “列表映射”是可以映射到同一个数据库的显式且不同的键值。 例如，键 1 映射到数据库 A，键值 3 和 6 都引用数据库 B。
 
-| 键 | 分片位置 |
+| 密钥 | 分片位置 |
 | --- | --- |
 | 1 |Database_A |
 | 3 |Database_B |
@@ -102,7 +96,7 @@ ShardMapManager 对象是使用工厂（[Java](/java/api/com.microsoft.azure.ela
 
 **请注意：**在应用程序的初始化代码内，每个应用域只应实例化 **ShardMapManager** 一次。 在同一个应用域中创建 ShardMapManager 的其他实例将导致应用程序的内存增加且 CPU 使用率增加。 **ShardMapManager** 可包含任意数量的分片映射。 尽管对于许多应用程序而言，单个分片映射可能是足够的，但有时针对不同的架构或出于特定目的，需使用不同的数据库集，在这些情况下多个分片可能更合适。 
 
-在此代码中，应用程序尝试使用 TryGetSqlShardMapManager（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.trygetsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)）方法打开现有的 ShardMapManager。  如果数据库中尚不存在表示全局 ShardMapManager (GSM) 的对象，客户端库会使用 CreateSqlShardMapManager（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.createsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)）方法在数据库中创建这些对象。
+在此代码中，应用程序尝试使用 TryGetSqlShardMapManager（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.trygetsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)）方法打开现有的 ShardMapManager。 如果数据库中尚不存在表示全局 ShardMapManager (GSM) 的对象，客户端库会使用 CreateSqlShardMapManager（[Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.createsqlshardmapmanager)、[.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)）方法在数据库中创建这些对象。
 
 ```Java
 // Try to get a reference to the Shard Map Manager in the shardMapManager database.

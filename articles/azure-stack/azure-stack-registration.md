@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 03/26/2018
 ms.author: jeffgilb
 ms.reviewer: avishwan
-ms.openlocfilehash: e51a15b197e875c35997cfe2ac96d673c01a80f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1dc3d9a96b9b27927cc8cc66b5e80987fba4f8ea
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 注册[Azure 堆栈](azure-stack-poc.md)与 Azure 允许你从 Azure 下载应用商店项并设置回向 Microsoft 报告的商业数据。 注册 Azure 堆栈后，使用情况报告给 Azure 商务和你可以在用于注册的订阅下看到它。 
@@ -58,7 +58,7 @@ Azure Stack 工具 GitHub 存储库包含支持 Azure Stack 功能（包括注�
 
 ### <a name="register-the-azure-stack-resource-provider"></a>注册 Azure Stack 资源提供程序
 若要将 Azure Stack 资源提供程序注册到 Azure，请以管理员身份启动 Powershell ISE 并使用以下 PowerShell 命令。 这些命令将会：
-- 提示你登录作为使用和设置的 Azure 订阅所有者`EnvironmentName`参数**AzureCloud**。
+- 提示你登录作为使用和设置的 Azure 订阅所有者**EnvironmentName**参数**AzureCloud**。
 - 注册 Azure 资源提供程序 **Microsoft.AzureStack**。
 
 1. 添加用于注册 Azure Stack 的 Azure 帐户。 若要添加的帐户，运行**添加 AzureRmAccount** cmdlet。 系统将提示你输入你的 Azure 全局管理员帐户凭据，并且你可能必须为使用双因素身份验证，具体情况视你的帐户的配置。
@@ -95,7 +95,7 @@ Import-Module .\RegisterWithAzure.psm1
 
 ```powershell
 $AzureContext = Get-AzureRmContext
-$CloudAdminCred = Get-Credential -UserName <Azure subscription owner>  -Message "Enter the cloud domain credentials to access the privileged endpoint"
+$CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials>  -Message "Enter the credentials to access the privileged endpoint"
 Set-AzsRegistration `
     -CloudAdminCredential $CloudAdminCred `
     -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
@@ -104,7 +104,7 @@ Set-AzsRegistration `
 
 |参数|说明|
 |-----|-----|
-|CloudAdminCredential|PowerShell 对象，其中包含 Azure 订阅所有者的凭据信息（用户名和密码）。|
+|CloudAdminCredential|包含用于访问特权终结点的凭据信息 （用户名和密码） 的 PowerShell 对象。|
 |PrivilegedEndpoint|预先配置的远程 PowerShell 控制台，提供的功能包括日志收集和其他部署后任务。 有关详细信息，请参阅[使用特权终结点](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint#access-the-privileged-endpoint)一文。|
 |BillingModel|订阅使用的计费模式。 此参数允许的值：Capacity、PayAsYouUse 和 Development。|
 
@@ -114,7 +114,7 @@ Set-AzsRegistration `
 要运行的 PowerShell：
 ```powershell
 $AzureContext = Get-AzureRmContext
-$CloudAdminCred = Get-Credential -UserName <Azure subscription owner>  -Message "Enter the cloud domain credentials to access the privileged endpoint"
+$CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials>  -Message "Enter the credentials to access the privileged endpoint"
 Set-AzsRegistration `
     -CloudAdminCredential $CloudAdminCred `
     -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
@@ -122,10 +122,10 @@ Set-AzsRegistration `
     -BillingModel Capacity
 ```
 
-## <a name="register-azure-stack-in-disconnected-environments"></a>在断开连接的环境中注册 Azure Stack 
+## <a name="register-azure-stack-in-disconnected-environments"></a>在离线环境中注册 Azure Stack 
 *本部分中的信息适用于 Azure Stack 1712 更新版 (180106.1) 和更高版本，不支持更低的版本。*
 
-若要在断开连接的环境（未建立 Internet 连接）中注册 Azure Stack，需要从 Azure Stack 环境获取注册令牌，然后在可连接到 Azure 并已[安装适用于 Azure Stack 的 PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install) 的计算机上使用该令牌。  
+若要在离线环境（未建立 Internet 连接）中注册 Azure Stack，需要从 Azure Stack 环境获取注册令牌，然后在可连接到 Azure 并已[安装适用于 Azure Stack 的 PowerShell](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install) 的计算机上使用该令牌。  
 
 ### <a name="get-a-registration-token-from-the-azure-stack-environment"></a>从 Azure Stack 环境获取注册令牌
   1. 若要获取注册令牌，请运行以下 PowerShell 命令：  

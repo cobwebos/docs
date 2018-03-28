@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 188f02aa69d7b39bc5bc4873b437825107a7ae4e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>如何配置联接到混合 Azure Active Directory 的设备
 
@@ -62,7 +62,13 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-在组织中开始启用联接到混合 Azure AD 的设备之前，需确保运行最新版本的 Azure AD Connect。
+在组织中开始启用已加入混合 Azure AD 的设备之前，需要确保以下项：
+
+- 运行的是最新版本的 Azure AD connect。
+
+- Azure AD connect 已将要加入混合 Azure AD 的设备的计算机对象同步到 Azure AD。 如果这些计算机对象属于特定组织单位 (OU)，则也需要在 Azure AD connect 中配置这些 OU 以进行同步。
+
+  
 
 Azure AD Connect：
 
@@ -145,7 +151,7 @@ cmdlet：
 `Initialize-ADSyncDomainJoinedComputerSync` cmdlet：
 
 - 使用 Active Directory PowerShell 模块和 AD DS 工具，这些模块和工具依赖于域控制器中运行的 Active Directory Web 服务。 运行 Windows Server 2008 R2 和更高版本的域控制器支持 Active Directory Web 服务。
-- 仅受 MSOnline PowerShell 模块 1.1.166.0 版支持。 要下载此模块，请使用此[链接](http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)。   
+- 仅受 MSOnline PowerShell 模块 1.1.166.0 版支持。 要下载此模块，请使用此[链接](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/)。   
 - 如果未安装 AD DS 工具，`Initialize-ADSyncDomainJoinedComputerSync` 将失败。  可以通过服务器管理器（在“功能”-“远程服务器管理工具”-“角色管理工具”下）安装 AD DS 工具。
 
 对于运行 Windows Server 2008 或更低版本的域控制器，可使用以下脚本创建服务连接点。

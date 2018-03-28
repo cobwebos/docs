@@ -1,48 +1,59 @@
 ---
-title: "为 Azure Active Directory 中的 Office 应用程序启用或禁用 LinkedIn 集成 | Microsoft Docs"
-description: "介绍如何为 Azure Active Directory 中的 Microsoft 应用启用或禁用 LinkedIn 集成"
+title: 为 Azure Active Directory 中的 Microsoft 应用和服务启用 LinkedIn 连接 | Microsoft Docs
+description: 介绍如何为 Azure Active Directory 中的 Microsoft 应用启用或禁用 LinkedIn 帐户连接
 services: active-directory
 author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: cdfb5458b020e9d3a3f33cecbeb0ee7b9a48909d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3bf224edea9e6da0d0eadb6fb6a409248de3d0e3
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="linkedin-integration-for-office-applications"></a>Office 应用程序的 LinkedIn 集成
-本文介绍如何将用户访问权限限制给 Azure Active Directory (Azure AD) 中提供了 LinkedIn 集成的用户。 将 LinkedIn 集成添加到租户时，默认会启用该集成，这样，用户便可以在其某些 Microsoft 应用中访问公开的 LinkedIn 数据。 每个用户可以独立地选择将其工作或学校帐户连接到其 LinkedIn 帐户。
+# <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>Microsoft 应用和服务的 LinkedIn 帐户连接
+本文介绍如何在 Azure Active Directory (Azure AD) 管理中心管理租户的 LinkedIn 帐户连接。 
 
 > [!IMPORTANT]
-> 不会同时将 LinkedIn 集成部署到所有 Azure AD 租户。 将 LinkedIn 集成推出到 Azure 租户后，默认会启用该集成。 LinkedIn 集成 不可用于本地化租户、主权租户和政府租户。 有关推出信息的最新视图，请参阅 [Office 365 路线图](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc)页。
+> 我们目前正在推出适用于 Azure AD 租户的 LinkedIn 帐户连接功能。 针对你的租户推出此功能后，默认会启用此功能。 此功能不适用于美国政府客户，以及使用托管在澳大利亚、加拿大、中国、法国、德国、印度、韩国、英国、日本和南非的 Exchange Online 邮箱的组织。 对这些邮箱位置的支持即将推出。  有关推出信息的最新视图，请参阅 [Office 365 路线图](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc)页。
 
-## <a name="linkedin-integration-from-the-user-perspective"></a>从用户的角度来看 LinkedIn 集成
-当组织中的用户将其 LinkedIn 帐户连接到其工作或学校帐户时，即表示[他们允许 LinkedIn 提供所需的数据](https://www.linkedin.com/help/linkedin/answer/84077)，以便在组织提供的 Microsoft 应用和服务中使用。 [用户可以断开连接帐户](https://www.linkedin.com/help/linkedin/answer/85097)，这样，便会删除 LinkedIn 与 Microsoft 共享数据的权限。 LinkedIn 集成使用公开的 LinkedIn 配置文件信息。 用户可以使用 LinkedIn 隐私设置（包括是否可以在 Microsoft 应用中查看其个人资料），来[控制其自己的 LinkedIn 个人资料的查看方式](https://www.linkedin.com/help/linkedin/answer/83)。
+## <a name="how-linkedin-account-connections-appear-to-the-user"></a>如何向用户显示 LinkedIn 帐户连接
+用户可以使用 LinkedIn 帐户连接在其某些 Microsoft 应用中查看公开的 LinkedIn 个人资料信息。 租户中的用户可以选择连接其 LinkedIn 和 Microsoft 工作或学校帐户，以查看更多的 LinkedIn 个人资料信息。 有关详细信息，请参阅 [Microsoft 应用和服务中的 LinkedIn 信息与功能](https://go.microsoft.com/fwlink/?linkid=850740)。
+
+当组织中的用户连接其 LinkedIn 和 Microsoft 工作或学校帐户时，可以做出两种选择： 
+* 授予在两个帐户之间共享数据的权限。 这意味着，他们可以向 LinkedIn 帐户授予与 Microsoft 工作或学校帐户共享数据的权限，以及向 Microsoft 工作或学校帐户授予与 LinkedIn 帐户共享数据的权限。 与 LinkedIn 共享的数据会脱离联机服务。 
+* 授予仅限在 LinkedIn 帐户中向 Microsoft 工作和学校帐户共享数据的权限
+
+有关在用户 LinkedIn 帐户与 Microsoft 工作或学校帐户之间共享的数据的详细信息，请参阅 [Microsoft 工作或学校应用程序中的 LinkedIn](https://www.linkedin.com/help/linkedin/answer/84077)。 
+* [用户随时可以断开帐户连接](https://www.linkedin.com/help/linkedin/answer/85097)并删除数据共享权限。 
+* [用户可以控制其自己的 LinkedIn 个人资料的查看方式](https://www.linkedin.com/help/linkedin/answer/83)，包括是否可以在 Microsoft 应用中查看其个人资料。
 
 ## <a name="privacy-considerations"></a>隐私注意事项
-在 Azure AD 中启用 LinkedIn 集成可让 Microsoft 应用和服务访问用户的一些 LinkedIn 信息。 在 Azure AD 中启用 LinkedIn 集成时，阅读 [Microsoft 隐私声明](https://privacy.microsoft.com/privacystatement/)，了解有关隐私注意事项的详细信息。 
+启用 LinkedIn 帐户连接可让 Microsoft 应用和服务访问用户的某些 LinkedIn 信息。 请参阅 [Microsoft 隐私声明](https://privacy.microsoft.com/privacystatement/)，详细了解在 Azure AD 中启用 LinkedIn 帐户连接时的隐私注意事项。 
 
-## <a name="manage-linkedin-integration"></a>管理 LinkedIn 集成
-在 Azure AD 中，面向企业的 LinkedIn 集成默认情况下已启用。 启用 LinkedIn 集成可让组织中的所有用户使用 Microsoft 服务中的 LinkedIn 功能，例如，在 Outlook 中查看 LinkedIn 个人资料。 禁用 LinkedIn 集成会从 Microsoft 应用和服务中删除 LinkedIn 功能，并停止通过 Microsoft 服务在 LinkedIn 与组织之间共享数据的功能。
+## <a name="manage-linkedin-account-connections"></a>管理 LinkedIn 帐户连接
+默认已经为整个租户启用了 LinkedIn 帐户连接功能。 可以选择针对整个租户禁用 LinkedIn，或者针对租户中的选定用户启用 LinkedIn 帐户连接。 
 
-### <a name="enable-or-disable-linkedin-integration-for-your-organization-in-the-azure-portal"></a>在 Azure 门户中为组织启用或禁用 LinkedIn 集成
+### <a name="enable-or-disable-linkedin-account-connection-for-your-tenant-in-the-azure-portal"></a>在 Azure 门户中为租户启用或禁用 LinkedIn 帐户连接
 
 1. 使用 Azure AD 租户的全局管理员帐户登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)。
 2. 选择“用户”。
 3. 在“用户”边栏选项卡中，选择“用户设置”。
-4. 在“LinkedIn 集成”下，选择“是”或“否”，以启用或禁用 LinkedIn 集成。
-   ![启用 LinkedIn 集成](./media/linkedin-integration/LinkedIn-integration.PNG)
+4. 在“LinkedIn 帐户连接”下：
+  * 选择“是”，为租户中的所有用户启用 LinkedIn 帐户连接
+  * 选择“选定”，只为选定的租户用户启用 LinkedIn 帐户连接
+  * 选择“否”，针对所有用户禁用 LinkedIn 帐户连接 ![启用 LinkedIn 帐户连接](./media/linkedin-integration/LinkedIn-integration.png)
+5. 设置完成后，选择“保存”来保存设置。
 
-### <a name="enable-or-disable-linkedin-integration-for-your-organizations-office-2016-apps-using-group-policy"></a>使用组策略为组织的 Office 2016 应用启用或禁用 LinkedIn 集成
+### <a name="enable-or-disable-linkedin-account-connections-for-your-organizations-office-2016-apps-using-group-policy"></a>使用组策略为组织的 Office 2016 应用启用或禁用 LinkedIn 帐户连接
 
 1. 下载 [Office 2016 管理模板文件 (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
 2. 提取 **ADMX** 文件，并将其复制到**中心存储库**。
@@ -60,6 +71,6 @@ ms.lasthandoff: 03/02/2018
 * [LinkedIn 帮助中心](https://www.linkedin.com/help/linkedin)
 
 ## <a name="next-steps"></a>后续步骤
-使用以下链接查看 Azure 门户中的当前 LinkedIn 集成设置：
+使用以下链接查看 Azure 门户中的当前 LinkedIn 帐户连接设置：
 
-[配置 LinkedIn 集成](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings) 
+[配置 LinkedIn 帐户连接](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings) 

@@ -1,11 +1,11 @@
 ---
-title: "为 Azure 应用商店创建产品/服务的非技术先决条件 | Microsoft Docs"
-description: "了解创建产品/服务并将其部署到 Azure 应用商店以供其他人购买的要求。"
+title: 为 Azure Marketplace 创建产品/服务的非技术先决条件 | Microsoft Docs
+description: 了解创建产品/服务并将其部署到 Azure Marketplace 以供其他人购买的要求。
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 3dae463b-8f48-4f52-8fa8-4e3975f09f43
 ms.service: marketplace
 ms.devlang: na
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/18/2016
-ms.author: hascipio
-ms.openlocfilehash: 4f86d444a2f2b97fd8605d480db358813bc39fd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 5c30e62bf345843fe83b3f17b728e1a937d19ce3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>为 Azure 应用商店创建产品/服务的一般先决条件
+# <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>为 Azure Marketplace 创建产品/服务的一般先决条件
 了解推进其他产品/服务过程所需的一般、以业务流程为中心的先决条件。
 
 ## <a name="ensure-that-you-are-registered-as-a-seller-with-microsoft"></a>确保向 Microsoft 注册为卖家
@@ -60,25 +60,25 @@ ms.lasthandoff: 10/11/2017
 > [!IMPORTANT]
 > 如果计划仅发布免费产品/服务（或自带许可证），则无需完成公司税务和银行信息。
 > 
-> 必须完成公司注册才能开始。 但是，当公司在 Microsoft 开发人员帐户中处理税务和银行信息时，开发人员可以开始在[发布门户](https://publish.windowsazure.com)中着手创建虚拟机映像、使其获得认证，并在 Azure 过渡环境中测试它。 仅在向 Azure 应用商店发布产品/服务的最后一步中需要完整的卖家帐户批准。
+> 必须完成公司注册才能开始。 但是，当公司在 Microsoft 开发人员帐户中处理税务和银行信息时，开发人员可以开始在[发布门户](https://publish.windowsazure.com)中着手创建虚拟机映像、使其获得认证，并在 Azure 过渡环境中测试它。 仅在向 Azure Marketplace 发布产品/服务的最后一步中需要完整的卖家帐户批准。
 > 
 > 
 
 ## <a name="acquire-an-azure-pay-as-you-go-subscription"></a>获取“即付即用”订阅
-这是用于创建 VM 映像并将这些映像分发到 [Azure 应用商店](https://azure.microsoft.com/marketplace/)的订阅。 如果没有现有订阅，请在 https://account.windowsazure.com/signup?offer=ms-azr-0003p 注册。
+这是用于创建 VM 映像并将这些映像分发到 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 的订阅。 如果没有现有订阅，请在 https://account.windowsazure.com/signup?offer=ms-azr-0003p 注册。
 
 ## <a name="sell-from-countries"></a>“销售”国家/地区
 > [!WARNING]
-> 若要在 Azure 应用商店销售服务，必须确保注册实体来自已批准的“销售”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关完整列表，请参阅 [Azure 应用商店参与策略](http://go.microsoft.com/fwlink/?LinkID=526833)的第 1b 部分。
+> 若要在 Azure Marketplace 销售服务，必须确保注册实体来自已批准的“销售”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关完整列表，请参阅 [Azure Marketplace 参与策略](http://go.microsoft.com/fwlink/?LinkID=526833)的第 1b 部分。
 > 
 > 
 
 ## <a name="next-steps"></a>后续步骤
-完成非技术先决条件后，接下来是特定于产品/服务的技术先决条件。 单击指向要为 Azure 应用商店创建的各个产品/服务类型的相关文章的链接。
+完成非技术先决条件后，接下来是特定于产品/服务的技术先决条件。 单击指向要为 Azure Marketplace 创建的各个产品/服务类型的相关文章的链接。
 
 * [VM 技术先决条件](marketplace-publishing-vm-image-creation-prerequisites.md)
 * [解决方案模板技术先决条件](marketplace-publishing-solution-template-creation-prerequisites.md)
 
 ## <a name="see-also"></a>另请参阅
-* [入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)
+* [入门：如何将产品/服务发布到 Azure Marketplace](marketplace-publishing-getting-started.md)
 

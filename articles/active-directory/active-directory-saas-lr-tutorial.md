@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 lr 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 与 lr 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 LoginRadius 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 LoginRadius 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,32 +12,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 03/13/2018
 ms.author: jeedes
-ms.openlocfilehash: f7728c37db286b130a79db1353ee40825e8a4336
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 22f937a2ae9a2c715ce0866c2db0ac17769f0399
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lr"></a>教程：Azure Active Directory 与 lr 集成
+# <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>教程：Azure Active Directory 与 LoginRadius 集成
 
-本教程介绍如何将 lr 与 Azure Active Directory (Azure AD) 集成。
+本教程介绍如何将 LoginRadius 与 Azure Active Directory (Azure AD) 集成。
 
-将 lr 与 Azure AD 集成提供以下优势：
+将 LoginRadius 与 Azure AD 集成可提供以下优势：
 
-- 可在 Azure AD 中控制谁有权访问 lr。
-- 可以让用户使用其 Azure AD 帐户自动登录到 lr（单一登录）。
+- 可以在 Azure AD 中控制谁有权访问 LoginRadius。
+- 可以让用户使用其 Azure AD 帐户自动登录到 LoginRadius（单一登录）。
 - 可在中心位置（即 Azure 门户）管理帐户。
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与 lr 的集成，需要以下项：
+若要配置 Azure AD 与 LoginRadius 的集成，需要以下项目：
 
 - Azure AD 订阅
-- 已启用 lr 单一登录的订阅
+- 启用了 LoginRadius 单一登录的订阅
 
 > [!NOTE]
 > 为了测试本教程中的步骤，我们不建议使用生产环境。
@@ -50,13 +50,13 @@ ms.lasthandoff: 02/01/2018
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-1. 从库中添加 lr
+1. 从库中添加 LoginRadius
 2. 配置和测试 Azure AD 单一登录
 
-## <a name="adding-lr-from-the-gallery"></a>从库中添加 lr
-若要配置 lr 与 Azure AD 的集成，需要从库中将 lr 添加到托管 SaaS 应用列表。
+## <a name="adding-loginradius-from-the-gallery"></a>从库中添加 LoginRadius
+若要配置 LoginRadius 与 Azure AD 的集成，需要从库中将 LoginRadius 添加到托管的 SaaS 应用列表。
 
-**若要从库中添加 lr，请执行以下步骤：**
+**若要从库中添加 LoginRadius，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
 
@@ -70,58 +70,58 @@ ms.lasthandoff: 02/01/2018
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“lr”，在结果面板中选择“lr”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“LoginRadius”，在结果面板中选择“LoginRadius”，然后单击“添加”按钮添加该应用程序。
 
-    ![结果列表中的 lr](./media/active-directory-saas-lr-tutorial/tutorial_lr_addfromgallery.png)
+    ![结果列表中的 LoginRadius](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 lr 的 Azure AD 单一登录。
+在本部分中，将基于名为“Britta Simon”的测试用户使用 LoginRadius 配置和测试 Azure AD 单一登录。
 
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 lr 用户。 换句话说，需要建立 Azure AD 用户与 lr 中相关用户之间的链接关系。
+若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 LoginRadius 用户。 换句话说，需要建立 Azure AD 用户与 LoginRadius 中相关用户之间的链接关系。
 
-若要配置和测试 lr 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置并测试 LoginRadius 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 lr 测试用户](#create-a-lr-test-user)** - 在 lr 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+3. **[创建 LoginRadius 测试用户](#create-a-loginradius-test-user)** - 在 LoginRadius 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 lr 应用程序中配置单一登录。
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 LoginRadius 应用程序中配置单一登录。
 
-**若要配置 lr 的 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 LoginRadius 的 Azure AD 单一登录，请执行以下步骤：**
 
-1. 在 Azure 门户的 lr 应用程序集成页上，单击“单一登录”。
+1. 在 Azure 门户中的 LoginRadius 应用程序集成页上，单击“单一登录”。
 
     ![配置单一登录链接][4]
 
 2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
  
-    ![“单一登录”对话框](./media/active-directory-saas-lr-tutorial/tutorial_lr_samlbase.png)
+    ![“单一登录”对话框](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_samlbase.png)
 
-3. 在“lr 域和 URL”部分中，执行以下步骤：
+3. 在“LoginRadius 域和 URL”部分中，执行以下步骤：
 
-    ![lr 域和 URL 单一登录信息](./media/active-directory-saas-lr-tutorial/tutorial_lr_url.png)
+    ![LoginRadius 域和 URL 单一登录信息](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_url.png)
 
     a.  在“登录 URL”文本框中，键入 URL `https://secure.loginradius.com/login`
 
-    b. 在“标识符”文本框中，键入一个 URL：`https://lr.hub.loginradius.com/`
+    b. 在“标识符”文本框中，键入一个 URL：`https://LoginRadius.hub.loginradius.com/`
      
     > [!NOTE] 
-    > 打开“登录 URL”页。 单击“单一登录”标签页并输入 [lr 支持团队](mailto:support@loginradius.com)提供的**插件名称**，然后单击“登录”按钮，此时将重定向到 Azure AD 页进行登录。 
+    > 打开“登录 URL”页。 单击“单一登录”标签页并输入 [LoginRadius 支持团队](mailto:support@loginradius.com)提供的**插件名称**，然后单击“登录”按钮，此时将重定向到 Azure AD 页进行登录。 
 
 5. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
-    ![证书下载链接](./media/active-directory-saas-lr-tutorial/tutorial_lr_certificate.png) 
+    ![证书下载链接](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_certificate.png) 
 
 6. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-lr-tutorial/tutorial_general_400.png)
     
-7. 若要在 lr 端配置单一登录，需要将下载的元数据 XML 发送给 [lr 支持团队](mailto:support@loginradius.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+7. 若要在 LoginRadius 端配置单一登录，需将下载的元数据 XML 发送给 [LoginRadius 支持团队](mailto:support@loginradius.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -156,27 +156,27 @@ ms.lasthandoff: 02/01/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
-### <a name="create-a-lr-test-user"></a>创建 lr 测试用户
+### <a name="create-a-loginradius-test-user"></a>创建 LoginRadius 测试用户
 
-本部分将在 lr 中创建一个名为“Britta Simon”的用户。 请与 [lr 支持团队](mailto:support@loginradius.com)协作，将用户添加到 lr 平台中。 使用单一登录前，必须先创建并激活用户。 
+本部分将在 LoginRadius 中创建名为“Britta Simon”的用户。 协助 [LoginRadius 支持团队](mailto:support@loginradius.com)将用户添加到 LoginRadius 平台中。 使用单一登录前，必须先创建并激活用户。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 lr 的权限，允许其使用 Azure 单一登录。
+在本部分中，通过授予 Britta Simon 访问 LoginRadius 的权限，允许其使用 Azure 单一登录。
 
 ![分配用户角色][200] 
 
-**若要将 Britta Simon 分配到 lr，请执行以下步骤：**
+**若要将 Britta Simon 分配到 LoginRadius，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 
     ![分配用户][201] 
 
-2. 在应用程序列表中，选择“lr”。
+2. 在应用程序列表中，选择“LoginRadius”。
 
-    ![应用程序列表中的 lr 链接](./media/active-directory-saas-lr-tutorial/tutorial_lr_app.png)  
+    ![应用程序列表中的 LoginRadius 链接](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_app.png)  
 
 3. 在左侧菜单中，单击“用户和组”。
 
@@ -196,7 +196,7 @@ ms.lasthandoff: 02/01/2018
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“lr”磁贴时，应该会自动登录到 lr 应用程序。
+单击访问面板中的 LoginRadius 磁贴时，应自动登录到 LoginRadius 应用程序。
 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
 
 ## <a name="additional-resources"></a>其他资源

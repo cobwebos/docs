@@ -1,42 +1,63 @@
 ---
-title: "使用 JSON 根据逻辑应用定义生成 - Azure 逻辑应用| Microsoft Docs"
-description: "添加参数、处理字符串、创建参数映射和使用日期函数获取数据"
+title: 创建、编辑或扩展逻辑应用定义的 JSON - Azure 逻辑应用 | Microsoft Docs
+description: 使用 JSON 编写和自定义逻辑应用定义
 author: ecfan
-manager: anneta
-editor: 
+manager: SyntaxC4
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: integration
+ms.workload: logic-apps
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.custom: H1Hack27Feb2017
-ms.date: 01/31/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: d05f7e34cbe670db6733c199e3420c810c304a84
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.date: 01/01/2018
+ms.author: estfan; LADocs
+ms.openlocfilehash: bde275eb75c97da2a99109484b46b599a5b2f871
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="build-on-your-logic-app-definition-with-json"></a>使用 JSON 根据逻辑应用定义生成
+# <a name="create-edit-or-customize-json-for-logic-app-definitions"></a>创建、编辑或自定义逻辑应用定义的 JSON
 
-若要使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)执行更高级的任务，可以使用代码视图编辑逻辑应用定义，该定义使用简单的声明性 JSON 语言。 首先请查看[如何创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)（如果尚未这样做）。 另请参阅[工作流定义语言参考大全](http://aka.ms/logicappsdocs)。
+在 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)中使用自动化工作流创建企业集成解决方案时，基础逻辑应用定义会将简单的声明性 JavaScript 对象表示法 (JSON) 以及[工作流定义语言 (WDL) 架构](../logic-apps/logic-apps-workflow-definition-language.md)用于说明和验证。 这些格式使得逻辑应用定义更易于阅读和理解，无需让用户详细了解代码。 若要自动创建和部署逻辑应用，可在 [Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md#template-deployment)中将逻辑应用定义包含为 [Azure 资源](../azure-resource-manager/resource-group-overview.md)。 若要创建、管理和部署逻辑应用，可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp)、[Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 或 [Azure 逻辑应用 REST API](https://docs.microsoft.com/rest/api/logic/)。
+
+若要在 JSON 中处理逻辑应用定义，请在 Azure 门户中打开“代码视图”编辑器，或者在 Visual Studio 中将定义复制到任何所需的编辑器。 如果你不熟悉逻辑应用，请查看[如何创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 > [!NOTE]
-> 仅当在逻辑应用定义的代码视图中工作时，某些 Azure 逻辑应用功能（如参数）才可用。 使用参数可在整个逻辑应用中重复使用值。 例如，如果要在多个操作中使用同一电子邮件地址，请将该电子邮件地址定义为参数。
+> 某些 Azure 逻辑应用功能（例如，在逻辑应用定义中定义参数和多个触发器）只能在 JSON 中使用，而不能在逻辑应用设计器中使用。 因此，对于这些任务，必须在“代码视图”或其他编辑器中处理。
 
-## <a name="view-and-edit-your-logic-app-definitions-in-json"></a>查看和编辑 JSON 格式的逻辑应用定义
+## <a name="edit-json---azure-portal"></a>编辑 JSON - Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.com "Azure portal")。
+1. 登录到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>。
 
-2. 在左侧菜单中选择“更多服务”。 在“Enterprise Integration”下选择“逻辑应用”。 选择逻辑应用。
+2. 在左侧菜单中选择“所有服务”。 在搜索框中查找“逻辑应用”，然后在结果中选择择自己的逻辑应用。
 
-3. 在逻辑应用菜单的“开发工具”下，选择“逻辑应用代码视图”。
+3. 在逻辑应用菜单中的“开发工具”下，选择“逻辑应用代码视图”。
 
-   此时代码视图窗口将打开并显示逻辑应用定义。
+   “代码视图”编辑器将会打开并显示 JSON 格式的逻辑应用定义。
+
+## <a name="edit-json---visual-studio"></a>编辑 JSON - Visual Studio
+
+在 Visual Studio 中处理逻辑应用定义之前，请确保已[安装所需的工具](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites)。 若要使用 Visual Studio 创建逻辑应用，请查看[快速入门：使用 Azure 逻辑应用自动完成任务和流程 - Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
+
+在 Visual Studio 中，可以打开以前直接通过 Azure 门户，或者在 Visual Studio 中作为 Azure 资源管理器项目创建和部署的逻辑应用。
+
+1. 打开包含逻辑应用的 Visual Studio 解决方案或 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)项目。
+
+2. 找到并打开逻辑应用的定义，默认情况下，该定义显示在[资源管理器模板](../azure-resource-manager/resource-group-overview.md#template-deployment)中，其名为 **LogicApp.json**。 可以使用并自定义此模板，以部署到不同的环境中。
+
+3. 打开逻辑应用定义和模板的快捷菜单。 选择“使用逻辑应用设计器打开”。
+
+   ![在 Visual Studio 解决方案中打开逻辑应用](./media/logic-apps-author-definitions/open-logic-app-designer.png)
+
+4. 在设计器底部，选择“代码视图”。 
+
+   “代码视图”编辑器将会打开并显示 JSON 格式的逻辑应用定义。
+
+5. 若要返回设计器视图，请在“代码视图”编辑器的底部选择“设计”。
 
 ## <a name="parameters"></a>parameters
 

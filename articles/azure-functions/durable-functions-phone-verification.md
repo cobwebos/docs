@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions 中的人机交互和超时 - Azure"
-description: "了解如何在 Azure Functions 的 Durable Functions 中处理人机交互和超时。"
+title: Durable Functions 中的人机交互和超时 - Azure
+description: 了解如何在 Azure Functions 的 Durable Functions 中处理人机交互和超时。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 1763c63b37c5e6b326c3623dc058974f718ac990
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: e0b919ae5ef0639c8afdc5f9b006d899c8dbc4c1
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
 
@@ -35,21 +35,13 @@ ms.lasthandoff: 12/05/2017
 
 电话验证用于验证应用程序的最终用户不是垃圾邮件发送者，且他们提供的是真实身份。 多重身份验证是保护用户帐户免受黑客攻击的常见用例。 实现自己的电话验证需要面临的挑战是，它需要与人进行有状态交互。 最终用户通常会获得一些代码（例如一个 4 位数字），且必须在合理的时间内响应。
 
-普通的 Azure Functions 是无状态的（正如其他平台上的许多其他云终结点一样），因此这些类型的交互需要在数据库或某些其他永久性存储外部显式管理状态。 此外，需要将交互分解为多个可一起进行协调的函数。 例如，需要至少一个函数用于确定代码、将其持久保存在某个位置并发送至用户的电话。 此外，还需要至少一个其他函数来接收用户的响应，并以某种方式映射回原始函数调用，以实现代码验证。 超时也是保证安全的一个重要方面。 这可能很快就会变得相当复杂。
+普通的 Azure Functions 是无状态的（正如其他平台上的许多其他云终结点一样），因此这些类型的交互需要在外部的数据库或某种其他永久性存储中显式管理状态。 此外，需要将交互分解为多个可一起进行协调的函数。 例如，需要至少一个函数用于确定代码、将其持久保存在某个位置并发送至用户的电话。 此外，还需要至少一个其他函数来接收用户的响应，并以某种方式映射回原始函数调用，以实现代码验证。 超时也是保证安全的一个重要方面。 这可能很快就会变得相当复杂。
 
-如果使用 Durable Functions，可大大降低此方案的复杂性。 如此示例中所示，业务流程协调程序函数可以很轻松地管理有状态交互，且无需任何外部数据存储。 由于业务流程协调程序函数是持久的，因此这些交互流也非常可靠。
+如果使用 Durable Functions，可大大降低此方案的复杂性。 如此示例中所示，业务流程协调程序函数可以轻松地管理有状态交互，且无需任何外部数据存储。 由于业务流程协调程序函数是持久的，因此这些交互流也非常可靠。
 
 ## <a name="configuring-twilio-integration"></a>配置 Twilio 集成
 
-此示例涉及使用 [Twilio](https://www.twilio.com/) 服务向移动电话发送短信。 Azure Functions 已通过 [Twilio 绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio)提供对 Twilio 的支持，此示例使用了这一功能。
-
-首先，需要一个 Twilio 帐户。 可以在 https://www.twilio.com/try-twilio 上免费创建一个该帐户。 创建帐户以后，向函数应用添加以下三个**应用设置**。
-
-| 应用设置名称 | 值说明 |
-| - | - |
-| TwilioAccountSid  | Twilio 帐户的 SID |
-| TwilioAuthToken   | Twilio 帐户的身份验证令牌 |
-| TwilioPhoneNumber | 与 Twilio 帐户关联的电话号码。 此电话号码用于发送短信。 |
+[!INCLUDE [functions-twilio-integration](../../includes/functions-twilio-integration.md)]
 
 ## <a name="the-functions"></a>函数
 
@@ -58,7 +50,7 @@ ms.lasthandoff: 12/05/2017
 * E4_SmsPhoneVerification
 * E4_SendSmsChallenge
 
-以下各节介绍用于 Azure 门户开发的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
+以下部分介绍用于 Azure 门户开发的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
  
 ## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS 验证业务流程（Visual Studio Code 和 Azure 门户的示例代码） 
 
@@ -77,7 +69,7 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 3. 创建可从当前时间开始触发 90 秒的持久计时器。
 4. 与计时器一起，等待来自用户的 SmsChallengeResponse 事件。
 
-用户可收到一条含 4 位数代码的短信。 用户需要在 90 秒内将相同的 4 位数代码发送回业务流程协调程序函数实例，以便完成验证过程。 如果提交的代码不正确，可额外尝试 3 次进行纠正（在相同的 90 秒时间段内）。
+用户会收到一条含 4 位数代码的短信。 用户需要在 90 秒内将相同的 4 位数代码发送回业务流程协调程序函数实例，以便完成验证过程。 如果提交的代码不正确，可额外尝试 3 次进行更正（在相同的 90 秒时间段内）。
 
 > [!NOTE]
 > 起初可能并不明显，但这个业务流程协调程序函数是完全确定的函数。 这是因为 `CurrentUtcDateTime` 属性用于计算计时器到期时间，且此属性在每次在业务流程协调程序代码中的此时点进行重播均返回相同的值。 必须确保对 `winner` 的每次重复调用均产生相同的 `Task.WhenAny` 结果。
@@ -99,7 +91,7 @@ E4_SendSmsChallenge 函数仅被调用一次，即使进程崩溃或进行重播
 
 ## <a name="run-the-sample"></a>运行示例
 
-通过使用示例中包含的 HTTP 触发型函数，可以通过发送以下 HTTP POST 请求来启动业务流程。
+使用示例中包含的 HTTP 触发型函数，可以通过发送以下 HTTP POST 请求来启动业务流程：
 
 ```
 POST http://{host}/orchestrators/E4_SmsPhoneVerification

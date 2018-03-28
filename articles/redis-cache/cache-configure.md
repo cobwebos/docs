@@ -14,11 +14,11 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: fa78c42ce93729379d3c532f94bc67bb8c069d53
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2e2e22c17bce4bdaf4988001db8de31b68f497fc
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -279,8 +279,6 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 
 > [!IMPORTANT]
 > 即使配置了防火墙规则，仍始终允许来自 Azure Redis 缓存监视系统的连接。
-> 
-> 防火墙规则仅适用于高级层缓存。
 > 
 > 
 

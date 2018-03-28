@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: 7eaf4c3c9b390e87dd8494cd6bfb2ea155451608
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d096d6fd4664fecc9c759d683ed79e76cda9b6af
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>使用 Microsoft Azure 导入/导出服务将数据传输到 Azure 存储中
 本文分步介绍如何使用 Azure 导入/导出服务将磁盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 存储和 Azure 文件。 此外，还可以使用此服务将数据从 Azure 存储传输到硬盘驱动器，然后再寄送到本地站点。 可将单个内部 SATA 磁盘驱动器中的数据导入 Azure Blob 存储或 Azure 文件。 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/12/2018
 2.  根据数据的总大小，采购所需数目的 2.5 英寸 SSD 或者 2.5/3.5 英寸 SATA II 或 III 硬盘驱动器。
 3.  直接使用 SATA 或通过外部 USB 适配器将硬盘驱动器附加到 Windows 计算机。
 1.  在每个硬盘驱动器上创建一个 NTFS 卷，并向该卷分配一个驱动器号。 没有装入点。
-2.  若要在 Windows 计算机上启用加密，请启用 NTFS 卷上的 bit locker 加密。 使用 https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx 上的说明。
+2.  若要在 Windows 计算机上启用加密，请启用 NTFS 卷上的 bit locker 加密。 请使用 https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx 中的说明。
 3.  使用复制粘贴或拖放操作，或使用 RoboCopy 或任何类似的工具将数据完全复制到磁盘上这些加密的 NTFS 卷。
 7.  从 https://www.microsoft.com/en-us/download/details.aspx?id=42659 下载 WAImportExport V1
 8.  解压缩到默认文件夹 waimportexportv1。 例如，C:\WaImportExportV1  
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/12/2018
 10. 将以下命令行复制到文本编辑器并进行编辑，以创建命令行：
 
     ```
-    ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ 
+    ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ /skipwrite 
     ```
     
     下表介绍了这些命令行选项：
@@ -47,10 +47,10 @@ ms.lasthandoff: 03/12/2018
     |/j:     |带有 .jrn 扩展名的日志文件的名称。 会为每个驱动器生成一个日志文件。 建议使用磁盘序列号作为日志文件名。         |
     |/sk:     |Azure 存储帐户密钥。         |
     |/t:     |要寄送的磁盘的驱动器号。 例如，驱动器 `D`。         |
-    |/bk:     |驱动器的 BitLocker 密钥。         |
+    |/bk:     |驱动器的 BitLocker 密钥。 其数字密码来自 ` manage-bde -protectors -get D: ` 的输出      |
     |/srcdir:     |要寄送的磁盘的驱动器号后跟 `:\`。 例如，`D:\`。         |
     |/dstdir:     |Azure 存储中的目标容器的名称         |
-
+    |/skipwrite:     |此选项指定没有需要复制的新数据以及要准备磁盘上的现有数据         |
 1. 为每个需要寄送的磁盘重复步骤 10。
 2. 每次运行命令行时，都会创建使用 /j： 参数提供名称的日志文件。
 

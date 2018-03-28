@@ -1,26 +1,21 @@
 ---
-title: "用于管理 Azure SQL DNS 别名的 PowerShell | Microsoft Docs"
-description: "PowerShell cmdlet，例如新建 AzureRMSqlServerDNSAlias，可以将新客户端连接重定向到不同的 Azure SQL 数据库服务器，而无需触摸任何客户端配置。"
+title: 用于管理 Azure SQL DNS 别名的 PowerShell | Microsoft Docs
+description: PowerShell cmdlet，例如新建 AzureRMSqlServerDNSAlias，可以将新客户端连接重定向到不同的 Azure SQL 数据库服务器，而无需触摸任何客户端配置。
 keywords: dns sql database
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: 
 ms.service: sql-database
-ms.custom: 
-ms.workload: 
-ms.tgt_pltfrm: 
 ms.devlang: PowerShell
 ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi;amagarwa;maboja
 ms.author: dmalik
-ms.openlocfilehash: ec638d7b48b443cda5755e3077c6304b0c5ad78e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2aae669364c3de2e9b00ffe8e28b1521d3a781e8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>用于管理 Azure SQL 数据库 DNS 别名的 PowerShell
 
@@ -50,7 +45,7 @@ ms.lasthandoff: 02/09/2018
 
 如果想要运行演示这篇文章中提供的 PowerShell 脚本，适用以下先决条件：
 
-- Azure 订阅和帐户。 有关免费试用版，请单击 [https://azure.microsoft.com/free/][https://azure.microsoft.com/free/]。
+- Azure 订阅和帐户。 如需免费试用帐户，请单击 [https://azure.microsoft.com/free/][https://azure.microsoft.com/free/]。
 
 - Azure PowerShell 模块，使用 cmdlet **New-AzureRMSqlServerDNSAlias**。
     - 若要进行安装或升级，请参阅[安装 Azure PowerShell 模块][install-azurerm-ps-84p]。

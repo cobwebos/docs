@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 逻辑应用中使用 Slack 连接器 | Microsoft Docs"
-description: "在逻辑应用中连接到 Slack"
+title: 在 Azure 逻辑应用中使用 Slack 连接器 | Microsoft Docs
+description: 在逻辑应用中连接到 Slack
 services: logic-apps
-documentationcenter: 
-author: MandiOhlinger
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 04ea4508495b227d6ace4a3105f283c474c51d14
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 73c512c70f1c135bd791d93cecc42bd6f4c06b3d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-slack-connector"></a>Slack 连接器入门
 Slack 是一款团队通信工具，可将所有团队通信归于一处，可即时搜索，并且随时随地可用。 
@@ -33,7 +33,7 @@ Slack 是一款团队通信工具，可将所有团队通信归于一处，可�
 | --- | --- | --- |
 | 令牌 |是 |提供 Slack 凭据 |
 
-按照以下步骤登录 Slack 并在逻辑应用中完成 Slack“连接”配置：
+按照以下步骤登录 Slack 并在逻辑应用中完成 Slack **连接**配置：
 
 1. 选择“重复周期”
 2. 选择“频率”并输入“间隔”
@@ -49,7 +49,7 @@ Slack 是一款团队通信工具，可将所有团队通信归于一处，可�
    ![配置 Slack][5] 
 9. 授权完成后，将重定向到逻辑应用，通过配置“Slack - 获取所有消息”部分完成它。 添加所需的其他触发器和操作。  
    ![配置 Slack][6]
-10. 通过选择上方菜单栏中的“保存” 保存工作。
+10. 通过选择菜单（在顶部）中的“保存”保存工作。
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 

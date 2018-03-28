@@ -1,12 +1,12 @@
 ---
-title: "详细了解 Azure Service Fabric | Microsoft Docs"
-description: "了解 Azure Service Fabric 的核心概念和主要应用领域。 扩展概述了 Service Fabric 以及如何创建微服务。"
+title: 详细了解 Azure Service Fabric | Microsoft Docs
+description: 了解 Azure Service Fabric 的核心概念和主要应用领域。 扩展概述了 Service Fabric 以及如何创建微服务。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 9360d29eb30171651b0bcc688fe7884614b50cf4
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e9d0691876a417fe8665bed2d712d643a4364120
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
 Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
@@ -98,7 +98,7 @@ Service Fabric 与 [ASP.NET Core](service-fabric-reliable-services-communication
 - 在 Reliable Service 内部运行。 这可改善与 Service Fabric 运行时的集成，实现有状态的 ASP.NET Core 服务。
 
 ### <a name="guest-executables"></a>来宾可执行文件
-[来宾可执行文件](service-fabric-deploy-existing-app.md)是（采用任何语言编写的）任意现有可执行文件，并在 Service Fabric 群集及其他服务上托管。 来宾可执行文件不直接与 Service Fabric API 集成。 不过，它们仍受益于平台提供的功能，如自定义运行状况和负载报表以及服务可发现性（通过调用 REST API）。 它们还具有完整的应用程序生命周期支持。 
+[来宾可执行文件](service-fabric-guest-executables-introduction.md)是（采用任何语言编写的）任意现有可执行文件，并在 Service Fabric 群集及其他服务上托管。 来宾可执行文件不直接与 Service Fabric API 集成。 不过，它们仍受益于平台提供的功能，如自定义运行状况和负载报表以及服务可发现性（通过调用 REST API）。 它们还具有完整的应用程序生命周期支持。 
 
 ## <a name="application-lifecycle"></a>应用程序生命周期
 与其他平台一样，Service Fabric 上的应用程序通常将经历以下几个阶段：设计、开发、测试、部署、升级、维护和删除。 Service Fabric 为云应用程序的整个应用程序生命周期提供一流的支持：从开发到部署、到日常管理和维护，再到最终解除授权。 服务模型使多个不同角色可以独立参与到应用程序生命周期中。 [Service Fabric 应用程序生命周期](service-fabric-application-lifecycle.md)一文提供了有关 API 的概述，以及在 Service Fabric 应用程序生命周期的各个阶段，它们是如何被不同角色所使用的。 
@@ -138,7 +138,7 @@ Service Fabric 与 [ASP.NET Core](service-fabric-reliable-services-communication
 
 可以通过 [Azure 门户](service-fabric-cluster-creation-via-portal.md)、[模板](service-fabric-cluster-creation-via-arm.md)或 [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md) 在 Azure 上创建群集。
 
-如同在 Windows 上一样，可以使用 Linux 上的 Service Fabric 在 Linux 上构建、部署和管理高可用性、高度可缩放的应用程序。 Service Fabric 框架（Reliable Services 和 Reliable Actors）除了可在 C# (.NET Core) 中使用以外，也能在 Java on Linux 中使用。 还可以使用任何语言或框架来构建[来宾可执行的服务](service-fabric-deploy-existing-app.md)。 还支持协调 Docker 容器。 Docker 容器可以运行使用 Service Fabric 框架的来宾可执行文件或本机 Service Fabric 服务。 有关详细信息，请参阅 [Linux 上的 Service Fabric](service-fabric-deploy-anywhere.md)。
+如同在 Windows 上一样，可以使用 Linux 上的 Service Fabric 在 Linux 上构建、部署和管理高可用性、高度可缩放的应用程序。 Service Fabric 框架（Reliable Services 和 Reliable Actors）除了可在 C# (.NET Core) 中使用以外，也能在 Java on Linux 中使用。 还可以使用任何语言或框架来构建[来宾可执行的服务](service-fabric-guest-executables-introduction.md)。 还支持协调 Docker 容器。 Docker 容器可以运行使用 Service Fabric 框架的来宾可执行文件或本机 Service Fabric 服务。 有关详细信息，请参阅 [Linux 上的 Service Fabric](service-fabric-deploy-anywhere.md)。
 
 某些在 Windows 上受支持的功能，在 Linux 上不受支持。 若要了解详细信息，请参阅 [Linux 上的 Service Fabric 与 Windows 上的 Service Fabric 之间的差异](service-fabric-linux-windows-differences.md)。
 

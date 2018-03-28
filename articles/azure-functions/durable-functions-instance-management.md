@@ -1,12 +1,12 @@
 ---
-title: "在 Durable Functions 中管理实例 - Azure"
-description: "了解如何在 Azure Functions 的 Durable Functions 扩展中管理实例。"
+title: 在 Durable Functions 中管理实例 - Azure
+description: 了解如何在 Azure Functions 的 Durable Functions 扩展中管理实例。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a938e5949896ad3bfa91903106d56ccdf827c725
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9cea9b18cd7434a34138d5cecad8a8fd7f10d2e5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>在 Durable Functions 中管理实例 (Azure Functions)
 
@@ -26,7 +26,9 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="starting-instances"></a>启动实例
 
-[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) 中的 [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) 方法启动业务流程协调程序函数的新实例。 可以使用 `orchestrationClient` 绑定获取此类的实例。 在内部，此方法将消息排入控制队列，然后触发具有指定名称的、使用 `orchestrationTrigger` 触发器绑定的函数的启动。
+[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) 中的 [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) 方法启动业务流程协调程序函数的新实例。 可以使用 `orchestrationClient` 绑定获取此类的实例。 在内部，此方法将消息排入控制队列，然后触发具有指定名称的、使用 `orchestrationTrigger` 触发器绑定的函数的启动。 
+
+当业务流程启动时，任务完成。 业务流程应在 30 秒内启动。 如果花费更长时间，会引发 `TimeoutException`。 
 
 [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) 的参数如下所示：
 
@@ -48,7 +50,7 @@ public static async Task Run(
 }
 ```
 
-对于非 .NET 语言，也可以使用函数输出绑定来启动新实例。 在此情况下，可以使用将上述三个参数用作字段的任何 JSON 可序列化对象。 例如，考虑以下 Node.js 函数：
+对于非 .NET 语言，也可以使用函数输出绑定来启动新实例。 在此情况下，可以使用将上述三个参数作为字段的任何 JSON 可序列化对象。 例如，考虑以下 Node.js 函数：
 
 ```js
 module.exports = function (context, input) {
@@ -68,7 +70,7 @@ module.exports = function (context, input) {
 
 ## <a name="querying-instances"></a>查询实例
 
-[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) 类中的 [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_) 方法查询业务流程实例的状态。 此方法采用 `instanceId` 作为参数，并返回包含以下属性的对象：
+[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) 类中的 [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_) 方法查询业务流程实例的状态。 它采用 `instanceId`（必需）、`showHistory`（可选）和 `showHistoryOutput`（可选）作为参数。 如果 `showHistory` 设置为 `true`，则响应将包含执行历史记录。 如果 `showHistoryOutput` 也设置为 `true`，则执行历史记录将包含活动输出。 此方法返回包含以下属性的对象：
 
 * **Name**：业务流程协调程序函数的名称。
 * **InstanceId**：业务流程的实例 ID（应与 `instanceId` 输入相同）。
@@ -82,6 +84,7 @@ module.exports = function (context, input) {
     * **ContinuedAsNew**：实例已重启自身并生成了新历史记录。 这是暂时性的状态。
     * **Failed**：实例失败并出错。
     * **Terminated**：实例突然终止。
+* **History**：业务流程的执行历史记录。 仅当 `showHistory` 设置为 `true` 时，才填充此字段。
     
 如果实例不存在或尚未开始运行，此方法会返回 `null`。
 
@@ -145,6 +148,60 @@ public static Task Run(
 
 > [!WARNING]
 > 如果不存在具有指定实例 ID 的业务流程实例，或者该实例不在等待指定的事件名称，则会丢弃事件消息。 有关此行为的详细信息，请参阅 [GitHub 问题](https://github.com/Azure/azure-functions-durable-extension/issues/29)。
+
+## <a name="wait-for-orchestration-completion"></a>等待业务流程完成
+
+[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) 类会公开 [WaitForCompletionOrCreateCheckStatusResponseAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_WaitForCompletionOrCreateCheckStatusResponseAsync_) API，可以使用该 API 同步获取业务流程实例的实际输出。 该方法使用默认值 10 秒作为 `timeout`，使用 1 秒作为 `retryInterval`（如果未设置这些属性）。  
+
+下面的 HTTP 触发型函数示例演示了如何使用此 API：
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpSyncStart.cs)]
+
+可以使用以下行调用该函数（使用 2 秒超时和 0.5 秒重试间隔）：
+
+```bash
+    http POST http://localhost:7071/orchestrators/E1_HelloSequence/wait?timeout=2&retryInterval=0.5
+```
+
+根据从业务流程实例获取响应所需的时间，存在两种情况：
+
+1. 业务流程实例在定义的超时（此示例中为 2 秒）内完成，响应是同步传送的实际业务流程实例输出：
+
+    ```http
+        HTTP/1.1 200 OK
+        Content-Type: application/json; charset=utf-8
+        Date: Thu, 14 Dec 2017 06:14:29 GMT
+        Server: Microsoft-HTTPAPI/2.0
+        Transfer-Encoding: chunked
+
+        [
+            "Hello Tokyo!",
+            "Hello Seattle!",
+            "Hello London!"
+        ]
+    ```
+
+2. 业务流程实例无法在定义的超时（此示例中为 2 秒）内完成，响应是 **HTTP API URL 发现**中所述的默认值：
+
+    ```http
+        HTTP/1.1 202 Accepted
+        Content-Type: application/json; charset=utf-8
+        Date: Thu, 14 Dec 2017 06:13:51 GMT
+        Location: http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}
+        Retry-After: 10
+        Server: Microsoft-HTTPAPI/2.0
+        Transfer-Encoding: chunked
+
+        {
+            "id": "d3b72dddefce4e758d92f4d411567177",
+            "sendEventPostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/raiseEvent/{eventName}?taskHub={taskHub}&connection={connection}&code={systemKey}",
+            "statusQueryGetUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}",
+            "terminatePostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
+        }
+    ```
+
+> [!NOTE]
+> Webhook URL 的格式可能会有所不同，具体取决于所运行 Azure Functions 主机的版本。 前面的示例适用于 Azure Functions 2.0 主机。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,26 +1,26 @@
 ---
-title: "在 Azure HDInsight 中使用 Power BI 直观显示交互式查询 Hive 数据 | Microsoft Docs"
-description: "了解如何使用 Microsoft Power BI 直观显示 Azure HDInsight 已处理的交互式查询 Hive 数据。"
-keywords: "hdinsight,hadoop,hive,交互式查询,交互式 hive,LLAP,directquery"
+title: 在 Azure HDInsight 中使用 Power BI 直观显示交互式查询 Hive 数据 | Microsoft Docs
+description: 了解如何使用 Microsoft Power BI 直观显示 Azure HDInsight 已处理的交互式查询 Hive 数据。
+keywords: hdinsight,hadoop,hive,交互式查询,交互式 hive,LLAP,directquery
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 03/14/2018
 ms.author: jgao
-ms.openlocfilehash: 290e600b7be4a6f9fb57afa50bb771e42e6a0624
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: c74e02ea32a5aacf1a5208c0e194a25b0b6bcb48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="visualize-interactive-query-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Microsoft Power BI 通过直接查询直观显示交互式查询 Hive 数据
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/04/2018
 
 ![HDInsight Power BI 地图报表](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
-有关如何使用 ODBC 连接到 Hive 的信息，请参阅 [在 Azure HDInsight 中使用 Microsoft Power BI 通过 ODBC 直观显示 Hive 数据](../hadoop/apache-hadoop-connect-hive-power-bi.md)。 
+可以利用 [Hive ODBC 驱动程序](../hadoop/apache-hadoop-connect-hive-power-bi.md)，通过 Power BI Desktop 中的通用 ODBC 连接器执行导入操作。 但是，鉴于 Hive 查询引擎的非交互性质，不建议对 BI 工作负荷执行此操作。 出于性能考量，[HDInsight 交互式查询连接器](./apache-hadoop-connect-hive-power-bi-directquery.md)和 [HDInsight Spark 连接器](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect)是更好的选择。
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具备以下项：

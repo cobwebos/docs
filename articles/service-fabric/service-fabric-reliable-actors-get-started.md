@@ -1,24 +1,24 @@
 ---
-title: "用 C# 创建第一个基于角色的 Azure 微服务 | Microsoft Docs"
-description: "本教程会向你演示使用 Service Fabric Reliable Actors 创建、调试和部署简单的基于执行组件的服务的步骤。"
+title: 用 C# 创建第一个基于角色的 Azure 微服务 | Microsoft Docs
+description: 本教程会向你演示使用 Service Fabric Reliable Actors 创建、调试和部署简单的基于执行组件的服务的步骤。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d4aebe72-1551-4062-b1eb-54d83297f139
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/20/2017
+ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: ea17cf744779f390fe4b3f4049deb0c1ad985024
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 20786522a9a25d84a32a53e5e111b4b542501287
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors 入门
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.lasthandoff: 12/21/2017
 
 ![适用于 Visual Studio 的 Service Fabric 工具 - 新建项目][1]
 
-在下一对话框中，选择“执行组件服务”并输入服务的名称。
+在下一对话框中，选择 **.Net Core 2.0** 下的“执行组件服务”，并输入服务的名称。
 
 ![Service Fabric 项目模板][5]
 
@@ -115,7 +115,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
     NuGet 包及其所有依赖项都安装在 ActorClient 项目中。
 
-5. 客户端项目还需要对接口项目的引用。  在 ActorClient 项目中，右键单击“依赖项”，然后单击“添加引用...”。选择“项目”>“解决方案”（如果尚未选择），然后勾选“HelloWorld.Interfaces”旁边的复选框。  单击 **“确定”**。
+5. 客户端项目还需要对接口项目的引用。  在 ActorClient 项目中，右键单击“依赖项”，然后单击“添加引用...”。选择“项目”>“解决方案”（如果尚未选择），然后勾选“HelloWorld.Interfaces”旁边的复选框。  单击“确定”。
     
     ![“添加引用”对话框][7]
 

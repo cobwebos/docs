@@ -1,34 +1,32 @@
 ---
-title: "Azure Data Lake Analytics 配额限制 | Microsoft Docs"
-description: "了解如何调整和增加 Azure Data Lake Analytics (ADLA) 帐户中的配额限制。"
+title: Azure Data Lake Analytics 配额限制
+description: 了解如何调整和增加 Azure Data Lake Analytics (ADLA) 帐户中的配额限制。
 services: data-lake-analytics
 keywords: Azure Data Lake Analytics
-documentationcenter: 
+documentationcenter: ''
 author: omidm1
 editor: omidm1
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/18/2017
+ms.date: 03/15/2018
 ms.author: omidm
-ms.openlocfilehash: 957f306ea0e80b5830ad64e5ef06c6d122d9eccc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22774511720173915207da80a6ca33d5dbc83e19
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-data-lake-analytics-quota-limits"></a>Azure Data Lake Analytics 配额限制
 
-了解如何调整和增加 Azure Data Lake Analytics (ADLA) 帐户中的配额限制。 了解这些限制有助于理解 U-SQL 作业行为。 所有配额限制都是软限制，因此可通过联系我们随时增加最大限制。
+了解如何调整和增加 Azure Data Lake Analytics (ADLA) 帐户中的配额限制。 了解这些限制有助于理解 U-SQL 作业行为。 所有配额限制都是软限制，因此随时可通过联系 Azure 支持增加最大限制。
 
 ## <a name="azure-subscriptions-limits"></a>Azure 订阅限制
 
 **每个订阅的最大 ADLA 帐户数：**5
 
- 这是可对每个订阅创建的最大 ADLA 帐户数。 如果尝试创建第 6 个 ADLA 帐户，将收到错误“已达到订阅名称区域中允许的 Data Lake Analytics 帐户的最大数量 (5)”。 在这种情况下，删除任何未使用的 ADLA 帐户，或者通过[开具支持票证](#increase-maximum-quota-limits)来联系我们。
+这是可为每个区域的每个订阅创建的最大 ADLA 帐户数。 如果尝试创建第 6 个 ADLA 帐户，将收到错误“已达到订阅名称区域中允许的 Data Lake Analytics 帐户的最大数量 (5)”。 在此情况下，可以选择另一个区域（如果合适）或删除同一区域中任何未使用的 ADLA 帐户，或通过[开具支持票证](#increase-maximum-quota-limits)联系 Azure 支持以请求增加配额。
 
 ## <a name="adla-account-limits"></a>ADLA 帐户限制
 
@@ -50,24 +48,24 @@ ms.lasthandoff: 10/11/2017
 3. 单击“属性”。
 4. 根据需要调整**并行**和**并发作业**。
 
-    ![Azure Data Lake Analytics 门户边栏选项卡](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-properties.png)
+    ![Azure Data Lake Analytics 门户页](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-properties.png)
 
 ## <a name="increase-maximum-quota-limits"></a>增加最大配额限制
 
-1. 在 Azure 门户中打开支持请求。
+1. 在 Azure 门户中提出支持请求。
 
-    ![Azure Data Lake Analytics 门户边栏选项卡](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
+    ![Azure Data Lake Analytics 门户页](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
 
-    ![Azure Data Lake Analytics 门户边栏选项卡](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
+    ![Azure Data Lake Analytics 门户页](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
 2. 对问题类型选择“配额”。
 3. 选择“订阅”（确保不是“试用版”订阅）。
 4. 对配额类型选择“Data Lake Analytics”。
 
-    ![Azure Data Lake Analytics 门户边栏选项卡](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
+    ![Azure Data Lake Analytics 门户页](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
 
-5. 在问题边栏选项卡中，提供有关为何需要此额外容量的**详细信息**来说明请求提高上限的原因。
+5. 在问题页中，提供有关为何需要此额外容量的**详细信息**来说明请求提高上限的原因。
 
-    ![Azure Data Lake Analytics 门户边栏选项卡](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-details.png)
+    ![Azure Data Lake Analytics 门户页](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-details.png)
 
 6. 验证联系信息并创建支持请求。
 

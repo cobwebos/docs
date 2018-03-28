@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 4d05d816b43e04c2c2e88cab33b8e4c623ab9185
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e04de7cb3fad1ba651d0ce21be7f244a89753c1a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>使用 Azure 数据工厂从 ServiceNow 复制数据
 
@@ -112,7 +112,7 @@ ServiceNow 链接服务支持以下属性：
 在查询中指定 ServiceNow 的架构和列时，请注意以下事项：
 
 - **架构：**在 ServiceNow 查询中将架构指定为 `Actual` 或 `Display`，从而在调用 [ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) 时可以将其视为参数 `sysparm_display_value`，其值为 true 或 false。 
-- **列：** `Actual` 架构下实际值的列名是 `[columne name]_value`，而 `Display` 架构下显示值的列名为 `[columne name]_display_value`。 请注意，列名需要映射到查询中所使用的架构。
+- **列：**`Actual` 架构下实际值的列名是 `[columne name]_value`，而 `Display` 架构下显示值的列名为 `[columne name]_display_value`。 请注意，列名需要映射到查询中所使用的架构。
 
 **示例查询：**
 `SELECT col_value FROM Actual.alm_asset` 或 `SELECT col_display_value FROM Display.alm_asset`

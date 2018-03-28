@@ -1,8 +1,8 @@
 ---
-title: "Microsoft Dynamics CRM 和 Azure Application Insights | Microsoft docs"
-description: "使用 Application Insights 从 Microsoft Dynamics CRM Online 获取遥测。 设置、获取数据、可视化和导出的演练。"
+title: Microsoft Dynamics CRM 和 Azure Application Insights | Microsoft docs
+description: 使用 Application Insights 从 Microsoft Dynamics CRM Online 获取遥测。 设置、获取数据、可视化和导出的演练。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mazharmicrosoft
 manager: carmonm
 ms.assetid: 04c66338-687e-49e5-9975-be935f98f156
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2017
+ms.date: 03/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 759dac681592d0e5951e09638533b93c6348d899
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c5a651a24fcf5d1fc64922483045c08321a3b89c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>演练：使用 Application Insights 为 Microsoft Dynamics CRM Online 启用遥测
 本文演示如何使用 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 从 [Microsoft Dynamics CRM Online](https://www.dynamics.com/) 获取遥测数据。 我们将引导完成向应用程序添加 Application Insights 脚本、捕获数据和数据可视化的完整过程。
@@ -33,12 +33,12 @@ ms.lasthandoff: 11/01/2017
 ### <a name="create-an-application-insights-resource-in-azure"></a>在 Azure 中创建 Application Insights 资源
 1. 获取 [Microsoft Azure 中的帐户](http://azure.com/pricing)。 
 2. 登录到 [Azure 门户](https://portal.azure.com)，并添加新的 Application Insights 资源。 这是将处理和显示数据的位置。
-   
+
     ![依次单击“+”、“开发人员服务”、“Application Insights”。](./media/app-insights-sample-mscrm/01.png)
-   
+
     选择 ASP.NET 作为应用程序类型。
 3. 依次打开“入门”页和“监视和诊断客户端”。
-   
+
     ![网页中插入的代码片段](./media/app-insights-sample-mscrm/03.png)
 
 **使代码页保持打开状态**，同时在另一浏览器窗口上执行下一步。 将很快就会需要代码。 
@@ -46,41 +46,38 @@ ms.lasthandoff: 11/01/2017
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>在 Microsoft Dynamics CRM 中创建 JavaScript Web 资源
 1. 打开 CRM Online 实例并使用管理员特权登录。
 2. 打开“Microsoft Dynamics CRM 设置”、“自定义”、“自定义系统”
-   
-    ![Microsoft Dynamics CRM 设置](./media/app-insights-sample-mscrm/04.png)
-   
-    ![设置 > 自定义项](./media/app-insights-sample-mscrm/05.png)
 
-    ![自定义系统选项](./media/app-insights-sample-mscrm/06.png)
+    ![Microsoft Dynamics CRM 设置](./media/app-insights-sample-mscrm/00001.png)
+
+    ![设置 > 自定义项](./media/app-insights-sample-mscrm/00002.png)
 
 1. 创建 JavaScript 资源。
-   
+
     ![“新建 Web 资源”对话框](./media/app-insights-sample-mscrm/07.png)
-   
+
     为它指定名称、选择“脚本 (JScript)”，并打开文本编辑器。
-   
-    ![打开文本编辑器](./media/app-insights-sample-mscrm/08.png)
-2. 从 Application Insights 复制代码。 复制时确认忽略脚本标记。 请参阅下面的屏幕快照：
-   
-    ![设置检测密钥](./media/app-insights-sample-mscrm/09.png)
-   
+
+    ![打开文本编辑器](./media/app-insights-sample-mscrm/00004.png)
+2. 从 Application Insights 复制代码。 复制时，请确保忽略脚本标记。 请参阅下面的屏幕快照：
+
+    ![设置检测密钥](./media/app-insights-sample-mscrm/00005.png)
+
     代码包括用于标识 Application insights 资源的检测密钥。
 3. 保存并发布。
-   
-    ![保存并发布](./media/app-insights-sample-mscrm/10.png)
+
+    ![保存并发布](./media/app-insights-sample-mscrm/00006.png)
 
 ### <a name="instrument-forms"></a>检测窗体
 1. 在 Microsoft CRM Online 中，打开帐户窗体
-   
-    ![帐户窗体](./media/app-insights-sample-mscrm/11.png)
+
+    ![帐户窗体](./media/app-insights-sample-mscrm/00007.png)
 2. 打开窗体属性
-   
-    ![窗体属性](./media/app-insights-sample-mscrm/12.png)
+
+    ![窗体属性](./media/app-insights-sample-mscrm/00008.png)
 3. 添加已创建的 JavaScript Web 资源
-   
+
     ![添加菜单](./media/app-insights-sample-mscrm/13.png)
-   
-    ![添加 Web 资源](./media/app-insights-sample-mscrm/14.png)
+
 4. 保存并发布窗体自定义。
 
 ## <a name="metrics-captured"></a>指标捕获

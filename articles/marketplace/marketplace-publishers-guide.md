@@ -1,24 +1,24 @@
 ---
-title: "Azure Marketplace 和 AppSource 发布者指南"
-description: "面向 Azure Marketplace 新发布者的分步指南和发布清单"
+title: Azure Marketplace 和 AppSource 发布者指南
+description: 面向 Azure Marketplace 新发布者的分步指南和发布清单
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: 
+documentationcenter: ''
 author: ellacroi
 manager: msmbaldwin
-editor: 
+editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: d02d6e942dfc503dd87a8ebcb6e2ddcf6b6065c5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7faa34b5528c53c06aeda25be17cbc5f3db2acdf
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace 和 AppSource 发布者指南
 
@@ -51,7 +51,7 @@ Azure Marketplace 和 AppSource 是与 Microsoft 联合进行市场推广活动�
 
 ## <a name="what-are-azure-marketplace-and-appsource"></a>什么是 Azure Marketplace 和 AppSource？
 
-Microsoft 提供两种不同的 Marketplace 店面，让合作伙伴可以列出产品和服务、提供试用版并与 Microsoft 的客户和生态系统直接交易：[Azure Marketplace] (https://azuremarketplace.microsoft.com) 和 [AppSource] (https://appsource.microsoft.com)。 这些店面可以帮助客户查找、试用并购买能加快数字转换的应用程序和服务，并通过增加 Microsoft 客户和合作伙伴的消费者访问量帮助发布者扩展业务。
+Microsoft 提供两种不同的 Marketplace 店面，让合作伙伴可以列出产品/服务、提供试用版并与 Microsoft 的客户和生态系统直接交易：[Azure Marketplace (https://azuremarketplace.microsoft.com) 和 [AppSource] (https://appsource.microsoft.com)。 这些店面可以帮助客户查找、试用并购买能加快数字转换的应用程序和服务，并通过增加 Microsoft 客户和合作伙伴的消费者访问量帮助发布者扩展业务。
  
 Marketplace 店面与受众需求和 Microsoft 云产品的特点相匹配，从而帮助客户找到所需产品。 每个店面都提供专门的发布选项来帮助你最大程度地优化发布投资，这些投资总结为下表内容：
 
@@ -238,7 +238,7 @@ Microsoft 客户有时使用企业协议 (EA) 支付 Microsoft 产品的费用�
 
 |**要求**  |**详细信息**  |**发布选项**  |
 |---------|---------|---------|
-|**参与策略**    | 在 [此处] (https://azure.microsoft.com/support/legal/marketplace/participation-policies/) 查看 Azure Marketplace 参与策略。       | 列出、试用、事务处理        |
+|**参与策略**    | 查看 Azure Marketplace 参与策略 [此处] (https://azure.microsoft.com/support/legal/marketplace/participation-policies/)。       | 列出、试用、事务处理        |
 |**与 Microsoft 集成**    | Azure Marketplace 产品/服务应利用或扩展 Microsoft Azure 服务（例如计算、网络或存储），并按现有 Azure Marketplace 类别进行分类（例如数据库、安全性、网络等）。在[此处](https://azuremarketplace.microsoft.com/marketplace/apps)查看完整列表。        | 列出、试用、事务处理        |
 |**受众**    | Azure Marketplace 产品/服务必须面向 IT 专业人员、云开发人员或其他技术型客户角色。       |  列出、试用、事务处理 
 |**潜在客户管理**    | 若要从 Marketplace 收获潜在顾客，必须启用 CRM（Marketo、Microsoft Dynamics 或 Salesforce）以接收潜在顾客数据。        |   列出、试用、事务处理      |
@@ -260,7 +260,7 @@ Microsoft 客户有时使用企业协议 (EA) 支付 Microsoft 产品的费用�
 |**要求**  |**详细信息** |**发布选项**  |
 |---------|---------|---------|
 |**计费和计量**    |  虚拟机须支持“自带许可”或基于使用情况的按月计费。       |    事务处理    |
-|**与 Azure 兼容的虚拟硬盘 (VHD)**     |   必须在 [Windows] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 或 [Linux] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 上构建虚拟机    |   事务处理      |
+|**与 Azure 兼容的虚拟硬盘 (VHD)**     |   必须基于 [Windows] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 或 [Linux] (https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 构建虚拟机    |   事务处理      |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>特定于咨询服务发布的先决条件
 
@@ -268,12 +268,12 @@ Microsoft 客户有时使用企业协议 (EA) 支付 Microsoft 产品的费用�
 |**要求** |**详细信息**  |**发布选项**  |
 |---------|---------|---------|
 |**服务产品特点**     | 咨询服务必须按固定范围、固定有效期和固定价格（或免费）提供，主要面向预售环节提供，限于单个客户，并当场提供        |    列出     |
-|**咨询服务的合作伙伴要求**    |   **仅限 AppSource。**  Dynamics 365 for Customer Engagement  [银牌或金牌云客户关系管理资格](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency)。 Dynamics 365 for Finance and Operations 企业版：银牌或金牌 [企业资源规划] (https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) 资格，并在后续 12 个月的云运营中最低收入 25,000 美元。 Dynamics 365 for Finance and Operations 商业版：作为[云服务提供商 (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) 或[记录在案的数字合作伙伴 (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) 至少服务于一个客户。 Power BI：满足 [解决方案合作伙伴](file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20&%20Incentives.pdf) 条件。 PowerApps：具备 [合作伙伴展示] (https://powerapps.microsoft.com/en-us/partner-showcase/) 解决方案 |    列出     |
+|**咨询服务的合作伙伴要求**    |   **仅限 AppSource。**  Dynamics 365 for Customer Engagement  [银牌或金牌云客户关系管理资格](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency)。 Dynamics 365 for Finance and Operations 企业版：银牌或金牌 [企业资源规划] (https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) 资格，并在后续 12 个月的云运营中最低收入 25,000 美元。 Dynamics 365 for Finance and Operations 商业版：作为[云服务提供商 (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) 或[记录在案的数字合作伙伴 (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) 至少服务于一个客户。 Power BI：满足 [解决方案合作伙伴](file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20&%20Incentives.pdf) 条件。 PowerApps：具有 [合作伙伴展示] (https://powerapps.microsoft.com/en-us/partner-showcase/) 解决方案 |    列出     |
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>使用 Azure Active Directory 启用试用版
 Azure Active Directory (AAD) 是一种云标识服务，它使用行业标准协议（OAuth 和 OpenID Connect）通过 Microsoft 工作或学校帐户实现身份验证。 在[此处](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features)了解有关 AAD 的详细信息。 
 
-Microsoft 通过 AAD 对所有 Marketplace 用户进行认证，当已验证的用户单击 Marketplace 中的试用列表并重定向到试用环境时，可将用户直接预配到一个试用中，而无需执行其他登录步骤。 [身份验证期间你的应用从 AAD 接收的令牌] (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens) 包含有用的客户信息，可使用这些信息在应用内创建用户帐户，这样可以自动预配体验并提高转换率。 
+Microsoft 通过 AAD 对所有 Marketplace 用户进行认证，当已验证的用户单击 Marketplace 中的试用列表并重定向到试用环境时，可将用户直接预配到一个试用中，而无需执行其他登录步骤。 [身份验证期间你的应用从 AAD 接收的令牌] (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens) 包含有用的客户信息，可使用这些信息在应用内创建用户帐户，这样可以自动获得预配体验并提高转换率。 
 
 使用 AAD 为应用或试用启用一键式身份验证：
 
@@ -295,7 +295,7 @@ Microsoft 通过 AAD 对所有 Marketplace 用户进行认证，当已验证的�
 如果你不熟悉联合 SSO 的 AAD
 
 - 在 Azure 门户中注册你的应用程序
-- 使用 [OpenID Connect] (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) 或 [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code)，通过 AAD 开发 SSO
+- 使用 [OpenID Connect] (https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) 或 [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code) 开发 AAD 的 SSO
 - 启用 AAD 中的多租户支持功能，以获取一键式试用体验
 - [在此处了解更多信息](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified)
 
@@ -521,7 +521,7 @@ Amp-testdrive@microsoft.com |   提供体验版载入权限。 太平洋时区�
 
 建议在 @outlook.com 域中创建新的电子邮件地址。 执行以下步骤:
 
-1. 转到 [https://signup.live.com/signup](https://signup.live.com/signup)，选择“获取新电子邮件地址”
+1. 转到 [https://signup.live.com/signup](https://signup.live.com/signup)，并选择“获取新的电子邮件地址”
 
 
 2. 创建新电子邮件地址，并输入密码。 这将在 outlook.com 服务中同时创建新 Microsoft ID 和电子邮箱。 继续执行注册流程，直到帐户创建完毕。
@@ -538,7 +538,7 @@ Amp-testdrive@microsoft.com |   提供体验版载入权限。 太平洋时区�
 ### <a name="instructions-on-how-to-register-in-the-development-center"></a>关于如何在开发中心中注册的说明
 
 1. 打开新的 Internet Explorer InPrivate 或 Chrome Incognito 浏览会话，以确保未登录到个人帐户。
-2. 转到 [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)，以将自身注册为开发人员中心中的卖方。 请在继续操作之前，阅读以下重要说明。
+2. 在开发人员中心中转到 [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) 将自己注册为卖家。 请在继续操作之前，阅读以下重要说明。
 
    ![开发人员中心电子邮件](./media/marketplace-publishers-guide/registerdevcenteremail.png)
 
@@ -614,7 +614,7 @@ Amp-testdrive@microsoft.com |   提供体验版载入权限。 太平洋时区�
 
 如果在进行开发人员中心注册时遇到问题，请记录支持票证，如下所示：
 
-1. 转到支持链接：https://developer.microsoft.com/windows/support
+1. 请转到支持链接 https://developer.microsoft.com/windows/support
 2. 在“联系我们”部分下，单击“提交事件”按钮，如以下屏幕截图中所示。
 3. 选择“开发人员中心帮助”作为“问题类型”，选择“发布和管理应用”作为“类别”。 完成后，单击“启动电子邮件”按钮。
 

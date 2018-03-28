@@ -1,11 +1,12 @@
 ---
-title: "重新训练经典 Web 服务 | Microsoft Docs"
-description: "了解如何以编程方式重新训练模型并更新 Web 服务，以使用 Azure 机器学习中的最新训练模型。"
+title: 重新训练经典 Web 服务 | Microsoft Docs
+description: 了解如何以编程方式重新训练模型并更新 Web 服务，以使用 Azure 机器学习中的最新训练模型。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: raymondlaghaeian
-editor: 
+documentationcenter: ''
+author: aashishb
+ms.author: aashishb
+manager: hjerez
+editor: ''
 ms.assetid: e36e1961-9e8b-4801-80ef-46d80b140452
 ms.service: machine-learning
 ms.workload: data-services
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: raymondl
-ms.openlocfilehash: a0ec3191448362f8bf98ca6b5133d173735046ed
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7adc5995b830d049c8dd6412415bd5987e60fe08
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="retrain-a-classic-web-service"></a>重新训练经典 Web 服务
 部署的预测 Web 服务是默认的评分终结点。 默认终结点与原始训练和评分实验保持同步，因此不能替换默认终结点的训练模型。 要重新训练 Web 服务，必须将新的终结点添加到 Web 服务。 
@@ -68,7 +68,7 @@ ms.lasthandoff: 02/09/2018
 2. 单击“更新资源”链接。
 3. 复制 PATCH 请求的 POST URL。 例如：
    
-     PATCH URL：https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
+     修补程序 URL：https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
 
 现在可以使用训练模型更新之前创建的评分终结点。
 

@@ -1,6 +1,6 @@
 ---
-title: "根据模板创建 Azure Service Fabric 群集 | Microsoft Docs"
-description: "本文介绍如何通过使用 Azure 资源管理器、Azure Key Vault 和 Azure Active Directory (Azure AD) 进行客户端身份验证，在 Azure 中设置一个安全的 Service Fabric 群集。"
+title: 根据模板创建 Azure Service Fabric 群集 | Microsoft Docs
+description: 本文介绍如何通过使用 Azure 资源管理器、Azure Key Vault 和 Azure Active Directory (Azure AD) 进行客户端身份验证，在 Azure 中设置一个安全的 Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
 author: chackdan
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: 6675603bf741b1a668ba387c8304d2e2b7ab4e12
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: e8e5513df5ab412857403382e1940da27c85274a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
 > [!div class="op_single_selector"]
 > * [Azure 资源管理器](service-fabric-cluster-creation-via-arm.md)
-> * [Azure portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure 门户](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -117,7 +117,7 @@ az account set --subscription $subscriptionId
 
 [Azure Service Fabric 模板示例：Windows 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)和 [Ubuntu 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)中提供了所用的模板
 
-以下命令用于创建 Windows 和 Linux 群集，你只需相应地指定 OS。 PowerShell/CLI 命令还会在指定的 CertificateOutputFolder 中输出证书。 命令还采用类似于 VM SKU 的其他参数。
+以下命令用于创建 Windows 和 Linux 群集，你只需相应地指定 OS。 PowerShell/CLI 命令还会在指定的 CertificateOutputFolder 中输出证书，但要确保已创建证书文件夹。 命令还采用类似于 VM SKU 的其他参数。
 
 ```Powershell
 
@@ -126,13 +126,13 @@ $resourceGroupName="mycluster"
 $vaultName="myvault"
 $vaultResourceGroupName="myvaultrg"
 $CertSubjectName="mycluster.westus.cloudapp.azure.com"
-$certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
-$vmpassword="Password!4321" | ConvertTo-SecureString -AsPlainText -Force
+$certPassword="Password123!@#" | ConvertTo-SecureString -AsPlainText -Force 
+$vmpassword="Password4321!@#" | ConvertTo-SecureString -AsPlainText -Force
 $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 $certOutputFolder="c:\certificates"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser –Location $resourceGroupLocation
 
 ```
 
@@ -163,7 +163,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 如果需要根据需要编写自定义模板，我们强烈建议从 [Azure Service Fabric 模板示例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master)中提供的模板之一着手。 请遵照下面[自定义群集模板][customize-your-cluster-template]部分中的指导和说明。
 
-如果已有一个自定义模板，请确保已按如下所示将模板中的所有三个证书相关参数以及参数文件命名并使用 null 值。
+如果已有一个自定义模板，请确保模板中的所有三个证书相关参数以及参数文件已按如下所示命名并使用 null 值。
 
 ```Json
    "certificateThumbprint": {
@@ -178,7 +178,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 ```
 
 
-```Powershell
+```PowerShell
 
 
 $resourceGroupLocation="westus"
@@ -226,7 +226,8 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 #### <a name="use-the-default-5-node-1-nodetype-template-that-ships-in-the-module"></a>使用模块中随附的默认“5 Node 1 nodetype”模板
 [Azure 示例：Windows 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)和 [Ubuntu 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)中提供了所用的模板
 
-```Powershell
+```PowerShell
+
 $resourceGroupLocation="westus"
 $resourceGroupName="mylinux"
 $vaultName="myvault"
@@ -279,7 +280,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 ```
 
 
-```Powershell
+```PowerShell
 
 $resourceGroupLocation="westus"
 $resourceGroupName="mylinux"
@@ -292,7 +293,7 @@ $templateFilePath="c:\mytemplates\mytemplate.json"
 $certificateFile="C:\MyCertificates\chackonewcertificate3.pem"
 
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword #certPassword
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword $certPassword
 
 ```
 
@@ -314,34 +315,34 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
     --template-file $templateFilePath --parameter-file $parametersFilePath 
 ```
 
-#### <a name="use-a-pointer-to-the-secret-you-already-have-uploaded-into-the-keyvault"></a>使用指向已上传到 Key Vault 的机密的指针
+#### <a name="use-a-pointer-to-the-secret-you-already-have-uploaded-into-the-key-vault"></a>使用指向已上传到密钥保管库的机密的指针
 
 要使用现有密钥保管库，则_必须针对部署启用_该密钥保管库，使计算资源提供程序能够从中获取证书并将其安装在群集节点上：
 
-```powershell
+```PowerShell
 
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 
 $parameterFilePath="c:\mytemplates\mytemplate.json"
 $templateFilePath="c:\mytemplates\mytemplateparm.json"
-$secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
+$secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroup -SecretIdentifier $secretID -TemplateFile $templateFile -ParameterFile $templateParmfile 
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroup -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 
 ```
 下面是可实现相同目的的等效 CLI 命令。 将声明语句中的值更改为适当的值。
 
-```cli
-
+```CLI
+declare $resourceGroupName = "testRG"
 declare $parameterFilePath="c:\mytemplates\mytemplate.json"
 declare $templateFilePath="c:\mytemplates\mytemplateparm.json"
 declare $secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
 
 az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
-    --secret-identifieraz $secretID  \
+    --secret-identifier az $secretID  \
     --template-file $templateFilePath --parameter-file $parametersFilePath 
 
 ```
@@ -522,9 +523,9 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 ```
 
 ### <a name="populate-the-parameter-file-with-the-values"></a>在参数文件中填充值。
-最后，使用 Key Vault 和 Azure AD PowerShell 命令的输出值填充参数文件：
+最后，使用密钥保管库和 Azure AD PowerShell 命令的输出值填充参数文件：
 
-如果你打算使用 Azure Service Fabric 资源管理器 PowerShell 模块，则不需要填充群集证书信息；如果希望系统生成自签名证书来保证群集的安全性，则只需将参数保留为 null。 
+如果打算使用 Azure Service Fabric RM PowerShell 模块，则不需要填充群集证书信息；如果希望系统生成自签名证书来保证群集的安全性，则只需将参数保留为 null。 
 
 > [!NOTE]
 > 要让资源管理器模块拾取并填充这些空参数值，参数名称必须与以下名称匹配
@@ -542,9 +543,9 @@ https://&lt;cluster_domain&gt;:19080/Explorer
         },
 ```
 
-如果使用的是应用程序证书或已上传到 Key Vault 的现有群集，则需要获取并填充此信息 
+如果使用的是应用程序证书或已上传到密钥保管库的现有群集，则需要获取并填充此信息 
 
-资源管理器模块无法自动生成 Azure AD 配置。 因此，如果你打算使用 Azure AD 访问客户端，则需要填充配置值。
+RM 模块无法生成 Azure AD 配置。 因此，如果你打算使用 Azure AD 访问客户端，则需要填充配置值。
 
 ```json
 {
@@ -587,13 +588,13 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 ### <a name="test-your-template"></a>测试模板  
 运行以下 PowerShell 命令，使用参数文件测试资源管理器模板：
 
-```powershell
+```PowerShell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
 如果遇到问题并收到含义模糊的消息，请使用“-Debug”作为选项。
 
-```powershell
+```PowerShell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
 ```
 
@@ -605,7 +606,7 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templa
 
 现在，可以使用本文档前面所述的步骤部署群集；如果已在参数文件中填充了值，则现在可以直接使用 [Azure 资源模板部署][resource-group-template-deploy]创建群集。
 
-```powershell
+```PowerShell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
@@ -677,7 +678,7 @@ Azure AD 的设置和使用可能有一定难度，可以参考下面的一些�
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>使用 Azure AD 身份验证通过 PowerShell 连接群集
 若要连接 Service Fabric 群集，请使用以下 PowerShell 命令示例：
 
-```powershell
+```PowerShell
 Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalInSec 10 -AzureActiveDirectory -ServerCertThumbprint <thumbprint>
 ```
 

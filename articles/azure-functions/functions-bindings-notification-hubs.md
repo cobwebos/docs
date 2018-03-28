@@ -1,13 +1,13 @@
 ---
-title: "适用于 Azure Functions 的 通知中心绑定"
-description: "了解如何在 Azure Functions 中使用 Azure 通知中心绑定。"
+title: 适用于 Azure Functions 的 通知中心绑定
+description: 了解如何在 Azure Functions 中使用 Azure 通知中心绑定。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions，函数，事件处理，动态计算，无服务体系结构"
+editor: ''
+tags: ''
+keywords: Azure Functions，函数，事件处理，动态计算，无服务体系结构
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 6be75035247f05995949734cd4f4f0d934e30685
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 292c8295cbc2705c12365a20cee0e80b6da639a5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 通知中心输出绑定
 
@@ -28,6 +28,12 @@ ms.lasthandoff: 02/09/2018
 必须为想要使用的平台通知服务 (PNS) 配置 Azure 通知中心。 若要了解如何从通知中心获取客户端应用程序中的推送通知，请参阅[通知中心入门](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)，并从页面顶部附近的下拉列表中选择目标客户端平台。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="packages"></a>包
+
+[Microsoft.Azure.WebJobs.Extensions.NotificationHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) NuGet 包中提供了通知中心绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.NotificationHubs/) GitHub 存储库中提供了此包的源代码。
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="example---template"></a>示例 - 模板
 
@@ -266,7 +272,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 ## <a name="attributes"></a>属性
 
-在 [C# 类库](functions-dotnet-class-library.md)中，请使用 NuGet 包 [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) 中定义的 [NotificationHub](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) 属性。
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [NotificationHub](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) 特性。
 
 [配置](#configuration)部分描述了该特性的构造函数参数和属性。
 

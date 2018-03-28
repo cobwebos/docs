@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Box 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 与 Box 之间配置单一登录。"
+title: 教程：将 Azure Active Directory 与 Box 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 Box 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,145 +14,138 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: af43f4b2a11f217853a9160f473dea8c488ea852
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 638ae63057df00375b05a58e3ceab510e2a608de
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-box"></a>教程：Azure Active Directory 与 Box 集成
+# <a name="integrate-azure-active-directory-with-box"></a>将 Azure Active Directory 与 Box 应用相集成
 
 本教程介绍如何将 Box 与 Azure Active Directory (Azure AD) 集成。
 
-将 Box 与 Azure AD 集成具有以下优势：
+将 Azure AD 与 Box 集成可提供以下优势：
 
 - 可在 Azure AD 中控制谁有权访问 Box。
-- 可使用户通过其 Azure AD 帐户自动登录到 Box（单一登录）。
-- 可在中心位置（即 Azure 门户）管理帐户。
+- 可以让用户使用其 Azure AD 帐户自动登录到 Box（单一登录，简称 SSO）。
+- 可在一个中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
+有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Box 的集成，需要以下项：
 
 - Azure AD 订阅
-- 已启用 Box 单一登录的订阅
+- 已启用 Box SSO 的订阅
 
 > [!NOTE]
-> 为了测试本教程中的步骤，我们不建议使用生产环境。
+> 不建议使用生产环境测试本教程中的步骤。
 
-测试本教程中的步骤应遵循以下建议：
+若要测试本教程中的步骤，请遵循以下建议：
 
 - 除非必要，请勿使用生产环境。
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，会在测试环境中测试 Azure AD 单一登录。 
+
+本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Box
 2. 配置和测试 Azure AD 单一登录
 
-## <a name="adding-box-from-the-gallery"></a>从库中添加 Box
-若要配置 Box 与 Azure AD 的集成，需要从库中将 Box 添加到托管 SaaS 应用列表。
+## <a name="add-box-from-the-gallery"></a>从库中添加 Box
+要配置 Box 与 Azure AD 的集成，请执行以下操作，将 Box 从库添加到托管 SaaS 应用列表：
 
-**若要从库中添加 Box，请执行以下步骤：**
-
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”。 
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 选择“企业应用程序” > “所有应用程序”。
 
-    ![“企业应用程序”部分][2]
+    ![“企业应用程序”窗口][2]
     
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+3. 要添加新应用程序，请选择窗口顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在搜索框中，键入“Box”，在结果面板中选择“Box”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入 **Box**，在结果列表中选择“Box”，然后选择“添加”。
 
     ![结果列表中的 Box](./media/active-directory-saas-box-tutorial/tutorial_box_search.png)
+### <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+在本部分，我们使用名为“Britta Simon”的测试用户配置和测试 Box 的 Azure AD 单一登录。
 
-在本部分中，将使用名为“Britta Simon”的测试用户配置和测试 Box 的 Azure AD 单一登录。
+若要运行单一登录，Azure AD 需要知道与 Azure AD 中的用户相对应的 Box 用户。 换句话说，必须在 Azure AD 用户与 Box 中的相关用户之间建立链接关系。
 
-为使单一登录能正常工作，Azure AD 需要知道与 Azure AD 用户相对应的 Box 用户。 换句话说，需要在 Azure AD 用户与 Box 中的相关用户之间建立链接关系。
+可通过将 Azure AD 中“用户名”的值指定为 Box 中“用户名”的值来建立此链接关系。
 
-在 Box 中，将 Azure AD 中“用户名”的值指定为“用户名”的值来建立此链接关系。
-
-若要配置和测试 Box 的 Azure AD 单一登录，需要完成以下构建基块：
-
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-3. **[创建 Box 测试用户](#create-a-box-test-user)** - 在 Box 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+要配置和测试 Box 的 Azure AD 单一登录，请完成下面 5 个部分中的构建基块。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，会在 Azure 门户中启用 Azure AD 单一登录，并在 Box 应用程序中配置单一登录。
+执行以下操作，在 Azure 门户中启用 Azure AD 单一登录并在 Box 应用程序中配置单一登录：
 
-**若要配置 Box 的 Azure AD 单一登录，请执行以下步骤：**
+1. 在 Azure 门户上的“Box”应用程序集成窗口中，单击“单一登录”。
 
-1. 在 Azure 门户中的“Box”应用程序集成页上，单击“单一登录”。
+    ![“单一登录”链接][4]
 
-    ![配置单一登录链接][4]
-
-2. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
+2. 在“单一登录”窗口中的“单一登录模式”框内，选择“基于 SAML 的登录”。
  
-    ![“单一登录”对话框](./media/active-directory-saas-box-tutorial/tutorial_box_samlbase.png)
+    ![“单一登录”窗口](./media/active-directory-saas-box-tutorial/tutorial_box_samlbase.png)
 
-3. 在“Box 域和 URL”部分中，执行以下步骤：
+3. 在“Box 域和 URL”下，执行以下操作：
 
     ![Box 域和 URL 单一登录信息](./media/active-directory-saas-box-tutorial/url3.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.box.com`
+    a. 在“登录 URL”框中，键入采用以下格式的 URL：*https://\<子域>.box.com*。
 
-    b. 在“标识符”文本框中，键入 URL：`box.net`
+    b. 在“标识符”文本框中，键入 **box.net**。
      
     > [!NOTE] 
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Box 客户端支持团队](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)获取此值。 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+    > 上面的值不是实际值。 使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请联系 [Box 客户端支持团队](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)。 
+
+4. 在“SAML 签名证书”下，选择“元数据 XML”，并将元数据文件保存到计算机上。
 
     ![证书下载链接](./media/active-directory-saas-box-tutorial/tutorial_box_certificate.png) 
 
-5. 单击“保存”按钮。
+5. 选择“保存”。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-box-tutorial/tutorial_general_400.png)
     
-6. 若要为应用程序配置 SSO，请执行[自行设置 SSO](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown) 中的步骤
+6. 若要为应用程序配置 SSO，请遵循[自行设置 SSO](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown) 中的过程。
 
 > [!NOTE] 
-> 如果无法为 Box 帐户启用单一登录设置，则需要联系 [Box 客户端支持团队](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)并向其提供下载的 XML 文件。
+> 如果无法为 Box 帐户启用 SSO 设置，可能需要联系 [Box 客户端支持团队](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)并提供下载的 XML 文件。
 
 > [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 设置应用时，可以在 [Azure 门户](https://portal.azure.com)中阅读前述教程的简洁版本。 在“Active Directory” > “企业应用程序”部分添加此应用后，请选择“单一登录”选项卡，然后在底部的“配置”部分访问嵌入式文档。 有关嵌入式文档功能的详细信息，请参阅 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)。
+>
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
+在本部分，我们将执行以下操作，在 Azure 门户中创建一个名为 Britta Simon 的测试用户：
 
-   ![创建 Azure AD 测试用户][100]
+![创建 Azure AD 测试用户][100]
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+1. 在 Azure 门户的左窗格中，选择“Azure Active Directory”。
 
-1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
+    ![“Azure Active Directory”链接](./media/active-directory-saas-box-tutorial/create_aaduser_01.png)
 
-    ![“Azure Active Directory”按钮](./media/active-directory-saas-box-tutorial/create_aaduser_01.png)
-
-2. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+2. 若要显示当前用户列表，请选择“用户和组” > “所有用户”。
 
     ![“用户和组”以及“所有用户”链接](./media/active-directory-saas-box-tutorial/create_aaduser_02.png)
 
-3. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
+3. 在“所有用户”窗口的顶部，选择“添加”。
 
     ![“添加”按钮](./media/active-directory-saas-box-tutorial/create_aaduser_03.png)
 
-4. 在“用户”对话框中，执行以下步骤：
+    此时会打开“用户”窗口。
 
-    ![“用户”对话框](./media/active-directory-saas-box-tutorial/create_aaduser_04.png)
+4. 在“用户”窗口中执行以下操作：
+
+    ![“用户”窗口](./media/active-directory-saas-box-tutorial/create_aaduser_04.png)
 
     a. 在“姓名”框中，键入“BrittaSimon”。
 
@@ -160,52 +153,49 @@ ms.lasthandoff: 02/28/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 选择“创建”。
  
 ### <a name="create-a-box-test-user"></a>创建 Box 测试用户
 
-本部分将在 Box 中创建一个名为 Britta Simon 的用户。 Box 支持在默认情况下启用的实时预配。
-此部分不存在任何操作项。 尝试访问 Box 时，如果 Box 中尚不存在用户，则系统会创建一个新用户。
+本部分在 Box 中创建测试用户 Britta Simon。 Box 支持在默认情况下启用的实时预配。 尝试访问 Box 时，如果不存在用户，则系统会创建一个新用户。 无需执行创建用户的操作。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 Britta Simon 访问 Box 的权限，允许她使用 Azure 单一登录。
+在本部分，我们通过授予用户 Britta Simon 访问 Box 的权限，使其能够使用 Azure 单一登录。 为此，请执行以下操作：
 
-![分配用户角色][200] 
+![分配用户角色][200]
 
-**若要将 Britta Simon 分配到 Box，请执行以下步骤：**
+1. 在 Azure 门户中，打开“应用程序”视图，转到“目录”视图，然后选择“企业应用程序” > “所有应用程序”。
 
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
+    ![“企业应用程序”和“所有应用程序”链接][201] 
 
-    ![分配用户][201] 
+2. 在“应用程序”列表中选择“Box”。
 
-2. 在应用程序列表中，选择“Box”。
+    ![Box 链接](./media/active-directory-saas-box-tutorial/tutorial_box_app.png)  
 
-    ![应用程序列表中的 Box 链接](./media/active-directory-saas-box-tutorial/tutorial_box_app.png)  
-
-3. 在左侧菜单中，单击“用户和组”。
+3. 在左窗格中，选择“用户和组”。
 
     ![“用户和组”链接][202]
 
-4. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
+4. 选择“添加”，然后在“添加分配”窗格中选择“用户和组”。
 
     ![“添加分配”窗格][203]
 
-5. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
+5. 在“用户和组”窗口中的“用户”列表内，选择“Britta Simon”。
 
-6. 在“用户和组”对话框中单击“选择”按钮。
+6. 选择“选择”按钮。
 
-7. 在“添加分配”对话框中单击“分配”按钮。
+7. 在“添加分配”窗口中，选择“分配”。
     
 ### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击 Box 磁贴时，应该会显示登录页面，可通过该页面登录到 Box 应用程序。
+在访问面板中选择“Box”磁贴时，会打开用于登录 Box 应用程序的登录页。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
+* [有关将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 * [配置用户预配](active-directory-saas-box-userprovisioning-tutorial.md)
 

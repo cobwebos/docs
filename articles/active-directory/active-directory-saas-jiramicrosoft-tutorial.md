@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Microsoft Azure Active Directory single sign-on for JIRA 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 与 Microsoft Azure Active Directory single sign-on for JIRA 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Microsoft Azure Active Directory single sign-on for JIRA 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 Microsoft Azure Active Directory single sign-on for JIRA 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 710aa59fb3cc69cb1f5a20389eca13b1be93d223
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: ceb36b78b72c45e9af59724d1f1c79789ef24b24
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-microsoft-azure-active-directory-single-sign-on-for-jira"></a>教程：Azure Active Directory 与 Microsoft Azure Active Directory single sign-on for JIRA 的集成
 
@@ -61,6 +61,7 @@ ms.lasthandoff: 01/29/2018
 
 *   JIRA 核心和软件：6.0 到 7.2.0
 *   JIRA Service Desk 3.0 到 3.2
+*   JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](./active-directory-saas-jira52microsoft-tutorial.md)
 
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
@@ -144,7 +145,7 @@ ms.lasthandoff: 01/29/2018
     
     ![配置单一登录](.\media\active-directory-saas-msaadssojira-tutorial\endpoint.png)
      
-    d.单击“下一步”。 现在，转到“Microsoft Azure Active Directory single sign-on for JIRA”的属性页，使用“复制”按钮复制“应用程序 ID”并将其粘贴到记事本中。
+    d. 现在，转到“Microsoft Azure Active Directory single sign-on for JIRA”的属性页，使用“复制”按钮复制“应用程序 ID”并将其粘贴到记事本中。
  
     ![配置单一登录](.\media\active-directory-saas-msaadssojira-tutorial\appid.png)
 
@@ -160,7 +161,7 @@ ms.lasthandoff: 01/29/2018
     
     ![配置单一登录](.\media\active-directory-saas-msaadssojira-tutorial\addon1.png)
 
-8. 从 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=56506)下载插件。 使用“上传加载项”菜单手动上传由 Microsoft 提供的插件。
+8. 从 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=56506)下载插件。 使用“上传加载项”菜单手动上传由 Microsoft 提供的插件。 [Microsoft 服务协议](https://www.microsoft.com/en-us/servicesagreement/)涵盖了插件下载。
 
     ![配置单一登录](.\media\active-directory-saas-msaadssojira-tutorial\addon12.png)
 
@@ -181,7 +182,7 @@ ms.lasthandoff: 01/29/2018
 
     c. 在“登录按钮名”中键入组织希望用户在登录屏幕上看到的按钮名称。
 
-    d.单击“下一步”。 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”。  此 ID 必须为 JIRA 用户 ID。如果用户 ID 不匹配，系统将禁止用户登录。 
+    d. 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”。  此 ID 必须为 JIRA 用户 ID。如果用户 ID 不匹配，系统将禁止用户登录。 
 
     > [!Note]
     > 默认 SAML 用户 ID 位置是名称标识符。 可将其更改为属性选项，并输入适当的属性名称。
@@ -195,6 +196,9 @@ ms.lasthandoff: 01/29/2018
     h. 从 JIRA 注销时，如果要从 Azure AD 注销，请选择“启用单一注销”。 
 
     i. 单击“保存”按钮保存设置。
+
+    > [!NOTE]
+    > 有关安装和故障排除的详细信息，请访问 [MS JIRA SSO 连接器管理员指南](ms-confluence-jira-plugin-adminguide.md)，还可以参阅[常见问题解答](ms-confluence-jira-plugin-faq.md)以获得帮助
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -230,7 +234,7 @@ ms.lasthandoff: 01/29/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-a-microsoft-azure-active-directory-single-sign-on-for-jira-test-user"></a>创建 Microsoft Azure Active Directory single sign-on for JIRA 测试用户
 
@@ -262,7 +266,7 @@ ms.lasthandoff: 01/29/2018
 
     c. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
-    d.单击“下一步”。 在“密码”文本框中，键入用户的密码。
+    d. 在“密码”文本框中，键入用户的密码。
 
     e. 单击“创建用户”。
 

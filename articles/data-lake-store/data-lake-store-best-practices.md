@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure Data Lake Store 的最佳做法 | Microsoft Docs"
-description: "了解与 Azure Data Lake Store 使用相关的数据引入、日期安全性和性能的最佳做法"
+title: 使用 Azure Data Lake Store 的最佳做法 | Microsoft Docs
+description: 了解与 Azure Data Lake Store 使用相关的数据引入、日期安全性和性能的最佳做法
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: sachinsbigdata
 manager: jhubbard
 editor: cgronlun
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: d3a0dd70a03f97a9b6bfb243eda7cbd470b0c239
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c394142ba40fc580bdcec11430dcae2816fa9760
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="overview-of-azure-data-lake-store"></a>Azure Data Lake Store 概述
+# <a name="best-practices-for-using-azure-data-lake-store"></a>使用 Azure Data Lake Store 的最佳做法
 本文介绍 Azure Data Lake Store 使用方面的最佳做法和注意事项。 本文介绍 Data Lake Store 的安全性、性能、复原和监视。 在 Data Lake Store 出现之前，在 Azure HDInsight 之类的服务中使用真正大型的数据是很复杂的事情。 必须将数据在多个 Blob 存储帐户中分片，才能实现 PB 级的存储以及在该规模下的性能优化。 使用 Data Lake Store 时，大部分针对大小和性能的硬性限制都会去除。 但是，若要充分利用 Data Lake Store 的性能，仍有一些需要本文讨论的注意事项。 
 
 ## <a name="security-considerations"></a>安全注意事项
@@ -139,7 +139,7 @@ Data Lake Store 提供详细的诊断日志和审核。 Data Lake Store 提供�
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG 
 
-设置此项以后，节点就会重启，Data Lake Store 诊断就会写入到节点上的 YARN 日志 (/tmp/<user>/yarn.log)，然后就可以监视各种重要的详细信息，例如错误或限制（HTTP 429 错误代码）。 也可在 [](data-lake-store-diagnostic-logs.md)Data Lake Store 帐户的“诊断”边栏选项卡的 OMS（或日志传送到的任何位置）中监视这些相同的信息。 若要启用操作可见性并方便调试，建议至少启用 Data Lake Store 的客户端日志记录或利用其日志传送选项。
+设置属性且节点重启后，Data Lake Store 诊断就会写入到节点上的 YARN 日志 (/tmp/<user>/yarn.log)，然后就可以监视各种重要的详细信息，例如错误或限制（HTTP 429 错误代码）。 也可在 [](data-lake-store-diagnostic-logs.md)Data Lake Store 帐户的“诊断”边栏选项卡的 OMS（或日志传送到的任何位置）中监视这些相同的信息。 若要启用操作可见性并方便调试，建议至少启用 Data Lake Store 的客户端日志记录或利用其日志传送选项。
 
 ### <a name="run-synthetic-transactions"></a>运行综合事务 
 
@@ -155,7 +155,7 @@ Data Lake Store 提供详细的诊断日志和审核。 Data Lake Store 提供�
 
     {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/ 
 
-例如，在英国，飞机引擎的着陆遥测数据可能如下所示： 
+例如，在英国，飞机引擎的着陆遥测数据可能看起来像以下结构： 
 
     UK/Planes/BA1293/Engine1/2017/08/11/12/ 
 
@@ -163,7 +163,7 @@ Data Lake Store 提供详细的诊断日志和审核。 Data Lake Store 提供�
 
 ### <a name="batch-jobs-structure"></a>批处理作业结构 
 
-概括地讲，在批处理中，常用的方法是先将数据置于“in”文件夹中。 然后，当数据处理完以后，再将新数据置于“out”文件夹中，供下游进程使用。 有的作业需要对单个文件进行处理，但可能不需要对大型数据集进行大规模并行处理。对于这种作业，有时候会使用这种方法。 与上面建议的 IoT 结构一样，好的目录结构会设置父级文件夹，用于存储区域和主题之类的内容（例如，组织、产品/制造者）。 这可以确保组织数据的安全，更好地管理工作负荷中的数据。 另外，可以考虑在结构中添加日期和时间，以便更好地在处理过程中进行组织和筛选式搜索，增强安全性并提高自动化程度。 日期结构的粒度级别取决于上传或处理数据的时间间隔，例如每小时、每天甚至每月。 
+概括地讲，在批处理中，常用的方法是先将数据置于“in”文件夹中。 然后，当数据处理完以后，再将新数据置于“out”文件夹中，供下游进程使用。 有的作业需要对单个文件进行处理，但可能不需要对大型数据集进行大规模并行处理。对于这种作业，有时候会使用此目录结构。 与上面建议的 IoT 结构一样，好的目录结构会设置父级文件夹，用于存储区域和主题之类的内容（例如，组织、产品/制造者）。 此结构有助于确保组织数据的安全，并可更好地管理工作负荷中的数据。 另外，可以考虑在结构中添加日期和时间，以便更好地在处理过程中进行组织和筛选式搜索，增强安全性并提高自动化程度。 日期结构的粒度级别取决于上传或处理数据的时间间隔，例如每小时、每天甚至每月。 
 
 有时候，数据损坏或格式异常会导致文件处理失败。 在这种情况下，可以将这些文件移到 **/bad** 文件夹中进一步进行检查，这样的目录结构更有效。 还可以通过批处理作业将这些损坏的文件报告或通知给相关人员，要求其进行人工干预。 请考虑以下模板结构： 
 
@@ -171,7 +171,7 @@ Data Lake Store 提供详细的诊断日志和审核。 Data Lake Store 提供�
     {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/ 
     {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/ 
 
-例如，一家市场营销公司每天从其北美的客户处提取的客户更新数据在处理前和处理后可能如下所示： 
+例如，一家市场营销公司每天从其北美的客户端提取客户更新数据。 该数据在处理前和处理后可能看起来像以下片段： 
 
     NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv 
     NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv 

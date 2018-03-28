@@ -1,27 +1,88 @@
 ---
-title: "Azure 容器实例故障排除"
-description: "了解如何排查 Azure 容器实例问题"
+title: Azure 容器实例故障排除
+description: 了解如何排查 Azure 容器实例问题
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/02/2018
+ms.date: 03/14/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 561729e5e495500222ccec5b4b536a3152cb25e3
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a527939d6bc73e3dee5701bc53ef8312e68d2953
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>排查 Azure 容器实例的部署问题
 
 本文展示了如何排查向 Azure 容器实例部署容器时出现的问题。 还介绍了一些可能会遇到的常见问题。
 
+## <a name="view-logs-and-stream-output"></a>查看日志和流输出
+
+如果容器的行为错误，应首先使用 [az container logs][az-container-logs] 查看其日志，然后使用 [az container attach][az-container-attach] 流式传输其标准输出和标准错误。
+
+### <a name="view-logs"></a>查看日志
+
+若要查看容器内应用程序代码的日志，可使用 [az container logs][az-container-logs] 命令。
+
+下面是[在 ACI 中运行容器化任务](container-instances-restart-policy.md)中基于任务的示例容器，在向其送入无效的 URL 进行处理后的日志输出：
+
+```console
+$ az container logs --resource-group myResourceGroup --name mycontainer
+Traceback (most recent call last):
+  File "wordcount.py", line 11, in <module>
+    urllib.request.urlretrieve (sys.argv[1], "foo.txt")
+  File "/usr/local/lib/python3.6/urllib/request.py", line 248, in urlretrieve
+    with contextlib.closing(urlopen(url, data)) as fp:
+  File "/usr/local/lib/python3.6/urllib/request.py", line 223, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/local/lib/python3.6/urllib/request.py", line 532, in open
+    response = meth(req, response)
+  File "/usr/local/lib/python3.6/urllib/request.py", line 642, in http_response
+    'http', request, response, code, msg, hdrs)
+  File "/usr/local/lib/python3.6/urllib/request.py", line 570, in error
+    return self._call_chain(*args)
+  File "/usr/local/lib/python3.6/urllib/request.py", line 504, in _call_chain
+    result = func(*args)
+  File "/usr/local/lib/python3.6/urllib/request.py", line 650, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: Not Found
+```
+
+### <a name="attach-output-streams"></a>附加输出流
+
+[az container attach][az-container-attach] 命令在容器启动过程中提供诊断信息。 启动容器后，它会将 STDOUT 和 STDERR 流式传输到本地控制台。
+
+例如，下面是[在 ACI 中运行容器化任务](container-instances-restart-policy.md)中基于任务的容器，在向其提供一个大型文本文件的有效 URL 进行处理后的输出：
+
+```console
+$ az container attach --resource-group myResourceGroup --name mycontainer
+Container 'mycontainer' is in state 'Unknown'...
+Container 'mycontainer' is in state 'Waiting'...
+Container 'mycontainer' is in state 'Running'...
+(count: 1) (last timestamp: 2018-03-09 23:21:33+00:00) pulling image "microsoft/aci-wordcount:latest"
+(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Successfully pulled image "microsoft/aci-wordcount:latest"
+(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Created container with id e495ad3e411f0570e1fd37c1e73b0e0962f185aa8a7c982ebd410ad63d238618
+(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Started container with id e495ad3e411f0570e1fd37c1e73b0e0962f185aa8a7c982ebd410ad63d238618
+
+Start streaming logs:
+[('the', 22979),
+ ('I', 20003),
+ ('and', 18373),
+ ('to', 15651),
+ ('of', 15558),
+ ('a', 12500),
+ ('you', 11818),
+ ('my', 10651),
+ ('in', 9707),
+ ('is', 8195)]
+```
+
 ## <a name="get-diagnostic-events"></a>获取诊断事件
 
-若要查看容器内应用程序代码的日志，可使用 [az container logs][az-container-logs] 命令。 但如果未成功部署容器，则需要查看由 Azure 容器实例资源提供程序提供的诊断信息。 若要查看容器事件，请运行 [az container show][az-container-show] 命令：
+如果容器无法成功部署，则需要查看由 Azure 容器实例资源提供程序提供的诊断信息。 若要查看容器事件，请运行 [az container show][az-container-show] 命令：
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer
@@ -90,11 +151,17 @@ az container show --resource-group myResourceGroup --name mycontainer
 
 ## <a name="common-deployment-issues"></a>常见部署问题
 
-一些常见问题导致了大部分部署错误。
+以下部分描述了导致容器部署中的大多数错误的常见问题：
+
+* [不支持映像版本](#image-version-not-supported)
+* [无法请求映像](#unable-to-pull-image)
+* [容器不断退出并重启](#container-continually-exits-and-restarts)
+* [容器启动时间过长](#container-takes-a-long-time-to-start)
+* [“资源不可用”错误](#resource-not-available-error)
 
 ## <a name="image-version-not-supported"></a>不支持映像版本
 
-如果指定了 Azure 容器实例不支持的映像，则将返回 `ImageVersionNotSupported` 格式的错误。 错误的值将显示 `The version of image '{0}' is not supported.`。 此错误当前适用于 Windows 1709 映像，以减少使用 LTS Windows 映像。 对 Windows 1709 映像的支持正在研发中。
+如果指定了 Azure 容器实例不支持的映像，则将返回 `ImageVersionNotSupported` 错误。 错误的值为 `The version of image '{0}' is not supported.`，当前适用于 Windows 1709 映像。 若要缓解此问题，请使用 LTS Windows 映像。 对 Windows 1709 映像的支持正在研发中。
 
 ## <a name="unable-to-pull-image"></a>无法请求映像
 
@@ -180,24 +247,39 @@ az container show --resource-group myResourceGroup --name mycontainer
 
 ## <a name="container-takes-a-long-time-to-start"></a>容器启动时间过长
 
+影响 Azure 容器实例中的容器启动时间的两个主要因素是：
+
+* [映像大小](#image-size)
+* [映像位置](#image-location)
+
+Windows 映像具有[其他注意事项](#use-recent-windows-images)。
+
+### <a name="image-size"></a>映像大小
+
 如果容器启动时间过长，但最终成功启动，请先查看容器映像大小。 Azure 容器实例按需请求容器映像，因此启动时间与映像大小直接相关。
 
-可使用 Docker CLI 查看容器映像大小：
+可在 Docker CLI 中使用 `docker images` 命令查看容器映像大小：
 
-```bash
-docker images
-```
-
-输出：
-
-```bash
-REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
-microsoft/aci-helloworld               latest              7f78509b568e        13 days ago         68.1MB
+```console
+$ docker images
+REPOSITORY                  TAG       IMAGE ID        CREATED        SIZE
+microsoft/aci-helloworld    latest    7f78509b568e    13 days ago    68.1MB
 ```
 
 保持容器较小的关键是，确保最终映像不包含任何运行时不需要的内容。 执行此操作的一种方法是使用[多阶段生成][docker-multi-stage-builds]。 多阶段生成可轻松确保最终映像仅包含应用程序所需的项目，而不包含任何生成时需要的额外内容。
 
-要减小容器启动时映像请求的影响，另一种方法是在希望使用 Azure 容器实例的相同区域中使用 Azure 容器注册表托管容器映像。 这会缩短容器映像需要经过的网络路径，显著缩短下载时间。
+### <a name="image-location"></a>映像位置
+
+若要减小映像请求对容器启动时间的影响，另一种方法是在希望部署容器实例的同一区域的 [Azure 容器注册表](/azure/container-registry/)中托管容器映像。 这会缩短容器映像需要经过的网络路径，显著缩短下载时间。
+
+### <a name="use-recent-windows-images"></a>使用最新的 Windows 映像
+
+对于基于某些 Windows 映像的映像，Azure 容器实例使用一种缓存机制来帮助加快容器启动时间。
+
+若要确保最快的 Windows 容器启动时间，请使用以下**两个映像**的**三个最新**版本之一作为基础映像：
+
+* [Windows Server 2016][docker-hub-windows-core]（仅限 LTS）
+* [Windows Server 2016 Nano Server][docker-hub-windows-nano]
 
 ## <a name="resource-not-available-error"></a>资源不可用错误
 
@@ -214,7 +296,10 @@ microsoft/aci-helloworld               latest              7f78509b568e        1
 
 <!-- LINKS - External -->
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
+[docker-hub-windows-core]: https://hub.docker.com/r/microsoft/windowsservercore/
+[docker-hub-windows-nano]: https://hub.docker.com/r/microsoft/nanoserver/
 
 <!-- LINKS - Internal -->
+[az-container-attach]: /cli/azure/container#az_container_attach
 [az-container-logs]: /cli/azure/container#az_container_logs
 [az-container-show]: /cli/azure/container#az_container_show

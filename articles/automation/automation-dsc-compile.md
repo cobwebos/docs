@@ -1,23 +1,20 @@
 ---
-title: 在 Azure 自动化 DSC 中编译配置 | Microsoft Docs
+title: 在 Azure 自动化 DSC 中编译配置
 description: 本文介绍如何编译 Azure 自动化的 Desired State Configuration (DSC) 配置。
 services: automation
-documentationcenter: na
-author: georgewallace
-manager: carmonm
-ms.assetid: 49f20b31-4fa5-4712-b1c7-8f4409f1aecc
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: powershell
-ms.workload: na
-ms.date: 03/02/2018
-ms.author: magoedte; gwallace
-ms.openlocfilehash: 3ba9200023b71e6f1e69ee4c54d5c90efe1bc954
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: 2df9512a70f8299ad9282894c0ae0805d05473bd
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>在 Azure 自动化 DSC 中编译配置
 
@@ -299,7 +296,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 > [!NOTE]
 > 节点配置文件不得大于 1 MB，以便将其导入 Azure 自动化。
 
-如需深入了解如何对节点配置进行签名，请访问 https://msdn.microsoft.com/zh-cn/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-module。
+可以在以下网页中了解如何对节点配置进行签名：https://msdn.microsoft.com/en-us/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-module。
 
 ### <a name="importing-a-node-configuration-in-the-azure-portal"></a>在 Azure 门户中导入节点配置
 

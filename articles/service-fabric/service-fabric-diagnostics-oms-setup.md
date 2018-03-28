@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric - 使用 OMS Log Analytics 设置监视 | Microsoft Docs"
-description: "了解如何设置 Operations Management Suite 来可视化和分析事件，进而监视 Azure Service Fabric 群集。"
+title: Azure Service Fabric - 使用 OMS Log Analytics 设置监视 | Microsoft Docs
+description: 了解如何设置 Operations Management Suite 来可视化和分析事件，进而监视 Azure Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/17/2017
 ms.author: dekapur
-ms.openlocfilehash: 288c7482058cd9f824b6001bb9ad36d1a5e0f8bf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 98ac32b011744ce388762322edd538b467f93494
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>为群集设置 Operations Management Suite Log Analytics
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 02/21/2018
 >[!NOTE]
 >尚不可对 Linux 群集启用此体验。 
 
-### <a name="add-the-oms-agent-to-your-cluster"></a>将 OMS 代理添加到群集 
+### <a name="connect-the-oms-workspace-to-your-cluster"></a>将 OMS 工作区连接到群集 
 
 1. 需要将工作区连接到来自群集的诊断数据。 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 ServiceFabric\<nameOfOMSWorkspace\>然后转到其概述页。 可在此处更改解决方案设置和工作区设置，还可访问 OMS 门户。
 

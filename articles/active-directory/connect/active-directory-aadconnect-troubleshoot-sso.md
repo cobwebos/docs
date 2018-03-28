@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/12/2018
 ms.author: billmath
-ms.openlocfilehash: 6e81ea9f98733b1b7e0c9bf7466ac844a37b6046
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b383a081141d2fde90cfc574ec4b9ffb16940158
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -34,6 +34,7 @@ ms.lasthandoff: 03/08/2018
 - 无缝 SSO 在 Firefox 的隐私浏览模式下不起作用。
 - 开启增强保护模式时，无缝 SSO 在 Internet Explorer 中不起作用。
 - 无缝 SSO 在 iOS 和 Android 的移动浏览器上不起作用。
+- 如果某个用户属于 Active Directory 中过多的组，则该用户的 Kerberos 票证可能会太大而无法处理，这会导致无缝 SSO 失败。 Azure AD HTTPS 请求可以具有最大大小为 16 KB 的标头；Kerberos 票证需要远小于该数字，才能容纳其他 Azure AD 项目（比如 cookie）。 我们的建议是减少用户的组成员身份，然后重试。
 - 如果你要同步 30 个或更多的 Active Directory 林，则不能通过 Azure AD Connect 启用无缝 SSO。 作为一种解决方法，可以在租户中[手动启用](#manual-reset-of-azure-ad-seamless-sso)该功能。
 - 将 Azure AD 服务 URL (https://autologon.microsoftazuread-sso.com) 添加到“受信任的站点”区域，而非会阻止用户登录的“本地 Intranet”区域。
 - 禁止在 Active Directory 设置中使用 Kerberos 的 RC4_HMAC_MD5 加密类型，因为这将中断无缝 SSO。 在“组策略管理编辑器”工具中，确保“计算机配置”->“Windows 设置”->“安全设置”->“本地策略”->“安全选项”->“网络安全：配置 Kerberos 允许的加密类型”下的 RC4_HMAC_MD5 的策略值的状态为“已启用”。

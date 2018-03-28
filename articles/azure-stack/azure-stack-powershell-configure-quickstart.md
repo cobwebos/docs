@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7725c5a9a7b6359257efadcc46366a7a360ec69c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2b306cc9dc9bbf435eb70315cc46e7faf4268b47
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>在 Azure Stack 中使用 PowerShell 启动并运行
 
@@ -102,7 +102,7 @@ Import-Module .\Connect\AzureStack.Connect.psm1
 
 ## <a name="set-up-powershell-for-ad-fs-based-deployments"></a>设置 PowerShell 进行基于 AD FS 的部署
 
-如果在连接到 Internet 的情况下运行 Azure Stack，则可以使用以下脚本。 但是，如果在未建立 Internet 连接的情况下运行 Azure Stack，请使用[脱机安装 PowerShell](azure-stack-powershell-install.md#install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) 的方法，用于配置 PowerShell 的 cmdlet 与此脚本中所示相同。 登录到 Azure Stack 开发工具包；如果已通过 VPN 建立连接，请登录到基于 Windows 的外部客户端。 打开权限提升的 PowerShell ISE 会话，然后运行以下脚本。 确保根据需要更新环境配置的 **ArmEndpoint** 和 **GraphAudience** 变量：
+如果在连接到 Internet 的情况下运行 Azure Stack，则可以使用以下脚本。 但是，如果在未建立 Internet 连接的情况下运行 Azure Stack，请使用[离线安装 PowerShell](azure-stack-powershell-install.md#install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) 的方法，用于配置 PowerShell 的 cmdlet 与此脚本中所示相同。 登录到 Azure Stack 开发工具包；如果已通过 VPN 建立连接，请登录到基于 Windows 的外部客户端。 打开权限提升的 PowerShell ISE 会话，然后运行以下脚本。 确保根据需要更新环境配置的 **ArmEndpoint** 和 **GraphAudience** 变量：
 
 ```powershell
 
@@ -174,17 +174,13 @@ Login-AzureRmAccount `
 New-AzureRMResourceGroup -Name "ContosoVMRG" -Location Local
 ```
 
-创建资源组后，“预配状态”属性会设置为“成功”。
+> [!note]  
+> 若要指定资源组，你将需要在订阅中有一个资源组。 有关订阅的详细信息，请参阅[计划、 优惠、 配额和订阅的概述](azure-stack-plan-offer-quota-overview.md)
+
+创建资源组后，“Provisioning state”属性会设置为“Succeeded”。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [安装和配置 CLI](azure-stack-connect-cli.md)
 
 * [开发模板](user/azure-stack-develop-templates.md)
-
-
-
-
-
-
-

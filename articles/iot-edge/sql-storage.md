@@ -1,19 +1,19 @@
 ---
-title: "Azure IoT Edge SQL 模块 | Microsoft Docs"
-description: "使用 Microsoft SQL 模块存储边缘中的数据，并使用 Azure Functions 设置数据的格式。"
+title: Azure IoT Edge SQL 模块 | Microsoft Docs
+description: 使用 Microsoft SQL 模块存储边缘中的数据，并使用 Azure Functions 设置数据的格式。
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban, ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ce3c3abd00dba23887b5f811af6cab8d2c83323d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 792e754b84f1dc03a32780ed94d274c833be68f5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>使用 SQL Server 数据库存储边缘中的数据
 
@@ -67,7 +67,7 @@ x64 处理器体系结构中的 Windows 和 Linux 容器适用于本教程。 SQ
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "localhost:5000/filterfunction:latest",
+              "image": "<docker registry address>/filterfunction:latest",
               "createOptions": "{}"
             }
           },
@@ -94,7 +94,12 @@ x64 处理器体系结构中的 Windows 和 Linux 容器适用于本教程。 SQ
         }
    ```
 
-3. 根据正在运行的操作系统，使用以下代码更新 SQL 模块的设置： 
+3. 将 `<docker registry address>` 替换为在已完成本教程[将 Azure Functions 作为 IoT Edge 模块进行部署 - 预览版](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-function)中填写的地址
+
+   >[!NOTE]
+   >容器注册表地址与从注册表复制的登录服务器相同。 它应采用 `<your container registry name>.azurecr.io` 格式
+
+4. 根据正在运行的操作系统，使用以下代码更新 SQL 模块的设置： 
 
    * Windows:
 
@@ -110,11 +115,11 @@ x64 处理器体系结构中的 Windows 和 Linux 容器适用于本教程。 SQ
       "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"/var/opt/mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
-4. 保存文件。 
-5. 在 VS Code 命令面板中，选择 **Edge: Create deployment for Edge device**。 
-6. 选择 IoT Edge 设备 ID。
-7. 选择更新的 `deployment.json` 文件。 在输出窗口中，可以看到部署的相应输出。 
-8. 若要启动 Edge 运行时，请在命令面板中选择 **Edge: Start Edge**。
+5. 保存文件。 
+6. 在 VS Code 命令面板中，选择 **Edge: Create deployment for Edge device**。 
+7. 选择 IoT Edge 设备 ID。
+8. 选择更新的 `deployment.json` 文件。 在输出窗口中，可以看到部署的相应输出。 
+9. 若要启动 Edge 运行时，请在命令面板中选择 **Edge: Start Edge**。
 
 >[!TIP]
 >每当在生产环境中创建 SQL Server 容器时，都应该[更改默认的系统管理员密码](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password)。

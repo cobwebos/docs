@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: a1ffd9311f6ff171502efe64557463abc49ad636
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5039798d76017d93b77d724b2e6bca6712af0370
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -37,11 +37,11 @@ ms.lasthandoff: 03/08/2018
 
 [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet 包中提供了事件网格触发器。 [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension) GitHub 存储库中提供了此包的源代码。
 
-此包用于 [C# 类库开发](functions-triggers-bindings.md#local-c-development-using-visual-studio-or-vs-code)和 [Functions v2 绑定扩展注册](functions-triggers-bindings.md#local-development-azure-functions-core-tools)。
-
 <!--
 If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` type instead of `JObject`, install the [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) package.
 -->
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="example"></a>示例
 
@@ -348,7 +348,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ### <a name="create-a-requestbin-endpoint"></a>创建 RequestBin 终结点
 
-RequestBin 是一个开源工具，可接受 HTTP 请求并显示请求正文。 Azure 事件网格会对 http://requestb.in URL 进行特殊处理。 为便于测试，事件网格会将事件发送到 RequestBin URL，且无需正确响应订阅验证请求。 另外两个测试工具会得到相同的处理：http://webhookinbox.com 和 http://hookbin.com。
+RequestBin 是一个开源工具，可接受 HTTP 请求并显示请求正文。 Azure 事件网格会对 http://requestb.in URL 进行特殊处理。 为便于测试，事件网格会将事件发送到 RequestBin URL，且无需正确响应订阅验证请求。 向另外两个测试工具提供相同的处理方式：http://webhookinbox.com 和 http://hookbin.com。
 
 RequestBin 并不适合在高吞吐量方案中使用。 如果一次推送多个事件，可能不会在工具中看到所有事件。
 

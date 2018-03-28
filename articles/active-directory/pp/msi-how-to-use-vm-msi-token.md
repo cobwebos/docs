@@ -1,11 +1,11 @@
 ---
-title: "在 VM 上，如何使用用户分配的托管服务标识来获取访问令牌。"
-description: "有关使用 Azure VM 的用户分配的 MSI 获取 OAuth 访问令牌的分步说明和示例。"
+title: 在 VM 上，如何使用用户分配的托管服务标识来获取访问令牌。
+description: 有关使用 Azure VM 的用户分配的 MSI 获取 OAuth 访问令牌的分步说明和示例。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a9513a59ec4540c6d63236519873c6e1e177b65a
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 68454d3f3880df82ca895d1c5f140ebdb6030e77
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="acquire-an-access-token-for-a-vm-user-assigned-managed-service-identity-msi"></a>为 VM 用户分配的托管服务标识 (MSI) 获取访问令牌
 
@@ -26,9 +26,7 @@ ms.lasthandoff: 02/03/2018
 本文提供有关获取令牌的各种代码和脚本示例，以及有关处理令牌过期和 HTTP 错误等重要主题的指导。
 
 ## <a name="prerequisites"></a>先决条件
-
 [!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
-
 如果打算使用本文中的 Azure PowerShell 示例，请务必安装最新版本的 [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM)。
 
 > [!IMPORTANT]
@@ -48,21 +46,28 @@ ms.lasthandoff: 02/03/2018
 
 ## <a name="get-a-token-using-http"></a>使用 HTTP 获取令牌 
 
-用于获取访问令牌的基本接口基于 REST，因此，在 VM 上运行的、可发出 HTTP REST 调用的任何客户端应用程序都可以访问该接口。 此接口类似于 Azure AD 编程模型，不过，客户端需使用虚拟机上的 localhost 终结点（而不是使用 Azure AD 终结点）。
+用于获取访问令牌的基本接口基于 REST，因此，在 VM 上运行的、可发出 HTTP REST 调用的任何客户端应用程序都可以访问该接口。 此接口类似于 Azure AD 编程模型，不同的是，客户端使用虚拟机上的终结点（而不是使用 Azure AD 终结点）。
 
-示例请求：
+使用实例元数据服务 (IMDS) 终结点的示例请求：
 
 ```
-GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1
-Metadata: true
+GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1 Metadata: true
+```
+
+使用 MSI VM 扩展终结点（即将弃用）的示例请求：
+
+```
+GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1 Metadata: true
 ```
 
 | 元素 | 说明 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
-| `http://localhost:50342/oauth2/token` | MSI 终结点，其中，50342 是可配置的默认端口。 |
+| `http://169.254.169.254/metadata/identity/oauth2/token` | 实例元数据服务的 MSI 终结点。 |
+| `http://localhost:50342/oauth2/token` | VM 扩展的 MSI 终结点，其中 50342 是可配置的默认端口。 |
+| `api-version`  | 查询字符串参数，指示 IMDS 终结点的 API 版本。  |
 | `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 https://management.azure.com/ 的令牌。 |
-| `client_id` | 查询字符串参数，指示了代表用户分配的 MSI 的服务主体的客户端 ID（也称为应用 ID）。 创建用户分配的 MSI 期间，将在 `clientId` 属性中返回此值。 此示例请求客户端 ID 为“712eac09-e943-418c-9be6-9fd5c91078bl”的令牌。 |
+| `client_id` |  *可选*查询字符串参数，指示代表用户分配的 MSI 的服务主体的客户端 ID（也称为应用 ID）。 如果使用系统分配的 MSI，则不需要此参数。 创建用户分配的 MSI 期间，将在 `clientId` 属性中返回此值。 此示例请求客户端 ID 为“712eac09-e943-418c-9be6-9fd5c91078bl”的令牌。 |
 | `Metadata` | 一个 HTTP 请求标头字段，MSI 需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。
 
 示例响应：
@@ -94,6 +99,16 @@ Content-Type: application/json
 ## <a name="get-a-token-using-curl"></a>使用 CURL 获取令牌
 
 请确保用用户分配的 MSI 的服务主体的客户端 ID（也称为应用 ID）替换 `client_id` 参数的 <MSI CLIENT ID> 值。 创建用户分配的 MSI 期间，将在 `clientId` 属性中返回此值。
+  
+使用实例元数据服务 (IMDS) 终结点的示例请求：
+
+   ```bash
+   response=$(curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<MSI CLIENT ID>")
+   access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
+   echo The MSI access token is $access_token
+   ```
+   
+使用 MSI VM 扩展终结点（即将弃用）的示例请求：
 
    ```bash
    response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/&client_id=<MSI CLIENT ID>" -H Metadata:true -s)
@@ -104,7 +119,7 @@ Content-Type: application/json
    示例响应：
 
    ```bash
-   user@vmLinux:~$ response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/&client_id=9d484c98-b99d-420e-939c-z585174b63bl" -H Metadata:true -s)
+   user@vmLinux:~$ response=$(curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=9d484c98-b99d-420e-939c-z585174b63bl")
    user@vmLinux:~$ access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
    user@vmLinux:~$ echo The MSI access token is $access_token
    The MSI access token is eyJ0eXAiOiJKV1QiLCJhbGciO...
@@ -112,7 +127,7 @@ Content-Type: application/json
 
 ## <a name="handling-token-expiration"></a>处理令牌过期
 
-本地 MSI 子系统会缓存令牌。 因此，可以根据所需的频率调用令牌，仅当存在以下情况时，才在线调用 Azure AD 结果：
+MSI 子系统会缓存令牌。 因此，可以根据所需的频率调用令牌，仅当存在以下情况时，才在线调用 Azure AD 结果：
 - 由于缓存中没有令牌，发生了缓存未命中
 - 令牌已过期
 
@@ -142,7 +157,7 @@ MSI 终结点通过 HTTP 响应消息标头的状态代码字段，以 4xx 或 5
 | ----------- | ----- | ----------------- | -------- |
 | 400 错误请求 | invalid_resource | AADSTS50001：在名为 *\<TENANT-ID\>* 的租户中找不到名为 *\<URI\>* 的应用程序。 如果应用程序尚未由租户管理员安装，或者尚未获得租户中的任何用户同意，则可能会发生这种情况。 可能将身份验证请求发送给了错误的租户。\ | （仅限 Linux） |
 | 400 错误请求 | bad_request_102 | 未指定必需的元数据标头 | 请求中缺少 `Metadata` 请求标头字段，或者该字段的格式不正确。 必须将该值指定为 `true`（全小写）。 有关示例，请参阅[使用 HTTP 获取令牌](#get-a-token-using-http)中的“示例请求”。|
-| 401 未授权 | unknown_source | 未知源 *\<URI\>* | 检查是否已正确设置 HTTP GET 请求 URI 的格式。 必须将 `scheme:host/resource-path` 部分指定为 `http://localhost:50342/oauth2/token`。 有关示例，请参阅[使用 HTTP 获取令牌](#get-a-token-using-http)中的“示例请求”。|
+| 401 未授权 | unknown_source | 未知源 *\<URI\>* | 检查是否已正确设置 HTTP GET 请求 URI 的格式。 必须将 `scheme:host/resource-path` 部分指定为 `http://169.254.169.254/metadata/identity/oath2/token` 或 `http://localhost:50342/oauth2/token`。 有关示例，请参阅[使用 HTTP 获取令牌](#get-a-token-using-http)中的“示例请求”。|
 |           | invalid_request | 请求中缺少必需的参数、包含无效的参数值、多次包含某个参数，或格式不正确。 |  |
 |           | unauthorized_client | 客户端无权使用此方法请求访问令牌。 | 此错误是由某个未使用本地环回调用扩展的请求，或者在未正确配置 MSI 的 VM 上发出请求造成的。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户配置 VM 托管服务标识 (MSI)](msi-qs-configure-portal-windows-vm.md)。 |
 |           | access_denied | 资源所有者或授权服务器拒绝了请求。 |  |

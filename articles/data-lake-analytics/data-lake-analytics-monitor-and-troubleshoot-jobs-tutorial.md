@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure 门户对 Azure Data Lake Analytics 作业进行故障排除 | Microsoft Docs"
-description: "了解如何使用 Azure 门户对 Data Lake Analytics 作业进行疑难解答。 "
+title: 使用 Azure 门户对 Azure Data Lake Analytics 作业进行故障排除 | Microsoft Docs
+description: '了解如何使用 Azure 门户对 Data Lake Analytics 作业进行疑难解答。 '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
-ms.author: edmaca
-ms.openlocfilehash: b9c7453cc0a94f70d0098ed83e5f127832065a62
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: saveenr
+ms.openlocfilehash: f6168997c449be5354bd223c516d4f929a1bf894
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>使用 Azure 门户对 Azure Data Lake Analytics 作业进行疑难解答
-了解如何使用 Azure 门户对 Data Lake Analytics 作业进行疑难解答。
+# <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>使用 Azure 门户对 Azure Data Lake Analytics 作业进行故障排除
+了解如何使用 Azure 门户对 Data Lake Analytics 作业进行故障排除。
 
-在本教程中，将遇到缺少源文件问题，并使用 Azure 门户解决该问题。
+在本教程中，将设置缺少源文件问题，并使用 Azure 门户解决该问题。
 
 ## <a name="submit-a-data-lake-analytics-job"></a>提交 Data Lake Analytics 作业
 
@@ -62,7 +62,7 @@ OUTPUT @searchlog
 3. 单击“作业管理”磁贴，以查看作业。 在“正在运行”、“已排队”和“已结束”部分对作业进行了分类。 可在“已结束”部分查看失败的作业。 它是列表中的第一个。 有大量作业时，可以单击“筛选”来帮助找到作业。
 
     ![Azure Data Lake Analytics 筛选作业](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
-4. 从列表中单击失败的作业，在新的边栏选项卡上打开作业详细信息：
+4. 从列表中单击失败的作业，以打开作业详细信息：
 
     ![Azure Data Lake Analytics 失败的作业](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job.png)
 
@@ -73,7 +73,7 @@ OUTPUT @searchlog
 
     它会告诉你找不到源文件夹。
 6. 单击“重复脚本”。
-7. 将 **FROM** 路径更新到到以下：
+7. 将 **FROM** 路径更新为：
 
     "/Samples/Data/SearchLog.tsv"
 8. 单击“提交”。

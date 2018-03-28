@@ -1,25 +1,25 @@
 ---
-title: "在 Azure 逻辑应用中添加 Oracle 数据库连接器 | Microsoft Docs"
-description: "在逻辑应用中使用 Oracle 数据库连接器"
-services: 
-documentationcenter: 
-author: MandiOhlinger
+title: 在 Azure 逻辑应用中添加 Oracle 数据库连接器 | Microsoft Docs
+description: 在逻辑应用中使用 Oracle 数据库连接器
+services: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
-ms.assetid: 
+ms.assetid: ''
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
-ms.author: mandia; ladocs
-ms.openlocfilehash: 4119e72abd568c9b53245a872691f06329b040de
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 57931b6c2f96debeb9ab7f1a3b6700f23e7d2a7e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle 数据库连接器入门
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/19/2018
 * 通过向客户数据库添加新客户或在订单数据库中更新订单生成工作流。
 * 使用操作获取数据行、插入新行，甚至删除。 例如，在 Dynamics CRM Online 中创建记录时（触发器），则在 Oracle 数据库中插入行（操作）。 
 
-本主题介绍如何在逻辑应用中使用 Oracle 数据库连接器。
+本文介绍如何在逻辑应用中使用 Oracle 数据库连接器。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 01/19/2018
   [用于 Windows x64 的 64 位 ODAC 12c Release 4 (12.1.0.2.4)](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
-    > 如果未安装 Oracle 客户端，则在尝试创建或使用连接时，会发生错误。 请参阅本主题中的常见错误。
+    > 如果未安装 Oracle 客户端，则在尝试创建或使用连接时，会发生错误。 请参阅本文中的常见错误。
 
 
 ## <a name="add-the-connector"></a>添加连接器
@@ -104,7 +104,7 @@ ms.lasthandoff: 01/19/2018
 
 **缓解措施**：请确保网关正在安装了该网关的本地计算机上运行，并确保该网关可以连接到 Internet。  建议不要将网关安装在可能会关闭或进入睡眠状态的计算机上。 还可以重新启动本地数据网关服务 (PBIEgwService)。
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-please-visit-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**错误**：要使用的提供程序已弃用：“System.Data.OracleClient 需要 Oracle 客户端软件 8.1.7 或更高版本”。 若要安装正式的提供程序，请访问 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376)。
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**错误**：要使用的提供程序已弃用：“System.Data.OracleClient 需要 Oracle 客户端软件 8.1.7 或更高版本”。 请参阅 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) 安装正式的提供程序。
 
 **原因**：Oracle 客户端 SDK 未与正在运行的本地数据网关安装在同一计算机上。  
 
@@ -134,4 +134,4 @@ ms.lasthandoff: 01/19/2018
 
 
 ## <a name="next-steps"></a>后续步骤
-[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)，并在我们的 [API 列表](apis-list.md)中了解逻辑应用中的可用连接器。
+[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)，并在 [API 列表](apis-list.md)中了解逻辑应用中的可用连接器。

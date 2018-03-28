@@ -60,7 +60,7 @@ Get-AzureStorageTableRowAll -table $storageTable | ft
 |----|---------|---------------|----|
 | 1 | Chris | partition1 | CA |
 | 3 | Christine | partition1 | WA |
-| #N/A | Jessie | partition2 | NM |
+| 2 | Jessie | partition2 | NM |
 | 4 | Steven | partition2 | TX |
 
 #### <a name="retrieve-entities-for-a-specific-partition"></a>检索特定分区的实体
@@ -104,7 +104,7 @@ Get-AzureStorageTableRowByColumnName -table $storageTable `
 ```powershell
 Get-AzureStorageTableRowByCustomFilter `
     -table $storageTable `
-    -customFilter "(userid eq '1')"
+    -customFilter "(userid eq 1)"
 ```
 
 此查询将检索一条记录。
@@ -146,7 +146,7 @@ Get-AzureStorageTableRowByCustomFilter -table $storageTable `
 
 |字段|值|
 |----|----|
-| userid | #N/A |
+| userid | 2 |
 | username | Jessie2 |
 | PartitionKey | partition2 |
 | RowKey      | NM |
@@ -180,7 +180,7 @@ Get-AzureStorageTableRowAll -table $storageTable | ft
 若要删除表中的所有实体，请检索所有实体，并将结果通过管道传递到删除 cmdlet。 
 
 ```powershell
-# Get all rows and pipe it into the remove cmdlet.
+# Get all rows and pipe the result into the remove cmdlet.
 Get-AzureStorageTableRowAll `
     -table $storageTable | Remove-AzureStorageTableRow -table $storageTable 
 

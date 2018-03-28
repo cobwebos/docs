@@ -11,7 +11,7 @@
 
 <sup>1</sup>包括标准和高级存储帐户。 如果需要的存储帐户超过 100 个，请通过 [Azure 支持](https://azure.microsoft.com/support/faq/)提出请求。 Azure 存储团队将评审业务案例，最多可以批准 250 个存储帐户。 
 
-<sup>2</sup> 若要扩大标准存储帐户的容量，使之突破广告中宣传的容量、入口/出口以及请求速率方面的限制，请通过 [Azure 支持](https://azure.microsoft.com/support/faq/)提交请求。 Azure 存储团队会对请求进行审核，根据具体情况批准提高限制的请求。
+<sup>2</sup> 如果需要扩大存储帐户的限制，请联系 [Azure 支持](https://azure.microsoft.com/support/faq/)。 Azure 存储团队会对请求进行审核，根据具体情况批准提高限制的请求。 通用和 Blob 存储帐户请求支持都可按请求提高容量、流入量/流出量和请求速率。 有关 Blob 存储帐户的新最大值，请参阅[宣布推出更大、更高规模的存储帐户](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。
 
 <sup>3</sup> 仅受帐户的传入/传出限制的限制。 *传入*是指发送到存储帐户的所有数据（请求）。 “传出”是指从存储帐户接收的所有数据（响应）。  
 

@@ -1,20 +1,20 @@
 ---
-title: "Azure 机器学习模型管理安装和配置 | Microsoft Docs"
-description: "本文档介绍了安装和配置 Azure 机器学习中的模型管理时所涉及的步骤和概念。"
+title: Azure 机器学习模型管理安装和配置 | Microsoft Docs
+description: 本文档介绍了安装和配置 Azure 机器学习中的模型管理时所涉及的步骤和概念。
 services: machine-learning
-author: raymondlaghaeian
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: hjerez
-ms.reviewer: jmartens,jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/6/2017
-ms.openlocfilehash: 4e2ac548ee08f1a20cf2c1744242ee13535e55cc
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: d231fd525d310d2496c9ace40808b7deab0dd48f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="model-management-setup"></a>模型管理安装
 
@@ -70,7 +70,7 @@ pip install -r https://aka.ms/az-ml-o16n-cli-requirements-file
 首先，需要设置部署环境。 环境设置是一个一次性任务。 设置完成后，可以重复使用环境进行后续部署。 有关详细信息，请参阅下一部分。
 
 完成环境设置后：
-- 系统会提示你登录到 Azure。 若要登录，请使用 Web 浏览器打开页面 https://aka.ms/devicelogin，然后输入提供的代码进行身份验证。
+- 系统会提示你登录到 Azure。 若要登录，请使用 Web 浏览器打开页 https://aka.ms/devicelogin，然后输入所提供的代码进行身份验证。
 - 在身份验证过程中，系统会提示你输入帐户进行身份验证。 重要说明：选择具有有效 Azure 订阅并且有足够权限在帐户中创建资源的帐户。 登录完成后，会显示你的订阅信息，并提示是否想要继续使用选定帐户。
 
 ### <a name="environment-setup"></a>环境设置

@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions 中的扇出/扇入方案 - Azure"
-description: "了解如何在 Azure Functions 的 Durable Functions 扩展中实现扇出/扇入方案。"
+title: Durable Functions 中的扇出/扇入方案 - Azure
+description: 了解如何在 Azure Functions 的 Durable Functions 扩展中实现扇出/扇入方案。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a5d539172f03246e3c658f2485d29d3ae389ae52
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 446ddbff7d945e90ebfd12bc6e9e7a1f0e18267c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions 中的扇出/扇入方案 - 云备份示例
 
@@ -158,7 +158,7 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="next-steps"></a>后续步骤
 
-此示例说明了如何实现扇出/扇入模式。 下一个示例演示如何在[永久业务流程](durable-functions-eternal-orchestrations.md)中实现[有状态单一实例](durable-functions-singletons.md)模式。
+此示例说明了如何实现扇出/扇入模式。 下一个示例演示如何使用[持久计时器](durable-functions-timers.md)实现监视模式。
 
 > [!div class="nextstepaction"]
-> [运行有状态单一实例示例](durable-functions-counter.md)
+> [运行监视示例](durable-functions-monitor.md)

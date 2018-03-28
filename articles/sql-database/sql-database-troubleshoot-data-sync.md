@@ -1,6 +1,6 @@
 ---
-title: "排查 Azure SQL 数据同步（预览版）问题 | Microsoft Docs"
-description: "了解如何排查 Azure SQL 数据同步（预览版）的常见问题"
+title: 排查 Azure SQL 数据同步（预览版）问题 | Microsoft Docs
+description: 了解如何排查 Azure SQL 数据同步（预览版）的常见问题
 services: sql-database
 ms.date: 11/13/2017
 ms.topic: article
@@ -8,11 +8,12 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: c174f5120ba2e5bf8018cce0f0e34c1fc3f8eb3f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.custom: data-sync
+ms.openlocfilehash: a24e16abd78a89d6143c00fc08a3ef91d7dd8202
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>排查 SQL 数据同步（预览版）的问题
 
@@ -217,7 +218,7 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
     a. 选择“启动”。  
     b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果中，选择“服务”。  
-    d.单击“下一步”。 在“服务”窗口中，滚动到 **SQL 数据同步（预览版）代理预览**的条目。  
+    d. 在“服务”窗口中，滚动到 **SQL 数据同步（预览版）代理预览**的条目。  
 2. 右键单击“SQL 数据同步(预览版)代理预览版”并选择“停止”。
 3. 右键单击“SQL 数据同步(预览版)代理预览版”并选择“属性”。
 4. 在“SQL 数据同步(预览版)代理预览版属性”中，选择“登录”选项卡。
@@ -239,7 +240,7 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
 
 -   SQL 数据同步（预览版）Windows 服务正在运行。  
 -   SQL 数据同步（预览版）预览 Windows 服务的服务帐户具有网络访问权限。    
--   客户端代理能够访问定位器服务。 检查以下注册表项是否包含 https://locator.sync.azure.com/LocatorServiceApi.svc 值：  
+-   客户端代理能够访问定位器服务。 检查以下注册表项是否具有值 https://locator.sync.azure.com/LocatorServiceApi.svc:  
     -   x86 计算机：`HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
     -   x64 计算机：`HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
 
@@ -340,7 +341,7 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
     a. 在“开始”菜单中，搜索“服务”。  
     b. 在搜索结果中，选择“服务”。  
     c. 找到 **SQL 数据同步（预览版）预览**服务。  
-    d.单击“下一步”。 如果服务状态为“已停止”，请右键单击服务名称，选择“启动”。
+    d. 如果服务状态为“已停止”，请右键单击服务名称，选择“启动”。
 -   确保 SQL 数据库和 SQL Server 数据库都已联机。
 -   等待预配或同步过程完成，然后重试删除同步组。
 
@@ -360,7 +361,7 @@ SQL 数据同步（预览版）预配过程针对不同架构中的同名表使�
     a. 选择“开始”菜单。  
     b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果窗格的“程序”部分，双击“服务”。  
-    d.单击“下一步”。 右键单击“SQL 数据同步(预览版)”服务。  
+    d. 右键单击“SQL 数据同步(预览版)”服务。  
     e. 如果该服务正在运行，请将其停止。  
     f. 右键单击该服务，并选择“启动”。  
     g. 检查数据库是否仍已注册。 如果已不再注册数据库，则操作完成。 否则，请继续执行下一步。

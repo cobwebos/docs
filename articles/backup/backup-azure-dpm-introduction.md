@@ -1,12 +1,12 @@
 ---
-title: "使用 DPM 将工作负荷备份到 Azure 门户 | Microsoft 文档"
-description: "使用 Azure 备份服务备份 DPM 服务器的简介"
+title: 使用 DPM 将工作负荷备份到 Azure 门户 | Microsoft 文档
+description: 使用 Azure 备份服务备份 DPM 服务器的简介
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: adigan
 manager: nkolli
-editor: 
-keywords: "System Center Data Protection Manager, Data Protection Manager, dpm 备份"
+editor: ''
+keywords: System Center Data Protection Manager, Data Protection Manager, dpm 备份
 ms.assetid: c8c322cf-f5eb-422c-a34c-04a4801bfec7
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: c22e6fc85e88d89007107c8c3bad142ac91e9d12
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0e547a5991c0ce00344eff6d6b77edb0e34bd62c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>使用 DPM 准备将工作负荷备份到 Azure
 > [!div class="op_single_selector"]
@@ -43,21 +43,23 @@ ms.lasthandoff: 12/21/2017
 [System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) 备份文件和应用程序数据。 在[此处](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix)可以找到有关受支持工作负荷的详细信息。 备份到 DPM 的数据可以存储在磁带、磁盘上，或者使用 Microsoft Azure Backup 备份到 Azure。 DPM 可与 Azure 备份交互，如下所述：
 
 * **部署为物理服务器或本地虚拟机的 DPM** - 如果 DPM 部署为物理服务器或本地 Hyper-V 虚拟机，则除了磁盘和磁带备份外，还可以将数据备份到恢复服务保管库。
-* **部署为 Azure 虚拟机的 DPM** — 通过 System Center 2012 R2 Update 3，可以将 DPM 部署为 Azure 虚拟机。 如果 DPM 部署为 Azure 虚拟机部署，则可以将数据备份到附加到 DPM Azure 虚拟机的 Azure 磁盘，也可以通过将数据备份到恢复服务保管库来卸载数据存储。
+* **部署为 Azure 虚拟机的 DPM** - 通过 System Center 2012 R2 Update 3，可以在 Azure 虚拟机上部署 DPM。 如果 DPM 部署为 Azure 虚拟机，则可以将数据备份到附加到 VM 的 Azure 磁盘，也可以通过将数据备份到恢复服务保管库来卸载数据存储。
 
-## <a name="why-backup-from-dpm-to-azure"></a>为什么从 DPM 备份到 Azure？
-使用 Azure 备份来备份 DPM 服务器所带来的业务好处包括：
+## <a name="why-back-up-dpm-to-azure"></a>为什么将 DPM 备份到 Azure？
+将 DPM 服务器备份到 Azure 所带来的业务好处包括：
 
-* 对于本地 DPM 部署，可以使用 Azure 来取代长期的磁带部署。
-* 对于 Azure 中的 DPM 部署，Azure 备份可让你卸载 Azure 磁盘中的存储，从而通过将较旧的数据存储在恢复服务保管库中，并将较新的数据存储在磁盘上来实现扩展。
+* 若是本地 DPM 部署，可以使用 Azure 来取代长期的磁带部署。
+* 若是将 DPM 部署到 Azure 中的 VM，可从 Azure 磁盘卸载存储。 通过将较旧的数据存储在恢复服务保管库中，可以将新数据存储到磁盘，从而纵向扩展业务。
 
 ## <a name="prerequisites"></a>先决条件
 按如下所述让 Azure 备份做好备份 DPM 数据的准备：
 
 1. **创建恢复服务保管库** - 在 Azure 门户中创建保管库。
 2. **下载保管库凭据** - 下载可用于将 DPM 服务器注册到恢复服务保管库的凭据。
-3. **安装 Azure 备份代理** - 将代理从 Azure 备份安装到每个 DPM 服务器上。
+3. **安装 Azure 备份代理** - 将代理安装到每个 DPM 服务器上。
 4. **注册服务器** - 将 DPM 服务器注册到恢复服务保管库。
+
+[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="key-definitions"></a>关键定义
 下面是 DPM 的 Azure 备份的一些关键定义：
@@ -81,14 +83,14 @@ ms.lasthandoff: 12/21/2017
 
     ![创建恢复服务保管库步骤 2](./media/backup-azure-dpm-introduction/rs-vault-menu.png)
 
-    此时会打开恢复服务保管库边栏选项卡，其中会提示提供“名称”、“订阅”、“资源组”和“位置”。
+    此时会打开恢复服务保管库菜单，其中会提示你提供“名称”、“订阅”、“资源组”和“位置”。
 
     ![创建恢复服务保管库步骤 5](./media/backup-azure-dpm-introduction/rs-vault-attributes.png)
 4. 对于“名称”，请输入一个友好名称以标识保管库 。 名称对于 Azure 订阅需要是唯一的。 键入包含 2 到 50 个字符的名称。 名称必须以字母开头，只能包含字母、数字和连字符。
 5. 单击“订阅”查看可用订阅列表。 如果不确定要使用哪个订阅，请使用默认的（或建议的）订阅。 仅当组织帐户与多个 Azure 订阅关联时，才会有多个选项。
 6. 单击“资源组”查看可用资源组列表，或单击“新建”创建新的资源组。 有关资源组的完整信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/resource-group-overview.md)
 7. 单击“位置”，为保管库选择地理区域  。
-8. 单击“创建” 。 创建恢复服务保管库可能需要一段时间。 可以在门户右上区域监视状态通知。
+8. 单击“创建”。 创建恢复服务保管库可能需要一段时间。 可以在门户右上区域监视状态通知。
    创建保管库后，它会在门户中打开。
 
 ### <a name="set-storage-replication"></a>设置存储复制
@@ -96,8 +98,8 @@ ms.lasthandoff: 12/21/2017
 
 若要编辑存储复制设置，请执行以下操作：
 
-1. 选择保管库以打开保管库仪表板和“设置”边栏选项卡。 如果“设置”边栏选项卡未打开，请在保管库仪表板中单击“所有设置”。
-2. 在“设置”边栏选项卡中，单击“备份基础结构” > “备份配置”，打开“备份配置”边栏选项卡。 在“备份配置”边栏选项卡中，选择保管库的存储复制选项。
+1. 选择保管库以打开保管库仪表板和“设置”菜单。 如果“设置”菜单未打开，请在保管库仪表板中单击“所有设置”。
+2. 在“设置”菜单中，单击“备份基础结构” > “备份配置”，打开“备份配置”菜单。 在“备份配置”菜单中，选择保管库的存储复制选项。
 
     ![备份保管库列表](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -112,9 +114,9 @@ ms.lasthandoff: 12/21/2017
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 打开要将 DPM 计算机注册到的恢复服务保管库。
-3. 默认情况下会打开“设置”边栏选项卡。 如果“设置”边栏选项卡已关闭，请在保管库仪表板中单击“设置”将它打开。 在“设置”边栏选项卡中，单击“属性”。
+3. 默认情况下会打开“设置”菜单。 如果“设置”菜单已关闭，请在保管库仪表板中单击“设置”将它打开。 在“设置”菜单中，单击“属性”。
 
-    ![打开保管库边栏选项卡](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
+    ![打开保管库菜单](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 4. 在“属性”页上的“备份凭据”下，单击“下载”。 门户将生成可供下载的保管库凭据文件。
 
     ![下载](./media/backup-azure-dpm-introduction/vault-credentials.png)
@@ -130,9 +132,9 @@ ms.lasthandoff: 12/21/2017
 在创建 Azure 备份保管库后，应在每个 Windows 计算机（Windows Server、Windows 客户端、System Center Data Protection Manager 服务器或 Azure 备份服务器计算机）上安装代理，以便将数据和应用程序备份到 Azure。
 
 1. 打开要将 DPM 计算机注册到的恢复服务保管库。
-2. 默认情况下会打开“设置”边栏选项卡。 如果“设置”边栏选项卡已关闭，请单击“设置”将它打开。 在“设置”边栏选项卡中，单击“属性”。
+2. 默认情况下会打开“设置”菜单。 如果“设置”菜单已关闭，请单击“设置”将它打开。 在“设置”菜单中，单击“属性”。
 
-    ![打开保管库边栏选项卡](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
+    ![打开保管库菜单](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. 在“设置”页上的“Azure 备份代理”下，单击“下载”。
 
     ![下载](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
@@ -153,7 +155,7 @@ ms.lasthandoff: 12/21/2017
 
     保管库凭据文件只能生效 48 小时（从门户下载后算起）。 如果此屏幕中显示任何错误（例如“提供的保管库凭据文件已过期”），请登录到 Azure 门户，并再次下载保管库凭据文件。
 
-    确保将保管库凭据文件放置在安装应用程序可访问的位置。 如果遇到访问相关的错误，请将保管库凭据文件复制到此计算机中的临时位置，然后重试操作。
+    确保将保管库凭据文件放置在安装应用程序可访问的位置。 如果遇到访问相关的错误，请将保管库凭据文件复制到此计算机中的临时位置，并重试操作。
 
     如果遇到无效的保管库凭据错误（例如“所提供的保管库凭据无效”），则该文件已损坏，或者没有与恢复服务关联的最新凭据。 请在从门户下载新的保管库凭据文件后重试该操作。 如果用户在 Azure 门户中快速连续单击“下载保管库凭据”选项，则通常会出现此错误。 在这种情况下，只有第二个保管库凭据文件有效。
 10. 若要控制工作时间和非工作时间网络带宽的使用情况，可在“限制设置”屏幕中设置带宽使用限制并定义工作时间和非工作时间。

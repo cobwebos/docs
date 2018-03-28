@@ -1,11 +1,11 @@
 ---
-title: "创建和注册发布者帐户 | Microsoft Docs"
-description: "创建 Microsoft 开发人员帐户的说明，同意后，即可在 Azure 应用商店中销售各种产品/服务类型。"
+title: 创建和注册发布者帐户 | Microsoft Docs
+description: 创建 Microsoft 开发人员帐户的说明，同意后，即可在 Azure Marketplace 中销售各种产品/服务类型。
 services: Azure Marketplace
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 5a2fe68d-2967-463f-8af6-42bed07e3eaa
 ms.service: marketplace
 ms.devlang: na
@@ -13,18 +13,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
-ms.author: hascipio
-ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: da805bead3f6af4ebd0b4b94b30a51ff2abc62dd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-microsoft-developer-account"></a>创建 Microsoft 开发人员帐户
-本文介绍成为 Azure 应用商店的批准 Microsoft 开发人员的必要帐户创建和注册过程。
+本文介绍成为 Azure Marketplace 的批准 Microsoft 开发人员的必要帐户创建和注册过程。
 
 ## <a name="1-create-a-microsoft-account"></a>1.创建 Microsoft 帐户
-若要开始发布过程，需要创建 Microsoft 帐户。 此帐户用于注册 **Microsoft 开发人员中心**和 **Azure 发布门户**。 对于 Azure 应用商店产品/服务，只应具有一个 Microsoft 帐户。 它不应该特定于服务或产品。
+若要开始发布过程，需要创建 Microsoft 帐户。 此帐户用于注册 **Microsoft 开发人员中心**和 **Azure 发布门户**。 对于 Azure Marketplace 产品/服务，只应具有一个 Microsoft 帐户。 它不应该特定于服务或产品。
 
 组成用户名的地址应位于域上，并受 IT 团队控制。 所有与发布有关的活动都应通过此帐户完成。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="instructions"></a>说明
 1. 打开新的 Chrome Incognito 或 Internet Explorer InPrivate 浏览会话，以确保未登录到现有帐户。
-2. 使用 [https://signup.live.com/signup.aspx](https://signup.live.com/signup.aspx) 链接，按照上述准则将电子邮件（例如 windowsapp@fabrikam.com）注册为 Microsoft 帐户。 请根据以下说明操作。
+2. 使用链接 [https://signup.live.com/signup.aspx](https://signup.live.com/signup.aspx)，按照上述准则将电子邮件（例如 windowsapp@fabrikam.com）注册为 Microsoft 帐户。 请根据以下说明操作。
 
    1. 将帐户注册为 Microsoft 帐户期间，需要提供有效电话号码，供系统以文本消息或自动呼叫的形式向你发送帐户验证代码。
    2. 将帐户注册为 Microsoft 帐户期间，需要提供有效的电子邮件 ID，以接收用于帐户验证的自动发送电子邮件。
@@ -81,7 +81,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 
 ### <a name="register-your-company-account"></a>注册公司帐户
 1. 打开新的 Internet Explorer InPrivate 或 Chrome Incognito 浏览会话，以确保未登录到个人帐户。
-2. 转到 [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)，以将自身注册为开发人员中心中的卖方。 请在继续操作之前，阅读以下重要说明。
+2. 在开发人员中心中转到 [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) 将自己注册为卖家。 请在继续操作之前，阅读以下重要说明。
 
    > [!IMPORTANT]
    > 确保用于在开发人员中心中注册的电子邮件 ID 或通讯组列表（建议使用通讯组列表，以删除个人的依赖性）是首次注册为 Microsoft 帐户。 如果不是，请使用此[链接](https://signup.live.com/signup?uaid=e479342fe2824efeb0c3d92c8f961fd3&lic=1)进行注册。 此外，**Microsoft 公司域下的任何电子邮件 ID（即 @microsoft.com）不能用于**开发人员中心注册。
@@ -97,7 +97,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
     ![绘制](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_04.png)
 
    > [!WARNING]
-   > **“销售”国家/地区：**若要在 Microsoft Azure 应用商店销售服务，注册实体必须是已批准的上述“销售”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关详细信息，请参阅[应用商店参与政策](http://go.microsoft.com/fwlink/?LinkID=526833)。
+   > **“销售”国家/地区：**若要在 Azure Marketplace 上销售服务，注册实体必须来自已批准的上述“销售”国家/地区之一。 此限制是出于付款和税务的原因。 我们正在积极地寻求在不久的将来扩展这一国家/地区列表，敬请关注。 有关详细信息，请参阅 [Marketplace 参与政策](http://go.microsoft.com/fwlink/?LinkID=526833)。
    >
    >
 5. 将“帐户类型”选择为“公司”，并单击“下一步”按钮。
@@ -111,7 +111,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 6. 输入“发布者显示名称”，通常为公司名称。
 
    > [!TIP]
-   > 优惠列出后，开发人员中心中输入的发布者显示名称不会显示在 Azure 应用商店中。 但若要完成注册过程，必须填写该名称。
+   > 优惠列出后，开发人员中心中输入的发布者显示名称不会显示在 Azure Marketplace 中。 但若要完成注册过程，必须填写该名称。
    >
    >
 7. 输入用于帐户验证的“联系人信息”。
@@ -128,7 +128,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
     ![绘制](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_09.png)
 10. 查看帐户信息，并确认所有内容都正确无误。 然后，阅读并接受 [Microsoft Azure Marketplace 发布者协议](http://go.microsoft.com/fwlink/?LinkID=699560)的条款和条件。 选中该框，即表明已阅读并接受这些条款。
 11. 单击“完成”，确认注册。 我们会向电子邮件地址发送一封确认邮件。
-12. 如果打算仅发布免费的产品/服务，请单击“转到 Azure 应用商店发布门户”，然后可以跳到本文档的第 3 部分（[在发布门户中注册帐户](#3-register-your-account-in-the-publishing-portal)）。
+12. 如果打算仅发布免费的产品/服务，请单击“转到 Azure Marketplace 发布门户”，然后可以跳到本文档的第 3 部分（[在发布门户中注册帐户](#3-register-your-account-in-the-publishing-portal)）。
 
 如果打算发布商业产品/服务（例如，带有每小时计费模型的虚拟机产品），请单击“更新帐户信息”，其中必须在开发人员中心帐户中填写税务和银行信息。
 
@@ -150,7 +150,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 2. 单击左侧菜单中的“付款帐户”，在“选择付款方式”下单击“银行帐户”或“PayPal”。
 
    > [!IMPORTANT]
-   > 如果拥有客户在应用商店购买过的商业产品/服务，该帐户即用于对这些购买进行收款。
+   > 如果拥有客户在 Marketplace 购买过的商业产品/服务，该帐户即用于对这些购买进行收款。
    >
    >
 3. 输入付款信息，确认无误后单击“保存”。
@@ -159,13 +159,13 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
    > 如果需要更新或更改付款帐户，请按照上述相同步骤操作，以将当前信息替换为新信息。 更改付款帐户可能会推迟付款（最多一个付款周期）。 出现此推迟的原因是我们需要验证帐户更改，正如首次设置付款帐户时我们会进行验证。 帐户通过验证后，仍会收到全额款项；当前付款周期应得的任何付款将添加到下一个付款周期。
    >
    >
-4. 单击“下一步”。
+4. 单击“资源组名称” 的 Azure 数据工厂。
 
 **税务信息**
 
 1. 必要时使用 Microsoft 帐户登录到 [Microsoft 开发人员中心](http://dev.windows.com/registration?accountprogram=azure)。
 2. 单击左侧菜单中的“税务资料”。
-3. 在“设置纳税表单”页上，选择具有永久居留权的国家或地区，并选择保留原籍的国家或地区。 单击“下一步”。
+3. 在“设置纳税表单”页上，选择具有永久居留权的国家或地区，并选择保留原籍的国家或地区。 单击“资源组名称” 的 Azure 数据工厂。
 4. 输入税务详细信息，然后单击“下一步”。
 
 > [!WARNING]
@@ -175,7 +175,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 
 如果在进行开发人员中心注册时遇到问题，请记录支持票证，如下所示
 
-1. 转到支持链接：[https://developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support)
+1. 请转到支持链接 [https://developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support)
 2. 在“与我们联系”部分下，单击“提交事件”按钮（如以下屏幕截图中所示）
 
     ![绘制](media/marketplace-publishing-accounts-creation-registration/imgAddTax_02.png)
@@ -191,7 +191,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 [发布门户](http://publish.windowsazure.com)用于发布和管理产品/服务。
 
 1. 打开新的 Chrome Incognito 或 Internet Explorer InPrivate 浏览会话，以确保未登录到个人帐户。
-2. 转到 [http://publish.windowsazure.com](http://publish.windowsazure.com)。
+2. 转到[http://publish.windowsazure.com](http://publish.windowsazure.com)。
 3. 如果是新用户并且首次登录到发布门户，则必须使用注册开发人员中心帐户所用的同一电子邮件 ID 进行登录。 以这种方式将开发人员中心帐户和发布门户帐户相互链接。 稍后可以按照以下步骤操作，将公司中使用应用程序的其他有关成员添加为发布门户中的共同管理员。
 
 如果已添加为发布门户中的共同管理员，则可以使用共同管理员帐户进行登录。
@@ -202,7 +202,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 >
 
 ## <a name="4-steps-to-add-a-co-admin-in-the-publishing-portal"></a>4.在发布门户中添加共同管理员的步骤
-假设你是管理员，下面提供了添加共同管理员的步骤。
+**假设你是管理员，**下面提供了添加共同管理员的步骤。
 
 > [!NOTE]
 > **对于新用户，**在发布门户中添加共同管理员之前，请确保已在发布门户中创建至少一个应用程序。 这是必需的，因为“发布者”选项卡仅在发布门户中创建至少一个应用程序后显示。
@@ -218,7 +218,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
    ![绘制](media/marketplace-publishing-accounts-creation-registration/imgAddAdmin_05.png)
 
 ## <a name="5-steps-to-delete-a-co-admin-in-the-publishing-portal"></a>5.在发布门户中删除共同管理员的步骤
-假设你是管理员，下面提供了删除共同管理员的步骤。
+**假设你是管理员，**下面提供了删除共同管理员的步骤。
 
 1. 使用管理员电子邮件 ID 登录到发布门户。
 2. 导航到“发布者”->依次选择帐户->“管理员” -> “共同管理员”。
@@ -230,7 +230,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 现在，帐户已完成创建和注册，请确保通过查看[非技术先决条件](marketplace-publishing-pre-requisites.md)，来实现或满足发布产品/服务的所有非技术先决条件。
 
 ## <a name="see-also"></a>另请参阅
-* [入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)
+* [入门：如何将产品/服务发布到 Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-msalive]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-live.jpg
 [img-email]:media/marketplace-publishing-accounts-creation-registration/creating-msa-account-msa-verifyemail.jpg

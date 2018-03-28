@@ -1,13 +1,13 @@
 ---
-title: "Azure Analysis Services 模型的异步刷新 | Microsoft Docs"
-description: "了解如何使用 REST API 编写异步刷新的代码。"
+title: Azure Analysis Services 模型的异步刷新 | Microsoft Docs
+description: 了解如何使用 REST API 编写异步刷新的代码。
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: analysis-services
 ms.devlang: NA
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: owend
-ms.openlocfilehash: 4c317736af30b4181fa975713258a41b42ed0da3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: bb3e50c3e481bcedc436b8382fb55d6402d058b2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
 使用支持 REST 调用的任何编程语言，可以针对 Azure Analysis Services 表格模型执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/08/2018
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-例如，假设某个模型名为 AdventureWorks，位于美国西部 Azure 区域中名为 myserver 的服务器上。此服务器的名称为：
+例如，假设某个模型名为 AdventureWorks，位于美国西部 Azure 区域中名为 myserver 的服务器上。 此服务器名称为：
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -48,7 +48,7 @@ asazure://westus.asazure.windows.net/myserver
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/ 
 ```
 
-使用基 URL 可以根据以下流程追加资源和操作： 
+使用基 URL 可以根据以下参数追加资源和操作： 
 
 ![异步刷新](./media/analysis-services-async-refresh/aas-async-refresh-flow.png)
 
@@ -56,7 +56,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/
 - 以 **()** 结尾的任何内容是函数。
 - 其他任何内容是资源/对象。
 
-例如，可以在 Refreshes 集合中使用 POST 谓词来执行刷新操作，如下所示：
+例如，可以在 Refreshes 集合中使用 POST 谓词来执行刷新操作：
 
 ```
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
@@ -188,7 +188,7 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 }
 ```
 
-syncstate 的值：
+`syncstate` 的值：
 
 - 0：正在复制。 正在将数据库文件复制到目标文件夹。
 - 1：正在解冻。 正在只读的服务器实例上解冻数据库。
@@ -228,7 +228,7 @@ syncstate 的值：
 
     ![添加 API 访问权限](./media/analysis-services-async-refresh/aas-async-add.png)
 
-5.  在“选择 API”中的搜索框内键入 **SQL Server Analysis Services**，然后选择“Azure Analysis Services (SQL Server Analysis Services Azure)”。
+5.  在“选择 API”中，将 **Azure Analysis Services** 键入到搜索框中，然后选择它。
 
     ![选择 API](./media/analysis-services-async-refresh/aas-async-select-api.png)
 
@@ -242,7 +242,7 @@ syncstate 的值：
 
 #### <a name="service-principal"></a>服务主体
 
-请参阅博客文章 [Automation of Azure Analysis Services with Service Principals and PowerShell](https://azure.microsoft.com/blog/automation-of-azure-analysis-services-with-service-principals-and-powershell/)（使用服务主体和 PowerShell 将 Azure Analysis Services 自动化），了解如何在 Azure Analysis Services 中设置服务主体和分配所需的权限。 完成该博客文章中详述的步骤后，请完成以下附加步骤：
+有关如何在 Azure AS 中设置服务主体和分配必要权限的详细信息，请参阅[创建服务主体 - Azure 门户](../azure-resource-manager/resource-group-create-service-principal-portal.md)和[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。 完成上述步骤后，请完成以下附加步骤：
 
 1.  在代码示例中，找到 **string authority = …**，将 **common** 替换为组织的租户 ID。
 2.  注释/取消注释，以便使用 ClientCredential 类来实例化 cred 对象。 确保以安全方式访问 \<App ID> 和 \<App Key> 值，或者对服务主体使用基于证书的身份验证。

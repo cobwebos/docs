@@ -1,11 +1,11 @@
 ---
-title: "Azure AD v2.0 终结点中有什么不同？ | Microsoft Docs"
-description: "原始 Azure AD 终结点与 v2.0 终结点之间的比较。"
+title: Azure AD v2.0 终结点中有什么不同？ | Microsoft Docs
+description: 原始 Azure AD 终结点与 v2.0 终结点之间的比较。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5060da46-b091-4e25-9fa8-af4ae4359b6c
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4216c2215f494a81935cd4cdca52427b0cbac143
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 502bfa128422a029878513d6aa4533718bdddbb5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>v2.0 终结点有什么不同？
 虽然你已熟悉 Azure Active Directory，或者已将应用与 Azure AD 集成，v2.0 终结点仍可能有一些预料之外的差异之处。  本文档针对这些差异作出汇总，可帮助你了解。
@@ -112,13 +112,13 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 若要深入了解 OAuth 2.0、refresh_token 和 access_token，请查看 [v2.0 协议参考](active-directory-v2-protocols.md)。
 
 #### <a name="openid-profile-and-email"></a>OpenID、个人资料和电子邮件
-以前，使用 Azure Active Directory 的最基本型 OpenID Connect 登录流会在生成的 id_token 中提供丰富的用户相关信息。  id_token 中的声明可以包含用户的名称、首选用户名、电子邮件地址和对象 ID 等等。
+从历史上看，使用 Azure Active Directory 的最基本的 OpenID Connect 登录流在生成的 id_token 中提供丰富的用户相关信息。  id_token 中的声明可以包含用户的名称、首选用户名、电子邮件地址和对象 ID 等等。
 
 我们现在限制 `openid` 范围允许应用访问的信息。  “openid”范围只允许应用将用户登录，并接收用户的应用特定标识符。  如果想要获取应用程序中用户的个人标识信息 (PII)，应用程序必须向用户请求额外权限。  我们引入了两个新范围（`email` 和 `profile` 范围）让你执行这项操作。
 
 `email` 范围非常简单，它可让应用通过 id_token 中的 `email` 声明访问用户的主要电子邮件地址。  `profile` 范围可让应用访问用户的所有其他基本信息 — 其名称、首选用户名、对象 ID 等等。
 
-这样便可在尽可以能透露最少信息的情况下为应用编码 - 只可以向用户请求应用执行其作业所需的信息集。  有关这些范围的详细信息，请参阅 [v2.0 范围参考](active-directory-v2-scopes.md)。
+这样，便可以最低泄漏的方式编码应用 - 只可以向用户请求应用执行其作业所需的信息集。  有关这些范围的详细信息，请参阅 [v2.0 范围参考](active-directory-v2-scopes.md)。
 
 ## <a name="token-claims"></a>令牌声明
 v2.0 终结点颁发的令牌中的声明与正式版 Azure AD 终结点颁发的令牌不同 - 迁移到新服务的应用程序不应假设特定的声明存在于 id_tokens 或 access_tokens 中。 若要了解 v2.0 令牌中发出的特定声明，请参阅 [v2.0 令牌参考](active-directory-v2-tokens.md)。

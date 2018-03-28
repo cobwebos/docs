@@ -1,24 +1,24 @@
 ---
-title: "Azure ExpressRoute 线路和路由域 | Microsoft 文档"
-description: "本页提供 ExpressRoute 线路和路由域的概述。"
+title: Azure ExpressRoute 线路和路由域 | Microsoft 文档
+description: 本页提供 ExpressRoute 线路和路由域的概述。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6f0c5d8e-cc60-4a04-8641-2c211bda93d9
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2017
+ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: c8f3c0e87a052b327e9949acd3e7db1d28c1eb46
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 943305c78a17031d647bf2fa0977d10c51213ef5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute 线路和路由域
  必须订购一条 ExpressRoute 线路，以通过连接提供商将本地基础结构连接到 Microsoft。 下图展示了 WAN 与 Microsoft 之间连接的逻辑表示。
@@ -60,12 +60,12 @@ Azure 存储、SQL 数据库和网站等服务是使用公共 IP 地址提供的
 
 可以在网络中定义自定义路由筛选器，以只使用所需的路由。 有关路由配置的详细信息，请参阅[路由](expressroute-routing.md)页。 
 
-有关通过公共对等路由域支持的服务的详细信息，请参阅[常见问题解答页](expressroute-faqs.md)。 
+有关通过公共对等路由域支持的服务的详细信息，请参阅[常见问题解答](expressroute-faqs.md)。
 
 ### <a name="microsoft-peering"></a>Microsoft 对等互连
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-与其他所有 Microsoft 联机服务（Office 365、Dynamics 365 和 Azure PaaS 服务）的连接通过 Microsoft 对等互连建立。 我们将通过 Microsoft 对等路由域在 WAN 和 Microsoft 云服务之间启用双向连接。 只能通过由你或连接提供商拥有的公共 IP 地址连接到 Microsoft 云服务，并且你必须遵守我们规定的所有规则。 有关详细信息，请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)页。
+与 Microsoft 联机服务（Office 365、Dynamics 365 和 Azure PaaS 服务）的连接通过 Microsoft 对等互连建立。 我们将通过 Microsoft 对等路由域在 WAN 和 Microsoft 云服务之间启用双向连接。 只能通过由你或连接提供商拥有的公共 IP 地址连接到 Microsoft 云服务，并且你必须遵守我们规定的所有规则。 有关详细信息，请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)页。
 
 有关支持的服务、费用和配置的详细信息，请参阅[常见问题解答页](expressroute-faqs.md)。 有关提供 Microsoft 对等互连支持的连接提供商列表的信息，请参阅 [ExpressRoute 位置](expressroute-locations.md)页。
 

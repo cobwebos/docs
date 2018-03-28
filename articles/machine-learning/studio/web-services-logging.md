@@ -1,10 +1,11 @@
 ---
-title: "机器学习 Web 服务的日志记录 | Microsoft Docs"
-description: "了解如何为机器学习 Web 服务启用日志记录。 日志记录提供用于帮助对 API 进行故障排除的其他信息。"
+title: 机器学习 Web 服务的日志记录 | Microsoft Docs
+description: 了解如何为机器学习 Web 服务启用日志记录。 日志记录提供用于帮助对 API 进行故障排除的其他信息。
 services: machine-learning
-documentationcenter: 
-author: raymondlaghaeian
-manager: jhubbard
+documentationcenter: ''
+author: aashishb
+ms.author: aashishb
+manager: hjerez
 editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.author: raymondl;garye
-ms.openlocfilehash: 31497bcae5889590a2261b716574ec4eae21852d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e04ef638c46ef0f3b40fd56d27ba3673565bdc7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>为机器学习 Web 服务启用日志记录
 本文档提供有关机器学习 Web 服务的日志记录功能的信息。 日志记录可提供错误编号和消息以外的其他信息，这些信息有助于对调用机器学习 API 进行故障排除。  
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 
 在 [Azure 机器学习 Web 服务](https://services.azureml.net)门户中启用日志记录。 
 
-1. 登录 Azure 机器学习 Web 服务门户，网址为：[https://services.azureml.net](https://services.azureml.net)。 若要在经典 Web 服务中到达此门户，可在机器学习工作室中单击机器学习 Web 服务页上的“新 Web 服务体验”。
+1. 在 [https://services.azureml.net](https://services.azureml.net) 中登录到 Azure 机器学习 Web 服务门户。 若要在经典 Web 服务中到达此门户，可在机器学习工作室中单击机器学习 Web 服务页上的“新 Web 服务体验”。
 
    ![新 Web 服务体验链接](./media/web-services-logging/new-web-services-experience-link.png)
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 
    ![选择日志记录级别](./media/web-services-logging/enable-logging.png)
 
-6. 单击“保存” 。
+6. 单击“ **保存**”。
 
 7. 对于经典 Web 服务，创建“ml-diagnostics”容器。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/11/2017
 
    2. 单击“Blob 服务”下的“容器”。
 
-   3. 如果容器“ml-diagnostics”不存在，请单击“+容器”，将容器命名为“ml-diagnostics”，然后选择“访问类型”作为“Blob”。 单击 **“确定”**。
+   3. 如果容器“ml-diagnostics”不存在，请单击“+容器”，将容器命名为“ml-diagnostics”，然后选择“访问类型”作为“Blob”。 单击“确定”。
 
       ![选择日志记录级别](./media/web-services-logging/create-ml-diagnostics-container.png)
 

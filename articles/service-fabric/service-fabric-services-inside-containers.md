@@ -1,6 +1,6 @@
 ---
-title: "如何容器化 Azure Service Fabric 微服务（预览版）"
-description: "Azure Service Fabric 已添加用于容器化 Service Fabric 微服务的新功能。 此功能目前处于预览状态。"
+title: 如何容器化 Azure Service Fabric 微服务（预览版）
+description: Azure Service Fabric 已添加用于容器化 Service Fabric 微服务的新功能。 此功能目前处于预览状态。
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,21 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/04/2017
 ms.author: anmola
-ms.openlocfilehash: 6f8ad0bad8d1ae861e6b72f7e1a32ab0675813c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e66e488d8e547e828c014b105a816a14726e5005
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-containerize-your-service-fabric-reliable-services-and-reliable-actors-preview"></a>如何容器化 Service Fabric Reliable Services 和 Reliable Actors（预览版）
 
 Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Services 和 Reliable Actor 的服务）。 有关详细信息，请参阅 [Service Fabric 容器](service-fabric-containers-overview.md)。
 
-
- 此功能处于预览状态，本文提供各种步骤获取在容器内运行的服务。  
+此功能处于预览状态，本文提供各种步骤获取在容器内运行的服务。  
 
 > [!NOTE]
-> 此功能处于预览状态，在生产环境中不受支持。 当前此功能仅适用于 Windows。
+> 此功能处于预览状态，在生产环境中不受支持。 当前此功能仅适用于 Windows。 若要运行容器，必须在包含容器的 Windows Server 2016 上运行群集。
 
 ## <a name="steps-to-containerize-your-service-fabric-application"></a>容器化 Service Fabric 应用程序的步骤
 

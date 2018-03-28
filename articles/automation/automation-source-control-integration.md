@@ -1,24 +1,18 @@
 ---
-title: "Azure 自动化中的源代码管理集成 | Microsoft Docs"
-description: "本文介绍 Azure 自动化中源代码管理与 GitHub 的集成。"
+title: Azure 自动化中的源代码管理集成
+description: 本文介绍 Azure 自动化中源代码管理与 GitHub 的集成。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 224d7375-9887-44dd-b137-06ffe396a4b4
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/29/2017
-ms.author: magoedte;sngun
-ms.openlocfilehash: 15e69105d4171c63b4ccef0b072bccf49a2e9ceb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+manager: carmonm
+ms.openlocfilehash: 96b4f38ea990edcb23ae792d40651672a921a7c7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 源代码管理集成可让你将自动化帐户中的 Runbook 关联到 GitHub 源代码管理存储库。 使用源代码管理可轻松与团队协作、跟踪更改，以及回退到旧版 Runbook。 例如，源代码管理可让你将源代码管理中的不同分支同步到开发、测试或生产自动化帐户，以轻松地将已在开发环境中测试过的代码提升到生产自动化帐户。

@@ -1,24 +1,20 @@
 ---
-title: "从 Orchestrator 迁移到 Azure 自动化 | Microsoft Docs"
-description: "介绍如何将 Runbook 和集成包从 System Center Orchestrator 迁移到 Azure 自动化。"
+title: 从 Orchestrator 迁移到 Azure 自动化
+description: 介绍如何将 Runbook 和集成包从 System Center Orchestrator 迁移到 Azure 自动化。
 services: automation
-documentationcenter: 
-author: bwren
-manager: stevenka
-editor: tysonn
-ms.assetid: 1a7da58c-7a98-49b5-9d9d-001a9f6e631a
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/09/2016
-ms.author: bwren
-ms.openlocfilehash: 457888b4d38875b912ad87d44e96ab727e3ee3ee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b50f9973ef7ea5f884930d4f1ee67f886cc36ad0
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>从 Orchestrator 迁移到 Azure 自动化 (Beta)
 [System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) 中的 Runbook 基于专为 Orchestrator 编写的集成包中的活动，而 Azure 自动化中的 Runbook 则基于 Windows PowerShell。  Azure 自动化中的[图形 Runbook](automation-runbook-types.md#graphical-runbooks) 具有的外观类似于其活动用于表示 PowerShell cmdlet、子 Runbook 和资产的 Orchestrator Runbook。
@@ -46,7 +42,7 @@ Orchestrator 中的 Runbook 存储在数据库服务器上，运行在 Runbook �
 
 运行集成包转换器时，系统会显示一个向导，可以通过该向导选择集成包 (.oip) 文件。  然后，该向导会列出该集成包中包括的活动，并允许选择要迁移的活动。  完成向导的操作后，向导会创建一个集成模块，其中包含原始集成包中每个活动的相应 cmdlet。
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 集成包中活动的任何属性都将转换为集成模块中相应 cmdlet 的参数。  Windows PowerShell cmdlet 有一组可以用于所有 cmdlet 的[通用参数](http://technet.microsoft.com/library/hh847884.aspx)。  例如，-Verbose 参数会导致 cmdlet 输出关于其操作的详细信息。  cmdlet 的参数与通用参数不能有相同的名称。  如果某个活动的属性与通用参数具有相同的名称，向导会提示为参数提供另一个名称。
 
 ### <a name="monitor-activities"></a>监视活动

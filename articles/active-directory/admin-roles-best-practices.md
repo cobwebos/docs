@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 0231dc8336bb2442099984947897e5005767a8f5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 166171dc8d8d694ef253ed6809c53b54577535e2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -178,7 +178,7 @@ Azure AD Identity Protection 是一种基于算法的监视和报告工具，可
 
 安全功能分数会找出你正在使用的 Office 365 服务（例如 OneDrive、SharePoint 和 Exchange），然后查看你的设置和活动并将其与 Microsoft 建立的基线进行比较。 将会根据你遵循最佳安全做法的情况对你评分。 对于 Office 365 商业高级版或企业版订阅，任何具有管理员权限（全局管理员或自定义管理员角色）的用户都可以访问安全功能分数，网址为：[https://securescore.office.com](https://securescore.office.com/)。
 
-#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office365"></a>查看 Office 365 安全性和符合性指南（如果使用 Office 365）
+#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>查看 Office 365 安全性和符合性指南（如果使用 Office 365）
 
 [安全性和符合性计划](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57)概述了 Office 365 客户应如何配置 Office 365 并利用其他 EMS 功能。 然后查看步骤 3-6，了解如何[保护对 Office 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)，并查看指南，了解如何[监视 Office 365 中的安全性和符合性](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6)。
 
@@ -201,7 +201,7 @@ Azure AD Identity Protection 是一种基于算法的监视和报告工具，可
 
 通过企业门户和 Azure 门户确定组织中用于托管生产应用程序的订阅。 
 
-#### <a name="remove-microsoft-ccounts-from-admin-roles"></a>从管理员角色中删除 Microsoft 帐户
+#### <a name="remove-microsoft-accounts-from-admin-roles"></a>从管理员角色中删除 Microsoft 帐户
 
 不应将其他程序（例如 Xbox、Live、Outlook）的 Microsoft 帐户用作组织订阅的管理员帐户。 从所有 Microsoft 帐户中删除管理员状态，将其替换为 Active Directory 工作或学校帐户（例如，chris@contoso.com）。
 
@@ -227,7 +227,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>完成对管理员角色用户的访问权限审核
 
-更多的公司用户是通过云服务获得特许访问权限的，因此可能会导致平台越来越缺少管理。 这包括成为 Office365 全局管理员、Azure 订阅管理员的用户，以及可以通过 VM 或 SaaS 应用行使管理访问权限的用户。 组织应采取与上述操作不同的操作，让所有员工（尤其是管理员）以非特权用户身份处理日常业务事务，只在需要的时候才行使管理员权限。 由于管理员角色的用户自初次核准之后会产生数量的增长，因此请进行访问权限审核，标识并确认每个有资格激活管理权限的用户。 
+更多的公司用户是通过云服务获得特许访问权限的，因此可能会导致平台越来越缺少管理。 这包括成为 Office 365 全局管理员、Azure 订阅管理员的用户，以及可以通过 VM 或 SaaS 应用行使管理访问权限的用户。 组织应采取与上述操作不同的操作，让所有员工（尤其是管理员）以非特权用户身份处理日常业务事务，只在需要的时候才行使管理员权限。 由于管理员角色的用户自初次核准之后会产生数量的增长，因此请进行访问权限审核，标识并确认每个有资格激活管理权限的用户。 
 
 请执行以下操作：
 
@@ -318,7 +318,6 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 * 将风险降至最低并自动实施威胁防护和策略
 
 Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，以便集中监视 Office 365 警报和活动。 它还可以在服务器上运行，从 Cloud App Security 拉取警报和活动并将其流式传输到 SIEM 服务器中。 有关详细信息，请参阅 [SIEM 集成](https://docs.microsoft.com/cloud-app-security/siem)。
-
 
 ## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>阶段 4：持续构建防御，采取更主动的安全姿态
 
@@ -438,16 +437,16 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Microsoft 信任中心确保产品安全性](https://www.microsoft.com/trustcenter/security) - Microsoft 云产品和服务的安全特性
+* [Microsoft 信任中心确保产品安全性](https://www.microsoft.com/en-us/trustcenter/security) - Microsoft 云产品和服务的安全特性
 
-* [Microsoft 信任中心 - 符合性](https://www.microsoft.com/trustcenter/compliance/complianceofferings) - Microsoft 推出的一组范围广泛的符合性产品/服务，适用于云服务
+* [Microsoft 信任中心 - 符合性](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) - Microsoft 推出的一组范围广泛的符合性产品/服务，适用于云服务
 
-* [有关如何执行风险评估的指南](https://www.microsoft.com/trustcenter/guidance/risk-assessment) - 管理 Microsoft 云服务的安全性和符合性要求
+* [有关如何执行风险评估的指南](https://www.microsoft.com/en-us/trustcenter/guidance/risk-assessment) - 管理 Microsoft 云服务的安全性和符合性要求
 
 ### <a name="other-ms-online-services"></a>其他 MS Online Services 
 
-* [Microsoft Intune 安全性](https://www.microsoft.com/trustcenter/security/intune-security) - Intune 从云端提供移动设备管理、移动应用程序管理和电脑管理功能。
+* [Microsoft Intune 安全性](https://www.microsoft.com/en-us/trustcenter/security/intune-security) - Intune 从云端提供移动设备管理、移动应用程序管理和电脑管理功能。
 
-* [Microsoft Dynamics 365 安全性](https://www.microsoft.com/trustcenter/security/dynamics365-security) – Dynamics 365 是 Microsoft 的基于云的解决方案，该方案将客户关系管理 (CRM) 和企业资源规划 (ERP) 功能统合在一起。
+* [Microsoft Dynamics 365 安全性](https://www.microsoft.com/en-us/trustcenter/security/dynamics365-security) – Dynamics 365 是 Microsoft 的基于云的解决方案，该方案将客户关系管理 (CRM) 和企业资源规划 (ERP) 功能统合在一起。
 
  

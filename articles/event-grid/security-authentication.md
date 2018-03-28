@@ -1,18 +1,18 @@
 ---
-title: "Azure 事件网格安全和身份验证"
-description: "介绍 Azure 事件网格及其概念。"
+title: Azure 事件网格安全和身份验证
+description: 介绍 Azure 事件网格及其概念。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/15/2018
 ms.author: babanisa
-ms.openlocfilehash: 9d2b32df6e4b931539eac34d09135ea33069b936
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0b7ef71cf940f82f46a7f053e5c9f7ef64342b6e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -24,7 +24,7 @@ Azure 事件网格包含三种类型的身份验证：
 
 ## <a name="webhook-event-delivery"></a>WebHook 事件传送
 
-Webhook 是从 Azure 事件网格实时接收事件的多种方式之一。 每当新事件准备好进行传送时，事件网格 WebHook 会向已配置的 HTTP 终结点发送 HTTP 请求，并在正文中包含该事件。
+Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事件准备就绪时，事件网格 WebHook 会向已配置的 HTTP 终结点发送 HTTP 请求，并在正文中包含该事件。
 
 当你向事件网格注册自己的 WebHook 终结点时，事件网格为证明终结点所有权，会向你发送 POST 请求，其中包含简单的验证代码。 应用需要通过回显验证代码，做出响应。 事件网格不会将事件传送到未通过验证的 WebHook 终结点。
 
@@ -34,6 +34,7 @@ Webhook 是从 Azure 事件网格实时接收事件的多种方式之一。 每�
 * 该事件包含标头值“Aeg-Event-Type: SubscriptionValidation”。
 * 事件正文具有与其他事件网格事件相同的架构。
 * 事件数据包括“validationCode”属性，其中含有随机生成的字符串。 例如，“validationCode: acb13…”。
+* 该数组仅包含验证事件。 你回显验证代码后，事件网格会以单独的请求发送其他事件。
 
 以下示例显示了 SubscriptionValidationEvent 示例：
 
@@ -65,11 +66,11 @@ Webhook 是从 Azure 事件网格实时接收事件的多种方式之一。 每�
 
 编辑事件订阅时，除非在 Azure [CLI](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) 中使用了 [--include-full-endpoint-url](https://docs.microsoft.com/en-us/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) 参数，否则，不会显示或返回查询参数。
 
-最后，请务必注意 Azure 事件网格仅支持 HTTPS webhook 终结点。
+最后，请务必注意 Azure 事件网格仅支持 HTTPS Webhook 终结点。
 
 ## <a name="event-subscription"></a>事件订阅
 
-若要订阅事件，必须具有所需资源的 Microsoft.EventGrid/EventSubscriptions/Write 权限。 因为要在资源范围内写入新的订阅，所以需要此权限。 所需资源因订阅系统主题或自定义主题而异。 本部分介绍了这两种类型。
+若要订阅事件，必须具有所需资源的 Microsoft.EventGrid/EventSubscriptions/Write 权限。 因为要在资源范围内写入新的订阅，所以需要此权限。 所需资源因是订阅系统主题还是订阅自定义主题而异。 本部分介绍了这两种类型。
 
 ### <a name="system-topics-azure-service-publishers"></a>系统主题（Azure 服务发布服务器）
 
@@ -103,7 +104,7 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 
 事件网格的 SAS 令牌包括资源、过期时间和签名。 SAS 令牌的格式是：`r={resource}&e={expiration}&s={signature}`。
 
-资源是将事件发送到的主题的路径。 例如，有效的资源路径是：`https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
+资源是要将事件发送到的事件网格主题的路径。 例如，有效的资源路径是：`https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
 
 从密钥生成签名。
 
@@ -140,7 +141,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ## <a name="management-access-control"></a>管理访问控制
 
-借助 Azure 事件网格，可以控制授予不同用户用来执行各种管理操作的访问级别，例如列出事件订阅、创建新的事件订阅及生成密钥。 事件网格会利用 Azure 基于角色的访问检查 (RBAC)。
+借助 Azure 事件网格，可以控制授予不同用户用来执行各种管理操作的访问级别，例如列出事件订阅、创建新的事件订阅及生成密钥。 事件网格会使用 Azure 基于角色的访问检查 (RBAC)。
 
 ### <a name="operation-types"></a>操作类型
 

@@ -1,25 +1,25 @@
 ---
-title: "Azure Cosmos DB 常见问题解答 | Microsoft Docs"
-description: "获取与 Azure Cosmos DB（一种全球分布式多模型数据库服务）相关的常见问题答案。 了解容量、性能级别和缩放。"
-keywords: "数据库问题, 常见问题, documentdb, azure, Microsoft azure"
+title: Azure Cosmos DB 常见问题解答 | Microsoft Docs
+description: 获取与 Azure Cosmos DB（一种全球分布式多模型数据库服务）相关的常见问题答案。 了解容量、性能级别和缩放。
+keywords: 数据库问题, 常见问题, documentdb, azure, Microsoft azure
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: b68d1831-35f9-443d-a0ac-dad0c89f245b
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2018
+ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: ac0088478701a1796380daa74602569800c1522e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 466abbffd250685baf886b7fc7cc772ee9e327f2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB 常见问题解答
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB 基础知识
@@ -211,6 +211,7 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 * 目前不支持 CORS
 * Azure 表存储中的表名不区分大小写，但出现在 Azure Cosmos DB 表 API 中
 * Azure Cosmos DB 的某些编码信息内部格式，例如二进制字段，目前不如想像的那么有效。 因此，这会导致数据大小受到意外限制。 例如，目前无法使用整整有 1 MB 的表实体来存储二进制数据，因为编码会增大数据大小。
+* 当前不支持实体属性名称“Id”
 
 对于 REST API，有大量的终结点/查询选项不受 Azure Cosmos DB 表 API 的支持：
 | REST 方法 | REST 终结点/查询选项 | 文档 URL | 说明 |

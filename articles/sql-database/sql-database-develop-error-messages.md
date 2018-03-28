@@ -1,8 +1,20 @@
- ---
-title: SQL 错误代码 - 数据库连接错误 | Microsoft Docs description: '了解有关 SQL 数据库客户端应用程序的 SQL 错误代码，例如常见的数据库连接错误、数据库复制问题和常规错误。 ' keywords: sql 错误代码,访问 sql,数据库连接错误,sql 错误代码 services: sql-database documentationcenter: '' author: stevestein manager: jhubbard editor: ''
-
-ms.assetid: 2a23e4ca-ea93-4990-855a-1f9f05548202 ms.service: sql-database ms.custom: develop apps ms.workload: "Active" ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 09/28/2017 ms.author: sstein
-
+---
+title: SQL 错误代码 - 数据库连接错误 | Microsoft 文档
+description: '了解有关 SQL 数据库客户端应用程序的 SQL 错误代码，例如常见的数据库连接错误、数据库复制问题和常规错误。 '
+keywords: SQL 错误代码, 访问 SQL, 数据库连接错误, SQL 错误代码
+services: sql-database
+author: stevestein
+manager: craigg
+ms.service: sql-database
+ms.custom: develop apps
+ms.topic: article
+ms.date: 09/28/2017
+ms.author: sstein
+ms.openlocfilehash: 5031ab1ec8c7b42c65fb35e47c32d10ff2898501
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL 数据库客户端应用程序的 SQL 错误代码：数据库连接错误和其他问题
 
@@ -93,7 +105,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 | ErrorNumber | ErrorSeverity | ErrorFormat | ErrorInserts | ErrorCause | ErrorCorrectiveAction |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | 1132 |EX_RESOURCE |弹性池已达到其存储限制。 弹性池的存储使用不能超过 (%d) MB。 |弹性池空间限制 (MB)。 |达到弹性池的存储限制时，尝试向数据库写入数据。 |在可能的情况下，考虑增加弹性池的 DTU 数，以便提高其存储限制、降低弹性池中各数据库使用的存储，或者从弹性池中删除数据库。 |
-| 10929 |EX_USER |%s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 若需帮助，请参阅 [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637)。 否则，请稍后重试。 |每个数据库的 DTU 最小值；每个数据库的 DTU 最大值 |弹性池中所有数据库上尝试的并发辅助进程（请求）总数超过池限制。 |在可能的情况下，考虑增加弹性池的 DTU 数，以便提高其辅助角色限制，或者从弹性池中删除数据库。 |
+| 10929 |EX_USER |%s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 请参阅 [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) 以获取帮助。 否则，请稍后重试。 |每个数据库的 DTU 最小值；每个数据库的 DTU 最大值 |弹性池中所有数据库上尝试的并发辅助进程（请求）总数超过池限制。 |在可能的情况下，考虑增加弹性池的 DTU 数，以便提高其辅助角色限制，或者从弹性池中删除数据库。 |
 | 40844 |EX_USER |弹性池中数据库“%ls”（位于服务器“%ls”上）是“%ls”版本的数据库，不能有连续的复制关系。 |数据库名称、数据库版本、服务器名称 |针对弹性池中非高级数据库发出 StartDatabaseCopy 命令。 |即将支持 |
 | 40857 |EX_USER |找不到服务器“%ls”的弹性池，弹性池名称：“%ls”。 |服务器名称；弹性池名称 |指定的弹性池在指定的服务器中不存在。 |提供有效的弹性池名称。 |
 | 40858 |EX_USER |弹性池“%ls”已存在于服务器“%ls”中 |弹性池名称、服务器名称 |指定的弹性池已存在于指定的逻辑服务器中。 |提供新弹性池名称。 |

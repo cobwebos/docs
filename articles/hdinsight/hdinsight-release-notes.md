@@ -1,8 +1,8 @@
 ---
-title: "Azure HDInsight 上的 Hadoop 组件发行说明 | Microsoft Docs"
-description: "Azure HDInsight 的 Hadoop 组件的最新发行说明和版本。 获取 Spark、R Server、Hive 和更多工具的开发技巧和详细信息。"
+title: Azure HDInsight 上的 Hadoop 组件发行说明 | Microsoft Docs
+description: Azure HDInsight 的 Hadoop 组件的最新发行说明和版本。 获取 Spark、R Server、Hive 和更多工具的开发技巧和详细信息。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 editor: cgronlun
 manager: jhubbard
 author: nitinme
@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/08/2018
 ms.author: nitinme
-ms.openlocfilehash: e0977417ec8678db54d91677b1f9bdc709e196b5
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 38a33056ccd908b43319125b3fe517988b1507c6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Azure HDInsight 上的 Hadoop 组件发行说明
 
@@ -29,14 +29,17 @@ ms.lasthandoff: 12/11/2017
 > [!IMPORTANT]
 > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 版本控制文章](hdinsight-component-versioning.md)。
 
+## <a name="notes-for-03082018---release-of-spark-22-on-hdinsight-36"></a>2018/03/08 的说明 - 发布 Spark 2.2 on HDInsight 3.6
+
+- Spark 2.2.0 可跨 Spark Core、SQL、ML 提高稳定性，并使结构化流达到正式发布状态。 Spark 2.2.0 现已在 HDInsight 3.6 上提供。
 
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>HDInsight 08/01/2017 版发行说明
 
 | 标题 | 说明 | 受影响的区域  | 群集类型  | 
 | --- | --- | --- | --- | --- |
 | 发布 HDInsight 上的 Microsoft R Server 9.1 |HDInsight 现在支持在 HDInsight 上设置 R Server 9.1 群集。 有关 Microsoft R Server 9.1 版本的详细信息，请参阅[此博客](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/)。 |服务 |R Server |
-| HDInsight 3.6 现在包含较新版本的 Hadoop 堆栈|<ul><li>有关更新版本的详细列表，请参阅 [HDInsight 中可用的 Hadoop 组件版本](hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions)。</li><li>有关在 Hadoop 堆栈最新版本中修复的 bug 的列表，请参阅 [Apache 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html)。</li><li>有关 HDP 2.6.1（现在可在 HDInsight 3.6 中使用）之间的重大更改的列表，请参阅 [https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html)。</li><li>有关 HDP 2.6.1 中的已知问题的列表，请参阅[已知问题](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html)。</li></ul> |服务 |全部 |不适用 |
-| Interactive Hive（预览版）群集的更新 |<ul><li><b>功能改进。</b> 实现了缓存元存储，它可通过缓存元数据来减少后端 SQL 上的负载降低并为所有元数据操作提高性能。  此改进现在是所有 Interactive Hive 群集上的默认设置。 有关详细信息，请参阅 [https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520)。</li><li><b>功能改进。</b> 动态分区加载进行了优化。 有关详细信息，请参阅 [https://issues.apache.org/jira/browse/HIVE-14204](https://issues.apache.org/jira/browse/HIVE-14204)。</li><li><b>功能改进。</b> Linux 上的 HDInsight 的配置优化。</li><li><b>Bug 修复。</b> `CredentialProviderFactory$getProviders` 不是线程安全的。 此问题现在已修复。 有关详细信息，请参阅 [https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195)。</li><li><b>Bug 修复。</b> WASB 驱动程序 `liststatus` API 的高 CPU 使用率导致 ATS 性能低下。 此问题现在已修复。 有关详细信息，请参阅 [https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154)。</li></ul> |服务 |交互式 Hive（预览版） |
+| HDInsight 3.6 现在包含较新版本的 Hadoop 堆栈|<ul><li>有关更新版本的详细列表，请参阅 [HDInsight 中可用的 Hadoop 组件版本](hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions)。</li><li>有关在 Hadoop 堆栈最新版本中修复的 bug 的列表，请参阅 [Apache 修补程序信息](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html)。</li><li>有关 HDP 2.6.1（现已在 HDInsight 3.6 中可提供） 之间的重大更改的列表，请参阅 [https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html)。</li><li>有关 HDP 2.6.1 中的已知问题的列表，请参阅[已知问题](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html)。</li></ul> |服务 |全部 |不适用 |
+| Interactive Hive（预览版）群集的更新 |<ul><li><b>功能改进。</b> 实现了缓存元存储，它可通过缓存元数据来减少后端 SQL 上的负载降低并为所有元数据操作提高性能。  此改进现在是所有 Interactive Hive 群集上的默认设置。 有关详细信息，请参阅 [https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520)。</li><li><b>功能改进。</b> 动态分区加载进行了优化。 有关详细信息，请参阅 [https://issues.apache.org/jira/browse/HIVE-14204] (https://issues.apache.org/jira/browse/HIVE-14204)。</li><li><b>功能改进。</b> Linux 上的 HDInsight 的配置优化。</li><li><b>Bug 修复。</b> `CredentialProviderFactory$getProviders` 不是线程安全的。 此问题现在已修复。 有关详细信息，请参阅 [https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195)。</li><li><b>Bug 修复。</b> WASB 驱动程序 `liststatus` API 的高 CPU 使用率导致 ATS 性能低下。 此问题现在已修复。 有关详细信息，请参阅 [https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154)。</li></ul> |服务 |交互式 Hive（预览版） |
 | Hadoop 群集的更新 |Templeton 作业操作可靠性得到提高。 有关详细信息，请参阅 [https://issues.apache.org/jira/browse/HIVE-15947](https://issues.apache.org/jira/browse/HIVE-15947) |服务 |Hadoop |
 | YARN 更新 | HDInsight 现在创建 250 GB Ambari 数据库（而不增加成本），这会形成更好的客户体验。 此更改应防止填满 ATS，并且可能具有更好的性能。 |服务 |全部 |
 | Spark 更新 | 发布 Spark 2.1.1。 有关详细信息，请参阅 [Spark 版本 2.1.1](https://spark.apache.org/releases/spark-release-2-1-1.html)。 | 服务 | Spark |

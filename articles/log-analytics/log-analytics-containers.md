@@ -1,11 +1,11 @@
 ---
-title: "Azure Log Analytics 中的容器监视解决方案 | Microsoft Docs"
-description: "Log Analytics 中的容器监视解决方案可帮助用户在单个位置查看和管理 Docker 和 Windows 容器主机。"
+title: Azure Log Analytics 中的容器监视解决方案 | Microsoft Docs
+description: Log Analytics 中的容器监视解决方案可帮助用户在单个位置查看和管理 Docker 和 Windows 容器主机。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: e1e4b52b-92d5-4bfa-8a09-ff8c6b5a9f78
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte
-ms.openlocfilehash: b3f78f6cc89a3d4bf8712c339f66b5d50f373919
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 0ad267b9694c2f9cdb574b6b6008d4f6fa027fce
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics 中的容器监视解决方案
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 02/13/2018
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
-| 服务<br>Fabric | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| 服务<br>Fabric | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Red Hat Open<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
 | Windows Server<br>（独立） | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Linux Server<br>（独立） | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
@@ -103,7 +103,7 @@ ms.lasthandoff: 02/13/2018
     - 如果有 Kubernetes 群集正使用 Azure 容器服务，请参阅[为 Kubernetes 配置 OMS 代理](#configure-an-oms-agent-for-kubernetes)。
     - 如果拥有 Azure 容器服务 DC/OS 群集，请前往[通过 Operations Management Suite 监视 Azure 容器服务 DC/OS 群集](../container-service/dcos-swarm/container-service-monitoring-oms.md)了解详细信息。
     - 如果拥有 Docker Swarm 模式环境，请访问[配置适用于 Docker Swarm 的 OMS 代理](#configure-an-oms-agent-for-docker-swarm)了解更多信息。
-    - 如果在 Service Fabric 中使用容器，请在 [Azure Service Fabric 概述](../service-fabric/service-fabric-overview.md)中了解详细信息。
+    - 如果有 Service Fabric 群集，请访问[使用 OMS Log Analytics 监视容器](../service-fabric/service-fabric-diagnostics-oms-containers.md)了解更多信息。
 
 请参阅 [Windows 上的 Docker 引擎](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)一文，详细了解如何在运行 Windows 的计算机上安装和配置 Docker 引擎。
 

@@ -1,20 +1,20 @@
 ---
-title: "威胁检测 - Azure SQL 数据库托管实例 | Microsoft Docs"
-description: "威胁检测会检测异常的数据库活动，指出数据库有潜在的安全威胁。"
+title: 威胁检测 - Azure SQL 数据库托管实例 | Microsoft Docs
+description: 威胁检测会检测异常的数据库活动，指出数据库有潜在的安全威胁。
 services: sql-database
 author: rmatchoro
-manager: cguyer
+manager: craigg
 ms.service: sql-database
 ms.custom: security, managed instance
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: ronmat
 ms.reviewer: carlrab
-ms.openlocfilehash: f8c08bc16d622516958b8bd182179d07edfa4891
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2112a0a3997af478de6b8c80abcf7924a66302f0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-managed-instance-threat-detection"></a>Azure SQL 数据库托管实例威胁检测
 
@@ -29,7 +29,7 @@ SQL 威胁检测可检测异常活动，这些活动指示对 Azure SQL 数据�
 SQL 威胁检测将警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)相集成，为每个受保护的托管实例计费时，将使用与 Azure 安全中心标准层相同的价格，即 $15/每节点/每月，其中每个受支持的托管实例都计为一个节点。  
 
 ## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>在 Azure 门户中为托管实例设置威胁检测
-1. 在 [https://portal.azure.com](https://portal.azure.com) 上启动 Azure 门户。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中启动 Azure 门户。
 2. 导航到要保护的托管实例的配置页。 在“设置”页中，选择“威胁检测”。 
 3. 在威胁检测配置页中 
    - 将威胁检测设置为“打开”。

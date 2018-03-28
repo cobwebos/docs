@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Confluence SAML SSO by Microsoft 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Confluence SAML SSO by Microsoft 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Confluence SAML SSO by Microsoft 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Confluence SAML SSO by Microsoft 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 4151811a74fc0e58f6171e11d77e070f3cb40f95
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5b81ca4f5a9f30b2882d86639ca9386e7bbc09e8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>教程：Azure Active Directory 与 Confluence SAML SSO by Microsoft 集成
 
@@ -148,7 +148,7 @@ ms.lasthandoff: 02/01/2018
     
     ![配置单一登录](./media/active-directory-saas-Confluencemicrosoft-tutorial/endpoint.png)
      
-    d.单击“下一步”。 现在，转到 Confluence SAML SSO by Microsoft 的属性页，使用“复制”按钮复制应用程序 ID 并将其粘贴到记事本。
+    d. 现在，转到 Confluence SAML SSO by Microsoft 的属性页，使用“复制”按钮复制应用程序 ID 并将其粘贴到记事本。
  
     ![配置单一登录](./media/active-directory-saas-Confluencemicrosoft-tutorial/appid.png)
 
@@ -185,7 +185,7 @@ ms.lasthandoff: 02/01/2018
 
     c. 在“登录按钮名”中键入组织希望用户在登录屏幕上看到的按钮名称。
 
-    d.单击“下一步”。 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”。  此 ID 必须是 Confluence 用户 ID。如果用户 ID 不匹配，系统将禁止用户登录。 
+    d. 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”。  此 ID 必须是 Confluence 用户 ID。如果用户 ID 不匹配，系统将禁止用户登录。 
 
     > [!Note]
     > 默认 SAML 用户 ID 位置是名称标识符。 可将其更改为属性选项，并输入适当的属性名称。
@@ -200,6 +200,8 @@ ms.lasthandoff: 02/01/2018
 
     i. 单击“保存”按钮保存设置。
 
+    > [!NOTE]
+    > 有关安装和故障排除的详细信息，请访问 [MS Confluence SSO 连接器管理员指南](ms-confluence-jira-plugin-adminguide.md)，还可以参阅[常见问题解答](ms-confluence-jira-plugin-faq.md)以获得帮助
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -234,7 +236,7 @@ ms.lasthandoff: 02/01/2018
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="creating-a-confluence-saml-sso-by-microsoft-test-user"></a>创建 Confluence SAML SSO by Microsoft 测试用户
 
@@ -258,7 +260,7 @@ ms.lasthandoff: 02/01/2018
 
     c. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
-    d.单击“下一步”。 在“密码”文本框中，键入 Britta Simon 的密码。
+    d. 在“密码”文本框中，键入 Britta Simon 的密码。
 
     e. 单击“确认密码”，重新输入该密码。
     

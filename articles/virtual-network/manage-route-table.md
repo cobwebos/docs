@@ -1,13 +1,13 @@
 ---
-title: "创建、更改或删除 Azure 路由表 | Microsoft Docs"
-description: "了解如何创建、更改或删除路由表。"
+title: 创建、更改或删除 Azure 路由表 | Microsoft Docs
+description: 了解如何创建、更改或删除路由表。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 7630fd82cf62f1fcb0df80cec5b5e0030da81a85
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a7e45d6bccfd8113157eba63d311b6609bf35aaa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-change-or-delete-a-route-table"></a>创建、更改或删除路由表
 
@@ -40,7 +40,7 @@ Azure 自动在 Azure 子网、虚拟网络与本地网络之间路由流量。 
 
 1. 在门户左上角选择“+ 创建资源”。
 2. 依次选择“网络”、“路由表”。
-3. 输入路由表的**名称**，选择自己的**订阅**，创建新的**资源组**或选择现有的资源组，选择一个**位置**，然后选择“创建”。 “禁用 BGP 路由传播”选项会阻止通过 BGP 将本地路由传播到 Azure 虚拟网络。 如果虚拟网络未连接到 Azure 网络网关（VPN 或 ExpressRoute），请清除“已禁用”选项。 
+3. 输入路由表的**名称**，选择自己的**订阅**，创建新的**资源组**或选择现有的资源组，选择一个**位置**，然后选择“创建”。 “禁用 BGP 路由传播”选项会禁止本地路由通过 BGP 传播到路由表所关联到的任何子网中的网络接口。 如果虚拟网络未连接到 Azure 网络网关（VPN 或 ExpressRoute），请清除“已禁用”选项。
 
 **命令**
 

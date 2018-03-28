@@ -1,19 +1,19 @@
 ---
-title: "Azure 容器实例容器组"
-description: "了解容器组如何在 Azure 容器实例中工作"
+title: Azure 容器实例容器组
+description: 了解容器组如何在 Azure 容器实例中工作
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 03/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a42c01917926a4297c97cf9c5dfd1333dbef6793
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 6f7f0d9aea86594140c302e6d12e6528e802b9e7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
@@ -23,19 +23,24 @@ Azure 容器实例中的顶层资源是容器组。 本文介绍容器组的定�
 
 容器组是安排在同一主机上的容器集合。 容器组中的容器共享生命周期、本地网络和存储卷。 这与 [Kubernetes][kubernetes-pod] 和 [DC/OS][dcos-pod] 中“Pod”这一概念相似。
 
-以下关系图显示了一个包含多个容器的容器组示例。
+以下关系图显示了一个包含多个容器的容器组示例：
 
 ![容器组图][container-groups-example]
 
 此示例容器组：
 
 * 安排在一个主机上。
+* 已分配 DNS 名称标签。
 * 公开一个公共 IP 地址（只有一个公开端口）。
 * 由两个容器组成。 其中一个容器侦听端口 80，另一个容器侦听端口 5000。
 * 包含两个 Azure 文件共享作为卷装载，每个容器本地装载一个共享。
 
 > [!NOTE]
 > 多容器组当前仅限于 Linux 容器。 我们正致力于为 Windows 容器提供全部功能，你可在 [Azure 容器实例的配额和区域可用性](container-instances-quotas.md)中了解当前的平台差异。
+
+### <a name="deployment"></a>部署
+
+**容器组**具有 1个 vCPU 和 1 GB 内存的最小资源分配。 单个**容器**可以使用小于 1 vCPU 和 1 GB 内存的设置进行预配。 在容器组中，可以将资源的分布自定义为分布到容器组级别建立的限制内的多个容器。 例如，两个容器（每个容器具有 0.5 个 vCPU）位于分配了 1 个 vCPU 的容器组中。
 
 ### <a name="networking"></a>网络
 
@@ -47,7 +52,7 @@ Azure 容器实例中的顶层资源是容器组。 本文介绍容器组的定�
 
 ## <a name="common-scenarios"></a>常见方案
 
-如果希望将单个功能性任务分成少数容器映像，多容器组十分有用，这些映像可以由不同的团队传送并具有单独的资源需求。
+如果希望将单个功能性任务分成少数容器映像，则多容器组十分有用。 然后，这些映像可以由不同的团队交付并具有单独的资源需求。
 
 使用情况示例包括：
 

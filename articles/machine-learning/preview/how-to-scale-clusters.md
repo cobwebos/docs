@@ -1,9 +1,9 @@
 ---
-title: "如何为机器学习缩放 Azure 容器服务群集 | Microsoft Docs"
-description: "缩放 ACS 群集 - 自动缩放和静态缩放；缩放群集中的节点数"
+title: 如何为机器学习缩放 Azure 容器服务群集 | Microsoft Docs
+description: 缩放 ACS 群集 - 自动缩放和静态缩放；缩放群集中的节点数
 services: machine-learning
-author: raymondl
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
-ms.openlocfilehash: 690068edf749a2c79d328337618d94936520d501
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 58709b5a5b060552e1bc349a6f720d3f45348ba0
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>缩放群集以管理 Web 服务吞吐量
 
@@ -59,7 +59,7 @@ az acs scale -g <resource group> -n <cluster name> --new-agent-count <new scale>
 
 ### <a name="scaling-the-number-of-kubernetes-pod-replicas-in-a-cluster"></a>缩放群集中的 Kubernetes pod 副本数量
  
-可以使用 Azure 机器学习 CLI 或 [Kubernetes 仪表板] (https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 对分配到群集的 pod 副本数量进行缩放。
+可以使用 Azure 机器学习 CLI 或 [Kubernetes 仪表板] (https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 对分配到群集的 Pod 副本数量进行缩放。
 
 有关 Kubernetes 副本 pod 的详细信息，请参阅 [Kubernetes Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/) 文档。
 

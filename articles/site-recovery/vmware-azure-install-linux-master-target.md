@@ -1,19 +1,19 @@
 ---
-title: "安装 Linux 主目标服务器用于从 Azure 故障转移到本地 | Microsoft Docs"
-description: "在重新保护 Linux 虚拟机之前，需要一个 Linux 主目标服务器。 本文介绍如何安装该服务器。"
+title: 安装 Linux 主目标服务器用于从 Azure 故障转移到本地 | Microsoft Docs
+description: 在重新保护 Linux 虚拟机之前，需要一个 Linux 主目标服务器。 本文介绍如何安装该服务器。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: nisoneji
-ms.openlocfilehash: b7292514e72476f38e9a0572b201be8468f0030a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4d54ecb3f92754fa6575ec17ec5572b6fb9abb88
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>安装 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -41,7 +41,7 @@ ms.lasthandoff: 03/08/2018
 
 根据下列大小调整准则创建主目标：
 - RAM：6GB 或更多
-- OS 磁盘大小：100GB 或更多（用于安装 CentOS6.6）
+- **OS 磁盘大小**：100 GB 或更多（用于安装 OS）
 - 保留驱动器的附加磁盘大小：1TB
 - CPU 内核数：4 个内核或更多
 
@@ -112,24 +112,31 @@ ms.lasthandoff: 03/08/2018
 
 1.  选择“是”将更改写入磁盘，再按 Enter。
 
-1.  在配置代理选项中选择默认选项，再选择“继续”按钮并按 Enter。
+    ![选择默认选项](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
 
-     ![选择默认选项](./media/vmware-azure-install-linux-master-target/image17.png)
+1.  在配置代理选项中选择默认选项，再选择“继续”按钮并按 Enter。
+     
+     ![选择如何管理升级](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
 1.  在管理系统升级相应选项中选择“不自动更新”选项，再按 Enter。
 
-     ![选择如何管理升级](./media/vmware-azure-install-linux-master-target/image18.png)
+     ![选择如何管理升级](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
 
     > [!WARNING]
     > 由于 Azure Site Recovery 主目标服务器需要非常特定的 Ubuntu 版本，因此需确保已为虚拟机禁用内核升级。 如果启用，任意常规升级都会导致主目标服务器无法正常工作。 请务必选择“不自动更新”选项。
 
 1.  选择默认选项。 若要对 SSH 连接使用 openSSH，请依次选择“OpenSSH 服务器”选项和“继续”。
 
-    ![选择软件](./media/vmware-azure-install-linux-master-target/image19.png)
+    ![选择软件](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
 1. 在安装 GRUB 启动加载程序的选项中，选择“是”，再按 Enter。
+     
+    ![GRUB 启动安装程序](./media/vmware-azure-install-linux-master-target/image20.png)
+
 
 1. 为启动加载程序安装选择相应的设备（推荐 /dev/sda），然后按 Enter。
+     
+    ![选择适当的设备](./media/vmware-azure-install-linux-master-target/image21.png)
 
 1. 选择“继续”，然后按 Enter 来完成安装。
 
@@ -154,7 +161,7 @@ ms.lasthandoff: 03/08/2018
 
 4. 在左窗格中，选择“高级” > “常规”，然后选择屏幕右下角的“配置参数”按钮。
 
-    ![“选项”选项卡](./media/vmware-azure-install-linux-master-target/image20.png)
+    ![打开“配置参数”](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
     当计算机正在运行时，“配置参数”选项不可用。 若要使此选项卡处于活动状态，请关闭虚拟机。
 
@@ -168,7 +175,7 @@ ms.lasthandoff: 03/08/2018
 
     - 在名称列中，添加“disk.EnableUUID”，然后将值设置为 TRUE。
 
-    ![检查 disk.EnableUUID 是否存在](./media/vmware-azure-install-linux-master-target/image21.png)
+    ![检查 disk.EnableUUID 是否存在](./media/vmware-azure-install-linux-master-target/image25.png)
 
 #### <a name="disable-kernel-upgrades"></a>禁用内核升级
 
@@ -244,7 +251,7 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
     
     `mkfs.ext4 /dev/mapper/<Retention disk's multipath id>`
     
-    ![在驱动器上创建文件系统](./media/vmware-azure-install-linux-master-target/media/image23.png)
+    ![在驱动器上创建文件系统](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
 4. 创建文件系统后，请装载保留磁盘。
 
@@ -252,7 +259,6 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
     mkdir /mnt/retention
     mount /dev/mapper/<Retention disk's multipath id> /mnt/retention
     ```
-    ![装载保留磁盘](./media/vmware-azure-install-linux-master-target/image24.png)
 
 5. 创建每次系统启动期间用于装载保留驱动器的 fstab 项。
     

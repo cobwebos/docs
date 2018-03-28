@@ -1,8 +1,8 @@
 ---
-title: "使用自定义策略自定义 UI - Azure AD B2C | Microsoft Docs"
-description: "了解在 Azure AD B2C 中使用自定义策略时自定义用户界面 (UI) 的相关事项。"
+title: 使用自定义策略自定义 UI - Azure AD B2C | Microsoft Docs
+description: 了解在 Azure AD B2C 中使用自定义策略时自定义用户界面 (UI) 的相关事项。
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: saeedakhter-msft
 manager: mtillman
 editor: parakhj
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: c430b488016f038ed1d7a67a8d52c057df1ea40e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dcd8b6df68a68f5feb428b4fd98aee938b3bfe6c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C：在自定义策略中配置 UI 自定义
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 12/11/2017
 6. 单击“上传”。
 7. 单击“选择文件”旁边的文件夹图标。
 8. 转到 **customize-ui.html** ，这是你之前在 [页面 UI 自定义](#the-page-ui-customization-feature) 部分中创建的。
-9. 单击“上传”。
+9. 单击“上传” 。
 10. 选择你已上传的 customize-ui.html blob。
 11. 单击“URL”旁边的“复制”。
 12. 在浏览器中，粘贴复制的 URL，然后转到该站点。 如果该站点不可访问，请确保容器访问类型设置为“Blob”。
@@ -106,19 +106,19 @@ ms.lasthandoff: 12/11/2017
 >想要使用我们的示例 HTML 和 CSS 内容来尝试 UI 自定义功能？ 我们提供了[一个简单的帮助工具](active-directory-b2c-reference-ui-customization-helper-tool.md)，它可以在 Blob 存储帐户中上传和配置示例内容。 如果使用该工具，请直接跳到[修改注册或登录自定义策略](#modify-your-sign-up-or-sign-in-custom-policy)。
 
 1. 在“存储”边栏选项卡中，在“设置”下，打开“CORS”。
-2. 单击“添加”。
+2. 单击 **“添加”**。
 3. 对于“允许的来源”，键入一个星号 (\*)。
 4. 在“允许的谓词”下拉列表中，同时选择“GET”和“OPTIONS”。
 5. 对于“允许的标头”，键入一个星号 (\*)。
 6. 对于“公开的标头”，键入一个星号 (\*)。
 7. 对于“最长存在时间(秒)”，键入“200”。
-8. 单击“添加”。
+8. 单击 **“添加”**。
 
 ## <a name="test-cors"></a>测试 CORS
 
 通过执行以下操作验证你已准备就绪：
 
-1. 转到 [test-cors.org](http://test-cors.org/) 网站，然后将 URL 粘贴到“远程 URL”框中。
+1. 转到 [www.test-cors.org](http://www.test-cors.org/) 网站，然后将 URL 粘贴到“远程 URL”框中。
 2. 单击“发送请求”。  
     如果收到错误，请确保 [CORS 设置](#configure-cors)正确。 可能还需要清除浏览器缓存，或通过按 Ctrl+Shift+P 打开专用浏览会话。
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 12/11/2017
 2. 选择上传的自定义策略，并单击“立即运行”按钮。
 3. 现在，应该可以使用电子邮件地址进行注册了。
 
-## <a name="reference"></a>参考
+## <a name="reference"></a>引用
 
 可以在以下位置找到用于 UI 自定义的示例模板：
 

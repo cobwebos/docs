@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/04/2018
+ms.date: 03/15/2018
 ms.author: kumud
-ms.openlocfilehash: 7e4fa38145ac21aaca8efa37250cc32ef1b1655c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 2d7fcb3ee066fa768615fbf643a0c2e1c1d28498
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Azure 负载均衡器标准版概述（预览版）
 
@@ -466,7 +466,7 @@ Azure 的[网络服务限制](https://docs.microsoft.com/azure/azure-subscriptio
 - 在可用性区域的上下文中，区域公共 IP 地址不能从一个区域转移到另一个区域。
 - 目前不支持 [Azure Monitor 警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
 - 门户尚不支持扩展的预览区域。  请使用模板、Azure CLI 2.0 或 PowerShell 等客户端工具作为解决方法。
-- 不支持移动订阅操作。
+- 标准 SKU LB 和 PIP 资源不支持[移动订阅操作](../azure-resource-manager/resource-group-move-resources.md)。
 - 在美国西部不可用。
 
 

@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 03/13/2018
 ms.author: glenga
-ms.openlocfilehash: 26df11bb010414ba979077c45d01e66f17f6b12e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: dddb35ea2ba1c02f78234fe33cdb832e9aacbff5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>用于 Visual Studio 的 Azure Functions 工具  
 
@@ -38,15 +38,41 @@ Azure Functions 工具提供以下优势：
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure Functions Tools 随附在 [Visual Studio 2017 版本 15.4](https://www.visualstudio.com/vs/) 或更高版本的 Azure 开发工作负荷中。 请确保你在安装 Visual Studio 2017 时随附了Azure 开发工作负荷：
+Azure Functions 工具包含在 [Visual Studio 2017 版本 15.5](https://www.visualstudio.com/vs/) 或更高版本的 Azure 开发工作负荷中。 请确保你在安装 Visual Studio 2017 时随附了Azure 开发工作负荷：
 
 ![使用 Azure 开发工作负荷安装 Visual Studio 2017](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+
+请确保 Visual Studio 为最新版本，并且使用的是[最新版本](#check-your-tools-version)的 Azure Functions 工具。
+
+### <a name="other-requirements"></a>其他要求
 
 若要创建和部署函数，还需要：
 
 * 一个有效的 Azure 订阅。 如果没有 Azure 订阅，可以使用[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 * 一个 Azure 存储帐户。 若要创建存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
+
+### <a name="check-your-tools-version"></a>检查工具版本
+
+1. 在“工具”菜单中，选择“扩展和更新”。 展开“已安装” > “工具”，选择“Azure Functions 和 Web 作业工具”。
+
+    ![验证 Functions 工具版本](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
+
+2. 请注意已安装的**版本**。 可以将此版本与[发行说明](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)中列出的最新版本进行比较。 
+
+3. 如果你的版本较旧，可以在 Visual Studio 中更新工具，如以下部分中所示。
+
+### <a name="update-your-tools"></a>更新工具
+
+1. 在“扩展和更新”对话框中，展开“更新” > “Visual Studio Marketplace”，依次选择“Azure Functions 和 Web 作业工具”和“更新”。
+
+    ![更新 Functions 工具版本](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
+
+2. 下载工具更新后，请关闭 Visual Studio 以触发使用 VSIX 安装程序的工具更新。
+
+3. 在安装程序中，选择“确定”以启动，然后单击“修改”以更新工具。 
+
+4. 更新完成后，请选择“关闭”并重启 Visual Studio。
 
 ## <a name="create-an-azure-functions-project"></a>创建 Azure Functions 项目 
 

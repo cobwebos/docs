@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions 中的 HTTP API - Azure"
-description: "了解如何实现 Azure Functions 的 Durable Functions 扩展中的 HTTP API。"
+title: Durable Functions 中的 HTTP API - Azure
+description: 了解如何实现 Azure Functions 的 Durable Functions 扩展中的 HTTP API。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: bb5361022e4c9693812753ae33df5aeb037b5aaa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fa5d9e66912bdeffdf553ddc0cb7d3feb0a5b77
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions 中的 HTTP API (Azure Functions)
 
@@ -28,7 +28,8 @@ Durable Task 扩展公开了一组 HTTP API，可用于执行以下任务：
 * 向处于等待状态的业务流程实例发送事件。
 * 终止正在运行的业务流程实例。
 
-每个 HTTP API 都是 webhook 操作，可由 Durable Task 扩展直接处理。 它们不特定于函数应用中的任何函数。
+
+上述每个 HTTP API 都是 Webhook 操作，可由 Durable Task 扩展直接处理。 它们不特定于函数应用中的任何函数。
 
 > [!NOTE]
 > 此外，也可使用 [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) 类的实例管理 API 直接调用这些操作。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
@@ -78,7 +79,7 @@ Location: https://{host}/webhookextensions/handler/DurableTaskExtension/instance
 此协议允许通过外部客户端或支持轮询 HTTP 终结点并遵循 `Location` 标头的服务协调长时间运行的进程。 基础部分已经内置于 Durable Functions HTTP API 中。
 
 > [!NOTE]
-> 默认情况下，[Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)提供的所有基于 HTTP 的操作都支持标准异步操作模式。 这样一来，就可在逻辑应用工作流中嵌入长时间运行的持久函数。 有关异步 HTTP 模式的逻辑应用支持的更多详细信息，请参阅 [Azure 逻辑应用工作流操作和触发器文档](../logic-apps/logic-apps-workflow-actions-triggers.md#asynchronous-patterns)。
+> 默认情况下，[Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)提供的所有基于 HTTP 的操作都支持标准异步操作模式。 使用此功能，可在逻辑应用工作流中嵌入长时间运行的持久函数。 有关异步 HTTP 模式的逻辑应用支持的更多详细信息，请参阅 [Azure 逻辑应用工作流操作和触发器文档](../logic-apps/logic-apps-workflow-actions-triggers.md#asynchronous-patterns)。
 
 ## <a name="http-api-reference"></a>HTTP API 引用
 
@@ -90,6 +91,8 @@ Location: https://{host}/webhookextensions/handler/DurableTaskExtension/instance
 | taskHub    | 查询字符串    | [任务中心](durable-functions-task-hubs.md)的名称。 如果未指定，则使用当前函数应用的任务中心名称。 |
 | 连接 | 查询字符串    | 用于存储帐户的连接字符串的名称。 如果未指定，则使用函数应用的默认连接字符串。 |
 | systemKey  | 查询字符串    | 需要授权密钥才可调用 API。 |
+| showHistory| 查询字符串    | 可选参数。 如果设置为 `true`，业务流程执行历史记录将包含在响应有效负载中。| 
+| showHistoryOutput| 查询字符串    | 可选参数。 如果设置为 `true`，活动输出将包含在业务流程执行历史记录中。| 
 
 `systemKey` 是 Azure Functions 主机自动生成的授权密钥。 它可专门向 Durable Task 扩展 API 授予访问权限，且可通过与管理[其他授权密钥](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)相同的方式进行管理。 发现 `systemKey` 值的最简单的方法是使用上文提及的 `CreateCheckStatusResponse` API。
 
@@ -110,7 +113,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同：
 
 ```http
-GET /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
 ```
 
 #### <a name="response"></a>响应
@@ -122,7 +125,7 @@ GET /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}?taskH
 * HTTP 400 (错误请求)：指定实例失败或已终止。
 * HTTP 404 (找不到)：指定实例不存在或未开始运行。
 
-值为 HTTP 200 和 HTTP 202 时的响应负载是包含以下字段的 JSON 对象。
+值为 HTTP 200 和 HTTP 202 时的响应负载是包含以下字段的 JSON 对象：
 
 | 字段           | 数据类型 | 说明 |
 |-----------------|-----------|-------------|
@@ -131,20 +134,59 @@ GET /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}?taskH
 | output          | JSON      | 实例的 JSON 输出。 如果实例不是已完成状态，则该字段为 `null`。 |
 | createdTime     | 字符串    | 创建实例的时间。 使用 ISO 8601 扩展表示法。 |
 | lastUpdatedTime | 字符串    | 实例持续的时间。 使用 ISO 8601 扩展表示法。 |
+| historyEvents   | JSON      | 包含业务流程执行历史记录的 JSON 数组。 除非 `showHistory` 查询字符串参数设置为 `true`，否则此字段为 `null`。  | 
 
-以下是响应负载的示例（为提高可读性设置了格式）：
+下面是包括业务流程执行历史记录和活动输出的示例响应有效负载（为提高可读性已设置格式）：
 
 ```json
 {
-  "runtimeStatus": "Completed",
-  "input": null,
-  "output": [
-    "Hello Tokyo!",
-    "Hello Seattle!",
-    "Hello London!"
+  "createdTime": "2018-02-28T05:18:49Z",
+  "historyEvents": [
+      {
+          "EventType": "ExecutionStarted",
+          "FunctionName": "E1_HelloSequence",
+          "Timestamp": "2018-02-28T05:18:49.3452372Z"
+      },
+      {
+          "EventType": "TaskCompleted",
+          "FunctionName": "E1_SayHello",
+          "Result": "Hello Tokyo!",
+          "ScheduledTime": "2018-02-28T05:18:51.3939873Z",
+          "Timestamp": "2018-02-28T05:18:52.2895622Z"
+      },
+      {
+          "EventType": "TaskCompleted",
+          "FunctionName": "E1_SayHello",
+          "Result": "Hello Seattle!",
+          "ScheduledTime": "2018-02-28T05:18:52.8755705Z",
+          "Timestamp": "2018-02-28T05:18:53.1765771Z"
+      },
+      {
+          "EventType": "TaskCompleted",
+          "FunctionName": "E1_SayHello",
+          "Result": "Hello London!",
+          "ScheduledTime": "2018-02-28T05:18:53.5170791Z",
+          "Timestamp": "2018-02-28T05:18:53.891081Z"
+      },
+      {
+          "EventType": "ExecutionCompleted",
+          "OrchestrationStatus": "Completed",
+          "Result": [
+              "Hello Tokyo!",
+              "Hello Seattle!",
+              "Hello London!"
+          ],
+          "Timestamp": "2018-02-28T05:18:54.3660895Z"
+      }
   ],
-  "createdTime": "2017-10-06T18:30:24Z",
-  "lastUpdatedTime": "2017-10-06T18:30:30Z"
+  "input": null,
+  "lastUpdatedTime": "2018-02-28T05:18:54Z",
+  "output": [
+      "Hello Tokyo!",
+      "Hello Seattle!",
+      "Hello London!"
+  ],
+  "runtimeStatus": "Completed"
 }
 ```
 
@@ -168,7 +210,7 @@ Functions 2.0 格式包含的所有参数均相同，但 URL 前缀略有不同�
 POST /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
 ```
 
-此 API 的请求参数包括前面提及的默认集及以下唯一参数。
+此 API 的请求参数包括前面提及的默认集及以下唯一参数：
 
 | 字段       | 参数类型  | 数据类型 | 说明 |
 |-------------|-----------------|-----------|-------------|
@@ -184,7 +226,7 @@ POST /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}/rais
 * HTTP 404 (找不到)：找不到指定的实例。
 * HTTP 410 (消失)：指定的实例已完成或失败，且无法处理任何引发的事件。
 
-下面的请求示例向等待名为 operation（取自[计数器](durable-functions-counter.md)示例）的事件的实例发送 JSON 字符串 `"incr"`：
+下面的请求示例向等待名为 operation 的事件的实例发送 JSON 字符串 `"incr"`：
 
 ```
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code=XXX

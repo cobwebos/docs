@@ -1,24 +1,24 @@
 ---
-title: "Azure AD Connect 同步：在 Azure AD Connect 同步中进行配置更改 | Microsoft 文档"
-description: "介绍如何对 Azure AD Connect 同步中的配置进行更改。"
+title: Azure AD Connect 同步：在 Azure AD Connect 同步中进行配置更改 | Microsoft 文档
+description: 介绍如何对 Azure AD Connect 同步中的配置进行更改。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2018
+ms.date: 03/16/2018
 ms.author: billmath
-ms.openlocfilehash: e97d3e3e35ee87864c5d38e75e08e62088e25fdb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 06c715cf5dbf039334adfde8b3111d9bfcb86568
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：如何更改默认配置
 本文旨在介绍如何对 Azure Active Directory (Azure AD) Connect 同步中的默认配置进行更改。其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行简单的更改。
@@ -245,7 +245,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
  1. 在 Synchronization Service Manager 中转到“连接器”选项卡。
  2. 右键单击“Azure AD 连接器”，并选择“属性”。
  3. 在弹出对话框中，转到“选择属性”选项卡。
- 4. 确保在属性列表中选中 PreferredDataLocation 属性。
+ 4. 确保在属性列表中选中 UserType 属性。
  5. 单击“确定”保存。
 
 ![将源属性添加到 Azure AD 连接器架构](./media/active-directory-aadconnectsync-change-the-configuration/usertype2.png)
@@ -293,7 +293,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 ![创建入站同步规则](./media/active-directory-aadconnectsync-change-the-configuration/usertype3.png)
 
 ### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>步骤 5：创建流到 Azure AD 的属性值的出站同步规则
-出站同步规则允许要在 Azure AD 中从 metaverse 流向 PreferredDataLocation 属性的属性值：
+出站同步规则允许属性值从 metaverse 流到 Azure AD 中的 UserType 属性：
 
 1. 转到“同步规则编辑器”。
 2. 将搜索筛选器的“方向”设置为“出站”。

@@ -1,8 +1,8 @@
 ---
-title: "适用于 .NET 应用的 Azure Application Insights 快照调试器 | Microsoft Docs"
-description: "生产 .NET 应用中出现异常时会自动收集调试快照"
+title: 适用于 .NET 应用的 Azure Application Insights 快照调试器 | Microsoft Docs
+description: 生产 .NET 应用中出现异常时会自动收集调试快照
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: pharring
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8d6f2347e06e58ec2b506aa9eaf716b3f71f3a77
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 5a2b3dbce1d969eaa9937ad866fd055ae72e6529
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
 
@@ -60,10 +60,20 @@ ms.lasthandoff: 01/24/2018
         <MaximumSnapshotsRequired>3</MaximumSnapshotsRequired>
         <!-- The maximum number of problems that we can be tracking at any time. -->
         <MaximumCollectionPlanSize>50</MaximumCollectionPlanSize>
+        <!-- How often we reconnect to the stamp. The default value is 15 minutes.-->
+        <ReconnectInterval>00:15:00</ReconnectInterval>
         <!-- How often to reset problem counters. -->
-        <ProblemCounterResetInterval>06:00:00</ProblemCounterResetInterval>
+        <ProblemCounterResetInterval>24:00:00</ProblemCounterResetInterval>
+        <!-- The maximum number of snapshots allowed in ten minutes.The default value is 1. -->
+        <SnapshotsPerTenMinutesLimit>1</SnapshotsPerTenMinutesLimit>
         <!-- The maximum number of snapshots allowed per day. -->
-        <SnapshotsPerDayLimit>50</SnapshotsPerDayLimit>
+        <SnapshotsPerDayLimit>30</SnapshotsPerDayLimit>
+        <!-- Whether or not to collect snapshot in low IO priority thread. The default value is true. -->
+        <SnapshotInLowPriorityThread>true</SnapshotInLowPriorityThread>
+        <!-- Agree to send anonymous data to Microsoft to make this product better. -->
+        <ProvideAnonymousTelemetry>true</ProvideAnonymousTelemetry>
+        <!-- The limit on the number of failed requests to request snapshots before the telemetry processor is disabled. -->
+        <FailedRequestLimit>3</FailedRequestLimit>
         </Add>
     </TelemetryProcessors>
     ```
@@ -128,7 +138,17 @@ ms.lasthandoff: 01/24/2018
        "InstrumentationKey": "<your instrumentation key>"
      },
      "SnapshotCollectorConfiguration": {
-       "IsEnabledInDeveloperMode": true
+       "IsEnabledInDeveloperMode": true,
+       "ThresholdForSnapshotting": 5,
+       "MaximumSnapshotsRequired": 3,
+       "MaximumCollectionPlanSize": 50,
+       "ReconnectInterval": "00:15:00",
+       "ProblemCounterResetInterval":"24:00:00",
+       "SnapshotsPerTenMinutesLimit": 1,
+       "SnapshotsPerDayLimit": 30,
+       "SnapshotInLowPriorityThread": true,
+       "ProvideAnonymousTelemetry": true,
+       "FailedRequestLimit": 3
      }
    }
    ```
@@ -226,7 +246,7 @@ Azure 订阅的所有者可以检查快照。 其他用户必须获得所有者�
 
 ### <a name="check-the-uploader-logs"></a>检查上传程序日志
 
-创建快照后，将在磁盘上创建一个小型转储文件 (.dmp)。 一个单独的上传程序进程会获取该小型转储文件，并将其连同所有关联的 PDB 一起上传到 Application Insights 快照调试程序存储。 成功上传小型转储后，会从磁盘将其删除。 磁盘上会保留小型转储上传程序的日志文件。 在应用服务环境中，可在 `D:\Home\LogFiles\Uploader_*.log` 中找到这些日志。 通过应用服务的 Kudu 管理站点查找这些日志文件。
+创建快照后，将在磁盘上创建一个小型转储文件 (.dmp)。 一个单独的上传程序进程会获取该小型转储文件，并将其连同所有关联的 PDB 一起上传到 Application Insights 快照调试程序存储。 成功上传小型转储后，会从磁盘将其删除。 上传程序进程的日志文件会保留在磁盘上。 在应用服务环境中，可在 `D:\Home\LogFiles` 中找到这些日志。 通过应用服务的 Kudu 管理站点查找这些日志文件。
 
 1. 在 Azure 门户中，打开应用服务应用程序。
 
@@ -235,25 +255,36 @@ Azure 订阅的所有者可以检查快照。 其他用户必须获得所有者�
 4. 在“调试控制台”下拉列表框中，选择“CMD”。
 5. 单击“日志文件”。
 
-这是应出现至少一个名称以 `Uploader_` 开头，扩展名为 `.log` 的文件。 单击相应图标，下载任意日志文件或在浏览器中打开文件。
-文件名中包括计算机名称。 如果应用服务实例托管于多台计算机上，则每台计算机都有单独的日志文件。 上传程序检测到一个新小型转储文件时，该文件会记录在日志文件中。 下面是成功上传的示例：
+应至少看到一个名称以 `Uploader_` 或 `SnapshotUploader_` 开头，且扩展名为 `.log` 的文件。 单击相应图标，下载任意日志文件或在浏览器中打开文件。
+文件名包括可标识应用服务实例的唯一后缀。 如果应用服务实例托管于多台计算机上，则每台计算机都有单独的日志文件。 上传程序检测到一个新小型转储文件时，该文件会记录在日志文件中。 下面是成功的快照和上传的示例：
 
 ```
-MinidumpUploader.exe Information: 0 : Dump available 139e411a23934dc0b9ea08a626db16c5.dmp
-    DateTime=2017-05-25T14:25:08.0349846Z
-MinidumpUploader.exe Information: 0 : Uploading D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp, 329.12 MB
-    DateTime=2017-05-25T14:25:16.0145444Z
-MinidumpUploader.exe Information: 0 : Upload successful.
-    DateTime=2017-05-25T14:25:42.9164120Z
-MinidumpUploader.exe Information: 0 : Extracting PDB info from D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp.
-    DateTime=2017-05-25T14:25:42.9164120Z
-MinidumpUploader.exe Information: 0 : Matched 2 PDB(s) with local files.
-    DateTime=2017-05-25T14:25:44.2310982Z
-MinidumpUploader.exe Information: 0 : Stamp does not want any of our matched PDBs.
-    DateTime=2017-05-25T14:25:44.5435948Z
-MinidumpUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp
-    DateTime=2017-05-25T14:25:44.6095821Z
+SnapshotUploader.exe Information: 0 : Received Fork request ID 139e411a23934dc0b9ea08a626db16c5 from process 6368 (Low pri)
+    DateTime=2018-03-09T01:42:41.8571711Z
+SnapshotUploader.exe Information: 0 : Creating minidump from Fork request ID 139e411a23934dc0b9ea08a626db16c5 from process 6368 (Low pri)
+    DateTime=2018-03-09T01:42:41.8571711Z
+SnapshotUploader.exe Information: 0 : Dump placeholder file created: 139e411a23934dc0b9ea08a626db16c5.dm_
+    DateTime=2018-03-09T01:42:41.8728496Z
+SnapshotUploader.exe Information: 0 : Dump available 139e411a23934dc0b9ea08a626db16c5.dmp
+    DateTime=2018-03-09T01:42:45.7525022Z
+SnapshotUploader.exe Information: 0 : Successfully wrote minidump to D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp
+    DateTime=2018-03-09T01:42:45.7681360Z
+SnapshotUploader.exe Information: 0 : Uploading D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp, 214.42 MB (uncompressed)
+    DateTime=2018-03-09T01:42:45.7681360Z
+SnapshotUploader.exe Information: 0 : Upload successful. Compressed size 86.56 MB
+    DateTime=2018-03-09T01:42:59.6184651Z
+SnapshotUploader.exe Information: 0 : Extracting PDB info from D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp.
+    DateTime=2018-03-09T01:42:59.6184651Z
+SnapshotUploader.exe Information: 0 : Matched 2 PDB(s) with local files.
+    DateTime=2018-03-09T01:42:59.6809606Z
+SnapshotUploader.exe Information: 0 : Stamp does not want any of our matched PDBs.
+    DateTime=2018-03-09T01:42:59.8059929Z
+SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\139e411a23934dc0b9ea08a626db16c5.dmp
+    DateTime=2018-03-09T01:42:59.8530649Z
 ```
+
+> [!NOTE]
+> 上面的示例来自 1.2.0 版的 Microsoft.ApplicationInsights.SnapshotCollector Nuget 包。 在更早的版本中，上传程序进程名为 `MinidumpUploader.exe`，且日志不太详细。
 
 在之前的示例中，检测密钥是 `c12a605e73c44346a984e00000000000`。 此值应与应用程序的检测密钥相匹配。
 小型转储与 ID 为 `139e411a23934dc0b9ea08a626db16c5` 的快照相关联。 稍后可以使用此 ID 在 Application Insights Analytics 中找到关联的异常遥测。
@@ -261,16 +292,14 @@ MinidumpUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 上传程序大约每 15 分钟扫描一次新 PDB。 下面是一个示例：
 
 ```
-MinidumpUploader.exe Information: 0 : PDB rescan requested.
-    DateTime=2017-05-25T15:11:38.8003886Z
-MinidumpUploader.exe Information: 0 : Scanning D:\home\site\wwwroot\ for local PDBs.
-    DateTime=2017-05-25T15:11:38.8003886Z
-MinidumpUploader.exe Information: 0 : Scanning D:\local\Temporary ASP.NET Files\root\a6554c94\e3ad6f22\assembly\dl3\81d5008b\00b93cc8_dec5d201 for local PDBs.
-    DateTime=2017-05-25T15:11:38.8160276Z
-MinidumpUploader.exe Information: 0 : Local PDB scan complete. Found 2 PDB(s).
-    DateTime=2017-05-25T15:11:38.8316450Z
-MinidumpUploader.exe Information: 0 : Deleted PDB scan marker D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\.pdbscan.
-    DateTime=2017-05-25T15:11:38.8316450Z
+SnapshotUploader.exe Information: 0 : PDB rescan requested.
+    DateTime=2018-03-09T01:47:19.4457768Z
+SnapshotUploader.exe Information: 0 : Scanning D:\home\site\wwwroot for local PDBs.
+    DateTime=2018-03-09T01:47:19.4457768Z
+SnapshotUploader.exe Information: 0 : Local PDB scan complete. Found 2 PDB(s).
+    DateTime=2018-03-09T01:47:19.4614027Z
+SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Dumps\c12a605e73c44346a984e00000000000\6368.pdbscan
+    DateTime=2018-03-09T01:47:19.4614027Z
 ```
 
 对于未托管于应用服务的应用程序，上传程序日志与小型转储位于同一文件夹：`%TEMP%\Dumps\<ikey>`（其中 `<ikey>` 是检测密钥）。
@@ -284,31 +313,48 @@ MinidumpUploader.exe Information: 0 : Deleted PDB scan marker D:\local\Temp\Dump
 按照这些步骤为云服务角色配置快照的专用本地资源。
 
 1. 通过编辑云服务定义 (.csdf) 文件将新的本地资源添加到云服务中。 以下示例使用 5 GB 大小定义名为 `SnapshotStore` 的资源。
-```xml
+   ```xml
    <LocalResources>
      <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
    </LocalResources>
-```
+   ```
 
-2. 修改角色的 `OnStart` 方法以添加指向 `SnapshotStore` 本地资源的环境变量。
-```csharp
+2. 修改角色的启动代码以添加指向 `SnapshotStore` 本地资源的环境变量。 对于辅助角色，应将代码添加到角色的 `OnStart` 方法：
+   ```csharp
    public override bool OnStart()
    {
        Environment.SetEnvironmentVariable("SNAPSHOTSTORE", RoleEnvironment.GetLocalResource("SnapshotStore").RootPath);
        return base.OnStart();
    }
-```
+   ```
+   对于 Web 角色 (ASP.NET)，应将代码添加到 Web 应用程序的 `Application_Start` 方 法：
+   ```csharp
+   using Microsoft.WindowsAzure.ServiceRuntime;
+   using System;
+
+   namespace MyWebRoleApp
+   {
+       public class MyMvcApplication : System.Web.HttpApplication
+       {
+          protected void Application_Start()
+          {
+             Environment.SetEnvironmentVariable("SNAPSHOTSTORE", RoleEnvironment.GetLocalResource("SnapshotStore").RootPath);
+             // TODO: The rest of your application startup code
+          }
+       }
+   }
+   ```
 
 3. 更新角色的 ApplicationInsights.config 文件以重写 `SnapshotCollector` 使用的临时文件夹位置
-```xml
-  <TelemetryProcessors>
+   ```xml
+   <TelemetryProcessors>
     <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
       <!-- Use the SnapshotStore local resource for snapshots -->
       <TempFolder>%SNAPSHOTSTORE%</TempFolder>
       <!-- Other SnapshotCollector configuration options -->
     </Add>
-  </TelemetryProcessors>
-```
+   </TelemetryProcessors>
+   ```
 
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>使用 Application Insights 搜索查找附带快照的异常
 

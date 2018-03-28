@@ -1,6 +1,6 @@
 ---
-title: "如何配合使用 C++ 和 Azure 表存储 | Microsoft Docs"
-description: "使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。"
+title: 如何通过 C++ 使用 Azure 表存储和 Azure Cosmos DB | Microsoft Docs
+description: 使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。
 services: cosmos-db
 documentationcenter: .net
 author: mimig1
@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 03/12/2018
 ms.author: mimig
-ms.openlocfilehash: a71098583af8722f2e191e0e665ac87ebd30f355
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 69d56c79320931419ff8d71373ec578af2dec921
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="how-to-use-azure-table-storage-with-c"></a>如何配合使用 C++ 和 Azure 表存储
+# <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>如何通过 C++ 使用 Azure 表存储或 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>概述
-本指南演示如何使用 Azure 表存储服务执行常见方案。 示例采用 C++ 编写，并使用了[适用于 C++ 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)。 涉及的方案包括**创建和删除表**以及**使用表实体**。
+本指南演示如何使用 Azure 表存储服务或 Azure Cosmos DB 表 API 执行常见方案。 示例采用 C++ 编写，并使用了[适用于 C++ 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)。 涉及的方案包括**创建和删除表**以及**使用表实体**。
 
 > [!NOTE]
 > 本指南主要面向适用于 C++ 的 Azure 存储客户端库 1.0.0 版及更高版本。 推荐版本：存储客户端库 2.2.0（可通过 [NuGet](http://www.nuget.org/packages/wastorage) 或 [GitHub](https://github.com/Azure/azure-storage-cpp/) 获得）。
@@ -46,7 +46,7 @@ ms.lasthandoff: 02/01/2018
   
      Install-Package wastorage
 
-## <a name="configure-your-application-to-access-table-storage"></a>配置应用程序以访问表存储
+## <a name="configure-access-to-the-table-client-library"></a>配置对表客户端库的访问权限
 将以下 include 语句添加到要在其中使用 Azure 存储 API 访问表的 C++ 文件的顶部：  
 
 ```cpp
@@ -54,13 +54,24 @@ ms.lasthandoff: 02/01/2018
 #include <was/table.h>
 ```
 
+Azure 存储客户端或 Cosmos DB 客户端使用连接字符串来存储用于访问数据管理服务的终结点和凭据。 运行客户端应用程序时，必须提供相应格式的存储连接字符串或 Azure Cosmos DB 连接字符串。
+
 ## <a name="set-up-an-azure-storage-connection-string"></a>设置 Azure 存储连接字符串
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。 运行客户端应用程序时，必须提供以下格式的存储连接字符串。 使用 [Azure 门户](https://portal.azure.com)中列出的存储帐户的存储帐户名称和存储访问密钥作为 AccountName 和 AccountKey 值。 有关存储帐户和访问密钥的信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。 此示例演示如何声明一个静态字段以保存连接字符串：  
+ 使用 [Azure 门户](https://portal.azure.com)中列出的存储帐户的存储帐户名称和访问密钥作为 AccountName 和 AccountKey 值。 有关存储帐户和访问密钥的信息，请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)。 此示例演示如何声明一个静态字段以保存 Azure 存储连接字符串：  
 
 ```cpp
-// Define the connection string with your values.
+// Define the Storage connection string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
+
+## <a name="set-up-an-azure-cosmos-db-connection-string"></a>设置 Azure Cosmos DB 连接字符串
+使用 [Azure 门户](https://portal.azure.com)中列出的 Azure Cosmos DB 帐户名称、主密钥和终结点作为*帐户名称*、*主密钥*和*终结点*值。 此示例演示如何声明一个静态字段以保存 Azure Cosmos DB 连接字符串：
+
+```cpp
+// Define the Azure Cosmos DB connection string with your values.
+const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_cosmos_db_account;AccountKey=your_cosmos_db_account_key;TableEndpoint=your_cosmos_db_endpoint"));
+```
+
 
 若要在基于 Windows 的本地计算机中测试应用程序，可以使用随 [Azure SDK](https://azure.microsoft.com/downloads/) 一起安装的 Azure [存储模拟器](../storage/common/storage-use-emulator.md)。 存储模拟器是一种用于模拟本地开发计算机上提供的 Azure Blob、队列和表服务的实用程序。 以下示例演示如何声明一个静态字段以将连接字符串保存到本地存储模拟器：  
 
@@ -74,7 +85,7 @@ const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;
 下面的示例假定使用了这两个方法之一来获取存储连接字符串。  
 
 ## <a name="retrieve-your-connection-string"></a>检索连接字符串
-可使用 **cloud_storage_account** 类来表示存储帐户信息。 要从存储连接字符串中检索存储帐户信息，可以使用 parse 方法。
+可使用 **cloud_storage_account** 类来表示存储帐户信息。 若要从存储连接字符串中检索存储帐户信息，可以使用 **parse** 方法。
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -198,6 +209,9 @@ std::vector<azure::storage::table_result> results = table.execute_batch(batch_op
 ## <a name="retrieve-all-entities-in-a-partition"></a>检索分区中的所有实体
 若要查询表以获取分区中的所有实体，请使用 **table_query** 对象。 以下代码示例指定了一个筛选器，以筛选分区键为“Smith”的实体。 此示例会将查询结果中每个实体的字段输出到控制台。  
 
+> [!NOTE]
+> Azure Cosmos DB 中的 C++ 目前不支持这些方法。
+
 ```cpp
 // Retrieve the storage account from the connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -232,6 +246,9 @@ for (; it != end_of_results; ++it)
 
 ## <a name="retrieve-a-range-of-entities-in-a-partition"></a>检索分区中的一部分实体
 如果不想查询分区中的所有实体，则可以通过结合使用分区键筛选器与行键筛选器来指定一个范围。 以下代码示例使用两个筛选器来获取分区“Smith”中的、行键（名字）以字母“E”前面的字母开头的所有实体，并输出查询结果。  
+
+> [!NOTE]
+> Azure Cosmos DB 中的 C++ 目前不支持这些方法。
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -436,23 +453,30 @@ azure::storage::cloud_table_client table_client = storage_account.create_cloud_t
 // Create a cloud table object for the table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Create an operation to retrieve the entity with partition key of "Smith" and row key of "Jeff".
-azure::storage::table_operation retrieve_operation = azure::storage::table_operation::retrieve_entity(U("Smith"), U("Jeff"));
-azure::storage::table_result retrieve_result = table.execute(retrieve_operation);
-
-// Create an operation to delete the entity.
-azure::storage::table_operation delete_operation = azure::storage::table_operation::delete_entity(retrieve_result.entity());
-
-// Submit the delete operation to the Table service.
-azure::storage::table_result delete_result = table.execute(delete_operation);
+// Delete the table if it exists
+if (table.delete_table_if_exists())
+    {
+        std::cout << "Table deleted!";
+    }
+    else
+    {
+        std::cout << "Table didn't exist";
+    }
 ```
 
-## <a name="next-steps"></a>后续步骤
-现在，已了解表存储的基础知识，请打开以下链接了解有关 Azure 存储的详细信息：  
+## <a name="troubleshooting"></a>故障排除
+* Visual Studio 2017 Community Edition 中的生成错误
 
+  如果项目因 include 文件 storage_account.h 和 table.h 而显示生成错误，请删除 **/permissive-** 编译器开关。 
+  - 在“解决方案资源管理器”中，右键单击项目，并选择“属性”。
+  - 在“属性页”对话框中，依次展开“配置属性”、“C/C++”，然后选择“语言”。
+  - 将“符合模式”设置为“否”。
+   
+## <a name="next-steps"></a>后续步骤
+请打开以下链接了解有关 Azure 存储和 Azure Cosmos DB 中的表 API 的详细信息： 
+
+* [表 API 简介](table-introduction.md)
 * [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。
-* [如何通过 C++ 使用 Blob 存储](../storage/blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [如何通过 C++ 使用队列存储](../storage/queues/storage-c-plus-plus-how-to-use-queues.md)
 * [使用 C++ 列出 Azure 存储资源](../storage/common/storage-c-plus-plus-enumeration.md)
 * [适用于 C++ 的存储客户端库参考](http://azure.github.io/azure-storage-cpp)
 * [Azure 存储文档](https://azure.microsoft.com/documentation/services/storage/)

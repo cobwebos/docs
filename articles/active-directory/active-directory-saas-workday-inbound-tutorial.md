@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 825bf3f6a3ea07cb229f00c81ad699d792ac53f9
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 976d7e7cb304a24f235e51952ce04826776e2789
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/13/2018
 
 * **将电子邮件地址写回到 Workday** - Azure AD 用户预配服务可将选定的 Azure AD 用户属性（例如电子邮件地址）写回到 Workday。
 
-### <a name="scenarios-covered"></a>涉及的方案
+### <a name="what-human-resources-scenarios-does-it-cover"></a>该服务涵盖哪些人力资源方案？
 
 Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下人力资源和标识生命周期管理方案自动化：
 
@@ -46,6 +46,20 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 * **员工离职** - 当某个员工在 Workday 离职时，Active Directory、Azure Active Directory、（可选）Office 365 和 [Azure AD 支持的其他 SaaS 应用程序](active-directory-saas-app-provisioning.md)中会自动禁用其用户帐户。
 
 * **再次雇用员工** - 当 Workday 再次雇用某个员工时，Active Directory、Azure Active Directory、（可选）Office 365 和 [Azure AD 支持的其他 SaaS 应用程序](active-directory-saas-app-provisioning.md)中可以自动重新激活或重新预配（取决于你的偏好）该员工的旧帐户。
+
+### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>此用户预配解决方案最适合哪些对象？
+
+此 Workday 用户预配解决方案目前以公共预览版提供，非常适合以下对象：
+
+* 需要使用预建的、基于云的解决方案进行 Workday 用户预配的组织
+
+* 需要将用户预配从 Workday 定向到 Active Directory 或 Azure Active Directory 的组织
+
+* 要求使用从 Workday HCM 模块获取的数据预配用户的组织（请参阅 [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html)） 
+
+* 要求只根据 Workday HCM 模块中检测到的更改信息，加入、移动用户或者使用户保持同步到一个或多个 Active Directory 林、域和 OU 的组织（请参阅 [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html)）
+
+* 使用 Office 365 收发电子邮件的组织
 
 
 ## <a name="planning-your-solution"></a>规划解决方案
@@ -62,7 +76,6 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 * 若要将用户预配到 Active Directory，需要使用一台已加入域的、运行 Windows Service 2012 或更高版本的服务器来托管[本地同步代理](https://go.microsoft.com/fwlink/?linkid=847801)
 * 已安装 [Azure AD Connect](connect/active-directory-aadconnect.md)，用于在 Active Directory 与 Azure AD 之间同步
 
-
 ### <a name="solution-architecture"></a>解决方案体系结构
 
 Azure AD 提供一组丰富的预配连接器来帮助解决 Workday 与 Active Directory、Azure AD、SaaS 应用及其他服务之间的预配和标识生命周期管理。 要使用哪些功能以及如何设置解决方案根据组织的环境和要求而有所不同。 首先需要盘点组织中存在和部署的以下各项的数量：
@@ -74,6 +87,7 @@ Azure AD 提供一组丰富的预配连接器来帮助解决 Workday 与 Active 
 * 是否需要将某些用户同时预配到 Active Directory 和 Azure Active Directory（例如“混合”用户）？
 * 是否需要将某些用户预配到 Azure Active Directory，但不需要将其预配到 Active Directory（例如“仅限云”的用户）？
 * 是否需要将用户电子邮件地址写回到 Workday？
+
 
 获得这些问题的答案后，便可以遵照以下指导规划 Workday 预配部署。
 
@@ -164,21 +178,11 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
     ![系统安全组](./media/active-directory-saas-workday-inbound-tutorial/IC750985.png "系统安全组")  
 
 ### <a name="configure-security-group-options"></a>配置安全组选项
-此步骤授予域安全策略对以下域安全策略保护的工作人员数据的权限：
-
-
-| Operation | 域安全策略 |
-| ---------- | ---------- | 
-| “获取”和“放置” |  外部帐户预配 |
-| “获取”和“放置” | 工作人员数据：公职人员报告 |
-| “获取”和“放置” | 工作人员数据：所有职位 |
-| “获取”和“放置” | 工作人员数据：当前人员配备信息 |
-| “获取”和“放置” | 工作人员数据：工作人员个人资料中的职称 |
-| “查看”和“修改” | 工作人员数据: 工作电子邮件 |
+此步骤授予域安全策略对安全组中工作人员数据的权限。
 
 **配置安全组选项：**
 
-1. 在搜索框中输入域安全策略，然后单击链接“功能区域的域安全策略”。  
+1. 在搜索框中输入“域安全策略”，然后单击链接“功能区域的域安全策略”。  
    
     ![域安全策略](./media/active-directory-saas-workday-inbound-tutorial/IC750986.png "域安全策略")  
 2. 搜索“系统”并选择“系统”功能区域。  单击“确定”。  
@@ -190,23 +194,17 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 4. 单击“编辑权限”，然后在“编辑权限”对话框页上将新安全组添加到具有 **Get** 和 **Put** 集成权限的安全组列表中。 
    
     ![编辑权限](./media/active-directory-saas-workday-inbound-tutorial/IC750989.png "编辑权限")  
-5. 重复上方的步骤 1，返回到用于选择功能区域的屏幕，这次搜索人员配备，选择“人员配备功能区域”，然后单击“确定”。
+    
+5. 针对剩余的每个安全策略重复上述步骤 1-4：
+
+| Operation | 域安全策略 |
+| ---------- | ---------- | 
+| “获取”和“放置” | 工作人员数据：公职人员报告 |
+| “获取”和“放置” | 工作人员数据：工作联系信息 |
+| Get | 工作人员数据：所有职位 |
+| Get | 工作人员数据：当前人员配备信息 |
+| Get | 工作人员数据：工作人员个人资料中的职称 |
    
-    ![域安全策略](./media/active-directory-saas-workday-inbound-tutorial/IC750990.png "域安全策略")  
-6. 在“人员配备”功能区域的安全策略列表中，展开“员工数据: 人员配备”，并对剩余的每个安全策略重复执行上面的步骤 4：
-
-   * 工作人员数据：公职人员报告
-   * 工作人员数据：所有职位
-   * 工作人员数据：当前人员配备信息
-   * 工作人员数据：工作人员个人资料中的职称
-   
-7. 重复上述步骤 1 返回到用于选择功能区域的屏幕，但这次请搜索“联系信息”，选择“人员配备”功能区域，然后单击“确定”。
-
-8.  在“人员配备”功能区域的安全策略列表中，展开“工作人员数据: 工作联系信息”，然后针对以下安全策略重复上述步骤 4：
-
-    * 工作人员数据: 工作电子邮件
-
-    ![域安全策略](./media/active-directory-saas-workday-inbound-tutorial/IC750991.png "域安全策略")  
     
 ### <a name="activate-security-policy-changes"></a>激活安全策略更改
 
@@ -225,6 +223,41 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>配置从 Workday 到 Active Directory 的用户预配
 遵照以下说明，配置从 Workday 到需要预配到的每个 Active Directory 林的用户帐户预配。
 
+### <a name="planning"></a>规划
+
+在配置目标为 Active Directory 林的用户预配之前，请考虑以下问题。 这些问题的答案将会确定如何设置范围筛选器和属性映射。 
+
+* **需要将 Workday 中的哪些用户预配到此 Active Directory 林？**
+
+   * *示例：Workday“Company”属性包含值“Contoso”，并且“Worker_Type”属性包含“Regular”的用户*
+
+* **如何将用户路由到不同的组织单位 (OU)？**
+
+   * *示例：将用户路由到与 Workday“Municipality”和“Country_Region_Reference”属性中定义的办公地点相对应的 OU*
+
+* **如何在 Active Directory 中填充以下属性？**
+
+   * 公用名 (cn)
+      * *示例：使用人力资源部门设置的 Workday User_ID 值*
+      
+   * 员工 ID (employeeId)
+      * *示例：使用 Workday Worker_ID 值*
+      
+   * SAM 帐户名 (sAMAccountName)
+      * *示例：使用 Workday User_ID 值，该值已通过 Azure AD 预配表达式筛选，以删除非法字符*
+      
+   * 用户主体名称 (userPrincipalName)
+      * *示例：使用 Workday User_ID 值，并通过 Azure AD 预配表达式在其后追加一个域名*
+
+* **如何匹配 Workday 与 Active Directory 之间的用户？**
+
+  * *示例：将具有特定 Workday“Worker_ID”值的用户与“employeeID”值相同的 Active Directory 用户进行匹配。如果在 Active Directory 中找不到该 Worker_ID 值，则创建新用户。*
+  
+* **Active Directory 林是否已包含使匹配逻辑正常工作所需的用户 ID？**
+
+  * *示例：如果这是新的 Workday 部署，则我们强烈建议在 Active Directory 中预先填充正确的 Workday Worker_ID 值（或所选的唯一 ID 值），以便尽量简化匹配逻辑。*
+    
+    
 ### <a name="part-1-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>第 1 部分：添加预配连接器应用并与 Workday 建立连接
 
 **若要配置 Workday 到 Active Directory 的预配：**
@@ -320,39 +353,38 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 **下面是 Workday 与 Active Directory 之间的一些示例属性映射，以及一些常用的表达式**
 
--   可以基于一个或多个 Workday 源属性，使用可映射到 parentDistinguishedName AD 属性的表达式将用户预配到特定的 OU。 此示例根据用户在 Workday 中的城市数据，将用户放在不同的 OU 中。
+-   可以根据一个或多个 Workday 源属性，使用可映射到 parentDistinguishedName 属性的表达式将用户预配到不同的 OU。 以下示例根据用户所在的城市，将用户放入不同的 OU。
 
--   可映射到 userPrincipalName AD 属性的表达式将创建 firstName.LastName@contoso.com UPN。此外，它还会替换非法的特殊字符。
+-   Active Directory 中的 userPrincipalName 属性是通过将 Workday 用户 ID 与域后缀相串联来生成的
 
--   [此处提供了有关编写表达式的文档](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+-   [此处提供了有关编写表达式的文档](active-directory-saas-writing-expressions-for-attribute-mappings.md)。 其中包括有关如何删除特殊字符的示例。
 
   
 | WORKDAY 属性 | ACTIVE DIRECTORY 属性 |  匹配 ID？ | 创建/更新 |
 | ---------- | ---------- | ---------- | ---------- |
-|  **WorkerID**  |  EmployeeID | **是** | 仅在创建时写入 | 
-|  **Municipality**   |   l   |     | 创建 + 更新 |
-|  **Company**         | company   |     |  创建 + 更新 |
-|  **CountryReferenceTwoLetter**      |   co |     |   创建 + 更新 |
-| **CountryReferenceTwoLetter**    |  c  |     |         创建 + 更新 |
-| **SupervisoryOrganization**  | department  |     |  创建 + 更新 |
-|  **PreferredNameData**  |  displayName |     |   创建 + 更新 |
-| **EmployeeID**    |  cn    |   |   仅在创建时写入 |
-| **Fax**      | facsimileTelephoneNumber     |     |    创建 + 更新 |
-| **名字**   | givenName       |     |    创建 + 更新 |
+| **WorkerID**  |  EmployeeID | **是** | 仅在创建时写入 | 
+| **UserID**    |  cn    |   |   仅在创建时写入 |
+| **Join("@",[UserID], "contoso.com")**   | userPrincipalName     |     | 仅在创建时写入 
+| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
 | **Switch(\[Active\], , "0", "True", "1",)** |  accountDisabled      |     | 创建 + 更新 |
-| **Mobile**  |    mobile       |     |       创建 + 更新 |
-| **电子邮件地址**    | mail    |     |     创建 + 更新 |
+| **名字**   | givenName       |     |    创建 + 更新 |
+| **姓氏**   |   sn   |     |  创建 + 更新 |
+| **PreferredNameData**  |  displayName |     |   创建 + 更新 |
+| **Company**         | company   |     |  创建 + 更新 |
+| **SupervisoryOrganization**  | department  |     |  创建 + 更新 |
 | **ManagerReference**   | manager  |     |  创建 + 更新 |
+| **BusinessTitle**   |  title     |     |  创建 + 更新 | 
+| **AddressLineData**    |  streetAddress  |     |   创建 + 更新 |
+| **Municipality**   |   l   |     | 创建 + 更新 |
+| **CountryReferenceTwoLetter**      |   co |     |   创建 + 更新 |
+| **CountryReferenceTwoLetter**    |  c  |     |         创建 + 更新 |
+| **CountryRegionReference** |  号     |     | 创建 + 更新 |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  创建 + 更新 |
 | **PostalCode**  |   postalCode  |     | 创建 + 更新 |
-| **LocalReference** |  preferredLanguage  |     |  创建 + 更新 |
-| **Replace(Mid(Replace(\[EmployeeID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         仅在创建时写入 |
-| **姓氏**   |   sn   |     |  创建 + 更新 |
-| **CountryRegionReference** |  号     |     | 创建 + 更新 |
-| **AddressLineData**    |  streetAddress  |     |   创建 + 更新 |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | 创建 + 更新 |
-| **BusinessTitle**   |  title     |     |  创建 + 更新 |
-| **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , ), "contoso.com")**   | userPrincipalName     |     | 仅在创建时写入                                                   
+| **Fax**      | facsimileTelephoneNumber     |     |    创建 + 更新 |
+| **Mobile**  |    mobile       |     |       创建 + 更新 |
+| **LocalReference** |  preferredLanguage  |     |  创建 + 更新 |                                               
 | **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  创建 + 更新 |
   
 ### <a name="part-3-configure-the-on-premises-synchronization-agent"></a>第 3 部分：配置本地同步代理
@@ -467,7 +499,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 ## <a name="configuring-user-provisioning-to-azure-active-directory"></a>配置到 Azure Active Directory 的用户预配
 如何配置到 Azure Active Directory 的预配取决于预配要求，下表对此做了详述。
 
-| 场景 | 解决方案 |
+| 方案 | 解决方案 |
 | -------- | -------- |
 | **需要将用户预配到 Active Directory 和 Azure AD** | 使用 **[AAD Connect](connect/active-directory-aadconnect.md)** |
 | **只需将用户预配到 Active Directory** | 使用 **[AAD Connect](connect/active-directory-aadconnect.md)** |
@@ -696,6 +728,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
             <wd:Include_Transaction_Log_Data>true</wd:Include_Transaction_Log_Data>
             <wd:Include_Photo>true</wd:Include_Photo>
             <wd:Include_User_Account>true</wd:Include_User_Account>
+            <wd:Include_Roles>true</wd:Include_Roles>
           </wd:Response_Group>
         </wd:Get_Workers_Request>
       </env:Body>

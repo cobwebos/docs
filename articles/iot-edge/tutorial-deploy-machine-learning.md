@@ -1,19 +1,19 @@
 ---
-title: "使用 Azure IoT Edge 部署 Azure 机器学习 | Microsoft 文档"
-description: "将 Azure 机器学习作为一个模块部署到 Edge 设备"
+title: 使用 Azure IoT Edge 部署 Azure 机器学习 | Microsoft 文档
+description: 将 Azure 机器学习作为一个模块部署到 Edge 设备
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/06/2018
+ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e2314f589456f604c8c008e10fb8084e0524575d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4201395085dd72eb92b774eaed5980737b2e5de0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>将 Azure 机器学习作为 IoT Edge 模块进行部署 - 预览版
 
@@ -41,12 +41,16 @@ ms.lasthandoff: 03/08/2018
 
 在运行“Azure ML 模块管理”的计算机上，从 GitHub 上的 Azure ML IoT Toolkit 下载并保存 [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) 和 [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl)。 这些文件定义了将部署到 Iot Edge 设备的已训练的机器学习模型。 
 
-使用已训练的模型创建可以部署到 IoT Edge 设备的容器。
+使用已训练的模型创建可以部署到 IoT Edge 设备的容器。 使用以下命令：
+
+   * 注册模型。
+   * 创建清单。
+   * 创建名为 *machinelearningmodule* 的 Docker 容器映像。
+   * 将映像部署到 Azure 容器服务 (AKS) 群集。
 
 ```cmd
 az ml service create realtime --model-file model.pkl -f iot_score.py -n machinelearningmodule -r python
 ```
-服务名称（在此示例中为 *machinelearningmodule*）成为 docker 容器映像的名称。
 
 ### <a name="view-the-container-repository"></a>查看容器存储库
 

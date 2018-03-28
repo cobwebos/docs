@@ -1,27 +1,23 @@
 ---
-title: "使用 Azure 自动化跟踪更改 | Microsoft Docs"
-description: "借助更改跟踪解决方案可以确定在环境中发生的软件和 Windows 服务更改。"
+title: 使用 Azure 自动化跟踪更改
+description: 借助更改跟踪解决方案可以确定在环境中发生的软件和 Windows 服务更改。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: f8040d5d-3c89-4f0c-8520-751c00251cb7
 ms.service: automation
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/28/2018
+author: georgewallace
 ms.author: gwallace
+ms.date: 03/15/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79c5f354c3e63856474e46e2b6928af829604e15
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 06034a87d6015a057c01c2bc87ae4db9fba1269a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的软件更改
+# <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
 本文可帮助你使用更改跟踪解决方案轻松识别环境中的更改。 该解决方案会跟踪对 Windows 和 Linux 软件、Windows 文件和注册表项、Windows 服务和 Linux 守护程序的更改。 标识配置更改可帮助你查明操作问题。
 

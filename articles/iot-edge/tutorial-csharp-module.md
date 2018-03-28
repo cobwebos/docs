@@ -1,19 +1,19 @@
 ---
-title: "Azure IoT Edge C# 模块 | Microsoft Docs"
-description: "使用 C# 代码创建 IoT Edge 模块，并将它部署到边缘设备"
+title: Azure IoT Edge C# 模块 | Microsoft Docs
+description: 使用 C# 代码创建 IoT Edge 模块，并将它部署到边缘设备
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
-ms.author: v-jamebr
-ms.date: 11/15/2017
+ms.author: kgremban
+ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fd46bb662af72ece799bb545d06d76f9e54ee62c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 605f0cfe34e4fda14030bb38686095882846c7c0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>开发 C# IoT Edge 模块，并将它部署到模拟设备 - 预览
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 02/09/2018
 3. 选择“创建”。
 4. 创建容器注册表以后，导航到其中，然后选择“访问键”。 
 5. 将“管理员用户”切换到“启用”。
-6. 复制“登录服务器”、“用户名”和“密码”的值。 本教程后面会用到这些值。 
+6. 复制“登录服务器”、“用户名”和“密码”的值。 本教程中稍后将 Docker 映像发布到注册表，以及向 Edge 运行时添加注册表凭据时，将使用这些值。 
 
 ## <a name="create-an-iot-edge-module-project"></a>创建 IoT Edge 模块项目
 以下步骤将介绍如何使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建基于 .NET Core 2.0 的 IoT Edge 模块。
@@ -227,15 +227,14 @@ ms.lasthandoff: 02/09/2018
 2. 右键单击“Dockerfile”文件，然后单击“生成 IoT Edge 模块 Docker 映像”。 
 3. 在“选择文件夹”窗口，浏览到或输入 `./bin/Debug/netcoreapp2.0/publish`。 单击“选择文件夹作为 EXE_DIR”。
 4. 在 VS Code 窗口顶部弹出的文本框中，输入映像名称。 例如：`<your container registry address>/filtermodule:latest`。 容器注册表地址与从注册表复制的登录服务器相同。 它应采用 `<your container registry name>.azurecr.io` 格式。
-5. 在 VS Code 集成终端输入以下命令，登录到 Docker： 
+5. 使用用户名、密码以及在创建登录服务器时从 Azure 容器注册表复制的登录服务器登录到 Docker。 在 VS Code 集成终端中，输入以下命令： 
      
    ```csh/sh
-   docker login -u <username> -p <password> <Login server>
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
-        
-   使用用户名、密码以及在创建时从 Azure 容器注册表复制的登录服务器。
 
-3. 将映像推送到 Docker 存储库。 选择“视图” > “命令面板”，搜索“Edge: 推送 IoT Edge 模块 Docker 映像”菜单命令。 在 VS Code 窗口顶部的弹出文本框中，输入映像名称。 使用步骤 4 中所用的同一映像名称。
+6. 将映像推送到容器注册表。 选择“视图” > “命令面板”，搜索“Edge: 推送 IoT Edge 模块 Docker 映像”菜单命令。 在 VS Code 窗口顶部的弹出文本框中，输入映像名称。 使用步骤 4 中所用的同一映像名称。
+7. 若要在 Azure 门户中查看映像，请导航到 Azure 容器注册表，并选择“存储库”。 应该会看到列出的 **filtermodule**。
 
 ## <a name="add-registry-credentials-to-edge-runtime"></a>将注册表凭据添加到 Edge 运行时
 在运行 Edge 设备的计算机上将注册表凭据添加到 Edge 运行时。 这些凭据为此运行时提供拉取容器的访问权限。 

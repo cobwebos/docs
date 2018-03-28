@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: c4bf3871b4636ce769dd8d84a637b88d4a00db97
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4709ee707aa67c8de531b2b3e0b58dbed5c2667b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -123,7 +123,7 @@ ms.lasthandoff: 03/12/2018
 * HDInsight 群集 - 请参阅 [HDInsight 限制](#hdinsight-limitations)
 * IoT 中心
 * Key Vault
-* 负载均衡器
+* 负载均衡器 - 请参阅[负载均衡器限制](#lb-limitations)
 * 逻辑应用
 * 机器学习
 * 媒体服务
@@ -132,6 +132,7 @@ ms.lasthandoff: 03/12/2018
 * 操作见解
 * 操作管理
 * Power BI
+* 公共 IP - 请参阅[公共 IP 限制](#pip-limitations)
 * Redis 缓存
 * 计划程序
 * 搜索
@@ -161,8 +162,10 @@ ms.lasthandoff: 03/12/2018
 * Express Route
 * 开发测试实验室 - 支持移动到同一订阅中的新资源组，但不支持跨订阅移动。
 * Dynamics LCS
+* 负载均衡器 - 请参阅[负载均衡器限制](#lb-limitations)
 * 托管应用程序
 * 托管磁盘 - 请参阅[虚拟机限制](#virtual-machines-limitations)
+* 公共 IP - 请参阅[公共 IP 限制](#pip-limitations)
 * 恢复服务保管库 - 此外，也不可以移动与恢复服务保管库关联的计算、网络和存储资源，请参阅[恢复服务限制](#recovery-services-limitations)。
 * “安全”
 * StorSimple 设备管理器
@@ -320,6 +323,16 @@ _在订阅之间_移动 Web 应用时存在以下限制：
 
 不能同时移动置于不同区域中的多个搜索资源。
 在这种情况下，需要分别移动它们。
+
+## <a name="lb-limitations"></a> 负载均衡器限制
+
+可以移动基本 SKU 负载均衡器。
+不能移动标准 SKU 负载均衡器。
+
+## <a name="pip-limitations"></a> 公共 IP 限制
+
+可以移动基本 SKU 公共 IP。
+不能移动标准 SKU 公共 IP。
 
 ## <a name="use-portal"></a>使用门户
 

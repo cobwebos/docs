@@ -1,11 +1,11 @@
 ---
-title: "为 Azure Marketplace 创建本地虚拟机映像 | Microsoft Docs"
-description: "了解并执行相关步骤，以便创建本地 VM 映像并针对要购买的其他用户部署到 Azure Marketplace。"
+title: 为 Azure Marketplace 创建本地虚拟机映像 | Microsoft Docs
+description: 了解并执行相关步骤，以便创建本地 VM 映像并针对要购买的其他用户部署到 Azure Marketplace。
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 26dfbd5a-8685-4b19-987e-c20ca60540ec
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: 77771f1e690bdfb59d42989a34068634f35f845d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: mbaldwin
+ms.openlocfilehash: 6b927ce6032092ce258eeebca49da0571439dbfb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure Marketplace 部署本地虚拟机映像
 我们强烈建议使用远程桌面协议直接在云中开发 Azure 虚拟硬盘 (VHD)。 但是，如有必要，可以下载 VHD 并使用本地基础结构进行开发。  

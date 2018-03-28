@@ -1,11 +1,11 @@
 ---
-title: "准备和测试产品/服务以供部署到 Azure 应用商店 | Microsoft Docs"
-description: "有关在部署到 Azure 应用商店之前，提供市场营销内容、配置定价计划和测试产品/服务的详细说明。"
+title: 准备和测试产品/服务以供部署到 Azure Marketplace | Microsoft Docs
+description: 有关在部署到 Azure Marketplace 之前，提供市场营销内容、配置定价计划和测试产品/服务的详细说明。
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 3ccd2448-895b-477e-adf6-ab655a21d2fa
 ms.service: marketplace
 ms.devlang: na
@@ -13,20 +13,20 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/17/2016
-ms.author: hascipio
-ms.openlocfilehash: 7db86716cdf8f9eb921c3c1813970acae7a3016b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 5bec9ac89487a824b9de9209547f0b96fa5fe678
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="complete-the-offer-creation-with-marketing-content"></a>使用市场营销内容完成产品/服务创建
-在发布过程的此步骤中，需要提供某些市场营销内容以及有关 Azure 应用商店中产品/服务和/或 SKU 的详细信息。 例如，将提供产品描述、公司徽标、价格计划、计划详细信息以及将产品/服务和/或 SKU 推送到过渡环境所需的其他信息。 此信息用作 Azure 门户中的市场营销内容。 将在[发布门户][link-pubportal]中开始此过程。
+在发布过程的此步骤中，需要提供某些市场营销内容以及有关 Azure Marketplace 中产品/服务和/或 SKU 的详细信息。 例如，将提供产品描述、公司徽标、价格计划、计划详细信息以及将产品/服务和/或 SKU 推送到过渡环境所需的其他信息。 此信息用作 Azure 门户中的市场营销内容。 将在[发布门户][link-pubportal]中开始此过程。
 
-## <a name="step-1-provide-marketplace-marketing-content"></a>步骤 1：提供应用商店市场营销内容
+## <a name="step-1-provide-marketplace-marketing-content"></a>步骤 1：提供 Marketplace 市场营销内容
 **英语是默认语言和唯一受支持的语言。** 请确保使用英语在字段中提供所有信息。 在推送到过渡环境之前，可以随时编辑所有信息。
 
-1. 转到发布门户 [https://publish.windowsazure.com](https://publish.windowsazure.com)。
+1. 登录发布门户 [https://publish.windowsazure.com](https://publish.windowsazure.com)。
 2. 在左侧菜单中，单击“市场营销”选项卡。
 3. 在主面板中，单击“英语(美国)”按钮。
    
@@ -48,11 +48,11 @@ ms.lasthandoff: 10/11/2017
 5. 不要在计划标题和产品/服务摘要下输入重复文本。
 6. 不要为多个计划内的某项服务输入相同的计划标题。
 7. 采用 PNG 格式根据所需规范（如发布门户中所述）上传图像，规范因大小而异。
-8. 确保徽标遵守下面所述的 Azure 应用商店徽标准则。
+8. 确保徽标遵守下面所述的 Azure Marketplace 徽标准则。
    
    ![绘制](media/marketplace-publishing-push-to-staging/pubportal-marketingcontent-details-02.png)
 
-**Azure 应用商店徽标准则**
+**Azure Marketplace 徽标准则**
 
 上传到发布门户中的所有徽标都应遵循以下准则：
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 10/11/2017
 * 特大徽标的大小应为 815 X 290 px
 
 > [!NOTE]
-> 特大徽标是可选的。 发布者可以选择不上传特大徽标。 但是，上传特大图标后，无法将其从发布门户中删除。 此时，合作伙伴必须遵循特大图标的 Azure 应用商店准则。
+> 特大徽标是可选的。 发布者可以选择不上传特大徽标。 但是，上传特大图标后，无法将其从发布门户中删除。 此时，合作伙伴必须遵循特大图标的 Azure Marketplace 准则。
 > 
 > 
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 10/11/2017
 
 **特大徽标图标的其他准则（可选）**
 
-* 特大徽标是可选的。 发布者可以选择不上传特大徽标。 **但是，在上传特大图标后，将无法将其从发布门户中删除。此时，合作伙伴必须遵循特大图标的 Azure 应用商店准则，否则产品/服务将不批准用于生产。**
+* 特大徽标是可选的。 发布者可以选择不上载特大徽标。 **但是，在上传特大图标后，将无法将其从发布门户中删除。此时，合作伙伴必须遵循特大图标的 Azure Marketplace 准则，否则产品/服务将不批准用于生产。**
 * 发布者显示名称、计划标题和产品/服务详细摘要以白色字体颜色显示。 因此，应避免在特大图标的背景中保留任何浅色。 特大图标不允许使用黑色、白色和透明背景。
 * 在产品/服务推出后，发布者显示名称、计划标题、产品/服务详细摘要和创建按钮以编程方式嵌入在特大徽标内。 因此，在设计特大徽标时，不应输入任何文本。 请仅在右侧保留空白区域，因为我们将以编程方式将文本（即，发布者显示名称、计划标题、产品/服务长摘要）放置在那里。 右侧文本的空白区域应为 415x100（并按 370px 从左侧偏移）。
   
@@ -109,7 +109,7 @@ ms.lasthandoff: 10/11/2017
 * **SKU 标识符：**[发布门户 -&gt; 虚拟机 -&gt; 选择产品/服务 -&gt; SKU 选项卡 -&gt; 添加 SKU]
 * **发布者命名空间：**[发布门户 -&gt; 虚拟机 -&gt; 演练选项卡 -&gt; 告诉我们公司的情况（可在“步骤 2 注册公司”下找到）-&gt; 发布者命名空间 -&gt; 命名空间]
 
-对于虚拟机产品/服务，在产品/服务和 SKU 在 Azure 应用商店中列出后，无法更改下面的给定字段：
+对于虚拟机产品/服务，在产品/服务和 SKU 在 Azure Marketplace 中列出后，无法更改下面的给定字段：
 
 * **产品/服务标识符：**[发布门户 -&gt; 虚拟机 -&gt; 选择产品/服务 -&gt; VM 映像 -&gt; 产品/服务标识符]
 * **SKU 标识符：**[发布门户 -&gt; 虚拟机 -&gt; 选择产品/服务 -&gt; SKU 选项卡 -&gt; 添加 SKU]
@@ -151,7 +151,7 @@ ms.lasthandoff: 10/11/2017
 * **免费试用：**这是另一种形式的每小时模型。 此模型在部署 VM 后的前 30 天内不会向客户收取软件成本（免费）。 30 天后，根据发布者在每小时模型中设置的费率，以每小时为单位向他们收取费用。
 * **自带许可 (BYOL)：**发布者管理在 VM 上运行的软件的许可。
 
-**重要提示：**在产品/服务和 SKU 在 Azure 应用商店中列出后，无法更改下面的给定字段。
+**重要提示：**产品/服务和 SKU 在 Azure Marketplace 中列出后，将无法更改下面给定的字段。
 
 * **已列出的 SKU 的定价更改**
 * **已列出的 SKU 的计费模型更改**
@@ -240,26 +240,26 @@ ms.lasthandoff: 10/11/2017
 3. 在“客户支持”下输入信息。 如果仅提供电子邮件支持，请输入虚拟电话号码，将改用你提供的电子邮件。
 4. 输入支持 URL。
 
-## <a name="step-4-choose-azure-marketplace-categories"></a>步骤 4：选择 Azure 应用商店类别
+## <a name="step-4-choose-azure-marketplace-categories"></a>步骤 4：选择 Azure Marketplace 类别
 “类别”选项卡提供大量选项。 产品/服务可以归入这些类别，可以选择最多五个类别。
 
 ## <a name="how-your-marketing-will-appear"></a>市场营销内容的显示方式
-下面详细介绍了产品/服务市场营销信息在 [Azure 应用商店网站](https://azure.microsoft.com/marketplace/)上和 [Azure 门户](https://portal.azure.com)中的使用方式。
+下面详细介绍了产品/服务市场营销信息在 [Azure Marketplace 网站](https://azure.microsoft.com/marketplace/)上和 [Azure 门户](https://portal.azure.com)中的使用方式。
 
-### <a name="azure-marketplace-website"></a>Azure 应用商店网站
+### <a name="azure-marketplace-website"></a>Azure Marketplace 网站
 ![绘制](media/marketplace-publishing-push-to-staging/acom-catalog-01.png)
 
 ![绘制](media/marketplace-publishing-push-to-staging/acom-catalog-02.png)
 
-*Azure 应用商店网站上的产品/服务列表*
+*Azure Marketplace 网站上的产品/服务列表*
 
 ![绘制](media/marketplace-publishing-push-to-staging/acom-listing-details-01.png)
 
-*Azure 应用商店网站上的产品/服务描述详细信息*
+*Azure Marketplace 网站上的产品/服务说明详细信息*
 
 ![绘制](media/marketplace-publishing-push-to-staging/acom-listing-details-02.png)
 
-*Azure 应用商店网站上的产品/服务描述定价详细信息*
+*Azure Marketplace 网站上的产品/服务说明定价详细信息*
 
 ### <a name="azure-portal"></a>Azure 门户
 ![绘制](media/marketplace-publishing-push-to-staging/azureportal-galleryblade-01.png)
@@ -271,13 +271,13 @@ ms.lasthandoff: 10/11/2017
 *Azure 门户中的产品/服务描述详细信息*
 
 ## <a name="next-steps"></a>后续步骤
-现在，应用商店内容已加载，让我们继续执行测试处于过渡环境中的产品/服务的操作。 但是，必须从下面的列表中选择相应的产品/服务类型，相关步骤因产品/服务类型而异。
+现在，Marketplace 内容已加载，让我们继续执行测试处于过渡环境中的产品/服务的操作。 但是，必须从下面的列表中选择相应的产品/服务类型，相关步骤因产品/服务类型而异。
 
 * [在过渡环境中测试 VM 产品/服务](marketplace-publishing-vm-image-test-in-staging.md)
 * [在过渡环境中测试解决方案模板产品/服务](marketplace-publishing-solution-template-test-in-staging.md)
 
 ## <a name="see-also"></a>另请参阅
-* [入门：如何将产品/服务发布到 Azure 应用商店](marketplace-publishing-getting-started.md)
+* [入门：如何将产品/服务发布到 Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-map-acom]:media/marketplace-publishing-push-to-staging/pubportal-mapping-acom.jpg
 [img-map-portal]:media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg

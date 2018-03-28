@@ -1,6 +1,6 @@
 ---
-title: "通过 .NET 开始使用 Azure 表存储 | Microsoft Docs"
-description: "使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。"
+title: 通过 .NET 开始使用 Azure 表存储 | Microsoft Docs
+description: 使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。
 services: cosmos-db
 documentationcenter: .net
 author: mimig1
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: 953ee3932ac1acad5cc41fba9bd5e168a94d7db7
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d31dd1c267bcc63106616b191b6b79d5800e31e9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>通过 .NET 开始使用 Azure 表存储
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -83,10 +83,10 @@ Azure 表存储是一项用于在云中存储结构化 NoSQL 数据的服务，�
 可以在任意类型的 .NET 应用程序（包括 Azure 云服务或 Web 应用，以及桌面和移动应用程序）中使用 Azure CosmosDB 表库。 为简单起见，我们在本指南中使用控制台应用程序。
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>使用 NuGet 安装所需包
-为完成此教程，需要在项目中引用三个包：
+若要完成此教程，需要在项目中引用三个建议使用的包：
 
-* [适用于 .NET 的 Azure 存储通用库（8.6.0 预览版）](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/8.6.0-preview)。 
-* [适用于 .NET 的 Microsoft Azure CosmosDB 表库](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。 使用此包能够以编程方式访问 Azure 表存储帐户或 Azure Cosmos DB 表 API 帐户中的数据资源。
+* [适用于 .NET 的 Azure 存储通用库（预览版）](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common)。 
+* [适用于 .NET 的 Microsoft Azure Cosmos DB 表库](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。 使用此包能够以编程方式访问 Azure 表存储帐户或 Azure Cosmos DB 表 API 帐户中的数据资源。
 * [适用于 .NET 的 Microsoft Azure Configuration Manager 库](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)：此包提供用于分析配置文件中连接字符串的类，而不考虑应用程序在何处运行。
 
 可以使用 NuGet 获取这两个包。 执行以下步骤:
@@ -100,6 +100,11 @@ Azure 表存储是一项用于在云中存储结构化 NoSQL 数据的服务，�
 > 适用于 .NET 的存储通用库中的 ODataLib 依赖项通过 NuGet（而不是 WCF 数据服务）上提供的 ODataLib 包来解析。 ODataLib 库可直接下载或者通过 NuGet 由代码项目引用。 存储空间客户端库使用的具体 ODataLib 包是 [OData](http://nuget.org/packages/Microsoft.Data.OData/)、[Edm](http://nuget.org/packages/Microsoft.Data.Edm/) 和 [Spatial](http://nuget.org/packages/System.Spatial/)。 尽管这些库由 Azure 表存储类使用，但是使用存储通用库编程时，它们是必需的依赖项。
 > 
 > 
+
+> [!TIP]
+> 已熟悉 Azure 表存储的开发人员过去可能使用了 [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) 包。 建议所有新的表应用程序使用 [Azure 存储通用库](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)和 [Azure Cosmos DB 表库](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)，但是 WindowsAzure.Storage 包仍受支持。 如果使用 WindowsAzure.Storage 库，请在 using 语句中包括 Microsoft.WindowsAzure.Storage.Table。
+>
+>
 
 ### <a name="determine-your-target-environment"></a>确定目标环境
 可从两个环境中选择用于运行本指南中示例的环境：

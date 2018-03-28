@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: billmath
-ms.openlocfilehash: 58ca992f9fcf9a03d917f0dc250a292c4d5f49e5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 67f6ca36c334a60b634094f07e5d9696a6961eb8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -134,7 +134,7 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 
 #### <a name="safari-mac-os"></a>Safari（Mac 操作系统）
 
-确保运行 Mac OS 的计算机已加入 Azure AD。 有关加入 Azure AD 的说明，请参阅[将 OS X 与 Active Directory 集成的最佳做法](http://training.apple.com/pdf/Best_Practices_for_Integrating_OS_X_with_Active_Directory.pdf)。
+确保运行 Mac OS 的计算机已加入 AD。 有关加入 AD 的说明，请参阅[将 OS X 与 Active Directory 集成的最佳做法](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf)。
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome（所有平台）
 

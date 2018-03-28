@@ -1,11 +1,11 @@
 ---
-title: "适用于 Linux 的 Azure N 系列驱动程序安装 | Microsoft Docs"
-description: "如何为 Azure 中运行 Linux 的 N 系列 VM 安装 NVIDIA GPU 驱动程序"
+title: 适用于 Linux 的 Azure N 系列驱动程序安装 | Microsoft Docs
+description: 如何为 Azure 中运行 Linux 的 N 系列 VM 安装 NVIDIA GPU 驱动程序
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
 ms.service: virtual-machines-linux
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/01/2018
+ms.date: 03/12/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 201734661873c7ac7f7a5dd710009eb324cedc86
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 7d353adcafed02832243277118da8480e54544ce
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 
@@ -106,12 +106,12 @@ sudo reboot
   
   sudo reboot
 
-2. Install the latest Linux Integration Services for Hyper-V.
+2. Install the latest [Linux Integration Services for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106).
 
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.4.tar.gz
+  wget https://aka.ms/lis
  
-  tar xvzf lis-rpms-4.2.4.tar.gz
+  tar xvzf lis
  
   cd LISISO
  
@@ -158,7 +158,7 @@ sudo reboot
 
 ## <a name="rdma-network-connectivity"></a>RDMA 网络连接
 
-可以在支持 RDMA 的 N 系列 VM（如同一可用性集中部署的 NC24r）上启用 RDMA 网络连接。 对于使用 Intel MPI 5.x 或更高版本运行的应用程序，RDMA 网络支持消息传递接口 (MPI) 流量。 其他要求如下：
+可以在同一可用性集或 VM 规模集中部署的支持 RDMA 的 N 系列 VM（如 NC24r）上启用 RDMA 网络连接。 对于使用 Intel MPI 5.x 或更高版本运行的应用程序，RDMA 网络支持消息传递接口 (MPI) 流量。 其他要求如下：
 
 ### <a name="distributions"></a>分发
 
@@ -255,12 +255,12 @@ sudo reboot
   blacklist lbm-nouveau
   ```
  
-3. 重新启动 VM、重新进行连接并安装适用于 Hyper-V 的最新 Linux 集成服务：
+3. 重新启动 VM、重新进行连接并安装最新[适用于 Hyper-V 和 Azure 的 Linux 集成服务](https://www.microsoft.com/download/details.aspx?id=55106)。
  
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.4.tar.gz
+  wget https://aka.ms/lis
 
-  tar xvzf lis-rpms-4.2.4.tar.gz
+  tar xvzf lis
 
   cd LISISO
 

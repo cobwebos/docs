@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/12/2018
 ms.author: billmath
-ms.openlocfilehash: ac085bf972885819f7c79996b0f6638fc01fc00d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3e533b8b23c095a3de845d9b26a96aea9d8ee086
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 直通身份验证：当前限制
 
@@ -29,24 +29,25 @@ ms.lasthandoff: 03/08/2018
 
 完全支持以下方案：
 
-- 用户登录到所有基于 Web 浏览器的应用程序
-- 用户登录到支持[新式身份验证](https://aka.ms/modernauthga)的 Office 应用程序：_带有_新式身份验证的 Office 2016 和 Office 2013
+- 用户登录到所有基于 Web 浏览器的应用程序。
+- 用户登录到支持[新式身份验证](https://aka.ms/modernauthga)的 Office 应用程序：_带有_新式身份验证的 Office 2016 和 Office 2013。
 - 用户使用旧版协议（例如 Exchange ActiveSync、SMTP、POP 和 IMAP）登录 Outlook 客户端。
 - 用户登录到支持新式身份验证的 Skype for Business，包括联机和混合拓扑。 在[此处](https://technet.microsoft.com/library/mt803262.aspx)详细了解受支持的拓扑。
-- 适用于 Windows 10 设备的 Azure AD 域加入
+- 适用于 Windows 10 设备的 Azure AD 域加入。
 - 进行多重身份验证的应用密码。
 
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
 _不_支持以下方案：
 
-- 用户登录到旧版 Office 客户端应用程序（不包括 Outlook）：不带新式身份验证的 Office 2010 和 Office 2013。 我们建议组织在可能的情况下改用新式身份验证。 新式身份验证允许直通身份验证支持。 此外，它还通过使用[条件访问](../active-directory-conditional-access-azure-portal.md)功能（如 Azure 多重身份验证）来帮助保护你的用户帐户的安全。
+- 用户登录到旧版 Office 客户端应用程序（不包括 Outlook，请参阅上面的**支持的方案**）：不带新式身份验证的 Office 2010 和 Office 2013。 我们建议组织在可能的情况下改用新式身份验证。 新式身份验证允许直通身份验证支持。 此外，它还通过使用[条件访问](../active-directory-conditional-access-azure-portal.md)功能（如 Azure 多重身份验证）来帮助保护你的用户帐户的安全。
+- 仅在 Office 2010 上可以访问 Exchange 混合环境中的日历共享功能和闲/忙信息。
 - 用户登录到_不带_新式身份验证的 Skype for Business 客户端应用程序。
 - 用户登录到 PowerShell 版本 1.0。 建议使用 PowerShell 版本 2.0。
 - 检测[凭据泄露](../active-directory-reporting-risk-events.md#leaked-credentials)的用户。
 - Azure AD 域服务需要在租户上启用密码哈希同步。 因此，_仅_使用传递身份验证的租户不适用于需要 Azure AD 域服务的方案。
 - 直通身份验证未与 [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md) 集成。
-- Apple 设备注册计划 (Apple DEP) 不支持新式身份验证。  Apple DEP 设备将无法使用直通身份验证注册到域的 Intune。
+- 使用 iOS 设置助手的 Apple 设备注册计划 (Apple DEP) 不支持新式身份验证。 此计划将无法使用传递身份验证将 Apple DEP 设备注册到托管域的 Intune。 请考虑使用[公司门户应用](https://blogs.technet.microsoft.com/intunesupport/2018/02/08/support-for-multi-token-dep-and-authentication-with-company-portal/)作为替代方法。
 
 >[!IMPORTANT]
 >_仅_作为不支持方案的变通方法，可在 Azure AD Connect 向导中的[可选功能](active-directory-aadconnect-get-started-custom.md#optional-features)页上启用“密码哈希同步”。

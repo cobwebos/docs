@@ -1,9 +1,9 @@
 ---
-title: "Azure 机器学习部署故障排除指南 | Microsoft Docs"
-description: "有关部署和服务创建的故障排除指南"
+title: Azure 机器学习部署故障排除指南 | Microsoft Docs
+description: 有关部署和服务创建的故障排除指南
 services: machine-learning
-author: raymondl
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: 4cf372f17c3ded5c25a6ebde70b17b2c095a7169
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7b8d2f4fb52c6d4faed8e813779e3b01d1817355
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>服务部署和环境设置的故障排除
 以下信息可帮助确定在设置模型管理环境时出错的原因。
@@ -87,7 +87,7 @@ Python 示例：
 ```
 
 ## <a name="other-common-problems"></a>其他常见问题
-- 如果无法在 Windows 计算机上执行 azure-cli-ml 的 pip 安装，并看到错误 `cannot find the path specified`，需要启用长路径支持。 请访问 https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/。 
+- 如果无法在 Windows 计算机上执行 azure-cli-ml 的 pip 安装，并看到错误 `cannot find the path specified`，需要启用长路径支持。 请参阅 https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/。 
 - 如果 `env setup` 命令失败，并出现 `LocationNotAvailableForResourceType`，可能是因为机器学习资源位置（区域）错误。 请确保使用 `-l` 参数指定的位置是 `eastus2`、`westcentralus` 或 `australiaeast`。
 - 如果 `env setup` 命令失败，并出现 `Resource quota limit exceeded`，请确保订阅中有足够的内核，且资源未在其他进程中耗尽。
 - 如果 `env setup` 命令失败，并出现 `Invalid environment name. Name must only contain lowercase alphanumeric characters`，请确保服务名称中不包含大写字母、符号或下划线 (_)（如 my_environment 所示）。

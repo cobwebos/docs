@@ -1,24 +1,18 @@
 ---
-title: "在 Amazon Web Services 中自动部署 VM | Microsoft Docs"
-description: "本文演示如何使用 Azure 自动化来自动创建 Amazon Web Service VM"
+title: 在 Amazon Web Services 中自动部署 VM
+description: 本文演示如何使用 Azure 自动化来自动创建 Amazon Web Service VM
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: 1d85c01a-d795-4523-8194-84fc15b53838
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/29/2017
-ms.author: tiandert; bwren
-ms.openlocfilehash: ba86789a9571c4b09a0224e6c41497f091968ef8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+manager: carmonm
+ms.openlocfilehash: 371510bf335bda2e2475e6ba3f5f74ee2117d9a5
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure 自动化方案 - 预配 AWS 虚拟机
 本文介绍如何利用 Azure 自动化在 Amazon Web Service (AWS) 订阅中预配虚拟机，并为该 VM 提供特定的名称（AWS 称为“标记”VM）。

@@ -1,24 +1,24 @@
 ---
-title: "将 Windows 计算机连接到 Azure Log Analytics | Microsoft 文档"
-description: "本文介绍如何使用 Microsoft Monitoring Agent (MMA) 将在其他云中或本地托管的 Windows 计算机连接到 Log Analytics。"
+title: 将 Windows 计算机连接到 Azure Log Analytics | Microsoft 文档
+description: 本文介绍如何使用 Microsoft Monitoring Agent (MMA) 将在其他云中或本地托管的 Windows 计算机连接到 Log Analytics。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/12/2018
 ms.author: magoedte
-ms.openlocfilehash: 3bb023cfd94c7b87550d692101d30f922de80bf9
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 778810001952daf9ac63a7f1f880b05234549965
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>将 Windows 计算机连接到 Azure 中的 Log Analytics 服务
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 02/24/2018
 完成后，**Microsoft Monitoring Agent** 将显示在“**控制面板**”中。 要确认其正在向 Log Analytics 报告，请参阅[验证代理与 Log Analytics 的连接](#verify-agent-connectivity-to-log-analytics)。 
 
 ## <a name="install-the-agent-using-the-command-line"></a>使用命令行安装代理
-下载的代理文件是使用 IExpress 创建的独立安装包。  代理和支持文件的安装程序包含在该包中，需要提取才能使用以下示例中所示的命令行正确安装。    
+下载的代理文件是自包含安装包。  代理和支持文件的安装程序包含在该包中，需要提取才能使用以下示例中所示的命令行正确安装。    
 
 >[!NOTE]
 >如果想要升级代理，需要使用 Log Analytics 脚本 API。 有关详细信息，请参阅[管理并维护 Windows 和 Linux 的 Log Analytics 代理](log-analytics-agent-manage.md)。
@@ -72,6 +72,7 @@ ms.lasthandoff: 02/24/2018
 
 |特定于 MMA 的选项                   |说明         |
 |---------------------------------------|--------------|
+| NOAPM=1                               | 可选参数。 安装不带 .NET 应用程序性能监视的代理。|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = 将代理配置为向工作区报告                |
 |OPINSIGHTS_WORKSPACE_ID                | 要添加的工作区的工作区 ID (GUID)                    |
 |OPINSIGHTS_WORKSPACE_KEY               | 工作区密钥，用于通过工作区进行初始身份验证 |
@@ -80,7 +81,7 @@ ms.lasthandoff: 02/24/2018
 |OPINSIGHTS_PROXY_USERNAME               | 要访问的经过身份验证的代理用户名 |
 |OPINSIGHTS_PROXY_PASSWORD               | 要访问的经过身份验证的代理密码 |
 
-1. 若要提取代理安装文件，请在提升的命令提示符处运行 `extract MMASetup-<platform>.exe`，这会提示要将文件提取到的路径。  或者，可以通过传递参数 `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` 来指定路径。  若要深入了解 IExpress 支持的命令行开关，请参阅 [IExpress 的命令行开关](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages)，然后根据需要更新示例。
+1. 若要提取代理安装文件，请在提升的命令提示符处运行 `MMASetup-<platform>.exe /c`，这会提示要将文件提取到的路径。  或者，可以通过传递参数 `MMASetup-<platform>.exe /c /t:<Path>` 来指定路径。  
 2. 要以无提示方式安装代理，并将其配置为向 Azure 商业版云中的工作区报告，请在提取安装文件的文件夹中键入： 
    
      ```dos
@@ -108,9 +109,9 @@ ms.lasthandoff: 02/24/2018
 
 32 位和 64 位版本的代理包具有不同的产品代码，新发布的版本也具有唯一的产品代码。  产品代码是一个 GUID，它是应用程序或产品的主体标志，由 Windows Installer 的“ProductCode”属性表示。  MMAgent.ps1 脚本中的 `ProductId value` 必须与 32 位或 64 位代理安装程序包的产品代码匹配。
 
-要直接从代理安装包检索产品代码，可使用[适用于 Windows Installer 开发者的 Windows SDK 组件](https://msdn.microsoft.com/library/windows/desktop/aa370834%27v=vs.85%28.aspx)中的 Orca.exe，该组件是 Windows 软件开发工具包的一个组件，或按照 Microsoft 最有价值专家 (MVP) 编写的[示例脚本](http://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)来使用 PowerShell。
+要直接从代理安装包检索产品代码，可使用[适用于 Windows Installer 开发者的 Windows SDK 组件](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx)中的 Orca.exe，该组件是 Windows 软件开发工具包的一个组件，或按照 Microsoft 最有价值专家 (MVP) 编写的[示例脚本](http://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)来使用 PowerShell。  对于上述任一种方法，都需要先从 MMASetup 安装包中提取 **MOMagent.msi** 文件。  在前面[使用命令行安装代理](#install-the-agent-using-the-command-line)部分下的第一个步骤中演示了此操作。  
 
-1. 将 [http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) 的 xPSDesiredStateConfiguration DSC 模块导入到 Azure 自动化。  
+1. 从 [http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) 将 xPSDesiredStateConfiguration DSC 模块导入到 Azure 自动化。  
 2.  为 *OPSINSIGHTS_WS_ID* 和 *OPSINSIGHTS_WS_KEY* 创建 Azure 自动化变量资产。 将 OPSINSIGHTS_WS_ID 设置为 Log Analytics 工作区 ID，将 OPSINSIGHTS_WS_KEY 设置为工作区的主键。
 3.  复制脚本，并将其另存为 MMAgent.ps1
 

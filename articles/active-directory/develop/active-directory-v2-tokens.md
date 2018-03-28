@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory v2.0 令牌引用 | Microsoft Docs"
-description: "Azure AD v2.0 终结点发出的令牌和声明类型"
+title: Azure Active Directory v2.0 令牌引用 | Microsoft Docs
+description: Azure AD v2.0 终结点发出的令牌和声明类型
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: dc58c282-9684-4b38-b151-f3e079f034fd
 ms.service: active-directory
 ms.workload: identity
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 01994e067bd7ce0343f12ec3334a91bd062251a8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4479b3d34824b88f0a666b6185a6bc89337358a9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory v2.0 令牌引用
 Azure Active Directory (Azure AD) v2.0 在每个[身份验证流](active-directory-v2-flows.md)中发出多种安全令牌。 此引用说明每种令牌的格式、安全特征和内容。
@@ -54,7 +54,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 >
 
 #### <a name="claims-in-id-tokens"></a>ID 令牌中的声明
-| Name | 声明 | 示例值 | 说明 |
+| 名称 | 声明 | 示例值 | 说明 |
 | --- | --- | --- | --- |
 | audience |`aud` |`6731de76-14a6-49ae-97bc-6eba6914391e` |标识令牌的目标接收方。 在 ID 令牌中，受众是在 Microsoft 应用程序注册门户中分配给应用的应用程序 ID。 应用应该验证此值并拒绝其值不匹配的令牌。 |
 | 颁发者 |`iss` |`https://login.microsoftonline.com/b9419818-09af-49c2-b0c3-653adc1f376e/v2.0 ` |标识构造并返回令牌的安全令牌服务 (STS)，以及对用户进行身份验证的 Azure AD 租户。 应用应该验证颁发者声明，以确保令牌来自 v2.0 终结点。 也可使用声明的 GUID 部分限制可登录应用的租户集。 表示用户是来自 Microsoft 帐户的使用者用户的 GUID 为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 |
@@ -66,8 +66,8 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | 代码哈希 |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |仅在 ID 令牌随 OAuth 2.0 授权代码一起颁发时，代码哈希才包含在 ID 令牌中。 它可用于验证授权代码的真实性。 有关执行此验证的详细信息，请参阅 [OpenID Connect 规范](http://openid.net/specs/openid-connect-core-1_0.html)。 |
 | 访问令牌哈希 |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |仅在 ID 令牌随 OAuth 2.0 访问令牌一起颁发时，访问令牌哈希才包含在 ID 令牌中。 它可用于验证访问令牌的真实性。 有关执行此验证的详细信息，请参阅 [OpenID Connect 规范](http://openid.net/specs/openid-connect-core-1_0.html)。 |
 | nonce |`nonce` |`12345` |Nonce 是缓和令牌重放攻击的策略。 应用可通过使用 `nonce` 查询参数，在授权请求中指定 nonce。 在请求中提供的值会在 ID 令牌的 `nonce` 声明中发出（未经修改）。 应用可根据在请求上指定的值验证此值，使应用会话与特定 ID 令牌相关联。 应用可在 ID 令牌验证过程中执行这项验证。 |
-| name |`name` |`Babe Ruth` |此名称声明提供了标识令牌使用者的用户可读值。 此值不一定唯一，它是可变的，旨在仅用于显示目的。 需要 `profile` 范围才能接收此声明。 |
-| email |`email` |`thegreatbambino@nyy.onmicrosoft.com` |与用户帐户关联的主要电子邮件地址（如果有）。 其值可变，并可能随时间而不断改变。 需要 `email` 范围才能接收此声明。 |
+| 名称 |`name` |`Babe Ruth` |此名称声明提供了标识令牌使用者的用户可读值。 此值不一定唯一，它是可变的，旨在仅用于显示目的。 需要 `profile` 范围才能接收此声明。 |
+| 电子邮件 |`email` |`thegreatbambino@nyy.onmicrosoft.com` |与用户帐户关联的主要电子邮件地址（如果有）。 其值可变，并可能随时间而不断改变。 需要 `email` 范围才能接收此声明。 |
 | 首选用户名 |`preferred_username` |`thegreatbambino@nyy.onmicrosoft.com` |表示 v2.0 终结点中用户的主用户名。 它可以是电子邮件地址、电话号码或未指定格式的一般用户名。 其值可变，并可能随时间而不断改变。 由于此值是可变的，因此它不能用于做出授权决定。 需要 `profile` 范围才能接收此声明。 |
 | subject |`sub` |`MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | 令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查（例如，使用令牌访问资源时），并可将它用作数据库表中的键。 由于使用者始终存在于 Azure AD 颁发的令牌中，因此建议在通用授权系统中使用此值。 但是，使用者是成对标识符 - 它对特定应用程序 ID 是唯一的。  因此，如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。  这不一定是所需的，具体取决于体系结构和隐私要求。 |
 | 对象 ID |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | 在 Microsoft 标识系统中，对象的不可变标识符在这种情况下是用户帐户。  还可以使用它安全地执行授权检查，并将它用作数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。  这意味着，对 Microsoft Online Services（如 Microsoft Graph）进行查询时可以使用它。  Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。  因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 |
@@ -86,7 +86,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 
 若要在令牌响应中接收刷新，应用必须请求并获得 `offline_acesss` 范围。 若要了解有关 `offline_access` 范围的详细信息，请参阅[许可和范围](active-directory-v2-scopes.md)一文。
 
-刷新令牌永远对应用程序完全不透明。 它们由 Azure AD v2.0 终结点颁发，并只能由 v2.0 终结点检查和解译。 它们属于长效令牌，但你不应将应用编写成预期刷新令牌将持续任何一段时间。 刷新令牌可能由于各种原因而随时失效。 让应用知道刷新令牌是否有效的唯一方式就是对 v2.0 终结点发出令牌请求以尝试兑换。
+刷新令牌永远对应用程序完全不透明。 它们由 Azure AD v2.0 终结点颁发，并只能由 v2.0 终结点检查和解译。 它们属于长效令牌，但你不应将应用编写成预期刷新令牌将持续任何一段时间。 刷新令牌可能由于各种原因而随时失效 - 有关详细信息，请参阅[令牌吊销](active-directory-token-and-claims.md#token-revocation)。 让应用知道刷新令牌是否有效的唯一方式就是对 v2.0 终结点发出令牌请求以尝试兑换。
 
 使用刷新令牌兑换新的访问令牌（而且应用已获得 `offline_access` 范围）时，会在令牌响应中收到新的刷新令牌。 保存新颁发的刷新令牌，以替换请求中使用的刷新令牌。 这可保证刷新令牌尽可能长期保持有效。
 

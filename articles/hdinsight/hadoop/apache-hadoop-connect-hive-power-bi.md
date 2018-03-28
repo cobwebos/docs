@@ -1,34 +1,41 @@
 ---
-title: "在 Azure HDInsight 中使用 Power BI 直观显示大数据 | Microsoft Docs"
-description: "了解如何使用 Microsoft Power BI 直观显示 Azure HDInsight 已处理的 Hive 数据。"
-keywords: "hdinsight,hadoop,hive,交互式查询,交互式 hive,LLAP,odbc"
+title: 在 Azure HDInsight 中使用 Power BI 直观显示大数据 | Microsoft Docs
+description: 了解如何使用 Microsoft Power BI 直观显示 Azure HDInsight 已处理的 Hive 数据。
+keywords: hdinsight,hadoop,hive,交互式查询,交互式 hive,LLAP,odbc
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 03/14/2018
 ms.author: jgao
-ms.openlocfilehash: 8b4347fde274d0d7520ef3acbd081fdb83d7dc7d
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: e543fba4c382501024bd33bed3853e7806d081ae
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="visualize-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Microsoft Power BI 使用 ODBC 直观显示 Hive 数据
 
-了解如何使用 ODBC 将 Microsoft Power BI 连接到 Azure HDInsight 并直观显示 Hive 数据。 在本教程中，从 hivesampletable Hive 表将数据加载到 Power BI 中。 Hive 表包含一些移动电话使用情况数据。 然后在世界地图上绘制使用情况数据：
+了解如何使用 ODBC 将 Microsoft Power BI 连接到 Azure HDInsight 并直观显示 Hive 数据。 
+
+>[!IMPORTANT]
+> 可以利用 Hive ODBC 驱动程序，通过 Power BI Desktop 中的通用 ODBC 连接器执行导入操作。 但是，鉴于 Hive 查询引擎的非交互性质，不建议对 BI 工作负荷执行此操作。 出于性能考量，[HDInsight 交互式查询连接器](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)和 [HDInsight Spark 连接器](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect)是更好的选择。
+
+在本教程中，从 hivesampletable Hive 表将数据加载到 Power BI 中。 Hive 表包含一些移动电话使用情况数据。 然后在世界地图上绘制使用情况数据：
 
 ![HDInsight Power BI 地图报表](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
 
 这些信息也适用于新的[交互式查询](../interactive-query/apache-interactive-query-get-started.md)群集类型。 有关如何使用直接查询连接到 HDInsight 交互式查询的信息，请参阅[在 Azure HDInsight 中通过 Microsoft Power BI 使用直接查询可视化交互式查询 Hive 数据](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
+
+
 
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具备以下项：

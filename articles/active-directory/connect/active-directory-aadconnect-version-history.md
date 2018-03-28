@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect：版本发布历史记录 | Microsoft 文档"
-description: "本文列出 Azure AD Connect 和 Azure AD Sync 的所有版本"
+title: Azure AD Connect：版本发布历史记录 | Microsoft 文档
+description: 本文列出 Azure AD Connect 和 Azure AD Sync 的所有版本
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 81d08d3d3d08e9cc96b39cbdf2d639e939fdf3d4
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 0c6a0c43eb7d0187120c3264f1f439af66d73978
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -36,8 +36,19 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 下载| [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)。
 
+## <a name="117500"></a>1.1.750.0
+状态：已分发给选定客户。此版本当前已分发给启用了自动升级的一小部分随机 AADConnect 租户。 在未来几周内我们将扩大这组租户，直到 100% 的自动升级客户收到此版本。 在此之后，我们会在上面的下载链接中发布此版本供一般下载。
+>[!NOTE]
+>完成到此新版本的升级以后，将会自动触发针对 Azure AD 连接器的完全同步和完全导入，以及针对 AD 连接器的完全同步。 由于这可能需要一些时间（具体取决于 Azure AD Connect 环境的大小），因此请确保已采取必要的支持措施，否则需推迟升级，直至找到合适的升级时间。
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+#### <a name="fixed-issues"></a>修复的问题
+
+* 如果自动升级状态设置为“已暂停”，则 Set-ADSyncAutoUpgrade cmdlet 以前会阻止自动升级。 现在已对此进行更改，使其不会阻止未来版本的自动升级。
+
 ## <a name="117490"></a>1.1.749.0
-状态：已分发给选定客户。此版本当前已分发给启用了自动升级的一小部分随机 AADConnect 租户。 在未来几周内我们将扩大这组租户，直到 100% 的自动升级客户收到此版本。 在此之后，我们会在上面的下载链接中发布此版本供一般下载 - 当前已计划于 2018 年 3 月中旬提供。
+状态：已分发给选定客户
+
 >[!NOTE]
 >完成到此新版本的升级以后，将会自动触发针对 Azure AD 连接器的完全同步和完全导入，以及针对 AD 连接器的完全同步。 由于这可能需要一定的时间（具体取决于 Azure AD Connect 环境的大小），因此请确保已采取必要的支持措施，否则需推迟升级，直至找到合适的升级时间。
 
@@ -45,15 +56,15 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 #### <a name="fixed-issues"></a>修复的问题
 * 修复了在切换到下一页时，“分区筛选”页的后台任务的计时窗口问题。
 
-* 修复了在 ConfigDB 自定义操作过程中导致访问冲突的 Bug
+* 修复了在 ConfigDB 自定义操作过程中导致访问冲突的 Bug。
 
 * 修复了 Bug，因此可以从 SQL 连接超时恢复。
 
-* 修复了带 SAN 通配符的证书无法通过先决条件检查的 Bug
+* 修复了带 SAN 通配符的证书无法通过先决条件检查的 Bug。
 
 * 修复了在 Azure AD 连接器导出过程中导致 miiserver.exe 崩溃的 Bug。
 
-* 修复了在运行 Azure AD Connect 向导来更改配置后，可以通过不断地尝试密码登录 DC 的 Bug。
+* 修复了在运行 Azure AD Connect 向导来更改配置时，可以通过不断地尝试密码登录 DC 的 Bug。
 
 
 #### <a name="new-features-and-improvements"></a>新增功能和改进
@@ -788,7 +799,7 @@ AD FS 管理
 * 适用于快速设置客户的[自动升级](active-directory-aadconnect-feature-automatic-upgrade.md)功能。
 * 使用安装向导中的 Azure 多重身份验证和 Privileged Identity Management 来提供全局管理员支持。
   * 如果使用多重身份验证，则代理也需要允许发往 https://secure.aadcdn.microsoftonline-p.com 的流量。
-  * 需将 https://secure.aadcdn.microsoftonline-p.com 添加到受信任的站点列表，这样多重身份验证才能正常工作。
+  * 需要将 https://secure.aadcdn.microsoftonline-p.com 添加到受信任的站点列表，这样多重身份验证才能正常工作。
 * 允许在初始安装之后更改用户的登录方法。
 * 允许在安装向导中使用[域和 OU 筛选](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)。 这也允许连接到并非所有域都可供使用的林。
 * [计划程序](active-directory-aadconnectsync-feature-scheduler.md)是同步引擎的内置功能。

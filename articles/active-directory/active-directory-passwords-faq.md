@@ -1,13 +1,13 @@
 ---
-title: "自助密码重置常见问题解答 - Azure Active Directory"
-description: "有关 Azure AD 自助密码重置的常见问题解答"
+title: 自助密码重置常见问题解答 - Azure Active Directory
+description: 有关 Azure AD 自助密码重置的常见问题解答
 services: active-directory
-keywords: "Active Directory 密码管理, 密码管理, Azure AD 自助密码重置"
-documentationcenter: 
+keywords: Active Directory 密码管理, 密码管理, Azure AD 自助密码重置
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: 686cc2a94af729e6f872c334a6e5fda947d43725
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f5236b81c70caee4417777ffadcababebaa84620
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/22/2018
 
 * **问：用户是否可以注册其自己的密码重置数据？**
 
-  > **答：**可以。 只要已经启用密码重置功能并且用户已获得许可，用户就可以访问密码重置注册门户 (https://aka.ms/ssprsetup) 来注册其身份验证信息。 用户也可通过访问面板来注册 (http://myapps.microsoft.com)。 若要通过访问面板来注册，需选择个人资料图片，然后选择“个人资料”，再选择“注册密码重置”选项。
+  > **答：**可以。 只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户(https://aka.ms/ssprsetup) 来注册其身份验证信息。 用户也可通过访问面板 (http://myapps.microsoft.com) 来注册。 若要通过访问面板来注册，需选择个人资料图片，然后选择“个人资料”，再选择“注册密码重置”选项。
   >
   >
 * **问：如果为某个组启用密码重置，然后决定为每个人启用它，我的用户是否需要重新注册？**
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/22/2018
   >
 * **问：密码写回适用于哪些帐户类型？**
 
-  > **答：**密码写回适用于联合用户和密码哈希同步用户。
+  > **答：**密码写回适用于从本地 Active Directory 同步到 Azure AD 的用户帐户，包括联合用户、密码哈希同步用户和传递身份验证用户。
   >
   >
 * **问：密码写回是否会强制实施我的域密码策略？**

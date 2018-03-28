@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: lakasa
-ms.openlocfilehash: b40858640d10e5661be420976520774bd50837cb
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1360d8bb0911c424747209c69b830fc1ee461798
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault 中使用客户托管密钥的存储服务加密
 
@@ -81,6 +81,7 @@ $resource.Properties
 
     ![显示加密功能中用于输入密钥 URI 的选项的门户屏幕截图](./media/storage-service-encryption-customer-managed-keys/ssecmk2.png)
 
+
 #### <a name="specify-a-key-from-a-key-vault"></a>从 Key Vault 指定密钥 
 
 若要从 Key Vault 指定密钥，请执行以下步骤：
@@ -96,6 +97,17 @@ $resource.Properties
 ![显示拒绝访问 Key Vault 的门户屏幕截图](./media/storage-service-encryption-customer-managed-keys/ssecmk4.png)
 
 此外，还可以通过 Azure 门户授予访问权限，方法是在 Azure 门户中导航到“Azure Key Vault”，然后向存储帐户授予访问权限。
+
+
+可以使用以下 PowerShell 命令将上述密钥与现有存储帐户相关联：
+```powershell
+$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"
+$keyVault = Get-AzureRmKeyVault -VaultName "mykeyvault"
+$key = Get-AzureKeyVaultKey -VaultName $keyVault.VaultName -Name "keytoencrypt"
+Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVault.VaultName -ObjectId $storageAccount.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+Set-AzureRmStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName -AccountName $storageAccount.StorageAccountName -EnableEncryptionService "Blob" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+```
+
 
 ### <a name="step-5-copy-data-to-storage-account"></a>步骤 5：将数据复制到存储帐户
 

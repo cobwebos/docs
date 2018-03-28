@@ -1,109 +1,119 @@
 ---
-title: "方案 - 使用 Azure Serverless 创建客户见解仪表板 | Microsoft Docs"
-description: "以示例方式说明如何生成仪表板，以便使用 Azure 逻辑应用和 Azure Functions 管理客户反馈、社交数据等。"
-keywords: 
+title: 无服务器场景 - 使用 Azure 创建客户见解仪表板 | Microsoft Docs
+description: 了解如何使用 Azure 逻辑应用和 Azure Functions 构建客户仪表板，以便管理客户反馈、社交数据等
+keywords: ''
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: SyntaxC4
+editor: ''
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: integration
+ms.workload: logic-apps
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
-ms.author: jehollan
-ms.openlocfilehash: d3e07b8d7194d83e3ba3986177170edff21e1d7a
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.date: 03/15/2018
+ms.author: jehollan; LADocs
+ms.openlocfilehash: 0a31a71305a4729575c5266b3a6138004d2dbdc6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="create-a-real-time-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建实时客户见解仪表板
+# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板
 
-Azure Serverless 工具功能强大，可以在云中快速生成和托管应用程序，不需考虑基础结构问题。  在本方案中，我们将创建一个仪表板，以便针对客户反馈触发相关操作、通过机器学习分析反馈，以及通过 Power BI 或 Azure Data Lake 之类的源发布见解。
+Azure 提供无服务器工具，可帮助在云中快速构建和托管应用程序，而无需考虑基础结构问题。 在本教程中，我们将创建一个仪表板，以便针对客户反馈触发相关操作、通过机器学习分析反馈，以及通过 Power BI 或 Azure Data Lake 之类的源发布见解。
 
-## <a name="overview-of-the-scenario-and-tools-used"></a>所用方案和工具概述
+对于此解决方案，我们将使用无服务器应用的以下关键 Azure 组件：[Azure Functions](https://azure.microsoft.com/services/functions/) 和 [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)。
+Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨无服务器组件提供业务流程，以及连接到 200 多个服务和 API。 Azure Functions 在云中提供无服务器计算。 此解决方案使用 Azure Functions 根据预定义的关键字来标记客户推文。
 
-为了实现此解决方案，我们将利用 Azure 中无服务器应用的两大组件：[Azure Functions](https://azure.microsoft.com/services/functions/) 和 [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)。
+在此场景中，我们将会创建一个逻辑应用，在查找客户的反馈时，将会触发此应用。 部分有助于对客户反馈做出响应的连接器包括：Outlook.com、Office 365、Survey Monkey、Twitter，以及[来自 Web 窗体的 HTTP 请求](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/)。 创建的工作流将会监视 Twitter 上的井号标签。
 
-逻辑应用是云中的无服务器工作流引擎。  它可以跨无服务器组件提供业务流程，还可以连接到 100 多个服务和 API。  就本方案来说，我们将创建一个逻辑应用，以便在客户提供反馈时触发相应操作。  部分有助于对客户反馈进行响应的连接器包括：Outlook.com、Office 365、Survey Monkey、Twitter，以及[来自 Web 窗体](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/)的 HTTP 请求。  对于以下工作流，我们将监视 Twitter 上的井号标签。
+可以[在 Visual Studio 中生成整个解决方案](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)，并[使用 Azure 资源管理器模板部署该解决方案](../logic-apps/logic-apps-create-deploy-template.md)。 有关演示如何创建此解决方案的视频演练，请[观看此第 9 频道视频](http://aka.ms/logicappsdemo)。 
 
-Functions 在云中提供无服务器计算。  在此方案中，我们将使用 Azure Functions 根据一系列预定义的关键字来标记客户的推文。
+## <a name="trigger-on-customer-data"></a>基于客户数据的触发器
 
-整个解决方案可以[在 Visual Studio 中生成](logic-apps-deploy-from-vs.md)，并[作为资源模板的一部分部署](logic-apps-create-deploy-template.md)。  [第 9 频道](http://aka.ms/logicappsdemo)也有此方案的视频演练。
+1. 在 Azure 门户或 Visual Studio 中创建一个空白的逻辑应用。 
 
-## <a name="build-the-logic-app-to-trigger-on-customer-data"></a>生成可以针对客户数据进行触发操作的逻辑应用
+   如果你不熟悉逻辑应用，请查看 [Azure 门户快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)或 [Visual Studio 快速入门](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
 
-在 Visual Studio 或 Azure 门户中[创建逻辑应用](quickstart-create-first-logic-app-workflow.md)后，请执行以下操作：
+2. 在逻辑应用设计器中，找到并添加可执行以下操作的 Twitter 触发器：“发布新推文时”
 
-1. 针对 Twitter 的“出现新推文时”添加一个触发器
-2. 将触发器配置为侦听推文的关键字或井号标签。
+3. 将此触发器设置为根据关键字或井号标签侦听推文。
 
-   > [!NOTE]
-   > 触发器的“重复周期”属性将决定逻辑应用以多高的频率检查基于轮询的触发器上出现的新项
+   在基于轮询的触发器（例如 Twitter 触发器）中，重复周期属性决定了逻辑应用以多高的频率检查新项。
 
    ![Twitter 触发器示例][1]
 
-现在，只要出现新推文，此应用就会触发。  然后，我们就可以根据该推文数据，对所表达的观点进行更深入的了解。  为此，我们使用 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)来检测文本观点。
+现在，会针对所有新推文激发此逻辑应用。 然后可以提取并分析推文数据，以便更好地了解所表达的情绪。 
 
-1. 单击“新步骤”
-1. 选择或搜索“文本分析”连接器
-1. 选择“检测观点”操作
-1. 如果系统提示，请为文本分析服务提供有效的认知服务密钥
-1. 添加“推文文本”作为要分析的文本。
+## <a name="analyze-tweet-text"></a>分析推文文本
 
-有了推文数据以及对推文的见解以后，即可使用许多其他的相关连接器：
-* Power BI - 向流式处理数据集添加行：在 Power BI 仪表板上实时查看推文。
-* Azure Data Lake - 追加文件：将客户数据添加到要包括在分析作业中的 Azure Data Lake 数据集。
-* SQL - 添加行：将数据存储在数据库中，方便以后检索。
-* Slack - 发送消息：提醒 Slack 通道存在负面反馈，需要采取措施。
+若要检测某些文本背后的情绪，可以使用 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)。
 
-也可使用 Azure 函数根据数据进行更多自定义计算。
+1. 在逻辑应用设计器中的触发器下，选择“新步骤”。
 
-## <a name="enriching-the-data-with-an-azure-function"></a>使用 Azure 函数来丰富数据的内涵
+2. 找到“文本分析”连接器。
 
-创建函数之前，需在 Azure 订阅中设置函数应用。  若要详细了解如何在门户中创建 Azure 函数，可单击[此处](../azure-functions/functions-create-first-azure-function-azure-portal.md)
+3. 选择“检测情感”操作。
 
-若要直接从逻辑应用调用函数，需为其设置 HTTP 触发器绑定。  建议使用 **HttpTrigger** 模板。
+4. 如果系统提示，请为文本分析服务提供有效的认知服务密钥。
 
-在此方案中，Azure 函数的请求正文将是推文文本。  在函数代码中，直接定义用于确定推文文本是否包含某个关键字或短语的逻辑。  可以根据方案需要来决定函数本身的简单或复杂程度。
+5. 在“请求正文”下选择“推文文本”字段，提供推文作为要分析的文本。
 
-在函数末尾，直接通过某些数据为逻辑应用返回响应。  该响应可以是简单的布尔值（例如 `containsKeyword`），也可以是复杂的对象。
+获取推文数据以及有关推文的见解后，可以使用其他许多相关的连接器及其操作：
+
+* **Power BI - 向流式处理数据集添加行**：在 Power BI 仪表板上查看传入的推文。
+* **Azure Data Lake - 追加文件**：将客户数据添加到要包括在分析作业中的 Azure Data Lake 数据集。
+* **SQL - 添加行**：将数据存储在数据库中，方便以后检索。
+* **Slack - 发送消息**：告知 Slack 通道存在负面反馈，可能需要采取措施。
+
+还可以创建 Azure 函数，以便针对数据执行自定义处理。 
+
+## <a name="process-data-with-azure-functions"></a>使用 Azure Functions 处理数据
+
+在创建函数之前，请在 Azure 订阅中创建一个函数应用。 此外，要让逻辑应用直接调用某个函数，该函数必须具有 HTTP 触发器绑定，例如，使用 **HttpTrigger** 模板。 了解[如何在 Azure 门户中创建第一个函数应用和函数](../azure-functions/functions-create-first-azure-function-azure-portal.md)。
+
+对于此场景，请使用推文文本作为 Azure 函数的请求正文。 在函数代码中，定义用于确定推文文本是否包含某个关键字或短语的逻辑。 可以根据场景的需要来决定函数的简单或复杂程度。
+在函数末尾，使用一些数据为逻辑应用返回响应，例如，该响应可以是简单的布尔值（如 `containsKeyword`）或复杂的对象。
+
+> [!TIP]
+> 若要从逻辑应用中的函数访问复杂响应，请使用“分析 JSON”操作。
+
+完成后，请保存函数，然后将其作为操作添加到构建的逻辑应用中。
+
+## <a name="add-azure-function-to-logic-app"></a>将 Azure 函数添加到逻辑应用
+
+1. 在逻辑应用设计器中的“检测情绪”操作下，选择“新步骤”。
+
+2. 找到“Azure Functions”连接器，选择创建的函数。
+
+3. 在“请求正文”下，选择“推文文本”。
 
 ![配置的 Azure 函数步骤][2]
 
-> [!TIP]
-> 从逻辑应用中的函数访问复杂响应时，请使用“分析 JSON”操作。
+## <a name="run-and-monitor-your-logic-app"></a>运行和监视逻辑应用
 
-保存该函数之后，即可将其添加到在上面创建的逻辑应用中。  在逻辑应用中，请执行以下操作：
+若要查看逻辑应用的所有当前或以往运行，可以通过 Azure 门户、Visual Studio、Azure REST API 和 SDK 使用 Azure 逻辑应用提供的丰富调试和监视功能。
 
-1. 以单击方式添加“新步骤”
-1. 选择 **Azure Functions** 连接器
-1. 选择从现有函数中进行选择，并浏览到所创建的函数。
-1. 为“请求正文”递送“推文文本”
+若要轻松测试逻辑应用，请在逻辑应用设计器中选择“运行触发器”。 触发器将会根据指定的计划轮询推文，直到找到满足条件的推文。 当运行正在进行时，设计器会显示该运行的实时视图。
 
-## <a name="running-and-monitoring-the-solution"></a>运行和监视解决方案
+在 Visual Studio 或 Azure 门户中查看以往运行的历史记录： 
 
-在逻辑应用中创作无服务器业务流程时，一大优势是调试和监视功能很丰富。  可以通过 Visual Studio、Azure 门户或 REST API 和 SDK 查看任何运行（当前的或历史上的）。
+* 打开 Visual Studio Cloud Explorer。 找到自己的逻辑应用，打开该应用的快捷菜单。 选择“打开运行历史记录”。
 
-若要测试逻辑应用，一种最简单的方式是使用设计器中的“运行”按钮。  单击“运行”将每隔 5 秒持续对触发器进行轮询，直到检测到事件，并在运行继续的情况下提供实时视图。
+* 在 Azure 门户中，找到自己的逻辑应用。 在逻辑应用的菜单中，选择“概述”。 
 
-可以在 Azure 门户的“概览”边栏选项卡上查看以前的运行历史记录，也可以使用 Visual Studio Cloud Explorer 来进行相同的操作。
+## <a name="create-automated-deployment-templates"></a>创建自动部署模板
 
-## <a name="creating-a-deployment-template-for-automated-deployments"></a>创建自动部署的部署模板
+创建逻辑应用解决方案后，可以捕获该应用，并将其作为 [Azure 资源管理器模板](../azure-resource-manager/resource-group-overview.md#template-deployment)部署到世界上的任意 Azure 区域。 可以使用此功能来修改参数，以便创建不同的应用版本，以及将解决方案集成到生成和发布管道中。 还可以在部署模板中包含 Azure Functions，以便将整个解决方案和所有依赖项作为单个模板进行管理。 了解[如何创建逻辑应用部署模板](../logic-apps/logic-apps-create-deploy-template.md)。
 
-开发出解决方案以后，即可将其捕获并通过 Azure 部署模板部署到世界上的任何 Azure 区域。  这既可用于针对此工作流的不同版本修改参数，也可用于将此解决方案集成到生成和发布管道中。  有关如何创建部署模板的详细信息，可参阅[此文](logic-apps-create-deploy-template.md)。
-
-也可将 Azure Functions 整合到部署模板中，将整个解决方案和所有依赖项作为单个模板进行管理。  [Azure 快速入门模板存储库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)中提供了函数部署模板的示例。
+[Azure 快速入门模板存储库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)中提供了包含 Azure 函数的部署模板示例。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [查看 Azure 逻辑应用的其他示例和方案](logic-apps-examples-and-scenarios.md)
-* [观看有关如何创建此端到端解决方案的视频演练](http://aka.ms/logicappsdemo)
-* [了解如何在逻辑应用中处理和捕获异常](logic-apps-exception-handling.md)
+* [查找 Azure 逻辑应用的其他示例和方案](logic-apps-examples-and-scenarios.md)
 
 <!-- Image References -->
 [1]: ./media/logic-apps-scenario-social-serverless/twitter.png

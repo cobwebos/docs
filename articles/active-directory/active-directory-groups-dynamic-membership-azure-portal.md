@@ -1,26 +1,26 @@
 ---
-title: "Azure Active Directory 中基于属性的动态组成员身份 | Microsoft Docs"
-description: "如何为动态组成员身份创建高级规则，包括支持的表达式规则运算符和参数。"
+title: Azure Active Directory 中基于属性的动态组成员身份 | Microsoft Docs
+description: 如何为动态组成员身份创建高级规则，包括支持的表达式规则运算符和参数。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: fb434cc2-9a91-4ebf-9753-dd81e289787e
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 3ece2326a19e32666f46e8b737d15a48e335de6a
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8a52d80f32f822691be862d566c17c84efc73c26
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
 在 Azure Active Directory (Azure AD) 中，可以创建高级规则以启用基于属性的复杂动态组成员身份。 本文详细介绍了用于为用户或设备创建动态成员身份规则的属性和语法。
@@ -35,6 +35,8 @@ ms.lasthandoff: 03/13/2018
 > 可以创建设备或用户的动态组，但不能创建同时包含用户和设备对象的规则。
 > 
 > 目前不能基于所有者用户的属性创建设备组。 设备成员身份规则只能引用目录中设备对象的直接属性。
+> 
+> Microsoft 团队尚不支持动态组成员身份。 可以在与“无法迁移动态成员身份组”关联的日志中验证该错误
 
 ## <a name="to-create-an-advanced-rule"></a>创建高级规则
 1. 使用全局管理员或用户帐户管理员的帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。

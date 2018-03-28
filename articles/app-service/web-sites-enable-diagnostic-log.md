@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 应用服务中启用 Web 应用的诊断日志记录"
-description: "了解如何启用诊断日志记录并将检测添加到应用程序，以及如何访问由 Azure 记录的信息。"
+title: 在 Azure 应用服务中启用 Web 应用的诊断日志记录
+description: 了解如何启用诊断日志记录并将检测添加到应用程序，以及如何访问由 Azure 记录的信息。
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: a5ac6c02e28c19346abae9e5ea3dba9af4022dde
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: e82bbff908ea5499765edc71e52caa573c816a62
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>在 Azure 应用服务中启用 Web 应用的诊断日志记录
 ## <a name="overview"></a>概述
@@ -97,7 +97,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 * **失败请求跟踪** - /LogFiles/W3SVC#########/。 此文件夹包含一个 XSL 文件和一个或多个 XML 文件。 请确保将 XSL 文件下载到 XML 文件所在的目录，因为 XSL 文件可提供格式化和筛选这些文件的内容的功能（在 Internet Explorer 中查看 XML 文件时）。
 * **详细错误日志** - /LogFiles/DetailedErrors/。 此文件夹包含一个或多个 .htm 文件，这些文件可提供大量有关所有已出现 HTTP 错误的信息。
 * **Web 服务器日志** - /LogFiles/http/RawLogs。 此文件夹包含使用 [W3C 扩展日志文件格式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)进行格式化的一个或多个文本文件。
-* **部署日志** - /LogFiles/Git。 此文件夹包含由 Azure Web 应用使用的内部部署过程生成的日志和 Git 部署的日志。
+* **部署日志** - /LogFiles/Git。 此文件夹包含由 Azure Web 应用使用的内部部署过程生成的日志和 Git 部署的日志。 此外，还可在 D:\home\site\deployments 下找到部署日志。
 
 ### <a name="ftp"></a>FTP
 

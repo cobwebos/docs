@@ -1,8 +1,8 @@
 ---
-title: "用于了解车辆运行状况和行驶习惯的 Power BI 仪表板 - Azure | Microsoft Docs"
-description: "通过 Cortana Intelligence 的功能获得对车辆运行状况和驾驶习惯的实时和预测性深入了解。"
+title: 用于了解车辆运行状况和行驶习惯的 Power BI 仪表板 - Azure | Microsoft Docs
+description: 通过 Cortana Intelligence 的功能获得对车辆运行状况和驾驶习惯的实时和预测性深入了解。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 03/14/2018
 ms.author: bradsev
-ms.openlocfilehash: 626987ec0648f9e770499b4a48bc4ca2d175d2b4
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 6a46a05539a7211fbc2a3a9f6ec45a28f5c64039
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>车辆遥测分析解决方案模板 Power BI 仪表板设置说明
 此菜单链接至此操作手册的此章节。 
 
 [!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
-车辆遥测分析解决方案展示汽车经销商、汽车制造商和保险公司如何使用 Cortana Intelligence 的功能。 他们可以获得对车辆运行状况和驾驶习惯的实时和预测性见解，改善客户体验、提高研发水平以及促进营销活动。 这些分布说明介绍了在订阅中部署解决方案后，如何配置 Power BI 报表和仪表板。 
+车辆遥测分析解决方案展示汽车经销商、汽车制造商和保险公司如何使用 Cortana Intelligence 的功能。 他们可以获得对车辆运行状况和驾驶习惯的实时和预测性见解，以改善客户体验、提高研发水平以及促进营销活动。 这些分布说明介绍了在订阅中部署解决方案后，如何配置 Power BI 报表和仪表板。 
 
 ## <a name="prerequisites"></a>先决条件
 * 部署[车辆遥测分析](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90)解决方案。 
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/01/2017
 * **Azure HDInsight**：大规模转换数据。
 * **Azure 数据工厂**：处理批处理管道的业务流程、计划、资源管理和监视。
 
-**Power BI** 为该解决方案提供了丰富的仪表板，用于实时数据和预测分析可视化。 
+**Power BI** 为该解决方案提供了丰富的仪表板，用于数据和预测分析可视化。 
 
 该解决方案使用两个不同的数据源：
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 12/01/2017
 * 需要维护的车辆
 * 车辆运行状况统计信息
 
-可以配置所有实时报表，也可以在任意阶段结束后停止。 然后可以继续进行下一节（如何配置批处理报表）。 我们建议创建所有报表，以可视化解决方案实时路径的完整见解。  
+可以配置所有三种报表，也可以在任意阶段结束后停止。 然后可以继续进行下一节（如何配置批处理报表）。 我们建议创建所有报表，以可视化解决方案实时路径的完整见解。  
 
 ### <a name="vehicles-in-operation-report"></a>“运行中的车辆”报表
 1. 双击“第 1 页”，将其重命名为“运行中的车辆”。
@@ -160,7 +160,7 @@ ms.lasthandoff: 12/01/2017
 
     ![带可视化的仪表板](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4k.png)
 
-已成功配置“运行中的车辆”实时报表。 可以创建下一个实时报表，也可以在此处停止并配置仪表板。 
+已成功配置“运行中的车辆”报表。 可以创建下一个实时报表，也可以在此处停止并配置仪表板。 
 
 ### <a name="vehicles-requiring-maintenance-report"></a>“需要维护的车辆”报表
 
@@ -198,7 +198,7 @@ ms.lasthandoff: 12/01/2017
 
 6. 在“字段”选项卡上，将“模型”拖到“轴”区域。 将“vin”拖到“值”区域。 然后按照“vin 的计数”对可视化排序。 将图表“标题”更改为“按模型划分的需要维护的车辆”。 
 
-7. 在“可视化”选项卡的“![字段](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png)”部分，将“vin”拖到“颜色饱和度”。
+7. 在“可视化”选项卡的“字段” ![Fields-image](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) 部分中，将“vin”拖到“颜色饱和度”。
 
     ![颜色饱和度](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4q.png)  
 
@@ -298,7 +298,7 @@ ms.lasthandoff: 12/01/2017
 
     ![聚合类型](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ff.png)
 
-22. 将图表“标题”更改为“按模型划分的引擎机油、胎压、速度和维修率的平均值”。
+22. 将图表“标题”更改为“按模型计算的引擎机油、胎压、速度和维修率的平均值”。
 
     ![分区图标题](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4gg.png)
 
@@ -333,7 +333,7 @@ ms.lasthandoff: 12/01/2017
 
 ## <a name="set-up-the-power-bi-batch-processing-dashboard"></a>设置 Power BI 批处理仪表板
 > [!NOTE]
-> 对于端对端批处理管道而言，要完成执行并处理一年内生成的数据需要大约两个小时（从成功完成部署算起）。 请等待处理完成，并继续后续步骤。 
+> 对于端对端批处理管道而言，要完成执行并处理一年内生成的数据需要大约两个小时（从成功完成部署算起）。 请等待处理完成，然后继续执行后续步骤：
 > 
 > 
 
@@ -355,7 +355,7 @@ ms.lasthandoff: 12/01/2017
 
 3. 双击“源”。
 
-    ![源](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/11-set-powerbi-source.png)
+    ![Source](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/11-set-powerbi-source.png)
 
 4. 使用作为部署的一部分提供的 Azure SQL Server 来更新服务器连接字符串。 查看 Azure SQL 数据库中的手动操作说明：
 

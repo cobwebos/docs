@@ -1,25 +1,21 @@
 ---
-title: "我在 Azure 自动化中的第一个 PowerShell 工作流 Runbook | Microsoft Docs"
-description: "本教程指导使用 PowerShell 工作流创建、测试和发布一个简单的文本 Runbook。"
+title: 我在 Azure 自动化中的第一个 PowerShell 工作流 Runbook
+description: 本教程指导使用 PowerShell 工作流创建、测试和发布一个简单的文本 Runbook。
+keywords: powershell 工作流, powershell 工作流示例, 工作流 powershell
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: 
-keywords: "powershell 工作流, powershell 工作流示例, 工作流 powershell"
-ms.assetid: 0002d7f7-e2b5-46e3-b5eb-4596b84fd526
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 08/31/2017
-ms.author: magoedte;bwren
-ms.openlocfilehash: 62cb96075deed6c252ae44c8a000e820cb691a90
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: 61191e78ebd2f0d7a960dfb0c74a1d8260331212
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>我的第一个 PowerShell 工作流 Runbook
 

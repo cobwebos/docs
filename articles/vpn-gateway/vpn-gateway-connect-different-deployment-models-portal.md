@@ -1,6 +1,6 @@
 ---
 title: 将经典虚拟网络连接到 Azure 资源管理器 VNet：门户 | Microsoft Docs
-description: 使用 VPN 网关和门户在经典 VNet 和资源管理器 VNet 之间创建 VPN 连接
+description: 使用 VPN 网关和门户将经典 VNet 连接到资源管理器 VNet 的步骤
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/13/2018
+ms.date: 03/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: 90a3c51fa9acbcd9701d4c2b135688ef5148bbf8
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ad6b33b5411d3e38f099726df01fcafc8dc90d38
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>通过门户从不同部署模型中连接虚拟网络
 
@@ -157,9 +157,9 @@ SKU = VpnGw1 <br>
 
 创建虚拟网络网关前，先要创建网关子网。 创建 CIDR 计数为 /28 或更大（/27、/26 等）的网关子网。 如果正在练习创建此配置，可以使用示例值。
 
-[!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
-
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
+
+[!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ### <a name="creategw"></a>3.创建虚拟网络网关
 

@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions 概述 - Azure（预览版）"
-description: "Azure Functions 的 Durable Functions 扩展简介。"
+title: Durable Functions 概述 - Azure（预览版）
+description: Azure Functions 的 Durable Functions 扩展简介。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: f1def2a43edee58bc8b5a33880e206130a1b4687
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: b5269bb51c787c927b4224b3520d5514b6d24501
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="durable-functions-overview-preview"></a>Durable Functions 概述（预览版）
 
@@ -153,44 +153,43 @@ public static async Task<HttpResponseMessage> Run(
 
 [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` 参数是 `orchestrationClient` 输出绑定中的值，该绑定是 Durable Functions 扩展的一部分。 它提供用于启用、终止和查询新的或现有业务流程协调程序函数实例以及向这些实例发送事件的方法。 在上面的示例中，由 HTTP 触发的函数采用传入的 URL 中的 `functionName` 值，并将该值传递给 [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)。 然后，此绑定 API 返回包含 `Location` 标头和有关实例的其他信息的响应，这些信息稍后可用于查找已启动实例的状态或终止实例。
 
-## <a name="pattern-4-stateful-singletons"></a>模式 4：有状态单一实例
+## <a name="pattern-4-monitoring"></a>模式 #4：监视
 
-大多数函数都具有一个显式开头和结尾，且不与外部事件源直接进行交互。 但是，业务流程支持[有状态单一实例](durable-functions-singletons.md)模式，以便像分布式计算中的可靠[参与者](https://en.wikipedia.org/wiki/Actor_model)一样行事。
+监视模式是指工作流中灵活的重复过程 - 例如，反复轮询，直到满足特定的条件为止。 常规计时器触发器可以解决简单方案（如定期清理作业），但其时间间隔是静态的，管理实例生存期会变得复杂。 Durable Functions 可实现灵活的重复间隔、任务生存期管理，并可以从单个业务流程创建多个监视器进程。
 
-下图演示的函数在无限循环中运行，同时处理来自外部源的事件。
+下面的示例会完全改变前面的异步 HTTP API 方案。 不是公开终结点供外部客户端监视长时间运行的操作，而是让长时间运行的监视器使用外部终结点，等待某个状态更改。
 
-![有状态单一实例图](media/durable-functions-overview/stateful-singleton.png)
+![监视器关系图](media/durable-functions-overview/monitor.png)
 
-尽管 Durable Functions 不是参与者模式的实现，但业务流程协调程序函数确实具有一些相同的运行时特征。 例如，它们均具有以下特征：长时间运行（可能无休止地运行）、有状态、可靠、单线程、位置透明以及可全局寻址。 这使业务流程协调程序函数对类似“参与者”的方案非常有用。
-
-普通函数是无状态的，因此不适合实现有状态单一实例模式。 但是，Durable Functions 扩展使实现有状态单一实例模式变得相对简单。 以下代码是实现计数器的简单业务流程协调程序函数。
+使用 Durable Functions，可以通过几行代码创建观察任意终结点的多个监视器。 当某个条件满足时，监视器可以结束执行或由 [DurableOrchestrationClient](durable-functions-instance-management.md) 终止，可以基于某个条件更改其等待间隔（即指数回退）。下面的代码实现了基本的监视器。
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
 {
-    int counterState = ctx.GetInput<int>();
-
-    string operation = await ctx.WaitForExternalEvent<string>("operation");
-    if (operation == "incr")
+    int jobId = ctx.GetInput<int>();
+    int pollingInterval = GetPollingInterval();
+    DateTime expiryTime = GetExpiryTime();
+    
+    while (ctx.CurrentUtcDateTime < expiryTime) 
     {
-        counterState++;
-    }
-    else if (operation == "decr")
-    {
-        counterState--;
+        var jobStatus = await ctx.CallActivityAsync<string>("GetJobStatus", jobId);
+        if (jobStatus == "Completed")
+        {
+            // Perform action when condition met
+            await ctx.CallActivityAsync("SendAlert", machineId);
+            break;
+        }
+
+        // Orchestration will sleep until this time
+        var nextCheck = ctx.CurrentUtcDateTime.AddSeconds(pollingInterval);
+        await ctx.CreateTimer(nextCheck, CancellationToken.None);
     }
 
-    ctx.ContinueAsNew(counterState);
+    // Perform further work here, or let the orchestration end
 }
 ```
 
-此代码可能被描述为“永久业务流程”&mdash; 即开始后永不结束的流程。 它可执行以下步骤：
-
-* 首先在 `counterState` 中输入一个值。
-* 无限期等待名为 `operation` 的消息。
-* 执行特定逻辑，更新其本地状态。
-* 通过调用 `ctx.ContinueAsNew`“重启”自身。
-* 再次无限期等待下一操作。
+收到请求时，会为该作业 ID 创建新的业务流程实例。 该实例会一直轮询状态，直到满足条件退出循环。 持久计时器用于控制轮询间隔。 然后可以执行进一步的工作，也可以结束业务流程。 当 `ctx.CurrentUtcDateTime` 超过 `expiryTime` 时，监视结束。
 
 ## <a name="pattern-5-human-interaction"></a>模式 5：人机交互
 
@@ -229,7 +228,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 
 ## <a name="the-technology"></a>技术
 
-在后台，Durable Functions 扩展在 [Durable Task Framework](https://github.com/Azure/durabletask) 的基础上生成，后者是 GitHub 上用于生成持久任务业务流程的开放源库。 与 Azure Functions 是 Azure WebJobs 的无服务器演进非常相似，Durable Functions 也是 Durable Task Framework 的无服务器演进。 Durable Task Framework 大量用于 Microsoft 内外，以及自动处理任务关键型过程。 它天生就很适合无服务器 Azure Functions 环境。
+在后台，Durable Functions 扩展在 [Durable Task Framework](https://github.com/Azure/durabletask) 的基础上生成，后者是 GitHub 上用于生成持久任务业务流程的开源库。 与 Azure Functions 是 Azure WebJobs 的无服务器演进非常相似，Durable Functions 也是 Durable Task Framework 的无服务器演进。 Durable Task Framework 大量用于 Microsoft 内外，以及自动处理任务关键型过程。 它天生就很适合无服务器 Azure Functions 环境。
 
 ### <a name="event-sourcing-checkpointing-and-replay"></a>事件溯源、检查点和重播
 

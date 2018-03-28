@@ -1,10 +1,10 @@
 ---
-title: "教程：Azure Active Directory 与 Clear Review 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Clear Review 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Clear Review 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Clear Review 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 8264159a-11a2-4a8c-8285-4efea0adac8c
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 03/12/2018
 ms.author: jeedes
-ms.openlocfilehash: e999e375d11f5d2a4657b360cf774ae10c28b0e0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1e7bd01c9c0f79a2cf96d7fd38dba57c4a407960
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>教程：Azure Active Directory 与 Clear Review 的集成
 
@@ -36,11 +36,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Clear Review 的集成，需要以下项目：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Clear Review 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 12/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Clear Review
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-clear-review-from-the-gallery"></a>从库添加 Clear Review
 若要配置 Clear Review 与 Azure AD 的集成，需要将库中的 Clear Review 添加到托管的 SaaS 应用列表。
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中，键入“Clear Review”，在结果面板中选择“Clear Review”，然后单击“添加”按钮添加该应用程序。
 
@@ -108,9 +108,9 @@ ms.lasthandoff: 12/11/2017
 
     ![Clear Review 域和 URL 单一登录信息](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<customer name>.clearreview.com/sso/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<customer name>.clearreview.com/sso/metadata/`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<customer>.clearreview.com/sso/acs/`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<customer name>.clearreview.com/sso/acs/`
 
 4. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
@@ -119,31 +119,36 @@ ms.lasthandoff: 12/11/2017
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<customer name>.clearreview.com`
 
     > [!NOTE] 
-    > 这些不是实际值。 使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [Clear Review 支持团队](https://clearreview.com/contact/)。
+    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 若要获取这些值，请联系 [Clear Review 支持团队](https://clearreview.com/contact/)。
 
-5. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
+5. Clear Review 应用程序预期名称标识符声明中的用户标识符是唯一的。 应将用户标识符值映射到 **user.mail**。
+
+    ![“属性”部分](./media/active-directory-saas-clearreview-tutorial/attribute.png)
+
+
+6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
     ![证书下载链接](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_certificate.png)
 
-6. 单击“保存”按钮。
+7. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-clearreview-tutorial/tutorial_general_400.png)
 
-7. 在“Clear Review 配置”部分中，单击“配置 Clear Review”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+8. 在“Clear Review 配置”部分中，单击“配置 Clear Review”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
 
     ![Clear Review 配置](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_configure.png) 
 
-8. 若要在 **Clear Review** 端配置单一登录，请使用管理员凭据打开 **Clear Review** 门户。
+9. 若要在 **Clear Review** 端配置单一登录，请使用管理员凭据打开 **Clear Review** 门户。
 
-9. 从左侧导航窗格中选择“管理”。
+10. 从左侧导航窗格中选择“管理”。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-10. 在页面底部选择“更改”。
+11. 在页面底部选择“更改”。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
-11. 在“单一登录设置”页上，执行以下步骤：
+12. 在“单一登录设置”页上，执行以下步骤：
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
@@ -153,9 +158,9 @@ ms.lasthandoff: 12/11/2017
 
     c. 在“SLO 终结点”文本框中，粘贴从 Azure 门户复制的“登录服务 URL”值。 
 
-    d.单击“下一步”。 在记事本中打开下载的证书，将其内容粘贴到“X.509 证书”文本框中。   
+    d. 在记事本中打开下载的证书，将其内容粘贴到“X.509 证书”文本框中。   
 
-12. 单击“保存” 。
+13. 单击“ **保存**”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -184,13 +189,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-clearreview-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d. 单击“创建”。
   
 ### <a name="create-a-clear-review-test-user"></a>创建 Clear Review 测试用户
 
@@ -236,7 +241,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 
@@ -253,4 +258,3 @@ ms.lasthandoff: 12/11/2017
 [201]: ./media/active-directory-saas-clearreview-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-clearreview-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-clearreview-tutorial/tutorial_general_203.png
-

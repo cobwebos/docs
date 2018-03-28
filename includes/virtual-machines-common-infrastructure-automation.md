@@ -14,7 +14,7 @@
 
 
 ## <a name="ansible"></a>Ansible
-[Ansible](https://www.ansible.com/) 是适用于配置管理、VM 创建或应用程序部署的自动化引擎。 Ansible 通常将无代理的模型与 SSH 密钥配合使用，对目标计算机进行身份验证和管理。 配置任务在 Runbook 中定义，可以使用多个 Ansible 模块来执行特定任务。 有关详细信息，请参阅 [How Ansible works](https://www.ansible.com/how-ansible-works)（Ansible 工作原理）。
+[Ansible](https://www.ansible.com/) 是适用于配置管理、VM 创建或应用程序部署的自动化引擎。 Ansible 通常将无代理的模型与 SSH 密钥配合使用，对目标计算机进行身份验证和管理。 配置任务在 playbook 中定义，可以使用多个 Ansible 模块来执行特定任务。 有关详细信息，请参阅 [How Ansible works](https://www.ansible.com/how-ansible-works)（Ansible 工作原理）。
 
 了解如何：
 
@@ -103,14 +103,14 @@ DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 
 
 
 ## <a name="azure-automation"></a>Azure 自动化
-[Azure 自动化](https://azure.microsoft.com/services/automation/)使用 Runbook 在目标 VM 上处理一组任务。 Azure 自动化用于管理现有 VM，而不是创建基础结构。 Azure 自动化可以跨 Linux 和 Windows VM 运行，还可以通过混合 Runbook 辅助角色在本地虚拟机或物理机上运行。 可以将 Runbook 存储在源代码管理存储库（例如 GitHub）中。 然后即可手动运行或按定义的计划运行这些 Runbook。
+[Azure 自动化](https://azure.microsoft.com/services/automation/)使用 Runbook 在目标 VM 上处理一组任务。 Azure 自动化用于管理现有 VM，而不是创建基础结构。 Azure 自动化可以跨 Linux 和 Windows VM 运行，还可以通过混合 Runbook 辅助角色在本地虚拟机或物理计算机上运行。 可以将 Runbook 存储在源代码管理存储库（例如 GitHub）中。 然后即可手动运行或按定义的计划运行这些 Runbook。
 
 Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对给定的一组 VM 的配置方式创建定义。 然后，DSC 就可以确保所需配置得到应用且 VM 保持一致。 Azure 自动化 DSC 可以在 Windows 和 Linux 计算机上运行。
 
 了解如何：
 
 - [创建 PowerShell Runbook](../articles/automation/automation-first-runbook-textual-powershell.md)。
-- [使用混合 Runbook 辅助角色来管理本地资源](../articles/automation/automation-hybrid-runbook-worker.md)。
+- [使用混合 Runbook 辅助角色管理本地资源](../articles/automation/automation-hybrid-runbook-worker.md)。
 - [使用 Azure 自动化 DSC](../articles/automation/automation-dsc-getting-started.md)。
 
 

@@ -1,26 +1,26 @@
 ---
-title: "在 Azure 上创建 Jenkins 服务器"
-description: "通过 Jenkins 解决方案模板在 Azure Linux 虚拟机上安装 Jenkins，然后生成示例 Java 应用程序。"
-author: mlearned
-manager: douge
+title: 在 Azure 上创建 Jenkins 服务器
+description: 通过 Jenkins 解决方案模板在 Azure Linux 虚拟机上安装 Jenkins，然后生成示例 Java 应用程序。
+author: tomarcher
+manager: rloutlaw
 ms.service: multiple
 ms.workload: web
-ms.devlang: java
+ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
-ms.author: mlearned
+ms.date: 03/12/2018
+ms.author: tarcher
 ms.custom: Jenkins
-ms.openlocfilehash: 422d133841a380b1ef02e95245207c464089138d
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: c9f86ab2536d3c598bb8c7084524395b41f18db0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>通过 Azure 门户在 Azure Linux VM 上创建 Jenkins 服务器
 
 本快速入门介绍如何使用经过配置的适用于 Azure 的工具和插件在 Ubuntu Linux VM 上安装 [Jenkins](https://jenkins.io)。 完成后，你会有一个在 Azure 中运行的 Jenkins 服务器，并可生成 [GitHub](https://github.com) 中的示例 Java 应用。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅
 * 可以在计算机的命令行（例如 Bash shell 或 [PuTTY](http://www.putty.org/)）上访问 SSH
@@ -28,32 +28,13 @@ ms.lasthandoff: 01/10/2018
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-jenkins-vm-from-the-solution-template"></a>从解决方案模板创建 Jenkins VM
+Jenkins 支持这样一个模型：其中的 Jenkins 服务器将工作委托给一个或多个代理，使单个 Jenkins 安装即可托管大量的项目，或者为生成或测试活动提供不同的环境。 本部分中的步骤将引导你在 Azure 上安装和配置 Jenkins 服务器。
 
-在 Web 浏览器中打开 [Jenkins 的 Marketplace 映像](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)，然后从页面左侧选择“立即获取”。 查看定价详细信息并选择“继续”，然后选择“创建”，在 Azure 门户中配置 Jenkins 服务器。 
-   
-![Azure 门户对话框](./media/install-jenkins-solution-template/ap-create.png)
-
-在“配置基本设置”选项卡中，填充以下字段：
-
-![配置基本设置](./media/install-jenkins-solution-template/ap-basic.png)
-
-* 使用“Jenkins”作为“名称”。
-* 输入“用户名”。 用户名称必须满足[特定要求](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)。
-* 选择“密码”作为“身份验证类型”，然后输入密码。 密码必须包含一个大写字符、一个数字和一个特殊字符。
-* 使用“myJenkinsResourceGroup”作为“资源组”。
-* 从“位置”下拉列表中选择“美国东部”[Azure 区域](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-
-选择“确定”，转到“配置更多选项”选项卡。输入用于标识 Jenkins 服务器的唯一域名，然后选择“确定”。
-
-![设置其他选项](./media/install-jenkins-solution-template/ap-addtional.png)  
-
- 通过验证以后，再次从“摘要”选项卡选择“确定”。最后选择“购买”，创建 Jenkins VM。 服务器就绪以后，Azure 门户中会出现一个通知：   
-
-![Jenkins 就绪通知](./media/install-jenkins-solution-template/jenkins-deploy-notification-ready.png)
+[!INCLUDE [jenkins-install-from-azure-marketplace-image](../../includes/jenkins-install-from-azure-marketplace-image.md)]
 
 ## <a name="connect-to-jenkins"></a>连接到 Jenkins
 
-在 Web 浏览器中导航到虚拟机（例如 http://jenkins2517454.eastus.cloudapp.azure.com/）。 Jenkins 控制台无法通过不安全的 HTTP 进行访问，因此在页面上提供了说明，介绍如何在计算机中使用 SSH 隧道安全地访问 Jenkins 控制台。
+导航到虚拟机（例如，Web 浏览器中的 http://jenkins2517454.eastus.cloudapp.azure.com/)。 Jenkins 控制台无法通过不安全的 HTTP 进行访问，因此在页面上提供了说明，介绍如何在计算机中使用 SSH 隧道安全地访问 Jenkins 控制台。
 
 ![解锁 Jenkins](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 
