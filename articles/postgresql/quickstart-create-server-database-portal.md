@@ -1,6 +1,6 @@
 ---
-title: "快速入门 - 使用 Azure 门户创建 Azure Database for PostgreSQL 服务器"
-description: "有关使用 Azure 门户用户界面创建和管理用于 PostgreSQL 的 Azure 数据库服务器的快速入门指南。"
+title: 快速入门 - 使用 Azure 门户创建 Azure Database for PostgreSQL 服务器
+description: 有关使用 Azure 门户用户界面创建和管理用于 PostgreSQL 的 Azure 数据库服务器的快速入门指南。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 83bdc6eba35f0deaaf541f2042854764ae513fb9
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: c1acb568598184974b65d666075032e74aa49eb3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL 服务器
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 02/28/2018
     密码 |你的密码| 服务器管理员帐户的新密码。 该密码必须包含 8 到 128 个字符。 该密码必须含以下字符类别中的三类：英文大写字母、英文小写字母、数字（0 到 9）及非字母数字字符（!、$、#、% 等）。
     Location|离用户最近的区域| 最靠近用户的位置。
     版本|最新版本| 除非另有特定的要求，否则为最新 PostgreSQL 版本。
-    定价层 | **常规用途**、**第 4 代**、**2 个 vCore**、**5 GB**、**7 天**、**异地冗余** | 新服务器的计算、存储和备份配置。 选择“定价层”。 接下来，选择“常规用途”选项卡。*第 4 代*、*2 个 vCore*、*5 GB*和 *7 天*分别是**计算的代**、**vCore**、**存储**和**备份保留期**的默认值。 可以按原样保留这些滑块。 若要在异地冗余存储中启用服务器备份，请从**备份冗余选项**中选择“异地冗余”。 若要保存此定价层选择，请选择“确定”。 下一个屏幕截图捕获了这些选择。
+    定价层 | **常规用途**、**第 4 代**、**2 个 vCore**、**5 GB**、**7 天**、**异地冗余** | 新服务器的计算、存储和备份配置。 选择“定价层”。 接下来，选择“常规用途”选项卡。*第 4 代*、*2 个 vCore*、*5 GB*和 *7 天*分别是**计算的代**、**vCore**、**存储**和**备份保留期**的默认值。 可以将这些滑块保留原样。 若要在异地冗余存储中启用服务器备份，请从**备份冗余选项**中选择“异地冗余”。 若要保存此定价层选择，请选择“确定”。 下一个屏幕截图捕获了这些选择。
 
     > [!IMPORTANT]
     > 在此处指定的服务器管理员登录名和密码是以后在本快速入门中登录到服务器及其数据库所必需的。 请牢记或记录此信息，以后会使用到它。
@@ -178,7 +178,7 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](http:
 
 1. 在客户端计算机上打开 pgAdmin 应用程序。
 
-2. 从工具栏转到**对象**，将鼠标指针悬停在“创建”上，然后选择“服务器”。
+2. 从工具栏转到“对象”，将鼠标指针悬停在“创建”上，然后选择“服务器”。
 
 3. 在“创建 - 服务器”对话框中的“常规”选项卡上，为服务器输入唯一的友好名称，例如 **mydemoserver**。
 

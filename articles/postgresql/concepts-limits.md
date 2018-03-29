@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL 中的限制"
-description: "本文介绍了 Azure Database for PostgreSQL 中的限制，例如连接数和存储引擎选项。"
+title: Azure Database for PostgreSQL 中的限制
+description: 本文介绍了 Azure Database for PostgreSQL 中的限制，例如连接数和存储引擎选项。
 services: postgresql
 author: kamathsun
 ms.author: sukamat
@@ -8,15 +8,15 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: ba05308039e9743dd207333476e61a45c0ca166a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: 7e06cdba7c9c9f7e5c1d621e7421a18c342c0fdb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的限制
-Azure Database for PostgreSQL 服务目前为公共预览版。 下列各部分介绍数据库服务中的容量和功能限制。
+下列各部分介绍数据库服务中的容量和功能限制。
 
 ## <a name="pricing-tier-maximums"></a>定价层最大值
 创建服务器时，Azure Database for PostgreSQL 中提供了多个可供选择的定价层。 有关详细信息，请参阅 [Azure Database for PostgreSQL 中的定价层](concepts-pricing-tiers.md)。  
@@ -43,7 +43,6 @@ Azure Database for PostgreSQL 服务目前为公共预览版。 下列各部分�
 |内存优化| 第 5 代| 4| 250|
 |内存优化| 第 5 代| 8| 480|
 |内存优化| 第 5 代| 16| 950|
-|内存优化| 第 5 代| 32| 1900|
 
 当连接数超出限制时，可能会收到以下错误：
 > 严重：很抱歉，客户端数过多

@@ -1,11 +1,10 @@
 ---
-title: "通过跳过不兼容行向 Azure 数据工厂复制活动添加容错 | Microsoft Docs"
-description: "了解如何在复制时通过跳过不兼容行向 Azure 数据工厂添加容错"
+title: 通过跳过不兼容行向 Azure 数据工厂复制活动添加容错 | Microsoft Docs
+description: 了解如何在复制时通过跳过不兼容行向 Azure 数据工厂添加容错
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6e7923e2e0a23f22f7dff8c316050a1757310456
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 29c78eb850b418772126dea50b40e924b6e71423
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>通过跳过不兼容行向复制活动添加容错
 > [!NOTE]
@@ -66,7 +65,7 @@ ms.lasthandoff: 01/08/2018
 }
 ```
 
-| 属性 | 说明 | 允许的值 | 必需 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | **enableSkipIncompatibleRow** | 允许或不允许在复制期间跳过不兼容行。 | True<br/>False（默认值） | 否 |
 | **redirectIncompatibleRowSettings** | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否 |

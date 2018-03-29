@@ -1,21 +1,21 @@
 ---
-title: "使用 Azure 数据工厂向 Azure Data Lake Store 加载数据 | Microsoft Docs"
-description: "使用 Azure 数据工厂将数据复制到 Azure Data Lake Store"
+title: 使用 Azure 数据工厂向 Azure Data Lake Store 加载数据 | Microsoft Docs
+description: 使用 Azure 数据工厂将数据复制到 Azure Data Lake Store
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 4446f83563293d0834f241dcca382ccf6ea99403
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: bf0d607d63a68a222a1d44d9cb05253497d12591
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="load-data-into-azure-data-lake-store-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure Data Lake Store 加载数据
 
@@ -58,7 +58,7 @@ Azure 数据工厂在将数据加载到 Azure Data Lake Store 方面提供以下
     * **版本**：选择“V2 (预览版)”。
     * **位置**：选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Store、Azure 存储、Azure SQL 数据库，等等。
 
-3. 选择“创建”。
+3. 选择**创建**。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示： 
    
    ![数据工厂主页](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)

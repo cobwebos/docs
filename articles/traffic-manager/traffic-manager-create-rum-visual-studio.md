@@ -1,31 +1,28 @@
 ---
-title: "使用 Visual Studio Mobile Center 将实际用户度量发送到 Azure 流量管理器 | Microsoft Docs"
-description: "设置使用 Visual Studio Mobile Center 开发的移动应用程序，将实际用户度量发送到流量管理器"
+title: 使用 Visual Studio Mobile Center 将实际用户度量发送到 Azure 流量管理器 | Microsoft Docs
+description: 设置使用 Visual Studio Mobile Center 开发的移动应用程序，将实际用户度量发送到流量管理器
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
 manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 09/29/2017
+ms.date: 03/16/2018
 ms.author: kumud
-ms.custom: 
-ms.openlocfilehash: 756496e5291d932ee9ac89265291e6892c4304fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 893e84b07b365fb0b534e0ddc021b2249c4174cf
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>如何使用 Visual Studio Mobile Center 将实际用户度量发送到流量管理器
-
->[!NOTE]
->流量管理器中的“实际用户度量”功能以公共预览版形式提供，并且其可用性和可靠性与正式发布版本中的功能可能不在同一级别。 此功能不受支持，可能存在功能限制，并且可能不是在所有 Azure 区域都可用。 有关此功能可用性和状态方面的最新通知，请参阅 [Azure 流量管理器更新](https://azure.microsoft.com/updates/?product=traffic-manager)页。
 
 可以设置使用 Visual Studio Mobile Center 开发的移动应用程序，使用以下步骤将实际用户度量发送到流量管理器：
 

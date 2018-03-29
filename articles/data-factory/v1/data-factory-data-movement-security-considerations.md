@@ -1,11 +1,10 @@
 ---
-title: "Azure 数据工厂中数据移动的安全注意事项 | Microsoft Docs"
-description: "了解如何为 Azure 数据工厂中的数据移动提供保护。"
+title: Azure 数据工厂中数据移动的安全注意事项 | Microsoft Docs
+description: 了解如何为 Azure 数据工厂中的数据移动提供保护。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: f483109170ed1dda7506f7ef5f02fb8b42ea331e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c2b6c494a9c4d0dac37315520b8d7b962f3490b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 01/23/2018
 - 混合方案 - 在这种方案中，源或目标位于防火墙之后或本地公司网络中，数据存储位于专用网络/虚拟网络（通常是源）中，且不可公开访问。 虚拟机上托管的数据库服务器也属于这种情况。
 
 ## <a name="cloud-scenarios"></a>云方案
-###<a name="securing-data-store-credentials"></a>保护数据存储凭据
+### <a name="securing-data-store-credentials"></a>保护数据存储凭据
 Azure 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密，从而为这些凭据提供保护。 这些证书每两年轮换一次（包括证书的续订和凭据的迁移）。 这些加密凭据安全地存储在由 Azure 数据工厂管理服务管理的 Azure 存储中。 有关 Azure 存储安全的详细信息，请参阅 [Azure 存储安全概述](../../security/security-storage-overview.md)。
 
 ### <a name="data-encryption-in-transit"></a>传输中的数据加密

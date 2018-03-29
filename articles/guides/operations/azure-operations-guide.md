@@ -1,25 +1,25 @@
 ---
-title: "Azure IT 操作人员入门指南 | Microsoft Docs"
-description: "Azure IT 操作人员入门指南"
-services: 
-documentationcenter: 
+title: Azure IT 操作人员入门指南 | Microsoft Docs
+description: Azure IT 操作人员入门指南
+services: ''
+documentationcenter: ''
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
-ms.devlang: 
-ms.topic: 
-ms.tgt_pltfrm: 
+ms.devlang: ''
+ms.topic: ''
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 8d7cbe27e5acfe741aeb5ed85756bf3c7ce2160b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0be60fff3d49ff39691f19cb1013e023f9f984e6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>云计算和 Microsoft Azure 简介
 
@@ -148,7 +148,7 @@ Azure 是一个全球性云平台，在世界各地的许多区域都可以使�
 ### <a name="azure-portal"></a>Azure 门户
 
 
-Azure 门户是一个基于 Web 的应用程序，可用于创建、管理和删除 Azure 资源及服务。 Azure 门户的网址是 https://portal.azure.com。它包括一个可自定义的仪表板和用于管理 Azure 资源的工具。 还提供计费和订阅信息。 有关详细信息，请参阅 [Microsoft Azure 门户概述](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)和[通过门户管理 Azure 资源](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)。
+Azure 门户是一个基于 Web 的应用程序，可用于创建、管理和删除 Azure 资源及服务。 Azure 门户位于 https://portal.azure.com。它包括一个可自定义的仪表板和用于管理 Azure 资源的工具。 还提供计费和订阅信息。 有关详细信息，请参阅 [Microsoft Azure 门户概述](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)和[通过门户管理 Azure 资源](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)。
 
 ### <a name="resources"></a>资源
 
@@ -485,7 +485,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 由于 Azure 虚拟网络连接到本地网络，因此跨界虚拟网络必须使用组织所用地址空间的一部分，并且该部分必须是唯一的。 与不同公司位置获得一个特定 IP 子网相同，Azure 会随着网络的扩展成为另一个位置。
 
-###<a name="deploying-a-virtual-network"></a>部署虚拟网络
+### <a name="deploying-a-virtual-network"></a>部署虚拟网络
 
 可通过多种选项部署虚拟网络。
 

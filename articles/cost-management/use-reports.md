@@ -10,15 +10,15 @@ ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: 8078591b1e2ad120190a23dd29800bd0f1ae33ea
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: fa263a4b6f41e2b31328f46b8d1341d0d74c9a85
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-cost-management-reports"></a>使用成本管理报表
 
-本文介绍如何在 Cloudyn 门户中使用各种成本管理报表。 大多数 Cloudyn 报表都较为直观，具有统一的外观和风格。 有关 Cloudyn 报表的概述，请参阅[了解成本报表](understading-cost-reports.md)。 本文还介绍了大多数报表中使用的各种选项和字段。
+本文介绍如何在 Cloudyn 门户中使用各种成本管理报表。 大多数 Cloudyn 报表都较为直观，具有统一的外观和风格。 有关 Cloudyn 报表的概述，请参阅[了解成本报表](understanding-cost-reports.md)。 本文还介绍了大多数报表中使用的各种选项和字段。
 
 ## <a name="cost-analysis-reports"></a>成本分析报表
 

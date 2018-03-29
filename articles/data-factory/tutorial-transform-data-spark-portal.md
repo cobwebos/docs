@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 数据工厂中使用 Spark 转换数据 | Microsoft Docs"
-description: "本教程提供有关在 Azure 数据工厂中使用 Spark 活动转换数据的分步说明。"
+title: 在 Azure 数据工厂中使用 Spark 转换数据 | Microsoft Docs
+description: 本教程提供有关在 Azure 数据工厂中使用 Spark 活动转换数据的分步说明。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: shengc
-ms.openlocfilehash: 1a6e58b775270fd23331748edae64e73d6e7f9da
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: af8045a6681443cfc9cfa681cedce5d290aac0f1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
 本教程使用 Azure 门户创建 Azure 数据工厂管道。 该管道使用 Spark 活动和按需 Azure HDInsight 链接服务转换数据。 
@@ -103,7 +103,7 @@ ms.lasthandoff: 02/09/2018
 
    目前，数据工厂 V2 仅允许在“美国东部”、“美国东部 2”和“西欧”区域中创建数据工厂。 数据工厂使用的数据存储（例如 Azure 存储和 Azure SQL 数据库）和计算资源（例如 HDInsight）可以位于其他区域。
 7. 选择“固定到仪表板”。     
-8. 选择“创建”。
+8. 选择**创建**。
 9. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴： 
 
    ![“正在部署数据工厂”磁贴](media//tutorial-transform-data-spark-portal/deploying-data-factory.png)

@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 门户中创建 Service Fabric 群集 | Microsoft Docs"
-description: "本文介绍如何使用 Azure 门户和 Azure 密钥保管库中在 Azure 中设置安全 Service Fabric 群集。"
+title: 在 Azure 门户中创建 Service Fabric 群集 | Microsoft Docs
+description: 本文介绍如何使用 Azure 门户和 Azure 密钥保管库中在 Azure 中设置安全 Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
 author: chackdan
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 4a42e36307f440a29740d947314f91dffac51a42
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 864952554b04d8d6bc14aad92d168298e554710e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
 > * [Azure 资源管理器](service-fabric-cluster-creation-via-arm.md)
-> * [Azure portal](service-fabric-cluster-creation-via-portal.md)
+> * [Azure 门户](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 02/21/2018
 
 为轻松设置安全测试群集，我们提供了“基本”选项。 如果已有证书且已上传到 Key Vault（并已启用 Key Vault 进行部署），则使用“自定义”选项
 
-#####<a name="basic-option"></a>“基本”选项
+##### <a name="basic-option"></a>“基本”选项
 按照屏幕操作，以添加或重复使用现有 keyvault 并添加证书。 添加证书是一个同步过程，因此必须等待证书创建完成。
 
 
@@ -151,7 +151,7 @@ ms.lasthandoff: 02/21/2018
 
 ![CreateKeyVault4]
 
-#####<a name="custom-option"></a>“自定义”选项
+##### <a name="custom-option"></a>“自定义”选项
 如果你已执行“基本”选项中的步骤，请跳过本节内容。
 
 ![SecurityCustomOption]

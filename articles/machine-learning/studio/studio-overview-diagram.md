@@ -1,11 +1,12 @@
 ---
-title: "机器学习工作室功能的概要示意图 | Microsoft Docs"
-description: "Azure 机器学习工作室功能的可打印示意图，演示了如何使用工作室开发预测分析试验和在 Azure 云中加以实施。"
-keywords: "机器学习工作室, 概述示意图, 下载"
+title: 机器学习工作室功能的概要示意图 | Microsoft Docs
+description: Azure 机器学习工作室功能的可打印示意图，演示了如何使用工作室开发预测分析试验和在 Azure 云中加以实施。
+keywords: 机器学习工作室, 概述示意图, 下载
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: hning86
-manager: jhubbard
+ms.author: haining
+manager: mwinkle
 editor: cgronlun
 ms.assetid: 5b302c6c-41fd-4551-a4ae-0f5b450e1e6b
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/04/2017
-ms.author: haining;garye
-ms.openlocfilehash: f4e53fa46a6b7f8811e4fee67b1466786b81cdc9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 55a2355bb0d29f60f96264e3e030835ba4d86427
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Azure 机器学习工作室功能的概要示意图
 **Microsoft Azure 机器学习工作室功能概述** 示意图高度概括了如何使用机器学习工作室开发预测分析模型并在 Azure 云中加以实施。

@@ -1,11 +1,12 @@
 ---
-title: "使用 Azure 资源管理器部署机器学习工作区 | Microsoft 文档"
-description: "如何使用 Azure 资源管理器模板部署 Azure 机器学习工作区"
+title: 使用 Azure 资源管理器部署机器学习工作区 | Microsoft 文档
+description: 如何使用 Azure 资源管理器模板部署 Azure 机器学习工作区
 services: machine-learning
-documentationcenter: 
-author: ahgyger
-manager: haining
-editor: garye
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
+editor: cgronlun
 ms.assetid: 4955ac4d-ff99-4908-aa27-69b6bfcc8e85
 ms.service: machine-learning
 ms.workload: data-services
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/05/2018
-ms.author: ahgyger
-ms.openlocfilehash: 6189cd2dce2be8c87255dedecd4493767e857031
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4ba75b1d1740486649cc8d4e012c3f780488cbe0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>使用 Azure 资源管理器部署机器学习工作区
 ## <a name="introduction"></a>介绍

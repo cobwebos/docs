@@ -4,8 +4,8 @@ description: 介绍 Azure 数据工厂中的数据移动服务用来帮助保护
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 3c8215ab4a1759efef3c2c13a5ac44f6944b53d7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 56602e269a441f9541314424190da04be2c4add5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -49,9 +49,10 @@ ms.lasthandoff: 03/16/2018
 - **混合场景**：在此场景中，源或目标位于防火墙之后或本地公司网络中。 或者，数据存储位于专用网络或虚拟网络（通常是源）中，且不可公开访问。 虚拟机上托管的数据库服务器也属于这种情况。
 
 ## <a name="cloud-scenarios"></a>云方案
-### <a name="secure-data-store-credentials"></a>保护数据存储凭据
-- **在 Azure 数据工厂托管存储中存储加密的凭据**。 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密，从而帮助为这些凭据提供保护。 这些证书每两年轮换一次（包括证书续订和凭据迁移）。 这些加密凭据安全地存储在由 Azure 数据工厂管理服务管理的 Azure 存储帐户中。 有关 Azure 存储安全的详细信息，请参阅 [Azure 存储安全概述](../security/security-storage-overview.md)。
 
+### <a name="securing-data-store-credentials"></a>保护数据存储凭据
+
+- **在 Azure 数据工厂托管存储中存储加密的凭据**。 数据工厂使用由 Microsoft 管理的证书对数据存储凭据加密，从而帮助为这些凭据提供保护。 这些证书每两年轮换一次（包括证书续订和凭据迁移）。 这些加密凭据安全地存储在由 Azure 数据工厂管理服务管理的 Azure 存储帐户中。 有关 Azure 存储安全的详细信息，请参阅 [Azure 存储安全概述](../security/security-storage-overview.md)。
 - **在 Azure Key Vault 中存储凭据**。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
 
 ### <a name="data-encryption-in-transit"></a>传输中的数据加密
@@ -144,7 +145,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 | 域名                  | 出站端口 | 说明                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443, 80        | 自承载集成运行时连接到数据工厂中的数据移动服务时需要此端口。 |
+| `*.servicebus.windows.net`    | 443            | 自承载集成运行时连接到数据工厂中的数据移动服务时需要此端口。 |
 | `*.core.windows.net`          | 443            | 使用[分阶段复制](copy-activity-performance.md#staged-copy)功能时，由自承载集成运行时用来连接到 Azure 存储帐户。 |
 | `*.frontend.clouddatahub.net` | 443            | 自承载集成运行时连接到数据工厂服务时需要此端口。 |
 | `*.database.windows.net`      | 1433           | （可选）从/向 Azure SQL 数据库或 Azure SQL 数据仓库复制时需要。 在不打开端口 1433 的情况下，使用暂存复制功能将数据复制到 Azure SQL 数据库或 Azure SQL 数据仓库。 |

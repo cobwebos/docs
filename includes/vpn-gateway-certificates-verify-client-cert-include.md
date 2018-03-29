@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 9fa18b14b82376a25bb434acd770d340b1ef9262
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/23/2018
+---
 如果连接时遇到问题，请检查以下项：
 
 - 如果已导出客户端证书，请确保使用默认值“包括证书路径中的所有证书(如果可能)”将其作为 .pfx 文件导出。 使用此值将其导出时，也会导出根证书信息。 将证书安装到客户端计算机上时，包含在 .pfx 文件中的根证书也会安装到该客户端计算机上。 客户端计算机必须安装根证书信息。 若要进行检查，请转到“管理用户证书”，并导航到“受信任的根证书颁发机构\证书”。 验证根证书是否已列出。 若要进行身份验证，根证书必须存在。

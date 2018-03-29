@@ -1,11 +1,11 @@
 ---
-title: "开发使用媒体服务的 Azure Functions"
-description: "本主题说明如何在 Azure 门户中开始开发使用媒体服务的 Azure Functions。"
+title: 开发使用媒体服务的 Azure Functions
+description: 本主题说明如何在 Azure 门户中开始开发使用媒体服务的 Azure Functions。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 51bdcb01-1846-4e1f-bd90-70020ab471b0
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 999f2cef7d70c4f1b45076300312664defdeb3f5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 02d513bffac50a3a287ab09b1cf9b4eb4525c34a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="develop-azure-functions-with-media-services"></a>开发使用媒体服务的 Azure Functions
 
@@ -327,7 +327,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 }
 ```
 
-##<a name="test-your-function"></a>测试函数
+## <a name="test-your-function"></a>测试函数
 
 要测试函数，需将 MP4 文件上传到连接字符串中所指定存储帐户的**输入**容器中。  
 

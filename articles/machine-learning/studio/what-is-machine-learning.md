@@ -1,11 +1,12 @@
 ---
-title: "Azure 中的机器学习是什么？ | Microsoft Docs"
-description: "解释云中机器学习的基本概念，介绍其作用，以及定义机器学习的术语。"
-keywords: "什么是机器学习,机器学习术语,预测,什么是预测分析,机器学习术语"
+title: Azure 中的机器学习是什么？ | Microsoft Docs
+description: 解释云中机器学习的基本概念，介绍其作用，以及定义机器学习的术语。
+keywords: 什么是机器学习,机器学习术语,预测,什么是预测分析,机器学习术语
 services: machine-learning
-documentationcenter: 
-author: cjgronlund
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: eaee083e-eaa1-4408-838b-93e51423d159
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/23/2018
-ms.author: cgronlun;tedway;olgali
-ms.openlocfilehash: 2968a71141eb6e036bc8bff1bc620b978f3ffdd9
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 36095d24f091ac195fe95c839924b15efae05232
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-machine-learning-in-the-azure-cloud"></a>Azure 云中的机器学习简介
 

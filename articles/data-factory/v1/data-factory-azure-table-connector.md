@@ -1,11 +1,10 @@
 ---
-title: "将数据移入/移出 Azure 表 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂将数据移入和移出 Azure 表存储。"
+title: 将数据移入/移出 Azure 表 | Microsoft Docs
+description: 了解如何使用 Azure 数据工厂将数据移入和移出 Azure 表存储。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 07b046b1-7884-4e57-a613-337292416319
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 765ca21c7c38fa116e0ca95b3c8dc6a6152834ce
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 2c560bf9eeac5f9aed1024bd87d450f7aee7ce05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure 表
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -250,7 +249,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 **管道中使用 AzureTableSource 和 BlobSink 的复制活动：**
 
-管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将**源**类型设置为 **AzureTableSource**，将**接收器**类型设置为 **BlobSink**。 使用  **AzureTableSourceQuery**  属性指定的 SQL 查询会每小时从默认分区中选择要复制的数据。
+管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将**源**类型设置为 **AzureTableSource**，将**接收器**类型设置为 **BlobSink**。 使用 **AzureTableSourceQuery** 属性指定的 SQL 查询会每小时从默认分区中选择要复制的数据。
 
 ```JSON
 {  
@@ -537,7 +536,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 | 列名称 | Type |
 | --- | --- |
 | userid |Edm.Int64 |
-| name |Edm.String |
+| 名称 |Edm.String |
 | lastlogindate |Edm.DateTime |
 
 接下来，按如下所示定义 Azure 表数据集。 不需要指定包含类型信息的“结构”部分，因为类型信息已在基础数据存储中指定。

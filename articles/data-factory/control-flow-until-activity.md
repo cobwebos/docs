@@ -1,11 +1,11 @@
 ---
-title: "Azure 数据工厂中的 Until 活动 | Microsoft 文档"
-description: "Until 活动将在循环中执行一组活动，直到与活动相关联的条件的计算结果为 true 或超时。"
+title: Azure 数据工厂中的 Until 活动 | Microsoft 文档
+description: Until 活动将在循环中执行一组活动，直到与活动相关联的条件的计算结果为 true 或超时。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: da15ddd47580a37a7fdb35adfd80482b698074fd
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 14abd3f069cb5cd49265a6b27e4b1c4363a21441
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Until 活动
 Until 活动提供的功能与 do-until 循环结构以编程语言提供的功能相同。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。 
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="syntax"></a>语法
 
@@ -57,7 +57,7 @@ Until 活动提供的功能与 do-until 循环结构以编程语言提供的功�
 
 属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-name | `Until` 活动的名称。 | String | 是
+名称 | `Until` 活动的名称。 | String | 是
 type | 必须设置为 Until。 | String | 是
 表达式 | 计算结果必须为 true 或 false 的表达式 | 表达式。  | 是
 timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 最大值为 90 天。 | 否

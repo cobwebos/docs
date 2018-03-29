@@ -1,12 +1,12 @@
 ---
-title: "安装 Azure 备份服务器 v2 | Microsoft Docs"
-description: "Azure 备份服务器 v2 可提供用于保护 VM、文件和文件夹、工作负载等的增强备份功能。 了解如何安装或升级到 Azure 备份服务器 v2。"
+title: 安装 Azure 备份服务器 v2 | Microsoft Docs
+description: Azure 备份服务器 v2 可提供用于保护 VM、文件和文件夹、工作负载等的增强备份功能。 了解如何安装或升级到 Azure 备份服务器 v2。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: masaran;markgal
-ms.openlocfilehash: 1bbb16afef7940933b4c3ae23873f212770137e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd7b76d9e06bc82ffd75f12131c2c247da05cc91
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-azure-backup-server-v2"></a>安装 Azure 备份服务器 v2
 
@@ -36,7 +36,7 @@ Azure 备份服务器可帮助保护虚拟机 (VM)、工作负载、文件和文
 ## <a name="upgrade-backup-server-to-v2"></a>将备份服务器升级到 v2
 若要从备份服务器 v1 升级到备份服务器 v2，请确保安装具有所需更新：
 
-- 在受保护的服务器上[更新保护代理](backup-mabs-upgrade-to-v2.md#update-the-dpm-protection-agent)。
+- 在受保护的服务器上[更新保护代理](backup-mabs-upgrade-to-v2.md#update-the-data-protection-manager-protection-agent)。
 - 将 Windows Server 2012 R2 升级到 Windows Server 2016。
 - 在所有生产服务器上升级 Azure 备份服务器远程管理员。
 - 确保备份设置为继续进行而不重新启动生产服务器。
@@ -74,7 +74,7 @@ Azure 备份服务器可帮助保护虚拟机 (VM)、工作负载、文件和文
 
   ![安装程序 - SQL 设置“检查并安装”按钮](./media/backup-mabs-upgrade-to-v2/mabs-installer-s5a-check-and fix-settings.png)
 
-8. 在“安装设置”页上，对安装备份服务器的位置或“暂存位置”进行任何更改。 选择“下一步”。
+8. 在“安装设置”页上，对安装备份服务器的位置或“暂存位置”进行任何更改。 选择“**下一步**”。
 
   ![安装程序 -“安装设置”页](./media/backup-mabs-upgrade-to-v2/mabs-installer-s6-installation-settings.png)
 
@@ -148,7 +148,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
   ![“选择保护组类型”页](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-2.png)
 
-5. 在“选择组成员”页上的“可用成员”窗格中，会列出具有保护代理的成员。 对于此示例，选择卷 D:\ 和 E:\，然后将它们添加到“所选成员”窗格。 选择“下一步”。
+5. 在“选择组成员”页上的“可用成员”窗格中，会列出具有保护代理的成员。 对于此示例，选择卷 D:\ 和 E:\，然后将它们添加到“所选成员”窗格。 选择“**下一步**”。
 
   ![“选择组成员”页](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-3.png)
 
@@ -181,7 +181,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
   ![停止保护成员](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. 在“从组中删除”对话框中，检查存储池的已用磁盘空间和可用空闲空间。 默认设置是在磁盘上保留恢复点，并让它们可以按照关联保留策略过期。 单击 **“确定”**。
+2. 在“从组中删除”对话框中，检查存储池的已用磁盘空间和可用空闲空间。 默认设置是在磁盘上保留恢复点，并让它们可以按照关联保留策略过期。 单击“确定”。
 
   如果要立即将已用磁盘空间返回到可用存储池，则选中“删除磁盘上的副本”复选框以删除与成员关联的备份数据（和恢复点）。
 

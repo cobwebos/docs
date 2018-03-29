@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory 中针对企业应用的用户预配管理 | Microsoft 文档"
-description: "了解如何通过 Azure Active Directory 管理企业应用的用户帐户预配"
+title: Azure Active Directory 中针对企业应用的用户预配管理 | Microsoft 文档
+description: 了解如何通过 Azure Active Directory 管理企业应用的用户帐户预配
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 846ec63d47ebc787fa1edbf1968f1a843e96ac9d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bded73b4a335dc85a84691f5edabac5055f43cca
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中管理企业应用的用户帐户预配
 本文介绍如何使用 [Azure 门户](https://portal.azure.com)为支持用户帐户自动预配和取消预配功能的应用程序（尤其是已从 [Azure Active Directory 应用程序库](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)的“特色”类别添加的应用程序）管理该功能。 若要了解有关用户帐户自动预配及其工作原理的详细信息，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](active-directory-saas-app-provisioning.md)。
@@ -76,7 +76,7 @@ ms.lasthandoff: 02/21/2018
 
 提供了**预配活动报告**链接，该报告记录了在 Azure AD 和目标应用程序之间创建、更新和删除的所有用户和组；此外还提供了**预配错误报告**链接，该报告提供的错误消息更详细地描述了无法读取、创建、更新或删除的用户和组对象。 
 
-##<a name="feedback"></a>反馈
+## <a name="feedback"></a>反馈
 
 我们希望你喜欢 Azure AD 体验。 敬请不时地向我们发送反馈！ 欢迎在[反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)的**管理员门户**版块中发表有关改进的意见和想法。  我们热衷于不断推出炫酷的新功能，确实遵从用户的指导来塑造和定义后续版本。
 

@@ -237,7 +237,7 @@
 ## 规范
 ### [实时引入 - 碎片化的 MP4 实时引入规范](media-services-fmp4-live-ingest-overview.md)
 ### [实时引入 - 在实时传送视频流中发出超时元数据信号](media-services-specifications-live-timed-metadata.md)
-### [平滑流式处理 HEVC](media-services-specifications-ms-sstr-ammendment-hevc.md)
+### [平滑流式处理 HEVC](media-services-specifications-ms-sstr-amendment-hevc.md)
 
 # 资源
 ## [Azure 媒体服务社区](media-services-community.md)

@@ -1,10 +1,11 @@
 ---
-title: "部署机器学习 Web 服务 | Microsoft Docs"
-description: "如何将训练实验转换为预测实验、准备进行部署、并将其部署为 Azure 机器学习 Web 服务。"
+title: 部署机器学习 Web 服务 | Microsoft Docs
+description: 如何将训练实验转换为预测实验、准备进行部署、并将其部署为 Azure 机器学习 Web 服务。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: 73a3e9c6-00d0-41d4-8cf1-2ec87713867e
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.author: garye
-ms.openlocfilehash: 75577ad318f2ff23a7b7d10cf551f3bced56fb62
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 3ce4104040e90a4740442d7692b3bf4a0789bde0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>部署 Azure 机器学习 Web 服务
 Azure 机器学习让用户能够生成、测试和部署预测分析解决方案。

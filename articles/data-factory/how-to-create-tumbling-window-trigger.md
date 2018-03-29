@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 数据工厂中创建翻转窗口触发器 | Microsoft Docs"
-description: "了解如何在 Azure 数据工厂中创建按翻转窗口运行管道的触发器。"
+title: 在 Azure 数据工厂中创建翻转窗口触发器 | Microsoft Docs
+description: 了解如何在 Azure 数据工厂中创建按翻转窗口运行管道的触发器。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: shlo
-ms.openlocfilehash: 1f026683ebc9b3d2bc935cd78aa9d16684e7db40
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 312072a5de21ff1c6b602fed93b77c564b15a9f1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
 本文提供了创建、启动和监视翻转窗口触发器的步骤。 有关触发器和支持的类型的一般信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的 Azure 数据工厂第 2 版。 如果使用 Azure 数据工厂第 1 版（即正式版 (GA)），请参阅 [Azure 数据工厂第 1 版入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> 本文适用于目前处于预览状态的 Azure 数据工厂第 2 版。 如果使用 Azure 数据工厂版本 1（即正式版 (GA)），请参阅 [Azure 数据工厂版本 1 入门](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。 翻转窗口触发器与管道存在一对一关系，一个这样的触发器只能引用一个管道。
 
@@ -130,10 +130,10 @@ ms.lasthandoff: 01/24/2018
 ## <a name="sample-for-azure-powershell"></a>Azure PowerShell 示例
 本部分展示了如何使用 Azure PowerShell 创建、启动和监视触发器。
 
-1. 在 C:\ADFv2QuickStartPSH\ 文件夹中创建一个名为 **MyTrigger.json** 的 JSON 文件，使其包含以下内容：
+1. 在 C:\ADFv2QuickStartPSH\ 文件夹中创建一个名为 **MyTrigger.json** 的且包含以下内容的 JSON 文件：
 
    > [!IMPORTANT]
-   > 保存 JSON 文件之前，将 **startTime** 元素的值设置为当前 UTC 时间。 将 **endTime** 元素的值设置为比当前 UTC 时间早一小时。
+   > 保存 JSON 文件之前，请将 **startTime** 元素的值设置为当前 UTC 时间。 将 **endTime** 元素的值设置为比当前 UTC 时间早一小时。
 
     ```json   
     {

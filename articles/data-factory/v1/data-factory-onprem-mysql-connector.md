@@ -1,11 +1,10 @@
 ---
-title: "使用 Azure 数据工厂从 MySQL 移动数据 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂从 MySQL 数据库移动数据。"
+title: 使用 Azure 数据工厂从 MySQL 移动数据 | Microsoft Docs
+description: 了解如何使用 Azure 数据工厂从 MySQL 数据库移动数据。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 452f4fce-9eb5-40a0-92f8-1e98691bea4c
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f04a3b8c7bb744e3a9d539f6d3a392bc59702758
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 685998729e9aa01f60c80735b5f2f4d278769bdb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

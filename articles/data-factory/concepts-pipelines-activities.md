@@ -1,11 +1,11 @@
 ---
-title: "Azure 数据工厂中的管道和活动 | Microsoft Docs"
-description: "了解有关 Azure 数据工厂中的管道和活动的信息。"
+title: Azure 数据工厂中的管道和活动 | Microsoft Docs
+description: 了解有关 Azure 数据工厂中的管道和活动的信息。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: f5384b4fa0a1baaafd8b2dbf3ed4d7776f4d80ea
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 38550d42e9b567f9f9b02657b5a67b9d012ebd62
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/23/2018
 本文帮助你了解 Azure 数据工厂中的管道和活动，并帮助你利用它们为数据移动和数据处理方案构造端到端数据驱动工作流。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [数据工厂版本 1 中的管道](v1/data-factory-create-pipelines.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [数据工厂版本 1 中的管道](v1/data-factory-create-pipelines.md)。
 > 
 > 本文假定已浏览 [Azure 数据工厂简介](introduction.md)和[快速入门教程](quickstart-create-data-factory-powershell.md)。
 
@@ -99,7 +99,7 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 
 标记 | 说明 | Type | 必选
 --- | ----------- | ---- | --------
-name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>•   不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
+名称 | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>•   不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
 description | 指定描述管道用途的文本。 | String | 否
 活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
 parameters | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
@@ -132,7 +132,7 @@ parameters | **参数**部分可在在管道内定义一个或多个参数，使
 
 标记 | 说明 | 必选
 --- | ----------- | ---------
-name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li></ul>
+名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li></ul>
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-activities)部分。 | 是
 linkedServiceName | 活动使用的链接服务的名称。<br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 | 对 HDInsight 活动、Azure 机器学习批处理评分活动和存储过程活动是必需的。 <br/><br/>对其他活动均非必需
@@ -194,7 +194,7 @@ retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 
 
 标记 | 说明 | 必选
 --- | ----------- | --------
-name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li><ul> 
+名称 | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li><ul> 
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-activities)部分。 | 是
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
@@ -294,7 +294,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
   }
 } 
 ```
-注意以下几点：
+请注意以下几点：
 
 - 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
 - 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。 有关在 JSON 中定义数据集的信息，请参阅[数据集](concepts-datasets-linked-services.md)文章。
@@ -341,7 +341,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
     }
 }
 ```
-注意以下几点：
+请注意以下几点：
 
 - 在 activities 节中，只有一个活动的 **type** 设置为 **HDInsightHive**。
 - 配置单元脚本文件，**partitionweblogs.hql**，被存储在 Azure 存储帐户中（由 scriptLinkedService 指定，调用 AzureStorageLinkedService），并位于容器 `adfgetstarted` 中的脚本文件夹中。

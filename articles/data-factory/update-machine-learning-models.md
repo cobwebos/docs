@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 数据工厂更新机器学习模型 | Microsoft Docs"
-description: "介绍了如何使用 Azure 数据工厂和机器学习创建预测管道"
+title: 使用 Azure 数据工厂更新机器学习模型 | Microsoft Docs
+description: 介绍了如何使用 Azure 数据工厂和机器学习创建预测管道
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: d4f7df5ceadf8c6219901af6e516453a88aeece7
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f84bb3546260622eec921684be8e2492adcdcd52
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用“更新资源”活动更新 Azure 机器学习模型
 本文是 Azure 数据工厂和 Azure 机器学习集成主要文章[使用 Azure 机器学习和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)的补充。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。 
@@ -62,7 +62,7 @@ ms.lasthandoff: 01/23/2018
 
 | 属性                      | 说明                              | 必选 |
 | :---------------------------- | :--------------------------------------- | :------- |
-| name                          | 管道中活动的名称     | 是      |
+| 名称                          | 管道中活动的名称     | 是      |
 | description                   | 描述活动用途的文本。  | 否       |
 | type                          | 对于 Azure 机器学习“更新资源”活动，活动类型为 **AzureMLUpdateResource**。 | 是      |
 | linkedServiceName             | 包含 updateResourceEndpoint 属性的 Azure 机器学习链接服务。 | 是      |

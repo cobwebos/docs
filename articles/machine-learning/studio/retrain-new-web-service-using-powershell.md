@@ -3,10 +3,10 @@ title: 使用 PowerShell 重新训练新的 Azure 机器学习 Web 服务 | Micr
 description: 了解如何使用机器学习管理 PowerShell cmdlet 以编程方式重新训练模型并更新 Web 服务，以在 Azure 中使用新的训练模型。
 services: machine-learning
 documentationcenter: ''
-author: aashishb
-ms.author: aashishb
+author: YasinMSFT
+ms.author: yahajiza
 manager: hjerez
-editor: ''
+editor: cgronlun
 ms.assetid: 3953a398-6174-4d2d-8bbd-e55cf1639415
 ms.service: machine-learning
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: c260c15438afe6140fce92d8d3ce15b60867ec81
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7fa93e138bc9feb66c200597119bb12dbaf00480
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>使用机器学习管理 PowerShell cmdlet 重新训练新的基于 Resource Manager 的 Web 服务
 重新训练新的 Web 服务时，将更新预测 Web 服务定义以引用新的训练模型。  

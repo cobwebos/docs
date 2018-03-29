@@ -3,22 +3,19 @@ title: Azure Active Directory B2C：参考：使用自定义策略来自定义�
 description: 有关 Azure Active Directory B2C 自定义策略的主题
 services: active-directory-b2c
 documentationcenter: ''
-author: rojasja
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: ''
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/25/2017
-ms.author: joroja
-ms.openlocfilehash: 40245c25a7f80db27a25a0d34eb20f1057fc5e02
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: davidmu
+ms.openlocfilehash: b0f68f76bfb746b91cb82b2b7e9e750f15f14253
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>使用自定义策略来自定义用户旅程的 UI
 

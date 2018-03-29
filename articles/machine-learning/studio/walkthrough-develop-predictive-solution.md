@@ -1,11 +1,12 @@
 ---
-title: "使用机器学习的信用风险预测解决方案 | Microsoft Docs"
-description: "详细演练中介绍如何创建预测分析解决方案，用于在 Azure 机器学习工作室中进行信用风险评估。"
-keywords: "信用风险, 预测分析解决方案, 风险评估"
+title: 使用机器学习的信用风险预测解决方案 | Microsoft Docs
+description: 详细演练中介绍如何创建预测分析解决方案，用于在 Azure 机器学习工作室中进行信用风险评估。
+keywords: 信用风险, 预测分析解决方案, 风险评估
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 43300854-a14e-4cd2-9bb1-c55c779e0e93
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/23/2017
-ms.author: garye
-ms.openlocfilehash: ea5274f6bfd2d6c68509f52d93b6875d3a43a5a0
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: d8a9776d97f10c64f7c29fa32fb1187bd76af714
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning"></a>演练：开发预测分析解决方案，用于在 Azure 机器学习中评估信用风险
 

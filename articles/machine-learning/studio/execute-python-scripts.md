@@ -1,11 +1,12 @@
 ---
-title: "执行 Python 机器学习脚本 | Microsoft Docs"
-description: "概述了 Azure 机器学习中支持 Python 脚本下的设计原则，以及基本的使用方案、功能和限制。"
-keywords: "python 机器学习, pandas, python pandas, python 脚本, 执行 python 脚本"
+title: 执行 Python 机器学习脚本 | Microsoft Docs
+description: 概述了 Azure 机器学习中支持 Python 脚本下的设计原则，以及基本的使用方案、功能和限制。
+keywords: python 机器学习, pandas, python pandas, python 脚本, 执行 python 脚本
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: cgronlun
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: ee9eb764-0d3e-4104-a797-19fc29345d39
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: c25f31ca72417672298657c4585184ad72db6c99
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 0efa2a7604b41b791ed3717b7f2b667b7181085d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中执行 Python 机器学习脚本
 

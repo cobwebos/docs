@@ -248,6 +248,9 @@
     - name: IoT 中心
       tocHref: /azure/iot-hub/
       topicHref: /azure/iot-hub/
+    - name: IoT 中心设备预配服务
+      tocHref: /azure/iot-dps/
+      topicHref: /azure/iot-dps/
     - name: IoT 套件
       tocHref: /azure/iot-suite/
       topicHref: /azure/iot-suite/

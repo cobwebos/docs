@@ -1,20 +1,19 @@
 ---
-title: "了解如何从 Azure 虚拟机载入更新管理、更改跟踪和清单解决方案。"
-description: "了解如何载入包含属于 Azure 自动化的一部分的更新管理、更改跟踪和清单解决方案的 Azure 虚拟机"
+title: 了解如何从 Azure 虚拟机载入更新管理、更改跟踪和清单解决方案。
+description: 了解如何载入包含属于 Azure 自动化的一部分的更新管理、更改跟踪和清单解决方案的 Azure 虚拟机
 services: automation
-keywords: 
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/28/2018
+ms.date: 03/19/2018
 ms.topic: article
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: a850189406b394e7935763206f9e3a191b415170
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 8713447386e116b3f1ecb2754d46cc8d88d00b39
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>从 Azure 虚拟机载入更新管理、更改跟踪和清单解决方案
 
@@ -22,7 +21,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-通过 https://portal.azure.com 登录 Azure
+在 https://portal.azure.com 中登录 Azure
 
 ## <a name="enable-the-solutions"></a>启用解决方案
 

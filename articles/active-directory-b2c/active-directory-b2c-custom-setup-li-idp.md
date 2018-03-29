@@ -3,22 +3,19 @@ title: Azure Active Directory B2C：使用自定义策略将 LinkedIn 添加为 
 description: 有关如何使用 OAuth2 协议和自定义策略设置 LinkedIn 应用程序的操作指南文章
 services: active-directory-b2c
 documentationcenter: ''
-author: yoelhor
+author: davidmu1
 manager: mtillman
 editor: ''
-ms.assetid: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 10/23/2017
-ms.author: yoelh
-ms.openlocfilehash: 77e2b9b283e4051370ffb905681135c27512834e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: davidmu
+ms.openlocfilehash: 9e5235739abcfbee1e530685890098a45a1b093d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略将 LinkedIn 添加为标识提供者
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -84,7 +81,7 @@ ms.lasthandoff: 03/14/2018
 
 7. 对于“密钥用法”，请选择“加密”。
 
-8. 选择“创建”。 
+8. 选择**创建**。 
 
 9. 确认已创建 `B2C_1A_LinkedInSecret` 密钥。
 

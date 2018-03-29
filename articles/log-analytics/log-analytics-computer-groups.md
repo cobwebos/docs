@@ -1,24 +1,24 @@
 ---
-title: "Azure Log Analytics 日志搜索中的计算机组 | Microsoft Docs"
-description: "Log Analytics 中的计算机组允许为一组特定的计算机设定日志搜索的范围。  本文介绍用于创建计算机组的不同方法以及如何在日志搜索中使用这些方法。"
+title: Azure Log Analytics 日志搜索中的计算机组 | Microsoft Docs
+description: Log Analytics 中的计算机组允许为一组特定的计算机设定日志搜索的范围。  本文介绍用于创建计算机组的不同方法以及如何在日志搜索中使用这些方法。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: a28b9e8a-6761-4ead-aa61-c8451ca90125
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/19/2018
 ms.author: bwren
-ms.openlocfilehash: 4d6a80082711f09e9c189d53fb4fda00a7d73c29
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: a6f0aa58762966f8da76387f3da7a7895801fcb9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics 日志搜索中的计算机组
 
@@ -66,12 +66,6 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
 5. 为计算机组的每个属性提供值。 
 
 
->[!NOTE]
-> 如果工作区仍然使用[旧的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则可以使用相同的过程来创建计算机组，但必须使用旧查询语言的语法。
-
-
-### <a name="log-search-api"></a>日志搜索 API
-使用日志搜索 API 创建的计算机组与使用日志搜索创建的搜索相同。  有关使用日志搜索 API 创建计算机组的详细信息，请参阅 [Log Analytics 日志搜索 REST API 中的计算机组](log-analytics-log-search-api.md#computer-groups)。
 
 ### <a name="active-directory"></a>Active Directory
 在将 Log Analytics 配置为导入 Active Directory 组成员身份时，它将使用 OMS 代理分析任何加入域的计算机的组成员身份。  在 Log Analytics 中为 Active Directory 中的每个安全组创建一个计算机组，并且会将每台计算机添加到与其所属安全组对应的计算机组。  此成员身份每 4 小时持续更新一次。  
@@ -129,18 +123,6 @@ Log Analytics 中的计算机组允许为一组特定的计算机设定[日志�
   UpdateSummary | where Computer in (ADComputers)
   ```
 
-
-
-  
-
->[!NOTE]
-> 如果工作区仍然使用[旧的 Log Analytics 查询语言](log-analytics-log-search-upgrade.md)，则在日志搜索中请使用以下语法来引用计算机组。  指定“类别”是可选的，并且仅当在不同类别中具有同名的计算机组时才需要。 
->
->    `$ComputerGroups[Category: Name]`
->
->计算机组通常在日志搜索中与 IN 子句一起使用，如以下示例所示：
->
->    `Type=UpdateSummary Computer IN $ComputerGroups[My Computer Group]`
 
 
 

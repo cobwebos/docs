@@ -1,11 +1,10 @@
 ---
-title: "使用数据工厂从 Cassandra 移动数据 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂从本地 Cassandra 数据库移动数据。"
+title: 使用数据工厂从 Cassandra 移动数据 | Microsoft Docs
+description: 了解如何使用 Azure 数据工厂从本地 Cassandra 数据库移动数据。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 085cc312-42ca-4f43-aa35-535b35a102d5
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c8f61cb165b0bfffe2f42b060cdbd666fff3a8b3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 2d790b067630f15b96eba5e46ea12e1997a47c86
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 Cassandra 数据库移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -318,11 +317,11 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 | pk_int | List_index | List_value |
 | --- | --- | --- |
 | 1 |0 |1 |
-| 1 |1 |#N/A |
-| 1 |#N/A |3 |
+| 1 |1 |2 |
+| 1 |2 |3 |
 | 3 |0 |100 |
 | 3 |1 |101 |
-| 3 |#N/A |102 |
+| 3 |2 |102 |
 | 3 |3 |103 |
 
 #### <a name="table-exampletablevtmap"></a>表“ExampleTable_vt_Map”：

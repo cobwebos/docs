@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 0270fa207b782d2d89f2408a380b766f58fa05cb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/23/2018
+---
 1. 在门户中，从“所有资源”单击“+添加”。 
 2. 在“所有内容”页搜索框中键入“本地网络网关”，并单击进行搜索。 这会返回一个列表。 单击“本地网络网关”打开相应页，然后单击“创建”打开“创建本地网络网关”页。
 

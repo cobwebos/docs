@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：使用自定义策略添加 Salesforce SAML 提供程序 | Microsoft Docs"
-description: "了解如何创建和管理 Azure Active Directory B2C 自定义策略。"
+title: Azure Active Directory B2C：使用自定义策略添加 Salesforce SAML 提供程序 | Microsoft Docs
+description: 了解如何创建和管理 Azure Active Directory B2C 自定义策略。
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: d7f4143f-cd7c-4939-91a8-231a4104dc2c
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 06/11/2017
-ms.author: parakhj
-ms.openlocfilehash: 16f7c5708b479f18de17a612a733a2be6e97ad01
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 1ccf5c58eab9df9016224a91ddda952a05457e2a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-salesforce-accounts-via-saml"></a>Azure Active Directory B2C：使用 Salesforce 帐户通过 SAML 登录
 
@@ -59,7 +56,7 @@ ms.lasthandoff: 12/11/2017
 1. [登录到 Salesforce](https://login.salesforce.com/)。 
 2. 在左侧菜单中的“设置”下面，展开“标识”，然后单击“标识提供者”。
 3. 单击“启用标识提供者”。
-4. 在“选择证书”下，选择希望 Salesforce 用于与 Azure AD B2C 进行通信的证书。 （可以使用默认证书。）单击“保存” 。 
+4. 在“选择证书”下，选择希望 Salesforce 用于与 Azure AD B2C 进行通信的证书。 （可以使用默认证书。）单击“ **保存**”。 
 
 ### <a name="create-a-connected-app-in-salesforce"></a>在 Salesforce 中创建连接的应用
 
@@ -117,7 +114,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
     2. 输入“名称”（例如 SAMLSigningCert）。 前缀 B2C_1A_ 会自动添加到密钥名称。
     3. 若要选择你的证书，请选择“上传文件控件”。 
     4. 输入在 PowerShell 脚本中设置的证书密码。
-3. 单击“创建” 。
+3. 单击“创建”。
 4. 验证是否创建了密钥（例如 B2C_1A_SAMLSigningCert）。 记下完整名称（包括 B2C_1A_）。 后面会在策略中引用此密钥。
 
 ## <a name="create-the-salesforce-saml-claims-provider-in-your-base-policy"></a>在基本策略中创建 Salesforce SAML 声明提供程序

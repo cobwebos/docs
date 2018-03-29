@@ -1,11 +1,11 @@
 ---
-title: "在数据工厂中使用 Resource Manager 模板 | Microsoft Docs"
-description: "了解如何创建和使用 Azure 资源管理器模板来创建数据工厂实体。"
+title: 在数据工厂中使用 Resource Manager 模板 | Microsoft Docs
+description: 了解如何创建和使用 Azure 资源管理器模板来创建数据工厂实体。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.assetid: 37724021-f55f-4e85-9206-6d4a48bda3d8
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e6dbac2f88df3b7c2e4d7f982fc9a573e3d6e62f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 71aa5b6bdf23e4e072247432184683f9985586b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用模板来创建 Azure 数据工厂实体
 > [!NOTE]

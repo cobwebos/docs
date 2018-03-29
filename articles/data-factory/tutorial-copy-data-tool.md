@@ -1,21 +1,21 @@
 ---
-title: "使用 Azure 复制数据工具复制数据 | Microsoft Docs"
-description: "创建一个 Azure 数据工厂，然后使用“复制数据”工具将数据从 Azure Blob 存储复制到 SQL 数据库。"
+title: 使用 Azure 复制数据工具复制数据 | Microsoft Docs
+description: 创建一个 Azure 数据工厂，然后使用“复制数据”工具将数据从 Azure Blob 存储复制到 SQL 数据库。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
 ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 5b636128d0df5a404df7aa6b2cfdce016e36681f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d2f1d089c6a08a1dc90f82fd9d1c3cb2b6f6dc0a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用“复制数据”工具，将数据从 Azure Blob 存储复制到 SQL 数据库
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -108,7 +108,7 @@ ms.lasthandoff: 02/09/2018
 5. 在“版本”下选择“V2 (预览)”作为版本。
 6. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置和区域。
 7. 选择“固定到仪表板”。 
-8. 选择“创建”。
+8. 选择**创建**。
 9. 在仪表板中，“部署数据工厂”磁贴显示进程状态。
 
     ![“部署数据工厂”磁贴](media/tutorial-copy-data-tool/deploying-data-factory.png)

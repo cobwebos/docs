@@ -1,10 +1,10 @@
 ---
-title: "PowerShell 脚本 - 部署 Azure-SSIS 集成运行时 | Microsoft Docs"
-description: "此 PowerShell 脚本创建可在云中运行 SSIS 程序包的 Azure-SSIS 集成运行时。"
+title: PowerShell 脚本 - 部署 Azure-SSIS 集成运行时 | Microsoft Docs
+description: 此 PowerShell 脚本创建可在云中运行 SSIS 程序包的 Azure-SSIS 集成运行时。
 services: data-factory
 author: douglaslMS
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: douglasl
-ms.openlocfilehash: 959432378d49e18fbb567ea164c2608bfa02956d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6b1ef4ab14cbcb4e91ad023f9fdda5c2c2e71260
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell 脚本 - 部署 Azure-SSIS 集成运行时
 

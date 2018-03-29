@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory 域服务：将 Ubuntu VM 加入托管域 | Microsoft Docs"
-description: "将 Ubuntu Linux 虚拟机加入 Azure AD 域服务"
+title: Azure Active Directory 域服务：将 Ubuntu VM 加入托管域 | Microsoft Docs
+description: 将 Ubuntu Linux 虚拟机加入 Azure AD 域服务
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: maheshu
-ms.openlocfilehash: a8a3610707ca7d00694779c4b3631e1483d6bbdd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d968548f9ac369f02f10a10d8f1ecc99c48bca60
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>将 Azure 中的 Ubuntu 虚拟机加入托管域
 本文介绍如何将 Ubuntu Linux 虚拟机加入 Azure AD 域服务托管域。
@@ -217,7 +217,7 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 
 
 ## <a name="troubleshooting-domain-join"></a>排查域加入问题
-请参阅[排查域加入问题](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join)一文。
+请参阅[排查域加入问题](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain)一文。
 
 
 ## <a name="related-content"></a>相关内容

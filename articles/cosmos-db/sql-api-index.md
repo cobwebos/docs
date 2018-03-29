@@ -1,10 +1,10 @@
 ---
-title: "Azure Cosmos DB：SQL API 文章 | Microsoft Docs"
-description: "关于如何在 Azure Cosmos DB 中使用 SQL API 创建文档数据库的所有文章的列表。"
+title: Azure Cosmos DB：SQL API 文章 | Microsoft Docs
+description: 关于如何在 Azure Cosmos DB 中使用 SQL API 创建文档数据库的所有文章的列表。
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 82bec99a-ac2b-474e-b41f-d2fb296c8feb
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,15 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: mimig
-ms.openlocfilehash: 8faa8a08d4a5bc323951a594049002fc61eb56b8
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 0ad80ce15769cfe823925cf36bbd47f2ddadec21
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-sql-api-documentation"></a>Azure Cosmos DB：SQL API 文档
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 本文提供了特定于 SQL API 的所有 Azure Cosmos DB 内容的链接。
 
@@ -34,7 +32,7 @@ ms.lasthandoff: 01/11/2018
 - [SQL API 简介](sql-api-introduction.md)
 - [数据库资源模型](sql-api-resources.md)
 - 网站：[查询板块](https://www.documentdb.com/sql/demo)
-- 备忘单：[SQL 语法](sql-api-sql-query-cheat-sheet.md)
+- 备忘单：[SQL 语法](query-cheat-sheet.md)
 
 ## <a name="quickstarts"></a>快速入门
 

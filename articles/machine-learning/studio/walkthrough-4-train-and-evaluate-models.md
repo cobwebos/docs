@@ -1,10 +1,11 @@
 ---
-title: "步骤 4：训练和评估预测分析模型 | Microsoft Docs"
-description: "开发预测解决方案演练的步骤 4：在 Azure 机器学习工作室中训练、评分和评估多个模型。"
+title: 步骤 4：训练和评估预测分析模型 | Microsoft Docs
+description: 开发预测解决方案演练的步骤 4：在 Azure 机器学习工作室中训练、评分和评估多个模型。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: d905f6b3-9201-4117-b769-5f9ed5ee1cac
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.author: garye
-ms.openlocfilehash: 5a545b9f9f7f935be91fed743779ebd6b4d930a6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f722fa314b42501e0f6144f71b9d74c0a9127e9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models"></a>演练步骤 4：训练和评估预测分析模型
 本主题包含演练[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)的第四步

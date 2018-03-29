@@ -1,8 +1,8 @@
 ---
-title: "配置 Azure 多重身份验证 | Microsoft Docs"
-description: "本文介绍如何配置 Azure 多重身份验证设置，以便使用报告、欺诈警报、免验证一次、自定义语音消息、缓存、受信任的 IP 和应用密码。"
+title: 配置 Azure 多重身份验证 | Microsoft Docs
+description: 本文介绍如何配置 Azure 多重身份验证设置，以便使用报告、欺诈警报、免验证一次、自定义语音消息、缓存、受信任的 IP 和应用密码。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 75af734e-4b12-40de-aba4-b68d91064ae8
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 4421b995e69e115fbb6c7379af79aaef537aed0d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: e2b6651f0d341567f1d02d0ca16b8f445e3d26f4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
-在启动并运行 Azure 多重身份验证后，可以参考本文进行管理。 本文涵盖了各种主题，可帮助你充分利用 Azure 多重身份验证。 并非所有 [Azure 多重身份验证版本](/multi-factor-authentication-get-started.md#what-features-do-i-need)都提供全部功能。
+在启动并运行 Azure 多重身份验证后，可以参考本文进行管理。 本文涵盖了各种主题，可帮助你充分利用 Azure 多重身份验证。 并非所有 [Azure 多重身份验证版本](multi-factor-authentication-get-started.md#what-features-do-i-need)都提供全部功能。
 
 | 功能 | 说明 | 
 |:--- |:--- |
@@ -175,7 +175,7 @@ ms.lasthandoff: 01/04/2018
 4. 输入位置的名称。
 5. 选择“标记为受信任位置”。
 6. 以 CIDR 表示法输入 IP 范围（例如 192.168.1.1/24）。
-7. 选择“创建”。
+7. 选择**创建**。
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>使用条件访问启用受信任的 IP 功能
 

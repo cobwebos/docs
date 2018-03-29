@@ -1,19 +1,19 @@
 ---
-title: "使用数据工厂向/从 Azure Blob 存储复制数据 | Microsoft Docs"
-description: "了解如何使用数据工厂将数据从支持的源数据存储复制到 Azure Blob 存储，或从 Blob 存储复制到受支持的接收器数据存储。"
+title: 使用数据工厂向/从 Azure Blob 存储复制数据 | Microsoft Docs
+description: 了解如何使用数据工厂将数据从支持的源数据存储复制到 Azure Blob 存储，或从 Blob 存储复制到受支持的接收器数据存储。
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: d492147b8855d8f1ef64d3421c62e11a1951eadd
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b0eca20a801bbe431eff8ed0accffe2705d6c41c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Blob 存储复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

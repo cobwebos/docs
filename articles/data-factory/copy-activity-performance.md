@@ -1,11 +1,11 @@
 ---
-title: "Azure 数据工厂的复制活动性能和优化指南 | Microsoft Docs"
-description: "了解使用复制活动时影响 Azure 数据工厂中数据移动性能的关键因素。"
+title: Azure 数据工厂的复制活动性能和优化指南 | Microsoft Docs
+description: 了解使用复制活动时影响 Azure 数据工厂中数据移动性能的关键因素。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 53f2b59e57d49a409552aebbdb1b0e81ccd5200c
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 733a396117a58d8dc51e55614e503853f13141c0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/23/2018
 Azure 数据工厂复制活动提供安全、可靠且高性能的一流数据加载解决方案。 它允许用户在各种云和本地数据存储中每天复制数十 TB 的数据。 速度超快的数据加载性能是确保用户能专注于核心“大数据”问题的关键：构建高级分析解决方案并从所有数据获得深入见解。
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅[数据工厂版本 1 中的复制活动性能](v1/data-factory-copy-activity-performance.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅[数据工厂版本 1 中的复制活动性能](v1/data-factory-copy-activity-performance.md)。
 
 Azure 提供了一组企业级数据存储和数据仓库解决方案，并且复制活动提供了高度优化的数据加载体验，易于配置和设置。 使用单个复制活动，可完成：
 
@@ -163,7 +163,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 * 在基于文件的存储之间复制数据时，**parallelCopies** 确定文件级别的并行度。 单个文件内的区块化会自动透明地在文件下进行，它旨在对给定源数据存储类型使用最佳区块大小，以并行和正交方式将数据加载到 parallelCopies。 数据移动服务在运行时用于复制操作的并行复制的实际数量不超过所拥有的文件数。 如果复制行为是 **mergeFile**，复制活动无法利用文件级别的并行度。
 * 指定 **parallelCopies** 属性的值时，请考虑源数据存储和接收器数据存储上的负载会增加，如果使用自承载 Integration Runtime 为混合复制或其他复制的复制活动提供支持，其负载也会增加。 尤其在有多个活动或针对同一数据存储运行的相同活动有并发运行时，会发生这种情况。 如果注意到数据存储或自承载 Integration Runtime 负载过重，请降低 **parallelCopies**  值以减轻负载。
-* 将数据从不基于文件的存储复制到基于文件的存储时，数据移动服务将忽略  **parallelCopies**  属性。 即使指定了并行性，在此情况下也不适用。
+* 将数据从不基于文件的存储复制到基于文件的存储时，数据移动服务将忽略 **parallelCopies** 属性。 即使指定了并行性，在此情况下也不适用。
 * **parallelCopies** 与 **cloudDataMovementUnits** 不相干。 前者跨所有云数据移动单元计数。
 
 ## <a name="staged-copy"></a>暂存复制
@@ -343,7 +343,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 ## <a name="considerations-for-column-mapping"></a>列映射注意事项
 
-可在复制活动中设置  **columnMappings**  属性，将全部或部分输入列映射到输出列。 数据移动服务从源读取数据后，它需要先对数据执行列映射，再将数据写入接收器。 这一额外处理会降低复制吞吐量。
+可在复制活动中设置 **columnMappings** 属性，将全部或部分输入列映射到输出列。 数据移动服务从源读取数据后，它需要先对数据执行列映射，再将数据写入接收器。 这一额外处理会降低复制吞吐量。
 
 如果源数据存储可查询，例如，如果存储是关系存储（如 SQL 数据库或 SQL Server），或者是 NoSQL 存储（如表存储或 Azure Cosmos DB），请考虑将列筛选和重排序逻辑推送到**查询**属性，而不使用列映射。 这样，当数据移动服务从源数据存储读取数据时会发生投影，使效率更高。
 

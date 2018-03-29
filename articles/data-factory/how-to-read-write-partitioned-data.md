@@ -1,11 +1,11 @@
 ---
-title: "如何在 Azure 数据工厂中读取或写入分区的数据 | Microsoft Docs"
-description: "了解如何在 Azure 数据工厂版本 2 中读取或写入分区的数据。"
+title: 如何在 Azure 数据工厂中读取或写入分区的数据 | Microsoft Docs
+description: 了解如何在 Azure 数据工厂版本 2 中读取或写入分区的数据。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: shlo
-ms.openlocfilehash: 3d65158a66ec16bd13ad4ad56af90c6fd28bfe7e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: e3b6ccd1e7066ed86b3d6d2d85228688b06931c4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory-version-2"></a>如何在 Azure 数据工厂版本 2 中读取或写入分区的数据
 在版本 1 中，Azure 数据工厂支持使用 SliceStart/SliceEnd/WindowStart/WindowEnd 系统变量读取或写入分区的数据。 在版本 2 中，可使用管道参数和触发器的开始时间/计划时间作为参数值实现此行为。 

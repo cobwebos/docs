@@ -1,12 +1,13 @@
 ---
-title: "如何选择机器学习算法 | Microsoft Docs"
-description: "如何在聚类、分类或回归试验中选择监督式和非监督式学习的 Azure 机器学习算法。"
+title: 如何选择机器学习算法 | Microsoft Docs
+description: 如何在聚类、分类或回归试验中选择监督式和非监督式学习的 Azure 机器学习算法。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: pakalra
+ms.author: pakalra
+manager: cgronlun
 editor: cgronlun
-tags: 
+tags: ''
 ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
 ms.devlang: na
@@ -14,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/18/2017
-ms.author: garye
-ms.openlocfilehash: 1b30e4dbf20cac653c323720de779aa5f8edba68
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: e1c7030a5f0c6e13653b302fcb48e7d4efa232c7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>如何选择 Microsoft Azure 机器学习的算法
 “应使用何种机器学习算法？”这一问题的答案 始终是“视情况而定。” 这取决于数据的大小、质量和性质。 这取决于想用算法做什么。 这取决于算法的数学如何转换为所使用的计算机的指令。 还取决于可用时间的长短。 即使是经验最丰富的数据科学家也无法在试用之前判断哪种算法执行效果最佳。
@@ -187,7 +187,7 @@ ms.lasthandoff: 01/08/2018
 
 ***典型的支持向量机类边界将分隔两个类的边距最大化***
 
-Microsoft Research 的另一个产品[双类局部深层 SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) 是 SVM 的非线性变体，其保留有大多数线性版本的速度和内存效率。 它适用于线性方法没有提供足够准确的答案的情况。 开发人员通过将问题分解成一系列小的线性 SVM 问题来保持快速。 阅读[完整描述](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf)了解有关他们如何获得这一技巧的详细信息。
+Microsoft Research 的另一个产品[双类局部深层 SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) 是 SVM 的非线性变体，其保留有大多数线性版本的速度和内存效率。 它适用于线性方法没有提供足够准确的答案的情况。 开发人员通过将问题分解成一系列小的线性 SVM 问题来保持快速。 阅读[完整描述](http://proceedings.mlr.press/v28/jose13.html)了解有关他们如何获得这一技巧的详细信息。
 
 使用非线性 SVM 的巧妙扩展，[单类 SVM](https://msdn.microsoft.com/library/azure/dn913103.aspx) 绘制了严格概述整个数据集的边界。 它可用于异常情况检测。 任何远在边界之外的新数据点都是不寻常的，值得注意。
 

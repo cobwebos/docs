@@ -1,10 +1,11 @@
 ---
-title: "在 Azure 机器学习中创作自定义 R 模块 | Microsoft Docs"
-description: "在 Azure 机器学习中创作自定义 R 模块快速入门。"
+title: 在 Azure 机器学习中创作自定义 R 模块 | Microsoft Docs
+description: 在 Azure 机器学习中创作自定义 R 模块快速入门。
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: cgronlun
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.author: bradsev;ankarlof;garye
-ms.openlocfilehash: 16442a30f130e7cc9b60d2d9ae9c86d7282471ff
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 945c238411dac8f2e64666935308ef3c1cb2f0ab
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>在 Azure 机器学习中创作自定义 R 模块
 本主题介绍如何在 Azure 机器学习中创建和部署自定义 R 模块。 本主题解释什么是自定义 R 模块以及要使用什么文件来定义该模块。 本主题举例说明如何构建定义模块的文件以及如何在机器学习工作区中注册用于部署的模块。 随后本主题详细描述了定义自定义模块所使用的元素和属性。 本主题还讨论了如何使用辅助功能和文件以及多个输出。 
@@ -288,7 +288,7 @@ XML 定义文件中的**语言**元素用于指定自定义模块的语言。 �
     * 数字
     * 布尔
     * 分类
-    * 字符串
+    * String
     * 标签
     * 功能
     * 得分

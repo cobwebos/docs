@@ -1,24 +1,24 @@
 ---
-title: "查看 Azure Web 应用分析数据 | Microsoft Docs"
-description: "可以使用 Azure Web 应用分析解决方案来收集所有 Azure Web 应用资源的各种指标，以便深入了解 Azure Web 应用。"
+title: 查看 Azure Web 应用分析数据 | Microsoft Docs
+description: 可以使用 Azure Web 应用分析解决方案来收集所有 Azure Web 应用资源的各种指标，以便深入了解 Azure Web 应用。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 20ff337f-b1a3-4696-9b5a-d39727a94220
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 03/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 7c22950c391707cdfe14ca242ea82a317be0e46e
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b70b626ca618fbfb7cbe25a4fcbc9aae797ce157
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>查看所有 Azure Web 应用资源的指标的分析数据
 
@@ -90,19 +90,18 @@ Azure Web 应用分析解决方案从 Azure 中收集两组指标：
 
 单击“Azure Web 应用分析”磁贴以打开“Azure Web 应用分析”仪表板。 该仪表板包含下表中的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出匹配该边栏选项卡条件的最多 10 个项。 可通过单击边栏选项卡底部的“查看全部”或单击边栏选项卡标题，运行返回所有记录的日志搜索。
 
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | 列 | 说明 |
 | --- | --- |
 | Azure Web 应用 |   |
-| Web 应用请求趋势 | 显示所选日期范围内 Web 应用请求趋势的折线图，并列出前 10 个 Web 请求。 单击该折线图可以针对 <code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* (MetricName=Requests OR MetricName=Http*) &#124; measure avg(Average) by MetricName interval 1HOUR</code> 运行日志搜索 <br>单击某个 Web 请求项，为请求的 Web 请求指标趋势运行日志搜索。 |
-| Web 应用响应时间 | 显示所选日期范围内 Web 应用响应时间的折线图。 此外还列出响应时间最快的前 10 个 Web 应用。 单击该图表可以针对 <code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* MetricName="AverageResponseTime" &#124; measure avg(Average) by Resource interval 1HOUR</code> 运行日志搜索<br> 单击某个 Web 应用，为该 Web 应用运行返回响应时间的日志搜索。 |
-| Web 应用流量 | 显示 Web 应用流量的折线图（以 MB 为单位），并列出流量最大的前几个 Web 应用。 单击该图表可以针对 <code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"*  MetricName=BytesSent OR BytesReceived &#124; measure sum(Average) by Resource interval 1HOUR</code> 运行日志搜索<br> 它会显示最近一分钟产生了流量的所有 Web 应用。 单击某个 Web 应用，为该 Web 应用运行显示接收和发送的字节数的日志搜索。 |
+| Web 应用请求趋势 | 显示所选日期范围内 Web 应用请求趋势的折线图，并列出前 10 个 Web 请求。 单击该折线图可以针对 <code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SITES/" and (MetricName == "Requests" or MetricName startswith_cs "Http") &#124; summarize AggregatedValue = avg(Average) by MetricName, bin(TimeGenerated, 1h)</code> 运行日志搜索 <br>单击某个 Web 请求项，为请求的 Web 请求指标趋势运行日志搜索。 |
+| Web 应用响应时间 | 显示所选日期范围内 Web 应用响应时间的折线图。 此外还列出响应时间最快的前 10 个 Web 应用。 单击该图表可以针对 <code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SITES/" and MetricName == "AverageResponseTime" &#124; summarize AggregatedValue = avg(Average) by Resource, bin(TimeGenerated, 1h)</code> 运行日志搜索<br> 单击某个 Web 应用，为该 Web 应用运行返回响应时间的日志搜索。 |
+| Web 应用流量 | 显示 Web 应用流量的折线图（以 MB 为单位），并列出流量最大的前几个 Web 应用。 单击该图表可以针对 <code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SITES/" and (MetricName == "BytesSent" or MetricName == "BytesReceived") &#124; summarize AggregatedValue = sum(Average) by Resource, bin(TimeGenerated, 1h)</code> 运行日志搜索<br> 它会显示最近一分钟产生了流量的所有 Web 应用。 单击某个 Web 应用，为该 Web 应用运行显示接收和发送的字节数的日志搜索。 |
 | Azure 应用服务计划 |   |
-| CPU 使用率 &gt; 80% 的应用服务计划 | 显示 CPU 使用率大于 80% 的应用服务计划的总数，并按 CPU 使用率列出前 10 大应用服务计划。 单击全部区域可以针对 <code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SERVERFARMS/"* MetricName=CpuPercentage &#124; measure Avg(Average) by Resource</code> 运行日志搜索<br> 它会列出应用服务计划及其平均 CPU 使用率。 单击某个应用服务计划，以运行显示其平均 CPU 使用率的日志搜索。 |
-| 内存使用率 &gt; 80% 的应用服务计划 | 显示内存使用率大于 80% 的应用服务计划的总数，并按内存使用率列出前 10 大应用服务计划。 单击全部区域可以针对 <code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SERVERFARMS/"* MetricName=MemoryPercentage &#124; measure Avg(Average) by Resource</code> 运行日志搜索<br> 它会列出应用服务计划及其平均内存使用率。 单击某个应用服务计划，以运行显示其平均内存使用率的日志搜索。 |
+| CPU 使用率 &gt; 80% 的应用服务计划 | 显示 CPU 使用率大于 80% 的应用服务计划的总数，并按 CPU 使用率列出前 10 大应用服务计划。 单击全部区域可以针对 <code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SERVERFARMS/" and MetricName == "CpuPercentage" &#124; summarize AggregatedValue = avg(Average) by Resource</code> 运行日志搜索<br> 它会列出应用服务计划及其平均 CPU 使用率。 单击某个应用服务计划，以运行显示其平均 CPU 使用率的日志搜索。 |
+| 内存使用率 &gt; 80% 的应用服务计划 | 显示内存使用率大于 80% 的应用服务计划的总数，并按内存使用率列出前 10 大应用服务计划。 单击全部区域可以针对 <code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SERVERFARMS/" and MetricName == "MemoryPercentage" &#124; summarize AggregatedValue = avg(Average) by Resource</code> 运行日志搜索<br> 它会列出应用服务计划及其平均内存使用率。 单击某个应用服务计划，以运行显示其平均内存使用率的日志搜索。 |
 | Azure Web 应用活动日志 |   |
-| Azure Web 应用活动审核 | 显示具有[活动日志](log-analytics-activity.md)的 Web 应用的总数并列出前 10 个活动日志操作。 单击全部区域可以针对 <code>Type=AzureActivity ResourceProvider= "Azure Web Sites" &#124; measure count() by OperationName</code> 运行日志搜索<br> 它会列出活动日志操作。 单击某个活动日志操作，为该操作运行列出记录的日志搜索。 |
+| Azure Web 应用活动审核 | 显示具有[活动日志](log-analytics-activity.md)的 Web 应用的总数并列出前 10 个活动日志操作。 单击全部区域可以针对 <code>AzureActivity #124; where ResourceProvider == "Azure Web Sites" #124; summarize AggregatedValue = count() by OperationName</code> 运行日志搜索<br> 它会列出活动日志操作。 单击某个活动日志操作，为该操作运行列出记录的日志搜索。 |
 
 
 

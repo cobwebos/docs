@@ -1,11 +1,10 @@
 ---
-title: "使用复制活动移动数据 | Microsoft Docs"
-description: "了解数据工厂管道中的数据移动：云存储之间以及本地存储和云存储之间的数据迁移。 使用复制活动。"
+title: 使用复制活动移动数据 | Microsoft Docs
+description: 了解数据工厂管道中的数据移动：云存储之间以及本地存储和云存储之间的数据迁移。 使用复制活动。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
 ms.workload: data-services
@@ -15,15 +14,15 @@ ms.topic: article
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dff87d41df2bdb5439785846c9653f2f0be2b40d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 09b35483b5ace1523c88576cfe37dfc313b93036
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](data-factory-data-movement-activities.md)
+> * [版本 1 - 正式版](data-factory-data-movement-activities.md)
 > * [版本 2 - 预览版](../copy-activity-overview.md)
 
 > [!NOTE]
@@ -107,8 +106,8 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | 加拿大 | 加拿大东部 | 加拿大中部 |
 | &nbsp; | 加拿大中部 | 加拿大中部 |
 | 巴西 | 巴西南部 | 巴西南部 |
-| 欧洲 | 北欧 | 欧洲北部 |
-| &nbsp; | 欧洲西部 | 西欧 |
+| 欧洲 | 北欧 | 北欧 |
+| &nbsp; | 欧洲西部 | 欧洲西部 |
 | 英国 | 英国西部 | 英国南部 |
 | &nbsp; | 英国南部 | 英国南部 |
 | 亚太区 | 东南亚 | 东南亚 |

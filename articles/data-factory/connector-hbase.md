@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 数据工厂从 HBase 复制数据 | Microsoft Docs"
-description: "了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 HBase 复制到支持的接收器数据存储。"
+title: 使用 Azure 数据工厂从 HBase 复制数据 | Microsoft Docs
+description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 HBase 复制到支持的接收器数据存储。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 543d0ec5d0c94b793b1e825d44356039b366908a
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: ee4fe897bc8b0b1c969ea2fbfc1289d6a5bba7c2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>使用 Azure 数据工厂从 HBase 复制数据 
 
