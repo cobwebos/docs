@@ -51,7 +51,7 @@
                 ...
                 "reported": {
                     "telemetryConfig": {
-                        "changeId": "{id of the current configuration}",
+                        "configId": "{id of the current configuration}",
                         "sendFrequency": "{current configuration}",
                         "status": "Success",
                     }
@@ -69,11 +69,11 @@
                 ...
                 "reported": {
                     "telemetryConfig": {
-                        "changeId": "{id of the current configuration}",
+                        "configId": "{id of the current configuration}",
                         "sendFrequency": "{current configuration}",
                         "status": "Pending",
                         "pendingConfig": {
-                            "changeId": "{id of the pending configuration}",
+                            "configId": "{id of the pending configuration}",
                             "sendFrequency": "{pending configuration}"
                         }
                     }

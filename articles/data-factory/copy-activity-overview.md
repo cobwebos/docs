@@ -1,23 +1,23 @@
 ---
-title: "Azure 数据工厂中的复制活动 | Microsoft Docs"
-description: "了解 Azure 数据工厂中可用于将数据从支持的源数据存储复制到支持的接收器数据存储的复制活动。"
+title: Azure 数据工厂中的复制活动 | Microsoft Docs
+description: 了解 Azure 数据工厂中可用于将数据从支持的源数据存储复制到支持的接收器数据存储的复制活动。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 03/16/2018
 ms.author: jingwang
-ms.openlocfilehash: faad821d406ac155516696c1207c8c9deef8fdab
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 3b92aed83e01d223b33f269f0202355836f806c1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 

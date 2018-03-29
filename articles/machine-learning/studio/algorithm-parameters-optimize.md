@@ -1,10 +1,11 @@
 ---
-title: "优化 Azure 机器学习中的算法 | Microsoft 文档"
-description: "说明如何为 Azure 机器学习中的算法选择最佳参数集。"
+title: 优化 Azure 机器学习中的算法 | Microsoft 文档
+description: 说明如何为 Azure 机器学习中的算法选择最佳参数集。
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: cgronlun
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 6717e30e-b8d8-4cc1-ad0b-1d4727928d32
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: 664ab97cdfb663d9c8a4cc6c7b748eebfbdf580c
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 3e4423f0a92b08ff7fa7dd8edf430f27ff2d464e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning"></a>选择参数优化 Azure 机器学习中的算法
 本主题说明如何为 Azure 机器学习中的算法选择正确的超参数集。 大多数机器学习算法使用参数来设置。 训练模型时，需要为这些参数提供值。 经过训练的模型效力取决于选择的模型参数。 查找最佳参数集的过程称为*模型选择*。

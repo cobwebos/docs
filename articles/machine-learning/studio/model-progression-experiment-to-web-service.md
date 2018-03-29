@@ -1,10 +1,11 @@
 ---
-title: "如何将 Azure 机器学习模型变为 Web 服务 | Microsoft 文档"
-description: "Azure 机器学习模型如何从开发实验逐步进展为运营 Web 服务的机制概述。"
+title: 如何将 Azure 机器学习模型变为 Web 服务 | Microsoft 文档
+description: Azure 机器学习模型如何从开发实验逐步进展为运营 Web 服务的机制概述。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: garye
-ms.openlocfilehash: 383f0a466f92a230e49c3d1e96d306a0b7d67da2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f36c8cf68c707e4472fd1779044a64e7f9f4c004
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-a-machine-learning-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>机器学习模型如何从实验逐步变为运营 Web 服务
 Azure 机器学习工作室提供交互式画布，允许开发、运行、测试和迭代表示预测分析模型的***实验***。 有大量各种不同的模块可用于：
@@ -70,7 +70,7 @@ Azure 机器学习工作室提供交互式画布，允许开发、运行、测�
 > 
 
 ### <a name="the-web-service"></a>Web 服务
-预测实验准备就绪让你感到满意后，即可基于 Azure Resource Manager 将服务部署为经典 Web 服务或新的 Web 服务。 要通过将其部署为*经典机器学习 Web 服务*来实施模型，请单击“**部署 Web 服务**”，然后选择“**部署 Web 服务[经典]**”。 要作为*新的机器学习 Web 服务*进行部署，请单击“**部署 Web 服务**”，并选择“**部署 Web 服务[新]**”。 用户现在可以使用 Web 服务 REST API 将数据发送到模型并接收返回的结果。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
+预测实验准备就绪让你感到满意后，即可基于 Azure 资源管理器将服务部署为经典 Web 服务或新的 Web 服务。 要通过将其部署为*经典机器学习 Web 服务*来实施模型，请单击“**部署 Web 服务**”，然后选择“**部署 Web 服务[经典]**”。 要作为*新的机器学习 Web 服务*进行部署，请单击“**部署 Web 服务**”，并选择“**部署 Web 服务[新]**”。 用户现在可以使用 Web 服务 REST API 将数据发送到模型并接收返回的结果。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
 
 ## <a name="the-non-typical-case-creating-a-non-predictive-web-service"></a>非典型情况：创建一个非预测性的 Web 服务
 如果实验没有对预测分析模型进行训练，则无需创建训练实验和评分实验 - 只有一个实验，并且可以将其部署为 Web 服务。 机器学习工作室可通过分析所使用的模块，检测实验是否包含预测性模型。

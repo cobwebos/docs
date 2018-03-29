@@ -1,11 +1,10 @@
 ---
-title: "Azure 数据工厂：常见问题解答 | Microsoft Docs"
-description: "获取有关 Azure 数据工厂的常见问题的解答。"
+title: Azure 数据工厂：常见问题解答 | Microsoft Docs
+description: 获取有关 Azure 数据工厂的常见问题的解答。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
 ms.service: data-factory
 ms.workload: data-services
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: shlo
-ms.openlocfilehash: dd2475d5940927c65cae4d12b9697cbe535b69a8
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8c240e1a654c80c34f6b612d9126058e5d67c4c2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文适用于 Azure 数据工厂服务版本 2。 其中提供了有关数据工厂的常见问题的解答。  

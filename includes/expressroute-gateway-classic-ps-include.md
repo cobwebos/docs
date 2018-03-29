@@ -1,4 +1,20 @@
-必须先创建 VNet 和网关子网，然后再处理以下任务。
+---
+title: include 文件
+description: include 文件
+services: expressroute
+author: cherylmc
+ms.service: expressroute
+ms.topic: include
+ms.date: 03/22/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 0bf55d2353d3524e65602c7e67b7adbf80432043
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/23/2018
+---
+必须先创建 VNet 和网关子网，再处理以下任务。
 
 > [!NOTE]
 > 这些示例不适用于 S2S/ExpressRoute 共存配置。

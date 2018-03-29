@@ -1,31 +1,28 @@
 ---
-title: "Azure 流量管理器中的实际用户度量 | Microsoft Docs"
-description: "流量管理器中的实际用户度量简介"
+title: Azure 流量管理器中的实际用户度量 | Microsoft Docs
+description: 流量管理器中的实际用户度量简介
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
 manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 09/19/2017
+ms.date: 03/16/2018
 ms.author: kumud
-ms.custom: 
-ms.openlocfilehash: a7e8ae605b6234341d9ab8b790f4c54d8627f29f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 4e8d808d65c9898d230455d128e3ffc50db303d6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>流量管理器的实际用户度量概述
-
->[!NOTE]
->流量管理器中的“实际用户度量”功能以公共预览版形式提供，并且其可用性和可靠性与正式发布版本中的功能可能不在同一级别。 此功能不受支持，可能存在功能限制，并且可能不是在所有 Azure 区域都可用。 有关此功能可用性和状态方面的最新通知，请参阅 [Azure 流量管理器更新](https://azure.microsoft.com/updates/?product=traffic-manager)页。
 
 将流量管理器配置文件设置为使用性能路由方法时，该服务将查看 DNS 查询请求的来源，做出路由决策将这些请求者定向到可为其提供最低延迟的 Azure 区域。 这是通过利用流量管理器为不同最终用户网络维护的网络延迟智能实现的。
 

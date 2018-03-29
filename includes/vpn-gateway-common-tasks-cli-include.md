@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: e021a1b109f735dee16d75c05c26ab35e599a3d9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/23/2018
+---
 ### <a name="to-view-local-network-gateways"></a>查看本地网关
 
 若要查看本地网关的列表，请使用 [az network local-gateway list](https://docs.microsoft.com/cli/azure/network/local-gateway#az_network_local_gateway_list) 命令。

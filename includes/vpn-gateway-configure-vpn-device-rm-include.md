@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: b5aea9d7fe54402693be095350f7c095334fd4b5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/23/2018
+---
 **下载 VPN 设备配置脚本：**
 
 根据所用的 VPN 设备，有时可以下载 VPN 设备配置脚本。 有关详细信息，请参阅[下载 VPN 设备配置脚本](../articles/vpn-gateway/vpn-gateway-download-vpndevicescript.md)。

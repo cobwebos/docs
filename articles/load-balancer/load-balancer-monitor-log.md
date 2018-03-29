@@ -1,6 +1,6 @@
 ---
-title: "监视负载均衡器的操作、事件和计数器 | Microsoft 文档"
-description: "了解如何为 Azure 负载均衡器启用警报事件以及探测运行状况日志记录"
+title: 监视负载均衡器的操作、事件和计数器 | Microsoft 文档
+description: 了解如何为 Azure 负载均衡器启用警报事件以及探测运行状况日志记录
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 4388a1e933a0ebf211b5a7621c74b0622be41a4c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: dabf4bcae957559978e731636bb13554f1a68b73
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="log-analytics-for-azure-load-balancer"></a>Azure 负载均衡器的 Log Analytics
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+>[!NOTE] 
+>Azure 负载均衡器支持两种不同的类型：“基本”和“标准”。 本文介绍基本负载均衡器。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](load-balancer-standard-overview.md)。
 
 可以在 Azure 中使用不同类型的日志对负载均衡器进行管理和故障排除。 可通过门户访问其中某些日志。 可从 Azure Blob 存储提取所有日志并在 Excel 和 PowerBI 等各种工具中查看。 可从下表了解有关各种类型日志的详细信息。
 

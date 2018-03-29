@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
-ms.author: trinadhk
-ms.openlocfilehash: b7e9f45c61d2af1940be50a368b87cd35c85b1dd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: trinadhk, sogup
+ms.openlocfilehash: 6d214072bccb8b2b42828ee003dcf349985b4f43
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="upgrade-to-vm-backup-stack-v2"></a>升级到 VM 备份堆栈 V2
 虚拟机 (VM) 备份堆栈 V2 升级提供以下功能增强：
@@ -49,7 +49,6 @@ ms.lasthandoff: 03/16/2018
 * 这是 VM 备份堆栈的单向升级。 因此，将来的所有备份都要经历此工作流。 由于**此功能是在订阅级别启用的，所有 VM 都要经历此工作流**。 所有新功能补充都基于同一个堆栈。 将来的版本将会支持在策略级别控制此功能。 
 * 对于包含高级磁盘的 VM，在首次备份期间，请确保在首次备份完成之前，存储帐户中能够提供与 VM 大小相当的存储空间。 
 * 由于快照存储在本地以便大幅提升恢复点创建速度和加速还原速度，因此，在七天期限内，可以看到对应于快照的存储成本。
-对于托管磁盘，价格不会提高，因为 restorePointCollections 是免费的。 
 * 如果从快照恢复点执行高级 VM 还原，在还原过程中创建 VM 时，会看到使用了一个临时存储位置。 
 
 ## <a name="how-to-upgrade"></a>如何升级？

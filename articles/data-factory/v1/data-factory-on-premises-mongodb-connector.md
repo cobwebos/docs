@@ -1,11 +1,10 @@
 ---
-title: "使用数据工厂从 MongoDB 移动数据 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂从 MongoDB 数据库移动数据。"
+title: 使用数据工厂从 MongoDB 移动数据 | Microsoft Docs
+description: 了解如何使用 Azure 数据工厂从 MongoDB 数据库移动数据。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 10ca7d9a-7715-4446-bf59-2d2876584550
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 20df17ba01cfc18ce751491d154d7401001e706e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 086cc528e500a55bba73796e5fc7b17c561de8b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -358,7 +357,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 | 1111 |0 |5 |
 | 1111 |1 |6 |
 | 2222 |0 |1 |
-| 2222 |1 |#N/A |
+| 2222 |1 |2 |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

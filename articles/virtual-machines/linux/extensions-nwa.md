@@ -1,11 +1,11 @@
 ---
-title: "适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展 | Microsoft 文档"
-description: "使用虚拟机扩展在 Linux 虚拟机上部署网络观察程序代理。"
+title: 适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展 | Microsoft 文档
+description: 使用虚拟机扩展在 Linux 虚拟机上部署网络观察程序代理。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dennisg
 manager: amku
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5c81e94c-e127-4dd2-ae83-a236c4512345
 ms.service: virtual-machines-linux
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: fd160fc8cfc2e79ffa9492bb0ef4556bec5820d0
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: a51566148eec88f707b524346afc59606196e4da
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>适用于 Linux 的网络观察程序代理虚拟机扩展
 
 ## <a name="overview"></a>概述
 
-[Azure 网络观察程序](https://review.docs.microsoft.com/azure/network-watcher/)是一项网络性能监视、诊断和分析服务，适用于对 Azure 网络进行监视。 网络观察程序代理虚拟机扩展是在 Azure 虚拟机上使用某些网络观察程序功能所必需的。 其中包括根据需要捕获网络流量等高级功能。
+[Azure 网络观察程序](https://docs.microsoft.com/azure/network-watcher/)是一项网络性能监视、诊断和分析服务，适用于对 Azure 网络进行监视。 网络观察程序代理虚拟机扩展是在 Azure 虚拟机上使用某些网络观察程序功能所必需的。 其中包括根据需要捕获网络流量等高级功能。
 
 本文档详细介绍适用于 Linux 的网络观察程序代理虚拟机扩展支持的平台和部署选项。
 
@@ -112,4 +112,4 @@ azure vm extension get myResourceGroup1 myVM1
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容不了解，可以参阅网络观察程序文档或联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/en-us/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/en-us/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/en-us/support/faq/)。
+如果对本文中的任何内容不了解，可以参阅网络观察程序文档或联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/en-us/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/en-us/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/en-us/support/faq/)。

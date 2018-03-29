@@ -1,11 +1,11 @@
 ---
-title: "Azure 数据工厂中的 If Condition 活动 | Microsoft 文档"
-description: "If Condition 活动允许你控制基于条件的处理流。"
+title: Azure 数据工厂中的 If Condition 活动 | Microsoft 文档
+description: If Condition 活动允许你控制基于条件的处理流。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 016cd8ac8dc4b65117bf8c07e8d8d4c74c8d9623
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 537032ade9e6569def84499ca6d2d937f77312e3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure 数据工厂中的 If Condition 活动
 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为 `true` 时，它会计算一组活动，当条件计算结果为 `false` 时，它会计算另一组活动。 
 
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
 
 ## <a name="syntax"></a>语法
 
@@ -70,7 +70,7 @@ If Condition 活动可提供 if 语句在编程语言中提供相同的功能。
 
 属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-name | if-condition 活动名称。 | String | 是
+名称 | if-condition 活动名称。 | String | 是
 type | 必须设置为“IfCondition” | String | 是
 表达式 | 计算结果必须为 true 或 false 的表达式 | 是
 ifTrueActivities | 表达式计算结果为 `true` 时将执行的活动集。 | 是

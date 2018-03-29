@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect：直通身份验证 | Microsoft Docs"
-description: "本文介绍 Azure Active Directory (Azure AD) 传递身份验证，以及它如何通过针对本地 Active Directory 验证用户密码来实现 Azure AD 登录。"
+title: Azure AD Connect：直通身份验证 | Microsoft Docs
+description: 本文介绍 Azure Active Directory (Azure AD) 传递身份验证，以及它如何通过针对本地 Active Directory 验证用户密码来实现 Azure AD 登录。
 services: active-directory
-keywords: "什么是 Azure AD Connect 直通身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录"
-documentationcenter: 
+keywords: 什么是 Azure AD Connect 直通身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: billmath
-ms.openlocfilehash: 5a559c749bc7ba3cabbbb1a171605b8baf601eef
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: d19e63e10f2d42d97bb6fabca9c9e47028cbaf39
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/09/2018
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-此功能是 [Azure AD 密码哈希同步](active-directory-aadconnectsync-implement-password-synchronization.md)的一种替代方法，可为组织提供同样的云身份验证权益。 但是，某些组织中的安全和符合性策略不允许这些组织发送用户密码，即使是以经过哈希处理的窗体在其内部边界之外进行发送也是如此。 传递身份验证是这类组织的理想解决方案。
+此功能是 [Azure AD 密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md)的一种替代方法，可为组织提供同样的云身份验证权益。 但是，某些组织中的安全和符合性策略不允许这些组织发送用户密码，即使是以经过哈希处理的窗体在其内部边界之外进行发送也是如此。 传递身份验证是这类组织的理想解决方案。
 
 ![Azure AD 直通身份验证](./media/active-directory-aadconnect-pass-through-authentication/pta1.png)
 

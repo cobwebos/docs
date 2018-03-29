@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 45b07c6ca86802d0cc3e773234e1122ba7bd9ea7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 980cf7b59ed16778bbb6cd1b657e3522407c79c9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-portal"></a>使用 Azure 门户通过路由表路由网络流量
 
@@ -260,4 +260,4 @@ NVA 是执行网络功能（如路由、防火墙或 WAN 优化）的 VM。
 尽管可以在一个虚拟网络中部署多个 Azure 资源，但无法将某些 Azure PaaS 服务的资源部署到虚拟网络。 不过，仍可以限制为只允许来自某个虚拟网络子网的流量访问某些 Azure PaaS 服务的资源。 请继续学习下一篇教程，了解如何限制 Azure PaaS 资源的网络访问。
 
 > [!div class="nextstepaction"]
-> [限制 PaaS 资源的网络访问](virtual-network-service-endpoints-configure.md#azure-portal)
+> [限制 PaaS 资源的网络访问](tutorial-restrict-network-access-to-resources.md)

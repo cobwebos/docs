@@ -1,6 +1,6 @@
 ---
-title: "Azure 内部负载均衡器概述 | Microsoft Docs"
-description: "内部负载均衡器在 Azure 中的工作原理以及配置内部终结点的方案。"
+title: Azure 内部负载均衡器概述 | Microsoft Docs
+description: 内部负载均衡器在 Azure 中的工作原理以及配置内部终结点的方案。
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 54e390dbdb07cb4c45c801b638099aa0dcc6db1a
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 0511165225f5a336291e86e0c504e60989933f3c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="overview-of-azure-internal-load-balancer"></a>Azure 内部负载均衡器概述
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Azure 内部负载均衡器 (ILB) 仅将流量定向到云服务内的资源，或使用 VPN 来访问 Azure 基础结构。 在这一点上，ILB 与面向 Internet 的负载均衡器不同。 Azure 基础结构限制了对云服务或虚拟网络的负载均衡虚拟 IP (VIP) 地址的访问。 VIP 地址和虚拟网络不会直接公开给 Internet 终结点。 内部业务线应用程序可在 Azure 中运行，并可从 Azure 内或从本地资源访问这些应用程序。
 
@@ -76,8 +76,8 @@ Web 层包含 Internet 客户端的面向 Internet 的终结点，是负载均�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 负载均衡器的 Azure Resource Manager 支持](load-balancer-arm.md)
-* [配置面向 Internet 的负载均衡器入门](load-balancer-get-started-internet-arm-ps.md)
+* [Azure 负载均衡器的 Azure 资源管理器支持](load-balancer-arm.md)
+* [开始配置面向 Internet 的负载均衡器](load-balancer-get-started-internet-arm-ps.md)
 * [配置内部负载均衡器入门](load-balancer-get-started-ilb-arm-ps.md)
 * [配置负载均衡器分发模式](load-balancer-distribution-mode.md)
 * [配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)

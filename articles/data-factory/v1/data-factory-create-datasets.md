@@ -1,11 +1,10 @@
 ---
-title: "在 Azure 数据工厂中创建数据集 | Microsoft Docs"
-description: "了解如何通过使用 offset 和 anchorDateTime 等属性的示例在 Azure 数据工厂中创建数据集。"
+title: 在 Azure 数据工厂中创建数据集 | Microsoft Docs
+description: 了解如何通过使用 offset 和 anchorDateTime 等属性的示例在 Azure 数据工厂中创建数据集。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 0614cd24-2ff0-49d3-9301-06052fd4f92a
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 1733e953d9dd65a3d2b801e6c5ba5cfbb5f82920
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: a572824225c0d83af698c4ff18d6b297b1ebb729
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

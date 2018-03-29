@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN 中的 HTTP/2 支持 | Microsoft Docs"
-description: "了解 HTTP/2 和 CDN 支持。"
+title: Azure CDN 中的 HTTP/2 支持 | Microsoft Docs
+description: 了解 HTTP/2 和 CDN 支持。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: lichard
 manager: erikre
-editor: 
+editor: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: rli
-ms.openlocfilehash: 4f8dd685c3ae89535217d7a17a01c5129ca7e6e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a58ab1165f3886484fb695170100422c2f1b0486
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="http2-support-in-azure-cdn"></a>Azure CDN 中的 HTTP/2 支持
 
 HTTP/2 是 HTTP/1.1 的主要修订。 它提供更快的 Web 性能、减少了响应时间并改进了用户体验，同时保留了熟悉的 HTTP 方法、状态代码和语义。 尽管 HTTP/2 用于处理 HTTP 和 HTTPS，但许多客户端 Web 浏览器仅通过 TLS 支持 HTTP/2。
 
-###<a name="http2-benefits"></a>HTTP/2 优点
+### <a name="http2-benefits"></a>HTTP/2 优点
 
 HTTP/2 的优点包括：
 
@@ -40,7 +40,7 @@ HTTP/2 的优点包括：
     客户端使用流依赖关系可向服务器表明哪些资源具有优先级。
 
 
-##<a name="http2-browser-support"></a>HTTP/2 浏览器支持
+## <a name="http2-browser-support"></a>HTTP/2 浏览器支持
 
 所有主流浏览器均已在其当前版本中实现 HTTP/2 支持。 不支持的浏览器会自动回退到 HTTP/1.1。
 
@@ -52,11 +52,11 @@ HTTP/2 的优点包括：
 |Opera| 32|
 |Safari| 9|
 
-##<a name="enabling-http2-support-in-azure-cdn"></a>在 Azure CDN 中启用 HTTP/2 支持
+## <a name="enabling-http2-support-in-azure-cdn"></a>在 Azure CDN 中启用 HTTP/2 支持
 
 目前，HTTP/2 支持对于**来自 Akamai 的 Azure CDN** 和**来自 Verizon 的 Azure CDN** 配置文件有效。 客户无需进一步执行操作。
 
-##<a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 若要查看使用 HTTP/2 的好处，请参阅[来自 Akamai 的本演示](https://http2.akamai.com/demo)。
 

@@ -1,11 +1,10 @@
 ---
-title: "监视和管理数据管道 - Azure | Microsoft 文档"
-description: "了解如何使用“监视和管理”应用来监视和管理 Azure 数据工厂和管道。"
+title: 监视和管理数据管道 - Azure | Microsoft 文档
+description: 了解如何使用“监视和管理”应用来监视和管理 Azure 数据工厂和管道。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4d4371b1372a7ed492faacf16813ae3e3f4c4697
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 5aae5057cccdf8dfbe2a42a39da5b9e70b9166f9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>使用“监视和管理”应用监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]

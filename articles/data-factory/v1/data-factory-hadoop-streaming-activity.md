@@ -1,11 +1,10 @@
 ---
-title: "使用 Hadoop 流式处理活动转换数据 - Azure | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂中的 Hadoop 流式处理活动通过运行 Hadoop 流式处理程序在按需的/自己的 HDInsight 群集上转换数据。"
+title: 使用 Hadoop 流式处理活动转换数据 - Azure | Microsoft Docs
+description: 了解如何使用 Azure 数据工厂中的 Hadoop 流式处理活动通过运行 Hadoop 流式处理程序在按需的/自己的 HDInsight 群集上转换数据。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 4c3ff8f2-2c00-434e-a416-06dfca2c41ec
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9022b03af8c87651a552e7fd3f505156daa3924e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 7d9e103a5953fe5b103c953eee794419e27b43ef
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -94,7 +93,7 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
 }
 ```
 
-注意以下几点：
+请注意以下几点：
 
 1. 将 **linkedServiceName** 设置为链接服务的名称，该服务指向运行流式处理 MapReduce 作业的 HDInsight 群集。
 2. 将活动的类型设置为 **HDInsightStreaming**。

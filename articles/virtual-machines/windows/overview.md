@@ -1,11 +1,11 @@
 ---
-title: "Windows 虚拟机概述 | Microsoft 文档"
-description: "了解如何在 Azure 中创建和管理 Windows 虚拟机。"
+title: Windows 虚拟机概述 | Microsoft 文档
+description: 了解如何在 Azure 中创建和管理 Windows 虚拟机。
 services: virtual-machines-windows
-documentationcenter: 
-author: davidmu1
-manager: timlt
-editor: tysonn
+documentationcenter: ''
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: fbae9c8e-2341-4ed0-bb20-fd4debb2f9ca
 ms.service: virtual-machines-windows
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
-ms.author: davidmu
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4e33186b189394172cba6cf550c01954db941c19
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 6ab964760ea06c2e82d0c9f69f89fe62dec8ceac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虚拟机概述
 
@@ -145,7 +145,7 @@ VM 使用下表中的资源，创建 VM 时，这些资源必须存在，否则�
 ### <a name="manage-availability"></a>管理可用性
 必须知道如何[确保应用程序的高可用性](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 此配置涉及到创建多个 VM，确保至少有一个 VM 在运行。
 
-为了使部署符合 VM 运行时间达到 99.95% 的服务级别协议，必须在[可用性集](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中部署两个或更多个运行工作负荷的 VM。 此配置可确保 VM 分布到多个容错域，并使用不同的维护时段部署到主机上。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) 说明了 Azure 作为整体的保证可用性。
+为了使部署符合 VM 运行时间达到 99.95% 的服务级别协议，必须在[可用性集](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中部署两个或更多个运行工作负荷的 VM。 此配置可确保 VM 分布到多个容错域，并使用不同的维护时段部署到主机上。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
 
 ### <a name="back-up-the-vm"></a>备份 VM
 [恢复服务保管库](../../backup/backup-introduction-to-azure-backup.md)用于保护 Azure 备份和 Azure Site Recovery 服务中的数据与资产。 可以使用恢复服务保管库，[通过 PowerShell 来部署和管理采用 Resource Manager 部署模型的 VM 的备份](../../backup/backup-azure-vms-automation.md)。 

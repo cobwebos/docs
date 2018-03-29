@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 数据工厂将数据从 SQL Server 复制到 BLob 存储 | Microsoft Docs"
-description: "了解如何在 Azure 数据工厂中使用自承载 Integration Runtime 将数据从本地数据存储复制到云。"
+title: 使用 Azure 数据工厂将数据从 SQL Server 复制到 BLob 存储 | Microsoft Docs
+description: 了解如何在 Azure 数据工厂中使用自承载 Integration Runtime 将数据从本地数据存储复制到云。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: ced708febe848d4555429b78c0227a35b7f0c79f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e21c08d418022430400ff14baedc1759d2d16069
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 本教程使用 Azure 数据工厂用户界面 (UI) 创建一个数据工厂管道，用于将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。 同时创建一个自承载 Integration Runtime，用其在本地数据存储和云数据存储之间移动数据。
@@ -144,7 +144,7 @@ ms.lasthandoff: 02/09/2018
 6. 在“版本”下选择“V2 (预览)”。
 7. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
 8. 选择“固定到仪表板”。 
-9. 选择“创建”。
+9. 选择**创建**。
 10. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴：
 
     ![“部署数据工厂”磁贴](media/tutorial-hybrid-copy-portal/deploying-data-factory.png)

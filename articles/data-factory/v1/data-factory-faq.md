@@ -1,11 +1,10 @@
 ---
-title: "Azure 数据工厂 - 常见问题解答"
-description: "有关 Azure 数据工厂的常见问题解答。"
+title: Azure 数据工厂 - 常见问题解答
+description: 有关 Azure 数据工厂的常见问题解答。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2806a65c55f019da5842f29c6ef99dec63ae1bd0
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 387b5e944b0fd198e37a35d7bf1c54f7795c9f21
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure 数据工厂 - 常见问题解答
 > [!NOTE]

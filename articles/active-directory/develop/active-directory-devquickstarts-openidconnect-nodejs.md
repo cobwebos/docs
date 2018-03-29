@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Node.js Web 应用 入门 | Microsoft Docs"
-description: "了解如何构建用于登录的与 Azure AD 集成的 Node.js Express MVC Web 应用。"
+title: Azure AD Node.js Web 应用 入门 | Microsoft Docs
+description: 了解如何构建用于登录的与 Azure AD 集成的 Node.js Express MVC Web 应用。
 services: active-directory
 documentationcenter: nodejs
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 81deecec-dbe2-4e75-8bc0-cf3788645f99
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0a3bbfe32bde0cd3971450f5a9a909dcf8b5d793
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 477056581b847693ae115f94c2f6466036add765
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Azure AD Node.js Web 应用 入门
 此处，我们使用 Passport 进行以下操作：
@@ -402,7 +402,7 @@ Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有�
     </html>
     ```
 
-##<a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 最后，生成并运行应用。 运行 `node app.js`，并转至 `http://localhost:3000`。
 
 使用个人 Microsoft 帐户或者工作或学校帐户登录，随后你会看到该用户的标识在 /account 列表中的显示方式。 Web 应用现在使用行业标准的协议进行保护，可使用个人和工作/学校帐户来验证用户。

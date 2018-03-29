@@ -1,12 +1,12 @@
 ---
-title: "Azure 负载均衡器的 IPv6 概述 | Microsoft Docs"
-description: "了解 Azure 负载均衡器和负载均衡 VM 的 IPv6 支持。"
+title: Azure 负载均衡器的 IPv6 概述 | Microsoft Docs
+description: 了解 Azure 负载均衡器和负载均衡 VM 的 IPv6 支持。
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: 
-keywords: "ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动, iot"
+manager: jeconnoc
+editor: ''
+keywords: ipv6, azure 负载均衡器, 双堆栈, 公共 ip, 本机 ipv6, 移动, iot
 ms.assetid: 6a1d583f-a305-40fd-a94b-fa42e1943bbb
 ms.service: load-balancer
 ms.devlang: na
@@ -15,16 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 1902475c81c4f83f8ba69a05f9564bc65a5de833
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9622ad4922aa98efe093e7f809a490a8797eb1fd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure 负载均衡器的 IPv6 概述
 
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+>[!NOTE] 
+>Azure 负载均衡器支持两种不同的类型：“基本”和“标准”。 本文介绍基本负载均衡器。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](load-balancer-standard-overview.md)。
 
 可以在面向 Internet 的负载均衡器上部署 IPv6 地址。 除了 IPv4 连接以外，这还可以实现以下功能：
 
@@ -39,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="features"></a>功能
 
-通过 Azure Resource Manager 部署的本机 IPv6 支持提供以下功能：
+通过 Azure 资源管理器部署的本机 IPv6 支持提供以下功能：
 
 1. 为 Internet 上的 IPv6 客户端提供负载均衡的 IPv6 服务
 2. 在 VM上提供本机 IPv6 和 IPv4 终结点（“双堆栈”）

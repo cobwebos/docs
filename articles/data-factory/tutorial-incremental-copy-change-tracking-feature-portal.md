@@ -1,11 +1,11 @@
 ---
-title: "使用更改跟踪和 Azure 数据工厂以增量方式复制数据 | Microsoft Docs"
-description: "在本教程中，请创建一个 Azure 数据工厂管道，将增量数据以增量方式从本地 SQL Server 数据库中的多个表复制到 Azure SQL 数据库。 "
+title: 使用更改跟踪和 Azure 数据工厂以增量方式复制数据 | Microsoft Docs
+description: '在本教程中，请创建一个 Azure 数据工厂管道，将增量数据以增量方式从本地 SQL Server 数据库中的多个表复制到 Azure SQL 数据库。 '
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/12/2018
 ms.author: jingwang
-ms.openlocfilehash: ddc299d0a292ba17624aa3d0617e420a82f2abf3
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 891dad1a481c966e6ea1771f3e7c7850fa429352
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储 
 在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
@@ -404,7 +404,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 11. 将“存储过程”活动从“活动”工具箱拖放到管道设计器图面。 将活动的名称设置为 **StoredProceduretoUpdateChangeTrackingActivity**。 此活动更新 **table_store_ChangeTracking_version** 表中的更改跟踪版本。
 
     ![存储过程活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
-12. 切换到“ \* SQL 帐户”选项卡，为“链接服务”选择“AzureSqlDatabaseLinkedService”。 
+12. 切换到“SQL 帐户”选项卡，为“链接服务”选择“AzureSqlDatabaseLinkedService”。 
 
     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. 切换到“存储过程”选项卡，然后执行以下步骤： 

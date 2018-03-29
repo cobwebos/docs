@@ -1,11 +1,10 @@
 ---
-title: "从 OData 源移动数据 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂从 OData 源移动数据。"
+title: 从 OData 源移动数据 | Microsoft Docs
+description: 了解如何使用 Azure 数据工厂从 OData 源移动数据。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: de28fa56-3204-4546-a4df-21a21de43ed7
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8ab68fddfd93a92f0f4f5a2904b8e35c409299d1
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 55fde1a1a61f8ec0479cd264b2ce4dd37789c5a4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

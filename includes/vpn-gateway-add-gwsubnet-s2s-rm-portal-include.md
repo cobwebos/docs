@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 3e02242822283ec8597a7be217228cb95e748761
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/23/2018
+---
 1. 在门户中，导航到要为其创建虚拟网关的虚拟网络。
 2. 在 VNet 页的“设置”部分单击“子网”，展开“子网”页。
 3. 在“子网”页中，单击顶部的“+网关子网”打开“添加子网”页。

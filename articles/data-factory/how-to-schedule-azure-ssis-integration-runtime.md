@@ -1,23 +1,23 @@
 ---
-title: "如何计划 Azure SSIS 集成运行时 | Microsoft Docs"
-description: "本文介绍如何使用 Azure 自动化和数据工厂来计划 Azure SSIS 集成运行时的启动和停止。"
+title: 如何计划 Azure SSIS 集成运行时 | Microsoft Docs
+description: 本文介绍如何使用 Azure 自动化和数据工厂来计划 Azure SSIS 集成运行时的启动和停止。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 5a9d1ba4d72bc6d4b297695c478438079d34c6e7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: cc9ab244c784cab608a75092b542dea0a6f69f22
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>如何计划 Azure SSIS 集成运行时的启动和停止 
 运行 Azure SSIS (SQL Server Integration Services) 集成运行时 (IR) 会产生相关的费用。 因此我们希望，只有需要在 Azure 中运行 SSIS 包时才运行 IR，在不需要该包时停止 IR。 可以使用数据工厂 UI 或 Azure PowerShell 来[手动启动或停止 Azure SSIS IR](manage-azure-ssis-integration-runtime.md)。 本文介绍如何使用 Azure 自动化和 Azure 数据工厂来计划 Azure SSIS 集成运行时 (IR) 的启动和停止。 下面是本文所述的概要步骤：
@@ -57,7 +57,7 @@ ms.lasthandoff: 03/12/2018
     4. 选择自动化帐户的**位置**。 
     5. 确认“创建运行方式帐户”设置为“是”。 随后将在 Azure Active Directory 中创建一个服务主体。 该服务主体已添加到 Azure 订阅的“参与者”角色
     6. 选择“固定到仪表板”，以便在门户的仪表板上显示它。 
-    7. 选择“创建”。 
+    7. 选择**创建**。 
 
         ![“新建”->“监视 + 管理”->“自动化”](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
 3. 仪表板和通知中会显示**部署状态**。 
@@ -95,7 +95,7 @@ ms.lasthandoff: 03/12/2018
 
     1. 对于“名称”，请键入 **StartStopAzureSsisRuntime**。
     2. 对于“Runbook 类型”，请选择“PowerShell”。
-    3. 选择“创建”。
+    3. 选择**创建**。
     
         ![“添加 Runbook”按钮](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
 3. 将以下脚本复制/粘贴到 Runbook 脚本窗口。 使用工具栏上的“保存”和“发布”按钮保存并发布该 Runbook。 
@@ -187,7 +187,7 @@ ms.lasthandoff: 03/12/2018
     4. 在“启动”部分的时间输入框中，指定比当前时间稍晚几分钟的时间。 
     5. 对于“重复周期 ”，请选择“定期”。 
     6. 在“重复间隔”部分选择“天”。 
-    7. 选择“创建”。 
+    7. 选择**创建**。 
 
         ![计划 Azure SSIS IR 的启动](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
 3. 切换到“参数和运行设置”选项卡。指定资源组名称、数据工厂名称和 Azure SSIS IR 名称。 对于“操作”，请输入“启动”。 选择“确定”。 再次选择“确定”，在 Runbook 的“计划”页上查看该计划。 

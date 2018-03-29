@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 8a49653b4083cbfd17656d701225dcb14f91f637
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/23/2018
+---
 在使用点到站点连接连接到 VNet 的每台客户端计算机上，必须安装客户端证书。 客户端证书从根证书生成，安装在每个客户端计算机上。 如果未安装有效的客户端证书，而客户端尝试连接到 VNet，则身份验证会失败。
 
 可以为每个客户端生成唯一证书，也可以对多个客户端使用同一证书。 生成唯一客户端证书的优势是能够吊销单个证书。 否则，如果多个客户端使用相同的客户端证书，则在需要撤销它时，必须为所有使用该证书进行身份验证的客户端生成并安装新证书。

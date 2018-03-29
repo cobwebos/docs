@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 中实现应用程序数据的高可用性 | Microsoft Docs"
-description: "使用读取访问异地冗余存储实现应用程序数据的高可用性"
+title: 在 Azure 中实现应用程序数据的高可用性 | Microsoft Docs
+description: 使用读取访问异地冗余存储实现应用程序数据的高可用性
 services: storage
 author: tamram
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 5b1c443cae8481d98c32a3f4d9e3899621d1dd89
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: ce72c1a68c1dbe5cede33dd42adc1b002a81326e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>使用 Azure 存储实现应用程序数据的高可用性
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/02/2018
 # <a name="python-tabpython"></a>[Python] (#tab/python) 
 
 * [安装 Python](https://www.python.org/downloads/)
-* 下载并安装[用于 Python 的 Azure 存储 SDK](storage-python-how-to-use-blob-storage.md#download-and-install-azure-storage-sdk-for-python)
+* 下载并安装[用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python)
 * （可选）下载并安装 [Fiddler](https://www.telerik.com/download/fiddler)
 
 ---

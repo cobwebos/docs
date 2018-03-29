@@ -1,11 +1,10 @@
 ---
-title: "将数据移入/移出 Azure Cosmos DB | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂将数据移入/移出 Azure Cosmos DB 集合"
+title: 将数据移入/移出 Azure Cosmos DB | Microsoft Docs
+description: 了解如何使用 Azure 数据工厂将数据移入/移出 Azure Cosmos DB 集合
 services: data-factory, cosmosdb
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: c9297b71-1bb4-4b29-ba3c-4cf1f5575fac
 ms.service: multiple
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 89b860bb4174a06c17da1db2bce2eaa11832b0b2
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 996fdd9934d79f1640e58c7853564ac05ebb90bb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure Cosmos DB
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

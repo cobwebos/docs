@@ -1,6 +1,6 @@
 ---
-title: "创建公共负载均衡器 - Azure 模板 | Microsoft Docs"
-description: "了解如何使用模板在资源管理器中创建公共负载均衡器"
+title: 创建公共负载均衡器 - Azure 模板 | Microsoft Docs
+description: 了解如何使用模板在资源管理器中创建公共负载均衡器
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 21ff5a48d29117ba1d6195f308f00180b1f1edbf
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8452d3a6e165bbcd6007d9dc2261e458746b475a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>使用模板创建公共负载均衡器
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/23/2018
 > * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [模板](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 

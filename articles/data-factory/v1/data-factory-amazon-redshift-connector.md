@@ -1,11 +1,10 @@
 ---
-title: "使用 Azure 数据工厂从 Amazon Redshift 移动数据 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂复制活动从 Amazon Redshift 移动数据。"
+title: 使用 Azure 数据工厂从 Amazon Redshift 移动数据 | Microsoft Docs
+description: 了解如何使用 Azure 数据工厂复制活动从 Amazon Redshift 移动数据。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 47a9feaa692eaf048371b4e534e6b2e8c4086997
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: ab21eaf935ed03b6f34af00f69e993eaffdad1db
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

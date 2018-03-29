@@ -1,12 +1,12 @@
 ---
-title: "验证连接：Azure ExpressRoute 故障排除指南 | Microsoft Docs"
-description: "本页说明如何对 ExpressRoute 线路的端到端连接进行故障排除和验证。"
+title: 验证连接：Azure ExpressRoute 故障排除指南 | Microsoft Docs
+description: 本页说明如何对 ExpressRoute 线路的端到端连接进行故障排除和验证。
 documentationcenter: na
 services: expressroute
 author: rambk
 manager: tracsman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 74b6589a7e06570d978dfe40c5f5bf140e092cc6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5d01f2e402e4b793274761703ec3ca1ea3ff8164
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
 ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络扩展到 Microsoft 云中，涉及以下三个不同的网络区域：
@@ -68,7 +68,7 @@ ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络�
 
 将来会添加更多的验证和检查，请每月回来查看！
 
-##<a name="validate-circuit-provisioning-and-state"></a>验证线路预配和状态
+## <a name="validate-circuit-provisioning-and-state"></a>验证线路预配和状态
 不管什么连接模型，都必须创建 ExpressRoute 线路，从而生成用于线路预配的服务密钥。 预配 ExpressRoute 线路即可在 PE-MSEE (4) 和 MSEE (5) 之间建立冗余性的第 2 层连接。 如需详细了解如何创建、修改、预配和验证 ExpressRoute 线路，请参阅[创建和修改 ExpressRoute 线路][CreateCircuit]一文。
 
 >[!TIP]
@@ -76,7 +76,7 @@ ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络�
 >
 >
 
-###<a name="verification-via-the-azure-portal"></a>通过 Azure 门户进行验证
+### <a name="verification-via-the-azure-portal"></a>通过 Azure 门户进行验证
 可以在 Azure 门户中查看 ExpressRoute 线路的状态，方法是：在左侧栏菜单上选择“![2][2]”，并选择 ExpressRoute 线路。 选择“所有资源”下列出的 ExpressRoute 线路即可打开 ExpressRoute 线路边栏选项卡。 在边栏选项卡的“![3][3]”部分列出了 ExpressRoute 概要，如以下屏幕截图所示：
 
 ![4][4]    
@@ -90,7 +90,7 @@ ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络�
 >
 >
 
-###<a name="verification-via-powershell"></a>通过 PowerShell 进行验证
+### <a name="verification-via-powershell"></a>通过 PowerShell 进行验证
 若要列出资源组中的所有 ExpressRoute 线路，请使用以下命令：
 
     Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
@@ -139,7 +139,7 @@ ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络�
 >
 >
 
-###<a name="verification-via-powershell-classic"></a>通过 PowerShell（经典）进行验证
+### <a name="verification-via-powershell-classic"></a>通过 PowerShell（经典）进行验证
 若要列出订阅的所有 ExpressRoute 线路，请使用以下命令：
 
     Get-AzureDedicatedCircuit
@@ -167,10 +167,10 @@ ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络�
 >
 >
 
-##<a name="validate-peering-configuration"></a>验证对等互连配置
+## <a name="validate-peering-configuration"></a>验证对等互连配置
 在服务提供商完成对 ExpressRoute 线路的预配以后，即可基于 MSEE-PR (4) 和 MSEE (5) 之间的 ExpressRoute 线路创建路由配置。 每个 ExpressRoute 线路可以启用一个、两个或三个路由上下文：Azure 专用对等互连（流量通往 Azure 中的专用虚拟网络）、Azure 公共对等互连（流量通往 Azure 中的公共 IP 地址）、以及 Microsoft 对等互连（流量通往 Office 365 和 Dynamics 365）。 有关如何创建和修改路由配置的详细信息，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]一文。
 
-###<a name="verification-via-the-azure-portal"></a>通过 Azure 门户进行验证
+### <a name="verification-via-the-azure-portal"></a>通过 Azure 门户进行验证
 
 >[!NOTE]
 >如果服务提供商提供第 3 层且对等互连在门户中为空，请使用门户中的刷新按钮来刷新线路配置。 此操作会将正确的线路配置应用到你的线路。 
@@ -188,7 +188,7 @@ ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络�
 >
 >
 
-###<a name="verification-via-powershell"></a>通过 PowerShell 进行验证
+### <a name="verification-via-powershell"></a>通过 PowerShell 进行验证
 若要获取 Azure 专用对等互连配置详细信息，请使用以下命令：
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
@@ -364,7 +364,7 @@ ExpressRoute 可以通过经连接提供商加速的专用连接将本地网络�
 
     Route Table Info:
 
-##<a name="check-the-traffic-statistics"></a>检查流量统计信息
+## <a name="check-the-traffic-statistics"></a>检查流量统计信息
 若要获取对等互连上下文在主要路径和辅助路径上的综合流量统计信息（出入字节数），请使用以下命令：
 
     Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private

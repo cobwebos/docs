@@ -1,8 +1,8 @@
 ---
-title: "为多个应用程序授予 Azure 密钥保管库的访问权限 | Microsoft Docs"
-description: "了解如何为多个应用程序授予密钥保管库的访问权限"
+title: 为多个应用程序授予 Azure 密钥保管库的访问权限 | Microsoft Docs
+description: 了解如何为多个应用程序授予密钥保管库的访问权限
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: ambapat
-ms.openlocfilehash: 14da9256def60d678ef5cae795fef1c373914b5c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ddeaf184138bd48d324799ddb45248b0a0ee8eeb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>为多个应用程序授予密钥保管库的访问权限
 
@@ -47,7 +47,7 @@ Add-AzureADGroupMember –ObjectId $aadGroup.ObjectId -RefObjectId $spn.ObjectId
 # You can add several members to this group, in this fashion. 
  
 # Set the Key Vault ACLs 
-Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.ObjectId -PermissionToKeys all –PermissionToSecrets all –PermissionToCertificates all 
+Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.ObjectId -PermissionsToKeys all –PermissionsToSecrets all –PermissionsToCertificates all 
  
 # Of course you can adjust the permissions as required 
 ```

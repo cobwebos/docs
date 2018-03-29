@@ -1,24 +1,19 @@
 ---
-title: "业务连续性和灾难恢复 (BCDR)：Azure 配对区域 | Microsoft Docs"
-description: "了解 Azure 区域对，以确保应用程序在数据中心发生故障期间可保持复原能力。"
+title: 业务连续性和灾难恢复 (BCDR)：Azure 配对区域 | Microsoft Docs
+description: 了解 Azure 区域对，以确保应用程序在数据中心发生故障期间可保持复原能力。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rayne-wiselman
-manager: cfreeman
-editor: 
-ms.assetid: c2d0a21c-2564-4d42-991a-bc31723f61a4
-ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
+manager: carmonm
+ms.service: multiple
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/21/2018
 ms.author: raynew
-ms.openlocfilehash: 394f353837433e241e4da6f4accdb5eaa24bae46
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 660ced47b48e981b65c6b9390809e345be8eda2d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
@@ -46,7 +41,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 | 北美 |美国东部 |美国西部 |
 | 北美 |美国东部 2 |美国中部 |
 | 北美 |美国西部 2 |美国中西部 |
-| 欧洲 |欧洲北部 |欧洲西部 |
+| 欧洲 |北欧 |欧洲西部 |
 | 日本 |日本东部 |日本西部 |
 | 巴西 |巴西南部 (2) |美国中南部 |
 | 美国政府 |美国爱荷华州政府 (3) |美国政府弗吉尼亚州 |
@@ -58,10 +53,10 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 
 表 1 - Azure 区域对映射
 
-- > (1) 印度西部的不同之处在于，它仅在一个方向与其他地区配对。 印度西部的次要区域是印度南部，而印度南部的次要区域是印度中部。
-- > (2) 巴西南部与其他区域的不同之处在于，它与自身地理位置外部的区域配对。 巴西南部的次要区域是美国中南部，但是美国中南部的次要区域不是巴西南部。
-- > (3) 美国爱荷华州政府的次要区域是美国弗吉尼亚州政府，但美国弗吉尼亚州政府的次要区域不是美国爱荷华州政府。
-- > (4) 美国弗吉尼亚州政府的次要区域是美国德克萨斯州政府，但美国德克萨斯州政府的次要区域不是美国弗吉尼亚州政府。
+- (1) 印度西部的不同之处在于，它仅在一个方向与其他地区配对。 印度西部的次要区域是印度南部，而印度南部的次要区域是印度中部。
+- (2) 巴西南部与其他区域的不同之处在于，它与自身地理位置外部的区域配对。 巴西南部的次要区域是美国中南部，但是美国中南部的次要区域不是巴西南部。
+- (3) 美国爱荷华州政府的次要区域是美国弗吉尼亚州政府，但美国弗吉尼亚州政府的次要区域不是美国爱荷华州政府。
+- (4) 美国弗吉尼亚州政府的次要区域是美国德克萨斯州政府，但美国德克萨斯州政府的次要区域不是美国弗吉尼亚州政府。
 
 
 我们建议在区域对之间复制工作负荷，以受益于 Azure 的隔离与可用性策略。 例如，计划的 Azure 系统更新会在配对区域之间依序部署（并不是同时部署）。 这意味着，即使发生罕见的更新失败，两个区域也不会同时受到影响。 此外，如果遭遇少见的广泛中断，至少会优先恢复每个对中的一个区域。

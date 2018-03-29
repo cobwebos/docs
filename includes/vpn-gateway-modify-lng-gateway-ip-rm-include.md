@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: e4d6c23bc7bf9b3228f851ab38ec587bc8552455
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/23/2018
+---
 ### <a name="gwipnoconnection"></a> 修改本地网关的“GatewayIpAddress”- 无网关连接
 
 如果要连接的 VPN 设备已更改其公共 IP 地址，则需根据该更改修改本地网关。 请使用此示例修改没有网关连接的本地网关。

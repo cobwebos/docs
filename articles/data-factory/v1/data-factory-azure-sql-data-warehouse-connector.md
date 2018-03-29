@@ -1,11 +1,10 @@
 ---
-title: "从 Azure SQL 数据仓库复制数据/将数据复制到 Azure SQL 数据仓库| Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂从 Azure SQL 数据仓库复制数据/将数据复制到 Azure SQL 数据仓库"
+title: 从 Azure SQL 数据仓库复制数据/将数据复制到 Azure SQL 数据仓库| Microsoft Docs
+description: 了解如何使用 Azure 数据工厂从 Azure SQL 数据仓库复制数据/将数据复制到 Azure SQL 数据仓库
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: d90fa9bd-4b79-458a-8d40-e896835cfd4a
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 97782d1437f47a5ec403a98464d38961874d7575
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 709a178d99a34adb9c77086e55270fe41ed84551
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 Azure SQL 数据仓库复制数据/将数据复制到 Azure SQL 数据仓库
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -198,7 +197,7 @@ SQL 数据仓库 PolyBase 直接支持作为源并具有特定文件格式要求
 1. **源链接服务**的类型为：**AzureStorage** 或**使用服务主体身份验证的 AzureDataLakeStore**。  
 2. **输入数据集**的类型为：**AzureBlob** 或 **AzureDataLakeStore**，`type` 属性下的格式类型为 **OrcFormat**、**ParquetFormat** 或 **TextFormat**，其配置如下：
 
-   1. `rowDelimiter` 必须是 \n。
+   1. `rowDelimiter` 必须是 **\n**。
    2. `nullValue` 设置为**空字符串** ("")，或者 `treatEmptyAsNull` 设置为“true”。
    3. `encodingName` 设置为“utf-8”，即**默认**值。
    4. 未指定 `escapeChar`、`quoteChar`、`firstRowAsHeader` 和 `skipLineCount`。

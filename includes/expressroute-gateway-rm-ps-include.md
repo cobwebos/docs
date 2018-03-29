@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: expressroute
+author: cherylmc
+ms.service: expressroute
+ms.topic: include
+ms.date: 03/22/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: d9eaab359d76afce61cfcc72e3fa125b08856e32
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/28/2018
+---
 此任务的步骤使用的 VNet 基于以下配置参考列表中的值。 此列表中也概述了其他设置和名称。 尽管我们确实基于此列表中的值添加变量，但是我们在任何步骤中不会直接使用此列表。 可以复制列表作为参考，并将列表中的值替换为自己的值。
 
 **配置参考列表**
@@ -47,7 +63,7 @@
 5. 设置配置。
 
   ```powershell
-  Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+  $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
 6. 将网关子网存储为变量。
 

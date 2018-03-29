@@ -1,31 +1,31 @@
 ---
-title: "教程：Polybase 数据加载 - 从 Azure 存储 Blob 到 Azure SQL 数据仓库 | Microsoft Docs"
-description: "本教程使用 Azure 门户和 SQL Server Management Studio 将纽约市出租车数据从 Azure Blob 存储加载到 Azure SQL 数据仓库。"
+title: 教程：Polybase 数据加载 - 从 Azure 存储 Blob 到 Azure SQL 数据仓库 | Microsoft Docs
+description: 本教程使用 Azure 门户和 SQL Server Management Studio 将纽约市出租车数据从 Azure Blob 存储加载到 Azure SQL 数据仓库。
 services: sql-data-warehouse
-documentationcenter: 
+documentationcenter: ''
 author: ckarst
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: sql-data-warehouse
 ms.custom: mvc,develop data warehouses
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 11/17/2017
+ms.date: 03/16/2018
 ms.author: cakarst
 ms.reviewer: barbkess
-ms.openlocfilehash: 4bb9b4a01d3efb90486e34d2b0eb5cfeef66e50c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 77e1666a5c8cc51495f2058ff76b2b99a3212db0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>教程：使用 PolyBase 将数据从 Azure Blob 存储加载到 Azure SQL 数据仓库
 
-PolyBase 是一种标准加载技术，用于将数据加载到 SQL 数据仓库。 在本教程中，使用 PolyBase 将纽约市出租车数据从 Azure Blob 存储加载到 Azure SQL 数据仓库。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) 执行以下操作： 
+PolyBase 是一种标准加载技术，用于将数据加载到 SQL 数据仓库。 在本教程中，使用 PolyBase 将纽约市出租车数据从 Azure Blob 存储加载到 Azure SQL 数据仓库。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 执行以下操作： 
 
 > [!div class="checklist"]
 > * 在 Azure 门户中创建数据仓库
@@ -41,7 +41,7 @@ PolyBase 是一种标准加载技术，用于将数据加载到 SQL 数据仓库
 
 ## <a name="before-you-begin"></a>开始之前
 
-开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS)。
+开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
@@ -91,7 +91,7 @@ PolyBase 是一种标准加载技术，用于将数据加载到 SQL 数据仓库
     ![配置性能](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
 8. 单击“应用” 。
-9. 在“SQL 数据仓库”页中，为空白数据库选择“排序规则”。 对于本教程，请使用默认值。 有关排序规则的详细信息，请参阅 [Collations](/sql/t-sql/statements/collations.md)（排序规则）
+9. 在“SQL 数据仓库”页中，为空白数据库选择“排序规则”。 对于本教程，请使用默认值。 有关排序规则的详细信息，请参阅 [Collations](/sql/t-sql/statements/collations)（排序规则）
 
 11. 完成 SQL 数据库表单后，即可单击“创建”对数据库进行预配。 预配需要数分钟。 
 
@@ -146,7 +146,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 ## <a name="connect-to-the-server-as-server-admin"></a>以服务器管理员的身份连接到服务器
 
-本部分使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) 来建立与 Azure SQL Server 的连接。
+本部分使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 来建立与 Azure SQL Server 的连接。
 
 1. 打开 SQL Server Management Studio。
 
@@ -221,7 +221,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 ## <a name="create-external-tables-for-the-sample-data"></a>为示例数据创建外部表
 
-已准备好开始将数据加载到新的数据仓库。 本教程说明如何使用 [Polybase](/sql/relational-databases/polybase/polybase-guide.md) 从 Azure 存储 Blob 加载纽约市出租车数据。 今后要了解如何将数据移入 Azure Blob 存储，或者将数据直接从源载入 SQL 数据仓库，请参阅 [loading overview](sql-data-warehouse-overview-load.md)（有关加载的概述）。
+已准备好开始将数据加载到新的数据仓库。 本教程说明如何使用 [Polybase](/sql/relational-databases/polybase/polybase-guide) 从 Azure 存储 Blob 加载纽约市出租车数据。 今后要了解如何将数据移入 Azure Blob 存储，或者将数据直接从源载入 SQL 数据仓库，请参阅 [loading overview](sql-data-warehouse-overview-load.md)（有关加载的概述）。
 
 运行以下 SQL 脚本，指定有关想要加载的数据的信息。 此信息包括数据所在的位置、数据内容的格式以及数据的表定义。 
 
@@ -237,7 +237,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     CREATE MASTER KEY;
     ```
 
-4. 运行以下 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql.md) 语句，定义 Azure Blob 的位置。 这是外部出租车数据的位置。  要运行追加到查询窗口的命令，请突出显示要运行的命令，然后单击“执行”。
+4. 运行以下 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) 语句，定义 Azure Blob 的位置。 这是外部出租车数据的位置。  要运行追加到查询窗口的命令，请突出显示要运行的命令，然后单击“执行”。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE NYTPublic
@@ -248,7 +248,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     );
     ```
 
-5. 运行以下 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql.md) T-SQL 语句，指定外部数据文件的格式设置特征和选项。 此语句指定外部数据存储为文本，且值由管道 ("|") 字符分隔。 使用 Gzip 压缩外部文件。 
+5. 运行以下 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql) T-SQL 语句，指定外部数据文件的格式设置特征和选项。 此语句指定外部数据存储为文本，且值由管道 ("|") 字符分隔。 使用 Gzip 压缩外部文件。 
 
     ```sql
     CREATE EXTERNAL FILE FORMAT uncompressedcsv
@@ -273,7 +273,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     );
     ```
 
-6.  运行以下 [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql.md) 语句，创建外部文件格式的架构。 该架构提供组织即将创建的外部表的方法。
+6.  运行以下 [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql) 语句，创建外部文件格式的架构。 该架构提供组织即将创建的外部表的方法。
 
     ```sql
     CREATE SCHEMA ext;
@@ -456,7 +456,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 > 本教程直接将数据加载到最终表。 在生产环境中，通常使用 CREATE TABLE AS SELECT 将数据加载到临时表。 数据在临时表中时，可以执行任何必要的转换。 要将临时表中的数据追加到生产表，可以使用 INSERT...SELECT 语句。 有关详细信息，请参阅[将数据插入到生产表](guidance-for-loading-data.md#inserting-data-into-a-production-table)。
 > 
 
-下面的脚本使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) T-SQL 语句将数据从 Azure 存储 Blob 加载到数据仓库中的新表。 CTAS 基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。 当 select 语句从外部表进行选择时，SQL 数据仓库将数据导入数据仓库中的关系表。 
+下面的脚本使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 语句将数据从 Azure 存储 Blob 加载到数据仓库中的新表。 CTAS 基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。 当 select 语句从外部表进行选择时，SQL 数据仓库将数据导入数据仓库中的关系表。 
 
 1. 运行以下脚本，将数据加载到数据仓库中的新表。
 

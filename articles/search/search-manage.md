@@ -1,11 +1,11 @@
 ---
-title: "Azure 门户中 Azure 搜索服务管理"
-description: "使用 Azure 门户管理 Azure 搜索，这是 Microsoft Azure 上托管的云搜索服务。"
+title: Azure 门户中 Azure 搜索服务管理
+description: 使用 Azure 门户管理 Azure 搜索，这是 Microsoft Azure 上托管的云搜索服务。
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: HeidiSteen
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-portal
 ms.assetid: c87d1fdd-b3b8-4702-a753-6d7e29dbe0a2
 ms.service: search
@@ -15,15 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 916a08aacca428530bc4f728d5de422e04bed8bc
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d19683291e001c3c3f2a7bfc5c203b5121a8a418
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure 门户中 Azure 搜索服务管理
 > [!div class="op_single_selector"]
-> * [门户](search-manage.md)
+> * [Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
@@ -44,26 +44,12 @@ Azure 搜索是一种完全托管的、基于云的搜索服务，用于在自�
 ## <a name="administrator-rights"></a>管理员权限
 预配或解除对服务本身的授权可以通过 Azure 订阅管理员或协同管理员完成。
 
-在服务中，有权访问服务 URL 并拥有管理员 API 密钥的任何人都有对该服务的读写访问权限。 借助读写访问权限能够添加、删除或修改服务器对象（包括通过 [RBAC 定义的角色](#rbac)实现的 API 密钥、索引、索引器、数据源、计划和角色分配）。
+在服务中，有权访问服务 URL 并拥有管理员 API 密钥的任何人都有对该服务的读写访问权限。 借助读写访问权限能够添加、删除或修改服务器对象（包括通过 [RBAC 定义的角色](search-security-rbac.md)实现的 API 密钥、索引、索引器、数据源、计划和角色分配）。
 
-Azure 搜索服务的所有用户交互属于下列模式之一：对服务的读写访问（管理员权限）或对服务的只读访问（查询权限）。 有关详细信息，请参阅[管理 API 密钥](#manage-keys)。
+Azure 搜索服务的所有用户交互属于下列模式之一：对服务的读写访问（管理员权限）或对服务的只读访问（查询权限）。 有关详细信息，请参阅[管理 API 密钥](search-security-api-keys.md)。
 
 <a id="sys-info"></a>
 
-## <a name="set-rbac-roles-for-administrative-access"></a>针对管理访问权限设置 RBAC 角色
-对于通过门户或 Resource Manager API 管理的所有服务，Azure 提供了[基于全局角色的授权模型](../active-directory/role-based-access-control-configure.md)。 所有者、参与者和读者角色根据分配给每个角色的 Active Directory 用户、组和安全主体的服务管理，确定服务管理的级别。 
-
-对于 Azure 搜索，RBAC 权限确定以下管理任务：
-
-| 角色 | 任务 |
-| --- | --- |
-| 所有者 |创建或删除服务或者服务上的任何对象，包括 API 密钥、索引、索引器、索引器数据源和索引器计划。<p>查看服务状态，包括计数和存储大小。<p>添加或删除角色成员身份（仅所有者才能管理角色成员身份）。<p>订阅管理员和服务所有者拥有所有者角色的自动成员身份。 |
-| 参与者 |访问级别与所有者的访问级别相同，不包括 RBAC 角色管理。 例如，参与者可以查看和重新生成 `api-key`，但不能修改角色成员身份。 |
-| 读取器 |查看服务状态和查询密钥。 此角色的成员既不能更改服务配置，也无法查看管理密钥。 |
-
-角色不授予对服务终结点的访问权限。 搜索服务操作（例如索引管理、索引填充和搜索数据的查询）可通过 API 密钥而非角色进行控制。 有关详细信息，请参阅[什么是基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)中的“管理授权与数据操作”。
-
-<a id="secure-keys"></a>
 ## <a name="logging-and-system-information"></a>日志记录和系统信息
 Azure 搜索服务不会通过门户或程序设计界面公开单个服务的日志文件。 在基本层以及更高层上，Microsoft 会监视所有 Azure 搜索服务以达到服务级别协议 (SLA) 的 99.9% 可用性。 如果服务的速度较慢或请求吞吐量低于 SLA 阈值，则支持团队审查提供给他们的日志文件并解决问题。
 
@@ -72,38 +58,6 @@ Azure 搜索服务不会通过门户或程序设计界面公开单个服务的�
 * 在门户中、在服务仪表板上、通过通知、属性和状态消息。
 * 使用 [PowerShell](search-manage-powershell.md) 或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) 来[获取服务属性](https://docs.microsoft.com/rest/api/searchmanagement/services)，或索引资源使用状况的状态。
 * 如前面所述，通过[搜索流量分析](search-traffic-analytics.md)。
-
-<a id="manage-keys"></a>
-
-## <a name="manage-api-keys"></a>管理 API 密钥
-对搜索服务的所有请求都需要专为服务生成的 API 密钥。 此 API 密钥是用于验证搜索服务终结点的访问的唯一机制。 
-
-API 密钥是随机生成的数字和字母所组成的字符串。 通过 [RBAC 权限](#rbac)，可以删除或读取密钥，但无法将密钥替换为用户定义的密码。 
-
-两种类型的密钥用于访问搜索服务：
-
-* 管理员（适用于服务的任何读写操作）
-* 查询（适用于只读操作，例如针对索引的查询）
-
-预配服务时，会创建管理 API 密钥。 有两个管理密钥，分别指定为*主要*和*辅助*密钥以将它们保持在各自的位置，但事实上是可互换的。 每个服务都有两个管理密钥，以便在转换其中一个时不会丢失服务的访问权限。 可以重新生成任一管理密钥，但无法添加到管理密钥总计数。 每个搜索服务最多有两个管理密钥。
-
-查询密钥专用于直接调用搜索的客户端应用程序。 最多可以创建 50 个查询密钥。 在应用程序代码中，可以指定搜索 URL 和查询 API 密钥，以允许对服务的只读访问。 应用程序代码还会指定应用程序使用的索引。 终结点、仅供只读访问的 API 密钥以及目标索引共同定义客户端应用程序连接的作用域和访问级别。
-
-若要获取或重新生成 API 密钥，请打开服务仪表板。 单击“密钥”以滑动打开密钥管理页。 重新生成或创建密钥的命令都在页面顶部。 默认情况下，仅创建管理密钥。 必须手动创建这些查询 API 密钥。
-
- ![][9]
-
-<a id="rbac"></a>
-
-## <a name="secure-api-keys"></a>保护 API 密钥
-通过门户或 Resource Manager 界面（PowerShell 或命令行接口）以限制访问，从而保护密钥安全。 如前所述，订阅管理员可以查看和重新生成所有 API 密钥。 作为预防措施，查看角色分配以了解谁有权访问管理密钥。
-
-1. 在服务仪表板中，单击“访问”图标以滑动打开“用户”边栏选项卡。
-   ![][7]
-2. 在“用户”中，查看现有的角色分配。 正如预期的那样，订阅管理员已通过所有者角色拥有服务的完全访问权限。
-3. 要进一步研究，请单击“订阅管理员”，并展开角色分配列表，以查看谁在搜索服务上具有共同管理权限。
-
-查看访问权限的另一种方法是单击“用户”边栏选项卡上的“角色”。 这样一来，会显示可用的角色和已分配给每个角色的用户或组数。
 
 <a id="sub-5"></a>
 
@@ -184,9 +138,6 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过 [RBAC
 另一条建议是观看前面部分提到的视频。 视频会更深入地讲解本部分提到的技术。
 
 <!--Image references-->
-[7]: ./media/search-manage/rbac-icon.png
-[8]: ./media/search-manage/Azure-Search-Manage-1-URL.png
-[9]: ./media/search-manage/Azure-Search-Manage-2-Keys.png
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png
 
 

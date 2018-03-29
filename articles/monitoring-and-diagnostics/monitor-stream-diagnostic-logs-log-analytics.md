@@ -1,12 +1,12 @@
 ---
-title: "将 Azure 诊断日志流式传输到 Log Analytics | Microsoft Docs"
-description: "了解如何将 Azure 诊断日志流式传输到 Log Analytics 工作区。"
+title: 将 Azure 诊断日志流式传输到 Log Analytics | Microsoft Docs
+description: 了解如何将 Azure 诊断日志流式传输到 Log Analytics 工作区。
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: johnkem
-ms.openlocfilehash: 9440bd7f872914887c1f6e50f08a3c273536fcf8
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 517ce3547f471dd1b40c79b2f087b02ad7f51b85
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>将 Azure 诊断日志流式传输到 Log Analytics
 可以使用门户、PowerShell cmdlet 或 Azure CLI 将 [Azure 诊断日志](monitoring-overview-of-diagnostic-logs.md)近实时地流式传输到 Azure Log Analytics。
@@ -40,23 +40,23 @@ Azure Log Analytics 是一种灵活的日志搜索和分析工具，利用该工
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>使用门户流式传输诊断日志
 1. 在门户中，导航到 Azure Monitor 并单击“诊断设置”
 
-    ![Azure Monitor 的“监视”部分](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-blade.png)
+    ![Azure Monitor 的“监视”部分](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-blade.png)
 
 2. （可选）按资源组或资源类型筛选列表，并单击要为其设置诊断设置的资源。
 
 3. 如果选定的资源上不存在任何设置，系统会提示创建设置。 单击“启用诊断”。
 
-   ![添加诊断设置 - 没有现有的设置](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-none.png)
+   ![添加诊断设置 - 没有现有的设置](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-none.png)
 
    如果资源上有现有的设置，则会看到已在此资源上配置的设置列表。 单击“添加诊断设置”。
 
-   ![添加诊断设置 - 现有的设置](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-multiple.png)
+   ![添加诊断设置 - 现有的设置](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-multiple.png)
 
 3. 为设置提供名称，并选中“发送到 Log Analytics”框，然后选择 Log Analytics 工作区。
    
-   ![添加诊断设置 - 现有的设置](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-configure.png)
+   ![添加诊断设置 - 现有的设置](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-configure.png)
 
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 几分钟后，新设置会显示在此资源的设置列表中，只要生成新的事件数据，就会立即将诊断日志流式传输到该工作区。 请注意，发出事件后可能需要最多 15 分钟的时间该事件才会出现在 Log Analytics 中。
 

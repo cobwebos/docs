@@ -1,11 +1,10 @@
 ---
-title: "使用 Hive 活动转换数据 - Azure | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂中的 Hive 活动在按需/自己的 HDInsight 群集上运行 Hive 查询。"
+title: 使用 Hive 活动转换数据 - Azure | Microsoft Docs
+description: 了解如何使用 Azure 数据工厂中的 Hive 活动在按需/自己的 HDInsight 群集上运行 Hive 查询。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 80083218-743e-4da8-bdd2-60d1c77b1227
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 566773e9bc787bff4e92d86ec57fb0de3121b079
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c37ab34b241e59f70b6417036506dd132ce9aa43
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换数据 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -76,7 +75,7 @@ ms.lasthandoff: 01/23/2018
 ## <a name="syntax-details"></a>语法详细信息
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| name |活动名称 |是 |
+| 名称 |活动名称 |是 |
 | description |描述活动用途的文本 |否 |
 | type |HDinsightHive |是 |
 | inputs |Hive 活动使用的输入 |否 |
