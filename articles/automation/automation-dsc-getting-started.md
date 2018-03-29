@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: e6e4df6fce783e7b4cc33d7f3c26136680ceb44f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 0833005963fa8728c2a52cc9cf5968bf4afe147d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Azure Automation DSC 入门
 本文说明如何使用 Azure Automation Desired State Configuration (DSC) 执行最常见的任务，例如创建、导入、编译配置，登记要管理的计算机和查看报表。 若要大致了解什么是 Azure Automation DSC，请参阅 [ DSC 概述](automation-dsc-overview.md)。 有关 DSC 文档，请参阅 [Windows PowerShell Desired State Configuration 概述](https://msdn.microsoft.com/PowerShell/dsc/overview)。

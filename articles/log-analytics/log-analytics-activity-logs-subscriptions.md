@@ -1,11 +1,11 @@
 ---
-title: "将 Azure 活动日志收集到不同订阅中的 Log Analytics | Microsoft Docs"
-description: "使用事件中心和逻辑应用从 Azure 活动日志中收集数据，并将其发送到不同租户中的 Azure Log Analytics 工作区。"
+title: 将 Azure 活动日志收集到不同订阅中的 Log Analytics | Microsoft Docs
+description: 使用事件中心和逻辑应用从 Azure 活动日志中收集数据，并将其发送到不同租户中的 Azure Log Analytics 工作区。
 services: log-analytics, logic-apps, event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/08/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 89c62563b9772fa07d63a24b4aa20857b0143f85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 23e4b7c74e6dfb88ec6ec50d5b8ae6d8288223f3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>将 Azure 活动日志收集到不同订阅中的 Log Analytics
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 02/21/2018
 - Log Analytics 工作区 ID
 - Log Analytics 共享密钥
 
-若要获取事件中心名称和连接字符串，请遵循[检查事件中心命名空间权限和查找连接字符串](../connectors/connectors-create-api-azure-event-hubs.md#check-event-hubs-namespace-permissions-and-find-the-connection-string)中的步骤。
+若要获取事件中心名称和连接字符串，请遵循[检查事件中心命名空间权限和查找连接字符串](../connectors/connectors-create-api-azure-event-hubs.md#connect-to-azure-event-hubs)中的步骤。
 
 
 ### <a name="create-a-new-blank-logic-app"></a>创建新的空白逻辑应用
@@ -135,7 +135,7 @@ ms.lasthandoff: 02/21/2018
    | Log Analytics  | 如果想要将逻辑应用的每次运行状态记录到 Log Analytics 中，请选择此项。  |
 
     
-3. 选择“创建”。 显示“部署成功”通知时，请单击“转到资源”打开逻辑应用。
+3. 选择**创建**。 显示“部署成功”通知时，请单击“转到资源”打开逻辑应用。
 
 4. 在“模板”下选择“空白逻辑应用”。 
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 02/21/2018
 
    ![在逻辑应用中添加事件中心触发器的插图](media/log-analytics-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
 
-2. 系统提示输入凭据时，请连接到事件中心命名空间。 依次输入连接名称和复制的连接字符串。  选择“创建”。
+2. 系统提示输入凭据时，请连接到事件中心命名空间。 依次输入连接名称和复制的连接字符串。  选择**创建**。
 
    ![在逻辑应用中添加事件中心连接的插图](media/log-analytics-activity-logs-subscriptions/logic-apps-event-hub-add-connection.png)
 

@@ -1,33 +1,31 @@
 ---
-title: "Azure Cosmos DB：使用 Node.js 和 SQL API 生成应用 | Microsoft Docs"
-description: "演示一个可以用来连接到 Azure Cosmos DB SQL API 并进行查询的 Node.js 代码示例"
+title: Azure Cosmos DB：使用 Node.js 和 SQL API 生成应用 | Microsoft Docs
+description: 演示一个可以用来连接到 Azure Cosmos DB SQL API 并进行查询的 Node.js 代码示例
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 9c0f033c-240e-4fee-8421-08907231087f
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: 4e411ead0456abd4728dcae2c204a424ff09b195
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 9aa603c438b267064c2238192669126847f953ef
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-app-with-nodejs-and-the-azure-portal"></a>Azure Cosmos DB：使用 Node.js 和 Azure 门户生成 SQL API 应用
 
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
-
 Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
 
-本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB 帐户、文档数据库和集合。 然后将生成并运行基于 [SQL Node.js API](sql-api-sdk-node.md) 构建的控制台应用。
+本快速入门教程演示如何使用 Azure 门户创建 Azure Cosmos DB 帐户、文档数据库和集合。 然后会生成并运行基于 [SQL Node.js API](sql-api-sdk-node.md) 构建的控制台应用。
 
 ## <a name="prerequisites"></a>先决条件
 

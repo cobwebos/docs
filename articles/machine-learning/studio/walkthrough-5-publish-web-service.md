@@ -1,10 +1,11 @@
 ---
-title: "步骤 5：部署机器学习 Web 服务 | Microsoft Docs"
-description: "开发预测解决方案演练的步骤 5：在 Azure 机器学习工作室中部署一个 Web 服务形式的预测试验。"
+title: 步骤 5：部署机器学习 Web 服务 | Microsoft Docs
+description: 开发预测解决方案演练的步骤 5：在 Azure 机器学习工作室中部署一个 Web 服务形式的预测试验。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: 3fca74a3-c44b-4583-a218-c14c46ee5338
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.author: garye
-ms.openlocfilehash: ba8f1678d87159088c58cf0e05e0fe5a6579b358
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 416a6d1c151fae01a00d00282ab9118e7391fbb7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>演练步骤 5：部署 Azure 机器学习 Web 服务
 这是演练[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)的第五个步骤。

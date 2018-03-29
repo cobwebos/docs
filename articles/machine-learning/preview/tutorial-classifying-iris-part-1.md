@@ -3,7 +3,7 @@ title: 在 Azure 机器学习服务（预览版）中为鸢尾花分类教程准
 description: 本教程的完整内容包括关于如何使用 Azure 机器学习服务（预览版）的端到端演示。 这是第一部分，讨论数据准备。
 services: machine-learning
 author: hning86
-ms.author: haining, j-martens
+ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/7/2018
-ms.openlocfilehash: 16aa3e88217094c259a0dccbe3c52431682ea2e7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7eec99cc0f63d4d82a7eda6dffc6c45471d9915d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-1-classify-iris---preparing-the-data"></a>教程 1：鸢尾花分类 - 准备数据
 
@@ -159,7 +159,7 @@ Azure 机器学习服务（预览版）是一个集成式的端到端数据科�
 
 1. 注意“步骤”窗格中详述的各个数据准备步骤。 在重命名列并筛选 null 值行时，系统将每个操作作为数据准备步骤记录。 可以编辑各个步骤以调整其设置、为步骤重新排序，以及删除步骤。
 
-   ![Steps](media/tutorial-classifying-iris/steps.png)
+   ![步骤](media/tutorial-classifying-iris/steps.png)
 
 1. 关闭数据准备编辑器。 选择带图标的“iris-1”选项卡上的 x 图标，将该选项卡关闭。工作会自动保存到“数据准备”标题下显示的 iris-1.dprep 文件中。
 

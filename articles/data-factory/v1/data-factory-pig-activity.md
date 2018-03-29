@@ -1,11 +1,10 @@
 ---
-title: "在 Azure 数据工厂中使用 Pig 活动转换数据 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂中的 Pig 活动在按需或自己的 HDInsight 群集上运行 Pig 脚本。"
+title: 在 Azure 数据工厂中使用 Pig 活动转换数据 | Microsoft Docs
+description: 了解如何使用 Azure 数据工厂中的 Pig 活动在按需或自己的 HDInsight 群集上运行 Pig 脚本。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 5af07a1a-2087-455e-a67b-a79841b4ada5
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c309debf53cc22d102de740ffd2907257b9821d2
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: af0c19988c52760a681477a5cea7ebbc48492c83
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Pig 活动转换数据
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -84,7 +83,7 @@ ms.lasthandoff: 01/23/2018
 ## <a name="syntax-details"></a>语法详细信息
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| name |活动名称 |是 |
+| 名称 |活动名称 |是 |
 | description |描述活动用途的文本 |否 |
 | type |HDinsightPig |是 |
 | inputs |Pig 活动使用的一个或多个输入 |否 |

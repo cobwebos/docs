@@ -1,6 +1,6 @@
 ---
-title: "Azure DNS 委托概述 | Microsoft Docs"
-description: "了解如何更改域委托并使用 Azure DNS 名称服务器提供域托管。"
+title: Azure DNS 委托概述 | Microsoft Docs
+description: 了解如何更改域委托并使用 Azure DNS 名称服务器提供域托管。
 services: dns
 documentationcenter: na
 author: KumudD
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: kumud
-ms.openlocfilehash: 4ba615a1fc607392fa1a2a910b4674cfbcf51da1
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: fc79999d240baf18ccf5923908c98791c4e7e7bb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>使用 Azure DNS 委托 DNS 区域
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/19/2017
 * *权威* DNS 服务器托管 DNS 区域。 它只应答这些区域中的 DNS 记录查询。
 * *递归* DNS 服务器不托管 DNS 区域。 它调用权威 DNS 服务器来收集所需的数据，以应答所有 DNS 查询。
 
-Azure DNS 提供权威 DNS 服务。  它不提供递归 DNS 服务。 Azure 中的云服务和 VM 自动配置为使用 Azure 基础结构中单独提供的递归 DNS 服务。 有关如何更改这些 DNS 设置的详细信息，请参阅 [Name Resolution in Azure](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)（Azure 中的名称解析）。
+Azure DNS 提供权威 DNS 服务。  它不提供递归 DNS 服务。 Azure 中的云服务和 VM 自动配置为使用 Azure 基础结构中单独提供的递归 DNS 服务。 有关如何更改这些 DNS 设置的详细信息，请参阅 [Name Resolution in Azure](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)（Azure 中的名称解析）。
 
 电脑或移动设备中的 DNS 客户端通常调用递归 DNS 服务器来执行客户端应用程序所需的任何 DNS 查询。
 

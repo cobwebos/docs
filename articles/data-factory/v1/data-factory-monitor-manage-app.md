@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5aae5057cccdf8dfbe2a42a39da5b9e70b9166f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f5ca5544a217d66d334ff468d2308af1836c7de8
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>使用“监视和管理”应用监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/23/2018
 > [!NOTE]
 > 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[在版本 2 中监控和管理数据工厂管道](../monitor-visually.md)。
 
-本文介绍如何使用“监视和管理”应用监视、管理和调试数据工厂管道。 它还提供有关如何创建警报以在发生故障时收到通知的信息。 可以通过观看以下视频开始使用该应用程序：
+本文介绍如何使用“监视和管理”应用监视、管理和调试数据工厂管道。 可以通过观看以下视频开始使用该应用程序：
 
 > [!NOTE]
 > 视频中所示的用户界面可能与门户中看到的内容不完全匹配。 它略显陈旧，但概念保持不变。 
@@ -296,42 +296,3 @@ ms.lasthandoff: 03/23/2018
 可以通过使用 Ctrl 键对两个或更多管道进行多选。 可以使用命令栏按钮（在下图的红色矩形中突出显示）来暂停/恢复它们。
 
 ![命令栏上的“暂停”/“恢复”](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
-
-## <a name="create-alerts"></a>创建警报
-使用“警报”页，可创建警报，并可查看/编辑/删除现有警报。 还可以禁用/启用警报。 若要查看“警报”页，请单击“警报”选项卡。
-
-![警报选项卡](./media/data-factory-monitor-manage-app/AlertsTab.png)
-
-### <a name="to-create-an-alert"></a>创建警报的方式
-1. 单击“添加警报”以添加警报。 此时会显示“详细信息”页。
-
-    ![创建警报 -“详细信息”页](./media/data-factory-monitor-manage-app/CreateAlertDetailsPage.png)
-2. 指定警报的“名称”和“说明”，并单击“下一步”。 随即显示“筛选器”页。
-
-    ![创建警报 -“筛选器”页](./media/data-factory-monitor-manage-app/CreateAlertFiltersPage.png)
-3. 选择想要创建数据工厂服务警报的“事件”、“状态”和“子状态”（可选），并单击“下一步”。 随即显示“收件人”页。
-
-    ![创建警报 -“收件人”页](./media/data-factory-monitor-manage-app/CreateAlertRecipientsPage.png)
-4. 选择“电子邮件订阅管理员”选项和/或输入“其他管理员电子邮件”，并单击“完成”。 随即可在列表中看到警报。
-
-    ![警报列表](./media/data-factory-monitor-manage-app/AlertsList.png)
-
-在“警报”列表中，使用与警报关联的按钮可编辑/删除/禁用/启用警报。
-
-### <a name="eventstatussubstatus"></a>事件/状态/子状态
-下表提供了可用事件和状态（和子状态）的列表。
-
-| 事件名称 | 状态 | 子状态 |
-| --- | --- | --- |
-| 活动运行已启动 |已启动 |正在启动 |
-| 活动运行已完成 |已成功 |已成功 |
-| 活动运行已完成 |已失败 |资源分配失败<br/><br/>执行失败<br/><br/>已超时<br/><br/>验证失败<br/><br/>已放弃 |
-| 按需 HDI 群集创建已开始 |已启动 |-|
-| 已成功创建按需 HDI 群集 |已成功 |-|
-| 按需 HDI 群集已删除 |已成功 |-|
-
-### <a name="to-edit-delete-or-disable-an-alert"></a>编辑、删除或禁用警报
-
-使用以下按钮（以红色突出显示）可编辑、删除或禁用警报。
-
-![警报按钮](./media/data-factory-monitor-manage-app/AlertButtons.png)

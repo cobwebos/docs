@@ -1,23 +1,20 @@
 ---
-title: "试用启用了 Azure AD B2C 的 Web 应用"
-description: "快速入门：尝试使用示例性的 ASP.NET Web应用，通过 Azure Active Directory B2C 进行用户登录。"
+title: 试用启用了 Azure AD B2C 的 Web 应用
+description: 快速入门：尝试使用示例性的 ASP.NET Web应用，通过 Azure Active Directory B2C 进行用户登录。
 services: active-directory-b2c
-author: PatAltimore
+author: davidmu1
 manager: mtillman
-ms.reviewer: saraford
+editor: ''
 ms.service: active-directory-b2c
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 2/13/2018
-ms.author: patricka
-ms.openlocfilehash: 87c180445038b1205e2f6aab1ce721765ecb35c9
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: davidmu
+ms.openlocfilehash: 7d6744fe7ef82a6a4f54291cedd15d5b3d4ee242
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-web-app"></a>快速入门：体验启用了 Azure AD B2C 的 Web 应用
 

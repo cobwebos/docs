@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 0ef1ce8b4949c908595473f0183f585a6fd3da80
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7713e1b6a74fd099206804133d2dc8140fe83a8d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,7 +67,6 @@ DB2 链接服务支持以下属性：
 | type | type 属性必须设置为：Db2 | 是 |
 | server |DB2 服务器的名称。 |是 |
 | database |DB2 数据库的名称。 |是 |
-| schema |数据库中架构的名称。 架构名称区分大小写。 |否 |
 | authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：Basic。 |是 |
 | username |指定用于连接到 DB2 数据库的用户名。 |是 |
 | password |指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |

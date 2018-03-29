@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL 关系数据库服务概述"
-description: "概述了用于 PostgreSQL 关系数据库服务的 Azure 数据库。"
+title: Azure Database for PostgreSQL 关系数据库服务概述
+description: 概述了用于 PostgreSQL 关系数据库服务的 Azure 数据库。
 services: postgresql
 author: kamathsun
 ms.author: sukamat
@@ -10,15 +10,15 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 02/28/2018
-ms.openlocfilehash: ef7f710fb39c3745ff5a20a73cd4dc5c1fa1fece
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 766373f4b9390e576285db73d9e9e9942eb6624f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>什么是用于 PostgreSQL 的 Azure 数据库？
 
-Azure Database for PostgreSQL 是 Microsoft 云中基于开源 [PostgreSQL](https://www.postgresql.org/) 数据库引擎的社区版本、为开发人员构建的关系数据库服务。 此服务目前以公共预览版提供。 用于 PostgreSQL 的 Azure 数据库提供以下功能：
+Azure Database for PostgreSQL 是 Microsoft 云中基于开源 [PostgreSQL](https://www.postgresql.org/) 数据库引擎的社区版本、为开发人员构建的关系数据库服务。 用于 PostgreSQL 的 Azure 数据库提供以下功能：
 
 - 没有额外费用的内置高可用性
 - 使用非独占即用即付定价，实现可预测性能
@@ -45,10 +45,10 @@ Azure Database for PostgreSQL 服务提供三个定价层：“基本”、“�
 如何决定何时调高或调低？ 使用内置的 Azure 监视和警报功能。 使用这些工具，可以根据当前的或预计的性能或存储需求，快速评估调高或调低产生的影响。 有关详细信息，请参阅[警报](howto-alert-on-metric.md)。
 
 ## <a name="keep-your-app-and-business-running"></a>使应用和业务持续运转
-Azure 行业领先的 99.99% 可用性（在预览版中不可用）服务级别协议 (SLA)（由 Microsoft 管理的数据中心的全球网络提供支持），有助于保持应用全天候运行。 对于每个用于 PostgreSQL 服务器的 Azure 数据库，可以利用内置的安全性、容错和数据保护功能。使用其他产品时可能需要另外购买或设计、构建并管理这些功能。 对于 Azure Database for PostgreSQL，每个定价层都提供了一组全面的业务连续性功能和选项，可以使用这些功能和选项快速进入工作状态并保持运行。 可以使用[时间点还原](howto-restore-server-portal.md)将数据库还原到以前的状态，最长可还原到 35 天前。 此外，如果托管数据库的数据中心发生服务中断，可以通过最新备份的异地冗余副本还原数据库。
+Azure 行业领先的 99.99% 可用性服务级别协议 (SLA)（由 Microsoft 管理的数据中心的全球网络提供支持），有助于保持应用全天候运行。 对于每个用于 PostgreSQL 服务器的 Azure 数据库，可以利用内置的安全性、容错和数据保护功能。使用其他产品时可能需要另外购买或设计、构建并管理这些功能。 对于 Azure Database for PostgreSQL，每个定价层都提供了一组全面的业务连续性功能和选项，可以使用这些功能和选项快速进入工作状态并保持运行。 可以使用[时间点还原](howto-restore-server-portal.md)将数据库还原到以前的状态，最长可还原到 35 天前。 此外，如果托管数据库的数据中心发生服务中断，可以通过最新备份的异地冗余副本还原数据库。
 
 ## <a name="secure-your-data"></a>保护数据
-Azure 数据库沿袭了 Azure Database for PostgreSQL 的若干数据安全性功能，包括限制访问、保护静止和移动数据以及帮助监视活动等。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://www.microsoft.com/TrustCenter/Security/default.aspx)。
+Azure 数据库沿袭了 Azure Database for PostgreSQL 的若干数据安全性功能，包括限制访问、保护静止和移动数据以及帮助监视活动等。 有关 Azure 平台安全性的信息，请访问 [Azure 信任中心](https://www.microsoft.com/en-us/trustcenter/security)。
 
 用于 PostgreSQL 的 Azure 数据库服务对静态数据使用存储加密。 包括备份在内的数据都在磁盘中加密（运行查询时由引擎创建的临时文件除外）。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥由系统进行管理。 存储加密始终处于启用状态，无法禁用。
 

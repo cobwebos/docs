@@ -1,9 +1,9 @@
 ---
-title: "有关 Azure 机器学习预览版功能的教程文章 - 命令行接口 | Microsoft Docs"
-description: "本教程逐步讲解通过命令行接口完成端到端鸢尾花分类所要执行的步骤。"
+title: 有关 Azure 机器学习预览版功能的教程文章 - 命令行接口 | Microsoft Docs
+description: 本教程逐步讲解通过命令行接口完成端到端鸢尾花分类所要执行的步骤。
 services: machine-learning
 author: ahgyger
-ms.author: ahgyger, ritbhat
+ms.author: ahgyger
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 10/15/2017
-ms.openlocfilehash: ad81cd02ba0c46cbe58de7071d2164aaefea6514
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 2d7965c0028e8f2e82db2e3ddd4eed6e20f4f443
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>教程：使用命令行接口将鸢尾花分类
 Azure 机器学习服务（预览版）是一个集成式的端到端数据科学和高级分析解决方案，可让专业数据科学家以云的规模准备数据、开发试验和部署模型。

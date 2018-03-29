@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7faa34b5528c53c06aeda25be17cbc5f3db2acdf
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0abf25726936a3d5e69c809c9714965936c7c64c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace 和 AppSource 发布者指南
 
@@ -308,7 +308,7 @@ Microsoft 通过 AAD 对所有 Marketplace 用户进行认证，当已验证的�
 - 开发针对每个用户的“体验版”
 - 使用 SSO 生成多租户示例演示应用
 
-##<a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>Office、Dynamics 和 Power BI 产品的发布过程
+## <a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>Office、Dynamics 和 Power BI 产品的发布过程
 对于扩展 Office、Dynamics 和 Power BI 的 AppSource 应用，可以在本部分的产品特定文档中详细了解具体的要求。 
 
 

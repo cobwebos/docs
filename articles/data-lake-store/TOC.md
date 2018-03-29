@@ -9,7 +9,6 @@
 
 # 入门
 ## [使用门户](data-lake-store-get-started-portal.md)
-## [在存储资源管理器中使用 Data Lake Store](data-lake-store-in-storage-explorer.md)
 ## [使用 PowerShell](data-lake-store-get-started-powershell.md)
 ## [使用 Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 
@@ -17,7 +16,7 @@
 # 如何
 ## 加载和移动数据
 ### [使用 Azure 数据工厂](../data-factory/load-azure-data-lake-store.md)
-### [在存储资源管理器中使用 Data Lake Store](data-lake-store-in-storage-explorer.md)
+### [使用存储资源管理器](data-lake-store-in-storage-explorer.md)
 ### [使用 AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
 ### [使用 DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [使用 Sqoop](data-lake-store-data-transfer-sql-sqoop.md)

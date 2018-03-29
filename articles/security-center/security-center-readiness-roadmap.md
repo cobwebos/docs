@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心就绪情况路线图 | Microsoft Docs"
-description: "本文档提供了 Azure 安全中心的就绪情况路线图。"
+title: Azure 安全中心就绪情况路线图 | Microsoft Docs
+description: 本文档提供了 Azure 安全中心的就绪情况路线图。
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: ndicola
-editor: 
+editor: ''
 ms.assetid: fece670cc-df70-445d-9773-b32cbaba8d4a
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
 ms.author: yurid
-ms.openlocfilehash: 7a6717f4a9ec0594ccd6b326520d0e0ab620739a
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 0de8dda6f88f31208c3fe7d560a461fea46a67e6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
 本文档提供的就绪情况路线图有助于 Azure 安全中心入门。
@@ -116,7 +116,7 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 * [PaaS 建议](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [合规性](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist)
 
-##<a name="community-resources"></a>社区资源
+## <a name="community-resources"></a>社区资源
 
 * [安全中心 UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
 * [安全中心社区论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSecurityCenter)

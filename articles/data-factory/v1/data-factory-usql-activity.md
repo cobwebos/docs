@@ -1,11 +1,10 @@
 ---
-title: "使用 U-SQL 脚本转换数据 - Azure | Microsoft Docs"
-description: "了解如何通过在 Azure Data Lake Analytics 计算服务上运行 U-SQL 脚本来处理或转换数据。"
+title: 使用 U-SQL 脚本转换数据 - Azure | Microsoft Docs
+description: 了解如何通过在 Azure Data Lake Analytics 计算服务上运行 U-SQL 脚本来处理或转换数据。
 services: data-factory
-documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+documentationcenter: ''
+author: douglaslMS
+manager: craigg
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
@@ -13,27 +12,27 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2017
-ms.author: spelluru
+ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: ff91a3da978fd027605b3674eae14d1d74b309cd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7861a3380ee330241f0c735ee6c5ed84f121e512
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [版本 1 - GA](data-factory-usql-activity.md)
+> * [版本 1 - 正式版](data-factory-usql-activity.md)
 > * [版本 2 - 预览版](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1，即正式版 (GA)。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 U-SQL 活动](../transform-data-using-data-lake-analytics.md)。
+> 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（预览版），请参阅 [V2 中的 U-SQL 活动](../transform-data-using-data-lake-analytics.md)。
 
 Azure 数据工厂中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍在 **Azure Data Lake Analytics** 计算链接服务上运行 **U-SQL** 脚本的 **Data Lake Analytics U-SQL 活动**。 
 
 在使用 Data Lake Analytics U-SQL 活动创建管道之前，先创建 Azure Data Lake Analytics 帐户。 若要了解 Azure Data Lake Analytics，请参阅 [Azure Data Lake Analytics 入门](../../data-lake-analytics/data-lake-analytics-get-started-portal.md)。
 
-查看[生成首个管道教程](data-factory-build-your-first-pipeline.md)，了解创建数据工厂、链接服务、数据集和管道的详细步骤。 通过数据工厂编辑器或 Visual Studio 或 Azure PowerShell 使用 JSON 代码段创建数据工厂实体。
+查看[生成首个管道教程](data-factory-build-your-first-pipeline.md)获取详细步骤，以便创建数据工厂、链接的服务、数据集和管道。 通过数据工厂编辑器或 Visual Studio 或 Azure PowerShell 使用 JSON 代码段创建数据工厂实体。
 
 ## <a name="supported-authentication-types"></a>支持的身份验证类型
 U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：

@@ -1,21 +1,21 @@
 ---
-title: "Azure 数据工厂中的“复制数据”工具 | Microsoft Docs"
-description: "提供有关 Azure 数据工厂 UI 中“复制数据”工具的信息"
+title: Azure 数据工厂中的“复制数据”工具 | Microsoft Docs
+description: 提供有关 Azure 数据工厂 UI 中“复制数据”工具的信息
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 2fb25dcc0de4ebb1d025101670a9edfe3fe2bea9
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: b82ee060ff3f25e7a92c85114d457ecb349159b3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure 数据工厂中的“复制数据”工具
 Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data Lake 的过程，这通常是端到端数据集成方案的第一步。  这可节省时间，尤其是首次使用 Azure 数据工厂引入数据源中的数据时。 下面是使用此工具的一些优势：

@@ -1,10 +1,10 @@
 ---
-title: "了解活动日志警报中使用的 webhook 架构 | Microsoft 文档"
-description: "了解有关活动日志警报激活时发布到 webhook URL 的 JSON 架构。"
+title: 了解活动日志警报中使用的 webhook 架构 | Microsoft 文档
+description: 了解有关活动日志警报激活时发布到 webhook URL 的 JSON 架构。
 author: johnkemnetz
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.openlocfilehash: 7816efd44c01c3ed60c95d8699042f89cf6de5ec
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: f71714774d7ad54d7eb2132e8c20c87f972157ab
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
@@ -31,7 +31,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 ## <a name="payload-schema"></a>负载架构
 根据有效负载的 data.context.activityLog.eventSource 字段，POST 操作中包含的 JSON 有效负载会有所不同。
 
-###<a name="common"></a>常见
+### <a name="common"></a>常见
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -58,7 +58,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
     }
 }
 ```
-###<a name="administrative"></a>管理
+### <a name="administrative"></a>管理
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -85,7 +85,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 }
 
 ```
-###<a name="servicehealth"></a>ServiceHealth
+### <a name="servicehealth"></a>ServiceHealth
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -137,7 +137,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 | 上下文 |事件的上下文。 |
 | resourceProviderName |受影响资源的资源提供程序。 |
 | conditionType |始终为“事件”。 |
-| name |警报规则的名称。 |
+| 名称 |警报规则的名称。 |
 | id |警报的资源 ID。 |
 | description |创建警报时设置警报说明。 |
 | subscriptionId |Azure 订阅 ID。 |

@@ -21,6 +21,10 @@
   items:
     - name: 使用 R Server
       items:
+        - name: 管理 R Server 群集
+          href: r-server-hdinsight-manage.md
+        - name: 使 R Server 群集可操作
+          href: r-server-operationalize.md
         - name: 存储选项
           href: r-server-storage.md
         - name: 计算上下文

@@ -1,11 +1,10 @@
 ---
-title: "向/从 Azure SQL 数据库复制数据 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据。"
+title: 向/从 Azure SQL 数据库复制数据 | Microsoft Docs
+description: 了解如何使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 484f735b-8464-40ba-a9fc-820e6553159e
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e5718cfdca4e12edcb98e79807ffe86d7be16b07
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: bf47ad3f401abced4e74260dc9180413d69268c3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure SQL 数据库以及从 Azure SQL 数据库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -152,7 +151,7 @@ GO
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。 |整数（行数） |否（默认值：10000） |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 有关详细信息，请参阅[可重复复制](#repeatable-copy)。 |查询语句。 |否 |
 | sliceIdentifierColumnName |指定复制活动要填充自动生成切片标识符的列名，以便在重新运行时清除特定切片的数据。 有关详细信息，请参阅[可重复复制](#repeatable-copy)。 |数据类型为 binary(32) 的列的列名。 |否 |
-| sqlWriterStoredProcedureName |存储过程的名称，该存储过程定义如何将源数据应用到目标表，例如使用你自己的业务逻辑执行更新插入或转换。 <br/><br/>请注意，此存储过程将**由每个批处理调用**。 如果要执行仅运行一次且与源数据无关的操作（例如删除/截断），请使用 `sqlWriterCleanupScript` 属性。 |存储过程的名称。 |否 |
+| sqlWriterStoredProcedureName |存储过程的名称，该存储过程定义如何将源数据应用到目标表，例如使用你自己的业务逻辑执行更新插入或转换。 <br/><br/>请注意，此存储过程将由每个批处理调用。 如果要执行仅运行一次且与源数据无关的操作（例如删除/截断），请使用 `sqlWriterCleanupScript` 属性。 |存储过程的名称。 |否 |
 | storedProcedureParameters |存储过程的参数。 |名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 | sqlWriterTableType |指定要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |表类型名称。 |否 |
 

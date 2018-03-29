@@ -1,11 +1,10 @@
 ---
-title: "Azure 数据工厂中的文件和压缩格式 | Microsoft Docs"
-description: "了解 Azure 数据工厂支持的文件格式。"
+title: Azure 数据工厂中的文件和压缩格式 | Microsoft Docs
+description: 了解 Azure 数据工厂支持的文件格式。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f3faaf964c33ca336d91c1cf207e077046f617e9
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 02a3ca373d88f0a553b48214b0d06ce1fad73cb8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure 数据工厂支持的文件和压缩格式
 *本主题适用于以下连接器：[Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、[Azure Blob](data-factory-azure-blob-connector.md)、[Azure Data Lake Store](data-factory-azure-datalake-connector.md)、[文件系统](data-factory-onprem-file-system-connector.md)、[FTP](data-factory-ftp-connector.md)、[HDFS](data-factory-hdfs-connector.md)、[HTTP](data-factory-http-connector.md) 和 [SFTP](data-factory-sftp-connector.md)。*
@@ -354,7 +353,7 @@ Azure 数据工厂支持以下文件格式类型：
 | id | order_date | order_price | order_by |
 | --- | --- | --- | --- |
 | 1 | 20170119 | 2000 | David |
-| #N/A | 20170120 | 3500 | Patrick |
+| 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
 每个记录将按以下格式写入到 JSON 对象中：
@@ -412,7 +411,7 @@ Azure 数据工厂支持以下文件格式类型：
 
 若要在 Hive 表中使用 Avro 格式，可以参考 [Apache Hive 教程](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)。
 
-注意以下几点：  
+请注意以下几点：  
 
 * 不支持[复杂数据类型](http://avro.apache.org/docs/current/spec.html#schema_complex)（记录、枚举、数组、映射、联合与固定值）。
 
@@ -431,7 +430,7 @@ Azure 数据工厂支持以下文件格式类型：
 >
 >
 
-注意以下几点：
+请注意以下几点：
 
 * 不支持复杂数据类型（STRUCT、MAP、LIST、UNION）
 * ORC 文件有三个[压缩相关的选项](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)：NONE、ZLIB、SNAPPY。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 ORC 文件时，数据工厂会选择 ZLIB，这是 ORC 的默认选项。 目前没有任何选项可以重写此行为。
@@ -450,7 +449,7 @@ Azure 数据工厂支持以下文件格式类型：
 >
 >
 
-注意以下几点：
+请注意以下几点：
 
 * 不支持复杂数据类型（MAP、LIST）
 * Parquet 文件提供以下压缩相关的选项：NONE、SNAPPY、GZIP 和 LZO。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 Parquet 文件时，数据工厂会选择 SNAPPY，这是 Parquet 格式的默认选项。 目前没有任何选项可以重写此行为。

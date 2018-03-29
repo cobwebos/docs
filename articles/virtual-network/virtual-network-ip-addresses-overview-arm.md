@@ -1,11 +1,11 @@
 ---
-title: "Azure 中的 IP 地址类型 | Microsoft 文档"
-description: "了解如何在 Azure 中使用公共和专用 IP 地址"
+title: Azure 中的 IP 地址类型 | Microsoft 文档
+description: 了解如何在 Azure 中使用公共和专用 IP 地址
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 610b911c-f358-4cfe-ad82-8b61b87c3b7e
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/16/2017
 ms.author: jdial
-ms.openlocfilehash: e3baedba814cf6ac19df72c49e1c95ea2cd5cf73
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: a5cda1b5ecb686c9b03da27bdbca42ddc1a74f54
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure 中的 IP 地址类型和分配方法
 
@@ -68,13 +68,10 @@ ms.lasthandoff: 12/05/2017
 
 - 只能使用静态分配方法分配。
 - 分配到网络接口或面向 Internet 的标准负载均衡器。 有关 Azure 负载均衡器 SKU 的详细信息，请参阅 [Azure 负载均衡器标准 SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-- 默认为区域冗余。 可以按区域创建，在特定的可用性区域中有保障。  若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- 默认为区域冗余。 可以按区域创建，在特定的可用性区域中有保障。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
  
 > [!NOTE]
-> 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用[网络安全组](security-overview.md#network-security-groups)显式允许预期流量。  创建并关联网络安全组以及显式允许所需流量后与资源的通信故障才会结束。
-
-标准 SKU 以预览版提供。 创建标准 SKU 公共 IP 地址之前，必须先注册预览版，并在支持的位置创建该地址。 若要注册预览版，请参阅[注册标准 SKU 预览版](virtual-network-public-ip-address.md#register-for-the-standard-sku-preview)。 有关支持的位置（区域）的列表，请参阅[区域可用性](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability)；有关其他区域支持，请密切关注 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页。
-
+> 将标准 SKU 公共 IP 地址分配到虚拟机的网络接口时，必须使用[网络安全组](security-overview.md#network-security-groups)显式允许预期流量。 创建并关联网络安全组且显式允许所需流量之后，才可与资源通信。
 
 ### <a name="allocation-method"></a>分配方法
 
@@ -174,7 +171,7 @@ ms.lasthandoff: 12/05/2017
 | 顶级资源 | IP 地址关联 | 动态 | 静态 |
 | --- | --- | --- | --- |
 | 虚拟机 |网络接口 |是 |是 |
-| 负载均衡器 |前端配置 |是 |是 |
+| 负载均衡 |前端配置 |是 |是 |
 | 应用程序网关 |前端配置 |是 |是 |
 
 ## <a name="limits"></a>限制

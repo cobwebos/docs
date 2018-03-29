@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory 域服务：将 CentOS VM 加入托管域 | Microsoft 文档"
-description: "将 CentOS Linux 虚拟机加入 Azure AD 域服务"
+title: Azure Active Directory 域服务：将 CentOS VM 加入托管域 | Microsoft 文档
+description: 将 CentOS Linux 虚拟机加入 Azure AD 域服务
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: 9f3b6425f3c13080985fb168f46ea1f6be5d18ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f7095e82605d12221ba7beb0c48fd3eda75a2e7b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>将 CentOS Linux 虚拟机加入托管域
 本文介绍了如何将 Azure 中的 CentOS Linux 虚拟机加入 Azure AD 域服务托管域。
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="provision-a-centos-linux-virtual-machine"></a>预配 CentOS Linux 虚拟机
 使用以下任何一种方法，在 Azure 中预配 CentOS 虚拟机：
-* [Azure portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure 门户](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -133,7 +133,7 @@ sudo vi /etc/hosts
 
 
 ## <a name="troubleshooting-domain-join"></a>排查域加入问题
-请参阅[排查域加入问题](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join)一文。
+请参阅[排查域加入问题](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain)一文。
 
 ## <a name="related-content"></a>相关内容
 * [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)

@@ -1,6 +1,6 @@
 ---
-title: "创建内部负载均衡器 - Azure 模板 | Microsoft 文档"
-description: "了解如何在 Resource Manager 中使用模板创建内部负载均衡器"
+title: 创建内部负载均衡器 - Azure 模板 | Microsoft 文档
+description: 了解如何在 Resource Manager 中使用模板创建内部负载均衡器
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 7abb8fb5064ca2ab1e4da6e0a32335f63d87ea02
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: f92430cad52edc60a0ab69caec61cc6f20515f61
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>使用模板创建内部负载均衡器
 
@@ -28,7 +28,6 @@ ms.lasthandoff: 12/18/2017
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [模板](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 

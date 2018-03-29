@@ -1,11 +1,11 @@
 ---
-title: "应用程序的类型 - Azure AD B2C | Microsoft Docs"
-description: "可以在 Azure Active Directory B2C 中构建的应用程序类型。"
+title: 应用程序的类型 - Azure AD B2C | Microsoft Docs
+description: 可以在 Azure Active Directory B2C 中构建的应用程序类型。
 services: active-directory-b2c
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: bb9d4abe-0db7-4bd9-b0c4-2f43b2c9cf33
 ms.service: active-directory-b2c
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
-ms.author: dastrock
-ms.openlocfilehash: 5ff146460ebc603662340d64be5dc59ea579f6a4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu1
+ms.openlocfilehash: 011426f3d8eab4eb2513270a9bcd1562e3c12b31
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C：应用程序的类型
 Azure Active Directory (Azure AD) B2C 支持各种新式应用体系结构的身份验证。 所有这些体系结构都以行业标准协议 [OAuth 2.0](active-directory-b2c-reference-protocols.md) 或 [OpenID Connect](active-directory-b2c-reference-protocols.md) 为基础。 本文档简要介绍可以构建的应用类型（无论使用哪种语言或平台）。 在 [开始构建应用程序](active-directory-b2c-overview.md#get-started)之前，它还可以帮助了解一些高级方案。

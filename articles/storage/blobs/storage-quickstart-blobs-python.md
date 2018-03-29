@@ -2,18 +2,18 @@
 title: Azure 快速入门 - 使用 Python 在 Azure 存储中上传、下载和列出 Blob | Microsoft Docs
 description: 在本快速入门中，请创建存储帐户和容器。 然后，使用适用于 Python 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
 services: storage
-author: tamram
+author: craigshoemaker
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 03/15/2018
-ms.author: tamram
-ms.openlocfilehash: d4c489bc41a9c04b15e2ee28b944edc1f15ef81c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: cshoe
+ms.openlocfilehash: 9ea8fdcd2d21729117101748e20e52029c315e15
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>快速入门：使用 Python 上传、下载和列出 Blob
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/17/2018
 
 完成本快速入门教程： 
 * [安装 Python](https://www.python.org/downloads/)
-* 下载和安装[适用于 Python 的 Azure 存储 SDK](storage-python-how-to-use-blob-storage.md)。 
+* 下载和安装[适用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-sdk-for-python)。 
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

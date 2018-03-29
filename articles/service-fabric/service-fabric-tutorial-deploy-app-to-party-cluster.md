@@ -1,25 +1,25 @@
 ---
-title: "将 Azure Service Fabric 应用程序从 Visual Studio 部署到群集 | Microsoft Docs"
-description: "了解如何将应用程序从 Visual Studio 部署到群集"
+title: 将 Azure Service Fabric 应用程序从 Visual Studio 部署到群集 | Microsoft Docs
+description: 了解如何将应用程序从 Visual Studio 部署到群集
 services: service-fabric
 documentationcenter: .net
 -author: mikkelhegn
 -manager: msfussell
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/21/2018
-ms.author: mikkelhegn
+ms.date: 02/23/2018
+ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 21c991a4e3f9ae19a4ad4a96427fdc1c91c55a1c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 1d8f8d903046f1d471f7abbe08a957b81522e391
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>教程：将应用程序部署到 Azure 中的 Service Fabric 群集
 本教程是一个系列的第二部分，介绍如何将 Azure Service Fabric 应用程序直接从 Visual Studio 部署到 Azure 中的新群集。
@@ -65,7 +65,6 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 > 许多服务使用反向代理来互相通信。 通过 Visual Studio 创建的群集以及合作群集默认启用反向代理。  如果使用现有的群集，则必须[在群集中启用反向代理](service-fabric-reverseproxy.md#setup-and-configuration)。
 
 ### <a name="deploy-the-app-to-the-service-fabric-cluster"></a>将应用部署到 Service Fabric 群集
-
 1. 在解决方案资源管理器中右键单击应用程序项目，选择“发布”。
 
 2. 使用 Azure 帐户登录，以便访问订阅。 如果使用的是合作群集，则此步骤为可选步骤。

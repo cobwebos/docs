@@ -1,11 +1,11 @@
 ---
-title: "Azure 数据工厂中的获取元数据活动 | Microsoft Docs"
-description: "了解如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库或 Azure SQL 数据仓库中的存储过程。"
+title: Azure 数据工厂中的获取元数据活动 | Microsoft Docs
+description: 了解如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库或 Azure SQL 数据仓库中的存储过程。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 20f3d4bb876a46b67385dd4435296e149641149e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: e8e40b763f0c6f1f994535ab2ff335cfcbf02cf7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的获取元数据活动
 获取元数据活动可用于检索 Azure 数据工厂中任何数据的元数据。 仅版本 2 的数据工厂支持此活动。 它可用于以下方案：
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/23/2018
 获取元数据活动将数据集作为必要输入，并输出可用作输出的元数据信息。 目前，仅支持 Azure Blob 数据集。 支持的元数据字段为大小、结构和最后修改时间。  
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA），请参阅[数据工厂 V1 文档](v1/data-factory-introduction.md)。
 
 
 ## <a name="syntax"></a>语法

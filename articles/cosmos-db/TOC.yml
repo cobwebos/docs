@@ -445,3 +445,5 @@
       href: faq.md
     - name: 借助棒球解释数据一致性
       href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
+    - name: 排查 Azure Cosmos DB 问题
+      href: troubleshoot-azure-cosmosdb.md

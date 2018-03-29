@@ -39,7 +39,7 @@
 ### Azure 基础结构准备
 #### [Windows 以及用于 (A)SCS 实例的共享磁盘](sap-high-availability-infrastructure-wsfc-shared-disk.md)
 #### [Windows 以及用于 (A)SCS 实例的 SOFS 文件共享](sap-high-availability-infrastructure-wsfc-file-share.md)
-#### [SUSE Linux 以及用于 (A)SCS 实例的 NFS](high-availability-guide-suse.md)
+#### [SLES 中 Azure VM 上的 NFS 的高可用性](high-availability-guide-suse-nfs.md)
 #### [SLES 上的 Pacemaker](high-availability-guide-suse-pacemaker.md)
 ### SAP 安装
 #### [Windows 以及用于 (A)SCS 实例的共享磁盘](sap-high-availability-installation-wsfc-shared-disk.md)

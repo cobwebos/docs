@@ -1,13 +1,13 @@
 ---
-title: "使用 Azure 模板创建 Linux 虚拟机规模集 | Microsoft Docs"
-description: "了解如何使用 Azure 资源管理器模板来部署示例应用和配置自动缩放规则，以便快速创建 Linux 虚拟机规模集"
+title: 使用 Azure 模板创建 Linux 虚拟机规模集 | Microsoft Docs
+description: 了解如何使用 Azure 资源管理器模板来部署示例应用和配置自动缩放规则，以便快速创建 Linux 虚拟机规模集
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 12/19/2017
 ms.author: iainfou
 ms.openlocfilehash: 16e9c0b30710d711ef2789f7781b17e72889d4da
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>使用 Azure 模板创建 Linux 虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 在此入门文章中，可以使用 Azure 资源管理器模板创建 Linux 虚拟机规模集。 也可使用 [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md)、[Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) 或 [Azure 门户](virtual-machine-scale-sets-create-portal.md)创建规模集。
@@ -44,7 +44,7 @@ Azure 资源管理器模板允许部署成组的相关资源。 模板以 JavaSc
 | 名称                         | 规模集名称                                       | myScaleSet                                |
 | location                     | 要创建规模集的位置                     | 美国东部                                   |
 | sku.name                     | 每个规模集实例的 VM 大小                  | Standard_A1                               |
-| sku.capacity                 | 一开始需要创建的 VM 实例数           | #N/A                                         |
+| sku.capacity                 | 一开始需要创建的 VM 实例数           | 2                                         |
 | upgradePolicy.mode           | 更改发生时的 VM 实例升级模式              | 自动                                 |
 | imageReference               | 用于 VM 实例的平台或自定义映像 | Canonical Ubuntu Server 16.04-LTS         |
 | osProfile.computerNamePrefix | 每个 VM 实例的名称前缀                     | myvmss                                    |

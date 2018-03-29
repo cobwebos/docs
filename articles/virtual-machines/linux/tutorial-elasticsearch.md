@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 中的开发虚拟机上部署 Elasticsearch"
-description: "教程 - 在 Azure 中的开发 Linux VM 上安装 Elastic Stack"
+title: 在 Azure 中的开发虚拟机上部署 Elasticsearch
+description: 教程 - 在 Azure 中的开发 Linux VM 上安装 Elastic Stack
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: rloutlaw
@@ -13,11 +13,11 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 7941e557dfbb71df7c2d55608c4a14c026535db8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: eeb1b8b9105e055339cb31fa4b9d4b411cb06c54
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>在 Azure VM 上安装 Elastic Stack
 
@@ -128,7 +128,7 @@ sudo systemctl start elasticsearch.service
 此命令不会产生输出，因此请使用 `curl` 命令验证该 Elasticsearch 是否在 VM 上运行：
 
 ```bash
-curl -XGET 'localhost:9200/'
+sudo curl -XGET 'localhost:9200/'
 ```
 
 如果 Elasticsearch 在运行，则会看到如下所示的输出：

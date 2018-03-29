@@ -1,10 +1,11 @@
 ---
-title: "步骤 3：创建新机器学习实验 | Microsoft Docs"
-description: "开发预测解决方案演练的步骤 3：在 Azure 机器学习工作室中创建新的训练实验。"
+title: 步骤 3：创建新机器学习实验 | Microsoft Docs
+description: 开发预测解决方案演练的步骤 3：在 Azure 机器学习工作室中创建新的训练实验。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.author: garye
-ms.openlocfilehash: a8f1764204740a8f5ef757e5e2ad63cfd43af150
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 72d6c3acfdf095ad8652561244139304b690344a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>演练步骤 3：创建新的 Azure 机器学习实验
 这是演练的第三步，[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)

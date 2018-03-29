@@ -1,19 +1,20 @@
 ---
-title: "“使用 Azure Active Directory B2C 保护 ASP.NET Web API”教程"
-description: "有关如何使用 Active Directory B2C 保护 ASP.NET Web API 并通过 ASP.NET Web 应用对其进行调用的教程。"
+title: “使用 Azure Active Directory B2C 保护 ASP.NET Web API”教程
+description: 有关如何使用 Active Directory B2C 保护 ASP.NET Web API 并通过 ASP.NET Web 应用对其进行调用的教程。
 services: active-directory-b2c
-author: PatAltimore
-ms.author: patricka
-ms.reviewer: saraford
+author: davidmu1
+manager: mtillman
+editor: ''
+ms.author: davidmu
 ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: 0e9f324cec0d242c013a461d8580abd4faa97c8d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f4e1c18f151a9c815258f01ea198d3d173d0b44e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-use-azure-active-directory-b2c-to-protect-an-aspnet-web-api"></a>教程：使用 Azure Active Directory B2C 保护 ASP.NET Web API
 

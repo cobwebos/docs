@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory 基于应用程序的条件访问 | Microsoft Docs"
-description: "了解 Azure Active Directory 基于应用程序的条件访问的工作原理。"
+title: Azure Active Directory 基于应用程序的条件访问 | Microsoft Docs
+description: 了解 Azure Active Directory 基于应用程序的条件访问的工作原理。
 services: active-directory
-keywords: "对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略"
-documentationcenter: 
+keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 01/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 7814b53a69506f81bc6a75387c62766e36d528d8
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: b35aed3583307c34eadbed3dd13d1ffd51494927
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-app-based-conditional-access"></a>Azure Active Directory 基于应用程序的条件访问  
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/11/2018
  
 
 
-##<a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>开始之前
 
 本主题假定你熟悉以下内容：
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 01/11/2018
 - [迁移条件访问策略](active-directory-conditional-access-best-practices.md#policy-migration)。
  
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要创建基于应用程序的条件访问策略，必须先订阅企业移动性 + 安全性或 Azure Active Directory Premium，且用户必须获得 EMS 或 Azure AD 许可。 
 

@@ -419,6 +419,8 @@
           href: extensions-nwa.md
         - name: VMAccess 扩展
           href: using-vmaccess-extension.md
+        - name: 限制扩展安装
+          href: extensions-rmpolicy-howto-cli.md
     - name: 迁移 VM
       items:
         - name: 迁移 AWS 和本地 VM
@@ -458,6 +460,8 @@
           href: understand-vm-reboot.md
         - name: 启动诊断
           href: boot-diagnostics.md
+        - name: 串行控制台
+          href: serial-console.md
         - name: 对应用程序的访问
           href: troubleshoot-app-connection.md
         - name: 分配失败

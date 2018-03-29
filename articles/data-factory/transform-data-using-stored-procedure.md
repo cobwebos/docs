@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 数据工厂中使用存储过程活动转换数据 | Microsoft Docs"
-description: "说明如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库/数据仓库中的存储过程。"
+title: 在 Azure 数据工厂中使用存储过程活动转换数据 | Microsoft Docs
+description: 说明如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库/数据仓库中的存储过程。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 6b4523747b57ee7a3d48211c9bb7fba1123fe4ce
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 84ef1e48de17db6f8b3b6fa4bdea2b5ef0f2efe6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 SQL Server 存储过程活动转换数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -72,7 +72,7 @@ ms.lasthandoff: 01/17/2018
 
 | 属性                  | 说明                              | 必选 |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | 活动名称                     | 是      |
+| 名称                      | 活动名称                     | 是      |
 | description               | 描述活动用途的文本 | 否       |
 | type                      | 对于存储过程活动，活动类型是 SqlServerStoredProcedure | 是      |
 | linkedServiceName         | 引用注册为数据工厂中的链接服务的 Azure SQL 数据库或 Azure SQL 数据仓库或 SQL Server。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |

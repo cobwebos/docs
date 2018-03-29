@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：用户迁移方法"
-description: "介绍有关使用图形 API和选择性地使用 Azure AD B2C 自定义策略执行用户迁移的高级核心概念。"
+title: Azure Active Directory B2C：用户迁移方法
+description: 介绍有关使用图形 API和选择性地使用 Azure AD B2C 自定义策略执行用户迁移的高级核心概念。
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 10/04/2017
-ms.author: yoelh
-ms.openlocfilehash: 25023359e3f1eeb241f6f0e70bcb179aa32974af
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: be80ea534be6de4fad2b072cf531669f45eda527
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C：用户迁移
 将标识提供者迁移到 Azure Active Directory B2C (Azure AD B2C)C 时，可能还需要迁移用户帐户。 本文介绍如何将现有用户帐户从任何标识提供者迁移到 Azure AD B2C。 本文并未阐述约定俗成的内容，而只是介绍了多种方法中的两种。 开发人员负责判断每种方法是否适用。
@@ -67,7 +64,7 @@ ms.lasthandoff: 12/11/2017
     * 对于“名称”，请使用 **B2CUserMigration** 或所需的其他任何名称。
     * 对于“应用程序类型”，使用“Web 应用/API”。
     * 对于“登录 URL”，请使用 **https://localhost**（因为它与此应用程序无关）。
-    * 选择“创建” 。
+    * 选择**创建**。
 
 7. 创建应用程序后，请在“应用程序”列表中选择新建的 **B2CUserMigration** 应用程序。
 
@@ -148,7 +145,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ![用户数据文件](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 可以看到，该文件包含用户实体的列表。 每个用户实体包含以下属性：
-* email
+* 电子邮件
 * displayName
 * firstName
 * lastName

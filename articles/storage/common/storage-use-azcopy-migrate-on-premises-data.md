@@ -1,20 +1,20 @@
 ---
-title: "使用 AzCopy 将本地数据迁移到 Azure 存储 | Microsoft 文档"
-description: "使用 AzCopy 将数据迁移或复制到 blob、表和文件内容或从其中迁移或复制出数据。 轻松将本地存储中的数据迁移到 Azure 存储中。"
+title: 使用 AzCopy 将本地数据迁移到 Azure 存储 | Microsoft 文档
+description: 使用 AzCopy 将数据迁移或复制到 blob、表和文件内容或从其中迁移或复制出数据。 轻松将本地存储中的数据迁移到 Azure 存储中。
 services: storage
-author: ruthogunnnaike
+author: roygara
 manager: jeconnoc
 ms.service: storage
 ms.tgt_pltfrm: na
 ms.devlang: azcopy
 ms.topic: tutorial
 ms.date: 12/14/2017
-ms.author: v-ruogun
-ms.openlocfilehash: 3dbfb935ac0b134e127a5dccb7bc76716c688e8a
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.author: rogarana
+ms.openlocfilehash: 1e7292cf4d647b38a6fe8ceb270ba161e548a537
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>使用 AzCopy 将本地数据迁移到云存储
 
@@ -33,7 +33,7 @@ AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数�
 > * 修改用于测试目的的数据。
 > * 创建一个计划任务或 cron 作业，以标识要上传的新文件。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，请下载最新版本的 AzCopy on [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#download-and-install-azcopy) 或 AzCopy on [Windows](http://aka.ms/downloadazcopy)。 
 

@@ -1,11 +1,11 @@
 ---
-title: "开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET) | Microsoft Docs"
-description: "在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 ASP.NET 项目中使用 Azure 表存储"
+title: 开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET) | Microsoft Docs
+description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 ASP.NET 项目中使用 Azure 表存储
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: kraigb
 manager: ghogen
-editor: 
+editor: ''
 ms.assetid: af81a326-18f4-4449-bc0d-e96fba27c1f8
 ms.service: storage
 ms.workload: web
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: kraigb
-ms.openlocfilehash: 32a57e77bf6fe3cff88b9d6772ede9e6669ec75f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 646ff3a12d1b28f99376ea67af25f1b6858d675a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -29,7 +29,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
 
 本教程介绍如何针对 Azure 表存储实体的一些常见使用方案编写 ASP.NET 代码。 这些方案包括创建表，以及添加、查询和删除表实体。 
 
-##<a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)

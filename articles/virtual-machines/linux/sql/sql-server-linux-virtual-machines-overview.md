@@ -1,8 +1,8 @@
 ---
-title: "Azure Linux 虚拟机上的 SQL Server 概述 | Microsoft Docs"
-description: "了解如何在 Azure Linux 虚拟机上运行完整的 SQL Server 版本。 获取到所有 Linux SQL Server VM 映像和相关内容的直接链接。"
+title: Azure Linux 虚拟机上的 SQL Server 概述 | Microsoft Docs
+description: 了解如何在 Azure Linux 虚拟机上运行完整的 SQL Server 版本。 获取到所有 Linux SQL Server VM 映像和相关内容的直接链接。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: jhubbard
 tags: azure-service-management
@@ -10,13 +10,13 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: get-started-article
 ms.workload: iaas-sql-server
-ms.date: 10/02/2017
+ms.date: 03/22/2018
 ms.author: jroth
-ms.openlocfilehash: f044fcba92eb7aa7f4ac44608571fab3db0e03f5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: e752ad844a6efe572564e7081ebac87193e9c2a7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 虚拟机 (Linux) 上的 SQL Server 概述
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 12/18/2017
 > * [Windows](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 > * [Linux](sql-server-linux-virtual-machines-overview.md)
 
-本主题介绍在 Azure Linux 虚拟机 (VM) 上运行 SQL Server 的选项，提供了[门户映像链接](#option-1-create-a-sql-vm-with-per-minute-licensing)。
+本主题介绍在 Azure Linux 虚拟机 (VM) 上运行 SQL Server 的选项，提供了[门户映像链接](#create)。
 
 > [!NOTE]
 > 如果已熟悉 SQL Server，只想了解如何部署 SQL Server Linux VM，请参阅[在 Azure 中预配 Linux SQL Server VM](provision-sql-server-linux-virtual-machine.md)。 或者，若要创建带 SQL Server 的 Windows VM，请参阅[在 Azure 中预配 Windows SQL Server VM](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md)。

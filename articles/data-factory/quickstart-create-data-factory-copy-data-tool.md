@@ -4,18 +4,18 @@ description: 创建一个 Azure 数据工厂，然后使用“复制数据”工
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
 ms.date: 01/16/2018
 ms.author: jingwang
-ms.openlocfilehash: d09422f31a2dda5e14fb891fa07f65fdcceb72c1
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: aea76544f244adba8368a1d8fbe268746060b5a6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>使用“复制数据”工具复制数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -57,7 +57,7 @@ ms.lasthandoff: 03/17/2018
    此列表仅显示支持的位置。 数据工厂使用的数据存储（例如 Azure 存储和 Azure SQL 数据库）和计算资源（例如 Azure HDInsight）可以位于其他位置/区域。
 
 6. 选择“固定到仪表板”。     
-7. 选择“创建”。
+7. 选择**创建**。
 8. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴： 
 
     ![“正在部署数据工厂”磁贴](media/quickstart-create-data-factory-copy-data-tool/deploying-data-factory.png)

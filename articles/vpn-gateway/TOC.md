@@ -16,7 +16,7 @@
 
 # 如何
 ## 配置站点到站点连接
-### [Azure portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+### [Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 ### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [Azure 门户（经典）](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -25,7 +25,7 @@
 
 ## 配置点到站点连接 - 本机 Azure 证书身份验证
 ### 配置 P2S VPN
-#### [Azure portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+#### [Azure 门户](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 #### [Azure PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 #### [Azure 门户（经典）](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 ### 生成自签名证书
@@ -41,17 +41,17 @@
 ### [将 P2S VPN RADIUS 身份验证与 NPS 服务器集成](vpn-gateway-radiuis-mfa-nsp.md)
 
 ## 配置 VNet 到 VNet 连接
-### [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+### [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 ### [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 ### [Azure 门户（经典）](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 ## 配置部署模型之间的 VNet 到 VNet 连接
-### [Azure portal](vpn-gateway-connect-different-deployment-models-portal.md)
+### [Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [Azure PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 ## 配置站点到站点和 ExpressRoute 的共存连接
 ### [Azure PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## 配置多个站点到站点连接
-### [Azure portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+### [Azure 门户](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 ### [Azure PowerShell（经典）](vpn-gateway-multi-site.md)
 ## 连接多个基于策略的 VPN 设备
 ### [Azure PowerShell](vpn-gateway-connect-multiple-policybased-rm-ps.md)
@@ -66,13 +66,13 @@
 ### [Azure PowerShell](vpn-gateway-forced-tunneling-rm.md)
 ### [Azure PowerShell（经典）](vpn-gateway-about-forced-tunneling.md)
 ## 修改本地网络网关设置
-### [Azure portal](vpn-gateway-modify-local-network-gateway-portal.md)
+### [Azure 门户](vpn-gateway-modify-local-network-gateway-portal.md)
 ### [Azure PowerShell](vpn-gateway-modify-local-network-gateway.md)
 ### [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 ## [验证 VPN 网关连接](vpn-gateway-verify-connection-resource-manager.md)
 ## [重置 VPN 网关](vpn-gateway-resetgw-classic.md)
 ## 删除 VPN 网关
-### [Azure portal](vpn-gateway-delete-vnet-gateway-portal.md)
+### [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [Azure PowerShell（经典）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [配置 VPN 网关（经典）](vpn-gateway-configure-vpn-gateway-mp.md)
@@ -85,8 +85,9 @@
 ### [验证到达 VNet 的 VPN 吞吐量](vpn-gateway-validate-throughput-to-vnet.md)
 ### [社区建议的 VPN 或防火墙设备设置](vpn-gateway-third-party-settings.md)
 ### [点到站点连接问题](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-### [站点到站点连接间歇性地断开](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
-### [站点到站点连接无法连接](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md) 
+#### [点到站点连接问题 - Mac OS X VPN 客户端](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+### [站点到站点连接问题](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
+#### [站点到站点连接间歇性地断开](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [配置和验证 VNet 或 VPN 连接](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
 
 # 引用

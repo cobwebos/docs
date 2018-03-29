@@ -1,10 +1,10 @@
 ---
-title: "如何在 Azure Service Fabric 中参数化配置文件 | Microsoft Docs"
-description: "演示如何在 Service Fabric 中参数化配置文件"
+title: 如何在 Azure Service Fabric 中参数化配置文件 | Microsoft Docs
+description: 演示如何在 Service Fabric 中参数化配置文件
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: 1e7d59ecb231440711b8ed3dc0b27a2b105890c4
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 14fbdf27b8735bb3f2dc91ce0891711e9aaf2af3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>如何在 Service Fabric 中参数化配置文件
 
@@ -71,8 +71,6 @@ ms.lasthandoff: 01/16/2018
 > 在添加 ConfigOverride 的情况下，Service Fabric 将始终选择应用程序参数或应用程序清单中指定的默认值。
 >
 >
-
-使用 Cloud.xml 发布配置文件从 Visual Studio 发布应用程序时，服务将配置为使用端口 80。 如果在未指定 MyWebAPI_PortNumber 参数的情况下部署应用程序，则服务使用端口 8080。
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解本文中讨论的一些核心概念，请参阅文章[管理多个环境的应用程序](service-fabric-manage-multiple-environment-app-configuration.md)。

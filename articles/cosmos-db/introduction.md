@@ -1,11 +1,11 @@
 ---
-title: "Azure Cosmos DB 简介 | Microsoft Docs"
-description: "了解 Azure Cosmos DB。 此全球分布式多模型数据库是为了实现低延迟、弹性的可伸缩性和高可用性而构建的。"
+title: Azure Cosmos DB 简介 | Microsoft Docs
+description: 了解 Azure Cosmos DB。 此全球分布式多模型数据库是为了实现低延迟、弹性的可伸缩性和高可用性而构建的。
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: a855183f-34d4-49cc-9609-1478e465c3b7
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,15 +15,13 @@ ms.topic: overview
 ms.date: 12/15/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: e8b1454583e52f2c7a38b375df259a8b66f7d24f
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: e78480ceb47e472029795848739b4416e0c4256e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Azure Cosmos DB 由 Microsoft 提供，是全球分布式多模型数据库。 只需单击一个按钮，即可通过 Azure Cosmos DB 跨任意数量的 Azure 地理区域弹性且独立地缩放吞吐量和存储。 它通过综合[服务级别协议](https://aka.ms/acdbsla) (SLA) 提供吞吐量、延迟、可用性和一致性保证，这是其他数据库服务无法提供的。 无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。
 

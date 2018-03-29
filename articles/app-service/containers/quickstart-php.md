@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: a39e4ec68af70b7d189ac450f880a12b5397e4c4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1cbd29b480c80c93f750b97d47ccb3c09c984942
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>在 Linux 应用服务中创建 PHP Web 应用
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/16/2018
 
 [Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本快速入门教程演示如何将 PHP 应用部署到 Linux 上的 Azure 应用服务。 在 Cloud Shell 中使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 创建包含内置映像的 Web 应用，并使用 Git 将 PHP 代码部署到 Web 应用。
 
-![在 Azure 中运行的应用示例]](media/quickstart-php/hello-world-in-browser.png)
+![在 Azure 中运行应用的示例](media/quickstart-php/hello-world-in-browser.png)
 
 可以使用 Mac、Windows 或 Linux 计算机执行本文中的步骤。
 

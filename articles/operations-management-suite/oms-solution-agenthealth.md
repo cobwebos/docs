@@ -1,24 +1,24 @@
 ---
-title: "OMS 中的代理运行状况解决方案 | Microsoft Docs"
-description: "本文旨在帮助你了解如何使用此解决方案来监视代理的运行状况，这些代理直接向 OMS 或 System Center Operations Manager 报告。"
+title: OMS 中的代理运行状况解决方案 | Microsoft Docs
+description: 本文旨在帮助你了解如何使用此解决方案来监视代理的运行状况，这些代理直接向 OMS 或 System Center Operations Manager 报告。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 939bf5ae6ee306008567ce62ddf8a6d1f05da60a
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: d7eb1550a21e66d4ae4cc4932b30a90956c60d1e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 #  <a name="agent-health-solution-in-oms"></a>OMS 中的代理运行状况解决方案
 OMS 中的代理运行状况解决方案有助于你了解，在所有直接向 OMS 工作区报告或向连接到 OMS 的 System Center Operations Manager 管理组报告的代理中，哪些不响应且提交的是操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
@@ -98,25 +98,6 @@ OMS 中的代理运行状况解决方案有助于你了解，在所有直接向 
 下表提供了此解决方案收集的记录的示例日志搜索。
 
 | 查询 | 说明 |
-| --- | --- |
-| Type=Heartbeat &#124; distinct Computer |代理总数 |
-| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-24HOURS |过去 24 小时内无响应代理的计数 |
-| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-15MINUTES |过去 15 分钟内无响应代理的计数 |
-| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer IN {Type=Heartbeat TimeGenerated>NOW-24HOURS &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |（过去 24 小时内）处于联机状态的计算机数 |
-| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer NOT IN {Type=Heartbeat TimeGenerated>NOW-30MINUTES &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |（过去 24 小时中）过去 30 分钟内处于脱机状态的代理总数 |
-| Type=Heartbeat &#124; measure countdistinct(Computer) by OSType |了解某个时段内按 OSType 划分的代理数的趋势|
-| Type=Heartbeat&#124;measure countdistinct(Computer) by OSType |按 OS 类型进行的分布 |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by Version |按代理版本进行的分布 |
-| Type=Heartbeat&#124;measure count() by Category |按代理类别进行的分布 |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by ManagementGroupName | 按管理组进行的分布 |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by RemoteIPCountry |代理的地理位置 |
-| Type=Heartbeat IsGatewayInstalled=true&#124;Distinct Computer |已安装 OMS 网关数 |
-
-
->[!NOTE]
-> 如果工作区已升级到[新 Log Analytics 查询语言](../log-analytics/log-analytics-log-search-upgrade.md)，则上述查询会更改为如下所示。
->
->| 查询 | 说明 |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |代理总数 |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |过去 24 小时内无响应代理的计数 |
@@ -130,6 +111,9 @@ OMS 中的代理运行状况解决方案有助于你了解，在所有直接向 
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | 按管理组进行的分布 |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |代理的地理位置 |
 | Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |已安装 OMS 网关数 |
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

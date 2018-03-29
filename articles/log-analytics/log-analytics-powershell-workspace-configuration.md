@@ -1,11 +1,11 @@
 ---
-title: "使用 PowerShell 创建和配置 Log Analytics 工作区 | Microsoft 文档"
-description: "Log Analytics 使用来自本地或云基础结构中的服务器的数据。 当由 Azure 诊断生成时，可从 Azure 存储收集计算机数据。"
+title: 使用 PowerShell 创建和配置 Log Analytics 工作区 | Microsoft 文档
+description: Log Analytics 使用来自本地或云基础结构中的服务器的数据。 当由 Azure 诊断生成时，可从 Azure 存储收集计算机数据。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: 3b9b7ade-3374-4596-afb1-51b695f481c2
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: 6807ab67e3593da82c147669b29bfdae3b6c967c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a3f91323a017533d2d012f1e81760396c17a643
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-log-analytics-using-powershell"></a>使用 PowerShell 管理 Log Analytics
 可使用 [Log Analytics PowerShell cmdlet](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) 从命令行或作为脚本的一部分在 Log Analytics 中执行各种函数。  可使用 PowerShell 执行的任务示例包括：
@@ -145,7 +145,7 @@ foreach ($solution in $Solutions) {
     Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -IntelligencePackName $solution -Enabled $true
 }
 
-#List enabled solutions
+# List enabled solutions
 (Get-AzureRmOperationalInsightsIntelligencePacks -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName).Where({($_.enabled -eq $true)})
 
 # Import Saved Searches
@@ -189,7 +189,7 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 ## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>将 Log Analytics 配置为编制 Azure 诊断索引
 要对 Azure 资源进行无代理监视，则需要为资源启用 Azure 诊断，并将其配置为写入到 Log Analytics 工作区。 此方法将数据直接发送到 Log Analytics 并且不要求将数据写入到存储帐户。 支持的资源包括：
 
-| 资源类型 | 日志 | 指标 |
+| 资源类型 | 日志 | 度量值 |
 | --- | --- | --- |
 | 应用程序网关    | 是 | 是 |
 | 自动化帐户     | 是 | |
@@ -199,7 +199,7 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 | SQL 弹性池        |     | 是 |
 | 事件中心命名空间     |     | 是 |
 | IoT 中心                |     | 是 |
-| 密钥保管库               | 是 | |
+| Key Vault               | 是 | |
 | 负载均衡器          | 是 | |
 | 逻辑应用              | 是 | 是 |
 | 网络安全组 | 是 | |

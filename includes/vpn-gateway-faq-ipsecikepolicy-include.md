@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 738ebdcc612d944db3794525085d220b33533245
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/23/2018
+---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>是否所有 Azure VPN 网关 SKU 都支持自定义 IPsec/IKE 策略？
 自定义 IPsec/IKE 策略在 Azure VpnGw1、VpnGw2、VpnGw3、标准 VPN 网关和高性能 VPN 网关上受支持。 不支持基本 SKU。
 
@@ -56,7 +72,7 @@ SA 生存期是本地规范，不需匹配。
 | **Diffie-Hellman 组**  | **DHGroup**              | **PFSGroup** | 密钥长度 |
 | ---                       | ---                      | ---          | ---            |
 | 1                         | DHGroup1                 | PFS1         | 768 位 MODP   |
-| #N/A                         | DHGroup2                 | PFS2         | 1024 位 MODP  |
+| 2                         | DHGroup2                 | PFS2         | 1024 位 MODP  |
 | 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048 位 MODP  |
 | 19                        | ECP256                   | ECP256       | 256 位 ECP    |
 | 20                        | ECP384                   | ECP284       | 384 位 ECP    |
@@ -84,4 +100,4 @@ SA 生存期是本地规范，不需匹配。
 是的。 VNet 到 VNet 隧道包含 Azure 中的两个连接资源，一个方向一个资源。 请确保两个连接资源的策略相同，否则无法建立 VNet 到 VNet 连接。
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>能否在 ExpressRoute 连接上使用自定义 IPsec/IKE 策略？
-不能。 只能通过 Azure VPN 网关在 S2S VPN 和 VNet 到 VNet 连接上使用 IPsec/IKE 策略。
+不会。 只能通过 Azure VPN 网关在 S2S VPN 和 VNet 到 VNet 连接上使用 IPsec/IKE 策略。
