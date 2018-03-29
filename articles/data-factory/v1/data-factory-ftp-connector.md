@@ -1,11 +1,10 @@
 ---
-title: "使用 Azure 数据工厂从 FTP 服务器移动数据 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂从 FTP 服务器移动数据。"
+title: 使用 Azure 数据工厂从 FTP 服务器移动数据 | Microsoft Docs
+description: 了解如何使用 Azure 数据工厂从 FTP 服务器移动数据。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: eea3bab0-a6e4-4045-ad44-9ce06229c718
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: daf865ef33e2b099e01f4647b17f36ca8df92c94
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 17dea2d1106a57aa678a88db6647c71048d8c38f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

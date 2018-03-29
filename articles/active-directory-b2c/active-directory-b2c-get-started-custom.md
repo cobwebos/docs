@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：自定义策略入门 | Microsoft Docs"
-description: "如何开始使用 Azure Active Directory B2C 自定义策略"
+title: Azure Active Directory B2C：自定义策略入门 | Microsoft Docs
+description: 如何开始使用 Azure Active Directory B2C 自定义策略
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: 658c597e-3787-465e-b377-26aebc94e46d
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: joroja;parahk;gsacavdm
-ms.openlocfilehash: 86b86c7c670b34b4f3303adbcb55aff8d5edb53a
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.author: davidmu
+ms.openlocfilehash: 502f88bd08c05f71988763fedeba4d596aa409b6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C：自定义策略入门
 
@@ -45,7 +42,7 @@ ms.lasthandoff: 01/19/2018
     d.单击“下一步”。 使用 RSA 作为“密钥类型”。<br>
     e. 对“日期”使用默认值。 <br>
     f. 使用“签名”作为“密钥用法”。<br>
-    g. 选择“创建”。<br>
+    g. 选择**创建**。<br>
 4. 如果不存在 B2C_1A_TokenEncryptionKeyContainer，请创建一个：<br>
  a. 选择“添加”。<br>
  b. 然后选择“生成”。<br>
@@ -54,7 +51,7 @@ ms.lasthandoff: 01/19/2018
  d.单击“下一步”。 使用 RSA 作为“密钥类型”。<br>
  e. 对“日期”使用默认值。<br>
  f. 使用“加密”作为“密钥用法”。<br>
- g. 选择“创建”。<br>
+ g. 选择**创建**。<br>
 5. 创建 B2C_1A_FacebookSecret。 <br>
 如果已有 Facebook 应用程序机密，请将它作为策略密钥添加到租户。 否则，必须创建包含占位符值的密钥，使策略能够通过验证。<br>
  a. 选择“添加”。<br>
@@ -81,7 +78,7 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
    * 使用 `IdentityExperienceFramework` 作为“名称”。
    * 对于“应用程序类型”，使用“Web 应用/API”。
    * 对于“登录 URL”，使用 `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户域名。
-5. 选择“创建”。
+5. 选择**创建**。
 6. 创建后，选择新创建的应用程序 IdentityExperienceFramework。<br>
    * 选择“属性”。<br>
    * 复制应用程序 ID 并保存以备后用。
@@ -93,7 +90,7 @@ Azure AD B2C 要求注册两个额外的应用程序，引擎使用这些应用�
    * 使用 `ProxyIdentityExperienceFramework` 作为“名称”。
    * 对于“应用程序类型”，使用“本机”。
    * 对于“重定向 URI”，使用 `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户。
-1. 选择“创建”。
+1. 选择**创建**。
 1. 创建后，选择应用程序 ProxyIdentityExperienceFramework。<br>
    * 选择“属性”。 <br>
    * 复制应用程序 ID 并保存以备后用。

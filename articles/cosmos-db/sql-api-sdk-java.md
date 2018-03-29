@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB：SQL Java API、SDK 和资源 | Microsoft Docs"
-description: "了解有关 SQL Java API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB SQL Java SDK 各版本之间所做的更改。"
+title: Azure Cosmos DB：SQL Java API、SDK 和资源 | Microsoft Docs
+description: 了解有关 SQL Java API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB SQL Java SDK 各版本之间所做的更改。
 services: cosmos-db
 documentationcenter: java
 author: rnagpal
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 979fcebd60d62c714a1c521013cf391ebf18a73c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a8917e85ce5fb0e43593c34fc83046ec727e4aac
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -35,8 +35,6 @@ ms.lasthandoff: 03/02/2018
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API Async Java SDK](sql-api-sdk-async-java.md)。 
 

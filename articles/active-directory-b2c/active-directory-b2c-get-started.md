@@ -1,24 +1,21 @@
 ---
-title: "创建 Azure Active Directory B2C 租户 | Microsoft Docs"
-description: "有关如何创建 Azure Active Directory B2C 租户的主题"
+title: 创建 Azure Active Directory B2C 租户 | Microsoft Docs
+description: 有关如何创建 Azure Active Directory B2C 租户的主题
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: patricka
-ms.assetid: eec4d418-453f-4755-8b30-5ed997841b56
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 06/07/2017
-ms.author: parja
-ms.openlocfilehash: afca6cf8f19c9b96de292881582e27133e35f096
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 56e0ae7454e86911c894da88b5aa8ccc03a08af3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-an-azure-active-directory-b2c-tenant-in-the-azure-portal"></a>在 Azure 门户中创建 Azure Active Directory B2C 租户
 

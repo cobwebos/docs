@@ -1,8 +1,8 @@
 ---
-title: "Cortana Intelligence 解决方案评估工具 | Microsoft Docs"
-description: "作为 Microsoft 合作伙伴，以下是将 Cortana Intelligence 解决方案发布到 AppSource 需要执行的所有步骤。"
+title: Cortana Intelligence 解决方案评估工具 | Microsoft Docs
+description: 作为 Microsoft 合作伙伴，以下是将 Cortana Intelligence 解决方案发布到 AppSource 需要执行的所有步骤。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: AnupamMicrosoft
 manager: jhubbard
 editor: cgronlun
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
-ms.author: anupams;v-bruham;garye
-ms.openlocfilehash: c9ea8164d5866662a7ed81672ee1ba776603b193
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: anupams
+ms.openlocfilehash: f678cb9819a2c03f97bcca5a2092160212779328
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence 解决方案评估工具
 ## <a name="overview"></a>概述

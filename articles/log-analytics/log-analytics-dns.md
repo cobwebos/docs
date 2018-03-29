@@ -1,24 +1,24 @@
 ---
-title: "Azure Log Analytics 中的 DNS Analytics 解决方案 | Microsoft Docs"
-description: "在 Log Analytics 中设置并使用 DNS Analytics 解决方案，收集有关 DNS 基础结构安全性、性能和操作的见解。"
+title: Azure Log Analytics 中的 DNS Analytics 解决方案 | Microsoft Docs
+description: 在 Log Analytics 中设置并使用 DNS Analytics 解决方案，收集有关 DNS 基础结构安全性、性能和操作的见解。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 8ead058108f39eca8682eccc296760d4b756d336
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 6a59cf8b9444fe7cb197501c51d10dae81acb027
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -145,7 +145,6 @@ DNS Analytics 可帮助：
 
 **示例 DDI Analytics 查询**。 包含直接提取原始分析数据的最常见搜索查询的列表。
 
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![示例查询](./media/log-analytics-dns/queries.png)
 
@@ -166,7 +165,7 @@ DNS Analytics 可帮助：
 
 可在“日志搜索”页上创建查询。 可使用分面控件筛选搜索结果。 还可创建高级查询以转换、筛选和报告结果。 通过执行以下查询进行启动：
 
-1. 在“搜索查询”框中，键入 `Type=DnsEvents`，查看由该解决方案托管的 DNS 服务器生成的所有 DNS 事件。 结果中将列出与查找查询、动态注册和配置更改相关的所有事件的日志数据。
+1. 在“搜索查询”框中，键入 `DnsEvents`，查看由该解决方案托管的 DNS 服务器生成的所有 DNS 事件。 结果中将列出与查找查询、动态注册和配置更改相关的所有事件的日志数据。
 
     ![DnsEvents 日志搜索](./media/log-analytics-dns/log-search-dnsevents.png)  
 
@@ -176,7 +175,7 @@ DNS Analytics 可帮助：
 
     c. 若要查看配置更改的日志数据，请在左侧的分面控件中选择“ConfigurationChange”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有配置更改事件。
 
-2. 在“搜索查询”框中，键入 `Type=DnsInventory`，查看由该解决方案托管的 DNS 服务器中所有与 DNS 清单相关数据。 结果中列出 DNS 服务器的日志数据、DNS 区域和资源记录。
+2. 在“搜索查询”框中，键入 `DnsInventory`，查看由该解决方案托管的 DNS 服务器中所有与 DNS 清单相关数据。 结果中列出 DNS 服务器的日志数据、DNS 区域和资源记录。
 
     ![DnsInventory 日志搜索](./media/log-analytics-dns/log-search-dnsinventory.png)
 

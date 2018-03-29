@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure IoT 中心发送云到设备消息 (Python) | Microsoft Docs"
-description: "如何使用用于 Python 的 Azure IoT SDK 将云到设备消息从 Azure IoT 中心发送到设备。 修改模拟设备应用以接收云到设备消息，并修改后端应用以发送云到设备消息。"
+title: 使用 Azure IoT 中心发送云到设备消息 (Python) | Microsoft Docs
+description: 如何使用用于 Python 的 Azure IoT SDK 将云到设备消息从 Azure IoT 中心发送到设备。 修改模拟设备应用以接收云到设备消息，并修改后端应用以发送云到设备消息。
 services: iot-hub
 documentationcenter: python
 author: msebolt
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3ca8a78f-ade2-46e8-8a49-d5d599cdf1f1
 ms.service: iot-hub
 ms.devlang: javascript
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: v-masebo
-ms.openlocfilehash: 592e0cd858d16715f95955194eca4217d9914b05
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 9a669bda2a41ea6aa474549ee9798889523a27f8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>使用 IoT 中心发送云到设备消息 (Python)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -191,17 +191,6 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
     DEVICE_ID = "{deviceId}"
-    ```
-
-1. 添加以下函数，以便在控制台中列显操作结果：
-   
-    ```python
-    function printResultFor(op) {
-      return function printResult(err, res) {
-        if (err) console.log(op + ' error: ' + err.toString());
-        if (res) console.log(op + ' status: ' + res.constructor.name);
-      };
-    }
     ```
 
 1. 添加以下函数，用以在控制台中输出反馈消息：

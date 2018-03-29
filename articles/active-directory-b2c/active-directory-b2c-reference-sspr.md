@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：自助密码重置 | Microsoft Docs"
-description: "本主题演示如何在 Azure Active Directory B2C 中为使用者设置自助密码重置"
+title: Azure Active Directory B2C：自助密码重置 | Microsoft Docs
+description: 本主题演示如何在 Azure Active Directory B2C 中为使用者设置自助密码重置
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: curtand
-ms.assetid: c87ed86e-1520-42b1-8c31-46cd44ed5310
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: c0a10869477647820828b22b6291522be255844d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.author: davidmu
+ms.openlocfilehash: f38473989f90bfe6d35bffb17a02a892ad08cf5e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-set-up-self-service-password-reset-for-your-consumers"></a>Azure Active Directory B2C：为使用者设置自助密码重置
 借助自助密码重置功能，使用者（已注册本地帐户）可以将密码重置为他们自己的密码。 这样可以显著减少支持人员的负担，尤其当有数百万使用者定期使用应用程序时。 目前，仅支持使用已验证的电子邮件地址作为一种恢复方法。 以后我们将添加其他恢复方法（已验证的电话号码、安全问题等）。

@@ -1,12 +1,12 @@
 ---
-title: "适用于 .NET 的 Azure Cosmos DB 性能提示 | Microsoft Docs"
-description: "了解用于提高 Azure Cosmos DB 数据库性能的客户端配置选项"
-keywords: "如何提高数据库性能"
+title: 适用于 .NET 的 Azure Cosmos DB 性能提示 | Microsoft Docs
+description: 了解用于提高 Azure Cosmos DB 数据库性能的客户端配置选项
+keywords: 如何提高数据库性能
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 94ff155e-f9bc-488f-8c7a-5e7037091bb9
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: mimig
-ms.openlocfilehash: 2b822794cbafa037d4ab3cb23d2a885914c83607
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6b8ff8d2efd2039e7b71f4e8f25b2756d324940f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java](performance-tips-java.md)
@@ -28,8 +28,6 @@ ms.lasthandoff: 02/28/2018
 > 
 
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供延迟与吞吐量保证的情况下无缝缩放。 凭借 Azure Cosmos DB，无需对体系结构进行重大更改或编写复杂的代码即可缩放数据库。 扩展和缩减操作就像执行单个 API 调用或 [SDK 方法调用](set-throughput.md#set-throughput-sdk)一样简单。 但是，由于 Azure Cosmos DB 是通过网络调用访问的，因此，使用 [SQL .NET SDK](documentdb-sdk-dotnet.md) 时可以通过进行客户端优化来获得最高性能。
 

@@ -1,10 +1,10 @@
 ---
-title: "使用 Azure Batch 服务 API 将作业和任务输出保存到 Azure 存储 | Microsoft Docs"
-description: "了解如何使用 Batch 服务 API 将 Batch 任务和作业输出保存到 Azure 存储。"
+title: 使用 Azure Batch 服务 API 将作业和任务输出保存到 Azure 存储 | Microsoft Docs
+description: 了解如何使用 Batch 服务 API 将 Batch 任务和作业输出保存到 Azure 存储。
 services: batch
 author: tamram
 manager: timlt
-editor: 
+editor: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: tamram
-ms.openlocfilehash: 2530b7c20347b9fb58aee4dfe693847cf3911741
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa124109bfc9d333469c255c50df0af96a26bebf
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>使用 Batch 服务 API 将任务数据保存到 Azure 存储
 
@@ -142,7 +142,7 @@ https://myaccount.blob.core.windows.net/mycontainer/task1/output.txt
 https://myaccount.blob.core.windows.net/mycontainer/task2/output.txt
 ```
 
-有关 Azure 存储中的虚拟目录的详细信息，请参阅[列出容器中的 Blob](../storage/blobs/storage-dotnet-how-to-use-blobs.md#list-the-blobs-in-a-container)。
+有关 Azure 存储中的虚拟目录的详细信息，请参阅[列出容器中的 Blob](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container)。
 
 
 ## <a name="diagnose-file-upload-errors"></a>诊断文件上传错误

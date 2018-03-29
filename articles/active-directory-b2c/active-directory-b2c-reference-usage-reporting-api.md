@@ -1,22 +1,21 @@
 ---
-title: "Azure Active Directory B2C：使用情况报表 API 示例和定义 | Microsoft Docs"
-description: "获取有关 Azure AD B2C 租户用户、身份验证和多因素身份验证报表的指南和示例"
+title: Azure Active Directory B2C：使用情况报表 API 示例和定义 | Microsoft Docs
+description: 获取有关 Azure AD B2C 租户用户、身份验证和多因素身份验证报表的指南和示例
 services: active-directory-b2c
 documentationcenter: dev-center-name
-author: rojasja
+author: davidmu1
 manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/04/2017
-ms.author: joroja
-ms.openlocfilehash: 6014301a026d60775634138cbdfe56bfa625508f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 3470f45683ea508dfe338c313a5307eb6c1164d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>通过报告 API 访问 Azure AD B2C 中的使用情况报表
 

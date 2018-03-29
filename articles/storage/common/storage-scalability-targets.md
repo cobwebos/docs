@@ -1,10 +1,10 @@
 ---
-title: "Azure 存储可伸缩性和性能目标 | Microsoft Docs"
-description: "了解有关 Azure 存储帐户的可伸缩性和性能目标的信息，包括标准和高级存储账户的容量、请求速率以及入站和出站带宽。 了解每个 Azure 存储服务中各分区的性能目标。"
+title: Azure 存储可伸缩性和性能目标 | Microsoft Docs
+description: 了解有关 Azure 存储帐户的可伸缩性和性能目标的信息，包括标准和高级存储账户的容量、请求速率以及入站和出站带宽。 了解每个 Azure 存储服务中各分区的性能目标。
 services: storage
 documentationcenter: na
-author: tamram
-manager: timlt
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: be721bd3-159f-40a1-88c1-96418537fe75
 ms.service: storage
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/24/2017
-ms.author: tamram
-ms.openlocfilehash: f62f2020d40e473886cb679cdfe1c164b95f7114
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: rogarana
+ms.openlocfilehash: e393bb9e7615b893699caf5a931ede5803046892
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Azure 存储可伸缩性和性能目标
 ## <a name="overview"></a>概述

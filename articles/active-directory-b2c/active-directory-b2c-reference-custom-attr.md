@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：自定义属性 | Microsoft Docs"
-description: "如何使用 Azure Active Directory B2C 中的自定义属性来收集有关使用者的信息"
+title: Azure Active Directory B2C：自定义属性 | Microsoft Docs
+description: 如何使用 Azure Active Directory B2C 中的自定义属性来收集有关使用者的信息
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: 055ffb0a-197b-4716-8dad-1fd8a01e174f
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: 3e2c8b3ab223cf269129d7723c37d98c24f0653c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.author: davidmu
+ms.openlocfilehash: 6f285c10b7d8ff92c8568c42b6a78dc4ea9bcc74
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-to-collect-information-about-your-consumers"></a>Azure Active Directory B2C：使用自定义属性来收集有关使用者的信息
 Azure Active Directory (Azure AD) B2C 目录附带了一组内置信息（属性）：名、姓、市、邮编和其他属性。 但是，每个面向使用者的应用程序对于收集使用者的哪些属性具有独特的要求。 在 Azure AD B2C 中，可以扩展存储在每个使用者帐户上的属性集。 可以在 [Azure 门户](https://portal.azure.com/)中创建自定义属性，并将其用于注册策略，如下所示。 还可以使用 [Azure AD 图形 API](active-directory-b2c-devquickstarts-graph-dotnet.md) 读取和写入这些属性。
@@ -32,7 +29,7 @@ Azure Active Directory (Azure AD) B2C 目录附带了一组内置信息（属性
 1. [请按照以下步骤导航到 Azure 门户上的 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. 单击“用户属性”。
 3. 单击边栏选项卡顶部的“ **+添加** ”。
-4. 提供自定义属性的“名称”（例如，“ShoeSize”）和“说明”（可选） 。 单击“创建” 。
+4. 提供自定义属性的“名称”（例如，“ShoeSize”）和“说明”（可选） 。 单击“创建”。
    
    > [!NOTE]
    > 当前可用“数据类型”仅包括“String”、“Boolean”和“Int”。
@@ -45,8 +42,8 @@ Azure Active Directory (Azure AD) B2C 目录附带了一组内置信息（属性
 1. [请按照以下步骤导航到 Azure 门户上的 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. 单击“注册策略”。
 3. 单击注册策略（例如，“B2C_1_SiUp”）将其打开。 单击边栏选项卡顶部的“编辑”。
-4. 单击“注册属性”，并选择自定义属性（例如，“ShoeSize”）。 单击 **“确定”**。
-5. 单击“应用程序声明”，并选择自定义属性。 单击 **“确定”**。
+4. 单击“注册属性”，并选择自定义属性（例如，“ShoeSize”）。 单击“确定”。
+5. 单击“应用程序声明”，并选择自定义属性。 单击“确定”。
 6. 单击边栏选项卡顶部的“保存”。
 
 可以使用策略上的“立即运行”功能来验证用户体验。 现在可以在使用者注册期间收集的属性的列表中看到“ShoeSize”，并在发送回应用程序的令牌中看到它。

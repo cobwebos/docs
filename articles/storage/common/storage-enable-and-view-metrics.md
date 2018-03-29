@@ -1,10 +1,10 @@
 ---
-title: "在 Azure 门户中启用存储度量值 | Microsoft Docs"
-description: "如何为 Blob、队列、表和文件服务启用存储度量值"
+title: 在 Azure 门户中启用存储度量值 | Microsoft Docs
+description: 如何为 Blob、队列、表和文件服务启用存储度量值
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 0407adfc-2a41-4126-922d-b76e90b74563
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/14/2017
-ms.author: tamram
-ms.openlocfilehash: 8abb4f968c1fa84e03c8cc807826d3684713847a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rogarana
+ms.openlocfilehash: 0caa4eff80877ad4bf8d501a276e82922b1a84c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>启用 Azure 存储度量值并查看度量值数据
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 [Azure 门户](https://portal.azure.com)目前不允许在存储帐户中配置分钟指标；必须通过 PowerShell 或编程方式启用分钟指标。
 
 ## <a name="how-to-enable-metrics-using-powershell"></a>如何使用 PowerShell 启用度量值
-可以使用本地计算机上的 PowerShell 在存储帐户中配置存储度量值，具体方法是：使用 Azure PowerShell cmdlet Get-AzureStorageServiceMetricsProperty 检索当前设置，然后使用 cmdlet Set-AzureStorageServiceMetricsProperty 更改当前设置。
+可以使用本地计算机上的 PowerShell 在存储帐户中配置存储度量值，具体方法是：使用 Azure PowerShell cmdlet Get-AzureStorageServiceMetricsProperty 检索当前设置，并使用 cmdlet Set-AzureStorageServiceMetricsProperty 更改当前设置。
 
 控制存储度量值的 cmdlet 使用以下参数：
 
@@ -130,7 +130,7 @@ blobClient.SetServiceProperties(properties);
 * $MetricsMinutePrimaryTransactionsTable
 * $MetricsMinutePrimaryTransactionsQueue
 
-### <a name="capacity"></a>容量
+### <a name="capacity"></a>Capacity
 * $MetricsCapacityBlob
 
 有关这些表的完整架构详细信息，请参阅 [Storage Analytics Metrics Table Schema](https://msdn.microsoft.com/library/azure/hh343264.aspx)（存储分析度量值表架构）。 以下示例行仅显示一部分可用列，但也说明了存储度量值在采用相应方式保存这些度量值时展现的一些重要功能：

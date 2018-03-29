@@ -1,11 +1,11 @@
 ---
-title: "Azure 中继常见问题 | Microsoft Docs"
-description: "获取 Azure 中继的某些常见问题的解答。"
+title: Azure 中继常见问题 | Microsoft Docs
+description: 获取 Azure 中继的某些常见问题的解答。
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 886d2c7f-838f-4938-bd23-466662fb1c8e
 ms.service: service-bus-relay
 ms.devlang: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: sethm
-ms.openlocfilehash: 07cbdd24368d66104ecdeb263983e3aaf3f219fe
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: d433fb916280e98dd0f2af61728596b8566be71b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-relay-faqs"></a>Azure 中继常见问题
 
-本文回答了一些关于 [Azure 中继](https://azure.microsoft.com/services/service-bus/)的常见问题 (FAQ)。 若要了解一般的 Azure 定价和支持信息，请参阅 [Azure 支持常见问题](http://go.microsoft.com/fwlink/?LinkID=185083)。
+本文回答了一些关于 [Azure 中继](https://azure.microsoft.com/services/service-bus/)的常见问题 (FAQ)。 若要了解一般的 Azure 定价和支持信息，请参阅 [Azure 支持常见问题](https://azure.microsoft.com/en-in/support/faq/)。
 
 ## <a name="general-questions"></a>一般问题
 ### <a name="what-is-azure-relay"></a>什么是 Azure 中继？

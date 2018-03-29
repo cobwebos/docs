@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c03b124e21603056219a6ff6458469b4ecd60969
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: fa74f2e2d8fb9fc9f11810a4af4978fb4b443bcc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-deploy-a-windows-hybrid-runbook-worker"></a>如何部署 Windows 混合 Runbook 辅助角色
 
@@ -68,7 +68,7 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
         -ResourceGroupName <NameofOResourceGroup> -HybridGroupName <NameofHRWGroup> `
         -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfOMSWorkspace>
 
-4. 系统会提示用户同意安装 **NuGet** 并使用 Azure 凭据进行身份验证。<br><br> ![执行 New-OnPremiseHybridWorker 脚本](media/automation-hybrid-runbook-worker/new-onpremisehybridworker-scriptoutput.png)
+4. 系统会提示用户同意安装 **NuGet** 并使用 Azure 凭据进行身份验证。<br><br>![执行 New-OnPremiseHybridWorker 脚本](/media/automation-hybrid-runbook-worker/new-onpremisehybridworker-scriptoutput.png)
 
 5. 脚本完成后，“混合辅助角色组”页会显示新组和成员数，或者会将成员数进行递增（如果组已存在）。  可以从“混合辅助角色组”页上的列表中选择组，并选择“混合辅助角色”磁贴。  在“混合辅助角色”页上，会列出组的每个成员。  
 

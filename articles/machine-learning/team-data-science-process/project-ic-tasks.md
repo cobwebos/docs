@@ -1,23 +1,23 @@
 ---
-title: "单个参与者的 Team Data Science Process 任务 - Azure  | Microsoft Docs"
-description: "数据科学团队项目的单个参与者的任务概述。"
-documentationcenter: 
+title: 单个参与者的 Team Data Science Process 任务 - Azure  | Microsoft Docs
+description: 数据科学团队项目的单个参与者的任务概述。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: 526260c3f61a203fe2770a0c6d0d23d95916a2b7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: af60b188fe8db278297e1ece400bf4398e36094a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="individual-contributor-tasks"></a>单个参与者的任务
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/14/2017
 
 有关如何在 TDSP 下执行数据科学项目的说明，请参阅[执行数据科学项目](project-execution.md)。 
 
->[AZURE.NOTE] 下列说明概述了使用 Visual Studio Team Services (VSTS) 设置 TDSP 团队环境所需的步骤。 我们指定了如何使用 VSTS 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果组使用其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。
+>[AZURE.NOTE] 下列说明概述了使用 Visual Studio Team Services (VSTS) 设置 TDSP 团队环境所需的步骤。 本文指定了如何使用 VSTS 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果组使用其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。
 
 
 ## <a name="repositories-and-directories"></a>存储库和目录
@@ -80,7 +80,7 @@ ms.lasthandoff: 11/14/2017
     git clone <the URL of the TeamUtilities repository>
     git clone <the URL of the Project repository>
     
-![#N/A](./media/project-ic-tasks/project-ic-2-clone-three-repo-to-ic.png)
+![2](./media/project-ic-tasks/project-ic-2-clone-three-repo-to-ic.png)
 
 确认在你的项目目录下看到了这三个文件夹。
 

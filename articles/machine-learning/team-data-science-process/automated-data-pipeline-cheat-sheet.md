@@ -1,8 +1,8 @@
 ---
-title: "Azure 机器学习自动化数据管道速查表 | Microsoft 文档"
-description: "此打印速查表演示如何将自动化数据管道设置到 Azure 机器学习 Web 服务中（无论数据在本地，在进行流式处理，在 Azure 中，还是在第三方云服务中）。"
+title: Azure 机器学习自动化数据管道速查表 | Microsoft 文档
+description: 此打印速查表演示如何将自动化数据管道设置到 Azure 机器学习 Web 服务中（无论数据在本地，在进行流式处理，在 Azure 中，还是在第三方云服务中）。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: garyericson
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: mithal;garye
-ms.openlocfilehash: a2b14dd39c0247c35ef006385eceebfa4fbe82d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: garye
+ms.openlocfilehash: f07e7cc9c97dcd5ef6ebc2d4c16d31b831869352
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure 机器学习预测中自动化数据管道的速查表
 **Microsoft Azure 机器学习自动化数据管道速查表**帮助你浏览各项技术，这些技术可用来将数据移到预测分析模型可对其进行评分的机器学习 Web 服务中。

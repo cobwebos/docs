@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：使用客户端证书保护 RESTful 服务"
-description: "使用客户端证书保护 Azure AD B2C 中的自定义 REST API 声明交换"
+title: Azure Active Directory B2C：使用客户端证书保护 RESTful 服务
+description: 使用客户端证书保护 Azure AD B2C 中的自定义 REST API 声明交换
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 09/25/2017
-ms.author: yoelh
-ms.openlocfilehash: 582aadd35821779e307ac285804e3b7fe5c24abd
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: davidmu
+ms.openlocfilehash: f1b9ef9a78715c08c5361e4bab6a31384c5c98d3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>使用客户端证书保护 RESTful 服务
 在相关的文章中，我们已[创建一个 RESTful 服务](active-directory-b2c-custom-rest-api-netfw.md)，该服务可与 Azure Active Directory B2C (Azure AD B2C) 交互。
@@ -74,7 +71,7 @@ ms.lasthandoff: 01/24/2018
 
     ![上传策略密钥](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
-7. 选择“创建”。
+7. 选择**创建**。
 
 8. 若要查看租户中的可用密钥并确认是否已创建 `B2C_1A_B2cRestClientCertificate` 密钥，请选择“策略密钥”。
 

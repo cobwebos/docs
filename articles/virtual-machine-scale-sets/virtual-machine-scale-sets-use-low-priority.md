@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: memccror
-ms.openlocfilehash: 9e4970ecc538caab537281931b89bfd57d994cfa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f25e4d1e3906a610e7c60e348f872a78d7db8fd3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>规模集中的低优先级 VM（预览版）
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="use-the-azure-cli-20"></a>使用 Azure CLI 2.0
 
-创建包含低优先级 VM 的规模集的过程与[入门文章](virtual-machine-scale-sets-create-cli.md)中详述的过程相同。 只需将“--Priority”参数添加到 cli 调用并将其设置为 *Low*，如以下示例所示：
+创建包含低优先级 VM 的规模集的过程与[入门文章](quick-create-cli.md)中详述的过程相同。 只需将“--Priority”参数添加到 cli 调用并将其设置为 *Low*，如以下示例所示：
 
 ```azurecli
 az vmss create \
@@ -63,7 +63,7 @@ az vmss create \
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
-创建包含低优先级 VM 的规模集的过程与[入门文章](virtual-machine-scale-sets-create-powershell.md)中详述的过程相同。
+创建包含低优先级 VM 的规模集的过程与[入门文章](quick-create-powershell.md)中详述的过程相同。
 只需将“--Priority”参数添加到 [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) 并将其设置为 *Low*，如以下示例所示：
 
 ```powershell
@@ -77,7 +77,7 @@ $vmssConfig = New-AzureRmVmssConfig `
 
 ## <a name="use-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
-创建使用低优先级 VM 的规模集的过程与适用于 [Linux](virtual-machine-scale-sets-create-template-linux.md) 或 [Windows](virtual-machine-scale-sets-create-template-windows.md) 的入门文章中详述的过程相同。 在模板中将“priority”属性添加到 *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* 资源类型，并指定*Low* 作为值。 请务必使用 *2017-10-30-preview* 或更高版本的 API。 
+创建使用低优先级 VM 的规模集的过程与适用于 [Linux](quick-create-template-linux.md) 或 [Windows](quick-create-template-windows.md) 的入门文章中详述的过程相同。 在模板中将“priority”属性添加到 *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* 资源类型，并指定*Low* 作为值。 请务必使用 *2017-10-30-preview* 或更高版本的 API。 
 
 若要将逐出策略设置为删除，请添加“evictionPolicy”参数并将其设置为 *delete*。
 

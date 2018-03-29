@@ -1,24 +1,21 @@
 ---
-title: "用户界面 (UI) 自定义 - Azure AD B2C | Microsoft Docs"
-description: "有关 Azure Active Directory B2C 中用户界面 (UI) 自定义功能的主题"
+title: 用户界面 (UI) 自定义 - Azure AD B2C | Microsoft Docs
+description: 有关 Azure Active Directory B2C 中用户界面 (UI) 自定义功能的主题
 services: active-directory-b2c
-documentationcenter: 
-author: saeedakhter-msft
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 99f5a391-5328-471d-a15c-a2fafafe233d
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
-ms.author: saeedakhter-msft
-ms.openlocfilehash: a9136ebd15a995361a325804ca81ece0db30b3e6
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: davidmu
+ms.openlocfilehash: ea33fa95aa7b73668aeee313a9d71a7f78e89a77
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C：自定义 Azure AD B2C 用户界面 (UI)
 

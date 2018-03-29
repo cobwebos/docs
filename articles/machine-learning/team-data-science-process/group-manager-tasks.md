@@ -1,23 +1,23 @@
 ---
-title: "团队数据科学流程小组管理员任务 - Azure | Microsoft Docs"
-description: "数据科学团队项目组管理员的任务概述。"
-documentationcenter: 
+title: 团队数据科学流程小组管理员任务 - Azure | Microsoft Docs
+description: 数据科学团队项目组管理员的任务概述。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: 58cea8b0288469a76dd8c4eb967caa8e87cd3dd7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 3c39ae865ec26567f70706b042dab2aa8e4939d3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="group-manager-tasks"></a>组管理员任务
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/14/2017
 ![0](./media/group-manager-tasks/tdsp-group-manager.png)
 
 
->[AZURE.NOTE] 我们在以下说明中概述了使用 VSTS 设置 TDSP 组环境所需的步骤。 我们指定了如何使用 VSTS 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果你的组使用了其他代码承载平台，组管理员需要完成的任务通常不会发生变化。 但是完成这些任务的方法将会有所不同。
+>[AZURE.NOTE] 我们在以下说明中概述了使用 VSTS 设置 TDSP 组环境所需的步骤。 本文指定了如何使用 VSTS 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果你的组使用了其他代码承载平台，组管理员需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。
 
 1. 为组设置 **Visual Studio Team Services (VSTS) 服务器**。
 2. 在 Visual Studio Team Services 服务器上创建**组团队项目**（适用于 VSTS 用户）
@@ -52,7 +52,7 @@ ms.lasthandoff: 11/14/2017
 
 ### <a name="pre-requisites-for-cloning-repositories-and-checking-code-in-and-out"></a>克隆存储库及签入和签出代码的先决条件
  
-- 计算机上必须安装 Git。 如果使用的是数据科学虚拟机 (DSVM)，则已预安装 Git，可以继续操作。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。  
+- 计算机上必须安装有 Git。 如果使用的是数据科学虚拟机 (DSVM)，则已预安装 Git，可以继续操作。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。  
 - 如果使用的是 **Windows DSVM**，则需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后单击“最新安装程序”。 此步骤会将你转到最新安装程序页。 在此处下载 .exe 安装程序并运行它。 
 - 如果使用的是 **Linux DSVM**，则在 DSVM 上创建一个 SSH 公钥，然后将它添加到组 VSTS 服务器。 有关 SSH 的详细信息，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的**创建 SSH 公钥**部分。 
 
@@ -76,7 +76,7 @@ VSTS 服务器承载以下存储库：
 
 如果你的组织有 Visual Studio/MSDN 订阅，请单击绿色的“使用你的工作或学校帐户登录”框，并使用与此订阅关联的凭据登录。 
         
-![#N/A](./media/group-manager-tasks/signin.PNG)
+![2](./media/group-manager-tasks/signin.PNG)
 
 
         

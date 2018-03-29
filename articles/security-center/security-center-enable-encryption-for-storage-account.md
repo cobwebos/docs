@@ -1,12 +1,12 @@
 ---
-title: "在 Azure 安全中心为存储帐户启用加密 | Microsoft 文档"
-description: "本文档演示如何实现 Azure 安全中心建议“为 Azure 存储帐户启用加密”。"
+title: 在 Azure 安全中心为存储帐户启用加密 | Microsoft 文档
+description: 本文档演示如何实现 Azure 安全中心建议**为 Azure 存储帐户启用加密**。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2016
 ms.author: terrylan
-ms.openlocfilehash: b7b2e8a12cbab68da9c8fcc348e8e3c543607007
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82bb201c0b518d0b45e06a1eb25d54f60cb3e028
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>在 Azure 安全中心为 Azure 存储帐户启用加密
 Azure 安全中心可能会建议为静态数据启用 Azure 存储服务加密。
@@ -27,7 +27,7 @@ Azure 安全中心可能会建议为静态数据启用 Azure 存储服务加密�
 
 
 > [!Note]
-> 启用加密后，仅加密新数据。 存储帐户中的所有现有 blob 保持未加密状态。 若要加密现有 blob，请参阅[存储服务加密常见问题解答](../storage/common/storage-service-encryption.md#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest)。
+> 启用加密后，仅加密新数据。 存储帐户中的所有现有 blob 保持未加密状态。 若要加密现有 blob，请参阅[存储服务加密常见问题解答](../storage/common/storage-service-encryption.md#faq-for-storage-service-encryption)。
 >
 >
 

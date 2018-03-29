@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：多重身份验证 | Microsoft Docs"
-description: "如何在由 Azure Active Directory B2C 保护的面向用户的应用程序中启用多重身份验证"
+title: Azure Active Directory B2C：多重身份验证 | Microsoft Docs
+description: 如何在由 Azure Active Directory B2C 保护的面向用户的应用程序中启用多重身份验证
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: 53ef86c4-1586-45dc-9952-dbbd62f68afc
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: 8fc6c43a0197c203cda5b2200e0a5c01258d1613
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 0f560a02a51239cff0a7d4057ec7beb2f0f5c5c5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Azure Active Directory B2C：启用面向用户的应用程序中的多重身份验证
 Azure Active Directory (Azure AD) B2C 直接集成了 [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)，以便可以在面向消费者的应用程序中将第二层安全性添加到注册和登录体验。 可以这样操作而无需编写单行代码。 目前我们支持电话和短信验证。 如果已经创建了注册和登录策略，则仍然可以启用多重身份验证。
@@ -37,7 +34,7 @@ Azure Active Directory (Azure AD) B2C 直接集成了 [Azure 多重身份验证]
 1. [请按照以下步骤导航到 Azure 门户上的 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. 单击“注册策略”。
 3. 单击注册策略（例如，“B2C_1_SiUp”）将其打开。
-4. 单击“多重身份验证”，并将“状态”设置为“开启”。 单击 **“确定”**。
+4. 单击“多重身份验证”，然后将“状态”设置为“开启”。 单击“确定”。
 5. 单击边栏选项卡顶部的“保存”。
 
 可以使用策略上的“立即运行”功能来验证用户体验。 确认符合以下条件：
@@ -48,7 +45,7 @@ Azure Active Directory (Azure AD) B2C 直接集成了 [Azure 多重身份验证]
 1. [请按照以下步骤导航到 Azure 门户上的 B2C 功能边栏选项卡](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. 单击“登录策略”。
 3. 单击登录策略（例如，“B2C_1_SiIn”）将其打开。 单击边栏选项卡顶部的“编辑”。
-4. 单击“多重身份验证”，并将“状态”设置为“开启”。 单击 **“确定”**。
+4. 单击“多重身份验证”，并将“状态”设置为“开启”。 单击“确定”。
 5. 单击边栏选项卡顶部的“保存”。
 
 可以使用策略上的“立即运行”功能来验证用户体验。 确认符合以下条件：

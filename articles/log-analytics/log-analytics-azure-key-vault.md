@@ -1,11 +1,11 @@
 ---
-title: "Log Analytics 中的 Azure 密钥保管库解决方案 | Microsoft Docs"
-description: "可以在 Log Analytics 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库日志。"
+title: Log Analytics 中的 Azure 密钥保管库解决方案 | Microsoft Docs
+description: 可以在 Log Analytics 中使用 Azure 密钥保管库解决方案来查看 Azure 密钥保管库日志。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: 5e25e6d6-dd20-4528-9820-6e2958a40dae
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 651586e0846ffb22a23e64b73c2cc614980d9b92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c4b16ec11d1990de687014c5385314f0e0c602a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics 中的 Azure Key Vault 分析解决方案
 
@@ -103,7 +103,7 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 
 | 属性 | 说明 |
 |:--- |:--- |
-| 类型 |AzureDiagnostics |
+| Type |AzureDiagnostics |
 | SourceSystem |*Azure* |
 | CallerIpAddress |发出请求的客户端 IP 地址 |
 | 类别 | AuditEvent |
@@ -117,7 +117,7 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 | requestUri_s |请求的 URI |
 | 资源 |密钥保管库的名称 |
 | resourceGroup |密钥保管库的资源组 |
-| ResourceId |Azure Resource Manager 资源 ID。 对于 Key Vault 日志而言，这是 Key Vault 资源 ID。 |
+| ResourceId |Azure 资源管理器资源 ID。 对于 Key Vault 日志而言，这是 Key Vault 资源 ID。 |
 | ResourceProvider |*MICROSOFT.KEYVAULT* |
 | ResourceType | VAULTS |
 | ResultSignature |HTTP 状态（例如，确定） |
@@ -137,7 +137,7 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 2. 使用[从解决方案库中添加 Log Analytics 解决方案](log-analytics-add-solutions.md)中所述的过程，启用 Azure Key Vault 解决方案
 3. 更新所有已保存的查询、仪表板或警报，以使用的新数据类型
   + 类型已从 KeyVaults 更改为 AzureDiagnostics。 可以使用 ResourceType 筛选 Key Vault 日志。
-  - 不要使用 `Type=KeyVaults`，应使用 `Type=AzureDiagnostics ResourceType=VAULTS`
+  - 不要使用 `KeyVaults`，应使用 `AzureDiagnostics | where ResourceType'=="VAULTS"`
   + 字段：（字段名称区分大小写）
   - 对于名称中包含 \_s、\_d 或 \_g 后缀的任何字段，请将第一个字符更改为小写
   - 对于名称中包含 \_o 后缀的任何字段，数据会根据嵌套的字段名称拆分为单个字段。 例如，调用方的 UPN 存储在字段 `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s` 中

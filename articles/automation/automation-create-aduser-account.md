@@ -1,25 +1,19 @@
 ---
 title: 创建 Azure AD 用户帐户
 description: 本文介绍如何为 Azure 自动化中的 Runbook 创建 Azure AD 用户帐户凭据，以便在 Azure 中进行身份验证。
-services: automation
-documentationcenter: ''
-author: georgewallace
-manager: jwhit
-editor: tysonn
 keywords: azure active directory 用户, azure 服务管理, azure ad 用户帐户
-ms.assetid: fcfe266d-b22e-4dfb-8272-adcab09fc0cf
+services: automation
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/15/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/13/2017
-ms.author: magoedte
-ms.openlocfilehash: cd9e3ee5900c3928573fbac6809c107b5ac331b5
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+manager: carmonm
+ms.openlocfilehash: 43490b8ec2139b5e9f62def614dc67e4274304c1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>使用 Azure 经典部署和 Resource Manager 部署对 Runbook 进行身份验证
 本文介绍在为针对 Azure 经典部署模型或 Azure 资源管理器资源运行的 Azure 自动化 Runbook 配置 Azure AD 用户帐户时所要执行的步骤。 尽管这仍是基于 Azure 资源管理器的 Runbook 支持的身份验证标识，但建议的方法是使用 Azure 运行方式帐户。       

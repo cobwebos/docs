@@ -1,12 +1,12 @@
 ---
-title: "Azure 顾问成本建议 | Microsoft Docs"
-description: "使用 Azure 顾问优化 Azure 部署的成本。"
+title: Azure 顾问成本建议 | Microsoft Docs
+description: 使用 Azure 顾问优化 Azure 部署的成本。
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 7b9c7037271fabd67c1ada80420ad72c340e46bb
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 7a8807a580f1a7f1fe67e026a8fbd4cc0e96c41c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="advisor-cost-recommendations"></a>顾问成本建议
 
@@ -30,9 +30,6 @@ ms.lasthandoff: 11/08/2017
 顾问会显示继续运行虚拟机的预估成本，以便你选择关闭它还是对其进行调整。
 
 若要加强对低使用率虚拟机的标识，可在每个订阅的基础上调整平均 CPU 使用率。
-
-## <a name="use-a-cost-effective-solution-to-manage-performance-goals-of-multiple-sql-databases"></a>使用经济高效的解决方案管理多个 SQL 数据库的性能目标
-顾问可识别可从创建弹性数据库池受益的 SQL server 实例。 弹性数据库池是一种简单的低成本高效益的解决方案，用于管理多个数据库的性能目标，其使用模式变化很大。 有关 Azure 弹性数据库池的详细信息，请参阅[什么是 Azure 弹性池？](https://azure.microsoft.com/en-us/documentation/articles/sql-database-elastic-pool/)。
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>通过消除未设置的 ExpressRoute 线路来降低成本
 顾问将识别提供程序状态为“未设置”长达一个月以上的 ExpressRoute 线路将被顾问标识，如果没有使用连接性提供程序配置该线路的计划，顾问将建议删除它。

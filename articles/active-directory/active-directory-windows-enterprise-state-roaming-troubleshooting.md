@@ -1,12 +1,12 @@
 ---
-title: "在 Azure Active Directory 中排查企业状态漫游设置问题 | Microsoft 文档"
-description: "就 IT 管理员可能会遇到的一些设置和应用数据同步问题提供解答。"
+title: 在 Azure Active Directory 中排查企业状态漫游设置问题 | Microsoft 文档
+description: 就 IT 管理员可能会遇到的一些设置和应用数据同步问题提供解答。
 services: active-directory
-keywords: "企业状态漫游设置, Windows 云, 企业状态漫游的常见问题解答"
-documentationcenter: 
+keywords: 企业状态漫游设置, Windows 云, 企业状态漫游的常见问题解答
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
 ms.service: active-directory
 ms.workload: identity
@@ -17,11 +17,11 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 8ee3b523baf562b06bd5f7d652a431e1d4553d5c
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: d9936da3ee1b0cfb4ee6e834a838798a35140620
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 01/16/2018
 
 **潜在问题**：如果管理员配置 Active Directory 联合身份验证服务多重身份验证条件访问策略，且设备上的访问令牌过期，那么同步可能会失败。 确保使用 Microsoft Passport for Work PIN 进行登录和注销，或在访问其他 Azure 服务（如 Office 365）时完成多重身份验证。
 
-###<a name="event-viewer"></a>事件查看器
+### <a name="event-viewer"></a>事件查看器
 要进行高级故障排除，可以使用事件查看器查找特定的错误。 下表中介绍了如何查找。 在事件查看器的“应用程序和服务日志”>“Microsoft” > “Windows” > “SettingSync”下面可以查找事件；在“Microsoft” > “Windows” > “Azure AD”下面可以查找同步标识相关的问题。
 
 

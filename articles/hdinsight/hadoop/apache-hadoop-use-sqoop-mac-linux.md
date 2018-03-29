@@ -1,10 +1,10 @@
 ---
-title: "将 Apache Sqoop 与 Hadoop 配合使用 - Azure HDInsight | Microsoft Docs"
-description: "了解如何使用 Apache Sqoop 在 Hadoop on HDInsight 与 Azure SQL 数据库之间进行导入和导出。"
+title: 将 Apache Sqoop 与 Hadoop 配合使用 - Azure HDInsight | Microsoft Docs
+description: 了解如何使用 Apache Sqoop 在 Hadoop on HDInsight 与 Azure SQL 数据库之间进行导入和导出。
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 tags: azure-portal
 keywords: hadoop sqoop,sqoop
@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 03/26/2018
 ms.author: larryfr
-ms.openlocfilehash: a0a63c414bc68f5125b65e288d78fb546c376c04
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: f98345c012b8507818d0218fe43bc29badf0d4c8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>使用 Apache Sqoop 在 Hadoop on HDInsight 与 SQL 数据库之间导入和导出数据
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 01/05/2018
 > 本文档提供用于在 SQL 数据库中创建和查询表的 T-SQL 语句。 可以通过许多客户端使用这些语句操作 SQL 数据库。 我们建议使用以下客户端：
 >
 > * [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md)
-> * [Contact.java](../../sql-database/sql-database-connect-query-vscode.md)
+> * [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md)
 > * [sqlcmd](https://docs.microsoft.com/sql/tools/sqlcmd-utility) 实用工具
 
 ## <a name="create-the-table-in-sql-database"></a>在 SQL 数据库中创建表
@@ -71,7 +71,7 @@ GO
 1. 使用 SSH 连接到 HDInsight 群集。 例如，以下命令连接到名为 `mycluster` 的群集的主头节点：
 
     ```bash
-    ssh CLUSTERNAME-ssh.azurehdinsight.net
+    ssh mycluster-ssh.azurehdinsight.net
     ```
 
     有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。

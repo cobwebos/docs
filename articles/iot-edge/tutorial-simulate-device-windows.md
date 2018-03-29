@@ -1,8 +1,8 @@
-﻿---
-title: "在 Windows 上模拟 Azure IoT Edge | Microsoft Docs"
-description: "在 Windows 的模拟设备上安装 Azure IoT Edge 运行时，并部署第一个模块"
+---
+title: 在 Windows 上模拟 Azure IoT Edge | Microsoft Docs
+description: 在 Windows 的模拟设备上安装 Azure IoT Edge 运行时，并部署第一个模块
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0207418cf71902ce9bc9d2911124d1d46889d893
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: ae974162a460289a34443879a9e78224684d94ed
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-windows----preview"></a>在 Windows 的模拟设备上部署 Azure IoT Edge - 预览
 
@@ -80,13 +80,13 @@ Azure IoT Edge 使你可在设备上执行分析和数据处理，而无需推�
 在设备上安装并启动 Azure IoT Edge 运行时。 
 ![注册设备][5]
 
-IoT Edge 运行时部署在所有 IoT Edge 设备上。 它由两个模块组成。 IoT Edge 代理协助部署和监视 IoT Edge 设备上的模块。 IoT Edge 中心管理 IoT Edge 设备模块之间以及设备和 Azure IoT 中心之间的通信。 在新设备上配置运行时的时候，起初仅使用 IoT Edge 代理。 IoT Edge 中心将在稍后部署模块时使用。 
+IoT Edge 运行时部署在所有 IoT Edge 设备上。 它由两个模块组成。 IoT Edge 代理协助部署和监视 IoT Edge 设备上的模块。 IoT Edge 中心管理 IoT Edge 设备模块之间以及设备和 Azure IoT 中心之间的通信。 在新设备上配置运行时的时候，首先仅启动 IoT Edge 代理。 IoT Edge 中心将在稍后部署模块时使用。 
 
 
 使用上一节的 IoT Edge 设备连接字符串配置运行时。
 
 ```cmd
-iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
 启动运行时。

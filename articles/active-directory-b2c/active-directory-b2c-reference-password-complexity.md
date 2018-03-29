@@ -1,24 +1,21 @@
 ---
-title: "密码复杂性 - Azure AD B2C | Microsoft 文档"
-description: "如何配置由 Azure Active Directory B2C 中的使用者提供的密码复杂性要求"
+title: 密码复杂性 - Azure AD B2C | Microsoft 文档
+description: 如何配置由 Azure Active Directory B2C 中的使用者提供的密码复杂性要求
 services: active-directory-b2c
-documentationcenter: 
-author: saeedakhter-msft
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 53ef86c4-1586-45dc-9952-dbbd62f68afc
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
-ms.author: saeeda
-ms.openlocfilehash: 3906c9fa1def206a8f0a7e155949097242728c2f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: b89a404d583e9d495b65180e145295e6a106b3ab
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C：配置密码复杂性要求
 
@@ -52,7 +49,7 @@ Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建�
 | 复杂性 | 说明 |
 | --- | --- |
 | 简单 | 为至少 8 到 64 个字符的密码。 |
-| 强 | 为至少 8 到 64 个字符的密码。 它需要 4 个小写字母、大写字母、数字或符号中的 3 个。 |
+| 非常 | 为至少 8 到 64 个字符的密码。 它需要 4 个小写字母、大写字母、数字或符号中的 3 个。 |
 | “自定义” | 此选项提供了对密码复杂性规则的最大控制。  可以配置自定义长度。  还可以接受仅为数字的密码 (pin)。 |
 
 ## <a name="options-available-under-custom"></a>自定义下的可用选项

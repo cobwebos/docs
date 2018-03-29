@@ -1,24 +1,21 @@
 ---
-title: "使用自定义策略管理 SSO 会话 - Azure AD B2C | Microsoft Docs"
-description: "了解如何使用 Azure AD B2C 中的自定义策略管理 SSO 会话。"
+title: 使用自定义策略管理 SSO 会话 - Azure AD B2C | Microsoft Docs
+description: 了解如何使用 Azure AD B2C 中的自定义策略管理 SSO 会话。
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 809f6000-2e52-43e4-995d-089d85747e1f
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: parja
-ms.openlocfilehash: 676b277ae3fbf4554838eee70c5d3e2d8e12c33d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 3d378d188d9acec06f37ca91e3c67e82fb31fc08
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Azure AD B2C：单一登录 (SSO) 会话管理
 
@@ -96,7 +93,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 技术配置文件中有两个元数据项：
 
-| 项目 | 默认值 | 可能的值 | 说明
+| Item | 默认值 | 可能的值 | 说明
 | --- | --- | --- | --- |
 | IncludeSessionIndex | 是 | true/false | 向提供程序指出应存储会话索引。 |
 | RegisterServiceProviders | 是 | true/false | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 |

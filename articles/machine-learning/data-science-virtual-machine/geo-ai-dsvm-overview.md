@@ -1,24 +1,24 @@
 ---
-title: "地理人工智能数据科学虚拟机简介 - Azure | Microsoft Docs"
-description: "介绍地理 AI 数据科学 VM 和组件。"
-keywords: "深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析"
+title: 地理人工智能数据科学虚拟机简介 - Azure | Microsoft Docs
+description: 介绍地理 AI 数据科学 VM 和组件。
+keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: gopitk
 manager: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
-ms.author: gokuma; bradsev;
-ms.openlocfilehash: 97148bcd0f3b5c070adbc6ac9cc8c56c1bdb53e4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: gokuma
+ms.openlocfilehash: 0d4a0543cc81280357974cf84866a0b4ef773c4f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>地理人工智能数据科学虚拟机简介
 

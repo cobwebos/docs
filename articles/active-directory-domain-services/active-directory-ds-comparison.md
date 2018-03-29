@@ -1,8 +1,8 @@
 ---
-title: "Azure AD 域服务：Azure AD 域服务与 DIY 域控制器的比较 | Microsoft 文档"
-description: "Azure Active Directory 域服务与 DIY 域控制器的比较"
+title: Azure AD 域服务：Azure AD 域服务与 DIY 域控制器的比较 | Microsoft 文档
+description: Azure Active Directory 域服务与 DIY 域控制器的比较
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
 ms.openlocfilehash: c384046d280e03de5a808d245dd273fdf7b44549
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>如何确定 Azure AD 域服务是否适合具体的用例
 凭借 Azure AD 域服务，可以在 Azure 基础结构服务中部署工作负荷，而无需担心如何维护 Azure 中的标识基础结构。 此托管服务不同于自行部署和管理的典型 Windows Server Active Directory 部署。 此服务易于部署，并提供自动化的运行状况监视和修正。 我们正在持续改进该服务，以求添加对常见部署方案的支持。

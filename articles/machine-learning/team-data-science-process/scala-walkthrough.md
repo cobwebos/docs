@@ -1,8 +1,8 @@
 ---
-title: "在 Azure 上使用 Scala 和 Spark 展开数据科学 | Microsoft Docs"
-description: "如何在 Azure HDInsight Spark 群集上通过 Spark 可缩放 MLlib 和 Spark ML 包使用 Scala 进行监管式的机器学习任务。"
+title: 在 Azure 上使用 Scala 和 Spark 展开数据科学 | Microsoft Docs
+description: 如何在 Azure HDInsight Spark 群集上通过 Spark 可缩放 MLlib 和 Spark ML 包使用 Scala 进行监管式的机器学习任务。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;deguhath
-ms.openlocfilehash: 940911144993f30723ad395722742c81a4b0a71c
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: dbd68508d83936964d213d94d5a30c15548cbdfc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 和 Spark 展开数据科研
 本文介绍如何在 Azure HDInsight Spark 群集上通过 Spark 可缩放 MLlib 和 Spark ML 包使用 Scala 进行监管式的机器学习任务。 它将指导完成[数据科学过程](http://aka.ms/datascienceprocess)所需的任务：数据引入和浏览、可视化、特征工程、建模和模型使用。 本文中的模型包括逻辑和线性回归、随机林和梯度提升树 (GBT)，以及两个常见的监管式机器学习任务：

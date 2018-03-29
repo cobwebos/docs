@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory 中企业应用程序管理的新增功能 | Microsoft 文档"
-description: "了解 Azure Active Directory 中企业应用程序管理的新增功能。"
+title: Azure Active Directory 中企业应用程序管理的新增功能 | Microsoft 文档
+description: 了解 Azure Active Directory 中企业应用程序管理的新增功能。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 949eae51c469205489153c271a7c20fcc843ad46
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8d1b24708380aeed6055912fcf3538f0e5319e2d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Azure Active Directory 中企业应用程序管理的新增功能 
 
@@ -147,7 +147,7 @@ Azure Active Directory (Azure AD) 具有增强的企业应用程序管理工具�
 1. 要开始，可以在应用程序的左侧导航菜单中选择“自助服务”选项，并将“允许用户请求访问此应用程序?”选项设为“是”。 
 2. 这样，便可以配置允许谁批准访问此应用程序，以及要添加哪个自助服务用户组。 此外，如果为密码单一登录配置了应用程序，还会看到另一个选项，用于根据需要允许这些审批人管理分配给应用程序的密码。
 
-##<a name="feedback"></a>反馈
+## <a name="feedback"></a>反馈
 
 我们希望你在使用改进的 Azure AD 时获得良好的体验。 敬请不时地向我们发送反馈！ 欢迎在[反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)的**管理员门户**版块中发表有关改进的意见和想法。  我们热衷于不断推出炫酷的新功能，遵从用户的指导来塑造和定义后续版本。
 

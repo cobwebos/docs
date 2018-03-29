@@ -1,9 +1,9 @@
 ---
-title: "Azure Cosmos DB SQL API 的 SQL 查询指标 | Microsoft Docs"
-description: "了解如何检测和调试 Azure Cosmos DB 请求的 SQL 查询性能。"
-keywords: "sql 语法, sql 查询, sql 查询, json 查询语言, 数据库概念和 sql 查询, 聚合函数"
+title: Azure Cosmos DB SQL API 的 SQL 查询指标 | Microsoft Docs
+description: 了解如何检测和调试 Azure Cosmos DB 请求的 SQL 查询性能。
+keywords: sql 语法, sql 查询, sql 查询, json 查询语言, 数据库概念和 sql 查询, 聚合函数
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
 editor: monicar
@@ -15,15 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: a2a42fd65ba4344f703ca423dc451802f3f0ac76
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: a92d2ed1686765a54812ff82066bc30c1d48848d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>优化 Azure Cosmos DB 的查询性能
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Azure Cosmos DB 提供了一个[用于查询数据的 SQL API](sql-api-sql-query.md)，不需要使用架构或辅助索引。 本文为开发者提供了以下信息：
 

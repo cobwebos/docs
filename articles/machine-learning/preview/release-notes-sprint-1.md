@@ -1,6 +1,6 @@
 ---
-title: "2017 年 11 月冲刺 (sprint) 1 的 Azure ML Workbench 发行说明"
-description: "本文档详细介绍了 Azure ML 的冲刺 (sprint) 1 发行版的更新"
+title: 2017 年 11 月冲刺 (sprint) 1 的 Azure ML Workbench 发行说明
+description: 本文档详细介绍了 Azure ML 的冲刺 (sprint) 1 发行版的更新
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
 ms.openlocfilehash: a4945c77be5763ffeda328184149f712572937c0
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="sprint-1---november-2017"></a>冲刺 (sprint) 1 - 2017 年 11 月 
 

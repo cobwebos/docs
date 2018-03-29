@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：自定义策略登陆页 | Microsoft Docs"
-description: "通过自定义策略使用 Azure Active Directory B2C 开发面向用户的应用程序"
+title: Azure Active Directory B2C：自定义策略登陆页 | Microsoft Docs
+description: 通过自定义策略使用 Azure Active Directory B2C 开发面向用户的应用程序
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: f2079f53-a637-4f2d-b3a0-61a9647ad433
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.date: 5/06/2017
-ms.author: parakhj
-ms.openlocfilehash: 304500d2adc2d5093c3d053a1b982bac4da374bc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: f3db8c80d6faef3af0909efb7306dd7aa0336ab0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略在应用程序中注册用户和让用户登录
 自定义策略是定义 Azure AD B2C 租户行为的配置文件。 标识开发人员可以完全编辑自定义策略来完成数量几乎不受限制的任务。

@@ -1,11 +1,11 @@
 ---
-title: "Azure Log Analytics 视图中的筛选器 | Microsoft Docs"
-description: "Log Analytics 视图中的筛选器使得用户可以在不修改视图本身的情况下，以特定属性的值筛选数据。  本文介绍如何使用筛选器并添加一个筛选器到自定义视图。"
+title: Azure Log Analytics 视图中的筛选器 | Microsoft Docs
+description: Log Analytics 视图中的筛选器使得用户可以在不修改视图本身的情况下，以特定属性的值筛选数据。  本文介绍如何使用筛选器并添加一个筛选器到自定义视图。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: bwren
 ms.openlocfilehash: 5c2201292eb085dcc043e4257580c7971dbaffbd
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="filters-in-log-analytics-views"></a>Log Analytics 视图中的筛选器
 [Log Analytics 视图](log-analytics-view-designer.md) 中的筛选器使得用户可以在不修改视图本身的情况下，以特定属性的值在视图中筛选数据。  例如，可以允许视图的用户在视图中筛选仅来自特定计算机或特定计算器组的数据。  可以在单个视图上创建多个筛选器，以便用户按多个属性筛选数据。  本文介绍如何使用筛选器并添加一个筛选器到自定义视图。
@@ -52,9 +52,9 @@ ms.lasthandoff: 11/01/2017
 
 | 字段名称 | 查询值 | 标记 |
 |:--|:--|:--|
-| 计算机   | Heartbeat &#124; distinct Computer &#124; sort by Computer asc | 计算机 |
-| EventLevelName | Event &#124; distinct EventLevelName | 严重性 |
-| SeverityLevel | Syslog &#124; distinct SeverityLevel | 严重性 |
+| Computer   | Heartbeat &#124; distinct Computer &#124; sort by Computer asc | 计算机 |
+| EventLevelName | Event &#124; distinct EventLevelName | Severity |
+| SeverityLevel | Syslog &#124; distinct SeverityLevel | Severity |
 | SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |
 
 

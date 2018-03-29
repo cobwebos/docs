@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric 有状态服务中 Reliable Collections 的简介 | Microsoft Docs"
-description: "Service Fabric 有状态服务提供可靠集合，方便用户编写高度可用、高度可缩放且低延迟的云应用程序。"
+title: Azure Service Fabric 有状态服务中 Reliable Collections 的简介 | Microsoft Docs
+description: Service Fabric 有状态服务提供可靠集合，方便用户编写高度可用、高度可缩放且低延迟的云应用程序。
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: 0e89df79d2ff619343f914ce3a5ffe87b7bf25de
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: c6425f7642d9dbecafc6779184a2a5b0cc1a2cab
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric 有状态服务中的可靠集合简介
 使用可靠集合，可以编写高度可用、高度可缩放且低延迟的云应用程序，就像编写单一计算机应用程序一样。 **Microsoft.ServiceFabric.Data.Collections** 命名空间中的类提供一组自动使状态具备高可用性的集合。 开发人员只需面向可靠集合 API 编程，并让可靠集合管理复制状态和本地状态。
@@ -57,7 +57,6 @@ Reliable Collections 提供全新的非常一致保证，使应用程序状态�
 * [Reliable Collection 指导原则和建议](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [事务和锁](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-* [可靠状态管理器和 Reliable Collection 的内部结构](service-fabric-reliable-services-reliable-collections-internals.md)
 * 管理数据
   * [备份和还原](service-fabric-reliable-services-backup-restore.md)
   * [通知](service-fabric-reliable-services-notifications.md)

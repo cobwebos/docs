@@ -1,23 +1,23 @@
 ---
-title: "Team Data Science Process 项目主管任务 - Azure | Microsoft Docs"
-description: "数据科学团队项目的项目主管任务概述。"
-documentationcenter: 
+title: Team Data Science Process 项目主管任务 - Azure | Microsoft Docs
+description: 数据科学团队项目的项目主管任务概述。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: fe7cf1e6167de7d0dfaa5ed75c0b7f5ec23b18cf
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 5c769fda09e70cfb0a43e0305ffab4923fbe3307
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="project-lead-tasks"></a>项目主管任务
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/14/2017
 
 ## <a name="repositories-and-directories"></a>存储库和目录
 
-本教程使用存储库和目录的缩写名称。 这些名称可便于掌握存储库和目录之间的操作。 以下部分使用了此表示法（R 表示 Git 存储库，D 表示 DSVM 上的本地目录）：
+本教程使用存储库和目录的缩写名称。 使用这些名称，更易于跟踪存储库和目录之间的操作。 以下部分使用了此表示法（R 表示 Git 存储库，D 表示 DSVM 上的本地目录）：
 
 - **R3**：团队主管在 Git 上设置的团队 **ProjectTemplate** 存储库。
 - **R5**：在 Git 上为项目设置的项目存储库。
@@ -61,7 +61,7 @@ ms.lasthandoff: 11/14/2017
 - 通过 *https://\<VSTS 服务器名称\>.visualstudio.com* 登录到组 VSTS 服务器。 
 - 在“最近的项目和团队”下面单击“浏览”。 此时会弹出一个窗口，其中列出了 VSTS 服务器上的所有团队项目。 
 
-    ![#N/A](./media/project-lead-tasks/project-leads-2-create-project-repo.png)
+    ![2](./media/project-lead-tasks/project-leads-2-create-project-repo.png)
 
 - 单击要在其中创建项目存储库的团队项目名称。 在本示例中，请单击“MyTeam”。 
 - 然后，单击“导航”定向到团队项目 **MyTeam** 的主页：
@@ -115,7 +115,7 @@ ms.lasthandoff: 11/14/2017
 
 本示例使用：
 
-***https://mysamplegroup.visualstudio.com/MyTeam/_git/MyTeamProjectTemplate***。 
+***https://mysamplegroup.visualstudio.com/MyTeam/_git/MyTeamProjectTemplate***： 
 
 ![7](./media/project-lead-tasks/project-leads-7-clone-team-project-template.png)
             

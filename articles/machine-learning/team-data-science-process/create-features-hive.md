@@ -1,8 +1,8 @@
 ---
-title: "使用 Hive 查询在 Hadoop 群集中为数据创建功能 | Microsoft Docs"
-description: "在存储在 Azure HDInsight Hadoop 群集中的数据中生成功能的 Hive 查询的示例。"
+title: 使用 Hive 查询在 Hadoop 群集中为数据创建功能 | Microsoft Docs
+description: 在存储在 Azure HDInsight Hadoop 群集中的数据中生成功能的 Hive 查询的示例。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: hangzh;bradsev
-ms.openlocfilehash: d72e10332263fac0b0ca0f937d394d2832d88781
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.author: bradsev
+ms.openlocfilehash: f49eeee2dd26d54674b4619e6c986952718caa47
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>使用 Hive 查询创建用于 Hadoop 群集中数据的功能
 本文档将演示如何使用 Hive 查询创建用于 Hadoop 群集中数据的功能。 这些 Hive 查询使用嵌入式 Hive 用户的定义函数 (UDF) 以及为其提供的脚本。

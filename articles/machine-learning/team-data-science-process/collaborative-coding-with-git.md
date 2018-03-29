@@ -1,23 +1,23 @@
 ---
-title: "使用 Git 进行协作编程 - Azure 机器学习 | Microsoft Docs"
-description: "如何配合敏捷规划使用 Git 针对数据科学项目执行协作代码开发。"
-documentationcenter: 
+title: 使用 Git 进行协作编程 - Azure 机器学习 | Microsoft Docs
+description: 如何配合敏捷规划使用 Git 针对数据科学项目执行协作代码开发。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: bradsev;
-ms.openlocfilehash: e6808c0d9d4ca14101eeebe8b3e286d64e2328f9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.author: bradsev
+ms.openlocfilehash: f3eabf0b754f777f25811d30c158b647b1d3954e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 进行协作编程
 
@@ -34,7 +34,7 @@ VSTS 提供了一种将工作项（情景或任务）与 Git 分支连接的简�
 
 提供该新分支的相关信息，例如分支名称、基 Git 存储库和分支。 所选的 Git 存储库必须是该工作项隶属的同一个团队项目下的存储库。 基分支可以是主分支或某个其他现有分支。
 
-![#N/A](./media/collaborative-coding-with-git/2-create-a-branch.png)
+![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
 好的做法是分别为每个情景工作项创建一个 Git 分支。 然后，根据情景分支分别为每个任务工作项创建一个分支。 有多个人在参与同一个项目的不同情景或有多个人在参与同一个情景的不同任务时，以这种与情景任务关系相对应的分层方式组织分支将很有帮助。 每个团队成员使用不同的分支，共享一个分支时每个成员使用不同的代码或其他项目，这种情况下可以最大限度地减少冲突。 
 

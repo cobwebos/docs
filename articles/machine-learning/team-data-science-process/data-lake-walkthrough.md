@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake 中可缩放的数据科研：端到端演练 | Microsoft 文档"
-description: "如何使用 Azure Data Lake 对数据集进行数据浏览和二进制分类任务。"
+title: Azure Data Lake 中可缩放的数据科研：端到端演练 | Microsoft 文档
+description: 如何使用 Azure Data Lake 对数据集进行数据浏览和二进制分类任务。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev; weig
-ms.openlocfilehash: b18b454d1fcdfb2b6e8ea77508f779aeabdc87a0
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 6d0f889e1cc76eced172d66755a0a9275e6b7bdf
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科研：端到端演练
 此演练介绍如何使用 Azure Data Lake 对 NYC 出租车行程和车费数据集的示例进行数据浏览和二进制分类任务，以预测小费是否是按车费所支付的。 它指导端到端完成 [Team Data Science Process](http://aka.ms/datascienceprocess) 的步骤，从数据采集到模型训练，再到部署发布模型的 Web 服务。
@@ -149,7 +149,7 @@ Azure 机器学习工作室用于生成和部署预测模型。 有两种方法�
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
 ### <a name="ingest"></a>数据引入：从公共 blob 读入数据
-将 Azure blob 中数据的位置引用为 **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**，且可以使用 **Extractors.Csv()** 进行提取。 将以下脚本中的 wasb 地址 container_name@blob_storage_account_name 替换为自己的容器名和存储帐户名。 由于文件名的格式都相同，因此可使用 **trip\_data_{\*\}.csv** 读入所有的 12 个行程文件。 
+Azure blob 中数据的位置引用为 **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**，可使用 **Extractors.Csv()** 对其进行提取。 将以下脚本中的 wasb 地址 container_name@blob_storage_account_name 替换为自己的容器名和存储帐户名。 由于文件名的格式都相同，因此可使用 **trip\_data_{\*\}.csv** 读入所有的 12 个行程文件。 
 
     ///Read in Trip data
     @trip0 =

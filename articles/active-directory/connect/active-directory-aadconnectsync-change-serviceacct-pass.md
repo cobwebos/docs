@@ -1,12 +1,12 @@
 ---
-title: "Azure AD Connect 同步：更改 Azure AD Connect 同步服务帐户 | Microsoft Docs"
-description: "本主题文档介绍加密密钥，以及如何在更改密码后将其放弃。"
+title: Azure AD Connect 同步：更改 Azure AD Connect 同步服务帐户 | Microsoft Docs
+description: 本主题文档介绍加密密钥，以及如何在更改密码后将其放弃。
 services: active-directory
-keywords: "Azure AD 同步服务帐户, 密码"
-documentationcenter: 
+keywords: Azure AD 同步服务帐户, 密码
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: c22dd91f236454c774c00371bff668da245d45c6
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: faa6d667b514563516c23e0484437ac9572e52b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>更改 Azure AD Connect 同步服务帐户密码
 如果更改了 Azure AD Connect 同步服务帐户密码，则无法正常启动同步服务，除非已弃用加密密钥并重新初始化 Azure AD Connect 同步服务帐户密码。 
@@ -30,7 +30,7 @@ Azure AD Connect 是同步服务的一部分，使用加密密钥来存储 AD DS
 
 如果需要更改服务帐户密码，可以使用[放弃 Azure AD Connect 同步加密密钥](#abandoning-the-azure-ad-connect-sync-encryption-key)中的过程来完成该操作。  不管何种原因需要放弃加密密钥，都应该可以使用这些过程。
 
-##<a name="issues-that-arise-from-changing-the-password"></a>更改密码导致的问题
+## <a name="issues-that-arise-from-changing-the-password"></a>更改密码导致的问题
 更改服务帐户密码时，需要完成两项操作。
 
 首先，需在 Windows 服务控制管理器下更改密码。  会看到以下错误，除非此问题已解决：
@@ -43,7 +43,7 @@ Azure AD Connect 是同步服务的一部分，使用加密密钥来存储 AD DS
 此时会出现错误，例如：
 
 - 如果尝试在 Windows 服务控制管理器中启动同步服务，但却无法检索加密密钥，则该服务会失败，并且会出现错误“**Windows 无法在本地计算机上启动 Microsoft Azure AD 同步”错误。 有关详细信息，请查看系统事件日志。 如果该服务是 非 Microsoft 服务，请联系服务供应商，并请参阅特定于服务的错误代码 **-21451857952****。”
-- 在 Windows 事件查看器中，应用程序事件日志包含事件 ID 为 6028 且内容为“服务器加密密钥无法访问”的错误消息。
+- 在 Windows 事件查看器中，应用程序事件日志包含事件 ID 为 6028 且内容为“服务器加密密钥无法访问”的错误消息。**
 
 若要确保不收到这些错误，请在更改密码时，按[放弃 Azure AD Connect 同步加密密钥](#abandoning-the-azure-ad-connect-sync-encryption-key)中的过程操作。
  

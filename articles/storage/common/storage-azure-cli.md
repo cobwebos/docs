@@ -1,24 +1,24 @@
 ---
-title: "将 Azure CLI 2.0 用于 Azure 存储 | Microsoft 文档"
-description: "了解如何将 Azure 命令行接口 (Azure CLI) 2.0 用于 Azure 存储，以便创建和管理存储帐户并处理 Azure blob 和文件。 Azure CLI 2.0 是使用 Python 编写的跨平台工具。"
+title: 将 Azure CLI 2.0 用于 Azure 存储 | Microsoft 文档
+description: 了解如何将 Azure 命令行接口 (Azure CLI) 2.0 用于 Azure 存储，以便创建和管理存储帐户并处理 Azure blob 和文件。 Azure CLI 2.0 是使用 Python 编写的跨平台工具。
 services: storage
 documentationcenter: na
-author: tamram
-manager: timlt
+author: roygara
+manager: jeconnoc
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
-ms.author: tamram
-ms.openlocfilehash: 509c702054961c9d9fa525242ce0542059e32d81
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: rogarana
+ms.openlocfilehash: 99e67b9c8469f08f1cbfc980568eec35694d1ae2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>将 Azure CLI 2.0 用于 Azure 存储
 

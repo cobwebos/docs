@@ -1,6 +1,6 @@
 ---
-title: "2017 年 10 月冲刺 (sprint) 0 的 Azure ML Workbench 发行说明"
-description: "本文档详细介绍了 Azure ML 的冲刺 0 发行版的更新。"
+title: 2017 年 10 月冲刺 (sprint) 0 的 Azure ML Workbench 发行说明
+description: 本文档详细介绍了 Azure ML 的冲刺 0 发行版的更新。
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 10/12/2017
 ms.openlocfilehash: 37e0a4461e8a0de631a6194a1eb8cc16b610954f
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="sprint-0---october-2017"></a>冲刺 (sprint) 0 - 2017 年 10 月 
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/13/2017
 - 当身份验证过程实际上已完成并且弹出对话框已关闭时，Workbench 主窗口仍然显示“正在进行身份验证”消息。
 - 如果没有 Internet 连接，则身份验证对话框会弹出一个空白屏幕。
 
-### <a name="data-preparation"></a>数据编制 
+### <a name="data-preparation"></a>数据准备工作 
 - 筛选特定值时，错误和缺失值也将筛选出来。
 - 更改采样策略会删除后续的现有联接操作。
 - 替换缺失值转换不考虑 NaN。
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/13/2017
 - 不存在 Docker 时，如果用户尝试使用 Docker 作为执行目标，则不会返回明确的错误消息。
 - 当用户单击“运行”按钮时，.runconfig 文件不会自动保存。
 
-### <a name="jupyter-notebook"></a>Jupyter Notebook
+### <a name="jupyter-notebook"></a>Jupyter 笔记本
 - 当用户使用某些登录类型时，Notebook 服务器无法启动。
 - Notebook 服务器错误消息未出现在对用户可见的日志中。
 

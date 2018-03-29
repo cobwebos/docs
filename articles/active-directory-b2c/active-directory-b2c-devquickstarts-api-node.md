@@ -1,24 +1,22 @@
 ---
-title: "Azure AD B2C：使用 Node.js 保护 Web API | Microsoft Docs"
-description: "如何构建可从 B2C 租户接受令牌的 Node.js Web API"
+title: Azure AD B2C：使用 Node.js 保护 Web API | Microsoft Docs
+description: 如何构建可从 B2C 租户接受令牌的 Node.js Web API
 services: active-directory-b2c
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: fc2b9af8-fbda-44e0-962a-8b963449106a
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: hero-article
+ms.topic: article
 ms.date: 01/07/2017
-ms.author: xerners
-ms.openlocfilehash: 3a0249f2f7dfd76d89cbf497376f53fe06c250c3
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: davidmu
+ms.openlocfilehash: 3ce0e43beec41599c842cd273cb7230660bdf8d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C：使用 Node.js 保护 Web API
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->

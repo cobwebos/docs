@@ -1,11 +1,11 @@
 ---
-title: "Azure 搜索索引器中的字段映射"
-description: "针对字段名称和数据表示的差异配置帐户的 Azure 搜索索引器字段映射"
+title: Azure 搜索索引器中的字段映射
+description: 针对字段名称和数据表示的差异配置帐户的 Azure 搜索索引器字段映射
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: chaosrealm
 manager: pablocas
-editor: 
+editor: ''
 ms.assetid: 0325a4de-0190-4dd5-a64d-4e56601d973b
 ms.service: search
 ms.devlang: rest-api
@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 08/30/2017
 ms.author: eugenesh
-ms.openlocfilehash: 3f2ead208ea1525489a40d1fb637da47cd8a9b24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e4d6960e540641405b879064a8064d45521dc04f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Azure 搜索索引器中的字段映射
 使用 Azure 搜索索引器时，偶尔可能发现自己处于输入数据与目标索引架构不完全匹配的情形。 在这些情况下，可以使用**字段映射**将数据转换为所需形状。
@@ -60,7 +60,7 @@ api-key: [admin key]
 
 "fieldMappings" : [
     { "sourceFieldName" : "text", "targetFieldName" : "textStandardEnglishAnalyzer" },
-    { "sourceFieldName" : "text", "targetFieldName" : "textSoundexAnalyzer" },
+    { "sourceFieldName" : "text", "targetFieldName" : "textSoundexAnalyzer" }
 ]
 ```
 

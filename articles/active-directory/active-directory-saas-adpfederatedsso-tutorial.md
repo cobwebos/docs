@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 ADP 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 ADP 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 ADP 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 ADP 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 1e0a35fd76f9eb6335685f05b8936b0b5105f6b2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 038b2337ea49b769c6b19e9d50a5f0f2edd13d56
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>教程：Azure Active Directory 与 ADP 集成
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 03/02/2018
 
     ![ADP 域和 URL 单一登录信息](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_url.png)
 
-    在“标识符”文本框中，键入一个 URL：`https://fed.adp.com/` 
+    在“标识符”文本框中，键入一个 URL：`https://fed.adp.com` 
     
 5. ADP 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示一个示例。 声明名称始终是“PersonImmutableID”，其值已映射到 **employeeid**。 
 
@@ -238,10 +238,6 @@ ms.lasthandoff: 03/02/2018
  
 11. 确认测试成功后，将联合的 ADP 服务分配到单个用户或用户组（本教程稍后会介绍），并向员工推出该服务。 
 
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
@@ -319,6 +315,8 @@ ms.lasthandoff: 03/02/2018
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 * [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
+
+
 
 <!--Image references-->
 

@@ -1,8 +1,8 @@
 ---
-title: "团队数据科学过程中的特征选择 | Microsoft Docs"
-description: "介绍特征选择的目的，并提供其在机器学习数据增强过程中作用的相关示例。"
+title: 团队数据科学过程中的特征选择 | Microsoft Docs
+description: 介绍特征选择的目的，并提供其在机器学习数据增强过程中作用的相关示例。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: zhangya;bradsev
-ms.openlocfilehash: c69e7a7e86ccea2073209eabe123049e59a2b8e3
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: bradsev
+ms.openlocfilehash: 44159516a1785f5d65357935000eccc42a7458aa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Team Data Science Process (TDSP) 中的功能选择
 本文介绍特征工程的目的，并提供其在机器学习数据增强过程中作用的相关示例。 这些示例来自 Azure 机器学习工作室。 

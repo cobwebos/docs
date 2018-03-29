@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：区域可用性和数据驻留 | Microsoft Docs"
-description: "有关 Azure Active Directory B2C 租户类型的主题"
+title: Azure Active Directory B2C：区域可用性和数据驻留 | Microsoft Docs
+description: 有关 Azure Active Directory B2C 租户类型的主题
 services: active-directory-b2c
-documentationcenter: 
-author: gsacavdm
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: 8a0644da-b825-4edc-8ce9-541c3c976afb
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
-ms.author: gsacavdm
-ms.openlocfilehash: 752a98ca7f3c77c434de296461790f2cf37e2d5c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: b982a6b6e0068370ef7b5cb30ea689829e90d494
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C：区域可用性和数据驻留
 区域可用性和数据驻留是两个截然不同的概念，它们以不同方式应用到 Azure AD B2C 和 Azure 的其余部分。 本文介绍这两个概念之间的区别，并对它们应用到 Azure 和 Azure AD B2C 的方式进行比较。

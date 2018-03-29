@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory 域服务：将 RHEL VM 加入托管域 | Microsoft 文档"
-description: "将 Red Hat Enterprise Linux 虚拟机加入 Azure AD 域服务"
+title: Azure Active Directory 域服务：将 RHEL VM 加入托管域 | Microsoft 文档
+description: 将 Red Hat Enterprise Linux 虚拟机加入 Azure AD 域服务
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: maheshu
-ms.openlocfilehash: 9046bdb5bd8ff21429c951cbe7120334bd000621
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b278f5c4c8c87590205aca13a50a82fe8712d909
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>将 Red Hat Enterprise Linux 7 虚拟机加入托管域
 本文说明如何将 Red Hat Enterprise Linux (RHEL) 7 虚拟机加入 Azure AD 域服务托管域。
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>预配 Red Hat Enterprise Linux 虚拟机
 使用以下任一方法在 Azure 中预配 RHEL 7 虚拟机：
-* [Azure portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure 门户](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -133,7 +133,7 @@ sudo vi /etc/hosts
 
 
 ## <a name="troubleshooting-domain-join"></a>排查域加入问题
-请参阅[排查域加入问题](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join)一文。
+请参阅[排查域加入问题](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain)一文。
 
 ## <a name="related-content"></a>相关内容
 * [Azure AD 域服务 - 入门指南](active-directory-ds-getting-started.md)

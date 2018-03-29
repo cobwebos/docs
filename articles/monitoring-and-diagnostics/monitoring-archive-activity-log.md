@@ -1,9 +1,9 @@
 ---
-title: "存档 Azure 活动日志 | Microsoft Docs"
-description: "了解如何存档 Azure 活动日志，将其长期保留在存储帐户中。"
+title: 存档 Azure 活动日志 | Microsoft Docs
+description: 了解如何存档 Azure 活动日志，将其长期保留在存储帐户中。
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-ms.openlocfilehash: 0b041cc6a986c6f7a11d213f03294c9716c20d04
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ee634b3acf0fa8815b69aef21e6213aee636ce1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="archive-the-azure-activity-log"></a>存档 Azure 活动日志
 本文介绍如何使用 Azure 门户、PowerShell Cmdlet 或跨平台 CLI 将 [**Azure 活动日志**](monitoring-overview-activity-logs.md)存档到存储帐户中。 此选项适用于对保留时长超过 90 天的活动日志进行审核、静态分析或备份（对保留策略具备完全控制权限）。 如果只需将事件保留 90 天或更短的时间，则不需设置到存储帐户的存档，因为在不启用存档的情况下，活动日志事件保留在 Azure 平台中的时间是 90 天。
@@ -164,7 +164,7 @@ azure insights logprofile add --name my_log_profile --storageId /subscriptions/s
 > 
 
 ## <a name="next-steps"></a>后续步骤
-* [下载 blob 进行分析](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
+* [下载 blob 进行分析](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [将活动日志流式传输到事件中心](monitoring-stream-activity-logs-event-hubs.md)
 * [详细了解活动日志](monitoring-overview-activity-logs.md)
 

@@ -1,10 +1,10 @@
 ---
-title: "针对 Microsoft Azure 存储使用 .NET 的客户端加密 | Microsoft Docs"
-description: "用于 .NET 的 Azure 存储客户端库支持客户端加密以及与 Azure 密钥保管库集成以实现 Azure 存储应用程序的最佳安全性。"
+title: 针对 Microsoft Azure 存储使用 .NET 的客户端加密 | Microsoft Docs
+description: 用于 .NET 的 Azure 存储客户端库支持客户端加密以及与 Azure 密钥保管库集成以实现 Azure 存储应用程序的最佳安全性。
 services: storage
 documentationcenter: .net
-author: tamram
-manager: timlt
+author: craigshoemaker
+manager: jeconnoc
 editor: tysonn
 ms.assetid: becfccca-510a-479e-a798-2044becd9a64
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: tamram
-ms.openlocfilehash: 6b26261994bd1e64bf998cf3838ec9e52f844e54
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: cshoe
+ms.openlocfilehash: 723ef31c0247d2b2b5e546b4e4fb3d91a516773c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure 存储的客户端加密和 Azure 密钥保管库
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]

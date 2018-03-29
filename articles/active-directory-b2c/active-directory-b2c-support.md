@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：支持 | Microsoft Docs"
-description: "如何提出针对 Azure Active Directory B2C 的支持请求"
+title: Azure Active Directory B2C：支持 | Microsoft Docs
+description: 如何提出针对 Azure Active Directory B2C 的支持请求
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: 51922008-6fbd-487c-b2c7-a5db57d154b4
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: b37575d636356304ca94a55736e7f69605cf8218
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 2cb881e50b9a08c99b59796a23107bfafb847b75
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C：提出支持请求
 可以使用以下步骤在 Azure 门户上提出对 Azure Active Directory (Azure AD) B2C 的支持请求：
@@ -51,7 +48,7 @@ ms.lasthandoff: 12/11/2017
    * 在“文件上传”下，上传所有你认为有助于解决问题的屏幕截图和文件。
      
      ![支持 - 问题](./media/active-directory-b2c-support/support-problem.png)
-7. 在“联系人信息”边栏选项卡中，添加联系人信息。 单击“创建” 。
+7. 在“联系人信息”边栏选项卡中，添加联系人信息。 单击“创建”。
    
     ![支持 - 联系人](./media/active-directory-b2c-support/support-contact.png)
 8. 提交支持请求后，可以单击启动板上的“帮助 + 支持”，并点击“管理支持请求”进行监控。

@@ -1,6 +1,6 @@
 ---
-title: "将 OpenFaaS 与 Azure 容器服务 (AKS) 配合使用"
-description: "部署 OpenFaaS 并将其与 Azure 容器服务 (AKS) 配合使用"
+title: 将 OpenFaaS 与 Azure 容器服务 (AKS) 配合使用
+description: 部署 OpenFaaS 并将其与 Azure 容器服务 (AKS) 配合使用
 services: container-service
 author: justindavies
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 06706450d8af6f571f002789815290f75da9623d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d531bb40421716bf9fb3c253a3e76207b2806912
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
@@ -230,7 +230,7 @@ curl -s http://52.186.64.52:8080/function/cosmos-query
 
 ![替换文字](media/container-service-serverless/OpenFaaSUI.png)
 
-# <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 需要针对 OpenFaaS 网关和函数锁定 OpenFaas 的默认部署。 [Alex Ellis 的博客文章](https://blog.alexellis.io/lock-down-openfaas/)介绍了有关安全的配置选项的更多详细信息。 
 

@@ -1,8 +1,8 @@
 ---
-title: "使用虚拟网络扩展 HDInsight - Azure | Microsoft Docs"
-description: "了解如何使用 Azure 虚拟网络将 HDInsight 连接到其他云资源或者数据中心内的资源"
+title: 使用虚拟网络扩展 HDInsight - Azure | Microsoft Docs
+description: 了解如何使用 Azure 虚拟网络将 HDInsight 连接到其他云资源或者数据中心内的资源
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: ea686ea5dd6166d6e4e4055cb4a2cdd70af81ab4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b02a4625e3973ca7679d1d2018bd37ff1d2ae2ba
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
 
@@ -173,11 +173,11 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
     有关每个配置的示例，请参阅[示例：自定义 DNS](#example-dns) 一节。
 
-有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)文档。
+有关详细信息，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)文档。
 
 ## <a name="directly-connect-to-hadoop-services"></a>直接连接到 Hadoop 服务
 
-关于 HDInsight 的大多数文档都假定能够通过 Internet 访问群集。 例如，可在 https://CLUSTERNAME.azurehdinsight.net 连接到群集。 此地址使用公共网关，在已使用 NSG 或 UDR 限制从 Internet 访问时不可用。
+关于 HDInsight 的大多数文档都假定能够通过 Internet 访问群集。 例如，可以通过 https://CLUSTERNAME.azurehdinsight.net 连接到该群集。 此地址使用公共网关，在已使用 NSG 或 UDR 限制从 Internet 访问时不可用。
 
 若要通过虚拟网络连接到 Ambari 以及其他网页，请使用以下步骤：
 

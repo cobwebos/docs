@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: e82bbff908ea5499765edc71e52caa573c816a62
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c39a8fafef9a45f5e80d00f8cbc75833201df150
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>在 Azure 应用服务中启用 Web 应用的诊断日志记录
 ## <a name="overview"></a>概述
@@ -120,7 +120,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务 Web 应用](http:/
 ### <a name="download-with-azure-command-line-interface"></a>使用 Azure 命令行接口下载
 若要使用 Azure 命令行接口下载日志文件，请打开新的命令提示符、PowerShell、Bash 或终端会话，并输入以下命令：
 
-    azure site log download webappname
+    az webapp log download --name webappname
 
 此命令将名为“webappname”的 Web 应用的日志保存到当前目录中名为 **diagnostics.zip** 的文件。
 

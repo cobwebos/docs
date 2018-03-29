@@ -1,23 +1,20 @@
 ---
-title: "将登录功能添加到 Node.js Web 应用 - Azure Active Directory B2C"
-description: "如何生成一个使用 Azure Active Directory B2C 登录用户的 Node.js Web 应用。"
+title: 将登录功能添加到 Node.js Web 应用 - Azure Active Directory B2C
+description: 如何生成一个使用 Azure Active Directory B2C 登录用户的 Node.js Web 应用。
 services: active-directory-b2c
-author: PatAltimore
+author: davidmu1
 manager: mtillman
-editor: dstrockis
-ms.custom: seo
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: javascript
 ms.topic: article
 ms.date: 03/10/2017
-ms.author: xerners
-ms.openlocfilehash: 25a2bef2f3cc6f210c574f920164b8d69b0d90db
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: davidmu
+ms.openlocfilehash: b10b2338bfbcd449075e612ae00cc23802dce3a9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C：将登录添加到 Node.js Web 应用
 
@@ -400,7 +397,7 @@ exports.list = function(req, res){
 
 使用电子邮件或 Facebook 注册或登录到应用。 注销后以其他用户身份重新登录。
 
-##<a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 [以 .zip 文件提供](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip)完整示例（不包括配置值）以供参考。 也可以从 GitHub 克隆它：
 

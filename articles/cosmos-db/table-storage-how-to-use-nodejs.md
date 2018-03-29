@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 03/23/2018
 ms.author: mimig
-ms.openlocfilehash: dcd729da0b9e913046da1ad5619594f5ce485bdb
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fc6e3ca079b4d1edefa82e06dbe63b393ab2fbb3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>如何通过 Node.js 使用 Azure 表存储
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -361,8 +361,6 @@ dc.table.queryEntities(tableName,
 ```
 
 如果检查 `continuationToken` 对象，就会发现 `nextPartitionKey`、`nextRowKey` 和 `targetLocation` 等属性可用于循环访问所有结果。
-
-GitHub 上的 [azure-storage-node 存储库](https://github.com/Azure/azure-storage-node/tree/master/examples/samples)中还存在继续样本 (continuationsample.js)。 
 
 ## <a name="work-with-shared-access-signatures"></a>使用共享访问签名
 共享访问签名 (SAS) 是一种安全的方法，用于对表进行细致访问而无需提供存储帐户名或密钥。 通常使用 SAS 来提供对数据的有限访问权限，例如允许移动应用查询记录。

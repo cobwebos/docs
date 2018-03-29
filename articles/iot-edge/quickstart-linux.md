@@ -1,19 +1,19 @@
 ---
-title: "快速入门 Azure IoT Edge + Linux | Microsoft Docs"
-description: "通过在模拟边缘设备上运行分析来试用 Azure IoT Edge"
+title: 快速入门 Azure IoT Edge + Linux | Microsoft Docs
+description: 通过在模拟边缘设备上运行分析来试用 Azure IoT Edge
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 827fe91c14a44cbaf8a9bb5921e5c9962d984414
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 750f09c91a086b22df5e7557e4b6fc6a763499e2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>快速入门：将第一个 IoT Edge 模块部署到 Linux 或 Mac 设备 - 预览
 
@@ -76,7 +76,7 @@ sudo pip install -U azure-iot-edge-runtime-ctl
 
 使用上一节的 IoT Edge 设备连接字符串配置运行时：
 ```bash
-sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+sudo iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
 启动运行时：

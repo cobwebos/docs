@@ -1,10 +1,10 @@
 ---
-title: "Azure Cosmos DB 中的分区和缩放 | Microsoft Docs"
-description: "了解分区在 Azure Cosmos DB 中的工作原理，如何配置分区和分区键以及如何为应用程序选取适当的分区键。"
+title: Azure Cosmos DB 中的分区和缩放 | Microsoft Docs
+description: 了解分区在 Azure Cosmos DB 中的工作原理，如何配置分区和分区键以及如何为应用程序选取适当的分区键。
 services: cosmos-db
 author: rafats
 manager: jhubbard
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 702c39b4-1798-48dd-9993-4493a2f6df9e
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,15 +14,13 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfed50eef02c237ce0ea4480e2e208f2e61ccbef
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: a48c1bb246e3e8659aada614d39fdc608e5bc8d8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>使用 SQL API 在 Azure Cosmos DB 中进行分区
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 [Microsoft Azure Cosmos DB](../cosmos-db/introduction.md) 是一个全局分布式多模型数据库服务，旨在帮助实现快速、可预测的性能并且随着应用程序的增长无缝扩展。 
 

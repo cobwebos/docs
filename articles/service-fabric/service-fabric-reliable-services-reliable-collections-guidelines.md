@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
 ms.author: mcoskun
-ms.openlocfilehash: 27ea71bcc378100e613a8edd1c57a93f3c9ed925
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b0eb6a5aab5e71c0a8ac8263e177c493a07dafc0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collections 的相关指导原则和建议
 本章节提供有关使用可靠状态管理器和 Reliable Collections 的指导原则。 目的是帮助用户避免常见的问题。
@@ -52,7 +52,6 @@ ms.lasthandoff: 03/16/2018
 ### <a name="next-steps"></a>后续步骤
 * [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [事务和锁](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-* [可靠状态管理器和 Reliable Collection 的内部结构](service-fabric-reliable-services-reliable-collections-internals.md)
 * 管理数据
   * [备份和还原](service-fabric-reliable-services-backup-restore.md)
   * [通知](service-fabric-reliable-services-notifications.md)

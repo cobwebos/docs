@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure HDInsight 中的 Apache Hive 分析和处理 JSON 文档 | Microsoft Docs"
-description: "了解如何使用 JSON 文档，以及如何使用 Azure HDInsight 中的 Apache Hive 来分析这些文档"
+title: 使用 Azure HDInsight 中的 Apache Hive 分析和处理 JSON 文档 | Microsoft Docs
+description: 了解如何使用 JSON 文档，以及如何使用 Azure HDInsight 中的 Apache Hive 来分析这些文档
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -15,49 +15,52 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 62b21db5c52287c1d0d058cba3a433434c364777
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 04c3a8262e52a630012a0a70e4b1ccb0ade76449
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Hive 分析和处理 JSON 文档
 
 了解如何使用 Azure HDInsight 中的 Apache Hive 处理和分析 JavaScript 对象表示法 (JSON) 文件。 本教程使用以下 JSON 文档：
 
+```json
+{
+  "StudentId": "trgfg-5454-fdfdg-4346",
+  "Grade": 7,
+  "StudentDetails": [
     {
-        "StudentId": "trgfg-5454-fdfdg-4346",
-        "Grade": 7,
-        "StudentDetails": [
-            {
-                "FirstName": "Peggy",
-                "LastName": "Williams",
-                "YearJoined": 2012
-            }
-        ],
-        "StudentClassCollection": [
-            {
-                "ClassId": "89084343",
-                "ClassParticipation": "Satisfied",
-                "ClassParticipationRank": "High",
-                "Score": 93,
-                "PerformedActivity": false
-            },
-            {
-                "ClassId": "78547522",
-                "ClassParticipation": "NotSatisfied",
-                "ClassParticipationRank": "None",
-                "Score": 74,
-                "PerformedActivity": false
-            },
-            {
-                "ClassId": "78675563",
-                "ClassParticipation": "Satisfied",
-                "ClassParticipationRank": "Low",
-                "Score": 83,
-                "PerformedActivity": true
-                    ]
+      "FirstName": "Peggy",
+      "LastName": "Williams",
+      "YearJoined": 2012
     }
+  ],
+  "StudentClassCollection": [
+    {
+      "ClassId": "89084343",
+      "ClassParticipation": "Satisfied",
+      "ClassParticipationRank": "High",
+      "Score": 93,
+      "PerformedActivity": false
+    },
+    {
+      "ClassId": "78547522",
+      "ClassParticipation": "NotSatisfied",
+      "ClassParticipationRank": "None",
+      "Score": 74,
+      "PerformedActivity": false
+    },
+    {
+      "ClassId": "78675563",
+      "ClassParticipation": "Satisfied",
+      "ClassParticipationRank": "Low",
+      "Score": 83,
+      "PerformedActivity": true
+    }
+  ]
+}
+```
 
 可以在 **wasb://processjson@hditutorialdata.blob.core.windows.net/** 上找到该文件。 有关如何将 Azure Blob 存储与 HDInsight 配合使用的详细信息，请参阅[将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用](../hdinsight-hadoop-use-blob-storage.md)。 可以将该文件复制到群集的默认容器。
 
@@ -66,22 +69,24 @@ ms.lasthandoff: 02/24/2018
 ## <a name="flatten-json-documents"></a>平展 JSON 文档
 下一部分中所列的方法需要 JSON 文档在单一行中。 因此，必须将 JSON 文档平展成字符串。 如果 JSON 文档已平展，则可以跳过此步骤，直接转到有关分析 JSON 数据的下一部分。 若要平展 JSON 文档，请运行以下脚本：
 
-    DROP TABLE IF EXISTS StudentsRaw;
-    CREATE EXTERNAL TABLE StudentsRaw (textcol string) STORED AS TEXTFILE LOCATION "wasb://processjson@hditutorialdata.blob.core.windows.net/";
+```sql
+DROP TABLE IF EXISTS StudentsRaw;
+CREATE EXTERNAL TABLE StudentsRaw (textcol string) STORED AS TEXTFILE LOCATION "wasb://processjson@hditutorialdata.blob.core.windows.net/";
 
-    DROP TABLE IF EXISTS StudentsOneLine;
-    CREATE EXTERNAL TABLE StudentsOneLine
-    (
-      json_body string
-    )
-    STORED AS TEXTFILE LOCATION '/json/students';
+DROP TABLE IF EXISTS StudentsOneLine;
+CREATE EXTERNAL TABLE StudentsOneLine
+(
+  json_body string
+)
+STORED AS TEXTFILE LOCATION '/json/students';
 
-    INSERT OVERWRITE TABLE StudentsOneLine
-    SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
-          FROM (SELECT INPUT__FILE__NAME,BLOCK__OFFSET__INSIDE__FILE, textcol FROM StudentsRaw DISTRIBUTE BY INPUT__FILE__NAME SORT BY BLOCK__OFFSET__INSIDE__FILE) x
-          GROUP BY INPUT__FILE__NAME;
+INSERT OVERWRITE TABLE StudentsOneLine
+SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
+      FROM (SELECT INPUT__FILE__NAME,BLOCK__OFFSET__INSIDE__FILE, textcol FROM StudentsRaw DISTRIBUTE BY INPUT__FILE__NAME SORT BY BLOCK__OFFSET__INSIDE__FILE) x
+      GROUP BY INPUT__FILE__NAME;
 
-    SELECT * FROM StudentsOneLine
+SELECT * FROM StudentsOneLine
+```
 
 原始 JSON 文件位于 **wasb://processjson@hditutorialdata.blob.core.windows.net/**。 **StudentsRaw** Hive 表指向未平展的原始 JSON 文档。
 
@@ -108,10 +113,12 @@ Hive 提供名为 [get_json_object](https://cwiki.apache.org/confluence/display/
 
 以下查询返回每个学生的名字和姓氏：
 
-    SELECT
-      GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.FirstName'),
-      GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.LastName')
-    FROM StudentsOneLine;
+```sql
+SELECT
+  GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.FirstName'),
+  GET_JSON_OBJECT(StudentsOneLine.json_body,'$.StudentDetails.LastName')
+FROM StudentsOneLine;
+```
 
 这是在控制台窗口中运行此查询时的输出：
 
@@ -127,10 +134,12 @@ get_json_object UDF 有限制：
 ### <a name="use-the-jsontuple-udf"></a>使用 json_tuple UDF
 Hive 提供的另一个 UDF 称为 [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple)，其性能比 [get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) 要高。 此方法采用一组键和一个 JSON 字符串，并使用一个函数返回值的元组。 以下查询将从 JSON 文档返回学生 ID 和年级：
 
-    SELECT q1.StudentId, q1.Grade
-      FROM StudentsOneLine jt
-      LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
-        AS StudentId, Grade;
+```sql
+SELECT q1.StudentId, q1.Grade
+FROM StudentsOneLine jt
+LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
+  AS StudentId, Grade;
+```
 
 此脚本在 Hive 控制台中的输出：
 

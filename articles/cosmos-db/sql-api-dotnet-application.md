@@ -1,7 +1,7 @@
 ---
-title: "适用于 Azure Cosmos DB 的 ASP.NET MVC 教程：Web 应用程序开发 | Microsoft Docs"
-description: "介绍如何创建使用 Azure Cosmos DB 的 MVC Web 应用程序的 ASP.NET MVC 教程。 将存储 JSON 并从 Azure 网站上托管的待办事项应用程序中访问数据 — ASP NET MVC 教程分步说明。"
-keywords: "asp.net mvc 教程, web 应用程序开发, mvc web 应用程序, asp net mvc 教程分步说明"
+title: 适用于 Azure Cosmos DB 的 ASP.NET MVC 教程：Web 应用程序开发 | Microsoft Docs
+description: 介绍如何创建使用 Azure Cosmos DB 的 MVC Web 应用程序的 ASP.NET MVC 教程。 将存储 JSON 并从 Azure 网站上托管的待办事项应用程序中访问数据 — ASP NET MVC 教程分步说明。
+keywords: asp.net mvc 教程, web 应用程序开发, mvc web 应用程序, asp net mvc 教程分步说明
 services: cosmos-db
 documentationcenter: .net
 author: mimig1
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: mimig
 ms.custom: devcenter
-ms.openlocfilehash: a403af0f31823f89cdc79d6769dff61aeaefc4ad
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: e4f9360bfde5f3212f0bbf184c52f59b2dd43d0b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC 教程：使用 Azure Cosmos DB 开发 Web 应用程序
 > [!div class="op_single_selector"]
@@ -30,8 +30,6 @@ ms.lasthandoff: 12/18/2017
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 为了特别说明可以如何有效地利用 Azure Cosmos DB 来存储和查询 JSON 文档，本文提供了演示如何使用 Azure Cosmos DB 构建待办事项应用的完整演练。 任务将存储为 Azure Cosmos DB 中的 JSON 文档。
 

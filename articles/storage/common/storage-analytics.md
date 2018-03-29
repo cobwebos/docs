@@ -1,10 +1,10 @@
 ---
-title: "使用 Azure 存储分析收集日志和指标数据 | Microsoft Docs"
-description: "使用存储分析，可以跟踪所有存储服务的度量值数据，并收集 Blob、队列和表存储的日志。"
+title: 使用 Azure 存储分析收集日志和指标数据 | Microsoft Docs
+description: 使用存储分析，可以跟踪所有存储服务的度量值数据，并收集 Blob、队列和表存储的日志。
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 7894993b-ca42-4125-8f17-8f6dfe3dca76
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
-ms.author: tamram
-ms.openlocfilehash: 9ae9dd0b078911a695d441cd3891be720dc204ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rogarana
+ms.openlocfilehash: edda01cbfe1b53d934f9f4a7bb01c645fa680873
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="storage-analytics"></a>存储分析
 
@@ -175,7 +175,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 ### <a name="understanding-billable-requests"></a>了解计费请求
 向帐户的存储服务发出的每个请求是应计费或不计费的。 存储分析记录向服务发出的每个请求，包括指示如何处理请求的状态消息。 同样，存储分析存储服务及其 API 操作的度量数据，包括某些状态消息的百分比和计数。 总之，这些功能可以帮助分析计费请求，对应用程序进行改进，以及诊断向服务发出的请求的问题。 有关计费的详细信息，请参阅 [Understanding Azure Storage Billing - Bandwidth, Transactions, and Capacity](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)（了解 Azure 存储计费 - 带宽、事务和容量）。
 
-查看存储分析数据时，可以使用[存储分析记录的操作和状态消息](https://msdn.microsoft.com/library/azure/hh343260.aspx)主题中的表来确定计费的请求。 然后，可以将日志和度量数据与状态消息进行比较，以查看是否对特定请求进行收费。 也可以使用前述主题中的表来调查存储服务或各个 API 操作的可用性。
+查看存储分析数据时，可以使用[存储分析记录的操作和状态消息](https://msdn.microsoft.com/library/azure/hh343260.aspx)主题中的表来确定计费的请求。 然后，可以将日志和度量数据与状态消息进行比较，以查看是否对你的特定请求进行收费。 也可以使用前述主题中的表来调查存储服务或各个 API 操作的可用性。
 
 ## <a name="next-steps"></a>后续步骤
 ### <a name="setting-up-storage-analytics"></a>设置存储分析

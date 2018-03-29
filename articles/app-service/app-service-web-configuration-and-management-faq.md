@@ -1,11 +1,11 @@
 ---
-title: "Azure Web 应用的配置常见问题解答 | Microsoft Docs"
-description: "获取有关 Azure App Service 的 Web 应用功能的配置和管理问题的常见问题解答。"
+title: Azure Web 应用的配置常见问题解答 | Microsoft Docs
+description: 获取有关 Azure App Service 的 Web 应用功能的配置和管理问题的常见问题解答。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 92cbc36ac2a566cf5dfbb2f7b3347973bab5ee8c
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: efbed264babe0b192590380639cdc1c8861b4f38
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
 
@@ -251,7 +251,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>如何对应用服务应用执行渗透测试？
 
-若要执行渗透测试，请[提交请求](https://security-forms.azure.com/penetration-testing/terms)。
+若要执行渗透测试，请[提交请求](https://portal.msrc.microsoft.com/en-us/engage/pentest)。
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>如何为使用流量管理器的应用服务 Web 应用配置自定义域名？
 

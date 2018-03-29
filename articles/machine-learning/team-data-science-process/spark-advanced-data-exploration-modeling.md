@@ -1,8 +1,8 @@
 ---
-title: "使用 Spark 进行高级数据探索和建模 | Microsoft Docs"
-description: "使用 HDInsight Spark 进行数据探索，并使用交叉验证和超参数优化训练二元分类和回归模型。"
+title: 使用 Spark 进行高级数据探索和建模 | Microsoft Docs
+description: 使用 HDInsight Spark 进行数据探索，并使用交叉验证和超参数优化训练二元分类和回归模型。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
-ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 016d7760895e9b8cca082bac4e14388680fbbc05
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: bradsev
+ms.openlocfilehash: 3d4cd29596b14e6de07fdf06191f7d69c2d39641
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>使用 Spark 进行高级数据探索和建模
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]

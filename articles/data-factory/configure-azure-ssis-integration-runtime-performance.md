@@ -1,6 +1,6 @@
 ---
-title: "配置高性能 Azure-SSIS Integration Runtime | Microsoft Docs"
-description: "了解如何配置高性能 Azure-SSIS Integration Runtime 的属性"
+title: 配置高性能 Azure-SSIS Integration Runtime | Microsoft Docs
+description: 了解如何配置高性能 Azure-SSIS Integration Runtime 的属性
 services: data-factory
 ms.date: 01/10/2018
 ms.topic: article
@@ -9,11 +9,11 @@ ms.workload: data-services
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 7d0e75ad85731b10f9a993c2fa62f30c0142ed05
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 3c19ebc601136653a88ca8d2a3073d897af863f9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>配置高性能 Azure-SSIS Integration Runtime
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/23/2018
 
 ## <a name="properties-to-configure"></a>要配置的属性
 
-配置脚本的以下部分显示创建 Azure-SSIS Integration Runtime 时可以配置的属性。 有关完整的 PowerShell 脚本和说明，请参阅[将 SQL Server Integration Services 包部署到 Azure](tutorial-deploy-ssis-packages-azure.md)。
+配置脚本的以下部分显示创建 Azure-SSIS Integration Runtime 时可以配置的属性。 有关完整的 PowerShell 脚本和说明，请参阅[将 SQL Server Integration Services 包部署到 Azure](tutorial-deploy-ssis-packages-azure-powershell.md)。
 
 ```powershell
 $SubscriptionName = "<Azure subscription name>"
@@ -96,7 +96,7 @@ AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性。 Integration Ru
 | 大小             | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络性能 (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
 | Standard\_D1\_v2 | 1    | 3.5         | 50                     | 3000/46/23                                             | 2/2x500                         | 2 / 750                                        |
-| Standard\_D2\_v2 | #N/A    | 7           | 100                    | 6000/93/46                                             | 4/4x500                         | 2 / 1500                                       |
+| Standard\_D2\_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 4/4x500                         | 2 / 1500                                       |
 | Standard\_D3\_v2 | 4    | 14          | 200                    | 12000/187/93                                           | 8/8x500                         | 4 / 3000                                       |
 | Standard\_D4\_v2 | 8    | 28          | 400                    | 24000/375/187                                          | 16/16x500                       | 8 / 6000                                       |
 | Standard\_A4\_v2 | 4    | 8           | 40                     | 4000/80/40                                             | 8/8x500                         | 4 / 1000                                       |

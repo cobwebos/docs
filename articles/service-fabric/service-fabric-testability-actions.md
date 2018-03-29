@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 微服务中模拟故障 | Microsoft Docs"
-description: "本文介绍了 Microsoft Azure Service Fabric 中的可测试性操作。"
+title: 在 Azure 微服务中模拟故障 | Microsoft Docs
+description: 本文介绍了 Microsoft Azure Service Fabric 中的可测试性操作。
 services: service-fabric
 documentationcenter: .net
 author: motanv
@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv;heeldin
 ms.openlocfilehash: c8ddc7732999ae555323bebaef60aa34c8f2ec17
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="testability-actions"></a>可测试性操作
 为了模拟不可靠的基础结构，Azure Service Fabric 向开发者提供了众多选项，用于模拟各种现实世界故障和状态转换。 这些方式被称为可测试操作。 这些操作属于低级别 API，导致具体的故障注入、状态转换或验证。 结合使用这些操作，可以为服务编写全面的测试方案。

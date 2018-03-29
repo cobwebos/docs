@@ -1,8 +1,8 @@
 ---
-title: "什么是团队数据科学过程？ | Microsoft Docs"
-description: "提供数据科学方法来交付预测分析解决方案和智能应用程序。"
+title: 什么是团队数据科学过程？ | Microsoft Docs
+description: 提供数据科学方法来交付预测分析解决方案和智能应用程序。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: bradsev;
-ms.openlocfilehash: 75e170f29f9a6abeeb3393e43e6a4c355749044d
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.author: bradsev
+ms.openlocfilehash: f7c081dcd74164f4b1f054f5a65f2ff6aaabebd7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-the-team-data-science-process"></a>什么是团队数据科学过程？
 

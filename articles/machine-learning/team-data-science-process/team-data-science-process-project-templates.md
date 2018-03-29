@@ -1,23 +1,23 @@
 ---
-title: "Team Data Science Process 项目规划 - Azure | Microsoft 文档"
-description: "Microsoft Project 和 Excel 模板，可帮助规划和管理数据科学项目。"
-documentationcenter: 
+title: Team Data Science Process 项目规划 - Azure | Microsoft 文档
+description: Microsoft Project 和 Excel 模板，可帮助规划和管理数据科学项目。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
-ms.author: bradsev;
-ms.openlocfilehash: 6512bf204a1fdc7a413a553b571e3b64b547855b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: bradsev
+ms.openlocfilehash: cc2dd8bd6d7733b3f35ce697d71c0abdab5f11dc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process 项目规划
 
@@ -44,7 +44,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 
 每个任务都有一个注释。 打开这些任务，查看已为你创建的资源。
 
-![#N/A](./media/team-data-science-process-project-templates/ms-project-template-task.png)
+![2](./media/team-data-science-process-project-templates/ms-project-template-task.png)
 
 
 ## <a name="excel-template"></a>Excel 模板

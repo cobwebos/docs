@@ -1,13 +1,13 @@
 ---
-title: "创建使用可用性区域（预览版）的 Azure 规模集 | Microsoft Docs"
-description: "了解如何创建使用可用性区域的 Azure 虚拟机规模集以增加冗余防止中断"
+title: 创建使用可用性区域（预览版）的 Azure 规模集 | Microsoft Docs
+description: 了解如何创建使用可用性区域的 Azure 虚拟机规模集以增加冗余防止中断
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 2de214f604469025a8a4accde44359fea0ded7e9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8b497af8bc7e3060e184dd6a029b23ccb2d2bbfb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones-preview"></a>创建使用可用性区域（预览版）的虚拟机规模集
 若要防止虚拟机规模集发生数据中心级故障，可以跨可用性区域创建规模集。 支持可用性区域的 Azure 区域最少具有三个单独的区域，每个都有其自己的独立电源、网络和冷却设备。 有关详细信息，请参阅[可用性区域概述](../availability-zones/az-overview.md)。
@@ -34,14 +34,14 @@ ms.lasthandoff: 02/21/2018
 
 若要使用可用性区域，必须在[受支持的 Azure 区域](../availability-zones/az-overview.md#regions-that-support-availability-zones)中创建规模集。 还需要[注册可用性区域预览版](http://aka.ms/azenroll)。 可以使用下列方法之一创建使用可用性区域的规模集：
 
-- [Azure portal](#use-the-azure-portal)
+- [Azure 门户](#use-the-azure-portal)
 - [Azure CLI 2.0](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure 资源管理器模板](#use-azure-resource-manager-templates)
 
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
-创建使用可用性区域的规模集的过程与[入门文章](virtual-machine-scale-sets-create-portal.md)中详述的过程相同。 请确保已[注册可用性区域预览版](http://aka.ms/azenroll)。 选择一个受支持的 Azure 区域后，可以在可用性区域之一中创建规模集，如以下示例中所示：
+创建使用可用性区域的规模集的过程与[入门文章](quick-create-portal.md)中详述的过程相同。 请确保已[注册可用性区域预览版](http://aka.ms/azenroll)。 选择一个受支持的 Azure 区域后，可以在可用性区域之一中创建规模集，如以下示例中所示：
 
 ![在单个可用性区域中创建规模集](media/virtual-machine-scale-sets-use-availability-zones/create-portal-single-az.png)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 02/21/2018
 
 
 ## <a name="use-the-azure-cli-20"></a>使用 Azure CLI 2.0
-创建使用可用性区域的规模集的过程与[入门文章](virtual-machine-scale-sets-create-cli.md)中详述的过程相同。 为使用可用性区域，必须在受支持的 Azure 区域中创建程序集，并[注册可用性区域预览版](http://aka.ms/azenroll)。
+创建使用可用性区域的规模集的过程与[入门文章](quick-create-cli.md)中详述的过程相同。 为使用可用性区域，必须在受支持的 Azure 区域中创建程序集，并[注册可用性区域预览版](http://aka.ms/azenroll)。
 
 在 [az vmss create](/cli/azure/vmss#az_vmss_create) 命令中添加 `--zones` 参数并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。 以下示例在区域 1 中创建名为 myScaleSet 的单个区域规模集：
 
@@ -114,7 +114,7 @@ az vmss create \
 
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
-创建使用可用性区域的规模集的过程与[入门文章](virtual-machine-scale-sets-create-powershell.md)中详述的过程相同。 为使用可用性区域，必须在受支持的 Azure 区域中创建程序集，并[注册可用性区域预览版](http://aka.ms/azenroll)。 在 [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) 命令中添加 `-Zone` 参数并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。 
+创建使用可用性区域的规模集的过程与[入门文章](quick-create-powershell.md)中详述的过程相同。 为使用可用性区域，必须在受支持的 Azure 区域中创建程序集，并[注册可用性区域预览版](http://aka.ms/azenroll)。 在 [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) 命令中添加 `-Zone` 参数并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。 
 
 以下示例在美国东部 2 区域 1 中创建名为 vmssConfig 的单个区域规模集配置：
 
@@ -178,7 +178,7 @@ $vmssConfig = New-AzureRmVmssConfig `
 
 
 ## <a name="use-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
-创建使用可用性区域的规模集的过程与适用于 [Linux](virtual-machine-scale-sets-create-template-linux.md) 或 [Windows](virtual-machine-scale-sets-create-template-windows.md) 的入门文章中详述的过程相同。 为使用可用性区域，必须在受支持的 Azure 区域中创建程序集，并[注册可用性区域预览版](http://aka.ms/azenroll)。 在模板中的 *Microsoft.Compute/virtualMachineScaleSets* 资源类型中添加 `zones` 属性并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。
+创建使用可用性区域的规模集的过程与适用于 [Linux](quick-create-template-linux.md) 或 [Windows](quick-create-template-windows.md) 的入门文章中详述的过程相同。 为使用可用性区域，必须在受支持的 Azure 区域中创建程序集，并[注册可用性区域预览版](http://aka.ms/azenroll)。 在模板中的 *Microsoft.Compute/virtualMachineScaleSets* 资源类型中添加 `zones` 属性并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。
 
 以下示例在美国东部 2 区域 1 中创建名为 myScaleSet 的 Linux 单区域规模集：
 

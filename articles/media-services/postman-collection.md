@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 按需流式处理操作导入 Postman 集合"
-description: "本文提供了用于 Azure 媒体服务 REST 调用的 Postman 集合的定义。"
+title: 使用 Azure 按需流式处理操作导入 Postman 集合
+description: 本文提供了用于 Azure 媒体服务 REST 调用的 Postman 集合的定义。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: juliako
-ms.openlocfilehash: 0146f02df44d9b38f3a3f85c025ec42750a9c6e7
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7270c8f6e9e6bfe2eb75bf6fa14429e2f22dc4ab
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>使用按需流式处理操作导入一个 Postman 集合
 
@@ -475,13 +475,12 @@ ms.lasthandoff: 02/24/2018
                         ],
                         "body": {},
                         "url": {
-                            "raw": "{{RESTAPIEndpoint}}/Assets/{{LastAssetId}}",
+                            "raw": "{{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')",
                             "host": [
                                 "{{RESTAPIEndpoint}}"
                             ],
                             "path": [
-                                "Assets",
-                                "{{LastAssetId}}"
+                                "Assets('{{LastAssetId}}')"
                             ]
                         },
                         "description": ""

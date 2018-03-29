@@ -1,6 +1,6 @@
 ---
-title: "通过机器学习 Python 客户端库访问数据集 | Microsoft Docs"
-description: "安装并使用 Python 客户端库以从本地 Python 环境安全访问和管理 Azure 机器学习数据。"
+title: 通过机器学习 Python 客户端库访问数据集 | Microsoft Docs
+description: 安装并使用 Python 客户端库以从本地 Python 环境安全访问和管理 Azure 机器学习数据。
 services: machine-learning
 documentationcenter: python
 author: bradsev
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: huvalo;bradsev
-ms.openlocfilehash: 3cffb90baadef570bbb7e4e2d96741cc0420b0a2
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 5f0823e07f0e583e32829b664a1d3d463092169e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>使用 Azure 机器学习 Python 客户端库通过 Python 访问数据集
 Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Python 环境安全访问 Azure 机器学习数据集，以及允许在工作区创建并管理数据集。

@@ -1,13 +1,13 @@
 ---
-title: "Azure 流分析：了解和调整流式处理单元 | Microsoft 文档"
-description: "了解哪些因素会影响 Azure 流分析的性能。"
-keywords: "流单元, 查询性能"
+title: Azure 流分析：了解和调整流式处理单元 | Microsoft 文档
+description: 了解哪些因素会影响 Azure 流分析的性能。
+keywords: 流单元, 查询性能
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JSeb225
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: e8812f10662ee7b571e8e353074c2537d1a3181b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5c60b1808959c73759a78141566c5c49f0350e2f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
@@ -88,18 +88,18 @@ Azure 流分析作业的独有功能之一是执行有状态的处理，如开�
 
 联接中的不匹配事件数会影响查询的内存利用率。 以下查询将查找产生点击量的广告印象：
 
-    SELECT id
+    SELECT clicks.id
     FROM clicks 
-    INNER JOIN, impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
+    INNER JOIN impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
 
 在本示例中，有可能显示了很多广告，但很少有人点击它们，并且需要保留该时间范围内的所有事件。 内存消耗量与时间范围大小和事件发生速率成比例。 
 
 若要修正此问题，请将事件发送到依据联接键（在此情况下为 ID）分区的事件中心，并通过允许系统使用 PARTITION BY 分别处理每个输入分区来横向扩展查询，如下所示：
 
-    SELECT id
+    SELECT clicks.id
     FROM clicks PARTITION BY PartitionId
     INNER JOIN impressions PARTITION BY PartitionId 
-    ON impression.PartitionId = clocks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
+    ON impression.PartitionId = clicks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
 </code>
 
 将查询分区后，它会分散到多个节点中。 因此，可以通过减小保留在联接窗口中状态的大小来减少传入每个节点的事件数。 

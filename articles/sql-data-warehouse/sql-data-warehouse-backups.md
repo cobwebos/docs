@@ -1,11 +1,11 @@
 ---
-title: "Azure SQL 数据仓库备份 - 快照，异地冗余 | Microsoft Docs"
-description: "了解 SQL 数据仓库的内置数据库备份，该功能可以将 Azure SQL 数据仓库还原到某个还原点或另一地理区域。"
+title: Azure SQL 数据仓库备份 - 快照，异地冗余 | Microsoft Docs
+description: 了解 SQL 数据仓库的内置数据库备份，该功能可以将 Azure SQL 数据仓库还原到某个还原点或另一地理区域。
 services: sql-data-warehouse
-documentationcenter: 
+documentationcenter: ''
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: b5aff094-05b2-4578-acf3-ec456656febd
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: backup-restore
 ms.date: 10/23/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 159a1d34caba829750da33dbc4ad403fb21cd147
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="backup-and-restore-in-sql-data-warehouse"></a>SQL 数据仓库中的备份和还原
 本文介绍了在 SQL 数据仓库中进行备份的细节。 使用数据仓库备份，将数据库快照还原到主要区域，或将异地备份还原到异地配对区域。 

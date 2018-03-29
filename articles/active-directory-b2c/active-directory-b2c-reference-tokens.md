@@ -1,24 +1,21 @@
 ---
-title: "令牌引用 - Azure AD B2C | Microsoft 文档"
-description: "Azure Active Directory B2C 中颁发的令牌类型"
+title: 令牌引用 - Azure AD B2C | Microsoft 文档
+description: Azure Active Directory B2C 中颁发的令牌类型
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 6df79878-65cb-4dfc-98bb-2b328055bc2e
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
-ms.author: parakhj
-ms.openlocfilehash: ce82fcc82cf411d1596fea56ff368d96eceeff38
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: e5cc6a0974f9481491518779209ec5256870921f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C：令牌参考
 
@@ -71,7 +68,7 @@ CQhoFA
 
 请注意，ID 令牌中的声明不按任何特定顺序返回。 此外，新的声明可以在任何时候引入 ID 令牌。 引入新的声明时，不得中断应用。 下面是预期在 Azure AD B2C 颁发的 ID 及访问令牌中存在的声明。 任何其他声明由策略确定。 练习时，请尝试将示例 ID 令牌中的声明粘贴到 [jwt.ms](https://jwt.ms) 中进行检查。 可以在 [OpenID Connect 规范](http://openid.net/specs/openid-connect-core-1_0.html)中找到进一步的详细信息。
 
-| Name | 声明 | 示例值 | 说明 |
+| 名称 | 声明 | 示例值 | 说明 |
 | --- | --- | --- | --- |
 | 目标受众 |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |受众声明标识令牌的目标接收方。 对于 Azure AD B2C，受众是在应用注册门户中分配给应用的应用程序 ID。 应用应该验证此值并拒绝不匹配的令牌。 |
 | 颁发者 |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |此声明标识构造并返回令牌的安全令牌服务 (STS)。 它还标识在其中进行用户身份验证的 Azure AD 目录。 应用应该验证颁发者声明，以确保令牌来自 Azure Active Directory v2.0 终结点。 |
@@ -82,7 +79,7 @@ CQhoFA
 | 代码哈希 |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |仅当令牌随 OAuth 2.0 授权代码一起颁发时，代码哈希才包含在 ID 令牌中。 代码哈希可用于验证授权代码的真实性。 有关如何执行此验证的详细信息，请参阅 [OpenID Connect 规范](http://openid.net/specs/openid-connect-core-1_0.html)。  |
 | 访问令牌哈希 |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |仅当令牌随 OAuth 2.0 访问令牌一起颁发时，访问令牌才包含在 ID 令牌中。 访问令牌哈希可用于验证访问令牌的真实性。 有关如何执行此验证的详细信息，请参阅 [OpenID Connect 规范](http://openid.net/specs/openid-connect-core-1_0.html)  |
 | Nonce |`nonce` |`12345` |Nonce 是缓和令牌重放攻击的策略。 应用可通过使用 `nonce` 查询参数，在授权请求中指定 nonce。 在请求中提供的值将仅在 ID 令牌的 `nonce` 声明中发出（未经修改）。 这可让应用根据在请求上指定的值验证此值，使应用的会话与给定的 ID 令牌相关联。 应用可在 ID 令牌验证过程中执行这项验证。 |
-| 使用者 |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |这是令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 要了解更多信息，请参阅 [Azure Active Directory B2C：令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)。 |
+| 主题 |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |这是令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 要了解更多信息，请参阅 [Azure Active Directory B2C：令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)。 |
 | 身份验证上下文类引用 |`acr` |不适用 |除非是在旧策略中，否则目前不使用。 要了解更多信息，请参阅 [Azure Active Directory B2C：令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)。 |
 | 信任框架策略 |`tfp` |`b2c_1_sign_in` |这是用于获取 ID 令牌的策略名称。 |
 | 身份验证时间 |`auth_time` |`1438535543` |此声明是用户最后一次输入凭据的时间，以新纪元时间表示。 |

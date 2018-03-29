@@ -1,8 +1,8 @@
 ---
-title: "团队数据科学过程实务：使用 SQL 数据仓库 | Microsoft Docs"
-description: "高级分析流程和技术实务"
+title: 团队数据科学过程实务：使用 SQL 数据仓库 | Microsoft Docs
+description: 高级分析流程和技术实务
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: bradsev;weig
-ms.openlocfilehash: 9c858427b01f7b94aae87136a46e1d9ae5e09a1c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.author: bradsev
+ms.openlocfilehash: 6566db5f186b92179df3125deaf5ad17c6f9e974
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>团队数据科学过程实务：使用 SQL 数据仓库
 在本教程中，我们指导为某个公开提供的数据集（[NYC 出租车车程](http://www.andresmh.com/nyctaxitrips/)数据集）完成以下过程：使用 SQL 数据仓库 (SQL DW) 构建和部署机器学习模型。 构建的二元分类模型可预测是否为某段旅程支付了小费；而且还会讨论用于多类分类和回归的模型，这些模型可预测支付的小费金额的分布。
@@ -434,7 +434,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 | tip_class | tip_freq |
 | --- | --- |
 | 1 |82230915 |
-| #N/A |6198803 |
+| 2 |6198803 |
 | 3 |1932223 |
 | 0 |82264625 |
 | 4 |85765 |
@@ -538,7 +538,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 |  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
 | 1 |40.731804 |-74.001083 |40.736622 |-73.988953 |.7169601222 |
-| #N/A |40.715794 |-74,010635 |40.725338 |-74.00399 |.7448343721 |
+| 2 |40.715794 |-74,010635 |40.725338 |-74.00399 |.7448343721 |
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>准备建模的数据

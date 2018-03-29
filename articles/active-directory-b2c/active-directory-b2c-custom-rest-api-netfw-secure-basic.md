@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：使用 HTTP 基本身份验证保护 RESTful 服务"
-description: "使用 HTTP 基本身份验证保护 Azure AD B2C 中的自定义 REST API 声明交换"
+title: Azure Active Directory B2C：使用 HTTP 基本身份验证保护 RESTful 服务
+description: 使用 HTTP 基本身份验证保护 Azure AD B2C 中的自定义 REST API 声明交换
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 09/25/2017
-ms.author: yoelh
-ms.openlocfilehash: 0d4594f5e7c0a13d50993dd42d4780c1ba703140
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: davidmu
+ms.openlocfilehash: 90bbcc865f13a1d048ea12fdccd3ca848cf362ba
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
 在[相关的 Azure AD B2C 文章](active-directory-b2c-custom-rest-api-netfw.md)中，我们已创建一个无需身份验证即可集成到 Azure Active Directory B2C (Azure AD B2C) 用户旅程的 RESTful 服务 (Web API)。 
@@ -239,7 +236,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“机密”。
 
-8. 选择“创建”。
+8. 选择**创建**。
 
 9. 确认已创建 `B2C_1A_B2cRestClientId` 密钥。
 
@@ -259,7 +256,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“机密”。
 
-8. 选择“创建”。
+8. 选择**创建**。
 
 9. 确认已创建 `B2C_1A_B2cRestClientSecret` 密钥。
 

@@ -3,22 +3,19 @@ title: Azure Active Directory B2C：使用自定义策略添加 Twitter 作为 O
 description: 使用 OAuth1 协议将 Twitter 用作标识提供者
 services: active-directory-b2c
 documentationcenter: ''
-author: yoelhor
+author: davidmu1
 manager: mtillman
 editor: ''
-ms.assetid: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 10/23/2017
-ms.author: yoelh
-ms.openlocfilehash: 629e0bbaa7c62ef5d381085588c6a99c203c41cb
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: davidmu
+ms.openlocfilehash: 4a7cc552f49877874dc173a47efe22873d5aeeed
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 Twitter 作为 OAuth1 标识提供者
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -74,7 +71,7 @@ ms.lasthandoff: 03/14/2018
 
 7. 使用“加密”作为“密钥用法”。
 
-8. 选择“创建”。
+8. 选择**创建**。
 
 9. 确认已创建 `B2C_1A_TwitterSecret` 密钥。
 
