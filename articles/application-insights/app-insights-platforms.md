@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: mbullwin
-ms.openlocfilehash: e172b04144afec04579de92b2393587635d3fecf
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7440bb38fc68ce49504188a40ca1aafbb1e07913
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>开发人员分析：语言、平台和集成
 这些项是我们听说过的 [Application Insights](app-insights-overview.md) 的实现，包括第三方的一些实现。
@@ -66,6 +66,7 @@ ms.lasthandoff: 03/23/2018
 * [LogStash 插件](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
 * [Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 * [Logary](https://www.nuget.org/packages/Logary.Targets.AppInsights/)
+* [Logrus](https://github.com/jjcollinge/logrus-appinsights)
 
 ## <a name="content-management-systems"></a>内容管理系统
 * [Concrete](https://github.com/fidmor89/appInsights-Concrete)

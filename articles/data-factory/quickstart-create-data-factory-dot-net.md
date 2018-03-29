@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 01/22/2018
+ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 7e3fd12b2157d28c5d61bfa8d5fb69a00557a1f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c5b7af290a5e5c45d3f64ccb50586db0811dd592
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>使用 .NET SDK 创建数据工厂和管道
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -102,12 +102,12 @@ ms.lasthandoff: 03/23/2018
 在计算机上下载并安装 [Azure .NET SDK](http://azure.microsoft.com/downloads/)。
 
 ### <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
-按照[此文](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)中的说明执行以下任务： 
+按照[此文](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)各节中的说明执行以下任务： 
 
 1. **创建 Azure Active Directory 应用程序**。 在 Azure Active Directory 中创建一个应用程序来表示正在本教程中创建的 .NET 应用程序。 对于登录 URL，可以提供虚拟 URL，如本文中所示 (`https://contoso.org/exampleapp`)。
-2. 按照本文的**获取应用程序 ID 和身份验证密钥**部分中的说明获取“应用程序 ID”和“身份验证密钥”。 记下这些值，以便稍后在本教程中使用。 
-3. 按照本文的**获取租户 ID** 部分中的说明获取**租户 ID**。 记下此值。 
-4. 将应用程序分配到订阅级别的**参与者**角色，以便应用程序可以在订阅中创建数据工厂。 按照本文的**将应用程序分配到角色**部分中的说明进行操作。 
+2. 获取**应用程序 ID** 和**身份验证密钥**，并记下稍后要在本教程中使用的这些值。 
+3. 获取**租户 ID**，并记下稍后要在本教程中使用的此值。
+4. 将应用程序分配到订阅级别的**参与者**角色，以便应用程序可以在订阅中创建数据工厂。
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 

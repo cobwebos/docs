@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 455c74ca808f71258a12166c2e36bdd73d9a3e20
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a5712e556d7b3bdcce38b8b8d39a08414ce0fd2f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
 Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 Azure Stack 服务，并可能分配给租户 VM 的外部可访问公共 IP 地址。 在部署 Azure Stack 期间，需要使用这些 Azure Stack 公共基础结构终结点的、具有适当 DNS 名称的 PKI 证书。 本文提供以下方面的信息：
@@ -34,6 +34,9 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 ## <a name="certificate-requirements"></a>证书要求
 以下列表描述了部署 Azure Stack 时需要满足的证书要求： 
 - 证书必须由内部证书颁发机构或公共证书颁发机构颁发。 如果使用公共证书颁发机构，它必须作为 Microsoft 信任根颁发机构计划的一部分包含在基础操作系统映像中。 您可以找到完整的列表： https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
+- 你 Azure 堆栈的基础结构必须具有对用于对证书进行签名的证书颁发机构的网络访问
+- 旋转时证书，证书必须是可以从同一个用于在部署或上述任何公用证书颁发机构提供的证书进行签名的内部证书颁发机构颁发
+- 不支持使用自签名证书
 - 证书可以是单个通配符证书，其中涵盖使用者可选名称 (SAN) 字段中的所有命名空间。 或者，可以针对需要证书的终结点（例如 acs、Key Vault）使用采用通配符的单个证书。 
 - 证书签名算法不能是 SHA1，因为算法必须更可靠。 
 - 证书格式必须是 PFX，因为安装 Azure Stack 时需要公钥和私钥。 
@@ -42,6 +45,9 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - 证书的"颁发给:"字段不得为与相同其"签发:"字段。
 - 部署时，所有证书 pfx 文件的密码都必须相同
 - 确保所有证书的“使用者名称”和“使用者可选名称”匹配本文中所述的规范，以免部署失败。
+
+> [!NOTE]
+> 不支持自签名证书。
 
 > [!NOTE]
 > 支持在证书的信任链 IS 中包含中间证书颁发机构。 

@@ -27,6 +27,8 @@
   items:
     - name: 使用 Azure Stack 门户
       href: azure-stack-use-portal.md
+    - name: 使用 Azure 堆栈 API
+      href: azure-stack-rest-api-use.md
     - name: 安全性和遵从性
       items:
         - name: 管理 RBAC

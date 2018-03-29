@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: fb4dea9832e781b2ec9f4cfa573b5a4f630188db
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f786d99718b82dba052909e566f1b0571701127e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>使用 Azure Stack 中的特权终结点
 
@@ -76,6 +76,8 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 
       - **用户名称**: CloudAdmin 帐户中，指定格式 **&lt; *Azure 堆栈域*&gt;\accountname**。 (对于 ASDK，用户名称是**azurestack\accountname**。) 
       - **密码**：输入安装 AzureStackAdmin 域管理员帐户期间提供的相同密码。
+    > [!NOTE]
+    > 如果无法连接到 ERCS 终结点，请尝试再次使用到尚未已尝试连接 ERCS VM 的 IP 地址的步骤 1 和 2。
     
 3.  连接后，系统会根据环境将提示符更改为 **[*IP 地址或 ERCS VM 名称*]: PS>** 或 **[azs-ercs01]: PS>**。 在此处运行 `Get-Command` 可查看可用的 cmdlet 列表。
 
