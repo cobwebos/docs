@@ -1,6 +1,6 @@
 ---
 layout: HubPage
-hide_bc: ''
+hide_bc: true
 title: Microsoft Azure 文档
 description: 了解如何使用 Microsoft Azure 云服务构建和管理功能强大的应用程序。 获取文档、示例代码、教程等等。
 ms.topic: hub-page
