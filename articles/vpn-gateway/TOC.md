@@ -6,6 +6,10 @@
 ## [订阅和服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # 入门
+## [创建基于路由的 VPN 网关 - Azure 门户](create-routebased-vpn-gateway-portal.md)
+## [创建基于路由的 VPN 网关 - PowerShell](create-routebased-vpn-gateway-powershell.md)
+
+# 概念
 ## [规划和设计 VPN 网关](vpn-gateway-plan-design.md)
 ## [关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md)
 ## [关于 VPN 设备](vpn-gateway-about-vpn-devices.md)

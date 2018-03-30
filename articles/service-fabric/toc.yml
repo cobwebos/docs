@@ -240,7 +240,7 @@
       items:
         - name: 监视概述
           href: service-fabric-diagnostics-overview.md
-        - name: 群集登录
+        - name: 群集事件
           href: service-fabric-diagnostics-event-generation-infra.md
           items:
             - name: 操作通道
@@ -567,6 +567,8 @@
           href: service-fabric-diagnostics-perf-wad.md
         - name: 报告并检查运行情况
           href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+        - name: 将日志记录添加到服务
+          href: service-fabric-how-to-diagnostics-log.md
         - name: 使用系统运行状况报告进行故障排除
           href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
         - name: 查看运行状况报告

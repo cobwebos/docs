@@ -33,7 +33,7 @@
 ### [保护 ASP.NET API](active-directory-b2c-tutorials-web-api.md)
 ### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
 ### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)
-### [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
+### [Node.js](active-directory-b2c-devquickstarts-api-node.md)
 ### [调用 .NET Web API](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 
 # 指南
@@ -67,6 +67,7 @@
 ## [自定义策略](active-directory-b2c-overview-custom.md)
 ## 指南
 ### [入门](active-directory-b2c-get-started-custom.md)
+### [初学者包](active-directory-b2c-reference-custom-policies-understanding-contents.md)
 ### 配置 OIDC/OAUTH 提供程序
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
 #### [Microsoft 帐户](active-directory-b2c-custom-setup-msa-idp.md)

@@ -6,6 +6,7 @@
 ## [什么是资源运行状况？](resource-health-overview.md)
 # 如何
 ## [配置服务运行状况事件的警报](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json)
+### [使用 Azure 门户查看服务运行状况通知](../monitoring-and-diagnostics/monitoring-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json)
 ## [使用 webhook 配置通知](service-health-alert-webhook-guide.md)
 ### [使用 ServiceNow 配置](service-health-alert-webhook-servicenow.md)
 ### [使用 PagerDuty 配置](service-health-alert-webhook-pagerduty.md)
