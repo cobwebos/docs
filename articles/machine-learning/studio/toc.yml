@@ -3,8 +3,6 @@
 - name: 概述
   expanded: true
   items:
-    - name: 什么是机器学习？
-      href: what-is-machine-learning.md
     - name: 机器学习工作室
       href: what-is-ml-studio.md
     - name: 机器学习工作室的功能
