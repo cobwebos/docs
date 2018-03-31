@@ -59,6 +59,8 @@
       items:
         - name: 静态 IP 地址
           href: static-ip.md
+        - name: 内部负载均衡器
+          href: internal-lb.md
         - name: 入口和 TLS
           href: ingress.md
     - name: 安全性和身份验证

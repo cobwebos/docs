@@ -1,5 +1,5 @@
 - name: Azure 监视文档
-  href: management-overview-monitoring.md
+  href: index.md
 - name: 概述
   items:
     - name: 在 Azure 中进行监视

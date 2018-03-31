@@ -45,7 +45,7 @@
 ### [调试基于 SAML 的 SSO](active-directory-saml-debugging.md)
 ### [单一登录 SAML 协议](active-directory-single-sign-on-protocol-reference.md)
 ### [单一注销 SAML 协议](active-directory-single-sign-out-protocol-reference.md)
-### [创建租户](active-directory-howto-tenant.md)
+## [创建租户](active-directory-howto-tenant.md)
 ## [品牌准则](active-directory-branding-guidelines.md)
 ## 移动 SSO 和桌面 SSO
 ### [在 Android 上启用 SSO](active-directory-sso-android.md)
