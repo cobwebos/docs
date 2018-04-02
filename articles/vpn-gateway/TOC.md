@@ -8,6 +8,7 @@
 # 入门
 ## [创建基于路由的 VPN 网关 - Azure 门户](create-routebased-vpn-gateway-portal.md)
 ## [创建基于路由的 VPN 网关 - PowerShell](create-routebased-vpn-gateway-powershell.md)
+## [创建基于路由的 VPN 网关 - CLI](create-routebased-vpn-gateway-cli.md)
 
 # 概念
 ## [规划和设计 VPN 网关](vpn-gateway-plan-design.md)

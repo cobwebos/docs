@@ -25,6 +25,10 @@
   items:
     - name: Azure 策略定义结构
       href: policy-definition.md
+- name: 操作指南
+  items:
+    - name: 以编程方式创建策略
+      href: policy-insights.md
 - name: 引用
   items:
     - name: Azure CLI

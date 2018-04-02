@@ -1,0 +1,158 @@
+- name: CDN 文档
+  href: index.md
+- name: 概述
+  href: cdn-overview.md
+  items:
+    - name: 什么是 Azure CDN？
+      href: ../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json
+- name: 入门
+  items:
+    - name: 启用 Azure CDN
+      href: cdn-create-new-endpoint.md
+- name: 如何
+  items:
+    - name: 集成
+      items:
+        - name: Web 应用
+          href: ../app-service/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json
+        - name: 云服务
+          href: cdn-cloud-service-with-cdn.md
+        - name: 存储
+          items:
+            - name: 集成存储帐户
+              href: cdn-create-a-storage-account-with-cdn.md
+            - name: SAS 存储支持
+              href: cdn-sas-storage-support.md
+        - name: 跨域资源共享
+          href: cdn-cors.md
+        - name: 将自定义域添加到 CDN 终结点
+          href: cdn-map-content-to-custom-domain.md
+        - name: 在自定义域上配置 HTTPS
+          href: cdn-custom-ssl.md
+    - name: 优化内容
+      items:
+        - name: 优化概述
+          href: cdn-optimization-overview.md
+          items:
+            - name: 大型文件优化
+              href: cdn-large-file-optimization.md
+            - name: 媒体流优化
+              href: cdn-media-streaming-optimization.md
+            - name: 动态站点加速
+              href: cdn-dynamic-site-acceleration.md
+    - name: 管理
+      items:
+        - name: 使用 Azure PowerShell 进行管理
+          href: cdn-manage-powershell.md
+        - name: 按国家/地区限制访问
+          href: cdn-restrict-access-by-country.md
+        - name: 通过压缩文件来提高性能
+          href: cdn-improve-performance.md
+        - name: 控制缓存行为
+          items:
+            - name: 缓存工作原理
+              href: cdn-how-caching-works.md
+            - name: 使用缓存规则控制缓存行为
+              href: cdn-caching-rules.md
+            - name: 使用查询字符串缓存内容
+              items:
+                - name: 标准层
+                  href: cdn-query-string.md
+                - name: 高级层
+                  href: cdn-query-string-premium.md
+            - name: 清除缓存资产
+              href: cdn-purge-endpoint.md
+            - name: 预加载缓存资产
+              href: cdn-preload-endpoint.md
+        - name: 配置生存时间
+          items:
+            - name: Azure Web 内容
+              href: cdn-manage-expiration-of-cloud-service-content.md
+            - name: Azure Blob 存储
+              href: cdn-manage-expiration-of-blob-content.md
+        - name: 令牌身份验证
+          href: cdn-token-auth.md
+        - name: 监视资源
+          href: cdn-resource-health.md
+        - name: 用规则覆盖行为
+          href: cdn-rules-engine.md
+        - name: 获取实时警报
+          href: cdn-real-time-alerts.md
+        - name: HTTP/2 支持
+          href: cdn-http2.md
+    - name: 分析
+      items:
+        - name: 分析 Azure CDN 使用模式
+          href: cdn-log-analysis.md
+          items:
+            - name: Azure 诊断日志
+              href: cdn-azure-diagnostic-logs.md
+            - name: Verizon 中用于 Azure CDN 的分析工具
+              items:
+                - name: Verizon 中的核心报表
+                  href: cdn-analyze-usage-patterns.md
+                - name: Verizon 中的自定义报表
+                  href: cdn-verizon-custom-reports.md
+            - name: Verizon 提供的适用于 Azure CDN 高级版的分析工具
+              items:
+                - name: 生成高级 HTTP 报告
+                  href: cdn-advanced-http-reports.md
+                - name: 查看实时统计信息
+                  href: cdn-real-time-stats.md
+                - name: 分析边缘节点性能
+                  href: cdn-edge-performance.md
+    - name: 开发
+      items:
+        - name: .NET
+          href: cdn-app-dev-net.md
+        - name: Node.js
+          href: cdn-app-dev-node.md
+    - name: 故障排除
+      items:
+        - name: 404 状态
+          href: cdn-troubleshoot-endpoint.md
+        - name: 文件压缩
+          href: cdn-troubleshoot-compression.md
+- name: 引用
+  items:
+    - name: 规则引擎参考
+      href: cdn-rules-engine-reference.md
+      items:
+        - name: 规则引擎条件表达式
+          href: cdn-rules-engine-reference-conditional-expressions.md
+        - name: 规则引擎匹配条件
+          href: cdn-rules-engine-reference-match-conditions.md
+        - name: 规则引擎功能
+          href: cdn-rules-engine-reference-features.md
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cdn'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.cdn
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.cdn
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.cdn
+    - name: REST
+      href: /rest/api/cdn/
+- name: 资源
+  items:
+    - name: Azure CDN 的 POP 位置
+      items:
+        - name: 按区域列出的 POP 位置
+          href: cdn-pop-locations.md
+        - name: 按缩写列出的 POP 位置
+          href: cdn-pop-abbreviations.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cdn/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=cdn'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-cdn'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'

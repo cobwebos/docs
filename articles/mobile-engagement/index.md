@@ -1,24 +1,28 @@
 ---
-title: "Azure Mobile Engagement 文档 - 教程和 API 参考 | Microsoft 文档"
-description: "了解如何深入分析移动应用的使用情况和实时用户细分，以及如何实现区分上下文的推送通知和应用内消息传送。"
+title: Azure Mobile Engagement 文档 - 教程和 API 参考 | Microsoft 文档
+description: 了解如何深入分析移动应用的使用情况和实时用户细分，以及如何实现区分上下文的推送通知和应用内消息传送。
 services: mobile-engagement
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: mobile-engagement
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 5f682ba16b52b9a084505b8212c4b6f043bb94c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 874b40e0e1407be9f546c5a5f57cee2d1034a840
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="mobile-engagement-documentation"></a>Mobile Engagement 文档
+
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
 
 了解如何使用 Mobile Engagement 提高移动应用的采用率、保有率和盈利能力。 教程、SDK 和其他文档介绍了如何深入分析应用的使用情况和实时用户细分，以及如何实现区分上下文的推送通知和应用内消息传送。
 
