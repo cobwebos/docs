@@ -1,6 +1,6 @@
 ---
-title: "Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 简介 | Microsoft Docs"
-description: "本页概述应用程序网关的 Web 应用程序防火墙 (WAF)"
+title: Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 简介 | Microsoft Docs
+description: 本页概述应用程序网关的 Web 应用程序防火墙 (WAF)
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: amsriva
-ms.openlocfilehash: 50863b60f2843f033bdb07f4564d937cd6f0b7be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3945436a369f624ccb1d862b9623b8cfb1ed376
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="web-application-firewall-waf"></a>Web 应用程序防火墙 (WAF)
 
@@ -44,7 +44,7 @@ Web 应用程序防火墙基于 [OWASP 核心规则集](https://www.owasp.org/in
 
 * 使用实时 WAF 日志监视 Web 应用程序受到的攻击。 此日志与 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 集成，让你跟踪 WAF 警报和日志并轻松监视趋势。
 
-* WAF 即将与 Azure 安全中心集成。 使用 Azure 安全中心可在一个中心位置查看所有 Azure 资源的安全状态。
+* WAF 与 Azure 安全中心集成。 使用 Azure 安全中心可在一个中心位置查看所有 Azure 资源的安全状态。
 
 ### <a name="customization"></a>自定义
 
@@ -114,7 +114,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 ### <a name="application-gateway-waf-reports"></a>WAF 监视
 
-监视应用程序网关的运行状况非常重要。 借助日志记录以及与 Azure Monitor、Azure 安全中心（即将推出）和 Log Analytics 的集成，可以监视 Web 应用程序防火墙及其保护的应用程序的运行状况。
+监视应用程序网关的运行状况非常重要。 借助日志记录以及与 Azure Monitor、Azure 安全中心和 Log Analytics 的集成，可以监视 Web 应用程序防火墙及其保护的应用程序的运行状况。
 
 ![诊断](./media/application-gateway-web-application-firewall-overview/diagnostics.png)
 
@@ -124,7 +124,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 #### <a name="azure-security-center"></a>Azure 安全中心
 
-[Azure 安全中心](../security-center/security-center-intro.md)有助于预防、检测和响应威胁，同时增加 Azure 资源的可见性和安全可控性。 应用程序网关现在会[集成到 Azure 安全中心](application-gateway-integration-security-center.md)。 Azure 安全中心会扫描环境以检测未受保护的 Web 应用程序。 它现在可以建议应用程序网关 WAF 保护这些易受攻击的资源。 可直接从 Azure 安全中心创建应用程序网关 WAF。  这些 WAF 实例与 Azure 安全中心集成，并将警报和运行状况信息发送回 Azure 安全中心，以便进行报告。
+[Azure 安全中心](../security-center/security-center-intro.md)有助于预防、检测和响应威胁，同时增加 Azure 资源的可见性和安全可控性。 应用程序网关将[集成到 Azure 安全中心](application-gateway-integration-security-center.md)。 Azure 安全中心会扫描环境以检测未受保护的 Web 应用程序。 它现在可以建议应用程序网关 WAF 保护这些易受攻击的资源。 可直接从 Azure 安全中心创建应用程序网关 WAF。  这些 WAF 实例与 Azure 安全中心集成，并将警报和运行状况信息发送回 Azure 安全中心，以便进行报告。
 
 ![图 1](./media/application-gateway-web-application-firewall-overview/figure1.png)
 
@@ -164,7 +164,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 ## <a name="application-gateway-waf-sku-pricing"></a>应用程序网关 WAF SKU 定价
 
-Web 应用程序防火墙在新的 WAF SKU 中提供。 此 SKU 仅在 Azure Resource Manager 预配模型中可用，在经典部署模型中不可用。 此外，WAF SKU 仅提供中型和大型应用程序网关实例大小。 应用程序网关的所有限制同样适用于 WAF SKU。 定价基于每小时网关实例费和数据处理费。 WAF SKU 的每小时网关定价不同于标准 SKU 费用，具体请参阅[应用程序网关定价详细信息](https://azure.microsoft.com/pricing/details/application-gateway/)。 数据处理费保持不变。 不会按规则或规则组收费。 可以使用同一个 Web 应用程序防火墙保护多个 Web 应用程序，支持多个应用程序不会产生额外的费用。 
+Web 应用程序防火墙在新的 WAF SKU 中提供。 此 SKU 仅在 Azure 资源管理器预配模型中可用，在经典部署模型中不可用。 此外，WAF SKU 仅提供中型和大型应用程序网关实例大小。 应用程序网关的所有限制同样适用于 WAF SKU。 定价基于每小时网关实例费和数据处理费。 WAF SKU 的每小时网关定价不同于标准 SKU 费用，具体请参阅[应用程序网关定价详细信息](https://azure.microsoft.com/pricing/details/application-gateway/)。 数据处理费保持不变。 不会按规则或规则组收费。 可以使用同一个 Web 应用程序防火墙保护多个 Web 应用程序，支持多个应用程序不会产生额外的费用。 
 
 WAF 的计费方式从 2017 年 5 月 5 日开始生效，在此之前，WAF SKU 网关继续按标准费率计费。
 

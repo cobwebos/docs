@@ -1,6 +1,6 @@
 ---
-title: "Azure 上的 Kubernetes 教程 - 部署应用程序"
-description: "AKS 教程 - 部署应用程序"
+title: Azure 上的 Kubernetes 教程 - 部署应用程序
+description: AKS 教程 - 部署应用程序
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 095bfe328f3e3ed220de71b3410e34b9be86cff1
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9fad9627be453fb00508d1f6ec9594bd2bde6fad
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="run-applications-in-azure-container-service-aks"></a>在 Azure 容器服务 (AKS) 中运行应用程序
+# <a name="tutorial-run-applications-in-azure-container-service-aks"></a>教程：在 Azure 容器服务 (AKS) 中运行应用程序
 
 在本教程第 4 部分（共 8 部分）中，会将示例应用程序部署到 Kubernetes 群集中。 已完成的步骤包括：
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 03/12/2018
 > * 在 Kubernetes 中运行应用程序
 > * 测试应用程序
 
-在后续教程中，会扩大并更新此应用程序，并将 Operations Management Suite 配置为监视 Kubernetes 群集。
+在后续教程中，会扩大并更新此应用程序，并将 Log Analytics 配置为监视 Kubernetes 群集。
 
 本教程假定你基本了解 Kubernetes 概念。有关 Kubernetes 的详细信息，请参阅 [Kubernetes 文档][kubernetes-documentation]。
 

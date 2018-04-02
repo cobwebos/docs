@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure 数据工厂中的 Databricks Notebook 活动运行 Databricks Notebook"
-description: "了解如何使用 Azure 数据工厂中的 Databricks Notebook 活动针对 Databricks 作业群集运行 Databricks Notebook。"
+title: 使用 Azure 数据工厂中的 Databricks Notebook 活动运行 Databricks Notebook
+description: 了解如何使用 Azure 数据工厂中的 Databricks Notebook 活动针对 Databricks 作业群集运行 Databricks Notebook。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
 manager: craigg
 ms.service: data-factory
@@ -13,11 +13,11 @@ ms.topic: get-started-article
 ms.date: 3/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: d1dcec26529c747a209dd10fcefbbadaa40365a3
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7a90906f0bb41b0ced368e9010e0c8a4981f038c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Databricks Notebook 活动运行 Databricks Notebook
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 03/12/2018
 
 3.  选择“固定到仪表板”。
 
-4.  选择“创建”。
+4.  选择**创建**。
 
 5.  仪表板上会显示状态为“正在部署数据工厂”的以下磁贴：
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 03/12/2018
 
           ![创建新文件夹](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       3. 在 **adftutorial** 文件夹下[创建新的 Notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python)，将其称之为 **mynotebook**，然后单击“创建”。
+       3. 在 **adftutorial** 文件夹下[创建新的 Notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python)，将其命名为 **mynotebook**，然后单击“创建”。
 
           ![创建新的 Notebook](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 

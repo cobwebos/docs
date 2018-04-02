@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Store 概述 | Microsoft 文档"
-description: "了解什么是 Azure Data Lake Store，及其与其他数据存储相比它有哪些优势"
+title: Azure Data Lake Store 概述 | Microsoft 文档
+description: 了解什么是 Azure Data Lake Store，及其与其他数据存储相比它有哪些优势
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 88c44f2e47562f9992e7c6e228b9a4c917f806ba
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 111906bc9e7e85e30a879d7bacff37edb4b204ac
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="overview-of-azure-data-lake-store"></a>Azure Data Lake Store 概述
 Azure Data Lake Store 是一个企业范围的超大规模存储库，适用于大数据分析工作负荷。 使用 Azure Data Lake 可以在单个位置捕获任何大小、类型和引入速度的数据进行操作和探索分析。
@@ -61,7 +61,7 @@ Azure Data Lake Store 使用 Azure Active Directory 进行身份验证，使用�
 | 功能 | 说明 |
 | --- | --- |
 | 身份验证 |Azure Data Lake Store 与 Azure Active Directory (AAD) 集成，可对 Azure Data Lake Store 中存储的所有数据进行标识与访问管理。 因为这种集成，Azure Data Lake 可受益于所有 AAD 功能，包括多重身份验证、条件访问、基于角色的访问控制、应用程序使用情况监视、安全监视和警报等。Azure Data Lake Store 支持在 REST 接口中使用 OAuth 2.0 协议进行身份验证。 请参阅 [Data Lake Store 身份验证](data-lakes-store-authentication-using-azure-active-directory.md)|
-| 访问控制 |Azure Data Lake Store 通过支持 WebHDFS 协议公开的 POSIX 样式权限来提供访问控制。 在 Data Lake Store 公共预览版中（当前发行版），在根文件夹、子文件夹和个人文件上启用 ACL。 有关 ACL 在 Data Lake Store 上下文中的工作原理的详细信息，请参阅 [Data Lake Store 中的访问控制](data-lake-store-access-control.md)。 |
+| 访问控制 |Azure Data Lake Store 通过支持 WebHDFS 协议公开的 POSIX 样式权限来提供访问控制。 可对根文件夹、子文件夹和单个文件启用 ACL。 有关 ACL 在 Data Lake Store 上下文中的工作原理的详细信息，请参阅 [Data Lake Store 中的访问控制](data-lake-store-access-control.md)。 |
 | 加密 |Data Lake Store 还针对帐户中存储的数据提供加密。 创建 Data Lake Store 帐户时可以指定加密设置。 可以选择加密或不加密数据。 有关详细信息，请参阅 [Data Lake Store 中的加密](data-lake-store-encryption.md)。 有关如何提供加密相关配置的说明，请参阅 [Azure Data Lake Store 入门（使用 Azure 门户）](data-lake-store-get-started-portal.md)。 |
 
 如果想要详细了解如何在 Data Lake Store 中保护数据， 请访问以下链接。

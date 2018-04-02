@@ -1,6 +1,6 @@
 ---
-title: "Kubernetes on Azure 教程 - 缩放应用程序"
-description: "AKS 教程 - 缩放应用程序"
+title: Kubernetes on Azure 教程 - 缩放应用程序
+description: AKS 教程 - 缩放应用程序
 services: container-service
 author: dlepow
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 556f4bfb204504de55c41da9615e61d5a88c75b2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5e35be84df53386398deaca19d60d4a93f53e541
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="scale-application-in-azure-container-service-aks"></a>在 Azure 容器服务 (AKS) 中缩放应用程序
+# <a name="tutorial-scale-application-in-azure-container-service-aks"></a>教程：在 Azure 容器服务 (AKS) 中缩放应用程序
 
 如果已按照教程执行，则在 AKS 中已有可正常工作的 Kubernetes 群集，并且已部署了 Azure 投票应用。
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/24/2018
 > * 手动缩放 Kubernetes Pod
 > * 配置运行应用前端的自动缩放 Pod
 
-在后续教程中，将更新 Azure 投票应用程序，并将 Operations Management Suite 配置为监视 Kubernetes 群集。
+在后续教程中，将会更新 Azure 投票应用程序，并将 Log Analytics 配置为监视 Kubernetes 群集。
 
 ## <a name="before-you-begin"></a>开始之前
 

@@ -1,11 +1,11 @@
 ---
-title: "适用于通用 Windows 平台应用的 Azure 通知中心入门 | Microsoft Docs"
-description: "在本教程中，将了解如何使用 Azure 通知中心将通知推送到通用 Windows 平台应用程序。"
+title: 适用于通用 Windows 平台应用的 Azure 通知中心入门 | Microsoft Docs
+description: 在本教程中，将了解如何使用 Azure 通知中心将通知推送到通用 Windows 平台应用程序。
 services: notification-hubs
 documentationcenter: windows
 author: jwhitedev
 manager: kpiteira
-editor: 
+editor: ''
 ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: c09621d1152aafbe15039130f6ca24082dc5bd21
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 8464a7e48a02be39fb624322fac6c26f4c6c6806
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-notification-hubs-for-universal-windows-platform-apps"></a>适用于通用 Windows 平台应用的通知中心入门
 
@@ -94,11 +94,11 @@ ms.lasthandoff: 01/02/2018
 1. 在 Visual Studio 中，右键单击该解决方案，并选择“管理 NuGet 包”。  
     此时会打开“管理 NuGet 包”窗口。
 
-2. 在搜索框中，输入 **WindowsAzure.Messaging.Managed**，选择“安装”，并接受使用条款。
+2. 在搜索框中输入 **Microsoft.Azure.NotificationHubs**，选择“安装”，并接受使用条款。
    
     ![“管理 NuGet 包”窗口][20]
    
-    此操作会使用 [WindowsAzure.Messaging.Managed NuGet 包](http://nuget.org/packages/WindowsAzure.Messaging)下载、安装用于 Windows 的 Azure 消息传送库，并添加对该传送库的引用。
+    此操作使用 [Microsoft.Azure.NotificationHubs NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs)下载、安装并添加对 Azure 通知中心库的引用。
 
 3. 打开 App.xaml.cs 项目文件并添加以下 `using` 语句： 
    

@@ -1,6 +1,6 @@
 ---
-title: "Azure 容器服务教程 - 更新应用程序"
-description: "Azure 容器服务教程 - 更新应用程序"
+title: Azure 容器服务教程 - 更新应用程序
+description: Azure 容器服务教程 - 更新应用程序
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5f22bb3ac378bc9b1ff94db486d6ea6053c64514
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 87de0f23a00b035b12bac6cf655781961b1fb9e5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="update-an-application-in-kubernetes"></a>更新 Kubernetes 中的应用程序
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/27/2018
 > * 将容器映像推送至 Azure 容器注册表
 > * 部署更新的容器映像
 
-在后续教程中，会将 Operations Management Suite 配置为监视 Kubernetes 群集。
+在后续教程中，会将 Log Analytics 配置为监视 Kubernetes 群集。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -71,7 +71,7 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>在本地测试应用程序
 
-转到 http://localhost:8080 ，查看更新后的应用程序。
+浏览到 http://localhost:8080 查看更新的应用程序。
 
 ![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
@@ -166,7 +166,7 @@ kubectl get service azure-vote-front
 > * 将容器映像推送到 Azure 容器注册表
 > * 部署更新的应用程序
 
-进入下一教程，了解如何使用 Operations Management Suite 监视 Kubernetes。
+转到下一篇教程，了解如何使用 Log Analytics 监视 Kubernetes。
 
 > [!div class="nextstepaction"]
-> [使用 OMS 监视 Kubernetes](./container-service-tutorial-kubernetes-monitor.md)
+> [使用 Log Analytics 监视 Kubernetes](./container-service-tutorial-kubernetes-monitor.md)

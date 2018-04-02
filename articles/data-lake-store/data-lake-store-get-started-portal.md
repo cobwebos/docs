@@ -1,8 +1,8 @@
 ---
-title: "通过 Azure 门户开始使用 Data Lake Store | Microsoft 文档"
-description: "使用 Azure 门户创建 Data Lake Store 帐户，在 Data Lake Store 中执行基本操作"
+title: 通过 Azure 门户开始使用 Data Lake Store | Microsoft 文档
+description: 使用 Azure 门户创建 Data Lake Store 帐户，在 Data Lake Store 中执行基本操作
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: c5b0f5250a08915e987a1eb5229f2c4648e660fd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 91ed55e5f12c10e67653bdadfca80bd072779711
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Azure Data Lake Store 入门（使用 Azure 门户）
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ ms.lasthandoff: 02/21/2018
 ## <a name="create-an-azure-data-lake-store-account"></a>创建 Azure Data Lake Store 帐户
 
 1. 登录到新的 [Azure 门户](https://portal.azure.com)。
-2. 依次单击“创建资源”、“数据 + 存储”、“Azure Data Lake Store”。 阅读“Azure Data Lake Store”边栏选项卡中的信息，并单击边栏选项卡左下角的“创建”。
+2. 单击“创建资源”>“存储”>“Data Lake Store”。
 3. 在“新建 Data Lake Store”边栏选项卡中，提供以下屏幕截图中所示的值：
    
     ![创建新的 Azure Data Lake Store 帐户](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "创建新的 Azure Data Lake 帐户")
@@ -50,7 +50,7 @@ ms.lasthandoff: 02/21/2018
    * **加密设置**。 有三个选项：
      
      * 不启用加密。
-     * 使用由 Azure Data Lake 管理的密钥。  如果需要使用 Azure Data Lake Store 来管理加密密钥。
+     * **使用由 Data Lake Store 管理的密钥**  如果需要使用 Azure Data Lake Store 来管理加密密钥。
      * **使用自己的专用密钥保管库的密钥**。 可以选择现有的 Azure Key Vault，也可以创建新的 Key Vault。 若要使用 Key Vault 中的密钥，必须为 Azure Data Lake Store 帐户分配 Azure Key Vault 访问权限。 有关说明，请参阅[分配对 Azure Key Vault 的权限](#assign-permissions-to-azure-key-vault)。
        
         ![Data Lake Store 加密](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Store 加密")
@@ -61,7 +61,7 @@ ms.lasthandoff: 02/21/2018
 
 4. 单击“创建”。 如果选择将帐户固定到仪表板，将返回仪表板，在其中可以查看预配 Data Lake Store 帐户的进度。 预配 Data Lake Store 帐户后，会显示帐户边栏选项卡。
 
-### <a name="assign-permissions-to-azure-key-vault"></a>分配对 Azure Key Vault 的权限
+## <a name="assign-permissions-to-azure-key-vault"></a>分配对 Azure Key Vault 的权限
 如果使用 Azure 密钥保管库中的密钥为 Data Lake Store 帐户配置加密，必须配置 Azure Data Lake Store 帐户与 Azure 密钥保管库之间的访问权限。 为此，请执行以下步骤。
 
 1. 如果使用了 Azure 密钥保管库中的密钥，Data Lake Store 帐户的边栏选项卡顶部会显示一条警告。 单击警告打开“加密”。
@@ -87,7 +87,7 @@ ms.lasthandoff: 02/21/2018
 ## <a name="createfolder"></a>在 Azure Data Lake Store 帐户中创建文件夹
 可以在 Azure Data Lake Store 帐户下创建文件夹，用于管理和存储数据。
 
-1. 打开已创建的 Data Lake Store 帐户。 从左窗格中，单击“浏览”，单击“Data Lake Store”，从 Data Lake Store 边栏选项卡中单击要在其下创建文件夹的帐户名。 如果将帐户固定到了启动板，请单击该帐户磁贴。
+1. 打开已创建的 Data Lake Store 帐户。 在左窗格中单击“所有资源”，然后在“所有资源”边栏选项卡中单击要在其下创建文件夹的帐户名。 如果将帐户固定到了启动板，请单击该帐户磁贴。
 2. 在 Data Lake Store 帐户边栏选项卡中，单击“数据资源管理器” 。
    
     ![在 Data Lake Store 帐户中创建文件夹](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "在 Data Lake Store 帐户中创建文件夹")

@@ -1,6 +1,6 @@
 ---
-title: "Azure 上的 Kubernetes 教程 - 监视 Kubernetes"
-description: "AKS 教程 - 使用 Microsoft Operations Management Suite (OMS) 监视 Kubernetes"
+title: Azure 上的 Kubernetes 教程 - 监视 Kubernetes
+description: AKS 教程 - 使用 Azure Log Analytics 监视 Kubernetes
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 227601858dbe07e6cb774a2d24878ddca05aaf56
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 86ae0c5ab302c49fa58df887d9dffef6cec31708
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="monitor-azure-container-service-aks"></a>监视 Azure 容器服务 (AKS)
+# <a name="tutorial-monitor-azure-container-service-aks"></a>教程：监视 Azure 容器服务 (AKS)
 
 监视 Kubernetes 群集和容器至关重要，特别是在使用多个应用程序大规模地运行生产群集时。
 
@@ -40,11 +40,11 @@ ms.lasthandoff: 03/09/2018
 
 ![添加解决方案](./media/container-service-tutorial-kubernetes-monitor/add-solution.png)
 
-新建一个 OMS 工作区或选择现有 OMS 工作区。 “OMS 工作区”窗体将引导你完成此过程。
+创建新的或选择现有的 Log Analytics 工作区。 “Log Analytics 工作区”窗体将引导你完成此过程。
 
 创建工作区时，请选择“固定到仪表板”以便于检索。
 
-![OMS 工作区](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
+![Log Analytics 工作区](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
 
 完成后，选择“确定”。 完成验证后，选择“创建”以创建容器监视解决方案。
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/09/2018
 
 ## <a name="create-kubernetes-secret"></a>创建 Kubernetes 机密
 
-使用 [kubectl create secret][kubectl-create-secret] 命令在名为 `omsagent-secret` 的 Kubernetes 机密中存储 OMS 工作区设置。 将 `WORKSPACE_ID` 更新为 OMS 工作区 ID，将 `WORKSPACE_KEY` 更新为工作区密钥。
+使用 [kubectl create secret][kubectl-create-secret] 命令在名为 `omsagent-secret` 的 Kubernetes 机密中存储 Log Analytics 工作区设置。 将 `WORKSPACE_ID` 更新为 Log Analytics 工作区 ID，将 `WORKSPACE_KEY` 更新为工作区密钥。
 
 ```console
 kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID --from-literal=KEY=WORKSPACE_KEY
@@ -154,7 +154,7 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR 
 omsagent   3         3         3         3            3           beta.kubernetes.io/os=linux   8m
 ```
 
-代理运行后，OMS 需要几分钟才能引入和处理该数据。
+代理运行后，Log Analytics 需要几分钟才能引入和处理该数据。
 
 ## <a name="access-monitoring-data"></a>访问监视数据
 
@@ -166,7 +166,7 @@ omsagent   3         3         3         3            3           beta.kubernete
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已使用 OMS 监视 Kubernetes 群集。 涉及的任务包括：
+在本教程中，我们已使用 Log Analytics 监视 Kubernetes 群集。 涉及的任务包括：
 
 > [!div class="checklist"]
 > * 配置容器监视解决方案

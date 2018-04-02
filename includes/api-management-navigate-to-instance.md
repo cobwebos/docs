@@ -3,7 +3,7 @@
 若要导航到 APIM 实例，请执行以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
-2. 选择 ![箭头](./media/api-management-navigate-to-instance/arrow.png)。
+2. 在屏幕左上方，选择“所有服务”。  
 3. 在搜索框中键入“api”。
 4. 单击“API 管理服务”。
 

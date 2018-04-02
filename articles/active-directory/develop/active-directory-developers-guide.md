@@ -1,10 +1,10 @@
 ---
-title: "针对开发人员的 Azure Active Directory | Microsoft Docs"
-description: "本文概述了如何使用 Azure Active Directory 登录 Microsoft 工作和学校帐户。"
+title: 针对开发人员的 Azure Active Directory | Microsoft Docs
+description: 本文概述了如何使用 Azure Active Directory 登录 Microsoft 工作和学校帐户。
 services: active-directory
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.devlang: na
@@ -14,14 +14,17 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: e1f9fbf6cb80065ea796e2d53d09f48fe57b207b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8d70f36c5e434a26fce4d6b4bd1ddefc22234ab5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-for-developers"></a>针对开发人员的 Azure Active Directory
-Azure Active Directory (Azure AD) 是一项云标识服务，开发人员可以使用它将任何用户安全地登录到 Microsoft 工作或学校帐户。 本文档介绍了如何使用行业标准协议（OAuth2.0 与 OpenID Connect）向应用程序添加 Azure AD 支持。
+Azure Active Directory (Azure AD) 是一个云标识服务，开发人员可以使用它来生成应用，让用户使用 Microsoft 工作或学校帐户安全登录。 Azure AD 支持开发人员生成单租户业务线 (LOB) 应用和多租户应用。 除了基本登录以外，Azure AD 还可以让应用调用 [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/concepts/overview) 等 Microsoft API，以及在 Azure AD 平台上生成的自定义 API。  本文档介绍了如何使用行业标准协议（例如 OAuth2.0 与 OpenID Connect）向应用程序添加 Azure AD 支持。 
+
+> [!NOTE]
+> 本页面中的大部分内容侧重于仅支持 Microsoft 工作或学校帐户的 Azure AD v1 终结点。 若要通过使用者或个人 Microsoft 帐户登录，请参阅有关 [Azure AD v2.0 终结点](active-directory-appmodel-v2-overview.md)的详细信息。 对于想要让用户使用 Azure AD 帐户（工作和学校）和个人 Microsoft 帐户登录的应用，Azure AD v2.0 终结点提供统一的开发人员体验。 
 
 | | |
 | --- | --- |
@@ -29,7 +32,7 @@ Azure Active Directory (Azure AD) 是一项云标识服务，开发人员可以�
 |[应用程序的类型](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Azure AD 支持的身份验证方案概述。 |                                
                                                                               
 ## <a name="get-started"></a>入门
-下述指导性的设置演示了如何使用 Microsoft 身份验证库让 Azure AD 用户登录。
+以下指导逐步讲解如何使用 Azure Active Directory 库 (ADAL) SDK 在偏好的平台上生成应用。 如需 Microsoft 身份验证库 (MSAL) 的用法信息，请参阅有关 [Azure AD v2.0 终结点](active-directory-appmodel-v2-overview.md)的文档。
 
 |  |  |  |  |
 | --- | --- | --- | --- |
@@ -40,7 +43,7 @@ Azure Active Directory (Azure AD) 是一项云标识服务，开发人员可以�
 | <center>![服务到服务](./media/active-directory-developers-guide/Service_App.png)<br />服务到服务</center> | [概述](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)|  |
 
 ## <a name="how-to-guides"></a>操作指南
-以下指南介绍如何使用 Azure AD 执行常见任务。
+以下指导逐步讲解如何在 Azure AD 中完成一些最常见的任务。
 
 |                                                                           |  |
 |---------------------------------------------------------------------------| --- |
@@ -58,10 +61,6 @@ Azure Active Directory (Azure AD) 是一项云标识服务，开发人员可以�
 | [代码示例](active-directory-code-samples.md)                                  | 所有 Azure AD 代码示例的列表。 |
 | [术语表](active-directory-dev-glossary.md)                                      | 本文档通篇使用的术语和单词定义。 |
 | [其他参考主题](active-directory-developers-guide-index.md#reference)| 一系列适用于 Azure AD 的参考主题。   |
-
-
-> [!NOTE]
-> 若需登录 Microsoft 个人帐户，可以考虑使用 [Azure AD v2.0 终结点](active-directory-appmodel-v2-overview.md)。 Azure AD v2.0 终结点将 Microsoft 个人帐户和 Microsoft 工作帐户（由 Azure AD 提供）统一成单个身份验证系统。
 
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

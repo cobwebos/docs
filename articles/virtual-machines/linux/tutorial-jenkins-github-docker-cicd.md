@@ -1,26 +1,26 @@
 ---
-title: "在 Azure 中使用 Jenkins 创建开发管道 | Microsoft Docs"
-description: "了解如何在 Azure 中创建一个 Jenkins 虚拟机，用于在每次提交代码后从 GitHub 提取数据，并生成新的 Docker 容器来运行应用"
+title: 在 Azure 中使用 Jenkins 创建开发管道 | Microsoft Docs
+description: 了解如何在 Azure 中创建一个 Jenkins 虚拟机，用于在每次提交代码后从 GitHub 提取数据，并生成新的 Docker 容器来运行应用
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/15/2017
+ms.date: 03/27/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8a595ead7da8dfa5544903bd698bfdff40555eb9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9250e40c491257b554333f4606cbf0b476d8db21
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>如何使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构
 要将应用程序开发的生成和测试阶段自动化，可以使用持续集成和部署 (CI/CD) 管道。 本教程介绍如何在 Azure VM 上创建 CI/CD 管道，包括如何：
@@ -64,7 +64,6 @@ runcmd:
   - curl -sSL https://get.docker.com/ | sh
   - usermod -aG docker azureuser
   - usermod -aG docker jenkins
-  - touch /var/lib/jenkins/jenkins.install.InstallUtil.lastExecVersion
   - service jenkins restart
 ```
 
@@ -118,10 +117,13 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 现在，请打开 Web 浏览器并转到 `http://<publicIps>:8080`。 按如下所示完成初始 Jenkins 安装：
 
-- 输入用户名“admin”，然后提供在上一步骤从 VM 获取的 initialAdminPassword。
-- 依次选择“管理 Jenkins”、“管理插件”。
-- 选择“可用”，然后在顶部文本框中搜索 GitHub。 选中“GitHub 插件”框，然后选择“立即下载并在重启后安装”。
-- 选中“安装完成并且没有作业运行时重启 Jenkins”框，然后等待插件安装过程完成。
+- 选择“选择要安装的插件”
+- 在顶部的文本框中搜索 *GitHub*。 选中“GitHub”对应的框，然后选择“安装”
+- 创建第一个管理用户。 输入用户名（例如 **admin**），然后提供自己的安全密码。 最后，键入全名和电子邮件地址。
+- 选择“保存并完成”
+- 准备好 Jenkins 后，选择“开始使用 Jenkins”
+  - 如果开始使用 Jenkins 时 Web 浏览器显示空白页，请重启 Jenkins 服务。 在 SSH 会话中键入 `sudo service jenkins restart`，然后刷新 Web 浏览器。
+- 使用创建的用户名和密码登录到 Jenkins。
 
 
 ## <a name="create-github-webhook"></a>创建 GitHub Webhook
@@ -139,7 +141,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 
 ## <a name="create-jenkins-job"></a>创建 Jenkins 作业
-若要让 Jenkins 对 GitHub 中的事件（例如提交代码）做出响应，请创建 Jenkins 作业。 
+若要让 Jenkins 对 GitHub 中的事件（例如提交代码）做出响应，请创建 Jenkins 作业。 为自己的 GitHub 分叉使用 URL。
 
 在 Jenkins 网站中的主页上，选择“创建新作业”：
 

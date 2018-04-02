@@ -1,12 +1,12 @@
 ---
-title: "适用于 VMware 到 Azure 部署的 Azure Site Recovery Deployment Planner | Microsoft Docs"
-description: "本文为 Azure Site Recovery Deployment Planner 用户指南。"
+title: 适用于 VMware 到 Azure 部署的 Azure Site Recovery Deployment Planner | Microsoft Docs
+description: 本文为 Azure Site Recovery Deployment Planner 用户指南。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: 63963804b81aa57e914e18fa474963a3830d04d5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 337217e66fe4d3780af197911a0e72c6f936e411
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表  
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 03/12/2018
 * 每次 DR 演练的持续时间(天) 
 * OS 类型
 * 数据冗余 
-* Azure 混合使用权益
+* Azure 混合权益
 
 3.  可以将同一值应用到表中的所有 VM，只需针对“一年的 DR 演练次数”、“每次 DR 演练的持续时间(天)”、“数据冗余”、“Azure 混合使用权益”单击“应用到所有项”按钮即可。
 
@@ -136,7 +136,7 @@ ms.lasthandoff: 03/12/2018
 
 **数据冗余**：可以是以下项之一 - 本地冗余存储 (LRS)、异地冗余存储 (GRS) 或读取访问异地冗余存储 (RA-GRS)。 默认值为 LRS。 可以根据特定 VM 的存储帐户来更改类型，也可以将新类型应用到所有 VM，只需更改顶部行的类型，然后单击“应用到所有项”按钮即可。  根据所选数据冗余的价格来计算复制的存储成本。 
 
-**Azure 混合使用权益**：可以在适用情况下将 Azure 混合使用权益应用到 Windows VM。  默认值为“是”。 可以更改特定 VM 的设置，也可以通过单击“应用到所有项”按钮更新所有 VM。
+**Azure 混合权益**：可以在适用情况下将 Azure 混合权益应用到 Windows VM。  默认值为“是”。 可以更改特定 VM 的设置，也可以通过单击“应用到所有项”按钮更新所有 VM。
 
 **总 Azure 使用量**：包括用于 DR 的计算、存储和 Azure Site Recovery 许可证成本。 此项会根据你的选择显示每月或每年的成本。
 

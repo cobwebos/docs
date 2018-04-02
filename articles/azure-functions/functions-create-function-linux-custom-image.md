@@ -1,8 +1,8 @@
 ---
-title: "在 Linux 上使用自定义映像创建函数（预览）| Microsoft Docs"
-description: "了解如何创建在自定义 Linux 映像中运行的 Azure Functions。"
+title: 在 Linux 上使用自定义映像创建函数（预览）| Microsoft Docs
+description: 了解如何创建在自定义 Linux 映像中运行的 Azure Functions。
 services: functions
-keywords: 
+keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 11/15/2017
@@ -11,11 +11,11 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 4b9cb7923b177c73f83a7ac17b1022a5455c7f30
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 758906126b42c103853e0047bb19d2e96a84fae6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>在 Linux 上使用自定义映像创建函数（预览）
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure 容器服务教程 - 部署应用程序"
-description: "Azure 容器服务教程 - 部署应用程序"
+title: Azure 容器服务教程 - 部署应用程序
+description: Azure 容器服务教程 - 部署应用程序
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 02ec97fecd4759e9f35ab313ffe2d18fa076170a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7119976ada00e10ebeadf6fcff2daf125f439c17
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="run-applications-in-kubernetes"></a>在 Kubernetes 中运行应用程序
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/27/2018
 > * 在 Kubernetes 中运行应用程序
 > * 测试应用程序
 
-在后续教程中，会扩大并更新此应用程序，并将 Operations Management Suite 配置为监视 Kubernetes 群集。
+在后续教程中，会扩大并更新此应用程序，并将 Log Analytics 配置为监视 Kubernetes 群集。
 
 本教程假定你基本了解 Kubernetes 概念。有关 Kubernetes 的详细信息，请参阅 [Kubernetes 文档](https://kubernetes.io/docs/home/)。
 

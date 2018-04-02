@@ -1,6 +1,6 @@
 ---
-title: "Azure 容器服务教程 - 部署群集"
-description: "Azure 容器服务教程 - 部署群集"
+title: Azure 容器服务教程 - 部署群集
+description: Azure 容器服务教程 - 部署群集
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6ef789bc017e670566d25dd9d167698515e88349
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb7bdbaf095cefa72d1de302d90afeebbdb9d027
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>在 Azure 容器服务中部署 Kubernetes 群集
 
@@ -26,7 +26,7 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 通过 Azure �
 > * Kubernetes CLI (kubectl) 的安装
 > * Kubectl 的配置
 
-在后续教程中，将向该群集部署 Azure Vote 应用程序并对该应用程序进行缩放和更新，还会将 Operations Management Suite 配置为监视 Kubernetes 群集。
+在后续教程中，将向该群集部署 Azure Vote 应用程序并对该应用程序进行缩放和更新，还会将 Log Analytics 配置为监视 Kubernetes 群集。
 
 ## <a name="before-you-begin"></a>开始之前
 

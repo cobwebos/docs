@@ -1,18 +1,18 @@
 ---
-title: "使用 Azure Site Recovery 在两个 Azure 区域之间迁移 Azure VM | Microsoft Docs"
-description: "使用 Azure Site Recovery 将 Azure IaaS VM 从一个 Azure 区域迁移到另一个 Azure 区域。"
+title: 使用 Azure Site Recovery 在两个 Azure 区域之间迁移 Azure VM | Microsoft Docs
+description: 使用 Azure Site Recovery 将 Azure IaaS VM 从一个 Azure 区域迁移到另一个 Azure 区域。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 03/24/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: abae7cbd21a2c7f49dc1fe85711b80dc43a10517
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8de067ece55e13d32af6822e114cb9dab000bdff
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>将 Azure VM 迁移到另一区域
 
@@ -35,7 +35,15 @@ ms.lasthandoff: 02/28/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，要从中进行迁移的 Azure 区域中需要存在 Azure VM。 此外，在开始迁移之前，应当对许多设置进行验证。
+- 请确保在迁移的源 Azure 区域中创建了 Azure VM。
+- 请确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
+- 查看[支持限制和要求](azure-to-azure-support-matrix.md)。
+
+
+
+## <a name="before-you-start"></a>开始之前
+
+在设置复制之前，请完成以下步骤。
 
 
 ### <a name="verify-target-resources"></a>验证目标资源
@@ -114,9 +122,7 @@ Site Recovery 会检索与订阅和资源组关联的 VM 列表。
 
     ![启用复制](media/tutorial-migrate-azure-to-azure/settings.png)
 
->[!NOTE]
-  >
-  > 当前不支持复制具有托管磁盘的 Azure VM。 
+ 
 
 ## <a name="run-a-failover"></a>运行故障转移
 

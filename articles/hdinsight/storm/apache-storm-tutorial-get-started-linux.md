@@ -1,9 +1,9 @@
 ---
-title: "Apache Storm on HDInsight 上的 storm-starter 示例 - Azure | Microsoft Docs"
-description: "了解如何在 HDInsight 上使用 Apache Storm 和 storm-starter 示例执行大数据分析和实时处理数据。"
-keywords: "storm-starter，apache storm 示例"
+title: Apache Storm on HDInsight 上的 storm-starter 示例 - Azure | Microsoft Docs
+description: 了解如何在 HDInsight 上使用 Apache Storm 和 storm-starter 示例执行大数据分析和实时处理数据。
+keywords: storm-starter，apache storm 示例
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -16,13 +16,13 @@ ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 6abdb15917508152529990c434eb48a9983b9432
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 0490ba63e651b0ef16175dca46b85a3e48bfd26f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>通过 storm-starter 示例开始使用 Apache Storm on HDInsight
+# <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>通过 storm-starter 示例开始使用 Apache Storm on HDInsight
 
 了解如何通过 storm-starter 示例在 HDInsight 中使用 Apache Storm。
 
@@ -108,7 +108,7 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
     >
     > WordCount 示例和其他 Storm 初学者示例已经包含在群集中，其位置为 `/usr/hdp/current/storm-client/contrib/storm-starter/`。
 
-如果有兴趣查看 Storm 初学者示例的源，可以在以下网页中找到代码：[https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter)。 此链接针对与 HDInsight 3.6 一起提供的 Storm 1.1.x。 对于其他版本的 Storm，可使用页面顶部的“分支”按钮选择不同的 Storm 版本。
+如果想要查看 storm-starter 示例的源代码，可在 [https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter](https://github.com/apache/storm/tree/1.1.x-branch/examples/storm-starter) 上找到代码。 此链接针对与 HDInsight 3.6 一起提供的 Storm 1.1.x。 对于其他版本的 Storm，可使用页面顶部的“分支”按钮选择不同的 Storm 版本。
 
 ## <a name="monitor-the-topology"></a>监视拓扑
 

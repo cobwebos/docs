@@ -1,23 +1,23 @@
 ---
-title: "Azure 容器实例教程 - 准备应用"
-description: "Azure 容器实例教程第 1 部分（共 3 部分）- 准备部署到 Azure 容器实例的应用"
+title: Azure 容器实例教程 - 准备应用
+description: Azure 容器实例教程第 1 部分（共 3 部分）- 准备部署到 Azure 容器实例的应用
 services: container-instances
-author: seanmck
+author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 01/02/2018
-ms.author: seanmck
+ms.date: 03/21/2018
+ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 5012412ec642a04102836274caea253635376efb
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 134cc6ea84a5851755c757cbcf20130bf890575c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-container-for-deployment-to-azure-container-instances"></a>创建部署到 Azure 容器实例的容器
+# <a name="tutorial-create-container-for-deployment-to-azure-container-instances"></a>教程：创建部署到 Azure 容器实例的容器
 
-使用 Azure 容器实例可以将 Docker 容器部署到 Azure 基础结构中，不需预配任何虚拟机，也不需采用任何更高级别的服务。 本教程将使用 Node.js 生成小型 Web 应用程序并将其打包到容器中，然后即可使用 Azure 容器实例运行该容器。
+使用 Azure 容器实例可将 Docker 容器部署到 Azure 基础结构，不需要预配任何虚拟机，也不需要采用更高级别的服务。 在本教程中，我们将一个小型 Node.js Web 应用程序打包成可以使用 Azure 容器实例运行的容器映像。
 
 本文（本系列的第一部分）将介绍如何：
 
@@ -26,33 +26,29 @@ ms.lasthandoff: 02/27/2018
 > * 从应用程序源创建容器映像
 > * 在本地 Docker 环境中测试映像
 
-在后续教程中，需要将映像上传到 Azure 容器注册表，然后将其部署到 Azure 容器实例。
+在本教程的第二和第三部分，需要将该映像上传到 Azure 容器注册表，然后将其部署到 Azure 容器实例。
 
 ## <a name="before-you-begin"></a>开始之前
 
-本教程要求运行 Azure CLI 2.0.23 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0][azure-cli-install]。
-
-本教程假定基本了解核心 Docker 概念，如容器、容器映像和基本 `docker` 命令。 如有需要，请参阅 [Docker 入门][docker-get-started]，了解容器基本知识。
-
-若要完成本教程，需要本地安装的 Docker 开发环境。 Docker 提供的包可在任何 [Mac][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
-
-Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。 若要完成本教程，必须在本地计算机安装 Azure CLI 和 Docker 开发环境。
+[!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
 ## <a name="get-application-code"></a>获取应用程序代码
 
-本教程中的示例包括使用 [Node.js][nodejs] 生成的简单 Web 应用程序。 应用提供静态的 HTML 页面，如下所示：
+本教程中的示例应用程序是使用 [Node.js][nodejs] 生成的简单 Web 应用。 该应用程序提供一个静态 HTML 页面，如以下屏幕截图所示：
 
 ![显示在浏览器中的教程应用][aci-tutorial-app]
 
-使用 git 下载示例：
+使用 Git 克隆示例应用程序的存储库：
 
 ```bash
 git clone https://github.com/Azure-Samples/aci-helloworld.git
 ```
 
+也可以从 GitHub 直接[下载 ZIP 存档][aci-helloworld-zip]。
+
 ## <a name="build-the-container-image"></a>生成容器映像
 
-在示例存储库中提供的 Dockerfile 演示如何生成容器。 它从基于 [Alpine Linux][alpine-linux] 的[正式 Node.js 映像][docker-hub-nodeimage]开始，该映像是适用于容器的小型分发。 然后，它会将应用程序文件复制到容器中，使用 Node 包管理器安装依赖项，最后启动应用程序。
+示例应用程序中的 Dockerfile 演示如何生成容器。 它从基于 [Alpine Linux][alpine-linux] 的[正式 Node.js 映像][docker-hub-nodeimage]（适用于容器的小型分发版）开始演示。 然后，它将应用程序文件复制到容器中，使用 Node 包管理器安装依赖项，最后启动应用程序。
 
 ```Dockerfile
 FROM node:8.9.3-alpine
@@ -63,7 +59,7 @@ RUN npm install
 CMD node /usr/src/app/index.js
 ```
 
-使用 [docker build][docker-build] 命令创建容器映像，将其标记为“aci-tutorial-app”：
+使用 [docker build][docker-build] 命令创建容器映像，将其标记为 *aci-tutorial-app*：
 
 ```bash
 docker build ./aci-helloworld -t aci-tutorial-app
@@ -71,7 +67,8 @@ docker build ./aci-helloworld -t aci-tutorial-app
 
 [docker build][docker-build] 命令的输出类似于以下内容（为方便阅读，已进行截断处理）：
 
-```bash
+```console
+$ docker build ./aci-helloworld -t aci-tutorial-app
 Sending build context to Docker daemon  119.3kB
 Step 1/6 : FROM node:8.9.3-alpine
 8.9.3-alpine: Pulling from library/node
@@ -96,44 +93,53 @@ Successfully tagged aci-tutorial-app:latest
 docker images
 ```
 
-输出：
+新生成的映像应会出现在列表中：
 
-```bash
-REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
+```console
+$ docker images
+REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
+aci-tutorial-app    latest    5c745774dfa9    39 seconds ago    68.1 MB
 ```
 
 ## <a name="run-the-container-locally"></a>在本地运行容器
 
-尝试将容器部署到 Azure 容器实例之前，请先在本地运行，确认其功能正常。 `-d` 开关可以让容器在后台运行，而 `-p` 则可以将计算机上的任意端口映射到容器中的端口 80。
+将容器部署到 Azure 容器实例之前，请使用 [docker run][docker-run] 在本地运行该容器，并确认它是否正常工作。 `-d` 开关可让容器在后台运行，而 `-p` 可将计算机上的任意端口映射到容器中的端口 80。
 
 ```bash
 docker run -d -p 8080:80 aci-tutorial-app
 ```
 
-打开浏览器并访问 http://localhost:8080 ，确认容器正在运行。
+如果 `docker run` 命令成功，其输出会显示正在运行的容器的 ID：
+
+```console
+$ docker run -d -p 8080:80 aci-tutorial-app
+a2e3e4435db58ab0c664ce521854c2e1a1bda88c9cf2fcff46aedf48df86cccf
+```
+
+现在，请在浏览器中导航到 http://localhost:8080，确认容器是否正在运行。 应会看到如下所示的网页：
 
 ![在浏览器中以本地方式运行应用][aci-tutorial-app-local]
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你创建了一个可以部署到 Azure 容器实例的容器映像。 已完成以下步骤：
+在本教程中，我们已创建一个可以部署到 Azure 容器实例的容器映像，并已验证它在本地运行。 到目前为止，我们已完成以下操作：
 
 > [!div class="checklist"]
 > * 从 GitHub 克隆应用程序源
-> * 根据应用程序源创建容器映像
+> * 从应用程序源创建容器映像
 > * 在本地测试容器
 
-请转到下一教程，了解如何在 Azure 容器注册表中存储容器映像。
+请转到本系列中的下一篇教程，了解如何在 Azure 容器注册表中存储容器映像：
 
 > [!div class="nextstepaction"]
-> [向 Azure 容器注册表推送映像](./container-instances-tutorial-prepare-acr.md)
+> [向 Azure 容器注册表推送映像](container-instances-tutorial-prepare-acr.md)
 
 <!--- IMAGES --->
 [aci-tutorial-app]:./media/container-instances-quickstart/aci-app-browser.png
 [aci-tutorial-app-local]: ./media/container-instances-tutorial-prepare-app/aci-app-browser-local.png
 
 <!-- LINKS - External -->
+[aci-helloworld-zip]: https://github.com/Azure-Samples/aci-helloworld/archive/master.zip
 [alpine-linux]: https://alpinelinux.org/
 [docker-build]: https://docs.docker.com/engine/reference/commandline/build/
 [docker-get-started]: https://docs.docker.com/get-started/
@@ -143,6 +149,7 @@ docker run -d -p 8080:80 aci-tutorial-app
 [docker-login]: https://docs.docker.com/engine/reference/commandline/login/
 [docker-mac]: https://docs.docker.com/docker-for-mac/
 [docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-run]: https://docs.docker.com/engine/reference/commandline/run/
 [docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 [nodejs]: http://nodejs.org

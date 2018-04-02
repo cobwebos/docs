@@ -1,6 +1,6 @@
 ---
-title: "Azure 上的 Kubernetes 教程 - 更新应用程序"
-description: "AKS 教程 - 更新应用程序"
+title: Azure 上的 Kubernetes 教程 - 更新应用程序
+description: AKS 教程 - 更新应用程序
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 82a6b6580fbe69b11fdb8a47e2ca09c19b341bbc
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 97a7e0b8e33042739ccea9a086642d9019c15e5b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="update-an-application-in-azure-container-service-aks"></a>在 Azure 容器服务 (AKS) 中更新应用程序
+# <a name="tutorial-update-an-application-in-azure-container-service-aks"></a>教程：在 Azure 容器服务 (AKS) 中更新应用程序
 
 在 Kubernetes 中部署应用程序后，可以指定新的容器映像或映像版本，从而更新应用程序。 这样做时，更新会进行暂存，因此只有一部分部署会同时更新。 借助这种暂存更新，可以让应用程序在更新期间继续运行。 如果发生部署故障，还可以利用它的回滚机制。 
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/27/2018
 > * 将容器映像推送至 Azure 容器注册表
 > * 部署更新的容器映像
 
-在后续教程中，会将 Operations Management Suite 配置为监视 Kubernetes 群集。
+在后续教程中，会将 Log Analytics 配置为监视 Kubernetes 群集。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -89,7 +89,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-使用 [docker push][docker-push] 将映像上传到注册表。 将 `<acrLoginServer>` 替换为 Azure 容器注册表的登录服务器名称。
+使用 [docker push][docker-push] 将映像上传到注册表。 将 `<acrLoginServer>` 替换为 Azure 容器注册表的登录服务器名称。 如果在推送到 ACR 注册表时遇到问题，请确保已运行 [az acr login][az-acr-login] 命令。
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -164,7 +164,7 @@ kubectl get service azure-vote-front
 > * 将容器映像推送到 Azure 容器注册表
 > * 部署更新的应用程序
 
-进入下一教程，了解如何使用 Operations Management Suite 监视 Kubernetes。
+转到下一篇教程，了解如何使用 Log Analytics 监视 Kubernetes。
 
 > [!div class="nextstepaction"]
 > [使用 Log Analytics 监视 Kubernetes][aks-tutorial-monitor]
@@ -179,3 +179,4 @@ kubectl get service azure-vote-front
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-monitor]: ./tutorial-kubernetes-monitor.md
+[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az_acr_login

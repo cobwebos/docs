@@ -1,85 +1,118 @@
 ---
-title: "通过 Azure 门户自定义 Azure 事件网格的事件 | Microsoft Docs"
-description: "使用 Azure 事件网格和 PowerShell 发布一个主题，然后订阅该事件。"
+title: 通过 Azure 门户自定义 Azure 事件网格的事件 | Microsoft Docs
+description: 使用 Azure 事件网格和 PowerShell 发布一个主题，然后订阅该事件。
 services: event-grid
-keywords: 
+keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 01/30/2018
+ms.date: 03/23/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: f37d496d43bb24c51d6e1c11b77d9ceba48b7b23
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f1185c0b2d5d320cd712642f422408348bee7a37
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>使用 Azure 门户和事件网格创建和路由自定义事件
 
-Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure 门户创建一个自定义主题，然后订阅该主题，再触发可查看结果的事件。 通常将事件发送到与该事件对应的终结点，例如 webhook 或 Azure Function。 但在本文中，为简便起见，请将事件发送到仅收集消息的 URL。 可从 [RequestBin](https://requestb.in/) 或 [Hookbin](https://hookbin.com/) 使用第三方工具创建此 URL。
-
->[!NOTE]
->RequestBin 和 Hookbin 并不适合在高吞吐量方案中使用。 在这里使用这些工具纯粹是为了演示。 如果一次推送多个事件，可能不会在工具中看到所有事件。
-
-完成后即可看到事件数据已发送到某个终结点。
-
-![事件数据](./media/custom-event-quickstart-portal/request-result.png)
+Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure 门户创建一个自定义主题，然后订阅该主题，再触发可查看结果的事件。 将事件发送到记录事件数据的 Azure 函数。 完成后，可以看到事件数据已发送到某个终结点并已记录。
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-resource-group"></a>创建资源组
-
-事件网格主题是 Azure 资源，必须放置在 Azure 资源组中。 该资源组是在其中部署和管理 Azure 资源的逻辑集合。
-
-1. 在左侧导航栏中，选择“资源组”。 然后选择“添加”。
-
-   ![创建资源组](./media/custom-event-quickstart-portal/create-resource-group.png)
-
-1. 将资源组名称设置为 gridResourceGroup，将位置设置为 westus2。 选择“创建”。
-
-   ![提供资源组值](./media/custom-event-quickstart-portal/provide-resource-group-values.png)
-
 ## <a name="create-a-custom-topic"></a>创建自定义主题
 
-主题提供用户定义的终结点，可向其发布事件。 
+事件网格主题提供用户定义的终结点，可向其发布事件。 
 
-1. 若要在资源组中创建一个主题，请选择“所有服务”，然后搜索“事件网格”。 从可用选项中选择“事件网格主题”。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-   ![创建事件网格主题](./media/custom-event-quickstart-portal/create-event-grid-topic.png)
+1. 若要创建自定义主题，请选择“创建资源”。 
 
-1. 选择“添加”。
+   ![创建资源](./media/custom-event-quickstart-portal/create-resource.png)
 
-   ![添加事件网格主题](./media/custom-event-quickstart-portal/add-topic.png)
+1. 搜索“事件网格主题”，然后在可用选项中选择它。
 
-1. 为主题提供一个名称。 主题名称必须唯一，因为它由 DNS 条目表示。 选择一个[支持的区域](overview.md)。 选择之前创建的资源组。 选择“创建”。
+   ![搜索事件网格主题](./media/custom-event-quickstart-portal/search-event-grid.png)
 
-   ![提供事件网格主题值](./media/custom-event-quickstart-portal/provide-topic-values.png)
+1. 选择**创建**。
 
-1. 创建主题后，选择“刷新”即可查看主题。
+   ![开始执行步骤](./media/custom-event-quickstart-portal/select-create.png)
 
-   ![查看事件网格主题](./media/custom-event-quickstart-portal/see-topic.png)
+1. 为自定义主题提供唯一名称。 主题名称必须唯一，因为它由 DNS 条目表示。 请不要使用图中所示的名称。 应创建自己的名称。 选择一个[支持的区域](overview.md)。 为资源组提供名称。 选择**创建**。
 
-## <a name="create-a-message-endpoint"></a>创建消息终结点
+   ![提供事件网格主题值](./media/custom-event-quickstart-portal/create-custom-topic.png)
 
-在订阅主题之前, 让我们创建事件消息的终结点。 与其编写代码来响应事件，不如创建一个终结点来收集消息，方便你查看。 RequestBin 和 Hookbin 是第三方工具，用于创建终结点和查看发送到其中的请求。 转到 [RequestBin](https://requestb.in/)，然后单击“创建 RequestBin”；或者转到 [Hookbin](https://hookbin.com/)，然后单击“新建终结点”。  复制 bin URL，因为在订阅主题时需要它。
+1. 创建自定义主题后，将会看到成功通知。
+
+   ![看到成功通知](./media/custom-event-quickstart-portal/success-notification.png)
+
+   如果部署失败，请找出错误的原因。 选择“部署失败”。
+
+   ![选择“部署失败”](./media/custom-event-quickstart-portal/select-failed.png)
+
+   选择错误消息。
+
+   ![选择“部署失败”](./media/custom-event-quickstart-portal/failed-details.png)
+
+   下图显示了由于自定义主题名称已失败的部署。 如果看到此错误，请使用不同的名称重试部署。
+
+   ![名称冲突](./media/custom-event-quickstart-portal/name-conflict.png)
+
+## <a name="create-an-azure-function"></a>创建 Azure 函数
+
+在订阅主题之前, 让我们创建事件消息的终结点。 在本文中，我们使用 Azure Functions 为终结点创建函数应用。
+
+1. 若要创建函数，请选择“创建资源”。
+
+   ![创建资源](./media/custom-event-quickstart-portal/create-resource-small.png)
+
+1. 选择“计算”和“函数应用”。
+
+   ![创建函数](./media/custom-event-quickstart-portal/create-function.png)
+
+1. 为 Azure 函数提供唯一名称。 请不要使用图中所示的名称。 选择在本文中创建的资源组。 对于托管计划，请使用“消耗计划”。 使用建议的新存储帐户。 提供值后，选择“创建”。
+
+   ![提供函数值](./media/custom-event-quickstart-portal/provide-function-values.png)
+
+1. 部署完成后，选择“转到资源”。
+
+   ![转到资源](./media/custom-event-quickstart-portal/go-to-resource.png)
+
+1. 在“函数”旁边，选择 **+**。
+
+   ![添加函数](./media/custom-event-quickstart-portal/add-function.png)
+
+1. 在可用的选项中，选择“自定义函数”。
+
+   ![自定义函数](./media/custom-event-quickstart-portal/select-custom-function.png)
+
+1. 向下滚动，直到出现“事件网格触发器”。 选择“C#”。
+
+   ![选择事件网格触发器](./media/custom-event-quickstart-portal/select-event-grid-trigger.png)
+
+1. 接受默认值，选择“创建”。
+
+   ![新建函数](./media/custom-event-quickstart-portal/new-function.png)
+
+现在，创建的函数可以接收事件。
 
 ## <a name="subscribe-to-a-topic"></a>订阅主题
 
-订阅主题是为了告知事件网格要跟踪哪些事件。 
+订阅主题，以告知事件网格要跟踪哪些事件，以及要将事件发送到何处。
 
-1. 若要创建事件网格订阅，请再次选择“所有服务”并搜索“事件网格”。 从可用选项中选择“事件网格订阅”。
+1. 在 Azure 函数中，选择“添加事件网格订阅”。
 
-   ![创建事件网格订阅](./media/custom-event-quickstart-portal/create-subscription.png)
+   ![添加事件网格订阅](./media/custom-event-quickstart-portal/add-event-grid-subscription.png)
 
-1. 选择“+ 事件订阅”。
+1. 提供订阅的值。 选择“事件网格主题”作为主题类型。 对于订阅和资源组，请选择在其中创建了自定义主题的订阅和资源组。 例如，选择自定义主题的名称。 订阅服务器终结点中已预填充函数的 URL。
 
-   ![添加事件网格订阅](./media/custom-event-quickstart-portal/add-subscription.png)
+   ![输入订阅值](./media/custom-event-quickstart-portal/provide-subscription-values.png)
 
-1. 提供事件订阅的唯一名称。 对于主题类型，请选择“事件网格主题”。 对于实例，请选择创建的自定义主题。 提供来自 RequestBin 或 Hookbin 的 URL 作为事件通知的终结点。 提供值以后，选择“创建”。
+1. 在触发事件之前，请打开函数的日志，以便在发送事件数据时可以查看这些数据。 在 Azure 函数的底部，选择“日志”。
 
-   ![提供事件网格订阅值](./media/custom-event-quickstart-portal/provide-subscription-values.png)
+   ![选择日志](./media/custom-event-quickstart-portal/select-logs.png)
 
-现在，让我们触发一个事件，看事件网格如何将消息分发到终结点。 本文为简便起见，使用 Cloud Shell 将示例事件数据发送到主题。 通常情况下，应用程序或 Azure 服务会发送事件数据。
+现在，让我们触发一个事件，看事件网格如何将消息分发到终结点。 本文为简便起见，使用 Cloud Shell 将示例事件数据发送到自定义主题。 通常情况下，应用程序或 Azure 服务会发送事件数据。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -88,8 +121,8 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 首先，让我们获取主题的 URL 和密钥。 使用你的主题名称来替换 `<topic_name>`。
 
 ```azurecli-interactive
-endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query "endpoint" --output tsv)
-key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --query "key1" --output tsv)
+endpoint=$(az eventgrid topic show --name <topic_name> -g myResourceGroup --query "endpoint" --output tsv)
+key=$(az eventgrid topic key list --name <topic_name> -g myResourceGroup --query "key1" --output tsv)
 ```
 
 以下示例获取示例事件数据：
@@ -98,41 +131,27 @@ key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --que
 body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
 ```
 
-如果 `echo "$body"`，则可看到完整的事件。 JSON 的 `data` 元素是事件的有效负载。 可以将任何格式正确的 JSON 置于此字段中。 也可将主题字段用于高级路由和筛选。
+若要查看完整事件，请使用 `echo "$body"`。 JSON 的 `data` 元素是事件的有效负载。 可以将任何格式正确的 JSON 置于此字段中。 也可将主题字段用于高级路由和筛选。
 
-CURL 是执行 HTTP 请求的实用工具。 本文使用 CURL 向主题发送事件。 
+CURL 是发送 HTTP 请求的实用工具。 本文使用 CURL 向主题发送自定义事件。 
 
 ```azurecli-interactive
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-你已经触发事件，而事件网格则已将消息发送到你在订阅时配置的终结点。 浏览到此前创建的终结点 URL。 或者，在打开的浏览器中单击“刷新”。 此时会看到刚发送的事件。
+现已触发事件，并且事件网格已将消息发送到订阅时配置的终结点。 请在日志中查看事件数据。
 
-```json
-[{
-  "id": "1807",
-  "eventType": "recordInserted",
-  "subject": "myapp/vehicles/motorcycles",
-  "eventTime": "2017-08-10T21:03:07+00:00",
-  "data": {
-    "make": "Ducati",
-    "model": "Monster"
-  },
-  "dataVersion": "1.0",
-  "metadataVersion": "1",
-  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/{topic}"
-}]
-```
+![查看日志](./media/custom-event-quickstart-portal/view-log-entry.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用此事件，请勿清除本文中创建的资源。 如果不打算继续学习，请删除本文中创建的资源。
+如果打算继续处理此事件，请不要清除本文中创建的资源。 否则，请删除本文中创建的资源。
 
 选择资源组，然后选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何创建主题和事件订阅以后，即可进一步学习事件网格的功能：
+了解如何创建自定义主题和事件订阅后，请详细了解事件网格的功能：
 
 - [关于事件网格](overview.md)
 - [将 Blob 存储事件路由到自定义 Web 终结点](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)

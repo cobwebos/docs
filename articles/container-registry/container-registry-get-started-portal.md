@@ -1,6 +1,6 @@
 ---
-title: "快速入门 - 使用 Azure 门户在 Azure 中创建专用 Docker 注册表"
-description: "快速了解如何使用 Azure 门户创建专用 Docker 容器注册表。"
+title: 快速入门 - 使用 Azure 门户在 Azure 中创建专用 Docker 注册表
+description: 快速了解如何使用 Azure 门户创建专用 Docker 容器注册表。
 services: container-registry
 author: mmacy
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: db112f7f8f486093509a86f9781c30133925c25f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7ea0ae9c0c071a08c9ff99587cd8c5dc8034fe69
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="create-a-container-registry-using-the-azure-portal"></a>使用 Azure 门户创建容器注册表
+# <a name="quickstart-create-a-container-registry-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建容器注册表
 
 Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中存储和管理专用 Docker 容器映像。 在本快速入门中，请通过 Azure 门户创建一个容器注册表，将容器映像推送到注册表中，并最终将容器从注册表部署到 Azure 容器实例 (ACI) 中。
 
@@ -23,7 +23,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 ( https://portal.azure.com )。
+通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure 容器服务教程 - 缩放应用程序"
-description: "Azure 容器服务教程 - 缩放应用程序"
+title: Azure 容器服务教程 - 缩放应用程序
+description: Azure 容器服务教程 - 缩放应用程序
 services: container-service
 author: dlepow
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 36c5586f79cf127ec069fd3c6ef95dd073fdbdb6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ea64f9c52dc89dc8eb75a39afbb087a5127505f1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>缩放 Kubernetes Pod 和 Kubernetes 基础结构
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/01/2018
 > * 配置运行应用前端的自动缩放 Pod
 > * 缩放 Kubernetes Azure 代理节点
 
-在后续教程中，将更新 Azure 投票应用程序，并将 Operations Management Suite 配置为监视 Kubernetes 群集。
+在后续教程中，将会更新 Azure 投票应用程序，并将 Log Analytics 配置为监视 Kubernetes 群集。
 
 ## <a name="before-you-begin"></a>开始之前
 

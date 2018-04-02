@@ -9,11 +9,11 @@ ms.date: 3/14/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 9f7d32d3d1208b6fe6075f7dacdd6d350aee03e2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 45c5ccd0f891a5592eee7400de108c5097f75286
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-the-azure-rm-powershell-module"></a>快速入门：使用 Azure RM PowerShell 模块创建策略分配以识别不合规资源
 
@@ -48,7 +48,7 @@ New-AzureRMPolicyAssignment -Name Audit Virtual Machines without Managed Disks A
 - **名称** - 策略分配的显示名称。 本例使用了“审核不带托管磁盘分配的虚拟机”。
 - **定义** - 策略定义，用作创建分配的依据。 在本例中，此值为策略定义“审核不带托管磁盘的虚拟机”。
 - **范围** - 范围确定在其中实施策略分配的资源或资源组。 它可以从订阅延伸至资源组。 请务必将 &lt;scope&gt; 替换为资源组的名称。
-- **SKU** – 此命令创建使用标准层的策略分配。 使用标准层可以实现大规模管理、符合性评估和补救。 标准层目前是免费的。 标准层将来会收费。 价格发生变化时，[Azure 策略定价](https://azure.microsoft.com/pricing/details/azure-policy)中会发出通告并提供更多详细信息。
+- **SKU** – 此命令创建使用标准层的策略分配。 使用标准层可以实现大规模管理、符合性评估和补救。 有关定价层的其他详细信息，请参阅 [Azure 策略定价](https://azure.microsoft.com/pricing/details/azure-policy)。
 
 
 你现已准备好识别不合规的资源，了解环境的符合性状态。

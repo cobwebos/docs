@@ -1,12 +1,12 @@
 ---
-title: "在 Windows 中装载 Azure 文件共享并对其进行访问 | Microsoft Docs"
-description: "在 Windows 中装载 Azure 文件共享并对其进行访问。"
+title: 在 Windows 中装载 Azure 文件共享并对其进行访问 | Microsoft Docs
+description: 在 Windows 中装载 Azure 文件共享并对其进行访问。
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 5134fab447f1d1842369aeda4ebc1948a5d78262
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 5d6d81678d1b3c63b52b34e79979d06fdc981ad0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>在 Windows 中装载 Azure 文件共享并对其进行访问
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以在 Windows 和 Windows Server 中装载 Azure 文件共享。 本文介绍了三种在 Windows 中装载 Azure 文件共享的不同方式：使用文件资源管理器 UI、通过 PowerShell，以及通过命令提示符。 
@@ -50,6 +50,31 @@ ms.lasthandoff: 10/21/2017
 * 存储帐户密钥：需提供主要（或辅助）存储密钥才能装载 Azure 文件共享。 目前不支持使用 SAS 密钥进行装载。
 
 * **确保端口 445 处于打开状态**：Azure 文件使用 SMB 协议。 SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。
+
+## <a name="persisting-connections-across-reboots"></a>重新启动后保持连接
+### <a name="cmdkey"></a>CmdKey
+建立持久连接的最简便方法是使用“CmdKey”命令行实用工具在 Windows 中保存存储帐户凭据。 以下示例命令行可在 VM 中保存存储帐户凭据：
+```
+C:\>cmdkey /add:<yourstorageaccountname>.file.core.windows.net /user:<domainname>\<yourstorageaccountname> /pass:<YourStorageAccountKeyWhichEndsIn==>
+```
+> [!Note]
+> 此处的域名是“AZURE”。
+
+CmdKey 还允许列出它存储的凭据：
+
+```
+C:\>cmdkey /list
+```
+输出如下所示：
+
+```
+Currently stored credentials:
+
+Target: Domain:target=<yourstorageaccountname>.file.core.windows.net
+Type: Domain Password
+User: AZURE\<yourstorageaccountname>
+```
+持久保存凭据后，在连接到共享时不再需要提供这些凭据。 无需指定任何凭据即可建立连接。
 
 ## <a name="mount-the-azure-file-share-with-file-explorer"></a>使用文件资源管理器装载 Azure 文件共享
 > [!Note]  

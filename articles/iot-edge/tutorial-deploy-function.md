@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure IoT Edge 部署 Azure Functions | Microsoft 文档"
-description: "将 Azure Functions 作为一个模块部署到 Edge 设备"
+title: 使用 Azure IoT Edge 部署 Azure Functions | Microsoft 文档
+description: 将 Azure Functions 作为一个模块部署到 Edge 设备
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: v-jamebr
@@ -10,11 +10,11 @@ ms.date: 11/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1dfe46d307a076ae02362c4bba292602001ed915
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: a43ae8f28fc32b61fb5db985ffae98f093293798
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>将 Azure Functions 作为 IoT Edge 模块进行部署 - 预览版
 可以使用 Azure Functions 部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程逐步演示了创建和部署 Azure Functions 以筛选 IoT Edge 模拟设备（该设备是 [Windows][lnk-tutorial1-win] 或 [Linux][lnk-tutorial1-lin] 教程“在模拟设备上部署 Azure IoT Edge”部分中创建的）上的传感器数据的过程。 本教程介绍如何执行下列操作：     
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/09/2017
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” > “容器” > “Azure 容器注册表”。
 2. 为注册表提供一个名称，选择一个订阅，选择一个资源组，然后将 SKU 设置为“基本”。 
-3. 选择“创建” 。
+3. 选择**创建**。
 4. 创建容器注册表以后，导航到其中，然后选择“访问键”。 
 5. 将“管理员用户”切换到“启用”。
 6. 复制“登录服务器”、“用户名”和“密码”的值。 本教程后面会用到这些值。 
@@ -53,7 +53,7 @@ ms.lasthandoff: 12/09/2017
 以下步骤将介绍如何使用 Visual Studio Code 和 Azure IoT Edge 扩展来创建 IoT Edge 函数。
 1. 打开 Visual Studio Code。
 2. 要打开 VS Code 集成终端，请选择“视图” > “集成终端”。
-3. 要在 dotnet 中安装（或更新）AzureIoTEdgeFunction 模板，请在集成终端中运行以下命令：
+3. 要在 dotnet 中安装（或更新）**AzureIoTEdgeFunction** 模板，请在集成终端中运行以下命令：
 
     ```cmd/sh
     dotnet new -i Microsoft.Azure.IoT.Edge.Function
@@ -66,7 +66,7 @@ ms.lasthandoff: 12/09/2017
 
 3. 选择“文件” > “打开文件夹”，然后浏览到 FilterFunction 文件夹并在 VS Code 中打开项目。
 4. 在 VS Code 资源管理器中，展开 EdgeHubTrigger-Csharp 文件夹，然后打开 run.csx 文件。
-5. 将文件的内容替换为以下代码：
+5. 将此文件的内容替换为以下代码：
 
    ```csharp
    #r "Microsoft.Azure.Devices.Client"
@@ -132,7 +132,7 @@ ms.lasthandoff: 12/09/2017
 1. 生成 Docker 映像。
     1. 在 VS Code 资源管理器中展开 **Docker** 文件夹。 然后展开适用于所用容器平台的文件夹（linux-x64 或 windows-nano）。 
     2. 右键单击“Dockerfile”文件，然后单击“生成 IoT Edge 模块 Docker 映像”。 
-    3. 导航到“FilterFunction”项目文件夹，然后单击“选择文件夹作为 EXE_DIR”。 
+    3. 导航到 **FilterFunction** 项目文件夹，然后单击“选择文件夹作为 EXE_DIR”。 
     4. 在 VS Code 窗口顶部弹出的文本框中，输入映像名称。 例如：`<your container registry address>/filterfunction:latest`。 容器注册表地址与从注册表复制的登录服务器相同。 它应采用 `<your container registry name>.azurecr.io` 格式。
  
 4. 登录到 Docker。 在集成终端中，输入以下命令： 
@@ -141,7 +141,7 @@ ms.lasthandoff: 12/09/2017
    docker login -u <username> -p <password> <Login server>
    ```
         
-   要查找要在此命令中使用的用户名、密码和登录服务器，请转到 [Azure 门户] (https://portal.azure.com)。 在“所有资源”中，单击 Azure 容器注册表的磁贴以打开其属性，然后单击“访问密钥”。 复制“用户名”、“密码”和“登录服务器”字段中的值。 
+   若要查找在此命令中使用的用户名、密码和登录服务器，请转到 [Azure 门户] (https://portal.azure.com)。 在“所有资源”中，单击 Azure 容器注册表的磁贴以打开其属性，然后单击“访问密钥”。 复制“用户名”、“密码”和“登录服务器”字段中的值。 
 
 3. 将映像推送到 Docker 存储库。 选择“视图” > “命令面板”，然后搜索“Edge: 推送 IoT Edge 模块 Docker 映像”。
 4. 在弹出的文本框中，输入在步骤 1.d 中使用的同一映像名称。
@@ -174,9 +174,9 @@ ms.lasthandoff: 12/09/2017
 1. 添加“filterFunction”模块。
     1. 再次选择“添加 IoT Edge 模块”。
     2. 在“名称”字段中，输入 `filterFunction`。
-    3. 在“映像”字段中，输入映像地址；例如 `<docker registry address>/filterfunction:latest`。
-    74. 单击“保存” 。
-2. 单击“下一步”。
+    3. 在“映像 URI”字段中，输入映像地址；例如 `<your container registry address>/filtermodule:0.0.1-amd64`。 可从上一节中找到完整映像地址。
+    74. 单击“ **保存**”。
+2. 单击“资源组名称” 的 Azure 数据工厂。
 3. 在“指定路由”步骤中，将以下 JSON 复制到文本框。 第一个路由会通过“input1”终结点将消息从温度传感器传输到筛选器模块。 第二个路由会将消息从筛选器模块传输到 IoT 中心。 在此路由中，`$upstream` 是特殊目的地，它将告诉 Edge 中心将消息发送到 IoT 中心。 
 
     ```json
@@ -188,7 +188,7 @@ ms.lasthandoff: 12/09/2017
     }
     ```
 
-4. 单击“下一步”。
+4. 单击“资源组名称” 的 Azure 数据工厂。
 5. 在“审阅模板”步骤中，单击“提交”。 
 6. 返回到“IoT Edge 设备详细信息”页，并单击“刷新”。 应看到新的 filterfunction 模块与 tempSensor 模块和 IoT Edge 运行时在同时运行。 
 

@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure AD Connect Health 进行同步 | Microsoft 文档"
-description: "本页与 Azure AD Connect Health 相关，介绍如何监视 Azure AD Connect 同步。"
+title: 使用 Azure AD Connect Health 进行同步 | Microsoft 文档
+description: 本页与 Azure AD Connect Health 相关，介绍如何监视 Azure AD Connect 同步。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
@@ -14,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 821d4bd7e6b526ad826caf005456edf8235291b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cff8be88e23d57545a9926df366289c6ba264886
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 Azure AD Connect 同步
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect (Sync)。  有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅 [在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)。 此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)。
@@ -83,11 +83,12 @@ ms.lasthandoff: 12/11/2017
 | 重复属性 |当 Azure AD Connect 在 Azure AD 中尝试创建或更新对象时出错，因为这些对象具有一个或多个属性的重复值，但这些值在 proxyAddresses、UserPrincipalName 等租户中必须唯一。 |
 | 数据不匹配 |当软匹配无法匹配导致同步错误的对象时出错。 |
 | 数据验证失败 |由于数据无效（例如，UserPrincipalName 等关键属性中包含不受支持的字符，写入 Azure AD 之前使验证失败的格式错误）而出错。 |
+| 联盟域更改 | 帐户使用不同联合域时出现的错误。 |
 | 属性过大 |由于一个或多个属性大于允许的大小、长度或计数而出错。 |
 | 其他 |不适合上述类别的所有其他错误。 我们会根据反馈将此类别细分为若干子类别。 |
 
 ![同步错误报告摘要](./media/active-directory-aadconnect-health-sync/errorreport01.png)
-![同步错误报告类别](./media/active-directory-aadconnect-health-sync/errorreport02.png)
+![同步错误报告类别](./media/active-directory-aadconnect-health-sync/SyncErrorByTypes.PNG)
 
 ### <a name="list-of-objects-with-error-per-category"></a>按类别列出出错的对象
 深入到每个类别可以查看该类别中出错的对象列表。

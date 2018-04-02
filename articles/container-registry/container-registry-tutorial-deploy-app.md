@@ -1,6 +1,6 @@
 ---
-title: "Azure 容器注册表教程 - 从 Azure 容器注册表部署 Web 应用"
-description: "使用异地复制的 Azure 容器注册表中的容器映像部署基于 Linux 的 Web 应用。 由三个部分构成的教程系列的第二部分。"
+title: Azure 容器注册表教程 - 从 Azure 容器注册表部署 Web 应用
+description: 使用异地复制的 Azure 容器注册表中的容器映像部署基于 Linux 的 Web 应用。 由三个部分构成的教程系列的第二部分。
 services: container-registry
 author: mmacy
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: d775a17cb8069a7521788d850d7d52b92cc67526
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 51aa3c6fc56e974fc1729a1d2fe35c889adf35e2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="deploy-web-app-from-azure-container-registry"></a>从 Azure 容器注册表部署 Web 应用
+# <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>快速入门：从 Azure 容器注册表部署 Web 应用
 
 本文是由三个部分构成的教程系列的第二部分。 在[第一部分](container-registry-tutorial-prepare-registry.md)中，已创建一个专用的异地复制容器注册表，已从源生成容器映像并将其推送到该注册表。 本文将容器部署到位于两个不同 Azure 区域的两个 Web 应用实例中，以利用异地复制注册表的“紧靠网络”特点。
 

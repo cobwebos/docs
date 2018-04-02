@@ -1,24 +1,24 @@
 ---
-title: "Azure Data Lake Store 中的加密 | Microsoft Docs"
-description: "在 Azure Data Lake Store 中加密可以保护数据、实施企业安全策略以及满足合规性要求。 本文概述了设计，并讨论了实施过程中的某些技术方面。"
+title: Azure Data Lake Store 中的加密 | Microsoft Docs
+description: 在 Azure Data Lake Store 中加密可以保护数据、实施企业安全策略以及满足合规性要求。 本文概述了设计，并讨论了实施过程中的某些技术方面。
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: esung22
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/31/2018
+ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: 4df0ce3d705361f20fa003929fed6a019f8b2f5e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 53d5f413f58cea7bc8eab081d46eff2ab83e7ecb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Azure Data Lake Store 中的数据加密
 
@@ -106,7 +106,7 @@ Data Lake Store 提供两种管理主加密密钥 (MEK) 的模式。 现在，�
 4.  将加密的数据块存储在永久性存储上。
 
 > [!NOTE] 
-> 出于性能原因，会将明文形式的 DEK 短时缓存在内存中，操作完毕会立即将其清除。 在永久性介质上，该密钥始终由 MEK 进行加密存储。
+> 不管是在持久性媒体还是内存缓存中，DEK 始终由 MEK 进行存储加密。
 
 ## <a name="key-rotation"></a>密钥轮换
 

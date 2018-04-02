@@ -1,11 +1,10 @@
 ---
-title: "比较 Azure 数据工厂第 1 版和第 2 版 | Microsoft Docs"
-description: "本文对 Azure 数据工厂 V1 和 Azure 数据工厂 V2 进行了比较。"
+title: 比较 Azure 数据工厂第 1 版和第 2 版 | Microsoft Docs
+description: 本文对 Azure 数据工厂 V1 和 Azure 数据工厂 V2 进行了比较。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: kromerm
-manager: jhubbard
-editor: spelluru
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +12,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/24/2018
 ms.author: makromer
-ms.openlocfilehash: 673bc4e0d1609e445e3d18e7cf516ad532be4bc2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9aed1e903b5af3e5bcf53987ba80c1dcdb06f202
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>比较 Azure 数据工厂 V1 和 V2
 本文比较了 Azure 数据工厂的 V1 和 V2。 有关 V1 的简介，请参阅 [Azure 数据工厂简介](v1/data-factory-introduction.md)。 有关 V2 的简介，请参阅[数据工厂（V2 - 预览）简介](introduction.md)。
@@ -112,7 +111,7 @@ V2 支持创建按需 Azure HDInsight Spark 群集。 若要创建按需 Spark �
 
 在 V2 自定义活动中，无需实现 .NET 接口。 可以直接运行命令、脚本和自己的已编译为可执行文件的自定义代码。 
 
-有关详细信息，请参阅 [V1 和 V2 中自定义活动的区别](transform-data-using-dotnet-custom-activity.md#difference-between-custom-activity-in-azure-data-factory-v2-and-custom-dotnet-activity-in-azure-data-factory-v1)。
+有关详细信息，请参阅 [V1 和 V2 中自定义活动的区别](transform-data-using-dotnet-custom-activity.md#compare-v2-v1)。
 
 ## <a name="sdks"></a>SDK
  数据工厂 V2 提供了更为丰富的一组 SDK，可以用来创作、管理和监视管道。
@@ -138,6 +137,13 @@ V2 支持创建按需 Azure HDInsight Spark 群集。 若要创建按需 Spark �
 | Python SDK | [是](quickstart-create-data-factory-python.md) | 否 |
 | 资源管理器模板 | [是](quickstart-create-data-factory-resource-manager-template.md) | [是](data-factory-build-your-first-pipeline-using-arm.md) | 
 
+## <a name="roles-and-permissions"></a>角色和权限
+
+创建和管理适用于 v2 数据工厂的子资源：
+
+-   无法使用版本 1 数据工厂参与者角色来创建和管理 v2 资源。
+-   在数据工厂资源中创建的标准 ARM 参与者角色足以用于创建和管理通过 PowerShell 或 SDK 部署的 v2 数据工厂的子资源。 但是，该角色无法用于创建和管理通过 Azure 门户或 ARM 模板部署的 v2 数据工厂的子资源。
+-   若要创建和管理通过 Azure 门户或 ARM 模板部署的 v2 数据工厂的子资源，必须成为资源组级别或订阅级别的“自动化作业操作员”角色的成员。 组织也可以根据[创建用于 Azure 基于角色的访问控制的自定义角色](../active-directory/role-based-access-control-custom-roles.md)中所述，在“操作”列表中创建包含“Microsoft.Resources/deployments/*”的自定义角色。
 
 ## <a name="monitoring-experience"></a>监视体验
 在 V2 中，也可通过 [Azure Monitor](monitor-using-azure-monitor.md) 来监视数据工厂。 新的 PowerShell cmdlet 支持对 [Integration Runtime](monitor-integration-runtime.md) 进行监视。 V1 和 V2 都支持通过可以从 Azure 门户启动的监视应用程序进行视觉监视。

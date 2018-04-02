@@ -1,26 +1,26 @@
 ---
-title: "Azure Cosmos DB 的 Visual Studio 连接服务"
-description: "可让开发人员轻松连接其 Azure Cosmos DB 帐户，并通过 Visual Studio 连接服务管理资源"
+title: Azure Cosmos DB 的 Visual Studio 连接服务
+description: 可让开发人员轻松连接其 Azure Cosmos DB 帐户，并通过 Visual Studio 连接服务管理资源
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: jejiang
 manager: DJ
 +tags: cosmos-db
 editor: Jenny Jiang
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: Azure Cosmos DB
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: jejiang
-ms.openlocfilehash: f63c20831a2700f1024507bef614a5a7cc87d00e
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 93be368d34f02e64d11abe9a04b11272ce18124d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cosmos-db-visual-studio-connected-service-preview"></a>Azure Cosmos DB：Visual Studio 连接服务（预览）
 
@@ -41,6 +41,8 @@ Visual Studio 连接服务可让开发人员轻松连接其 Azure Cosmos DB 帐�
     也可以从 [Visual Studio Marketplace](https://go.microsoft.com/fwlink/?linkid=858709) 安装 Azure Cosmos DB 连接服务。
 
     ![连接服务下载软件的屏幕截图 (.png)](./media/connected-service/connected-service-downloadbits.png) 
+
+下载 Azure Cosmos DB 连接服务扩展后，请关闭 Visual Studio 以安装该扩展。
 
 ## <a id="SetupVS"></a>设置 Visual Studio 解决方案
 1. 在计算机上打开 Visual Studio。

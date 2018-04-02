@@ -1,11 +1,12 @@
 ---
-title: "Azure 机器学习常见问题 (FAQ) | Microsoft 文档"
-description: "Azure 机器学习简介：包括用于简化型预测建模的云服务计费、功能和限制的常见问题。"
-keywords: "机器学习简介, 预测建模, 什么是机器学习"
+title: Azure 机器学习常见问题 (FAQ) | Microsoft 文档
+description: Azure 机器学习简介：包括用于简化型预测建模的云服务计费、功能和限制的常见问题。
+keywords: 机器学习简介, 预测建模, 什么是机器学习
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: paulettm
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.author: garye
-ms.openlocfilehash: b162d7534eff0d1f79808fc86bacf92dbfc2f84a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: ceec69ee822e118adfa3825620a31575109894ea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure 机器学习常见问题：计费、功能、限制和支持
 下面提供了一些有关 Azure 机器学习的常见问题 (FAQ) 和相应解答。Azure 机器学习是适合通过 Web 服务开发预测模型和操作解决方案的云服务。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -251,7 +251,7 @@ Azure 机器学习有两种类型的 Web 服务：
 
 **R 作业是否分散在节点之间？**
 
-没有。  
+不会。  
 
 **可以将多少数据用于训练？**
 

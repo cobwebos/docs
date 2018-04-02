@@ -1,131 +1,146 @@
 ---
-title: "Azure 容器实例教程 - 准备 Azure 容器注册表"
-description: "Azure 容器实例教程第 2 部分（共 3 部分）- 准备 Azure 容器注册表"
+title: Azure 容器实例教程 - 准备 Azure 容器注册表
+description: Azure 容器实例教程第 2 部分（共 3 部分）- 准备 Azure 容器注册表
 services: container-instances
-author: neilpeterson
+author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 01/02/2018
-ms.author: seanmck
+ms.date: 03/21/2018
+ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 94ecba44b8281460da4518c146aab814d2eaa850
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 6e5a6a64e6d7c53bb4ea84de646812c962469d4f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="deploy-and-use-azure-container-registry"></a>部署并使用 Azure 容器注册表
+# <a name="tutorial-deploy-and-use-azure-container-registry"></a>教程：部署和使用 Azure 容器注册表
 
-这是三部分教程的第二部分。 在[上一步](container-instances-tutorial-prepare-app.md)中，介绍了如何为采用 [Node.js][nodejs] 编写的简单 Web 应用程序创建容器映像。 在本教程中，会将此映像推送到 Azure 容器注册表。 若尚未创建容器映像，请返回[教程 1 - 创建容器映像](container-instances-tutorial-prepare-app.md)。
+这是三部分教程的第二部分。 本教程的[第一部分](container-instances-tutorial-prepare-app.md)为 Node.js Web 应用程序创建了 Docker 容器映像。 在本教程中，我们将此映像推送到 Azure 容器注册表。 如果尚未创建容器映像，请返回[教程 1 - 创建容器映像](container-instances-tutorial-prepare-app.md)。
 
-Azure 容器注册表是用于 Docker 容器映像的基于 Azure 的专用注册表。 本教程演示了如何部署 Azure 容器注册表实例，并向其推送容器映像。
-
-本文（本系列的第二部分）将介绍如何：
+Azure 容器注册表是你在 Azure 中的专用 Docker 注册表。 本教程在订阅中创建一个 Azure 容器注册表实例，然后将以前创建的容器映像推送到其中。 本文（本系列的第二部分）将介绍如何：
 
 > [!div class="checklist"]
-> * 部署 Azure 容器注册表实例
+> * 创建 Azure 容器注册表实例
 > * 为 Azure 容器注册表标记容器映像
 > * 将映像上传到注册表
 
-在下一篇文章（本系列的最后一篇教程）中，将介绍如何将容器从专用注册表部署到 Azure 容器实例。
+下一篇文章（本系列的最后一篇教程）介绍如何将容器从专用注册表部署到 Azure 容器实例。
 
 ## <a name="before-you-begin"></a>开始之前
 
-本教程要求运行 Azure CLI 2.0.23 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0][azure-cli-install]。
+[!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
-若要完成本教程，需要本地安装的 Docker 开发环境。 Docker 提供的包可在任何 [Mac][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
+## <a name="create-azure-container-registry"></a>创建 Azure 容器注册表
 
-Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。 若要完成本教程，必须在本地计算机安装 Azure CLI 和 Docker 开发环境。
+在创建容器注册表之前，需要创建一个资源组，以便将容器注册表部署到其中。 资源组是在其中部署和管理所有 Azure 资源的逻辑集合。
 
-## <a name="deploy-azure-container-registry"></a>部署 Azure 容器注册表
-
-在部署 Azure 容器注册表时，首先需要一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑集合。
-
-使用 [az group create][az-group-create] 命令创建资源组。 在此示例中，在“eastus”区域中创建了名为“myResourceGroup”的资源组。
+使用 [az group create][az-group-create] 命令创建资源组。 以下示例在 *eastus* 区域创建名为 *myResourceGroup* 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az acr create][az-acr-create] 命令创建 Azure 容器注册表。 容器注册表名称在 Azure 中必须唯一，并且必须包含 5-50 个字母数字字符。 将 `<acrName>` 替换为注册表的唯一名称：
+创建资源组后，使用 [az acr create][az-acr-create] 命令创建 Azure 容器注册表。 容器注册表名称在 Azure 中必须唯一，并且必须包含 5-50 个字母数字字符。 将 `<acrName>` 替换为注册表的唯一名称：
 
 ```azurecli
-az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
+az acr create --resource-group myResourceGroup --name <acrName> --sku Basic --admin-enabled true
 ```
 
-以创建名为 mycontainerregistry082 的 Azure 容器注册表为例：
+下面是名为 *mycontainerregistry082* 的新 Azure 容器注册表的示例输出（此处显示的内容已截断）：
 
-```azurecli
-az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic --admin-enabled true
+```console
+$ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic --admin-enabled true
+...
+{
+  "adminUserEnabled": true,
+  "creationDate": "2018-03-16T21:54:47.297875+00:00",
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/mycontainerregistry082",
+  "location": "eastus",
+  "loginServer": "mycontainerregistry082.azurecr.io",
+  "name": "mycontainerregistry082",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup",
+  "sku": {
+    "name": "Basic",
+    "tier": "Basic"
+  },
+  "status": null,
+  "storageAccount": null,
+  "tags": {},
+  "type": "Microsoft.ContainerRegistry/registries"
+}
 ```
 
-在本教程的其余部分，使用 `<acrName>` 作为所选容器注册表名称的占位符。
+本教程的余下部分使用 `<acrName>` 作为在此步骤中选择的容器注册表名称的占位符。
 
-## <a name="container-registry-login"></a>容器注册表登录
+## <a name="log-in-to-container-registry"></a>登录到容器注册表
 
-必须先登录到 Azure 容器注册表实例，才能向其推动映像。 使用 [az acr login][az-acr-login] 命令完成此操作。 必须提供创建容器注册表时所提供的唯一名称。
+必须先登录到 Azure 容器注册表实例，才能向其推动映像。 使用 [az acr login][az-acr-login] 命令完成此操作。 必须提供创建容器注册表时选择的唯一名称。
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
-该命令在完成后会返回消息 `Login Succeeded`。
+该命令在完成后返回 `Login Succeeded`：
+
+```console
+$ az acr login --name mycontainerregistry082
+Login Succeeded
+```
 
 ## <a name="tag-container-image"></a>标记容器映像
 
-若要从专用注册表部署容器映像，需使用注册表的 `loginServer` 名称标记该映像。
+若要将容器映像推送到 Azure 容器注册表等专用注册表，必须先使用注册表登录服务器的完整名称来标记该映像。
 
-若要查看当前映像的列表，请使用 [docker images][docker-images] 命令。
-
-```bash
-docker images
-```
-
-输出：
-
-```bash
-REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
-```
-
-若要获取 loginServer 名称，请运行 [az acr show][az-acr-show] 命令。 将 `<acrName>` 替换为容器注册表的名称。
+首先，请获取 Azure 容器注册表的完整登录服务器名称。 运行以下 [az acr show][az-acr-show] 命令，并将 `<acrName>` 替换为刚刚创建的注册表名称：
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-示例输出：
+例如，如果注册表名为 *mycontainerregistry082*：
 
-```
+```console
+$ az acr show --name mycontainerregistry082 --query loginServer --output table
 Result
 ------------------------
 mycontainerregistry082.azurecr.io
 ```
 
-使用容器注册表的 loginServer 标记 aci-tutorial-app 映像。 另外，将 `:v1` 添加至映像名称的末端。 此标记代表映像版本号。 将 `<acrLoginServer>` 替换为刚才执行的 [az acr show][az-acr-show] 命令的结果。
-
-```bash
-docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
-```
-
-标记后即可运行 `docker images` 验证操作。
+现在，使用 [docker images][docker-images] 命令显示本地映像的列表：
 
 ```bash
 docker images
 ```
 
-输出：
+此时应会显示在[前一篇教程](container-instances-tutorial-prepare-app.md)中生成的 *aci-tutorial-app* 映像，以及计算机上包含的其他所有映像：
+
+```console
+$ docker images
+REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
+aci-tutorial-app    latest    5c745774dfa9    39 minutes ago    68.1 MB
+```
+
+使用容器注册表的 loginServer 标记 aci-tutorial-app 映像。 此外，请将 `:v1` 标记添加到映像名称的末尾，指示映像版本号。 将 `<acrLoginServer>` 替换为前面执行的 [az acr show][az-acr-show] 命令的结果。
 
 ```bash
-REPOSITORY                                                TAG                 IMAGE ID            CREATED             SIZE
-aci-tutorial-app                                          latest              5c745774dfa9        39 seconds ago      68.1 MB
-mycontainerregistry082.azurecr.io/aci-tutorial-app        v1                  a9dace4e1a17        7 minutes ago       68.1 MB
+docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
+```
+
+再次运行 `docker images` 以验证标记操作：
+
+```console
+$ docker images
+REPOSITORY                                            TAG       IMAGE ID        CREATED           SIZE
+aci-tutorial-app                                      latest    5c745774dfa9    39 minutes ago    68.1 MB
+mycontainerregistry082.azurecr.io/aci-tutorial-app    v1        5c745774dfa9    7 minutes ago     68.1 MB
 ```
 
 ## <a name="push-image-to-azure-container-registry"></a>向 Azure 容器注册表推送映像
 
-使用 [docker push][docker-push] 命令将 aci-tutorial-app 映像推送到注册表。 将 `<acrLoginServer>` 替换为在先前步骤中获得的完整登录服务器名称。
+使用专用注册表的完整登录服务器名称标记 *aci-tutorial-app* 映像后，可以使用 [docker push][docker-push] 将其推送到注册表。 将 `<acrLoginServer>` 替换为在前面步骤中获取的完整登录服务器名称。
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
@@ -133,7 +148,8 @@ docker push <acrLoginServer>/aci-tutorial-app:v1
 
 `push` 操作应需要几秒钟到几分钟的时间（具体取决于 Internet 连接），输出应如下所示：
 
-```bash
+```console
+$ docker push mycontainerregistry082.azurecr.io/aci-tutorial-app:v1
 The push refers to a repository [mycontainerregistry082.azurecr.io/aci-tutorial-app]
 3db9cac20d49: Pushed
 13f653351004: Pushed
@@ -146,29 +162,31 @@ v1: digest: sha256:ed67fff971da47175856505585dcd92d1270c3b37543e8afd46014d328f05
 
 ## <a name="list-images-in-azure-container-registry"></a>列出 Azure 容器注册表中的映像
 
-若要返回已推送到 Azure 容器注册表的映像列表，请使用 [az acr repository list][az-acr-repository-list] 命令。 使用容器注册表名称更新命令。
+若要验证刚刚推送的映像是否确实在 Azure 容器注册表中，请使用 [az acr repository list][az-acr-repository-list] 命令列出注册表中的映像。 将 `<acrName>` 替换为容器注册表的名称。
 
 ```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
-输出：
+例如：
 
-```azurecli
+```console
+$ az acr repository list --name mycontainerregistry082 --output table
 Result
 ----------------
 aci-tutorial-app
 ```
 
-然后，若要查看特定映像的标记，请使用 [az acr repository show-tags][az-acr-repository-show-tags] 命令。
+若要查看特定映像的标记，请使用 [az acr repository show-tags][az-acr-repository-show-tags] 命令。
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table
 ```
 
-输出：
+应该会看到与下面类似的输出：
 
-```azurecli
+```console
+$ az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
 Result
 --------
 v1
@@ -176,17 +194,17 @@ v1
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程中，准备了要与 Azure 容器实例配合使用的 Azure 容器注册表，并将容器映像推送到注册表。 已完成以下步骤：
+本教程中，我们准备了要用于 Azure 容器实例的 Azure 容器注册表，并将容器映像推送到了该注册表。 已完成以下步骤：
 
 > [!div class="checklist"]
 > * 部署 Azure 容器注册表实例
 > * 为 Azure 容器注册表标记容器映像
 > * 将映像上传到 Azure 容器注册表
 
-转到下一教程，了解如何使用 Azure 容器实例将容器部署到 Azure。
+请继续学习下一篇教程，了解如何使用 Azure 容器实例将容器部署到 Azure：
 
 > [!div class="nextstepaction"]
-> [将容器部署到 Azure 容器实例](./container-instances-tutorial-deploy-app.md)
+> [将容器部署到 Azure 容器实例](container-instances-tutorial-deploy-app.md)
 
 <!-- LINKS - External -->
 [docker-build]: https://docs.docker.com/engine/reference/commandline/build/

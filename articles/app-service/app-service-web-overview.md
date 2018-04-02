@@ -1,11 +1,11 @@
 ---
-title: "Web 应用概述 | Microsoft Docs"
-description: "了解 Azure 应用服务如何帮助用户开发和托管 Web 应用程序"
+title: Web 应用概述 | Microsoft Docs
+description: 了解 Azure 应用服务如何帮助用户开发和托管 Web 应用程序
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.service: app-service-web
 ms.workload: web
@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f8510bb6b412e9af8aad30ba32bc74206c22042f
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: e789d3c6e10399491eb055b850a590ae10aacd11
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="web-apps-overview"></a>Web 应用概述
 
@@ -29,17 +29,12 @@ Web 应用不仅可将 Microsoft Azure 的强大功能（例如安全性、负�
 
 使用应用服务时，需要支付 Azure 计算资源的使用费。 使用的计算资源量由运行 Web 应用的应用服务计划确定。 有关详细信息，请参阅 [Azure Web 应用中的应用服务计划](azure-web-sites-web-hosting-plans-in-depth-overview.md)。
 
-下面的 5 分钟视频介绍了 Azure 应用服务 Web 应用。
-
->[!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-App-Service-Web-Apps-with-Yochay-Kiriaty/player]
->
->
-
 ## <a name="why-use-web-apps"></a>为何使用 Web 应用？
+
 下面是应用服务 Web 应用的一些重要功能：
 
 * **多个语言和框架** - Web 应用针对 ASP.NET、ASP.NET Core、Java、Ruby、Node.js、PHP 或 Python 提供一流支持。 我们还能以后台服务的形式运行 [PowerShell 和其他脚本或可执行文件](web-sites-create-web-jobs.md)。
-* **DevOps 优化** - 使用 Visual Studio Team Services、GitHub、BitBucket、Docker 中心或 Azure 容器服务设置[持续集成和部署](app-service-continuous-deployment.md)。 通过 [测试和过渡环境](web-sites-staged-publishing.md)提升更新。 在 Web 应用中使用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 或[跨平台命令行接口 (CLI)](/cli/azure/install-azure-cli) 管理应用。
+* **DevOps 优化** - 使用 Visual Studio Team Services、GitHub、BitBucket、Docker 中心或 Azure 容器注册表设置[持续集成和部署](app-service-continuous-deployment.md)。 通过 [测试和过渡环境](web-sites-staged-publishing.md)提升更新。 在 Web 应用中使用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 或[跨平台命令行接口 (CLI)](/cli/azure/install-azure-cli) 管理应用。
 * **具有高可用性的全局缩放** - 以手动或自动方式进行[增大](web-sites-scale.md)或[扩大](../monitoring-and-diagnostics/insights-how-to-scale.md)。 在 Microsoft 全球数据中心基础结构中的任意位置托管应用，并且应用服务 [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) 承诺高可用性。
 * **与 SaaS 平台和本地数据建立连接** - 从适用于企业系统（例如 SAP）的 50 多个[连接器](../connectors/apis-list.md)、SaaS 服务（例如 Salesforce）以及 Internet 服务（例如 Facebook）中进行选择。 使用[混合连接](../biztalk-services/integration-hybrid-connection-overview.md)和 [Azure 虚拟网络](web-sites-integrate-with-vnet.md)访问本地数据。
 * **安全性和合规性** - 应用服务符合 [ISO、SOC 和 PCI](https://www.microsoft.com/TrustCenter/)的要求。 使用 [Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md) 或社交登录名（[Google](app-service-mobile-how-to-configure-google-authentication.md)、[Facebook](app-service-mobile-how-to-configure-facebook-authentication.md)、[Twitter](app-service-mobile-how-to-configure-twitter-authentication.md) 和 [Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)）对用户进行身份验证。 创建 [IP 地址限制](app-service-ip-restrictions.md)和[管理服务标识](app-service-managed-service-identity.md)。
@@ -71,4 +66,3 @@ Web 应用不仅可将 Microsoft Azure 的强大功能（例如安全性、负�
 
 > [!div class="nextstepaction"]
 > [HTML](app-service-web-get-started-html.md)
-

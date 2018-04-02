@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 门户创建数据工厂管道 | Microsoft Docs"
-description: "本教程分步说明了如何使用 Azure 门户创建带管道的数据工厂。 该管道通过复制活动将数据从 Azure Blob 存储复制到 SQL 数据库。"
+title: 使用 Azure 门户创建数据工厂管道 | Microsoft Docs
+description: 本教程分步说明了如何使用 Azure 门户创建带管道的数据工厂。 该管道通过复制活动将数据从 Azure Blob 存储复制到 SQL 数据库。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 116832175a4b7e4497c9005be7841cb56c1d235b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 34c78a114c1d106c400a94941aa113153383e206
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 SQL 数据库
 在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储复制到 SQL 数据库。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -106,7 +106,7 @@ ms.lasthandoff: 02/09/2018
 6. 在“版本”下选择“V2 (预览)”。
 7. 在“位置”下选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
 8. 选择“固定到仪表板”。 
-9. 选择“创建”。 
+9. 选择**创建**。 
 10. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴： 
 
     ![“部署数据工厂”磁贴](media/tutorial-copy-data-portal/deploying-data-factory.png)
@@ -303,7 +303,7 @@ ms.lasthandoff: 02/09/2018
     ![显示通知](./media/tutorial-copy-data-portal/show-notifications.png)
 
 ## <a name="configure-code-repository"></a>配置代码存储库
-可以将与数据工厂项目相关联的代码发布到 Visual Studio Team Services 代码存储库。 此步骤创建代码存储库。 
+可以将与数据工厂项目相关联的代码发布到 Visual Studio Team Services 代码存储库。 此步骤创建代码存储库。  若要详细了解使用 VSTS 集成进行可视化创作，请参阅 [使用 VSTS Git 集成进行创作](author-visually.md#author-with-vsts-git-integration)。
 
 如果不希望使用 Visual Studio Team Services 代码存储库，可跳过此步骤。 可以像前一步骤所做的那样，继续发布到数据工厂。 
 

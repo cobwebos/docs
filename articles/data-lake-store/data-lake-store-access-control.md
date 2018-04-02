@@ -1,8 +1,8 @@
 ---
-title: "Data Lake Store 中的访问控制概述 | Microsoft 文档"
-description: "了解 Azure Data Lake Store 中访问控制的工作原理"
+title: Data Lake Store 中的访问控制概述 | Microsoft 文档
+description: 了解 Azure Data Lake Store 中访问控制的工作原理
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: ec0d1fa9c422dbe4958c5d5f0b7a6e093aeb32da
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: a2e29fd6f2dbd4bd573b780a14bd09c0cd03395f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Azure Data Lake Store 中的访问控制
 
@@ -124,15 +124,15 @@ Azure Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又�
 
 ## <a name="viewing-permissions-in-the-azure-portal"></a>在 Azure 门户中查看权限
 
-在 Data Lake Store 帐户的“数据资源管理器”边栏选项卡中，单击“访问”查看文件或文件夹的 ACL。 单击“访问”查看 **mydatastore** 帐户下的 **catalog** 文件夹的 ACL。
+在 Data Lake Store 帐户的“数据资源管理器”边栏选项卡中，单击“访问”查看数据资源管理器中显示的文件或文件夹的 ACL。 单击“访问”查看 **mydatastore** 帐户下的 **catalog** 文件夹的 ACL。
 
 ![Data Lake Store ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
 
-此边栏选项卡的上半部分显示你拥有的权限的概述。 （在屏幕截图中，用户为 Bob。）下半部分显示访问权限。 接下来，在“访问”边栏选项卡中，单击“简单视图”查看更简单的视图。
+此边栏选项卡的顶部部分显示所有者权限。 （在屏幕截图中，所有者用户为 Bob。）其后显示分配的访问 ACL。 
 
 ![Data Lake Store ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
 
-单击“高级视图”查看更高级的视图，其中显示了“默认 ACL”、“掩码”和“超级用户”的概念。
+单击“高级视图”查看更高级视图，其中显示了“默认 ACL”、掩码和超级用户的说明。  在此边栏选项卡中，可以基于当前文件夹的权限以递归方式设置子文件和文件夹的访问 ACL 和默认 ACL。
 
 ![Data Lake Store ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
@@ -164,7 +164,7 @@ Azure Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又�
 * 更改所拥有文件的拥有组，前提是该拥有用户也是目标组的成员。
 
 > [!NOTE]
-> 拥有用户*无法*更改另一个所拥有文件的拥有用户。 只有超级用户可以更改文件或文件夹的拥有用户。
+> 所有者用户无法更改某个文件或文件夹的所有者用户。 只有超级用户可以更改文件或文件夹的拥有用户。
 >
 >
 
@@ -177,9 +177,14 @@ Azure Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又�
 * **案例 1**：根文件夹“/”。 此文件夹是创建 Data Lake Store 帐户时创建的。 在本例中，拥有组设置为创建帐户的用户。
 * **案例 2**（任何其他案例）：创建新项时，从父文件夹复制拥有组。
 
+否则，所有者组的行为类似于为其他用户/组分配的权限。
+
 拥有组可由以下用户更改：
 * 任何超级用户。
 * 拥有用户，前提是该拥有用户也是目标组的成员。
+
+> [!NOTE]
+> 所有者组无法更改某个文件或文件夹的 ACL。
 
 ## <a name="access-check-algorithm"></a>访问检查算法
 
@@ -209,7 +214,7 @@ Azure Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又�
 ![Data Lake Store ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-mask-view.png)
 
 > [!NOTE]
-> 对于新 Data Lake Store 帐户，根文件夹（“/”）的访问 ACL 和默认 ACL 的掩码默认为 RWX。
+> 对于新 Data Lake Store 帐户，根文件夹（“/”）的访问 ACL 的掩码默认为 RWX。
 >
 >
 
@@ -308,7 +313,7 @@ ACL 中的项存储为 GUID，它们对应于 Azure AD 中的用户。 API 将�
 
 ### <a name="does-data-lake-store-support-inheritance-of-acls"></a>Data Lake Store 是否支持 ACL 继承？
 
-不会。
+不支持。但是，可以使用默认 ACL 来设置父文件夹下新建的子文件和文件夹的 ACL。  
 
 ### <a name="what-is-the-difference-between-mask-and-umask"></a>掩码与 umask 之间有何差异？
 
@@ -317,7 +322,7 @@ ACL 中的项存储为 GUID，它们对应于 Azure AD 中的用户。 API 将�
 | 每个文件和文件夹都提供 **掩码** 属性。 | **umask** 是 Data Lake Store 帐户的属性。 因此，Data Lake Store 中只有一个 umask。    |
 | 文件的拥有用户或拥有组或超级用户都可以改变文件或文件夹的掩码属性。 | 任何用户（甚至超级用户）都无法修改 umask 属性。 它是一个无法更改的常量值。|
 | 在运行时执行访问检查算法时，将使用掩码属性来确定用户是否拥有对文件或文件夹执行操作的权限。 掩码的角色就是在执行访问检查时创建“有效权限”。 | 执行访问检查期间根本不使用 umask。 umask 用于确定文件夹新子项的访问 ACL。 |
-| 掩码是一个 3 位 RWX 值，在执行访问检查时应用到命名用户、命名组和拥有用户。| umask 是一个 9 位值，应用到新子级的拥有用户、拥有组和**其他**用户。|
+| 掩码是一个 3 位 RWX 值，在执行访问检查时应用到命名用户、所有者组和命名组。| umask 是一个 9 位值，应用到新子级的拥有用户、拥有组和**其他**用户。|
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>在哪里可以了解 POSIX 访问控制模型的详细信息？
 

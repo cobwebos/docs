@@ -1,22 +1,21 @@
 ---
-title: "体验启用了 Azure AD B2C 的桌面应用"
-description: "快速入门：尝试使用示例性的 ASP.NET 桌面应用，通过 Azure Active Directory B2C 进行用户登录。"
+title: 体验启用了 Azure AD B2C 的桌面应用
+description: 快速入门：尝试使用示例性的 ASP.NET 桌面应用，通过 Azure Active Directory B2C 进行用户登录。
 services: active-directory-b2c
-author: PatAltimore
+author: davidmu1
 manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 2/13/2018
-ms.author: patricka
-ms.openlocfilehash: 18c378f82255df3a999703bc319d551af4b2705c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.author: davidmu
+ms.openlocfilehash: 8726a5816623d42deb495aa062ef82f1f95b76b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-desktop-app"></a>快速入门：体验启用了 Azure AD B2C 的桌面应用
 
@@ -91,7 +90,7 @@ Azure Active Directory B2C 提供允许用户更新个人资料的功能。  示
 
 ## <a name="access-a-protected-web-api-resource"></a>访问受保护的 Web API 资源
 
-单击“调用 API”，向 Azure AD B2C 所保护的资源 https://fabrikamb2chello.azurewebsites.net/hello 提出请求。 
+单击“调用 API”，向 Azure AD B2C 所保护的资源 https://fabrikamb2chello.azurewebsites.net/hello 发出请求。 
 
 ![调用 API](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
 

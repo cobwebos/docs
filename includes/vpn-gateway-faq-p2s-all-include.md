@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 072c16a0e50a4922d44dd354b632f39b33d23cdd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/28/2018
+---
 ### <a name="supportedclientos"></a>点到站点连接可以用于哪些客户端操作系统？
 
 支持以下客户端操作系统：
@@ -10,8 +26,8 @@
 * Windows Server 2012 R2（仅 64 位）
 * Windows Server 2016（仅 64 位）
 * Windows 10
-* 适用于 Mac 的 OSX 版本 10.11 (El Capitan)
-* 适用于 Mac 的 macOS 版本 10.12 (Sierra)
+* Mac OS X 版本 10.11 (El Capitan)
+* Mac OS X 版本 10.12 (Sierra)
 
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以有多少 VPN 客户端终结点？
 

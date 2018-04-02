@@ -13,13 +13,13 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: e336546526c8ae5ee04dd9737f828685f8c4c009
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a5c3a0cdef488e4c4788a22976d78db72bdd55fc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB：使用 Java 和 Azure 门户创建图形数据库
 
@@ -62,7 +62,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     ---|---|---
     数据库 ID|sample-database|输入“sample-database”作为新数据库的名称。 数据库名称的长度必须为 1 到 255 个字符，不能包含 `/ \ # ?` 或尾随空格。
     图形 ID|sample-graph|输入“sample-graph”作为新集合的名称。 图形名称与数据库 ID 的字符要求相同。
-    存储容量|固定 (10 GB)|将值更改为“固定(10GB)”。 此值是数据库的存储容量。
+    存储容量|固定 (10 GB)|保留默认值为“固定 (10 GB)”。 此值是数据库的存储容量。
     Throughput|400 RU|将吞吐量更改为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。
 
 3. 填写表单后，请单击“确定”。
@@ -91,9 +91,11 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 这些代码段全部取自 C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted 文件夹中的 `Program.java` 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-information)。 
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-information)。
 
-* 将通过 `src/remote.yaml` 中的配置初始化 Gremlin `Client`。
+以代码片段全部摘自 C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted\Program.java 文件。
+
+* Gremlin `Client` 已从 C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\remote.yaml 文件中的配置初始化。
 
     ```java
     cluster = Cluster.build(new File("src/remote.yaml")).create();
@@ -123,7 +125,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     复制 URI 值的第一部分。
 
     ![在 Azure 门户的“密钥”页中，查看并复制访问密钥](./media/create-graph-java/keys.png)
-2. 打开 src/remote.yaml 文件，并将值粘贴到 `hosts: [$name$.graphs.azure.com]` 中的 `$name$`。
+2. 打开 src/remote.yaml 文件，并覆盖 `hosts: [$name$.graphs.azure.com]` 中的 `$name$` 粘贴唯一 ID 值。
 
     remote.yaml 的第 1 行现应如下所示 
 
@@ -148,6 +150,8 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
     to 
 
     `username: /dbs/sample-database/colls/sample-graph`
+
+    如果为示例数据库或图形使用了唯一名称，请相应地更新这些值。
 
 6. 保存 remote.yaml 文件。
 
@@ -194,7 +198,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
    ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
 
-4. 输入标签“人员”。
+4. 在标签框中，输入 *person*。
 
 5. 单击“添加属性”，添加下列所有属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
 
@@ -227,7 +231,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
     添加更多数据时，可以使用筛选器来限制结果。 默认情况下，数据资源管理器使用 `g.V()` 检索图形中的所有顶点。 可以更改为其他[图形查询](tutorial-query-graph.md)（如 `g.V().count()`），以 JSON 格式返回图形中所有 顶点的计数。 如果更改了筛选器，请将筛选器更改回 `g.V()`，并单击“应用筛选器”，再次显示所有结果。
 
-12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后单击右下侧“目标”旁边的编辑按钮。 可能需要扩大窗口才能看到“属性”区域。
+12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后单击右下侧“目标”旁边的“更改图形中某个顶点的目标”。![](./media/create-graph-java/edit-pencil-button.png) 可能需要扩大窗口才能看到该按钮。
 
    ![更改图形中某个顶点的目标。](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 

@@ -1,62 +1,66 @@
 ---
-title: "Azure 容器实例教程 - 部署应用"
-description: "Azure 容器实例教程第 3 部分 - 部署应用程序"
+title: Azure 容器实例教程 - 部署应用
+description: Azure 容器实例教程第 3 部分 - 部署应用程序
 services: container-instances
-author: seanmck
+author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 02/22/2018
-ms.author: seanmck
+ms.date: 03/21/2018
+ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 0532d255b271b2155ae3115f8f96c4cbb53916e4
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 29d7114f288f7387d0c7cd5c6afe2eaaa7a8c560
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="deploy-a-container-to-azure-container-instances"></a>将容器部署到 Azure 容器实例
+# <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>教程：将容器部署到 Azure 容器实例
 
-这是由三个部分组成的系列教程的最后一个教程。 在此系列的前几部分中，[创建了一个容器映像](container-instances-tutorial-prepare-app.md)并[将其推送到了 Azure 容器注册表](container-instances-tutorial-prepare-acr.md)。 本文为此系列教程的最后一部分内容，介绍如何将容器部署到 Azure 容器实例。
+这是由三个部分组成的系列教程的最后一个教程。 在本系列教程的前几篇文章中，我们已[创建一个容器映像](container-instances-tutorial-prepare-app.md)并将其[推送到 Azure 容器注册表](container-instances-tutorial-prepare-acr.md)。 本文是本系列教程的最后一篇，介绍如何将容器部署到 Azure 容器实例。
 
 在本教程中：
 
 > [!div class="checklist"]
-> * 使用 Azure CLI 从 Azure 容器注册表部署容器
-> * 在浏览器中查看应用程序
-> * 查看容器日志
+> * 将容器从 Azure 容器注册表部署到 Azure 容器实例
+> * 在浏览器中查看正在运行的应用程序
+> * 显示容器的日志
 
 ## <a name="before-you-begin"></a>开始之前
 
-本教程要求运行 Azure CLI 2.0.27 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0][azure-cli-install]。
-
-若要完成本教程，需要本地安装的 Docker 开发环境。 Docker 提供的包可在任何 [Mac][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
-
-Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。 若要完成本教程，必须在本地计算机安装 Azure CLI 和 Docker 开发环境。
+[!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
 ## <a name="deploy-the-container-using-the-azure-cli"></a>使用 Azure CLI 部署容器
 
-使用 Azure CLI，只需单个命令即可将容器部署到 Azure 容器实例。 由于容器映像托管在专用 Azure 容器注册表中，因此必须提供访问注册表时所需的凭据。 使用以下 Azure CLI 命令获取凭据。
+在本部分，我们将使用 Azure CLI 来部署[第一篇教程](container-instances-tutorial-prepare-app.md)中生成的，并已在[第二篇教程](container-instances-tutorial-prepare-acr.md)中推送到 Azure 容器注册表的映像。 在继续之前，请务必先完成这些教程。
 
-容器注册表登录服务器（更新为注册表名）：
+### <a name="get-registry-credentials"></a>获取注册表凭据
+
+部署托管在专用容器注册表（例如[第二篇教程](container-instances-tutorial-prepare-acr.md)中创建的注册表）中的映像时，必须提供该注册表的凭据。
+
+首先，获取容器注册表登录服务器的完整名称（请将 `<acrName>` 替换为注册表的名称）:
 
 ```azurecli
 az acr show --name <acrName> --query loginServer
 ```
 
-容器注册表密码：
+接下来，获取容器注册表密码：
 
 ```azurecli
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-需[提前准备][prepare-app]应用程序；若要从容器注册表部署容器映像且资源请求为 1 个 CPU 核心和 1 GB 内存，请运行下面的 [az container create][az-container-create] 命令。 将 `<acrLoginServer>` 和 `<acrPassword>` 替换为之前两个命令获得的值。 将 `<acrName>` 替换为容器注册表的名称；也可将 `aci-tutorial-app` 替换为要提供给新应用程序的名称。
+### <a name="deploy-container"></a>部署容器
+
+现在，使用 [az container create][az-container-create] 部署容器。 将 `<acrLoginServer>` 和 `<acrPassword>` 替换为之前两个命令获得的值。 将 `<acrName>` 替换为容器注册表的名称。
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
 ```
 
-将在几秒钟内收到来自 Azure 资源管理器的初始响应。 在创建容器实例时所在的 Azure 区域中，`--dns-name-label` 值必须是唯一的。 如果在执行命令时收到 **DNS 名称标签**错误消息，请更新前一示例中的值。
+将在几秒钟内收到来自 Azure 的初始响应。 在创建容器实例时所在的 Azure 区域中，`--dns-name-label` 值必须是唯一的。 如果在执行命令时收到 **DNS 名称标签**错误消息，请修改前一命令中的值。
+
+### <a name="verify-deployment-progress"></a>检查部署进度
 
 若要查看部署状态，请使用 [az container show][az-container-show]：
 
@@ -74,7 +78,11 @@ az container show --resource-group myResourceGroup --name aci-tutorial-app --que
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-示例输出：`"aci-demo.eastus.azurecontainer.io"`
+例如：
+```console
+$ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
+"aci-demo.eastus.azurecontainer.io"
+```
 
 若要查看正在运行的应用程序，请从喜欢的浏览器中导航到此限定的 DNS 名称：
 
@@ -86,12 +94,13 @@ az container show --resource-group myResourceGroup --name aci-tutorial-app --que
 az container logs --resource-group myResourceGroup --name aci-tutorial-app
 ```
 
-输出：
+示例输出：
 
 ```bash
+$ az container logs --resource-group myResourceGroup --name aci-tutorial-app
 listening on port 80
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
-::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://13.88.176.27/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ```
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -110,6 +119,11 @@ az group delete --name myResourceGroup
 > * 使用 Azure CLI 从 Azure 容器注册表部署了容器
 > * 已在浏览器中查看了应用程序
 > * 已查看容器日志
+
+有了一定的基础知识后，请继续深入了解 Azure 容器实例，例如容器组的工作原理：
+
+> [!div class="nextstepaction"]
+> [Azure 容器实例中的容器组](container-instances-container-groups.md)
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png

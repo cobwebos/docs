@@ -1,33 +1,35 @@
 ---
-title: "将 Active Directory 连接到 Azure Active Directory | Microsoft Docs"
-description: "Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序提供一个通用标识。"
-keywords: "Azure AD Connect 介绍, Azure AD Connect 概述, 什么是 Azure AD Connect, 安装 active directory"
+title: 将 Active Directory 连接到 Azure Active Directory | Microsoft Docs
+description: Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序提供一个通用标识。
+keywords: Azure AD Connect 介绍, Azure AD Connect 概述, 什么是 Azure AD Connect, 安装 active directory
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 59bd209e-30d7-4a89-ae7a-e415969825ea
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/02/2017
+ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 83654a406019c4ac3837a3e961a6de640c98f31c
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 6f0b5cd7b981cddeda7e5630967f5f8dba18bb98
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>将本地目录与 Azure Active Directory 集成
 Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。 本主题介绍计划、部署和操作步骤。 其中统合了与这些操作相关的主题的链接。
 
 > [!IMPORTANT]
-> [Azure AD Connect 是连接本地目录与 Azure AD 和 Office 365 的最佳方式。这是从 Windows Azure Active Directory Sync (DirSync) 或 Azure AD Sync 升级到 Azure AD Connect 的最佳时机，因为这些工具现已弃用，从 2017 年 4 月 13 日起不再受支持。](active-directory-aadconnect-dirsync-deprecated.md)
+> [Azure AD Connect 是连接本地目录与 Azure AD 和 Office 365 的最佳方式。这是从 Windows Azure Active Directory Sync (DirSync) 或 Azure AD Sync 升级到 Azure AD Connect 的最佳时机，因为这些工具现已弃用，从 2017 年 4 月 13 日起不再受支持。](active-directory-aadconnect-dirsync-deprecated.md)  此外：
 > 
-> 
+> - 将用户同步到 Azure AD 是一项**免费功能**，不需要客户付费购买任何订阅。
+>- 同步的用户**不会自动获得***任何*许可证。 管理员仍对许可证分配拥有总体控制权。 
+> - Microsoft 建议让 IT 管理员同步其所有用户。 这不仅可以解除阻止用户访问任何 Azure AD 集成资源，而且还能为 IT 管理员提供更宽广的视图，让他们查看其用户正在访问哪些应用程序。 
 
 ![什么是 Azure AD Connect](media/active-directory-aadconnect/arch.png)
 

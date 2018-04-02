@@ -1,12 +1,12 @@
 ---
-title: "创建由 Azure Cosmos DB 触发的函数 | Microsoft Docs"
-description: "使用 Azure Functions 创建当数据添加到 Azure Cosmos DB 调用的无服务器函数。"
+title: 创建由 Azure Cosmos DB 触发的函数 | Microsoft Docs
+description: 使用 Azure Functions 创建当数据添加到 Azure Cosmos DB 调用的无服务器函数。
 services: azure-functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.service: functions; cosmos-db
 ms.devlang: multiple
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/07/2017
 ms.author: glenga
-ms.custom: 
-ms.openlocfilehash: 9ee3eddda53052c47f2cecff80f971f5eadac414
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.custom: ''
+ms.openlocfilehash: 435c4bf1c2619e91bbdd089375914ce06fdac6c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>创建由 Azure Cosmos DB 触发的函数
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 03/02/2018
     | 设置      | 建议的值  | 说明                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | 数据库的名称 | Azure Cosmos DB 数据库的唯一 ID  |
-    | **API** | SQL (DocumentDB) | 本主题使用文档数据库 API。  |
+    | **API** | SQL | 本主题使用 SQL API。  |
     | **订阅** | Azure 订阅 | 要在其下创建此新 Cosmos DB 帐户的订阅。  |
     | **资源组** | myResourceGroup |  使用包含函数应用的现有资源组。 |
     | **位置**  | 西欧 | 选择一个靠近函数应用的位置，或者一个靠近的其他应用使用已存储文档的位置。  |

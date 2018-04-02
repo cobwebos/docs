@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Application Insights 进行 Java Web 应用分析 | Microsoft 文档"
-description: "使用 Application Insights 监视 Java Web 应用的应用程序性能。 "
+title: 使用 Azure Application Insights 进行 Java Web 应用分析 | Microsoft 文档
+description: '使用 Application Insights 监视 Java Web 应用的应用程序性能。 '
 services: application-insights
 documentationcenter: java
 author: harelbr
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1ec845a6491b406c1aef34609b155a9c3d087427
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 227ca3533c7a06b726c758be931df8ec0314e90f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
@@ -30,7 +30,7 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
 需要：
 
-* Oracle JRE 1.6 或更高版本，或者 Zulu JRE 1.6 或更高版本
+* Oracle 或 Zulu JRE 版本 1.7 或 1.8
 * [Microsoft Azure](https://azure.microsoft.com/) 订阅。
 
 *如果有活动的 Web 应用，可以遵循替代过程[在运行时将 SDK 添加到 Web 服务器](app-insights-java-live.md)。这种替代方法可以避免重新生成代码，但没有任何选项可以编写代码来跟踪用户活动。*
@@ -169,8 +169,7 @@ Application Insights SDK 按以下顺序查找密钥：
 也可以 [在代码中设置方法](app-insights-api-custom-events-metrics.md#ikey)：
 
 ```Java
-
-    telemetryClient.InstrumentationKey = "...";
+    TelemetryConfiguration.getActive().setInstrumentationKey(iKey);
 ```
 
 ## <a name="4-add-an-http-filter"></a>4.添加 HTTP 筛选器

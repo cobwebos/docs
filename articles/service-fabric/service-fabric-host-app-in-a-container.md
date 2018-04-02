@@ -1,24 +1,24 @@
 ---
-title: "将容器中的 .NET 应用部署到 Azure Service Fabric | Microsoft Docs"
-description: "讲解如何在 Docker 容器中打包 Visual Studio 中的 .NET 应用。 这一新的“容器”应用随后会部署到 Service Fabric 群集。"
+title: 将容器中的 .NET 应用部署到 Azure Service Fabric | Microsoft Docs
+description: 讲解如何在 Docker 容器中打包 Visual Studio 中的 .NET 应用。 这一新的“容器”应用随后会部署到 Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/19/2017
+ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: cd1c3b063132ae549bfbf1e059667c5056c91046
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 11bb34939e5fa3699973051664e85f9ef2147ff7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric
 
@@ -49,13 +49,6 @@ ms.lasthandoff: 02/01/2018
 现在 Azure 中已在运行 Service Fabric 群集，可以创建和部署容器化应用程序了。 若要开始在容器中运行应用程序，我们需要在 Visual Studio 中添加对项目的 **Docker 支持**。 向应用程序添加 **Docker 支持**后，会发生两件事。 首先，将 Dockerfile 添加到项目。 此新文件描述容器映像的生成方式。 其次，解决方案中会添加一个新的 _docker compose_ 项目。 新项目包含一些 docker-compose 文件。 Docker-compose 文件可用于描述容器的运行方式。
 
 有关使用 [Visual Studio 容器工具][link-visualstudio-container-tools]的详细信息。
-
->[!NOTE]
->如果这是首次在计算机上运行 Windows 容器映像，Docker CE 必须下载容器的基础映像。 本教程中使用的映像为 14 GB。 继续操作并运行终端命令，拉取基础映像：
->```cmd
->docker pull microsoft/mssql-server-windows-developer
->docker pull microsoft/aspnet:4.6.2
->```
 
 ### <a name="add-docker-support"></a>添加 Docker 支持
 

@@ -11,18 +11,20 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/09/2018
+ms.date: 03/23/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 9eff06934eefa44db94de3d01be470ca69a2d88c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 19dcdeefe4a65f5c0fab06766a0fa40838df8b08
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
 本快速入门介绍如何创建一个 Azure Databricks 工作区，并在该工作区中创建一个 Apache Spark 群集。 最后，介绍如何在 Databricks 群集中运行 Spark 作业。 有关 Azure Databricks 的详细信息，请参阅[什么是 Azure Databricks？](what-is-azure-databricks.md)
+
+在运行本快速入门所述的 Spark 作业期间，我们将分析收音机频道订阅数据，以根据人口统计信息洞察免费/付费节目的使用情况。 
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -30,15 +32,13 @@ ms.lasthandoff: 03/17/2018
 
 登录到 [Azure 门户](https://portal.azure.com)。
 
-## <a name="create-a-databricks-workspace"></a>创建 Databricks 工作区
+## <a name="create-an-azure-databricks-workspace"></a>创建 Azure Databricks 工作区
 
 在本部分，使用 Azure 门户创建 Azure Databricks 工作区。 
 
-1. 在 Azure 门户中，依次单击“创建资源”、“数据 + 分析”、“Azure Databricks (预览)”。 
+1. 在 Azure 门户中，选择“创建资源” > “数据 + 分析” > “Azure Databricks”。 
 
     ![Azure 门户上的 Databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure 门户上的 Databricks")
-
-2. 在“Azure Databricks (预览版)”下，单击“创建”。
 
 3. 在“Azure Databricks 服务”下，提供所需的值以创建 Databricks 工作区。
 
@@ -52,11 +52,11 @@ ms.lasthandoff: 03/17/2018
     |**订阅**     | 从下拉列表中选择自己的 Azure 订阅。        |
     |**资源组**     | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 有关详细信息，请参阅 [Azure 资源组概述](../azure-resource-manager/resource-group-overview.md)。 |
     |**位置**     | 选择“美国东部 2”。 有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
-    |定价层     |  选择“标准”或“高级”。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
+    |**定价层**     |  选择“标准”或“高级”。 有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
     选择“固定到仪表板”，并单击“创建”。
 
-4. 创建帐户需要几分钟时间。 在创建帐户过程中，门户会在右侧显示“正在提交 Azure Databricks 的部署”磁贴。 可能需要在仪表板上向右滚动才能看到此磁贴。 另外，还会在屏幕顶部附近显示进度条。 你可以查看任一区域来了解进度。
+4. 创建工作区需要几分钟时间。 在创建工作区过程中，门户会在右侧显示“正在提交 Azure Databricks 的部署”磁贴。 可能需要在仪表板上向右滚动才能看到此磁贴。 另外，还会在屏幕顶部附近显示进度条。 你可以查看任一区域来了解进度。
 
     ![Databricks 部署磁贴](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Databricks 部署磁贴")
 
@@ -72,11 +72,13 @@ ms.lasthandoff: 03/17/2018
 
     ![在 Azure 上创建 Databricks Spark 群集](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "在 Azure 上创建 Databricks Spark 群集")
 
+    除以下值外，接受其他所有默认值：
+
     * 输入群集的名称。
     * 在本文中，请创建运行时为 **4.0** 的群集。 
-    * 请务必选中“在不活动超过 ____ 分钟后终止”复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
-    * 接受其他所有默认值。 
-    * 单击“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。
+    * 请务必选中**在不活动超过 ____ 分钟后终止**复选框。 提供一个持续时间（以分钟为单位），如果群集在这段时间内一直未被使用，则会将其终止。
+    
+    选择“创建群集”。 群集运行后，可将笔记本附加到该群集，并运行 Spark 作业。 
 
 有关创建群集的详细信息，请参阅[在 Azure Databricks 中创建 Spark 群集](https://docs.azuredatabricks.net/user-guide/clusters/create.html)。
 
@@ -84,9 +86,9 @@ ms.lasthandoff: 03/17/2018
 
 开始学习本部分之前，必须完成以下先决条件：
 
-* [创建 Azure 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。 
+* [创建 Azure Blob 存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account) 
 * [从 Github](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) 下载示例 JSON 文件。 
-* 将示例 JSON 文件上传到所创建的 Azure 存储帐户。 可以使用 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)上传该文件。
+* 将示例 JSON 文件上传到所创建的 Azure Blob 存储帐户。 可以使用 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)上传该文件。
 
 执行以下任务在 Databricks 中创建笔记本、将该笔记本配置为从 Azure Blob 存储帐户读取数据，然后针对这些数据运行 Spark SQL 作业。
 
@@ -103,7 +105,7 @@ ms.lasthandoff: 03/17/2018
 3. 在此步骤中，请将 Azure 存储帐户与 Databricks Spark 群集相关联。 可通过两种方法来实现此关联。 可将 Azure 存储帐户装载到 Databricks 文件系统 (DBFS)，或者直接从创建的应用程序访问 Azure 存储帐户。  
 
     > [!IMPORTANT]
-    >本文使用**通过 DBFS 装载存储的方式**。 此方式可确保装载的存储与群集文件系统本身相关联。 因此，任何访问群集的应用程序也都可以使用关联的存储。 直接访问方式仅限通过其配置访问权限的应用程序。
+    >本文使用**通过 DBFS 装载存储**的方式。 此方式可确保装载的存储与群集文件系统本身相关联。 因此，任何访问群集的应用程序也都可以使用关联的存储。 直接访问方式仅限通过其配置访问权限的应用程序。
     >
     > 若要使用装载方式，必须创建一个 Databricks 运行时版本为 **4.0** 的 Spark 群集，该群集是本文中选择的。
 
@@ -129,7 +131,7 @@ ms.lasthandoff: 03/17/2018
 
     ```sql
     %sql 
-    DROP TABLE IF EXISTS radio_sample_data
+    DROP TABLE IF EXISTS radio_sample_data;
     CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
@@ -141,7 +143,7 @@ ms.lasthandoff: 03/17/2018
 
     使用 `%sql` 语言魔法 (magic) 命令可从笔记本运行 SQL 代码，即使该笔记本采用另一种类型。 有关详细信息，请参阅[在笔记本中混合使用语言](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook)。
 
-5. 让我们看看示例 JSON 数据的快照，以便更好地了解所运行的查询。 将以下代码片段粘贴到代码单元中，并按 **SHIFT + ENTER**。
+5. 让我们看看示例 JSON 数据的快照，以便更好地了解运行的查询。 将以下代码片段粘贴到代码单元中，并按 **SHIFT + ENTER**。
 
     ```sql
     %sql 
@@ -183,7 +185,7 @@ ms.lasthandoff: 03/17/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们已在 Azure Databricks 中创建一个 Spark 群集，并使用 Azure 存储中的数据运行了一个 Spark 作业。 我们还可以查看 [Spark 数据源](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)，了解如何将其他数据源中的数据导入 Azure Databricks。 请继续学习下一篇文章，了解如何使用事件中心将数据流式传输到 Azure Databricks。
+在本文中，我们已在 Azure Databricks 中创建一个 Spark 群集，并使用 Azure 存储中的数据运行了一个 Spark 作业。 我们还可以查看 [Spark 数据源](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)，了解如何将其他数据源中的数据导入 Azure Databricks。 请继续学习下一篇文章，了解如何使用 Azure Databricks 执行 ETL（提取、转换和加载数据）操作。
 
 > [!div class="nextstepaction"]
->[使用事件中心将数据流式传输到 Azure Databricks](databricks-stream-from-eventhubs.md)
+>[使用 Azure Databricks 提取、转换和加载数据](databricks-extract-load-sql-data-warehouse.md)

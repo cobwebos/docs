@@ -5,7 +5,7 @@
 
 3. 在“新建帐户”页上，输入新 Azure Cosmos DB 帐户的设置。 
  
-    设置|建议的值|说明
+    设置|值|说明
     ---|---|---
     ID|*输入唯一名称*|输入标识此 Azure Cosmos DB 帐户的唯一名称。 由于 documents.azure.com 将追加到用户提供的 ID 用于创建 URI，因此，请使用唯一但可识别的 ID。<br><br>ID 只能包含小写字母、数字和连字符 (-) 字符，并且必须包含 3 到 50 个字符。
     API|SQL|API 确定要创建的帐户的类型。 Azure Cosmos DB 提供了五种 API，用以满足应用程序的需求：SQL（文档数据库）、Gremlin（图形数据库）、MongoDB（文档数据库）、Azure 表和 Cassandra，每个目前都需要单独的帐户。 <br><br>之所以选择 SQL 是因为，在本快速入门中将创建可使用 SQL 语法查询并可通过 SQL API 访问的文档数据库。<br><br>[详细了解 SQL API](../articles/cosmos-db/documentdb-introduction.md)|
@@ -19,9 +19,7 @@
 
     ![Azure Cosmos DB 的“新建帐户”页](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
 
-4. 创建帐户需要几分钟时间。 在创建帐户过程中，门户会在右侧显示“部署 Azure Cosmos DB”磁贴，可能需要向右滚动仪表板才能看到此磁贴。 另外，还会在屏幕顶部附近显示进度条。 你可以查看任一区域来了解进度。 
+4. 创建帐户需要几分钟时间。 等待门户中显示“祝贺你!已创建 Azure Cosmos DB 帐户”页。
 
-    ![Azure 门户“通知”窗格](./media/cosmos-db-create-dbaccount/deploying-cosmos-db.png)
-
-    创建帐户后，会显示“祝贺你!已创建 Azure Cosmos DB 帐户”页。 
+    ![Azure 门户“通知”窗格](./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created.png)
 

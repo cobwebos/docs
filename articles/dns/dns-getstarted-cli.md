@@ -1,11 +1,11 @@
 ---
-title: "通过 Azure CLI 2.0 开始使用 Azure DNS | Microsoft 文档"
-description: "了解如何在 Azure DNS 中创建 DNS 区域和记录。 这是有关使用 Azure CLI 2.0 创建和管理第一个 DNS 区域和记录的分步指南。"
+title: 通过 Azure CLI 2.0 开始使用 Azure DNS | Microsoft 文档
+description: 了解如何在 Azure DNS 中创建 DNS 区域和记录。 这是有关使用 Azure CLI 2.0 创建和管理第一个 DNS 区域和记录的分步指南。
 services: dns
 documentationcenter: na
 author: KumuD
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
 ms.service: dns
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: kumud
-ms.openlocfilehash: 76782ac1e78cd0f7da4bc1aad8eff00d79865ed7
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: d24eaa4974f8bff09b337384e4fd139edb6ebd70
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-dns-using-azure-cli-20"></a>通过 Azure CLI 2.0 开始使用 Azure DNS
 
@@ -33,6 +33,8 @@ ms.lasthandoff: 12/18/2017
 DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后会在此 DNS 区域内为每个 DNS 记录创建域。 最后，要将 DNS 区域发布到 Internet，需要为域配置名称服务器。 以下描述了上述每一个步骤。
 
 这些说明假设已安装并登录到 Azure CLI 2.0。 若需帮助，请参阅[如何使用 Azure CLI 2.0 管理 DNS 区域](dns-operations-dnszones-cli.md)。
+
+Azure DNS 现在还支持专用 DNS 区域（当前为公开预览版）。 若要详细了解专用 DNS 区域，请参阅[将 Azure DNS 用于专用域](private-dns-overview.md)。 有关如何创建专用 DNS 区域的示例，请参阅[通过 CLI 开始使用 Azure DNS 专用区域](./private-dns-getstarted-cli.md)。
 
 ## <a name="create-the-resource-group"></a>创建资源组
 
@@ -52,7 +54,6 @@ az group create --name MyResourceGroup --location "West US"
 az network dns zone create -g MyResourceGroup -n contoso.com
 ```
 
-
 ## <a name="create-a-dns-record"></a>创建 DNS 记录
 
 若要创建 DNS 记录，请使用 `az network dns record-set [record type] add-record` 命令。 若需帮助，例如需要 A 记录的帮助信息，请参阅 `azure network dns record-set A add-record -h`。
@@ -65,7 +66,6 @@ az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www 
 
 对于其他记录类型，对于具有一条以上记录的记录集，若要使用其他 TTL 值并修改现有记录，请参阅[使用 Azure CLI 2.0 管理 DNS 记录和记录集](dns-operations-recordsets-cli.md)。
 
-
 ## <a name="view-records"></a>查看记录
 
 若要列出区域中的 DNS 记录，请使用：
@@ -73,7 +73,6 @@ az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www 
 ```azurecli
 az network dns record-set list -g MyResourceGroup -z contoso.com
 ```
-
 
 ## <a name="update-name-servers"></a>更新名称服务器
 

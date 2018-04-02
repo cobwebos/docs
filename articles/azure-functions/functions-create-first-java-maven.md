@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 中通过 Java 和 Maven 创建你的第一个函数 | Microsoft Docs"
-description: "通过 Java 和 Maven 创建一个简单的 HTTP 触发函数，并将其发布到 Azure。"
+title: 在 Azure 中通过 Java 和 Maven 创建你的第一个函数 | Microsoft Docs
+description: 通过 Java 和 Maven 创建一个简单的 HTTP 触发函数，并将其发布到 Azure。
 services: functions
 documentationcenter: na
 author: rloutlaw
 manager: justhe
-keywords: "azure functions, functions, 事件处理, 计算, 无服务器体系结构"
+keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构
 ms.service: functions
 ms.devlang: java
 ms.topic: quickstart
@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c0984075cd8e372cce09ea100378dcd4e8cddabe
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 81d9d8790a750f34133f3f00dafc15c56185d7b1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>通过 Java 和 Maven 创建你的第一个函数（预览版）
 
@@ -34,18 +34,25 @@ ms.lasthandoff: 01/05/2018
 ## <a name="prerequisites"></a>先决条件
 若要通过 Java 开发函数应用，必须安装以下软件：
 
--  最新版本的 [.NET Core](https://www.microsoft.com/net/core)。
 -  [Java 开发人员工具包](https://www.azul.com/downloads/zulu/)，版本 8。
--  [Azure CLI](https://docs.microsoft.com/cli/azure)
 -  [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
--  [Node.js](https://nodejs.org/download/) 8.6 或更高版本。
+-  [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 > [!IMPORTANT] 
 > JAVA_HOME 环境变量必须设置为 JDK 的安装位置，以完成本快速入门。
 
 ## <a name="install-the-azure-functions-core-tools"></a>安装 Azure Functions Core Tools
 
-[Azure Functions 核心工具 2.0](https://www.npmjs.com/package/azure-functions-core-tools) 为编写、运行和调试 Azure Functions 提供了本地开发环境。 将此工具与 [npm](https://www.npmjs.com/) 一起安装，包括 [Node.js](https://nodejs.org/)。
+[Azure Functions 核心工具 2.0](https://www.npmjs.com/package/azure-functions-core-tools) 为编写、运行和调试 Azure Functions 提供了本地开发环境。 
+
+若要安装，请访问[安装](https://github.com/azure/azure-functions-core-tools#installing)部分，找到适用于所选操作系统（Windows、Linux、Mac）的具体说明。
+
+也可以在安装以下必备组件后，使用 [Node.js](https://nodejs.org/) 随附的 [npm](https://www.npmjs.com/) 手动安装此工具：
+
+-  最新版本的 [.NET Core](https://www.microsoft.com/net/core)。
+-  [Node.js](https://nodejs.org/download/) 8.6 或更高版本。
+
+若要继续进行基于 npm 的安装，请运行：
 
 ```
 npm install -g azure-functions-core-tools@core
@@ -185,6 +192,4 @@ Hello AzureFunctions!
 - 有关开发 Java 函数的详细信息，请查看 [Java 函数开发人员指南](functions-reference-java.md)。
 - 使用 `azure-functions:add` Maven 目标将具有不同触发器的其他函数添加到你的项目。
 - 使用 Visual Studio Code 在本地调试函数。 安装 [Java 扩展包](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)且在 Visual Studio Code 中打开 Functions 项目后，[将调试器附加](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations)到端口 5005。 然后，在编辑器中设置断点，并在本地运行函数时触发函数：![在 Visual Studio Code 中调试函数](media/functions-create-java-maven/vscode-debug.png)
-
-
-
+- 使用 Visual Studio Code 远程调试函数。 查看[编写无服务器 Java 应用程序](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)文档中的说明。
