@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure 机器学习？ | Microsoft Docs
-description: 概述 Azure 机器学习试验和模型管理 - 这是一个集成式的端到端数据科学解决方案，可让专业数据科学家以云的规模开发、试验和部署高级分析应用程序。
+description: 解释云中机器学习的基本概念，介绍其作用，以及定义机器学习的术语。 Azure 机器学习概述 - 这是一个集成式的端到端数据科学解决方案，可让专业数据科学家以云的规模开发、试验和部署高级分析应用程序。
 services: machine-learning
 author: mwinkle
 ms.author: mwinkle
@@ -9,14 +9,19 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: get-started-article
 ms.date: 09/21/2017
-ms.openlocfilehash: e5716e3fc519c48aaea3ec17939d11008a1b1fd4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8a92f42ecee926042e9e0662f6b0bd9438024248
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
+# <a name="what-is-machine-learning"></a>什么是机器学习？
 
+机器学习是一项数据科研技术，可以让计算机根据现有的数据来预测将来的行为、结果和趋势。 使用机器学习，计算机可以在不需显式编程的情况下进行学习。
+
+机器学习的预测可让应用和设备变得更聪明。 在网上购物时，机器学习可根据购买的产品帮助推荐其他产品。 刷信用卡时，机器学习可将这笔交易与交易数据库进行比较，帮助检测诈骗。 当吸尘器机器人打扫房间时，机器学习可帮助它确定作业是否已完成。
+
+## <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 Azure 机器学习是集成式的端到端数据科学和高级分析解决方案。 它可让数据科学家以云的规模准备数据、开发试验和部署模型。
 
 Azure 机器学习的主要组件包括：
@@ -29,6 +34,7 @@ Azure 机器学习的主要组件包括：
 这些应用程序和服务相结合，有助于显著加快数据科学项目的开发和部署进度。 
 
 ![Azure 机器学习的概念](media/overview-what-is-azure-ml/aml-concepts.png)
+
 
 ## <a name="open-source-compatible"></a>开源兼容
 

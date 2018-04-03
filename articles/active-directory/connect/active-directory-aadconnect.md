@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 6f0b5cd7b981cddeda7e5630967f5f8dba18bb98
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: febe055348efb49ea1e6bc670333f435de654cfc
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>将本地目录与 Azure Active Directory 集成
 Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。 本主题介绍计划、部署和操作步骤。 其中统合了与这些操作相关的主题的链接。
@@ -88,7 +88,7 @@ Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能
 
 [筛选](active-directory-aadconnectsync-configure-filtering.md) 。 默认情况下，同步所有用户、联系人、组和 Windows 10 计算机。 可以根据域、OU 或属性更改筛选。
 
-[密码同步](active-directory-aadconnectsync-implement-password-synchronization.md) 可将 Active Directory 中的密码哈希同步到 Azure AD。 最终用户可以在本地与云中使用相同的密码，且只需在一个位置管理此密码。 由于它将本地 Active Directory 用作颁发机构，因此，还可以使用自己的密码策略。
+[密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md) 可将 Active Directory 中的密码哈希同步到 Azure AD。 最终用户可以在本地与云中使用相同的密码，且只需在一个位置管理此密码。 由于它将本地 Active Directory 用作颁发机构，因此，还可以使用自己的密码策略。
 
 [密码写回](../active-directory-passwords-getting-started.md) 可让用户在云中更改和重置其密码，及应用本地密码策略。
 
@@ -102,7 +102,7 @@ Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能
 |主题 |链接|  
 | --- | --- |
 |配置筛选 | [Azure AD Connect 同步：配置筛选](active-directory-aadconnectsync-configure-filtering.md)|
-|密码同步 | [Azure AD Connect 同步：实现密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)|
+|密码哈希同步 | [Azure AD Connect 同步：实现密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md)|
 |密码写回 | [密码管理入门](../active-directory-passwords-getting-started.md)|
 |设备写回 | [在 Azure AD Connect 中启用设备写回](active-directory-aadconnect-feature-device-writeback.md)|
 |防止意外删除 | [Azure AD Connect 同步：防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)|
