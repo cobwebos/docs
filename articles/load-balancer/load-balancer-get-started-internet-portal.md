@@ -1,11 +1,11 @@
 ---
-title: "创建面向 Internet 的负载均衡器 - Azure 门户 | Microsoft 文档"
-description: "了解如何使用 Azure 门户在 Resource Manager 中创建面向 Internet 的负载均衡器"
+title: 创建公共的基本负载均衡器 - Azure 门户 | Microsoft Docs
+description: 了解如何使用 Azure 门户创建公共的基本负载均衡器。
 services: load-balancer
 documentationcenter: na
-author: anavinahar
-manager: narayan
-editor: 
+author: KumudD
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
 ms.service: load-balancer
@@ -13,102 +13,181 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 35632cc93c9a0650b45220ba84b4983679de3d9c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1b7901542a699e74f65527bf734133f73acb0bea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="creating-an-internet-facing-load-balancer-using-the-azure-portal"></a>使用 Azure 门户创建面向 Internet 的负载均衡器
+# <a name="create-a-public-basic-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>使用 Azure 门户创建公共的基本负载均衡器，以便对 VM 进行负载均衡
 
-> [!div class="op_single_selector"]
-> * [Portal](../load-balancer/load-balancer-get-started-internet-portal.md)
-> * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
-> * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
-> * [模板](../load-balancer/load-balancer-get-started-internet-arm-template.md)
+可以通过负载均衡将传入请求分布到多个虚拟机，从而提供更高级别的可用性和规模。 可以通过 Azure 门户创建负载均衡器，对虚拟机进行负载均衡。 本快速入门演示如何创建网络资源、后端服务器和公共的基本负载均衡器。
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-[!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-本文介绍 Resource Manager 部署模型。
+在 [http://portal.azure.com](http://portal.azure.com) 中登录 Azure 门户。
 
-[!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
+## <a name="create-a-basic-load-balancer"></a>创建基本负载均衡器
 
-这涵盖要创建负载均衡器所必须完成的单个任务的序列，以及详细说明完成此目标的具体操作。
+在此部分，请使用门户创建公共的基本负载均衡器。 使用门户创建负载均衡器资源时会创建公共 IP，此时会自动将公共 IP 地址配置为负载均衡器的前端，即 *LoadBalancerFrontend*。
 
-## <a name="what-is-required-to-create-an-internet-facing-load-balancer"></a>创建面向 Internet 的负载均衡器需要什么？
+1. 在屏幕的左上方，单击“创建资源” > “网络” > “负载均衡器”。
+2. 在“创建负载均衡器”页中，输入负载均衡器的以下值：
+    - *myLoadBalancer* - 负载均衡器的名称。
+    - **公共** - 负载均衡器前端的类型。 
+     - *myPublicIP* - 必须创建的公共 IP，其 SKU 必须设置为“基本”，“分配”必须设置为“动态”。
+    - *myResourceGroupLB* - 所创建的新资源组的名称。
+3. 单击“创建”以创建负载均衡器。
+   
+    ![创建负载均衡器](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
 
-需要创建和配置以下对象以部署负载均衡器。
 
-* 前端 IP 配置 - 包含传入网络流量的公共 IP 地址。
-* 后端地址池 - 包含从负载均衡器接收网络流量的虚拟机网络接口 (NIC)。
-* 负载均衡规则 - 包含将负载均衡器上的公共端口映射到后端地址池中的端口的规则。
-* 入站 NAT 规则 - 包含将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口的规则。
-* 探测器 - 包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
+## <a name="create-backend-servers"></a>创建后端服务器
 
-可以在以下网页中获取有关 Azure 资源管理器的负载均衡器组件的详细信息：[Azure 资源管理器对负载均衡器的支持](load-balancer-arm.md)。
+在此部分，请先创建一个虚拟网络，为基本负载均衡器的后端池创建两个虚拟机，然后在虚拟机上安装 IIS，以便对负载均衡器进行测试。
 
-## <a name="set-up-a-load-balancer-in-azure-portal"></a>在 Azure 门户中设置负载均衡器
+### <a name="create-a-virtual-network"></a>创建虚拟网络
+1. 在屏幕的左上方，单击“新建” > “网络” > “虚拟网络”，然后输入虚拟网络的以下值：
+    - *myVnet* - 虚拟网络的名称。
+    - *myResourceGroupLB* - 现有资源组的名称。
+    - *myBackendSubnet* - 子网名称。
+2. 单击“创建”，创建虚拟网络。
 
-> [!IMPORTANT]
-> 本示例假定已有名为 **myVNet** 的虚拟网络。 请参考[创建虚拟网络](../virtual-network/manage-virtual-network.md#create-a-virtual-network)完成此操作。 本示例还假定 **myVNet** 内有一个名为 **LB-Subnet-BE** 的子网以及两个分别名为 **web1** 和 **web2** 的 VM，这两个 VM 都位于 **myVNet** 中名为 **myAvailSet** 的可用性集中。 请参考[此链接](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)创建 VM。
+    ![创建虚拟网络](./media/load-balancer-get-started-internet-portal/2-load-balancer-virtual-network.png)
 
-1. 从浏览器导航到 Azure 门户：[http://portal.azure.com](http://portal.azure.com)，并使用 Azure 帐户登录。
-2. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”。
-3. 在“创建负载均衡器”边栏选项卡中，为负载均衡器键入一个名称。 此例中使用名称 **myLoadBalancer**。
-4. 在“类型”下，选择“公共”。
-5. 在“公共 IP 地址”下，创建名为 **myPublicIP** 的新公共 IP。
-6. 在“资源组”下，选择“myRG”。 然后，选择相应的**位置**，并单击“确定”。 然后，负载均衡器将开始部署，成功完成部署需要几分钟的时间。
+### <a name="create-virtual-machines"></a>创建虚拟机
 
-    ![更新负载均衡器的资源组](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
+1. 在屏幕的左上方，单击“新建” > “计算” > “Windows Server 2016 Datacenter”，然后输入虚拟机的以下值：
+    - *myVM1* - 虚拟机的名称。        
+    - *azureuser* - 管理员用户名。 -    
+    - *myResourceGroupLB* - 对于“资源组”，请选择“使用现有”，然后选择“myResourceGroupLB”。
+2. 单击“确定”。
+3. 选择“DS1_V2”作为虚拟机的大小，然后单击“选择”。
+4. 为 VM 设置输入以下值：
+    - *myAvailabilitySet* - 新建的可用性集的名称。
+    -  *myVNet* - 确保选择它作为虚拟网络。
+    - *myBackendSubnet* - 确保选择它作为子网。
+    - *myVM1-ip* - 公共 IP 地址。
+    - *myNetworkSecurityGroup* - 必须创建的新网络安全组（防火墙）的名称。
+5. 单击“禁用”以禁用启动诊断。
+6. 创建“确定”，检查“摘要”页上的设置，然后单击“创建”。
+7. 通过步骤 1-6 创建名为 *VM2* 的另一个 VM，使用 *myAvailabilityset* 作为可用性集，*myVnet* 作为虚拟网络，*myBackendSubnet* 作为子网，*myNetworkSecurityGroup* 作为其网络安全组。 
 
-## <a name="create-a-back-end-address-pool"></a>创建后端地址池
+### <a name="create-nsg-rules"></a>创建 NSG 规则
 
-1. 成功部署负载均衡器后，请从资源中选择它。 在“设置”下，选择“后端池”。 为后端池键入名称。 然后单击显示的边栏选项卡顶部附近的“添加”按钮。
-2. 在“添加后端池”边栏选项卡中，单击“添加虚拟机”。  在“可用性集”下，选择“选择可用性集”，并选择“myAvailSet”。 接下来，在边栏选项卡的“虚拟机”部分下选择“选择虚拟机”，并单击为实现负载均衡而创建的两个 VM“web1”和“web2”。 请确保这两个 VM 左侧都带有蓝色复选标记，如下图所示。 然后，单击“选择虚拟机”边栏选项卡中的“确定”并单击“添加后端池”边栏选项卡中的“确定”后，单击边栏选项卡中的“选择”。
+在此部分，请创建允许使用 HTTP 和 RDP 进行入站连接的 NSG 规则。
+
+1. 单击左侧菜单中的“所有资源”，然后从资源列表中单击“myNetworkSecurityGroup”，后者位于 **myResourceGroupLB** 资源组中。
+2. 在“设置”下单击“入站安全规则”，然后单击“添加”。
+3. 为入站安全规则 *myHTTPRule* 输入以下值，以便使用端口 80 进行入站 HTTP 连接：
+    - 服务标记 - **源**。
+    - *Internet* - **源服务标记**
+    - *80* - **目标端口范围**
+    - *TCP* - **协议**
+    - 允许 - **操作**
+    - *100* - **优先级**
+    - *myHTTPRule* - 名称
+    - 允许 HTTP - 说明
+4. 单击“确定”。
+ 
+ ![创建虚拟网络](./media/load-balancer-get-started-internet-portal/8-load-balancer-nsg-rules.png)
+5. 重复步骤 2 到 4，创建名为 *myRDPRule* 的另一规则，以便通过端口 3389 使用以下值进行入站 RDP 连接：
+    - 服务标记 - **源**。
+    - *Internet* - **源服务标记**
+    - *3389* - **目标端口范围**
+    - *TCP* - **协议**
+    - 允许 - **操作**
+    - *200* - **优先级**
+    - *myRDPRule* - 名称
+    - 允许 RDP - 说明
+
+   
+
+### <a name="install-iis"></a>安装 IIS
+
+1. 单击左侧菜单中的“所有资源”，然后从资源列表中单击“myVM1”，后者位于 *myResourceGroupLB* 资源组中。
+2. 在“概览”页上单击“连接”，以便通过 RDP 连接到 VM 中。
+3. 使用用户名 *azureuser* 和密码 *Azure123456!* 登录到 VM
+4. 在服务器桌面上导航到“Windows 管理工具”>“服务器管理器”。
+5. 在“服务器管理器”中单击“管理”，然后单击“添加角色和功能”。
+ ![添加服务器管理器角色](./media/load-balancer-get-started-internet-portal/servermanager.png)
+6. 在“添加角色和功能向导”中使用以下值：
+    - 在“选择安装类型”页中，单击“基于角色或基于功能的安装”。
+    - 在“选择目标服务器”页中，单击“myVM1”
+    - 在“选择服务器角色”页中，单击“Web 服务器(IIS)”
+    - 按照说明完成向导的其余部分 
+7. 对于虚拟机 *myVM2*，请重复步骤 1 到 6。
+
+## <a name="create-basic-load-balancer-resources"></a>创建基本负载均衡器资源
+
+在此部分，请为后端地址池和运行状况探测配置负载均衡器设置，并指定负载均衡器和 NAT 规则。
+
+
+### <a name="create-a-backend-address-pool"></a>创建后端地址池
+
+若要向 VM 分发流量，后端地址池需包含连接到负载均衡器的虚拟 NIC 的 IP 地址。 创建包括 *VM1* 和 *VM2* 的后端地址池 *myBackendPool*。
+
+1. 单击左侧菜单中的“所有资源”，然后在资源列表中单击“myLoadBalancer”。
+2. 在“设置”下单击“后端池”，然后单击“添加”。
+3. 在“添加后端池”页上执行以下操作：
+    - 对于“名称”，请键入 *myBackEndPool 作为后端池的名称。
+    - 对于“关联到”，请在下拉菜单中单击“可用性集”。
+    - 对于“可用性集”，请单击“myAvailabilitySet”。
+    - 单击“添加目标网络 IP 配置”将所创建的每个虚拟机 (*myVM1* & *myVM2*) 添加到后端池。
+    - 单击“确定”。
 
     ![添加到后端地址池 - ](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
 
-3. 进行相关检查，确保通知下拉列表中除了针对 VM **web1** 和 **web2** 的网络接口更新外，还包含有关保存负载均衡器后端池的更新。
+3. 通过检查确保负载均衡器后端池设置显示 **VM1** 和 **VM2** 这两个 VM。
 
-## <a name="create-a-probe-lb-rule-and-nat-rules"></a>创建探测器、LB 规则和 NAT 规则
+### <a name="create-a-health-probe"></a>创建运行状况探测器
 
-1. 创建运行状况探测器。
+若要让基本负载均衡器监视应用的状态，请使用运行状况探测。 运行状况探测器基于其对运行状况检查的响应，从负载均衡器中动态添加或删除 VM。 创建运行状况探测 *myHealthProbe*，用于监视 VM 的运行状况。
 
-    在负载均衡器的“设置”下，选择“探测器”。 然后，单击边栏选项卡顶部的“添加”。
+1. 单击左侧菜单中的“所有资源”，然后在资源列表中单击“myLoadBalancer”。
+2. 在“设置”下单击“运行状况探测”，然后单击“添加”。
+3. 使用以下值创建运行状况探测：
+    - *myHealthProbe* - 运行状况探测的名称。
+    - **HTTP** - 协议类型。
+    - *80* - 端口号。
+    - *15* - 两次探测尝试的**时间间隔**（以秒为单位）。
+    - *2* - 将 VM 视为不正常所对应的**不正常阈值**或连续探测失败次数。
+4. 单击“确定”。
 
-    可通过两种方法配置探测器：HTTP 或 TCP。 此示例演示 HTTP 的配置，但可以按类似的方法配置 TCP。
-    更新必要的信息。 如前文所述，**myLoadBalancer** 会在端口 80 上实现流量的负载均衡。 所选路径为 HealthProbe.aspx，时间间隔为 15 秒，不正常阈值为 2。 完成后，单击“确定”以创建探测器。
+   ![添加探测器](./media/load-balancer-get-started-internet-portal/4-load-balancer-probes.png)
 
-    将指针悬停在“i”图标上可深入了解有关这些单独配置的详细信息，以及可如何更改它们以满足特定要求。
+### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
-    ![添加探测器](./media/load-balancer-get-started-internet-portal/4-load-balancer-probes.png)
+负载均衡器规则用于定义将流量分配给 VM 的方式。 定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需源和目标端口。 创建负载均衡器规则 *myLoadBalancerRuleWeb*，以便侦听前端 *LoadBalancerFrontEnd* 中的端口 80，并将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *myBackEndPool*。 
 
-2. 创建负载均衡器规则。
-
-    单击负载均衡器的“设置”部分中的负载均衡规则。 在“新建”边栏选项卡中，单击“添加”。 为规则命名。 此处使用 HTTP。 选择前端和后端端口。 此处，两个端口均选择 80。 选择“LB-backend”作为后端池，选择以前创建的“HealthProbe”作为探测器。 可根据用户的需求设置其他配置。 然后，单击“确定”保存负载均衡规则。
-
+1. 单击左侧菜单中的“所有资源”，然后在资源列表中单击“myLoadBalancer”。
+2. 在“设置”下单击“负载均衡规则”，然后单击“添加”。
+3. 请使用以下值配置负载均衡规则：
+    - *myHTTPRule* - 负载均衡规则的名称。
+    - **TCP** - 协议类型。
+    - *80* - 端口号。
+    - *80* - 后端端口。
+    - *myBackendPool* - 后端池的名称。
+    - *myHealthProbe* - 运行状况探测的名称。
+4. 单击“确定”。
+    
     ![添加负载均衡规则](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
 
-3. 创建入站 NAT 规则
+## <a name="test-the-load-balancer"></a>测试负载均衡器
+1. 在“概览”屏幕上找到负载均衡器的公共 IP 地址。 单击“所有资源”，然后单击“myPublicIP”。
 
-    单击负载均衡器的“设置”部分下的“入站 NAT 规则”。 在“新建”边栏选项卡中，单击“添加”。 然后，为入站 NAT 规则命名。 此处使用名称 **inboundNATrule1**。 目标应是以前创建的公共 IP。 在“服务”下选择“自定义”，并选择要使用的协议。 此处选择 TCP。 输入端口 3441 以及目标端口（本例中为 3389）。 然后单击“确定”，保存此规则。
+2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 IIS Web 服务器的默认页显示在浏览器上。
 
-    创建第一条规则后，对名为 inboundNATrule2 的第二个入站 NAT 规则重复此步骤（从端口 3442 到目标端口 3389）。
+  ![IIS Web 服务器](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 
-    ![添加入站 NAT 规则](./media/load-balancer-get-started-internet-portal/6-load-balancer-inbound-nat-rules.png)
+## <a name="clean-up-resources"></a>清理资源
 
-## <a name="remove-a-load-balancer"></a>删除负载均衡器
-
-若要删除负载均衡器，请选择要删除的负载均衡器。 在“负载均衡器”边栏选项卡中，单击位于顶部的“删除”。 然后在出现提示时选择“是”。
+若不再需要资源组、负载均衡器以及所有相关资源，请将其删除。 为此，请选择包含负载均衡器的资源组，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
-[开始配置内部负载均衡器](load-balancer-get-started-ilb-arm-cli.md)
-
-[配置负载均衡器分发模式](load-balancer-distribution-mode.md)
-
-[配置负载均衡器的空闲 TCP 超时设置](load-balancer-tcp-idle-timeout.md)
+在本快速入门中，创建了资源组、网络资源和后端服务器。 然后使用这些资源创建了负载均衡器。 若要详细了解负载均衡器及其关联的资源，请继续阅读教程文章。
