@@ -1,11 +1,12 @@
 ---
-title: "机器学习工作室中的简单试验 | Microsoft Docs"
-description: "本机器学习教程逐步讲解如何轻松完成数据科研试验。 使用回归算法预测汽车价格。"
-keywords: "试验, 线性回归, 机器学习算法, 机器学习教程, 预测建模技术, 数据科研试验"
+title: 机器学习工作室中的简单试验 | Microsoft Docs
+description: 本机器学习教程逐步讲解如何轻松完成数据科研试验。 使用回归算法预测汽车价格。
+keywords: 试验, 线性回归, 机器学习算法, 机器学习教程, 预测建模技术, 数据科研试验
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/20/2017
-ms.author: garye
-ms.openlocfilehash: 3cc4278ca7d4603f4bfb916885d44e6a85864b25
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 57461cf94898012619b865c455955f511e978995
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>机器学习教程：在 Azure 机器学习工作室中创建第一个数据科研试验
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="open-machine-learning-studio"></a>打开机器学习工作室
 
-若要开始使用工作室，请访问 [https://studio.azureml.net](https://studio.azureml.net)。 如果以前登录过机器学习工作室，请单击“登录”。 否则，请单击“在此注册”并选择免费或付费选项。
+若要开始使用 Studio，请转到 [https://studio.azureml.net](https://studio.azureml.net)。 如果以前登录过机器学习工作室，请单击“登录”。 否则，请单击“在此注册”并选择免费或付费选项。
 
 ![登录到机器学习工作室][sign-in-to-studio]
 <br/>
@@ -143,7 +143,7 @@ ms.lasthandoff: 02/21/2018
 3. 单击[选择数据集中的列][select-columns] 模块，并单击“属性”窗格中的“启动列选择器”。
 
     - 在左侧单击“使用规则”
-    - 在“开头为”下面，单击“所有列”。 这会指示[选择数据集中的列][select-columns]传递所有列（但要排除的列除外）。
+    - 在**开头为**下面，单击**所有列**。 这会指示“选择数据集中的列[select-columns]”传递所有列（但要排除的列除外）。[]
     - 在下拉列表中，选择“排除”和“列名称”，并在文本框内部单击。 此时会显示列的列表。 选择“规范化损失”，该列随即添加到文本框中。
     - 单击复选标记（“确定”）按钮，关闭列选择器（右下角）。
 
@@ -277,7 +277,7 @@ ms.lasthandoff: 02/21/2018
 
 使用 75% 的数据训练模型后，可以使用该模型为另外 25% 的数据评分，确定模型的运行情况。
 
-1. 找到[评分模型][score-model]模块并将其拖放到试验画布上。 将[定型模型][train-model]模块的输出连接到[评分模型][score-model]的左侧输入端口。 将[拆分数据][split]模型的测试数据输出（右侧端口）连接到[评分模型][score-model]
+1. 找到[评分模型][score-model]模块并将其拖放到试验画布上。 将[定型模型][train-model]模块的输出连接到[评分模型][score-model]的左侧输入端口。 将[拆分数据][split]模型的测试数据输出（右侧端口）连接到[评分模型][score-model].
 
     ![将“评分模型”模块连接到“定型模型”和“拆分数据”模块][connect-score-model]
     <br/>
@@ -292,7 +292,7 @@ ms.lasthandoff: 02/21/2018
 3. 最后，我们对结果的质量进行测试。 选择[评估模型][evaluate-model]模块并将其拖放到试验画布上，然后将[评分模型][score-model]模块的输出连接到[评估模型][evaluate-model]的左侧输入。
 
     > [!TIP]
-    > 之所以[评估模型][evaluate-model]模块上有两个输入端口，是因为可将其用于并列比较两个模型。 可在以后向试验添加另一算法，并使用[评估模型][evaluate-model]查看哪一个算法的结果更好。
+    > 之所以[评估模型][evaluate-model]模块上有两个输入端口，是因为可将其用于并列比较两个模型。 可在以后向试验添加另一算法，并使用“评估模型[evaluate-model]”查看哪一个算法的结果更好。[]
 
 4. 运行试验。
 

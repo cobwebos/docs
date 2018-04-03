@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 71862463a62f11a4f2cea7dfcc60961331ded377
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b3a3c07446ad04a58d5180793404fc04677749b2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure Stack 1802 更新
 
@@ -126,9 +126,11 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 
 - <!-- 2253274 --> In the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet to view and  manage this information.
 
-- 在管理门户和用户门户上，概述边栏选项卡无法加载时选择与旧的 API 版本创建的存储帐户的概述边栏选项卡 (示例： 2015年-06-15)。 这包括系统存储帐户，如**updateadminaccount**的修补程序和更新过程中使用。 
+- 在管理员门户和用户门户中，如果选择通过旧版 API（例如 2015-06-15）创建的存储帐户的“概述”边栏选项卡，则“概述”边栏选项卡无法加载。 这包括系统存储帐户，例如修补和更新过程中使用的 **updateadminaccount**。 
 
-  解决方法是，使用 PowerShell 运行**开始 ResourceSynchronization.ps1**脚本要恢复到存储帐户详细信息的访问权限。 [该脚本可从 GitHub]( https://github.com/Azure/AzureStack-Tools/tree/master/Support/scripts)，并且必须与服务管理员凭据的特权的终结点上运行。 
+  解决方法是使用 PowerShell 运行 **Start-ResourceSynchronization.ps1** 脚本，以便重新可以访问存储帐户详细信息。 [GitHub 中提供了该脚本]( https://github.com/Azure/AzureStack-Tools/tree/master/Support/scripts)，必须在特权终结点上使用服务管理员凭据运行该脚本。 
+
+- **服务运行状况**边栏选项卡无法加载。 当你打开的服务运行状况边栏选项卡在管理员或用户门户中，Azure 堆栈会显示错误并不会加载信息。 这是预期的行为。 尽管你可以选择并打开服务运行状况，但此功能尚不可用，但将实现 Azure 堆栈的未来版本中。
 
 
 #### <a name="health-and-monitoring"></a>运行状况和监视

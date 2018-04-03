@@ -1,11 +1,11 @@
 ---
-title: "安装适用于 Azure 堆栈 PowerShell |Microsoft 文档"
-description: "了解如何安装适用于 Azure 堆栈 PowerShell。"
+title: 安装适用于 Azure Stack 的 PowerShell | Microsoft Docs
+description: 了解如何安装适用于 Azure Stack 的 PowerShell。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: F8D99A91-15B5-4073-BE07-A43514A6D2CF
 ms.service: azure-stack
 ms.workload: na
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: mabrigg
-ms.openlocfilehash: b5cc53387b6867d776059856b6e7793abbc67c9a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 7bf2d9b999db738007f75d72a8818ca0eb6f34ba
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="install-powershell-for-azure-stack"></a>安装适用于 Azure 堆栈 PowerShell  
+# <a name="install-powershell-for-azure-stack"></a>安装适用于 Azure Stack 的 PowerShell  
 
-Azure 堆栈兼容 Azure PowerShell 模块需要使用 Azure 堆栈处理。 在本指南中，我们引导你完成安装适用于 Azure 堆栈 PowerShell 所需的步骤。 你可以使用如果你通过 VPN 连接从 Azure 堆栈开发工具包中，或从基于 Windows 的外部客户端此文章中所述的步骤。
+需要安装与 Azure Stack 兼容的 Azure PowerShell 模块才能使用 Azure Stack。 本指南逐步演示安装适用于 Azure Stack 的 PowerShell 的步骤。 可以通过 Azure Stack 开发工具包或者基于 Windows 的外部客户端（如果已通过 VPN 建立连接）执行本文中所述的步骤。
 
-本文提供了详细说明安装适用于 Azure 堆栈 PowerShell。 但是，如果你想要快速安装和配置 PowerShell，你可以使用"使用 PowerShell 获取启动并正在运行"文章中提供的脚本。 
+本文提供有关安装适用于 Azure Stack 的 PowerShell 的详细说明。 但是，若要快速安装和配置 PowerShell，可以使用“通过 PowerShell 启动和运行”一文中提供的脚本。 
 
 > [!NOTE]
-> 以下步骤需要 PowerShell 5.0。 若要检查你的版本，请运行 $PSVersionTable.PSVersion 并将"主要"版本进行比较。
+> 以下步骤需要 PowerShell 5.0。 若要检查版本，请运行 $PSVersionTable.PSVersion 并比较“Major”（主要）版本。
 
-通过 PowerShell 库安装 Azure 堆栈的 PowerShell 命令。 若要注册 PSGallery 存储库，请从开发工具包或基于 Windows 的外部客户端通过打开提升的 PowerShell 会话如果你通过 VPN 连接，并运行以下命令：
+通过 PowerShell 库安装适用于 Azure Stack 的 PowerShell 命令。 若要注册 PSGallery 存储库，请通过开发工具包或者基于 Windows 的外部客户端（如果已通过 VPN 建立连接）打开权限提升的 PowerShell 会话，然后运行以下命令：
 
 ```powershell
 Set-PSRepository `
@@ -37,26 +37,26 @@ Set-PSRepository `
   -InstallationPolicy Trusted
 ```
 
-## <a name="uninstall-existing-versions-of-powershell"></a>卸载现有版本的 PowerShell
+## <a name="uninstall-existing-versions-of-powershell"></a>卸载现有的 PowerShell 版本
 
-在安装之前所需的版本，请确保卸载任何现有的 Azure PowerShell 模块。 你可以卸载它们通过使用以下两种方法之一：
+在安装所需版本之前，请务必卸载任何现有 Azure PowerShell 模块。 可使用以下两种方法之一卸载现有版本：
 
-* 若要卸载现有的 PowerShell 模块，请登录到开发工具包中，或基于 Windows 的外部客户端如果你打算建立 VPN 连接。 关闭所有活动的 PowerShell 会话并运行以下命令： 
+* 若要卸载现有的 PowerShell 模块，请登录到开发工具包或基于 Windows 的外部客户端（如果打算建立 VPN 连接）。 关闭所有活动的 PowerShell 会话，然后运行以下命令： 
 
    ```powershell
    Get-Module -ListAvailable | where-Object {$_.Name -like “Azure*”} | Uninstall-Module
    ```
 
-* 登录到开发工具包中，或基于 Windows 的外部客户端如果你打算建立 VPN 连接。 从删除以"Azure"开头的所有文件夹`C:\Program Files (x86)\WindowsPowerShell\Modules`和`C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules`文件夹。 删除这些文件夹中删除任何现有的 PowerShell 模块，通过"AzureStackAdmin"和"全局"用户作用域。 
+* 登录到开发工具包或基于 Windows 的外部客户端（如果打算建立 VPN 连接）。 从 `C:\Program Files (x86)\WindowsPowerShell\Modules` 和 `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` 文件夹中删除以“Azure”开头的所有文件夹。 删除这些文件夹会从“AzureStackAdmin”和“global”用户范围中删除所有现有的 PowerShell 模块。 
 
-以下各节描述了安装适用于 Azure 堆栈 PowerShell 所需的步骤。 连接，部分连接，在中运行的 Azure 堆栈上或在断开连接的情况下，可以安装 PowerShell。 
+以下部分介绍安装适用于 Azure Stack 的 PowerShell 所要执行的步骤。 可在已联网、部分联网或离线场景中运行的 Azure Stack 上安装 PowerShell。 
 
-## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>在连接方案中安装 PowerShell （具有 internet 连接）
+## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>在联网场景中（已建立 Internet 连接）安装 PowerShell
 
-通过 API 版本配置文件安装了 azure 堆栈兼容 AzureRM 模块。 Azure 堆栈需要**自 2017 年 1-03-09-配置文件**API 版本配置中，数据文件可通过安装 AzureRM.Bootstrapper 模块。 若要了解有关 API 版本配置文件和它们所提供的 cmdlet，请参阅[管理 API 版本配置文件](azure-stack-version-profiles.md)。 除了 AzureRM 模块中，你还应安装的 Azure 堆栈特定 PowerShell 模块。 运行下面的 PowerShell 脚本，以在开发工作站上安装这些模块：
+通过 API 版本配置文件安装与 Azure Stack 兼容的 AzureRM 模块。 Azure Stack 需要 **2017-03-09-profile** API 版本配置文件（可通过安装 AzureRM.Bootstrapper 模块获取）。 有关 API 版本配置文件及其提供的 cmdlet 的详细信息，请参阅[管理 API 版本配置文件](azure-stack-version-profiles-powershell.md)。 除了 AzureRM 模块以外，还应安装 Azure Stack 特定的 Azure PowerShell 模块。 运行以下 PowerShell 脚本，在开发工作站上安装这些模块：
 
-> [!IMPORTANT]
-> AzureRM 1.2.11 PowerShell 模块的版本附带的重大更改的列表。 若要从 1.2.10 升级版本，请参阅迁移指南： [https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration)。
+> [!IMPORTANT]  
+> AzureRM 1.2.11 PowerShell 模块版本随附了重大更改列表。 若要从 1.2.10 升级版本，请参阅迁移指南： [ https://aka.ms/azspowershellmigration ](https://aka.ms/azspowershellmigration)。
 
   ```powershell
   # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
@@ -72,22 +72,22 @@ Set-PSRepository `
     -RequiredVersion 1.2.11
   ```
 
-若要确认安装，运行以下命令：
+若要确认安装，请运行以下命令：
 
   ```powershell
   Get-Module `
     -ListAvailable | where-Object {$_.Name -like “Azure*”}
   ```
-  如果安装不成功，AzureRM 和 Azure 堆栈模块将显示在输出中。
+  如果安装成功，输出中会显示 AzureRM 和 Azure Stack 模块。
 
-## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>安装 PowerShell 断开连接或部分连接的方案中 （具有有限的 internet 连接）
+## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>在离线或部分联网的场景中（Internet 连接受到限制）安装 PowerShell
 
-在断开连接或部分连接方案中，必须首先下载到计算机具有 internet 连接的 PowerShell 模块，然后将它们传输到安装了 Azure 堆栈开发工具包。
+在断开连接或部分连接的情况下，必须先将 PowerShell 模块下载到已建立 Internet 连接的计算机，然后将其传送到 Azure Stack 开发工具包进行安装。
 
 > [!IMPORTANT]
-> AzureRM 1.2.11 PowerShell 模块的版本附带的重大更改的列表。 若要从 1.2.10 升级版本，请参阅迁移指南： [https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration)。
+> AzureRM 1.2.11 PowerShell 模块版本随附了重大更改列表。 若要从 1.2.10 升级版本，请参阅迁移指南： [ https://aka.ms/azspowershellmigration ](https://aka.ms/azspowershellmigration)。
 
-1. 登录到的计算机，其中具有 internet 连接并到本地计算机上使用以下脚本下载 AzureRM，和 AzureStack 包：
+1. 登录到已建立 Internet 连接的计算机，使用以下脚本将 AzureRM 和 AzureStack 包下载到本地计算机：
 
    ```powershell
    $Path = "<Path that is used to save the packages>"
@@ -111,9 +111,9 @@ Set-PSRepository `
 
 2. 将下载的包复制到 USB 设备。
 
-3. 登录到开发工具包，然后将包从 USB 设备复制到上开发工具包的位置。 
+3. 登录到开发工具包，将包从 USB 设备复制到开发工具包中的某个位置。 
 
-4. 现在你必须注册此位置用作默认存储库并从该存储库安装 AzureRM 和 AzureStack 模块：
+4. 接下来，必须将此位置注册为默认存储库，并从此存储库安装 AzureRM 和 AzureStack 模块：
 
    ```powershell
    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
@@ -134,6 +134,6 @@ Set-PSRepository `
 
 ## <a name="next-steps"></a>后续步骤
 
-* [从 GitHub 下载 Azure 堆栈工具](azure-stack-powershell-download.md)
-* [配置 Azure 堆栈用户 PowerShell 环境](azure-stack-powershell-configure-user.md)  
-* [管理 Azure 堆栈中的 API 版本配置文件](azure-stack-version-profiles.md)  
+* [从 GitHub 下载 Azure Stack 工具](azure-stack-powershell-download.md)  
+* [配置 Azure Stack 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)  
+* [在 Azure Stack 中管理 API 版本配置文件](azure-stack-version-profiles-powershell.md)  

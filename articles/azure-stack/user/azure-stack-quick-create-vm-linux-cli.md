@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 堆栈中使用 Azure CLI 创建 Linux 虚拟机 |Microsoft 文档"
-description: "使用 Azure 堆栈中的 CLI 创建 Linux 虚拟机。"
+title: 在 Azure Stack 中使用 Azure CLI 创建 Linux 虚拟机 | Microsoft Docs
+description: 在 Azure Stack 中使用 CLI 创建 Linux 虚拟机。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 21F7D599-1FEC-4827-A5C3-06495C5F53A4
 ms.service: azure-stack
 ms.workload: na
@@ -15,29 +15,29 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 160893f5b2e9c78bd62355782c279fb08f7f6b48
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 69036b522b375eced604256340b532ad14a8708e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="create-a-linux-virtual-machine-by-using-azure-cli-in-azure-stack"></a>在 Azure 堆栈中使用 Azure CLI 创建 Linux 虚拟机
+# <a name="create-a-linux-virtual-machine-by-using-azure-cli-in-azure-stack"></a>在 Azure Stack 中使用 Azure CLI 创建 Linux 虚拟机
 
-*适用范围： Azure 堆栈集成系统*
+*适用于：Azure Stack 集成系统*
 
-Azure CLI 用于创建和从命令行管理 Azure 堆栈资源。 本快速入门详细介绍如何使用 Azure CLI 在 Azure 堆栈中创建 Linux 虚拟机。  创建 VM 后，安装 web 服务器，并打开端口 80 以允许 web 流量。
+Azure CLI 用于从命令行创建和管理 Azure Stack 资源。 本快速入门详细介绍如何在 Azure Stack 中使用 Azure CLI 创建 Linux 虚拟机。  创建 VM 之后，将安装 Web 服务器，并打开端口 80 以允许 Web 流量通过。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
-* 请确保 Azure 堆栈运算符具有"Ubuntu Server 16.04 LTS"将图像添加到 Azure 堆栈市场。 
+* 确保 Azure Stack 运营商已将“Ubuntu Server 16.04 LTS”映像添加到 Azure Stack Marketplace。 
 
-* Azure 堆栈需要特定版本的 Azure CLI 来创建和管理资源。 如果你没有为 Azure 堆栈配置的 Azure CLI，登录到[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)，或基于 Windows 的外部客户端如果你是[通过 VPN 连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)并遵循相关步骤，为[安装和配置 Azure CLI](azure-stack-connect-cli.md)。
+* Azure Stack 需要使用特定版本的 Azure CLI 来创建和管理资源。 如果尚未针对 Azure Stack 配置 Azure CLI，请登录到[开发工具包](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)，或登录到基于 Windows 的外部客户端（如果[通过 VPN 建立了连接](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)），遵循相应的步骤[安装并配置 Azure CLI](azure-stack-version-profiles-azurecli2.md)。
 
-* 应在 Windows 用户配置文件的.ssh 目录中创建与名称 id_rsa.pub SSH 公钥。 有关创建 SSH 密钥的详细信息，请参阅[创建 SSH 密钥在 Windows 上的](../../virtual-machines/linux/ssh-from-windows.md)。 
+* 应在 Windows 用户配置文件的 .ssh 目录中创建名为 id_rsa.pub 的 SSH 公钥。 有关创建 SSH 密钥的详细信息，请参阅[在 Windows 上创建 SSH 密钥](../../virtual-machines/linux/ssh-from-windows.md)。 
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是到哪些 Azure 堆栈部署和管理资源的逻辑容器。 从开发工具包或 Azure 堆栈集成运行的系统[az 组创建](/cli/azure/group#az_group_create)命令来创建资源组。 我们已分配了本文档中的所有变量的值，你可以使用它们也将分配一个不同的值。 下面的示例创建一个名为 myResourceGroup 中的本地位置的资源组。
+资源组是在其中部署和管理 Azure Stack 资源的逻辑容器。 在开发工具包或 Azure Stack 集成系统中，运行 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 我们已为本文档中的所有变量赋值，可以按原样使用这些值，或分配不同的值。 以下示例在本地位置创建名为 myResourceGroup 的资源组。
 
 ```cli
 az group create --name myResourceGroup --location local
@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location local
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-使用 [az vm create](/cli/azure/vm#az_vm_create) 命令创建 VM。 以下示例创建名为 myVM 的 VM。 此示例使用 Demouser 管理用户名称和Demouser@123作为密码。 更新这些值，使其适用于环境。 时连接到虚拟机，需要这些值。
+使用 [az vm create](/cli/azure/vm#az_vm_create) 命令创建 VM。 以下示例创建名为 myVM 的 VM。 此示例使用 Demouser 作为管理用户名，使用 Demouser@123 作为密码。 更新这些值，使其适用于环境。 连接到虚拟机时需要使用这些值。
 
 ```cli
 az vm create \
@@ -58,11 +58,11 @@ az vm create \
   --location local
 ```
 
-完成后，该命令将输出参数为虚拟机。  记下*PublicIPAddress*，因为使用此连接和管理你的虚拟机。
+完成之后，该命令会输出虚拟机的参数。  请记下 *PublicIPAddress*，稍后需要使用此值来连接和管理虚拟机。
 
 ## <a name="open-port-80-for-web-traffic"></a>为 Web 流量打开端口 80
 
-默认情况下，仅允许通过 SSH 连接登录到 Azure 中部署的 Linux 虚拟机。 如果此 VM 会用作 Web 服务器，则需要从 Internet 打开端口 80。 使用 [az vm open-port](/cli/azure/vm#open-port) 命令打开所需端口。
+默认情况下，仅允许通过 SSH 连接登录到 Azure 中部署的 Linux 虚拟机。 如果此 VM 将用作 Web 服务器，则需要从 Internet 打开端口 80。 使用 [az vm open-port](/cli/azure/vm#open-port) 命令打开所需端口。
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -70,7 +70,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## <a name="ssh-into-your-vm"></a>通过 SSH 连接到 VM
 
-在装有 SSH 的系统中，使用以下命令连接到虚拟机。 如果在 Windows 上操作，可以使用 [Putty](http://www.putty.org/) 来创建连接。 请确保将替换为你的虚拟机的正确公共 IP 地址。 在上述示例中，IP 地址为 192.168.102.36。
+在装有 SSH 的系统中，使用以下命令连接到虚拟机。 如果在 Windows 上操作，可以使用 [Putty](http://www.putty.org/) 来创建连接。 请确保替换为虚拟机的相应公共 IP 地址。 在上例中，IP 地址为 192.168.102.36。
 
 ```bash
 ssh <publicIpAddress>
@@ -104,7 +104,7 @@ NGINX 已安装，并且现在已从 Internet 打开 VM 上的端口 80 - 可以
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>接下来的步骤
+## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程，你已部署简单的 Linux 虚拟机。 若要了解有关 Azure 堆栈的虚拟机的详细信息，继续到[Azure 堆栈中的虚拟机的注意事项](azure-stack-vm-considerations.md)。
+在本快速入门中，我们部署了一个简单的 Linux 虚拟机。 有关 Azure Stack 虚拟机的详细信息，请转到 [Azure Stack 中虚拟机的注意事项](azure-stack-vm-considerations.md)。
 
