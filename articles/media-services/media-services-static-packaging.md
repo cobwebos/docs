@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 媒体包装器完成静态打包任务 | Microsoft Docs"
-description: "本主题说明了通过 Azure 媒体包装器完成的各种任务。"
+title: 使用 Azure 媒体包装器完成静态打包任务 | Microsoft Docs
+description: 本主题说明了通过 Azure 媒体包装器完成的各种任务。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 0582628e-a525-4a78-90ac-9f7fc1cd909f
 ms.service: media-services
 ms.workload: media

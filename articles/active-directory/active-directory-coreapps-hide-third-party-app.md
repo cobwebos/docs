@@ -39,7 +39,7 @@ ms.lasthandoff: 03/28/2018
 
 1.  使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2.  选择“所有服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。
-3.  在 “**Azure Active Directory - *目录名称***”屏幕上 （即所管理目录的 Azure AD 屏幕），选择 “**企业应用程序**”。
+3.  在 **Azure Active Directory - *目录名称*** 屏幕上 （即所管理目录的 Azure AD 屏幕），选择 “**企业应用程序**”。
 ![企业应用](media/active-directory-coreapps-hide-third-party-app/app1.png)
 4.  在“企业应用程序”屏幕上，选择“所有应用程序”。 此时会显示可管理应用的列表。
 5.  在“企业应用程序 - 所有应用程序”屏幕上，选择一个应用。</br>
@@ -55,7 +55,7 @@ ms.lasthandoff: 03/28/2018
 
 1.  使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2.  选择“所有服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。
-3.  在 “**Azure Active Directory - *目录名称***”屏幕上 （即所管理目录的 Azure AD 屏幕），选择 “**用户设置**”。
+3.  在 **Azure Active Directory - *目录名称*** 屏幕上 （即所管理目录的 Azure AD 屏幕），选择 “**用户设置**”。
 4.  在“用户设置”屏幕上的“企业应用程序”下，对于“用户只能在 Office 365 门户中查看 Office 365 应用”选择“是”。
 
 ![企业应用](media/active-directory-coreapps-hide-third-party-app/apps4.png)
