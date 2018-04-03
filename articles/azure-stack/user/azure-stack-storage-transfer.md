@@ -1,64 +1,64 @@
 ---
-title: "适用于 Azure 堆栈存储工具"
-description: "了解有关 Azure 堆栈存储数据传输工具"
+title: 适用于 Azure Stack 存储的工具
+description: 了解 Azure Stack 存储数据传送工具
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2018
+ms.date: 03/30/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 9318b7af3c3dd545207f1896c9008207f562b735
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e26a38b8fd7d008a46eba2c41075c5af09a6616a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="tools-for-azure-stack-storage"></a>适用于 Azure 堆栈存储工具
+# <a name="tools-for-azure-stack-storage"></a>适用于 Azure Stack 存储的工具
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Microsoft Azure 堆栈提供了一套用于磁盘、 blob、 表、 队列和帐户管理功能的存储服务。 如果你想要管理或将数据移到或从 Azure 堆栈存储，你可以使用 Azure 存储工具的一组。 本文提供了可用的工具的快速概述。
+Microsoft Azure 堆栈提供了一套用于磁盘、 blob、 表、 队列和帐户管理功能的存储服务。 如果需要通过 Azure Stack 存储管理或移动数据，可以使用一组 Azure 存储工具。 本文概述了可用的工具。
 
-最适合您的工具取决于你的要求：
+哪个工具最适合你取决于你的要求：
 * [AzCopy](#azcopy)
 
-    特定于存储的命令行实用工具，你可以下载的用于将数据从一个对象复制到另一个，在你的存储帐户，或存储帐户之间。
+    一个特定于存储的命令行实用程序，下载后即可在存储帐户中将数据从一个对象复制到另一个对象，或者在存储帐户之间复制。
 
 * [Azure PowerShell](#azure-powershell)
 
-    一种基于任务的命令行 shell 和脚本语言，专门用于系统管理。
+    一种基于任务的命令行 Shell 和脚本语言，专为系统管理而设计。
 
 * [Azure CLI](#azure-cli)
 
-    一种开放源代码、 跨平台的工具，用于使用 Azure 和 Azure 堆栈平台提供的一组命令。
+    一种开源的跨平台工具，提供了一组适用于 Azure 和 Azure Stack 平台的命令。
 
-* [Microsoft 存储资源管理器 （预览版）](#microsoft-azure-storage-explorer)
+* [Microsoft 存储资源管理器（预览版）](#microsoft-azure-storage-explorer)
 
     包含用户界面的易于使用的独立应用。
 
-由于 Azure 和 Azure 堆栈之间的存储服务不同，可能有一些特定的要求，为以下各节介绍每个工具。 有关 Azure 堆栈存储和 Azure 存储之间的比较，请参阅[Azure 堆栈存储： 差异和注意事项](azure-stack-acs-differences.md)。
+由于 Azure 和 Azure Stack 存在存储服务差异，在以下部分描述的每个工具可能存在一些特定的要求。 若要了解 Azure Stack 存储和 Azure 存储之间的比较情况，请参阅 [Azure Stack 存储：差异和注意事项](azure-stack-acs-differences.md)。
 
 
 ## <a name="azcopy"></a>AzCopy
-AzCopy 是一个命令行实用工具，旨在将数据复制到和从 Microsoft Azure Blob 和表存储使用简单的命令以最佳性能。 可在存储帐户中将数据从一个对象复制到另一个对象，或者在存储帐户之间复制。 有两个版本的 AzCopy： 在 Windows 和 Linux 上的 AzCopy 上的 AzCopy。 Azure 堆栈仅支持 Windows 版本。 
+AzCopy 是一个命令行实用工具，旨在将数据复制到和从 Microsoft Azure Blob 和表存储使用简单的命令以最佳性能。 可在存储帐户中将数据从一个对象复制到另一个对象，或者在存储帐户之间复制。 有两个版本的 AzCopy： 在 Windows 和 Linux 上的 AzCopy 上的 AzCopy。 Azure Stack 只支持 Windows 版。 
  
 ### <a name="download-and-install-azcopy"></a>下载并安装 AzCopy 
 
-[下载](https://aka.ms/azcopyforazurestack)AzCopy 的 Azure 堆栈的受支持的 Windows 版本。 你可以上安装并使用 AzCopy Azure 堆栈与 Azure 相同的方式。 若要了解详细信息，请参阅[传输数据的 AzCopy 命令行实用工具](../../storage/common/storage-use-azcopy.md)。 
+[下载](https://aka.ms/azcopyforazurestack)AzCopy 的 Azure 堆栈的受支持的 Windows 版本。 可以采用与 Azure 一样的方式在 Azure Stack 上安装和使用 AzCopy。 若要了解详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](../../storage/common/storage-use-azcopy.md)。 
 
  - 有关 1802年更新或更新版本，[下载 AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417)。
  - 对于早期版本，[下载 AzCopy 5.0.0](https://aka.ms/azcopyforazurestack20150405)。
 
-### <a name="azcopy-command-examples-for-data-transfer"></a>AzCopy 命令示例中的数据传输
-下面的示例演示用于复制数据到和从 Azure 堆栈 blob 的一些典型方案。 若要了解详细信息，请参阅[传输数据的 AzCopy 命令行实用工具](../../storage/storage-use-azcopy.md)。 
-#### <a name="download-all-blobs-to-local-disk"></a>所有 blob 都下载到本地磁盘
+### <a name="azcopy-command-examples-for-data-transfer"></a>针对数据传输的 AzCopy 命令示例
+以下示例演示了一些将数据复制到 Azure Stack Blob 以及从这些位置复制数据的典型方案。 若要了解详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](../../storage/storage-use-azcopy.md)。 
+#### <a name="download-all-blobs-to-local-disk"></a>将所有 Blob 下载到本地磁盘
 ```azcopy
 AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer /dest:C:\myfolder /sourcekey:<key> /S
 ```
@@ -66,32 +66,32 @@ AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer 
 ```azcopy
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.local.azurestack.external/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
-#### <a name="move-data-between-azure-and-azure-stack-storage"></a>Azure 和 Azure 堆栈存储之间移动数据 
-不支持 Azure 存储空间和 Azure 堆栈之间的异步数据传输。 你需要指定与传输**/SyncCopy**选项。 
+#### <a name="move-data-between-azure-and-azure-stack-storage"></a>在 Azure 和 Azure Stack 存储之间移动数据 
+不支持在 Azure 存储和 Azure Stack 之间进行异步数据传输。 你需要指定与传输**/SyncCopy**选项。 
 ```azcopy 
 Azcopy /Source:https://myaccount.blob.local.azurestack.external/mycontainer /Dest:https://myaccount2.blob.core.windows.net/mycontainer2 /SourceKey:AzSKey /DestKey:Azurekey /S /SyncCopy
 ```
 
 ### <a name="azcopy-known-issues"></a>Azcopy 已知问题
-* 文件存储任何 AzCopy 操作不可用，因为文件存储尚不可用 Azure 堆栈中。
-* 不支持 Azure 存储空间和 Azure 堆栈之间的异步数据传输。 你可以指定与传输**/SyncCopy**选项可将复制数据。
-* Azure 堆栈存储不支持 Linux 版本的 Azcopy。 
+* 在文件存储上执行的任何 AzCopy 操作都不可用，因为文件存储在 Azure Stack 中不可用。
+* 不支持在 Azure 存储和 Azure Stack 之间进行异步数据传输。 你可以指定与传输**/SyncCopy**选项可将复制数据。
+* Azure Stack 存储不支持 Azcopy 的 Linux 版本。 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Azure PowerShell 是一个模块，提供用于管理在 Azure 和 Azure 堆栈上的服务的 cmdlet。 这是一种基于任务的命令行外壳和脚本语言，专为系统管理而设计。
+Azure PowerShell 是一个模块，它提供的 cmdlet 用于管理 Azure 和 Azure Stack 上的服务。 这是一种基于任务的命令行外壳和脚本语言，专为系统管理而设计。
 
-### <a name="install-and-configure-powershell-for-azure-stack"></a>安装和配置 PowerShell 以 Azure 堆栈
-Azure 堆栈兼容 Azure PowerShell 模块需要使用 Azure 堆栈处理。 有关详细信息，请参阅[安装适用于 Azure 堆栈的 PowerShell](azure-stack-powershell-install.md)和[配置 Azure 堆栈用户 PowerShell 环境](azure-stack-powershell-configure-user.md)若要了解详细信息。
+### <a name="install-and-configure-powershell-for-azure-stack"></a>安装和配置适用于 Azure Stack 的 PowerShell
+需要安装与 Azure Stack 兼容的 Azure PowerShell 模块才能使用 Azure Stack。 有关详细信息，请参阅[安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md) 和[配置 Azure Stack 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)。
 
-### <a name="powershell-sample-script-for-azure-stack"></a>用于 Azure 堆栈的 PowerShell 示例脚本 
-此示例假定您已成功地[安装适用于 Azure 堆栈的 PowerShell](azure-stack-powershell-install.md)。 此脚本将帮助你完成配置并询问你的 Azure 堆栈租户凭据以将你的帐户添加到本地 PowerShell 环境。 然后，该脚本将设置默认 Azure 订阅，在 Azure 中创建新的存储帐户，此新的存储帐户中创建一个新容器并将现有图像文件 (blob) 上载到该容器。 在脚本列出该容器中的所有 Blob 后，它会在本地计算机中创建新的目标目录，并下载图像文件。
+### <a name="powershell-sample-script-for-azure-stack"></a>适用于 Azure Stack 的 PowerShell 示例脚本 
+此示例假定你已成功[安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)。 此脚本将帮助你完成配置并询问你的 Azure 堆栈租户凭据以将你的帐户添加到本地 PowerShell 环境。 然后，该脚本会设置默认的 Azure 订阅、在 Azure 中创建新的存储帐户、在此新的存储帐户中创建新容器，并将现有图像文件 (Blob) 上传到该容器。 在脚本列出该容器中的所有 Blob 后，它会在本地计算机中创建新的目标目录，并下载图像文件。
 
-1. 安装[Azure 堆栈兼容 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
+1. 安装 [Azure Stack 兼容的 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
 2. 下载[使用 Azure Stack 所需的工具](azure-stack-powershell-download.md)。  
-3. 打开**Windows PowerShell ISE**和**以管理员身份运行**，单击**文件** > **新建**创建新的脚本文件。
-4. 复制下面的脚本并粘贴到新的脚本文件。
-5. 更新脚本变量基于你的配置设置。 
-6. 注意： 此脚本必须运行的根目录下下载**AzureStack_Tools**。 
+3. 打开 **Windows PowerShell ISE**，选择“以管理员身份运行”，然后单击“文件” > “新建”以创建新的脚本文件。
+4. 复制下面的脚本并将其粘贴到新的脚本文件。
+5. 根据配置设置更新脚本变量。 
+6. 注意：此脚本必须在已下载的 **AzureStack_Tools** 的根目录下运行。 
 
 ```PowerShell 
 # begin
@@ -159,9 +159,9 @@ $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
 ```
 
 ### <a name="powershell-known-issues"></a>已知问题的 PowerShell 
-Azure 堆栈的当前兼容 Azure PowerShell 模块版本是 1.2.10。 它是不同的最新版本的 Azure PowerShell。 这种差异会影响存储服务操作：
+目前兼容 Azure Stack 的 Azure PowerShell 模块版本为 1.2.10。 它不同于最新版本的 Azure PowerShell。 这种差异影响存储服务操作：
 
-* 返回值格式`Get-AzureRmStorageAccountKey`1.2.10 版本中具有两个属性：`Key1`和`Key2`，而当前的 Azure 版本返回数组，其中包含所有的帐户密钥。
+* 在版本 1.2.10 中，`Get-AzureRmStorageAccountKey` 的返回值格式有两种属性：`Key1` 和 `Key2`，而当前的 Azure 版本返回的数组包含所有帐户密钥。
    ```
    # This command gets a specific key for a Storage account, 
    # and works for Azure PowerShell version 1.4, and later versions.
@@ -174,20 +174,20 @@ Azure 堆栈的当前兼容 Azure PowerShell 模块版本是 1.2.10。 它是不
    -AccountName "MyStorageAccount").Key1
 
    ```
-   有关详细信息，请参阅[Get-azurermstorageaccountkey](https://docs.microsoft.com/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey?view=azurermps-4.1.0)。
+   有关详细信息，请参阅 [Get-AzureRmStorageAccountKey](https://docs.microsoft.com/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey?view=azurermps-4.1.0)。
 
 ## <a name="azure-cli"></a>Azure CLI
-Azure CLI 是用于管理 Azure 资源的 Azure 的命令行体验。 可以将其安装在 macOS、 Linux 和 Windows，还可以从命令行运行它。 
+Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 可以将其安装在 macOS、Linux 和 Windows 上，然后从命令行运行。 
 
-Azure CLI 进行了优化用于管理和从命令行管理 Azure 资源和生成工作针对 Azure 资源管理器中的自动化脚本。 它提供了许多相同的函数位于 Azure 堆栈门户中，包括丰富的数据的访问。
+Azure CLI 经过优化，可用于从命令行管理 Azure 资源，以及生成可以针对 Azure 资源管理器运行的自动化脚本。 它提供 Azure Stack 门户所提供的许多功能，包括各种数据访问功能。
 
-Azure 堆栈需要 Azure CLI 版本 2.0。 有关安装和配置 Azure CLI 与 Azure 堆栈的详细信息，请参阅[安装和配置 Azure 堆栈 CLI](azure-stack-connect-cli.md)。 有关如何使用 Azure CLI 2.0 执行使用 Azure 堆栈存储帐户中的资源的多个任务的详细信息，请参阅[对 Azure 存储空间使用 Azure CLI2.0](../../storage/storage-azure-cli.md)
+Azure Stack 需要 Azure CLI 2.0 版。 若要详细了解如何通过 Azure Stack 来安装和配置 Azure CLI，请参阅[安装和配置 Azure Stack CLI](azure-stack-version-profiles-azurecli2.md)。 若要详细了解如何使用 Azure CLI 2.0 来执行多个可利用 Azure Stack 存储帐户中资源的任务，请参阅[将 Azure CLI2.0 与 Azure 存储配合使用](../../storage/storage-azure-cli.md)
 
-### <a name="azure-cli-sample-script-for-azure-stack"></a>用于 Azure 堆栈的 azure CLI 示例脚本 
-一旦你完成的 CLI 安装和配置，你可以尝试以下步骤以使用的小型壳示例脚本可与 Azure 堆栈存储资源进行交互。 该脚本首先创建一个新容器，在你的存储帐户，然后将现有文件 （作为 blob) 上载到该容器、 列出容器中的所有 blob 和最后，将文件下载到你指定的本地计算机上的目标。 在运行此脚本之前，请确保已成功连接并登录到目标 Azure 堆栈。 
+### <a name="azure-cli-sample-script-for-azure-stack"></a>适用于 Azure Stack 的 Azure CLI 示例脚本 
+完成 CLI 安装和配置以后，即可尝试以下步骤，以便使用一个小的 shell 示例脚本与 Azure Stack 存储资源交互。 此脚本先在存储帐户中创建一个新容器，然后将现有文件作为 Blob 上传到该容器中，列出容器中的所有 Blob，最后再将文件下载到指定的本地计算机上的目标。 运行此脚本之前，请确保已成功连接并登录到目标 Azure Stack。 
 1. 打开最喜欢的文本编辑器，然后将前面的脚本复制并粘贴到编辑器中。
-2. 更新脚本的变量以反映你的配置设置。 
-3. 更新了必要的变量后，保存脚本并退出编辑器。 后续步骤假定你已名为脚本 my_storage_sample.sh。
+2. 更新脚本的变量，使之反映配置设置。 
+3. 更新了必要的变量后，保存脚本并退出编辑器。 后续步骤假定已将脚本命名为 my_storage_sample.sh。
 4. 如有必要，将脚本标记为可执行文件：`chmod +x my_storage_sample.sh`
 5. 执行脚本。 例如，在 Bash 中：`./my_storage_sample.sh`
 
@@ -226,14 +226,14 @@ echo "Done"
 
 ## <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure 存储资源管理器
 
-Microsoft Azure 存储资源管理器是从 Microsoft 一个独立应用。 它可以轻松地在 Windows、 macOS 和 Linux 上使用 Azure 存储空间和 Azure 堆栈存储数据。 如果你想管理你的 Azure 堆栈存储数据的简单办法，则可以考虑使用 Microsoft Azure 存储资源管理器。
+Microsoft Azure 存储资源管理器是从 Microsoft 一个独立应用。 可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储和 Azure Stack 存储数据。 如果你想管理你的 Azure 堆栈存储数据的简单办法，则可以考虑使用 Microsoft Azure 存储资源管理器。
 
  - 若要了解有关配置 Azure 存储资源管理器，用于 Azure 堆栈的详细信息，请参阅[连接存储资源管理器到 Azure 堆栈订阅](azure-stack-storage-connect-se.md)。
  - 若要了解有关 Microsoft Azure 存储资源管理器的详细信息，请参阅[存储资源管理器 （预览版） 入门](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 
 ## <a name="next-steps"></a>后续步骤
-* [连接到 Azure 堆栈订阅的存储资源管理器](azure-stack-storage-connect-se.md)
-* [存储资源管理器 （预览版） 入门](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
-* [Azure 一致存储： 差异和注意事项](azure-stack-acs-differences.md)
+* [将存储资源管理器连接到 Azure Stack 订阅](azure-stack-storage-connect-se.md)
+* [存储资源管理器（预览版）入门](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [与 Azure 一致的存储：差异和注意事项](azure-stack-acs-differences.md)
 * [Microsoft Azure 存储空间简介](../../storage/common/storage-introduction.md)
 

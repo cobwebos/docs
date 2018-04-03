@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 03/16/2018
 ms.author: mabrigg
-ms.openlocfilehash: ad258cf6c73b2c1ea5f208ebef9906a0e3d35ea4
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.reviewer: sijuman
+ms.openlocfilehash: 83327f138832a7272d44de1b0c5988a3575d6d91
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="install-and-configure-cli-for-use-with-azure-stack"></a>安装并配置与 Azure Stack 配合使用的 CLI
+# <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>使用 Azure 堆栈中的 Azure CLI 2.0 使用 API 版本配置文件
 
 本文介绍从 Linux 和 Mac 客户端平台使用 Azure 命令行接口 (CLI) 管理 Azure Stack 开发工具包资源的整个过程。 
 
@@ -106,7 +107,6 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
         --endpoint-resource-manager "https://adminmanagement.local.azurestack.external" \ 
         --suffix-storage-endpoint "local.azurestack.external" \ 
         --suffix-keyvault-dns ".adminvault.local.azurestack.external" \ 
-        --endpoint-active-directory-graph-resource-id "https://graph.windows.net/" \
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
 
@@ -118,7 +118,6 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
         --endpoint-resource-manager "https://management.local.azurestack.external" \ 
         --suffix-storage-endpoint "local.azurestack.external" \ 
         --suffix-keyvault-dns ".vault.local.azurestack.external" \ 
-        --endpoint-active-directory-graph-resource-id "https://graph.windows.net/" \
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
 

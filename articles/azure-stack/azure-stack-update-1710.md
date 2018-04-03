@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: mabrigg
-ms.openlocfilehash: 1a482f1d2f3eef8775bb7b64d4f6749f69fa5471
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8c7c39ecdc332c994e5c00f8415462f208e7d20b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-1710-update-build-201710201"></a>Azure Stack 1710 更新（内部版本 20171020.1）
 
@@ -85,7 +85,9 @@ ms.lasthandoff: 03/23/2018
    若要解决后两个问题，可以输入订阅或资源组的名称（如果知道），或者可以改用 PowerShell。
 - 删除用户订阅生成孤立的资源。 解决方法是先删除用户资源或整个资源组，然后再删除用户订阅。
 - 无法使用 Azure Stack 门户查看订阅的权限。 解决方法是使用 PowerShell 验证权限。
-  
+- **服务运行状况**边栏选项卡无法加载。 当你打开的服务运行状况边栏选项卡在管理员或用户门户中，Azure 堆栈会显示错误并不会加载信息。 这是预期的行为。 尽管你可以选择并打开服务运行状况，但此功能尚不可用，但将实现 Azure 堆栈的未来版本中。
+ 
+
 ### <a name="backup"></a>备份
 
 - 请不要在“基础架构备份”边栏选项卡上启用基础结构备份。
@@ -96,7 +98,7 @@ ms.lasthandoff: 03/23/2018
 
 ### <a name="marketplace"></a>Marketplace
 - 尝试使用“从 Azure 添加”选项将项添加到 Azure Stack Marketplace 时，可能无法看到所有可供下载的项。
-- 用户无需订阅就能浏览整个 Marketplace，并且将会看到计划和产品等管理项。 对用户而言，这些项是非功能性的。
+- 用户无需订阅就能浏览整个 Marketplace，并且将会看到计划和产品/服务等管理项。 对用户而言，这些项是非功能性的。
 
 ### <a name="compute"></a>计算
 - 用户可以使用相应的选项创建包含异地冗余存储的虚拟机。 此配置会导致虚拟机创建失败。

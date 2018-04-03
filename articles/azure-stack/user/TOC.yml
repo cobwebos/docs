@@ -99,12 +99,19 @@
               href: azure-stack-powershell-download.md
             - name: 配置 PowerShell - 用户
               href: azure-stack-powershell-configure-user.md
-            - name: 安装和配置 Azure Stack CLI
-              href: azure-stack-connect-cli.md
             - name: 安装 Visual Studio
               href: azure-stack-install-visual-studio.md
-            - name: 管理 API 版本配置文件
+            - name: 使用 API 版本配置文件
               href: azure-stack-version-profiles.md
+              items:
+                - name: PowerShell
+                  href: azure-stack-version-profiles-powershell.md
+                - name: Azure CLI 2.0
+                  href: azure-stack-version-profiles-azurecli2.md
+                - name: 前往
+                  href: azure-stack-version-profiles-go.md
+                - name: 资源提供程序 Api 支持的配置文件
+                  href: azure-stack-profiles-azure-resource-manager-versions.md
         - name: 使用策略模块
           href: azure-stack-policy-module.md
         - name: 使用模板

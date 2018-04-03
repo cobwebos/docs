@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2b306cc9dc9bbf435eb70315cc46e7faf4268b47
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 55fd212a895ed861cb5a9be0e4dae283e3cb5cfd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>在 Azure Stack 中使用 PowerShell 启动并运行
 
@@ -32,9 +32,6 @@ ms.lasthandoff: 03/28/2018
 ## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>设置 PowerShell 进行基于 Azure Active Directory 的部署
 
 登录到 Azure Stack 开发工具包；如果已通过 VPN 建立连接，请登录到基于 Windows 的外部客户端。 打开权限提升的 PowerShell ISE 会话，然后运行以下脚本。 确保根据需要更新环境配置的 **TenantName**、**ArmEndpoint** 和 **GraphAudience** 变量：
-
-> [!IMPORTANT]
-> AzureRM 1.2.11 PowerShell 模块版本随附了重大更改列表。 若要从 1.2.10 升级版本，请参阅[迁移指南](https://aka.ms/azspowershellmigration)。
 
 ```powershell
 # Specify Azure Active Directory tenant name.

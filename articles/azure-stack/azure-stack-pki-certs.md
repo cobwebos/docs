@@ -3,7 +3,7 @@ title: Azure Stack 集成系统的 Azure Stack 公钥基础结构证书要求 | 
 description: 介绍 Azure Stack 集成系统的 Azure Stack PKI 证书部署要求。
 services: azure-stack
 documentationcenter: ''
-author: mabriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,16 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2018
-ms.author: mabrigg
+ms.date: 03/29/2018
+ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: a5712e556d7b3bdcce38b8b8d39a08414ce0fd2f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 583f827fe77ef7721b3098dee01c418c9e5cccd8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
+
 Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 Azure Stack 服务，并可能分配给租户 VM 的外部可访问公共 IP 地址。 在部署 Azure Stack 期间，需要使用这些 Azure Stack 公共基础结构终结点的、具有适当 DNS 名称的 PKI 证书。 本文提供以下方面的信息：
 
 - 部署 Azure Stack 时需要哪些证书
@@ -37,7 +38,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 - 你 Azure 堆栈的基础结构必须具有对用于对证书进行签名的证书颁发机构的网络访问
 - 旋转时证书，证书必须是可以从同一个用于在部署或上述任何公用证书颁发机构提供的证书进行签名的内部证书颁发机构颁发
 - 不支持使用自签名证书
-- 证书可以是单个通配符证书，其中涵盖使用者可选名称 (SAN) 字段中的所有命名空间。 或者，可以针对需要证书的终结点（例如 acs、Key Vault）使用采用通配符的单个证书。 
+- 证书可以是单个通配符证书，其中涵盖使用者可选名称 (SAN) 字段中的所有命名空间。 或者，可以使用如终结点使用通配符的单个证书**acs**和它们所需的密钥保管库。 
 - 证书签名算法不能是 SHA1，因为算法必须更可靠。 
 - 证书格式必须是 PFX，因为安装 Azure Stack 时需要公钥和私钥。 
 - 证书 pfx 文件的“密钥用途”字段中必须包含“数字签名”和“KeyEncipherment”值。
@@ -58,6 +59,23 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 需要使用每个 Azure Stack 公共基础结构终结点的、具有适当 DNS 名称的证书。 每个终结点的 DNS 名称使用以下格式表示：*&lt;prefix>.&lt;region>.&lt;fqdn>*。 
 
 对于部署，[region] 和 [externalfqdn] 值必须与针对 Azure Stack 系统选择的区域和外部域名相匹配。 例如，如果区域名称为 *Redmond*，外部域名为 *contoso.com*，则 DNS 名称的格式为 *&lt;prefix>.redmond.contoso.com*。*&lt;prefix>* 值由 Microsoft 预先指定，描述证书保护的终结点。 此外，外部基础结构终结点的 *&lt;prefix>* 值取决于使用特定终结点的 Azure Stack 服务。 
+
+> [!note]  
+> 证书可以是提供终结点作为单个通配符证书涵盖复制到所有的目录的使用者和使用者备用名称 (SAN) 字段中的所有命名空间或每个单独的证书复制到相应的目录。 请记住，这两个选项要求你为终结点使用通配符证书，如**acs**和它们所需的密钥保管库。 
+
+| 部署文件夹 | 所需的证书使用者和使用者可选名称 (SAN) | 范围（按区域） | 子域命名空间 |
+|-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
+| 公共门户 | portal.&lt;region>.&lt;fqdn> | 门户 | &lt;region>.&lt;fqdn> |
+| 管理门户 | adminportal.&lt;region>.&lt;fqdn> | 门户 | &lt;region>.&lt;fqdn> |
+| Azure 资源管理器公共门户 | management.&lt;region>.&lt;fqdn> | Azure 资源管理器 | &lt;region>.&lt;fqdn> |
+| Azure 资源管理器管理门户 | adminmanagement。&lt;区域 >。&lt;fqdn > | Azure 资源管理器 | &lt;region>.&lt;fqdn> |
+| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | Blob 存储 | blob.&lt;region>.&lt;fqdn> |
+| ACSTable | *.table.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | 表存储 | table.&lt;region>.&lt;fqdn> |
+| ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | 队列存储 | queue.&lt;region>.&lt;fqdn> |
+| KeyVault | *.vault.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | Key Vault | vault.&lt;region>.&lt;fqdn> |
+| KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） |  内部 Key Vault |  adminvault.&lt;region>.&lt;fqdn> |
+
+### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>Pre 1803 版本上的 Azure 堆栈环境
 
 |部署文件夹|所需的证书使用者和使用者可选名称 (SAN)|范围（按区域）|子域命名空间|
 |-----|-----|-----|-----|
@@ -93,7 +111,7 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 |范围（按区域）|证书|所需的证书使用者和使用者可选名称 (SAN)|子域命名空间|
 |-----|-----|-----|-----|
 |SQL、MySQL|SQL 和 MySQL|&#42;.dbadapter.*&lt;region>.&lt;fqdn>*<br>（通配符 SSL 证书）|dbadapter.*&lt;region>.&lt;fqdn>*|
-|应用服务|Web 流量默认 SSL 证书|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>（多域通配符 SSL 证书<sup>1</sup>）|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|应用服务|Web 流量默认 SSL 证书|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>（多域通配符 SSL 证书<sup>1</sup>）|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |应用服务|API|api.appservice.*&lt;region>.&lt;fqdn>*<br>（SSL 证书<sup>2</sup>）|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |应用服务|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>（SSL 证书<sup>2</sup>）|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |应用服务|SSO|sso.appservice.*&lt;region>.&lt;fqdn>*<br>（SSL 证书<sup>2</sup>）|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|

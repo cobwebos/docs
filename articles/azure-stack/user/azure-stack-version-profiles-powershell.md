@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Stack 中的 API 版本配置文件 | Microsoft Docs
-description: 了解 Azure Stack 中的 API 版本配置文件。
+title: 使用 Azure 堆栈中的 PowerShell API 版本配置文件 |Microsoft 文档
+description: 了解有关 Azure 堆栈中的 PowerShell 使用 API 版本配置文件。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
-ms.openlocfilehash: 68f4250c2a2a6bed1a1e21dc444e93cc87b6f59b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.reviewer: sijuman
+ms.openlocfilehash: 890237ff40f9c9893c57f49c96e6ddc99849c2bd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/03/2018
 ---
-# <a name="manage-api-version-profiles-in-azure-stack"></a>管理 Azure Stack 中的 API 版本配置文件
+# <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>使用适用于 Azure 堆栈中的 PowerShell API 版本配置文件
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
@@ -114,4 +115,4 @@ Uninstall-AzureRmProfile -Profile 2017-03-09-profile
 
 ## <a name="next-steps"></a>后续步骤
 * [安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md)
-* [配置 Azure Stack 用户的 PowerShell 环境](user/azure-stack-powershell-configure-user.md)  
+* [配置 Azure Stack 用户的 PowerShell 环境](azure-stack-powershell-configure-user.md)  
