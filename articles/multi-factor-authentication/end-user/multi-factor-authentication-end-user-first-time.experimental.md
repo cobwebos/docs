@@ -1,9 +1,9 @@
 ---
-title: "为工作或学校帐户设置双重验证 | Microsoft Docs"
-description: "如果公司已配置 Azure 多重身份验证，系统会提示注册双重验证。 了解设置方法。 "
+title: 为工作或学校帐户设置双重验证 | Microsoft Docs
+description: '如果公司已配置 Azure 多重身份验证，系统会提示注册双重验证。 了解设置方法。 '
 services: multi-factor-authentication
-keywords: "如何使用 azure 目录, 云中的 active directory, active directory 教程"
-documentationcenter: 
+keywords: 如何使用 azure 目录, 云中的 active directory, active directory 教程
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi

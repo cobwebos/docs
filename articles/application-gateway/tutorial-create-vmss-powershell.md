@@ -1,6 +1,6 @@
 ---
-title: "使用虚拟机规模集创建应用程序网关 - Azure PowerShell | Microsoft Docs"
-description: "了解如何通过 Azure PowerShell 使用虚拟机规模集创建应用程序网关。"
+title: 使用虚拟机规模集创建应用程序网关 - Azure PowerShell | Microsoft Docs
+description: 了解如何通过 Azure PowerShell 使用虚拟机规模集创建应用程序网关。
 services: application-gateway
 author: davidmu1
 manager: timlt

@@ -5,12 +5,18 @@
 - name: 基于角色的访问控制 (RBAC)
   href: role-based-access-control-what-is.md
   items:
-    - name: 管理访问权限分配
+    - name: 管理角色分配
       items:
         - name: 按用户
           href: role-based-access-control-manage-assignments.md
         - name: 按资源
           href: role-based-access-control-configure.md
+        - name: 使用 Azure CLI
+          href: role-based-access-control-manage-access-azure-cli.md
+        - name: 使用 PowerShell
+          href: role-based-access-control-manage-access-powershell.md
+        - name: 使用 REST
+          href: role-based-access-control-manage-access-rest.md
     - name: 内置角色
       href: role-based-access-built-in-roles.md
     - name: 自定义角色
@@ -19,14 +25,6 @@
       href: role-based-access-control-create-custom-roles-for-internal-external-users.md
     - name: 报告
       href: role-based-access-control-access-change-history-report.md
-    - name: 管理角色的更多方式
-      items:
-        - name: 使用 Azure CLI
-          href: role-based-access-control-manage-access-azure-cli.md
-        - name: 使用 PowerShell
-          href: role-based-access-control-manage-access-powershell.md
-        - name: 使用 REST
-          href: role-based-access-control-manage-access-rest.md
     - name: 提升租户管理员访问权限
       href: role-based-access-control-tenant-admin-access.md
     - name: 故障排除

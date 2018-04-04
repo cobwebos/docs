@@ -1,8 +1,8 @@
 ---
-title: "在 Azure 中使用 Ansible"
-description: "介绍如何使用 Ansible 自动执行云预配、配置管理和应用程序部署。"
+title: 在 Azure 中使用 Ansible
+description: 介绍如何使用 Ansible 自动执行云预配、配置管理和应用程序部署。
 ms.service: ansible
-keywords: "ansible, azure, devops, 概述, 云预配, 配置管理, 应用程序部署, ansible 模块, ansible playbook"
+keywords: ansible, azure, devops, 概述, 云预配, 配置管理, 应用程序部署, ansible 模块, ansible playbook
 author: tomarcher
 manager: routlaw
 ms.author: tarcher

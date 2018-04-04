@@ -1,11 +1,11 @@
 ---
-title: "在没有 Azure 代理的情况下重置本地 Windows 密码 | Microsoft Docs"
-description: "如何在 Azure 来宾代理未安装或者未在 VM 上正常运行的情况下重置本地 Windows 用户帐户密码"
+title: 在没有 Azure 代理的情况下重置本地 Windows 密码 | Microsoft Docs
+description: 如何在 Azure 来宾代理未安装或者未在 VM 上正常运行的情况下重置本地 Windows 用户帐户密码
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
 ms.service: virtual-machines-windows
 ms.devlang: na

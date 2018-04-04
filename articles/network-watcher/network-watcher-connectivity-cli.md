@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 网络观察程序排查连接问题 - Azure CLI 2.0 | Microsoft Docs"
-description: "了解如何通过 Azure CLI 2.0 使用 Azure 网络观察程序的排查连接问题功能。"
+title: 使用 Azure 网络观察程序排查连接问题 - Azure CLI 2.0 | Microsoft Docs
+description: 了解如何通过 Azure CLI 2.0 使用 Azure 网络观察程序的排查连接问题功能。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article

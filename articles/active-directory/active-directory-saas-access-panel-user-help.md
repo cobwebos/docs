@@ -1,11 +1,11 @@
 ---
-title: "在 Azure Active Directory 中访问和使用“我的应用”门户时获得帮助 | Microsoft Docs"
-description: "获得有关在访问面板中登录和执行常见任务的帮助。"
+title: 在 Azure Active Directory 中访问和使用“我的应用”门户时获得帮助 | Microsoft Docs
+description: 获得有关在访问面板中登录和执行常见任务的帮助。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c67cd675-b567-41e1-8bc2-e06fe0b38d3b
 ms.service: active-directory
 ms.workload: identity

@@ -1,13 +1,13 @@
 ---
-title: "安装已发布应用程序 - StreamSets Data Collector - Azure HDInsight | Microsoft Docs"
-description: "安装并使用 StreamSets Data Collector 第三方 Hadoop 应用程序。"
+title: 安装已发布应用程序 - StreamSets Data Collector - Azure HDInsight | Microsoft Docs
+description: 安装并使用 StreamSets Data Collector 第三方 Hadoop 应用程序。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na

@@ -1,8 +1,8 @@
 ---
-title: "将应用程序与 Azure Active Directory 集成"
-description: "如何在 Azure Active Directory (Azure AD) 中添加、更新或删除应用程序。"
+title: 将应用程序与 Azure Active Directory 集成
+description: 如何在 Azure Active Directory (Azure AD) 中添加、更新或删除应用程序。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: PatAltimore
 manager: mtillman
 editor: mbaldwin

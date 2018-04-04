@@ -1,12 +1,12 @@
 ---
-title: "测试 Azure VM 网络吞吐量 | Microsoft Docs"
-description: "了解如何测试 Azure 虚拟机网络吞吐量。"
+title: 测试 Azure VM 网络吞吐量 | Microsoft Docs
+description: 了解如何测试 Azure 虚拟机网络吞吐量。
 services: virtual-network
 documentationcenter: na
 author: steveesp
 manager: Gerald DeGrace
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article

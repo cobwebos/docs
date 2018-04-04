@@ -1,10 +1,10 @@
 ---
-title: "创建应用程序网关 - Azure PowerShell | Microsoft Docs"
-description: "了解如何使用 Azure PowerShell 创建应用程序网关。"
+title: 创建应用程序网关 - Azure PowerShell | Microsoft Docs
+description: 了解如何使用 Azure PowerShell 创建应用程序网关。
 services: application-gateway
 author: davidmu1
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.devlang: azurepowershell

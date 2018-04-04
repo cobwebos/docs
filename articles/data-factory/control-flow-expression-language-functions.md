@@ -51,7 +51,7 @@ ms.lasthandoff: 03/28/2018
 |----------------|------------|  
 |"parameters"|返回字符“parameters”。|  
 |"parameters[1]"|返回字符“parameters[1]”。|  
-|"@@"|返回包含\“\@\”的、由 1 个字符构成的字符串。|  
+|\"\@\@\"|返回包含\“\@\”的、由 1 个字符构成的字符串。|  
 |\" \@\"|返回包含\“\@\”的、由 2 个字符构成的字符串。|  
   
  如果使用称为字符串内插的功能（其中表达式封装在 `@{ ... }` 内），表达式还可以显示在字符串内。 例如： `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  

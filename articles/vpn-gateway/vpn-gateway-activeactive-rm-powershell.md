@@ -1,11 +1,11 @@
 ---
-title: "配置与 VPN 网关的主动-主动 S2S VPN 连接：Azure 资源管理器：PowerShell | Microsoft Docs"
-description: "本文逐步讲解如何使用 Azure 资源管理器和 PowerShell 配置包含 Azure VPN 网关的主动-主动连接。"
+title: 配置与 VPN 网关的主动-主动 S2S VPN 连接：Azure 资源管理器：PowerShell | Microsoft Docs
+description: 本文逐步讲解如何使用 Azure 资源管理器和 PowerShell 配置包含 Azure VPN 网关的主动-主动连接。
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway

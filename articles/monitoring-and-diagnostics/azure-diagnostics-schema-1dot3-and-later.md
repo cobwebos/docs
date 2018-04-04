@@ -1,12 +1,12 @@
 ---
-title: "Azure 诊断扩展 1.3 及更高版本的配置架构 | Microsoft Docs"
-description: "Microsoft Azure SDK 2.4 及更高版本中附带了 Azure 诊断 1.3 及更高版本的架构。"
+title: Azure 诊断扩展 1.3 及更高版本的配置架构 | Microsoft Docs
+description: Microsoft Azure SDK 2.4 及更高版本中附带了 Azure 诊断 1.3 及更高版本的架构。
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na

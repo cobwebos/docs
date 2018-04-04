@@ -1,8 +1,8 @@
 ---
-title: "Microsoft Authenticator 应用手机版 | Microsoft 文档"
-description: "了解如何升级到最新版本的 Azure Authenticator。"
+title: Microsoft Authenticator 应用手机版 | Microsoft 文档
+description: 了解如何升级到最新版本的 Azure Authenticator。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba

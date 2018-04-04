@@ -118,6 +118,8 @@
   items:
     - name: 直观创作数据工厂
       href: author-visually.md
+    - name: 持续集成和部署
+      href: continuous-integration-deployment.md
     - name: 复制数据
       items:
         - name: 通过复制活动复制数据

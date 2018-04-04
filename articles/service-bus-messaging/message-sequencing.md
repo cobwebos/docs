@@ -1,11 +1,11 @@
 ---
-title: "Azure 服务总线消息序列化和时间戳 | Microsoft Docs"
-description: "通过时间戳保持服务总线消息的序列和顺序"
+title: Azure 服务总线消息序列化和时间戳 | Microsoft Docs
+description: 通过时间戳保持服务总线消息的序列和顺序
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na

@@ -1,8 +1,8 @@
 ---
-title: "在 Azure 中使用 Ansible 的工具"
-description: "在 Azure 中安装和使用 Ansible 的单个工具"
+title: 在 Azure 中使用 Ansible 的工具
+description: 在 Azure 中安装和使用 Ansible 的单个工具
 ms.service: ansible
-keywords: "ansible, azure, devops, 工具, vs code, visual studio code, 扩展"
+keywords: ansible, azure, devops, 工具, vs code, visual studio code, 扩展
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
