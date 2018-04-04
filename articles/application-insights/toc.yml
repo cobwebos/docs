@@ -238,6 +238,9 @@
       items:
         - name: 管理定价和数据量
           href: app-insights-pricing.md
+          items:
+            - name: 企业计划详细信息
+              href: app-insights-pricing-enterprise-details.md
         - name: 为 SCOM 使用 Application Insights 的应用程序性能监视
           href: app-insights-scom.md
     - name: 导出

@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: bd1a2643d9faf65d664c786169c38f01767fb7e5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 89469af2b1d02ef00fc347e47719956885e7f142
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器 
 
@@ -52,6 +52,10 @@ ms.lasthandoff: 03/16/2018
 [FunctionName("TimerTriggerCSharp")]
 public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
 {
+    if(myTimer.IsPastDue)
+    {
+        log.Info("Timer is running late!");
+    }
     log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
 }
 ```
@@ -86,7 +90,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 
 ### <a name="f-example"></a>F# 示例
 
-以下示例演示 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [F# 脚本函数](functions-reference-fsharp.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。
+以下示例演示了 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [F# 脚本函数](functions-reference-fsharp.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。
 
 下面是 *function.json* 文件中的绑定数据：
 
@@ -144,19 +148,19 @@ module.exports = function (context, myTimer) {
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs)。
 
-该特性的构造函数采用 CRON 表达式，如以下示例中所示：
+该特性的构造函数采用 CRON 表达式或 `TimeSpan`： 仅当函数应用在应用服务计划中运行时才能使用 `TimeSpan`。 以下示例显示了一个 CRON 表达式：
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
 public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
 {
-   ...
+    if (myTimer.IsPastDue)
+    {
+        log.Info("Timer is running late!");
+    }
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
 }
  ```
-
-如果按应用服务计划（而不是消耗计划）运行函数应用，可以指定 `TimeSpan`（而不是 CRON 表达式）。
-
-有关完整示例，请参阅 [C# 示例](#c-example)。
 
 ## <a name="configuration"></a>配置
 
@@ -167,75 +171,11 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWr
 |**类型** | 不适用 | 必须设置为“timerTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 | 在函数代码中表示计时器对象的变量的名称。 | 
-|**schedule**|**ScheduleExpression**|在消耗计划中，可使用 CRON 表达式定义计划。 如果使用应用服务计划，还可使用 `TimeSpan` 字符串。 以下部分介绍 CRON 表达式。 可以将计划表达式放在应用设置中并将此属性设置为 **%** 签名中包装的值，如此示例：“%NameOfAppSettingWithCRONExpression%”中所示。 |
+|**schedule**|**ScheduleExpression**|[CRON 表达式](#cron-expressions)或 [TimeSpan](#timespan) 值。 只能对在应用服务计划中运行的函数应用使用 `TimeSpan`。 可以将计划表达式放在应用设置中并将此属性设置为用 **%** 符号括起的应用设置名称中，例如此示例中的“%NameOfAppSettingWithScheduleExpression%”。 |
+|**runOnStartup**|**RunOnStartup**|如果为 `true`，则在运行时启动时调用此函数。 例如，当函数应用从由于无活动而进入的空闲状态醒来后，运行时会启动。 当函数应用由于函数更改而重新启动时，以及当函数应用横向扩展时。因此，**runOnStartup** 在极少的情况下才应该设置为 `true`，因为这会使代码的执行时间很难预测。 如果需要在计时器计划外部触发函数，则可以创建具有不同触发器类型的另一个函数并在两个函数之间共享代码。 例如，若要在部署上触发，可以[自定义部署](https://github.com/projectkudu/kudu/wiki/Customizing-deployments)来通过在部署完成时发出 HTTP 请求来调用第二个函数。|
+|**useMonitor**|**UseMonitor**|设置为 `true` 或 `false` 以指示是否应当监视计划。 计划监视在各次计划发生后会持续存在，以帮助确保即使在函数应用实例重新启动的情况下也能正确维护计划。 如果未显式设置，则对于重复周期间隔大于 1 分钟的计划，默认值为 `true`。 对于每分钟触发多次的计划，默认值为 `false`。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
-
-### <a name="cron-format"></a>CRON 格式 
-
-Azure Functions 计时器触发器的 [CRON 表达式](http://en.wikipedia.org/wiki/Cron#CRON_expression)包含以下六个字段： 
-
-```
-{second} {minute} {hour} {day} {month} {day-of-week}
-```
-
->[!NOTE]   
->联机找到的许多 CRON 表达式会忽略 `{second}` 字段。 如果从这些字段之一复制，请添加缺少的 `{second}` 字段。
-
-### <a name="cron-time-zones"></a>CRON 时区
-
-CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON 表达式基于其他时区，请为名为 `WEBSITE_TIME_ZONE` 的 Function App 创建新的应用设置。 将值设置为所需时区的名称，如 [Microsoft 时区索引](https://technet.microsoft.com/library/cc749073(v=ws.10).aspx)中所示。 
-
-例如，东部标准时间是 UTC-05:00。 若要让计时器触发器每天在美国东部时间上午 10:00 触发，可使用表示 UTC 时区的以下 CRON 表达式：
-
-```json
-"schedule": "0 0 15 * * *",
-``` 
-
-或者，可以为名为 `WEBSITE_TIME_ZONE` 的 Function App 添加新的应用设置，并将值设置为**东部标准时间**。  然后，以下 CRON 表达式可用于东部时间上午 10:00： 
-
-```json
-"schedule": "0 0 10 * * *",
-``` 
-### <a name="cron-examples"></a>CRON 示例
-
-以下是一些可用于 Azure Functions 中计时器触发器的 CRON 表达式示例。 
-
-每隔五分钟触发一次：
-
-```json
-"schedule": "0 */5 * * * *"
-```
-
-每隔一小时开始时触发一次：
-
-```json
-"schedule": "0 0 * * * *",
-```
-
-每隔两小时触发一次：
-
-```json
-"schedule": "0 0 */2 * * *",
-```
-
-从上午 9 点到下午 5 点每隔一小时触发一次：
-
-```json
-"schedule": "0 0 9-17 * * *",
-```
-
-每天上午 9:30 触发：
-
-```json
-"schedule": "0 30 9 * * *",
-```
-
-每周日上午 9:30 触发：
-
-```json
-"schedule": "0 30 9 * * 1-5",
-```
 
 ## <a name="usage"></a>使用情况
 
@@ -246,16 +186,91 @@ CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON �
     "Schedule":{
     },
     "ScheduleStatus": {
-        "Last":"2016-10-04T10:15:00.012699+00:00",
+        "Last":"2016-10-04T10:15:00+00:00",
+        "LastUpdated":"2016-10-04T10:16:00+00:00",
         "Next":"2016-10-04T10:20:00+00:00"
     },
     "IsPastDue":false
 }
 ```
 
+如果当前函数调用晚于计划时间，则 `IsPastDue` 属性为 `true`。 例如，函数应用重新启动可能会导致调用被错过。
+
+## <a name="cron-expressions"></a>CRON 表达式 
+
+Azure Functions 计时器触发器的 CRON 表达式包含以下六个字段： 
+
+`{second} {minute} {hour} {day} {month} {day-of-week}`
+
+每个字段可以具有下列类型之一的值：
+
+|类型  |示例  |何时触发  |
+|---------|---------|---------|
+|一个具体值 |<nobr>"0 5 * * * *"</nobr>|在 hh:05:00，其中 hh 表示每小时（每小时一次）|
+|所有值 (`*`)|<nobr>"0 * 5 * * *"</nobr>|在每天的 5:mm:00，其中 mm 表示该小时的每分钟（一天 60 次）|
+|一个范围（`-` 运算符）|<nobr>"5-7 * * * * *"</nobr>|在 hh:mm:05、hh:mm:06 和 hh:mm:07，其中 hh:mm 表示每小时的每分钟（每分钟 3 次）|  
+|一组值（`,` 运算符）|<nobr>"5,8,10 * * * * *"</nobr>|在 hh:mm:05、hh:mm:08 和 hh:mm:10，其中 hh:mm 表示每小时的每分钟（每分钟 3 次）|
+|一个间隔值（`/` 运算符）|<nobr>"0 */5 * * * *"</nobr>|在 hh:05:00、hh:10:00、hh:15:00，依此类推，直到 hh:55:00，其中 hh 表示每小时（每小时 12 次）|
+
+### <a name="cron-examples"></a>CRON 示例
+
+以下是一些可用于 Azure Functions 中计时器触发器的 CRON 表达式示例。
+
+|示例|何时触发  |
+|---------|---------|
+|"0 */5 * * * *"|每五分钟一次|
+|"0 0 * * * *"|每小时一次（在每小时的开头）|
+|"0 0 */2 * * *"|每两小时一次|
+|"0 0 9-17 * * *"|从上午 9 点到下午 5 点每小时一次|
+|"0 30 9 * * *"|每天上午 9:30|
+|"0 30 9 * * 1-5"|每个工作日的上午 9:30|
+
+>[!NOTE]   
+>你可以在线找到 CRON 表达式示例，但它们中的许多都省略了 `{second}` 字段。 如果从这些字段之一复制，请添加缺少的 `{second}` 字段。 通常，你希望该字段的值为零，而不是星号。
+
+### <a name="cron-time-zones"></a>CRON 时区
+
+CRON 表达式中的数字指的是时间和日期，而不是时间跨度。 例如，`hour` 字段中的 5 指的是 5:00 AM，而不是每 5 小时。
+
+CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON 表达式基于其他时区，请为你的函数应用创建一个名为 `WEBSITE_TIME_ZONE` 的应用设置。 将值设置为所需时区的名称，如 [Microsoft 时区索引](https://technet.microsoft.com/library/cc749073)中所示。 
+
+例如，东部标准时间是 UTC-05:00。 若要让计时器触发器每天在美国东部时间上午 10:00 触发，可使用表示 UTC 时区的以下 CRON 表达式：
+
+```json
+"schedule": "0 0 15 * * *",
+``` 
+
+或者为你的函数应用创建一个名为 `WEBSITE_TIME_ZONE` 的应用设置并将值设置为 **Eastern Standard Time**。  然后使用以下 CRON 表达式： 
+
+```json
+"schedule": "0 0 10 * * *",
+``` 
+
+## <a name="timespan"></a>TimeSpan
+
+ 只能对在应用服务计划中运行的函数应用使用 `TimeSpan`。
+
+与 CRON 表达式不同，`TimeSpan` 值指定各次函数调用之间的时间间隔。 如果函数的运行时间超出了指定的时间间隔，则在函数完成时，计时器会立即再次调用该函数。
+
+以字符串表示，当 `hh` 小于 24 时，`TimeSpan` 格式为 `hh:mm:ss`。 当前两个数字是 24 或更大的数字时，格式为 `dd:hh:mm`。 下面是一些示例：
+
+|示例 |何时触发  |
+|---------|---------|
+|"01:00:00" | 每小时        |
+|"00:01:00"|每分钟         |
+|"24:00:00" | 每 24 天        |
+
 ## <a name="scale-out"></a>横向扩展
 
-计时器触发器支持多实例扩展。特定计时器函数的单个实例在所有实例上运行。
+如果函数应用横向扩展到多个实例，则在所有实例中只会运行由计时器触发的函数的单个实例。
+
+## <a name="function-apps-sharing-storage"></a>共享同一存储的函数应用
+
+如果在多个函数应用之间共享存储帐户，请确保每个函数应用在 *host.json* 中都有不同的 `id`。 可以省略 `id` 属性或手动将每个函数应用的 `id` 设置为不同的值。 计时器触发器使用存储锁来确保当函数应用横向扩展到多个实例时将只有一个计时器实例。 如果两个函数应用共享相同的 `id` 且每个都使用计时器触发器，则只会运行一个计时器。
+
+## <a name="retry-behavior"></a>重试行为
+
+与队列触发器不同，计时器触发器在函数失败后不会重试。 当函数失败时，会再次调用该函数，直到计划的下次时间。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -187,3 +187,5 @@
       href: 'https://stackoverflow.com/search?q=monitoring'
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=monitor'
+    - name: 使用情况和预估成本
+      href: monitoring-usage-and-estimated-costs.md

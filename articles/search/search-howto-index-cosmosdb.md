@@ -1,78 +1,80 @@
 ---
-title: "为 Azure 搜索的 Azure Cosmos DB SQL API 数据源编制索引 | Microsoft Docs"
-description: "本文展示了在使用 Azure Cosmos DB (SQL API) 数据源时如何创建 Azure 搜索索引器。"
+title: 为 Azure 搜索的 Azure Cosmos DB 数据源编制索引 | Microsoft Docs
+description: 本文演示如何使用 Azure Cosmos DB 数据源创建 Azure 搜索索引器。
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: chaosrealm
 manager: pablocas
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: search
 ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: search
-ms.date: 01/08/2018
+ms.date: 03/23/2018
 ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: e449f13adcd1a3651e1cac852b23f21d0227038a
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 165402f5147224cd355f0ae14642069a3de58f19
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>使用索引器连接 Cosmos DB 和 Azure 搜索
-
-[Azure Cosmos DB](../cosmos-db/introduction.md) 由 Microsoft 提供，是全球分布式多模型数据库。 Azure Cosmos DB 使用其 [SQL API](../cosmos-db/sql-api-introduction.md) 提供了丰富且熟悉的 SQL 查询功能，在传输无架构 JSON 数据过程中可持续保持较低的延迟。 Azure 搜索与 SQL API 无缝集成。 可以使用专门为 Azure Cosmos DB SQL API 设计的 [Azure 搜索索引器](search-indexer-overview.md)将 JSON 文档直接拉取到 Azure 搜索索引中。 
 
 在本文中，将学习以下内容：
 
 > [!div class="checklist"]
-> * 对 Azure 搜索进行配置以使用 Azure Cosmos DB SQL API 数据库作为数据源。 （可选）提供一个查询来选择子集。
+> * 配置使用 Azure Cosmos DB 集合作为数据源的 [Azure 搜索索引器](search-indexer-overview.md)。
 > * 创建具有 JSON 兼容数据类型的搜索索引。
 > * 为按需和定期索引配置索引器。
 > * 基于基础数据中的更改以增量方式刷新索引。
 
 > [!NOTE]
-> Azure Cosmos DB SQL API 是下一代 DocumentDB。 虽然产品名称已更改，但无论是在 Azure 搜索 API 中还是在门户页面中，Azure 搜索索引器中的 `documentdb` 语法都仍然存在以实现向后兼容。 在配置索引器时，请务必按本文中的说明指定 `documentdb` 语法。
+> Azure Cosmos DB 是下一代 DocumentDB。 虽然产品名称已更改，但无论是在 Azure 搜索 API 中还是在门户页面中，Azure 搜索索引器中的 `documentdb` 语法都仍然存在以实现向后兼容。 在配置索引器时，请务必按本文中的说明指定 `documentdb` 语法。
+
+在下面的视频中，Azure Cosmos DB 计划经理 Andrew Liu 演示了如何将 Azure 搜索索引添加到 Azure Cosmos DB 容器。
+
+>[!VIDEO https://www.youtube.com/embed/OyoYu1Wzk4w]
 
 <a name="supportedAPIs"></a>
-
 ## <a name="supported-api-types"></a>支持的 API 类型
 
-虽然 Azure Cosmos DB 支持各种数据模型和 API，但索引器支持仅扩展到了 SQL API。 
+虽然 Azure Cosmos DB 支持各种数据模型和 API，但 Azure 搜索索引器生产支持仅扩展到了 SQL API。 对 MongoDB API 的支持目前处于公开预览状态。  
 
-即将推出对其他 API 的支持。 若要帮助我们确定优先支持哪些 API，请在 User Voice 网站上发表你的建议：
+即将推出对其他 API 的支持。 若要帮助我们确定优先支持哪些 API，请在 User Voice 网站上投票：
 
 * [表 API 数据源支持](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab)
 * [图形 API 数据源支持](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4)
-* [MongoDB API 数据源支持](https://feedback.azure.com/forums/263029-azure-search/suggestions/18861421-documentdb-indexer-should-be-able-to-index-mongodb)
 * [Apache Cassandra API 数据源支持](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu)
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
-若要设置 Azure Cosmos DB 索引器，必须具有 [Azure 搜索服务](search-create-service-portal.md)，并依次创建索引、数据源和索引器。 可以使用[门户](search-import-data-portal.md)、[.NET SDK](/dotnet/api/microsoft.azure.search) 或适用于所有非. NET 语言的 [REST API](/rest/api/searchservice/) 创建这些对象。 
-
-如果选择使用门户，[导入数据向导](search-import-data-portal.md)将引导完成所有这些资源（包括索引）的创建操作。
-
-> [!TIP]
-> 可从 Azure Cosmos DB 仪表板启动**导入数据**向导，进而简化该数据源的索引。 在左侧导航栏中，转到“集合” > “添加 Azure 搜索”开始操作。
+除了 Cosmos DB 帐户外，还必须具备 [Azure 搜索服务](search-create-service-portal.md)。 
 
 <a name="Concepts"></a>
-
 ## <a name="azure-search-indexer-concepts"></a>Azure 搜索索引器概念
-Azure 搜索支持创建和管理数据源（包括 Azure Cosmos DB SQL API）以及针对这些数据源操作的索引器。
 
 **数据源**指定要编制索引的数据、凭据和用于识别数据更改（如修改或删除了集合内的文档）的策略。 数据源定义为独立的资源，以便它可以被多个索引器使用。
 
 **索引器**描述数据从数据源流动到目标搜索索引的方式。 索引器可用于：
 
 * 执行数据的一次性复制以填充索引。
-* 在计划上同步索引与数据源中的更改。 计划是索引器定义的一部分。
+* 在计划上同步索引与数据源中的更改。
 * 根据需要调用对索引的按需更新。
 
-<a name="CreateDataSource"></a>
+若要设置 Azure Cosmos DB 索引器，需要依次创建索引、数据源和索引器。 可以使用[门户](search-import-data-portal.md)、[.NET SDK](/dotnet/api/microsoft.azure.search) 或 [REST API](/rest/api/searchservice/) 创建这些对象。 
 
+本文演示如何使用 REST API。 如果选择使用门户，[导入数据向导](search-import-data-portal.md)将引导完成所有这些资源（包括索引）的创建操作。
+
+> [!TIP]
+> 可从 Azure Cosmos DB 仪表板启动**导入数据**向导，进而简化该数据源的索引。 在左侧导航栏中，转到“集合” > “添加 Azure 搜索”开始操作。
+
+> [!NOTE] 
+> 目前，无法使用 Azure 门户或 .NET SDK 创建或编辑 **MongoDB** 数据源。 但是，**可以**在门户中监视 MongoDB 索引器的执行历史记录。  
+
+<a name="CreateDataSource"></a>
 ## <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
 若要创建数据源，请执行 POST 操作：
 
@@ -84,9 +86,9 @@ Azure 搜索支持创建和管理数据源（包括 Azure Cosmos DB SQL API）�
         "name": "mydocdbdatasource",
         "type": "documentdb",
         "credentials": {
-            "connectionString": "AccountEndpoint=https://myDocDbEndpoint.documents.azure.com;AccountKey=myDocDbAuthKey;Database=myDocDbDatabaseId"
+            "connectionString": "AccountEndpoint=https://myCosmosDbEndpoint.documents.azure.com;AccountKey=myCosmosDbAuthKey;Database=myCosmosDbDatabaseId"
         },
-        "container": { "name": "myDocDbCollectionId", "query": null },
+        "container": { "name": "myCollection", "query": null },
         "dataChangeDetectionPolicy": {
             "@odata.type": "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
             "highWaterMarkColumnName": "_ts"
@@ -99,16 +101,19 @@ Azure 搜索支持创建和管理数据源（包括 Azure Cosmos DB SQL API）�
 * **类型**：必须为 `documentdb`。
 * **凭据**：
   
-  * **connectionString**：必需。 采用以下格式指定 Azure Cosmos DB 数据库的连接信息：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`
+  * **connectionString**：必需。 按以下格式指定 Azure Cosmos DB 数据库的连接信息：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`；对于 MongoDB 集合，将 **ApiKind=MongoDB** 添加到连接字符串：`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDB` 
 * **容器**：
   
   * **名称**：必需。 指定要编制索引的数据库集合的 ID。
-  * **查询**：可选。 可以指定一个查询来将一个任意 JSON 文档平整成 Azure 搜索可编制索引的平面架构。
+  * **查询**：可选。 可以指定一个查询来将一个任意 JSON 文档平整成 Azure 搜索可编制索引的平面架构。 对于 MongoDB 集合，不支持查询。 
 * **dataChangeDetectionPolicy**：推荐。 请参阅[为已更改的文档编制索引](#DataChangeDetectionPolicy)部分。
 * **dataDeletionDetectionPolicy**：可选。 请参阅[为已删除的文档编制索引](#DataDeletionDetectionPolicy)部分。
 
 ### <a name="using-queries-to-shape-indexed-data"></a>使用查询形成索引数据
 可以指定一个 SQL 查询来平展嵌套的属性或数组、投影 JSON 属性并筛选要编制索引的数据。 
+
+> [!WARNING]
+> **MongoDB** 集合不支持自定义查询：`container.query` 参数必须设置为 null 或省略。 如果需要使用自定义查询，请在[用户之声](https://feedback.azure.com/forums/263029-azure-search)上告知我们。
 
 示例文档：
 
@@ -170,9 +175,9 @@ Azure 搜索支持创建和管理数据源（包括 Azure Cosmos DB SQL API）�
 确保目标索引的架构与源 JSON 文档的架构或自定义查询投影的输出的架构兼容。
 
 > [!NOTE]
-> 对于分区集合，默认文档键是 Azure Cosmos DB 的 `_rid` 属性，它在 Azure 搜索中重命名为 `rid`。 此外，Azure Cosmos DB 的 `_rid` 值包含了在 Azure 搜索键中无效的字符。 因此，`_rid` 值采用 Base64 编码。
+> 对于已分区集合，默认文档键是 Azure Cosmos DB 的 `_rid` 属性，Azure 搜索会自动将其重命名为 `rid`，因为字段名称不能以下划线字符开头。 此外，Azure Cosmos DB 的 `_rid` 值包含了在 Azure 搜索键中无效的字符。 因此，`_rid` 值采用 Base64 编码。
 > 
-> 
+> 对于 MongoDB 集合，Azure 搜索会自动将 `_id` 属性重命名为 `doc_id`。  
 
 ### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>JSON 数据类型与 Azure 搜索数据类型之间的映射
 | JSON 数据类型 | 兼容的目标索引字段类型 |
@@ -180,7 +185,7 @@ Azure 搜索支持创建和管理数据源（包括 Azure Cosmos DB SQL API）�
 | Bool |Edm.Boolean、Edm.String |
 | 类似于整数的数字 |Edm.Int32、Edm.Int64、Edm.String |
 | 类似于浮点的数字 |Edm.Double、Edm.String |
-| 字符串 |Edm.String |
+| String |Edm.String |
 | 基元类型的数组，如 ["a", "b", "c"] |集合 (Edm.String) |
 | 类似于日期的字符串 |Edm.DateTimeOffset、Edm.String |
 | GeoJSON 对象，如 { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
@@ -320,7 +325,7 @@ Azure 搜索支持创建和管理数据源（包括 Azure Cosmos DB SQL API）�
     }
 
 ## <a name="NextSteps"></a>后续步骤
-祝贺你！ 你已学习了如何通过以下方法将 Azure Cosmos DB 与 Azure 搜索进行集成：使用索引器进行爬网并通过一个 SQL 数据模型上传文档。
+祝贺你！ 已学习了如何使用索引器将 Azure Cosmos DB 与 Azure 搜索集成。
 
 * 若要详细了解 Azure Cosmos DB，请参阅 [Azure Cosmos DB 服务页](https://azure.microsoft.com/services/cosmos-db/)。
 * 若要详细了解 Azure 搜索，请参阅[搜索服务页](https://azure.microsoft.com/services/search/)。

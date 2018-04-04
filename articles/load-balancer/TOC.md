@@ -20,13 +20,19 @@
 
 # 如何
 
+## [创建区域冗余的公共标准负载均衡器](load-balancer-get-started-internet-az-portal.md)
+### [创建区域冗余的公共标准负载均衡器 (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
+### [创建区域冗余的公共标准负载均衡器 (CLI)](load-balancer-get-started-internet-az-cli.md)
+## [创建区域的公共标准负载均衡器](load-balancer-get-started-internet-availability-zones-zonal-portal.md)
+### [创建区域的公共标准负载均衡器 (PowerShell)](load-balancer-get-started-internet-availability-zones-zonal-powershell.md)
+### [创建区域冗余的公共标准负载均衡器 (CLI)](load-balancer-get-started-internet-availability-zones-zonal-cli.md)
+## [跨可用性区域对 VM 进行负载均衡](load-balancer-standard-public-availability-zones-portal.md)
+###  [跨可用性区域对 VM 进行负载均衡 (CLI)](load-balancer-standard-public-zone-redundant-cli.md)
+##  [在区域内对 VM 进行负载均衡 (CLI)](load-balancer-standard-public-zonal-cli.md)   
+## [创建基本负载均衡器（模板）](load-balancer-get-started-internet-arm-template.md)
 ## [使用 IPv6 创建公共负载均衡器](load-balancer-ipv6-internet-ps.md)
 ### [使用 IPv6 创建公共负载均衡器 (CLI)](load-balancer-ipv6-internet-cli.md)
 ### [使用 IPv6 创建公共负载均衡器（模板）](load-balancer-ipv6-internet-template.md)
-## [创建区域冗余的公共负载均衡器标准版](load-balancer-get-started-internet-az-portal.md)
-### [创建区域冗余的公共负载均衡器标准版 (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
-### [创建区域冗余的公共负载均衡器标准版 (CLI)](load-balancer-get-started-internet-az-cli.md)
-## [创建基本负载均衡器（模板）](load-balancer-get-started-internet-arm-template.md)
 ## [配置内部负载均衡器](load-balancer-get-started-ilb-arm-portal.md)
 ### [配置内部负载均衡器 (PowerShell)](load-balancer-get-started-ilb-arm-ps.md)
 ### [配置内部负载均衡器 (CLI)](load-balancer-get-started-ilb-arm-cli.md)

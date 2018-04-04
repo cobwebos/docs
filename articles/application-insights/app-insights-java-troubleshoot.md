@@ -1,6 +1,6 @@
 ---
-title: "在 Java Web 项目中排查 Application Insights 问题"
-description: "故障排除指南 - 使用 Application Insights 监视实时 Java 应用。"
+title: 在 Java Web 项目中排查 Application Insights 问题
+description: 故障排除指南 - 使用 Application Insights 监视实时 Java 应用。
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -13,38 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: 6b1cfa2b52e8e9e2b6a8ab87be6d4269cbe3f1cf
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 894b2234074dcfb262de9033a7728cad3bef2248
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 使用 [Java 中的 Azure Application Insights][java] 时有疑问或遇到问题？ 请参考下面的提示。
 
 ## <a name="build-errors"></a>生成错误
-**在 Eclipse 中通过 Maven 或 Gradle 添加 Application Insights SDK 时，收到生成或校验和验证错误。**
+**在 Eclipse 或 Intellij Idea 中，通过 Maven 或 Gradle 添加 Application Insights SDK 时，收到生成或校验和验证错误。**
 
-* 如果依赖项 <version> 元素使用包含通配符的模式（例如 (Maven) `<version>[1.0,)</version>` 或 (Gradle) `version:'1.0.+'`），请尝试改为指定特定版本（例如 `1.0.2`）。 请参阅最新版本的[发行说明](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)。
+* 如果依赖项 <version> 元素使用包含通配符的模式（例如 (Maven) `<version>[2.0,)</version>` 或 (Gradle) `version:'2.0.+'`），请尝试改为指定特定版本（例如 `2.0.1`）。 请参阅最新版本的[发行说明](https://github.com/Microsoft/ApplicationInsights-Java/releases)。
 
 ## <a name="no-data"></a>没有数据
 **我已成功添加 Application Insights 并运行应用，但在门户中从未看到数据。**
 
 * 请稍等片刻，并单击“刷新”。 图表会定期自行刷新，但你也可以手动刷新。 刷新间隔取决于图表的时间范围。
-* 检查是否已在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中定义检测密钥
+* 检查是否已在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中定义检测密钥或将检测密钥配置为环境变量。
 * 确认 xml 文件中没有 `<DisableTelemetry>true</DisableTelemetry>` 节点。
 * 在防火墙中，可能需要打开 TCP 端口 80 和 443 才能将传出流量发送到 dc.services.visualstudio.com。请参阅 [full list of firewall exceptions](app-insights-ip-addresses.md)（防火墙例外的完整列表）
 * 在 Microsoft Azure 开始面板中查看服务状态映射。 如果看到警报指示，请等待它们恢复“正常”，关闭再重新打开 Application Insights 应用程序边栏选项卡。
-* 在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中的根节点下添加 `<SDKLogger />` 元素，打开 IDE 控制台窗口日志记录功能，并检查条目的前面是否带有 [Error]。
+* 在 ApplicationInsights.xml 文件（位于项目的 resources 文件夹）中的根节点下添加 `<SDKLogger />` 元素，打开 IDE 控制台窗口日志记录功能，并检查条目的前面是否带有 AI: INFO/WARN/ERROR 以发现任何可疑日志。
 * 查看控制台输出消息中是否包含“已成功找到配置文件”语句，确保 Java SDK 成功加载正确的 ApplicationInsights.xml 文件。
-* 如果找不到配置文件，请检查输出消息来确定在何处搜索配置文件，并确保 ApplicationInsights.xml 位在这些搜索位置之一。 根据经验法则，可以将配置文件放置在 Application Insights SDK JAR 的附近。 例如：在 Tomcat 中，这可能是 WEB-INF/lib 文件夹。
+* 如果找不到配置文件，请检查输出消息来确定在何处搜索配置文件，并确保 ApplicationInsights.xml 位在这些搜索位置之一。 根据经验法则，可以将配置文件放置在 Application Insights SDK JAR 的附近。 例如：在 Tomcat 中，这可能是 WEB-INF/classes 文件夹。 在开发期间，可以将 ApplicationInsights.xml 放在 Web 项目的 resources 文件夹中。
+* 另请查看 [GitHub 问题页](https://github.com/Microsoft/ApplicationInsights-Java/issues)，了解 SDK 的已知问题。
+* 请确保使用相同版本的 Application Insights Core、Web、代理和日志记录追加器以避免任何版本冲突问题。
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>我以前看到了数据，但现在看不到
 * 请查看[状态博客](http://blogs.msdn.com/b/applicationinsights-status/)。
 * 是否达到了数据点的每月配额？ 打开“设置/配额和定价”即可检查。如果达到了配额，可以升级计划，或付费购买更多的容量。 请参阅[定价方案](https://azure.microsoft.com/pricing/details/application-insights/)。
+* 最近是否升级了 SDK？ 请确保项目目录内仅存在唯一 SDK jar。 不应存在两个不同版本的 SDK。
+* 是否正在查看正确的 AI 资源？ 请将应用程序的 iKey 与预期遥测的资源的 iKey 相匹配。 它们应相同。
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>未按预期看到所有数据
 * 打开“配额和定价”边栏选项卡，检查是否正在执行[采样](app-insights-sampling.md)。 （如果传输百分比为 100%，表示当前未执行采样。）可将 Application Insights 服务设置为只接受来自应用的一部分遥测数据。 这有助于保持在每月的遥测配额范围内。 
+* 是否已启用 SDK 采样？ 如果是，将按为所有适用类型指定的速率对数据进行采样。
+* 是否正在运行较旧版本的 Java SDK？ 从版本 2.0.1 开始，我们引入了容错机制以处理间歇性网络和后端故障，以及本地驱动器上的数据持久性。
+* 是否由于过度遥测而受到限制？ 如果启用“信息日志记录”，会看到日志消息“应用受到限制”。 当前的限制为 32000 个遥测项/秒。
+
+### <a name="java-agent-cannot-capture-dependency-data"></a>Java 代理无法捕获依赖项数据
+* 是否已按照[配置 Java 代理](app-insights-java-agent.md)配置 Java 代理？
+* 请确保 java 代理 jar 和 AI-Agent.xml 文件放置在同一文件夹中。
+* 请确保自动收集功能支持你尝试自动收集的依赖项。 目前我们仅支持 MySQL、MsSQL、Oracle DB 和 Redis 缓存依赖项收集。
+* 使用的是 JDK 1.7 还是 JDK 1.8？ 目前我们在 JDK 9 中不支持依赖项收集。
 
 ## <a name="no-usage-data"></a>无使用情况数据
 **我看到了请求和响应时间的相关数据，但没有看到页面视图、浏览器或用户数据。**
@@ -83,6 +96,7 @@ ms.lasthandoff: 11/06/2017
 
 * [获取新资源的检测密钥][java]
 * 如果使用用于 Eclipse 的 Azure 工具包将 Application Insights 添加到项目，请右键单击 Web 项目，选择“Azure”、“配置 Application Insights”，然后更改密钥。
+* 如果已将检测密钥配置为环境变量，请使用新 iKey 更新环境变量的值。
 * 否则，请更新项目的 resources 文件夹中 ApplicationInsights.xml 内的密钥。
 
 ## <a name="debug-data-from-the-sdk"></a>通过 SDK 调试数据
@@ -143,6 +157,7 @@ Application Insights 使用 `org.apache.http`。 这将在命名空间 `com.micr
 
 ## <a name="get-help"></a>获取帮助
 * [堆栈溢出](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* [在 GitHub 上提出问题](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 

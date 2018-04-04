@@ -317,10 +317,6 @@
               href: service-fabric-deploy-multiple-apps.md
         - name: 生成容器服务
           items:
-            - name: 在容器中使用证书
-              href: service-fabric-securing-containers.md
-            - name: 设置 Windows 容器的 gMSA
-              href: service-fabric-setup-gmsa-for-windows-containers.md
             - name: Docker Compose（预览）
               href: service-fabric-docker-compose.md
             - name: 容器和服务的资源调控
@@ -383,22 +379,30 @@
               href: service-fabric-reliable-actors-fabrictransportsettings.md
             - name: 配置 ReliableDictionaryActorStateProvider
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
-        - name: 迁移旧的 Java 应用程序以支持 Maven
-          href: service-fabric-migrate-old-javaapp-to-use-maven.md
-        - name: 配置反向代理以进行安全通信
-          href: service-fabric-reverseproxy-configure-secure-communication.md
         - name: 生成 ASP.NET Core 服务
           href: service-fabric-add-a-web-frontend.md
         - name: 配置安全性
           items:
             - name: 管理应用程序机密
               href: service-fabric-application-secret-management.md
+            - name: 配置反向代理以进行安全通信
+              href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: 以本地用户或系统帐户身份运行服务启动脚本
               href: service-fabric-run-script-at-service-startup.md
             - name: 以本地用户或系统帐户身份运行服务
               href: service-fabric-application-runas-security.md
             - name: 为终结点分配安全访问策略
               href: service-fabric-assign-policy-to-endpoint.md
+            - name: 以 AD 用户或组身份运行服务
+              href: service-fabric-run-service-as-ad-user-or-group.md
+            - name: 以组托管服务帐户身份运行服务
+              href: service-fabric-run-service-as-gmsa.md
+            - name: 在容器中使用证书
+              href: service-fabric-securing-containers.md
+            - name: 设置 Windows 容器的 gMSA
+              href: service-fabric-setup-gmsa-for-windows-containers.md
+        - name: 迁移旧的 Java 应用程序以支持 Maven
+          href: service-fabric-migrate-old-javaapp-to-use-maven.md
     - name: 在 Windows/VS 开发环境中工作
       items:
         - name: 在 Visual Studio 中管理应用程序
@@ -501,8 +505,6 @@
               href: service-fabric-cluster-upgrade.md
             - name: 设置访问控制
               href: service-fabric-cluster-security-roles.md
-            - name: 配置
-              href: service-fabric-cluster-fabric-settings.md
             - name: 打开负载均衡器的端口
               href: create-load-balancer-rule.md
             - name: 管理群集证书
@@ -525,14 +527,8 @@
                   href: service-fabric-cluster-standalone-package-contents.md
             - name: 缩放
               href: service-fabric-cluster-windows-server-add-remove-nodes.md
-            - name: 配置安全性
-              items:
-                - name: 设置访问控制
-                  href: service-fabric-cluster-security-roles.md
-                - name: 以 AD 用户或组身份运行服务
-                  href: service-fabric-run-service-as-ad-user-or-group.md
-                - name: 以组托管服务帐户身份运行服务
-                  href: service-fabric-run-service-as-gmsa.md
+            - name: 设置访问控制
+              href: service-fabric-cluster-security-roles.md
             - name: 配置
               href: service-fabric-cluster-manifest.md
             - name: 升级
@@ -614,6 +610,8 @@
       href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
     - name: REST
       href: /rest/api/servicefabric
+    - name: 配置群集设置和结构升级策略
+      href: service-fabric-cluster-fabric-settings.md
     - name: 服务模型 XML 架构
       href: service-fabric-service-model-schema.md
     - name: 环境变量

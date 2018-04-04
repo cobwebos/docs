@@ -4,13 +4,13 @@ description: 概述 Azure Migrate 服务中的已知问题，并针对常见错�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: troubleshooting
-ms.date: 02/21/2018
+ms.date: 03/19/2018
 ms.author: raynew
-ms.openlocfilehash: e1e7a1a57f780ef477379dfb1ceaead0c8654970
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b2c89a980411cac02f46bc91d53620bc94fa845b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/08/2018
 
 如果在 vCenter 服务器上的统计信息设置级别设置为小于 3，便会出现此问题。 在级别 3 或更高级别上，vCenter 存储有关计算、存储和网络的 VM 性能历史记录。 如果小于级别 3，vCenter 将不会存储存储器和网络数据，而只存储 CPU 和内存数据。 在此方案中，性能数据在 Azure Migrate 中显示为零，而 Azure Migrate 根据从本地计算机上收集的元数据，为磁盘和网络提供大小建议。
 
-若要启用磁盘和网络性能数据收集，请将统计信息设置级别更改为 3。 然后，至少等待一天来发现环境并进行评估。 
+若要启用磁盘和网络性能数据收集，请将统计信息设置级别更改为 3。 然后，至少等待一天来发现环境并进行评估。
 
 我已安装代理并使用依赖项可视化效果创建组。现发布故障转移，计算机会显示“安装代理”操作，而不是“查看依赖项”
 * 发布计划或计划外故障转移，本地计算机将处于关闭状态，而等效计算机会在 Azure 中处于启动状态。 这些计算机将获得一个不同的 MAC 地址。 它们可能会根据用户是否选择保留本地 IP 地址而获得不同的 IP 地址。 如果 MAC 和 IP 地址不同，Azure Migrate 则不会将本地计算机与任何服务映射依赖项数据关联起来，同时会要求用户安装代理，而不是查看依赖项。
@@ -70,28 +70,28 @@ ms.lasthandoff: 03/08/2018
 **问题** | **修补程序**
 --- | ---
 引导类型不受支持 | Azure 不支持引导类型为 EFI 的 VM。 建议在运行迁移之前将引导类型转换为 BIOS。 <br/><br/>可以使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/tutorial-migrate-on-premises-to-azure) 执行此类 VM 的迁移，因为它在迁移期间会将 VM 的引导类型转换为 BIOS。
-磁盘计数超过限制 | 在迁移之前从计算机中删除未使用的磁盘。
-磁盘大小超过限制 | Azure 支持大小最高为 4 TB 的磁盘。 在迁移之前将磁盘压缩至小于 4 TB。 
-指定位置中磁盘不可用 | 在迁移之前请确保磁盘已在目标位置。
-不可用于指定冗余的磁盘 | 磁盘应使用在评估设置中定义的冗余存储类型（默认为 LRS）。
-由于内部错误无法确定磁盘适用性 | 请尝试为组创建一个新评估。 
-未找到具有所需内核和内存的 VM | Azure 无法使用合适的 VM 类型。 在迁移之前请减少本地计算机的内存和内核数。 
-存在一个或多个不合适磁盘。 | 在运行迁移之前，请确保本地磁盘为 4 TB 或以下。
-存在一个或多个不合适网络适配器。 | 在迁移之前从计算机中删除未使用的网络适配器。
-由于内部错误，无法确定 VM 适用性。 | 请尝试为组创建一个新评估。 
-由于内部错误，无法确定一个或多个磁盘的适用性。 | 请尝试为组创建一个新评估。
-由于内部错误，无法确定一个或多个网络适配器的适用性。 | 请尝试为组创建一个新评估。
-未找到所需存储性能的 VM。 | 计算机所需的存储性能（IOPS/吞吐量）超出了 Azure VM 支持范围。 在迁移之前，减少计算机的存储需求。
-未找到具有所需网络性能的 VM。 | 计算机所需的网络性能（输入/输出）超出了 Azure VM 支持。 减少计算机的网络要求。 
-在指定的定价层未找到 VM。 | 如果定价层设置为“标准”，请考虑在迁移到 Azure 之前缩小 VM。 如果大小调整为“基本”，请考虑将评估的定价层更改为“标准”。 
-未在指定位置找到 VM。 | 在迁移之前使用不同目标位置。
-未知操作系统 | VM 的操作系统在 vCenter Server 中指定为“其他”，因此，Azure Migrate 无法识别 VM 的 Azure 迁移就绪性。 在迁移计算机之前，请确保 Azure [支持](https://aka.ms/azureoslist)计算机中运行的 OS。
 有条件支持的 Windows OS | OS 已过了其支持日期结束时间，并且需要一个自定义支持协议 (CSA) 才能[在 Azure 中受支持](https://aka.ms/WSosstatement)，请考虑在迁移到 Azure 之前升级 OS。
-不受支持的 Windows OS | Azure 仅支持[所选的 Windows OS 版本](https://aka.ms/WSosstatement)，请考虑在迁移到 Azure 之前升级计算机的 OS。 
+不受支持的 Windows OS | Azure 仅支持[所选的 Windows OS 版本](https://aka.ms/WSosstatement)，请考虑在迁移到 Azure 之前升级计算机的 OS。
 有条件认可的 Linux OS | Azure 仅认可[所选的 Linux OS 版本](../virtual-machines/linux/endorsed-distros.md)，请考虑在迁移到 Azure 之前升级计算机的 OS。
 未经认可的 Linux OS | 计算机可以在 Azure 中引导，但是 Azure 未提供 OS 支持，请考虑在迁移到 Azure 之前将 OS 升级到[经认可的 Linux 版本](../virtual-machines/linux/endorsed-distros.md)
+未知操作系统 | VM 的操作系统在 vCenter Server 中指定为“其他”，因此，Azure Migrate 无法识别 VM 的 Azure 迁移就绪性。 在迁移计算机之前，请确保 Azure [支持](https://aka.ms/azureoslist)计算机中运行的 OS。
 不受支持的 OS 位数 | 采用 32 位 OS 的 VM 可以在 Azure 中引导，但建议在迁移到 Azure 之前将 VM 的 OS 从 32 位升级到 64 位。
 需要 Visual Studio 订阅。 | 计算机中运行了一个仅在 Visual Studio 订阅中受支持的 Windows 客户端 OS。
+未找到所需存储性能的 VM。 | 计算机所需的存储性能（IOPS/吞吐量）超出了 Azure VM 支持范围。 在迁移之前，减少计算机的存储需求。
+未找到具有所需网络性能的 VM。 | 计算机所需的网络性能（输入/输出）超出了 Azure VM 支持。 减少计算机的网络要求。
+在指定的定价层未找到 VM。 | 如果定价层设置为“标准”，请考虑在迁移到 Azure 之前缩小 VM。 如果大小调整为“基本”，请考虑将评估的定价层更改为“标准”。
+未在指定位置找到 VM。 | 在迁移之前使用不同目标位置。
+存在一个或多个不合适磁盘。 | 附加到 VM 的一个或多个磁盘不符合 Azure 要求。 对于附加到 VM 的每个磁盘，请确保磁盘的大小 < 4 TB，如果不是，请在迁移到 Azure 之前缩小磁盘大小。 请确保 Azure [托管虚拟机磁盘](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)支持每个磁盘所需的性能（IOPS/吞吐量）。   
+存在一个或多个不合适网络适配器。 | 在迁移之前从计算机中删除未使用的网络适配器。
+磁盘计数超过限制 | 在迁移之前从计算机中删除未使用的磁盘。
+磁盘大小超过限制 | Azure 支持大小最高为 4 TB 的磁盘。 在迁移之前将磁盘压缩至小于 4 TB。
+指定位置中磁盘不可用 | 在迁移之前请确保磁盘已在目标位置。
+不可用于指定冗余的磁盘 | 磁盘应使用在评估设置中定义的冗余存储类型（默认为 LRS）。
+由于内部错误无法确定磁盘适用性 | 请尝试为组创建一个新评估。
+未找到具有所需内核和内存的 VM | Azure 无法使用合适的 VM 类型。 在迁移之前请减少本地计算机的内存和内核数。
+由于内部错误，无法确定 VM 适用性。 | 请尝试为组创建一个新评估。
+由于内部错误，无法确定一个或多个磁盘的适用性。 | 请尝试为组创建一个新评估。
+由于内部错误，无法确定一个或多个网络适配器的适用性。 | 请尝试为组创建一个新评估。
 
 
 ## <a name="collect-logs"></a>收集日志
@@ -122,9 +122,9 @@ ms.lasthandoff: 03/08/2018
  - 在 Edge/IE 中，单击“导出捕获流量”图标。 此操作会压缩并导出文件。
 6. 导航到“控制台”选项卡，以查看任何警告或错误。 保存控制台日志：
  - 在 Chrome 中，右键单击控制台日志中的任意位置。 选择“另存为”，以导出和压缩日志。
- - 在 Edge/IE 中，右键单击错误并选择“复制所有”。 
+ - 在 Edge/IE 中，右键单击错误并选择“复制所有”。
 7. 关闭“开发人员工具”。
- 
+
 
 ## <a name="vcenter-errors"></a>vCenter 错误
 
@@ -144,5 +144,24 @@ ms.lasthandoff: 03/08/2018
 2. 如果步骤 1 失败，请尝试通过 IP 地址连接到 vCenter Server。
 3. 确定可连接到 vCenter 的正确端口号。
 4. 最后检查 vCenter Server 是否已启动并运行。
- 
 
+## <a name="collector-error-codes-and-recommended-actions"></a>收集器错误代码和建议的操作
+
+|           |                                |                                                                               |                                                                                                       |                                                                                                                                            | 
+|-----------|--------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------| 
+| 错误代码 | 错误名称                      | 消息                                                                       | 可能的原因                                                                                        | 建议的操作                                                                                                                          | 
+| 601       | CollectorExpired               | 收集器已过期。                                                        | 收集器已过期。                                                                                    | 请下载新版本的收集器，然后重试。                                                                                      | 
+| 751       | UnableToConnectToServer        | 由于出现错误，无法连接到 vCenter Server“%Name;”: %ErrorMessage;     | 检查错误消息以了解更多详细信息。                                                             | 解决问题，然后重试。                                                                                                           | 
+| 752       | InvalidvCenterEndpoint         | 服务器“%Name;”不是 vCenter Server。                                  | 请提供 vCenter Server 详细信息。                                                                       | 利用正确的 vCenter Server 详细信息，重试操作。                                                                                   | 
+| 753       | InvalidLoginCredentials        | 由于出现错误，无法连接到 vCenter Server“%Name;”: %ErrorMessage; | 由于登录凭据无效，连接到 vCenter Server 失败。                             | 请确保所提供的登录凭据正确无误。                                                                                    | 
+| 754       | NoPerfDataAvaialable           | 性能数据不可用。                                               | 在 vCenter Server 中检查统计信息级别。 它应设置为 3，性能数据才可用。 | 将统计信息级别更改为 3（适用于 5 分钟、30 分钟和 2 小时持续时间），并在至少等待一天后重试。                   | 
+| 756       | NullInstanceUUID               | 遇到 InstanceUUID 为 null 的计算机                                  | vCenter Server 可能具有不合适的对象。                                                      | 解决问题，然后重试。                                                                                                           | 
+| 757       | VMNotFound                     | 找不到虚拟机                                                  | 虚拟机可能被删除: %VMID;                                                                | 请确保在发现过程中限定 vCenter 清单存在时，选择虚拟机                                      | 
+| 758       | GetPerfDataTimeout             | VCenter 请求超时。消息: %Message;                                  | vCenter Server 凭据不正确                                                              | 检查 vCenter Server 凭据，并确保 vCenter Server 可访问。 请重试操作即可。 如果该问题仍然存在，请联系支持部门。 | 
+| 759       | VmwareDllNotFound              | 找不到 VMWare.Vim DLL。                                                     | PowerCLI 未正确安装。                                                                   | 请检查 PowerCLI 是否正确安装。 请重试操作即可。 如果该问题仍然存在，请联系支持部门。                               | 
+| 800       | ServiceError                   | Azure Migrate 收集器服务未运行。                               | Azure Migrate 收集器服务未运行。                                                       | 使用 services.msc 启动该服务并重试此操作。                                                                             | 
+| 801       | PowerCLIError                  | VMware PowerCLI 安装失败。                                          | VMware PowerCLI 安装失败。                                                                  | 请重试操作即可。 如果该问题仍然存在，请手动安装它，然后重试此操作。                                                   | 
+| 802       | TimeSyncError                  | 时间未与 Internet 时间服务器同步。                            | 时间未与 Internet 时间服务器同步。                                                    | 请确保计算机上的时间已根据计算机的时区准确设置并重试此操作。                                 | 
+| 702       | OMSInvalidProjectKey           | 指定的项目键无效。                                                | 指定的项目键无效。                                                                        | 请用正确的项目键重试此操作。                                                                                              | 
+| 703       | OMSHttpRequestException        | 发送请求时出错。 消息: %Message;                                | 请检查项目 ID 和键，并确保终结点可访问。                                       | 请重试操作即可。 如果问题持续出现，请联系 Microsoft 支持。                                                                     | 
+| 704       | OMSHttpRequestTimeoutException | HTTP 请求超时。消息: %Message;                                     | 请检查项目 ID 和键，并确保终结点可访问。                                       | 请重试操作即可。 如果问题持续出现，请联系 Microsoft 支持。                                                                     | 

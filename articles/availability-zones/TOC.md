@@ -25,9 +25,15 @@
 ### 负载均衡器
 #### [什么是负载均衡器？](../load-balancer/load-balancer-standard-overview.md)
 #### [负载均衡器标准版和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md)
-#### [使用 Azure 门户创建区域冗余的公共负载均衡器标准](../load-balancer/load-balancer-get-started-internet-az-portal.md)
-#### [使用 PowerShell 创建区域冗余的负载均衡器标准](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
-#### [使用 CLI 创建区域冗余的公共负载均衡器标准](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+
+#### [创建区域冗余的公共标准负载均衡器](../load-balancer/load-balancer-get-started-internet-az-portal.md)
+##### [创建区域冗余的公共标准负载均衡器 (PowerShell)](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
+##### [创建区域冗余的公共标准负载均衡器 (CLI)](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+#### [创建区域的公共标准负载均衡器](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md)
+##### [创建区域的公共标准负载均衡器 (PowerShell)](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md)
+##### [创建区域冗余的公共标准负载均衡器 (CLI)](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md)
+#### [跨可用性区域对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-availability-zones-portal.md)
+##### [使用 Azure 跨可用性区域对 VM 进行负载均衡 (CLI)](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
 
 ### [公共 IP 地址](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
@@ -35,7 +41,7 @@
 #### [将可用性区域与 SQL 数据库配合使用](../sql-database/sql-database-high-availability.md#availability-zones)
 
 ### 存储
-#### [区域冗余存储](../storage/common/storage-redundancy.md#zone-redundant-storage)
+#### [区域冗余存储](../storage/common/storage-redundancy-zrs.md)
 
 # 灾难恢复
 ## [使用 Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)

@@ -43,11 +43,12 @@
 ## 使用 MXChip IoT DevKit
 ### [使用 Azure 认知服务转换语音邮件](iot-hub-arduino-iot-devkit-az3166-translator.md)
 ### [使用 Azure Functions 检索 Twitter 消息](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
+### [使用 Azure Functions 监视磁传感器并发送电子邮件通知](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
 # 操作指南
 ## 计划
 ### [比较 IoT 中心与事件中心](iot-hub-compare-event-hubs.md)
-### [缩放解决方案](iot-hub-scaling.md)
+### [选择适当的层](iot-hub-scaling.md)
 ### [高可用性和灾难恢复](iot-hub-ha-dr.md)
 ### [支持其他协议](iot-hub-protocol-gateway.md)
 ### [比较消息和事件路由](iot-hub-event-grid-routing-comparison.md)
@@ -147,6 +148,7 @@
 ### [使用诊断进行监视](iot-hub-monitor-resource-health.md)
 #### [迁移到诊断设置](iot-hub-migrate-to-diagnostics-settings.md)
 #### [操作监视](iot-hub-operations-monitoring.md)
+### [升级 IoT 中心](iot-hub-upgrade.md)
 ### [使用指标](iot-hub-metrics.md)
 ### [批量管理 IoT 设备](iot-hub-bulk-identity-mgmt.md)
 ### [配置 IP 筛选](iot-hub-ip-filtering.md)

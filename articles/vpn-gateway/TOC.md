@@ -6,9 +6,10 @@
 ## [订阅和服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # 入门
-## [创建基于路由的 VPN 网关 - Azure 门户](create-routebased-vpn-gateway-portal.md)
-## [创建基于路由的 VPN 网关 - PowerShell](create-routebased-vpn-gateway-powershell.md)
-## [创建基于路由的 VPN 网关 - CLI](create-routebased-vpn-gateway-cli.md)
+## 创建基于路由的 VPN 网关
+### [Azure 门户](create-routebased-vpn-gateway-portal.md)
+### [Azure PowerShell](create-routebased-vpn-gateway-powershell.md)
+### [Azure CLI](create-routebased-vpn-gateway-cli.md)
 
 # 概念
 ## [规划和设计 VPN 网关](vpn-gateway-plan-design.md)
@@ -87,13 +88,16 @@
 ### [示例：Cisco ASA 设备（IKEv2/无 BGP）](vpn-gateway-3rdparty-device-config-cisco-asa.md)
 ## [从经典部署模型迁移到资源管理器部署模型](vpn-gateway-classic-resource-manager-migration.md)
 ## [故障排除](vpn-gateway-troubleshoot.md)
-### [验证到达 VNet 的 VPN 吞吐量](vpn-gateway-validate-throughput-to-vnet.md)
 ### [社区建议的 VPN 或防火墙设备设置](vpn-gateway-third-party-settings.md)
-### [点到站点连接问题](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-#### [点到站点连接问题 - Mac OS X VPN 客户端](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
-### [站点到站点连接问题](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
-#### [站点到站点连接间歇性地断开](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [配置和验证 VNet 或 VPN 连接](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
+### [验证到达 VNet 的 VPN 吞吐量](vpn-gateway-validate-throughput-to-vnet.md)
+### 点到站点连接问题
+#### [点到站点连接问题](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+#### [点到站点连接问题 - Mac OS X VPN 客户端](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+### 站点到站点连接问题
+#### [站点到站点连接问题](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
+#### [站点到站点连接间歇性地断开](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
+
 
 # 引用
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)

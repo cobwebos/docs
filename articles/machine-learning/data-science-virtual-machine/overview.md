@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: f62f6c4b2679457e8aaddb81e8a37622ca878ffc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8ee4af162ddaa64d4dbe83bebbb93e22409f041d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Azure 数据科学虚拟机简介
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/28/2018
 
 
 ## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>我如何使用数据科学虚拟机？
-数据科学虚拟机的目的在于向所有技能级别和角色的数据专业人员提供无摩擦的数据科学环境。 如果已自行推出可比较的环境，此 VM 可节省大量时间。 在新创建的 VM 实例中可立即启动数据科学项目。 
+数据科学虚拟机 (DSVM) 的目标在于向所有技能级别和所有角色的数据专业人员提供无摩擦、预配置且完全集成的数据科学环境。 可以预配 DSVM，而不是自己推出可比较的工作区 - 在安装、 配置和包管理过程中节省天数甚至_周_数。 分配 DSVM 后，可以立即开始处理数据科学项目。
 
 数据科学 VM 的设计和配置意图在于与广泛的使用方案一起使用。 随着项目需求变化，可扩展或缩小环境。 可使用首选语言为数据科学任务编写程序。 可根据具体需要安装其他工具和自定义系统。
 
