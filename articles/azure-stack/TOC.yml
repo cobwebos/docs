@@ -75,7 +75,7 @@
       href: azure-stack-manage-basics.md
 - name: 操作指南
   items:
-    - name: 配置遥测数据收集
+    - name: 配置遥测数据的收集
       href: azure-stack-telemetry.md
     - name: 注册 Azure Stack
       href: azure-stack-registration.md
@@ -123,8 +123,8 @@
               href: azure-stack-manage-storage-accounts.md
             - name: 管理存储容量
               href: azure-stack-manage-storage-shares.md
-            - name: 管理 Azure 堆栈的物理存储容量
-              href: azure-stack-manage-storage-physical-capacity.md
+            - name: 管理 Azure Stack 的物理存储容量
+              href: azure-stack-manage-storage-physical-memory-capacity.md
         - name: 更换硬件
           items:
             - name: 节点操作
@@ -218,7 +218,7 @@
               href: azure-stack-app-service-deploy-offline.md
             - name: 更新应用服务
               href: azure-stack-app-service-update.md
-            - name: 更新应用服务处于脱机状态
+            - name: 脱机更新应用服务
               href: azure-stack-app-service-update-offline.md
             - name: 添加更多 Web 辅助角色
               href: azure-stack-app-service-add-worker-roles.md
@@ -250,13 +250,13 @@
           items:
             - name: 概述
               href: azure-stack-billing-and-chargeback.md
-            - name: 管理使用情况和计费作为 CSP
+            - name: 以 CSP 身份管理使用情况和计费
               href: azure-stack-add-manage-billing-as-a-csp.md
-            - name: 添加租户为使用情况和计费
+            - name: 添加租户以获取用量和计费信息
               href: azure-stack-csp-howto-register-tenants.md
             - name: 管理租户注册
               href: azure-stack-csp-ref-operations.md
-            - name: 使用情况和计费引用
+            - name: 使用情况和计费参考
               items:
                 - name: 使用情况数据报告
                   href: azure-stack-usage-reporting.md
