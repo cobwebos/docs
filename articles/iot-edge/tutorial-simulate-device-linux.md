@@ -1,8 +1,8 @@
 ---
-title: "在 Linux 上模拟 Azure IoT Edge | Microsoft Docs"
-description: "在 Linux 的模拟设备上安装 Azure IoT Edge 运行时，并部署第一个模块"
+title: 在 Linux 上模拟 Azure IoT Edge | Microsoft Docs
+description: 在 Linux 的模拟设备上安装 Azure IoT Edge 运行时，并部署第一个模块
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 55770c92f5d5959e83066b425bc6ccf2b9dcc62e
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 65a3f6d71c0c0d92f703a5d48760dd348c726ba4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux-or-macos---preview"></a>在 Linux 或 MacOS 的模拟设备上部署 Azure IoT Edge - 预览
 
@@ -29,14 +29,19 @@ Azure IoT Edge 使你可在设备上执行分析和数据处理，而无需推�
 
 ![教程体系结构][2]
 
-本教程中创建的模拟设备是一种监视器，它能生成温度、湿度和压力数据。 其他 Azure IoT Edge 教程均以本教程中通过部署模块（这些模块分析业务见解）执行的操作为基础。 
+本教程中创建的模拟设备是一种监视器，它能生成温度、湿度和压力数据。 其他 Azure IoT Edge 教程均以本教程中通过部署模块（这些模块通过分析数据来获得业务见解）执行的操作为基础。 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 本教程使用计算机或虚拟机，如物联网设备。 若要将计算机转换为 IoT Edge 设备，需要以下服务：
 
 * Python pip，用于安装 IoT Edge 运行时。
    * Linux：`sudo apt-get install python-pip`。
+     * 请注意，在某些分发版（如 Raspbian）上，可能还需要升级特定 pip 包并安装其他依赖项：
+     ```
+     sudo pip install --upgrade setuptools pip
+     sudo apt-get install python2.7-dev libffi-dev libssl-dev
+     ```
    * MacOS：`sudo easy_install pip`。
 * Docker，用于运行 IoT Edge 模块
    * [安装适用于 Linux 的 Docker][lnk-docker-ubuntu] 并确保其正在运行。 
@@ -70,7 +75,7 @@ sudo pip install -U azure-iot-edge-runtime-ctl
 
 使用上一节的 IoT Edge 设备连接字符串配置运行时：
 ```cmd
-sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+sudo iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
 启动运行时：

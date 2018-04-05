@@ -1,24 +1,24 @@
 ---
-title: "使用 Azure 搜索为 Azure Blob 存储编制索引"
-description: "了解如何使用 Azure 搜索为 Azure Blob 存储编制索引，以及从文档中提取文本"
+title: 使用 Azure 搜索为 Azure Blob 存储编制索引
+description: 了解如何使用 Azure 搜索为 Azure Blob 存储编制索引，以及从文档中提取文本
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: chaosrealm
 manager: pablocas
-editor: 
+editor: ''
 ms.assetid: 2a5968f4-6768-4e16-84d0-8b995592f36a
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 12/28/2017
+ms.date: 03/22/2018
 ms.author: eugenesh
-ms.openlocfilehash: 286e2b8eddc87a5132fa13468b0cef1b499c3993
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 67f6775fb68f4cd13c52ebe66727f2b4df23c692
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>使用 Azure 搜索为 Azure Blob 存储中的文档编制索引
 本文说明如何使用 Azure 搜索服务为存储在 Azure Blob 存储中的文档（例如 PDF、Microsoft Office 文档和其他多种常用格式的文档）编制索引。 首先，本文说明了设置和配置 Blob 索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。
@@ -31,7 +31,7 @@ Blob 索引器可从以下文档格式提取文本：
 ## <a name="setting-up-blob-indexing"></a>设置 Blob 索引
 可以使用以下方式设置 Azure Blob 存储索引器：
 
-* [Azure portal](https://ms.portal.azure.com)
+* [Azure 门户](https://ms.portal.azure.com)
 * Azure 搜索 [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure 搜索 [.NET SDK](https://aka.ms/search-sdk)
 
@@ -271,6 +271,10 @@ Blob 索引器可从以下文档格式提取文本：
 对于某些 blob，Azure 搜索无法确定其内容类型，或无法处理其他受支持内容类型的文档。 若要忽略此故障模式，将 `failOnUnprocessableDocument` 配置参数设置为 false：
 
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
+
+Azure 搜索会限制编入索引的 blob 的大小。 这些限制记录在 [Azure 搜索中的服务限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)中。 过大的 blob 会被默认视为错误。 但是，如果将 `indexStorageMetadataOnlyForOversizedDocuments` 配置参数设为 true，你仍可以对过大 blob 的存储元数据编制索引： 
+
+    "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
 如果在任意处理点（无论是在解析 blob 时，还是在将文档添加到索引时）发生错误，仍然可以继续索引。 若要忽略特定的错误数，将 `maxFailedItems` 和 `maxFailedItemsPerBatch` 配置参数设置为所需值。 例如：
 

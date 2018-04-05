@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 用户界面 - 市场宣传方法"
-description: "Azure Mobile Engagement 用户界面概述"
+title: Azure Mobile Engagement 用户界面 - 市场宣传方法
+description: Azure Mobile Engagement 用户界面概述
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 30af87e6-c816-4cce-8609-6cbd3e83de14
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 33a0a9d0c399cb7f0a791c4c16dde2e2d62364ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c536d378023ee4a9675bb2d67262fb485c8052b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-get-started-using-and-managing-pushes-to-reach-out-to-your-end-users"></a>如何开始使用和管理推送来向最终用户进行市场宣传
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 将 SDK 完全集成到应用中后，则可以开始使用 UI 的市场宣传部分来向应用的用户推送通知。  
 
 ## <a name="do-your-first-push-notification-campaign"></a>执行第一个推送通知市场活动

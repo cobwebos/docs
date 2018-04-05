@@ -1,10 +1,11 @@
 ---
-title: "步骤 1：创建机器学习工作区 | Microsoft Docs"
-description: "开发预测解决方案演练的步骤 1：了解如何设置新的 Azure 机器学习工作室工作区。"
+title: 步骤 1：创建机器学习工作区 | Microsoft Docs
+description: 开发预测解决方案演练的步骤 1：了解如何设置新的 Azure 机器学习工作室工作区。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: b3c97e3d-16ba-4e42-9657-2562854a1e04
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.author: garye
-ms.openlocfilehash: 58b37cf8927926cb128928e4d0e438945074f6e5
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 88f928599f62cbb39d65cd29a978e3a9d25d863f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="walkthrough-step-1-create-a-machine-learning-workspace"></a>演练步骤 1：创建机器学习工作区
 这是演练[在 Azure 机器学习中开发预测分析解决方案](walkthrough-develop-predictive-solution.md)的第一步。
@@ -35,9 +35,9 @@ ms.lasthandoff: 12/01/2017
 
 若要使用机器学习工作室，需要具有 Microsoft Azure 机器学习工作区。 此工作空间包含创建、管理和发布试验所需的工具。  
 
-Azure 订阅的管理员需创建工作区，然后你将添加为所有者或参与者。 有关详细信息，请参阅[创建和共享 Azure 机器学习工作区](create-workspace.md)。
+Azure 订阅的管理员需创建工作区，并将你添加为所有者或参与者。 有关详细信息，请参阅[创建和共享 Azure 机器学习工作区](create-workspace.md)。
 
-创建工作区后，打开机器学习工作室 ([https://studio.azureml.net/Home](https://studio.azureml.net/Home))。 如果有多个工作区，可在窗口右上角的工具栏中选择工作区。
+创建工作区后，请打开机器学习工作室 ([https://studio.azureml.net/Home](https://studio.azureml.net/Home))。 如果有多个工作区，可在窗口右上角的工具栏中选择工作区。
 
 ![在 Studio 中选择工作区][2]
 

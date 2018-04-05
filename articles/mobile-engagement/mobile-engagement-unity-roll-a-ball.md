@@ -1,11 +1,11 @@
 ---
-title: "Unity 滚动球教程"
-description: "创建经典 Unity 滚动球游戏的步骤，这是所有 Mobile Engagement Unity 教程中必不可少的部分"
+title: Unity 滚动球教程
+description: 创建经典 Unity 滚动球游戏的步骤，这是所有 Mobile Engagement Unity 教程中必不可少的部分
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 0afd0eca-f74a-43aa-bba8-436a0265c312
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52d5962645b1408fdba61ec1bf4e4f682b80905b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a id="unity-roll-a-ball"></a>创建 Unity 滚球游戏
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 本教程介绍了稍经修改的 [Unity 滚动球教程](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial)的主要步骤。 此示例游戏包含一个“Player”球形对象（该对象由应用程序用户控制），而这款游戏的目标是通过将 Player 对象与可收集对象碰撞以“收集”这些可收集对象。 本教程假定用户基本熟悉 Unity 编辑器的环境。 如果遇到任何问题，请参考完整教程。 
 
 ### <a name="setting-up-the-game"></a>设置游戏

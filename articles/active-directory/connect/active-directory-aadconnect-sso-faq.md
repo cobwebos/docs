@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: 8a91960f150e9298515cd52fe192ec1abdd89f9c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 819d8ce9793f785726f55a89d49d08d818401b33
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="what-sign-in-methods-do-seamless-sso-work-with"></a>无缝 SSO 使用的登录方法是什么？
 
-无缝 SSO 可与[密码哈希同步](active-directory-aadconnectsync-implement-password-synchronization.md)或[传递身份验证](active-directory-aadconnect-pass-through-authentication.md)登录方法结合使用。 但是，此功能不能用于 Active Directory 联合身份验证服务 (ADFS)。
+无缝 SSO 可与[密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md)或[传递身份验证](active-directory-aadconnect-pass-through-authentication.md)登录方法结合使用。 但是，此功能不能用于 Active Directory 联合身份验证服务 (ADFS)。
 
 ## <a name="is-seamless-sso-a-free-feature"></a>无缝 SSO 是否为免费功能？
 
@@ -38,16 +38,23 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>哪些应用程序可以利用无缝 SSO 的 `domain_hint` 或 `login_hint` 参数功能？
 
-下面列出的是将这些参数发送到 Azure AD 的应用程序的非详尽列表，因此使用无缝 SSO 可为用户提供无提示登录体验：
+以下为将这些参数发送到 Azure AD 的应用程序的非详尽列表，因此使用无缝 SSO 可为用户提供无提示登录体验（即用户无需输入其用户名）：
 
 | 应用程序名称 | 可供使用的应用程序 URL |
 | -- | -- |
 | 访问面板 | myapps.microsoft.com/contoso.com |
 | Outlook 网页版 | outlook.office365.com/contoso.com |
 
-在上表中，将"contoso.com"替换为域名，为租户获取正确的应用程序 URL。
+此外，如果应用程序向 Azure AD 的租用终结点（即 https://login.microsoftonline.com/contoso.com/<..> 或 https://login.microsoftonline.com/<tenant_ID>/<..>）而不是 Azure AD 的普通终结点（即 https://login.microsoftonline.com/common/<...>）发送登录请求，用户可获得无提示登录体验。 以下为提出此类登录请求的应用程序的非详尽列表。
 
-如果你有其他感兴趣的应用程序，请在备注部分告诉我们。
+| 应用程序名称 | 可供使用的应用程序 URL |
+| -- | -- |
+| SharePoint Online | contoso.sharepoint.com |
+| Azure 门户 | portal.azure.com/contoso.com |
+
+在上述表中，将“contoso.com”替换为域名，为租户获取正确的应用程序 URL。
+
+如果希望其他应用程序具备无提示登录体验，请在反馈部分告知我们。
 
 ## <a name="does-seamless-sso-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>无缝 SSO 是否支持将 `Alternate ID` 作为用户名（而不是 `userPrincipalName`）？
 

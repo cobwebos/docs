@@ -1,22 +1,21 @@
 ---
-title: "使用语言自定义项 - Azure AD B2C | Microsoft Docs"
-description: 
+title: 使用语言自定义项 - Azure AD B2C | Microsoft Docs
+description: 了解如何自定义语言体验。
 services: active-directory-b2c
-documentationcenter: 
-author: sama
-ms.assetid: eec4d418-453f-4755-8b30-5ed997841b56
+documentationcenter: ''
+author: davidmu1
+manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 02/26/2018
-ms.author: sama
-ms.openlocfilehash: 332c6b4ffd841a2c7aef9db5c8ba9e843790f4d6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: davidmu
+ms.openlocfilehash: 7c72c1d43d9a5fa541c72a8ba7a5ccedeafdaaff
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-using-language-customization"></a>Azure Active Directory B2C：使用语言自定义
 
@@ -137,7 +136,7 @@ ms.lasthandoff: 03/02/2018
 
 ## <a name="using-page-ui-customization-with-language-customization"></a>将页面 UI 自定义与语言自定义配合使用
 
-可通过两种方法本地化 HTML 内容。  通过启用“语言自定义”。[](active-directory-b2c-reference-language-customization.md)  启用此功能可让 Azure AD B2C 将 OpenID 连接参数 `ui-locales` 转发到终结点。  内容服务器可使用此参数提供特定语言的自定义 HTML 页面。
+可通过两种方法本地化 HTML 内容。  通过启用[语言自定义](active-directory-b2c-reference-language-customization.md)。  启用此功能可让 Azure AD B2C 将 OpenID 连接参数 `ui-locales` 转发到终结点。  内容服务器可使用此参数提供特定语言的自定义 HTML 页面。
 
 或者，我们可以基于所使用的区域设置从不同位置拉取内容。  在已启用 CORS 的终结点中，可以设置文件夹结构以托管特定语言的内容，以便在提供通配符值 `{Culture:RFC5646}` 时调用正确的语言。  例如，如果将以下项设为自定义页 URI：
 

@@ -1,8 +1,8 @@
 ---
-title: "如何监视 Azure 存储帐户 | Microsoft 文档"
-description: "了解如何使用 Azure 门户在 Azure 中监视存储帐户。"
+title: 如何监视 Azure 存储帐户 | Microsoft 文档
+description: 了解如何使用 Azure 门户在 Azure 中监视存储帐户。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: tamram
-ms.openlocfilehash: 20cb425b64bfba06d64b3c6c41f9ef496395ad8e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ffc7d46bbfa4db47a47e416c395efdfc451cadc1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
@@ -28,8 +28,6 @@ ms.lasthandoff: 01/24/2018
 > 在 Azure 门户中检查监视数据会产生相关的费用。 有关详细信息，请参阅[存储分析和计费](/rest/api/storageservices/Storage-Analytics-and-Billing)。
 >
 > Azure 文件目前支持存储分析指标，但尚不支持日志记录。
->
-> 复制类型为区域冗余存储 (ZRS) 的存储帐户支持指标和日志记录。 已重命名了 ZRS 经典的以前 ZRS 帐户不支持指标或日志记录。 有关 ZRS 的详细信息，请参阅[区域冗余存储](storage-redundancy.md#zone-redundant-storage)。 
 > 
 > 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](../storage-monitoring-diagnosing-troubleshooting.md)。
 >

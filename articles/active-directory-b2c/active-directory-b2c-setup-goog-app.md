@@ -1,28 +1,25 @@
 ---
-title: "Azure Active Directory B2C：Google+ 配置 | Microsoft Docs"
-description: "在 Azure Active Directory B2C 保护的应用程序中向用户提供使用 Google+ 帐户的注册和登录功能。"
+title: Azure Active Directory B2C：Google+ 配置 | Microsoft Docs
+description: 在 Azure Active Directory B2C 保护的应用程序中向用户提供使用 Google+ 帐户的注册和登录功能。
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: 4dcca66f-29e4-4b4d-8840-50baad736bd7
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: 93589352094fdd556811ba906ee27e7b8ac1d8b5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: db3044754e0c1316b49eda0600d41e3009c1ba16
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-google-accounts"></a>Azure Active Directory B2C：向用户提供使用 Google+ 帐户的注册和登录功能
 ## <a name="create-a-google-application"></a>创建 Google+ 应用程序
-要将 Google+ 用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 Google+ 应用程序并向其提供合适的参数。 需要使用 Google+ 帐户来完成此操作。 如果没有此帐户，可以在 [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) 上获取。
+要将 Google+ 用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 Google+ 应用程序并向其提供合适的参数。 需要使用 Google+ 帐户来完成此操作。 如果没有账户，可在 [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) 处获取。
 
 1. 导航到 [Google 开发人员控制台](https://console.developers.google.com/)，并使用 Google+ 帐户凭据登录。
 2. 单击“创建项目”，输入**项目名称**，并单击“创建”。
@@ -43,7 +40,7 @@ ms.lasthandoff: 12/11/2017
 7. 在“应用程序类型”下，选择“Web 应用程序”。
    
     ![Google+ - OAuth 许可屏幕](./media/active-directory-b2c-setup-goog-app/google-web-app.png)
-8. 提供应用程序的**名称**，在**已授权 JavaScript 来源**字段中输入 `https://login.microsoftonline.com`，并在**已授权重定向 URI** 字段输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 **{tenant}** 替换为租户名称（例如 contosob2c.onmicrosoft.com）。 **{tenant}** 值区分大小写。 单击“创建” 。
+8. 提供应用程序的**名称**，在**已授权 JavaScript 来源**字段中输入 `https://login.microsoftonline.com`，并在**已授权重定向 URI** 字段输入 `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`。 将 **{tenant}** 替换为租户名称（例如 contosob2c.onmicrosoft.com）。 **{tenant}** 值区分大小写。 单击“创建”。
    
     ![Google+ - 创建客户端 ID](./media/active-directory-b2c-setup-goog-app/google-create-client-id.png)
 9. 复制“客户端 ID”和“客户端密码”的值。 将 Google+ 配置为租户中的标识提供者时需要这两个值。 **客户端密码**是一个重要的安全凭据。

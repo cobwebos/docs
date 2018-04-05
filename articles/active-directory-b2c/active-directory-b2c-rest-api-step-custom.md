@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：业务流程步骤形式的 REST API 声明交换 | Microsoft Docs"
-description: "有关与 API 集成的 Azure Active Directory B2C 自定义策略的主题"
+title: Azure Active Directory B2C：业务流程步骤形式的 REST API 声明交换 | Microsoft Docs
+description: 有关与 API 集成的 Azure Active Directory B2C 自定义策略的主题
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/24/2017
-ms.author: joroja
-ms.openlocfilehash: 3e4f0bccf02c0332663a746d4ed8e5234c51f54e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: bde1ef711fe19b7e26f2d93b58d653dc816b1a07
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换
 
@@ -78,7 +75,7 @@ return request.CreateResponse<ResponseContent>(
     "application/json");
 ```
 
-使用 Azure 函数应用可以轻松获取函数 URL，其中包含特定函数的标识符。 在本例中，该 URL 为：https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==。 可将它用于测试目的。
+使用 Azure 函数应用可以轻松获取函数 URL，其中包含特定函数的标识符。 在此情况下，URL 为：https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==。 可将它用于测试目的。
 
 ## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>步骤 2：在 TrustFrameworExtensions.xml 文件中将 RESTful API 声明交换配置为技术配置文件
 

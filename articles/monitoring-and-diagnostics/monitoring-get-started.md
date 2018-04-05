@@ -1,9 +1,9 @@
 ---
-title: "Azure 监视器入门 | Microsoft 文档"
-description: "开始使用 Azure Monitor 来深入了解资源的操作，并根据数据采取操作。"
+title: Azure 监视器入门 | Microsoft 文档
+description: 开始使用 Azure Monitor 来深入了解资源的操作，并根据数据采取操作。
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: ce2930aa-fc41-4b81-b0cb-e7ea922467e1
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
-ms.openlocfilehash: 9c352c67aa0e9392c9e9d68822abeb27344bd8b7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 69ec5392f034ffe94315c17366a9242d86c69d6d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-monitor"></a>Azure 监视器入门
-Azure 监视器是一款平台服务，提供了用于监视 Azure 资源的单一源。 通过 Azure 监视器，可直观显示、查询、路由和存档来自 Azure 内部资源的度量和日志并对其采取操作。 可以通过使用 Azure 门户、[监视器 PowerShell Cmdlet](insights-powershell-samples.md)、[跨平台 CLI](insights-cli-samples.md) 或 [Azure 监视器 REST API](https://msdn.microsoft.com/library/dn931943.aspx) 来处理此数据。 在本文中，我们将使用门户进行演示，了解 Azure 监视器的几个关键组件。
+Azure 监视器是一款平台服务，提供了用于监视 Azure 资源的单一源。 通过 Azure Monitor，可直观显示、查询、路由和存档来自 Azure 内部资源的指标和日志并对其采取其他操作。 可以通过使用 Azure 门户、[监视器 PowerShell Cmdlet](insights-powershell-samples.md)、[跨平台 CLI](insights-cli-samples.md) 或 [Azure 监视器 REST API](https://msdn.microsoft.com/library/dn931943.aspx) 来处理此数据。 在本文中，我们将使用门户进行演示，了解 Azure 监视器的几个关键组件。
 
 ## <a name="walkthrough"></a>演练
 1. 在门户中，导航到“所有服务”并找到“监视器”选项。 单击星型图标将此选项添加到收藏夹列表中，以便可始终从左侧导航栏轻松访问此选项。
@@ -39,7 +39,7 @@ Azure 监视器是一款平台服务，提供了用于监视 Azure 资源的单�
     [活动日志](monitoring-overview-activity-logs.md)描述了对订阅资源执行的所有操作。 通过活动日志，可确定对于订阅资源上的任何创建、更新或删除操作，“谁何时执行什么操作”。 例如，活动日志会显示某 Web 应用何时停止以及谁停止了该应用。 活动日志事件存储在平台中，可在 90 天内进行查询。
 
     可创建并保存常见筛选器的查询，然后将最重要的查询固定到门户仪表板中，便于始终了解是否出现了符合条件的事件。
-4. 将视图筛选范围定为上周的特定资源组，然后单击“保存”按钮。
+4. 将视图筛选范围定为上周的特定资源组，然后单击“保存”按钮。 为查询指定名称。 
 
     ![保存活动日志查询](./media/monitoring-get-started/monitor-act-log-save.png)
 5. 现在，单击“大头针”按钮。

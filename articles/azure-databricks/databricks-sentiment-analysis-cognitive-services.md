@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/20/2018
+ms.date: 03/27/2018
 ms.author: alehall
-ms.openlocfilehash: 8858df394885ae7820a4bc72458f4f1d851965e6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 889284d9c53f902b7a8443c4622e1c3015630ae0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据执行情绪分析
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 03/28/2018
 
 若要接收推文流，必须在 Twitter 中创建一个应用程序。 按步骤创建一个 Twitter 应用程序，并记下稍后需要在本教程中使用的值。
 
-1. 在 Web 浏览器中，转到[Twitter 应用程序管理](http://twitter.com/app)，选择“创建新应用”。
+1. 在 Web 浏览器中，转到[Twitter 应用程序管理](http://twitter.com/app)，选择**创建新应用**。
 
     ![创建 Twitter 应用程序](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-twitter-app.png "创建 Twitter 应用程序")
 
@@ -395,6 +395,8 @@ ms.lasthandoff: 03/28/2018
     -------------------------------------------
     ...
     ...
+
+现在已通过适用于 Apache Spark 的事件中心连接器接近实时地将数据从 Azure 事件中心流式传输到 Azure Databricks 中。 有关如何使用适用于 Spark 的事件中心连接器的详细信息，请参阅[连接器文档](https://github.com/Azure/azure-event-hubs-spark/tree/master/docs)。
 
 ## <a name="run-sentiment-analysis-on-tweets"></a>对推文运行情绪分析
 

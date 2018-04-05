@@ -1,10 +1,10 @@
 ---
-title: "Azure SDK for .NET 2.9 发行说明"
-description: "Azure SDK for .NET 2.9 发行说明"
+title: Azure SDK for .NET 2.9 发行说明
+description: Azure SDK for .NET 2.9 发行说明
 services: app-service\web
 documentationcenter: .net
 author: chrissfanos
-editor: 
+editor: ''
 ms.assetid: c83d815b-fc19-4260-821e-7d2a7206dffc
 ms.service: app-service
 ms.devlang: multiple
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 199f0906f73d693d7cd4b73c928f23ae83b99596
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a62268cee0750c544703fb4c3f7e91238e26b872
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>用于 .NET 2.9 的 Azure SDK 发行说明
 
 本主题包括用于 .NET 的 Azure SDK 版本 2.9 和 2.9.6 的发行说明。
 
-##<a name="azure-sdk-for-net-296-release-summary"></a>用于 .NET 2.9.6 的 Azure SDK 发行摘要
+## <a name="azure-sdk-for-net-296-release-summary"></a>用于 .NET 2.9.6 的 Azure SDK 发行摘要
 
 发布日期：2016/11/16
  
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="visual-studio-2017-release-candidate"></a>Visual Studio 2017 候选发布
 
-- 在 Visual Studio 2017 RC 中，此版本的用于 .NET 的 Azure SDK 内置于 Azure 工作负荷中。 进行 Azure 开发所需的全部工具将成为 Visual Studio 2017 RC 及后续版本的一部分。 对于 Visual Studio 2015 和 Visual Studio 2013，仍可通过 WebPI 获取 SDK。 Visual Studio 2017 作为最终产品发布时，不再发布 Visual Studio 2013 的 用于 .NET 的 Azure SDK 版本。 通过此链接可下载 Visual Studio 2017 RC：https://www.visualstudio.com/vs/visual-studio-2017-rc/
+- 在 Visual Studio 2017 RC 中，此版本的用于 .NET 的 Azure SDK 内置于 Azure 工作负荷中。 进行 Azure 开发所需的全部工具将成为 Visual Studio 2017 RC 及后续版本的一部分。 对于 Visual Studio 2015 和 Visual Studio 2013，仍可通过 WebPI 获取 SDK。 Visual Studio 2017 作为最终产品发布时，不再发布 Visual Studio 2013 的 用于 .NET 的 Azure SDK 版本。 单击此链接下载 Visual Studio 2017 RC：https://www.visualstudio.com/vs/visual-studio-2017-rc/
 
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
@@ -52,9 +52,9 @@ ms.lasthandoff: 10/11/2017
 
 - 从 2016 年 11 月 30 日起，不再支持 Azure 角色中缓存。 有关详细信息，请单击[此处](https://azure.microsoft.com/en-us/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)。
 
-### <a name="azure-resource-manager-templates-for-azure-stack"></a>用于 Azure Stack 的 Azure Resource Manager 模板
+### <a name="azure-resource-manager-templates-for-azure-stack"></a>用于 Azure Stack 的 Azure 资源管理器模板
 
-- 我们引入了 Azure Stack 作为 Azure Resource Manager 模板的部署目标。
+- 我们引入了 Azure Stack 作为 Azure 资源管理器模板的部署目标。
 
 
 ## <a name="azure-sdk-for-net-29-summary"></a>用于 .NET 2.9 的 Azure SDK 摘要
@@ -85,7 +85,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="hdinsight-tools"></a>HDInsight 工具
 用于 Visual Studio 的 **HDInsight 工具**现在支持 HDInsight 3.3 版，包括显示 Tez 图形和其他语言修复。
 
-## <a name="azure-resource-manager"></a>Azure Resource Manager
+## <a name="azure-resource-manager"></a>Azure 资源管理器
 此版本添加了对 Resource Manager 模板的[密钥保管库](../azure-resource-manager/resource-manager-keyvault-parameter.md)支持。
 
 ## <a name="see-also"></a>另请参阅

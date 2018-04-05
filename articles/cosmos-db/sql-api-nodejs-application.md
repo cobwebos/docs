@@ -1,7 +1,7 @@
 ---
-title: "生成适用于 Azure Cosmos DB 的 Node.js Web 应用 | Microsoft Docs"
-description: "此 Node.js 教程探讨了如何使用 Microsoft Azure Cosmos DB 从 Azure 网站上托管的 Node.js Express Web 应用程序来存储和访问数据。"
-keywords: "应用程序开发, 数据库教程, 了解 node.js, node.js 教程"
+title: 生成适用于 Azure Cosmos DB 的 Node.js Web 应用 | Microsoft Docs
+description: 此 Node.js 教程探讨了如何使用 Microsoft Azure Cosmos DB 从 Azure 网站上托管的 Node.js Express Web 应用程序来存储和访问数据。
+keywords: 应用程序开发, 数据库教程, 了解 node.js, node.js 教程
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/23/2018
 ms.author: mimig
-ms.openlocfilehash: 441f352555f40c0467df4c466d58ac35e32f9e61
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: ad6e335c562e52d7e2336dd1f29e5c159fe46589
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="_Toc395783175"></a>使用 Azure Cosmos DB 生成 Node.js Web 应用程序
 > [!div class="op_single_selector"]
@@ -29,8 +29,6 @@ ms.lasthandoff: 02/14/2018
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 本 Node.js 教程介绍了如何使用 Azure Cosmos DB 和 SQL API，通过在 Azure 网站上托管的 Node.js Express 应用程序存储和访问数据。 用户构建一个简单的基于 Web 的任务管理应用程序（即待办事项应用），用于创建、检索和完成任务。 任务存储为 Azure Cosmos DB 中的 JSON 文档。 本教程演示如何创建和部署应用，并说明每个代码片段的功能。
 
@@ -154,7 +152,7 @@ ms.lasthandoff: 02/14/2018
 
     ```nodejs
     let DocumentDBClient = require('documentdb').DocumentClient;
-    let docdbUtils = require('./docdbUtils');
+    let docdbUtils = require('./cosmosdb-manager.js');
     ```
 7. 接下来，将添加代码以定义和导出 Task 对象。 这负责初始化我们的 Task 对象，并设置我们将使用的数据库和文档集合。  
 
@@ -411,7 +409,7 @@ ms.lasthandoff: 02/14/2018
 6. 最后，保存并关闭 **app.js** 文件，我们就快完成了。
 
 ## <a name="_Toc395783181"></a>步骤 5：生成用户界面
-现在让我们把注意力转向构建用户界面，因此用户可以与我们的应用程序进行切实的交互。 我们创建的 Express 应用程序使用 **Jade** 作为视图引擎。 有关 Jade 的详细信息，请参阅 [http://jade-lang.com/](http://jade-lang.com/)。
+现在让我们把注意力转向构建用户界面，因此用户可以与我们的应用程序进行切实的交互。 我们创建的 Express 应用程序使用 **Jade** 作为视图引擎。 有关详细信息，请参阅 [http://jade-lang.com/](http://jade-lang.com/)。
 
 1. **views** 目录中的 **layout.jade** 文件用作其他 **.jade** 文件的全局模板。 在此步骤中，将对其进行修改以使用 [Twitter Bootstrap](https://github.com/twbs/bootstrap)（一个可以轻松设计美观网站的工具包）。 
 2. 打开 **views** 文件夹中的 **layout.jade** 文件，将内容替换为以下代码：
@@ -489,7 +487,7 @@ ms.lasthandoff: 02/14/2018
 这应该是应用程序工作所需的所有内容了。
 
 ## <a name="_Toc395783181"></a>步骤 6：在本地运行应用程序
-1. 要在本地计算机上测试应用程序，请在终端中运行 `npm start` 以启动应用程序，并刷新 [http://localhost:3000](http://localhost:3000) 浏览器页。 该页此时看起来应如下图所示：
+1. 要在本地计算机上测试应用程序，请在终端中运行 `npm start` 以启动应用程序，并刷新 [http://localhost:3000](http://localhost:3000) 浏览页。 该页此时看起来应如下图所示：
    
     ![浏览器窗口中 MyTodo List 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
 

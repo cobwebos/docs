@@ -6,14 +6,14 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8deb78ba108aafc3297e6b96d6d88d0c56c60afd
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d26fe28d301cf563dc6bdb3d9e17903dea3e73fc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性和 Azure SQL 数据库
 自 Azure SQL 数据库 PaaS 服务推出以来，Microsoft 已向客户承诺在该服务中内置高可用性 (HA)，客户无需操作和添加特殊的逻辑，或者围绕 HA 做出决策。 Microsoft 对 HA 系统的配置和操作保持完全控制，并为客户提供 SLA。 HA SLA 适用于区域中的 SQL 数据库，对于超出 Microsoft 可合理控制的因素（例如，自然灾害、战争、恐怖活动、暴动、政府措施，或者 Microsoft 数据中心外部（包括客户站点，或者客户站点与 Microsoft 数据中心之间的位置）的网络或设备故障）所造成的整个区域范围的故障，它不能提供保护。
@@ -46,7 +46,7 @@ SQL 数据库使用基于直接附加磁盘/VHD 的本地存储 (LS) 和基于 A
 
 ## <a name="data-redundancy"></a>数据冗余
 
-SQL 数据库中的高可用性解决方案基于 SQL Server 的 [AlwaysON](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) 技术，同时适用于 LS 和 RS 数据库，在两者中的差异很小。 在 LS 配置中，AlwaysON 用于实现持久性；在 RS 中，它用于实现可用性（降低 RTO）。 
+SQL 数据库中的高可用性解决方案基于 SQL Server 的 [AlwaysON 可用性组](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)技术，同时适用于 LS 和 RS 数据库，在两者中的差异很小。 在 LS 配置中，AlwaysON 可用性组技术用于实现持久性；在 RS 中，它用于实现可用性（降低 RTO）。 
 
 ## <a name="local-storage-configuration"></a>本地存储配置
 

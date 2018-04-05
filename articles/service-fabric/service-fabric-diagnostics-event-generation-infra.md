@@ -1,47 +1,62 @@
 ---
-title: "Azure Service Fabric 平台级别监视 | Microsoft Docs"
-description: "了解用于监视和诊断 Azure Service Fabric 群集的平台级别事件和日志。"
+title: Azure Service Fabric 平台级别监视 | Microsoft Docs
+description: 了解用于监视和诊断 Azure Service Fabric 群集的平台级别事件和日志。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/20/2017
+ms.date: 03/19/2018
 ms.author: dekapur
-ms.openlocfilehash: 8452b5ae733b21254b0beecaec44a968897ae491
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 46ba7b6e638fafa512d4a3f291c49acc1ddf02e4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="platform-level-event-and-log-generation"></a>平台级别事件和日志生成
-
-## <a name="monitoring-the-cluster"></a>监视群集
+# <a name="monitoring-the-cluster-and-platform"></a>监视群集和平台
 
 在平台级别进行监视以确定硬件和群集的运行情况是否符合预期是非常重要的。 在硬件发生故障期间，Service Fabric 可保持应用程序运行，但用户仍需要诊断错误是在应用程序中还是底层基础结构中发生。 还应该监视群集以便更好地规划容量，帮助决定添加或删除硬件。
 
 Service Fabric 提供了以下现成可用的日志通道：
-* 操作通道：由 Service Fabric 和群集执行的高级操作，包括出现节点事件、部署新应用程序或升级回滚等。
-* 操作通道 - 详细信息：运行状况报告和负载均衡决策
-* 数据和消息通道：消息（当前仅限 ReverseProxy）和数据路径（可靠的服务模型）中生成的关键日志和事件
-* 数据和消息通道 - 详细信息：包含群集中的数据和消息提供的所有非关键日志的详细通道（此通道的事件量非常大）   
+
+* **可操作**  
+由 Service Fabric 和群集执行的高级操作，包括出现节点事件、部署新应用程序或升级回退等。
+
+* **可操作 - 详细信息**  
+运行状况报告和负载均衡决策。
+
+* **数据和消息**  
+消息（当前仅限 ReverseProxy）和数据路径（可靠的服务模型）中生成的关键日志和事件。
+
+* **数据和消息 - 详细信息**  
+包含群集中的数据和消息提供的所有非关键日志的详细通道（此通道的事件量非常大）。
 
 除此之外，还提供了两个结构化的 EventSource 通道以及为支持目的而收集的日志。
-* [Reliable Services 事件](service-fabric-reliable-services-diagnostics.md)：特定于编程模型的事件
-* [Reliable Actors 事件](service-fabric-reliable-actors-diagnostics.md)：特定于编程模型事件和性能计数器
-* 支持日志：Service Fabric 生成的系统日志，仅当我们提供支持时使用
+
+* [Reliable Services 事件](service-fabric-reliable-services-diagnostics.md)  
+特定于编程模型的事件。
+
+* [Reliable Actors 事件](service-fabric-reliable-actors-diagnostics.md)  
+特定于编程模型的事件和性能计数器。
+
+* 支持日志  
+Service Fabric 生成的系统日志，仅当我们提供支持时使用。
 
 这些不同的通道涵盖了大部分推荐的平台级别日志记录。 若要改进平台级别日志记录，建议更好地了解运行状况模型和添加自定义运行状况报表，并添加自定义性能计数器，以实时了解服务和应用程序对群集的影响。
 
-### <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric 运行状况和负载报告
+为了充分利用这些日志，强烈建议在群集创建过程中启用“诊断”。 如果开启诊断，部署群集时，Windows Azure 诊断就可确认运行 Operational、Reliable Services 和 Reliable Actors 通道，并按照[通过 Azure 诊断聚合事件](service-fabric-diagnostics-event-aggregation-wad.md)中所述存储数据。
+
+## <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric 运行状况和负载报告
 
 Service Fabric 具有自身的运行状况模型，以下文章对此做了详细介绍：
+
 - [Service Fabric 运行状况监视简介](service-fabric-health-introduction.md)
 - [报告并检查服务运行状况](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 - [添加自定义 Service Fabric 运行状况报告](service-fabric-report-health.md)
@@ -58,44 +73,9 @@ Service Fabric 具有自身的运行状况模型，以下文章对此做了详�
 
 可以指明应用程序的运行状况和性能的任何信息都是指标和运行状况报告的候选项。 CPU 性能计数器可以告知节点的利用情况，但不会指明特定的服务是否正常，因为单个节点上可能运行了多个服务。 但是，RPS、已处理的项数和请求延迟等指标都可以指明特定服务的运行状况。
 
-若要报告运行状况，请使用如下所示的代码：
-
-  ```csharp
-    if (!result.HasValue)
-    {
-        HealthInformation healthInformation = new HealthInformation("ServiceCode", "StateDictionary", HealthState.Error);
-        this.Partition.ReportInstanceHealth(healthInformation);
-    }
-  ```
-
-若要报告指标，请使用如下所示的代码：
-
-  ```csharp
-    this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
-  ```
-
-### <a name="service-fabric-support-logs"></a>Service Fabric 支持日志
+## <a name="service-fabric-support-logs"></a>Service Fabric 支持日志
 
 如需联系 Microsoft 支持部门来获取 Azure Service Fabric 群集方面的帮助，几乎始终都需要提供支持日志。 如果群集托管在 Azure 中，则会自动配置支持日志，并在创建群集的过程中收集这些日志。 日志存储在群集资源组中的专用存储帐户内。 该存储帐户没有固定的名称，但在其中可以看到以 *fabric* 开头的 Blob 容器和表。 有关为独立群集设置日志收集的信息，请参阅 [Create and manage a standalone Azure Service Fabric cluster](service-fabric-cluster-creation-for-windows-server.md)（创建和管理独立 Azure Service Fabric 群集）以及 [Configuration settings for a standalone Windows cluster](service-fabric-cluster-manifest.md)（Windows 独立群集的配置设置）。 对于独立的 Service Fabric 实例，应该将日志发送到本地文件共享。 **必须**提供这些日志才能获得支持，但是，这些日志只能由 Microsoft 客户支持团队使用。
-
-## <a name="enabling-diagnostics-for-a-cluster"></a>启用群集诊断
-
-为了充分利用这些日志，强烈建议在群集创建过程中启用“诊断”。 如果开启诊断，部署群集时，Windows Azure 诊断就可确认运行 Operational、Reliable Services 和 Reliable Actors 通道，并按照[通过 Azure 诊断聚合事件](service-fabric-diagnostics-event-aggregation-wad.md)中所述存储数据。
-
-如上图所示，还存在一个用于添加 Application Insights (AI) 检测密钥的可选字段。 如果选择使用 AI 对所有事件进行分析（阅读[通过 Application Insights 进行事件分析](service-fabric-diagnostics-event-analysis-appinsights.md)了解相关详细信息），请在此处添加 AppInsights resource instrumentationKey (GUID)。
-
-
-如果要将容器部署到群集中，通过将此代码添加到“WadCfg > DiagnosticMonitorConfiguration”，启用 WAD 来读取 docker 统计信息：
-
-```json
-"DockerSources": {
-    "Stats": {
-        "enabled": true,
-        "sampleRate": "PT1M"
-    }
-},
-
-```
 
 ## <a name="measuring-performance"></a>测量性能
 
@@ -105,9 +85,11 @@ Service Fabric 具有自身的运行状况模型，以下文章对此做了详�
 
 以下是设置群集收集性能数据的两种常见方式：
 
-* 使用代理：这是从计算机中收集性能的首选方法，因为代理通常有可以收集的可能性能指标列表，并且选择要收集或更改的指标是一个相对简单的过程。 阅读有关[如何配置适用于 Service Fabric 的 OMS](service-fabric-diagnostics-event-analysis-oms.md) 和[设置 OMS Windows 代理](../log-analytics/log-analytics-windows-agent.md)的文章，了解有关 OMS 代理的更多信息，OMS 代理是一个能够读取群集 VM 的性能数据和部署容器的监视代理。
+* **使用代理**  
+这是从计算机中收集性能的首选方法，因为代理通常有可以收集的可能性能指标列表，并且选择要收集或更改的指标是一个相对简单的过程。 阅读有关[如何配置适用于 Service Fabric 的 OMS](service-fabric-diagnostics-event-analysis-oms.md) 和[设置 OMS Windows 代理](../log-analytics/log-analytics-windows-agent.md)的文章，了解有关 OMS 代理的更多信息，OMS 代理是一个能够读取群集 VM 的性能数据和部署容器的监视代理。
 
-* 配置诊断以将性能计数器写入表中：对于 Azure 上的群集，这意味着更改 Azure 诊断配置以从群就中的 VM 读取适当的性能计数器，如果要部署任何容器，也能使其读取 docker 统计数据。 阅读有关在 Service Fabric 中配置[WAD 中的性能计数器](service-fabric-diagnostics-event-aggregation-wad.md)，设置性能计数器集合。
+* **配置诊断以将性能计数器写入表中**  
+对于 Azure 上的群集，这意味着更改 Azure 诊断配置以从群集中的 VM 读取适当的性能计数器，如果要部署任何容器，也能使其读取 docker 统计数据。 阅读有关在 Service Fabric 中配置[WAD 中的性能计数器](service-fabric-diagnostics-event-aggregation-wad.md)，设置性能计数器集合。
 
 ## <a name="next-steps"></a>后续步骤
 

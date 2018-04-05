@@ -1,11 +1,10 @@
 ---
-title: "使用数据工厂从 Salesforce 移动数据 | Microsoft Docs"
-description: "了解如何使用 Azure 数据工厂从 Salesforce 移动数据。"
+title: 使用数据工厂从 Salesforce 移动数据 | Microsoft Docs
+description: 了解如何使用 Azure 数据工厂从 Salesforce 移动数据。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: dbe3bfd6-fa6a-491a-9638-3a9a10d396d1
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9e678e947a686b5a672af13cb0f0e60b4a272de9
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: d4c679722e36eb9533b65037a488fb9af9a5bc80
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,7 +41,7 @@ Azure 数据工厂当前仅支持将数据从 Salesforce 移动到[支持的接�
 * 要将数据从 Salesforce 复制到本地数据存储，必须在本地环境中至少安装有数据管理网关 2.0。
 
 ## <a name="salesforce-request-limits"></a>Salesforce 请求限制
-Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下几点：
+Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以下几点：
 
 - 如果并发请求数超过限制，则将进行限制并且会看到随机失败。
 - 如果请求总数超过限制，将阻止 Salesforce 帐户 24 小时。
@@ -72,7 +71,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下�
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
 | type |类型属性必须设置为：**Salesforce**  |是 |
-| environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> - 默认值为“https://login.salesforce.com”。 <br> - 若要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
+| environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> - 默认为“https://login.salesforce.com”。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
 | username |为用户帐户指定用户名。 |是 |
 | password |指定用户帐户的密码。 |是 |
 | securityToken |为用户帐户指定安全令牌。 请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)了解有关如何重置/获取安全令牌的说明。 若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。 |是 |

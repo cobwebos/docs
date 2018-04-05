@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 用户界面 - 我的帐户"
-description: "了解如何使用 Azure Mobile Engagement 管理帐户配置文件和测试设备"
+title: Azure Mobile Engagement 用户界面 - 我的帐户
+description: 了解如何使用 Azure Mobile Engagement 管理帐户配置文件和测试设备
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 22832678-3959-4b8c-9fb2-f2ff5974e5d1
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 4e463e973dcfa1faa7b08e4738192161980b3aa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89ef4f97a03ab0334f5474fb5b0ad2fd44f23518
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-your-account-profile-and-test-devices"></a>如何管理帐户配置文件和测试设备
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 本文介绍了 **Mobile Engagement** 门户的“**主页**”。 使用 **Mobile Engagement** 门户来监视和管理移动应用。 
 
 要访问“**我的帐户**”页面，请单击页面顶部的帐户。

@@ -1,28 +1,25 @@
 ---
-title: "Azure Active Directory B2C：Facebook 配置 | Microsoft Docs"
-description: "在 Azure Active Directory B2C 保护的应用程序中向用户提供使用 Facebook 帐户的注册和登录功能。"
+title: Azure Active Directory B2C：Facebook 配置 | Microsoft Docs
+description: 在 Azure Active Directory B2C 保护的应用程序中向用户提供使用 Facebook 帐户的注册和登录功能。
 services: active-directory-b2c
-documentationcenter: 
-author: sromeroz
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: sromeroz
-ms.assetid: b875f235-a1d2-4abb-b9f0-b89beac38a32
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 8/7/2017
-ms.author: sromeroz
-ms.openlocfilehash: 7f551a7ba9b7ddbb373e6b6418ab43fe7ce9be36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 899677500b0d33b5f98807a341449199b6b3dcac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-facebook-accounts"></a>Azure Active Directory B2C：向用户提供使用 Facebook 帐户的注册和登录功能
 ## <a name="create-a-facebook-application"></a>创建 Facebook 应用程序
-要将 Facebook 用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 Facebook 应用程序并向其提供合适的参数。 需要使用 Facebook 帐户来完成此操作。 如果没有此帐户，可以在 [https://www.Facebook.com/](https://www.facebook.com/) 上获取。
+要将 Facebook 用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 Facebook 应用程序并向其提供合适的参数。 需要使用 Facebook 帐户来完成此操作。 如果没有账户，可在 [https://www.facebook.com/](https://www.facebook.com/) 处获取。
 
 1. 转到 [Facebook 开发人员](https://developers.facebook.com/)网站，并使用 Facebook 帐户凭据登录。
 2. 如果以前没有登录过，需要注册为 Facebook 开发人员。 要执行此操作，请单击“注册”（位于页面的右上角），接受 Facebook 的策略，并完成注册步骤。

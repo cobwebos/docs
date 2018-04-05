@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 用户界面 - 市场宣传"
-description: "了解如何使用 Azure Mobile Engagement 通过推送通知与应用程序的用户联系"
+title: Azure Mobile Engagement 用户界面 - 市场宣传
+description: 了解如何使用 Azure Mobile Engagement 通过推送通知与应用程序的用户联系
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d96e2590-08dd-4481-a352-2c18f26a1643
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,16 +14,20 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ce30456e41ff1a2f4824bcb64246ee115fdd1ef7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d999b83df7d9d467f08ce8ec72468c738e8acfa5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-reach-out-to-the-users-of-your-application-with-push-notifications"></a>如何通过推送通知与应用程序的用户联系
-本文介绍了 **Mobile Engagement** 门户的“市场宣传”选项卡。 使用 **Mobile Engagement** 门户来监视和管理移动应用。 请注意，要开始使用该门户，首先需要创建 **Azure Mobile Engagement** 帐户。 有关详细信息，请参阅[创建 Azure Mobile Engagement 帐户](mobile-engagement-create.md)。
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
 
-UI 的“市场宣传”部分是可以在其中创建/编辑/激活/完成/监视推送通知市场活动和功能，以及获取其相关统计信息的推送市场活动管理工具，这些推送通知市场活动和功能也可以通过 Reach API（和低级别 Push API 的某些元素）进行访问。 请记住，无论使用 API 或 UI，对于使用 SDK 的每个平台，都需要将 Azure Mobile Engagement 和 Reach 集成到应用程序中，然后才可以使用市场宣传活动。
+本文介绍了 **Mobile Engagement** 门户的“市场宣传”选项卡。 使用 Mobile Engagement 门户来监视和管理移动应用。 请注意，要开始使用该门户，首先需要创建 **Azure Mobile Engagement** 帐户。 有关详细信息，请参阅[创建 Azure Mobile Engagement 帐户](mobile-engagement-create.md)。
+
+UI 的“市场宣传”部分是可以在其中创建/编辑/激活/完成/监视推送通知市场活动和功能，以及获取其相关统计信息的推送市场活动管理工具，这些推送通知市场活动和功能也可以通过 Reach API（和低级别 Push API 的某些元素）进行访问。 请记住，无论你使用 API 或 UI，对于使用 SDK 的每个平台，都需要将 Azure Mobile Engagement 和 Reach 集成到你的应用程序中，才可以使用市场宣传活动。
 
 > [!NOTE]
 > **Mobile Engagement** 门户 UI 的很多部分中都包含“显示帮助”按钮。 按此按钮可获取关于某一部分的更多上下文信息。

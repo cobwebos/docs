@@ -1,11 +1,11 @@
 ---
-title: "使用数据工厂向/从 Azure SQL 数据仓库复制数据 | Microsoft Docs"
-description: "了解如何使用数据工厂将数据从受支持的源存储复制到 Azure SQL 数据仓库，或从 SQL 数据仓库复制到受支持的接收器存储。"
+title: 使用数据工厂向/从 Azure SQL 数据仓库复制数据 | Microsoft Docs
+description: 了解如何使用数据工厂将数据从受支持的源存储复制到 Azure SQL 数据仓库，或从 SQL 数据仓库复制到受支持的接收器存储。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 2601d386bdacbe005b2930a44db531a0b58fb7b5
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 5d284277f600465345be0058468192f2f5609d89
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -395,7 +395,7 @@ SQL 数据仓库 PolyBase 直接支持作为源并具有特定文件格式要求
 1. **源链接服务**的类型为：**AzureStorage** 或使用服务主体身份验证的 **AzureDataLakeStore**。
 2. **输入数据集**的类型为：**AzureBlob** 或 **AzureDataLakeStoreFile**，`type` 属性下的格式类型为 **OrcFormat**、**ParquetFormat** 或 **TextFormat**，其配置如下：
 
-   1. `rowDelimiter` 必须是 \n。
+   1. `rowDelimiter` 必须是 **\n**。
    2. `nullValue` 设置为**空字符串** ("")，或者 `treatEmptyAsNull` 设置为“true”。
    3. `encodingName` 设置为“utf-8”，即**默认**值。
    4. 未指定 `escapeChar`、`quoteChar`、`firstRowAsHeader` 和 `skipLineCount`。
@@ -510,7 +510,7 @@ Polybase 加载限制为加载小于 **1 MB** 的行，并且无法加载到 VAR
 
 ### <a name="sql-data-warehouse-resource-class"></a>SQL 数据仓库资源类
 
-要实现最佳吞吐量，请考虑向通过 PolyBase 将数据加载到 SQL 数据仓库的用户分配更大的资源类。 请参阅[更改用户资源类示例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example)，了解如何执行该操作。
+若要实现最佳吞吐量，请考虑向通过 PolyBase 将数据加载到 SQL 数据仓库的用户分配更大的资源类。
 
 ### <a name="tablename-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的 tableName
 

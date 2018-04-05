@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：QQ 配置 | Microsoft Docs"
-description: "在 Azure Active Directory B2C 保护的应用程序中向用户提供使用 QQ 帐户的注册和登录功能。"
+title: Azure Active Directory B2C：QQ 配置 | Microsoft Docs
+description: 在 Azure Active Directory B2C 保护的应用程序中向用户提供使用 QQ 帐户的注册和登录功能。
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 18c2cf94-8004-4de1-81c2-e45be65ce12d
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2017
-ms.author: parakhj
-ms.openlocfilehash: d4cc26d4f206baf9137feae0825b1f9fa5a7c8d6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 12daed5f90e2b073a7520c061f18761baaed5c03
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-qq-accounts"></a>Azure Active Directory B2C：向用户提供使用 QQ 帐户的注册和登录功能
 
@@ -28,12 +25,12 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="create-a-qq-application"></a>创建 QQ 应用程序
 
-要将 QQ 用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 QQ 应用程序并向其提供合适的参数。 需要使用 QQ 帐户来完成此操作。 如果没有帐户，可通过 [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033) 获取一个。
+要将 QQ 用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 QQ 应用程序并向其提供合适的参数。 需要使用 QQ 帐户来完成此操作。 如果没有账户，可在 [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033) 处获取一个。
 
 ### <a name="register-for-the-qq-developer-program"></a>注册 QQ 开发人员计划
 
 1. 转到 [QQ 开发人员门户](http://open.qq.com)并使用 QQ 帐户凭据登录。
-2. 登录后，请转到 [http://open.qq.com/reg](http://open.qq.com/reg) 将自己注册为开发人员。
+2. 登录后，请转到 [http://open.qq.com/reg](http://open.qq.com/reg) 将自己注册为开发者。
 3. 在菜单中，选择“个人”。
 4. 在表单中输入所需的信息，并单击“下一步”。
 5. 完成电子邮件验证过程。
@@ -43,7 +40,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="register-a-qq-application"></a>注册 QQ 应用程序
 
-1. 转到 [https://connect.qq.com/index.html](https://connect.qq.com/index.html)。
+1. 转到[https://connect.qq.com/index.html](https://connect.qq.com/index.html)。
 2. 单击“应用管理”。
 3. 单击“创建应用”。
 4. 输入所需的应用信息。

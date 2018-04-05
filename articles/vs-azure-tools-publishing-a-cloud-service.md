@@ -3,8 +3,8 @@ title: 使用 Azure Tools 发布云服务 | Microsoft Docs
 description: 了解如何使用 Visual Studio 发布 Azure 云服务项目。
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
+author: ghogen
+manager: douge
 editor: ''
 ms.assetid: 1a07b6e4-3678-4cbf-b37e-4520b402a3d9
 ms.service: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2017
-ms.author: kraigb
-ms.openlocfilehash: e854c46329f092388531a73ada50829c4579806d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: ghogen
+ms.openlocfilehash: 59a34f92937136079d8c693a1747b2d54f37e6d8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="publishing-a-cloud-service-using-visual-studio"></a>使用 Visual Studio 发布云服务
 
@@ -53,7 +53,7 @@ Visual Studio 可以将应用程序直接发布到 Azure，同时支持云服务
 
       如果要在发布云服务之后对其进行调试，请选中“为所有角色启用远程调试器”以启用远程调试。
 
-   d.单击“下一步”。 若要创建该包，请选择“打包”链接。
+   d. 若要创建该包，请选择“打包”链接。
 
       文件资源管理器会显示新创建包的文件位置。 可以复制此位置，以便能够从 Azure 门户使用它。
 
@@ -138,7 +138,7 @@ Visual Studio 可以将应用程序直接发布到 Azure，同时支持云服务
    a. 在“解决方案资源管理器”中，打开缺少已引用程序集的项目的项目节点。
    b. 要将程序集添加到项目，请打开“引用”文件夹的快捷菜单，然后选择“添加引用”。 此时会显示“添加引用”对话框。
    c. 选择要添加的引用，然后选择“确定”。 该引用将添加到“引用”文件夹下的列表中。
-   d.单击“下一步”。 打开所添加的程序集的快捷菜单，并选择“属性”。 此时会显示“属性”窗口。
+   d. 打开所添加的程序集的快捷菜单，并选择“属性”。 此时会显示“属性”窗口。
 
       要将此程序集包含在服务包中，请在“本地复制”列表中选择“True”。
 1. 在“解决方案资源管理器”中，打开缺少已引用程序集的项目的项目节点。

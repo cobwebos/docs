@@ -1,11 +1,11 @@
 ---
-title: "部署 Azure Log Analytics Nozzle 以监视 Cloud Foundry | Microsoft Docs"
-description: "有关为 Azure Log Analytics 部署 Cloud Foundry Loggregator Nozzle 的分步指南。 使用 Nozzle 监视 Cloud Foundry 的运行状况和性能指标。"
+title: 部署 Azure Log Analytics Nozzle 以监视 Cloud Foundry | Microsoft Docs
+description: 有关为 Azure Log Analytics 部署 Cloud Foundry Loggregator Nozzle 的分步指南。 使用 Nozzle 监视 Cloud Foundry 的运行状况和性能指标。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: ningk
 manager: timlt
-editor: 
+editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: virtual-machines-linux
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 0d13d39d2921c51c537534a5b000564a9df91880
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b900a42196eedab89af8e55d71a336ed7adc45a4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署 Azure Log Analytics Nozzle 以监视 Cloud Foundry 系统
 
-[Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) 是 Microsoft [Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/) (OMS) 中的服务。 它有助于用户收集并分析云和本地环境生成的数据。
+[Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) 是 Azure 中的一项服务。 它有助于用户收集并分析云和本地环境生成的数据。
 
 Log Analytics Nozzle（以下简称 Nozzle）是 Cloud Foundry (CF) 组件，负责将指标从 [Cloud Foundry Loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) Firehose 转发到 Log Analytics。 使用 Nozzle，可跨多个部署收集、查看和分析 CF 系统的运行状况和性能指标。
 
-本文档介绍了解如何将 Nozzle 部署到 CF 环境，以及如何在 Log Analytics OMS 控制台中查看数据。
+本文档介绍了解如何将 Nozzle 部署到 CF 环境，以及如何在 Log Analytics 控制台中查看数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -53,9 +53,9 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 
 安装 UAA 命令行客户端之前，请务必先安装 Rubygems。
 
-### <a name="3-create-an-oms-workspace-in-azure"></a>3.在 Azure 中创建 OMS 工作区
+### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3.在 Azure 中创建 Log Analytics 工作区
 
-可以手动或使用模板创建 OMS 工作区。 完成 Nozzle 部署后，加载预配置的 OMS 视图和警报。
+可以手动或使用模板创建 Log Analytics 工作区。 完成 Nozzle 部署后，加载预配置的 OMS 视图和警报。
 
 手动创建工作区：
 
@@ -70,7 +70,7 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 
 有关详细信息，请参阅 [Log Analytics 入门](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)。
 
-或者，可以通过 OMS 模板创建 OMS 工作区 使用此方法时，模板会自动加载预配置的 OMS 视图和警报。 有关详细信息，请参阅 [Cloud Foundry 的 Azure OMS Log Analytics 解决方案](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-cloudfoundry-solution)。
+或者，可以通过 OMS 模板创建 Log Analytics 工作区。 使用此方法时，模板会自动加载预配置的 OMS 视图和警报。 有关详细信息，请参阅 [Cloud Foundry 的 Azure Log Analytics 解决方案](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-cloudfoundry-solution)。
 
 ## <a name="deploy-the-nozzle"></a>部署 Nozzle
 
@@ -118,14 +118,14 @@ cd oms-log-analytics-firehose-nozzle
 
 #### <a name="set-environment-variables"></a>设置环境变量。
 
-现在，可在当前目录中的 manifest.yml 文件内设置环境变量。 下面显示了 Nozzle 的应用清单。 请将值替换为特定的 OMS 工作区信息。
+现在，可在当前目录中的 manifest.yml 文件内设置环境变量。 下面显示了 Nozzle 的应用清单。 请将值替换为特定的 Log Analytics 工作区信息。
 
 ```
-OMS_WORKSPACE             : OMS workspace ID: open OMS portal from your OMS workspace, select Settings, and select connected sources.
-OMS_KEY                   : OMS key: open OMS portal from your OMS workspace, select Settings, and select connected sources.
-OMS_POST_TIMEOUT          : HTTP post timeout for sending events to OMS Log Analytics. The default is 10 seconds.
-OMS_BATCH_TIME            : Interval for posting a batch to OMS Log Analytics. The default is 10 seconds.
-OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to OMS Log Analytics. The default is 1000.
+OMS_WORKSPACE             : Log Analytics workspace ID: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
+OMS_KEY                   : OMS key: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
+OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Log Analytics. The default is 10 seconds.
+OMS_BATCH_TIME            : Interval for posting a batch to Log Analytics. The default is 10 seconds.
+OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Log Analytics. The default is 1000.
 API_ADDR                  : The API URL of the CF environment. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 DOPPLER_ADDR              : Loggregator's traffic controller URL. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 FIREHOSE_USER             : CF user you created in the preceding section, "Create a CF user and grant required privileges." This user has firehose and Cloud Controller admin access.
@@ -135,8 +135,8 @@ SKIP_SSL_VALIDATION       : If true, allows insecure connections to the UAA and 
 CF_ENVIRONMENT            : Enter any string value for identifying logs and metrics from different CF environments.
 IDLE_TIMEOUT              : The Keep Alive duration for the firehose consumer. The default is 60 seconds.
 LOG_LEVEL                 : The logging level of the Nozzle. Valid levels are DEBUG, INFO, and ERROR.
-LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to OMS Log Analytics as CounterEvents.
-LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to OMS Log Analytics. The default is 60 seconds.
+LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to Log Analytics as CounterEvents.
+LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Log Analytics. The default is 60 seconds.
 ```
 
 ### <a name="push-the-application-from-your-development-computer"></a>从开发计算机推送应用程序
@@ -165,7 +165,7 @@ cf apps
 
 ### <a name="1-import-the-oms-view"></a>1.导入 OMS 视图
 
-在 OMS 门户中，浏览到“视图设计器” > “导入” > “浏览”，选择一个 omsview 文件。 例如，选择“Cloud Foundry.omsview”，并保存该视图。 此时，OMS 的“概述”页上会显示一个磁贴。 选择此磁贴可查看可视化的指标。
+在 OMS 门户中，浏览到“视图设计器” > “导入” > “浏览”，选择一个 omsview 文件。 例如，选择“Cloud Foundry.omsview”，并保存该视图。 此时，“概述”页上会显示一个磁贴。 选择此磁贴可查看可视化的指标。
 
 可以通过“视图设计器”自定义这些视图或新建视图。
 
@@ -183,7 +183,7 @@ cf apps
 | Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | 结果数 > 0   | Consul 定期发出自己的运行状况状态。 0 表示系统正常，1 表示路由发射器检测到 Consul 停止运行。 |
 | Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | 结果数 > 0 | 由于反压力，Doppler 特意降低了消息的增量数。 |
 | Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | 结果数 > 0   | Loggregator 发出 **LGR**，指示日志记录进程存在的问题。 例如，日志消息输出过高时，就会出现此类问题。 |
-| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | 结果数 > 0   | 当 Nozzle 从 Loggregator 收到慢使用者警报时，它会向 OMS 发送 **slowConsumerAlert** ValueMetric。 |
+| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | 结果数 > 0   | 当 Nozzle 从 Loggregator 收到慢使用者警报时，它会向 Log Analytics 发送 slowConsumerAlert ValueMetric。 |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | 结果数 > 0   | 如果丢失的事件增量数达到阈值，表示 Nozzle 存在问题，无法正常运行。 |
 
 ## <a name="scale"></a>缩放
@@ -218,7 +218,7 @@ Loggregator 发送 **LGR** 日志消息，指示日志记录进程存在的问�
 cf delete <App Name> -r
 ```
 
-删除 Nozzle 不会自动删除 OMS 门户中的数据。 这些数据会根据 OMS Log Analytics 保留期设置过期。
+删除 Nozzle 不会自动删除 OMS 门户中的数据。 它的过期时间取决于 Log Analytics 保留期设置。
 
 ## <a name="support-and-feedback"></a>支持和反馈
 

@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/02/2017
+ms.date: 03/15/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 68de6295b84385f54eaadd6d24e8309a32fae9ce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7c58b4ebd840aca555b52a03cf44ace311b64e3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>应用程序身份验证的证书凭据
 
-Azure Active Directory 允许应用程序使用自己的凭据进行身份验证，例如，在 OAuth 2.0 客户端凭据授予流 ([v1](active-directory-protocols-oauth-service-to-service.md) [v2](active-directory-v2-protocols-oauth-client-creds.md)) 和代理流 ([v1](active-directory-protocols-oauth-on-behalf-of.md) [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)) 中就是如此。
+通过 Azure Active Directory，应用程序可使用其自己的凭据进行身份验证。 例如，在 OAuth 2.0 客户端凭据授予流（[v1](active-directory-protocols-oauth-service-to-service.md)、[v2](active-directory-v2-protocols-oauth-client-creds.md)和代表流（[v1](active-directory-protocols-oauth-on-behalf-of.md)、[v2](active-directory-v2-protocols-oauth-on-behalf-of.md)）中。
 可以使用的凭据的一种形式是使用应用程序拥有的证书进行签名的 JSON Web 令牌 (JWT) 断言。
 
 ## <a name="format-of-the-assertion"></a>断言的格式
-若要计算断言，需使用所选语言中的其中一个 [ Web 令牌](https://jwt.io/)库。 令牌附带的信息包括：
+若要计算断言，需使用所选语言中的其中一个 [ Web 令牌](https://jwt.ms/)库。 令牌附带的信息包括：
 
 #### <a name="header"></a>标头
 
@@ -85,7 +85,14 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 ### <a name="register-your-certificate-with-azure-ad"></a>使用 Azure AD 注册证书
 
-要将 Azure AD 中的证书凭据与客户端应用程序相关联，则需要编辑应用程序清单。
+可以使用以下任意方法通过 Azure 门户将证书凭据与 Azure AD 中的客户端应用程序相关联：
+
+**上传证书文件**
+
+在客户端应用程序的 Azure 应用注册中，依次单击“设置”、“密钥”和“上传公钥”。 选择要上传的证书文件并单击“保存”。 保存后，证书将上传并显示指纹、开始日期和过期值。 
+
+**更新应用程序清单**
+
 拥有证书后需计算：
 
 - `$base64Thumbprint`，证书哈希的 base64 编码

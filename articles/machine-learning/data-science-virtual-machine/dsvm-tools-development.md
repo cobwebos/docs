@@ -4,7 +4,7 @@ description: 数据科学虚拟机开发文档。
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: 0d7ee9a54c2c11f814ce041c5c7e5bd9f2e605e5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: gokuma
+ms.openlocfilehash: 6f141fc03b64d0ca922d003f6352b7751ab9967d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>数据科学虚拟机开发工具
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 03/08/2018
 | 它是什么？   | R 的基于 Web 的 IDE    |
 | 支持的 DSVM 版本      | Linux      |
 | 典型用途      |  R 开发     |
-| 如何使用/运行它？      | 使用 _systemctl enable rstudio-server_ 启用该服务，然后使用 _systemctl start rstudio-server_ 启动该服务。 然后可以在 http://your-vm-ip:8787 中登录到 RStudio Server。       |
+| 如何使用/运行它？      | 使用 _systemctl enable rstudio-server_ 启用该服务，然后使用 _systemctl start rstudio-server_ 启动该服务。 然后可以在 http://your-vm-ip:8787 登录到 RStudio Server。       |
 | DSVM 上的相关工具      |   Visual Studio 2017、Visual Studio Code、RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 

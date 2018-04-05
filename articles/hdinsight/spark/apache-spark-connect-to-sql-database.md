@@ -1,8 +1,8 @@
 ---
-title: "使用 Apache Spark 在 Azure SQL 数据库中读取和写入数据 | Microsoft Docs"
-description: "了解如何在 HDInsight Spark 群集与 Azure SQL 数据库之间设置连接，以便在 SQL 数据库中读取数据、写入数据和流式传输数据"
+title: 使用 Apache Spark 在 Azure SQL 数据库中读取和写入数据 | Microsoft Docs
+description: 了解如何在 HDInsight Spark 群集与 Azure SQL 数据库之间设置连接，以便在 SQL 数据库中读取数据、写入数据和流式传输数据
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/29/2018
+ms.date: 03/28/2018
 ms.author: nitinme
-ms.openlocfilehash: 28ed6b9774bb85c7ec806c7775c34f8bc3d66bde
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 011471224d79ae326ccc33fc23fd6fada347497b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>使用 HDInsight Spark 群集在 Azure SQL 数据库中读取和写入数据
 
@@ -234,7 +234,7 @@ ms.lasthandoff: 02/01/2018
         
          var streamingQuery = WriteToSQLQuery.start()
 
-6. 运行以下查询，验证数据是否正在流式传输到 **hvactable**。 每次运行该查询时，它都会显示表中的行数已递增。
+6. 通过在 SQL Server Management Studio (SSMS) 中运行以下查询，验证数据是否正在流式传输到 hvactable。 每次运行该查询时，它都会显示表中的行数已递增。
 
         SELECT COUNT(*) FROM hvactable
 

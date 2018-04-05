@@ -1,6 +1,6 @@
 ---
-title: "使用 XSLT 映射转换 XML - Azure 逻辑应用 | Microsoft 文档"
-description: "添加 XSLT 映射以使用 Azure 逻辑应用和 Enterprise Integration Pack 转换 XML 数据"
+title: 使用 XSLT 映射转换 XML - Azure 逻辑应用 | Microsoft 文档
+description: 添加 XSLT 映射以使用 Azure 逻辑应用和 Enterprise Integration Pack 转换 XML 数据
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4445a84a6c6425110e7d705019a28b5cc5447046
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b4d626028eed09e9ce6a45fa8fa69859c082da7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="add-maps-for-xml-data-transform"></a>添加映射以进行 XML 数据转换
 
@@ -28,9 +28,13 @@ ms.lasthandoff: 10/11/2017
 
 假设你从对日期使用 YYYMMDD 格式的客户定期收到 B2B 订单或发票。 但组织采用 MMDDYYY 格式存储日期。 在将订单或发票详细信息存储在客户活动数据库中之前，可以使用映射将 YYYMMDD 日期格式转换为 MMDDYYY。
 
+
 ## <a name="how-do-i-create-a-map"></a>如何创建映射？
 
 可以使用 Visual Studio 2015 的 [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "了解 enterprise integration pack") 创建 BizTalk 集成项目。 然后可以创建用于直观地在两个 XML 架构文件之间映射项目的集成映射文件。 生成此项目后，会获得 XSLT 文档。
+
+如果映射引用了外部程序集，必须将这两项内容上传到集成帐户。 应按照特定顺序进行上传，首先上传程序集，然后上传引用该程序集的映射。
+
 
 ## <a name="how-do-i-add-a-map"></a>如何添加映射？
 
@@ -50,7 +54,7 @@ ms.lasthandoff: 10/11/2017
 
     ![](./media/logic-apps-enterprise-integration-maps/map-1.png)
 
-5. 在“映射”边栏选项卡打开后，选择“添加”。
+5. 在“映射”页打开后，选择“添加”。
 
     ![](./media/logic-apps-enterprise-integration-maps/map-2.png)  
 
@@ -62,6 +66,19 @@ ms.lasthandoff: 10/11/2017
 
     ![](./media/logic-apps-enterprise-integration-maps/map-4.png)
 
+
+## <a name="how-do-i-add-an-assembly"></a>如何添加程序集？
+打开要向其上传程序集的集成帐户。
+
+1. 选择“程序集”磁贴。
+
+    ![integrationaccount-assembly-tile](./media/logic-apps-enterprise-integration-maps/assemblytile.png)
+
+2. 在“程序集”页打开后，选择“添加”。 输入程序集的“名称”。 若要上传程序集文件，请选择“程序集”文本框右侧的文件夹图标。 上传过程完成之后，选择“确定”。
+
+    ![add-assembly](./media/logic-apps-enterprise-integration-maps/assemblyfile.png)
+
+
 ## <a name="how-do-i-edit-a-map"></a>如何编辑映射？
 
 必须上传包含所需更改的新映射文件。 可以先下载映射以进行编辑。
@@ -70,9 +87,9 @@ ms.lasthandoff: 10/11/2017
 
 1. 选择“映射”磁贴。
 
-2. 在“映射”边栏选项卡打开后，选择要编辑的映射。
+2. 在“映射”页打开后，选择要编辑的映射。
 
-3. 在“映射”边栏选项卡上，选择“更新”。
+3. 在“映射”页上，选择“更新”。
 
     ![](./media/logic-apps-enterprise-integration-maps/edit-1.png)
 
@@ -84,7 +101,7 @@ ms.lasthandoff: 10/11/2017
 
 1. 选择“映射”磁贴。
 
-2. 在“映射”边栏选项卡打开后，选择要删除的映射。
+2. 在“映射”页打开后，选择要删除的映射。
 
 3. 选择“删除”。
 

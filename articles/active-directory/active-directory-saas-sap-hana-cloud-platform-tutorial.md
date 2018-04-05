@@ -1,6 +1,6 @@
 ---
-title: "教程：将 Azure Active Directory 与 SAP Cloud Platform 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 SAP Cloud Platform 之间配置单一登录。"
+title: 教程：将 Azure Active Directory 与 SAP Cloud Platform 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 SAP Cloud Platform 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 309415a68308943f638195303ceb236569519472
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a578a732efa3d2b91240ef0f4c02670aea8e547f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>教程：将 Azure Active Directory 与 SAP Cloud Platform 集成
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 SAP Cloud Platform 的集成，需要具有以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 SAP Cloud Platform 单一登录的订阅
 
 完成本教程后，已向 SAP Cloud Platform 分配的 Azure AD 用户能够使用[访问面板简介](active-directory-saas-access-panel-introduction.md)单一登录到该应用程序。
@@ -54,7 +54,7 @@ ms.lasthandoff: 12/11/2017
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 SAP Cloud Platform
-2. 配置并测试 Azure AD 单一登录
+2. 配置和测试 Azure AD 单一登录
 
 ## <a name="adding-sap-cloud-platform-from-the-gallery"></a>从库中添加 SAP Cloud Platform
 若要配置 SAP Cloud Platform 与 Azure AD 的集成，需要从库中将 SAP Cloud Platform 添加到托管 SaaS 应用列表。
@@ -71,7 +71,7 @@ ms.lasthandoff: 12/11/2017
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮][3]
+    ![“新增应用程序”按钮][3]
 
 4. 在搜索框中键入“SAP Cloud Platform”，在结果面板中选择“SAP Cloud Platform”，然后单击“添加”按钮添加该应用程序。
 
@@ -155,7 +155,7 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/tutorial_general_400.png)
 
-6. 在另一个 Web 浏览器窗口中，登录到 SAP Cloud Platform 考核中心，网址为 `https://account.<landscape host>.ondemand.com/cockpit`（例如：https://account.hanatrial.ondemand.com/cockpit）。
+6. 在另一个 Web 浏览器窗口中，登录到 SAP Cloud Platform 考核中心，网址为 `https://account.<landscape host>.ondemand.com/cockpit`（例如：https://account.hanatrial.ondemand.com/cockpit)）。
 
 7. 单击“信任”选项卡。
    
@@ -173,11 +173,11 @@ ms.lasthandoff: 12/11/2017
 
     d.单击“下一步”。 若要生成**签名密钥**和**签名证书**密钥对，请单击“生成密钥对”。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 对于“主体传播” ，选择“禁用”。
+    e. 对于“主体传播” ，选择“禁用”。
 
     f. 对于“强制身份验证”，选择“禁用”。
 
-    g. 单击“保存” 。
+    g. 单击“ **保存**”。
 
 9. 保存“本地服务提供程序”设置后，执行以下步骤获取回复 URL：
    
@@ -218,7 +218,7 @@ ms.lasthandoff: 12/11/2017
     | --- | --- |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |名 |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |姓 |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |email |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |电子邮件 |
    
      >[!NOTE]
      >属性的配置取决于如何开发 SCP 上的应用程序，即它们应在 SAML 响应中预期哪些属性，以及它们在哪个名称（主体属性）下通过代码访问此属性。
@@ -228,7 +228,7 @@ ms.lasthandoff: 12/11/2017
  
     c. 屏幕截图中所示的**主体属性**的名称和值取决于如何开发应用程序。 很可能应用程序需要不同的映射。
 
-###<a name="assertion-based-groups"></a>基于断言的组
+### <a name="assertion-based-groups"></a>基于断言的组
 
 可选步骤是，可以为 Azure Active Directory 标识提供者配置基于断言的组。
 
@@ -266,13 +266,13 @@ ms.lasthandoff: 12/11/2017
 
     ![“用户”对话框](./media/active-directory-saas-sap-hana-cloud-platform-tutorial/create_aaduser_04.png)
 
-    a.在“横幅徽标”下面，选择“删除上传的徽标”。 在“姓名”框中，键入“BrittaSimon”。
+    a. 在“姓名”框中，键入“BrittaSimon”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建” 。
+    d.单击“下一步”。 单击“创建”。
  
 ### <a name="create-a-sap-cloud-platform-test-user"></a>创建 SAP Cloud Platform 测试用户
 
@@ -294,7 +294,7 @@ ms.lasthandoff: 12/11/2017
 
     d.单击“下一步”。 单击“分配”，将用户分配到角色。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“保存” 。
+    e. 单击“ **保存**”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
@@ -336,7 +336,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 

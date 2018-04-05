@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights 中的应用程序映射 | Microsoft 文档"
-description: "使用应用程序映射监视复杂的应用程序拓扑"
+title: Azure Application Insights 中的应用程序映射 | Microsoft 文档
+description: 使用应用程序映射监视复杂的应用程序拓扑
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: SoubhagyaDash
 manager: carmonm
 ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3bbed59bf93eab5e729fbdd3ccae04599ac47081
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 4b95cd947cd977208dee32d18fbc6a1fb099ff3b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 应用程序映射可帮助你发现的性能瓶颈或热点失败的所有组件的分布式应用程序。 在地图上的每个节点表示应用程序组件或其依赖项;并且有运行状况 KPI 和警报状态。 可从任何组件单击以获得更详细的诊断，如 Application Insights 事件。 如果应用使用了 Azure 服务，还可以单击获得 Azure 诊断，如 SQL 数据库顾问建议。
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/03/2018
 ![启用预览映射](media/app-insights-app-map/preview-from-classic.png)
 
 >[!Note]
-此预览版将替换以前的"Mult 角色应用程序映射"预览版。 在此期间，使用此跨多个级别的应用程序组件依赖项查看整个拓扑。 向我们提供反馈，我们将添加更多的功能类似于经典映射的支持。
+此预览版将替换以前的“多角色应用程序映射”预览版。 在此期间，使用此跨多个级别的应用程序组件依赖项查看整个拓扑。 向我们提供反馈，我们将添加更多的功能类似于经典映射的支持。
 
 你可以跨多个级别的相关应用程序组件中查看完整的应用程序拓扑。 组件可以是不同的 Application Insights 资源或不同的角色在单个资源。 应用映射通过跟踪已安装 Application Insights SDK 的服务器之间进行的任何 HTTP 依赖项调用来查找服务器节点。 
 
@@ -142,4 +142,4 @@ ms.lasthandoff: 02/03/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure portal](https://portal.azure.com)
+* [Azure 门户](https://portal.azure.com)

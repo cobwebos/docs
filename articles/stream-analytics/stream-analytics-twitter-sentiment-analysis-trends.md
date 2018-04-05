@@ -1,12 +1,11 @@
 ---
-title: "使用 Azure 流分析进行实时 Twitter 情绪分析 | Microsoft Docs"
-description: "了解如何使用流分析进行实时 Twitter 情绪分析。 在实时仪表板上提供从事件生成到数据的分步指南。"
-keywords: "实时 twitter 趋势分析、情绪分析、社交媒体分析、趋势分析示例"
+title: 使用 Azure 流分析进行实时 Twitter 情绪分析 | Microsoft Docs
+description: 了解如何使用流分析进行实时 Twitter 情绪分析。 在实时仪表板上提供从事件生成到数据的分步指南。
+keywords: 实时 twitter 趋势分析、情绪分析、社交媒体分析、趋势分析示例
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 42068691-074b-4c3b-a527-acafa484fda2
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
-ms.author: samacha
-ms.openlocfilehash: 96a169343481f1cdf43af82a7768cfe08cbd4886
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: jeanb
+ms.openlocfilehash: 87a9ecc5984075d700ddc64a1377342d5fe7e494
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
 

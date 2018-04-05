@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory 概念证明操作手册：构建基块 | Microsoft Docs"
-description: "研究并快速实现标识和访问管理方案"
+title: Azure Active Directory 概念证明操作手册：构建基块 | Microsoft Docs
+description: 研究并快速实现标识和访问管理方案
 services: active-directory
-keywords: "azure active directory 操作手册, 概念证明, PoC"
-documentationcenter: 
+keywords: azure active directory 操作手册, 概念证明, PoC
+documentationcenter: ''
 author: dstefanMSFT
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: b37ca3c6ca528551ef09a90159e92fd31e0fabf2
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 1efb8d89b0a78dcf88c60c2e8cd3b968a725e8b9
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
@@ -40,8 +40,8 @@ ms.lasthandoff: 02/22/2018
 
 | 先决条件 | 资源 |
 | --- | --- |
-| 使用有效的 Azure 订阅定义的 Azure AD 租户 | [如何获取 Azure Active Directory 租户](active-directory-howto-tenant.md)<br/>**请注意：**如果环境中已经具备 Azure AD Premium 许可证，则可以通过导航到 https://aka.ms/accessaad 来获取零上限订阅 <br/>有关详细信息，请访问：https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ and https://technet.microsoft.com/library/dn832618.aspx |
-| 已定义和验证域 | [将自定义域名添加到 Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**注意：**Power BI 等工作负荷可能已经预配了其包含的 Azure AD 租户。 若要查看给定域是否与租户相关联，请导航到 https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration。 如果收到成功的相应，则域已经分配给租户，并且可能需要接管。 在这种情况下，请联系 Microsoft 获取更多指导。 如需了解有关接管选项的详细信息，请参阅[什么是 Azure 自助式服务注册？](active-directory-self-service-signup.md) |
+| 使用有效的 Azure 订阅定义的 Azure AD 租户 | [如何获取 Azure Active Directory 租户](active-directory-howto-tenant.md)<br/>**请注意：**如果环境中已经具备 Azure AD Premium 许可证，则可以通过导航到 https://aka.ms/accessaad 来获取零上限订阅 <br/>请访问 https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ 和 https://technet.microsoft.com/library/dn832618.aspx 了解详细信息 |
+| 已定义和验证域 | [将自定义域名添加到 Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**注意：**Power BI 等工作负荷可能已经预配了其包含的 Azure AD 租户。 要检查给定域是否与租户关联，请导航到 https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration。 如果收到成功的相应，则域已经分配给租户，并且可能需要接管。 在这种情况下，请联系 Microsoft 获取更多指导。 如需了解有关接管选项的详细信息，请参阅[什么是 Azure 自助式服务注册？](active-directory-self-service-signup.md) |
 | 已启用 Azure AD Premium 或 EMS 试用版 | [Azure Active Directory Premium 免费使用一个月](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | 已经向 PoC 用户分配了 Azure AD Premium 或 EMS 许可证 | [向你自己以及 Azure Active Directory 中用户分配许可证](active-directory-licensing-get-started-azure-portal.md) |
 | Azure AD 全局管理员凭据 | [在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md) |
@@ -71,7 +71,7 @@ ms.lasthandoff: 02/22/2018
 
 ### <a name="considerations"></a>注意事项
 
-1. 请在[此处](./connect/active-directory-aadconnectsync-implement-password-synchronization.md)查看密码哈希同步的安全注意事项。  如果确实不能选择试点生产用户的密码哈希同步，请考虑使用以下替代方法：
+1. 请在[此处](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)查看密码哈希同步的安全注意事项。  如果确实不能选择试点生产用户的密码哈希同步，请考虑使用以下替代方法：
    * 在生产域中创建测试用户。 确保不会同步任何其他帐户
    * 转到 UAT 环境
 2.  如果想进行联合身份验证，则有必要了解将联合身份验证与本地标识提供程序相关联所产生的费用不包含在 POC 中，并且有必要权衡此费用与你想获得的优势之间的利弊：
@@ -94,14 +94,14 @@ ms.lasthandoff: 02/22/2018
 | 执行最终用户登录体验的客户端计算机 |  |
 | 可选项：用于验证体验的移动设备 |  |
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
 | 转到 Azure AD 管理门户 | [Azure AD 管理门户 - 公司品牌](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
 | 上传登录页的资产（英雄徽标、小型徽标、标签等）。 或者，如果拥有 AD FS，也可以使用与 ADFS 登录页相同的资产 | [在登录页和访问面板页中添加公司品牌：可自定义的元素](customize-branding.md) |
 | 等待几分钟时间使更改完全生效 |  |
-| 使用 POC 用户凭据登录到 https://myapps.microsoft.com |  |
+| 使用 POC 用户凭据登录 https://myapps.microsoft.com |  |
 | 在浏览器中查看呈现效果 | [在登录页和访问面板页中添加公司品牌](customize-branding.md) |
 | 也可以在其他设备中查看呈现效果 |  |
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 02/22/2018
 | --- | --- |
 | 所有的 POC 用户都属于安全组（云中或本地上） | [在 Azure Active Directory 中创建组并添加成员](active-directory-groups-create-azure-portal.md) |
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -138,11 +138,11 @@ ms.lasthandoff: 02/22/2018
 
 | 先决条件 | 资源 |
 | --- | --- |
-| SaaS 应用程序的测试环境可用。 本指南使用 ServiceNow 作为示例。<br/>强烈建议使用测试实例来最大程度地减少导航现有数据质量和映射上的冲突。 | 请转到 https://developer.servicenow.com/app.do#!/home 以开始执行获取测试实例的进程 |
+| SaaS 应用程序的测试环境可用。 本指南使用 ServiceNow 作为示例。<br/>强烈建议使用测试实例来最大程度地减少导航现有数据质量和映射上的冲突。 | 转到 https://developer.servicenow.com/app.do#!/home 以开始获取测试实例的过程 |
 | 对 ServiceNow 管理控制台的管理员访问权限 | [教程：Azure Active Directory 与 ServiceNow 集成](active-directory-saas-servicenow-tutorial.md) |
 | 要分配应用程序的目标用户群。 建议使用包含 PoC 用户的安全组。 <br/>如果无法创建组，请直接向用户分配应用程序进行 PoC | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -156,7 +156,7 @@ ms.lasthandoff: 02/22/2018
 | 按照说明配置 ServiceNow |  |
 | 在 ServiceNow 应用的“预配”边栏选项卡中，启用“自动”设置 | [在新的 Azure 门户中管理企业应用的用户帐户预配](active-directory-enterprise-apps-manage-provisioning.md) |
 | 稍等几分钟，等待预配完成。  在此期间，可以查看预配报告 |  |
-| 以具有访问权限的测试用户身份登录到 https://myapps.microsoft.com/ | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
+| 以具有访问权限的测试用户身份登录 https://myapps.microsoft.com/ | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
 | 单击刚刚创建的应用程序的磁贴。 确认访问 |  |
 | 或者可以查看应用程序使用情况报告。 请注意，存在一定程度的延迟，因此需要等待一段时间才能在报告中看到流量。 | [Azure Active Directory 门户中的登录活动报告：托管应用程序的使用情况](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Azure Active Directory 报告保留策略](active-directory-reporting-retention.md) |
 
@@ -178,7 +178,7 @@ ms.lasthandoff: 02/22/2018
 | 要分配应用程序的目标用户群。 建议使用包含用户的安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -186,7 +186,7 @@ ms.lasthandoff: 02/22/2018
 | 从库中配置应用程序 | [Azure Active Directory 中企业应用程序管理的新增功能：新增和改进的应用程序库](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
 | 配置密码 SSO | [在新的 Azure 门户中管理企业应用的单一登录：基于密码的登录](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
 | 将应用分配给在先决条件中标识的组 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
-| 以具有访问权限的测试用户身份登录到 https://myapps.microsoft.com/ |  |
+| 以具有访问权限的测试用户身份登录 https://myapps.microsoft.com/ |  |
 | 单击刚刚创建的应用程序的磁贴。 | [访问面板是什么？：没有标识预配的基于密码的 SSO](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | 提供应用程序凭据 | [访问面板是什么？：没有标识预配的基于密码的 SSO](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | 关闭浏览器并再次输入登录名。 此时用户应该可以看到对应用程序的无缝访问权限。 |  |
@@ -209,11 +209,11 @@ ms.lasthandoff: 02/22/2018
 | 先决条件 | 资源 |
 | --- | --- |
 | 提前准备应用程序列表和确切的登录 URL。 可以使用 Twitter 作为示例。 | [Microsoft Azure Marketplace 上的 Twitter](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[注册 Twitter](https://twitter.com/signup?lang=en) |
-| 此 SaaS 应用程序的共享凭据。 | [使用 Azure AD 共享帐户](active-directory-sharing-accounts.md)<br/>[适用于 Facebook、Twitter 和 LinkedIn 的 Azure AD 自动密码滚动更新现在提供预览版！ - 企业移动性和安全性博客] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
+| 此 SaaS 应用程序的共享凭据。 | [使用 Azure AD 共享帐户](active-directory-sharing-accounts.md)<br/>[适用于 Facebook、Twitter 和 LinkedIn 的 Azure AD 自动密码滚动更新现在提供预览版！ -“企业移动性 + 安全性”博客] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
 | 至少两位将访问同一帐户的团队成员的凭据。 两位成员必须都属于安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -248,7 +248,7 @@ ms.lasthandoff: 02/22/2018
 | 如果组织使用代理服务器连接 Internet，请查看博客文章《使用现有本地代理服务器》了解配置方法的详细信息 | [使用现有的本地代理服务器](application-proxy-working-with-proxy-servers.md) |
 
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -279,7 +279,7 @@ ms.lasthandoff: 02/22/2018
 | 用户使用的工作负荷列表，以及与这些工作负荷关联的属性列表 | [Azure AD Connect 同步：与 Azure Active Directory 同步的属性](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
 
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -310,7 +310,7 @@ ms.lasthandoff: 02/22/2018
 | 已标识访问应用的信息辅助角色的凭据 | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
 
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -334,7 +334,7 @@ ms.lasthandoff: 02/22/2018
 | 已标识访问应用的信息辅助角色的凭据 | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
 
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -358,7 +358,7 @@ ms.lasthandoff: 02/22/2018
 | 标识将请求访问应用程序并且属于安全组的 POC 用户 | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) |
 | 已部署目标应用程序 | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) |
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -414,13 +414,13 @@ ms.lasthandoff: 02/22/2018
 | 标识将使用 MFA 的 POC 用户  |  |
 | 用于接收 MFA 质询的信号良好的电话  | [什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md) |
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
 | 在 Azure AD 管理门户中导航到“用户和组”边栏选项卡 | [Azure AD 管理门户：用户和组](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Overview/menuId/) |
 | 选择“所有用户”边栏选项卡 |  |
-| 在顶栏中选择“多重身份验证”按钮 | Azure MFA 门户的直接 URL：https://aka.ms/mfaportal |
+| 在顶栏中选择“多重身份验证”按钮 | Azure MFA 门户的的直接 URL：https://aka.ms/mfaportal |
 | 在“用户”设置中选择 PoC 用户，并为其启用 MFA | [Azure 多重身份验证中的用户状态](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) |
 | 以 PoC 用户身份登录，并完成验证过程  |  |
 
@@ -443,7 +443,7 @@ ms.lasthandoff: 02/22/2018
 | 已将 PoC 用户分配给应用程序 |  |
 | 提供给 POC 用户的凭据可用 |  |
 | POC 用户已注册 MFA。 使用的手机信号良好 | https://aka.ms/ssprsetup |
-| 内部网络中的设备。 已配置内部地址范围中的 IP 地址 | 查看 IP 地址：https://www.bing.com/search?q=what%27s+my+ip |
+| 内部网络中的设备。 已配置内部地址范围中的 IP 地址 | 查找 IP 地址：https://www.bing.com/search?q=what%27s+my+ip |
 | 外部网络中的设备（可以是使用运营商的移动网络的手机） |  |
 
 ### <a name="steps"></a>步骤
@@ -476,10 +476,10 @@ ms.lasthandoff: 02/22/2018
 
 | 步骤 | 资源 |
 | --- | --- |
-| 以全局管理员 (GA) 身份登录到 https://portal.azure.com 并启动 PIM 边栏选项卡。 执行此步骤的全局管理员会生成安全管理员。  我们将此参与者称为 GA1 | [使用 Azure AD Privileged Identity Management 中的安全向导](active-directory-privileged-identity-management-security-wizard.md) |
+| 以全局管理员 (GA) 身份登录 https://portal.azure.com 并启动“PIM”边栏选项卡。 执行此步骤的全局管理员会生成安全管理员。  我们将此参与者称为 GA1 | [使用 Azure AD Privileged Identity Management 中的安全向导](active-directory-privileged-identity-management-security-wizard.md) |
 | 标识全局管理员，并将其从固定管理员移至符合条件的管理员。 为清楚起见，该管理员应该是除步骤 1 中使用的管理员之外的独立管理员。 我们将此参与者称为 GA2 | [Azure AD Privileged Identity Management：如何添加或删除用户角色](active-directory-privileged-identity-management-how-to-add-role-to-user.md)<br/>[什么是 Azure AD Privileged Identity Management？：配置角色激活设置](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)  |
-| 现在，以 GA2 身份登录到 https://portal.azure.com 并尝试更改“用户设置”。 请注意，某些选项为灰显。 | |
-| 现在，在新的选项卡中，在与步骤 3 相同的会话中，导航到 https://portal.azure.com 并将 PIM 边栏选项卡添加到仪表板。 | [如何在 Azure AD Privileged Identity Management 中激活或停用角色：添加 Privileged Identity Management 应用程序](active-directory-privileged-identity-management-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| 现在，以 GA2 身份登录 https://portal.azure.com 并尝试更改“用户设置”。 请注意，某些选项为灰显。 | |
+| 现在，在新的选项卡中，在与步骤 3 相同的会话中，导航到 https://portal.azure.com 并将“PIM”边栏选项卡添加到仪表板。 | [如何在 Azure AD Privileged Identity Management 中激活或停用角色：添加 Privileged Identity Management 应用程序](active-directory-privileged-identity-management-how-to-activate-role.md#add-the-privileged-identity-management-application) |
 | 请求激活全局管理员角色 | [如何在 Azure AD Privileged Identity Management 中激活或停用角色：激活角色](active-directory-privileged-identity-management-how-to-activate-role.md#activate-a-role) |
 | 请注意，如果 GA2 之前从未注册过 MFA，则需要注册 Azure MFA |  |
 | 返回步骤 3 中的原始选项卡，并单击浏览器中的刷新按钮。 请注意，现在已经有权更改“用户设置”了 | |
@@ -501,14 +501,14 @@ ms.lasthandoff: 02/22/2018
 | 下载并安装了 Tor 浏览器设备 | [下载 Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | 对 POC 用户授予访问权限，以便进行登录 | [Azure Active Directory Identity Protection 演练手册](active-directory-identityprotection-playbook.md) |
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
 | 打开 tor 浏览器 | [下载 Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| 使用 POC 用户帐户登录到 https://myapps.microsoft.com | [Azure Active Directory Identity Protection 操作手册：模拟风险事件](active-directory-identityprotection-playbook.md#simulating-risk-events) |
+| 使用 POC 用户帐户登录 https://myapps.microsoft.com | [Azure Active Directory Identity Protection 操作手册：模拟风险事件](active-directory-identityprotection-playbook.md#simulating-risk-events) |
 | 等待 5 至 7 分钟 |  |
-| 以全局管理员身份登录到 https://portal.azure.com 并打开“Identity Protection”边栏选项卡 | https://aka.ms/aadipgetstarted |
+| 以全局管理员身份登录 https://portal.azure.com 并打开“Identity Protection”边栏选项卡 | https://aka.ms/aadipgetstarted |
 | 打开“风险事件”边栏选项卡。 应会在“从匿名 IP 地址登录”下看到一个条目  | [Azure Active Directory Identity Protection 操作手册：模拟风险事件](active-directory-identityprotection-playbook.md#simulating-risk-events) |
 
 ### <a name="considerations"></a>注意事项
@@ -532,10 +532,10 @@ ms.lasthandoff: 02/22/2018
 
 | 步骤 | 资源 |
 | --- | --- |
-| 以全局管理员的份登录到 https://portal.azure.com 并打开 Identity Protection 边栏选项卡 | https://aka.ms/aadipgetstarted |
+| 以全局管理员身份登录 https://portal.azure.com 并打开“Identity Protection”边栏选项卡 | https://aka.ms/aadipgetstarted |
 | 启用登录风险策略，如下所示：<br/>- 分配到：POC 用户<br/>- 条件：登录风险中或高（从匿名位置进行登录被认为是中等风险级别）<br/>- 控件：需要 MFA | [Azure Active Directory Identity Protection 操作手册：登录风险](active-directory-identityprotection-playbook.md) |
 | 打开 tor 浏览器 | [下载 Tor 浏览器](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| 使用 PoC 用户帐户登录到 https://myapps.microsoft.com |  |
+| 使用 PoC 用户帐户登录 https://myapps.microsoft.com |  |
 | 请注意 MFA 质询 | [Azure AD Identity Protection 中的登录体验：有风险的登录恢复](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
 
 ### <a name="considerations"></a>注意事项
@@ -554,7 +554,7 @@ ms.lasthandoff: 02/22/2018
 | 与 ADFS 联合的 Azure AD 域 | [Azure AD Connect 和联合身份验证](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory 证书服务概述](https://technet.microsoft.com/library/hh831740.aspx)|
 | iOS 设备需要安装 Microsoft Authenticator 应用 | [Microsoft Authenticator 应用入门](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |

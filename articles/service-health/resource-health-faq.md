@@ -1,11 +1,11 @@
 ---
-title: "Azure 资源运行状况常见问题解答 | Microsoft Docs"
-description: "Azure 资源运行状况概述"
+title: Azure 资源运行状况常见问题解答 | Microsoft Docs
+description: Azure 资源运行状况概述
 services: Resource health
 documentationcenter: dev-center-name
 author: BernardoAMunoz
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
 ms.service: service-health
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/05/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 692d03ad80989a969a73b15bb9042a01c286d1ec
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5155faac6051f5a586255148f77a52a90745673e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答
 获取 Azure 资源运行状况常见问题的解答。
@@ -81,12 +81,12 @@ ms.lasthandoff: 12/18/2017
 - 德国中部
 - 德国东北部
 
-## <a name="how-is-resource-health-different-from-the-service-health-dashboard-or-the-azure-portal-service-notifications"></a>资源运行状况与服务运行状况仪表板或 Azure 门户服务通知有何不同？
-资源运行状况提供的信息比 Azure 服务运行状况仪表板提供的更具体。
+## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>资源运行状况与 Azure 状态或服务运行状况仪表板有何不同？
+资源运行状况提供的信息比 Azure 状态或服务运行状况仪表板提供的更具体。
 
-[Azure 状态](https://status.azure.com)和门户服务通知会告知影响大量客户（例如某个 Azure 区域的客户）的服务问题，而资源运行状况则会公开更细致的事件，这些事件仅与特定的资源相关。 例如，如果某个主机意外重启，资源运行状况仅提醒其虚拟机在该主机上运行的那些客户。
+[Azure 状态](https://status.azure.com)和服务运行状况仪表板会告知影响大量客户（例如某个 Azure 区域的客户）的服务问题，而资源运行状况则会公开更细致的事件，这些事件仅与特定的资源相关。 例如，如果某个主机意外重启，资源运行状况仅提醒其虚拟机在该主机上运行的那些客户。
 
-必须注意的是，为了让你全面了解影响资源的事件，资源运行状况还会呈现在服务通知和服务运行状况仪表板中发布的事件。
+必须注意的是，为了让你全面了解影响资源的事件，资源运行状况还会呈现在服务运行状况仪表板中发布的事件。
 
 ## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>是否需要激活每个资源的资源运行状况？
 否。运行状况信息适用于可以通过资源运行状况获取的所有资源类型。 

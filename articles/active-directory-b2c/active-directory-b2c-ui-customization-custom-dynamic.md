@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：使用自定义策略动态自定义 Azure AD B2C 用户界面 (UI)"
-description: "支持多品牌体验（包含运行时动态更改的 HTML5/CSS 内容）。"
+title: Azure Active Directory B2C：使用自定义策略动态自定义 Azure AD B2C 用户界面 (UI)
+description: 支持多品牌体验（包含运行时动态更改的 HTML5/CSS 内容）。
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 09/20/2017
-ms.author: yoelh
-ms.openlocfilehash: 3a2310ae6266709df6677c55f11b15239c0425a2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: davidmu
+ms.openlocfilehash: d8aaf0ef8cefdc0cb1c4ff3dec656d31c32f664f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略配置包含动态内容的 UI
 使用 Azure Active Directory B2C (Azure AD B2C) 自定义策略可在查询字符串中发送参数。 通过将该参数传递到 HTML 终结点，可以动态更改页面内容。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 
@@ -121,7 +118,7 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="step-23-change-the-background-image"></a>步骤 2.3：更改背景图像
 
-找到包含 `ID` 值 *background_background_image* 的 `<img>` 元素，将 `src` 替换为 **https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1** 或想要使用的其他任何背景图像。
+找到包含 `ID` 值 background_background_image 的 `<img>` 元素，将 `src` 替换为 https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1 或想要使用的其他任何背景图像。
 
 ![更改页面背景](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
 

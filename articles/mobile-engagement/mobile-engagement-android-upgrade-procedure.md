@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Android SDK 集成"
-description: "Azure Mobile Engagement Android SDK 的最新更新和过程"
+title: Azure Mobile Engagement Android SDK 集成
+description: Azure Mobile Engagement Android SDK 的最新更新和过程
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 11618586-c709-49ca-bcd8-745323ff1af6
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 1f047f93fa8bc852b28c86e91d0c007a94fb4299
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77047cb1dc39fa3c05f58550ceea74e78396157f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="upgrade-procedures"></a>升级过程
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 如果已将我们较旧版本的 SDK 集成到应用程序中，则在升级 SDK 时必须考虑以下几点。
 
 如果错过了几个版本的 SDK，则可能需要执行多个过程。 例如，如果从 1.4.0 迁移至 1.6.0，则必须首先按照“从 1.4.0 至 1.5.0”的过程操作，然后按照“从 1.5.0 至 1.6.0”的过程操作。
@@ -391,7 +395,7 @@ Google Play 和 SmartAd 跟踪已从 SDK 中删除，只需将其删除即可，
 
             protected void onDeviceMessageReceived(android.content.Context context, java.lang.String deviceId, java.lang.String payload)
 
-和
+and
 
             protected void onXMPPMessageReceived(android.content.Context context, android.os.Bundle message)
 
@@ -399,7 +403,7 @@ Google Play 和 SmartAd 跟踪已从 SDK 中删除，只需将其删除即可，
 
             sendMessageToDevice(java.lang.String deviceId, java.lang.String payload, java.lang.String packageName)
 
-和
+and
 
             sendXMPPMessage(android.os.Bundle msg)
 

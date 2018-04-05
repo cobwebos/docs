@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 3652e0171e0c6a53c16fb5b5fde20df9ed2ab7c7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f41cc83bfb18146e46e7d8501318acd68ce9c421
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 应用服务中使用 WebJobs 运行后台任务
 
@@ -170,15 +170,7 @@ when making changes in one don't forget the other two.
 
 ## <a name="cron-expressions"></a>CRON 表达式
 
-[CRON 表达式](https://en.wikipedia.org/wiki/Cron)由六个字段组成：`{second} {minute} {hour} {day} {month} {day of the week}`。  下面是一些示例：
-
-* 每隔 15 分钟：`0 */15 * * * *`
-* 每隔 1 小时（即每当分钟数为 0 时）：`0 0 * * * *` 
-* 从上午 9 点到下午 5 点每隔一小时：`0 0 9-17 * * *` 
-* 每天上午 9:30：`0 30 9 * * *`
-* 每个工作日的上午 9:30：`0 30 9 * * 1-5`
-
-可以在门户中输入 CRON 表达式，或者在 Web 作业 *.zip* 文件的根目录中包含一个 `settings.job` 文件，如以下示例中所示：
+可以在门户中输入 [CRON 表达式](../azure-functions/functions-bindings-timer.md#cron-expressions)，或者在 Web 作业 .zip 文件的根目录中包含一个 `settings.job` 文件，如以下示例中所示：
 
 ```json
 {

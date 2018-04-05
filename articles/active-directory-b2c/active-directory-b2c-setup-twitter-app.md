@@ -1,29 +1,26 @@
 ---
-title: "Azure Active Directory B2C：Twitter 配置 | Microsoft Docs"
-description: "在 Azure Active Directory B2C 保护的应用程序中向用户提供使用 Twitter 帐户的注册和登录功能。"
+title: Azure Active Directory B2C：Twitter 配置 | Microsoft Docs
+description: 在 Azure Active Directory B2C 保护的应用程序中向用户提供使用 Twitter 帐户的注册和登录功能。
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 579a6841-9329-45b8-a351-da4315a6634e
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 4/06/2017
-ms.author: parakhj
-ms.openlocfilehash: 4dbc70d866a728a63102bd169a124bd26990aeb2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: davidmu
+ms.openlocfilehash: ee2d82f8c90b88a898428973a1febaa21034a14f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts"></a>Azure Active Directory B2C：向用户提供使用 Twitter 帐户的注册和登录功能
 
 ## <a name="create-a-twitter-application"></a>创建 Twitter 应用程序
-要将 Twitter 用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 Twitter 应用程序并向其提供合适的参数。 需要一个 Twitter 开发人员帐户，以便执行此操作。 如果没有此帐户，可以在 [https://dev.twitter.com/](https://dev.twitter.com/) 上获取。
+要将 Twitter 用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 Twitter 应用程序并向其提供合适的参数。 需要一个 Twitter 开发人员帐户，以便执行此操作。 如果没有账户，可在 [https://dev.twitter.com/](https://dev.twitter.com/) 处获取。
 
 1. 访问 [Twitter 开发人员网站](https://dev.twitter.com/)并使用凭据登录。
 2. 在“工具和支持”下单击“我的应用”，并单击“创建新应用”。 

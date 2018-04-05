@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: lakasa
-ms.openlocfilehash: d9df2218acc218a796e502fa4e3b94573af86ca8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1963d011462255d45de327ec17b7fad564d87654
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>静态数据的 Azure 存储服务加密
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 03/16/2018
 
 **问：如何在资源管理器存储帐户中加密数据？**
 
-答：默认已对所有存储帐户（经典存储帐户和资源管理存储帐户）启用存储服务加密。 但是，现有数据不会加密。 要加密现有数据，可将它们复制为另一个名称或复制到另一个容器，并删除未加密的版本。 
+答：默认对所有存储帐户（经典和资源管理器）启用存储服务加密，启用加密前创建的存储帐户中的任何已有文件都会由后台加密进程以追溯方式进行加密。
 
 **问：是否可以使用 Azure PowerShell 和 Azure CLI 创建存储帐户并启用存储服务加密？**
 

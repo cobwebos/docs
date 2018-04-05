@@ -1,31 +1,35 @@
 ---
-title: "Azure Cosmos DB 中的一致性级别 | Microsoft Docs"
-description: "Azure Cosmos DB 提供五种一致性级别来帮助在最终一致性、可用性和延迟之间做出取舍。"
-keywords: "最终一致性, azure cosmos db, azure, Microsoft azure"
+title: Azure Cosmos DB 中的一致性级别 | Microsoft Docs
+description: Azure Cosmos DB 提供五种一致性级别来帮助在最终一致性、可用性和延迟之间做出取舍。
+keywords: 最终一致性, azure cosmos db, azure, Microsoft azure
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: cgronlun
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 3fe51cfa-a889-4a4a-b320-16bf871fe74c
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/27/2018
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3bd28316e3d2e7596021d6964594002d47d160a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 5b0e46eb001e0b100ad1e181b02c18cfe67648f9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的可优化数据一致性级别
 Azure Cosmos DB 是从无到有开发出来的，其设计考虑到了适合每个数据模型的全局分发。 它旨在提供可预测的低延迟保证以及多个完善定义的宽松一致性模型。 Azure Cosmos DB 当前提供 5 种一致性级别：非常、有限过期、会话、一致前缀和最终级别。 有限过期、会话、一致性前缀和最终级别称为“宽松一致性模型”，因为它们提供的一致性比非常一致性更差，后者是可用的最高一致性模型。 
 
 除了分布式数据库提供的**非常一致性**和**最终一致性**模型以外，Azure Cosmos DB 还提供三个谨慎代码化和操作化的一致性模型：**有限过期**、**会话**和**一致性前缀**。 其中每个一致性级别的有效性已根据真实用例进行验证。 总而言之，这五个一致性级别可让你在一致性、可用性和延迟之间做出合理的取舍。 
+
+在下面的视频中，Azure Cosmos DB 项目经理 Andrew Liu 演示了统包全球分布功能。
+
+>[!VIDEO https://www.youtube.com/embed/-4FsGysVD14]
 
 ## <a name="distributed-databases-and-consistency"></a>分布式数据库和一致性
 商用分布式数据库分为两类：根本不提供妥善定义的可证明一致性选择的数据库，以及提供两种极端可编程性选择（非常一致性与最终一致性）的数据库。 
@@ -60,13 +64,15 @@ Azure Cosmos 数据库提供 99.99% 的全面 [SLA](https://azure.microsoft.com/
 ## <a name="consistency-levels"></a>一致性级别
 可以配置数据库帐户的默认一致性级别，将其应用于 Cosmos DB 帐户下的所有集合（和数据库）。 所有对用户定义的资源发出的读取和查询，默认都使用数据库帐户上指定的默认一致性级别。 可以放松在每个支持的 API 中使用的特定读取/查询请求的一致性级别。 如本部分所述，Azure Cosmos DB 复制协议支持五种类型的一致性级别，这些级别可在特定的一致性保证与性能之间提供明确的折衷。
 
-**非常一致性**： 
+<a id="strong"></a>
+**强**： 
 
 * 非常一致性提供[可线化](https://aphyr.com/posts/313-strong-consistency-models)保证，即保证读取操作返回项的最新版本。 
 * 非常一致性保证写入只有在副本的多数仲裁一直提交的情况下才可见。 写入要么由主要副本和辅助副本仲裁一直同步提交，要么被中止。 读取始终由多数读取仲裁确认；客户端绝不会看到未提交或不完整的写入，而且始终保证读取最新确认的写入。 
 * 配置为使用非常一致性的 Azure Cosmos DB 帐户不能将多个 Azure 区域与其 Azure Cosmos DB 帐户相关联。  
 * 具有非常一致性的读取操作的开销（从消耗的[请求单位数](request-units.md)来讲）高于会话一致性和最终一致性，但与受限停滞一致性相同。
 
+<a id="bounded-staleness"></a>
 **有限过期性**： 
 
 * 有限过期一致性保证读取操作滞后于写入操作最多 *K* 个项版本或前缀或 *t* 时间间隔。 
@@ -76,7 +82,8 @@ Azure Cosmos 数据库提供 99.99% 的全面 [SLA](https://azure.microsoft.com/
 * 配置了有限过期一致性的 Azure Cosmos DB 帐户可将任意数量的 Azure 区域与其 Azure Cosmos DB 帐户相关联。 
 * 具有受限停滞一致性的读取操作的开销（从消耗的 RU 来讲）高于会话一致性和最终一致性，但与非常一致性相同。
 
-**会话一致性**： 
+<a id="session"></a>
+**会话**： 
 
 * 与非常一致性和受限停滞一致性级别所提供的全局一致性模型不同，会话一致性归并为客户端会话。 
 * 对于涉及到设备或用户会话的所有方案，会话一致性非常合适，因为它提供单调读取、单调写入和读取自己的写入 (RYW) 保证。 
@@ -91,7 +98,8 @@ Azure Cosmos 数据库提供 99.99% 的全面 [SLA](https://azure.microsoft.com/
 * 一致前缀保证读取永远不会看到无序写入。 如果按 `A, B, C` 顺序执行写入，则客户端会看到 `A`、`A,B` 或 `A,B,C`，但不会看到 `A,C` 或 `B,A,C` 这样的混乱顺序。
 * 配置了“一致前缀”一致性的 Azure Cosmos DB 帐户可将任意数量的 Azure 区域与其 Azure Cosmos DB 帐户相关联。 
 
-**最终一致性**： 
+<a id="eventual"></a>
+**最终**： 
 
 * 最终一致性保证在没有再收到任何写入的情况下，组中的副本最终只剩一个。 
 * 最终一致性是最弱的一致性形式，客户端可能会获取比之前看到的值还要旧的值。
@@ -125,19 +133,12 @@ Azure Cosmos DB 当前实现了 MongoDB 3.4 版，其中具有两个一致性设
 ## <a name="next-steps"></a>后续步骤
 如果想详细了解一致性级别和平衡方案，建议参阅下列资源：
 
-* Doug Terry。 借助棒球阐释的复制数据的一致性（视频）。   
-  [https://www.youtube.com/watch?v=gluIh8zd26I](https://www.youtube.com/watch?v=gluIh8zd26I)
-* Doug Terry。 借助棒球阐释的复制数据的一致性。   
-  [http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
-* Doug Terry。 弱一致性重复数据的会话保证。   
-  [http://dl.acm.org/citation.cfm?id=383631](http://dl.acm.org/citation.cfm?id=383631)
-* Daniel Abadi。 现代分布式数据库系统设计中的一致性平衡方案：CAP 只是冰山一角。   
-  [http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
-* Peter Bailis、Shivaram Venkataraman、Michael J. Franklin、Joseph M. Hellerstein、Ion Stoica。 实用部分法定人数的概率有限过期性 (PBS)。   
-  [http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
-* Werner Vogels。 最终一致性 - 再探。    
-  [http://allthingsdistributed.com/2008/12/eventually_consistent.html](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
-* Moni Naor , Avishai Wool, The Load, Capacity, and Availability of Quorum Systems, SIAM Journal on Computing, v.27 n.2, p.423-447, April 1998.
-  [http://epubs.siam.org/doi/abs/10.1137/S0097539795281232](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)
-* Sebastian Burckhardt, Chris Dern, Macanal Musuvathi, Roy Tan, Line-up: a complete and automatic linearizability checker, Proceedings of the 2010 ACM SIGPLAN conference on Programming language design and implementation, June 05-10, 2010, Toronto, Ontario, Canada  [doi>10.1145/1806596.1806634] [http://dl.acm.org/citation.cfm?id=1806634](http://dl.acm.org/citation.cfm?id=1806634)
-* Peter Bailis, Shivaram Venkataraman, Michael J. Franklin, Joseph M. Hellerstein , Ion Stoica, Probabilistically bounded staleness for practical partial quorums, Proceedings of the VLDB Endowment, v.5 n.8, p.776-787, April 2012 [http://dl.acm.org/citation.cfm?id=2212359](http://dl.acm.org/citation.cfm?id=2212359)
+* [Doug Terry 借助棒球阐释复制数据一致性（视频）](https://www.youtube.com/watch?v=gluIh8zd26I)
+* [Doug Terry 借助棒球阐释复制数据一致性（白皮书）](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
+* [弱一致性重复数据的会话保证](http://dl.acm.org/citation.cfm?id=383631)
+* [现代分布式数据库系统设计中的一致性平衡方案：CAP 只是冰山一角](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
+* [Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)（实用部分仲裁的概率有限过期性 (PBS)）
+* [最终一致性 - 再探](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
+* [The Load, Capacity, and Availability of Quorum Systems, SIAM Journal on Computing](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)（仲裁系统的负载、容量和可用性, SIAM Journal on Computing）
+* [Line-up: a complete and automatic linearizability checker, Proceedings of the 2010 ACM SIGPLAN conference on Programming language design and implementation](http://dl.acm.org/citation.cfm?id=1806634)（Line-up：完整而自动的可线性化检查器, 2010 ACM SIGPLAN 编程语言设计和实现大会会议记录）
+* [Probabilistic bounded staleness (PBS) for practical partial quorums](http://dl.acm.org/citation.cfm?id=2212359)（实用部分仲裁的概率有限过期性 (PBS)）

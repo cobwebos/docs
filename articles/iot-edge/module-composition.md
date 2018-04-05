@@ -6,14 +6,14 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/14/2018
+ms.date: 03/23/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4b59a715919e38e68c3b7518932617e9950940e3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7df566ced755e1e817b3107dac8f17e9f6e9b8e4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>了解如何使用、配置并重复使用 IoT Edge 模块 - 预览版
 
@@ -134,32 +134,21 @@ Edge 中心提供了一种在模块之间，以及模块和 IoT 中心之间以�
 ### <a name="condition"></a>条件
 条件在路由声明中是可选的。 若要将所有消息从接收器传递到源，完全省略 **WHERE** 子句即可。 或者，可以使用 [IoT 中心查询语言][lnk-iothub-query]来筛选满足条件的特定消息或消息类型。
 
-Azure IoT 消息采用 JSON 格式，始终至少包含一个 **body** 参数。 例如：
+在 IoT Edge 中的模块之间传递的消息与在设备和 Azure IoT 中心之间传递的消息的格式是一样的。 所有消息都是 JSON 格式的，并具备 systemProperties、appProperties 和 body 参数。 
 
-```json
-"message": {
-    "body":{
-        "ambient":{
-            "temperature": 54.3421,
-            "humidity": 25
-        },
-        "machine":{
-            "status": "running",
-            "temperature": 62.2214
-        }
-    },
-    "appProperties":{
-        ...
-    }
-}
+可以使用下列语法围绕这三个参数生成查询： 
+
+* 系统属性：`$<propertyName>` 或 `{$<propertyName>}`
+* 应用程序属性：`<propertyName>`
+* 正文属性：`$body.<propertyName>` 
+
+请参考[设备到云消息路由查询表达式](../iot-hub/iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions)，查看针对消息属性创建查询的示例。
+
+有一个 IoT Edge 特定的示例，即筛选从叶设备到网关设备的消息的情况。 来自模块的消息包含名为 connectionModuleId 的系统属性。 因此，若要将消息从叶设备直接路由到 IoT 中心，请使用以下路由来排除模块消息：
+
+```sql
+FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 ```
-
-在此示例消息中，可以定义多个条件，例如：
-* `WHERE $body.machine.status != "running"`
-* `WHERE $body.ambient.temperature <= 60 AND $body.machine.temperature >= 60`
-
-举例来说，在需要路由来自叶设备的消息的网关中，也可以使用条件来为消息类型排序。 来自模块的消息包含名为 **connectionModuleId** 的特定属性。 因此，若要将消息从叶设备直接路由到 IoT 中心，请使用以下路由来排除模块消息：
-* `FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream`
 
 ### <a name="sink"></a>接收器
 接收器定义消息发送到的位置。 可以是以下任一值：

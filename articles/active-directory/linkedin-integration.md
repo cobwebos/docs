@@ -9,15 +9,15 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/22/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 3bf224edea9e6da0d0eadb6fb6a409248de3d0e3
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 33e3305288edc3990ed88b39c819293a8adc2dfe
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>Microsoft 应用和服务的 LinkedIn 帐户连接
 本文介绍如何在 Azure Active Directory (Azure AD) 管理中心管理租户的 LinkedIn 帐户连接。 
@@ -56,9 +56,9 @@ ms.lasthandoff: 03/17/2018
 ### <a name="enable-or-disable-linkedin-account-connections-for-your-organizations-office-2016-apps-using-group-policy"></a>使用组策略为组织的 Office 2016 应用启用或禁用 LinkedIn 帐户连接
 
 1. 下载 [Office 2016 管理模板文件 (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
-2. 提取 **ADMX** 文件，并将其复制到**中心存储库**。
+2. 提取 ADMX 文件然后将其复制到中央存储。
 3. 打开组策略管理。
-4. 使用以下设置创建一个组策略对象：“用户配置” > “管理模板” > “Microsoft Office 2016” > “杂项” > “允许 LinkedIn 集成”。
+4. 使用以下设置创建组策略对象：“用户配置” > “管理模板” > “Microsoft Office 2016” > “杂项” > “在 Office 应用程序中显示 LinkedIn 的功能”。
 5. 选择“已启用”或“已禁用”。
   * 如果该策略为“已启用”，则会启用 Office 2016“选项”对话框中的“在 Office 应用程序中显示 LinkedIn 功能”。 这也意味着，组织中的用户可在其 Office 应用程序中使用 LinkedIn 功能。
   * 如果该策略为“已禁用”，则 Office 2016“选项”对话框中的“在 Office 应用程序中显示 LinkedIn 功能”将设置为禁用状态，并且最终用户无法更改此设置。 组织中的用户无法在其 Office 2016 应用程序中使用 LinkedIn 功能。 

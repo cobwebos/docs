@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 用户界面 - 市场宣传活动"
-description: "了解如何使用 Azure Mobile Engagement 创建和管理推送通知活动"
+title: Azure Mobile Engagement 用户界面 - 市场宣传活动
+description: 了解如何使用 Azure Mobile Engagement 创建和管理推送通知活动
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2fe124a2-a86f-4136-81ba-a9d298ec798a
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: fc88db8db11d1ed12fa95c2087c9a32b21bf4de5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d457a8d5f68f70f6bf7a5f086b5e1d65bd1ea95
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-and-manage-push-notification-campaigns"></a>如何创建和管理推送通知活动
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 通过提供发送推送通知所需的所有信息，可以使用 UI 的“市场宣传”部分来创建新的包含复杂方案的推送活动。 根据以下四种活动类型，推送活动的选项会略有不同：公告、投票、数据推送和磁贴（仅 Windows Phone）。
 
 ### <a name="option-applies-to"></a>“选项”的适用情况：

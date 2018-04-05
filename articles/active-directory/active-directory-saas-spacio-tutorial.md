@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 03/22/2018
 ms.author: jeedes
-ms.openlocfilehash: faf4b2ff24ef733b740a5b65864941a10de64ed8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 604249151f3c1ca206f64a178b25ea1dae5b5023
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spacio"></a>教程：Azure Active Directory 与 Spacio 集成
 
@@ -112,18 +112,32 @@ ms.lasthandoff: 03/16/2018
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Spacio 客户端支持团队](mailto:support@spac.io)获取这些值。 
- 
 
-
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
-
-    ![证书下载链接](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_certificate.png) 
-
-5. 单击“保存”按钮。
+4. 单击“保存”按钮  。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-spacio-tutorial/tutorial_general_400.png)
 
-6. 若要在“Spacio”端配置单一登录，需要将下载的“元数据 XML”发送给 [Spacio 支持团队](mailto:support@spac.io)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+5. 若要生成**元数据 URL**，请执行以下步骤：
+
+    a. 单击“应用注册”。
+    
+    ![配置单一登录](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_appregistrations.png)
+   
+    b. 单击“终结点”以打开“终结点”对话框。  
+    
+    ![配置单一登录](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_endpointicon.png)
+
+    c. 单击“复制”按钮以复制“联合元数据文档”URL 并将其粘贴到记事本。
+    
+    ![配置单一登录](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_endpoint.png)
+     
+    d.单击“下一步”。 现在，转到 Spacio 的属性页，使用“复制”按钮复制“应用程序 ID”并将其粘贴到记事本中。
+ 
+    ![配置单一登录](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_appid.png)
+
+    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
+
+6. 若要在 Spacio 端配置单一登录，需要将生成的“元数据 URL”发送给 [Spacio 支持团队](mailto:support@spac.io)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -159,7 +173,7 @@ ms.lasthandoff: 03/16/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    d.单击“下一步”。 单击“创建”。
  
 ### <a name="create-a-spacio-test-user"></a>创建 Spacio 测试用户
 

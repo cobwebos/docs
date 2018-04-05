@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 用户界面 - 监视器"
-description: "了解如何使用 Azure Mobile Engagement 监视有关应用程序的实时数据"
+title: Azure Mobile Engagement 用户界面 - 监视器
+description: 了解如何使用 Azure Mobile Engagement 监视有关应用程序的实时数据
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b91ad89a-b89d-4377-abb0-cc2d16a2836d
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,19 +14,23 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 5f8a02e35db93585e0fe46d77b3ad18b94c99597
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b370a5db1acee37ce234f5ec3f004be20719cfea
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-monitor-real-time-data-about-your-application"></a>如何监视有关应用程序的实时数据
-本文介绍了 **Mobile Engagement** 门户的“**监视器**”选项卡。 使用 **Mobile Engagement** 门户来监视和管理移动应用。 请注意，要开始使用该门户，首先需要创建 **Azure Mobile Engagement** 帐户。 
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
+本文介绍了 **Mobile Engagement** 门户的“**监视器**”选项卡。 使用 Mobile Engagement 门户来监视和管理移动应用。 请注意，要开始使用该门户，首先需要创建 **Azure Mobile Engagement** 帐户。 
 
 UI 的“监视器”部分提供了实时分析信息，而且允许设置达到阈值时的警报，获取 UI 的“[分析](mobile-engagement-user-interface-analytics.md)”部分中过去提供的大部分相同信息。 请参阅[概念](http://go.microsoft.com/fwlink/?LinkId=525555)主题中的**词汇表**部分，了解分析和监视中术语和缩写的定义（如下所示：活动用户、新用户、保留用户、会话、用户路径图形、用户映射、跟踪 URL、趋势、活动、事件、作业、错误、额外的信息、崩溃和应用信息）。
 
 > [!NOTE]
-> **Mobile Engagement** 门户 UI 的很多部分中都包含“**显示帮助**”按钮。 按此按钮可获取关于某一部分的更多上下文信息。
+> **Mobile Engagement** 门户 UI 的很多部分中都包含“显示帮助”按钮。 按此按钮可获取关于某一部分的更多上下文信息。
 > 
 > 
 

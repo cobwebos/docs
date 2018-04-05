@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：使用自定义策略添加 Microsoft 帐户 (MSA) 作为标识提供者"
-description: "使用 OpenID Connect (OIDC) 协议将 Microsoft 用作标识提供者的示例"
+title: Azure Active Directory B2C：使用自定义策略添加 Microsoft 帐户 (MSA) 作为标识提供者
+description: 使用 OpenID Connect (OIDC) 协议将 Microsoft 用作标识提供者的示例
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: yoelh
-ms.openlocfilehash: cdc77d093358fa15bb1acbc9ba6b1867bae062f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: a49e9589322eeb90a713321b4fbe4c4820609f7a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 Microsoft 帐户 (MSA) 作为标识提供者
 
@@ -38,7 +35,7 @@ ms.lasthandoff: 12/11/2017
 5.  将策略上传到 Azure AD B2C 租户，并对其进行测试
 
 ## <a name="create-a-microsoft-account-application"></a>创建 Microsoft 帐户应用程序
-要将 Microsoft 帐户用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 Microsoft 帐户应用程序并向其提供合适的参数。 需要一个 Microsoft 帐户。 如果没有此帐户，可以访问 [https://www.live.com/](https://www.live.com/)。
+要将 Microsoft 帐户用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 Microsoft 帐户应用程序并向其提供合适的参数。 需要一个 Microsoft 帐户。 如果没有帐户，请访问 [https://www.live.com/](https://www.live.com/)。
 
 1.  转到 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)，并使用 Microsoft 帐户凭据登录。
 2.  单击“添加应用程序”。
@@ -71,7 +68,7 @@ ms.lasthandoff: 12/11/2017
 
     ![Microsoft 帐户 - 复制新密码](media/active-directory-b2c-custom-setup-ms-account-idp/msa-new-password.png)
 
-9.  选中“高级选项”部分下的“Live SDK 支持”复选框。 单击“保存” 。
+9.  选中“高级选项”部分下的“Live SDK 支持”复选框。 单击“ **保存**”。
 
     ![Microsoft 帐户 — Live SDK 支持](media/active-directory-b2c-custom-setup-ms-account-idp/msa-live-sdk-support.png)
 
@@ -84,7 +81,7 @@ ms.lasthandoff: 12/11/2017
 4.  对于“选项”，使用“手动”。
 5.  使用 `MSASecret` 作为“名称”。  
     可能会自动添加前缀 `B2C_1A_`。
-6.  在“密码”框中，从 https://apps.dev.microsoft.com 输入你的 Microsoft 应用程序密码
+6.  在“密码”框中，从 https://apps.dev.microsoft.com 输入 Microsoft 应用程序密码
 7.  使用“签名”作为“密钥用法”。
 8.  单击“创建” 
 9.  确认已创建密钥 `B2C_1A_MSASecret`。

@@ -1,23 +1,23 @@
 ---
-title: "Azure 文件常见问题解答 | Microsoft 文档"
-description: "查看有关 Azure 文件的常见问题解答。"
+title: Azure 文件常见问题解答 | Microsoft 文档
+description: 查看有关 Azure 文件的常见问题解答。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: 8762b2cca03f4c95f7543803a024bff4573927a1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb44f1d456ec12b7fd21e397b749117942560f05
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>有关 Azure 文件的常见问题解答
 [Azure 文件](storage-files-introduction.md)在云中提供可以通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)（也称为通用 Internet 文件系统，简称 CIFS）访问的完全托管文件共享。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步（预览版）在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -232,7 +232,7 @@ ms.lasthandoff: 02/01/2018
 ## <a name="backup"></a>备份
 * <a id="backup-share"></a>
 **如何备份我的 Azure 文件共享？**  
-    可以使用定期[共享快照（预览版）](storage-how-to-use-files-snapshots.md)来防止意外删除。 此外，也可以使用 AzCopy、RoboCopy 或能够备份已装载文件共享的第三方备份工具。 
+    可以使用定期[共享快照](storage-how-to-use-files-snapshots.md)来防止意外删除。 此外，也可以使用 AzCopy、RoboCopy 或能够备份已装载文件共享的第三方备份工具。 
 
 ## <a name="share-snapshots"></a>共享快照
 ### <a name="share-snapshots-general"></a>共享快照：常规问题
@@ -255,6 +255,10 @@ ms.lasthandoff: 02/01/2018
 * <a id="snapshot-limits"></a>
 **对我可使用的共享快照数有限制吗？**  
     是的。 Azure 文件可以最多保留 200 张共享快照。 共享快照不计入共享配额，因此，对所有共享快照使用的总空间没有单独的共享限制。 存储帐户限制仍然适用。 在达到 200 个共享快照之后，必须删除旧的共享快照才可创建新的共享快照。
+* <a id="snapshot-cost"></a>
+**共享快照的费用是多少？**  
+    快照按标准事务和标准存储收费。 快照在本质上是递增的。 基本快照即是共享本身。 所有的后续快照均是递增的，并且只会存储与之前快照的不同之处。 这意味着，如果工作负荷改动极小，则帐单上显示的增量更改也很小。 有关标准 Azure 文件的定价信息，请参阅[定价页](https://azure.microsoft.com/en-us/pricing/details/storage/files/)。 目前，查看共享快照已用大小的方法是比较计费的容量与使用的容量。 我们致力于开发改进报告的工具。
+
 
 ### <a name="create-share-snapshots"></a>创建共享快照
 * <a id="file-snaphsots"></a>

@@ -12,24 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/10/2017
+ms.date: 03/20/2018
 ms.author: bhanupr
-ms.openlocfilehash: a0156915c329dfad1424cfd1f10a6ebb27c56acc
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ae7ccaf3d167176a1fc6015e84b0eb023da945d5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>使用 Azure Active Directory 域服务设置和配置已加入域的 HDInsight 群集
 
 已加入域的群集在 HDInsight 上提供多用户企业安全功能。 已加入域的 HDInsight 群集连接到 Active Directory 域，使域用户能够使用其域凭据对群集进行身份验证和运行大数据作业。 
 
-可通过两种方法来设置已加入域的 HDInsight 群集可连接到的域控制器：
-
-- Azure Active Directory 域服务 (Azure AD DS)
-- Azure IaaS VM 上的 Active Directory 域控制器
-
 本文介绍如何使用 Azure Active Directory 域服务配置已加入域的 HDInsight 群集。
+
+> [!NOTE]
+> 不再支持 Azure IaaS VM 上 的 Active Directory。
 
 ## <a name="create-azure-adds"></a>创建 Azure ADDS
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a48c1bb246e3e8659aada614d39fdc608e5bc8d8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: fe78289938e752731ff2e830fb62ad210e12111e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>使用 SQL API 在 Azure Cosmos DB 中进行分区
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 03/28/2018
 让我们看看所选的分区键如何影响应用程序的性能。
 
 ## <a name="working-with-the-azure-cosmos-db-sdks"></a>使用 Azure Cosmos DB SDK
-Azure Cosmos DB 通过 [REST API 版本 2015-12-16](/rest/api/documentdb/) 增加了对自动分区的支持。 为了创建已分区容器，必须在支持的 SDK 平台之一（.NET、Node.js、Java、Python、MongoDB）下载 SDK 版本 1.6.0 或更高版本。 
+Azure Cosmos DB 通过 [REST API 版本 2015-12-16](/rest/api/cosmos-db/) 增加了对自动分区的支持。 为了创建已分区容器，必须在支持的 SDK 平台之一（.NET、Node.js、Java、Python、MongoDB）下载 SDK 版本 1.6.0 或更高版本。 
 
 ### <a name="creating-containers"></a>创建容器
 下面的示例演示创建容器的 .NET 代码片段，以存储吞吐量为 20,000 个请求单位/秒的设备遥测数据。 SDK 将设置 OfferThroughput 值（其反过来将设置 REST API 中的 `x-ms-offer-throughput` 请求标头）。 这里，我们将 `/deviceId` 设为分区键。 所选的分区键随容器元数据（如名称和索引策略）的其余部分一起保存。
@@ -225,6 +225,6 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
 本文概述了如何使用 SQL API 对 Azure Cosmos DB 容器进行分区。 有关使用任何 Azure Cosmos DB API 进行分区的概念和最佳做法概述，另请参阅[分区和水平缩放](../cosmos-db/partition-data.md)。 
 
 * 使用 Azure Cosmos DB 执行规模和性能测试。 有关示例，请参阅[执行 Azure Cosmos DB 缩放和性能测试](performance-testing.md)。
-* 使用 [SDK](sql-api-sdk-dotnet.md) 或 [REST API](/rest/api/documentdb/) 的编码入门
+* 使用 [SDK](sql-api-sdk-dotnet.md) 或 [REST API](/rest/api/cosmos-db/) 的编码入门
 * 了解 [Azure Cosmos DB 中的预配吞吐量](request-units.md)
 

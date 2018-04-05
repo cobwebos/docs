@@ -1,13 +1,12 @@
 ---
-title: "Azure 流分析中的查询测试 | Microsoft 文档"
-description: "在对流分析作业进行故障排除时确定问题。"
-keywords: "对输入、输入采样进行故障排除"
-documentationcenter: 
+title: Azure 流分析中的查询测试 | Microsoft 文档
+description: 在对流分析作业进行故障排除时确定问题。
+keywords: 对输入、输入采样进行故障排除
+documentationcenter: ''
 services: stream-analytics
 author: jseb225
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: e2636b8b89b86bbb2a2991972386462535d5a10f
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 99c9f7f2dc84f53d09b7aee1916c5532427de692
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-query-testing-and-input-stream-sampling"></a>Azure 流分析查询测试和输入流采样
 

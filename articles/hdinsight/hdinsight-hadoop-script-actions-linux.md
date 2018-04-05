@@ -1,8 +1,8 @@
 ---
-title: "使用基于 Linux 的 HDInsight 进行脚本操作开发 — Azure | Microsoft Docs"
-description: "了解如何使用 Bash 脚本自定义基于 Linux 的 HDInsight 群集。 利用 HDInsight 的脚本操作功能，可在群集创建期间或之后运行脚本。 脚本可用于更改群集配置设置或安装其他软件。"
+title: 使用基于 Linux 的 HDInsight 进行脚本操作开发 — Azure | Microsoft Docs
+description: 了解如何使用 Bash 脚本自定义基于 Linux 的 HDInsight 群集。 利用 HDInsight 的脚本操作功能，可在群集创建期间或之后运行脚本。 脚本可用于更改群集配置设置或安装其他软件。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: larryfr
-ms.openlocfilehash: ddf5db3e61633c45e388e161e165637521803094
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5074345533f0fdb0c72bf319646ad614632d1940
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -317,7 +317,7 @@ fi
 下面是在准备部署脚本时执行的步骤：
 
 * 将包含自定义脚本的文件放置在群集节点在部署期间可访问的位置中。 例如，群集的默认存储。 还可以将文件存储在可公开读取的托管服务中。
-* 验证脚本是否幂等。 这样，便可以在同一个节点上执行脚本多次。
+* 验证脚本是幂等的。 这样，便可以在同一个节点上执行脚本多次。
 * 使用临时文件目录 /tmp 来保存脚本使用的下载文件，并在执行脚本后将其清除。
 * 如果更改了 OS 级别设置或 Hadoop 服务配置文件，可能需要重新启动 HDInsight 服务。
 

@@ -1,24 +1,24 @@
 ---
-title: "使用 Webhook 为现有的问题管理系统配置运行状况通知 | Microsoft Docs"
-description: "获取有关发送到现有问题管理系统的服务运行状况事件的个性化通知。"
+title: 使用 Webhook 为现有的问题管理系统配置运行状况通知 | Microsoft Docs
+description: 获取有关发送到现有问题管理系统的服务运行状况事件的个性化通知。
 author: shawntabrizi
 manager: scotthit
-editor: 
+editor: ''
 services: service-health
 documentationcenter: service-health
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-health
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 3/27/2018
 ms.author: shtabriz
-ms.openlocfilehash: b6a5f61f61675b825dcfe9c706c80944f5890538
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 8535caf482b10912e6f7bc6df445756094d7603f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>使用 Webhook 为现有的问题管理系统配置运行状况通知
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/16/2017
 ## <a name="configuring-a-custom-notification-using-the-service-health-webhook-payload"></a>使用服务运行状况 Webhook 有效负载配置自定义通知
 若要设置自己的自定义 Webhook 集成，需分析在服务运行状况通知期间发送的 JSON 有效负载。
 
-查看[此处的示例](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)，了解 `Service Health` Webhook 有效负载。
+查看[此处的示例](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)，了解 `ServiceHealth` Webhook 有效负载。
 
 可以通过查看 `context.eventSource == "ServiceHealth"` 来确定其是否为服务运行状况警报。 在这里，与引入最相关的属性为：
  * `data.context.activityLog.status`
@@ -48,13 +48,13 @@ ms.lasthandoff: 11/16/2017
  * `data.context.activityLog.properties.impactedServices`
  * `data.context.activityLog.properties.trackingId`
 
-## <a name="creating-a-direct-link-to-azure-service-health-for-an-incident"></a>针对某个事件，创建 Azure 服务运行状况的直接链接
-可以通过生成专用 URL，在台式或移动设备上创建个性化 Azure 服务运行状况事件的直接链接。 使用 `trackingId` 以及 `subscriptionId` 的头三个和最后三个数字来生成该链接：
+## <a name="creating-a-direct-link-to-the-service-health-dashboard-for-an-incident"></a>针对某个事件，创建服务运行状况仪表板的直接链接
+通过生成专用 URL，可在台式或移动设备上创建服务运行状况仪表板的直接链接。 使用 `trackingId` 以及 `subscriptionId` 的头三个和最后三个数字来生成该链接：
 ```
 https://app.azure.com/h/<trackingId>/<first and last three digits of subscriptionId>
 ```
 
-例如，如果 `subscriptionId` 为 `bba14129-e895-429b-8809-278e836ecdb3`，`trackingId` 为 `0DET-URB`，则个性化 Azure 服务运行状况 URL 为：
+例如，如果 `subscriptionId` 为 `bba14129-e895-429b-8809-278e836ecdb3`，`trackingId` 为 `0DET-URB`，则服务运行状况 URL 为：
 
 ```
 https://app.azure.com/h/0DET-URB/bbadb3
@@ -64,7 +64,7 @@ https://app.azure.com/h/0DET-URB/bbadb3
 有效负载中的 `level` 属性可以是 `Informational`、`Warning`、`Error`、`Critical` 中的任意一种（从最不严重到最严重排列）。
 
 ## <a name="parsing-the-impacted-services-to-understand-the-full-scope-of-the-incident"></a>分析受影响的服务，了解事件的全貌
-服务运行状况警报可以将多个区域和服务的问题告知你。 若要获取完整详细信息，需分析 `impactedServices` 的值。
+服务运行状况警报可告知你有关多个区域和服务的问题。 若要获取完整详细信息，需分析 `impactedServices` 的值。
 其中的内容为 [JSON 转义](http://json.org/)字符串，当取消转义时，包含另一可以进行定期分析的 JSON 对象。
 
 ```json
@@ -110,7 +110,7 @@ https://app.azure.com/h/0DET-URB/bbadb3
 
     HEADERS     Content-Type: application/json
 
-    BODY        <Service Health payload>
+    BODY        <service health payload>
     ```
 3. 应收到 `2XX - Successful` 响应。
 

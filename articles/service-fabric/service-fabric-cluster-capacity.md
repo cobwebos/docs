@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: ad5f396cd71eb0136fe683bbccb9360291be2d59
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b39c22fb45b0e20a3aa7a6dcf59619a87df32ca1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 对于任何生产部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
@@ -87,7 +87,7 @@ ms.lasthandoff: 03/08/2018
 **使用“白银”或“黄金”耐久性级别的缺点**
  
 1. 部署到虚拟机规模集和其他相关 Azure 资源可能会由于群集中的问题或基础结构级别的问题而延迟、超时或被完全阻止。 
-2. 由于 Azure 基础结构操作期间发生的自动节点停用而增加了[副本生命周期事件](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle )（例如，主交换）的数量。
+2. 由于 Azure 基础结构操作期间发生的自动节点停用而增加了[副本生命周期事件](service-fabric-reliable-services-lifecycle.md)（例如，主交换）的数量。
 3. 执行 Azure 平台的软件更新或硬件维护活动时，将节点暂停服务一段时间。 在这些活动期间，你可能会看到状态为“正在禁用”/“已禁用”的节点。 这会暂时降低群集的容量，但不应影响群集或应用程序的可用性。
 
 ### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>有关何时使用“白银”或“黄金”耐久性级别的建议
@@ -101,10 +101,10 @@ ms.lasthandoff: 03/08/2018
 
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>适用于已设置为“白银”或“黄金”耐久性级别的节点类型的操作建议。
 
-1. 使群集和应用程序在任何时间都正常工作，并确保应用程序及时响应所有[服务副本生命周期事件](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle)（例如，生成副本时出现停滞）。
+1. 使群集和应用程序在任何时间都正常工作，并确保应用程序及时响应所有[服务副本生命周期事件](service-fabric-reliable-services-lifecycle.md)（例如，生成副本时出现停滞）。
 2. 采用更安全的方式更改 VM SKU（增加/减少）：更改虚拟机规模集的 VM SKU 本质上是一项不安全的操作，如有可能，应尽量避免此操作。 可以遵循以下过程来避免常见问题。
     - 对于非主节点类型：建议创建新的虚拟机规模集，修改服务放置约束以包括新的虚拟机规模集/节点类型，然后将旧的虚拟机规模集实例计数降低到 0，一次一个节点（这是为了确保删除节点不会影响群集的可靠性）。
-    - 对于主节点类型：建议不要更改主节点类型的 VM SKU。 不支持更改主节点类型 SKU。 如果使用新 SKU 是为了增大容量，建议添加更多实例。 如果那不可行，请创建新群集并从旧群集[还原应用程序状态](service-fabric-reliable-services-backup-restore.md)（如果适用）。 不需要还原任何系统服务状态，在将应用程序部署到新群集时就已重新创建它们。 如果只在群集上运行无状态应用程序，则只需将应用程序部署到新群集即可，无需还原任何内容。 如果一定要进行不受支持的操作，更改 VM SKU，请修改虚拟机规模集模型定义以反映新的 SKU。 如果群集只有一个节点类型，请确保所有有状态应用程序及时响应所有[服务副本生命周期事件](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle)（例如，在生成副本时出现停滞），并且重新生成服务副本的持续时间小于 5 分钟（适用于“白银”持续性级别）。 
+    - 对于主节点类型：建议不要更改主节点类型的 VM SKU。 不支持更改主节点类型 SKU。 如果使用新 SKU 是为了增大容量，建议添加更多实例。 如果那不可行，请创建新群集并从旧群集[还原应用程序状态](service-fabric-reliable-services-backup-restore.md)（如果适用）。 不需要还原任何系统服务状态，在将应用程序部署到新群集时就已重新创建它们。 如果只在群集上运行无状态应用程序，则只需将应用程序部署到新群集即可，无需还原任何内容。 如果一定要进行不受支持的操作，更改 VM SKU，请修改虚拟机规模集模型定义以反映新的 SKU。 如果群集只有一个节点类型，请确保所有有状态应用程序及时响应所有[服务副本生命周期事件](service-fabric-reliable-services-lifecycle.md)（例如，在生成副本时出现停滞），并且重新生成服务副本的持续时间小于 5 分钟（适用于“白银”持续性级别）。 
 
 
 > [!WARNING]

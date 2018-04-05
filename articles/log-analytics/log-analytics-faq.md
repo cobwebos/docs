@@ -1,24 +1,24 @@
 ---
-title: "Log Analytics 常见问题解答 | Microsoft Docs"
-description: "有关 Azure Log Analytics 服务的常见问题解答。"
+title: Log Analytics 常见问题解答 | Microsoft Docs
+description: 有关 Azure Log Analytics 服务的常见问题解答。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 03/21/2018
 ms.author: magoedte
-ms.openlocfilehash: 0b27386cd0f9f3ae50314b8c5d7708aea3e3d028
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 398a62cbba952f35f29c1b1f411a6d5b901d2973
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 此 Microsoft 常见问题解答是有关 Microsoft Azure 中 Log Analytics 的常见问题列表。 如果有与 Log Analytics 有关的任何其他问题，请转到[论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
@@ -51,19 +51,21 @@ A. 2017 年 6 月初，Azure 安全中心开始使用 Microsoft Monitoring Agent
 
 ### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>问： 如何排除 Log Analytics 不再收集数据这一故障？
 
-答：如果采用的是免费定价层并且某天已发送的数据超过 500 MB，则该天的剩余时间内会停止数据收集。 达到每日限制是 Log Analytics 停止数据收集或者看起来缺少数据的常见原因。
+答：如果采用的是免费定价层并且某天已发送的数据超过 500 MB，则该天的剩余时间内会停止数据收集。 达到每日限制是 Log Analytics 停止数据收集或者看起来缺少数据的常见原因。  
 
-在数据收集启动和停止时，Log Analytics 会创建一个类型为 *Operation* 的事件。 
+Log Analytics 创建类型为“Heartbeat”的事件，并可用于确定数据收集是否停止。 
 
-请在搜索中运行以下查询来检查是否已达到每日限制并缺少数据：`Type=Operation OperationCategory="Data Collection Status"`
+请在搜索中运行以下查询来检查是否已达到每日限制并缺少数据：`Heartbeat | summarize max(TimeGenerated)`
 
-当数据收集停止时，*OperationStatus* 为 **Warning**。 当数据收集启动时，*OperationStatus* 为 **Succeeded**。 
+若要检查特定计算机，可运行以下查询：`Heartbeat | where Computer=="contosovm" | summarize max(TimeGenerated)`
+
+当数据收集停止时，根据所选的时间范围，将看不到任何返回的记录。   
 
 下表描述了数据收集停止的原因以及用于恢复数据收集的建议操作：
 
 | 数据收集停止的原因                       | 恢复数据收集需执行的操作 |
 | -------------------------------------------------- | ----------------  |
-| 达到了免费数据的每日限制<sup>1</sup>       | 等到下一天收集自动重新启动，或者<br> 更改为付费定价层 |
+| 达到免费数据限制<sup>1</sup>       | 等到下一月收集自动重新启动，或者<br> 更改为付费定价层 |
 | Azure 订阅由于以下原因处于挂起状态： <br> 免费试用已结束 <br> Azure 许可已过期 <br> 已达到每月支出限制（例如，在 MSDN 或 Visual Studio 订阅上）                          | 转换为付费订阅 <br> 转换为付费订阅 <br> 删除限制，或者等到限制重置 |
 
 <sup>1</sup> 如果工作区位于免费定价层，则限制为每天向服务发送 500 MB 数据。 达到每日限制时，数据收集将停止到下一天。 不会为在数据收集停止期间发送的数据编制索引并且该数据不可搜索。 当数据收集恢复后，将仅对发送的新数据进行处理。 
@@ -77,35 +79,34 @@ Log Analytics 使用 UTC 时间并且每天从 UTC 午夜时间开始。 如果�
 针对数据收集停止时创建警报时，请设置以下各项：
 - 将“名称”设置为“数据收集已停止”
 - 将“严重性”设置为“警告”
-- 将“搜索查询”设置为 `Type=Operation OperationCategory="Data Collection Status" OperationStatus=Warning`
-- 将“时间窗口”设置为“2 小时”。
-- 将“警报频率”设置为“一小时”，因为使用情况数据一小时才更新一次。
+- 将“搜索查询”设置为 `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+- 将“时间范围”设置为“30 分钟”。
+- 将“警报频率”设置为每“十”分钟。
 - 将“生成警报的基础”设置为“结果数”
 - 将“结果数”设置为“大于 0”
 
-执行[将操作添加到警报规则](log-analytics-alerts-actions.md)中介绍的步骤，为警报规则配置电子邮件、Webhook 或 Runbook 操作。
-
+查询返回结果时，只有在检测信号消失时间超过 15 分钟的情况下，才会触发此警报。  执行[将操作添加到警报规则](log-analytics-alerts-actions.md)中介绍的步骤，为警报规则配置电子邮件、Webhook 或 Runbook 操作。
 
 ## <a name="configuration"></a>配置
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>问： 是否可以更改用于从 Azure 诊断 (WAD) 读取数据的表/blob 容器的名称？
 
-答： 不可以，当前还不能从 Azure 存储中的任意表或容器进行读取。
+A. 不可以，当前还不能从 Azure 存储中的任意表或容器进行读取。
 
 ### <a name="q-what-ip-addresses-does-the-log-analytics-service-use-how-do-i-ensure-that-my-firewall-only-allows-traffic-to-the-log-analytics-service"></a>问： Log Analytics 服务使用什么 IP 地址？ 如何确保我的防火墙仅允许与 Log Analytics 服务通信？
 
-答： Log Analytics 服务是在 Azure 的基础上构建的。 Log Analytics IP 地址在 [Microsoft Azure 数据中心 IP 范围](http://www.microsoft.com/download/details.aspx?id=41653)内。
+A. Log Analytics 服务是在 Azure 的基础上构建的。 Log Analytics IP 地址在 [Microsoft Azure 数据中心 IP 范围](http://www.microsoft.com/download/details.aspx?id=41653)内。
 
 当进行服务部署时，Log Analytics 服务的实际 IP 地址会发生变化。 [在 Log Analytics 中配置代理和防火墙设置](log-analytics-proxy-firewall.md)中记录了允许通过防火墙的 DNS 名称。
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>问： 我使用 ExpressRoute 连接到 Azure。 我的 Log Analytics 流量是否使用我的 ExpressRoute 连接？
 
-答： 不同类型的 ExpressRoute 通信流量记录在 [ExpressRoute 文档](../expressroute/expressroute-faqs.md#supported-services)中。
+A. 不同类型的 ExpressRoute 通信流量记录在 [ExpressRoute 文档](../expressroute/expressroute-faqs.md#supported-services)中。
 
 Log Analytics 通信流量使用的是公共对等 ExpressRoute 线路。
 
 ### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>问： 有没有简单易用的方法将现有的 Log Analytics 工作区移到另一个 Log Analytics 工作区/Azure 订阅？
 
-答： `Move-AzureRmResource` Cmdlet 可以用来将 Log Analytics 工作区以及自动化帐户从一个 Azure 订阅移到另一个订阅。 有关详细信息，请参阅[移动 - AzureRmResource](http://msdn.microsoft.com/library/mt652516.aspx)。
+A. `Move-AzureRmResource` Cmdlet 可以用来将 Log Analytics 工作区以及自动化帐户从一个 Azure 订阅移到另一个订阅。 有关详细信息，请参阅[移动 - AzureRmResource](http://msdn.microsoft.com/library/mt652516.aspx)。
 
 也可在 Azure 门户中进行此更改。
 
@@ -139,19 +140,19 @@ Log Analytics 通信流量使用的是公共对等 ExpressRoute 线路。
 
 ## <a name="agent-data"></a>代理数据
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>问： 可以通过代理向 Log Analytics 发送多少数据？ 每个客户的数据量是否有最大限制？
-答： 免费套餐设置的上限是每个工作区每天 500 MB。 标准和高级套餐对上传的数据量没有限制。 作为云服务，Log Analytics 设计为自动纵向扩展以处理来自客户的数据 – 即使每天数据量达到数万亿字节 (TB)。
+A. 免费套餐设置的上限是每个工作区每天 500 MB。 标准和高级套餐对上传的数据量没有限制。 作为云服务，Log Analytics 设计为自动纵向扩展以处理来自客户的数据 – 即使每天数据量达到数万亿字节 (TB)。
 
-Log Analytics 代理设计为确保占用较小的数据空间。 我们的一位客户针对他们对我们的代理执行的测试写了一篇博客，测试结果令人印象深刻。 数据量因启用的解决方案而异。 在[“使用情况”](log-analytics-usage.md)页面中可以找到有关数据量的详细信息以及按解决方案列出的细目。
+Log Analytics 代理设计为确保占用较小的数据空间。 数据量因启用的解决方案而异。 在[“使用情况”](log-analytics-usage.md)页面中可以找到有关数据量的详细信息以及按解决方案列出的故障。
 
-有关更多信息，可以阅读[客户博客](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)以了解 OMS 代理的低数据占用空间。
+有关更多信息，可以阅读[客户博客](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html)以了解 OMS 代理的小占用空间。
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>问： 将数据发送到 Log Analytics 时，Microsoft 管理代理 (MMA) 使用多少网络带宽？
 
-答： 带宽是已发送数据量的一个函数。 数据通过网络发送时会被压缩。
+A. 带宽是已发送数据量的一个函数。 数据通过网络发送时会被压缩。
 
 ### <a name="q-how-much-data-is-sent-per-agent"></a>问： 每个代理发送多少数据？
 
-答： 每个代理发送的数据量取决于：
+A. 每个代理发送的数据量取决于：
 
 * 已启用的解决方案
 * 所收集的日志和性能计数器的数量

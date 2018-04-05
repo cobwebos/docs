@@ -1,8 +1,8 @@
 ---
-title: "查看 Azure Data Lake Store 诊断日志 | Microsoft Docs"
-description: "了解如何设置和访问 Azure Data Lake Store 诊断日志 "
+title: 查看 Azure Data Lake Store 诊断日志 | Microsoft Docs
+description: '了解如何设置和访问 Azure Data Lake Store 诊断日志 '
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: b58a4b215b13d2e57a69a94a60e3e37471c926c8
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 5f1fa378c8eea68181d4596700238d03f360c5d0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Accessing diagnostic logs for Azure Data Lake Store（访问 Azure Data Lake Store 的诊断日志）
 了解如何启用 Data Lake Store 帐户诊断日志记录以及如何查看为帐户收集的日志。
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/23/2018
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-store-account"></a>对 Data Lake Store 帐户启用诊断日志记录
 1. 登录到新的 [Azure 门户](https://portal.azure.com)。
-2. 打开 Data Lake Store 帐户，在 Data Lake Store 帐户边栏选项卡上单击“设置”，并单击“诊断日志”。
+2. 打开 Data Lake Store 帐户，在“Data Lake Store 帐户”边栏选项卡上单击“诊断日志”。
 3. 在“诊断日志”边栏选项卡中，单击“启用诊断”。
 
     ![启用诊断日志记录](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "启用诊断日志")
@@ -150,6 +150,7 @@ ms.lasthandoff: 02/23/2018
              "category": "Audit",
              "operationName": "SeOpenStream",
              "resultType": "0",
+             "resultSignature": "0",
              "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
              "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
              "properties": {"StreamName":"adl://<data_lake_store_account_name>.azuredatalakestore.net/logs.csv"}
@@ -167,6 +168,7 @@ ms.lasthandoff: 02/23/2018
 | category |String |日志类别。 例如，“审核”。 |
 | operationName |String |被记录的操作的名称。 例如 getfilestatus。 |
 | resultType |String |操作状态，例如，200。 |
+| resultSignature |String |有关操作的其他详细信息。 |
 | correlationId |String |可用于将一组相关日志条目组合在一起的日志的 ID |
 | identity |对象 |生成日志的标识 |
 | 属性 |JSON |详细信息参见以下内容 |
@@ -186,7 +188,7 @@ search *
 ```
 
 
-Azure Data Lake Store 提供如何处理和分析日志数据的示例。 可在 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) 找到该示例。 
+Azure Data Lake Store 提供如何处理和分析日志数据的示例。 可在 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) 找到示例。 
 
 ## <a name="see-also"></a>另请参阅
 * [Overview of Azure Data Lake Store](data-lake-store-overview.md)

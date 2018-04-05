@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement iOS SDK 集成 | Microsoft Docs"
-description: "Azure Mobile Engagement 的 iOS SDK 的最新更新和过程"
+title: Azure Mobile Engagement iOS SDK 集成 | Microsoft Docs
+description: Azure Mobile Engagement 的 iOS SDK 的最新更新和过程
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 947ea44b-00c1-450f-9a3b-74437954dc56
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.openlocfilehash: 01fdbb43c21ac6932e8462f4a6507fc63e50542d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f0d650205ca86205ad857003f892c1a60b3831bf
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-on-ios"></a>如何在 iOS 上集成 Engagement
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 > [!div class="op_single_selector"]
 > * [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -133,7 +137,7 @@ Apple 服务条款不允许应用程序仅出于统计信息目的而使用位�
 ### <a name="real-time-location-reporting"></a>实时位置报告
 实时位置报告允许报告关联到设备的纬度和经度。 默认情况下，此类型的位置报告仅使用网络位置（基于 Cell ID 或 WIFI），且报告仅在应用程序在前台中运行时（例如，在会话期间）可用。
 
-实时位置*不会*用于计算统计信息。 其唯一用途是，允许在市场宣传活动中使用实时地理范围 \<Reach-Audience-geofencing\> 标准。
+实时位置*不会*用于计算统计信息。 其唯一用途是：允许在市场宣传活动中使用实时地理围范围 \<Reach-Audience-geofencing\> 标准。
 
 若要启用实时位置报告，请在初始化 Engagement 代理后添加以下行：
 

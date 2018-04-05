@@ -1,24 +1,24 @@
 ---
-title: "使用 Azure Cosmos DB 全局分发数据 | Microsoft Docs"
-description: "了解如何通过 Azure Cosmos DB（一种全球分布式多模型数据库服务），使用全球数据库进行全球范围的异地复制、故障转移和数据恢复。"
+title: 使用 Azure Cosmos DB 全局分发数据 | Microsoft Docs
+description: 了解如何通过 Azure Cosmos DB（一种全球分布式多模型数据库服务），使用全球数据库进行全球范围的异地复制、故障转移和数据恢复。
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ba5ad0cc-aa1f-4f40-aee9-3364af070725
 ms.service: cosmos-db
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 03/26/2018
 ms.author: arramac
-ms.openlocfilehash: 0be81802996f27a4c063e4e728a3c95ad757bea0
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: e31b66f20c51e95dbc2d8285bb5602590abd4f4f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>如何使用 Azure Cosmos DB 在全球范围内分发数据
 Azure 无处不在 - 它的足迹遍布全球 30 多个地理区域，并且还在不断扩展。 借助其在全球范围的足迹，Azure 为其开发人员提供的特色功能之一是能够轻松生成、部署和管理全局分布式应用程序。 
@@ -37,6 +37,11 @@ Azure 无处不在 - 它的足迹遍布全球 30 多个地理区域，并且还�
 
 ## <a id="EnableGlobalDistribution"></a>启用统包全球分发
 Azure Cosmos DB 提供了以下功能，方便用户轻松编写全球规模的应用程序。 这些功能通过 Azure Cosmos DB 的基于资源提供程序的 [REST API](https://docs.microsoft.com/rest/api/documentdbresourceprovider/) 以及 Azure 门户提供。
+
+在下面的视频中，Azure Cosmos DB 项目经理 Andrew Liu 演示了统包全球分布功能。
+
+> [!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
+>
 
 ### <a id="RegionalPresence"></a>无处不在、分布广泛 
 Azure 通过上线[新区域](https://azure.microsoft.com/regions/)，不断扩大地理覆盖面。 Azure Cosmos DB 默认在所有新的 Azure 区域提供。 这样一来，只要 Azure 开辟了新的业务区域，就能够将该地理区域与 Azure Cosmos DB 数据库帐户关联。

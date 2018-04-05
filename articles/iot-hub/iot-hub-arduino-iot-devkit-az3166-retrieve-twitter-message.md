@@ -1,12 +1,12 @@
 ---
-title: "使用 Azure Functions 检索 Twitter 消息 | Microsoft Docs"
-description: "使用动作传感器检测抖动，然后使用 Azure Functions 查找包含指定的井号标签的随机推文。"
+title: 使用 Azure Functions 检索 Twitter 消息 | Microsoft Docs
+description: 使用动作传感器检测抖动，然后使用 Azure Functions 查找包含指定的井号标签的随机推文。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: liydu
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: d9d03d35aa5d78d83e0f195c804cfe09fece3c07
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a84393c5c53b8f8e4a8b688a462f433b2d611b0e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>“Shake, Shake”推文项目 -- 使用 Azure Functions 检索 Twitter 消息
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/09/2018
 
 一个有效的 Azure 订阅。 如果没有订阅，可通过以下方法之一进行注册：
 
-* 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azureinfo.microsoft.com/us-freetrial.html)
+* 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/en-us/free/)
 * 声明你的 [Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)（如果你是 MSDN 或 Visual Studio 订阅者）
 
 ## <a name="open-the-project-folder"></a>打开项目文件夹

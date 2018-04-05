@@ -1,11 +1,12 @@
 ---
-title: "通过使用 Web 应用模板来使用机器学习 Web 服务 | Microsoft Docs"
-description: "利用 Azure Marketplace 中的 web 应用模板来是使用 Azure 机器学习中的预测 web 服务。"
-keywords: "web 服务，操作化，REST API，机器学习"
+title: 通过使用 Web 应用模板来使用机器学习 Web 服务 | Microsoft Docs
+description: 利用 Azure Marketplace 中的 web 应用模板来是使用 Azure 机器学习中的预测 web 服务。
+keywords: web 服务，操作化，REST API，机器学习
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: raymondl
-ms.openlocfilehash: f7efa647fa6afc247509cd4a52066c0459f75ca3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 81b89a1f8a053fd3b1d0d6a0a1bcc5c67d2ba728
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>通过使用 Web 应用模板来使用机器学习 Web 服务
 
@@ -77,9 +77,9 @@ Azure Marketplace 提供的 web 应用模板可创建自定义 web 应用，该�
 2. 选择“新建”，搜索并选择“Azure ML 请求-响应服务 Web 应用”，然后选择“创建”。 
 3. 在“创建”窗格中：
    
-   * 为 Web 应用提供唯一的名称。 在此名称后面加上 .azurewebsites.net 即为 Web 应用的 URL 名称。 例如 http://carprediction.azurewebsites.net。
+   * 为 Web 应用提供唯一的名称。 在此名称后面加上 .azurewebsites.net 即为 Web 应用的 URL 名称。 例如 **http://carprediction.azurewebsites.net**。
    * 选择 Azure 订阅和要在其下运行 web 服务的服务。
-   * 选择“创建”。
+   * 选择**创建**。
      
    ![创建 Web 应用][image5]
 

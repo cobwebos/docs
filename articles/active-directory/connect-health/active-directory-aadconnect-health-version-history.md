@@ -14,16 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: edc1771153581e73398e8df25e70660f9f85ceba
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 57cc8a63773cda5b66856ba7d6b3215d9c52162c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发布历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。
 
 ## <a name="march-2018"></a>2018 年 3 月
+**新的预览功能：**
+* 适用于 AD FS 的 Azure Active Directory Connect Health - 有风险的 IP 报表和警报。
+
 **代理更新：**
 
 *   适用于 AD DS 的 Azure AD Connect Health 代理（3.0.176.0 版）
@@ -64,7 +67,7 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
   1. 修复了 Bug，进行了一般改进
   2. 支持 Sovereign 云
 * 适用于同步的 Azure AD Connect Health（3.0.68.0 版），与 Azure AD Connect 1.1.614.0 版一起发布
-1. 支持 Microsoft Azure 政府云和 Microsoft 德国云
+  1. 支持 Microsoft Azure 政府云和 Microsoft 德国云
 
 ## <a name="april-2017"></a>2017 年 4 月      
 **代理更新：**

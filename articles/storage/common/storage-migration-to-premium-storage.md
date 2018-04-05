@@ -1,6 +1,6 @@
 ---
-title: "将 VM 迁移到 Azure 高级存储 | Microsoft Docs"
-description: "将现有的 VM 迁移到 Azure 高级存储。 高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负荷提供高性能、低延迟的磁盘支持。"
+title: 将 VM 迁移到 Azure 高级存储 | Microsoft Docs
+description: 将现有的 VM 迁移到 Azure 高级存储。 高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负荷提供高性能、低延迟的磁盘支持。
 services: storage
 documentationcenter: na
 author: yuemlu
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.openlocfilehash: 36ff73d36c752fb342dcfff2360b4f6f7013740e
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>迁移到 Azure 高级存储（非托管磁盘）
 
@@ -184,11 +184,11 @@ VM 需要完全关闭，以便迁移干净状态。 在迁移完成之前会存�
 
     下面是 AzCopy 命令中使用的参数的说明：
 
-   * **/Source: *&lt;source&gt;:*** 包含 VHD 的文件夹或存储容器 URL 的位置。
+   * **/Source: &lt;source&gt;:** 包含 VHD 的文件夹或存储容器 URL 的位置。
    * **/SourceKey: *&lt;source-account-key&gt;:*** 源存储帐户的存储帐户密钥。
    * **/Dest: *&lt;destination&gt;:*** 要将 VHD 复制到的存储容器 URL。
    * **/DestKey: *&lt;dest-account-key&gt;:*** 目标存储帐户的存储帐户密钥。
-   * **/Pattern: *&lt;file-name&gt;:*** 指定要复制的 VHD 文件名。
+   * **/Pattern: &lt;file-name&gt;:** 指定要复制的 VHD 文件名。
 
 有关使用 AzCopy 工具的详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)。
 
@@ -257,7 +257,7 @@ C:\PS> Start-AzureStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceCont
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-示例 <Uri> 可能是“https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd”。 示例 <FileInfo> 可能是“C:\path\to\upload.vhd”。
+一个 <Uri> 的例子是***“https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd”***。 示例 <FileInfo> 可能是“C:\path\to\upload.vhd”。
 
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>选项 2：使用 AzCopy 上传 .vhd 文件
 使用 AzCopy 可通过 Internet 轻松上传 VHD。 根据 VHD 的大小，这可能需要时间。 请记住，在使用此选项时，检查存储帐户传入/传出限制。 有关详细信息，请参阅 [Azure 存储可伸缩性和性能目标](storage-scalability-targets.md)。
@@ -278,7 +278,7 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 
     下面是 AzCopy 命令中使用的参数的说明：
 
-   * **/Source: *&lt;source&gt;:*** 包含 VHD 的文件夹或存储容器 URL 的位置。
+   * **/Source: &lt;source&gt;:** 包含 VHD 的文件夹或存储容器 URL 的位置。
    * **/SourceKey: *&lt;source-account-key&gt;:*** 源存储帐户的存储帐户密钥。
    * **/Dest: *&lt;destination&gt;:*** 要将 VHD 复制到的存储容器 URL。
    * **/DestKey: *&lt;dest-account-key&gt;:*** 目标存储帐户的存储帐户密钥。

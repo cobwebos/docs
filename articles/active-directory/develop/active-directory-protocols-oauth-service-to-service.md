@@ -1,11 +1,11 @@
 ---
-title: "使用 OAuth2.0 进行 Azure AD 服务到服务身份验证 | Microsoft 文档"
-description: "本文介绍如何使用 OAuth2.0 客户端凭据授权流通过 HTTP 消息实现服务到服务身份验证。"
+title: 使用 OAuth2.0 进行 Azure AD 服务到服务身份验证 | Microsoft 文档
+description: 本文介绍如何使用 OAuth2.0 客户端凭据授权流通过 HTTP 消息实现服务到服务身份验证。
 services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: ad2118130ec36aed1561db763946104501eb0f32
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: da657fb6072c0655e47623c58e7051e8dd462049
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>使用客户端凭据（共享密钥或证书）进行服务到服务调用
 OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调用其他 Web 服务时使用它自己的凭据（而不是模拟用户）进行身份验证。 在这种情况下，客户端通常是中间层 Web 服务、后台程序服务或网站。 为了更高级别的保证，Azure AD 还允许调用服务以将证书（而不是共享密钥）用作凭据。
@@ -53,9 +53,9 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 | 参数 |  | 说明 |
 | --- | --- | --- |
 | grant_type |必填 |指定请求的授权类型。 在客户端凭据授权流中，该值必须是 **client_credentials**。 |
-| client_id |必填 |指定调用 Web 服务的 Azure AD 客户端 ID。 要查找调用应用程序的客户端 ID，请在 [Azure 门户](https://portal.azure.com)中，单击“Active Directory”，切换目录，并单击应用程序。 client_id 是应用程序 ID |
-| client_secret |必填 |在 Azure AD 中输入为调用 Web 服务或 daemon 应用程序注册的密钥。 要创建密钥，请在 Azure 门户中，单击“Active Directory”，切换目录，并依次单击应用程序、“设置”、“密钥”并添加密钥。|
-| resource |必填 |输入接收 Web 服务的应用 ID URI。 要查找应用 ID URI，请在 Azure 门户中，单击“Active Directory”，切换目录，并依次单击服务应用程序、“设置”和“属性” |
+| client_id |必填 |指定调用 Web 服务的 Azure AD 客户端 ID。 要查找调用应用程序的客户端 ID，请在 [Azure 门户](https://portal.azure.com)中，依次单击“Azure Active Directory”和“应用注册”，然后单击该应用程序。 client_id 是应用程序 ID |
+| client_secret |必填 |在 Azure AD 中输入为调用 Web 服务或 daemon 应用程序注册的密钥。 要创建密钥，请在 Azure 门户中，依次单击“Azure Active Directory”>“应用注册”并单击该应用程序，然后依次单击“设置”>“密钥”，并添加密钥。|
+| resource |必填 |输入接收 Web 服务的应用 ID URI。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用注册”，并单击服务应用程序，然后依次单击“设置”和“属性”。 |
 
 #### <a name="example"></a>示例
 以下 HTTP POST 请求 https://service.contoso.com/ Web 服务的访问令牌。 `client_id` 标识请求访问令牌的 Web 服务。
@@ -74,15 +74,15 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 | 参数 |  | 说明 |
 | --- | --- | --- |
 | grant_type |必填 |指定请求的响应类型。 在客户端凭据授权流中，该值必须是 **client_credentials**。 |
-| client_id |必填 |指定调用 Web 服务的 Azure AD 客户端 ID。 要查找调用应用程序的客户端 ID，请在 [Azure 门户](https://portal.azure.com)中，单击“Active Directory”，切换目录，并单击应用程序。 client_id 是应用程序 ID |
+| client_id |必填 |指定调用 Web 服务的 Azure AD 客户端 ID。 要查找调用应用程序的客户端 ID，请在 [Azure 门户](https://portal.azure.com)中，依次单击“Azure Active Directory”和“应用注册”，然后单击该应用程序。 client_id 是应用程序 ID |
 | client_assertion_type |必填 |值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |必填 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](active-directory-certificate-credentials.md)。|
-| resource | 必填 |输入接收 Web 服务的应用 ID URI。 若要查找应用 ID URI，请在 Azure 门户中，依次单击“Active Directory”、该目录、该应用程序和“配置”。 |
+| resource | 必填 |输入接收 Web 服务的应用 ID URI。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用注册”，并单击服务应用程序，然后依次单击“设置”和“属性”。 |
 
 请注意，参数几乎与共享密钥请求的参数相同，只不过 client_secret 参数替换为两个参数：client_assertion_type 和 client_assertion。
 
 #### <a name="example"></a>示例
-以下 HTTP POST 使用证书请求 https://service.contoso.com/ Web 服务的访问令牌。 `client_id` 标识请求访问令牌的 Web 服务。
+以下 HTTP POST 请求具有证书的 https://service.contoso.com/ Web 服务的访问令牌。 `client_id` 标识请求访问令牌的 Web 服务。
 
 ```
 POST /<tenant_id>/oauth2/token HTTP/1.1

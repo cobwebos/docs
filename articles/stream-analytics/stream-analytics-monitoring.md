@@ -1,12 +1,11 @@
 ---
-title: "了解流分析作业监视 | Microsoft 文档"
-description: "了解流分析作业监视"
-keywords: "查询监视器"
+title: 了解流分析作业监视 | Microsoft 文档
+description: 了解流分析作业监视
+keywords: 查询监视器
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: jseb225
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: 5f5cc00f-4a7b-491e-89e1-dbafea46d399
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 7474f45494c6190ffcac354e75458b18f5777fb9
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.author: jeanb
+ms.openlocfilehash: cbfbc653deccbd215a404479100ee5cae860cb3f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>了解流分析作业监视以及如何监视查询
 
@@ -33,7 +32,7 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 ![监视作业仪表板](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
 
 ## <a name="metrics-available-for-stream-analytics"></a>可用于流分析的指标
-| 度量值                 | 定义                               |
+| 指标                 | 定义                               |
 | ---------------------- | ---------------------------------------- |
 | 流单元利用率 %       | 从作业的“比例”选项卡向一个作业分配的流单元利用率。 如果此指标达到 80% 或以上，则很可能会出现事件处理延迟或停止处理的情况。 |
 | 输入事件数           | 流分析作业收到的数据量，以事件数来衡量。 这可以用于验证正在发送到输入源的事件。 |

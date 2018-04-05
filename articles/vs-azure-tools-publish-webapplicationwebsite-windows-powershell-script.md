@@ -1,11 +1,11 @@
 ---
-title: "Publish-WebApplicationWebSite（Windows PowerShell 脚本）| Microsoft Docs"
-description: "了解如何将 Web 项目发布到 Azure 网站。 此脚本会在 Azure 订阅中创建所需的资源（如果这些资源不存在）。"
+title: Publish-WebApplicationWebSite（Windows PowerShell 脚本）| Microsoft Docs
+description: 了解如何将 Web 项目发布到 Azure 网站。 此脚本会在 Azure 订阅中创建所需的资源（如果这些资源不存在）。
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 63cfaa2d-f04d-40dc-8677-345385c278d5
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 07d21b7ce6cd8aee1cff704d316e7a2ca8c00437
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: aaa1f679b0368b0ca93305fe867a63f3971a788c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="publish-webapplicationwebsite-windows-powershell-script"></a>Publish-WebApplicationWebSite（Windows PowerShell 脚本）
 ## <a name="syntax"></a>语法
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 | 位置 |指定 |
 | 默认值 |无 |
 | 接受管道输入？ |false |
-| 接受通配符？ |否 |
+| 接受通配符？ |false |
 
 ## <a name="subscriptionname"></a>SubscriptionName
 要在其中创建网站的 Azure 订阅的名称。
@@ -51,11 +51,11 @@ ms.lasthandoff: 10/11/2017
 | 参数 | 默认值 |
 | --- | --- |
 | 别名 |无 |
-| 必需？ |否 |
+| 必需？ |false |
 | 位置 |指定 |
 | 默认值 |无 |
 | 接受管道输入？ |false |
-| 接受通配符？ |否 |
+| 接受通配符？ |false |
 
 ## <a name="webdeploypackage"></a>WebDeployPackage
 要发布到网站的 Web 部署包的路径。 可以在 Visual Studio 中使用“发布 Web”向导来创建此包。 有关详细信息，请参阅 [Azure 云服务和 ASP.NET 入门](http://go.microsoft.com/fwlink/p/?LinkID=623089)。
@@ -63,7 +63,7 @@ ms.lasthandoff: 10/11/2017
 | 参数 | 默认值 |
 | --- | --- |
 | 别名 |无 |
-| 必需？ |否 |
+| 必需？ |false |
 | 位置 |指定 |
 | 默认值 |无 |
 | 接受管道输入？ |false |
@@ -75,11 +75,11 @@ Azure 中的 SQL 数据库的用户名和密码。
 | 参数 | 默认值 |
 | --- | --- |
 | 别名 |无 |
-| 必需？ |否 |
+| 必需？ |false |
 | 位置 |指定 |
 | 默认值 |无 |
 | 接受管道输入？ |false |
-| 接受通配符？ |否 |
+| 接受通配符？ |false |
 
 ## <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
 如果为 true，则将来自脚本的消息打印到输出流。
@@ -87,11 +87,11 @@ Azure 中的 SQL 数据库的用户名和密码。
 | 参数 | 默认值 |
 | --- | --- |
 | 别名 |无 |
-| 必需？ |否 |
+| 必需？ |false |
 | 位置 |指定 |
 | 默认值 |false |
 | 接受管道输入？ |false |
-| 接受通配符？ |否 |
+| 接受通配符？ |false |
 
 ## <a name="remarks"></a>备注
 有关如何使用脚本创建开发和测试环境的完整说明，请参阅[使用 Windows PowerShell 脚本发布到开发和测试环境](vs-azure-tools-publishing-using-powershell-scripts.md)。

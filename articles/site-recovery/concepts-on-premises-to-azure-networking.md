@@ -1,24 +1,19 @@
 ---
-title: "设置使用 Azure Site Recovery 故障转移到 Azure 后要连接的 IP 地址 | Microsoft Docs"
-description: "说明如何设置使用 Azure Site Recovery 从本地故障转移后用于连接到 Azure VM 的 IP 地址"
+title: 设置使用 Azure Site Recovery 故障转移到 Azure 后要连接的 IP 地址 | Microsoft Docs
+description: 说明如何设置使用 Azure Site Recovery 从本地故障转移后用于连接到 Azure VM 的 IP 地址
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: carmonm
-editor: 
-ms.assetid: f02cdbea-0940-48bf-9fa5-f38d9e584fae
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 02/27/2018
+ms.date: 03/24/2018
 ms.author: manayar
-ms.openlocfilehash: b9aeaf1dc6d471ba993dd470403ba60ce68153fc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: e74ad30ea8c4be994c1c67735ee91ef8c033b9b3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>设置在故障转移到 Azure 后要连接的 IP 地址
 
@@ -49,7 +44,7 @@ Site Recovery 支持在通过子网故障转移到 Azure 时保留固定的 IP �
 
 ### <a name="failover-example"></a>故障转移示例
 
-我们来看一个使用虚构公司 Woodgrove Bank 故障转移到 Azure 的示例。
+我们来看一个故障转移到 Azure 的示例，这里采用一个虚构的公司：Woodgrove Bank。
 
 - Woodgrove Bank 在本地站点中托管商业应用程序。 它们在 Azure 上托管其移动应用。
 - 其本地边缘网络和 Azure 虚拟网络之间存在 VPN 站点到站点连接。 由于存在 VPN 连接，Azure 中的虚拟网络显示为本地网络的扩展。

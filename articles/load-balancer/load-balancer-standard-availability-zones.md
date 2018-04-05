@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2018
+ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 61e0e7cf960d7eb2294bc294ec1eec9d80428a81
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9f5a68972015f54e2333199652075cda2535a3c8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>标准负载均衡器和可用性区域
 
 Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones/az-overview.md)场景。 标准负载均衡器使用多种新的概念，可让资源适应区域并在区域之间分配资源，从而在端到端场景中优化可用性。  请查看[可用性区域](../availability-zones/az-overview.md)来了解可用性区域的定义、目前哪些区域支持可用性区域，以及其他相关的概念和产品。 可用性区域与标准负载均衡器的结合是一个可扩展的灵活功能集，可以创建多种不同的场景。  请查看本文档了解这些[概念](#concepts)和基本场景的[设计指南](#design)。
 
 >[!NOTE]
-> 负载均衡器标准版 SKU 目前以预览版提供。 在预览期，该功能的可用性和可靠性级别可能与正式版不同。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 请将正式版[负载均衡器基本 SKU](load-balancer-overview.md) 用于生产服务。 若要将[可用性区域预览版](https://aka.ms/availabilityzones)与此预览版配合使用，需要进行[单独注册](https://aka.ms/availabilityzones)，并且还需要注册负载均衡器[标准预览版](#preview-sign-up)。
+>有关其他相关主题，请查看[可用性区域预览版](https://aka.ms/availabilityzones)。 
 
 ## <a name="concepts"></a> 适用于负载均衡器的可用性区域概念
 
@@ -210,7 +210,7 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
 
 局域性可以提供单个区域的明确保证，其命运取决于该区域的运行状况。 关联局域性 IP 地址局域性负载均衡器前端可能是必要或合理的属性，尤其是当附加的资源是同一区域中的局域性 VM 时。  或者，应用程序可能需要明确知道资源所在的区域，并且你希望能够明确推测出不同区域的可用性。  可以选择针对跨区域分布的端到端服务公开多个局域性前端（即，将每个区域的局域性前端用于多个局域性虚拟机规模集）。  如果局域性前端是公共 IP 地址，则可以通过[流量管理器](../traffic-manager/traffic-manager-overview.md)使用多个局域性前端来公开服务。  或者，可以通过第三方监视解决方案使用多个局域性前端来获取每个区域的运行状况和性能见解，并使用区域冗余的前端公开整个服务。 只能使用适应同一区域的局域性前端来为局域性资源提供服务，并避免对局域性资源使用潜在有害的跨区域场景。  局域性资源只会出现在可用性区域所在的区域。
 
-在不了解端到端服务的情况下，无法遵循任何常规指导来做出更好的选择。
+在不了解服务体系结构的情况下，无法遵循任何常规指导来做出更好的选择。
 
 ## <a name="limitations"></a>限制
 

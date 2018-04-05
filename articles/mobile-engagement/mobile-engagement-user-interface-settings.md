@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 用户界面 - 设置"
-description: "了解如何使用 Azure Mobile Engagement 管理应用程序的全局设置"
+title: Azure Mobile Engagement 用户界面 - 设置
+description: 了解如何使用 Azure Mobile Engagement 管理应用程序的全局设置
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 858f4cb4-14de-4bb5-826f-28cadbfc928b
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31df9f151febcb7e5f0f2cd4a83053b3aac416a3
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-the-global-settings-of-your-application"></a>如何管理应用程序的全局设置
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 应用程序的“**设置**”菜单选项不尽相同，具体取决于应用程序所在的平台以及授予给应用程序权限。 设置包括以下内容：详细信息、项目、原生推送、推送速度、标记（应用信息） 和商业压力。 “设置”部分的“标记”（应用信息）菜单选项由应用程序通过 SDK 管理，或由后端通过设备 API 管理。 
 
 > [!NOTE]

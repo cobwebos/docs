@@ -1,24 +1,19 @@
 ---
-title: "将 Azure 自动化与 Visual Stuido Team Services 源代码管理集成 | Microsoft 文档"
-description: "本方案逐步讲解如何设置 Azure 自动化帐户与 Visual Stuido Team Services 源代码管理的集成。"
+title: 将 Azure 自动化与 Visual Stuido Team Services 源代码管理集成
+description: 本方案逐步讲解如何设置 Azure 自动化帐户与 Visual Stuido Team Services 源代码管理的集成。
 services: automation
-documentationcenter: 
-author: eamono
-manager: 
-editor: 
-keywords: "azure powershell, VSTS, 源代码管理, 自动化"
-ms.assetid: a43b395a-e740-41a3-ae62-40eac9d0ec00
+documentationcenter: ''
+author: eamonoreilly
+ms.author: eamono
+keywords: azure powershell, VSTS, 源代码管理, 自动化
 ms.service: automation
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2017
-ms.openlocfilehash: 5afccc4aa7b751958952d1401182f93109cff358
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 03/19/2017
+ms.openlocfilehash: a60143db03e5f89685a25f26789003de30d91f4c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure 自动化方案 - 自动化源代码管理与 Visual Studio Team Services 的集成
 
@@ -51,7 +46,7 @@ VSToken | 所创建的安全变量资产，包含 VSTS 个人访问令牌。 可
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSTokenVariable.png)
 
-导入用于将 Runbook 或配置同步到自动化帐户的 Runbook。 根据是要使用 VSTS 源代码管理还是包含 Git 的 VSTS 以及是否要部署到自动化帐户，可以从 PowerShellGallery.com 使用 [VSTS 示例 Runbook](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) 或 [包含 Git 的 VSTS 示例 Runbook] (https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript)。
+导入用于将 Runbook 或配置同步到自动化帐户的 Runbook。 根据是要使用 VSTS 源代码管理还是包含 Git 的 VSTS 以及是否要部署到自动化帐户，可以从 PowerShellGallery.com 使用 [VSTS 示例 Runbook](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) 或 [包含 Git 的 VSTS 示例 Runbook] (https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript))。
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPowerShellGallery.png)
 

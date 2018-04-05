@@ -1,6 +1,6 @@
 ---
-title: "Azure 存储帐户选项 | Microsoft Docs"
-description: "了解使用 Azure 存储的选项。"
+title: Azure 存储帐户选项 | Microsoft Docs
+description: 了解使用 Azure 存储的选项。
 services: storage
 author: jirwin
 manager: jwillis
@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: get-started-article
 ms.date: 01/17/2018
 ms.author: jirwin
-ms.openlocfilehash: 2c69519b865169b477950bc8fa659d5ad9081bbf
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 75d1580df5e36b2c88939fde9077c5a1948f6348
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-storage-account-options"></a>Azure 存储帐户选项
 
@@ -218,7 +218,7 @@ Blob 存储帐户支持 GPv2 帐户所支持的所有块 Blob 功能，但其局
 有关详细信息，请参阅 [About Storage Analytics Metrics](https://msdn.microsoft.com/library/azure/hh343258.aspx)（关于存储分析指标）和 [Storage Analytics Metrics Table Schema](https://msdn.microsoft.com/library/azure/hh343264.aspx)（存储分析指标表架构）
 
 > [!NOTE]
-> Blob 存储帐户公开表服务终结点的目的只是为了存储和访问该帐户的指标数据。 区域冗余存储 (ZRS) 帐户支持收集指标数据，而 ZRS 经典存储帐户则不支持。 有关 ZRS 的详细信息，请参阅[区域冗余存储](storage-redundancy.md#zone-redundant-storage)。 
+> Blob 存储帐户公开表服务终结点的目的只是为了存储和访问该帐户的指标数据。 
 
 若要监视 Blob 存储的存储消耗情况，需启用容量指标。
 启用此功能后，会每天为存储帐户的 Blob 服务记录容量数据，并将容量数据记录为表条目写入到同一存储帐户中的 $MetricsCapacityBlob 表。

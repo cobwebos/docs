@@ -1,12 +1,12 @@
 ---
-title: "使用 Azure 函数和认知服务的 IoT DevKit 翻译 | Microsoft Docs"
-description: "使用 IoT DevKit 上的麦克风接收语音消息，并使用 Azure 认知服务将语音消息处理为英文翻译文本。"
+title: 使用 Azure 函数和认知服务的 IoT DevKit 翻译 | Microsoft Docs
+description: 使用 IoT DevKit 上的麦克风接收语音消息，并使用 Azure 认知服务将语音消息处理为英文翻译文本。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: liydu
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.service: iot-hube
 ms.devlang: arduino
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: 5f74e43d20b5954ae4808f82a34372d1e2190481
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d17f117d71eb0616201df18aea6dc48749ae24a8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>将 IoT DevKit AZ3166 与 Azure 函数和认知服务配合使用生成语言翻译
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/08/2018
 
 一个有效的 Azure 订阅。 如果没有订阅，可以通过以下两种方法之一进行注册：
 
-* 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azureinfo.microsoft.com/us-freetrial.html)
+* 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/en-us/free/)
 * 声明你的 [Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)（如果你是 MSDN 或 Visual Studio 订阅者）
 
 ## <a name="step-1-open-the-project-folder"></a>步骤 1. 打开项目文件夹

@@ -25,10 +25,10 @@ ms.lasthandoff: 03/13/2018
 |---------|---------|---------|---------|---------|
 |本地 Python    |     支持    |不支持         | 不支持        |         |
 |Docker (Linux VM) Python     |仅在项目文件中受支持*         | 不支持        |        不支持 |         |
-|Docker (Linux VM) PySpark     |仅在项目文件中受支持*     |支持         | 支持 \**        |         |
+|Docker (Linux VM) PySpark     |仅在项目文件中受支持*     |支持         | 支持 \*\*        |         |
 |Azure 数据科学虚拟机 Python     |仅在项目文件中受支持*         |不支持         |不支持         |         |
 |Azure 数据科学虚拟机 PySPark     | 仅在项目文件中受支持*        |不支持         |不支持         |         |
-|Azure HDInsight PySpark     | 不支持        |支持         |支持 \**         |         |
+|Azure HDInsight PySpark     | 不支持        |支持         |支持 \*\*         |         |
 |Azure HDInsight Python     | 不支持        | 不支持        | 不支持        |         |
 
 目前任何计算目标都不支持 Azure Data Lake Store。

@@ -1,24 +1,24 @@
 ---
-title: "部署使用 MongoDB 的 Node.js 应用程序 |Microsoft 文档"
-description: "演练如何打包多个来宾可执行文件以部署到 Azure Service Fabric 群集"
+title: 将使用 MongoDB 的 Node.js 应用程序部署到 Azure Service Fabric | Microsoft Docs
+description: 演练如何打包多个来宾可执行文件以部署到 Azure Service Fabric 群集
 services: service-fabric
 documentationcenter: .net
-author: msfussell
+author: mikkelhegn
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b76bb756-c1ba-49f9-9666-e9807cf8f92f
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/02/2017
-ms.author: msfussell;mikhegn
-ms.openlocfilehash: d7a37d7c04f85e9031cab52fa86026e56315c882
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.date: 02/23/2018
+ms.author: mikhegn
+ms.openlocfilehash: 4987cc271a3e3d8a1a69c4c7fbd213d73ca2eb96
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-multiple-guest-executables"></a>部署多个来宾可执行文件
 本文介绍了如何将多个来宾可执行文件打包并部署到 Azure Service Fabric。 要生成并部署单个 Service Fabric 包，请参阅如何[将来宾可执行文件部署到 Service Fabric](service-fabric-deploy-existing-app.md)。
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/06/2017
 * [使用 REST 通过命名服务进行通信的两种来宾可执行文件（C# 和 nodejs）示例](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>手动打包多个来宾可执行文件应用程序
-或者，也可以手动打包来宾可执行文件。 对于手动打包，本文使用 [http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool) 中的 Service Fabric 打包工具。
+或者，也可以手动打包来宾可执行文件。 对于手动打包，本文将使用位于 [http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool) 的 Service Fabric 打包工具。
 
 ### <a name="packaging-the-nodejs-application"></a>打包 Node.js 应用程序
 本文假设 Service Fabric 群集中的节点上未安装 Node.js。 因此，需要在打包之前，先将 Node.exe 添加到节点应用程序的根目录中。 Node.js 应用程序（使用 Express Web 框架和 Jade 模板引擎）的目录结构看起来应该与以下类似：
@@ -163,7 +163,7 @@ mongod.exe --dbpath [path to data]
         |-- ServiceManifest.xml
     |-- ApplicationManifest.xml
 ```
-如你所见，工具已将新文件夹“MongoDB”添加到包含 MongoDB 二进制文件的目录中。 打开 `ApplicationManifest.xml` 文件后，会发现包现在包含 Node.js 应用程序和 MongoDB。 以下代码会显示应用程序清单的内容。
+如你所见，工具已将新文件夹“MongoDB”添加到包含 MongoDB 二进制文件的目录中。 如果打开 `ApplicationManifest.xml` 文件，可以看到包现在包含 Node.js 应用程序和 MongoDB。 以下代码会显示应用程序清单的内容。
 
 ```xml
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">

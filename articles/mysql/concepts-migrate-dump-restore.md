@@ -1,6 +1,6 @@
 ---
-title: "使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL"
-description: "本文介绍使用 mysqldump、MySQL Workbench 和 PHPMyAdmin 等工具在 Azure Database for MySQL 中备份和还原数据库的两种常见方式。"
+title: 使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
+description: 本文介绍使用 mysqldump、MySQL Workbench 和 PHPMyAdmin 等工具在 Azure Database for MySQL 中备份和还原数据库的两种常见方式。
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 0c5a6b6d971d434a52bf80da6b34d7f6949589bc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: ef35ee881923c69d41b79fd6cb8464c695c614f9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 本文介绍了在 Azure Database for MySQL 中备份和还原数据库的两种常见方式
@@ -87,10 +87,12 @@ $ mysqldump -u root -p --all-databases > alldb_backup.sql
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 目标服务器上创建数据库
 在要迁移数据的 Azure Database for MySQL 目标服务器上创建一个空数据库。 使用 MySQL Workbench、Toad 或 Navicat 等工具创建数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
 
-若要获取连接，请在 Azure Database for MySQL 的“属性”页中找到连接信息。
-![在 Azure 门户中找到连接信息](./media/concepts-migrate-dump-restore/1_server-properties-name-login.png)
+若要获取连接，请在 Azure Database for MySQL 的“概述”中找到连接信息。
+
+![在 Azure 门户中找到连接信息](./media/concepts-migrate-dump-restore/1_server-overview-name-login.png)
 
 将连接信息添加到 MySQL Workbench。
+
 ![MySQL Workbench 连接字符串](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
 
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.date: 03/27/2018
 ms.author: danis
-ms.openlocfilehash: 5174e599f12314a657d142304ffec18fbff847b1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5c0b7224d0f534661950117813e1a4f348810853
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>适用于 Linux 的 OMS 虚拟机扩展
 
@@ -195,10 +195,11 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 | 错误代码 | 含义 | 可能的操作 |
 | :---: | --- | --- |
+| 9 | 过早调用 enable | 将 [Azure Linux 代理](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)更新为可用的最新版本。 |
 | 10 | VM 已连接至 Log Analytics 工作区 | 要将 VM 连接到扩展架构中指定的工作区，请在公共设置中将“stopOnMultipleConnections”设置为 false，或删除该属性。 连接到工作区后，此 VM 立即开始计费。 |
 | 11 | 提供给扩展的无效配置 | 按上述示例设置部署所需的所有属性值。 |
 | 12 | dpkg 包管理器已锁定 | 请确保计算机上的所有 dpkg 更新操作已完成并重试。 |
-| 20 | 过早调用 enable | 将 [Azure Linux 代理](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)更新为可用的最新版本。 |
+| 20 | SCX 包安装失败 |
 | 51 | VM 的操作系统不支持此扩展 | |
 | 55 | 无法连接到 Microsoft Operations Management Suite (OMS) 服务 | 确保系统具有 Internet 访问权限，或已提供有效 HTTP 代理。 此外，确保工作区 ID 正确。 |
 

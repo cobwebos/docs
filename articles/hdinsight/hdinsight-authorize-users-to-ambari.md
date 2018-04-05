@@ -1,13 +1,13 @@
 ---
-title: "授权用户访问 Ambari 视图 - Azure HDInsight | Microsoft Docs"
-description: "如何管理已加入域的 HDInsight 群集的 Ambari 用户和组权限。"
+title: 授权用户访问 Ambari 视图 - Azure HDInsight | Microsoft Docs
+description: 如何管理已加入域的 HDInsight 群集的 Ambari 用户和组权限。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: e8c1ff23ee00e15325a82e1df0f4643ec429b119
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: f4dfb51cf344d1ec51363ef3a9f74c1ca59119a6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="authorize-users-for-ambari-views"></a>授权用户访问 Ambari 视图
 
@@ -122,7 +122,7 @@ Tez 视图实例可让用户监视和调试 Hive 查询与 Pig 脚本提交的�
 
     ![角色列表视图 - 用户](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* “列表”视图的“组”类别显示所有组，以及分配给每个组的角色。 在本示例中，组列表已从群集“域”设置的“访问用户组”属性中指定的 Azure AD 组同步。 请参阅[创建 HDInsight 群集](./domain-joined/apache-domain-joined-configure.md#create-an-hdinsight-cluster-in-the-vnet)。
+* “列表”视图的“组”类别显示所有组，以及分配给每个组的角色。 在本示例中，组列表已从群集“域”设置的“访问用户组”属性中指定的 Azure AD 组同步。 请参阅[创建已加入域的 HDInsight 群集](/domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster)。
 
     ![角色列表视图 - 组](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

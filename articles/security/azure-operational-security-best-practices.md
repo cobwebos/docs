@@ -1,12 +1,12 @@
 ---
-title: "Azure 操作安全性最佳做法 | Microsoft Docs"
-description: "本文提供有关 Azure 操作安全性的一套最佳做法。"
+title: Azure 操作安全性最佳做法 | Microsoft Docs
+description: 本文提供有关 Azure 操作安全性的一套最佳做法。
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: db9840817d92b4f2f63009d30dbd554666d53dbe
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb7e0df046ecc2ffcd3fa59ac53edf36095933c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。
@@ -167,10 +167,10 @@ Azure Active Directory (Azure AD) 是一种综合的[标识和访问管理云解
 以下是 Microsoft 云空间中 Azure DevOps 实践列表的部分内容，这些内容可以使企业和团队多产且高效。
 
 -   **基础结构即代码 (IaC)：**基础结构即代码是一组技术和实践，使 IT 专业人员不再需要日复一日地生成和管理模块化基础结构。 IT 专业人员生成和维护新式服务器环境的方式就像是软件开发人员生成和维护应用程序代码的方式。 在 Azure 中，通过 [Azure 资源管理器]( https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/)可以使用声明性模板预配应用程序。 在单个模板中，可以部署多个服务及其依赖项。 在应用程序生命周期的每个阶段，可使用相同模板重复部署应用程序。
--   **持续集成和部署：**可以将 Visual Studio Online 团队项目配置为[自动生成并部署](https://www.visualstudio.com/docs/build/overview)到 Azure Web 应用或云服务。 VSO 在每次代码签入后对 Azure 执行一次生成，然后自动部署二进制文件。 这里介绍的包生成过程与 Visual Studio 中的 Package 命令等效，而发布步骤与 Visual Studio 中的 Publish 命令等效。
+-   **持续集成和部署：**可以将 Visual Studio Team Services (VSTS) 团队项目配置为[自动生成并部署](https://www.visualstudio.com/docs/build/overview)到 Azure Web 应用或云服务。 VSTS 在每次代码签入后对 Azure 执行一次生成，然后自动部署二进制文件。 这里介绍的包生成过程与 Visual Studio 中的 Package 命令等效，而发布步骤与 Visual Studio 中的 Publish 命令等效。
 -   **Release Management：**Visual Studio [Release Management](https://msdn.microsoft.com/library/vs/alm/release/overview) 是实现多阶段部署和管理发布过程自动化的极佳解决方案。 创建托管的持续部署管道，快速、轻松地频繁发布。 通过 Release Management，可以使发布过程自动化，还可以拥有预定义的批准工作流。 根据需要进行本地部署和部署到云、扩展和自定义。
 -   **应用性能监视：**检测和解决问题，持续改进应用程序。 快速诊断实时应用程序中的任何问题。 了解用户使用它来做了些什么。 配置是添加 JS 代码和 webconfig 项的简单方式，只需几分钟即可在门户中看到结果和所有详细信息。[App Insights](https://azure.microsoft.com/documentation/articles/app-insights-start-monitoring-app-health-usage/) 帮助企业更快检测问题和修正。
--   **负载测试和自动缩放：**可以发现应用中的性能问题，提高部署质量，确保应用始终保持运行或可用，以迎合业务需求。 确保应用可以处理下一次启动或市场营销活动的流量。 使用 Visual Studio Online 立即开始运行基于云的[负载测试](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing)。
+-   **负载测试和自动缩放：**可以发现应用中的性能问题，提高部署质量，确保应用始终保持运行或可用，以迎合业务需求。 确保应用可以处理下一次启动或市场营销活动的流量。 使用 VSTS 立即开始运行基于云的[负载测试](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing)。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解有关 [Azure 操作安全性](https://docs.microsoft.com/azure/security/azure-operational-security)的详细信息。

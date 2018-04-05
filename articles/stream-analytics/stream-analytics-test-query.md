@@ -1,25 +1,24 @@
 ---
-title: "Azure 流分析查询测试 | Microsoft Docs"
-description: "如何测试流分析作业中的查询。"
-keywords: "测试查询, 对查询进行故障排除"
-documentation center: 
+title: Azure 流分析查询测试 | Microsoft Docs
+description: 如何测试流分析作业中的查询。
+keywords: 测试查询, 对查询进行故障排除
+documentation center: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: 2898e3404dcfa3d75e3920f9c83e4efa7201998e
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.author: jeanb
+ms.openlocfilehash: 50bfce426bf48ba986887f8a2e2873fe04ea2507
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="test-azure-stream-analytics-queries-in-the-azure-portal"></a>在 Azure 门户中测试 Azure 流分析查询
 

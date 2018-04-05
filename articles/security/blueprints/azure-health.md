@@ -1,6 +1,6 @@
 ---
-title: "Azure 健康分析蓝图"
-description: "部署 HIPAA/HITRUST 健康分析蓝图指南"
+title: Azure 健康分析蓝图
+description: 部署 HIPAA/HITRUST 健康分析蓝图指南
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: simorjay
-ms.openlocfilehash: 2bca630bb98b3d9c2be566fbd23ae3313c6a5a47
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 700378d23f869427fb50b9dee5bcf8448ac73404
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI
 
@@ -69,7 +69,7 @@ Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 蓝图提�
 
 -   **[客户实现矩阵](https://aka.ms/healthcrmblueprint)**：一种 Microsoft Excel 工作簿，其中列出了相关的 HITRUST 要求，并说明了 Microsoft 和客户的相互责任。
 
--   **[健康审核](https://aka.ms/healthreviewpaper)**。 此解决方案已由 Coalfire systems, Inc. 审核。有关健康符合性（HIPAA 和 HITRUST）实施方面的审核和指南提供了审核员对此解决方案的审核意见，以及在将蓝图转换为生产就绪型部署过程中的注意事项。
+-   **[健康审核](https://aka.ms/healthreviewpaper)**。 此解决方案已由 Coalfire systems, Inc. 审核。有关健康符合性（HIPAA 和 HITRUST）实施方面的审核和指南提供了审核员对此解决方案的审核意见，\'以及在将蓝图转换为生产就绪型部署过程中的注意事项。
 
 # <a name="architectural-diagram"></a>体系结构图
 

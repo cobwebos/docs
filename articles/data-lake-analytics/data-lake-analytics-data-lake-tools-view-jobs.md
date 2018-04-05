@@ -1,8 +1,8 @@
 ---
-title: "对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图 | Microsoft Docs"
-description: "了解如何对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图。 "
+title: 对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图 | Microsoft Docs
+description: '了解如何对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图。 '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/02/2017
 ms.author: jgao
-ms.openlocfilehash: 8f1729f84a4fde2a56427a41b356d6263818519e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc9048566dd58733cd86aac0f9836763fa095843
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图
 Azure Data Lake Analytics 服务将已提交作业存档在[查询存储](#query-store)中。 本文介绍如何在用于 Visual Studio 的 Azure Data Lake 工具中使用作业浏览器和作业视图查找历史作业消息。 

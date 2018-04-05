@@ -1,25 +1,24 @@
 ---
-title: "使用诊断日志对 Azure 流分析进行故障排除 | Microsoft Docs"
-description: "了解如何在 Microsoft Azure 中通过流分析作业分析诊断日志。"
-keywords: 
-documentationcenter: 
+title: 使用诊断日志对 Azure 流分析进行故障排除 | Microsoft Docs
+description: 了解如何在 Microsoft Azure 中通过流分析作业分析诊断日志。
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: c9772df2c216d465ca6e90e69bce011969dd4f02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 164d522d7beaea222dbc408765877fa67a34c203
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>使用诊断日志对 Azure 流分析进行故障排除
 
@@ -77,7 +76,7 @@ ms.lasthandoff: 10/11/2017
 
 所有日志均以 JSON 格式存储。 每个项目均具有以下常见字符串字段：
 
-Name | 说明
+名称 | 说明
 ------- | -------
 time | 日志时间戳（采用 UTC）。
 resourceId | 发生操作的资源的 ID，采用大写格式。 其中包括订阅 ID、资源组和作业名称。 例如，**/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**。
@@ -97,9 +96,9 @@ status | 操作的状态。 例如，“失败”或“成功”。
 
 名称 | 说明
 ------- | -------
-源 | 发生错误的作业输入或输出的名称。
+Source | 发生错误的作业输入或输出的名称。
 消息 | 与错误关联的消息。
-类型 | 错误类型。 例如，DataConversionError、CsvParserError 和 ServiceBusPropertyColumnMissingError 。
+Type | 错误类型。 例如，DataConversionError、CsvParserError 和 ServiceBusPropertyColumnMissingError 。
 数据 | 包含用于准确找到错误起源的数据。 会根据数据大小截断数据。
 
 数据错误根据 operationName 值采用以下架构：
@@ -116,7 +115,7 @@ status | 操作的状态。 例如，“失败”或“成功”。
 -------- | --------
 错误 | （可选）错误信息。 通常，这是异常信息（如果存在）。
 消息| 日志消息。
-类型 | 消息类型。 映射到错误的内部分类。 例如，JobValidationError 或 BlobOutputAdapterInitializationFailure。
+Type | 消息类型。 映射到错误的内部分类。 例如，JobValidationError 或 BlobOutputAdapterInitializationFailure。
 相关性 ID | 用于唯一标识作业执行的 [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 从作业开始到作业停止期间所有的执行日志条目具有相同的“相关 ID”值。
 
 ## <a name="next-steps"></a>后续步骤

@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/03/2018
-ms.openlocfilehash: 7b481fb3287b8ee2c22e5f25f8cf1935eed05428
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 5211fa29af1d8cba17049b69974189990d30f34a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>将机器学习模型部署为 Web 服务
 
@@ -22,10 +22,17 @@ Azure 机器学习模型管理提供了相应的接口来将模型部署为容�
 
 本文档介绍了使用 Azure 机器学习模型管理命令行接口 (CLI) 将模型部署为 Web 服务时所需执行的步骤。
 
+## <a name="what-you-need-to-get-started"></a>入门所需操作
+
+为了充分利用本指南，对可将模型部署到的 Azure 订阅或资源组应该拥有参与者访问权限。
+Azure Machine Learning Workbench 和 [Azure DSVM](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) 上预安装了 CLI。  它也可以作为独立包安装。
+
+另外，须已设置模型管理帐户和部署环境。  有关为本地和群集部署设置模型管理帐户和环境的详细信息，请参阅[模型管理配置](deployment-setup-configuration.md)。
+
 ## <a name="deploying-web-services"></a>部署 Web 服务
 使用 CLI，可以将 Web 服务部署为在本地计算机或在群集上运行。
 
-建议从本地部署开始。 首先验证模型和代码是否正常工作，然后将 Web 服务部署到群集以供大规模生产使用。 有关为群集部署设置环境的详细信息，请参阅[模型管理配置](deployment-setup-configuration.md)。 
+建议从本地部署开始。 首先验证模型和代码是否正常工作，然后将 Web 服务部署到群集以供大规模生产使用。
 
 下面是部署步骤：
 1. 使用已保存的已训练机器学习模型
@@ -49,7 +56,8 @@ saved_model = pickle.dumps(clf)
 ```
 
 ### <a name="2-create-a-schemajson-file"></a>2.创建一个 schema.json 文件
-此步骤是可选的。 
+
+虽然架构生成是可选的，但强烈建议定义请求和输入变量格式以获得更好的处理效果。
 
 创建一个架构来自动验证 Web 服务的输入和输出。 CLI 还使用该架构来为 Web 服务生成 Swagger 文档。
 
@@ -77,6 +85,13 @@ generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.
 
 ```python
 inputs = {"input_df": SampleDefinition(DataTypes.PANDAS, yourinputdataframe)}
+generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.json')
+```
+
+以下示例使用通用 JSON 格式：
+
+```python
+inputs = {"input_json": SampleDefinition(DataTypes.STANDARD, yourinputjson)}
 generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.json')
 ```
 
@@ -147,10 +162,13 @@ az ml manifest create --manifest-name [your new manifest name] -f [path to score
 az ml image create -n [image name] --manifest-id [the manifest ID]
 ```
 
-也可以通过单个命令同时创建清单和映像。 
+>[!NOTE] 
+>也可使用单个命令来执行模型注册、清单和模型创建。 若需更多详细信息，请将 -h 与 service create 命令一起使用。
+
+作为替代方案，可使用单个命令通过一个步骤来注册模型、创建清单和创建映像（但不能创建和部署 Web 服务），如下所示。
 
 ```
-az ml image create -n [image name] --model-file [model file or folder path] -f [code file, e.g. the score.py file] -r [the runtime eg.g. spark-py which is the Docker container image base]
+az ml image create -n [image name] --model-file [model file or folder path] -f [code file, e.g. the score.py file] -r [the runtime e.g. spark-py which is the Docker container image base]
 ```
 
 >[!NOTE]
@@ -166,6 +184,13 @@ az ml service create realtime --image-id <image id> -n <service name>
 
 >[!NOTE] 
 >还可以使用单个命令执行上述 4 个步骤。 若需更多详细信息，请将 -h 与 service create 命令一起使用。
+
+作为替代方案，单个命令可作为一个步骤来注册模型、创建清单、创建映像并部署 Web 服务，如下所示。
+
+```azurecli
+az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
+```
+
 
 ### <a name="8-test-the-service"></a>8.测试服务
 使用以下命令获取有关如何调用服务的信息：

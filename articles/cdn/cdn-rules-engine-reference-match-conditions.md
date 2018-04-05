@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: e4b7113f27e5e15d69dfdd1efd13e255ef4a8ab7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f8dac5469e7160fae93e8251ab7f4195a383f8b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN 规则引擎匹配条件 
 本文列出了 Azure 内容交付网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用匹配条件的详细说明。
@@ -526,15 +526,15 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
      例如：https:\//&lt;endpoint&gt;.azureedge.net/**myfolder**/index.htm 
 
-     此 URL 指向以下 Verizon CDN 主机名：http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/**myfolder**/index.htm
+     此 URL 指向以下 Verizon CDN 主机名：http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder**/index.htm
 
 - 在 URL 比较之前，边缘 CNAME URL 将重写入 CDN URL。
 
     例如，以下两个 URL 指向同一个资产，因此具有相同的 URL 路径。
-    - CDN URL：http:\//wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+    - CDN URL：\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
     
     - 边缘 CNAME URL：http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
+    
     其他信息：
     - 自定义域：https:\//my.domain.com/path/asset.htm
     
@@ -640,21 +640,21 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
     “相对于”选项可以使用以下值：
      - **根**：表示 URL 比较点紧接在 CDN 主机名后面开始。
 
-       例如：http:\//wpc.0001.&lt;Domain&gt;/**800001/myorigin/myfolder/index.htm**
+       例如：http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder/index.htm**
 
      - **源**：表示 URL 比较点在内容访问点后面开始（例如 /000001 或 /800001/myorigin）。 由于 \*.azureedge.net CNAME 默认是在相对于 Verizon CDN 主机名上源目录的位置创建的，因此，Azure CDN 用户应使用“源”值。 
 
        例如：https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
 
-     此 URL 指向以下 Verizon CDN 主机名：http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/**myfolder/index.htm**
+     此 URL 指向以下 Verizon CDN 主机名：http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder/index.htm**
 
 - 在 URL 比较之前，边缘 CNAME URL 将重写入 CDN URL。
 
-   例如，以下两个 URL 指向同一个资产，因此具有相同的 URL 路径：
-    - CDN URL：http:\//wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+    例如，以下两个 URL 指向同一个资产，因此具有相同的 URL 路径：
+    - CDN URL：\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
     - 边缘 CNAME URL：http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
-   其他信息：
+    
+    其他信息：
     
     - URL 路径（相对于根）：/800001/CustomerOrigin/path/asset.htm
    
@@ -662,7 +662,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 - 将忽略 URL 中的查询字符串。
 - 使用“忽略大小写”选项可以控制是否执行区分大小写的比较。
-- 为此匹配条件指定的值将与客户端发出的确切请求的相对路径进行比较。
+- 为此匹配条件指定的值与客户端发出的确切请求的相对路径进行比较。
 
 - 若要匹配针对特定目录发出的所有请求，请使用 [URL 路径目录](#url-path-directory)或 [URL 路径通配符](#url-path-wildcard)匹配条件。
 
@@ -681,13 +681,13 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 重要信息：
 - 在 URL 比较之前，边缘 CNAME URL 将重写入 CDN URL。 
  
-   例如，两个 URL 指向同一个资产，因此具有相同的 URL 路径。
+    例如，两个 URL 指向同一个资产，因此具有相同的 URL 路径。
 
-     - CDN URL：http:\//wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+     - CDN URL：\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
 
      - 边缘 CNAME URL：http:\//my.domain.com/path/asset.htm
-
-   其他信息：
+    
+    其他信息：
     
      - URL 路径：/800001/CustomerOrigin/path/asset.htm
 
@@ -715,21 +715,21 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
    此选项可以采用以下值：
      - **根**：表示 URL 比较点紧接在 CDN 主机名后面开始。
 
-       例如：http:\//wpc.0001.&lt;Domain&gt;/**800001/myorigin/myfolder/index.htm**
+       例如：http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder/index.htm**
 
      - **源**：表示 URL 比较点在内容访问点后面开始（例如 /000001 或 /800001/myorigin）。 由于 \*.azureedge.net CNAME 默认是在相对于 Verizon CDN 主机名上源目录的位置创建的，因此，Azure CDN 用户应使用“源”值。 
 
        例如：https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
 
-     此 URL 指向以下 Verizon CDN 主机名：http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/**myfolder/index.htm**
+     此 URL 指向以下 Verizon CDN 主机名：http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder/index.htm**
 
 - 在 URL 比较之前，边缘 CNAME URL 将重写入 CDN URL。
 
-   例如，以下两个 URL 指向同一个资产，因此具有相同的 URL 路径：
-     - CDN URL：http://wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+    例如，以下两个 URL 指向同一个资产，因此具有相同的 URL 路径：
+     - CDN URL：http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
      - 边缘 CNAME URL：http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
-   其他信息：
+    
+    其他信息：
     
      - URL 路径（相对于根）：/800001/CustomerOrigin/path/asset.htm
     
@@ -737,7 +737,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
     
 - 可以指定多个 URL 路径，并使用单个空格分隔每个路径。
 
-   例如： /marketing/asset.\* /sales/\*.htm
+   例如：/marketing/asset.* /sales/*.htm
 
 - 将忽略 URL 中的查询字符串。
     
@@ -757,7 +757,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 /80ABCD/origin/text/*   | 根           | 当请求的资产满足以下条件时匹配此模式： <br />- 该资产必须位于名为“origin”的客户来源位置。 <br />- 相对路径必须以名为“text”的文件夹开头。 即，请求的资产可以位于“text”文件夹中，或者位于该文件夹的某个递归子文件夹中。
 */css/* */js/*          | 根或源 | 包含 css 或 js 文件夹的所有 CDN 或边缘 CNAME URL 都匹配此模式。
 *.jpg *.gif *.png       | 根或源 | 以 .jpg、.gif 或 .png 结尾的所有 CDN 或边缘 CNAME URL 都匹配此模式。 指定此模式的一种替代方式是使用 [URL 路径扩展名匹配条件](#url-path-extension)。
-/images/\* /media/\*      | 源         | 相对路径以“images”或“media”文件夹开头的 CDN 或边缘 CNAME URL 匹配此模式。 <br />- CDN URL：http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/images/sales/event1.png<br />- 示例边缘 CNAME URL：http:\//cdn.mydomain.com/images/sales/event1.png
+/images/\* /media/\*      | 源         | 相对路径以“images”或“media”文件夹开头的 CDN 或边缘 CNAME URL 匹配此模式。 <br />- CDN URL：http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/images/sales/event1.png<br />- 示例边缘 CNAME URL：http:\//cdn.mydomain.com/images/sales/event1.png
 
 [返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -867,11 +867,11 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 #### <a name="sample-scenarios"></a>示例方案
 以下示例演示此选项在特定场合下的工作方式：
 
-名称      | 值 |  结果
-----------|-------|--------
-用户      | Joe   | 当所请求 URL 的查询字符串为“?user=joe”时匹配此模式。
-用户      | *     | 当所请求 URL 的查询字符串包含 User 参数时匹配此模式。
-Email Joe | *     | 当所请求 URL 的查询字符串包含以“Joe”开头的 Email 参数时匹配此模式。
+名称  | 值 |  结果
+------|-------|--------
+用户  | Joe   | 当所请求 URL 的查询字符串为“?user=joe”时匹配此模式。
+用户  | *     | 当所请求 URL 的查询字符串包含 User 参数时匹配此模式。
+Email | Joe\* | 当所请求 URL 的查询字符串包含以“Joe”开头的 Email 参数时匹配此模式。
 
 [返回页首](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -908,7 +908,7 @@ Email Joe | *     | 当所请求 URL 的查询字符串包含以“Joe”开头�
    值 | 解释为 
    ------|---------------
    \\+    | +
-   \\\+   | \\+
+   \\\\+   | \\+
 
 - 考虑到缓存设置的跟踪方式，此匹配条件与以下功能不兼容：
    - 完成缓存填充

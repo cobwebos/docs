@@ -1,12 +1,13 @@
 ---
-title: "了解如何使用 API 管理来管理 AzureML Web 服务 | Microsoft Docs"
-description: "介绍如何使用 API 管理来管理 AzureML Web 服务的指南。"
-keywords: "机器学习, API 管理"
+title: 了解如何使用 API 管理来管理 AzureML Web 服务 | Microsoft Docs
+description: 介绍如何使用 API 管理来管理 AzureML Web 服务的指南。
+keywords: 机器学习, API 管理
 services: machine-learning
-documentationcenter: 
-author: roalexan
-manager: jhubbard
-editor: 
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
+editor: cgronlun
 ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
 ms.service: machine-learning
 ms.workload: data-services
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.author: roalexan
-ms.openlocfilehash: b2c9f53de1abd2aea5fabbefecc5bbb144148a7b
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: fe916df286b0e50430464b3f2f8837b898abb827
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>了解如何使用 API 管理来管理 AzureML Web 服务
 ## <a name="overview"></a>概述
@@ -45,12 +45,12 @@ AzureML 是用于机器学习的 Azure 服务，支持轻松生成、部署和�
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“+ 创建资源”。
 3. 在搜索框中键入“API 管理”，然后选择“API 管理”资源。
-4. 单击“创建” 。
+4. 单击“创建”。
 5. “名称”值用于创建唯一 URL（本示例使用“demoazureml”）。
 6. 为服务实例选择**订阅**、**资源组**和**位置**。
 7. 指定“组织名称”的值（本示例使用“demoazureml”）。
 8. 输入“管理员电子邮件”- 此电子邮件用于接收 API 管理系统发出的通知。
-9. 单击“创建” 。
+9. 单击“创建”。
 
 创建新服务最多可能需要 30 分钟。
 
@@ -73,7 +73,7 @@ AzureML 是用于机器学习的 Azure 服务，支持轻松生成、部署和�
 4. 输入“Web API URL 后缀”。 这是客户向服务实例发送请求时使用的 URL 的最后一个部分（本示例使用“azureml-demo”）。
 5. 对于“Web API URL 方案”，请选择“HTTPS”。
 6. 对于“产品”，请选择“初学者”。
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 
 ## <a name="add-the-operations"></a>添加操作
@@ -110,7 +110,7 @@ AzureML 是用于机器学习的 Azure 服务，支持轻松生成、部署和�
 3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`”。
 4. 输入“显示名称”（本示例使用“BES 提交”）。
 5. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
-6. 单击“保存” 。
+6. 单击“ **保存**”。
 
 ### <a name="start-a-batch-execution-job"></a>启动批处理执行作业
 
@@ -119,7 +119,7 @@ AzureML 是用于机器学习的 Azure 服务，支持轻松生成、部署和�
 3. 对于“HTTP 谓词”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`”。
 4. 输入“显示名称”（本示例使用“BES 启动”）。
 6. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>获取批处理执行作业的状态或结果
 
@@ -128,7 +128,7 @@ AzureML 是用于机器学习的 Azure 服务，支持轻松生成、部署和�
 3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。
 4. 输入“显示名称”（本示例使用“BES 状态”）。
 6. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
-7. 单击“保存” 。
+7. 单击“ **保存**”。
 
 ### <a name="delete-a-batch-execution-job"></a>删除批处理执行作业
 
@@ -137,7 +137,7 @@ AzureML 是用于机器学习的 Azure 服务，支持轻松生成、部署和�
 3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。
 4. 输入“显示名称”（本示例使用“BES 删除”）。
 5. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
-6. 单击“保存” 。
+6. 单击“ **保存**”。
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>从开发人员门户调用操作
 

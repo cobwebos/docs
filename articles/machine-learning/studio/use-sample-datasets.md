@@ -1,10 +1,11 @@
 ---
-title: "在机器学习工作室中使用示例数据集 | Microsoft Docs"
-description: "机器学习工作室中包含的示例模型中使用的数据集说明。 可以将这些示例数据集用于实验。"
+title: 在机器学习工作室中使用示例数据集 | Microsoft Docs
+description: 机器学习工作室中包含的示例模型中使用的数据集说明。 可以将这些示例数据集用于实验。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.author: garye
-ms.openlocfilehash: 3339d3b3bab2c0ce210950c178ef03fc6c0ecab9
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 38f31220b7cf4624367d872df152ef9e1304e841
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中使用示例数据集
 [top]: #machine-learning-sample-datasets
@@ -47,7 +47,7 @@ ms.lasthandoff: 01/20/2018
 <p></p>
 <b>用途</b>：使用人口统计信息对国民进行分类，预测是否有国民的年收入超过 50K。
 <p></p>
-<b>相关研究：</b>Kohavi, R.、Becker, B.（1996 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Kohavi, R.、Becker, B.（1996 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
@@ -68,7 +68,7 @@ ms.lasthandoff: 01/20/2018
 <p></p>
 <b>用途：</b>按特性、使用回归或多元分类预测风险评分。 
 <p></p>
-<b>相关研究：</b>Schlimmer, J.C. （1987 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Schlimmer, J.C. （1987 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
@@ -99,7 +99,7 @@ UCI 自行车租赁数据集基于 Capital Bikeshare 公司的实际数据，该
 <p></p>
 <b>用途：</b>目标是通过分类预测 2007 年 3 月是否会有献血者，其中 1 表示目标期间有献血者，0 表示没有献血者。 
 <p></p>
-<b>相关研究：</b>Yeh, I.C.（2008 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
+<b>相关研究：</b>Yeh, I.C.（2008 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
 <p></p>
 Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM model using Bernoulli sequence”, 专家系统及其应用, 2008 年, <a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
@@ -112,7 +112,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>基于 9 种属性（其中有一些是线性的，一些是无条件的）分类癌症类型。 
 <p></p>
-<b>相关研究：</b>Wohlberg, W.H.、Street, W.N. 和 Mangasarian, O.L. （1995 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Wohlberg, W.H.、Street, W.N. 和 Mangasarian, O.L. （1995 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
@@ -165,7 +165,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>使用回归或分类来预测基于两个实值响应之一的能效等级。 对于多类分类，将响应变量舍入为最接近的整数。 
 <p></p>
-<b>相关研究：</b>Xifara, A. 和 Tsanas, A.（2012 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Xifara, A. 和 Tsanas, A.（2012 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
@@ -190,7 +190,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>预测航班延误。 
 <p></p>
-<b>相关研究：</b>美国交通部网址：<a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>。
+<b>相关研究：</b>来自美国运输部 <a href="http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time</a>。
   </td>
 </tr>
 
@@ -201,9 +201,9 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>这项回归任务非常难，其目的是预测森林火灾的焚毁面积。 
 <p></p>
-<b>相关研究：</b>Cortez, P. 和 Morais, A.（2008 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
+<b>相关研究：</b>Cortez, P. 和 Morais, A.（2008 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
 <p></p>
-[Cortez 和 Morais，2007 年] P. Cortez 和 A. Morais。 使用气象数据预测森林火灾的数据挖掘方法。 在 J. Neves, M. F. Santos 和 J. Machado Eds., 人工智能的新趋势, 2007 第 13 届 EPIA 的会议记录 - 有关人工智能的葡萄牙语大会, 12 月, Guimarães, 葡萄牙, pp. 512-523, 2007 年。 APPIA, ISBN-13 978-989-95618-0-9。 获取网址：<a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>。
+[Cortez 和 Morais，2007 年] P. Cortez 和 A. Morais。 使用气象数据预测森林火灾的数据挖掘方法。 在 J. Neves, M. F. Santos 和 J. Machado Eds., 人工智能的新趋势, 2007 第 13 届 EPIA 的会议记录 - 有关人工智能的葡萄牙语大会, 12 月, Guimarães, 葡萄牙, pp. 512-523, 2007 年。 APPIA, ISBN-13 978-989-95618-0-9。 如需获取，请访问 <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a>。
   </td>
 </tr>
 
@@ -230,7 +230,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>通过测量值预测鸢尾花类型。  
 <p></p>
-<b>相关研究：</b>Fisher, R.A. （1988 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Fisher, R.A. （1988 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
@@ -249,7 +249,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>基于 3 个多值离散属性和 5 个连续属性预测燃料经济性。 
 <p></p>
-<b>相关研究：</b>StatLib，美国卡内基梅隆大学（1993 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>StatLib，美国卡内基梅隆大学（1993 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
@@ -259,7 +259,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>预测观察对象是否患有糖尿病（二元分类）。 
 <p></p>
-<b>相关研究：</b>Sigillito, V.（1990 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml"</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
+<b>相关研究：</b>Sigillito, V.（1990 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml"</a>。 加州大学欧文分校的信息与计算机科学学院 </td>
 </tr>
 
 <tr>
@@ -269,7 +269,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 
 <p></p>
-<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
+<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
   </td>
 </tr>
 
@@ -280,7 +280,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 
 <p></p>
-<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
+<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
   </td>
 </tr>
 
@@ -291,7 +291,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>用途：</b>将此数据集与其他两个餐馆数据集结合使用，以便训练和测试推荐器系统。 
 <p></p>
-<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
+<b>相关研究：</b>Bache, K. 和 Lichman, M.（2013 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院。
   </td>
 </tr>
 
@@ -304,9 +304,9 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 钢种遵循由 SAE 和其他组织定义的一组标准。 正在寻找特定“种类”（类变量），并想要了解所需值。 
 <p></p>
-<b>相关研究：</b>Sterling, D. 和 Buntine, W.(NA)。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
+<b>相关研究：</b>Sterling, D. 和 Buntine, W.(NA)。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
 <p></p>
-可以在以下位置找到钢种的有用指南：<a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
+可访问此处获取有关钢等级的帮助指南：<a href="http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf">http://www.outokumpu.com/SiteCollectionDocuments/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
@@ -325,7 +325,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 另请注意，背景事件的数目（h 表示强子淋浴）被低估。 在实际测量中，h 或噪声类代表大部分事件。 
 <p></p>
-<b>相关研究：</b>Bock, R.K. （1995 年）。 UCI 机器学习存储库网址：<a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息学院 </td>
+<b>相关研究：</b>Bock, R.K. （1995 年）。 UCI 机器学习存储库 <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息学院 </td>
 </tr>
 
 <tr>

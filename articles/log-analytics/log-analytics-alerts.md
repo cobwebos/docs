@@ -1,8 +1,8 @@
 ---
-title: "了解 Azure Log Analytics 中的警报 | Microsoft Docs"
-description: "Log Analytics 中的警报标识 OMS 存储库中的重要信息，还可主动通知你存在问题或调用操作以尝试更正问题。  本文介绍不同类型的警报规则及其定义方式。"
+title: 了解 Azure Log Analytics 中的警报 | Microsoft Docs
+description: Log Analytics 中的警报标识 OMS 存储库中的重要信息，还可主动通知你存在问题或调用操作以尝试更正问题。  本文介绍不同类型的警报规则及其定义方式。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/05/2018
 ms.author: bwren
-ms.openlocfilehash: 07e8312d5e113eeb9016dcc832b1cf66f8001c5f
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: ece2e7eeb53aebbb18bce4bb34e03307b0aea74c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>了解 Log Analytics 中的警报
 
@@ -102,7 +102,7 @@ Log Analytics 中的预警规则均为以下两种类型之一。  这些类型�
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
 
-若希望处理器在特定时间范围平均超过 90% 时发出警报，则可使用如下所示的 [measure 命令](log-analytics-search-reference.md#commands)进行查询，并将警报规则的阈值设置为“大于 0”。
+若希望处理器在特定时间范围平均超过 90% 时发出警报，则可使用如下所示的 `measure` 命令进行查询，并将预警规则的阈值设置为“大于 0”。
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
@@ -119,7 +119,7 @@ Log Analytics 中的预警规则均为以下两种类型之一。  这些类型�
 “指标度量”警报规则为查询中其值超出指定阈值的每个对象创建一个警报。  这些规则具有下述不同于“结果数”警报规则的差异。
 
 #### <a name="log-search"></a>日志搜索
-虽然可以对“结果数”警报规则使用任何查询，但对适用于“指标度量”警报规则的查询存在特定的要求。  该查询必须包含[指标命令](log-analytics-search-reference.md#commands)，以便将特定字段的结果组合在一起。 该命令必须包含以下元素。
+虽然可以对“结果数”警报规则使用任何查询，但对适用于“指标度量”警报规则的查询存在特定的要求。  该查询必须包含 `measure` 命令，以便将特定字段的结果组合在一起。 该命令必须包含以下元素。
 
 - **聚合函数**。  确定要执行的计算以及可能要聚合的数字字段。  例如，**count()** 将返回查询中的记录数，**avg(CounterValue)** 将返回 CounterValue 字段在特定时间间隔内的平均值。
 - **组字段**。  将为此字段的每个实例创建包含聚合值的记录，并可为每个实例生成警报。  例如，如果需要为每台计算机生成一个警报，则可使用“按计算机”。   
@@ -132,7 +132,7 @@ Log Analytics 中的预警规则均为以下两种类型之一。  这些类型�
 考虑一下这样一种情形：如果任何计算机的处理器利用率在 30 分钟内超出 90% 三次，则需发出警报。  可以创建一个警报规则，详情如下。  
 
 **查询：**Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer Interval 5minute<br>
-**时间范围：**30 分钟<br>
+**时间窗口：**30 分钟<br>
 **警报频率：**5 分钟<br>
 **聚合值：**大于 90<br>
 **触发警报的标准：**总违规次数大于 5 次<br>

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 03/29/2018
 ms.author: jeedes
-ms.openlocfilehash: 038b2337ea49b769c6b19e9d50a5f0f2edd13d56
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6c8c920a801e223e2a8f557ffb7f820a8b6db605
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>教程：Azure Active Directory 与 ADP 集成
 
@@ -108,7 +108,7 @@ ms.lasthandoff: 03/28/2018
 
     c. 将“需要进行用户分配”字段值设置为“是”。
 
-    d.单击“下一步”。 将“对用户可见”字段值设置为“否”。
+    d. 将“对用户可见”字段值设置为“否”。
 
 2. 在 **ADP** 应用程序集成页上，单击“单一登录”。
 
@@ -146,7 +146,7 @@ ms.lasthandoff: 03/28/2018
 
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d.单击“下一步”。 单击“确定” 。
+    d. 单击“确定” 。
 
     > [!NOTE] 
     > 在配置 SAML 断言前，需要联系 [ADP 支持团队](https://www.adp.com/contact-us/overview.aspx)，并为租户请求唯一标识符属性值。 拥有此值才能为应用程序配置自定义声明。 
@@ -210,23 +210,23 @@ ms.lasthandoff: 03/28/2018
     
     * **ADP Workforce Now**
         
-        `<User access URL>?Relay State=https://fed.adp.com/saml/fedlanding.html?WFN`
+        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
 
     * **ADP Workforce Now Enhanced Time**
         
-        `<User access URL>?Relay State=https://fed.adp.com/saml/fedlanding.html?EETDC2`
+        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
     
     * **ADP Vantage HCM**
         
-        `<User access URL>?Relay State=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
+        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
 
     * **ADP Enterprise HR**
 
-        `<User access URL>?Relay State=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
 
     * **MyADP**
 
-        `<User access URL>?Relay State=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+        `<User access URL>?relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
 
 9. **保存**更改。
 
@@ -268,7 +268,7 @@ ms.lasthandoff: 03/28/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-an-adp-test-user"></a>创建 ADP 测试用户
 

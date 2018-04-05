@@ -1,11 +1,11 @@
 ---
-title: "开始将 Azure Mobile Engagement 用于 Cordova/Phonegap"
-description: "了解如何将带分析和推送通知功能的 Azure Mobile Engagement 用于 Cordova/Phonegap 应用。"
+title: 开始将 Azure Mobile Engagement 用于 Cordova/Phonegap
+description: 了解如何将带分析和推送通知功能的 Azure Mobile Engagement 用于 Cordova/Phonegap 应用。
 services: mobile-engagement
 documentationcenter: Mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 54fe9113-e239-4ed7-9fd1-a502d7ac7f47
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: d7a761310782faab1dda023785f93cf90742e2ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abe0ad6117cc2feb72ebe788d07b50e8f145174c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-cordovaphonegap"></a>开始将 Azure Mobile Engagement 用于 Cordova/Phonegap
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 本主题介绍如何借助 Azure Mobile Engagement 了解应用的使用，并向通过 Cordova 开发的移动应用程序的分类用户发送推送通知。

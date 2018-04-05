@@ -1,24 +1,24 @@
 ---
-title: "无服务器数据库计算 - Azure Functions 和 Azure Cosmos DB| Microsoft Docs"
-description: "了解 Azure Cosmos DB 和 Azure Functions 如何一起使用，以创建事件驱动型无服务器计算应用。"
+title: 无服务器数据库计算 - Azure Functions 和 Azure Cosmos DB| Microsoft Docs
+description: 了解 Azure Cosmos DB 和 Azure Functions 如何一起使用，以创建事件驱动型无服务器计算应用。
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 03/26/2018
 ms.author: mimig
-ms.openlocfilehash: 297f8929ec11b37a2cbbfb79bb442da75b4368a8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 39155a2407efa0cc13236a1bbbbcd292daac86b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算
 
@@ -113,12 +113,16 @@ Azure Cosmos DB 触发器、输入绑定和输出绑定可在以下组合中使�
 
 ## <a name="tooling"></a>工具
 
-在 Azure 门户中可以本机集成 Azure Cosmos DB 和 Azure Functions。
+在 Azure 门户和 Visual Studio 2017 中可以本机集成 Azure Cosmos DB 和 Azure Functions。
 * 在 Azure Functions 门户中，可以创建 Azure Cosmos DB 触发器。 有关快速入门说明，请参阅[在 Azure 门户中创建 Azure Cosmos DB 触发器](https://aka.ms/cosmosdbtriggerportalfunc)和![在 Azure Functions 门户中创建 Azure Cosmos DB 触发器](./media/serverless-computing-database/azure-function-cosmos-db-trigger.png) 
 * 在 Azure Functions 门户中，还可以将 Azure Cosmos DB 输入绑定和输出绑定添加到其他类型的触发器。 有关快速入门说明，请参阅[使用 Azure Functions 和 Cosmos DB 存储非结构化数据](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md)。
     ![在 Azure Functions 门户中创建 Azure Cosmos DB 触发器](./media/serverless-computing-database/function-portal-input-binding.png)
 *   在 Azure Cosmos DB 门户中，可以将 Azure Cosmos DB 触发器添加到同一资源组中的现有 Azure Function 应用。
     ![在 Azure Functions 门户中创建 Azure Cosmos DB 触发器](./media/serverless-computing-database/cosmos-db-portal.png)
+* 在 Visual Studio 2017 中，可以使用集成模板创建 Azure Cosmos DB 触发器：
+
+    >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
+
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>为什么为无服务器计算选择 Azure Functions 集成？
 

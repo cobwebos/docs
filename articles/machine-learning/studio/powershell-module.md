@@ -1,11 +1,12 @@
 ---
-title: "机器学习 PowerShell 模块 | Microsoft Docs"
-description: "Azure 机器学习 PowerShell 模块可在公共预览模式下使用。 使用 PowerShell 创建和管理工作区、实验和 Web 服务等。"
-keywords: "试验, 线性回归, 机器学习算法, 机器学习教程, 预测建模技术, 数据科研试验"
+title: 机器学习 PowerShell 模块 | Microsoft Docs
+description: Azure 机器学习 PowerShell 模块可在公共预览模式下使用。 使用 PowerShell 创建和管理工作区、实验和 Web 服务等。
+keywords: 试验, 线性回归, 机器学习算法, 机器学习教程, 预测建模技术, 数据科研试验
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: hning86
-manager: jhubbard
+ms.author: haining
+manager: mwinkle
 editor: cgronlun
 ms.assetid: a9001cc2-3aa0-47e1-b175-1f76408ba1d1
 ms.service: machine-learning
@@ -14,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: garye;haining
-ms.openlocfilehash: 47d005e584b6cb87d27a77f56ff619d342481aaa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9553e372f4d1cb5c60935fae5a7af61806ea6d4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="powershell-module-for-microsoft-azure-machine-learning"></a>Microsoft Azure 机器学习 PowerShell 模块
 Azure 机器学习的 PowerShell 模块是一个功能强大的工具，使你可以使用 Windows PowerShell 来管理工作区、试验、数据集、经典 Web 服务等。
 
-如需查看文档并下载该模块以及完整的源代码，请前往： [https://aka.ms/amlps](https://aka.ms/amlps)。 
+如需查看文档并下载该模块以及完整的源代码，请前往：[https://aka.ms/amlps](https://aka.ms/amlps)。 
 
 > [!NOTE]
 > Azure 机器学习 PowerShell 模块当前处于预览模式。 此预览期间，我们会持续改进和扩展该模块。 如需新闻和信息，敬请关注 [Cortana Intelligence 和机器学习博客](https://blogs.technet.microsoft.com/machinelearning/) 。
@@ -59,6 +59,6 @@ Azure 机器学习的 PowerShell 模块是一个功能强大的工具，使你�
 如果需要，则可以克隆 git 树，修改代码，并使用 Visual Studio 在本地编译它。
 
 ## <a name="next-steps"></a>后续步骤
-可以 [https://aka.ms/amlps](https://aka.ms/amlps) 处找到 PowerShell 模块的完整文档。 
+可在 [https://aka.ms/amlps](https://aka.ms/amlps) 处找到 PowerShell 模块的完整文档。 
 
 有关如何在实际方案中使用该模块的扩展示例，请查看深入用例[使用 PowerShell 从一个实验中创建多个机器学习模型和 Web 服务终结点](create-models-and-endpoints-with-powershell.md)。

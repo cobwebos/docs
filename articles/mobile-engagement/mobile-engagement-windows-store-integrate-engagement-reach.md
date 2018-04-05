@@ -1,11 +1,11 @@
 ---
-title: "Windows Universal Apps Reach SDK 集成"
-description: "如何将 Azure Mobile Engagement Reach 与 Windows Universal 应用集成"
+title: Windows Universal Apps Reach SDK 集成
+description: 如何将 Azure Mobile Engagement Reach 与 Windows Universal 应用集成
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a31ca1d6-856f-4aec-898a-07969ae5f7ec
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 9311e998e67d8d0d56da68fc9460df32ce7ce5a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8472af2ac72a1976871970963851be775b19859b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-universal-apps-reach-sdk-integration"></a>Windows Universal Apps Reach SDK 集成
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 在按本指南操作之前，必须完成 [Windows Universal Engagement SDK 集成](mobile-engagement-windows-store-integrate-engagement.md)中所述的集成程序。
 
 ## <a name="embed-the-engagement-reach-sdk-into-your-windows-universal-project"></a>在 Windows Universal 项目中嵌入 Engagement Reach SDK

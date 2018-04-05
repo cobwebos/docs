@@ -1,21 +1,21 @@
 ---
-title: "Azure Windows 虚拟机上的附加 VHD 故障排除 | Microsoft Docs"
-description: "如何排查 Windows VM 意外重新启动等问题或删除包含附加 VHD 的存储帐户的问题。"
-keywords: "ssh 连接被拒绝, ssh 错误, azure ssh, SSH 连接失败"
+title: Azure Windows 虚拟机上的附加 VHD 故障排除 | Microsoft Docs
+description: 如何排查 Windows VM 意外重新启动等问题或删除包含附加 VHD 的存储帐户的问题。
+keywords: ssh 连接被拒绝, ssh 错误, azure ssh, SSH 连接失败
 services: virtual-machines-windows
-author: iainfoulds
+author: roygara
 manager: jeconnoc
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/28/2018
-ms.author: iainfou
-ms.openlocfilehash: b4f3382a070894647aa4294fc5b0b63c98eddaab
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: rogarana
+ms.openlocfilehash: d0103d8ea608014e53f70402220b302b6da445e9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshoot-attached-vhds-on-azure-windows-virtual-machines"></a>Azure Windows 虚拟机上的附加 VHD 故障排除
 

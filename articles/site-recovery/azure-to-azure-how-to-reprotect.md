@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Site Recovery 重新保护已故障转移回到主要 Azure 区域的 Azure VM | Microsoft Docs"
-description: "介绍在从主要区域故障转移后，如何使用 Azure Site Recovery 在次要区域中重新保护 Azure VM。"
+title: 使用 Azure Site Recovery 重新保护已故障转移回到主要 Azure 区域的 Azure VM | Microsoft Docs
+description: 介绍在从主要区域故障转移后，如何使用 Azure Site Recovery 在次要区域中重新保护 Azure VM。
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: 47056c85c6cb66a7fa28d623a4472b827d970dab
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4171a904626d3b624b39b8a3a261df0d342012df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保护已故障转移到主要区域的 Azure VM
 
@@ -57,7 +57,8 @@ ms.lasthandoff: 03/08/2018
 |---------|---------|
 |目标资源组     | 修改创建 VM 的目标资源组。 在重新保护的过程中，将删除目标 VM。 可以选择在故障转移后要在其下创建 VM 的新资源组。        |
 |目标虚拟网络     | 执行重新保护作业期间，无法更改目标网络。 若要更改网络，请重做网络映射。         |
-|目标存储     | 可以更改故障转移后 VM 使用的存储帐户。         |
+|目标存储（辅助 VM 不使用托管磁盘）     | 可以更改故障转移后 VM 使用的存储帐户。         |
+|副本托管磁盘（辅助 VM 使用托管磁盘）    | Site Recovery 在主要区域中创建副本托管磁盘以监视辅助 VM 的托管磁盘。         | 
 |缓存存储     | 可以指定复制期间要使用的缓存存储帐户。 默认情况下，如果不存在缓存存储帐户，则会创建一个帐户。         |
 |可用性集     |如果次要区域中的 VM 属于可用性集，则可为主要区域中的目标 VM 选择可用性集。 默认情况下，Site Recovery 会尝试在主要区域中查找并使用现有的可用性集。 在自定义期间，可以指定新的可用性集。         |
 
@@ -68,7 +69,8 @@ ms.lasthandoff: 03/08/2018
 
 1. 在主要区域中创建一个缓存存储帐户
 2. 如果目标存储帐户（主要区域中的原始存储帐户）不存在，则会创建一个新帐户。 分配的存储帐户名称是辅助 VM 使用的存储帐户名称，并带有后缀“asr”。
-3. 如果目标可用性集不存在，将在执行重新保护作业期间根据需要新建一个可用性集。 如果已自定义重新保护设置，则会使用选定的可用性集。
+3. 如果 VM 使用托管磁盘，则主要区域中会创建副本托管磁盘以存储从辅助 VM 磁盘中复制的数据。 
+4. 如果目标可用性集不存在，将在执行重新保护作业期间根据需要新建一个可用性集。 如果已自定义重新保护设置，则会使用选定的可用性集。
 
 触发重新保护作业时，如果目标 VM 存在，则会发生以下情况：
 

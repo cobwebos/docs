@@ -1,5 +1,5 @@
 ---
-title: IoT DevKit 到云：将 IoT DevKit AZ3166 连接到 Azure IoT 中心 | Microsoft Docs
+title: IoT DevKit 到云：将 IoT MXChip DevKit 连接到 Azure IoT 中心 | Microsoft Docs
 description: 本教程介绍了如何将 IoT DevKit AZ3166 上的传感器的状态发送到Azure IoT 套件以用于监视和可视化。
 services: iot-hub
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: b43061f5af3e836ba3f0b37eb11b351a769890be
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: b288595ca06c3a3cccb72082658f1927f2ae558a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="connect-iot-devkit-az3166-to-azure-iot-suite-for-remote-monitoring"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 套件以用于远程监视
+# <a name="connect-mxchip-iot-devkit-to-azure-iot-suite-for-remote-monitoring"></a>将 MXChip IoT DevKit 连接到 Azure IoT 套件以进行远程监视
 
 本教程介绍了如何在 DevKit 上运行示例应用来将传感器数据发送到 Azure IoT 套件。
 
@@ -35,14 +35,14 @@ ms.lasthandoff: 02/27/2018
 
 一个有效的 Azure 订阅。 如果没有订阅，可以通过以下两种方法之一进行注册：
 
-* 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azureinfo.microsoft.com/us-freetrial.html)
+* 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/en-us/free/)
 * 声明你的 [Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)（如果你是 MSDN 或 Visual Studio 订阅者）
 
 ## <a name="create-an-azure-iot-suite"></a>创建 Azure IoT 套件
 
 1. 转到 [Azure IoT 套件站点](https://www.azureiotsuite.com/)并单击“创建新的解决方案”。
   ![选择 Azure IoT 套件类型](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
-  > [!NOTE]
+  > [!WARNING]
   > 默认情况下，此示例将在创建一个 IoT 套件后创建 S2 IoT 中心。 如果此 IoT 中心不用于大量设备，强烈建议你将其从 S2 降级到 S1，并且在不再需要 IoT 套件时将其删除，以便也可以删除相关的 IoT 中心。 
 
 2. 选择“远程监视”。

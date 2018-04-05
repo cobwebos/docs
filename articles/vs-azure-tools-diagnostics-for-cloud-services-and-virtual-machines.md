@@ -1,11 +1,11 @@
 ---
-title: "为 Azure 云服务和虚拟机设置诊断 | Microsoft Docs"
-description: "了解如何在 Visual Studio 中设置调试 Azure 云服务和虚拟机 (VM) 所需的诊断。"
+title: 为 Azure 云服务和虚拟机设置诊断 | Microsoft Docs
+description: 了解如何在 Visual Studio 中设置调试 Azure 云服务和虚拟机 (VM) 所需的诊断。
 services: visual-studio-online
 documentationcenter: na
 author: mikejo
-manager: ghogen
-editor: 
+manager: douge
+editor: ''
 ms.assetid: e70cd7b4-6298-43aa-adea-6fd618414c26
 ms.service: multiple
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: mikejo
-ms.openlocfilehash: f00771d89749e7507d7f303f366fe63f537900ff
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 34c667b0a594682e4d099e7bff64bfdb336b850b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="set-up-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>为 Azure 云服务和虚拟机设置诊断
 需要对 Azure 云服务或虚拟机进行故障排除时，可使用 Visual Studio 更轻松地设置 Azure 诊断。 诊断可以在运行云服务的虚拟机和虚拟机实例上捕获系统数据和日志记录数据。 诊断数据传输到所选的存储帐户。 有关 Azure 中诊断日志记录的详细信息，请参阅[为 Azure 应用服务中的 Web 应用启用诊断日志记录](app-service/web-sites-enable-diagnostic-log.md)。
@@ -216,7 +216,7 @@ ASP.NET 通过 [System.Diagnostics.aspx](https://msdn.microsoft.com/library/syst
     在 Cloud Explorer 或服务器资源管理器中，打开与部署相关联的存储帐户。
 3. 在表查看器中打开诊断表，并查看所收集的数据。 对于 IIS 日志和自定义日志，可以打开 Blob 容器。 下表列出的表或 Blob 容器包含不同日志文件的数据。 除了该日志文件的数据，表条目还包含 EventTickCount、DeploymentId、Role 和 RoleInstance，有助于确定数据由哪个虚拟机和角色生成，以及生成的时间。 
    
-   | 诊断数据 | 说明 | 位置 |
+   | 诊断数据 | 说明 | Location |
    | --- | --- | --- |
    | 应用程序日志 |代码通过调用 System.Diagnostics.Trace 类的方法而生成的日志。 |WADLogsTable |
    | 事件日志 |虚拟机上 Windows 事件日志中的数据。 Windows 在这些日志中存储信息，但应用程序和服务也使用这些日志来报告错误或记录信息。 |WADWindowsEventLogsTable |

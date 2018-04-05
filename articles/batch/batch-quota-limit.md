@@ -1,25 +1,25 @@
 ---
-title: "Azure Batch 服务配额和限制 | Microsoft Docs"
-description: "了解默认的 Azure Batch 配额、限制和约束，以及如何请求提高配额"
+title: Azure Batch 服务配额和限制 | Microsoft Docs
+description: 了解默认的 Azure Batch 配额、限制和约束，以及如何请求提高配额
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 03/16/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 775db415e667729f6eecf8223a84f5ac0aa45c4c
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 3cc833e456571b63fa03574808529c8c501d7ab5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -53,6 +53,7 @@ ms.lasthandoff: 02/23/2018
 | 应用程序包大小（每个） |约 195GB<sup>1</sup> |
 | 启动任务最大大小 | 32,768 个字符<sup>2</sup> |
 | 最长任务生存期 | 7 天<sup>3</sup> |
+| 计算启用了节点间通信的池中的节点 | 100 |
 
 <sup>1</sup> 最大的块 Blob 大小的 Azure 存储限制<br />
 <sup>2</sup> 包括资源文件和环境变量<br />

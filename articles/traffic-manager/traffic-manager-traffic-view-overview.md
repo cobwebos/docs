@@ -1,31 +1,28 @@
 ---
-title: "Azure 流量管理器中的流量视图 | Microsoft Docs"
-description: "流量管理器流量视图简介"
+title: Azure 流量管理器中的流量视图 | Microsoft Docs
+description: 流量管理器流量视图简介
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 11/11/2017
+ms.date: 03/16/2018
 ms.author: kumud
-ms.custom: 
-ms.openlocfilehash: 6b4378cb293824702dd52dcdeb86619f957b83ea
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.custom: ''
+ms.openlocfilehash: 7ce51017fdee92e5589c06b398c9650930d5436d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-manager-traffic-view"></a>流量管理器流量视图
-
->[!NOTE]
->流量管理器中的“流量视图”功能以公共预览版形式提供，并且其可用性和可靠性与正式发布版本中的功能可能不在同一级别。 此功能不受支持，可能存在功能限制，并且可能不是在所有 Azure 区域都可用。 有关此功能可用性和状态方面的最新通知，请参阅 [Azure 流量管理器更新](https://azure.microsoft.com/updates/?product=traffic-manager)页。
 
 流量管理器提供 DNS 级别路由，用于根据创建配置文件时指定的路由方法将最终用户定向到正常运行的终结点。 流量视图为流量管理器提供用户群视图（在 DNS 解析程序粒度级别）及其流量模式。 启用流量视图时，系统将处理此信息以提供可执行的建议。 
 
@@ -43,7 +40,7 @@ ms.lasthandoff: 11/16/2017
 在下一步中，流量管理器使用它为不同最终用户网络维护的网络智能延迟表将用户群区域关联到 Azure 区域映射，以了解这些区域中的用户在连接到 Azure 区域时所经历的平均延迟。 然后按每个本地 DNS 解析程序 IP 级别将所有这些计算组合起来，再向你显示。 可以通过各种方式来使用信息。
 
 >[!NOTE]
->流量视图中描述的延迟是最终用户和其所连接到的 Azure 区域之间的代表性延迟，不是 DNS 查找延迟。
+>流量视图中描述的延迟是最终用户和其所连接到的 Azure 区域之间的代表性延迟，不是 DNS 查找延迟。 流量视图对本地 DNS 解析程序与查询被路由到的 Azure 区域之间的延迟进行了最佳估算，如果可用数据不足，返回的延迟将为 NULL。 
 
 ## <a name="visual-overview"></a>视觉概览
 
@@ -61,12 +58,12 @@ ms.lasthandoff: 11/16/2017
 
 ### <a name="endpoint-information"></a>终结点信息
 
-终结点所在的 Azure 区域在图中显示为蓝色点。 单击任意终结点即可查看不同的位置（基于所使用的 DNS 解析程序），流量从这些位置引导到该终结点。 连接显示为终结点和 DNS 解析程序位置之间的一条线，其颜色取决于该对之间的代表性延迟。 此外，还可以看到终结点的名称、其运行时所在的 Azure 区域、通过流量管理器配置文件引导到该区域的请求的总量。
+终结点所在的 Azure 区域在图中显示为蓝色点。 如果终结点在外部，且不存在映射到该终结点的 Azure 区域，则终结点显示在图顶部。 单击任意终结点即可查看不同的位置（基于所使用的 DNS 解析程序），流量从这些位置引导到该终结点。 连接显示为终结点和 DNS 解析程序位置之间的一条线，其颜色取决于该对之间的代表性延迟。 此外，还可以看到终结点的名称、其运行时所在的 Azure 区域、通过流量管理器配置文件引导到该区域的请求的总量。
 
 
 ## <a name="tabular-listing-and-raw-data-download"></a>表格式列表和原始数据下载
 
-可以在 Azure 门户中以表格格式查看流量视图数据。 每个 DNS 解析程序 IP/终结点对都有一个条目，该条目显示 DNS 解析程序的地理位置（如果提供）、终结点所在的 Azure 区域的名称、与该 DNS 解析程序关联的请求量、与使用该 DNS 的最终用户关联的代表性延迟（如果提供）。 也可将流量视图数据下载为 CSV 文件，该文件可以用作所选分析工作流的一部分。
+可以在 Azure 门户中以表格格式查看流量视图数据。 每个 DNS 解析程序 IP /终结点对都有一个条目，用于显示 DNS 解析程序的 IP 地址、终结点所在的 Azure 区域的名称和地理位置（如果提供）、发送到该终结点且与该 DNS 解析程序关联的请求量以及与使用该 DNS 的最终用户关联的代表性延迟（如果提供）。 也可将流量视图数据下载为 CSV 文件，该文件可以用作所选分析工作流的一部分。
 
 ## <a name="billing"></a>计费
 

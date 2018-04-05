@@ -1,30 +1,24 @@
 ---
-title: "更新 Azure 自动化中的 Azure 模块 | Microsoft Docs"
-description: "本文介绍如何更新 Azure 自动化中默认提供的常见 Azure PowerShell 模块。"
+title: 更新 Azure 自动化中的 Azure 模块
+description: 本文介绍如何更新 Azure 自动化中默认提供的常见 Azure PowerShell 模块。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: 
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/13/2017
-ms.author: magoedte
-ms.openlocfilehash: f5e7c66cfd26bd6927d48ffd8bc0f82e9a3e2d13
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+manager: carmonm
+ms.openlocfilehash: f1f7068de1781d1cc66a412752f6fd99d603a6be
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>如何在 Azure 自动化中更新 Azure PowerShell 模块
 
-默认情况下，每个自动化帐户中都提供最常见的 Azure PowerShell 模块。  Azure 团队会定期更新 Azure 模块，因此在自动化帐户中，我们提供了一种方法，用于在门户中有新版本时更新帐户中的模块。  
+默认情况下，每个自动化帐户中都提供最常见的 Azure PowerShell 模块。 Azure 团队会定期更新 Azure 模块，因此在自动化帐户中，我们提供了一种方法，用于在门户中有新版本时更新帐户中的模块。  
 
-由于模块由产品组定期更新，所包含的 cmdlet 可能会发生更改，这可能会对 runbook 产生负面影响，具体要取决于更改类型（如重命名参数或完全弃用 cmdlet）。 为了避免影响你的 runbook 及其自动化过程，强烈建议在继续操作之前进行测试和验证。  如果没有用于此目的专用自动化帐户，请考虑创建一个自动化帐户，以便可以在 runbook 开发期间测试许多不同的方案和排列，以及更新 PowerShell 模块等迭代更改。  在验证结果并且应用了所需的任何更改之后，请继续协调需要修改的任何 runbook 的迁移，然后按照以下生产环境中的描述执行更新。     
+由于模块由产品组定期更新，所包含的 cmdlet 可能会发生更改，这可能会对 runbook 产生负面影响，具体要取决于更改类型（如重命名参数或完全弃用 cmdlet）。 为了避免影响 runbook 及其自动化过程，建议在继续操作之前进行测试和验证。 如果没有用于此目的专用自动化帐户，请考虑创建一个自动化帐户，以便可以在 runbook 开发期间测试许多不同的方案和排列，以及更新 PowerShell 模块等迭代更改。 在验证结果并且应用了所需的任何更改之后，请继续协调需要修改的任何 runbook 的迁移，然后按照以下生产环境中的描述执行更新。
 
 ## <a name="updating-azure-modules"></a>更新 Azure 模块
 
@@ -48,7 +42,7 @@ ms.lasthandoff: 12/14/2017
 > [!NOTE]
 > 当运行新的计划作业时，Azure 自动化将在自动化帐户中使用最新模块。    
 
-如果在 Runbook 中使用这些 Azure PowerShell 模块中的 cmdlet 来管理 Azure 资源，则需要大约每月执行一次此更新过程，以确保拥有最新的模块。
+如果在 Runbook 中使用这些 Azure PowerShell 模块中的 cmdlet，需要大约每月运行一次此更新过程，以确保拥有最新的模块。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,32 +1,21 @@
 ---
-title: "使用图形 API - Azure AD B2C | Microsoft 文档"
-description: "如何通过使用应用程序标识自动执行该过程为 B2C 租户调用图形 API。"
+title: 使用图形 API - Azure AD B2C | Microsoft 文档
+description: 如何通过使用应用程序标识自动执行该过程为 B2C 租户调用图形 API。
 services: active-directory-b2c
 documentationcenter: .net
-author: parakhj
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: f9904516-d9f7-43b1-ae4f-e4d9eb1c67a0
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
-ms.author: parakhj
-<<<<<<< HEAD
-ms.openlocfilehash: dd84a8da348d0d534ba19a3d61970ec0d8c66cc8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: davidmu
+ms.openlocfilehash: ff3aa44a4e2513f4d3e5ac2eed84715b8fe9b004
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-=======
-ms.openlocfilehash: aee051946c90c686959066ac14798f807e7b91b0
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
->>>>>>> 80a94c7d4609de719926150462f483c267c962e6
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD Graph API
 
@@ -56,7 +45,7 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
 3. 在左侧导航窗格中，选择“所有服务”，单击“应用注册”，并单击“添加”。
 4. 根据提示创建新的应用程序。 
     1. 选择“Web 应用/API”作为应用程序类型。    
-    2. 提供**任何重定向 URI**（例如 https://B2CGraphAPI），因为它与此示例无关。  
+    2. 提供任一登录 URL（例如 https://B2CGraphAPI)，它与此示例不相关）。  
 5. 应用程序现在会显示在应用程序列表中，单击它以获取**应用程序 ID**（也称为客户端 ID）。 复制它，因为会在后面的部分用到它。
 6. 在“设置”菜单中，单击“密钥”并添加新密钥（也称为客户端密码）。 也复制它以便在后面部分中使用。
 

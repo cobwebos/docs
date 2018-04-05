@@ -1,11 +1,11 @@
 ---
-title: "Reliable Actors 状态管理 | Microsoft 文档"
-description: "介绍如何管理、持久保存和复制 Reliable Actors 状态以实现高可用性。"
+title: Reliable Actors 状态管理 | Microsoft 文档
+description: 介绍如何管理、持久保存和复制 Reliable Actors 状态以实现高可用性。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: f196b2e54efc5ecbbd93e48e1f115edb99e5c858
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d5d38e7fa80db3484c397d9840bbc6092e4f18bb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors 状态管理
 Reliable Actors 是可封装逻辑与状态的单线程对象。 由于执行组件在 Reliable Services 上运行，因此，它们可以使用相同的持久性和复制机制可靠地维护状态。 这样，执行组件就不会在发生故障之后、在内存回收后重新激活时或者由于资源平衡和升级的原因而在群集中的节点之间移动时丢失其状态。
@@ -111,299 +111,7 @@ class MyActorImpl extends FabricActor implements MyActor
 
 状态管理器公开通用字典方法来管理状态，类似于在可靠字典中找到的项目。
 
-## <a name="accessing-state"></a>访问状态
-可以通过状态管理器根据键来访问状态。 状态管理器方法全都是异步的，因为当执行组件具有持久化状态时，它们可能需要磁盘 I/O。 首次访问时，状态对象将缓存在内存中。 重复访问操作将从内存中直接访问对象并以同步方式返回，而不造成磁盘 I/O 或异步上下文切换的开销。 在以下情况下，，将从缓存中删除状态对象：
-
-* 从状态管理器中检索对象之后，执行组件方法将引发未经处理的异常。
-* 执行组件在停用之后或发生故障后将重新激活。
-* 状态提供程序将状态分页到磁盘。 此行为取决于状态提供程序实现。 `Persisted` 设置的默认状态提供程序具有此行为。
-
-如果键的条目不存在，可以使用引发 `KeyNotFoundException` (C#) 或 `NoSuchElementException`(Java) 的标准 *Get* 操作来检索状态：
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public Task<int> GetCountAsync()
-    {
-        return this.StateManager.GetStateAsync<int>("MyState");
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture<Integer> getCountAsync()
-    {
-        return this.stateManager().getStateAsync("MyState");
-    }
-}
-```
-
-如果键的条目不存在，也可以使用不引发的 *TryGet* 方法来检索状态：
-
-```csharp
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public async Task<int> GetCountAsync()
-    {
-        ConditionalValue<int> result = await this.StateManager.TryGetStateAsync<int>("MyState");
-        if (result.HasValue)
-        {
-            return result.Value;
-        }
-
-        return 0;
-    }
-}
-```
-```Java
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture<Integer> getCountAsync()
-    {
-        return this.stateManager().<Integer>tryGetStateAsync("MyState").thenApply(result -> {
-            if (result.hasValue()) {
-                return result.getValue();
-            } else {
-                return 0;
-            });
-    }
-}
-```
-
-## <a name="saving-state"></a>保存状态
-状态管理器检索方法将返回对本地内存中对象的引用。 只是在本地内存中修改此对象并不会永久存储该对象。 从状态管理器检索和修改对象时，必须将它重新插入状态管理器才能永久保存。
-
-可以使用无条件的 *Set*（相当于 `dictionary["key"] = value` 语法）来插入状态：
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public Task SetCountAsync(int value)
-    {
-        return this.StateManager.SetStateAsync<int>("MyState", value);
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture setCountAsync(int value)
-    {
-        return this.stateManager().setStateAsync("MyState", value);
-    }
-}
-```
-
-可以使用 *Add* 方法添加状态。 尝试添加已存在的键时，该方法会引发 `InvalidOperationException`(C#) 或 `IllegalStateException`(Java)。
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public Task AddCountAsync(int value)
-    {
-        return this.StateManager.AddStateAsync<int>("MyState", value);
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture addCountAsync(int value)
-    {
-        return this.stateManager().addOrUpdateStateAsync("MyState", value, (key, old_value) -> old_value + value);
-    }
-}
-```
-
-还可以使用 *TryAdd* 方法添加状态。 尝试添加已存在的键时，该方法不会引发。
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public async Task AddCountAsync(int value)
-    {
-        bool result = await this.StateManager.TryAddStateAsync<int>("MyState", value);
-
-        if (result)
-        {
-            // Added successfully!
-        }
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture addCountAsync(int value)
-    {
-        return this.stateManager().tryAddStateAsync("MyState", value).thenApply((result)->{
-            if(result)
-            {
-                // Added successfully!
-            }
-        });
-    }
-}
-```
-
-在执行组件方法结束时，状态管理器会自动保存通过插入或更新操作添加或修改的任何值。 根据所用的设置，“保存”可能包括持久保存到磁盘和复制。 未修改的值不会持久保存或复制。 如果未修改任何值，保存操作不起作用。 如果保存失败，将丢弃修改的状态并重新加载原始状态。
-
-也可以通过对执行组件基调用 `SaveStateAsync` 方法来手动保存状态：
-
-```csharp
-async Task IMyActor.SetCountAsync(int count)
-{
-    await this.StateManager.AddOrUpdateStateAsync("count", count, (key, value) => count > value ? count : value);
-
-    await this.SaveStateAsync();
-}
-```
-```Java
-interface MyActor {
-    CompletableFuture setCountAsync(int count)
-    {
-        this.stateManager().addOrUpdateStateAsync("count", count, (key, value) -> count > value ? count : value).thenApply();
-
-        this.stateManager().saveStateAsync().thenApply();
-    }
-}
-```
-
-## <a name="removing-state"></a>删除状态
-可以通过调用 *Remove* 方法，从执行组件的状态管理器中永久删除状态。 尝试删除不存在的键时，该方法会引发 `KeyNotFoundException`(C#) 或 `NoSuchElementException`(Java)。
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public Task RemoveCountAsync()
-    {
-        return this.StateManager.RemoveStateAsync("MyState");
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture removeCountAsync()
-    {
-        return this.stateManager().removeStateAsync("MyState");
-    }
-}
-```
-
-还可以使用 *TryRemove* 方法永久删除状态。 尝试删除不存在的键时，该方法不会引发。
-
-```csharp
-[StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
-{
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
-    public async Task RemoveCountAsync()
-    {
-        bool result = await this.StateManager.TryRemoveStateAsync("MyState");
-
-        if (result)
-        {
-            // State removed!
-        }
-    }
-}
-```
-```Java
-@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
-class MyActorImpl extends FabricActor implements  MyActor
-{
-    public MyActorImpl(ActorService actorService, ActorId actorId)
-    {
-        super(actorService, actorId);
-    }
-
-    public CompletableFuture removeCountAsync()
-    {
-        return this.stateManager().tryRemoveStateAsync("MyState").thenApply((result)->{
-            if(result)
-            {
-                // State removed!
-            }
-        });
-    }
-}
-```
+有关管理执行组件状态的示例，请阅读[访问、保存并删除 Reliable Actors 状态](service-fabric-reliable-actors-access-save-remove-state.md)。
 
 ## <a name="best-practices"></a>最佳实践
 对于管理执行组件状态，下面是一些建议的做法和故障排除技巧。
@@ -412,7 +120,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 这对于应用程序的性能和资源使用情况是至关重要的。 只要对执行组件的“命名状态”有任何写入/更新操作，与该“命名状态”相对应的整个值就会进行序列化，并通过网络发送到次要副本。  次要副本将它写入到本地磁盘并答复主要副本。 当主要副本收到来自次要副本仲裁的确认时，它会将该状态写入到其本地磁盘。 例如，假设该值是一个具有 20 个成员的类，其大小为 1 MB。 即使只修改了其中一个类成员（大小为 1 KB），最终也得支付全部 1 MB 的序列化、网络和磁盘写入的成本。 同样，如果该值为一个集合（如列表、数组或字典），即使修改其中一个成员，也得支付整个集合的成本。 actor 类的 StateManager 接口类似于字典。 你始终应为此字典之上表示执行组件状态的数据结构建模。
  
 ### <a name="correctly-manage-the-actors-life-cycle"></a>正确管理执行组件的生命周期
-你应制定明确的策略来管理每个分区中执行组件服务状态的大小。 执行组件服务应具有固定数目的执行组件，并尽可能多地重复使用它们。 如果不断地创建新的执行组件，则必须在这些执行组件完成其工作后删除它们。 执行组件框架存储有关存在的每个执行组件的一些元数据。 删除某个执行组件的所有状态不会删除有关该执行组件的元数据。 必须删除执行组件（请参阅[删除执行组件及其状态](service-fabric-reliable-actors-lifecycle.md#deleting-actors-and-their-state)），才能删除系统中存储的有关它的所有信息。 作为额外的检查，应偶尔查询执行组件服务一次（请参阅[枚举执行组件](service-fabric-reliable-actors-platform.md)）以确保执行组件数在预期范围内。
+你应制定明确的策略来管理每个分区中执行组件服务状态的大小。 执行组件服务应具有固定数目的执行组件，并尽可能多地重复使用它们。 如果不断地创建新的执行组件，则必须在这些执行组件完成其工作后删除它们。 执行组件框架存储有关存在的每个执行组件的一些元数据。 删除某个执行组件的所有状态不会删除有关该执行组件的元数据。 必须删除执行组件（请参阅[删除执行组件及其状态](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)），才能删除系统中存储的有关它的所有信息。 作为额外的检查，应偶尔查询执行组件服务一次（请参阅[枚举执行组件](service-fabric-reliable-actors-platform.md)）以确保执行组件数在预期范围内。
  
 如果看到执行组件服务的数据库文件大小不断增加到超出预期大小，请确保你是按照前面的指南进行操作的。 如果你是按照这些指南操作的，但仍存在数据库文件大小问题，应通过产品团队[开具支持票证](service-fabric-support.md)以获取帮助。
 

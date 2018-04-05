@@ -1,6 +1,6 @@
 ---
-title: "Service Fabric 中的 Reliable Actors | Microsoft 文档"
-description: "介绍 Reliable Actors 如何在 Reliable Services 上进行分层以及如何使用 Service Fabric 平台的功能。"
+title: Service Fabric 中的 Reliable Actors | Microsoft 文档
+description: 介绍 Reliable Actors 如何在 Reliable Services 上进行分层以及如何使用 Service Fabric 平台的功能。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: ee248cb656eeb54e259ff1adf45080a207b5a866
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 088f56f33c85d3c590acf4a2eaa660a9d586f7ec
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Actors 如何使用 Service Fabric 平台
 本文介绍了 Reliable Actors 如何使用 Azure Service Fabric 平台。 Reliable Actors 在有状态的可靠服务（称为*执行组件服务*）的实现托管的框架中运行。 执行组件服务包含管理执行组件的生命周期和消息发送所需的所有组件：
@@ -42,282 +42,10 @@ ms.lasthandoff: 03/12/2018
 * 共享给所有执行组件的功能，例如断路器。
 * 对执行组件服务自身和每个执行组件的远程过程调用。
 
-### <a name="using-the-actor-service"></a>使用执行组件服务
-执行组件实例可访问运行这些实例的执行组件服务。 通过执行组件服务，执行组件实例可以编程方式获取服务上下文。 服务上下文包括分区 ID、服务名称、应用程序名称以及其他特定于 Service Fabric 平台的信息：
+> [!NOTE]
+> Java/Linux 目前不支持有状态服务。
 
-```csharp
-Task MyActorMethod()
-{
-    Guid partitionId = this.ActorService.Context.PartitionId;
-    string serviceTypeName = this.ActorService.Context.ServiceTypeName;
-    Uri serviceInstanceName = this.ActorService.Context.ServiceName;
-    string applicationInstanceName = this.ActorService.Context.CodePackageActivationContext.ApplicationName;
-}
-```
-```Java
-CompletableFuture<?> MyActorMethod()
-{
-    UUID partitionId = this.getActorService().getServiceContext().getPartitionId();
-    String serviceTypeName = this.getActorService().getServiceContext().getServiceTypeName();
-    URI serviceInstanceName = this.getActorService().getServiceContext().getServiceName();
-    String applicationInstanceName = this.getActorService().getServiceContext().getCodePackageActivationContext().getApplicationName();
-}
-```
-
-
-与所有 Reliable Services 一样，执行组件服务必须使用 Service Fabric 运行时中的服务类型注册。 为了使执行组件服务能够运行执行组件实例，还必须向执行组件服务注册执行组件类型。 `ActorRuntime` 注册方法将为执行组件执行此操作。 最简单的情况是，只需注册执行组件类型，然后隐式使用具有默认设置的执行组件服务：
-
-```csharp
-static class Program
-{
-    private static void Main()
-    {
-        ActorRuntime.RegisterActorAsync<MyActor>().GetAwaiter().GetResult();
-
-        Thread.Sleep(Timeout.Infinite);
-    }
-}
-```
-
-或者，可以使用此注册方法提供的 lambda 自己构造执行组件服务。 可以配置执行组件服务和显式构造执行组件实例，从中可通过执行组件的构造函数向执行组件注入依赖项：
-
-```csharp
-static class Program
-{
-    private static void Main()
-    {
-        ActorRuntime.RegisterActorAsync<MyActor>(
-            (context, actorType) => new ActorService(context, actorType, () => new MyActor()))
-            .GetAwaiter().GetResult();
-
-        Thread.Sleep(Timeout.Infinite);
-    }
-}
-```
-```Java
-static class Program
-{
-    private static void Main()
-    {
-      ActorRuntime.registerActorAsync(
-              MyActor.class,
-              (context, actorTypeInfo) -> new FabricActorService(context, actorTypeInfo),
-              timeout);
-
-        Thread.sleep(Long.MAX_VALUE);
-    }
-}
-```
-
-### <a name="actor-service-methods"></a>执行组件服务方法
-执行组件服务实现了 `IActorService` (C#) 或 `ActorService` (Java)，后者又实现了 `IService` (C#) 或 `Service` (Java)。 这是 Reliable Services 远程控制所使用的接口，该远程控制允许对服务方法执行远程过程调用。 它包含可以通过服务远程控制进行远程调用的服务级别方法。
-
-#### <a name="enumerating-actors"></a>枚举执行组件
-执行组件服务允许客户端枚举有关该服务托管的执行组件的元数据。 由于执行组件服务是已分区的有状态服务，因此将按分区执行枚举。 因为每个分区可能包含许多执行组件，所以枚举以一组分页结果的形式返回。 将循环读取这些页面，直到读取所有页面。 以下示例演示了如何创建执行组件服务的一个分区中所有活动执行组件的列表：
-
-```csharp
-IActorService actorServiceProxy = ActorServiceProxy.Create(
-    new Uri("fabric:/MyApp/MyService"), partitionKey);
-
-ContinuationToken continuationToken = null;
-List<ActorInformation> activeActors = new List<ActorInformation>();
-
-do
-{
-    PagedResult<ActorInformation> page = await actorServiceProxy.GetActorsAsync(continuationToken, cancellationToken);
-
-    activeActors.AddRange(page.Items.Where(x => x.IsActive));
-
-    continuationToken = page.ContinuationToken;
-}
-while (continuationToken != null);
-```
-
-```Java
-ActorService actorServiceProxy = ActorServiceProxy.create(
-    new URI("fabric:/MyApp/MyService"), partitionKey);
-
-ContinuationToken continuationToken = null;
-List<ActorInformation> activeActors = new ArrayList<ActorInformation>();
-
-do
-{
-    PagedResult<ActorInformation> page = actorServiceProxy.getActorsAsync(continuationToken);
-
-    while(ActorInformation x: page.getItems())
-    {
-         if(x.isActive()){
-              activeActors.add(x);
-         }
-    }
-
-    continuationToken = page.getContinuationToken();
-}
-while (continuationToken != null);
-```
-
-#### <a name="deleting-actors"></a>删除执行组件
-执行组件服务提供了一个用于删除执行组件的函数：
-
-```csharp
-ActorId actorToDelete = new ActorId(id);
-
-IActorService myActorServiceProxy = ActorServiceProxy.Create(
-    new Uri("fabric:/MyApp/MyService"), actorToDelete);
-
-await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
-```
-```Java
-ActorId actorToDelete = new ActorId(id);
-
-ActorService myActorServiceProxy = ActorServiceProxy.create(
-    new URI("fabric:/MyApp/MyService"), actorToDelete);
-
-myActorServiceProxy.deleteActorAsync(actorToDelete);
-```
-
-有关删除执行组件及其状态的详细信息，请参阅[执行组件生命周期文档](service-fabric-reliable-actors-lifecycle.md)。
-
-### <a name="custom-actor-service"></a>自定义执行组件服务
-通过使用执行组件注册 lambda，可以注册从 `ActorService` (C#) 和 `FabricActorService` (Java) 派生的自定义执行组件服务。 在此自定义执行组件服务中，可以通过编写从 `ActorService` (C#) 或 `FabricActorService` (Java) 继承的服务类来实现自己的服务级功能。 自定义执行组件服务从 `ActorService` (C#) 或 `FabricActorService` (Java) 继承了所有执行组件运行时功能，可用来实现自己的服务方法。
-
-```csharp
-class MyActorService : ActorService
-{
-    public MyActorService(StatefulServiceContext context, ActorTypeInformation typeInfo, Func<ActorBase> newActor)
-        : base(context, typeInfo, newActor)
-    { }
-}
-```
-```Java
-class MyActorService extends FabricActorService
-{
-    public MyActorService(StatefulServiceContext context, ActorTypeInformation typeInfo, BiFunction<FabricActorService, ActorId, ActorBase> newActor)
-    {
-         super(context, typeInfo, newActor);
-    }
-}
-```
-
-```csharp
-static class Program
-{
-    private static void Main()
-    {
-        ActorRuntime.RegisterActorAsync<MyActor>(
-            (context, actorType) => new MyActorService(context, actorType, () => new MyActor()))
-            .GetAwaiter().GetResult();
-
-        Thread.Sleep(Timeout.Infinite);
-    }
-}
-```
-```Java
-public class Program
-{
-    public static void main(String[] args)
-    {
-        ActorRuntime.registerActorAsync(
-                MyActor.class,
-                (context, actorTypeInfo) -> new FabricActorService(context, actorTypeInfo),
-                timeout);
-        Thread.sleep(Long.MAX_VALUE);
-    }
-}
-```
-
-#### <a name="implementing-actor-backup-and-restore"></a>实现执行组件备份和还原
- 在下面的示例中，自定义执行组件服务通过利用已存在于 `ActorService` 中的远程侦听器公开备份执行组件数据的方法：
-
-```csharp
-public interface IMyActorService : IService
-{
-    Task BackupActorsAsync();
-}
-
-class MyActorService : ActorService, IMyActorService
-{
-    public MyActorService(StatefulServiceContext context, ActorTypeInformation typeInfo, Func<ActorBase> newActor)
-        : base(context, typeInfo, newActor)
-    { }
-
-    public Task BackupActorsAsync()
-    {
-        return this.BackupAsync(new BackupDescription(PerformBackupAsync));
-    }
-
-    private async Task<bool> PerformBackupAsync(BackupInfo backupInfo, CancellationToken cancellationToken)
-    {
-        try
-        {
-           // store the contents of backupInfo.Directory
-           return true;
-        }
-        finally
-        {
-           Directory.Delete(backupInfo.Directory, recursive: true);
-        }
-    }
-}
-```
-```Java
-public interface MyActorService extends Service
-{
-    CompletableFuture<?> backupActorsAsync();
-}
-
-class MyActorServiceImpl extends ActorService implements MyActorService
-{
-    public MyActorService(StatefulServiceContext context, ActorTypeInformation typeInfo, Func<FabricActorService, ActorId, ActorBase> newActor)
-    {
-       super(context, typeInfo, newActor);
-    }
-
-    public CompletableFuture backupActorsAsync()
-    {
-        return this.backupAsync(new BackupDescription((backupInfo, cancellationToken) -> performBackupAsync(backupInfo, cancellationToken)));
-    }
-
-    private CompletableFuture<Boolean> performBackupAsync(BackupInfo backupInfo, CancellationToken cancellationToken)
-    {
-        try
-        {
-           // store the contents of backupInfo.Directory
-           return true;
-        }
-        finally
-        {
-           deleteDirectory(backupInfo.Directory)
-        }
-    }
-
-    void deleteDirectory(File file) {
-        File[] contents = file.listFiles();
-        if (contents != null) {
-            for (File f : contents) {
-               deleteDirectory(f);
-             }
-        }
-        file.delete();
-    }
-}
-```
-
-
-在本示例中，`IMyActorService` 是一个实现 `IService` (C#) 和 `Service` (Java)，并由 `MyActorService` 实现的远程协定。 通过添加此远程协定，并通过 `ActorServiceProxy` 创建远程代理，现在 `IMyActorService` 的方法也可用于客户端：
-
-```csharp
-IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
-    new Uri("fabric:/MyApp/MyService"), ActorId.CreateRandom());
-
-await myActorServiceProxy.BackupActorsAsync();
-```
-```Java
-MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.class,
-    new URI("fabric:/MyApp/MyService"), actorId);
-
-myActorServiceProxy.backupActorsAsync();
-```
+有关详细信息，请参阅[在执行组件服务中实现服务级功能](service-fabric-reliable-actors-using.md)。
 
 ## <a name="application-model"></a>应用程序模型
 执行组件服务都是 Reliable Services，因此服务的应用程序模型是相同的。 但是，执行组件框架生成工具生成某些应用程序模型文件。
@@ -369,34 +97,6 @@ ActorProxyBase.create(MyActor.class, new ActorId(1234));
 
 使用 GUID/UUID 和字符串时，这些值将经过哈希算法转换为 Int64。 但是，如果向 `ActorId` 显式提供 Int64，此 Int64 将直接映射到分区，而无需进行哈希转换。 可以使用此方法来控制将执行组件置于哪个分区。
 
-## <a name="actor-using-remoting-v2-stack"></a>使用 Remoting V2 堆栈的参与者
-借助 2.8 Nuget 包，用户现在可以使用更高性能的 Remoting V2 堆栈，它提供自定义序列化等功能。 Remoting V2 不与现有的 Remoting 堆栈（称为 V1 Remoting 堆栈）向后兼容。
-
-需要进行以下更改才能使用 Remoting V2 堆栈。
- 1. 在参与者界面中添加以下程序集属性。
-   ```csharp
-   [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
-   ```
-
- 2. 生成并升级 ActorService 和参与者客户端项目以开始使用 V2 堆栈。
-
-### <a name="actor-service-upgrade-to-remoting-v2-stack-without-impacting-service-availability"></a>在不影响服务可用性的情况下将参与者服务升级到 Remoting V2 堆栈。
-这项更改是包括 2 个步骤的升级过程。 按照所列的顺序执行步骤。
-
-1.  在参与者界面中添加以下程序集属性。 此属性针对 ActorService 启动两个侦听器：V1（现有）和 V2 侦听器。 通过此项更改升级 ActorService。
-
-  ```csharp
-  [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.CompatListener,RemotingClient = RemotingClient.V2Client)]
-  ```
-
-2. 完成上述升级后，升级 ActorClients。
-此步骤确保参与者代理使用 Remoting V2 堆栈。
-
-3. 此步骤是可选的。 更改上述属性可删除 V1 侦听器。
-
-    ```csharp
-    [assembly:FabricTransportActorRemotingProvider(RemotingListener = RemotingListener.V2Listener,RemotingClient = RemotingClient.V2Client)]
-    ```
 
 ## <a name="next-steps"></a>后续步骤
 * [执行组件状态管理](service-fabric-reliable-actors-state-management.md)

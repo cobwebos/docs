@@ -1,18 +1,18 @@
 ---
-title: "升级经典 Azure 容器注册表"
-description: "通过升级非托管的经典容器注册表，利用基本、标准和高级托管容器注册表的扩展功能集。"
+title: 升级经典 Azure 容器注册表
+description: 通过升级非托管的经典容器注册表，利用基本、标准和高级托管容器注册表的扩展功能集。
 services: container-registry
 author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: 19090bb69d7165c1e904450dc93b925e23e44782
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c5a61941bab2aa49cd8205e0a07dd2b5f7378ce9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="upgrade-a-classic-container-registry"></a>升级经典容器注册表
 
@@ -29,14 +29,16 @@ Azure 容器注册表 (ACR) 分为多个服务层（[称为“SKU”](container-
 * [异地复制](container-registry-geo-replication.md)
 * [Webhook](container-registry-webhook.md)
 
-最重要的是，经典注册表依赖 Azure 在用户创建注册表时在 Azure 订阅中自动预配的存储帐户。 相比之下，基本、标准和高级 SKU 利用的是托管存储。 也就是说，Azure 在透明的状态下为用户管理映像存储，即利用不是在自己的订阅中创建的单独存储帐户。
+最重要的是，经典注册表依赖 Azure 在用户创建注册表时在 Azure 订阅中自动预配的存储帐户。 相比之下，基本、标准和高级 SKU 通过以透明方式处理映像的存储来利用 Azure 的[高级存储功能](container-registry-storage.md)。 不在自己的订阅中创建单独的存储帐户。
 
 托管注册表存储有以下优点：
 
-* 容器映像[静态加密](../storage/common/storage-service-encryption.md)。
-* 映像使用[异地冗余存储](../storage/common/storage-redundancy.md#geo-redundant-storage)进行存储，以确保通过多区域复制备份映像。
+* 容器映像[静态加密](container-registry-storage.md#encryption-at-rest)。
+* 映像使用[异地冗余存储](container-registry-storage.md#geo-redundant-storage)进行存储，以确保通过多区域复制备份映像。
 * 可以自由地[在 SKU 之间切换](container-registry-skus.md#changing-skus)，在选择更高级 SKU 时支持更大吞吐量。 对于每个 SKU，ACR 都可以用户需求增加时满足吞吐量需求。
 * 注册表及其存储具有统一的安全模型，可以简化权限管理。 只需为容器注册表管理权限，不需为单独的存储帐户管理权限。
+
+有关 ACR 中映像存储的其他详细信息，请参阅 [Azure 容器注册表中的容器映像存储](container-registry-storage.md)。
 
 ## <a name="migration-considerations"></a>迁移注意事项
 

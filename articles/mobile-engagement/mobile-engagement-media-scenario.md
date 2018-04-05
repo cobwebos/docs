@@ -1,11 +1,11 @@
 ---
-title: "针对媒体应用的 Azure Mobile Engagement 实现"
-description: "实现 Azure Mobile Engagement 的媒体应用方案"
+title: 针对媒体应用的 Azure Mobile Engagement 实现
+description: 实现 Azure Mobile Engagement 的媒体应用方案
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 48201cc8-4e04-485c-a8dc-d6406d23f3ed
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: c1591c3e436981e621830916cf0cdc4b7f395d7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e5d4585b47a4ca26b81b7168aa499f25722415a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="implement-mobile-engagement-with-media-app"></a>对媒体应用实现 Mobile Engagement
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 ## <a name="overview"></a>概述
 John 是一家大型媒体公司的移动项目经理。 他最近推出了一款新应用，并获得非常高的下载次数。 他已达到自己的下载数目标，但从每位用户身上获得的投资回报率 (ROI) 却未达到其要求。 
 

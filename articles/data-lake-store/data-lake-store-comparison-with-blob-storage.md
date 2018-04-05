@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Store 与 Azure 存储 Blob 对比 | Microsoft Docs"
-description: "Azure Data Lake Store 与 Azure 存储 Blob 对比"
+title: Azure Data Lake Store 与 Azure 存储 Blob 对比 | Microsoft Docs
+description: Azure Data Lake Store 与 Azure 存储 Blob 对比
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: a8831278ef0e83571bf05d48e5d671f8dee92850
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: acdd829785c44f6683c356c135587be183cce392
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>比较 Azure Data Lake Store 与 Azure 存储 Blob
 本文中的表总结了 Azure Data Lake Store 和 Azure 存储 Blob 在一些大数据处理的关键方面之间的差异。 Azure Blob 存储是一个常规用途和可扩展的对象存储，适用于多种存储方案。 Azure Data Lake Store 是一个超大规模存储库，优化用于大数据分析工作负荷。
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/21/2018
 | Hadoop 文件系统客户端 |是 |是 |
 | 数据操作 - 身份验证 |基于 [Azure Active Directory 标识](../active-directory/active-directory-authentication-scenarios.md) |基于共享机密 - [帐户访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)和[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 |
 | 数据操作 - 身份验证协议 |OAuth 2.0。 调用必须包含 Azure Active Directory 发布的有效的 JWT（JSON Web 令牌） |基于哈希的消息身份验证代码 (HMAC)。 调用必须包含 Base64 编码的 SHA-256 哈希作为 HTTP 请求的一部分。 |
-| 数据操作 - 授权 |POSIX 访问控制列表 (ACL)。  可设置基于 Azure Active Directory 标识的 ACL 为文件和文件夹级别。 |对于帐户级别授权 – 使用[帐户访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)<br>对于帐户、容器 或 blob 授权 - 使用[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
+| 数据操作 - 授权 |POSIX 访问控制列表 (ACL)。  可在文件和文件夹级别设置基于 Azure Active Directory 标识的 ACL。 |对于帐户级别授权 – 使用[帐户访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)<br>对于帐户、容器 或 blob 授权 - 使用[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
 | 数据操作 - 审核 |可用。 详细信息参见[此处](data-lake-store-diagnostic-logs.md)。 |可用 |
 | 静态数据加密 |<ul><li>透明版服务器端</li> <ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥</li></ul></ul> |<ul><li>透明版服务器端</li> <ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥（预览版）</li></ul><li>客户端加密</li></ul> |
 | 管理操作（例如“帐户创建”） |Azure 向帐户管理提供的[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md) (RBAC) |Azure 向帐户管理提供的[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md) (RBAC) |
@@ -46,7 +46,4 @@ ms.lasthandoff: 02/21/2018
 | 区域可用性 |参见[此处](https://azure.microsoft.com/regions/#services) |在所有 Azure 区域中可用 |
 | 价格 |参阅[定价](https://azure.microsoft.com/pricing/details/data-lake-store/) |参阅[定价](https://azure.microsoft.com/pricing/details/storage/) |
 
-### <a name="next-steps"></a>后续步骤
-* [Overview of Azure Data Lake Store](data-lake-store-overview.md)
-* [Data Lake Store 入门](data-lake-store-get-started-portal.md)
 

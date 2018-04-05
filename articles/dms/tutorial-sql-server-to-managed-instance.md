@@ -1,21 +1,21 @@
 ---
-title: "使用 Azure 数据库迁移服务将 SQL Server 迁移到 Azure SQL 数据库托管实例 | Microsoft Docs"
-description: "了解如何使用 Azure 数据库迁移服务从本地 SQL Server 迁移到 Azure SQL 数据库托管实例。"
+title: 使用 Azure 数据库迁移服务将 SQL Server 迁移到 Azure SQL 数据库托管实例 | Microsoft Docs
+description: 了解如何使用 Azure 数据库迁移服务从本地 SQL Server 迁移到 Azure SQL 数据库托管实例。
 services: dms
 author: edmacauley
 ms.author: edmaca
 manager: craigg
-ms.reviewer: 
+ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: d74a273061912ea2bdcc39301ce9a727b07ade41
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 03/29/2018
+ms.openlocfilehash: 8abf3bae3a2274ed5514a5c621675b4c9ec27ae2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance"></a>将 SQL Server 迁移到 Azure SQL 数据库托管实例
 可以使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 Azure SQL 数据库。 本教程介绍如何使用 Azure 数据库迁移服务，将 **Adventureworks2012** 数据库从 SQL Server 的本地实例迁移到 Azure SQL 数据库。
@@ -32,14 +32,15 @@ ms.lasthandoff: 03/09/2018
 
 - 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 VNET，它将使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 为本地源服务器提供站点到站点连接。 [了解使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑](https://aka.ms/dmsnetworkformi)。
 - 确保 Azure 虚拟网络 (VNET) 网络安全组规则未阻止通信端口 443、53、9354、445、12000。 有关 Azure VNET NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg)一文。
-- [配置 Windows 防火墙以便访问源数据库引擎](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
-- 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server。
+- 配置[针对源数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
+- 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
+- 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
 - 如果在源数据库的前面使用了防火墙设备，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库，并通过 SMB 端口 445 访问文件。
 - 遵循[在 Azure 门户中创建 Azure SQL 数据库托管实例](https://aka.ms/sqldbmi)一文中的详细信息创建 Azure SQL 数据库托管实例。
 - 确保用于连接源 SQL Server 和目标托管实例的登录名是 sysadmin 服务器角色的成员。
 - 创建网络共享，供 Azure 数据库迁移服务用来备份源数据库。
 - 确保运行源 SQL Server 实例的服务帐户在创建的网络共享中拥有写入特权。
-- 记下在前面创建的网络共享中拥有完全控制特权的 Windows 用户（和密码）。 Azure 数据库迁移服务将模拟用户凭据，将备份文件上传到 Azure 存储容器，以执行还原操作。
+- 记下在前面创建的网络共享中拥有完全控制特权的 Windows 用户（和密码）。 Azure 数据库迁移服务可模拟用户凭据，将备份文件上传到 Azure 存储容器，以执行还原操作。
 - 遵循[使用存储资源管理器（预览版）管理 Azure Blob 存储资源](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)一文中的步骤创建 Blob 容器并检索其 SAS URI。创建 SAS URI 时，请务必在策略窗口中选择所有权限（读取、写入、删除、列出）。 这样，Azure 数据库迁移服务便可以访问你的存储帐户容器，以便将用于迁移数据库的备份文件上传到 Azure SQL 数据库托管实例
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
@@ -127,7 +128,7 @@ ms.lasthandoff: 03/09/2018
     |**服务器备份位置** | 可让 Azure 数据库迁移服务备份源数据库的本地网络共享。 运行源 SQL Server 实例的服务帐户必须在此网络共享中拥有写入特权。 |
     |**用户名** | Windows 用户名，Azure 数据库迁移服务可以模拟它，并使用它将备份文件上传到 Azure 存储容器，以执行还原操作。 |
     |**密码** | 上述用户的密码。 |
-    |**存储 SAS URI** | 可让 Azure 数据库迁移服务访问你的存储帐户容器，以便将用于迁移数据库的备份文件上传到 Azure SQL 数据库托管实例的 SAS URI。  [了解如何获取 Blob 容器的 SAS URI](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)。|
+    |**存储 SAS URI** | 可让 Azure 数据库迁移服务访问你的存储帐户容器，以便将用于迁移数据库的备份文件上传到 Azure SQL 数据库托管实例的 SAS URI。 [了解如何获取 Blob 容器的 SAS URI](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)。|
     
     ![配置迁移设置](media\tutorial-sql-server-to-managed-instance\dms-configure-migration-settings.png)
 

@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 03/21/2018
 ms.author: jodebrui
-ms.openlocfilehash: 107df78f0ec6ce924785f5027958ee66f2a86c7c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 442c860a13e2af1d5398fb30a6069a0e3764ee64
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>在 SQL 数据库中使用内存中技术优化性能
 
@@ -104,7 +104,7 @@ Azure SQL 数据库采用以下内存中技术：
 
 升级到更高的定价层时（例如，从标准层升级到高级层），绝对不会出现任何不兼容性或其他问题。 可用的功能和资源只会增加。
 
-但是，降级定价层可能会对数据库造成负面影响。 如果数据库包含内存中 OLTP 对象，则从高级层降级到标准或基本层时，影响就尤为明显。 降级后，内存优化表和列存储索引不可用（即使它们保持可见）。 降低弹性池的定价层或将使用内存中技术的数据库移动到标准或基本弹性池时，也应考虑这些问题。
+但是，降级定价层可能会对数据库造成负面影响。 如果数据库包含内存中 OLTP 对象，则从高级层降级到标准或基本层时，影响就尤为明显。 降级后，内存优化表不可用（即使它们保持可见）。 降低弹性池的定价层或将使用内存中技术的数据库移动到标准或基本弹性池时，也应考虑这些问题。
 
 ### <a name="in-memory-oltp"></a>内存中 OLTP
 
@@ -130,11 +130,11 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="columnstore-indexes"></a>列存储索引
 
-*降级到基本或标准层*：只有高级定价层支持列存储索引，标准或基本层则不支持。 将数据库降级到标准或基本层后，列存储索引不可用。 系统会保留列存储索引，但永远不会利用索引。 如果后来又升级回到高级层，列存储索引立即可供再次利用。
+降级到基本或标准层：只有高级定价层、标准层、S3 及以上层支持列存储索引，基本层则不支持。 将数据库降级到不受支持的层或级别时后，列存储索引不可用。 系统会保留列存储索引，但永远不会利用索引。 如果后来又升级回到受支持的层或级别，列存储索引立即可供再次利用。
 
-如果有**聚集**列存储索引，则降级层后，整个表不可用。 因此，我们建议在将数据库降级到高级层以下之前，先删除所有聚集列存储索引。
+如果有聚集列存储索引，则降级后，整个表不可用。 因此，我们建议在将数据库降级到不受支持的层或级别前，先删除所有聚集列存储索引。
 
-*降级到较低的高级层*：如果整个数据库处于目标定价层的最大数据库大小或弹性池中可用存储的范围内，则此降级操作会成功。 列存储索引不会造成特殊影响。
+降级到受支持的层或级别：如果整个数据库处于目标定价层的最大数据库大小或弹性池中可用存储的范围内，则此降级操作会成功。 列存储索引不会造成特殊影响。
 
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>

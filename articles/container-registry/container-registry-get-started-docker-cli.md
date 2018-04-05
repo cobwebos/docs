@@ -1,6 +1,6 @@
 ---
-title: "将 Docker 映像推送到专用 Azure 注册表"
-description: "使用 Docker CLI 在 Azure 的专用容器注册表中推送和拉取 Docker 映像"
+title: 将 Docker 映像推送到专用 Azure 注册表
+description: 使用 Docker CLI 在 Azure 的专用容器注册表中推送和拉取 Docker 映像
 services: container-registry
 author: stevelas
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 21d1abfbb49eaeae654a600d35ab350b96a12fd3
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 8fc04ec77a101e08bfde22df76e845b87f8c316e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 
@@ -123,4 +123,8 @@ az acr repository delete --name myregistry --repository samples/nginx --tag late
 
 ## <a name="next-steps"></a>后续步骤
 
-了解基础知识后，便可以开始使用注册表了！ 例如，将容器映像从注册表部署到 [Azure 容器服务 (AKS)](../aks/tutorial-kubernetes-prepare-app.md) 群集。
+了解基础知识后，便可以开始使用注册表了！ 将容器映像从注册表部署到：
+
+* [Azure 容器服务 (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
+* [Azure 容器实例](../container-instances/container-instances-tutorial-prepare-app.md)
+* [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)

@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fdb8009e3dbca1037cae61ec8627f73190a8263d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b908e8877162a6a1d9292616a1704c1c528e1725
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>使用 Azure PowerShell 监视和更新 Windows 虚拟机
 
@@ -36,6 +36,7 @@ Azure 监视使用代理从 Azure VM 收集启动和性能数据，将此数据�
 > * 查看 VM 指标
 > * 创建警报
 > * 管理 Windows 更新
+> * 监视器更改和清单
 > * 设置高级监视
 
 本教程需要 Azure PowerShell 模块 3.6 或更高版本。 可以运行 `Get-Module -ListAvailable AzureRM` 来查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
@@ -274,6 +275,7 @@ Set-AzureRmVMExtension -ResourceGroupName myResourceGroup `
 > * 查看 VM 指标
 > * 创建警报
 > * 管理 Windows 更新
+> * 监视器更改和清单
 > * 设置高级监视
 
 请转到下一教程来了解 Azure 安全中心。

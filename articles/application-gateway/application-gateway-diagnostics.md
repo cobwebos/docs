@@ -1,6 +1,6 @@
 ---
-title: "监视应用程序网关的访问日志、性能日志、后端运行状况及指标 | Microsoft Docs"
-description: "了解如何启用和管理应用程序网关的访问日志和性能日志"
+title: 监视应用程序网关的访问日志、性能日志、后端运行状况及指标 | Microsoft Docs
+description: 了解如何启用和管理应用程序网关的访问日志和性能日志
 services: application-gateway
 documentationcenter: na
 author: amitsriva
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2017
+ms.date: 3/23/2018
 ms.author: amitsriva
-ms.openlocfilehash: 12c252340b82aba5ee69b12db83353750782e7c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 885ae8b97175cac4cd29793eb0a935e81d54d0e4
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>应用程序网关的后端运行状况、诊断日志和指标
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 
 * [后端运行状况](#back-end-health)：应用程序网关提供通过 Azure 门户和 PowerShell 监视后端池中的服务器运行状况的功能。 还可通过性能诊断日志找到后端池的运行状况。
 
-* [日志](#diagnostic-logs)：通过日志记录，可出于监视目的从资源保存或使用性能、访问及其他数据。
+* [日志](#diagnostic-logging)：通过日志记录，可出于监视目的从资源保存或使用性能、访问及其他数据。
 
 * [指标](#metrics)：应用程序网关当前有一个指标指标。 此指标可衡量应用程序网关的吞吐量，以每秒字节数为单位。
 
@@ -105,7 +105,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 * 防火墙日志：可使用此日志查看通过应用程序网关（配置有 Web 应用程序防火墙）的检测模式或阻止模式记录的请求。
 
 > [!NOTE]
-> 日志仅适用于在 Azure Resource Manager 部署模型中部署的 Azure 资源。 不能将日志用于经典部署模型中的资源。 若要深入了解这两个模型，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)一文。
+> 日志仅适用于在 Azure 资源管理器部署模型中部署的 Azure 资源。 不能将日志用于经典部署模型中的资源。 若要深入了解这两个模型，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)一文。
 
 可通过三种方式存储日志：
 
@@ -152,9 +152,9 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
    ![启动配置过程][2]
 
-4. 选择现有 Operations Management Suite (OMS) 工作区或创建新工作区。 本示例使用现有工作区。
+4. 选择现有的 Log Analytics 工作区，或新建一个工作区。 本示例使用现有工作区。
 
-   ![OMS 工作区选项][3]
+   ![Log Analytics 工作区的选项][3]
 
 5. 确认设置并单击“保存”。
 
@@ -176,7 +176,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |clientPort     | 请求的初始端口。       |
 |httpMethod     | 请求使用的 HTTP 方法。       |
 |requestUri     | 已收到请求的 URI。        |
-|RequestQuery     | 服务器路由：请求已发送至后端池实例。 </br> X-AzureApplicationGateway-LOG-ID：用于请求的相关 ID。 它可用于排查后端服务器上的流量问题。 </br>服务器状态： 应用程序网关接收从后端的 HTTP 响应代码。       |
+|RequestQuery     | 服务器路由：请求已发送至后端池实例。</br>X-AzureApplicationGateway-LOG-ID：用于请求的相关 ID。 它可用于排查后端服务器上的流量问题。 </br>服务器状态： 应用程序网关接收从后端的 HTTP 响应代码。       |
 |UserAgent     | HTTP 请求标头中的用户代理。        |
 |httpStatus     | 从应用程序网关返回到客户端的 HTTP 状态代码。       |
 |httpVersion     | 请求的 HTTP 版本。        |
@@ -316,9 +316,21 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 
 ## <a name="metrics"></a>度量值
 
-指标是某些 Azure 资源的一项功能，可在此查看门户中的性能计数器。 对于应用程序网关，现在可用一个指标。 此指标是吞吐量，可在门户中看到。 浏览到应用程序网关，然后单击“指标”。 若要查看这些值，请在“可用度量值”部分选择吞吐量。 可在下图看到一个带有筛选器的示例，该筛选器可用于显示不同时间范围的数据。
+指标是某些 Azure 资源的一项功能，可在此查看门户中的性能计数器。 应用程序网关支持以下指标：
 
-![带有筛选器的指标视图][5]
+- 当前连接
+- 失败的请求数
+- 正常的主机计数
+- 响应状态
+- Throughput
+- 请求总数
+- 不正常的主机计数
+
+浏览到应用程序网关，并在“监视”下单击“指标”。 若要查看可用值，请选择“指标”下拉列表。
+
+在下图中可以看到过去 30 分钟显示的三个指标的示例：
+
+[![](media/application-gateway-diagnostics/figure5.png "度量值视图")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
 若要查看当前的指标列表，请参阅 [Azure Monitor 支持的指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md)。
 

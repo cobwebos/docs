@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: raynew
-ms.openlocfilehash: 7e556bff2e9ebdd1efc969660cc8b4a33f3adcdb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 345b73db423c6e12b56bb3308f7700917a372dda
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -48,6 +48,13 @@ ms.lasthandoff: 03/16/2018
 
 ### <a name="what-do-i-need-on-premises"></a>需要在本地做好哪些准备？
 在本地，需要在单个 VMware VM 上安装 Site Recovery 组件。 还需要至少包含一台 ESXi 主机的 VMware 基础结构。我们建议使用 vCenter 服务器。 此外，需要提供一个或多个可供复制的 VMware VM。 [详细了解](vmware-azure-architecture.md) VMware 到 Azure 复制体系结构。
+
+本地配置服务器可通过以下两种方式之一进行部署
+
+1. 使用预先安装了配置服务器的 VM 模板进行部署。 在[此处](vmware-azure-tutorial.md#download-the-vm-template)了解详细信息。
+2. 使用选定的 Windows Server 2016 计算机上的安装程序进行部署。 在[此处](physical-azure-disaster-recovery.md#set-up-the-source-environment)了解详细信息。
+
+若要了解在自己的 Windows Server 计算机上部署配置服务器的入门步骤，请在“启用保护”的保护目标中，选择“转到 Azure”>“不虚拟化/其他”。
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>本地 VM 将复制到哪个位置？
 数据将复制到 Azure 存储。 运行故障转移时，Site Recovery 会自动从存储帐户创建 Azure VM。

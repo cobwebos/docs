@@ -1,24 +1,21 @@
 ---
-title: "令牌、会话和单一登录配置 - Azure AD B2C | Microsoft 文档"
-description: "Azure Active Directory B2C 中的令牌、会话和单一登录配置"
+title: 令牌、会话和单一登录配置 - Azure AD B2C | Microsoft 文档
+description: Azure Active Directory B2C 中的令牌、会话和单一登录配置
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: e78e6344-0089-49bf-8c7b-5f634326f58c
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
-ms.author: parakhj
-ms.openlocfilehash: 76feb172ce9b08d4feef9c86e74a592553a3c7f4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 925313b6f2a00826f2ec8086457315c60f70b007
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C：令牌、会话和单一登录配置
 
@@ -32,12 +29,12 @@ ms.lasthandoff: 12/11/2017
 对于内置策略，你可以在 Azure AD B2C 目录中使用此功能，如下所示：
 
 1. 请按照以下步骤在 Azure 门户上[导航到 B2C 功能菜单](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
-2. 单击“注册或登录策略”。 注意：可以对任何策略类型使用此功能，不局限于注册或登录策略**。
+2. 单击“注册或登录策略”。 注意：可以对任何策略类型使用此功能，不局限于**注册或登录策略**。
 3. 通过单击策略以打开它。 例如，单击“B2C_1_SiUpIn”。
 4. 单击菜单顶部的“编辑”。
 5. 单击“令牌、会话和单一登录配置”。
 6. 进行所需的更改。 在后续章节中了解可用的属性。
-7. 单击 **“确定”**。
+7. 单击“确定”。
 8. 单击菜单顶部的“保存”。
 
 ## <a name="token-lifetimes-configuration"></a>令牌生存期配置

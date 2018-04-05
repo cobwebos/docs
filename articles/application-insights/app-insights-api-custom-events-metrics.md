@@ -1,8 +1,8 @@
 ---
-title: "用于处理自定义事件和指标的 Application Insights API | Microsoft 文档"
-description: "在设备、桌面应用、网页或服务中插入几行代码，即可跟踪使用情况和诊断问题。"
+title: 用于处理自定义事件和指标的 Application Insights API | Microsoft 文档
+description: 在设备、桌面应用、网页或服务中插入几行代码，即可跟踪使用情况和诊断问题。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 80400495-c67b-4468-a92e-abf49793a54d
@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7d797716fb98ac85f11f956e732e08820b56affc
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: ff4b587790872511c7b545233685f5b3ae068291
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -79,7 +79,17 @@ Visual Basic
 
 TelemetryClient 是线程安全的。
 
-对于 ASP.NET 和 Java 项目，建议针对每个应用模块都创建一个 TelemetryClient 实例。 例如，可以在 Web 服务中使用一个 TelemetryClient 实例报告传入的 HTTP 请求，在中间件类中使用另一个实例报告业务逻辑事件。 可以设置诸如 `TelemetryClient.Context.User.Id` 的属性来跟踪用户和会话，或设置 `TelemetryClient.Context.Device.Id` 来标识计算机。 此信息将附加到实例发送的所有事件中。
+对于 ASP.NET 和 Java 项目，可自动捕获传入的 HTTP 请求。 可能需要为应用的其他模块创建 TelemetryClient 的其他实例。 例如，可以在中间件类中使用一个 TelemetryClient 实例报告业务逻辑事件。 可以设置属性（如 UserId 和 DeviceId）来标识计算机。 此信息会附加到实例发送的所有事件。 
+
+*C#*
+
+    TelemetryClient.Context.User.Id = "...";
+    TelemetryClient.Context.Device.Id = "...";
+
+*Java*
+
+    telemetry.getContext().getUser().setId("...);
+    telemetry.getContext().getDevice().setId("...");
 
 在 Node.js 项目中，可以使用 `new applicationInsights.TelemetryClient(instrumentationKey?)` 创建新实例，但这建议仅用于需要与单一实例 `defaultClient` 隔离的配置的方案。
 
@@ -156,13 +166,21 @@ Application Insights 可绘制未附加到特定事件的指标。 例如，可�
      appInsights.trackMetric("queueLength", 42.0);
  ```
 
-*C#、Java*
+*C#*
 
 ```csharp
     var sample = new MetricTelemetry();
     sample.Name = "metric name";
     sample.Value = 42.3;
     telemetryClient.TrackMetric(sample);
+```
+
+*Java*
+
+```Java
+    
+    telemetry.trackMetric("queueLength", 42.0);
+
 ```
 
 *Node.js*
@@ -350,6 +368,10 @@ namespace MetricAggregationExample
 
     telemetry.TrackPageView("GameReviewPage");
 
+*Java*
+
+    telemetry.trackPageView("GameReviewPage");
+
 Visual Basic
 
     telemetry.TrackPageView("GameReviewPage")
@@ -479,6 +501,14 @@ requests | summarize count = sum(itemCount), avgduration = avg(duration) by name
        telemetry.TrackException(ex);
     }
 
+*Java*
+
+    try {
+        ...
+    } catch (Exception ex) {
+        telemetry.trackException(ex);
+    }
+
 *JavaScript*
 
     try
@@ -541,11 +571,17 @@ exceptions
 ## <a name="tracktrace"></a>TrackTrace
 使用 TrackTrace 可以通过将“痕迹导航跟踪”发送到 Application Insights 来帮助诊断问题。 可以发送诊断数据区块，并在[诊断搜索](app-insights-diagnostic-search.md)中检查。
 
-[日志适配器](app-insights-asp-net-trace-logs.md)使用此 API 将第三方日志发送到门户。
+使用 .NET 时，[日志适配器](app-insights-asp-net-trace-logs.md)使用此 API 将第三方日志发送到门户。
+
+使用 Java 时，[标准记录器（如 Log4J、Logback）](app-insights-java-trace-logs.md)使用 Application Insights Log4j 或 Logback Appenders 将第三方日志发送到门户。
 
 *C#*
 
     telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
+
+*Java*
+
+    telemetry.trackTrace(message, SeverityLevel.Warning, properties);
     
 *Node.js*
 
@@ -559,10 +595,24 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 此外，可向消息添加严重性级别。 并像其他遥测一样，可以添加属性值以帮助筛选或搜索不同跟踪集。 例如：
 
+*C#*
+
+```C#
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
                    SeverityLevel.Warning,
                    new Dictionary<string,string> { {"database", db.ID} });
+```
+
+*Java*
+
+```Java
+
+    Map<String, Integer> properties = new HashMap<>();
+    properties.put("Database", db.ID);
+    telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties);
+
+```
 
 在[搜索](app-insights-diagnostic-search.md)中，可轻松筛选出与特定数据库相关的所有特定严重性级别的消息。
 
@@ -575,6 +625,8 @@ TrackTrace 的一个优势是可将相对较长的数据放置在消息中。 �
 
 ## <a name="trackdependency"></a>TrackDependency
 可使用 TrackDependency 调用跟踪响应时间以及调用外部代码片段的成功率。 结果会显示在门户上的依赖项图表中。
+
+*C#*
 
 ```csharp
 var success = false;
@@ -591,6 +643,26 @@ finally
 }
 ```
 
+*Java*
+
+```Java
+    boolean success = false;
+    long startTime = System.currentTimeMillis();
+    try {
+        success = dependency.call();
+    }
+    finally {
+        long endTime = System.currentTimeMillis();
+        long delta = endTime - startTime;
+        RemoteDependencyTelemetry dependencyTelemetry = new RemoteDependencyTelemetry("My Dependency", "myCall", delta, success);
+        telemetry.setTimeStamp(startTime);
+        telemetry.trackDependency(dependencyTelemetry);
+    }
+
+```
+
+*JavaScript*
+
 ```Javascript
 var success = false;
 var startTime = new Date().getTime();
@@ -605,9 +677,13 @@ finally
 }
 ```
 
-请记住，服务器 SDK 包含[依赖项模块](app-insights-asp-net-dependencies.md)，用于自动发现和跟踪特定的依赖项调用（例如，数据库和 REST API）。 必须在服务器上安装一个代理才能让模块正常运行。 如果想要跟踪自动跟踪未捕获的调用，或不想安装代理，可以使用此调用。
+请记住，服务器 SDK 包含[依赖项模块](app-insights-asp-net-dependencies.md)，用于自动发现和跟踪特定的依赖项调用（例如，数据库和 REST API）。 必须在服务器上安装一个代理才能让模块正常运行。 
 
-若要关闭标准依赖项跟踪模块，请编辑 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 并删除对 `DependencyCollector.DependencyTrackingTelemetryModule` 的引用。
+使用 Java 时，可以使用 [Java 代理](app-insights-java-agent.md)自动跟踪某些依赖项调用。
+
+如果想要跟踪自动跟踪未捕获的调用，或不想安装代理，可以使用此调用。
+
+要关闭 C# 中的标准依赖项跟踪模块，请编辑 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 并删除对 `DependencyCollector.DependencyTrackingTelemetryModule` 的引用。 使用 Java 时，如果不希望自动收集标准依赖项，请勿安装 java 代理。
 
 ### <a name="dependencies-in-analytics"></a>Analytics 中的依赖项
 
@@ -630,17 +706,29 @@ dependencies
 通常，SDK 在选定的时间发送数据，以便最大程度地降低对用户的影响。 但是，在某些情况下，可能需要刷新缓冲区，例如，在关闭的应用程序中使用 SDK 时。
 
 *C#*
-
+ 
+ ```C#
     telemetry.Flush();
-
     // Allow some time for flushing before shutdown.
-    System.Threading.Thread.Sleep(1000);
+    System.Threading.Thread.Sleep(5000);
+```
+
+*Java*
+
+```Java
+    telemetry.flush();
+    //Allow some time for flushing before shutting down
+    Thread.sleep(5000);
+```
+
     
 *Node.js*
 
     telemetry.flush();
 
 请注意，[服务器遥测通道](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/)的函数是异步的。
+
+理想情况下，应在应用程序的关闭活动中使用 flush() 方法。
 
 ## <a name="authenticated-users"></a>经过身份验证的用户
 在 Web 应用中，默认按 Cookie 标识用户。 如果用户从不同的计算机或浏览器访问应用或删除 Cookie，则可能会多次统计它们。
@@ -832,6 +920,7 @@ requests
 
 *C#*
 
+```C#
     var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
     // ... perform the timed action ...
@@ -847,7 +936,27 @@ requests
 
     // Send the event:
     telemetry.TrackEvent("SignalProcessed", properties, metrics);
+```
 
+*Java*
+
+```Java
+    long startTime = System.currentTimeMillis();
+
+    // perform timed action
+
+    long endTime = System.currentTimeMillis();
+    Map<String, Double> metrics = new HashMap<>();
+    metrics.put("ProcessingTime", endTime-startTime);
+
+    // Setup some propereties
+    Map<String, String> properties = new HashMap<>();
+    properties.put("signalSource", currentSignalSource.getName());
+
+    //send the event
+    telemetry.trackEvent("SignalProcessed", properties, metrics);
+
+```
 
 
 ## <a name="defaults"></a>自定义遥测的默认属性
@@ -918,6 +1027,14 @@ Visual Basic
     using  Microsoft.ApplicationInsights.Extensibility;
 
     TelemetryConfiguration.Active.DisableTelemetry = true;
+```
+
+*Java*
+
+```Java
+    
+    telemetry.getConfiguration().setTrackingDisabled(true);
+
 ```
 
 若要*禁用选定的标准收集器*（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 中的相关行。例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。

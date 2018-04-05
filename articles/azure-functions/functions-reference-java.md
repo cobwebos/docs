@@ -1,11 +1,11 @@
 ---
-title: "Azure Functions Java 开发人员参考 | Microsoft Docs"
-description: "了解如何使用 Java 开发函数。"
+title: Azure Functions Java 开发人员参考 | Microsoft Docs
+description: 了解如何使用 Java 开发函数。
 services: functions
 documentationcenter: na
 author: rloutlaw
 manager: justhe
-keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务器体系结构, java"
+keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务器体系结构, java
 ms.service: functions
 ms.devlang: java
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: 09a48d61cb27b4db0778295565d167a0688cc99f
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 71576e65d20d7e8cb7f5ff1c5f19c82439bb6807
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 > [!div class="op_single_selector"]
@@ -325,9 +325,33 @@ public class Function {
 }
 ```
 
+## <a name="environment-variables"></a>环境变量
+
+出于安全性考虑，通常需要从源代码提取机密信息。 这允许向源代码存储库发布代码，而不会意外地向其他开发者提供凭据。 在本地运行 Azure Functions 时以及将函数部署到 Azure 时，只需使用坏境变量就可以实现这一点。
+
+若要在本地运行 Azure Functions 时轻松地设置环境变量，可以选择将这些变量添加到 local.settings.json 文件。 如果函数项目的根目录中没有，请随意创建一个。 文件的内容应如下所示：
+
+```xml
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "AzureWebJobsDashboard": ""
+  }
+}
+```
+
+`values` 映射中的每个键/值映射都能在运行时用作环境变量，并可通过调用 `System.getenv("<keyname>")` 进行访问，例如 `System.getenv("AzureWebJobsStorage")`。 建议添加其他键/值对。
+
+> [!NOTE]
+> 如果采取这种方法，请务必考虑是否将 local.settings.json 文件添加到存储库忽略文件从而不提交此文件。
+
+现在你的代码依赖于这些环境变量，可以登录 Azure 门户在函数应用设置中设置相同的键/值对，从而让代码在本地测试和部署到 Azure 时等效运行。
+
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅以下资源：
 
 * [Azure Functions 最佳实践](functions-best-practices.md)
 * [Azure Functions 开发人员参考](functions-reference.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
+* [使用 Visual Studio Code 远程调试 Java Azure Functions](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)

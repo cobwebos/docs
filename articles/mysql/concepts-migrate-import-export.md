@@ -1,6 +1,6 @@
 ---
-title: "在 Azure Database for MySQL 中进行导入和导出"
-description: "本文介绍使用 MySQL Workbench 等工具在 Azure Database for MySQL 导入和导出数据库的常用方法。"
+title: 在 Azure Database for MySQL 中进行导入和导出
+description: 本文介绍使用 MySQL Workbench 等工具在 Azure Database for MySQL 导入和导出数据库的常用方法。
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: f15811cd44e405ee33d9ba3d565c2982e71a80c0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: 74b8c6afc5167225414f467f76f08c0e53bbade5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用导入和导出迁移 MySQL 数据库
 本文介绍通过使用 MySQL Workbench 将数据导入和导出到 Azure Database for MySQL 服务器的两种常用方法。 
@@ -33,9 +33,9 @@ ms.lasthandoff: 02/28/2018
 ## <a name="create-a-database-on-the-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 服务器上创建数据库
 在要迁移数据的 Azure Database for MySQL 服务器上创建空数据库。 使用 MySQL Workbench、Toad 或 Navicat 等工具创建数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
 
-若要获取连接，请在 Azure Database for MySQL 的“属性”窗格中找到连接信息。
+若要获取连接，请在 Azure Database for MySQL 的“概述”中找到连接信息。
 
-![在 Azure 门户中找到连接信息](./media/concepts-migrate-import-export/1_server-properties-name-login.png)
+![在 Azure 门户中找到连接信息](./media/concepts-migrate-import-export/1_server-overview-name-login.png)
 
 将连接信息添加到 MySQL Workbench。
 

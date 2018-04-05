@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 GoToMeeting 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 GoToMeeting 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 GoToMeeting 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 GoToMeeting 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 4826dee82e62ffac70d7ca3d6dcfe005129de764
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: d26b78fb5be96e979fb7b375acf6e907d858b706
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>教程：Azure Active Directory 与 GoToMeeting 的集成
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/12/2018
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 GoToMeeting 的集成，需要以下项：
 
@@ -108,77 +108,32 @@ ms.lasthandoff: 01/12/2018
 
     ![GoToMeeting 域和 URL 单一登录信息](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_url.png)
 
-    在“标识符”文本框中，键入 URL：`https://login.citrixonline.com/saml/sp`
+    在“标识符”文本框中，键入 URL：`https://authentication.logmeininc.com/saml/sp`
 
-4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+4. 单击“显示高级 URL 配置”并配置以下 URL
 
-    ![证书下载链接](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_certificate.png) 
-
+    **登录 URL**（保留为空白）
+    
+    **回复 URL**：`https://authentication.logmeininc.com/saml/acs`
+    
+    **RelayState**：
+    
+    - 对于 GoToMeeting 应用，使用 `https://global.gotomeeting.com`
+    
+    - 对于 GoToTraining，使用 `https://global.gototraining.com`
+    
+    - 对于 GoToWebinar，使用 `https://global.gotowebinar.com` 
+    
+    - 对于 GoToAssist，使用 `https://app.gotoassist.com`
+    
 5. 单击“保存”按钮。
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-gotomeeting-tutorial/tutorial_general_400.png)
 
-6. 若要生成**元数据** URL，请执行以下步骤：
+6. 在其他浏览器窗口中，登录到 [GoToMeeting 组织中心](https://organization.logmeininc.com/)。 会收到提示，确认 IdP 已更新
 
-    a. 单击“应用注册”。
-    
-    ![配置单一登录](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appregistrations.png)
-   
-    b. 单击“终结点”以打开“终结点”对话框。  
-    
-    ![配置单一登录](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpointicon.png)
+7. 启用“我的标识提供程序已使用新域更新”复选框。 结束后，请单击“完成”。
 
-    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
-    
-    ![配置单一登录](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpoint.png)
-     
-    d.单击“下一步”。 现在，转到 **GoToMeeting** 的属性页，使用“复制”按钮复制“应用程序 ID”并将其粘贴到记事本中。
- 
-    ![配置单一登录](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appid.png)
-
-    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
-
-7. 在“GoToMeeting 配置”部分中，单击“配置 GoToMeeting”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
-
-    ![GoToMeeting 配置](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_configure.png) 
-
-8. 在其他浏览器窗口中，登录到 [GoToMeeting 组织中心](https://organization.logmeininc.com/)
-
-9. 在“标识提供者”选项卡下，可以通过提供生成的**元数据 URL** 或下载的**元数据文件**或以**手动**方式配置 Azure 设置。
-
-10. 若要使用**元数据 URL**，请执行以下步骤：
-
-    ![GoToMeeting 配置](./media/active-directory-saas-gotomeeting-tutorial/config1.png)
-
-    a. 在“想要如何配置 SAML IDP?”中，从下拉列表中选择“自动”。
-
-    b. 在“元数据 URL”文本框中粘贴在前面步骤中生成的**元数据 URL**。
-
-    c. 单击“ **保存**”。
-
-11. 若要使用**元数据文件**，请执行以下步骤：
-
-    ![GoToMeeting 配置](./media/active-directory-saas-gotomeeting-tutorial/config2.png)
-
-    a. 在“想要如何配置 SAML IDP?”中，从下拉列表中选择“上传 SAML 元数据文件”。
-
-    b. 若要上传已下载的元数据文件，请单击“上传元数据文件”。
-
-    c. 单击“ **保存**”。
-
-12. 若要**手动**配置，请执行以下步骤：
-
-    ![GoToMeeting 配置](./media/active-directory-saas-gotomeeting-tutorial/config3.png)
-
-    a.  在“登录页 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值。
-
-    b.  在“注销页 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
-
-    c.  在“标识提供者实体 ID”文本框中，粘贴从 Azure 门户复制的“SAML 实体 ID”值。
-
-    d.单击“下一步”。 从下载的元数据文件中提取 X509 证书，并单击“上传证书”上传此证书。
-
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 单击“ **保存**”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)

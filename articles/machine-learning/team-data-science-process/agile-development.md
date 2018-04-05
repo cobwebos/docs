@@ -1,23 +1,23 @@
 ---
-title: "数据科学项目的敏捷开发 - Azure 机器学习 | Microsoft Docs"
-description: "介绍开发人员如何使用 Team Data Science Process 在项目团队中以系统化的协作型版本控制方式执行数据科学项目。"
-documentationcenter: 
+title: 数据科学项目的敏捷开发 - Azure 机器学习 | Microsoft Docs
+description: 介绍开发人员如何使用 Team Data Science Process 在项目团队中以系统化的协作型版本控制方式执行数据科学项目。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: bradsev;
-ms.openlocfilehash: 686f751b241d49d116948711c683f4b504d5d5f9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.author: bradsev
+ms.openlocfilehash: dbaf2df0f5572c9b269000c741f1d736a7521d73
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="agile-development-of-data-science-projects"></a>数据科学项目的敏捷开发
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/30/2017
 2. 向冲刺添加工作项。 
 
 > [!NOTE]
-> 下面一组说明概述了使用 Visual Studio Team Services (VSTS) 设置 TDSP 团队环境所需的步骤。 它们指定了如何使用 VSTS 完成这些任务，因为这是在 Microsoft 中实现 TDSP 的方法。  前面的列表中的第 3 项和第 4 项是选择使用 VSTS 后必然会获得的权益。 如果你的组使用了其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法将会有所不同。 例如，第 6 部分“将工作项与 Git 分支链接在一起”中的项目可能不会和在 VSTS 上的操作一样简单。
+> 下面一组说明概述了使用 Visual Studio Team Services (VSTS) 设置 TDSP 团队环境所需的步骤。 它们指定了如何使用 VSTS 完成这些任务，因为这是在 Microsoft 中实现 TDSP 的方法。  前面的列表中的第 3 项和第 4 项是选择使用 VSTS 后必然会获得的权益。 如果你的组使用了其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。 例如，第 6 部分“将工作项与 Git 分支链接在一起”中的项目可能不会和在 VSTS 上的操作一样简单。
 >
 >
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/30/2017
 
 在团队项目中创建项目存储库后，转到团队“概述”页，然后单击“管理工作”。
 
-![#N/A](./media/agile-development/2-sprint-team-overview.png)
+![2](./media/agile-development/2-sprint-team-overview.png)
 
 若要在积压工作中包括某个功能，请单击“积压工作” --> “功能” --> “新建”，键入功能“标题”（通常是你的项目名称），然后单击“添加”。
 
@@ -184,8 +184,8 @@ ms.lasthandoff: 11/30/2017
 
 下面有关敏捷流程的其他资源链接。
 
-- 敏捷流程：[https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
-- 敏捷流程工作项类型和工作流：[https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
+- 敏捷流程 [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
+- 敏捷流程工作项类型和工作流 [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
 
 
 我们还提供了相应的演练，用于演示**具体方案**的操作过程的所有步骤。 [示例演练](walkthroughs.md)一文列出了相关步骤并以缩略图说明的形式提供了链接。 这些演练演示如何将云、本地工具和服务合并到工作流或管道中，以创建智能应用程序。 

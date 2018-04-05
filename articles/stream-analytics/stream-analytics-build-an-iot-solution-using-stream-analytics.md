@@ -1,25 +1,24 @@
 ---
-title: "使用流分析构建 IoT 解决方案 | Microsoft Docs"
-description: "使用收费站方案了解流分析 IoT 解决方案的入门教程"
-keywords: "iot 解决方案, 开窗函数"
-documentationcenter: 
+title: 使用流分析构建 IoT 解决方案 | Microsoft Docs
+description: 使用收费站方案了解流分析 IoT 解决方案的入门教程
+keywords: iot 解决方案, 开窗函数
+documentationcenter: ''
 services: stream-analytics
 author: SnehaGunda
 manager: kfile
-editor: cgronlun
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 01/12/2018
+ms.date: 03/21/2018
 ms.author: sngun
-ms.openlocfilehash: cc84a34a410a750ddf2acb8f19b3bb809d269098
-ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
+ms.openlocfilehash: b36833a9fe35f14eba6d9e397eb0958b716b313b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
 
@@ -41,8 +40,7 @@ ms.lasthandoff: 01/16/2018
 * Visual Studio 2017、2015 或免费版 [Visual Studio Community](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)
 * [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)
 * 计算机上的管理权限
-* 从 Microsoft 下载中心下载 [TollApp.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TollApp/TollApp.zip)
-* 可选：[GitHub](https://aka.ms/azure-stream-analytics-toll-source) 中 TollApp 事件生成器的源代码
+* 从 [azure-stream-analytics GitHub 存储库](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)下载 TollApp 传感器数据分析的源代码。 此存储库包含将在下节中使用的示例数据和查询。 
 
 ## <a name="scenario-introduction-hello-toll"></a>方案简介：“你好，收费站！”
 收费站是常见景象。 在世界各地的高速公路、桥梁和隧道旁边都会看到它们。 每个收费站有多个收费亭。 在手动收费亭前，要停下来向办事员支付通行费。 在自动收费亭前，穿过收费亭时，每个收费亭上的传感器将扫描安装在汽车挡风玻璃上的 RFID 卡。 我们可以轻松地将车辆通过这些收费站的情况想象成能够执行许多有趣操作的事件流。
@@ -60,9 +58,9 @@ ms.lasthandoff: 01/16/2018
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
 | 3 |2014-09-10 12:02:00.000 |ABC 1004 |CT |Ford |Taurus |1 |0 |5 |456789123 |
-| #N/A |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |1 |0 |4 | |
+| 2 |2014-09-10 12:03:00.000 |XYZ 1003 |CT |Toyota |Corolla |1 |0 |4 | |
 | 1 |2014-09-10 12:03:00.000 |BNJ 1007 |NY |Honda |CRV |1 |0 |5 |789123456 |
-| #N/A |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |1 |0 |6 |321987654 |
+| 2 |2014-09-10 12:05:00.000 |CDE 1007 |NJ |Toyota |4x4 |1 |0 |6 |321987654 |
 
 下面是每个列的简短说明：
 
@@ -87,9 +85,9 @@ ms.lasthandoff: 01/16/2018
 | 1 |2014-09-10T12:03:00.0000000Z |JNB 7001 |
 | 1 |2014-09-10T12:03:00.0000000Z |YXZ 1001 |
 | 3 |2014-09-10T12:04:00.0000000Z |ABC 1004 |
-| #N/A |2014-09-10T12:07:00.0000000Z |XYZ 1003 |
+| 2 |2014-09-10T12:07:00.0000000Z |XYZ 1003 |
 | 1 |2014-09-10T12:08:00.0000000Z |BNJ 1007 |
-| #N/A |2014-09-10T12:07:00.0000000Z |CDE 1007 |
+| 2 |2014-09-10T12:07:00.0000000Z |CDE 1007 |
 
 下面是每个列的简短说明：
 

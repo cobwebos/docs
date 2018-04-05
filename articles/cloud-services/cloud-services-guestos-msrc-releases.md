@@ -1,27 +1,41 @@
 ---
-title: "适用于 Azure 来宾 OS 的更新列表 | Microsoft Docs"
-description: "适用于 Azure 来宾 OS 版本的更新列表"
+title: 适用于 Azure 来宾 OS 的更新列表 | Microsoft Docs
+description: 适用于 Azure 来宾 OS 版本的更新列表
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/4/2018
+ms.date: 3/19/2018
 ms.author: raiye
-ms.openlocfilehash: 7e6b16465be1e032bd5e5fe94c95e6b2259a6704
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c42986e4cdae1d5156863d92eb946220805f7b48
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
+
+## <a name="february-guest-os"></a>2 月来宾 OS
+| 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+| Rel 18-02 | [4074590], [4074588] |Windows 10 安全性 |5.16 |2018 年 2 月 13 日 |
+| Rel 18-02 | [4074587], [4074589], [4074597] |仅 Windows 安全性 |2.71, 3.58, 4.51 |2018 年 2 月 13 日 |
+| Rel 18-02 | [4074736] |Internet Explorer |2.71, 3.58, 4.51 |2018 年 2 月 13 日 |
+| Rel 18-02 | [4074595] |闪烁 |3.58, 4.51, 5.16 |2018 年 2 月 13 日 |
+| 不适用 | [4056894] |1 月非安全性汇总 |2.71 |2018 年 1 月 4 日 |
+| 不适用 | [4056896] |1 月非安全性汇总 |3.58 |2018 年 1 月 4 日 |
+| 不适用 | [4056895] |1 月非安全性汇总 |4.51 |2018 年 1 月 4 日 |
+| 不适用 | [4054176], [4054172] |1 月 .NET 汇总 |2.71 |2018 年 1 月 4 日 |
+| 不适用 | [4054175], [4054171] |1 月 .NET 汇总 |3.58 |2018 年 1 月 4 日 |
+| 不适用 | [4054177], [4054170] |1 月 .NET 汇总 |4.51 |2018 年 1 月 4 日 |
 
 ## <a name="january-guest-os"></a>1 月来宾 OS
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
@@ -587,6 +601,25 @@ ms.lasthandoff: 02/09/2018
 | 不适用 |[2999802] |在 Windows 中打印时，虚线变成实线 |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 不适用 |[2896881] |在 Windows 中登录期间使用 AddPrinterConnection VBScript 命令映射用户的打印机时，登录时间过长 |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 
+
+[4074590]: http://support.microsoft.com/kb/4074590
+[4074588]: http://support.microsoft.com/kb/4074588 
+[4074587]: http://support.microsoft.com/kb/4074587
+[4074589]: http://support.microsoft.com/kb/4074589
+[4074597]: http://support.microsoft.com/kb/4074597
+[4074736]: http://support.microsoft.com/kb/4074736
+[4074595]: http://support.microsoft.com/kb/4074595
+[4056894]: http://support.microsoft.com/kb/4056894
+[4056896]: http://support.microsoft.com/kb/4056896
+[4056895]: http://support.microsoft.com/kb/4048958
+[4054176]: http://support.microsoft.com/kb/4054176
+[4054172]: http://support.microsoft.com/kb/4054172
+[4054175]: http://support.microsoft.com/kb/4054175
+[4054171]: http://support.microsoft.com/kb/4054171
+[4054177]: http://support.microsoft.com/kb/4054177
+[4054170]: http://support.microsoft.com/kb/4054170
+
+
 [4056898]: http://support.microsoft.com/kb/4056898
 [4056897]: http://support.microsoft.com/kb/4056897
 [4056899]: http://support.microsoft.com/kb/4056899
@@ -596,6 +629,7 @@ ms.lasthandoff: 02/09/2018
 [4054520]: http://support.microsoft.com/kb/4054520
 [4054519]: http://support.microsoft.com/kb/4054519
 [4051956]: http://support.microsoft.com/kb/4051956
+
 
 [4053579]: http://support.microsoft.com/kb/4053579
 [4054517]: http://support.microsoft.com/kb/4054517 

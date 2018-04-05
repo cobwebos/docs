@@ -1,10 +1,10 @@
 ---
-title: "如何通过 PHP 使用队列存储 | Microsoft Docs"
-description: "了解如何使用 Azure 队列存储服务创建和删除队列，以及插入、获取和删除消息。 示例用 PHP 编写。"
+title: 如何通过 PHP 使用队列存储 | Microsoft Docs
+description: 了解如何使用 Azure 队列存储服务创建和删除队列，以及插入、获取和删除消息。 示例用 PHP 编写。
 documentationcenter: php
 services: storage
-author: tamram
-manager: timlt
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 7582b208-4851-4489-a74a-bb952569f55b
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 01/11/2018
-ms.author: tamram
-ms.openlocfilehash: 02ffd817f34ae7d5fa1557db0a74e8ff06ab69fc
-ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
+ms.author: rogarana
+ms.openlocfilehash: ec0c6e22919e84bbaed284e16211ef52e526991d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>如何通过 PHP 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -261,7 +261,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="change-the-contents-of-a-queued-message"></a>更改已排队消息的内容
-可以通过调用 **QueueRestProxy->updateMessage** 来更改队列中已就位消息的内容。 如果消息表示工作任务，则可以使用此功能来更新该工作任务的状态。 以下代码使用新内容更新队列消息，并将可见性超时设置为再延长 60 秒。 这会保存与消息关联的工作的状态，并额外为客户端提供一分钟的时间来继续处理消息。 可使用此方法跟踪队列消息上的多步骤工作流，即使处理步骤因硬件或软件故障而失败，也无需从头开始操作。 通常还可以保留重试计数，如果某条消息的重试次数超过 *n*，则应删除该消息。 这可避免每次处理某条消息时都触发应用程序错误。
+可以通过调用 **QueueRestProxy->updateMessage** 来更改队列中已就位消息的内容。 如果消息表示工作任务，则可以使用此功能来更新该工作任务的状态。 以下代码使用新内容更新队列消息，并将可见性超时设置为再延长 60 秒。 这会保存与消息关联的工作的状态，并额外为客户端提供一分钟的时间来继续处理消息。 可使用此方法跟踪队列消息上的多步骤工作流，即使处理步骤因硬件或软件故障而失败，也无需从头开始操作。 通常，还可以保留重试计数，如果某条消息的重试次数超过 *n*，将删除此消息。 这可避免每次处理某条消息时都触发应用程序错误。
 
 ```php
 require_once 'vendor/autoload.php';

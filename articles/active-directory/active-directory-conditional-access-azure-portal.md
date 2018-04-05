@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory 条件性访问 | Microsoft 文档"
-description: "了解 Azure Active Directory 中的条件访问如何帮助你管理中央位置的访问控制。"
+title: Azure Active Directory 条件性访问 | Microsoft 文档
+description: 了解 Azure Active Directory 中的条件访问如何帮助你管理中央位置的访问控制。
 services: active-directory
-keywords: "对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略"
-documentationcenter: 
+keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 02/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 7e4a65d81a7dade9ae63a24657d15a97a3a588b2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 74a87065416b397b4eebbcaa54c769711176708d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 02/24/2018
 
 - [网络位置](active-directory-conditional-access-locations.md)：Azure AD 可从任意位置进行访问。 如果试图从不在 IT 部门控制范围内的网络位置访问，应怎么办？ 使用用户名和密码的组合可能足以作为公司网络资源访问尝试的身份证据。 如果从其他意外的国家或地区发起的访问尝试要求更有力的身份证据，应怎么办？ 如果想要阻止从某些位置发起的访问尝试，应怎么办？  
 
-- [设备管理](active-directory-conditional-access-conditions.md#device-platforms)：在 Azure AD 中，用户可以从大量设备（包括移动设备和个人设备）访问云应用。 如果要求只能由使用受 IT 部门管理的设备的用户执行访问尝试，应怎么办？ 如果要在环境中阻止云应用中的特定设备类型窗体访问，应怎么办？ 
+- [设备管理](active-directory-conditional-access-conditions.md#device-platforms)：在 Azure AD 中，用户可以从大量设备（包括移动设备和个人设备）访问云应用。 如果要求只能使用 IT 部门管理的设备执行访问尝试，应怎么办？ 如果要阻止特定设备类型访问环境中的云应用，应怎么办？ 
 
 - [客户端应用程序](active-directory-conditional-access-conditions.md#client-apps)：现在可以使用各种应用（例如基于 Web 的应用、移动应用或桌面应用）访问许多云应用。 如果使用导致已知问题的客户端应用类型执行访问尝试，应怎么办？ 如果需要由 IT 部门管理的特定应用类型的设备，应怎么办？ 
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric Reliable Services 生命周期概述 | Microsoft 文档"
-description: "了解 Service Fabric Reliable Services 中的不同生命周期事件"
+title: Azure Service Fabric Reliable Services 生命周期概述 | Microsoft 文档
+description: 了解 Service Fabric Reliable Services 中的不同生命周期事件
 services: Service-Fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
 editor: vturecek;
-ms.assetid: 
+ms.assetid: ''
 ms.service: Service-Fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ebfe23ea1e07e7578e8bd352a482ecb1016829de
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9cb017997c528c987403186097599a721ee591bc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services 生命周期概述
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ ms.lasthandoff: 12/21/2017
 2. 然后，并行发生两个事件：
     - 调用 `StatelessService.CreateServiceInstanceListeners()`，打开返回的所有侦听器。 对每个侦听器调用 `ICommunicationListener.OpenAsync()`。
     - 调用服务的 `StatelessService.RunAsync()` 方法。
-3. 如果存在，则调用服务的 `StatelessService.OnOpenAsync()` 方法。 此调用是一种不常见的重写，但是可行的。
+3. 如果存在，则调用服务的 `StatelessService.OnOpenAsync()` 方法。 此调用是一种不常见的重写，但是可行的。 此时可以启动扩展的服务初始化任务。
 
 请注意，用于创建和打开侦听器与 **RunAsync** 的调用之间没有一定的顺序。 可在启动 **RunAsync** 之前打开侦听器。 同样，在通信侦听器打开甚至构造之前，即可调用 **RunAsync**。 如果需要进行任何同步，这是实现器的任务。 下面是一些常见的解决方案：
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 12/21/2017
 1. 并行：
     - 关闭任何打开的侦听器。 对每个侦听器调用 `ICommunicationListener.CloseAsync()`。
     - 取消传递给 `RunAsync()` 的取消令牌。 检查取消令牌的 `IsCancellationRequested` 属性是否返回 true，如果调用令牌的 `ThrowIfCancellationRequested` 方法，则会引发 `OperationCanceledException`。
-2. 如果存在，则在针对每个侦听器完成 `CloseAsync()` 并且完成 `RunAsync()` 后，调用服务的 `StatelessService.OnCloseAsync()` 方法。 重写 `StatelessService.OnCloseAsync()` 不常见。
+2. 如果存在，则在针对每个侦听器完成 `CloseAsync()` 并且完成 `RunAsync()` 后，调用服务的 `StatelessService.OnCloseAsync()` 方法。  当要正常关闭无状态服务实例时调用 OnCloseAsync。 升级服务代码、由于负载均衡而移动服务实例或是检测到暂时性故障时，可能会出现这种情况。 重写 `StatelessService.OnCloseAsync()` 并不常见，但它可以用于安全地关闭资源、停止后台处理、完成外部状态保存或关闭现有连接。
 3. 完成 `StatelessService.OnCloseAsync()` 后，销毁服务对象。
 
 ## <a name="stateful-service-startup"></a>有状态服务启动
@@ -128,10 +128,10 @@ Service Fabric 更改有状态服务的主副本的原因有多种。 最常见�
   - 服务成功完成 `RunAsync()` 并从中返回即可。 完成不是失败条件。 完成 `RunAsync()` 表示该服务的后台工作已完成。 对于有状态可靠服务，如果副本已从主副本降级为次要副本，然后重新升级为主副本，则会再次调用 `RunAsync()`。
   - 如果服务因引发某种意外的异常从 `RunAsync()` 退出，将导致失败。 已关闭服务对象，并已报告运行状况错误。
   - 虽然从这些方法返回没有时间限制，但会立即丧失写入到可靠集合的能力，并因此无法完成任何实际工作。 建议尽快在收到取消请求后返回。 如果服务在合理的时间内未响应这些 API 调用，Service Fabric 可能会强行终止服务。 通常，只有在应用程序升级期间或删除服务时，才发生这种情况。 此超时默认为 15 分钟。
-  - `OnCloseAsync()` 路径中的失败会导致调用 `OnAbort()`，服务可以凭借这最后一个机会，尽最大努力清理并释放它们所占用的资源。
+  - `OnCloseAsync()` 路径中的失败会导致调用 `OnAbort()`，服务可以凭借这最后一个机会，尽最大努力清理并释放它们所占用的资源。 当在节点上检测到永久性故障时，或者当 Service Fabric 由于内部错误而无法可靠地管理服务实例的生命周期时，通常会调用此方法。
+  - 当有状态服务副本要更改角色（例如，更改为主要副本或次要副本）时，调用 `OnChangeRoleAsync()`。 主副本将指定为写状态（允许创建和写入可靠集合）。 辅助副本将指定为读取状态（只能从现有的可靠集合读取）。 有状态服务中的大部分工作在主副本执行。 辅助副本可执行只读验证、报表生成、数据挖掘或其他只读作业。
 
 ## <a name="next-steps"></a>后续步骤
 - [Reliable Services 简介](service-fabric-reliable-services-introduction.md)
 - [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
-- [Reliable Services 高级用法](service-fabric-reliable-services-advanced-usage.md)
 - [副本和实例](service-fabric-concepts-replica-lifecycle.md)

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/12/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c77812db85c3b6730fce9af3f634821b44508687
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: aec2126369f45a89050dbd8b2d3cae7e00ccb8ed
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="understand-and-use-azure-iot-sdks"></a>了解和使用 Azure IoT SDK
 
@@ -32,6 +32,8 @@ ms.lasthandoff: 03/16/2018
 * **Azure IoT Edge** 用于为不使用支持的协议之一的设备构建网关。 网关还可以处理边缘上的消息。
 
 提供 SDK 以支持多种编程语言。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT 设备 SDK
 

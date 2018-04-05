@@ -1,12 +1,12 @@
 ---
-title: "Azure 诊断日志 | Microsoft Docs"
-description: "客户可为 Azure CDN 启用日志分析。"
+title: Azure 诊断日志 | Microsoft Docs
+description: 客户可为 Azure CDN 启用日志分析。
 services: cdn
-documentationcenter: 
-author: 
-manager: 
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: ''
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: 7bb4eebc80d1c0fdcb9fb5d0f6bb7aeeeb3cb08d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f9711f9cfaab1ef22da220a773689c95b1103970
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 12/08/2017
 
     设置 Log Analytics 配置后，请确认是否已选择“CoreAnalytics”。
 
-6. 单击“保存” 。
+6. 单击“ **保存**”。
 
 7. 若要查看新的 OMS 工作区，请转到 Azure 门户仪表板，并单击 Log Analytics 工作区的名称。 单击“OMS 门户”磁贴查看 OMS 存储库中的工作区。 
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 12/08/2017
 
 以下示例演示如何通过 Azure PowerShell Cmdlet 启用诊断日志。
 
-###<a name="enabling-diagnostic-logs-in-a-storage-account"></a>在存储帐户中启用诊断日志
+### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>在存储帐户中启用诊断日志
 
 首先登录并选择订阅：
 
@@ -173,7 +173,7 @@ ms.lasthandoff: 12/08/2017
 
 该工具的使用方式如下：
 
-1.  请访问 GitHub 链接：[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
+1.  访问 github 链接：[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
 2.  下载代码。
 3.  遵照说明进行编译和配置。
 4.  运行工具。
@@ -307,7 +307,7 @@ Verizon 日志数据延迟 1 小时，在终结点传播完成后长达 2 小时
 | RequestCountCacheUncacheable | 因资产的 Cache-Control 和 Expires 标头而无法缓存的资产的所有请求计数，这些标头指示该资产不应在 POP 上缓存或不应由 HTTP 客户端缓存                |是   |否   |
 | RequestCountCacheOthers | 上述未涵盖的具有缓存状态的所有请求的计数。              |是   | 否  |
 | EgressTotal | 出站数据传输量（按 GB 计）              |是   |是   |
-| EgressHttpStatus2xx | 针对状态代码为 2xx HTTP 的响应的出站数据传输量* （按 GB 计）            |是   |否   |
+| EgressHttpStatus2xx | 针对状态代码为 2xx HTTP 的响应的出站数据传输量*（按 GB 计）            |是   |否   |
 | EgressHttpStatus3xx | 针对状态代码为 3xx HTTP 的响应的出站数据传输量（按 GB 计）              |是   |否   |
 | EgressHttpStatus4xx | 针对状态代码为 4xx HTTP 的响应的出站数据传输量（按 GB 计）               |是   | 否  |
 | EgressHttpStatus5xx | 针对状态代码为 5xx HTTP 的响应的出站数据传输量（按 GB 计）               |是   |  否 |

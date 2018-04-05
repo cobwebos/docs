@@ -1,11 +1,11 @@
 ---
-title: "适用于 Windows Universal 应用的 Azure Mobile Engagement 入门"
-description: "了解如何使用适用于 Windows Universal 应用且带分析和推送通知功能的 Azure Mobile Engagement。"
+title: 适用于 Windows Universal 应用的 Azure Mobile Engagement 入门
+description: 了解如何使用适用于 Windows Universal 应用且带分析和推送通知功能的 Azure Mobile Engagement。
 services: mobile-engagement
 documentationcenter: windows
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 48103867-7f64-4646-b019-42bd797d38e2
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 40db7e4dd151ec391c754dc6d4145aeeb8058eca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f1de1092458bfc12236802d829a2043dcc74540
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-windows-universal-apps"></a>适用于 Windows Universal 应用的 Azure Mobile Engagement 入门
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 本主题介绍如何借助 Azure Mobile Engagement 了解应用的使用，以及如何向 Windows Universal 应用程序的分段用户发送推送通知。
@@ -43,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="create-a-windows-universal-app-project"></a>创建 Windows Universal 应用项目
 以下步骤假定使用 Visual Studio 2015，步骤与 Visual Studio 早期版本中的类似。
 
-1. 启动 Visual Studio，并在“主页”屏幕上，选择“新建项目”。
+1. 启动 Visual Studio，在“主页”屏幕上，选择“新建项目”。
 2. 在弹出的窗口中，选择“Windows” -> “通用” -> “空白应用(通用 Windows)”。 输入应用“名称”和“解决方案名称”，并单击“确定”。
 
     ![][1]

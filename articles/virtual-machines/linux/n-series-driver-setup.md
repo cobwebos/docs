@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.date: 03/20/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7d353adcafed02832243277118da8480e54544ce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d97afd2b5dccca64db2df7cb0d4f110987642cfb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
 
-若要利用运行 Linux 的 Azure N 系列 VM 的 GPU 功能，请安装支持的 NVIDIA 图形驱动程序。 部署 N 系列 VM 后，本文提供了驱动程序安装步骤。 针对 [Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 也提供了驱动程序安装信息。
+若要利用运行 Linux 的 Azure N 系列 VM 的 GPU 功能，必须安装 NVIDIA 图形驱动程序。 部署 N 系列 VM 后，本文提供了驱动程序安装步骤。 针对 [Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 也提供了驱动程序安装信息。
 
 有关 N 系列 VM 规格、存储容量和磁盘详细信息，请参阅 [GPU Linux VM 大小](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
 
@@ -32,15 +32,12 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>为 NC、NCv2、NCv3 和 ND 系列 VM 安装 CUDA 驱动程序
 
-从 NVIDIA CUDA 工具包在 N 系列 VM 上安装 NVIDIA 驱动程序的步骤如下。 
+从 NVIDIA CUDA 工具包在 N 系列 VM 上安装 CUDA 驱动程序的步骤如下。 
+
 
 C 和 C++ 开发人员可以选择安装完整的工具包来生成 GPU 加速应用程序。 有关详细信息，请参阅 [CUDA 安装指南](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)。
 
-> [!NOTE]
-> 在本文发布时，此处提供的 CUDA 驱动程序下载链接是最新的。 有关最新 CUDA 驱动程序，请访问 [NVIDIA](https://developer.nvidia.com/cuda-zone) 网站。
->
-
-若要安装 CUDA 工具包，请建立到每个虚拟机的 SSH 连接。 若要验证系统是否具有支持 CUDA 的 GPU，请运行以下命令：
+要安装 CUDA 驱动程序，请建立到每个 VM 的 SSH 连接。 若要验证系统是否具有支持 CUDA 的 GPU，请运行以下命令：
 
 ```bash
 lspci | grep -i NVIDIA
@@ -162,16 +159,13 @@ sudo reboot
 
 ### <a name="distributions"></a>分发
 
-从 Azure Marketplace 部署 N 系列 VM 用于支持 RDMA 连接中映像 RDMA N 系列 VM:
+在 N 系列 VM 上，在支持 RDMA 连接的 Azure Marketplace 中，从以下映像之一部署支持 RDMA 的 N 系列 VM：
   
 * **Ubuntu 16.04 LTS** - 在 VM 上配置 RDMA 驱动程序，并注册 Intel 下载 Intel MPI：
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
-> [!NOTE]
-> 基于 CentOS 的 HPC 映像当前建议不要用于 N 系列 VM 上的 RDMA 连接。 最新支持 NVIDIA GPU 的 CentOS 7.4 内核不支持 RDMA。
-> 
-
+* **基于 CentOS 的 7.4 HPC** - 在 VM 上安装 RDMA 驱动程序和 Intel MPI 5.1。
 
 ## <a name="install-grid-drivers-for-nv-series-vms"></a>为 NV 系列 VM 安装 GRID 驱动程序
 
@@ -321,10 +315,10 @@ EndSection
  
 此外，更新 `"Screen"` 节以使用此设备。
  
-通过运行以下命令可找到 BusID
+通过运行以下命令可找到十进制 BusID
 
 ```bash
-/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1
+echo $((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
 ```
  
 重新分配或重新启动 VM 后，BusID 可能会更改。 因此，重新启动 VM 后，可能需要使用脚本更新 X11 配置中的 BusID。 例如：

@@ -1,33 +1,32 @@
 ---
-title: "创建活动日志警报 | Microsoft 文档"
-description: "在活动日志中发生特定事件时，通过短信、webhook 和电子邮件接收通知。"
+title: 创建经典活动日志警报 | Microsoft Docs
+description: 在活动日志中发生特定事件时，通过短信、webhook 和电子邮件接收通知。
 author: johnkemnetz
-manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 03/18/2017
 ms.author: johnkem
-ms.openlocfilehash: c8a2ce3ca90895262e77c3895867d29c9d3530a2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e0d92fcd6d3cbd50a2bcb8166b27b11bc86aad83
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-activity-log-alerts"></a>创建活动日志警报
+# <a name="create-activity-log-alerts-classic"></a>创建活动日志警报（经典）
 
 ## <a name="overview"></a>概述
 活动日志警报是新发生的活动日志事件与警报中指定的条件匹配时激活的警报。 它们是 Azure 资源，因此，可通过使用 Azure 资源管理器模板进行创建。 此外，还可以在 Azure 门户中创建、更新或删除它们。 本文介绍活动日志警报背后的概念。 然后演示如何使用 Azure 门户设置有关活动日志事件的警报。
 
 > [!NOTE]
 
->  [警报(预览)](monitoring-overview-unified-alerts.md) 目前在创建和管理活动日志方面提供增强的体验。  [了解详细信息](monitoring-activity-log-alerts-new-experience.md)。
+>  此过程已替换为新的[警报](monitoring-overview-unified-alerts.md)体验。 本文为以前的体验提供参考。 [了解详细信息](monitoring-activity-log-alerts-new-experience.md)。
 
 通常，你会在以下情况下创建活动日志警报以接收通知：
 
@@ -59,11 +58,11 @@ ms.lasthandoff: 02/09/2018
 
 若要了解有关服务运行状况通知的详细信息，请参阅[接收有关服务运行状况通知的活动日志警报](monitoring-activity-log-alerts-on-service-notifications.md)。
 
-## <a name="create-an-alert-on-an-activity-log-event-with-a-new-action-group-by-using-the-azure-portal"></a>使用 Azure 门户，通过新操作组创建有关活动日志事件的警报
+## <a name="create-an-alert-classic-on-an-activity-log-event-with-a-new-action-group-by-using-the-azure-portal"></a>使用 Azure 门户，通过新操作组创建有关活动日志事件的警报（经典）
 1. 在[门户](https://portal.azure.com)中，选择“监视器”。
 
     ![“监视”服务](./media/monitoring-activity-log-alerts/home-monitor.png)
-2. 在“活动日志”部分，选择“警报”。
+2. 在“活动日志”部分，选择“警报（经典）”。
 
     ![“警报”选项卡](./media/monitoring-activity-log-alerts/alerts-blades.png)
 3. 选择“添加活动日志警报”，并填写字段。

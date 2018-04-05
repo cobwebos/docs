@@ -1,8 +1,8 @@
 ---
-title: "在已加入域的 HDInsight 中配置 Hive 策略 - Azure |Microsoft Docs"
-description: "学习内容"
+title: 在已加入域的 HDInsight 中配置 Hive 策略 - Azure |Microsoft Docs
+description: 学习内容
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: saurinsh
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.openlocfilehash: 35a74ffb6a30fe2ae7db686be5b6774800ce37b1
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 919a0a45c4c8c94b19ed1d602ed20df0afabd09a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>在已加入域的 HDInsight 中配置 Hive 策略
 了解如何为 Hive 配置 Apache Ranger 策略。 本文将创建两个 Ranger 策略来限制对 hivesampletable 的访问。 HDInsight 群集附带 hivesampletable。 配置这些策略后，可以使用 Excel 和 ODBC 驱动程序连接到 HDInsight 中的 Hive 表。
@@ -45,10 +45,10 @@ ms.lasthandoff: 01/18/2018
     目前，Ranger 只能处理 Yarn 和 Hive。
 
 ## <a name="create-domain-users"></a>创建域用户
-在 [Configure Domain-joined HDInsight clusters](apache-domain-joined-configure.md#optional-create-ad-users-and-groups)（配置已加入域的 HDInsight 群集）教程中，已创建 hiveruser1 和 hiveuser2。 本教程会使用这两个用户帐户。
+请参阅[创建已加入域的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster)，了解如何创建 hiveruser1 和 hiveuser2。 本教程会使用这两个用户帐户。
 
 ## <a name="create-ranger-policies"></a>创建 Ranger 策略
-本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在 [Configure Domain-joined HDInsight clusters](apache-domain-joined-configure.md#optional-create-ad-users-and-groups)（配置已加入域的 HDInsight 群集）教程中创建的。  在下一部分，会在 Excel 中测试两个策略。
+本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在[创建已加入域的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster)教程中创建的。 在下一部分，会在 Excel 中测试两个策略。
 
 **创建 Ranger 策略**
 

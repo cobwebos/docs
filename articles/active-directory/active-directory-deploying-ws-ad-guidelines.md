@@ -1,24 +1,24 @@
 ---
-title: "在 Azure 虚拟机中部署 Windows Server Active Directory 的准则 | Microsoft Docs"
-description: "如果知道如何在本地部署 AD 域服务和 AD 联合身份验证服务，则就了解这些服务在 Azure 虚拟机上的工作方式。"
+title: 在 Azure 虚拟机中部署 Windows Server Active Directory 的准则 | Microsoft Docs
+description: 如果知道如何在本地部署 AD 域服务和 AD 联合身份验证服务，则就了解这些服务在 Azure 虚拟机上的工作方式。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 04df4c46-e6b6-4754-960a-57b823d617fa
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/26/2017
+ms.date: 03/20/2018
 ms.author: femila
-ms.openlocfilehash: 7a56876dfa545d273807444b105de3645dd79d34
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c2d58e056cdb285be51d259492e11e6ae37b253e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>有关在 Azure 虚拟机上部署 Windows Server Active Directory 的指导
 本文阐述在本地部署 Windows Server Active Directory 域服务 (AD DS) 和 Active Directory 联合身份验证服务 (AD FS) 与在 Microsoft Azure 虚拟机上部署这些服务的重要区别。
@@ -71,8 +71,10 @@ ms.lasthandoff: 03/09/2018
 > 
 > 
 
-### <a name="static-ip-addresses-must-be-configured-with-azure-powershell"></a>必须使用 Azure PowerShell 配置静态 IP 地址。
-默认情况下分配动态地址，但可改用 Set-AzureStaticVNetIP cmdlet 分配静态 IP 地址。 这会设置静态 IP 地址，该地址将通过服务修复和 VM 关闭/重新启动而持久保留。 有关详细信息，请参阅 [Static internal IP address for virtual machines](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/)（虚拟机的静态内部 IP 地址）。
+### <a name="static-ip-addresses-can-be-configured-with-azure-powershell"></a>可使用 Azure PowerShell 配置静态 IP 地址
+默认情况下分配动态地址，如果想分配静态 IP 地址，可改用 Set-AzureStaticVNetIP cmdlet。 该 cmdlet 设置静态 IP 地址，该地址将通过服务修复和 VM 关闭/重新启动而持久保留。 有关详细信息，请参阅 [Static internal IP address for virtual machines](http://azure.microsoft.com/blog/static-internal-ip-address-for-virtual-machines/)（虚拟机的静态内部 IP 地址）。 还可在 Azure 门户中创建 VM 的过程中配置静态 IP 地址，如下所示。 有关详细信息，请参阅[使用 Azure 门户创建具有静态公共 IP 地址的 VM](../virtual-network/virtual-network-deploy-static-pip-arm-portal.md)。
+
+![创建 VM 时添加静态 IP 地址这一步骤的屏幕截图](media/active-directory-deploying-ws-ad-guidelines/static-ip.png)
 
 ## <a name="BKMK_Glossary"></a>术语和定义
 下面是本文中所述各种 Azure 技术的术语的不完整列表。
@@ -408,7 +410,7 @@ VM 在启动时或名称发生更改时自动注册其 DNS 名称。
 
 Azure 不会引发分支机构的实物安全性风险，但仍有可能证实 RODC 更具成本效益，因为虽然出于各种不同的原因，但其提供的功能适合这些环境。 例如，RODC 无出站复制，并可有选择地填充机密（密码）。 缺点是缺少这些机密可能需要按需出站流量以验证这些机密，正如用户或计算机进行身份验证那样。 但可有选择地预先填充和缓冲机密。
 
-RODC 在 HBI 和 PII 问题方面具有其他优势，因为可向 RODC 筛选的属性集 (FAS) 添加包含敏感数据的属性。 FAS 是不复制到 RODC 的一组可自定义的属性。 在不允许或不想在 Azure 上存储 PII 或 HBI 时，可使用 FAS 作为安全措施。 有关详细信息，请参阅 [RODC 筛选的属性集][(https://technet.microsoft.com/library/cc753459)]。
+RODC 在 HBI 和 PII 问题方面具有其他优势，因为可向 RODC 筛选的属性集 (FAS) 添加包含敏感数据的属性。 FAS 是不复制到 RODC 的一组可自定义的属性。 在不允许或不想在 Azure 上存储 PII 或 HBI 时，可使用 FAS 作为安全措施。 有关详细信息，请参阅 [RODC 筛选的属性集 [(https://technet.microsoft.com/library/cc753459)]。
 
 确保应用程序将与要使用的 RODC 兼容。 大多数支持 Windows Server Active Directory 的应用程序均可正常使用 RODC，但某些应用程序如果无权访问可写 DC，则可能性能下降或发生故障。 有关详细信息，请参阅 [Read-Only DCs application compatibility guide](https://technet.microsoft.com/library/cc755190)（只读 DC 应用程序兼容性指南）。
 

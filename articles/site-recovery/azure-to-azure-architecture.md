@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Site Recovery 执行 Azure 到 Azure 的复制的体系结构 | Microsoft Docs"
-description: "本文概述使用 Azure Site Recovery 服务在 Azure 区域之间复制 Azure VM 时所用的组件和体系结构。"
+title: 使用 Azure Site Recovery 执行 Azure 到 Azure 的复制的体系结构 | Microsoft Docs
+description: 本文概述使用 Azure Site Recovery 服务在 Azure 区域之间复制 Azure VM 时所用的组件和体系结构。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 126f5c4db355af19a7151a267115127757b17599
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 111217e9335b16659c93da88731e0b7ce6d5fecd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Azure 到 Azure 复制体系结构
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/24/2018
 ## <a name="architectural-components"></a>体系结构组件
 
 下图提供特定区域（在此示例中为“美国东部”位置）中 Azure VM 环境的概要视图。 在 Azure VM 环境中：
-- 应用可在磁盘跨存储帐户分布的 VM 上运行。
+- 应用可在托管磁盘或非托管磁盘跨存储帐户分布的 VM 上运行。
 - VM 可包含在虚拟网络的一个或多个子网内。
 
 
@@ -49,7 +49,8 @@ ms.lasthandoff: 02/24/2018
 **目标资源组** | 复制的 VM 在故障转移后所属的资源组。
 **目标虚拟网络** | 复制的 VM 在故障转移后所处的虚拟网络。 系统会在源虚拟网络和目标虚拟网络之间创建网络映射，反之亦然。
 **缓存存储帐户** | 在源 VM 更改复制到目标存储帐户前，系统会跟踪这些更改并将更改发送到源位置的缓存存储帐户。 此步骤可确保将对 VM 上运行的生产应用程序产生的影响降至最低。
-**目标存储帐户**  | 向其复制数据的目标位置的存储帐户。
+**目标存储帐户（如果源 VM 不使用托管磁盘）**  | 向其复制数据的目标位置的存储帐户。
+**副本托管磁盘（如果源 VM 在托管磁盘上）**  | 向其复制数据的目标位置的托管磁盘。
 **目标可用性集**  | 复制的 VM 在故障转移后所处的可用性集。
 
 ### <a name="step-2"></a>步骤 2
@@ -76,7 +77,7 @@ ms.lasthandoff: 02/24/2018
 
 ### <a name="step-3"></a>步骤 3
 
-正在连续复制时，磁盘写入内容会立即传输到缓存存储帐户。 Site Recovery 处理数据，并将其发送到目标存储帐户。 处理数据后，目标存储帐户中每隔几分钟就会生成恢复点。
+正在连续复制时，磁盘写入内容会立即传输到缓存存储帐户。 Site Recovery 处理数据，并将其发送到目标存储帐户或副本托管磁盘。 处理数据后，目标存储帐户中每隔几分钟就会生成恢复点。
 
 ## <a name="failover-process"></a>故障转移过程
 

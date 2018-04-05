@@ -1,6 +1,6 @@
 ---
-title: "Azure 基于角色的访问控制疑难解答 RBAC | Microsoft Docs"
-description: "获取有关基于角色的访问控制资源问题或疑问的帮助。"
+title: Azure 基于角色的访问控制疑难解答 RBAC | Microsoft Docs
+description: 获取有关基于角色的访问控制资源问题或疑问的帮助。
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2018
+ms.date: 03/19/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: seohack1
-ms.openlocfilehash: c2589aabce86f848fa1aa3e25b3f78be180c5525
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 766ff118638538520c8f17694b32f35dbe6d1025
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-azure-role-based-access-control"></a>Azure 基于角色的访问控制疑难解答 
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/09/2018
 
 所有者和参与者对管理体验具有完全访问权限，但是参与者无法向其他用户或组授予访问权限。 具有读者角色事情会变得更加有趣，因此，我们将着重介绍读者角色。 有关如何授予访问权限的详细信息，请参阅[基于角色的访问控制入门文章](role-based-access-control-configure.md)。
 
-## <a name="app-service-workloads"></a>应用服务工作负荷
+## <a name="app-service"></a>应用服务
 ### <a name="write-access-capabilities"></a>写访问功能
 如果为用户授予单个 Web 应用的只读访问权限，某些功能可能会被禁用，这可能不是你所期望的。 以下管理功能需要对 Web 应用具有**写**访问权限（参与者或所有者），并且在任何只读方案中不可用。
 
@@ -69,7 +69,14 @@ ms.lasthandoff: 02/09/2018
 * Application Insights 组件  
 * Web 测试  
 
-## <a name="virtual-machine-workloads"></a>虚拟机工作负荷
+## <a name="azure-functions"></a>Azure Functions
+[Azure Functions](../azure-functions/functions-overview.md) 的某些功能需要写入权限。 例如，如果给用户分配读者角色，他们将无法查看函数应用中的函数。 门户将显示 (无访问权限)。
+
+![函数应用无访问权限](./media/role-based-access-control-troubleshooting/functionapps-noaccess.png)
+
+读者可单击“平台功能”选项卡，然后单击“所有设置”查看与函数应用（类似于 Web 应用）相关的一些设置，但无法修改任何这些设置。
+
+## <a name="virtual-machine"></a>虚拟机
 与 Web 应用程序很类似，虚拟机边栏选项卡上的某些功能需要对虚拟机或资源组中的其他资源具有写访问权限。
 
 虚拟机与域名、虚拟网络、存储帐户和警报规则相关。

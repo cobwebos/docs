@@ -10,25 +10,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 6146e1ce98144a05bef2ca29705f451aa3f5fb50
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 864e9ff5551637a93b957e5011a8857072c6eaaf
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure 机器学习常见问题
 
+Azure 机器学习是一种完全托管的 Azure 服务，可供你创建、测试、管理及部署机器学习和 AI 模型。 我们的服务和可下载的应用程序可提供一种代码优先方法，该方法利用云、本地和边缘来提供兼具功效、速度和灵活性的培训模型、部署模型、管理模型和监视模型。 此外，Azure 机器学习工作室还可提供基于浏览器的可视化拖放编写环境，无需进行任何编码。 
+
 ## <a name="general-product-questions"></a>一般产品问题
-
-**什么是 Azure 机器学习？**
-
-Azure 机器学习是一种完全托管的 Azure 服务，可供你创建、测试、管理及部署机器学习和 AI 模型。 我们的新服务和可下载的应用程序可提供一种代码优先方法，该方法利用云、本地和边缘来提供兼具功效、速度和灵活性的培训模型、部署模型、管理模型和监视模型。 此外，Azure 机器学习工作室还可提供基于浏览器的可视化拖放编写环境，无需进行任何编码。 
-
-**哪些区域提供新服务？**
-
-在[按区域划分的 Azure 产品](https://azure.microsoft.com/regions/services/)页上的 Azure 机器学习下，可找到试验和模型管理服务的受支持 Azure 区域。
-
-随着产品的不断开发，将会新增更多区域。  在我们的 [Azure 机器学习反馈](https://feedback.azure.com/forums/257792-machine-learning)站点上，可以帮助我们确定要部署区域的优先顺序。 
 
 **需要哪些其他 Azure 服务？**
 

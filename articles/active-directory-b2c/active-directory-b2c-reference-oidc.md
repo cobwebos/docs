@@ -1,24 +1,21 @@
 ---
-title: "通过 OpenID Connect 进行 Web 登录 - Azure AD B2C | Microsoft Docs"
-description: "通过使用 OpenID Connect 身份验证协议的 Azure Active Directory 实现构建 Web 应用程序"
+title: 通过 OpenID Connect 进行 Web 登录 - Azure AD B2C | Microsoft Docs
+description: 通过使用 OpenID Connect 身份验证协议的 Azure Active Directory 实现构建 Web 应用程序
 services: active-directory-b2c
-documentationcenter: 
-author: saeedakhter-msft
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 21d420c8-3c10-4319-b681-adf2e89e7ede
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
-ms.author: saeedakhter-msft
-ms.openlocfilehash: 0eb4194307d1d3953fa1cd88ac014ac7c2ba7311
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: e787ea36ab5099705f151504385dd5dc97029e37
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C：使用 OpenID Connect 进行 Web 登录
 OpenID Connect 是构建在 OAuth 2.0 基础之上的身份验证协议，可用于将用户安全登录到 Web 应用程序。 通过使用 OpenID Connect 的 Azure Active Directory B2C (Azure AD B2C) 实现，可以将 Web 应用程序中的注册、登录和其他标识管理体验转移到 Azure Active Directory (Azure AD) 中。 本指南演示如何使用与语言无关的方式执行此操作。 介绍在不使用我们的任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
@@ -29,7 +26,7 @@ OpenID Connect 是构建在 OAuth 2.0 基础之上的身份验证协议，可用
 
 Azure AD B2C 扩展了标准 OpenID Connect 协议，使其功能远远超出了简单的身份验证和授权。 它引入了[策略参数](active-directory-b2c-reference-policies.md)，通过此参数可以使用 OpenID Connect 向应用添加用户体验，例如注册、登录和配置文件管理。 在这里，我们将演示如何使用 OpenID Connect 和策略在 Web 应用中实现每个体验。 我们还将展示如何获取用于访问 Web API 的访问令牌。
 
-下一节中 HTTP 请求示例使用的是示例 B2C 目录 fabrikamb2c.onmicrosoft.com 以及示例应用程序 https://aadb2cplayground.azurewebsites.net 和策略。 可以随意使用这些值亲自尝试这些请求，或者可以用自己的值替换它们。
+下一节中的示例 HTTP 请求将使用示例 B2C 目录、fabrikamb2c.onmicrosoft.com 和示例应用程序以及 https://aadb2cplayground.azurewebsites.net 和策略。 可以随意使用这些值亲自尝试这些请求，或者可以用自己的值替换它们。
 了解如何[获取自己的 B2C 租户、应用程序和策略](#use-your-own-b2c-directory)。
 
 ## <a name="send-authentication-requests"></a>发送身份验证请求

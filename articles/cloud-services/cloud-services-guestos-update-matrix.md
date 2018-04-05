@@ -1,24 +1,24 @@
 ---
-title: "了解最新的 Azure 来宾 OS 版本 | Microsoft Docs"
-description: "有关 Azure 云服务来宾 OS 的最新发行新闻以及 SDK 兼容性。"
+title: 了解最新的 Azure 来宾 OS 版本 | Microsoft Docs
+description: 有关 Azure 云服务来宾 OS 的最新发行新闻以及 SDK 兼容性。
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
 ms.service: cloud-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/27/2018
+ms.date: 3/19/2018
 ms.author: raiye
-ms.openlocfilehash: dac0efdb1ce76ad6f143479782f164d3304aeaf3
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 0456bf8d8cdd84078d12c3fc0f48d16b0370cddd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
 提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。 此信息可帮助在禁用来宾 OS 之前规划升级路径。 如果根据 [Azure 来宾 OS 更新设置][Azure Guest OS Update Settings]中所述将角色配置为使用自动进行来宾 OS 更新，则不一定要阅读本页面。
@@ -42,6 +42,9 @@ ms.lasthandoff: 02/28/2018
 不太确定什么是来宾 OS 或者来宾 OS 的工作原理？ 请阅读[此部分](#how-it-works)。
 
 ## <a name="news-updates"></a>新闻更新
+###### <a name="march-19-2018"></a>**2018 年 3 月 19 日**
+1 月版来宾 OS 已发布。
+
 ###### <a name="january-29-2018"></a>**2018 年 1 月 29 日**
 1 月来宾 OS 已针对 OS 系列 2 (WA-GUEST-OS-2.70_201801-01) 和 3 (WA-GUEST-OS-3.57_201801-01) 发布
 
@@ -72,12 +75,6 @@ ms.lasthandoff: 02/28/2018
 ###### <a name="july-19-2017"></a>**2017 年 7 月 19 日**
 7 月版来宾 OS 将从 7 月 19 日开始推出，预计于 8 月 8 日正式发行。
 
-###### <a name="july-7-2017"></a>**2017 年 7 月7 日**
-6 月版来宾 OS 已发布。
-
-###### <a name="june-16-2017"></a>**2017 年 6 月 16 日**
-6 月版来宾 OS 将从 6 月 16 日开始推出，预计于 7 月 11 日正式发行。
-
 
 ## <a name="releases"></a>发行版本
 ## <a name="family-5-releases"></a>系列 5 发行版本
@@ -93,8 +90,9 @@ ms.lasthandoff: 02/28/2018
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.16_201802-01 |2018 年 3 月 12 日 |5.18 发布后 |TBD |
 | WA-GUEST-OS-5.15_201801-01 |2018 年 1 月 4 日 |5.17 发布后 |TBD |
-| WA-GUEST-OS-5.14_201712-01 |2018 年 1 月 4 日 |5.16 发布后 |TBD |
+|~~WA-GUEST-OS-5.14_201712-01~~ |2018 年 1 月 4 日 |2018 年 3 月 12 日 |TBD |
 |~~WA-GUEST-OS-5.13_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 4 日|TBD |
 |~~WA-GUEST-OS-5.12_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
 |~~WA-GUEST-OS-5.11_201709-01~~ |2017 年 10 月 6日 |2017 年 12 月 14 日 |TBD |
@@ -118,8 +116,9 @@ ms.lasthandoff: 02/28/2018
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.51_201802-01 |2018 年 3 月 12 日 |4.53 发布后 |TBD |
 | WA-GUEST-OS-4.50_201801-01 |2018 年 1 月 4 日 |4.52 发布后 |TBD |
-| WA-GUEST-OS-4.49_201712-01 |2018 年 1 月 4 日 |4.51 发布后 |TBD |
+|~~WA-GUEST-OS-4.49_201712-01~~ |2018 年 1 月 4 日 |2018 年 3 月 12 日 |TBD |
 |~~WA-GUEST-OS-4.48_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 4 日 |TBD |
 |~~WA-GUEST-OS-4.47_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
 |~~WA-GUEST-OS-4.46_201709-01~~ |2017 年 10 月 6日 |2017 年 12 月 14 日 |TBD |
@@ -143,8 +142,9 @@ ms.lasthandoff: 02/28/2018
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.58_201802-01 |2018 年 3 月 19 日 |3.60 发布后 |TBD |
 | WA-GUEST-OS-3.57_201801-01 |2018 年 1 月 29 日 |3.59 发布后 |TBD |
-| WA-GUEST-OS-3.56_201712-01 |2018 年 1 月 4 日 |3.58 发布后 |TBD |
+|~~WA-GUEST-OS-3.56_201712-01~~ |2018 年 1 月 4 日 |2018 年 3 月 19 日 |TBD |
 |~~WA-GUEST-OS-3.55_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 29 日 |TBD |
 |~~WA-GUEST-OS-3.54_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
 |~~WA-GUEST-OS-3.53_201709-01~~ |2017 年 10 月 6日 |2017 年 12 月 14 日 |TBD |
@@ -168,8 +168,9 @@ ms.lasthandoff: 02/28/2018
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.71_201802-01 |2018 年 3 月 12 日 |2.73 发布后 |TBD |
 | WA-GUEST-OS-2.70_201801-01 |2018 年 1 月 29 日 |2.72 发布后 |TBD |
-| WA-GUEST-OS-2.69_201712-01 |2018 年 1 月 4 日 |2.71 发布后 |TBD |
+|~~WA-GUEST-OS-2.69_201712-01~~ |2018 年 1 月 4 日 |2018 年 3 月 12 日 |TBD |
 |~~WA-GUEST-OS-2.68_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 29 日 |TBD |
 |~~WA-GUEST-OS-2.67_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
 |~~WA-GUEST-OS-2.66_201709-01~~ |2017 年 10 月 6日 |2017 年 12 月 14 日 |TBD |

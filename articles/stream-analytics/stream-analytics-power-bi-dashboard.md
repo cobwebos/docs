@@ -1,12 +1,11 @@
 ---
-title: "Azure 流分析中的 Power BI 仪表板 | Microsoft 文档"
-description: "使用实时流式处理 Power BI 仪表板来采集商业智能信息，并分析流分析作业中的大量数据。"
-keywords: "分析仪表板, 实时仪表板"
+title: Azure 流分析中的 Power BI 仪表板 | Microsoft 文档
+description: 使用实时流式处理 Power BI 仪表板来采集商业智能信息，并分析流分析作业中的大量数据。
+keywords: 分析仪表板, 实时仪表板
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: fe8db732-4397-4e58-9313-fec9537aa2ad
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
-ms.author: samacha
-ms.openlocfilehash: b446e2296f2747012849936b994c4a4a2044869e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: e1f1d960c312362e0e0cd6d2f83599c28c8c3f05
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>流分析和 Power BI：针对流数据的实时分析仪表板
 Azure 流分析使你可以利用其中一种领先的商业智能工具 [Microsoft Power BI](https://powerbi.com/)。 本文将介绍如何使用 Power BI 作为 Azure 流分析作业的输出，以创建商业智能工具。 此外，还将介绍如何创建和使用实时仪表板。
@@ -31,7 +30,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请确保做好以下准备：
+在开始之前，请确保具有以下各项：
 
 * 一个 Azure 帐户。
 * Power BI 帐户。 可使用工作帐户或学校帐户。
@@ -72,7 +71,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
     > 建议不要在 Power BI 帐户中显式创建此数据集和表。 在启动流分析作业，并且该作业开始向 Power BI 发送输出时，这些文件会自动创建。 如果作业查询没有返回任何结果，则无法创建数据集和表。
     >
 
-8. 单击“创建” 。
+8. 单击“创建”。
 
 数据集是使用以下设置创建的；
 
@@ -113,7 +112,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
         WHERE CS1.SwitchNum != CS2.SwitchNum
         GROUP BY TumblingWindow(Duration(second, 1))
 
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 
 ## <a name="test-the-query"></a>测试查询
@@ -173,7 +172,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
     ![新磁贴的可视化效果详细信息](./media/stream-analytics-power-bi-dashboard/add-fraud.png)
 
-7. 单击“下一步”。
+7. 单击“资源组名称” 的 Azure 数据工厂。
 
 8. 填写磁贴详细信息，例如标题和副标题。
 

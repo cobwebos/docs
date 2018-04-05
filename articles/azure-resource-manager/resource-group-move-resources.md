@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4709ee707aa67c8de531b2b3e0b58dbed5c2667b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 94f11504597c127d505d103a417c3d78744d99d1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -87,6 +87,11 @@ ms.lasthandoff: 03/16/2018
   az provider register --namespace Microsoft.Batch
   ```
 
+4. 移动资源的帐户至少需要具备下列权限：
+
+   * 源资源组上的 Microsoft.Resources/subscriptions/resourceGroups/moveResources/action 权限。
+   * 目标资源组上的 Microsoft.Resources/subscriptions/resourceGroups/write 权限。
+
 ## <a name="when-to-call-support"></a>何时致电支持人员
 
 可以通过本文中所述的自助服务操作移动大部分资源。 使用自助服务操作可以：
@@ -105,6 +110,7 @@ ms.lasthandoff: 03/16/2018
 
 * API 管理
 * 应用服务应用（Web 应用）- 请参阅[应用服务限制](#app-service-limitations)
+* 应用服务证书
 * Application Insights
 * 自动化
 * Azure Cosmos DB
@@ -193,7 +199,9 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="app-service-limitations"></a>应用服务限制
 
-移动通过经典模型部署的资源时，其选项各不相同，具体取决于是在订阅内移动资源，还是将应用服务资源移到新的订阅。
+移动通过经典模型部署的资源时，其选项各不相同，具体取决于是在订阅内移动资源，还是将应用服务资源移到新的订阅。 
+
+这些部分中所述的限制适用于已上传的证书，不适用于应用服务证书。 可将应用服务证书移动到新的资源组或订阅，且不会存在任何限制。 如果你有多个使用相同应用服务证书的 Web 应用，请先移动所有这些 Web 应用，然后再移动证书。
 
 ### <a name="moving-within-the-same-subscription"></a>在同一订阅中移动
 

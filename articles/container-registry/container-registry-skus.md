@@ -1,18 +1,18 @@
 ---
-title: "Azure 容器注册表 SKU"
-description: "比较 Azure 容器注册表中的不同服务层。"
+title: Azure 容器注册表 SKU
+description: 比较 Azure 容器注册表中的不同服务层。
 services: container-registry
 author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: 15179fa3e3567f92a5eae69ba9a684addc3138dd
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c9b8e072b5ccd89c27d9c46407e472d6bf1e1e84
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-container-registry-skus"></a>Azure 容器注册表 SKU
 
@@ -37,11 +37,11 @@ Azure 容器注册表 (ACR) 分为多个服务层（称为“SKU”）。 这些
 
 ### <a name="managed-basic-standard-premium"></a>托管的（基本、标准、高级）
 
-托管的注册表由 Azure 管理的 Azure 存储帐户提供支持。 也就是说，存储着你的映像的存储帐户不会出现在你的 Azure 订阅中。 使用托管的注册表 SKU 可以获得几个优势，这在[升级经典注册表][container-registry-upgrade]中进行了深入讨论。 本文重点介绍托管的注册表 SKU 及其功能。
+托管的注册表受益于完全由 Azure 托管的映像存储。 也就是说，存储映像的存储帐户不会显示在 Azure 订阅中。 使用托管的注册表 SKU 可以获得几个优势，[Azure 容器注册表中的容器映像存储][container-registry-storage]中对此进行了深入讨论。 本文重点介绍托管的注册表 SKU 及其功能。
 
 ### <a name="unmanaged-classic"></a>非托管的（经典）
 
-经典注册表是“非托管的”，这是因为，为经典注册表提供支持的存储帐户位于“你的” Azure 订阅中。 因此，将由你负责管理存储着你的容器映像的存储帐户。 使用非托管的注册表时，除了[升级][container-registry-upgrade]到托管的注册表之外，无法在你的需求发生变化时在各种 SKU 之间切换，并且无法使用托管的注册表的多项功能（例如，容器映像删除、[异地复制][container-registry-geo-replication]和 [Webhook][container-registry-webhook]）。
+经典注册表是“非托管的”，这是因为，为经典注册表提供支持的存储帐户位于“你的” Azure 订阅中。 因此，将由你负责管理存储着你的容器映像的存储帐户。 使用非托管的注册表时，无法在需求发生变化时在各种 SKU 之间切换（除非[升级][container-registry-upgrade]到托管的注册表），并且无法使用托管的注册表的多项功能（例如，容器映像删除、[异地复制][container-registry-geo-replication]和 [Webhook][container-registry-webhook]）。
 
 有关将经典注册表升级到托管的 SKU 之一的详细信息，请参阅[升级经典注册表][container-registry-upgrade]。
 
@@ -103,4 +103,5 @@ az acr update --name myregistry --sku Premium
 [az-acr-update]: /cli/azure/acr#az_acr_update
 [container-registry-geo-replication]: container-registry-geo-replication.md
 [container-registry-upgrade]: container-registry-upgrade.md
+[container-registry-storage]: container-registry-storage.md
 [container-registry-webhook]: container-registry-webhook.md

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2d7405baee84b53311f01e748ca7975147c107d8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 63a7ceacffe1ee33227d3a8272dda7de7b3b1135
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
 
@@ -143,6 +143,18 @@ ms.lasthandoff: 03/16/2018
 5. 在 Azure 门户中导航到 Application Insights 性能窗格。 你会在右下角看到可用的探查器跟踪。
 
     ![查看跟踪](./media/app-insights-profiler-aspnetcore-linux/view-traces.png)
+
+## <a name="known-issues"></a>已知问题
+
+### <a name="enable-button-in-profiler-configuration-pane-does-not-work"></a>“探查器配置”窗格中的“启用”按钮不起作用
+**如果使用应用服务 Linux 托管应用，不需要在 App Insights 门户的“性能”窗格中再次启用探查器。在项目中包含 NuGet 包并在“应用设置”中设置App Insights iKey 就可以启用探查器**。
+
+如果按照 [App Insights Profiler for Windows](./app-insights-profiler.md) 启用工作流的流程来单击“配置探查器”窗格中的“启用”，会收到错误消息，因为按钮会尝试在 Linux 环境下安装 Windows 版本的探查器代理。
+
+我们正在努力解决启用体验中的这一问题。
+
+![无需在“性能”窗格中再次启用探查器，探查器会在 Linux 应用服务上持续工作](./media/app-insights-profiler-aspnetcore-linux/issue-enable-profiler.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 如果使用应用程序服务托管的自定义容器，请按照[为容器化 ASP.NET Core 应用程序启用服务探查器](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)中的说明启用 App Insights Profiler

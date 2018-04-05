@@ -1,23 +1,23 @@
 ---
-title: "Team Data Science Process 团队主管任务 - Azure | Microsoft Docs"
-description: "数据科学团队项目的团队主管任务概述。"
-documentationcenter: 
+title: Team Data Science Process 团队主管任务 - Azure | Microsoft Docs
+description: 数据科学团队项目的团队主管任务概述。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: 58e8bfeb547fbcd7f472fbed50073b1ca3176b72
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 85589dfd60a32a28cecf427a7f5668dc36f8f5f2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="team-lead-tasks"></a>团队主管任务
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/14/2017
 4. （可选）将 Azure 文件存储装载到团队主管的 **数据科学虚拟机** (DSVM) 并在其上添加数据资产。
 5. 设置**安全控制**，方法是添加团队成员并配置其权限。
 
->[AZURE.NOTE] 我们在以下说明中概述了使用 VSTS 设置 TDSP 团队环境所需的步骤。 我们指定了如何使用 VSTS 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果你的组使用了其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法将会有所不同。
+>[AZURE.NOTE] 我们在以下说明中概述了使用 VSTS 设置 TDSP 团队环境所需的步骤。 本文指定了如何使用 VSTS 完成这些任务，因为这是我们在 Microsoft 中实现 TDSP 的方法。 如果你的组使用了其他代码托管平台，团队主管需要完成的任务通常不会发生变化。 但是完成这些任务的方法会有所不同。
 
 ## <a name="repositories-and-directories"></a>存储库和目录
 
@@ -88,7 +88,7 @@ ms.lasthandoff: 11/14/2017
 - 转到组的 VSTS 服务器主页，URL 为 `https://<VSTS Server Name\>.visualstudio.com`。 
 - 单击“新建”创建团队项目。 
 
-    ![#N/A](./media/team-lead-tasks/team-leads-2-create-new-team.png)
+    ![2](./media/team-lead-tasks/team-leads-2-create-new-team.png)
 
 - “创建团队项目”窗口会要求 输入项目名称（在此示例中为 **MyTeam**）。 确保选择“敏捷”作为“过程模板”，选择“Git”作为“版本控制”。 
 
@@ -208,7 +208,7 @@ ms.lasthandoff: 11/14/2017
 
 若要将本地 **GroupProjectTemplate** (D1) 文件夹的内容复制到本地 **MyTeamProjectTemplate** (D3)，请运行下列 shell 脚本之一： 
 
-####<a name="from-the-powershell-command-line-for-windows"></a>从适用于 Windows 的 PowerShell 命令行窗口        
+#### <a name="from-the-powershell-command-line-for-windows"></a>从适用于 Windows 的 PowerShell 命令行窗口       
 
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
     .\tdsp_local_copy_win.ps1 2
@@ -216,7 +216,7 @@ ms.lasthandoff: 11/14/2017
     
 ![16](./media/team-lead-tasks/team-leads-16-local_copy_team_lead_new.png)
 
-####<a name="from-the-linux-shell-for-the-linux-dsvm"></a>从适用于 **Linux DSVM** 的 Linux shell
+#### <a name="from-the-linux-shell-for-the-linux-dsvm"></a>从适用于 **Linux DSVM** 的 Linux shell
     
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_linux.sh"
     bash tdsp_local_copy_linux.sh 2
@@ -388,7 +388,7 @@ ms.lasthandoff: 11/14/2017
 
 **如何手动输入 Azure 文件存储信息：**如果没有包含 Azure 文件存储信息的文本文件，可以按照以下屏幕上的说明键入必需的订阅、存储帐户和 Azure 文件存储信息：
 
-- 输入 **n**。
+- 输入 n。
 - 选择在上一步骤中在其中创建了 Azure 文件存储的订阅名称的索引：
 
     ![41](./media/team-lead-tasks/team-leads-41-attach-s5-linux.png)

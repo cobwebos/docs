@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure Monitor 监视数据工厂 | Microsoft Docs"
-description: "了解如何在 Azure Monitor 中，使用 Azure 数据工厂中的信息通过启用诊断日志来监视数据工厂管道。"
+title: 使用 Azure Monitor 监视数据工厂 | Microsoft Docs
+description: 了解如何在 Azure Monitor 中，使用 Azure 数据工厂中的信息通过启用诊断日志来监视数据工厂管道。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: cae3c797171c3904f100ae3cdec47a31b06d3b31
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8ab2e7cdc8472be9c0800eea5bef9322b0ed87f2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 监视数据工厂  
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
@@ -25,7 +25,7 @@ ms.lasthandoff: 01/23/2018
 Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的基础结构指标和日志。 有关详细信息，请参阅[监视概述](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)。 Azure 诊断日志是资源发出的日志，记录与该资源的操作相关的各种频繁生成的数据。 数据工厂在 Azure Monitor 中输出诊断日志。 
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[监视和管理数据工厂版本 1 中的管道](v1/data-factory-monitor-manage-pipelines.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[监视和管理数据工厂版本 1 中的管道](v1/data-factory-monitor-manage-pipelines.md)。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
@@ -230,7 +230,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-此处提供了详细信息](https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
+在此处了解详细信息](https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
 
 ## <a name="schema-of-logs--events"></a>日志和事件的架构
 
@@ -381,7 +381,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |start| String | 激发触发器的开始时间，以时间跨度表示，采用 UTC 格式 | `2017-06-26T20:55:29.5007959Z`|
 |status| String | 指示是否已成功激发触发器的最终状态（Succeeded 或 Failed） | `Succeeded`|
 
-### <a name="metrics"></a>度量值
+## <a name="metrics"></a>度量值
 
 在 Azure 监视器中可以使用遥测来查看 Azure 上的工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的指标（也称为性能计数器）。 Azure 监视器提供多种方式来配置和使用这些指标，以便进行监视与故障排除。
 
@@ -396,7 +396,52 @@ ADFV2 发出以下指标
 | TriggerSucceededRuns | 成功的触发器运行数指标  | Count    | 总计                | 在一分钟时段内成功的触发器运行总数   |
 | TriggerFailedRuns    | 失败的触发器运行数指标     | Count    | 总计                | 在一分钟时段内失败的触发器运行总数      |
 
-要访问指标，请遵照以下文章中的说明 - https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
+若要访问指标，请按照 https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 一文中的说明进行操作 
+
+## <a name="alerts"></a>警报
+
+可在数据工厂中发出有关受支持指标的警报。 单击数据工厂“监视器”页上的“警报”按钮。
+
+![“警报”选项](media/monitor-using-azure-monitor/alerts_image1.png)
+
+这将进入“警报”页。
+
+![“警报”页](media/monitor-using-azure-monitor/alerts_image2.png)
+
+还可以登录到 Azure 门户并单击“监视”-&gt;“警报”，直接访问“警报”页。
+
+![门户菜单中的警报](media/monitor-using-azure-monitor/alerts_image3.png)
+
+### <a name="create-alerts"></a>创建警报
+
+1.  单击“+ 新建警报规则”，创建新的警报。
+
+    ![新建警报规则](media/monitor-using-azure-monitor/alerts_image4.png)
+
+2.  定义警报条件。
+
+    > [!NOTE]
+    > 请务必在“按资源类型筛选”中选择“所有”。
+
+    ![警报条件，第 1 屏，共 3 屏](media/monitor-using-azure-monitor/alerts_image5.png)
+
+    ![警报条件，第 2 屏，共 3 屏](media/monitor-using-azure-monitor/alerts_image6.png)
+
+    ![警报条件，第 3 屏，共 3 屏](media/monitor-using-azure-monitor/alerts_image7.png)
+
+3.  定义警报详细信息。
+
+    ![警报详细信息](media/monitor-using-azure-monitor/alerts_image8.png)
+
+4.  定义操作组。
+
+    ![操作组，第 1 屏，共 4 屏](media/monitor-using-azure-monitor/alerts_image9.png)
+
+    ![操作组，第 2 屏，共 4 屏](media/monitor-using-azure-monitor/alerts_image10.png)
+
+    ![操作组，第 3 屏，共 4 屏](media/monitor-using-azure-monitor/alerts_image11.png)
+
+    ![操作组，第 4 屏，共 4 屏](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>后续步骤
 参阅[以编程方式监视和管理管道](monitor-programmatically.md)一文，了解如何通过运行  来监视和管理管道。 

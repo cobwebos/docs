@@ -1,9 +1,9 @@
 ---
-title: "Azure Cosmos DB 资源模型和概念 | Microsoft Docs"
-description: "了解 Azure Cosmos DB 的数据库、集合、用户定义函数 (UDF)、文档、资源管理权限等的分层模型。"
-keywords: "分层模型, cosmosdb, azure, Microsoft azure"
+title: Azure Cosmos DB 资源模型和概念 | Microsoft Docs
+description: 了解 Azure Cosmos DB 的数据库、集合、用户定义函数 (UDF)、文档、资源管理权限等的分层模型。
+keywords: 分层模型, cosmosdb, azure, Microsoft azure
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: rafats
 manager: jhubbard
 ms.assetid: ef9d5c0c-0867-4317-bb1b-98e219799fd5
@@ -12,18 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a88f17a658987e1ff3ae0e0f38d6551c3acee1da
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: f64d79cd3929a279c7e279e74b0b21d163c0fa45
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Azure Cosmos DB 分层资源模型和核心概念
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Azure Cosmos DB 管理的数据库实体被称为**资源**。 每个资源都通过逻辑 URI 进行唯一标识。 可以使用标准 Http 谓词、请求/响应标头和状态代码与资源进行交互。 
 
@@ -34,6 +32,12 @@ Azure Cosmos DB 管理的数据库实体被称为**资源**。 每个资源都�
 * 如何对资源进行寻址？
 * 如何使用集合？
 * 如何使用存储过程、触发器和用户自定义函数 (UDF)？
+
+在下面的视频中，Azure Cosmos DB 计划经理 Andrew Liu 演示了 Azure Cosmos DB 资源模型。 
+
+> [!VIDEO https://www.youtube.com/embed/luWFgTP0IL4]
+>
+>
 
 ## <a name="hierarchical-resource-model"></a>分层资源模型
 如下面的关系图所示，Azure Cosmos DB 分层资源模型由一个数据库帐户下的多组资源构成，每个资源可通过一个稳定的逻辑 URI 进行寻址。 本文将一组资源称为一个源。 

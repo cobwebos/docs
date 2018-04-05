@@ -1,8 +1,8 @@
 ---
-title: "在用户定义的 C# 代码中调试失败的 Azure Data Lake U-SQL 作业 | Microsoft Docs"
-description: "了解如何使用针对 Visual Studio 的 Azure Data Lake 工具调试 U-SQL 失败顶点。"
+title: 在用户定义的 C# 代码中调试失败的 Azure Data Lake U-SQL 作业 | Microsoft Docs
+description: 了解如何使用针对 Visual Studio 的 Azure Data Lake 工具调试 U-SQL 失败顶点。
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yanancai
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/31/2017
 ms.author: yanacai
-ms.openlocfilehash: 739d46753729b70a24dbd3d6e2d78f8513e143e6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b614583079347c2634f8d03531517d1d32c75132
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>调试失败 U-SQL 作业的用户定义 C# 代码
 
@@ -41,7 +41,7 @@ U-SQL 使用 C# 提供扩展性模型。 在 U-SQL 脚本中，可以轻松调�
 
 1. 单击“下载”以下载所有必需资源和输入流。 如果下载未完成，请单击“重试”。
 
-2. 下载完成后，单击“打开”，生成本地调试环境。 此时，系统会自动创建并打开包含调试解决方案的新 Visual Studio 实例。
+2. 下载完成后，单击“打开”，生成本地调试环境。 将打开一个新的调试解决方案，如果在 Visual Studio 中打开了现有的解决方案，请确保在调试之前保存并关闭它。
 
 ![Azure Data Lake Analytics U-SQL 调试 Visual Studio 下载顶点](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
 

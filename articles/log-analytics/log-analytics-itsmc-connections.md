@@ -1,10 +1,10 @@
 ---
-title: "Azure Log Analytics 中与 IT Service Management Connector 的手支持连接 | Microsoft Docs"
-description: "本文提供了有关如何将 ITSM 产品/服务与 OMS Log Analytics 中的 IT 服务管理连接器 (ITSMC) 相连接，以集中监视和管理 ITSM 工作项的信息。"
-documentationcenter: 
+title: Azure Log Analytics 中与 IT Service Management Connector 的手支持连接 | Microsoft Docs
+description: 本文提供了有关如何将 ITSM 产品/服务与 OMS Log Analytics 中的 IT 服务管理连接器 (ITSMC) 相连接，以集中监视和管理 ITSM 工作项的信息。
+documentationcenter: ''
 author: JYOTHIRMAISURI
 manager: riyazp
-editor: 
+editor: ''
 ms.assetid: 8231b7ce-d67f-4237-afbf-465e2e397105
 ms.service: log-analytics
 ms.workload: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: e0cae844e8b7f3eab68ed02dbcd17f4d1cebfd25
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 35d04fabc66ede309fe91969c5bec3131a282afb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](log-analytics-itsmc-overview.md)。
@@ -271,13 +271,7 @@ ms.lasthandoff: 02/22/2018
 
 > [!NOTE]
 
-> 若要允许用户在 ServiceNow 中通过 Azure 创建**警报**和**事件**：
-
-> - 请确保已在 ServiceNow 实例上安装事件管理模块。
-
-> - 将以下角色添加到集成用户：
->      - evt_mgmt_integration
->      - evt_mgmt_operator  
+> ITSM 连接器无需在 ServiceNow 实例上安装任何其他模块即可向 ServiceNow 发送事件。 如果在 ServiceNow 实例中使用 EventManagement 模块且要使用该连接器在 ServiceNow 中创建事件或警报，请将以下角色添加到集成用户：- evt_mgmt_integration - evt_mgmt_operator  
 
 
 ## <a name="connect-provance-to-it-service-management-connector-in-azure"></a>将 Provance 连接到 Azure 中的 IT 服务管理连接器

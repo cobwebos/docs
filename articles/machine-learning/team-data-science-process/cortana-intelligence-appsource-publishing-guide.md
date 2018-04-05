@@ -1,8 +1,8 @@
 ---
-title: "Cortana Intelligence AppSource 发布指南 | Microsoft Docs"
-description: "作为 Microsoft 合作伙伴，以下是将 Cortana Intelligence 解决方案发布到 AppSource 需要执行的所有步骤。"
+title: Cortana Intelligence AppSource 发布指南 | Microsoft Docs
+description: 作为 Microsoft 合作伙伴，以下是将 Cortana Intelligence 解决方案发布到 AppSource 需要执行的所有步骤。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: AnupamMicrosoft
 manager: jhubbard
 editor: cgronlun
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
-ms.author: anupams;v-bruham;garye
-ms.openlocfilehash: 9f867641b77c8148c1d6cbf2913da9c1f5ce5b71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: anupams
+ms.openlocfilehash: 1a5671eda967c1bba585d31b001bb465526709f3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Cortana Intelligence AppSource 发布指南
 
@@ -47,7 +47,7 @@ AppSource 是业务决策制定者 (BDM) 的单个目标平台，用户可在其
 
     - HDInsight
     - 机器学习
-    - Data Lake Analytics
+    - 数据湖分析
     - 流分析
     - 认知服务
     - Bot 框架
@@ -109,7 +109,7 @@ AppSource 是业务决策制定者 (BDM) 的单个目标平台，用户可在其
 ## <a name="publish-your-app-on-the-publishing-portal"></a>在发布门户上发布应用
 我们为你的应用程序评估上述步骤后，你将获得对发布门户的访问权限，并可以查看[如何通过云合作伙伴门户发布 Cortana Intelligence 产品/服务](https://cloudpartner.azure.com/#documentation/cloud-partner-portal-publish-cortana-intelligence-app)，了解有关后续步骤的详细说明。
 
-如果需要了解有关任何字段的信息，请发送电子邮件至 <appsourcecissupport@microsoft.com>。
+如需了解有关任何字段的信息，请发送电子邮件至 <appsourcecissupport@microsoft.com>。
 ## <a name="my-app-is-published-on-appsource---now-what"></a>我的应用已在 AppSource 上发布 - 现在要做什么？
 首先，祝贺你成功发布应用。
 通过在 AppSource 上发布应用可获得的回报水平主要取决于如何影响目标受众。 请参阅[在 AppSource 上黑客式营销 Cortana Intelligence 应用](http://aka.ms/aagrowthhackguide)，详细了解如何使回报最大化。

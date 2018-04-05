@@ -1,6 +1,6 @@
 ---
-title: "Azure 存储中的数据复制 | Microsoft Docs"
-description: "复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。 复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。"
+title: Azure 存储中的数据复制 | Microsoft Docs
+description: 复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。 复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。
 services: storage
 author: tamram
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 18d0e8bc6cc1559f9ae1a1a4457aa85d2a206597
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 600b66af3b7da24c5a40d09d5cdf76f2d5be67ac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-storage-replication"></a>Azure 存储复制
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/29/2018
 * [异地冗余存储 (GRS)](#geo-redundant-storage)
 * [读取访问异地冗余存储 (RA-GRS)](#read-access-geo-redundant-storage)
 
-创建存储帐户时，默认选项为读取访问异地冗余存储 (RA-GRS)。
+创建存储帐户时，默认选项为本地冗余存储 (LRS)。
 
 下表提供 LRS、ZRS、GRS 和 RA-GRS 之间差异的简要概述。 本文的后续各部分更加详细地介绍了每种类型的复制。
 

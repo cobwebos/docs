@@ -1,8 +1,8 @@
 ---
-title: "Linux Azure 虚拟机中的 SQL Server 常见问题 | Microsoft 文档"
-description: "本文提供有关在 Linux Azure VM 上运行 SQL Server 时遇到的常见问题解答。"
+title: Linux Azure 虚拟机中的 SQL Server 常见问题 | Microsoft 文档
+description: 本文提供有关在 Linux Azure VM 上运行 SQL Server 时遇到的常见问题解答。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: jhubbard
 tags: azure-service-management
@@ -12,11 +12,11 @@ ms.topic: troubleshooting
 ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: jroth
-ms.openlocfilehash: 8b556b01aa47aeb3588138dfa61e517c00dc44dc
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 56a0629249cdb5f0f098d2b7b6d36b3fbb215009
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>在 Linux Azure 虚拟机上运行 SQL Server 的常见问题
 
@@ -71,13 +71,17 @@ ms.lasthandoff: 12/21/2017
 
 1. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？**
 
-   不能。 无法将按分钟付费许可切换为使用自己的许可证。 你必须创建新的 Linux VM、安装 SQL Server，并迁移数据。 请参阅前面的问题，了解有关使用自己许可证的详细信息。
+   不会。 无法将按秒付费许可切换为使用自己的许可证。 你必须创建新的 Linux VM、安装 SQL Server，并迁移数据。 请参阅前面的问题，了解有关使用自己许可证的详细信息。
 
 ## <a name="administration"></a>管理
 
 1. **是否可以使用 SQL Server Management Studio (SSMS) 管理 Linux SQL Server 虚拟机？**
 
    是的，但 SSMS 目前是仅限 Windows 的工具。 必须从 Windows 计算机建立远程连接才能对 Linux SQL Server VM 使用 SSMS。 在 Linux 本地，新的 [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) 工具可以执行许多管理任务。 若要预览跨平台数据库管理工具，请参阅 [SQL Server Operations Studio（预览版）](https://docs.microsoft.com/sql/sql-operations-studio/what-is)。
+
+1. **是否可从 SQL VM 完全删除 SQL Server？**
+
+   是的，但仍将按照 [SQL Server Azure VM 的定价指南](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)收取 SQL VM 费用。 如果不再需要 SQL Server，可以部署新的虚拟机并将数据和应用程序迁移到新的虚拟机。 然后可以删除 SQL Server 虚拟机。
 
 ## <a name="updating-and-patching"></a>更新和修补
 

@@ -1,24 +1,18 @@
 ---
-title: "Azure 自动化中源代码管理与 GitHub Enterprise 的集成 | Microsoft Docs"
-description: "详细介绍如何配置与 GitHub Enterprise 的集成，以便对自动化 Runbook 进行源代码管理。"
+title: Azure 自动化中源代码管理与 GitHub Enterprise 的集成
+description: 详细介绍如何配置与 GitHub Enterprise 的集成，以便对自动化 Runbook 进行源代码管理。
 services: automation
-documentationCenter: 
-authors: georgewallace
-manager: jwhit
-editor: 
-ms.assetid: e01d817c-7d38-421c-adf5-647a4b526eb4
 ms.service: automation
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 07/26/2017
-ms.author: magoedte
-ms.openlocfilehash: 2944b62cb3dc6146573041533d56d45b6cc87f18
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+manager: carmonm
+ms.openlocfilehash: eab61daafe7ef8b5ca2fc1416dc7c04f97b8c671
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Azure 自动化方案 - 与 GitHub Enterprise 集成的自动化源代码管理
 
@@ -52,10 +46,10 @@ GitHRWCredential | 创建的凭据资产，其中包含具有混合辅助角色�
 
 1. Sync-LocalGitFolderToAutomationAccount Runbook 使用 [Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)进行身份验证。 
 
-2. 此外还需一个启用并配置了 Azure 自动化解决方案的 Microsoft Operations Management Suite (OMS) 工作区。 如果没有这样一个与自动化帐户（用于安装和配置此方案）关联的工作区，系统会在用户通过混合 Runbook 辅助角色执行 **New-OnPremiseHybridWorker.ps1** 脚本时为其创建和配置一个。        
+2. 此外还需一个启用并配置了 Azure 自动化解决方案的 Log Analytics 工作区。 如果没有这样一个与自动化帐户（用于安装和配置此方案）关联的工作区，系统会在用户通过混合 Runbook 辅助角色执行 **New-OnPremiseHybridWorker.ps1** 脚本时为其创建和配置一个。        
 
     > [!NOTE]
-    > 目前仅以下区域支持自动化与 OMS 集成：**澳大利亚东南部**、**美国东部 2**、**东南亚**以及**西欧**。 
+    > 目前仅以下区域支持自动化与 Log Analytics 集成：澳大利亚东南部、美国东部 2、东南亚以及西欧。 
 
 3. 一台计算机，可充当专用混合 Runbook 辅助角色，该角色也可在文件系统的源目录中托管 GitHub 软件并维护 Runbook 文件 (*runbook*.ps1)，以便在 GitHub 和自动化帐户之间进行同步。
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 221a049ae37cc6934d04e90b6b8035e2a020e811
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bf2c4a12d1344ec17ce9688e1c7192f57104dc7b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -96,7 +96,7 @@ blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创�
 
 blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
 
-有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的“配置”部分。[](#trigger---configuration)
+有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的[配置](#trigger---configuration)部分。
 
 下面是绑定到 `Stream` 的 C# 脚本代码：
 
@@ -143,7 +143,7 @@ public static void Run(CloudBlockBlob myBlob, string name, TraceWriter log)
 
 blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](functions-triggers-bindings.md#binding-expressions-and-patterns)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
 
-有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的“配置”部分。[](#trigger---configuration)
+有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的[配置](#trigger---configuration)部分。
 
 JavaScript 代码如下所示：
 
@@ -233,12 +233,12 @@ module.exports = function(context) {
 * `string`
 * `Byte[]`
 * 可序列化为 JSON 的 POCO
-* `ICloudBlob`（需要在 *function.json* 中指定“inout”绑定方向）
-* `CloudBlockBlob`（需要在 *function.json* 中指定“inout”绑定方向）
-* `CloudPageBlob`（需要在 *function.json* 中指定“inout”绑定方向）
-* `CloudAppendBlob`（需要在 *function.json* 中指定“inout”绑定方向）
+* `ICloudBlob`<sup>1</sup>
+* `CloudBlockBlob`<sup>1</sup>
+* `CloudPageBlob`<sup>1</sup>
+* `CloudAppendBlob`<sup>1</sup>
 
-如上所述，其中某些类型需要在 *function.json* 中指定 `inout` 绑定方向。 此方向不受 Azure 门户中的标准编辑器支持，因此必须使用高级编辑器。
+<sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
 
 由于整个 Blob 内容都会加载到内存中，因此，只有当 Blob 较小时才建议绑定到 `string`、`Byte[]` 或 POCO。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。 有关详细信息，请参阅本文后面的[并发和内存使用情况](#trigger---concurrency-and-memory-usage)。
 
@@ -314,7 +314,7 @@ module.exports = function (context, myBlob) {
 
 ## <a name="trigger---blob-receipts"></a>触发器 - Blob 回执
 
-Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次调用 blob 触发器函数。 为了确定是否已处理给定的 blob 版本，它会维护 blob 回执。
+Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次调用 blob 触发器函数。 为了确定是否已处理给定的 blob 版本，它会维护 *blob 回执*。
 
 Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名为 azure-webjobs-hosts 的容器中（由 `AzureWebJobsStorage` 应用设置定义）。 Blob 回执包含以下信息：
 
@@ -374,7 +374,6 @@ public static void Run(
     TraceWriter log)
 {
     log.Info($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
-
 }
 ```        
 
@@ -534,12 +533,12 @@ public static void Run(
 * `Byte[]`
 * `CloudBlobContainer`
 * `CloudBlobDirectory`
-* `ICloudBlob`（需要在 *function.json* 中指定“inout”绑定方向）
-* `CloudBlockBlob`（需要在 *function.json* 中指定“inout”绑定方向）
-* `CloudPageBlob`（需要在 *function.json* 中指定“inout”绑定方向）
-* `CloudAppendBlob`（需要在 *function.json* 中指定“inout”绑定方向）
+* `ICloudBlob`<sup>1</sup>
+* `CloudBlockBlob`<sup>1</sup>
+* `CloudPageBlob`<sup>1</sup>
+* `CloudAppendBlob`<sup>1</sup>
 
-如上所述，其中某些类型需要在 *function.json* 中指定 `inout` 绑定方向。 此方向不受 Azure 门户中的标准编辑器支持，因此必须使用高级编辑器。
+<sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
 
 由于整个 Blob 内容都会加载到内存中，因此，只有当 Blob 较小时才建议绑定到 `string` 或 `Byte[]`。 平时，最好使用 `Stream` 或 `CloudBlockBlob` 类型。 有关详细信息，请参阅本文前文中的[并发和内存使用情况](#trigger---concurrency-and-memory-usage)。
 
@@ -737,21 +736,23 @@ public static void Run(
 
 ## <a name="output---usage"></a>输出 - 用法
 
-在 C# 和 C# 脚本中，可以为 blob 输出绑定使用以下参数类型：
+在 C# 和 C# 脚本中，可绑定到以下类型，以编写 blob：
 
 * `TextWriter`
 * `out string`
 * `out Byte[]`
 * `CloudBlobStream`
 * `Stream`
-* `CloudBlobContainer`
+* `CloudBlobContainer`<sup>1</sup>
 * `CloudBlobDirectory`
-* `ICloudBlob`（需要在 *function.json* 中指定“inout”绑定方向）
-* `CloudBlockBlob`（需要在 *function.json* 中指定“inout”绑定方向）
-* `CloudPageBlob`（需要在 *function.json* 中指定“inout”绑定方向）
-* `CloudAppendBlob`（需要在 *function.json* 中指定“inout”绑定方向）
+* `ICloudBlob`<sup>2</sup>
+* `CloudBlockBlob`<sup>2</sup>
+* `CloudPageBlob`<sup>2</sup>
+* `CloudAppendBlob`<sup>2</sup>
 
-如上所述，其中某些类型需要在 *function.json* 中指定 `inout` 绑定方向。 此方向不受 Azure 门户中的标准编辑器支持，因此必须使用高级编辑器。
+<sup>1</sup> function.json 中需有 "in" 绑定 `direction` 或 C# 类库中需有 `FileAccess.Read`。
+
+<sup>2</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
 
 在异步函数中，请使用返回值或 `IAsyncCollector` 而非 `out` 参数。
 

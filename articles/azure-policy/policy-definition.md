@@ -1,19 +1,19 @@
 ---
-title: "Azure 策略定义结构 | Microsoft Docs"
-description: "介绍 Azure 策略如何使用资源策略定义，通过描述何时强制实施策略和要执行的操作为组织中的资源建立约定。"
+title: Azure 策略定义结构 | Microsoft Docs
+description: 介绍 Azure 策略如何使用资源策略定义，通过描述何时强制实施策略和要执行的操作为组织中的资源建立约定。
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
-ms.custom: 
-ms.openlocfilehash: ffff4a663b64342142f42a662905a290044e2dfb
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.custom: ''
+ms.openlocfilehash: 50965010d821d4edf94e2f5727546cb56f61f5db
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 策略定义结构
 
@@ -70,7 +70,9 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 * `all`：评估资源组和所有资源类型 
 * `indexed`：仅评估支持标记和位置的资源类型
 
-建议将**模式**设置为 `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则需要指定 **mode** 参数并将其设置为 `all`。 
+大多数情况下，建议将“mode”设置为 `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则需要手动指定 mode 参数。
+
+在创建强制执行标记或位置的策略时，应该使用 `indexed`。 这并不是必须的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 在这一点上，资源组是一个例外。 尝试在资源组上强制执行位置或标记的策略应将“mode”设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroup` 类型。 请在[强制执行资源组标记](scripts/enforce-tag-rg.md)查看相关示例。
 
 ## <a name="parameters"></a>parameters
 
@@ -126,7 +128,7 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
     <condition> | <logical operator>
   },
   "then": {
-    "effect": "deny | audit | append"
+    "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
   }
 }
 ```
@@ -165,16 +167,22 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 条件评估字段是否符合特定的准则。 支持的条件有：
 
 * `"equals": "value"`
+* `"notEquals": "value"`
 * `"like": "value"`
+* `"notLike": "value"`
 * `"match": "value"`
+* `"notMatch": "value"`
 * `"contains": "value"`
+* `"notContains": "value"`
 * `"in": ["value1","value2"]`
+* `"notIn": ["value1","value2"]`
 * `"containsKey": "keyName"`
+* `"notContainsKey": "keyName"`
 * `"exists": "bool"`
 
-在使用 **like** 条件时，可以在值中提供通配符 (*)。
+使用 like 和 notLike 条件时，可以在值中提供通配符 (*)。
 
-当使用 **match** 条件时，请提供 `#` 来表示数字，提供 `?` 来表示字母，提供任何其他字符来表示该实际字符。 有关示例，请参阅[批准的 VM 映像](scripts/allowed-custom-images.md)。
+当使用 match 和 notMatch 条件时，请提供 `#` 来表示数字，提供 `?` 来表示字母，提供任何其他字符来表示该实际字符。 有关示例，请参阅[批准的 VM 映像](scripts/allowed-custom-images.md)。
 
 ### <a name="fields"></a>字段
 使用字段构成条件。 字段显示用于描述资源状态的资源请求负载属性。  
@@ -182,12 +190,28 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 支持以下字段：
 
 * `name`
+* `fullName`
+  * 返回资源的全名，包括任何父级信息（例如：myServer/myDatabase）
 * `kind`
 * `type`
 * `location`
 * `tags`
-* `tags.*`
+* `tags.tagName`
+* `tags[tagName]`
+  * 括号语法支持包含句点的标记名称
 * 属性别名 - 有关列表，请参阅[别名](#aliases)。
+
+### <a name="alternative-accessors"></a>可供选择的取值函数
+“Field”是策略规则中使用的主要取值函数。 它会直接检查被评估的资源。 而策略支持另一个取值函数“source”。
+
+```json
+"source": "action",
+"equals": "Microsoft.Compute/virtualMachines/write"
+```
+
+“source”只支持一个值，就是“action”。 “action”返回被评估请求的授权操作。 [活动日志](../monitoring-and-diagnostics/monitoring-activity-log-schema.md)中的授权部分公开了授权操作。
+
+当策略在后台评估现有资源时，它将“action”设为对此资源类型的 `/write` 授权操作。
 
 ### <a name="effect"></a>效果
 策略支持以下类型的效果：
@@ -212,7 +236,7 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 
 值可以是字符串或 JSON 格式对象。
 
-借助 AuditIfNotExists 和 DeployIfNotExists，可以评估子资源是否存在，并在该资源不存在时应用规则和相应的作用。 例如，可以要求为所有虚拟网络部署网络观察程序。
+借助 AuditIfNotExists 和 DeployIfNotExists，可以评估相关资源是否存在，并在该资源不存在时应用规则和相应的作用。 例如，可以要求为所有虚拟网络部署网络观察程序。
 有关未部署虚拟机扩展时的审核示例，请参阅[如果扩展不存在，则进行审核](scripts/audit-ext-not-exist.md)。
 
 

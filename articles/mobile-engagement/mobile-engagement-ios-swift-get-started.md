@@ -1,11 +1,11 @@
 ---
-title: "适用于 iOS (Swift) 的 Azure Mobile Engagement 入门 | Microsoft Docs"
-description: "了解如何使用适用于 iOS 应用的具有分析和推送通知功能的 Azure Mobile Engagement。"
+title: 适用于 iOS (Swift) 的 Azure Mobile Engagement 入门 | Microsoft Docs
+description: 了解如何使用适用于 iOS 应用的具有分析和推送通知功能的 Azure Mobile Engagement。
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 196c282d-6f2f-4cbc-aeee-6517c5ad866d
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: swift
 ms.topic: hero-article
 ms.date: 09/20/2016
 ms.author: piyushjo
-ms.openlocfilehash: 1011b9823333e79a52cd2d187df4f8d063b1f799
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1168e05afa457825c2b982d6d33ea73c62b565dc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-swift"></a>适用于 Swift 中 iOS 应用的 Azure Mobile Engagement 入门
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 本主题介绍如何借助 Azure Mobile Engagement 了解应用的使用，并向 iOS 应用程序的细分用户发送推送通知。

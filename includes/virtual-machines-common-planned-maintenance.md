@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 193003cef0aed464596e913c0df86e6123292b9f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e484dac645ff2e5867d2e652c389a9950e8bac12
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性、性能及安全性。 此类更新包括修补宿主环境（例如操作系统、虚拟机监控程序以及主机上部署的各种代理）中的软件组件、升级网络组件以及硬件解除授权等多项内容。 大多数此类更新在执行时不会影响托管的虚拟机。 但是，也会存在更新产生影响的情况：
 
-- 如果维护不需重启，Azure 会在更新主机时使用就地迁移来暂停 VM。
+- 如果可进行无需重启的更新，则在更新主机或虚拟机完全移动到已更新主机时，Azure 会使用内存保留维护来暂停 VM。
 
 - 如果维护需重启，你会收到一个通知，其中会说明计划维护的时间。 在这些示例中，系统还会向你提供一个时间范围，方便你在适合自己的时间自行启动维护。
 
@@ -26,13 +26,13 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 有关管理计划维护的“操作说明”信息，请参阅 [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) 或 [Windows](../articles/virtual-machines/windows/maintenance-notifications.md) 的“处理计划维护通知”。
 
-## <a name="in-place-vm-migration"></a>就地 VM 迁移
+## <a name="memory-preserving-maintenance"></a>内存保留维护
 
-当更新不需要完整的重启时，可以使用就地实时迁移。 在更新过程中，虚拟机会暂停约 30 秒，保留在 RAM 中的内存，而宿主环境则会应用必需的更新和修补程序。 然后，虚拟机会进行恢复，其时钟会自动同步。
+如果更新不需要完全重新启动，则会使用内存保留维护机制来限制对虚拟机的影响。 虚拟机会暂停最多 30 秒，保留在 RAM 中的内存，而宿主环境则会应用必需的更新和修补程序，或将 VM 移动到已更新的主机。 然后，虚拟机会进行恢复，其时钟会自动同步。 
 
 对于可用性集中的 VM，一次更新一个更新域。 一个更新域 (UD) 中的所有 VM 都会进行暂停、更新和恢复，然后计划内维护就会转到下一 UD。
 
-这些类型的更新可能会影响某些应用程序。 执行实时事件处理（例如媒体流或转码）或高吞吐量网络方案的应用程序可能无法容忍暂停 30 秒钟。 <!-- sooooo, what should they do? --> 
+这些类型的更新可能会影响某些应用程序。 执行实时事件处理（例如媒体流或转码）或高吞吐量网络方案的应用程序可能无法容忍暂停 30 秒钟。 <!-- sooooo, what should they do? --> 如果将 VM 移动到不同的主机，则某些敏感的工作负荷可能会在导致虚拟机暂停的几分钟内出现略微的性能下降。 
 
 
 ## <a name="maintenance-requiring-a-reboot"></a>需要重启的维护
@@ -46,6 +46,8 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 如果在启动自助式维护的过程中出错，系统会停止操作，不更新 VM，并会将其从计划内维护迭代中删除。 系统稍后会与你联系并提供新计划，让你有进行自助式维护的新机会。 
 
 自助式维护时段过后，就会开始计划维护时段。 在这段时间内，仍可以查询维护时段，但不能再自行启动维护。
+
+有关管理需要重启的维护的信息，请参阅 [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) 或 [Windows](../articles/virtual-machines/windows/maintenance-notifications.md)的“处理计划维护通知”。 
 
 ## <a name="availability-considerations-during-planned-maintenance"></a>计划内维护期间的可用性注意事项 
 

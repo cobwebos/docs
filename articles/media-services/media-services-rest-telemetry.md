@@ -1,11 +1,11 @@
 ---
-title: "使用 .REST 配置 Azure 媒体服务遥测 | Microsoft Docs"
-description: "本文介绍如何通过 REST API 使用 Azure 媒体服务遥测。"
+title: 使用 .REST 配置 Azure 媒体服务遥测 | Microsoft Docs
+description: 本文介绍如何通过 REST API 使用 Azure 媒体服务遥测。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: e1a314fb-cc05-4a82-a41b-d1c9888aab09
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 7d785c6eb9a9e16ae4853cded3c7c142080c7a09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abd093a0b8408e9dcffd4eb9765a767f78fd6fc1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>使用 REST 配置 Azure 媒体服务遥测
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 - 获取通知终结点
 - 创建用于监视的通知终结点。 
 
-    要创建通知终结点，将 EndPointType 设置为 AzureTable (2) 并将 endPontAddress 设置为存储表（例如 https://telemetryvalidationstore.table.core.windows.net/）。
+    若要创建通知终结点，请将 EndPointType 设置为 AzureTable (2) 并将 endPontAddress 设置为存储表（例如 https://telemetryvalidationstore.table.core.windows.net/)）。
   
 - 获取监视配置
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/11/2017
  
 ## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>获取与媒体服务帐户关联的存储帐户
 
-###<a name="request"></a>请求
+### <a name="request"></a>请求
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts HTTP/1.1
     x-ms-version: 2.13
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="get-the-notification-endpoints"></a>获取通知终结点
 
-###<a name="request"></a>请求
+### <a name="request"></a>请求
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.13
@@ -83,7 +83,7 @@ ms.lasthandoff: 10/11/2017
     Authorization: (redacted)
     Host: wamsbnp1clus001rest-hs.cloudapp.net
     
-###<a name="response"></a>响应
+### <a name="response"></a>响应
     HTTP/1.1 200 OK
     Cache-Control: no-cache
     Content-Length: 20
@@ -106,7 +106,7 @@ ms.lasthandoff: 10/11/2017
  
 ## <a name="create-a-notification-endpoint-for-monitoring"></a>创建用于监视的通知终结点
 
-###<a name="request"></a>请求
+### <a name="request"></a>请求
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.13
@@ -125,9 +125,9 @@ ms.lasthandoff: 10/11/2017
     }
 
 >[!NOTE]
->请务必将“https://telemetryvalidationstore.table.core.windows.net”值更改为存储帐户。
+>不要忘记将“https://telemetryvalidationstore.table.core.windows.net”值更改为自己的存储帐户。
 
-###<a name="response"></a>响应
+### <a name="response"></a>响应
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -158,7 +158,7 @@ ms.lasthandoff: 10/11/2017
     Authorization: (redacted)
     Host: wamsbnp1clus001rest-hs.cloudapp.net
 
-###<a name="response"></a>响应
+### <a name="response"></a>响应
     
     HTTP/1.1 200 OK
     Cache-Control: no-cache
@@ -221,7 +221,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="stop-telemetry"></a>停止遥测
 
-###<a name="request"></a>请求
+### <a name="request"></a>请求
 
     DELETE https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
     x-ms-version: 2.13

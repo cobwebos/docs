@@ -1,12 +1,12 @@
 ---
-title: "使用 PagerDuty 配置 Azure 服务运行状况警报 | Microsoft Docs"
-description: "获取有关发送到 PagerDuty 实例的服务运行状况事件的个性化通知。"
+title: 使用 PagerDuty 配置 Azure 服务运行状况警报 | Microsoft Docs
+description: 获取有关发送到 PagerDuty 实例的服务运行状况事件的个性化通知。
 author: shawntabrizi
 manager: scotthit
-editor: 
+editor: ''
 services: service-health
 documentationcenter: service-health
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-health
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 9edcb727b9f0af348cacd5533523c4f2e8214703
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 6e9fcf20d368e270f9af4551c539acd873335498
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-service-health-alerts-with-pagerduty"></a>使用 PagerDuty 配置服务运行状况警报
 
@@ -88,11 +88,11 @@ ms.lasthandoff: 11/16/2017
 
     HEADERS     Content-Type: application/json
 
-    BODY        <Service Health payload>
+    BODY        <service health payload>
     ```
 3. 应会收到 `202 Accepted` 并显示包含“事件 ID”的消息。
 
-4. 转到 [PagerDuty](https://www.pagerduty.com/) 确认集成已设置成功。
+4. 转到 [PagerDuty](https://www.pagerduty.com/)，确认集成已设置成功。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何[为现有问题管理系统配置 Webhook 通知](service-health-alert-webhook-guide.md)。

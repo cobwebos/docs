@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights 常见问题解答 | Microsoft Docs"
-description: "有关 Application Insights 的常见问题。"
+title: Azure Application Insights 常见问题解答 | Microsoft Docs
+description: 有关 Application Insights 的常见问题。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: ed10b364a809c519fe9fe49e019df22598b8c04e
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 721799703923339d397113fc278cdeb6c6dbb88f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 02/03/2018
 * [Azure 诊断](app-insights-azure-diagnostics.md)
 * [Docker 容器](app-insights-docker.md)
 * [将表导入到分析](app-insights-analytics-import.md)
-* [OMS (Log Analytics)](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
+* [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
 * [Logstash](app-insights-analytics-import.md)
 
 ## <a name="can-i-filter-out-or-modify-some-telemetry"></a>是否可以筛选或修改某些遥测？
@@ -250,7 +250,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 ### <a name="firewall-door"></a>防火墙门
 
-允许 Web 服务器将遥测发送到终结点 https://dc.services.visualstudio.com:443 和 https://rt.services.visualstudio.com:443 。 
+允许 Web 服务器将遥测发送到我们的终结点 https://dc.services.visualstudio.com:443 和 https://rt.services.visualstudio.com:443。 
 
 ### <a name="proxy"></a>代理
 
@@ -262,7 +262,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 </TelemetryChannel>
 ```
 
-网关应将流量路由到 https://dc.services.visualstudio.com:443/v2/track
+网关须将流量路由到 https://dc.services.visualstudio.com:443/v2/track
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>是否可以在 Intranet 服务器上运行可用性 Web 测试？
 

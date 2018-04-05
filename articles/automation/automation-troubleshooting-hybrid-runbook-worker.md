@@ -1,24 +1,18 @@
 ---
-title: "对 Azure 自动化混合 Runbook 辅助角色相关问题进行故障排除 | Microsoft Docs"
-description: "介绍 Azure 自动化中最常见的混合 Runbook 辅助角色问题的相关表现、起因及解决方法。"
+title: 对 Azure 自动化混合 Runbook 辅助角色相关问题进行故障排除
+description: 介绍 Azure 自动化中最常见的混合 Runbook 辅助角色问题的相关表现、起因及解决方法。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 02c6606e-8924-4328-a196-45630c2255e9
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/19/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/25/2017
-ms.author: magoedte
-ms.openlocfilehash: 75f4ac1bc940a2b1d8e4ac6aeac8b80c642489da
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+manager: carmonm
+ms.openlocfilehash: 2536a197cf9eca07f21b78f31f67065475054bd5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-tips-for-hybrid-runbook-worker"></a>混合 Runbook 辅助角色的故障排除提示
 
@@ -49,12 +43,12 @@ Runbook 执行失败，返回的错误为“无法运行作业操作‘激活’
 运行混合 Runbook 辅助角色的计算机应满足最低硬件要求，才能指定它托管此功能。 否则，在执行过程中，根据其他后台进程的资源使用率和 runbook 所导致的争用，该计算机将变为过度使用，从而导致 runbook 作业延迟或超时。 
 
 #### <a name="solution"></a>解决方案
-首先，确认指定为运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。  如果满足，请监视 CPU 和内存利用率，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。  如果存在内存或 CPU 压力，这可能指示需要升级或添加额外的处理器或增加内存来解决资源瓶颈问题，从而解决此错误。 或者，选择其他可支持最低要求的计算资源，并在工作负荷需求指示需要增加时进行扩展。         
+首先，确认指定为运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。 如果满足，请监视 CPU 和内存利用率，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。 如果存在内存或 CPU 压力，这可能指示需要升级或添加额外的处理器或增加内存来解决资源瓶颈问题，从而解决此错误。 或者，选择其他可支持最低要求的计算资源，并在工作负荷需求指示需要增加时进行扩展。         
 
 #### <a name="cause-3-runbooks-cannot-authenticate-with-local-resources"></a>原因 3：runbook 无法使用本地资源进行身份验证
 
 #### <a name="solution"></a>解决方案
-检查 **Microsoft-SMA** 事件日志中是否有描述为 Win32 Process Exited with code [4294967295] 的相应事件。  此错误的原因是尚未在 runbook 中配置身份验证，或者未为混合辅助角色组指定运行方式凭据。  请查看 [Runbook](automation-hrw-run-runbooks.md#runbook-permissions) 权限，确认已正确为 runbook 配置身份验证。  
+检查 **Microsoft-SMA** 事件日志中是否有描述为 Win32 Process Exited with code [4294967295] 的相应事件。 此错误的原因是尚未在 runbook 中配置身份验证，或者未为混合辅助角色组指定运行方式凭据。 请查看 [Runbook 权限](automation-hrw-run-runbooks.md#runbook-permissions)，确认已正确为 runbook 配置身份验证。  
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Site Recovery 中的 PowerShell 将 VMware VM 复制和故障转移到 Azure | Microsoft Docs"
-description: "了解如何使用 Azure Site Recovery 中的 PowerShell 设置 VMware VM 到 Azure 的复制和故障转移。"
+title: 使用 Azure Site Recovery 中的 PowerShell 将 VMware VM 复制和故障转移到 Azure | Microsoft Docs
+description: 了解如何使用 Azure Site Recovery 中的 PowerShell 设置 VMware VM 到 Azure 的复制和故障转移。
 services: site-recovery
 author: bsiva
 manager: abhemraj
@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: bsiva
-ms.openlocfilehash: 9a2edb874ca969813a4f826cd80ef855e391dc4b
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: cbb76aafe97e9e9b45c48a2b13bd1a6566b51fa5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 将 VMware VM 复制和故障转移到 Azure
 
@@ -115,6 +115,18 @@ ResourceName      ResourceGroupName ResourceNamespace          ResouceType
 ------------      ----------------- -----------------          -----------
 VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
 ```
+
+> [!TIP]
+> 除了使用 Set-ASRVaultContext cmdlet 之外，还可以使用 Import-AzureRmRecoveryServicesAsrVaultSettingsFile cmdlet 设置保管库上下文。 将保管库注册密钥文件所在位置的路径指定为 Import-AzureRmRecoveryServicesAsrVaultSettingsFile cmdlet 的路径参数。
+>
+>例如：
+>
+>```azurepowershell
+>Get-AzureRmRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
+>
+>Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path "C:\Work\VMwareDRToAzurePs_2017-11-23T19-52-34.VaultCredentials"
+>```
+>
 
 本文的后续部分假定已设置 Azure Site Recovery 操作的保管库上下文。
 

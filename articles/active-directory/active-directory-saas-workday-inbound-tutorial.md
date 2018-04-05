@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 976d7e7cb304a24f235e51952ce04826776e2789
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
 
@@ -397,9 +397,9 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 **命令 #1**
 
-> cd C:\\Program Files\\Microsoft Azure Active Directory Synchronization Agent\\Modules\\AADSyncAgent
+> cd "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Modules\AADSyncAgent" Agent\\Modules\\AADSyncAgent
 
-> import-module AADSyncAgent.psd1
+> Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Modules\AADSyncAgent\AADSyncAgent.psd1"
 
 **命令 #2**
 
@@ -416,6 +416,9 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 
 >[!IMPORTANT]
 >目前有一个已知的问题：如果全局管理员凭据使用自定义域（例如：admin@contoso.com），则这些凭据不起作用。 解决方法是创建并使用包含 onmicrosoft.com 域的全局管理员帐户（例如：admin@contoso.onmicrosoft.com）
+
+>[!IMPORTANT]
+>目前有一个已知的问题：如果全局管理员凭据使用多重身份验证，则这些凭据不起作用。 要解决这个问题，可以禁用全局管理员的多重身份验证。
 
 
 **命令 #4**

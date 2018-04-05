@@ -4,7 +4,7 @@ description: 提供数据工厂实体的 JSON 架构。
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
+manager: craigg
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 519a762e5f89533f4425d38e4a1ca76d8e3dd40f
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 198fa15b7ee8cce6781e6a2575844a9666185be9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>数据工厂 - JSON 脚本参考
 > [!NOTE]
@@ -493,13 +493,13 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 有关详细信息，请参阅 [Azure Blob 连接器](data-factory-azure-blob-connector.md#dataset-properties)一文。
 
 ### <a name="blobsource-in-copy-activity"></a>复制活动中的 BlobSource
-如果要从 Azure Blob 存储复制数据，请将复制活动的**源类型**设置为 **BlobSource**，并在 **source** 节中指定以下属性：
+如果要从 Azure Blob 存储复制数据，请将复制活动的“源类型”设置为“BlobSource”，并在“source”节中指定以下属性：
 
 | 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True（默认值）、False |否 |
 
-#### <a name="example-blobsource"></a>示例：BlobSource**
+#### <a name="example-blobsource"></a>示例：BlobSource
 ```json
 {
     "name": "SamplePipeline",
@@ -3323,10 +3323,10 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 | gatewayName |指定网关的名称，数据工厂应将其用于连接到本地文件服务器。 |是 |
 
 #### <a name="sample-folder-path-definitions"></a>示例文件夹路径定义 
-| 方案 | 链接服务定义中的主机 | 数据集定义中的 folderPath |
+| 场景 | 链接服务定义中的主机 | 数据集定义中的 folderPath |
 | --- | --- | --- |
-| 数据管理网关计算机上的本地文件夹： <br/><br/>示例：D:\\\* 或 D:\folder\subfolder\\\* |D:\\\\（适用于数据管理网关 2.0 以及更高版本） <br/><br/> localhost（适用于数据管理网关 2.0 之前的版本） |.\\\\ 或 folder\\\\subfolder（适用于数据管理网关 2.0 以及更高版本） <br/><br/>D:\\\\ 或 D:\\\\folder\\\\subfolder（适用于低于 2.0 的网关版本） |
-| 远程共享文件夹： <br/><br/>示例：\\\\myserver\\share\\\* 或 \\\\myserver\\share\\folder\\subfolder\\\* |\\\\\\\\myserver\\\\share |.\\\\ 或 folder\\\\subfolder |
+| 数据管理网关计算机上的本地文件夹： <br/><br/>示例：D:\\\* 或 D:\folder\subfolder\\* |D:\\\\（适用于数据管理网关 2.0 以及更高版本） <br/><br/> localhost（适用于数据管理网关 2.0 之前的版本） |.\\\\ 或 folder\\\\subfolder（适用于数据管理网关 2.0 以及更高版本） <br/><br/>D:\\\\ 或 D:\\\\folder\\\\subfolder（适用于低于 2.0 的网关版本） |
+| 远程共享文件夹： <br/><br/>示例：\\\\myserver\\share\\\* 或 \\\\myserver\\share\\folder\\subfolder\\* |\\\\\\\\myserver\\\\share |.\\\\ 或 folder\\\\subfolder |
 
 
 #### <a name="example-using-username-and-password-in-plain-text"></a>示例：使用纯文本格式的用户名和密码
@@ -3898,7 +3898,7 @@ auto-
 }
 ```
 
-#### <a name="example-basic-authentication-with-encrypted-credential"></a>示例：使用加密的凭据进行基本身份验证**
+#### <a name="example-basic-authentication-with-encrypted-credential"></a>示例：使用加密的凭据进行基本身份验证
 
 ```json
 {
@@ -3919,7 +3919,7 @@ auto-
 }
 ```
 
-#### <a name="using-ssh-public-key-authentication"></a>使用 SSH 公钥身份验证：**
+#### <a name="using-ssh-public-key-authentication"></a>使用 SSH 公钥身份验证：
 
 要使用基本身份验证，请将 `authenticationType` 设置为 `SshPublicKey`，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
@@ -3949,7 +3949,7 @@ auto-
 }
 ```
 
-#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>示例：使用私钥内容进行 SshPublicKey 身份验证**
+#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>示例：使用私钥内容进行 SshPublicKey 身份验证
 
 ```json
 {
@@ -4591,7 +4591,7 @@ auto-
 
 | 属性 | 说明 | 必选 |
 | --- | --- | --- |
-| environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> - 默认值为“https://login.salesforce.com”。 <br> - 若要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
+| environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> - 默认为“https://login.salesforce.com”。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
 | username |为用户帐户指定用户名。 |是 |
 | password |指定用户帐户的密码。 |是 |
 | securityToken |为用户帐户指定安全令牌。 请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)了解有关如何重置/获取安全令牌的说明。 若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。 |是 |

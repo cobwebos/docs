@@ -1,30 +1,30 @@
 ---
-title: "为 StorSimple 设备配置 MPIO | Microsoft 文档"
-description: "介绍如何为连接到运行 Windows Server 2012 R2 的主机的 StorSimple 设备配置多路径 I/O (MPIO)。"
+title: 为 StorSimple 设备配置 MPIO | Microsoft 文档
+description: 介绍如何为连接到运行 Windows Server 2012 R2 的主机的 StorSimple 设备配置多路径 I/O (MPIO)。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/05/2017
+ms.date: 03/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 9fe3fa3a2df63d111de742ecb48b1469aad543cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f2b094604f486d283574f4669fcad6f72bd4431
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>为 StorSimple 设备配置多路径 I/O
 
 本教程介绍在运行 Windows Server 2012 R2 且已连接到 StorSimple 物理设备的主机上安装和使用多路径 I/O (MPIO) 功能时应该遵循的步骤。 本文中的指导仅适用于 StorSimple 8000 系列物理设备。 StorSimple 云设备目前不支持 MPIO。
 
-Microsoft 针对 Windows Server 中的多路径 I/O (MPIO) 功能提供内置支持，帮助构建高度可用、可容错的 SAN 配置。 MPIO 使用冗余的物理路径组件（适配器、电缆和交换机）在服务器与存储设备之间创建逻辑路径。 如果发生组件故障，导致某条逻辑路径失败，则多路径逻辑将使用备用路径执行 I/O，以便应用程序仍然可以访问其数据。 另外，根据配置，MPIO 还可以通过在这些路径之间重新进行负载均衡来提高性能。 有关详细信息，请参阅 [MPIO 概述](https://technet.microsoft.com/library/cc725907.aspx "MPIO overview and features")。
+Microsoft 针对 Windows Server 中的多路径 I/O (MPIO) 功能提供内置支持，帮助构建高度可用、可容错的 iSCSI 网络配置。 MPIO 使用冗余的物理路径组件（适配器、电缆和交换机）在服务器与存储设备之间创建逻辑路径。 如果发生组件故障，导致某条逻辑路径失败，则多路径逻辑将使用备用路径执行 I/O，以便应用程序仍然可以访问其数据。 另外，根据配置，MPIO 还可以通过在这些路径之间重新进行负载均衡来提高性能。 有关详细信息，请参阅 [MPIO 概述](https://technet.microsoft.com/library/cc725907.aspx "MPIO overview and features")。
 
 为实现 StorSimple 解决方案的高可用性，应在 StorSimple 设备上配置 MPIO。 在运行 Windows Server 2012 R2 的主机服务器上安装 MPIO 后，服务器可以承受链路、网络或接口故障。
 
@@ -57,15 +57,15 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 3. 在“添加角色和功能”向导中，执行以下步骤：
    
    1. 在“开始之前”页上，单击“下一步”。
-   2. 在“选择安装类型”页上，接受“基于角色或基于功能的安装”的默认设置。 单击“下一步”。
+   2. 在“选择安装类型”页上，接受“基于角色或基于功能的安装”的默认设置。 单击“资源组名称” 的 Azure 数据工厂。
    
        ![添加角色和功能向导 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
-   3. 在“选择目标服务器”页上，选择“从服务器池中选择服务器”。 主机服务器应该会被自动发现。 单击“下一步”。
+   3. 在“选择目标服务器”页上，选择“从服务器池中选择服务器”。 主机服务器应该会被自动发现。 单击“资源组名称” 的 Azure 数据工厂。
    4. 在“选择服务器角色”页上，单击“下一步”。
    5. 在“选择功能”页上，选择“多路径 I/O”，并单击“下一步”。
    
        ![添加角色和功能向导 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
-   6. 在“确认安装选择”页上，确认选择，并选择“如果需要，自动重启目标服务器”，如下所示。 单击“安装” 。
+   6. 在“确认安装选择”页上，确认选择，并选择“如果需要，自动重启目标服务器”，如下所示。 单击“安装”。
    
        ![添加角色和功能向导 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
    7. 安装完成后，会收到通知。 单击“**关闭**”以关闭向导。
@@ -149,7 +149,7 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 
 ## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>步骤 4：配置 MPIO 以实现高可用性和负载均衡
 
-为了实现基于多路径的高可用性和负载均衡，必须手动添加多个会话以声明多个可用路径。 例如，如果主机有两个接口连接到 SAN，设备有两个接口连接到 SAN，则需要配置具有正确路径排列的四个会话（如果每个 DATA 接口和主机接口在不同的 IP 子网上并且不可路由，则只需两个会话）。
+为了实现基于多路径的高可用性和负载均衡，必须手动添加多个会话以声明多个可用路径。 例如，如果主机有两个接口连接到 iSCSI 网络，设备有两个接口连接到 iSCSI 网络，则需要配置具有正确路径排列的四个会话（如果每个 DATA 接口和主机接口在不同的 IP 子网上并且不可路由，则只需两个会话）。
 
 **建议设备和应用程序主机之间至少具有 8 个活动平行会话。** 这可通过在 Windows Server 系统上启用 4 个网络接口实现。 在 Windows Server 主机上的硬件或操作系统级别使用物理网络接口或网络虚拟化技术。 设备上两个网络接口时，此配置会形成 8 个活动会话。 此配置有助于优化设备和云吞吐量。
 
@@ -172,15 +172,15 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 6. 在“高级设置”对话框中执行以下操作：
    
    1. 在“本地适配器”下拉列表中，选择“Microsoft iSCSI 发起程序”。
-   2. 在“发起程序 IP”下拉列表中，选择主机的 IP 地址。
-   3. 在“目标门户 IP”下拉列表中，选择在设备上启用的数据接口的 IP 地址。
+   2. 在“发起程序 IP”下拉列表中，选择与主机上的第一个接口对应的 IP 地址（iSCSI 接口）。
+   3. 在“目标门户 IP”下拉列表中，选择在设备上启用的第一个数据接口的 IP 地址。
    4. 单击“确定”返回到“iSCSI 发起程序属性”对话框。
 7. 单击“属性”，并在“属性”对话框中单击“添加会话”。
 8. 在“连接到目标”对话框中，选中“启用多路径”复选框，并单击“高级”。
-9. 在“高级设置”对话框中执行以下操作：
+9. 在“高级设置”对话框中：
    
    1. 在“本地适配器”下拉列表中，选择“Microsoft iSCSI 发起程序”。
-   2. 在“发起程序 IP”下拉列表中，选择与主机上的第二个接口对应的 IP 地址。
+   2. 在“发起程序 IP”下拉列表中，选择与主机上的第二个 iSCSI 接口对应的 IP 地址。
    3. 在“目标门户 IP”下拉列表中，选择在设备上启用的第二个数据接口的 IP 地址。
    4. 单击“确定”返回到“iSCSI 发起程序属性”对话框。 现已向目标添加第二个会话。
 10. 重复步骤 8-10，向目标添加其他会话（路径）。 主机上有两个接口，设备上也有两个接口，总共可以添加四个会话。

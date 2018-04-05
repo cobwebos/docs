@@ -1,22 +1,21 @@
 ---
-title: "创建机器学习工作室工作区 | Microsoft Docs"
-description: "如何为 Azure 机器学习工作室创建工作区"
+title: 创建机器学习工作室工作区 | Microsoft Docs
+description: 如何为 Azure 机器学习工作室创建工作区
 services: machine-learning
-author: garyericson
-manager: jhubbard
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: aa96b784-ac6c-44bc-a28a-85d49fbe90a2
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/07/2017
-ms.author: garye
-ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview
-ms.openlocfilehash: 7aad885b1643ddeb25e5d00a151005b8444315fa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8da10e474c62868ca109a44e7c66dc11ee62b6de
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>创建并共享 Azure 机器学习工作区
 此菜单链接到介绍如何设置用于 Cortana Analytics 过程 (CAPS) 的各种数据科学环境的主题。
@@ -46,11 +45,11 @@ ms.lasthandoff: 12/08/2017
 
     ![创建新的工作区](./media/create-workspace/create-new-workspace.png)
 
-5. 单击“创建” 。
+5. 单击“创建”。
 
 部署工作区后，可以在机器学习工作室中打开它。
 
-1. 浏览到机器学习工作室 ([https://studio.azureml.net/](https://studio.azureml.net/))。
+1. 在 [https://studio.azureml.net/](https://studio.azureml.net/) 处浏览到机器学习工作室。
 
 2. 在右上角选择工作区。
 
@@ -77,7 +76,7 @@ ms.lasthandoff: 12/08/2017
 
 ### <a name="to-share-a-workspace"></a>共享工作区
 
-1. 登录到机器学习工作室 ([https://studio.azureml.net/Home](https://studio.azureml.net/Home))
+1. 在 [https://studio.azureml.net/Home](https://studio.azureml.net/Home) 处登录到机器学习工作室
 
 2. 在左面板中，单击“设置”
 

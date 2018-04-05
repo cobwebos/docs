@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2018
+ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 7a307a598bd71369615b30476d387c06f473c397
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ec13109173f89b53e32f903febcec13c7f38c574
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="outbound-connections-classic"></a>出站连接（经典）
 
@@ -37,7 +37,7 @@ Azure 使用源网络地址转换 (SNAT) 来执行此功能。 当多个专用 I
 
 Azure 提供三种不同的方法来实现出站连接经典部署。  并非所有经典部署都可使用这三种方案：
 
-| 方案 | 方法 | 说明 | Web 辅助角色 | IaaS | 
+| 场景 | 方法 | 说明 | Web 辅助角色 | IaaS | 
 | --- | --- | --- | --- | --- |
 | [1.具有实例级公共 IP 地址的 VM](#ilpip) | SNAT，不使用端口伪装 |Azure 使用分配了公共 IP 的虚拟机。 此实例具有所有可用的临时端口。 | 否 | 是 |
 | [2. 公共负载均衡终结点](#publiclbendpoint) | 使用端口伪装 (PAT) 通过 SNAT 连接到公共终结点 |Azure 与多个专用终结点共享公共 IP 地址公共终结点。 Azure 使用公共终结点的临时端口进行 PAT。 | 是 | 是 |
@@ -60,7 +60,7 @@ Azure 提供三种不同的方法来实现出站连接经典部署。  并非所
 
 在此场景中，向 VM 分配了实例级公共 IP (ILPIP)。 就出站连接而言，VM 是否包含负载均衡终结点并不重要。 此方案优先于其他方案。 使用 ILPIP 时，VM 将 ILPIP 用于所有出站流。  
 
-不使用端口伪装 (PAT)，并且 VM 具有所有可供使用的临时端口。
+分配到 VM 的公共 IP 属于 1 对 1 关系（而不是 1 对多关系），并作为无状态的 1 对 1 NAT 进行实现。  不使用端口伪装 (PAT)，并且 VM 具有所有可供使用的临时端口。
 
 如果应用程序启动很多出站流，并且遇到 SNAT 端口耗尽的情况，可以考虑分配 [ILPIP 以缓解 SNAT 约束](#assignilpip)。 请查看[管理 SNAT 耗尽](#snatexhaust)。
 
@@ -123,6 +123,18 @@ SNAT 端口是根据[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的�
 
 如果部署减小并转换到更低的层，可用的 SNAT 端口数会增多。 在这种情况下，现有的分配 SNAT 端口及其相应的流不会受到影响。
 
+SNAT 端口分配特定于 IP 传输协议（TCP 和 UDP 是分别维护的），并在以下条件下释放：
+
+### <a name="tcp-snat-port-release"></a>TCP SNAT 端口释放
+
+- 如果两个服务器/客户端均发送 FIN/ACK，则 SNAT 端口在 240 秒后释放。
+- 如果出现 RST，则 SNAT 端口在 15 秒后释放。
+- 已达到空闲超时
+
+### <a name="udp-snat-port-release"></a>UDP SNAT 端口释放
+
+- 已达到空闲超时
+
 ## <a name="problemsolving"></a>解决问题 
 
 本部分旨在帮助解决 SNAT 耗尽的问题，以及 Azure 中的出站连接可能出现的其他情况。
@@ -170,3 +182,4 @@ SNAT 端口是根据[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的�
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解资源管理器部署中使用的[负载均衡器](load-balancer-overview.md)。
+- 深入了解资源管理器部署中提供的[出站连接](load-balancer-outbound-connections.md)方案。

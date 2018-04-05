@@ -1,47 +1,31 @@
 ---
-title: "管理 Service Fabric 应用程序中的机密 | Microsoft Docs"
-description: "本文介绍如何保护 Service Fabric 应用程序中的机密值。"
+title: 管理 Azure Service Fabric 应用程序机密 | Microsoft Docs
+description: 了解如何保护 Service Fabric 应用程序中的机密值。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2017
+ms.date: 03/21/2018
 ms.author: vturecek
-ms.openlocfilehash: bb40f841c6c2671621624e0599a5f3a36a36ab26
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 931667509a9aa5e898cd01ad26ff046e30acd3fe
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="managing-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的机密
+# <a name="manage-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的机密
 本指南逐步讲解管理 Service Fabric 应用程序中的机密的步骤。 机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。
 
-本指南使用 Azure 密钥保管库来管理密钥和机密。 但是，在应用程序中*使用*机密的方式不区分云平台，因此可让应用程序部署到托管在任何位置的群集。 
+[Azure 密钥保管库][key-vault-get-started]在此处用作证书的安全存储位置，也可用于将证书安装在 Azure 中的 Service Fabric 群集上。 如果不部署到 Azure，则不需要使用密钥保管库来管理 Service Fabric 应用程序中的机密。 但是，在应用程序中*使用*机密的方式不区分云平台，因此可让应用程序部署到托管在任何位置的群集。 
 
-## <a name="overview"></a>概述
-建议通过[服务配置包][config-package]来管理服务配置设置。 可以通过包含运行状况验证和自动回滚的托管滚动升级机制来控制配置包版本以及对其进行更新。 这比全局配置更有优势，因为可以减少全局服务中断的可能性。 加密的机密也不例外。 通过 Service Fabric 的内置功能，可以使用证书加密来加密和解密配置包 Settings.xml 文件中的值。
-
-下图演示了 Service Fabric 应用程序中机密管理的基本流程：
-
-![机密管理概述][overview]
-
-此流程包括四个主要步骤：
-
-1. 获取数据加密证书。
-2. 在群集中安装证书。
-3. 在部署应用程序时使用证书加密机密值，并将其注入服务的 Settings.xml 配置文件。
-4. 通过使用相同的加密证书进行解密，从 Settings.xml 中读取加密值。 
-
-[Azure 密钥保管库][key-vault-get-started]在此处用作证书的安全存储位置，也可用于将证书安装在 Azure 中的 Service Fabric 群集上。 如果不部署到 Azure，则不需要使用密钥保管库来管理 Service Fabric 应用程序中的机密。
-
-## <a name="data-encipherment-certificate"></a>数据加密证书
+## <a name="obtain-a-data-encipherment-certificate"></a>获取数据加密证书
 数据加密证书只用于加密和解密服务 Settings.xml 中的配置值，而不用于身份验证或密码文本签名。 该证书必须满足以下要求：
 
 * 证书必须包含私钥。
@@ -58,7 +42,7 @@ ms.lasthandoff: 12/11/2017
 必须在群集中的每个节点上安装此证书。 在运行时，将使用此证书解密服务的 Settings.xml 中存储的值。 有关设置说明，请参阅[如何使用 Azure 资源管理器创建群集][service-fabric-cluster-creation-via-arm]。 
 
 ## <a name="encrypt-application-secrets"></a>加密应用程序机密
-Service Fabric SDK 提供内置的机密加密和解密函数。 可以在生成时加密机密值，在服务代码中以编程方式解密和读取机密值。 
+在部署应用程序时使用证书加密机密值，并将其注入服务的 Settings.xml 配置文件。 Service Fabric SDK 提供内置的机密加密和解密函数。 可以在生成时加密机密值，在服务代码中以编程方式解密和读取机密值。 
 
 以下 PowerShell 命令用于加密机密。 此命令仅加密值；**不**对密码文本进行签名。 若要生成机密值的密文，必须使用群集中安装的同一个加密证书：
 
@@ -66,7 +50,7 @@ Service Fabric SDK 提供内置的机密加密和解密函数。 可以在生成
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-生成的 base-64 字符串包含机密密文，以及用来将其加密的证书相关信息。  当 `IsEncrypted` 属性设置为 `true` 时，可将 base-64 编码字符串插入服务 Settings.xml 配置文件中的参数内：
+生成的 base-64 编码字符串包含机密密文，以及用来将其加密的证书相关信息。  当 `IsEncrypted` 属性设置为 `true` 时，可将 base-64 编码字符串插入服务 Settings.xml 配置文件中的参数内：
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -140,7 +124,7 @@ await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescript
 ```
 
 ## <a name="decrypt-secrets-from-service-code"></a>解密服务代码中的机密
-在 Windows 上，Service Fabric 中的服务默认在“网络服务”下运行，如果未提供额外的设置，它们无权访问节点上安装的证书。
+可通过将加密机密使用的加密证书用于解密，从 Settings.xml 中读取加密值。 在 Windows 上，Service Fabric 中的服务默认在“网络服务”下运行，如果未提供额外的设置，它们无权访问节点上安装的证书。
 
 使用数据加密证书时，需确保“网络服务”或运行服务的任何用户帐户可以访问该证书的私钥。 如果提供了相应的配置，Service Fabric 可自动处理服务授权。 可以通过在 ApplicationManifest.xml 中定义用户和证书安全策略来完成此配置。 在以下示例中，已授予“网络服务”帐户对某个按指纹定义的证书的读取访问权限：
 
@@ -176,7 +160,7 @@ SecureString mySecretValue = configPackage.Settings.Sections["MySettings"].Param
 ```
 
 ## <a name="next-steps"></a>后续步骤
-详细了解如何[使用不同的安全权限运行应用程序](service-fabric-application-runas-security.md)
+深入了解[应用程序和服务安全性](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [key-vault-get-started]:../key-vault/key-vault-get-started.md

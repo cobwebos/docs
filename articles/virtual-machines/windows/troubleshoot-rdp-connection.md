@@ -1,12 +1,12 @@
 ---
-title: "无法在 Azure 中使用 RDP 连接到 Windows VM | Microsoft Docs"
-description: "解决当使用远程桌面时无法在 Azure 中连接到 Windows 虚拟机的问题"
-keywords: "远程桌面错误,远程桌面连接错误,无法连接到 VM,远程桌面故障排除"
+title: 无法在 Azure 中使用 RDP 连接到 Windows VM | Microsoft Docs
+description: 解决当使用远程桌面时无法在 Azure 中连接到 Windows 虚拟机的问题
+keywords: 远程桌面错误,远程桌面连接错误,无法连接到 VM,远程桌面故障排除
 services: virtual-machines-windows
-documentationcenter: 
-author: genlin
+documentationcenter: ''
+author: danielsollondon
 manager: timlt
-editor: 
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 0d740f8e-98b8-4e55-bb02-520f604f5b18
 ms.service: virtual-machines-windows
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
-ms.author: genli
-ms.openlocfilehash: 4731a34d143d402372aaff7c03f95dbf0bb508a4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.date: 03/23/2018
+ms.author: danis
+ms.openlocfilehash: e2b792743f1b4ba458cff111ab6dd888b0c26d93
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>对 Azure 虚拟机的远程桌面连接进行故障排除
 与基于 Windows 的 Azure 虚拟机 (VM) 的远程桌面协议 (RDP) 连接可能会因各种原因而失败，使用户无法访问 VM。 问题可能出在 VM 上的远程桌面服务、网络连接或主计算机上的远程桌面客户端。 本文介绍解决 RDP 连接问题的一些最常见方法。 
@@ -77,7 +77,7 @@ ms.lasthandoff: 01/03/2018
     在 Azure 门户中选择 VM。 在“设置”窗格中向下滚动到靠近列表底部的“支持 + 故障排除”部分。 单击“资源运行状况”按钮。 正常的 VM 报告为**可用**：
    
     ![在 Azure 门户中查看 VM 资源运行状况](./media/troubleshoot-rdp-connection/check-resource-health.png)
-6. **重置用户凭据**。 不确定或忘记凭据时，此故障排除步骤将重置本地管理员帐户的密码。
+6. **重置用户凭据**。 不确定或忘记凭据时，此故障排除步骤将重置本地管理员帐户的密码。  登录到 VM 后，应重置该用户的密码。
    
     在 Azure 门户中选择 VM。 在“设置”窗格中向下滚动到靠近列表底部的“支持 + 故障排除”部分。 单击“重置密码”按钮。 确保“模式”已设置为“重置密码”，并输入用户名和新密码。 最后，单击“更新”按钮：
    
@@ -207,7 +207,7 @@ ms.lasthandoff: 01/03/2018
     在 Azure 门户中选择 VM。 在“设置”窗格中向下滚动到靠近列表底部的“支持 + 故障排除”部分。 单击“资源运行状况”按钮。 正常的 VM 报告为**可用**：
    
     ![在 Azure 门户中查看 VM 资源运行状况](./media/troubleshoot-rdp-connection/classic-check-resource-health.png)
-5. **重置用户凭据**。 不确定或忘记凭据时，此故障排除步骤将重置所指定本地管理员帐户的密码。
+5. **重置用户凭据**。 不确定或忘记凭据时，此故障排除步骤将重置所指定本地管理员帐户的密码。  登录到 VM 后，应重置该用户的密码。
    
     在 Azure 门户中选择 VM。 在“设置”窗格中向下滚动到靠近列表底部的“支持 + 故障排除”部分。 单击“重置密码”按钮。 输入用户名和新密码。 最后，单击“保存”按钮：
    

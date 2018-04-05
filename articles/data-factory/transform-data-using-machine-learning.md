@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 数据工厂创建预测数据管道 | Microsoft Docs"
-description: "了解如何使用 Azure 机器学习创建预测管道 - Azure 数据工厂中的批处理执行活动。"
+title: 使用 Azure 数据工厂创建预测数据管道 | Microsoft Docs
+description: 了解如何使用 Azure 机器学习创建预测管道 - Azure 数据工厂中的批处理执行活动。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: fa493a6d7b4cf775f64b87c1d5cc21ff4a138609
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: bd72fd957948e77df6ffb0b310c590132c663235
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure 机器学习和 Azure 数据工厂创建预测管道
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/23/2018
 3. **将其部署为 Web 服务**。 可将评分实验作为 Azure Web 服务发布。 可通过此 Web 服务终结点向模型发送数据，并从模型接收结果预测。  
 
 > [!NOTE]
-> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅 [V1 中的机器学习批处理执行活动](v1/data-factory-azure-ml-batch-execution-activity.md)。
+> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（正式版 (GA)），请参阅 [V1 中的机器学习批处理执行活动](v1/data-factory-azure-ml-batch-execution-activity.md)。
 
 
 ### <a name="data-factory-and-machine-learning-together"></a>结合数据工厂和机器学习
@@ -75,7 +75,7 @@ Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验�
 
 ![Azure 机器学习 Web 服务](./media/transform-data-using-machine-learning/web-services.png)
 
-##<a name="azure-machine-learning-batch-execution-activity"></a>Azure 机器学习批处理执行活动
+## <a name="azure-machine-learning-batch-execution-activity"></a>Azure 机器学习批处理执行活动
 
 以下 JSON 代码片段定义 Azure 机器学习批处理执行活动。 活动定义包含对先前创建的 Azure 机器学习链接服务的引用。 
 
@@ -133,7 +133,7 @@ Azure 机器学习支持将经典 Web 服务和新 Web 服务用于预测试验�
 
 | 属性          | 说明                              | 必选 |
 | :---------------- | :--------------------------------------- | :------- |
-| name              | 管道中活动的名称     | 是      |
+| 名称              | 管道中活动的名称     | 是      |
 | description       | 描述活动用途的文本。  | 否       |
 | type              | 对于 Data Lake Analytics U-SQL 活动，活动类型是 **AzureMLBatchExecution**。 | 是      |
 | linkedServiceName | Azure 机器学习链接服务的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |

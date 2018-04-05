@@ -1,22 +1,22 @@
 ---
-title: "Azure IoT 中心设备预配服务中的安全性概念 | Microsoft Docs"
-description: "介绍安全性预配概念，特定于使用设备预配服务和 IoT 中心的设备"
+title: Azure IoT 中心设备预配服务中的安全性概念 | Microsoft Docs
+description: 介绍安全性预配概念，特定于使用设备预配服务和 IoT 中心的设备
 services: iot-dps
-keywords: 
+keywords: ''
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 03/27/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: ab2bfff571af659552eef8117de041ca6367ce56
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 5e35a802349bd85b50a13a3d9a7e0c78945937bd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT 中心设备预配服务安全性概念 
 
@@ -31,7 +31,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 设备预配服务支持两种证明形式：
 * 基于标准 X.509 证书身份验证流的 X.509 证书。
-* 基于对密钥使用 TPM 标准的 nonce 质询的 SAS 令牌。 这不需要设备上的物理 TPM，但是服务要求按照 [TPM 规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)使用认可密钥来证明。
+* 基于 nonce 质询的受信任平台模块 (TPM)，使用密钥的 TPM 标准显示已签名的共享访问签名 (SAS) 令牌。 这不需要设备上的物理 TPM，但是服务要求按照 [TPM 规范](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)使用认可密钥来证明。
 
 ## <a name="hardware-security-module"></a>硬件安全模块
 
@@ -42,7 +42,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 设备机密也可以存储在软件（内存）中，但它是比 HSM 更不安全的存储形式。
 
-## <a name="trusted-platform-module-tpm"></a>受信任的平台模块 (TPM)
+## <a name="trusted-platform-module"></a>受信任的平台模块
 
 TPM 可引用适用于安全存储用于对平台进行身份验证的密钥的标准，或者可引用用于与实现标准的模块交互的 I/O 接口。 TPM 可以作为离散硬件、集成硬件、基于固件或基于软件的方式存在。 详细了解 [TPM 和 TPM 证明](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation)。 设备预配服务仅支持 TPM 2.0。
 

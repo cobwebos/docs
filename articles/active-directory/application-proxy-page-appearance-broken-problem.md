@@ -1,23 +1,23 @@
 ---
-title: "应用程序代理应用程序的应用程序页无法正确显示 | Microsoft Docs"
-description: "当页面在已集成到 Azure AD 的应用程序代理应用程序中无法正确显示时所要遵循的指南。"
+title: 应用程序代理应用程序的应用程序页无法正确显示 | Microsoft Docs
+description: 当页面在已集成到 Azure AD 的应用程序代理应用程序中无法正确显示时所要遵循的指南。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 03/23/2018
 ms.author: asteen
-ms.openlocfilehash: 017267620a1bcd6242bceb395966cc4190677c1a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d187b545a486be28fc80e6baf8e58079ff94ec5e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>应用程序代理应用程序的应用程序页无法正确显示
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/11/2017
 
 如果无法在同一应用程序内发布所有资源，则需发布多个应用程序并在它们之间启用链接。
 
-为此，我们建议使用[自定义域](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains)解决方案。 但是，若要使用该解决方案，则必须拥有域证书，且应用程序必须使用完全限定的域名 (FQDN)。 有关其他选项，请参阅[断开链接的故障排除文档](https://microsoft-my.sharepoint.com/personal/harshja_microsoft_com/_layouts/15/guestaccess.aspx?guestaccesstoken=IxuG3mFVbnPWI3Yn4Qi7wCNi8VIfHS5mwPt5quh8DMw%3d&docid=2_14558cd6ddea34c1c9887dc640feb5831&rev=1)。
+为此，我们建议使用[自定义域](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains)解决方案。 但是，若要使用该解决方案，则必须拥有域证书，且应用程序必须使用完全限定的域名 (FQDN)。 有关其他选项，请参阅[断开链接的故障排除文档](application-proxy-page-links-broken-problem.md)。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure AD 应用程序代理发布应用程序](application-proxy-publish-azure-portal.md)

@@ -1,23 +1,23 @@
 ---
-title: "教程：Azure Active Directory 与 OpsGenie 集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 OpsGenie 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 OpsGenie 集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 和 OpsGenie 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 41b59b22-a61d-4fe6-ab0d-6c3991d1375f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 03/28/2018
 ms.author: jeedes
-ms.openlocfilehash: b0d8fa13c13ad8d4a85cb482bcd7e440006f0437
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b0cd54c7750e85eb7b4e1ba6be309c585d5a7b4e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>教程：Azure Active Directory 与 OpsGenie 的集成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 OpsGenie
 - 可以让用户通过其 Azure AD 帐户自动登录到 OpsGenie（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 OpsGenie 的集成，需备齐以下项目：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 启用了 OpsGenie 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -112,17 +112,33 @@ ms.lasthandoff: 12/11/2017
 
     在“登录 URL”文本框中，键入 URL：`https://app.opsgenie.com/auth/login`
 
-4. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
-
-    ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_certificate.png) 
-
-5. 单击“保存”按钮。
+4. 单击“保存”按钮。
 
     ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_general_400.png)
 
-6. 在“OpsGenie 配置”部分，单击“配置 OpsGenie”打开“配置登录”窗口。 从“快速参考”部分中复制“注销 URL”、“SAML 实体 ID”和“SAML 单一登录服务 URL”。
+5. 在“OpsGenie 配置”部分，单击“配置 OpsGenie”打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 单一登录服务 URL”。
 
-    ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_configure.png) 
+    ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_configure.png)
+
+6. 若要生成**元数据 URL**，请执行以下步骤：
+
+    a. 单击“应用注册”。
+    
+    ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appregistrations.png)
+   
+    b. 单击“终结点”以打开“终结点”对话框。  
+    
+    ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpointicon.png)
+
+    c. 单击复制按钮以复制**联合元数据文档** URL 并将其粘贴到记事本。
+    
+    ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpoint.png)
+     
+    d.单击“下一步”。 现在，转到“OpsGenie”的属性页，使用“复制”按钮复制“应用程序 ID”，并将它粘贴到记事本中。
+ 
+    ![配置单一登录](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appid.png)
+
+    e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
 7. 打开另一个浏览器实例，并以管理员身份登录到 OpsGenie。
 
@@ -142,9 +158,9 @@ ms.lasthandoff: 12/11/2017
    
     ![OpsGenie 设置](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_09.png)
     
-    a. 将从 Azure 门户复制的“单一登录服务 URL”粘贴到“SAML 2.0 终结点”文本框。
+    a. 在“SAML 2.0 终结点”文本框中，粘贴从 Azure 门户复制的“单一登录服务 URL”值。
     
-    b. 在记事本中打开 base-64 编码的已下载证书，将其内容复制到剪贴板，然后再粘贴到“X.500 证书”文本框。
+    b. 在“元数据 URL:”文本框中，粘贴从 Azure 门户复制的“元数据 URL”值。
     
     c. 单击“保存更改”。
 
@@ -177,11 +193,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d.单击“下一步”。 单击“创建”。
  
 ### <a name="creating-a-opsgenie-test-user"></a>创建 OpsGenie 测试用户
 
@@ -203,7 +219,7 @@ ms.lasthandoff: 12/11/2017
    
    b. 在“完整名称”文本框中，键入“Britta Simon”。
    
-   c. 单击“保存” 。 
+   c. 单击“ **保存**”。 
 
 >[!NOTE]
 >Britta 会收到一封电子邮件，其中包含配置文件设置说明。
@@ -247,7 +263,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

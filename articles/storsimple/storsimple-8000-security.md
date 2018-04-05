@@ -1,24 +1,24 @@
 ---
-title: "StorSimple 8000 系列安全性 | Microsoft 文档"
-description: "介绍保护 StorSimple 服务、设备以及本地数据和云中数据的安全和隐私功能。"
+title: StorSimple 8000 系列安全性 | Microsoft 文档
+description: 介绍保护 StorSimple 服务、设备以及本地数据和云中数据的安全和隐私功能。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 01/23/2018
+ms.date: 03/27/2018
 ms.author: alkohli
-ms.openlocfilehash: c14927f82ca01320206ccec83216777b7d1b8708
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: ee0534ab8bc3400854ddf550df9ca2f395f8d80d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
 
@@ -267,6 +267,20 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 **问：**如果某个政府实体要求 Microsoft 提供我的数据，会发生什么情况？
 
 **答：**由于所有数据是在服务上加密的，而私钥是保留在设备上的，该政府实体必须获得客户的允许才能获得数据。
+
+## <a name="gdpr-compliance"></a>GDPR 符合性
+
+[一般数据保护条例 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) 是欧盟 (EU) 的一项数据保护和隐私法律。 GDPR 包含许多有关如何收集、存储和使用个人信息的要求。 GDPR 规则针对在欧盟运营的公司、政府机构和其他组织实施，并收集和分析与欧盟居民有关的数据。 
+
+适用于物理和虚拟系列的 StorSimple 设备管理器符合 GDPR。 有两个关于在服务中收集并显示个人信息的关键示例：
+
+- 提醒用户设置，可在其中配置用户电子邮件地址。 此信息可以由管理员查看和清除。 这适用于 StorSimple 8000 系列设备和 StorSimple 虚拟阵列。
+ * 要查看和清除 StorSimple 8000 系列的设置，请按照[查看和管理 StorSimple 警报](storsimple-8000-manage-alerts.md#configure-alert-settings)中的步骤操作
+ * 要查看和清除 StorSimple 虚拟阵列的设置，请按照[查看和管理 StorSimple 警报](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)中的步骤操作
+- 可访问驻留在共享上的数据的用户。 会显示可访问共享数据的用户列表，并可供查看。 删除共享时也会删除此列表。 这仅适用于 StorSimple 虚拟阵列。
+ * 要查看可访问共享的用户列表或删除某个共享，请按照[管理 StorSimple 虚拟阵列上的共享](storsimple-virtual-array-manage-shares.md)中的步骤操作
+
+有关详细信息，请在[信任中心](https://www.microsoft.com/trustcenter)查看 Microsoft 隐私策略。
 
 ## <a name="next-steps"></a>后续步骤
 

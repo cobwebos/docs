@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement - 后端集成"
-description: "连接 Azure Mobile Engagement 与 SharePoint 后端，以从 SharePoint 中创建市场活动"
+title: Azure Mobile Engagement - 后端集成
+description: 连接 Azure Mobile Engagement 与 SharePoint 后端，以从 SharePoint 中创建市场活动
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 06297b43-579f-46e6-8a58-961a68f9aa09
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: d49f1094f4c3f170f3618f3e19e42266f9ae8858
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf530ca6dce32050487f367aa80b10bf7f20b7e7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement---api-integration"></a>Azure Mobile Engagement - API 集成
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 在自动化的市场营销系统中，创建和激活市场营销活动也会自动发生。 为此，Azure Mobile Engagement 还允许使用 API 创建此类自动化的市场营销活动。 
 
 通常，客户使用 Mobile Engagement 前端界面创建公告/投票等作为其市场营销活动的一部分。 但是，随着市场营销活动趋于成熟，就需要利用后端系统（如任何 CRM 系统或 CMS 系统，如 SharePoint）中锁定的数据，以便创建完全自动化的管道，基于来自后端系统中的数据流，在 Mobile Engagement 中动态地创建市场活动。 

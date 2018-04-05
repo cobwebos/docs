@@ -1,11 +1,11 @@
 ---
-title: "重置对 Azure Linux VM 的访问 | Microsoft Docs"
-description: "如何使用 VMAccess 扩展和 Azure CLI 2.0 在 Linux VM 上管理管理用户和重置访问权限"
+title: 重置对 Azure Linux VM 的访问 | Microsoft Docs
+description: 如何使用 VMAccess 扩展和 Azure CLI 2.0 在 Linux VM 上管理管理用户和重置访问权限
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 261a9646-1f93-407e-951e-0be7226b3064
 ms.service: virtual-machines-linux
@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: danlep
-ms.openlocfilehash: 235a6367ad317945cfeaaa6aae4e060208fb8e8e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a5467722b347e68693b335da6b3ac3c5d1a3a441
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>配合使用 VMAccess 扩展和 Azure CLI 2.0 管理管理用户、SSH，并检查或修复 Linux VM 上的磁盘
 Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的 root 密码，或者不小心删除了 SSH 私钥。 如果在数据中心的时代发生这种情况，则需要开车到那里，并打开 KVM 访问服务器控制台。 请将 Azure VMAccess 扩展想像成该 KVM 交换机，它允许访问控制台以重置 Linux 访问或执行磁盘级维护。
 
-本文说明如何使用 Azure VMAccess 扩展检查或修复磁盘、重置用户访问权限、管理管理用户帐户，或重置 Linux 上的 SSH 配置。 还可以使用 [Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。
+本文说明如何使用 Azure VMAccess 扩展来检查或修复磁盘、重置用户访问权限、管理管理性用户帐户，或更新 Linux 上的 SSH 配置。 还可以使用 [Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 执行这些步骤。
 
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>使用 VMAccess 扩展的方法
@@ -35,8 +35,8 @@ Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的 root 密
 
 下面的示例使用 [az vm user](/cli/azure/vm/user) 命令。 若要执行这些步骤，需要安装最新的 [Azure CLI 2.0](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/reference-index#az_login) 登录到 Azure 帐户。
 
-## <a name="reset-ssh-key"></a>重置 SSH 密钥
-以下示例重置名为 `myVM` 的 VM 上用户 `azureuser` 的 SSH 密钥：
+## <a name="update-ssh-key"></a>更新 SSH 密钥
+以下示例更新名为 `myVM` 的 VM 上用户 `azureuser` 的 SSH 密钥：
 
 ```azurecli
 az vm user update \
@@ -45,6 +45,8 @@ az vm user update \
   --username azureuser \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
+
+> 注意：`az vm user update` 命令将新公钥文本附加到 VM 上管理员用户的 `~/.ssh/authorized_keys` 文件。 此操作不会替换或删除任何现有的 SSH 密钥。 这不会删除在部署时设置的先前密钥或通过 VMAccess 扩展进行的后续更新。
 
 ## <a name="reset-password"></a>重置密码
 以下示例重置名为 `myVM` 的 VM 上用户 `azureuser` 的密码：
@@ -94,9 +96,9 @@ az vm user delete \
 以下示例使用原始 JSON 文件。 然后使用 [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) 调用 JSON 文件。 从 Azure 模板也可以调用这些 JSON 文件。 
 
 ### <a name="reset-user-access"></a>重置用户访问权限
-如果已失去 Linux VM 的 root 访问权限，可以启动 VMAccess 脚本重置用户的 SSH 密钥或密码。
+如果已失去 Linux VM 的 root 访问权限，可以启动 VMAccess 脚本更新用户的 SSH 密钥或密码。
 
-若要重置用户的 SSH 公钥，请创建名为 `reset_ssh_key.json` 的文件并添加以下格式的设置。 用你自己的值替换 `username` 和 `ssh_key` 参数：
+若要更新用户的 SSH 公钥，请创建名为 `update_ssh_key.json` 的文件并添加以下格式的设置。 用你自己的值替换 `username` 和 `ssh_key` 参数：
 
 ```json
 {
@@ -114,7 +116,7 @@ az vm extension set \
   --name VMAccessForLinux \
   --publisher Microsoft.OSTCExtensions \
   --version 1.4 \
-  --protected-settings reset_ssh_key.json
+  --protected-settings update_ssh_key.json
 ```
 
 若要重置用户密码，请创建名为 `reset_user_password.json` 的文件并添加以下格式的设置。 用你自己的值替换 `username` 和 `password` 参数：

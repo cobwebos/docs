@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN 规则引擎功能 | Microsoft Docs"
-description: "Azure CDN 规则引擎匹配条件和功能的参考文档。"
+title: Azure CDN 规则引擎功能 | Microsoft Docs
+description: Azure CDN 规则引擎匹配条件和功能的参考文档。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 949b957716af2d7dfd704b4fca48afb78d0fed1e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9f1a9343a657e076e94f6aa59fd03128ef488ac9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Azure CDN 规则引擎功能
 本文列出 Azure 内容交付网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用功能的详细说明。
@@ -46,28 +46,28 @@ ms.lasthandoff: 03/02/2018
 名称 | 目的
 -----|--------
 [带宽参数](#bandwidth-parameters) | 确定是否会启用带宽限制参数（例如 ec_rate 和 ec_prebuf）。
-[带宽限制](#bandwidth-throttling) | 限制边缘服务器提供的响应的带宽。
+[带宽限制](#bandwidth-throttling) | 限制接入点 (POP) 提供的响应的带宽。
 [绕过缓存](#bypass-cache) | 确定请求是否应绕过缓存。
-[Cache-Control 标头处理](#cache-control-header-treatment) | 在“外部最大有效期”功能启用时，控制边缘服务器生成 `Cache-Control` 标头。
+[Cache-Control 标头处理](#cache-control-header-treatment) | 在“外部最大有效期”功能启用时，控制 POP 生成 `Cache-Control` 标头。
 [Cache-Key 查询字符串](#cache-key-query-string) | 确定 cache-key 是否包括与请求关联的查询字符串参数。
 [Cache-Key 重写](#cache-key-rewrite) | 重写与请求关联的 cache-key。
-[完整缓存填充](#complete-cache-fill) | 确定当请求导致边缘服务器部分缓存未命中时会发生什么情况。
+[完整缓存填充](#complete-cache-fill) | 确定当请求导致 POP 部分缓存未命中时会发生什么情况。
 [压缩文件类型](#compress-file-types) | 定义将在服务器上压缩的文件的文件格式。
-[默认的内部最大有效期](#default-internal-max-age) | 确定在进行从边缘服务器到源服务器的缓存重新验证时，默认的最大有效期时间间隔。
-[Expires 标头处理](#expires-header-treatment) | 在“外部最大有效期”功能启用时，控制边缘服务器生成 `Expires` 标头。
-[外部最大有效期](#external-max-age) | 确定在进行从浏览器到边缘服务器的缓存重新验证时的最大有效期时间间隔。
-[强制内部最大有效期](#force-internal-max-age) | 确定在进行从边缘服务器到源服务器的缓存重新验证时的最大有效期时间间隔。
+[默认的内部最大有效期](#default-internal-max-age) | 确定在进行从 POP 到源服务器的缓存重新验证时，默认的最大有效期时间间隔。
+[Expires 标头处理](#expires-header-treatment) | 在“外部最大有效期”功能启用时，控制 POP 生成 `Expires` 标头。
+[外部最大有效期](#external-max-age) | 确定在进行从浏览器到 POP 的缓存重新验证时的最大有效期时间间隔。
+[强制内部最大有效期](#force-internal-max-age) | 确定在进行从 POP 到源服务器的缓存重新验证时的最大有效期时间间隔。
 [H.264 支持（HTTP 渐进式下载）](#h264-support-http-progressive-download) | 确定适用于流式处理内容的 H.264 文件格式的类型。
 [遵循 No-Cache 请求](#honor-no-cache-request) | 确定是否将 HTTP 客户端的 no-cache 请求转发到源服务器。
 [忽略源服务器 No-Cache](#ignore-origin-no-cache) | 确定 CDN 是否会忽略源服务器提供的某些指令。
 [忽略无法满足的范围](#ignore-unsatisfiable-ranges) | 确定当请求生成“416 无法满足请求的范围”状态代码时，会为客户端返回的响应。
-[内部最大过时期限](#internal-max-stale) | 控制在边缘服务器无法重新验证源服务器的缓存资产的情况下，允许边缘服务器在正常到期时间过后多长时间内提供缓存资产。
+[内部最大过时期限](#internal-max-stale) | 控制在 POP 无法重新验证源服务器的缓存资产的情况下，允许 POP 在正常到期时间过后多长时间内提供缓存资产。
 [部分缓存共享](#partial-cache-sharing) | 确定请求是否可以生成部分缓存的内容。
 [预验证缓存内容](#prevalidate-cached-content) | 确定缓存内容在其 TTL 到期之前是否适合进行早期重新验证。
-[刷新零字节缓存文件](#refresh-zero-byte-cache-files) | 确定边缘服务器如何处理 HTTP 客户端要求提供 0 字节缓存资产的请求。
+[刷新零字节缓存文件](#refresh-zero-byte-cache-files) | 确定 POP 如何处理 HTTP 客户端要求提供 0 字节缓存资产的请求。
 [设置“可缓存”状态代码](#set-cacheable-status-codes) | 定义一组允许进行内容缓存的状态代码。
 [在出错时交付过时的内容](#stale-content-delivery-on-error) | 确定在缓存重新验证时出错或者在从客户源服务器检索请求内容时出错的情况下，是否交付到期的缓存内容。
-[在重新验证时交付过时的内容](#stale-while-revalidate) | 允许边缘服务器在重新验证时会过时的客户端内容提供给请求者，以便提高性能。
+[在重新验证时交付过时的内容](#stale-while-revalidate) | 允许 POP 在重新验证时会过时的客户端内容提供给请求者，以便提高性能。
 
 ## <a name="comment-feature"></a>注释功能
 
@@ -110,7 +110,7 @@ Name | Purpose
 Edge Optimizer | Determines whether Edge Optimizer can be applied to a request.
 Edge Optimizer – Instantiate Configuration | Instantiates or activates the Edge Optimizer configuration associated with a site.
 
-###Edge Optimizer
+### Edge Optimizer
 **Purpose:** Determines whether Edge Optimizer can be applied to a request.
 
 If this feature has been enabled, then the following criteria must also be met before the request will be processed by Edge Optimizer:
@@ -128,7 +128,7 @@ Disabled|Restores the default behavior. The default behavior is to deliver conte
 **Default Behavior:** Disabled
  
 
-###Edge Optimizer - Instantiate Configuration
+### Edge Optimizer - Instantiate Configuration
 **Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
 
 This feature requires the ADN platform and the Edge Optimizer feature.
@@ -151,7 +151,7 @@ If the desired site does not appear in the list, then you should edit its config
 名称 | 目的
 -----|--------
 [最大 Keep-Alive 请求数](#maximum-keep-alive-requests) | 定义 Keep-Alive 连接在关闭前的最大请求数。
-[代理特殊标头](#proxy-special-headers) | 定义一组特定于 CDN 的请求标头，这些标头将从边缘服务器转发给源服务器。
+[代理特殊标头](#proxy-special-headers) | 定义一组特定于 CDN 的请求标头，这些标头将从 POP 转发给源服务器。
 
 
 ## <a name="specialty-features"></a>特殊功能
@@ -201,8 +201,8 @@ If the desired site does not appear in the list, then you should edit its config
 
 值|结果
 --|--
-已启用|允许边缘服务器遵循带宽限制请求。
-已禁用|导致边缘服务器忽略带宽限制参数。 请求的内容将正常提供（即没有带宽限制）。
+已启用|允许 POP 遵循带宽限制请求。
+已禁用|导致 POP 忽略带宽限制参数。 请求的内容将正常提供（即没有带宽限制）。
 
 **默认行为：**启用。
  
@@ -212,14 +212,14 @@ If the desired site does not appear in the list, then you should edit its config
 
 ---
 ### <a name="bandwidth-throttling"></a>带宽限制
-**目的：**限制边缘服务器提供的响应的带宽。
+**目的：**限制 POP 提供的响应的带宽。
 
 若要正确设置带宽限制，下面的两个选项都必须定义。
 
 选项|说明
 --|--
 每秒千字节数|将此选项设置为可以用来提供响应的最大带宽 (Kb/s)。
-预缓存秒数|将此选项设置为在限制带宽之前边缘服务器要等待的秒数。 在此时间段内不限制带宽，目的是防止媒体播放器因带宽限制而出现中断或缓冲问题。
+预缓存秒数|将此选项设置为在限制带宽之前 POP 要等待的秒数。 在此时间段内不限制带宽，目的是防止媒体播放器因带宽限制而出现中断或缓冲问题。
 
 **默认行为：**禁用。
 
@@ -233,8 +233,8 @@ If the desired site does not appear in the list, then you should edit its config
 
 值|结果
 --|--
-已启用|导致所有请求被转到源服务器，即使此前已在边缘服务器上缓存了内容。
-已禁用|导致边缘服务器根据响应标头中定义的缓存策略缓存资产。
+已启用|导致所有请求被转到源服务器，即使此前已在 POP 上缓存了内容。
+已禁用|导致 POP 根据响应标头中定义的缓存策略缓存资产。
 
 **默认行为：**
 
@@ -289,7 +289,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 ---
 ### <a name="cache-control-header-treatment"></a>Cache-Control 标头处理
-**目的：**在“外部最大有效期”功能启用时，控制边缘服务器生成 `Cache-Control` 标头。
+**目的：**在“外部最大有效期”功能启用时，控制 POP 生成 `Cache-Control` 标头。
 
 要实现此类配置，最简单的方式是将“外部最大有效期”和“Cache-Control 标头处理”功能置于同一语句中。
 
@@ -415,9 +415,9 @@ cache-key 是一个相对路径，用于确定缓存的资产。 换言之，服
 
 ---
 ### <a name="complete-cache-fill"></a>完成缓存填充
-**目的：**确定当请求导致边缘服务器部分缓存未命中时会发生什么情况。
+**目的：**确定当请求导致 POP 部分缓存未命中时会发生什么情况。
 
-部分缓存未命中描述的是未完全下载到边缘服务器的资产的缓存状态。 如果资产仅部分缓存在边缘服务器上，则会将下一个针对该资产的请求再次转发到源服务器。
+部分缓存未命中描述的是未完全下载到 POP 的资产的缓存状态。 如果资产仅部分缓存在 POP 上，则会将下一个针对该资产的请求再次转发到源服务器。
 <!---
 This feature is not available for the ADN platform. The typical traffic on this platform consists of relatively small assets. The size of the assets served through these platforms helps mitigate the effects of partial cache misses, since the next request will typically result in the asset being cached on that POP.
 
@@ -430,8 +430,8 @@ This feature is not available for the ADN platform. The typical traffic on this 
 
 值|结果
 --|--
-已启用|还原默认行为。 默认行为是强制边缘服务器启动对源服务器中资产的后台获取。 然后，资产将位于边缘服务器的本地缓存中。
-已禁用|防止边缘服务器执行资产的后台获取操作。 结果是，下次从该区域请求此资产时，会导致边缘服务器从客户源服务器请求此资产。
+已启用|还原默认行为。 默认行为是强制 POP 启动对源服务器中资产的后台获取。 然后，资产将位于 POP 的本地缓存中。
+已禁用|防止 POP 执行资产的后台获取操作。 结果是，下次从该区域请求此资产时，会导致 POP 从客户源服务器请求此资产。
 
 **默认行为：**启用。
 
@@ -523,14 +523,14 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 ---
 ### <a name="default-internal-max-age"></a>默认的内部最大有效期
-**目的：**确定在进行从边缘服务器到源服务器的缓存重新验证时，默认的最大有效期时间间隔。 也即在边缘服务器查看缓存资产是否与源服务器上存储的资产匹配之前需等待的时间。
+**目的：**确定在进行从 POP 到源服务器的缓存重新验证时，默认的最大有效期时间间隔。 也即在 POP 查看缓存资产是否与源服务器上存储的资产匹配之前需等待的时间。
 
 重要信息：
 
 - 执行此操作只是为了获得未在 `Cache-Control` 或 `Expires` 标头中分配最大有效期指示的源服务器的响应。
 - 对于那些被视为无法缓存的资产，不会执行此操作。
-- 此操作不影响从浏览器到边缘服务器的缓存重新验证。 这些类型的重新验证取决于发送给浏览器的 `Cache-Control` 或 `Expires` 标头，此类标头可以通过“外部最大有效期”功能自定义。
-- 此操作的结果对于从内容所在的边缘服务器返回的响应标头和内容没有明显的影响，但可能会影响从边缘服务器发送到源服务器的重新验证流量。
+- 此操作不影响从浏览器到 POP 的缓存重新验证。 这些类型的重新验证取决于发送给浏览器的 `Cache-Control` 或 `Expires` 标头，此类标头可以通过“外部最大有效期”功能自定义。
+- 此操作的结果对于从内容所在的 POP 返回的响应标头和内容没有明显的影响，但可能会影响从 POP 发送到源服务器的重新验证流量。
 - 通过以下方式配置此功能：
     - 选择可以为其应用默认内部最大有效期的状态代码。
     - 指定一个整数值，并选择所需的时间单位（例如秒、分钟、小时等）。 此值定义默认的内部最大有效期时间间隔。
@@ -571,7 +571,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 ---
 ### <a name="expires-header-treatment"></a>Expires 标头处理
-**目的：**在“外部最大有效期”功能启用时，控制边缘服务器生成 `Expires` 标头。
+**目的：**在“外部最大有效期”功能启用时，控制 POP 生成 `Expires` 标头。
 
 要实现此类配置，最简单的方式是将“外部最大有效期”和“Expires 标头处理”功能置于同一语句中。
 
@@ -590,15 +590,15 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 ---
 ### <a name="external-max-age"></a>外部最大有效期
-**目的：**确定在进行从浏览器到边缘服务器的缓存重新验证时的最大有效期时间间隔。 也即在浏览器查看边缘服务器中是否存在新版资产之前需等待的时间。
+**目的：**确定在进行从浏览器到 POP 的缓存重新验证时的最大有效期时间间隔。 也即在浏览器查看 POP 中是否存在新版资产之前需等待的时间。
 
-启用此功能时，会在边缘服务器中生成 `Cache-Control: max-age` 和 `Expires` 标头并将其发送到 HTTP 客户端。 默认情况下，这些标头会覆盖源服务器创建的标头。 但是，可以使用“Cache-Control 标头处理”和“Expires 标头处理”功能更改此行为。
+启用此功能时，会在 POP 中生成 `Cache-Control: max-age` 和 `Expires` 标头并将其发送到 HTTP 客户端。 默认情况下，这些标头会覆盖源服务器创建的标头。 但是，可以使用“Cache-Control 标头处理”和“Expires 标头处理”功能更改此行为。
 
 重要信息：
 
-- 此操作不影响从边缘服务器到源服务器的缓存重新验证。 这些类型的重新验证取决于从源服务器接收的 `Cache-Control` 和 `Expires` 标头，可以通过“默认的内部最大有效期”和“强制内部最大有效期”功能自定义。
+- 此操作不影响从 POP 到源服务器的缓存重新验证。 这些类型的重新验证取决于从源服务器接收的 `Cache-Control` 和 `Expires` 标头，可以通过“默认的内部最大有效期”和“强制内部最大有效期”功能自定义。
 - 配置此功能时，可以指定一个整数值，并选择所需的时间单位（例如秒、分钟、小时等）。
-- 将此功能设置为负值时，会导致边缘服务器将过去针对每个响应设置的 `Cache-Control: no-cache` 和 `Expires` 时间发送至浏览器。 虽然 HTTP 客户端不会缓存响应，但此设置不会影响边缘服务器缓存源服务器响应的功能。
+- 将此功能设置为负值时，会导致 POP 将过去针对每个响应设置的 `Cache-Control: no-cache` 和 `Expires` 时间发送至浏览器。 虽然 HTTP 客户端不会缓存响应，但此设置不会影响 POP 缓存源服务器响应的功能。
 - 将时间单位设置为“关”会禁用此功能。 缓存在源服务器响应中的 `Cache-Control` 和 `Expires` 标头会传递给浏览器。
 
 **默认行为：**关
@@ -628,13 +628,13 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 ---
 ### <a name="force-internal-max-age"></a>强制内部最大有效期
-**目的：**确定在进行从边缘服务器到源服务器的缓存重新验证时的最大有效期时间间隔。 也即在边缘服务器查看缓存资产是否与源服务器上存储的资产匹配之前需等待的时间。
+**目的：**确定在进行从 POP 到源服务器的缓存重新验证时的最大有效期时间间隔。 也即在 POP 可查看缓存资产是否与源服务器上存储的资产匹配之前需等待的时间。
 
 重要信息：
 
 - 此功能将重写在源服务器生成的 `Cache-Control` 或 `Expires` 标头中定义的最大有效期时间间隔。
-- 此功能不影响从浏览器到边缘服务器的缓存重新验证。 这些类型的重新验证取决于发送给浏览器的 `Cache-Control` 或 `Expires` 标头。
-- 此功能对边缘服务器发送给请求者的响应没有明显的影响， 但可能会影响从边缘服务器发送到源服务器的重新验证流量。
+- 此功能不影响从浏览器到 POP 的缓存重新验证。 这些类型的重新验证取决于发送给浏览器的 `Cache-Control` 或 `Expires` 标头。
+- 此功能对 POP 发送给请求者的响应没有明显的影响， 但可能会影响从 POP 发送到源服务器的重新验证流量。
 - 通过以下方式配置此功能：
     - 选择将为其应用内部最大有效期的状态代码。
     - 指定一个整数值，并选择所需的时间单位（例如秒、分钟、小时等）。 此值定义请求的最大有效期时间间隔。
@@ -678,7 +678,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 值|结果
 --|--
-已启用|允许将 HTTP 客户端的 no-cache 请求转发给源服务器，然后源服务器就会将响应标头和正文通过边缘服务器返回给 HTTP 客户端。
+已启用|允许将 HTTP 客户端的 no-cache 请求转发给源服务器，然后源服务器就会将响应标头和正文通过 POP 返回给 HTTP 客户端。
 已禁用|还原默认行为。 默认行为是为了防止系统将 no-cache 请求转发到源服务器。
 
 对于所有生产流量，强烈建议将此功能保留为默认禁用状态。 否则，如果最终用户在刷新网页时无意触发多个 no-cache 请求，或者多个常用媒体播放器根据编码在每次进行视频请求时都发送 no-cache 标头，源服务器就会受到影响。 尽管如此，仍可将此功能应用到某些非生产性的分段或测试目录，以便根据需要从源服务器拉取全新的内容。
@@ -724,11 +724,11 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 ### <a name="ignore-unsatisfiable-ranges"></a>忽略无法满足的范围 
 **目的：**确定当请求生成“416 无法满足请求的范围”状态代码时，会为客户端返回的响应。
 
-默认情况下，当边缘服务器无法满足指定的 byte-range 请求时，以及当 If-Range 请求标头字段未被指定时，会返回此状态代码。
+默认情况下，当 POP 无法满足指定的 byte-range 请求时，以及当 If-Range 请求标头字段未被指定时，会返回此状态代码。
 
 值|结果
 -|-
-已启用|防止边缘服务器使用“416 无法满足请求的范围”状态代码响应无效的 byte-range 请求。 服务器会改为交付请求的资产并为客户端返回“200 正常”。
+已启用|防止 POP 使用“416 无法满足请求的范围”状态代码响应无效的 byte-range 请求。 服务器会改为交付请求的资产并为客户端返回“200 正常”。
 已禁用|还原默认行为。 默认行为是遵循“416 无法满足请求的范围”状态代码。
 
 **默认行为：**禁用。
@@ -739,15 +739,15 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 ---
 ### <a name="internal-max-stale"></a>内部最大过时期限
-**目的：**控制在边缘服务器无法重新验证源服务器的缓存资产的情况下，允许边缘服务器在正常到期时间过后多长时间内提供缓存资产。
+**目的：**控制在 POP 无法重新验证源服务器的缓存资产的情况下，允许 POP 在正常到期时间过后多长时间内提供缓存资产。
 
-通常情况下，当资产的最大有效期时间到期时，边缘服务器会向源服务器发送重新验证请求。 然后，源服务器会使用“304 未修改”进行响应，为边缘服务器提供缓存资产的全新租约，或者使用“200 正常”进行响应，为边缘服务器提供更新版的缓存资产。
+通常情况下，当资产的最大有效期时间到期时，POP 会向源服务器发送重新验证请求。 然后，源服务器会使用“304 未修改”进行响应，为 POP 提供缓存资产的全新租约，或者使用“200 正常”进行响应，为 POP 提供更新版的缓存资产。
 
-如果边缘服务器在尝试此类重新验证时无法建立与源服务器的连接，则此“内部最大过时期限”功能会控制是否允许边缘服务器继续提供现已过时的资产，以及在多长时间内提供。
+如果 POP 在尝试此类重新验证时无法建立与源服务器的连接，则此“内部最大过时期限”功能会控制是否允许 POP 继续提供现已过时的资产，以及在多长时间内提供。
 
 请注意，此时间间隔是在资产的最大有效期到期时开始的，而不是在重新验证失败时开始的。 因此，不需重新验证成功即可提供资产的最大时段是指组合使用最大有效期和最大过时期限指定的时间段。 例如，假设资产已在 9:00 进行缓存，最大有效期为 30 分钟，最大过时期限为 15 分钟，这种情况下，如果在 9:44 进行的重新验证尝试失败，则会导致最终用户收到过时的缓存资产；如果在 9:46 进行的重新验证尝试失败，则会导致最终用户收到“504 网关超时”。
 
-为此功能配置的任何值都会被从源服务器收到的 `Cache-Control: must-revalidate` 或 `Cache-Control: proxy-revalidate` 标头取代。 如果在初次缓存资产时从源服务器收到了这其中的一个标头，则边缘服务器不会提供过时的缓存资产。 这种情况下，如果边缘服务器在资产的最大有效期时间间隔到期后无法通过源服务器重新进行验证，则边缘服务器会返回“504 网关超时”错误。
+为此功能配置的任何值都会被从源服务器收到的 `Cache-Control: must-revalidate` 或 `Cache-Control: proxy-revalidate` 标头取代。 如果在初次缓存资产时从源服务器收到了这其中的一个标头，则 POP 不会提供过时的缓存资产。 这种情况下，如果 POP 在资产的最大有效期时间间隔到期后无法通过源服务器重新进行验证，则 POP 会返回“504 网关超时”错误。
 
 重要信息：
 
@@ -828,7 +828,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
     - CACHE-CONTROL
     - cachE-Control
 - 指定标头名称时，请仅使用字母数字字符、短划线或下划线。
-- 删除标头即可防止边缘服务器将其转发给源服务器。
+- 删除标头即可防止 POP 将其转发给源服务器。
 - 以下标头为保留标头，不能通过此功能进行修改：
     - forwarded
     - host
@@ -848,7 +848,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 - 追加或覆盖分配给响应标头的值。 如果指定的响应标头不存在，则可使用此功能将其添加到响应。
 - 从响应中删除响应标头。
 
-默认情况下，由源服务器和边缘服务器定义响应标头值。
+默认情况下，由源服务器和 POP 定义响应标头值。
 
 可以对响应标头执行以下操作之一：
 
@@ -922,7 +922,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 ---
 ### <a name="proxy-special-headers"></a>代理特殊标头
-**目的：**定义一组特定于 CDN 的请求标头，这些标头将从边缘服务器转发给源服务器。
+**目的：**定义一组特定于 CDN 的请求标头，这些标头将从 POP 转发给源服务器。
 
 重要信息：
 
@@ -937,15 +937,15 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 ---
 ### <a name="refresh-zero-byte-cache-files"></a>刷新零字节缓存文件
-**目的：**确定边缘服务器如何处理 HTTP 客户端要求提供 0 字节缓存资产的请求。
+**目的：**确定 POP 如何处理 HTTP 客户端要求提供 0 字节缓存资产的请求。
 
 有效值是：
 
 值|结果
 --|--
-已启用|导致边缘服务器重新获取源服务器的资产。
+已启用|导致 POP 重新获取源服务器的资产。
 已禁用|还原默认行为。 默认行为是在收到请求后提供有效的缓存资产。
-此功能不是正确地进行缓存和内容交付所必需的，但可用作一种解决方法。 例如，源服务器上的动态内容生成器可能会意外地导致 0 字节响应被发送至边缘服务器。 这些类型的响应通常由边缘服务器缓存。 如果确定 0 字节响应不是此类内容 
+此功能不是正确地进行缓存和内容交付所必需的，但可用作一种解决方法。 例如，源服务器上的动态内容生成器可能会意外地导致 0 字节响应被发送到 POP。 这些类型的响应通常由 POP 缓存。 如果确定 0 字节响应不是此类内容 
 
 的有效响应，则可利用此功能防止系统将这些类型的资产提供给客户端。
 
@@ -1016,7 +1016,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 ---
 ### <a name="stale-while-revalidate"></a>在重新验证时交付过时的内容
-**目的：**允许边缘服务器在重新验证时会过时的内容提供给请求者，以便提高性能。
+**目的：**允许 POP 在重新验证时会过时的内容提供给请求者，以便提高性能。
 
 重要信息：
 
@@ -1109,7 +1109,7 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 
 值|结果
 ---|----
-已启用|导致边缘服务器在比较基于令牌的身份验证参数的 URL 时忽略大小写。
+已启用|导致 POP 在比较基于令牌的身份验证参数的 URL 时忽略大小写。
 已禁用|还原默认行为。 默认行为是在针对令牌身份验证进行 URL 比较时区分大小写。
 
 **默认行为：**禁用。
@@ -1169,7 +1169,7 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
         - 请求 URL（重定向后）：http://cdn.mydomain.com/resources/widgets.pdf  
     - 示例方案 2： 
         - 示例请求（边缘 CNAME URL）：http://marketing.mydomain.com/brochures/widgets.pdf 
-        - 请求 URL（重定向后）：http://cdn.mydomain.com/resources/widgets.pdf  示例方案
+        - 请求 URL（重定向后）：http://cdn.mydomain.com/resources/widgets.pdf 示例方案
     - 示例方案 3： 
         - 示例请求（边缘 CNAME URL）：http://brochures.mydomain.com/campaignA/final/productC.ppt 
         - 请求 URL（重定向后）：http://cdn.mydomain.com/resources/campaignA/final/productC.ppt  
@@ -1192,7 +1192,7 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 -|-
  源和模式 | 这些设置定义的请求 URI 模式用于标识可重写请求的类型。 只会重写其 URL 同时满足下述两个条件的请求： <br/>     - **源（或内容访问点）：**选择用于标识源服务器的相对路径。 该路径是“/XXXX/”部分和终结点名。 <br/> - **源（模式）：**必须定义一个可通过相对路径标识请求的模式。 此正则表达式模式必须定义一个路径，该路径直接开始于以前选择的内容访问点（见上）之后。 <br/> 确认上面定义的请求 URI 条件（即源和模式）不与为此功能定义的任何匹配条件冲突。 指定模式；如果使用空白值作为模式，则匹配所有字符串。 
  目标  |定义要通过其将上述请求重写的相对 URL： <br/>    1.选择用于标识源服务器的内容访问点。 <br/>    2.使用以下方式定义相对路径： <br/>        - 正则表达式模式 <br/>        - HTTP 变量 <br/> <br/> 使用 $_n_ 将源模式中捕获的值替换到目标模式中，其中 _n_ 用于按捕获顺序来标识值。 例如，$1 代表按源模式捕获的第一个值，而 $2 则代表第二个值。 
- 此功能允许边缘服务器重写 URL，而不需执行传统的重定向。 这意味着，请求者会收到与请求重写 URL 相同的响应代码。
+ 此功能允许 POP 重写 URL，而不需执行传统的重定向。 这意味着，请求者会收到与请求重写 URL 相同的响应代码。
 
 **示例方案 1**
 

@@ -1,11 +1,11 @@
 ---
-title: "适用于 Unity iOS 部署的 Azure Mobile Engagement 入门"
-description: "了解如何使用带有分析和推送功能的 Azure Mobile Engagement 将 Unity 应用部署到 iOS 设备。"
+title: 适用于 Unity iOS 部署的 Azure Mobile Engagement 入门
+description: 了解如何使用带有分析和推送功能的 Azure Mobile Engagement 将 Unity 应用部署到 iOS 设备。
 services: mobile-engagement
 documentationcenter: unity
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7ddfbac3-8d13-4ebe-b061-c865f357297f
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: c8f50404771965ec636065346ac04e059d264c3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8270a56daf8e69eede5b3d14b4ff88e0911da11a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-unity-ios-deployment"></a>适用于 Unity iOS 部署的 Azure Mobile Engagement 入门
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 本主题介绍如何借助 Azure Mobile Engagement 了解应用使用情况，以及如何在 Unity 应用程序部署到 iOS 设备时，向其用户段发送推送通知。

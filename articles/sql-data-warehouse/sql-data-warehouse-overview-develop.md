@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: develop
-ms.date: 03/15/2018
+ms.date: 03/22/2018
 ms.author: jrj;barbkess
-ms.openlocfilehash: 329217faaf865052b79a1d44200cc3c788702046
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c81a6f9af556a86f10d2482333fdc98f9cfb1454
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>SQL 数据仓库的设计决策和编程技术
 请阅读以下开发文章，以更好地了解 SQL 数据仓库的关键设计决策、建议和编程技术。
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/17/2018
 * [变量赋值][variable assignment]
 
 ## <a name="next-steps"></a>后续步骤
-有关更多参考信息，请参阅 SQL 数据仓库的 [Transact-SQL 参考][Transact-SQL reference]页。
+有关更多参考信息，请参阅 [SQL 数据仓库 T-SQL 语句](sql-data-warehouse-reference-tsql-statements.md)。
 
 <!--Image references-->
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 03/17/2018
 [user-defined schemas]: ./sql-data-warehouse-develop-user-defined-schemas.md
 [variable assignment]: ./sql-data-warehouse-develop-variable-assignment.md
 [views]: ./sql-data-warehouse-develop-views.md
-[Transact-SQL reference]: ./sql-data-warehouse-overview-reference.md
+
 
 <!--MSDN references-->
 [renaming objects]: https://msdn.microsoft.com/library/mt631611.aspx

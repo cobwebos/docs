@@ -1,12 +1,12 @@
 ---
-title: "针对对象无法同步到 Azure AD 进行故障排除 | Microsoft Docs"
-description: "针对对象无法同步到 Azure AD 进行故障排除。"
+title: 针对对象无法同步到 Azure AD 进行故障排除 | Microsoft Docs
+description: 针对对象无法同步到 Azure AD 进行故障排除。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: e68b70ce87a6fedab1b85bf2800a50e512910dea
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 05b60b091fe87620c88ad9eb761f1028c24d5730
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>针对对象无法同步到 Azure AD 进行故障排除
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 03/13/2018
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/previewresult.png)
 
 ### <a name="log"></a>日志
-“日志”页用于查看密码同步状态和历史记录。 有关详细信息，请参阅[排查密码同步问题](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)。
+“日志”页用于查看密码同步状态和历史记录。 有关详细信息，请参阅[排查密码哈希同步问题](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md)。
 
 ## <a name="metaverse-object-properties"></a>Metaverse 对象属性
 通常，最好从源 Active Directory [连接器空间](#connector-space)开始搜索。 但也可以从 metaverse 开始搜索。

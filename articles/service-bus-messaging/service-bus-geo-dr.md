@@ -1,11 +1,11 @@
 ---
-title: "Azure 服务总线异地灾难恢复 | Microsoft 文档"
-description: "如何使用地理区域进行故障转移并在 Azure 服务总线中执行灾难恢复"
+title: Azure 服务总线异地灾难恢复 | Microsoft 文档
+description: 如何使用地理区域进行故障转移并在 Azure 服务总线中执行灾难恢复
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: christianwolf42
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: sethm
-ms.openlocfilehash: 9cbeff82f7a237c813ea91cd83e9273cad934991
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 652adcf78add8ae699a7f827a915e90ce1694c61
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure 服务总线异地灾难恢复
 
@@ -86,12 +86,13 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 
 ## <a name="samples"></a>示例
 
-[GitHub 上的示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2)演示如何设置和启动故障转移。 这些示例演示以下概念：
+[GitHub 上的示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/)演示如何设置和启动故障转移。 这些示例演示以下概念：
 
-- 在 Azure Active Directory 中将 Azure 资源管理器与服务总线配合使用所需的设置。 
-- 执行示例代码所需的步骤。 
-- 从当前的主要命名空间进行发送和接收。 
+- 在 Azure Active Directory 中将 Azure 资源管理器与服务总线配合使用所需的 .Net 示例和设置，用来设置和启用异地灾难恢复。
+- 执行示例代码所需的步骤。
 - 如何使用现有的命名空间作为别名。
+- 改用 PowerShell 或 CLI 启用异地灾难恢复的步骤。
+- 使用别名从当前的主要或次要命名空间进行[发送和接收](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1)。
 
 ## <a name="considerations"></a>注意事项
 

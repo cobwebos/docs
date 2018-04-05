@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 617b33a9f860ce3b06ff560de22824037eab8332
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7e520429e5f5e219e05a77eb4ca18d0d6b6b3977
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
@@ -26,8 +26,8 @@ ms.lasthandoff: 03/17/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-* 按照[安装 Durable Functions](durable-functions-install.md) 中的说明设置示例。
-* 本文假定用户已完成 [Hello Sequence](durable-functions-sequence.md) 示例演练。
+* [安装 Durable Functions](durable-functions-install.md)。
+* 完成 [Hello 序列](durable-functions-sequence.md)演练。
 
 ## <a name="scenario-overview"></a>方案概述
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 03/17/2018
 * `E3_GetIsClear`：检查某个地点的当前天气状况的活动函数。
 * `E3_SendGoodWeatherAlert`：通过 Twilio 发送短信的活动函数。
 
-以下部分介绍用于 Azure 门户开发的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
+以下部分介绍用于 C# 脚本的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
  
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>天气监视业务流程（Visual Studio Code 和 Azure 门户示例代码）
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 03/17/2018
 
 ## <a name="run-the-sample"></a>运行示例
 
-使用示例中包含的 HTTP 触发函数，可以通过发送以下 HTTP POST 请求来启动业务流程：
+使用示例中包含的 HTTP 触发型函数，可以通过发送以下 HTTP POST 请求来启动业务流程：
 
 ```
 POST https://{host}/orchestrators/E3_Monitor

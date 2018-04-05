@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: edfd317e7d3f7595f656c6c24ad65f3d87fea14c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 18059ef1e0efba4f030a6e99198f0b7c72b7daf3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 在 Azure 自动化中启动 Runbook 时，会创建一个作业。 作业是 Runbook 的单一执行实例。 将分配一个 Azure 自动化工作线程来运行每个作业。 尽管工作线程由多个 Azure 帐户共享，但不同自动化帐户中的作业是相互独立的。 无法控制要由哪个辅助角色为作业请求提供服务。 一个 Runbook 可以同时运行多个作业。  可以重用同一自动化帐户中的作业的执行环境。 在 Azure 门户中查看 Runbook 列表时，列表中会列出为每个 Runbook 启动的所有作业的状态。 可以查看每个 Runbook 的作业列表以跟踪每个作业的状态。 有关不同作业状态的说明，请参阅[作业状态](#job-statuses)。
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/17/2018
 | 正在暂停 |系统正在尝试按用户请求暂停作业。 Runbook 只有在达到其下一个检查点后才能挂起。 如果 Runbook 越过了最后一个检查点，则只有在完成后才能挂起。  仅适用于[图形 Runbook 和 PowerShell 工作流 Runbook](automation-runbook-types.md)。 |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>从 Azure 门户查看作业状态
-可在 Azure 门户中查看所有 Runbook 作业的概述状态或深入了解特定 Runbook 作业的详情，或者通过配置与 Microsoft Operations Management Suite (OMS) Log Analytics 工作区的集成，转发 Runbook 作业状态和作业流。  有关与 OMS Log Analytics 集成的详细信息，请参阅 [Forward job status and job streams from Automation to Log Analytics (OMS)](automation-manage-send-joblogs-log-analytics.md)（将作业状态和作业流从自动化转发到 Log Analytics (OMS)）。  
+可在 Azure 门户中查看所有 Runbook 作业的概述状态或深入了解特定 Runbook 作业的详情，或者通过配置与 Log Analytics 工作区的集成，转发 Runbook 作业状态和作业流。  有关与 Log Analytics 集成的详细信息，请参阅[将作业状态和作业流从自动化转发到 Log Analytics](automation-manage-send-joblogs-log-analytics.md)。  
 
 ### <a name="automation-runbook-jobs-summary"></a>自动化 Runbook 作业摘要
 在所选的“自动化帐户”右侧，可在“作业统计信息”磁贴下看到所选自动化帐户的所有 Runbook 作业的摘要。<br><br> ![作业统计数据磁贴](./media/automation-runbook-execution/automation-account-job-status-summary.png)。<br> 此磁贴显示执行的所有作业的作业状态计数和图形表示形式。  

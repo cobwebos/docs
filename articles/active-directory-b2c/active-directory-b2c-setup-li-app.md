@@ -1,28 +1,25 @@
 ---
-title: "Azure Active Directory B2C：LinkedIn 配置 | Microsoft Docs"
-description: "在 Azure Active Directory B2C 保护的应用程序中，向具有 LinkedIn 帐户的使用者提供注册和登录"
+title: Azure Active Directory B2C：LinkedIn 配置 | Microsoft Docs
+description: 在 Azure Active Directory B2C 保护的应用程序中，向具有 LinkedIn 帐户的使用者提供注册和登录
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: fa51a16b-9ce9-4e27-9eff-0869b4c4f0ef
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: 860aa90c391604924850a00cf2137d59fa4a1b53
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 91970b3ec41c645cd1cd3e203cc96ad655dafd7e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-linkedin-accounts"></a>Azure Active Directory B2C：向具有 LinkedIn 帐户的使用者提供注册和登录
 ## <a name="create-a-linkedin-application"></a>创建 LinkedIn 应用程序
-要将 LinkedIn 用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 LinkedIn 应用程序并向其提供合适的参数。 需要一个 LinkedIn 帐户来完成此操作。 如果没有没有，可以在 [https://www.linkedin.com/](https://www.linkedin.com/) 处获取。
+要将 LinkedIn 用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 LinkedIn 应用程序并向其提供合适的参数。 需要一个 LinkedIn 帐户来完成此操作。 如果没有账户，可在 [https://www.linkedin.com/](https://www.linkedin.com/) 处获取。
 
 1. 转到 [LinkedIn 开发人员网站](https://www.developer.linkedin.com/)，使用 LinkedIn 帐户凭据登录。
 2. 在顶部菜单栏中单击“我的应用”，并单击“创建应用程序”。

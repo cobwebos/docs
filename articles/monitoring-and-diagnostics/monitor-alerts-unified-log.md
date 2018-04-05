@@ -1,9 +1,9 @@
 ---
-title: "Azure Monitor - 警报（预览版）中的日志警报 | Microsoft Docs"
-description: "当满足指定的复杂查询条件时，Azure 警报（预览版）会触发电子邮件、通知、调用网站 URL (Webhook) 或自动化。"
+title: Azure Monitor - 警报中的日志警报 | Microsoft Docs
+description: 当满足指定的复杂查询条件时，Azure 警报会触发电子邮件、通知、调用网站 URL (Webhook) 或自动化。
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
@@ -12,35 +12,35 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/17/2018
 ms.author: vinagara
-ms.openlocfilehash: 0cee8bf77e0facc12159b823152b8859ce5cedd8
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5928bbcec08d6ba4ac0b0d03b66fa4bfc8f5e3d7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Azure Monitor - 警报（预览版）中的日志警报
-本文详细说明了 Analytics 中的警报规则在 Azure 警报（预览版）中如何工作，并介绍了不同类型的日志警报规则之间的差异。 有关使用日志的指标警报的详细信息，请参阅[准实时指标警报](monitoring-near-real-time-metric-alerts.md)
+# <a name="log-alerts-in-azure-monitor---alerts"></a>Azure Monitor - 警报中的日志警报 
+本文详细说明了 Analytics 查询中的警报规则在 Azure 警报中如何工作，并介绍了不同类型的日志警报规则之间的差异。 有关使用日志的指标警报的详细信息，请参阅[准实时指标警报](monitoring-near-real-time-metric-alerts.md)
 
-目前，Azure 警报（预览版）支持与来自 [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 和 [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) 的查询相关的日志警报。
+目前，Azure 警报支持与来自 [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) 和 [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) 的查询相关的日志警报。
 
 > [!WARNING]
 
-> 目前，Azure 警报（预览版）中的日志警报不支持跨工作区或跨应用查询。
+> 目前，Azure 警报中的日志警报不支持跨工作区或跨应用查询。 用于 Application Insights 的日志警报处于公开预览状态，功能和用户体验可能会发生更改。
 
-另外，用户可以在 Azure 中精选的 Analytics 平台中完善其查询，然后*通过保存查询将它们导出以在警报（预览版）中使用*。 要遵循的步骤如下：
+另外，用户可以在 Azure 中精选的 Analytics 平台中完善其查询，然后通过保存查询将它们导入以在警报中使用。 要遵循的步骤如下：
 - 对于 Application Insights：转到 Analytics 门户，验证查询及其结果。 然后，以唯一名称将其保存到“共享查询”。
 - 对于 Log Analytics：转到“日志搜索”，验证查询及其结果。 然后，以唯一名称将其保存到任何类别。
 
-[在警报（预览版）中创建日志警报](monitor-alerts-unified-usage.md)时，可以看到保存的查询作为信号类型“日志(已保存的查询)”列出；如以下示例中所示：![导入到警报的已保存查询](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
+[在警报中创建日志警报](monitor-alerts-unified-usage.md)时，可以看到保存的查询作为信号类型“日志(已保存的查询)”列出；如以下示例中所示：![导入到警报的已保存查询](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
 
 > [!NOTE]
 > 使用“日志(已保存的查询)”会导致导入到警报中。 因此，之后在 Analytics 中所做的任何更改都不会反映在已保存的警报规则中，反之亦然。
 
 ## <a name="log-alert-rules"></a>日志警报规则
 
-警报是由 Azure 警报（预览版）通过定期自动运行日志查询来创建的。  如果日志查询的结果符合特定条件，则会创建警报记录。 然后，该规则可使用[操作组](monitoring-action-groups.md)自动运行一个或多个操作以主动通知你存在警报或调用另一个进程，例如，使用[基于 json 的 webhook](monitor-alerts-unified-log-webhook.md) 将数据发送到外部应用程序。 不同类型的警报规则使用不同的逻辑来执行此分析。
+警报是由 Azure 警报通过定期自动运行日志查询来创建的。  如果日志查询的结果符合特定条件，则会创建警报记录。 然后，该规则可使用[操作组](monitoring-action-groups.md)自动运行一个或多个操作以主动通知你存在警报或调用另一个进程，例如，使用[基于 json 的 webhook](monitor-alerts-unified-log-webhook.md) 将数据发送到外部应用程序。 不同类型的警报规则使用不同的逻辑来执行此分析。
 
 预警规则通过以下详细信息定义：
 
@@ -118,7 +118,7 @@ Log Analytics 中的预警规则均为以下两种类型之一。  这些类型�
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[用于日志警报的 Webhook 操作](monitor-alerts-unified-log-webhook.md)
-* [获取 Azure 警报（预览版）的概述](monitoring-overview-unified-alerts.md)
-* 了解如何[使用 Azure 警报（预览版）](monitor-alerts-unified-usage.md)
+* [获取 Azure 警报的概述](monitoring-overview-unified-alerts.md)
+* 了解如何[使用 Azure 警报](monitor-alerts-unified-usage.md)
 * 详细了解 [Application Insights](../application-insights/app-insights-analytics.md)
 * 详细了解 [Log Analytics](../log-analytics/log-analytics-overview.md)。    

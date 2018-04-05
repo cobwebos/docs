@@ -1,11 +1,11 @@
 ---
-title: "Azure AD AngularJS 入门 | Microsoft Docs"
-description: "如何生成一个与 Azure AD 集成以方便登录，并使用 OAuth 调用 Azure AD 保护 API 的 AngularJS 单页面应用程序。"
+title: Azure AD AngularJS 入门 | Microsoft Docs
+description: 如何生成一个与 Azure AD 集成以方便登录，并使用 OAuth 调用 Azure AD 保护 API 的 AngularJS 单页面应用程序。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: jmprieur
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 51734f5b39e9ca8af65048f2a7efd5c61cd53204
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2f78a6b17a512ab54ffab4554ccc0f3f1486f27a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-angularjs-getting-started"></a>Azure AD AngularJS 入门
 
@@ -52,13 +52,13 @@ ms.lasthandoff: 02/21/2018
 4. 单击“应用注册”，并选择“添加”。
 5. 根据提示创建一个新的 Web 应用程序和/或 Web API：
   * **名称**向用户描述应用程序。
-  * “重定向 URI”是 Azure AD 要将令牌返回到的位置。 本示例的默认位置是 `https://localhost:44326/`。
+  * “登录 URL”是 Azure AD 要将令牌返回到的位置。 本示例的默认位置是 `https://localhost:44326/`。
 6. 完成注册后，Azure AD 将向应用分配唯一应用程序 ID。  在后面的部分中会用到此值，因此，请从应用程序选项卡中复制此值。
 7. Adal.js 使用 OAuth 隐式流来与 Azure AD 通信。 必须为应用程序启用隐式流：
   1. 单击应用程序，并选择“清单”打开内联清单编辑器。
   2. 找到 `oauth2AllowImplicitFlow` 属性。 将其值设置为 `true`。
   3. 单击“保存”以保存清单。
-8. 针对应用程序，在租户中授予权限。 转到“设置” > “属性” > “所需的权限”，并单击顶部栏上的“授予权限”按钮。 单击“是”确认。
+8. 针对应用程序，在租户中授予权限。 转到“设置” > “所需的权限”，并单击顶部栏上的“授予权限”按钮。 单击“是”确认。
 
 ## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>步骤 2：安装 ADAL 并配置单页面应用
 将应用程序注册到 Azure AD 后，可以安装 adal.js 并编写标识相关的代码。

@@ -1,10 +1,10 @@
 ---
-title: "Azure Cosmos DB 索引策略 | Microsoft Docs"
-description: "了解 Azure Cosmos DB 中索引的工作原理。 了解如何配置和更改索引策略，实现自动索引并提高性能。"
-keywords: "索引的工作原理, 自动索引, 索引数据库"
+title: Azure Cosmos DB 索引策略 | Microsoft Docs
+description: 了解 Azure Cosmos DB 中索引的工作原理。 了解如何配置和更改索引策略，实现自动索引并提高性能。
+keywords: 索引的工作原理, 自动索引, 索引数据库
 services: cosmos-db
-documentationcenter: 
-author: arramac
+documentationcenter: ''
+author: rafats
 manager: jhubbard
 editor: monicar
 ms.assetid: d5e8f338-605d-4dff-8a61-7505d5fc46d7
@@ -13,19 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 08/17/2017
-ms.author: arramac
-ms.openlocfilehash: b09f5323f0378721412baade9be9926ebd0c171e
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.date: 03/26/2018
+ms.author: rafats
+ms.openlocfilehash: 5610c5fdc6a04f9ef13d2e4592f0d7e5d8eba30c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Azure Cosmos DB 如何编制数据索引？
 
 默认情况下，所有 Azure Cosmos DB 数据均编制索引。 尽管许多客户都愿意让 Azure Cosmos DB 自动处理索引的方方面面，但你可在 Azure Cosmos DB 中在创建过程中为集合指定自定义索引策略。 Azure Cosmos DB 中的索引策略比其他数据库平台中提供的辅助索引更加灵活和强大。 在 Azure Cosmos DB 中，可设计和自定义索引的形状，无需牺牲架构的灵活性。 
 
 要了解 Azure Cosmos DB 中的索引工作原理，管理索引策略时了解它至关重要，可以在索引存储开销、写入和查询吞吐量以及查询一致性之间进行细致权衡。  
+
+在下面的视频中，Azure Cosmos DB 计划经理 Andrew Liu 演示了 Azure Cosmos DB 的自动索引功能，以及如何在 Azure Cosmos DB 容器上优化并配置索引策略。 
+
+>[!VIDEO https://www.youtube.com/embed/uFu2D-GscG0]
 
 在本文中，我们将仔细研究 Azure Cosmos DB 索引策略、自定义索引策略的方法和相关的权衡方案。 
 

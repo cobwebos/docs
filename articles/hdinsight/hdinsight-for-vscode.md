@@ -1,14 +1,14 @@
 ---
-title: "Azure HDInsight 工具 -将 Visual Studio Code 用于 Hive、LLAP 或 pySpark | Microsoft Docs"
-description: "了解如何使用用于 Visual Studio Code 的 Azure HDInsight 工具来创建、提交查询和脚本。"
+title: Azure HDInsight 工具 -将 Visual Studio Code 用于 Hive、LLAP 或 pySpark | Microsoft Docs
+description: 了解如何使用用于 Visual Studio Code 的 Azure HDInsight 工具来创建、提交查询和脚本。
 Keywords: VS Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
 services: HDInsight
-documentationcenter: 
+documentationcenter: ''
 author: jejiang
-manager: 
+manager: ''
 editor: jgao
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: HDInsight
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 4f0bcd0992a02e64b4b10347fc30776af17900bd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8c976e5508c928943e2a5e4820f72520554f9b5d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具
 
@@ -69,9 +69,9 @@ ms.lasthandoff: 02/21/2018
 
 4. 从“资源管理器”中打开 **XXXX_hdi_settings.json**，或者右键单击脚本编辑器以选择“设置配置”。 可以配置登录入口、默认群集和作业提交参数，如文件中的示例所示。 还可以将其余参数保留为空。
 
-## <a name="connect-to-azure"></a>连接到 Azure
+## <a name="connect-to-hdinsight-cluster"></a>连接到 HDInsight 群集
 
-需要连接到 Azure 帐户，然后才能从 VS Code 将脚本提交到 HDInsight 群集。
+将脚本从 VS Code 提交到 HDInsight 群集之前，需要连接到 Azure 帐户，或链接群集（使用 Ambari 用户名/密码或已加入域的帐户）。
 
 **连接到 Azure 的方法**
 

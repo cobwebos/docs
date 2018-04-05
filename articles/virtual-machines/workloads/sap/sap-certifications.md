@@ -1,14 +1,14 @@
 ---
-title: "适用于 SAP 的 Microsoft Azure 认证 | Microsoft Docs"
-description: "Azure 平台上 SAP 的当前配置和认证的更新列表。"
+title: 适用于 SAP 的 Microsoft Azure 认证 | Microsoft Docs
+description: Azure 平台上 SAP 的当前配置和认证的更新列表。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
-ms.assetid: 
+keywords: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2017
 ms.author: rclaus
-ms.custom: 
-ms.openlocfilehash: 865fa54c908481b3f4c211f12293538c617b6129
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.custom: ''
+ms.openlocfilehash: 96a3b6f8f8a03019f0446aa7ba42f53298e21009
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>在 Microsoft Azure 上运行的 SAP 认证和配置
 
@@ -51,10 +51,10 @@ SAP 和 Microsoft 具有悠久的合作历史，建立了强大的合作伙伴�
 
 | SAP 产品 | 来宾 OS | RDBMS | 虚拟机类型 |
 | --- | --- | --- | --- |
-| SAP 业务套件软件 |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、M 系列 |
-| 多合一 SAP 业务软件 |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、M 系列 |
-| SAP BusinessObjects BI |Windows |不适用 |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、M 系列 |
-| SAP NetWeaver |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、M 系列 |
+| SAP 业务套件软件 |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux、Oracle Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、D2s_v3 到 D64s_v3、E2s_v3 到 E64s_v3、M64s 到 M128ms |
+| 多合一 SAP 业务软件 |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、D2s_v3 到 D64s_v3、E2s_v3 到 E64s_v3、M64s 到 M128ms |
+| SAP BusinessObjects BI |Windows |不适用 |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、D2s_v3 到 D64s_v3、E2s_v3 到 E64s_v3、M64s 到 M128ms |
+| SAP NetWeaver |Windows、SUSE Linux Enterprise、Red Hat Enterprise Linux |SQL Server、Oracle（仅限 Windows 和 Oracle Linux）、DB2、SAP ASE |A5 到 A11、D11 到 D14、DS11 到 DS14、DS11_v2 到 DS15_v2、GS1 到 GS5、D2s_v3 到 D64s_v3、E2s_v3 到 E64s_v3、M64s 到 M128ms |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>在 Azure 上支持的其他 SAP 工作负荷
 

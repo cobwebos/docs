@@ -1,11 +1,11 @@
 ---
-title: "定义 Mobile Engagement 策略 | Microsoft Docs"
-description: "了解如何加入带分析和推送通知功能的 Mobile Engagement 并进行优化。"
+title: 定义 Mobile Engagement 策略 | Microsoft Docs
+description: 了解如何加入带分析和推送通知功能的 Mobile Engagement 并进行优化。
 services: mobile-engagement
 documentationcenter: Mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7533e318-81b9-4360-aace-b7be8225985b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: db68bd3ebf7efde1d23820445f07c83c8c27dc20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 494dd27acfd59eb79da13dae9bbbe0f80ee41370
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="define-your-mobile-engagement-strategy"></a>定义 Mobile Engagement 策略
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 *编写应用是为了让用户用它！*
 
 可以确信的是，为了让用户喜欢，需要花费很大力气编写应用。 此外，为了吸引用户，可能还需要投资一大笔市场推广预算。 但在一开始令人欣喜的用户高峰期过后，就会出现用户慢慢停用应用的情况。 *这就是 Azure Mobile Engagement 大派用场的时候*：留住用户，让开发人员致力于通过测试和了解慢慢改进应用！

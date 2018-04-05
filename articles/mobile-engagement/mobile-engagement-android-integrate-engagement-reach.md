@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Android SDK 集成"
-description: "Azure Mobile Engagement Android SDK 的最新更新和过程"
+title: Azure Mobile Engagement Android SDK 集成
+description: Azure Mobile Engagement Android SDK 的最新更新和过程
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 9ec3fab3-35ec-458e-bf41-6cdd69e3fa44
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/27/2016
 ms.author: piyushjo
-ms.openlocfilehash: 26ba47b19f3a503693d60d344ad39b9eba74fe99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15e71d8aeb8c8060161ade4262e0be0a093b5650
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-reach-on-android"></a>如何在 Android 上集成 Engagement Reach
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 > [!IMPORTANT]
 > 必须先按照“如何在 Android 上集成 Engagement”文档中所述的集成过程完成操作，才能接续本指南中的操作。
 > 
@@ -500,7 +504,7 @@ Engagement Reach SDK 会自动检测通知布局是否包含在此活动中，�
 
 在投票中，问题布局和选项会多次针对问题使用 `engagement_question.xml` 布局文件，并针对选项使用 `engagement_choice.xml` 文件，动态地进行扩充。
 
-#### <a name="categories"></a>Categories
+#### <a name="categories"></a>类别
 ##### <a name="alternate-layouts"></a>备用布局
 与通知相似，活动类别可用于公告和投票的备用布局。
 
@@ -624,7 +628,7 @@ Reach SDK 使用意向系统解决特定类别的正确活动，如果解决方�
               super.onPause();
             }
 
-如你所见，如果调用了 `actionContent(this)`，完成了活动，则可以安全地调用 `exitContent(this)`，而不会产生任何影响。
+如你所看到的，如果调用了 `actionContent(this)`，然后完成了活动，则可以安全地调用 `exitContent(this)`，而不会产生任何影响。
 
 [here]:http://developer.android.com/tools/extras/support-library.html#Downloading
 [Google Cloud Messaging]:http://developer.android.com/guide/google/gcm/index.html

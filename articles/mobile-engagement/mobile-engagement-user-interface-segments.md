@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 用户界面 - 段"
-description: "了解如何使用 Azure Mobile Engagement 来创建和管理用户段以标识使用模式"
+title: Azure Mobile Engagement 用户界面 - 段
+description: 了解如何使用 Azure Mobile Engagement 来创建和管理用户段以标识使用模式
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6a4f2205-4a3c-406e-a04f-5e6f2a36653f
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,24 +14,28 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 087f4a1fef420abe9669f8dfe2b84c7a847ce263
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53c5b1b672a0d7212a3d298c3e411a9cc6ac0807
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-and-manage-segments-of-users-to-identify-usage-patterns"></a>如何创建和管理用户段以标识使用模式
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 本文介绍了 Mobile Engagement 门户的“段”选项卡。 使用 Mobile Engagement 门户来监视和管理移动应用。
 
 在 UI 的“段”部分，可基于从应用程序获取的不同行为和分析对用户进行分段，并可通过“段 API”访问。 段首先在创建后的 24 小时进行计算，然后基于最新分析信息每隔 24 小时重新计算。 计算完一个段后，该段将立即在每天显示“每日历史记录”图表。
 
 > [!NOTE]
-> **Mobile Engagement** 门户 UI 的很多部分中都包含“**显示帮助**”按钮。 按此按钮可获取关于某一部分的更多上下文信息。
+> **Mobile Engagement** 门户 UI 的很多部分中都包含“显示帮助”按钮。 按此按钮可获取关于某一部分的更多上下文信息。
 > 
 > 
 
 ## <a name="create-segments"></a>创建段
-从分析部分中，可基于过去某个特定时间段（至多 60 天）的最多 10 个条件创建一个段。 例如，可基于过去 10 天内，在应用中查看了某些页面或搜索了特定内容的用户创建一个段。 此信息在分析部分提供。 因此，可使用它创建一个段，然后针对该用户子集设置推送通知，以使这些用户继续使用该应用程序。 
+从分析部分中，可基于过去某个特定时间段（至多 60 天）的最多 10 个条件创建一个段。 例如，可基于过去 10 天内，在应用中查看了某些页面或搜索了特定内容的用户创建一个段。 此信息在分析部分提供。 因此，可使用它创建一个段，并针对该用户子集设置推送通知，以使这些用户继续使用该应用程序。 
 
 > [!NOTE]
 > 计算出某个段后，不能对其进行编辑；仅能进行克隆（复制）或销毁（删除）。 可在同一应用程序中复制某个段（使用同一 AppID），也可将其复制到其他应用程序中（使用不同的 AppID）。 

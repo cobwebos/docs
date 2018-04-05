@@ -1,11 +1,11 @@
 ---
-title: "Azure 流量分析常见问题解答 | Microsoft Docs"
-description: "获取有关流量分析的常见问题的解答。"
+title: Azure 流量分析常见问题解答 | Microsoft Docs
+description: 获取有关流量分析的常见问题的解答。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: fd97e0ca7615691c537dcb1dc18643627046742d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 01d5150bff8642a1a3fe9b7ac063923916f191c0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -29,10 +29,22 @@ ms.lasthandoff: 03/09/2018
     - 为要监视的 NSG 启用 NSG 流日志
     - 一个 Azure 存储帐户，用于存储原始流日志
     - 具有读取和写入访问权限的 Log Analytics (OMS) 工作区
+    - 帐户在 Microsoft.Network 提供程序上必须赋予以下操作：
+
+        - Microsoft.Network/applicationGateways/read
+        - Microsoft.Network/connections/read
+        - Microsoft.Network/loadBalancers/read 
+        - Microsoft.Network/localNetworkGateways/read 
+        - Microsoft.Network/networkInterfaces/read 
+        - Microsoft.Network/networkSecurityGroups/read 
+        - Microsoft.Network/publicIPAddresses/read
+        - Microsoft.Network/routeTables/read
+        - Microsoft.Network/virtualNetworkGateways/read 
+        - Microsoft.Network/virtualNetworks/read
 
 2.  可在哪些 Azure 区域使用流量分析？
 
-    在预览版中，可对以下任何**受支持区域**中的 NSG 使用流量分析：美国中西部、美国东部、美国东部 2 区、美国中北部、美国中南部、美国中部、美国西部、美国西部 2 区、西欧、北欧、英国西部、英国南部、澳大利亚东部和澳大利亚东南部。 Log Analytics 工作区必须位于美国中西部、美国东部、西欧、澳大利亚东南部或英国南部区域。
+    在预览版中，可对以下任何受支持区域中的 NSG 使用流量分析：美国中西部、美国东部、美国东部 2 区、美国中北部、美国中南部、美国中部、美国西部、美国西部 2 区、西欧、北欧、英国西部、英国南部、澳大利亚东部和澳大利亚东南部。 Log Analytics 工作区必须位于美国中西部、美国东部、西欧、澳大利亚东南部或英国南部区域。
 
 3.  启用流日志的 NSG 是否可与 OMS 工作区位于不同的区域？
 
@@ -94,7 +106,7 @@ ms.lasthandoff: 03/09/2018
 
 14.  流量分析如何计费？
 
-        公共预览版的流量分析不收费。 生成 NSG 流日志以及在 OMS 工作区中保留数据将按公布的费率收费。
+        流量分析按以下内容计费：增强精简的日志并将它们存储在 Log Analytics 工作区中。 在预览版中，不会因增强精简的日志而对流量分析计费，但工作区中的数据保留需按照发布的费率计费。 发布流量分析的定价后，将更新本答案。
 
 15.  如何使用地图视图中的键盘导航？
 

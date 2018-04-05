@@ -1,10 +1,10 @@
 ---
-title: "Azure Cosmos DB Cassandra API 简介 | Microsoft Docs"
-description: "了解如何使用 Azure Cosmos DB“直接迁移”现有的应用程序以及通过使用 Cassandra 驱动程序和熟悉的 CQL 的 Cassandra API 构建新的应用程序。"
+title: Azure Cosmos DB Cassandra API 简介 | Microsoft Docs
+description: 了解如何使用 Azure Cosmos DB“直接迁移”现有的应用程序以及通过使用 Cassandra 驱动程序和熟悉的 CQL 的 Cassandra API 构建新的应用程序。
 services: cosmos-db
 author: govindk
 manager: jhubbard
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 73839abf-5af5-4ae0-a852-0f4159bc00a0
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 62e56a611d3f720172ace83a4b407a962ec69ea8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 88364cecc1fa1ad7318cb28c9708a42e6a807347
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="introduction-to-apache-cassandra-api-for-azure-cosmos-db"></a>Apache Cassandra API for Azure Cosmos DB 简介
+# <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Azure Cosmos DB 简介：Apache Cassandra API
 
 Azure Cosmos DB 提供的 Cassandra API（预览版）适用于为 Apache Cassandra 编写且需要以下高级功能的应用程序：
 

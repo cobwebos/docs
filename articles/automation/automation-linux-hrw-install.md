@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: b68e8f7e67f767cff19e57f5864db89d6f059316
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b4559afa9294111eaa1f20fdf295d1fb26dcc994
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>如何部署 Linux 混合 Runbook 辅助角色
 
@@ -32,13 +30,13 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 在混合 Runbook 辅助角色中启动 Runbook 时，可以指定该辅助角色会在其中运行的组。 组的成员会决定由哪个辅助角色来处理请求。 不能指定特定的辅助角色。
 
 ## <a name="installing-linux-hybrid-runbook-worker"></a>安装 Linux 混合 Runbook 辅助角色
-若要在 Linux 计算机上安装和配置混合 Runbook 辅助角色，请按照一个简单明了的过程手动安装和配置此角色。 它需要启用 OMS 工作区中的“自动化混合辅助角色”解决方案，然后运行一组命令将计算机注册为辅助角色，并且将它添加至一个新组或现有的组中。 
+若要在 Linux 计算机上安装和配置混合 Runbook 辅助角色，请按照一个简单明了的过程手动安装和配置此角色。 它需要启用 Log Analytics 工作区中的“自动化混合辅助角色”解决方案，然后运行一组命令将计算机注册为辅助角色，并且将它添加至一个新组或现有的组中。 
 
 继续操作前，需要记录自动化帐户关联的 Log Analytics 工作区及自动化帐户的主键。 通过选择自动化帐户，选择工作区 ID 的“工作区”及选择主键的“键”，可从门户中找到这两者。  
 
-1.  启用 OMS 中的“自动化混合辅助角色”解决方案。 可通过以下任一方式实现：
+1.  启用 Azure 中的“自动化混合辅助角色”解决方案。 可通过以下任一方式实现：
 
-   1. 从 [OMS 门户](https://mms.microsoft.com)中的“解决方案库”中，启用“自动化混合辅助角色”解决方案
+   1. 通过[将 Log Analytics 管理解决方案添加到工作区](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-add-solutions)中所述的过程，将“自动化混合辅助角色”解决方案添加到你的订阅。
    2. 运行以下 cmdlet：
 
         ```powershell
@@ -47,18 +45,18 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 
 2.  运行以下命令，更改 *-w*、*-k*、*-g* 和 *-e* 参数的值。 对于 *-g* 参数，请将值替换为新的 Linux 混合 Runbook 辅助角色应加入的混合 Runbook 辅助角色组的名称。 如果自动化帐户中尚不存在该名称，则将使用该名称生成一个新的混合 Runbook 辅助角色组。
     
-    ```
-    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <OMSworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
+    ```python
+    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <LogAnalyticsworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
     ```
 3. 此命令完成后，Azure 门户中的“混合辅助角色组”边栏选项卡会显示新组和成员数，或者会将成员数进行递增（如果组已存在）。 可以从“混合辅助角色组”边栏选项卡上的列表中选择组，并选择“混合辅助角色”磁贴。 在“混合辅助角色”边栏选项卡上，会列出组的每个成员。  
 
 
 ## <a name="turning-off-signature-validation"></a>关闭签名验证 
-默认情况下，Linux 混合 Runbook 辅助角色需要签名验证。 如果针对辅助角色运行未签名的 runbook，将看到包含“签名验证失败”字样的错误。 若要关闭签名验证，请运行以下命令，并将第二个参数替换为 OMS 工作区 ID：
+默认情况下，Linux 混合 Runbook 辅助角色需要签名验证。 如果针对辅助角色运行未签名的 runbook，将看到包含“签名验证失败”字样的错误。 若要关闭签名验证，请运行以下命令，并将第二个参数替换为 Log Analytics 工作区 ID：
 
-    ```
-    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <OMSworkspaceId>
-    ```
+ ```python
+ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>
+ ```
 
 ## <a name="supported-runbook-types"></a>支持的 runbook 类型
 

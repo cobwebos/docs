@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: e1be075ba2d3e6ae7512ccc030073fd7f1862502
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d1a605ae5c0ea598ba507de0b21a841333df79ef
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>排查托管域中无效的服务主体配置
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>警报 AADDS105：密码同步应用程序已过期
 
-**警报消息：**应用程序 ID 为“d87dcbc6-a371-462e-88e3-28ad15ec4e64”的服务主体已删除，Microsoft 无法重新创建它。 此服务主体管理另一个服务主体和用于密码同步的应用程序。 托管的服务主体和应用程序未在新创建的服务主体下授权，在同步证书过期时将会过期。 这意味着新创建的服务主体将无法更新旧的托管应用程序，从 AAD 同步对象也会受影响。
+**警报消息：**应用程序 ID 为“d87dcbc6-a371-462e-88e3-28ad15ec4e64”的服务主体已删除并重新创建。 此服务主体管理另一个服务主体和用于密码同步的应用程序。 未在新创建的服务主体下授权托管服务主体和/或应用程序，因此它们不能由我们的服务托管。 这意味着新创建的服务主体将无法更新旧的托管应用程序，密码同步也会受影响。
 
 
 **解决方法：**需使用 Azure AD PowerShell 完成以下步骤。 有关安装 Azure AD PowerShell 的信息，请参阅[本文](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.)。
@@ -108,7 +108,7 @@ ms.lasthandoff: 03/16/2018
 2. 使用以下 PowerShell 命令删除旧的应用程序和对象
 
     ```powershell
-    $app = Get-AzureADApplication -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
+    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
     Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $app.ObjectId

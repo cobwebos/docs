@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 6c0125bf0bd22912a21372b5a7da6846e924e6cd
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 759bd1e8be8aaebbf98e1c02d67f3e56609354aa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>为 Azure 应用服务购买和配置 SSL 证书
 
@@ -42,8 +42,8 @@ ms.lasthandoff: 03/14/2018
 
 选择“订阅”、“资源组”和“证书 SKU”
 
-> [!WARNING]
-> 应用服务证书仅可用于同一订阅中的其他应用服务。  
+> [!TIP]
+> App Service 证书可用于任何 Azure 或非 Azure 服务，且不限于应用服务。 若要执行此操作，需要创建应用服务证书的本地 PFX 副本，以便随时随地使用它。 有关详细信息，请阅读[创建应用服务证书的本地 PFX 副本](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)。
 >
 
 ## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>步骤3 - 将证书存储在 Azure Key Vault 中

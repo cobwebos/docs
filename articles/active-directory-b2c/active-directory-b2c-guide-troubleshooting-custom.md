@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：自定义策略故障排除 | Microsoft Docs"
-description: "了解一些方法，用于解决使用 Azure Active Directory 中的自定义策略时出现的错误。"
+title: Azure Active Directory B2C：自定义策略故障排除 | Microsoft Docs
+description: 了解一些方法，用于解决使用 Azure Active Directory 中的自定义策略时出现的错误。
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2017
-ms.author: joroja
-ms.openlocfilehash: 8718f9c1dfce81682174eec11e8cbb731cbdf796
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: e51990bd2e121b89e7260e0d745d08ecc82ff8a0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Azure AD B2C 自定义策略和标识体验框架故障排除
 
@@ -31,7 +28,7 @@ ms.lasthandoff: 12/11/2017
 
 设置自定义策略时最常见的错误是设置了不正确的 XML 格式。 好的 XML 编辑器可以说是必不可少。 好的 XML 编辑器能够原生显示 XML、对内容进行色彩编码、预先填充常用字词、保留 XML 元素的索引以及验证架构。 下面是我们偏好使用的两个 XML 编辑器：
 
-* [Contact.java](https://code.visualstudio.com/)
+* [Visual Studio Code](https://code.visualstudio.com/)
 * [Notepad++](https://notepad-plus-plus.org/)
 
 XML 架构验证在上传 XML 文件之前会识别错误。 在初学者包的根文件夹中，获取 XML 架构定义 TrustFrameworkPolicy_0.3.0.0.xsd。 有关详细信息，请在 XML 编辑器的文档中查找 *XML 工具*和 *XML 验证*。

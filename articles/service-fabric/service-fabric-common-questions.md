@@ -1,11 +1,11 @@
 ---
-title: "有关 Microsoft Azure Service Fabric 的常见问题 | Microsoft 文档"
-description: "下面是有关 Service Fabric 的一些常见问题及其解答："
+title: 有关 Microsoft Azure Service Fabric 的常见问题 | Microsoft 文档
+description: 下面是有关 Service Fabric 的一些常见问题及其解答：
 services: service-fabric
 documentationcenter: .net
 author: chackdan
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: facbb980f57b4e70c34b238a8b8fbd988cb20d57
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0ecce5581e8f14a02ad0ad618a226f4671e92f4b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>有关 Service Fabric 的常见问题
 
@@ -89,17 +89,7 @@ OS 更新的难题在于，它们通常需要重新启动计算机，而这会�
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>是否可以对群集节点类型（虚拟机规模集）中的附加数据磁盘进行加密？
 是的。  有关详细信息，请参阅[创建具有附加数据磁盘的群集](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)、[加密磁盘 (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) 和[加密磁盘 (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md)。
 
-## <a name="container-support"></a>容器支持
-
-### <a name="why-are-my-containers-that-are-deployed-to-sf-unable-to-resolve-dns-addresses"></a>为什么部署到 SF 的容器无法解析 DNS 地址？
-
-已在 5.6.204.9494 版本的群集上报告了此问题 
-
-**缓解措施**：按[此文档](service-fabric-dnsservice.md)中的说明在群集中启用 DNS Service Fabric 服务。
-
-**修复**：升级到支持的群集版本（版本可用时），该版本需高于 5.6.204.9494。 如果群集设置为自动升级，则群集会自动升级到已解决此问题的版本。
-
-  
+ 
 ## <a name="application-design"></a>应用程序设计
 
 ### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>跨 Reliable Collection 分区查询数据的最佳方法是什么？
@@ -146,9 +136,11 @@ Reliable Services 通常已分区，因此，可存储的数据量受到群集�
 
 ### <a name="are-you-planning-to-open-source-service-fabric"></a>你们是否打算开放 Service Fabric 源代码？
 
-我们打算在 GitHub 上开放 Reliable Services 和 Reliable Actors 框架的源代码并接受社区对这些项目的投稿。 有关已发布的更多详细信息，请参阅 [Service Fabric 博客](https://blogs.msdn.microsoft.com/azureservicefabric/)。
+我们已在 GitHub 上开放了部分 Service Fabric 源代码（[可靠服务框架](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[可靠执行组件框架](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[ASP.NET Core 集成库](https://github.com/Azure/service-fabric-aspnetcore)、[Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer) 和 [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)），并接受有关这些项目的社区投稿。 
 
-当前不打算开放 Service Fabric 运行时的源代码。
+我们[最近宣布了](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/)计划完全开放 Service Fabric 运行时源代码。 当前，[Service Fabric 存储库](https://github.com/Microsoft/service-fabric/)可在 GitHub 与 Linux 生成和测试工具上运行，这意味着可克隆存储库、为 Linux 构建 Service Fabric、运行基本测试、提出问题并提交拉取请求。 我们正在努力将 Windows 生成环境以及完整的 CI 环境迁移过来。
+
+有关已发布的更多详细信息，请参阅 [Service Fabric 博客](https://blogs.msdn.microsoft.com/azureservicefabric/)。
 
 ## <a name="next-steps"></a>后续步骤
 

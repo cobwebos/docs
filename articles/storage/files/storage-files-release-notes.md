@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: wgries
-ms.openlocfilehash: b42287580078b4391ddbc5b8ff2835131c64236d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bb7fa68809341b5132d551ff1cab187bd4d7eeac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent-preview"></a>Azure 文件同步代理（预览版）发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -93,11 +93,12 @@ ms.lasthandoff: 03/16/2018
 - 服务器终结点不能位于系统卷上。 例如，不能接受 C:\MyFolder 作为路径，除非 C:\MyFolder 为装入点。
 - 故障转移群集仅适用于群集磁盘，而不适用于群集共享卷 (CSV)。
 - 服务器终结点不能嵌套， 但可以与另一终结点并行共存于同一卷上。
-- 一次从服务器中删除大量（超过 10,000）目录可能会导致同步失败。 请按批删除目录，每批少于 10,000 个。 请确保删除操作同步成功，然后再删除下一批。
 - 此版本增加了对同步根目录的支持，允许将其置于卷的根目录处。
 - 请勿在服务器终结点中存储 OS 或应用程序分页文件。
 - 此版本中的更改：添加了新的事件，用于跟踪云分层 (EventID 9016)、同步上传进度 (EventID 9302) 以及未同步文件 (EventID 9900) 的总运行时。
-- 此版本中的更改：快速 DR 命名空间同步性能大幅提高。
+- 此版本中的功能改进： 
+- 快速 DR 命名空间同步性能大幅提高。
+- 删除大量目录（超过 10,000 个）不需要使用 v2* 批量完成。
  
 ### <a name="cloud-tiering"></a>云分层
 - 对以前版本的更改：新文件在 1 小时（以前为 32 小时）内分层，具体取决于分层策略设置。 我们提供 PowerShell cmdlet 进行按需分层。 可以使用此 cmdlet 更有效地评估分层，不需等待后台进程。

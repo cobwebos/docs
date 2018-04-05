@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 用户界面 - 分析"
-description: "了解如何使用 Azure Mobile Engagement 分析有关应用程序的历史记录数据"
+title: Azure Mobile Engagement 用户界面 - 分析
+description: 了解如何使用 Azure Mobile Engagement 分析有关应用程序的历史记录数据
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6b2533ac-b8ec-4e35-872c-d563895bdc0c
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ad05676919d6c254d60fd010c3f589f663c4745d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fceae1ffff40fc525170121181e21726fe2bd3f7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-analyze-historical-data-about-your-application"></a>如何分析有关应用程序的历史记录数据
-本文介绍了 **Mobile Engagement** 门户的“**分析**”选项卡。 使用 **Mobile Engagement** 门户来监视和管理移动应用。 请注意，要开始使用该门户，首先需要创建 **Azure Mobile Engagement** 帐户。
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
+本文介绍了 **Mobile Engagement** 门户的“**分析**”选项卡。 使用 Mobile Engagement 门户来监视和管理移动应用。 请注意，要开始使用该门户，首先需要创建 **Azure Mobile Engagement** 帐户。
 
 UI 的“分析”部分提供关于应用程序的聚合信息，此信息基于每 24 小时更新一次的历史记录数据。 此信息显示在由直线图/条形图/饼图、网格和地图组成的不同仪表板上。 该数据还可以提供 .csv 文件下载。 此相同信息中的大部分会在 UI 的“监视”部分中实时提供，也可以从“分析 API”访问。
 

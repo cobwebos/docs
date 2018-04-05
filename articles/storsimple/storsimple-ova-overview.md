@@ -1,24 +1,24 @@
 ---
-title: "Microsoft Azure StorSimple 虚拟阵列概述 | Microsoft 文档"
-description: "介绍 StorSimple 虚拟阵列，它是一个集成式存储解决方案，用于管理本地虚拟阵列与 Microsoft Azure 云存储之间的存储任务。"
+title: Microsoft Azure StorSimple 虚拟阵列概述 | Microsoft 文档
+description: 介绍 StorSimple 虚拟阵列，它是一个集成式存储解决方案，用于管理本地虚拟阵列与 Microsoft Azure 云存储之间的存储任务。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/16/2017
+ms.date: 03/28/2018
 ms.author: alkohli
-ms.openlocfilehash: b9a5797751fa970c569c93e5efe300d4d74319ce
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: db06614ebd7dee4b0a320737ea8f575b3a3be70f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple 虚拟阵列简介
 
@@ -73,7 +73,7 @@ StorSimple 在几分钟内将用户和服务器连接到 Azure 存储，无需�
 
 下面以表格形式列出了受支持的 StorSimple 工作负荷的摘要。
 
-|方案     |工作负载     |支持      |限制               |
+|场景     |工作负载     |支持      |限制               |
 |-------------|-------------|---------------|---------------------------|
 |ROBO  |文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |
 |云存档  |存档文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |
@@ -205,6 +205,15 @@ StorSimple 使用删除重复和数据压缩功能进一步减少云中的存储
 ### <a name="scheduled-and-on-demand-backups"></a>计划和按需备份
 
 StorSimple 数据保护功能支持创建按需备份。 此外，默认备份计划确保每天备份数据。 备份采用增量快照的形式创建，这些快照存储在云中。 快照仅记录最后一次备份以来的更改，可快速创建和还原。 在灾难恢复方案中，这些快照可能非常重要，因为它们替换辅助存储系统（如磁带备份），并且允许将数据还原到数据中心或其他站点上（如有必要）。
+
+## <a name="gdpr-compliance"></a>GDPR 符合性
+[一般数据保护条例 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) 是欧盟 (EU) 的一项数据保护和隐私法律。 GDPR 包含许多有关如何收集、存储和使用个人信息的要求。 GDPR 规则针对在欧盟运营的公司、政府机构和其他组织实施，并收集和分析与欧盟居民有关的数据。
+
+适用于虚拟系列的 StorSimple 设备管理器符合 GDPR。 有两个关于在服务中收集并显示个人信息的关键示例：
+ - 提醒用户设置，可在其中配置用户电子邮件地址。 此信息可以由管理员清除。 
+ - 可访问驻留在共享上的数据的用户。 会显示可访问共享数据的用户列表，并可供导出。 删除共享时也会删除此列表。
+
+有关详细信息，请[在信任中心查看 Microsoft 隐私策略](https://www.microsoft.com/trustcenter)。
 
 ## <a name="next-steps"></a>后续步骤
 

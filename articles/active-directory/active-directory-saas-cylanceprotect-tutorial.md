@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 03/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 3b0afd52ccfa3aa637a64e57601cd5f43fe8df10
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: a4b8cbbe3d75702f38b5060957aff9f5c30e1daa
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cylanceprotect"></a>教程：Azure Active Directory 与 CylancePROTECT 的集成
 
@@ -138,7 +138,7 @@ ms.lasthandoff: 03/12/2018
 
     ![CylancePROTECT 配置](./media/active-directory-saas-cylanceprotect-tutorial/tutorial_cylanceprotect_configure.png) 
 
-7. 若要在 CylancePROTECT 端配置单一登录，需要将下载的证书 (Base64)、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给 [CylancePROTECT 支持团队](mailto:Ibrahim.nafea@toyota.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+7. 若要在 CylancePROTECT 端配置单一登录，需要将下载的证书 (Base64)、注销 URL、SAML 实体 ID 和 SAML 单一登录服务 URL 发送给控制台管理员。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -177,7 +177,7 @@ ms.lasthandoff: 03/12/2018
   
 ### <a name="create-a-cylanceprotect-test-user"></a>创建 CylancePROTECT 测试用户
 
-在本部分中，你将在 CylancePROTECT 中创建名为 Britta Simon 的用户。 与 [CylancePROTECT 支持团队](mailto:Ibrahim.nafea@toyota.com)合作，将用户添加到 CylancePROTECT 平台。 Azure Active Directory 帐户持有者将收到一封电子邮件，并且将单击其中的链接以在激活帐户前确认帐户。
+在本部分中，你将在 CylancePROTECT 中创建名为 Britta Simon 的用户。 在控制台管理员的协助下，将用户添加到 CylancePROTECT 平台。 Azure Active Directory 帐户持有者将收到一封电子邮件，并且将单击其中的链接以在激活帐户前确认帐户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

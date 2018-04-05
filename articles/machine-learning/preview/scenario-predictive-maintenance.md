@@ -1,6 +1,6 @@
 ---
-title: "实际方案的预测性维护 | Microsoft Docs"
-description: "使用 PySpark 进行实际方案的预测性维护"
+title: 实际方案的预测性维护 | Microsoft Docs
+description: 使用 PySpark 进行实际方案的预测性维护
 services: machine-learning
 author: ehrlinger
 ms.author: jehrling
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: 81e227194ff64d7b7af842a208349ccc63528ab8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: bb6e4f9f147db2fb70d991922cf0bb8d16b29671
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>实际方案的预测性维护
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/24/2018
 
 ### <a name="cortana-intelligence-gallery-github-repository"></a>Cortana Intelligence 库 GitHub 存储库
 
-PM 教程的 Cortana Intelligence 库是一个公共 GitHub 存储库（[https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance)），可在其中报告问题并做出贡献。
+PM 教程的 Cortana Intelligence Gallery 是一个公共 GitHub 存储库 ([https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance))，可在其中报告问题并发布内容。
 
 
 ## <a name="use-case-overview"></a>用例概述
@@ -53,7 +53,7 @@ PM 教程的 Cortana Intelligence 库是一个公共 GitHub 存储库（[https:/
 2.  在“项目”页上选择 **+**，然后选择“新建项目”。
 3.  在“新建项目”窗格中，填写新项目的信息。
 4.  在“搜索项目模板”搜索框中，键入“预测性维护”并选择“预测性维护”模板。
-5.  选择“创建”。
+5.  选择**创建**。
 
 ## <a name="prepare-the-notebook-server-computation-target"></a>准备 Notebook 服务器计算目标
 

@@ -1,10 +1,11 @@
 ---
-title: "在机器学习中评估模型性能 | Microsoft Docs"
-description: "说明如何在 Azure 机器学习中评估模型性能。"
+title: 在机器学习中评估模型性能 | Microsoft Docs
+description: 说明如何在 Azure 机器学习中评估模型性能。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 5dc5348a-4488-4536-99eb-ff105be9b160
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: 48ce4584f7270d78b1d09b848bfdd305d03012b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bf065d8e91bd4ebb4cc3932c0525cb091b26b38
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>如何在 Azure 机器学习中评估模型性能
 本文演示了如何在 Azure 机器学习工作室中评估模型的性能，并提供可用于此任务的指标的简短说明。 显示了三个常见的监督学习方案： 
@@ -132,7 +132,7 @@ Azure 机器学习通过其两个主要的机器学习模块支持模型评估�
 
 ![二元分类器交叉验证结果](./media/evaluate-model-performance/9.png)
 
-图 9。 二元分类器的交叉验证结果。
+图 9. 二元分类器的交叉验证结果。
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>评估多类分类模型
 在此实验中，我们将使用流行的[鸢尾花](http://archive.ics.uci.edu/ml/datasets/Iris "Iris")数据集，其中包含 3 中不同类型（类）的鸢尾属植物的实例。 每个实例有 4 个特征值（花萼长度/宽度和花瓣长度/宽度）。 在之前的实例中，我们使用相同的数据集训练并测试了模型。 此处，我们将使用[拆分数据][split]模块创建数据的 2 个子集、对第一个子集训练，然后对第二个子集评分和评估。 鸢尾花数据集在 [UCI 机器学习存储库](http://archive.ics.uci.edu/ml/index.html)中公开提供，并且可使用[导入数据][import-data]模块下载。
@@ -151,7 +151,7 @@ Azure 机器学习通过其两个主要的机器学习模块支持模型评估�
 
 将[训练模型][train-model]模块的标签列索引设置为 5。 数据集不再具有标题行，但我们知道类标签在第五列。
 
-单击[导入数据][import-data]模块，将“数据源”属性设置为“通过 HTTP 的 Web URL”，将“URL”设置为 http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data。
+单击[“导入数据”][import-data]模块并通过 HTTP 将“数据源”属性设置为 Web URL，将“URL”设置为 http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data。
 
 在[拆分数据][split]模块中将部分实例设置为用于训练（例如 0.7）。
 

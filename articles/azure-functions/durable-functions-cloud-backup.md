@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 446ddbff7d945e90ebfd12bc6e9e7a1f0e18267c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 35877831c7f63c20fee2f2bc3838e73bb98328c0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions 中的扇出/扇入方案 - 云备份示例
 
@@ -26,8 +26,8 @@ ms.lasthandoff: 03/17/2018
 
 ## <a name="prerequisites"></a>先决条件
 
-* 按照[安装 Durable Functions](durable-functions-install.md) 中的说明设置示例。
-* 本文假定用户已完成 [Hello Sequence](durable-functions-sequence.md) 示例演练。
+* [安装 Durable Functions](durable-functions-install.md)。
+* 完成 [Hello 序列](durable-functions-sequence.md)演练。
 
 ## <a name="scenario-overview"></a>方案概述
 
@@ -47,7 +47,7 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 * `E2_GetFileList`
 * `E2_CopyFileToBlob`
 
-以下部分介绍用于 Azure 门户开发的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
+以下部分介绍用于 C# 脚本的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
 
 ## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>云备份业务流程（Visual Studio Code 和 Azure 门户的示例代码）
 

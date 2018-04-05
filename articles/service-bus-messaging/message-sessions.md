@@ -1,11 +1,11 @@
 ---
-title: "Azure 服务总线消息会话 | Microsoft Docs"
-description: "使用会话处理一系列 Azure 服务总线消息。"
+title: Azure 服务总线消息会话 | Microsoft Docs
+description: 使用会话处理一系列 Azure 服务总线消息。
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: sethm
-ms.openlocfilehash: 7a594e5951f6e90c9151fbaf231675d6ed091d1f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 551432cd13c16fdd5423c46ed9c6f740353808f8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>消息会话：先进先出 (FIFO) 
 
@@ -53,13 +53,7 @@ ms.lasthandoff: 02/13/2018
 
 当多个并发接收程序从队列中拉取消息时，属于特定会话的消息会被分派到当前让相应会话一直处于锁定状态的特定接收程序。 通过此操作，驻留在一个队列或订阅中的交错消息流可以明确解多路复用到各个接收程序，这些接收程序也可以驻留在不同的客户端计算机上，因为锁定管理是在服务总线内的服务端执行。
 
-不过，队列仍是队列，无法进行随机访问。 如果多个并发接收程序等待接受特定会话，或等待来自特定会话的消息，并且队列顶部有一个消息属于尚未声明接收程序的会话，那么只有在会话接收程序声明相应会话后，才会开始传递。
-
-上图展示了三个并发会话接收程序，它们全都必须主动从每个接收程序的队列中拉取消息，才能取得进展。 上图中 `SessionId` =4 的会话无有效的负责客户端。也就是说，在新建的负责会话接收程序接收此消息前，不会向任何一方传递任何消息。
-
-虽然这看起来可能有所约束，但一个接收程序进程可以轻松处理多个并发会话，特别是当它们采用严格的异步代码编写时；借助回调模型，同时处理几十个并发会话实际上是自动完成的。
-
-处理多个并发会话的策略（据此每个会话只能零星接收消息）是，让处理程序在一段空闲时间后删除会话，并在下一个会话到达时继续处理接受的会话。
+上图显示三个并发会话接收程序。 某个 `SessionId` = 4 的会话不具有活动的、所属的客户端，这意味着此特定会话不传递任何消息。 会话在很多方面都起着一个子队列的作用。
 
 会话接收程序保留的会话锁定是速览锁定安排模式使用的消息锁的保护伞。 接收程序不能同时有两个消息“在传输”，而必须依序处理消息。 只有在上一个消息已完成或成为死信时，才可以获取新消息。 如果放弃消息，则会在下一次执行接收操作时再次处理相同的消息。
 

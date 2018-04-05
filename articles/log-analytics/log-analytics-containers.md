@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte
-ms.openlocfilehash: 0ad267b9694c2f9cdb574b6b6008d4f6fa027fce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6d2c85225ab74c912183a0bb8d7f100d1354e6c5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics 中的容器监视解决方案
 
@@ -100,7 +100,10 @@ ms.lasthandoff: 03/16/2018
     - 在 Windows Server 2016 和 Windows 10 上安装 Docker 引擎和客户端，然后连接到代理以收集信息并将其发送到 Log Analytics。 在 Windows 环境下，请参阅[安装并配置 Windows 容器主机](#install-and-configure-windows-container-hosts)。
   - 对于 Docker 多主机业务流程：
     - 如果有 Red Hat OpenShift 环境，请查看 [为 Red Hat OpenShift 配置 OMS 代理](#configure-an-oms-agent-for-red-hat-openshift)。
-    - 如果有 Kubernetes 群集正使用 Azure 容器服务，请参阅[为 Kubernetes 配置 OMS 代理](#configure-an-oms-agent-for-kubernetes)。
+    - 如果具有使用 Azure 容器服务的 Kubernetes 群集：
+       - 查看[配置适用于 Kubernetes 的 OMS Linux 代理](#configure-an-oms-linux-agent-for-kubernetes)。
+       - 查看[配置适用于 Kubernetes 的 OMS Windows 代理](#configure-an-oms-windows-agent-for-kubernetes)。
+       - 查看[使用 Helm 在 Linux Kubernetes 上部署 OMS 代理](#use-helm-to-deploy-oms-agent-on-linux-kubernetes)。
     - 如果拥有 Azure 容器服务 DC/OS 群集，请前往[通过 Operations Management Suite 监视 Azure 容器服务 DC/OS 群集](../container-service/dcos-swarm/container-service-monitoring-oms.md)了解详细信息。
     - 如果拥有 Docker Swarm 模式环境，请访问[配置适用于 Docker Swarm 的 OMS 代理](#configure-an-oms-agent-for-docker-swarm)了解更多信息。
     - 如果有 Service Fabric 群集，请访问[使用 OMS Log Analytics 监视容器](../service-fabric/service-fabric-diagnostics-oms-containers.md)了解更多信息。
@@ -387,7 +390,7 @@ WSID:   36 bytes
 KEY:    88 bytes
 ```
 
-#### <a name="configure-an-oms-agent-for-windows-kubernetes"></a>配置适用于 Windows Kubernetes 的 OMS 代理
+#### <a name="configure-an-oms-windows-agent-for-kubernetes"></a>配置适用于 Kubernetes 的 OMS Windows 代理
 对于 Windows Kubernetes，使用脚本为工作区 ID 和主密钥生成机密 yaml 文件，以便安装 OMS 代理。 在 [OMS Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes/windows) 页上，存在你可以对其使用机密信息的文件。  需要分别为主节点和代理节点安装 OMS 代理。  
 
 1. 若要在主节点上使用包含机密信息的 OMS 代理 DaemonSet，请先登录并创建机密。
@@ -544,15 +547,15 @@ KEY:    88 bytes
 
 | 数据类型 | 日志搜索中的数据类型 | 字段 |
 | --- | --- | --- |
-| 主机和容器的性能 | `Type=Perf` | 计算机、ObjectName、CounterName、处理器时间百分比、磁盘读取 MB、磁盘写入 MB、内存使用 MB、网络接收字节数、网络发送字节数、处理器使用秒数、网络、CounterValue、TimeGenerated、CounterPath、SourceSystem |
-| 容器库存 | `Type=ContainerInventory` | TimeGenerated、计算机、容器名称、ContainerHostname、映像、ImageTag、ContainerState、ExitCode、EnvironmentVar、命令、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
-| 容器映像库存 | `Type=ContainerImageInventory` | TimeGenerated、计算机、映像、ImageTag、ImageSize、VirtualSize、正在运行、暂停、停止、失败、SourceSystem、ImageID、TotalContainer |
-| 容器日志 | `Type=ContainerLog` | TimeGenerated、计算机、映像 ID、容器名称、LogEntrySource、LogEntry、SourceSystem、ContainerID |
-| 容器服务日志 | `Type=ContainerServiceLog`  | TimeGenerated、计算机、TimeOfCommand、映像、命令、SourceSystem、ContainerID |
-| 容器节点清单 | `Type=ContainerNodeInventory_CL`| TimeGenerated、计算机、ClassName_s、DockerVersion_s、OperatingSystem_s、Volume_s、Network_s、NodeRole_s、OrchestratorType_s、InstanceID_g、SourceSystem|
-| Kubernetes 清单 | `Type=KubePodInventory_CL` | TimeGenerated、计算机、PodLabel_deployment_s、PodLabel_deploymentconfig_s、PodLabel_docker_registry_s、Name_s、Namespace_s、PodStatus_s、PodIp_s、PodUid_g、PodCreationTimeStamp_t、SourceSystem |
-| 容器进程 | `Type=ContainerProcess_CL` | TimeGenerated、计算机、Pod_s、Namespace_s、ClassName_s、InstanceID_s、Uid_s、PID_s、PPID_s、C_s、STIME_s、Tty_s、TIME_s、Cmd_s、Id_s、Name_s、SourceSystem |
-| Kubernetes 事件 | `Type=KubeEvents_CL` | TimeGenerated、计算机、Name_s、ObjectKind_s、Namespace_s、Reason_s、Type_s、SourceComponent_s、SourceSystem、消息 |
+| 主机和容器的性能 | `Perf` | 计算机、ObjectName、CounterName、处理器时间百分比、磁盘读取 MB、磁盘写入 MB、内存使用 MB、网络接收字节数、网络发送字节数、处理器使用秒数、网络、CounterValue、TimeGenerated、CounterPath、SourceSystem |
+| 容器库存 | `ContainerInventory` | TimeGenerated、计算机、容器名称、ContainerHostname、映像、ImageTag、ContainerState、ExitCode、EnvironmentVar、命令、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
+| 容器映像库存 | `ContainerImageInventory` | TimeGenerated、计算机、映像、ImageTag、ImageSize、VirtualSize、正在运行、暂停、停止、失败、SourceSystem、ImageID、TotalContainer |
+| 容器日志 | `ContainerLog` | TimeGenerated、计算机、映像 ID、容器名称、LogEntrySource、LogEntry、SourceSystem、ContainerID |
+| 容器服务日志 | `ContainerServiceLog`  | TimeGenerated、计算机、TimeOfCommand、映像、命令、SourceSystem、ContainerID |
+| 容器节点清单 | `ContainerNodeInventory_CL`| TimeGenerated、计算机、ClassName_s、DockerVersion_s、OperatingSystem_s、Volume_s、Network_s、NodeRole_s、OrchestratorType_s、InstanceID_g、SourceSystem|
+| Kubernetes 清单 | `KubePodInventory_CL` | TimeGenerated、计算机、PodLabel_deployment_s、PodLabel_deploymentconfig_s、PodLabel_docker_registry_s、Name_s、Namespace_s、PodStatus_s、PodIp_s、PodUid_g、PodCreationTimeStamp_t、SourceSystem |
+| 容器进程 | `ContainerProcess_CL` | TimeGenerated、计算机、Pod_s、Namespace_s、ClassName_s、InstanceID_s、Uid_s、PID_s、PPID_s、C_s、STIME_s、Tty_s、TIME_s、Cmd_s、Id_s、Name_s、SourceSystem |
+| Kubernetes 事件 | `KubeEvents_CL` | TimeGenerated、计算机、Name_s、ObjectKind_s、Namespace_s、Reason_s、Type_s、SourceComponent_s、SourceSystem、消息 |
 
 追加到 PodLabel 数据类型的标签是你自己的自定义标签。 表中显示的追加的 PodLabel 标签是示例。 因此，`PodLabel_deployment_s`、`PodLabel_deploymentconfig_s` 和 `PodLabel_docker_registry_s` 在你环境的数据集中存在差异，但通常类似于 `PodLabel_yourlabel_s`。
 
@@ -607,7 +610,7 @@ KEY:    88 bytes
    ![容器状态](./media/log-analytics-containers/containers-log-search.png)
 3. 接下来，单击失败容器的聚合值查看详细信息。 展开“**显示更多**”以查看映像 ID。  
    ![失败的容器](./media/log-analytics-containers/containers-state-failed.png)  
-4. 接下来，在搜索查询中键入以下内容。 `Type=ContainerInventory <ImageID>` 可查看有关映像的详细信息，如映像大小以及已停止和失败映像的数量。  
+4. 接下来，在搜索查询中键入以下内容。 `ContainerInventory <ImageID>` 可查看有关映像的详细信息，如映像大小以及已停止和失败映像的数量。  
    ![失败的容器](./media/log-analytics-containers/containers-failed04.png)
 
 ## <a name="search-logs-for-container-data"></a>在日志中搜索容器数据
@@ -625,17 +628,17 @@ KEY:    88 bytes
 
 
 ### <a name="to-search-logs-for-container-data"></a>搜索容器数据的日志
-* 选择一个最近失败的映像，并找到它的错误日志。 首先，通过使用 **ContainerInventory** 搜索查找运行该映像的容器名称。 例如，搜索 `Type=ContainerInventory ubuntu Failed`  
+* 选择一个最近失败的映像，并找到它的错误日志。 首先，通过使用 **ContainerInventory** 搜索查找运行该映像的容器名称。 例如，搜索 `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![搜索 Ubuntu 容器](./media/log-analytics-containers/search-ubuntu.png)
 
-  名称旁边的容器的名称，并搜索这些日志。 在此示例中，它是 `Type=ContainerLog cranky_stonebreaker`。
+  名称旁边的容器的名称，并搜索这些日志。 在此示例中，它是 `ContainerLog | where Name == "cranky_stonebreaker"`。
 
 **查看性能信息**
 
 开始构造查询时，最好首先了解哪些查询可以实现。 例如，若要查看所有性能数据，请输入以下搜索查询，以尝试广泛的查询。
 
 ```
-Type=Perf
+Perf
 ```
 
 ![容器性能](./media/log-analytics-containers/containers-perf01.png)
@@ -643,7 +646,7 @@ Type=Perf
 你可以通过在查询右侧键入特定容器的名称，将性能数据的显示范围限定到特定容器。
 
 ```
-Type=Perf <containerName>
+Perf <containerName>
 ```
 
 它列出了为单个容器收集的性能指标。
@@ -652,8 +655,6 @@ Type=Perf <containerName>
 
 ## <a name="example-log-search-queries"></a>日志搜索查询示例
 从一或两个示例开始生成查询，并修改它们以适应环境，这通常很有用。 可以首先尝试使用“示例查询”区域，它可以帮助你构建更高级的查询。
-
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![容器查询](./media/log-analytics-containers/containers-queries.png)
 

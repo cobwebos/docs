@@ -1,6 +1,6 @@
 ---
-title: "使用 Apache Storm 写入存储/Data Lake Store - Azure HDInsight | Microsoft Docs"
-description: "了解如何使用 Apache Storm 将数据写入到与 HDFS 兼容的 HDInsight 存储。 Azure 存储或 Azure Data Lake Store 为 HDInsight 提供 HDFS 兼容的存储。 本文档和相关的示例演示如何使用 HdfsBolt 组件将数据写入到 Storm on HDInsight 群集的默认存储。"
+title: 使用 Apache Storm 写入存储/Data Lake Store - Azure HDInsight | Microsoft Docs
+description: 了解如何使用 Apache Storm 将数据写入到与 HDFS 兼容的 HDInsight 存储。 Azure 存储或 Azure Data Lake Store 为 HDInsight 提供 HDFS 兼容的存储。 本文档和相关的示例演示如何使用 HdfsBolt 组件将数据写入到 Storm on HDInsight 群集的默认存储。
 services: hdinsight
 documentationcenter: na
 author: Blackmist
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 908a1130171cc091b4d95d4532cc3bb95edb44f9
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 2310894e7257d0ddb919406a8f297089189a9484
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>从 Apache Storm on HDInsight 写入 HDFS
 
@@ -134,7 +134,7 @@ bolts:
 * `rotationPolicy`：定义何时轮换文件。 在此示例中，不执行轮换。
 * `hdfs-bolt`：使用前面的组件作为 `HdfsBolt` 类的配置参数。
 
-有关 Flux 的详细信息，请参阅 [https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html)。
+有关 Flux 框架的详细信息，请参阅 [https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html)。
 
 ## <a name="configure-the-cluster"></a>配置群集
 
@@ -148,7 +148,7 @@ bolts:
 
 ## <a name="build-and-package-the-topology"></a>生成和打包拓扑
 
-1. 从 [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) 将示例项目下载到开发环境。
+1. 将示例项目从 [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) 下载到开发环境。
 
 2. 从命令提示符、终端或 Shell 会话将目录更改为所下载项目的根目录。 若要生成和打包拓扑，请使用以下命令：
    

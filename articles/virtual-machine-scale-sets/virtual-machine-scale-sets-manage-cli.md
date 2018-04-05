@@ -1,13 +1,13 @@
 ---
-title: "使用 Azure CLI 2.0 自管理虚拟机规模集 | Microsoft Docs"
-description: "管理虚拟机规模集常用的 Azure CLI 2.0 命令，如管理如何启动和停止实例，或更改此规模集容量。"
+title: 使用 Azure CLI 2.0 自管理虚拟机规模集 | Microsoft Docs
+description: 管理虚拟机规模集常用的 Azure CLI 2.0 命令，如管理如何启动和停止实例，或更改此规模集容量。
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: a484cf6734ff663a852be1a46e2b2ca2f75bb17d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1afb43b65203406a7d49b0e3f641bc22d164a4a9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>使用 Azure CLI 2.0 管理虚拟机规模集
 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 此外，可能还需要创建自动执行各种生命周期任务的脚本。 本文详细介绍了执行这些任务常用的一些 Azure CLI 2.0 命令。
 
-若要完成这些管理任务，需要 Azure CLI 2.0 的最新版本。 有关安装和使用最新版本的详细信息，请参阅 [Azure CLI 2.0 安装](/cli/azure/install-azure-cli)。 如果需要创建虚拟机规模集，可以[在 Azure 门户中创建规模集](virtual-machine-scale-sets-create-portal.md)。
+要完成这些管理任务，需要最新的 Azure CLI 2.0。 请参阅[安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 了解相关信息。 如果需要创建虚拟机规模集，可以[使用 Azure CLI 2.0 创建规模集](quick-create-cli.md)。
 
 
 ## <a name="view-information-about-a-scale-set"></a>查看有关规模集的信息

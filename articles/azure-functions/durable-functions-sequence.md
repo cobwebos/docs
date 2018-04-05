@@ -1,24 +1,24 @@
 ---
-title: "Durable Functions 中的函数链 - Azure"
-description: "了解如何运行执行一系列函数的 Durable Functions 示例。"
+title: Durable Functions 中的函数链 - Azure
+description: 了解如何运行执行一系列函数的 Durable Functions 示例。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9ba1cdc5c72e04802d29794fa6cb40a29cc1d353
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 0020f19e00f3365c4a0d80ebb67aeeedd7fe76df
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions 中的函数链 - Hello 序列示例
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-* 按照[安装 Durable Functions](durable-functions-install.md) 中的说明设置示例。
+* [安装 Durable Functions](durable-functions-install.md)。
 
 ## <a name="the-functions"></a>函数
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/05/2017
 * `E1_HelloSequence`：在一个序列中多次调用 `E1_SayHello` 的 orchestrator 函数。 它存储来自 `E1_SayHello` 调用的输出并记录结果。
 * `E1_SayHello`：在字符串前添加“Hello”的活动函数。
 
-以下各节介绍用于 Azure 门户开发的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
+以下部分介绍用于 C# 脚本的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
  
 ## <a name="functionjson-file"></a>function.json 文件
 

@@ -1,19 +1,19 @@
 ---
-title: "Jenkins 持续部署和 Azure 容器服务中的 Kubernetes"
-description: "如何使用 Jenkins 自动完成持续部署过程，以便在 Azure 容器服务中的 Kubernetes 上部署和升级容器化应用"
+title: Jenkins 持续部署和 Azure 容器服务中的 Kubernetes
+description: 如何使用 Jenkins 自动完成持续部署过程，以便在 Azure 容器服务中的 Kubernetes 上部署和升级容器化应用
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1293fda45602203570a0f7f75481f67bdcb6edf3
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 8238e0f55b88e4fa207357630aa4228250c33249
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>使用 Jenkins 和 Azure 容器服务进行持续部署
 
@@ -160,6 +160,20 @@ Open a browser to http://52.166.118.64:8080
 Enter the following to Unlock Jenkins:
 667e24bba78f4de6b51d330ad89ec6c6
 ```
+
+如果登录 Jenkins 时遇到问题，请使用 Jenkins VM 创建 SSH 会话并重启 Jenkins 服务。 VM 的 IP 地址与生成脚本所提供的 IP 地址相同。 VM 管理员用户名为 `azureuser`。
+
+```bash
+ssh azureuser@52.166.118.64
+```
+
+重启 Jenkins 服务。
+
+```bash
+sudo service jenkins restart
+```
+
+刷新浏览器后应会显示 Jenkins 登录窗体。
 
 ## <a name="jenkins-environment-variables"></a>Jenkins 环境变量
 

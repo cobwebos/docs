@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 故障排除指南 - 推送/市场宣传"
-description: "Azure Mobile Engagement 中用户交互和通知问题的故障排除"
+title: Azure Mobile Engagement 故障排除指南 - 推送/市场宣传
+description: Azure Mobile Engagement 中用户交互和通知问题的故障排除
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3f1886b7-1fdd-47f4-b6b0-d79f158d5ef3
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ef6f34404b97a6972fc136262920a1bdbc4117b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc94353e60288ba1acfb1855b3a7b416a03e73bc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-push-and-reach-issues"></a>推送和送达问题故障排除指南
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 以下是 Azure Mobile Engagement 将信息发送至用户时可能会遇到的问题。
 
 ## <a name="push-failures"></a>推送失败
@@ -97,6 +101,6 @@ ms.lasthandoff: 10/11/2017
 * 基于手机设置（而非应用信息标记）定位可能使推送滞后，因为 Azure Mobile Engagement 在发送推送前可能需要实时请求手机中的数据。
 * 创建的市场活动无结束日期时，该活动会将推送存储在设备本机，即使该市场活动被手动中止，在下次打开应用程序时也会显示此推送。
 * 如果同时启动多个市场活动，扫描用户群花费的时间会更长（尝试一次仅启动一个市场活动，最多四个，且仅针对活动用户，这样就无需扫描老用户）。
-* 如果使用市场宣传活动的“市场活动”部分中的“忽略受众，推送将仅通过 API 发送至用户”选项，则市场活动将不会自动发送，而需要通过市场宣传 API 手动发送。
+* 如果使用市场宣传活动的“市场活动”部分中的“忽略受众，推送将通过 API 发送至用户”选项，则市场活动将不会自动发送，而需要通过市场宣传 API 手动发送。
 * 如果在“市场宣传”中使用自定义类别来显示应用内通知，则需要遵循通知的正确生命周期，否则用户取消通知时可能无法将其清除。
 

@@ -1,22 +1,21 @@
 ---
-title: "Azure Active Directory B2C：使用自定义策略管理 SSO 和令牌自定义 | Microsoft Docs"
-description: 
+title: 使用自定义策略管理 SSO 和令牌自定义 | Microsoft Docs
+description: 了解如何使用自定义策略管理 SSO 和令牌自定义。
 services: active-directory-b2c
-documentationcenter: 
-author: sama
-ms.assetid: eec4d418-453f-4755-8b30-5ed997841b56
+documentationcenter: ''
+author: davidmu
+manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 05/02/2017
-ms.author: sama
-ms.openlocfilehash: 8f5703d15766f221517cd89352d41685652d32d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: davidmu
+ms.openlocfilehash: c9eb7f7711a8987945b8aeaee8d6798b7a6b8284
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-manage-sso-and-token-customization-with-custom-policies"></a>Azure Active Directory B2C：使用自定义策略管理 SSO 和令牌自定义
 与使用内置策略相比，使用自定义策略能够以相同的力度控制令牌、会话和单一登录 (SSO) 配置。  若要了解每项设置的作用，请参阅[此文档](#active-directory-b2c-token-session-sso)。

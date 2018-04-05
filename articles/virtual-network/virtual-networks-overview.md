@@ -1,11 +1,11 @@
 ---
-title: "Azure 虚拟网络 | Microsoft Docs"
-description: "了解 Azure 虚拟网络概念和功能。"
+title: Azure 虚拟网络 | Microsoft Docs
+description: 了解 Azure 虚拟网络概念和功能。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 9633de4b-a867-4ddf-be3c-a332edf02e24
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/1/2018
 ms.author: jdial
-ms.openlocfilehash: fadc1994cd930df36387a5bfb302c00d66f74fad
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 8d02afcc590482fdca4705ac582d85bb985dd3c2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-is-azure-virtual-network"></a>什么是 Azure 虚拟网络？
 
@@ -32,7 +32,7 @@ Azure 虚拟网络提供以下广泛使用的功能：
 - **[虚拟网络连接：](#connect-vnets)**虚拟网络可以互相连接，使任何虚拟网络中的资源可以与任何其他虚拟网络中的资源进行通信。
 - **[本地连接：](#connect-on-premises)**虚拟网络可连接到本地网络，使资源能够相互通信。
 - **[流量筛选：](#filtering)**可按源 IP 地址和端口、目标 IP 地址和端口以及协议来筛选传入和传出虚拟网络中的资源的网络流量。
-- **[路由：](#routing)**可选择通过配置自己的路由或通过网关传播 BGP 路由来替代 Azure 默认路由。
+- **[路由：](#routing)**可选择通过配置自己的路由或通过网关传播边界网关协议 (BGP) 路由来替代 Azure 默认路由。
 
 ## <a name = "isolation"></a>网络隔离和细分
 
@@ -44,7 +44,7 @@ Azure 虚拟网络提供以下广泛使用的功能：
 ## <a name = "internet"></a>Internet 通信
 虚拟网络中的所有资源都可以与 Internet 进行出站通信。 默认情况下，资源的专用 IP 地址是源网络地址 (SNAT)，该地址被转换为 Azure 基础结构选择的公共 IP 地址。 若要详细了解出站 Internet 连接，请参阅[了解 Azure 中的出站连接](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要阻止出站 Internet 连接，可以自定义路由或筛选流量。
 
-若要从 Internet 入站通信到 Azure 资源或出站通信到不具 SNAT 的 Internet，则必须向资源分配一个公共 IP 地址。 若要详细了解公共 IP 地址，请参阅[公共 IP 地址](virtual-network-public-ip-address.md)。
+若要从 Internet 入站通信到 Azure 资源或出站通信到不具 SNAT 的 Internet，则必须向资源分配一个公共 IP 地址。 若要详细了解公用 IP 地址，请参阅[公用 IP 地址](virtual-network-public-ip-address.md)。
 
 ## <a name="within-vnet"></a>Azure 资源之间的安全通信
 

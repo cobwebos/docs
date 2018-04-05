@@ -1,18 +1,18 @@
 ---
-title: "关于使用 Azure Site Recovery 进行 Azure 到 Azure 灾难恢复的网络 | Microsoft Docs"
-description: "概述了使用 Azure Site Recovery 复制 Azure 虚拟机的网络。"
+title: 关于使用 Azure Site Recovery 进行 Azure 到 Azure 灾难恢复的网络 | Microsoft Docs
+description: 概述了使用 Azure Site Recovery 复制 Azure 虚拟机的网络。
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 03/26/2018
 ms.author: sujayt
-ms.openlocfilehash: 5ce85761df4e0ad62c22a829f67464a3145fd827
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 48be55632d9c1bece3f1a6e4f9ac12a68f9cb7ab
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>关于 Azure 到 Azure 复制的网络
 
@@ -154,9 +154,10 @@ IP 地址范围如下：
 ### <a name="expressroute-configuration"></a>ExpressRoute 配置
 请遵从以下 ExpressRoute 配置最佳做法：
 
-- 需要在源区域和目标区域中分别创建 ExpressRoute 线路。 然后需要在以下对象之间创建连接：
-  - 源虚拟网络和 ExpressRoute 线路。
-  - 目标虚拟网络和 ExpressRoute 线路。
+- 在源区域和目标区域中创建 ExpressRoute 线路。 然后需要在以下对象之间创建连接：
+    - 源虚拟网络和本地虚拟网络（通过源区域中的 ExpressRoute 线路）。
+    - 目标虚拟网络和本地虚拟网络（通过目标区域中的 ExpressRoute 线路）。
+
 
 - ExpressRoute 标准规定，可以在同一地缘政治区域创建线路。 若要在不同的地缘政治区域创建 ExpressRoute 线路，则需使用 Azure ExpressRoute 高级版，这会增加成本。 （如果已在使用 ExpressRoute 高级版，则不必支付额外费用。）有关更多详细信息，请参阅 [ExpressRoute 位置文档](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region)和 [ExpressRoute 定价](https://azure.microsoft.com/pricing/details/expressroute/)。
 

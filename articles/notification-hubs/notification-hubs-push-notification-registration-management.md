@@ -1,11 +1,11 @@
 ---
-title: "注册管理"
-description: "本主题介绍如何使用通知中心注册设备，以接收推送通知。"
+title: 注册管理
+description: 本主题介绍如何使用通知中心注册设备，以接收推送通知。
 services: notification-hubs
 documentationcenter: .net
 author: ysxu
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: a1a349150ef4c7837932706f0c4fcc8d022ec7ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af5738ac96bd2afacee493765453567f7f13c9e5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="registration-management"></a>注册管理
 ## <a name="overview"></a>概述
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 
 * 创建或更新安装是完全幂等的。 因此可以重试该操作，而不需要顾虑重复注册的情况。
 * 使用安装模型可轻松完成单个推送 - 针对特定设备。 每次执行基于安装的注册时，都会自动添加一个系统标记 **"$InstallationId:[installationId]"**。 因此，无需编写任何额外的代码，就能对此标记调用 send 以针对特定的设备。
-* 使用安装还能执行部分注册更新。 可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法来请求安装部分更新。 想要更新注册中的标记时，此方法特别有用。 不需要删除整个注册，然后重新发送前面的所有标记。
+* 使用安装还能执行部分注册更新。 可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法来请求安装部分更新。 想要更新注册中的标记时，此方法特别有用。 不需要删除整个注册，并重新发送前面的所有标记。
 
 安装可以包含以下属性。 有关完整的安装属性列表，请参阅[使用 REST API 创建或覆盖安装](https://msdn.microsoft.com/library/azure/mt621153.aspx)或[安装属性](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)。
 
@@ -107,7 +107,7 @@ SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建
 #### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>使用安装从设备向通知中心注册的示例代码
 此时，仅支持使用[通知中心 REST API](https://msdn.microsoft.com/library/mt621153.aspx) 执行此操作。
 
-也可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法更新安装。
+也可以使用 [JSON-Patch standard ](https://tools.ietf.org/html/rfc6902)以 PATCH 方法更新安装。
 
     class DeviceInstallation
     {

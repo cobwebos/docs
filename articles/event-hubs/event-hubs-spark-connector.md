@@ -12,29 +12,29 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2018
-ms.author: shvija;sethm
-ms.openlocfilehash: 3b44c7e7387eceb2d9ea0b2c214b13a82869110f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: shvija;sethm;sagrewal
+ms.openlocfilehash: b430b731bdb38f6fe8af347e082fdfb1ef36a945
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="integrating-apache-spark-with-azure-event-hubs"></a>将 Apache Spark 与 Azure 事件中心集成
 
-Azure 事件中心与 [Apache Spark](https://spark.apache.org/) 无缝集成可轻松构建端到端分布式流式处理应用程序。 此集成支持 [Spark Core](http://spark.apache.org/docs/latest/rdd-programming-guide.html)、[Spark 流式处理](http://spark.apache.org/docs/latest/streaming-programming-guide.html)、[结构化流](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)。 Apache Spark 事件中心连接器可在 [GitHub](https://github.com/Azure/azure-event-hubs-spark) 上使用。 此库还可用于 [Maven 中央存储库](http://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C)中的 Marven 项目。
+Azure 事件中心与 [Apache Spark](https://spark.apache.org/) 无缝集成，可轻松构建分布式流式处理应用程序。 此集成支持 [Spark Core](http://spark.apache.org/docs/latest/rdd-programming-guide.html)、[Spark 流式处理](http://spark.apache.org/docs/latest/streaming-programming-guide.html)、[结构化流](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)。 Apache Spark 事件中心连接器可在 [GitHub](https://github.com/Azure/azure-event-hubs-spark) 上使用。 此库还可用于 [Maven 中央存储库](http://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C)中的 Marven 项目。
 
 本文演示如何在 [Azure Databrick](https://azure.microsoft.com/services/databricks/) 中生成持续应用程序。 虽然本文使用 [Azure Databricks](https://azure.microsoft.com/services/databricks/)，但 [HDInsight](../hdinsight/spark/apache-spark-overview.md) 还提供了 Spark 群集。
 
-以下示例使用两个 Scala notebook：一个用于流式处理事件中心中的事件，另一个用于将事件发送回事件中心。
+以下示例使用两个 Scala notebook：一个用于流式处理来自事件中心的事件，另一个用于将事件发送回事件中心。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有，请[创建一个免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 * 事件中心实例。 如果没有，请[创建一个](event-hubs-create.md)
 * [Azure Databricks](https://azure.microsoft.com/services/databricks/) 实例。 如果没有，请[创建一个](../azure-databricks/quickstart-create-databricks-workspace-portal.md)
-* [使用 maven 坐标创建库](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package)：`com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.0`
+* [使用 maven 坐标创建库](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package)：`com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`
 
-在 notebook 中使用以下代码流式处理事件中心中的事件。
+使用以下代码流式处理来自事件中心的事件：
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -52,8 +52,6 @@ val reader = spark.readStream
   .format("eventhubs")
   .options(ehConf.toMap)
   .load()
-
-// Select the body column and cast it to a string.
 val eventhubs = reader.select($"body" cast "string")
 
 eventhubs.writeStream
@@ -73,26 +71,22 @@ import org.apache.spark.sql.functions._
 val connectionString = ConnectionStringBuilder("{EVENT HUB CONNECTION STRING FROM AZURE PORTAL}")
   .setEventHubName("{EVENT HUB NAME}")
   .build
+val ehConf = EventHubsConf(connectionString)
 
-val eventHubsConf = EventHubsConf(connectionString)
-
-// Create a column representing the partitionKey.
-val partitionKeyColumn = (col("id") % 5).cast("string").as("partitionKey")
 // Create random strings as the body of the message.
 val bodyColumn = concat(lit("random nunmber: "), rand()).as("body")
 
 // Write 200 rows to the specified event hub.
-val df = spark.range(200).select(partitionKeyColumn, bodyColumn)
+val df = spark.range(200).select(bodyColumn)
 df.write
   .format("eventhubs")
   .options(eventHubsConf.toMap)
   .save() 
-
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-本文说明了事件中心连接器在构建实时容错流式处理解决方案时如何起作用。 打开以下链接，了解有关结构化流和事件中心集成的连接器的详细信息：
+现在已介绍如何使用 Apache Spark 事件中心连接器设置可缩放的容错流。 访问以下链接，深入了解如何配合使用事件中心以及结构化流和 Spark 流式处理：
 
 * [结构化流 + Azure 事件中心集成指南](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)
 * [Spark 流式处理 + 事件中心集成指南](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/spark-streaming-eventhubs-integration.md)

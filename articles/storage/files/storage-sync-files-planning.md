@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 5f42bee31e3bc1a23c9b0c6de9d6748e23c94713
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 401542bf61aa27138d26cce522e24078503b77e0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>规划 Azure 文件同步（预览版）部署
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -160,9 +160,14 @@ Azure 文件同步仅在以下区域提供预览版：
 |--------|---------------------|
 | 澳大利亚东部 | 新南威尔士州 |
 | 加拿大中部 | 多伦多 |
+| 美国中部 | 爱荷华州 |
+| 东亚 | 香港特别行政区 |
 | 美国东部 | 弗吉尼亚州 |
+| 美国东部 2 | 弗吉尼亚州 |
+| 北欧 | 爱尔兰 |
 | 东南亚 | 新加坡 |
 | 英国南部 | 伦敦 |
+| 美国中西部 |
 | 欧洲西部 | 荷兰 |
 | 美国西部 | California |
 
@@ -172,6 +177,7 @@ Azure 文件同步仅在以下区域提供预览版：
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
 ## <a name="next-steps"></a>后续步骤
+* [考虑防火墙和代理设置](storage-sync-files-firewall-and-proxy.md)
 * [规划 Azure 文件部署](storage-files-planning.md)
 * [部署 Azure 文件](storage-files-deployment-guide.md)
 * [部署 Azure 文件同步](storage-sync-files-deployment-guide.md)

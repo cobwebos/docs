@@ -1,10 +1,10 @@
 ---
-title: "使用 ServiceNow 配置 Azure 服务运行状况警报 | Microsoft Docs"
-description: "获取有关发送到 ServiceNow 实例的服务运行状况事件的个性化通知。"
+title: 使用 ServiceNow 配置 Azure 服务运行状况警报 | Microsoft Docs
+description: 获取有关发送到 ServiceNow 实例的服务运行状况事件的个性化通知。
 author: shawntabrizi
 services: service-health
 documentationcenter: service-health
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-health
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 625718ab82443c897d1b15c2eac51dea3d0dfeb4
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 867a8c0b478df9d2b7690b8b914ded7c42558583
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-service-health-alerts-with-servicenow"></a>使用 ServiceNow 配置服务运行状况警报
 
@@ -192,7 +192,7 @@ ms.lasthandoff: 11/16/2017
 
     HEADERS     Content-Type: application/json
 
-    BODY        <Service Health payload>
+    BODY        <service health payload>
     ```
 3. 此时会收到 `200 OK` 响应，其中包含消息“事件已创建”。
 

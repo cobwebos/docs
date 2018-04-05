@@ -1,11 +1,12 @@
 ---
-title: "将数据从联机数据源导入机器学习工作室 | Microsoft 文档"
-description: "如何将训练数据从各种联机源导入 Azure 机器学习工作室。"
-keywords: "导入数据, 数据格式, 数据类型, 数据源, 训练数据"
+title: 将数据从联机数据源导入机器学习工作室 | Microsoft 文档
+description: 如何将训练数据从各种联机源导入 Azure 机器学习工作室。
+keywords: 导入数据, 数据格式, 数据类型, 数据源, 训练数据
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 701b93fe-765b-4d15-a1cf-9b607f17add6
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: c6185cd240d1c040c993e581c27624e1f170f709
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 5882f79b6479f71cfd1df503f55703e6177c072b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>使用“导入数据”模块将数据从各种联机数据源导入 Azure 机器学习工作室
 本文介绍针对从各种源导入联机数据的支持，以及将数据从这些源移入 Azure 机器学习试验所需的信息。
@@ -70,7 +70,7 @@ Azure 机器学习**导入数据**模块支持以下数据源：
 | 本地 SQL 数据库 |读取本地 SQL 数据库中存储的数据。 |<b>数据网关</b>：指定可访问 SQL Server 数据库的计算机上安装的数据管理网关的名称。 有关设置网关的信息，请参阅 [Perform advanced analytics with Azure Machine Learning using data from an on-premises SQL server](use-data-from-an-on-premises-sql-server.md)（使用本地 SQL Server 中的数据通过 Azure 机器学习执行高级分析）。<br/><br/><b>数据库服务器名称</b>：指定运行数据库的服务器的名称。<br/><br/><b>数据库名称</b>：指定服务器上的数据库名称。 <br/><br/><b>服务器用户帐户名</b>：指定具有数据库访问权限的帐户的用户名。 <br/><br/><b>用户名和密码</b>：单击“输入值”输入数据库凭据。<b></b> 可以使用 Windows 集成身份验证或 SQL Server 身份验证，具体取决于配置本地 SQL Server 的方式。<br/><br/><b>数据库查询</b>：输入 SQL 语句用于说明要读取的数据。 |
 | Azure 表 |从 Azure 存储中的表服务读取数据。<br/><br/>如果不常读取大量数据，请使用 Azure 表服务。 它提供了一个灵活、非关系 (NoSQL)、可大规模缩放、成本较低且高度可用的存储解决方案。 |**导入数据**中的选项根据访问的是公共信息还是需要登录凭据的专用存储帐户而变化。 这一点可以根据“身份验证类型”来确定，其值可能是“PublicOrSAS”或“Account”，两者都有自身的参数集。<b></b> <br/><br/><b>公共或共享访问签名 (SAS) URI</b>：参数为：<br/><br/><ul><b>表 URI</b>：指定表的公共 URL 或 SAS URL。<br/><br/><b>指定要扫描属性名称的行</b>：值为 <i>TopN</i>（扫描指定的行数）或 <i>ScanAll</i>（获取表中的所有行）。 <br/><br/>如果数据是同构的且可预测，我们建议选择“TopN”并为 N 输入一个数字。对于大型表，这样可以加快读取速度。<br/><br/>如果已使用根据表的深度和位置变化的属性集将数据结构化，请选择“ScanAll”选项来扫描所有行。 这可确保生成的属性和元数据转换的完整性。<br/><br/></ul><b>专用存储帐户</b>：参数为： <br/><br/><ul><b>帐户名</b>：指定要读取的表所在的帐户的名称。<br/><br/><b>帐户密钥</b>：指定与帐户关联的存储密钥。<br/><br/><b>表名称</b>：指定要读取的数据所在的表的名称。<br/><br/><b>要扫描属性名称的行</b>：值为 <i>TopN</i>（扫描指定的行数）或 <i>ScanAll</i>（获取表中的所有行）。<br/><br/>如果数据是同构的且可预测，我们建议选择“TopN”并为 N 输入一个数字。对于大型表，这样可以加快读取速度。<br/><br/>如果已使用根据表的深度和位置变化的属性集将数据结构化，请选择“ScanAll”选项来扫描所有行。 这可确保生成的属性和元数据转换的完整性。<br/><br/> |
 | Azure Blob 存储 |读取存储在 Azure 存储的 Blob 服务中的数据，包括图像、非结构化文本或二元数据。<br/><br/>可以使用 Blob 服务公开数据，或者私下存储应用程序数据。 可以使用 HTTP 或 HTTPS 连接从任意位置访问数据。 |**导入数据**模块中的选项根据访问的是公共信息还是需要登录凭据的专用存储帐户而变化。 这一点可以根据“身份验证类型”来确定，其值可能是“PublicOrSAS”或“Account”。<b></b><br/><br/><b>公共或共享访问签名 (SAS) URI</b>：参数为：<br/><br/><ul><b>URI</b>：指定存储 Blob 的公共 URL 或 SAS URL。<br/><br/><b>文件格式</b>：指定 Blob 服务中数据的格式。 支持的格式包括 CSV、TSV 和 ARFF。<br/><br/></ul><b>专用存储帐户</b>：参数为： <br/><br/><ul><b>帐户名</b>：指定要读取的 Blob 所在的帐户的名称。<br/><br/><b>帐户密钥</b>：指定与帐户关联的存储密钥。<br/><br/><b>容器、目录或 Blob 的路径</b>：指定要读取的数据所在的 Blob 的名称。<br/><br/><b>Blob 文件格式</b>：指定 Blob 服务中数据的格式。 支持的数据格式包括 CSV、TSV、ARFF、CSV（使用指定的编码）和 Excel。 <br/><br/><ul>如果格式是 CSV 或 TSV，请务必指明文件是否包含标头行。<br/><br/>可以使用“Excel”选项从 Excel 工作簿中读取数据。 在“Excel 数据格式”选项中，指明数据是在 Excel 工作表范围内还是在 Excel 表中。<i></i> 在“Excel 工作表或嵌入表”选项中，指定要从中读取数据的工作表或表的名称。<i></i></ul><br/> |
-| 数据馈送提供程序 |从支持的馈送提供程序读取数据。 目前仅支持开放数据协议 (OData) 格式。 |<b>数据内容类型</b>：指定 OData 格式。<br/><br/><b>源 URL</b>：指定数据馈送的完整 URL。 <br/>例如，以下 URL 从 Northwind 示例数据库读取数据：http://services.odata.org/northwind/northwind.svc/ |
+| 数据馈送提供程序 |从支持的馈送提供程序读取数据。 目前仅支持开放数据协议 (OData) 格式。 |<b>数据内容类型</b>：指定 OData 格式。<br/><br/><b>源 URL</b>：指定数据馈送的完整 URL。 <br/>例如，从 Northwind 示例数据库读取以下 URL：http://services.odata.org/northwind/northwind.svc/ |
 
 ## <a name="next-steps"></a>后续步骤
 

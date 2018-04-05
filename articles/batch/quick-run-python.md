@@ -1,20 +1,20 @@
 ---
-title: "Azure 快速入门 - 运行 Batch 作业 - Python"
-description: "使用 Batch Python 客户端库快速运行 Batch 作业和任务。"
+title: Azure 快速入门 - 运行 Batch 作业 - Python
+description: 使用 Batch Python 客户端库快速运行 Batch 作业和任务。
 services: batch
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0e6a631a8d4956e2be9fd14941131968d5f4443f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e843bc0d3a56b9e99cd3fbb865bb0066321475df
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>快速入门：使用 Python API 运行第一个 Batch 作业
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 

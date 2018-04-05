@@ -1,11 +1,11 @@
 ---
 title: Azure Mobile Engagement Web SDK API | Microsoft Docs
-description: "Azure Mobile Engagement Web SDK 的最新更新和过程"
+description: Azure Mobile Engagement Web SDK 的最新更新和过程
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8a87d5ac-d8b7-4a0d-bdee-414dbcc561b2
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: 54c22ce6a03e382b1bbde102bccc97deec249b30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d2ae75b384b60d0383c1682a00a4fc0d19d0f43
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-the-azure-mobile-engagement-api-in-a-web-application"></a>在 Web 应用程序中使用 Azure Mobile Engagement API
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 本文档是介绍如何[在 Web 应用程序中集成 Mobile Engagement](mobile-engagement-web-integrate-engagement.md) 的文档的补充。 它提供了有关如何使用 Azure Mobile Engagement API 报告应用程序统计信息的全部详细信息。
 
 Mobile Engagement API 由 `engagement.agent` 对象提供。 默认的 Azure Mobile Engagement Web SDK 别名是 `engagement`。 可以在 SDK 配置中重新定义此别名。

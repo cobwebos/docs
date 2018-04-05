@@ -1,11 +1,11 @@
 ---
-title: "Azure 搜索中的服务限制 | Microsoft Docs"
-description: "用于容量计划的服务限制以及请求和响应 Azure 搜索的最大限制。"
+title: Azure 搜索中的服务限制 | Microsoft Docs
+description: 用于容量计划的服务限制以及请求和响应 Azure 搜索的最大限制。
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: HeidiSteen
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-portal
 ms.assetid: 857a8606-c1bf-48f1-8758-8032bbe220ad
 ms.service: search
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/09/2017
+ms.date: 03/26/2018
 ms.author: heidist
-ms.openlocfilehash: 3deb0ff81114c840798c5927ad7311d7e603813d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: fb2234e79e8deb98a94068f31a40c8f0b415d7ba
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
 对存储、工作负荷以及索引、文档和其他对象数量的最大限制，取决于是在“免费”、“基本”还是“标准”定价层上[预配 Azure 搜索](search-create-service-portal.md)。
@@ -32,30 +32,35 @@ ms.lasthandoff: 11/10/2017
 > 服务已在特定层上进行预配。 跳转层以获取容量涉及预配新的服务（不会就地升级）。 有关详细信息，请参阅[选择 SKU 或层](search-sku-tier.md)。 若要详细了解在已预配的服务内调整容量，请参阅[缩放查询和为工作负荷编制索引的资源级别](search-capacity-planning.md)。
 >
 
-## <a name="per-subscription-limits"></a>每个订阅限制
+## <a name="subscription-limits"></a>订阅限制
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
 
-## <a name="per-service-limits"></a>每个服务限制
+## <a name="service-limits"></a>服务限制
 [!INCLUDE [azure-search-limits-per-service](../../includes/azure-search-limits-per-service.md)]
 
-## <a name="per-index-limits"></a>每个索引限制
-索引限制与索引器限制之间存在一对一的对应关系。 假定限制为 200 个索引，则相同服务的索引器最大限制也是 200。
+## <a name="index-limits"></a>索引限制
 
 | 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD |
 | --- | --- | --- | --- | --- | --- | --- |
-| 索引：每个索引的最大字段 |1000 |100 <sup>1</sup> |1000 |1000 |1000 |1000 |
-| 索引：每个索引的最大计分配置文件 |100 |100 |100 |100 |100 |100 |
-| 索引：每个配置文件的最大函数 |8 |8 |8 |8 |8 |8 |
-| 索引器：每次调用的最大索引编制负载 |10,000 个文档 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |N/A <sup>2</sup> |
-| 索引器：最长运行时间 | 1-3 分钟 <sup>3</sup> |24 小时 |24 小时 |24 小时 |24 小时 |N/A <sup>2</sup> |
-| Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |N/A <sup>2</sup> |
-| Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4 百万 |4 百万 |4 百万 |N/A <sup>2</sup> |
+| 每个索引的最大字段 |1000 |100 <sup>1</sup> |1000 |1000 |1000 |1000 |
+| 每个索引的最大计分配置文件 |100 |100 |100 |100 |100 |100 |
+| 每个配置文件的最大函数数量 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> 基本层是唯一具有最低限制（每个索引 100 个字段）的 SKU。
 
-<sup>2</sup> S3 HD 当前不支持索引器。 如果亟需此功能，请联系 Azure 支持。
+## <a name="indexer-limits"></a>索引器限制
 
-<sup>3</sup> 对于免费层，索引器最长执行时间为 blob 源 3 分钟，所有其他数据源 1 分钟。
+| 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD |
+| --- | --- | --- | --- | --- | --- | --- |
+| 每次调用的最大索引编制负载 |10,000 个文档 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |仅受最大文档的限制 |不适用 <sup>1</sup> |
+| 最长运行时间 | 1-3 分钟 <sup>2</sup> |24 小时 |24 小时 |24 小时 |24 小时 |不适用 <sup>1</sup> |
+| Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |不适用 <sup>1</sup> |
+| Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4 百万 |4 百万 |4 百万 |不适用 <sup>1</sup> |
+
+<sup>1</sup> S3 HD 当前不支持索引器。 如果亟需此功能，请联系 Azure 支持。
+
+<sup>2</sup> 对于免费层，索引器最长执行时间为 blob 源 3 分钟，所有其他数据源 1 分钟。
+
 
 ## <a name="document-size-limits"></a>文档大小限制
 | 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD |

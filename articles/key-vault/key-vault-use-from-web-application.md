@@ -1,6 +1,6 @@
 ---
-title: "从 Web 应用程序使用 Azure 密钥保管库 | Microsoft Docs"
-description: "本教程有助于读者了解如何从 Web 应用程序使用 Azure Key Vault。"
+title: 从 Web 应用程序使用 Azure 密钥保管库 | Microsoft Docs
+description: 本教程有助于读者了解如何从 Web 应用程序使用 Azure Key Vault。
 services: key-vault
 author: adhurwit
 manager: mbaldwin
@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: adhurwit
-ms.openlocfilehash: 107be940b4c105056c63f793fb0111b03469bf66
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 93ef76729123c7187c3dd616419b5771324fe2cb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>从 Web 应用程序使用 Azure 密钥保管库
 
@@ -151,7 +151,7 @@ makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 07/31/2017 -e 07/31/2018
 pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 ```
 
-记下 .pfx 的结束日期和密码（在此示例中为：07/31/2017 和 test123）。 稍后需要它们。
+记下 .pfx 的结束日期和密码（在此示例中为：07/31/2018 和 test123）。 稍后需要它们。
 
 有关创建测试证书的详细信息，请参阅[如何：创建自己的测试证书](https://msdn.microsoft.com/library/ff699202.aspx)
 

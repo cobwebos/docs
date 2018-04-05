@@ -1,25 +1,25 @@
 ---
-title: "使用 BI 分析工具连接到 Azure Cosmos DB | Microsoft Docs"
-description: "了解如何使用 Azure Cosmos DB ODBC 驱动程序创建表和视图，以便能够在 BI 和数据分析软件中查看规范化数据。"
-keywords: "odbc, odbc 驱动程序"
+title: 使用 BI 分析工具连接到 Azure Cosmos DB | Microsoft Docs
+description: 了解如何使用 Azure Cosmos DB ODBC 驱动程序创建表和视图，以便能够在 BI 和数据分析软件中查看规范化数据。
+keywords: odbc, odbc 驱动程序
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 9967f4e5-4b71-4cd7-8324-221a8c789e6b
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 03/22/2018
 ms.author: mimig
-ms.openlocfilehash: 3892f698ec2b0b45f71dc38491687897559821ba
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 445acafeef67027712826f644afaa1784569b30d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>通过 ODBC 驱动程序使用 BI 分析工具连接到 Azure Cosmos DB
 
@@ -30,7 +30,7 @@ Azure Cosmos DB ODBC 驱动程序符合 ODBC 3.8 规范，支持 ANSI SQL-92 语
 ## <a name="why-do-i-need-to-normalize-my-data"></a>为何需要将数据规范化？
 Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代其数据模型，而不会将它们限定于一个严格定义的架构，因此可以加快应用的开发。 一个 Azure Cosmos DB 数据库可以包含各种结构的 JSON 文档。 这非常适合于快速应用程序开发，但如果用户想要使用数据分析和 BI 工具来分析和创建数据报表，则数据通常需要平整化并遵守特定的架构。
 
-这就是 ODBC 驱动程序的作用所在。 通过使用 ODBC 驱动程序，可以根据数据分析和报告需求将 Azure Cosmos DB 中的数据重新规范化为表和视图。 重新规范化的架构不会对基础数据造成影响，不强制要求开发人员遵守，而只是方便用户利用符合 ODBC 规范的工具来访问数据。 因此，Azure Cosmos DB 数据库不仅是开发团队的最爱，数据分析师也对它青睐有加。
+这就是 ODBC 驱动程序的作用所在。 通过使用 ODBC 驱动程序，可以根据数据分析和报告需求将 Azure Cosmos DB 中的数据重新规范化为表和视图。 重新规范化的架构不会对基础数据造成影响，不强制要求开发人员遵守，可方便用户利用符合 ODBC 规范的工具来访问数据。 因此，Azure Cosmos DB 数据库不仅是开发团队的最爱，数据分析师也对它青睐有加。
 
 现在，让我们学习 ODBC 驱动程序的入门知识。
 
@@ -53,7 +53,7 @@ Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代�
 
 ## <a id="connect"></a>步骤 2：连接到 Azure Cosmos DB 数据库
 
-1. [安装 Azure Cosmos DB ODBC 驱动程序](#install)后，请在“ODBC 数据源管理器”窗口中单击“添加”。 可以创建一个用户 DSN 或系统 DSN。 在本示例中，我们将创建一个用户 DSN。
+1. [安装 Azure Cosmos DB ODBC 驱动程序](#install)后，请在“ODBC 数据源管理器”窗口中单击“添加”。 可以创建一个用户 DSN 或系统 DSN。 在本示例中，将创建一个用户 DSN。
 2. 在“创建新数据源”窗口中选择“Microsoft Azure Cosmos DB ODBC 驱动程序”，并单击“完成”。
 3. 在“Azure Cosmos DB ODBC 驱动程序 SDN 设置”窗口中填写以下信息： 
 
@@ -114,10 +114,60 @@ Azure Cosmos DB 是一种无架构数据库，它允许应用程序即时迭代�
 4. 单击“确定”。 
 5. 完成想要采样的集合的映射定义后，请在“架构编辑器”窗口中单击“采样”。
      可以修改每个列，包括“SQL 名称”、“SQL 类型”、“SQL 长度”（如果适用）、“小数位数”（如果适用）、“精度”（如果适用）和“可为 Null”。
-    - 如果想要从查询结果中排除某个列，可将对应的“隐藏列”设置为 **true**。 标记为“隐藏列 = true”的列不会返回供选择和投影，不过它们仍是架构的一部分。 例如，可以隐藏以“_”开头的所有 Azure Cosmos DB 系统必需属性。
+    - 如果想要从查询结果中排除某个列，可将对应的“隐藏列”设置为 **true**。 标记为“隐藏列 = true”的列不会返回供选择和投影，不过它们仍是架构的一部分。 例如，可以隐藏以 `_` 开头的所有 Azure Cosmos DB 系统必需属性。
     - “Id”列是唯一不能隐藏的字段，因为它用作规范化架构中的主键。 
 6. 完成定义架构后，请单击“文件” | “保存”，导航到用于保存该架构的目录，并单击“保存”。
 7. 返回“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口，单击“高级选项”。 然后，在“架构文件”框中，导航到保存的架构文件并单击“确定”。 再次单击“确定”保存 DSN。 这会将创建的架构保存到 DSN。 
+
+## <a name="optional-set-up-linked-server-connection"></a>（可选）设置链接服务器连接
+
+通过设置链接服务器连接，可以从 SQL Server Management Studio (SSMS) 查询 Azure Cosmos DB。
+
+1. 按[步骤 2](#connect) 中所述创建系统数据源并为其命名，如 `SDS Name`。
+2. [安装 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+3. 在 SSMS 查询编辑器中，使用以下命令为数据源创建链接服务器对象 `DEMOCOSMOS`。 将 `DEMOCOSMOS` 替换为链接服务器的名称，并将 `SDS Name` 替换为系统数据源的名称。
+
+    ```sql
+    USE [master]
+    GO
+    
+    EXEC master.dbo.sp_addlinkedserver @server = N'DEMOCOSMOS', @srvproduct=N'', @provider=N'MSDASQL', @datasrc=N'SDS Name'
+    
+    EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'DEMOCOSMOS', @useself=N'False', @locallogin=NULL, @rmtuser=NULL, @rmtpassword=NULL
+    
+    GO
+    ```
+    
+要查看新的链接服务器名称，请刷新链接服务器列表。
+
+![SSMS 中的链接服务器](./media/odbc-driver/odbc-driver-linked-server-ssms.png)
+
+### <a name="query-linked-database"></a>查询链接的数据库
+
+若要查询链接的数据库，请输入 SSMS 查询。 在此示例中，查询从名为 `customers` 的集合的表中选择：
+
+```sql
+SELECT * FROM OPENQUERY(DEMOCOSMOS, 'SELECT *  FROM [customers].[customers]')
+```
+
+执行查询。 结果应如下所示：
+
+```
+attachments/  1507476156    521 Bassett Avenue, Wikieup, Missouri, 5422   "2602bc56-0000-0000-0000-59da42bc0000"   2015-02-06T05:32:32 +05:00 f1ca3044f17149f3bc61f7b9c78a26df
+attachments/  1507476156    167 Nassau Street, Tuskahoma, Illinois, 5998   "2602bd56-0000-0000-0000-59da42bc0000"   2015-06-16T08:54:17 +04:00 f75f949ea8de466a9ef2bdb7ce065ac8
+attachments/  1507476156    885 Strong Place, Cassel, Montana, 2069       "2602be56-0000-0000-0000-59da42bc0000"   2015-03-20T07:21:47 +04:00 ef0365fb40c04bb6a3ffc4bc77c905fd
+attachments/  1507476156    515 Barwell Terrace, Defiance, Tennessee, 6439     "2602c056-0000-0000-0000-59da42bc0000"   2014-10-16T06:49:04 +04:00      e913fe543490432f871bc42019663518
+attachments/  1507476156    570 Ruby Street, Spokane, Idaho, 9025       "2602c156-0000-0000-0000-59da42bc0000"   2014-10-30T05:49:33 +04:00 e53072057d314bc9b36c89a8350048f3
+```
+
+> [!NOTE]
+> 链接的 Cosmos DB 服务器不支持由四部分组成的命名。 将返回类似于以下消息的错误：
+
+```
+Msg 7312, Level 16, State 1, Line 44
+
+Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server "DEMOCOSMOS". A four-part name was supplied, but the provider does not expose the necessary interfaces to use a catalog or schema.
+``` 
 
 ## <a name="optional-creating-views"></a>（可选）创建视图
 可在采样过程中定义和创建视图。 这些视图相当于 SQL 视图。 它们是只读的，并且是定义的 Azure Cosmos DB SQL 的选择和投影范围。 

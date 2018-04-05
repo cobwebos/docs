@@ -1,11 +1,11 @@
 ---
-title: "使用动态 DNS 注册主机名"
-description: "本页面提供有关如何设置动态 DNS 以在自己的 DNS 服务器中注册主机名的详细信息。"
+title: 使用动态 DNS 注册主机名
+description: 本页面提供有关如何设置动态 DNS 以在自己的 DNS 服务器中注册主机名的详细信息。
 services: dns
 documentationcenter: na
 author: GarethBradshawMSFT
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c315961a-fa33-45cf-82b9-4551e70d32dd
 ms.service: dns
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: garbrad
-ms.openlocfilehash: 440a062e5fff73526b2d77d7d0a7c52ca72a66f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d62c40bfc909915fa222db12413634aa7ce7158
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>使用动态 DNS 在自己的 DNS 服务器中注册主机名
 [Azure 为虚拟机 (VM) 和角色实例提供名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)。 但是，如果需要 Azure 所提供的名称解析之外的名称解析，则可以提供自己的 DNS 服务器。 这样可以量身定制 DNS 解决方案以满足自己的特定需求。 例如，可能需要通过 Active Directory 域控制器来访问本地资源。
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 将自定义 DNS 服务器作为 Azure VM 托管时，可将针对同一 VNet 的主机名查询转发到 Azure 以解析主机名。 如果不希望使用此路由，可使用动态 DNS 在 DNS 服务器中注册 VM 主机名。  Azure 不具备直接在 DNS 服务器中创建记录的功能（如凭据），因此通常需要替代方案。 以下是一些常见的替代方案。
 
 ## <a name="windows-clients"></a>Windows 客户端
-在启动时或其 IP 地址更改时，未加入域的 Windows 客户端将尝试不安全的动态 DNS (DDNS) 更新。 DNS 名称为主机名加上的主 DNS 后缀。 Azure 将保留主 DNS 后缀为空，但可以通过 [UI](https://technet.microsoft.com/library/cc794784.aspx) 或[使用自动化](https://social.technet.microsoft.com/forums/windowsserver/3720415a-6a9a-4bca-aa2a-6df58a1a47d7/change-primary-dns-suffix)在 VM 中对其进行设置。
+在启动时或其 IP 地址更改时，未加入域的 Windows 客户端将尝试不安全的动态 DNS (DDNS) 更新。 DNS 名称为主机名加上的主 DNS 后缀。 Azure 将保留主 DNS 后缀为空，但可以通过 [UI](https://technet.microsoft.com/library/cc794784.aspx) 或[使用此处所述的自动化](https://social.technet.microsoft.com/forums/windowsserver/3720415a-6a9a-4bca-aa2a-6df58a1a47d7/change-primary-dns-suffix)在 VM 中对其进行设置。
 
 已加入域的 Windows 客户端通过使用安全的动态 DNS 将其 IP 地址注册到域控制器。 域加入过程会在客户端上设置主 DNS 后缀并创建和维护信任关系。
 

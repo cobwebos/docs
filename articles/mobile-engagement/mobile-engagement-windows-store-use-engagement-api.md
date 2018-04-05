@@ -1,11 +1,11 @@
 ---
-title: "如何在 Windows Universal 上使用 Engagement API"
-description: "如何在 Windows Universal 上使用 Engagement API"
+title: 如何在 Windows Universal 上使用 Engagement API
+description: 如何在 Windows Universal 上使用 Engagement API
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: bb501fca-9cfe-4495-81df-b5efd6e0137b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 75fc134a5535e6113331470cf61df9c06eb8e2ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f8f211764646bc53319f435d74a16a026329039
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-windows-universal"></a>如何在 Windows Universal 上使用 Engagement API
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 本文档是[如何在 Windows Universal 上集成 Engagement](mobile-engagement-windows-store-integrate-engagement.md) 文档的附加内容：它提供了有关如何使用 Engagement API 来报告应用程序统计信息的深入详细信息。
 
 请记住，如果只希望 Engagement 报告应用程序的会话、活动、崩溃和技术信息，则最简单的方法是从 `Page` 类继承所有 `EngagementPage` 子类。

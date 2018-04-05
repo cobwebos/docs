@@ -1,23 +1,23 @@
 ---
-title: "教程：Azure Active Directory 与 Domo 的集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 Domo 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Domo 的集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 和 Domo 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 058626e4-73b3-4dc2-86ca-b060d002d70a
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2017
+ms.date: 03/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 3fbfd8839b1a45c6927753a48d1ac617f2d34427
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c7f74d3bd8a2f0173f8f3cc69c611696044875a9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>教程：Azure Active Directory 与 Domo 的集成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Domo
 - 可以让用户使用其 Azure AD 帐户自动登录到 Domo（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 12/11/2017
 - 启用了 Domo 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 12/11/2017
     
     | 属性名称 | 属性值 |
     | ------------------- | -------------------- |    
-    | name | user.displayname |
+    | 名称 | user.displayname |
     | email | user.mail |
     
     a. 单击“添加属性”，打开“添加属性”对话框。
@@ -148,11 +148,11 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-domo-tutorial/tutorial_attribute_05.png)
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d. 单击“确定” 。 
+    d.单击“下一步”。 单击“确定” 。 
  
 6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -167,7 +167,7 @@ ms.lasthandoff: 12/11/2017
 
    ![配置单一登录](./media/active-directory-saas-domo-tutorial/tutorial_domo_configure.png) 
 
-9. 若要在 Domo 端配置单一登录，需要将下载的证书、SAML 实体 ID 、SAML 单一登录服务 URL 和注销 URL 发送给 [Domo 支持团队](mailto:support@domo.com)。 他们会对此进行设置，使 SAML SSO 连接在两端均正确设置。
+9. 若要在 Domo 端配置单一登录，请在[此处](http://knowledge.domo.com?cid=azuread)导航至 Domo 的知识库文章，然后根据说明操作。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -197,11 +197,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d.单击“下一步”。 单击“创建”。
  
 ### <a name="creating-a-domo-test-user"></a>创建 Domo 测试用户
 
@@ -241,7 +241,7 @@ ms.lasthandoff: 12/11/2017
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
-在本部分中，将使用访问面板测试 Azure AD 单一登录配置。
+在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 当在访问面板中单击 Domo 磁贴时，应当会自动登录到 Domo 应用程序。
 
 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)（访问面板简介）。 
@@ -249,9 +249,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
-
-
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

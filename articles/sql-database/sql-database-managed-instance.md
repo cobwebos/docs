@@ -8,17 +8,17 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: bonova
-ms.openlocfilehash: bc9c16462f28d129efa8c47183c6325e69bb64f3
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 2d07d58114a4d89f40a4ea9e388c58f58494766c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>什么是托管实例（预览版）？
 
-Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项新功能，几乎与本地 SQL Server 100% 兼容。它提供一个本机[虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 实现来解决常见的安全问题，并提供本地 SQL Server 客户惯用的[业务模型](https://azure.microsoft.com/pricing/details/sql-database/)。 托管实例允许现有 SQL Server 客户将其本地应用程序即时转移到云中，而只需对应用程序和数据库做出极少量的更改。 同时，托管实例保留了所有 PaaS 功能（自动修补和版本更新、备份、高可用性），可大幅降低管理开销和总拥有成本。
+Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项新功能，几乎与本地 SQL Server（Enterprise Edition）100% 兼容。它提供一个本机[虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 实现来解决常见的安全问题，并提供本地 SQL Server 客户惯用的[业务模型](https://azure.microsoft.com/pricing/details/sql-database/)。 托管实例允许现有 SQL Server 客户将其本地应用程序即时转移到云中，而只需对应用程序和数据库做出极少量的更改。 同时，托管实例保留了所有 PaaS 功能（自动修补和版本更新、备份、高可用性），可大幅降低管理开销和总拥有成本。
 
 > [!IMPORTANT]
 > 有关目前支持托管实例的区域列表，请参阅[使用 Azure SQL 数据库托管实例将数据库迁移到完全托管的服务](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/)。
@@ -34,16 +34,16 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 
 在正式版推出之前，托管实例旨在通过分阶段的发布计划，实现外围应用与最新本地 SQL Server 版本的近乎 100% 的兼容性。 
 
-下表概述了 SQL IaaS、Azure SQL 数据库和托管实例之间的主要差别和预期使用方案：
+下表概述了 SQL IaaS、Azure SQL 数据库和 SQL 数据库托管实例之间的主要差别和预期使用方案：
 
 | | 使用方案 | 
 | --- | --- | 
-|托管实例 |对于想要从本地或 IaaS 迁移大量自我构建的或 ISV 提供的应用，并且希望尽量减少迁移工作量的客户，可能推荐托管实例。 使用 Azure 中完全自动化的[数据迁移服务 (DMS)](/sql/dma/dma-overview)，客户可将其本地 SQL Server 即时转移到托管实例，从而实现与本地 SQL Server 的兼容，并通过本机 VNET 支持实现客户实例的完全隔离。  借助软件保障，可以使用 [SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)交换现有许可证，以获得 SQL 数据库托管实例的折扣价格。  SQL 数据库托管实例是 SQL Server 实例在云中的最佳迁移目标，需要很高的安全性和丰富的编程接口。 |
-|Azure SQL 数据库 |**弹性池**：对于开发新 SaaS 多租户应用程序或有意将现有本地应用转换为 SaaS 多租户应用的客户，建议弹性池。 此模型的优点包括： <br><ul><li>将业务模式从销售许可证转换为销售服务订阅（适用于 ISV）</li></ul><ul><li>简单且高度安全的租户隔离</li></ul><ul><li>以数据库为中心的简化编程模型</li></ul><ul><li>在不超出硬性限制的情况下横向扩展的可能性</li></ul>**单一数据库**：对于想要开发除 SaaS 多租户应用以外的应用，并且其工作负荷较为稳定且可预测的客户，建议单一数据库。 此模型的优点包括：<ul><li>以数据库为中心的简化编程模型</li></ul>  <ul><li>每个数据库的性能可预测</li></ul>|
-|SQL IaaS |对于需要自定义操作系统或数据库服务器，或者在配合 SQL Server 运行第三方应用（在同一 VM 上）方面有特定要求的客户，可以推荐 SQL VM/IaaS 作为最佳解决方案|
+|SQL 数据库托管实例 |对于想要从本地或 IaaS 迁移大量自我构建的或 ISV 提供的应用，并且希望尽量减少迁移工作量的客户，可能推荐托管实例。 使用 Azure 中完全自动化的[数据迁移服务 (DMS)](/sql/dma/dma-overview)，客户可将其本地 SQL Server 即时转移到托管实例，从而实现与本地 SQL Server 的兼容，并通过本机 VNET 支持实现客户实例的完全隔离。  借助软件保障，可以使用 [SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)交换现有许可证，以获得 SQL 数据库托管实例的折扣价格。  SQL 数据库托管实例是 SQL Server 实例在云中的最佳迁移目标，需要很高的安全性和丰富的编程接口。 |
+|Azure SQL 数据库（单个或池） |**弹性池**：对于开发新 SaaS 多租户应用程序或有意将现有本地应用转换为 SaaS 多租户应用的客户，建议弹性池。 此模型的优点包括： <br><ul><li>将业务模式从销售许可证转换为销售服务订阅（适用于 ISV）</li></ul><ul><li>简单且高度安全的租户隔离</li></ul><ul><li>以数据库为中心的简化编程模型</li></ul><ul><li>在不超出硬性限制的情况下横向扩展的可能性</li></ul>**单一数据库**：对于想要开发除 SaaS 多租户应用以外的应用，并且其工作负荷较为稳定且可预测的客户，建议单一数据库。 此模型的优点包括：<ul><li>以数据库为中心的简化编程模型</li></ul>  <ul><li>每个数据库的性能可预测</li></ul>|
+|SQL IaaS 虚拟机|对于需要自定义操作系统或数据库服务器，或者在配合 SQL Server 运行第三方应用（在同一 VM 上）方面有特定要求的客户，可以推荐 SQL VM/IaaS 作为最佳解决方案|
 |||
 
-![定位](./media/sql-database-managed-instance/positioning.png)
+<!---![positioning](./media/sql-database-managed-instance/positioning.png)--->
 
 ## <a name="how-to-programmatically-identify-a-managed-instance"></a>如何以编程方式标识托管实例
 
@@ -57,6 +57,9 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 |`@@SERVERNAME`、`SERVERPROPERTY ('ServerName')`|采用以下格式的完整实例 DNS 名称：<instanceName>.<dnsPrefix>.database.windows.net，其中，<instanceName> 是客户提供的名称，<dnsPrefix> 是自动生成的名称部分，保证 DNS 名称的全局唯一性（例如“wcus17662feb9ce98”）|示例：my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="key-features-and-capabilities-of-a-managed-instance"></a>托管实例的主要特性和功能 
+
+> [!IMPORTANT]
+> 托管实例使用最新版 SQL Server 的所有功能（包括联机操作、自动计划更正和其他企业性能增强功能）运行。 
 
 | **PaaS 优势** | **业务连续性** |
 | --- | --- |
@@ -90,6 +93,7 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 | SQL Server 版本/内部版本 | SQL Server（最新可用版本） |
 | 最小存储大小 | 32 GB |
 | 最大存储大小 | 8 TB |
+| 每个数据库的最大存储 | 4 TB |
 | 预期的存储 IOPS | 每个数据文件 500-7500 IOPS（取决于数据文件）。 请参阅[高级存储](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) |
 | 每个数据库的数据文件 (ROWS) 数目 | 多个 | 
 | 每个数据库的日志文件 (LOG) 数目 | 1 | 
@@ -120,7 +124,7 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 
 ### <a name="auditing-for-compliance-and-security"></a>符合性和安全性审核 
 
-托管实例的[审核](sql-database-auditing.md)功能可跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 借助审核可以保持合规、了解数据库活动，以及深入了解可能指示业务考量因素或疑似安全违规的偏差和异常。 
+[托管实例审核](sql-database-managed-instance-auditing.md)功能可跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 借助审核可以保持合规、了解数据库活动，以及深入了解可能指示业务考量因素或疑似安全违规的偏差和异常。 
 
 ### <a name="data-encryption-in-motion"></a>动态数据加密 
 
@@ -138,7 +142,7 @@ SQL 数据库的[动态数据掩码](/sql/relational-databases/security/dynamic-
 
 ### <a name="threat-detection"></a>威胁检测 
 
-Azure SQL 数据库的[威胁检测](sql-database-threat-detection.md)是审核的补充，它在服务中提供一个内置的附加安全智能层，用于检测企图访问或使用数据库的异常的潜在有害尝试。 出现可疑活动、潜在漏洞、 SQL 注入攻击和异常数据库访问模式时，它会发出警报。 可在 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看威胁检测警报，此警报提供可疑活动的详细信息以及如何调查和缓解威胁的建议操作。  
+[托管实例威胁检测](sql-database-managed-instance-threat-detection.md)是[托管实例审核](sql-database-managed-instance-auditing.md)的补充，它在服务中提供一个内置的附加安全智能层，用于检测企图访问或使用数据库的异常的潜在有害尝试。 出现可疑活动、潜在漏洞、 SQL 注入攻击和异常数据库访问模式时，它会发出警报。 可在 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看威胁检测警报，此警报提供可疑活动的详细信息以及如何调查和缓解威胁的建议操作。  
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory 集成和多重身份验证 
 

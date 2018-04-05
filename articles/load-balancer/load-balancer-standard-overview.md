@@ -1,6 +1,6 @@
 ---
-title: Azure 负载均衡器标准版概述 | Microsoft Docs
-description: Azure 负载均衡器标准版功能概述
+title: Azure 标准负载均衡器概述 | Microsoft Docs
+description: Azure 标准负载均衡器功能概述
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -12,61 +12,87 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2018
+ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 2d7fcb3ee066fa768615fbf643a0c2e1c1d28498
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d7ee74a19f806faed0bcfcfa5f1c5de3937d9f31
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="azure-load-balancer-standard-overview-preview"></a>Azure 负载均衡器标准版概述（预览版）
+# <a name="azure-load-balancer-standard-overview"></a>Azure 负载均衡器标准版概述
 
-将 Azure 负载均衡器标准 SKU 和公共 IP 标准 SKU 结合使用，可以构建高度可缩放且可靠的体系结构。 使用负载均衡器标准版的应用程序可以利用新的功能。 针对所有 TCP 和 UDP 应用程序的数百万个流提供低延迟、高吞吐量和缩放功能。
+使用 Azure 负载均衡器可以缩放应用程序，并为服务提供高可用性。 负载均衡器可用于入站和出站方案、提供低延迟和高吞吐量，以及为所有 TCP 和 UDP 应用程序纵向扩展到数以百万计的流。 
+
+本文着重介绍标准负载均衡器。  有关 Azure 负载均衡器的详细常规概述，还可以查看[负载均衡器概述](load-balancer-overview.md)。
+
+## <a name="what-is-standard-load-balancer"></a>什么是标准负载均衡器？
+
+标准负载均衡器是适用于所有 TCP 和 UDP 应用程序的新型负载均衡器产品，与基本负载均衡器相比拥有更广泛和精细的功能集。  尽管两者有许多相似之处，但请务必熟悉本文中所述的差异。
+
+可将标准负载均衡器标准版用作公共或内部负载均衡器。 虚拟机可以连接到一个公共负载均衡器资源和一个内部负载均衡器资源。
+
+负载均衡器资源的功能始终表示为前端、规则、运行状况探测和后端池定义。  资源可以包含多项规则。 可通过从虚拟机的 NIC 资源指定后端池，将虚拟机放入其中。  对于虚拟机规模集，该参数通过网络配置文件传递并进行扩展。
+
+资源的虚拟网络范围是一个重要方面。  尽管基本负载均衡器存在于可用性集范围内部，但标准负载均衡器与虚拟网络范围完全集成，且所有虚拟网络概念均适用。
+
+负载均衡器资源是一些对象，可在其中表述 Azure 应如何设定其多租户基础结构，以实现想要创建的场景。  负载均衡器资源与实际基础结构之间不存在直接的关系，创建负载均衡器不会创建实例，可始终使用容量，且无需考虑启动或缩放延迟。 
 
 >[!NOTE]
-> 负载均衡器标准版 SKU 目前以预览版提供。 在预览期，该功能的可用性和可靠性级别可能与正式版不同。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 请将正式版[负载均衡器基本 SKU](load-balancer-overview.md) 用于生产服务。 若要将[可用性区域预览版](https://aka.ms/availabilityzones)与此预览版配合使用，需要进行[单独注册](https://aka.ms/availabilityzones)，并且还需要注册负载均衡器[标准预览版](#preview-sign-up)。
+> Azure 为方案提供了一套完全托管的负载均衡解决方案。  如果寻找 TLS 终止（“SSL 卸载”）或每个 HTTP/HTTPS 请求的应用层处理，请查看[应用程序网关](../application-gateway/application-gateway-introduction.md)。  如果寻找全局 DNS 负载均衡，请查看[流量管理器](../traffic-manager/traffic-manager-overview.md)。  端到端方案可从结合所需的解决方案中受益。
 
-## <a name="why-use-load-balancer-standard"></a>为何使用负载均衡器标准版？
+## <a name="why-use-standard-load-balancer"></a>为何使用标准负载均衡器？
 
-可对各种规模的数据中心使用负载均衡器标准版。 从小规模部署到大型复杂的多区域体系结构，都可以使用负载均衡器标准版来充分利用以下功能：
+从小规模部署到大型复杂的多区域体系结构的任何虚拟数据中心都可以使用标准负载均衡器。
 
-- 可以使用负载均衡器标准版实现[企业级缩放](#enterprisescale)。 可对虚拟网络中的最多 1000 个任何虚拟机 (VM) 实例使用此功能。
+查看下表，了解标准负载均衡器与基本负载均衡器之间的差异概述：
 
-- 提供[新的诊断见解](#diagnosticinsights)，帮助你了解、管理虚拟数据中心的这个重要组件并对其进行故障排除。 使用 Azure Monitor（预览版）显示、筛选新的多维指标并对其进行分组，以便持续度量数据路径运行状况。 监视从前端到 VM、终结点运行状况探测、TCP 连接尝试再到出站连接的数据。
+>[!NOTE]
+> 应考虑对新设计使用标准负载均衡器。 
 
-- [网络安全组](#nsg)对于与负载均衡器标准版 SKU 或公共 IP 标准版 SKU 关联的任何 VM 实例现在都是必需的。 网络安全组 (NSG) 可为方案提供增强的安全性。
+| | 标准 SKU | 基本 SKU |
+| --- | --- | --- |
+| 后端池大小 | 多达 1000 个实例 | 多达 100 个实例 |
+| 后端池终结点 | 一个虚拟网络中的任何虚拟机，包括虚拟机、可用性集和虚拟机规模集的混合。 | 一个可用性集或虚拟机规模集中的虚拟机 |
+| 可用性区域 | 入站和出站的区域冗余和区域前端，出站流映射在发生区域故障后仍保留，跨区域负载均衡 | / |
+| 诊断 | Azure Monitor、多维度指标（包括字节和数据包计数器）、运行状况探测状态、连接尝试 (TCP SYN)、出站连接运行状况（SNAT 成功和失败流）、活动数据平面度量 | 仅用于公共负载均衡器的 Azure Log Analytics、SNAT 耗尽警报、后端池运行状况计数 |
+| HA 端口 | 内部负载均衡器 | / |
+| 默认保护 | 在默认情况下，对公共 IP 和负载均衡器终结点关闭，网络安全组必须用于显式允许列表，以便流量流动 | 默认打开，可选网络安全组 |
+| 出站连接 | 多个前端，可根据每个规则选择禁用。必须显式创建出站方案，以便虚拟机能够使用出站连接。  [VNet 服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)无需出站连接便可访问，且不会计入处理的数据。  任何公共 IP 地址（包括不作为 VNet 服务终结点提供的 Azure PaaS 服务）必须通过出站连接才能访问，且计入处理的数据。 如果只有一个内部负载均衡器向虚拟机提供服务，通过默认 SNAT 的出站连接将不可用。 出站 SNAT 编程特定于传输协议，并以入站负载均衡规则的协议为基础。 | 单个前端，存在多个前端时随机选择。  如果仅内部负载均衡器向虚拟机提供服务，则使用默认 SNAT。 |
+| 多个前端 | 入站和出站 | 仅限入站 |
+| 管理操作 | 大多数操作都小于 30 秒 | 典型为 60 - 90 多秒 |
+| SLA | 对拥有两个正常运行的虚拟机的数据路径为 99.99% | 在 VM SLA 中为隐式 | 
+| 定价 | 基于规则数、与资源关联且经过入站或出站处理的数据量进行计费  | 免费 |
 
-- [高可用性 (HA) 端口提供较高的可靠性](#highreliability)，并可针对网络虚拟设备 (NVA) 和其他应用程序方案进行缩放。 HA 端口可将 Azure 内部负载均衡器 (ILB) 前端中的所有端口负载均衡到 VM 实例池。
-
-- [出站连接](#outboundconnections)现在使用新的源网络地址转换 (SNAT) 端口分配模型，提供更高的复原能力和缩放性。
-
-- [包含可用性区域的负载均衡器标准版](#availabilityzones)可用于构建区域冗余的体系结构和区域体系结构。 这两种体系结构都具有跨区域负载均衡功能。 可以在不依赖于 DNS 记录的情况下实现区域冗余。 默认情况下，单个 IP 地址是区域冗余的。  单个 IP 地址可在一个跨所有可用性区域的区域中访问虚拟网络中的任何 VM。
+请查看[负载均衡器的服务限制](https://aka.ms/lblimits)、[定价](https://aka.ms/lbpricing)和 [SLA](https://aka.ms/lbsla)。
 
 
-可以在支持以下基本方案的公共或内部配置中使用负载均衡器标准版：
+### <a name="backend"></a>后端池
 
-- 将入站流量负载均衡到正常的后端实例。
-- 以端口转发的形式将入站流量传送到单个后端实例。
-- 转换从虚拟网络中的专用 IP 地址发往公共 IP 地址的出站流量。
+标准负载均衡器的后端池在虚拟网络中扩展到任何虚拟机资源。  可包含多达 1000 个后端实例。  后端实例是 IP 配置（NIC 资源的属性）。
 
-### <a name = "enterprisescale"></a>企业级缩放
+后端池可以包含独立的虚拟机、可用性集或虚拟机规模集。  可在后端池中混合资源，且后端池可包含这些资源的总计至多 150 种任意组合。
 
- 使用负载均衡器标准版，设计高性能的虚拟数据中心和支持任何 TCP 或 UDP 应用程序。 在后端池中使用独立的 VM 实例或最多 1,000 个虚拟机规模集的实例。 仍可使用较低的转发延迟、较高的吞吐量性能，并可针对完全托管的 Azure 服务的数百万个流进行缩放。
- 
-负载均衡器标准版可将流量转发到区域虚拟网络中的任何 VM 实例。 后端池大小最高可达 1,000 个实例，其中可以采用以下 VM 方案的任意组合：
+考虑后端池的设计方式时，可针对单个后端池资源的最小数字进行设计，从而进一步优化管理操作的持续时间。  在数据平面性能或规模中不存在任何差异。
 
-- 无可用性集的独立 VM
-- 有可用性集的独立 VM
-- 最多包含 1,000 个实例的虚拟机规模集
-- 多个虚拟机规模集
-- VM 与虚拟机规模集的混合
+## <a name="az"></a>可用性区域
 
-可用性集不再有任何要求。 可以选择使用可用性集，以利用它们提供的其他好处。
+>[!NOTE]
+> 若要将[可用性区域预览版](https://aka.ms/availabilityzones)用于标准负载均衡器，需要[注册可用性区域](https://aka.ms/availabilityzones)。
 
-### <a name = "diagnosticinsights"></a>诊断见解
+标准负载均衡器在提供可用性区域的区域中支持其他功能。  这些功能可增量到所有标准负载均衡器提供的内容。  可用性区域配置可用于公共和内部标准负载均衡器。
 
-负载均衡器标准版为公共和内部负载均衡器配置提供新的多维诊断功能。 这些新指标通过 Azure Monitor（预览版）提供，并利用所有相关功能，包括与下游使用者集成的功能。
+使用可用性区域在区域中部署时，非区域性前端默认变为区域冗余前端。   区域冗余前端在发生区域故障后仍保留，并由所有区域中的专用基础结构同时提供。 
+
+此外，可以保证特定区域的前端。 区域前端的运行状况取决于相应的区域，仅由一个区域中的专用基础结构提供。
+
+跨区域负载均衡可用于后端池，且 VNet 中的任何虚拟机资源均可成为后端池的一部分。
+
+请查看[有关可用性区域的功能的详细讨论](load-balancer-standard-availability-zones.md)。
+
+### <a name="diagnostics"></a>诊断
+
+标准负载均衡器通过 Azure Monitor 提供多维度指标。  可以筛选这些指标并进行分组，便于深入了解服务的当前及历史性能和运行状况。  还支持资源运行状况。  以下是支持的诊断的简要概述：
 
 | 指标 | 说明 |
 | --- | --- |
@@ -77,222 +103,74 @@ ms.lasthandoff: 03/16/2018
 | 字节计数器 | 负载均衡器标准版按前端报告处理的数据。|
 | 数据包计数器 | 负载均衡器标准版按前端报告处理的数据包。|
 
-### <a name = "highreliability"></a>高可靠性
+请查看[有关标准负载均衡器诊断的详细讨论](load-balancer-standard-diagnostics.md)。
 
-配置负载均衡规则可让应用程序具有缩放性，并且变得高度可靠。 可以针对单个端口配置规则，或者使用 HA 端口均衡所有流量，而不管 TCP 或 UDP 端口号是什么。  
+### <a name="haports"></a>HA 端口
 
-可以使用新的 HA 端口功能来解锁各种方案（包括高可用性）以及针对内部 NVA 进行缩放。 该功能对无法或不需要指定单个端口的其他方案也很有用。 HA 端口允许任意数目的实例，因此可以提供冗余和缩放性。 配置不再局限于主动/被动方案。 运行状况探测配置通过将流量仅转发到正常实例来保护服务。
+标准负载均衡器支持一种新型规则。  
 
-NVA 供应商可为客户提供享有全面供应商支持的弹性方案。 已删除单一故障点，并支持多个活动实例进行缩放。 可缩放到两个或多个实例，具体取决于设备的功能。 有关这些方案的其他指导，请联系 NVA 供应商。
+可以配置负载均衡规则，让应用程序具有缩放性，并且变得高度可靠。 使用 HA 端口负载均衡规则时，在内部标准负载均衡器的前端 IP 地址的每个临时端口上，标准负载均衡器对每个流提供负载均衡。  该功能对无法或不需要指定单个端口的其他方案也很有用。
 
-### <a name = "availabilityzones"></a>可用性区域
+使用 HA 端口负载均衡规则可为网络虚拟设备以及需要大范围入站端口的任何应用程序创建主动-被动或主动-被动 n+1 方案。  运行状况探测可用于确定接收新流的后端。  可使用网络安全组模拟端口范围方案。
 
-[!INCLUDE [availability-zones-preview-statement](../../includes/availability-zones-preview-statement.md)]
+>[!IMPORTANT]
+> 如果计划使用网络虚拟设备，请咨询供应商以获取指南，了解他们的产品是否测试了 HA 端口，然后按照他们提供的特定指南进行实现。 
 
-使用受支持区域中的可用性区域进一步提升应用程序的复原能力。 可用性区域目前在特定的区域以预览版提供，需要额外选用。
+请查看[有关 HA 端口的详细讨论](load-balancer-ha-ports-overview.md)。
 
-### <a name="automatic-zone-redundancy"></a>自动区域冗余
+### <a name="securebydefault"></a>默认保护
 
-可以针对每个应用程序，选择负载均衡器是要提供区域冗余的前端还是区域前端。 使用负载均衡器标准版可以轻松创建区域冗余。 单个前端 IP 地址已自动实现区域冗余。 区域冗余的前端由区域中的所有可用性区域同时提供服务。 可为入站和出站连接创建区域冗余的数据路径。 Azure 中的区域冗余不需要多个 IP 地址和 DNS 记录。 
-
-区域冗余适用于公共或内部前端。 公共 IP 地址和内部负载均衡器的前端专用 IP 可以实现区域冗余。
-
-使用以下脚本为内部负载均衡器创建区域冗余的公共 IP 地址。 如果在配置中使用现有的资源管理器模板，请将 sku 部分添加到这些模板中。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-使用以下脚本为内部负载均衡器创建区域冗余的前端 IP。 如果在配置中使用现有的资源管理器模板，请将 sku 部分添加到这些模板中。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zone_redundant_frontend",
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-如果公共 IP 前端是区域冗余的，则从 VM 实例发起的出站连接会自动实现区域冗余。 前端在发生区域故障时可受到保护。 SNAT 端口分配在发生区域故障时也能幸存。
-
-#### <a name="cross-zone-load-balancing"></a>跨区域负载均衡
-
-可在区域中针对后端池使用跨区域负载均衡，为 VM 实例提供最大的灵活性。 前端将流量传送到虚拟网络中的任何 VM，而不管 VM 实例的可用性区域是什么。
-
-也可为前端和后端实例指定一个特定的区域，使数据路径和资源与特定的区域相符。
-
-虚拟网络和子网从不受区域限制。 只需使用所需的 VM 实例定义后端池，即可完成配置。
-
-#### <a name="zonal-deployments"></a>区域部署
-
-可以选择通过定义区域前端，将负载均衡器前端与特定区域对齐。 区域前端仅由指定的单个可用性区域提供服务。 前端与区域 VM 实例相结合时，可将资源与特定区域对齐。
-
-在特定区域中创建的公共 IP 地址始终仅存在于该区域中。 不能更改公共 IP 地址的区域。 对于可附加到多个区域中的资源的公共 IP 地址，请改为创建区域冗余的公共 IP。
-
-使用以下脚本在可用性区域 1 中创建区域性公共 IP 地址。 如果在配置中使用现有的资源管理器模板，请将 sku 部分添加到这些模板中。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "zones": [ "1" ],
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-使用以下脚本在可用性区域 1 中创建内部负载均衡器前端。
-
-如果在配置中使用现有的资源管理器模板，请将 sku 部分添加到这些模板中。 此外，在子资源的前端 IP 配置中定义 zones 属性。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zonal_frontend_in_az1",
-                        "zones": [ "1" ],
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-通过将虚拟网络中的 VM 实例放入后端池，为该后端池添加跨区域负载均衡。
-
-在支持可用性区域的位置，负载均衡器标准版资源始终是大区域 (region) 和局部区域 (zone) 冗余的。 可将公共 IP 地址或未分配有局部区域的内部负载均衡器前端部署在任何大区域中。 对可用性区域的支持不会影响部署功能。 如果大区域后来获得了可用性区域，之前部署的公共 IP 或内部负载均衡器前端会自动实现区域冗余。 区域冗余的数据路径并不意味着数据包完全不会丢失。
-
-### <a name = "nsg"></a>网络安全组
-
-负载均衡器标准版和公共 IP 标准版会完全进入虚拟网络，这需要使用网络安全组 (NSG)。 NSG 可将通信流加入允许列表。 可以使用 NSG 获得对部署流量的完全控制。 无需再等待其他通信流完成。
-
-将 NSG 与子网或后端池中 VM 实例的网络接口 (NIC) 关联。 此配置适用于负载均衡器标准版，以及用作实例层级公共 IP 的公共 IP 标准版。 NSG 必须将要允许的流量显式加入允许列表，才能传送该流量。
+标准负载均衡器已完全载入虚拟网络。  虚拟网络是封闭的专用网络。  标准负载均衡器和标准公共 IP 地址旨在允许从虚拟网络外部访问该虚拟网络，因此，这些资源现在默认处于关闭状态，除非手动打开。 这意味着网络安全组 (NSG) 现在可用于显式允许并将允许的流量添加到允许列表。  可以创建整个虚拟数据中心，并通过 NSG 决定其提供的内容和可用的时间。  如果虚拟机资源的子网或 NIC 上没有 NSG，系统将不允许流量访问此资源。
 
 若要详细了解 NSG 以及如何将其应用于自己的方案，请参阅[网络安全组](../virtual-network/virtual-networks-nsg.md)。
 
-### <a name ="outboundconnections"></a>出站连接
+### <a name="outbound"></a>出站连接
 
-负载均衡器使用端口伪装的 SNAT 时，负载均衡器标准版可为该虚拟网络内的 VM 提供出站连接。 端口伪装 SNAT 算法提供更高的可靠性和缩放性。
+负载均衡器支持入站和出站方案。  对于出站连接，标准负载均衡器与基本负载均衡器存在明显差异。
 
-公共负载均衡器资源与 VM 实例相关联时，将重写每个出站连接源。 出站连接源从虚拟网络专用 IP 地址空间重新写入负载均衡器的前端公共 IP 地址。
+源网络地址转换 (SNAT) 用于将虚拟网络上的内部专用 IP 地址映射到负载均衡器前端的公共 IP 地址。
 
-与区域冗余的前端结合使用时，出站连接也能实现区域冗余，发生区域故障时，SNAT 端口分配可以幸存。
+标准负载均衡器为实现[更可靠、可缩放且可预测的 SNAT 算法](load-balancer-outbound-connections.md#snat)引入了新算法，并启用新功能、去除多义性并强制实现显式配置，不会产生副作用。 若要允许新功能的出现，这些更改是必要的。 
 
-负载均衡器标准版中的新算法可向每个 VM 的 NIC 预先分配 SNAT 端口。 将 NIC 添加到该池后，将根据池大小预先分配 SNAT 端口。 下表显示了针对六层后端池大小的端口预分配：
+使用标准负载均衡器时，请牢记以下关键原则：
 
-| 池大小（VM 实例） | 预分配的 SNAT 端口数 |
-| --- | --- |
-| 1 - 50 | 1024 |
-| 51 - 100 | 512 |
-| 101 - 200 | 256 |
-| 201 - 400 | 128 |
-| 401 - 800 | 64 |
-| 801 - 1,000 | 32 |
+- 驱动负载均衡器资源的是规则完成。  Azure 的所有编程均派生自其配置。
+- 多个前端可用时，会使用所有前端，每个前端成倍增加可用的 SNAT 端口数。
+- 如果不希望某特定前端用于出站连接，可进行选择和控制。
+- 出站方案处于显式状态，指定出站连接后，该连接才会存在。
+- 负载均衡规则推断 SNAT 的编程方式。 负载均衡规则特定于协议。 SNAT 特定于协议，配置应反映这一点，而不是产生副作用。
 
-SNAT 端口数并不直接表示出站连接数。 可以针对多个唯一目标重用一个 SNAT 端口。 有关详细信息，请查看[出站连接](load-balancer-outbound-connections.md)一文。
+#### <a name="multiple-frontends"></a>多个前端
+希望出现或已遇到出站连接的高需求时，如果想要更多 SNAT 端口，还可以通过配置其他前端、规则和后端池，将增量 SNAT 端口库存添加到相同的虚拟机资源。
 
-如果后端池增大并转换到更高层级，则会回收一半的分配端口。 与回收端口关联的连接会超时，必须重新建立连接。 新的连接尝试会立即成功。 如果后端池减小并转换到更低层级，可用的 SNAT 端口数会增多。 在这种情况下，现有连接不受影响。
+#### <a name="control-which-frontend-is-used-for-outbound"></a>控制用于出站的前端
+如果要将出站连接限制为仅来自于特定前端 IP 地址，可以按需在表示出站映射的规则上禁用出站 SNAT。
 
-负载均衡器标准版还有一个可基于规则的附加配置选项。 如果多个前端可用，则可控制哪个前端用于端口伪装 SNAT。
+#### <a name="control-outbound-connectivity"></a>控制出站连接
+标准负载均衡器存在于虚拟网络的上下文中。  虚拟网络是独立的专用网络。  除非存在与公共 IP 地址的关联，否则不允许公共连接。  可以访问 [VNet 服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，因为它们在虚拟网络内部并位于本地。  若要对虚拟网络外部的目标建立出站连接，可执行以下两个选项：
+- 将标准 SKU 公共 IP 地址作为实例层级公共 IP 地址分配到虚拟机资源；
+- 或者，将虚拟机资源放入公共标准负载均衡器的后端池中。
 
-如果只有负载均衡器标准版为 VM 实例提供服务，则 SNAT 出站连接不可用。 还可通过向公共负载均衡器分配 VM 实例来显式还原此功能。 也可向每个 VM 实例直接分配作为实例层级公共 IP 的公共 IP。 对于某些操作系统和应用程序方案，可能需要此配置选项。 
+上述两个选项均允许通过出站连接从虚拟网络访问虚拟网络的外部。 
 
-### <a name="port-forwarding"></a>端口转发
+如果只有一个内部标准负载均衡器与虚拟机资源所在的后端池关联，虚拟机仅可以访问虚拟网络资源和 [VNet 终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。  可以按照上一段描述的步骤创建出站连接。
 
-基本版和标准版负载均衡器提供配置入站 NAT 规则，以将前端端口映射到单个后端实例的功能。 通过配置这些规则，可以公开远程桌面协议终结点和 SSH 终结点，或执行其他应用程序方案。
+未与标准 SKU 关联的虚拟机资源的出站连接保持不变。
 
-负载均衡器标准版继续通过入站 NAT 规则提供端口转发功能。 与区域冗余的前端结合使用时，入站 NAT 规则可实现区域冗余，在发生区域故障时能够幸存。
+请查看[有关出站连接的详细讨论](load-balancer-outbound-connections.md)。
 
-### <a name="multiple-front-ends"></a>多个前端
+### <a name="multife"></a>多个前端
+负载均衡器使用多个前端支持多项规则。  标准负载均衡器将其扩展到出站方案。  出站方案与入站负载均衡规则实质上存在逆反关系。  入站负载均衡规则还创建了出站连接的关联。 标准负载均衡器通过负载均衡规则使用与虚拟机资源关联的所有前端。  此外，使用负载均衡规则上的参数可以为了出站连接取消负载均衡规则，并允许选择特定前端（包括无前端）。
 
-应用程序需要公开多个独立 IP 地址时（例如 TLS 网站或 SQL AlwaysOn 可用性组终结点），可以配置多个前端来提高设计灵活性。 
+为进行比较，基本负载均衡器随机选择一个前端，且无法控制选择哪一个前端。
 
-负载均衡器标准版继续提供多个前端，其中需要在唯一的 IP 地址上公开特定的应用程序终结点。
+请查看[有关出站连接的详细讨论](load-balancer-outbound-connections.md)。
 
-若要深入了解如何配置多个前端 IP，请参阅[多 IP 配置](load-balancer-multivip-overview.md)。
+### <a name="operations"></a>管理操作
 
-## <a name = "sku"></a>关于 SKU
+标准负载均衡器资源存在于全新的基础结构平台中。  这允许标准 SKU 大大提高管理操作的速度，对于每个标准 SKU 资源，完成时间通常少于 30 秒。  请注意，后端池增大时，其更改所需的持续时间也随之延长。
 
-SKU 仅在 Azure 资源管理器部署模型中可用。 本预览版为负载均衡器和公共 IP 资源引入了两个 SKU：“基本”和“标准”。 这些 SKU 的功能、性能特征、限制和某些内在行为有所不同。 可在任一 SKU 中使用虚拟机。 对于负载均衡器和公共 IP 资源，SKU 保留为可选属性。 如果在方案定义中省略 SKU，配置将默认为使用基本 SKU。
-
->[!IMPORTANT]
->资源的 SKU 不可变。 无法更改现有资源的 SKU。  
-
-### <a name="load-balancer"></a>负载均衡器
-
-[现有的负载均衡器资源](load-balancer-overview.md)会变成基本 SKU 并保留正式版，且不可更改。
-
-负载均衡器标准 SKU 是新产品，目前以预览版提供。 2017 年 8 月 1 日的 Microsoft.Network/loadBalancers API 版本向资源定义添加了 sku 属性：
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-负载均衡器标准版会在提供可用性区域的区域中自动获得区域弹性。 如果负载均衡器已声明为区域性，则不会自动获得区域弹性。
-
-### <a name="public-ip"></a>公共 IP
-
-[现有的公共 IP 资源](../virtual-network/virtual-network-ip-addresses-overview-arm.md)会变成基本 SKU，并保留正式版及其功能、性能特征和限制。
-
-公共 IP 标准 SKU 是新产品，目前以预览版提供。 2017 年 8 月 1 日的 Microsoft.Network/publicIPAddresses API 版本向资源定义添加了 sku 属性：
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-与提供多种分配方法的公共 IP 基本版不同，公共 IP 标准版始终使用静态分配。
-
-公共 IP 标准版会在提供可用性区域的区域中自动获得区域弹性。 如果公共 IP 已声明为区域性，则将不会自动获得区域弹性。 区域公共 IP 不能从一个区域更改为另一个区域。
+可以修改标准负载均衡器资源，显著提高在虚拟机之间移动标准公共 IP 地址的速度。
 
 ## <a name="migration-between-skus"></a>SKU 之间的迁移
 
@@ -322,158 +200,41 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 >
 >标准 SKU 的 HA 端口和诊断只能在标准 SKU 中使用。 无法从标准 SKU 迁移到基本 SKU，并同时保留这些功能。
 >
->必须对负载均衡器和公共 IP 资源使用匹配的 SKU。 不能混合使用基本 SKU 资源和标准 SKU 资源。 不能将 VM、可用性集中的 VM 或虚拟机规模集同时附加到这两类 SKU。
+>根据本文所述，基本和标准 SKU 存在一定差异。  请确保理解这些差异并做好相应准备。
 >
+>必须对负载均衡器和公共 IP 资源使用匹配的 SKU。 不能混合使用基本 SKU 资源和标准 SKU 资源。 无法将独立的虚拟机、可用性集资源中的虚拟机或虚拟机规模集资源同时附加到两个 SKU。
 
 ## <a name="region-availability"></a>上市区域
 
-负载均衡器标准版目前已在所有公有云区域（美国西部除外）推出。
+负载均衡器标准版目前已在所有公有云区域推出。
 
->[!IMPORTANT]
-> 在短时间内，访问初始启动区域（美国东部 2、美国中部、北欧、美国中西部、西欧、东南亚）之外的区域需要注册其他订阅功能（AllowLBPreviewWave2 和AllowLBPreviewWave3）。  [请执行以下步骤](#additionalpreviewregions)。 请执行所有这些步骤，即使以前已注册了 AllowLBPreview 也是如此。
-> 未来几周中将删除此要求。
+## <a name="sla"></a>SLA
 
-## <a name="sku-service-limits-and-abilities"></a>SKU 服务限制和功能
+可以使用标准负载均衡器，其 SLA 为 99.99%。  有关详细信息，请查看[标准负载均衡器 SLA](https://aka.ms/lbsla)。
 
-Azure 的[网络服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)根据区域和订阅实施。 
-
-下表比较了负载均衡器基本和标准 SKU 的限制和功能：
-
-| 负载均衡器 | 基本 | 标准 |
-| --- | --- | --- |
-| 后端池大小 | 最大 100 | 最大 1,000 |
-| 后端池边界 | 可用性集 | 虚拟网络、区域 |
-| 后端池设计 | 可用性集中的 VM、可用性集中的虚拟机规模集 | 虚拟网络中的任何 VM 实例 |
-| HA 端口 | 不支持 | 可用 |
-| 诊断 | 受限，仅限公共 IP | 可用 |
-| VIP 可用性  | 不支持 | 可用 |
-| 快速 IP 移动性 | 不支持 | 可用 |
-|可用性区域方案 | 仅限区域 | 区域、区域冗余、跨区域负载均衡 |
-| 出站 SNAT 算法 | 按需 | 预先分配 |
-| 出站 SNAT 前端选择 | 不可配置，有多个候选项 | 可选配置，减少了候选项 |
-| 网络安全组 | 在 NIC/子网上可选 | 必选 |
-
-下表比较了公共 IP 基本和标准 SKU 的限制和功能：
-
-| 公共 IP | 基本 | 标准 |
-| --- | --- | --- |
-| 可用性区域方案 | 仅限区域 | 区域冗余（默认）、区域（可选） | 
-| 快速 IP 移动性 | 不支持 | 可用 |
-| VIP 可用性 | 不支持 | 可用 |
-| 计数器 | 不支持 | 可用 |
-| 网络安全组 | 在 NIC 上可选 | 必选 |
-
-
-## <a name="preview-sign-up"></a>预览版注册
-
-若要参与负载均衡器标准 SKU 及其配套公共 IP 标准 SKU 的预览，请注册订阅。  通过注册订阅，即可使用 PowerShell 或 Azure CLI 2.0 进行访问。 若要进行注册，请执行以下步骤：
-
->[!NOTE]
->注册负载均衡器标准版功能可能需要长达一小时才能在全局范围内生效。 如果要将负载均衡器标准版与[可用性区域](https://aka.ms/availabilityzones)配合使用，需要对 AZ 预览版进行[单独注册](https://aka.ms/availabilityzones)。
-
-<a name="additionalpreviewregions"></a>
->[!IMPORTANT]
-> 在短时间内，访问初始启动区域（美国东部 2、美国中部、北欧、美国中西部、西欧、东南亚）之外的区域需要注册其他订阅功能（AllowLBPreviewWave2 和AllowLBPreviewWave3）。  下面的步骤已被修改以启用其他订阅功能。 请执行所有这些步骤，即使以前已注册了 AllowLBPreview 也是如此。 未来几周中将删除此要求。
-
-
-### <a name="sign-up-by-using-azure-cli-20"></a>使用 Azure CLI 2.0 注册
-
-1. 在提供程序中注册此功能：
-
-    ```cli
-    az feature register --name AllowLBPreview --namespace Microsoft.Network
-    az feature register --name AllowLBPreviewWave2 --namespace Microsoft.Network
-    az feature register --name AllowLBPreviewWave3 --namespace Microsoft.Network
-    ```
-    
-2. 此操作可能最多需要 10 分钟才能完成。 可使用以下命令检查操作状态：
-
-    ```cli
-    az feature list --query "[?name=='Microsoft.Network/AllowLBPreview']" --output json
-    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave2']" --output json
-    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave3']" --output json
-    ```
-    
-    对于上述每种注册功能，当功能注册状态返回“已注册”时，继续执行下一步。 示例：
-   
-    ```json
-    {
-       "id": "/subscriptions/foo/providers/Microsoft.Features/providers/Microsoft.Network/features/AllowLBPreview",
-       "name": "Microsoft.Network/AllowLBPreview",
-       "properties": {
-          "state": "Registered"
-       },
-       "type": "Microsoft.Features/providers/features"
-    }
-    ```
-    
-4. 在资源提供程序中重新注册订阅，完成预览版注册：
-
-    ```cli
-    az provider register --namespace Microsoft.Network
-    ```
-    
-
-### <a name="sign-up-by-using-powershell"></a>使用 PowerShell 注册
-
-1. 在提供程序中注册此功能：
-
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
-    ```
-    
-2. 此操作可能最多需要 10 分钟才能完成。 可使用以下命令检查操作状态：
-
-    ```powershell
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
-    ```
-
-  对于上述每种注册功能，当功能注册状态返回“已注册”时，继续执行下一步。 示例：
-
-    ```
-    FeatureName      ProviderName        RegistrationState
-    -----------      ------------        -----------------
-    AllowLBPreview   Microsoft.Network   Registered
-    ```
-    
-3. 在资源提供程序中重新注册订阅，完成预览版注册：
-
-    ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-    ```
- 
 ## <a name="pricing"></a>定价
 
-负载均衡器标准 SKU 根据配置的规则和处理的数据计费。 在预览期不会产生任何费用。 有关详细信息，请查看[负载均衡器](https://aka.ms/lbpreviewpricing)和[公共 IP](https://aka.ms/lbpreviewpippricing) 定价页。
-
-客户可以继续免费享用负载均衡器基本 SKU。
+标准负载均衡器根据以下内容计费：配置的负载均衡规则数量以及处理的所有入站和出站数据量。 有关标准负载均衡器的定价信息，请访问[负载均衡器定价](https://aka.ms/lbpricing)页。
 
 ## <a name="limitations"></a>限制
 
-在预览期存在以下限制，这些限制随时可能发生变化：
-
 - 负载均衡器后端实例目前不能位于对等互连的虚拟网络中。 所有后端实例必须位于同一区域中。
 - SKU 不可变。 无法更改现有资源的 SKU。
-- 可在这两种 SKU 中使用某个独立的 VM、可用性集中的 VM 实例或虚拟机规模集。 不可以同时在这两种 SKU 中使用 VM 组合。 不允许使用混合了这两种 SKU 的配置。
-- 对 VM 实例（或可用性集的任何组成部分）使用内部负载均衡器标准版会禁用[默认的 SNAT 出站连接](load-balancer-outbound-connections.md)。 可对独立的 VM、可用性集中的 VM 实例或虚拟机规模集还原此功能。 还可还原此功能来建立出站连接。 若要还原这些功能，请将公共负载均衡器标准版或公共 IP 标准版（作为实例层级公共 IP）同时分配到同一个 VM 实例。 分配完成后，会再次提供公共 IP 地址的端口伪装 SNAT。
-- 可能需要将 VM 实例分组到可用性集中才能实现完全的后端池缩放。 在单个后端池中最多可以放置 150 个可用性集和独立 VM。
-- 不支持 IPv6。
-- 在可用性区域的上下文中，无法将前端从区域配置变成区域冗余配置，反之亦然。 将前端创建为区域冗余配置后，它将一直是区域冗余配置。 将前端创建为区域配置后，它将一直是区域配置。
-- 在可用性区域的上下文中，区域公共 IP 地址不能从一个区域转移到另一个区域。
+- 独立的虚拟机资源、可用性集资源或虚拟机规模集资源可以引用一个 SKU，绝不能同时引用两个。
 - 目前不支持 [Azure Monitor 警报](../monitoring-and-diagnostics/monitoring-overview-alerts.md)。
-- 门户尚不支持扩展的预览区域。  请使用模板、Azure CLI 2.0 或 PowerShell 等客户端工具作为解决方法。
 - 标准 SKU LB 和 PIP 资源不支持[移动订阅操作](../azure-resource-manager/resource-group-move-resources.md)。
-- 在美国西部不可用。
-
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[负载均衡器基本版](load-balancer-overview.md)。
+- 了解如何使用[标准负载均衡器和可用性区域](load-balancer-standard-availability-zones.md)
 - 详细了解[可用性区域](../availability-zones/az-overview.md)。
+- 了解有关[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)的信息。
+- 在 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) 中了解用于诊断的[支持的多维度指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)。
+- 了解如何使用[出站连接的负载均衡器](load-balancer-outbound-connections.md)
+- 了解有关[具有 HA 端口负载均衡规则的标准负载均衡器](load-balancer-ha-ports-overview.md)的信息
+- 了解如何使用[具有多个前端的负载均衡器](load-balancer-multivip-overview.md)
+- 了解有关[虚拟网络](../virtual-network/virtual-networks-overview.md)的信息。
 - 详细了解[网络安全组](../virtual-network/virtual-networks-nsg.md)。
+- 了解有关 [VNet 服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)的信息
 - 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
-- 了解 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) [中公开的指标](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)。
+- 详细了解[负载均衡器](load-balancer-overview.md)。

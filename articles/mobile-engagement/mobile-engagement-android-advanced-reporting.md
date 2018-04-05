@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Android SDK 的高级报告选项"
-description: "介绍如何执行高级报告，以捕获 Azure Mobile Engagement Android SDK 的分析信息"
+title: Azure Mobile Engagement Android SDK 的高级报告选项
+description: 介绍如何执行高级报告，以捕获 Azure Mobile Engagement Android SDK 的分析信息
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7da7abd5-19d6-4892-94d8-818e5424b2cd
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 2a1445afa2c2fca1a31ad9c012b9c8a917ebf65c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 419b65250d2b65e184e6e36349b17b5ac9e7a6ba
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="advanced-reporting-with-engagement-on-android"></a>在 Android 上使用 Engagement 执行高级报告
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 > [!div class="op_single_selector"]
 > * [通用 Windows](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -44,7 +48,7 @@ ms.lasthandoff: 12/21/2017
 > 
 > 
 
-可以在 `src` 文件夹中找到这些类，然后将其复制到项目中。 该类还存在于 **JavaDoc** 中。
+可以在 `src` 文件夹中找到这些类，并将其复制到项目中。 该类还存在于 **JavaDoc** 中。
 
 ## <a name="alternate-method-call-startactivity-and-endactivity-manually"></a>备用方法：手动调用 `startActivity()` 和 `endActivity()`
 如果无法或不想重载 `Activity` 类，则可以通过直接调用 `EngagementAgent` 方法来启动和结束活动。

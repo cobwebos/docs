@@ -1,9 +1,9 @@
 ---
-title: "Azure Cosmos DB 的 SQL 查询 | Microsoft Docs"
-description: "了解 Azure Cosmos DB 的 SQL 语法、数据库概念和 SQL 查询。 SQL 可在 Azure Cosmos DB 中作为 JSON 查询语言使用。"
-keywords: "sql 语法, sql 查询, sql 查询, json 查询语言, 数据库概念和 sql 查询, 聚合函数"
+title: Azure Cosmos DB 的 SQL 查询 | Microsoft Docs
+description: 了解 Azure Cosmos DB 的 SQL 语法、数据库概念和 SQL 查询。 SQL 可在 Azure Cosmos DB 中作为 JSON 查询语言使用。
+keywords: sql 语法, sql 查询, sql 查询, json 查询语言, 数据库概念和 sql 查询, 聚合函数
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: LalithaMV
 manager: jhubbard
 editor: monicar
@@ -13,17 +13,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: 8425c9eae1bb7b50edec1d36d4e7c80b49b243ac
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: a79b1a97909a38b4bfba06186db875d0c0c25f03
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos DB 的 SQL 查询
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Microsoft Azure Cosmos DB 通过将 SQL（结构化查询语言）用作 JSON 查询语言来支持针对 SQL API 帐户查询文档。 Azure Cosmos DB 是真正无架构的。 凭借其对数据库引擎内 JSON 数据模型的直接承诺，它可以提供 JSON 文档的自动索引，而无需显式架构或创建辅助索引。
 
@@ -34,11 +32,17 @@ Microsoft Azure Cosmos DB 通过将 SQL（结构化查询语言）用作 JSON �
 
 我们相信这些功能是减少应用程序和数据库之间冲突的关键，并且对于开发人员的工作效率来说是至关重要的。
 
-建议从观看下面的视频开始，在此视频中，Aravind Ramachandran 会演示 Cosmos DB 的查询功能，并且可以首先访问 [Query Playground](http://www.documentdb.com/sql/demo)（查询板块），在其中试用 Cosmos DB 并对我们的数据集运行 SQL 查询。
+建议从观看以下视频开始，其中 Azure Cosmos DB 项目经理 Andrew Liu 展示了 Azure Cosmos DB 的查询功能并演示了在线 [Query Playground](http://www.documentdb.com/sql/demo)（查询板块），可按视频中的演示，在其中试用 Azure Cosmos DB 并对我们的数据集运行 SQL 查询。
 
-> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/DataExposedQueryingDocumentDB/player]
-> 
-> 
+> [!VIDEO https://www.youtube.com/embed/1LqUQRpHfFI]
+>
+>
+
+以下后续视频中演示了更高级的查询技术：
+
+> [!VIDEO https://www.youtube.com/embed/kASU9NOIR90]
+>
+>
 
 然后，返回到本文中，我们将从 SQL 查询教程开始，指导完成一些简单的 JSON 文档和 SQL 命令。
 
@@ -2260,7 +2264,7 @@ Cosmos DB 提供了一种编程模型，使用存储过程和触发器对集合�
 6. JSON [http://json.org/](http://json.org/)
 7. Javascript 规范 [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
-9. 针对大型数据库的查询评估技术 [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
+9. Query evaluation techniques for large databases [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)（针对大型数据库的查询评估技术）
 10. Query Processing in Parallel Relational Database Systems, IEEE Computer Society Press, 1994
 11. Lu, Ooi, Tan, Query Processing in Parallel Relational Database Systems, IEEE Computer Society Press, 1994.
 12. Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: A Not-So-Foreign Language for Data Processing, SIGMOD 2008.

@@ -1,10 +1,11 @@
 ---
-title: "Cortana Intelligence Competition 常见问题解答 | Microsoft Docs"
-description: "有关 Microsoft Cortana Intelligence Competition 的常见问题。"
+title: Cortana Intelligence Competition 常见问题解答 | Microsoft Docs
+description: 有关 Microsoft Cortana Intelligence Competition 的常见问题。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: hning86
-manager: jhubbard
+ms.author: haining
+manager: mwinkle
 editor: cgronlun
 ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: haining;garye
-ms.openlocfilehash: f7c839a8471dc54daebc47d0bb5a450358f5250d
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: db6fb6cd6c500ffe4537b57a968ef3b8792bcad6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence Competition 常见问题
 **什么是 Cortana Intelligence Competition？**
@@ -35,7 +35,7 @@ Microsoft Cortana Intelligence Competitions 要求数据爱好者们共同解决
 
 **如何参赛？**
 
-通过 [Azure AI 库](https://gallery.cortanaintelligence.com/)访问[竞赛](https://gallery.cortanaintelligence.com/competitions)主页，或者转到 [http://aka.ms/CIComp](http://aka.ms/CIComp)。 主页列出了当前正在举行的所有竞赛。 在每项竞赛的注册页面上都有对竞赛的详细说明、参与规则、奖品和竞赛时间。
+访问 [Azure AI 库](https://gallery.cortanaintelligence.com/)中的[“竞赛”](https://gallery.cortanaintelligence.com/competitions)主页，或者转到 [http://aka.ms/CIComp](http://aka.ms/CIComp)。 主页列出了当前正在举行的所有竞赛。 在每项竞赛的注册页面上都有对竞赛的详细说明、参与规则、奖品和竞赛时间。
 
 1. 找到想要参加的竞赛，阅读所有说明并观看教程视频。 然后单击“参加竞赛”按钮，将初始试验复制到现有的 Azure 机器学习工作区。 如果还无权访问工作区，必须提前创建一个工作区。 运行初始试验，观察性能指标，并使用创造力提高模型的性能。 大部分时间都将花费在此步骤中。   
 

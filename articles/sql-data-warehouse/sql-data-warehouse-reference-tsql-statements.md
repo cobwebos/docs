@@ -1,11 +1,11 @@
 ---
-title: "SQL 数据仓库 Transact-SQL 参考 | Microsoft 文档"
-description: "SQL 数据仓库使用的 Transact-SQL 主题参考内容的链接。"
+title: SQL 数据仓库 Transact-SQL 参考 | Microsoft 文档
+description: SQL 数据仓库使用的 Transact-SQL 主题参考内容的链接。
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 0abc5934-1e67-491a-b7d7-8b520d1ae98e
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 10/31/2016
+ms.date: 03/22/2018
 ms.author: kevin;barbkess
-ms.openlocfilehash: d6ad9db8eae0dc35580194f2ffbf02eeab6b70d2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f2148f6087a43f9cec252df4ef2b97b4a7afcb3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="transact-sql-topics"></a>Transact-SQL 主题
 ## <a name="data-definition-language-ddl-statements"></a>数据定义语言 (DDL) 语句
@@ -113,12 +113,12 @@ ms.lasthandoff: 10/11/2017
 * [OPEN MASTER KEY](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>后续步骤
-如需更多 TSQL 示例，请参阅 [SQL 数据仓库参考概述][SQL Data Warehouse reference overview]。
+如需更多 TSQL 参考，请参阅 [SQL 数据仓库 T-SQL 语言元素](sql-data-warehouse-reference-tsql-language-elements.md)。
 
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse reference overview]: sql-data-warehouse-overview-reference.md
+
 
 <!--MSDN references-->
 

@@ -1,11 +1,11 @@
 ---
-title: "如何在 Windows Phone Silverlight 上使用 Engagement API"
-description: "如何在 Windows Phone Silverlight 上使用 Engagement API"
+title: 如何在 Windows Phone Silverlight 上使用 Engagement API
+description: 如何在 Windows Phone Silverlight 上使用 Engagement API
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ae2ba2e8-f75b-4dee-a164-a7dd65d35a23
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ec8b6c13ea052c8063dfde4321cdd286ab6cb817
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 03673924ee7734fcf6f1f4f7c744616844fdc87a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-windows-phone-silverlight"></a>如何在 Windows Phone Silverlight 上使用 Engagement API
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 本文档是文档 [如何在 Windows Phone Silverlight 应用中集成 Mobile Engagement](mobile-engagement-windows-phone-integrate-engagement.md) 的补充内容。 它提供了有关如何使用 Engagement API 来报告应用程序统计信息的全部详细信息。
 
 如果只希望 Engagement 报告应用程序的会话、活动、崩溃和技术信息，则最简单的方法是从 `EngagementPage` 类继承所有 `PhoneApplicationPage` 子类。
@@ -37,7 +41,7 @@ Engagement API 由 `EngagementAgent` 类提供。 可以通过 `EngagementAgent.
 ### <a name="session-and-activity"></a>`Session` 和 `Activity`
 *活动*通常与应用程序的一个页面相关联，即，*活动*在页面显示时开始，并在页面关闭时停止：当使用 `EngagementPage` 类对 Engagement SDK 进行集成时，会出现此情况。
 
-但也可通过使用 Engagement API 手动控制*活动*。 这样就可以在若干子部分中拆分给定的页面，以获取有关该页面使用情况的详细信息（例如，了解对话框在该页面内使用的频率和时长）。
+但也可通过使用 Engagement API 手动控制活动。 这样就可以在若干子部分中拆分给定的页面，以获取有关该页面使用情况的详细信息（例如，了解对话框在该页面内使用的频率和时长）。
 
 ## <a name="reporting-activities"></a>报告活动
 ### <a name="user-starts-a-new-activity"></a>用户启动新活动

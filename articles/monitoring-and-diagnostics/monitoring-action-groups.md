@@ -1,24 +1,24 @@
 ---
-title: "在 Azure 门户中创建和管理操作组 | Microsoft 文档"
-description: "了解如何在 Azure 门户中创建和管理操作组。"
+title: 在 Azure 门户中创建和管理操作组 | Microsoft 文档
+description: 了解如何在 Azure 门户中创建和管理操作组。
 author: dkamstra
 manager: chrad
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 03/12/2018
 ms.author: dukek
-ms.openlocfilehash: 772b9c2b9532bd2cc37ad89db92545297eecd903
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a7f8697b7a92de1c19ceb65fadbcd7e4186e83f7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/21/2018
 操作组可以具有最多 10 种不同的操作类型。 每个操作包含以下属性：
 
 * 名称：操作组中的唯一标识符。  
-* **操作类型**：发送短信、发送电子邮件、调用 Webhook、将数据发送到 ITSM 工具、调用 Azure 应用或运行自动化 runbook。
+* **操作类型**：发送语音呼叫或短信、发送电子邮件、调用 Webhook、将数据发送到 ITSM 工具、调用 Azure 应用或运行自动化 Runbook。
 * **详细信息**：相应电话号码、电子邮件地址、webhook URI 或 ITSM 连接详细信息。
 
 有关如何使用 Azure 资源管理器模板以配置操作组的信息，请参阅[操作组资源管理器模板](monitoring-create-action-group-with-resource-manager-template.md)。
@@ -56,7 +56,7 @@ ms.lasthandoff: 02/21/2018
 
     a. 名称：输入此操作的唯一标识符。
 
-    b. **操作类型**：选择电子邮件/短信/Azure 应用、Webhook、ITSM 或自动化 Runbook。
+    b. **操作类型**：选择电子邮件/短信/推送/语音、Webhook、ITSM 或自动化 Runbook。
 
     c. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。
 

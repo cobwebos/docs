@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/20/2018
 ms.author: raynew
-ms.openlocfilehash: c4fb466443e2f29fb79c3707ce142895f140f9a7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6f2f28b36fdb3751a469d66f242f9fa2119f9ae8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware 和物理服务器到 Azure 的复制支持矩阵
 
@@ -175,7 +175,7 @@ HUB | 是
 操作系统磁盘大小 | 最大 2,048 GB。 | 如果不支持，检查会失败。 
 操作系统磁盘计数 | 1 | 如果不支持，检查会失败。  
 数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。  
-数据磁盘 VHD 大小 | 最大 4,095 GB | 如果不支持，检查会失败。 
+数据磁盘大小 | 最大 4,095 GB | 如果不支持，检查会失败。 
 网络适配器 | 支持多个适配器。 | 
 共享 VHD | 不支持。 | 如果不支持，检查会失败。 
 FC 磁盘 | 不支持。 | 如果不支持，检查会失败。 

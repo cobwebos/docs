@@ -1,25 +1,24 @@
 ---
-title: "使用 Azure 流分析中的“资源运行状况”边栏选项卡 | Microsoft Docs"
-description: "如何在对流分析作业进行故障排除时确定问题。"
-keywords: "故障排除流程图, 资源边栏选项卡"
-documentationcenter: 
+title: 使用 Azure 流分析中的“资源运行状况”边栏选项卡 | Microsoft Docs
+description: 如何在对流分析作业进行故障排除时确定问题。
+keywords: 故障排除流程图, 资源边栏选项卡
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/01/2017
-ms.author: samacha
-ms.openlocfilehash: 554dec5fbbe5c98585f8be58f5d4e8203d788a00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 598f858c22494bc511ef0e2f04f3c3a6baad1ae8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-resource-health-blade"></a>流分析“资源运行状况”边栏选项卡
 

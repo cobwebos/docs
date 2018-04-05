@@ -1,6 +1,6 @@
 ---
-title: "Azure 中 Linux 虚拟机的 DNS 名称解析选项"
-description: "Azure IaaS 中 Linux 虚拟机的名称解析方案，包括提供的 DNS 服务、混合外部 DNS 和自带 DNS 服务器。"
+title: Azure 中 Linux 虚拟机的 DNS 名称解析选项
+description: Azure IaaS 中 Linux 虚拟机的名称解析方案，包括提供的 DNS 服务、混合外部 DNS 和自带 DNS 服务器。
 services: virtual-machines
 documentationcenter: na
 author: RicksterCDN
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: cc06ee9305b4d3034154a0825c1aea53fe446f80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a445de3e1bfbeb2cd2e5674418688d6bb610a3c2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的 DNS 名称解析选项
 Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。 在 Azure 托管的虚拟机上配置自己的 DNS 服务，即可实现自己的 DNS 名称解析解决方案。 以下方案有助于选择适合的解决方案。
@@ -39,7 +39,7 @@ Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。
 | 针对内部 IP 的反向 DNS |[使用自己的 DNS 服务器的名称解析](#name-resolution-using-your-own-dns-server) |不适用 |
 
 ## <a name="name-resolution-that-azure-provides"></a>Azure 提供的名称解析
-除公共 DNS 名称解析之外，Azure 还为同一虚拟网络中的虚拟机和角色实例提供内部名称解析。 在基于 Azure Resource Manager 的虚拟网络中，整个虚拟网络中的 DNS 后缀一致；无需 FQDN。 可以将 DNS 名称分配给网络接口卡 (NIC) 和虚拟机。 虽然 Azure 提供的名称解析不需要任何配置，但并不适合所有部署方案，如上表所示。
+除公共 DNS 名称解析之外，Azure 还为同一虚拟网络中的虚拟机和角色实例提供内部名称解析。 在基于 Azure 资源管理器的虚拟网络中，整个虚拟网络中的 DNS 后缀一致；无需 FQDN。 可以将 DNS 名称分配给网络接口卡 (NIC) 和虚拟机。 虽然 Azure 提供的名称解析不需要任何配置，但并不适合所有部署方案，如上表所示。
 
 ### <a name="features-and-considerations"></a>功能和注意事项
 **功能：**
@@ -112,7 +112,7 @@ SUSE（使用 netconf）
 2. 运行“netconfig update”以更新。
 
 Rogue Wave Software 的 CentOS（之前为 OpenLogic；使用 NetworkManager）
-1. 将“echo "options timeout:1 attempts:5"”添加到“/etc/NetworkManager/dispatcher.d/11-dhclient”。
+1. 将“RES_OPTIONS="timeout:1 attempts:5"”添加到“/etc/sysconfig/network”。
 2. 运行“service network restart”以更新。
 
 ## <a name="name-resolution-using-your-own-dns-server"></a>使用自己的 DNS 服务器的名称解析
@@ -126,7 +126,7 @@ DNS 转发还可以在虚拟网络之间进行 DNS 解析，并使本地计算�
 
 使用 Azure 提供的名称解析时，会通过 DHCP 为每个虚拟机提供内部 DNS 后缀。 使用自己的名称解析解决方案时，不会向虚拟机提供该后缀，因为该后缀会干扰其他 DNS 体系结构。 若要通过 FQDN 来引用计算机或在虚拟机上配置后缀，可以使用 PowerShell 或 API 来确定该后缀：
 
-* 对于 Azure Resource Manager 托管的虚拟网络，可通过[网络接口卡](https://msdn.microsoft.com/library/azure/mt163668.aspx)资源获取该后缀。 也可通过运行 `azure network public-ip show <resource group> <pip name>` 命令显示公共 IP 的详细信息，其中包括 NIC 的 FQDN。
+* 对于 Azure 资源管理器管理的虚拟网络，可通过[网络接口卡](https://msdn.microsoft.com/library/azure/mt163668.aspx)资源获取该后缀。 也可通过运行 `azure network public-ip show <resource group> <pip name>` 命令显示公共 IP 的详细信息，其中包括 NIC 的 FQDN。
 
 如果不想将查询转发到 Azure，则需提供自己的 DNS 解决方案。  DNS 解决方案需要：
 

@@ -1,11 +1,12 @@
 ---
-title: "适用于机器学习的 R 语言快速入门教程 | Microsoft Docs"
-description: "通过此 R 编程教程，快速在 Azure 机器学习工作室中使用 R 语言创建预测解决方案。"
-keywords: "快速入门, r 语言, r 编程语言, r 编程教程"
+title: 适用于机器学习的 R 语言快速入门教程 | Microsoft Docs
+description: 通过此 R 编程教程，快速在 Azure 机器学习工作室中使用 R 语言创建预测解决方案。
+keywords: 快速入门, r 语言, r 编程语言, r 编程教程
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.author: garye
-ms.openlocfilehash: 40cc3728d1361b9304896bf0cc4ceed439291d45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 231d505e91fc036b30344e2fd9971db8ba2fdf05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>适用于 Azure 机器学习的 R 编程语言快速入门教程
 
@@ -96,7 +96,7 @@ Microsoft Azure 机器学习包含许多功能强大的机器学习和数据操�
 
   ![弹出错误消息][2]
 
-*图 2.弹出错误消息*
+*图 2.弹出错误消息.*
 
 看来我们需要打开 output.log 文件查看此 R 错误消息。 单击“执行 R 脚本[execute-r-script]”后，单击右侧的“属性”窗格上的“查看 output.log”。[] 打开了新的浏览器窗口，我看到以下内容。
 
@@ -127,7 +127,7 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
 如果是 RStudio 的新手，应下载并安装桌面版。 可以在 http://www.rstudio.com/products/RStudio/ 处找到适用于 Windows、Mac OS 和 Linux/UNIX 的 RStudio 下载。 按照提供的说明在台式计算机上安装 RStudio。  
 
-RStudio 教程简介可从 https://support.rstudio.com/hc/sections/200107586-Using-RStudio 获取。
+有关 RStudio 的教程介绍，请访问 https://support.rstudio.com/hc/sections/200107586-Using-RStudio。
 
 我在[附录 A] [appendixa]中提供了一些其他有关使用 RStudio 的信息。  
 
@@ -152,7 +152,7 @@ RStudio 教程简介可从 https://support.rstudio.com/hc/sections/200107586-Usi
 
 * 单击左下方的“+ 新建”，并依次选择“实验”和“空白实验”。
 * 可以命名试验，方法是选择和修改页面顶部的“在...创建的试验”标题。 例如，将其改为“CA 乳品分析”。
-* 在试验页面的左侧，展开“保存的数据集”，并选择“我的数据集”。 可看到之前上传的 cadairydata.csv。
+* 在试验页面的左侧，展开“保存的数据集”，并选择“我的数据集”。 可看到之前上传的 **cadairydata.csv**。
 * 将 **csdairydata.csv 数据集**拖放到试验。
 * 在左窗格顶部的“搜索试验项”框中，键入“执行 R 脚本[execute-r-script]”。[] 可以看到模块在搜索列表中显示。
 * 将[执行 R 脚本][execute-r-script]拖放到托盘上。  
@@ -240,7 +240,7 @@ RStudio 教程简介可从 https://support.rstudio.com/hc/sections/200107586-Usi
 
     cadairydata <- maml.mapInputPort(1)
 
-单击“运行”按钮执行试验。 执行完成后，单击“执行 R 脚本[execute-r-script]”模块，并单击“属性”窗格上的“查看 output.log”。[] 浏览器中打开新的页面，其中显示 output.log 文件的内容。 向下滚动页面时会看到类似下面的内容：
+单击**运行**按钮执行试验。 执行完成后，单击“执行 R 脚本[execute-r-script]”模块，并单击“属性”窗格上的“查看 output.log”。[] 浏览器中打开新的页面，其中显示 output.log 文件的内容。 向下滚动页面时会看到类似下面的内容：
 
     [ModuleOutput] InputDataStructure
     [ModuleOutput]
@@ -609,7 +609,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 <!-- Additional information on R time series objects is provided in the references in Section 5.7. [commenting because this section doesn't exist, even in the original] -->
 
 ### <a name="time-series-object-example"></a>时序对象示例
-让我们开始使用示例。 将**新的**[执行 R 脚本][execute-r-script]模块拖放到试验中。 将现有的[执行 R 脚本][execute-r-script]模块的结果 Dataset1 输出端口连接到新的[执行 R 脚本][execute-r-script]模块的 Dataset1 输入端口。
+让我们开始使用示例。 将新的[执行 R 脚本][execute-r-script]模块拖放到试验中。 将现有的[执行 R 脚本][execute-r-script]模块的结果 Dataset1 输出端口连接到新的[执行 R 脚本][execute-r-script]模块的 Dataset1 输入端口。
 
 正如第一个示例中所演示的，在完成示例中的步骤时，在某些时候我只展示每个步骤中 R 代码的附加行。  
 
@@ -886,7 +886,7 @@ R 数据框支持强大的筛选功能。 对行或列使用逻辑筛选器可�
 本节的完整 R 代码在前面下载的 zip 文件中。
 
 ### <a name="creating-the-dataframe-for-analysis"></a>创建用于分析的数据框
-首先将**新的**[执行 R 脚本][execute-r-script]模块添加到试验中。 将现有的[执行 R 脚本][execute-r-script]模块的**结果数据集**输出连接到新的模块的 **Dataset1** 输入。 结果如图 20 所示。
+首先将新的[执行 R 脚本][execute-r-script]模块添加到试验中。 将现有的[执行 R 脚本][execute-r-script]模块的**结果数据集**输出连接到新的模块的 **Dataset1** 输入。 结果如图 20 所示。
 
 ![已添加新执行 R 脚本模块的实验][21]
 
@@ -1213,30 +1213,30 @@ RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向
 
 1. 创建项目
    
-   通过使用 RStudio 可以在项目中组织和管理 R 代码。 使用项目的文档位于 https://support.rstudio.com/hc/articles/200526207-Using-Projects。
+   通过使用 RStudio 可以在项目中组织和管理 R 代码。 使用项目的文档可能位于 https://support.rstudio.com/hc/articles/200526207-Using-Projects 中。
    
    我建议按照文档中的说明进行操作，并为文档中的 R 代码示例创建项目。  
 2. 编辑和执行 R 代码
    
-   RStudio 提供了一个集成环境，用于编辑和执行 R 代码。 文档位于 https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code。
+   RStudio 提供了一个集成环境，用于编辑和执行 R 代码。 文档可能位于 https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code 中。
 3. 调试
    
-   RStudio 具有强大的调试功能。 这些功能的文档位于 https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio。
+   RStudio 具有强大的调试功能。 有关这些功能的文档位于 https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio 中。
    
-   断点故障排除功能的文档位于 https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting。
+   https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting 中记录了断点的故障排除功能。
 
 ## <a id="appendixb"></a>附录 B：深入阅读
 此 R 编程教程介绍了在 Azure 机器学习工作室中使用 R 语言所需的基础知识。 如果不熟悉 R 语言，CRAN 上提供了两个简介：
 
-* 由 Emmanuel Paradis 编写的《R for Beginners》（面向初学者的 R 语言）是一个不错的入门文档，该文档位于 http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf。  
-* 《An Introduction to R》（R 简介）（作者：W. N. Venables et. al.） 的探讨深入了一点，该文档位于 http://cran.r-project.org/doc/manuals/R-intro.html。
+* 可以从 Emmanuel Paradis 的《R for Beginners》（面向初学者的 R 语言）开始，请访问 http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf。  
+* 《An Introduction to R》（R 简介）（作者：W. N. Venables et. al.） 的详细信息，请访问 http://cran.r-project.org/doc/manuals/R-intro.html。
 
 有许多关于 R 的书籍可以帮助你入门。 以下是我发现的一些有用书籍：
 
 * 《Art of R Programming》（R 编程艺术）：作者是 Norman Matloff，这是一本统计软件设计指南，是对 R 编程的一个很不错的介绍。  
 * 《R Cookbook》（R 食谱）：作者是 Paul Teetor，本书介绍了使用 R 时遇到的问题和解决方法。  
 * 《R in Action》（R 实战）：作者是 Robert Kabacoff，这是另一本有用的入门性书籍。 相伴的 Quick R 网站是一个很有用的资源，网址为 http://www.statmethods.net/。
-* 《R Inferno》（R 炼狱）：作者是 Patrick Burns。这是一本非常幽默的书，书中介绍了如何应对 R 编程中可能遇到的许多棘手而困难的问题。本书的免费获取网址为 http://www.burns-stat.com/documents/books/the-r-inferno/。
+* Patrick Burns 的《R Inferno》（R 炼狱）是一本非常幽默的书，书中介绍了如何应对 R 编程中可能遇到的许多棘手而困难的问题。本书的免费获取网址为 http://www.burns-stat.com/documents/books/the-r-inferno/。
 * 《Advanced R》（高级 R）：作者是 Hadley Wickham。如果想要深入了解 R 主题，可以查阅本书。 本书的联机版本的免费获取网址为 http://adv-r.had.co.nz/。
 
 可以在时序分析的 CRAN 任务视图中找到 R 时序包的目录，网址为 http://cran.r-project.org/web/views/TimeSeries.html。 有关特定时序对象包的信息，请参考此包的文档。
@@ -1245,10 +1245,10 @@ RStudio 的文档非常齐全，因此在本附录中，我提供了一些指向
 
 一些非常好的 Internet 资源：
 
-* DataCamp：在浏览器中舒适地观看 DataCamp 的 R 课程的视频和编码练习。 DataCamp 提供了关于最新的 R 技术和包的互动式课程。 可从以下网址获取免费的互动式 R 教程：https://www.datacamp.com/courses/introduction-to-r
-* 有关 R from Programiz 入门的指南：https://www.programiz.com/r-programming
-* Clarkson 大学的 Kelly Black 编写的快速 R 教程，网址为 http://www.cyclismo.org/tutorial/R/
-* 以下网址中列出了 60 多个 R 资源：http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html
+* DataCamp：在浏览器中舒适地观看 DataCamp 的 R 课程的视频和编码练习。 DataCamp 提供了关于最新的 R 技术和包的互动式课程。 获取免费交互式 R 教程，网址为 https://www.datacamp.com/courses/introduction-to-r
+* 有关 R 入门指南，请访问 Programiz https://www.programiz.com/r-programming
+* 有关 Kelly Black 编写的快速 R 教程，请访问 Clarkson 大学 http://www.cyclismo.org/tutorial/R/
+* http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html 中列出了 60 个以上的 R 资源
 
 <!--Image references-->
 [1]: ./media/r-quickstart/fig1.png

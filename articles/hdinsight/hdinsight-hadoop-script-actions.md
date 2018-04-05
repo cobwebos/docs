@@ -1,8 +1,8 @@
 ---
-title: "使用 HDInsight 进行脚本操作开发 — Azure | Microsoft Docs"
-description: "了解如何使用脚本操作自定义 Hadoop 群集。 脚本操作可用于安装运行在 Hadoop 群集上的其他软件，或更改安装在群集上的应用程序的配置。"
+title: 使用 HDInsight 进行脚本操作开发 — Azure | Microsoft Docs
+description: 了解如何使用脚本操作自定义 Hadoop 群集。 脚本操作可用于安装运行在 Hadoop 群集上的其他软件，或更改安装在群集上的应用程序的配置。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: d0e95014f6ebfc4e0286d3a12999c918f831b489
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: ac2a087bb0a9d8cac15dfea2448a9c42cee4a1f4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>为 HDInsight 基于 Windows 的群集开发脚本操作脚本
 了解如何为 HDInsight 编写脚本操作脚本。 有关如何使用脚本操作脚本的信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md)。 有关为基于 Linux 的 HDInsight 群集编写的同一篇文章，请参阅[为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)。
@@ -98,7 +98,7 @@ ms.lasthandoff: 11/28/2017
 
 这些参数在 hive-site.xml 文件中将 hive.metastore.client.socket.timeout 值设置为 90。  默认值为 60 秒。
 
-也可以在 [https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1](https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1) 上找到该示例脚本。
+此示例脚本也可以在 [https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1](https://hditutorialdata.blob.core.windows.net/customizecluster/editSiteConfig.ps1) 中找到。
 
 HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件：
 
@@ -106,8 +106,8 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 | --- | --- |
 | **安装 Spark** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1。 请参阅[在 HDInsight 群集上安装并使用 Spark][hdinsight-install-spark]。 |
 | **安装 R** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1。 请参阅[在 HDInsight 群集上安装并使用 R][hdinsight-r-scripts]。 |
-| **安装 Solr** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1。 请参阅[在 HDInsight 群集上安装并使用 Solr](hdinsight-hadoop-solr-install.md)。 |
-| - **安装 Giraph** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1。 请参阅[在 HDInsight 群集上安装并使用 Giraph](hdinsight-hadoop-giraph-install.md)。 |
+| **安装 Solr** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1。 请参阅 [在 HDInsight 群集上安装并使用 Solr](hdinsight-hadoop-solr-install.md). |
+| - **安装 Giraph** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1。 请参阅 [在 HDInsight 群集上安装并使用 Giraph](hdinsight-hadoop-giraph-install.md). |
 
 脚本操作可以从 Azure 门户、Azure PowerShell 或通过使用 HDInsight .NET SDK 来部署。  有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]。
 
@@ -117,7 +117,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 >
 
 ## <a name="helper-methods-for-custom-scripts"></a>自定义脚本的帮助器方法
-脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法在 [https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1) 中定义，可以使用以下示例将其包括在脚本中：
+脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法在 [https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1) 中进行了定义，并可使用以下示例包括在脚本中：
 
     # Download config action module from a well-known directory.
     $CONFIGACTIONURI = "https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1";
@@ -167,13 +167,13 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 * 提供指向脚本资源的可靠链接
 
     用户应确保自定义群集过程中使用的所有脚本和其他项目在群集的整个生存期内一直可用，并且这些文件的版本在此期间也不会发生更改。 如果需要为群集中的节点重置映像，则需要用到这些资源。 最佳做法是，下载用户控制的存储帐户中的所有内容并将其存档。 这可能是默认存储帐户，也可能是在部署自定义群集时指定的其他任何存储帐户。
-    例如，在文档提供的 Spark 和 R 自定义群集示例中，我们已为此存储帐户中的资源创建了本地副本：https://hdiconfigactions.blob.core.windows.net/。
+    例如，在文档提供的 Spark 和 R 自定义群集示例中，此存储帐户中的资源具有一个本地副本：https://hdiconfigactions.blob.core.windows.net/。
 * 确保群集自定义脚本是幂等的
 
     用户必须预料到在群集生存期内对 HDInsight 群集的节点重置映像。 只要对群集重置映像，就会运行群集自定义脚本。 从某种意义上讲，此脚本必须设计为幂等的，即重置映像时，该脚本应确保将群集恢复为在初次创建群集时首次运行脚本后所处的自定义状态。 例如，如果自定义脚本首次运行时在 D:\AppLocation 上安装了应用程序，则在随后每次运行时，重置映像后，该脚本应检查应用程序是否在 D:\AppLocation 位置存在，然后才能继续在该脚本中执行其他步骤。
 * 在最佳位置安装自定义组件
 
-    在对群集节点重置映像时，可以对 C:\ 资源驱动器和 D:\ 系统驱动器重新格式化，这会导致已安装在这些驱动器上的数据和应用程序丢失。 如果群集中的 Azure 虚拟机 (VM) 节点发生故障，被新节点所取代，则也会发生这种情况。 可以在 D:\ 驱动器上安装组件，也可以在群集上的 C:\apps 位置中进行安装。 C:\ 驱动器上的其他所有位置都将保留。 指定要使用群集自定义脚本将应用程序或库安装到的位置。
+    在对群集节点重置映像时，可以对 C:\ 资源驱动器和 D:\ 系统驱动器重新格式化，这会导致已安装在这些驱动器上的数据和应用程序丢失。 如果群集中的 Azure 虚拟机 (VM) 节点发生故障，被新节点所取代，则也会发生这种丢失。 可以在 D:\ 驱动器上安装组件，也可以在群集上的 C:\apps 位置中进行安装。 C:\ 驱动器上的其他所有位置都将保留。 指定要使用群集自定义脚本将应用程序或库安装到的位置。
 * 确保群集体系结构的高可用性
 
     HDInsight 具有实现高可用性的主-被体系结构，在该结构中，一个头节点处于主动模式（HDInsight 服务正在运行），而另一头节点处于备用模式（HDInsight 服务未在运行）。 如果 HDInsight 服务中断，则节点会在主动和被动模式之间切换。 如果使用脚本操作在两个头节点上安装服务以实现高可用性，请注意，HDInsight 故障转移机制无法对这些用户安装的服务自动执行故障转移。 因此，用户在 HDInsight 头节点上安装的服务如果预期具有高可用性，则必须具有自己的故障转移机制，无论是在主-被模式还是在主-主模式下。
@@ -246,7 +246,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 ## <a name="debug-custom-scripts"></a>调试自定义脚本
 脚本错误日志随同其他输出一起存储在创建群集时为该群集指定的默认存储帐户中。 这些日志存储在名为 *u<\cluster-name-fragment><\time-stamp>setuplog* 的表中。 这些是包含所有节点（头节点和从节点）中的记录的聚合日志，脚本在群集中的这些节点上运行。
 
-若要查看日志，一个简单方法是使用 HDInsight Tools for Visual Studio。 若要安装这些工具，请参阅[开始使用适用于 HDInsight 的 Visual Studio Hadoop 工具](hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-and-upgrade-data-lake-tools-for-visual-studio)
+若要查看日志，一个简单方法是使用 HDInsight Tools for Visual Studio。 若要安装这些工具，请参阅[开始使用适用于 HDInsight 的 Visual Studio Hadoop 工具](hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-or-update-data-lake-tools-for-visual-studio)
 
 **使用 Visual Studio 查看日志**
 

@@ -1,32 +1,32 @@
 ---
-title: "为 Azure 负载均衡器配置高可用性端口 | Microsoft Docs"
-description: "了解如何使用高可用性端口对所有端口上的内部流量进行负载均衡"
+title: 为 Azure 负载均衡器配置高可用性端口 | Microsoft Docs
+description: 了解如何使用高可用性端口对所有端口上的内部流量进行负载均衡
 services: load-balancer
 documentationcenter: na
 author: rdhillon
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/02/2017
+ms.date: 03/21/20178
 ms.author: kumud
-ms.openlocfilehash: 36bc3d7a35f41384706cbc7101457d00848639b2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f7f8e254e0ed0556446e7b08eaf46ec59977f62
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>为内部负载均衡器配置高可用性端口
 
 本文提供了在内部负载均衡器上部署高可用性端口的示例。 若要深入了解有关特定于网络虚拟设备 (NVA) 的配置信息，请参阅相应的提供程序网站。
 
 >[!NOTE]
-> 高可用性端口功能当前处于预览状态。 在预览期，该功能的可用性和可靠性级别可能与正式发布版不同。 有关详细信息，请参阅 [Microsoft Azure 预览版 Microsoft Azure 补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>Azure 负载均衡器支持两种不同的类型：“基本”和“标准”。 本文介绍标准负载均衡器。 有关基本负载均衡器的详细信息，请参阅[负载均衡器概述](load-balancer-overview.md)。
 
 该图演示了本文中所述部署示例的以下配置：
 

@@ -4,8 +4,7 @@ description: 了解如何将 Azure-SSIS 集成运行时加入 Azure 虚拟网络
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 4f1100b7e4fa2250baf282b53ef83c5f1aaa1c0e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: cdda3fbe2aff40e26c6086e87ef3e05670c3419f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 对于以下情况，请将 Azure-SSIS 集成运行时 (IR) 加入 Azure 虚拟网络： 
@@ -52,7 +51,7 @@ ms.lasthandoff: 03/08/2018
 - 如果已有现有的 Azure 资源管理器虚拟网络连接到与 Azure-SSIS IR 所在位置不同的位置中的本地网络，可以先创建 Azure-SSIS IR 要加入到的 [Azure 资源管理器虚拟网络](../virtual-network/quick-create-portal.md##create-a-virtual-network)。 然后，配置 Azure 资源管理器到 Azure 资源管理器虚拟网络连接。 也可以创建 Azure-SSIS IR 要加入到的[经典虚拟网络](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)。 然后，配置[经典到 Azure 资源管理器虚拟网络](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)连接。
 
 ## <a name="domain-name-services-server"></a>域名服务服务器 
-如果需要在 Azure-SSIS 集成运行时加入的虚拟网络中使用自己的域名服务 (DNS) 服务器，请遵循指导以[确保虚拟网络中 Azure-SSIS 集成运行时的节点可以解析 Azure 终结点](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)。
+如需在 Azure-SSIS 集成运行时加入的虚拟网络中使用自己的域名服务 (DNS) 服务器，请遵循[虚拟机和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)一文中“使用自己的 DNS 服务器的名称解析”部分中的说明。
 
 ## <a name="network-security-group"></a>网络安全组
 如果需要在 Azure-SSIS 集成运行时加入的虚拟网络中实现网络安全组 (NSG)，请允许通过以下端口传送入站/出站流量：

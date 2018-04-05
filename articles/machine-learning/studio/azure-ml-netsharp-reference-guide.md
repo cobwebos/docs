@@ -1,11 +1,12 @@
 ---
-title: "Net# 神经网络规范语言指南 - Azure 机器学习 | Microsoft Docs"
-description: "有关 Net# 神经网络规范语言的语法，以及如何使用 Net# 创建自定义神经网络模型的示例"
+title: Net# 神经网络规范语言指南 - Azure 机器学习 | Microsoft Docs
+description: 有关 Net# 神经网络规范语言的语法，以及如何使用 Net# 创建自定义神经网络模型的示例
 services: machine-learning
-documentationcenter: 
-author: jeannt
-manager: cgronlun
-editor: 
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
+editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
 ms.service: machine-learning
 ms.workload: data-services
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.author: jeannt
-ms.openlocfilehash: a166b45e7e482092006ddad276986b6f8b0f378c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 599dc158cde0508aa0836c7028a87ed708ba1d86
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>有关 Azure 机器学习的 Net# 神经网络规范语言的指南
 
@@ -255,7 +255,7 @@ hidden P1 [5, 12, 12]
 
 有关池层的详细信息，请参阅这些文章：  
 
-+ [http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（第 3、4 节）
++ [http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（第 3.4 节）
 + [http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf) 
 + [http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 

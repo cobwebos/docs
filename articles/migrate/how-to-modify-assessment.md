@@ -1,16 +1,16 @@
 ---
-title: "自定义 Azure 迁移评估设置 | Microsoft Docs"
-description: "介绍如何使用 Azure Migration Planner 设置和运行将 VMware VM 迁移到 Azure 的评估"
+title: 自定义 Azure 迁移评估设置 | Microsoft Docs
+description: 介绍如何使用 Azure Migration Planner 设置和运行将 VMware VM 迁移到 Azure 的评估
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: raynew
-ms.openlocfilehash: efb4ad59d25a0c1209e4f0f6cd406c2f0d48159c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 459a29012ec879d4d4989e51b5688b9042adc1a1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="customize-an-assessment"></a>自定义评估
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/27/2018
     **设置** | **详细信息** | **默认**
     --- | --- | ---
     **目标位置** | 要迁移到的 Azure 位置。<br/><br/> Azure Migrate 当前支持 30 个区域，包括澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、印度中部、美国中部、中国东部、中国北部、亚洲东部、美国东部、德国中部、德国东北部、美国东部 2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、欧洲北部、美国中南部、东南亚、印度南部、英国南部、英国西部、美国中西部、西欧、印度西部、美国西部和美国西部 2。 |  美国西部 2 是默认位置。
-    **存储冗余** | Azure VM 要在迁移后使用的存储冗余类型。 | 默认值为[本地冗余存储 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage)。 Azure Migrate 仅支持基于托管磁盘的评估，而托管磁盘仅支持 LRS，因此该属性目前只有 LRS 选项。 
+    **存储冗余** | Azure VM 要在迁移后使用的存储冗余类型。 | 默认值为[本地冗余存储 (LRS)](../storage/common/storage-redundancy-lrs.md)。 Azure Migrate 仅支持基于托管磁盘的评估，而托管磁盘仅支持 LRS，因此该属性目前只有 LRS 选项。 
     **“大小调整”条件** | Azure Migrate 用来对 Azure 的 VM 进行大小调整的条件。 可执行基于性能的大小调整或将 VM 的大小设置为本地大小，而不用考虑性能历史记录。 | 默认选项为基于性能的大小调整。
     **性能历史记录** | 评估 VM 性能时要考虑的时长。 此属性仅在“大小调整”条件为基于性能调整大小时才适用。 | 默认时长为一天。
     **百分位使用率** | 进行适当大小调整时要考虑的性能样本集的百分位值。 此属性仅在“大小调整”条件为基于性能调整大小时才适用。  | 默认值为第 95 个百分位。

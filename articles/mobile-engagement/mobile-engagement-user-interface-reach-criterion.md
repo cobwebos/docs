@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 用户界面 - 市场宣传条件"
-description: "了解如何通过 Azure Mobile Engagement 使用目标条件将推送活动发送到选定的部分用户"
+title: Azure Mobile Engagement 用户界面 - 市场宣传条件
+description: 了解如何通过 Azure Mobile Engagement 使用目标条件将推送活动发送到选定的部分用户
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a4ed03a0-55b1-4dd8-b0bd-c475005afb66
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 803b44721d0ab1ac7b5a8074e18857fc57adb724
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2adf473c6acea0f128eb14e2616748ff29d5d762
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-targeting-criteria-to-send-push-campaigns-to-a-select-subset-of-your-users"></a>如何使用目标条件将推送活动发送到选定的部分用户
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 使用“新条件”按钮，按特定条件确定访问群体是 Azure Mobile Engagement 中最重要的概念之一，可帮助你发送客户将做出响应的相关推送通知，而不是向每个人发送垃圾邮件。 可以基于标准条件限制访问群体，并模拟推送以确定有多少人将接收通知。
 
 **另请参阅：**
@@ -39,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="example"></a>示例：
 如果想将公告仅推送到已执行应用内购买操作的部分用户。
 
-1. 请转到应用程序设置页面，选择“应用信息”菜单，然后选择“新应用信息”
+1. 请转到应用程序设置页面，选择“应用信息”菜单，并选择“新应用信息”
 2. 注册称为“inAppPurchase”的新布尔应用信息
 3. 用户成功地执行应用内购买后（通过使用 sendAppInfo("inAppPurchase", ...) 函数），使应用程序将此应用信息设置为“true”
 4. 如果不想从应用程序中执行此操作，则可以通过使用设备 API 从后端执行此操作

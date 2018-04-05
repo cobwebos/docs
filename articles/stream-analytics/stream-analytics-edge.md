@@ -1,12 +1,12 @@
 ---
-title: "IoT Edge 上的 Azure 流分析（预览版）"
-description: "在 Azure 流分析中创建 Edge 作业，并将其部署到运行 Azure IoT Edge 的设备。"
-keywords: "数据流, iot, edge"
+title: IoT Edge 上的 Azure 流分析（预览版）
+description: 在 Azure 流分析中创建 Edge 作业，并将其部署到运行 Azure IoT Edge 的设备。
+keywords: 数据流, iot, edge
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: jseb225
-manager: jhubbard
-ms.assetid: 
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/16/2017
 ms.author: jeanb
-ms.openlocfilehash: f1ff8d6f64a04ab03c8170fd2b6a7c881227da2e
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 475ca357c8445e8a7c672406f919af1d99a0933b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>IoT Edge 上的 Azure 流分析（预览版）
 
@@ -54,7 +54,7 @@ ASA 使用 IoT 中心将 Edge 作业部署到设备。 [可在此处查看有关
 |      |步骤   | 位置     | 说明   |
 | ---   | ---   | ---       |  ---      |
 | 1   | 创建 ASA 边缘作业   | Azure 门户      |  创建新的作业，选择“Edge”作为“宿主环境”。 <br> 这些作业从云创建/管理，并在你自己的 IoT Edge 设备上运行。     |
-| #N/A   | 创建存储容器   | Azure 门户       | 存储容器用于保存作业定义，IoT 设备可在其中进行访问它们。 <br>  你可以重用任何现有的存储容器。     |
+| 2   | 创建存储容器   | Azure 门户       | 存储容器用于保存作业定义，IoT 设备可在其中进行访问它们。 <br>  你可以重用任何现有的存储容器。     |
 | 3   | 在设备上设置 IoT Edge 环境   | 设备      | [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) 或 [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) 说明。          |
 | 4   | 在 IoT Edge 设备上部署 ASA   | Azure 门户      |  ASA 作业定义被导出到之前创建的存储容器。       |
 你可以按照[本分步教程](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)在 IoT Edge 上部署你的第一个 ASA 作业。 下面的视频可帮助你了解在 IoT Edge 设备上运行流分析作业的过程：  

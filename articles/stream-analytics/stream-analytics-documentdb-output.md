@@ -1,12 +1,11 @@
 ---
-title: "流分析的 JSON 输出 | Microsoft Docs"
-description: "了解流分析如何针对 Azure Cosmos DB 进行 JSON 输出，以实现对非结构化 JSON 数据进行数据存档和低延迟查询。"
-keywords: "JSON 输出"
-documentationcenter: 
+title: 流分析的 JSON 输出 | Microsoft Docs
+description: 了解流分析如何针对 Azure Cosmos DB 进行 JSON 输出，以实现对非结构化 JSON 数据进行数据存档和低延迟查询。
+keywords: JSON 输出
+documentationcenter: ''
 services: stream-analytics,documentdb
 author: jseb225
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: 5d2a61a6-0dbf-4f1b-80af-60a80eb25dd1
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 29be0f5100aabe8374a26e6548effe20ccb9ac86
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8bda2abda6f2b7207a5a7195c24b07da9089fb06
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="target-azure-cosmos-db-for-json-output-from-stream-analytics"></a>从流分析针对 Azure Cosmos DB 进行 JSON 输出
 流分析可以针对 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档介绍有关实现此配置的一些最佳做法。

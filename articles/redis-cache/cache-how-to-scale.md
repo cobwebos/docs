@@ -1,11 +1,11 @@
 ---
-title: "如何缩放 Azure Redis 缓存 | Microsoft Docs"
-description: "了解如何缩放 Azure Redis 缓存实例"
+title: 如何缩放 Azure Redis 缓存 | Microsoft Docs
+description: 了解如何缩放 Azure Redis 缓存实例
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 350db214-3b7c-4877-bd43-fef6df2db96c
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: b0a9208681b164fe7be33bf9ef5f635358284ba3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9ef988ccdcca921c0285bf983125483a38a07678
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>如何缩放 Azure Redis 缓存
 Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。 如果创建缓存后，应用程序的要求发生更改，可以更改缓存的大小和定价层。 本文演示如何使用 Azure 门户以及 Azure PowerShell 和 Azure CLI 等工具来缩放缓存。
@@ -111,6 +111,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 * [在缩放过程中是否会丢失缓存中的数据？](#will-i-lose-data-from-my-cache-during-scaling)
 * [在缩放过程中，自定义数据库设置是否会受影响？](#is-my-custom-databases-setting-affected-during-scaling)
 * [在缩放过程中，缓存是否可用？](#will-my-cache-be-available-during-scaling)
+* [配置异地复制后，为什么我不能在群集中缩放缓存或更改分片？](#scaling-limitations-with-geo-relication)
 * [不支持的操作](#operations-that-are-not-supported)
 * [缩放需要多长时间？](#how-long-does-scaling-take)
 * [如何判断缩放何时完成？](#how-can-i-tell-when-scaling-is-complete)
@@ -119,7 +120,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 * 不能从**高级**缓存向下缩放到**基本**或**标准**定价层。
 * 可以从一个**高级**缓存定价层缩放到另一个高级缓存定价层。
 * 不能从**基本**缓存直接缩放到**高级**缓存。 首先在一个缩放操作中从**基本**缩放到**标准**，然后在后续的缩放操作中从**标准**缩放到**高级**。
-* 如果在创建**高级**缓存时启用了群集，则可以[更改群集大小](cache-how-to-premium-clustering.md#cluster-size)。 如果缓存创建为不启用群集功能，稍后将无法配置群集功能。
+* 如果在创建**高级**缓存时启用了群集，则可以[更改群集大小](cache-how-to-premium-clustering.md#cluster-size)。 如果创建缓存时未启用群集功能，可以稍后进行配置。
   
   有关详细信息，请参阅 [如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
 
@@ -151,6 +152,12 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 * **标准**和**高级**缓存在缩放操作期间保持可用。 但是，缩放标准和高级缓存时，以及从基本缓存缩放到标准缓存时，可能会发生连接故障。 这些连接故障预期为很小的故障，redis 客户端应能立即重新建立连接。
 * **基本**缓存在缩放为不同大小的操作期间处于脱机状态。 基本缓存在从**基本**缩放到**标准**时仍然可用，但可能会出现较小的连接故障。 如果发生连接故障，redis 客户端应能立即重新建立连接。
 
+
+### <a name="scaling-limitations-with-geo-relication"></a>异地复制的缩放限制
+
+向两个缓存之间添加异地复制链接后，便无法在群集中启动缩放操作或更改分片数。 若要发布这些命令，必须取消链接缓存。 有关详细信息，请参阅[配置异地复制](cache-how-to-geo-replication.md)。
+
+
 ### <a name="operations-that-are-not-supported"></a>不支持的操作
 * 不能从较高的定价层缩放到较低的定价层。
   * 不能从**高级**缓存向下缩放到**标准**或**基本**缓存。
@@ -160,6 +167,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 * 不能从较大的大小减小为 **C0 (250 MB)**。
 
 如果缩放操作失败，该服务将尝试还原操作并且缓存将还原为原始大小。
+
 
 ### <a name="how-long-does-scaling-take"></a>缩放需要多长时间？
 缩放大约需要 20 分钟，具体取决于缓存中的数据量。

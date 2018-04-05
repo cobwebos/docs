@@ -1,11 +1,11 @@
 ---
-title: "限制和配置 - Azure 逻辑应用 | Microsoft Docs"
-description: "Azure 逻辑应用的服务限制和配置值"
+title: 限制和配置 - Azure 逻辑应用 | Microsoft Docs
+description: Azure 逻辑应用的服务限制和配置值
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 54a35607e107a09188373cc5f71bb3068b4c6bab
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 740a31f4b5e0ffe9fe2ae04d3dac51cf25ab3055
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>逻辑应用限制和配置
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 03/05/2018
 
 | 名称 | 限制 | 说明 | 
 | ----- | ----- | ----- | 
-| 每 5 分钟执行的操作数 | 100,000 | 若要将限制增加到 300,000，可以在 `High Througput` 模式下运行逻辑应用。 若要配置高吞吐量模式，请在工作流资源的 `runtimeConfiguration` 下，将 `operationOptions` 属性设置为 `OptimizedForHighThroughput`。 <p>**请注意**：高吞吐量模式处于预览状态。 另外，还可以根据需要在多个应用之间分配工作负荷。 | 
+| 每 5 分钟执行的操作数 | 100,000 | 若要将限制增加到 300,000，可以在 `High Throughput` 模式下运行逻辑应用。 若要配置高吞吐量模式，请在工作流资源的 `runtimeConfiguration` 下，将 `operationOptions` 属性设置为 `OptimizedForHighThroughput`。 <p>**请注意**：高吞吐量模式处于预览状态。 另外，还可以根据需要在多个应用之间分配工作负荷。 | 
 | 操作并发传出调用数 | ~2,500 | 减少并发请求数，或根据需要减少持续时间。 | 
 | 运行时终结点：并发传入调用数 |~1,000 | 减少并发请求数，或根据需要减少持续时间。 | 
 | 运行时终结点：每 5 分钟读取的调用数  | 60,000 | 可以根据需要在多个应用之间分配工作负荷。 | 

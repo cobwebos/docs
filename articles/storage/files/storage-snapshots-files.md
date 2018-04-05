@@ -1,6 +1,6 @@
 ---
-title: "Azure 文件的共享快照（预览版）概述 | Microsoft Docs"
-description: "作为备份共享的一种方式，共享快照是某个时间点拍摄的 Azure 文件共享的只读版本。"
+title: Azure 文件的共享快照（预览版）概述 | Microsoft Docs
+description: 作为备份共享的一种方式，共享快照是某个时间点拍摄的 Azure 文件共享的只读版本。
 services: storage
 documentationcenter: .net
 author: RenaShahMSFT
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: c309804f33fc0e5b2091e18dfe5fe3c9849a2709
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 671e3737a620d85c732a091d5a62f35f35c1d515
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="overview-of-share-snapshots-for-azure-files-preview"></a>Azure 文件的共享快照（预览版）概述
-Azure 文件提供了获取文件共享的共享快照的功能。 共享快照（预览版）可以捕获在某个时间点的共享状态。 本文介绍共享快照提供的功能，以及如何在自定义用例中加以利用。
+# <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 文件的共享快照概述 
+Azure 文件提供了获取文件共享的共享快照的功能。 共享快照可以捕获在某个时间点的共享状态。 本文介绍共享快照提供的功能，以及如何在自定义用例中加以利用。
 
 
 ## <a name="when-to-use-share-snapshots"></a>何时使用共享快照
@@ -48,7 +48,7 @@ Azure 文件提供了获取文件共享的共享快照的功能。 共享快照�
 
 共享快照功能是在文件共享级别提供的。 检索是在单个文件级别提供的，可用于还原单个文件。 可以使用 SMB、REST API、门户、客户端库或 PowerShell/CLI 工具还原整个文件共享。
 
-文件共享的共享快照与其基本文件共享相同。 唯一的差别在于，共享 URI 的后面追加了一个 **DateTime** 值，用于指示共享快照的创建时间。 例如，如果文件共享 URI 为 http://storagesample.core.file.windows.net/myshare，则共享快照 URI 类似于：
+文件共享的共享快照与其基本文件共享相同。 唯一的差别在于，共享 URI 的后面追加了一个 **DateTime** 值，用于指示共享快照的创建时间。 例如，如果文件共享 URI 为 http://storagesample.core.file.windows.net/myshare，则共享快照 URI 将类似于：
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -98,5 +98,5 @@ Azure 文件目前允许的共享快照的上限是 200 个。 在 200 个共享
 
 ## <a name="next-steps"></a>后续步骤
 * [使用共享快照](storage-how-to-use-files-snapshots.md)
-* [共享快照常见问题解答](storage-files-faq.md)
+* [共享快照常见问题解答](storage-files-faq.md#share-snapshots)
 

@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/06/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: f53a8641a50a6c968a6ba7b841e0e8f938b5d9f6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 830f9c76d9d1bf11692fa9f2f5c49cbecdb69f25
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 保护文件服务器 
 
@@ -48,7 +48,7 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 
     * 如果 VM 包含不受 Site Recovery 支持的配置，可以使用此方法。 经常在文件服务器环境中使用的共享群集磁盘就是这样一个例子。 DFSR 也很适合在变动率中等的低带宽环境中工作。 还需要考虑到一直保持运行某个 Azure VM 所产生的附加成本。 
 
-* **使用 Azure 文件同步服务复制文件**：如果打算使用云，或者已在使用 Azure VM，则可以使用文件同步。文件服务可同步云中完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB) 协议进行访问。 然后，Azure 文件共享可由云或者 Windows、Linux 和 macOS 的本地部署同时装载。 
+* **使用 Azure 文件同步服务复制文件**：如果打算使用云，或者已在使用 Azure VM，则可以使用 Azure 文件同步。Azure 文件同步可同步云中完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB) 协议进行访问。 然后，Azure 文件共享可由云或者 Windows、Linux 和 macOS 的本地部署同时装载。 
 
 下图可帮助你决定要对文件服务器环境使用哪种策略。
 

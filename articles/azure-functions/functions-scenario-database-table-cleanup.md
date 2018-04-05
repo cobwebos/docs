@@ -1,12 +1,12 @@
 ---
-title: "使用 Azure Functions 执行数据库清理任务 | Microsoft Docs"
-description: "使用 Azure Functions 计划连接到 Azure SQL 数据库的任务，以定期清理行。"
+title: 使用 Azure Functions 执行数据库清理任务 | Microsoft Docs
+description: 使用 Azure Functions 计划连接到 Azure SQL 数据库的任务，以定期清理行。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: functions
 ms.devlang: multiple
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: 9d8261a22f5ea9ce61bcdc79d24a6c054597039b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 2947fc6da0c4559e81cf97255b8375b020e0b657
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
-本主题介绍了如何使用 Azure Functions 创建计划作业，以清理 Azure SQL 数据库中的表的行。 根据 Azure 门户中预定义的计时器触发器模板新建 C# 函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 该方案使用针对数据库的大容量操作。 
+本主题介绍了如何使用 Azure Functions 创建计划作业，以清理 Azure SQL 数据库中的表的行。 根据 Azure 门户中预定义的计时器触发器模板新建 C# 脚本函数。 若要支持这种情况，还必须设置数据库连接字符串，使其成为函数应用中的应用设置。 该方案使用针对数据库的大容量操作。 
 
 若要让函数处理移动应用表中的单个创建、读取、更新和删除 (CRUD) 操作，应改为使用[移动应用绑定](functions-bindings-mobile-apps.md)。
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/30/2017
  
 3. 选择左侧菜单中的“SQL 数据库”，然后在“SQL 数据库”页面上选择数据库。
 
-4. 选择“显示数据库连接字符串”，并复制完整的 ADO.NET 连接字符串。
+4. 选择“显示数据库连接字符串”，并复制完整的 ADO.NET 连接字符串。 
 
     ![复制 ADO.NET 连接字符串。](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
@@ -64,20 +64,22 @@ Function App 在 Azure 中托管函数的执行。 它是在 Function App 设置
     | **值** | 复制的字符串  | 粘贴在上一部分复制的连接字符串，并将 `{your_username}` 和 `{your_password}` 占位符替换为实际值。 |
     | **类型** | SQL 数据库 | 使用默认的 SQL 数据库连接。 |   
 
-3. 单击“保存” 。
+3. 单击“ **保存**”。
 
 现在，可以添加连接到 SQL 数据库的 C# 函数代码。
 
 ## <a name="update-your-function-code"></a>更新函数代码
 
-1. 在函数应用中，选择由计时器触发的函数。
+1. 在门户中的函数应用中，选择由计时器触发的函数。
  
-3. 在现有函数代码的顶部添加以下程序集引用：
+3. 在现有 C# 脚本函数代码的顶部添加以下程序集引用：
 
     ```cs
     #r "System.Configuration"
     #r "System.Data"
     ```
+    >[!NOTE]
+    >这些示例中的代码是门户中的 C# 脚本。 本地开发预编译的 C# 函数时，必须改为在本地项目中添加对这些程序集的引用。  
 
 3. 向函数添加以下 `using` 语句：
     ```cs

@@ -1,11 +1,11 @@
 ---
-title: "开始使用 blob 存储和 Visual Studio 连接服务 (ASP.NET Core) | Microsoft Docs"
-description: "在使用 Visual Studio 连接服务创建存储帐户后，如何开始在 Visual Studio ASP.NET Core 项目中使用 Azure Blob 存储"
+title: 开始使用 blob 存储和 Visual Studio 连接服务 (ASP.NET Core) | Microsoft Docs
+description: 在使用 Visual Studio 连接服务创建存储帐户后，如何开始在 Visual Studio ASP.NET Core 项目中使用 Azure Blob 存储
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: kraigb
 manager: ghogen
-editor: 
+editor: ''
 ms.assetid: 094b596a-c92c-40c4-a0f5-86407ae79672
 ms.service: storage
 ms.workload: web
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: kraigb
-ms.openlocfilehash: afd73bd0fd041a53fbe31aa3a5c23b3e27d7a9ec
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: e3814533b955d5b6444692a7b565219d28002262
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET Core)
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/28/2017
 
 Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可在世界任何地方通过 HTTP 或 HTTPS 访问这些数据。 单个 Blob 可以是任意大小。 Blob 可以是图像、音频和视频文件、原始数据以及文档文件等。 本文介绍通过使用 Visual Studio 中的“连接服务”在 ASP.NET Core 项目中创建 Azure 存储帐户之后，如何开始使用 blob 存储。
 
-正如文件位于文件夹中一样，存储 Blob 位于容器中。 创建 blob 后，可以在此 blob 中创建一个或多个容器。 例如，在名为“Scrapbook”的 blob 中，可以创建名为“images”的容器，用于存储图片，以及另一个名为“audio”的容器，用于存储音频文件。 创建这些容器后，即可将各个文件上传到其中。 有关以编程方式操作 Blob 的详细信息，请参阅 [Get started with Azure Blob storage using .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)（通过 .NET 开始使用 Azure Blob 存储）。
+正如文件位于文件夹中一样，存储 Blob 位于容器中。 创建 blob 后，可以在此 blob 中创建一个或多个容器。 例如，在名为“Scrapbook”的 blob 中，可以创建名为“images”的容器，用于存储图片，以及另一个名为“audio”的容器，用于存储音频文件。 创建这些容器后，即可将各个文件上传到其中。 有关以编程方式操作 Blob 的详细信息，请参阅[快速入门：使用 .NET 上传、下载和列出 Blob](../storage/blobs/storage-quickstart-blobs-dotnet.md)。
 
 某些 Azure 存储 API 为异步，而本文中的代码假定正在使用异步方法。 有关详细信息，请参阅[异步编程](https://docs.microsoft.com/dotnet/csharp/async)。
 
@@ -141,7 +141,7 @@ do
 } while (token != null);
 ```
 
-有关列出 blob 容器内容的其他方法，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md#list-the-blobs-in-a-container)。
+有关列出 Blob 容器内容的其他方法，请参阅[快速入门：使用 .NET 上传、下载和列出 Blob](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container)。
 
 ## <a name="download-a-blob"></a>下载 Blob
 
@@ -158,7 +158,7 @@ using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
 }
 ```
 
-有关将 blob 另存为文件的其他方法，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)。
+有关将 Blob 另存为文件的其他方法，请参阅[快速入门：使用 .NET 上传、下载和列出 Blob](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs)。
 
 ## <a name="delete-a-blob"></a>删除 Blob
 

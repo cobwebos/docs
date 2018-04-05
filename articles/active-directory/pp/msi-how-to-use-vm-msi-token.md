@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 68454d3f3880df82ca895d1c5f140ebdb6030e77
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6c6422bc2b13c0c40e48dabf0470c821b13e7851
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="acquire-an-access-token-for-a-vm-user-assigned-managed-service-identity-msi"></a>为 VM 用户分配的托管服务标识 (MSI) 获取访问令牌
 
@@ -42,7 +42,9 @@ ms.lasthandoff: 03/16/2018
 | [使用 CURL 获取令牌](#get-a-token-using-curl) | 从 Bash/CURL 客户端使用 MSI REST 终结点的示例 |
 | [处理令牌过期](#handling-token-expiration) | 有关处理过期访问令牌的指导 |
 | [错误处理](#error-handling) | 有关处理从 MSI 令牌终结点返回的 HTTP 错误的指导 |
+| [限制指南](#throttling-guidance) | 处理 MSI 令牌终结点限制的指南 |
 | [Azure 服务的资源 ID](#resource-ids-for-azure-services) | 在何处获取受支持 Azure 服务的资源 ID |
+
 
 ## <a name="get-a-token-using-http"></a>使用 HTTP 获取令牌 
 
@@ -164,6 +166,16 @@ MSI 终结点通过 HTTP 响应消息标头的状态代码字段，以 4xx 或 5
 |           | unsupported_response_type | 授权服务器不支持使用此方法获取访问令牌。 |  |
 |           | invalid_scope | 请求的范围无效、未知或格式不正确。 |  |
 | 500 内部服务器错误 | 未知 | 无法从 Active Directory 检索令牌。 有关详细信息，请参阅 \<文件路径\> 中的日志 | 检查是否已在 VM 上启用 MSI。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户配置 VM 托管服务标识 (MSI)](msi-qs-configure-portal-windows-vm.md)。<br><br>另请检查是否已正确设置 HTTP GET 请求 URI 的格式，尤其是查询字符串中指定的资源 URI。 有关示例，请参阅[使用 HTTP 获取令牌](#get-a-token-using-http)中的“示例请求”；有关服务的列表及其相应资源 ID，请参阅[支持 Azure AD 身份验证的 Azure 服务](msi-overview.md#azure-services-that-support-azure-ad-authentication)。
+
+## <a name="throttling-guidance"></a>限制指南 
+
+限制适用于对 MSI IMDS 终结点所做的调用次数。 当超出限制阈值时，MSI IMDS 终结点在限制有效时限制任何后续请求。 在此期间，MSI IMDS 终结点将返回 HTTP 状态码 429（“请求过多”），并且请求失败。 
+
+若要重试，建议使用以下策略： 
+
+| **重试策略** | **设置** | **值** | **工作原理** |
+| --- | --- | --- | --- |
+|ExponentialBackoff |重试计数<br />最小回退<br />最大回退<br />增量回退<br />首次快速重试 |5<br />0 秒<br />60 秒<br />2 秒<br />false |第 1 次尝试 - 延迟 0 秒<br />第 2 次尝试 - 约延迟 2 秒<br />第 3 次尝试 - 约延迟 6 秒<br />第 4 次尝试 - 约延迟 14 秒<br />第 5 次尝试 - 约延迟 30 秒 |
 
 ## <a name="resource-ids-for-azure-services"></a>Azure 服务的资源 ID
 

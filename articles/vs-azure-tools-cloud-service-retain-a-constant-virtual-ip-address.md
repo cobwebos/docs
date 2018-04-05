@@ -1,11 +1,11 @@
 ---
-title: "如何为 Azure 云服务保留固定的虚拟 IP 地址 | Microsoft Docs"
-description: "了解如何确保 Azure 云服务的虚拟 IP 地址 (VIP) 不更改。"
+title: 如何为 Azure 云服务保留固定的虚拟 IP 地址 | Microsoft Docs
+description: 了解如何确保 Azure 云服务的虚拟 IP 地址 (VIP) 不更改。
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 4a58e2c6-7a79-4051-8a2c-99182ff8b881
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/21/2017
-ms.author: kraigb
-ms.openlocfilehash: 96c4ed88db5e24f439825aee5afe457a1e8c81d7
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.author: ghogen
+ms.openlocfilehash: 6d81e68552b023f2c30e4fc4616d6fa52831c451
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="retain-a-constant-virtual-ip-address-for-an-azure-cloud-service"></a>为 Azure 云服务保留固定的虚拟 IP 地址
 更新托管于 Azure 中的云服务时，可能需要确保该服务的虚拟 IP 地址 (VIP) 不发生更改。 许多域管理服务使用域名系统 (DNS) 注册域名。 仅当 VIP 保持不变时，DNS 才适用。 可使用 Azure Tools 中的**发布向导**来确保云服务的 VIP 在更新时不更改。 有关如何将 DNS 域管理用于云服务的详细信息，请参阅[为 Azure 云服务配置自定义域名](cloud-services/cloud-services-custom-domain-name-portal.md)。
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/16/2017
 
     ![发布 Azure 应用程序“部署设置”页](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-deployment-update-settings.png)
 
-7. 在“发布 Azure 应用程序”对话框中，选择“下一步”，直到显示“摘要”页。 验证设置，然后选择“发布”。
+7. 在“发布 Azure 应用程序”对话框中，选择“下一步”，直到显示“摘要”页。 验证设置，并选择“发布”。
    
     ![发布 Azure 应用程序“摘要”页](./media/vs-azure-tools-cloud-service-retain-a-constant-virtual-ip-address/azure-publish-summary.png)
 

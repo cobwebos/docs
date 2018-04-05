@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement iOS SDK Reach 集成 | Microsoft Docs"
-description: "Azure Mobile Engagement 的 iOS SDK 的最新更新和过程"
+title: Azure Mobile Engagement iOS SDK Reach 集成 | Microsoft Docs
+description: Azure Mobile Engagement 的 iOS SDK 的最新更新和过程
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1f5f5857-867c-40c5-9d76-675a343a0296
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-ms.openlocfilehash: ba74e0c442ac10f096d465f989e03d2ceae8cd88
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d531f5850e8f7f352774f5894285402bd4cc53e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-reach-on-ios"></a>如何在 iOS 上集成 Engagement Reach
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 在遵循本指南操作之前，必须先按照[如何在 iOS 上集成 Engagement 文档](mobile-engagement-ios-integrate-engagement.md)中所述的集成步骤操作。
 
 本文档要求使用 XCode 8。 如果确实需要使用 XCode 7，则可以使用 [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh)。 此早期版本在 iOS 10 设备上运行时存在一个已知 bug：无法操作系统通知。 要修复此问题，必须在应用委派中实现弃用的 API `application:didReceiveRemoteNotification:`，如下所示：
@@ -258,7 +262,7 @@ SDK 使用 `UNUserNotificationCenter` 委托来监视运行 iOS 10 或更高版�
 
 默认情况下，应用内通知出现在屏幕底部。 如果想要将它们显示在屏幕的顶部，请编辑所提供的 `AENotificationView.xib` 并更改主视图的 `AutoSizing` 属性，这样通知便可以位于其超视图的顶部了。
 
-#### <a name="categories"></a>Categories
+#### <a name="categories"></a>类别
 当修改提供的布局时，也会修改所有通知的外观。 类别允许定义通知的各种目标外观（可能是行为）。 创建市场宣传活动时可以指定类别。 请记住，使用类别还可以自定义公告和投票，本文档稍后会介绍这部分内容。
 
 若要注册通知类别处理程序，需要在市场宣传模块初始化后添加调用。

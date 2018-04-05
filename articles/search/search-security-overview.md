@@ -1,24 +1,24 @@
 ---
-title: "在 Azure 搜索中保护数据和操作 | Microsoft Docs"
-description: "Azure 搜索安全性基于 Azure 搜索筛选器中通过用户和组安全标识符进行的 SOC 2 合规、加密、身份验证和标识访问。"
+title: 在 Azure 搜索中保护数据和操作 | Microsoft Docs
+description: Azure 搜索安全性基于 Azure 搜索筛选器中通过用户和组安全标识符进行的 SOC 2 合规、加密、身份验证和标识访问。
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: HeidiSteen
 manager: cgronlun
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: search
-ms.devlang: 
+ms.devlang: ''
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/19/2018
 ms.author: heidist
-ms.openlocfilehash: c3aa4883e33b1f3494f8502fe7f8b12f7d64a72f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 35f875e5f6345b9ebb9abc4deb71b7bf9c78907d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="security-and-controlled-access-in-azure-search"></a>Azure 搜索中的安全性和受控访问权限
 
@@ -57,29 +57,16 @@ Microsoft 数据中心提供行业领先的物理安全性，符合广泛的标�
 
 ## <a name="service-access-and-authentication"></a>服务访问和身份验证
 
-虽然 Azure 搜索继承了 Azure 平台的安全保护，但它还提供其自己的基于密钥的身份验证。 密钥的类型（管理员或查询）确定访问的级别。 提交有效密钥被视为请求源自受信任实体的证明。 
+虽然 Azure 搜索继承了 Azure 平台的安全保护，但它还提供其自己的基于密钥的身份验证。 API 密钥是随机生成的数字和字母所组成的字符串。 密钥的类型（管理员或查询）确定访问的级别。 提交有效密钥被视为请求源自受信任实体的证明。 两种类型的密钥用于访问搜索服务：
 
-需要对每个请求进行身份验证，而每个请求由必需密钥、操作和对象组成。 链接在一起后，两个权限级别（完全或只读）加上上下文便足以针对服务操作提供全面的安全性。 
+* 管理员（适用于服务的任何读写操作）
+* 查询（适用于只读操作，例如针对索引的查询）
 
-|密钥|说明|限制|  
-|---------|-----------------|------------|  
-|管理员|授予所有操作的完全控制权限，包括管理服务以及创建和删除索引、索引器与数据源的能力。<br /><br /> 创建服务时，会在门户中生成两个管理 **api-keys**（称为主密钥和辅助密钥），可按需单独重新生成其中的每个密钥。 由于有两个密钥，可以在滚动其中一个密钥时，使用另一个密钥来持续访问服务。<br /><br /> 只能在 HTTP 请求标头中指定管理密钥。 不能在 URL 中放置管理 API 密钥。|每个服务最多有 2 个密钥|  
-|查询|授予对索引和文档的只读访问权限，通常分发给发出搜索请求的客户端应用程序。<br /><br /> 按需创建查询密钥。 可以在门户中手动创建查询密钥，或者通过[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) 以编程方式创建查询密钥。<br /><br /> 可以在 HTTP 请求标头中为搜索、建议或查找操作指定查询密钥。 或者，可以在 URL 中以参数形式传递查询密钥。 根据客户端应用程序编写请求的方式，以查询参数的形式传递密钥可能更方便：<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01&api-key=A8DA81E03F809FE166ADDB183E9ED84D`|每个服务 50 个密钥|  
+预配服务时，会创建管理密钥。 有两个管理密钥，分别指定为*主要*和*辅助*密钥以将它们保持在各自的位置，但事实上是可互换的。 每个服务都有两个管理密钥，以便在转换其中一个时不会丢失服务的访问权限。 可以重新生成任一管理密钥，但无法添加到管理密钥总计数。 每个搜索服务最多有两个管理密钥。
 
- 在表面上，管理密钥与查询密钥之间没有区别。 这两个密钥都是由 32 个随机生成的字母数字字符组成的字符串。 如果无法跟踪应用程序中指定了哪种类型的密钥，可以[在门户中检查密钥值](https://portal.azure.com)，或使用 [REST API](https://docs.microsoft.com/rest/api/searchmanagement/) 返回值和密钥类型。  
+查询密钥是根据需要创建的，专用于直接调用搜索的客户端应用程序。 最多可以创建 50 个查询密钥。 在应用程序代码中，可以指定搜索 URL 和查询 API 密钥，以允许对服务的只读访问。 应用程序代码还会指定应用程序使用的索引。 终结点、仅供只读访问的 API 密钥以及目标索引共同定义客户端应用程序连接的作用域和访问级别。
 
-> [!NOTE]  
->  在请求 URI 中传递敏感数据（例如 `api-key`）被认为是不良的安全做法。 为此，Azure 搜索只接受查询字符串中 `api-key` 形式的查询密钥。除非必须公开索引的内容，否则应避免这样做。 作为经验法则，我们建议以请求标头的形式传递 `api-key`。  
-
-### <a name="how-to-find-the-access-keys-for-your-service"></a>如何查找服务的访问密钥
-
-可以在门户中或通过[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) 获取访问密钥。 有关详细信息，请参阅[管理密钥](search-manage.md#manage-api-keys)。
-
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 列出订阅的[搜索服务](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
-3. 在服务页上选择服务，找到“设置” >“密钥”即可查看管理密钥和查询密钥。
-
-![门户页上的“设置”>“密钥”部分](media/search-security-overview/settings-keys.png)
+需要对每个请求进行身份验证，而每个请求由必需密钥、操作和对象组成。 链接在一起后，两个权限级别（完全或只读）加上上下文（例如，索引上的查询操作）便足以针对服务操作提供全面的安全性。 有关密钥的详细信息，请参阅[创建和管理 API 密钥](search-security-api-keys.md)。
 
 ## <a name="index-access"></a>索引访问
 
@@ -123,7 +110,7 @@ Azure 搜索管理 REST API 是 Azure 资源管理器的扩展并共享其依赖
 | 查询索引 | 管理密钥或查询密钥（RBAC 不适用） |
 | 查询系统信息，例如返回统计信息、计数和对象列表。 | 管理密钥，资源的 RBAC（所有者、参与者、读取者） |
 | 管理管理密钥 | 管理密钥，资源中的 RBAC 所有者或参与者。 |
-| 管理查询密钥 |  管理密钥，资源中的 RBAC 所有者或参与者。 RBAC 读取者可以查看查询密钥。 |
+| 管理查询密钥 |  管理密钥，资源中的 RBAC 所有者或参与者。  |
 
 
 ## <a name="see-also"></a>另请参阅

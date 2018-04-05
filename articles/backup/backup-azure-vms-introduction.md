@@ -1,31 +1,31 @@
 ---
-title: "在 Azure 中规划 VM 备份基础结构 | Microsoft Docs"
-description: "规划在 Azure 中备份虚拟机时的重要注意事项"
+title: 在 Azure 中规划 VM 备份基础结构 | Microsoft Docs
+description: 规划在 Azure 中备份虚拟机时的重要注意事项
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "备份 vm, 备份虚拟机"
+editor: ''
+keywords: 备份 vm, 备份虚拟机
 ms.assetid: 19d2cf82-1f60-43e1-b089-9238042887a9
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/18/2017
+ms.date: 3/23/2018
 ms.author: markgal;trinadhk
-ms.openlocfilehash: 66b64c803dfea6a1e4c7795d10e4b4ba064f1cf7
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 47d5da880f47831274fe05817ac9c488464d3096
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>在 Azure 中计划 VM 备份基础结构
 本文提供性能和资源建议，帮助规划 VM 备份基础结构。 文中还定义了备份服务的主要方面；这些方面对于决定体系结构、容量规划和计划安排至关重要。 如果已[准备好环境](backup-azure-arm-vms-prepare.md)，请首先进行此规划，再开始[备份 VM](backup-azure-arm-vms.md)。 如需有关 Azure 虚拟机的详细信息，请参阅[虚拟机文档](https://azure.microsoft.com/documentation/services/virtual-machines/)。
 
 ## <a name="how-does-azure-back-up-virtual-machines"></a>Azure 虚拟机备份原理
-当 Azure 备份服务在计划的时间启动备份作业时，它将触发进行时间点快照拍摄所需的备份扩展。 Azure 备份服务在 Windows 中使用 _VMSnapshot_ 扩展，在 Linux 中使用 _VMSnapshotLinux_ 扩展。 在第一个 VM 备份期间安装扩展。 若要安装扩展，VM 必须处于运行状态。 如果 VM 未运行，备份服务将创建基础存储的快照（因为在 VM 停止时不会发生任何应用程序写入）。
+当 Azure 备份服务在计划的时间启动备份作业时，该服务会触发进行时间点快照拍摄所需的备份扩展。 Azure 备份服务在 Windows 中使用 _VMSnapshot_ 扩展，在 Linux 中使用 _VMSnapshotLinux_ 扩展。 在第一个 VM 备份期间安装扩展。 若要安装扩展，VM 必须处于运行状态。 如果 VM 未运行，备份服务将创建基础存储的快照（因为在 VM 停止时不会发生任何应用程序写入）。
 
 创建 Windows VM 快照时，备份服务与卷影复制服务 (VSS) 互相配合，来获取虚拟机磁盘的一致性快照。 如果要备份 Linux VM，可以编写自定义脚本来确保创建 VM 快照时的一致性。 本文的后面部分将提供有关调用这些脚本的详细信息。
 
@@ -37,8 +37,8 @@ Azure 备份服务创建快照后，数据将传输到保管库。 为最大限�
 
 > [!NOTE]
 > 1. 在备份过程中，Azure 备份不包括附加到虚拟机的临时磁盘。 有关详细信息，请参阅[临时存储](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)博客。
-> 2. 由于 Azure 备份创建存储级快照，并将该快照传输到保管库，因此在备份作业完成前，不要更改存储帐户密钥。
-> 3. 对于高级 VM，我们将快照复制到存储帐户。 这是为了确保 Azure 备份服务获得足够的 IOPS 将数据传输到保管库。 根据 VM 分配的大小，对此额外的存储副本收费。 
+> 2. Azure 备份创建存储级快照，并将该快照传输到保管库，因此在备份作业完成前，请勿更改存储帐户密钥。
+> 3. 对于高级 VM，Azure 备份会将快照复制到存储帐户。 这是为了确保 Azure 备份服务使用足够的 IOPS 将数据传输到保管库。 根据 VM 分配的大小，对此额外的存储副本收费。 
 >
 
 ### <a name="data-consistency"></a>数据一致性
@@ -64,7 +64,7 @@ Azure 备份提供脚本框架。 若要确保备份 Linux VM 时的应用程序
 | --- | --- | --- |
 | 应用程序一致性 |是（对于 Windows）|应用程序一致性非常适合工作负荷，因为它可确保：<ol><li> VM *启动*。 <li>无数据损坏。 <li>无数据丢失。<li> 对于使用数据的应用程序，数据将保持一致，因为备份时会使用 VSS 或前/后脚本将应用程序纳入考虑。</ol> <li>*Windows VM* - 大多数 Microsoft 工作负荷都有 VSS 写入器，负责执行与数据一致性相关的工作负荷特定操作。 例如，Microsoft SQL Server 的 VSS 编写器可确保正确写入事务日志文件和数据库。 对于 Azure Windows VM 备份，若要创建应用程序一致恢复点，备份扩展必须调用 VSS 工作流且需在创建 VM 快照前完成调用。 若要确保 Azure VM 快照准确性，则也必须完成所有 Azure VM 应用程序的 VSS 编写器。 （了解 [VSS 基本信息](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx)，并深入了解其[工作原理](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx)详细信息）。 </li> <li> *Linux VM* - 客户可以执行[自定义操作前脚本和操作后脚本，以确保应用程序一致性](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)。 </li> |
 | 文件系统一致性 |是 - 对于基于 Windows 的计算机 |在两种情况下，恢复点可做到文件系统一致：<ul><li>在没有前脚本/后脚本或前脚本/后脚本失败时，Azure 中 Linux VM 的备份。 <li>在 Azure 中备份 Windows VM 时出现 VSS 故障。</li></ul> 在这两种情况下，最佳做法是确保： <ol><li> VM *启动*。 <li>无数据损坏。<li>无数据丢失。</ol> 应用程序需要对还原的数据实施自己的“修复”机制。 |
-| 崩溃一致性 |否 |这种情况相当于虚拟机“崩溃”（通过软重置或硬重置）。 崩溃一致性通常出现在 Azure 虚拟机在备份期间关闭时。 无论是从操作系统还是应用程序角度而言，崩溃一致性恢复点皆无法保证存储媒体上数据的一致性。 仅会捕获和备份备份时磁盘上已存在的数据。 <br/> <br/> 尽管并无保证，但通常情况下，会启动操作系统，并在之后进行 chkdsk 等磁盘检查过程来修复任何损坏错误。 任何未传输到磁盘的内存中数据或写入都将丢失。 如果需要执行数据回滚，应用程序通常会接着执行其自身的验证机制。 <br><br>例如，如果事务日志中的条目不在数据库中，则数据库软件将执行回滚，直到数据一致。 当数据分散在多个虚拟磁盘上时（例如跨区卷），崩溃一致恢复点不保证数据的正确性。 |
+| 崩溃一致性 |否 |这种情况相当于虚拟机“崩溃”（通过软重置或硬重置）。 崩溃一致性通常出现在 Azure 虚拟机在备份期间关闭时。 无论是从操作系统还是应用程序角度而言，崩溃一致性恢复点皆无法保证存储媒体上数据的一致性。 仅会捕获和备份备份时磁盘上已存在的数据。 <br/> <br/> 尽管并无保证，但通常情况下，会启动操作系统，并在之后进行 chkdsk 等磁盘检查过程来修复任何损坏错误。 任何未传输到磁盘的内存中数据或写入都将丢失。 如果需要执行数据回滚，应用程序通常会接着执行其自身的验证机制。 <br><br>例如，如果事务日志中有条目不在数据库中，则数据库软件将执行回滚，直到数据一致。 当数据分散在多个虚拟磁盘上时（例如跨区卷），崩溃一致恢复点不保证数据的正确性。 |
 
 ## <a name="performance-and-resource-utilization"></a>性能和资源利用率
 与本地部署的备份软件一样，在 Azure 中备份 VM 时也应对容量和资源利用率需求进行规划。 [Azure 存储限制](../azure-subscription-service-limits.md#storage-limits)定义如何构建 VM 部署，以获得最大性能并对运行中工作负荷造成最小影响。
@@ -125,24 +125,24 @@ Azure 备份提供脚本框架。 若要确保备份 Linux VM 时的应用程序
 在备份过程中，Azure 备份不会加密数据。 但是，可以在 VM 中加密数据，并无缝备份保护的数据（阅读有关[加密数据备份](backup-azure-vms-encryption.md)的详细信息）。
 
 ## <a name="calculating-the-cost-of-protected-instances"></a>计算受保护实例的成本
-通过 Azure 备份进行备份的 Azure 虚拟机的收费依据 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。 受保护的实例计算基于虚拟机的实际大小，即虚拟机中除“资源磁盘”外的所有数据之和。
+通过 Azure 备份进行备份的 Azure 虚拟机的收费依据 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。 受保护的实例计算基于虚拟机的实际大小，即虚拟机中除临时存储外的所有数据之和。
 
-VM 备份定价*并非*基于附加到虚拟机的每个数据磁盘的最大支持大小。 定价基于数据磁盘中存储的实际数据。 与此类似，备份存储的收费是基于 Azure 备份中存储的数据量，即每个恢复点中实际数据之和。
+VM 备份定价并非基于附加到虚拟机的每个数据磁盘的最大支持大小。 定价基于数据磁盘中存储的实际数据。 与此类似，备份存储的收费是基于 Azure 备份中存储的数据量，即每个恢复点中实际数据之和。
 
 以 A2 标准大小的虚拟机为例，该虚拟机有两个额外的数据磁盘，总大小为 1TB。 下表提供了其中每个磁盘上存储的实际数据：
 
 | 磁盘类型 | 最大大小 | 实际存在的数据 |
-| --- | --- | --- |
+| --------- | -------- | ----------- |
 | 操作系统磁盘 |1023 GB |17 GB |
-| 本地磁盘/资源磁盘 |135 GB |5 GB（不包括在备份中） |
+| 本地磁盘/临时磁盘 |135 GB |5 GB（不包括在备份中） |
 | 数据磁盘 1 |1023 GB |30 GB |
 | 数据磁盘 2 |1023 GB |0 GB |
 
 此示例中，虚拟机的实际大小为 17 GB + 30 GB + 0 GB = 47 GB。 此受保护实例大小 (47 GB) 成为按月计费的基础。 随着虚拟机中数据量的增长，用于计费的受保护实例大小也会相应变化。
 
-第一个备份成功完成后才会开始计费。 存储和受保护的实例也会在此同时开始计费。 只要针对虚拟机的*任何备份数据存储在保管库中*就会持续计费。 如果在虚拟机上停止保护，但在保管库中仍然存在虚拟机备份数据，仍将继续计费。
+第一个备份成功完成后才会开始计费。 存储和受保护的实例也会在此同时开始计费。 只要针对虚拟机的任何备份数据存储在保管库中就会持续计费。 如果在虚拟机上停止保护，但在保管库中仍然存在虚拟机备份数据，仍将继续计费。
 
-针对特定虚拟机的计费仅在停止保护*并且*删除全部备份数据后才会停止。 当停止保护并且没有活动的备份作业时，最后一个成功的 VM 备份的大小将成为用于每月帐单的受保护实例大小。
+针对特定虚拟机的计费仅在停止保护并且删除全部备份数据后才会停止。 当停止保护并且没有活动的备份作业时，最后一个成功的 VM 备份的大小将成为用于每月帐单的受保护实例大小。
 
 ## <a name="questions"></a>有疑问？
 如果有疑问，或者希望包含某种功能，请 [给我们反馈](http://aka.ms/azurebackup_feedback)。

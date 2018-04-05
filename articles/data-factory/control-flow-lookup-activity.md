@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 03/27/2018
 ms.author: shlo
-ms.openlocfilehash: f55e85bb424f4f5973fd6d633b6adf9fbca4d0ef
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7d6abb72fca71c213f9810784581a9af2dafb3a2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure 数据工厂中的查找活动
 可使用查找活动从任何外部源读取或查找记录、表名称或值。 此输出可进一步由后续活动引用。 
@@ -30,12 +30,23 @@ ms.lasthandoff: 03/23/2018
 ## <a name="supported-capabilities"></a>支持的功能
 
 以下数据源当前支持查找：
-- Azure Blob 存储中的 JSON 文件
-- 文件系统中的 JSON 文件
-- Azure SQL 数据库（从查询转换为 JSON 数据）
-- Azure SQL 数据仓库（从查询转换为 JSON 数据）
-- SQL Server（从查询转换为 JSON 数据）
-- Azure 表存储（从查询转换为 JSON 数据）
+
+- Amazon Redshift
+- Azure Blob 存储
+- Azure Cosmos DB
+- Azure Data Lake Store
+- Azure 文件存储
+- Azure SQL 数据库
+- Azure SQL 数据仓库
+- Azure 表存储
+- Dynamics 365
+- Dynamics CRM
+- 文件系统
+- PostgreSQL
+- Salesforce
+- Salesforce 服务云
+- SFTP
+- SQL Server
 
 查找活动返回的最大行数是 **5000**，最大大小为 **10MB**。
 
@@ -62,9 +73,14 @@ ms.lasthandoff: 03/23/2018
 ## <a name="type-properties"></a>Type 属性
 名称 | 说明 | Type | 必需？
 ---- | ----------- | ---- | --------
-dataset | 为查找提供数据集引用。 目前，支持的数据集类型包括：<ul><li>`AzureBlobDataset`，用于 [Azure Blob 存储](connector-azure-blob-storage.md#dataset-properties)（作为源）</li><li>`FileShareDataset`，用于[文件系统](connector-file-system.md#dataset-properties)（作为源）</li><li>`AzureSqlTableDataset`，用于 [Azure SQL 数据库](connector-azure-sql-database.md#dataset-properties)或 [Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md#dataset-properties)（作为源）</li><li>`SqlServerTable`，用于 [SQL Server](connector-sql-server.md#dataset-properties)（作为源）</li><li>`AzureTableDataset`，用于 [Azure 表存储](connector-azure-table-storage.md#dataset-properties)（作为源）</li> | 键/值对 | 是
+dataset | 为查找提供数据集引用。 从每篇相应的连接器文章的“数据集属性”部分中获取详细信息。 | 键/值对 | 是
 源 | 包含特定于数据集的源属性，与复制活动源相同。 从每篇相应的连接器文章的“复制活动属性”部分中获取详细信息。 | 键/值对 | 是
 firstRowOnly | 指示仅返回第一行还是返回所有行。 | 布尔 | 不会。 默认为 `true`。
+
+请注意以下几点：
+
+1. 不支持 ByteArray 类型的源列。
+2. 数据集定义不支持结构。 对于文本格式化文件，可以使用标头行提供列名。
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>在后续活动中使用查找活动结果
 

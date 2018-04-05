@@ -1,6 +1,6 @@
 ---
-title: "了解 Azure Service Fabric 术语 | Microsoft Docs"
-description: "Service Fabric 的术语概述。 讨论本文档其余部分所用的重要术语概念和术语。"
+title: 了解 Azure Service Fabric 术语 | Microsoft Docs
+description: Service Fabric 的术语概述。 讨论本文档其余部分所用的重要术语概念和术语。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/18/2017
+ms.date: 03/26/2018
 ms.author: ryanwi
-ms.openlocfilehash: dc7e536ce40bf95e1950e1e44844cd8fe26ea1a1
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: bd57b6344baef3bdf97c850564ae2d3afa9c811e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
 Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 本文详细介绍 Service Fabric 所使用的术语，帮助了解文档中使用的术语。
@@ -89,12 +89,22 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
    - 协调应用程序和群集升级。
    - 与其他系统组件交互。
 
+**修复管理器服务**：这是一项可选的系统服务，可在集群上实现自动、透明、安全的修复操作。 修复管理器可用于：
+   - 在[白银和黄金持久性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric 集群上执行 Azure 维护修复。
+   - 实施面向[修补业务流程应用](service-fabric-patch-orchestration-application.md)的修复操作
+
 ## <a name="built-in-programming-models"></a>内置编程模型
-有一些 .NET Framework 编程模型可用于生成 Service Fabric 服务：
+有一些 .NET Framework 和 Java 编程模型可用于生成 Service Fabric 服务：
 
 **Reliable Services**：用于构建无状态和有状态服务的 API。 有状态服务将其状态存储在 Reliable Collections（例如字典或队列）中。 也可插入各种通信堆栈，如 Web API 和 Windows Communication Foundation (WCF)。
 
 **Reliable Actors**：用于通过虚拟执行组件编程模型构建无状态和有状态对象的 API。 如果有大量的独立计算或状态单位，此模型可能十分有用。 此模型使用基于轮次的线程模型，因此最好避免使用向外调用其他执行组件或服务的代码，原因是只有在单个执行组件的所有出站请求都已完成后，该执行组件才能处理其他传入请求。
+
+还可以在 Service Fabric 上运行现有应用程序：
+
+**容器**：Service Fabric 支持在 Linux 上部署 Docker 容器，在 Windows Server 2016 上部署 Windows Server 容器，同时支持 Hyper-V 隔离模式。 在 Service Fabric [应用程序模型](service-fabric-application-model.md)中，容器表示放置多个服务副本的应用程序主机。 Service Fabric 可运行任何容器，该方案类似于来宾可执行的方案，可在容器内打包现有应用程序。 此外，也可[在容器内运行 Service Fabric 服务](service-fabric-services-inside-containers.md)。
+
+**来宾可执行文件**：可在 Azure Service Fabric 中运行任何类型的代码（如 Node.js、Java 或 C++）作为服务。 Service Fabric 将这些类型的服务称为来宾可执行文件，视其为无状态服务。 在 Service Fabric 群集中运行来宾可执行文件的优点包括高可用性、运行状况监视、应用程序生命周期管理、高密度和可发现性。
 
 有关详细信息，请阅读[为服务选择编程模型](service-fabric-choose-framework.md)一文。
 

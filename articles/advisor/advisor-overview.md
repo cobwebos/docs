@@ -1,12 +1,12 @@
 ---
-title: "Azure 顾问简介 | Microsoft Docs"
-description: "使用 Azure 顾问优化 Azure 部署。"
+title: Azure 顾问简介 | Microsoft Docs
+description: 使用 Azure 顾问优化 Azure 部署。
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: a4096b11a828cf6676aa22b11c4dd4d75f3b0286
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0aa97a7557706f0b704d4e31a84e9d356d1ad087
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure 顾问简介
 
@@ -43,9 +43,6 @@ ms.lasthandoff: 02/24/2018
 
   ![顾问建议类型](./media/advisor-overview/advisor-dashboard.png)
 
-> [!NOTE]
-> 要为订阅使用 Azure 顾问，订阅所有者必须启动顾问仪表板。  此操作向顾问注册订阅。  从此时起，订阅的任何所有者、参与者或读者均可访问该订阅的顾问建议。 
-
 可以单击“类别”以显示此类别建议的列表，并选择某个建议以了解相关详细信息。  还可了解可执行的操作，通过这些操作获取商机或解决问题。
 
 ![顾问建议类别](./media/advisor-overview/advisor-ha-category-example.png) 
@@ -62,12 +59,12 @@ ms.lasthandoff: 02/24/2018
 还可通过虚拟机资源接口查看顾问建议。 选择虚拟机，并滚动到菜单中的顾问建议。 
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>需要哪些权限才能访问顾问？
-
-要获顾问取针对订阅提出的建议，必须首先将订阅注册到顾问。 订阅所有者启动顾问仪表板即可注册订阅。 这是一次性操作。 注册订阅后，可以订阅的所有者、参与者或读者身份访问顾问建议。
+ 
+可以访问订阅的所有者、参与者或读者身份访问顾问建议。
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>顾问为哪些资源提供建议？
 
-顾问为虚拟机、可用性集、应用程序网关、应用服务、SQL 服务器、SQL 数据库和 Redis 缓存提供建议。
+顾问可提供有关虚拟机、可用性集、应用程序网关、应用服务、SQL 服务器和 Redis Cache 的建议。
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>是否可以推迟或消除建议？
 

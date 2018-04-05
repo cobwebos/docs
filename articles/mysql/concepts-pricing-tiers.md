@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for MySQL 中的定价层"
-description: "本文介绍 Azure Database for MySQL 中的定价层。"
+title: Azure Database for MySQL 中的定价层
+description: 本文介绍 Azure Database for MySQL 中的定价层。
 services: mysql
 author: jan-eng
 ms.author: janeng
@@ -8,12 +8,12 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 6bd24da05c337a902ce0e4a2b9acf22a809eb653
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: ec475648f1da4420e86bf59053d95770409bed8e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
 
@@ -22,7 +22,7 @@ ms.lasthandoff: 02/28/2018
 |    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 计算的代 | 第 4 代、第 5 代 | 第 4 代、第 5 代 | 第 5 代 |
-| vCore 数 | 1, 2 | 2、4、8、16、32 |2、4、8、16、32 |
+| vCore 数 | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | 每个 vCore 的内存 | 1 倍 | “基本”层的 2 倍 | “常规用途”层的 2 倍 |
 | 存储大小 | 5 GB 到 1 TB | 5 GB 到 1 TB | 5 GB 到 1 TB |
 | 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
@@ -40,7 +40,32 @@ ms.lasthandoff: 02/28/2018
 
 ## <a name="compute-generations-vcores-and-memory"></a>计算的代、vCore 数和内存
 
-计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 目前提供两代计算（第 4 代和第 5 代）供你选择。 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器。 第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器。
+计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 目前提供两代计算（第 4 代和第 5 代）供你选择。 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器。 第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器。 可在以下区域获取第 4 代和第 5 代（“X”表示可用）： 
+
+| **Azure 区域** | **第 4 代** | **第 5 代** |
+|:---|:----------:|:--------------------:|
+| 美国中部 |  | X |
+| 美国东部 | X | X |
+| 美国东部 2 | X |  |
+| 美国中北部 | X |  |
+| 美国中南部 | X |  |
+| 美国西部 | X | X |
+| 美国西部 2 |  | X |
+| 加拿大中部 | X | X |
+| 加拿大东部 | X | X |
+| 巴西南部 | X |  |
+| 北欧 | X | X |
+| 欧洲西部 | X | X |
+| 英国西部 |  | X |
+| 英国南部 |  | X |
+| 东亚 | X |  |
+| 东南亚 | X |  |
+| 澳大利亚东部 |  | X |
+| 印度中部 | X |  |
+| 印度西部 | X |  |
+| 日本东部 | X |  |
+| 日本西部 | X |  |
+| 韩国南部 |  | X |
 
 每个 vCore 都预配了特定的内存量，具体取决于定价层。 在增减服务器的 vCore 数时，内存也会按比例增减。 “常规用途”层为每个 vCore 提供的内存量是“基本”层的两倍。 “内存优化”层提供的内存量是“常规用途”层的两倍。
 

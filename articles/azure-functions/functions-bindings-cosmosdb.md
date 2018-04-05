@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: eb6008b73bfd15ec193e728fc9007af5c2d25c67
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ac869cc45d352bdeed16bb3ca926ec7a921d1f75
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure Cosmos DB 绑定
 
@@ -769,7 +769,7 @@ JavaScript 代码如下所示：
 
 | 绑定 | 引用 |
 |---|---|
-| CosmosDB | [CosmosDB 错误代码](https://docs.microsoft.com/en-us/rest/api/documentdb/http-status-codes-for-documentdb) |
+| CosmosDB | [CosmosDB 错误代码](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
 ## <a name="next-steps"></a>后续步骤
 

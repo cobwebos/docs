@@ -1,25 +1,25 @@
 ---
-title: "加密 Azure Windows VM 上的磁盘 | Microsoft Docs"
-description: "如何使用 Azure PowerShell 加密 Windows VM 上的虚拟磁盘以增强安全性"
+title: 加密 Azure Windows VM 上的磁盘 | Microsoft Docs
+description: 如何使用 Azure PowerShell 加密 Windows VM 上的虚拟磁盘以增强安全性
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/10/2017
+ms.date: 03/07/2018
 ms.author: iainfou
-ms.openlocfilehash: 98b42b252a601af090579e3939f3c7ab91c3803b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f21e457b266fdd0106992dad29578eef6e89144
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-windows-vm"></a>如何加密 Windows VM 上的虚拟磁盘
 为了增强虚拟机 (VM) 的安全性以及符合性，可以加密 Azure 中的虚拟磁盘。 磁盘是使用 Azure 密钥保管库中受保护的加密密钥加密的。 可以控制这些加密密钥，以及审核对它们的使用。 本文详细阐述如何使用 Azure PowerShell 加密 Windows VM 上的虚拟磁盘。 还可[使用 Azure CLI 2.0 加密 Linux VM](../linux/encrypt-disks.md)。
@@ -49,7 +49,7 @@ Windows VM 上的虚拟磁盘使用 Bitlocker 进行静态加密。 加密 Azure
 ## <a name="requirements-and-limitations"></a>要求和限制
 磁盘加密支持的方案和要求
 
-* 在来自 Azure 应用商店映像或自定义 VHD 映像的新 Windows VM 上启用加密。
+* 在来自 Azure Marketplace 映像或自定义 VHD 映像的新 Windows VM 上启用加密。
 * 在现有的 Azure Windows VM 上启用加密。
 * 在使用存储空间配置的 Windows VM 上启用加密。
 * 在 Windows VM 的 OS 和数据驱动器上禁用加密。
@@ -106,7 +106,7 @@ Add-AzureKeyVaultKey -VaultName $keyVaultName `
 
 ```powershell
 $appName = "My App"
-$securePassword = "P@ssword!"
+$securePassword = ConvertTo-SecureString -String "P@ssw0rd!" -AsPlainText -Force
 $app = New-AzureRmADApplication -DisplayName $appName `
     -HomePage "https://myapp.contoso.com" `
     -IdentifierUris "https://contoso.com/myapp" `
@@ -125,55 +125,20 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName $keyvaultName `
 
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
-若要测试加密过程，请创建 VM。 以下示例使用 Windows Server 2016 Datacenter 映像创建名为 myVM 的 VM：
+要测试加密过程，请使用 [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) 创建 VM。 以下示例使用 Windows Server 2016 Datacenter 映像创建名为 myVM 的 VM。 系统提示输入凭据时，请输入用于 VM 的用户名和密码：
 
 ```powershell
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
-
-$vnet = New-AzureRmVirtualNetwork -ResourceGroupName $rgName `
-    -Location $location `
-    -Name myVnet `
-    -AddressPrefix 192.168.0.0/16 `
-    -Subnet $subnetConfig
-
-$pip = New-AzureRmPublicIpAddress -ResourceGroupName $rgName `
-    -Location $location `
-    -AllocationMethod Static `
-    -IdleTimeoutInMinutes 4 `
-    -Name "mypublicdns$(Get-Random)"
-
-$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP `
-    -Protocol Tcp `
-    -Direction Inbound `
-    -Priority 1000 `
-    -SourceAddressPrefix * `
-    -SourcePortRange * `
-    -DestinationAddressPrefix * `
-    -DestinationPortRange 3389 `
-    -Access Allow
-
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName `
-    -Location $location `
-    -Name myNetworkSecurityGroup `
-    -SecurityRules $nsgRuleRDP
-
-$nic = New-AzureRmNetworkInterface -Name myNic `
-    -ResourceGroupName $rgName `
-    -Location $location `
-    -SubnetId $vnet.Subnets[0].Id `
-    -PublicIpAddressId $pip.Id `
-    -NetworkSecurityGroupId $nsg.Id
-
 $cred = Get-Credential
 
-$vmName = "myVM"
-$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 | `
-Set-AzureRmVMOperatingSystem -Windows -ComputerName myVM -Credential $cred | `
-Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer `
-    -Offer WindowsServer -Skus 2016-Datacenter -Version latest | `
-Add-AzureRmVMNetworkInterface -Id $nic.Id
-
-New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vmConfig
+New-AzureRmVm `
+    -ResourceGroupName $rgName `
+    -Name "myVM" `
+    -Location $location `
+    -VirtualNetworkName "myVnet" `
+    -SubnetName "mySubnet" `
+    -SecurityGroupName "myNetworkSecurityGroup" `
+    -PublicIpAddressName "myPublicIpAddress" `
+    -Credential $cred
 ```
 
 
@@ -194,9 +159,9 @@ $keyVaultResourceId = $keyVault.ResourceId;
 $keyEncryptionKeyUrl = (Get-AzureKeyVaultKey -VaultName $keyVaultName -Name myKey).Key.kid;
 
 Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgName `
-    -VMName $vmName `
+    -VMName "myVM" `
     -AadClientID $app.ApplicationId `
-    -AadClientSecret $securePassword `
+    -AadClientSecret (New-Object PSCredential "user",$securePassword).GetNetworkCredential().Password `
     -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl `
     -DiskEncryptionKeyVaultId $keyVaultResourceId `
     -KeyEncryptionKeyUrl $keyEncryptionKeyUrl `
@@ -206,7 +171,7 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgName `
 接受提示以继续进行 VM 加密。 此过程中将重启 VM。 加密过程完成并重启 VM 后，使用 [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) 查看加密状态：
 
 ```powershell
-Get-AzureRmVmDiskEncryptionStatus  -ResourceGroupName $rgName -VMName $vmName
+Get-AzureRmVmDiskEncryptionStatus  -ResourceGroupName $rgName -VMName "myVM"
 ```
 
 输出类似于以下示例：

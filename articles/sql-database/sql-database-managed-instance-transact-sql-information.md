@@ -7,14 +7,14 @@ ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: bd8733590819faa3c4286c1940f0b9258842c930
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b633c3c4a4f476cb8e89afde8adeb94558643d4b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异 
 
@@ -393,7 +393,11 @@ WITH PRIVATE KEY ( <private_key_options> )
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小型数据库文件超出存储空间
 
-每个托管实例最多提供 35 TB 的保留存储空间，每个数据库文件最初放置在 128 GB 的存储分配单元中。 包含许多小文件的数据库可能被放置在 128 GB 单元中，其总大小超过了 35 TB 限制。 在这种情况下，无法创建新数据库或还原数据库，即使所有数据库的总大小未达到实例大小限制。 在这种情况下，可能返回不明的错误。
+每个托管实例都为 Azure 高级磁盘空间保留了高达 35 TB 的存储空间，并且每个数据库文件都放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8 TB 的托管实例可能会超过 35TB 的 Azure 存储大小限制。 
+
+例如，某托管实例的一个文件大小为 1.2 TB 而使用 4 TB 磁盘，另外 248 个大小均为 1 GB 的文件分别位于 248 个大小各为 128 GB 的磁盘上。 这种情况下，磁盘存储大小总计为 1 x 4 TB + 248 x 128 GB = 35 TB。 但是，数据库的总保留实例大小为 1 x 1.2 TB + 248 x 1 GB = 1.4 TB。 这说明在某些情况下，由于文件分布极为具体，托管实例可能会出乎意料地达到 Azure 高级磁盘存储空间上限。 
+
+现有数据库不会出现任何错误，并且如果未添加新文件，这些数据库可增大且不会出现任何问题。但是，由于无足够的空间可用于新磁盘驱动器，即使所有数据库总大小未达到实例大小上限，也无法创建或还原新数据库。 这种情况下返回的错误并不明确。
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>在还原数据库期间不正确地配置了 SAS 密钥
 

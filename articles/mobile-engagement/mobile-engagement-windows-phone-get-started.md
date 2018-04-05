@@ -1,11 +1,11 @@
 ---
-title: "适用于 Windows Phone Silverlight 应用的 Azure Mobile Engagement 入门"
-description: "了解如何使用适用于 Windows Phone Silverlight 应用的具有分析和推送通知功能的 Azure Mobile Engagement。"
+title: 适用于 Windows Phone Silverlight 应用的 Azure Mobile Engagement 入门
+description: 了解如何使用适用于 Windows Phone Silverlight 应用的具有分析和推送通知功能的 Azure Mobile Engagement。
 services: mobile-engagement
 documentationcenter: windows
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: aa34692f-87f7-47c6-a20c-a1972750bc25
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: d2334a59d83c90bdd02c4fa29261d36aad292892
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9fb1426e66df6cd8085342743b7d045c297743e5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-windows-phone-silverlight-apps"></a>适用于 Windows Phone Silverlight 应用的 Azure Mobile Engagement 入门
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 本主题介绍如何使用 Azure Mobile Engagement 来了解应用使用情况和向 Windows Phone Silverlight 应用程序的细分用户发送推送通知。

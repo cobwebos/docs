@@ -1,11 +1,11 @@
 ---
-title: "适用于 Azure 的 Desired State Configuration 概述 | Microsoft Docs"
-description: "了解如何使用 PowerShell Desired State Configuration (DSC) 的 Microsoft Azure 扩展处理程序。 本文包括先决条件、体系结构和 cmdlet。"
+title: 适用于 Azure 的 Desired State Configuration 概述 | Microsoft Docs
+description: 了解如何使用 PowerShell Desired State Configuration (DSC) 的 Microsoft Azure 扩展处理程序。 本文包括先决条件、体系结构和 cmdlet。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: mgreenegit
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: migreene
-ms.openlocfilehash: 14d29223435e9a133b112a61f2ecdde0aad581a2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5b16261c9a9f046b7bc55a06dd71aa154a0cec27
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
 
@@ -71,7 +71,7 @@ Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Aut
 
 用于管理 DSC 扩展的 PowerShell cmdlet 最适合用于交互式故障排除和信息收集方案。 可以使用 cmdlet 来打包、发布和监视 DSC 扩展部署。 请注意，DSC 扩展的 cmdlet 尚未更新，无法使用[默认配置脚本](#default-configuration-script)。
 
-**Publish-AzureRMVMDscConfiguration** cmdlet 检索配置文件，扫描其中是否有依赖的 DSC 资源，然后创建一个 .zip 文件。 该 .zip 文件包含启用配置所需的配置和 DSC 资源。 该 cmdlet 还可以使用 *-ConfigurationArchivePath* 参数在本地创建包。 否则，该 cmdlet 会将 .zip 文件发布到 Blob 存储，然后使用 SAS 令牌保护该文件。
+**Publish-AzureRMVMDscConfiguration** cmdlet 检索配置文件，扫描其中是否有依赖的 DSC 资源，然后创建一个 .zip 文件。 该 .zip 文件包含启用配置所需的配置和 DSC 资源。 该 cmdlet 还可以使用 -OutputArchivePath 参数在本地创建包。 否则，该 cmdlet 会将 .zip 文件发布到 Blob 存储，然后使用 SAS 令牌保护该文件。
 
 该 cmdlet 创建的 .ps1 配置脚本位于存档文件夹根目录中的 .zip 文件内。 模块文件夹位于资源的存档文件夹中。
 
@@ -133,7 +133,7 @@ Set-AzureRmVmDscExtension -Version 2.72 -ResourceGroupName $resourceGroup -VMNam
 
 需要在门户中提供以下输入：
 
-* **配置模块或脚本**：这是必填字段（[默认配置脚本](#default-configuration-script)的窗体尚未更新。 配置模块和脚本需要一个包含配置脚本的 .ps1 文件，或者需要一个 .zip 文件，其中的 .ps1 配置脚本位于根目录。 如果使用 .zip 文件，则必须将所有依赖资源包含在 .zip 的模块文件夹中。 可以使用 Azure PowerShell SDK 随附的 **Publish-AzureVMDscConfiguration -ConfigurationArchivePath** cmdlet 来创建 .zip 文件。 系统会将 .zip 文件上传到用户 Blob 存储中，并使用 SAS 令牌对其进行保护。
+* **配置模块或脚本**：这是必填字段（[默认配置脚本](#default-configuration-script)的窗体尚未更新。 配置模块和脚本需要一个包含配置脚本的 .ps1 文件，或者需要一个 .zip 文件，其中的 .ps1 配置脚本位于根目录。 如果使用 .zip 文件，则必须将所有依赖资源包含在 .zip 的模块文件夹中。 可以使用 Azure PowerShell SDK 随附的 Publish-AzureVMDscConfiguration -OutputArchivePath cmdlet 来创建 .zip 文件。 系统会将 .zip 文件上传到用户 Blob 存储中，并使用 SAS 令牌对其进行保护。
 
 * **配置数据 PSD1 文件**：这是可选字段。 如果配置要求 .psd1 中有配置数据文件，请使用此字段来选择数据字段，然后将它上传到用户 Blob 存储。 配置数据文件在 Blob 存储中受 SAS 令牌的保护。
 

@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2018
+ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: a86fc568a0c7f4ada0b853cda8a7b2e06ed7dfcb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: db472345bacda916f1b1664ed7803978ab235a2a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组组织资源 
 
@@ -24,15 +24,13 @@ ms.lasthandoff: 03/17/2018
 
 管理组功能目前以公共预览版提供。 若要开始使用管理组，请登录到 [Azure 门户](https://portal.azure.com)，在“所有服务”部分搜索“管理组”。 
 
-管理组的 Azure 策略支持尚未在公共预览版中提供，在今后几周之内即将推出。  
-
 例如，可将策略应用到限制创建虚拟机 (VM) 的区域的管理组。 此策略将应用到该管理组下面的所有管理组、订阅和资源，只允许在该区域中创建 VM。
 
 ## <a name="hierarchy-of-management-groups-and-subscriptions"></a>管理组和订阅的层次结构 
 
 可以生成管理组和订阅的灵活层次结构，以便将资源组织成用于统一策略和访问管理的层次结构。 下图显示的示例层次结构由按部门组织的管理组和订阅构成。    
 
-![层次结构](media/management-groups/MG_overview.png)
+![树](media/management-groups/MG_overview.png)
 
 创建按部门分组的层次结构后，可以分配由该管理组下的部门继承的 [Azure 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 角色。 使用管理组时，只需分配角色一次，因此可以减少工作负荷，并减少出错的风险。 
 
@@ -42,6 +40,14 @@ ms.lasthandoff: 03/17/2018
     - 此限制不包括根级别或订阅级别。
 - 每个管理组只能支持一个父级。
 - 每个管理组可以包含多个子级。 
+
+### <a name="preview-subscription-visibility-limitation"></a>预览版订阅可见性限制 
+目前预览版中存在限制，即无法查看已继承了访问权限的订阅。 已继承订阅的访问权限，但 Azure 资源管理器尚无法按照已继承权限的情况来执行操作。  
+
+使用 REST API 获取有关订阅的信息可以返回有关确实具有访问权限的详细信息，但在 Azure 门户和 Azure Powershell 中不会显示相应订阅。 
+
+正在设法解决此问题，将在管理组“正式发行”之前解决。  
+
 
 ## <a name="root-management-group-for-each-directory"></a>每个目录的根管理组
 

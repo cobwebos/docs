@@ -1,6 +1,6 @@
 ---
-title: "SQL Server FCI - Azure 虚拟机 | Microsoft 文档"
-description: "本文介绍如何在 Azure 虚拟机上创建 SQL Server 故障转移群集实例。"
+title: SQL Server FCI - Azure 虚拟机 | Microsoft 文档
+description: 本文介绍如何在 Azure 虚拟机上创建 SQL Server 故障转移群集实例。
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -14,13 +14,13 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/26/2017
+ms.date: 13/22/2018
 ms.author: mikeray
-ms.openlocfilehash: 8c957b1f2b4466ba68d81885fb014ad4026a47d2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: faa849fc53aa15a47e850a20531c4fa30544f750
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
@@ -46,6 +46,18 @@ ms.lasthandoff: 02/21/2018
 有关 S2D 的详细信息，请参阅 [Windows Server 2016 Datacenter Edition 存储空间直通 \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)。
 
 S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述的体系结构为超聚合。 超聚合基础结构将存储放置在托管群集应用程序的相同服务器上。 在此体系结构中，存储位于每个 SQL Server FCI 节点上。
+
+## <a name="licensing-and-pricing"></a>许可与定价
+
+在 Azure 虚拟机上，可按即付即用 (PAYG) 方式许可 SQL Server 或自带许可证 (BYOL) VM 映像。 选择的映像类型会影响收费方式。
+
+使用 PAYG 许可，Azure 虚拟机上的 SQL Server 的故障转移群集实例 (FCI) 会对 FCI 的所有节点（包括被动节点）收取费用。 有关详细信息，请参阅 [SQL Server Enterprise 虚拟机定价](http://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/)。 
+
+与软件保障达成企业协议的客户有权为每个活动节点使用一个免费的被动 FCI 节点。 要在 Azure 中利用此优势，请使用 BYOL VM 映像，然后在 FCI 的主动节点和被动节点上使用相同的许可证。 有关详细信息，请参阅[企业协议](http://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx)。
+
+如需比较 Azure 虚拟机中 SQL Server 的 PAYG 和 BYOL 许可，请参阅 [SQL VM 入门](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms)。
+
+有关许可 SQL Server 的完整信息，请参阅[定价](http://www.microsoft.com/sql-server/sql-server-2017-pricing)。
 
 ### <a name="example-azure-template"></a>示例 Azure 模板
 
@@ -123,7 +135,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
    根据 SQL Server 许可证的付费方式选择正确的映像：
 
-   - **按使用量付费许可方式**：这些映像的每分钟费用包括 SQL Server 许可费：
+   - **按使用量付费许可方式**：这些映像的每秒费用包括 SQL Server 许可费：
       - **Windows Server Datacenter 2016 上的 SQL Server 2016 Enterprise**
       - **Windows Server Datacenter 2016 上的 SQL Server 2016 Standard**
       - **Windows Server Datacenter 2016 上的 SQL Server 2016 Developer**
@@ -266,7 +278,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 保存访问密钥和容器 URL。
 
-1. 配置故障转移群集仲裁见证。 请参阅 [在用户界面中配置仲裁见证]。(http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)。
+1. 配置故障转移群集仲裁见证。 请参阅 [在用户界面中配置仲裁见证] (http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)。
 
 ### <a name="add-storage"></a>添加存储
 

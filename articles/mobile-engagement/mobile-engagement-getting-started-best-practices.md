@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 最佳实践入门指南"
-description: "Azure Mobile Engagement 和最佳加入实践入门指南"
+title: Azure Mobile Engagement 最佳实践入门指南
+description: Azure Mobile Engagement 和最佳加入实践入门指南
 services: mobile-engagement
 documentationcenter: mobile
 author: wesmc7777
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: dfce1183-6398-466e-aa7e-ed702fb52818
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 0cb54f6c4b84597fbc21fa691f88f6f7a37beedd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf9dc5febeae27473d2adb8a024536b945bb9d13
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement---getting-started-guide-with-best-practices"></a>Azure Mobile Engagement - 最佳实践入门指南
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 ## <a name="overview"></a>概述
 **移动屏幕是很拥挤的空间：** 2013 年的一项研究发现，移动设备平均安装 27 个应用程序。 用户通常每月花 30 小时在其应用上。 该时间大部分花在社交网络和游戏上（约 20 小时）。 到 2014 年的时候，Android 市场已经有大约 150 万可供用户选择的应用程序。 Apple Store 有大约 120 万个应用。 移动应用的使用越来越广泛，而开发商在这个不断增长的市场的竞争也越来越剧烈。 
 
@@ -236,7 +240,7 @@ Azure Mobile Engagement 标识用户的方式是为每台设备生成一个唯�
 
 活动是对应用在会话过程中可能会执行的一组操作的逻辑分组。 活动通常是指应用中的特定屏幕，但也可以是通过应用程序的逻辑定义的任何对象。 至少应标记应用的每个屏幕或活动。 这样可以了解用户路径。
 
-###### <a name="events"></a>事件
+###### <a name="events"></a>活动
 事件用于报告用户与应用的交互。 事件可能是即时操作，例如共享内容或启动视频。 标记事件即可收集数据，了解用户与应用的交互情况。 
 
 ###### <a name="jobs"></a>作业
@@ -248,7 +252,7 @@ Azure Mobile Engagement 标识用户的方式是为每台设备生成一个唯�
 * 购买过程持续时间
 * 观看视频
 
-###### <a name="errors"></a>错误
+###### <a name="errors"></a>Errors
 使用错误报告应用检测到的问题。 例如，用户操作不正确，或者 API 调用失败。
 
 ###### <a name="application-information"></a>应用程序信息

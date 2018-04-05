@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: asgang
-ms.openlocfilehash: 17cd6a931563c7d33576749453d742aca253526b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 48d84f59a80ea14c2b40821d886fc410c7e3f2c3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
@@ -112,15 +112,15 @@ ms.lasthandoff: 03/09/2018
     例如，如果源计算机有两个网络适配器，而目标计算机大小支持四个，则目标计算机有两个适配器。 如果源虚拟机有两个适配器，但支持的目标大小只支持一个，则目标虚拟机只有一个适配器。
     - 如果虚拟机有多个网络适配器，它们会全部连接到同一网络。 另外，列表中显示的第一个适配器会成为 Azure 虚拟机中的默认网络适配器。
 
-### <a name="azure-hybrid-use-benefit"></a>Azure 混合使用权益
+### <a name="azure-hybrid-benefit"></a>Azure 混合权益
 
-Microsoft 软件保障客户可以使用 Azure 混合使用权益来节省迁移到 Azure 的 Windows Server 虚拟机的许可成本，或将 Azure 用于灾难恢复。 如果有资格使用 Azure 混合使用权益，则可以指定如果发生故障转移，分配到此权益的虚拟机是 Azure Site Recovery 创建的虚拟机。 为此，请按以下步骤操作：
+Microsoft 软件保障客户可以使用 Azure 混合权益来节省迁移到 Azure 的 Windows Server 计算机的许可成本，或将 Azure 用于灾难恢复。 如果有资格使用 Azure 混合权益，则可以指定如果发生故障转移，分配到此权益的虚拟机是 Azure Site Recovery 创建的虚拟机。 为此，请按以下步骤操作：
 - 转到复制的虚拟机的“计算”和“网络”属性部分。
-- 回答此问题：你是否具有可使你有资格使用 Azure 混合使用权益的 Windows Server 许可证。
-- 选中复选框，确认你具有含软件保障的符合条件的 Windows Server 许可证，可用于对在故障转移时创建的虚拟机应用混合使用权益。
+- 回答此问题：你是否具有可使你有资格使用 Azure 混合权益的 Windows Server 许可证。
+- 选中复选框，确认你具有含软件保障的符合条件的 Windows Server 许可证，可用于对在故障转移时创建的虚拟机应用 Azure 混合权益。
 - 保存复制的计算机的设置。
 
-深入了解 [Azure 混合使用权益](https://aka.ms/azure-hybrid-use-benefit-pricing)。
+深入了解 [Azure 混合权益](https://aka.ms/azure-hybrid-benefit-pricing)。
 
 ## <a name="common-issues"></a>常见问题
 

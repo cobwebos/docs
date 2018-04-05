@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C：使用自定义策略添加 ADFS 作为 SAML 标识提供者"
-description: "有关使用 SAML 协议和自定义策略设置 ADFS 2016 的操作指南文章"
+title: Azure Active Directory B2C：使用自定义策略添加 ADFS 作为 SAML 标识提供者
+description: 有关使用 SAML 协议和自定义策略设置 ADFS 2016 的操作指南文章
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: yoelh
-ms.openlocfilehash: 22b360aec8878925ebe8d2c67c76d275a42ca7a8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: af102bbc3bc7608fe641db19f4af8c760907a564
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Azure Active Directory B2C：使用自定义策略添加 ADFS 作为 SAML 标识提供者
 
@@ -63,7 +60,7 @@ ms.lasthandoff: 12/11/2017
 7.  在“配置 URL”页上，选择“启用对 SAML 2.0 WebSSO 协议的支持”复选框。 在“信赖方 SAML 2.0 SSO 服务 URL”下，键入此信赖方信任的安全断言标记语言 (SAML) 服务终结点 URL，然后单击“下一步”。  对于“信赖方 SAML 2.0 SSO 服务 URL”，请粘贴 `https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/{policy}`。 将 {tenant} 替换为租户名称（例如，contosob2c.onmicrosoft.com），并将 {policy} 替换为扩展策略名称（例如，B2C_1A_TrustFrameworkExtensions）。
     > [!IMPORTANT]
     >策略名称是 signup_or_signin 策略继承自其中的名称，在这种情况下为：`B2C_1A_TrustFrameworkExtensions`。
-    >例如 URL 可以是：https://login.microsoftonline.com/te/contosob2c.onmicrosoft.com/B2C_1A_TrustFrameworkBase。
+    >例如 URL 可以是：https://login.microsoftonline.com/te/**contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**。
 
     ![信赖方 SAML 2.0 SSO 服务 URL](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-6.png)
 8. 在“配置标识符”页上，指定与上一步相同的 URL，单击“添加”以将其添加到列表，然后单击“下一步”。

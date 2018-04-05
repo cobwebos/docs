@@ -1,33 +1,38 @@
 ---
-title: "Azure CDN 的 POP 位置 |Microsoft 文档"
-description: "本文列出了 Azure CDN 的接入点位置。"
+title: 按区域列出的 Azure CDN 的 POP 位置 | Microsoft Docs
+description: 本文列出了来自 Verizon 的 Azure CDN 和来自 Akamai 的 Azure CDN 的 POP 位置（按区域分类）。
 services: cdn
-documentationcenter: 
-author: zhangmanling
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dksimpson
+manager: akucer
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 03/20/2018
 ms.author: mazha
-ms.openlocfilehash: 3dd40bb6fc5754ca8f41360cc735a9136b3f89ea
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a1c1408438ca2b74c63a77041849b9dc86f3b70b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="azure-cdn-pop-locations"></a>Azure CDN 的 POP 位置
-本文列出了**来自 Verizon 的 Azure CDN** 和**来自 Akamai 的 Azure CDN** 的当前接入点 (POP) 位置。
+# <a name="azure-cdn-pop-locations-by-region"></a>按区域列出的 Azure CDN 的 POP 位置
+> [!div class="op_single_selector"]
+> * [按区域列出的 POP 位置](cdn-pop-locations.md)
+> * [按缩写列出的 POP 位置](cdn-pop-abbreviations.md)
+> 
+
+
+本文列出了来自 Verizon 的 Azure CDN 和来自 Akamai 的 Azure CDN 的当前接入点 (POP) 位置（按区域分类）。
 
 > [!IMPORTANT]
 > **来自 Akamai 的 Azure CDN** 的 POP 城市位置不单独公开。  
 > 
-> 这两个提供商采用了不同的方法来构建其 CDN 基础结构。  建议不要使用 POP 位置来确定要使用哪种 Azure CDN 产品，而是考虑功能和最终用户所需的性能。  通过测试两个提供商的性能来为用户选择正确的 Azure CDN 产品。 
-> 
+> 由于两个提供程序有各自独特的 CDN 基础结构生成方式，因此不建议使用 POP 位置来决定使用哪个 Azure CDN 产品。 相反，应考虑它们的功能和最终用户性能。 通过测试两个提供商的性能来为用户选择正确的 Azure CDN 产品。 
 > 
 
 | 区域 | Verizon | Akamai |
@@ -41,6 +46,7 @@ ms.lasthandoff: 02/09/2018
 | 中东 | 阿曼马斯喀特<br />阿拉伯联合酋长国富查伊拉 | 卡塔尔 |
 | 亚洲 | 香港特别行政区<br />印度班加罗尔<br />印度钦奈<br />印度新德里<br />印度孟买<br />印度新德里<br />印度尼西亚巴淡岛<br />印度尼西亚雅加达<br />日本大阪<br />日本东京<br />新加坡<br />韩国首尔<br />中国台湾高雄 | 香港特别行政区<br />印度<br />印度尼西亚<br />日本<br />马来西亚<br />菲律宾<br />新加坡<br />台湾<br />泰国<br />越南 |
 | 澳大利亚和新西兰 | 澳大利亚墨尔本<br />澳大利亚悉尼<br />新西兰奥克兰 | 澳大利亚<br />新西兰 |
+
 
 ## <a name="see-also"></a>另请参阅
 * [用于获取允许列表最新 IP 地址的 Azure CDN 边缘节点 API ](https://docs.microsoft.com/rest/api/cdn/edgenodes)

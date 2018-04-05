@@ -1,9 +1,9 @@
 ---
-title: "使用 Visual Studio 开发和部署 WebJobs - Azure"
-description: "了解如何使用 Visual Studio 开发 Azure WebJobs 并将其部署到 Azure 应用服务。"
+title: 使用 Visual Studio 开发和部署 WebJobs - Azure
+description: 了解如何使用 Visual Studio 开发 Azure WebJobs 并将其部署到 Azure 应用服务。
 services: app-service
-documentationcenter: 
-author: ggailey777
+documentationcenter: ''
+author: tdykstra
 manager: erikre
 editor: jimbe
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 8793485f2f1967e8c14ef335f14f81c9b946f974
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: babe190c0865f5be4aeecb40ca48b52673c6920e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>使用 Visual Studio 开发和部署 WebJobs - Azure 应用服务
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/22/2017
 当 Visual Studio 部署启用 Web 作业的控制台应用程序项目时，它会执行两个任务：
 
 * 将运行时文件复制到 Web 应用中的相应文件夹（对于连续 Web 作业，该文件夹为 *App_Data/jobs/continuous*，对于计划的按需 Web 作业，则为 *App_Data/jobs/triggered*）。
-* 为已计划在特定时间运行的 Web 作业设置 [Azure 计划程序作业](#scheduler)。 （无需为连续 Web 作业执行此操作。）
+* 为已计划在特定时间运行的 Web 作业设置 [Azure 计划程序作业](https://docs.microsoft.com/azure/scheduler/)。 （无需为连续 Web 作业执行此操作。）
 
 已启用 Web 作业的项目中添加了以下项：
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 11/22/2017
 2. 在“项目名称”下拉列表中，选择要添加为 Web 作业的控制台应用程序项目。
    
     ![在“添加 Azure Web 作业”对话框中选择项目](./media/websites-dotnet-deploy-webjobs/aaw1.png)
-3. 完成“添加 [Azure Web 作业](#configure) ”对话框，并单击“确定”。 
+3. 完成[添加 Azure Web 作业](#configure)对话框，并单击**确定**。 
 
 ### <a id="convertnolink"></a> 不使用 Web 项目启用 WebJobs 部署
 1. 右键单击“解决方案资源管理器”中的控制台应用程序项目，然后单击“发布为 Azure Web 作业...”。 

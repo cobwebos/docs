@@ -1,8 +1,8 @@
 ---
-title: "将 Beeline 与 Apache Hive 配合使用 - Azure HDInsight | Microsoft Docs"
-description: "了解如何使用 Beeline 客户端通过 Hadoop on HDInsight 运行 Hive 查询。 Beeline 是用于通过 JDBC 操作 HiveServer2 的实用工具。"
+title: 将 Beeline 与 Apache Hive 配合使用 - Azure HDInsight | Microsoft Docs
+description: 了解如何使用 Beeline 客户端通过 Hadoop on HDInsight 运行 Hive 查询。 Beeline 是用于通过 JDBC 操作 HiveServer2 的实用工具。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/02/2018
+ms.date: 03/26/2018
 ms.author: larryfr
-ms.openlocfilehash: 5d4e9d6ffb7fa0c2e4b69c5b534f0078aec5f68c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f2beb42f51bbbf65abe7bb6d95579106cdf1857a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>将 Beeline 客户端与 Apache Hive 配合使用
 
@@ -44,7 +44,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
 
 ## <a id="prereq"></a>先决条件
 
-* 基于 Linux 的 HDInsight 上的 Hadoop 群集版本 3.4 或更高版本。
+* 基于 Linux 的 Hadoop on HDInsight 群集版本 3.4 或更高版本。
 
   > [!IMPORTANT]
   > Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 在 Windows 上停用](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
@@ -110,7 +110,7 @@ Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 
         | sessionpagevieworder  | bigint     |          |
         +-----------------------+------------+----------+--+
 
-    此信息描述表中的列。 我们可以对此数据执行某些查询，不过，暂时让我们改为创建全新的表来演示如何将数据载入 Hive 并应用架构。
+    此信息描述表中的列。
 
 4. 输入以下语句，以使用 HDInsight 群集随附的示例数据来创建名为 **log4jLogs** 的表：
 

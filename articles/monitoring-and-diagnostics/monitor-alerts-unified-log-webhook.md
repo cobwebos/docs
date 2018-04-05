@@ -1,12 +1,12 @@
 ---
-title: "用于 Azure 警报（预览版）中日志警报的 Webhook 操作 | Microsoft Docs"
-description: "本文介绍了使用 Log Analytics 或 application insights 的日志警报规则如何作为 HTTP Webhook 推送数据，以及可能的不同自定义设置的详细信息。"
+title: 用于 Azure 警报中日志警报的 Webhook 操作 | Microsoft Docs
+description: 本文介绍了使用 Log Analytics 或 application insights 的日志警报规则如何作为 HTTP Webhook 推送数据，以及可能的不同自定义设置的详细信息。
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/2/2018
 ms.author: vinagara
-ms.openlocfilehash: 5852eb099f6620656aa69e5085447c2a8b4e0c01
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9d2bc934424ff7a31b65ad6c03624ff02ee2a6f3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
-[在 Azure（预览版）中创建警报](monitor-alerts-unified-usage.md)时，可以选择[使用操作组配置](monitoring-action-groups.md)以执行一个或多个操作。  本文介绍可用的不同 Webhook 操作，以及有关配置基于 JSON 的自定义 Webhook 的详细信息。
+[在 Azure 中创建警报](monitor-alerts-unified-usage.md)时，可以选择[使用操作组配置](monitoring-action-groups.md)以执行一个或多个操作。  本文介绍可用的不同 Webhook 操作，以及有关配置基于 JSON 的自定义 Webhook 的详细信息。
 
 
 ## <a name="webhook-actions"></a>Webhook 操作
@@ -33,7 +33,7 @@ Webhook 操作需要下表中的属性：
 | 属性 | 说明 |
 |:--- |:--- |
 | Webhook URL |Webhook 的 URL。 |
-| 自定义 JSON 负载 |如果在创建警报期间选择了此选项，请自定义要通过 webhook 发送的有效负载。 有关详细信息，请参阅[使用 Azure 警报（预览版）管理警报](monitor-alerts-unified-usage.md) |
+| 自定义 JSON 负载 |如果在创建警报期间选择了此选项，请自定义要通过 webhook 发送的有效负载。 有关详细信息，请参阅[使用 Azure 警报管理警报](monitor-alerts-unified-usage.md) |
 
 > [!NOTE]
 > 单击日志警报的“包括 Webhook 的自定义 JSON 有效负载”选项旁边的“测试 Webhook”按钮可触发虚拟调用以测试 Webhook URL。 它不包含实际数据，也不代表用于日志警报的 JSON 架构。 
@@ -157,6 +157,8 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
     }
     }
 
+> [!NOTE]
+> 用于 Application Insights 的日志警报当前处于公开预览状态，功能和用户体验可能会发生更改。
 
 #### <a name="log-alert-with-custom-json-payload"></a>带自定义 JSON 有效负载的日志警报
 例如，若要创建只包含警报名称和搜索结果的自定义负载，则可以使用以下代码： 
@@ -194,7 +196,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 
 
 ## <a name="next-steps"></a>后续步骤
-- [了解 Azure 警报（预览版）中的日志警报](monitor-alerts-unified-log.md)
+- 了解 [Azure 警报中的日志警报](monitor-alerts-unified-log.md)
 - 创建和管理 [Azure 门户中的操作组](monitoring-action-groups.md)
 - 详细了解 [Application Insights](../application-insights/app-insights-analytics.md)
 - 详细了解 [Log Analytics](../log-analytics/log-analytics-overview.md)。 

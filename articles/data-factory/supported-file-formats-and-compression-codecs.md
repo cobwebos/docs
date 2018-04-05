@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 33e0d1d54a533d68ac08f223e1a41e65c7b301a4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b038052776cad63030ca8a48a43b4b579ce6c83a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
 
@@ -444,6 +444,30 @@ ms.lasthandoff: 03/23/2018
 * 不支持复杂数据类型（STRUCT、MAP、LIST、UNION）
 * ORC 文件有三个[压缩相关的选项](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)：NONE、ZLIB、SNAPPY。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 ORC 文件时，数据工厂会选择 ZLIB，这是 ORC 的默认选项。 目前没有任何选项可以重写此行为。
 
+### <a name="data-type-mapping-for-orc-files"></a>ORC 文件的数据类型映射
+
+| 数据工厂临时数据类型 | ORC 类型 |
+|:--- |:--- |
+| 布尔 | 布尔 |
+| SByte | Byte |
+| Byte | Short |
+| Int16 | Short |
+| UInt16 | int |
+| Int32 | int |
+| UInt32 | Long |
+| Int64 | Long |
+| UInt64 | String |
+| Single | Float |
+| Double | Double |
+| 小数 | 小数 |
+| String | String |
+| DateTime | Timestamp |
+| DateTimeOffset | Timestamp |
+| TimeSpan | Timestamp |
+| ByteArray | 二进制 |
+| Guid | String |
+| Char | Char(1) |
+
 ## <a name="parquet-format"></a>Parquet 格式
 
 若要分析 Parquet 文件或以 Parquet 格式写入数据，请将 `format` `type` 属性设置为 **ParquetFormat**。 不需在 typeProperties 节的 Format 节中指定任何属性。 示例：
@@ -463,6 +487,31 @@ ms.lasthandoff: 03/23/2018
 
 * 不支持复杂数据类型（MAP、LIST）
 * Parquet 文件提供以下压缩相关的选项：NONE、SNAPPY、GZIP 和 LZO。 数据工厂支持从使用其中任一压缩格式的 ORC 文件中读取数据。 它使用元数据中的压缩编解码器来读取数据。 但是，写入 Parquet 文件时，数据工厂会选择 SNAPPY，这是 Parquet 格式的默认选项。 目前没有任何选项可以重写此行为。
+
+### <a name="data-type-mapping-for-parquet-files"></a>Parquet 文件的数据类型映射
+
+| 数据工厂临时数据类型 | Parquet 基元类型 | Parquet 原始类型（反序列化） | Parquet 原始类型（串行化） |
+|:--- |:--- |:--- |:--- |
+| 布尔 | 布尔 | 不适用 | 不适用 |
+| SByte | Int32 | Int8 | Int8 |
+| Byte | Int32 | UInt8 | Int16 |
+| Int16 | Int32 | Int16 | Int16 |
+| UInt16 | Int32 | UInt16 | Int32 |
+| Int32 | Int32 | Int32 | Int32 |
+| UInt32 | Int64 | UInt32 | Int64 |
+| Int64 | Int64 | Int64 | Int64 |
+| UInt64 | Int64/二进制 | UInt64 | 小数 |
+| Single | Float | 不适用 | 不适用 |
+| Double | Double | 不适用 | 不适用 |
+| 小数 | 二进制 | 小数 | 小数 |
+| String | 二进制 | Utf8 | Utf8 |
+| DateTime | Int96 | 不适用 | 不适用 |
+| TimeSpan | Int96 | 不适用 | 不适用 |
+| DateTimeOffset | Int96 | 不适用 | 不适用 |
+| ByteArray | 二进制 | 不适用 | 不适用 |
+| Guid | 二进制 | Utf8 | Utf8 |
+| Char | 二进制 | Utf8 | Utf8 |
+| CharArray | 不支持 | 不适用 | 不适用 |
 
 ## <a name="compression-support"></a>压缩支持
 

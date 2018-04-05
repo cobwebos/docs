@@ -6,15 +6,15 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 12/15/2017
-ms.topic: tutorial
+ms.date: 03/23/2018
+ms.topic: article
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4d6dd0d46d909acfbfc04a23be74a571953ce660
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b03ece52c4ff77c9e0abbc794325cd7e9a20c915
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -104,7 +104,8 @@ Edge 代理无权访问某个模块的映像。
 尝试再次运行 `iotedgectl login` 命令。
 
 ## <a name="iotedgectl-cant-find-docker"></a>iotedgectl 找不到 Docker
-iotedgectl 无法执行设置或启动命令，因此向日志输出了以下消息：
+
+`iotedgectl setup` 或 `iotedgectl start` 命令失败，并向日志输出了以下消息：
 ```output
 File "/usr/local/lib/python2.7/dist-packages/edgectl/host/dockerclient.py", line 98, in get_os_type
   info = self._client.info()
@@ -119,6 +120,33 @@ iotedgectl 找不到 Docker，而后者是先决条件。
 
 ### <a name="resolution"></a>解决方法
 安装 Docker，确保其正在运行，然后重试。
+
+## <a name="iotedgectl-setup-fails-with-an-invalid-hostname"></a>iotedgectl 设置失败，主机名无效
+
+`iotedgectl setup` 命令失败，并输出了以下消息： 
+
+```output
+Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
+```
+
+### <a name="root-cause"></a>根本原因
+IoT Edge 运行时只支持短于 64 个字符的主机名。 这对物理计算机来说不算什么问题，但是在虚拟机上设置运行时的时候可能会出现问题。 特别是为 Azure 中托管的 Windows 虚拟机自动生成的主机名，往往会很长。 
+
+### <a name="resolution"></a>解决方法
+看到此错误时，可以配置虚拟机的 DNS 名称，然后在设置命令中将 DNS 名称设置为主机名。
+
+1. 在 Azure 门户中，导航到虚拟机的概述页面。 
+2. 选择 DNS 名称下的“配置”。 如果你的虚拟机已配置 DNS 名称，则不需要再配置。 
+
+   ![配置 DNS 名称](./media/troubleshoot/configure-dns.png)
+
+3. 为“DNS 名称标签”提供一个值，然后选择“保存”。
+4. 复制新的 DNS 名称，此名称应该为 \<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com。
+5. 在虚拟机中使用下列命令，以 DNS 名称设置 IoT Edge 运行时：
+
+   ```input
+   iotedgectl setup --connection-string "<connection string>" --nopass --edge-hostname "<DNS name>"
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 认为在 IoT Edge 平台中发现了 bug？ 请[提交问题](https://github.com/Azure/iot-edge/issues)以便我们可以持续改进。 

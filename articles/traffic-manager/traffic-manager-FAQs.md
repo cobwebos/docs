@@ -1,24 +1,24 @@
 ---
-title: "Azure 流量管理器 - 常见问题解答 | Microsoft Docs"
-description: "本文提供有关流量管理器的常见问题解答"
+title: Azure 流量管理器 - 常见问题解答 | Microsoft Docs
+description: 本文提供有关流量管理器的常见问题解答
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2018
+ms.date: 03/18/2018
 ms.author: kumud
-ms.openlocfilehash: 09fd133ec72f7ebbbcb45f652855e7640656a0ca
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: d9db669ab905fb51390f6ca80736af4cde13d902
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -123,9 +123,6 @@ ms.lasthandoff: 02/03/2018
 
 ## <a name="real-user-measurements"></a>真实用户度量
 
->[!NOTE]
->流量管理器中的“实际用户度量”功能以公共预览版形式提供，并且其可用性和可靠性与正式发布版本中的功能可能不在同一级别。 此功能不受支持，可能存在功能限制，并且可能不是在所有 Azure 区域都可用。 有关此功能可用性和状态方面的最新通知，请参阅 [Azure 流量管理器更新](https://azure.microsoft.com/updates/?product=traffic-manager)页。
-
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>使用真实用户度量的好处是什么？
 使用性能路由方法时，流量管理器通过检查源 IP 和 EDNS 客户端子网（如果传入）并在服务维护的网络延迟智能中对其检查以便为最终用户选取连接的最佳 Azure 区域。 真实用户度量通过为此延迟表贡献最终用户群的使用体验并确保此表充分覆盖最终用户连接到 Azure 所在的最终用户网络来增强这一功能。 这可以提高最终用户路由的准确性。
 
@@ -140,7 +137,8 @@ ms.lasthandoff: 02/03/2018
 
 ### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>如何关闭我的订阅的真实用户度量？
 停止从你的客户端应用程序收集和发回延迟度量值时，即可停止产生与真实用户度量相关的费用。 例如，当度量 JavaScript 嵌入在网页时，可以通过删除 JavaScript 或在页面呈现时关闭其调用来停止使用此功能。
-关闭真实用户度量的另一种方法是删除你的密钥。 一旦执行此操作，使用该密钥发送到流量管理器的任何度量都将被弃用。
+
+也可通过删除密钥来关闭真实用户度量。 一旦删除密钥，使用该密钥发送到流量管理器的任何度量都将被弃用。
 
 ### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>除了 Web 页面以外，是否可以在客户端应用程序中使用真实用户度量？
 是的，真实用户度量旨在引入通过不同类型的最终用户客户端收集的数据。 此常见问题解答将在新的客户端应用程序类型受支持后进行更新。
@@ -155,16 +153,16 @@ ms.lasthandoff: 02/03/2018
 不，每次调用真实用户度量脚本时，该脚本都将度量由服务确定的 6 个 Azure 区域集。 该集在不同的调用之间变化，当出现大量此类调用时，度量范围将涵盖不同的 Azure 区域。
 
 ### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>是否可以将执行的度量数限制在一个特定数值内？
-度量 JavaScript 嵌入在你的网页中，你可以完全控制何时对其启用和停用。 只要流量管理器服务收到要度量的 Azure 区域列表的请求，即返回区域集。 此外请记住，在预览期间，不会对报告给流量管理器的任何度量计费
+度量 JavaScript 嵌入在你的网页中，你可以完全控制何时对其启用和停用。 只要流量管理器服务收到要度量的 Azure 区域列表的请求，即返回区域集。
 
 ### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>是否可以查看我的客户端应用程序作为真实用户度量的一部分所执行的度量？
-因为度量逻辑通过客户端应用程序运行，所以你可以掌握一切情况，包括查看延迟度量值。 流量管理器不会报告与你的订阅链接的密钥下收到的度量的聚合视图
+因为度量逻辑通过客户端应用程序运行，所以你可以掌握一切情况，包括查看延迟度量值。 流量管理器不会报告与订阅链接的密钥下收到的度量的聚合视图。
 
 ### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>是否可以修改流量管理器提供的度量脚本？
 尽管你能完全控制嵌入在你网页中的内容，我们强烈建议不要对度量脚本进行任何修改，以确保其正确地度量和报告延迟。
 
 ### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>其他人是否有可能看到我的真实用户度量的钥？
-将度量脚本嵌入网页时，其他人有可能看到脚本和你的真实用户度量 (RUM) 密钥。 但需要了解的重要一点是，该密钥不同于你的订阅 ID，它由流量管理器生成，仅用于此目的。 知道你的 RUM 密钥并不会危及你 Azure 帐户的安全
+将度量脚本嵌入网页时，其他人有可能看到脚本和你的真实用户度量 (RUM) 密钥。 但需要了解的重要一点是，该密钥不同于你的订阅 ID，它由流量管理器生成，仅用于此目的。 知道 RUM 密钥并不会危及 Azure 帐户的安全。
 
 ### <a name="can-others-abuse-my-rum-key"></a>其他人是否可以滥用我的 RUM 密钥？
 尽管其他人有可能使用你的密钥向 Azure 发送错误信息，但请注意，几个错误的度量并不会更改路由选择，因为它与我们收到的所有其他度量一起纳入考虑对象。 如需更改你的密钥，可以在旧密钥被弃用后重新生成密钥。
@@ -186,9 +184,6 @@ ms.lasthandoff: 02/03/2018
 
 ## <a name="traffic-view"></a>流量视图
 
->[!NOTE]
->流量管理器中的“流量视图”功能以公共预览版形式提供，并且其可用性和可靠性与正式发布版本中的功能可能不在同一级别。 此功能不受支持，可能存在功能限制，并且可能不是在所有 Azure 区域都可用。 有关此功能可用性和状态方面的最新通知，请参阅 [Azure 流量管理器更新](https://azure.microsoft.com/updates/?product=traffic-manager)页。
-
 ### <a name="what-does-traffic-view-do"></a>流量视图有什么作用？
 流量视图是流量管理器的一项功能，它可帮助你更深入地了解你的用户以及他们的体验。 它使用流量管理器接收的查询和服务维护的网络延迟智能表提供以下信息：
 - 用户在 Azure 中连接到终结点所在的区域。
@@ -196,7 +191,7 @@ ms.lasthandoff: 02/03/2018
 - 用户被传送到的 Azure 区域。
 - 用户关于这些 Azure 区域的延迟体验。
 
-除了作为原始数据供你下载以外，该信息还在门户中通过表格视图供你使用。
+除了作为原始数据供下载以外，该信息还在门户中通过地形图叠加和表格视图供使用。
 
 ### <a name="how-can-i-benefit-from-using-traffic-view"></a>如何从使用流量视图中受益？
 
@@ -208,7 +203,7 @@ Azure 监视器可用于以聚合级别理解你的配置文件及其终结点�
 
 ### <a name="does-traffic-view-use-edns-client-subnet-information"></a>流量视图是否使用 EDNS 客户端子网信息？
 
-流量视图在创建其输出时不会考虑 EDNS 客户端子网信息。 它使用你的用户本地 DNS 解析器的 IP 地址对其分组。
+Azure 流量管理器提供的 DNS 查询考虑了 ECS 信息以提高路由的准确性。 但是，创建显示用户连接位置的数据集时，流量视图仅使用 DNS 解析器的 IP 地址。
 
 ### <a name="how-many-days-of-data-does-traffic-view-use"></a>流量视图使用多少天的数据？
 
@@ -219,15 +214,18 @@ Azure 监视器可用于以聚合级别理解你的配置文件及其终结点�
 在流量管理器配置文件中使用托管在 Azure 区域外的外部终结点时，可以选择将其映射到 Azure 区域，该区域是其延迟特征的代理（如果使用性能路由方法，确实则需要使用此功能）。 如果它具有此 Azure 区域映射，则将在创建流量视图输出时使用该 Azure 区域的延迟指标。 如果未指定 Azure 区域，则延迟信息在这些外部终结点的数据中为空。
 
 ### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>是否需要对我的订阅中的每个配置文件启用流量视图？
-在预览期间，在订阅级别启用流量视图，并可用于该订阅下的所有流量管理器配置文件。
 
-### <a name="how-can-i-turn-off-traffic-view"></a>如何关闭流量视图？
-在预览期间，我们要求你创建一个支持票证，以禁用你的订阅的流量视图。
+预览期间，在订阅级别启用了流量视图。 作为我们在公开发行前所做改进的一部分，你现在可在配置文件级别启用流量视图，从而能更精确地启用此功能。 默认情况下，将禁用配置文件的流量视图。
+
+>[!NOTE]
+>如果预览期间在订阅级别启用了流量视图，则现在需要为该订阅下的每个配置文件重新启用流量视图。
+ 
+### <a name="how-can-i-turn-off-traffic-view"></a>如何关闭流量视图？ 
+可使用门户或 REST API 关闭任何配置文件的流量视图。 
 
 ### <a name="how-does-traffic-view-billing-work"></a>流量视图计费如何工作？
 
 流量视图定价基于用于创建输出的数据点数。 目前，支持的唯一数据类型是你的配置文件收到的查询。 此外，只对启用了流量视图时完成的处理计费。 这意味着，如果在某月的某个时段启用了流量视图并在其他时段将其关闭，则只对启用了该功能时所处理的数据点计费。
-在预览期间，不会对使用流量视图计费。
 
 ## <a name="traffic-manager-endpoints"></a>流量管理器终结点
 

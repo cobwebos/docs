@@ -1,28 +1,25 @@
 ---
-title: "Azure Active Directory B2C：Microsoft 帐户配置 | Microsoft Docs"
-description: "在 Azure Active Directory B2C 保护的应用程序中向用户提供使用 Microsoft 帐户的注册和登录功能。"
+title: Azure Active Directory B2C：Microsoft 帐户配置 | Microsoft Docs
+description: 在 Azure Active Directory B2C 保护的应用程序中向用户提供使用 Microsoft 帐户的注册和登录功能。
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: 06407322-142c-4cb3-9106-a8d752c4c853
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: e746a5e7a2d9a13eb23ac0268104a9394c9b198d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: e167c8737bc600f52759f33456fec3bc6e0a3678
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-microsoft-accounts"></a>Azure Active Directory B2C：向用户提供使用 Microsoft 帐户的注册和登录功能
 ## <a name="create-a-microsoft-account-application"></a>创建 Microsoft 帐户应用程序
-要将 Microsoft 帐户用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 Microsoft 帐户应用程序并向其提供合适的参数。 需要使用 Microsoft 帐户来完成此操作。 如果没有此帐户，可以在 [https://www.live.com/](https://www.live.com/) 上获取。
+要将 Microsoft 帐户用作 Azure Active Directory (Azure AD) B2C 中的标识提供者，需要创建 Microsoft 帐户应用程序并向其提供合适的参数。 需要使用 Microsoft 帐户来完成此操作。 如果没有账户，可在 [https://www.live.com/](https://www.live.com/) 处获取。
 
 1. 转到 [Microsoft 应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)，并使用 Microsoft 帐户凭据登录。
 2. 单击“添加应用程序”。
@@ -47,7 +44,7 @@ ms.lasthandoff: 12/11/2017
     ![Microsoft 帐户 — 生成新密码](./media/active-directory-b2c-setup-msa-app/msa-generate-new-password.png)
    
     ![Microsoft 帐户 — 新密码](./media/active-directory-b2c-setup-msa-app/msa-new-password.png)
-8. 选中“高级选项”部分下的“Live SDK 支持”复选框。 单击“保存” 。
+8. 选中“高级选项”部分下的“Live SDK 支持”复选框。 单击“ **保存**”。
    
     ![Microsoft 帐户 — Live SDK 支持](./media/active-directory-b2c-setup-msa-app/msa-live-sdk-support.png)
 

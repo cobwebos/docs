@@ -1,9 +1,9 @@
 ---
-title: "Microsoft Azure 和 Azure Monitor 中的警报概述 | Microsoft 文档"
-description: "使用警报可以监视 Azure 资源指标、事件或日志，并在符合指定的条件时接收通知。"
+title: Microsoft Azure 和 Azure Monitor 中的警报概述 | Microsoft 文档
+description: 使用警报可以监视 Azure 资源指标、事件或日志，并在符合指定的条件时接收通知。
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: a6dea224-57bf-43d8-a292-06523037d70b
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1f0182f27cfb8441a09abd2031b365a4ab4315a
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: c64ca224705b7da57846e53bdc28d6d03eb28b06
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-are-alerts-in-microsoft-azure"></a>什么是 Microsoft Azure 中的警报？
 本文介绍了 Microsoft Azure 中的各种警报来源、这些警报的目的、警报优点以及警报的使用方法。 本文特别适用于 Azure Monitor，但也提供了其他带有警报服务的链接。 警报提供了一种在 Azure 中监视的方法，允许配置数据条件，并在条件与最新监视数据匹配时发出通知。
@@ -33,9 +33,6 @@ Azure 使用以下术语来描述警报和及其功能：
 * **通知** - 警报变为活动状态时采取的操作。
 * **操作** - 发送给通知接收方的特定通话（例如，通过电子邮件发送地址或发布到 Webhook URL）。 通知通常可以触发多个操作。
 
-    > [!NOTE]
-    > 作为 Azure 中警报进化的一部分，在预览版中提供了新的统一体验。 新的“警报(预览)”体验使用不同的分类。 详细了解[警报（预览）](monitoring-overview-unified-alerts.md)。 
-    >
 
 ## <a name="alerts-in-different-azure-services"></a>不同 Azure 服务中的警报
 警报可在多个 Azure 监视服务中使用。 有关如何以及何时使用这些服务的信息，请参阅[此文](./monitoring-overview.md)。 以下是 Azure 中可用的警报类型的明细：
@@ -44,22 +41,18 @@ Azure 使用以下术语来描述警报和及其功能：
 | 服务 | 警报类型 | 支持的服务 | 说明 |
 |---|---|---|---|
 | Azure 监视器 | [指标警报](./insights-alerts-portal.md) | [Azure Monitor 中支持的指标](./monitoring-supported-metrics.md) | 任何平台级指标满足特定条件时（例如，VM 上的 CPU % 在过去 5 分钟内大于 90），就会收到通知。 |
-|Azure 监视器 | [准实时指标警报（预览版）](./monitoring-near-real-time-metric-alerts.md)| [Azure Monitor 中支持的资源](./monitoring-near-real-time-metric-alerts.md#what-resources-can-i-create-near-real-time-metric-alerts-for) | 当一个或多个平台级指标满足指定条件时（例如，VM 的 CPU 百分比大于 90 并且过去 5 分钟网络传入大于 500 MB ），就会收到通知，速度比指标警报更快。 |
+|Azure 监视器 | [准实时指标警报](./monitoring-near-real-time-metric-alerts.md)| [Azure Monitor 中支持的资源](./monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported) | 当一个或多个平台级指标满足指定条件时（例如，VM 的 CPU 百分比大于 90 并且过去 5 分钟网络传入大于 500 MB ），就会收到通知，速度比指标警报更快。 |
 | Azure 监视器 | [活动日志警报](./monitoring-activity-log-alerts.md) | Azure 资源管理器中可用的所有资源类型 | 当 [Azure 活动日记](./monitoring-overview-activity-logs.md)中的任何新事件符合特定条件时（例如，myProductionResourceGroup 中出现“删除 VM”操作或出现状态为“Active”的新服务运行状况事件时）就会收到通知。 |
 | Application Insights | [指标警报](../application-insights/app-insights-alerts.md) | 任何用于将数据发送到 Application Insights 的检测应用程序 | 任何应用程序级指标符合特定条件（例如，服务器响应时间大于 2 秒）时，就会收到通知。 |
 | Application Insights | [Web 测试警报](../application-insights/app-insights-monitor-web-app-availability.md) | 任何用于将数据发送到 Application Insights 的检测网站 | 网站的可用性或响应度低于预期时，就会收到通知。 |
 | Log Analytics | [Log Analytics 警报](../log-analytics/log-analytics-alerts.md) | 配置为将数据发送到 Log Analytics 的任何服务 | 当 Log Analytics 搜索查询符合特定标准的指标和/或事件数据时，就会收到通知。 |
 
 ## <a name="alerts-on-azure-monitor-data"></a>关于 Azure Monitor 数据的警报
-Azure Monitor 提供的数据有三种类型的警报 - 指标警报、准实时指标警报（预览版）和活动日志警报。
+Azure Monitor 提供的数据有三种类型的警报 - 指标警报、准实时指标警报和活动日志警报。
 
-* **指标警报** - 当指定的指标值越过了分配的阈值时，就会触发此警报。 当警报“激活”（当阈值越过并满足警报条件时）以及“已解决”（当阈值再次超过并且不再满足条件）时，警报将生成通知。 有关 Azure Monitor 支持的可用指标（不断增加中）的列表，请参阅 [Azure Monitor 支持的指标的列表](monitoring-supported-metrics.md)。
-* 准实时指标警报（预览版） - 这些警报类似于指标警报，但在以下几个方面有所不同。 首先，顾名思义，这些警报可准实时触发（最快 1 分钟）。 它们还支持监视多个（目前两个）指标。  当警报“激活”（同时越过每个指标的阈值并满足警报条件时）以及“已解决”（至少一个指标再次超过阈值并且不再满足条件）时，警报将生成通知。
+* **指标警报** - 当指定的指标值越过了分配的阈值时，就会触发此警报。 当警报“激活”（当阈值越过并满足警报条件时）以及“已解决”（当阈值再次超过并且不再满足条件）时，警报将生成通知。 这些是较旧的指标警报。 有关较新的指标警报，请参阅下文。
 
-    > [!NOTE]
-    > 准实时指标警报目前以公开预览版提供。 功能和用户体验可能会发生变化。
-    >
-    >
+* **准实时指标警报** - 与以前的指标警报相比，这些新一代指标警报的功能已经过改进。 这些警报可以 1 分钟的频率运行，还支持监视多个（目前是两个）指标。  当警报“激活”（同时越过每个指标的阈值并满足警报条件时）以及“已解决”（至少一个指标再次超过阈值并且不再满足条件）时，警报将生成通知。
 
 * **活动日志警报** - 当生成与分配的筛选器条件匹配的活动日志事件时，触发的流式处理日志警报。 这些警报只有“已激活”这一个状态，因为警报引擎只需将筛选器条件应用到任何新事件。 出现新的服务运行状况事件时，或用户或应用程序在订阅中执行操作（例如“删除虚拟机”）时，可以使用这些警报通知。
 
@@ -76,9 +69,9 @@ Azure Monitor 提供的数据有三种类型的警报 - 指标警报、准实时
     - Azure 逻辑应用
     - 第三方服务
 
-准实时指标警报（预览版）和活动日志警报使用操作组。
+准实时指标警报和活动日志警报使用操作组。
 
-指标警报尚不可使用操作组。 在单个指标警报中，可将通知配置为：
+“警报”下可用的旧指标警报（经典）不使用操作组。 在单个指标警报中，可将通知配置为：
 * 将电子邮件通知发送到服务管理员、共同管理员或指定的其他电子邮件。
 * 调用 Webhook，以便用户启动其他自动化操作
 
@@ -86,15 +79,15 @@ Azure Monitor 提供的数据有三种类型的警报 - 指标警报、准实时
 了解警报规则以及如何使用以下工具来配置这些规则：
 
 * 详细了解[指标](monitoring-overview-metrics.md)
-* [通过 Azure 门户配置指标警报](insights-alerts-portal.md)
-* 配置[指标警报 PowerShell](insights-alerts-powershell.md)
-* 配置[指标警报命令行接口 (CLI)](insights-alerts-command-line-interface.md)
-* 配置[指标警报 Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [通过 Azure 门户配置经典指标警报](insights-alerts-portal.md)
+* 配置[经典指标警报 PowerShell](insights-alerts-powershell.md)
+* 配置[经典指标警报命令行接口 (CLI)](insights-alerts-command-line-interface.md)
+* 配置[经典指标警报 Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 * 详细了解[活动日志](monitoring-overview-activity-logs.md)
 * [通过 Azure 门户配置活动日志警报](monitoring-activity-log-alerts.md)
 * [通过 Resource Manager 配置活动日志警报](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
 * 查看[活动日志警报 webhook 架构](monitoring-activity-log-alerts-webhook.md)
-* 详细了解[准实时指标警报](monitoring-near-real-time-metric-alerts.md)
+* 了解有关[较新指标警报](monitoring-near-real-time-metric-alerts.md)的详细信息
 * 详细了解[服务通知](monitoring-service-notifications.md)
 * 详细了解[操作组](monitoring-action-groups.md)
-* 配置[通过警报（预览）发出警报](monitor-alerts-unified-usage.md)
+* 配置[警报](monitor-alerts-unified-usage.md)

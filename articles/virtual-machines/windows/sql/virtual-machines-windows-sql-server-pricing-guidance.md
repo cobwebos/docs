@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/20/2018
 ms.author: jroth
-ms.openlocfilehash: 3103ca2c659e40fd945b597ed4671fe96daf1905
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a275df84ce784147b5fd4f09afe4995417affffd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM 的定价指南
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 03/08/2018
 
 ### <a name="pay-per-usage"></a>按使用情况付费
 
-“按使用情况支付 SQL Server 许可证费用”意味着 Azure VM 的每分钟运行成本包括 SQL Server 许可证的费用。 有关不同 SQL Server 版本（Web、Standard 和 Enterprise）的定价，可参阅 [Azure VM 定价页](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)。 所有版本的 SQL Server（2012 SP3 到 2017）的费用相同。 通常与 SQL Server 许可一样，每分钟许可费用取决于 VM 内核数。
+“按使用情况支付 SQL Server 许可证费用”意味着 Azure VM 的每秒运行成本包括 SQL Server 许可证的费用。 有关不同 SQL Server 版本（Web、Standard 和 Enterprise）的定价，可参阅 [Azure VM 定价页](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)。 所有版本的 SQL Server（2012 SP3 到 2017）的费用相同。 通常与 SQL Server 许可一样，每秒许可费用取决于 VM 内核数。
 
 建议在以下情况采用“按使用情况支付 SQL Server 许可费用”：
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 03/08/2018
 > 请于 10 日内告知我们要在 Azure 中使用的 SQL Server 许可证数。 上述映像的链接具有如何执行此操作的说明。
 
 > [!NOTE]
-> 无法更改按分钟付费的 SQL Server VM 的许可模式来使用自己的许可证。 要使用自己的许可证，必须创建新的 BYOL VM，并将数据库迁移到新 VM。 
+> 无法更改按秒付费的 SQL Server VM 的许可模式来使用自己的许可证。 要使用自己的许可证，必须创建新的 BYOL VM，并将数据库迁移到新 VM。 
 
 ## <a name="avoid-unnecessary-costs"></a>避免不必要的成本
 
