@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 04/03/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2c10dcf185c62f3672be80ad2e3d049eae82fe6b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e37b63580d8cea4b5772bc54f7b2f79980afc0bc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack 服务策略
 本文介绍 Azure Stack 集成系统的服务策略，以及必须如何做才能使系统保持在受支持的状态。 
@@ -47,19 +47,6 @@ Microsoft 更新包具有以下命名约定，可帮助你轻松识别发布日�
 
 Microsoft 软件更新包不是累积性，并且需要作为必备组件以前的更新包。 如果你决定将一个或多个更新延迟，请考虑整体运行时，如果你想要获取的最新版本。 
 
-下表显示示例更新包发布、其先决条件，以及要维持支持必要的系统最低支持版本。 该表基于 Azure Stack 集成系统的初始版本（内部版本 1708），第一次更新包发布 (1709) 是在 2017 年 9 月。 
-
-| 最新更新包（*示例*） | 先决条件 | 最低支持版本 |
-| -- | -- | -- |
-| 1710 | 1709 | 不适用 |
-| 1711 | 1710 | 1709 |
-| 1712 | 1711 | 1710 |
-| 1802 | 1712 | 1711 |
-| 1803 | 1802 | 1712 |
-| 1804 | 1803 | 1802 |
-| 1805 | 1804 | 1803 |
-| | | 
-在上表中，没有任何版本 1801年。
 
 ## <a name="next-steps"></a>后续步骤
 

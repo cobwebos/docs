@@ -216,7 +216,7 @@ ms.lasthandoff: 03/23/2018
     ./install.sh
     ```
 
-5. 若要访问 Service Fabric Explorer，请打开最常用的浏览器，然后键入 https://testlinuxcluster.westus.cloudapp.azure.com:19080。 从证书存储中选择需要用来连接到此终结点的证书。 如果使用 Linux 计算机，则必须将通过 *new-service-fabric-cluster-certificate.sh* 脚本生成的证书导入到 Chrome 中，然后才能查看 Service Fabric Explorer。 如果使用 Mac，则必须将 PFX 文件安装到密钥链中。 你注意到应用程序已安装到群集上。 
+5. 若要访问 Service Fabric Explorer，请打开最常用的浏览器，然后键入 https://testlinuxcluster.westus.cloudapp.azure.com:19080 。 从证书存储中选择需要用来连接到此终结点的证书。 如果使用 Linux 计算机，则必须将通过 *new-service-fabric-cluster-certificate.sh* 脚本生成的证书导入到 Chrome 中，然后才能查看 Service Fabric Explorer。 如果使用 Mac，则必须将 PFX 文件安装到密钥链中。 你注意到应用程序已安装到群集上。 
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
