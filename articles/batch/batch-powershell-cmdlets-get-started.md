@@ -1,11 +1,11 @@
 ---
-title: "Azure Batch PowerShell 入门 | Microsoft 文档"
-description: "快速介绍可用于管理 Batch 资源的 Azure PowerShell cmdlet。"
+title: Azure Batch PowerShell 入门 | Microsoft 文档
+description: 快速介绍可用于管理 Batch 资源的 Azure PowerShell cmdlet。
 services: batch
-documentationcenter: 
-author: tamram
-manager: timlt
-editor: 
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: f9ad62c5-27bf-4e6b-a5bf-c5f5914e6199
 ms.service: batch
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e33be6ed658e00250ea1e80cd7da4d348fb18296
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6767257a540e4f29bb5445a718ad65a31e1f373e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell cmdlet 管理 Batch 资源
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 执行以下操作，使用 Azure PowerShell 来管理批处理资源。
 
 * [安装和配置 Azure PowerShell](/powershell/azure/overview)
-* 运行 **Login-AzureRmAccount** cmdlet 连接到订阅（Azure Resource Manager 模块中随附了 Azure Batch cmdlet）：
+* 运行 **Login-AzureRmAccount** cmdlet 连接到订阅（Azure 资源管理器模块中随附了 Azure Batch cmdlet）：
   
     `Login-AzureRmAccount`
 * **注册到批处理提供程序命名空间**。 对于每个订阅，只需执行此操作**一次**。

@@ -1,12 +1,12 @@
 ---
-title: "什么是 Azure 备份？ | Microsoft Docs"
-description: "使用 Azure 备份，可以从 Windows Server、Windows 工作站、System Center DPM 服务器以及 Azure 虚拟机备份和还原数据与工作负荷。"
+title: 什么是 Azure 备份？ | Microsoft Docs
+description: 使用 Azure 备份，可以从 Windows Server、Windows 工作站、System Center DPM 服务器以及 Azure 虚拟机备份和还原数据与工作负荷。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "备份和还原;恢复服务;备份解决方案"
+editor: ''
+keywords: 备份和还原;恢复服务;备份解决方案
 ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;anuragm
 ms.custom: mvc
-ms.openlocfilehash: 600c4a29d7d7daabbbf6d1825671d109ea499c4b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 00ed2a64c672e1d2ae9a0037905a544b6c4424b7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure 备份功能概述
 Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 Microsoft 云端数据。 Azure 备份将现有的本地或异地备份解决方案替换为安全可靠、性价比高的云端解决方案。 Azure 备份提供多个组件，可将其下载并部署到适当计算机、服务器或云端。 依据要保护的内容选择部署的组件或代理。 无论是保护本地数据还是云端数据，所有 Azure 备份组件均可用于将数据备份到 Azure 的恢复服务保管库中。 请参阅本文稍后部分的 [Azure 备份组件表格](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use)，了解保护特定数据、应用程序或工作负荷所用的组件。
@@ -34,7 +34,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 
 **无限缩放** - Azure 备份利用 Azure 云的基础功能和无限缩放功能实现高可用性 - 无需维护或监视开销。 可设置警报来获取相关事件信息，但无需担忧云端数据的高可用性。
 
-**多个存储选项** - 高可用性的一个方面是存储复制。 Azure 备份提供两种类型的复制：[本地冗余存储](../storage/common/storage-redundancy.md#locally-redundant-storage)和[异地冗余存储](../storage/common/storage-redundancy.md#geo-redundant-storage)。 根据需要选择备份存储选项：
+**多个存储选项** - 高可用性的一个方面是存储复制。 Azure 备份提供两种类型的复制：[本地冗余存储](../storage/common/storage-redundancy-lrs.md)和[异地冗余存储](../storage/common/storage-redundancy-grs.md)。 根据需要选择备份存储选项：
 
 * 本地冗余存储 (LRS) 将数据中心的存储缩放单位中的数据复制三次（创建三个数据副本）。 数据的所有副本存在于同一区域。 LRS 是一种低成本选项，用于保护数据免受本地硬件故障的影响。
 
@@ -219,7 +219,7 @@ Azure 备份针对每个受保护实例实施 9999 个恢复点（也称为备�
 
 
 ## <a name="what-is-a-recovery-services-vault"></a>什么是恢复服务保管库？
-恢复服务保管库是 Azure 中的联机存储实体，用于保存备份副本、恢复点、备份策略之类的数据。 可以使用恢复服务保管库，为 Azure 服务以及本地服务器和工作站保存备份数据。 使用恢复服务保管库可以方便地组织备份数据，并将管理开销降至最低。 在每个 Azure 订阅中，每个 Azure 区域最多可以创建 25 个恢复服务保管库。 在考虑存储数据的位置时，并非所有区域都是相同的。 请参阅[异地冗余存储](../storage/common/storage-redundancy.md#geo-redundant-storage)，了解区域配对和其他存储注意事项。
+恢复服务保管库是 Azure 中的联机存储实体，用于保存备份副本、恢复点、备份策略之类的数据。 可以使用恢复服务保管库，为 Azure 服务以及本地服务器和工作站保存备份数据。 使用恢复服务保管库可以方便地组织备份数据，并将管理开销降至最低。 在每个 Azure 订阅中，每个 Azure 区域最多可以创建 25 个恢复服务保管库。 在考虑存储数据的位置时，并非所有区域都是相同的。 请参阅[异地冗余存储](../storage/common/storage-redundancy-grs.md)，了解区域配对和其他存储注意事项。
 
 基于 Azure Service Manager 的备份保管库是第一个版本的保管库。 恢复服务保管库增加了 Azure 资源管理器模型功能，是第二个版本的保管库。 请参阅[恢复服务保管库概述](backup-azure-recovery-services-vault-overview.md)一文，了解对功能差异的完整说明。 无法再创建备份保管库，所有现有的备份保管库都已升级到恢复服务保管库。 可以使用 Azure 门户管理已升级到恢复服务保管库的保管库。
 

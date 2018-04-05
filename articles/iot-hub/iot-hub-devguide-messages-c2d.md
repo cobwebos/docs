@@ -13,15 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: d265d35c7d5a394afa0e59f40ff1a5741e0ec35c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 670cf45a48ca4b72576cedddd4678c0d569401cd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>从 IoT 中心发送云到设备的消息
 
 若要从解决方案后端向设备应用发送单向通知，请从 IoT 中心向设备发送云到设备的消息。 有关 IoT 中心支持的其他云到设备选项的讨论，请参阅[云到设备的通信指南][lnk-c2d-guidance]。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 可以通过面向服务的终结点 (**/messages/devicebound**) 发送从云到设备的消息。 设备可以通过特定于设备的终结点 (/devices/{deviceId}/messages/devicebound) 接收这些消息。
 

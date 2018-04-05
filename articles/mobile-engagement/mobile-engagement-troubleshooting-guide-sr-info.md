@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 故障排除指南 - 服务请求信息"
-description: "为解决 Azure Mobile Engagement 问题支持团队所请求的服务请求信息"
+title: Azure Mobile Engagement 故障排除指南 - 服务请求信息
+description: 为解决 Azure Mobile Engagement 问题支持团队所请求的服务请求信息
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 28d49915-d0c2-4fac-b07a-b3e9b6b8528a
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a4497046df74003a733d80f190e82b5e798d398e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d08ccbe6639809f16c41b3399cbe374d34c9a5bb
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="service-request-sr-information"></a>服务请求 (SR) 信息
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 打开任意 Mobile Engagement 服务的服务请求时，提供以下信息：
 
 ## <a name="ids-applicable-identifiers-related-to-your-issue"></a>ID：问题相关的相应标识符：

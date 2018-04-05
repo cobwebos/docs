@@ -1,11 +1,11 @@
 ---
-title: "Windows Phone Silverlight Engagement SDK 集成"
-description: "如何将 Azure Mobile Engagement 与 Windows Phone Silverlight 应用集成"
+title: Windows Phone Silverlight Engagement SDK 集成
+description: 如何将 Azure Mobile Engagement 与 Windows Phone Silverlight 应用集成
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 447fea8d-f4e3-4ad4-8ec0-8e3cf1ad3ab0
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 72a581643ccde55f8b849c511c3365e029d7cbcb
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: f041f19ceff366a34b1761bfdca12242f4bdf9b8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-phone-silverlight-engagement-sdk-integration"></a>Windows Phone Silverlight Engagement SDK 集成
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 > [!div class="op_single_selector"]
 > * [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md) 
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md) 
@@ -114,7 +118,7 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
       using Microsoft.Azure.Engagement;
 * 将 `PhoneApplicationPage` 替换为 `EngagementPage`：
 
-**没有 Engagement：**
+**Without Engagement:**
 
         namespace Example
         {
@@ -149,7 +153,7 @@ Engagement 配置在项目的 `Resources\EngagementConfiguration.xml` 文件中�
       xmlns:engagement="clr-namespace:Microsoft.Azure.Engagement;assembly=Microsoft.Azure.Engagement.EngagementAgent.WP"
 * 将 `phone:PhoneApplicationPage` 替换为 `engagement:EngagementPage`：
 
-**没有 Engagement：**
+**Without Engagement:**
 
         <phone:PhoneApplicationPage>
             <!-- layout -->

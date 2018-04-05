@@ -1,11 +1,11 @@
 ---
-title: "开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET) | Microsoft Docs"
-description: "在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 中的 ASP.NET 项目中使用 Azure Blob 存储"
+title: 开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET) | Microsoft Docs
+description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 中的 ASP.NET 项目中使用 Azure Blob 存储
 services: storage
-documentationcenter: 
-author: kraigb
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: b3497055-bef8-4c95-8567-181556b50d95
 ms.service: storage
 ms.workload: web
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
-ms.author: kraig
-ms.openlocfilehash: cb406e528568dafd1e142943f5273ad58e550609
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.author: ghogen
+ms.openlocfilehash: 657eff077f9a72bad97e8bea3ad3efc0da1420d5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET)
 
@@ -32,7 +32,7 @@ Azure Blob 存储是一种将非结构化数据作为对象或 Blob 存储在云
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 

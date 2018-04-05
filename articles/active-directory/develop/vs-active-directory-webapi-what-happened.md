@@ -3,8 +3,8 @@ title: 连接到 Azure AD 时对 WebAPI 项目所做的更改 | Microsoft Docs
 description: 介绍使用 Visual Studio 连接到 Azure AD 时，WebAPI 项目会发生什么情况
 services: active-directory
 documentationcenter: ''
-author: kraigb
-manager: ghogen
+author: ghogen
+manager: douge
 editor: ''
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
-ms.author: kraigb
+ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: 140f555d28c4d5a923b9c255d8e61d7aea9bb23f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fc6506ccb7b4c9b7fa43a378df47094de92c73b6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebAPI 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况
 
@@ -31,9 +31,9 @@ ms.lasthandoff: 03/16/2018
 
 有关使用连接服务的信息，请参阅[入门](vs-active-directory-webapi-getting-started.md)。
 
-## <a name="added-references"></a>已添加引用
+## <a name="added-references"></a>添加的引用
 
-影响项目文件 *.NET 引用）和 `packages.config`（NuGet 引用）。
+影响项目文件 *.NET 引用和 `packages.config`（NuGet 引用）。
 
 | Type | 引用 |
 | --- | --- |

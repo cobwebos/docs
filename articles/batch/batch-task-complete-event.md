@@ -1,22 +1,22 @@
 ---
-title: "Azure Batch 任务完成事件 | Microsoft Docs"
-description: "批处理任务完成事件参考。"
+title: Azure Batch 任务完成事件 | Microsoft Docs
+description: 批处理任务完成事件参考。
 services: batch
-author: tamram
-manager: timlt
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: tamram
-ms.openlocfilehash: 015adf7dbc47c29a78df4e4889b2ee1ddcccdd8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: 9f25d9cbdc70282afd71b1a4b9ac72250922d163
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="task-complete-event"></a>任务完成事件
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/11/2017
 }
 ```
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |jobId|String|包含任务的作业的 id。|
 |id|String|任务的 id。|
@@ -64,26 +64,26 @@ ms.lasthandoff: 10/11/2017
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |poolId|String|运行任务的池的 id。|
 |nodeId|String|运行任务的节点的 id。|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |numberOfInstances|Int32|任务所需的计算节点数。|
 
 ###  <a name="constraints"></a> constraints
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |maxTaskRetryCount|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，然后重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |startTime|DateTime|任务开始运行的时间。 “Running”对应于**正在运行**状态，因此如果任务指定资源文件或应用程序包，则开始时间反映了任务开始下载或部署这些内容的时间。  如果任务已重启或重试，该时间是任务开始运行的最近时间。|
 |endTime|DateTime|任务完成的时间。|

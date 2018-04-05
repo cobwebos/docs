@@ -1,11 +1,11 @@
 ---
-title: "Cloud Cruiser 和 Microsoft Azure 计费 API 集成 | Microsoft Docs"
-description: "Microsoft Azure 计费合作伙伴 Cloud Cruiser 将 Azure 计费 API 集成到了其产品中，从而能够根据亲身体验提供独特的观点。  对于有兴趣使用/试用 Cloud Cruiser for Microsoft Azure Pack 服务的 Azure 和 Cloud Cruiser 客户而言，这是非常有用的。"
-services: 
-documentationcenter: 
-author: BryanLa
+title: Cloud Cruiser 和 Microsoft Azure 计费 API 集成 | Microsoft Docs
+description: Microsoft Azure 计费合作伙伴 Cloud Cruiser 将 Azure 计费 API 集成到了其产品中，从而能够根据亲身体验提供独特的观点。  对于有兴趣使用/试用 Cloud Cruiser for Microsoft Azure Pack 服务的 Azure 和 Cloud Cruiser 客户而言，这是非常有用的。
+services: ''
+documentationcenter: ''
+author: tonguyen
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: b65128cf-5d4d-4cbd-b81e-d3dceab44271
 ms.service: billing
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
 ms.author: mobandyo;sirishap;bryanla
-ms.openlocfilehash: 7d66cac98afa72c807f597403b1e2bd278e45cec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ddb81078e8019284c0481d4ea8d72253d3f0a5a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cloud Cruiser 和 Microsoft Azure 计费 API 集成
 本文介绍如何在 Cloud Cruiser 中使用从新的 Microsoft Azure 计费 API 中收集到的信息，以进行工作流成本模拟和分析。
@@ -201,7 +201,7 @@ Cloud Cruiser 工作簿提供自动化的方式来从使用情况 API 收集信�
 ### <a name="next-steps"></a>后续步骤
 * 有关创建 Cloud Cruiser 工作簿和报表的详细说明，请参阅 Cloud Cruiser 联机[文档](http://docs.cloudcruiser.com/)（需要有效登录）。  有关 Cloud Cruiser 的详细信息，请联系 [info@cloudcruiser.com](mailto:info@cloudcruiser.com)。
 * 有关 Azure 资源使用情况 API 和 RateCard API 的概述，请参阅[深入了解 Microsoft Azure 资源消耗](billing-usage-rate-card-overview.md)。
-* 请查看 [Azure 计费 REST API 参考](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)，了解有关这两种 API（属于 Azure Resource Manager 提供的 API 集）的更多信息。
+* 请查看 [Azure 计费 REST API 参考](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)，了解有关这两种 API（属于 Azure 资源管理器提供的 API 集）的更多信息。
 * 如果想直接深入了解示例代码，请查看在 [Azure 代码示例](https://azure.microsoft.com/documentation/samples/?term=billing)上的 Microsoft Azure 计费 API 代码示例。
 
 ### <a name="learn-more"></a>了解详细信息

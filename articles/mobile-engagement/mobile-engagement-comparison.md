@@ -1,11 +1,11 @@
 ---
-title: "比较 Azure Mobile Engagement 和其他相似的 Azure 服务"
-description: "比较 Azure Mobile Engagement 和其他相似的 Azure 服务 - HockeyApp、AppInsights 和通知中心"
+title: 比较 Azure Mobile Engagement 和其他相似的 Azure 服务
+description: 比较 Azure Mobile Engagement 和其他相似的 Azure 服务 - HockeyApp、AppInsights 和通知中心
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1f114775-3a9a-4dd4-8d59-b10d1da9a68b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 7df2eb9ecebe3313dad9c15171552a084787f6b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57be3b235c5f439741155a70df7ddbe8a80906f2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="comparing-azure-mobile-engagement-with-other-similar-azure-services"></a>比较 Azure Mobile Engagement 和其他相似的 Azure 服务
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 Microsoft Azure 提供的服务列表在不断扩展，有时你可能会疑惑 Azure Mobile Engagement 与你刚刚看到或听说过的其他服务有何不同。 本文试图消除这种疑惑，并指导用户在最佳使用时机选择 Azure Mobile Engagement。 
 
 Azure Mobile Engagement 是专门面向数字营销人员/CMO 的服务，但是也可用于任何想要提高其移动应用使用率、延长保留期、增加盈利的移动应用所有者或发布者。 

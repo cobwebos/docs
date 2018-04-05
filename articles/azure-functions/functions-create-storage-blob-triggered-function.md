@@ -1,26 +1,26 @@
 ---
-title: "在 Azure 中创建由 Blob 存储触发的函数 | Microsoft Docs"
-description: "使用 Azure Functions 创建由添加到 Azure Blob 存储的项调用的无服务器函数。"
+title: 在 Azure 中创建由 Blob 存储触发的函数 | Microsoft Docs
+description: 使用 Azure Functions 创建由添加到 Azure Blob 存储的项调用的无服务器函数。
 services: azure-functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.service: functions
 ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/07/2017
+ms.date: 03/27/2018
 ms.author: glenga
-ms.custom: mvc
-ms.openlocfilehash: e34d3634b592efe4581135f9dee52bf77d7506cd
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.custom: mvc, cc996988-fb4f-47
+ms.openlocfilehash: 928ea1dbb68206e128f0593ba15cb48935ab1ccf
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>创建由 Azure Blob 存储触发的函数
 
@@ -32,8 +32,6 @@ ms.lasthandoff: 12/14/2017
 
 + 下载并安装 [Microsoft Azure 存储资源管理器](http://storageexplorer.com/)。
 + Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
 ## <a name="create-an-azure-function-app"></a>创建 Azure Function App
 

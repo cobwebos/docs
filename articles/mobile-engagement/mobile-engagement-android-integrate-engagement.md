@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Android SDK 集成"
-description: "Azure Mobile Engagement Android SDK 的最新更新和过程"
+title: Azure Mobile Engagement Android SDK 集成
+description: Azure Mobile Engagement Android SDK 的最新更新和过程
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a5487793-1a12-4f6c-a1cf-587c5a671e6b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 35bd92e52b7a02f58620a03156902f9f91be57ae
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fffff6de996b8295639b3d595c5f778de8a0f74f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-on-android"></a>如何在 Android 上集成 Engagement
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 > [!div class="op_single_selector"]
 > * [Windows Universal](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -140,13 +144,13 @@ ms.lasthandoff: 12/21/2017
 > 
 > 
 
-可以在 `src` 文件夹中找到这些类，然后将其复制到项目中。 该类还存在于 **JavaDoc** 中。
+可以在 `src` 文件夹中找到这些类，并将其复制到项目中。 该类还存在于 **JavaDoc** 中。
 
 ### <a name="alternate-method-call-startactivity-and-endactivity-manually"></a>备用方法：手动调用 `startActivity()` 和 `endActivity()`
 如果无法或不想重载 `Activity` 类，可以直接调用 `EngagementAgent` 方法来启动和结束活动。
 
 > [!IMPORTANT]
-> 即使在应用程序关闭后（实际上，Android 上的应用程序永远不会关闭），Android SDK 也从不调用 `endActivity()` 方法。 因此，*强烈*建议在“*所有*”活动的 `onResume` 回调中调用 `startActivity()` 方法，在“*所有*”活动的 `onPause()` 回调中调用 `endActivity()` 方法。 这是确保会话不会遗漏的唯一方法。 如果会话遗漏，Engagement 服务将永远不从 Engagement 后端断开（因为只要会话处于挂起状态，该服务就会保持连接）。
+> 即使在应用程序关闭后（实际上，Android 上的应用程序永远不会关闭），Android SDK 也从不调用 `endActivity()` 方法。 因此，*强烈*建议在*所有*活动的 `onResume` 回调中调用 `startActivity()` 方法，在*所有*活动的 `onPause()` 回调中调用 `endActivity()` 方法。 这是确保会话不会遗漏的唯一方法。 如果会话遗漏，Engagement 服务将永远不从 Engagement 后端断开（因为只要会话处于挂起状态，该服务就会保持连接）。
 > 
 > 
 

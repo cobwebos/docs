@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f64d79cd3929a279c7e279e74b0b21d163c0fa45
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 948fc84db2fd2d6f2059f9807b84194ebac59472
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Azure Cosmos DB 分层资源模型和核心概念
 
@@ -158,7 +158,7 @@ REST API 支持资源寻址和由 ID 和 _rid 属性提出的请求路由。
     </tbody>
 </table>
 
-除了从 Azure 门户预配、配置和管理数据库帐户，还可以通过使用 [Azure Cosmos DB REST API](/rest/api/documentdb/) 和[客户端 SDK](sql-api-sdk-dotnet.md)，以编程方式创建和管理 Cosmos DB 数据库帐户。  
+除了从 Azure 门户预配、配置和管理数据库帐户，还可以通过使用 [Azure Cosmos DB REST API](/rest/api/cosmos-db/) 和[客户端 SDK](sql-api-sdk-dotnet.md)，以编程方式创建和管理 Cosmos DB 数据库帐户。  
 
 ## <a name="databases"></a>数据库
 Cosmos DB 数据库是一个或多个集合和用户的逻辑容器，如下面的关系图中所示。 可以使用 Cosmos DB 数据库帐户创建任意数量的数据库（取决于产品/服务限制）。  
@@ -177,7 +177,7 @@ Cosmos DB 数据库默认情况下具有弹性：从几个 GB 到几个 PB 的�
 
 Azure Cosmos DB 数据库也是用户的容器。 反过来，用户是一组权限的逻辑命名空间，可提供对集合、文档和附件的细化授权和访问权限。  
 
-与 Azure Cosmos DB 资源模型中的其他资源一样，可以使用 [REST API](/rest/api/documentdb/) 或任一[客户端 SDK](sql-api-sdk-dotnet.md) 轻松创建、替换、删除、读取或枚举数据库。 Azure Cosmos DB 确保数据库资源的元数据读取或查询操作的高度一致性。 自动删除数据库，确保不能访问任何集合或它所包含的用户。   
+与 Azure Cosmos DB 资源模型中的其他资源一样，可以使用 [REST API](/rest/api/cosmos-db/) 或任一[客户端 SDK](sql-api-sdk-dotnet.md) 轻松创建、替换、删除、读取或枚举数据库。 Azure Cosmos DB 确保数据库资源的元数据读取或查询操作的高度一致性。 自动删除数据库，确保不能访问任何集合或它所包含的用户。   
 
 ## <a name="collections"></a>集合
 Cosmos DB 集合是 JSON 文档的容器。 
@@ -195,7 +195,7 @@ Azure Cosmos DB 是真正无架构的数据库系统。 无需为 JSON 文档假
 * 选择是否要在索引中包括特定的路径或文档中的模式或从索引中将其排除。 可以通过分别设置集合中的 indexingPolicy 上的 includedPaths 和 excludedPaths 来实现这一点。 还可以配置用于特定路径模式的存储和性能权衡的范围和哈希查询。 
 * 在同步（一致）和异步（延迟）索引更新之间进行选择。 默认情况下，每次在集合中插入、替换或删除文档时同步更新索引。 这个行为让查询能够使用与文档读取相同的一致性级别。 虽然 Azure Cosmos DB 针对写入进行了优化，支持文档持续写入和同步索引维护，并且保障一致的查询，还是可以配置某些集合，使其索引延迟更新。 延迟索引编制可大大提高写入性能，非常适合主要具有大量读取操作的集合的批量引入方案。
 
-可以通过对集合执行 PUT 更改索引策略。 这可以通过[客户端 SDK](sql-api-sdk-dotnet.md)、[Azure 门户](https://portal.azure.com)或 [REST API](/rest/api/documentdb/) 来实现。
+可以通过对集合执行 PUT 更改索引策略。 这可以通过[客户端 SDK](sql-api-sdk-dotnet.md)、[Azure 门户](https://portal.azure.com)或 [REST API](/rest/api/cosmos-db/) 来实现。
 
 ### <a name="querying-a-collection"></a>查询集合
 集合中的文档可以具有任意的数据库架构，而你无需提前提供任何架构或辅助索引，就可以查询集合中的文档。 可以使用 [Azure Cosmos DB SQL syntax reference](https://msdn.microsoft.com/library/azure/dn782250.aspx)（Azure Cosmos DB SQL 语法引用）查询集合，该语法通过基于 JavaScript 的 UDF 提供丰富的分层运算符、关系运算符和空间运算符以及扩展性。 JSON 语法允许将 JSON 文档建模为树，其中标签作为树节点。 SQL API 的自动索引编制技术和 Azure Cosmos DB 的 SQL 方言都利用了此语法。 SQL 查询语言包含三个主要方面：   
@@ -204,7 +204,7 @@ Azure Cosmos DB 是真正无架构的数据库系统。 无需为 JSON 文档假
 2. 一小部分关系操作，包括组合、筛选、投影、聚合和自联接。 
 3. 基于纯 JavaScript 且结合 (1) 和 (2) 使用的 UDF。  
 
-Azure Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平衡。 Azure Cosmos DB 数据库引擎在本机上编译和执行 SQL 查询语句。 可以使用 [REST API](/rest/api/documentdb/) 或任一[客户端 SDK](sql-api-sdk-dotnet.md) 查询集合。 .NET SDK 附带了 LINQ 提供程序。
+Azure Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平衡。 Azure Cosmos DB 数据库引擎在本机上编译和执行 SQL 查询语句。 可以使用 [REST API](/rest/api/cosmos-db/) 或任一[客户端 SDK](sql-api-sdk-dotnet.md) 查询集合。 .NET SDK 附带了 LINQ 提供程序。
 
 > [!TIP]
 > 可以在 [Query Playground](https://www.documentdb.com/sql/demo)（查询板块）中尝试 SQL API 并对数据集运行 SQL 查询。
@@ -226,7 +226,7 @@ Azure Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平�
 
 直接在与缓冲池位于相同地址空间内的数据库引擎中执行 JavaScript 的能力可实现针对集合的文档的数据库操作的高性能和事务性执行。 此外，Cosmos DB 数据库引擎还致力于针对 JSON 和 JavaScript 消除应用程序和数据库类型系统之间的任何阻抗失配。   
 
-创建集合之后即可使用 [REST API](/rest/api/documentdb/)或任一[客户端 SDK](sql-api-sdk-dotnet.md) 向集合注册存储过程、触发器和 UDF。 注册后，可以引用并执行它们。 请考虑完全以 JavaScript 编写的存储过程，下面的代码采用两个参数（书名和作者姓名）创建一个新文档，对文档进行查询后再对其进行更新 – 所有这一切都是在一个隐式的 ACID 事务内完成。 在执行期间的任何时刻，如果引发 JavaScript 异常，则中止整个事务。
+创建集合之后即可使用 [REST API](/rest/api/cosmos-db/)或任一[客户端 SDK](sql-api-sdk-dotnet.md) 向集合注册存储过程、触发器和 UDF。 注册后，可以引用并执行它们。 请考虑完全以 JavaScript 编写的存储过程，下面的代码采用两个参数（书名和作者姓名）创建一个新文档，对文档进行查询后再对其进行更新 – 所有这一切都是在一个隐式的 ACID 事务内完成。 在执行期间的任何时刻，如果引发 JavaScript 异常，则中止整个事务。
 
     function businessLogic(name, author) {
         var context = getContext();
@@ -279,10 +279,10 @@ Azure Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平�
 
 存储过程和触发器与集合和集合中的文档通过一个明确定义的对象模型进行交互，该模型可公开当前集合的上下文。  
 
-可以使用 [REST API](/rest/api/documentdb/) 或任一[客户端 SDK](sql-api-sdk-dotnet.md) 轻松创建、删除、读取或枚举 SQL API 中的集合。 SQL API 始终为集合元数据的读取或查询操作提供高度一致性。 自动删除数据库，确保不能访问任何文档、附件、存储过程、触发器和其中包含的 UDF。   
+可以使用 [REST API](/rest/api/cosmos-db/) 或任一[客户端 SDK](sql-api-sdk-dotnet.md) 轻松创建、删除、读取或枚举 SQL API 中的集合。 SQL API 始终为集合元数据的读取或查询操作提供高度一致性。 自动删除数据库，确保不能访问任何文档、附件、存储过程、触发器和其中包含的 UDF。   
 
 ## <a name="stored-procedures-triggers-and-user-defined-functions-udf"></a>存储过程、触发器和用户定义的函数 (UDF)
-如前一节中所述，可以编写应用程序逻辑以直接在数据库引擎内部的某个事务中运行。 应用程序逻辑可以完全用 JavaScript 编写，并且可以作为存储过程、触发器或 UDF 来建模。 存储过程或触发器内的 JavaScript 代码可以插入、替换、删除、读取或查询集合中的文档。 但是，UDF 中的 JavaScript 却无法插入、替换或删除文档。 UDF 可以枚举查询的结果集的文档，并生成另一个结果集。 对于多租户，Azure Cosmos DB 将强制实施严格的基于保留项的资源调控。 每个存储过程、触发器或 UDF 都可以获取固定量的操作系统资源来完成其工作。 此外，存储过程、触发器或 UDF 不能针对外部 JavaScript 库进行链接，并且如果它们超出了分配给它们的资源预算，则会被列入黑名单。 可以通过使用 REST API 为集合注册存储过程、触发器或 UDF，也可以取消注册。  注册时会预编译存储过程、触发器或 UDF，并将其存储为字节代码，以供以后执行。 下一节说明如何使用 Azure Cosmos DB JavaScript SDK 注册、执行和取消注册存储过程、触发器和 UDF。 JavaScript SDK 是一个比 [REST API](/rest/api/documentdb/) 更简单的包装器。 
+如前一节中所述，可以编写应用程序逻辑以直接在数据库引擎内部的某个事务中运行。 应用程序逻辑可以完全用 JavaScript 编写，并且可以作为存储过程、触发器或 UDF 来建模。 存储过程或触发器内的 JavaScript 代码可以插入、替换、删除、读取或查询集合中的文档。 但是，UDF 中的 JavaScript 却无法插入、替换或删除文档。 UDF 可以枚举查询的结果集的文档，并生成另一个结果集。 对于多租户，Azure Cosmos DB 将强制实施严格的基于保留项的资源调控。 每个存储过程、触发器或 UDF 都可以获取固定量的操作系统资源来完成其工作。 此外，存储过程、触发器或 UDF 不能针对外部 JavaScript 库进行链接，并且如果它们超出了分配给它们的资源预算，则会被列入黑名单。 可以通过使用 REST API 为集合注册存储过程、触发器或 UDF，也可以取消注册。  注册时会预编译存储过程、触发器或 UDF，并将其存储为字节代码，以供以后执行。 下一节说明如何使用 Azure Cosmos DB JavaScript SDK 注册、执行和取消注册存储过程、触发器和 UDF。 JavaScript SDK 是一个比 [REST API](/rest/api/cosmos-db/) 更简单的包装器。 
 
 ### <a name="registering-a-stored-procedure"></a>注册存储过程
 注册存储过程将通过 HTTP POST 在集合上创建新的存储过程资源。  
@@ -410,7 +410,7 @@ Azure Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平�
             console.log("Error");
         });
 
-尽管上面的代码片段演示了通过 [JavaScript SDK](https://github.com/Azure/azure-documentdb-js) 注册 (POST)、取消注册 (PUT)、读取/列出 (GET) 和执行 (POST)，但也可以使用 [REST API](/rest/api/documentdb/) 或其他[客户端 SDK](sql-api-sdk-dotnet.md)。 
+尽管上面的代码片段演示了通过 [JavaScript SDK](https://github.com/Azure/azure-documentdb-js) 注册 (POST)、取消注册 (PUT)、读取/列出 (GET) 和执行 (POST)，但也可以使用 [REST API](/rest/api/cosmos-db/) 或其他[客户端 SDK](sql-api-sdk-dotnet.md)。 
 
 ## <a name="documents"></a>文档
 可以插入、替换、删除、读取、枚举和查询集合中的任意 JSON 文档。 Azure Cosmos DB 不强制要求任何架构，并且对集合中的文档进行查询也不需要辅助索引的支持。 文档的最大大小为 2 MB。   

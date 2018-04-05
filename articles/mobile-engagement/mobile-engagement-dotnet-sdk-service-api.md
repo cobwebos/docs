@@ -1,11 +1,11 @@
 ---
-title: "使用.NET SDK 访问 Azure Mobile Engagement 服务 API"
-description: "描述如何使用 Mobile Engagement .NET SDK 访问 Azure Mobile Engagement 服务 API"
+title: 使用.NET SDK 访问 Azure Mobile Engagement 服务 API
+description: 描述如何使用 Mobile Engagement .NET SDK 访问 Azure Mobile Engagement 服务 API
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c07728aa-43f2-4238-8b4a-c9eddf9d838b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 6a497189268c5a1b7e269cc57904ebc77c1906fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 99595eb1f9a1eab1db51796632d58df35bf45be6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-net-sdk-to-access-azure-mobile-engagement-service-apis"></a>使用.NET SDK 访问 Azure Mobile Engagement 服务 API
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 Azure Mobile Engagement 公开一组 API，以便管理设备、市场宣传/推送市场活动等。要与这些 API 进行交互，我们还提供了一个 [Swagger 文件](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json)，可以与为首选语言生成 SDK 的工具一起使用。 我们建议使用 [AutoRest](https://github.com/Azure/AutoRest) 工具从我们提供的 Swagger 文件生成 SDK。
 
 > [!NOTE]

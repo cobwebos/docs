@@ -1,11 +1,11 @@
 ---
-title: "使用 REST API 访问 Azure Mobile Engagement 服务 API"
-description: "描述如何使用 Mobile Engagement REST API 访问 Azure Mobile Engagement 服务 API"
+title: 使用 REST API 访问 Azure Mobile Engagement 服务 API
+description: 描述如何使用 Mobile Engagement REST API 访问 Azure Mobile Engagement 服务 API
 services: mobile-engagement
 documentationcenter: mobile
 author: wesmc7777
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: e8df4897-55ee-45df-b41e-ff187e3d9d12
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 4b21bca6fee7012ce1dba96950ae075eded414f8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c3c0de39ba13ed47345b1042a9dceda075dc50b3
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-rest-to-access-azure-mobile-engagement-service-apis"></a>使用 REST 访问 Azure Mobile Engagement 服务 API
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 Azure Mobile Engagement 提供 [Azure Mobile Engagement REST API](https://msdn.microsoft.com/library/azure/mt683754.aspx)，以便管理设备、市场宣传/推送市场活动等。
 
 > [!NOTE]

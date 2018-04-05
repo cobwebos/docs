@@ -1,11 +1,11 @@
 ---
-title: "在 Azure Mobile Engagement 中使用表情符号图标"
-description: "如何在推送通知中使用表情符号图标"
+title: 在 Azure Mobile Engagement 中使用表情符号图标
+description: 如何在推送通知中使用表情符号图标
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 663317d7-3c93-4e8f-b13d-c6fb342124ee
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: bbb7ce5e95b229a7505c5e97b6866d5a302a1d27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b5b0e7bfe07054d093dc164cb5f72bde4ba28170
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-emoji-emoticon-within-push-notifications"></a>如何在推送通知中使用表情符号图标
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 可以通过几个简单的步骤将表情符号图标包含在推送通知中： 
 
 1. 首先，需要找到想在消息中发送的表情符号。 请确保选择的表情符号受目标设备支持，因为设备制造商需要一些时间才能将新批准的表情符号添加到设备平台。 

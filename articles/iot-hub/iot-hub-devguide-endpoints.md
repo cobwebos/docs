@@ -1,11 +1,11 @@
 ---
-title: "了解 Azure IoT 中心终结点 | Microsoft Docs"
-description: "开发人员指南 - 有关 IoT 中心面向设备和面向服务的终结点的参考信息。"
+title: 了解 Azure IoT 中心终结点 | Microsoft Docs
+description: 开发人员指南 - 有关 IoT 中心面向设备和面向服务的终结点的参考信息。
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 57ba52ae-19c6-43e4-bc6c-d8a5c2476e95
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 54491d0ca1f515786af07146d83ef65fc7d46f11
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 17479fce776b0786e2fa32054eec8b0456871aae
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="iot-hub-names"></a>IoT 中心名称
 

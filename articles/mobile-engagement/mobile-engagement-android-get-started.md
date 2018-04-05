@@ -1,11 +1,11 @@
 ---
-title: "适用于 Android 应用的 Azure Mobile Engagement 入门"
-description: "了解如何使用适用于 Android 应用且带分析和推送通知功能的 Azure Mobile Engagement。"
+title: 适用于 Android 应用的 Azure Mobile Engagement 入门
+description: 了解如何使用适用于 Android 应用且带分析和推送通知功能的 Azure Mobile Engagement。
 services: mobile-engagement
 documentationcenter: android
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3c286c6d-cfef-4e3e-9b2c-715429fe82db
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,19 +14,24 @@ ms.devlang: Java
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 2c5d9c5458b77263a5d1da93e5305e61999f229f
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 4eda8129e03e4880e168f7c154c7236da028e81e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-android-apps"></a>适用于 Android 应用的 Azure Mobile Engagement 入门
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 本主题介绍如何借助 Azure Mobile Engagement 了解应用的使用，以及如何向 Android 应用程序的分段用户发送推送通知。
 本教程演示使用 Mobile Engagement 的简单广播方案。 在本教程中，将创建一个空白 Android 应用，该应用使用 Google Cloud Messaging (GCM) 收集基本数据以及接收推送通知。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 完成本教程需要 [Android 开发人员工具](https://developer.android.com/sdk/index.html)，其中包含 Android Studio 集成开发环境和最新的 Android 平台。
 
 它还需要 [Mobile Engagement Android SDK](https://aka.ms/vq9mfn)。

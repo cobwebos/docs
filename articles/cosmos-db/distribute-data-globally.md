@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2018
 ms.author: arramac
-ms.openlocfilehash: e31b66f20c51e95dbc2d8285bb5602590abd4f4f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 567f035bdb293353090ee107f8d24da845e15154
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>如何使用 Azure Cosmos DB 在全球范围内分发数据
 Azure 无处不在 - 它的足迹遍布全球 30 多个地理区域，并且还在不断扩展。 借助其在全球范围的足迹，Azure 为其开发人员提供的特色功能之一是能够轻松生成、部署和管理全局分布式应用程序。 
@@ -36,7 +36,7 @@ Azure 无处不在 - 它的足迹遍布全球 30 多个地理区域，并且还�
 本文概要介绍 Azure Cosmos DB 的全局分发功能， 同时介绍 Azure Cosmos DB 用于提供综合 SLA 的独特方法。 
 
 ## <a id="EnableGlobalDistribution"></a>启用统包全球分发
-Azure Cosmos DB 提供了以下功能，方便用户轻松编写全球规模的应用程序。 这些功能通过 Azure Cosmos DB 的基于资源提供程序的 [REST API](https://docs.microsoft.com/rest/api/documentdbresourceprovider/) 以及 Azure 门户提供。
+Azure Cosmos DB 提供了以下功能，方便用户轻松编写全球规模的应用程序。 这些功能通过 Azure Cosmos DB 的基于资源提供程序的 [REST API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/) 以及 Azure 门户提供。
 
 在下面的视频中，Azure Cosmos DB 项目经理 Andrew Liu 演示了统包全球分布功能。
 

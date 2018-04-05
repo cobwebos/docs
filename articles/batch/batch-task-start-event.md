@@ -1,22 +1,22 @@
 ---
-title: "Azure Batch 任务开始事件 | Microsoft Docs"
-description: "批处理任务开始事件参考。"
+title: Azure Batch 任务开始事件 | Microsoft Docs
+description: 批处理任务开始事件参考。
 services: batch
-author: tamram
-manager: timlt
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: tamram
-ms.openlocfilehash: c47ab36c99dddd46a14c15018a2a46bf7f873ffa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: 0ad0f87df9db39088769579d538b919b42634c4b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="task-start-event"></a>任务开始事件
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 }
 ```
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |jobId|String|包含任务的作业的 id。|
 |id|String|任务的 id。|
@@ -60,25 +60,25 @@ ms.lasthandoff: 10/11/2017
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |poolId|String|运行任务的池的 id。|
 |nodeId|String|运行任务的节点的 id。|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |numberOfInstances|int|任务所需的计算节点数。|
 
 ###  <a name="constraints"></a> constraints
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |maxTaskRetryCount|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，然后重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|元素名称|类型|说明|
+|元素名称|Type|说明|
 |------------------|----------|-----------|
 |retryCount|Int32|批处理服务重试任务的次数。 如果任务使用非零退出代码退出，该任务会重试，直至达到指定的 MaxTaskRetryCount|

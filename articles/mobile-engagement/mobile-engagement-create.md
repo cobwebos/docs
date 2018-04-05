@@ -1,11 +1,11 @@
 ---
-title: "创建 Azure Mobile Engagement 应用 | Microsoft Docs"
-description: "介绍如何在 Azure 中创建新的 Mobile Engagement 应用集合，并开始通过 Mobile Engagement 门户管理应用。"
+title: 创建 Azure Mobile Engagement 应用 | Microsoft Docs
+description: 介绍如何在 Azure 中创建新的 Mobile Engagement 应用集合，并开始通过 Mobile Engagement 门户管理应用。
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b8aa1798-28c6-424c-a5b5-8a264d5a0ff0
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: piyushjo
-ms.openlocfilehash: 47c1e122f6f38654cd63bb59e50e68803f76c83d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f47133a466f00de43ebfb2652eaf9058899f140
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-an-azure-mobile-engagement-app"></a>创建 Azure Mobile Engagement 应用
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 本文介绍如何使用 **Quick Create** 方法创建新的 **Azure Mobile Engagement** 应用。 本文还介绍如何导航到 **Mobile Engagement** 门户，以便对应用开始进行监视和管理。 
 
 请注意，必须至少添加一组“基本集成”，才能够收集应用的数据并发送推送通知。 [Mobile Engagement 集成](mobile-engagement-windows-store-integrate-engagement.md)中提供了完整的集成文档。

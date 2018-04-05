@@ -1,12 +1,12 @@
 ---
-title: "使用 Azure CLI (az.py) 创建 IoT 中心| Microsoft 文档"
-description: "如何使用跨平台的 Azure CLI 2.0 (az.py) 创建 Azure IoT 中心。"
+title: 使用 Azure CLI (az.py) 创建 IoT 中心| Microsoft 文档
+description: 如何使用跨平台的 Azure CLI 2.0 (az.py) 创建 Azure IoT 中心。
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: azurecli
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: 161089159999a4a63a39b059e69a08b7a9297445
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: c89ecc31754d355d6469d54dcd45e1cc2ef106f0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli-20"></a>使用 Azure CLI 2.0 创建 IoT 中心
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/18/2017
 * [Azure CLI (azure.js)](iot-hub-create-using-cli-nodejs.md) - 适用于经典部署模型和资源管理部署模型的 CLI。
 * Azure CLI 2.0 (az.py) - 适用于本文中所述的资源管理部署模型的下一代 CLI。
 
-若要完成本教程，需要以下各项：
+要完成本教程，需要以下各项：
 
 * 有效的 Azure 帐户。 如果没有帐户，只需几分钟即可创建一个[免费帐户][lnk-free-trial]。
 * [Azure CLI 2.0][lnk-CLI-install]。
@@ -88,7 +88,6 @@ ms.lasthandoff: 11/18/2017
 
 > [!NOTE]
 > 上一命令在计费的 S1 定价层中创建 IoT 中心。 有关详细信息，请参阅 [Azure IoT 中心定价][lnk-iot-pricing]。
->
 >
 
 ## <a name="remove-an-iot-hub"></a>删除 IoT 中心

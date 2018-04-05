@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement iOS SDK 概述 | Microsoft Docs"
-description: "Azure Mobile Engagement 的 iOS SDK 的最新更新和过程"
+title: Azure Mobile Engagement iOS SDK 概述 | Microsoft Docs
+description: Azure Mobile Engagement 的 iOS SDK 的最新更新和过程
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3a03bbd6-bcf8-436c-9775-5a8188629252
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.openlocfilehash: 6acd343782a3ee07750e27ec3022ff81cedfadee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6c9d2ddeacd1d05142019f22eedf4eb3bb4f06cd
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="ios-sdk-for-azure-mobile-engagement"></a>iOS SDK for Azure Mobile Engagement
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 从此处可以了解如何在 iOS 应用中集成 Azure Mobile Engagement 的所有详细信息。 如果想要先进行尝试，请确保完成我们的 [15 分钟教程](mobile-engagement-ios-get-started.md)。
 
 单击查看 [SDK 内容](mobile-engagement-ios-sdk-content.md)

@@ -1,11 +1,11 @@
 ---
-title: "Mobile Engagement 概念 | Microsoft Docs"
-description: "Azure Mobile Engagement 概念"
+title: Mobile Engagement 概念 | Microsoft Docs
+description: Azure Mobile Engagement 概念
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8d19abd1-0a6c-4772-9fa5-5e99980ac5da
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 8450651528007b4527366b89a6ad7615169f93c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1bc09de37c1b2aca35ef1ea74227df770f15baf5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-concepts"></a>Azure Mobile Engagement 概念
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 Mobile Engagement 定义了所有受支持平台的一些常见概念。 本文简要介绍了这些概念。
 
 不熟悉 Mobile Engagement 的用户可先阅读本文。 另外，请务必阅读所用平台的特定文档，了解本文所述概念的更多详细信息和示例，以及可能的限制。
@@ -41,7 +45,7 @@ Mobile Engagement 标识用户的方式是为每台设备生成一个唯一标�
 
 会话按用户所执行的一系列活动自动计算。 会话从用户开始其第一个活动开始，至用户完成其最后一个活动结束。 也就是说，会话不需要显式启动或停止。 与之相反，活动是显式启动或停止的。 如果没有报告活动，则不会报告会话。
 
-## <a name="events"></a>事件
+## <a name="events"></a>活动
 事件用于报告即时操作（例如用户按下了按钮或阅读了文章）。
 
 事件可能与当前会话有关，可能与正在运行的作业有关，也可能是独立的事件。

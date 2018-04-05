@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Web SDK 概述 |Microsoft Docs"
-description: "Azure Mobile Engagement Web SDK 的最新更新和过程"
+title: Azure Mobile Engagement Web SDK 概述 |Microsoft Docs
+description: Azure Mobile Engagement Web SDK 的最新更新和过程
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 5bbc2fda-0f3f-43d0-a73d-0f2c0f8dc25b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: piyushjo
-ms.openlocfilehash: 770a83131a3e661771db50b22ce7de25b2d541cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad0a83e05c6a60953c2f8a0036f823e7ed497f45
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-web-sdk"></a>Azure Mobile Engagement Web SDK
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 从此处可以了解如何在 Web 应用中集成 Azure Mobile Engagement 的所有详细信息。 如果想在开始使用 Web 应用之前做一些尝试，请查看 [15 分钟的教程](mobile-engagement-web-app-get-started.md)。
 
 ## <a name="integration-procedures"></a>集成过程

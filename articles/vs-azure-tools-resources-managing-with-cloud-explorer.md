@@ -1,11 +1,11 @@
 ---
-title: "使用云资源管理器管理 Azure 资源 | Microsoft Docs"
-description: "了解如何使用云资源管理器来浏览和管理 Visual Studio 中的 Azure 资源。"
+title: 使用云资源管理器管理 Azure 资源 | Microsoft Docs
+description: 了解如何使用云资源管理器来浏览和管理 Visual Studio 中的 Azure 资源。
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 6347dc53-f497-49d5-b29b-e8b9f0e939d7
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/25/2017
-ms.author: kraigb
-ms.openlocfilehash: 6e6d8d559f0251b71bfa6d529ead82a246cb3235
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 676feb0b01ec5622feff4351ade54e9856e54b13
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>在 Visual Studio Cloud Explorer 中管理与 Azure 帐户关联的资源
 通过 Cloud Explorer，可在 Visual Studio 中查看 Azure 资源和资源组、检查其属性，以及执行重要的开发人员诊断操作。 
 
-与 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)一样，Cloud Explorer 基于 Azure Resource Manager 堆栈。 因此，Cloud Explorer 可以识别 Azure 资源组等资源，以及逻辑应用和 API 应用等 Azure 服务，并支持[基于角色的访问控制](active-directory/role-based-access-control-configure.md) (RBAC)。 
+与 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)一样，Cloud Explorer 基于 Azure 资源管理器堆栈。 因此，Cloud Explorer 可以识别 Azure 资源组等资源，以及逻辑应用和 API 应用等 Azure 服务，并支持[基于角色的访问控制](active-directory/role-based-access-control-configure.md) (RBAC)。 
 
 ## <a name="prerequisites"></a>先决条件
 - 已选择 **Azure 工作负载**的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)，或者包含[适用于 .NET 2.9 的 Microsoft Azure SDK](https://www.microsoft.com/en-us/download/details.aspx?id=51657) 的 Visual Studio 的早期版本。
@@ -75,7 +75,7 @@ ms.lasthandoff: 10/11/2017
 1. 从上下文菜单中，选择所需视图： 
 
     - “资源类型”视图 - [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)中使用的常用视图，按类型来显示 Azure 资源，例如 Web 应用、存储帐户和虚拟机。 
-    - “资源组”视图 - 按关联的 Azure 资源组将 Azure 资源分类。 资源组是通常由特定应用程序使用的 Azure 资源组合。 若要了解有关 Azure 资源组的详细信息，请参阅 [Azure Resource Manager Overview](./azure-resource-manager/resource-group-overview.md)（Azure Resource Manager 概述）。
+    - “资源组”视图 - 按关联的 Azure 资源组将 Azure 资源分类。 资源组是通常由特定应用程序使用的 Azure 资源组合。 若要了解有关 Azure 资源组的详细信息，请参阅 [Azure 资源管理器概述](./azure-resource-manager/resource-group-overview.md)。
 
     下图比较了两个资源视图：
 

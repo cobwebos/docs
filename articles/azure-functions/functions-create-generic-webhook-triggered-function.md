@@ -1,26 +1,26 @@
 ---
-title: "在 Azure 中创建由通用 webhook 触发的函数 | Microsoft 文档"
-description: "使用 Azure Functions 创建由 Azure 中的 webHook 调用的无服务器函数。"
+title: 在 Azure 中创建由通用 webhook 触发的函数 | Microsoft 文档
+description: 使用 Azure Functions 创建由 Azure 中的 webHook 调用的无服务器函数。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: fafc10c0-84da-4404-b4fa-eea03c7bf2b1
 ms.service: functions
 ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/08/2017
+ms.date: 03/28/2018
 ms.author: glenga
-ms.custom: mvc
-ms.openlocfilehash: cf86325971b607c7e1ec4b026f7df274e14c5e52
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.custom: mvc, cc996988-fb4f-47
+ms.openlocfilehash: 83e751cc0c5b6c53d409dc61556a6bcdbed2415a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-a-function-triggered-by-a-generic-webhook"></a>创建由通用 webhook 触发的函数
 
@@ -33,8 +33,6 @@ Azure Functions 用于在无服务器环境中执行代码，无需先创建 VM 
 完成本教程：
 
 + 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
 ## <a name="create-an-azure-function-app"></a>创建 Azure Function App
 

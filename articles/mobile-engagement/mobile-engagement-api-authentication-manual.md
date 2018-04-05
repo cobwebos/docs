@@ -1,11 +1,11 @@
 ---
-title: "使用 Mobile Engagement REST API 进行身份验证：手动设置"
-description: "描述如何为 Mobile Engagement REST API 手动设置身份验证"
+title: 使用 Mobile Engagement REST API 进行身份验证：手动设置
+description: 描述如何为 Mobile Engagement REST API 手动设置身份验证
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2e79f9c9-41e4-45ac-b427-3b8338675163
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0b4a999c6778040e71f862d3a010b6635e84b26e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 0d71908b34ddf8313aa45014420c9e63a00078c9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="authenticate-with-mobile-engagement-rest-apis-manual-setup"></a>使用 Mobile Engagement REST API 进行身份验证：手动设置
+# <a name="authenticate-with-mobile-engagement-rest-apis---manual-setup"></a>使用 Mobile Engagement REST API 进行身份验证 - 手动设置
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 此文档是[使用 Mobile Engagement REST API 进行身份验证](mobile-engagement-api-authentication.md)的一个附录。 请务必先阅读该文章来了解上下文。 它还介绍了一种使用 Azure 门户为 Mobile Engagement REST API 进行一次性身份验证设置的替代方法。
 
 > [!NOTE]

@@ -1,11 +1,11 @@
 ---
-title: "游戏应用的 Azure Mobile Engagement 实现"
-description: "实现 Azure Mobile Engagement 的游戏应用方案"
+title: 游戏应用的 Azure Mobile Engagement 实现
+description: 实现 Azure Mobile Engagement 的游戏应用方案
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2cafc044-4902-4058-8037-49399bf6bf7f
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0ca35a3d634db8eb5c63afacba046a35b8a3e7ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96e827b57e804cc91798859bc906e49046decede
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="implement-mobile-engagement-with-gaming-app"></a>使用游戏应用实现 Mobile Engagement
 ## <a name="overview"></a>概述
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 基于角色扮演/战略游戏应用，游戏启动已启动了一种新的钓鱼技术。 该游戏已启动并运行长达 6 个月的时间。 该游戏取得了巨大的成功，其下载量达到数百万，而且与其他启动游戏应用相比，它的保留期非常高。 在季度评审会议上，利益干系人同意他们需要增加每用户平均收入 (ARPU)。 高级游戏中程序包会提供特别优惠。 使用这些游戏包，用户可以升级其钓鱼线的外观和性能，并在游戏中进行引诱或处理。 但是，程序包销量非常低。 因此，他们决定首先使用分析工具来分析客户体验，然后使用高级细分开发一个用户参与计划以提高销量。
 
 基于 [Azure Mobile Engagement - 入门指南及最佳实践](mobile-engagement-getting-started-best-practices.md)，他们构建了一个参与策略。

@@ -1,21 +1,21 @@
 ---
-title: "教程 - 使用用于 Node.js 的 Azure Batch 客户端库 | Microsoft Docs"
-description: "了解 Azure Batch 的基本概念，并使用 Node.js 构建简单的解决方案。"
+title: 教程 - 使用用于 Node.js 的 Azure Batch 客户端库 | Microsoft Docs
+description: 了解 Azure Batch 的基本概念，并使用 Node.js 构建简单的解决方案。
 services: batch
 author: shwetams
-manager: timlt
-ms.assetid: 
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: nodejs
 ms.topic: hero-article
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: 96a4203c11cc20e01eb164dfdd9178988074ff48
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: bef298ea8e5710b386822f071d0644c9ddad04a2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>用于 Node.js 的批处理 SDK 入门
 

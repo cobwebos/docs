@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Android SDK 的位置报告"
-description: "描述如何配置 Azure Mobile Engagement Android SDK 的位置报告"
+title: Azure Mobile Engagement Android SDK 的位置报告
+description: 描述如何配置 Azure Mobile Engagement Android SDK 的位置报告
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6cab5ed1-b767-46ac-9f0b-48a4e249d88c
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 777d5719cce505b55dfb61c91dcac7e713b077a9
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 7978010bd92af18e3ab7c8ccab8dc682d7ef18df
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="location-reporting-for-azure-mobile-engagement-android-sdk"></a>Azure Mobile Engagement Android SDK 的位置报告
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 > [!div class="op_single_selector"]
 > * [Android](mobile-engagement-android-integrate-engagement.md)
 > 
@@ -34,7 +38,7 @@ ms.lasthandoff: 12/21/2017
 ## <a name="location-reporting"></a>位置报告
 如果想报告位置，则需要添加几行配置（在 `<application>` 和 `</application>` 标记之间）。
 
-### <a name="lazy-area-location-reporting"></a>简易区域位置报告
+### <a name="lazy-area-location-reporting"></a>延迟区域位置报告
 简易区域位置报告允许报告国家、地区和与设备关联的区域。 这种类型的位置报告仅使用网络位置（基于 Cell ID 或 WIFI）。 每个会话最多报告一次设备区域。 从不使用 GPS，因此，此类型的位置报告对电池的影响非常小。
 
 报告的区域用于计算用户、会话、事件和错误相关的地理统计信息。 还可用作市场宣传活动中的条件。

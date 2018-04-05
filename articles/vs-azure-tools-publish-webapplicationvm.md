@@ -1,11 +1,11 @@
 ---
 title: Publish-WebApplicationVM | Microsoft Docs
-description: "了解如何将 Web 应用程序部署到虚拟机。 此脚本会在 Azure 订阅中创建所需的资源（如果这些资源不存在）。"
+description: 了解如何将 Web 应用程序部署到虚拟机。 此脚本会在 Azure 订阅中创建所需的资源（如果这些资源不存在）。
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: de4cec95-f73f-44d9-babd-9f47f2633cdb
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 2738fc1dff50a177a227ae2c7719bd9a192d82ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 49778b00dc9b1f6a8a11de5e3575599957b753fe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>Publish-WebApplicationVM（Windows PowerShell 脚本）
 将 Web 应用程序部署到虚拟机。 此脚本会在 Azure 订阅中创建所需的资源（如果这些资源不存在）。
@@ -43,47 +43,47 @@ Publish-WebApplicationVM
 | 位置 |指定 |
 | 默认值 |无 |
 | 接受管道输入？ |false |
-| 接受通配符？ |否 |
+| 接受通配符？ |false |
 
 ### <a name="subscriptionname"></a>SubscriptionName
 要在其中创建虚拟机的 Azure 订阅的名称。
 
 | 别名 | 无 |
 | --- | --- |
-| 必需？ |否 |
+| 必需？ |false |
 | 位置 |指定 |
 | 默认值 |使用订阅文件中的第一个订阅 |
 | 接受管道输入？ |false |
-| 接受通配符？ |否 |
+| 接受通配符？ |false |
 
 ### <a name="webdeploypackage"></a>WebDeployPackage
 要发布到虚拟机的 Web 部署包的路径。 可以在 Visual Studio 中使用“发布 Web”向导来创建此包。 请参阅[如何：在 Visual Studio 中创建 Web 部署包](https://msdn.microsoft.com/library/dd465323.aspx)。
 
 | 别名 | 无 |
 | --- | --- |
-| 必需？ |否 |
+| 必需？ |false |
 | 位置 |指定 |
 | 默认值 |无 |
 | 接受管道输入？ |false |
-| 接受通配符？ |否 |
+| 接受通配符？ |false |
 
 ### <a name="allowuntrusted"></a>AllowUntrusted
 如果为 true，则允许使用未被受信任的根证书颁发机构签署的证书。
 
 | 别名 | 无 |
 | --- | --- |
-| 必需？ |否 |
+| 必需？ |false |
 | 位置 |指定 |
 | 默认值 |false |
 | 接受管道输入？ |false |
-| 接受通配符？ |否 |
+| 接受通配符？ |false |
 
 ### <a name="vmpassword"></a>VMPassword
 虚拟机帐户的凭据。 示例：-VMPassword @{Name = "admin"; Password = "password"}
 
 | 别名 | 无 |
 | --- | --- |
-| 必需？ |否 |
+| 必需？ |false |
 | 位置 |指定 |
 | 默认值 |无 |
 | 接受管道输入？ |false |
@@ -94,22 +94,22 @@ Azure 中的 SQL 数据库的凭据。 示例：-DatabaseServerPassword @{Name =
 
 | 别名 | 无 |
 | --- | --- |
-| 必需？ |否 |
+| 必需？ |false |
 | 位置 |指定 |
 | 默认值 |无 |
 | 接受管道输入？ |false |
-| 接受通配符？ |否 |
+| 接受通配符？ |false |
 
 ### <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
 如果为 true，则将来自脚本的消息打印到输出流。
 
 | 别名 | 无 |
 | --- | --- |
-| 必需？ |否 |
+| 必需？ |false |
 | 位置 |指定 |
 | 默认值 |false |
 | 接受管道输入？ |false |
-| 接受通配符？ |否 |
+| 接受通配符？ |false |
 
 ## <a name="remarks"></a>备注
 有关如何使用脚本创建开发和测试环境的完整说明，请参阅[使用 Windows PowerShell 脚本发布到开发和测试环境](vs-azure-tools-publishing-using-powershell-scripts.md)。

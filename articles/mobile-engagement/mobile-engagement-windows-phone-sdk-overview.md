@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Windows Phone Silverlight SDK 概述 | Microsoft Docs"
-description: "Azure Mobile Engagement 的 Windows Phone Silverlight SDK 概述"
+title: Azure Mobile Engagement Windows Phone Silverlight SDK 概述 | Microsoft Docs
+description: Azure Mobile Engagement 的 Windows Phone Silverlight SDK 概述
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 0e3d2420-0509-4952-8891-392e3dad9aaf
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-ms.openlocfilehash: c4e8ceee4104c3d3a6c3e6b79322ba1cf8463b22
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fe4df1f914e7b53f24a9855d5f96ecb193986b7f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-phone-silverlight-sdk-overview-for-azure-mobile-engagement"></a>Azure Mobile Engagement 的 Windows Phone Silverlight SDK 概述
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 接下来将详细介绍如何在 Windows Phone Silverlight 应用中集成  Azure Mobile Engagement。 如果想要先进行尝试，请确保完成我们的 [15 分钟教程](mobile-engagement-windows-phone-get-started.md)。
 
 单击查看 [SDK 内容](mobile-engagement-windows-phone-sdk-content.md)

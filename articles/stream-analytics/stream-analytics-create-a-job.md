@@ -1,12 +1,11 @@
 ---
-title: "如何为流分析创建数据分析处理作业 | Microsoft 文档"
-description: "为流分析创建数据分析处理作业 | 学习路径段。"
-keywords: "数据分析处理"
-documentationcenter: 
+title: 如何为流分析创建数据分析处理作业 | Microsoft 文档
+description: 为流分析创建数据分析处理作业 | 学习路径段。
+keywords: 数据分析处理
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
+author: jseb225
+manager: ryanw
 ms.assetid: e825fbcf-69e9-443f-b402-3b7a4568f415
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 98784783beccc19df916920fc41364a23e6bae11
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: jeanb
+ms.openlocfilehash: 03f21c076624ee758d313c4f58e29c616226de57
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-a-data-analytics-processing-job-for-stream-analytics"></a>如何为流分析创建数据分析处理作业
 在 Azure 流分析中的最上层资源是一个流分析作业。  它包含一个或多个输入数据源、一个表达数据转换的查询以及一个或多个结果写入的输出目标。 用户可以利用所有这些元素，针对流式数据方案进行数据分析处理。
@@ -28,14 +27,14 @@ ms.lasthandoff: 02/21/2018
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 选择“创建资源” > “数据 + 分析” > “流分析作业”。
-3. 选择“创建”。
+3. 选择**创建**。
    
 3. 指定流分析作业所需的配置。
    
    * 在“作业名称”框中，输入标识流分析作业的名称。 在验证“作业名称”后，“作业名称”框中会出现一个绿色的复选标记。 “作业名称”只能包含字母数字字符和字符“-”，且长度必须在 3 到 63 个字符之间。
    * 使用“位置”指定想要运行作业的地理位置。
    * 指定新的或现有“资源组”，以保存应用程序的相关资源。
-4. 选择“创建”。
+4. 选择**创建**。
 创建流分析作业需要几分钟时间。 要查看状态，可以在通知中心监视进度。
     
    ![Azure 门户 数据分析处理作业 创建作业](./media/stream-analytics-create-a-job/5-stream-analytics-create-a-job.png)  

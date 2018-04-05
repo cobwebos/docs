@@ -1,11 +1,11 @@
 ---
-title: "Mobile Engagement 概述 | Microsoft Docs"
-description: "Azure Mobile Engagement 概述"
+title: Mobile Engagement 概述 | Microsoft Docs
+description: Azure Mobile Engagement 概述
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8eab55d9-c8cc-4928-8d01-78e429eece42
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/04/2016
 ms.author: piyushjo;matt-gibbs
-ms.openlocfilehash: 42b50685b854cabe8906f42aac81ab82c63f8a94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 047c3242e3801cfbf8113d80eef2af8ea3631ea3
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-overview"></a>Azure Mobile Engagement 概述
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 Azure Mobile Engagement 是一个软件即服务 (SaaS) 用户参与平台，可针对应用使用、实时用户细分提供数据驱动型的深入见解，并支持可感知情景的智能推送通知和应用内消息传递。
 
 ### <a name="overview-video"></a>概述视频

@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Web SDK 发行说明 | Microsoft Docs"
-description: "Azure Mobile Engagement Web SDK 的最新更新和过程"
+title: Azure Mobile Engagement Web SDK 发行说明 | Microsoft Docs
+description: Azure Mobile Engagement Web SDK 的最新更新和过程
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: cb4cda8b-df15-473a-81ee-f7c722f6397b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: piyushjo
-ms.openlocfilehash: dc90620d284bdcae888b990f55191be18b29d6f5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d8c3aef94024090cb7ca629ead2439d772317ea
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-web-sdk-release-notes"></a>Azure Mobile Engagement Web SDK 发行说明
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 ## <a name="202-10182016"></a>2.0.2 (10/18/2016)
 * 修复了隐私浏览模式崩溃 (Safari)。
 * 修复了已禁用 Cookie 的浏览器崩溃。
