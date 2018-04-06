@@ -17,50 +17,50 @@ ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
 ms.openlocfilehash: af97f32736959f8ebf8f3c4fbca400d6b0c41f3e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>将虚拟机提供给 Azure Stack 用户使用
-Azure Stack 云管理员可以创建产品供用户（有时称为租户）订阅。 然后，用户可以通过其订阅来使用 Azure Stack 服务。
+Azure Stack 云管理员可以创建产品/服务供用户（有时称为租户）订阅。 然后，用户可以通过其订阅来使用 Azure Stack 服务。
 
-本文介绍如何创建产品，然后对其进行测试。 测试时，需要以用户身份登录到门户，订阅产品，然后使用订阅创建虚拟机。
+本文介绍如何创建产品/服务，然后对其进行测试。 测试时，需要以用户身份登录到门户，订阅产品/服务，然后使用订阅创建虚拟机。
 
 要学习的知识：
 
 > [!div class="checklist"]
 > * 创建产品
 > * 添加映像
-> * 测试产品
+> * 测试产品/服务
 
 
-在 Azure Stack 中，可通过订阅、产品和计划将服务交付给用户。 用户可以订阅多个产品。 产品可以包含一个或多个计划，计划可以包含一个或多个服务。
+在 Azure Stack 中，可通过订阅、产品/服务和计划将服务交付给用户。 用户可以订阅多个产品/服务。 产品可以包含一个或多个计划，计划可以包含一个或多个服务。
 
-![订阅、产品和计划](media/azure-stack-key-features/image4.png)
+![订阅、产品/服务和计划](media/azure-stack-key-features/image4.png)
 
 有关详细信息，请参阅 [Azure Stack 中的重要功能和概念](azure-stack-key-features.md)。
 
 ## <a name="create-an-offer"></a>创建产品
 
-现在可为用户做好准备。 开始执行此过程时，系统首先会提示依次创建产品、计划和配额。
+现在可为用户做好准备。 开始执行此过程时，系统会依次提示你创建产品/服务、计划和配额。
 
 3. **创建产品/服务**
 
-   产品是提供者提供给用户购买或订阅的一个或多个计划。
+   产品/服务是提供者提供给用户购买或订阅的一个或多个计划的组合。
 
-   a. 以云管理员的身份[登录](azure-stack-connect-azure-stack.md)到门户，单击“新建” > “产品 + 计划” > “产品”。
-   ![新建产品](media/azure-stack-tutorial-tenant-vm/image01.png)
+   a. 以云管理员的身份[登录](azure-stack-connect-azure-stack.md)到门户，单击“新建” > “产品/服务 + 计划” > “产品/服务”。
+   ![新建产品/服务](media/azure-stack-tutorial-tenant-vm/image01.png)
 
-   b. 在“新建产品”部分填写“显示名称”和“资源名称”，然后选择一个新的或现有的**资源组**。 “显示名称”是产品的友好名称。 只有云操作员可以看到“资源名称”。 管理员使用此名称将该产品/服务作为 Azure 资源管理器资源处理。
+   b. 在“新建产品/服务”部分填写“显示名称”和“资源名称”，然后选择一个新的或现有的**资源组**。 “显示名称”是产品/服务的友好名称。 只有云操作员可以看到“资源名称”。 管理员使用此名称将该产品/服务作为 Azure 资源管理器资源处理。
 
    ![显示名称](media/azure-stack-tutorial-tenant-vm/image02.png)
 
-   c. 单击“基本计划”，在“计划”部分单击“添加”，将新计划添加到产品。
+   c. 单击“基本计划”，在“计划”部分单击“添加”，将新计划添加到产品/服务。
 
    ![添加计划](media/azure-stack-tutorial-tenant-vm/image03.png)
 
-   d.单击“下一步”。 在“新建计划”部分填写“显示名称”和“资源名称”。 显示名称是用户可看到的计划的友好名称。 只有云操作员可以看到“资源名称”。 云操作员使用该名称以 Azure 资源管理器资源的形式处理计划。
+   d. 在“新建计划”部分填写“显示名称”和“资源名称”。 显示名称是用户可看到的计划的友好名称。 只有云操作员可以看到“资源名称”。 云操作员使用该名称以 Azure 资源管理器资源的形式处理计划。
 
    ![计划显示名称](media/azure-stack-tutorial-tenant-vm/image04.png)
 
@@ -88,9 +88,9 @@ Azure Stack 云管理员可以创建产品供用户（有时称为租户）订�
 
    j. 在“计划”部分，选择新计划并单击“选择”。
 
-   k. 在“新建产品”部分单击“创建”。 创建产品后，会看到通知。
+   k. 在“新建产品/服务”部分单击“创建”。 创建产品/服务后，会看到通知。
 
-   l. 在仪表板菜单中单击“产品”，然后单击创建的产品。
+   l. 在仪表板菜单中单击“产品/服务”，然后单击创建的产品/服务。
 
    m. 依次单击“更改状态”、“公共”。
 
@@ -98,47 +98,47 @@ Azure Stack 云管理员可以创建产品供用户（有时称为租户）订�
 
 ## <a name="add-an-image"></a>添加映像
 
-预配虚拟机之前，必须先将一个映像添加到 Azure Stack Marketplace。 可以从 Azure Marketplace 添加所选的映像，包括 Linux 映像。
+部署虚拟机之前，必须先将一个映像添加到 Azure Stack Marketplace。 可以从 Azure Marketplace 添加所选的映像，包括 Linux 映像。
 
-如果在连接方案中操作，且已向 Azure 注册 Azure Stack 实例，则可以使用[将 Marketplace 项从 Azure 下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md) 主题中所述的步骤，从 Azure Marketplace 下载 Windows Server 2016 VM 映像。
+如果在联网场景中操作，且已向 Azure 注册 Azure Stack 实例，则可以使用[将 Marketplace 项从 Azure 下载到 Azure Stack](azure-stack-download-azure-marketplace-item.md) 主题中所述的步骤，从 Azure Marketplace 下载 Windows Server 2016 VM 映像。
 
 有关将不同的项添加到 Marketplace 的信息，请参阅 [Azure Stack Marketplace](azure-stack-marketplace.md)。
 
-## <a name="test-the-offer"></a>测试产品
+## <a name="test-the-offer"></a>测试产品/服务
 
-创建产品后，可对其进行测试。 以用户身份登录并订阅该产品，然后添加虚拟机。
+创建产品/服务后，可对其进行测试。 以用户身份登录并订阅该产品/服务，然后添加虚拟机。
 
 1. **订阅产品/服务**
 
-   现在，可以用户身份登录到门户，以订阅产品。
+   现在，可以用户身份登录到门户，以订阅产品/服务。
 
    a. 以用户身份登录到用户门户，并单击“获取订阅”。
-   - 对于集成系统，URL 根据操作员所在的区域和外部域名的不同而异，格式为 https://portal.&lt;*区域*&gt;.&lt;*FQDN*&gt;。
+   - 对于集成系统，URL 将取决于运算符的区域和外部域名称，和将采用格式https://portal。&lt;*区域*&gt;。&lt;*FQDN*&gt;。
    - 如果使用 Azure Stack 开发工具包，则门户地址为 https://portal.local.azurestack.external。
 
    ![获取订阅](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 
-   b. 在“显示名称”字段中键入订阅的名称，单击“产品”，单击“选择产品”部分中的某个产品，然后单击“创建”。
+   b. 在“显示名称”字段中键入订阅的名称，单击“产品/服务”，单击“选择产品/服务”部分中的某个产品/服务，然后单击“创建”。
 
    ![创建产品](media/azure-stack-subscribe-plan-provision-vm/image02.png)
 
    c. 若要查看创建的订阅，请单击“更多服务”、单击“订阅”，然后单击新订阅。  
 
-   订阅产品之后，请刷新门户以查看哪些服务是新订阅的一部分。
+   订阅产品/服务之后，请刷新门户以查看哪些服务是新订阅的一部分。
 
 2. **预配虚拟机**
 
-   现在，可以用户身份登录到门户，以使用订阅预配虚拟机。 
+   现在，可以用户身份登录到门户，以使用订阅部署虚拟机。 
 
    a. 以用户身份登录到用户门户。
-      - 对于集成系统，URL 根据操作员所在的区域和外部域名的不同而异，格式为 https://portal.&lt;*区域*&gt;.&lt;*FQDN*&gt;。
+      - 对于集成系统，URL 将取决于运算符的区域和外部域名称，和将采用格式https://portal。&lt;*区域*&gt;。&lt;*FQDN*&gt;。
    - 如果使用 Azure Stack 开发工具包，则门户地址为 https://portal.local.azurestack.external。
 
    b.  在仪表板上，单击“新建” > “计算” > “Windows Server 2016 Datacenter Eval”，然后单击“创建”。
 
    c. 在“基本信息”部分，输入“名称”、“用户名”和“密码”，选择“订阅”，创建一个**资源组**，然后单击“确定”。
 
-   d.单击“下一步”。 在“选择大小”部分单击“A1 标准”，然后单击“选择”。  
+   d. 在“选择大小”部分单击“A1 标准”，然后单击“选择”。  
 
    e. 在“设置”部分单击“虚拟网络”。 在“选择虚拟网络”部分单击“新建”。 在“创建虚拟网络”部分接受所有默认值，然后单击“确定”。 在“设置”部分单击“确定”。
 
@@ -155,7 +155,7 @@ Azure Stack 云管理员可以创建产品供用户（有时称为租户）订�
 > [!div class="checklist"]
 > * 创建产品
 > * 添加映像
-> * 测试产品
+> * 测试产品/服务
 
 > [!div class="nextstepaction"]
 > [将 Web、移动和 API 应用提供给 Azure Stack 用户使用](azure-stack-tutorial-app-service.md)

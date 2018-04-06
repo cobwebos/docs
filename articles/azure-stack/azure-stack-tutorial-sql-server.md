@@ -1,6 +1,6 @@
 ---
 title: 将 SQL 数据库提供给 Azure Stack 用户使用 | Microsoft Docs
-description: 有关安装 SQL Server 资源提供程序并创建产品，使 Azure Stack 用户能够创建 SQL 数据库的教程。
+description: 有关安装 SQL Server 资源提供程序并创建产品/服务，使 Azure Stack 用户能够创建 SQL 数据库的教程。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -17,18 +17,18 @@ ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
 ms.openlocfilehash: f8d2dd65d9d427872fe78508ed0bcc61e644fdb0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>将 SQL 数据库提供给 Azure Stack 用户使用
-Azure Stack 云管理员可以创建产品，使用户（租户）能够创建 SQL 数据库，以配合其云本机应用程序、网站和工作负荷使用。 通过向用户提供这些基于云的按需自定义数据库的访问权限，可以节省用户的时间和资源。 若要设置此功能，需要：
+Azure Stack 云管理员可以创建产品/服务，使用户（租户）能够创建 SQL 数据库，以配合其云原生应用、网站和工作负荷使用。 通过向用户提供这些基于云的按需自定义数据库的访问权限，可以节省用户的时间和资源。 若要设置此功能，需要：
 
 > [!div class="checklist"]
 > * 部署 SQL Server 资源提供程序
 > * 创建产品
-> * 测试产品
+> * 测试产品/服务
 
 ## <a name="deploy-the-sql-server-resource-provider"></a>部署 SQL Server 资源提供程序
 
@@ -48,16 +48,16 @@ Azure Stack 云管理员可以创建产品，使用户（租户）能够创建 S
     > 
     >
 
-3.  [创建产品](azure-stack-create-offer.md)，将其命名为 **TestSQLServerOffer**，然后选择“TestSQLServerPlan”计划。
+3.  [创建产品/服务](azure-stack-create-offer.md)，将其命名为 **TestSQLServerOffer**，然后选择“TestSQLServerPlan”计划。
 
-## <a name="test-the-offer"></a>测试产品
+## <a name="test-the-offer"></a>测试产品/服务
 
-部署 SQL Server 资源提供程序并创建产品后，可以用户身份登录并订阅该产品，然后创建数据库。
+部署 SQL Server 资源提供程序并创建产品/服务后，可以用户身份登录并订阅该产品/服务，然后创建数据库。
 
-### <a name="subscribe-to-the-offer"></a>订阅产品
+### <a name="subscribe-to-the-offer"></a>订阅产品/服务
 1. 登录到 Azure 堆栈门户 (https://portal.local.azurestack.external)作为租户。
 2. 单击“获取订阅”，然后在“显示名称”下键入 **TestSQLServerSubscription**。
-3. 单击“选择产品” > “TestSQLServerOffer” > “创建”。
+3. 单击“选择产品/服务” > “TestSQLServerOffer” > “创建”。
 4. 单击“更多服务” > “订阅” > “TestSQLServerSubscription” > “资源提供程序”。
 5. 单击“Microsoft.SQLAdapter”提供程序旁边的“注册”。
 
@@ -80,7 +80,7 @@ Azure Stack 云管理员可以创建产品，使用户（租户）能够创建 S
 > [!div class="checklist"]
 > * 部署 SQL Server 资源提供程序
 > * 创建产品
-> * 测试产品
+> * 测试产品/服务
 
 转到下一教程，了解如何执行以下操作：
 

@@ -16,10 +16,10 @@ ms.date: 03/13/2018
 ms.author: mabrigg
 ms.reviewer: Thomas.Roettinger
 ms.openlocfilehash: b922790d51c7028c37bb5863d43e99e19790488c
-ms.sourcegitcommit: dee174086b5f3d59d2045bf197c800e62a30fe60
-ms.translationtype: HT
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>管理 Azure Stack 的物理内存容量
 
