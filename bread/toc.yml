@@ -132,9 +132,24 @@
       tocHref: '/azure/#pivot=products&panel=ai'
       topicHref: '/azure/#pivot=products&panel=ai'
       items:
+        - name: 必应自动建议
+          tocHref: /azure/cognitive-services/Bing-Autosuggest/
+          topicHref: /azure/cognitive-services/Bing-Autosuggest/
         - name: 必应自定义搜索
           tocHref: /azure/cognitive-services/bing-custom-search/
           topicHref: /azure/cognitive-services/bing-custom-search/
+        - name: 必应实体搜索
+          tocHref: /azure/cognitive-services/bing-entities-search/
+          topicHref: /azure/cognitive-services/bing-entities-search/
+        - name: 必应图像搜索
+          tocHref: /azure/cognitive-services/bing-image-search/
+          topicHref: /azure/cognitive-services/bing-image-search/
+        - name: 必应新闻搜索
+          tocHref: /azure/cognitive-services/bing-news-search/
+          topicHref: /azure/cognitive-services/bing-news-search/
+        - name: 必应视频搜索
+          tocHref: /azure/cognitive-services/Bing-Video-Search/
+          topicHref: /azure/cognitive-services/Bing-Video-Search/
         - name: 必应 Web 搜索
           tocHref: /azure/cognitive-services/bing-web-search/
           topicHref: /azure/cognitive-services/bing-web-search/
@@ -144,6 +159,9 @@
         - name: 计算机视觉
           tocHref: /azure/cognitive-services/computer-vision/
           topicHref: /azure/cognitive-services/computer-vision/
+        - name: 自定义决策服务
+          tocHref: /azure/cognitive-services/custom-decision-service/custom-decision-service-overview/
+          topicHref: /azure/cognitive-services/custom-decision-service/custom-decision-service-overview/
         - name: 自定义语音服务
           tocHref: /azure/cognitive-services/custom-speech-service/
           topicHref: /azure/cognitive-services/custom-speech-service/
@@ -151,23 +169,26 @@
           tocHref: /azure/cognitive-services/custom-vision-service/
           topicHref: /azure/cognitive-services/custom-vision-service/
         - name: 情感
-          tocHref: /azure/cognitive-services/emotion/home
-          topicHref: /azure/cognitive-services/emotion/home
+          tocHref: /azure/cognitive-services/emotion/home/
+          topicHref: /azure/cognitive-services/emotion/home/
         - name: 人脸
           tocHref: /azure/cognitive-services/face/
           topicHref: /azure/cognitive-services/face/
         - name: 语言理解 (LUIS)
           tocHref: /azure/cognitive-services/LUIS/
           topicHref: /azure/cognitive-services/LUIS/
+        - name: QnA Maker
+          tocHref: /azure/cognitive-services/qnamaker/home/
+          topicHref: /azure/cognitive-services/qnamaker/home/
         - name: 文本分析
           tocHref: /azure/cognitive-services/text-analytics/
-          topicHref: /azure/cognitive-services/text-analytics/overview
+          topicHref: /azure/cognitive-services/text-analytics/
         - name: 视频索引器
-          tocHref: /azure/cognitive-services/video-indexer/video-indexer-overview
-          topicHref: /azure/cognitive-services/video-indexer/video-indexer-overview
+          tocHref: /azure/cognitive-services/video-indexer/video-indexer-overview/
+          topicHref: /azure/cognitive-services/video-indexer/video-indexer-overview/
         - name: 内容审查器
-          tocHref: /azure/cognitive-services/content-moderator/overview
-          topicHref: /azure/cognitive-services/content-moderator/overview
+          tocHref: /azure/cognitive-services/content-moderator/overview/
+          topicHref: /azure/cognitive-services/content-moderator/overview/
     - name: 连接器
       tocHref: /azure/connectors/
       topicHref: /azure/connectors/
@@ -386,7 +407,7 @@
     - name: 搜索
       tocHref: /azure/search/
       topicHref: /azure/search/
-    - name: “安全”
+    - name: 安全
       tocHref: /azure/security/
       topicHref: /azure/security/
     - name: 安全中心
