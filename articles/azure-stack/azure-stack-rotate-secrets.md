@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f3c6d50ac128cd766a1d22689b737da975922466
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 509570dfe0e3d4be2e589ac1958dd377dc4e8e03
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>在 Azure Stack 中轮换机密
 
@@ -69,7 +69,7 @@ Azure 堆栈使用各种机密维护 Azure 堆栈基础结构资源和服务之�
 2.  准备一组新的替换外部证书。 新的设置与匹配中所述的证书规范[Azure 堆栈 PKI 证书要求](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs)。
 3.  将存储备份到用于在安全的备份位置旋转的证书。 如果你旋转运行然后失败，将证书文件共享中的替换的备份副本之前重新运行旋转。 请注意，将备份副本保存在安全的备份位置。
 3.  创建文件共享，你可以从 ERCS Vm 访问。 文件共享必须可读和可写的**CloudAdmin**标识。
-4.  打开 PowerShell ISE 控制台上使用 ERCS VM **CloudAdmin**帐户。  导航到你的文件共享。 
+4.  从有权访问文件共享的位置的计算机打开 PowerShell ISE 控制台。 导航到你的文件共享。 
 5.  运行**[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)**创建所需的目录的外部证书。
 
 ## <a name="rotating-external-and-internal-secrets"></a>旋转的外部和内部机密

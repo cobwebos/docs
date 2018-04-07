@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2018
+ms.date: 04/06/2018
 ms.author: brenduns
-ms.openlocfilehash: c3cb8ab8a838a3f831ece617fcf3e218a9510ea5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e9c39c374d7dfa6759da9f9b9a12816d77c647b1
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stack-1712-update"></a>Azure Stack 1712 更新
 
@@ -42,12 +42,15 @@ Azure Stack 1712 更新内部版本号为 **180106.1**。 如果客户以前已�
 
 在应用此更新之前，必须先安装 Azure Stack [1711 更新](https://docs.microsoft.com/azure/azure-stack/azure-stack-update-1711)。
 
-### <a name="post-update-steps"></a>更新后的步骤
+### <a name="post-update-steps"></a>更新后步骤
+- 安装之后 1712年，安装任何适用的修补程序。 有关详细信息中，查看以下知识库文章，以及我们[维护策略](azure-stack-servicing-policy.md)。  
+  - [KB 4103348-网络控制器 API 服务崩溃时尝试安装 Azure 堆栈更新](https://support.microsoft.com/help/4103348)
 
-此更新还要求在完成 1712 Azure Stack 更新安装之后安装 OEM 合作伙伴提供的固件更新。
 
-> [!NOTE]
-> 请参阅 OEM 合作伙伴网站来下载更新。
+- 更新 1712年还要求你安装固件更新从 OEM 合作伙伴 1712 Azure 堆栈更新安装完成后。
+
+  > [!NOTE]
+  > 请参阅 OEM 合作伙伴网站来下载更新。
 
 ### <a name="new-features-and-fixes"></a>新功能和修复
 

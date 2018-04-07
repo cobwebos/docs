@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: cff6d780826164de6ef0122849e40d453192f81c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 11f57f866981cd4d376705dd24e2f0c54126e337
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stack-1803-update"></a>Azure 堆栈 1803年更新
 
@@ -44,7 +44,9 @@ Azure 堆栈 1803年更新生成号是**20180329.1**。
 
 
 ### <a name="post-update-steps"></a>更新后步骤
-*有更新 1803年无更新后的步骤。*
+安装之后 1803年，安装任何适用的修补程序。 有关详细信息中，查看以下知识库文章，以及我们[维护策略](azure-stack-servicing-policy.md)。
+
+- [KB 4103348-网络控制器 API 服务崩溃时尝试安装 Azure 堆栈更新](https://support.microsoft.com/en-us/help/4103348)
 
 
 ### <a name="new-features"></a>新增功能 
@@ -90,7 +92,7 @@ Azure 堆栈 1803年更新生成号是**20180329.1**。
 
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题    
-在安装期间 1803年更新，都可以有停机时间的 blob 服务和内部使用 blob 服务的服务。 这包括某些虚拟机操作。  这停机时间可能会导致失败的租户操作或警报从无法访问数据的服务。 在更新完成安装时，此问题解决本身。 
+<!-- 2328416 --> During installation of the 1803 update, there can be downtime of the blob service and internal services that use blob service. This includes some virtual machine operations. This down time can cause failures of tenant operations or alerts from services that can’t access data. This issue resolves itself when the update completes installation. 
 
 
 ### <a name="known-issues-post-installation"></a>已知问题（安装后）
@@ -129,10 +131,6 @@ Azure 堆栈 1803年更新生成号是**20180329.1**。
 
 #### <a name="compute"></a>计算
 - 无法在门户中使用虚拟机规模集的缩放设置。 解决方法是使用 [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set)。 由于 PowerShell 版本差异，必须使用 `-Name` 参数，而不是 `-VMScaleSetName`。
-
-- <!-- 2290877  --> You cannot scale up a virtual machine scale set (VMSS) that was created when using Azure Stack prior to version 1802. This is due to the change in support for using availability sets with virtual machine scale sets. This support was added with version 1802.  When you attempt to add additional instances to scale a VMSS that was created prior to this support being added, the action fails with the message *Provisioning state failed*. 
-
-  若要解决此问题，请联系支持，以请求修补程序**1.0.180302.4** Azure 堆栈。 
 
 - 通过转到“新建” > “计算” > “可用性集”在门户中创建可用性集时，只能创建一个包含一个容错域和 1 个更新域的可用性集。 解决方法是在创建新的虚拟机时，通过 PowerShell、CLI 或门户来创建可用性集。
 
