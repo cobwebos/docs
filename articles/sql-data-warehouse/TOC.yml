@@ -49,7 +49,7 @@
           href: sql-data-warehouse-service-capacity-limits.md
         - name: 常见问题
           href: sql-data-warehouse-overview-faq.md
-    - name: “安全”
+    - name: 安全
       items:
         - name: 概述
           href: sql-data-warehouse-overview-manage-security.md
@@ -151,7 +151,7 @@
           href: sql-data-warehouse-restore-database-powershell.md
         - name: REST API
           href: sql-data-warehouse-restore-database-rest-api.md
-    - name: “安全”
+    - name: 安全
       items:
         - name: 启用加密 - 门户
           href: sql-data-warehouse-encryption-tde.md
@@ -178,7 +178,7 @@
         - name: RedGate
           href: sql-data-warehouse-load-with-redgate.md
         - name: SSIS
-          href: sql-data-warehouse-load-from-sql-server-with-integration-services.md
+          href: /sql/integration-services/load-data-to-sql-data-warehouse
     - name: 集成
       items:
         - name: 配置 SQL 数据库弹性查询
