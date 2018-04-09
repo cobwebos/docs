@@ -1,24 +1,24 @@
 ---
-title: "收集和分析 Log Analytics 中的 Azure 活动日志 | Microsoft Docs"
-description: "可以使用 Azure 活动日志解决方案，分析并搜索所有 Azure 订阅的 Azure 活动日志。"
+title: 收集和分析 Log Analytics 中的 Azure 活动日志 | Microsoft Docs
+description: 可以使用 Azure 活动日志解决方案，分析并搜索所有 Azure 订阅的 Azure 活动日志。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: c13890862c058701268c07d032d6d990c659287a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b6e823d9338d76a350569091d6794e3ac4a2eae9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>收集和分析 Log Analytics 中的 Azure 活动日志
 
@@ -40,7 +40,7 @@ Activity Log Analytics 解决方案有助于分析和搜索所有 Azure 订阅�
 - 确定影响资源的故障或服务运行状况问题
 - 使用日志搜索功能，将用户活动、自动缩放操作、授权更改和服务运行状况与环境中的其他日志或指标关联起来
 
-<sup>1</sup>默认情况下，Log Analytics 将 Azure 活动日志保留 90 天，即使在免费层也是如此。 或者，将工作区保留期设置为少于 90 天。 如果工作区保留期长于 90 天，活动日志会在工作区保留期时段内得到保留。
+<sup>1</sup>默认情况下，Log Analytics 将 Azure 活动日志保留 90 天，即使在免费层也是如此。 或者，将工作区保留期设置为少于 90 天。 如果工作区保留期长于 90 天，则活动日志将根据工作区的保留期进行保留。
 
 Log Analytics 免费收集活动日志，并将日志免费存储 90 天。 如果日志存储时间超过 90 天，将对存储超过 90 天的数据收取数据保留费。
 

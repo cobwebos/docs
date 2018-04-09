@@ -139,6 +139,8 @@
               href: app-service-mobile-how-to-configure-microsoft-authentication.md
             - name: 使用 Twitter 进行身份验证
               href: app-service-mobile-how-to-configure-twitter-authentication.md
+        - name: 自定义身份验证/授权
+          href: app-service-authentication-how-to.md
         - name: 使用托管服务标识
           href: app-service-managed-service-identity.md
         - name: 在应用程序代码中使用 SSL 证书

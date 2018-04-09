@@ -13,17 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: zhiweiw
-ms.openlocfilehash: a57bb4a019ce51e67516761ae6fb89461fe89e15
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6803d0a5cff45736013a840451b940ef7108bca1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health 警报目录 
 
 Azure AD Connect Health 服务发送警报指示标识基础结构运行不正常。 本文包括每个警报的警报标题、说明和修正步骤。 <br />
 错误、警告和预警是 Connect Health 服务生成的三个警报阶段。 强烈建议立即对触发的警报采取措施。 <br />
 在成功的情况下，将解除 Azure AD Connect Health 警报。 Azure AD Connect Health 代理将定期检测并向服务报告成功的情况。 某些警报的解除取决于时间。 换句话说，如果在警报生成后的 72 小时内未观察到相同的错误条件，则警报会自动解除。
+
+## <a name="general-alerts"></a>常规警报
+
+| 警报名称 | 说明 | 补救 |
+| --- | --- | ----- |
+| 运行状况服务数据不是最新的 | 在一台或多台服务器上运行的运行状况代理未连接到运行状况服务，且运行状况服务未收到来自此服务器的最新数据。 运行状况服务处理的最后数据已过去 2 小时。 | 请确保运行状况代理具有到以下服务和终结点的出站连接。 [阅读详细信息](active-directory-aadconnect-health-data-freshness.md) |
 
 ## <a name="alerts-for-azure-ad-connect-sync"></a>Azure AD Connect 警报（同步）
 
@@ -35,10 +41,10 @@ Azure AD Connect Health 服务发送警报指示标识基础结构运行不正�
 | 导出到 Active Directory 失败 | 到 Active Directory 连接器的导出操作失败。 | 请调查导出操作的事件日志错误，以获取更多详细信息。 | 
 | 从 Active Directory 导入失败 | 从 Active Directory 导入失败。 因此，可能无法导入此林中某些域中的对象。 | <li>验证 DC 连接</li> <li>手动重新运行导入</li> <li> 请调查导入操作的事件日志错误，以获取更多详细信息。 | 
 | 导出到 Azure Active Directory 失败 | 到 Azure Active Directory 连接器的导出操作失败。 因此，可能无法将某些对象成功导出到 Azure Active Directory。 | 请调查导出操作的事件日志错误，以获取更多详细信息。 |
-| 在最近 120 分钟内，密码同步检测信号已跳过 | 在最近的 120 分钟内，密码同步未与 Azure Active Directory 建立连接。 因此，密码不会与 Azure Active Directory 进行同步。 | 重启 Microsoft Azure Active Directory 同步服务：</b><br> 当前正在运行的任何同步操作都会中断。 如果没有正在进行的同步操作，可选择执行以下步骤。<br> 1.依次单击“开始”和“运行”，键入“Services.msc”，然后单击“确定”<b></b><b></b><b></b><b></b>。<br> 2.找到“Microsoft Azure AD Sync”并右键单击，然后单击“重启”<b></b><b></b>。 | 
+| 在过去的 120 分钟内，密码哈希同步检测信号已跳过 | 在过去的 120 分钟内，密码哈希同步未与 Azure Active Directory 建立连接。 因此，密码不会与 Azure Active Directory 进行同步。 | 重启 Microsoft Azure Active Directory 同步服务：</b><br> 当前正在运行的任何同步操作都会中断。 如果没有正在进行的同步操作，可选择执行以下步骤。<br> 1.依次单击“开始”和“运行”，键入“Services.msc”，然后单击“确定”<b></b><b></b><b></b><b></b>。<br> 2.找到“Microsoft Azure AD Sync”并右键单击，然后单击“重启”<b></b><b></b>。 | 
 | 检测到高 CPU 使用率 | CPU 消耗百分比超出此服务器上的建议阈值。 | <li>这可能是 CPU 消耗的临时峰值。 请在“监视”部分查看 CPU 使用情况趋势。</li><li>检查服务器上 CPU 使用情况消耗最高的前几个进程。<ol type="a"><li>可使用任务管理器或执行以下 PowerShell 命令： <br> <i>get-process \| Sort-Object -Descending CPU \| Select-Object -First 10</i></li><li>如果存在消耗高 CPU 使用情况的意外进程，请使用以下 PowerShell 命令停止这些进程： <br> stop-process -ProcessName [name of the process]<i></i></li></li></ol><li>如果上述列表中所示的进程为预期在服务器上运行的进程，且 CPU 消耗持续接近阈值，请考虑重新评估此服务器的部署要求。</li><li>作为自动防故障选项，可考虑重启服务器。 |
 | 检测到高内存消耗 | 服务器的内存消耗百分比已超出此服务器的建议阈值。 | 检查服务器上消耗最高内存的前几个进程。 可使用任务管理器或执行以下 PowerShell 命令：<br> <i>get-process \| Sort-Object -Descending WS \| Select-Object -First 10</i> </br> 如果存在消耗高内存的意外进程，请使用以下 PowerShell 命令停止这些进程：<br>stop-process -ProcessName [name of the process]<i></i></li><li> 如果上述列表中所示的进程为预期在服务器上运行的进程，请考虑重新评估此服务器的部署要求。</li><li>作为自动防故障选项，可考虑重启服务器。 | 
-| 密码同步已停止运行 | 密码同步已停止运行。 因此，密码不会与 Azure Active Directory 进行同步。 | 重启 Microsoft Azure Active Directory 同步服务： <br /> 当前正在运行的任何同步操作都会中断。 如果没有正在进行的同步操作，可选择执行以下步骤。 <br /> <ol> <li>依次单击“开始”和“运行”，键入“Services.msc”，然后单击“确定”<b></b><b></b><b></b><b></b>。</li> <li>找到“Microsoft Azure AD Sync”并右键单击，然后单击“重启”<b></b><b></b>。</li> </ol> </p>  | 
+| 密码哈希同步已停止运行 | 密码哈希同步已停止。 因此，密码不会与 Azure Active Directory 进行同步。 | 重启 Microsoft Azure Active Directory 同步服务： <br /> 当前正在运行的任何同步操作都会中断。 如果没有正在进行的同步操作，可选择执行以下步骤。 <br /> <ol> <li>依次单击“开始”和“运行”，键入“Services.msc”，然后单击“确定”<b></b><b></b><b></b><b></b>。</li> <li>找到“Microsoft Azure AD Sync”并右键单击，然后单击“重启”<b></b><b></b>。</li> </ol> </p>  | 
 | 导出到 Azure Active Directory 的操作已停止。 已达到意外删除阈值 | 到 Azure Active Directory 的导出操作失败。 要删除的对象数多于配置的阈值。 因此，未导出任何对象。 | <li> 标记为要删除的对象数超出了设定的阈值。 请确保该结果是你所需要的。</li> <li> 若要继续导出，请执行以下步骤： <ol type="a"> <li>通过运行 Disable-ADSyncExportDeletionThreshold 禁用阈值</li> <li>启动同步服务管理器</li> <li>在类型为 Azure Active Directory 的连接器上运行导出</li> <li>成功导出对象后，通过运行以下命令启用阈值：Enable-ADSyncExportDeletionThreshold</li> </ol> </li> |
 
 ## <a name="alerts-for-active-directory-federation-services"></a>Active Directory 联合身份验证服务的警报

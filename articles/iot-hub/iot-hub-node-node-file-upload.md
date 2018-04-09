@@ -1,11 +1,11 @@
 ---
-title: "使用 Node 将文件从设备上传到 Azure IoT 中心 | Microsoft Docs"
-description: "如何使用用于 Node.js 的 Azure IoT 设备 SDK 从设备将文件上传到云中。 上传的文件存储在 Azure 存储 Blob 容器中。"
+title: 使用 Node 将文件从设备上传到 Azure IoT 中心 | Microsoft Docs
+description: 如何使用用于 Node.js 的 Azure IoT 设备 SDK 从设备将文件上传到云中。 上传的文件存储在 Azure 存储 Blob 容器中。
 services: iot-hub
 documentationcenter: nodejs
 author: msebolt
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
 ms.service: iot-hub
 ms.devlang: node
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: v-masebo
-ms.openlocfilehash: cff0f2fc664e0c09bfa1f8f0e0d488a049a6f448
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: dd6f25173806d6e420bfeebaae3f81e39f8fd97f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>使用 IoT 中心将文件从设备上传到云
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/02/2018
 - 安全提供具有 Azure blob URI 的设备，用于上传文件。
 - 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
-[IoT 中心入门](iot-hub-node-node-getstarted.md)和[使用 IoT 中心发送云到设备的消息](iot-hub-node-node-c2d.md)教程介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+[IoT 中心入门](iot-hub-node-node-getstarted.md)教程展示了 IoT 中心基本的设备到云消息功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 * 视频

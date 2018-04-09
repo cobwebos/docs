@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 88475c169bd6cc8fc4d653801ec1af58ebc7620e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 97c2f68356a6a589f48224d297493509786ceff1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
@@ -94,14 +94,14 @@ Azure 集成运行时提供了使用安全、可靠和高性能的方式在云�
 可以在公用网络或专用网络中配置 Azure-SSIS IR。  通过将 Azure-SSIS IR 加入连接到你本地网络的虚拟网络 (VNet) 支持本地数据访问。  
 
 ### <a name="compute-resource-and-scaling"></a>计算资源和缩放
-Azure-SSIS IR 是完全托管的 Azure VM 群集，专用于运行 SSIS 包。 可以使用自己的 Azure SQL 数据库或托管实例（个人预览版）服务器托管附加到 SSIS 项目/包 (SSISDB) 的目录。 可以通过指定节点大小纵向扩展计算能力并通过指定群集中的节点数对其进行横向扩展。 可以在认为合适时停止和启动 Azure-SSIS 集成运行时以管理运行的成本。
+Azure-SSIS IR 是完全托管的 Azure VM 群集，专用于运行 SSIS 包。 可以使用自己的 Azure SQL 数据库或托管实例（预览版）服务器托管附加到 SSIS 项目/包 (SSISDB) 的目录。 可以通过指定节点大小纵向扩展计算能力并通过指定群集中的节点数对其进行横向扩展。 可以在认为合适时停止和启动 Azure-SSIS 集成运行时以管理运行的成本。
 
 有关详细信息，请参阅操作方法指南下的“如何创建和配置 Azure-SSIS IR”一文。  创建后，即可使用熟悉的工具（如 SQL Server 数据工具 (SSDT) 和 SQL Server Management Studio (SSMS)）部署和管理现有 SSIS 包，无需对其更改或仅做少量更改。
 
 有关 Azure-SSIS 运行时的详细信息，请参阅以下文章： 
 
 - [教程：将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 此文提供有关创建 Azure-SSIS IR，并使用 Azure SQL 数据库来承载 SSIS 目录的分步说明。 
-- [如何创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 此文延伸了教程的内容，提供有关使用 Azure SQL 托管实例（人预览版）以及将 IR 加入 VNet 的说明。 
+- [如何创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 此文延伸了教程的内容，提供了关于如何使用 Azure SQL 托管实例（预览版）以及如何将 IR 加入 VNet 的说明。 
 - [监视 Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime)。 此文介绍如何检索有关 Azure-SSIS IR 的信息，以及返回的信息中的状态说明。 
 - [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md)。 此文介绍如何停止、启动或删除 Azure-SSIS IR。 此外，介绍如何通过在 Azure-SSIS IR 中添加更多节点来扩展 IR。 
 - [将 Azure-SSIS IR 加入 VNet](join-azure-ssis-integration-runtime-virtual-network.md)。 此文提供有关将 Azure-SSIS IR 加入 Azure 虚拟网络 (VNet) 的概念性信息。 此外，介绍可以执行哪些步骤来使用 Azure 门户配置 VNet，以便 Azure-SSIS IR 能够加入 VNet。 
@@ -178,13 +178,13 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 ### <a name="azure-ssis-ir"></a>Azure-SSIS IR
 为你的 Azure-SSIS IR 选择正确的位置对在提取-转换-加载 (ETL) 工作流中实现高性能至关重要。  预览版最初可在六个位置使用（美国东部、美国东部 2、美国中部、澳大利亚东部、北欧和西欧）。
 
-- Azure-SSIS IR 的位置无需与数据工厂的位置相同，但它应与你自己要托管 SSISDB 的 Azure SQL 数据库/托管实例（个人预览版）服务器的位置相同。 这样一来，Azure-SSIS 集成运行时可以轻松地访问 SSISDB，且不会在不同位置之间产生过多的流量。
-- 如果没有托管 SSISDB 的现有 Azure SQL 数据库/托管实例（个人预览版）服务器，但有本地数据源/目标，应在连接到你本地网络的 VNet 的同一位置中创建新的 Azure SQL 数据库/托管实例（个人预览版）服务器。  这样一来，可以使用新的 Azure SQL 数据库/托管实例（个人预览版）服务器创建你的 Azure-SSIS IR 并连接该 VNet，全部在同一位置进行，从而有效地最大程度减少跨不同位置的数据移动。
-- 如果托管 SSISDB 所在的现有 Azure SQL 数据库/托管实例（个人预览版）服务器的位置与连接到你本地网络的 VNet 的位置不同，首先使用现有 Azure SQL 数据库/托管实例（个人预览版）服务器创建你的 Azure-SSIS IR，并在同一位置连接其他 VNet，然后在不同的位置之间配置 Vnet 到 Vnet 连接。
+- Azure-SSIS IR 的位置无需与数据工厂的位置相同，但应与你自己的需要托管 SSISDB 的 Azure SQL 数据库/托管实例（预览版）服务器的位置相同。 这样一来，Azure-SSIS 集成运行时可以轻松地访问 SSISDB，且不会在不同位置之间产生过多的流量。
+- 如果没有托管 SSISDB 的现有 Azure SQL 数据库/托管实例（预览版）服务器，但有本地数据源/目标，应在连接到本地网络的 VNet 的同一位置中创建新的 Azure SQL 数据库/托管实例（预览版）服务器。  这样一来，即可使用新的 Azure SQL 数据库/托管实例（预览版）服务器创建 Azure-SSIS IR 并连接该 VNet，全部在同一位置进行，从而尽可能有效地减少不同位置的数据移动。
+- 如果托管 SSISDB 所在的现有 Azure SQL 数据库/托管实例（预览版）服务器的位置与连接到本地网络的 VNet 的位置不同，请首先使用现有 Azure SQL 数据库/托管实例（预览版）服务器创建 Azure-SSIS IR，并在同一位置连接其他 VNet，然后在不同的位置之间配置 VNet 到 VNet 连接。
 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：
 
 - [创建自承载集成运行时](create-self-hosted-integration-runtime.md)
-- [创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 此文延伸了教程的内容，提供有关使用 Azure SQL 托管实例（人预览版）以及将 IR 加入 VNet 的说明。 
+- [创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 此文延伸了教程的内容，提供了关于如何使用 Azure SQL 托管实例（预览版）以及如何将 IR 加入 VNet 的说明。 

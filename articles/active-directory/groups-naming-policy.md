@@ -1,32 +1,32 @@
 ---
-title: "Azure Active Directory 中 Office 365 组的组名设置（预览版）| Microsoft Docs"
-description: "如何在 Azure Active Directory 中为 Office 365 组设置过期（预览版）"
+title: Azure Active Directory 中 Office 365 组的组名设置（预览版）| Microsoft Docs
+description: 如何在 Azure Active Directory 中为 Office 365 组设置过期（预览版）
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: michael.tillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/29/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: cc3ea7f81a924f3f4baa6fd2866c4e552b7c160e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c21706a591d0e1aa00279edf7a5534ada95fd8c1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>在 Azure Active Directory 中为 Office 365 组实施命名策略（预览版）
 
 要为用户创建或编辑的 Office 365 组实施一致的命名约定，请为 Azure Active Directory (Azure AD) 中的租户设置组命名策略。 例如，可以使用命名策略传达组的功能、成员身份、地理区域或创建组的人员。 使用命名策略还可帮助对通讯簿中的组分类。 可以使用策略来阻止组名称和别名中使用特定字词。
 
 > [!IMPORTANT]
-> 使用 Office 365 组命名策略预览版需要每个唯一用户的 Azure Active Directory Premium P1 许可证，这些用户是一个或多个 Office 365 组的成员。
+> 对于是一个或多个 Office 365 组的成员的每个唯一用户，使用 Office 365 组命名策略预览版需要 Azure Active Directory Premium P1 许可证或 Azure AD Basic EDU 许可证。
 
 命名策略应用于创建组或编辑跨工作负荷（例如 Outlook、Microsoft Teams、SharePoint、Exchange 或 Planner）创建的组。 它应用于组名和组别名。 如果在 Azure AD 中设置命名策略，且已有 Exchange 组命名策略，则应用 Azure AD 命名策略。
 

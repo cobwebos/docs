@@ -1,8 +1,8 @@
 ---
-title: "OMS 解决方案中的 Azure 自动化资源 | Microsoft Docs"
-description: "OMS 中的解决方案通常在 Azure 自动化中包含 Runbook 以自动执行各种进程，例如收集和处理监控数据。  本文介绍如何在解决方案中包含 Runbook 和其相关资源。"
+title: 管理解决方案中的 Azure 自动化资源 | Microsoft Docs
+description: 管理解决方案通常在 Azure 自动化中包含 Runbook 以自动执行各种进程，例如收集和处理监控数据。  本文介绍如何在解决方案中包含 Runbook 和其相关资源。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1097b1ddd2e8f2fae0ffc809aee63be5c2ed4cb1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5750cd1147ec861ea38ff2ebc9ce481d256c1959
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="adding-azure-automation-resources-to-an-oms-management-solution-preview"></a>将 Azure 自动化资源添加到 OMS 管理解决方案（预览版）
+# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>将 Azure 自动化资源添加到管理解决方案（预览版）
 > [!NOTE]
-> 这是在 OMS 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。   
+> 这是用于创建当前处于预览版的管理解决方案的初步文档。 如下所述的全部架构均会有变动。   
 
 
-[OMS 中的管理解决方案](operations-management-suite-solutions.md)通常在 Azure 自动化中包含 Runbook 以自动执行各种进程，例如收集和处理监控数据。  除了 Runbook，自动化帐户还包含资产，例如支持在解决方案中使用的 Runbook 的变量和计划。  本文介绍如何在解决方案中包含 Runbook 和其相关资源。
+[管理解决方案](operations-management-suite-solutions.md)通常在 Azure 自动化中包含 Runbook 以自动执行各种进程，例如收集和处理监控数据。  除了 Runbook，自动化帐户还包含资产，例如支持在解决方案中使用的 Runbook 的变量和计划。  本文介绍如何在解决方案中包含 Runbook 和其相关资源。
 
 > [!NOTE]
-> 本文中的示例使用管理解决方案需要或通用的参数和变量，[在 Operations Management Suite (OMS) 中创建管理解决方案](operations-management-suite-solutions-creating.md)对此进行了介绍 
+> 本文中的示例使用管理解决方案需要或通用的参数和变量，[在 Azure 中设计和开发解决方案](operations-management-suite-solutions-creating.md)中对它们进行了介绍。 
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/01/2018
 - 如何[创作 Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>自动化帐户
-Azure 自动化中的所有资源都包含在[自动化帐户](../automation/automation-security-overview.md#automation-account-overview)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)中所述，自动化帐户不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果没有，解决方案安装会失败。
+Azure 自动化中的所有资源都包含在[自动化帐户](../automation/automation-security-overview.md#automation-account-overview)中。  如 [Log Analytics 工作区和自动化帐户](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)中所述，自动化帐户不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果没有，解决方案安装会失败。
 
 每个自动化资源的名称都包含其自动化帐户的名称。  这是在具有 **accountName** 参数的解决方案中完成的，如以下 Runbook 资源示例所示。
 
@@ -118,7 +118,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../automation/aut
 
 作业包括 Runbook 名称和发送到 Runbook 的任何参数值。  作业应[依赖于](operations-management-suite-solutions-solution-file.md#resources)自必须在作业之前创建 Runbook 以来启动的 Runbook。  如果有多个应启动的 runbook，则可以通过让一个作业依赖于任何其他应先运行的作业来定义其顺序。
 
-作业资源的名称必须包含一个通常由参数分配的 GUID。  有关 GUID 参数的详细信息，可参阅[在 Operations Management Suite (OMS) 中创建解决方案](operations-management-suite-solutions-solution-file.md#parameters)。  
+作业资源的名称必须包含一个通常由参数分配的 GUID。  有关 GUID 参数的详细信息，请参阅[在 Azure 中创建管理解决方案文件](operations-management-suite-solutions-solution-file.md#parameters)。  
 
 
 ## <a name="certificates"></a>证书

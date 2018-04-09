@@ -12,25 +12,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/30/2018
 ms.author: mimig
-ms.openlocfilehash: 3679aa76d4a6b9fd6335371e1639f1f246867fa5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 5f733e9cbd90829eded80b1401093e2331a1eb16
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位数
-现已推出：Azure Cosmos DB [请求单位计算器](https://www.documentdb.com/capacityplanner)。 了解[估计吞吐量需求](request-units.md#estimating-throughput-needs)。
 
-![吞吐量计算器][5]
-
-## <a name="introduction"></a>介绍
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 由 Microsoft 提供，是全球分布式多模型数据库。 使用 Azure Cosmos DB，无需租用虚拟机、部署软件或监视数据库。 Azure Cosmos DB 由 Microsoft 顶尖工程师操作和持续监视，以提供一流的可用性、性能和数据保护。 可以使用自己选择的 API 访问数据，例如 [SQL API](documentdb-introduction.md)、[MongoDB API](mongodb-introduction.md)、[表 API ](table-introduction.md)以及通过[图形 API](graph-introduction.md) 使用 Gremlin，这些都是本机支持的。 Azure Cosmos DB 的货币是请求单位 (RU)。 借助 RU，无需保留读取/写入容量或预配 CPU、内存和 IOPS。
 
 Azure Cosmos DB 支持不同操作（范围从简单读取、写入到复杂图形查询等）的许多 API。 并非所有请求都是相同的，因此系统会根据请求所需的计算量为它们分配规范化数量的请求单位。 操作的请求单位数是确定性的，可以通过响应标头跟踪 Azure Cosmos DB 中的任何操作消耗的请求单位数。 
 
-若要提供可预测的性能，需要以 100 RU/秒为单位保留吞吐量。 
+若要提供可预测的性能，需要以 100 RU/秒为单位保留吞吐量。 可以使用 Azure Cosmos DB [请求单位计算器](https://www.documentdb.com/capacityplanner)来[估计吞吐量需求](request-units.md#estimating-throughput-needs)。
+
+![吞吐量计算器][5]
 
 阅读本文之后，能够回答以下问题：  
 
@@ -46,9 +44,9 @@ Azure Cosmos DB 通过保留资源提供了快速且可预测的性能，以满�
 
 通过 Azure Cosmos DB，可根据每秒处理的请求单位指定保留的吞吐量。 可以将请求单位视为吞吐量货币，因此，可以保留每秒可用于应用程序的定量有保障请求单位。  Azure Cosmos DB 中的每个操作（编写文档、执行查询、更新文档）都会消耗 CPU、内存和 IOPS。  也就是说，每个操作都会产生请求费用（用请求单位表示）。  要了解影响请求单位费用的因素，以及应用程序吞吐量要求，才能尽可能有效地运行应用程序。 Azure 门户中的数据资源管理器也是用于测试查询核心的有用工具。
 
-建议通过观看以下视频入门，在视频中 Aravind Ramachandran 介绍 Azure Cosmos DB 的请求单位和可预测性能。
+建议你通过观看以下视频来了解入门知识，Azure Cosmos DB 计划经理 Andrew Liu 在其中介绍了请求单位。
 
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Predictable-Performance-with-DocumentDB/player]
+> [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 
 > 
 
@@ -121,7 +119,7 @@ await client.ReplaceOfferAsync(offer);
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
-            <td valign="top"><p>项大小<strong></strong></p></td>
+            <td valign="top"><p>项大小</p></td>
             <td valign="top"><p><strong>读取数/秒</strong></p></td>
             <td valign="top"><p><strong>写入数/秒</strong></p></td>
             <td valign="top"><p><strong>请求单位</strong></p></td>

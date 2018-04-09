@@ -1,37 +1,36 @@
 ---
-title: "使用 Azure 门户创建分区的 Windows VM | Microsoft Docs"
-description: "使用 Azure 门户在可用性区域中创建 Windows VM"
+title: 使用 Azure 门户创建分区的 Windows VM | Microsoft Docs
+description: 使用 Azure 门户在可用性区域中创建 Windows VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: dlepow
-manager: timlt
-editor: tysonn
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/19/2017
+ms.date: 03/27/2018
 ms.author: danlep
-ms.custom: 
-ms.openlocfilehash: 63c2baa2f3924cf2274608df98b854683bc2baa8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: ''
+ms.openlocfilehash: 3d3561cf1ad760930821fabeef9839c25d55f2a9
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>使用 Azure 门户在可用性区域中创建 Windows 虚拟机
 
 本文逐步说明如何使用 Azure 门户在 Azure 可用性区域中创建虚拟机。 [可用性区域](../../availability-zones/az-overview.md)是 Azure 区域中物理上独立的区域。 使用可用性区域可以在整个数据中心发生故障或服务中断（这种情况很少见）时保护应用和数据。
 
-[!INCLUDE [availability-zones-preview-statement.md](../../../includes/availability-zones-preview-statement.md)]
-
+若要使用可用性区域，请在[受支持的 Azure 区域](../../availability-zones/az-overview.md#regions-that-support-availability-zones)中创建虚拟机。
 
 ## <a name="log-in-to-azure"></a>登录 Azure 
 
-登录 Azure 门户 ( https://portal.azure.com )。
+通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
@@ -39,89 +38,40 @@ ms.lasthandoff: 02/21/2018
 
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。 
 
-3. 输入虚拟机信息。 在此处输入的用户名和密码用于登录到虚拟机。 完成后，单击“确定”。
+3. 输入虚拟机信息。 在此处输入的用户名和密码用于登录到虚拟机。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。 选择一个位置，例如支持可用性区域的美国东部 2。 完成后，单击“确定”。
 
     ![在门户边栏选项卡中输入 VM 的基本信息](./media/create-portal-availability-zone/create-windows-vm-portal-basic-blade.png)
 
-4. 为 VM 选择大小。 若要查看更多的大小，请选择“全部查看”或更改“支持的磁盘类型”筛选器。 请小心选择一个可用性区域预览版中支持的大小，如 *DS1_v2 Standard*。 
+4. 为 VM 选择大小。 选择一个建议的大小，或根据功能进行筛选。 确认该大小在要使用的区域中可用。
 
-    ![显示 VM 大小的屏幕截图](./media/create-portal-availability-zone/create-linux-vm-portal-sizes.png)  
+    ![选择 VM 大小](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
 5. 在“设置” > “高可用性”下，从“可用性区域”下拉列表中选择一个带编号的区域，保留其余默认值，并单击“确定”。
 
-    ![选择可用性区域](./media/create-portal-availability-zone/create-linux-vm-portal-availability-zone.png)
+    ![选择可用性区域](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 
-6. 在摘要页上，单击“购买”以开始虚拟机部署。
+6. 在摘要页上，单击“创建”以启动虚拟机部署。
 
 7. VM 将固定到 Azure 门户仪表板。 完成部署后，会自动打开 VM 摘要。
 
+## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>为托管磁盘和 IP 地址确认区域
 
-## <a name="zone-for-ip-address-and-managed-disk"></a>IP 地址和托管磁盘的区域
+当 VM 部署在可用性区域中时，将在同一可用性区域中创建 VM 的托管磁盘。 默认情况下，还会在该区域中创建一个公用 IP 地址。
 
-当 VM 部署在可用性区域中时，IP 地址和托管磁盘资源将部署在同一可用性区域中。 可以使用 Azure PowerShell 确认区域设置。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
+可以在门户中确认这些资源的区域设置。  
 
-以下示例获取名为 *myResourceGroup* 的资源组中资源的相关信息。 替换为用于创建 VM 的资源组的名称。
+1. 单击“资源组”，然后单击 VM 的资源组的名称，例如 *myResourceGroup*。
 
-使用 [Get-AzureRmPublicIpAddress](/en-us/powershell/module/azurerm.network/get-azurermpublicipaddress) 查找公共 IP 地址的区域：
+2. 单击磁盘资源的名称。 “概述”页包含有关资源的位置和可用性区域的详细信息。
 
-```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup
-```
-输出中的 `Zones` 设置显示，公共 IP 地址与 VM 位于相同的可用性区域中：
+    ![托管磁盘的可用性区域](./media/create-portal-availability-zone/create-windows-vm-portal-disk.png)
 
-```powershell
-Name                     : myVM-ip
-ResourceGroupName        : myResourceGroup
-Location                 : eastus2
-Id                       : /subscriptions/e44f251c-c67e-4760-9ed6-bf99a306ecff/resourceGroups/danlep0911/providers/Micr
-                           osoft.Network/publicIPAddresses/myVM-ip
-Etag                     : W/"b67e14c0-7e8a-4d12-91c5-da2a5dfad132"
-ResourceGuid             : 314bf57d-9b25-4474-9282-db3561d536aa
-ProvisioningState        : Succeeded
-Tags                     :
-PublicIpAllocationMethod : Dynamic
-IpAddress                : 13.68.16.25
-PublicIpAddressVersion   : IPv4
-IdleTimeoutInMinutes     : 4
-IpConfiguration          : {
-                             "Id": "/subscriptions/e44f251c-c67e-4760-9ed6-bf99a306ecff/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVM11842/ipConfigurations/ipconfig1"
-                           }
-DnsSettings              : null
-Zones                    : {2}
-```
+3. 单击公用 IP 地址资源的名称。 “概述”页包含有关资源的位置和可用性区域的详细信息。
+
+    ![IP 地址的可用性区域](./media/create-portal-availability-zone/create-windows-vm-portal-ip.png)
 
 
-此外，还在相同的可用性区域中创建了 VM 的托管磁盘资源。 可以使用 [Get-AzureRmDisk](/powershell/module/azurerm.compute/get-azurermdisk) 验证此结果：
-
-```powershell
-Get-AzureRmDisk -ResourceGroupName myResourceGroup
-```
-
-输出显示，托管磁盘与 VM 位于相同的可用性区域中：
-
-```powershell
-ResourceGroupName  : myResourceGroup
-AccountType        : PremiumLRS
-OwnerId            : /subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.
-                     Compute/virtualMachines/myVM
-ManagedBy          : /subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.
-                     Compute/virtualMachines/myVM
-Sku                : Microsoft.Azure.Management.Compute.Models.DiskSku
-Zones              : {2}
-TimeCreated        : 9/7/2017 6:57:26 PM
-OsType             : Windows
-CreationData       : Microsoft.Azure.Management.Compute.Models.CreationData
-DiskSizeGB         : 127
-EncryptionSettings :
-ProvisioningState  : Succeeded
-Id                 : /subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.
-                     Compute/disks/myVM_OsDisk_1_bd921920bb0a4650becfc2d830000000
-Name               : myVM_OsDisk_1_bd921920bb0a4650becfc2d830000000
-Type               : Microsoft.Compute/disks
-Location           : eastus2
-Tags               : {}
-```
 
 ## <a name="next-steps"></a>后续步骤
 
-本文已介绍如何在可用性区域中创建 VM。 详细了解 Azure VM 的[区域和可用性](regions-and-availability.md)。
+在本文中，你已学习了如何在可用性区域中创建 VM。 详细了解 Azure VM 的[区域和可用性](regions-and-availability.md)。

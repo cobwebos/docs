@@ -1,6 +1,6 @@
 ---
-title: "Azure 托管应用程序 PublicIpAddressCombo UI 元素 | Microsoft Docs"
-description: "介绍了 Azure 托管应用程序的 Microsoft.Network.PublicIpAddressCombo UI 元素"
+title: Azure PublicIpAddressCombo UI 元素 | Microsoft Docs
+description: 介绍了 Azure 门户的 Microsoft.Network.PublicIpAddressCombo UI 元素。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 990b84cf0df74b7b08a5fa105c2c2213aa251f9d
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: bced85abaf24beb0997ec906a68e5947f0e67cca
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI 元素
-一组用于选择新的或现有公用 IP 地址的控件。 [创建 Azure 托管应用程序](publish-service-catalog-app.md)时使用此元素。
+一组用于选择新的或现有公用 IP 地址的控件。
 
 ## <a name="ui-sample"></a>UI 示例
 ![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/22/2017
   },
   "defaultValue": {
     "publicIpAddressName": "ip01",
-    "domainNameLabel": "foobar"
+    "domainNameLabel": "mydomain"
   },
   "constraints": {
     "required": {
@@ -79,7 +79,7 @@ ms.lasthandoff: 12/22/2017
 {
   "name": "ip01",
   "resourceGroup": "rg01",
-  "domainNameLabel": "foobar",
+  "domainNameLabel": "mydomain",
   "publicIPAllocationMethod": "Dynamic",
   "newOrExistingOrNone": "new"
 }
@@ -88,6 +88,5 @@ ms.lasthandoff: 12/22/2017
 - 当 `options.hideDomainNameLabel` 指定为 **true** 时，将取消声明 `domainNameLabel`。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](overview.md)。
 * 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。
 * 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

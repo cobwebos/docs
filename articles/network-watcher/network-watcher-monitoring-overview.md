@@ -1,11 +1,11 @@
 ---
-title: "Azure 网络观察程序简介 | Microsoft 文档"
-description: "本页面概述可在 Azure 中监视和可视化联网资源的网络观察程序服务"
+title: Azure 网络观察程序简介 | Microsoft 文档
+description: 本页面概述可在 Azure 中监视和可视化联网资源的网络观察程序服务
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: b8a8e0653221af126ea137b1450ce27c29791ae3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 792b96e4f5ba5dc0f2f943f099a2fee339407d66
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-network-monitoring-overview"></a>Azure 网络监视概述
 
@@ -47,6 +47,7 @@ ms.lasthandoff: 02/21/2018
 * **[网络订阅限制](#network-subscription-limits)** - 用于查看网络资源用量与限制。
 * **[配置诊断日志](#diagnostic-logs)** – 提供单个窗格来为资源组中的网络资源启用或禁用诊断日志。
 * **[连接故障排除](network-watcher-connectivity-overview.md)** - 验证从虚拟机到给定终结点（已使用 Azure 上下文充实）建立直接 TCP 连接的可能性。
+* **[连接监视器](connection-monitor.md)** - 使用源和目标 IP 地址及端口，监视 Azure 虚拟机与 IP 地址之间的延迟和配置问题。
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>网络观察程序中基于角色的访问控制 (RBAC)
 

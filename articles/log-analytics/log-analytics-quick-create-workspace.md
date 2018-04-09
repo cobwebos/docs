@@ -1,24 +1,24 @@
 ---
-title: "在 Azure Log Analytics 中创建工作区 | Microsoft Docs"
-description: "了解如何创建 Log Analytics 工作区，以启用管理解决方案以及从云和本地环境进行的数据收集。"
+title: 在 Azure Log Analytics 中创建工作区 | Microsoft Docs
+description: 了解如何创建 Log Analytics 工作区，以启用管理解决方案以及从云和本地环境进行的数据收集。
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 5d8b20d5da442aa1f37eb7e2b2cb8049031e7a24
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8ac3d2d90909d740d28eb05396b915280f58c8ba
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>在 Azure 门户中创建 Log Analytics 工作区
 在 Azure 门户中可以设置 Log Analytics 工作区，该工作区是一个具有其自己的数据存储库、数据源和解决方案的独特 Log Analytics 环境。  如果要从以下源中收集数据，本文中所述的步骤是必需的：
@@ -37,19 +37,20 @@ ms.lasthandoff: 02/21/2018
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="log-in-to-azure-portal"></a>登录到 Azure 门户
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。 
+通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。 
 
 ## <a name="create-a-workspace"></a>创建工作区
-1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. 单击“创建”，然后为以下各项选择选项：
 
   * 为新的 OMS 工作区提供名称，如 DefaultLAWorkspace。 
   * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
   * 对于**资源组**，选择要使用已设置的现有资源组，还是要创建一个新资源组。  
   * 选择可用**位置**。  如需其他信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。
-  * 可从 Log Analytics 中三个不同的“定价层”进行选择，但本快速入门将选择“免费”层。  有关特定层的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
+  * 如果你在 2018 年 4 月 2 日后创建的新订阅中创建工作区，则它将自动使用“每 GB”定价计划，并且不提供用于选择定价层的选项。  如果是为在 4 月 2 日之前创建的现有订阅创建工作区，或者是为绑定到现有 EA 注册的订阅创建工作区，则可以在三个定价层之间进行选择。  在此快速入门中将选择免费层。  有关特定层的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
 
-        ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-01.png)<br>  
+        ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
+
 3. 在“OMS 工作区”窗格上提供所需信息后，单击“确定”。  
 
 在验证信息和创建工作区时，可以在菜单中的“通知”下面跟踪操作进度。 

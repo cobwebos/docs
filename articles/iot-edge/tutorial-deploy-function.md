@@ -5,16 +5,16 @@ services: iot-edge
 keywords: ''
 author: kgremban
 manager: timlt
-ms.author: v-jamebr
+ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a43ae8f28fc32b61fb5db985ffae98f093293798
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3d7dd0986878c747f92afc712301453bc8772ef2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>将 Azure Functions 作为 IoT Edge 模块进行部署 - 预览版
 可以使用 Azure Functions 部署代码，以直接将业务逻辑实现到 IoT Edge 设备。 本教程逐步演示了创建和部署 Azure Functions 以筛选 IoT Edge 模拟设备（该设备是 [Windows][lnk-tutorial1-win] 或 [Linux][lnk-tutorial1-lin] 教程“在模拟设备上部署 Azure IoT Edge”部分中创建的）上的传感器数据的过程。 本教程介绍如何执行下列操作：     
@@ -58,10 +58,10 @@ ms.lasthandoff: 03/28/2018
     ```cmd/sh
     dotnet new -i Microsoft.Azure.IoT.Edge.Function
     ```
-2. 为新模块创建一个项目。 以下命令会在当前的工作文件夹中创建项目文件夹 FilterFunction：
+2. 为新模块创建一个项目。 以下命令通过容器存储库创建项目文件夹 **FilterFunction**。 如果使用 Azure 容器注册表，第二个参数应采用 `<your container registry name>.azurecr.io` 的形式。 在当前的工作文件夹中输入以下命令：
 
     ```cmd/sh
-    dotnet new aziotedgefunction -n FilterFunction
+    dotnet new aziotedgefunction -n FilterFunction -r <your container registry address>/filterfunction
     ```
 
 3. 选择“文件” > “打开文件夹”，然后浏览到 FilterFunction 文件夹并在 VS Code 中打开项目。
@@ -127,24 +127,19 @@ ms.lasthandoff: 03/28/2018
 
 11. 保存文件。
 
-## <a name="publish-a-docker-image"></a>发布 Docker 映像
+## <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>创建 Docker 映像并将其发布到注册表
 
-1. 生成 Docker 映像。
-    1. 在 VS Code 资源管理器中展开 **Docker** 文件夹。 然后展开适用于所用容器平台的文件夹（linux-x64 或 windows-nano）。 
-    2. 右键单击“Dockerfile”文件，然后单击“生成 IoT Edge 模块 Docker 映像”。 
-    3. 导航到 **FilterFunction** 项目文件夹，然后单击“选择文件夹作为 EXE_DIR”。 
-    4. 在 VS Code 窗口顶部弹出的文本框中，输入映像名称。 例如：`<your container registry address>/filterfunction:latest`。 容器注册表地址与从注册表复制的登录服务器相同。 它应采用 `<your container registry name>.azurecr.io` 格式。
- 
-4. 登录到 Docker。 在集成终端中，输入以下命令： 
-
+1. 在 VS Code 集成终端输入以下命令，登录到 Docker： 
+     
    ```csh/sh
-   docker login -u <username> -p <password> <Login server>
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
-        
    若要查找在此命令中使用的用户名、密码和登录服务器，请转到 [Azure 门户] (https://portal.azure.com)。 在“所有资源”中，单击 Azure 容器注册表的磁贴以打开其属性，然后单击“访问密钥”。 复制“用户名”、“密码”和“登录服务器”字段中的值。 
 
-3. 将映像推送到 Docker 存储库。 选择“视图” > “命令面板”，然后搜索“Edge: 推送 IoT Edge 模块 Docker 映像”。
-4. 在弹出的文本框中，输入在步骤 1.d 中使用的同一映像名称。
+2. 在 VS Code 资源管理器中，右键单击 module.json 文件，然后单击“生成和推送 IoT Edge 模块 Docker 映像”。 在 VS Code 窗口顶部的弹出下拉框中，选择容器平台，即为 Linux 容器选择“amd64”，或为 Windows 容器选择“windows-amd64”。 然后，VS Code 将函数代码容器化并推送到指定的容器注册表。
+
+
+3. 可在 VS Code 集成终端中获取具有标记的完整容器映像地址。 有关生成和推送定义的详细信息，可参考 `module.json` 文件。
 
 ## <a name="add-registry-credentials-to-your-edge-device"></a>将注册表凭据添加到 Edge 设备
 在运行 Edge 设备的计算机上将注册表凭据添加到 Edge 运行时。 这将为此运行时提供拉取容器的访问权限。 
@@ -174,7 +169,7 @@ ms.lasthandoff: 03/28/2018
 1. 添加“filterFunction”模块。
     1. 再次选择“添加 IoT Edge 模块”。
     2. 在“名称”字段中，输入 `filterFunction`。
-    3. 在“映像 URI”字段中，输入映像地址；例如 `<your container registry address>/filtermodule:0.0.1-amd64`。 可从上一节中找到完整映像地址。
+    3. 在“映像 URI”字段中，输入映像地址；例如 `<your container registry address>/filterfunction:0.0.1-amd64`。 可从上一节中找到完整映像地址。
     74. 单击“ **保存**”。
 2. 单击“资源组名称” 的 Azure 数据工厂。
 3. 在“指定路由”步骤中，将以下 JSON 复制到文本框。 第一个路由会通过“input1”终结点将消息从温度传感器传输到筛选器模块。 第二个路由会将消息从筛选器模块传输到 IoT 中心。 在此路由中，`$upstream` 是特殊目的地，它将告诉 Edge 中心将消息发送到 IoT 中心。 
@@ -198,11 +193,11 @@ ms.lasthandoff: 03/28/2018
 1. 为 Azure IoT 工具包扩展配置适用于 IoT 中心的连接字符串： 
     1. 在 Azure 门户中，导航到 IoT 中心，并选择“共享访问策略”。 
     2. 选择“iothubowner”，然后复制“连接字符串 - 主键”的值。
-    1. 在 VS Code 资源管理器中，单击“IOT 中心设备”，然后单击“...”。 
-    1. 选择“设置 IoT 中心连接字符串”，然后在弹出窗口中输入 Iot 中心连接字符串。 
+    3. 在 VS Code 资源管理器中，单击“IOT 中心设备”，然后单击“...”。 
+    4. 选择“设置 IoT 中心连接字符串”，然后在弹出窗口中输入 Iot 中心连接字符串。 
 
-1. 要监视到达 IoT 中心的数据，请选择“视图” > “命令面板...”，然后搜索“IoT: 开始监视 D2C 消息”。 
-2. 要停止监视数据，请在命令面板中使用“IoT: Stop monitoring D2C message”命令。 
+2. 要监视到达 IoT 中心的数据，请选择“视图” > “命令面板...”，然后搜索“IoT: 开始监视 D2C 消息”。 
+3. 要停止监视数据，请在命令面板中使用“IoT: Stop monitoring D2C message”命令。 
 
 ## <a name="next-steps"></a>后续步骤
 

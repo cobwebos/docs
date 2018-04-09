@@ -161,10 +161,10 @@ items:
             href: graph-introduction.md
           - name: Cassandra
             href: cassandra-introduction.md
-      - name: “安全”
+      - name: 安全
         href: database-security.md
       - name: TCO
-        href: 'https://aka.ms/documentdb-tco-paper'
+        href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: 用例
         href: use-cases.md
         items:
@@ -184,13 +184,15 @@ items:
               - name: SQL 查询性能
                 href: sql-api-sql-query-metrics.md
               - name: SQL 演练
-                href: 'https://www.documentdb.com/sql/demo'
+                href: 'https://aka.ms/cosmos-db-playground'
               - name: 分区
                 href: sql-api-partition-data.md
               - name: 存储过程、触发器和 UDF
                 href: programming.md
               - name: 性能测试
                 href: performance-testing.md
+              - name: 异步 Java 性能提示
+                href: performance-tips-async-java.md
               - name: .NET 性能提示
                 href: performance-tips.md
               - name: Java 性能提示
@@ -354,7 +356,7 @@ items:
             href: access-control.md
           - name: Azure 存储资源管理器
             href: storage-explorer.md
-          - name: “安全”
+          - name: 安全
             items:
               - name: 静态加密
                 href: database-encryption-at-rest.md
@@ -378,17 +380,17 @@ items:
           - name: 使用逻辑应用进行应用程序日志记录
             href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
           - name: 绑定到 Azure Functions
-            href: ../azure-functions/functions-bindings-documentdb.md
+            href: ../azure-functions/functions-bindings-cosmosdb.md
           - name: 与 Azure 搜索集成
-            href: ../search/search-howto-index-documentdb.md
+            href: ../search/search-howto-index-cosmosdb.md
           - name: 使用 Azure 数据工厂移动数据
             href: ../data-factory/connector-azure-cosmos-db.md
           - name: 使用 Azure 流分析分析实时数据
-            href: '../stream-analytics/stream-analytics-define-outputs.md#documentdb'
+            href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
           - name: 使用逻辑应用获取更改的 HL7 FHIR 记录
             href: change-feed-hl7-fhir-logic-apps.md
           - name: 实时处理传感器数据
-            href: ../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md
+            href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
           - name: 使用 Power BI 直观显示数据
             href: powerbi-visualize.md
           - name: 将 ODBC 驱动程序用于数据可视化

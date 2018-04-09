@@ -1,25 +1,25 @@
 ---
-title: "收集 Azure 虚拟机相关数据 | Microsoft Docs"
-description: "了解如何启用 OMS 代理 VM 扩展，以及启用通过 Log Analytics 从 Azure VM 收集数据。"
+title: 收集 Azure 虚拟机相关数据 | Microsoft Docs
+description: 了解如何启用 OMS 代理 VM 扩展，以及启用通过 Log Analytics 从 Azure VM 收集数据。
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/04/2018
+ms.date: 03/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: be43701f96a71ad5cd9239c4ec7b3eea7fd6db21
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ff610c4efa9db16ca8a1e151b36e0e08dfe30d69
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>收集 Azure 虚拟机相关数据
 [Azure Log Analytics](log-analytics-overview.md) 可直接从 Azure 虚拟机及环境中的其他资源收集数据，并将数据置于单个存储库进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Azure Linux 或 Windows VM 中配置或收集数据。  
@@ -27,22 +27,27 @@ ms.lasthandoff: 02/21/2018
 本快速入门假定你拥有现有 Azure 虚拟机。 如果没有，可根据 VM 快速入门[创建 Windows VM](../virtual-machines/windows/quick-create-portal.md) 或[创建 Linux VM](../virtual-machines/linux/quick-create-cli.md)。
 
 ## <a name="log-in-to-azure-portal"></a>登录到 Azure 门户
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。 
+通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。 
 
 ## <a name="create-a-workspace"></a>创建工作区
-1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br> ![Azure portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
+1. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br> ![Azure 门户](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
 2. 单击“创建”，然后为以下各项选择选项：
 
   * 为新的 OMS 工作区提供名称，如 DefaultLAWorkspace。 
   * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
   * 对于“资源组”，选择包含一个或多个 Azure 虚拟机的现有资源组。  
   * 选择向其部署 VM 的“位置”。  如需其他信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)。
-  * 可从 Log Analytics 中三个不同的“定价层”进行选择，但本快速入门将选择“免费”层。  有关特定层的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
+  * 如果在 2018 年 4 月 2 日后创建的新订阅中创建工作区，则它将自动使用“每 GB”定价计划，并且不提供用于选择定价层的选项。  如果是为在 4 月 2 日之前创建的现有订阅创建工作区，或者是为绑定到现有 EA 注册的订阅创建工作区，则可以在三个定价层之间进行选择。  在此快速入门中将选择免费层。  有关特定层的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
+  
+        ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
 
-        ![Create Log Analytics resource blade](./media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-01.png)<br>  
 3. 在“OMS 工作区”窗格上提供所需信息后，单击“确定”。  
 
 在验证信息和创建工作区时，可以在菜单中的“通知”下面跟踪操作进度。 
+
+>[!NOTE]
+>如果新建的工作区链接到 2018 年 4 月 2 日后创建的新订阅，它会自动使用 *PerGB2018* 定价计划。  此计划包括每月 5 GB 可以跨 Application Insights 和 Log Analytics 资源免费使用的数据。 有关定价模型的其他信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
+>
 
 ## <a name="enable-the-log-analytics-vm-extension"></a>启用 Log Analytics VM 扩展
 对于已在 Azure 中部署的 Windows 和 Linux 虚拟机，可使用 Log Analytics VM 扩展安装 Log Analytics 代理。  使用扩展可简化安装流程，并可自动配置代理，以将数据发送至指定的 Log Analytics 工作区。 代理还会自动升级，以确保拥有最新的功能和修补程序。
@@ -53,7 +58,7 @@ ms.lasthandoff: 02/21/2018
 如果已在 Azure 政府云中创建了工作区，你可能会注意到门户中 Log Analytics 资源页顶部显示的邀请升级的横幅。  出于本快速入门的目的，不需要升级。<br>
 
 ![Azure 门户中的 Log Analytics 升级通知](media/log-analytics-quick-collect-azurevm/log-analytics-portal-upgradebanner.png)。    
-1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
+1. 在 Azure 门户中，单击左上角的“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
 2. 在 Log Analytics 工作区列表中，选择之前创建的 DefaultLAWorkspace。
 3. 在左侧菜单上的“工作区数据源”下，单击“虚拟机”。  
 4. 在“虚拟机”列表中，选择要在其中安装代理的虚拟机。 请注意，VM 的“OMS 连接状态”指示其“未连接”。

@@ -5,14 +5,14 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
+ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 1f4bd0d81d16997a9d627f918d77cb8e770a5b53
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8173a5abbbeea38bc831b7cc76898714cd4dd4d4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
@@ -81,11 +81,9 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>使用可用性区域防范数据中心级故障
 
-[可用性区域](../articles/availability-zones/az-overview.md)（预览版）是可用性集的替代方案，提高了在保持 VM 上应用程序和数据可用性时的控制度。 可用性区域是 Azure 区域中的物理独立区域。 每个受支持的 Azure 区域有三个可用性区域。 每个可用性区域有独立的电源、网络和散热设备，在逻辑上与 Azure 区域中的其他可用性区域保持独立。 通过将解决方案构建为使用区域中复制的 VM，可以在数据中心服务中断时保护应用和数据。 如果一个区域发生故障，另一个区域会立即提供复制的应用和数据。 
+[可用性区域](../articles/availability-zones/az-overview.md)是可用性集的替代方案，提高了在保持 VM 上应用程序和数据可用性时的控制度。 可用性区域是 Azure 区域中的物理独立区域。 每个受支持的 Azure 区域有三个可用性区域。 每个可用性区域有独立的电源、网络和散热设备，在逻辑上与 Azure 区域中的其他可用性区域保持独立。 通过将解决方案构建为使用区域中复制的 VM，可以在数据中心服务中断时保护应用和数据。 如果一个区域发生故障，另一个区域会立即提供复制的应用和数据。 
 
 ![可用性区域](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
-
-[!INCLUDE [availability-zones-preview-statement.md](availability-zones-preview-statement.md)]
 
 详细了解如何在可用性区域中部署 [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) 或 [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) VM。
 

@@ -1,120 +1,169 @@
 ---
-title: "针对 Azure IoT 中心设备预配服务设置设备 | Microsoft Docs"
-description: "在设备制造过程中通过 IoT 中心设备预配服务设置设备以进行预配"
+title: 针对 Azure IoT 中心设备预配服务设置设备
+description: 在设备制造过程中通过 IoT 中心设备预配服务设置设备以进行预配
 services: iot-dps
-keywords: 
+keywords: ''
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/05/2017
+ms.date: 04/02/2018
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 835a54f147b9ea543df21e7dfeb226ac42aceda3
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: c885e4d5d747d913eaf0b7137b240950e920e7ff
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务设置设备以进行预配
 
-前面的教程介绍了设置 Azure IoT 中心设备预配服务以将设备自动预配到 IoT 中心的方法。 本教程将介绍如何在制造过程中设置设备，以便能基于设备的[硬件安全模块 (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security) 为设备配置设备预配服务，并使设备可在首次启动时连接到你的设备预配服务。 本教程讨论以下过程：
+前面的教程介绍了设置 Azure IoT 中心设备预配服务以将设备自动预配到 IoT 中心的方法。 本教程介绍如何在制造过程中设置设备，使之能够通过 IoT 中心进行自动预配。 设备在首先启动并连接到预配服务之后，即可根据其[证明机制](concepts-device.md#attestation-mechanism)进行预配。 本教程讨论以下过程：
 
 > [!div class="checklist"]
-> * 选择硬件安全模块
-> * 为所选 HSM 生成设备预配客户端 SDK
+> * 生成特定于平台的设备预配服务客户端 SDK
 > * 提取安全项目
-> * 在设备上设置设备预配服务配置
+> * 创建设备注册软件
 
 ## <a name="prerequisites"></a>先决条件
 
-继续之前，请按照[设置云以预配设备](./tutorial-set-up-cloud.md)教程中所述的说明，创建设备预配服务实例和 IoT 中心。
+继续之前，请按照以前的 [1 - 设置云资源](./tutorial-set-up-cloud.md)教程中的说明创建设备预配服务实例和 IoT 中心。
 
+本教程使用[用于 C 存储库的 Azure IoT SDK 和库](https://github.com/Azure/azure-iot-sdk-c)，该存储库包含用于 C 的设备预配服务客户端 SDK。此 SDK 目前为运行在 Windows 或 Ubuntu 实现上的设备提供 TPM 和 X.509 支持。 本教程以 Windows 开发客户端的使用为基础，而使用该客户端的前提是基本熟悉 Visual Studio 2017 的使用。 
 
-## <a name="select-a-hardware-security-module"></a>选择硬件安全模块
+如果不熟悉自动预配过程，请务必在继续操作之前查看[自动预配概念](concepts-auto-provisioning.md)。 
 
-[设备预配服务客户端 SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) 支持两种类型的硬件安全模块（或称为 HSM）： 
+## <a name="build-a-platform-specific-version-of-the-sdk"></a>生成特定于平台的 SDK 版本
 
-- [受信任的平台模块 (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module)。
-    - TPM 是适用于大多数基于 Windows 的设备平台和几种基于 Linux/Ubuntu 的设备的标准模块。 对于设备制造商，如果其设备上运行以上任一种 OS，并且正在寻找标准 HSM，则可以选择此 HSM。 使用 TPM 芯片可以向设备预配服务单独注册每台设备。 出于开发目的，可以在 Windows 或 Linux 开发计算机上使用 TPM 模拟器。
+设备预配服务客户端 SDK 有助于实现设备注册软件。 但在使用它之前，需根据开发客户端平台和证明机制生成一个 SDK 版本。 在本教程中，请针对支持的证明类型生成一个使用 Visual Studio 2017（基于 Windows 开发平台）的 SDK：
 
-- 基于 [X.509](https://cryptography.io/en/latest/x509/) 的硬件安全模块。 
-    - 基于 X.509 的 HSM 是相对较新的芯片，目前在 Microsoft 中用于实现 X.509 证书的 RIoT 或 DICE 芯片上运行。 使用 X.509 芯片可以在门户中进行批量注册。 它还支持 Windows 以外的某些 OS，如 embedOS。 出于开发目的，设备预配服务客户端 SDK 支持 X.509 设备模拟器。 
+1. 安装所需的工具并克隆 GitHub 存储库，后者包含用于 C 的预配服务客户端 SDK：
 
-设备制造商需要选择基于以上一种类型的硬件安全模块/芯片。 设备预配服务客户端 SDK 中当前不支持其他类型的 HSM。   
+   a. 确保已在计算机上安装 Visual Studio 2015 或 [Visual Studio 2017](https://www.visualstudio.com/vs/)。 必须启用[“使用 C++ 进行桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷才能进行 Visual Studio 安装。
 
+   b. 下载并安装 [CMake 生成系统](https://cmake.org/download/)。 在进行 CMake 安装**之前**，必须在计算机上安装包含“使用 C++ 进行桌面开发”工作负荷的 Visual Studio。
 
-## <a name="build-device-provisioning-client-sdk-for-the-selected-hsm"></a>为所选 HSM 生成设备预配客户端 SDK
+   c. 确保在计算机上安装 `git` 并将其添加到可供命令窗口访问的环境变量。 请参阅[软件自由保护组织提供的 Git 客户端工具](https://git-scm.com/download/)，了解最新的 `git` 工具，其中包括 **Git Bash**，这是一个可以与本地 Git 存储库交互的命令行 Bash shell。 
 
-设备预配服务客户端 SDK 可帮助在软件中实现所选的安全机制。 以下步骤演示如何将 SDK 用于所选的 HSM 芯片：
+   d. 打开 Git Bash，克隆“用于 C 的 Azure IoT SDK 和库”存储库。 克隆命令可能需要数分钟才能运行完毕，因为它还下载多个依赖性的子模块：
+    
+   ```cmd/sh
+   git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+   ```
 
-1. 如果已执行了[创建模拟设备快速入门](./quick-create-simulated-device.md)中的步骤，则已具备了生成 SDK 的设置。 如果没有，请执行标题为[准备开发环境](./quick-create-simulated-device.md#setupdevbox)部分中的前 4 个步骤。 这些步骤将克隆设备预配服务客户端 SDK 的 GitHub 存储库并安装 `cmake` 生成工具。 
+   e. 在新创建的存储库子目录中创建新的 `cmake` 子目录：
 
-1. 要为设备生成适用于所选 HSM 类型的 SDK，请在命令提示符中使用以下一种命令：
-    - 对于 TPM 设备：
+   ```cmd/sh
+   mkdir azure-iot-sdk-c/cmake
+   ``` 
+
+2. 从 Git Bash 命令提示符处转到 azure-iot-sdk-c 存储库的 `cmake` 子目录：
+
+   ```cmd/sh
+   cd azure-iot-sdk-c/cmake
+   ```
+
+3. 使用下述某个命令，针对开发平台和支持的证明机制之一生成 SDK（另请注意下面这两个尾随的句点符号）。 在完成后，CMake 会使用特定于设备的内容生成 `/cmake` 子目录：
+    - 对于使用物理 TPM/HSM 或模拟 X.509 证书进行证明的设备：
         ```cmd/sh
         cmake -Duse_prov_client:BOOL=ON ..
         ```
 
-    - 对于 TPM 模拟器：
+    - 对于使用 TPM 模拟器进行证明的设备：
         ```cmd/sh
         cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
         ```
 
-    - 对于 X.509 设备和模拟器：
-        ```cmd/sh
-        cmake -Duse_prov_client:BOOL=ON ..
-        ```
-
-1. 此 SDK 默认支持运行适用于 TPM 和 X.509 HSM 的 Windows 或 Ubuntu 实现的设备。 对于这些受支持的 HSM，请转到下文标题为[提取安全项目](#extractsecurity)的部分。 
+现在可以使用 SDK 生成设备注册代码了。 
  
-## <a name="support-custom-tpm-and-x509-devices"></a>支持自定义 TPM 和 X.509 设备
+<a id="extractsecurity"></a> 
 
-对于不运行 Windows 或 Ubuntu 的任何 TPM 和 X.509 设备，设备预配系统客户端 SDK 不提供默认支持。 对于此类设备，需要为特定 HSM 芯片编写自定义代码，如以下步骤所示：
+## <a name="extract-the-security-artifacts"></a>提取安全项目 
 
-### <a name="develop-your-custom-repository"></a>开发自定义存储库
+下一步是提取设备所用的证明机制的安全项目。 
 
-1. 开发一个用于访问 HSM 的库。 此项目需要生成可供设备预配 SDK 使用的静态库。
-1. 库必须实现以下标头文件中定义的函数：a. 对于自定义 TPM，需实现[自定义 HSM 文档](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-tpm-api)中定义的函数。
-    b. 对于自定义 X.509，需实现[自定义 HSM 文档](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_custom_hsm.md#hsm-x509-api)中定义的函数。 
+### <a name="physical-device"></a>物理设备 
 
-### <a name="integrate-with-the-device-provisioning-service-client"></a>与设备预配服务客户端集成
+如果生成了可以通过物理 TPM/HSM 来使用证明的 SDK：
 
-库独立完成生成后，你可以移动到 IoThub C-SDK 并链接到库：
+- 对于 TPM 设备，需要通过 TPM 芯片制造商确定与其关联的“认可密钥”。 通过对认可密钥进行哈希处理，可为 TPM 设备派生唯一的“注册 ID”。  
 
-1. 在以下 cmake 命令中提供自定义 HSM GitHub 存储库、库路径及其名称：
-    ```cmd/sh
-    cmake -Duse_prov_client:BOOL=ON -Dhsm_custom_lib=<path_and_name_of_library> <PATH_TO_AZURE_IOT_SDK>
+- 对于 X.509 设备，需要获取为设备颁发的证书 - 单个设备注册的最终实体证书和设备组注册的根证书。 
+
+### <a name="simulated-device"></a>模拟设备
+
+如果生成了可以通过模拟 TPM 或 X.509 证书来使用证明的 SDK：
+
+- 对于模拟 TPM 设备：
+   1. 在单独的/新的命令提示符处，导航到 `azure-iot-sdk-c` 子目录，然后运行 TPM 模拟器。 该模拟器通过套接字在端口 2321 和 2322 上进行侦听。 请勿关闭此命令窗口；以下快速入门自始至终都需让该模拟器保持运行状态。 
+
+      从 `azure-iot-sdk-c` 子目录运行以下命令，以启动模拟器：
+
+      ```cmd/sh
+      .\provisioning_client\deps\utpm\tools\tpm_simulator\Simulator.exe
+      ```
+
+   2. 使用 Visual Studio 打开在 *cmake* 文件夹中创建的名为 `azure_iot_sdks.sln` 的解决方案，然后在“生成”菜单上使用“生成解决方案”命令来生成它。
+
+   3. 在 Visual Studio 的“解决方案资源管理器”窗格中，导航到 **Provision\_Tools** 文件夹。 右键单击“tpm_device_provision”项目，然后选择“设为启动项目”。 
+
+   4. 使用“调试”菜单上的任一“启动”命令来运行此解决方案。 输出窗口会显示 TPM 模拟器的“注册 ID”和“认可密钥”，这是进行设备登记和注册所需的。 复制这些值，供以后使用。 可以关闭此窗口（包含注册 ID 和认可密钥），但让在步骤 1 中启动的 TPM 模拟器窗口保持运行状态。
+
+- 对于模拟 X.509 设备：
+  1. 使用 Visual Studio 打开在 *cmake* 文件夹中创建的名为 `azure_iot_sdks.sln` 的解决方案，然后在“生成”菜单上使用“生成解决方案”命令来生成它。
+
+  2. 在 Visual Studio 的“解决方案资源管理器”窗格中，导航到 **Provision\_Tools** 文件夹。 右键单击“dice\_device\_enrollment”项目，然后选择“设置为启动项目”。 
+  
+  3. 使用“调试”菜单上的任一“启动”命令来运行此解决方案。 在输出窗口中，当系统提示时输入 **i** 完成单个注册。 输出窗口会显示在本地为模拟设备生成的 X.509 证书。 将输出（从 *-----BEGIN CERTIFICATE-----* 开始，到第一个 *-----END CERTIFICATE-----* 结束）复制到剪贴板，确保将这两行也包括进去。 请注意，只需要输出窗口中的第一个证书。
+ 
+  4. 创建名为 **_X509testcert.pem_** 的文件，在所选文本编辑器中将其打开，然后将剪贴板内容复制到该文件中。 保存此文件，因为稍后需要用它来进行设备注册。 注册软件在运行时使用自动预配期间使用的证书。    
+
+在将设备注册到设备预配服务的过程中，这些安全项目是必需的。 预配服务会等待设备启动并随后与其连接。 设备首次启动时，客户端 SDK 逻辑会与芯片（或模拟器）交互以提取设备中的安全项目，并验证是否已向设备预配服务注册。 
+
+## <a name="create-the-device-registration-software"></a>创建设备注册软件
+
+最后一步是编写一个注册应用程序，以便使用设备预配服务客户端 SDK 将设备注册到 IoT 中心服务。 
+
+> [!NOTE]
+> 对于这一步，我们假定使用的是模拟设备，通过从工作站运行 SDK 示例注册应用程序的方式来完成。 不过，如果生成需要部署到物理设备的注册应用程序，则适用的概念是相同的。 
+
+1. 在 Azure 门户中，选择设备预配服务的“概览”边栏选项卡，复制“ID 范围”值。 ID 范围由此服务生成，可保证唯一性。 它是不可变的，可用于唯一标识注册 ID。
+
+    ![从门户边栏选项卡提取 DPS 终结点信息](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
+
+2. 在计算机上的 Visual Studio *解决方案资源管理器*中，导航到 **Provision\_Samples** 文件夹。 选择名为 **prov\_dev\_client\_sample** 的示例项目，打开 **prov\_dev\_client\_sample.c** 源文件。
+
+3. 将步骤 1 中获得的“ID 范围”值分配给 `id_scope` 变量（删除左侧的 /`[` 和右侧的 /`]` 方括号）： 
+
+    ```c
+    static const char* global_prov_uri = "global.azure-devices-provisioning.net";
+    static const char* id_scope = "[ID Scope]";
     ```
-   
-1. 在 Visual Studio 中打开 SDK 并生成它。 
 
-    - 生成过程将编译 SDK 库。
-    - SDK 将尝试链接到 cmake 命令中定义的自定义 HSM。
+    例如，IoT 中心客户端注册 API `IoTHubClient_LL_CreateFromDeviceAuth` 可以使用 `global_prov_uri` 变量通过指定的设备预配服务实例进行连接。
 
-1. 运行 `\azure-iot-sdk-c\provisioning_client\samples\prov_dev_client_ll_sample\prov_dev_client_ll_sample.c` 示例，验证 HSM 是否已正确实现。
+4. 在同一文件的 **main()** 函数中，注释/取消注释与设备的注册软件所用证明机制（TPM 或 X.509）相匹配的 `hsm_type` 变量： 
 
-<a id="extractsecurity"></a>
-## <a name="extract-the-security-artifacts"></a>提取安全项目
+    ```c
+    hsm_type = SECURE_DEVICE_TYPE_TPM;
+    //hsm_type = SECURE_DEVICE_TYPE_X509;
+    ```
 
-下一步是在设备上提取 HSM 的安全项目。
+5. 保存所做的更改，然后从“生成”菜单中选择“生成解决方案”，以便重新生成 **prov\_dev\_client\_sample** 示例。 
 
-1. 对于 TPM 设备，需要先通过 TPM 芯片制造商找到与其关联的“认可密钥”。 通过对认可密钥进行哈希处理，可为 TPM 设备派生唯一的“注册 ID”。 
-2. 对于 X.509 设备，需要获取为设备颁发的证书 - 单个设备注册的最终实体证书和设备组注册的根证书。
+6. 右键单击 **Provision\_Samples** 文件夹中的 **prov\_dev\_client\_sample** 项目，然后选择“设置为启动项目”。 目前请勿运行示例应用程序。
 
-必须具备这些安全项目才能向设备预配服务注册设备。 然后，预配服务将等待任何设备启动并随后与其连接。 有关如何使用这些安全项目创建注册的信息，请参阅[如何管理设备注册](how-to-manage-enrollments.md)。 
+> [!IMPORTANT]
+> 目前请勿运行/启动设备！ 在启动设备之前，需先将设备注册到设备预配服务，以便完成此过程。 下面的“后续步骤”部分会引导你阅读下一篇文章。
 
-设备首次启动时，客户端 SDK 将与芯片交互以提取设备中的安全项目，并验证是否已向设备预配服务注册。 
+### <a name="sdk-apis-used-during-registration-for-reference-only"></a>在注册过程中使用的 SDK API（仅供参考）
 
-
-## <a name="set-up-the-device-provisioning-service-configuration-on-the-device"></a>在设备上设置设备预配服务配置
-
-设备制造过程中，最后一步是编写使用设备预配服务客户端 SDK 的应用程序，以向该服务注册设备。 此 SDK 为应用程序提供以下可用 API：
+例如，此 SDK 提供下述可供应用程序在注册过程中使用的 API。 设备启动时，这些 API 可帮助设备连接设备预配服务并向其注册。 反过来，设备可以接收必要的信息，以便建立到 IoT 中心实例的连接：
 
 ```C
-// Creates a Provisioning Client for communications with the Device Provisioning Client Service
+// Creates a Provisioning Client for communications with the Device Provisioning Client Service.  
 PROV_DEVICE_LL_HANDLE Prov_Device_LL_Create(const char* uri, const char* scope_id, PROV_DEVICE_TRANSPORT_PROVIDER_FUNCTION protocol)
 
 // Disposes of resources allocated by the provisioning Client.
@@ -130,67 +179,22 @@ void Prov_Device_LL_DoWork(PROV_DEVICE_LL_HANDLE handle)
 PROV_DEVICE_RESULT Prov_Device_LL_SetOption(PROV_DEVICE_LL_HANDLE handle, const char* optionName, const void* value)
 ```
 
-使用前，请初始化变量 `uri` 和`id_scope`，如[本快速入门中“模拟设备的首次启动顺序”部分](./quick-create-simulated-device.md#firstbootsequence)中所述。 设备预配客户端注册 API `Prov_Device_LL_Create` 将连接到全局设备预配服务。 ID 范围由此服务生成，可保证唯一性。 它是不可变的，可用于唯一标识注册 ID。 `iothub_uri` 使 IoT 中心客户端注册 API `IoTHubClient_LL_CreateFromDeviceAuth` 能与正确的 IoT 中心连接。 
-
-
-设备启动时，这些 API 可帮助设备连接设备预配服务并向其注册，获取 IoT 中心的相关信息并连接到此中心。 `provisioning_client/samples/prov_client_ll_sample/prov_client_ll_sample.c` 文件演示如何使用这些 API。 一般情况下，需要为客户端注册创建以下框架：
-
-```C
-static const char* global_uri = "global.azure-devices-provisioning.net";
-static const char* id_scope = "[ID scope for your provisioning service]";
-...
-static void register_callback(DPS_RESULT register_result, const char* iothub_uri, const char* device_id, void* context)
-{
-    USER_DEFINED_INFO* user_info = (USER_DEFINED_INFO *)user_context;
-    ...
-    user_info. reg_complete = 1;
-}
-static void registation_status(DPS_REGISTRATION_STATUS reg_status, void* user_context)
-{
-}
-int main()
-{
-    ...
-    SECURE_DEVICE_TYPE hsm_type;
-    hsm_type = SECURE_DEVICE_TYPE_TPM;
-    //hsm_type = SECURE_DEVICE_TYPE_X509;
-    prov_dev_security_init(hsm_type); // initialize your HSM 
-
-    prov_transport = Prov_Device_HTTP_Protocol;
-    
-    PROV_CLIENT_LL_HANDLE handle = Prov_Device_LL_Create(global_uri, id_scope, prov_transport); // Create your provisioning client
-
-    if (Prov_Client_LL_Register_Device(handle, register_callback, &user_info, register_status, &user_info) == IOTHUB_DPS_OK) {
-        do {
-        // The register_callback is called when registration is complete or fails
-            Prov_Client_LL_DoWork(handle);
-        } while (user_info.reg_complete == 0);
-    }
-    Prov_Client_LL_Destroy(handle); // Clean up the Provisioning client
-    ...
-    iothub_client = IoTHubClient_LL_CreateFromDeviceAuth(user_info.iothub_uri, user_info.device_id, transport); // Create your IoT hub client and connect to your hub
-    ...
-}
-```
-
-可能需要先后使用模拟设备和测试服务安装程序来优化设备预配服务客户端注册应用程序。 应用程序在测试环境中正常运行后，便可为特定设备生成此应用程序并将可执行文件复制到设备映像。 此时还不能启动设备，需要[向设备预配服务注册设备](./tutorial-provision-device-to-hub.md#enrolldevice)，然后才能启动设备。 请参阅下面的步骤了解此过程。 
+你可能还会发现，需要先后使用模拟设备和测试性服务安装程序来优化设备预配服务客户端注册应用程序。 应用程序在测试环境中正常运行后，便可为特定设备生成此应用程序并将可执行文件复制到设备映像。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-此时可能已在门户中设置了设备预配和 IoT 中心服务。 如果要放弃设备预配设置，和/或延迟使用其中的任何服务，我们建议将它们关闭，避免产生不必要的费用。
+目前，你可能正在门户中预配设备并运行 IoT 中心服务。 若要放弃设备预配设置并且/或者将本教程系列的完成时间延后，建议将它们关闭，避免产生不必要的费用。
 
 1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择设备预配服务。 在“所有资源”边栏选项卡的顶部单击“删除”。  
-1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心。 在“所有资源”边栏选项卡的顶部单击“删除”。  
-
+2. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心。 在“所有资源”边栏选项卡的顶部单击“删除”。  
 
 ## <a name="next-steps"></a>后续步骤
 本教程介绍了如何：
 
 > [!div class="checklist"]
-> * 选择硬件安全模块
-> * 为所选 HSM 生成设备预配客户端 SDK
+> * 生成特定于平台的设备预配服务客户端 SDK
 > * 提取安全项目
-> * 在设备上设置设备预配服务配置
+> * 创建设备注册软件
 
 前往下一教程，了解如何向 Azure IoT 中心设备预配服务注册设备以进行自动预配，从而将设备预配到 IoT 中心。
 

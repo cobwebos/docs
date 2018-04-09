@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3451f268e78df6efa5e3fc489b88415349efe169
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3a83ed5f7dba3e4d68204a2c9dffb4459cadfef9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>安装 Durable Functions 扩展和示例 (Azure Functions)
 
 Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是在 NuGet 包 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) 中提供的。 本文展示了如何为以下开发环境安装包和一组示例：
 
 * Visual Studio 2017（推荐） 
-
+* Visual Studio Code
 * Azure 门户
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017
@@ -48,11 +48,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 按照与从示例开始相同的说明执行操作，但请执行以下步骤而非下载 *.zip* 文件：
 
 1. 创建一个 Function App 项目。
-2. 将以下 NuGet 包引用添加到 *.csproj* 文件：
-
-   ```xml
-   <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DurableTask" Version="1.0.0-beta" />
-   ```
+2. 使用“管理 Nuget 包”搜索以下 NuGet 包引用并将其添加到项目：Microsoft.Azure.WebJobs.Extensions.DurableTask v1.1.0-beta2（请选中“包括预发行版”来搜索此包）
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -129,6 +125,8 @@ Visual Studio Code 提供一种涵盖所有主要平台（Windows、macOS 和 Li
 1. 在 [functions.azure.com](https://functions.azure.com/signin) 上创建一个新的函数应用。
 
 2. 对该函数应用进行配置以[使用 2.0 运行时版本](set-runtime-version.md)。
+
+   Durable Functions 扩展对 1.X 运行时和 2.0 运行时都起作用，但是 Azure 门户模板仅在以 2.0 运行时为目标时才可用。
 
 3. 选择“创建自己的自定义函数”创建一个新函数。
 

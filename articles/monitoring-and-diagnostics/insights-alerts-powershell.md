@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2016
+ms.date: 03/28/2018
 ms.author: robb
-ms.openlocfilehash: 03026ee8bedd5277b2bb6cf28dabafabf207b0ae
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8f7df424b27e6899821a9bdd2f1d8397a0de35a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>在 Azure Monitor 中为 Azure 服务创建经典指标警报 - PowerShell
 > [!div class="op_single_selector"]
@@ -31,18 +31,18 @@ ms.lasthandoff: 03/23/2018
 ## <a name="overview"></a>概述
 
 > [!NOTE]
-> 本文介绍如何创建较早的指标警报。 Azure Monitor 现在支持[更新、更好的指标警报](monitoring-near-real-time-metric-alerts.md)。 这些警报可监视多个指标，并允许对维度指标发出警报。 即将推出对较新指标警报的 Powershell 支持。
+> 本文介绍了如何创建较早的经典指标警报。 Azure Monitor 现在支持[较新、更好的指标警报](monitoring-near-real-time-metric-alerts.md)。 这些警报可监视多个指标，并允许对维度指标发出警报。 即将推出对较新指标警报的 Powershell 支持。
 >
 >
 
-本文演示如何使用 PowerShell 设置 Azure 指标警报。  
+本文展示了如何使用 PowerShell 设置 Azure 经典指标警报。  
 
 可以根据监控指标或事件接收 Azure 服务的警报。
 
 * **指标值** - 指定指标的值超过在任一方向分配的阈值时，将触发警报。 也就是说，当首次满足条件时，以及之后不再满足条件时，都会触发此警报。    
 * **活动日志事件** - 发生每个事件，或仅当出现特定事件时触发警报。 若要深入了解活动日志警报，请[单击此处](monitoring-activity-log-alerts.md)
 
-可配置指标警报，使警报触发时执行以下操作：
+可配置经典指标警报，使警报触发时执行以下操作：
 
 * 向服务管理员和共同管理员发送电子邮件通知
 * 将电子邮件发送到指定的其他电子邮件。
@@ -135,8 +135,8 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="next-steps"></a>后续步骤
 * [获取 Azure 监视概述](monitoring-overview.md)，包括可收集和监视的信息的类型。
-* 了解[在警报中配置 Webhook](insights-webhooks-alerts.md)的详细信息。
-* 详细了解[配置活动日志事件的警报](monitoring-activity-log-alerts.md)。
+* 了解如何[在警报中配置 Webhook](insights-webhooks-alerts.md)。
+* 了解[针对活动日志事件配置警报](monitoring-activity-log-alerts.md)。
 * 了解关于 [Azure 自动化 Runbook](../automation/automation-starting-a-runbook.md) 的详细信息。
 * 获取[收集诊断日志概述](monitoring-overview-of-diagnostic-logs.md)以收集有关服务的详细高频率指标。
 * 获取[指标集合概述](insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。

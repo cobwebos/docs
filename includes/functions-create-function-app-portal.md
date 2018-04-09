@@ -1,4 +1,4 @@
-1. 在 Azure 门户左上角单击“创建资源”，然后选择“计算” > “函数应用”。 
+1. 选择 Azure 门户左上角的“新建”按钮，然后选择“计算” > “Function App”。 
 
     ![在 Azure 门户中创建函数应用](./media/functions-create-function-app-portal/function-app-create-flow.png)
 
@@ -16,8 +16,14 @@
     | **位置** | 欧洲西部 | 选择离你近或离函数访问的其他服务近的[区域](https://azure.microsoft.com/regions/)。 |
     | [存储帐户](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) |  全局唯一名称 |  Function App 使用的新存储帐户的名称。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 也可以使用现有帐户。 |
 
-1. 单击“创建”来预配和部署新的 Function App。 可以通过单击门户右上角的通知图标来监视部署的状态。 
+3. 选择“创建”以预配和部署函数应用。 
+
+4. 选择门户右上角的“通知”图标，留意是否显示“部署成功”消息。 
 
     ![定义新的函数应用设置](./media/functions-create-function-app-portal/function-app-create-notification.png)
 
-    单击“转到资源”转到新的函数应用。
+4. 选择“转到资源”，查看新的函数应用。
+
+>[!TIP]
+>如果在门户中找不到函数应用，请尝试[将 Function App 添加到 Azure 门户中的收藏夹](../articles/azure-functions/functions-how-to-use-azure-function-app-settings.md#favorite)。   
+

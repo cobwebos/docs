@@ -1,33 +1,33 @@
 ---
-title: "Azure Cosmos DB 中的分区和水平缩放 | Microsoft Docs"
-description: "了解分区在 Azure Cosmos DB 中的工作原理，如何配置分区和分区键以及如何为应用程序选取适当的分区键。"
+title: Azure Cosmos DB 中的分区和水平缩放 | Microsoft Docs
+description: 了解分区在 Azure Cosmos DB 中的工作原理，如何配置分区和分区键以及如何为应用程序选取适当的分区键。
 services: cosmos-db
 author: arramac
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: cac9a8cd-b5a3-4827-8505-d40bb61b2416
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 03/30/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0032a00883cedfe754e14293dc13a1009f6dd3a0
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 149d2ba5108fb49741203fbe5c50add6c0d523ae
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中分区和缩放
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 是一种全局分布的多模型数据库服务，旨在帮助用户实现快速且可预测的性能。 随着应用程序的发展，它也不断无缝扩展。 本文概述了分区如何应用于 Azure Cosmos DB 中的所有数据模型。 文中还介绍了如何配置 Azure Cosmos DB 容器以有效扩展应用程序。
 
-在本 Azure Friday 视频中，Scott Hanselman 和 Azure Cosmos DB 首席工程经理 Shireesh Thota 会介绍有关分区和分区键的内容：
+在此视频中，Azure Cosmos DB 计划经理 Andrew Liu 谈论了分区和分区键：
 
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-DocumentDB-Elastic-Scale-Partitioning/player]
+> [!VIDEO https://www.youtube.com/embed/SS6WrQ-HJ30]
 > 
 
 ## <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区

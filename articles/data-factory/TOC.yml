@@ -122,6 +122,8 @@
           href: author-visually.md
         - name: 持续集成和部署
           href: continuous-integration-deployment.md
+        - name: 迭代开发和调试
+          href: iterative-development-debugging.md
     - name: 复制数据
       items:
         - name: 通过复制活动复制数据

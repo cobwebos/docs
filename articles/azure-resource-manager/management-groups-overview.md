@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: db472345bacda916f1b1664ed7803978ab235a2a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 911043c8fda985f25023dc1224d8e67b283f4d6c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组组织资源 
 
@@ -42,11 +42,15 @@ ms.lasthandoff: 03/23/2018
 - 每个管理组可以包含多个子级。 
 
 ### <a name="preview-subscription-visibility-limitation"></a>预览版订阅可见性限制 
-目前预览版中存在限制，即无法查看已继承了访问权限的订阅。 已继承订阅的访问权限，但 Azure 资源管理器尚无法按照已继承权限的情况来执行操作。  
+目前预览版中存在限制，无法查看你对其具有继承的访问权限的订阅。 已继承对订阅的访问权限，但 Azure 资源管理器尚无法按照已继承权限的情况来执行操作。  
 
 使用 REST API 获取有关订阅的信息可以返回有关确实具有访问权限的详细信息，但在 Azure 门户和 Azure Powershell 中不会显示相应订阅。 
 
 正在设法解决此问题，将在管理组“正式发行”之前解决。  
+
+### <a name="cloud-solution-providercsp-limitation-during-preview"></a>预览版期间的云解决方案提供商 (CSP) 限制 
+当前对于云解决方案提供商 (CSP) 合作伙伴存在限制，他们无法在其客户的目录中创建或管理其客户的管理组。  
+正在设法解决此问题，将在管理组“正式发行”之前解决。
 
 
 ## <a name="root-management-group-for-each-directory"></a>每个目录的根管理组

@@ -1,34 +1,33 @@
 ---
-title: "Azure Active Directory 使用条款 | Microsoft Docs"
-description: "通过 Azure AD 使用条款，你和你的公司可以向 Azure AD 服务用户提供使用条款。"
+title: Azure Active Directory 使用条款 | Microsoft Docs
+description: 通过借鉴 Azure AD 使用条款，你和你的公司可以向 Azure AD 服务用户提供使用条款。
 services: active-directory
-documentationcenter: 
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: d55872ef-7e45-4de5-a9a0-3298e3de3565
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/06/2018
+ms.date: 03/29/2018
 ms.author: billmath
-ms.openlocfilehash: e29e842a54d286e19d23c1c91c08d55933a0eada
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 208a65c09b13acad62c9b6d8e55b6050041c9f5d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="azure-active-directory-terms-of-use-feature-preview"></a>Azure Active Directory 使用条款功能（预览）
-Azure AD 使用条款提供了一个简单方法，组织可以使用它向最终用户显示信息。  这可确保用户看到法律要求或合规性要求的相关免责声明。
+# <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
+Azure AD 使用条款提供了一个简单方法，组织可以使用它向最终用户显示信息。  可以通过这样的呈现方式确保用户看到法律要求或合规性要求的相关免责声明。
 
-Azure AD 使用条款使用 PDF 格式显示内容。   此 PDF 可以是任意内容（例如现有的合同文档），使你可以在用户登录时收集最终用户协议。  可以将使用条款用于应用程序、用户组，如果你有多个使用条款，也可以将它们用于不同的目的。
+Azure AD 使用条款使用 PDF 格式显示内容。   此 PDF 可以是任意内容（例如现有的合同文档），只要能够在用户登录时收集最终用户协议即可。  可以将使用条款用于应用程序、用户组，如果你有多个使用条款，也可以将它们用于不同的目的。
 
 此文档的剩余部分介绍了如何开始使用 Azure AD 使用条款。  
 
 ## <a name="why-use-azure-ad-terms-of-use"></a>为什么要使用 Azure AD 使用条款
-发现难以让员工或来宾在获得访问权限之前先同意你的使用条款？ 在查看已同意或尚未同意公司使用条款的人员方面需要帮助？  Azure AD 使用条款提供了一个简单方法，组织可以使用它向最终用户显示信息。  这可确保他们看到法律要求或合规性要求的相关免责声明。
+发现难以让员工或来宾在获得访问权限之前先同意你的使用条款？ 在查看已同意或尚未同意公司使用条款的人员方面需要帮助？  Azure AD 使用条款提供了一个简单方法，组织可以使用它向最终用户显示信息。  可以通过这样的呈现方式确保他们看到法律要求或合规性要求的相关免责声明。
 
 可以在以下应用场景中使用 Azure AD 使用条款：
 -   针对组织中所有用户的常规使用条款。
@@ -50,15 +49,15 @@ Azure AD 使用条款使用 PDF 格式显示内容。   此 PDF 可以是任意�
 完成使用条款后，请使用以下过程添加它。
 
 ### <a name="to-add-terms-of-use"></a>添加使用条款
-1. 导航到仪表板（位于 [https://aka.ms/catou](https://aka.ms/catou)）
+1. 导航至 [https://aka.ms/catou](https://aka.ms/catou) 上的仪表板
 2. 单击“添加”。</br>
 ![添加 TOU](media/active-directory-tou/tou12.png)
 3. 为该使用条款输入名称
-4. 输入“显示名称”。  此标题是用户登录时将看到的内容。
+4. 输入“显示名称”。  此标题是用户登录时会看到的内容。
 5. 浏览到已完成的使用条款 (PDF)，并选择它。  建议的字号是 24。
 6. **选择**使用条款的语言。  可以通过语言选项上传多个版本的使用条款，每个版本的语言各不相同。  最终用户看到的使用条款版本取决于其浏览器首选项。
 7. 对于“要求用户展开使用条款”这一功能，可选择“启用”或“禁用”。  如果将此功能设置为“启用”，则最终用户在接受使用条款之前必须先进行查看。
-8. 可以在“条件访问”部分使用模板或自定义条件访问策略**强制执行**已上传的使用条款。  可以使用自定义条件访问条款策略将使用条款细化，可向下细化到特定云应用程序或用户组。  有关详细信息，请参阅[配置条件访问策略](active-directory-conditional-access-best-practices.md)
+8. 可以在“条件访问”下从下拉列表中选择模板，或者选择自定义条件访问策略，以便**强制执行**已上传的使用条款。  可以使用自定义条件访问条款策略将使用条款细化，可向下细化到特定云应用程序或用户组。  有关详细信息，请参阅[配置条件访问策略](active-directory-conditional-access-best-practices.md)
 9. 单击“创建”。
 10. 选择自定义条件访问模板后，将出现新的屏幕，可以通过此屏幕自定义 CA 策略。
 11. 现在应能看到你的新使用条款。</br>
@@ -69,22 +68,38 @@ Azure AD 使用条款使用 PDF 格式显示内容。   此 PDF 可以是任意�
 可以使用以下过程删除旧的使用条款：
 
 ### <a name="to-delete-terms-of-use"></a>删除使用条款
-1. 导航到仪表板（位于 [https://aka.ms/catou](https://aka.ms/catou)）
+1. 导航至 [https://aka.ms/catou](https://aka.ms/catou) 上的仪表板
 2. 选择你想要删除的使用条款。
 3. 单击“删除” 。
 4. 应不会再看到你的新使用条款。
 
 
+## <a name="viewing-current-user-status"></a>查看当前的用户状态
+你会注意到，使用条款会显示接受用户和拒绝用户的计数。
+
+![审核事件](media/active-directory-tou/tou15.png)
+
+可以单击“已接受”或“已拒绝”下的数字，以便查看用户的当前状态。
+
+![审核事件](media/active-directory-tou/tou16.png)
+
 ## <a name="audit-terms-of-use"></a>审核使用条款
-Azure AD 使用条款提供了易于使用的审核功能，使你可以看到哪些人已接受了你的使用条款及他们接受使用条款的时间。  若要开始使用审核功能，请使用以下过程：
+如果需要查看历史性的接受用户和拒绝用户的数据，而不只是查看当前状态，可以使用 Azure AD 使用条款提供的易用的审核功能。  可以通过此审核功能查看哪些人接受了使用条款，以及他们接受使用条款的时间。  
+
+可以通过两种方式来使用审核功能，具体取决于你当前尝试进行的操作。  
+
+
+若要开始使用审核功能，请使用以下过程：
 
 ### <a name="to-audit-terms-of-use"></a>审核使用条款
-1. 导航到仪表板（位于 [https://aka.ms/catou](https://aka.ms/catou)）
-2. 单击“审核事件”。</br>
+1. 导航至 [https://aka.ms/catou](https://aka.ms/catou) 上的仪表板
+2. 单击“查看审核日志”。</br>
 ![审核事件](media/active-directory-tou/tou8.png)
 3.  在 Azure AD 审核日志屏幕上，可以使用提供的下拉列表筛选信息，将特定审核日志信息作为目标。
 ![审核事件](media/active-directory-tou/tou9.png)
 4.  还可以将信息下载为 .csv 文件中，在本地使用它。
+
+## 
 
 ## <a name="what-users-see"></a>用户看到的内容
 创建并强制执行使用条款后，处于范围内的用户将看到以下内容。  他们在登录期间将看到这些屏幕。
@@ -94,7 +109,7 @@ Azure AD 使用条款提供了易于使用的审核功能，使你可以看到�
 ![审核事件](media/active-directory-tou/tou11.png)
 
 ### <a name="review-terms-of-use"></a>查看使用条款
-用户可以查看已接受的使用条款。  可使用以下过程完成此操作：
+用户可以查看已接受的使用条款。  若要查看使用条款，请执行以下过程：
 
 1. 导航到 [https://myapps.microsoft.com](https://myapps.microsoft.com)，然后登录。
 2. 在右上角单击自己的姓名，然后从下拉列表中选择“个人资料”。
@@ -109,11 +124,12 @@ Azure AD 使用条款提供了易于使用的审核功能，使你可以看到�
 ## <a name="additional-information"></a>其他信息
 以下信息是需要注意的事项，可帮助你使用使用条款。
 
-在以下情况下，处于范围的用户必须在注销后登录才能符合新策略的要求：
- - 在使用条款上启用了条件访问策略
- - 或创建了第二个使用条款
-
-这是因为条件访问策略会立即生效。 发生此情况时，管理员将开始看到“表示遗憾的阴云”或“Azure AD 令牌颁发”。 管理员必须注销然并重新登录才能符合新策略的要求。
+>[!IMPORTANT]
+> 在以下情况下，处于范围的用户必须在注销后登录才能符合新策略的要求：
+> - 在使用条款上启用了条件访问策略
+> - 或创建了第二个使用条款
+>
+>条件访问策略会立即生效。 发生此情况时，管理员将开始看到“表示遗憾的阴云”或“Azure AD 令牌颁发”。 管理员必须注销然并重新登录才能符合新策略的要求。
 
 
 
@@ -122,7 +138,7 @@ Azure AD 使用条款提供了易于使用的审核功能，使你可以看到�
 ## <a name="frequently-asked-questions"></a>常见问题
 
 **问：如何查看用户何时/是否接受了使用条款？**</br>
-答：已将接受了使用条款的用户写入审核日志。 可以搜索 Azure AD 审核日志来查看结果。  
+答：可以直接单击使用条款旁边“已接受”下的数字。  有关详细信息，请参阅[查看当前的用户状态](#viewing-current-user-status)。  另外，已将接受了使用条款的用户写入审核日志。 可以搜索 Azure AD 审核日志来查看结果。  
 
 **问：更改使用条款后，是否需要用户重新接受该条款？**</br>
 答：是的，管理员可以更改使用条款的条款，这需要用户重新接受新的条款。

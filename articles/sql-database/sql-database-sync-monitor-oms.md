@@ -1,6 +1,6 @@
 ---
-title: 使用 OMS Log Analytics 监视 Azure SQL 数据同步 | Microsoft 文档
-description: 了解如何通过使用 OMS Log Analytics 监视 Azure SQL 数据同步
+title: 使用 OMS Log Analytics 监视 Azure SQL 数据同步（预览版）| Microsoft Docs
+description: 了解如何使用 OMS Log Analytics 监视 Azure SQL 数据同步（预览版）
 services: sql-database
 ms.date: 11/07/2017
 ms.topic: article
@@ -9,11 +9,11 @@ author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 423614227b16ad6cfa6dadfab1c5f2b93c5bbe62
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c106d5bbea118c9b78cbccee187b8eb5c347f232
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>使用 OMS Log Analytics 监视 SQL 数据同步（预览版） 
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 03/16/2018
 
 4.  在“Runbook 文件”下，使用给定的 `DataSyncLogPowerShellRunbook` 文件。 将“Runbook 类型”设置为 `PowerShell`。 为 runbook 提供一个名称。
 
-5.  选择“创建”。 现在你拥有了一个 runbook。
+5.  选择**创建**。 现在你拥有了一个 runbook。
 
 6.  在 Azure 自动化帐户下，请选择“共享资源”下的“变量”选项卡。
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 03/16/2018
 
 5.  将“定期”设置为“重复执行”，并设置所需间隔。 在脚本和 OMS 中，请在此处使用相同的间隔。
 
-6.  选择“创建”。
+6.  选择**创建**。
 
 ### <a name="check-the-automation"></a>检查自动化
 

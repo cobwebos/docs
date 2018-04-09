@@ -1,12 +1,12 @@
 ---
-title: "Azure 网络安全概述 | Microsoft Docs"
-description: "了解用于控制 Azure 资源之间的网络流量流的安全选项。"
+title: Azure 网络安全概述 | Microsoft Docs
+description: 了解用于控制 Azure 资源之间的网络流量流的安全选项。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: fbf0556cc47bc08a71fcf050b43c2dbbe5d27184
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 950c64ea1ea2edc072650a9f63a6d21ad369c496
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="network-security"></a>网络安全
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 02/28/2018
  服务标记表示一组 IP 地址前缀，帮助最大程度地降低安全规则创建过程的复杂性。 无法创建自己的服务标记，也无法指定要将哪些 IP 地址包含在标记中。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 可在安全规则定义中使用以下服务标记。 服务标记的名称根据 [Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的不同而略有不同。
 
 * **VirtualNetwork**（资源管理器）（如果是经典部署模型，则为 **VIRTUAL_NETWORK**）：此标记包括虚拟网络地址空间（为虚拟网络定义的所有 CIDR 范围）、所有连接的本地地址空间，以及[对等互连](virtual-network-peering-overview.md)的虚拟网络，或已连接到[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的虚拟网络。
-* **AzureLoadBalancer** (Resource Manager)（如果是经典部署模型，则为 **AZURE_LOADBALANCER**）：此标记表示 Azure 的基础结构负载均衡器。 此标记将转换为 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)，Azure 的运行状况探测源于该 IP。 如果不使用 Azure 负载均衡器，则可替代此规则。
+* **AzureLoadBalancer**（资源管理器）（如果是经典部署模型，则为 **AZURE_LOADBALANCER**）：此标记表示 Azure 的基础结构负载均衡器。 此标记将转换为 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653)，Azure 的运行状况探测源于该 IP。 如果不使用 Azure 负载均衡器，则可替代此规则。
 * **Internet**（资源管理器）（如果是经典部署模型，则为 **INTERNET**）：此标记表示虚拟网络外部的 IP 地址空间，可以通过公共 Internet 进行访问。 地址范围包括 [Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/details.aspx?id=41653)。
 * **AzureTrafficManager**（仅限资源管理器）：此标记表示 Azure 流量管理器探测 IP 的 IP 地址空间。 有关流量管理器探测 IP 的详细信息，请参阅 [Azure 流量管理器常见问题解答](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-faqs)。
 * **Storage**（仅限资源管理器）：此标记表示 Azure 存储服务的 IP 地址空间。 如果指定 *Storage* 作为值，则会允许或拒绝发往存储的流量。 如果只想允许对某个特定[区域](https://azure.microsoft.com/regions)中的存储进行访问，可以指定该区域。 例如，如果希望只允许访问美国东部区域中的 Azure 存储，可以指定 *Storage.EastUS* 作为服务标记。 标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。
@@ -141,7 +141,7 @@ ms.lasthandoff: 02/28/2018
  
 若要了解创建应用程序安全组以及在安全规则中指定应用程序安全组时的相关限制，请参阅 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
-应用程序安全组以预览版提供。 预览版功能的可用性和可靠性级别与正式版不同。 在使用应用程序安全组之前，必须先完成[创建包含应用程序安全组的网络安全组](create-network-security-group-preview.md)的 Azure 或 PowerShell 部分中的步骤 1-5 来进行注册以使用这些功能。 应用程序安全组具有以下约束：
+应用程序安全组具有以下约束：
 
 -   一个应用程序安全组中的所有网络接口必须存在于同一虚拟网络中。 不能向同一应用程序安全组添加来自不同虚拟网络的网络接口。 第一个分配给应用程序安全组的网络接口所在的虚拟网络定义所有后续分配的网络接口必须存在于其中的虚拟网络。
 - 如果在安全规则中将应用程序安全组指定为源和目标，则两个应用程序安全组中的网络接口必须存在于同一虚拟网络中。 例如，如果 ASG1 包含来自 VNet1 的网络接口，ASG2 包含来自 VNet2 的网络接口，则不能在一项规则中将 ASG1 分配为源，将 ASG2 分配为目标，所有网络接口需存在于 VNet1 中。
@@ -165,5 +165,4 @@ ms.lasthandoff: 02/28/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-* 完成[创建网络安全组](virtual-networks-create-nsg-arm-pportal.md)教程
-* 完成[创建包含应用程序安全组的网络安全组](create-network-security-group-preview.md)教程
+* 连接如何[创建网络安全组](tutorial-filter-network-traffic.md)。

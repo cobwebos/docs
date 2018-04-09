@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 03/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 92189eba7df49aa45adaee7ee3c93c8972b5594b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 018893a2124f1ab9c98e0728bc90ad0a69cf471f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 与 Amazon Web Services (AWS) 集成
 
@@ -132,9 +132,9 @@ ms.lasthandoff: 03/23/2018
 
     c. 在“值”列表中，选择为该行显示的属性值。
 
-    d.单击“下一步”。 在“命名空间”文本框中，键入为该行显示的命名空间值。
+    d. 在“命名空间”文本框中，键入为该行显示的命名空间值。
     
-    d.单击“下一步”。 单击“确定” 。
+    d. 单击“确定” 。
 
 6. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -146,7 +146,7 @@ ms.lasthandoff: 03/23/2018
 
 8. 在其他浏览器窗口中，以管理员身份登录 Amazon Web Services (AWS) 公司站点。
 
-9. 单击“控制台主页”。
+9. 单击“AWS 主页”。
    
     ![配置单一登录主页][11]
 
@@ -168,71 +168,59 @@ ms.lasthandoff: 03/23/2018
 
     c. 若要上传从 Azure 门户下载的**元数据文件**，请单击“选择文件”。
 
-    d.单击“下一步”。 单击“下一步”。
+    d. 单击“下一步”。
 
 13. 在“验证提供者信息”对话框页上，单击“创建”。 
     
     ![配置单一登录验证][15]
 
-14. 单击“角色”，并单击“创建新角色”。 
+14. 单击“角色”，然后单击“创建角色”。 
     
     ![配置单一登录角色][16]
 
-15. 在“设置角色名称”对话框中，执行以下步骤： 
-    
-    ![配置单一登录名称][17] 
-
-    a. 在“角色名称”文本框中，键入角色名称（例如：*TestUser*）。 
-
-    b. 单击“下一步”。
-
-16. 在“选择角色类型”对话框中，执行以下步骤： 
-    
-    ![配置单一登录角色类型][18] 
-
-    a. 选择“标识提供者角色的访问权限”。 
-
-    b. 在**授予 SAML 提供程序的 Web 单一访问 (WebSSO) 访问权限**部分中，单击“选择”。
-
-17. 在“建立信任”对话框中，执行以下步骤：  
+15. 在“创建角色”页中，执行以下步骤：  
     
     ![配置单一登录信任][19] 
 
-    a. 对于 SAML 提供者，选择之前创建的 SAML 提供者（例如：*WAAD*） 
+    a. 在“选择可信实体的类型”下选择“SAML 2.0 联合身份验证”。
+
+    b. 在“选择 SAML 2.0 提供程序”部分中，选择之前创建的 SAML 提供程序（例如：*WAAD*）
+
+    c. 选择“允许以编程方式和通过 AWS 管理控制台进行访问”。
   
-    b. 单击“下一步”。
+    d. 单击“下一步: 权限”。
 
-18. 在“验证角色信任”对话框中，单击“下一步”。 
-    
-    ![配置单一登录角色信任][32]
-
-19. 在“附加策略”对话框中，单击“下一步”。  
+16. 在“附加权限策略”对话框中，单击“下一步: 复查”。  
     
     ![配置单一登录策略][33]
 
-20. 在“审阅”对话框中，执行以下步骤：   
+17. 在“审阅”对话框中，执行以下步骤：   
     
     ![配置单一登录审阅][34] 
+
+    a. 在“角色名称”文本框中，输入你的角色名称。
+
+    b. 在“角色说明”文本框中，输入说明。
 
     a. 单击“创建角色”。
 
     b. 创建所需数量的角色，并将其映射到标识提供者。
 
-21. 在 Azure AD 用户预配中使用 AWS 服务帐户凭据从 AWS 帐户提取角色。 为此，请打开 AWS 控制台主页。
+18. 在 Azure AD 用户预配中使用 AWS 服务帐户凭据从 AWS 帐户提取角色。 为此，请打开 AWS 控制台主页。
 
-22. 单击“服务” -> “安全、标识和符合性” -> “标识和访问管理”。
+19. 单击“服务” -> “安全、标识和符合性” -> “IAM”。
 
     ![从 AWS 帐户提取角色](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole1.png)
 
-23. 在 IAM 部分选择“策略”选项卡。
+20. 在 IAM 部分选择“策略”选项卡。
 
     ![从 AWS 帐户提取角色](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole2.png)
 
-24. 通过单击“创建策略”来创建新策略。
+21. 通过单击“创建策略”来创建用于在 Azure AD 用户预配中从 AWS 帐户提取角色的新策略。
 
     ![创建新策略](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole3.png)
- 
-25. 创建自己的策略，通过执行下列步骤从 AWS 帐户提取所有角色：
+
+22. 创建自己的策略，通过执行下列步骤从 AWS 帐户提取所有角色：
 
     ![创建新策略](./media/active-directory-saas-amazon-web-service-tutorial/policy1.png)
 
@@ -272,7 +260,7 @@ ms.lasthandoff: 03/23/2018
 
     ![定义新策略](./media/active-directory-saas-amazon-web-service-tutorial/policy5.png)
 
-26. 通过执行以下步骤来定义新策略：
+23. 通过执行以下步骤来定义新策略：
 
     ![定义新策略](./media/active-directory-saas-amazon-web-service-tutorial/policy2.png)
 
@@ -281,8 +269,17 @@ ms.lasthandoff: 03/23/2018
     b. 可以提供“此策略将允许从 AWS 帐户提取角色”作为策略的“说明”。
     
     c. 单击“创建策略”按钮。
-        
-27. 通过执行以下步骤，在 AWS IAM 服务中创建新的用户帐户：
+
+24. 在“审阅”对话框中，执行以下步骤：   
+    
+    ![配置单一登录审阅][34] 
+
+    a. 单击“创建角色”。
+
+    b. 创建所需数量的角色，并将其映射到标识提供者。
+
+
+25. 通过执行以下步骤，在 AWS IAM 服务中创建新的用户帐户：
 
     a. 在 AWS IAM 控制台中单击“用户”导航。
 
@@ -302,7 +299,7 @@ ms.lasthandoff: 03/23/2018
     
     * 单击右下角的“后续权限”按钮。
 
-28. 现在，通过执行以下步骤为此用户创建新策略：
+26. 现在，通过执行以下步骤为此用户创建新策略：
 
     ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/adduser2.png)
     
@@ -312,7 +309,7 @@ ms.lasthandoff: 03/23/2018
     
     c. 选择“策略”，然后单击“下一步: 审阅”按钮。
 
-29. 通过执行以下步骤，审阅附加用户的策略：
+27. 通过执行以下步骤，审阅附加用户的策略：
 
     ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/adduser3.png)
     
@@ -320,7 +317,7 @@ ms.lasthandoff: 03/23/2018
     
     b. 单击右下角的“创建用户”按钮创建用户。
 
-30. 通过执行以下步骤，下载用户的用户凭据：
+28. 通过执行以下步骤，下载用户的用户凭据：
 
     ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/adduser4.png)
     
@@ -330,11 +327,11 @@ ms.lasthandoff: 03/23/2018
     
     c. 单击底部的“关闭”按钮。
 
-31. 在 Azure AD 管理门户中导航到 Amazon Web Services 应用的“用户预配”部分。
+29. 在 Azure AD 管理门户中导航到 Amazon Web Services 应用的“用户预配”部分。
 
     ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/provisioning.png)
 
-32. 分别在“客户端密码”和“密码令牌”字段中输入**访问密钥**和**密码**。
+30. 分别在“客户端密码”和“密码令牌”字段中输入**访问密钥**和**密码**。
 
     ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/provisioning1.png)
     
@@ -344,15 +341,11 @@ ms.lasthandoff: 03/23/2018
     
     c. 单击“测试连接”按钮，应当能够成功测试此连接。
 
-    d.单击“下一步”。 单击顶部的“保存”按钮保存此设置。
+    d. 单击顶部的“保存”按钮保存此设置。
  
-33. 现在，确保在“设置”部分中将“预配状态”设置为“开”，方法是打开开关，然后单击顶部的“保存”按钮。
+31. 现在，确保在“设置”部分中将“预配状态”设置为“开”，方法是打开开关，然后单击顶部的“保存”按钮。
 
     ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/provisioning2.png)
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -384,7 +377,7 @@ ms.lasthandoff: 03/23/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="create-an-amazon-web-services-aws-test-user"></a>创建 Amazon Web Services (AWS) 测试用户
 

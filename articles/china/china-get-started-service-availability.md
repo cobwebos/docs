@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: 4f8de996de4cdf8a3982bfe60e06783eacdbb947
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0476a93067dd32e2209ad208c5fe3705db4667a9
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-service-availability-in-china"></a>在中国可用的 Azure 服务
 
 下列表格比较了在全球 Azure 和世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）可用的服务。 在表格中，“GA”表示正式版，“预览版”表示以预览版提供的服务。
 
 > [!NOTE]
-> 本页中的表格已在 2017 年 8 月 23 日更新。 其中会不断添加新服务。 有关最新服务，请转到 [http://www.azure.cn/](http://www.azure.cn/)。
+> 本页中的表格已在 2018 年 3 月 18 日更新。 其中会不断添加新服务。 有关最新服务，请转到 [http://www.azure.cn/](http://www.azure.cn/)。
 
 ## <a name="compute-services"></a>计算服务
 ----------------
@@ -170,6 +170,6 @@ ms.lasthandoff: 03/23/2018
 
 
 ## <a name="next-steps"></a>后续步骤
-- [检查新服务](http://www.azure.cn/)
+- [检查新服务](https://www.azure.cn/what-is-new/)
 
 

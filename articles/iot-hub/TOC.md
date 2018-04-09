@@ -43,6 +43,7 @@
 ## 使用 MXChip IoT DevKit
 ### [使用 Azure 认知服务转换语音邮件](iot-hub-arduino-iot-devkit-az3166-translator.md)
 ### [使用 Azure Functions 检索 Twitter 消息](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
+### [使用 Eclipse Paho API 将消息发送到 MQTT 服务器](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
 ### [使用 Azure Functions 监视磁传感器并发送电子邮件通知](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
 # 操作指南

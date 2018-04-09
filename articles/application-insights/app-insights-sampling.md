@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 300b9b7786c17972c5c48df7e5b6d28491adc095
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d0614e2eae0f60068e69b7a4687fc62fbe082c64
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/29/2018
 ## <a name="in-brief"></a>简单地说：
 * 采样会保留 *n* 条记录中的 1 条并丢弃其余记录。 例如，它可能会保留 5 件事件中的 1 件，采样率为 20%。 
 * 如果应用程序发送了大量遥测，则 ASP.NET Web 服务器应用中自动发生采样。
-* 还可以在定价页的门户、.config 文件的 ASP.NET SDK 或 ApplicationInsights.xml 文件的 Java SDK 中手动设置采样，以便同时减少网络流量。
+* 还可以在门户中的“使用情况和预估成本”页面、config 文件的 ASP.NET SDK 或 ApplicationInsights.xml 文件的 Java SDK 中手动设置采样，以便同时减少网络流量。
 * 如果记录自定义事件，并且想要确定事件集是一同保留还是丢弃，请确保它们的 OperationId 值相同。
 * 采样除数 *n* 会在每个记录的属性 `itemCount` 中报告，在“搜索”中它出现在友好名称“请求计数”或“事件计数”下。 如果采样不在运行，则 `itemCount==1`。
 * 如果要编写分析查询，应[考虑采样](app-insights-analytics-tour.md#counting-sampled-data)。 特别是，应使用 `summarize sum(itemCount)`，而不是仅对记录进行计数。
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/29/2018
 
 如果应用经常超过其每月配额，且没有使用任一种基于 SDK 的采样类型的选项，请使用此种类型的采样。 
 
-在“配额和定价”边栏选项卡中设置采样率：
+在“使用情况和预估成本”页面中设置采样率：
 
 ![从应用程序“概述”边栏选项卡中，依次单击“设置”、“配额”、“示例”，选择采样率，并单击“更新”。](./media/app-insights-sampling/04.png)
 

@@ -4,7 +4,7 @@ description: 了解如何通过部署基本的 Java 应用，从而在应用服�
 services: app-service\web
 documentationcenter: ''
 author: rmcmurray
-manager: routlaw
+manager: mbaldwin
 editor: ''
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
@@ -12,18 +12,23 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 11/08/2017
+ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e63f8706e28a5d34cc9774cbaecde31415a4b48e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 854ae54992a1389ec7c7f7892c738d070421264d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>在 Azure 中创建第一个 Java Web 应用
 
 [Azure Web 应用](app-service-web-overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门演示如何使用 [Eclipse IDE for Java EE Developers](http://www.eclipse.org/) 将 Java Web 应用部署到应用服务。
+
+> [!NOTE]
+>
+> 本快速入门中的步骤演示了如何使用 Eclipse IDE 将 Java Web 应用发布到应用服务，但你可以使用 IntelliJ IDEA 旗舰版或社区版。 有关详细信息，请参阅[使用 IntelliJ 创建 Azure 的 Hello World Web 应用](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)。
+>
 
 完成本快速入门后，应用程序会在 Web 浏览器中如下图所示：
 
@@ -37,6 +42,11 @@ ms.lasthandoff: 03/29/2018
 
 * 免费 <a href="http://www.eclipse.org/downloads/" target="_blank">Eclipse IDE for Java EE Developers</a>。 本快速入门教程使用 Eclipse Neon。
 * <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">用于 Eclipse 的 Azure 工具包</a>。
+
+> [!NOTE]
+>
+> 若要完成本快速入门中的步骤，需使用用于 Eclipse 的 Azure 工具包登录到 Azure 帐户。 为此，请参阅[用于 Eclipse 的 Azure 工具包的 Azure 登录说明](/java/azure/eclipse/azure-toolkit-for-eclipse-sign-in-instructions)。
+>
 
 ## <a name="create-a-dynamic-web-project-in-eclipse"></a>在 Eclipse 中创建一个动态 Web 项目
 
@@ -74,15 +84,20 @@ ms.lasthandoff: 03/29/2018
 
 保存更改。
 
+> [!NOTE]
+>
+> 如果在第 1 行看到一个错误，提到缺少 Java Servlet 类，可以将其忽略。
+> 
+> ![良性 Java Servlet 错误](./media/app-service-web-get-started-java/java-servlet-benign-error.png)
+>
+
 ## <a name="publish-the-web-app-to-azure"></a>将 Web 应用发布到 Azure
 
 在“项目资源管理器”中，右键单击该项目，然后选择“Azure” > “发布为 Azure Web 应用”。
 
 ![“发布为 Azure Web 应用”上下文菜单](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
 
-在“Azure 登录”对话框中，保留“交互式”选项，然后选择“登录”。
-
-按照登录说明操作。
+如果出现“Azure 登录”对话框提示，则需按[用于 Eclipse 的 Azure 工具包的 Azure 登录说明](/java/azure/eclipse/azure-toolkit-for-eclipse-sign-in-instructions)一文中的步骤输入凭据。
 
 ### <a name="deploy-web-app-dialog-box"></a>“部署 Web 应用”对话框
 
@@ -100,8 +115,8 @@ ms.lasthandoff: 03/29/2018
 
 在“创建应用服务”对话框中：
 
-* 保留为 Web 应用生成的名称。 该名称在 Azure 中必须唯一。 该名称是 Web 应用的 URL 地址的一部分。 例如：如果 Web 应用名称为 **MyJavaWebApp**，则 URL 为 myjavawebapp.azurewebsites.net。
-* 保留默认 web 容器。
+* 为 Web 应用输入唯一名称，或保留生成的名称。 该名称在 Azure 中必须唯一。 该名称是 Web 应用的 URL 地址的一部分。 例如：如果 Web 应用名称为 **MyJavaWebApp**，则 URL 为 myjavawebapp.azurewebsites.net。
+* 对于本快速入门，请保留默认的 Web 容器。
 * 选择 Azure 订阅。
 * 在“应用服务计划”选项卡中：
 
@@ -187,7 +202,7 @@ Azure 工具包创建 Web 应用，并显示进度对话框。
 
 选择“资源组”。 该页显示在本快速入门教程中创建的资源。
 
-![资源组 myResourceGroup](media/app-service-web-get-started-java/rg2.png)
+![资源组](media/app-service-web-get-started-java/rg2.png)
 
 选择 Web 应用（上图中的 **webapp-170602193915**）。
 

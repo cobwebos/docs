@@ -1,6 +1,6 @@
 ---
-title: "Azure 托管应用程序 - 创建 UI 定义函数 | Microsoft Docs"
-description: "介绍了为 Azure 托管应用程序构造 UI 定义时要使用的函数"
+title: Azure 创建 UI 定义元素 | Microsoft Docs
+description: 介绍了为 Azure 门户构造 UI 定义时要使用的元素。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 23e407bf93bc51116ca45339bffcb801d69290f0
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: d6f96d4aa66839518023b4d567caf1ff839a29fb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition 元素
-本文介绍了 CreateUiDefinition 的所有受支持元素的架构和属性。 [创建 Azure 托管应用程序](publish-service-catalog-app.md)时使用这些元素。 大多数元素的架构如下所示：
+本文介绍了 CreateUiDefinition 的所有受支持元素的架构和属性。 大多数元素的架构如下所示：
 
 ```json
 {
   "name": "element1",
   "type": "Microsoft.Common.TextBox",
   "label": "Some text box",
-  "defaultValue": "foobar",
-  "toolTip": "Keep calm and visit the [Azure Portal](portal.azure.com).",
+  "defaultValue": "my value",
+  "toolTip": "Provide a descriptive name.",
   "constraints": {},
   "options": {},
   "visible": true
@@ -65,5 +65,4 @@ ms.lasthandoff: 10/27/2017
 - [Microsoft.Storage.StorageAccountSelector](microsoft-storage-storageaccountselector.md)
 
 ## <a name="next-steps"></a>后续步骤
-* 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](overview.md)。
-* 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。
+有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。

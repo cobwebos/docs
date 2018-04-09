@@ -1,8 +1,8 @@
 ---
-title: "Operations Management Suite (OMS) 管理解决方案中的视图 | Microsoft 文档"
-description: "Operations Management Suite (OMS) 中的管理解决方案中通常包括一个或多个用于可视化数据的视图。  本文介绍如何导出视图设计器所创建的视图，并将其包含在管理解决方案中。 "
+title: 管理解决方案中的视图 | Microsoft Docs
+description: '管理解决方案通常包括一个或多个用来可视化数据的视图。  本文介绍如何导出视图设计器所创建的视图，并将其包含在管理解决方案中。 '
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -14,22 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: c103ee748446c4819b7925af04d90c22225a21a3
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: b44763fe67b1c70c0b6ecdff73c32d8bb4fab3a4
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="views-in-operations-management-suite-oms-management-solutions-preview"></a>Operations Management Suite (OMS) 管理解决方案中的视图（预览版）
+# <a name="views-in-management-solutions-preview"></a>管理解决方案（预览版）中的视图
 > [!NOTE]
-> 这是在 OMS 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。    
->
->
+> 这是用于创建当前处于预览版的管理解决方案的初步文档。 如下所述的全部架构均会有变动。    
 
-[Operations Management Suite (OMS) 中的管理解决方案](operations-management-suite-solutions.md)通常包括一个或多个用于可视化数据的视图。  本文介绍如何导出[视图设计器](../log-analytics/log-analytics-view-designer.md)所创建的视图，并将其包含在管理解决方案中。  
+
+[管理解决方案](operations-management-suite-solutions.md)通常包括一个或多个用来可视化数据的视图。  本文介绍如何导出[视图设计器](../log-analytics/log-analytics-view-designer.md)所创建的视图，并将其包含在管理解决方案中。  
 
 > [!NOTE]
-> 本文中的示例使用管理解决方案需要或通用的的参数和变量，且在[在 Operations Management Suite (OMS) 中创建管理解决方案](operations-management-suite-solutions-creating.md)进行了介绍
+> 本文中的示例使用管理解决方案需要或通用的参数和变量，[在 Azure 中设计和开发解决方案](operations-management-suite-solutions-creating.md)中对它们进行了介绍
 >
 >
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 01/17/2018
 ## <a name="export-the-view-to-a-file"></a>将视图导出到文件
 按照[Log Analytics 视图设计器](../log-analytics/log-analytics-view-designer.md)中的说明将视图导出到文件。  导出的文件是[与解决方案文件具有相同元素的 JSON 格式](operations-management-suite-solutions-solution-file.md)。  
 
-视图文件的 **resources** 元素将具有表示 OMS 工作区的 **Microsoft.OperationalInsights/workspaces** 类型的资源。  此元素将具有表示此视图的 **views** 类型的子元素，并包含其详细配置。  复制此元素的详细信息，然后将其复制到解决方案中。
+视图文件的 **resources** 元素将具有表示 Log Analytics 工作区的 **Microsoft.OperationalInsights/workspaces** 类型的资源。  此元素将具有表示此视图的 **views** 类型的子元素，并包含其详细配置。  复制此元素的详细信息，然后将其复制到解决方案中。
 
 ## <a name="create-the-view-resource-in-the-solution"></a>在解决方案中创建视图资源
 将以下视图将资源添加到解决方案文件的 **resources** 元素。  这会使用以下描述的必须同时添加的变量。  注意：**仪表板**和 **OverviewTile** 属性是占位符，将使用导出的视图文件中的相应属性对齐进行覆盖。

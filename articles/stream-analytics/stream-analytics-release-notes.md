@@ -1,11 +1,10 @@
 ---
-title: "流分析发行说明 | Microsoft 文档"
-description: "流分析发行说明"
+title: 流分析发行说明 | Microsoft 文档
+description: 流分析发行说明
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 5e59f893-cd2c-43fb-9eca-c146ce637203
 ms.service: stream-analytics
 ms.devlang: na
@@ -13,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/03/2017
-ms.author: samacha
-ms.openlocfilehash: 3251cd47bb917912d63330345dbf392e724448ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 645c9e7014beba0312de3784bbc04734927929a9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-release-notes"></a>流分析发行说明
 
@@ -84,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 
 | 标题 | 说明 |
 | --- | --- |
-| SELECT 的新行为 |流分析中的 SELECT 已扩展，以允许 * 作为嵌套记录的属性访问器。 有关详细信息，请查阅[http://msdn.microsoft.com/library/mt622759.aspx](http://msdn.microsoft.com/library/mt622759.aspx "复杂数据类型")。 |
+| SELECT 的新行为 |流分析中的 SELECT 已扩展，以允许 * 作为嵌套记录的属性访问器。 有关详细信息，请参阅[http://msdn.microsoft.com/library/mt622759.aspx](http://msdn.microsoft.com/library/mt622759.aspx "复杂数据类型")。 |
 
 ## <a name="notes-for-10222015-release-of-stream-analytics"></a>流分析 10/22/2015 版说明
 此版本包含以下更新：

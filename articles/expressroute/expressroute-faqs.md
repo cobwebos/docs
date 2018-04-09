@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
+ms.date: 03/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3f33703ec86f131d18c89cf4b29514c5002349d1
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 557c6a75140f399f74d77543de834af086871032
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -70,11 +70,12 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 * Power BI
 * Dynamics 365 for Finance and Operations（以前称为 Dynamics AX Online）
-* 大多数 Azure 服务，但存在以下几种例外情况：
-  * CDN
-  * Visual Studio Team Services 负载测试
-  * 多重身份验证
-  * 流量管理器
+* 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br>
+  不支持以下服务：
+    * CDN
+    * Visual Studio Team Services 负载测试
+    * 多重身份验证
+    * 流量管理器
 
 ### <a name="microsoft-peering"></a>Microsoft 对等互连
 
@@ -87,7 +88,8 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 * 使用[路由筛选器](#route-filters-for-microsoft-peering)，可以访问与使用 Microsoft 对等互连时相同的公共服务：
   * Power BI
   * Dynamics 365 for Finance and Operations
-  * 大多数 Azure 服务，但存在以下几种例外情况：
+  * 支持大多数 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。<br>
+  不支持以下服务：
     * CDN
     * Visual Studio Team Services 负载测试
     * 多重身份验证
@@ -214,7 +216,7 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>为什么有一个公共 IP 地址与虚拟网络上的 ExpressRoute 网关相关联？
 
-公共 IP 地址仅用于内部管理。 此公共 IP 地址不会在 Internet 上公开，因此不会给虚拟网络带来安全隐患。
+此公共 IP 地址仅用于内部管理，不会给虚拟网络带来安全隐患。
 
 ### <a name="what-do-i-need-to-connect-to-azure-storage-over-expressroute"></a>通过 ExpressRoute 连接到 Azure 存储需要执行哪些操作？
 

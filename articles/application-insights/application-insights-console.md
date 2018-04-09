@@ -1,6 +1,6 @@
 ---
-title: "适用于控制台应用程序的 Azure Application Insights | Microsoft Docs"
-description: "监视 Web 应用程序的可用性、性能和使用情况。"
+title: 适用于控制台应用程序的 Azure Application Insights | Microsoft Docs
+description: 监视 Web 应用程序的可用性、性能和使用情况。
 services: application-insights
 documentationcenter: .net
 author: lmolkova
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: lmolkova
-ms.openlocfilehash: 57f5670eec36ff2c4332da592dd2a3eef73fdefc
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: lmolkova; mbullwin
+ms.openlocfilehash: f9d734abeb644fc865d5dc86afc8ad0e586bfc0a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
 使用 [Application Insights](app-insights-overview.md) 可以监视 Web 应用程序的可用性、性能和使用情况。
@@ -26,8 +26,8 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="getting-started"></a>入门
 
-* 在 [Azure 门户](https://portal.azure.com)中，[创建 Application Insights 资源](app-insights-create-new-resource.md)。 对于应用程序类型，选择 ASP.NET 应用。
-* 获取检测密钥的副本。 在创建的新资源的 Essentials 下拉列表中找到该密钥。 
+* 在 [Azure 门户](https://portal.azure.com)中，[创建 Application Insights 资源](app-insights-create-new-resource.md)。 对于应用程序类型，选择“常规”。
+* 获取检测密钥的副本。 在创建的新资源的“概要”下拉列表中找到该密钥。 
 * 安装最新的 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) 包。
 * 在跟踪任何遥测之前，请先在代码中设置检测密钥（或设置 APPINSIGHTS_INSTRUMENTATIONKEY 环境变量）。 设置后，应能手动跟踪遥测并在 Azure 门户中查看
 
@@ -39,7 +39,10 @@ telemetryClient.TrackTrace("Hello World!");
 
 * 安装最新版本的 [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) 包 - 它可自动跟踪 HTTP、SQL 或一些其他外部依赖项调用。
 
-可通过代码或 `ApplicationInsights.config` 文件初始化和配置 Application Insights。 请确保尽早进行初始化。
+可通过代码或 `ApplicationInsights.config` 文件初始化和配置 Application Insights。 请确保尽早进行初始化。 
+
+> [!NOTE]
+> 提到了 **ApplicationInsights.config** 的说明仅适用于以 .NET Standard 为目标的应用，不适用于 .NET Core 应用程序。 
 
 ### <a name="using-config-file"></a>使用配置文件
 

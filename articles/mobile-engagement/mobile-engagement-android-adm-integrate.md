@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Android SDK 集成"
-description: "Azure Mobile Engagement Android SDK 的最新更新和过程"
+title: Azure Mobile Engagement Android SDK 集成
+description: Azure Mobile Engagement Android SDK 的最新更新和过程
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a7d719ec-67b3-4be3-9d7f-0b61a57fe978
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 43987962ea2b7b825b88643d18b4db65f1f1670e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4c3b8f60333e6096411aad8499bb4bfc36e53f3c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-adm-with-engagement"></a>如何将 ADM 与 Engagement 集成到一起
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 > [!IMPORTANT]
 > 必须先按照“如何在 Android 上集成 Engagement”文档中所述的集成过程完成操作，才能接续本指南中的操作。
 > 
@@ -41,7 +45,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="sign-up-to-adm"></a>注册 ADM
 如果尚未注册，则必须在 Amazon 帐户上启用 ADM。
 
-该过程在以下网页中有详细描述：[<https://developer.amazon.com/sdk/adm/credentials.html>]。
+以下页面中详细介绍了该过程：[<https://developer.amazon.com/sdk/adm/credentials.html>]。
 
 完成该过程之后，会获得︰
 

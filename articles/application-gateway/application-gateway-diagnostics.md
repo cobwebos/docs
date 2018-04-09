@@ -1,25 +1,22 @@
 ---
-title: 监视应用程序网关的访问日志、性能日志、后端运行状况及指标 | Microsoft Docs
+title: 监视应用程序网关的访问日志、性能日志、后端运行状况及指标
 description: 了解如何启用和管理应用程序网关的访问日志和性能日志
 services: application-gateway
-documentationcenter: na
 author: amitsriva
 manager: rossort
-editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 300628b8-8e3d-40ab-b294-3ecc5e48ef98
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/23/2018
+ms.date: 4/2/2018
 ms.author: amitsriva
-ms.openlocfilehash: 885ae8b97175cac4cd29793eb0a935e81d54d0e4
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 982ae712320cb390b1822de6a7a3980ebfb6251e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>应用程序网关的后端运行状况、诊断日志和指标
 
@@ -29,7 +26,7 @@ ms.lasthandoff: 03/29/2018
 
 * [日志](#diagnostic-logging)：通过日志记录，可出于监视目的从资源保存或使用性能、访问及其他数据。
 
-* [指标](#metrics)：应用程序网关当前有一个指标指标。 此指标可衡量应用程序网关的吞吐量，以每秒字节数为单位。
+* [指标](#metrics)：应用程序网关当前有七个指标可用来查看性能计数器。
 
 ## <a name="back-end-health"></a>后端运行状况
 
@@ -318,13 +315,22 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 
 指标是某些 Azure 资源的一项功能，可在此查看门户中的性能计数器。 应用程序网关支持以下指标：
 
-- 当前连接
-- 失败的请求数
-- 正常的主机计数
-- 响应状态
-- Throughput
-- 请求总数
-- 不正常的主机计数
+- **当前连接数**
+- **失败的请求数**
+- **正常的主机计数**
+
+   可以按每个后端池进行筛选来显示特定后端池中正常的/不正常的主机数。
+
+
+- **响应状态**
+
+   可以进一步对响应状态代码分布进行归类来显示 2xx、3xx、4xx 和 5xx 类别的响应。
+
+- **吞吐量**
+- **请求总数**
+- **不正常的主机计数**
+
+   可以按每个后端池进行筛选来显示特定后端池中正常的/不正常的主机数。
 
 浏览到应用程序网关，并在“监视”下单击“指标”。 若要查看可用值，请选择“指标”下拉列表。
 

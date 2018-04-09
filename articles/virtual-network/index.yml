@@ -1,0 +1,97 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: 虚拟网络
+metadata:
+  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
+  title: 虚拟网络
+  meta.description: Learn how to use Azure Virtual Network. Quickstarts, tutorials, samples, and more, show you how to deploy a virtual network, control traffic filtering and routing, and connect a virtual network to other virtual networks.
+  services: virtual-network
+  author: jdial
+  manager: jeconnoc
+  ms.service: virtual-network
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/23/2018
+  ms.author: jdial
+  ms.openlocfilehash: 80704fedebafe097d199a4f00fba04f51adfe2d9
+  ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/05/2018
+abstract:
+  description: 了解如何使用 Azure 虚拟网络。 快速入门、教程和示例等等，显示了如何部署虚拟网络，如何控制流量筛选和路由，以及如何将虚拟网络连接到其他虚拟网络。
+sections:
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 了解如何创建虚拟网络，如何将虚拟机部署到其中，以及如何在虚拟机与 Internet 之间进行通信。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-network/media/index/portal.svg
+      text: Azure 门户
+      href: /azure/virtual-network/quick-create-portal
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-network/media/index/powershell.svg
+      text: Azure PowerShell
+      href: /azure/virtual-network/quick-create-powershell
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-network/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/virtual-network/quick-create-cli
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何创建和连接虚拟网络以及如何控制路由和筛选。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/virtual-network/tutorial-filter-network-traffic">筛选网络流量</a>
+    - html: <a href="/azure/virtual-network/tutorial-create-route-table-portal">路由网络流量</a>
+    - html: <a href="/azure/virtual-network/tutorial-restrict-network-access-to-resources">限制对资源的网络访问</a>
+    - html: <a href="/azure/virtual-network/tutorial-connect-virtual-networks-portal">连接虚拟网络</a>
+- title: 免费 Pluralsight 视频培训
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: 实现 Microsoft Azure 网络服务
+      href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/microsoft-azure-networking-implementing/table-of-contents
+    - title: 计划和设计 Microsoft Azure 网络解决方案
+      href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/planning-designing-microsoft-azure-network-solutions/table-of-contents
+    - title: 面向 AWS 管理员的 Microsoft Azure 管理
+      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
+- title: 示例
+  items:
+  - type: paragraph
+    text: 常见任务的脚本示例。
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/virtual-network/cli-samples">Azure CLI</a>
+    - html: <a href="/azure/virtual-network/powershell-samples">PowerShell</a>
+- title: 引用
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: 命令行
+      html: <p><a href="/powershell/module/azurerm.network#networking">PowerShell</a></p><p><a href="/cli/azure/network">Azure CLI</a></p>
+    - title: 语言
+      html: <p><a href="/dotnet/api/overview/azure/network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/virtual-network/">REST API 参考</a></p>

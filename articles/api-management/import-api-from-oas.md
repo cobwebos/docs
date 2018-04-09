@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 门户导入 OpenAPI 规范 | Microsoft Docs"
-description: "了解如何使用 API 管理导入 OpenAPI 规范。"
+title: 使用 Azure 门户导入 OpenAPI 规范 | Microsoft Docs
+description: 了解如何使用 API 管理导入 OpenAPI 规范。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,15 +13,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: f0c77c6e959ca99698b3ea704756a6abf36147f3
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 0ea24b58deb7b33755a44737a66938883f74a13c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="import-an-openapi-specification"></a>导入 OpenAPI 规范
 
 本文介绍如何导入 http://conferenceapi.azurewebsites.net?format=json 中的“OpenAPI 规范”后端 API。 此后端 API 由 Microsoft 提供并托管在 Azure 上。 此外，介绍如何测试 APIM API。
+
+> [!IMPORTANT]
+> 如需与 OpenAPI 导入相关的重要信息和提示，请参阅此[文档](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/)。
 
 在本文中，学习如何：
 
@@ -53,43 +56,43 @@ ms.lasthandoff: 12/04/2017
     |**说明**|提供 API 的可选说明。|如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。|
     |**API URL 后缀**|会议|此后缀附加到 API 管理服务的基础 URL。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。|
     |**URL 方案**|*HTTPS*|确定可用于访问 API 的协议。 |
-    |**产品**|*不受限制*| 通过关联 API 与产品来发布 API。 若要根据需要将此新 API 添加到某个产品，请键入该产品的名称。 多次重复此步骤以将 API 添加到多个产品。<br/>产品是一个或多个 API 的关联。 可以包含多个 API，并通过开发人员门户将其提供给开发人员。 开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果你已创建 APIM 实例，则已成为管理员，因此，默认情况下已订阅每个产品。<br/> 每个 API 管理实例默认附带两个示例产品：“入门”和“无限制”。 |
+    |**产品**|*不受限制*| 通过关联 API 与产品来发布 API。 若要根据需要将此新 API 添加到某个产品，请键入该产品的名称。 多次重复此步骤以将 API 添加到多个产品。<br/>产品是一个或多个 API 的关联。 可包含多个 API，并通过开发人员门户将其提供给开发人员。 开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果创建了 APIM 实例，那么你已是管理员，因此默认情况下订阅了每个产品。<br/> 每个 API 管理实例默认附带两个示例产品：“入门”和“无限制”。 |
 
-4. 选择“创建” 。
+4. 选择**创建**。
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 APIM API
 
-可直接从 Azure 门户调用操作，这样可以方便地查看和测试 API 的操作。  
+可直接从 Azure 门户调用操作，这样可以方便地查看和测试 API 的操作。
 
-1. 选择在上一步骤中创建的 API。
+1. 选择上一步中创建的 API。
 2. 按“测试”选项卡。
 
     ![测试 API](./media/api-management-get-started/test-api.png)
 1. 单击“GetSpeakers”。
 
-    页面显示查询参数的字段，但在这种情况下，我们并没有这些字段。 此外，还会显示标头的字段。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 如果创建了 APIM 实例，那么你已是管理员，因此会自动填充该密钥。 
+    该页显示查询参数的字段，但在此示例中，我们并没有这些字段。 此外，还会显示标头的字段。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 如果创建了 APIM 实例，那么你已是管理员，因此会自动填充该密钥。
 4. 按“发送”。
 
     后端以“200 正常”和某些数据做出响应。
 
 ## <a name="call-operation"> </a>从开发人员门户调用操作
 
-此外，也可从“开发人员门户”调用操作来测试 API。 
+此外，也可从“开发人员门户”调用操作来测试 API。
 
 1. 选择在“导入和发布后端 API”步骤中创建的 API。
 2. 按“开发人员门户”。
 
     ![在开发人员门户中进行测试](./media/api-management-get-started/developer-portal.png)
 
-    此时将打开“开发人员门户”站点。
+    “开发人员门户”站点随即打开。
 3. 选择“API”。
 4. 选择“演示会议 API”。
 5. 单击“GetSpeakers”。
-    
-    页面显示查询参数的字段，但在这种情况下，我们并没有这些字段。 此外，还会显示标头的字段。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 如果创建了 APIM 实例，那么你已是管理员，因此会自动填充该密钥。
+
+    该页显示查询参数的字段，但在此示例中，我们并没有这些字段。 此外，还会显示标头的字段。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 如果创建了 APIM 实例，那么你已是管理员，因此会自动填充该密钥。
 6. 按“试用”。
 7. 按“发送”。
-    
+
     调用操作后，开发人员门户会显示**响应状态**、**响应标头**以及任何**响应内容**。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]

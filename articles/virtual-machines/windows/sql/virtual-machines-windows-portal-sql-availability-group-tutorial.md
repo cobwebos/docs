@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: fe79c6e6344bef8f25ae2e343e3301959c4e0ae5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 915f36678b8515c5f4a6bd367843255865f4b34d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>在 Azure VM 中手动配置 Always On 可用性组
 
@@ -374,22 +374,14 @@ SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均�
 
    ![在资源组中找到负载均衡器](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/86-findloadbalancer.png)
 
-1. 单击负载均衡器，单击“后端池”，并单击“+ 添加”。 对后端池进行如下设置：
+1. 单击负载均衡器，单击“后端池”，并单击“+ 添加”。 
 
-   | 设置 | 说明 | 示例
-   | --- | --- |---
-   | **Name** | 键入文本名称 | SQLLBBE
-   | **Associated to** | 从列表中选取 | 可用性集
-   | **可用性集** | 使用 SQL Server VM 所在的可用性集的名称 | sqlAvailabilitySet |
-   | **虚拟机** |两个 SQL Server VM 名称 | sqlserver-0、sqlserver-1
+1. 将后端池与包含 VM 的可用性集相关联。
 
-1. 键入后端池的名称。
+1. 在“目标网络 IP 配置”下，选中“虚拟机”并选择将托管可用性组副本的这两个虚拟机。 请勿包括文件共享见证服务器。
 
-1. 单击“+ 添加虚拟机”。
-
-1. 关于可用性集，请选择 SQL Server 所在的可用性集。
-
-1. 关于虚拟机，请同时包括两个 SQL Server。 请勿包括文件共享见证服务器。
+   >[!NOTE]
+   >如果未指定这两个虚拟机，则仅与主要副本的连接会成功。
 
 1. 单击“确定”创建后端池。
 

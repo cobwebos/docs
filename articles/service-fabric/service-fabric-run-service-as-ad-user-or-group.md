@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/21/2018
+ms.date: 03/29/2018
 ms.author: mfussell
-ms.openlocfilehash: 1cf23a8f564553e65ac2c0fd34d44d81fe2327ea
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7dc467d9977d536011e1c3fcf663fc335f90a492
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>以 Active Directory 用户或组身份运行服务
-使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 这样，即使在共享托管环境中，也可确保运行的应用程序彼此更安全。 默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 对于 Windows Server 独立群集，可使用 RunAs 策略以[组托管服务帐户 (gMSA)](service-fabric-run-service-as-gmsa.md) 或 Active Directory 用户或组的身份来运行服务。 注意：这是域中的本地 Active Directory，不是 Azure Active Directory (Azure AD)。
+在 Windows Server 独立群集上，可以使用 RunAs 策略以 Active Directory 用户或组的身份来运行服务。  默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 即使在共享托管环境中以不同帐户身份运行应用程序，也可确保运行的应用程序彼此更安全。 注意：这是域中的本地 Active Directory，不是 Azure Active Directory (Azure AD)。  还可以采用[组托管服务帐户 (gMSA)](service-fabric-run-service-as-gmsa.md) 的身份来运行服务。
 
 通过使用域用户或组，可以访问域中已被授予权限的其他资源（例如文件共享）。
 

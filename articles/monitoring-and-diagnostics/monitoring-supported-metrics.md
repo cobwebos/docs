@@ -1,9 +1,9 @@
 ---
-title: "Azure Monitor 指标 - 每种资源类型支持的指标 | Microsoft Docs"
-description: "可在 Azure Monitor 中为每种资源类型使用的指标的列表。"
+title: Azure Monitor 指标 - 每种资源类型支持的指标 | Microsoft Docs
+description: 可在 Azure Monitor 中为每种资源类型使用的指标的列表。
 author: anirudhcavale
 manager: ashwink
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 63d4ac65-1688-40d1-85c8-7cd408285b0f
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/31/2018
+ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 97dca282bd7bbf00ce1d03899f6de0444a41163a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: fc7a4062af9e73383af46f0c36eb22710ce9b6e1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure Monitor 的指标管道中使用的完整指标列表。
 
 > [!NOTE]
-> 其他指标可在门户或旧版 API 中使用。 此列表仅包含可以通过合并的 Azure Monitor 指标管道使用的指标。 若要查询和访问具有维度的指标，请使用 [2017-05-01-preview API 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+> 其他指标可在门户或旧版 API 中使用。 此列表仅包含可以通过合并的 Azure Monitor 指标管道使用的指标。 若要查询和访问具有维度的指标，请使用 [2018-01-01 API 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 >
 >
 
@@ -133,6 +133,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |cachemisses|缓存未命中数|Count|总计||无维度|
 |getcommands|获取数|Count|总计||无维度|
 |setcommands|设置数|Count|总计||无维度|
+|operationsPerSecond|每秒操作数|Count|总计||无维度|
 |evictedkeys|逐出的密钥数|Count|总计||无维度|
 |totalkeys|总密钥数|Count|最大值||无维度|
 |expiredkeys|过期的密钥数|Count|总计||无维度|
@@ -148,6 +149,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |cachemisses0|缓存未命中数(分片 0)|Count|总计||无维度|
 |getcommands0|Get 数(分片 0)|Count|总计||无维度|
 |setcommands0|Set 数(分片 0)|Count|总计||无维度|
+|operationsPerSecond0|每秒操作数（分片 0）|Count|总计||无维度|
 |evictedkeys0|逐出的密钥数(分片 0)|Count|总计||无维度|
 |totalkeys0|总密钥数（分片 0）|Count|最大值||无维度|
 |expiredkeys0|过期的密钥数(分片 0)|Count|总计||无维度|
@@ -163,6 +165,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |cachemisses1|缓存未命中数(分片 1)|Count|总计||无维度|
 |getcommands1|Get 数(分片 1)|Count|总计||无维度|
 |setcommands1|Set 数(分片 1)|Count|总计||无维度|
+|operationsPerSecond1|每秒操作数（分片 1）|Count|总计||无维度|
 |evictedkeys1|逐出的密钥数(分片 1)|Count|总计||无维度|
 |totalkeys1|总密钥数（分片 1）|Count|最大值||无维度|
 |expiredkeys1|过期的密钥数(分片 1)|Count|总计||无维度|
@@ -178,6 +181,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |cachemisses2|缓存未命中数(分片 2)|Count|总计||无维度|
 |getcommands2|Get 数(分片 2)|Count|总计||无维度|
 |setcommands2|Set 数(分片 2)|Count|总计||无维度|
+|operationsPerSecond2|每秒操作数（分片 2）|Count|总计||无维度|
 |evictedkeys2|逐出的密钥数(分片 2)|Count|总计||无维度|
 |totalkeys2|总密钥数（分片 2）|Count|最大值||无维度|
 |expiredkeys2|过期的密钥数(分片 2)|Count|总计||无维度|
@@ -193,6 +197,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |cachemisses3|缓存未命中数(分片 3)|Count|总计||无维度|
 |getcommands3|Get 数(分片 3)|Count|总计||无维度|
 |setcommands3|Set 数(分片 3)|Count|总计||无维度|
+|operationsPerSecond3|每秒操作数（分片 3）|Count|总计||无维度|
 |evictedkeys3|逐出的密钥数(分片 3)|Count|总计||无维度|
 |totalkeys3|总密钥数（分片 3）|Count|最大值||无维度|
 |expiredkeys3|过期的密钥数(分片 3)|Count|总计||无维度|
@@ -208,6 +213,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |cachemisses4|缓存未命中数(分片 4)|Count|总计||无维度|
 |getcommands4|Get 数(分片 4)|Count|总计||无维度|
 |setcommands4|Set 数(分片 4)|Count|总计||无维度|
+|operationsPerSecond4|每秒操作数（分片 4）|Count|总计||无维度|
 |evictedkeys4|逐出的密钥数(分片 4)|Count|总计||无维度|
 |totalkeys4|总密钥数（分片 4）|Count|最大值||无维度|
 |expiredkeys4|过期的密钥数(分片 4)|Count|总计||无维度|
@@ -223,6 +229,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |cachemisses5|缓存未命中数(分片 5)|Count|总计||无维度|
 |getcommands5|Get 数(分片 5)|Count|总计||无维度|
 |setcommands5|Set 数(分片 5)|Count|总计||无维度|
+|operationsPerSecond5|每秒操作数（分片 5）|Count|总计||无维度|
 |evictedkeys5|逐出的密钥数(分片 5)|Count|总计||无维度|
 |totalkeys5|总密钥数（分片 5）|Count|最大值||无维度|
 |expiredkeys5|过期的密钥数(分片 5)|Count|总计||无维度|
@@ -238,6 +245,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |cachemisses6|缓存未命中数(分片 6)|Count|总计||无维度|
 |getcommands6|Get 数(分片 6)|Count|总计||无维度|
 |setcommands6|Set 数(分片 6)|Count|总计||无维度|
+|operationsPerSecond6|每秒操作数（分片 6）|Count|总计||无维度|
 |evictedkeys6|逐出的密钥数(分片 6)|Count|总计||无维度|
 |totalkeys6|总密钥数（分片 6）|Count|最大值||无维度|
 |expiredkeys6|过期的密钥数(分片 6)|Count|总计||无维度|
@@ -253,6 +261,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |cachemisses7|缓存未命中数(分片 7)|Count|总计||无维度|
 |getcommands7|Get 数(分片 7)|Count|总计||无维度|
 |setcommands7|Set 数(分片 7)|Count|总计||无维度|
+|operationsPerSecond7|每秒操作数（分片 7）|Count|总计||无维度|
 |evictedkeys7|逐出的密钥数(分片 7)|Count|总计||无维度|
 |totalkeys7|总密钥数（分片 7）|Count|最大值||无维度|
 |expiredkeys7|过期的密钥数(分片 7)|Count|总计||无维度|
@@ -268,6 +277,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |cachemisses8|缓存未命中数(分片 8)|Count|总计||无维度|
 |getcommands8|Get 数(分片 8)|Count|总计||无维度|
 |setcommands8|Set 数(分片 8)|Count|总计||无维度|
+|operationsPerSecond8|每秒操作数（分片 8）|Count|总计||无维度|
 |evictedkeys8|逐出的密钥数(分片 8)|Count|总计||无维度|
 |totalkeys8|总密钥数（分片 8）|Count|最大值||无维度|
 |expiredkeys8|过期的密钥数(分片 8)|Count|总计||无维度|
@@ -283,6 +293,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |cachemisses9|缓存未命中数(分片 9)|Count|总计||无维度|
 |getcommands9|Get 数(分片 9)|Count|总计||无维度|
 |setcommands9|Set 数(分片 9)|计数|总计||无维度|
+|operationsPerSecond9|每秒操作数（分片 9）|Count|总计||无维度|
 |evictedkeys9|逐出的密钥数(分片 9)|Count|总计||无维度|
 |totalkeys9|总密钥数（分片 9）|Count|最大值||无维度|
 |expiredkeys9|过期的密钥数(分片 9)|Count|总计||无维度|
@@ -294,6 +305,18 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |percentProcessorTime9|CPU (分片 9)|百分比|最大值||无维度|
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
+
+|指标|指标显示名称|单位|聚合类型|说明|维度|
+|---|---|---|---|---|---|
+|CPU 百分比|CPU 百分比|百分比|平均值|当前虚拟机正在使用的已分配计算单元百分比。|无维度|
+|网络传入|网络传入|字节|总计|虚拟机在所有网络接口上收到的字节数（传入流量）。|无维度|
+|网络传出|网络传出|字节|总计|虚拟机在所有网络接口上发出的字节数（传出流量）。|无维度|
+|Disk Read Bytes/Sec|磁盘读取|每秒字节数|平均值|监视期间从磁盘读取的平均字节数。|无维度|
+|Disk Write Bytes/Sec|磁盘写入|每秒字节数|平均值|监视期间向磁盘写入的平均字节数。|无维度|
+|磁盘读取操作次数/秒|磁盘读取操作次数/秒|每秒计数|平均值|磁盘读取 IOPS。|无维度|
+|磁盘写入操作次数/秒|磁盘写入操作次数/秒|每秒计数|平均值|磁盘写入 IOPS。|无维度|
+
+## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
@@ -364,6 +387,13 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |剩余 CPU 信用额度|剩余 CPU 信用额度|Count|平均值|可用来集中使用的总信用点数|无维度|
 |已用 CPU 信用额度|已用 CPU 信用额度|Count|平均值|虚拟机使用的总信用点数|无维度|
 
+## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
+
+|指标|指标显示名称|单位|聚合类型|说明|维度|
+|---|---|---|---|---|---|
+|CpuUsage|CPU 使用率|Count|平均值|所有核心的 CPU 使用率（以 millicore 为单位）。|containerName|
+|MemoryUsage|内存用量|字节|平均值|总内存使用量（以字节为单位）。|containerName|
+
 ## <a name="microsoftcustomerinsightshubs"></a>Microsoft.CustomerInsights/hubs
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
@@ -403,19 +433,21 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|SuccessfulRuns|成功的运行次数|Count|总计|成功运行数。|无维度|
-|FailedRuns|失败的运行次数|Count|总计|失败的运行数。|无维度|
+|FailedRuns|失败的运行次数|Count|总计||pipelineName、activityName、windowEnd、windowStart |
+|SuccessfulRuns|成功的运行次数|Count|总计||pipelineName、activityName、windowEnd、windowStart |
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|PipelineFailedRuns|失败的管道运行数指标|Count|总计||无维度|
-|PipelineSucceededRuns|成功的管道运行数指标|Count|总计||无维度|
-|ActivityFailedRuns|失败的活动运行数指标|Count|总计||无维度|
-|ActivitySucceededRuns|成功的活动运行数指标|Count|总计||无维度|
-|TriggerFailedRuns|失败的触发器运行数指标|Count|总计||无维度|
-|TriggerSucceededRuns|成功的触发器运行数指标|Count|总计||无维度|
+|PipelineFailedRuns|失败的管道运行数指标|Count|总计||FailureType、Name|
+|PipelineSucceededRuns|成功的管道运行数指标|Count|总计||FailureType、Name|
+|ActivityFailedRuns|失败的活动运行数指标|Count|总计||ActivityType、PipelineName、FailureType、Name|
+|ActivitySucceededRuns|成功的活动运行数指标|Count|总计||ActivityType、PipelineName、FailureType、Name|
+|TriggerFailedRuns|失败的触发器运行数指标|Count|总计||Name、FailureType|
+|TriggerSucceededRuns|成功的触发器运行数指标|Count|总计||Name、FailureType|
+|IntegrationRuntimeCpuPercentage|集成运行时 CPU 利用率|百分比|平均值||IntegrationRuntimeName、NodeName|
+|IntegrationRuntimeAvailableMemory|集成运行时可用内存|字节|平均值||IntegrationRuntimeName、NodeName|
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
 
@@ -634,12 +666,13 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |OutgoingMessages|传出的消息数（预览版）|Count|总计|Microsoft.EventHub 传出的消息数。 （预览版）|EntityName|
 |IncomingBytes|传入字节数。 （预览版）|字节|总计|Microsoft.EventHub 传入的字节数。 （预览版）|EntityName|
 |OutgoingBytes|传出字节数。 （预览版）|字节|总计|Microsoft.EventHub 传出的字节数。 （预览版）|EntityName|
-|ActiveConnections|ActiveConnections（预览版）|Count|总计|Microsoft.EventHub 的活动连接总数。 （预览版）|EntityName|
-|ConnectionsOpened|打开的连接数。 （预览版）|Count|总计|Microsoft.EventHub 打开的连接数。 （预览版）|EntityName|
-|ConnectionsClosed|已关闭的连接数。 （预览版）|Count|总计|Microsoft.EventHub 已关闭的连接数。 （预览版）|EntityName|
+|ActiveConnections|ActiveConnections（预览版）|Count|平均值|Microsoft.EventHub 的活动连接总数。 （预览版）|无维度|
+|ConnectionsOpened|打开的连接数。 （预览版）|Count|平均值|Microsoft.EventHub 打开的连接数。 （预览版）|EntityName|
+|ConnectionsClosed|已关闭的连接数。 （预览版）|Count|平均值|Microsoft.EventHub 已关闭的连接数。 （预览版）|EntityName|
 |CaptureBacklog|捕获积压工作(backlog)。 （预览版）|Count|总计|捕获有关 Microsoft.EventHub 的积压工作(backlog)。 （预览版）|EntityName|
 |CapturedMessages|已捕获的消息数。 （预览版）|Count|总计|Microsoft.EventHub 已捕获的消息数。 （预览版）|EntityName|
 |CapturedBytes|已捕获的字节数。 （预览版）|字节|总计|Microsoft.EventHub 已捕获的字节数。 （预览版）|EntityName|
+|大小|大小（预览版）|字节|平均值|EventHub 的大小（以字节为单位）。 （预览版）|EntityName|
 |INREQS|传入请求数|Count|总计|命名空间的传入发送请求总数|无维度|
 |SUCCREQ|成功的请求数|Count|总计|命名空间的成功请求总数|无维度|
 |FAILREQ|失败的请求数|Count|总计|命名空间的失败请求总数|无维度|
@@ -658,6 +691,13 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |EHAMSGS|存档消息数|Count|总计|命名空间中的事件中心存档消息数|无维度|
 |EHAMBS|存档消息吞吐量|字节|总计|命名空间中的事件中心存档消息吞吐量|无维度|
 
+## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
+
+|指标|指标显示名称|单位|聚合类型|说明|维度|
+|---|---|---|---|---|---|
+|GatewayRequests|网关请求数|Count|总计|网关请求数|ClusterDnsName、HttpStatus|
+|CategorizedGatewayRequests|已分类的网关请求数|Count|总计|按类别（1xx/2xx/3xx/4xx/5xx）统计的网关请求数|ClusterDnsName、HttpStatus|
+
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
@@ -671,9 +711,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|ServiceApiHit|服务 API 命中总计|Count|Count,Total|服务 API 命中总数|ActivityType, ActivityName|
-|ServiceApiLatency|总体服务 API 延迟|毫秒|Count,Average,Minimum,Maximum|服务 API 请求的总体延迟|ActivityType, ActivityName, StatusCode|
-|ServiceApiResult|服务 API 结果总计|Count|Count,Total|服务 API 结果总数|ActivityType, ActivityName, StatusCode|
+|ServiceApiHit|服务 API 命中总计|Count|Count|服务 API 命中总数|ActivityType, ActivityName|
+|ServiceApiLatency|总体服务 API 延迟|毫秒|平均值|服务 API 请求的总体延迟|ActivityType, ActivityName, StatusCode|
+|ServiceApiResult|服务 API 结果总计|Count|Count|服务 API 结果总数|ActivityType, ActivityName, StatusCode|
 
 ## <a name="microsoftlocationbasedservicesaccounts"></a>Microsoft.LocationBasedServices/accounts
 
@@ -727,6 +767,14 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |SYNCount|SYN 计数|Count|总计|时间段内传输的 SYN 数据包总数|VipAddress、VipPort、Direction|
 |SnatConnectionCount|SNAT 连接计数|Count|总计|时间段内创建的新 SNAT 连接的总数|VipAddress、DipAddress、ConnectionState|
 
+## <a name="microsoftnetworkdnszones"></a>Microsoft.Network/dnszones
+
+|指标|指标显示名称|单位|聚合类型|说明|维度|
+|---|---|---|---|---|---|
+|QueryVolume|查询量|Count|总计|为 DNS 区域提供服务的查询数|无维度|
+|RecordSetCount|记录集计数|Count|最大值|DNS 区域中的记录集数|无维度|
+|RecordSetCapacityUtilization|记录集容量使用率|百分比|最大值|DNS 区域利用的记录集容量的百分比|无维度|
+
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
@@ -763,6 +811,12 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
 |Throughput|Throughput|每秒字节数|总计|应用程序网关每秒提供的字节数|无维度|
+|UnhealthyHostCount|不正常的主机计数|Count|平均值|不正常的后端主机数|BackendSettingsPool|
+|HealthyHostCount|正常的主机计数|Count|平均值|正常的后端主机数|BackendSettingsPool|
+|TotalRequests|请求总数|Count|总计|应用程序网关已提供服务的成功请求计数|BackendSettingsPool|
+|FailedRequests|失败的请求数|Count|总计|应用程序网关已提供服务的失败请求计数|BackendSettingsPool|
+|ResponseStatus|响应状态|Count|总计|应用程序网关返回的 Http 响应状态|HttpStatusGroup|
+|CurrentConnections|当前连接|Count|总计|使用应用程序网关建立的当前连接计数|无维度|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
@@ -789,6 +843,13 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |---|---|---|---|---|---|
 |QpsByEndpoint|按终结点返回的查询|Count|总计|给定时间范围内返回流量管理器终结点的次数|EndpointName|
 |ProbeAgentCurrentEndpointStateByProfileResourceId|按终结点显示的终结点状态|Count|最大值|如果终结点的探测状态为“已启用”，则值为 1；否则，值为 0。|EndpointName|
+
+## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Microsoft.Network/networkWatchers/connectionMonitors
+
+|指标|指标显示名称|单位|聚合类型|说明|维度|
+|---|---|---|---|---|---|
+|ProbesFailedPercent|失败的探测百分比|百分比|平均值|失败的连接监视探测百分比|无维度|
+|AverageRoundtripMs|平均往返时间（毫秒）|毫秒|平均值|源和目标之间发送的连接监视探测的平均网络往返时间（毫秒）|无维度|
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
@@ -864,6 +925,82 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |QueryDuration|查询持续时间|毫秒|平均值|上一个间隔的 DAX 查询持续时间|无维度|
 |QueryPoolJobQueueLength|线程: 查询池作业队列长度|Count|平均值|查询线程池队列中的作业数。|无维度|
 
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
+（公共预览版）
+
+|指标|指标显示名称|单位|聚合类型|说明|维度|
+|---|---|---|---|---|---|
+|Average_% Free Inodes|Average_% Free Inodes|Count|平均值|Average_% Free Inodes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Free Space|Average_% Free Space|Count|平均值|Average_% Free Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Used Inodes|Average_% Used Inodes|Count|平均值|Average_% Used Inodes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Used Space|Average_% Used Space|Count|平均值|Average_% Used Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Disk Read Bytes/sec|Average_Disk Read Bytes/sec|Count|平均值|Average_Disk Read Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Disk Reads/sec|Average_Disk Reads/sec|Count|平均值|Average_Disk Reads/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Disk Transfers/sec|Average_Disk Transfers/sec|Count|平均值|Average_Disk Transfers/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Disk Write Bytes/sec|Average_Disk Write Bytes/sec|Count|平均值|Average_Disk Write Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Disk Writes/sec|Average_Disk Writes/sec|Count|平均值|Average_Disk Writes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Free Megabytes|Average_Free Megabytes|Count|平均值|Average_Free Megabytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Logical Disk Bytes/sec|Average_Logical Disk Bytes/sec|Count|平均值|Average_Logical Disk Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Available Memory|Average_% Available Memory|Count|平均值|Average_% Available Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Available Swap Space|Average_% Available Swap Space|Count|平均值|Average_% Available Swap Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Used Memory|Average_% Used Memory|Count|平均值|Average_% Used Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Used Swap Space|Average_% Used Swap Space|Count|平均值|Average_% Used Swap Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Available MBytes Memory|Average_Available MBytes Memory|Count|平均值|Average_Available MBytes Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Available MBytes Swap|Average_Available MBytes Swap|Count|平均值|Average_Available MBytes Swap|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Page Reads/sec|Average_Page Reads/sec|Count|平均值|Average_Page Reads/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Page Writes/sec|Average_Page Writes/sec|Count|平均值|Average_Page Writes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Pages/sec|Average_Pages/sec|Count|平均值|Average_Pages/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Used MBytes Swap Space|Average_Used MBytes Swap Space|Count|平均值|Average_Used MBytes Swap Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Used Memory MBytes|Average_Used Memory MBytes|Count|平均值|Average_Used Memory MBytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Total Bytes Transmitted|Average_Total Bytes Transmitted|Count|平均值|Average_Total Bytes Transmitted|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Total Bytes Received|Average_Total Bytes Received|Count|平均值|Average_Total Bytes Received|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Total Bytes|Average_Total Bytes|Count|平均值|Average_Total Bytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Total Packets Transmitted|Average_Total Packets Transmitted|Count|平均值|Average_Total Packets Transmitted|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Total Packets Received|Average_Total Packets Received|Count|平均值|Average_Total Packets Received|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Total Rx Errors|Average_Total Rx Errors|Count|平均值|Average_Total Rx Errors|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Total Tx Errors|Average_Total Tx Errors|Count|平均值|Average_Total Tx Errors|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Total Collisions|Average_Total Collisions|Count|平均值|Average_Total Collisions|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Avg. 磁盘秒数/读取|Average_Avg. 磁盘秒数/读取|Count|平均值|Average_Avg. 磁盘秒数/读取|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Avg. 磁盘秒数/传输|Average_Avg. 磁盘秒数/传输|Count|平均值|Average_Avg. 磁盘秒数/传输|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Avg. 磁盘秒数/写入|Average_Avg. 磁盘秒数/写入|Count|平均值|Average_Avg. 磁盘秒数/写入|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Physical Disk Bytes/sec|Average_Physical Disk Bytes/sec|Count|平均值|Average_Physical Disk Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Pct Privileged Time|Average_Pct Privileged Time|Count|平均值|Average_Pct Privileged Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Pct User Time|Average_Pct User Time|Count|平均值|Average_Pct User Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Used Memory kBytes|Average_Used Memory kBytes|Count|平均值|Average_Used Memory kBytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Virtual Shared Memory|Average_Virtual Shared Memory|Count|平均值|Average_Virtual Shared Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% DPC Time|Average_% DPC Time|Count|平均值|Average_% DPC Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Idle Time|Average_% Idle Time|Count|平均值|Average_% Idle Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Interrupt Time|Average_% Interrupt Time|Count|平均值|Average_% Interrupt Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% IO Wait Time|Average_% IO Wait Time|Count|平均值|Average_% IO Wait Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Nice Time|Average_% Nice Time|Count|平均值|Average_% Nice Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Privileged Time|Average_% Privileged Time|Count|平均值|Average_% Privileged Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Processor Time|Average_% Processor Time|Count|平均值|Average_% Processor Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% User Time|Average_% User Time|Count|平均值|Average_% User Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Free Physical Memory|Average_Free Physical Memory|Count|平均值|Average_Free Physical Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Free Space in Paging Files|Average_Free Space in Paging Files|Count|平均值|Average_Free Space in Paging Files|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Free Virtual Memory|Average_Free Virtual Memory|Count|平均值|Average_Free Virtual Memory|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Processes|Average_Processes|Count|平均值|Average_Processes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Size Stored In Paging Files|Average_Size Stored In Paging Files|Count|平均值|Average_Size Stored In Paging Files|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Uptime|Average_Uptime|Count|平均值|Average_Uptime|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Users|Average_Users|Count|平均值|Average_Users|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Avg. 磁盘秒数/读取|Average_Avg. 磁盘秒数/读取|Count|平均值|Average_Avg. 磁盘秒数/读取|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Avg. 磁盘秒数/写入|Average_Avg. 磁盘秒数/写入|Count|平均值|Average_Avg. 磁盘秒数/写入|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Current Disk Queue Length|Average_Current Disk Queue Length|Count|平均值|Average_Current Disk Queue Length|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Disk Reads/sec|Average_Disk Reads/sec|Count|平均值|Average_Disk Reads/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Disk Transfers/sec|Average_Disk Transfers/sec|Count|平均值|Average_Disk Transfers/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Disk Writes/sec|Average_Disk Writes/sec|Count|平均值|Average_Disk Writes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Free Megabytes|Average_Free Megabytes|Count|平均值|Average_Free Megabytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Free Space|Average_% Free Space|Count|平均值|Average_% Free Space|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Available MBytes|Average_Available MBytes|Count|平均值|Average_Available MBytes|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Committed Bytes In Use|Average_% Committed Bytes In Use|Count|平均值|Average_% Committed Bytes In Use|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Bytes Received/sec|Average_Bytes Received/sec|Count|平均值|Average_Bytes Received/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Bytes Sent/sec|Average_Bytes Sent/sec|Count|平均值|Average_Bytes Sent/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Bytes Total/sec|Average_Bytes Total/sec|Count|平均值|Average_Bytes Total/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_% Processor Time|Average_% Processor Time|Count|平均值|Average_% Processor Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Processor Queue Length|Average_Processor Queue Length|Count|平均值|Average_Processor Queue Length|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|检测信号|检测信号|Count|平均值|检测信号|Computer、OSType、Version、SourceComputerId|
+|更新|更新|Count|平均值|更新|Computer、Product、Classification、UpdateState、Optional、Approved|
+
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
@@ -894,16 +1031,17 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|SuccessfulRequests|成功的请求数（预览版）|Count|总计|命名空间的成功请求总数（预览版）|EntityName|
-|ServerErrors|服务器错误数。 （预览版）|Count|总计|Microsoft.ServiceBus 的服务器错误数。 （预览版）|EntityName|
-|UserErrors|用户错误数。 （预览版）|Count|总计|Microsoft.ServiceBus 的用户错误数。 （预览版）|EntityName|
-|ThrottledRequests|限制的请求数。 （预览版）|Count|总计|Microsoft.ServiceBus 限制的请求数。 （预览版）|EntityName|
+|SuccessfulRequests|成功的请求数（预览版）|Count|总计|命名空间的成功请求总数（预览版）|EntityName、 |
+|ServerErrors|服务器错误数。 （预览版）|Count|总计|Microsoft.ServiceBus 的服务器错误数。 （预览版）|EntityName、 |
+|UserErrors|用户错误数。 （预览版）|Count|总计|Microsoft.ServiceBus 的用户错误数。 （预览版）|EntityName、 |
+|ThrottledRequests|限制的请求数。 （预览版）|Count|总计|Microsoft.ServiceBus 限制的请求数。 （预览版）|EntityName、 |
 |IncomingRequests|传入的请求数（预览版）|Count|总计|Microsoft.ServiceBus 传入的请求数。 （预览版）|EntityName|
 |IncomingMessages|传入的消息数（预览版）|Count|总计|Microsoft.ServiceBus 传入的消息数。 （预览版）|EntityName|
 |OutgoingMessages|传出的消息数（预览版）|Count|总计|Microsoft.ServiceBus 传出的消息数。 （预览版）|EntityName|
-|ActiveConnections|ActiveConnections（预览版）|Count|总计|Microsoft.ServiceBus 的活动连接总数。 （预览版）|EntityName|
-|ConnectionsOpened|打开的连接数。 （预览版）|Count|总计|Microsoft.ServiceBus 打开的连接数。 （预览版）|EntityName|
-|ConnectionsClosed|已关闭的连接数。 （预览版）|Count|总计|Microsoft.ServiceBus 已关闭的连接数。 （预览版）|EntityName|
+|ActiveConnections|ActiveConnections（预览版）|Count|总计|Microsoft.ServiceBus 的活动连接总数。 （预览版）|无维度|
+|大小|大小（预览版）|字节|平均值|队列/主题的大小（以字节为单位）。 （预览版）|EntityName|
+|消息|队列/主题中的消息计数。 （预览版）|Count|平均值|队列/主题中的消息计数。 （预览版）|EntityName|
+|ActiveMessages|队列/主题中的活动消息计数。 （预览版）|Count|平均值|队列/主题中的活动消息计数。 （预览版）|EntityName|
 |CPUXNS|每个命名空间的 CPU 使用率|百分比|最大值|服务总线高级命名空间 CPU 使用率指标|无维度|
 |WSXNS|每个命名空间的内存使用量|百分比|最大值|服务总线高级命名空间内存使用率指标|无维度|
 
@@ -929,8 +1067,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |dwu_limit|DWU 限制|Count|最大值|DWU 限制|无维度|
 |dwu_consumption_percent|DWU 百分比|百分比|最大值|DWU 百分比|无维度|
 |dwu_used|已用的 DWU|Count|最大值|已用的 DWU|无维度|
-|dw_cpu_percent|DW 节点级别 CPU 百分比|百分比|平均值|DW 节点级别 CPU 百分比|dw_logical_node_id|
-|dw_physical_data_read_percent|DW 节点级别数据 IO 百分比|百分比|平均值|DW 节点级别数据 IO 百分比|dw_logical_node_id|
+|dw_cpu_percent|DW 节点级别 CPU 百分比|百分比|平均值|DW 节点级别 CPU 百分比|DwLogicalNodeId|
+|dw_physical_data_read_percent|DW 节点级别数据 IO 百分比|百分比|平均值|DW 节点级别数据 IO 百分比|DwLogicalNodeId|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -972,8 +1110,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
-|BlobCapacity|Blob 容量|字节|平均值|存储帐户的 Blob 服务使用的存储量（以字节为单位）。|/BlobType|
-|BlobCount|Blob 计数|Count|平均值|存储帐户的 Blob 服务中的 Blob 数。|/BlobType|
+|BlobCapacity|Blob 容量|字节|总计|存储帐户的 Blob 服务使用的存储量（以字节为单位）。|/BlobType|
+|BlobCount|Blob 计数|Count|总计|存储帐户的 Blob 服务中的 Blob 数。|/BlobType|
 |ContainerCount|Blob 容器计数|Count|平均值|存储帐户的 Blob 服务中的容器数。|无维度|
 |事务|事务|Count|总计|向存储服务或指定的 API 操作发出的请求数。 此数值包括成功和失败的请求数，以及引发错误的请求数。 针对不同类型的响应数使用 ResponseType 维度。|ResponseType、GeoType、ApiName|
 |流入量|流入量|字节|总计|流入的数据量（以字节为单位）。 此数值包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。|GeoType、ApiName|
@@ -1039,6 +1177,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |AMLCalloutRequests|函数请求数|Count|总计|函数请求数|无维度|
 |AMLCalloutFailedRequests|失败的函数请求数|Count|总计|失败的函数请求数|无维度|
 |AMLCalloutInputEvents|函数事件数|Count|总计|函数事件数|无维度|
+|DeserializationError|输入反序列化错误|Count|总计|输入反序列化错误|无维度|
+|EarlyInputEvents|应用时间早于其到达时间的事件。|Count|总计|应用时间早于其到达时间的事件。|无维度|
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
 
@@ -1072,6 +1212,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |AverageMemoryWorkingSet|平均内存工作集|字节|平均值|平均内存工作集|实例|
 |AverageResponseTime|平均响应时间|秒|平均值|平均响应时间|实例|
 |AppConnections|连接|Count|平均值|连接|实例|
+|句柄数|句柄计数|Count|平均值|句柄计数|实例|
+|线程数|线程计数|Count|平均值|线程计数|实例|
 
 ## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (Functions)
 
@@ -1108,6 +1250,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |FunctionExecutionUnits|函数执行单位数|Count|总计|函数执行单位数|实例|
 |FunctionExecutionCount|函数执行计数|Count|总计|函数执行计数|实例|
 |AppConnections|连接|Count|平均值|连接|实例|
+|句柄数|句柄计数|Count|平均值|句柄计数|实例|
+|线程数|线程计数|Count|平均值|线程计数|实例|
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
 

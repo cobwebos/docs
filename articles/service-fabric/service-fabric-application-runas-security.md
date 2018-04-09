@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: 62917a1d342158ec2114a9204ee1ca9e447284fa
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3df5374911ee6381f25d08d23d565cdf8a7cd12f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>以本地用户帐户或本地系统帐户运行服务
-使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 借助 Service Fabric，还可以通过在应用程序清单中指定 RunAs 策略，以使用本地用户帐户或本地系统帐户运行应用程序。 受支持的本地系统帐户类型为 **LocalUser**、**NetworkService**、**LocalService** 和 **LocalSystem**。
+使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 借助 Service Fabric，还可以通过在应用程序清单中指定 RunAs 策略，以使用本地用户帐户或本地系统帐户运行应用程序。 受支持的本地系统帐户类型为 **LocalUser**、**NetworkService**、**LocalService** 和 **LocalSystem**。  如果在 Windows 独立群集上运行 Service Fabric，可以使用 [Active Directory 域帐户](service-fabric-run-service-as-ad-user-or-group.md)或[组托管服务帐户](service-fabric-run-service-as-gmsa.md)运行服务。
 
 还可以定义和创建用户组，以便将一个或多个要统一管理的用户添加到每个组。 如果不同的服务入口点有多个用户，而且这些用户需要拥有可在组级别使用的某些常用权限，则这种做法特别有用。
 

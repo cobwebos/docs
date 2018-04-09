@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions 中的诊断 - Azure"
-description: "了解如何使用 Azure Functions 的 Durable Functions 扩展诊断问题。"
+title: Durable Functions 中的诊断 - Azure
+description: 了解如何使用 Azure Functions 的 Durable Functions 扩展诊断问题。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 5ebab8660dfe21984e1a7f9a1cb925aea60de213
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2fc1c87a0eee9e822ffc997f67320ed23dd5916
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Durable Functions 中的诊断 (Azure Functions)
 
@@ -50,6 +50,7 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
 * **reason**：与跟踪事件关联的其他数据。 例如，如果某个实例正在等待外部事件通知，则此字段指示该实例正在等待的事件的名称。 如果函数失败，此字段会包含错误详细信息。
 * **isReplay**：指示跟踪事件是否用于重播执行的布尔值。
 * **extensionVersion**：持久任务扩展的版本。 在报告扩展中可能存在的 bug 时，此字段是特别重要的数据。 如果长时间运行的实例在运行时发生更新，它可能会报告多个版本。 
+* **sequenceNumber**：事件的执行序列号。 与时间戳组合使用可以帮助按执行时间对事件进行排序。 *请注意，如果主机在实例正在运行时重新启动，则此数字将重置为零，因此始终先按时间戳然后按 sequenceNumber 排序很重要。*
 
 可在 `host.json` 文件的 `logger` 节中配置发出到 Application Insights 的跟踪数据的详细程度。
 
@@ -72,11 +73,11 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
 
 ### <a name="single-instance-query"></a>单实例查询
 
-以下查询显示 [Hello Sequence](durable-functions-sequence.md) 函数业务流程的单个实例的历史跟踪数据。 该查询是使用 [Application Insights 查询语言 (AIQL)](https://docs.loganalytics.io/docs/Language-Reference) 编写的。 它会筛选出重播执行，以便仅显示逻辑执行路径。
+以下查询显示 [Hello Sequence](durable-functions-sequence.md) 函数业务流程的单个实例的历史跟踪数据。 该查询是使用 [Application Insights 查询语言 (AIQL)](https://docs.loganalytics.io/docs/Language-Reference) 编写的。 它会筛选出重播执行，以便仅显示逻辑执行路径。 可以通过按 `timestamp` 和 `sequenceNumber` 排序来安排事件顺序，如以下查询中所示： 
 
 ```AIQL
-let targetInstanceId = "bf71335b26564016a93860491aa50c7f";
-let start = datetime(2017-09-29T00:00:00);
+let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
+let start = datetime(2018-03-25T09:20:00);
 traces
 | where timestamp > start and timestamp < start + 30m
 | where customDimensions.Category == "Host.Triggers.DurableTask"
@@ -84,16 +85,17 @@ traces
 | extend instanceId = customDimensions["prop__instanceId"]
 | extend state = customDimensions["prop__state"]
 | extend isReplay = tobool(tolower(customDimensions["prop__isReplay"]))
+| extend sequenceNumber = tolong(customDimensions["prop__sequenceNumber"]) 
 | where isReplay == false
 | where instanceId == targetInstanceId
-| project timestamp, functionName, state, instanceId, appName = cloud_RoleName
+| sort by timestamp asc, sequenceNumber asc
+| project timestamp, functionName, state, instanceId, sequenceNumber, appName = cloud_RoleName
 ```
-结果是显示业务流程执行路径的跟踪事件的列表，包括所有活动函数。
 
-![Application Insights 查询](media/durable-functions-diagnostics/app-insights-single-instance-query.png)
+结果是显示业务流程执行路径的跟踪事件的列表，包括所有活动函数，按执行时间以升序排序。
 
-> [!NOTE]
-> 由于 `timestamp` 列的精度不够，其中一些跟踪事件可能会失序。 我们已创建[问题 #71](https://github.com/Azure/azure-functions-durable-extension/issues/71)，在 GitHub 中跟踪此问题。
+![Application Insights 查询](media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
+
 
 ### <a name="instance-summary-query"></a>实例摘要查询
 

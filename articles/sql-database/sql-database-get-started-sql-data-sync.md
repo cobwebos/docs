@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 237a34c955f8ef36e25c30a6b13787f6a9296612
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f9318b5baa46ab991b5e72e12a89a25e4f635db3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="set-up-sql-data-sync-preview"></a>设置 SQL 数据同步（预览版）
 本教程将介绍如何创建包含 Azure SQL 数据库和 SQL Server 实例的混合同步组，从而设置 Azure SQL 数据同步。 新的同步组进行了全面配置，可根据所设定的计划进行同步。
@@ -38,6 +38,8 @@ ms.lasthandoff: 03/16/2018
     ![Azure SQL 数据库列表](media/sql-database-get-started-sql-data-sync/datasync-preview-sqldbs.png)
 
 3.  在“SQL 数据库”页中，选择要用作数据同步的中心数据库的现有 SQL 数据库。“SQL 数据库”页随即打开。
+
+    中心数据库是同步拓扑的中央终结点，在同步拓扑中，一个同步组具有多个数据库终结点。 同一同步组中的所有其他数据库终结点（即所有成员数据库）将与中心数据库进行同步。
 
 4.  在选定数据库的“SQL 数据库”页中，选择“同步到其他数据库”。 “数据同步”页随即打开。
 
@@ -67,6 +69,8 @@ ms.lasthandoff: 03/16/2018
         ![指定同步频率](media/sql-database-get-started-sql-data-sync/datasync-preview-syncfreq.png)
 
     4.  在“冲突解决”部分中，选择“中心胜出”或“成员胜出”。
+
+        “中心胜出”意味着，当发生冲突时，中心数据库中的数据将覆盖成员数据库中的冲突数据。 “成员胜出”意味着，当发生冲突时，成员数据库中的数据将覆盖中心数据库中的冲突数据。 
 
         ![指定如何解决冲突](media/sql-database-get-started-sql-data-sync/datasync-preview-conflictres.png)
 

@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: eb68993924bff8605fc244f438a686f0142c4762
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 18a8065bba8a4a0ec2025d6b9134fe9fab21eb5f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure 存储简介
 
@@ -143,35 +143,11 @@ SSE 自动加密所有性能层（标准和高级）、所有部署模型（Azur
 
 ## <a name="replication"></a>复制
 
-为了确保数据的持久性，Azure 存储将保留（和管理）数据的多个副本。 这称为复制，有时也称为冗余。 设置存储帐户时，可选择复制类型。 大多数情况下，可以在设置存储帐户后修改此设置。
+为了确保数据的持久性，Azure 存储会复制多个数据副本。 设置存储帐户时，可选择复制类型。 大多数情况下，可以在创建存储帐户后修改此设置。 
 
-**本地冗余存储 (LRS)**
-
-本地冗余存储 (LRS) 可在一年中提供至少 99.999999999%（11 个 9）的对象持久性。 这意味着，将由 Azure 存储在设置存储帐户时指定的数据中心管理多个数据副本。 提交更改时，会先对所有副本进行更新，然后返回成功的消息。 这意味着这些副本始终处于同步状态。另外，这些副本驻留在单独的容错域和升级域中。这意味着，即使某个存储数据的存储节点发生故障，或者需要进行脱机更新，数据也是可用的。
-
-**区域冗余存储 (ZRS)（预览版）**
-
-区域冗余存储 (ZRS) 旨在简化高可用性应用程序的开发。 ZRS 在一年中提供至少 99.9999999999%（12 个 9）的存储对象持久性。 ZRS 可跨多个可用性区域同步复制数据。 对于不可接受停机的交易应用程序等方案，请考虑使用 ZRS。 即使单个区域不可用或不可恢复，ZRS 也能让客户读取和写入数据。 数据的插入和更新以同步方式进行，并保持极高的一致性。    
-
-以前的 ZRS 功能现在称为 ZRS 经典版。 ZRS 经典版帐户仅适用于常规用途 V1 存储帐户中的块 Blob。 ZRS 经典版跨一到两个区域中的数据中心以异步方式复制数据。 除非 Microsoft 启动了到次要区域的故障转移，否则副本可能不可用。 ZRS 经典版帐户不能与 LRS 或 GRS 相互转换，并且不提供指标或日志记录功能。
-
-**异地冗余存储 (GRS)**
-
-异地冗余存储 (GRS) 旨在一年中提供 99.99999999999999%（16 个 9）的对象持续性，方法是：在主区域保留本地数据副本，并在距离主区域数百英里的次要区域保留另一组数据副本。 当主区域发生故障时，Azure 存储会故障转移到辅助区域。
-
-**读取访问异地冗余存储 (RA-GRS)**
-
-除了你能够以读取方式访问辅助位置中的数据，读取访问异地冗余存储与 GRS 并无二致。 如果主数据中心变得临时不可用，则可继续读取辅助位置中的数据。 此功能在某些情况下很有用。 例如，可以将 Web 应用程序更改成只读模式，并让其指向辅助副本，这样一来，即使更新不可用，也可以进行某些访问。
-
-> [!IMPORTANT]
-> 创建存储帐户后，可以更改复制数据的方式。 但是，如果从 LRS 或 ZRS 切换到 GRS 或 RA-GRS，可能会产生额外的一次性数据传输费用。
->
-
-有关复制选项的详细信息，请参阅 [Azure 存储复制](storage-redundancy.md)。
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
 有关灾难恢复信息，请参阅[在 Azure 存储中断时该怎么办](storage-disaster-recovery-guidance.md)。
-
-有关如何利用 RA-GRS 存储来确保高可用性的示例，请参阅[使用 RA-GRS 设计高度可用的应用程序](storage-designing-ha-apps-with-ragrs.md)。
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>将数据传输到和移出 Azure 存储
 

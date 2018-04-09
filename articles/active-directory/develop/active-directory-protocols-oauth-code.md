@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/19/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 87a24ae9b620557e3106eb7f51b3f002cd76dd03
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 241f872b3069a58a35df7104f3335964298c7a20
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="authorize-access-to-web-applications-using-oauth-20-and-azure-active-directory"></a>使用 OAuth 2.0 和 Azure Active Directory 来授权访问 Web 应用程序
 Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Azure AD 租户中的 Web 应用程序和 Web API。 本指南与语言无关，介绍在不使用我们的任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
@@ -138,9 +138,9 @@ grant_type=authorization_code
 | grant_type |必填 |必须是授权代码流的 `authorization_code`。 |
 | 代码 |必填 |在上一部分中获取的 `authorization_code` |
 | redirect_uri |必填 |用于获取 `authorization_code` 的相同 `redirect_uri` 值。 |
-| client_secret |Web 应用所需 |在应用程序注册门户中为应用程序创建的应用程序机密。  其不应用于本机应用程序，因为设备无法可靠地存储 client_secrets。  Web 应用和 Web API 都需要应用程序机密，能够将 `client_secret` 安全地存储在服务器端。 |
+| client_secret |对于 Web 应用是必需的，不允许用于公共客户端 |在应用程序注册门户中为应用程序创建的应用程序机密。  它不能在本机应用（公共客户端）中使用，因为设备无法可靠地存储 client_secrets。  Web 应用和 Web API（所有机密客户端）都需要它，能够将 `client_secret` 安全地存储在服务器端。 |
 | resource |如果已在授权代码请求中指定，则是必需的，否则是可选的 |Web API 的应用 ID URI（受保护的资源）。 |
-| code_verifier | 可选              | 即用于获取 authorization_code 的 code_verifier。  如果在授权码授权请求中使用 PKCE，则需要。  有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)                                                                                                                                                                                                                                                                                             |
+| code_verifier | 可选              | 即用于获取 authorization_code 的 code_verifier。  如果在授权码授权请求中使用 PKCE，则需要。  有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
 
 若要查找应用 ID URI，请在 Azure 管理门户中，依次单击“Active Directory”、该目录、该应用程序和“配置”。
 

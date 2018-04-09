@@ -1,29 +1,24 @@
 ---
-title: "为 Azure SQL 数据仓库设计 ELT | Microsoft Docs"
-description: "结合可将数据移入 Azure 并将数据载入 SQL 数据仓库的技术，来为 Azure SQL 数据仓库设计提取、加载和转换 (ELT) 过程。"
+title: 为 Azure SQL 数据仓库设计 ELT 而非 ETL | Microsoft Docs
+description: 设计用于将数据加载到 Azure SQL 数据仓库的提取、加载和转换 (ELT) 过程而非 ETL 过程。
 services: sql-data-warehouse
-documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
-ms.assetid: 2253bf46-cf72-4de7-85ce-f267494d55fa
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 12/12/2017
-ms.author: cakarst;barbkess
-ms.openlocfilehash: e94dca69c77c46034e318205279be5188e1371f5
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.topic: conceptual
+ms.component: design
+ms.date: 03/28/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: c27ad843c9ee9beed871dcc03254cb1266f6ebe2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>为 Azure SQL 数据仓库设计提取、加载和转换 (ELT)
 
-结合可将数据移入 Azure 存储并将数据载入 SQL 数据仓库的技术，来为 Azure SQL 数据仓库设计提取、加载和转换 (ELT) 过程。 本文介绍支持使用 Polybase 进行数据加载的技术，然后重点介绍如何设计一个可以结合使用 PolyBase 和 T-SQL 将数据从 Azure 存储载入 SQL 数据仓库的 ELT 过程。
+设计用于将数据加载到 Azure SQL 数据仓库的提取、加载和转换 (ELT) 过程而非提取、转换和加载 (ETL) 过程。 本文介绍了将数据移动到 Azure 数据仓库的 ELT 过程的设计方法。
 
 ## <a name="what-is-elt"></a>什么是 ELT？
 

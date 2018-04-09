@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 401542bf61aa27138d26cce522e24078503b77e0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3f3ed53e3c6606ca540cc2e760f2f6280ccf5cc2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>规划 Azure 文件同步（预览版）部署
 使用 Azure 文件同步（预览版），既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -96,6 +96,19 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 > [!Note]  
 > 仅支持 NTFS 卷。 不支持 ReFS、FAT、FAT32 及其他文件系统。
+
+### <a name="files-skipped"></a>跳过的文件
+| 文件/文件夹 | 注意 |
+|-|-|
+| Desktop.ini | 特定于系统的文件 |
+| ethumbs.db$ | 缩略图的临时文件 |
+| ~$\*.\* | Office 临时文件 |
+| \*.tmp | 临时文件 |
+| \*.laccdb | Access DB 锁定文件|
+| 635D02A9D91C401B97884B82B3BCDAEA.* ||
+| \\系统卷信息 | 特定于卷的文件夹 |
+| $RECYCLE.BIN| 文件夹 |
+| \\SyncShareState | 用于同步的文件夹 |
 
 ### <a name="failover-clustering"></a>故障转移群集
 Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般用途文件服务器”部署选项。 不可在“适用于应用程序数据的横向扩展文件服务器”(SOFS) 或群集共享卷 (CSV) 上使用故障转移群集。

@@ -29,6 +29,8 @@
       href: render-coverage.md
     - name: 路由覆盖区域
       href: routing-coverage.md
+    - name: 支持的语言
+      href: supported-languages.md
 - name: 操作指南
   items:
     - name: 管理帐户和密钥

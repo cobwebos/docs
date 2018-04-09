@@ -1,22 +1,19 @@
 ---
-title: "Azure 流分析文档 - 教程和 API 参考 | Microsoft 文档"
-description: "了解如何使用完全托管的事件处理在云中运行 IoT 分析。 实时分析来自应用程序、传感器、设备等的数据。"
+title: Azure 流分析文档 - 教程和 API 参考
+description: 了解如何使用完全托管的事件处理在云中运行 IoT 分析。 实时分析来自应用程序、传感器、设备等的数据。
 services: stream-analytics
-author: czeumault
-manager: carolz
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
 layout: LandingPage
-ms.assetid: 
 ms.service: stream-analytics
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/23/2017
-ms.author: carolz
-ms.openlocfilehash: 5bc0f813ac9ba8fa0960f2802d5482e31d772daf
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: bb305fa038a59c5e385e0cce7eed07c3a2693634
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-analytics-documentation"></a>流分析文档
 

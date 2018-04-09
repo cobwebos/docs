@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 227ca3533c7a06b726c758be931df8ec0314e90f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7331c3385f70de7d13895fc88d1d8630af4e9b05
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
@@ -47,10 +47,10 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2.将用于 Java 的 Application Insights SDK 添加到项目
 *为项目选择适当的方式。*
 
-#### <a name="if-youre-using-eclipse-to-create-a-maven-or-dynamic-web-project-"></a>如果使用 Eclipse 创建 Maven 或动态 Web 项目...
+#### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project"></a>如果使用 Eclipse 创建动态 Web 项目...
 使用[用于 Java 的 Application Insights SDK 插件][eclipse]。
 
-#### <a name="if-youre-using-maven"></a>如果使用 Maven...
+#### <a name="if-youre-using-maven-a-namemaven-setup-"></a>如果使用 Maven... <a name="maven-setup" />
 如果项目已设置为使用 Maven 进行生成，请将以下代码合并到 pom.xml 文件。
 
 然后刷新项目依赖项，以下载库。
@@ -78,12 +78,12 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 * *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`<version>2.0.n</version>`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
 * *需要更新到新 SDK？* 请刷新项目的依赖项。
 
-#### <a name="if-youre-using-gradle"></a>如果使用 Gradle...
+#### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>如果使用 Gradle... <a name="gradle-setup" />
 如果项目已设置为使用 Gradle 进行生成，请将以下代码合并到 build.gradle 文件。
 
 然后刷新项目依赖项，以下载库。
 
-```JSON
+```gradle
 
     repositories {
       mavenCentral()
@@ -95,27 +95,24 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
     }
 ```
 
-* *发生了生成或校验和验证错误？尝试使用特定版本，例如：* `version:'2.0.n'`。 *可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)。*
-* *更新到新 SDK*
-  * 请刷新项目的依赖项。
+* *发生了生成或校验和验证错误？* 尝试使用特定版本，例如：`version:'2.0.n'`。 可以在 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）或 [Maven artifacts](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)（Maven 项目）中找到最新版本。
+* *若要更新到新的 SDK*，请刷新项目的依赖项。
 
-#### <a name="otherwise-"></a>否则...
-手动添加 SDK：
-
-1. 下载 [用于 Java 的 Application Insights SDK](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)。
-2. 解压缩 zip 文件中的二进制文件，然后将其添加项目。
+#### <a name="otherwise-if-you-are-manually-managing-dependencies-"></a>否则，如果是手动管理依赖项...
+请下载[最新版本](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)，将所需文件复制到项目中，替换以前的版本。
 
 ### <a name="questions"></a>问题...
-* *zip 中的 `-core` 与 `-web` 组件之间有怎样的关系？*
-
+* `-core` 与 `-web` 组件之间有怎样的关系？
   * `applicationinsights-core` 提供单纯的 API。 始终需要此组件。
   * `applicationinsights-web` 提供用于跟踪 HTTP 请求计数和响应时间的指标。 如果不想要自动收集此遥测数据，可以忽略此组件。 例如，如果想要编写自己的组件。
-* *在发布更改时更新 SDK*
+  
+* 应怎样将 SDK 更新到最新版本？
+  * 如果使用 Gradle 或 Maven...
+    * 请更新生成文件，对最新版本进行指定，或者使用 Gradle/Maven 的通配符语法，以便自动包括最新的版本。 然后，请刷新项目的依赖项。 在上面的 [Gradle](#gradle-setup) 或 [Maven](#maven-setup) 的示例中，可以看到通配符语法。
+  * 如果是手动管理依赖项...
+    * 下载最新的 [用于 Java 的 Application Insights SDK](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) 并替换旧版本。 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）中描述了更改。
 
-  * 下载最新的 [用于 Java 的 Application Insights SDK](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) 并替换旧版本。
-  * [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）中描述了更改。
-
-## <a name="3-add-an-application-insights-xml-file"></a>3.添加 Application Insights .xml 文件
+## <a name="3-add-an-applicationinsightsxml-file"></a>3.添加 ApplicationInsights.xml 文件
 在项目中的 resources 文件夹中添加 ApplicationInsights.xml，或确保将其添加到项目的部署类路径。 将以下 XML 复制到其中。
 
 替换为从 Azure 门户获取的检测密钥。
@@ -127,12 +124,10 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
 
       <!-- The key from the portal: -->
-
       <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
 
 
       <!-- HTTP request component (not required for bare API) -->
-
       <TelemetryModules>
         <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
@@ -153,11 +148,11 @@ Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
     </ApplicationInsights>
 ```
 
+也可将配置文件置于可以通过应用程序进行访问的任何位置。  系统属性 `-Dapplicationinsights.configurationDirectory` 指定 ApplicationInsights.xml 所在的目录。 例如，位于 `E:\myconfigs\appinsights\ApplicationInsights.xml` 的配置文件可以通过属性 `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` 进行配置。
 
 * 检测密钥随遥测的每个项一起发送，并告知 Application Insights 在资源中显示它。
 * HTTP 请求组件是可选的。 它自动将请求和响应时间的遥测数据发送到门户。
 * 事件关联是对 HTTP 请求组件的补充。 它将标识符分配到服务器收到的每个请求，并将此标识符添加为遥测的每个项的“Operation.Id”属性。 使用它可以通过在[诊断搜索][diagnostic]中设置筛选器，来关联与每个请求关联的遥测。
-* 可以从 Azure 门户将 Application Insights 密钥动态传递为系统属性 (-DAPPLICATION_INSIGHTS_IKEY=your_ikey)。 如果未定义任何属性，它会检查 Azure 应用设置中的环境变量 (APPLICATION_INSIGHTS_IKEY)。 如果未定义这两个属性，则使用 ApplicationInsights.xml 中的默认 InstrumentationKey。 此序列有助于动态管理不同环境的不同 InstrumentationKey。
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>设置检测密钥的替代方法
 Application Insights SDK 按以下顺序查找密钥：
@@ -219,7 +214,7 @@ Application Insights SDK 按以下顺序查找密钥：
      <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
 ```
 
-（如果默认堆栈中定义了拦截器，只需将拦截器添加到该堆栈。）
+如果默认堆栈中定义了拦截器，可以将拦截器添加到该堆栈。
 
 ## <a name="5-run-your-application"></a>5.运行应用程序
 在开发计算机上以调试模式运行应用程序，或将其发布到服务器。

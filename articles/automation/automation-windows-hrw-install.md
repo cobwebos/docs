@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: fa74f2e2d8fb9fc9f11810a4af4978fb4b443bcc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e0d9d164a85a73dd05456e005cf35ce3f33c408f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-deploy-a-windows-hybrid-runbook-worker"></a>如何部署 Windows 混合 Runbook 辅助角色
 
@@ -36,7 +36,7 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 
 > [!NOTE]
 > 为了使用所需状态配置 (DSC) 管理支持混合 Runbook 辅助角色的服务器配置，需将其添加为 DSC 节点。  若要进一步了解如何载入它们以供 DSC 管理，请参阅[载入由 Azure 自动化 DSC 管理的计算机](automation-dsc-onboarding.md)。        
-如果启用[更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)，则连接到 OMS 工作区的任何 Windows 计算机会自动配置为混合 Runbook 辅助角色，以支持将 Runbook 用作此解决方案的一部分。  但是，该计算机未注册到任何已在自动化帐户中定义的混合辅助角色组。  只要将同一个帐户同时用于解决方案和混合 Runbook 辅助角色组成员身份，即可将该计算机添加到自动化帐户的混合 Runbook 辅助角色组，以支持自动化 Runbook。  此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。  
+如果启用[更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)，任何连接到 Log Analytics 工作区的 Windows 计算机将自动配置为混合 Runbook 辅助角色，以支持此解决方案中包括的 Runbook。  但是，该计算机未注册到任何已在自动化帐户中定义的混合辅助角色组。  只要将同一个帐户同时用于解决方案和混合 Runbook 辅助角色组成员身份，即可将该计算机添加到自动化帐户的混合 Runbook 辅助角色组，以支持自动化 Runbook。  此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。  
 
 开始部署混合 Runbook 辅助角色之前，请先查看以下信息：[硬件和软件要求](automation-offering-get-started.md#hybrid-runbook-worker)以及[网络准备相关信息](automation-offering-get-started.md#network-planning)。  成功部署 Runbook 辅助角色后，请查看[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)，了解如何配置 Runbook，使本地数据中心或其他云环境中的过程实现自动化。  
  
@@ -52,10 +52,10 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
   * ResourceGroupName（必需）- 与自动化帐户关联的资源组的名称。  
   * HybridGroupName（必需）- 混合 Runbook 辅助角色组的名称，可将其指定为支持此方案的 Runbook 的目标。 
   *  SubscriptionID（必需）- 包含自动化帐户的 Azure 订阅 ID。
-  *  WorkspaceName（可选）- OMS 工作区名称。  如果没有 OMS 工作区，该脚本会创建并配置一个。  
+  *  WorkspaceName（可选）- Log Analytics 工作区名称。  如果没有 Log Analytics 工作区，该脚本会创建并配置一个。  
 
      > [!NOTE]
-     > 目前可与 OMS 集成的自动化区域仅限：**澳大利亚东南部**、**美国东部 2**、**东南亚**以及**西欧**。  如果自动化帐户不在其中的某个区域，脚本会创建 OMS 工作区，但会警告用户：无法将这些区域链接到一起。
+     > 目前可与 Log Analytics 集成的自动化区域仅限：澳大利亚东南部、美国东部 2、东南亚以及西欧。  如果自动化帐户不在其中的某个区域，脚本会创建 Log Analytics 工作区，但会警告用户：无法将这些区域链接到一起。
      >
 2. 在计算机的“管理员”模式下，从“开始”屏幕启动 **Windows PowerShell**。  
 3. 从 PowerShell 命令行 shell 中，导航到已下载脚本所在的文件夹并执行该脚本，请记得更改 -AutomationAccountName、-ResourceGroupName、-HybridGroupName、-SubscriptionId 和 -WorkspaceName 参数的值。
@@ -66,7 +66,7 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
     
         .\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <NameofAutomationAccount> `
         -ResourceGroupName <NameofOResourceGroup> -HybridGroupName <NameofHRWGroup> `
-        -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfOMSWorkspace>
+        -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
 
 4. 系统会提示用户同意安装 **NuGet** 并使用 Azure 凭据进行身份验证。<br><br>![执行 New-OnPremiseHybridWorker 脚本](/media/automation-hybrid-runbook-worker/new-onpremisehybridworker-scriptoutput.png)
 
@@ -76,27 +76,27 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 
 针对自动化环境执行前两个步骤一次，并对每台辅助角色计算机重复其余步骤。
 
-#### <a name="1-create-operations-management-suite-workspace"></a>1.创建 Operations Management Suite 工作区
+#### <a name="1-create-log-analytics-workspace"></a>1.创建 Log Analytics 工作区
 
-如果尚无 Operations Management Suite 工作区，请按照[管理工作区](../log-analytics/log-analytics-manage-access.md)中的说明创建工作区。 如果已经有一个工作区，则可以使用现有的。
+如果尚无 Log Analytics 工作区，请按照[管理工作区](../log-analytics/log-analytics-manage-access.md)中的说明创建工作区。 如果已经有一个工作区，则可以使用现有的。
 
-#### <a name="2-add-automation-solution-to-operations-management-suite-workspace"></a>2.将自动化解决方案添加到 Operations Management Suite 工作区
+#### <a name="2-add-automation-solution-to-log-analytics-workspace"></a>2.向 Log Analytics 工作区添加自动化解决方案
 
-解决方案将功能添加到 Operations Management Suite。  自动化解决方案增加 Azure 自动化的功能，包括支持混合 Runbook 辅助角色。  将解决方案添加到工作区时，它会自动将辅助角色组件往下推送到在下一步要安装的代理计算机。
+解决方案向 Log Analytics 添加功能。  自动化解决方案增加 Azure 自动化的功能，包括支持混合 Runbook 辅助角色。  将解决方案添加到工作区时，它会自动将辅助角色组件往下推送到在下一步要安装的代理计算机。
 
-请根据[使用解决方案库添加解决方案](../log-analytics/log-analytics-add-solutions.md)中的说明，将**自动化**解决方案添加到 Operations Management Suite 工作区。
+请根据[使用解决方案库添加解决方案](../log-analytics/log-analytics-add-solutions.md)中的说明，将**自动化**解决方案添加到 Log Analytics 工作区。
 
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>3.安装 Microsoft Monitoring Agent
 
-Microsoft Monitoring Agent 可将计算机连接到 Operations Management Suite。  在计算机本地安装代理并将其连接到工作区时，代理会自动下载混合 Runbook 辅助角色所需的组件。
+Microsoft Monitoring Agent 可将计算机连接到 Log Analytics。  在计算机本地安装代理并将其连接到工作区时，代理会自动下载混合 Runbook 辅助角色所需的组件。
 
 按照[将 Windows 计算机连接到 Log Analytics](../log-analytics/log-analytics-windows-agent.md) 中的说明在本地计算机上安装代理。  可以对多台计算机重复此过程，以将多个辅助角色添加到环境。
 
-代理成功连接到 Operations Management Suite 后，将列在 Operations Management Suite“设置”窗格的“已连接的源”选项卡上。  当 C:\Program Files\Microsoft Monitoring Agent\Agent 中出现名为 **AzureAutomationFiles** 的文件夹时，可确认代理已正确下载自动化解决方案。  若要确认混合 Runbook 辅助角色的版本，可以导航到 C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ 并留意 \\*version* 子文件夹。   
+当代理成功连接到 Log Analytics 后，它将在 Log Analytics“设置”窗格的“已连接的源”选项卡上列出。  当 C:\Program Files\Microsoft Monitoring Agent\Agent 中出现名为 **AzureAutomationFiles** 的文件夹时，可确认代理已正确下载自动化解决方案。  若要确认混合 Runbook 辅助角色的版本，可以导航到 C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ 并留意 \\*version* 子文件夹。   
 
 #### <a name="4-install-the-runbook-environment-and-connect-to-azure-automation"></a>4.安装 Runbook 环境并连接到 Azure 自动化
 
-将代理添加到 Operations Management Suite 时，自动化解决方案会向下推送 **HybridRegistration** PowerShell 模块，其中包含 **Add-HybridRunbookWorker** cmdlet。  使用此 cmdlet 将 Runbook 环境安装到计算机上，并将其注册到 Azure 自动化。
+将代理添加到 Log Analytics 时，自动化解决方案会向下推送 **HybridRegistration** PowerShell 模块，其中包含 **Add-HybridRunbookWorker** cmdlet。  使用此 cmdlet 将 Runbook 环境安装到计算机上，并将其注册到 Azure 自动化。
 
 在管理员模式下打开 PowerShell 会话，并运行以下命令以导入模块。
 

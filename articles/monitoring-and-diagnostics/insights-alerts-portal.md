@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
-ms.openlocfilehash: 4acf1f549a6c901fb0b772c4591f1f35d61365ad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b0d938112aaea4d86dd539b53a1749cc800607a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>在 Azure Monitor 中为 Azure 服务创建经典指标警报 - Azure 门户
 > [!div class="op_single_selector"]
@@ -31,25 +31,25 @@ ms.lasthandoff: 03/23/2018
 ## <a name="overview"></a>概述
 
 > [!NOTE]
-> 本文介绍如何创建较早的指标警报。 Azure Monitor 现在支持更新、更好的指标警报。 这些警报可监视多个指标，并允许对维度指标发出警报。 详细了解[近实时指标警报](monitoring-near-real-time-metric-alerts.md)。
+> 本文介绍了如何创建较早的经典指标警报。 Azure Monitor 现在支持[较新的指标警报](monitoring-near-real-time-metric-alerts.md)。 
 >
 >
 
-本文演示如何使用 Azure 门户设置 Azure 指标警报。 
+本文展示了如何使用 Azure 门户设置 Azure 经典指标警报。 
 
 可以根据监控指标或事件接收 Azure 服务的警报。
 
 * **指标值** - 指定指标的值超过在任一方向分配的阈值时，将触发警报。 也就是说，当首次满足条件时，以及之后不再满足条件时，都会触发此警报。    
 * **活动日志事件** - 发生每个事件，或仅当出现特定事件时可触发警报。 详细了解[活动日志警报](monitoring-activity-log-alerts.md)。
 
-可配置指标警报，使警报触发时执行以下操作：
+可配置经典指标警报，使警报触发时执行以下操作：
 
 * 向服务管理员和共同管理员发送电子邮件通知
 * 将电子邮件发送到指定的其他电子邮件。
 * 调用 Webhook
 * 开始执行 Azure Runbook（仅从 Azure 门户）
 
-可使用以下项配置指标并获取有关指标警报规则的信息
+可使用以下项配置和获取有关经典指标警报规则的信息
 
 * [Azure 门户](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
@@ -63,7 +63,7 @@ ms.lasthandoff: 03/23/2018
 
     ![监视](./media/insights-alerts-portal/AlertRulesButton.png)
 
-3. 选择“添加指标警报”命令，并填写字段。
+3. 选择“添加指标警报(经典)”命令，并填写字段。
 
     ![添加警报](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
 

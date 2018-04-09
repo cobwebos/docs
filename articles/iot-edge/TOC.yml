@@ -17,18 +17,18 @@
       href: tutorial-simulate-device-linux.md
     - name: 模拟 Edge 设备 - Windows
       href: tutorial-simulate-device-windows.md
-    - name: '开发 C# 模块'
-      href: tutorial-csharp-module.md
-    - name: 开发 Python 模块
-      href: tutorial-python-module.md
+    - name: 在模块中部署代码
+      items:
+        - name: 'C#'
+          href: tutorial-csharp-module.md
+        - name: Python
+          href: tutorial-python-module.md
     - name: 部署 Azure 流分析
       href: tutorial-deploy-stream-analytics.md
     - name: 部署 Azure 机器学习
       href: tutorial-deploy-machine-learning.md
     - name: 部署 Azure Functions
       href: tutorial-deploy-function.md
-    - name: 在 VS Code 中使用多个模块
-      href: tutorial-multiple-modules-in-vscode.md
 - name: 操作指南
   items:
     - name: 创建网关
@@ -53,6 +53,8 @@
           href: how-to-vscode-develop-azure-function.md
         - name: 调试 Azure Functions
           href: how-to-vscode-debug-azure-function.md
+        - name: 使用多个模块
+          href: tutorial-multiple-modules-in-vscode.md
     - name: 在边缘存储数据
       href: sql-storage.md
     - name: 故障排除
@@ -74,7 +76,7 @@
       href: module-deployment-monitoring.md
     - name: 使用 IoT Edge 设备作为网关
       href: iot-edge-as-gateway.md
-    - name: “安全”
+    - name: 安全
       href: security.md
     - name: IoT Edge 术语表
       href: iot-edge-glossary.md

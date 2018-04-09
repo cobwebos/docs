@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 用户界面 - 市场宣传内容"
-description: "了解如何在 Azure Mobile Engagement 中管理不同类型的推送通知活动的独特内容"
+title: Azure Mobile Engagement 用户界面 - 市场宣传内容
+description: 了解如何在 Azure Mobile Engagement 中管理不同类型的推送通知活动的独特内容
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: add64f06-43c9-475c-8722-51cd00bb844b
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 982cc66ffe98aa6dff8fe290cc1c2d4bad03c9ac
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>如何管理不同类型的推送通知活动的独特内容
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 可以使用新的市场宣传活动的内容部分修改公告、投票、数据推送和磁贴（仅 Windows Phone）的内容。 推送活动的内容设置是与活动类型相关的。 
 
 ### <a name="content-types"></a>内容类型：
@@ -76,7 +80,7 @@ ms.lasthandoff: 10/11/2017
 * **仅限 iOS 操作**
   * 从 App Store 下载应用程序
   * http://itunes.apple.com/[country]/app/[app name]/id[app id]?mt=8 
-  * 示例:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
+  * 示例：http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
   * Windows 操作
   * 打开网页
   * http://\[网站域\] 

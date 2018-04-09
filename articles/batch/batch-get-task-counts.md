@@ -1,18 +1,18 @@
 ---
-title: "通过按状态进行任务计数的方式监视作业进度 - Azure Batch | Microsoft Docs"
-description: "通过调用“获取任务计数”操作对作业的任务进行计数，监视作业进度。 可以对处于活动状态、正在运行或已完成的任务计数，也可以对成功或失败的任务计数。"
+title: 通过按状态进行任务计数的方式监视作业进度 - Azure Batch | Microsoft Docs
+description: 通过调用“获取任务计数”操作对作业的任务进行计数，监视作业进度。 可以对处于活动状态、正在运行或已完成的任务计数，也可以对成功或失败的任务计数。
 services: batch
-author: tamram
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: tamram
-ms.openlocfilehash: ceff59d7063b60a1344a47489d3d73e0e8ee07df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: bc112ed5b481560362962d6b550d336de6b3d9b4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="count-tasks-by-state-to-monitor-a-jobs-progress-preview"></a>按状态对任务计数，监视作业进度（预览）
 
@@ -31,7 +31,7 @@ Azure Batch 提供一种有效的方法，在作业运行任务时监视作业�
 - 任务分配到计算节点但尚未完成时，将它视为“正在运行”。 当任务状态为 `preparing` 或 `running` 时，将它视为“正在运行”，正如[获取有关任务的信息][rest_get_task]操作所示。
 - 当任务不再符合运行条件时，将它视为“完成”。 通常情况下，视作“完成”的任务或者已成功完成，或者未成功完成并已达到重试次数限制。 
 
-“获取任务计数”操作还报告成功或失败的任务数。 Batch 通过检查 [executionInfo][https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo] 属性的“结果”属性判定任务的成败：
+“获取任务计数”操作还报告成功或失败的任务数。 Batch 通过检查 [executionInfo][https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task#executionInfo] 属性的 **result** 属性来确定任务已成功还是失败：
 
     - 如果任务执行的结果是 `success`，则将该任务视为“成功”。
     - 如果任务执行的结果是 `failure`，则将该任务视为“失败”。

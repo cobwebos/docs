@@ -1,6 +1,6 @@
 ---
-title: "Azure 托管应用程序 CredentialsCombo UI 元素 | Microsoft Docs"
-description: "介绍了 Azure 托管应用程序的 Microsoft.Compute.CredentialsCombo UI 元素"
+title: Azure CredentialsCombo UI 元素 | Microsoft Docs
+description: 介绍了 Azure 门户的 Microsoft.Compute.CredentialsCombo UI 元素。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: d8faa36aca762bc8d787d5750fcf7efdbaf986ea
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: c17677a9e34de4c1afca8f04c8bd22c2155c3439
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI 元素
-一组控件，其中包含针对 Windows 和 Linux 密码及 SSH 公钥的内置验证。 [创建 Azure 托管应用程序](publish-service-catalog-app.md)时使用此元素。
+一组控件，其中包含针对 Windows 和 Linux 密码及 SSH 公钥的内置验证。
 
 ## <a name="ui-sample"></a>UI 示例
 ![Microsoft.Compute.CredentialsCombo](./media/managed-application-elements/microsoft.compute.credentialscombo.png)
@@ -107,6 +107,5 @@ ms.lasthandoff: 10/27/2017
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](overview.md)。
 * 有关创建 UI 定义的简介，请参阅 [CreateUiDefinition 入门](create-uidefinition-overview.md)。
 * 有关 UI 元素中的公用属性的说明，请参阅 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

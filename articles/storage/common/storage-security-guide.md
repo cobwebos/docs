@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: cshoe
-ms.openlocfilehash: e0a398075b01b3c3750a33a9dd74b5ad1c0f71fd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 73353d3b27b65298d804a138b33cdf2de23726fe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 
@@ -357,7 +357,7 @@ Azure 磁盘加密是一项新功能。 此功能允许加密 IaaS 虚拟机使�
 
 #### <a name="iaas-vms-and-their-vhd-files"></a>IaaS VM 及其 VHD 文件
 
-对于 IaaS VM 使用的数据磁盘，建议使用 Azure 磁盘加密。 如果使用 Azure Marketplace 中的映像创建 VM，Azure 会在 Azure 存储中[浅层复制](https://en.wikipedia.org/wiki/Object_copying)存储帐户中的映像；即使已启用 SSE，也不会加密。 创建 VM 并启动更新映像后，SSE 将开始加密数据。 出于此原因，如果你想要将它们完全加密，最好是在通过 Azure Marketplace 中的映像创建的 VM 上使用 Azure 磁盘加密。
+对于 IaaS VM 使用的数据磁盘，建议使用 Azure 磁盘加密。 如果使用 Azure Marketplace 中的映像创建包含非托管磁盘的 VM，Azure 会在 Azure 存储中[浅层复制](https://en.wikipedia.org/wiki/Object_copying)存储帐户中的映像；即使已启用 SSE，也不会加密。 创建 VM 并启动更新映像后，SSE 将开始加密数据。 出于此原因，如果想要将它们完全加密，最好在通过 Azure Marketplace 中的映像创建的包含非托管磁盘的 VM 上使用 Azure 磁盘加密。 如果创建包含托管磁盘的 VM，则 SSE 默认情况下会使用平台管理的密钥加密所有数据。 
 
 如果通过本地将预先加密的 VM 带入 Azure 中，就能将加密密钥上传到 Azure 密钥保管库，并继续针对使用本地的 VM 使用加密。 启用 Azure 磁盘加密即可处理此方案。
 

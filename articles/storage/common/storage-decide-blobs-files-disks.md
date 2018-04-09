@@ -1,24 +1,18 @@
 ---
-title: "确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘"
-description: "了解可通过哪些不同的方式在 Azure 中存储和访问数据，以帮助确定要使用哪种技术。"
+title: 确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘
+description: 了解可通过哪些不同的方式在 Azure 中存储和访问数据，以帮助确定要使用哪种技术。
 services: storage
-documentationcenter: 
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 03/28/2018
 ms.author: tamram
-ms.openlocfilehash: b9c7913d1e95693a5ec72b24cf020928d67f0133
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ded0884ff83cc214d78f65fed8cefa646f11d952
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘
 
@@ -47,9 +41,9 @@ Microsoft Azure 在 Azure 存储中提供多种功能用于在云中存储和访
 |终结点|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |目录|平面命名空间|真正目录对象|  
 |名称区分大小写|区分大小写|不区分大小写，但保留大小写|  
-|Capacity|高达 500 TB 的容器|5 TB 文件共享|  
-|Throughput|每个块 Blob 高达 60 MB/秒|每个共享高达 60 MB/秒|  
-|对象大小|每个块 Blob 高达 200 GB|每个文件高达 1 TB|  
+|容量|最多 500 TiB 容器|5 TiB 文件共享|  
+|吞吐量|每个块 Blob 高达 60 MiB/秒|每个共享高达 60 MiB/秒|  
+|对象大小|每个块 blob 最多大约 4.75 TiB|每个文件最多为 1 TiB|  
 |计费容量|基于写入的字节数|基于文件大小|  
 |客户端库|多语言|多语言|  
   
@@ -68,9 +62,9 @@ Azure 文件是对 Azure 磁盘的补充。 一个磁盘每次只能附加到一
 |身份验证|内置|使用 net use 进行设置|  
 |清理|自动|手动|  
 |使用 REST 访问|无法访问 VHD 中的文件|可以访问共享中存储的文件|  
-|最大大小|4 TB 磁盘|5 TB 文件共享，共享中可保存 1 TB 文件|  
+|最大大小|4 TiB 磁盘|5 TiB 文件共享，共享中可保存 1 TiB 文件|  
 |最大 8KB IOps|500 IOps|1000 IOps|  
-|Throughput|每个磁盘高达 60 MB/秒|每个文件共享高达 60 MB/秒|  
+|Throughput|每个磁盘高达 60 MiB/秒|每个文件共享高达 60 MiB/秒|  
 
 ## <a name="next-steps"></a>后续步骤
 

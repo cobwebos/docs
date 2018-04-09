@@ -1,9 +1,9 @@
 ---
-title: "Azure 活动日志概述 | Microsoft Docs"
-description: "了解什么是 Azure 活动日志，以及如何通过它了解发生在 Azure 订阅中的事件。"
+title: Azure 活动日志概述 | Microsoft Docs
+description: 了解什么是 Azure 活动日志，以及如何通过它了解发生在 Azure 订阅中的事件。
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: c274782f-039d-4c28-9ddb-f89ce21052c7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: johnkem
-ms.openlocfilehash: aef427483d647c53ba45688ce33a75f876115d08
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6e373740d6b5af4b3b7d3dca8877c952d79f8b20
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>使用 Azure 活动日志监视订阅活动
 Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级别事件的订阅日志。 这包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 活动日志之前称为“审核日志”或“操作日志”，因为“管理”类别报告订阅的控制面事件。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作、谁操作和操作时间”等信息。 还可以了解该操作和其他相关属性的状态。 活动日志未包括读取 (GET) 操作或针对使用经典/“RDFE”模型的资源的操作。
@@ -38,7 +38,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 
 > [!NOTE]
 
->  [警报(预览)](monitoring-overview-unified-alerts.md)目前在创建和管理活动日志警报规则方面提供增强的体验。  [了解详细信息](monitoring-activity-log-alerts-new-experience.md)。
+>  [较新的警报](monitoring-overview-unified-alerts.md)在创建和管理活动日志警报规则方面提供了增强的体验。  [了解详细信息](monitoring-activity-log-alerts-new-experience.md)。
 
 
 请观看介绍了活动日志的以下视频。
@@ -146,7 +146,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 | serviceBusRuleId |否 |服务总线命名空间（需在其中创建事件中心）的服务总线规则 ID。 是以下格式的字符串：`{service bus resource ID}/authorizationrules/{key name}`。 |
 | 位置 |是 |要为其收集活动日志事件的逗号分隔区域的列表。 |
 | RetentionInDays |是 |事件的保留天数，介于 1 到 2147483647 之间。 值为零时，将无限期（永久）存储日志。 |
-| Categories |否 |应收集的事件类别的逗号分隔列表。 可能值包括：Write、Delete 和 Action。 |
+| 类别 |否 |应收集的事件类别的逗号分隔列表。 可能值包括：Write、Delete 和 Action。 |
 
 #### <a name="remove-a-log-profile"></a>删除日志配置文件
 ```

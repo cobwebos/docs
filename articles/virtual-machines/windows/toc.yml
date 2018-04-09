@@ -342,13 +342,20 @@
         - name: Azure 日志收集器扩展
           href: log-collector-extension.md
         - name: Azure 诊断扩展
-          href: ps-extensions-diagnostics.md
+          href: extensions-diagnostics.md
+          items:
+            - name: 扩展架构
+              href: ../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md
+            - name: 使用 PowerShell 进行启用
+              href: ps-extensions-diagnostics.md
+            - name: 使用模板进行启用
+              href: extensions-diagnostics-template.md
+            - name: 故障排除
+              href: ../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md
         - name: 导出 VM 扩展
           href: extensions-export-templates.md
         - name: 排查扩展问题
           href: extensions-troubleshoot.md
-        - name: 监视和诊断扩展
-          href: extensions-diagnostics-template.md
         - name: 网络观察程序代理
           href: extensions-nwa.md
         - name: 限制扩展安装

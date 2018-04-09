@@ -104,7 +104,8 @@ Azure 磁盘具备 99.999% 的可用性。 数据具有三个副本，高持久�
 
 ### <a name="storage-service-encryption-sse"></a>存储服务加密 (SSE)
 
-[Azure 存储服务加密](../articles/storage/common/storage-service-encryption.md) 可提供静态加密和保护你的数据，使你的组织能够信守在安全性与符合性方面所做的承诺。 默认情况下，所有托管磁盘都启用了 SSE，所有可用托管磁盘的区域都有快照和映像。 从 2017 年 6 月 10 日起，写入现有的托管磁盘中的所有新的托管磁盘/快照/映像和新数据都会通过 Microsoft 密钥管理自动静态加密。  有关详细信息请访问[托管磁盘常见问题解答页](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)。
+[Azure 存储服务加密](../articles/storage/common/storage-service-encryption.md) 可提供静态加密和保护你的数据，使你的组织能够信守在安全性与符合性方面所做的承诺。 默认情况下，所有托管磁盘都启用了 SSE，所有可用托管磁盘的区域都有快照和映像。 从 2017 年 6 月 10 日起，所有新的托管磁盘/快照/映像和写入到现有托管磁盘的新数据默认情况下都会使用由 Microsoft 托管的密钥自动静态加密。 你可以选择自带密钥来对 Azure Blob 和文件进行加密。 对表和队列的加密将始终使用 Microsoft 托管的密钥。
+请注意，在启用存储服务加密以后，只会对新数据进行加密，该存储帐户中的任何现有文件将由后台加密进程以追溯方式进行加密。 有关详细信息请访问[托管磁盘常见问题解答页](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)。
 
 
 ### <a name="azure-disk-encryption-ade"></a>Azure 磁盘加密 (ADE)

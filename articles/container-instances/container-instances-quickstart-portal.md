@@ -6,14 +6,14 @@ author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 03/19/2018
+ms.date: 04/02/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 18238c94ba9acff15497a666a63b65b95779d4ac
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: cb0c8c5f5730ae1f7a2e9b38c3ef3e04ee8cde67
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>快速入门：在 Azure 容器实例中创建第一个容器
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/17/2018
 
 ## <a name="create-a-container-instance"></a>创建容器实例
 
-选择“创建资源” > “容器” > “Azure 容器实例(预览版)”。
+选择“创建资源” > “容器” > “Azure 容器实例”。
 
 ![开始在 Azure 门户中创建新的容器实例][aci-portal-01]
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 03/17/2018
 
 ![Azure 门户中新的容器实例的创建进度][aci-portal-08]
 
-选择 mycontainer myc1 容器组，以显示该容器组的属性。 请记下该容器组的“IP 地址”，以及容器的“状态”。
+选择 mycontainer myc1 容器组，以显示该容器组的属性。 记下该容器组的“IP 地址”，以及容器的“状态”。
 
 ![Azure 门户中的容器组概述][aci-portal-06]
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 03/17/2018
 
 <!-- IMAGES -->
 [aci-portal-01]: ./media/container-instances-quickstart-portal/qs-portal-01.png
-[aci-portal-02]: ./media/container-instances-quickstart-portal/qs-portal-02.png
+<!--[aci-portal-02]: ./media/container-instances-quickstart-portal/qs-portal-02.png-->
 [aci-portal-03]: ./media/container-instances-quickstart-portal/qs-portal-03.png
 [aci-portal-04]: ./media/container-instances-quickstart-portal/qs-portal-04.png
 [aci-portal-05]: ./media/container-instances-quickstart-portal/qs-portal-05.png

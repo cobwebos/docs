@@ -1,11 +1,11 @@
 ---
-title: "Azure API 管理 API 导入中的限制和已知问题 | Microsoft Docs"
-description: "有关使用 Open API、WSDL 或 WADL 格式导入到 Azure API 管理的已知问题和限制的详细信息。"
+title: Azure API 管理 API 导入中的限制和已知问题 | Microsoft Docs
+description: 有关使用 Open API、WSDL 或 WADL 格式导入到 Azure API 管理的已知问题和限制的详细信息。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: vlvinogr
-editor: 
+editor: ''
 ms.assetid: 7a5a63f0-3e72-49d3-a28c-1bb23ab495e2
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: 758babce3ed387ed4864f1934650cf701bda788f
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: d4229a3ecbcf8aa044eb448290c243e9920bd5cb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
 ## <a name="about-this-list"></a>关于此列表
@@ -29,7 +29,10 @@ ms.lasthandoff: 12/04/2017
 
 * **主机名** APIM 需要主机名属性。
 * **基路径** APIM 需要基路径属性。
-* **方案** APIM 需要方案数组。 
+* **方案** APIM 需要方案数组。
+
+> [!IMPORTANT]
+> 有关与 OpenAPI 导入相关的重要信息和提示，请参阅[此文档](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/)。
 
 ## <a name="wsdl"></a>WSDL
 WSDL 文件用于生成 SOAP 直通 API，或用作 SOAP 到 REST API 的后端。

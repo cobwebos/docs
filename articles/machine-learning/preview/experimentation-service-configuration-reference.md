@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 75b55b45c355f585fd73bdc1d97bc6adbbc4e9a0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6cec039034f0650d017eb14de584939bb3191223
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure 机器学习试验服务配置文件
 
@@ -149,6 +149,8 @@ sharedVolumes：用于指示执行引擎应使用 Docker 共享卷功能来回�
 nativeSharedDirectory：此属性指定基目录（例如：_~/.azureml/share/_），可以在其中保存文件，以便在同一计算目标上运行时共享。 如果在 Docker 容器上运行时使用此设置，则 sharedVolumes 必须设置为 true。 否则，执行将失败。
 
 **userManagedEnvironment**：此属性指定该计算目标是直接由用户管理还是通过试验服务进行管理。  
+
+**pythonLocation**：此属性指定要在计算目标上用来执行用户的程序的 python 运行时的位置。 
 
 ### <a name="run-configuration-namerunconfig"></a>\<run configuration name>.runconfig
 _\<run configuration name>.runconfig_ 指定 Azure ML 试验执行行为。 可以配置执行行为，例如跟踪运行历史记录、要使用的计算目标，等等。 运行配置文件的名称用于填充 Azure ML Workbench 桌面应用程序中的执行上下文下拉列表。

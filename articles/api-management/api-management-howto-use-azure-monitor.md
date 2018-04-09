@@ -1,11 +1,11 @@
 ---
-title: "在 Azure API 管理中监视已发布的 API | Microsoft Docs"
-description: "遵循本教程的步骤了解如何在 Azure API 管理中监视 API。"
+title: 在 Azure API 管理中监视已发布的 API | Microsoft Docs
+description: 遵循本教程的步骤了解如何在 Azure API 管理中监视 API。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 445723242a76dcef4a6b137439728235d5d6e32a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 93cbcf91af4ecf9425ed43ade400a0c82cea72d8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -44,29 +44,6 @@ Azure Monitor 作为一项 Azure 服务，提供单一资源来监视所有 Azur
 + 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
-
-## <a name="diagnostic-logs"></a>查看活动日志
-
-活动日志提供针对 API 管理服务执行的操作的详细信息。 通过活动日志，可确定对 API 管理服务执行的任何写入操作 (PUT、POST、DELETE) 的“操作内容、操作人员和操作时间”。 
-
-> [!NOTE]
-> 活动日志不包括读取 (GET) 操作或者通过 Azure 门户或原始管理 API 执行的操作。
-
-可在 API 管理服务中访问活动日志，或在 Azure Monitor 中访问所有 Azure 资源的日志。 
-
-查看活动日志：
-
-1. 选择 APIM 服务实例。
-2. 单击“活动日志”。
-
-## <a name="view-diagnostic-logs"></a>查看诊断日志
-
-诊断日志提供大量有关操作和错误的信息，这些信息对审核和故障排除非常重要。 诊断日志不同于活动日志。 活动日志提供针对 Azure 资源执行的操作的详细信息。 诊断日志提供资源本身执行的操作的深入信息。
-
-访问诊断日志：
-
-1. 选择 APIM 服务实例。
-2. 单击“诊断日志”。
 
 ## <a name="view-metrics-of-your-apis"></a>查看 API 的指标
 
@@ -109,6 +86,118 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
     > 警报规则在触发后还可调用 Web 挂钩或 Azure 逻辑应用。
 
     ![set-up-alert](./media/api-management-azure-monitor/set-up-alert.png)
+
+## <a name="activity-logs"></a>活动日志
+
+活动日志提供针对 API 管理服务执行的操作的详细信息。 通过活动日志，可确定对 API 管理服务执行的任何写入操作 (PUT、POST、DELETE) 的“操作内容、操作人员和操作时间”。 
+
+> [!NOTE]
+> 活动日志不包括读取 (GET) 操作或者通过 Azure 门户或原始管理 API 执行的操作。
+
+可在 API 管理服务中访问活动日志，或在 Azure Monitor 中访问所有 Azure 资源的日志。 
+
+查看活动日志：
+
+1. 选择 APIM 服务实例。
+2. 单击“活动日志”。
+
+## <a name="diagnostic-logs"></a>诊断日志
+
+诊断日志提供大量有关操作和错误的信息，这些信息对审核和故障排除非常重要。 诊断日志不同于活动日志。 活动日志提供针对 Azure 资源执行的操作的详细信息。 诊断日志提供资源本身执行的操作的深入信息。
+
+若要配置诊断日志，请执行以下操作：
+
+1. 选择 APIM 服务实例。
+2. 单击“诊断日志”。
+3. 单击“启用诊断”。 可以将诊断日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Log Analytics。 
+
+API 管理当前提供有关单个 API 请求的诊断日志（每小时进行批处理），其中每个条目具有以下架构：
+
+```json
+{  
+    "isRequestSuccess" : "",
+    "time": "",   
+    "operationName": "",      
+    "category": "",   
+    "durationMs": ,   
+    "callerIpAddress": "",   
+    "correlationId": "",   
+    "location": "",      
+    "httpStatusCodeCategory": "",      
+    "resourceId": "",      
+    "properties": {   
+        "method": "", 
+        "url": "", 
+        "clientProtocol": "", 
+        "responseCode": , 
+        "backendMethod": "", 
+        "backendUrl": "", 
+        "backendResponseCode": ,
+        "backendProtocol": "",  
+        "requestSize": , 
+        "responseSize": , 
+        "cache": "", 
+        "cacheTime": "", 
+        "backendTime": , 
+        "clientTime": , 
+        "apiId": "",
+        "operationId": "", 
+        "productId": "", 
+        "userId": "", 
+        "apimSubscriptionId": "", 
+        "backendId": "",
+        "lastError": { 
+            "elapsed" : "", 
+            "source" : "", 
+            "scope" : "", 
+            "section" : "" ,
+            "reason" : "", 
+            "message" : ""
+        } 
+    }      
+}  
+```
+
+| 属性  | Type | 说明 |
+| ------------- | ------------- | ------------- |
+| isRequestSuccess | 布尔值 | 如果 HTTP 请求完成时，响应状态代码在 2xx 或 3xx 范围内，则为 true |
+| time | 日期时间 | 网关接收 HTTP 请求的时间戳 |
+| operationName | 字符串 | 常量值“'Microsoft.ApiManagement/GatewayLogs” |
+| category | 字符串 | 常量值“GatewayLogs” |
+| durationMs | integer | 从网关接收请求到响应全部发送出去的时间（毫秒） |
+| callerIpAddress | 字符串 | 直接网关调用方（可以是中介）的 IP 地址 |
+| correlationId | 字符串 | 由 API 管理分配的唯一 http 请求标识符 |
+| location | 字符串 | 处理请求的网关所在 Azure 区域的名称 |
+| httpStatusCodeCategory | 字符串 | Http 响应状态代码的类别：成功（301 或以下，或者 304 或 307）、未授权（401、403、429）、错误（400、500 到 600）、其他 |
+| resourceId | 字符串 | API 管理资源 /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> 的 ID |
+| 属性 | 对象 | 当前请求的属性 |
+| 方法 | 字符串 | 传入请求的 HTTP 方法 |
+| url | 字符串 | 传入请求的 URL |
+| clientProtocol | 字符串 | 传入请求的 HTTP 协议版本 |
+| responseCode | integer | 发送到客户端的 HTTP 响应的状态代码 |
+| backendMethod | 字符串 | 发送到后端的请求的 HTTP 方法 |
+| backendUrl | 字符串 | 发送到后端的请求的 URL |
+| backendResponseCode | integer | 从后端接收的 HTTP 响应的代码 |
+| backendProtocol | 字符串 | 发送到后端的请求的 HTTP 协议版本 | 
+| requestSize | integer | 在请求处理过程中从客户端接收的字节数 | 
+| responseSize | integer | 在请求处理过程中发送到客户端的字节数 | 
+| cache | 字符串 | 在请求处理过程中涉及的 API 管理缓存的状态（即命中、未命中、无） | 
+| cacheTime | integer | 花在整个 API 管理缓存 IO（连接、发送和接收字节）上的时间（毫秒） | 
+| backendTime | integer | 花在整个后端 IO（连接、发送和接收字节）上的时间（毫秒） | 
+| clientTime | integer | 花在整个客户端 IO（连接、发送和接收字节）上的时间（毫秒） | 
+| apiId | 字符串 | 当前请求的 API 实体标识符 | 
+| operationId | 字符串 | 当前请求的操作实体标识符 | 
+| productId | 字符串 | 当前请求的产品实体标识符 | 
+| userId | 字符串 | 当前请求的用户实体标识符 | 
+| apimSubscriptionId | 字符串 | 当前请求的订阅实体标识符 | 
+| backendId | 字符串 | 当前请求的后端实体标识符 | 
+| LastError | 对象 | 上一个请求处理错误 | 
+| 已用时间 | integer | 从网关接收请求到发生错误的时间（毫秒） | 
+| 源 | 字符串 | 导致错误的策略或内部处理程序的名称 | 
+| 作用域 | 字符串 | 导致错误的策略所在策略文档的范围 | 
+| section | 字符串 | 导致错误的策略所在策略文档的节 | 
+| 原因 | 字符串 | 错误原因 | 
+| message | 字符串 | 错误消息 | 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights 对多个组件、微服务和容器的支持 | Microsoft Docs"
-description: "监视由多个组件或角色组成的应用的性能和使用情况。"
+title: Azure Application Insights 对多个组件、微服务和容器的支持 | Microsoft Docs
+description: 监视由多个组件或角色组成的应用的性能和使用情况。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 046661bf7903b4e5ea528282ad5170901a45b35c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 9b03aff140eec5b355383447f0a815220d6408e3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>使用 Application Insights（预览版）监视多组件应用程序
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/01/2017
 
 * 在应用程序的每个组件中安装最新预发行 Application Insights 包。 
 * 对应用程序的所有组件共享单个 Application Insights 资源。
-* 在“预览”边栏选项卡中**启用多角色应用程序映射**。
+* 在“预览”边栏选项卡中**启用复合应用程序映射**。
 
 根据应用程序的类型使用相应的方法配置应用程序的每个组件。 （[ASP.NET](app-insights-asp-net.md)、[Java](app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md) 和 [JavaScript](app-insights-javascript.md)。）
 
@@ -73,9 +73,9 @@ ms.lasthandoff: 11/01/2017
 ![将检测密钥复制到 .config 文件](./media/app-insights-monitor-multi-role-apps/copy-instrumentation-key.png)
 
 
-### <a name="3-enable-multi-role-application-map"></a>3.启用多角色应用程序映射
+### <a name="3-enable-composite-application-map"></a>3.启用复合应用程序映射
 
-在 Azure 门户中打开应用程序的资源。 在“预览”边栏选项卡中启用“多角色应用程序映射”。
+在 Azure 门户中打开应用程序的资源。 在“配置”子标题下，单击“预览”以打开“预览”边栏选项卡。 在“预览”边栏选项卡中，启用*复合应用程序映射*。
 
 ### <a name="4-enable-docker-metrics-optional"></a>4.启用 Docker 指标（可选） 
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure 存储迁移常见问题解答 | Microsoft 文档"
-description: "有关迁移 Azure 存储的常见问题解答"
+title: Azure 存储迁移常见问题解答 | Microsoft 文档
+description: 有关迁移 Azure 存储的常见问题解答
 services: storage
 documentationcenter: na
 author: genlin
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/16/2017
 ms.author: genli
-ms.openlocfilehash: 362614d28cf62bd288d8aff10539c81381474955
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 89d1a4767c240c7e4fedb9d7ac47d6d4fb0aa737
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>有关 Azure 存储迁移的常见问题
 
@@ -168,7 +168,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 如何将存储帐户的辅助位置更改为欧洲区域？
 
-创建存储帐户时，可以为帐户选择主要区域。 选择次要区域是根据主要区域确定的且无法更改。 有关详细信息，请参阅 [Azure 存储复制](storage-redundancy.md)。
+创建存储帐户时，可以为帐户选择主要区域。 选择次要区域是根据主要区域确定的且无法更改。 有关详细信息，请参阅[异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy.md)。
 
 我在哪里可以获得有关 Azure 存储服务加密 (SSE) 的更多信息？  
   
@@ -284,7 +284,7 @@ AzCopy 安装在什么位置？
 
     - **SAS 令牌**：使用 SAS 令牌访问终结点中的数据。 有关详细信息，请参阅[使用共享访问签名](storage-dotnet-shared-access-signature-part-1.md)。
 
-**如何结合使用我的存储帐户和 HTTPS 自定义域？**例如，如何使“https://mystorageaccountname.blob.core.windows.net/images/image.gif”显示为“https://www.contoso.com/images/image.gif”？
+**如何结合使用我的存储帐户和 HTTPS 自定义域？例如，如何使“https://mystorageaccountname.blob.core.windows.net/images/image.gif”显示为“https://www.contoso.com/images/image.gif”？**
 
 使用自定义域的存储帐户当前不支持 SSL。
 但你可以使用非 HTTPS 自定义域。 有关详细信息，请参阅[为 Blob 存储终结点配置自定义域名](../blobs/storage-custom-domain-name.md)。

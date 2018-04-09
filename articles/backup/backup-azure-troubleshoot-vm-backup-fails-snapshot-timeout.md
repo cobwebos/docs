@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: a18718aba3ef7f70caa541c6eb56311082d02bed
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 81678f6a8659ffb763ebfe418098e510c73f6ae0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -78,21 +78,6 @@ ms.lasthandoff: 03/09/2018
 **原因 4：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 5：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
 **原因 6：[备份服务因资源组锁定而无权删除旧的还原点](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
-
-## <a name="disk-configuration-is-not-supported"></a>磁盘配置不受支持
-
-错误消息：“不支持指定的磁盘配置”
-
-> [!NOTE]
-> 我们提供了个人预览版以支持包含 1 TB 以上磁盘的 VM 备份。 有关详细信息，请参阅[支持大型磁盘 VM 备份的专用预览版](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)。
->
->
-
-Azure 备份目前不支持[大于 1,023 GB](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm) 的磁盘。 如果磁盘大于 1 TB：  
-1. [附加小于 1 TB 的新磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)。  
-2. 将大于 1 TB 的磁盘中的数据复制到新建的小于 1 TB 的磁盘。  
-3. 确保已复制所有数据。 然后删除大于 1 TB 的磁盘。  
-4. 启动备份。
 
 ## <a name="causes-and-solutions"></a>原因和解决方法
 

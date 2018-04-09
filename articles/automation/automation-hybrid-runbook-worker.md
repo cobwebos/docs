@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/21/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 157db4a9de41c9895d39469d3d42a45c1a929649
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b317a2d9241016b66651af4659c7daf2e8d8f2cc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 
@@ -38,7 +38,7 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 
 可以使用以下条件来确定是带有混合 Runbook 辅助角色的 Azure 自动化还是 Service Management 自动化更适合要求。
 
-* 如果需要图形管理界面，SMA 要求在本地安装与 Windows Azure Pack 连接的基础组件。 SMA 需要其他一些本地资源，这些资源的维护成本高于 Azure 自动化，后者只需在本地 Runbook 辅助角色中安装一个代理。 代理由 Operations Management Suite 管理，这进一步降低了维护成本。
+* 如果需要图形管理界面，SMA 要求在本地安装与 Windows Azure Pack 连接的基础组件。 SMA 需要其他一些本地资源，这些资源的维护成本高于 Azure 自动化，后者只需在本地 Runbook 辅助角色中安装一个代理。 代理由 Azure 管理，这进一步降低了维护成本。
 * Azure 自动化在云中存储其 Runbook，并将这些 Runbook 传送给本地混合 Runbook 辅助角色。 如果安全策略不允许此行为，则应使用 SMA。
 * System Center 随附了 SMA；因此，需要 System Center 2012 R2 的许可证。 Azure 自动化基于分层订阅模型。
 * Azure 自动化包含 SMA 所不能提供的一些高级功能，例如图形 Runbook。
@@ -92,27 +92,25 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 
 针对自动化环境执行前两个步骤一次，并对每台辅助角色计算机重复其余步骤。
 
-#### <a name="1-create-operations-management-suite-workspace"></a>1.创建 Operations Management Suite 工作区
+#### <a name="1-create-log-analytics-workspace"></a>1.创建 Log Analytics 工作区
+如果尚无 Log Analytics 工作区，请按照[管理工作区](../log-analytics/log-analytics-manage-access.md)中的说明创建工作区。 如果已经有一个工作区，则可以使用现有的。
 
-如果尚无 Operations Management Suite 工作区，请按照[管理工作区](../log-analytics/log-analytics-manage-access.md)中的说明创建工作区。 如果已经有一个工作区，则可以使用现有的。
+#### <a name="2-add-automation-solution-to-log-analytics-workspace"></a>2.向 Log Analytics 工作区添加自动化解决方案
 
-#### <a name="2-add-automation-solution-to-operations-management-suite-workspace"></a>2.将自动化解决方案添加到 Operations Management Suite 工作区
+解决方案向 Log Analytics 添加功能。 自动化解决方案增加 Azure 自动化的功能，包括支持混合 Runbook 辅助角色。 将解决方案添加到工作区时，它会自动将辅助角色组件往下推送到在下一步要安装的代理计算机。
 
-解决方案将功能添加到 Operations Management Suite。 自动化解决方案增加 Azure 自动化的功能，包括支持混合 Runbook 辅助角色。 将解决方案添加到工作区时，它会自动将辅助角色组件往下推送到在下一步要安装的代理计算机。
-
-请根据[使用解决方案库添加解决方案](../log-analytics/log-analytics-add-solutions.md)中的说明，将**自动化**解决方案添加到 Operations Management Suite 工作区。
+请根据[使用解决方案库添加解决方案](../log-analytics/log-analytics-add-solutions.md)中的说明，将**自动化**解决方案添加到 Log Analytics 工作区。
 
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>3.安装 Microsoft Monitoring Agent
-
-Microsoft Monitoring Agent 可将计算机连接到 Operations Management Suite。 在本机计算机安装代理并将其连接到工作区时，代理会下载混合 Runbook 辅助角色所需的组件。
+Microsoft Monitoring Agent 可将计算机连接到 Log Analytics。 在计算机本地安装代理并将其连接到工作区时，代理会自动下载混合 Runbook 辅助角色所需的组件。
 
 按照[将 Windows 计算机连接到 Log Analytics](../log-analytics/log-analytics-windows-agent.md) 中的说明在本地计算机上安装代理。 可以对多台计算机重复此过程，以将多个辅助角色添加到环境。
 
-代理成功连接到 Operations Management Suite 后，将在 Operations Management Suite“设置”窗格的“已连接的源”选项卡上列出。 当 C:\Program Files\Microsoft Monitoring Agent\Agent 中出现名为 **AzureAutomationFiles** 的文件夹时，可确认代理已正确下载自动化解决方案。 若要确认混合 Runbook 辅助角色的版本，可以导航到 C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ 并留意 \\*version* 子文件夹。
+当 C:\Program Files\Microsoft Monitoring Agent\Agent 中出现名为 **AzureAutomationFiles** 的文件夹时，可确认代理已正确下载自动化解决方案。 若要确认混合 Runbook 辅助角色的版本，可以导航到 C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\ 并留意 \\*version* 子文件夹。  
 
 #### <a name="4-install-the-runbook-environment-and-connect-to-azure-automation"></a>4.安装 Runbook 环境并连接到 Azure 自动化
 
-将代理添加到 Operations Management Suite 时，自动化解决方案会向下推送 **HybridRegistration** PowerShell 模块，其中包含 **Add-HybridRunbookWorker** cmdlet。 使用此 cmdlet 将 Runbook 环境安装到计算机上，并将其注册到 Azure 自动化。
+将代理添加到 Log Analytics 时，自动化解决方案会向下推送 **HybridRegistration** PowerShell 模块，其中包含 **Add-HybridRunbookWorker** cmdlet。 使用此 cmdlet 将 Runbook 环境安装到计算机上，并将其注册到 Azure 自动化。
 
 若要导入模块，请在管理员模式下打开 PowerShell 会话，并运行以下命令：
 

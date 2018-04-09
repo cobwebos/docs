@@ -1,24 +1,19 @@
 ---
-title: Azure 应用程序网关常见问题 | Microsoft 文档
+title: Azure 应用程序网关常见问题
 description: 本页提供有关 Azure 应用程序网关常见问题的解答
-documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: d54ee7ec-4d6b-4db7-8a17-6513fda7e392
+author: vhorne
+manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/19/2017
-ms.author: davidmu
-ms.openlocfilehash: 5b400b373577fc38fe108a74eb8bad936a82be0c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 3/29/2018
+ms.author: victorh
+ms.openlocfilehash: b4b627d16414ea7e4553a18e6620fba60e95ec91
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>应用程序网关常见问题
 
@@ -38,7 +33,19 @@ Azure 应用程序网关是服务形式的应用程序传送控制器 (ADC)，�
 
 **问：应用程序网关支持哪些协议？**
 
-应用程序网关支持 HTTP、HTTPS 和 WebSocket。
+应用程序网关支持 HTTP、HTTPS、HTTP/2 和 WebSocket。
+
+**问：应用程序网关如何支持 HTTP/2？**
+
+仅针对连接到应用程序网关侦听程序的客户端提供了 HTTP/2 协议支持。 与后端服务器池的通信是通过 HTTP/1.1 进行的。 
+
+默认情况下，HTTP/2 支持处于禁用状态。 以下 Azure PowerShell 代码片段示例展示了如何启用该支持：
+
+```
+$gw = Get-AzureRmApplicationGateway -Name test -ResourceGroupName hm
+$gw.EnableHttp2 = $true
+Set-AzureRmApplicationGateway -ApplicationGateway $gw
+```
 
 **问：目前支持在后端池中添加哪些资源？**
 
@@ -314,7 +321,7 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 **问：是否可以使用应用程序网关设置警报？**
 
-可以，应用程序网关确实支持警报。可以基于指标设置警报。  应用程序网关目前提供“吞吐量”指标，可以使用它来配置警报。 若要了解有关警报的详细信息，请访问 [Receive alert notifications](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)（接收警报通知）。
+可以，应用程序网关确实支持警报。可以基于指标设置警报。 应用程序网关目前提供“吞吐量”指标，可以使用它来配置警报。 若要了解有关警报的详细信息，请访问 [Receive alert notifications](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)（接收警报通知）。
 
 **问：后端运行状况返回未知状态，什么原因导致此状态？**
 

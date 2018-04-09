@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 77c48a22f974e027b4e8858d5e38018bbf5bb54f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3f57eb3ede3b57e28c13e053b86ab022fdd21b7e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>用于 ASP.NET Core 的 Application Insights
 
@@ -95,7 +95,7 @@ Application Insights 的系统开销很低。 通过添加 Application Insights 
 
 1. 单击 IIS Express 运行应用 ![Visual Studio 中 IIS Express 图标的屏幕截图](./media/app-insights-asp-net-core/0012-iis-express.png)
 
-2. 复制浏览器地址栏中的 URL。 该 URL 采用 http://localhost:{随机端口号} 格式
+2. 复制浏览器地址栏中的 URL。 它采用以下格式：http://localhost:{random 端口号}
 
    ![浏览器 URL 地址栏的屏幕截图](./media/app-insights-asp-net-core/0013-copy-url.png)
 
@@ -159,7 +159,7 @@ Application Insights 的系统开销很低。 通过添加 Application Insights 
    ```
      ![_ViewImports.cshtml 中的代码更改屏幕截图](./media/app-insights-asp-net-core/00018-view-imports.png)
 
-3. 在 **Layout.cshtml** 中的 ``</head>`` 标记前面添加以下行。该行必须添加在其他任何脚本的前面。
+3. 在 **_Layout.cshtml** 中的 ``</head>`` 标记前面添加以下行。该行必须添加在其他任何脚本的前面。
 
     ```C#
     @Html.Raw(snippet.FullScript)

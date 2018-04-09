@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 476dc5fb8a5d9fb7fbcee898517455c52a3a9d73
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 309a64c47eb95ca2ca05bb82bc1c41256305823d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动调用 SSIS 包
 本文介绍如何使用存储过程活动从 Azure 数据工厂管道中调用 SSIS 包。 
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/23/2018
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="azure-sql-database"></a>Azure SQL 数据库 
-本文中的演练使用托管 SSIS 目录的 Azure SQL 数据库。 还可使用 Azure SQL 托管实例（个人预览版）。
+本文中的演练使用托管 SSIS 目录的 Azure SQL 数据库。 还可使用 Azure SQL 托管实例（预览版）。
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>创建 Azure-SSIS 集成运行时
 如果还没有 Azure-SSIS 集成运行时，请按照[教程：部署 SSIS 包](../tutorial-create-azure-ssis-runtime-portal.md)中的分步说明创建一个。 要创建 Azure-SSIS 集成运行时，必须先创建数据工厂版本 2。 

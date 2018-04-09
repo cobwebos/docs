@@ -1,12 +1,12 @@
 ---
-title: "将 Azure 虚拟机故障转移到另一个 Azure 区域时保留 IP 地址 | Microsoft Docs"
-description: "介绍在使用 Azure Site Recovery 进行 Azure 到 Azure 的故障转移方案时如何保留 IP 地址"
+title: 将 Azure 虚拟机故障转移到另一个 Azure 区域时保留 IP 地址 | Microsoft Docs
+description: 介绍在使用 Azure Site Recovery 进行 Azure 到 Azure 的故障转移方案时如何保留 IP 地址
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 15f87ba87d90cee765f52d3188796bc1ff7b8a35
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 8e128e057e45f6966067ebaaf039d9b14349d926
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>为 Azure 虚拟机故障转移保留 IP 地址
 
@@ -84,11 +84,7 @@ Azure Site Recovery 支持对 Azure VM 进行灾难恢复。 在从一个 Azure 
 
 ### <a name="further-considerations"></a>其他注意事项
 
-VPN 网关利用公共 IP 地址和网关跃点建立连接。 如果不想要使用公共 IP 和/或想要避免额外的跃点，可以使用全局 VNet 对等互连在 Azure 区域之间建立虚拟网络对等互连。
-
-此功能目前以公共预览版提供，正在扩展到更多支持区域 - 它可以实现直接的 VM 到 VM 连接，且无需任何公共 Internet 或额外的跃点。
-
-有关详细信息，请参阅[对等互连文档](../virtual-network/tutorial-connect-virtual-networks-portal.md#register)和[定价](https://azure.microsoft.com/pricing/details/virtual-network/)。
+VPN 网关利用公共 IP 地址和网关跃点建立连接。 如果不想使用公用 IP 并/或希望避免额外的跃点，可以使用 Azure [虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)在[受支持的 Azure 区域](../virtual-network/virtual-network-manage-peering.md#cross-region)之间将虚拟网络对等互连。
 
 ## <a name="on-premises-to-azure-connectivity"></a>本地到 Azure 的连接
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
-ms.openlocfilehash: cf93c95a37c9c32333727059317e05cfcc252905
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9ea7da35acefc139625e71904c8aa1b01b87e4df
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>在 Azure Monitor 中为 Azure 服务创建经典指标警报 - 跨平台 CLI
 > [!div class="op_single_selector"]
@@ -30,11 +30,11 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="overview"></a>概述
 > [!NOTE]
-> 本文介绍如何创建较早的指标警报。 Azure Monitor 现在支持[较新、更好的指标警报](monitoring-near-real-time-metric-alerts.md)。 这些警报可监视多个指标，并允许对维度指标发出警报。 即将推出支持较新指标警报的 CLI。
+> 本文介绍了如何创建较早的经典指标警报。 Azure Monitor 现在支持[较新、更好的指标警报](monitoring-near-real-time-metric-alerts.md)。 这些警报可监视多个指标，并允许对维度指标发出警报。 即将推出支持较新指标警报的 CLI。
 >
 >
 
-本文介绍如何使用跨平台命令行接口 (CLI) 设置 Azure 指标警报。
+本文介绍了如何使用跨平台命令行接口 (CLI) 设置 Azure 经典指标警报。
 
 > [!NOTE]
 > 自 2016 年 9 月 25 日起，“Azure Insights”更名为 Azure 监视器。 但是，命名空间及其下命令仍包含“insights”。
@@ -46,14 +46,14 @@ ms.lasthandoff: 03/23/2018
 * **指标值** - 指定指标的值超过在任一方向分配的阈值时，将触发警报。 也就是说，当首次满足条件时，以及之后不再满足条件时，都会触发此警报。    
 * **活动日志事件** - 发生每个事件，或仅当出现特定事件时触发警报。 若要深入了解活动日志警报，请[单击此处](monitoring-activity-log-alerts.md)
 
-可配置指标警报，使警报触发时执行以下操作：
+可配置经典指标警报，使警报触发时执行以下操作：
 
 * 向服务管理员和共同管理员发送电子邮件通知
 * 将电子邮件发送到指定的其他电子邮件。
 * 调用 Webhook
 * 开始执行 Azure Runbook（当前仅从 Azure 门户）
 
-可使用以下项配置指标并获取有关指标警报规则的信息
+可使用以下项配置和获取有关经典指标警报规则的信息
 
 * [Azure 门户](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
@@ -112,7 +112,7 @@ ms.lasthandoff: 03/23/2018
     azure insights alerts rule metric set myrule eastus myreasourcegroup PT5M GreaterThan 2 /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename BytesReceived Total
 
     ```
-5. 若要在指标警报触发时创建 webhook 或发送电子邮件，首先要创建电子邮件和/或 webhook。 然后立即创建规则。 如果已使用 CLI 创建规则，将无法关联 webhook 或电子邮件。
+5. 若要在经典指标警报触发时创建 webhook 或发送电子邮件，首先要创建电子邮件和/或 webhook。 然后立即创建规则。 如果已使用 CLI 创建规则，将无法关联 webhook 或电子邮件。
 
     ```console
     azure insights alerts actions email create --customEmails myemail@contoso.com

@@ -1,6 +1,6 @@
 ---
 title: 将 Azure 自动化作业数据转发到 Log Analytics
-description: 本文演示如何将作业状态和 Runbook 作业流发送到 Microsoft Operations Management Suite Log Analytics，以提供附加见解和管理信息。
+description: 本文展示了如何将作业状态和 Runbook 作业流发送到 Azure Log Analytics，以提供更多见解和管理信息。
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c9b604b0fc7a3524686bec6832a19ee9f85f6ed2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 116096fb27af299545a0f9a6adf57d794bbb2f6e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>将作业状态和作业流从自动化转发到 Log Analytics
 自动化可以将 Runbook 作业状态和作业流发送到 Log Analytics 工作区。 可在 Azure 门户中或使用 PowerShell 查看单个作业的作业日志和作业流，这使用户可执行简单的调查。 现在，使用 Log Analytics，可以：

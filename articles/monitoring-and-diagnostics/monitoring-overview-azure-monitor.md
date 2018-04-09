@@ -1,25 +1,25 @@
 ---
-title: "Azure Monitor 概述 | Microsoft Docs"
-description: "Azure Monitor 可收集用于警报、webhook、自动缩放以及自动化的统计信息。 本文还列出其他 Microsoft 监视选项。"
+title: Azure Monitor 概述 | Microsoft Docs
+description: Azure Monitor 可收集用于警报、webhook、自动缩放以及自动化的统计信息。 本文还列出其他 Microsoft 监视选项。
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 03/28/2018
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: ed9ace24778f000b42013cc0ce4d7dacf4a1d4fb
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 448711b7b2e102662bc157485561c33bf7f5fba1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-azure-monitor"></a>Azure Monitor 概述
 本文概述了 Microsoft Azure 中的 Azure Monitor 服务。 它讨论了 Azure Monitor 可以执行的工作并指出了可以在哪里找到有关如何使用 Azure Monitor 的其他信息。  如果喜欢观看视频介绍，请参阅本文底部“后续步骤”部分中的链接。 
@@ -35,15 +35,13 @@ Azure Monitor 的登录页有助于用户：
 - 了解 Azure 提供的监视功能。
 - 发现、配置和载入 Azure 的平台和高级监视功能。
 
-虽然 Azure Monitor 服务已发布，登录概述页仍处于预览状态。 
-
 此页是导航的起点，包括载入。 该页显示来自不同服务且值得注意的特选问题，用户可在上下文中导航到这些问题。
  
 ![非计算资源的监视和诊断模型](./media/monitoring-overview-azure-monitor/monitor-overview-ux2.png)
 
 打开页面时，可在有权读取的订阅之间进行选择。 对于所选订阅，可看到：
 
-- 已触发的警报和警报源 - 此表显示摘要计数、警报源以及所选时间段触发的警报次数。 它同时适用于指标警报和活动日志警报。 *<编辑：还针对所有警报（事件、指标和日志）显示了具有统一体验的警报（预览）>*
+- 已触发的警报和警报源 - 此表显示摘要计数、警报源以及所选时间段触发的警报次数。 它同时适用于较旧和较新的警报。 阅读有关[较新的 Azure 警报](monitoring-overview-unified-alerts.md)的详细信息。 
 - 活动日志错误 - 如果任何 Azure 资源日志事件具有严重错误级别，可查看高级计数并单击进入活动日志页来调查每个事件。
 - Azure 服务运行状况 - 可查看服务运行状况服务问题、计划内维护事件和运行状况咨询数。 当 Azure 基础结构中的问题影响到个人的服务时，Azure 服务运行状况会提供个性化的信息。  有关详细信息，请参阅 [Azure 服务运行状况](../service-health/service-health-overview.md)。  
 - Application Insights - 查看当前订阅中每个 AppInsights 资源的 KPI。 KPI 进行了优化，用于在 ASP.NET Web 应用、Java、节点和常规跨应用程序类型间进行服务器端应用程序监视。 KPI 包括请求速率、响应持续时间、故障率和可用性 % 的指标。 
@@ -143,12 +141,12 @@ Azure Monitor 的登录页有助于用户：
 
 ### <a name="automate"></a>自动化
 > [!NOTE]
-> 随着 Microsoft Azure 上的警报功能的不断发展，现在用于发出警报的统一体验正处于预览状态。 有关 [Azure 警报（预览）](monitoring-overview-unified-alerts.md)的更多详细信息
+> 随着 Microsoft Azure 上的警报功能的不断发展，现在推出了针对警报的统一体验。 有关[新的 Azure 警报](monitoring-overview-unified-alerts.md)的更多详细信息
 
-在标准 Azure 警报中，可以使用监视数据触发警报或甚至整个过程。 示例包括：
+在 Azure 警报中，可以使用监视数据来触发警报甚至整个流程。 示例包括：
 
 * 使用数据根据应用程序负载自动缩放计算实例数。
-* 当某个指标超出预定阈值时发送电子邮件。
+* 基于指标或日志条件发送电子邮件。 
 * 调用 Web URL (webhook)，在 Azure 外部系统中执行操作。
 * 在 Azure 自动化中启动 Runbook，执行各种任务
 

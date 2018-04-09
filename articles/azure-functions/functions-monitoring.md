@@ -1,12 +1,12 @@
 ---
-title: "监视 Azure Functions"
-description: "了解如何将 Azure Application Insights 和 Azure Functions 结合使用来监视函数执行。"
+title: 监视 Azure Functions
+description: 了解如何将 Azure Application Insights 和 Azure Functions 结合使用来监视函数执行。
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构"
+editor: ''
+tags: ''
+keywords: Azure Functions, Functions, 事件处理, webhook, 动态计算, 无服务体系结构
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.service: functions
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: d2a61f5f51e3c4a1de6baa79493cb2c7380c76b6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 5b141924266630bfd3b63ec5129f9f225da3170b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -141,7 +141,7 @@ traces
 
 无需进行任何自定义配置即可使用 Application Insights，但默认配置可能会导致大量数据。 如果使用的是 Visual Studio Azure 订阅，可能会达到 Application Insights 的数据上限。 本文的剩余部分将演示如何配置和自定义函数发送到 Application Insights 的数据。
 
-### <a name="categories"></a>Categories
+### <a name="categories"></a>类别
 
 对于每个日志，Azure Functions 记录器都包含一个类别。 类别指示运行时代码或函数代码的哪个部分编写日志。 
 
@@ -493,7 +493,7 @@ module.exports = function (context, req) {
 
 ### <a name="logging-to-storage"></a>记录到存储
 
-内置日志记录使用 `AzureWebJobsDashboard` 应用设置中的连接字符串所指定的存储帐户。 如果配置了该应用设置，可以在 Azure 门户中看到日志记录数据。 在函数应用页中，选择某个函数，然后选择“监视”选项卡，并获取函数执行的列表。 选择某个函数执行可查看持续时间、输入数据、错误和关联的日志文件。
+内置日志记录使用 `AzureWebJobsDashboard` 应用设置中的连接字符串所指定的存储帐户。 如果配置了该应用设置，可以在 Azure 门户中看到日志记录数据。 在“存储”资源中，转到“文件”，选择函数的文件服务，然后转到 `LogFiles > Application > Functions > Function > your_function` 来查看日志文件。 在函数应用页中，选择某个函数，然后选择“监视”选项卡，并获取函数执行的列表。 选择某个函数执行可查看持续时间、输入数据、错误和关联的日志文件。
 
 如果使用 Application Insights 并[禁用了内置日志记录](#disable-built-in-logging)，“监视”选项卡会将你带到 Application Insights。
 

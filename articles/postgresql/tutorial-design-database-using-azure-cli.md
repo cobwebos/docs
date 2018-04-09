@@ -1,5 +1,5 @@
 - 标题：“教程：使用 Azure CLI 设计 Azure Database for PostgreSQL” 描述：本教程演示如何使用 Azure CLI 创建、配置和查询首个 Azure Database for PostgreSQL 服务器。
-services: postgresql author: rachel-msft ms.author: raagyema manager: kfile editor: jasonwhowell ms.service: postgresql ms.custom: mvc ms.devlang: azure-cli ms.topic: tutorial ms.date: 03/20/2018
+services: postgresql author: rachel-msft ms.author: raagyema manager: kfile editor: jasonwhowell ms.service: postgresql ms.custom: mvc ms.devlang: azure-cli ms.topic: tutorial ms.date: 04/01/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for PostgreSQL 
 在本教程中，需使用 Azure CLI（命令行接口）以及其他实用工具了解如何完成以下操作：
@@ -45,11 +45,11 @@ az extension list
 {
     "extensionType": "whl",
     "name": "rdbms",
-    "version": "0.0.4"
+    "version": "0.0.5"
 }
 ```
 
-如果未返回版本 0.0.4，请运行以下命令，对扩展进行更新： 
+如果未返回版本 0.0.5，请运行以下命令来更新扩展： 
 ```azurecli-interactive
 az extension update --name rdbms
 ```

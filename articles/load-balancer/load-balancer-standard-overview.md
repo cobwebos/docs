@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: d7ee74a19f806faed0bcfcfa5f1c5de3937d9f31
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b5443cb1d883bd829a13b6d941d2c87c6205c64f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Azure 负载均衡器标准版概述
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/28/2018
 
 标准负载均衡器是适用于所有 TCP 和 UDP 应用程序的新型负载均衡器产品，与基本负载均衡器相比拥有更广泛和精细的功能集。  尽管两者有许多相似之处，但请务必熟悉本文中所述的差异。
 
-可将标准负载均衡器标准版用作公共或内部负载均衡器。 虚拟机可以连接到一个公共负载均衡器资源和一个内部负载均衡器资源。
+可将标准负载均衡器用作公共或内部负载均衡器。 虚拟机可以连接到一个公共负载均衡器资源和一个内部负载均衡器资源。
 
 负载均衡器资源的功能始终表示为前端、规则、运行状况探测和后端池定义。  资源可以包含多项规则。 可通过从虚拟机的 NIC 资源指定后端池，将虚拟机放入其中。  对于虚拟机规模集，该参数通过网络配置文件传递并进行扩展。
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/28/2018
 负载均衡器资源是一些对象，可在其中表述 Azure 应如何设定其多租户基础结构，以实现想要创建的场景。  负载均衡器资源与实际基础结构之间不存在直接的关系，创建负载均衡器不会创建实例，可始终使用容量，且无需考虑启动或缩放延迟。 
 
 >[!NOTE]
-> Azure 为方案提供了一套完全托管的负载均衡解决方案。  如果寻找 TLS 终止（“SSL 卸载”）或每个 HTTP/HTTPS 请求的应用层处理，请查看[应用程序网关](../application-gateway/application-gateway-introduction.md)。  如果寻找全局 DNS 负载均衡，请查看[流量管理器](../traffic-manager/traffic-manager-overview.md)。  端到端方案可从结合所需的解决方案中受益。
+> Azure 为方案提供了一套完全托管的负载均衡解决方案。  若要寻求 TLS 终止（“SSL 卸载”）或每个 HTTP/HTTPS 请求的应用层处理，请查看[应用程序网关](../application-gateway/application-gateway-introduction.md)。  若要寻求全局 DNS 负载均衡，请查看[流量管理器](../traffic-manager/traffic-manager-overview.md)。  端到端方案可从结合所需的解决方案中受益。
 
 ## <a name="why-use-standard-load-balancer"></a>为何使用标准负载均衡器？
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 03/28/2018
 
 | | 标准 SKU | 基本 SKU |
 | --- | --- | --- |
-| 后端池大小 | 多达 1000 个实例 | 多达 100 个实例 |
+| 后端池大小 | 最多 1000 个实例 | 最多 100 个实例 |
 | 后端池终结点 | 一个虚拟网络中的任何虚拟机，包括虚拟机、可用性集和虚拟机规模集的混合。 | 一个可用性集或虚拟机规模集中的虚拟机 |
 | 可用性区域 | 入站和出站的区域冗余和区域前端，出站流映射在发生区域故障后仍保留，跨区域负载均衡 | / |
 | 诊断 | Azure Monitor、多维度指标（包括字节和数据包计数器）、运行状况探测状态、连接尝试 (TCP SYN)、出站连接运行状况（SNAT 成功和失败流）、活动数据平面度量 | 仅用于公共负载均衡器的 Azure Log Analytics、SNAT 耗尽警报、后端池运行状况计数 |
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/28/2018
 | 默认保护 | 在默认情况下，对公共 IP 和负载均衡器终结点关闭，网络安全组必须用于显式允许列表，以便流量流动 | 默认打开，可选网络安全组 |
 | 出站连接 | 多个前端，可根据每个规则选择禁用。必须显式创建出站方案，以便虚拟机能够使用出站连接。  [VNet 服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)无需出站连接便可访问，且不会计入处理的数据。  任何公共 IP 地址（包括不作为 VNet 服务终结点提供的 Azure PaaS 服务）必须通过出站连接才能访问，且计入处理的数据。 如果只有一个内部负载均衡器向虚拟机提供服务，通过默认 SNAT 的出站连接将不可用。 出站 SNAT 编程特定于传输协议，并以入站负载均衡规则的协议为基础。 | 单个前端，存在多个前端时随机选择。  如果仅内部负载均衡器向虚拟机提供服务，则使用默认 SNAT。 |
 | 多个前端 | 入站和出站 | 仅限入站 |
-| 管理操作 | 大多数操作都小于 30 秒 | 典型为 60 - 90 多秒 |
+| 管理操作 | 大多数操作都小于 30 秒 | 通常为 60 - 90 多秒 |
 | SLA | 对拥有两个正常运行的虚拟机的数据路径为 99.99% | 在 VM SLA 中为隐式 | 
 | 定价 | 基于规则数、与资源关联且经过入站或出站处理的数据量进行计费  | 免费 |
 
@@ -76,9 +76,6 @@ ms.lasthandoff: 03/28/2018
 考虑后端池的设计方式时，可针对单个后端池资源的最小数字进行设计，从而进一步优化管理操作的持续时间。  在数据平面性能或规模中不存在任何差异。
 
 ## <a name="az"></a>可用性区域
-
->[!NOTE]
-> 若要将[可用性区域预览版](https://aka.ms/availabilityzones)用于标准负载均衡器，需要[注册可用性区域](https://aka.ms/availabilityzones)。
 
 标准负载均衡器在提供可用性区域的区域中支持其他功能。  这些功能可增量到所有标准负载均衡器提供的内容。  可用性区域配置可用于公共和内部标准负载均衡器。
 
@@ -176,6 +173,9 @@ ms.lasthandoff: 03/28/2018
 
 SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一个资源 SKU。
 
+>[!IMPORTANT]
+>全面查看本文档，了解 SKU 之间的差异并仔细检查你的方案。  可能需要进行其他更改，以与你的方案一致。
+
 ### <a name="migrate-from-basic-to-standard-sku"></a>从基本 SKU 迁移到标准 SKU
 
 1. 根据需要创建新的标准版资源（负载均衡器和公共 IP）。 重新创建规则和探测定义。
@@ -235,6 +235,6 @@ SKU 不可变。 按照本部分中的步骤从一个资源 SKU 移动到另一�
 - 了解如何使用[具有多个前端的负载均衡器](load-balancer-multivip-overview.md)
 - 了解有关[虚拟网络](../virtual-network/virtual-networks-overview.md)的信息。
 - 详细了解[网络安全组](../virtual-network/virtual-networks-nsg.md)。
-- 了解有关 [VNet 服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)的信息
+- 了解 [VNet 服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)
 - 了解 Azure 的部分其他关键[网络功能](../networking/networking-overview.md)。
 - 详细了解[负载均衡器](load-balancer-overview.md)。

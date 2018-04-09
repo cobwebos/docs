@@ -1,30 +1,30 @@
 ---
-title: "Azure PIM 资源 RBAC 概述 | Microsoft Docs"
-description: "获取 PIM 中 RBAC 功能的概述，包括术语和通知"
+title: Azure PIM 资源 RBAC 概述 | Microsoft Docs
+description: 获取 PIM 中 RBAC 功能的概述，包括术语和通知
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/19/2017
-ms.author: barclayn
-ms.openlocfilehash: 19715f800e7d8d40336d8e9fa3bf8073795dce5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.date: 03/30/2018
+ms.author: billmath
+ms.openlocfilehash: 87d349933a8daeaf8b7a4487612ad62dd2b9efc2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="pim-for-azure-resources-preview"></a>适用于 Azure 资源的 PIM（预览版）
+# <a name="pim-for-azure-resources"></a>适用于 Azure 资源的 PIM
 
-使用 Azure Active Directory Privileged Identity Management (PIM) 可以管理、控制和监视组织中对 Azure 资源（预览版）的访问。 这些资源包括订阅、资源组甚至虚拟机。 Azure 门户中利用 Azure 基于角色的访问控制 (RBAC) 功能的任何资源都可以利用 Azure AD PIM 提供的所有突出安全和生命周期管理功能，我们计划在不久后为 Azure AD 角色推出一些极佳的新功能。 
+使用 Azure Active Directory Privileged Identity Management (PIM) 可以管理、控制和监视组织中对 Azure 资源的访问。 这些资源包括订阅、资源组甚至虚拟机。 Azure 门户中利用 Azure 基于角色的访问控制 (RBAC) 功能的任何资源都可以利用 Azure AD PIM 提供的所有突出安全和生命周期管理功能，我们计划在不久后为 Azure AD 角色推出一些极佳的新功能。 
 
-## <a name="pim-for-azure-resources-preview-helps-resource-administrators"></a>适用于 Azure 资源的 PIM（预览版）可为资源管理员提供帮助
+## <a name="pim-for-azure-resources-helps-resource-administrators"></a>适用于 Azure 资源的 PIM 可为资源管理员提供帮助
 
 - 查看为哪些用户和组分配了所管理的 Azure 资源的角色
 - 启用按需的“实时”访问权限来管理订阅、资源组等资源
@@ -49,15 +49,15 @@ Azure AD PIM 可以管理内置的 Azure 资源角色以及自定义 (RBAC) 角�
 
 PIM 提供便捷的访问方式，让我们通过左侧导航菜单中的“任务”部分激活角色，以及查看等待做出答复的激活/请求、审批（适用于 [Azure AD 目录角色](azure-ad-pim-approval-workflow.md)）和评审。
 
-从“概述”入口点访问任何“任务”菜单项时，生成的视图包含 Azure AD 目录角色和 Azure 资源角色（预览版）的结果。 
+从“概述”入口点访问任何“任务”菜单项时，生成的视图包含 Azure AD 目录角色和 Azure 资源角色的结果。 
 
 ![](media/azure-pim-resource-rbac/role-settings-details.png)
 
-“我的角色”包含你的活动角色分配，以及 Azure AD 目录角色和 Azure 资源角色（预览版）的有资格角色分配。
+“我的角色”包含你的活动角色分配，以及 Azure AD 目录角色和 Azure 资源角色的有资格角色分配。
 
 ## <a name="activate-roles"></a>激活角色
 
-Azure 资源（预览版）的激活角色功能引入了新的体验，可让有资格的角色成员计划在将来的某个日期/时间进行激活，并在最大时间范围（由管理员配置）内选择特定的激活持续时间。 在此处了解[如何激活 Azure AD 角色](../active-directory-privileged-identity-management-how-to-activate-role.md)。
+Azure 资源的激活角色功能引入了新的体验，可让有资格的角色成员计划在将来的某个日期/时间进行激活，并在最大时间范围（由管理员配置）内选择特定的激活持续时间。 在此处了解[如何激活 Azure AD 角色](../active-directory-privileged-identity-management-how-to-activate-role.md)。
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 
@@ -73,7 +73,7 @@ Azure 资源（预览版）的激活角色功能引入了新的体验，可让�
 
 ## <a name="discover-and-manage-azure-resources"></a>发现和管理 Azure 资源
 
-若要查找和管理 Azure 资源的角色，请在左侧导航菜单中的“管理”选项卡下面选择“Azure 资源(预览版)”。 使用页面顶部的筛选器或搜索栏查找资源。
+若要查找和管理 Azure 资源的角色，请在左侧导航菜单中的“管理”选项卡下面选择“Azure 资源”。 使用页面顶部的筛选器或搜索栏查找资源。
 
 ![](media/azure-pim-resource-rbac/azure-resources.png)
 

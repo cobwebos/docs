@@ -1,12 +1,12 @@
 ---
-title: "Azure 的 vCPU 配额 | Microsoft Docs"
-description: "了解 Azure 的 vCPU 配额。"
-keywords: 
+title: Azure 的 vCPU 配额 | Microsoft Docs
+description: 了解 Azure 的 vCPU 配额。
+keywords: ''
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: Drewm3
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2016
 ms.author: drewm
-ms.openlocfilehash: b481299b62d452bc306c1f9c1fa2cdccd49b818e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 05d84e4b8c0ac84db5d0784e64071931408ec1d6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>虚拟机 vCPU 配额
 
@@ -81,7 +81,7 @@ Premium Storage Managed Disks                1 10000 Count
 ## <a name="reserved-vm-instances"></a>保留 VM 实例
 保留 VM 实例（其范围限定为单个订阅）将向 vCPU 配额添加一个新方面。 这些值描述一定能够部署在订阅中的所述大小的实例数。 它们在配额系统中作为占位符使用以确保保留配额，从而确保保留实例可在订阅中部署。 例如，如果特定订阅有 10 个 Standard_D1 保留实例，则 Standard_D1 保留实例的使用量限制将为 10。 这会导致 Azure 确保总区域 vCPU 配额中始终至少有 10 个 vCPU 可用于 Standard_D1 实例，并且标准 D 系列 vCPU 配额中始终至少有 10 个 vCPU 可用于 Standard_D1 实例。
 
-如果需要增加配额以购买单个订阅 RI，则可以在订阅上[请求增加配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。
+如果需要增加配额来购买单个订阅 RI，则可以在订阅上[请求增加配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。
 
 ## <a name="next-steps"></a>后续步骤
 

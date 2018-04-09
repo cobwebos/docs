@@ -1,29 +1,32 @@
 ---
-title: "在 Azure Active Directory 中还原或永久删除最近删除的用户 | Microsoft Docs"
-description: "如何在 Azure Active Directory 中还原已删除的用户、查看可还原的用户或永久删除用户"
+title: 在 Azure Active Directory 中还原或永久删除最近删除的用户 | Microsoft Docs
+description: 如何在 Azure Active Directory 中还原已删除的用户、查看可还原的用户或永久删除用户
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 01/12/2018
+ms.date: 03/28/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: d8a1850f8635097364268abdf77394ba592f761b
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 9eea61cc1b735c6505df87526cd526a9a4a6eed8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="restore-a-deleted-user-in-azure-active-directory"></a>在 Azure Active Directory 中还原已删除的用户
 
 本文包含如何还原或永久删除以前删除的用户的说明。 在 Azure Active Directory (Azure AD) 中删除某个用户时，删除的用户会在从删除日期开始算起的 30 天内保留。 在此期间，可以还原该用户及其属性。 
+
+> [!wARNING]
+> 在它被永久删除后，将无法还原用户。
 
 
 ## <a name="how-to-restore-a-recently-deleted-user"></a>如何还原最近删除的用户

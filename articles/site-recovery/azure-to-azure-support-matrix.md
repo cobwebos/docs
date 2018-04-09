@@ -1,21 +1,21 @@
 ---
-title: "用于在 Azure 之间进行复制的 Azure Site Recovery 支持矩阵 | Microsoft Docs"
-description: "总结了 Azure Site Recovery 在不同区域之间复制 Azure 虚拟机 (VM) 以满足灾难恢复 (DR) 需求时支持的操作系统和配置。"
+title: 用于在 Azure 之间进行复制的 Azure Site Recovery 支持矩阵 | Microsoft Docs
+description: 总结了 Azure Site Recovery 在不同区域之间复制 Azure 虚拟机 (VM) 以满足灾难恢复 (DR) 需求时支持的操作系统和配置。
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 03/29/2018
 ms.author: sujayt
-ms.openlocfilehash: 4383286285f02bad1645344fab43f8b6bdb145cb
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 4ddad2d8e5c5323b632b65efaf87d3df7ce8d707
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>用于在 Azure 之间进行复制的 Azure Site Recovery 支持矩阵
+# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>用于在 Azure 区域之间进行复制的支持矩阵
 
 
 >[!NOTE]
@@ -79,8 +79,8 @@ ms.lasthandoff: 02/27/2018
 - CentOS 6.5、6.6、6.7、6.8、6.9、7.0、7.1、7.2、7.3、7.4
 - Ubuntu 14.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Ubuntu 16.04 LTS 服务器[（受支持的内核版本）](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-- Debian 7
-- Debian 8
+- Debian 7[（受支持的内核版本）](#supported-debian-kernel-versions-for-azure-virtual-machines)
+- Debian 8[（受支持的内核版本）](#supported-debian-kernel-versions-for-azure-virtual-machines)
 - Oracle Enterprise Linux 6.4、6.5（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)）
 - SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 11 SP4
@@ -95,14 +95,22 @@ ms.lasthandoff: 02/27/2018
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-14.04 LTS | 9.10 | 3.13.0-24-generic 到 3.13.0-121-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-81-generic |
 14.04 LTS | 9.11 | 3.13.0-24-generic 到 3.13.0-125-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-83-generic |
 14.04 LTS | 9.12 | 3.13.0-24-generic 到 3.13.0-132-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-96-generic |
 14.04 LTS | 9.13 | 3.13.0-24-generic 到 3.13.0-137-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-104-generic |
-16.04 LTS | 9.10 | 4.4.0-21-generic 到 4.4.0-81-generic、<br/>4.8.0-34-generic 到 4.8.0-56-generic、<br/>4.10.0-14-generic 到 4.10.0-24-generic |
+14.04 LTS | 9.14 | 3.13.0-24-generic 到 3.13.0-141-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-112-generic |
 16.04 LTS | 9.11 | 4.4.0-21-generic 到 4.4.0-83-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-27-generic |
 16.04 LTS | 9.12 | 4.4.0-21-generic 到 4.4.0-96-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-35-generic |
 16.04 LTS | 9.13 | 4.4.0-21-generic 到 4.4.0-104-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic |
+16.04 LTS | 9.14 | 4.4.0-21-generic 到 4.4.0-112-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-32-generic、<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1009-azure |
+
+
+### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 Debian 内核版本
+
+**版本** | **移动服务版本** | **内核版本** |
+--- | --- | --- |
+Debian 7 | 9.14 | 3.2.0-4-amd64 到 3.2.0-5-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 8 | 9.14 | 3.16.0-4-amd64 到 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 到 4.9.0-0.bpo.5-amd64 |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>运行 Linux OS 的 Azure 虚拟机上支持的文件系统和来宾存储配置
 
@@ -179,7 +187,7 @@ ZRS | 不支持 |
 内部负载均衡器 | 支持 | 需要使用恢复计划中的 azure 自动化脚本关联预配置的负载均衡器。
 公共 IP| 支持 | 需要将已有的公共 IP 关联到 NIC，或者使用恢复计划中的 azure 自动化脚本创建一个公共 IP 并将其关联到 NIC。
 NIC 上的 NSG (Resource Manager)| 支持 | 需要使用恢复计划中的 azure 自动化脚本将 NSG 关联到 NIC。  
-子网上的 NSG（Resource Manager 和经典）| 支持 | 需要使用恢复计划中的 azure 自动化脚本将 NSG 关联到 NIC。
+子网上的 NSG（Resource Manager 和经典）| 支持 | 需要使用恢复计划中的 azure 自动化脚本将 NSG 关联到子网。
 VM 上的 NSG（经典）| 支持 | 需要使用恢复计划中的 azure 自动化脚本将 NSG 关联到 NIC。
 保留 IP（静态 IP）/保留源 IP | 支持 | 如果源 VM 上的 NIC 具有静态 IP 配置，并且目标子网具有相同的可用 IP，则会将它分配给故障转移 VM。 如果目标子网没有相同的可用 IP，则为此 VM 保留子网中的某个可用 IP。 可以在“复制的项”>“设置”>“计算和网络”>“网络接口”中指定所选择的固定 IP。 可以选择 NIC，并指定所选的子网和 IP。
 动态 IP| 支持 | 如果源 VM 上的 NIC 具有动态 IP 配置，故障转移 VM 上的 NIC 也默认为动态。 可以在“复制的项”>“设置”>“计算和网络”>“网络接口”中指定所选择的固定 IP。 可以选择 NIC，并指定所选的子网和 IP。

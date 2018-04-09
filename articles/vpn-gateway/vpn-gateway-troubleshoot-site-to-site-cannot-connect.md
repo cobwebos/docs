@@ -1,24 +1,24 @@
 ---
-title: "排查 Azure 站点到站点 VPN 连接无法建立连接的问题 | Microsoft Docs"
-description: "了解如何排查站点到站点 VPN 连接突然停止工作，不能重新建立连接的问题。"
+title: 排查 Azure 站点到站点 VPN 连接无法建立连接的问题 | Microsoft Docs
+description: 了解如何排查站点到站点 VPN 连接突然停止工作，不能重新建立连接的问题。
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/13/2017
+ms.date: 03/29/2018
 ms.author: genli
-ms.openlocfilehash: 96a1705d651b9a2d17a466b9c43721bec7b4972c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 3e590df66f84cd88ba7ba251373c14a44a94ca77
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>故障排除：Azure 站点到站点 VPN 连接无法建立连接并停止工作
 
@@ -92,7 +92,9 @@ ms.lasthandoff: 01/24/2018
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>步骤 7. 验证 Azure 网关的运行状况探测
 
-1. 转到运行状况探测。
+1. 通过浏览到以下 URL 打开运行状况探测：
+
+    `https://<YourVirtualNetworkGatewayIP>:8081/healthprobe`
 
 2. 单击证书警告。
 3. 如果收到响应，则可认为 VPN 网关正常。 如果未收到响应，则可能表示网关不正常，或者网关子网上的某个 NSG 导致出现问题。 以下文本是示例响应：

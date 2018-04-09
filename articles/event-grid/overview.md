@@ -1,18 +1,18 @@
 ---
-title: "Azure 事件网格概述"
-description: "介绍 Azure 事件网格及其概念。"
+title: Azure 事件网格概述
+description: 介绍 Azure 事件网格及其概念。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/30/2018
 ms.author: babanisa
-ms.openlocfilehash: 5e700e3e9d17e790083facf00c7f4b8decf9037a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 335d6aba3a3d2098fa64aeda8c58c8dd7f4e6776
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure 事件网格简介
 
@@ -33,25 +33,26 @@ ms.lasthandoff: 02/01/2018
 *   美国西部
 *   美国西部 2
 
-本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。 下图显示了事件网格如何连接发布服务器和处理程序，但它不提供支持选项的完整列表。
+本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。 下图显示了事件网格如何连接来源和处理程序，但它未提供支持的选项的完整列表。
 
 ![事件网格功能模型](./media/overview/functional-model.png)
 
-## <a name="event-publishers"></a>事件发布者
+## <a name="event-sources"></a>事件源
 
-目前，以下 Azure 服务对事件网格的内置发布者提供支持：
+当前，以下 Azure 服务支持将事件发送到事件网格：
 
 * Azure 订阅（管理操作）
 * 自定义主题
 * 事件中心
 * IoT 中心
 * 资源组（管理操作）
+* 服务总线
 * 存储 Blob
 * 常规用途 v2 (GPv2) 存储
 
 ## <a name="event-handlers"></a>事件处理程序
 
-目前，以下 Azure 服务对事件网格的内置处理程序提供支持： 
+当前，以下 Azure 服务支持从事件网格处理事件： 
 
 * Azure 自动化
 * Azure Functions
@@ -60,7 +61,7 @@ ms.lasthandoff: 02/01/2018
 * Microsoft Flow
 * Webhook
 
-使用 Azure Functions 作为处理程序时，请使用事件网格触发器而不是通用 HTTP 触发器。 事件网格会自动验证事件网格函数触发器。 使用通用 HTTP 触发器，则必须实现[验证响应](security-authentication.md#webhook-event-delivery)。
+使用 Azure Functions 作为处理程序时，请使用事件网格触发器而不是通用 HTTP 触发器。 事件网格会自动验证事件网格函数触发器。 使用泛型 HTTP 触发器时，必须实现[验证响应](security-authentication.md#webhook-event-delivery)。
 
 ## <a name="concepts"></a>概念
 

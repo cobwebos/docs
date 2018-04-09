@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: f4755d6cce0787a411fee7d32c887ae71c134c94
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f1fa79ed32969f5087107d6105fd2f4baf7640e3
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -143,6 +143,8 @@ Web 表链接的服务支持以下属性：
 ```
 
 ## <a name="get-index-of-a-table-in-an-html-page"></a>获取 HTML 页中表的索引
+
+若要获取表的索引（需要在[数据集属性](#dataset-properties)中进行配置），可以使用例如 Excel 2016 作为工具，如下所示：
 
 1. 启动 **Excel 2016**，并切换到“数据”选项卡。
 2. 单击工具栏中的“新建查询”，指向“从其他源”，并单击“从 Web”。

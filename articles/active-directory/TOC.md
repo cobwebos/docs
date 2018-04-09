@@ -215,11 +215,12 @@
 ##### [自定义主页](application-proxy-office365-app-launcher.md)
 ##### [转换内联链接](application-proxy-link-translation.md)
 ##### [通配符应用程序](active-directory-application-proxy-wildcard.md)
-##### [Azure AD 应用程序代理和 Qlik Sense](active-directory-application-proxy-qlik.md) 
+
 #### 发布演练
 ##### [远程桌面](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
+##### [Qlik Sense](active-directory-application-proxy-qlik.md) 
 #### [PowerShell](https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
 #### [故障排除](active-directory-application-proxy-troubleshoot.md)
 

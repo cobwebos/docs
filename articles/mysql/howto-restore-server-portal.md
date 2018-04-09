@@ -1,6 +1,6 @@
 ---
-title: "如何在 Azure Database for MySQL 中还原服务器"
-description: "本文介绍如何使用 Azure 门户在 Azure Database for MySQL 中还原服务器。"
+title: 如何在 Azure Database for MySQL 中还原服务器
+description: 本文介绍如何使用 Azure 门户在 Azure Database for MySQL 中还原服务器。
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,14 +8,14 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 5bef3f11d0b546fbd6b1161b20d7dfb81e975f99
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 04/01/2018
+ms.openlocfilehash: 5d6118a47e10763373c9376ca08d328cf22ab3c8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中备份和还原服务器
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中备份和还原服务器
 
 ## <a name="backup-happens-automatically"></a>自动进行备份
 Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 通过此功能，用户可将服务器及其所有数据库还原到新服务器上的某个较早时间点。
@@ -49,7 +49,7 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 
 备份保留期控制可以往回检索多长时间的时间点还原，因为它基于可用备份。 以下部分进一步说明了时间点还原。 
 
-## <a name="point-in-time-restore-in-the-azure-portal"></a>Azure 门户中的时间点还原
+## <a name="point-in-time-restore"></a>时间点还原
 使用 Azure Database for MySQL 可以将服务器还原到某个时间点，并还原到服务器的新副本。 可以使用此新服务器恢复数据，或将客户端应用程序指向此新服务器。
 
 例如，如果今天中午不小心删除了一张表，则可以将该表还原到中午之前的状态，并从服务器的新副本中检索丢失的表和数据。 时间点还原在服务器级别（而不是在数据库级别）进行。
@@ -75,6 +75,22 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 
 >[!Note]
 >请注意，通过时间点还原创建的新服务器具有在所选时间点对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”页更改密码。
+
+## <a name="geo-restore"></a>异地还原
+如果为服务器配置了异地冗余备份，则可以从该现有服务器的备份创建新服务器。 可以在 Azure Database for MySQL 可用的任何区域中创建此新服务器。  
+
+1. 选择门户左上角的“创建资源”按钮 (+)。 选择“数据库” > “Azure Database for MySQL”。
+
+   ![“Azure Database for MySQL”选项](./media/howto-restore-server-portal/2_navigate-to-mysql.png)
+
+2. 在窗体的“选择源”下拉列表中，选择“备份”。 此操作将加载已启用异地冗余备份的服务器列表。 选择这些备份之一作为新服务器的源。
+   ![选择源：备份和异地冗余备份的列表](./media/howto-restore-server-portal/2-georestore.png)
+
+3. 根据需要填写窗体的其余部分。 可以选择任意**位置**。 选择位置后，可以选择**定价层**。 默认情况下将显示要从中还原的现有服务器的参数。 可以单击“确定”，以不进行任何更改继承这些设置。 也可以更改**计算的代**（如果在所选区域中可用）、**vCore** 数、**备份保留期**和**备份冗余选项**。 不支持在还原过程中更改**定价层**（“基本”、“常规用途”或“内存优化”）或**存储**大小。
+
+>[!Note]
+>通过异地还原创建的新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”页更改密码。
+
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解服务的[备份](concepts-backup.md)。

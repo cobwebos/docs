@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: sedusch
-ms.openlocfilehash: 75615de523f1fba808f44fb1a1015138fb190edc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2982c8ba534b9a93a021a9d3a3819b904f09abc7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -280,7 +280,7 @@ sudo systemctl restart target
 1. [A] 设置主机名称解析   
 
    可以使用 DNS 服务器，或修改所有节点上的 /etc/hosts。 此示例演示如何使用 /etc/hosts 文件。
-   请替换以下命令中的 IP 地址和主机名
+   请替换以下命令中的 IP 地址和主机名。 使用 /etc/hosts 的好处是群集会变为独立于也可能会成为单一故障点的 DNS。
 
    <pre><code>
    sudo vi /etc/hosts
@@ -329,10 +329,16 @@ sudo systemctl restart target
    sudo vi /etc/corosync/corosync.conf   
    </code></pre>
 
-   将以下粗体内容添加到文件。
+   如果值不存在或不同，请将以下粗体显示的内容添加到文件。
    
    <pre><code> 
    [...]
+     <b>token:          5000
+     token_retransmits_before_loss_const: 10
+     join:           60
+     consensus:      6000
+     max_messages:   20</b>
+     
      interface { 
         [...] 
      }

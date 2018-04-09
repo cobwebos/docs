@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 29ab87b6afe31b7bbb40ef7d743e209f86811c9d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c227af1afa95243390152918a6b81015dbaceaeb
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="manage-updates-for-multiple-machines"></a>管理多个计算机的更新
 
@@ -61,7 +61,7 @@ Windows 代理也必须配置为与 Windows Server Update Services (WSUS) 服务
 
 Linux 代理必须具有访问更新存储库的权限。
 
-此解决方案不支持适用于 Linux 的 OMS 代理，该代理已配置为向多个 Operations Management Suite 工作区报告。
+此解决方案不支持配置为向多个 Log Analytics 工作区进行报告的适用于 Linux 的 OMS 代理。
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>启用 Azure 虚拟机的更新管理
 
@@ -176,5 +176,5 @@ Linux 代理必须具有访问更新存储库的权限。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解更新管理（包括日志、输出和错误），请参阅[更新 OMS 中的管理解决方案](../operations-management-suite/oms-solution-update-management.md)。
+* 若要详细了解更新管理（包括日志、输出和错误），请参阅 [Azure 中的更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)。
 

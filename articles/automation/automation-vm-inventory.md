@@ -1,18 +1,18 @@
 ---
-title: "使用清单收集管理 Azure 虚拟机 | Microsoft Docs"
-description: "使用清单收集管理虚拟机"
+title: 使用清单收集管理 Azure 虚拟机 | Microsoft Docs
+description: 使用清单收集管理虚拟机
 services: automation
-keywords: "清单, 自动化, 更改, 跟踪"
+keywords: 清单, 自动化, 更改, 跟踪
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 09/13/2017
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 7b0e39e98a81231b68414f36ac5c1fc0897304a1
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b23132f6e5693f5d731bf044ac5c2544a9308ee1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>使用清单收集管理 Azure 虚拟机
 
@@ -66,4 +66,4 @@ ms.lasthandoff: 01/11/2018
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何管理虚拟机上文件和注册表设置中的更改，请参阅[使用更改跟踪解决方案跟踪环境中的软件更改](../log-analytics/log-analytics-change-tracking.md)。
-* 若要了解如何管理虚拟机上的 Windows 和程序包更新，请参阅 [OMS 中的更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)。
+* 若要了解如何管理虚拟机上的 Windows 和程序包更新，请参阅 [Azure 中的更新管理解决方案](../operations-management-suite/oms-solution-update-management.md)。

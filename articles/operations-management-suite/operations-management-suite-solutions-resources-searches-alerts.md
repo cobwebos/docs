@@ -1,8 +1,8 @@
 ---
-title: "OMS 解决方案中的保存的搜索和警报 | Microsoft Docs"
-description: "OMS 中的解决方案通常会包括 Log Analytics 中保存的搜索，以便分析解决方案收集的数据。  它们可能还会定义警报，从而向用户发出通知或针对严重问题自动采取行动。  本文介绍如何在资源管理模板中定义 Log Analytics 保存的搜索和警报，以便将其纳入管理解决方案。"
+title: 管理解决方案中的已保存搜索和警报 | Microsoft Docs
+description: 管理解决方案通常会包括 Log Analytics 中保存的搜索，以便分析解决方案收集的数据。  它们可能还会定义警报，从而向用户发出通知或针对严重问题自动采取行动。  本文介绍如何在资源管理模板中定义 Log Analytics 保存的搜索和警报，以便将其纳入管理解决方案。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -14,29 +14,29 @@ ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e25ad9b9be6d02550b4be9c09496021cd7fe2d2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb787de23022cd7a48ec476968e05dec6560b419
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到 OMS 管理解决方案（预览版）
+# <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>将 Log Analytics 保存的搜索和警报添加到管理解决方案（预览版）
 
 > [!NOTE]
-> 这是在 OMS 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。   
+> 这是用于创建当前处于预览版的管理解决方案的初步文档。 如下所述的全部架构均会有变动。   
 
 
-[OMS 中的管理解决方案](operations-management-suite-solutions.md)通常会将 Log Analytics 中[保存的搜索](../log-analytics/log-analytics-log-searches.md)包括在内，以便分析解决方案收集的数据。  它们可能还会定义[警报](../log-analytics/log-analytics-alerts.md)，从而向用户发出通知或针对严重问题自动采取行动。  本文介绍如何在[资源管理模板](../resource-manager-template-walkthrough.md)中定义 Log Analytics 保存的搜索和警报，以便将其纳入[管理解决方案](operations-management-suite-solutions-creating.md)。
+[管理解决方案](operations-management-suite-solutions.md)通常会将 Log Analytics 中[保存的搜索](../log-analytics/log-analytics-log-searches.md)包括在内，以便分析解决方案收集的数据。  它们可能还会定义[警报](../log-analytics/log-analytics-alerts.md)，从而向用户发出通知或针对严重问题自动采取行动。  本文介绍如何在[资源管理模板](../resource-manager-template-walkthrough.md)中定义 Log Analytics 保存的搜索和警报，以便将其纳入[管理解决方案](operations-management-suite-solutions-creating.md)。
 
 > [!NOTE]
-> 本文中的示例使用管理解决方案需要或通用的参数和变量，[在 Operations Management Suite (OMS) 中创建管理解决方案](operations-management-suite-solutions-creating.md)对此进行了介绍  
+> 本文中的示例使用管理解决方案需要或通用的参数和变量，[在 Azure 中设计和开发解决方案](operations-management-suite-solutions-creating.md)中对它们进行了介绍  
 
 ## <a name="prerequisites"></a>先决条件
 本文假设你已经熟悉如何[创建管理解决方案](operations-management-suite-solutions-creating.md)以及[资源管理器模板](../resource-group-authoring-templates.md)和解决方案文件的结构。
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
-Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-analytics-manage-access.md)中。  如 [OMS 工作区和自动化帐户](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)中所述，工作区不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果不存在工作区，解决方案安装将失败。
+Log Analytics 中的所有资源都包含在[工作区](../log-analytics/log-analytics-manage-access.md)中。  如 [Log Analytics 工作区和自动化帐户](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)中所述，工作区不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果不存在工作区，解决方案安装将失败。
 
 工作区的名称包含在每个 Log Analytics 资源的名称中。  这是在具有 **workspace** 参数的解决方案中完成的，如以下 savedsearch 资源示例所示。
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: e2b6651f0d341567f1d02d0ca16b8f445e3d26f4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4259715fbb062bfb170509c928b5a1ad898ea394
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -95,10 +95,10 @@ ms.lasthandoff: 03/23/2018
 
    ![创建免验证一次](./media/multi-factor-authentication-whats-next/onetimebypass.png)
 
-3. 选择“添加”。
+3. 选择**添加**。
 4. 如有必要，可选择要免验证的复制组。
 5. 以 **username<span></span>@domain.com** 形式输入用户名。输入免验证应持续的秒数。 输入免验证的原因。 
-6. 选择“添加”。 时间限制将立即生效。 用户需在免验证一次过期前登录。 
+6. 选择**添加**。 时间限制将立即生效。 用户需在免验证一次过期前登录。 
 
 ### <a name="view-the-one-time-bypass-report"></a>查看免验证一次报告
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 03/23/2018
 3. 选择“添加问候语”。
 4. 选择问候的类型。 选择语言。
 5. 选择要上传的 .mp3 或 .wav 声音文件。
-6. 选择“添加”。
+6. 选择**添加**。
 
 ## <a name="caching-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的缓存
 
@@ -140,10 +140,10 @@ ms.lasthandoff: 03/23/2018
 
    ![设置缓存规则](./media/multi-factor-authentication-whats-next/cachingrules.png)
 
-3. 选择“添加”。
+3. 选择**添加**。
 4. 从下拉列表中选择缓存类型。 输入最大缓存秒数。 
 5. 如有必要，可选择身份验证类型并指定应用程序。 
-6. 选择“添加”。
+6. 选择**添加**。
 
 
 ## <a name="trusted-ips"></a>受信任的 IP
@@ -228,11 +228,7 @@ ms.lasthandoff: 03/23/2018
 
 某些应用程序（例如 Office 2010 或更低版本，以及 Apple Mail）不支持双重验证。 这些应用未配置为接受第二个验证。 若要使用这些应用程序，请利用“应用密码”功能。 可使用应用密码代替传统密码，允许应用绕过双重验证并继续运行。
 
->[!NOTE]
->适用于 Microsoft Office 2013 客户端及更高版本的现代身份验证
-> 
->Office 2013 客户端及更高版本（包括 Outlook）支持新式身份验证协议，可通过双重验证启用。 启用客户端后，客户端即不要求使用应用密码。 有关详细信息，请参阅 [Office 2013 现代身份验证公共预览版发布声明](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
->
+Microsoft Office 2013 客户端及更高版本支持现代身份验证。 Office 2013 客户端（包括 Outlook）支持现代身份验证协议，并且可以为其启用双重验证。 启用客户端后，客户端即不要求使用应用密码。
 
 ### <a name="considerations-about-app-passwords"></a>有关应用密码的注意事项
 

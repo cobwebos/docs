@@ -1,6 +1,6 @@
 ---
 title: 从 Log Analytics 警报调用 Azure 自动化 Runbook
-description: 本文概述如何从 Operations Management Suite 中的 Log Analytics 警报调用自动化 Runbook。
+description: 本文概述了如何从 Azure 中的 Log Analytics 警报调用自动化 Runbook。
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3f95d6b9385b252bce05f19b38ae38f11e88a88c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2a0e497535f783cbffc21004331ccd2a50ab8eef
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>从 Log Analytics 警报调用 Azure 自动化 Runbook
 
@@ -23,11 +23,11 @@ ms.lasthandoff: 03/23/2018
 在警报配置中有两个调用 Runbook 的选项：
 
 * 使用 Webhook。
-   * 如果 Operations Management Suite 工作区未链接到自动化帐户，则此选项是唯一可用的选项。
-   * 如果已有一个链接到 Operations Management Suite 工作区的自动化帐户，此选项仍然可用。  
+   * 如果 Log Analytics 工作区未链接到自动化帐户，则此选项是唯一可用的选项。
+   * 如果已有一个链接到 Log Analytics 工作区的自动化帐户，则此选项仍然可用。  
 
 * 直接选择 Runbook。
-   * 仅当 Operations Management Suite 工作区已链接到自动化帐户时，此选项才可用。
+   * 仅当 Log Analytics 工作区已链接到自动化帐户时，此选项才可用。
 
 ## <a name="calling-a-runbook-by-using-a-webhook"></a>使用 Webhook 调用 Runbook
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="calling-a-runbook-directly"></a>直接调用 Runbook
 
-可以在 Operations Management Suite 工作区中安装并配置自动化和控制产品/服务。 在配置警报的 Runbook 操作选项时，可以从“选择 Runbook”下拉列表中查看所有 Runbook，并选择需要在响应警报时运行的特定 Runbook。 选定的 Runbook 可以在 Azure 工作区内运行，也可以在混合 Runbook 辅助角色上运行。 
+可以在 Log Analytics 工作区中安装并配置自动化和控制产品/服务。 在配置警报的 Runbook 操作选项时，可以从“选择 Runbook”下拉列表中查看所有 Runbook，并选择需要在响应警报时运行的特定 Runbook。 选定的 Runbook 可以在 Azure 工作区内运行，也可以在混合 Runbook 辅助角色上运行。 
 
 在你使用 Runbook 选项创建警报后，系统将为 Runbook 创建 Webhook。 转到自动化帐户并打开选定 Runbook 的 Webhook 窗格，即可看到该 Webhook。 
 
@@ -90,7 +90,7 @@ $SearchResult.SvcDisplayName_CF
 
 当服务停止时，Log Analytics 中的警报规则会检测匹配项并触发 Runbook，然后将警报上下文发送给 Runbook。 Runbook 会尝试验证服务是否已停止。 如果服务已停止，Runbook 会尝试重启服务，并在验证其已正确启动之后显示结果。     
 
-或者，如果尚未将自动化帐户链接到 Operations Management Suite 工作区，则可使用 Webhook 操作来配置警报规则。 Webhook 操作可触发 Runbook。 它还可以遵循此前提到的指南对 Runbook 进行配置，以便转换 JSON 格式的字符串并对 **SearchResult** 进行筛选。    
+或者，如果尚未将自动化帐户链接到 Log Analytics 工作区，则可使用 Webhook 操作来配置警报规则。 Webhook 操作可触发 Runbook。 它还可以遵循此前提到的指南对 Runbook 进行配置，以便转换 JSON 格式的字符串并对 **SearchResult** 进行筛选。    
 
 >[!NOTE]
 > 如果工作区已升级到[新 Log Analytics 查询语言](../log-analytics/log-analytics-log-search-upgrade.md)，则 Webook 有效负载已更改。 [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse) 中提供了格式的详细信息。

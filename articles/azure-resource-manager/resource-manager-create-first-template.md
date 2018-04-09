@@ -1,8 +1,8 @@
 ---
-title: "创建第一个 Azure Resource Manager 模板 | Microsoft Docs"
-description: "分步指南：创建第一个 Azure Resource Manager 模板。 本指南介绍如何使用存储帐户的模板参考来创建模板。"
+title: 创建第一个 Azure 资源管理器模板 | Microsoft Docs
+description: 分步指南：创建第一个 Azure 资源管理器模板。 本指南介绍如何使用存储帐户的模板参考来创建模板。
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -10,24 +10,25 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/02/2017
+ms.date: 03/30/2018
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.openlocfilehash: 7d20469aaf2dfdd7a5f3650983b59152de837837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: adf7d6ad04b9c341eac2172e09da3cb1f044aa62
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>创建和部署第一个 Azure 资源管理器模板
-本主题介绍如何通过相关步骤创建第一个 Azure Resource Manager 模板。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure Resource Manager 概述](resource-group-overview.md)。 如果有现成的资源，需要为这些资源获取模板，请参阅[从现有资源导出 Azure Resource Manager 模板](resource-manager-export-template.md)。
+本主题介绍如何通过相关步骤创建第一个 Azure 资源管理器模板。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。 如果有现成的资源，需要为这些资源获取模板，请参阅[从现有资源导出 Azure 资源管理器模板](resource-manager-export-template.md)。
 
 若要创建和修改模板，需要 JSON 编辑器。 [Visual Studio Code](https://code.visualstudio.com/) 是轻量型开源跨平台代码编辑器。 强烈建议使用 Visual Studio Code 来创建资源管理器模板。 本文假定你使用 VS Code。 如果有其他 JSON 编辑器（例如 Visual Studio），可以使用该编辑器。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Visual Studio Code。 根据需要从 [https://code.visualstudio.com/](https://code.visualstudio.com/) 安装。
-* Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Visual Studio Code。 根据需要从 [https://code.visualstudio.com/](https://code.visualstudio.com/) 进行安装。
+* Azure 订阅。 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 已在本地安装 [Azure PowerShell](/powershell/azure/install-azurerm-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。 本教程需要进行本地安装，因为模板会另存为本地文件。 若要使用 Cloud Shell，必须[将模板加载到存储帐户](resource-group-template-deploy-cli.md#deploy-template-from-cloud-shell)。
 
 ## <a name="create-template"></a>创建模板
 
@@ -92,24 +93,6 @@ ms.lasthandoff: 10/11/2017
    az group create --name examplegroup --location "South Central US"
    az group deployment create --resource-group examplegroup --template-file azuredeploy.json
    ```
-
-部署完成后，存储帐户就会存在于资源组中。
-
-[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
-
-对于 Azure CLI，请使用下列命令：
-
-```azurecli-interactive
-az group create --name examplegroup --location "South Central US"
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
-```
-
-目前在 Cloud Shell 中提供预览版的 PowerShell。 对于 PowerShell，请使用以下命令：
-
-```powershell
-New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile $home\CloudDrive\templates\azuredeploy.json
-```
 
 部署完成后，存储帐户就会存在于资源组中。
 
@@ -244,12 +227,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile
 az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
 ```
 
-对于 Cloud Shell，请将更改的模板上传到文件共享。 覆盖现有文件。 然后，使用以下命令：
-
-```azurecli
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
-```
-
 ## <a name="use-autocomplete"></a>使用自动完成功能
 
 目前为止，你在模板上所做的工作只是从本文复制并粘贴 JSON。 但在开发自己的模板时，需查找并指定适用于资源类型的属性和值。 VS Code 读取资源类型的架构，并建议属性和值。 若要查看自动完成功能，请转到模板的属性元素处，然后添加新的一行。 键入一个引号，此时你会注意到，VS Code 立即建议可以在属性元素中使用的名称。
@@ -379,12 +356,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile
 az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageNamePrefix=storesecure
 ```
 
-对于 Cloud Shell，请将更改的模板上传到文件共享。 覆盖现有文件。 然后，使用以下命令：
-
-```azurecli
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageNamePrefix=storesecure
-```
-
 ## <a name="clean-up-resources"></a>清理资源
 
 不再需要时，请通过删除资源组来清理部署的资源。
@@ -403,6 +374,6 @@ az group delete --name examplegroup
 
 ## <a name="next-steps"></a>后续步骤
 * 若要获得模板开发方面的更大帮助，可以安装 VS Code 扩展。 有关详细信息，请参阅[使用 Visual Studio Code 扩展创建 Azure 资源管理器模板](resource-manager-vscode-extension.md)
-* 若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。
+* 若要详细了解模板的结构，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。
 * 若要了解存储帐户的属性，请查看[存储帐户模板参考](/azure/templates/microsoft.storage/storageaccounts)。
 * 若要查看许多不同类型的解决方案的完整模型，请参阅 [Azure Quickstart Templates](https://azure.microsoft.com/documentation/templates/)（Azure 快速入门模板）。

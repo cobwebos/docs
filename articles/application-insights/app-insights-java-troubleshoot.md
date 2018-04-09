@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2016
+ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 894b2234074dcfb262de9033a7728cad3bef2248
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6b3205603b91077ca2c3226dcb78589de37d15cf
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 使用 [Java 中的 Azure Application Insights][java] 时有疑问或遇到问题？ 请参考下面的提示。
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/29/2018
 * 是否正在查看正确的 AI 资源？ 请将应用程序的 iKey 与预期遥测的资源的 iKey 相匹配。 它们应相同。
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>未按预期看到所有数据
-* 打开“配额和定价”边栏选项卡，检查是否正在执行[采样](app-insights-sampling.md)。 （如果传输百分比为 100%，表示当前未执行采样。）可将 Application Insights 服务设置为只接受来自应用的一部分遥测数据。 这有助于保持在每月的遥测配额范围内。 
+* 打开“使用情况和预估成本”页面并检查[采样](app-insights-sampling.md)是否正在进行。 （如果传输百分比为 100%，表示当前未执行采样。）可将 Application Insights 服务设置为只接受来自应用的一部分遥测数据。 这有助于保持在每月的遥测配额范围内。 
 * 是否已启用 SDK 采样？ 如果是，将按为所有适用类型指定的速率对数据进行采样。
 * 是否正在运行较旧版本的 Java SDK？ 从版本 2.0.1 开始，我们引入了容错机制以处理间歇性网络和后端故障，以及本地驱动器上的数据持久性。
 * 是否由于过度遥测而受到限制？ 如果启用“信息日志记录”，会看到日志消息“应用受到限制”。 当前的限制为 32000 个遥测项/秒。

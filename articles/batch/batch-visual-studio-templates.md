@@ -1,25 +1,25 @@
 ---
-title: "开始使用 Visual Studio 项目模板生成 Batch 解决方案 - Azure | Microsoft 文档"
-description: "了解 Visual Studio 项目模板如何帮助在 Azure Batch 上实现和运行计算密集型工作负荷。"
+title: 使用 Visual Studio 模板生成 Batch 解决方案 - Azure | Microsoft Docs
+description: 了解 Visual Studio 项目模板如何帮助在 Azure Batch 上实现和运行计算密集型工作负荷。
 services: batch
 documentationcenter: .net
-author: fayora
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da77ce827c65deb18d9d84ce5cf768d89788e205
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5241c62e8b423b20477fc72c87303daf3d4ab43c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 项目模板快速启动 Batch 解决方案
 
@@ -194,7 +194,7 @@ Split() 实现具有以下项的访问权限：
 | --- | --- |
 | 0 |作业管理器成功完成。 作业拆分器代码已运行完成，并且所有任务都已添加到作业中。 |
 | 1 |作业管理器任务失败，程序的“预期”部分有异常。 异常已转换成 JobManagerException 与诊断信息，如有可能，还提供可解决失败的建议。 |
-| #N/A |作业管理器任务失败，发生“意外的”异常。 异常已记录到标准输出，但作业管理器无法添加任何额外的诊断或补救信息。 |
+| 2 |作业管理器任务失败，发生“意外的”异常。 异常已记录到标准输出，但作业管理器无法添加任何额外的诊断或补救信息。 |
 
 在作业管理器任务失败的情况下，某些任务可能仍在错误发生之前就已添加到服务中。 这些任务将正常运行。 请参阅上面的“作业拆分器失败”，获取有关此代码路径的介绍。
 
@@ -277,7 +277,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 
 ![显示任务处理器模板解决方案的 Visual Studio 解决方案资源管理器][solution_explorer02]
 
-**框架文件**
+**架构文件**
 
 * `Configuration.cs`：封装作业配置数据的加载，例如 Batch 帐户详细信息、链接的存储帐户凭据、作业和任务信息，以及作业参数。 它还通过 Configuration.EnvironmentVariable 类提供 Batch 定义的环境变量（请参阅 Batch 文档中“Environment settings for tasks”（任务的环境设置））的访问权限。
 * `IConfiguration.cs`：抽象化配置类的实现，以便可以使用虚构或模拟的配置对象对作业拆分器进行单元测试。
@@ -372,7 +372,7 @@ Run() 实现具有以下项的访问权限：
 | --- | --- |
 | [Process.ExitCode][process_exitcode] |任务处理器已运行完成。 请注意，这并不表示调用的程序已成功，只表示任务处理器已成功调用程序并运行任何后处理，而没有异常。 退出代码的含义取决于所调用的程序，一般而言，退出代码 0 表示程序已成功，任何其他退出代码表示程序失败。 |
 | 1 |任务处理器任务失败，程序的“预期”部分有异常。 异常已转换成 `TaskProcessorException` 与诊断信息，如有可能，还提供可解决失败的建议。 |
-| #N/A |任务处理器任务失败，发生“意外的”异常。 异常已记录到标准输出，但任务处理器无法添加任何额外的诊断或补救信息。 |
+| 2 |任务处理器任务失败，发生“意外的”异常。 异常已记录到标准输出，但任务处理器无法添加任何额外的诊断或补救信息。 |
 
 > [!NOTE]
 > 如果调用的程序使用退出代码 1 和 2 来指出特定失败模式，则使用退出代码 1 和 2 来代表任务处理器错误将造成模棱两可的状况。 可以编辑 Program.cs 文件中的异常案例，将这些任务处理器错误代码更改为可区分的退出代码。

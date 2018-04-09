@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Workplace by Facebook 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Workplace by Facebook 间配置单一登录。"
+title: 教程：Azure Active Directory 与 Workplace by Facebook 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Workplace by Facebook 间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 03/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 524319deea957809440436b3cac2b0256516923a
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: a1f4243eafc6a2d5c632220ec80b28b29f8ae985
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>教程：Azure Active Directory 与 Workplace by Facebook 集成
 
@@ -45,6 +45,9 @@ ms.lasthandoff: 02/11/2018
 
 - 除非必要，请勿使用生产环境。
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+
+> [!NOTE]
+> Facebook 有两种产品：Workplace Standard（免费）和 Workplace Premium（付费）。 任何 Workplace Premium 租户都可以配置 SCIM 和 SSO 集成，对成本或所需的许可证没有其他影响。 SSO 和 SCIM 在 Workplace Standard 实例中不可用。
 
 ## <a name="scenario-description"></a>方案描述
 在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
@@ -160,10 +163,6 @@ ms.lasthandoff: 02/11/2018
 
     可以选择配置一个 SAML 注销 URL，该 URL 可用于指向 Azure AD 的注销页面。 启用并配置此设置后，用户将不会再被定向到 Workplace 注销页面。 用户会转而被重定向到在“SAML 注销重定向”设置中添加的 URL。
 
-
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-
 ### <a name="configuring-reauthentication-frequency"></a>配置重新进行身份验证的频率
 
 可将 Workplace 配置为每天、每三天、每周、每两周、每个月提示进行 SAML 检查或从不进行检查。
@@ -203,7 +202,7 @@ ms.lasthandoff: 02/11/2018
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="creating-a-workplace-by-facebook-test-user"></a>创建 Workplace by Facebook 测试用户
 
@@ -271,4 +270,3 @@ ms.lasthandoff: 02/11/2018
 [201]: ./media/active-directory-saas-workplacebyfacebook-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-workplacebyfacebook-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-workplacebyfacebook-tutorial/tutorial_general_203.png
-

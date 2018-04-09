@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: 943305c78a17031d647bf2fa0977d10c51213ef5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0e060e67d615f0d6aa8ca6cbe305670956ac3faf
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute 线路和路由域
  必须订购一条 ExpressRoute 线路，以通过连接提供商将本地基础结构连接到 Microsoft。 下图展示了 WAN 与 Microsoft 之间连接的逻辑表示。
@@ -72,7 +72,7 @@ Azure 存储、SQL 数据库和网站等服务是使用公共 IP 地址提供的
 ## <a name="routing-domain-comparison"></a>路由域比较
 下表比较了三种路由域：
 
-|  | **专用对等互连** | **公共对等互连** | **Microsoft 对等互连*** |
+|  | **专用对等互连** | **公用对等互连**（新的创建已弃用） | **Microsoft 对等互连** |
 | --- | --- | --- | --- |
 | **每个对等互连支持的最大前缀数** |默认情况下为 4000，而 ExpressRoute 高级版支持 10,000 |200 |200 |
 | **支持的 IP 地址范围** |WAN 中任何有效的 IP 地址。 |由你或连接提供商拥有的公共 IP 地址。 |由你或连接提供商拥有的公共 IP 地址。 |
@@ -81,7 +81,7 @@ Azure 存储、SQL 数据库和网站等服务是使用公共 IP 地址提供的
 | **路由接口 IP 地址** |RFC1918 和公共 IP 地址 |在路由注册表中注册的公共 IP 地址。 |在路由注册表中注册的公共 IP 地址。 |
 | **MD5 哈希支持** |是 |是 |是 |
 
-(*) 需要 Premium 加载项 SKU 层
+
 
 可以选择启用一个或多个路由域作为 ExpressRoute 线路的一部分。 要将这些路由域合并成单个路由域，可以选择将所有路由域放置在同一个 VPN 中。 此外，还可以如图所示，将它们放置在不同的路由域中。 建议的配置是将专用对等链路直接连接到核心网络，并将公共和 Microsoft 对等链路连接到外围网络。
 

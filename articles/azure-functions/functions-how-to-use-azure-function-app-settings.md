@@ -1,24 +1,25 @@
 ---
-title: "配置 Azure Function App 设置 | Microsoft Docs"
-description: "了解如何配置 Azure Function App 设置。"
-services: 
+title: 配置 Azure Function App 设置 | Microsoft Docs
+description: 了解如何配置 Azure Function App 设置。
+services: ''
 documentationcenter: .net
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2017
+ms.date: 03/28/2018
 ms.author: glenga
-ms.openlocfilehash: 2aa35cf814f8de2af89c6f7e0eda1f919301d6a3
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.custom: cc996988-fb4f-47
+ms.openlocfilehash: 8974b2ca243da5dd2f7202c66602f7254496d040
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>如何在 Azure 门户中管理 Function App 
 
@@ -27,6 +28,24 @@ ms.lasthandoff: 03/02/2018
 要开始，请转到 [Azure 门户](http://portal.azure.com)，并使用 Azure 帐户登录。 在门户顶端的搜索栏中，键入函数应用的名称，并从列表中将其选中。 选择 Function App 后，将看到以下页面：
 
 ![Azure 门户中 Function App 的概述](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+
+## <a name="favorite"></a>门户中的收藏函数 
+
+有时，在 [Azure 门户]中查找资源可能很难。 为了更轻松地找到你创建的函数应用，请将函数应用添加到你在门户中的收藏夹。 
+
+1. 登录到 [Azure 门户]。
+
+2. 单击左下角的箭头以展开所有服务，在“筛选器”字段中键入 `Functions`，并单击“Function App”旁边的星形。  
+ 
+    ![在 Azure 门户中创建 Function App](./media/functions-how-to-use-azure-function-app-settings/functions-favorite-function-apps.png)
+
+    这会在门户左侧的菜单中添加“函数”图标。
+
+3. 关闭菜单，向下滚动到底部才能看到“函数”图标。 单击该图标可查看所有 Function App 的列表。 单击 Function App 以在此应用中使用函数。 
+ 
+    ![收藏夹中的函数应用](./media/functions-how-to-use-azure-function-app-settings/functions-function-apps-hub.png)
+ 
+[Azure 门户]: https://portal.azure.com/
 
 ## <a name="manage-app-service-settings"></a>Function App 设置边栏选项卡
 

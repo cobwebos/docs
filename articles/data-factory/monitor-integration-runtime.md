@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 数据工厂中监视集成运行时 | Microsoft Docs"
-description: "了解如何在 Azure 数据工厂中监视不同类型的集成运行时。"
+title: 在 Azure 数据工厂中监视集成运行时 | Microsoft Docs
+description: 了解如何在 Azure 数据工厂中监视不同类型的集成运行时。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: douglasl
-ms.openlocfilehash: 74a4ad6438f9e66331f76e87d20d1eb8b29e8451
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4c857af02e104940559cb86daa3ccd208d8e35a1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
@@ -162,10 +162,10 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 | NodeSize | Azure-SSIS 集成运行时的每个节点的大小。 |
 | NodeCount | Azure-SSIS 集成运行时中的节点数目。 |
 | MaxParallelExecutionsPerNode | Azure-SSIS 集成运行时中每个节点的并行执行数。 |
-| CatalogServerEndpoint | 用于承载 SSISDB 的现有 Azure SQL 数据库/托管实例服务器终结点。 |
-| CatalogAdminUserName | 现有 Azure SQL 数据库/托管实例服务器的管理员用户名。 数据工厂服务使用此信息来代你准备和管理 SSISDB。 |
-| CatalogAdminPassword | 现有 Azure SQL 数据库/托管实例服务器的管理员密码。 |
-| CatalogPricingTier | 现有 Azure SQL 数据库服务器托管的 SSISDB 的定价层。  不适用于 Azure SQL 托管实例承载 SSISDB。 |
+| CatalogServerEndpoint | 用于承载 SSISDB 的现有 Azure SQL 数据库/托管实例（预览版）服务器的终结点。 |
+| CatalogAdminUserName | 现有 Azure SQL 数据库/托管实例（预览版）服务器的管理员用户名。 数据工厂服务使用此信息来代你准备和管理 SSISDB。 |
+| CatalogAdminPassword | 现有 Azure SQL 数据库/托管实例（预览版）服务器的管理员密码。 |
+| CatalogPricingTier | 现有 Azure SQL 数据库服务器托管的 SSISDB 的定价层。  不适用于 Azure SQL 托管实例（预览版）承载 SSISDB。 |
 | VNetId | Azure-SSIS 集成运行时要加入的虚拟网络 (VNet) 资源 ID。 |
 | 子网 | Azure-SSIS 集成运行时要加入的子网名称。 |
 | ID | Azure-SSIS 集成运行时的资源 ID。 |
@@ -199,7 +199,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 
 - [Azure-SSIS 集成运行时](concepts-integration-runtime.md#azure-ssis-integration-runtime)。 此文提供有关集成运行时（包括 Azure-SSIS IR）的一般概念性信息。 
 - [教程：将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 此文提供有关创建 Azure-SSIS IR，并使用 Azure SQL 数据库来承载 SSIS 目录的分步说明。 
-- [如何创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 此文延伸了教程的内容，提供有关使用 Azure SQL 托管实例（人预览版）以及将 IR 加入 VNet 的说明。 
+- [如何创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 此文延伸了教程的内容，提供了有关使用 Azure SQL 托管实例（预览版）以及将 IR 加入 VNet 的说明。 
 - [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md)。 此文介绍如何停止、启动或删除 Azure-SSIS IR。 此外，介绍如何通过在 Azure-SSIS IR 中添加更多节点来扩展 IR。 
 - [将 Azure-SSIS IR 加入 VNet](join-azure-ssis-integration-runtime-virtual-network.md)。 此文提供有关将 Azure-SSIS IR 加入 Azure 虚拟网络 (VNet) 的概念性信息。 此外，介绍可以执行哪些步骤来使用 Azure 门户配置 VNet，以便 Azure-SSIS IR 能够加入 VNet。 
 

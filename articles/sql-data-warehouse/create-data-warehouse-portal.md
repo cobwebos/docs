@@ -1,25 +1,20 @@
 ---
-title: "快速入门：创建 Azure SQL 数据仓库 - Azure 门户 | Microsoft Docs"
-description: "在 Azure 门户中，为 Azure SQL 数据仓库创建 SQL Server、服务器级防火墙规则和数据仓库。 然后查询它。"
-keywords: "SQL 数据仓库教程，创建 SQL 数据仓库"
-services: sql-database
-documentationcenter: 
-author: barbkess
+title: 在 Azure 门户创建和查询 Azure SQL 数据仓库 | Microsoft Docs
+description: 在 Azure 门户中创建 Azure SQL 数据仓库，然后对其进行查询。
+services: sql-data-warehouse
+author: hirokib
 manager: jhubbard
-editor: 
-ms.service: sql-database
-ms.custom: mvc,DBs & servers
-ms.workload: Active
-ms.tgt_pltfrm: portal
-ms.devlang: na
+ms.service: sql-data-warehouse
 ms.topic: quickstart
-ms.date: 11/20/2017
-ms.author: barbkess
-ms.openlocfilehash: a620da9dbe9823b9876fa80dc0200aa91fbf9920
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: implement
+ms.date: 03/28/2018
+ms.author: elbutter
+ms.reviewer: jrj
+ms.openlocfilehash: 97738b37f81cac3e7eef263fecc2095c9ef4b7ff
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建和查询 Azure SQL 数据仓库
 

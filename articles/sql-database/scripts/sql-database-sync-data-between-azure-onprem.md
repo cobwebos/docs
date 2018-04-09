@@ -1,13 +1,13 @@
 ---
-title: "PowerShell 示例 - 在 SQL 数据库和本地 SQL Server 之间进行同步 | Microsoft Docs"
-description: "用于在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步的 Azure PowerShell 示例脚本"
+title: PowerShell 示例 - 在 SQL 数据库和本地 SQL Server 之间进行同步 | Microsoft Docs
+description: 用于在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步的 Azure PowerShell 示例脚本
 services: sql-database
 documentationcenter: sql-database
 author: jognanay
 manager: craigg
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: sql-database
 ms.custom: load & move data, mvc
 ms.devlang: PowerShell
@@ -17,15 +17,15 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: a29c8c7fbd583b45849be6fcab046c578dbbb98a
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 31be6bc80b147e106066c064903c6eb9e1900e12
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>使用 PowerShell 在 SQL 数据库和 SQL Server 本地数据库之间进行同步
 
-此 PowerShell 示例将数据同步配置为在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步。 
+此 PowerShell 示例将数据同步（预览版）配置为在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步。 
 
 本示例需要 Azure PowerShell 模块 4.2 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。
  
@@ -369,7 +369,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
 | 命令 | 说明 |
 |---|---|

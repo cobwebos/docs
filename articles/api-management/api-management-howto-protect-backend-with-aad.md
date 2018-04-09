@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 3caa3d2b8640c83f1001aeac3b0a5e9ada143183
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2c05407d761a8848f9e032aa219960cd7ea6fa93
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-protect-an-api-using-oauth-20-with-azure-active-directory-and-api-management"></a>如何结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -181,9 +181,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNTUWRoSTFjS3
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>配置 JWT 验证策略以对请求进行预授权
 
-此时，当用户尝试从开发人员控制台发出调用时，系统会提示其登录，而开发人员控制台会代表该用户获取访问令牌。 一切都符合预期。 但是，如果有人调用我们的 API 但未提供令牌或者提供无效的令牌，会发生什么情况？ 例如，你可以尝试删除 `Authorization` 标头，然后会发现仍可调用该 API。 原因是 APIM 暂时不会验证访问令牌。 它只会将 `Auhtorization` 标头传递给后端 API。
+此时，当用户尝试从开发人员控制台发出调用时，系统会提示其登录，而开发人员控制台会代表该用户获取访问令牌。 一切都符合预期。 但是，如果有人调用我们的 API 但未提供令牌或者提供无效的令牌，会发生什么情况？ 例如，你可以尝试删除 `Authorization` 标头，然后会发现仍可调用该 API。 原因是 APIM 暂时不会验证访问令牌。 它只是将 `Auhtorization` 标头传递给后端 API。
 
-可以使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略通过验证每个传入请求的访问令牌，对 APIM 中的请求进行预授权。 如果某个请求没有有效的令牌，API 管理会阻止该请求，且不会将其传递给后端。 可将以下策略添加到 `Echo API`。 
+可以使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略通过验证每个传入请求的访问令牌，对 APIM 中的请求进行预授权。 如果某个请求没有有效的令牌，API 管理会阻止该请求，且不会将其传递给后端。 例如，我们可以在 `Echo API` 的 `<inbound>` 策略部分中添加以下策略。 它检查访问令牌中的受众声明，如果令牌无效，则会返回一条错误消息。 有关如何配置策略的信息，请参阅[设置或编辑策略](set-edit-policies.md)。
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -196,7 +196,12 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNTUWRoSTFjS3
 </validate-jwt>
 ```
 
+## <a name="build-an-application-to-call-the-api"></a>生成应用程序来调用 API
+
+在本指南中，我们使用了 APIM 中的开发者控制台作为示例客户端应用程序来调用由 OAuth 2.0 保护的 `Echo API`。 若要详细了解如何生成应用程序并实现 OAuth 2.0 流，请参阅 [Azure Active Directory 代码示例](../active-directory/develop/active-directory-code-samples.md)。
+
 ## <a name="next-steps"></a>后续步骤
+* 详细了解 [Azure Active Directory 和 OAuth2.0](../active-directory/develop/active-directory-authentication-scenarios.md)
 * 观看有关 API 管理的更多[视频](https://azure.microsoft.com/documentation/videos/index/?services=api-management)。
 * 有关保护后端服务的其他方法，请参阅[使用证书进行相互身份验证](api-management-howto-mutual-certificates.md)。
 

@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 03/29/2018
 ms.author: kumud
-ms.openlocfilehash: 9f5a68972015f54e2333199652075cda2535a3c8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f5d46fda6bdb32c1a5000883c6aedb2da15e796a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>标准负载均衡器和可用性区域
 
 Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones/az-overview.md)场景。 标准负载均衡器使用多种新的概念，可让资源适应区域并在区域之间分配资源，从而在端到端场景中优化可用性。  请查看[可用性区域](../availability-zones/az-overview.md)来了解可用性区域的定义、目前哪些区域支持可用性区域，以及其他相关的概念和产品。 可用性区域与标准负载均衡器的结合是一个可扩展的灵活功能集，可以创建多种不同的场景。  请查看本文档了解这些[概念](#concepts)和基本场景的[设计指南](#design)。
 
 >[!NOTE]
->有关其他相关主题，请查看[可用性区域预览版](https://aka.ms/availabilityzones)。 
+>有关其他相关主题，请查看[可用性区域](https://aka.ms/availabilityzones)。 
 
 ## <a name="concepts"></a> 适用于负载均衡器的可用性区域概念
 
@@ -43,7 +43,7 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
 
 负载均衡器前端是引用虚拟网络资源子网中的公共 IP 地址资源或专用 IP 地址的前端 IP 配置。  它构成了公开服务的负载均衡终结点。
 
-负载均衡器资源可以同时包含局域性和区域冗余的前端。
+负载均衡器资源可以同时包含局域性和区域冗余的前端。 
 
 如果保证某个公共 IP 资源属于某个区域，则局域性（或缺少局域性）是不可变的。  若要更改或省略公共 IP 前端的局域性，则需要在相应的区域中重新创建公共 IP。  
 
@@ -219,3 +219,5 @@ Azure 负载均衡器的标准 SKU 支持[可用性区域](../availability-zones
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[可用性区域](../availability-zones/az-overview.md)
 - 详细了解[标准负载均衡器](load-balancer-standard-overview.md)
+- 了解如何[使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](load-balancer-standard-public-zonal-cli.md)
+- 了解如何[使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](load-balancer-standard-public-zone-redundant-cli.md)

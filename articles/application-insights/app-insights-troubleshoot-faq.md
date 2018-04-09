@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 721799703923339d397113fc278cdeb6c6dbb88f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 245bd348b9eb5b434360d734e219efd7c663a406
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="how-much-is-it-costing"></a>花费是多少？
 
-* 在 Application Insights 资源中打开“功能 + 定价”页面。 此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
+* 在 Application Insights 资源中打开“使用情况和预估成本”页面。 此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
 * 打开 [Azure 计费边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)查看所有资源的帐单。
 
 ## <a name="q14"></a>Application Insights 在我的项目中修改哪些内容？

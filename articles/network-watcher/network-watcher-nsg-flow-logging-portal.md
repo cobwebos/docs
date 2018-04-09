@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 网络观察程序管理网络安全组流日志 | Microsoft Docs"
-description: "此页说明如何在 Azure 网络观察程序中管理网络安全组流日志"
+title: 使用 Azure 网络观察程序管理网络安全组流日志 | Microsoft Docs
+description: 此页说明如何在 Azure 网络观察程序中管理网络安全组流日志
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 633543aba99f5c09b14a9e4b11adf59ca04d0fe5
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cb41781c5ac8fb759cecea01402c08dd716bf7d7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-network-security-group-flow-logs-in-the-azure-portal"></a>在 Azure 门户中管理网络安全组流日志
 
@@ -38,7 +38,10 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="before-you-begin"></a>开始之前
 
-此方案假定你已按照[创建网络观察程序实例](network-watcher-create.md)中的步骤进行操作。 此方案还假定包含有效虚拟机的资源组已存在。
+若要完成本文中的步骤，必须已有以下资源：
+
+- 一个现有的网络观察程序。 若要创建网络观察程序，请参阅[创建网络观察程序实例](network-watcher-create.md)。
+- 一个包含有效虚拟机的现有资源组。 如果没有虚拟机，请创建 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 或 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 虚拟机。
 
 ## <a name="register-insights-provider"></a>注册 Insights 提供程序
 
@@ -68,7 +71,7 @@ ms.lasthandoff: 12/21/2017
 
 ### <a name="step-3"></a>步骤 3 
 
-在“流日志设置”边栏选项卡上，将状态设置为“打开”，然后配置存储帐户。  完成后，请选择“确定”。 再选择“保存”。
+在“流日志设置”边栏选项卡上，将状态设置为“打开”，然后配置存储帐户。 选择在存储帐户的“设置”下在“防火墙和虚拟网络”下选择了“所有网络”（默认值）的一个现有存储帐户。 选择存储帐户后，选择“确定”，然后选择“保存”。
 
 ![流日志概述][3]
 

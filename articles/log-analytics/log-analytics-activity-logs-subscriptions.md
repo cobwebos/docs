@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/08/2018
+ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 23e4b7c74e6dfb88ec6ec50d5b8ae6d8288223f3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 434cbdca42e4287a0f3d7e3960bc0baa373bc358
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>将 Azure 活动日志收集到不同订阅中的 Log Analytics
 
@@ -324,9 +324,9 @@ ms.lasthandoff: 03/28/2018
 ## <a name="step-5---view-azure-activity-log-in-log-analytics"></a>步骤 5 - 在 Log Analytics 中查看 Azure 活动日志
 最后一步是检查 Log Analytics 工作区，以确保按预期收集数据。
 
-1. 在 Azure 门户中，选择“Log Analytics”。
-2. 选择所需的工作区，然后单击“日志搜索”磁贴。
-3. 在搜索查询栏中键入 `AzureActivity_CL`，然后单击搜索按钮。 如果未将自定义日志命名为 *AzureActivity*，请键入所选的名称，并在其后面追加 `_CL`。
+1. 在 Azure 门户中，单击左上角的“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
+2. 在 Log Analytics 工作区列表中选择工作区。
+3.  单击“日志搜索”磁贴并在“日志搜索”窗格上的查询字段中键入 `AzureActivity_CL`，然后按 Enter 或单击查询字段右侧的搜索按钮。 如果未将自定义日志命名为 *AzureActivity*，请键入所选的名称，并在其后面追加 `_CL`。
 
 >[!NOTE]
 > 首次将新的自定义日志发送到 Log Analytics 后，最长可能需要经过一小时，该自定义日志才可供搜索。

@@ -1,8 +1,8 @@
 ---
-title: "使用 Privileged Identity Management (PIM) 管理对 Azure 资源的访问"
-description: "了解如何使用 PIM 中基于角色的访问管理访问 Azure 资源。"
+title: 使用 Privileged Identity Management (PIM) 管理对 Azure 资源的访问
+description: 了解如何使用 PIM 中基于角色的访问管理访问 Azure 资源。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: skwan
 manager: mtillman
 editor: bryanla
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/22/2017
-ms.author: skwan
-ms.openlocfilehash: 1f31d8b76351ac8871f8a5b03d513f7b6704c709
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.date: 03/30/2018
+ms.author: billmath
+ms.openlocfilehash: 1e74579ef2f0e18f23a40dfc573177938b9b726f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="manage-access-to-azure-resources-with-privileged-identity-management-preview"></a>使用 Privileged Identity Management 管理对 Azure 资源的访问（预览）
+# <a name="manage-access-to-azure-resources-with-privileged-identity-management"></a>使用 Privileged Identity Management 管理对 Azure 资源的访问
 
 为了保护特权帐户免受恶意网络攻击，可以使用 Azure Active Directory Privileged Identity Management (PIM) 来降低权限的暴露时间，并通过报表和警报增加对使用的可见性。 PIM 通过限制用户仅采用“实时”(JIT) 权限，或通过在缩短的持续时间内分配权限（之后权限会自动撤销）来实现这一目的。 
 

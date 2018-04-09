@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor 中的准实时指标警报 | Microsoft Docs
-description: 了解如何使用准实时指标警报以小到 1 分钟的频率监视 Azure 资源指标。
+title: Azure Monitor 支持的资源中的新型指标警报 | Microsoft Docs
+description: 新型 Azure 准实时指标警报的支持指标和日志参考。
 author: snehithm
 manager: kmadnani1
 editor: ''
@@ -12,64 +12,71 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 03/26/2018
 ms.author: snmuvva, vinagara
 ms.custom: ''
-ms.openlocfilehash: 88995b1f3350fe485e28efccc93779ae0a42eb97
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 6ccb095f3739a90bdab2408965a742f9cbc19359
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="near-real-time-metric-alerts-preview"></a>准实时指标警报（预览版）
-Azure Monitor 支持一种称为“准实时指标警报 (预览版)”的新警报类型。 此功能目前处于公共预览状态。
+# <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Azure 门户中 Azure 服务的新型指标警报
+Azure Monitor 现在支持一种新型指标警报类型。 新型警报与[经典指标警报](insights-alerts-portal.md)在以下方面有所不同：
 
-准实时指标警报与常规指标警报在以下方面有所不同：
+- **延迟降低**：新型指标警报的运行频率可达每分钟一次。 旧式指标警报每 5 分钟方可运行 1 次。 由于引入日志需要时间，日志警报的延迟仍然超过 1 分钟。 
+- **支持多维指标**：支持对维度指标发出警报，从而可仅监视关注的指标段。 
+- **更好地控制指标条件**：可以定义更丰富的警报规则。 新型警报支持监视指标的最大值、最小值、平均值和总值。 
+- **综合监视多个指标**：可以使用单个规则监视多个指标（目前最多为两个指标）。 如果两个指标在指定时间段内违反其各自的阈值，则会触发警报。 
+- **更好的通知系统**：所有新型警报均使用[操作组](monitoring-action-groups.md)，这些组是命名的通知和操作组，可以在多个警报中重复使用。 经典指标警报和旧版 Log Analytics 警报不使用操作组。 
+- **日志中的指标**（受限公共预览版）：进入 Log Analytics 的日志数据现在可以提取并转换为 Azure Monitor 指标，然后就像其他指标一样，基于其发出警报。 
 
-- **改进了延迟**：准实时指标警报可以以小到 1 分钟的频率监视指标值的变化。
-- **更好地控制指标条件**：可以在准实时指标警报中定义更丰富的警报规则。 这些警报支持监视指标的最大值、最小值、平均值和总值。
-- **日志中的指标**：从传入 [Log Analytics](../log-analytics/log-analytics-overview.md) 的常用日志数据中，可将指标提取到 Azure Monitor 中，并收到准实时警报
-- **综合监视多个指标**：准实时指标警报可以使用单个规则监视多个指标（目前最多为两个指标）。 如果两个指标在指定时间段内违反其各自的阈值，则会触发警报。
-- **模块化通知系统**：准实时指标警报使用[操作组](monitoring-action-groups.md)。 可以使用操作组创建模块化操作。 可以对多个警报规则重复使用操作组。
+若要了解如何在 Azure 门户中创建新型指标警报，请参阅[在 Azure 门户中创建警报规则](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal)。 创建后，可以按照[在 Azure 门户中管理警报](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal)中所述的步骤管理警报。
 
-> [!NOTE]
-> 准实时指标警报目前处于公共预览状态。 并且来自日志功能的指标处于“有限”公共预览状态。 功能和用户体验可能会发生变化。
->
+
+## <a name="portal-powershell-cli-rest-support"></a>门户、PowerShell、CLI、REST 支持
+目前，仅可在 Azure 门户 或 REST API 中创建新型指标报警。 即将推出使用 PowerShell 和 Azure 命令行接口 (Azure CLI 2.0) 配置新型警报的支持功能。
 
 ## <a name="metrics-and-dimensions-supported"></a>指标和维度支持
-准实时指标警报支持针对使用维度的指标发出警报。 可以使用维度将指标筛选到适当级别。 所有受支持的指标以及适用的维度都可以从 [Azure Monitor - 指标资源管理器（预览）](monitoring-metric-charts.md)中进行浏览和可视化。
+新型指标警报支持针对使用维度的指标发出警报。 可以使用维度将指标筛选到适当级别。 所有受支持的指标以及适用的维度都可以从 [Azure Monitor - 指标资源管理器（预览）](monitoring-metric-charts.md)中进行浏览和可视化。
 
-下面是支持准实时指标警报且基于 Azure Monitor 的指标资源的完整列表：
+下面是新型警报支持的 Azure Monitor 指标源的完整列表：
 
-|指标名称/详细信息  |支持的维度  |
-|---------|---------|
-|Microsoft.ApiManagement/service     | 是        |
-|Microsoft.Automation/automationAccounts     |     不适用    |
-|Microsoft.Automation/automationAccounts     |   不适用      |
-|Microsoft.Cache/Redis     |    不适用     |
-|Microsoft.Compute/virtualMachines     |    不适用     |
-|Microsoft.Compute/virtualMachineScaleSets     |   不适用      |
-|Microsoft.DataFactory/factories     |   不适用      |
-|Microsoft.DBforMySQL/servers     |   不适用      |
-|Microsoft.DBforPostgreSQL/servers     |    不适用     |
-|Microsoft.EventHub/namespaces     |   不适用      |
-|Microsoft.Logic/workflows     |     不适用    |
-|Microsoft.Network/applicationGateways     |    不适用     |
-|Microsoft.Network/publicipaddresses     |  不适用       |
-|Microsoft.Search/searchServices     |   不适用      |
-|Microsoft.ServiceBus/namespaces     |  不适用       |
-|Microsoft.Storage/storageAccounts     |    是     |
-|Microsoft.Storage/storageAccounts/services     |     是    |
-|Microsoft.StreamAnalytics/streamingjobs     |  不适用       |
-|Microsoft.CognitiveServices/accounts     |    不适用     |
+|资源类型  |支持的维度  | 可用指标|
+|---------|---------|----------------|
+|Microsoft.ApiManagement/service     | 是        | [API 管理](monitoring-supported-metrics.md#microsoftapimanagementservice)|
+|Microsoft.Automation/automationAccounts     |     是   | [自动化帐户](monitoring-supported-metrics.md#microsoftautomationautomationaccounts)|
+|Microsoft.Batch/batchAccounts | 不适用| [Batch 帐户](monitoring-supported-metrics.md#microsoftbatchbatchaccounts)|
+|Microsoft.Cache/Redis     |    不适用     |[Redis 缓存](monitoring-supported-metrics.md#microsoftcacheredis)|
+|Microsoft.Compute/virtualMachines     |    不适用     | [虚拟机](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)|
+|Microsoft.Compute/virtualMachineScaleSets     |   不适用      |[虚拟机规模集](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.DataFactory/factories     |   是     |[数据工厂 V2](monitoring-supported-metrics.md#microsoftdatafactoryfactories)|
+|Microsoft.DBforMySQL/servers     |   不适用      |[适用于 MySQL 的 DB](monitoring-supported-metrics.md#microsoftdbformysqlservers)|
+|Microsoft.DBforPostgreSQL/servers     |    不适用     | [适用于 PostgreSQL 的 DB](monitoring-supported-metrics.md#microsoftdbforpostgresqlservers)|
+|Microsoft.EventHub/namespaces     |  是      |[事件中心](monitoring-supported-metrics.md#microsofteventhubnamespaces)|
+|Microsoft.Logic/workflows     |     不适用    |[逻辑应用](monitoring-supported-metrics.md#microsoftlogicworkflows) |
+|Microsoft.Network/applicationGateways     |    不适用     | [应用程序网关](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
+|Microsoft.Network/publicipaddresses     |  不适用       |[公共 IP 地址](monitoring-supported-metrics.md#microsoftnetworkpublicipaddresses)|
+|Microsoft.Search/searchServices     |   不适用      |[搜索服务](monitoring-supported-metrics.md#microsoftsearchsearchservices)|
+|Microsoft.ServiceBus/namespaces     |  是       |[服务总线](monitoring-supported-metrics.md#microsoftservicebusnamespaces)|
+|Microsoft.Storage/storageAccounts     |    是     | [存储帐户](monitoring-supported-metrics.md#microsoftstoragestorageaccounts)|
+|Microsoft.Storage/storageAccounts/services     |     是    | [Blob 服务](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices)、[文件服务](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices)、[队列服务](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices)和[表服务](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
+|Microsoft.StreamAnalytics/streamingjobs     |  不适用       | [流分析](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
+|Microsoft.CognitiveServices/accounts     |    不适用     | [认知服务](monitoring-supported-metrics.md#microsoftcognitiveservicesaccounts)|
+|Microsoft.OperationalInsights/workspaces（预览版） | 是|[Log Analytics 工作区](#log-analytics-logs-as-metrics-for-alerting)|
 
 
-来自于日志的指标当前支持以下常用 OMS 日志：
+## <a name="log-analytics-logs-as-metrics-for-alerting"></a>Log Analytics 日志作为警报的指标 
+
+还可在常用 Log Analytics 日志中使用新型指标警报，Log Analytics 日志提取为指标，是日志预览中指标的一部分。  
 - 适用于 Windows 和 Linux 计算机的[性能计数器](../log-analytics/log-analytics-data-sources-performance-counters.md)
-- 计算机的检测信号记录
+- [代理运行状况的检测信号记录](../operations-management-suite/oms-solution-agenthealth.md)
 - [更新管理](../operations-management-suite/oms-solution-update-management.md)记录
+ 
+> [!NOTE]
+> 只有在选定期间内存在其数据时，特定的指标和/或维度才会显示。 在美国东部、美国中西部和西欧具有工作区且已选择加入预览版的客户可使用这些指标。 如果希望参与此预览版，请前往[调查](https://aka.ms/MetricLogPreview)页面进行注册。
 
-下面是支持准实时指标警报且基于 OMS 日志的指标资源的完整列表：
+支持下面列出的基于 Log Analytics 日志的指标源：
 
 指标名称/详细信息  |支持的维度  | 日志类型  |
 |---------|---------|---------|
@@ -142,22 +149,11 @@ Azure Monitor 支持一种称为“准实时指标警报 (预览版)”的新警
 |    检测信号  |     是 - Computer, OSType, Version & SourceComputerId    |   检测信号记录 |
 |    更新 |     是 - Computer, Product, Classification, UpdateState, Optional & Approved    |   更新管理 |
 
-> [!NOTE]
-> 只有在选定期间内存在其数据时，特定的指标和/或维度才会显示
 
-## <a name="create-a-near-real-time-metric-alert"></a>创建准实时指标警报
-目前，只能在 Azure 门户中创建准实时指标警报。 即将推出通过使用 PowerShell、Azure 命令行接口 (Azure CLI) 和 Azure Monitor REST API 配置准实时指标警报的支持功能。
-
-创建准实时指标警报的体验已移动到新的“警报(预览)”页。 即使当前“警报”页显示了“添加准实时指标警报”，也会将你重定向到“警报(预览)”页。
-
-若要了解如何创建准实时指标警报，请参阅[在 Azure 门户中创建警报规则](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal)。
-
-## <a name="manage-near-real-time-metric-alerts"></a>管理准实时指标警报
-创建准实时指标警报后，可以按照[在 Azure 门户中管理警报](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal)中所述的步骤管理警报。
 
 ## <a name="payload-schema"></a>负载架构
 
-使用适当配置的[操作组](monitoring-action-groups.md)时，POST 操作对于所有准实时指标警报包含以下 JSON 有效负载和架构：
+使用适当配置的[操作组](monitoring-action-groups.md)时，POST 操作对于所有准新型指标警报包含以下 JSON 有效负载和架构：
 
 ```json
 {"schemaId":"AzureMonitorMetricAlert","data":
@@ -209,6 +205,6 @@ Azure Monitor 支持一种称为“准实时指标警报 (预览版)”的新警
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关新的[“警报(预览)”体验](monitoring-overview-unified-alerts.md)的详细信息。
-* 了解 [Azure 警报（预览）中的日志警报](monitor-alerts-unified-log.md)。
+* 详细了解新式[警报体验](monitoring-overview-unified-alerts.md)。
+* 了解 [Azure 中的日志警报](monitor-alerts-unified-log.md)。
 * 了解 [Azure 中的警报](monitoring-overview-alerts.md)。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: eee7905db4faedef3217118e8d491e2cb019fa30
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a56413490decc928ff2643213084155ae469871c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD 域服务的网络注意事项
 ## <a name="how-to-select-an-azure-virtual-network"></a>如何选择 Azure 虚拟网络
@@ -73,7 +73,7 @@ Azure AD 域服务需要使用以下端口来维护和管理托管域。 确保�
 **端口 443（与 Azure AD 同步）**
 * 此端口用于将 Azure AD 目录与托管域同步。
 * 必须允许在 NSG 中访问此端口。 如果不允许访问此端口，则托管域不会与 Azure AD 目录同步。 用户可能无法登录，因为对其密码所做的更改不会同步到托管域。
-* 可将此端口的入站访问限制为属于 Azure IP 地址范围的 IP 地址。
+* 可将此端口的入站访问限制为属于 Azure IP 地址范围的 IP 地址。 注意，Azure IP 地址范围不同于下面的规则中显示的 PowerShell 范围。
 
 **端口 5986（PowerShell 远程处理）**
 * 使用此端口可通过托管域上的 PowerShell 远程处理来执行管理任务。

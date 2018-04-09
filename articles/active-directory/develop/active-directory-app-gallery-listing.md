@@ -1,32 +1,32 @@
 ---
-title: "在 Azure Active Directory 应用程序库中列出你的应用程序 | Microsoft Docs"
-description: "如何在 Azure Active Directory 应用库中列出支持单一登录的应用程序"
+title: 在 Azure Active Directory 应用程序库中列出你的应用程序 | Microsoft Docs
+description: 如何在 Azure Active Directory 应用库中列出支持单一登录的应用程序
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/09/2018
+ms.date: 03/20/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 502fb555bd3b381c9be0ff04e210cc07f9bf6cd8
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: e02c60d46fe709c8d418ea4743ba383147e9ddac
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 应用程序库中列出你的应用程序
 
 
 ##  <a name="what-is-the-azure-ad-application-gallery"></a>什么是 Azure AD 应用程序库？
 
-Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD 应用程序库](https://azure.microsoft.com/marketplace/active-directory/all/)位于 Azure Marketplace 应用商店中，所有应用程序连接器都发布在其中以用于实现单一登录和用户预配。 使用 Azure AD 作为标识提供者的客户可以查找发布在这里的各种 SaaS 应用程序连接器。 IT 管理员从应用库中添加连接器，然后对连接器进行配置并将其用于单一登录和预配。 Azure AD 支持使用所有主要的联合身份验证协议（包括 SAML 2.0、OpenID Connect、OAuth 和 WS-Fed）进行单一登录。 
+Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD 应用程序库](https://azure.microsoft.com/marketplace/active-directory/all/)位于 Azure Marketplace 应用商店中，所有应用程序连接器都发布在其中以用于实现单一登录和用户预配。 使用 Azure AD 作为标识提供者的客户可以查找发布在这里的各种 SaaS 应用程序连接器。 IT 管理员从应用库中添加连接器，然后对连接器进行配置并将其用于单一登录和预配。 Azure AD 支持使用所有主要的联合身份验证协议（包括 SAML 2.0、OpenID Connect、OAuth 和 WS-Fed）进行单一登录。
 
 ## <a name="what-are-the-benefits-of-listing-an-application-in-the-gallery"></a>将应用程序列在该库中有什么好处？
 
@@ -51,7 +51,21 @@ Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD
 
 *   **SAML 2.0** 或 **WS-Fed**：应用程序需要能够以 SP 或 IDP 模式执行 SAML/WS-Fed SSO 集成。 如果你的应用支持 SAML 2.0，则可以根据[用来添加自定义应用程序的说明](../active-directory-saas-custom-apps.md)将其直接与 Azure AD 租户集成。
 
-*   **密码 SSO**：创建具有 HTML 登录页面的 Web 应用程序来配置[基于密码的单一登录](../active-directory-appssoaccess-whatis.md)。 基于密码的 SSO 也称为密码保管，可用于管理不支持标识联合的 Web 应用程序中的用户访问权限和密码。 如果有多个用户需要共享单个帐户（例如共享组织的社交媒体应用帐户），此功能也很有用。 
+*   **密码 SSO**：创建具有 HTML 登录页面的 Web 应用程序来配置[基于密码的单一登录](../active-directory-appssoaccess-whatis.md)。 基于密码的 SSO 也称为密码保管，可用于管理不支持标识联合的 Web 应用程序中的用户访问权限和密码。 如果有多个用户需要共享单个帐户（例如共享组织的社交媒体应用帐户），此功能也很有用。
+
+##  <a name="updateremove-existing-listing"></a>更新/删除现有列表
+
+若要更新或删除 Azure AD 应用库中的现有应用程序，首先需要在[应用程序网络门户](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交请求。 如果你有 Office 365 帐户，请使用该帐户登录到此门户。 如果没有，请使用 Microsoft 帐户（例如 Outlook 或 Hotmail）进行登录。
+
+* 从下图中选择合适的选项
+
+    ![将 SAML 应用程序列到库中的时间线](./media/active-directory-app-gallery-listing/updateorremove.png)
+
+    * 如果要更新现有应用程序，请选择“更新现有应用程序列表”。
+
+    * 如果要从 Azure AD 库中删除现有应用程序，请选择“删除现有应用程序列表”
+
+    * 如果你有关于访问的任何问题，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 
 
 ## <a name="submit-the-request-in-the-portal"></a>在门户中提交请求
 
@@ -75,5 +89,4 @@ Azure Active Directory (Azure AD) 是一种基于云的标识服务。 [Azure AD
 
 ## <a name="escalations"></a>升级
 
-若要进行升级，请向 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)发送电子邮件，我们会尽快进行回复。
-
+若要进行升级，请向 [Azure AD SSO 集成团队](mailto:SaaSApplicationIntegrations@service.microsoft.com)发送电子邮件，电子邮件地址为 SaaSApplicationIntegrations@service.microsoft.com，我们会尽快进行回复。

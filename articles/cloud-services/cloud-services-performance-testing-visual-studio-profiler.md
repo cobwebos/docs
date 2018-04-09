@@ -1,12 +1,12 @@
 ---
-title: "在计算模拟器中本地分析云服务 | Microsoft Docs"
+title: 在计算模拟器中本地分析云服务 | Microsoft Docs
 services: cloud-services
-description: "使用 Visual Studio 探查器调查云服务中的性能问题"
-documentationcenter: 
+description: 使用 Visual Studio 探查器调查云服务中的性能问题
+documentationcenter: ''
 author: mikejo
-manager: ghogen
-editor: 
-tags: 
+manager: douge
+editor: ''
+tags: ''
 ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
 ms.service: cloud-services
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: ee7febeb04d3a956b4a0a11b69f8f34acee23067
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8ff7b88a3086488ab669288687c274237ca30b47
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>在 Azure 计算模拟器中使用 Visual Studio 探查器来本地测试云服务的性能
 可通过各种工具和技术来测试云服务的性能。
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/21/2018
 本文包含了 CPU 采样分析方法，可在模拟器中本地执行该方法。 CPU 采样是一种干预性不是很强的分析方法。 探查器将按照指定的采样时间间隔拍摄调用堆栈的快照。 将收集一段时间内的数据并将其显示在报告中。 此分析方法倾向于指示在具有大量计算的应用程序中执行大多数 CPU 工作的位置。  这使你能够侧重于应用程序在其上花费最多时间的“热路径”。
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1：配置 Visual Studio 以进行分析
-首先，提供了几个 Visual Studio 配置选项，这些选项在分析时可能会有用。 要使分析报告变得有意义，需要应用程序的符号（.pdb 文件）与系统库的符号。 需要确保引用可用的符号服务器。 为此，请在 Visual Studio 中的“**工具**”菜单上，依次选择“**选项**”、“**调试**”和“**符号**”。 确保**符号文件 (.pdb) 位置**下方列出了 Microsoft 符号服务器。  也可参考 http://referencesource.microsoft.com/symbols，其上可能提供了其他符号文件。
+首先，提供了几个 Visual Studio 配置选项，这些选项在分析时可能会有用。 要使分析报告变得有意义，需要应用程序的符号（.pdb 文件）与系统库的符号。 需要确保引用可用的符号服务器。 为此，请在 Visual Studio 中的“**工具**”菜单上，依次选择“**选项**”、“**调试**”和“**符号**”。 确保**符号文件 (.pdb) 位置**下方列出了 Microsoft 符号服务器。  还可以引用 http://referencesource.microsoft.com/symbols，它可能具有附加的符号文件。
 
 ![“符号”选项][4]
 

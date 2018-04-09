@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/24/2018
 ms.author: sedusch
-ms.openlocfilehash: b84b523f919e6b253462139b6888e5eb16248084
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f8c01c4e3f060c6a5ad52f1ed16103ea42d8cd2b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Azure 虚拟机 (VM) 上的 SAP HANA 高可用性
 
@@ -290,7 +290,7 @@ Azure Marketplace 中包含适用于 SUSE Linux Enterprise Server for SAP Applic
     
     ```
 
-若要安装 SAP HANA 系统复制，请遵循 [SAP HANA SR 性能优化方案指南][suse-hana-ha-guide]的第 4 章。
+若要安装 SAP HANA 系统复制，请按照 SAP HANA SR 性能优化方案指南 (https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/) 的第 4 章进行操作
 
 1. [A] 从 HANA DVD 运行 hdblcm
     * 选择安装 -> 1

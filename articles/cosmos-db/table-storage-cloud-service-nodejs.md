@@ -1,6 +1,6 @@
 ---
-title: "Azure 表存储：生成 Web 应用 Node.js | Microsoft Docs"
-description: "本教程以“使用 Express 构建 Web 应用程序”教程为基础，演示如何添加 Azure 存储服务和 Azure 模块。"
+title: Azure 表存储：生成 Web 应用 Node.js | Microsoft Docs
+description: 本教程以“使用 Express 构建 Web 应用程序”教程为基础，演示如何添加 Azure 存储服务和 Azure 模块。
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 03/29/2018
 ms.author: mimig
-ms.openlocfilehash: 9acd197c26e6365e396fd8f6321d764bba7bbb6c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: b63f6b3be2e4576b304c1a73ff326a937815b27e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-table-storage-nodejs-web-application"></a>Azure 表存储：Node.js Web 应用程序
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/18/2018
 ## <a name="overview"></a>概述
 本教程通过用于 Node.js 的 Microsoft Azure 客户端库与数据管理服务配合使用，来扩展在[使用 Express 生成 Node.js Web 应用程序]教程中创建的应用程序。 将扩展应用程序以创建可部署到 Azure 的基于 Web 的任务列表应用程序。 用户可以通过任务列表来检索任务、添加新任务以及将任务标记为已完成。
 
-任务项存储在 Azure 存储中。 Azure 存储提供了具有容错能力且可用性非常好的非结构化数据存储。 Azure 存储包含一些可用来存储和访问数据的数据结构。 可以通过用于 Node.js 的 Azure SDK 中包含的 API 或通过 REST API 来使用存储服务。 有关详细信息，请参阅[在 Azure 中存储和访问数据]。
+任务项存储在 Azure 存储或 Azure Cosmos DB 中。 Azure 存储和 Azure Cosmos DB 提供了具有容错能力且可用性非常好的非结构化数据存储。 Azure 存储和 Azure Cosmos DB 包含一些可用来存储和访问数据的数据结构。 可以通过用于 Node.js 的 Azure SDK 中包含的 API 或通过 REST API 来使用存储服务和 Azure Cosmos DB 服务。 有关详细信息，请参阅[在 Azure 中存储和访问数据]。
 
 本教程假定已完成 [Node.js Web 应用程序]和[使用 Express 的 Node.js][使用 Express 生成 Node.js Web 应用程序] 教程。
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/18/2018
 ![Internet Explorer 中已完成的网页](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
 
 ## <a name="setting-storage-credentials-in-webconfig"></a>在 Web.Config 中设置存储凭据
-必须传入存储凭据才能访问 Azure 存储。 为此，可利用 web.config 应用程序设置。
+必须传入存储凭据才能访问 Azure 存储或 Azure Cosmos DB。 为此，可利用 web.config 应用程序设置。
 web.config 设置作为环境变量传递给 Node，并再由 Azure SDK 进行读取。
 
 > [!NOTE]
@@ -144,7 +144,7 @@ web.config 设置作为环境变量传递给 Node，并再由 Azure SDK 进行�
     Task.prototype = {
       find: function(query, callback) {
         self = this;
-        self.storageClient.queryEntities(query, function entitiesQueried(error, result) {
+        self.storageClient.queryEntities(this.tablename, query, null, null, function entitiesQueried(error, result) {
           if(error) {
             callback(error);
           } else {
@@ -181,7 +181,7 @@ web.config 设置作为环境变量传递给 Node，并再由 Azure SDK 进行�
             callback(error);
           }
           entity.completed._ = true;
-          self.storageClient.updateEntity(self.tableName, entity, function entityUpdated(error) {
+          self.storageClient.replaceEntity(self.tableName, entity, function entityUpdated(error) {
             if(error) {
               callback(error);
             }
@@ -215,7 +215,7 @@ web.config 设置作为环境变量传递给 Node，并再由 Azure SDK 进行�
     TaskList.prototype = {
       showTasks: function(req, res) {
         self = this;
-        var query = azure.TableQuery()
+        var query = new azure.TableQuery()
           .where('completed eq ?', false);
         self.task.find(query, function itemsFound(error, items) {
           res.render('index',{title: 'My ToDo List ', tasks: items});
@@ -224,7 +224,10 @@ web.config 设置作为环境变量传递给 Node，并再由 Azure SDK 进行�
 
       addTask: function(req,res) {
         var self = this
-        var item = req.body.item;
+        var item = {
+            name: req.body.name, 
+            category: req.body.category
+        };
         self.task.addItem(item, function itemAdded(error) {
           if(error) {
             throw error;
@@ -307,7 +310,7 @@ web.config 设置作为环境变量传递给 Node，并再由 Azure SDK 进行�
             td Category
             td Date
             td Complete
-          if tasks != []
+          if tasks == []
             tr
               td
           else
@@ -325,9 +328,9 @@ web.config 设置作为环境变量传递给 Node，并再由 Azure SDK 进行�
       hr
       form.well(action="/addtask", method="post")
         label Item Name:
-        input(name="item[name]", type="textbox")
+        input(name="name", type="textbox")
         label Item Category:
-        input(name="item[category]", type="textbox")
+        input(name="category", type="textbox")
         br
         button.btn(type="submit") Add item
     ```
@@ -414,7 +417,7 @@ Azure 将按使用的服务器小时数对 Web 角色实例计费。
    删除服务可能需要花费几分钟时间。 删除服务后，会收到一条指示服务已被删除的消息。
 
 [使用 Express 生成 Node.js Web 应用程序]: http://azure.microsoft.com/develop/nodejs/tutorials/web-app-with-express/
-[在 Azure 中存储和访问数据]: http://msdn.microsoft.com/library/azure/gg433040.aspx
+[在 Azure 中存储和访问数据]: https://docs.microsoft.com/azure/storage/
 [Node.js Web 应用程序]: http://azure.microsoft.com/develop/nodejs/tutorials/getting-started/
 
 

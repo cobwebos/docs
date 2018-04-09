@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a527939d6bc73e3dee5701bc53ef8312e68d2953
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ac7ddbccdef736bce941716883cf821a0f5c1f34
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>排查 Azure 容器实例的部署问题
+# <a name="troubleshoot-container-and-deployment-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的容器和部署问题
 
 本文展示了如何排查向 Azure 容器实例部署容器时出现的问题。 还介绍了一些可能会遇到的常见问题。
 

@@ -1,11 +1,11 @@
 ---
-title: "使用 Windows PowerShell 脚本发布到开发和测试环境 | Microsoft Docs"
-description: "了解如何使用 Windows PowerShell 脚本通过 Visual Studio 发布到开发和测试环境。"
+title: 使用 Windows PowerShell 脚本发布到开发和测试环境 | Microsoft Docs
+description: 了解如何使用 Windows PowerShell 脚本通过 Visual Studio 发布到开发和测试环境。
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 5fff1301-5469-4d97-be88-c85c30f837c1
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 4e9409aac836a60e7ea01261840c084ff09e954e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.author: ghogen
+ms.openlocfilehash: 58d1c8398e626544a7b02198ec0431203aedcc81
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>使用 Windows PowerShell 脚本发布到开发和测试环境
 
@@ -251,7 +251,7 @@ JSON 文件是在 **Configurations** 文件夹中创建的，其中包含的配�
         #Write a function to build and package your web application
     ```
 
-    若要生成 Web 应用程序，请使用 MsBuild.exe。 有关帮助，请参阅以下网页中的 MSBuild 命令行参考：[http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339)
+    若要生成 Web 应用程序，请使用 MsBuild.exe。 有关帮助，请参阅位于以下页面的 MSBuild 命令行参考：[http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339)
 
     ```powershell
     Write-VerboseWithTime 'Build-WebDeployPackage: Start'

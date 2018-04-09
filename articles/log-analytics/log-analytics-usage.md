@@ -1,27 +1,27 @@
 ---
-title: "在 Log Analytics 中分析数据使用情况| Microsoft Docs"
-description: "在 Log Analytics 中通过“使用情况”仪表板查看发送到 Log Analytics 服务的数据量，排查发送大量数据的原因。"
+title: 在 Log Analytics 中分析数据使用情况| Microsoft Docs
+description: 使用 Log Analytics 中的“使用情况和估计的成本”仪表板来估算发送到 Log Analytics 的数据，确定哪些原因可能导致增量无法预见。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/13/2018
+ms.date: 03/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 8d6baa6b46290c7a332f5cf780c7f70680fb6a2c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7e141dcf69c1a173c60cb96907cae2ba9f119b03
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>在 Log Analytics 中分析数据使用情况
-Log Analytics 包括以下信息：收集的数据量、哪些系统发送了数据、所发送数据的不同类型。  可以通过“Log Analytics 使用情况”仪表板查看发送到 Log Analytics 服务的数据量。 该仪表板显示每个解决方案收集的数据量，以及计算机所发送的数据量。
+Log Analytics 包括以下信息：收集的数据量、哪些源发送了数据、所发送数据的不同类型。  使用“Log Analytics 使用情况”仪表板查看和分析数据使用情况。 该仪表板显示每个解决方案收集的数据量，以及计算机所发送的数据量。
 
 ## <a name="understand-the-usage-dashboard"></a>了解“使用情况”仪表板
 “Log Analytics 使用情况”仪表板会显示以下信息：
@@ -41,20 +41,17 @@ Log Analytics 包括以下信息：收集的数据量、哪些系统发送了数
     - 收集数据和为数据建索引所花的时间  
 - 查询列表
 
-![使用情况仪表板](./media/log-analytics-usage/usage-dashboard01.png)
+![使用情况和成本仪表板](./media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
+)
 
 ### <a name="to-work-with-usage-data"></a>处理使用情况数据
-1. 如果尚未登录 [Azure 门户](https://portal.azure.com)，请使用 Azure 订阅登录。
-2. 单击“所有服务”，然后在资源列表中键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 单击“Log Analytics”。  
-    ![Azure 中心](./media/log-analytics-usage/hub.png)
-3. “Log Analytics”仪表板会显示工作区的列表。 选择工作区。
-4. 在“工作区”仪表板中，单击“Log Analytics 使用情况”。
-5. 在“Log Analytics 使用情况”仪表板中，单击“时间: 过去 24 小时”更改时间间隔。  
-    ![时间间隔](./media/log-analytics-usage/time.png)
-6. 查看“使用情况类别”边栏选项卡以显示感兴趣的区域。 选择一个边栏选项卡，并单击其中的项以在“[日志搜索](log-analytics-log-searches.md)”中查看更多详细信息。  
-    ![示例数据使用量边栏选项卡](./media/log-analytics-usage/blade.png)
-7. 在“日志搜索”仪表板中，查看搜索返回的结果。  
-    ![日志搜索用法示例](./media/log-analytics-usage/usage-log-search.png)
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在 Azure 门户中，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。<br><br> ![Azure 门户](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+3. 在 Log Analytics 工作区列表中选择一个工作区。
+4. 在左窗格的列表中，选择“使用情况和预估成本”。
+5. 在“使用情况和预估成本”仪表板中，可以通过选择“时间: 过去 24 小时”来修改时间范围，对时间间隔进行更改。<br><br> ![时间间隔](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
+6. 查看“使用情况类别”边栏选项卡以显示感兴趣的区域。 选择一个边栏选项卡，并单击其中的项以在“[日志搜索](log-analytics-log-searches.md)”中查看更多详细信息。<br><br> ![示例数据使用量 kpi](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
+7. 在“日志搜索”仪表板中，查看搜索返回的结果。<br><br> ![日志搜索用法示例](./media/log-analytics-usage/usage-log-search-01.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>当数据收集量高于预期时创建警报
 本部分介绍如何在以下情况下创建警报：

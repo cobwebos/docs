@@ -1,24 +1,24 @@
 ---
-title: "使用 Azure 门户创建 IoT 中心 | Microsoft Docs"
-description: "如何通过 Azure 门户创建、管理和删除 Azure IoT 中心。 包括有关定价层、缩放、安全性和消息传递配置的信息。"
+title: 使用 Azure 门户创建 IoT 中心 | Microsoft Docs
+description: 如何通过 Azure 门户创建、管理和删除 Azure IoT 中心。 包括有关定价层、缩放、安全性和消息传递配置的信息。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0909cd2b-4c1e-49e0-b68a-75532caf0a6a
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2017
+ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: ac1a52355ffa5354bebe3b98fdb75783bcd57697
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 6ffde076caff6217bf6255c9294eca63d3e39b85
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 门户创建 IoT 中心
 
@@ -53,18 +53,9 @@ ms.lasthandoff: 11/18/2017
 
 ### <a name="choose-the-pricing-tier"></a>选择定价层
 
-可以从四个层中做选择：**免费**、**标准 1**、**标准 2** 和**标准 S3**。 免费层只允许 500 台设备连接到 IoT 中心，并且每天最多传输 8,000 条信息。
+可以根据你需要的功能数以及每天通过解决方案发送的消息数从多个层中进行选择。 免费层适用于测试和评估。 它允许 500 台设备连接到 IoT 中心，并且每天最多传输 8,000 条信息。 每个 Azure 订阅可以在免费层中创建一个 IoT 中心。 
 
-标准 S1：对拥有大量设备且每个设备能够生成少量数据的 IoT 解决方案使用 S1 版。 S1 版的每个计价单位能够在所有已连接设备间每天传输最多 400,000 条消息。
-
-标准 S2：对设备生成大量数据的 IoT 解决方案使用 S2 版。 S2 版的每个计价单位能够在所有已连接设备间每天传输最多 600 万条消息。
-
-标准 S3：对生成大量数据的 IoT 解决方案使用 S3 版。 S3 版的每个计价单位能够在所有已连接设备间每天传输最多 3 亿条消息。
-
-![][4]
-
-> [!NOTE]
-> IoT 中心只允许每个 Azure 订阅有一个免费中心。
+有关其他层选项的详细信息，请参阅[选择合适的 IoT 中心层](iot-hub-scaling.md)。
 
 ### <a name="iot-hub-units"></a>IoT 中心单位
 
@@ -153,17 +144,6 @@ Azure IoT 中心自动列出用户帐户所链接的 Azure 订阅。 可以选�
 单击“路由”边栏选项卡顶部的“添加”，输入所需信息，并单击“确定”，即可将路由添加到 IoT 中心。 然后路由就会在主“路由”边栏选项卡中列出。 在路由列表中单击路由即可对其进行编辑。 要启用路由，请在路由列表中单击它，然后将“启用”切换按钮设置为“关”。 若要保存更改，单击边栏选项卡底部的“确定”。
 
 ![][15]
-
-## <a name="pricing-and-scale"></a>定价和缩放
-
-现有 IoT 中心的定价可通过“**定价**”设置来更改，但存在以下例外情况：
-
-* 在当前的实现中，使用免费 SKU 的 IoT 中心无法更改为付费型 SKU 层，反之亦然。
-* Azure 订阅中只能有一个免费层 IoT 中心。
-
-![][12]
-
-只有在当天发送的消息数目超过较低层的配额时，才可从较高层移动到较低层。 例如，如果每天的消息数目超过 400,000，则可更改 IoT 中心的层。 但是，如果更改为 S1 层，则会在该天对 IoT 中心进行限制。
 
 ## <a name="delete-the-iot-hub"></a>删除 IoT 中心
 

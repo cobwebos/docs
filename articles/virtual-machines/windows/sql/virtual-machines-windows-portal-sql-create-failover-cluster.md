@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 13/22/2018
 ms.author: mikeray
-ms.openlocfilehash: faa849fc53aa15a47e850a20531c4fa30544f750
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 425310f50cebc920a71090d2017dca2a6c135991
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
@@ -375,27 +375,13 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 
 1. 返回到虚拟机所在的 Azure 资源组，找到新的负载均衡器。 可能需要在资源组中刷新视图。 单击该负载均衡器。
 
-1. 在负载均衡器边栏选项卡中，单击“后端池”。
+1. 单击“后端池”并单击“+ 添加”来添加后端池。
 
-1. 单击“+ 添加”添加后端池。
+1. 将该后端池与包含 VM 的可用性集进行关联。
 
-1. 键入后端池的名称。
+1. 在“目标网络 IP 配置”下，选中“虚拟机”并选择将作为群集节点参与操作的虚拟机。 请务必包括将承载 FCI 的所有虚拟机。 
 
-1. 单击“添加虚拟机”。
-
-1. 在“选择虚拟机”边栏选项卡中，单击“选择可用性集”。
-
-1. 选择 SQL Server 虚拟机所放到的可用性集。
-
-1. 在“选择虚拟机”边栏选项卡中，单击“选择虚拟机”。
-
-   Azure 门户应如下图所示：
-
-   ![CreateLoadBalancerBackEnd](./media/virtual-machines-windows-portal-sql-create-failover-cluster/33-load-balancer-back-end.png)
-
-1. 在“选择虚拟机”边栏选项卡中单击“选择”。
-
-1. 单击“确定”两次。
+1. 单击“确定”创建后端池。
 
 ### <a name="configure-a-load-balancer-health-probe"></a>配置负载均衡器运行状况探测
 

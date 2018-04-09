@@ -1,26 +1,27 @@
 ---
 title: 使用虚拟网络对等互连连接虚拟网络 - Azure 门户 | Microsoft Docs
-description: 了解如何使用虚拟网络对等互连连接虚拟网络。
+description: 在本文中，你将学习如何使用 Azure 门户通过虚拟网络对等互连来连接虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: ''
+ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 0962a917186277a34abbda17b8fea87bcf4ad1e9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b864c71a62289b3abef13a98b52683f7d928b8e1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>通过 Azure 门户使用虚拟网络对等互连连接虚拟网络
 
@@ -31,6 +32,8 @@ ms.lasthandoff: 03/16/2018
 > * 使用虚拟网络对等互连连接两个虚拟网络。
 > * 将虚拟机 (VM) 部署到每个虚拟网络
 > * VM 之间进行通信
+
+如果你愿意，可以使用 [Azure CLI](tutorial-connect-virtual-networks-cli.md) 或 [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md) 完成本文中的步骤。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -147,7 +150,7 @@ ms.lasthandoff: 03/16/2018
 3. 若要连接到 VM，请打开已下载的 RDP 文件。 出现提示时，选择“连接”。
 4. 输入在创建 VM 时指定的用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后选择“确定”。
 5. 你可能会在登录过程中收到证书警告。 选择“是”以继续进行连接。
-6. 在后面的步骤中，将使用 ping 从 *myVm1* VM 与 *myVm2* VM 进行通信。 Ping 使用 Internet 控制消息协议 (ICMP)，默认情况下会拒绝 ICMP 通过 Windows 防火墙。 在 *myVm1* VM 上，允许 Internet 控制消息协议 (ICMP) 通过 Windows 防火墙，以便在稍后的步骤中使用 PowerShell 从 *myVm2* ping 此 VM：
+6. 在后面的步骤中，将使用 ping 从 *myVm1* VM 与 *myVm2* VM 进行通信。 Ping 使用 Internet 控制消息协议 (ICMP)，默认情况下会拒绝 ICMP 通过 Windows 防火墙。 在 *myVm1* VM 上，允许 ICMP 穿过 Windows 防火墙，以便在稍后的步骤中可以使用 PowerShell 从 *myVm2* 对此 VM 执行 ping 命令：
 
     ```powershell
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
@@ -177,15 +180,8 @@ ms.lasthandoff: 03/16/2018
 2. 选择“删除资源组”。
 3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。
 
-**<a name="register"></a>注册全局虚拟网络对等互连（预览版）**
-
-在同一区域中的虚拟网络之间建立对等互连的功能已推出正式版。 在不同区域的虚拟网络之间建立对等互连目前处于预览版状态。 有关可用区域，请参阅[虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)。 若要跨区域对立虚拟网络对等互连，必须先注册预览版。 无法使用门户注册，但可以使用 [PowerShell](tutorial-connect-virtual-networks-powershell.md#register) 或 [Azure CLI](tutorial-connect-virtual-networks-cli.md#register) 注册。 如果在注册功能之前尝试为不同区域中的虚拟网络建立对等互连，对等互连将会失败。
-
 ## <a name="next-steps"></a>后续步骤
 
-本文已介绍如何使用虚拟网络对等互连来连接同一 Azure 位置中的两个网络。 此外，还可以将[不同区域](#register)、[不同 Azure 订阅](create-peering-different-subscriptions.md#portal)中的虚拟网络对等互连，并且可以使用对等互连创建[中心辐射型网络设计](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)。 将生产虚拟网络对等互连之前，建议全面了解[对等互连概述](virtual-network-peering-overview.md)、[管理对等互连](virtual-network-manage-peering.md)和[虚拟网络限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 
+在本文中，你已学习了如何使用虚拟网络对等互连来连接同一 Azure 区域中的两个网络。 还可以将不同[受支持的区域](virtual-network-manage-peering.md#cross-region)、[不同 Azure 订阅](create-peering-different-subscriptions.md#portal)中的虚拟网络对等互连，并且可以使用对等互连创建[中心辐射型网络设计](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)。 若要详细了解虚拟网络对等互连，请参阅[虚拟网络对等互连概述](virtual-network-peering-overview.md)和[管理虚拟网络对等互连](virtual-network-manage-peering.md)。
 
-请继续通过 VPN 将自己的计算机连接到虚拟网络，并与虚拟网络或对等互连的虚拟网络中的资源进行交互。
-
-> [!div class="nextstepaction"]
-> [将计算机连接到虚拟网络](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+若要通过 VPN 将自己的计算机连接到虚拟网络，并与虚拟网络或对等互连的虚拟网络中的资源进行交互，请参阅[将计算机连接到虚拟网络](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。

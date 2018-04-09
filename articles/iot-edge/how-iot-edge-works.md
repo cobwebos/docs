@@ -1,29 +1,32 @@
 ---
-title: "什么是 Azure IoT Edge | Microsoft Docs"
-description: "Azure IoT Edge 服务概述"
+title: 什么是 Azure IoT Edge | Microsoft Docs
+description: Azure IoT Edge 服务概述
 services: iot-Edge
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
 editor: chipalost
-ms.assetid: 
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 04/01/2018
 ms.author: kgremban
-ms.custom: 
-ms.openlocfilehash: 5f69041572729d1458a22a855128639056d61586
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.custom: ''
+ms.openlocfilehash: 9071caedd9ab3b63527c2c0bdab38db2efadb17c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>什么是 Azure IoT Edge - 预览
 
 Azure IoT Edge 将云分析和自定义业务逻辑移到设备，这样你的组织就可以专注于业务见解而非数据管理。 你可以配置 IoT 软件，通过标准容器将其部署到设备，然后对其进行监视，这一切都可以从云中操作，使解决方案能够真正地缩放。
+
+>[!NOTE]
+>Azure IoT Edge 仅在 IoT 中心的标准层中提供。 有关基本和标准层的详细信息，请参阅[如何选择合适的 IoT 中心层](../iot-hub/iot-hub-scaling.md)。
 
 分析可以提升 IoT 解决方案中的业务价值，但并非所有分析都需要在云中进行。 如果希望设备能够尽快响应突发事件，可以在设备上执行异常情况检测。 同样，如果希望减少带宽费用，避免传输数 TB 的原始数据，则可在本地执行数据清理和聚合， 然后再将见解发送到云中。 
 
@@ -53,7 +56,7 @@ Azure IoT Edge 运行时允许在 IoT Edge 设备上使用自定义逻辑和云�
 * 确保 IoT Edge 模块始终运行。
 * 将模块运行状况报告到云，以便进行远程监视。
 * 促进下游叶设备与 IoT Edge 设备之间的通信。
-* 促进 IoT Edge 设备上的模块之间的通信。
+* 促进 IoT Edge 设备上的模块间的通信。
 * 促进 IoT Edge 设备与云之间的通信。
 
 ![IoT Edge 运行时将见解和报告发送到 IoT 中心][1]

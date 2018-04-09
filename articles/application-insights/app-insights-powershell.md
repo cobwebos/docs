@@ -1,8 +1,8 @@
 ---
-title: "使用 PowerShell 自动化 Azure Application Insights | Microsoft Docs"
-description: "使用 Azure 资源管理器模板在 PowerShell 中自动创建资源、警报和可用性测试。"
+title: 使用 PowerShell 自动化 Azure Application Insights | Microsoft Docs
+description: 使用 Azure 资源管理器模板在 PowerShell 中自动创建资源、警报和可用性测试。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: f4f9d1558d2ef9dc5e1b7b248ad5bc8753f59cf9
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 46ba4ce992640e8a6d171ab839dd7cdb24e0b404
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>使用 PowerShell 创建 Application Insights 资源
 本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](app-insights-overview.md) 资源。 例如，可能在生成过程中执行此操作。 除了基本的 Application Insights 资源，还可创建[可用性 Web 测试](app-insights-monitor-web-app-availability.md)、设置[警报](app-insights-alerts.md)、设置[定价方案](app-insights-pricing.md)和创建其他 Azure 资源。
@@ -199,12 +199,12 @@ ms.lasthandoff: 11/01/2017
 |价格代码|计划|
 |---|---|
 |1|基本|
-|#N/A|Enterprise|
+|2|Enterprise|
 
 * 如果仅想使用默认的基本价格计划，可在模板中省略 CurrentBillingFeatures 资源。
 * 若要在创建组件资源后更改价格计划，可使用一个忽略“microsoft.insights/components”资源的模板。 此外，请忽略计费资源中的 `dependsOn` 节点。 
 
-若要验证已更新的价格计划，请查看浏览器中的“功能+定价”边栏选项卡。 **刷新浏览器视图**以确保其显示最新状态。
+若要验证已更新的价格计划，请在浏览器中查看“使用情况和预估成本”边栏选项卡。 **刷新浏览器视图**以确保其显示最新状态。
 
 
 

@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 03/15/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0cfa79b9c44953c613eaec8d701f351c6f2ce212
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f9cc4f900428e1337fc9b9d428879d6527c60017
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Azure AD 中的可选声明（预览版）
 
@@ -65,13 +65,7 @@ ms.lasthandoff: 03/23/2018
 | `fwd`                      | IP 地址。  添加请求方客户端（如果位于 VNET 中）的原始 IPv4 地址                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `ctry`                     | 用户所在的国家/地区                                                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `tenant_ctry`              | 资源租户所在的国家/地区                                                                                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `is_device_known`          | 表示设备是否已加入工作区。 与条件访问策略相关                                                                                                                 | SAML       |           | 对于 JWT，将聚合到 signin_state                                                                                                                                                                                                                                                   |
-| `is_device_managed`        | 表示设备上是否已安装 MDM。 与条件访问策略相关。                                                                                                                  | SAML       |           | 对于 JWT，将聚合到 signin_state                                                                                                                                                                                                                                                   |
-| `is_device_compliant`      | 表示 MDM 已确定该设备符合组织的设备安全策略。                                                                                  | SAML       |           | 对于 JWT，将聚合到 signin_state                                                                                                                                                                                                                                                   |
-| `kmsi`                     | 表示用户是否已选择“使我保持登录状态”选项。                                                                                                                                    | SAML       |           | 对于 JWT，将聚合到 signin_state                                                                                                                                                                                                                                                   |
-| `upn`                      | UserPrincipalName 声明。  尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。 | JWT、SAML  |           | 附加属性： <br> include_externally_authenticated_upn <br> include_externally_authenticated_upn_without_hash                                                                                                                                                                 |
-| `groups`                   | 用户所属的组。                                                                                                                                                               | JWT、SAML  |           | 附加属性： <br> Sam_account_name<br> Dns_domain_and_sam_account_name<br> Netbios_domain_and_sam_account<br> Max_size_limit<br> Emit_as_roles<br>                                                                                                                            |
-
+| `upn`                      | UserPrincipalName 声明。  尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。 | JWT、SAML  |           | 附加属性： <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
 ### <a name="v20-optional-claims"></a>V2.0 可选声明
 这些声明始终包含在 v1.0 令牌中，但除非提出请求，否则会从 v2.0 令牌中删除。  这些声明仅适用于 JWT（ID 令牌和访问令牌）。  
 
@@ -90,26 +84,19 @@ ms.lasthandoff: 03/23/2018
 
 ### <a name="additional-properties-of-optional-claims"></a>可选声明的附加属性
 
-可以配置某些可选声明来更改声明的返回方式。  这些附加属性可用于更改格式（例如 `include_externally_authenticated_upn_without_hash`）、更改返回的数据集返回 (`Dns_domain_and_sam_account_name`) 等各种目的。
+可以配置某些可选声明来更改声明的返回方式。  这些附加属性主要用于帮助迁移具有不同数据预期的本地应用程序（例如，`include_externally_authenticated_upn_without_hash` 可帮助迁移无法处理 UPN 中的井号标记 (`#`) 的客户端）
 
 **表 4：用于配置标准可选声明的值**
 
 | 属性名称                                     | 附加属性名称                                                                                                             | 说明 |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `Upn`                                                 |                                                                                                                                      |             |
+| `upn`                                                 |                                                                                                                                      |             |
 | | `include_externally_authenticated_upn`              | 包含资源租户中存储的来宾 UPN。  例如： `foo_hometenant.com#EXT#@resourcetenant.com`                            |             
 | | `include_externally_authenticated_upn_without_hash` | 同上，不过，井号标记 (`#`) 已替换为下划线 (`_`)，例如 `foo_hometenant.com_EXT_@resourcetenant.com` |             
-| `groups`                                              |                                                                                                                                      |             |
-| | `sam_account_name`                                  |                                                                                                                                      |             
-| | `dns_domain_and_sam_account_name`                   |                                                                                                                                      |             
-| | `netbios_domain_and_sam_account_name`               |                                                                                                                                      |             
-| | `max_size_limit`                                    | 引发返回到最大组大小限制 (1,000) 的组数。                                                            |             
-| | `emit_as_roles`                                     | 发出“roles”声明来取代“groups”声明，但值相同。  用于迁移通过组成员身份以传统方式控制 RBAC 的本地环境中的应用。   |             
 
 > [!Note]
 >如果指定 upn 可选声明但不使用附加属性，则不会更改任何行为 – 若要查看令牌中颁发的新声明，必须至少添加一个附加属性。 
->
->组的 `account_name` 附加属性不可互操作，附加属性的顺序很重要 – 只使用列出的第一个帐户名附加属性。 
+
 
 #### <a name="additional-properties-example"></a>附加属性示例：
 
@@ -118,15 +105,15 @@ ms.lasthandoff: 03/23/2018
    {
        "idToken": [ 
              { 
-                "name": "groups", 
+                "name": "upn", 
             "essential": false,
-                "additionalProperties": [ "netbios_domain_and_sam_account_name", "sam_account_name" , "emit_as_roles"]  
+                "additionalProperties": [ "include_externally_authenticated_upn"]  
               }
         ]
 }
 ```
 
-此 OptionalClaims 对象返回相同的 `groups` 声明，就如同未包含 `sam_account_name` 一样 – 由于此属性位于 `netbios_domain_and_sam_account_name` 的后面，因此将被忽略。 
+此 OptionalClaims 对象会导致返回到客户端的 ID 令牌包含另一个 UPN 及其他主租户和资源租户信息。  
 
 ## <a name="configuring-optional-claims"></a>配置可选声明
 
