@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 03/28/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d356535bf1a7daf45108bc790a19578108a50bb7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9a947de3ad821d4cd65e579357e3c779e8623435
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -73,6 +73,32 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 
 有关详细信息，请参阅[什么是 Azure AD B2B 协作？](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
  
+---
+
+
+### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>将 Intune Managed Browser 与基于 Azure AD 应用程序的条件访问配合使用限制 iOS 和 Android 的浏览器访问
+
+**类型：**新功能  
+**服务类别：**条件访问  
+**产品功能：**标识安全和保护
+ 
+
+**现在处于公开预览状态！**
+
+**Intune Managed Browser SSO：**员工可以将跨本机客户端（如 Microsoft Outlook）的单一登录和 Intune Managed Browser 用于 Azure AD 连接的所有应用。
+
+**Intune Managed Browser 条件访问支持：**你现在可以要求员工通过基于应用程序的条件访问策略使用 Intune Managed browser。
+
+有关详细信息，请阅读我们的[博客文章](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/)。
+
+有关详细信息，请参阅：
+
+- [设置基于应用程序的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+
+- [配置 Managed browser 策略](https://aka.ms/managedbrowser)  
+
+
+
 ---
  
 
