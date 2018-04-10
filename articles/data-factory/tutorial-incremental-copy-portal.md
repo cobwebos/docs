@@ -302,7 +302,7 @@ END
 24. 在管道设计器中选择“存储过程活动”，将其名称更改为 **StoredProceduretoWriteWatermarkActivity**。 
 
     ![存储过程活动 - 名称](./media/tutorial-incremental-copy-portal/stored-procedure-activity-name.png)
-25. 切换到“SQL 帐户”选项卡。对于“链接服务”，请选择 *AzureSqlDatabaseLinkedService**。 
+25. 切换到“SQL 帐户”选项卡。对于“链接服务”，请选择 *AzureSqlDatabaseLinkedService*\*。 
 
     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. 切换到“存储过程”选项卡，然后执行以下步骤： 
