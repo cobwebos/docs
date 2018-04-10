@@ -1,164 +1,164 @@
-- name: Azure Logic Apps Belgeleri
+- name: Azure 逻辑应用文档
   href: index.yml
-- name: Genel Bakış
+- name: 概述
   items:
-    - name: Azure Logic Apps nedir?
+    - name: 什么是 Azure 逻辑应用？
       href: logic-apps-overview.md
-- name: Hızlı Başlangıçlar
+- name: 快速入门
   expanded: true
   items:
-    - name: Mantıksal uygulamalar oluşturma - Azure portalı
+    - name: 创建逻辑应用 - Azure 门户
       href: quickstart-create-first-logic-app-workflow.md
-    - name: Mantıksal uygulamalar oluşturma - Visual Studio
+    - name: 创建逻辑应用 - Visual Studio
       href: quickstart-create-logic-apps-with-visual-studio.md
-- name: Öğreticiler
+- name: 教程
   items:
-    - name: Trafiği düzenli olarak denetleme
+    - name: 定期检查流量
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
-    - name: Posta listesi isteklerini yönetme
+    - name: 管理邮件列表请求
       href: tutorial-process-mailing-list-subscriptions-workflow.md
-    - name: E-posta eklerini işleme
+    - name: 处理电子邮件附件
       href: tutorial-process-email-attachments-workflow.md
-- name: Kavramlar
+- name: 概念
   items:
-    - name: Logic Apps için bağlayıcılar
+    - name: 适用于逻辑应用的连接器
       href: ../connectors/apis-list.md
-    - name: Azure ile sunucusuz mimari
+    - name: Azure 的无服务器体验
       href: logic-apps-serverless-overview.md
-    - name: B2B tümleştirme ve EDI işleme
+    - name: B2B 集成和 EDI 处理
       href: logic-apps-enterprise-integration-overview.md
-- name: Nasıl yapılır kılavuzları
+- name: 操作指南
   items:
-    - name: Geliştirme
+    - name: 开发
       items:
-        - name: Önceden oluşturulmuş şablonlardan oluşturma
+        - name: 从预构建的模板创建
           href: logic-apps-create-logic-apps-from-templates.md
-        - name: BizTalk Services’dan geçirme
+        - name: 从 BizTalk 服务迁移
           href: logic-apps-move-from-mabs.md
-        - name: İş akışı yürütmeyi denetleme
+        - name: 控制工作流执行
           items:
-            - name: Koşullu deyimler
+            - name: 条件语句
               href: logic-apps-control-flow-conditional-statement.md
-            - name: Switch deyimleri
+            - name: Switch 语句
               href: logic-apps-control-flow-switch-statement.md
-            - name: Dallar
+            - name: 分支
               href: logic-apps-control-flow-branches.md
-            - name: Döngüler
+            - name: 循环
               href: logic-apps-control-flow-loops.md
-            - name: Kapsamlar
+            - name: 作用域
               href: logic-apps-control-flow-run-steps-group-scopes.md
-        - name: Azure İşlevleri ile özel kod ekleme
+        - name: 使用 Azure Functions 添加自定义代码
           href: logic-apps-azure-functions.md
-        - name: Azure İşlevleri ile mantıksal uygulamaları çağırma
+        - name: 使用 Azure Functions 调用逻辑应用
           href: logic-apps-scenario-function-sb-trigger.md
-        - name: 'Çağrı, tetikleyici veya iç içe mantıksal uygulamalar'
+        - name: 调用、触发或嵌套逻辑应用
           href: logic-apps-http-endpoint.md
-        - name: Toplu işlem iletileri
+        - name: 对消息进行批处理
           href: logic-apps-batch-process-send-receive-messages.md
-        - name: JSON tanımları yazma
+        - name: 创作 JSON 定义
           href: logic-apps-author-definitions.md
-        - name: İçerik türlerini işleme
+        - name: 处理内容类型
           href: logic-apps-content-type.md
-        - name: Hataları ve özel durumları işleme
+        - name: 处理错误和异常
           href: logic-apps-exception-handling.md
-        - name: Mantıksal uygulamanızı güvenli hale getirme
+        - name: 保护逻辑应用
           href: logic-apps-securing-a-logic-app.md
-        - name: Özel bağlayıcılar geliştirme
+        - name: 开发自定义连接器
           href: custom-connector-overview.md
-        - name: Özel API'ler geliştirme
+        - name: 开发自定义 API
           items:
-            - name: Mantıksal uygulamalar için özel API’ler oluşturma
+            - name: 为逻辑应用创建自定义 API
               href: logic-apps-create-api-app.md
-            - name: Özel API'lere giden çağrıların güvenliğini sağlama
+            - name: 保护对自定义 API 的调用
               href: logic-apps-custom-api-authentication.md
-            - name: Özel API'leri dağıtma ve çağırma
+            - name: 部署和调用自定义 API
               href: logic-apps-custom-api-host-deploy-call.md
-        - name: Sorun giderme hataları
+        - name: 排查错误
           href: logic-apps-diagnosing-failures.md
-    - name: B2B senaryoları için geliştirme
+    - name: 针对 B2B 方案进行开发
       items:
-        - name: Tümleştirme hesabı oluşturma
+        - name: 创建集成帐户
           href: logic-apps-enterprise-integration-create-integration-account.md
-        - name: Ticari ortaklar
+        - name: 贸易合作伙伴
           href: logic-apps-enterprise-integration-partners.md
-        - name: Sözleşmeler
+        - name: 协议
           href: logic-apps-enterprise-integration-agreements.md
-        - name: Yapıt meta verileri
+        - name: 项目元数据
           href: logic-apps-enterprise-integration-metadata.md
-        - name: B2B iletilerini alma
+        - name: 接收 B2B 消息
           href: logic-apps-enterprise-integration-b2b.md
-        - name: AS2 iletilerini paylaşma
+        - name: 交换 AS2 消息
           href: logic-apps-enterprise-integration-as2.md
           items:
-            - name: AS2 kodlama
+            - name: AS2 编码
               href: logic-apps-enterprise-integration-as2-encode.md
-            - name: AS2 kodunu çözme
+            - name: AS2 解码
               href: logic-apps-enterprise-integration-as2-decode.md
-        - name: EDIFACT iletilerini paylaşma
+        - name: 交换 EDIFACT 消息
           href: logic-apps-enterprise-integration-edifact.md
           items:
-            - name: EDIFACT kodlama
+            - name: EDIFACT 编码
               href: logic-apps-enterprise-integration-edifact-encode.md
-            - name: EDIFACT kodunu çözme
+            - name: EDIFACT 解码
               href: logic-apps-enterprise-integration-edifact-decode.md
-            - name: EDIFACT dosyalarını UNH2.5 segmenti ile işleme
+            - name: 处理包含 UNH2.5 段的 EDIFACT 文件
               href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
-        - name: X12 iletilerini paylaşma
+        - name: 交换 X12 消息
           href: logic-apps-enterprise-integration-x12.md
           items:
-            - name: X12 kodlama
+            - name: X12 编码
               href: logic-apps-enterprise-integration-x12-encode.md
-            - name: X12 kodunu çözme
+            - name: X12 解码
               href: logic-apps-enterprise-integration-x12-decode.md
-        - name: EDI iletilerini toplayıp gönderme
+        - name: 批处理和发送 EDI 消息
           href: logic-apps-scenario-edi-send-batch-messages.md
-        - name: Düz dosyaları işleme
+        - name: 处理平面文件
           href: logic-apps-enterprise-integration-flatfile.md
-        - name: XML’i işleme
+        - name: 处理 XML
           href: logic-apps-enterprise-integration-xml.md
-        - name: XML’i doğrulama
+        - name: 验证 XML
           href: logic-apps-enterprise-integration-xml-validation.md
-        - name: XML doğrulaması için şemalar ekleme
+        - name: 为 XML 验证添加架构
           href: logic-apps-enterprise-integration-schemas.md
-        - name: XML’i dönüştürme
+        - name: 转换 XML
           href: logic-apps-enterprise-integration-transform.md
-        - name: XML dönüştürme için eşlemeler ekleme
+        - name: 为 XML 转换添加映射
           href: logic-apps-enterprise-integration-maps.md
-        - name: JSON’u dönüştürme
+        - name: 转换 JSON
           href: logic-apps-enterprise-integration-liquid-transform.md
-        - name: Güvenlik sertifikaları ekleme
+        - name: 添加安全证书
           href: logic-apps-enterprise-integration-certificates.md
-        - name: B2B hatalarında sorun giderme
+        - name: 排查 B2B 错误
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
-        - name: Olağanüstü durum kurtarma planı oluşturma
+        - name: 生成灾难恢复计划
           href: logic-apps-enterprise-integration-b2b-business-continuity.md
-    - name: Şirket içi verilere erişim
+    - name: 访问本地数据
       items:
-        - name: Veri ağ geçidi yükleme
+        - name: 安装数据网关
           href: logic-apps-gateway-install.md
-        - name: Şirket içi verilere bağlanma
+        - name: 连接到本地数据
           href: logic-apps-gateway-connection.md
-    - name: 'Bağlayıcılar: Ayrıntılı konular'
+    - name: 连接器 - 深入的主题
       items:
         - name: AS2
           href: logic-apps-enterprise-integration-as2.md
-        - name: Azure Blob Depolama
+        - name: Azure Blob 存储
           href: ../connectors/connectors-create-api-azureblobstorage.md
-        - name: Azure Event Hubs
+        - name: Azure 事件中心
           href: ../connectors/connectors-create-api-azure-event-hubs.md
-        - name: Azure İşlevleri
+        - name: Azure Functions
           href: logic-apps-azure-functions.md
-        - name: Azure Logic Apps
+        - name: Azure 逻辑应用
           href: logic-apps-http-endpoint.md
-        - name: Azure Service Bus
+        - name: Azure 服务总线
           href: ../connectors/connectors-create-api-servicebus.md
-        - name: Azure SQL Database
+        - name: Azure SQL 数据库
           href: ../connectors/connectors-create-api-sqlazure.md
-        - name: Bing Arama
+        - name: 必应搜索
           href: ../connectors/connectors-create-api-bingsearch.md
         - name: Box
           href: ../connectors/connectors-create-api-box.md
-        - name: Özel API’ler ve web uygulamaları
+        - name: 自定义 API 和 Web 应用
           href: logic-apps-create-api-app.md
         - name: DB2
           href: ../connectors/connectors-create-api-db2.md
@@ -172,9 +172,9 @@
           href: ../connectors/connectors-create-api-excel.md
         - name: Facebook
           href: ../connectors/connectors-create-api-facebook.md
-        - name: Dosya Sistemi
+        - name: 文件系统
           href: logic-apps-using-file-connector.md
-        - name: Düz dosya
+        - name: 平面文件
           href: logic-apps-enterprise-integration-flatfile.md
         - name: FTP
           href: ../connectors/connectors-create-api-ftp.md
@@ -186,11 +186,11 @@
           href: ../connectors/connectors-native-http.md
         - name: HTTP + Swagger
           href: ../connectors/connectors-native-http-swagger.md
-        - name: HTTP Web kancası
+        - name: HTTP Webhook
           href: ../connectors/connectors-native-webhook.md
         - name: Informix
           href: ../connectors/connectors-create-api-informix.md
-        - name: Tümleştirme Hesabı
+        - name: 集成帐户
           href: logic-apps-enterprise-integration-metadata.md
         - name: MailChimp
           href: ../connectors/connectors-create-api-mailchimp.md
@@ -200,19 +200,19 @@
           href: ../connectors/connectors-create-api-mq.md
         - name: Office 365 Outlook
           href: ../connectors/connectors-create-api-office365-outlook.md
-        - name: Office 365 Kullanıcıları
+        - name: Office 365 用户
           href: ../connectors/connectors-create-api-office365-users.md
-        - name: Office 365 Video
+        - name: Office 365 视频
           href: ../connectors/connectors-create-api-office365-video.md
         - name: OneDrive
           href: ../connectors/connectors-create-api-onedrive.md
-        - name: OneDrive İş
+        - name: OneDrive for Business
           href: ../connectors/connectors-create-api-onedriveforbusiness.md
-        - name: Oracle Veritabanı
+        - name: Oracle Database
           href: ../connectors/connectors-create-api-oracledatabase.md
         - name: Project Online
           href: ../connectors/connectors-create-api-projectonline.md
-        - name: İstek / Yanıt
+        - name: 请求/响应
           href: ../connectors/connectors-native-reqres.md
         - name: RSS
           href: ../connectors/connectors-create-api-rss.md
@@ -220,7 +220,7 @@
           href: ../connectors/connectors-create-api-salesforce.md
         - name: SAP
           href: logic-apps-using-sap-connector.md
-        - name: Zamanlama
+        - name: 计划
           href: ../connectors/connectors-native-recurrence.md
         - name: SendGrid
           href: ../connectors/connectors-create-api-sendgrid.md
@@ -230,9 +230,9 @@
           href: ../connectors/connectors-create-api-sharepointserver.md
         - name: Slack
           href: ../connectors/connectors-create-api-slack.md
-        - name: SQL Azure ve SQL Server
+        - name: SQL Azure 和 SQL Server
           href: ../connectors/connectors-create-api-sqlazure.md
-        - name: XML’i dönüştürme
+        - name: 转换 XML
           href: logic-apps-enterprise-integration-transform.md
         - name: Trello
           href: ../connectors/connectors-create-api-trello.md
@@ -244,92 +244,92 @@
           href: ../connectors/connectors-create-api-wunderlist.md
         - name: X12
           href: logic-apps-enterprise-integration-x12.md
-        - name: XML Doğrulaması
+        - name: XML 验证
           href: logic-apps-enterprise-integration-xml-validation.md
         - name: Yammer
           href: ../connectors/connectors-create-api-yammer.md
-    - name: Yönetme
+    - name: 管理
       items:
-        - name: Mantıksal uygulamaları yönetme - Visual Studio
+        - name: 管理逻辑应用 - Visual Studio
           href: manage-logic-apps-with-visual-studio.md
-        - name: Tümleştirme hesaplarını yönetme
+        - name: 管理集成帐户
           href: logic-apps-enterprise-integration-accounts.md
-    - name: Dağıtma
+    - name: 部署
       items:
-        - name: Mantıksal uygulamaları tanımlayıp dağıtma
+        - name: 定义和部署逻辑应用
           href: logic-apps-create-deploy-azure-resource-manager-templates.md
-        - name: Dağıtım şablonları oluşturma - Visual Studio
+        - name: 创建部署模板 - Visual Studio
           href: logic-apps-create-deploy-template.md
-    - name: İzleme
+    - name: 监视
       items:
-        - name: Mantıksal uygulamaların durumunu izleme
+        - name: 监视逻辑应用状态
           href: logic-apps-monitor-your-logic-apps.md
-        - name: Log Analytics ile OMS’de mantıksal uygulamanın durumunu izleme
+        - name: 使用 Log Analytics 在 OMS 中监视逻辑应用状态
           href: logic-apps-monitor-your-logic-apps-oms.md
-        - name: B2B iletilerini izleme
+        - name: 监视 B2B 消息
           href: logic-apps-monitor-b2b-message.md
           items:
-            - name: OMS’de B2B iletilerini izleme
+            - name: 在 OMS 中跟踪 B2B 消息
               href: logic-apps-track-b2b-messages-omsportal.md
-            - name: B2B iletileri için OMS’yi sorgulama
+            - name: 在 OMS 中查询 B2B 消息
               href: logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md
-    - name: 'Örnekler, senaryolar ve kılavuzlar'
+    - name: 示例、方案和演练
       href: logic-apps-examples-and-scenarios.md
       items:
-        - name: Sosyal medyayı izleme
+        - name: 监视社交媒体
           href: logic-apps-scenario-social-serverless.md
-        - name: Sunucusuz uygulama oluşturma - Visual Studio
+        - name: 生成无服务器应用 - Visual Studio
           href: logic-apps-serverless-get-started-vs.md
-        - name: Hata ve özel durum işleme ekleme
+        - name: 添加错误和异常处理
           href: logic-apps-scenario-error-and-exception-handling.md
-        - name: B2B işleme
+        - name: B2B 处理
           href: logic-apps-enterprise-integration-b2b.md
-- name: Başvuru
+- name: 引用
   items:
-    - name: 'Bağlayıcılar: Tüm ayrıntılar'
+    - name: 连接器 - 完整详细信息
       href: 'https://docs.microsoft.com/connectors/'
-    - name: Limitler ve yapılandırma
+    - name: 限制和配置
       href: logic-apps-limits-and-config.md
-    - name: Kullanım ölçümü
+    - name: 用量计量
       href: logic-apps-pricing.md
     - name: Azure PowerShell
       href: /powershell/module/azurerm.logicapp
     - name: REST API
       href: /rest/api/logic/
-    - name: İş Akışı Tanımı Dil Şeması
+    - name: 工作流定义语言架构
       href: logic-apps-workflow-definition-language.md
       items:
-        - name: 'Genel Kullanılabilirlik: Şema geçmişi'
+        - name: GA - 架构历史记录
           href: logic-apps-schema-2016-04-01.md
-    - name: İş akışı eylemleri ve tetikleyicileri
+    - name: 工作流操作和触发器
       href: logic-apps-workflow-actions-triggers.md
-    - name: Şemaları izleme
+    - name: 跟踪架构
       items:
-        - name: AS2 izleme şeması
+        - name: AS2 跟踪架构
           href: logic-apps-track-integration-account-as2-tracking-schemas.md
-        - name: X12 izleme şeması
+        - name: X12 跟踪架构
           href: logic-apps-track-integration-account-x12-tracking-schema.md
-        - name: Özel izleme şeması
+        - name: 自定义跟踪架构
           href: logic-apps-track-integration-account-custom-tracking-schema.md
-- name: Kaynaklar
+- name: 资源
   items:
-    - name: Azure Logic Apps yol haritası
+    - name: Azure 逻辑应用路线图
       href: 'https://aka.ms/logicappsroadmap/'
-    - name: Azure yol haritası
+    - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN forumu
+    - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-logic-apps'
     - name: Twitter
       href: 'https://twitter.com/logicappsio'
-    - name: Fiyatlandırma
+    - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
-    - name: Fiyatlandırma hesaplayıcı
+    - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Hizmet güncelleştirmeleri
+    - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=logic-apps'
-    - name: Müşteri hikayeleri
+    - name: 客户案例
       href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc'
-    - name: Videolar
+    - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest'
