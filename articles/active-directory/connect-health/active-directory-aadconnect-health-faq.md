@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 983c2c8aeb4c9d37213061dd70d6d64bae3de9d7
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 05720e6c290b0b54e5b6d5170a6eb22306e9cb04
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -181,7 +181,7 @@ CheckForMS17-010
 
 **问：为什么未生成 ADFS 审核？**
 
-请使用 PowerShell cmdlet <i>Get-AdfsProperties -AuditLevel</i> 确保审核日志未处于禁用状态。 阅读有关 [ADFS 审核日志](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)的更多信息
+请使用 PowerShell cmdlet <i>Get-AdfsProperties -AuditLevel</i> 确保审核日志未处于禁用状态。 阅读有关 [ADFS 审核日志](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)的更多信息。 请注意，如果有高级审核设置推送到 ADFS 服务器，则通过 auditpol.exe 进行的任何更改都将被覆盖 （即使未配置“已生成应用程序”）。 在这种情况下，请设置本地安全策略来记录“已生成应用程序”失败和成功。 
 
 
 ## <a name="related-links"></a>相关链接

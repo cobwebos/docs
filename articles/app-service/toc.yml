@@ -51,6 +51,8 @@
       href: app-service-web-tutorial-custom-ssl.md
     - name: 4 - 添加 CDN
       href: app-service-web-tutorial-content-delivery-network.md
+    - name: 5 - 对用户进行身份验证
+      href: app-service-web-tutorial-auth-aad.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -139,7 +141,7 @@
               href: app-service-mobile-how-to-configure-microsoft-authentication.md
             - name: 使用 Twitter 进行身份验证
               href: app-service-mobile-how-to-configure-twitter-authentication.md
-        - name: 自定义身份验证/授权
+        - name: 自定义身份验证
           href: app-service-authentication-how-to.md
         - name: 使用托管服务标识
           href: app-service-managed-service-identity.md

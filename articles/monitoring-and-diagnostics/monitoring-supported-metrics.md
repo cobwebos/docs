@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 03/30/2018
 ms.author: ancav
-ms.openlocfilehash: fc7a4062af9e73383af46f0c36eb22710ce9b6e1
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 68f5784f1724441ff6f18e2581c8e01d66c60c5e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure Monitor 的指标管道中使用的完整指标列表。
@@ -811,11 +811,11 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |指标|指标显示名称|单位|聚合类型|说明|维度|
 |---|---|---|---|---|---|
 |Throughput|Throughput|每秒字节数|总计|应用程序网关每秒提供的字节数|无维度|
-|UnhealthyHostCount|不正常的主机计数|Count|平均值|不正常的后端主机数|BackendSettingsPool|
-|HealthyHostCount|正常的主机计数|Count|平均值|正常的后端主机数|BackendSettingsPool|
+|UnhealthyHostCount|不正常的主机计数|Count|平均值|不正常的后端主机数。 可以按每个后端池进行筛选来显示特定后端池中正常的/不正常的主机数。|BackendSettingsPool|
+|HealthyHostCount|正常的主机计数|Count|平均值|正常的后端主机数。 可以按每个后端池进行筛选来显示特定后端池中正常的/不正常的主机数。|BackendSettingsPool。 |
 |TotalRequests|请求总数|Count|总计|应用程序网关已提供服务的成功请求计数|BackendSettingsPool|
 |FailedRequests|失败的请求数|Count|总计|应用程序网关已提供服务的失败请求计数|BackendSettingsPool|
-|ResponseStatus|响应状态|Count|总计|应用程序网关返回的 Http 响应状态|HttpStatusGroup|
+|ResponseStatus|响应状态|Count|总计|应用程序网关返回的 Http 响应状态。 可以进一步对响应状态代码分布进行归类以按 2xx、3xx、4xx 和 5xx 类别显示响应。|HttpStatusGroup|
 |CurrentConnections|当前连接|Count|总计|使用应用程序网关建立的当前连接计数|无维度|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways

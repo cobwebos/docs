@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/19/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 241f872b3069a58a35df7104f3335964298c7a20
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2ad995c4b48c2c298edd7c6b4da92ea8f3c4a060
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="authorize-access-to-web-applications-using-oauth-20-and-azure-active-directory"></a>使用 OAuth 2.0 和 Azure Active Directory 来授权访问 Web 应用程序
 Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Azure AD 租户中的 Web 应用程序和 Web API。 本指南与语言无关，介绍在不使用我们的任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
@@ -59,7 +59,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | prompt |可选 |表示需要的用户交互类型。<p> 有效值是： <p> *login*：应该提示用户重新进行身份验证。 <p> *consent*：用户同意已授予，但需要进行更新。 应该提示用户授予同意。 <p> *admin_consent*：应该提示管理员代表组织中的所有用户授予同意。 |
 | login_hint |可选 |如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。  通常，应用在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。 |
 | domain_hint |可选 |提供有关用户应该用于登录的租户或域的提示。 domain_hint 的值是租户的已注册域。 如果该租户与本地目录联合，则 AAD 将重定向到指定的租户联合服务器。 |
-| code_challenge_method | 可选    | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 可以是 `plain` 或 `S256` 之一。  如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。  Azure AAD v2.0 同时支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
+| code_challenge_method | 可选    | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 可以是 `plain` 或 `S256` 之一。  如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。  Azure AAD v1.0 同时支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 | code_challenge        | 可选    | 用于通过本地客户端的 Proof Key for Code Exchange (PKCE) 保护授权代码授权。 如果包含 `code_challenge_method`，则需要。  有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 
 > [!NOTE]
