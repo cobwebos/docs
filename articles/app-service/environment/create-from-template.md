@@ -40,7 +40,7 @@ ms.lasthandoff: 03/28/2018
 
 2. ILB ASE 创建完毕后，将上传一个匹配 ILB ASE 域的 SSL 证书。
 
-3. 上传的 SSL 证书将分配到 ILB ASE 作为其“默认”SSL 证书。  当应用使用分配给 ASE 的一般根域（如 https://someapp.mycustomrootdomain.com)）时，此证书用于 ILB ASE 上流向应用的 SSL 流量。
+3. 上传的 SSL 证书将分配到 ILB ASE 作为其“默认”SSL 证书。  当应用使用分配给 ASE 的一般根域（如 https://someapp.mycustomrootdomain.com) ）时，此证书用于 ILB ASE 上流向应用的 SSL 流量。
 
 
 ## <a name="create-the-ase"></a>创建 ASE
