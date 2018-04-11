@@ -15,22 +15,37 @@ ms.topic: article
 ms.date: 03/23/2018
 ms.author: mamit
 ms.custom: ''
-ms.openlocfilehash: 356988e8ae743d73c8e2cc7cc106cbc5b0d1a423
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 16e0fc493a257504e2708336e05c30b36d4bea15
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="the-new-alerts-experience-in-azure-monitor"></a>Azure Monitor 中的全新警报体验
 
 ## <a name="overview"></a>概述
+
+> [!NOTE]
+> 本文介绍更新的警报。 [经典警报概述](monitoring-overview-alerts.md)中介绍了旧式经典 Azure Monitor 警报。 
+>
+>
+
 警报具有新体验。 旧版警报体验现在在“警报(经典)”选项卡下提供。全新警报体验与“警报(经典)”体验相比具有以下优点：
 
- - **分开触发的警报和警报规则** - 对警报规则（定义触发警报的条件）和触发的警报（警报规则触发实例）进行了区分，因此操作视图和配置视图是分开的。
- - **统一的创作体验** - 针对 Azure Monitor、Log Analytics 和 Application Insights 中的指标、日志和活动日志的所有警报创建均在一个位置进行。 
- - **在 Azure 门户中查看触发的 Log Analytics 警报** - 现在还可以在订阅中查看触发的 Log Analytics 警报。 以前这些警报在单独的门户中。 
- - **更好的工作流** - 全新警报创作体验引导用户完成警报规则配置过程，因此发现需要发出警报的事项变得更容易了。
+-   **更好的通知系统**：所有新型警报均使用[操作组]( https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-action-groups)，这些组是命名的通知和操作组，可以在多个警报中重复使用。  经典指标警报和旧版 Log Analytics 警报不使用操作组。 
+- **统一的创作体验** - 针对 Azure Monitor、Log Analytics 和 Application Insights 中的指标、日志和活动日志的所有警报创建均在一个位置进行。 
+- **在 Azure 门户中查看触发的 Log Analytics 警报** - 现在还可以在订阅中查看触发的 Log Analytics 警报。 以前这些警报在单独的门户中。 
+- **分开触发的警报和警报规则** - 对警报规则（定义触发警报的条件）和触发的警报（警报规则触发实例）进行了区分，因此操作视图和配置视图是分开的。
+- **更好的工作流** - 全新警报创作体验引导用户完成警报规则配置过程，因此发现需要发出警报的事项变得更容易了。
  
+具体而言，更新指标警报有了以下改进：
+-   **延迟降低**：新型指标警报的运行频率可达每分钟一次。 旧式指标警报每 5 分钟方可运行 1 次。 由于引入日志需要时间，日志警报的延迟仍然超过 1 分钟。 
+-   **支持多维指标**：支持对维度指标发出警报，从而可监视受关注的指标段。
+-   **更好地控制指标条件**：可以定义更丰富的警报规则。 新型警报支持监视指标的最大值、最小值、平均值和总值。
+-   **综合监视多个指标**：可以使用单个规则监视多个指标（目前最多为两个指标）。 如果两个指标在指定时间段内违反其各自的阈值，则会触发警报。
+-   **日志中的指标**（受限公共预览版）：进入 Log Analytics 的某些日志数据现在可以提取并转换为 Azure Monitor 指标，然后就像其他指标一样，基于其发出警报。 
+
+
 
 以下部分更详细地介绍了新体验的工作原理。
 
@@ -62,12 +77,12 @@ ms.lasthandoff: 03/28/2018
 > [!NOTE]
 > “警报”中显示的已触发警报仅限支持的指标警报和活动日志警报；“Azure Monitor 概述”显示已触发警报（包括旧版 Azure 警报中的警报）的计数
 
- ![警报概述](./media/monitoring-overview-unified/alerts-preview-overview.png) 
+ ![警报概述](./media/monitoring-overview-unified-alerts/alerts-preview-overview2.png) 
 
 ### <a name="alert-rules-management"></a>警报规则管理
 “监视器 - 警报 > 规则”是单个页面，用于跨 Azure 订阅管理所有警报规则。 此页面列出所有警报规则（已启用的或已禁用的），这些规则可以根据目标资源、资源组、规则名称或状态排序。 也可在此页禁用/启用或编辑警报规则。  
 
- ![警报规则](./media/monitoring-overview-unified/alerts-preview-rules.png)
+ ![警报规则](./media/monitoring-overview-unified-alerts/alerts-preview-rules.png)
 
 
 ## <a name="one-alert-authoring-experience-across-all-monitoring-sources"></a>跨所有监视源的单一警报创作体验
@@ -82,19 +97,22 @@ ms.lasthandoff: 03/28/2018
 - 日志警报 (Application Insights)
 
  
-
-## <a name="alert-types-supported"></a>支持的警报类型
+## <a name="alerts-supported-in-new-experience"></a>新体验中支持的警报
+警报可在多个 Azure 监视服务中使用。 有关如何以及何时使用这些服务的信息，请参阅[此文](./monitoring-overview.md)。 此处是细分的警报类型可用在 Azure 和通过新的警报体验当前支持的功能。 
 
 
 | **信号类型** | **监视器源** | **说明** | 
 |-------------|----------------|-------------|
-| 指标 | Azure Monitor | 也称为[**近实时指标警报**](monitoring-near-real-time-metric-alerts.md)，这些指标警报支持以 1 分钟 1 次的频率对指标条件进行评估，并且允许多指标规则。 [此处](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)提供支持的资源类型的列表。 全新警报体验不支持[此处](monitoring-overview-alerts.md#alerts-in-different-azure-services)定义的旧版指标警报。 可以在“警报(经典)”下找到这些警报|
-| 日志  | Log Analytics | 当针对指标和/或事件数据进行的日志搜索查询符合特定的条件时，会收到通知（此时也可让系统运行自动化操作）。|
-| 活动日志 | 活动日志 | 此类别包含通过所选目标（资源/资源组/订阅）执行的所有创建、更新和删除操作的记录。 |
-| 日志  | 服务运行状况日志 | 在“警报”体验中不受支持。   |
-| 日志  | Application Insights | 此类别包含具有应用程序的性能详细信息的日志。 使用分析查询可以基于应用程序数据定义要执行的操作的条件。 |
-| 指标 | Application Insights | 在“警报”体验中不受支持。 将在“警报(经典)”下找到这些警报 |
-| 可用性测试 | Application Insights | 在“警报”体验中不受支持。 将在“警报(经典)”下找到这些警报 |
+| 指标 | Azure Monitor | 也称为[近实时指标警报](monitoring-near-real-time-metric-alerts.md)，这些指标警报支持以 1 分钟 1 次的频率对指标条件进行评估，并且允许多指标和多维指标规则。 [此处](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)提供支持的资源类型的列表。 |
+| 指标 | Azure Monitor | 新警报体验不支持[旧式经典指标警报](monitoring-overview-alerts.md)。 可以在 Azure 门户中的“警报(经典)”下找到这些警报。 经典警报支持某些尚未移到更新警报的指标类型。 有关完整列表，请参阅[支持的指标](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-supported-metrics)
+| 日志  | Log Analytics | 当针对指标和/或事件数据进行的日志搜索查询符合特定的条件时，会收到通知（此时也可让系统运行自动化操作）。 旧式 Log Analytics 警报仍可用，但[正在复制到新体验](monitoring-alerts-extend.md)。 此外，可以使用 [*Log Analytics 日志即指标预览版*](monitoring-alerts-extend-tool.md)。 使用预览版可以提取某些类型的日志并将其转换为指标，然后，可以使用新的警报体验对其发出警报。 如果想要连同本机 Azure Monitor 指标一起获取非 Azure 日志，预览版很有用。 |
+| 活动日志 | 活动日志（常规） | 包含通过所选目标（资源/资源组/订阅）执行的所有创建、更新和删除操作的记录。 |
+| 活动日志  | 服务运行状况 | 在新警报体验中不受支持。 请参阅[创建有关服务通知的活动日志警报](monitoring-activity-log-alerts-on-service-notifications.md)。  |
+| 日志  | Application Insights | 包含具有应用程序的性能详细信息的日志。 使用分析查询可以基于应用程序数据定义要执行的操作的条件。 |
+| 指标 | Application Insights | 在新警报体验中不受支持。 请参阅[指标警报](../application-insights/app-insights-alerts.md) |
+| Web 可用性测试 | Application Insights | 在“警报”体验中不受支持。  请参阅 [Web 测试警报](../application-insights/app-insights-monitor-web-app-availability.md)。 适用于任何经检测可将数据发送到 Application Insights 的网站。 网站的可用性或响应度低于预期时，就会收到通知。 |
+
+
 
 
 ## <a name="next-steps"></a>后续步骤

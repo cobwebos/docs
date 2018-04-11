@@ -1,12 +1,12 @@
 ---
-title: "缓存工作原理 | Microsoft Docs"
-description: "缓存即在本地存储数据的过程，以便将来可以更快地访问数据请求。"
+title: 缓存工作原理 | Microsoft Docs
+description: 缓存即在本地存储数据的过程，以便将来可以更快地访问数据请求。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: v-deasim
-ms.openlocfilehash: 284b4bcbeafc422a2ed91cec00a5b5b83bb37b7b
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 26a0478f8713cb3584045f59c181c0a38331ea97
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-caching-works"></a>缓存工作原理
 
@@ -64,28 +64,27 @@ ms.lasthandoff: 01/25/2018
 ## <a name="cache-directive-headers"></a>缓存指令标头
 
 > [!IMPORTANT]
-> 默认情况下，针对 DSA 进行了优化的 Azure CDN 终结点将忽略缓存指令标头，绕过缓存。 可通过使用 CDN 缓存规则启用缓存来调整 Azure CDN 终结点对待这些标头的方式。 有关详细信息，请参阅[使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)。
+> 默认情况下，针对 DSA 进行了优化的 Azure CDN 终结点将忽略缓存指令标头，绕过缓存。 对于 **Verizon 的 Azure CDN 标准版**和 **Akamai 的 Azure CDN 标准版**配置文件，可以使用 [CDN 缓存规则](cdn-caching-rules.md)启用缓存，来调整 Azure CDN 终结点处理这些标头的方式。 对于 **Verizon 的 Azure CDN 高级版**配置文件，请使用[规则引擎](cdn-rules-engine.md)来启用缓存。
 
-Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时间和缓存共享： 
+Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时间和缓存共享。
 
-`Cache-Control`
+**Cache-Control：**
 - 在 HTTP 1.1 中引入，用于为 Web 发布者提供对其内容的更多控制权，并解决 `Expires` 标头的局限性。
 - 如果同时定义了 `Expires` 和 `Cache-Control` 标头，则将替代前一个标头。
-- 在请求标头中使用时，Azure CDN 默认情况下将忽略 `Cache-Control`。
-- 在响应标头中使用时，Azure CDN 将根据产品支持以下 `Cache-Control` 指令： 
-   - **Verizon 的 Azure CDN**：支持所有 `Cache-Control` 指令。 
-   - **Akamai 的 Azure CDN**：仅支持以下 `Cache-Control` 指令；将忽略所有其他指令： 
-      - `max-age`：缓存可存储指定秒数的内容。 例如，`Cache-Control: max-age=5`。 此指令指定了被视为最新内容的最长时间。
-      - `no-cache`：缓存内容，但每次传送缓存中的内容前会对其进行验证。 等效于 `Cache-Control: max-age=0`。
-      - `no-store`：从不缓存内容。 删除之前已存储的内容。
+- 在 HTTP 请求中使用时，Azure CDN 默认会忽略 `Cache-Control`。
+- **Verizon 的 Azure CDN** 配置文件支持 HTTP 响应中使用的所有 `Cache-Control` 指令。
+- **Akamai 的 Azure CDN** 配置文件仅支持 HTTP 响应中使用的以下指令；其他所有指令将被忽略：
+   - `max-age`：缓存可存储指定秒数的内容。 例如，`Cache-Control: max-age=5`。 此指令指定了被视为最新内容的最长时间。
+   - `no-cache`：缓存内容，但每次传送缓存中的内容前会对其进行验证。 等效于 `Cache-Control: max-age=0`。
+   - `no-store`：从不缓存内容。 删除之前已存储的内容。
 
-`Expires`
+**Expires：**
 - HTTP 1.0 中引入的旧标头支持向后兼容性。
 - 使用基于日期的过期时间，精确到秒。 
 - 类似于 `Cache-Control: max-age`。
 - 当 `Cache-Control` 不存在时使用。
 
-`Pragma`
+**Pragma：**
    - Azure CDN 默认情况下未采用。
    - HTTP 1.0 中引入的旧标头支持向后兼容性。
    - 用作具有以下指令的客户端请求标头：`no-cache`。 此指令指示服务器提供新的资源版本。
@@ -93,23 +92,23 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 
 ## <a name="validators"></a>验证程序
 
-当缓存过时时，使用 HTTP 缓存验证程序将文件的缓存版本与源服务器上的版本进行比较。 Verizon 中的 Azure CDN 默认支持 ETag 和 Last-Modified 验证程序，而 Akamai 中的 Azure CDN 默认仅支持 Last-Modified。
+当缓存过时时，使用 HTTP 缓存验证程序将文件的缓存版本与源服务器上的版本进行比较。 **Verizon 的 Azure CDN** 默认支持 `ETag` 和 `Last-Modified` 验证程序，而 **Akamai 的 Azure CDN** 默认仅支持 `Last-Modified`。
 
-`ETag`
+**ETag：**
 - Verizon 中的 Azure CDN 默认使用 `ETag`，而 Akamai 中的 Azure CDN 则不使用。
 - `ETag` 为每个文件和文件版本定义唯一字符串。 例如，`ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`。
 - 在 HTTP 1.1 中引入，并且比 `Last-Modified` 更新。 当很难确定上次修改日期时，会非常有用。
 - 支持强验证和弱验证，不过，Azure CDN 仅支持强验证。 对于强验证，两种资源表示形式的每个字节都必须相同。 
 - 缓存通过在请求中发送带有一个或多个 `ETag` 验证程序的 `If-None-Match` 标头来验证使用 `ETag` 的文件。 例如，`If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`。 如果服务器的版本与列表中的 `ETag` 验证程序相匹配，则在其响应中发送状态代码 304（未修改）。 如果版本不同，则服务器响应状态代码 200（确定）和更新后的资源。
 
-`Last-Modified`
-- 对于 Verizon 中的 Azure CDN，如果 ETag 不是 HTTP 响应的一部分，则使用 Last-Modified。 
+**Last-Modified：**
+- 对于 **Verizon 的 Azure CDN（仅限）**，如果 `ETag` 不是 HTTP 响应的一部分，则使用 `Last-Modified`。 
 - 指定源服务器已确定上次修改资源的日期和时间。 例如，`Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`。
 - 缓存通过在请求中发送带有日期和时间的 `If-Modified-Since` 标头来验证使用 `Last-Modified` 的文件。 源服务器将该日期与最新资源的 `Last-Modified` 标头进行比较。 如果自指定时间以来未修改该资源，则服务器在其响应中返回状态代码 304（未修改）。 如果已修改该资源，则服务器返回状态代码 200（确定）和更新后的资源。
 
 ## <a name="determining-which-files-can-be-cached"></a>确定可以缓存哪些文件
 
-并非所有资源均可缓存。 下表根据 HTTP 响应的类型显示了可缓存的资源。 无法缓存不满足所有条件的 HTTP 响应所提供的资源。 对于 Verizon 高级版中的 Azure CDN，可使用规则引擎自定义其中某些条件。
+并非所有资源均可缓存。 下表根据 HTTP 响应的类型显示了可缓存的资源。 无法缓存不满足所有条件的 HTTP 响应所提供的资源。 对于 **Verizon 的 Azure CDN 高级版（仅限）**，可使用规则引擎自定义上述某些条件。
 
 |                   | Verizon 的 Azure CDN | Akamai 的 Azure CDN            |
 |------------------ |------------------------|----------------------------------|
@@ -121,7 +120,7 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 
 下表介绍了 Azure CDN 产品的默认缓存行为及其优化。
 
-|                    | Verizon - 常规 Web 交付 | Verizon - DSA | Akamai - 常规 Web 交付 | Akamai - DSA | Akamai - 大型文件下载 | Akamai - 常规或 VOD 媒体流式处理 |
+|                    | Verizon：常规 Web 交付 | Verizon：DSA | Akamai：常规 Web 交付 | Akamai：DSA | Akamai：大型文件下载 | Akamai：常规或 VOD 媒体流式处理 |
 |--------------------|--------|------|-----|----|-----|-----|
 | **优先处理源**   | 是    | 否   | 是 | 否 | 是 | 是 |
 | **CDN 缓存持续时间** | 7 天 | 无 | 7 天 | 无 | 1 天 | 1 年 |

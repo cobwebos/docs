@@ -35,7 +35,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **高级存储磁盘**
 
-    高级存储支持可附加到特定大小系列 VM 的 VM 磁盘。 高级存储支持 DS 系列、DSv2 系列、GS 系列、Ls 系列、Fs 系列和 Esv3 系列 VM。 有七种磁盘大小可供选择：P4 (32GB)、P6 (64GB)、P10 (128GB)、P20 (512GB)、P30 (1024GB)、P40 (2048GB)、P50 (4095GB)。 不过，仅托管磁盘支持 P4 和 P6 磁盘大小。 每种磁盘大小都有自身的性能规范。 根据应用程序的要求，可将一个或多个磁盘附加到 VM。 [高级存储的可伸缩性和性能目标](#scalability-and-performance-targets)中更详细介绍了规范。
+    高级存储支持可附加到特定大小系列 VM 的 VM 磁盘。 高级存储支持 DS 系列、DSv2 系列、GS 系列、Ls 系列、Fs 系列和 Esv3 系列 VM。 可以选择七种磁盘大小：P4 (32 GB)、P6 (64 GB)、P10 (128 GB)、P20 (512 GB)、P30 (1024 GB)、P40 (2048 GB)、P50 (4095 GB)。 不过，仅托管磁盘支持 P4 和 P6 磁盘大小。 每种磁盘大小都有自身的性能规范。 根据应用程序的要求，可将一个或多个磁盘附加到 VM。 [高级存储的可伸缩性和性能目标](#scalability-and-performance-targets)中更详细介绍了规范。
 
 * **高级页 Blob**
 
@@ -45,11 +45,11 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **高级存储帐户**
 
-    若要开始使用高级存储，请为非托管磁盘创建一个高级存储帐户。 若要在 [Azure 门户](https://portal.azure.com)中创建高级存储帐户，请选择“高级”性能层。 选择“本地冗余存储(LRS)”复制选项。 也可以通过在以下位置之一将类型设置为“Premium_LRS”来创建高级存储帐户：
-    * [存储 REST API](https://docs.microsoft.com/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)（版本 2014-02-14 或更高）
-    * [服务管理 REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx)（版本 2014-10-01 或更高；适用于 Azure 经典部署）
-    * [Azure 存储资源提供程序 REST API](https://docs.microsoft.com/rest/api/storagerp)（适用于 Azure 资源管理器部署）
-    * [Azure PowerShell](/powershell/azureps-cmdlets-docs.md)（版本 0.8.10 或更高）
+    若要开始使用高级存储，请为非托管磁盘创建一个高级存储帐户。 若要在 [Azure 门户](https://portal.azure.com)中创建高级存储帐户，请选择“高级”性能层。 选择“本地冗余存储(LRS)”复制选项。 也可以通过将性能层设置为 **Premium_LRS** 来创建高级存储帐户。 若要更改性能层，请使用以下方法之一：
+     
+    - [对 Azure 存储使用 PowerShell](../articles/storage/common/storage-powershell-guide-full.md#manage-the-storage-account)
+    - [对 Azure 存储使用 Azure CLI](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
+    - [Azure 存储资源提供程序 REST API](https://docs.microsoft.com/rest/api/storagerp)（适用于 Azure 资源管理器部署），或某个 Azure 存储资源提供程序客户端库
 
     若要了解高级存储帐户的限制，请参阅[高级存储的可伸缩性和性能目标](#premium-storage-scalability-and-performance-targets)。
 
@@ -103,7 +103,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
     目前，DS 系列的最大 VM 是 Standard_DS15_v2。 Standard_DS15_v2 可以在所有磁盘上提供最高 960 MB/秒的带宽。 GS 系列的最大 VM 是 Standard_GS5。 Standard_GS5 可以在所有磁盘上提供最高 2,000 MB/秒的带宽。
 
-    请注意，这些限制只适用于磁盘流量， 而不包括缓存命中和网络流量。 VM 网络流量可以使用单独的带宽。 网络流量使用的带宽不同于高级存储磁盘使用的专用带宽。
+    这些限制只适用于磁盘流量， 而不包括缓存命中和网络流量。 VM 网络流量可以使用单独的带宽。 网络流量使用的带宽不同于高级存储磁盘使用的专用带宽。
 
     有关高级存储支持的 VM 的最大 IOPS 和吞吐量（带宽）的最新信息，请参阅 [Windows VM 大小](../articles/virtual-machines/windows/sizes.md)或 [Linux VM 大小](../articles/virtual-machines/linux/sizes.md)。
 
@@ -129,11 +129,11 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 ### <a name="premium-storage-disk-limits"></a>高级存储磁盘限制
 预配高级存储磁盘时，磁盘的大小将确定最大 IOPS 和吞吐量（带宽）。 Azure 提供了七种类型的高级存储磁盘：P4（仅适用于托管磁盘）、P6（仅适用于托管磁盘）、P10、P20、P30、P40 和 P50。 每种高级存储磁盘类型在 IOPS 和吞吐量方面存在具体的限制。 下表描述了磁盘类型的限制：
 
-| 高级磁盘类型  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|
-| 磁盘大小           | 32 GB| 64 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| 每个磁盘的 IOPS       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| 每个磁盘的吞吐量 | 每秒 25 MB  | 每秒 50 MB  | 每秒 100 MB | 每秒 150 MB | 每秒 200 MB | 每秒 250 MB | 每秒 250 MB | 
+| 高级磁盘类型  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
+| 磁盘大小           | 32 GB| 64 GB| 128 GB| 256 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| 每个磁盘的 IOPS       | 120   | 240   | 500   | 1100   | 2300              | 5000              | 7500              | 7500              | 
+| 每个磁盘的吞吐量 | 每秒 25 MB  | 每秒 50 MB  | 每秒 100 MB | 每秒 125 MB | 每秒 150 MB | 每秒 200 MB | 每秒 250 MB | 每秒 250 MB | 
 
 > [!NOTE]
 > 请确保 VM 上有足够的带宽可用来驱动磁盘流量，如[高级存储支持的 VM](#premium-storage-supported-vms) 中所述。 否则，磁盘吞吐量和 IOPS 将限制为较小的值。 最大吞吐量和 IOPS 基于 VM 限制，而不是上表中所述的磁盘限制。  
@@ -144,11 +144,11 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **预配的容量和性能**
 
-    预配高级存储磁盘时，可以获得该磁盘的容量、IOPS 和吞吐量保证，这与标准存储不同。 例如，如果创建 P50 磁盘，Azure 将为此磁盘预配 4,095 GB 存储容量、7,500 IOPS 和 250 MB/秒的吞吐量。 应用程序可以使用全部或部分容量与性能。
+    预配高级存储磁盘时，可以获得该磁盘的容量、IOPS 和吞吐量保证，这与标准存储不同。 例如，如果创建 P50 磁盘，Azure 将为此磁盘预配 4,095-GB 存储容量、7,500 IOPS 和 250-MB/秒的吞吐量。 应用程序可以使用全部或部分容量与性能。
 
 * **磁盘大小**
 
-    Azure 会将磁盘大小映射（向上舍入）到上一部分的表格中指定的最接近高级存储磁盘选项。 例如，大小为 100 GB 的磁盘将分类为 P10 选项。 该选项可执行的 IOPS 最高为 500，吞吐量最高为 100 MB/秒。 同样，大小为 400 GB 的磁盘将分类为 P20 选项。 该选项可执行的 IOPS 最高为 2,300，吞吐量最高为 150 MB/秒。
+    Azure 会将磁盘大小映射（向上舍入）到上一部分的表格中指定的最接近高级存储磁盘选项。 例如，大小为 100 GB 的磁盘将分类为 P10 选项。 该选项可执行的 IOPS 最高为 500，吞吐量最高为 100-MB/秒。 同样，大小为 400 GB 的磁盘将分类为 P20 选项。 该选项可执行的 IOPS 最高为 2,300，吞吐量最高为 150-MB/秒。
     
     > [!NOTE]
     > 可以轻松增加现有磁盘的大小。 例如，可能想要将 30-GB 大小的磁盘增加到 128 GB 甚至 1 TB。 或者，可能想要将 P20 磁盘转换为 P30 磁盘，因为需要更高的容量或更高的 IOPS 和吞吐量。 
@@ -160,7 +160,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **吞吐量**
 
-    吞吐量限制包括磁盘写入，以及不是从缓存进行的磁盘读取操作。 例如，P10 磁盘有 100 MB/秒的每磁盘吞吐量。 下表显示了 P10 磁盘的一些有效吞吐量示例：
+    吞吐量限制包括磁盘写入，以及不是从缓存进行的磁盘读取操作。 例如，P10 磁盘有 100-MB/秒的每磁盘吞吐量。 下表显示了 P10 磁盘的一些有效吞吐量示例：
 
     | 每个 P10 磁盘的吞吐量上限 | 从磁盘进行的非缓存读取 | 对磁盘的非缓存写入 |
     | --- | --- | --- |
@@ -170,7 +170,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 
 * **缓存命中数**
 
-    缓存命中数不受磁盘已分配 IOPS 或吞吐量的限制。 例如，在高级存储支持的 VM 上使用具有 **ReadOnly** 缓存设置的数据磁盘时，缓存提供的读取数不受磁盘的 IOPS 和吞吐量上限的约束。 如果磁盘的工作负荷以读取为主，可以获得极高的吞吐量。 缓存根据 VM 大小在 VM 级别受到不同 IOPS 和吞吐量的限制。 DS 系列 VM 大约有 4,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 33 MB/秒。 GS 系列 VM 限制为 5,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 50 MB/秒。 
+    缓存命中数不受磁盘已分配 IOPS 或吞吐量的限制。 例如，在高级存储支持的 VM 上使用具有 **ReadOnly** 缓存设置的数据磁盘时，缓存提供的读取数不受磁盘的 IOPS 和吞吐量上限的约束。 如果磁盘的工作负荷以读取为主，可以获得极高的吞吐量。 缓存根据 VM 大小在 VM 级别受到不同 IOPS 和吞吐量的限制。 DS 系列 VM 大约有 4,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 33-MB/秒。 GS 系列 VM 限制为 5,000 IOPS，缓存与本地 SSD I/O 的吞吐量为每个核心 50-MB/秒。 
 
 ## <a name="throttling"></a>限制
 如果应用程序的 IOPS 或吞吐量超过高级存储磁盘的分配限制，可能会发生限制。 此外，如果 VM 上所有磁盘的总磁盘流量超过 VM 可用的磁盘带宽限制，也可能会发生限制。 为了避免限制，我们建议限制磁盘的挂起 I/O 请求数。 请根据预配磁盘的可伸缩性和性能目标，以及 VM 可用的磁盘带宽使用限制。  
@@ -186,7 +186,7 @@ Azure 支持使用两种方法为 VM 创建高级存储磁盘：
 在 P10 磁盘上，应用程序已处理 400 个 256 KB 大小的 I/O 单位。 使用的总带宽为 (400 &#215; 256) / 1,024 KB = 100 MB/秒。 P10 磁盘的吞吐量限制为 100 MB/秒。 如果应用程序尝试在该秒内执行更多 I/O 操作，则会发生限制，因为这超出了分配的限制。
 
 ### <a name="example-3"></a>示例 3
-某个 DS4 VM 附加了两个 P30 磁盘。 每个 P30 磁盘的吞吐量可达到 200 MB/秒。 但是，DS4 VM 的总磁盘带宽容量为 256 MB/秒。 无法在此 DS4 VM 上同时以最大吞吐量驱动两个附加的磁盘。 若要解决此问题，可在一个磁盘上保持 200 MB/秒的流量，在另一个磁盘上保持 56 MB/秒的流量。 如果磁盘流量的总和超过 256 MB/秒，磁盘流量将受到限制。
+某个 DS4 VM 附加了两个 P30 磁盘。 每个 P30 磁盘的吞吐量可达到 200-MB/秒。 但是，DS4 VM 的总磁盘带宽容量为 256 MB/秒。 无法在此 DS4 VM 上同时以最大吞吐量驱动两个附加的磁盘。 若要解决此问题，可在一个磁盘上保持 200 MB/秒的流量，在另一个磁盘上保持 56 MB/秒的流量。 如果磁盘流量的总和超过 256 MB/秒，磁盘流量将受到限制。
 
 > [!NOTE]
 > 如果磁盘流量主要包括小型 I/O，应用程序在发生吞吐量限制之前可能会先达到 IOPS 限制。 但是，如果磁盘流量主要包括大型 I/O，应用程序可能会先达到吞吐量限制，而不是 IOPS 限制。 可以使用最佳的 I/O 大小来最大化应用程序的 IOPS 和吞吐量容量。 此外，可以限制磁盘的挂起 I/O 请求数。
@@ -297,14 +297,3 @@ sudo yum install microsoft-hyper-v
 
 ## <a name="next-steps"></a>后续步骤
 有关高级存储的详细信息，请参阅以下文章。
-
-### <a name="design-and-implement-with-premium-storage"></a>高级存储的设计和实现
-* [使用高级存储实现高性能设计](../articles/virtual-machines/windows/premium-storage-performance.md)
-* [对高级存储使用 Blob 存储操作](http://go.microsoft.com/fwlink/?LinkId=521969)
-
-### <a name="operational-guidance"></a>操作指南
-* [迁移到 Azure 高级存储](../articles/storage/common/storage-migration-to-premium-storage.md)
-
-### <a name="blog-posts"></a>博客文章
-* [Azure 高级存储已正式推出](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)
-* [GS 系列公告：将高级存储支持添加到公有云中的最大 VM](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)

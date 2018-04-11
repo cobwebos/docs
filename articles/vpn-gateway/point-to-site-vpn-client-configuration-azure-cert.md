@@ -1,29 +1,29 @@
 ---
-title: "创建并安装用于 Azure 证书身份验证的 P2S VPN 客户端配置文件：PowerShell：Azure | Microsoft Docs"
-description: "为 P2S 证书身份验证配置创建并安装 Windows 和 Mac OS X VPN 客户端配置文件。"
+title: 创建并安装用于 Azure 证书身份验证的 P2S VPN 客户端配置文件：PowerShell：Azure | Microsoft Docs
+description: 为 P2S 证书身份验证配置创建并安装 Windows、Linux (strongSwan) 和 Mac OS X VPN 客户端配置文件。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2018
+ms.date: 04/02/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0ca7b7ca9435d1ba05a2cc0951f5bc88b51bf81b
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 9b9528aba0be8fd46087d97bc294552db608f1c1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-point-to-site-configurations"></a>为本机 Azure 证书身份验证点到站点配置创建并安装 VPN 客户端配置文件
 
-VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本机 Windows 或 Mac IKEv2 VPN 客户端通过使用本机 Azure 证书身份验证的点到站点连接，来与 VNet 建立连接所需的设置。
+VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本机 Windows、Mac IKEv2 VPN 或 Linux 客户端通过使用本机 Azure 证书身份验证的点到站点连接，来与 VNet 建立连接所需的设置。
 
 ### <a name="workflow"></a>P2S 工作流
 
@@ -43,7 +43,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 可使用 PowerShell 或使用 Azure 门户生成客户端配置文件。 两种方法之一都会返回相同的 zip 文件。 解压缩该文件，查看以下文件夹：
 
   * **WindowsAmd64** 和 **WindowsX86**：分别包含 Windows 32 位和 64 位安装程序包。 **WindowsAmd64** 安装程序包适用于所有受支持的 64 位 Windows 客户端，而不仅仅是 Amd。
-  * **Generic**：包含用于创建自己的 VPN 客户端配置的常规信息。 请忽略此文件夹。 如果网关上配置了 IKEv2 或 SSTP+IKEv2，会提供 Generic 文件夹。 如果仅配置了 SSTP，则不会提供 Generic 文件夹。
+  * **Generic**：包含用于创建自己的 VPN 客户端配置的常规信息。 如果网关上配置了 IKEv2 或 SSTP+IKEv2，会提供 Generic 文件夹。 如果仅配置了 SSTP，则不会提供 Generic 文件夹。
 
 ### <a name="zipportal"></a>使用 Azure 门户生成文件
 
@@ -63,7 +63,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
   ```
 2. 将 URL 复制到浏览器，下载 zip 文件，然后解压缩该文件，查看其中的文件夹。
 
-## <a name="installwin"></a>安装 Windows VPN 客户端配置包
+## <a name="installwin"></a>安装 - Windows
 
 只要版本与 Windows 客户端的体系结构匹配，就可以在每台客户端计算机上使用相同的 VPN 客户端配置包。 有关支持的客户端操作系统列表，请参阅 [VPN 网关常见问题解答](vpn-gateway-vpn-faq.md#P2S)中的“点到站点”部分。
 
@@ -79,7 +79,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 3. 在客户端计算机上，导航到“网络设置”，并单击“VPN”。 VPN 连接显示所连接到的虚拟网络的名称。 
 4. 尝试连接前，请验证客户端计算机上是否已安装客户端证书。 使用本机 Azure 证书身份验证类型时，客户端证书是身份验证必需的。 有关生成证书的详细信息，请参阅[生成证书](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)。 有关如何安装客户端证书的信息，请参阅[安装客户端证书](point-to-site-how-to-vpn-client-install-azure-cert.md)。
 
-## <a name="installmac"></a>Mac 上的 VPN 客户端配置 (OS X)
+## <a name="installmac"></a>安装 - Mac (OS X)
 
 Azure 不提供用于本机 Azure 证书身份验证的 mobileconfig 文件。 必须在将连接到 Azure 的每个 Mac 上手动配置本机 IKEv2 VPN 客户端。 Generic 文件夹包含配置该客户端所需的全部信息。 如果在下载中没有看到 Generic 文件夹，则可能 IKEv2 未选作隧道类型。 选择 IKEv2 后，再次生成 zip 文件，检索 Generic 文件夹。 Generic 文件夹包含以下文件：
 
@@ -119,8 +119,55 @@ Azure 不提供用于本机 Azure 证书身份验证的 mobileconfig 文件。 �
   ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. 在“网络”对话框中，单击“应用”保存所有更改。 然后单击“连接”，启动与 Azure VNet 的 P2S 连接。
 
+## <a name="installlinux"></a>安装 - Linux (strongSwan)
+
+### <a name="extract-the-key-and-certificate"></a>提取密钥和证书
+
+对于 strongSwan，需要从客户端证书（.pfx 文件）提取密钥和证书，并将其保存为单独的 .pem 文件。
+请遵循以下步骤进行配置：
+
+1. 从 [OpenSSL](https://www.openssl.org/source/) 下载并安装 OpenSSL。
+2. 打开命令行窗口并切换到 OpenSSL 的安装目录，例如 'c:\OpenSLL-Win64\bin\'。
+3. 运行以下命令，从客户端证书提取私钥，并将其保存到名为“privatekey.pem”的新文件：
+
+  ```
+  C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nocerts -out privatekey.pem -nodes
+  ```
+4.  现在，运行以下命令提取公共证书，并将其保存到新文件：
+
+  ```
+  C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nokeys -out publiccert.pem -nodes
+  ```
+
+### <a name="install"></a>安装
+
+以下说明是通过 Ubuntu 17.0.4 上的 strongSwan 5.5.1 创建的。 Ubuntu 16.0.10 不支持 strongSwan GUI。 如果想要使用 Ubuntu 16.0.10，则必须使用命令行。 以下示例可能与你看到的屏幕不同，具体取决于所用的 Linux 和 strongSwan 版本。
+
+1. 打开**终端**并运行示例中的命令，安装 **strongSwan** 及其网络管理器。 如果收到与 *libcharon-extra-plugins* 相关的错误，请将此参数替换为“strongswan-plugin-eap-mschapv2”。
+
+  ```
+  sudo apt-get install strongswan libcharon-extra-plugins moreutils iptables-persistent network-manager-strongswan
+  ```
+2. 选择“网络管理器”图标（向上箭头/向下箭头），然后选择“编辑连接”。
+
+  ![编辑连接](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
+3. 单击“添加”按钮创建新连接。
+
+  ![添加连接](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
+4. 从下拉菜单中选择“IPsec/IKEv2 (strongswan)”，单击“创建”。 可以在此步骤中重命名连接。
+
+  ![选择连接类型](./media/point-to-site-vpn-client-configuration-azure-cert/choosetype.png)
+5. 打开下载的客户端配置文件包含的 **Generic** 文件夹中的 **VpnSettings.xml** 文件。 找到名为 **VpnServer** 的标记，并复制以“azuregateway”开头、以“.cloudapp.net”结尾的名称。
+
+  ![复制名称](./media/point-to-site-vpn-client-configuration-azure-cert/vpnserver.png)
+6. 在“网关”部分中，将此名称粘贴到新 VPN 连接的“地址”字段中。 接下来，选择“证书”字段末尾的文件夹图标，浏览到 **Generic** 文件夹，并选择 **VpnServerRoot** 文件。
+7. 在连接的“客户端”部分，为“身份验证”选择“证书/私钥”。 对于“证书”和“私钥”，请选择前面创建的证书和私钥。 在“选项”中，选择“请求内部 IP 地址”。 然后，单击“添加”。
+
+  ![请求内部 IP 地址](./media/point-to-site-vpn-client-configuration-azure-cert/inneripreq.png)
+8. 单击“网络管理器”图标（向上/向下箭头），并将鼠标悬停在“VPN 连接”上。 将会看到已创建的 VPN 连接。 单击以启动连接。
+
 ## <a name="next-steps"></a>后续步骤
 
 返回到相关文章，[完成 P2S 配置](vpn-gateway-howto-point-to-site-rm-ps.md)。
 
-有关 P2S 故障排除信息，请参阅[排查 Azure 点到站点连接问题](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。
+有关 P2S 故障排除信息，请参阅[排查 Azure 点到站点连接问题](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)和[排查从 Mac OS X VPN 客户端建立的 VPN 连接问题](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)。

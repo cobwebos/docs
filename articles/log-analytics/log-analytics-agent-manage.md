@@ -1,24 +1,24 @@
 ---
-title: "管理 Azure Log Analytics 代理 | Microsoft Docs"
-description: "本文介绍在计算机上部署的 Microsoft Monitoring Agent (MMA) 的生命周期中通常会执行的不同管理任务。"
+title: 管理 Azure Log Analytics 代理 | Microsoft Docs
+description: 本文介绍在计算机上部署的 Microsoft Monitoring Agent (MMA) 的生命周期中通常会执行的不同管理任务。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2018
+ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 2e4daebf18d5edeba92bc14d5a4f699fbd2d94ce
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 5ff4f79a607143683b37726f1c02a6057dc6b9b0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理并维护 Windows 和 Linux 的 Log Analytics 代理
 
@@ -69,6 +69,34 @@ $mma.ReloadConfiguration()
 >[!NOTE]
 >如果以前已使用命令行或脚本安装或配置了代理，`EnableAzureOperationalInsights` 会被 `AddCloudWorkspace` 和 `RemoveCloudWorkspace` 取代。
 >
+
+### <a name="linux-agent"></a>Linux 代理
+以下步骤演示如何重新配置 Linux 代理，以便将其注册到不同的工作区，或者从其配置中删除工作区。  
+
+1.  若要验证该代理是否已注册到工作区，请运行以下命令。
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -l` 
+
+    此命令应返回类似以下示例的状态 - 
+
+    `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
+
+    状态中还应显示代理正在运行，这一点非常重要，否则以下重新配置代理的步骤不会成功完成。  
+
+2. 如果代理已注册到工作区，请运行以下命令删除已注册的工作区。  如果未注册，请继续执行下一步。
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -X`  
+    
+3. 若要注册到不同的工作区，请运行命令 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]` 
+4. 若要验证更改是否生效，请运行以下命令。
+
+    `/opt/microsoft/omsagent/bin/omsadmin.sh -l` 
+
+    此命令应返回类似以下示例的状态 - 
+
+    `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
+
+无需重启代理服务即可使更改生效。
 
 ## <a name="update-proxy-settings"></a>更新代理设置 
 若要将代理配置为在部署后通过代理服务器或[ OMS 网关](log-analytics-oms-gateway.md)与服务通信，请使用以下任一方法来完成此任务。
