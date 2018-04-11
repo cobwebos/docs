@@ -107,12 +107,12 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>在设备预配服务中创建设备注册条目
 
-1. 在 Azure 门户中转到自己的预配服务。 选择“管理登记”，然后选择“单独登记”选项卡。![个人登记](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
+1. 在 Azure 门户中转到自己的预配服务。 选择 **管理登记** ，然后选择 **单独登记** 选项卡。![个人登记](./media/how-to-connect-mxchip-iot-devkit/individual-enrollments.png)
 
-2. 选择**添加**。
+2. 选择 **添加** 。
 
-3. 在**机制**中选择**X.509**。
-  上传证书
+3. 在 **机制** 中选择 **X.509** 。
+  ![上传证书](./media/how-to-connect-mxchip-iot-devkit/upload-cert.png)
 
 4. 在**证书 .pem 或 .cer 文件**中，上传刚刚生成的 **.pem** 证书。
 
