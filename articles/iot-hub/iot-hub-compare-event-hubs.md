@@ -1,67 +1,57 @@
 ---
-title: "Azure IoT 中心与 Azure 事件中心的比较 | Microsoft Docs"
-description: "比较 IoT 中心与事件中心这两个 Azure服务，重点介绍功能差异和用例。 比较内容包括支持的协议、设备管理、监视和文件上传。"
+title: Azure IoT 中心与 Azure 事件中心的比较 | Microsoft Docs
+description: 比较 IoT 中心与事件中心这两个 Azure服务，重点介绍功能差异和用例。 比较内容包括支持的协议、设备管理、监视和文件上传。
 services: iot-hub
-documentationcenter: 
-author: fsautomata
+documentationcenter: ''
+author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: aeddea62-8302-48e2-9aad-c5a0e5f5abe9
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
-ms.author: elioda
-ms.openlocfilehash: b515e05d16dda83c7d865113d5d3578c44be084f
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.date: 04/01/2018
+ms.author: kgremban
+ms.openlocfilehash: 303a2bde0a1e0b25ca6eb145e7b0cd6c91fff351
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="comparison-of-azure-iot-hub-and-azure-event-hubs"></a>Azure IoT 中心与 Azure 事件中心的比较
-IoT 中心的其中一个主要用例是从设备收集遥测数据。 因此，我们经常在 IoT 中心与 [Azure 事件中心][Azure Event Hubs]之间进行比较。 与 IoT 中心一样，事件中心是一种事件处理服务，用于向云提供大规模的事件与遥测数据入口，并且具有较低的延迟和较高的可靠性。
 
-但是，这两个服务之间有许多差异，下表对此做了详述：
+Azure IoT 中心和 Azure 事件中心都是云服务，都可以引入大量的数据进行处理或存储，以便获取业务见解。 这两项服务类似的地方是，二者都支持事件和遥测数据的处理，延迟低且可靠性高。 不过，只有 IoT 中心在开发时设计了启用大规模物联网方案所需的特定功能。 
 
-| 区域 | IoT 中心 | 事件中心 |
-| --- | --- | --- |
-| 通信模式 | 启用[设备到云通信][lnk-d2c-guidance]（消息传递、文件上传及报告属性）和[云到设备通信][lnk-c2d-guidance]（直接方法、所需属性、消息传递）。 |仅支持事件引入（通常视为设备到云的方案）。 |
-| 设备状态信息 | [设备孪生][lnk-twins]可存储和查询设备状态信息。 | 没有可存储的设备状态信息。 |
-| 设备协议支持 |支持 MQTT、基于 Websocket 的 MQTT、AMQP、基于 Websocket 的 AMQP，以及 HTTPS。 此外，IoT 中心还可使用 [Azure IoT 协议网关][lnk-azure-protocol-gateway]（一种可自定义协议网关实现）以支持自定义协议。 |支持 AMQP、基于 Websocket 的 AMQP，以及 HTTPS。 |
-| 安全 |提供每个设备的标识与可吊销的访问控制权限。 请参阅 [IoT 中心开发人员指南的“安全性”部分]。 |提供事件中心范围的[共享访问策略][Event Hubs - security]，通过[发布者策略][Event Hubs publisher policies]提供有限的权限吊销支持。 IoT 解决方案通常需要实现自定义解决方案来支持每个设备的凭据以及防欺骗措施。 |
-| 操作监视 |允许 IoT 解决方案订阅丰富的设备标识管理和连接事件集，例如单个设备的身份验证错误、限制和错误格式异常。 这些事件可让你在单个设备级别快速识别连接问题。 |仅公开聚合度量值。 |
-| 缩放 |已经过优化，可支持数百万个同时连接的设备。 |按 [Azure 事件中心配额][Azure Event Hubs quotas]计量连接。 另一方面，事件中心可让你为发送的每条消息指定分区。 |
-| 设备 SDK |除直接 MQTT、AMQP 和 HTTPS API 外，还为各种平台和语言提供[设备 SDK][Azure IoT SDKs]。 |除了 AMQP 和 HTTPS 发送接口之外，还支持 .NET、Java 和 C。 |
-| 文件上传 |可让 IoT 解决方案将文件从设备上传到云。 包含一个用于集成工作流的文件通知终结点，以及一个用于支持调试的操作监视类别。 | 不支持。 |
-| 将消息路由到多个终结点 | 最多支持 10 个自定义终结点。 规则确定如何将消息路由到自定义终结点。 有关详细信息，请参阅[使用 IoT 中心发送和接收消息][lnk-devguide-messaging]。 | 要求为消息发送编写和托管附加代码。 |
+Azure IoT 中心是一个云网关，可以连接设备并收集获取业务见解和实现自动化所需的数据。 有了它，就可以轻松地将数据流式传输到云并对设备进行大规模的管理。 IoT 中心和其他数据引入服务的重要区别是，IoT 中心包含的功能可以丰富设备和后端系统之间的关系。 双向通信功能意味着，既可以从设备接收数据，也可以向设备发送消息，以便更新属性或调用某个操作。 设备级标识可以用来确保系统安全性。 分布式计算可以将云服务逻辑移到边缘设备。
 
-总而言之，即使唯一的用例是设备到云遥测流入，IoT 中心也能提供专为 IoT 设备连接设计的服务。 对于这些使用 IoT 特定功能的方案，它会持续完善价值主张。 无论对于数据中心之间还是数据中心内部的方案，事件中心主要用于大规模事件引入。
+[Azure 事件中心][Azure Event Hubs]是一项事件引入服务，可以处理和存储大量数据和遥测。 不管使用的是跨数据中心的方案还是数据中心内部的方案，事件中心主要用于大规模事件引入，而不提供 IoT 中心提供的特定于 IoT 的丰富功能。 因此，不建议对 IoT 解决方案使用事件中心。 
 
-在同一解决方案中同时使用 IoT 中心和事件中心并不少见。 IoT 中心处理设备到云的通信，而事件中心处理的是将后期事件引入实时处理引擎。
+下表详述了在针对 IoT 功能对 IoT 中心的两个层与事件中心进行评估时，二者的比较结果。 有关 IoT 中心的标准层和基本层的详细信息，请参阅[如何选择合适的 IoT 中心层][lnk-scaling]。
+
+| IoT 功能 | IoT 中心标准层 | IoT 中心基本层 | 事件中心 |
+| --- | --- | --- | --- |
+| 设备到云的消息传递 | ![勾选标记][1] | ![勾选标记][1] | ![勾选标记][1] |
+| 协议：HTTPS、AMQP、基于 Websocket 的 AMQP | ![勾选标记][1] | ![勾选标记][1] | ![勾选标记][1] |
+| 协议：MQTT、基于 Websocket 的 MQTT | ![勾选标记][1] | ![勾选标记][1] |  |
+| 每设备标识 | ![勾选标记][1] | ![勾选标记][1] |  |
+| 从设备上传文件 | ![勾选标记][1] | ![勾选标记][1] |  |
+| 设备预配服务 | ![勾选标记][1] | ![勾选标记][1] |  |
+| 云到设备的消息传递 | ![勾选标记][1] |  |  |
+| 设备孪生和设备管理 | ![勾选标记][1] |  |  |
+| IoT Edge | ![勾选标记][1] |  |  |
+
+即使唯一的用例是设备到云数据引入，我们也强烈建议使用 IoT 中心，因为它提供专用于 IoT 设备连接的服务。 
 
 ### <a name="next-steps"></a>后续步骤
-若要了解有关规划 IoT 中心部署的详细信息，请参阅[缩放、HA 和 DR][lnk-scaling]。
 
-若要进一步探索 IoT 中心的功能，请参阅：
+若要进一步探索 IoT 中心的功能，请参阅 [IoT 中心开发人员指南][lnk-devguide]
 
-* [IoT 中心开发人员指南][lnk-devguide]
-* [使用 Azure IoT Edge 将 AI 部署到边缘设备][lnk-iotedge]
-
-[lnk-twins]: iot-hub-devguide-device-twins.md
-[lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
-[lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
 
 [Azure Event Hubs]: ../event-hubs/event-hubs-what-is-event-hubs.md
-[IoT 中心开发人员指南的“安全性”部分]: iot-hub-devguide-security.md
-[Event Hubs - security]: ../event-hubs/event-hubs-authentication-and-security-model-overview.md
-[Event Hubs publisher policies]: ../event-hubs/event-hubs-features.md#event-publishers
-[Azure Event Hubs quotas]: ../event-hubs/event-hubs-quotas.md
-[Azure IoT SDKs]: https://github.com/Azure/azure-iot-sdks
-[lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
-
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-devguide-messaging]: iot-hub-devguide-messaging.md
+
+<!--Image references-->
+[1]: ./media/iot-hub-compare-event-hubs/ic195031.png

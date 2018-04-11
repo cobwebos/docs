@@ -12,31 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 03/30/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 2b42840bc1053e9574e7c8ab1c68611c3b2bc7df
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a4ed9ddabe19406fa694992f29cf529b491438c0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>在 Azure Active Directory 中为动态组成员身份创建基于属性的规则
-在 Azure Active Directory (Azure AD) 中，可以创建高级规则以启用基于属性的复杂动态组成员身份。 本文详细介绍了用于为用户或设备创建动态成员身份规则的属性和语法。
+在 Azure Active Directory (Azure AD) 中，可以创建高级规则以启用基于属性的复杂动态组成员身份。 本文详细介绍了用于为用户或设备创建动态成员身份规则的属性和语法。 可以为安全组或 Office 365 组中的动态成员身份设置规则。
 
-当用户或设备的任何属性发生更改时，系统将评估目录中的所有动态组规则，以查看该更改是否会触发任何组添加或删除。 如果用户或设备满足组的规则，它们将添加为该组的成员。 如果用户或设备不再满足该规则，则会将其删除。
+当用户或设备的任何属性发生更改时，系统会评估目录中的所有动态组规则，以查看该更改是否会触发任何组添加或删除。 如果用户或设备满足组的规则，它们将添加为该组的成员。 如果用户或设备不再满足该规则，则会将其删除。
 
 > [!NOTE]
-> 可以为安全组或 Office 365 组中的动态成员身份设置规则。
->
 > 此功能需要将每个用户成员的 Azure AD Premium P1 许可证至少添加到一个动态组。 并不一定要实际将许可证分配给用户使其成为动态组的成员，但确实需要在租户中具有涵盖所有此类用户所需的最小许可证数。 例如：如果你在租户的所有动态组中总共拥有 1,000 个唯一用户，则需要至少具有 Azure AD Premium P1 或更高版本的 1,000 个许可证，才能满足许可证要求。
 >
 > 可以创建设备或用户的动态组，但不能创建同时包含用户和设备对象的规则。
 > 
 > 目前不能基于所有者用户的属性创建设备组。 设备成员身份规则只能引用目录中设备对象的直接属性。
-> 
-> Microsoft 团队尚不支持动态组成员身份。 可以在与“无法迁移动态成员身份组”关联的日志中验证该错误
 
 ## <a name="to-create-an-advanced-rule"></a>创建高级规则
 1. 使用全局管理员或用户帐户管理员的帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
@@ -106,11 +102,11 @@ ms.lasthandoff: 03/28/2018
 所有运算符可以带或不带连字符前缀。 仅当优先级不满足你的要求时，才需要括号。
 例如：
 ```
-   user.department -eq "Marketing" -and user.country -eq "US"
+   user.department –eq "Marketing" –and user.country –eq "US"
 ```
 等效于：
 ```
-   (user.department -eq "Marketing") -and (user.country -eq "US")
+   (user.department –eq "Marketing") –and (user.country –eq "US")
 ```
 ## <a name="using-the--in-and--notin-operators"></a>使用 -In 和 -notIn 运算符
 
@@ -160,32 +156,32 @@ ms.lasthandoff: 03/28/2018
 
 | 属性 | 允许的值 | 使用情况 |
 | --- | --- | --- |
-| city |任意字符串值或 $null |(user.city -eq "value") |
-| country |任意字符串值或 $null |(user.country -eq "value") |
-| companyName | 任意字符串值或 $null | (user.companyName -eq "value") |
-| department |任意字符串值或 $null |(user.department -eq "value") |
+| city |任意字符串值或 null |(user.city -eq "value") |
+| country |任意字符串值或 null |(user.country -eq "value") |
+| companyName | 任意字符串值或 null | (user.companyName -eq "value") |
+| department |任意字符串值或 null |(user.department -eq "value") |
 | displayName |任意字符串值 |(user.displayName -eq "value") |
-| employeeId |任意字符串值 |(user.employeeId -eq "value")<br>(user.employeeId -ne $null) |
-| facsimileTelephoneNumber |任意字符串值或 $null |(user.facsimileTelephoneNumber -eq "value") |
-| givenName |任意字符串值或 $null |(user.givenName -eq "value") |
-| jobTitle |任意字符串值或 $null |(user.jobTitle -eq "value") |
-| mail |任意字符串值或 $null（用户的 SMTP 地址） |(user.mail -eq "value") |
+| employeeId |任意字符串值 |(user.employeeId -eq "value")<br>(user.employeeId -ne *null*) |
+| facsimileTelephoneNumber |任意字符串值或 null |(user.facsimileTelephoneNumber -eq "value") |
+| givenName |任意字符串值或 null |(user.givenName -eq "value") |
+| jobTitle |任意字符串值或 null |(user.jobTitle -eq "value") |
+| mail |任意字符串值或 null（用户的 SMTP 地址） |(user.mail -eq "value") |
 | mailNickName |任意字符串值（用户的邮件别名） |(user.mailNickName -eq "value") |
-| mobile |任意字符串值或 $null |(user.mobile -eq "value") |
+| mobile |任意字符串值或 null |(user.mobile -eq "value") |
 | objectId |用户对象的 GUID。 |(user.objectId -eq "1111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | 从本地同步至云端的用户的本地安全标识符 (SID)。 |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |任意字符串值或 $null |(user.physicalDeliveryOfficeName -eq "value") |
-| postalCode |任意字符串值或 $null |(user.postalCode -eq "value") |
+| physicalDeliveryOfficeName |任意字符串值或 null |(user.physicalDeliveryOfficeName -eq "value") |
+| postalCode |任意字符串值或 null |(user.postalCode -eq "value") |
 | preferredLanguage |ISO 639-1 代码 |(user.preferredLanguage -eq "en-US") |
-| sipProxyAddress |任意字符串值或 $null |(user.sipProxyAddress -eq "value") |
-| state |任意字符串值或 $null |(user.state -eq "value") |
-| streetAddress |任意字符串值或 $null |(user.streetAddress -eq "value") |
-| surname |任意字符串值或 $null |(user.surname -eq "value") |
-| telephoneNumber |任意字符串值或 $null |(user.telephoneNumber -eq "value") |
+| sipProxyAddress |任意字符串值或 null |(user.sipProxyAddress -eq "value") |
+| state |任意字符串值或 null |(user.state -eq "value") |
+| streetAddress |任意字符串值或 null |(user.streetAddress -eq "value") |
+| surname |任意字符串值或 null |(user.surname -eq "value") |
+| telephoneNumber |任意字符串值或 null |(user.telephoneNumber -eq "value") |
 | usageLocation |双字母国家/地区代码 |(user.usageLocation -eq "US") |
 | userPrincipalName |任意字符串值 |(user.userPrincipalName -eq "alias@domain") |
-| userType |member guest $null |(user.userType -eq "Member") |
+| userType |member guest null |(user.userType -eq "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>字符串集合类型的属性
 允许的操作
@@ -228,7 +224,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 ## <a name="use-of-null-values"></a>Null 值的用法
 
-要在规则中指定 null 值，可以使用 null 值。 注意，不要在 null 这个词两边使用引号 - 如果这样做，它将被解释为文本字符串值。 引用 null 值的正确方法如下：
+要在规则中指定 null 值，可以使用 null 值。 注意，不要在 null 这个词两边使用引号 - 如果这样做，它将被解释为文本字符串值。 不能将 -not 运算符用作 null 的比较运算符。 如果使用该运算符，将会出现错误，不管使用 null 还是 $null。 请改用 -eq 或 -ne。 引用 null 值的正确方法如下：
 ```
    user.mail –ne $null
 ```
@@ -254,13 +250,14 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 > [!NOTE]
 > 1. 要使规则起作用，请确保租户中用户的 **Manager ID** 属性已正确设置。 可以在用户的“配置文件”选项卡上查看该用户的当前值。
 > 2. 此规则仅支持**直接**下属。 目前不能为嵌套层次结构创建组，例如包括直接下属及其下属的组。
+> 3. 此规则不能与任何其他的高级规则组合起来使用。
 
 **配置组**
 
 1. 根据[创建高级规则](#to-create-the-advanced-rule)部分中的步骤 1-5 操作，并在“成员身份类型”中选择“动态用户”。
 2. 在“动态成员身份规则”边栏选项卡上，使用以下语法输入规则：
 
-    *Direct Reports for "{obectID_of_manager}"*
+    *Direct Reports for "{objectID_of_manager}"*
 
     有效规则的示例：
 ```
@@ -295,19 +292,43 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 ## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>将动态成员身份更改为静态，或反之
 可更改在组中管理成员身份的方式。 想要在系统中保留相同的组名称和 ID，使针对组的任何现有引用仍然有效时，这很有用；创建新组需要更新这些引用。
 
-我们正在更新 Azure 门户以支持此功能。 在此期间，可以使用 PowerShell cmdlet，如下所示。
+我们已更新 Azure AD 管理中心，以添加对此功能的支持。 现在，客户可将现有组从动态成员身份转换为分配的成员身份，或反之，不管是通过 Azure AD 管理中心还是 PowerShell cmdlet 来进行，如下所示。
 
 > [!WARNING]
 > 将现有静态组更改为动态组时，会从组中删除所有现有成员，然后会处理成员身份规则以添加新成员。 如果使用组来控制对应用或资源的访问，则在完全处理成员身份规则前，原始成员可能无法进行访问。
 >
 > 建议事先测试新的成员身份规则，确保组中的新成员身份符合预期。
 
-**使用 PowerShell 更改组中的成员身份管理**
+### <a name="using-azure-ad-admin-center-to-change-membership-management-on-a-group"></a>使用 Azure AD 管理中心更改组中的成员身份管理 
+
+1. 在租户中使用全局管理员或用户帐户管理员的帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
+2. 选择“组”。
+3. 在“所有组”列表中，打开要更改的组。
+4. 选择“属性”。
+5. 在组的“属性”页中，选择“已分配(静态)”、“动态用户”或“动态设备”作为“成员身份类型”，具体取决于所需的成员身份类型。 对于动态成员身份，可以使用规则生成器来选择适用于简单规则的选项，也可以自行编写一项高级规则。 
+
+以下步骤以示例的方式说明了如何将某个组的用户从静态成员身份更改为动态成员身份。 
+
+1. 在所选组的“属性”页中，选择“动态用户”作为“成员身份类型”，然后在说明对组成员身份所做更改的对话框中选择“是”，以便继续操作。 
+  
+   ![选择“动态用户”作为“成员身份类型”](./media/active-directory-groups-dynamic-membership-azure-portal/select-group-to-convert.png)
+  
+2. 选择“添加动态查询”，然后提供规则。
+  
+   ![输入规则](./media/active-directory-groups-dynamic-membership-azure-portal/enter-rule.png)
+  
+3. 创建规则之后，选择页面底部的“添加查询”。
+4. 在组的“属性”页上选择“保存”，以便保存所做的更改。 组列表中组的“成员身份类型”会立即进行更新。
+
+> [!TIP]
+> 如果所输入的高级规则不正确，组转换操作可能会失败。 通知显示在门户的右上角；它包含系统无法接受规则的原因说明。 请仔细阅读，了解如何调整规则才能使其生效。
+
+### <a name="using-powershell-to-change-membership-management-on-a-group"></a>使用 PowerShell 更改组中的成员身份管理
 
 > [!NOTE]
-> 若要更改动态组属性，需要通过 [Azure AD PowerShell 版本 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)（即**预览版**）使用 cmdlet。 可从[此处](https://www.powershellgallery.com/packages/AzureADPreview)安装该预览版。
+> 若要更改动态组属性，需要通过 [Azure AD PowerShell 版本 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)（即**预览版**）使用 cmdlet。 可以从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureADPreview)安装预览版。
 
-下面是在现有组中切换成员身份管理的函数示例。 请注意，必须小心正确地操作 GroupTypes 属性，并保留其中可能包含的与动态成员身份无关的任何值。
+下面是在现有组中切换成员身份管理的函数示例。 在此示例中，必须小心正确地操作 GroupTypes 属性，并保留与动态成员身份无关的任何值。
 
 ```
 #The moniker for dynamic groups as used in the GroupTypes property of a group object
