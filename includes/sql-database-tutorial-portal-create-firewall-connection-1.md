@@ -47,7 +47,7 @@
    > [!IMPORTANT]
    > \* 超出所包括存储量的存储大小为预览版，需额外付费。 有关详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。 
    >
-   >\*在高级层中，以下区域目前提供的存储超出 1 TB：加拿大中部、加拿大东部、法国中部、德国中部、日本东部、韩国中部、美国中南部、东南亚、美国东部 2、美国西部、美国弗吉尼亚州政府和西欧。 请参阅 [P11-P15 当前限制](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
+   >\*在高级层中，以下区域目前提供的存储超出 1 TB：加拿大中部、加拿大东部、法国中部、德国中部、日本东部、韩国中部、美国中南部、东南亚、美国东部 2、美国西部、美国弗吉尼亚州政府和西欧。 请参阅 [P11-P15 当前限制](../articles/sql-database/sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
    > 
 
 9. 选择服务器层、DTU 数和存储量后，单击“应用”。  

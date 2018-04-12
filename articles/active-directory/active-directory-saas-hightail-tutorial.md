@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Hightail 集成| Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Hightail 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Hightail 集成| Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Hightail 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
 ms.openlocfilehash: 2333a56cd9369cb66c4944304472462d2f2f7511
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>教程：Azure Active Directory 与 Hightail 集成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Hightail
 - 可以让用户使用其 Azure AD 帐户自动登录到 Hightail（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Hightail 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Hightail 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 12/11/2017
     | ------------------- | -------------------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | 电子邮件 | user.mail |    
+    | Email | user.mail |    
     | UserIdentity | user.mail |
     
     a. 单击“添加属性”，打开“添加属性”对话框。
@@ -146,7 +146,7 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_officespace_05.png)
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
 
     c. 在“值”列表中，选择为该行显示的属性值。
 
@@ -184,13 +184,13 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_004.png)
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 如果要在“IDP 发起的模式”下配置应用程序，请选择“标识提供者(IdP)发起的登录”。 如果使用“SP 发起的模式”，请选择“服务提供程序(SP)发起的登录”。
+    e. 如果要在“IDP 发起的模式”下配置应用程序，请选择“标识提供者(IdP)发起的登录”。 如果使用“SP 发起的模式”，请选择“服务提供程序(SP)发起的登录”。
 
     ![配置单一登录](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_006.png)
 
     f. 复制实例的 SAML 使用者 URL 并将其粘贴到 Azure 门户中“Hightail 域和 URL”的“回复 URL”文本框中。
     
-    g. 单击“保存” 。
+    g. 单击“ **保存**”。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -221,17 +221,17 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-hightail-test-user"></a>创建 Hightail 测试用户
 
 本部分的目的是在 Hightail 中创建名为“Britta Simon”的用户。 
 
-本部分不存在任何操作项。 Hightail 支持基于自定义声明进行实时用户预配。 如果已配置自定义声明（如前面的**[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)**部分中所述），会自动在应用程序中创建尚不存在的用户。 
+此部分不存在任何操作项。 Hightail 支持基于自定义声明进行实时用户预配。 如果已配置自定义声明（如前面的**[配置 Azure AD 单一登录](#configuring-azure-ad-single-sign-on)**部分中所述），会自动在应用程序中创建尚不存在的用户。 
 
 >[!NOTE]
 >如果需要手动创建用户，则需要联系 [Hightail 支持团队](mailto:support@hightail.com)。 
@@ -268,7 +268,7 @@ ms.lasthandoff: 12/11/2017
     
 ### <a name="testing-single-sign-on"></a>测试单一登录
 
-本部分的目的是使用访问面板测试 Azure AD 单一登录配置。
+本部分旨在使用“访问面板”测试 Azure AD 单一登录配置。
 
 单击访问面板中的 Hightail 磁贴时，应自动登录到 Hightail 应用程序。
 
@@ -276,7 +276,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 

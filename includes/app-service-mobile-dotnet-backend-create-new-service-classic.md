@@ -5,7 +5,7 @@
 
    应用服务计划的设置将确定与应用关联的[位置、功能、成本和计算资源](https://azure.microsoft.com/pricing/details/app-service/)。 有关应用服务计划以及如何在不同定价层和所需位置中创建新计划的详细信息，请参阅 [Azure 应用服务计划深入概述](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)。
    
-5. 选择“创建”。 此步骤创建移动应用后端。 
+5. 选择**创建**。 此步骤创建移动应用后端。 
 6. 在新的移动应用后端的“设置”窗格中，依次选择“快速启动”>客户端应用平台 >“连接数据库”。 
    
    ![用于连接数据库的选项选择](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-data-connection.png)

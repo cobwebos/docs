@@ -1,11 +1,11 @@
 ---
-title: "了解 Azure AD 应用程序代理连接器 | Microsoft 文档"
-description: "介绍有关 Azure AD 应用程序代理连接器的基础知识。"
+title: 了解 Azure AD 应用程序代理连接器 | Microsoft 文档
+description: 介绍有关 Azure AD 应用程序代理连接器的基础知识。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.openlocfilehash: fe8d5c40249431be60dc8844adf7efa1b8e87c5f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -74,7 +74,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 |核心数|RAM|预期的延迟 (MS)-P99|最大 TPS|
 | ----- | ----- | ----- | ----- |
-|#N/A|8|325|586|
+|2|8|325|586|
 |4|16|320|1150|
 |8|32|270|1190|
 |16|64|245|1200*|
@@ -91,7 +91,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 有关配置出站防火墙规则的详细信息，请参阅[使用现有的本地代理服务器](application-proxy-working-with-proxy-servers.md)。
 
-使用 [Azure AD 应用程序代理连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)验证连接器能够访问应用程序代理服务。 请至少确保美国中部区域和离你最近的区域有全部绿色复选标记。 绿色复选标记越多表示复原能力越强。 
+使用 [Azure AD 应用程序代理连接器端口测试工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)验证连接器是否能够访问应用程序代理服务。 请至少确保美国中部区域和离你最近的区域有全部绿色复选标记。 绿色复选标记越多表示复原能力越强。 
 
 ## <a name="performance-and-scalability"></a>性能和可伸缩性
 

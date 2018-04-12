@@ -34,7 +34,7 @@
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 5. 创建设备后，在“设备资源管理器”窗格中打开设备。
 6. 记下连接字符串的主密钥。
 

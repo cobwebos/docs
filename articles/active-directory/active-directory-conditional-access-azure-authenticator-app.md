@@ -1,11 +1,11 @@
 ---
-title: "适用于 Android 的 Azure 验证器 | Microsoft 文档"
-description: "Microsoft Azure 身份验证器应用可用于登录以访问工作资源。 Azure 验证器应用通过向移动设备显示警报，通知你有一个未完成的双因素验证请求。"
+title: 适用于 Android 的 Azure 验证器 | Microsoft 文档
+description: Microsoft Azure 身份验证器应用可用于登录以访问工作资源。 Azure 验证器应用通过向移动设备显示警报，通知你有一个未完成的双因素验证请求。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: b7ceca0d-5c9d-45c4-942c-b3a9b6bad36c
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
 ms.openlocfilehash: 349649e015aae7198d2c40efc3c1865cad087e8a
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-authenticator-for-android"></a>适用于 Android 的 Azure 验证器
 IT 管理员可能会建议使用 Microsoft Azure 验证器登录以访问工作资源。 此应用程序提供以下两个登录选项：
