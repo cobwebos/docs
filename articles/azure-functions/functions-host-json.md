@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 577c45edc832288943a7eeefe27c7a189a61b7b0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8187a4bc6278f917c28418baf3cda2d75ea4e3d8
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Azure Functions 的 host.json 参考
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 03/23/2018
 
 |属性  |默认 | 说明 |
 |---------|---------|---------| 
-|isEnabled|false|启用或禁用采样。| 
+|isEnabled|是|启用或禁用采样。| 
 |maxTelemetryItemsPerSecond|5|开始采样所要达到的阈值。| 
 
 ## <a name="eventhub"></a>eventHub
@@ -202,7 +202,7 @@ ms.lasthandoff: 03/23/2018
 
 作业宿主的唯一 ID。 可以是不带短划线的小写 GUID。 在本地运行时必须指定。 在 Azure Functions 中运行时，如果省略 `id`，会自动生成 ID。
 
-如果跨多个函数应用共享存储帐户，请确保每个函数应用都有不同的 `id`。 可省略 `id` 属性或手动将每个函数应用的 `id` 设置为不同的值。 定时器触发器使用存储锁来确保当函数应用扩大到多个实例时将只有一个定时器实例。 如果两个函数应用共享相同的 `id` 且每个都使用定时器触发器，只会运行一个定时器。
+如果跨多个函数应用共享存储帐户，请确保每个函数应用都有不同的 `id`。 可省略 `id` 属性或手动将每个函数应用的 `id` 设置为不同的值。 计时器触发器使用存储锁来确保当函数应用横向扩展到多个实例时将只有一个计时器实例。 如果两个函数应用共享相同的 `id` 且每个都使用计时器触发器，则只会运行一个计时器。
 
 
 ```json

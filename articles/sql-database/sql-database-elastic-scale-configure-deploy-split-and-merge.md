@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: ed5545df8d09192eeed21dd2ac379e255b049e30
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 90f758bf5bc979dc4bc173b08dadaceeaa077317
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-a-split-merge-service"></a>部署拆分/合并服务
 可使用拆分/合并工具在分片数据库之间移动数据。 请参阅[在扩展云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -163,7 +163,7 @@ ms.lasthandoff: 03/16/2018
    <table style="width:100%">
      <tr>
        <th>PowerShell 文件</th>
-       <th>Steps</th>
+       <th>步骤</th>
      </tr>
      <tr>
        <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
@@ -185,7 +185,7 @@ ms.lasthandoff: 03/16/2018
    <table style="width:100%">
      <tr>
        <th>PowerShell 文件</th>
-       <th>Steps</th>
+       <th>步骤</th>
      </tr>
    <tr>
        <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>

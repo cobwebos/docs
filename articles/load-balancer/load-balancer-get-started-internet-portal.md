@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 1b7901542a699e74f65527bf734133f73acb0bea
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c646b0b1ab0ec62cffb4f7cf7474b48c68dfabb4
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-public-basic-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>使用 Azure 门户创建公共的基本负载均衡器，以便对 VM 进行负载均衡
 
@@ -38,8 +38,8 @@ ms.lasthandoff: 03/23/2018
 1. 在屏幕的左上方，单击“创建资源” > “网络” > “负载均衡器”。
 2. 在“创建负载均衡器”页中，输入负载均衡器的以下值：
     - *myLoadBalancer* - 负载均衡器的名称。
-    - **公共** - 负载均衡器前端的类型。 
-     - *myPublicIP* - 必须创建的公共 IP，其 SKU 必须设置为“基本”，“分配”必须设置为“动态”。
+    - **公共** - 负载均衡器的类型。
+    - *myPublicIP* - 必须创建的公共 IP，其 SKU 必须设置为“基本”，“分配”必须设置为“动态”。
     - *myResourceGroupLB* - 所创建的新资源组的名称。
 3. 单击“创建”以创建负载均衡器。
    
@@ -55,7 +55,7 @@ ms.lasthandoff: 03/23/2018
     - *myVnet* - 虚拟网络的名称。
     - *myResourceGroupLB* - 现有资源组的名称。
     - *myBackendSubnet* - 子网名称。
-2. 单击“创建”，创建虚拟网络。
+2. 单击“创建”以创建虚拟网络。
 
     ![创建虚拟网络](./media/load-balancer-get-started-internet-portal/2-load-balancer-virtual-network.png)
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 03/23/2018
 
 1. 单击左侧菜单中的“所有资源”，然后从资源列表中单击“myNetworkSecurityGroup”，后者位于 **myResourceGroupLB** 资源组中。
 2. 在“设置”下单击“入站安全规则”，然后单击“添加”。
-3. 为入站安全规则 *myHTTPRule* 输入以下值，以便使用端口 80 进行入站 HTTP 连接：
+3. 为名为 *myHTTPRule* 的入站安全规则输入以下值，以允许来自端口 80 的入站 HTTP 连接：
     - 服务标记 - **源**。
     - *Internet* - **源服务标记**
     - *80* - **目标端口范围**
@@ -95,7 +95,7 @@ ms.lasthandoff: 03/23/2018
 4. 单击“确定”。
  
  ![创建虚拟网络](./media/load-balancer-get-started-internet-portal/8-load-balancer-nsg-rules.png)
-5. 重复步骤 2 到 4，创建名为 *myRDPRule* 的另一规则，以便通过端口 3389 使用以下值进行入站 RDP 连接：
+5. 重复步骤 2 到 4，使用以下值创建名为 *myRDPRule* 的另一规则，以允许来自端口 3389 的入站 RDP 连接：
     - 服务标记 - **源**。
     - *Internet* - **源服务标记**
     - *3389* - **目标端口范围**
@@ -146,7 +146,7 @@ ms.lasthandoff: 03/23/2018
 
 ### <a name="create-a-health-probe"></a>创建运行状况探测器
 
-若要让基本负载均衡器监视应用的状态，请使用运行状况探测。 运行状况探测器基于其对运行状况检查的响应，从负载均衡器中动态添加或删除 VM。 创建运行状况探测 *myHealthProbe*，用于监视 VM 的运行状况。
+若要让基本负载均衡器监视应用的状态，请使用运行状况探测。 运行状况探测器基于其对运行状况检查的响应，从负载均衡器中动态添加或删除 VM。 创建运行状况探测 *myHealthProbe* 以监视 VM 的运行状况。
 
 1. 单击左侧菜单中的“所有资源”，然后在资源列表中单击“myLoadBalancer”。
 2. 在“设置”下单击“运行状况探测”，然后单击“添加”。
@@ -154,7 +154,7 @@ ms.lasthandoff: 03/23/2018
     - *myHealthProbe* - 运行状况探测的名称。
     - **HTTP** - 协议类型。
     - *80* - 端口号。
-    - *15* - 两次探测尝试的**时间间隔**（以秒为单位）。
+    - *15* - 两次探测尝试之间的**时间间隔**（以秒为单位）。
     - *2* - 将 VM 视为不正常所对应的**不正常阈值**或连续探测失败次数。
 4. 单击“确定”。
 
@@ -180,7 +180,7 @@ ms.lasthandoff: 03/23/2018
 ## <a name="test-the-load-balancer"></a>测试负载均衡器
 1. 在“概览”屏幕上找到负载均衡器的公共 IP 地址。 单击“所有资源”，然后单击“myPublicIP”。
 
-2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 IIS Web 服务器的默认页显示在浏览器上。
+2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 IIS Web 服务器的默认页会显示在浏览器上。
 
   ![IIS Web 服务器](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 

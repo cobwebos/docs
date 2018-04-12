@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c5952422bb4faec196a5a54b9f18cf9700988aad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 655f0b625d9f1b7c7ad216e9276da62d8454380f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 1. 在门户左侧单击 **+**，并在搜索框中键入“虚拟网关”。 在搜索返回结果中找到“虚拟网络网关”，并单击该条目。 在“虚拟网关”页上，单击底部的“创建”打开“创建虚拟网关”页。
 2. 在“创建虚拟网关”页中，填写虚拟网关的值。
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/23/2018
     - 首先，请单击“创建网关 IP 配置”打开“选择公共 IP 地址”页，然后单击“+新建”打开“创建公共 IP 地址”页。
     - 接下来，输入公共 IP 地址的**名称**。 将 SKU 保留为“基本”（除非有特殊原因要将其更改为其他内容），然后在此页底部单击“确定”以保存所做的更改。
 
-      ![创建公共 IP](./media/vpn-gateway-add-gw-s2s-rm-portal-include/gwip.png "创建 PIP")
+      ![创建公共 IP](./media/vpn-gateway-add-gw-rm-portal-include/gwip.png "创建 PIP")
 
 4. 验证设置。 如果希望网关显示在仪表板上，可以在页底部选择“固定到仪表板”。 
 5. 单击“创建”开始创建 VPN 网关。 将会验证这些设置，并会在仪表板上看到“正在部署虚拟网络网关”磁贴。 创建网关最多可能需要 45 分钟。 可能需要刷新门户页才能看到完成状态。

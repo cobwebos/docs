@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 1accc672e396c5a9405369654f9bc4f8463c9afc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4ddb870d0513d6834aacf0964c240260f18df0fd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>了解如何预配新租户并将其注册到目录中
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/23/2018
 
 若要完成本教程，请确保已完成了以下先决条件：
 
-* 已部署 Wingtip Tickets SaaS database-per-tenant 应用。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS database-per-tenant 应用程序](saas-dbpertenant-get-started-deploy.md)
+* 已部署了 Wingtip Tickets SaaS“每租户一个数据库”应用。 若要在五分钟内完成部署，请参阅[部署和浏览 Wingtip Tickets SaaS database-per-tenant 应用程序](saas-dbpertenant-get-started-deploy.md)
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
 ## <a name="introduction-to-the-saas-catalog-pattern"></a>SaaS 目录模式简介
@@ -66,7 +66,7 @@ Wingtip Tickets 的“每租户一个数据库”应用通过复制在目录服�
 预配脚本将复制 _basetenantdb_ 数据库，以在弹性池中创建新的租户数据库。 然后通过特定于租户的信息初始化该数据库，并在目录分片映射中注册该数据库。 租户数据库的名称基于租户名称。 此命名方案不是该模式的关键部分。 目录会将租户密钥映射到数据库名，因此可以使用任何命名约定。 
 
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS database-per-tenant 应用程序的脚本
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS“每租户一个数据库”应用程序脚本
 
 [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存储库提供了 Wingtip Tickets SaaS 脚本和应用程序源代码。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 

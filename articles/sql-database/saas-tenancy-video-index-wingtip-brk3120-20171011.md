@@ -2,18 +2,18 @@
 title: 视频已编制索引，Azure SaaS SQL 应用 | Microsoft Docs
 description: 本文对一个视频中的各个时间点进行了索引。这是 2017 年 10 月 11 日举行的 Ignite 会议上录制的关于 SaaS DB 租户应用设计的视频，时长 81 分钟。 可直接跳到感兴趣的部分。 至少描述了 3 种模式。 描述了简化开发和管理的 Azure 功能。
 services: sql-database
-ms.date: 12/06/2017
+ms.date: 04/01/2018
 ms.service: sql-database
 ms.reviewer: billgib
 ms.topic: article
 author: MightyPen
 ms.author: genemi
 manager: craigg
-ms.openlocfilehash: 0d9182abda03aef3ffe35e10114fa045d8b0ca74
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7dcd4681833f227f32534ae3053b7b482bb813bc
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="video-indexed-and-annotated-for-mulit-tenant-saas-app-using-azure-sql-database"></a>关于使用 Azure SQL 数据库的多租户 SaaS 应用的视频，包含索引和批注
 

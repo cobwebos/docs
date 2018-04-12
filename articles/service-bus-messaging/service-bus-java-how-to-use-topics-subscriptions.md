@@ -1,11 +1,11 @@
 ---
-title: "如何通过 Java 使用 Azure 服务总线主题 | Microsoft Docs"
-description: "在 Azure 中使用服务总线主题和订阅。"
+title: 如何通过 Java 使用 Azure 服务总线主题 | Microsoft Docs
+description: 在 Azure 中使用服务总线主题和订阅。
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
 ms.service: service-bus-messaging
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: sethm
-ms.openlocfilehash: 632af7294a7e6766d791d1d9ab08f98308fb2c02
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 9c2501840b3c00a63b0344d48e3225fd2c9d1620
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>如何通过 Java 使用服务总线主题和订阅
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 10/18/2017
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用 Service Bus
+## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用应用程序
 在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java]。 如果使用 Eclipse，则可以安装包含 Azure SDK for Java 的[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]。 然后，可将 **Microsoft Azure Libraries for Java** 添加到项目：
 
 ![](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
@@ -257,8 +257,8 @@ service.deleteTopic("TestTopic");
 [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
 [Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[SqlFilter]: /dotnet/api/microsoft.azure.servicebus.filters.sqlfilter
-[SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.filters.sqlfilter.sqlexpression
+[SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter
+[SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 
 [0]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-13.png

@@ -1,11 +1,11 @@
 ---
-title: "将数据载入 Azure SQL 数据仓库 – 数据工厂 | Microsoft 文档"
-description: "本教程使用 Azure 数据工厂将数据载入 Azure SQL 数据仓库，并使用 SQL Server 数据库作为数据源。"
+title: 将数据载入 Azure SQL 数据仓库 – 数据工厂 | Microsoft 文档
+description: 本教程使用 Azure 数据工厂将数据载入 Azure SQL 数据仓库，并使用 SQL Server 数据库作为数据源。
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-sql-data-warehouse;azure-data-factory
 ms.service: sql-data-warehouse
 ms.workload: data-management
@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
 ms.openlocfilehash: 6399f1a3390119685c1c9fd7332937e0cdb6f9ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/12/2018
 ---
 # <a name="load-data-into-sql-data-warehouse-with-data-factory"></a>使用数据工厂将数据载入 SQL 数据仓库
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="configure-a-data-factory"></a>配置数据工厂
 1. 登录到 [Azure 门户][]。
-2. 找到数据仓库，然后单击将它打开。
+2. 找到你的数据仓库，并单击将它打开。
 3. 在主边栏选项卡中，单击“加载数据” > “Azure 数据工厂”。
 
     ![启动加载数据向导](media/sql-data-warehouse-load-with-data-factory/launch-load-data-wizard.png)
@@ -109,7 +109,7 @@ ms.lasthandoff: 10/11/2017
 
     ![映射架构](media/sql-data-warehouse-load-with-data-factory/schema-mapping.png)
 
-4. 单击“下一步”。
+4. 单击“资源组名称” 的 Azure 数据工厂。
 
 ## <a name="configure-the-performance-settings"></a>配置性能设置
 在“性能配置”中，可以配置一个 Azure 存储帐户，在使用 [PolyBase](sql-data-warehouse-best-practices.md#use-polybase-to-load-and-export-data-quickly) 以执行方式将数据载入 SQL 数据仓库之前，可以使用该帐户来暂存数据。 复制完成后，会自动清除存储中的临时数据。
