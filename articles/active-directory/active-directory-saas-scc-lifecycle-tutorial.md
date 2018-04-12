@@ -14,15 +14,15 @@ ms.workload: identity
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.openlocfilehash: 943698311d10b479879fd92d2482d827650e2b0c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>教程：Azure Active Directory 与 SCC LifeCycle 集成
 本教程的目的是说明 Azure 与 SCC LifeCycle 的集成。  
 
-在本教程中概述的方案假定已有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 * 一个有效的 Azure 订阅
 * 已启用 SCC LifeCycle 单一登录 (SSO) 的订阅

@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 门户管理 NSG| Microsoft 文档"
-description: "了解如何使用 Azure 门户管理现有的 NSG。"
+title: 使用 Azure 门户管理 NSG| Microsoft 文档
+description: 了解如何使用 Azure 门户管理现有的 NSG。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5d55679d-57da-457c-97dc-1e1973909ee5
 ms.service: virtual-network
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 ms.openlocfilehash: e9bcf8a893ff209337f6a5763b631a22f8514e20
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-nsgs-using-the-portal"></a>使用门户创建 NSG
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/21/2017
 
 若要查看订阅中的所有现有 NSG，请完成以下步骤：
 
-1. 从浏览器导航到 http://portal.azure.com，并在必要时用 Azure 帐户登录。
+1. 在浏览器中导航到 http://portal.azure.com，并根据需要使用 Azure 帐户登录。
 
 2. 单击“**浏览**” > “**网络安全组**”。
 
@@ -128,7 +128,7 @@ ms.lasthandoff: 12/21/2017
 若要删除上文创建的规则，请完成以下步骤：
 
 1. 在“**网络安全组**”边栏选项卡或上述“**资源**”边栏选项卡中，单击“**NSG-FrontEnd**”。
-2. 在“**设置**”选项卡中，单击上文创建的规则。
+2. 在“**设置**”选项卡中，单击上面创建的规则。
 3. 在“**allow-https**”边栏选项卡中，单击“**删除**”，并单击“**是**”。
 
     ![Azure 门户 - NSG](./media/virtual-network-manage-nsg-arm-portal/figure11.png)
@@ -137,7 +137,7 @@ ms.lasthandoff: 12/21/2017
 可将 NSG 关联到子网和 NIC。 还可取消 NSG 与任何相关联的资源之间的关联。
 
 ### <a name="associate-an-nsg-to-a-nic"></a>将 NSG 关联到 NIC
-若要关联 **NSG-FrontEnd** NSG 与 **TestNICWeb1** NIC，请完成以下步骤：
+要将 **NSG-FrontEnd** NSG 关联到 **TestNICWeb1** NIC，请按完成以下步骤：
 
 1. 在“**网络安全组**”边栏选项卡或上述“**资源**”边栏选项卡中，单击“**NSG-FrontEnd**”。
 2. 在“**设置**”选项卡中，依次单击“**网络接口**” > “**关联**” > ”**TestNICWeb1**”。
@@ -146,7 +146,7 @@ ms.lasthandoff: 12/21/2017
 
 ### <a name="dissociate-an-nsg-from-a-nic"></a>取消 NSG 与 NIC 之间的关联
 
-若要取消关联 **NSG-FrontEnd** NSG 与 **TestNICWeb1** NIC，请完成以下步骤：
+若要取消 **NSG-FrontEnd** NSG 与 **TestNICWeb1** NIC 之间的关联，请完成以下步骤：
 
 1. 在 Azure 门户中，单击“**资源组**” > “**RG-NSG**” > “**...**” > “**TestNICWeb1**”。
 

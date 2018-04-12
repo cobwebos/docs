@@ -1,11 +1,11 @@
 ---
-title: "管理网络安全组 - Azure PowerShell | Microsoft 文档"
-description: "了解如何使用 PowerShell 管理网络安全组。"
+title: 管理网络安全组 - Azure PowerShell | Microsoft 文档
+description: 了解如何使用 PowerShell 管理网络安全组。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3706ce6c-d9ae-46cb-a048-f0a4e84dc5cc
 ms.service: virtual-network
@@ -17,10 +17,10 @@ ms.date: 03/14/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ca7f4926ca4edf9d20612aca74f6ae5f0ed847b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="manage-network-security-groups-using-powershell"></a>使用 PowerShell 管理网络安全组
 

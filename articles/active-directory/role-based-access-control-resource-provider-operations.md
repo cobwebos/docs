@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 03/06/2018
 ms.author: rolyon
 ms.openlocfilehash: 0b8c8823c6d21df96dcfd926db1855169f1570e4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
 
@@ -1262,7 +1262,7 @@ ms.lasthandoff: 03/23/2018
 |/servers/recoverableServers/read|返回可恢复的 MySQL 服务器信息|
 |/servers/virtualNetworkRules/delete|删除现有虚拟网络规则|
 |/servers/virtualNetworkRules/read|返回虚拟网络规则列表，或获取指定虚拟网络规则的属性。|
-|/servers/virtualNetworkRules/write|使用指定的参数创建虚拟网络规则，或更新指定虚拟网络规则的属性或标记。|
+|/servers/virtualNetworkRules/write|使用指定参数创建虚拟网络规则，或更新指定虚拟网络规则的属性或标记。|
 |/servers/write|使用指定参数创建服务器，或更新指定服务器的属性或标记。|
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/20/2017
-ms.openlocfilehash: 57461cf94898012619b865c455955f511e978995
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ec49d7e82da58c90e66f65a1a1d303ca9b3824f7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>机器学习教程：在 Azure 机器学习工作室中创建第一个数据科研试验
 
@@ -143,7 +143,7 @@ ms.lasthandoff: 03/23/2018
 3. 单击[选择数据集中的列][select-columns] 模块，并单击“属性”窗格中的“启动列选择器”。
 
     - 在左侧单击“使用规则”
-    - 在**开头为**下面，单击**所有列**。 这会指示“选择数据集中的列[select-columns]”传递所有列（但要排除的列除外）。[]
+    - 在**开头为**下面，单击**所有列**。 这会指示[选择数据集中的列][select-columns]传递所有列（但要排除的列除外）。
     - 在下拉列表中，选择“排除”和“列名称”，并在文本框内部单击。 此时会显示列的列表。 选择“规范化损失”，该列随即添加到文本框中。
     - 单击复选标记（“确定”）按钮，关闭列选择器（右下角）。
 
@@ -159,7 +159,6 @@ ms.lasthandoff: 03/23/2018
 
     > [!TIP]
     可以双击模块并输入文本，为模块添加注释。 这有助于快速查看模块在实验中的运行情况。 在本例中，请双击[选择数据集中的列][select-columns]模块，并键入注释“排除规范化损失”。
-
 
     ![双击要添加注释的模块][add-comment]
     <br/>
@@ -292,7 +291,7 @@ ms.lasthandoff: 03/23/2018
 3. 最后，我们对结果的质量进行测试。 选择[评估模型][evaluate-model]模块并将其拖放到试验画布上，然后将[评分模型][score-model]模块的输出连接到[评估模型][evaluate-model]的左侧输入。
 
     > [!TIP]
-    > 之所以[评估模型][evaluate-model]模块上有两个输入端口，是因为可将其用于并列比较两个模型。 可在以后向试验添加另一算法，并使用“评估模型[evaluate-model]”查看哪一个算法的结果更好。[]
+    > 之所以[评估模型][evaluate-model]模块上有两个输入端口，是因为可将其用于并列比较两个模型。 可在以后向试验添加另一算法，并使用[评估模型][evaluate-model]查看哪一个算法的结果更好。
 
 4. 运行试验。
 

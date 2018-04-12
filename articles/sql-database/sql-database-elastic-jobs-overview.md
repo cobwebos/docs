@@ -8,13 +8,13 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 10/24/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 1f0e022eb98619b22f7e62e0602d36ba821def22
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3fdc24a811544de87d97da498d7946507653cec5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>管理扩大的云数据库
 若要管理扩大的分区数据库，可使用**弹性数据库作业**功能（预览版）在一组数据库中可靠地执行 Transact-SQL (T-SQL) 脚本，这些数据库包括：

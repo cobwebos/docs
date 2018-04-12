@@ -8,13 +8,13 @@ ms.reviewer: genemi
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
-ms.date: 08/17/2016
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: ec3569d37d399590b0c306a85f199221e7812253
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: dc78a43fb99428eac921dd0cfffe5547f523a133
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sql-database-application-development-overview"></a>SQL 数据库应用程序开发概述
 本文逐步讲解开发人员在编写代码以连接到 Azure SQL 数据库时应考虑的基本注意事项。
@@ -36,7 +36,7 @@ Azure SQL 数据库使用两种不同的机制管理可用于数据库的资源�
 
 * 详细信息：[Azure SQL 数据库资源限制](sql-database-service-tiers.md)。
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 Azure SQL 数据库提供用于在 SQL 数据库中限制访问、保护数据和监视活动的资源。
 
 * 详细信息：[保护 SQL 数据库](sql-database-security-overview.md)。
@@ -47,7 +47,7 @@ Azure SQL 数据库提供用于在 SQL 数据库中限制访问、保护数据�
 * 无法使用 SQL 数据库上的 Transact-SQL **USE myDatabaseName;** 语句切换到其他数据库。
 * 详细信息：[SQL 数据库安全：管理数据库的访问和登录安全](sql-database-manage-logins.md)。
 
-## <a name="resiliency"></a>复原能力
+## <a name="resiliency"></a>复原
 如果在连接到 SQL 数据库时发生暂时性错误，代码应重试调用。  建议让重试逻辑使用退让逻辑，这样就不会因为多个客户端同时重试而对 SQL 数据库造成混乱。
 
 * 代码示例：有关演示重试逻辑的代码示例，请在以下位置参阅所选语言的示例：[用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)。

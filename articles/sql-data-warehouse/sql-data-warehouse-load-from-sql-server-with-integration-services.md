@@ -1,11 +1,11 @@
 ---
-title: "将数据从 SQL Server 载入 Azure SQL 数据仓库 (SSIS) | Microsoft 文档"
-description: "演示如何创建 SQL Server Integration Services (SSIS) 包，以便将数据从各种数据源移动到 SQL 数据仓库。"
+title: 将数据从 SQL Server 载入 Azure SQL 数据仓库 (SSIS) | Microsoft 文档
+description: 演示如何创建 SQL Server Integration Services (SSIS) 包，以便将数据从各种数据源移动到 SQL 数据仓库。
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: e2c252e9-0828-47c2-a808-e3bea46c134a
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 03/30/2017
 ms.author: cakarst;douglasl;barbkess
 ms.openlocfilehash: 6c9cebdd715b6997d0633bc725a3945ba9e0c357
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/07/2018
 ---
 # <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-ssis"></a>将数据从 SQL Server 载入 Azure SQL 数据仓库 (SSIS)
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ ms.lasthandoff: 12/21/2017
 本教程使用 SQL Server 作为数据源。 SQL Server 可在本地或 Azure 虚拟机中运行。
 
 ## <a name="basic-concepts"></a>基本概念
-该包是 SSIS 中的工作单元。 项目中对相关的包进行了分组。 在 Visual Studio 中使用 SQL Server Data Tools 创建项目并设计包。 设计过程是一个可视的过程，在其中可以将组件从“工具箱”拖放到设计图面，然后连接组件，并设置其属性。 完成包后，可以选择性地将其部署到 SQL Server，以进行全面管理、监视并保障安全性。
+该包是 SSIS 中的工作单元。 项目中对相关的包进行了分组。 在 Visual Studio 中使用 SQL Server Data Tools 创建项目并设计包。 设计过程是一个可视的过程，在其中你可以将组件从“工具箱”拖放到设计图面，连接组件，并设置其属性。 完成包后，可以选择性地将其部署到 SQL Server，以进行全面管理、监视并保障安全性。
 
 ## <a name="options-for-loading-data-with-ssis"></a>使用 SSIS 加载数据的选项
 SQL Server Integration Services (SSIS) 是一套灵活的工具，可提供连接到 SQL 数据仓库以及将数据加载到其中的各种选项。

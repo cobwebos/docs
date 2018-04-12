@@ -1,10 +1,10 @@
 ---
-title: "使用 Azure CLI 1.0 创建 Linux VM 的副本 | Microsoft 文档"
-description: "了解如何使用 Azure CLI 1.0 在 Resource Manager 部署模型中创建 Azure Linux 虚拟机的副本"
+title: 使用 Azure CLI 1.0 创建 Linux VM 的副本 | Microsoft 文档
+description: 了解如何使用 Azure CLI 1.0 在 Resource Manager 部署模型中创建 Azure Linux 虚拟机的副本
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 tags: azure-resource-manager
 ms.assetid: 770569d2-23c1-4a5b-801e-cddcd1375164
 ms.service: virtual-machines-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 62ae54f3596c9383cbf3b401fcfdb42ecfdee63c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb350f8d14ad451ad3ff7cd617ca3f90967aaa4b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-copy-of-a-linux-virtual-machine-running-on-azure-with-the-azure-cli-10"></a>使用 Azure CLI 1.0 创建在 Azure 上运行的 Linux 虚拟机副本
 本文说明如何使用 Resource Manager 部署模型创建运行 Linux 的 Azure 虚拟机 (VM) 副本。 首先，通过操作系统和数据磁盘复制到新容器，并设置网络资源并创建新虚拟机。
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 | --- | --- |
 | VM 名称 |`azure vm list` |
 | 资源组名称 |`azure vm list` |
-| 位置 |`azure vm list` |
+| Location |`azure vm list` |
 | 存储帐户名称 |`azure storage account list -g <resourceGroup>` |
 | 容器名称 |`azure storage container list -a <sourcestorageaccountname>` |
 | 源 VM VHD 文件名 |`azure storage blob list --container <containerName>` |
@@ -100,7 +100,7 @@ azure network nic create myResourceGroup myNic -k mySubnet -m myVnet -p myPublic
 
 
 ## <a name="create-the-new-vm"></a>创建新 VM
-现在[可以使用 Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd)从已上传的虚拟磁盘创建 VM，或者通过在 CLI 中输入以下命令指定所复制磁盘的 URI 来创建 VM：
+现在可以使用 Resource Manager 模板从已上传的虚拟磁盘创建 VM，[或者通过在](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd) CLI 中输入以下命令指定所复制磁盘的 URI 来创建 VM：
 
 ```azurecli
 azure vm create -n myVM -l myLocation -g myResourceGroup -f myNic \
@@ -111,5 +111,5 @@ azure vm create -n myVM -l myLocation -g myResourceGroup -f myNic \
 
 
 ## <a name="next-steps"></a>后续步骤
-若要了解如何使用 Azure CLI 管理新虚拟机，请参阅 [Azure CLI commands for the Azure Resource Manager](../azure-cli-arm-commands.md)（Azure Resource Manager 的 Azure CLI 命令）。
+若要了解如何使用 Azure CLI 管理新虚拟机，请参阅 [Azure 资源管理器的 Azure CLI 命令](../azure-cli-arm-commands.md)。
 

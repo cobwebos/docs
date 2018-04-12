@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
 ms.openlocfilehash: 4d9df6743d84310b7db70034d1e84dd3591b3c21
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/11/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>用于 Azure 基于角色的访问控制的内置角色
 Azure 基于角色的访问控制 (RBAC) 附带以下可分配到用户、组和服务的内置角色。 不能修改内置角色的定义。 但是，可以创建 [Azure RBAC 中的自定义角色](role-based-access-control-custom-roles.md)，以满足组织的特定需要。
