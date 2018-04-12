@@ -4,7 +4,7 @@ description: 运行 PowerShell 脚本，以在 Azure 虚拟机中部署 Linux HP
 services: virtual-machines-linux
 documentationcenter: ''
 author: dlepow
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 73041960-58d3-4ecf-9540-d7e1a612c467
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: 477859db8c884714d9b5140483d300ebfe6c116a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 66affb47190ba0c6fccaae8e8267b310682aee46
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-a-linux-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>使用 HPC Pack IaaS 部署脚本创建 Linux 高性能计算 (HPC) 群集
 运行 HPC Pack IaaS 部署 PowerShell 脚本，以便为 Azure 虚拟机中的 Linux 工作负荷部署完整的 HPC Pack 2012 R2 群集。 群集包含一个运行 Windows Server 和 Microsoft HPC Pack 的已加入 Active Directory 的头节点和多个运行 HPC Pack 支持的 Linux 分发之一的计算节点。 如果想要在 Azure 中部署适用于 Windows 工作负荷的 HPC Pack 群集，请参阅 [Create a Windows HPC cluster with the HPC Pack IaaS deployment script](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)（使用 HPC Pack IaaS 部署脚本创建 Windows HPC 群集）。

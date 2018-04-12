@@ -1,11 +1,11 @@
 ---
-title: "调整经典部署模型中 Windows VM 的大小 - Azure | Microsoft 文档"
-description: "使用 Azure Powershell 调整在经典部署模型中创建的 Windows 虚拟机大小。"
+title: 调整经典部署模型中 Windows VM 的大小 - Azure | Microsoft 文档
+description: 使用 Azure Powershell 调整在经典部署模型中创建的 Windows 虚拟机大小。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: Drewm3
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: e3038215-001c-406e-904d-e0f4e326a4c7
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
-ms.openlocfilehash: 4277bc8394c7ba140291e9dc776162e87deab96b
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 6afc8125462a659d0892e7dbb53f1f71789815cc
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="resize-a-windows-vm-created-in-the-classic-deployment-model"></a>调整经典部署模型中创建的 Windows VM 大小
 本文介绍使用 Azure Powershell 调整在经典部署模型中创建的 Windows VM 大小。

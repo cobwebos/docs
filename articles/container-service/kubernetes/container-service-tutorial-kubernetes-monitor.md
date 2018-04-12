@@ -2,24 +2,24 @@
 title: Azure 容器服务教程 - 监视 Kubernetes
 description: Azure 容器服务教程 - 使用 Log Analytics 监视 Kubernetes
 services: container-service
-author: dlepow
+author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 02/26/2018
-ms.author: danlep
+ms.date: 04/05/2018
+ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: e7d55f1579ce45a39f9b07225bc88c8ef8ff6b66
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5b11c3cdf3eb457ade111d0908a2dac867ac1278
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>使用 Log Analytics 监视 Kubernetes 群集
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
-监视 Kubernetes 群集和容器至关重要，特别是在使用多个应用大规模地管理生产群集时。 
+监视 Kubernetes 群集和容器至关重要，特别是在使用多个应用大规模地管理生产群集时。
 
 可以利用 Microsoft 或其他提供程序提供的多个 Kubernetes 监视解决方案。 在本教程中，我们将使用 Microsoft 基于云的 IT 管理解决方案 [Log Analytics](../../operations-management-suite/operations-management-suite-overview.md) 中的容器解决方案来监视 Kubernetes 群集。 （容器解决方案为预览版。）
 
@@ -32,9 +32,9 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="before-you-begin"></a>开始之前
 
-在前面的教程中，我们将应用程度打包到容器映像中，将这些映像上传到 Azure 容器注册表，并创建了 Kubernetes 群集。 
+在前面的教程中，我们将应用程度打包到容器映像中，将这些映像上传到 Azure 容器注册表，并创建了 Kubernetes 群集。
 
-如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 – 创建容器映像](./container-service-tutorial-kubernetes-prepare-app.md)。 
+如果尚未完成这些步骤，并且想要逐一完成，请返回到[教程 1 – 创建容器映像](./container-service-tutorial-kubernetes-prepare-app.md)。
 
 ## <a name="get-workspace-settings"></a>获取工作区设置
 
@@ -50,9 +50,9 @@ kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID -
 
 ## <a name="set-up-oms-agents"></a>设置 OMS 代理
 
-以下是用于在 Linux 群集节点上设置 OMS 代理的 YAML 文件。 该文件将创建 Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)，它可在每个群集节点上运行单个相同 Pod。 DaemonSet 资源非常适合部署监视代理。 
+在 Kubernetes 群集上配置容器监视代理时，可以使用以下 Kubernetes 清单文件。 该文件将创建 Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)，它可在每个群集节点上运行单个相同 Pod。
 
-将以下文本保存到名为 `oms-daemonset.yaml` 的文件，并将 *myWorkspaceID* 和 *myWorkspaceKey* 的占位符值替换为 Log Analytics 工作区 ID 和密钥。 （在生产中，可将这些值编码为机密。）
+将以下文本保存到名为 `oms-daemonset.yaml` 的文件。
 
 ```YAML
 apiVersion: extensions/v1beta1
@@ -68,26 +68,26 @@ spec:
     dockerProviderVersion: 1.0.0-30
   spec:
    containers:
-     - name: omsagent 
+     - name: omsagent
        image: "microsoft/oms"
        imagePullPolicy: Always
        securityContext:
          privileged: true
        ports:
        - containerPort: 25225
-         protocol: TCP 
+         protocol: TCP
        - containerPort: 25224
          protocol: UDP
        volumeMounts:
         - mountPath: /var/run/docker.sock
           name: docker-sock
-        - mountPath: /var/log 
+        - mountPath: /var/log
           name: host-log
         - mountPath: /etc/omsagent-secret
           name: omsagent-secret
           readOnly: true
-        - mountPath: /var/lib/docker/containers 
-          name: containerlog-path  
+        - mountPath: /var/lib/docker/containers
+          name: containerlog-path
        livenessProbe:
         exec:
          command:
@@ -97,26 +97,26 @@ spec:
         initialDelaySeconds: 60
         periodSeconds: 60
    nodeSelector:
-    beta.kubernetes.io/os: linux    
+    beta.kubernetes.io/os: linux
    # Tolerate a NoSchedule taint on master that ACS Engine sets.
    tolerations:
     - key: "node-role.kubernetes.io/master"
       operator: "Equal"
       value: "true"
-      effect: "NoSchedule"     
+      effect: "NoSchedule"
    volumes:
-    - name: docker-sock 
+    - name: docker-sock
       hostPath:
        path: /var/run/docker.sock
     - name: host-log
       hostPath:
-       path: /var/log 
+       path: /var/log
     - name: omsagent-secret
       secret:
        secretName: omsagent-secret
     - name: containerlog-path
       hostPath:
-       path: /var/lib/docker/containers 
+       path: /var/lib/docker/containers
 ```
 
 使用以下命令创建 DaemonSet：
@@ -142,7 +142,7 @@ omsagent   3         3         3         0            3           <none>        
 
 ## <a name="access-monitoring-data"></a>访问监视数据
 
-在 OMS 门户或 Azure 门户中，使用[容器解决方案](../../log-analytics/log-analytics-containers.md)查看和分析容器监视数据。 
+在 OMS 门户或 Azure 门户中，使用[容器解决方案](../../log-analytics/log-analytics-containers.md)查看和分析容器监视数据。
 
 若要使用 [OMS 门户](https://mms.microsoft.com)安装容器解决方案，请转到“解决方案库”。 然后添加“容器解决方案”。 或者，添加 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview) 中的容器解决方案。
 

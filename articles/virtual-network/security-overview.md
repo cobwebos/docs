@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 950c64ea1ea2edc072650a9f63a6d21ad369c496
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3b935d3a3c37b63386dfb2cbd25ceba59d91a998
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="network-security"></a>网络安全
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 04/03/2018
 - **入站流量**：首先评估与网络接口所在子网关联的网络安全组。 然后，与网络接口关联的网络安全组会评估允许通过与子网相关联的网络安全组的所有流量。 例如，我们可能要求通过 Internet 在端口 80 上对某个虚拟机进行入站访问。 如果将网络安全组同时关联到网络接口以及该网络接口所在的子网，则与子网和网络接口关联的网络安全组必须允许端口 80。 如果只允许端口 80 上的流量通过与子网或该子网所在的网络接口相关联的网络安全组，则会由于默认安全规则方面的原因而导致通信失败。 有关详细信息，请参阅[默认安全规则](#default-security-rules)。 如果只将网络安全组应用到子网或网络接口，并且该网络安全组包含允许入站端口 80 流量的规则，则通信会成功。 
 - **出站流量**：首先评估与网络接口关联的网络安全组。 然后，与子网关联的网络安全组会评估允许通过与网络接口相关联的网络安全组的所有流量。
 
-将网络安全组同时应用到网络接口和子网时，你不一定总能察觉得到。 可以通过查看网络接口的[有效安全规则](virtual-network-manage-nsg-arm-portal.md)，轻松查看已应用到网络接口的聚合规则。 还可以使用 Azure 网络观察程序中的 [IP 流验证](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)功能来确定是否允许发往或发自网络接口的通信。 该工具会告知通信是否受允许，以及哪个网络安全规则允许或拒绝流量。
+将网络安全组同时应用到网络接口和子网时，你不一定总能察觉得到。 可以通过查看网络接口的[有效安全规则](virtual-network-nsg-troubleshoot-portal.md)，轻松查看已应用到网络接口的聚合规则。 还可以使用 Azure 网络观察程序中的 [IP 流验证](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)功能来确定是否允许发往或发自网络接口的通信。 该工具会告知通信是否受允许，以及哪个网络安全规则允许或拒绝流量。
  
 > [!NOTE]
 > 网络安全组关联到子网或关联到部署经典部署模型的虚拟机和云服务，而不是关联到资源管理器部署模型中的网络接口。 若要详细了解 Azure 部署模型，请参阅[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。

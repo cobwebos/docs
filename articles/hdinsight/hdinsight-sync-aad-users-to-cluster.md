@@ -1,13 +1,13 @@
 ---
-title: "将 Azure Active Directory 用户同步到群集 - Azure HDInsight | Microsoft Docs"
-description: "将经身份验证的用户从 Azure Active Directory 同步到群集。"
+title: 将 Azure Active Directory 用户同步到群集 - Azure HDInsight | Microsoft Docs
+description: 将经身份验证的用户从 Azure Active Directory 同步到群集。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 01/19/2018
 ms.author: ashishth
 ms.openlocfilehash: ad1586a6e358dfb1ca2391474ecdd9bee2f6226d
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>将 Azure Active Directory 用户同步到 HDInsight 群集
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 01/22/2018
 
     ![“新建用户”窗格](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
 
-4. 选择“创建”。
+4. 选择**创建**。
 
 ## <a name="use-the-ambari-rest-api-to-synchronize-users"></a>使用 Ambari REST API 来同步用户
 

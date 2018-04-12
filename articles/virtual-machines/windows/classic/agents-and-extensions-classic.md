@@ -1,11 +1,11 @@
 ---
-title: "Azure 中的 Window VM 代理和扩展 | Microsoft 文档"
-description: "提供了代理和扩展的概述以及如何使用经典部署模型在 Windows VM 上安装代理。"
+title: Azure 中的 Window VM 代理和扩展 | Microsoft 文档
+description: 提供了代理和扩展的概述以及如何使用经典部署模型在 Windows VM 上安装代理。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: squillace
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ROBOTS: NOINDEX
 ms.assetid: 820cdad0-6767-4d9e-9749-6169e76505ad
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rasquill
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c458d72618b7a688bcd75ac9906afe60bdb95c44
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: b40ff837e6a393de3ac4da3b9cc8c3cd28e5ea65
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="about-the-virtual-machine-agent-and-extensions-for-windows-vms"></a>关于适用于 Windows VM 的虚拟机代理和扩展
 

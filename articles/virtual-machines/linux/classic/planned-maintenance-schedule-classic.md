@@ -1,11 +1,11 @@
 ---
-title: "如何为 Azure 中的 Linux VM 安排计划内维护 | Microsoft 文档"
-description: "了解如何在 Azure VM 上安排计划内的维护。"
+title: 如何为 Azure 中的 Linux VM 安排计划内维护 | Microsoft 文档
+description: 了解如何在 Azure VM 上安排计划内的维护。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: igalf
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ROBOTS: NOINDEX
 ms.assetid: 619a65ce-f913-4c92-a7ba-2971a839c306
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: igalf
-ms.openlocfilehash: 332a25abc544d121e5fbc41bd52d4290508cc94a
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 0214aac013a20a72c54b29598268584cec6f60fc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-schedule-planned-maintenance-on-azure-vms"></a>如何在 Azure VM 上安排计划内的维护
 > [!IMPORTANT]

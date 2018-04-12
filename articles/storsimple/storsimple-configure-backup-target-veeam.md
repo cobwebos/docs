@@ -1,12 +1,12 @@
 ---
-title: "用作备份目标的 StorSimple 8000 系列与 Veeam 的集成 | Microsoft 文档"
-description: "介绍如何使用 Veeam 配置 StorSimple 备份目标。"
+title: 用作备份目标的 StorSimple 8000 系列与 Veeam 的集成 | Microsoft 文档
+description: 介绍如何使用 Veeam 配置 StorSimple 备份目标。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: harshakirank
 manager: matd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
 ms.openlocfilehash: cc1c7a3f77af76c451bb6e97a081a01c119333b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>用作备份目标的 StorSimple 与 Veeam 的集成
 
@@ -497,7 +497,7 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 灾难的发生可能会出于多种因素。 下表列出了常见的灾难恢复方案。
 
-| 方案 | 影响 | 如何恢复 | 说明 |
+| 场景 | 影响 | 如何恢复 | 说明 |
 |---|---|---|---|
 | StorSimple 设备故障 | 备份和还原操作会中断。 | 更换有故障的设备，并执行 [StorSimple 故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
 | Veeam 服务器故障 | 备份和还原操作会中断。 | 重新构建备份服务器，并根据 [Veeam 帮助中心（技术文档）](https://www.veeam.com/documentation-guides-datasheets.html)中的详述执行数据库还原。  | 必须在灾难恢复站点重建或还原 Veeam 服务器。 将数据库还原到最近的时间点。 如果还原的 Veeam 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |

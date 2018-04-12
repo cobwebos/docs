@@ -1,11 +1,11 @@
 ---
-title: "管理 Azure 开发测试实验室中用于创建 VM 的公式 | Microsoft Docs"
-description: "了解如何更新和删除 Azure 开发测试实验室公式"
+title: 管理 Azure 开发测试实验室中用于创建 VM 的公式 | Microsoft Docs
+description: 了解如何更新和删除 Azure 开发测试实验室公式
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 841dd95a-657f-4d80-ba26-59a9b5104fe4
 ms.service: devtest-lab
 ms.workload: na
@@ -16,10 +16,10 @@ ms.date: 03/07/2017
 ms.author: v-craic
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 330f6ae246697d54c6bce0690346652b5f2e2dd0
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>管理 Azure 开发测试实验室公式
 

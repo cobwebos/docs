@@ -1,11 +1,11 @@
 ---
-title: "从 Azure 的 Linux VM 中分离磁盘 | Microsoft Docs"
-description: "了解如何从使用经典部署模型创建的 Azure 虚拟机分离数据磁盘。"
+title: 从 Azure 的 Linux VM 中分离磁盘 | Microsoft Docs
+description: 了解如何从使用经典部署模型创建的 Azure 虚拟机分离数据磁盘。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ROBOTS: NOINDEX
 ms.assetid: 8433affa-376b-4c22-863a-40488adda486
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: 3b9678e7b1cfbff1ba83ae6cf881546335ab3e12
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 1d4490e21dba139117471bbf270bd33e7503b6b6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-detach-a-disk-from-a-linux-virtual-machine"></a>如何从 Linux 虚拟机分离磁盘
 > [!IMPORTANT] 

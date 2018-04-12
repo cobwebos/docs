@@ -2,18 +2,17 @@
 title: 将 Azure 文件备份到 Azure
 description: 本文详述了如何备份和还原 Azure 文件共享，并对管理任务进行了说明。
 services: backup
-keywords: 未咨询 SEO 专家的情况下，请不要添加或编辑关键字。
 author: markgalioto
 ms.author: markgal
 ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 3eab85aa4f7fde190a93239fc396cb9c04c2396c
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 440cee4309fad0a22d8964982f3aad2178397124
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="back-up-azure-file-shares"></a>备份 Azure 文件共享
 本文介绍如何使用 Azure 门户备份和还原 [Azure 文件共享](../storage/files/storage-files-introduction.md)。
@@ -32,7 +31,7 @@ ms.lasthandoff: 03/29/2018
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>预览版期间 Azure 文件共享备份的限制
 Azure 文件共享备份处于预览状态。 请注意预览版的以下限制：
-- 无法在存储帐户中使用[区域冗余存储 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 或[读取访问权限异地冗余存储 (RA-GRS)](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) 复制保护 Azure 文件共享。
+- 无法在存储帐户中使用[区域冗余存储 (ZRS)](../storage/common/storage-redundancy-zrs.md) 或[读取访问权限异地冗余存储 (RA-GRS)](../storage/common/storage-redundancy-grs.md) 复制保护 Azure 文件共享。
 - 无法保护已启用虚拟网络的存储帐户中的 Azure 文件共享。
 - 无法使用 PowerShell 或 CLI 保护 Azure 文件。
 - 每天的计划备份数上限为 1。

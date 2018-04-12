@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 994b8946078ed9b4c8aa965a3bc0e117ba3185c0
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 42932e6d1727a1444c62f565ae3c48dc178aeb2b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Azure 逻辑应用的工作流定义语言架构
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 03/08/2018
 
 |元素名称|必选|说明|  
 |------------------|--------------|-----------------|  
-|type|是|**类型**：string <p> **声明**：`"parameters": {"parameter1": {"type": "string"}` <p> **规范**：`"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **类型**：securestring <p> **声明**：`"parameters": {"parameter1": {"type": "securestring"}}` <p> **规范**：`"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **类型**：int <p> **声明**：`"parameters": {"parameter1": {"type": "int"}}` <p> **规范**：`"parameters": {"parameter1": {"value" : 5}}` <p> **类型**：bool <p> **声明**：`"parameters": {"parameter1": {"type": "bool"}}` <p> **规范**：`"parameters": {"parameter1": { "value": true }}` <p> **类型**：array <p> **声明**：`"parameters": {"parameter1": {"type": "array"}}` <p> **规范**：`"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **类型**：object <p> **声明**：`"parameters": {"parameter1": {"type": "object"}}` <p> **规范**：`"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **类型**：secureobject <p> **声明**：`"parameters": {"parameter1": {"type": "object"}}` <p> **规范**：`"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **注意：**`securestring` 和 `secureobject` 类型不会在 `GET` 操作中返回。 所有密码、密钥和机密应使用此类型。|  
+|type|是|**类型**：string <p> **声明**：`"parameters": {"parameter1": {"type": "string"}}` <p> **规范**：`"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **类型**：securestring <p> **声明**：`"parameters": {"parameter1": {"type": "securestring"}}` <p> **规范**：`"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **类型**：int <p> **声明**：`"parameters": {"parameter1": {"type": "int"}}` <p> **规范**：`"parameters": {"parameter1": {"value" : 5}}` <p> **类型**：bool <p> **声明**：`"parameters": {"parameter1": {"type": "bool"}}` <p> **规范**：`"parameters": {"parameter1": { "value": true }}` <p> **类型**：array <p> **声明**：`"parameters": {"parameter1": {"type": "array"}}` <p> **规范**：`"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **类型**：object <p> **声明**：`"parameters": {"parameter1": {"type": "object"}}` <p> **规范**：`"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **类型**：secureobject <p> **声明**：`"parameters": {"parameter1": {"type": "object"}}` <p> **规范**：`"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **注意：**`securestring` 和 `secureobject` 类型不会在 `GET` 操作中返回。 所有密码、密钥和机密应使用此类型。|  
 |defaultValue|否|在创建资源时未指定任何值的情况下指定参数的默认值。|  
 |allowedValues|否|指定参数的允许值数组。|  
 |metadata|否|指定有关参数的其他信息，例如，Visual Studio 或其他工具使用的可读的说明或设计时数据。|  
@@ -132,8 +132,8 @@ ms.lasthandoff: 03/08/2018
 |----------------|------------|  
 |"parameters"|返回字符“parameters”。|  
 |"parameters[1]"|返回字符“parameters[1]”。|  
-|\"\@\@\"|返回包含\“\@\”的、由 1 个字符构成的字符串。|  
-|\" \@\"|返回包含\“\@\”的、由 2 个字符构成的字符串。|  
+|"@@"|返回包含\“\@\”的、由 1 个字符构成的字符串。|  
+|\" \@\"|返回包含“@”的、由 2 个字符构成的字符串。|  
   
 如果使用*字符串内插*，表达式还可以显示在 `@{ ... }` 中包装表达式的字符串内。 例如： <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
 
@@ -142,12 +142,12 @@ ms.lasthandoff: 03/08/2018
 |JSON 值|结果|  
 |----------------|------------|  
 |"@parameters('myString')"|返回字符串形式的 `sampleString`。|  
-|\"\@{parameters('myString')}"|返回字符串形式的 `sampleString`。|  
+|"@{parameters('myString')}"|返回字符串形式的 `sampleString`。|  
 |"@parameters('myNumber')"|返回*数字*形式的 `42`。|  
-|\"\@{parameters('myNumber')}"|返回*字符串*形式的 `42`。|  
-|"Answer is: \@{parameters('myNumber')}"|返回字符串 `Answer is: 42`。|  
+|"@{parameters('myNumber')}"|返回*字符串*形式的 `42`。|  
+|"Answer is: @{parameters('myNumber')}"|返回字符串 `Answer is: 42`。|  
 |"@concat('Answer is: ', string(parameters('myNumber')))"|返回字符串 `Answer is: 42`|  
-|"Answer is: \@\@{parameters('myNumber')}"|返回字符串 `Answer is: @{parameters('myNumber')}`。|  
+|"Answer is: @@{parameters('myNumber')}"|返回字符串 `Answer is: @{parameters('myNumber')}`。|  
   
 ## <a name="operators"></a>运算符  
 

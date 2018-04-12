@@ -1,12 +1,12 @@
 ---
-title: "从 Azure 逻辑应用部署和调用 Web API 与 REST API | Microsoft Docs"
-description: "在 Azure 逻辑应用中为系统集成工作流部署和调用 Web API 与 REST API"
-keywords: "Web API, REST API, 连接器, 工作流, 系统集成, 身份验证"
+title: 从 Azure 逻辑应用部署和调用 Web API 与 REST API | Microsoft Docs
+description: 在 Azure 逻辑应用中为系统集成工作流部署和调用 Web API 与 REST API
+keywords: Web API, REST API, 连接器, 工作流, 系统集成, 身份验证
 services: logic-apps
 author: stepsic-microsoft-com
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.service: logic-apps
 ms.workload: integration
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: LADocs; stepsic
 ms.openlocfilehash: c7a240bf5b7ed5e7780b90f438d2e336ee79f0b3
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="deploy-and-call-custom-apis-from-logic-app-workflows"></a>从逻辑应用工作流部署和调用自定义 API
 

@@ -1,6 +1,6 @@
 ---
-title: "如何通过 PHP 使用 Azure 存储表服务或 Azure Cosmos DB 表 API | Microsoft Docs"
-description: "了解如何通过 PHP 使用表服务 API 来创建和删除表以及插入、删除和查询表。"
+title: 如何通过 PHP 使用 Azure 存储表服务或 Azure Cosmos DB 表 API | Microsoft Docs
+description: 了解如何通过 PHP 使用表服务 API 来创建和删除表以及插入、删除和查询表。
 services: cosmos-db
 documentationcenter: php
 author: mimig1
@@ -14,11 +14,11 @@ ms.devlang: php
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: mimig
-ms.openlocfilehash: 64ce8206b4b0ab3c831417d6e478f9c059188345
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 69fa1f8f9717d1ea4ca5081a45317cff8d752809
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>如何通过 PHP 使用 Azure 存储表服务或 Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -435,9 +435,6 @@ catch(ServiceException $e){
 * **addDeleteEntity**（添加 deleteEntity 操作）
 
 下面的示例演示了如何通过单个请求执行 **insertEntity** 和 **deleteEntity** 操作。 
-
-> [!NOTE]
-> Azure Cosmos DB 尚不支持表的批处理操作。 
 
 ```php
 require_once 'vendor/autoload.php';

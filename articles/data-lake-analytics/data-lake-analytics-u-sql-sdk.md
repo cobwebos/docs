@@ -1,12 +1,12 @@
 ---
-title: "使用 Azure Data Lake U-SQL SDK 缩放 U-SQL 本地运行和测试 | Microsoft Docs"
-description: "了解如何使用 Azure Data Lake U-SQL SDK 通过命令行和本地工作站上的编程接口缩放 U-SQL 作业本地运行和测试。"
+title: 使用 Azure Data Lake U-SQL SDK 缩放 U-SQL 本地运行和测试 | Microsoft Docs
+description: 了解如何使用 Azure Data Lake U-SQL SDK 通过命令行和本地工作站上的编程接口缩放 U-SQL 作业本地运行和测试。
 services: data-lake-analytics
-documentationcenter: 
-author: 
-manager: 
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: ''
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: yanacai
 ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 缩放 U-SQL 本地运行和测试
 
@@ -337,13 +337,13 @@ LocalRunHelper.exe 为 U-SQL 本地编译和运行等提供编程接口。以下
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|参数|类型|说明|
+|参数|Type|说明|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|对于输出消息，设置为 null 以使用控制台|
 
 **属性**
 
-|属性|类型|说明|
+|属性|Type|说明|
 |--------|----|-----------|
 |AlgebraPath|字符串|代数文件的路径（代数文件是某个编译结果）|
 |CodeBehindReferences|字符串|如果脚本有额外的代码隐藏引用，请指定用“;”分隔的路径|

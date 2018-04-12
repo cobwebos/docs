@@ -8,13 +8,13 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/04/2018
 ms.author: v-daljep
-ms.openlocfilehash: b380d3a8a35750602a4a0d20d595f71b125fc118
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5ce83198e1d2afb713044879724df88ad2696548
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL 数据库性能诊断日志
 
@@ -77,7 +77,7 @@ Intelligent Insights 性能日志的下一部分包括通过内置人工智能�
 
 | 可检测性能模式 | 输出的详细信息 |
 | :------------------- | ------------------- |
-| 达到资源上限 | <li>受影响的资源</li><li>查询哈希</li><li>资源消耗百分比</li> |
+| 达到资源限制 | <li>受影响的资源</li><li>查询哈希</li><li>资源消耗百分比</li> |
 | 工作负载增加 | <li>执行增加的查询数量</li><li>对工作负载增加影响最大的查询的查询哈希</li> |
 | 内存压力 | <li>内存分配器</li> |
 | 锁定 | <li>受影响的查询哈希</li><li>阻止的查询哈希</li> |

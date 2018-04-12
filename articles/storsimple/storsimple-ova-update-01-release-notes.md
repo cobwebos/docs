@@ -1,11 +1,11 @@
 ---
-title: "StorSimple 虚拟阵列更新发行说明 | Microsoft Docs"
-description: "介绍有关运行更新 0.2 和 0.1 的 StorSimple Virtual Array 待解决的重要问题和解决方案。"
+title: StorSimple 虚拟阵列更新发行说明 | Microsoft Docs
+description: 介绍有关运行更新 0.2 和 0.1 的 StorSimple Virtual Array 待解决的重要问题和解决方案。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 3993864d-2ddd-4302-a2f1-8d737fba6eab
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: c4ccde9635b3874864baa9d4d262ff5ddcf2a425
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array 更新 0.2 和 0.1 发行说明
 ## <a name="overview"></a>概述
@@ -53,10 +53,10 @@ ms.lasthandoff: 10/11/2017
 ## <a name="issues-fixed-in-the-update-01"></a>更新 0.1 中修复的问题
 下表提供了此版本中所修复问题的摘要。
 
-| 否。 | 功能 | 问题 |
+| 不会。 | 功能 | 问题 |
 | --- | --- | --- |
 | 1 |VMDK |在某些 VMware 版本中，OS 磁盘偶尔会引起警报并干扰正常操作。 在此版本中已修复了此问题。 |
-| #N/A |iSCSI 服务器 |在上一版本中，用户需要为 StorSimple 虚拟设备每个已启用的网络接口指定网关。 此版本中已更改了此行为，使用户只需为所有已启用的网络接口至少配置一个网关即可。 |
+| 2 |iSCSI 服务器 |在上一版本中，用户需要为 StorSimple 虚拟设备每个已启用的网络接口指定网关。 此版本中已更改了此行为，使用户只需为所有已启用的网络接口至少配置一个网关即可。 |
 | 3 |支持包 |在软件的早期版本中，当包大小超过 1 GB 时，支持包集合则会失败。 在此版本中已修复了此问题。 |
 | 4 |云访问 |在上一版本中，如果 StorSimple Virtual Array 没有网络连接并且进行了重启，本地 UI 则会出现连接问题。 在此版本中已修复了此问题。 |
 | 5 |监视图表 |在之前的版本中，在进行了设备故障转移操作后，云容量利用率图表在 Azure 经典门户中会显示不正确的值。 在当前版本中已修复了此问题。 |
@@ -64,7 +64,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="known-issues-in-the-update-01"></a>更新 0.1 中的已知问题
 下表提供了 StorSimple Virtual Array 的已知问题的摘要，包括早期版本中发行说明的问题。 **此版本中发行说明的问题标有星号。此列表中几乎所有问题都是从 StorSimple Virtual Array 的正式版本中延续下来的。**
 
-| 否。 | 功能 | 问题 | 解决方法/备注 |
+| 不会。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 | **1.** |更新 |无法将预览版中所创建的虚拟设备更新为受支持的正式版本。 |必须使用灾难恢复 (DR) 工作流将这些虚拟设备故障转移为正式版本。 |
 | **2.** |预配的数据磁盘 |在预配指定大小的数据磁盘，并创建相应的 StorSimple 虚拟设备后，不能立即扩展或收缩数据磁盘。 尝试进行这些操作将导致该设备本地层中的所有数据丢失。 | |

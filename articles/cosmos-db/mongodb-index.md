@@ -1,10 +1,10 @@
 ---
-title: "Azure Cosmos DB：MongoDB API 文章 | Microsoft Docs"
-description: "特定于使用 Azure Cosmos DB 中的 MongoDB API 创建文档数据库的所有文章列表。"
+title: Azure Cosmos DB：MongoDB API 文章 | Microsoft Docs
+description: 特定于使用 Azure Cosmos DB 中的 MongoDB API 创建文档数据库的所有文章列表。
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.assetid: 0ee5b7f8-cda9-41a1-b7f0-f6a97e58c4da
 ms.service: cosmos-db
 ms.workload: data-services
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
-ms.author: mimig
-ms.openlocfilehash: c65013fefe6750e82c71cb3d201a3195acd64127
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.author: sngun
+ms.openlocfilehash: bfcaf809daa4d95828a85ce93aae213248bbbb89
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-mongodb-api-documentation"></a>Azure Cosmos DB：MongoDB API 文档
 

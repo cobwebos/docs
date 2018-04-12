@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: mimig
 ms.openlocfilehash: dcfa3d40414401b67d53d8e9759f897fb23909fc
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-cosmos-db-documentation-experiment"></a>Azure Cosmos DB 文档试验
 
@@ -39,7 +39,7 @@ Azure Cosmos DB 是一种全球分布式多模型数据库。 由于通过 Azure
 
    如果两个视图并未同时出现，请关闭并重新打开新的 inprivate 或 incognito 窗口，然后再次加载[登陆页](https://docs.microsoft.com/en-us/azure/cosmos-db/)。 可能需要多次尝试才能在单独的窗口中加载两个版本。 刷新 incognito 窗口不会加载另一个版本，需要打开新窗口。 
 
-4. 然后，可以调整窗口大小以并排排列，或在视图之间来回切换以进行比较。 
+4. 然后，可以调整窗口大小以并排修复，或在视图之间来回切换以进行比较。 
 
 5. 熟悉试验体验的组织和布局后，请单击下方的“试验调查”按钮提供反馈。 请于 2018 年 4 月 4 日午夜前提交表单，以便反馈可供查看并被采纳。 
 

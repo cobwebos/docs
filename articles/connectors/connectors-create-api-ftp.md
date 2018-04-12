@@ -1,11 +1,11 @@
 ---
-title: "了解如何在逻辑应用中使用 FTP 连接器 | Microsoft Docs"
-description: "使用 Azure 应用服务创建逻辑应用。 通过连接到 FTP 服务器管理文件。 可以在 FTP 服务器中执行各种操作，例如上传、更新、获取和删除文件。"
+title: 了解如何在逻辑应用中使用 FTP 连接器 | Microsoft Docs
+description: 使用 Azure 应用服务创建逻辑应用。 通过连接到 FTP 服务器管理文件。 可以在 FTP 服务器中执行各种操作，例如上传、更新、获取和删除文件。
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: d83c55fe-eb59-4b7b-a5ec-afac5c772616
 ms.service: logic-apps
@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/22/2016
 ms.author: mandia; ladocs
 ms.openlocfilehash: 7719e0e90df3a384e870e2e839cb77a27d95ada8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="get-started-with-the-ftp-connector"></a>FTP 连接器入门
 使用 FTP 连接器在 FTP 服务器上监视、管理和创建文件。 

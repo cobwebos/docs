@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: 0476a93067dd32e2209ad208c5fe3705db4667a9
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9738689a8822c8d5af7426657f5c9134edf918a7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-service-availability-in-china"></a>在中国可用的 Azure 服务
 
@@ -164,7 +164,6 @@ ms.lasthandoff: 04/03/2018
 | 计划程序              | GA                        | GA    |
 | 自动化             | GA | GA               |
 | Log Analytics          | GA                              | *不可用*          |
-| OMS                    | GA                                        | *不可用*          |
 | Azure 监视器          | GA                                           | *不可用*          |
 | Azure 顾问          | GA                                         | *不可用*          |
 

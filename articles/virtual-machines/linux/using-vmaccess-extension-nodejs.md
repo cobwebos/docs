@@ -1,11 +1,11 @@
 ---
-title: "使用 VMAccess 扩展重置 Azure Linux VM 上的访问权限 | Microsoft Docs"
-description: "使用 VMAccess 扩展重置 Azure Linux VM 上的访问权限。"
+title: 使用 VMAccess 扩展重置 Azure Linux VM 上的访问权限 | Microsoft Docs
+description: 使用 VMAccess 扩展重置 Azure Linux VM 上的访问权限。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 261a9646-1f93-407e-951e-0be7226b3064
 ms.service: virtual-machines-linux
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: v-livech
-ms.openlocfilehash: 278bf1785aac71068ab94cf9916af69a204c44be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fb130fc2e448f3cbc648991ea6bebd5795bc78b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-users-ssh-and-check-or-repair-disks-on-azure-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-10"></a>配合使用 VMAccess 扩展和 Azure CLI 1.0 管理用户、SSH，并检查或修复 Azure Linux VM 上的磁盘
 本文说明如何使用 Azure VMAcesss 扩展检查或修复磁盘、重置用户访问权限、管理用户帐户，或重置 Linux 上的 SSHD 配置。 本文需要以下条件：
 
 * 一个 Azure 帐户（[获取免费试用版](https://azure.microsoft.com/pricing/free-trial/)）。
 * 已使用 `azure login` 登录 [Azure CLI](../../cli-install-nodejs.md)。
-* Azure CLI *必须处于* Azure Resource Manager 模式`azure config mode arm`。
+* Azure CLI *必须处于* Azure 资源管理器模式`azure config mode arm`。
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
@@ -267,7 +267,7 @@ azure vm extension set \
 
 [关于虚拟机扩展和功能](../windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[使用 Linux VM 扩展创作 Azure Resource Manager 模板](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+[使用 Linux VM 扩展创作 Azure 资源管理器模板](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [在创建期间使用 cloud-init 自定义 Linux VM](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

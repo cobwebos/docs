@@ -1,11 +1,11 @@
 ---
-title: "查看和管理 StorSimple 虚拟阵列作业 | Microsoft Docs"
-description: "介绍 StorSimple Device Manager 服务“作业”页，以及如何使用它跟踪 StorSimple 虚拟阵列的最近和当前作业。"
+title: 查看和管理 StorSimple 虚拟阵列作业 | Microsoft Docs
+description: 介绍 StorSimple Device Manager 服务“作业”页，以及如何使用它跟踪 StorSimple 虚拟阵列的最近和当前作业。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 31879821-b599-4609-a7f4-d4b0f658a933
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: 3fd1c262a8ce94d8e98f2b066a8028d974b15b1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务查看 StorSimple 虚拟阵列的作业
 ## <a name="overview"></a>概述

@@ -1,12 +1,12 @@
 ---
-title: "如何使用 Azure CLI 2.0 调整 Linux VM 的大小 | Microsoft 文档"
-description: "如何通过更改 VM 大小来扩展或缩减 Linux 虚拟机。"
+title: 如何使用 Azure CLI 2.0 调整 Linux VM 的大小 | Microsoft 文档
+description: 如何通过更改 VM 大小来扩展或缩减 Linux 虚拟机。
 services: virtual-machines-linux
 documentationcenter: na
 author: mikewasson
-manager: timlt
-editor: 
-tags: 
+manager: jeconnoc
+editor: ''
+tags: ''
 ms.assetid: e163f878-b919-45c5-9f5a-75a64f3b14a0
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fa8ca130fdcbe408d75e7315ad5ebdb8caae94e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: e9d15a6927c0fea8bc79d359817158c167433d25
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="resize-a-linux-virtual-machine-using-cli-20"></a>使用 CLI 2.0 调整 Linux 虚拟机的大小
 

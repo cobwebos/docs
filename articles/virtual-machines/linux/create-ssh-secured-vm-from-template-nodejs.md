@@ -1,13 +1,13 @@
 ---
-title: "将 Azure 模板与 Azure CLI 1.0 配合使用创建 Linux VM | Microsoft Docs"
-description: "在 Azure 上使用 Azure CLI 1.0 和 Azure Resource Manager 模板创建 Linux VM。"
+title: 将 Azure 模板与 Azure CLI 1.0 配合使用创建 Linux VM | Microsoft Docs
+description: 在 Azure 上使用 Azure CLI 1.0 和 Azure 资源管理器模板创建 Linux VM。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 05/12/2017
 ms.author: v-livech
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d4aaa78fcdf3bd9e2e236606f2d3049f464a8a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 620adcba9e136aa56e7a4867196ce5b9249b6072
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="how-to-create-a-linux-vm-using-the-azure-cli-10-an-azure-resource-manager-template"></a>如何使用 Azure CLI 1.0 和 Azure Resource Manager 模板创建 Linux VM
-本文说明如何使用 Azure CLI 1.0 和 Azure Resource Manager 模板快速部署 Linux 虚拟机。 本文需要以下条件：
+# <a name="how-to-create-a-linux-vm-using-the-azure-cli-10-an-azure-resource-manager-template"></a>如何使用 Azure CLI 1.0 和 Azure 资源管理器模板创建 Linux VM
+本文说明如何使用 Azure CLI 1.0 和 Azure 资源管理器模板快速部署 Linux 虚拟机。 本文需要以下条件：
 
 * 一个 Azure 帐户（[获取免费试用版](https://azure.microsoft.com/pricing/free-trial/)）。
 * 已使用 `azure login` 登录 [Azure CLI 1.0](../../cli-install-nodejs.md)。
-* Azure CLI *必须处于* Azure Resource Manager 模式`azure config mode arm`。
+* Azure CLI *必须处于* Azure 资源管理器模式`azure config mode arm`。
 
 也可以使用 [Azure 门户](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)快速部署 Linux VM 模板。
 
@@ -48,10 +48,10 @@ azure group create \
 ## <a name="detailed-walkthrough"></a>详细演练
 借助模板，可以在 Azure 上使用要在启动期间自定义的设置（如用户名和主机名设置）创建 VM。 对于本文，我们将利用 Ubuntu VM 和对 SSH 开放了端口 22 的网络安全组 (NSG) 启动 Azure 模板。
 
-Azure Resource Manager 模板是可用于一次性简易任务（启动 Ubuntu VM）的 JSON 文件，如本文所述。  Azure 模板还可用于构建整个环境（如测试、开发或生产部署堆栈）的复杂 Azure 配置。
+Azure 资源管理器模板是可用于一次性简易任务（启动 Ubuntu VM）的 JSON 文件，如本文所述。  Azure 模板还可用于构建整个环境（如测试、开发或生产部署堆栈）的复杂 Azure 配置。
 
 ## <a name="create-the-linux-vm"></a>创建 Linux VM
-下面的代码示例演示如何调用 `azure group create` 创建资源组，并同时使用[此 Azure Resource Manager 模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json)部署受 SSH 保护的 Linux VM。 请记住，在示例中必须使用环境中唯一的名称。 此示例使用 *myResourceGroup* 作为资源组名称，使用 *myVM* 作为 VM 名称。
+下面的代码示例演示如何调用 `azure group create` 创建资源组，并同时使用[此 Azure 资源管理器模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json)部署受 SSH 保护的 Linux VM。 请记住，在示例中必须使用环境中唯一的名称。 此示例使用 *myResourceGroup* 作为资源组名称，使用 *myVM* 作为 VM 名称。
 
 ```azurecli
 azure group create \

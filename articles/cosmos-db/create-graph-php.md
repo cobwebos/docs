@@ -1,25 +1,24 @@
 ---
-title: "快速入门：将图形 API 与 PHP 配合使用 - Azure Cosmos DB | Microsoft Docs"
-description: "本快速入门介绍如何在 Azure 门户和 PHP 中使用 Azure Cosmos DB 图形 API 来创建控制台应用程序"
+title: 快速入门：将图形 API 与 PHP 配合使用 - Azure Cosmos DB | Microsoft Docs
+description: 本快速入门介绍如何在 Azure 门户和 PHP 中使用 Azure Cosmos DB 图形 API 来创建控制台应用程序
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: luisbosquez
-manager: jhubbard
-editor: 
+manager: kfile
 ms.assetid: dfce0de9-a326-401c-9940-406ac0414461
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
-ms.devlang: 
+ms.devlang: ''
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 3f80e682a89dcf6b5d3d5d6f2f15c4eeab2046e7
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: f6d8b8773719a59ad5326196f32a69a13a9a5d34
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB：使用 PHP 和 Azure 门户创建图形数据库
 

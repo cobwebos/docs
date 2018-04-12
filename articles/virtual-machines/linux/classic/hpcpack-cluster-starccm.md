@@ -1,11 +1,11 @@
 ---
-title: "在 Linux VM 上运行 STAR-CCM+ 与 HPC Pack | Microsoft Docs"
-description: "在 Azure 上部署 Microsoft HPC Pack 群集，并在多个 Linux 计算节点上跨 RDMA 网络运行 STAR-CCM+ 作业。"
+title: 在 Linux VM 上运行 STAR-CCM+ 与 HPC Pack | Microsoft Docs
+description: 在 Azure 上部署 Microsoft HPC Pack 群集，并在多个 Linux 计算节点上跨 RDMA 网络运行 STAR-CCM+ 作业。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: xpillons
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 75523406-d268-4623-ac3e-811c7b74de4b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
-ms.openlocfilehash: b45fcfb981287035da02fda62eaf5f9436ec2379
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8689d7abfd5ab45277df3b5672a1f6e7e874d88e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>在 Azure 中的 Linux RDMA 群集上运行 STAR-CCM+ 和 Microsoft HPC Pack
 本文说明如何在 Azure 上部署 Microsoft HPC Pack 群集，并在与 InfiniBand 互连的多个 Linux 计算节点上运行 [CD-adapco STAR-CCM+](http://www.cd-adapco.com/products/star-ccm%C2%AE) 作业。
@@ -33,7 +33,7 @@ Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行各种�
 
 Azure PowerShell 是必备组件。 如果未在本地计算机上配置 PowerShell，请阅读 [How to install and configure Azure PowerShell](/powershell/azure/overview)（如何安装和配置 Azure PowerShell）一文。
 
-编写本文时，Azure 应用商店中的 Linux 映像（包含 Azure 的 InfiniBand 驱动程序）适用于 SLES 12、CentOS 6.5 和 CentOS 7.1。 本文假设使用的是 SLES 12。 若要检索应用商店中支持 HPC 的所有 Linux 映像的名称，可以运行以下 PowerShell 命令：
+编写本文时，Azure Marketplace 中的 Linux 映像（包含 Azure 的 InfiniBand 驱动程序）适用于 SLES 12、CentOS 6.5 和 CentOS 7.1。 本文假设使用的是 SLES 12。 若要检索 Marketplace 中支持 HPC 的所有 Linux 映像的名称，可以运行以下 PowerShell 命令：
 
 ```
     get-azurevmimage | ?{$_.ImageName.Contains("hpc") -and $_.OS -eq "Linux" }
@@ -158,7 +158,7 @@ HPC Pack 随附的一个有用工具是 clusrun 工具。 可以使用此命令�
 ```
 
 ## <a name="install-star-ccm"></a>安装 STAR-CCM+
-Azure VM 实例 A8 和 A9 提供 InfiniBand 支持和 RDMA 功能。 启用这些功能的内核驱动程序适用于 Azure 应用商店中的 Windows Server 2012 R2、SUSE 12、CentOS 6.5 和 CentOS 7.1 映像。 Microsoft MPI 和 Intel MPI（5.x 版）是 Azure 中可支持这些驱动程序的两个 MPI 库。
+Azure VM 实例 A8 和 A9 提供 InfiniBand 支持和 RDMA 功能。 启用这些功能的内核驱动程序适用于 Azure Marketplace 中的 Windows Server 2012 R2、SUSE 12、CentOS 6.5 和 CentOS 7.1 映像。 Microsoft MPI 和 Intel MPI（5.x 版）是 Azure 中可支持这些驱动程序的两个 MPI 库。
 
 CD-adapco STAR-CCM+ 11.x 和更高版本与 Intel MPI 版本5.x 捆绑在一起，因此包含 Azure 的 InfiniBand 支持。
 

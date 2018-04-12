@@ -1,24 +1,19 @@
 ---
 title: IoT Edge 上的 Azure 流分析（预览版）
 description: 在 Azure 流分析中创建 Edge 作业，并将其部署到运行 Azure IoT Edge 的设备。
-keywords: 数据流, iot, edge
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 01/16/2017
 ms.author: jeanb
-ms.openlocfilehash: 475ca357c8445e8a7c672406f919af1d99a0933b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 01/16/2017
+ms.openlocfilehash: 1c02f8f7b086d0441c2def0e92c54cce72fad85e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>IoT Edge 上的 Azure 流分析（预览版）
 
@@ -207,7 +202,7 @@ ASA Edge 作业可以从在 IoT Edge 设备上运行的其他模块获取输入�
 * [IoT Edge 预览版上 Azure 流分析的第三方通知](https://go.microsoft.com/fwlink/?linkid=862828)。
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试参考 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请尝试参考 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 
 ## <a name="next-steps"></a>后续步骤

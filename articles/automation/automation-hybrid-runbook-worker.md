@@ -5,14 +5,14 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/21/2018
+ms.date: 04/04/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: b317a2d9241016b66651af4659c7daf2e8d8f2cc
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 8f212797decdd967154584927984bc0a4e58f4ba
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automate-resources-in-your-data-center-or-cloud-with-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 
@@ -93,6 +93,7 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 针对自动化环境执行前两个步骤一次，并对每台辅助角色计算机重复其余步骤。
 
 #### <a name="1-create-log-analytics-workspace"></a>1.创建 Log Analytics 工作区
+
 如果尚无 Log Analytics 工作区，请按照[管理工作区](../log-analytics/log-analytics-manage-access.md)中的说明创建工作区。 如果已经有一个工作区，则可以使用现有的。
 
 #### <a name="2-add-automation-solution-to-log-analytics-workspace"></a>2.向 Log Analytics 工作区添加自动化解决方案
@@ -102,6 +103,7 @@ Azure 自动化中的 Runbook 无法访问其他云或本地环境中的资源�
 请根据[使用解决方案库添加解决方案](../log-analytics/log-analytics-add-solutions.md)中的说明，将**自动化**解决方案添加到 Log Analytics 工作区。
 
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>3.安装 Microsoft Monitoring Agent
+
 Microsoft Monitoring Agent 可将计算机连接到 Log Analytics。 在计算机本地安装代理并将其连接到工作区时，代理会自动下载混合 Runbook 辅助角色所需的组件。
 
 按照[将 Windows 计算机连接到 Log Analytics](../log-analytics/log-analytics-windows-agent.md) 中的说明在本地计算机上安装代理。 可以对多台计算机重复此过程，以将多个辅助角色添加到环境。

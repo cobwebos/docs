@@ -1,12 +1,12 @@
 ---
-title: "Azure 外围网络示例 – 使用 NSG 构建简单的外围网络 | Microsoft 文档"
-description: "使用网络安全组 (NSG) 构建外围网络"
+title: Azure 外围网络示例 – 使用 NSG 构建简单的外围网络 | Microsoft 文档
+description: 使用网络安全组 (NSG) 构建外围网络
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>示例 1 – 使用 NSG 和 Azure 资源管理器模板构建简单的外围网络
 [返回安全边界最佳实践页面][HOME]
@@ -100,7 +100,7 @@ ms.lasthandoff: 12/21/2017
 2. 本示例中的第一个规则允许所有内部网络之间的 DNS 流量发往后端子网上的 DNS 服务器。 该规则有一些重要参数：
   * “destinationAddressPrefix”- 规则可以使用一种特殊类型的、称作“默认标记”的地址前缀。这些标记是系统提供的标识符，用于方便对较大类别的地址前缀进行寻址。 此规则使用默认标记“Internet”来表示 VNet 外部的任何地址。 其他前缀标签包括 VirtualNetwork 和 AzureLoadBalancer。
   * “方向”表示此规则要对哪个方向的流量生效。 该方向是从子网或虚拟机的角度定义的（取决于此 NSG 绑定到的位置）。 因此，如果“方向”为“入站”并且流量进入子网，此规则将适用，而离开子网的流量则不受此规则影响。
-  * “优先级”设置流量的评估顺序。 编号越低，优先级就越高。 将某个规则应用于特定的流量后，不再处理其他规则。 因此，如果优先级为 1 的规则允许流量，优先级为 2 的规则拒绝流量，并将这两个规则同时应用于流量，则允许流量流动（规则 1 的优先级更高，因此将发生作用，并且不再应用其他规则）。
+  * “优先级”设置流量的评估顺序。 编号越低，优先级越高。 将某个规则应用于特定的流量后，不再处理其他规则。 因此，如果优先级为 1 的规则允许流量，优先级为 2 的规则拒绝流量，并将这两个规则同时应用于流量，则允许流量流动（规则 1 的优先级更高，因此将发生作用，并且不再应用其他规则）。
   * “访问”表示是要阻止（“拒绝”）还是允许（“允许”）受此规则影响的流量。
 
     ```JSON

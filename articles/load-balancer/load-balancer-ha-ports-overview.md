@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: kumud
-ms.openlocfilehash: 09c51441d393de5d801e7a4c259b711a527349d8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f6e9dd09558a3485629d5b70dd8b68b292427b18
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="high-availability-ports-overview"></a>高可用性端口概述
 
@@ -72,20 +72,20 @@ HA 端口功能在所有全局 Azure 区域中均可用。
 
 但是，除了此 HA 端口规则外，还可以为后端实例配置公共标准负载均衡器。
 
-## <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>内部标准负载均衡器上的一个浮动 IP（直接服务器返回）HA 端口配置
+### <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>内部标准负载均衡器上的一个浮动 IP（直接服务器返回）HA 端口配置
 
 同样，可以将负载均衡器配置为将负载均衡规则与具有单个前端的 **HA 端口**配合使用，并将“浮动 IP”设置为“启用”。 
 
 此配置允许添加更多浮动 IP 负载均衡规则和/或公共负载均衡器。 但是，无法在此配置之上使用非浮动 IP HA 端口负载均衡配置。
 
-## <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>内部标准负载均衡器上的多个 HA 端口配置
+### <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>内部标准负载均衡器上的多个 HA 端口配置
 
 如果你的方案需要为同一后端池配置多个 HA 端口前端，则可以通过以下操作实现此目标： 
 - 为单个内部标准负载均衡器资源配置多个前端专用 IP 地址。
 - 配置多个负载均衡规则，为其中的每个规则选择一个唯一的前端 IP 地址。
 - 对于所有负载均衡规则，选择“HA 端口”选项，并将“浮动 IP”设置为“启用”。
 
-## <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>相同后端实例上具有 HA 端口的内部负载均衡器和公共负载均衡器
+### <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>相同后端实例上具有 HA 端口的内部负载均衡器和公共负载均衡器
 
 可以为后端资源配置**一个**公共标准负载均衡器资源以及单个具有 HA 端口的内部标准负载均衡器。
 

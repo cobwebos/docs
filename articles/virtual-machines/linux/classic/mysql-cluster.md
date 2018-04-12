@@ -1,11 +1,11 @@
 ---
-title: "使用负载均衡集群集化 MySQL | Microsoft Docs"
-description: "在 Azure 上使用经典部署模型设置负载均衡的高可用性 Linux MySQL 群集"
+title: 使用负载均衡集群集化 MySQL | Microsoft Docs
+description: 在 Azure 上使用经典部署模型设置负载均衡的高可用性 Linux MySQL 群集
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: bureado
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 6c413a16-e9b5-4ffe-a8a3-ae67046bbdf3
 ms.service: virtual-machines-linux
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2015
 ms.author: jparrel
-ms.openlocfilehash: 8b39da7b96002e14c7d9a567ddc4f1dbc9d45c60
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e2671def47879e3d4eae000c9084cd458e29b933
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>使用负载均衡的集来群集化 Linux 上的 MySQL
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure 资源管理器](../../../resource-manager-deployment-model.md)和经典。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 如果需要部署 MySQL 群集，可以使用 [Resource Manager 模板](https://azure.microsoft.com/documentation/templates/mysql-replication/)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure 资源管理器](../../../resource-manager-deployment-model.md)和经典。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 如果需要部署 MySQL 群集，可以使用 [Resource Manager 模板](https://azure.microsoft.com/documentation/templates/mysql-replication/)。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 本文将探讨并演示在 Microsoft Azure 上部署基于 Linux 的高度可用服务时可用的不同方法，并在 MySQL Server 高可用性方面提供入门性的探讨。 [第 9 频道](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL)提供了此方法的视频演示。

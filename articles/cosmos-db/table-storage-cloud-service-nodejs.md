@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: mimig
-ms.openlocfilehash: b63f6b3be2e4576b304c1a73ff326a937815b27e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3708c4a1bae93682f81d8aad0f3649f6b2381ff5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-table-storage-nodejs-web-application"></a>Azure 表存储：Node.js Web 应用程序
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -55,7 +55,7 @@ web.config 设置作为环境变量传递给 Node，并再由 Azure SDK 进行�
 3. 在 Azure Powershell 窗口中，输入以下 cmdlet 以检索存储帐户信息：
 
     ```powershell
-    PS C:\node\tasklist\WebRole1> Get-AzureStorageAccounts
+    PS C:\node\tasklist\WebRole1> Get-AzureStorageAccount
     ```
 
    上述 cmdlet 可以检索与托管服务关联的存储帐户和帐户密钥的列表。
@@ -342,9 +342,20 @@ web.config 设置作为环境变量传递给 Node，并再由 Azure SDK 进行�
 
 1. 下载并提取 [Twitter Bootstrap](http://getbootstrap.com/) 的文件。 将 **bootstrap.min.css** 文件从 **bootstrap\\dist\\css** 文件夹复制到 tasklist 应用程序的 **public\\stylesheets** 目录中。
 2. 在 **views** 文件夹中，用文本编辑器打开 **layout.jade** 文件并将其内容替换为以下代码：
-
-    doctype html  html    head      title= title      link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')      link(rel='stylesheet', href='/stylesheets/style.css')    body.app      nav.navbar.navbar-default        div.navbar-header          a.navbar-brand(href='/') My Tasks      block content
-
+ 
+```jade
+    doctype html
+    html
+      head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+      body.app
+        nav.navbar.navbar-default
+          div.navbar-header
+            a.navbar-brand(href='/') My Tasks
+        block content
+```
 3. 保存 **layout.jade** 文件。
 
 ### <a name="running-the-application-in-the-emulator"></a>在模拟器中运行应用程序

@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 门户中发布内容 | Microsoft Docs"
-description: "本教程逐步演示如何在 Azure 门户中发布内容。"
+title: 在 Azure 门户中发布内容 | Microsoft Docs
+description: 本教程逐步演示如何在 Azure 门户中发布内容。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 92c364eb-5a5f-4f4e-8816-b162c031bb40
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 6759d3f49e15a3b01022df318a83563ad6bd859f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 6fec9b21e8612376dced6af9da7304f4c2b1a93f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="publish-content-in-the-azure-portal"></a>在 Azure 门户中发布内容
 > [!div class="op_single_selector"]
@@ -36,20 +36,20 @@ ms.lasthandoff: 12/21/2017
 
 若要为用户提供一个可用来流式传输内容或下载内容的 URL，首先必须通过创建定位符来发布资产。 通过定位符，可访问资产文件。 Azure 媒体服务支持两种类型的定位符： 
 
-* **流式处理 (OnDemandOrigin) 定位符**。 流式处理定位符用于自适应流式处理。 自适应流式处理的示例包括 Apple HTTP Live Streaming (HLS)、Microsoft 平滑流式处理，以及经 HTTP 的动态自适应流式处理（DASH，也称 MPEG-DASH）。 要创建流式处理定位符，资产必须包括一个 .ism 文件。 
+* **流式处理 (OnDemandOrigin) 定位符**。 流式处理定位符用于自适应流式处理。 自适应流式处理的示例包括 Apple HTTP Live Streaming (HLS)、Microsoft 平滑流式处理，以及经 HTTP 的动态自适应流式处理（DASH，也称 MPEG-DASH）。 要创建流式处理定位符，资产必须包括一个 .ism 文件。 例如，http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest。
 * **渐进式（共享访问签名）定位符**。 渐进式定位符用于通过渐进式下载来传输视频。
 
 要生成 HLS 流 URL，请将 (format=m3u8-aapl) 附加到 URL：
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
+    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
 要生成流式处理 URL 来播放平滑流资产，请使用以下 URL 格式：
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest
+    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest
 
 要生成 MPEG DASH 流式处理 URL，请将 (format=mpd-time-csf) 附加到 URL：
 
-    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
+    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
 
 共享访问签名 URL 格式如下：
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 12/21/2017
 2. 选择“设置” > “资产”。 选择想要发布的资产。
 3. 选择“发布”按钮。
 4. 选择定位符类型。
-5. 选择“添加”。
+5. 选择 **添加** 。
    
     ![发布视频](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 

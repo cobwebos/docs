@@ -1,10 +1,10 @@
 ---
-title: "将 Cassandra 数据导入 Azure Cosmos DB | Microsoft 文档"
-description: "了解如何使用 CQL Copy 命令将 Cassandra 数据复制到 Azure Cosmos DB。"
+title: 将 Cassandra 数据导入 Azure Cosmos DB | Microsoft 文档
+description: 了解如何使用 CQL Copy 命令将 Cassandra 数据复制到 Azure Cosmos DB。
 services: cosmos-db
 author: govindk
-manager: jhubbard
-documentationcenter: 
+manager: kfile
+documentationcenter: ''
 ms.assetid: eced5f6a-3f56-417a-b544-18cf000af33a
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: 21168d0862cfdaaaced60fa80a2dc04859f49550
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 64f60e6beb5451d8f5acd382ca8e5672a2d096f6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cosmos-db-import-cassandra-data"></a>Azure Cosmos DB：导入 Cassandra 数据
 

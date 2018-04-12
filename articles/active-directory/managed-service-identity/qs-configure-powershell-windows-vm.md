@@ -1,11 +1,11 @@
 ---
-title: "如何使用 PowerShell 在 Azure VM 上配置 MSI"
-description: "分步说明如何使用 PowerShell 在 Azure VM 上配置托管服务标识 (MSI)。"
+title: 如何使用 PowerShell 在 Azure VM 上配置 MSI
+description: 分步说明如何使用 PowerShell 在 Azure VM 上配置托管服务标识 (MSI)。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 42c361ac69122d00df290f4c3c2eb2cfeeb9eb47
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 76ea24a658c728aebd15be55cc0c8dfca27f01ec
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>使用 PowerShell 配置 VM 托管服务标识 (MSI)
 
@@ -40,9 +40,9 @@ ms.lasthandoff: 03/08/2018
 1. 请参阅以下 Azure VM 快速入门之一，仅完成必要部分（“登录到 Azure”、“创建资源组”、“创建网络组”、“创建 VM”）。 
 
    > [!IMPORTANT] 
-   > 转到“创建 VM”部分时，需要对 [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvm) cmdlet 语法稍做修改。 请务必添加 `-IdentityType "SystemAssigned"` 参数，以便为 VM 预配 MSI，例如：
+   > 转到“创建 VM”部分时，需要对 [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvm) cmdlet 语法稍做修改。 请务必添加 `-AssignIdentity "SystemAssigned"` 参数，以便为 VM 预配 MSI，例如：
    >  
-   > `$vmConfig = New-AzureRmVMConfig -VMName myVM -IdentityType "SystemAssigned" ...`
+   > `$vmConfig = New-AzureRmVMConfig -VMName myVM -AssignIdentity "SystemAssigned" ...`
 
    - [使用 PowerShell 创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-powershell.md)
    - [使用 PowerShell 创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-powershell.md)
@@ -66,11 +66,11 @@ ms.lasthandoff: 03/08/2018
    Login-AzureRmAccount
    ```
 
-2. 首先，使用 `Get-AzureRmVM` cmdlet 检索 VM 属性。 然后，若要启用 MSI，请在 [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) cmdlet 上使用 `-IdentityType` 开关：
+2. 首先，使用 `Get-AzureRmVM` cmdlet 检索 VM 属性。 然后，若要启用 MSI，请在 [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) cmdlet 上使用 `-AssignIdentity` 开关：
 
    ```powershell
    $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
-   Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm -IdentityType "SystemAssigned"
+   Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity "SystemAssigned"
    ```
 
 3. 在 [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) cmdlet 上使用 `-Type` 参数，添加 MSI VM 扩展。 可以传递“ManagedIdentityExtensionForWindows”或“ManagedIdentityExtensionForLinux”（具体取决于 VM 的类型），并使用 `-Name` 参数为其命名。 `-Settings` 参数指定 OAuth 令牌终结点用于令牌获取的端口。 请务必指定正确的 `-Location` 参数，以匹配现有 VM 的位置：

@@ -1,11 +1,11 @@
 ---
-title: "分析 Azure CDN 中的边缘节点性能 | Microsoft Docs"
-description: "分析 Microsoft Azure CDN 中的边缘节点性能。 “边缘性能分析”为 CDN 提供详尽的信息流量和带宽使用情况。"
+title: 分析 Azure CDN 中的边缘节点性能 | Microsoft Docs
+description: 分析 Microsoft Azure CDN 中的边缘节点性能。 “边缘性能分析”为 CDN 提供详尽的信息流量和带宽使用情况。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8cc596a7-3e01-4f76-af7b-a05a1421517e
 ms.service: cdn
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: ad285b4e2226c85859acb22ba214cc44c77c08e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>分析 Microsoft Azure CDN 中的边缘节点性能
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -53,7 +53,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
    
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-edge-performance/cdn-manage-btn.png)
    
-    随即 CDN 管理门户打开。
+    CDN 管理门户打开。
 2. 将鼠标悬停在“**分析**”选项卡，然后悬停在“**边缘性能分析**”浮出控件。  单击“**仪表板**”。
    
     将显示边缘节点分析仪表板。
@@ -116,7 +116,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
 | 字段 | 说明 |
 | --- | --- |
 | 传输速率 |表示内容从 CDN 传输到请求者的平均速率。 |
-| 持续时间 |表示将资产传送给请求者（例如，Web 浏览器）所需的平均时间（以毫秒为单位）。 |
+| Duration |表示将资产传送给请求者（例如，Web 浏览器）所需的平均时间（以毫秒为单位）。 |
 | 压缩请求速率 |表示以压缩格式从 CDN（边缘服务器）传递到请求者（例如，Web 浏览器）的命中数的百分比。 |
 | 4xx 错误率 |表示生成 4xx 状态代码的命中数的百分比。 |
 | 5xx 错误率 |表示生成 5xx 状态代码的命中数的百分比。 |
@@ -141,7 +141,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
    
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-edge-performance/cdn-manage-btn.png)
    
-    随即 CDN 管理门户打开。
+    CDN 管理门户打开。
 2. 将鼠标悬停在“**分析**”选项卡，然后悬停在“**边缘性能分析**”浮出控件。  单击“**HTTP 大型对象**”。
    
     将显示边缘节点分析报告屏幕。

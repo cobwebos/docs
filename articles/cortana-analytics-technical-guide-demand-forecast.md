@@ -1,8 +1,8 @@
 ---
-title: "能源需求预测技术指南 | Microsoft Docs"
-description: "Microsoft Cortana Intelligence 中用于预测能源需求的解决方案模板技术指南。"
+title: 能源需求预测技术指南 | Microsoft Docs
+description: Microsoft Cortana Intelligence 中用于预测能源需求的解决方案模板技术指南。
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yijichen
 manager: ilanr9
 editor: yijichen
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
 ms.openlocfilehash: bb3520d36e4c34c752fe388f3126da285e2161cd
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板技术指南
 ## <a name="overview"></a>**概述**

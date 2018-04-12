@@ -1,11 +1,11 @@
 ---
-title: "StorSimple 8000 系列解决方案概述 | Microsoft 文档"
-description: "介绍 StorSimple 分层、设备、虚拟设备、服务和存储管理，并介绍了 StorSimple 中使用的关键术语。"
+title: StorSimple 8000 系列解决方案概述 | Microsoft 文档
+description: 介绍 StorSimple 分层、设备、虚拟设备、服务和存储管理，并介绍了 StorSimple 中使用的关键术语。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7144d218-db21-4495-88fb-e3b24bbe45d1
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
 ms.openlocfilehash: 10f4b6ec29c2d9539fa7fe61c96581755e630822
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合云存储解决方案
 ## <a name="overview"></a>概述

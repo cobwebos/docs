@@ -1,13 +1,13 @@
 ---
-title: "将经典 VM 迁移到 ARM 托管磁盘 VM |Microsoft Docs"
-description: "将单个 Azure VM 从经典部署模型迁移到 Resource Manager 部署模型中的托管磁盘。"
+title: 将经典 VM 迁移到 ARM 托管磁盘 VM |Microsoft Docs
+description: 将单个 Azure VM 从经典部署模型迁移到 Resource Manager 部署模型中的托管磁盘。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 82389834d85981c0ed71bdcc891fbfdbe1377654
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1241f893ca69e3ddaf464e66943caa2697e6d8e7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>手动将经典 VM 从 VHD 迁移到新的 ARM 托管磁盘 VM 
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 本部分有助于在 VM 和磁盘类型方面做出最佳决策。
 
 
-### <a name="location"></a>位置
+### <a name="location"></a>Location
 
 选择 Azure 托管磁盘的可用位置。 如果要迁移到高级托管磁盘，还请确保高级存储在计划迁移到的目标区域中可用。 有关可用位置的最新信息，请参阅 [Azure 服务（按区域）](https://azure.microsoft.com/regions/#services)。
 

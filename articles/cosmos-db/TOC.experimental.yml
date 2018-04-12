@@ -6,8 +6,6 @@ items:
     items:
       - name: 关于 Azure Cosmos DB
         href: introduction.md
-      - name: 文档试验
-        href: experiment.experimental.md
   - name: 快速入门
     expanded: true
     items:
@@ -80,10 +78,10 @@ items:
       - name: Throughput
         href: request-units.md
       - name: TCO
-        href: 'https://aka.ms/documentdb-tco-paper'
+        href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: 无服务器的数据库
         href: serverless-computing-database.md
-      - name: “安全”
+      - name: 安全
         href: database-security.md
         items:
           - name: 静态加密
@@ -200,6 +198,8 @@ items:
                 items:
                   - name: 性能测试
                     href: performance-testing.md
+                  - name: 异步 Java 性能提示
+                    href: performance-tips-async-java.md
                   - name: .NET 性能提示
                     href: performance-tips.md
                   - name: Java 性能提示
@@ -217,17 +217,17 @@ items:
                   - name: 使用逻辑应用进行应用程序日志记录
                     href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
                   - name: 绑定到 Azure Functions
-                    href: ../azure-functions/functions-bindings-documentdb.md
+                    href: ../azure-functions/functions-bindings-cosmosdb.md
                   - name: 与 Azure 搜索集成
-                    href: ../search/search-howto-index-documentdb.md
+                    href: ../search/search-howto-index-cosmosdb.md
                   - name: 使用 Azure 数据工厂移动数据
                     href: ../data-factory/connector-azure-cosmos-db.md
                   - name: 使用 Azure 流分析分析实时数据
-                    href: '../stream-analytics/stream-analytics-define-outputs.md#documentdb'
+                    href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
                   - name: 使用逻辑应用获取更改的 HL7 FHIR 记录
                     href: change-feed-hl7-fhir-logic-apps.md
                   - name: 实时处理传感器数据
-                    href: ../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md
+                    href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
                   - name: 使用 Power BI 直观显示数据
                     href: powerbi-visualize.md
                   - name: 将 ODBC 驱动程序用于数据可视化
@@ -263,7 +263,7 @@ items:
               - name: 与架构无关的索引文件
                 href: 'http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf'
               - name: SQL 演练
-                href: 'https://www.documentdb.com/sql/demo'
+                href: 'https://aka.ms/cosmos-db-playground'
       - name: MongoDB API 文档
         items:
           - name: 概述

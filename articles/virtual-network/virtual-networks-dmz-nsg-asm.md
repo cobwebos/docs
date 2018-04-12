@@ -1,11 +1,11 @@
 ---
-title: "Azure 外围网络示例 – 使用 NSG 构建简单的外围网络 | Microsoft 文档"
-description: "使用网络安全组 (NSG) 构建外围网络"
+title: Azure 外围网络示例 – 使用 NSG 构建简单的外围网络 | Microsoft 文档
+description: 使用网络安全组 (NSG) 构建外围网络
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: f8622b1d-c07d-4ea6-b41c-4ae98d998fff
 ms.service: virtual-network
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: ed172d552e1e4c9ee27c58abcd7ad2d98df21579
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>示例 1 - 将 NSG 与经典 PowerShell 配合使用构建简单的外围网络
 [返回安全边界最佳实践页面][HOME]
@@ -79,7 +79,7 @@ ms.lasthandoff: 12/21/2017
 
 将这些规则绑定到每个子网后，如果有从 Internet 到 Web 服务器的入站 HTTP 请求，将应用规则 3（允许）和规则 5（拒绝），但由于规则 3 具有较高的优先级，因此只应用规则 3 并忽略规则 5。 这样就会允许 HTTP 请求传往 Web 服务器。 如果相同的流量尝试传往 DNS01 服务器，则会先应用规则 5（拒绝），因此不允许该流量传递到服务器。 规则 6（拒绝）阻止前端子网与后端子网对话（规则 1 和 4 允许的流量除外），此规则集可在攻击者入侵前端上的 Web 应用程序时保护后端网络，攻击者只能对后端的“受保护”网络进行有限访问（只能访问 AppVM01 服务器上公开的资源）。
 
-有一个默认出站规则可允许流量外流到 Internet。 在此示例中，我们允许出站流量，且未修改任何出站规则。 要锁定两个方向的流量，需要使用用户定义的路由，[安全边界最佳实践页][HOME]中的“示例 3”将对此进行介绍。
+有一个默认出站规则可允许流量外流到 Internet。 在本示例中，我们允许出站流量，且未修改任何出站规则。 要锁定两个方向的流量，需要使用用户定义的路由，[安全边界最佳实践页][HOME]中的“示例 3”将对此进行介绍。
 
 下面更详细地讨论了每个规则（**注意**：以下列表中以美元符号开头的任何项（例如 $NSGName）均为本文档“参考”部分的脚本中的用户定义变量）：
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 12/21/2017
 2. 本示例中的第一个规则允许所有内部网络之间的 DNS 流量发往后端子网上的 DNS 服务器。 该规则有一些重要参数：
    
    * “类型”表示此规则要对哪个方向的流量生效。 该方向是从子网或虚拟机的角度定义的（取决于此 NSG 绑定到的位置）。 因此，如果 Type 是“Inbound”并且流量进入子网，此规则将适用，而离开子网的流量则不受此规则影响。
-   * “优先级”设置流量的评估顺序。 编号越低，优先级就越高。 将某个规则应用于特定的流量后，不再处理其他规则。 因此，如果优先级为 1 的规则允许流量，优先级为 2 的规则拒绝流量，并将这两个规则同时应用于流量，则允许流量流动（规则 1 的优先级更高，因此将发生作用，并且不再应用其他规则）。
+   * “优先级”设置流量的评估顺序。 编号越低，优先级越高。 将某个规则应用于特定的流量后，不再处理其他规则。 因此，如果优先级为 1 的规则允许流量，优先级为 2 的规则拒绝流量，并将这两个规则同时应用于流量，则允许流量流动（规则 1 的优先级更高，因此将发生作用，并且不再应用其他规则）。
    * “Action”表示是要阻止还是允许受此规则影响的流量。
 
     ```PowerShell    

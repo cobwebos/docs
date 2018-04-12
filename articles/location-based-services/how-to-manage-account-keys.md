@@ -1,19 +1,18 @@
 ---
-title: "如何管理 Azure Location Based Services 帐户和密钥 | Microsoft 文档"
-description: "可以使用 Azure 门户管理你的 Azure Location Based Services 帐户以及你的访问密钥。"
+title: 如何管理 Azure Location Based Services 帐户和密钥 | Microsoft 文档
+description: 可以使用 Azure 门户管理你的 Azure Location Based Services 帐户以及你的访问密钥。
 services: location-based-services
-keywords: "未咨询 SEO 专家的情况下，不要添加或编辑关键字。"
 author: kgremban
 ms.author: kgremban
 ms.date: 11/14/2017
 ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: 8ea7beae054157800ee404cf237772d0677574ca
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 38466a741bc836a6f13db83fd939d178fbbc1a7b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-manage-your-azure-location-based-services-account-and-keys"></a>如何管理 Azure Location Based Services 帐户和密钥
 

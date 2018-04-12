@@ -1,10 +1,10 @@
 ---
-title: "创建自定义 Linux 虚拟机 | Microsoft Docs"
-description: "了解如何从 Azure 门户使用经典部署模型创建自定义 Linux 虚拟机。"
+title: 创建自定义 Linux 虚拟机 | Microsoft Docs
+description: 了解如何从 Azure 门户使用经典部署模型创建自定义 Linux 虚拟机。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ROBOTS: NOINDEX
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: e82350f1895bd0c4bca8bb38cb5c32302623e9ff
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: e84a39a2f9f62769ce2acfa74a38662aac5b2f4c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-a-custom-virtual-machine-running-linux"></a>创建运行 Linux 的自定义虚拟机
 > [!IMPORTANT] 

@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Snapshot Manager 卷组 | Microsoft Docs"
-description: "介绍如何使用 StorSimple Snapshot Manager MMC 管理单元创建和管理卷组。"
+title: StorSimple Snapshot Manager 卷组 | Microsoft Docs
+description: 介绍如何使用 StorSimple Snapshot Manager MMC 管理单元创建和管理卷组。
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7
 ms.service: storsimple
 ms.devlang: NA
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.openlocfilehash: 6067a88cd42d29c3d2f4b74580095424de77561e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>使用 StorSimple Snapshot Manager 创建和管理卷组
 ## <a name="overview"></a>概述
@@ -49,8 +49,8 @@ ms.lasthandoff: 10/11/2017
 
 | 结果列 | 说明 |
 |:--- |:--- |
-| Name |“**名称**”列包含卷组的名称。 |
-| 应用程序 |“**应用程序**”列显示在 Windows 主机上当前已安装且正在运行的 VSS 编写器的数目。 |
+| 名称 |“**名称**”列包含卷组的名称。 |
+| Application |“**应用程序**”列显示在 Windows 主机上当前已安装且正在运行的 VSS 编写器的数目。 |
 | 选定 |“**选定**”列显示卷组中包含的卷数。 零 (0) 表示没有任何应用程序与卷组中的卷相关联。 |
 | 已导入 |“**已导入**”列显示已导入卷数。 设置为“True”时，此列指示卷组是从 Azure 门户导入的，而不是在 StorSimple Snapshot Manager 中创建的。 |
 

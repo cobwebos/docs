@@ -1,11 +1,11 @@
 ---
-title: "在 Linux VM 上运行 OpenFOAM 与 HPC Pack | Microsoft Docs"
-description: "在 Azure 上部署 Microsoft HPC Pack 群集，并在多个 Linux 计算节点上跨 RDMA 网络运行 OpenFOAM 作业。"
+title: 在 Linux VM 上运行 OpenFOAM 与 HPC Pack | Microsoft Docs
+description: 在 Azure 上部署 Microsoft HPC Pack 群集，并在多个 Linux 计算节点上跨 RDMA 网络运行 OpenFOAM 作业。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: c0bb1637-bb19-48f1-adaa-491808d3441f
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: ef124a8983fa112d499252460bff9ed2fcccc02b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f43790d3495e1c09730e90b5077ec840731a7d83
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>在 Azure 中的 Linux RDMA 群集上运行 OpenFoam 和 Microsoft HPC Pack
 本文介绍在 Azure 虚拟机中运行 OpenFoam 的一种方法。 此处，会在 Azure 上部署一个具有 Linux 计算节点的 Microsoft HPC Pack 群集，并使用 Intel MPI 来运行 [OpenFoam](http://openfoam.com/) 作业。 可以使用支持 RDMA 的 Azure VM 作为计算节点，使计算节点能够通过 Azure RDMA 网络进行通信。 在 Azure 中运行 OpenFoam 的其他方法包括使用 Marketplace 中提供的经过完全配置的商用映像（例如 UberCloud 的 [OpenFoam 2.3 on CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/)），以及在 [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) 上运行该产品。 
@@ -36,7 +36,7 @@ Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行大型 H
 > 
 
 ## <a name="prerequisites"></a>先决条件
-* **包含支持 RDMA 的 Linux 计算节点的 HPC Pack 群集** - 使用 [Azure Resource Manager 模板](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)或 [Azure PowerShell 脚本](hpcpack-cluster-powershell-script.md)，部署包含 A8、A9、H16r 或 H16rm大小 Linux 计算节点的 HPC Pack 群集。 有关任一选项的先决条件和步骤，请参阅 [Get started with Linux compute nodes in an HPC Pack cluster in Azure](hpcpack-cluster.md)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）。 如果选择 Powershell 脚本部署选项，请参阅本文末尾的示例文件中的示例配置文件。 使用此配置可以部署基于 Azure 的 HPC Pack 群集，群集中包含一个 A8 大小的 Windows Server 2012 R2 头节点和两个 A8 大小的 SUSE Linux Enterprise Server 12 计算节点。 请将订阅和服务名称替换为相应值。 
+* **包含支持 RDMA 的 Linux 计算节点的 HPC Pack 群集** - 使用 [Azure 资源管理器模板](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)或 [Azure PowerShell 脚本](hpcpack-cluster-powershell-script.md)，部署包含 A8、A9、H16r 或 H16rm 大小 Linux 计算节点的 HPC Pack 群集。 有关任一选项的先决条件和步骤，请参阅 [Get started with Linux compute nodes in an HPC Pack cluster in Azure](hpcpack-cluster.md)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）。 如果选择 Powershell 脚本部署选项，请参阅本文末尾的示例文件中的示例配置文件。 使用此配置可以部署基于 Azure 的 HPC Pack 群集，群集中包含一个 A8 大小的 Windows Server 2012 R2 头节点和两个 A8 大小的 SUSE Linux Enterprise Server 12 计算节点。 请将订阅和服务名称替换为相应值。 
   
   **其他须知项**
   
@@ -297,7 +297,7 @@ clusrun /nodegroup:LinuxNodes cp /openfoam/settings.sh /etc/profile.d/
 ## <a name="submit-an-openfoam-job"></a>提交 OpenFOAM 作业
 现在，可以在 HPC 群集管理器中提交作业。 部分作业任务需要将脚本 hpcimpirun.sh 传递到命令行中。
 
-1. 连接到群集头节点，然后启动 HPC 群集管理器。
+1. 连接到群集头节点，并启动 HPC 群集管理器。
 2. 在“资源管理”中，确保 Linux 计算节点处于“联机”状态。 如果节点未处于联机状态，请选择它们并单击“联机”。
 3. 在“作业管理”中，单击“新作业”。
 4. 为作业输入一个名称，如 *sloshingTank3D*。

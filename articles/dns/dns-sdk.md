@@ -1,6 +1,6 @@
 ---
-title: "使用.NET SDK 在 Azure DNS 中创建 DNS 区域和记录集 | Microsoft Docs"
-description: "如何使用 .NET SDK 在 Azure DNS 中创建 DNS 区域和记录集。"
+title: 使用.NET SDK 在 Azure DNS 中创建 DNS 区域和记录集 | Microsoft Docs
+description: 如何使用 .NET SDK 在 Azure DNS 中创建 DNS 区域和记录集。
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: jonatul
 ms.openlocfilehash: c0fb0be8da1c0ca48a4d43ea027d30a0bc17fe30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>使用 .NET SDK 创建 DNS 区域和记录集
 
@@ -69,7 +69,7 @@ dnsClient.SubscriptionId = subscriptionId;
 
 ## <a name="create-or-update-a-dns-zone"></a>创建或更新 DNS 区域
 
-若要创建 DNS 区域，首先创建一个 "Zone" 对象来包含 DNS 区域参数。 因为 DNS 区域未链接到某一特定区域，此位置会被设置为 'global'。 在此示例中，还会将 [Azure Resource Manager“标记”](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)添加到此区域。
+若要创建 DNS 区域，首先创建一个 "Zone" 对象来包含 DNS 区域参数。 因为 DNS 区域未链接到某一特定区域，此位置会被设置为 'global'。 在此示例中，还会将 [Azure 资源管理器“标记”](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)添加到此区域。
 
 要实际创建或更新 Azure DNS 中的区域，会将包含区域参数的区域对象传递给 *DnsManagementClient.Zones.CreateOrUpdateAsyc* 方法。
 

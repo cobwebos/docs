@@ -1,12 +1,12 @@
 ---
-title: "用作备份目标的 StorSimple 8000 系列与 Backup Exec 的集成 | Microsoft 文档"
-description: "介绍如何使用 Veritas Backup Exec 配置 StorSimple 备份目标。"
+title: 用作备份目标的 StorSimple 8000 系列与 Backup Exec 的集成 | Microsoft 文档
+description: 介绍如何使用 Veritas Backup Exec 配置 StorSimple 备份目标。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: harshakirank
 manager: matd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
 ms.openlocfilehash: a28b46e10bbdd5331cc665fad3f80523b3aa8a58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>用作备份目标的 StorSimple 与 Backup Exec 的集成
 

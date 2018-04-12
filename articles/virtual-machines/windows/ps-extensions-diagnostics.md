@@ -1,11 +1,11 @@
 ---
-title: "在 Windows VM 上使用 Azure PowerShell 启用诊断 | Microsoft Docs"
+title: 在 Windows VM 上使用 Azure PowerShell 启用诊断 | Microsoft Docs
 services: virtual-machines-windows
-documentationcenter: 
-description: "了解如何使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断"
+documentationcenter: ''
+description: 了解如何使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断
 author: sbtron
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: d0be4a712657edfc516c5f32e66519f5d9486728
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 49c6fe69afdee6a075d9f888f8a2417455bc7e51
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在运行 Windows 的虚拟机中启用 Azure 诊断
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 Azure 诊断是 Azure 中可对部署的应用程序启用诊断数据收集的功能。 可以使用诊断扩展从运行 Windows 的 Azure 虚拟机 (VM) 中收集诊断数据（例如应用程序日志或性能计数器）。 本文介绍如何使用 Windows PowerShell 为 VM 启用诊断扩展。 有关本文所需的先决条件，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>在使用 Resource Manager 部署模型的情况下启用诊断扩展
-通过 Azure Resource Manager 部署模型创建 Windows VM 时，只需将诊断扩展配置添加到 Resource Manager 模板，即可启用该扩展。 请参阅 [Create a Windows virtual machine with monitoring and diagnostics by using the Azure Resource Manager template](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机）。
+通过 Azure 资源管理器部署模型创建 Windows VM 时，只需将诊断扩展配置添加到资源管理器模板，即可启用该扩展。 请参阅[使用 Azure 资源管理器模板创建具有监视和诊断功能的 Windows 虚拟机](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 若要在通过 Resource Manager 部署模型创建的现有 VM 上启用诊断扩展，可按如下所示使用 [Set-AzureRMVMDiagnosticsExtension](/powershell/module/azurerm.compute/set-azurermvmdiagnosticsextension) PowerShell cmdlet。
 

@@ -1,12 +1,12 @@
 ---
-title: "Azure 诊断 1.2 配置架构 | Microsoft Docs"
-description: "只有在用户将 Azure SDK 2.5 与 Azure 虚拟机、虚拟机规模集、Service Fabric 或云服务配合使用时，才相关。"
+title: Azure 诊断 1.2 配置架构 | Microsoft Docs
+description: 只有在用户将 Azure SDK 2.5 与 Azure 虚拟机、虚拟机规模集、Service Fabric 或云服务配合使用时，才相关。
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
 ms.openlocfilehash: 1e9cc6d0950945df8c4fba74d8e1f6196be224f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Azure 诊断 1.2 配置架构
 > [!NOTE]

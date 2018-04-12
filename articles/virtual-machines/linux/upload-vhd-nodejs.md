@@ -1,10 +1,10 @@
 ---
-title: "使用 Azure CLI 1.0 上传自定义 Linux 映像 | Microsoft 文档"
-description: "使用 Resource Manager 部署模型和 Azure CLI 1.0 创建包含自定义 Linux 映像的虚拟硬盘 (VHD) 并将其上传到 Azure。"
+title: 使用 Azure CLI 1.0 上传自定义 Linux 映像 | Microsoft 文档
+description: 使用 Resource Manager 部署模型和 Azure CLI 1.0 创建包含自定义 Linux 映像的虚拟硬盘 (VHD) 并将其上传到 Azure。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
-ms.openlocfilehash: ca4c6cb9296028275b2b032af0c94baabeec1223
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6eb0cae2b70e0cbb9a4fb5fcab3a58d566d0f4d9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image-by-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 上传自定义磁盘映像并从其创建 Linux VM
 本文说明如何使用 Resource Manager 部署模型将虚拟硬盘 (VHD) 上传到 Azure，并从此自定义映像创建 Linux VM。 此功能可让你安装并配置 Linux 分发以满足需求，然后使用该 VHD 快速创建 Azure 虚拟机 (VM)。
@@ -207,7 +207,7 @@ azure vm create myVM -l "WestUS" --resource-group myResourceGroup \
 仍需要指定或根据提示输入 `azure vm create` 命令所需的所有其他参数，例如虚拟网络、公共 IP 地址、用户名和 SSH 密钥。 阅读有关[可用 CLI Resource Manager 参数](../azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)的详细信息。
 
 ### <a name="create-a-vm-using-a-json-template"></a>使用 JSON 模板创建 VM
-Azure Resource Manager 模板是用于定义希望生成的环境的 JavaScript 对象表示法 (JSON) 文件。 这些模板细分为不同的资源提供程序，如计算或网络。 可以使用现有模板，也可以编写自己的模板。 阅读有关[使用 Resource Manager 和模板](../../azure-resource-manager/resource-group-overview.md)的详细信息。
+Azure 资源管理器模板是用于定义希望生成的环境的 JavaScript 对象表示法 (JSON) 文件。 这些模板细分为不同的资源提供程序，如计算或网络。 可以使用现有模板，也可以编写自己的模板。 阅读有关[使用 Resource Manager 和模板](../../azure-resource-manager/resource-group-overview.md)的详细信息。
 
 在模板的 `Microsoft.Compute/virtualMachines` 提供程序中有一个 `storageProfile` 节点，其中包含 VM 的配置详细信息。 需要编辑的两个主要参数为 `image` 和 `vhd` URI，它们指向自定义磁盘映像和新 VM 的虚拟磁盘。 下面显示了使用自定义磁盘映像的 JSON 示例：
 
@@ -227,7 +227,7 @@ Azure Resource Manager 模板是用于定义希望生成的环境的 JavaScript 
           }
 ```
 
-可以使用[此现有模板从自定义映像创建 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)，或阅读有关[创建自己的 Azure Resource Manager 模板](../../azure-resource-manager/resource-group-authoring-templates.md)的信息。 
+可以使用[此现有模板从自定义映像创建 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)，或阅读有关[创建自己的 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)的信息。 
 
 一旦配置了模板，就可以使用 `azure group deployment create` 命令创建 VM。 使用 `--template-uri` 参数指定 JSON 模板的 URI：
 

@@ -1,6 +1,6 @@
 ---
-title: "使用 PowerShell 创建具有本机模式报表服务器的虚拟机 |Microsoft Docs"
-description: "本主题说明并指导完成 SQL Server Reporting Services 本机模式报表服务器在 Azure 虚拟机中的部署和配置。 "
+title: 使用 PowerShell 创建具有本机模式报表服务器的虚拟机 |Microsoft Docs
+description: '本主题说明并指导完成 SQL Server Reporting Services 本机模式报表服务器在 Azure 虚拟机中的部署和配置。 '
 services: virtual-machines-windows
 documentationcenter: na
 author: guyinacube
@@ -16,14 +16,14 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 ms.openlocfilehash: 0b9f12127276f5aa689c4a1d3a5bf9fe645a0fc7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>使用 PowerShell 创建运行本机模式报表服务器的 Azure VM
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[资源管理器和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 本主题说明并指导完成 SQL Server Reporting Services 本机模式报表服务器在 Azure 虚拟机中的部署和配置。 本文档中的步骤使用一系列手动步骤来创建虚拟机以及用于在 VM 上配置 Reporting Services 的 Windows PowerShell 脚本。 配置脚本包括为 HTTP 或 HTTPs 打开防火墙端口。
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 12/11/2017
    * **大小：A3** 是 SQL Server 工作负荷的建议 VM 大小。 如果 VM 仅用作报表服务器，A2 的 VM 大小就足够了，除非报表服务器遇到大量工作负荷。 有关 VM 定价信息，请参阅[虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/)。
    * **新用户名**：将所提供的名称创建为 VM 上的管理员。
    * **新密码**和**确认**。 此密码用于新的管理员帐户并建议使用强密码。
-   * 单击“下一步”。 ![下一步](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
+   * 单击“资源组名称” 的 Azure 数据工厂。 ![下一步](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 7. 在下一页上，编辑以下字段：
    
    * **云服务**：选择“创建新的云服务”。
@@ -160,7 +160,7 @@ ms.lasthandoff: 12/11/2017
     例如，在下图中，VM 名称是 **ssrsnativecloud**，用户名是 **testuser**。
    
     ![登录名包含 VM 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
-2. 在 VM 上，使用管理权限打开 **Windows PowerShell ISE**。 默认情况下，将 PowerShell ISE 安装在 Windows server 2012 上。 建议使用 ISE 而不是标准 Windows PowerShell 窗口，以便可以将脚本粘贴到 ISE，修改脚本，然后运行该脚本。
+2. 在 VM 上，使用管理权限打开 **Windows PowerShell ISE**。 默认情况下，将 PowerShell ISE 安装在 Windows server 2012 上。 建议使用 ISE 而不是标准 Windows PowerShell 窗口，以便将脚本粘贴到 ISE，修改脚本，并运行该脚本。
 3. 在 Windows PowerShell ISE 中，单击“视图”菜单，并单击“显示脚本窗格”。
 4. 复制以下脚本，并将该脚本粘贴到 Windows PowerShell ISE 脚本窗格。
    
@@ -294,7 +294,7 @@ ms.lasthandoff: 12/11/2017
     例如，在下图中，VM 名称是 **ssrsnativecloud**，用户名是 **testuser**。
    
     ![登录名包含 VM 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
-2. 在 VM 上，使用管理权限打开 **Windows PowerShell ISE**。 默认情况下，将 PowerShell ISE 安装在 Windows server 2012 上。 建议使用 ISE 而不是标准 Windows PowerShell 窗口，以便可以将脚本粘贴到 ISE，修改脚本，然后运行该脚本。
+2. 在 VM 上，使用管理权限打开 **Windows PowerShell ISE**。 默认情况下，将 PowerShell ISE 安装在 Windows server 2012 上。 建议使用 ISE 而不是标准 Windows PowerShell 窗口，以便将脚本粘贴到 ISE，修改脚本，并运行该脚本。
 3. 若要允许运行脚本，运行以下 Windows PowerShell 命令：
    
         Set-ExecutionPolicy RemoteSigned
@@ -511,7 +511,7 @@ ms.lasthandoff: 12/11/2017
    
    1. 单击“更改数据库”。
    2. 单击“创建新的报表服务器数据库”，并单击“下一步”。
-   3. 将默认的“服务器名称”保留为 VM 名称，将默认的“身份验证类型”保留为“当前用户”-“集成安全性”。 单击“下一步”。
+   3. 将默认的“服务器名称”保留为 VM 名称，将默认的“身份验证类型”保留为“当前用户”-“集成安全性”。 单击“资源组名称” 的 Azure 数据工厂。
    4. 将默认的“数据库名称”保留为“ReportServer”，然后单击“下一步”。
    5. 将默认的“身份验证类型”保留为“服务凭据”，然后单击“下一步”。
    6. 在“摘要”页上单击“下一步”。
@@ -537,7 +537,7 @@ ms.lasthandoff: 12/11/2017
 如果为非 443 的 HTTPS 配置一个私有端口，请相应地修改下面的脚本。 若要打开 Windows 防火墙上的端口 **443**，请完成下列操作：
 
 1. 使用管理权限打开 Windows PowerShell 窗口。
-2. 如果在 VM 上配置 HTTPS 终结点时使用了非 443 的端口，则更新下面命令中的端口，然后运行命令：
+2. 如果在 VM 上配置 HTTPS 终结点时使用了非 443 的端口，则更新下面命令中的端口，并运行命令：
    
         New-NetFirewallRule -DisplayName “Report Server (TCP on port 443)” -Direction Inbound –Protocol TCP –LocalPort 443
 3. 命令完成后，命令提示符中会显示“Ok”。

@@ -1,13 +1,13 @@
 ---
-title: "备份 Azure Windows VM | Microsoft Docs"
-description: "使用 Azure 备份来备份 Windows VM，从而为其提供保护。"
+title: 备份 Azure Windows VM | Microsoft Docs
+description: 使用 Azure 备份来备份 Windows VM，从而为其提供保护。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9638c7148d4347bb9cbc9e48022037ee6cb983d7
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 12859bf967cf8de1b57ab9dfd5c0bd080806f2eb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="back-up-windows-virtual-machines-in-azure"></a>在 Azure 中备份 Windows 虚拟机
 

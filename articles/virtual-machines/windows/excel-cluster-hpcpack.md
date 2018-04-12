@@ -1,11 +1,11 @@
 ---
-title: "用于 Excel 和 SOA 的 HPC Pack 群集 | Microsoft Docs"
-description: "开始在 Azure 的 HPC Pack 群集上运行大型 Excel 和 SOA 工作负荷"
+title: 用于 Excel 和 SOA 的 HPC Pack 群集 | Microsoft Docs
+description: 开始在 Azure 的 HPC Pack 群集上运行大型 Excel 和 SOA 工作负荷
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,hpc-pack
 ms.assetid: cb6a9abe-caf3-44da-b911-849a50f6cfb3
 ms.service: virtual-machines-windows
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.openlocfilehash: 63babd94fdab15217cfb0757e4cd6efe458a628d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaf26e04fdb38fd76f4ab8211f9fdda8ebafd668
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>开始在 Azure 的 HPC Pack 群集上运行 Excel 和 SOA 工作负荷
-本文介绍如何使用 Azure 快速入门模板或 Azure PowerShell 部署脚本将 Microsoft HPC Pack 2012 R2 群集部署到 Azure 虚拟机。 此群集使用 Azure 应用商店 VM 映像，这些映像根据设计可以通过 HPC Pack 运行 Microsoft Excel 工作负荷或面向服务的体系结构 (SOA) 工作负荷。 可使用群集从本地客户端计算机运行 Excel HPC 和 SOA 服务。 Excel HPC 服务提供 Excel 工作簿卸载和 Excel 用户定义的函数或 UDF。
+本文介绍如何使用 Azure 快速入门模板或 Azure PowerShell 部署脚本将 Microsoft HPC Pack 2012 R2 群集部署到 Azure 虚拟机。 此群集使用 Azure Marketplace VM 映像，这些映像根据设计可以通过 HPC Pack 运行 Microsoft Excel 工作负荷或面向服务的体系结构 (SOA) 工作负荷。 可使用群集从本地客户端计算机运行 Excel HPC 和 SOA 服务。 Excel HPC 服务提供 Excel 工作簿卸载和 Excel 用户定义的函数或 UDF。
 
 > [!IMPORTANT] 
 > 本文以 HPC Pack 2012 R2 的功能、模板和脚本为基础。 HPC Pack 2016 当前不支持此方案。
@@ -40,14 +40,14 @@ ms.lasthandoff: 10/11/2017
 * **核心配额** - 可能需要增加核心配额，尤其是在部署多个多核 VM 大小的群集节点时。 如果使用的是 Azure 快速入门模板，Resource Manager 中的核心配额基于 Azure 区域。 这种情况下，可能需要增加特定区域的配额。 请参阅 [Azure 订阅限制、配额和约束](../../azure-subscription-service-limits.md)。 若要增加配额，可免费[建立联机客户支持请求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。
 * **Microsoft Office 许可证** - 如果使用包含 Microsoft Excel 的 Marketplace HPC Pack 2012 R2 VM 映像部署计算节点，将安装 Microsoft Excel 专业增强版 2013 的 30 天评估版。 评估期以后，需要提供有效的 Microsoft Office 许可证来激活 Excel，才能继续运行工作负荷。 请参阅本文后面部分的 [Excel 激活](#excel-activation)。 
 
-## <a name="step-1-set-up-an-hpc-pack-cluster-in-azure"></a>步骤 1。 在 Azure 中设置 HPC Pack 群集
+## <a name="step-1-set-up-an-hpc-pack-cluster-in-azure"></a>步骤 1. 在 Azure 中设置 HPC Pack 群集
 本文介绍两种设置 HPC Pack 2012 R2 群集的选项：第一种方法使用 Azure 快速入门模板和 Azure 门户；第二种方法使用 Azure PowerShell 部署脚本。
 
 ### <a name="option-1-use-a-quickstart-template"></a>选项 1. 使用快速入门模板
 使用 Azure 快速入门模板可在 Azure 门户中快速部署 HPC Pack 群集。 在门户中打开该模板时，会显示简单的 UI，可以在其中输入群集的设置。 下面是相关步骤。 
 
 > [!TIP]
-> 如果需要，可以使用 [Azure 应用商店模板](https://portal.azure.com/?feature.relex=*%2CHubsExtension#create/microsofthpc.newclusterexcelcn)专门为 Excel 工作负荷创建类似的群集。 步骤与下文中的内容稍有不同。
+> 如果需要，可以使用 [Azure Marketplace 模板](https://portal.azure.com/?feature.relex=*%2CHubsExtension#create/microsofthpc.newclusterexcelcn)专门为 Excel 工作负荷创建类似的群集。 步骤与下文中的内容稍有不同。
 > 
 > 
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 10/11/2017
    ![输入参数][parameters-new-portal]
    
    > [!NOTE]
-   > 将在 Windows Server 2012 R2 上从 HPC Pack 2012 R2 的[最新应用商店映像](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)自动创建头节点 VM。 当前，该映像基于 HPC Pack 2012 R2 Update 3。
+   > 将在 Windows Server 2012 R2 上从 HPC Pack 2012 R2 的[最新 Marketplace 映像](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)自动创建头节点 VM。 当前，该映像基于 HPC Pack 2012 R2 Update 3。
    > 
    > 将从所选计算节点系列的最新映像创建计算节点 VM。 为包含 Microsoft Excel Professional Plus 2013 的评估版本的最新 HPC Pack 计算节点映像选择 **ComputeNodeWithExcel** 选项。 若要为常规 SOA 会话或 Excel UDF 卸载部署群集，请选择 **ComputeNode** 选项（不会安装 Excel）。
    > 
@@ -72,9 +72,9 @@ ms.lasthandoff: 10/11/2017
    
    c. 为群集创建资源组，如 *hpc01RG*。
    
-   d.单击“下一步”。 选择资源组的位置，例如“美国中部”。
+   d. 选择资源组的位置，例如“美国中部”。
    
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 在“法律条款”页上，查看条款。 如果同意条款，请单击“购买”。 在完成为模板设置值后，单击“创建”。
+   e. 在“法律条款”页上，查看条款。 如果同意条款，请单击“购买”。 在完成为模板设置值后，单击“创建”。
 4. 在部署完成时（通常需要花费大约 30 分钟），从群集头节点导出群集证书文件。 在稍后的步骤中，会在客户端计算机上导入此公用证书，为安全 HTTP 绑定提供服务器端身份验证。
    
    a. 在 Azure 门户中，通过远程桌面转到仪表板，选择头节点，然后在页面顶部单击“连接”以进行连接。
@@ -86,7 +86,7 @@ ms.lasthandoff: 10/11/2017
    ![导出证书][cert]
 
 ### <a name="option-2-use-the-hpc-pack-iaas-deployment-script"></a>选项 2. 使用 HPC Pack IaaS 部署脚本
-HPC Pack IaaS 部署脚本提供了另一种通用的方法来部署 HPC Pack 群集。 它会在经典部署模型中创建一个群集，该模板使用 Azure Resource Manager 部署模型。 此外，该脚本与 Azure 全球或 Azure 中国服务中的订阅兼容。
+HPC Pack IaaS 部署脚本提供了另一种通用的方法来部署 HPC Pack 群集。 它会在经典部署模型中创建一个群集，该模板使用 Azure 资源管理器部署模型。 此外，该脚本与 Azure 全球或 Azure 中国服务中的订阅兼容。
 
 **其他先决条件**
 

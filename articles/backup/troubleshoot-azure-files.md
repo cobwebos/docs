@@ -3,25 +3,24 @@ title: 排查 Azure 文件备份问题
 description: 本文提供在保护 Azure 文件共享时所发生的问题的故障排除信息。
 services: backup
 ms.service: backup
-keywords: 未咨询 SEO 专家的情况下，请不要添加或编辑关键字。
 author: markgalioto
 ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: c803118ccdafa8db0e8f8ddee608f60311f65e05
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2e067e0a1f673480bc08abfee61d2b1b2c92f885
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-problems-backing-up-azure-files"></a>排查 Azure 文件备份问题
 可参考下表中所列信息，排查使用 Azure 文件备份时遇到的问题和错误。
 
 ## <a name="preview-boundaries"></a>预览版边界
 Azure 文件备份为预览版。 Azure 文件共享不支持以下备份场景：
-- 在存储帐户中使用[区域冗余存储](../storage/common/storage-redundancy.md#zone-redundant-storage) (ZRS) 或[读取访问权限异地冗余存储](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) 复制保护 Azure 文件共享。
+- 在存储帐户中使用[区域冗余存储](../storage/common/storage-redundancy-zrs.md) (ZRS) 或[读取访问权限异地冗余存储](../storage/common/storage-redundancy-grs.md) (RA-GRS) 复制保护 Azure 文件共享。
 - 保护已启用虚拟网络的存储帐户中的 Azure 文件共享。
 - 使用 PowerShell 或 CLI 备份 Azure 文件共享。
 

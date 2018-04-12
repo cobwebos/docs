@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 上运行 MariaDB (MySQL) 群集 | Microsoft 文档"
-description: "在 Azure 虚拟机上创建 MariaDB + Galera MySQL 群集"
+title: 在 Azure 上运行 MariaDB (MySQL) 群集 | Microsoft 文档
+description: 在 Azure 虚拟机上创建 MariaDB + Galera MySQL 群集
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: sabbour
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: d0d21937-7aac-4222-8255-2fdc4f2ea65b
 ms.service: virtual-machines-linux
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/15/2015
 ms.author: asabbour
-ms.openlocfilehash: 53e9bf18b26338212411ea7c4f260eb308486738
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5438bfb75abaac2bed55a76b38f69790f7fc87fa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="mariadb-mysql-cluster-azure-tutorial"></a>MariaDB (MySQL) 群集：Azure 教程
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure Resource Manager](../../../resource-manager-deployment-model.md) 和经典。 本文介绍经典部署模型。 Microsoft 建议大多数新部署使用 Azure Resource Manager 模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure 资源管理器](../../../resource-manager-deployment-model.md)和经典。 本文介绍经典部署模型。 Microsoft 建议大多数新部署使用 Azure 资源管理器模型。
 
 > [!NOTE]
-> MariaDB Enterprise 群集现已在 Azure 应用商店中推出。 这款新产品可在 Azure Resource Manager 上自动部署 MariaDB Galera 群集。 应从 [Azure 应用商店](https://azure.microsoft.com/en-us/marketplace/partners/mariadb/cluster-maxscale/)使用这款新产品。
+> MariaDB Enterprise 群集现已在 Azure Marketplace 中推出。 这款新产品可在 Azure 资源管理器上自动部署 MariaDB Galera 群集。 应从 [Azure Marketplace](https://azure.microsoft.com/en-us/marketplace/partners/mariadb/cluster-maxscale/) 使用这款新产品。
 >
 >
 
@@ -92,10 +92,10 @@ ms.lasthandoff: 10/11/2017
     c. 创建装入点目录。
 
               mkdir /mnt/data
-    d.单击“下一步”。 检索新创建的 RAID 设备的 UUID。
+    d. 检索新创建的 RAID 设备的 UUID。
 
               blkid | grep /dev/md0
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 编辑 /etc/fstab。
+    e. 编辑 /etc/fstab。
 
               vi /etc/fstab
     f. 添加设备，以便在重新启动时自动装载，并将 UUID 替换为前面从 **blkid** 命令获取的值。
@@ -121,7 +121,7 @@ ms.lasthandoff: 10/11/2017
     c. 为避免冲突，请删除现有后缀和 mariadb-libs。
 
            yum remove postfix mariadb-libs-*
-    d.单击“下一步”。 安装包含 Galera 的 MariaDB。
+    d. 安装包含 Galera 的 MariaDB。
 
            yum install MariaDB-Galera-server MariaDB-client galera
 
@@ -158,7 +158,7 @@ ms.lasthandoff: 10/11/2017
            GRANT ALL PRIVILEGES ON *.* TO 'cluster'@'%' IDENTIFIED BY 'p@ssw0rd' WITH GRANT OPTION; FLUSH PRIVILEGES;
            exit
 
-   d.单击“下一步”。 停止 MySQL。
+   d. 停止 MySQL。
 
             service mysql stop
 7. 创建配置占位符。

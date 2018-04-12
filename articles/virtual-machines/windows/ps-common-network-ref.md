@@ -1,11 +1,11 @@
 ---
-title: "适用于 Azure 虚拟网络的常见 PowerShell 命令 | Microsoft Docs"
-description: "可用于为 VM 创建虚拟网络及其关联资源的常用 PowerShell 命令。"
+title: 适用于 Azure 虚拟网络的常见 PowerShell 命令 | Microsoft Docs
+description: 可用于为 VM 创建虚拟网络及其关联资源的常用 PowerShell 命令。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: davidmu1
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 56e1a73c-8299-4996-bd03-f74585caa1dc
 ms.service: virtual-machines-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.openlocfilehash: 26378ff9f16af9724db08cc4013654557f1c838b
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 31c0e558ca87d918d8e662d7aa4c12502961288a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>适用于 Azure 虚拟网络的常见 PowerShell 命令
 

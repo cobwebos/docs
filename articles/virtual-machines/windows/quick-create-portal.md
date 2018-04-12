@@ -1,13 +1,13 @@
 ---
-title: "Azure 快速入门 - 创建 Windows VM 门户 | Microsoft 文档"
-description: "Azure 快速入门 - 创建 Windows VM 门户"
+title: Azure 快速入门 - 创建 Windows VM 门户 | Microsoft 文档
+description: Azure 快速入门 - 创建 Windows VM 门户
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: hero-article
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 12/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ef2fdfc8f248f9ec5dd9fce9753548dfe802982a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: fdee34b91dc6780764abf8b16d1b710c1f5397e5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-the-azure-portal"></a>使用 Azure 门户创建 Windows 虚拟机
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/09/2018
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 ( https://portal.azure.com )。
+通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 

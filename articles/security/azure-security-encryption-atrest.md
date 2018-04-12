@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure 静态数据加密 | Microsoft Docs"
-description: "本文概述了 Microsoft Azure 静态数据加密及其整体功能和一般注意事项。"
+title: Microsoft Azure 静态数据加密 | Microsoft Docs
+description: 本文概述了 Microsoft Azure 静态数据加密及其整体功能和一般注意事项。
 services: security
 documentationcenter: na
 author: YuriDio
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
 ms.openlocfilehash: b02afa77ce99f576fed76b398642ba3f3ce2ba98
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 Microsoft Azure 中有多种工具，可以根据贵公司的安全性和符合性需求来保护数据。 本白皮书重点介绍：
@@ -105,7 +105,7 @@ Azure 中支持的加密模型分为两个主要的组：“客户端加密”�
 
 客户端加密模型是指由服务或调用应用程序在资源提供程序或 Azure 外部执行的加密。 加密可以由 Azure 中的服务应用程序执行，也可以由在客户数据中心运行的应用程序执行。 不管哪种情况，在采用此加密模型时，Azure 资源提供程序都会收到加密的数据 blob，但却无法以任何方式解密数据，也无法访问加密密钥。 在此模型中，密钥管理由调用服务/应用程序执行，对 Azure 服务来说是不透明的。
 
-![客户端](./media/azure-security-encryption-atrest/azure-security-encryption-atrest-fig2.png)
+![Client](./media/azure-security-encryption-atrest/azure-security-encryption-atrest-fig2.png)
 
 ### <a name="server-side-encryption-model"></a>服务器端加密模型
 

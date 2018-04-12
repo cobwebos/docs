@@ -1,11 +1,11 @@
 ---
-title: "如何在 iOS 上使用 Engagement API"
-description: "最新 iOS SDK - 如何在 iOS 上使用 Engagement API"
+title: 如何在 iOS 上使用 Engagement API
+description: 最新 iOS SDK - 如何在 iOS 上使用 Engagement API
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1fb4509e-3804-46c1-949f-1cf727f91f9f
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a31424da98205e97bdf57010cccfd044360f03dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 189a3029449a3161da2a20f940b77a5bb63bd1ef
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-ios"></a>如何在 iOS 上使用 Engagement API
+> [!IMPORTANT]
+> Azure Mobile Engagement 已在 2018 年 3 月 31 日停用。 此页将在不久之后删除。
+> 
+
 本文档是“如何在 iOS 上集成 Engagement”文档的附加内容：它提供了有关如何使用 Engagement API 报告应用程序统计信息的全部详细信息。
 
 请记住，如果只希望 Engagement 报告应用程序的会话、活动、故障和技术信息，则最简单的方法是从相应 `EngagementViewController` 类继承所有自定义的 `UIViewController` 类。

@@ -1,12 +1,12 @@
 ---
-title: "用作备份目标的 StorSimple 8000 系列与 NetBackup 的集成 | Microsoft 文档"
-description: "介绍包含 Veritas NetBackup 的 StorSimple 备份目标配置。"
+title: 用作备份目标的 StorSimple 8000 系列与 NetBackup 的集成 | Microsoft 文档
+description: 介绍包含 Veritas NetBackup 的 StorSimple 备份目标配置。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: harshakirank
 manager: matd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
 ms.openlocfilehash: b1878c181a77ac6d54654fc55228907743243c45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>用作备份目标的 StorSimple 与 NetBackup 的集成
 

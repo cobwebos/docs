@@ -1,12 +1,12 @@
 ---
-title: "Intel Edison 到云 (Node.js) - 将 Intel Edison 连接到 Azure IoT 中心 | Microsoft Docs"
-description: "在本教程中了解如何设置 Intel Edison 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。"
+title: Intel Edison 到云 (Node.js) - 将 Intel Edison 连接到 Azure IoT 中心 | Microsoft Docs
+description: 在本教程中了解如何设置 Intel Edison 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: shizn
 manager: timlt
-tags: 
-keywords: "azure iot intel edison, intel edison iot 中心, intel edison 发送数据到云, intel edison 到云"
+tags: ''
+keywords: azure iot intel edison, intel edison iot 中心, intel edison 发送数据到云, intel edison 到云
 ms.assetid: a7c9cf2d-c102-41b0-aa45-41285c6877eb
 ms.service: iot-hub
 ms.devlang: nodejs
@@ -17,10 +17,10 @@ ms.date: 6/15/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5a31efba704045196b5563f7bc467c773bea7805
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-nodejs"></a>将 Intel Edison 连接到 Azure IoT 中心 (Node.js)
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 10/11/2017
 * 垫条或螺钉（随附在工具包内），其中包括两颗螺钉（用于将模块固定到扩展板上）以及四组螺钉和塑料垫片。
 
 > [!NOTE] 
-上述项可选，因为代码示例支持模拟的传感器数据。
+这些项是可选项，因为代码示例支持模拟的传感器数据。
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 

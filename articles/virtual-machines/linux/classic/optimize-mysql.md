@@ -1,11 +1,11 @@
 ---
-title: "优化 Linux 上的 MySQL 性能 | Microsoft 文档"
-description: "了解如何优化运行 Linux 的 Azure 虚拟机 (VM) 上运行的 MySQL。"
+title: 优化 Linux 上的 MySQL 性能 | Microsoft 文档
+description: 了解如何优化运行 Linux 的 Azure 虚拟机 (VM) 上运行的 MySQL。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 0c1c7fc5-a528-4d84-b65d-2df225f2233f
 ms.service: virtual-machines-linux
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: ningk
-ms.openlocfilehash: 7e7582a31cb3e74fd8c3cd0dd54961392d9c53bb
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 447532452a848c88fd927f42e4263cef4742dd89
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="optimize-mysql-performance-on-azure-linux-vms"></a>优化 Azure Linux VM 上的 MySQL 性能
 影响 Azure 上 MySQL 性能的因素有很多，主要体现在虚拟硬件选择和软件配置两个方面。 本文重点介绍如何通过存储、系统和数据库配置优化性能。
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure 资源管理器](../../../resource-manager-deployment-model.md)和经典。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用 Resource Manager 模型。 有关使用 Resource Manager 模型进行 Linux VM 优化的信息，请参阅[优化 Azure 上的 Linux VM](../optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure 资源管理器](../../../resource-manager-deployment-model.md)和经典。 本文介绍使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 有关使用 Resource Manager 模型进行 Linux VM 优化的信息，请参阅[优化 Azure 上的 Linux VM](../optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 ## <a name="utilize-raid-on-an-azure-virtual-machine"></a>利用 Azure 虚拟机上的 RAID
@@ -314,7 +314,7 @@ MySQL 慢查询日志有助于识别 MySQL 的慢查询。 在启用 MySQL 慢�
 | **innodb_log_file_size** |5 MB |512 MB |
 | **max_connections** |100 |5000 |
 | **innodb_file_per_table** |0 |1 |
-| **innodb_flush_log_at_trx_commit** |1 |#N/A |
+| **innodb_flush_log_at_trx_commit** |1 |2 |
 | **innodb_log_buffer_size** |8 MB |128 MB |
 | **query_cache_size** |16 MB |0 |
 
