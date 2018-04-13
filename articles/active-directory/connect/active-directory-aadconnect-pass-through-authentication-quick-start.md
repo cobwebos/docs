@@ -58,7 +58,7 @@ ms.lasthandoff: 03/08/2018
     | **443** | 处理与服务的所有出站通信 |
    
     如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
-   - 如果防火墙或代理允许执行 DNS 白名单，可以将与 \*.msappproxy.net 和 \*.servicebus.windows.net 的连接加入白名单。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+   - 如果防火墙或代理允许执行 DNS 允许列表，可以将与 \*.msappproxy.net 和 \*.servicebus.windows.net 的连接加入允许列表。  否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
    - 身份验证代理首次注册需要访问 login.windows.net 和 login.microsoftonline.net。 另外，还请为这些 URL 打开防火墙。
    - 为验证证书，请取消阻止以下 URL：mscrl.microsoft.com:80、crl.microsoft.com:80、ocsp.msocsp.com:80 和 www.microsoft.com:80。 这些 URL 与其他 Microsoft 产品一起用于证书验证。 你可能已取消阻止这些 URL。
 

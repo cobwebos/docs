@@ -1,14 +1,14 @@
 ---
-title: "Azure Location Based Services 中的呈现覆盖区域 | Microsoft Docs"
-description: "了解 Azure Location Based Services 中的呈现覆盖区域"
+title: Azure Location Based Services 中的呈现覆盖区域 | Microsoft Docs
+description: 了解 Azure Location Based Services 中的呈现覆盖区域
 services: location-based-services
-keywords: 
+keywords: ''
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 3/6/2018
 ms.topic: article
 ms.service: location-based-services
-documentationcenter: 
+documentationcenter: ''
 manager: cpendle
 ms.devlang: na
 ms.custom: mvc
@@ -99,13 +99,13 @@ ms.lasthandoff: 03/08/2018
 |关岛|✓ |
 |香港特别行政区|✓ |
 |印度尼西亚|✓ |
-|澳门|✓ |
+|中国澳门|✓ |
 |马来西亚|✓ |
 |新西兰|✓ |
 |菲律宾|✓ |
 |新加坡|✓ |
 |韩国|✓ |
-|台湾|✓ |
+|中国台湾|✓ |
 |泰国|✓ |
 |越南|✓ |
 |                                |                |
@@ -129,7 +129,7 @@ ms.lasthandoff: 03/08/2018
 |希腊|✓ |
 |匈牙利|✓ |
 |冰岛|✓ |
-|爱尔兰共和国|✓ |
+|爱尔兰|✓ |
 |意大利|✓ |
 |拉脱维亚|✓ |
 |列支敦士登|✓ |
@@ -221,7 +221,7 @@ ms.lasthandoff: 03/08/2018
 |尼日利亚|✓|
 |留尼汪岛|✓|
 |卢旺达|✓|
-|圣赫勒拿、阿森松和特里斯坦达昆哈|Ø|
+|圣赫勒拿、阿森松与特里斯坦达库尼亚|Ø|
 |圣多美和普林西比|Ø|
 |塞内加尔|✓|
 |塞拉利昂|Ø|
@@ -327,7 +327,7 @@ ms.lasthandoff: 03/08/2018
 |新加坡|✓|
 |斯里兰卡|Ø|
 |阿拉伯叙利亚共和国|Ø|
-|台湾|✓|
+|中国台湾|✓|
 |塔吉克斯坦|Ø|
 |泰国|✓|
 |东帝汶|Ø|

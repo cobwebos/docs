@@ -1,11 +1,11 @@
 ---
-title: "配置 Azure MFA NPS 扩展 | Microsoft Docs"
-description: "在安装 NPS 扩展后，通过下列步骤来进行高级配置，如 IP 白名单和 UPN 替换。"
+title: 配置 Azure MFA NPS 扩展 | Microsoft Docs
+description: 在安装 NPS 扩展后，通过下列步骤来进行高级配置，如 IP 允许列表和 UPN 替换。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -45,13 +45,13 @@ ms.lasthandoff: 12/11/2017
 
 如果需要监视服务器的可用性（例如，负载均衡器是否在发送工作负荷前验证了哪个服务器正在运行），则并不希望验证请求阻止这些检查。 而是创建已知由服务帐户使用的 IP 地址列表，并为该列表禁用多重身份验证要求。 
 
-要配置 IP 白名单，请转到 `HKLM\SOFTWARE\Microsoft\AzureMfa`，并配置如下注册表值： 
+要配置 IP 允许列表，请转到 `HKLM\SOFTWARE\Microsoft\AzureMfa`，并配置如下注册表值： 
 
 | 名称 | 类型 | 默认值 | 说明 |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | 字符串 | 空 | 提供以分号隔开的 IP 地址列表。 包括发出服务请求的计算机的 IP 地址，例如 NAS/VPN 服务器。 IP 范围为不受支持的子网。 <br><br> 例如 10.0.0.1;10.0.0.2;10.0.0.3。
 
-当发出请求的 IP 地址来自白名单时，将跳过双重验证。 将 IP 白名单与 RADIUS 请求的 ratNASIPAddress 属性中的 IP 地址相比较。 如果收到的 RADIUS 请求不包含 ratNASIPAddress 属性，则将记录以下警告：“P_WHITE_LIST_WARNING::IP 白名单被忽略，因为 RADIUS 请求中的 NasIpAddress 属性缺少源 IP。”
+当发出请求的 IP 地址来自允许列表时，将跳过双重验证。 将 IP 允许列表与 RADIUS 请求的 ratNASIPAddress 属性中的 IP 地址相比较。 如果收到的 RADIUS 请求不包含 ratNASIPAddress 属性，则将记录以下警告：“P_WHITE_LIST_WARNING::IP 白名单被忽略，因为 RADIUS 请求中的 NasIpAddress 属性缺少源 IP。”
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,12 +1,12 @@
 ---
-title: "通过 Azure ExpressRoute Microsoft 对等互连配置站点到站点的 VPN | Microsoft Docs"
-description: "使用站点到站点的 VPN 网关，通过 ExpressRoute Microsoft 对等互连线路配置到 Azure 的 IPsec/IKE 连接。"
+title: 通过 Azure ExpressRoute Microsoft 对等互连配置站点到站点的 VPN | Microsoft Docs
+description: 使用站点到站点的 VPN 网关，通过 ExpressRoute Microsoft 对等互连线路配置到 Azure 的 IPsec/IKE 连接。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -70,7 +70,7 @@ ms.lasthandoff: 12/07/2017
 
 ## <a name="routefilter"></a>2.配置路由筛选器
 
-使用路由筛选器可标识要通过 ExpressRoute 线路的 Microsoft 对等互连使用的服务。 它实质上是所有 BGP 社区值的白名单。 
+使用路由筛选器可标识要通过 ExpressRoute 线路的 Microsoft 对等互连使用的服务。 它实质上是所有 BGP 社区值的允许列表。 
 
 ![路由筛选器](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 

@@ -132,7 +132,7 @@ ms.lasthandoff: 04/06/2018
 |----------------|------------|  
 |"parameters"|返回字符“parameters”。|  
 |"parameters[1]"|返回字符“parameters[1]”。|  
-|"@@"|返回包含\“\@\”的、由 1 个字符构成的字符串。|  
+|"\@@\"|返回包含\“\@\”的、由 1 个字符构成的字符串。|  
 |\" \@\"|返回包含“@”的、由 2 个字符构成的字符串。|  
   
 如果使用*字符串内插*，表达式还可以显示在 `@{ ... }` 中包装表达式的字符串内。 例如： <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`

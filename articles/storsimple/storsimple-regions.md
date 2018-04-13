@@ -1,12 +1,12 @@
 ---
-title: "StorSimple 区域可用性 | Microsoft Docs"
-description: "说明提供各种 StorSimple 设备模型的 Azure 区域。"
+title: StorSimple 区域可用性 | Microsoft Docs
+description: 说明提供各种 StorSimple 设备模型的 Azure 区域。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -74,7 +74,7 @@ StorSimple 设备在不同的地理位置或国家/地区可用，具体取决�
 | 4  | 比利时        | 19 | 印度       | 34 | 秘鲁         | 49 | 斯里兰卡            |
 | 5  | 巴西         | 20 | 印度尼西亚   | 35 | 菲律宾  | 50 | 瑞典               |
 | 6  | 加拿大         | 21 | 爱尔兰     | 36 | 波兰       | 51 | 瑞士          |
-| 7  | 智利          | 22 | 以色列      | 37 | 葡萄牙     | 52 | 台湾               |
+| 7  | 智利          | 22 | 以色列      | 37 | 葡萄牙     | 52 | 中国台湾                 |
 | 8  | 哥伦比亚       | 23 | 意大利       | 38 | 波多黎各  | 53 | 泰国             |
 | 9  | 捷克共和国 | 24 | 日本       | 39 | 卡塔尔        | 54 | 土耳其               |
 | 10 | 丹麦        | 25 | 肯尼亚       | 40 | 罗马尼亚      | 55 | 乌克兰              |

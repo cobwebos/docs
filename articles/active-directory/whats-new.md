@@ -206,7 +206,7 @@ Azure AD 应用现在可以在 JWT 或 SAML 令牌中请求自定义或可选声
  
 已更新 Azure AD 文档来指明对 PKCE 的支持。使用 PKCE 可以在执行 OAuth 2.0 授权代码授予流期间提高通信的安全性。  v1.0 和 v2.0 终结点上同时支持 S256 和纯文本 code_challenges。 
 
-有关详细信息，请参阅“请求授权代码”[](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code#request-an-authorization-code)。 
+有关详细信息，请参阅[请求授权代码](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code#request-an-authorization-code)。 
 
  
 ---
@@ -594,7 +594,7 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 - 从应用登录页直接登录到基于密码 SSO 的应用
 - 使用快速搜索功能启动任何应用
 - 在扩展中使用快捷方式访问最近使用的应用
-- 该扩展适用于 Edge、Chrome 和 Firefox。
+- 该扩展适用于 Microsoft Edge、Chrome 和 Firefox。
  
 有关详细信息，请参阅[我的应用安全登录扩展](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension)。
 

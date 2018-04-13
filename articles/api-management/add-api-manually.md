@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 门户手动添加 API | Microsoft Docs"
-description: "本教程介绍如何使用 API 管理 (APIM) 手动添加 API。"
+title: 使用 Azure 门户手动添加 API | Microsoft Docs
+description: 本教程介绍如何使用 API 管理 (APIM) 手动添加 API。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -56,7 +56,7 @@ ms.lasthandoff: 12/04/2017
 此时，APIM 中没有任何操作映射到后端 API 中的操作。 如果调用通过后端而不是通过 APIM 公开的操作，将收到 **404** 错误。 
 
 >[!NOTE] 
-> 默认情况下，在添加某个 API 时，除非已将某些操作列入白名单，否则即使该 API 已连接到某个后端服务，APIM 也不会公开任何操作。 若要将后端服务的某个操作列入白名单，请创建一个映射到后端操作的 APIM 操作。
+> 默认情况下，在添加某个 API 时，除非已将某些操作列入允许列表，否则即使该 API 已连接到某个后端服务，APIM 也不会公开任何操作。 若要将后端服务的某个操作列入允许列表，请创建一个映射到后端操作的 APIM 操作。
 >
 
 ## <a name="add-and-test-an-operation"></a>添加并测试操作
