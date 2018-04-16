@@ -1,11 +1,11 @@
 ---
-title: "适用于 Xamarin.Android 应用的 Azure 移动应用入门"
-description: "按照本教程进行操作，开始使用 Azure 移动应用进行 Xamarin Android 开发"
+title: 适用于 Xamarin.Android 应用的 Azure 移动应用入门
+description: 按照本教程进行操作，开始使用 Azure 移动应用进行 Xamarin Android 开发
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -57,7 +57,7 @@ ms.lasthandoff: 01/04/2018
 
     ![][10]
 
-    来自请求的数据被插入到 TodoItem 表。 移动应用后端返回存储在表中的项，数据显示在列表中。
+    来自请求的数据插入到 TodoItem 表。 移动应用后端返回存储在表中的项，数据显示在列表中。
 
    > [!NOTE]
    > 可以查看访问移动应用后端以查询和插入数据的代码，这些代码在 ToDoActivity.cs C# 文件中。

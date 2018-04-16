@@ -1,11 +1,11 @@
 ---
-title: "了解 Azure 堆栈的安全控制 |Microsoft 文档"
-description: "作为服务管理员，了解有关应用于 Azure 堆栈的安全控件"
+title: 了解 Azure 堆栈的安全控制 |Microsoft 文档
+description: 作为服务管理员，了解有关应用于 Azure 堆栈的安全控件
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
 ms.workload: na
@@ -56,7 +56,7 @@ Azure 堆栈的基础结构使用多种机密，如的密码，来正常。 因�
 不包含特权终结点中的脚本可以手动旋转组托管服务帐户的剩余机密信息。
 
 ## <a name="code-integrity"></a>代码完整性
-Azure 堆栈将使用最新的 Windows Server 2016 的安全功能。 其中一个是 Windows Defender Device Guard，也不能提供应用程序白名单，可确保只有经过授权的 Azure 堆栈基础结构内的代码运行。 
+Azure 堆栈将使用最新的 Windows Server 2016 的安全功能。 其中一个是 Windows Defender Device Guard，也不能提供应用程序允许列表，可确保只有经过授权的 Azure 堆栈基础结构内的代码运行。 
 
 已授权的代码签名由 Microsoft 或 OEM 合作伙伴，并且它包含在由 Microsoft 定义策略中指定的允许软件的列表。 换而言之，可以执行已经过审核可以运行 Azure 堆栈基础结构中的软件。 阻止任何尝试执行未授权的代码和生成审核。
 

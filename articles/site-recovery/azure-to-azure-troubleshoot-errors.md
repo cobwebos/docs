@@ -1,6 +1,6 @@
 ---
-title: "Azure 到 Azure 复制问题和错误的 Azure Site Recovery 故障排除 | Microsoft Docs"
-description: "解决复制 Azure 虚拟机进行灾难恢复时出现的错误和问题"
+title: Azure 到 Azure 复制问题和错误的 Azure Site Recovery 故障排除 | Microsoft Docs
+description: 解决复制 Azure 虚拟机进行灾难恢复时出现的错误和问题
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -151,8 +151,8 @@ ms.lasthandoff: 02/24/2018
 
 **错误代码** | **可能的原因** | **建议**
 --- | --- | ---
-151037<br></br>**消息**：Failed to register Azure virtual machine with Site Recovery.（未能向 Site Recovery 注册 Azure 虚拟机。） | - 使用 NSG 来控制 VM 的出站访问，且未将所需的 IP 范围加入出站访问允许列表。</br></br>- 使用第三方防火墙工具，且未将所需的 IP 范围/URL 加入允许列表。</br>| - 如果使用防火墙代理来控制 VM 的出站网络连接，请确保已将必备 URL 或数据中心 IP 范围加入白名单。 有关信息，请参阅[防火墙代理指南](https://aka.ms/a2a-firewall-proxy-guidance)。</br></br>- 如果使用 NSG 规则来控制 VM 的出站网络连接，请确保已将必备数据中心 IP 范围加入允许列表。 有关信息，请参阅[网络安全组指南](https://aka.ms/a2a-nsg-guidance)。
-151072<br></br>**消息**：Site Recovery configuration failed.（Site Recovery 配置失败。） | 无法建立到 Site Recovery 服务终结点的连接。 | - 如果使用防火墙代理来控制 VM 的出站网络连接，请确保已将必备 URL 或数据中心 IP 范围加入白名单。 有关信息，请参阅[防火墙代理指南](https://aka.ms/a2a-firewall-proxy-guidance)。</br></br>- 如果使用 NSG 规则来控制 VM 的出站网络连接，请确保已将必备数据中心 IP 范围加入允许列表。 有关信息，请参阅[网络安全组指南](https://aka.ms/a2a-nsg-guidance)。
+151037<br></br>**消息**：Failed to register Azure virtual machine with Site Recovery.（未能向 Site Recovery 注册 Azure 虚拟机。） | - 使用 NSG 来控制 VM 的出站访问，且未将所需的 IP 范围加入出站访问允许列表。</br></br>- 使用第三方防火墙工具，且未将所需的 IP 范围/URL 加入允许列表。</br>| - 如果使用防火墙代理来控制 VM 的出站网络连接，请确保已将必备 URL 或数据中心 IP 范围加入允许列表。 有关信息，请参阅[防火墙代理指南](https://aka.ms/a2a-firewall-proxy-guidance)。</br></br>- 如果使用 NSG 规则来控制 VM 的出站网络连接，请确保已将必备数据中心 IP 范围加入允许列表。 有关信息，请参阅[网络安全组指南](https://aka.ms/a2a-nsg-guidance)。
+151072<br></br>**消息**：Site Recovery configuration failed.（Site Recovery 配置失败。） | 无法建立到 Site Recovery 服务终结点的连接。 | - 如果使用防火墙代理来控制 VM 的出站网络连接，请确保已将必备 URL 或数据中心 IP 范围加入允许列表。 有关信息，请参阅[防火墙代理指南](https://aka.ms/a2a-firewall-proxy-guidance)。</br></br>- 如果使用 NSG 规则来控制 VM 的出站网络连接，请确保已将必备数据中心 IP 范围加入允许列表。 有关信息，请参阅[网络安全组指南](https://aka.ms/a2a-nsg-guidance)。
 
 ### <a name="fix-the-problem"></a>解决问题
 若要将[所需的 URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)加入允许列表，请按照[网络指南文档](site-recovery-azure-to-azure-networking-guidance.md)中的步骤执行操作。

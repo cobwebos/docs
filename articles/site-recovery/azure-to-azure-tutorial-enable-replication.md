@@ -77,7 +77,7 @@ ms.lasthandoff: 03/28/2018
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
-当使用任何基于 IP 的防火墙、 代理或 NSG 规则来控制出站连接时，需要将以下 IP 地址范围列入白名单。 从以下链接下载范围列表：
+当使用任何基于 IP 的防火墙、 代理或 NSG 规则来控制出站连接时，需要将以下 IP 地址范围列入允许列表。 从以下链接下载范围列表：
 
   - [Microsoft Azure 数据中心 IP 范围](http://www.microsoft.com/en-us/download/details.aspx?id=41653)
   - [德国的 Windows Azure 数据中心 IP 范围](http://www.microsoft.com/en-us/download/details.aspx?id=54770)

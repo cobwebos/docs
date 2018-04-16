@@ -1,11 +1,11 @@
 ---
-title: "从访问面板登录应用程序时出现的问题 | Microsoft Docs"
-description: "如何对从位于 myapps.microsoft.com 的 Microsoft Azure AD 访问面板中访问应用程序时出现的问题进行故障排除"
+title: 从访问面板登录应用程序时出现的问题 | Microsoft Docs
+description: 如何对从位于 myapps.microsoft.com 的 Microsoft Azure AD 访问面板中访问应用程序时出现的问题进行故障排除
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -90,7 +90,7 @@ ms.lasthandoff: 02/21/2018
 
 7.  登录到访问面板，并查看是否可以**启动**密码 - SSO 应用程序
 
-也可通过下面的直接链接下载适用于 Chrome 和 Edge 的扩展：
+也可通过下面的直接链接下载适用于 Chrome 和 Microsoft Edge 的扩展：
 
 -   [Chrome 访问面板扩展](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 

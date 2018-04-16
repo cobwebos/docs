@@ -1,14 +1,14 @@
 ---
-title: "Azure Location Based Services 中的路况覆盖区域 | Microsoft Docs"
-description: "了解 Azure Location Based Services 中的路况覆盖区域。"
+title: Azure Location Based Services 中的路况覆盖区域 | Microsoft Docs
+description: 了解 Azure Location Based Services 中的路况覆盖区域。
 services: location-based-services
-keywords: 
+keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: location-based-services
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
@@ -49,7 +49,7 @@ Azure Location Based Services (LBS) 以流量和事故形式提供丰富的路�
 |匈牙利     |✓         |✓         |
 |冰岛     |         |✓         |
 |印度尼西亚     |✓         |✓         |
-|爱尔兰共和国     |✓         |✓         |
+|爱尔兰      |✓         |✓         |
 |以色列     |         |✓         |
 |意大利     |✓         |✓        |
 |+圣马力诺     |✓         |✓         |
@@ -86,7 +86,7 @@ Azure Location Based Services (LBS) 以流量和事故形式提供丰富的路�
 |瑞典     |✓         |✓         |
 |瑞士     |✓         |✓        |
 |+列支敦士登      |✓         |✓         |
-|台湾     |✓         |✓        |
+|中国台湾     |✓         |✓        |
 |泰国     |✓         |✓        |
 |土耳其     |✓         |✓         |
 |乌克兰     |✓         |✓         |

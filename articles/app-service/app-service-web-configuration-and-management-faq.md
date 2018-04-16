@@ -185,7 +185,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 3. 验证是否选择了“网络”选项卡，然后选择绿色的“播放”按钮。
 4. 执行再现问题的步骤。
 5. 选择红色的“停止”按钮。
-6. 选择“保存”按钮（磁盘图标），然后保存 HAR 文件（在 Internet Explorer 和 Edge 中），或右键单击 HAR 文件，然后选择“保存为包含内容的 HAR”（在 Chrome 中）。
+6. 选择“保存”按钮（磁盘图标），然后保存 HAR 文件（在 Internet Explorer 和 Microsoft Edge 中），或右键单击 HAR 文件，然后选择“保存为包含内容的 HAR”（在 Chrome 中）。
 
 ### <a name="f12-console-output"></a>F12 控制台输出
 

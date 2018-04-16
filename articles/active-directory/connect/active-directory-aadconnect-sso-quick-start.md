@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 * 设置 Azure AD Connect 服务器：如果使用[直通身份验证](active-directory-aadconnect-pass-through-authentication.md)作为登录方法，则无需进行其他先决条件检查。 如果使用[密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md)作为登录方法，并且 Azure AD Connect 与 Azure AD 之间有防火墙，则请确保：
    - 使用 Azure AD Connect 版本 1.1.644.0 或更高版本。 
-   - 如果防火墙或代理允许执行 DNS 白名单，则可将通过端口 443 与 **\*.msappproxy.net** URL 的连接加入白名单。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此先决条件仅适用于启用了该功能的情况。 无需用户实际登录。
+   - 如果防火墙或代理允许执行 DNS 允许列表，则可将通过端口 443 与 **\*.msappproxy.net** URL 的连接加入允许列表。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此先决条件仅适用于启用了该功能的情况。 无需用户实际登录。
 
     >[!NOTE]
     >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有密码哈希同步相关问题。 如果不打算将密码哈希同步与直通身份验证结合使用，请阅读 [Azure AD Connect 发行说明](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)了解详细信息。
@@ -142,13 +142,13 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 
 #### <a name="google-chrome-mac-os-only"></a>Google Chrome（仅限 Mac 操作系统）
 
-对于 Mac OS 和其他非 Windows 平台上的 Google Chrome，请参阅 [Chromium 项目策略列表](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)，了解有关如何针对集成身份验证将 Azure AD URL 列入白名单的信息。
+对于 Mac OS 和其他非 Windows 平台上的 Google Chrome，请参阅 [Chromium 项目策略列表](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)，了解有关如何针对集成身份验证将 Azure AD URL 列入允许列表的信息。
 
 使用第三方 Active Directory 组策略扩展将 Azure AD URL 扩展到 Mac 上的 Firefox、Google Chrome，不在本文讨论范围之内。
 
 #### <a name="known-browser-limitations"></a>已知的浏览器限制
 
-无缝 SSO 在 Firefox 和 Edge 浏览器的隐私浏览模式下不起作用。 它在以增强保护模式下运行的 Internet Explorer 中也不起作用。
+无缝 SSO 在 Firefox 和 Microsoft Edge 浏览器的隐私浏览模式下不起作用。 它在以增强保护模式下运行的 Internet Explorer 中也不起作用。
 
 ## <a name="step-4-test-the-feature"></a>步骤 4：测试功能
 

@@ -105,7 +105,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 ![VNET 服务终结点](./media/sql-database-manage-after-migration/vnet-service-endpoints.png) 
 
 #### <a name="reserved-ips"></a>保留 IP
-另一种方法是为 VM 设置[保留 IP](../virtual-network/virtual-networks-reserved-public-ip.md)，并将服务器防火墙设置中的那些特定 VM IP 地址列入白名单。 通过分配保留 IP，就可以避免通过更改 IP 地址来更新防火墙规则的麻烦。
+另一种方法是为 VM 设置[保留 IP](../virtual-network/virtual-networks-reserved-public-ip.md)，并将服务器防火墙设置中的那些特定 VM IP 地址列入允许列表。 通过分配保留 IP，就可以避免通过更改 IP 地址来更新防火墙规则的麻烦。
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>连接到哪些端口上的 SQL 数据库？
 

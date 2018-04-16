@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: b1c82727e97b85fae5f315ceb1cd79cfdd111b45
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6a106ba59f09ffc20f8461c5267ae06695df4cd0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
 
@@ -28,7 +28,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-无缝 SSO 可与[密码哈希同步](active-directory-aadconnectsync-implement-password-synchronization.md)或[传递身份验证](active-directory-aadconnect-pass-through-authentication.md)登录方法结合使用。
+无缝 SSO 可与[密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md)或[传递身份验证](active-directory-aadconnect-pass-through-authentication.md)登录方法结合使用。
 
 ![无缝单一登录](./media/active-directory-aadconnect-sso/sso1.png)
 
@@ -42,7 +42,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
   - 用户无需重复输入其密码。
 - 易于部署和管理
   - 不需要本地任何其他组件来完成此操作。
-  - 与云身份验证的任何方法 - [密码哈希同步](active-directory-aadconnectsync-implement-password-synchronization.md)或[直通身份验证](active-directory-aadconnect-pass-through-authentication.md)结合使用。
+  - 与云身份验证的任何方法 - [密码哈希同步](active-directory-aadconnectsync-implement-password-hash-synchronization.md)或[直通身份验证](active-directory-aadconnect-pass-through-authentication.md)结合使用。
   - 可以分发给某些或所有使用组策略的用户。
   - 使用 Azure AD 注册非 Windows 10 设备，无需任何 AD FS 基础结构。 此功能需要使用 2.1 版或更高版本的 [Workplace Join 客户端](https://www.microsoft.com/download/details.aspx?id=53554)。
 
@@ -58,7 +58,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 - 这是一项免费功能，不需要拥有任何付费版本的 Azure AD 即可使用此功能。
 - 在能够进行 Kerberos 身份验证的平台和浏览器上，支持[新式身份验证](https://aka.ms/modernauthga)的基于 Web 浏览器的客户端和 Office 客户端支持此功能：
 
-| 操作系统\浏览器 |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
+| 操作系统\浏览器 |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|是|否|是|是\*|不适用
 |Windows 8.1|是|不适用|是|是\*|不适用

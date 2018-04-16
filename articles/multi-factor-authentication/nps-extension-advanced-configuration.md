@@ -51,7 +51,7 @@ ms.lasthandoff: 12/11/2017
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | 字符串 | 空 | 提供以分号隔开的 IP 地址列表。 包括发出服务请求的计算机的 IP 地址，例如 NAS/VPN 服务器。 IP 范围为不受支持的子网。 <br><br> 例如 10.0.0.1;10.0.0.2;10.0.0.3。
 
-当发出请求的 IP 地址来自允许列表时，将跳过双重验证。 将 IP 允许列表与 RADIUS 请求的 ratNASIPAddress 属性中的 IP 地址相比较。 如果收到的 RADIUS 请求不包含 ratNASIPAddress 属性，则将记录以下警告：“P_WHITE_LIST_WARNING::IP 白名单被忽略，因为 RADIUS 请求中的 NasIpAddress 属性缺少源 IP。”
+当发出请求的 IP 地址来自允许列表时，将跳过双重验证。 将 IP 允许列表与 RADIUS 请求的 ratNASIPAddress 属性中的 IP 地址相比较。 如果收到的 RADIUS 请求不包含 ratNASIPAddress 属性，则将记录以下警告：“P_WHITE_LIST_WARNING::IP 允许列表被忽略，因为 RADIUS 请求中的 NasIpAddress 属性缺少源 IP。”
 
 ## <a name="next-steps"></a>后续步骤
 

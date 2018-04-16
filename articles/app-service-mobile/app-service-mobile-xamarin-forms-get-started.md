@@ -1,11 +1,11 @@
 ---
-title: "移动应用入门（使用 Xamarin.Forms）"
-description: "按本教程操作，开始使用移动应用进行 Xamarin.Forms 开发"
+title: 移动应用入门（使用 Xamarin.Forms）
+description: 按本教程操作，开始使用移动应用进行 Xamarin.Forms 开发
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 5e692220-cc89-4548-96c8-35259722acf5
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -95,7 +95,7 @@ ms.lasthandoff: 01/04/2018
 
     ![][10]
 
-    此操作向在 Azure 中托管的新移动应用后端发送 post 请求。 来自请求的数据被插入到 TodoItem 表。 存储在表中的项由移动应用后端返回，数据显示在列表中。
+    此操作向在 Azure 中托管的新移动应用后端发送 post 请求。 来自请求的数据插入到 TodoItem 表。 存储在表中的项由移动应用后端返回，数据显示在列表中。
 
     > [!NOTE]
     > 可在解决方案的可移植类库项目的 TodoItemManager.cs C# 文件中找到用于访问移动应用后端的代码。
@@ -130,7 +130,7 @@ ms.lasthandoff: 01/04/2018
 
     ![][11]
     
-    此操作向在 Azure 中托管的新移动应用后端发送 post 请求。 来自请求的数据被插入到 TodoItem 表。 存储在表中的项由移动应用后端返回，数据显示在列表中。
+    此操作向在 Azure 中托管的新移动应用后端发送 post 请求。 来自请求的数据插入到 TodoItem 表。 存储在表中的项由移动应用后端返回，数据显示在列表中。
     
     > [!NOTE]
     > 可在解决方案的可移植类库项目的 TodoItemManager.cs C# 文件中找到用于访问移动应用后端的代码。
@@ -158,7 +158,7 @@ ms.lasthandoff: 01/04/2018
 
 5. 在应用中键入有意义的文本（例如“Learn Xamarin”），然后选择加号 (+)。
 
-    此操作向在 Azure 中托管的新移动应用后端发送 post 请求。 来自请求的数据被插入到 TodoItem 表。 存储在表中的项由移动应用后端返回，数据显示在列表中。
+    此操作向在 Azure 中托管的新移动应用后端发送 post 请求。 来自请求的数据插入到 TodoItem 表。 存储在表中的项由移动应用后端返回，数据显示在列表中。
     
     ![][12]
     

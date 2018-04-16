@@ -1,11 +1,11 @@
 ---
-title: "如何使用适用于 Azure 移动应用的 JavaScript SDK"
-description: "如何为 Azure 移动应用使用 v"
+title: 如何使用适用于 Azure 移动应用的 JavaScript SDK
+description: 如何为 Azure 移动应用使用 v
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 53b78965-caa3-4b22-bb67-5bd5c19d03c4
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -88,7 +88,7 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
     将数组中的 URL 替换为服务的 URL，在本示例中为本地 Node.js 示例服务的 `http://localhost:3000`。 对于 Ripple 服务，也可以根据应用的配置方式，使用 `http://localhost:4400` 或其他某个 URL。
 8. 在页面顶部，单击“读/写”，并单击“PUT”保存更新。
 
-还需要将相同的环回 URL 添加到 CORS 白名单设置：
+还需要将相同的环回 URL 添加到 CORS 允许列表设置：
 
 1. 导航回到 [Azure 门户]。
 2. 导航到移动应用后端。

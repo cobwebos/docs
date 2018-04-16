@@ -1,6 +1,6 @@
 ---
-title: "Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化 - 配置管理"
-description: "FedRAMP Web 应用程序自动化 - 配置管理"
+title: Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化 - 配置管理
+description: FedRAMP Web 应用程序自动化 - 配置管理
 services: security
 documentationcenter: na
 author: jomolesk
@@ -643,7 +643,7 @@ ms.lasthandoff: 02/11/2018
 
  ### <a name="nist-800-53-control-cm-7-5a"></a>NIST 800-53 控制措施 CM-7 (5).a
 
-#### <a name="least-functionality--authorized-software--whitelisting"></a>最少的功能 | 授权软件/白名单
+#### <a name="least-functionality--authorized-software--whitelisting"></a>最少的功能 | 授权软件/允许列表
 
 **CM-7 (5).a** 组织标识[赋值：组织定义的经授权在信息系统上执行的软件程序]。
 
@@ -657,7 +657,7 @@ ms.lasthandoff: 02/11/2018
 
  ### <a name="nist-800-53-control-cm-7-5b"></a>NIST 800-53 控制措施 CM-7 (5).b
 
-#### <a name="least-functionality--authorized-software--whitelisting"></a>最少的功能 | 授权软件/白名单
+#### <a name="least-functionality--authorized-software--whitelisting"></a>最少的功能 | 授权软件/允许列表
 
 **CM-7 (5).b** 组织采用全部拒绝、允许例外的策略，允许在信息系统上执行经过授权的软件程序。
 
@@ -671,7 +671,7 @@ ms.lasthandoff: 02/11/2018
 
  ### <a name="nist-800-53-control-cm-7-5c"></a>NIST 800-53 控制措施 CM-7 (5).c
 
-#### <a name="least-functionality--authorized-software--whitelisting"></a>最少的功能 | 授权软件/白名单
+#### <a name="least-functionality--authorized-software--whitelisting"></a>最少的功能 | 授权软件/允许列表
 
 **CM-7 (5).c** 组织评审和更新经过授权的软件程序列表[赋值：组织定义的频率]。
 

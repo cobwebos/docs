@@ -57,7 +57,7 @@ ms.lasthandoff: 01/29/2018
 - **Firefox 26.0 或更高版本**：在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上。
 - **Internet Explorer 8、9、10、11**：在 Windows 7 或更高版本上（支持受限）。
 
-也可以直接从以下站点下载适用于 Chrome 和 Edge 的扩展：
+也可以直接从以下站点下载适用于 Chrome 和 Microsoft Edge 的扩展：
 
 - [Chrome 扩展](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 - [Edge 扩展](https://www.microsoft.com/store/apps/9pc9sckkzk84)
@@ -92,7 +92,7 @@ ms.lasthandoff: 01/29/2018
        最近使用的三个应用会显示在“最近使用”快捷方式列表中。
 
 > [!NOTE]
-> 这些选项仅适用于 Edge、Chrome 和 Firefox。
+> 这些选项仅适用于 Microsoft Edge、Chrome 和 Firefox。
 
 ## <a name="how-do-i-add-a-new-app"></a>如何添加新应用？
 

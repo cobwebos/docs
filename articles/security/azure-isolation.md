@@ -1,12 +1,12 @@
 ---
-title: "Azure 公有云中的隔离 | Microsoft Docs"
-description: "了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。"
+title: Azure 公有云中的隔离 | Microsoft Docs
+description: 了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -337,7 +337,7 @@ Azure 部署具有多层网络隔离。 下图显示了 Azure 提供给客户的
 
 - [适用于 Microsoft Azure 虚拟网络中的计算机的网络隔离选项](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
 
-它包括经典的前端和后端方案，其中特定后端网络或子网中的计算机可能只允许某些客户端或其他计算机根据 IP 地址白名单连接到特定终结点。
+它包括经典的前端和后端方案，其中特定后端网络或子网中的计算机可能只允许某些客户端或其他计算机根据 IP 地址允许列表连接到特定终结点。
 
 - [计算隔离](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 

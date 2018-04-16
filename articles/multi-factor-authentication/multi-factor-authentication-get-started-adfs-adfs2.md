@@ -1,8 +1,8 @@
 ---
-title: "将 Azure MFA 服务器与 AD FS 2.0 配合使用 | Microsoft Docs"
-description: "这是与 Azure Multi-Factor Authentication 相关的页面，介绍如何将 Azure MFA 与 AD FS 2.0 配合使用。"
+title: 将 Azure MFA 服务器与 AD FS 2.0 配合使用 | Microsoft Docs
+description: 这是与 Azure Multi-Factor Authentication 相关的页面，介绍如何将 Azure MFA 与 AD FS 2.0 配合使用。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 96168849-241a-4499-a224-d829913caa7e
@@ -81,7 +81,7 @@ ms.lasthandoff: 12/11/2017
 3. 如果用户以“域\用户名”格式输入用户名，服务器在创建 LDAP 查询时则需要能够将域与用户名相剥离。 可以通过注册表设置完成此操作。
 4. 在 64 位服务器上，打开注册表编辑器，并转到 HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor。 如果在 32 位服务器上，请从路径中除去“Wow6432Node”。 创建名为“UsernameCxz_stripPrefixDomain”的 DWORD 注册表项，将值设置为 1。 现在多重身份验证将保护 AD FS 代理。
 
-确保已将 Active Directory 中的用户导入服务器。 如果想将内部 IP 地址加入白名单，以在从这些位置登录网站时不需要进行双重验证，请参阅以下[受信任的 IP部分](#trusted-ips)。
+确保已将 Active Directory 中的用户导入服务器。 如果想将内部 IP 地址加入允许列表，以在从这些位置登录网站时不需要进行双重验证，请参阅以下[受信任的 IP部分](#trusted-ips)。
 
 <center>![设置](./media/multi-factor-authentication-get-started-adfs-adfs2/reg.png)</center>
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 12/11/2017
 
 现在，多重身份验证将保护 AD FS。
 
-确保已将 Active Directory 中的用户导入服务器。 如果想将内部 IP 地址加入白名单，以在从这些位置登录网站时不需要双重验证，请参阅以下“受信任的 IP”部分。
+确保已将 Active Directory 中的用户导入服务器。 如果想将内部 IP 地址加入允许列表，以在从这些位置登录网站时不需要双重验证，请参阅以下“受信任的 IP”部分。
 
 ## <a name="trusted-ips"></a>受信任的 IP
 受信任的 IP 允许用户跳过对从特定 IP 地址或子网发起的网站请求的 Azure 多重身份验证。 例如，可能希望当用户在办公室进行登录时，无需进行双重验证。 为此，可将办公室子网指定为受信任的 IP 条目。

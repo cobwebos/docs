@@ -1,11 +1,11 @@
 ---
-title: "安装应用程序访问面板浏览器扩展 - Azure | Microsoft Docs"
-description: "修复安装访问面板浏览器扩展时遇到的常见错误。"
+title: 安装应用程序访问面板浏览器扩展 - Azure | Microsoft Docs
+description: 修复安装访问面板浏览器扩展时遇到的常见错误。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -58,7 +58,7 @@ ms.lasthandoff: 01/29/2018
 
 7.  登录到访问面板，并检查是否可以启动基于密码的 SSO 应用程序。
 
-也可以直接从以下站点下载适用于 Chrome 和 Edge 的扩展：
+也可以直接从以下站点下载适用于 Chrome 和 Microsoft Edge 的扩展：
 
 - [Chrome 扩展](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 - [Edge 扩展](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
@@ -86,7 +86,7 @@ ms.lasthandoff: 01/29/2018
        最近使用的三个应用会显示在“最近使用”快捷方式列表中。
 
 > [!NOTE]
-> 上述选项仅适用于 Edge、 Chrome 和 Firefox。
+> 上述选项仅适用于 Microsoft Edge、 Chrome 和 Firefox。
 
 ## <a name="set-up-a-group-policy-for-internet-explorer"></a>设置 Internet Explorer 的组策略
 
@@ -105,7 +105,7 @@ ms.lasthandoff: 01/29/2018
 若要访问诊断工具以及获得有关配置 Internet Explorer 扩展的信息，请参阅[对 Internet Explorer 的访问面板扩展进行故障排除](active-directory-saas-ie-troubleshooting.md)。
 
 > [!NOTE]
-> Internet Explorer 仅受到有限支持，且不再接收新的软件更新。 Edge 是建议使用的浏览器。
+> Internet Explorer 仅受到有限支持，且不再接收新的软件更新。 Microsoft Edge 是建议使用的浏览器。
 
 ## <a name="if-the-preceding-steps-do-not-resolve-the-issue"></a>如果上述步骤无法解决问题，
 

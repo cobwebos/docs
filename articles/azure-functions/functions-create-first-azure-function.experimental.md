@@ -62,7 +62,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/overview/ser
 
 2. 将函数 URL 粘贴到浏览器的地址栏中。 将查询字符串值 `&name=<yourname>` 添加到该 URL 尾部，然后按键盘上的 `Enter` 键来执行请求。 此时会看到函数返回的响应显示在浏览器中。  
 
-    以下示例演示 Edge 浏览器中的响应（其他浏览器可能包括显示的 XML）：
+    以下示例演示 Microsoft Edge 浏览器中的响应（其他浏览器可能包括显示的 XML）：
 
     ![浏览器中的函数响应。](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 

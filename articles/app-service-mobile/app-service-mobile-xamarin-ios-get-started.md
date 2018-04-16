@@ -1,11 +1,11 @@
 ---
-title: "适用于 Xamarin iOS 应用的 Azure 应用服务移动应用入门 | Microsoft Docs"
-description: "按照本教程进行操作，开始使用移动应用进行 Xamarin.iOS 开发。"
+title: 适用于 Xamarin iOS 应用的 Azure 应用服务移动应用入门 | Microsoft Docs
+description: 按照本教程进行操作，开始使用移动应用进行 Xamarin.iOS 开发。
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 14428794-52ad-4b51-956c-deb296cafa34
 ms.service: app-service-mobile
 ms.workload: na
@@ -62,7 +62,7 @@ ms.lasthandoff: 01/04/2018
 
     ![][10]
 
-    来自请求的数据被插入到 TodoItem 表。 移动应用后端返回存储在表中的项，数据显示在列表中。
+    来自请求的数据插入到 TodoItem 表。 移动应用后端返回存储在表中的项，数据显示在列表中。
 
 > [!NOTE]
 > 可以在 QSTodoService.cs C# 文件中查看用于访问移动应用后端以查询和插入数据的代码。

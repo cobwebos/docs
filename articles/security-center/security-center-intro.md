@@ -1,11 +1,11 @@
 ---
-title: "什么是 Azure 安全中心？| Microsoft Docs"
-description: "了解 Azure 安全中心及其主要功能和工作原理。"
+title: 什么是 Azure 安全中心？| Microsoft Docs
+description: 了解 Azure 安全中心及其主要功能和工作原理。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
 ms.devlang: na
@@ -75,7 +75,7 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和高级�
 有关详细信息，请参阅[使用恰时功能管理虚拟机访问](security-center-just-in-time.md)。
 
 ## <a name="adaptive-application-controls"></a>自适应应用程序控制
-通过应用适合特定 Azure 工作负载且由机器学习提供支持的白名单建议，阻止恶意软件和其他不需要的应用程序。
+通过应用适合特定 Azure 工作负载且由机器学习提供支持的允许列表建议，阻止恶意软件和其他不需要的应用程序。
 
 ![自适应应用程序控制][6]
 

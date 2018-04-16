@@ -85,7 +85,7 @@ ms.lasthandoff: 03/08/2018
 - 该扩展插件还会在“最近使用的应用”部分显示最近启动的三个应用程序。
 
 > [!NOTE]
-> 附加功能仅适用于 Edge、Chrome 和 Firefox。
+> 附加功能仅适用于 Microsoft Edge、Chrome 和 Firefox。
 >
 
 如果使用的我的应用 URL 不是 `https://myapps.microsoft.com`，请通过执行以下操作配置默认 URL：

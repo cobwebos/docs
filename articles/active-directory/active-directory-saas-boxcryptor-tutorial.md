@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Boxcryptor 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 与 Boxcryptor 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Boxcryptor 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 Boxcryptor 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -162,7 +162,7 @@ ms.lasthandoff: 02/27/2018
  
 ### <a name="create-a-boxcryptor-test-user"></a>创建一个 Boxcryptor 测试用户
 
-在本部分中，将在 Boxcryptor 中创建一个名为 Britta Simon 的用户。 与 [Boxcryptor 支持团队](mailto:support@boxcryptor.com)协作，在 Boxcryptor 平台中添加将需要列入白名单的用户或域。 如果该团队添加了域，则用户将自动预配到 Boxcryptor 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Boxcryptor 中创建一个名为 Britta Simon 的用户。 与 [Boxcryptor 支持团队](mailto:support@boxcryptor.com)协作，在 Boxcryptor 平台中添加将需要列入允许列表的用户或域。 如果该团队添加了域，则用户将自动预配到 Boxcryptor 平台。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 

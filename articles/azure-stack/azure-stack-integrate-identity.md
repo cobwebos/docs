@@ -261,7 +261,7 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
    > [!IMPORTANT]
    > 使用 Windows Server 2012 或 2012 R2 AD FS 时，必须使用 AD FS MMC 管理单元来配置颁发授权规则。
 
-4. 使用 Internet Explorer 或 Edge 浏览器访问 Azure Stack 时，必须忽略令牌绑定。 否则登录尝试会失败。 在 AD FS 实例或场成员上运行以下命令：
+4. 使用 Internet Explorer 或 Microsoft Edge 浏览器访问 Azure Stack 时，必须忽略令牌绑定。 否则登录尝试会失败。 在 AD FS 实例或场成员上运行以下命令：
 
    ```powershell
    Set-AdfsProperties -IgnoreTokenBinding $true

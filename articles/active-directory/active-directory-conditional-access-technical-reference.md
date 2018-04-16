@@ -123,7 +123,7 @@ ms.lasthandoff: 03/16/2018
 
 | 操作系统                     | 浏览器                            | 支持     |
 | :--                    | :--                                 | :-:         |
-| Windows 10             | Internet Explorer、Edge、Chrome     | ![勾选标记][1] |
+| Windows 10             | Internet Explorer、Microsoft Edge、Chrome     | ![勾选标记][1] |
 | Windows 8/8.1        | Internet Explorer、Chrome           | ![勾选标记][1] |
 | Windows 7              | Internet Explorer、Chrome           | ![勾选标记][1] |
 | iOS                    | Safari、Intune Managed Browser      | ![勾选标记][1] |

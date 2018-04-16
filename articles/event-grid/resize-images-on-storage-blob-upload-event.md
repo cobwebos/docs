@@ -26,7 +26,7 @@ ms.lasthandoff: 04/06/2018
 
 可以使用 Azure CLI 和 Azure 门户将调整大小功能添加到现有图像上传应用。
 
-![在 Edge 浏览器中发布的 Web 应用](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+![在 Microsoft Edge 浏览器中发布的 Web 应用](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 本教程介绍如何执行下列操作：
 
@@ -157,7 +157,7 @@ az functionapp deployment source config --name <function_app> \
 
 注意，上传的图像消失后，上传图像的副本将显示在生成的缩略图轮廓中。 此图像在通过函数重设大小后会被添加到 *thumbnails* 容器中，再由 Web 客户端下载。
 
-![在 Edge 浏览器中发布的 Web 应用](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
+![在 Microsoft Edge 浏览器中发布的 Web 应用](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
 
 ## <a name="next-steps"></a>后续步骤
 

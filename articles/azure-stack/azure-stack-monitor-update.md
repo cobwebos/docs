@@ -1,11 +1,11 @@
 ---
-title: "监视使用特权终结点的 Azure 堆栈中的更新 |Microsoft 文档"
-description: "了解如何使用特权终结点监视的集成的 Azure 堆栈系统更新状态。"
+title: 监视使用特权终结点的 Azure 堆栈中的更新 |Microsoft 文档
+description: 了解如何使用特权终结点监视的集成的 Azure 堆栈系统更新状态。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
@@ -36,7 +36,7 @@ ms.lasthandoff: 01/06/2018
 | | |
 
 ## <a name="verify-the-cmdlets-are-available"></a>验证提供了 cmdlet
-Cmdlet 不熟悉 Azure 堆栈 1710年更新包中，因为 1710年更新过程将需要获取到某个点，监视功能才可用。 通常情况下，提供了 cmdlet 如果管理员门户中的状态表示为 1710年更新**重新启动存储主机**步骤。 Cmdlet 更新期间出现的具体而言，**步骤： 运行步骤 2.6 的更新 PrivilegedEndpoint 白名单**。
+Cmdlet 不熟悉 Azure 堆栈 1710年更新包中，因为 1710年更新过程将需要获取到某个点，监视功能才可用。 通常情况下，提供了 cmdlet 如果管理员门户中的状态表示为 1710年更新**重新启动存储主机**步骤。 Cmdlet 更新期间出现的具体而言，**步骤： 运行步骤 2.6 的更新 PrivilegedEndpoint 允许列表**。
 
 您还可以确定是否提供了 cmdlet 以编程方式通过查询从特权终结点的命令列表。 若要执行此操作，请运行以下命令，从硬件生命周期主机或特权访问工作站。 此外，请确保特权终结点是受信任的主机。 有关详细信息，请参阅第 1 步[访问特权终结点](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)。 
 

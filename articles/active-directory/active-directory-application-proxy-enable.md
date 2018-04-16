@@ -1,8 +1,8 @@
 ---
-title: "Azure AD 应用代理 - 开始安装连接器| Microsoft Docs"
-description: "在 Azure 门户中，打开应用程序代理并为反向代理安装连接器。"
+title: Azure AD 应用代理 - 开始安装连接器| Microsoft Docs
+description: 在 Azure 门户中，打开应用程序代理并为反向代理安装连接器。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
@@ -53,7 +53,7 @@ ms.lasthandoff: 02/01/2018
    >
    >有关将连接器升级到最新版本的信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-understand-connectors.md#automatic-updates)。
 
-2. 如果你的防火墙或代理允许执行 DNS 白名单，可以将与 msappproxy.net 和 servicebus.windows.net 的连接加入白名单。 如果不允许，则需要允许访问每周进行更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+2. 如果你的防火墙或代理允许执行 DNS 允许列表，可以将与 msappproxy.net 和 servicebus.windows.net 的连接加入允许列表。 如果不允许，则需要允许访问每周进行更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
 
 3. Microsoft 使用四个地址来验证证书。 允许对以下 URL 的访问（如果还未对其他产品执行过此操作）：
    * mscrl.microsoft.com:80

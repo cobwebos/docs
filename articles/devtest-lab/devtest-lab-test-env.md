@@ -1,11 +1,11 @@
 ---
-title: "将 Azure 开发测试实验室用于 VM 和 PaaS 测试环境 | Microsoft Docs"
-description: "了解如何将 Azure 开发测试实验室用于 VM 和 PaaS 测试环境方案。"
+title: 将 Azure 开发测试实验室用于 VM 和 PaaS 测试环境 | Microsoft Docs
+description: 了解如何将 Azure 开发测试实验室用于 VM 和 PaaS 测试环境方案。
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: d4e2c334-643a-40c9-9051-625b8f39fc86
 ms.service: devtest-lab
 ms.workload: na
@@ -56,7 +56,7 @@ Azure 开发测试实验室可用于实现许多关键方案，但其中一个�
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | [配置 Azure Marketplace 映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure Marketplace 映像列入白名单，同时仅提供对测试人员可用的映像以供选择。|
+   | [配置 Azure Marketplace 映像](devtest-lab-configure-marketplace-images.md) |了解如何将 Azure Marketplace 映像列入允许列表，同时仅提供对测试人员可用的映像以供选择。|
    | [创建自定义映像](devtest-lab-create-template.md) |通过预安装所需的软件创建自定义映像，让测试人员能够使用自定义映像快速创建 VM。|
    | [了解映像工厂](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) |观看介绍如何设置和使用映像工厂的视频。|
 

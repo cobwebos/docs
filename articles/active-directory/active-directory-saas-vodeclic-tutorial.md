@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Vodeclic 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 与 Vodeclic 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Vodeclic 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 Vodeclic 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -20,11 +20,11 @@ ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/14/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>教程：Azure Active Directory 与 Vodeclic 的集成
+# <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>教程：Azure Active Directory 与 Vodeclic 集成
 
 本教程介绍如何将 Vodeclic 与 Azure Active Directory (Azure AD) 集成。
 
-将 Vodeclic 与 Azure AD 集成具有以下优势：
+将 Vodeclic 与 Azure AD 集成提供以下优势：
 
 - 可在 Azure AD 中控制谁有权访问 Vodeclic。
 - 可以让用户使用其 Azure AD 帐户自动登录到 Vodeclic（单一登录或 SSO）。
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/14/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-要配置 Azure AD 与 Vodeclic 的集成，需要准备好以下各项：
+若要配置 Azure AD 与 Vodeclic 的集成，需要准备好以下各项：
 
 - Azure AD 订阅
 - 已启用 Vodeclic SSO 的订阅
@@ -54,9 +54,9 @@ ms.lasthandoff: 12/14/2017
 2. 配置和测试 Azure AD 单一登录
 
 ## <a name="add-vodeclic-from-the-gallery"></a>从库中添加 Vodeclic
-要配置 Vodeclic 与 Azure AD 的集成，需要从库中将 Vodeclic 添加到托管 SaaS 应用列表。
+若要配置 Vodeclic 与 Azure AD 的集成，需要从库中将 Vodeclic 添加到托管 SaaS 应用列表。
 
-**要从库中添加 Vodeclic，请执行以下步骤：**
+**若要从库中添加 Vodeclic，请执行以下步骤：**
 
 1. 在 [Azure 门户](https://portal.azure.com)的左窗格中，选择“Azure Active Directory”图标。 
 
@@ -66,45 +66,45 @@ ms.lasthandoff: 12/14/2017
 
     ![“企业应用程序”边栏选项卡][2]
     
-3. 要添加新应用程序，请选择对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请选择对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮][3]
 
-4. 在“搜索框”中键入 Vodeclic。 在结果窗格中，选择“Vodeclic”，然后选择“添加”按钮添加该应用程序。
+4. 在“搜索框”中，键入“Vodeclic”。 在结果窗格中，选择“Vodeclic”，然后选择“添加”按钮添加该应用程序。
 
     ![结果列表中的 Vodeclic](./media/active-directory-saas-vodeclic-tutorial/tutorial_vodeclic_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于一个名为“Britta Simon”的测试用户配置并测试 Vodeclic 的 Azure AD 单一登录。
+在本部分中，基于一个名为“Britta Simon”的测试用户使用 Vodeclic 配置和测试 Azure AD 单一登录。
 
-要运行单一登录，Azure AD 需要知道与 Azure AD 用户对应的 Vodeclic 用户。 换句话说，需要在 Azure AD 用户与 Vodeclic 中的相关用户之间建立链接。
+若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Vodeclic 用户。 换句话说，需要在 Azure AD 用户与 Vodeclic 中的相关用户之间建立链接。
 
 在 Vodeclic 中，赋予“用户名”与 Azure AD 中的“用户名”相同的值。 现在，已关联这两个用户。
 
-要配置并测试 Vodeclic 的 Azure AD 单一登录，请完成以下构建基块：
+若要配置并测试 Vodeclic 的 Azure AD 单一登录，请完成以下构建基块：
 
-1. [配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)，使用户能够使用此功能。
+1. [配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on) - 使用户能够使用此功能。
 2. [创建 Azure AD 测试用户](#create-an-azure-ad-test-user)，使用 Britta Simon 测试 Azure AD 单一登录。
-3. [创建 Vodeclic 测试用户](#create-a-vodeclic-test-user)，在 Vodeclic 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
+3. [创建 Vodeclic 测试用户](#create-a-vodeclic-test-user) - 在 Vodeclic 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式。
 4. [分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)，使 Britta Simon 能够使用 Azure AD 单一登录。
 5. [测试单一登录](#test-single-sign-on)，以验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-本部分在 Azure 门户中启用 Azure AD 单一登录，并在 Vodeclic 应用程序中配置单一登录。
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Vodeclic 应用程序中配置单一登录。
 
-**要配置 Vodeclic 的 Azure AD 单一登录，请执行以下步骤：**
+**若要为 Vodeclic 配置 Azure AD 单一登录，请执行以下步骤：**
 
 1. 在 Azure 门户中的“Vodeclic”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接][4]
 
-2. 在“单一登录”对话框中，在“单一登录模式”下选择“基于 SAML 的登录”，启用单一登录。
+2. 在“单一登录”对话框中，在“单一登录模式”下选择“基于 SAML 的登录”以启用单一登录。
  
     ![“单一登录”对话框](./media/active-directory-saas-vodeclic-tutorial/tutorial_vodeclic_samlbase.png)
 
-3. 如果要在“IDP”发起的模式下配置应用程序，请在“Vodeclic 域和 URL”部分中执行下列步骤：
+3. 如果要在 IDP 启动的模式下配置应用程序，请在“Vodeclic 域和 URL”部分中执行下列步骤：
 
     ![Vodeclic 域和 URL 单一登录信息](./media/active-directory-saas-vodeclic-tutorial/tutorial_vodeclic_url.png)
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 12/14/2017
 
     b. 在“回复 URL”框中，使用以下模式键入 URL：`https://<companyname>.lms.vodeclic.net/auth/saml/callback`
 
-4. 如果要在“SP”发起的模式下配置应用程序，请选中“显示高级 URL 设置”复选框，并执行以下步骤：
+4. 如果要在 SP 启动的模式下配置应用程序，请选择“显示高级 URL 设置”复选框，并执行以下步骤：
 
     ![Vodeclic 域和 URL 单一登录信息](./media/active-directory-saas-vodeclic-tutorial/tutorial_vodeclic_url1.png)
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 12/14/2017
 
     ![配置单一登录“保存”按钮](./media/active-directory-saas-vodeclic-tutorial/tutorial_general_400.png)
     
-7. 要在 Vodeclic 端配置单一登录，请将下载的元数据 XML 发送给 [Vodeclic 支持团队](mailto:hotline@vodeclic.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+7. 若要在 Vodeclic 端配置单一登录，请将下载的元数据 XML 发送给 [Vodeclic 支持团队](mailto:hotline@vodeclic.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了。 从“Active Directory” > “企业应用程序”部分添加该应用后，选择“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)中阅读有关嵌入式文档功能的详细信息。
@@ -168,14 +168,14 @@ ms.lasthandoff: 12/14/2017
  
 ### <a name="create-a-vodeclic-test-user"></a>创建一个 Vodeclic 测试用户
 
-本部分在 Vodeclic 中创建一个名为 Britta Simon 的用户。 请与 [Vodeclic 支持团队](mailto:hotline@vodeclic.com)协作，将该用户添加到 Vodeclic 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Vodeclic 中创建一个名为 Britta Simon 的用户。 请配合 [Vodeclic 支持团队](mailto:hotline@vodeclic.com)将用户添加到 Vodeclic 平台中。 使用单一登录前，必须先创建并激活用户。
 
 > [!NOTE]
-> 根据应用程序要求，可能需要获取计算机白名单。 对于这种情况，需要与 [Vodeclic 支持团队](mailto:hotline@vodeclic.com)共享公用 IP 地址。
+> 根据应用程序要求，可能需要获取计算机允许列表。 对于这种情况，需要与 [Vodeclic 支持团队](mailto:hotline@vodeclic.com)共享公用 IP 地址。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过向 Britta Simon 授予 Vodeclic 的访问权限支持其使用 Azure 单一登录。
+在本部分中，通过向 Britta Simon 授予 Vodeclic 的访问权限支持她使用 Azure 单一登录。
 
 ![分配用户角色][200] 
 
@@ -207,7 +207,7 @@ ms.lasthandoff: 12/14/2017
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中选择“Vodeclic”磁贴时，应会自动登录到 Vodeclic 应用程序。
+选择访问面板中的“Vodeclic”磁贴时，应会自动登录到 Vodeclic 应用程序。
 
 有关访问面板的详细信息，请参阅[访问面板简介](active-directory-saas-access-panel-introduction.md)。 
 

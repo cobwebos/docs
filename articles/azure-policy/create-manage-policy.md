@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure 策略来创建和管理策略以强制实施组织符合性 | Microsoft Docs"
-description: "使用 Azure 策略强制执行标准、满足法规遵从性、审核需求、控制成本、维护安全和性能的一致性，并实施企业范围的设计原则。"
+title: 使用 Azure 策略来创建和管理策略以强制实施组织符合性 | Microsoft Docs
+description: 使用 Azure 策略强制执行标准、满足法规遵从性、审核需求、控制成本、维护安全和性能的一致性，并实施企业范围的设计原则。
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/18/2018
@@ -345,7 +345,7 @@ az policy definition list
    - 需要 SQL Server 版本 12.0
    - 在安全中心监视不受保护的 Web 应用程序。
    - 监视安全中心内的许可网络。
-   - 监视安全中心内列为白名单的可能的应用。
+   - 监视安全中心内列为允许列表的可能的应用。
    - 监视安全中心内未加密的 VM 磁盘。
 
    ![计划定义](media/create-manage-policy/initiative-definition-2.png)

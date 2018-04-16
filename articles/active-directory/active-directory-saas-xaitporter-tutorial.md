@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 XaitPorter 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 XaitPorter 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 XaitPorter 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 XaitPorter 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -139,7 +139,7 @@ ms.lasthandoff: 12/11/2017
 
     e. 使用以下模式生成**元数据 URL**：`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
-6. 向 [SmartRecruiters 支持团队](https://www.smartrecruiters.com/about-us/contact-us/)提供“IP 地址”或“元数据 URL”，使 XaitPorter 能够确保可从其配置白名单的 XaitPorter 实例访问该 IP 地址。 
+6. 向 [SmartRecruiters 支持团队](https://www.smartrecruiters.com/about-us/contact-us/)提供“IP 地址”或“元数据 URL”，使 XaitPorter 能够确保可从其配置允许列表的 XaitPorter 实例访问该 IP 地址。 
 
 7. 在另一个 Web 浏览器窗口中，以管理员身份登录到 XaitPorter 公司站点。
 

@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure 云服务配置和管理常见问题解答 | Microsoft Docs"
-description: "本文列出了一些关于 Microsoft Azure 云服务配置和管理的常见问题解答。"
+title: Microsoft Azure 云服务配置和管理常见问题解答 | Microsoft Docs
+description: 本文列出了一些关于 Microsoft Azure 云服务配置和管理的常见问题解答。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -192,7 +192,7 @@ Windows 10 和 Windows Server 2016 随附了对客户端和服务器端上的 HT
 完成此过程后，可使用以下方法之一验证是否已启用 HTTP/2：
 
 - 在 IIS 日志中启用协议版本，并查看 IIS 日志。 日志中会显示 HTTP/2。 
-- 在 Internet Explorer/Edge 中启用 F12 开发人员工具，并切换到“网络”选项卡来验证协议。 
+- 在 Internet Explorer/Microsoft Edge 中启用 F12 开发人员工具，并切换到“网络”选项卡来验证协议。 
 
 有关详细信息，请参阅 [IIS 上的 HTTP/2](https://blogs.iis.net/davidso/http2)。
 
