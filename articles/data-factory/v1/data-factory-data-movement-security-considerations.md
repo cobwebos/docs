@@ -141,7 +141,7 @@ IPSec VPN：
 
 ![将 IPSec VPN 与网关配合使用](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>网关的防火墙配置和白名单 IP 地址
+### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>网关的防火墙配置和允许列表 IP 地址
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求  
 在企业中，企业防火墙在组织的中央路由器上运行。 并且，Windows 防火墙在安装网关的本地计算机上作为守护程序运行。 
@@ -157,7 +157,7 @@ IPSec VPN：
 | `*.azuredatalakestore.net` | 443 | （可选）目标为 Azure Data Lake Store 时需要 | 
 
 > [!NOTE] 
-> 可能需要按相应数据源的要求在企业防火墙级别管理端口/白名单域。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
+> 可能需要按相应数据源的要求在企业防火墙级别管理端口/允许列表域。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
 
 下表提供了 Windows 防火墙的入站端口要求。
 
@@ -167,10 +167,10 @@ IPSec VPN：
 
 ![网关端口要求](media\data-factory-data-movement-security-considerations/gateway-port-requirements.png) 
 
-#### <a name="ip-configurations-whitelisting-in-data-store"></a>数据存储中的 IP 配置/白名单
-云中的某些数据存储还需要访问它们的计算机的 IP 地址白名单。 确保已在防火墙中将网关计算机的 IP 地址列入白名单或对其进行了适当配置。
+#### <a name="ip-configurations-whitelisting-in-data-store"></a>数据存储中的 IP 配置/允许列表
+云中的某些数据存储还需要访问它们的计算机的 IP 地址允许列表。 确保已在防火墙中将网关计算机的 IP 地址列入允许列表或对其进行了适当配置。
 
-以下云数据存储需要网关计算机的 IP 地址白名单。 默认情况下，某些这类数据存储可能不需要 IP 地址白名单。 
+以下云数据存储需要网关计算机的 IP 地址允许列表。 默认情况下，某些这类数据存储可能不需要 IP 地址允许列表。 
 
 - [Azure SQL 数据库](../../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -184,7 +184,7 @@ IPSec VPN：
 答案：我们尚不支持此功能。 我们正致力于解决该问题。
 
 问题：确保网关正常工作的端口要求是什么？
-答案：网关建立基于 HTTP 的连接，以打开 Internet。 必须打开出站端口 443 和 80，网关才能建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源/目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和白名单 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of gateway)部分。 
+答案：网关建立基于 HTTP 的连接，以打开 Internet。 必须打开出站端口 443 和 80，网关才能建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源/目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和允许列表 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of gateway)部分。 
 
 问题：网关的证书要求是什么？
 答案：当前网关需要凭据管理器应用程序用于安全设置数据存储凭据的证书。 该证书是由网关安装程序创建并配置的自签名证书。 可以改用自己的 TLS/SSL 证书。 有关详细信息，请参阅[一键式凭据管理器应用程序](#click-once-credentials-manager-app)部分。 

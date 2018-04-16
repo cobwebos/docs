@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: b84a56996a335f8a137c4219c55b9878e39b5a3b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a34a94a9421c65a2b1d4ce5c390732e0adbb69d6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>快速入门：使用 .NET 上传、下载和列出 Blob
 
@@ -56,26 +56,15 @@ ms.lasthandoff: 03/23/2018
 git clone https://github.com/Azure-Samples/storage-blobs-dotnet-quickstart.git
 ```
 
-此命令会将存储库克隆到本地 git 文件夹。 若要打开 Visual Studio 解决方案，请找到 storage-blobs-dotnet-quickstart 文件夹并打开，然后双击 storage-blobs-dotnet-quickstart.sln。 
+此命令会将存储库克隆到本地 git 文件夹。 若要打开 Visual Studio 解决方案，请找到 *storage-blobs-dotnet-quickstart* 文件夹并将其打开，然后双击 *storage-blobs-dotnet-quickstart.sln*。 
+
+[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
 
-若要运行应用程序，必须为存储帐户提供连接字符串。 从 Azure 门户复制连接字符串，并将其写入新的环境变量。 此示例从环境变量中读取连接字符串，并使用它对 Azure 存储请求进行身份验证。
+若要运行应用程序，必须为存储帐户提供连接字符串。 此示例应用程序从环境变量中读取连接字符串，并使用它对 Azure 存储请求进行身份验证。
 
-### <a name="copy-your-connection-string-from-the-azure-portal"></a>从 Azure 门户复制连接字符串
-
-复制连接字符串：
-
-1. 导航到 [Azure 门户](https://portal.azure.com)。
-2. 找到自己的存储帐户。
-3. 在存储帐户概述的“设置”部分，选择“访问密钥”。
-4. 找到“密钥 1”下面的“连接字符串”值，单击“复制”按钮复制该连接字符串。  
-
-    ![显示如何从 Azure 门户复制连接字符串的屏幕截图](media/storage-quickstart-blobs-dotnet/portal-connection-string.png)
-
-## <a name="write-your-connection-string-to-an-environment-variable"></a>将连接字符串写入环境变量
-
-接下来，在运行应用程序的本地计算机上写入新环境变量。 若要设置环境变量，请打开控制台窗口，并遵照适用于操作系统的说明。 将 `<yourconnectionstring>` 替换为实际的连接字符串：
+复制连接字符串以后，请将其写入运行应用程序的本地计算机的新环境变量中。 若要设置环境变量，请打开控制台窗口，并遵照适用于操作系统的说明。 将 `<yourconnectionstring>` 替换为实际的连接字符串：
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 

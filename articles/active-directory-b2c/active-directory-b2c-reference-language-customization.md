@@ -176,7 +176,7 @@ Microsoft 目前不支持从右向左书写的语言。 如果需要此功能，
 ### <a name="social-identity-provider-translations"></a>社交标识提供者翻译
 Microsoft 为社交登录名提供 `ui_locales` OIDC 参数。 但某些社交标识提供者（包括 Facebook 和 Google）并不遵循此参数。 
 ### <a name="browser-behavior"></a>浏览器行为
-Chrome 和 Firefox 都会请求其设置的语言。 如果支持该语言，将先显示该语言，再显示默认语言。 Edge 目前不会请求语言，而是直接使用默认语言。
+Chrome 和 Firefox 都会请求其设置的语言。 如果支持该语言，将先显示该语言，再显示默认语言。 Microsoft Edge 目前不会请求语言，而是直接使用默认语言。
 
 ### <a name="supported-languages"></a>支持的语言
 

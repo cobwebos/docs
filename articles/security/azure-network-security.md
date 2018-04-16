@@ -1,12 +1,12 @@
 ---
-title: "Azure 网络安全 | Microsoft Docs"
-description: "了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。"
+title: Azure 网络安全 | Microsoft Docs
+description: 了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: f0cc1716daa70bf7c860373819568774cf6f95d9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 9b86eda1f4ddff9b61ff5b0f9c465e5ef6c2088b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-network-security"></a>Azure 网络安全
 
@@ -392,7 +392,7 @@ Azure 网络安全设备可增强 VNet 安全性和网络功能。众多供应�
 
 JSON 格式化的日志直接进入客户的存储帐户。 你对这些日志具有完全控制权，并且可以应用自己的保留策略。
 
-还可以使用 [Azure 日志集成](https://aka.ms/AzLog)将这些日志引入自己的分析系统。 WAF 日志还与 [Operations Management Suite (OMS)](https://www.microsoft.com/cloud-platform/operations-management-suite) 集成，因此你可以使用 OMS Log Analytics 执行复杂的细化查询。
+还可以使用 [Azure 日志集成](https://aka.ms/AzLog)将这些日志引入自己的分析系统。 WAF 日志还与 [Log Analytics](../log-analytics/log-analytics-overview.md) 集成，因此可以使用 Log Analytics 执行复杂的细化查询。
 
 #### <a name="azure-web-application-firewall-waf"></a>Azure Web 应用程序防火墙 (WAF)
 
@@ -516,7 +516,7 @@ Azure 提供许多用于监视、防止、检测和响应网络安全事件的�
 
  ![网络观察程序](./media/azure-network-security/azure-network-security-fig-15.png)
 
-网络观察程序是一个区域性的服务，可用于在网络级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。
+网络观察程序是一个区域性服务，可用于在网络方案级别监视和诊断 Azure 内部以及传入和传出 Azure 的流量的状态。 借助网络观察程序随附的网络诊断和可视化工具，可以了解、诊断和洞察 Azure 中的网络。
 
 网络观察程序目前提供以下功能：
 
@@ -606,7 +606,7 @@ Azure 提供许多用于监视、防止、检测和响应网络安全事件的�
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 是 [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 中的一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。
+[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 是 Azure 中的一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。
 
 Log Analytics 提供了用来监视网络的以下解决方案：
 

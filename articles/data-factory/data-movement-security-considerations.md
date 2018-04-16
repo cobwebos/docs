@@ -152,7 +152,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 | `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | （可选）从/向 Azure Data Lake Store 复制时需要。 |
 
 > [!NOTE] 
-> 可能需要按相应数据源的要求在企业防火墙级别管理端口或白名单域。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
+> 可能需要按相应数据源的要求在企业防火墙级别管理端口/允许列表域。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
 
 下表提供了 Windows 防火墙的入站端口要求：
 
@@ -162,10 +162,10 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 ![网关端口要求](media\data-movement-security-considerations/gateway-port-requirements.png) 
 
-#### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>数据存储中的 IP 配置和白名单
-云中的某些数据存储还需要将访问存储的计算机的 IP 地址加入白名单。 确保已在防火墙中相应地将自承载集成运行时计算机的 IP 地址加入白名单或进行配置。
+#### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>数据存储中的 IP 配置和允许列表
+云中的某些数据存储还需要将访问存储的计算机的 IP 地址加入允许列表。 确保已在防火墙中相应地将自承载集成运行时计算机的 IP 地址加入允许列表或进行配置。
 
-以下云数据存储要求将自承载集成运行时计算机的 IP 地址加入白名单。 默认情况下，某些这类数据存储可能不需要白名单。 
+以下云数据存储要求将自承载集成运行时计算机的 IP 地址加入允许列表。 默认情况下，某些这类数据存储可能不需要允许列表。 
 
 - [Azure SQL 数据库](../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -181,7 +181,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 **需要满足哪些端口要求才能让自承载集成运行时正常工作？**
 
-自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443 和 80，才能让自承载集成运行时建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源或目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和白名单 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of-gateway)部分。 
+自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443 和 80，才能让自承载集成运行时建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8050。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源或目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和允许列表 IP 地址](#firewall-configurations-and-whitelisting-ip-address-of-gateway)部分。 
 
 
 ## <a name="next-steps"></a>后续步骤

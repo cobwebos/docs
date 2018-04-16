@@ -341,7 +341,7 @@ ms.lasthandoff: 03/23/2018
 * 请勿复制 Azure AD B2C 的默认内容并尝试修改。 最好从头开始构建 HTML5 内容，将默认内容用作参考。
 * 出于安全考虑，我们不允许在自己的内容中包含任何 JavaScript。 所需的大部分功能应该都是现成的。 如果不是，请使用[User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)（用户之声）请求新功能。
 * 支持的浏览器版本：
-  * Internet Explorer 11、10、Edge
+  * Internet Explorer 11、10、Microsoft Edge
   * 对 Internet Explorer 9 和 8 的支持有限
   * Google Chrome 42.0 和更高版本
   * Mozilla Firefox 38.0 和更高版本

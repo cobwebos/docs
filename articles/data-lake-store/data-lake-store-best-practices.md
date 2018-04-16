@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: c394142ba40fc580bdcec11430dcae2816fa9760
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: daa6a0fd6927a166ee4809dc1dc5df612765403a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>使用 Azure Data Lake Store 的最佳做法
 本文介绍 Azure Data Lake Store 使用方面的最佳做法和注意事项。 本文介绍 Data Lake Store 的安全性、性能、复原和监视。 在 Data Lake Store 出现之前，在 Azure HDInsight 之类的服务中使用真正大型的数据是很复杂的事情。 必须将数据在多个 Blob 存储帐户中分片，才能实现 PB 级的存储以及在该规模下的性能优化。 使用 Data Lake Store 时，大部分针对大小和性能的硬性限制都会去除。 但是，若要充分利用 Data Lake Store 的性能，仍有一些需要本文讨论的注意事项。 
@@ -129,7 +129,7 @@ Data Lake Store 提供详细的诊断日志和审核。 Data Lake Store 提供�
 
 ### <a name="export-data-lake-store-diagnostics"></a>导出 Data Lake Store 诊断 
 
-若要从 Data Lake Store 访问可搜索的日志，最快速的一个方法是在 Data Lake Store 帐户的“诊断”边栏选项卡下启用到 **Operations Management Suite (OMS)** 的日志传送。 这样就可以使用时间和内容筛选器立即访问传入日志，并且可以使用在 15 分钟时间间隔内触发的警报选项（电子邮件/Webhook）。 有关说明，请参阅[访问 Azure Data Lake Store 的诊断日志](data-lake-store-diagnostic-logs.md)。 
+若要从 Data Lake Store 访问可搜索的日志，最快速的一个方法是在 Data Lake Store 帐户的“诊断”边栏选项卡下启用到 **Log Analytics** 的日志传送。 这样就可以使用时间和内容筛选器立即访问传入日志，并且可以使用在 15 分钟时间间隔内触发的警报选项（电子邮件/Webhook）。 有关说明，请参阅[访问 Azure Data Lake Store 的诊断日志](data-lake-store-diagnostic-logs.md)。 
 
 如需日志放置位置的更多实时警报并对放置位置进行更多的控制，可以考虑将日志导出到 Azure EventHub，以便对内容单独进行分析或按时间窗口进行分析，这样就可以向队列提交实时通知。 然后可以通过单独的应用程序（例如[逻辑应用](../connectors/connectors-create-api-azure-event-hubs.md)）使用这些警报并将其传送到适当的通道，以及向监视工具（例如 NewRelic、Datadog 或 AppDynamics）提交指标。 或者，如果使用的是 ElasticSearch 之类的第三方工具，则可将日志导出到 Blob 存储，然后通过 [Azure Logstash 插件](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob)将数据用到 Elasticsearch、Kibana 和 Logstash (ELK) 堆栈中。
 
@@ -139,7 +139,7 @@ Data Lake Store 提供详细的诊断日志和审核。 Data Lake Store 提供�
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG 
 
-设置属性且节点重启后，Data Lake Store 诊断就会写入到节点上的 YARN 日志 (/tmp/<user>/yarn.log)，然后就可以监视各种重要的详细信息，例如错误或限制（HTTP 429 错误代码）。 也可在 [](data-lake-store-diagnostic-logs.md)Data Lake Store 帐户的“诊断”边栏选项卡的 OMS（或日志传送到的任何位置）中监视这些相同的信息。 若要启用操作可见性并方便调试，建议至少启用 Data Lake Store 的客户端日志记录或利用其日志传送选项。
+设置属性且节点重启后，Data Lake Store 诊断就会写入到节点上的 YARN 日志 (/tmp/<user>/yarn.log)，然后就可以监视各种重要的详细信息，例如错误或限制（HTTP 429 错误代码）。 也可在 [Data Lake Store ](data-lake-store-diagnostic-logs.md)帐户的“诊断”边栏选项卡的 Log Analytics（或日志传送到的任何位置）中监视这些相同的信息。 若要启用操作可见性并方便调试，建议至少启用 Data Lake Store 的客户端日志记录或利用其日志传送选项。
 
 ### <a name="run-synthetic-transactions"></a>运行综合事务 
 

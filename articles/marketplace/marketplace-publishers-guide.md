@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: e9343b4a0049b2eea30f903159fdeff0ae7ff851
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 07fb601b2cf6e3fe3cc9bfb7bca3bdcbec7e9ca7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace 和 AppSource 发布者指南
 
@@ -121,7 +121,8 @@ Marketplace 店面与受众需求和 Microsoft 云产品的特点相匹配，从
 当试用级别或事务级别的参与不可行时，使用“与我联系”。 此方法的好处是帮助在市场中发布解决方案的发布者立即开始获取潜在顾客，通过进一步维护这些潜在客户产生基础交易，进而扩展业务规模。 但此方式的缺点是，与其他产品/服务类型相比，对客户的吸引力有限。
 
 >[!IMPORTANT]
->“与我联系”不是建议的推广类型。 仅当无法建立试用体验时，才应使用此选项。 最好是使用“试用”和“交易”产品来与客户互动。 如果有任何类型的试用体验，则我们的加入过程会根据具体的方案，引导你使用其中一个选项。
+<<<<<<< HEAD 最好是使用“试用”和“交易”产品来与客户互动。 “与我联系”的价值是你收到的潜在顾客，因此如果你选择此列表类型，请确保已配置潜在顾客目标，并且已准备好使潜在顾客数最大化。 ======= “与我联系”不是建议的列表类型。 仅当无法建立试用体验时，才应使用此选项。 最好是使用“试用”和“交易”产品来与客户互动。 如果有任何类型的试用体验，则我们的加入过程会根据具体的方案，引导你使用其中一个选项。
+>>>>>>> 2874631130f763b6e91e8725781400bcb76d6a62
 
 如果产品/服务主要由专业服务构成（例如评估、实施和学习班），请使用“咨询服务”产品/服务类型。 产品/服务的范围、持续时间和价格须是固定的，须面向单个客户，且须即时提供和兑现。
 
