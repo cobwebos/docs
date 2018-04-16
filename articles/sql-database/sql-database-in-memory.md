@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 442c860a13e2af1d5398fb30a6069a0e3764ee64
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 36a6b32851c4778db3405b6b9b35d9551181abf4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>在 SQL 数据库中使用内存中技术优化性能
 
@@ -22,7 +22,7 @@ ms.lasthandoff: 03/23/2018
 以下两个示例演示了如何借助内存中 OLTP 大幅改善性能：
 
 - 使用内存中 OLTP，[仲裁商业解决方案能够使其工作负荷增加一倍，同时节省 70% 的 DTU](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)。
-    - DTU 表示“数据库吞吐量单位”，包括资源消耗量的测量值。
+    - DTU 表示“数据库事务单位”，包括资源消耗量的测量值。
 - 以下视频使用示例工作负荷演示资源消耗方面的重大改进：[In-Memory OLTP in Azure SQL Database Video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB)（“Azure SQL 数据库中的内存中 OLTP”视频）。
     - 有关详细信息，请参阅博客文章：[“Azure SQL 数据库中的内存中 OLTP”博客文章](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 03/23/2018
 
 Azure SQL 数据库采用以下内存中技术：
 
-- *内存中 OLTP* 可提升吞吐量并降低事务处理的延迟。 可受益于内存中 OLTP 的情况有：高吞吐量事务处理（例如贸易和游戏）、从事件或 IoT 设备引入数据、缓存、数据加载以及临时表和表变量等情况。
+- *内存中 OLTP* 可提高事务量并降低事务处理的延迟。 可受益于内存中 OLTP 的情况有：高吞吐量事务处理（例如贸易和游戏）、从事件或 IoT 设备引入数据、缓存、数据加载以及临时表和表变量等情况。
 - *聚集列存储索引*可减少存储占用（高达 10 倍）并提高报告和分析查询的性能。 将其与数据集市中的事实数据表结合使用，可在数据库中容纳更多数据并提升性能。 此外，将其与操作数据库中的历史数据结合使用，可存档并查询高达 10 倍的额外数据。
 - 用于 HTAP 的*非聚集列存储索引*：通过直接查询操作数据库来帮助获取业务的实时见解，无需运行开销不菲的提取、转换和加载 (ETL) 过程并等待填充数据仓库。 非聚集列存储索引允许非常快速地对 OLTP 数据库执行分析查询，同时减少对操作工作负荷的影响。
 - 也可以使用内存优化表与列存储的组合。 使用这种组合可以针对相同的数据极快执行事务处理和并发运行分析查询。
@@ -71,7 +71,7 @@ Azure SQL 数据库采用以下内存中技术：
 
 内存中 OLTP 包括用于存储用户数据的内存优化表。 这些表必需在内存可容纳的范围内。 由于内存是直接在 SQL 数据库服务中管理的，因此我们提出了用户数据配额的概念。 这种概念称为*内存中 OLTP 存储*。
 
-每个受支持的独立数据库定价层和每个弹性池定价层都包括一定量的内存中 OLTP 存储。 在编写本文时，每 125 个数据库事务单位 (DTU) 或弹性数据库事务单位 (eDTU) 可使用 1 GB 存储。 有关详细信息，请参阅[资源限制](sql-database-resource-limits.md)。
+每个受支持的独立数据库定价层和每个弹性池定价层都包括一定量的内存中 OLTP 存储。 请参阅[基于 DTU 的资源限制](sql-database-dtu-resource-limits.md)和[基于 vCore 的资源限制](sql-database-vcore-resource-limits.md)。
 
 以下各项计入内存中 OLTP 存储上限：
 
@@ -87,8 +87,8 @@ Azure SQL 数据库采用以下内存中技术：
 
 使用弹性池时，池中的所有数据库共享内存中 OLTP 存储。 因此一个数据库中的使用量可能对其他数据库造成影响。 对此，有两个缓解方法：
 
-- 为低于池的 eDTU 计数的数据库整体配置最大 eDTU。 此最大值将池中任意数据库中的内存中 OLTP 存储利用率限制为与 eDTU 计数对应的大小。
-- 配置大于 0 的最小 eDTU。 此最小值可保证池中的每个数据库都有与配置的最小 eDTU 对应的可用内存中 OLTP 存储量。
+- 为低于池的 eDTU 或 vCore 计数的数据库整体配置 `Max-eDTU` 或 `MaxvCore`。 此最大值将池中任意数据库中的内存中 OLTP 存储利用率限制为与 eDTU 计数对应的大小。
+- 配置大于 0 的 `Min-eDTU` 或 `MinvCore`。 此最小值可保证池中的每个数据库都有与配置的 `Min-eDTU` 或 `vCore` 对应的可用内存中 OLTP 存储量。
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>列存储索引的数据大小和存储
 
@@ -152,7 +152,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 #### <a name="installation-steps"></a>安装步骤
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在服务器上创建一个高级数据库。 将“源”设置为 AdventureWorksLT 示例数据库。 有关详细说明，请参阅[创建第一个 Azure SQL 数据库](sql-database-get-started-portal.md)。
+1. 通过 [Azure 门户](https://portal.azure.com/)，在服务器上创建一个高级或业务关键（预览）数据库。 将“源”设置为 AdventureWorksLT 示例数据库。 有关详细说明，请参阅[创建第一个 Azure SQL 数据库](sql-database-get-started-portal.md)。
 
 2. 使用 SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx) 连接到该数据库。
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure 上的 FreeBSD 简介 | Microsoft Docs"
-description: "了解如何在 Azure 上使用 FreeBSD 虚拟机"
+title: Azure 上的 FreeBSD 简介 | Microsoft Docs
+description: 了解如何在 Azure 上使用 FreeBSD 虚拟机
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: thomas1206
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 32b87a5f-d024-4da0-8bf0-77e233d1422b
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: e47a00a8375659f9112da57f9e7a4747f10f8f16
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 9c7cf223eab3e989436e12c39b122f2aee7619a0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure 上的 FreeBSD 简介
 本主题提供在 Azure 中运行 FreeBSD 虚拟机的概述。
@@ -130,7 +130,7 @@ $ sudo <COMMAND>
 可以选择使用 `sudo -s` 获取 root shell。
 
 ## <a name="known-issues"></a>已知问题
-[Azure VM 来宾代理](https://github.com/Azure/WALinuxAgent/) 2.2.2 存在 [已知问题] (https://github.com/Azure/WALinuxAgent/pull/517)，此问题导致 Azure 上的 FreeBSD VM 预配失败。 [Azure VM 来宾代理](https://github.com/Azure/WALinuxAgent/) 2.2.3 及更高版本已修复此问题。 
+[Azure VM 来宾代理](https://github.com/Azure/WALinuxAgent/) 2.2.2 存在 [已知问题] (https://github.com/Azure/WALinuxAgent/pull/517))，此问题会导致 Azure 上的 FreeBSD VM 预配失败。 [Azure VM 来宾代理](https://github.com/Azure/WALinuxAgent/) 2.2.3 及更高版本已修复此问题。 
 
 ## <a name="next-steps"></a>后续步骤
 * 转到 [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd110/) 创建 FreeBSD VM。

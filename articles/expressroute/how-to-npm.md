@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 586d78e29177dd4a627c94cd754c21cc2b6f37d4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7d6f064be21f717c825843780fac28bc874f46ce
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>为 ExpressRoute 配置网络性能监视器
 
-网络性能监视器 (NPM) 是基于云的网络监视解决方案，用于监视 Azure 云部署和本地位置（分支机构等）之间的连接。 NPM 属于 Microsoft Operations Management Suite (OMS)。 NPM 现在可为 ExpressRoute 提供扩展，使你能通过配置为使用专用对等互连的 ExpressRoute 线路监视网络性能。 为 ExpressRoute 配置 NPM 后，可以检测到需要识别和消除的网络问题。
+网络性能监视器 (NPM) 是基于云的网络监视解决方案，用于监视 Azure 云部署和本地位置（分支机构等）之间的连接。 NPM 是 Log Analytics 的一部分。 NPM 现在可为 ExpressRoute 提供扩展，使你能通过配置为使用专用对等互连的 ExpressRoute 线路监视网络性能。 为 ExpressRoute 配置 NPM 后，可以检测到需要识别和消除的网络问题。
 
 可以：
 
@@ -72,11 +72,11 @@ ms.lasthandoff: 03/17/2018
 
 1. 在[Azure 门户](https://portal.azure.com)，选择 Vnet 的订阅到 ExpressRoute 线路对等。 然后从 Marketplace 服务列表中搜索“网络性能监视器”。 在返回结果中，单击打开“网络性能监视器”页面。
 
->[!NOTE]
->可以创建新的工作区或使用现有的工作区。  如果想要使用现有工作区，则必须确保工作区已迁移到新的查询语言。 [详细信息...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
->
+   >[!NOTE]
+   >可以创建新的工作区或使用现有的工作区。  如果想要使用现有工作区，则必须确保工作区已迁移到新的查询语言。 [详细信息...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+   >
 
-  ![portal](.\media\how-to-npm\3.png)<br><br>
+   ![portal](.\media\how-to-npm\3.png)<br><br>
 2. 在“网络性能监视器”主页底部，单击“创建”打开“网络性能监视器 - 创建新解决方案”页面。 单击“OMS 工作区 - 选择工作区”打开“工作区”页面。 单击“+ 创建新工作区”打开“工作区”页面。
 3. 在“OMS 工作区”页面上，选择“新建”并配置下列设置：
 
@@ -86,15 +86,15 @@ ms.lasthandoff: 03/17/2018
   * 位置 - 必须选择一个[受支持区域](#regions)。
   * “定价层”- 选择“免费”
   
-  >[!NOTE]
-  >ExpressRoute 线路可以位于世界上任意位置，并且无需与工作区在同一区域。
-  >
+    >[!NOTE]
+    >ExpressRoute 线路可以位于世界上任意位置，并且无需与工作区在同一区域。
+    >
   
-  ![工作区](.\media\how-to-npm\4.png)<br><br>
+    ![工作区](.\media\how-to-npm\4.png)<br><br>
 4. 单击“确定”保存和部署设置模板。 模板验证后，单击“创建”以部署工作区。
 5. 部署工作区后，导航到创建的“NetworkMonitoring(名称)”资源。 验证设置，然后单击“解决方案需要其他配置”。
 
-  ![其他配置](.\media\how-to-npm\5.png)
+   ![其他配置](.\media\how-to-npm\5.png)
 
 ## <a name="agents"></a>步骤 2：安装和配置代理
 
@@ -126,9 +126,9 @@ ms.lasthandoff: 03/17/2018
 2. 在“欢迎”页面上，单击“下一步”。
 3. 在“许可条款”页面上阅读许可协议，然后单击“我接受”。
 4. 在“目标文件夹”页面上更改或保留默认安装文件夹，然后单击“下一步”。
-5. 在“代理安装选项”页上，可以选择将代理连接到 Azure Log Analytics (OMS) 或 Operations Manager。 或者，如果希望稍后配置代理，也可以将选项留空。 完成选择后，单击“下一步”。
+5. 在“代理安装选项”页上，可以选择将代理连接到 Azure Log Analytics 或 Operations Manager。 或者，如果希望稍后配置代理，也可以将选项留空。 完成选择后，单击“下一步”。
 
-  * 如果选择连接到 Azure Log Analytics (OMS)，请粘贴在前面步骤中复制到记事本的“工作区 ID” 和“工作区密钥”（主密钥）。 然后单击“下一步”。
+  * 如果选择连接到 Azure Log Analytics，请粘贴在前一部分中复制到记事本的“工作区 ID”和“工作区密钥”（主密钥）。 然后单击“下一步”。
 
     ![ID 和密钥](.\media\how-to-npm\8.png)
   * 如果选择连接到 Operations Manager，请在“管理组配置”页面键入“管理组名称”、“管理服务器”和“管理服务器端口”。 然后单击“下一步”。
@@ -139,7 +139,7 @@ ms.lasthandoff: 03/17/2018
     ![帐户](.\media\how-to-npm\10.png)
 6. 在“准备安装”页上检查所做的选择，并单击“安装”。
 7. 在“配置已成功完成”页上，单击“完成”。
-8. 完成后，Microsoft Monitoring Agent 将显示在“控制面板”中。 可在该处查看配置并验证代理是否已连接到操作见解 (OMS)。 如果连接到 OMS，代理会显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。
+8. 完成后，Microsoft Monitoring Agent 将显示在“控制面板”中。 可在该处查看配置并验证代理是否已连接到 Azure Log Analytics (OMS)。 如果已连接，代理会显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”。
 
 9. 请重复上述操作需要监视每个 VNET。
 
@@ -162,8 +162,8 @@ ms.lasthandoff: 03/17/2018
 
 1. 在具有监视代理的服务器上，打开“控制面板”。
 2. 打开“Microsoft Monitoring Agent”。
-3. 单击“Azure Log Analytics (OMS)”选项卡。
-4. 在“状态”列中，应该会看到代理成功连接到 Operations Management Suite 服务。
+3. 单击“Azure Log Analytics”选项卡。
+4. 在“状态”列中，应该会看到代理已成功连接到 Log Analytics。
 
   ![status](.\media\how-to-npm\12.png)
 

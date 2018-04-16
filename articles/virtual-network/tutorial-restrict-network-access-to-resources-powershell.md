@@ -1,38 +1,38 @@
 ---
 title: 限制对 PaaS 资源的网络访问 - Azure PowerShell | Microsoft Docs
-description: 了解如何使用 PowerShell 通过虚拟网络服务终结点限制对 Azure 资源（例如 Azure 存储和 Azure SQL 数据库）的网络访问。
+description: 本文介绍如何使用 Azure PowerShell 通过虚拟网络服务终结点限制对 Azure 资源（例如 Azure 存储和 Azure SQL 数据库）的网络访问。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: ''
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 7e402af74babda2ce32d4a1597c61d71aba89b9e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 28c95e1333b4641e50284a869135a9608dd3242f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>使用 PowerShell 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
 通过虚拟网络服务终结点，可以将某些 Azure 服务资源限制为仅允许某个虚拟网络子网通过网络进行访问。 还可以删除对资源的 Internet 访问。 服务终结点提供从虚拟网络到受支持 Azure 服务的直接连接，使你能够使用虚拟网络的专用地址空间访问 Azure 服务。 通过服务终结点发往 Azure 资源的流量始终保留在 Microsoft Azure 主干网络上。 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 创建具有一个子网的虚拟网络
-> * 添加子网并启用服务终结点
-> * 创建 Azure 资源并且仅允许从一个子网对其进行网络访问
-> * 将虚拟机 (VM) 部署到每个子网
-> * 确认从某个子网对资源的访问
-> * 确认已拒绝从某个子网和 Internet 来访问资源
+* 创建包含一个子网的虚拟网络
+* 添加子网并启用服务终结点
+* 创建 Azure 资源并且仅允许从一个子网对其进行网络访问
+* 将虚拟机 (VM) 部署到每个子网
+* 确认从某个子网对资源的访问
+* 确认已拒绝从某个子网和 Internet 来访问资源
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -93,7 +93,7 @@ $subnetConfigPrivate = Add-AzureRmVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="restrict-network-access-to-and-from-a-subnet"></a>限制对子网以及来自子网的网络访问
+## <a name="restrict-network-access-for-a-subnet"></a>限制对子网的网络访问
 
 使用 [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) 创建网络安全组安全规则。 以下规则允许对分配给 Azure 存储服务的公用 IP 地址进行出站访问： 
 
@@ -114,7 +114,7 @@ $rule1 = New-AzureRmNetworkSecurityRuleConfig `
 
 ```azurepowershell-interactive
 $rule2 = New-AzureRmNetworkSecurityRuleConfig `
-  -Name Deny-internet-All `
+  -Name Deny-Internet-All `
   -Access Deny `
   -DestinationAddressPrefix Internet `
   -DestinationPortRange * `
@@ -240,7 +240,7 @@ Add-AzureRmStorageAccountNetworkRule `
 
 若要测试对存储帐户的网络访问，请向每个子网部署 VM。
 
-### <a name="create-the-first-virtual-machine"></a>创建第一台虚拟机
+### <a name="create-the-first-virtual-machine"></a>创建第一个虚拟机
 
 使用 [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) 在公共子网中创建虚拟机。 运行以下命令时，会提示输入凭据。 输入的值将配置为用于 VM 的用户名和密码。 `-AsJob` 选项会在后台创建 VM，因此可继续执行下一步。
 
@@ -319,7 +319,7 @@ Azure 文件共享已成功映射到驱动器 Z。
 ping bing.com
 ```
 
-你不会收到回复，因为除了分配给 Azure 存储服务的地址之外，关联到 *Private* 子网的网络安全组不允许对其他公用 IP 地址的出站访问。
+不会收到回复，因为除了分配给 Azure 存储服务的地址以外，关联到“专用”子网的网络安全组不允许与其他公共 IP 地址建立出站访问。
 
 关闭与 *myVmPrivate* VM 建立的远程桌面会话。
 
@@ -348,7 +348,7 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
 
-对该共享的访问被拒绝，并且将收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在 *Public* 子网中。 *Public* 子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自 *Private* 子网的网络访问，不允许来自 *Public* 子网的网络访问。
+对该共享的访问被拒绝，并且将收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在 *Public* 子网中。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。
 
 关闭与 *myVmPublic* VM 建立的远程桌面会话。
 
@@ -372,9 +372,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你为虚拟网络子网启用了服务终结点。 你已了解可以为通过多个 Azure 服务部署的资源启用服务终结点。 你创建了一个 Azure 存储帐户并将该存储帐户限制为仅可供某个虚拟网络子网中的资源进行网络访问。 在生产虚拟网络中创建服务终结点之前，建议你充分熟悉[服务终结点](virtual-network-service-endpoints-overview.md)。
+在本文中，已为虚拟网络子网启用了服务终结点。 我们已了解，可为通过多个 Azure 服务部署的资源启用服务终结点。 我们创建了一个 Azure 存储帐户并将该存储帐户限制为仅可供某个虚拟网络子网中的资源进行网络访问。 若要详细了解服务终结点，请参阅[服务终结点概述](virtual-network-service-endpoints-overview.md)和[管理子网](virtual-network-manage-subnet.md)。
 
-如果你的帐户中有多个虚拟网络，你可能希望将两个虚拟网络连接到一起，以便每个虚拟网络中的资源可以彼此进行通信。 请前进到下一教程来了解如何连接虚拟网络。
-
-> [!div class="nextstepaction"]
-> [连接虚拟网络](./tutorial-connect-virtual-networks-powershell.md)
+如果帐户中有多个虚拟网络，可将两个虚拟网络连接到一起，使每个虚拟网络中的资源可以相互通信。 若要了解如何操作，请参阅[连接虚拟网络](tutorial-connect-virtual-networks-powershell.md)。

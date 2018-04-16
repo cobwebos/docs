@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心快速入门 - 将 Windows 计算机登记到安全中心 | Microsoft Docs"
-description: "本快速入门演示如何在 Windows 计算机上预配 Microsoft Monitoring Agent。"
+title: Azure 安全中心快速入门 - 将 Windows 计算机登记到安全中心 | Microsoft Docs
+description: 本快速入门演示如何在 Windows 计算机上预配 Microsoft Monitoring Agent。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 8d9b0fcc8b72f947cbc64c6ac9a428ac29f8dfd2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b872153278810ce92f19c7c71fe473a2b77def35
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>快速入门：将 Windows 计算机登记到安全中心
 加入 Azure 订阅之后，可以通过预配 Microsoft Monitoring Agent 为 Azure 外部（例如，本地或在其他云中）运行的资源启用安全中心。
@@ -62,7 +62,7 @@ ms.lasthandoff: 02/24/2018
 2. 在“欢迎”页上，选择“下一步”。
 3. 在“许可条款”页面上阅读许可协议，然后选择“我接受”。
 4. 在“目标文件夹”页面上更改或保留默认安装文件夹，然后选择“下一步”。
-5. 在“代理安装选项”页上，选择将代理连接到 Azure Log Analytics (OMS)，然后选择“下一步”。
+5. 在“代理安装选项”页上，选择将代理连接到 Azure Log Analytics，然后选择“下一步”。
 6. 在 **Azure Log Analytics** 页上，粘贴在前面步骤中复制到记事本的“工作区 ID” 和“工作区密钥(主密钥)”。
 7. 如果计算机应向 Azure 政府云中的 Log Analytics 工作区报告，请从“Azure 云”下拉列表中选择**“Azure 美国政府”**。  如果计算机需要通过代理服务器来与 Log Analytics 服务通信，请选择“高级”并提供代理服务器的 URL 和端口号。
 8. 提供所需的配置设置后，选择“下一步”。

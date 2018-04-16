@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 网络观察程序和开源工具执行网络入侵检测 | Microsoft 文档"
-description: "本文介绍如何使用 Azure 网络观察程序和开源工具执行网络入侵检测"
+title: 使用 Azure 网络观察程序和开源工具执行网络入侵检测 | Microsoft 文档
+description: 本文介绍如何使用 Azure 网络观察程序和开源工具执行网络入侵检测
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: aff1b5f9e8860d3b8dc09b37684bb8a4ac2bf134
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用网络观察程序和开源工具执行网络入侵检测
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 Suricata 就是这样的一种开源工具，它是一个 IDS 引擎，可使用规则集来监视网络流量，每当出现可疑事件时，它会触发警报。 Suricata 提供多线程引擎，意味着它能够以更高的速度和效率执行网络流量分析。 有关 Suricata 及其功能的更多详细信息，请访问其网站 https://suricata-ids.org/。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 本文介绍如何将环境设置为使用网络观察程序、Suricata 和 Elastic Stack 执行网络入侵检测。 网络观察程序提供用于执行网络入侵检测的数据包捕获。 Suricata 处理数据包捕获，并根据与其给定威胁规则集匹配的数据包触发警报。 这些警报存储在本地计算机上的某个日志文件中。 使用 Elastic Stack 可为 Suricata 生成的日志编制索引，并使用这些日志创建 Kibana 仪表板，提供日志的可视化形式，同时，提供潜在网络漏洞的见解。  
 
@@ -38,7 +38,7 @@ Suricata 就是这样的一种开源工具，它是一个 IDS 引擎，可使用
 
 ### <a name="install-suricata"></a>安装 Suricata
 
-有关其他所有安装方法，请访问 http://suricata.readthedocs.io/en/latest/install.html
+有关所有其他安装方法，请访问 http://suricata.readthedocs.io/en/latest/install.html
 
 1. 在 VM 的命令行终端中运行以下命令：
 
@@ -283,7 +283,7 @@ tail -f /var/log/suricata/fast.log
 
 访问 [Use packet capture to do proactive network monitoring with Azure Functions](network-watcher-alert-triggered-packet-capture.md)（在 Azure Functions 中使用数据包捕获执行主动网络监视），了解如何根据警报触发数据包捕获
 
-访问 [Visualize NSG flows logs with Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)（使用 Power BI 可视化 NSG 流日志），了解如何使用 Power BI 可视化 NSG 流日志
+访问[使用 Power BI 可视化 NSG 流日志](network-watcher-visualize-nsg-flow-logs-power-bi.md)，了解如何使用 Power BI 可视化 NSG 流日志
 
 
 

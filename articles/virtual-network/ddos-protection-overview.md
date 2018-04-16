@@ -1,13 +1,13 @@
 ---
-title: "Azure DDoS 保护标准概述 | Microsoft Docs"
-description: "了解 Azure DDoS 保护服务。"
+title: Azure DDoS 保护标准概述 | Microsoft Docs
+description: 了解 Azure DDoS 保护服务。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 6b15be022ba3b8373cfb852be8fc6915824801dc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb19baae1bc03633b7646fd2255ca910532595c5
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS 保护标准概述
 
@@ -65,7 +65,7 @@ DDoS 保护标准功能包括：
 - **第 3 层到第 7 层保护：**与应用程序网关配合使用时，提供完整的堆栈 DDoS 保护。
 - **广泛的缓解规模：**可以使用全球容量缓解超过 60 种不同攻击类型，从而防止最大的已知 DDoS 攻击。 
 - **攻击指标：**可以通过 Azure Monitor 访问每个攻击的汇总指标。
-- **攻击警报：**可以使用内置攻击指标在攻击开始和停止时以及攻击持续期间配置警报。 警报会集成到操作软件，如 Microsoft Operations Management Suite、Splunk、Azure 存储、电子邮件和 Azure 门户。
+- **攻击警报：**可以使用内置攻击指标在攻击开始和停止时以及攻击持续期间配置警报。 警报会集成到操作软件中，如 Microsoft Azure Log Analytics、Splunk、Azure 存储、电子邮件和 Azure 门户。
 - **成本保证：**记录的 DDoS 攻击的数据传输和应用程序横向扩展服务信用度。
 
 ## <a name="ddos-protection-standard-mitigation"></a>DDoS 保护标准缓解

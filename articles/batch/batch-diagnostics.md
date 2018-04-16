@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c41c8c9f8fd9302c610ce356b0485e33ea3c967d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c4c68df9650fa300ea20ea0621c732cb96d167ef
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>记录事件以用来对 Batch 解决方案进行诊断评估和监视
 
@@ -97,7 +97,7 @@ Batch 服务当前会生成以下服务日志事件。 此列表可能不完整�
   将 Batch 诊断事件流式传输到“事件中心”，这是一项可高度缩放的数据入口服务。 数据中心每秒可以接受数百万事件，然后可以使用任何实时分析提供程序转换并存储这些事件。
 * [使用 Log Analytics 分析 Azure 诊断日志](../log-analytics/log-analytics-azure-storage.md)
   
-  将诊断日志发送到 Log Analytics，可以使用该工具在 Operations Management Suite (OMS) 门户中分析这些日志，或者导出诊断日志以在 Power BI 或 Excel 中进行分析。
+  将诊断日志发送到 Log Analytics，可以使用该工具在 Azure 门户中分析这些日志，或者导出诊断日志以在 Power BI 或 Excel 中进行分析。
 
 [pool_create]: https://msdn.microsoft.com/library/azure/mt743615.aspx
 [pool_delete_start]: https://msdn.microsoft.com/library/azure/mt743610.aspx

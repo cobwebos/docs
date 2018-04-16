@@ -1,24 +1,19 @@
 ---
-title: Azure 流分析中的 Power BI 仪表板 | Microsoft 文档
-description: 使用实时流式处理 Power BI 仪表板来采集商业智能信息，并分析流分析作业中的大量数据。
-keywords: 分析仪表板, 实时仪表板
+title: Power BI 仪表板与 Azure 流分析的集成
+description: 本文介绍如何使用实时 Power BI 仪表板直观显示 Azure 流分析作业输出的数据。
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: fe8db732-4397-4e58-9313-fec9537aa2ad
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/27/2017
 ms.author: jeanb
-ms.openlocfilehash: e1f1d960c312362e0e0cd6d2f83599c28c8c3f05
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/27/2017
+ms.openlocfilehash: 15b8548e8b5b6ff8d2f5722d2a4031f8e52d044b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>流分析和 Power BI：针对流数据的实时分析仪表板
 Azure 流分析使你可以利用其中一种领先的商业智能工具 [Microsoft Power BI](https://powerbi.com/)。 本文将介绍如何使用 Power BI 作为 Azure 流分析作业的输出，以创建商业智能工具。 此外，还将介绍如何创建和使用实时仪表板。
@@ -249,7 +244,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 使用 Power BI 刷新授权后，授权区域中会出现一条绿色通知，指出问题已解决。
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

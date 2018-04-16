@@ -1,24 +1,19 @@
 ---
-title: 分析平台：Apache Storm 与流分析之间的比较 | Microsoft 文档
-description: 使用 Apache Storm 与流分析之间的比较获取有关选择云分析平台的指导。 了解功能和区别。
-keywords: 分析平台, 分析平台, 云分析平台, storm 比较
+title: 分析平台：Apache Storm 与 Azure 流分析之间的比较
+description: 使用 Apache Storm 与流分析之间的比较选择云分析平台的指导。 了解功能和区别。
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: b9aac017-9866-4d0a-b98f-6f03881e9339
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/27/2017
 ms.author: jeanb
-ms.openlocfilehash: 48599c362c5db50ebec3acd0aaa4359439edb00b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/27/2017
+ms.openlocfilehash: 94ac3c0075014a3e014ede8104a6aa259527a0ae
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>选择流分析平台：Apache Storm 与 Azure 流分析的比较
 Azure 提供了多种用于流数据分析的解决方案：[Azure 流分析](https://docs.microsoft.com/azure/stream-analytics/)和 [Azure HDInsight 上的 Apache Storm](https://azure.microsoft.com/services/hdinsight/apache-storm/)。 这两个分析平台都具备 PaaS 解决方案的优势。 但这些平台的功能以及配置和管理方式却存在一些显著差异。 

@@ -1,6 +1,6 @@
 ---
-title: "Azure 应用服务环境简介"
-description: "有关 Azure 应用服务环境的简要概述"
+title: Azure 应用服务环境简介
+description: 有关 Azure 应用服务环境的简要概述
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/13/2017
+ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 803a1cde5387b549504b42346d1a2e6a5df04746
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 0b113a594ebf1180346eccc295251f522dcc29c5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="introduction-to-app-service-environments"></a>应用服务环境简介 #
+# <a name="introduction-to-the-app-service-environments"></a>应用服务环境简介 #
  
 ## <a name="overview"></a>概述 ##
 
@@ -43,7 +43,7 @@ ASE 可在隔离后只运行单个客户的应用程序，并可始终部署到�
 
 ## <a name="dedicated-environment"></a>专用环境 ##
 
-ASE 专用于单个订阅，可托管 100 个实例。 其范围可涵盖单个应用服务计划中的 100 个实例，也可以是 100 个单实例应用服务计划，或者两者之间的任何实例。
+ASE 专用于单个订阅，可托管 100 个应用服务计划实例。 其范围可涵盖单个应用服务计划中的 100 个实例，也可以是 100 个单实例应用服务计划，或者两者之间的任何实例。
 
 ASE 由前端和辅助角色组成。 前端负责处理 HTTP/HTTPS 终止以及 ASE 中应用请求的自动负载均衡。 前端作为应用服务计划自动添加在 ASE 中，并且可以扩展。
 

@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Reward Gateway 集成 | Microsoft 文档"
-description: "了解如何在 Azure Active Directory 和 Reward Gateway 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Reward Gateway 集成 | Microsoft 文档
+description: 了解如何在 Azure Active Directory 和 Reward Gateway 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 6e46668804da237e789cea73d25982953a31edef
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 76e34b2d170ad1a47dca180fe7caf8c015d17634
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>教程：Azure Active Directory 与 Reward Gateway 集成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 - 可在 Azure AD 中控制谁有权访问 Reward Gateway
 - 可以让用户使用其 Azure AD 帐户自动登录到 Reward Gateway（单一登录）
-- 可以在一个中心位置（即 Azure 门户）中管理帐户
+- 可以在一个中心位置（即 Azure 门户）管理帐户
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](active-directory-appssoaccess-whatis.md)。
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 12/11/2017
 
 若要配置 Azure AD 与 Reward Gateway 的集成，需要以下项：
 
-- 一个 Azure AD 订阅
+- Azure AD 订阅
 - 已启用 Reward Gateway 单一登录的订阅
 
 > [!NOTE]
-> 不建议使用生产环境测试本教程中的步骤。
+> 为了测试本教程中的步骤，我们不建议使用生产环境。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 12/11/2017
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>` |
 
     > [!NOTE] 
-    > 这些不是实际值。 使用实际标识符和回复 URL 更新这些值。 请联系 [Reward Gateway 支持团队](mailto:clientsupport@rewardgateway.com)获取这些值。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 若要获取这些值，请在 Reward Manager 门户中启动集成设置。 可以在 http://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration 上找到详细信息
  
 4. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 12/11/2017
 
     ![配置单一登录](./media/active-directory-saas-reward-gateway-tutorial/tutorial_general_400.png)
 
-6. 若要在 Reward Gateway 端配置单一登录，需要将下载的元数据 XML 发送给 [Reward Gateway 支持团队](mailto:clientsupport@rewardgateway.com)。 他们会对此进行设置，使 SAML SSO 连接在两端均正确设置。
+6. 若要在 **Reward Gateway** 端配置单一登录，请在 Reward Manager 门户中启动集成设置。 在配置过程中使用下载的元数据获取签名证书并将其上传。 可以在 http://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration 上找到详细信息
 
 > [!TIP]
 > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[ Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -168,11 +168,11 @@ ms.lasthandoff: 12/11/2017
 
     a. 在“名称”文本框中，键入 **BrittaSimon**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
+    b. 在“用户名”文本框中，键入 BrittaSimon 的“电子邮件地址”。
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建” 。
+    d. 单击“创建”。
  
 ### <a name="creating-a-reward-gateway-test-user"></a>创建 Reward Gateway 测试用户
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="additional-resources"></a>其他资源
 
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 
 
 

@@ -8,24 +8,22 @@ ms.author: dastanfo
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 374a24448eb1bf366e26bb55fdf09e470b030c89
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e5524732185d7b80ebf16a9bce6de9ca0183c27e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>使用 PowerShell 将 Blob 存储事件路由到自定义 Web 终结点
 
 Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure PowerShell 订阅 Blob 存储事件，然后触发事件并查看结果。 
 
-通常将事件发送到与该事件对应的终结点，例如 webhook 或 Azure Function。 为了简化本文中的示例，将事件发送到仅收集消息的 URL。 可从 [RequestBin](https://requestb.in/) 或 [Hookbin](https://hookbin.com/) 使用第三方工具创建此 URL。
+通常将事件发送到与该事件对应的终结点，例如 webhook 或 Azure Function。 为了简化本文中的示例，将事件发送到仅收集消息的 URL。 可以使用 [Hookbin](https://hookbin.com/) 提供的第三方工具创建此 URL。
 
 > [!NOTE]
-> RequestBin 和 Hookbin 并不适合在高吞吐量方案中使用。 在这里使用这些工具纯粹是为了演示。 如果一次推送多个事件，可能不会在工具中看到所有事件。
+> **Hookbin** 不应在高吞吐量方案中使用。 使用此工具纯粹是为了演示。 如果一次推送多个事件，可能不会在工具中看到所有事件。
 
 完成本文所述步骤后，即可看到事件数据已发送到某个终结点。
-
-![事件数据](./media/storage-blob-event-quickstart/request-result.png)
 
 ## <a name="setup"></a>设置
 
@@ -84,7 +82,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 
-在订阅主题之前, 让我们创建事件消息的终结点。 与其编写代码来响应事件，不如创建一个终结点来收集消息，方便你查看。 RequestBin 和 Hookbin 是第三方工具，用于创建终结点和查看发送到其中的请求。 转到 [RequestBin](https://requestb.in/)，然后单击“创建 RequestBin”；或者转到 [Hookbin](https://hookbin.com/)，然后单击“新建终结点”。 复制 bin URL，并在以下脚本中替换 `<bin URL>`。
+在订阅主题之前, 让我们创建事件消息的终结点。 与其编写代码来响应事件，不如创建一个终结点来收集消息，方便你查看。 Hookbin 是第三方工具，用于创建终结点和查看发送到其中的请求。 转到 [Hookbin](https://hookbin.com/) 并单击“创建新终结点”。 复制 bin URL，并在以下脚本中替换 `<bin URL>`。
 
 ```powershell
 $binEndPoint = "<bin URL>"
@@ -92,7 +90,7 @@ $binEndPoint = "<bin URL>"
 
 ## <a name="subscribe-to-your-storage-account"></a>订阅存储帐户
 
-订阅主题是为了告知事件网格要跟踪哪些事件。以下示例订阅你所创建的存储帐户，并将 RequestBin 或 Hookbin 中的 URL 作为事件通知的终结点传递。 
+订阅主题是为了告知事件网格要跟踪哪些事件。以下示例订阅你所创建的存储帐户，并将 Hookbin 中的 URL 作为事件通知的终结点传递。 
 
 ```powershell
 $storageId = (Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id

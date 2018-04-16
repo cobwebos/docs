@@ -1,23 +1,23 @@
 ---
-title: "“Azure Cosmos DB 的 20 天”提示 | Microsoft Docs"
-description: "在同一位置查找 Simona Cotin 的“Azure Cosmos DB 的 20 天”提示系列的所有提示。"
+title: “Azure Cosmos DB 的 20 天”提示 | Microsoft Docs
+description: 在同一位置查找 Simona Cotin 的“Azure Cosmos DB 的 20 天”提示系列的所有提示。
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+documentationcenter: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: cda
-ms.openlocfilehash: 976be65fc4668a911bfa93ef87a7f14686a79f31
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 79ef4a8c22143ed77535e1190b5f7e8eb5d17bb0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="20-days-of-azure-cosmos-db-tips"></a>“Azure Cosmos DB 的 20 天”提示
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="tip-2-seeing-is-believing"></a>提示 2：眼见为实
 
-眼见为实。 在 Azure 门户中使用 #cosmosDB 可视化界面检查和查询 DB  [https://aka.ms/jprf75](https://aka.ms/jprf75)
+眼见为实。 在 Azure 门户中使用 #cosmosDB 可视化界面检查和查询 DB [https://aka.ms/jprf75](https://aka.ms/jprf75)
 
 > [!VIDEO https://www.youtube.com/embed/4aWL5p_SJDE]
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="tip-4-gremlin-graph-support"></a>提示 4：Gremlin 图形支持
 
-提示 4：你喜欢使用 Gremlin 吗？ #cosmosdb 也支持 Gremlin！ 使用 Azure 门户 [https://aka.ms/tfmi37](https://aka.ms/tfmi37) 查看、查询和编辑图形 DB  
+提示 4：你喜欢使用 Gremlin 吗？ #cosmosdb 也支持 Gremlin！ 使用 Azure 门户查看、查询和编辑图形 DB [https://aka.ms/tfmi37](https://aka.ms/tfmi37)  
 
 > [!VIDEO https://www.youtube.com/embed/oPUTZbiXffk]
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="tip-8-build-a-nodejs-app-by-using-sql-api"></a>提示 8：使用 SQL API 生成 Node.js 应用
 
-提示 8：使用 SQL API 和 Azure #CosmosDB 生成 @nodejs 应用。 在 [https://aka.ms/Bd77a8](https://aka.ms/Bd77a8) 文档页上了解详细信息  
+提示 8：使用 SQL API 和 Azure #CosmosDB 生成 @nodejs 应用。 在文档页上了解详细信息 [https://aka.ms/Bd77a8](https://aka.ms/Bd77a8)  
 
 > [!VIDEO https://www.youtube.com/embed/_gd9ZY-rHtM]
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="tip-9-query-using-mongodb-in-nodejs"></a>提示 9：在 Node.js 中使用 MongoDB 查询
 
-提示 9：在 Node.js 中使用 MongoDB API 查询 Azure #CosmosDB。 在 [https://aka.ms/Dert0r](https://aka.ms/Dert0r) 文档页上了解详细信息  
+提示 9：在 Node.js 中使用 MongoDB API 查询 Azure #CosmosDB。 在文档页上了解详细信息 [https://aka.ms/Dert0r](https://aka.ms/Dert0r)  
 
 ![使用 MongoDB 查询](./media/20-days-of-tips/cosmos-db-tip-9-mongodb-query.png)
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="tip-10-copy-mongodb-data-using-studio-3t"></a>提示 10：使用 Studio 3T 复制 MongoDB 数据
 
-提示 10：了解如何使用 Studio 3T (MongoChef) 将 MongoDB 数据复制到 Azure Cosmos DB。 [https://aka.ms/apzhww](https://aka.ms/apzhww) 上的文档
+提示 10：了解如何使用 Studio 3T (MongoChef) 将 MongoDB 数据复制到 Azure Cosmos DB。 位于 [https://aka.ms/apzhww](https://aka.ms/apzhww) 的文档
 
 > [!VIDEO https://www.youtube.com/embed/Qa4YpShYEcI]
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="tip-12-go-serverless"></a>提示 12：变为无服务器
 
-提示 12：使用 Azure #CosmosDB 和 @AzureFunctions 变为无服务器！ [https://aka.ms/Pmic1j](https://aka.ms/Pmic1j) 上的完整文档
+提示 12：使用 Azure #CosmosDB 和 @AzureFunctions 变为无服务器！ 位于 [https://aka.ms/Pmic1j](https://aka.ms/Pmic1j) 的完整文档
 
 > [!VIDEO https://www.youtube.com/embed/U--3mfisNCs]
 
@@ -142,7 +142,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="tip-16-functions-and-twilio-demo"></a>提示 16：函数和 Twilio 演示
 
-提示 16：出色的演示！ 集成 Azure #cosmosDB、函数和 @twilio，在出现任何 DB 更改时发送短信。 请参阅 [https://aka.ms/Kjkc2d](https://aka.ms/Kjkc2d) 上的文档 
+提示 16：出色的演示！ 集成 Azure #cosmosDB、函数和 @twilio，在出现任何 DB 更改时发送短信。 请参阅位于 [https://aka.ms/Kjkc2d](https://aka.ms/Kjkc2d) 的文档 
 
 > [!VIDEO https://www.youtube.com/embed/3Q7WffTeaKY]
 
@@ -151,7 +151,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="tip-17-using-mongoose-discriminators"></a>提示 17：使用 Mongoose 鉴别器
 
-提示 17：通过使用 Mongoose 鉴别器将多个实体存储在单个 CosmosDB 集合中 [https://aka.ms/M488jm](https://aka.ms/M488jm)，从而优化成本
+提示 17：通过使用 Mongoose 鉴别器将多个实体存储在单个 #CosmosDB 集合中，从而优化成本 [https://aka.ms/M488jm](https://aka.ms/M488jm)
 
 博客：[使用 Mongoose 鉴别器将多个实体存储在单个 CosmosDB 集合中，作者：Anthony Chu](https://aka.ms/M488jm)
 
@@ -159,7 +159,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="tip-18-request-units"></a>提示 18：请求单位
 
-提示 18：了解什么是请求单位 (RU) 以及如何在 Azure #CosmosDB 中配置请求单位。 有关详细信息，请参阅 [https://aka.ms/Kt2nbn](https://aka.ms/Kt2nbn) 上的文档 
+提示 18：了解什么是请求单位 (RU) 以及如何在 Azure #CosmosDB 中配置请求单位。 在位于 [https://aka.ms/Kt2nbn](https://aka.ms/Kt2nbn) 的文档中了解更多信息 
 
 文章：[Azure Cosmos DB 中的请求单位](https://aka.ms/Kt2nbn)
 
@@ -167,7 +167,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="tip-19-partition-partition-partition"></a>提示 19：分区！ 分区！ 分区！ 
 
-提示 19：分区！ 分区！ 分区！ 使用 Azure #CosmosDB 的原因和方法。 [https://aka.ms/Ts5pon](https://aka.ms/Ts5pon) 上的文档  
+提示 19：分区！ 分区！ 分区！ 使用 Azure #CosmosDB 的原因和方法。 位于 [https://aka.ms/Ts5pon](https://aka.ms/Ts5pon) 的文档  
 
 > [!VIDEO https://www.youtube.com/embed/I_tVk3hKvSI]
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="tip-20-cheatsheet"></a>提示 20：速查表
 
-提示 20：每个人都喜欢好的旧速查表。 Azure #CosmosDB 也有一个。 请在 [https://aka.ms/Nt01nl](https://aka.ms/Nt01nl) 上查看它
+提示 20：每个人都喜欢好的旧速查表。 Azure #CosmosDB 也有一个。 请在 [https://aka.ms/Nt01nl](https://aka.ms/Nt01nl) 查看它
 
 速查表：[Azure Cosmos DB：SQL 查询速查表 PDF](https://aka.ms/Nt01nl)
 

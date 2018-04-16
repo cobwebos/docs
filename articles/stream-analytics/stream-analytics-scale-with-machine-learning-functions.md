@@ -1,27 +1,22 @@
 ---
-title: 使用 Azure 流分析和 Azure ML 函数缩放作业 | Microsoft Docs
-description: 了解在使用 Azure 机器学习函数时，如何正确缩放流分析作业（分区、SU 数量等）。
-keywords: ''
-documentationcenter: ''
+title: 在 Azure 流分析中缩放机器学习函数
+description: 本文介绍如何通过配置分区和流单元缩放使用机器学习函数，的流分析作业。
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 47ce7c5e-1de1-41ca-9a26-b5ecce814743
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: dd6effab3ba0b411131414bd757ffe8cc54e49d2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: 015312ab95d6dd5615a5f5bc62d270d46b795ffa
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>使用 Azure 机器学习函数缩放流分析作业
-设置流分析作业，并通过它运行某些示例数据，这通常很简单。 但当我们需要运行数据量更大的相同作业时，该怎么办？ 需要了解如何配置流分析作业，以便可以缩放它。 本文档关注使用机器学习函数缩放流分析作业的特殊方面。 有关在一般情况下如何缩放流分析作业的信息，请参阅文章[缩放作业](stream-analytics-scale-jobs.md)。
+设置流分析作业，并通过它运行某些示例数据，这通常很直接了当。 但当我们需要运行数据量更大的相同作业时，该怎么办？ 需要了解如何配置流分析作业，以便可以缩放它。 本文档关注使用机器学习函数缩放流分析作业的特殊方面。 有关在一般情况下如何缩放流分析作业的信息，请参阅文章[缩放作业](stream-analytics-scale-jobs.md)。
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>流分析中的 Azure 机器学习函数是什么？
 流分析中的机器学习函数可像流分析查询语言中的常规函数调用那样使用。 但是在后台，函数调数用实际上是 Azure 机器学习 Web 服务请求数。 机器学习 Web 服务支持在相同的 Web 服务 API 调用中“批处理”多个行（这称为“微批处理”），从而提高整体吞吐量。 请参阅以下文章，了解详细信息：[流分析中的 Azure 机器学习函数](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/)和 [Azure 机器学习 Web 服务](../machine-learning/studio/consume-web-services.md)。
@@ -111,7 +106,7 @@ ms.lasthandoff: 03/30/2018
 2. 运行流分析作业允许延迟（因而影响了机器学习 Web 服务的批大小）
 3. 预配的流分析 SU 和机器学习 Web 服务请求数（与函数相关的额外成本）
 
-用作示例的是完全分区的流分析查询。 如果需要更复杂的查询，[Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)是一项绝佳资源，可以获取流分析团队的额外帮助。
+用作示例的是完全分区的流分析查询。 如果需要更复杂的查询，[Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)是一项绝佳资源，可以获取流分析团队的额外帮助。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解流分析的更多内容，请参阅：

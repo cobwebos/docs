@@ -7,14 +7,14 @@ manager: jhubbard
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: e9ec0a0a602965561b77619123588db57c59993c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: dc97c0703150df9773427b13fc07371c3593ce9f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>还原 Azure SQL 数据库或故障转移到辅助数据库
 Azure SQL 数据库提供以下功能，以便在服务中断后进行恢复：
@@ -26,7 +26,7 @@ Azure SQL 数据库提供以下功能，以便在服务中断后进行恢复：
 若要了解业务连续性方案以及支持这些方案的功能，请参阅[业务连续性](sql-database-business-continuity.md)。
 
 > [!NOTE]
-> 如果使用区域冗余高级数据库或池，请自动执行恢复过程，此材料的其余部分将不适用。 
+> 如果使用区域冗余高级或业务关键数据库或池（预览），将自动执行恢复过程，此材料的其余部分将不适用。 
 
 ### <a name="prepare-for-the-event-of-an-outage"></a>准备好应对中断情况
 为了使用故障转移组或异地冗余备份成功恢复到其他数据区域，需要为下一次数据中心中断准备服务器，以便在需要时使其成为新的主服务器，还需要记录、测试各项明确定义的步骤，确保顺利恢复数据。 准备步骤包括：

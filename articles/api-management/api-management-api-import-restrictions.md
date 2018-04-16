@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: d4229a3ecbcf8aa044eb448290c243e9920bd5cb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ab4bc4024248675c6325159b5507add1274addc9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
 ## <a name="about-this-list"></a>关于此列表
@@ -27,12 +27,14 @@ ms.lasthandoff: 04/03/2018
 ## <a name="open-api"></a>Open API/Swagger
 如果在导入 Open API 文档时遇到错误，请确保已通过使用 Azure 门户中的设计器（设计 - 前端 - Open API 规范编辑器）或使用第三方工具（例如 <a href="http://www.swagger.io">Swagger 编辑器</a>）对其进行了验证。
 
-* **主机名** APIM 需要主机名属性。
-* **基路径** APIM 需要基路径属性。
-* **方案** APIM 需要方案数组。
+* 仅支持 JSON 格式的 OpenAPI。
+* 使用 **$ref** 属性引用的架构不能包含其他 **$ref** 属性。
+* **$ref** 指针不能引用外部文件。
+* 仅支持 **x-ms-paths** 和 **x-servers** 扩展。
+* 自定义扩展在导入时将被忽略，并且不会为导出保存或保留。
 
 > [!IMPORTANT]
-> 有关与 OpenAPI 导入相关的重要信息和提示，请参阅[此文档](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/)。
+> 如需与 OpenAPI 导入相关的重要信息和提示，请参阅此[文档](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/)。
 
 ## <a name="wsdl"></a>WSDL
 WSDL 文件用于生成 SOAP 直通 API，或用作 SOAP 到 REST API 的后端。

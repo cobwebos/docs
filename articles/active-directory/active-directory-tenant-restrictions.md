@@ -1,24 +1,24 @@
 ---
-title: "通过限制租户来管理对云应用的访问 - Azure | Microsoft 文档"
-description: "如何使用租户限制来根据用户的 Azure AD 租户管理可访问应用的用户。"
+title: 通过限制租户来管理对云应用的访问 - Azure | Microsoft 文档
+description: 如何使用租户限制来根据用户的 Azure AD 租户管理可访问应用的用户。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
 editor: yossib
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 04/03/2018
 ms.author: kgremban
-ms.openlocfilehash: 63e0fa54433a60fe7384d21cf7d215cc8283afca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a6b498b38e76dfa2553bf3a916b723cd774d950d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -112,7 +112,9 @@ Office 365 应用程序必须满足两个条件才能完全支持租户限制：
 
 Office 365 基于浏览器的应用程序（Office 门户、Yammer、SharePoint 网站、Outlook 网页版等）目前支持租户限制。 胖客户端（Outlook、Skype for Business、Word、Excel、 PowerPoint 等）仅当使用新式身份验证时，才能实施租户限制。  
 
-支持新式身份验证的 Outlook 和 Skype for Business 客户端仍可针对未启用新式身份验证的租户使用传统协议，从而有效绕过租户限制。 对于 Windows 上的 Outlook，客户可能选择实施限制来阻止最终用户将未经批准的邮件帐户添加到其配置文件。 有关示例，请参阅[阻止添加非默认 Exchange 帐户](http://gpsearch.azurewebsites.net/default.aspx?ref=1)组策略设置。 对于非 Windows 平台上的 Outlook 和所有平台上的 Skype for Business，对租户限制的完全支持当前不可用。
+支持新式身份验证的 Outlook 和 Skype for Business 客户端仍可针对未启用新式身份验证的租户使用传统协议，从而有效绕过租户限制。 如果在身份验证期间访问 login.microsoftonline.com、login.microsoft.com 或 login.windows.net，使用传统协议的应用程序可能会被租户限制阻止。
+
+对于 Windows 上的 Outlook，客户可能选择实施限制来阻止最终用户将未经批准的邮件帐户添加到其配置文件。 有关示例，请参阅[阻止添加非默认 Exchange 帐户](http://gpsearch.azurewebsites.net/default.aspx?ref=1)组策略设置。 对于非 Windows 平台上的 Outlook 和所有平台上的 Skype for Business，对租户限制的完全支持当前不可用。
 
 ## <a name="testing"></a>测试
 

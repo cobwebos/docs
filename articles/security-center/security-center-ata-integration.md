@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: yurid
-ms.openlocfilehash: 02e14315018f6586644eb560894785e6b6eb022e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fb32fc55288229fb1d09dce98b6092d38c10abf2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>将 Microsoft Advanced Threat Analytics 连接到 Azure 安全中心
 本文档可帮助配置 Microsoft Advanced Threat Analytics 和 Azure 安全中心之间的集成。
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/08/2018
 
     ![直接代理](./media/security-center-ata-integration/security-center-ata-integration-fig6.png)
 
-12. 在 ATA 中心中安装此代理。 安装时，务必选择“将代理连接到 Azure Log Analytics (OMS)”，并在出现请求时提供“工作区 ID”和“主键”。
+12. 在 ATA 中心中安装此代理。 安装时，请务必选择“将代理连接到 Azure Log Analytics”选项，并在出现请求时提供“工作区 ID”和“主密钥”。
 
 
 完成安装后，集成完成，你将可以在“搜索”结果中看到 ATA 发送到安全中心的新警报。 此解决方案将出现在“安全解决方案”页上的“已连接解决方案”下。 

@@ -1,6 +1,6 @@
 ---
-title: "将企业移动到 Azure 的最佳实践 | Microsoft Docs"
-description: "本文介绍一个基架，企业可以使用它来确保环境的安全性与可管理性。"
+title: 将企业移动到 Azure 的最佳实践 | Microsoft Docs
+description: 本文介绍一个基架，企业可以使用它来确保环境的安全性与可管理性。
 services: azure-resource-manager
 documentationcenter: na
 author: rdendtler
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 3b5087faaf3db087b15b77fedac8df0d7e4a899a
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 02553bb59cb37bab21d53adafc42fddcf08795a7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Azure 企业基架 - 出于合规目的监管订阅
 为了敏捷性和灵活性，企业越来越多地采用公有云。 它们利用云的优势来产生营收或优化企业资源。 Microsoft Azure 提供多种不同的服务，企业可以像构建块一样将它们组合，解决广泛的工作负荷与应用程序需求。 
@@ -135,7 +135,7 @@ Azure 资源管理器策略是 Azure 工具包中的一个强大工具。 使用
 > 
 
 ### <a name="audit---what-happened"></a>审核 - 发生了什么？
-若要查看环境是否正常运行，需要审核用户活动。 Azure 中的大多数资源类型都会创建诊断日志，可以通过日志工具或在 Azure Operations Management Suite 中对其进行分析。 可以跨多个订阅收集活动日志，提供部门或企业视图。 审核记录既是一个重要的诊断工具，也是在 Azure 环境中触发事件的关键机制。
+若要查看环境是否正常运行，需要审核用户活动。 Azure 中的大多数资源类型都会创建诊断日志，可以通过日志工具或在 Azure Log Analytics 中对其进行分析。 可以跨多个订阅收集活动日志，提供部门或企业视图。 审核记录既是一个重要的诊断工具，也是在 Azure 环境中触发事件的关键机制。
 
 使用 Resource Manager 部署中的活动日志，可以确定执行了哪些**操作**，以及谁执行了这些操作。 可以使用 Log Analytics 等工具来收集和聚合活动日志。
 

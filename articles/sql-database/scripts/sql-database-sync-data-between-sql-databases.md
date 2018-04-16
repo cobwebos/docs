@@ -14,14 +14,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 07/31/2017
+ms.date: 04/01/2018
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: 8a6dbf6e8cdd2fe066c11cc14ae587912873f7e4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b42c0fcb57bb044f240724e640140b24dd7ebe01
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>使用 PowerShell 在多个 SQL 数据库之间进行同步
  
@@ -369,7 +369,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 -   [使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](../sql-database-sync-data.md)
 -   [设置 Azure SQL 数据同步](../sql-database-get-started-sql-data-sync.md)
 -   [Azure SQL 数据同步最佳实践](../sql-database-best-practices-data-sync.md)
--   [使用 OMS Log Analytics 监视 Azure SQL 数据同步](../sql-database-sync-monitor-oms.md)
+-   [使用 Log Analytics 监视 Azure SQL 数据同步](../sql-database-sync-monitor-oms.md)
 -   [Azure SQL 数据同步问题疑难解答](../sql-database-troubleshoot-data-sync.md)
 
 -   演示如何配置 SQL 数据同步的完整 PowerShell 示例：

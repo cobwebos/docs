@@ -1,28 +1,23 @@
 ---
-title: "使用 Azure 流分析作业运行 Azure Functions | Microsoft Docs"
-description: "了解如何将 Azure Functions 配置为流分析作业的输出接收器。"
-keywords: "数据输出, 流式处理数据, Azure Function"
-documentationcenter: 
+title: 从 Azure 流分析作业运行 Azure Functions
+description: 本文介绍如何在流分析作业中将 Azure Functions 配置为事件驱动工作负荷的输出接收器。
 services: stream-analytics
-author: SnehaGunda
+author: jasonwhowell
+ms.author: jasonh
+ms.reviewer: jasonh
 manager: kfile
-ms.assetid: 
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 12/19/2017
-ms.author: sngun
-ms.openlocfilehash: f2f4a8d8cda752dc6ed197b8402119f7cbcaf58f
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: a8eebfa0c40caa455eb20431e5cf4acb8eeb248c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="run-azure-functions-with-azure-stream-analytics-jobs"></a>运行 Azure Functions 与 Azure 流分析作业 
+# <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>从 Azure 流分析作业运行 Azure Functions 
 
-可将 Functions 配置为流分析作业的输出接收器之一，以便通过 Azure 流分析使用 Azure Functions。 Functions 是事件驱动的按需计算体验，它允许实现由 Azure 或第三方服务中出现的事件所触发的代码。 Functions 响应触发的这一功能使其成为流分析作业的自然输出。
+可将 Functions 配置为流分析作业的输出接收器之一，以便通过 Azure 流分析运行 Azure Functions。 Functions 是事件驱动的按需计算体验，它允许实现由 Azure 或第三方服务中出现的事件所触发的代码。 Functions 响应触发的这一功能使其成为流分析作业的自然输出。
 
 流分析通过 HTTP 触发调用 Functions。 通过 Functions 输出适配器，用户可以将 Functions 连接到流分析，以便基于流分析查询触发事件。 
 

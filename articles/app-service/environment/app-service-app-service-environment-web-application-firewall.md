@@ -1,8 +1,8 @@
 ---
-title: "为应用服务环境配置 Web 应用程序防火墙 (WAF)"
-description: "了解如何在应用服务环境的前面配置 Web 应用程序防火墙。"
+title: 为应用服务环境配置 Web 应用程序防火墙 (WAF)
+description: 了解如何在应用服务环境的前面配置 Web 应用程序防火墙。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: erikre
 editor: jimbe
@@ -12,18 +12,21 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/17/2016
+ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: mvc
-ms.openlocfilehash: bfe36ee5365e71db4280e8e2ccff6db8e552dd39
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: bc59d8671d904cf5096d616213cc4674ef5743b8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述
-Web 应用程序防火墙（如 [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) 中提供的 [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure) 等）会检查入站 Web 流量（以阻止 SQL 注入）、跨站点脚本、恶意软件上传和应用程序 DDoS 及其他攻击，可帮助保护 Web 应用程序的安全。 它还会检查后端 Web 服务器的响应，实现针对数据丢失预防 (DLP)。 与隔离功能以及应用服务环境提供的附加缩放相结合，它可以提供一个理想的环境，用于托管需要承受恶意请求和大量流量的业务关键型 Web 应用程序。
+
+Web 应用程序防火墙 (WAF) 会检查入站 Web 流量，并阻止 SQL 注入、跨站点脚本、恶意软件上传和应用程序 DDoS 及其他攻击，有助于保护 Web 应用程序的安全。 为了进行数据丢失防护 (DLP)，该防火墙还会检查后端 Web 服务器的响应。 与隔离功能以及应用服务环境提供的附加缩放相结合，它可以提供一个理想的环境，用于托管需要承受恶意请求和大量流量的业务关键型 Web 应用程序。 Azure 通过[应用程序网关](http://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)提供 WAF 功能。  若要了解如何将应用服务环境与应用程序网关集成，请阅读[将 ILB ASE 与应用程序网关集成](http://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)文档。
+
+除了 Azure 应用程序网关，还有多个 Marketplace 选项，例如 [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure)，在 [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) 中提供。 本文档其余部分重点介绍如何将应用服务环境与 Barracuda WAF 设备集成。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 

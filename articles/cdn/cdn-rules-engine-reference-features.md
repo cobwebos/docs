@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 9f1a9343a657e076e94f6aa59fd03128ef488ac9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 748cecbdf4c59469c9a56da03631dd04a819043b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Azure CDN 规则引擎功能
 本文列出 Azure 内容交付网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用功能的详细说明。
@@ -28,7 +28,6 @@ ms.lasthandoff: 03/23/2018
 ## <a name="access-features"></a>访问功能
 
 以下功能旨在控制对内容的访问。
-
 
 名称 | 目的
 -----|--------
@@ -312,7 +311,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 重要信息：
 
-- 指定一个或多个查询字符串参数名称。 使用单个空格分隔每个参数名称。
+- 请指定一个或多个查询字符串参数名称，并用一个空格分隔各个参数名称。
 - 此功能确定 cache-key 中是否包括查询字符串参数。 下表提供了每个选项的详细信息。
 
 Type|说明
@@ -326,11 +325,14 @@ Type|说明
 
 若要复制“查询字符串缓存”页上“no-cache”的查询字符串缓存行为，请创建一项规则，其中包含“URL 查询通配符”匹配条件和“绕过缓存”功能。 将“URL 查询通配符”匹配条件设置为星号 (*)。
 
+>[!IMPORTANT] 
+> 如果对此帐户中的任何路径启用了令牌授权，则标准缓存模式是可用于查询字符串缓存的唯一模式。 有关详细信息，请参阅[使用查询字符串控制 Azure CDN 缓存行为](cdn-query-string-premium.md)。
+
 #### <a name="sample-scenarios"></a>示例方案
 
 此功能的以下示例用法提供了示例请求和默认的 cache-key：
 
-- **示例请求：**http://wpc.0001.&lt;域&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
+- **示例请求：**http://wpc.0001.&lt;Domain&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
 - **默认 cache-key：**/800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>包括
@@ -1054,10 +1056,12 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 ### <a name="token-auth-denial-code"></a>令牌身份验证拒绝代码
 **目的：**确定以基于令牌的身份验证为由拒绝请求时为用户返回的响应类型。
 
-下面列出了可用的响应代码。
+令牌身份验证拒绝代码不能与“始终”匹配条件一起使用。 请改用“管理”门户的“令牌身份验证”页的“自定义拒绝处理”部分。 有关详细信息，请参阅[使用令牌身份验证保护 Azure CDN 资产](cdn-token-auth.md)。
+
+下表列出了可用的响应代码。
 
 响应代码|响应名称|说明
-----------------|-----------|--------
+-------------|-------------|--------
 301|已永久移动|此状态代码将未经授权的用户重定向到在 Location 标头中指定的 URL。
 302|已找到|此状态代码将未经授权的用户重定向到在 Location 标头中指定的 URL。 此状态代码是执行重定向操作的行业标准方法。
 307|临时重定向|此状态代码将未经授权的用户重定向到在 Location 标头中指定的 URL。

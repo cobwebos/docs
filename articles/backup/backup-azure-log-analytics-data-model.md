@@ -1,11 +1,11 @@
 ---
-title: "Azure 备份的 Log Analytics 数据模型"
-description: "本文介绍 Azure 备份数据的 Log Analytics 数据模型详细信息。"
+title: Azure 备份的 Log Analytics 数据模型
+description: 本文介绍 Azure 备份数据的 Log Analytics 数据模型详细信息。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: 
+editor: ''
 ms.assetid: dfd5c73d-0d34-4d48-959e-1936986f9fc0
 ms.service: backup
 ms.devlang: na
@@ -15,14 +15,14 @@ ms.workload: storage-backup-recovery
 ms.date: 07/24/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 041a8835a1dd185739b23d4073fd5811bb4490b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d55ec8ac4416fe0a082812584552462292b6dbb7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
-本文介绍用于将报告数据推送到 Log Analytics 的数据模型。 使用此数据模型可以创建自定义查询和仪表板，并在 OMS 中利用这些对象。 
+本文介绍用于将报告数据推送到 Log Analytics 的数据模型。 使用此数据模型可以创建自定义查询和仪表板，并在 Log Analytics 中利用这些对象。 
 
 ## <a name="using-azure-backup-data-model"></a>使用 Azure 备份数据模型
 可以使用数据模型随附的以下字段，根据要求创建视觉对象、自定义查询和仪表板。
@@ -286,4 +286,4 @@ ms.lasthandoff: 10/11/2017
 | ResourceType |文本 |此字段表示正在收集其数据的资源的类型 - Vaults |
 
 ## <a name="next-steps"></a>后续步骤
-查看用于创建 Azure 备份报告的数据模型后，可以开始在 Log Analytics 和 OMS 中[创建仪表板](../log-analytics/log-analytics-dashboards.md)。
+查看用于创建 Azure 备份报告的数据模型后，可以开始在 Log Analytics 中[创建仪表板](../log-analytics/log-analytics-dashboards.md)。

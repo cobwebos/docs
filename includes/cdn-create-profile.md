@@ -1,27 +1,47 @@
-**创建新的 CDN 配置文件**
+---
+title: include 文件
+description: include 文件
+services: cdn
+author: dksimpson
+ms.service: cdn
+ms.topic: include
+ms.date: 04/04/2018
+ms.author: rli; v-deasim
+ms.custom: include file
+ms.openlocfilehash: 692364e9b2e78b3bd1f63137148dfbc680364737
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/05/2018
+---
+## <a name="create-a-new-cdn-profile"></a>创建新的 CDN 配置文件
 
-1. 在 [Azure 门户](https://portal.azure.com)的左上角，选择“创建资源”。
-    
-2. 在“新建”边栏选项卡中，选择“Web + 移动”，并选择“CDN”。
-   
-    此时将显示“CDN 配置文件”边栏选项卡。
-   
-    ![新的 CDN 配置文件](./media/cdn-create-profile/new-cdn-profile-include.png)
-3. 对于**名称**，输入 CDN 配置文件的唯一名称。
-    
-4. 对于**订阅**，选择要用于此 CDN 配置文件的订阅。
-   
-5. 对于**资源组**，选择或创建资源组。 有关资源组的信息，请参阅 [Azure 资源管理器概述](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)。
-    
-6. 对于**资源组位置**，选择用于存储 CDN 配置文件信息的 Azure 位置。 此位置不会影响 CDN 终结点位置。
-    
-7. 对于**定价层**，选择定价层。 如需比较每个定价层提供的功能，请参阅 [Azure CDN 功能](../articles/cdn/cdn-overview.md#azure-cdn-features)。
-   
-    ![CDN 定价层选择](./media/cdn-create-profile/cdn-choose-sku-include.png)
+CDN 配置文件是适用于 CDN 终结点的容器，用于指定定价层。
 
-8. （可选）选择“立即新建 CDN 终结点”以显示用于在创建配置文件的同时创建终结点的选项。 有关详细信息，请参阅[新建 CDN 终结点](../articles/cdn/cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)。
-   
-9. 如果希望在创建配置文件后将其保存到仪表板以便更便于查找，请选择“固定到仪表板”。
+1. 在 Azure 门户的左上角，选择“创建资源”。
     
-10. 选择“创建”以创建该配置文件。 
+    此时会显示“新建”窗格。
+   
+2. 选择“Web + 移动”，然后选择“CDN”。
+   
+    ![选择 CDN 资源](./media/cdn-create-profile/cdn-new-resource.png)
+
+    此时会显示“CDN 配置文件”窗格。
+
+    使用图像后的表中指定的设置。
+   
+    ![新的 CDN 配置文件](./media/cdn-create-profile/cdn-new-profile.png)
+
+    | 设置  | 值 |
+    | -------- | ----- |
+    | **Name** | 输入 *my-cdn-profile-123* 作为配置文件名称。 此名称必须全局唯一；如果此名称已在使用，则可输入其他名称。 |
+    | **订阅** | 从下拉列表中选择一个 Azure 订阅。|
+    | **资源组** | 选择“新建”，然后输入 *my-resource-group-123* 作为资源组名称。 此名称必须全局唯一；如果此名称已在使用，则可输入其他名称。 | 
+    | **资源组位置** | 从下拉列表中选择“美国中部”。 |
+    | **定价层** | 从下拉列表中选择“标准 Verizon”。 |
+    | **立即创建新的 CDN 终结点** | 保持未选中状态。 |  
+   
+3. 选择“固定到仪表板”，以便在创建配置文件以后将其保存到仪表板。
+    
+4. 选择“创建”以创建该配置文件。 
 

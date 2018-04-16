@@ -1,6 +1,6 @@
 ---
-title: "加密 - Microsoft 威胁建模工具 - Azure | Microsoft 文档"
-description: "针对威胁建模工具中暴露的威胁采取的缓解措施"
+title: 加密 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
+description: 针对威胁建模工具中暴露的威胁采取的缓解措施
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 96e74371fe51a8050a91c86215e3eefab07bbed8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e5d487c4c793a49ce1d4ac17f6fcd672e09bb90
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全框架：加密 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | 不适用  |
-| **步骤** | <p>产品必须使用批准的随机数生成器。 因此，在此类代码中不得使用伪随机函数，例如 C 运行时函数 rand、.NET Framework 类 System.Random，或 GetTickCount 等系统函数。 禁止使用双重椭圆曲线随机数生成器 (DUAL_EC_DRBG) 算法</p><ul><li>**CNG-** BCryptGenRandom（除非调用方能够以大于 0 [即 PASSIVE_LEVEL] 的任何 IRQL 运行，否则建议使用 BCRYPT_USE_SYSTEM_PREFERRED_RNG 标志）</li><li>**CAPI-** cryptGenRandom</li><li>**Win32/64-** RtlGenRandom（新的实现应使用 BCryptGenRandom 或 CryptGenRandom）* rand_s * SystemPrng（适用于内核模式）</li><li>**.NET-** RNGCryptoServiceProvider 或 RNGCng</li><li>**Windows 应用商店应用-** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom 或 .GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+)-** int SecRandomCopyBytes (SecRandomRef random, size_t count, uint8_t *bytes )</li><li>**Apple OS X (<10.7)-** 使用 /dev/random 来检索随机数</li><li>**Java（包括 Google Android Java 代码）-** java.security.SecureRandom 类。 请注意，对于 Android 4.3 (Jelly Bean)，开发人员必须遵循 Android 建议的解决方法并更新其应用程序，使用 /dev/urandom 或 /dev/random 中的熵初始化 PRNG</li></ul>|
+| **步骤** | <p>产品必须使用批准的随机数生成器。 因此，在此类代码中不得使用伪随机函数，例如 C 运行时函数 rand、.NET Framework 类 System.Random，或 GetTickCount 等系统函数。 禁止使用双重椭圆曲线随机数生成器 (DUAL_EC_DRBG) 算法</p><ul><li>**CNG-** BCryptGenRandom（除非调用方能够以大于 0 [即 PASSIVE_LEVEL] 的任何 IRQL 运行，否则建议使用 BCRYPT_USE_SYSTEM_PREFERRED_RNG 标志）</li><li>**CAPI-** cryptGenRandom</li><li>**Win32/64-** RtlGenRandom（新的实现应使用 BCryptGenRandom 或 CryptGenRandom）* rand_s * SystemPrng（适用于内核模式）</li><li>**.NET-** RNGCryptoServiceProvider 或 RNGCng</li><li>**Windows 应用商店应用-** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom 或 .GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+)-** int SecRandomCopyBytes (SecRandomRef random, size_t count, uint8_t \*bytes )</li><li>**Apple OS X (<10.7)-** 使用 /dev/random 来检索随机数</li><li>**Java（包括 Google Android Java 代码）-** java.security.SecureRandom 类。 请注意，对于 Android 4.3 (Jelly Bean)，开发人员必须遵循 Android 建议的解决方法并更新其应用程序，使用 /dev/urandom 或 /dev/random 中的熵初始化 PRNG</li></ul>|
 
 ## <a id="stream-ciphers"></a>不要使用对称流加密法
 

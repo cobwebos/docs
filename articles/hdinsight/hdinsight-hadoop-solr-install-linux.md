@@ -1,8 +1,8 @@
 ---
-title: "使用脚本操作在基于 Linux 的 HDInsight 上安装 Solr — Azure | Microsoft Docs"
-description: "了解如何使用脚本操作在基于 Linux 的 HDInsight Hadoop 群集上安装 Solr。"
+title: 使用脚本操作在基于 Linux 的 HDInsight 上安装 Solr — Azure | Microsoft Docs
+description: 了解如何使用脚本操作在基于 Linux 的 HDInsight Hadoop 群集上安装 Solr。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: larryfr
 ms.openlocfilehash: f642a1f8060f566ec95b23995d0f82191b0c5315
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Solr
 

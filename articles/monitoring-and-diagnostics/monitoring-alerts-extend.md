@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: 356c1343443b33e565c65ef0693b8d8455ff1d1b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 445adb7f57332a285494c744763f633806d2675e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="extend-copy-alerts-from-oms-portal-into-azure"></a>将警报从 OMS 门户扩展（复制）到 Azure
 Operations Management Suite (OMS) 门户仅显示 Log Analytics 警报。  新的警报体验现在已在 Microsoft Azure 中的各种服务和部件中集成了警报体验。 新体验在 Azure 门户中通过 Azure Monitor 下的“警报”提供，包含活动日志警报、指标警报以及有关 Log Analytics 和 Application Insights 的日志警报。 
@@ -30,12 +30,13 @@ Operations Management Suite (OMS) 门户仅显示 Log Analytics 警报。  新�
 
 - 在 OMS 门户中，只能创建和查看 250 个警报，与之不同，在 Azure 警报中不存在此限制。
 - 从 Azure 警报中，可以管理、枚举和查看所有警报类型，而不是像使用 OMS 门户时那样仅限于 Log Analytics 警报。
-- Azure 警报利用[操作组](monitoring-action-groups.md)，这允许针对每个警报采取多个操作，包括 SMS、语音呼叫、自动化 Runbook、Webhook、ITSM 连接器，等等。 Log Analytics 警报在数量和可能操作的类型方面都受限制
+- 使用 [Azure Monitor 角色](monitoring-roles-permissions-security.md)将用户的访问权限控制到仅监视和警报
+- Azure 警报利用[操作组](monitoring-action-groups.md)，这允许针对每个警报采取多个操作，包括 SMS、语音呼叫、自动化 Runbook、Webhook、ITSM 连接器，等等。 
 
 ## <a name="process-of-extending-your-alerts"></a>对警报进行扩展的流程
 将警报从 OMS 门户扩展到 Azure 中的流程**不**涉及以任何方式更改警报定义、查询或配置。 唯一需要进行的更改是，在 Azure 中，诸如电子邮件通知、Webhook 调用、运行自动化 Runbook 或连接到 ITSM 工具之类的所有操作都是通过操作组执行的。 因此，如果合适的操作组与警报关联，则它们将扩展到 Azure 中。
 
-因为扩展流程是无损的并且不会造成中断，所以，从 **2018 年 4 月 23 日**开始，Microsoft 会自动将在 OMS 门户中创建的警报扩展到 Azure 警报。 从这天开始，Microsoft 将开始计划将警报扩展到 Azure 中并逐步使 OMS 门户中存在的所有警报可以在 Azure 门户中进行管理。 
+因为扩展流程是无损的并且不会造成中断，所以，从 **2018 年 5 月 14 日**开始，Microsoft 会自动将在 OMS 门户中创建的警报扩展到 Azure 警报。 从这天开始，Microsoft 将开始计划将警报扩展到 Azure 中并逐步使 OMS 门户中存在的所有警报可以在 Azure 门户中进行管理。 
 
 在计划将 Log Analytics 工作区中的警报扩展到 Azure 中时，它们将继续工作，并且**不会**以任何方式影响你的监视。 在计划时，警报可能暂时不可修改/编辑；但是，在此短暂的时间内，可以继续创建新的 Azure 警报。 在此短暂期限内，如果从 OMS 门户中编辑或创建了警报，则用户可以选择继续在 Azure Log Analytics 中还是在 Azure 警报中进行操作。
 
@@ -55,7 +56,12 @@ Operations Management Suite (OMS) 门户仅显示 Log Analytics 警报。  新�
 
  ![OMS 门户在警报扩展到 Azure 中之后仍然列出警报](./media/monitor-alerts-extend/PostExtendList.png)
 
-对于在 OMS 门户中对警报执行的任何操作（例如编辑或创建），都会以透明方式将用户定向到 Azure 警报。 与之前一样，警报创建仍然基于现有的 [Log Analytics API](../log-analytics/log-analytics-api-alerts.md)，唯一的微小变化是，在警报扩展到 Azure 后，需要在计划中关联操作组。
+对于在 OMS 门户中对警报执行的任何操作（例如编辑或创建），都会以透明方式将用户定向到 Azure 警报。 
+
+> [!NOTE]
+> 由于对 OMS 中的警报执行任何添加或编辑操作时，用户将以透明方式转到 Azure，因此请确保将用户正确地映射到相应的[使用 Azure Monitor 和警报的权限](monitoring-roles-permissions-security.md)
+
+与之前一样，警报创建仍然基于现有的 [Log Analytics API](../log-analytics/log-analytics-api-alerts.md)，唯一的微小变化是，在警报扩展到 Azure 后，需要在计划中关联操作组。
 
 ## <a name="next-steps"></a>后续步骤
 

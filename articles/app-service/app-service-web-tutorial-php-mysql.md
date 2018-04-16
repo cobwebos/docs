@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 中构建 PHP 和 MySQL Web 应用 | Microsoft Docs"
-description: "了解如何创建一个可在 Azure 中运行的 PHP 应用，并将其连接到 MySQL 数据库。"
+title: 在 Azure 中构建 PHP 和 MySQL Web 应用 | Microsoft Docs
+description: 了解如何创建一个可在 Azure 中运行的 PHP 应用，并将其连接到 MySQL 数据库。
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.service: app-service-web
 ms.workload: web
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 39bfc4e6a4f4066e8aeda0da387fe570525b6086
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 28c50aea9aaad1b9b18fb6b3034617d10beea7ec
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-a-php-and-mysql-web-app-in-azure"></a>在 Azure 中构建 PHP 和 MySQL Web 应用
+# <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>教程：在 Azure 中构建 PHP 和 MySQL Web 应用
 
 > [!NOTE]
 > 本文将应用部署到 Windows 上的应用服务。 若要部署到基于 Linux 的应用服务，请参阅[在基于 Linux 的 Azure 应用服务中生成 PHP 和 MySQL Web 应用](./containers/tutorial-php-mysql-app.md)。
@@ -154,7 +154,7 @@ php artisan serve
 
 ## <a name="create-mysql-in-azure"></a>在 Azure 中创建 MySQL
 
-此步骤在[用于 MySQL 的 Azure 数据库（预览版）](/azure/mysql)中创建一个 MySQL 数据库。 稍后需要将 PHP 应用程序配置为连接到此数据库。
+此步骤在 [Azure Database for MySQL](/azure/mysql) 中创建一个 MySQL 数据库。 稍后需要将 PHP 应用程序配置为连接到此数据库。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -162,7 +162,7 @@ php artisan serve
 
 ### <a name="create-a-mysql-server"></a>创建 MySQL 服务器
 
-在 Cloud Shell 中，使用 [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) 命令在 Azure Database for MySQL（预览版）中创建一个服务器。
+在 Cloud Shell 中，使用 [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) 命令在 Azure Database for MySQL 中创建一个服务器。
 
 在以下命令中，请将 &lt;mysql_server_name> 占位符替换为你自己的唯一 MySQL 服务器名称（有效字符是 `a-z`、`0-9` 和 `-`）。 此名称是 MySQL 服务器主机名 (`<mysql_server_name>.database.windows.net`) 的一部分，必须全局唯一。
 
@@ -199,7 +199,7 @@ az mysql server firewall-rule create --name allIPs --server <mysql_server_name> 
 ```
 
 > [!NOTE]
-> 用于 MySQL 的 Azure 数据库（预览版）目前不限制仅通过 Azure 服务建立连接。 由于 Azure 中的 IP 地址是动态分配的，因此最好启用所有 IP 地址。 该服务处于预览状态。 我们正在计划更好地保护数据库的方法。
+> Azure Database for MySQL 目前并不是只允许连接到 Azure 服务。 由于 Azure 中的 IP 地址是动态分配的，因此最好启用所有 IP 地址。 我们正在计划更好地保护数据库的方法。
 >
 >
 
@@ -236,7 +236,7 @@ quit
 
 ## <a name="connect-app-to-azure-mysql"></a>将应用连接到 Azure MySQL
 
-此步骤将 PHP 应用程序连接到在用于 MySQL 的 Azure 数据库（预览版）中创建的 MySQL 数据库。
+此步骤将 PHP 应用程序连接到在 Azure Database for MySQL 中创建的 MySQL 数据库。
 
 <a name="devconfig"></a>
 
@@ -260,7 +260,7 @@ MYSQL_SSL=true
 保存更改。
 
 > [!TIP]
-> 若要保护 MySQL 连接信息，此文件已从 Git 存储库（请参阅存储库根路径中的 .gitignore排除。 以后，你可以了解如何将应用服务中的环境变量配置为连接到用于 MySQL 的 Azure 数据库（预览版）中的数据库。 有了环境变量，便不需要应用服务中的 .env 文件。
+> 若要保护 MySQL 连接信息，此文件已从 Git 存储库（请参阅存储库根路径中的 .gitignore排除。 以后介绍如何将应用服务中的环境变量配置为连接到 Azure Database for MySQL 中的数据库。 有了环境变量，便不需要应用服务中的 .env 文件。
 >
 
 ### <a name="configure-ssl-certificate"></a>配置 SSL 证书
@@ -283,7 +283,7 @@ MYSQL_SSL=true
 
 ### <a name="test-the-application-locally"></a>在本地测试应用程序
 
-使用 _.env.production_ 作为环境文件运行 Laravel 数据库迁移，在用于 MySQL 的 Azure 数据库（预览版）中的 MySQL 数据库内创建表。 请记住，在 Azure 中 .env.production 具有的 MySQL 数据库的连接信息。
+使用 _.env.production_ 作为环境文件运行 Laravel 数据库迁移，在 Azure Database for MySQL 中的 MySQL 数据库内创建表。 请记住，在 Azure 中 .env.production 具有的 MySQL 数据库的连接信息。
 
 ```bash
 php artisan migrate --env=production --force
@@ -305,7 +305,7 @@ php artisan serve --env=production
 
 在页面中添加一些任务。
 
-![PHP 已成功连接到用于 MySQL 的 Azure 数据库（预览版）](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
+![PHP 已成功连接到 Azure Database for MySQL](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
 
 在终端键入 `Ctrl + C` 可停止 PHP。
 

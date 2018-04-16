@@ -2,9 +2,8 @@
 title: 使用模板部署 Web 应用 - Azure Cosmos DB | Microsoft Docs
 description: 了解如何使用 Azure 资源管理器模板部署 Azure Cosmos DB 帐户、Azure 应用服务 Web 应用以及示例 Web 应用程序。
 services: cosmos-db, app-service\web
-author: mimig1
-manager: jhubbard
-editor: monicar
+author: SnehaGunda
+manager: kfile
 documentationcenter: ''
 ms.assetid: 087d8786-1155-42c7-924b-0eaba5a8b3e0
 ms.service: cosmos-db
@@ -13,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 89513d6c1b9aa9f4709359d6d7681bff9c291618
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 468edd78e0ef8e13b2783485004a9db21906f1fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
 本教程说明如何使用 Azure 资源管理器模板来部署和集成 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure 应用服务](http://go.microsoft.com/fwlink/?LinkId=529714) Web 应用以及示例 Web 应用程序。
@@ -77,7 +76,7 @@ ms.lasthandoff: 02/24/2018
    ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment6.png)
 7. 部署完成后，“资源组”窗格会打开。
    ![资源组窗格的屏幕截图](./media/create-website/TemplateDeployment7.png)  
-8. 若要使用应用程序，请导航到 Web 应用 URL（上述示例中的 URL 是 http://mydemodocdbwebapp.azurewebsites.net ）。  会看到下列 Web 应用程序：
+8. 若要使用应用程序，请导航到 Web 应用 URL（上述示例中的 URL 是 http://mydemodocdbwebapp.azurewebsites.net)）。  会看到下列 Web 应用程序：
    
    ![示例待办事项应用程序](./media/create-website/image2.png)
 9. 继续在 Web 应用中创建几个任务，并返回到 Azure 门户中的资源组窗格。 单击“资源”列表中的“Azure Cosmos DB 帐户”资源，并单击“数据浏览器”。

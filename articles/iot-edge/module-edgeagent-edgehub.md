@@ -9,15 +9,15 @@ ms.author: kgremban
 ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 17c97c6f233c9861ac42abc0a1f11089bb938e7c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0971d5bba59ce3c7b1a6409ef3248f33a41e37c9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Edge 代理和 Edge 中心模块孪生的属性
 
-Edge 代理和 Edge 中心是构成 IoT Edge 运行时的两个模块。 有关每个模块的职责的详细信息，请参阅 [了解 Azure IoT Edge 运行时及其体系结构]](iot-edge-runtime.md)。 
+Edge 代理和 Edge 中心是构成 IoT Edge 运行时的两个模块。 有关每个模块的职责的详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。 
 
 本文提供运行时模块孪生的所需属性和报告属性。 有关如何在 IoT Edge 设备上部署模块的详细信息，请参阅[部署和监控][lnk-deploy]。
 

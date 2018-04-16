@@ -1,13 +1,13 @@
 ---
-title: "将首个应用部署到 Microsoft Azure 上的 Cloud Foundry | Microsoft Docs"
-description: "将应用程序部署到 Azure 上的 Cloud Foundry"
+title: 将首个应用部署到 Microsoft Azure 上的 Cloud Foundry | Microsoft Docs
+description: 将应用程序部署到 Azure 上的 Cloud Foundry
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: seanmck
-manager: timlt
-editor: 
-tags: 
-keywords: 
+manager: jeconnoc
+editor: ''
+tags: ''
+keywords: ''
 ms.assetid: 8fa04a58-56ad-4e6c-bef4-d02c80d4b60f
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: b617127fc0a3f8dcae293e356ea669edcfa5deff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e7b321c9fc8f8568cd8109cea0ae877048d3663
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>将首个应用部署到 Microsoft Azure 上的 Cloud Foundry
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 - 通过设置 [BOSH](http://bosh.io) 控制器（一种协调 Cloud Foundry 环境部署的 VM），[直接部署开源 Cloud Foundry 包][oss-cf-bosh]。
 
 > [!IMPORTANT] 
-> 如果要从 Azure Marketplace 部署 PCF，请记下访问 Pivotal 应用管理器所需的 SYSTEMDOMAINURL 和管理员凭据，应用商店部署指南中对两者都有介绍。 完成本教程也需要它们。 在应用商店部署中，SYSTEMDOMAINURL 的形式为 https://system.*ip-address*.cf.pcfazure.com。
+> 如果要从 Azure Marketplace 部署 PCF，请记下访问 Pivotal 应用管理器所需的 SYSTEMDOMAINURL 和管理员凭据，应用商店部署指南中对两者都有介绍。 完成本教程也需要它们。 在 Marketplace 部署中，SYSTEMDOMAINURL 的形式为 https://system.*ip-address*.cf.pcfazure.com。
 
 ## <a name="connect-to-the-cloud-controller"></a>连接到云控制器
 

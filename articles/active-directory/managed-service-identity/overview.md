@@ -1,24 +1,24 @@
 ---
-title: "Azure Active Directory 的托管服务标识 (MSI)"
-description: "概述了 Azure 资源的托管服务标识。"
+title: Azure Active Directory 的托管服务标识 (MSI)
+description: 概述了 Azure 资源的托管服务标识。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: 2d711d4fa48a1d10d4c37b9591a66e5b746f1ca7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e4f9d9e4e0f84610ad072d889abf68b62c0dd41f
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Azure 资源的托管服务标识 (MSI)
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/08/2018
 2. Azure 资源管理器在 Azure AD 中创建服务主体，用于表示 VM 的标识。 服务主体是在此订阅信任的 Azure AD 租户中进行创建。
 3. Azure 资源管理器在 VM 的 MSI VM 扩展中配置服务主体的详细信息。  这一步包括配置扩展从 Azure AD 获取访问令牌所需的客户端 ID 和证书。
 4. 至此，VM 的服务主体标识已知，现在可以授予 VM 对 Azure 资源的访问权限了。  例如，如果代码需要调用 Azure 资源管理器，将会在 Azure AD 中使用基于角色的访问控制 (RBAC) 向 VM 的服务主体分配相应的角色。  如果代码需要调用 Key Vault，将会授予代码对 Key Vault 中特定机密或密钥的访问权限。
-5. 在 VM 上运行的代码请求从 MSI VM 扩展托管的本地终结点 (http://localhost:50342/oauth2/token) 获取令牌。  resource 参数指定了要向其发送令牌的服务。 例如，如果希望代码通过 Azure 资源管理器的身份验证，需要使用 resource=https://management.azure.com/。
+5. 在 VM 上运行的代码请求从 MSI VM 扩展托管的本地终结点获取令牌：http://localhost:50342/oauth2/token。  resource 参数指定了要向其发送令牌的服务。 例如，如果希望代码通过 Azure 资源管理器的身份验证，需要使用 resource=https://management.azure.com/。
 6. MSI VM 扩展使用自己配置的客户端 ID 和证书从 Azure AD 请求获取访问令牌。  Azure AD 返回 JSON Web 令牌 (JWT) 访问令牌。
 7. 代码在调用支持 Azure AD 身份验证的服务时发送访问令牌。
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 03/08/2018
 |                    | [使用 Linux VM 托管服务标识通过 SAS 访问 Azure 存储](tutorial-linux-vm-access-storage-sas.md) |
 |                    | [使用 Linux VM 托管服务标识和 Azure Key Vault 访问非 Azure AD 资源](tutorial-linux-vm-access-nonaad.md) |
 | Azure 应用服务  | [将托管服务标识与 Azure 应用服务或 Azure Functions 结合使用](/azure/app-service/app-service-managed-service-identity) |
-| Azure 函数     | [将托管服务标识与 Azure 应用服务或 Azure Functions 结合使用](/azure/app-service/app-service-managed-service-identity) |
+| Azure Functions    | [将托管服务标识与 Azure 应用服务或 Azure Functions 结合使用](/azure/app-service/app-service-managed-service-identity) |
 | Azure 服务总线  | [将托管服务标识与 Azure 服务总线配合使用](../../service-bus-messaging/service-bus-managed-service-identity.md) |
 | Azure 事件中心   | [将托管服务标识与 Azure 事件中心一起使用](../../event-hubs/event-hubs-managed-service-identity.md) |
 
@@ -78,8 +78,10 @@ ms.lasthandoff: 03/08/2018
 | ------- | ------ | ---- | --------- | ----------- |
 | Azure 虚拟机 | 预览 | 2017 年 9 月 | [Azure 门户](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Azure 资源管理器模板](qs-configure-template-windows-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
 | Azure 应用服务 | 预览 | 2017 年 9 月 | [Azure 门户](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
-| Azure Functions | 预览 | 2017 年 9 月 | [Azure 门户](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure Functions<sup>1</sup> | 预览 | 2017 年 9 月 | [Azure 门户](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure 资源管理器模板](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
 | Azure 数据工厂 V2 | 预览 | 2017 年 11 月 | [Azure 门户](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
+
+<sup>1</sup> Azure Functions 支持允许用户代码使用标识，但触发器和绑定可能仍需要连接字符串。
 
 ### <a name="azure-services-that-support-azure-ad-authentication"></a>支持 Azure AD 身份验证的 Azure 服务
 

@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 中创建 ASP.NET Framework Web 应用 | Microsoft Docs"
-description: "了解如何通过部署默认的 ASP.NET Web 应用，在 Azure 应用服务中运行 Web 应用。"
+title: 在 Azure 中创建 ASP.NET Framework Web 应用 | Microsoft Docs
+description: 了解如何通过部署默认的 ASP.NET Web 应用，在 Azure 应用服务中运行 Web 应用。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.service: app-service-web
 ms.workload: web
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 6ce5d49fe4e58b3c89c09ef80d563d001a4abb41
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 125377b91514b1615cfbb488f7ddfe59fbc016f5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用
 
@@ -40,6 +40,8 @@ ms.lasthandoff: 02/01/2018
     - **Azure 开发**
 
     ![ASP.NET 和 Web 开发以及 Azure 开发（在 Web 和云下）](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+
+如果已安装 Visual Studio，请单击“工具” > **Get Tools and Features**“获取工具和功能”，以便在 Visual Studio 中添加工作负荷。
 
 ## <a name="create-an-aspnet-web-app"></a>创建 ASP.NET Web 应用
 

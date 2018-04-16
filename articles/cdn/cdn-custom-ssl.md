@@ -4,7 +4,7 @@ description: 了解如何在具有自定义域的 Azure CDN 终结点上启用�
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: ''
+manager: akucer
 editor: ''
 ms.assetid: 10337468-7015-4598-9586-0b66591d939b
 ms.service: cdn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
-ms.author: casoper
-ms.openlocfilehash: fea7121fc67944b20b8f39007edb0c0aad86aeaa
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: rli; v-deasim
+ms.openlocfilehash: 554ae4c19d1a3d35075ad174549a62a20329e5fa
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>在 Azure 内容交付网络自定义域上配置 HTTPS
 
@@ -45,7 +45,7 @@ HTTPS 功能的一些关键属性包括：
 
 ### <a name="step-1-enable-the-feature"></a>步骤 1：启用该功能 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 Verizon 标准或高级 CDN 配置文件。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** CDN 配置文件。
 
 2. 在终结点的列表中，单击包含自定义域的终结点。
 
@@ -149,7 +149,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ### <a name="step-1-disable-the-feature"></a>步骤 1：禁用该功能 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 Verizon 标准或高级 CDN 配置文件。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** CDN 配置文件。
 
 2. 在终结点的列表中，单击包含自定义域的终结点。
 

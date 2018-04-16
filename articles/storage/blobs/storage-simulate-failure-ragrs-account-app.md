@@ -10,11 +10,11 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 0e7ab68075fbce729d3905375acce0dace22c483
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a86f54d580db6e577b878cb1701c7b969d23c129
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>模拟访问读取访问冗余存储时发生的故障
 
@@ -179,9 +179,9 @@ route delete <destination_ip>
 > * 使用 [fiddler](#simulate-a-failure-with-fiddler) 或[无效的静态路由](#simulate-a-failure-with-an-invalid-static-route)模拟失败 
 > * 模拟主终结点还原
 
-请访问以下链接，查看预先生成的存储示例。
+阅读以下文章，详细了解 RA-GRS 存储的工作原理（以及相关风险）。
 
 > [!div class="nextstepaction"]
-> [Azure 存储脚本示例](storage-samples-blobs-cli.md)
+> [使用 RA-GRS 设计 HA 应用](../common/storage-designing-ha-apps-with-ragrs.md)
 
 [previous-tutorial]: storage-create-geo-redundant-storage.md

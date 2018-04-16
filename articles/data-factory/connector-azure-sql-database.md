@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 12f673a8d3ca9c0bb03b9cd2d8c33ae866039289
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 82aea8b13fd4bad777fd3120fa811fa1ab284ac1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/23/2018
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Azure SQL 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure SQL 数据库连接器](v1/data-factory-azure-sql-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务第 1 版（已正式推出 (GA)），请参阅 [V1 中的 Azure SQL 数据库连接器](v1/data-factory-azure-sql-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -492,7 +492,7 @@ create table dbo.TargetTbl
 
 请注意，源表和目标表具有不同架构（目标表具有一个额外标识列）。 在本方案中，需在不包含标识列的目标数据集定义中指定 **structure** 属性。
 
-## <a name="invoke-stored-procedure-from-sql-sink"></a>调用 SQL 接收器的存储过程
+## <a name="invoking-stored-procedure-for-sql-sink"></a> 调用 SQL 接收器的存储过程
 
 将数据复制到 Azure SQL 数据库时，可以配置某个用户指定的存储过程并配合其他参数进行调用。
 

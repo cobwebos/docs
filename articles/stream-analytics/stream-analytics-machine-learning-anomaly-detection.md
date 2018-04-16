@@ -1,22 +1,19 @@
 ---
-title: Azure 用法指南（预览版）中的异常检测 | Microsoft Docs
-description: 使用流分析和机器学习来检测异常。
+title: Azure 流分析（预览）中的异常检测
+description: 本文介绍如何将 Azure 流分析与 Azure 机器学习一起使用以检测异常。
 services: stream-analytics
-documentationcenter: ''
 author: dubansal
-manager: katicad
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 02/12/2018
 ms.author: dubansal
-ms.openlocfilehash: 9d301f8586038f635ee97a3acdc9c4dc8a2bbcc6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 02/12/2018
+ms.openlocfilehash: cda5c26d4256720a8cf9af0e9abd604c979422a7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常检测
 

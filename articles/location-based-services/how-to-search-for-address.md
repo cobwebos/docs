@@ -1,18 +1,17 @@
 ---
-title: "如何使用 Azure Location Based Services（预览版）搜索服务搜索地址 | Microsoft Docs"
-description: "了解如何使用 Azure Location Based Services（预览版）搜索服务搜索地址"
+title: 如何使用 Azure Location Based Services（预览版）搜索服务搜索地址 | Microsoft Docs
+description: 了解如何使用 Azure Location Based Services（预览版）搜索服务搜索地址
 services: location-based-services
-keywords: "未咨询 SEO 专家的情况下，请不要添加或编辑关键字。"
 author: kgremban
 ms.author: kgremban
 ms.date: 11/29/2017
 ms.topic: article
 ms.service: location-based-services
-ms.openlocfilehash: dd8026c55d71f6e421b976d8e7ae12f1cfd679a1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f8b886607fe0915396a659593cd5910a271fca93
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>如何使用 Azure Location Based Services（预览版）搜索服务查找地址
 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点、兴趣点、商业列表和其他地理信息。 搜索服务将纬度/经度分配到特定的地址、十字路口、地理特征或兴趣点 (POI)。 在路由和流量流 API 等其他 Azure Location Based Services 中，可将搜索服务 API 返回的纬度和经度值用作参数。

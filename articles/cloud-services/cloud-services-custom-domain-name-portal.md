@@ -1,11 +1,11 @@
 ---
-title: "在云服务中配置自定义域名 | Microsoft Docs"
-description: "了解如何通过配置 DNS 设置在自定义域上向 Internet 公开 Azure 应用程序或数据。  这些示例使用 Azure 门户。"
+title: 在云服务中配置自定义域名 | Microsoft Docs
+description: 了解如何通过配置 DNS 设置在自定义域上向 Internet 公开 Azure 应用程序或数据。  这些示例使用 Azure 门户。
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5783a246-a151-4fb1-b488-441bfb29ee44
 ms.service: cloud-services
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
 ms.openlocfilehash: 139ec6578dc9e76039c5fb13e7a7741aa8ba4e0d
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>为 Azure 云服务配置自定义域名
 创建云服务时，Azure 会将其分配给 **cloudapp.net** 的子域。 例如，如果云服务名为“contoso”，则用户能够在 URL（如 http://contoso.cloudapp.net）上访问应用程序。 Azure 还会将分配一个虚拟 IP 地址。

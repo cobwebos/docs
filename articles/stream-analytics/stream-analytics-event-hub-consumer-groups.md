@@ -1,24 +1,19 @@
 ---
-title: 使用事件中心接收器调试 Azure 流分析 | Microsoft Docs
+title: 在 Azure 流分析中对事件中心接收器进行故障排除
 description: 考虑到流分析作业中的事件中心使用者组时的查询最佳做法。
-keywords: 事件中心限制, 使用者组
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 48fa5d0274549aa35e67526a758eef1f34198a6a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: 20614986fc6c6afa9a92d163bf973a148e0517c0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="debug-azure-stream-analytics-with-event-hub-receivers"></a>使用事件中心接收器调试 Azure 流分析
 
@@ -79,7 +74,7 @@ FROM data
 
 
 ## <a name="get-help"></a>获取帮助
-有关更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
+有关更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [流分析简介](stream-analytics-introduction.md)

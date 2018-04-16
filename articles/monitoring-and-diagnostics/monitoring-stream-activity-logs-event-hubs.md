@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2018
 ms.author: johnkem
-ms.openlocfilehash: 4b2d9866839f943f65beb271d44bc691441b0fb3
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8a599558fc35ca2bf48ce2a5f11ec4978bf10277
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>将 Azure 活动日志流式传输到事件中心
 可以选择下列两种方式之一将 [Azure 活动日志](monitoring-overview-activity-logs.md)准实时流式传输到任何应用程序：
@@ -56,38 +56,48 @@ ms.lasthandoff: 03/09/2018
 
    > [!WARNING]  
    > 如果选择了任何“所有区域”以外的选项，你将遗漏想要接收的关键事件。 活动日志是全局性（非区域性）日志，因此大多数事件并不具备相关联的区域。 
-   > 
+   >
 
 4. 选择“保存”保存这些设置。 这些设置会即时应用到订阅。
 5. 如果有多个订阅，请重复此操作，并将所有数据发送至同一事件中心。
 
 ### <a name="via-powershell-cmdlets"></a>通过 PowerShell Cmdlet
-如果日志配置文件已存在，则需先删除该配置文件。
+如果日志配置文件已存在，首先需要删除现有日志配置文件，然后创建新的日志配置文件。
 
-1. 使用 `Get-AzureRmLogProfile` 确定日志配置文件是否存在。
-2. 如果存在，使用 `Remove-AzureRmLogProfile` 将其删除。
-3. 使用 `Set-AzureRmLogProfile` 创建配置文件：
+1. 使用 `Get-AzureRmLogProfile` 确定日志配置文件是否存在。  如果存在日志配置文件，请找到 *name* 属性。
+2. 使用 `Remove-AzureRmLogProfile` 通过 *name* 属性的值删除日志配置文件。
+
+    ```powershell
+    # For example, if the log profile name is 'default'
+    Remove-AzureRmLogProfile -Name "default"
+    ```
+3. 使用 `Add-AzureRmLogProfile` 创建新的日志配置文件：
 
    ```powershell
+   # Settings needed for the new log profile
+   $logProfileName = "default"
+   $locations = (Get-AzureRmLocation).Location
+   $locations += "global"
+   $subscriptionId = "<your Azure subscription Id>"
+   $resourceGroupName = "<resource group name your event hub belongs to>"
+   $eventHubNamespace = "<event hub namespace>"
 
-   Add-AzureRmLogProfile -Name my_log_profile -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
+   # Build the service bus rule Id from the settings above
+   $serviceBusRuleId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventHubNamespaceName/authorizationrules/RootManageSharedAccessKey"
 
+   Add-AzureRmLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
    ```
-
-服务总线规则 ID 是以下格式的字符串：`{service bus resource ID}/authorizationrules/{key name}`。 
 
 ### <a name="via-azure-cli"></a>通过 Azure CLI
-如果日志配置文件已存在，则需先删除该配置文件。
+如果日志配置文件已存在，首先需要删除现有日志配置文件，然后创建新的日志配置文件。
 
-1. 使用 `azure insights logprofile list` 确定日志配置文件是否存在。
-2. 如果存在，使用 `azure insights logprofile delete` 将其删除。
-3. 使用 `azure insights logprofile add` 创建配置文件：
+1. 使用 `az monitor log-profiles list` 确定日志配置文件是否存在。
+2. 使用 `az monitor log-profiles delete --name "<log profile name>` 通过 *name* 属性的值删除日志配置文件。
+3. 使用 `az monitor log-profiles create` 创建新的日志配置文件：
 
    ```azurecli-interactive
-   azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope --retentionInDays 90 –categories Write,Delete,Action
+   az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
-
-服务总线规则 ID 是以下格式的字符串：`{service bus resource ID}/authorizationrules/{key name}`。
 
 ## <a name="consume-the-log-data-from-event-hubs"></a>使用事件中心的日志数据
 [使用 Azure 活动日志监视订阅活动](monitoring-overview-activity-logs.md)中提供了活动日志的架构。 每个事件都采用 JSON blob（称为“记录”）数组的形式。

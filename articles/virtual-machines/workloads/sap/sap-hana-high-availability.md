@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/24/2018
 ms.author: sedusch
-ms.openlocfilehash: f8c01c4e3f060c6a5ad52f1ed16103ea42d8cd2b
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: e3fb06309dabd7f66d5873e4c5faa48b468854f6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Azure 虚拟机 (VM) 上的 SAP HANA 高可用性
 
@@ -34,6 +34,7 @@ ms.lasthandoff: 03/29/2018
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2388694]:https://launchpad.support.sap.com/#/notes/2388694
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -155,15 +156,36 @@ Azure Marketplace 中包含适用于 SUSE Linux Enterprise Server for SAP Applic
         1. 输入新运行状况探测的名称（例如 hana-hp）
         1. 选择 TCP 作为协议，选择端口 625**03**，将“间隔”保留为 5，将“不正常阈值”保留为 2
         1. 单击“确定”
-    1. 创建负载均衡规则
+    1. SAP HANA 1.0：创建负载均衡规则
         1. 打开负载均衡器，选择负载均衡规则，并单击“添加”
         1. 输入新负载均衡器规则的名称（例如 hana-lb-3**03**15）
+        1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 hana-frontend）
+        1. 将协议保留为“TCP”，输入端口 3**03**15
+        1. 将空闲超时增大到 30 分钟
+        1. **确保启用浮动 IP**
+        1. 单击“确定”
+        1. 针对端口 3**03**17 重复上述步骤
+    1. SAP HANA 2.0：为系统数据库创建负载均衡规则
+        1. 打开负载均衡器，选择负载均衡规则，并单击“添加”
+        1. 输入新负载均衡器规则的名称（例如 hana-lb-3**03**13）
         1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 hana-frontend）
         1. 将协议保留为“TCP”，输入端口 3**03**13
         1. 将空闲超时增大到 30 分钟
         1. **确保启用浮动 IP**
         1. 单击“确定”
-        1. 针对端口 3**03**15 和 3**03**17 重复上述步骤
+        1. 针对端口 3**03**14 重复上述步骤
+    1. SAP HANA 2.0：为首个租户数据库创建负载均衡规则
+        1. 打开负载均衡器，选择负载均衡规则，并单击“添加”
+        1. 输入新负载均衡器规则的名称（例如 hana-lb-3**03**40）
+        1. 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如 hana-frontend）
+        1. 将协议保留为“TCP”，输入端口 3**03**40
+        1. 将空闲超时增大到 30 分钟
+        1. **确保启用浮动 IP**
+        1. 单击“确定”
+        1. 针对端口 3**03**41 和 3**03**42 重复上述步骤
+
+有关 SAP HANA 所需端口的详细信息，请阅读 [SAP HANA 租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南的[连接到租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)一章或 [SAP 说明 2388694][2388694]。
+
 
 ## <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 

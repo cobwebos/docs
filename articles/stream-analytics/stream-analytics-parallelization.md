@@ -1,24 +1,19 @@
 ---
-title: 利用 Azure 流分析中的查询并行化 | Microsoft Docs
-description: 了解如何通过配置输入分区、细化查询定义和设置作业流式处理单位来扩展流分析作业。
-keywords: 数据流式处理, 流数据处理, 优化分析
+title: 在 Azure 流分析中使用查询并行化和缩放功能
+description: 本文介绍如何通过配置输入分区、优化查询定义和设置作业流单元来缩放流分析作业。
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: eb19a9b4e92e7007f64ae7b593663be6a47a7a4b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/22/2017
+ms.openlocfilehash: 949806379891dbf5a7c145a14cae532104f51497
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>利用 Azure 流分析中的查询并行化
 本文说明了如何利用 Azure 流分析中的并行化。 了解如何通过配置输入分区和调整分析查询定义来缩放流分析作业。
@@ -50,7 +45,7 @@ ms.lasthandoff: 03/30/2018
 -   IoT 中心（需显式设置分区键）
 -   服务总线
 
-PowerBI、SQL 和 SQL 数据仓库的输出不支持分区。 但仍可对输入进行分区，如[本节](#multi-step-query-with-a-grouping-key)中所述 
+PowerBI、SQL 和 SQL 数据仓库的输出不支持分区。 但仍可对输入进行分区，如[本节](#multi-step-query-with-different-partition-by-values)中所述 
 
 若要深入了解分区，请参阅以下文章：
 
@@ -65,7 +60,7 @@ PowerBI、SQL 和 SQL 数据仓库的输出不支持分区。 但仍可对输入
 
 2. 在输入端布置数据后，务必确保查询已进行分区。 这需要在所有步骤中使用 PARTITION BY。 允许采用多个步骤，但必须使用相同的键对其进行分区。 目前，必须将分区键设置为“PartitionId”才能实现完全并行作业。  
 
-3. 大多数输出都可以利用分区，但如果使用不支持分区的输出类型，作业将不会实现完全并行。 有关详细信息，请参阅[输出部分](#Outputs)。
+3. 大多数输出都可以利用分区，但如果使用不支持分区的输出类型，作业将不会实现完全并行。 有关详细信息，请参阅[输出部分](#outputs)。
 
 4. 输入分区数必须等于输出分区数。 Blob 存储输出当前不支持分区。 不过没关系，因为它会继承上游查询的分区方案。 下面是允许完全并行作业的分区值示例：  
 
@@ -221,7 +216,7 @@ PowerBI 输出当前不支持分区。 因此，此方案不易并行。
 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

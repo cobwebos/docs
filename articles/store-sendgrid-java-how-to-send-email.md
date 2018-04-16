@@ -1,7 +1,7 @@
 ---
-title: "如何使用 SendGrid 电子邮件服务 (Java) | Microsoft Docs"
-description: "了解如何在 Azure 上使用 SendGrid 电子邮件服务发送电子邮件。 用 Java 编写的代码示例。"
-services: 
+title: 如何使用 SendGrid 电子邮件服务 (Java) | Microsoft Docs
+description: 了解如何在 Azure 上使用 SendGrid 电子邮件服务发送电子邮件。 用 Java 编写的代码示例。
+services: ''
 documentationcenter: java
 author: thinkingserious
 manager: sendgrid
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>如何通过 Java 使用 SendGrid 发送电子邮件
 本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 示例使用 Java 编写。 涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器**和**更新属性**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤](#next-steps)部分。
@@ -39,7 +39,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="how-to-use-the-javaxmail-libraries"></a>如何：使用 javax.mail 库
-获取 javax.mail 库（例如从 <http://www.oracle.com/technetwork/java/javamail>），然后将其导入到代码中。 简而言之，使用 javax.mail 库通过 SMTP 发送电子邮件的过程包括以下操作：
+获取 javax.mail 库（例如从 <http://www.oracle.com/technetwork/java/javamail> 获取），并将它们导入到代码中。 简而言之，使用 javax.mail 库通过 SMTP 发送电子邮件的过程包括以下操作：
 
 1. 指定 SMTP 值（包括 SMTP 服务器），对于 SendGrid，此项为 smtp.sendgrid.net。
 
@@ -158,7 +158,7 @@ SendGrid 可通过使用筛选器提供其他电子邮件功能。 可将这些�
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>如何：更新电子邮件属性
-可使用 set 属性替代一些电子邮件属性**，或使用 add 属性追加一些电子邮件属性**。
+可使用 **set*Property*** 替代一些电子邮件属性，或使用 **add*Property*** 追加一些电子邮件属性。
 
 例如，若要指定 **ReplyTo** 地址，请使用以下代码：
 
@@ -182,7 +182,7 @@ SendGrid 提供了基于 Web 的 API，可通过这些 API 从 Azure 应用程�
 * 演示在 Azure 部署中使用 SendGrid 的示例：[如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件](store-sendgrid-java-how-to-send-email-example.md)
 * SendGrid Java SDK：<https://sendgrid.com/docs/Code_Examples/java.html>
 * SendGrid API 文档：<https://sendgrid.com/docs/API_Reference/index.html>
-* 面向 Azure 客户的 SendGrid 特惠产品：<https://sendgrid.com/windowsazure.html>
+* 面向 Azure 客户的 SendGrid 特惠产品/服务：<https://sendgrid.com/windowsazure.html>
 
 [http://sendgrid.com]: https://sendgrid.com
 [http://sendgrid.com/pricing.html]: http://sendgrid.com/pricing.html

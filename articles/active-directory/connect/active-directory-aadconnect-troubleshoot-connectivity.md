@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect：排查连接问题 | Microsoft Docs"
-description: "介绍如何使用 Azure AD Connect 排查连接问题。"
+title: Azure AD Connect：排查连接问题 | Microsoft Docs
+description: 介绍如何使用 Azure AD Connect 排查连接问题。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
 ms.service: active-directory
 ms.workload: identity
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 1c8bbbde653ed8e927ab1550c32ae86a4dc2ffac
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>使用 Azure AD Connect 排查连接问题
 本文说明 Azure AD Connect 与 Azure AD 之间的连接的工作方式，以及如何排查连接问题。 这些问题很有可能出现在包含代理服务器的环境中。
@@ -101,7 +101,7 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Azure AD Connect 与 Azure AD 之间的通信模式
 如果已遵循上述步骤但仍无法连接，现在可以开始查看网络日志。 本部分说明正常和成功的连接模式。 此外，还将列出你在阅读网络日志时可能会忽略的常见辅助信息。
 
-* 将调用 https://dc.services.visualstudio.com。不需要在代理中打开此 URL 即可成功安装，可以忽略这些调用。
+* 有向 https://dc.services.visualstudio.com 发出的调用。不需要在代理中打开此 URL 即可成功安装，可以忽略这些调用。
 * 可以看到，DNS 解析列出了要处于 DNS 命名空间 nsatc.net 的实际主机，以及不在 microsoftonline.com 下的其他命名空间。但是，实际服务器名称中不会有任何 Web 服务请求，因此不需要将这些 URL 添加到代理。
 * 终结点 adminwebservice 和 provisioningapi 是发现终结点，用于找出要使用的实际终结点。 这些终结点根据区域而有所不同。
 

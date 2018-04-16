@@ -9,11 +9,11 @@ ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 50965010d821d4edf94e2f5727546cb56f61f5db
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 42fdfa2eb629351c38fb72c20a62cd7d78acf229
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 策略定义结构
 
@@ -70,7 +70,7 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 * `all`：评估资源组和所有资源类型 
 * `indexed`：仅评估支持标记和位置的资源类型
 
-大多数情况下，建议将“mode”设置为 `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则需要手动指定 mode 参数。
+大多数情况下，建议将“mode”设置为 `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则需要手动指定 mode 参数。 如果策略定义不包含**模式**值，为提供向后兼容性，它默认为 `indexed`。
 
 在创建强制执行标记或位置的策略时，应该使用 `indexed`。 这并不是必须的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 在这一点上，资源组是一个例外。 尝试在资源组上强制执行位置或标记的策略应将“mode”设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroup` 类型。 请在[强制执行资源组标记](scripts/enforce-tag-rg.md)查看相关示例。
 
@@ -102,6 +102,8 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 * `"resourceTypes"`
 * `"storageSkus"`
 * `"vmSKUs"`
+* `"existingResourceGroups"`
+* `"omsWorkspace"`
 
 在策略规则中，使用下列语法引用参数：
 

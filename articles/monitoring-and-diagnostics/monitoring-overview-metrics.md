@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 4598267e92716529774f42d22ab7c47d944d4495
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 537213fdf106da1c07d549d65b1d8cf71887db9f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure 中的指标概述
 本文介绍 Microsoft Azure 中的指标及其优点，以及如何开始使用它们。  
@@ -47,7 +47,7 @@ ms.lasthandoff: 04/03/2018
 
 * 配置指标**警报规则，以便在指标超过设置的阈值时，发送通知或执行自动化操作**。 自动缩放是一种特殊的自动化操作，可用于扩展资源，满足网站或计算资源的传入请求或负载要求。 可会自动缩放设置规则配置为根据超出阈值的指标进行扩展或缩减。
 
-* 将所有指标**路由**到 Application Insights 或 Log Analytics (OMS) 以实现即时分析、搜索以及针对来自资源的指标数据自定义警报。 还可以将指标流式传输到事件中心，然后可将它们路由到 Azure 流分析或自定义应用，以实现近乎实时的分析。 可以使用诊断设置来设置事件中心流式传输。
+* 将所有指标**路由**到 Application Insights 或 Log Analytics 以实现即时分析、搜索以及针对来自资源的指标数据自定义警报。 还可以将指标流式传输到事件中心，然后可将它们路由到 Azure 流分析或自定义应用，以实现近乎实时的分析。 可以使用诊断设置来设置事件中心流式传输。
 
 * **将指标存档到存储**以保留更长时间，或者将其用于脱机报告。 为资源配置诊断设置时，可将指标路由到 Azure Blob 存储。
 
@@ -100,11 +100,18 @@ Azure Monitor 预览版还提供全新的指标制图体验。 通过这种体�
 有关使用 Azure 监视器 REST API 的更详细演练，请参阅 [Azure 监视器 REST API 演练](monitoring-rest-api-walkthrough.md)。
 
 ## <a name="export-metrics"></a>导出指标
-可以转到“监视”选项卡下的“诊断设置”边栏选项卡，查看指标的导出选项。 对于本文中前面所述的用例，可以选择要路由到 Blob 存储、Azure 事件中心或 OMS 的指标（和诊断日志）。
+可以转到“监视”选项卡下的“诊断设置”边栏选项卡，查看指标的导出选项。 对于本文中前面所述的用例，可以选择要路由到 Blob 存储、Azure 事件中心或 Log Analytics 的指标（和诊断日志）。
 
  ![Azure 监视器中指标的导出选项](./media/monitoring-overview-metrics/MetricsOverview3.png)
 
 可以通过 Resource Manager 模板、[PowerShell](insights-powershell-samples.md)、[Azure CLI](insights-cli-samples.md) 或 [REST API](https://msdn.microsoft.com/library/dn931943.aspx) 配置此功能。
+
+> [!NOTE]
+> 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。
+>
+> *例如*：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
+>
+>
 
 ## <a name="take-action-on-metrics"></a>对指标执行操作
 若要接收通知或在指标数据上执行自动操作，可配置警报规则或自动缩放设置。

@@ -1,6 +1,6 @@
 ---
-title: 使用 Operations Management Suite (OMS) 监视 HBase - Azure HDInsight | Microsoft Docs
-description: 结合使用 OMS和 Azure Log Analytics 来监视 HDInsight HBase 群集。
+title: 使用 Azure Log Analytics 监视 HBase - Azure HDInsight | Microsoft Docs
+description: 使用 Azure Log Analytics 监视 HDInsight HBase 群集。
 services: hdinsight
 documentationcenter: ''
 tags: azure-portal
@@ -16,23 +16,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: f78d570cfa8b040cd7673a5e14e6a992511f60bb
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 3746713cdadff0a4c6f4fe25d278e8d78555f9d6
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="monitor-hbase-with-operations-management-suite-oms"></a>使用 Operations Management Suite (OMS) 监视 HBase
+# <a name="monitor-hbase-with-log-analytics"></a>使用 Log Analytics 监视 HBase
 
 HDInsight HBase 监视使用 Azure Log Analytics 从 HDInsight 群集节点收集 HDInsight HBase 性能指标。 Monitor 提供特定于 HBase 的可视化效果、仪表板和工具用于搜索指标，以及创建自定义监视规则和警报。 可以跨多个 Azure 订阅监视多个 HDInsight HBase 群集的指标。
 
-Log Analytics 是 [Operations Management Suite (OMS)](../../operations-management-suite/operations-management-suite-overview.md) 中的一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 Log Analytics 可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。
+Log Analytics 是 [Azure](../../operations-management-suite/operations-management-suite-overview.md) 中的一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 Log Analytics 可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。
 
-[Log Analytics 管理解决方案](../../log-analytics/log-analytics-add-solutions.md)可将功能添加到 OMS，提供更多数据和分析工具。 Log Analytics 管理解决方案是逻辑、可视化和数据采集规则的集合，用于提供特定区域的指标。 解决方案还可能定义要收集的新记录类型，可以使用日志搜索或新的用户界面功能分析这些记录。
+[Log Analytics 管理解决方案](../../log-analytics/log-analytics-add-solutions.md)可将功能添加到 Log Analytics，提供更多数据和分析工具。 Log Analytics 管理解决方案是逻辑、可视化和数据采集规则的集合，用于提供特定区域的指标。 解决方案还可能定义要收集的新记录类型，可以使用日志搜索或新的用户界面功能分析这些记录。
 
 [见解和分析](https://azure.microsoft.com/pricing/details/insight-analytics/)构建在 Log Analytics 平台基础之上。 可以选择使用 Log Analytics 功能，支付引入服务的每个 GB 的费用，或者将工作区切换到“见解和分析”层，支付服务管理的每个节点的费用。 见解和分析提供 Log Analytics 所提供的功能超集。 HBase 监视解决方案可与 Log Analytics 或见解和分析配合使用。
 
-预配 HDInsight HBase 监视解决方案时，需要创建 OMS 工作区。 每个工作区充当独特的 Log Analytics 环境，其中包含自身的数据存储库、数据源和解决方案。 可以在订阅中创建多个工作区来支持生产和测试等多种环境。
+预配 HDInsight HBase 监视解决方案时，需要创建 Log Analytics 工作区。 每个工作区充当独特的 Log Analytics 环境，其中包含自身的数据存储库、数据源和解决方案。 可以在订阅中创建多个工作区来支持生产和测试等多种环境。
 
 ## <a name="provision-hdinsight-hbase-monitoring"></a>预配 HDInsight HBase 监视
 
@@ -50,10 +50,10 @@ Log Analytics 是 [Operations Management Suite (OMS)](../../operations-managemen
 
     ![“管理解决方案”窗格](./media/apache-hbase-monitor-with-oms/hbase-solution.png)  
 6. 在管理解决方案窗格中，检查有关管理解决方案的信息，然后选择“创建”。 
-7. 在“管理解决方案名称”窗格中，选择要与管理解决方案关联的现有工作区，或创建新的 OMS 工作区并将其选中。
+7. 在“管理解决方案名称”窗格中，选择要与管理解决方案关联的现有工作区，或创建新的 Log Analytics 工作区并将其选中。
 8. 相应地更改 Azure 订阅、资源组和位置的工作区设置。 
     ![解决方案工作区](./media/apache-hbase-monitor-with-oms/solution-workspace.png)  
-9. 选择“创建”。  
+9. 选择**创建**。  
 10. 若要在相应的工作区中使用此新管理解决方案，请导航到“Log Analytics” >  工作区名称  > “解决方案”。 列表中会显示该管理解决方案的条目。 选择该条目导航到该解决方案。
 
     ![Log Analytics 解决方案](./media/apache-hbase-monitor-with-oms/log-analytics-solutions.png)  
@@ -68,9 +68,9 @@ Log Analytics 是 [Operations Management Suite (OMS)](../../operations-managemen
 
 若要使用 HDInsight HBase 监视提供的工具，需要配置群集，让其将指标从其区域服务器、头节点和 ZooKeeper 节点传输到 Log Analytics。 可以针对 HDInsight HBase 群集运行脚本操作来完成此配置。
 
-### <a name="get-oms-workspace-id-and-workspace-key"></a>获取 OMS 工作区 ID 和工作区密钥
+### <a name="get-log-analytics-workspace-id-and-workspace-key"></a>获取 Log Analytics 工作区 ID 和工作区密钥
 
-需要获取 OMS 工作区 ID 和工作区密钥，才能让群集中的节点在 Log Analytics 中完成身份验证。 若要获取这些值：
+需要获取 Log Analytics 工作区 ID 和工作区密钥，才能让群集中的节点在 Log Analytics 中完成身份验证。 若要获取这些值：
 
 1. 在 Azure 门户上的“HBase 监视”窗格中，选择“概述”。
 
@@ -118,7 +118,7 @@ Log Analytics 是 [Operations Management Suite (OMS)](../../operations-managemen
 
     ![脚本操作设置](./media/apache-hbase-monitor-with-oms/submit-script-action.png)  
 
-10. 选择“创建”。
+10. 选择**创建**。
 11. 该脚本操作将运行几分钟。 可以在“脚本操作”窗格中监视其状态。
 
     ![正在运行脚本操作](./media/apache-hbase-monitor-with-oms/script-action-running.png)  
@@ -146,5 +146,5 @@ Log Analytics 是 [Operations Management Suite (OMS)](../../operations-managemen
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 OMS Log Analytics 中创建警报](../../log-analytics/log-analytics-alerts-creating.md)
+* [在 Log Analytics 中创建警报](../../log-analytics/log-analytics-alerts-creating.md)
 * [在 Azure Log Analytics 中使用日志搜索查找数据](../../log-analytics/log-analytics-log-searches.md)

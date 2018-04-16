@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库基准检验概述
+title: Azure SQL 数据库 DTU 基准检验概述
 description: 本主题介绍在 Azure SQL 数据库的性能测量中使用的 Azure SQL 数据库基准检验。
 services: sql-database
 author: jan-eng
@@ -7,17 +7,20 @@ manager: jhubbard
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 06/21/2016
+ms.date: 04/01/2018
 ms.author: janeng
-ms.openlocfilehash: 25685f663d976674ad877bcfa1409ef016dd02ae
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0dae04ab3de16e2ef51134ec6979c6c289a6da3f
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="azure-sql-database-benchmark-overview"></a>Azure SQL 数据库基准检验概述
+# <a name="azure-sql-database-dtu-benchmark-overview"></a>Azure SQL 数据库 DTU 基准检验概述
 ## <a name="overview"></a>概述
-Microsoft Azure SQL 数据库提供了三个具有多个性能级别的[服务层](sql-database-service-tiers.md)。 每个性能级别均提供不断增加的资源集或“能力”，旨在递增地提供更高的吞吐量。
+在基于 DTU 的购买模型中，Microsoft Azure SQL 数据库提供了三个具有多个性能级别的[服务层](sql-database-service-tiers.md)。 每个性能级别均提供不断增加的资源集或“能力”，旨在递增地提供更高的吞吐量。
+
+> [!IMPORTANT]
+> Azure SQL 数据库现在还支持基于 vCore 的购买模型（预览版）。 有关信息，请参阅[基于 vCore 的购买模型（预览版）](sql-database-service-tiers.md#vcore-based-purchasing-model-preview)。
 
 能够量化每个性能级别的递增能力如何转换为更高的数据库性能至关重要。 为此，Microsoft 开发了 Azure SQL 数据库基准检验 (ASDB)。 基准检验将执行在所有 OLTP 工作负荷中找到的基本操作组合。 我们会度量为每个性能级别下运行的数据库实现的吞吐量。
 

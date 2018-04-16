@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 5f1fa378c8eea68181d4596700238d03f360c5d0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a5cdc67a138e2316c2e87a72371a6df527cc36ac
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Accessing diagnostic logs for Azure Data Lake Store（访问 Azure Data Lake Store 的诊断日志）
 了解如何启用 Data Lake Store 帐户诊断日志记录以及如何查看为帐户收集的日志。
@@ -47,7 +47,7 @@ ms.lasthandoff: 03/28/2018
         
         * 选择选项“流式传输到事件中心”将日志数据流式传输到 Azure 事件中心。 具有下游处理管道来实时分析传入日志时最可能使用此选项。 若选择此选项，必须提供要使用的 Azure 事件中心的详细信息。
 
-        * 选择选项“发送到 Log Analytics”，以使用 Azure Log Analytics 服务分析生成的日志数据。 如果选择此选项，必须提供要用于执行日志分析的 Operations Management Suite 工作区的详细信息。 有关如何使用 Log Analytics 的详细信息，请参阅[查看或分析使用 Log Analytics 日志搜索收集的数据](../log-analytics/log-analytics-tutorial-viewdata.md)。
+        * 选择选项“发送到 Log Analytics”，以使用 Azure Log Analytics 服务分析生成的日志数据。 如果选择此选项，必须提供要用于执行日志分析的 Log Analytics 工作区的详细信息。 有关如何使用 Log Analytics 的详细信息，请参阅[查看或分析使用 Log Analytics 日志搜索收集的数据](../log-analytics/log-analytics-tutorial-viewdata.md)。
      
    * 指定是要获取审核日志还是请求日志，或者两者都获取。
    * 指定数据必须保留的天数。 保留期仅在使用 Azure 存储帐户存档日志数据时才适用。

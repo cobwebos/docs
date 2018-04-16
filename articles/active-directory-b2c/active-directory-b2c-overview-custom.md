@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 269b65662796c092190cd2622c240756f6bd1cf7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4c09fa5c454cee6ca9a0ed0d3fd4582b222c0c1a
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C：自定义策略
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/23/2018
 - **信赖方 (RP) 文件**：注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。  有关详细信息，请阅读有关策略文件定义的文章。  每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
 
 
-Azure AD B2C 中的内置策略遵循上面描述的 3 文件模式，但开发人员只能看到信赖方 (RP) 文件，同时，门户会在后台对 EXTenstions 文件进行更改。
+Azure AD B2C 中的内置策略遵循上面描述的 3 文件模式，但开发人员只能看到信赖方 (RP) 文件，同时，门户会在后台对扩展文件进行更改。
 
 ## <a name="core-concepts-you-should-know-when-using-custom-policies"></a>使用自定义策略时应了解的核心概念
 

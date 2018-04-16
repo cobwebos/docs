@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/2/2018
 ms.author: vinagara
-ms.openlocfilehash: 9d2bc934424ff7a31b65ad6c03624ff02ee2a6f3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cd289d506cbe22e683392256cce14211a5db0729
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 [在 Azure 中创建警报](monitor-alerts-unified-usage.md)时，可以选择[使用操作组配置](monitoring-action-groups.md)以执行一个或多个操作。  本文介绍可用的不同 Webhook 操作，以及有关配置基于 JSON 的自定义 Webhook 的详细信息。
@@ -54,7 +54,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 | 搜索时间间隔开始时间 |#searchintervalstarttimeutc |查询开始时间（UTC 格式）。 
 | SearchQuery |#searchquery |警报规则所使用的日志搜索查询。 |
 | SearchResults |"IncludeSearchResults": true|如果在自定义 JSON Webhook 定义中添加了 "IncludeSearchResults": true 作为顶级属性，则查询以 JSON 表形式返回的记录将限制为前 1,000 条记录。 |
-| WorkspaceID |#workspaceid |Log Analytics (OMS) 工作区的 ID。 |
+| WorkspaceID |#workspaceid |Log Analytics 工作区的 ID。 |
 | 应用程序 ID |#applicationid |你的 Application Insight 应用的 ID。 |
 | 订阅 ID |#subscriptionid |用于 Application Insights 的 Azure 订阅的 ID。 
 
@@ -77,7 +77,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 此部分显示用于日志警报的 Webhook 的示例有效负载，包括有效负载是标准有效负载时以及是自定义有效负载时。
 
 > [!NOTE]
-> 为了确保向后兼容性，使用 Azure Log Analytics 的警报的标准 Webhook 有效负载与 [OMS 警报管理](../log-analytics/log-analytics-alerts-creating.md)相同。 但对于使用 [Application Insights](../application-insights/app-insights-analytics.md) 的日志警报，标准 Webhook 有效负载基于操作组架构。
+> 为了确保向后兼容性，使用 Azure Log Analytics 的警报的标准 Webhook 有效负载与 [Log Analytics 警报管理](../log-analytics/log-analytics-alerts-creating.md)相同。 但对于使用 [Application Insights](../application-insights/app-insights-analytics.md) 的日志警报，标准 Webhook 有效负载基于操作组架构。
 
 ### <a name="standard-webhook-for-log-alerts"></a>用于日志警报的标准 Webhook 
 这两个示例都声明了仅包含两列和两行的虚拟有效负载。

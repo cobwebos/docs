@@ -1,12 +1,12 @@
 ---
-title: "将应用从 BizTalk 服务移动到 Azure 逻辑应用 | Microsoft Docs"
-description: "将 Azure BizTalk 服务 (MABS) 移动或迁移到 Azure 逻辑应用"
+title: 将应用从 BizTalk 服务移动到 Azure 逻辑应用 | Microsoft Docs
+description: 将 Azure BizTalk 服务 (MABS) 移动或迁移到 Azure 逻辑应用
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jonfancey
 manager: anneta
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: jonfan; LADocs
-ms.openlocfilehash: 6e00e62e60c059a16731a77e529b4b93f50802e9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f5ad003189d70216198f2d5c7719a971c16d5479
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="move-from-biztalk-services-to-azure-logic-apps"></a>从 BizTalk 服务移动到 Azure 逻辑应用
 
@@ -130,7 +130,7 @@ BizTalk 服务和逻辑应用包括 EDI 和 B2B 处理，并支持 AS2（适用�
 
 ## <a name="manage-and-monitor"></a>管理和监视
 
-在 BizTalk 服务中，专用门户提供了跟踪功能来监视和解决问题。 逻辑应用通过 [Azure 门户](../logic-apps/logic-apps-monitor-your-logic-apps.md)以及 [Operations Management Suite B2B 解决方案](../logic-apps/logic-apps-monitor-b2b-message.md)提供更丰富的跟踪和监视功能，包括用于在行动中对事物保持关注的一款移动应用。
+在 BizTalk 服务中，专用门户提供了跟踪功能来监视和解决问题。 逻辑应用通过 [Azure 门户](../logic-apps/logic-apps-monitor-your-logic-apps.md)提供更丰富的跟踪和监视功能，包括用于在行动中对事物保持关注的一款移动应用。
 
 ## <a name="high-availability"></a>高可用性
 

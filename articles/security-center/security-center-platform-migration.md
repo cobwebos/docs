@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心平台迁移 | Microsoft Docs"
-description: "本文档介绍了对 Azure 安全中心数据收集方式的一些更改。"
+title: Azure 安全中心平台迁移 | Microsoft Docs
+description: 本文档介绍了对 Azure 安全中心数据收集方式的一些更改。
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 80246b00-bdb8-4bbc-af54-06b7d12acf58
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: yurid
-ms.openlocfilehash: 89970b50a2f7246a43ac9666be4d992649605cbf
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2e2e8d7213504ccd71df7048045925bf566c76d5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-security-center-platform-migration"></a>Azure 安全中心平台迁移
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/13/2017
 
 以前，安全中心使用 Azure Monitoring Agent从 VM 中收集安全数据。 这包括安全配置（用于识别漏洞）和安全事件（用于检测威胁）相关信息。 此数据存储在 Azure 存储帐户中。
 
-此后，安全中心使用 Microsoft Monitoring Agent - Operations Management Suite 和 Log Analytics 服务同样使用此代理。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](../log-analytics/log-analytics-manage-access.md)或新工作区中，具体取决于 VM 的地理位置。
+此后，安全中心使用 Microsoft Monitoring Agent - Log Analytics 服务同样使用此代理。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](../log-analytics/log-analytics-manage-access.md)或新工作区中，具体取决于 VM 的地理位置。
 
 ## <a name="agent"></a>代理
 
@@ -62,9 +62,9 @@ ms.lasthandoff: 12/13/2017
 > [!NOTE]
 > 安全中心以前收集的数据保留在存储帐户中。 完成迁移后，可以删除这些存储帐户。
 
-### <a name="oms-security-solution"></a>OMS 安全解决方案 
+### <a name="security-management-solution"></a>安全管理解决方案 
 
-对于未安装 OMS 安全解决方案的现有客户，Microsoft 将此解决方案安装在客户工作区，但仅针对 Azure VM。 请不要卸载此解决方案，因为如果从 OMS管理控制台完成此操作，则不会执行自动修正。
+对于未在 Log Analytics 中安装安全管理解决方案的现有客户，Microsoft 将此解决方案安装在客户工作区，但仅针对 Azure VM。 请不要卸载此解决方案，因为如果从管理控制台完成此操作，则不会执行自动修正。
 
 
 ## <a name="other-updates"></a>其他更新

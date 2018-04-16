@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: rli
-ms.openlocfilehash: d105c88105512df4a9f8d999f64ad001b5d54917
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: rli; v-deasim
+ms.openlocfilehash: 2ffe547d1d1333a5469d313f9f9cc60f5118f814
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>通过 Azure CDN 进行动态站点加速
 
@@ -152,7 +152,7 @@ JPEG 压缩 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
 如果网站混合有静态资源和动态资源，最好采用混合方式来获取最佳性能。 
 
-对于 **Verizon 的 Azure CDN 标准版**和 **Akamai 的 Azure CDN 标准版**配置文件，你可以通过使用[缓存规则](cdn-caching-rules.md)为特定 DSA 终结点启用缓存。
+对于 **Verizon 提供的标准 Azure CDN** 和 **Akamai 提供的标准 Azure CDN** 配置文件，可以通过使用[缓存规则](cdn-caching-rules.md)为特定 DSA 终结点启用缓存。
 
 访问缓存规则：
 
@@ -164,7 +164,7 @@ JPEG 压缩 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
 2. 创建一个全局的或自定义的缓存规则，来为 DSA 终结点启用缓存。 
 
-对于“Verizon 的 Azure CDN 高级版”配置文件，可以通过使用[规则引擎](cdn-rules-engine.md)为特定 DSA 终结点启用缓存。 创建的任何规则仅影响配置文件中已针对 DSA 进行优化的这些终结点。 
+仅对于“Verizon 提供的高级 Azure CDN”配置文件，可以通过使用[规则引擎](cdn-rules-engine.md)为特定 DSA 终结点启用缓存。 创建的任何规则仅影响配置文件中已针对 DSA 进行优化的这些终结点。 
 
 访问规则引擎：
     

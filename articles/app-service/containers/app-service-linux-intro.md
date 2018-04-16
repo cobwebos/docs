@@ -1,12 +1,12 @@
 ---
-title: "Linux 应用服务简介 | Microsoft Docs"
-description: "了解 Linux 上的 Azure 应用服务。"
-keywords: "azure 应用服务, linux, oss"
+title: Linux 应用服务简介 | Microsoft Docs
+description: 了解 Linux 上的 Azure 应用服务。
+keywords: azure 应用服务, linux, oss
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 465e3d2c0c2b7c5d811441ede20adb9da2dbe847
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: df97d2020309fa9af7f67170729ce9c2d723572d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
@@ -33,9 +33,23 @@ Linux 应用服务支持大量内置映像，以便提高开发人员工作效�
 | 语言 | 支持的版本 |
 |---|---|
 | Node.js | 4.4, 4.5, 6.2, 6.6, 6.9-6.11, 8.0, 8.1 |
+| Java * | 8.0 |
 | PHP | 5.6, 7.0 |
 | .NET Core | 1.0, 1.1, 2.0 |
 | Ruby | 2.3 |
+
+* 预览功能支持
+
+### <a name="preview-supported-java-runtimes"></a>预览：支持的 Java 运行时
+
+基于 Linux 的应用服务提供的 Java 运行时如下：
+
+| 运行时 | 版本 |
+|---|---|
+| Apache Tomcat | 8.5 |
+| Apache Tomcat | 9.0 |
+
+如需更多详细信息，请参阅[在基于 Linux 的应用服务中创建 Java Web 应用](https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-java)。
 
 ## <a name="deployments"></a>部署
 

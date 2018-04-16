@@ -1,6 +1,6 @@
 ---
-title: "将 Azure 云服务与 Azure CDN 集成 | Microsoft Docs"
-description: "了解如何部署从集成的 Azure CDN 终结点提供内容的云服务"
+title: 将 Azure 云服务与 Azure CDN 集成 | Microsoft Docs
+description: 了解如何部署从集成的 Azure CDN 终结点提供内容的云服务
 services: cdn, cloud-services
 documentationcenter: .net
 author: zhangmanling
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f131eb021d85766f12b0fb6cb8b5a07f965f9c97
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="intro"></a>将云服务与 Azure CDN 集成
 云服务可以与 Azure CDN 集成，从云服务的位置提供任何内容。 此方法具有以下优点：
@@ -157,7 +157,7 @@ CDN 配置文件是 CDN 终结点的集合。  每个配置文件包含一个或
 * 任何控制器/操作
 * 任何带查询字符串的 URL（如果在 CDN 终结点启用了查询字符串功能）
 
-实际上，可以使用上述配置从 **http://*&lt;cdnName>*.azureedge.net/** 托管整个云服务。 导航到 **http://camservice.azureedge.net/** 即可从 Home/Index 获取操作结果。
+实际上，可以使用上述配置从 **http://*&lt;cdnName>*.azureedge.net/** 托管整个云服务。 导航到 **http://camservice.azureedge.net/** 即可获取 Home/Index 中的操作结果。
 
 ![](media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG)
 

@@ -1,8 +1,8 @@
 ---
-title: "Team Data Science Process 的工作原理 - 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集 | Microsoft 文档"
-description: "对于采用 HDInsight Hadoop 群集的端到端方案，使用 Team Data Science Process 来构建和部署使用大型 (1 TB) 公开可用数据集的模型"
+title: Team Data Science Process 的工作原理 - 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集 | Microsoft 文档
+description: 对于采用 HDInsight Hadoop 群集的端到端方案，使用 Team Data Science Process 来构建和部署使用大型 (1 TB) 公开可用数据集的模型
 services: machine-learning,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: bradsev
 ms.openlocfilehash: 760e08643fb3e71478fc899278591569da1d515b
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process 的工作原理 - 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集
 
@@ -437,7 +437,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 1. 为“数据源”选择“Hive 查询”
 2. 在“Hive 数据库查询”框中，一个简单的SELECT * FROM <\_数据集\_名称.\_表\_名称> - 就足够了。
-3. **Hcatalog 服务器 URI**：如果群集是“abc”，则其简化形式为：https://abc.azurehdinsight.net
+3. **Hcatalog 服务器 URI**：如果群集是“abc”，则此项就是：https://abc.azurehdinsight.net
 4. **Hadoop 用户帐户名称**：调试群集时选择的用户名。 （不是远程访问用户名！）
 5. **Hadoop 用户帐户密码**：调试群集时为用户名选择的密码。 （不是远程访问密码！）
 6. **输出数据的位置**：选择“Azure”

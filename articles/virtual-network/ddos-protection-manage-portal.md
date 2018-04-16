@@ -1,13 +1,13 @@
 ---
-title: "使用 Azure 门户管理 Azure DDoS 保护标准 | Microsoft Docs"
-description: "了解如何在 Azure Monitor 中使用 Azure DDoS 保护标准遥测来缓解攻击。"
+title: 使用 Azure 门户管理 Azure DDoS 保护标准 | Microsoft Docs
+description: 了解如何在 Azure Monitor 中使用 Azure DDoS 保护标准遥测来缓解攻击。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 6a5ab1ba44197c0103e1e7d353a116dc01dfc163
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 5cc03189124dbea56535af2fed84f5ca74aac6cd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 门户管理 Azure DDoS 保护标准
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 03/09/2018
 
 - **存档到存储帐户**：将日志写入到一个存储帐户。
 - **流式传输到事件中心**：允许日志接收器使用事件中心选取日志。 这将启用与 Splunk 或其他 SIEM 系统的集成。
-- **发送到 Log Analytics**：将日志写入到 Azure OMS Log Analytics 服务。
+- **发送到 Log Analytics**：将日志写入到 Azure Log Analytics 服务。
 
 ## <a name="use-ddos-protection-telemetry"></a>使用 DDoS 保护遥测
 

@@ -3,32 +3,26 @@ title: 使用 Azure SQL 数据库设计高可用性服务 | Microsoft Docs
 description: 了解使用 Azure SQL 数据库对应用程序设计高可用性服务。
 keywords: 云灾难恢复, 灾难恢复解决方案, 应用数据备份, 异地复制, 业务连续性规划
 services: sql-database
-documentationcenter: ''
 author: anosov1960
-manager: jhubbard
-editor: monicar
-ms.assetid: e8a346ac-dd08-41e7-9685-46cebca04582
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
-ms.date: 03/07/2018
+ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: aa6a032a9d42038502cf074ef8aeff8e2e8b0b31
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d19087743740799ec9972bed7a602073afea9f26
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>使用 Azure SQL 数据库设计高可用性服务
 
 在 Azure SQL 数据库上生成和部署高度的可用服务时，可使用[故障转移组和活动异地复制](sql-database-geo-replication-overview.md)在发生区域中断和灾难性故障时进行复原。 它还可实现快速恢复到辅助数据库。 本文主要介绍常见应用程序模式并讨论每种模式的优势和选择时应考虑的因素。 有关弹性池的活动异地复制的信息，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
 
 > [!NOTE]
-> 如果正在使用高级数据库和池，可以通过将它们转换为区域冗余部署配置（当前为预览状态），使它们能够适应区域性的中断。 请参阅[区域冗余数据库](sql-database-high-availability.md)。  
+> 如果正在使用高级或业务关键（预览）数据库和弹性池，可以通过将它们转换为区域冗余部署配置（当前为预览状态），使它们能够适应区域性的中断。 请参阅[区域冗余数据库](sql-database-high-availability.md)。  
 
 ## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>方案 1：使用两个 Azure 区域来实现业务连续性，同时将停机时间减至最小
 在此方案中，应用程序具有以下特征： 

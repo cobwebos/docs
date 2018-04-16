@@ -1,11 +1,11 @@
 ---
-title: "Linux VM 上的 NAMD 与 Microsoft HPC Pack | Microsoft Docs"
-description: "在 Azure 上部署 Microsoft HPC Pack 群集，并在多个 Linux 计算节点上通过 charmrun 运行 NAMD 模拟"
+title: Linux VM 上的 NAMD 与 Microsoft HPC Pack | Microsoft Docs
+description: 在 Azure 上部署 Microsoft HPC Pack 群集，并在多个 Linux 计算节点上通过 charmrun 运行 NAMD 模拟
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager,hpc-pack
 ms.assetid: 76072c6b-ac35-4729-ba67-0d16f9443bd7
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
-ms.openlocfilehash: 0c0b9875b4153edcc0ec0096577d041d394a842f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61dd49d4bd3183b6b9a78036d6d7d01798e4dc89
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 NAMD
 本文介绍在 Azure 虚拟机上运行 Linux 高性能计算 (HPC) 工作负荷的一种方式。 在学习过程中，将在包含 Linux 计算节点的 Azure 上设置一个 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) 群集，并运行 [NAMD](http://www.ks.uiuc.edu/Research/namd/) 仿真，以计算和直观呈现大型生物分子系统的结构。  
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 * **Microsoft HPC Pack** 可提供在本地计算机或 Azure 虚拟机群集上运行大型 HPC 和并行应用程序的功能。 HPC Pack 最初是针对 Windows HPC 工作负荷开发的一种解决方案，现在支持在 HPC Pack 群集中部署的 Linux 计算节点 VM 上运行 Linux HPC 应用程序。 有关简介，请参阅 [Get started with Linux compute nodes in an HPC Pack cluster in Azure](hpcpack-cluster.md)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）。
 
 ## <a name="prerequisites"></a>先决条件
-* **包含 Linux 计算节点的 HPC Pack 群集** - 使用 [Azure Resource Manager 模板](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)或 [Azure PowerShell 脚本](hpcpack-cluster-powershell-script.md)，在 Azure 上部署包含 Linux 计算节点的 HPC Pack 群集。 有关任一选项的先决条件和步骤，请参阅 [Get started with Linux compute nodes in an HPC Pack cluster in Azure](hpcpack-cluster.md)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）。 如果选择 PowerShell 脚本部署选项，请参阅本文末尾的示例文件中的示例配置文件。 此文件配置一个基于 Azure 的 HPC Pack 群集，其中包含 1 个 Windows Server 2012 R2 头节点和 4 个大型 CentOS 6.6 计算节点。 请根据环境的需要自定义此文件。
+* **包含 Linux 计算节点的 HPC Pack 群集** - 使用 [Azure 资源管理器模板](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)或 [Azure PowerShell 脚本](hpcpack-cluster-powershell-script.md)，在 Azure 上部署包含 Linux 计算节点的 HPC Pack 群集。 有关任一选项的先决条件和步骤，请参阅 [Get started with Linux compute nodes in an HPC Pack cluster in Azure](hpcpack-cluster.md)（Azure 的 HPC Pack 群集中的 Linux 计算节点入门）。 如果选择 PowerShell 脚本部署选项，请参阅本文末尾的示例文件中的示例配置文件。 此文件配置一个基于 Azure 的 HPC Pack 群集，其中包含 1 个 Windows Server 2012 R2 头节点和 4 个大型 CentOS 6.6 计算节点。 请根据环境的需要自定义此文件。
 * **NAMD 软件和教程文件** - 从 [NAMD](http://www.ks.uiuc.edu/Research/namd/) 站点下载适用于 Linux 的 NAMD 软件（需要注册）。 本文基于 NAMD 版本 2.10，使用 [Linux x86_64（64 位 Intel/AMD 与以太网）](http://www.ks.uiuc.edu/Development/Download/download.cgi?UserID=&AccessCode=&ArchiveID=1310)存档。 另请下载 [NAMD 教程文件](http://www.ks.uiuc.edu/Training/Tutorials/#namd)。 下载的是 .tar 文件，需要使用某种 Windows 工具在群集头节点上解压缩该文件。 若要提取文件，请遵循本文稍后的说明。 
 * **VMD**（可选）- 若要查看 NAMD 作业的结果，请在所选的计算机上下载并安装分子可视化程序 [VMD](http://www.ks.uiuc.edu/Research/vmd/)。 当前版本是 1.9.2。 请参阅 VMD 下载站点入门。  
 
@@ -220,7 +220,7 @@ host CENTOS66LN-03 ++cpus 2
 ## <a name="submit-a-namd-job"></a>提交 NAMD 作业
 现在可以在 HPC 群集管理器中提交 NAMD 作业。
 
-1. 连接到群集头节点，然后启动 HPC 群集管理器。
+1. 连接到群集头节点，并启动 HPC 群集管理器。
 2. 在“资源管理”中，确保 Linux 计算节点处于“联机”状态。 如果节点未处于联机状态，请选择它们并单击“联机”。
 3. 在“作业管理”中，单击“新作业”。
 4. 为作业输入一个名称，如 *hpccharmrun*。

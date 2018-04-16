@@ -1,11 +1,11 @@
 ---
-title: "从模板创建工作流 - Azure 逻辑应用 | Microsoft Docs"
-description: "使用逻辑应用模板构建工作流更快"
+title: 从模板创建工作流 - Azure 逻辑应用 | Microsoft Docs
+description: 使用逻辑应用模板构建工作流更快
 author: kevinlam1
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; klam
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e9145b9cb85cda9179f7ce46de017a0ab3a38924
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a2e939143d7181722df17ea7837658d96272e3a3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>从预构建的模板创建逻辑应用工作流
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 02/21/2018
    | **订阅** | your-Azure-subscription-name | 选择要使用的 Azure 订阅。 | 
    | **资源组** | your-Azure-resource-group-name | 创建或选择一个用于此逻辑应用的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)，以便组织与此应用相关联的所有资源。 | 
    | **位置** | your-Azure-datacenter-region | 选择用于部署逻辑应用的数据中心区域，例如“美国西部”。 | 
-   | **Log Analytics** | 关闭（默认）或者打开 | 通过 [Azure 日志分析](../log-analytics/log-analytics-overview.md)打开逻辑应用的[诊断日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app)。 需要已有 [Operations Management Suite](../operations-management-suite/operations-management-suite-overview.md) 工作区。 | 
+   | **Log Analytics** | 关闭（默认）或者打开 | 通过 [Azure 日志分析](../log-analytics/log-analytics-overview.md)打开逻辑应用的[诊断日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app)。 需要已具有 Log Analytics 工作区。 | 
    |||| 
 
 4. 准备就绪后，请选择“固定到仪表板”。 这样一来，逻辑应用就会自动显示在 Azure 仪表板上，并在部署后打开。 选择“创建”。

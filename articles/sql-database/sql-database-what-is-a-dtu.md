@@ -8,19 +8,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 9d13541444f487ad6afb9f59c6c6ac646091d42c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 178eba46e0d128c8d93f2ba664a4a0916889fbbd
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="database-transaction-units-dtus-and-elastic-database-transaction-units-edtus"></a>数据库事务单位 (DTU) 和弹性数据库事务单位 (eDTU)
 本文介绍数据库事务单位 (DTU) 和弹性数据库事务单位 (eDTU)，以及达到最大 DTU 或 eDTU 时发生的情况。  
 
 ## <a name="what-are-database-transaction-units-dtus"></a>数据库事务单位 (DTU) 的定义是？
-对于[服务层](sql-database-single-database-resources.md)内特定性能级别的单个 Azure SQL 数据库，Microsoft 保证该数据库（独立于 Azure 云中的任何其他数据库）可获得一定级别的资源，并提供可预测的性能级别。 此资源量是以若干数据库事务单位或 DTU 计算的，是 CPU、内存、I/O（数据和事务日志 I/O）的混合度量值。 这些资源之间的比率最初由 [OLTP 基准工作负荷](sql-database-benchmark-overview.md)决定，旨在作为典型的真实 OLTP 工作负荷。 工作负荷超过任何以上资源量时，吞吐量将受到限制，从而导致性能下降和超时。 工作负荷使用的资源不会影响 Azure 云中其他 SQL 数据库可用的资源，而其他工作负荷使用的资源也不会影响用户自己的 SQL 数据库可用的资源。
+对于[服务层](sql-database-single-database-resources.md)内特定性能级别的单个 Azure SQL 数据库，Microsoft 保证该数据库（独立于 Azure 云中的任何其他数据库）可获得一定级别的资源，并提供可预测的性能级别。 此资源量是以若干数据库事务单位或 DTU 计算的，是计算资源、存储资源和 IO 资源的捆绑度量值。 这些资源之间的比率最初由 [OLTP 基准工作负荷](sql-database-benchmark-overview.md)决定，旨在作为典型的真实 OLTP 工作负荷。 工作负荷超过任何以上资源量时，吞吐量将受到限制，从而导致性能下降和超时。 工作负荷使用的资源不会影响 Azure 云中其他 SQL 数据库可用的资源，而其他工作负荷使用的资源也不会影响用户自己的 SQL 数据库可用的资源。
 
 ![边界框](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/16/2018
 
 若要更深入了解工作负荷的资源 (DTU) 消耗，请使用 [Azure SQL 数据库 Query Performance Insight](sql-database-query-performance.md)：
 
-- 按 CPU/持续时间/执行计数确定热门查询，可以对这些查询进行调整来提高性能。 例如，I/O 密集型查询可能会受益于使用[内存中优化技术](sql-database-in-memory.md)，以便在某个特定服务层和性能级别更好地利用可用内存。
+- 按 CPU/持续时间/执行计数确定热门查询，可以对这些查询进行调整来提高性能。 例如，IO 密集型查询可能会受益于使用[内存中优化技术](sql-database-in-memory.md)，以便在某个特定服务层和性能级别更好地利用可用内存。
 - 深入了解查询详情，查看其文本和资源使用历史记录。
 - 访问性能优化建议可显示 [SQL 数据库顾问](sql-database-advisor.md)执行的操作。
 
@@ -52,9 +52,9 @@ ms.lasthandoff: 03/16/2018
 池适合具有特定使用模式的大量数据库。 对于给定的数据库，此模式的特征是低平均使用量与相对不频繁的使用高峰。 SQL数据库自动评估现有 SQL 数据库服务器中数据库的历史资源使用率，并在 Azure 门户中推荐适当的池配置。 有关详细信息，请参阅[何时使用弹性池？](sql-database-elastic-pool.md)
 
 ## <a name="what-happens-when-i-hit-my-maximum-dtus"></a>达到最大 DTU 时会发生什么情况？
-会校准并控制性能级别，以便在选定服务层/性能级别所允许的最大限制范围内提供所需的资源来运行数据库工作负荷。 如果工作负荷达到了 CPU/数据 IO/日志 IO 限制中的其中一个限制，会继续接收资源直到达到最大允许级别，但是，可能会发现查询延迟不断增加。 这些限制不会导致任何错误，而只会减慢工作负荷，直到严重变慢，以致于查询开始超时。如果达到了并发用户会话/请求（工作线程）的最大允许数目限制，会看到明确的错误。 有关 CPU、内存、数据 I/O 和事务日志 I/O 以外的资源的限制信息，请参阅 [Azure SQL 数据库资源限制]( sql-database-resource-limits.md#what-happens-when-database-and-elastic-pool-resource-limits-are-reached) 。
+会校准并控制性能级别，以便在选定服务层/性能级别所允许的最大限制范围内提供所需的资源来运行数据库工作负荷。 如果工作负荷达到了 CPU/数据 IO/日志 IO 限制中的其中一个限制，会继续接收资源直到达到最大允许级别，但是，可能会发现查询延迟不断增加。 这些限制不会导致任何错误，而只会减慢工作负荷，直到严重变慢，以致于查询开始超时。如果达到了并发用户会话/请求（工作线程）的最大允许数目限制，会看到明确的错误。 有关 CPU、内存、数据 IO 和事务日志 IO 以外的资源的限制信息，请参阅 [Azure SQL 数据库资源限制]( sql-database-dtu-resource-limits.md#what-happens-when-database-and-elastic-pool-resource-limits-are-reached) 。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关适用于单一数据库和弹性池上的 DTU 和 eDTU，以及除 CPU、内存、数据 I/O 和事务日志 I/O 之外的其他资源限制的信息，请参阅[服务层](sql-database-service-tiers.md)。
+* 有关适用于单一数据库和弹性池的 DTU 和 eDTU，以及除 CPU、内存、数据 IO 和事务日志 IO 之外的其他资源限制的信息，请参阅[服务层](sql-database-service-tiers.md)。
 * 请参阅 [SQL 数据库 Query Performance Insight](sql-database-query-performance.md) 以了解 (DTU) 使用情况。
 * 要了解用于确定 DTU 混合比例的 OLTP 基准工作负荷所依据的方法，请参阅 [SQL 数据库基准概述](sql-database-benchmark-overview.md) 。

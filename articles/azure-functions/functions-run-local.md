@@ -1,11 +1,11 @@
 ---
-title: "在本地开发并运行 Azure Functions | Microsoft Docs"
-description: "了解如何在本地计算机上对 Azure 函数进行编码和测试，然后在 Azure Functions 中运行。"
+title: 在本地开发并运行 Azure Functions | Microsoft Docs
+description: 了解如何在本地计算机上对 Azure 函数进行编码和测试，然后在 Azure Functions 中运行。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 59a15697641dd8e4bdfdb974436d46a34b47ffb5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1fe07790bd534cbe18c25cb5fb1e0634f54ac9e2
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
 
@@ -110,7 +110,7 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 
 在版本 2.x 的 Azure Functions 运行时中，必须显式注册在函数应用中使用的[绑定扩展](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md)。 
 
-[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+[!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
 有关详细信息，请参阅 [Azure Functions 触发器和绑定概念](functions-triggers-bindings.md#register-binding-extensions)。
 
@@ -215,7 +215,7 @@ func host start
 | **`--nodeDebugPort -n`** | 节点调试程序要使用的端口。 默认值：launch.json 中的值或 5858。 |
 | **`--debugLevel -d`** | 控制台跟踪级别（关闭、详情、信息、警告或错误）。 默认：信息。|
 | **`--timeout -t`** | Functions 主机启动的超时时间（以秒为单位）。 默认值：20 秒。|
-| **`--useHttps`** | 绑定到 https://localhost:{port}，而非 http://localhost:{port}。 默认情况下，此选项会在计算机上创建可信证书。|
+| **`--useHttps`** | 绑定到 https://localhost:{port}，而不是绑定到 http://localhost:{port}。 默认情况下，此选项会在计算机上创建可信证书。|
 | **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 十分适用于从集成开发环境 (IDE) 启动 Azure Functions Core Tools 的情况。|
 
 Functions 主机启动时，会输出 HTTP 触发的函数的 URL：

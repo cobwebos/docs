@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 3/6/2018
+ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 92073cd29f29c1ddf5863e23c4a12dfdf8e21598
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 904641a433d55cc5f1d04b17ed067cd560c6b33c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>使用强制隧道配置应用服务环境
 
@@ -49,6 +49,8 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 
 如果执行这两项更改，则不会强制由应用服务环境子网发往 Internet 的流量通过 ExpressRoute 连接。
 
+如果网络已将流量路由到本地，则需创建用于托管 ASE 的子网，并为其配置 UDR，然后才能尝试部署该 ASE。  
+
 > [!IMPORTANT]
 > UDR 中定义的路由必须足够明确，以便优先于 ExpressRoute 配置所播发的任何路由。 上述示例使用了广泛的 0.0.0.0/0 地址范围。 因此很困意外地被使用更具体地址范围的路由播发重写。
 >
@@ -56,13 +58,16 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 
 ![直接 Internet 访问][1]
 
-## <a name="configure-your-ase-with-service-endpoints"></a>为 ASE 配置服务终结点
+
+## <a name="configure-your-ase-with-service-endpoints"></a>为 ASE 配置服务终结点 ##
 
 若要路由来自 ASE 的所有出站流量（到 Azure SQL 和 Azure 存储的除外），请执行以下步骤：
 
 1. 创建一个路由表，将其分配给 ASE 子网。 若要查找与区域相匹配的地址，请参阅[应用服务环境管理地址][management]。 为下一跃点为 Internet 的那些地址创建路由。 之所以需要这个，是因为应用服务环境入站管理流量必须从发送到的地址进行回复。   
 
-2. 为 ASE 子网启用 Azure SQL 和 Azure 存储的服务终结点
+2. 为 ASE 子网启用 Azure SQL 和 Azure 存储的服务终结点。  完成此步骤以后，即可使用强制隧道来配置 VNet。
+
+若要在虚拟网络中创建 ASE，而该虚拟网络已配置为将所有流量路由到本地，则需使用资源管理器模板来创建 ASE。  无法通过门户将 ASE 创建到预先存在的子网中。  若要将 ASE 部署到 VNet 中，而该 VNet 已配置为将所有出站流量路由到本地，则需使用可指定预先存在的子网的资源管理器模板来创建 ASE。 若要详细了解如何使用模板来部署 ASE，请阅读[使用模板创建应用服务环境][template]。
 
 可以通过服务终结点将多租户服务的访问权限限制给一组 Azure 虚拟网络和子网。 若要详细了解服务终结点，可参阅[虚拟网络服务终结点][serviceendpoints]文档。 
 
@@ -70,7 +75,7 @@ ASE 具有许多外部依赖项，详见[应用服务环境网络体系结构][n
 
 在包含 Azure SQL 实例的子网上启用服务终结点时，所有与该子网有连接的 Azure SQL 实例必定会启用服务终结点。 如果需要从同一子网访问多个 Azure SQL 实例，则不能在一个 Azure SQL 实例上启用服务终结点，而在另一个实例上不启用。  Azure 存储的表现与 Azure SQL 不同。  对 Azure 存储启用服务终结点时，可以锁定从子网对该资源进行的访问，但仍可访问其他 Azure 存储帐户，即使这些帐户未启用服务终结点。  
 
-如果为强制隧道配置网络筛选设备，则请记住，除了 Azure SQL 和 Azure 存储，ASE 还有许多依赖项。 必须允许此类流量，否则 ASE 会功能失常。
+如果为强制隧道配置网络筛选设备，则请记住，除了 Azure SQL 和 Azure 存储，ASE 还有依赖项。 必须允许流向这些依赖项的流量，否则 ASE 会功能失常。
 
 ![使用服务终结点的强制隧道][2]
 

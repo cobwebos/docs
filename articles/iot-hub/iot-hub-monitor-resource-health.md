@@ -1,12 +1,12 @@
 ---
-title: "监视 Azure IoT 中心的运行状况 | Microsoft Docs"
-description: "使用 Azure Monitor 和 Azure 资源运行状况监视 IoT 中心并快速诊断问题"
+title: 监视 Azure IoT 中心的运行状况 | Microsoft Docs
+description: 使用 Azure Monitor 和 Azure 资源运行状况监视 IoT 中心并快速诊断问题
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/09/2017
 ms.author: kgremban
-ms.openlocfilehash: 3051af03d0c1433db98bcc674a072188e7ce80e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28903c4cc530937b4b39a5239d2a6d1ea6896924
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
 
 实施 Azure IoT 中心的企业期望其资源具有可靠的性能。 为了帮助你密切监视自己的操作，IoT 中心与 [Azure Monitor][lnk-AM] 和 [Azure 资源运行状况][lnk-ARH]完全集成。 这两个服务相辅相成，提供所需的数据来让 IoT 解决方案保持正常的运行。 
 
-Azure Monitor 是监视所有 Azure 服务并记录其日志的单一源。 可将 Azure Monitor 生成的日志发送到 OMS Log Analytics、事件中心或 Azure 存储进行自定义处理。 借助 Azure Monitor 的指标和诊断设置，可以实时洞察资源的性能。 请继续阅读本文，了解如何对 IoT 中心[使用 Azure Monitor](#use-azure-monitor)。 
+Azure Monitor 是监视所有 Azure 服务并记录其日志的单一源。 可将 Azure Monitor 生成的日志发送到 Log Analytics、事件中心或 Azure 存储进行自定义处理。 借助 Azure Monitor 的指标和诊断设置，可以实时洞察资源的性能。 请继续阅读本文，了解如何对 IoT 中心[使用 Azure Monitor](#use-azure-monitor)。 
 
 Azure 资源运行状况有助于在 Azure 问题影响资源时进行诊断和获取支持。 个性化的仪表板提供 IoT 中心的当前和过去运行状态。 请继续阅读本文，了解如何对 IoT 中心[使用 Azure 资源运行状况](#use-azure-resource-health)。 
 

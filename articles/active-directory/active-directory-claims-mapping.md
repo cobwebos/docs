@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: b0dae074734b13046fb0d90e178e05f81399b5c6
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e35a33cbe77d9d29b975ede8535abbded2cde4c3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Azure Active Directory 中的声明映射（公共预览版）
 
@@ -234,7 +234,7 @@ ms.lasthandoff: 03/14/2018
 |http://schemas.microsoft.com/identity/claims/scope|
 
 ## <a name="claims-mapping-policy-properties"></a>声明映射策略属性
-使用声明映射策略的属性可控制发出的声明以及数据的来源。 如果未设置任何策略，则系统会发出包含核心声明集、基本声明集以及应用程序选择接收的任何可选声明的令牌。
+使用声明映射策略的属性可控制发出的声明以及数据的来源。 如果未设置任何策略，则系统会发出包含核心声明集、基本声明集以及应用程序已选择接收的任何[可选声明](develop/active-directory-optional-claims.md)的令牌。
 
 ### <a name="include-basic-claim-set"></a>包含基本声明集
 

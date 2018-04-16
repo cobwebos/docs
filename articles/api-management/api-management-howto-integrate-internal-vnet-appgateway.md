@@ -1,8 +1,8 @@
 ---
-title: "如何在包含应用程序网关的虚拟网络中使用 Azure API 管理 | Microsoft 文档"
-description: "了解如何在使用应用程序网关 (WAF) 作为前端的内部虚拟网络中设置和配置 Azure API 管理"
+title: 如何在包含应用程序网关的虚拟网络中使用 Azure API 管理 | Microsoft 文档
+description: 了解如何在使用应用程序网关 (WAF) 作为前端的内部虚拟网络中设置和配置 Azure API 管理
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: solankisamir
 manager: kjoshi
 editor: antonba
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: sasolank
 ms.openlocfilehash: f9bc3ffda9f943a37fd5aadf440abf7d33a6d1de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理 
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 12/08/2017
 6. 创建应用程序网关资源。
 7. 创建从应用程序网关公共 DNS 名称到 API 管理代理主机名的 CNAME 映射
 
-## <a name="create-a-resource-group-for-resource-manager"></a>创建 Resource Manager 的资源组
+## <a name="create-a-resource-group-for-resource-manager"></a>创建资源管理器的资源组
 
 确保使用最新版本的 Azure PowerShell。 [将 Windows PowerShell 与 Resource Manager 配合使用](https://docs.microsoft.com/azure/azure-resource-manager/powershell-azure-resource-manager)中提供了详细信息。
 
@@ -298,7 +298,7 @@ $dummyPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "nonexistenta
 $echoapiRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "externalapis" -Paths "/echo/*" -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
 ```
 
-如果路径不符合我们希望从 API 管理中启用的路径规则，那么规则路径映射配置也会配置一个名 dummyBackendPool 的默认后端地址池。 例如，http://api.contoso.net/calc/ 将转到 dummyBackendPool，因为它被定义为非匹配流量的默认池。
+如果路径不符合我们希望从 API 管理中启用的路径规则，那么规则路径映射配置也会配置一个名 dummyBackendPool 的默认后端地址池。 例如，http://api.contoso.net/calc/* 将转到 **dummyBackendPool**，因为它被定义为非匹配流量的默认池。
 
 ```powershell
 $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule, $dummyPathRule -DefaultBackendAddressPool $dummyBackendPool -DefaultBackendHttpSettings $dummyBackendSetting

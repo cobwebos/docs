@@ -1,12 +1,12 @@
 ---
 title: Azure Service Fabric CLI- sfctl application| Microsoft Docs
-description: "介绍 Service Fabric CLI sfctl application 命令。"
+description: 介绍 Service Fabric CLI sfctl application 命令。
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 02/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3a10437d0a2d680e586ada6a87750a69453c1f0c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: fe0ef5c81b1ef6bef298e65cde3649c9464089d8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sfctl-application"></a>sfctl application
 创建、删除和管理应用程序及应用程序类型。
@@ -71,7 +71,7 @@ ms.lasthandoff: 02/27/2018
 | --debug              | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h            | 显示此帮助消息并退出。|
 | --output -o          | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query              | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query              | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose            | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-application-delete"></a>sfctl application delete
@@ -94,7 +94,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                 | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h               | 显示此帮助消息并退出。|
 | --output -o             | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query                 | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                 | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose               | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-application-deployed"></a>sfctl application deployed
@@ -117,7 +117,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                 | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h               | 显示此帮助消息并退出。|
 | --output -o             | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query                 | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                 | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose               | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-application-health"></a>sfctl application health
@@ -192,7 +192,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                      | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h                    | 显示此帮助消息并退出。|
 | --output -o                  | 输出格式。  允许的值：json、jsonc、table、tsv。             默认值：json。|
-| --query                      | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                      | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                    | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-application-load"></a>sfctl application load
@@ -241,9 +241,7 @@ ms.lasthandoff: 02/27/2018
 ## <a name="sfctl-application-provision"></a>sfctl application provision
 使用外部存储中的 SFPKG 包或使用映像存储中的应用程序包向群集预配或注册 Service Fabric 应用程序类型。
 
-向群集预配 Service Fabric 应用程序类型。 必须完成此操作才能实例化任意新应用程序。 可以在 relativePathInImageStore 指定的应用程序包上或者使用外部 SFPKG 的 URI 执行预配操作。 除非设置了 --external-provision，否则此命令需要映像存储区
-
-预配。
+向群集预配 Service Fabric 应用程序类型。 必须完成此操作才能实例化任意新应用程序。 可以在 relativePathInImageStore 指定的应用程序包上或者使用外部 SFPKG 的 URI 执行预配操作。 除非设置了 --external-provision，否则此命令将预配映像存储区中的应用程序包。
         
 
 
@@ -293,7 +291,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                        | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h                      | 显示此帮助消息并退出。|
 | --output -o                    | 输出格式。  允许的值：json、jsonc、table、tsv。               默认值：json。|
-| --query                        | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                        | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                      | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-application-unprovision"></a>sfctl application unprovision
@@ -354,7 +352,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                     | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h                   | 显示此帮助消息并退出。|
 | --output -o                 | 输出格式。  允许的值：json、jsonc、table、tsv。            默认值：json。|
-| --query                     | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                     | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose                   | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-application-upload"></a>sfctl application upload

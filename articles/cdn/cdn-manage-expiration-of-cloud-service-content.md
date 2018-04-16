@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 内容交付网络中管理 Web 内容的到期时间 | Microsoft Docs"
-description: "了解如何管理 Azure CDN 中 Azure Web 应用/云服务、ASP.NET 或 IIS 内容的过期问题。"
+title: 在 Azure 内容交付网络中管理 Web 内容的到期时间 | Microsoft Docs
+description: 了解如何管理 Azure CDN 中 Azure Web 应用/云服务、ASP.NET 或 IIS 内容的过期问题。
 services: cdn
 documentationcenter: .NET
 author: dksimpson
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
 ms.service: cdn
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: mazha
-ms.openlocfilehash: db7b5053cb926d2ec86c7feea4ac411acbeb1ae2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d1a12e0d5bd5852cf8de3d5fec93f2bfdd3ab257
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>在 Azure 内容交付网络中管理 Web 内容的到期时间
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/21/2018
 设置 Web 服务器的 `Cache-Control` 标头的首选方法是使用 Azure 门户中的缓存规则。 有关 CDN 缓存规则的详细信息，请参阅[使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)。
 
 > [!NOTE] 
-> 缓存规则仅适用于 **Azure CDN from Verizon Standard** 和 **Azure CDN from Akamai Standard** 配置文件。 对于 **Azure CDN from Verizon Premium** 配置文件，必须在**管理**门户中使用 [Azure CDN 规则引擎](cdn-rules-engine.md)来获得类似的功能。
+> 缓存规则仅适用于 **Verizon 提供的标准 Azure CDN** 和 **Akamai 提供的标准 Azure CDN** 配置文件。 对于 **Verizon 提供的高级 Azure CDN** 配置文件，必须在**管理**门户中使用 [Azure CDN 规则引擎](cdn-rules-engine.md)来获得类似的功能。
 
 **导航到 CDN 缓存规则页**：
 

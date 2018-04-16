@@ -2,18 +2,18 @@
 title: 排查 Azure SQL 数据同步（预览版）问题 | Microsoft Docs
 description: 了解如何排查 Azure SQL 数据同步（预览版）的常见问题
 services: sql-database
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: a24e16abd78a89d6143c00fc08a3ef91d7dd8202
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e29c93f37017a88aa4b6d69168e649f7397d56b
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>排查 SQL 数据同步（预览版）的问题
 
@@ -442,7 +442,7 @@ SQL 数据同步（预览版）会从服务中删除已脱机达 45 天或更长
 -   [使用 Azure SQL 数据同步（预览版）跨多个云和本地数据库同步数据](sql-database-sync-data.md)  
 -   [安装 Azure SQL 数据同步（预览版）](sql-database-get-started-sql-data-sync.md)  
 -   [有关 Azure SQL 数据同步（预览版）的最佳做法](sql-database-best-practices-data-sync.md)  
--   [使用 OMS Log Analytics 监视 Azure SQL 数据同步（预览版）](sql-database-sync-monitor-oms.md)  
+-   [使用 Log Analytics 监视 Azure SQL 数据同步（预览版）](sql-database-sync-monitor-oms.md)  
 -   演示如何配置 SQL 数据同步（预览版）的完整 PowerShell 示例：  
     -   [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [使用 PowerShell 在 Azure SQL 数据库和 SQL Server 本地数据库之间进行同步](scripts/sql-database-sync-data-between-azure-onprem.md)  

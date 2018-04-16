@@ -1,8 +1,8 @@
 ---
-title: "Office 365 和 Azure AD 用户证书续订 | Microsoft 文档"
-description: "本文向 Office 365 用户说明了如何解决向其发送证书续订通知的电子邮件的问题。"
+title: Office 365 和 Azure AD 用户证书续订 | Microsoft 文档
+description: 本文向 Office 365 用户说明了如何解决向其发送证书续订通知的电子邮件的问题。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: billmath
-ms.openlocfilehash: a0e3b65c108f8d839b8107e98a5cd59df78e1ab0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f0435f1c5aae9381c76441b1233a47799af94768
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>续订 Office 365 和 Azure Active Directory 的联合身份验证证书
 ## <a name="overview"></a>概述
@@ -112,7 +112,6 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 其中，`(your_FS_name) ` 将替换成组织使用的联合身份验证服务主机名，例如 fs.contoso.com。如果能够成功验证这两项设置，则无需执行任何其他操作。  
 
 示例：https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
-
 ## 手动续订令牌签名证书 <a name="manualrenew"></a>
 可以选择手动续订令牌签名证书。 例如，在以下情况下，可能更合适手动续订：
 
@@ -152,8 +151,8 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 1. 打开用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块。
 2. 运行 $cred=Get-Credential。 当此 cmdlet 提示输入凭据时，键入云服务管理员帐户凭据。
 3. 运行 Connect-MsolService –Credential $cred。此 cmdlet 会你将连接到云服务。 通过工具运行任何其他已安装的 cmdlet 之前，必须创建你将连接到云服务的上下文。
-4. 如果在并非用作 AD FS 主联合服务器的计算机上运行这些命令，请运行 Set-MSOLAdfscontext -Computer <AD FS primary server>，其中 <AD FS primary server> 是主 AD FS 服务器的内部 FQDN 名称。 此 cmdlet 生成你将连接到 AD FS 的上下文。
-5. 运行 Update-MSOLFederatedDomain –DomainName <domain>。 此 cmdlet 会将 AD FS 中的设置更新到云服务中，并配置两者之间的信任关系。
+4. 如果在并非用作 AD FS 主联合服务器的计算机上运行这些命令，请运行 Set-MSOLAdfscontext -Computer &lt;AD FS primary server&gt;，其中 &lt;AD FS primary server&gt; 是主 AD FS 服务器的内部 FQDN 名称。 此 cmdlet 生成你将连接到 AD FS 的上下文。
+5. 运行 Update-MSOLFederatedDomain -DomainName &lt;domain&gt;。 此 cmdlet 会将 AD FS 中的设置更新到云服务中，并配置两者之间的信任关系。
 
 > [!NOTE]
 > 如果需要支持多个顶级域（例如 contoso.com 和 fabrikam.com），则必须将 **SupportMultipleDomain** 开关用于任何 cmdlet。 有关详细信息，请参阅[支持多个顶级域](active-directory-aadconnect-multiple-domains.md)。

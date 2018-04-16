@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: davidmu
-ms.openlocfilehash: 76ed4dac40872bf6db07b26c5805a4db62dc9dfc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 80889ac29b6d92f17fb9c9c693fa733085ce7f1c
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C：迁移具有社交标识的用户
 计划将标识提供者迁移到 Azure AD B2C 时，可能还需要迁移具有社交标识的用户。 本文介绍如何将现有的社交标识帐户（例如 Facebook、LinkedIn、Microsoft 和 Google 帐户）迁移到 Azure AD B2C。 本文也适用于联合标识，但这种迁移不太常见。
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/23/2018
     ]
     ```
 
-* 根据所用的标识提供者，**社交用户 ID** 是给定用户的 `per application` 唯一值，或者是开发帐户。 使用社交网络提供商以前分配的相同应用程序 ID 配置 Azure AD B2C 策略。 或使用另一应用程序 `within the same development account`。
+* 根据标识提供者，**社交用户 ID** 是每个应用程序给定用户的唯一值，或者是开发帐户。 使用社交网络提供商以前分配的相同应用程序 ID 配置 Azure AD B2C 策略。 或者是同一开发帐户内的另一个应用程序。
 
 ## <a name="use-graph-api-to-migrate-users"></a>使用图形 API 迁移用户
 通过[图形 API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) 创建 Azure AD B2C 用户帐户。 若要与图形 API 通信，首先必须创建具有管理特权的服务帐户。 在 Azure AD 中，可以注册应用程序并向 Azure AD 进行身份验证。 应用程序凭据是应用程序 ID 和应用程序机密。 应用程序代表自身而不是用户来调用图形 API。 遵照[用户迁移](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-user-migration#step-1-use-graph-api-to-migrate-users)一文步骤 1 中的说明。

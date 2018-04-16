@@ -1,12 +1,12 @@
 ---
-title: "Azure 无服务器产品/服务概述 | Microsoft Docs"
-description: "在云中创建功能强大的解决方案，而无需考虑基础结构。"
-keywords: 
+title: Azure 无服务器产品/服务概述 | Microsoft Docs
+description: 在云中创建功能强大的解决方案，而无需考虑基础结构。
+keywords: ''
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5cc6837ed0b0f4467e48c736f5d596a51a799fae
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 30c7dd36efca5ffcae770fe310a43a107d9136af
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="overview-of-azure-serverless-with-functions-and-logic-apps"></a>Azure 无服务器产品/服务以及 Functions 和逻辑应用的概述
 
@@ -45,7 +45,7 @@ Azure 逻辑应用提供了用于在云中简化并实现可缩放的集成和�
 
 ## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>如何在 Azure 中构建和部署无服务器应用程序？
 
-Azure 提供了在开发、部署和管理无服务器应用时可以使用的一组丰富工具。  可以直接在 Azure 门户中构建这类应用，也可以使用 [Visual Studio 中的工具](logic-apps-serverless-get-started-vs.md)进行构建。  开发应用程序后，可以将其[立即部署](logic-apps-create-deploy-template.md)。  Azure 还提供了针对无服务器应用程序的监视功能。  可以从 Azure 门户、通过 API 或 SDK 或者使用集成到 OMS 和 Application Insights 的工具来访问此监视功能。
+Azure 提供了在开发、部署和管理无服务器应用时可以使用的一组丰富工具。  可以直接在 Azure 门户中构建这类应用，也可以使用 [Visual Studio 中的工具](logic-apps-serverless-get-started-vs.md)进行构建。  开发应用程序后，可以将其[立即部署](logic-apps-create-deploy-template.md)。  Azure 还提供了针对无服务器应用程序的监视功能。  可以从 Azure 门户、通过 API 或 SDK 或者使用集成到 Log Analytics 和 Application Insights 的工具来访问此监视功能。
 
 ## <a name="next-steps"></a>后续步骤
 

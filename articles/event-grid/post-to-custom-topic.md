@@ -1,18 +1,18 @@
 ---
-title: "将事件发布到自定义 Azure 事件网格主题"
-description: "说明如何将事件发布到 Azure 事件网格的自定义主题"
+title: 将事件发布到自定义 Azure 事件网格主题
+description: 说明如何将事件发布到 Azure 事件网格的自定义主题
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 04/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 43dcdf9ab0fee5f7e61ecdc42aaf40430e272d92
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1c23aef0773ffddbc26e4090ecf137b632394ee3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>发布到 Azure 事件网格的自定义主题
 
@@ -91,8 +91,34 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 }]
 ```
 
+## <a name="response"></a>响应
+
+发布到主题终结点后，你将收到响应。 响应是标准 HTTP 响应代码。 一些常见的响应如下所示：
+
+|结果  |响应  |
+|---------|---------|
+|成功  | 200 正常  |
+|终结点不正确 | 404 未找到 |
+|访问密钥无效 | 401 未授权 |
+|事件数据的格式不正确 | 400 错误请求 |
+
+对于错误，消息正文采用以下格式：
+
+```json
+{
+    "error": {
+        "code": "<HTTP status code>",
+        "message": "<description>",
+        "details": [{
+            "code": "<HTTP status code>",
+            "message": "<description>"
+    }]
+  }
+}
+```
+
 ## <a name="next-steps"></a>后续步骤
 
-* 有关路由自定义事件的简介，请参阅[使用 Azure CLI 和事件网格创建和路由自定义事件](custom-event-quickstart.md)或[使用 Azure PowerShell 和事件网格创建和路由自定义事件](custom-event-quickstart-powershell.md)。
+* 有关监视事件传送的信息，请参阅[监视事件网格消息传送](monitor-event-delivery.md)。
 * 有关身份验证密钥的详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
 * 有关创建 Azure 事件网格订阅的详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。

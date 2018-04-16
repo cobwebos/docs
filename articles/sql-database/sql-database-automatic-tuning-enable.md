@@ -7,13 +7,13 @@ manager: drasumic
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 09/19/2016
+ms.date: 04/01/2018
 ms.author: vvasic
-ms.openlocfilehash: cfee95f5978073277a5351b976156cafefb87c16
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f29a7c883450cbc0f1f2b5a230a6c6e081222906
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="enable-automatic-tuning"></a>启用自动优化
 
@@ -22,7 +22,7 @@ Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识�
 ## <a name="enable-automatic-tuning-on-server"></a>对服务器启用自动优化
 在服务器级别上，可选择从“Azure 默认值”继承自动优化配置，或选择不继承配置。 Azure 默认值启用了 FORCE_LAST_GOOD_PLAN 和 CREATE_INDEX，禁用了 DROP_INDEX。
 
-## <a name="configure-automiatic-tuning-e-mail-notifications"></a>配置自动优化电子邮件通知
+## <a name="configure-automatic-tuning-e-mail-notifications"></a>配置自动优化电子邮件通知
 
 请参阅[自动优化电子邮件通知](sql-database-automatic-tuning-email-notifications.md)
 

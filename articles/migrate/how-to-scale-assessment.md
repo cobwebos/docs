@@ -1,16 +1,16 @@
 ---
-title: "使用 Azure Migrate 执行批量发现和评估 | Microsoft Docs"
-description: "介绍如何使用 Azure Migrate 服务访问大量本地计算机。"
+title: 使用 Azure Migrate 执行批量发现和评估 | Microsoft Docs
+description: 介绍如何使用 Azure Migrate 服务访问大量本地计算机。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: 9d9ebef66be269c63a62d393eda76254946b13e7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 934f32228d2c37db58c52cf4820ccc331fccd1d3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>发现和评估大型 VMware 环境
 
@@ -29,9 +29,9 @@ ms.lasthandoff: 03/05/2018
 
 | **实体** | **计算机限制** |
 | ---------- | ----------------- |
-| Project    | 1,500              | 
-| 发现  | 1,500              |
-| 评估 | 1,500               |
+| Project    | 1,500             |
+| 发现  | 1,500             |
+| 评估 | 1,500             |
 
 <!-- 
 - If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments. 
@@ -40,12 +40,12 @@ ms.lasthandoff: 03/05/2018
 - If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
     - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
     - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one. 
--->
+      -->
 
 ## <a name="plan-multiple-discoveries"></a>计划多次发现
 
 可以使用同一 Azure Migrate 收集器，对一个或多个项目进行多次发现。 请记住以下计划注意事项：
- 
+
 - 使用 Azure Migrate 收集器进行发现时，可将发现范围设置为 vCenter Server 文件夹、数据中心、群集或主机。
 - 若要执行多个发现操作，请在 vCenter Server 中验证要发现的 VM 是否位于支持 1,500 台计算机限制的文件夹、数据中心、群集或主机中。
 - 出于评估需要，建议让计算机在相同的项目和评估中保持相互依赖关系。 在 vCenter Server 中，出于评估需要，请确保依赖计算机位于同一文件夹、数据中心或群集中。
@@ -73,18 +73,28 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 2. 在“发现计算机”中，选择“下载”以下载 .OVA 文件。
 3. 在“复制项目凭据”中，请复制项目的 ID 和密钥。 在配置收集器时要使用这些信息。
 
-   
+
 ### <a name="verify-the-collector-appliance"></a>验证收集器设备
 
 在部署 .OVA 文件之前请检查其安全性。
 
 1. 在下载文件的计算机上，打开管理员命令窗口。
+
 2. 运行以下命令以生成 OVA 的哈希：
 
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
    用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+
 3. 确保生成的哈希与以下设置匹配。
+
+    适用于 OVA 版本 1.0.9.7
+
+    **算法** | **哈希值**
+    --- | ---
+    MD5 | d5b6a03701203ff556fa78694d6d7c35
+    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
+    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
 
     适用于 OVA 版本 1.0.9.5
 
@@ -109,7 +119,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
     MD5 | 71139e24a532ca67669260b3062c3dad
     SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
     SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
- 
+
     适用于 OVA 版本 1.0.8.49
 
     **算法** | **哈希值**
@@ -136,11 +146,11 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 2. 在“部署 OVF 模板向导”>“源”中，指定 OVA 文件的位置。
 3. 在“名称”和“位置”中，为收集器 VM 指定一个友好名称，以及要托管 VM 的库存对象。
-5. 在“主机/群集”中，指定要在其上运行收集器 VM 的主机或群集。
-7. 在存储中，指定收集器 VM 的存储目标。
-8. 在“磁盘格式”中，指定磁盘类型和大小。
-9. 在“网络映射”中，指定收集器 VM 要连接到的网络。 网络需要与 Internet 建立连接才能向 Azure 发送元数据。 
-10. 检查并确认设置，然后选择“完成”。
+4. 在“主机/群集”中，指定要在其上运行收集器 VM 的主机或群集。
+5. 在存储中，指定收集器 VM 的存储目标。
+6. 在“磁盘格式”中，指定磁盘类型和大小。
+7. 在“网络映射”中，指定收集器 VM 要连接到的网络。 网络需要与 Internet 建立连接才能向 Azure 发送元数据。 
+8. 检查并确认设置，然后选择“完成”。
 
 ## <a name="identify-the-id-and-key-for-each-project"></a>标识每个项目的 ID 和密钥
 
@@ -157,16 +167,16 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 下表还列出了不收集特定计数器时将受到影响的评估结果。
 
-|计数器                                  |级别    |设备级别  |评估影响                               |
-|-----------------------------------------|---------|------------------|------------------------------------------------|
-|cpu.usage.average                        | 1       |不可用                |建议的 VM 大小和成本                    |
-|mem.usage.average                        | 1       |不可用                |建议的 VM 大小和成本                    |
-|virtualDisk.read.average                 | 2       |2                 |磁盘大小、存储成本和 VM 大小         |
-|virtualDisk.write.average                | 2       |2                 |磁盘大小、存储成本和 VM 大小         |
-|virtualDisk.numberReadAveraged.average   | 1       |3                 |磁盘大小、存储成本和 VM 大小         |
-|virtualDisk.numberWriteAveraged.average  | 1       |3                 |磁盘大小、存储成本和 VM 大小         |
-|net.received.average                     | 2       |3                 |VM 大小和网络成本                        |
-|net.transmitted.average                  | 2       |3                 |VM 大小和网络成本                        |
+| 计数器                                 | 级别 | 设备级别 | 评估影响                    |
+| --------------------------------------- | ----- | ---------------- | ------------------------------------ |
+| cpu.usage.average                       | 1     | 不可用               | 建议的 VM 大小和成本         |
+| mem.usage.average                       | 1     | 不可用               | 建议的 VM 大小和成本         |
+| virtualDisk.read.average                | 2     | 2                | 磁盘大小、存储成本和 VM 大小 |
+| virtualDisk.write.average               | 2     | 2                | 磁盘大小、存储成本和 VM 大小 |
+| virtualDisk.numberReadAveraged.average  | 1     | 3                | 磁盘大小、存储成本和 VM 大小 |
+| virtualDisk.numberWriteAveraged.average | 1     | 3                | 磁盘大小、存储成本和 VM 大小 |
+| net.received.average                    | 2     | 3                | VM 大小和网络成本             |
+| net.transmitted.average                 | 2     | 3                | VM 大小和网络成本             |
 
 > [!WARNING]
 > 如果刚设置了更高的统计信息级别，将需要最多一天的时间来生成性能计数器。 因此，建议在一天后运行发现。
@@ -175,28 +185,28 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
 对于需要执行的每次发现，请运行收集器以发现所需范围内的 VM。 请依次运行发现。 不支持并发执行发现，每个发现必须具有不同的范围。
 
-1. 在 vSphere 客户端控制台中，右键单击“VM”>“打开控制台”。
-2. 提供设备的语言、时区和密码首选项。
-3. 在桌面上，选择“运行收集器”快捷方式。
-4. 在 Azure Migrate 收集器中，打开“设置先决条件”然后：
+1.  在 vSphere 客户端控制台中，右键单击“VM”>“打开控制台”。
+2.  提供设备的语言、时区和密码首选项。
+3.  在桌面上，选择“运行收集器”快捷方式。
+4.  在 Azure Migrate 收集器中，打开“设置先决条件”然后：
 
-   a. 接受许可条款，并阅读第三方信息。
+    a. 接受许可条款，并阅读第三方信息。
 
-   收集器将会检查 VM 是否可访问 Internet。
-   
-   b. 如果 VM 通过代理访问 Internet，请选择“代理设置”，并指定代理地址和侦听端口。 如果代理需要身份验证，请指定凭据。
+    收集器将会检查 VM 是否可访问 Internet。
 
-   收集器将检查 collectorservice 是否正在运行。 该服务默认安装在收集器 VM 上。
+    b. 如果 VM 通过代理访问 Internet，请选择“代理设置”，并指定代理地址和侦听端口。 如果代理需要身份验证，请指定凭据。
 
-   c. 下载并安装 VMware PowerCLI。
+    收集器将检查 collectorservice 是否正在运行。 该服务默认安装在收集器 VM 上。
 
-5. 在“指定 vCenter Server 详细信息”中，执行以下操作：
+    c. 下载并安装 VMware PowerCLI。
+
+5.  在“指定 vCenter Server 详细信息”中，执行以下操作：
     - 指定 vCenter Server 的名称 (FQDN) 或 IP 地址。
     - 在“用户名称”和“密码”中，指定收集器用来发现 vCenter Server 中 VM 的只读帐户凭据。
     - 在“选择范围”中，选择 VM 发现的范围。 收集器只能发现指定范围内的 VM。 可将范围设置为特定文件夹、数据中心或群集。 它不应包含超过 1000 台 VM。 
 
-6. 在“指定迁移项目”中，指定项目的 ID 和密钥。 如果未复制这些信息，请从收集器 VM 中打开 Azure 门户。 在项目“概述”页中，选择“发现计算机”，然后复制结果。  
-7. 在“查看收集进度”中，监视发现过程，并检查从 VM 中收集的元数据是否在范围内。 收集器提供一个近似的发现时间。
+6.  在“指定迁移项目”中，指定项目的 ID 和密钥。 如果未复制这些信息，请从收集器 VM 中打开 Azure 门户。 在项目“概述”页中，选择“发现计算机”，然后复制结果。  
+7.  在“查看收集进度”中，监视发现过程，并检查从 VM 中收集的元数据是否在范围内。 收集器提供一个近似的发现时间。
 
 
 ### <a name="verify-vms-in-the-portal"></a>在门户中验证 VM

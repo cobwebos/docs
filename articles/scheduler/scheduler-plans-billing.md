@@ -1,11 +1,11 @@
 ---
-title: "Azure 计划程序中的计划和计费方式"
-description: "Azure 计划程序中的计划和计费方式"
+title: Azure 计划程序中的计划和计费方式
+description: Azure 计划程序中的计划和计费方式
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,33 +14,27 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: f0662230c5d1663e37ee2be58f234934ec3d55dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b25e97b0f0d0b6f63134a774856eb7ec8f77b679
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="plans-and-billing-in-azure-scheduler"></a>Azure 计划程序中的计划和计费方式
 ## <a name="job-collection-plans"></a>作业集合计划
-作业集合是 Azure 计划程序中的计费实体。 作业集合包含许多作业，并附带三种计划 – 免费、标准和高级，下面将对此进行介绍。
+作业集合是 Azure 计划程序中的计费实体。 作业集合包含许多作业，并附带三种计划（标准、P10 高级和 P20 高级），下面将对此进行介绍。
 
 | **作业集合计划** | **每个作业集合的作业数上限** | **最大重复次数** | **每个订阅的作业集合数上限** | **限制** |
 |:--- |:--- |:--- |:--- |:--- |
-| **免费** |每个作业集合 5 个作业 |每小时一次。 执行作业的频率不能超过每小时一次 |一个订阅最多允许 1 个免费作业集合 |无法使用 [HTTP 出站授权对象](scheduler-outbound-authentication.md) |
 | **标准** |每个作业集合 50 个作业 |每分钟一次。 执行作业的频率不能超过每分钟一次 |一个订阅最多允许 100 个标准作业集合 |访问计划程序的完整功能集 |
 | **P10 高级** |每个作业集合 50 个作业 |每分钟一次。 执行作业的频率不能超过每分钟一次 |一个订阅最多允许 10,000 个 P10 高级作业集合。 有关详细信息，<a href="mailto:wapteams@microsoft.com">请联系我们</a>。 |访问计划程序的完整功能集 |
 | **P20 高级** |每个作业集合 1,000 个作业 |每分钟一次。 执行作业的频率不能超过每分钟一次 |一个订阅最多允许 10,000 个 P20 高级作业集合。 有关详细信息，<a href="mailto:wapteams@microsoft.com">请联系我们</a>。 |访问计划程序的完整功能集 |
 
 ## <a name="upgrades-and-downgrades-of-job-collection-plans"></a>升级和降级作业集合计划
-随时可以在免费、标准和高级计划之间升级或降级作业集合计划。 但是，在降级到免费作业集合时，降级可能会出于下列原因之一而失败：
-
-* 订阅中已存在免费作业集合
-* 作业集合中某个作业的重复周期高于免费作业集合中作业允许的重复周期。 免费作业集合允许的最大重复周期为每小时一次
-* 作业集合中有 5 个以上的作业
-* 作业集合中某个作业的 HTTP 或 HTTPS 操作使用了 [HTTP 出站授权对象](scheduler-outbound-authentication.md)
+随时可以在标准、P10 高级和 P20 高级计划之间升级或降级作业集合计划。
 
 ## <a name="billing-and-azure-plans"></a>计费和 Azure 计划
-不会向免费作业集合收取订阅费。 如果标准作业集合数超过 100 个（10 个标准计费单位），则最好是将所有作业集合纳入高级计划。
+如果标准作业集合数超过 100 个（10 个标准计费单位），则最好是将所有作业集合纳入高级计划。
 
 如果有一个标准作业集合和一个高级作业集合，则根据一个标准计费单位*和*一个高级计费单位计费。 计划程序服务根据设置为标准或高级的基于活动作业集合计费；接下来的两个部分将进一步对此做出解释。
 

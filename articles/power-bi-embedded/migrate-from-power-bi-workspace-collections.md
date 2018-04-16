@@ -1,12 +1,12 @@
 ---
-title: "如何将 Power BI 工作区集合内容迁移到 Power BI Embedded | Microsoft Docs"
-description: "了解如何从 Power BI 工作区集合迁移到 Power BI Embedded 并利用改进在应用中进行嵌入。"
+title: 如何将 Power BI 工作区集合内容迁移到 Power BI Embedded | Microsoft Docs
+description: 了解如何从 Power BI 工作区集合迁移到 Power BI Embedded 并利用改进在应用中进行嵌入。
 services: power-bi-embedded
-documentationcenter: 
+documentationcenter: ''
 author: guyinacube
 manager: erikre
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: asaxton
 ms.openlocfilehash: 069f31c8213bd0d8586f7ca50e543acfdad8a2b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-migrate-power-bi-workspace-collection-content-to-power-bi-embedded"></a>如何将 Power BI 工作区集合内容迁移到 Power BI Embedded
 
@@ -121,9 +121,9 @@ ms.lasthandoff: 10/11/2017
 2. 从 Power BI 工作区集合工作区调用下载 PBIX API。
 3. 保存 PBIX。
 4. 为 Power BI Embedded 工作区调用导入 PBIX。
-5. 通过调用 - POST  https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.SetAllConnections 来更新连接字符串
-6. 通过调用 GET https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.GetBoundGatewayDataSources 来获取 GW ID 和数据源 ID
-7. 通过调用 - PATCH https://api.powerbi.com/v1.0/myorg/gateways/{gateway_id}/datasources/{datasource_id} 来更新用户凭据
+5. 通过调用 POST https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.SetAllConnections 更新连接字符串
+6. 通过调用 GET https://api.powerbi.com/v1.0/myorg/datasets/{dataset_id}/Default.GetBoundGatewayDataSources 获取 GW ID 和数据源 ID
+7. 通过调用 PATCH https://api.powerbi.com/v1.0/myorg/gateways/{gateway_id}/datasources/{datasource_id} 更新用户的凭据
 
 #### <a name="old-dataset-and-reports"></a>旧数据集和报表
 

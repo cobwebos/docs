@@ -1,9 +1,9 @@
 ---
-title: "什么是 Apache Hive 和 HiveQL - Azure HDInsight | Microsoft Docs"
-description: "Apache Hive 是适用于 Hadoop 的数据仓库系统。 可以使用类似于 Transact-SQL 的 HiveQL 查询 Hive 中存储的数据。 本文档介绍如何在 Azure HDInsight 中使用 Hive 和 HiveQL。"
-keywords: "hiveql,什么是 hive,hadoop hiveql,如何使用 hive,了解 hive,hive 是什么"
+title: 什么是 Apache Hive 和 HiveQL - Azure HDInsight | Microsoft Docs
+description: Apache Hive 是适用于 Hadoop 的数据仓库系统。 可以使用类似于 Transact-SQL 的 HiveQL 查询 Hive 中存储的数据。 本文档介绍如何在 Azure HDInsight 中使用 Hive 和 HiveQL。
+keywords: hiveql,什么是 hive,hadoop hiveql,如何使用 hive,了解 hive,hive 是什么
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -18,10 +18,10 @@ ms.workload: big-data
 ms.date: 01/26/2018
 ms.author: larryfr
 ms.openlocfilehash: afd2bc95beb2458ec149824723ec62381b31b2da
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
@@ -57,7 +57,7 @@ HDInsight 提供已针对特定工作负荷进行优化的多种群集类型。 
 
 ## <a name="hiveql-language-reference"></a>HiveQL 语言参考
 
-[语言手册 (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 中提供了 HiveQL 语言参考。
+HiveQL 语言参考可在[语言手册 (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 中找到。
 
 ## <a name="hive-and-data-structure"></a>Hive 和数据结构
 

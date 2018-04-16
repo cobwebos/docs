@@ -1,11 +1,11 @@
 ---
-title: "Media Encoder Standard 架构 | Microsoft Docs"
-description: "本文概述 Media Encoder Standard 架构。"
+title: Media Encoder Standard 架构 | Microsoft Docs
+description: 本文概述 Media Encoder Standard 架构。
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 4c060062-8ef2-41d9-834e-e81e8eafcf2e
 ms.service: media-services
 ms.workload: media
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
 ms.openlocfilehash: e936f5c47abe5bb5531f9af3be48662ea2f48c97
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard 架构
 本文描述 [Media Encoder Standard 预设](media-services-mes-presets-overview.md)基于的 XML 架构的一些元素和类型。 本文说明元素及其有效值。  
@@ -27,21 +27,21 @@ ms.lasthandoff: 01/08/2018
 定义编码预设。  
 
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **编码** |[编码](media-services-mes-schema.md#Encoding) |根元素，指示要进行编码的输入源。 |
 | **输出** |[输出](media-services-mes-schema.md#Output) |所需输出文件的集合。 |
 
 ### <a name="attributes"></a>属性
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
-| **版本**<br/><br/> 必需 |**xs: decimal** |预设版本。 以下限制适用：xs:fractionDigits 值 =“1”和 xs:minInclusive 值 =“1”，例如，**版本 =“1.0”**。 |
+| **版本**<br/><br/> 必选 |**xs: decimal** |预设版本。 以下限制适用：xs:fractionDigits 值 =“1”和 xs:minInclusive 值 =“1”，例如，**版本 =“1.0”**。 |
 
 ## <a name="Encoding"></a>编码
 包含以下元素序列：  
 
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **H264Video** |[H264Video](media-services-mes-schema.md#H264Video) |视频的 H.264 编码设置。 |
 | **AACAudio** |[AACAudio](media-services-mes-schema.md#AACAudio) |音频的 AAC 编码设置。 |
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/08/2018
 
 ## <a name="H264Video"></a>H264Video
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **TwoPass**<br/><br/> minOccurs=“0” |**xs: boolean** |目前，仅支持单步编码。 |
 | **KeyFrameInterval**<br/><br/> minOccurs=“0”<br/><br/> **默认值 =“00:00:02”** |**xs: time** |确定 IDR 帧的固定间距（以秒为单位）。 亦称为“GOP 持续时间”。 请参阅 **SceneChangeDetection**，此元素用于控制编码器能否偏离此值。 |
@@ -61,7 +61,7 @@ ms.lasthandoff: 01/08/2018
 | **H264Layers**<br/><br/> minOccurs=“0” |[H264Layers](media-services-mes-schema.md#H264Layers) |输出视频层的集合。 |
 
 ### <a name="attributes"></a>属性
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **条件** |**xs:string** | 当输入不包含视频时，建议强制编码器插入单色视频轨。为此，请使用 Condition="InsertBlackIfNoVideoBottomLayerOnly"（仅在最低比特率处插入视频）或 Condition="InsertBlackIfNoVideo"（在所有输出比特率处插入视频）。 有关详细信息，请参阅[此](media-services-advanced-encoding-with-mes.md#no_video)文章。|
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 01/08/2018
 默认情况下，如果向编码器发送仅包含音频而不包含视频的输入，那么输出资产文件仅包含音频数据。 某些播放器可能无法处理此类输出流。 在这种情况下，可使用 H264Video 的 InsertBlackIfNoVideo 属性设置，强制编码器将视频轨添加到输出中。 有关详细信息，请参阅[此](media-services-advanced-encoding-with-mes.md#no_video)文章。
               
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **H264Layer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[H264Layer](media-services-mes-schema.md#H264Layer) |H264 层的集合。 |
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 01/08/2018
 > 
 
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **配置文件**<br/><br/> minOccurs=“0”<br/><br/> 默认值 =“自动” |**xs: string** |可能是以下 **xs: string** 值之一：**Auto**、**Baseline**、**Main**、**High**。 |
 | **级别**<br/><br/> minOccurs=“0”<br/><br/> 默认值 =“自动” |**xs: string** | |
@@ -103,12 +103,12 @@ ms.lasthandoff: 01/08/2018
  有关 AAC 的详细信息，请参阅 [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)。  
 
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **配置文件**<br/><br/> minOccurs="0"<br/><br/> 默认值 =“AACLC” |**xs: string** |可能是以下值之一：**AACLC**、**HEAACV1** 或 **HEAACV2**。 |
 
 ### <a name="attributes"></a>属性
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **条件** |**xs: string** |若要强制编码器在输入不包含音频时生成包含静音曲目的资产，请指定“InsertSilenceIfNoAudio”值。<br/><br/> 默认情况下，如果要向编码器发送仅包含视频而不包含音频的输入，则输出资产将包含仅有视频数据的文件。 某些播放器可能无法处理此类输出流。 对于这种方案，可以使用此设置来强制编码器将静音曲目添加到输出。 |
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 01/08/2018
 有关每个配置文件的有效值的详细信息，请参阅后面的“音频编解码器详细信息”表。  
 
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **通道**<br/><br/> minOccurs=“0” |**xs: int** |音频通道数。 以下是有效选项：1、2、5、6、8。<br/><br/> 默认值：2。 |
 | **SamplingRate**<br/><br/> minOccurs=“0” |**xs: int** |音频采样率，以 Hz 为单位。 |
@@ -137,16 +137,16 @@ ms.lasthandoff: 01/08/2018
 
 ## <a name="Clip"></a>剪裁
 ### <a name="attributes"></a>属性
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **StartTime** |**xs:duration** |指定演示文稿的开始时间。 StartTime 的值需与输入视频的绝对时间戳匹配。 例如，如果输入视频第一帧的时间戳为 12:00:10.000，则 StartTime 应大于或等于 12:00:10.000。 |
 | **持续时间** |**xs:duration** |指定演示文稿的持续时间（例如，视频中覆盖的外观）。 |
 
 ## <a name="Output"></a>输出
 ### <a name="attributes"></a>属性
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
-| **FileName** |**xs:string** |输出文件的名称。<br/><br/> 可以使用下表中描述的宏来生成输出文件名。 例如：<br/><br/> "Outputs": [      {       "FileName": "{Basename}{Resolution}{Bitrate}.mp4",       "Format": {         "Type": "MP4Format"       }     }   ] |
+| **FileName** |**xs:string** |输出文件的名称。<br/><br/> 可以使用下表中描述的宏来生成输出文件名。 例如：<br/><br/> **"Outputs": [      {       "FileName": "{Basename}*{Resolution}*{Bitrate}.mp4",       "Format": {         "Type": "MP4Format"       }     }   ]** |
 
 ### <a name="macros"></a>宏
 | 宏 | 说明 |
@@ -162,7 +162,7 @@ ms.lasthandoff: 01/08/2018
 
 ## <a name="Video"></a>视频（继承自编解码器的复杂类型）
 ### <a name="attributes"></a>属性
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **启动** |**xs:string** | |
 | **步骤** |**xs:string** | |
@@ -186,7 +186,7 @@ ms.lasthandoff: 01/08/2018
 
 ## <a name="FormatGroup"></a>FormatGroup（组）
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **BmpFormat** |**BmpFormat** | |
 | **PngFormat** |**PngFormat** | |
@@ -194,74 +194,74 @@ ms.lasthandoff: 01/08/2018
 
 ## <a name="BmpLayer"></a>BmpLayer
 ### <a name="element"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **宽度**<br/><br/> minOccurs=“0” |**xs:int** | |
 | **高度**<br/><br/> minOccurs=“0” |**xs:int** | |
 
 ### <a name="attributes"></a>属性
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **条件** |**xs:string** | |
 
 ## <a name="PngLayer"></a>PngLayer
 ### <a name="element"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **宽度**<br/><br/> minOccurs=“0” |**xs:int** | |
 | **高度**<br/><br/> minOccurs=“0” |**xs:int** | |
 
 ### <a name="attributes"></a>属性
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **条件** |**xs:string** | |
 
 ## <a name="JpgLayer"></a>JpgLayer
 ### <a name="element"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **宽度**<br/><br/> minOccurs=“0” |**xs:int** | |
 | **高度**<br/><br/> minOccurs=“0” |**xs:int** | |
 | **质量**<br/><br/> minOccurs=“0” |**xs:int** |有效值：1（最差）- 100（最好） |
 
 ### <a name="attributes"></a>属性
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **条件** |**xs:string** | |
 
 ## <a name="PngLayers"></a>PngLayers
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **PngLayer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
 ## <a name="BmpLayers"></a>BmpLayers
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **BmpLayer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
 ## <a name="JpgLayers"></a>JpgLayers
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **JpgLayer**<br/><br/> minOccurs=“0” maxOccurs =“unbounded” |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
 ## <a name="BmpImage"></a>BmpImage（继承自视频的复杂类型）
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs=“0” |[PngLayers](media-services-mes-schema.md#PngLayers) |Png layers |
 
 ## <a name="JpgImage"></a>JpgImage（继承自视频的复杂类型）
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs=“0” |[PngLayers](media-services-mes-schema.md#PngLayers) |Png layers |
 
 ## <a name="PngImage"></a>PngImage（继承自视频的复杂类型）
 ### <a name="elements"></a>元素
-| 名称​​ | Type | 说明 |
+| 名称 | Type | 说明 |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs=“0” |[PngLayers](media-services-mes-schema.md#PngLayers) |Png layers |
 

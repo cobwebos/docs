@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: cbd5b57d0cde3743c7ef70437f702536c27ac999
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b1fdc364b903ed552f657fcabdadcf209d7c969e
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 在应用程序的整个生命周期内，你可能需要修改或更新你的虚拟机规模集。 这些更新可能包括更新规模集的配置，或更改应用程序配置。 本文介绍了如何使用 REST API、Azure PowerShell 或 Azure CLI 2.0 修改现有规模集。
@@ -367,7 +367,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ## <a name="scenarios"></a>方案
 
 ### <a name="application-updates"></a>应用程序更新
-如果应用程序已通过扩展部署到规模集，则更新扩展配置会导致应用程序按升级策略进行更新。 例如，如果新版脚本在自定义脚本扩展中运行，则可更新 *fileUris* 属性，使之指向新脚本。 在某些情况下，可能需要强制进行更新，即使扩展配置未更改（例如，在未更改脚本 URI 的情况下更新脚本）。 在这些情况下，可以通过修改 *forceUpdateTag* 来强制进行更新。 Azure 平台不解释此属性。 如果更改此值，不会影响扩展的运行方式。 更改只是会强制扩展重新运行。 有关 *forceUpdateTag* 的详细信息，请参阅[针对扩展的 REST API 文档](/rest/api/compute/virtualmachineextensions/createorupdate)。
+如果应用程序已通过扩展部署到规模集，则更新扩展配置会导致应用程序按升级策略进行更新。 例如，如果新版脚本在自定义脚本扩展中运行，则可更新 *fileUris* 属性，使之指向新脚本。 在某些情况下，可能需要强制进行更新，即使扩展配置未更改（例如，在未更改脚本 URI 的情况下更新脚本）。 在这些情况下，可以通过修改 *forceUpdateTag* 来强制进行更新。 Azure 平台不解释此属性。 如果更改此值，不会影响扩展的运行方式。 更改只是会强制扩展重新运行。 有关 *forceUpdateTag* 的详细信息，请参阅[针对扩展的 REST API 文档](/rest/api/compute/virtualmachineextensions/createorupdate)。 请注意，*forceUpdateTag* 可用于所有扩展，而不仅仅是自定义脚本扩展。
 
 通过自定义映像来部署应用程序也很常见。 以下部分介绍此情景。
 

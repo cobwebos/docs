@@ -1,10 +1,10 @@
 ---
-title: "使用 Azure 事件网格自动调整上传图像的大小 | Microsoft 文档"
-description: "Azure 事件网格可以触发 Azure 存储中的 blob 上传。 你可以用其将上传到 Azure 存储的图像文件发送到其他服务（如 Azure Functions），以调整大小并进行其他改进。"
+title: 使用 Azure 事件网格自动调整上传图像的大小 | Microsoft 文档
+description: Azure 事件网格可以触发 Azure 存储中的 blob 上传。 你可以用其将上传到 Azure 存储的图像文件发送到其他服务（如 Azure Functions），以调整大小并进行其他改进。
 services: event-grid, functions
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 68343c3ffd87496ed4ae89b478ee5c8119ed67f5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 0edf5648ddef58db74273635c84d7473e17e1b30
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>使用事件网格自动调整上传图像的大小
 
@@ -90,7 +90,7 @@ storageConnectionString=$(az storage account show-connection-string \
 az functionapp config appsettings set --name <function_app> \
 --resource-group myResourceGroup \
 --settings myblobstorage_STORAGE=$storageConnectionString \
-myContainerName=thumbs
+myContainerName=thumbnails
 ```
 
 现在可以将函数代码项目部署到此函数应用。
@@ -145,7 +145,7 @@ az functionapp deployment source config --name <function_app> \
     | 订阅者终结点 | 自动生成 | 使用为你生成的终结点 URL。 | 
     | 前缀筛选器 | /blobServices/default/containers/images/blobs/ | 仅筛选图像容器上的那些存储事件。| 
 
-4. 单击“创建”以添加事件订阅。 这将创建一个事件订阅。在将 Blob 添加到图像容器时，该订阅会触发 `imageresizerfunc`。 此函数重设图像大小，然后将图像添加到缩略图容器。
+4. 单击“创建”以添加事件订阅。 这将创建一个事件订阅。在将 Blob 添加到图像容器时，该订阅会触发 `imageresizerfunc`。 此函数重设图像大小，然后将图像添加到 *thumbnails* 容器。
 
 至此，已配置后端服务，可在示例 Web 应用中测试调整图像大小功能。 
 
@@ -155,7 +155,7 @@ az functionapp deployment source config --name <function_app> \
 
 单击“上传照片”区域，选择并上传文件。 或者，也可以将照片拖动到此区域。 
 
-注意，上传的图像消失后，上传图像的副本将显示在生成的缩略图轮廓中。 此图像在通过函数重设大小后会被添加到缩略图容器中，再由 Web 客户端下载。
+注意，上传的图像消失后，上传图像的副本将显示在生成的缩略图轮廓中。 此图像在通过函数重设大小后会被添加到 *thumbnails* 容器中，再由 Web 客户端下载。
 
 ![在 Edge 浏览器中发布的 Web 应用](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
 

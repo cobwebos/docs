@@ -1,26 +1,21 @@
 ---
-title: 流分析的 JSON 输出 | Microsoft Docs
-description: 了解流分析如何针对 Azure Cosmos DB 进行 JSON 输出，以实现对非结构化 JSON 数据进行数据存档和低延迟查询。
-keywords: JSON 输出
-documentationcenter: ''
-services: stream-analytics,documentdb
+title: Cosmos DB 的 Azure 流分析输出
+description: 本文介绍如何使用 Azure 流分析保存 Azure Cosmos DB 的输出以进行 JSON 输出，从而实现对非结构化 JSON 数据进行数据存档和低延迟查询。
+services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 5d2a61a6-0dbf-4f1b-80af-60a80eb25dd1
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 8bda2abda6f2b7207a5a7195c24b07da9089fb06
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: f7115f7d19cd44ae7d0812d3aa6c48d8dd58c20d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="target-azure-cosmos-db-for-json-output-from-stream-analytics"></a>从流分析针对 Azure Cosmos DB 进行 JSON 输出
+# <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 流分析输出  
 流分析可以针对 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档介绍有关实现此配置的一些最佳做法。
 
 不熟悉 Cosmos DB 的人员可以查看 [Azure Cosmos DB 的学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)开始上手。 
@@ -35,7 +30,7 @@ ms.lasthandoff: 03/30/2018
 下面详细介绍一些 Cosmos DB 集合选项。
 
 ## <a name="tune-consistency-availability-and-latency"></a>调整一致性、可用性和延迟
-为了满足应用程序的要求，Cosmos DB 允许微调数据库和集合，并在一致性、可用性和延迟之间进行权衡。 根据方案针对读写延迟需要什么级别的读取一致性，可以在数据库帐户上选择一致性级别。 另外，默认情况下，Cosmos DB 对集合的每个 CRUD 操作启用了同步索引。 这是另一个有用选项，可控制 Cosmos DB 中的读/写性能。 有关本主题的更多信息，请参阅[更改数据库和查询的一致性级别](../cosmos-db/consistency-levels.md)文章。
+为了满足应用程序的要求，Cosmos DB 允许微调数据库和集合，并在一致性、可用性和延迟之间进行权衡。 根据方案针对读写延迟需要什么级别的读取一致性，可以在数据库帐户上选择一致性级别。 另外，默认情况下，Cosmos DB 对集合的每个 CRUD 操作启用了同步索引。 这是另一个有用选项，可控制 Cosmos DB 中的读/写性能。 有关详细信息，请参阅[更改数据库和查询的一致性级别](../cosmos-db/consistency-levels.md)一文。
 
 ## <a name="upserts-from-stream-analytics"></a>从流分析进行 Upsert 操作
 由于流分析与 Cosmos DB 集成，因此可以在 Cosmos DB 集合中基于给定的文档 ID 列插入或更新记录。 这也称为 *Upsert*。

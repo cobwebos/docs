@@ -1,30 +1,30 @@
 ---
-title: "适用于 Apache Kafka 的 Log analytics - Azure HDInsight | Microsoft Docs"
-description: "了解如何使用 Operations Management Suite 分析 Azure HDInsight 上 Apache Kafka 集群的日志。"
+title: 适用于 Apache Kafka 的 Log Analytics - Azure HDInsight | Microsoft Docs
+description: 了解如何使用 Log Analytics 分析 Azure HDInsight 上 Apache Kafka 群集的日志。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 6fcb925829e33704c94c96209a61346b0404e13b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 15107a0fbcd6242ac13f366b16be10efaeaad6bb
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>分析 HDInsight 上 Apache Kafka 的日志
 
-了解如何使用 Microsoft Operations Management Suite 分析 Apache Kafka on HDInsight 所生成的日志。
+了解如何使用 Log Analytics 分析 HDInsight 上 Apache Kafka 生成的日志。
 
-## <a name="enable-oms-for-kafka"></a>为 Kafka 启用 OMS
+## <a name="enable-log-analytics-for-kafka"></a>为 Kafka 启用 Log Analytics
 
 对于所有 HDInsight 群集，启用适用于 HDInsight 的 Log Analytics 的步骤都是相同的。 通过访问以下链接来了解如何创建和配置所需的服务：
 
@@ -32,14 +32,14 @@ ms.lasthandoff: 02/01/2018
 
 2. 创建 Kafka on HDInsight 群集。 有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)文档。
 
-3. 配置 Kafka 群集以使用日志分析。 有关详细信息，请参阅[使用 Log Analytics 监视 HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md)文档。
+3. 配置 Kafka 群集以使用 Log Analytics。 有关详细信息，请参阅[使用 Log Analytics 监视 HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md)文档。
 
     > [!NOTE]
-    > 还可使用 `Enable-AzureRmHDInsightOperationsManagementSuite` cmdlet，通过配置群集来使用 Log Analytics。 此 cmdlet 需要以下信息：
+    > 还可使用 `Enable-AzureRmHDInsightOperationsManagementSuite` cmdlet，将群集配置为使用 Log Analytics。 此 cmdlet 需要以下信息：
     >
     > * HDInsight 群集名称。
-    > * 用于 Log Analytics 的工作区 ID。 可在 OMS 工作区中找到 Log Analytics 工作区的工作区 ID。
-    > * 用于 OMS 连接的主键。 要查找主键，请选择 Log Analytics 实例，然后选择 __OMS 门户__。 在 OMS 门户中，依次选择__“设置”__、__“已连接的源”__和__“Linux 服务器”__。
+    > * 用于 Log Analytics 的工作区 ID。 可以在 Log Analytics 工作区中找到工作区 ID。
+    > * 用于 Log Analytics 连接的主密钥。 若要查找主密钥，请依次选择 Log Analytics 实例和 __OMS 门户__。 在 OMS 门户中，依次选择__“设置”__、__“已连接的源”__和__“Linux 服务器”__。
 
 
 > [!IMPORTANT]

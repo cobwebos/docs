@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure 门户管理 HDInsight 中的 Hadoop 群集 | Microsoft Docs"
-description: "了解如何使用 Azure 门户创建和管理 HDInsight 群集。"
+title: 使用 Azure 门户管理 HDInsight 中的 Hadoop 群集 | Microsoft Docs
+description: 了解如何使用 Azure 门户创建和管理 HDInsight 群集。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: b0a9b808f2c1a65d10c1c12500325a9b5a34bc5a
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9b5df3d5e355fac0c0ea4203d28170a2d3c04ad9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
 
@@ -103,7 +103,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
     * **外部元存储**：查看 Hive 和 Oozie 元存储。 只能在群集创建过程中配置元存储。 请参阅[使用 Hive/Oozie 元存储](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore)。
     * **脚本操作**：在群集上运行 Bash 脚本。 请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
     * **应用程序**：添加/删除 HDInsight 应用程序。  请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
-    * **监视**：监视 Azure Operations Management Suite 和 Azure Log Analytics 中的群集。
+    * **监视**：监视 Azure Log Analytics 中的群集。
     * **属性**：查看群集属性。
     * **存储帐户**：查看存储帐户和密钥。 存储帐户在群集创建过程中配置。
     * **Data Lake Store 访问**：配置 Data Lake Store 的访问。  请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)。

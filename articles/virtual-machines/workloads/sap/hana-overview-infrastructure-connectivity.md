@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d94e491d12ac43a4d85a638c79bcd3b24a4bc0ef
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 43debeb710e5ab5112f9f0a85a76761cde3051a7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Azure 上的 SAP HANA（大型实例）的基础结构和连接 
 
@@ -49,9 +49,9 @@ ms.lasthandoff: 03/09/2018
 - 对于每个 HANA 大型实例系统的数据，需要提供：
   - 所需主机名 - 最好是使用完全限定的域名。
   - 超出服务器 IP 池地址范围的 HANA 大型实例单元的相应 IP 地址 - 请注意，服务器 IP 池地址范围中的前 30 个 IP 地址被保留，以供 HANA 大型实例内部使用
-  - SAP HANA 实例的 SAP HANA SID 名称（创建必要的 SAP HANA 相关磁盘卷时需要用到）。 需要使用 HANA SID 在要附加到 HANA 大型实例单元的 NFS 卷上创建 <sidadm> 权限。 它还用作已装载磁盘卷的名称组件之一。 若要在单元上运行多个 HANA 实例，需要列出多个 HANA SID。 每个都会分配有一组单独的卷。
-  - 为了创建所需的 SAP HANA 相关磁盘卷，需要获取 hana-sidadm 用户在 Linux OS 中的 groupid。 SAP HANA 安装通常使用组 ID 1001 创建 sapsys 组。 hana-sidadm 用户属于该组
-  - 为了创建所需的 SAP HANA 相关磁盘卷，需要获取 hana-sidadm 用户在 Linux OS 中的 userid。 若要在单元上运行多个 HANA 实例，需要列出所有 <sid>adm 用户 
+  - SAP HANA 实例的 SAP HANA SID 名称（创建必要的 SAP HANA 相关磁盘卷时需要用到）。 需要使用 HANA SID 在要附加到 HANA 大型实例单元的 NFS 卷上创建 sidadm 权限。 它还用作已装载磁盘卷的名称组件之一。 若要在单元上运行多个 HANA 实例，需要列出多个 HANA SID。 每个都会分配有一组单独的卷。
+  - 为了创建所需的 SAP HANA 相关磁盘卷，需要获取 sidadm 用户在 Linux OS 中的 groupid。 SAP HANA 安装通常使用组 ID 1001 创建 sapsys 组。 sidadm 用户属于该组
+  - 为了创建所需的 SAP HANA 相关磁盘卷，需要获取 sidadm 用户在 Linux OS 中的 userid。 若要在单元上运行多个 HANA 实例，需要列出所有 <sid>adm 用户 
 - Azure 上的 SAP HANA（大型实例）将直接连接到的 Azure 订阅的 Azure 订阅 ID。 此订阅 ID 指代将按 HANA 大型实例单元收费的 Azure 订阅。
 
 提供这些信息后，Microsoft 将预配 Azure 上的 SAP HANA（大型实例），并返回所需的信息，以便将 Azure VNet 链接到 HANA 大型实例并访问 HANA 大型实例单元。

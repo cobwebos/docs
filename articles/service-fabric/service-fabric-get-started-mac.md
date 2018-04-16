@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: saysa
-ms.openlocfilehash: 81265dd61faee38d578a380ca392e7851662329c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 76bbe686d07ff83bff6271f62793713194938212
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
 > [!div class="op_single_selector"]
@@ -187,9 +187,9 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 
 安装[用于 Mac 的 .NET Core 2.0 SDK](https://www.microsoft.com/net/core#macos)，开始[创建 C# Service Fabric 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)。 .NET Core 2.0 Service Fabric 应用程序包托管在目前以预览版形式推出的 NuGet.org 上。
 
-## <a name="install-the-service-fabric-plug-in-for-eclipse-neon-on-your-mac"></a>在 Mac 上为 Eclipse Neon 安装 Service Fabric 插件
+## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>在 Mac 上为 Eclipse 安装 Service Fabric 插件
 
-Azure Service Fabric 为适用于 Java IDE 的 Eclipse Neon 提供插件。 该插件可简化创建、生成和部署 Java 服务的过程。 若要为 Eclipse 安装 Service Fabric 插件或将其更新到最新版本，请执行[这些步骤](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse-neon)。 [适用于 Eclipse 的 Service Fabric 文档](service-fabric-get-started-eclipse.md)中的其他步骤也适用：生成应用程序、向应用程序添加服务、卸载应用程序，等等。
+Azure Service Fabric 为适用于 Java IDE 的 Eclipse Neon（或更高版本）提供插件。 该插件可简化创建、生成和部署 Java 服务的过程。 若要为 Eclipse 安装 Service Fabric 插件或将其更新到最新版本，请执行[这些步骤](service-fabric-get-started-eclipse.md#install-or-update-the-service-fabric-plug-in-in-eclipse)。 [适用于 Eclipse 的 Service Fabric 文档](service-fabric-get-started-eclipse.md)中的其他步骤也适用：生成应用程序、向应用程序添加服务、卸载应用程序，等等。
 
 最后一步是使用与主机共享的路径实例化该容器。 该插件需要此类实例化才能与 Mac 上的 Docker 容器配合使用。 例如：
 

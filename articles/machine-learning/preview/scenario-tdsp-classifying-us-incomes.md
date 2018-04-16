@@ -1,12 +1,12 @@
 ---
-title: "收入分类 - Team Data Science Process - Azure 机器学习 | Microsoft Docs"
-description: "如何使用 Team Data Science Process 模板在 Azure 机器学习中创建对美国收入分类的项目。"
+title: 收入分类 - Team Data Science Process - Azure 机器学习 | Microsoft Docs
+description: 如何使用 Team Data Science Process 模板在 Azure 机器学习中创建对美国收入分类的项目。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
 ms.openlocfilehash: dc6279a1bac230146f4f0cebf2fbdbb6333cb7a1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>使用 Team Data Science Process (TDSP) 项目进行收入分类
 

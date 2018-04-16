@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 53d8c099d68fd7eb3f00fb4d1be7ec54404521ff
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 43bac88a7ab6320c5fdcc9dc0fb6b5209bdbcaa3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理分片多租户 Azure SQL 数据库的性能
 
@@ -49,7 +49,7 @@ Wingtip Tickets SaaS 多租户数据库应用使用分片多租户数据模型�
 
 [Azure 门户](https://portal.azure.com)提供内置的监视和警报功能，可以监视大多数资源。 对于 SQL 数据库，在数据库上提供了监视和警报功能。 这种内置的监视和警报功能是特定于资源的，因此，对于使用少量资源的方案比较方便，但在处理大量资源时就不太适用了。
 
-对于用来处理大量资源的大容量方案，可使用 [Log Analytics (OMS)](https://azure.microsoft.com/services/log-analytics/)。 这是单独的 Azure 服务，可针对发出的诊断日志以及日志分析工作区中收集的遥测进行分析。 Log Analytics 可收集多个服务的遥测，可查询和设置警报。
+对于使用许多资源的大容量应用场景，可以使用 [Log Analytics](https://azure.microsoft.com/services/log-analytics/)。 这是单独的 Azure 服务，可针对发出的诊断日志以及日志分析工作区中收集的遥测进行分析。 Log Analytics 可收集多个服务的遥测，可查询和设置警报。
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>获取 Wingtip Tickets SaaS 多租户数据库应用程序源代码和脚本
 

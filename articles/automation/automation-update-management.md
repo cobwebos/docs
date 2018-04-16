@@ -5,14 +5,14 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 04/05/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a7891e5bedb6e2ad3cba4780d38fc479d7b0bf4e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: c9a546f82d3300b37f861fff53421ebbf9fe3804
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/30/2018
 * 自动化混合 Runbook 辅助角色
 * 适用于 Windows 计算机的 Microsoft 更新或 Windows Server 更新服务
 
-下图是针对行为和数据流的概念性视图，说明了解决方案如何评估安全更新并将其应用到工作区中所有连接的 Windows Server 和 Linux 计算机。    
+下图是针对行为和数据流的概念性视图，说明了解决方案如何评估安全更新并将其应用到工作区中所有连接的 Windows Server 和 Linux 计算机。
 
 ![更新管理流程](media/automation-update-management/update-mgmt-updateworkflow.png)
 
@@ -70,21 +70,24 @@ ms.lasthandoff: 03/30/2018
 
 #### <a name="windows"></a>Windows
 
-Windows 代理也必须配置为与 Windows Server Update Services (WSUS) 服务器通信或有权访问 Microsoft 更新。 另外，System Center Configuration Manager 无法同时管理 Windows 代理。 需要 [Windows 代理](../log-analytics/log-analytics-agent-windows.md)。 如果加入 Azure VM，则会自动安装此代理。
+Windows 代理也必须配置为与 Windows Server Update Services (WSUS) 服务器通信或有权访问 Microsoft 更新。 更新管理可与 System Center Configuration Manager 结合使用，若要详细了解集成方案，请访问[将 System Center Configuration Manager 与更新管理集成](oms-solution-updatemgmt-sccmintegration.md#configuration)。 需要 [Windows 代理](../log-analytics/log-analytics-agent-windows.md)。 如果加入 Azure VM，则会自动安装此代理。
 
 #### <a name="linux"></a>Linux
 
 对于 Linux，计算机必须有权访问专用或公共的更新存储库。 此解决方案不支持适用于 Linux 且配置为向多个 Log Analytics 工作区报告的 OMS 代理。
 
-若要详细了解如何安装适用于 Linux 的 OMS 代理并下载最新版本，请参阅[适用于 Linux 的 Operations Management Suite 代理](https://github.com/microsoft/oms-agent-for-linux)。 若要了解如何安装适用于 Windows 的 OMS 代理，请参阅[适用于 Windows 的 Operations Management Suite 代理](../log-analytics/log-analytics-windows-agent.md)。  
+若要详细了解如何安装适用于 Linux 的 OMS 代理并下载最新版本，请参阅[适用于 Linux 的 Operations Management Suite 代理](https://github.com/microsoft/oms-agent-for-linux)。 若要了解如何安装适用于 Windows 的 OMS 代理，请参阅[适用于 Windows 的 Operations Management Suite 代理](../log-analytics/log-analytics-windows-agent.md)。
 
 ## <a name="permissions"></a>权限
-若要创建和管理更新部署，需要特定的权限。 若要详细了解这些权限，请访问[基于角色的访问 - 更新管理](automation-role-based-access-control.md#update-management) 
+
+若要创建和管理更新部署，需要特定的权限。 若要详细了解这些权限，请访问[基于角色的访问 - 更新管理](automation-role-based-access-control.md#update-management)
 
 ## <a name="solution-components"></a>解决方案组件
+
 此解决方案包含以下资源，这些资源添加到自动化帐户和直接连接的代理或 Operations Manager 连接的管理组。
 
 ### <a name="hybrid-worker-groups"></a>混合辅助角色组
+
 启用此解决方案以后，任何直接连接到 Log Analytics 工作区的 Windows 计算机都会自动配置为混合 Runbook 辅助角色，为此解决方案随附的 Runbook 提供支持。 此方案管理的每个 Windows 计算机都会作为“系统混合辅助角色组”列在自动化帐户的“混合辅助角色组”页中，其命名依据命名约定 *Hostname FQDN_GUID*。 不能以在帐户中有 Runbook 的这些组为目标，否则会失败。 这些组只能用于为管理解决方案提供支持。
 
 不过，只要将同一个帐户同时用于解决方案和混合 Runbook 辅助角色组成员身份，即可将 Windows 计算机添加到自动化帐户的混合 Runbook 辅助角色组，为自动化 Runbook 提供支持。 此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。
@@ -119,14 +122,13 @@ Heartbeat
 
 在 Windows 计算机上，可以通过查看以下内容来验证代理与 Log Analytics 的连接：
 
-1.  在控制面板中打开 Microsoft Monitoring Agent，此时该代理会在“Azure Log Analytics”选项卡上显示一条消息，指出“Microsoft Monitoring Agent 已成功连接到 Log Analytics”。   
-2.  打开 Windows 事件日志，导航到“应用程序和服务日志\Operations Manager”，搜索来自源服务连接器的事件 ID 3000 和 5002。 这些事件指示计算机已注册到 Log Analytics 工作区并且正在接收配置。  
+1. 在控制面板中打开 Microsoft Monitoring Agent，此时该代理会在“Azure Log Analytics”选项卡上显示一条消息，指出“Microsoft Monitoring Agent 已成功连接到 Log Analytics”。   
+2. 打开 Windows 事件日志，导航到“应用程序和服务日志\Operations Manager”，搜索来自源服务连接器的事件 ID 3000 和 5002。 这些事件指示计算机已注册到 Log Analytics 工作区并且正在接收配置。
 
 如果代理无法与 Log Analytics 通信且已配置为通过防火墙或代理服务器与 Internet 通信，则请参阅 [Windows 代理的网络配置](../log-analytics/log-analytics-agent-windows.md)或 [Linux 代理的网络配置](../log-analytics/log-analytics-agent-linux.md)，确认防火墙或代理服务器是否已正确配置。
 
 > [!NOTE]
-> 如果 Linux 系统配置为与代理或 OMS 网关通信，并且你将载入此解决方案，请执行以下命令更新 *proxy.conf* 权限，向 omiuser 组授予对文件的读取权限：  
-> `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`  
+> 如果 Linux 系统配置为与代理或 OMS 网关通信，并且你将载入此解决方案，请执行以下命令更新 *proxy.conf* 权限，向 omiuser 组授予对文件的读取权限：`sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
 执行评估后，新添加的 Linux 代理会显示状态“已更新”。 此过程可能需要长达 6 小时的时间。
@@ -136,6 +138,7 @@ Heartbeat
 ## <a name="data-collection"></a>数据收集
 
 ### <a name="supported-agents"></a>支持的代理
+
 下表介绍了该解决方案支持的连接的源。
 
 | 连接的源 | 支持 | 说明 |
@@ -145,11 +148,13 @@ Heartbeat
 | Operations Manager 管理组 |是 |该解决方案从已连接的管理组中的代理收集有关系统更新的信息。<br>从 Operations Manager 代理到 Log Analytics 的直接连接不是必须的。 数据将从管理组转发到 Log Analytics 工作区。 |
 
 ### <a name="collection-frequency"></a>收集频率
+
 对于每台托管的 Windows 计算机，每天执行两次扫描。 每隔 15 分钟就会调用一次 Windows API，以便查询上次更新时间，从而确定状态是否已更改，并在状态已更改的情况下启动符合性扫描。 对于每台托管的 Linux 计算机，每 3 小时执行一次扫描。
 
-可能需要 30 分钟到 6 小时的时间，仪表板才会显示受托管计算机提供的已更新数据。   
+可能需要 30 分钟到 6 小时的时间，仪表板才会显示受托管计算机提供的已更新数据。
 
 ## <a name="viewing-update-assessments"></a>查看更新评估
+
 在自动化帐户中单击“更新管理”查看计算机的状态。
 
 此视图提供有关计算机、缺少的更新、更新部署和计划的更新部署的信息。
@@ -165,7 +170,7 @@ Heartbeat
 
 若要避免在 Ubuntu 上的维护时段外应用更新，请重新配置无人参与升级包，禁用自动更新。 有关如何配置此包的信息，请参阅 [Ubuntu Server 指南中的自动更新主题](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)。
 
-对于从 Azure Marketplace 中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机，已进行注册，以访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md)。 对于任何其他 Linux 分发，必须按照其所支持的方法从发行版联机文件存储库对其进行更新。  
+对于从 Azure Marketplace 中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机，已进行注册，以访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md)。 对于任何其他 Linux 分发，必须按照其所支持的方法从发行版联机文件存储库对其进行更新。
 
 ## <a name="viewing-missing-updates"></a>查看缺少的更新
 
@@ -204,8 +209,8 @@ Heartbeat
 |更新<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; project Computer, Title, KBID, Classification, PublishedDate |缺少的更新的所有计算机<br>添加下列其中一项以限制 OS：<br>OSType = "Windows"<br>OSType == "Linux" |
 | 更新<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; where Computer == "ContosoVM1.contoso.com"<br>&#124; project Computer, Title, KBID, Product, PublishedDate |特定计算机缺少的更新（请将相关值替换成自己的计算机名称）|
 | 事件<br>&#124; where EventLevelName == "error" and Computer in ((Update &#124; where (Classification == "Security Updates" or Classification == "Critical Updates")<br>&#124; where UpdateState == "Needed" and Optional == false <br>&#124; distinct Computer)) |缺少关键或所需安全更新的计算机的错误事件 |
-| 更新<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; distinct Title |所有计算机明显缺少的更新 | 
-| UpdateRunProgress<br>&#124; where InstallationStatus == "failed" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |其更新在更新运行中失败的计算机<br>添加下列其中一项以限制 OS：<br>OSType = "Windows"<br>OSType == "Linux" | 
+| 更新<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; distinct Title |所有计算机明显缺少的更新 |
+| UpdateRunProgress<br>&#124; where InstallationStatus == "failed" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |其更新在更新运行中失败的计算机<br>添加下列其中一项以限制 OS：<br>OSType = "Windows"<br>OSType == "Linux" |
 | 更新<br>&#124; where OSType == "Linux"<br>&#124; where UpdateState != "Not needed" and (Classification == "Critical Updates" or Classification == "Security Updates")<br>&#124; summarize AggregatedValue = count() by Computer |提供可解决关键或安全漏洞的更新包的 Linux 计算机列表 | 
 | UpdateRunProgress<br>&#124; where UpdateRunName == "DeploymentName"<br>&#124; summarize AggregatedValue = count() by Computer|在此更新运行中进行了更新的计算机（请将相关值替换为更新部署名称） | 
 
@@ -239,15 +244,15 @@ Heartbeat
 
 此部分介绍如何排查“更新管理”解决方案的问题。
 
-如果在尝试载入解决方案或虚拟机时遇到问题，请查看“应用程序和服务日志\Operations Manager”事件日志中是否存在事件 ID 为 4502、事件消息包含 Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent 的事件。 下表突出显示了特定的错误消息，以及每个消息的可能解决方案。  
+如果在尝试载入解决方案或虚拟机时遇到问题，请查看“应用程序和服务日志\Operations Manager”事件日志中是否存在事件 ID 为 4502、事件消息包含 Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent 的事件。 下表突出显示了特定的错误消息，以及每个消息的可能解决方案。
 
-| 消息 | 原因 | 解决方案 |   
-|----------|----------|----------|  
-| 无法注册进行修补程序管理的计算机，<br>注册失败，出现异常<br>System.InvalidOperationException: {"消息":"计算机已<br>注册到其他帐户。 "} | 计算机已载入到其他进行更新管理的工作区 | 通过[删除混合 runbook 组](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)对旧项目进行清理|  
-| 无法注册进行修补程序管理的计算机，<br>注册失败，出现异常<br>System.Net.Http.HttpRequestException: 发送请求时出错。 ---><br>System.Net.WebException: 基础连接<br>已关闭: 在接收时<br>发生意外错误。 ---> System.ComponentModel.Win32Exception:<br>客户端和服务器无法通信，<br>因为没有通用算法 | 代理/网关/防火墙阻止通信 | [查看网络要求](automation-offering-get-started.md#network-planning)|  
-| 无法注册进行修补程序管理的计算机，<br>注册失败，出现异常<br>Newtonsoft.Json.JsonReaderException: 分析正无穷大值时出错。 | 代理/网关/防火墙阻止通信 | [查看网络要求](automation-offering-get-started.md#network-planning)| 
-| 由服务 <wsid>.oms.opinsights.azure.com 出示的证书<br>不是由<br>用于 Microsoft 服务的证书颁发机构颁发的。 联系人<br>网络管理员，确定其运行的代理是否截获<br>TLS/SSL 通信。 |代理/网关/防火墙阻止通信 | [查看网络要求](automation-offering-get-started.md#network-planning)|  
-| 无法注册进行修补程序管理的计算机，<br>注册失败，出现异常<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>无法创建自签名证书。 ---><br>System.UnauthorizedAccessException: 访问被拒绝。 | 自签名证书生成失败 | 请验证系统帐户是否具有<br>以下文件夹的读取访问权限:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|  
+| 消息 | 原因 | 解决方案 |
+|----------|----------|----------|
+| 无法注册进行修补程序管理的计算机，<br>注册失败，出现异常<br>System.InvalidOperationException: {"消息":"计算机已<br>注册到其他帐户。 "} | 计算机已载入到其他进行更新管理的工作区 | 通过[删除混合 runbook 组](automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)对旧项目进行清理|
+| 无法注册进行修补程序管理的计算机，<br>注册失败，出现异常<br>System.Net.Http.HttpRequestException: 发送请求时出错。 ---><br>System.Net.WebException: 基础连接<br>已关闭: 在接收时<br>发生意外错误。 ---> System.ComponentModel.Win32Exception:<br>客户端和服务器无法通信，<br>因为没有通用算法 | 代理/网关/防火墙阻止通信 | [查看网络要求](automation-offering-get-started.md#network-planning)|
+| 无法注册进行修补程序管理的计算机，<br>注册失败，出现异常<br>Newtonsoft.Json.JsonReaderException: 分析正无穷大值时出错。 | 代理/网关/防火墙阻止通信 | [查看网络要求](automation-offering-get-started.md#network-planning)|
+| 由服务 <wsid>.oms.opinsights.azure.com 出示的证书<br>不是由<br>用于 Microsoft 服务的证书颁发机构颁发的。 联系人<br>网络管理员，确定其运行的代理是否截获<br>TLS/SSL 通信。 |代理/网关/防火墙阻止通信 | [查看网络要求](automation-offering-get-started.md#network-planning)|
+| 无法注册进行修补程序管理的计算机，<br>注册失败，出现异常<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>无法创建自签名证书。 ---><br>System.UnauthorizedAccessException: 访问被拒绝。 | 自签名证书生成失败 | 请验证系统帐户是否具有<br>以下文件夹的读取访问权限:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|
 
 ## <a name="next-steps"></a>后续步骤
 

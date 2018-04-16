@@ -1,24 +1,19 @@
 ---
-title: 流分析开窗函数简介 | Microsoft 文档
-description: 了解流分析中的三个开窗函数（翻转、跳跃、滑动）。
-keywords: 翻转窗口, 滑动窗口, 跳跃窗口
-documentationcenter: ''
+title: Azure 流分析开窗函数简介
+description: 本文介绍在 Azure 流分析作业中使用的三个开窗函数（翻转、跳跃、滑动）。
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: 0d8d8717-5d23-43f0-b475-af078ab4627d
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: 3757834ff816fffc4571aeef8c164c2230c0f7c2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 03/28/2017
+ms.openlocfilehash: c6f5dbe49cb60e3c7b2bc6562acf2d7fd79096ec
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="introduction-to-stream-analytics-window-functions"></a>流分析开窗函数简介
 在许多实时流方案中，只需要对临时窗口中包含的数据执行操作。 开窗函数的本机支持是 Azure 流分析的重要功能，可对编写复杂流处理作业的开发人员工作效率造成重大影响。 流分析支持开发人员使用[**翻转**](https://msdn.microsoft.com/library/dn835055.aspx)、[**跳跃**](https://msdn.microsoft.com/library/dn835041.aspx)和[**滑动**](https://msdn.microsoft.com/library/dn835051.aspx)窗口对流数据执行临时操作。 值得注意的是，所有[开窗](https://msdn.microsoft.com/library/dn835019.aspx)操作都在窗口**结束**时输出结果。 窗口的输出是基于所用聚合函数的单个事件。 该事件包含窗口的结束时间戳，所有开窗函数都以固定的长度定义。 最后，请务必注意，所有开窗函数只能在 [**GROUP BY**](https://msdn.microsoft.com/library/dn835023.aspx) 子句中使用。
@@ -41,7 +36,7 @@ ms.lasthandoff: 03/30/2018
 ![流分析滑动开窗函数简介](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
 ## <a name="getting-help-with-window-functions"></a>获取开窗函数的帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

@@ -1,6 +1,6 @@
 ---
-title: "将 CDN 添加到 Azure 应用服务 | Microsoft Docs"
-description: "向 Azure 应用服务添加内容交付网络 (CDN)，以便在全球靠近客户的服务器缓存和交付静态文件。"
+title: 将 CDN 添加到 Azure 应用服务 | Microsoft Docs
+description: 向 Azure 应用服务添加内容交付网络 (CDN)，以便在全球靠近客户的服务器缓存和交付静态文件。
 services: app-service\web
 author: syntaxc4
 ms.author: cfowler
@@ -10,13 +10,13 @@ ms.service: app-service-web
 manager: erikre
 ms.workload: web
 ms.custom: mvc
-ms.openlocfilehash: 257b75d01f3904661c1a188a2d53ffcb74f48f06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 74344b72869ef6b27f9e7329c7a1777a40662b17
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>向 Azure 应用服务添加内容交付网络 (CDN)
+# <a name="tutorial-add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>教程：向 Azure 应用服务添加内容交付网络 (CDN)
 
 [Azure 内容交付网络 (CDN)](../cdn/cdn-overview.md) 将静态 Web 内容缓存在按特定策略布置好的位置，以便提供最大的吞吐量，方便将内容交付给用户。 CDN 还会降低 Web 应用的服务器负载。 本教程介绍如何向 [Azure 应用服务中的 Web 应用](app-service-web-overview.md)添加 Azure CDN。 
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 10/11/2017
 | **定价层** | 标准 Akamai | [定价层](../cdn/cdn-overview.md#azure-cdn-features)指定提供商和可用功能。 在本教程中，将使用 Standard Akamai。 |
 | **CDN 终结点名称** | azureedge.net 域中的任何唯一名称 | 可在 \<endpointname>.azureedge.net 域中访问缓存的资源。
 
-选择“创建” 。
+选择**创建**。
 
 Azure 将创建配置文件和终结点。 新的终结点显示在同一页的“终结点”列表中，在预配后其状态为“正在运行”。
 

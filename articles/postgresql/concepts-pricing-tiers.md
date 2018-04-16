@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 8c8a2f6076c14dabe70f90538ca8c8b97fb93de0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3ea7d09338d4d89030138b8c4dc4085a6cd8ccc5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL 定价层
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 04/03/2018
 | 计算的代 | 第 4 代、第 5 代 | 第 4 代、第 5 代 | 第 5 代 |
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | 每个 vCore 的内存 | 基线 | “基本”层的 2 倍 | “常规用途”层的 2 倍 |
-| 存储大小 | 5 GB 到 1 TB | 5 GB 到 1 TB | 5 GB 到 1 TB |
+| 存储大小 | 5 GB 到 1 TB | 5 GB 到 2 TB | 5 GB 到 2 TB |
 | 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
 | 数据库备份保留期 | 7 到 35 天 | 7 到 35 天 | 7 到 35 天 |
 
@@ -46,9 +46,9 @@ ms.lasthandoff: 04/03/2018
 |:---|:----------:|:--------------------:|
 | 美国中部 |  | X |
 | 美国东部 | X | X |
-| 美国东部 2 | X |  |
+| 美国东部 2 | X | X |
 | 美国中北部 | X |  |
-| 美国中南部 | X |  |
+| 美国中南部 | X | X |
 | 美国西部 | X | X |
 | 美国西部 2 |  | X |
 | 加拿大中部 | X | X |
@@ -63,8 +63,8 @@ ms.lasthandoff: 04/03/2018
 | 澳大利亚东部 |  | X |
 | 印度中部 | X |  |
 | 印度西部 | X |  |
-| 日本东部 | X |  |
-| 日本西部 | X |  |
+| 日本东部 | X | X |
+| 日本西部 | X | X |
 | 韩国南部 |  | X |
 
 每个 vCore 都预配了特定的内存量，具体取决于定价层。 在增减服务器的 vCore 数时，内存也会按比例增减。 “常规用途”层为每个 vCore 提供的内存量是“基本”层的两倍。 “内存优化”层提供的内存量是“常规用途”层的两倍。
@@ -76,7 +76,7 @@ ms.lasthandoff: 04/03/2018
 |    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
-| 存储大小 | 5 GB 到 1 TB | 5 GB 到 1 TB | 5 GB 到 1 TB |
+| 存储大小 | 5 GB 到 1 TB | 5 GB 到 2 TB | 5 GB 到 2 TB |
 | 存储增量大小 | 1 GB | 1 GB | 1 GB |
 | IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS | 3 IOPS/GB<br/>至少 100 IOPS |
 

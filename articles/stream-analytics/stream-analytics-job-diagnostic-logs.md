@@ -1,24 +1,19 @@
 ---
-title: 使用诊断日志对 Azure 流分析进行故障排除 | Microsoft Docs
-description: 了解如何在 Microsoft Azure 中通过流分析作业分析诊断日志。
-keywords: ''
-documentationcenter: ''
+title: 使用诊断日志对 Azure 流分析进行故障排除
+description: 本文介绍如何在 Azure 流分析中分析诊断日志。
 services: stream-analytics
 author: jseb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 164d522d7beaea222dbc408765877fa67a34c203
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: 9001a2962806ee3e691fa448dde162d12c6ecdd2
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>使用诊断日志对 Azure 流分析进行故障排除
 

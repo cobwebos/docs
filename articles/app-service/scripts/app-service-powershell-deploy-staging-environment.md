@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell 脚本示例 - 创建 Web 应用并将代码部署到过渡环境 | Microsoft 文档"
-description: "Azure PowerShell 脚本示例 - 创建 Web 应用并将代码部署到过渡环境"
+title: Azure PowerShell 脚本示例 - 创建 Web 应用并将代码部署到过渡环境 | Microsoft 文档
+description: Azure PowerShell 脚本示例 - 创建 Web 应用并将代码部署到过渡环境
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 27cf0680-c3a9-4a58-9f71-6dec09f6b874
 ms.service: app-service-web
@@ -15,11 +15,11 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 55adc13350eb0f4711efa3c901f6e4e7755dfb27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ed45ca536509dc73e83ec4cd78ba289d2d4064a2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>创建 Web 应用并将代码部署到过渡环境
 
@@ -51,7 +51,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 | [Set-AzureRmAppServicePlan](/powershell/module/azurerm.websites/set-azurermappserviceplan) | 修改应用服务计划以更改其定价层。 |
 | [New-AzureRmWebAppSlot](/powershell/module/azurerm.websites/new-azurermwebappslot) | 为 Web 应用创建部署槽。 |
 | [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | 修改资源组中的资源。 |
-| [Swap-AzureRmWebAppSlot](/powershell/module/azurerm.websites/swap-azurermwebappslot) | 将 Web 应用的部署槽交换到生产环境。 |
+| [Switch-AzureRmWebAppSlot](/powershell/module/azurerm.websites/switch-azurermwebappslot) | 将 Web 应用的部署槽交换到生产环境。 |
 
 ## <a name="next-steps"></a>后续步骤
 

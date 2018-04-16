@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.topic: overview
 ms.date: 03/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 7a06ed8433ebcf728c7b090f5e984d4e3ebeb846
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a3b703c96e309294e5327fb7fb013cbf28c369e4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？ 
 
-SQL 数据库是 Microsoft Azure 中通用的关系数据库托管服务，支持关系数据、JSON、空间和 XML 等结构。 SQL 数据库提供托管的[单一 SQL 数据库](sql-database-servers-databases.md)、[弹性池](sql-database-elastic-pool.md)中的托管 SQL 数据库，以及名为 [SQL 数据库托管实例](sql-database-managed-instance.md)（公共预览版）的托管数据库实例。 它可以实现[动态可缩放性能](sql-database-service-tiers.md)，并提供[列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)（用于极端分析和报告）和[内存中 OLTP](sql-database-in-memory.md)（用于极端事务处理）等选项。 Microsoft 可无缝处理 SQL 代码库的所有修补和更新，并避开底层基础结构的所有管理。 
+SQL 数据库是 Microsoft Azure 中通用的关系数据库托管服务，支持关系数据、JSON、空间和 XML 等结构。 SQL 数据库提供托管的[单一 SQL 数据库](sql-database-servers-databases.md)、[弹性池](sql-database-elastic-pool.md)中的托管 SQL 数据库，以及 SQL [托管实例](sql-database-managed-instance.md)（公共预览版）。 它可以实现[动态可缩放性能](sql-database-service-tiers.md)，并提供[列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)（用于极端分析和报告）和[内存中 OLTP](sql-database-in-memory.md)（用于极端事务处理）等选项。 Microsoft 可无缝处理 SQL 代码库的所有修补和更新，并避开底层基础结构的所有管理。 
 
 SQL 数据库与 [Microsoft SQL Server 数据库引擎](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)共享其代码库。 利用 Microsoft 的云优先策略，首先将 SQL Server 的最新功能发布到 SQL 数据库，然后再发布到 SQL Server 本身。 此方法可为你提供 SQL Server 的最新功能，这些新功能已经过数百万个数据库的测试且无任何修补或升级开销。 有关公布的新功能信息，请参阅：
 
@@ -41,9 +41,13 @@ SQL 数据库在多个服务级别提供可预测的、动态可缩放的性能�
 
 ### <a name="adjust-performance-and-scale-without-downtime"></a>无需停机即可调整性能和规模
 
-SQL 数据库提供三个服务层，支持轻型到重型数据库工作负荷：基本、标准、高级。 可以在小型单一数据库中构建第一个应用，每个月只需花费少量资金。然后可以根据解决方案的需要，随时手动或以编程方式更改服务层。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
+SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers.md#dtu-based-purchasing-model)或[基于 vCore 的购买模型（预览版）](sql-database-service-tiers.md#vcore-based-purchasing-model-preview)。 
+- 基于 DTU 的购买模型在三个服务层中提供包括计算、内存和 IO 资源在内的各种内容，支持轻型到重型数据库工作负荷：基本、标准、高级。 每个层中的不同性能级别提供这些资源的不同组合，你可以向其添加更多的存储资源。
+- 基于 vCore 的购买模型允许选择 vCore 数、内存容量，以及存储的容量和速度。
 
-   ![缩放](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
+可以在小型单一数据库中构建第一个应用，每个月只需花费少量资金。然后可以根据解决方案的需要，随时手动或以编程方式更改服务层。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
+
+   ![DTU 缩放](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
 SQL 数据库托管实例为预览版，提供单一服务层。 有关详细信息，请参阅 [SQL 数据库托管实例](sql-database-managed-instance.md)
 
@@ -64,7 +68,7 @@ SQL 数据库托管实例为预览版，提供单一服务层。 有关详细信
 
 ### <a name="extensive-monitoring-and-alerting-capabilities"></a>集中监视和警报功能
 
-但是，要如何比较单一数据库和数据库池的相对性能呢？ 当调高和调低性能时，如何知道该在何处停止？ 根据[单一数据库的数据库事务单位 (DTU) 和弹性池的弹性 DTU (eDTU)](sql-database-what-is-a-dtu.md)，结合性能评级使用[内置性能监视](sql-database-performance.md)和[警报](sql-database-insights-alerts-portal.md)工具。 使用这些工具，可以根据当前需求或项目性能的需求，快速评估调高或调低性能产生的影响。 有关详细信息，请参阅 [SQL 数据库选项和性能：了解每个服务层提供的功能](sql-database-service-tiers.md) 。
+但是，要如何比较单一数据库和数据库池的相对性能呢？ 当调高和调低性能时，如何知道该在何处停止？ 将[内置的性能监视](sql-database-performance.md)和[警报](sql-database-insights-alerts-portal.md)工具与性能等级组合使用。 使用这些工具，可以根据当前需求或项目性能的需求，快速评估调高或调低性能产生的影响。 有关详细信息，请参阅 [SQL 数据库选项和性能：了解每个服务层提供的功能](sql-database-service-tiers.md) 。
 
 此外，SQL 数据库可[发出指标和诊断日志](sql-database-metrics-diag-logging.md)，以便更轻松地监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
 
@@ -82,7 +86,7 @@ Azure 行业领先的 99.99% 可用性服务级别协议 [(SLA)](http://azure.mi
 - [时间点还原](sql-database-recovery-using-backups.md)：SQL 数据库支持恢复到自动备份保留期内的任何时间点。
 - [活动异地复制](sql-database-geo-replication-overview.md)：SQL 数据库允许在同一或全局分发的 Azure 数据中心配置至多 4 个可读的辅助数据库。  例如，如果有一个 SaaS 应用程序，其中的目录数据库包含大量并发只读事务，请使用活动异地复制来启用全局读取缩放并删除主数据库上因读取工作负荷产生的瓶颈。 
 - [故障转移组](sql-database-geo-replication-overview.md)：通过 SQL 数据库，可实现高可用性和全局范围内的负载均衡，包括透明异地复制和大型数据库集和弹性池故障转移。 通过故障转移组和活动异地复制，能够以最小管理开销创建全局分发式 SaaS 应用程序，将所有复杂监视、路由和故障转移业务流程留给 SQL 数据库。
-- **[区域冗余数据库](sql-database-high-availability.md)**：可以通过 SQL 数据库跨多个可用性区域预配高级数据库或高级弹性池。 由于高级数据库和高级弹性池有多个用于确保高可用性的冗余副本，因此将这些副本置于多个可用性区域可以提高复原能力，包括自动从数据中心规模的故障中恢复而不丢失数据的能力。 此功能目前处于预览状态。 
+- **[区域冗余数据库](sql-database-high-availability.md)**：可以通过 SQL 数据库跨多个可用性区域预配高级数据库或业务关键型（预览版）数据库或者弹性池。 由于这些数据库和弹性池有多个用于确保高可用性的冗余副本，因此将这些副本置于多个可用性区域可以提高复原能力，包括自动从数据中心规模的故障中恢复而不丢失数据的能力。 此功能目前处于预览状态。 
 
 ## <a name="built-in-intelligence"></a>内置智能
 
@@ -166,7 +170,7 @@ SQL 数据库支持在 MacOS、Linux 和 Windows 上使用 Python、Java、Node.
 
 - 有关单一数据库和弹性池的成本比较与计算器，请参阅[定价页](https://azure.microsoft.com/pricing/details/sql-database/)。
 
-- 请参阅这些快速入门，以便尽快入门：
+- 请参阅这些快速入门教程，以便尽快入门：
 
   - [在 Azure 门户中创建 SQL 数据库](sql-database-get-started-portal.md)  
   - [使用 Azure CLI 创建 SQL 数据库](sql-database-get-started-cli.md)

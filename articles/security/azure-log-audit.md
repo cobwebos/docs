@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 032aa4a6cedd49ff9c3b4803561b8b187e8f9af5
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: c82b56cdf0fc2cb288986cf8fbf43c2dab5eacb6
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
 ## <a name="introduction"></a>介绍
@@ -74,7 +74,7 @@ Azure 针对每个 Azure 服务生成大量日志记录。 这些日志按以下
 |[存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|存储执行日志记录并为存储帐户提供指标数据|提供相关信息，以便深入了解如何跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。|    REST API 或[客户端库](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[NSG（网络安全组）流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|采用 JSON 格式，并根据规则显示出站和入站流|查看有关通过网络安全组的入口和出口 IP 流量的信息|[网络观察程序](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|日志、异常和自定义诊断|    多个平台上面向 Web 开发人员的应用程序性能管理 (APM) 服务。| REST API，[Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
-|处理数据/安全警报| Azure 安全中心警报，OMS 警报| 安全信息和警报。|   REST API，JSON|
+|处理数据/安全警报| Azure 安全中心警报、Log Analytics 警报|   安全信息和警报。|   REST API，JSON|
 
 ### <a name="activity-log"></a>活动日志
 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供相关信息，方便用户了解对订阅中的资源执行的操作。 活动日志此前称为“审核日志”或“操作日志”，因为它报告订阅的[控制平面事件](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/)。 通过活动日志，可确定订阅中对资源执行的任何写入操作（PUT、POST、DELETE）的“内容、执行者和时间”等信息。 还可以了解该操作和其他相关属性的状态。 活动日志不包括读取 (GET) 操作。
@@ -114,7 +114,7 @@ Azure 诊断日志提供了多个配置选项，即 Azure 门户可使用 PowerS
 
 -   [将诊断日志流式传输到事件中心](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs)，方便第三方服务或自定义分析解决方案（例如 [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)）引入。
 
--   使用 [OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 对诊断日志进行分析。
+-   使用 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 对诊断日志进行分析
 
 诊断日志支持的服务和架构以及每种资源类型支持的日志类别
 
@@ -333,11 +333,11 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 
 ## <a name="log-analytics"></a>Log Analytics
 
-Log Analytics 是 [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) 中的服务，可帮助收集和分析云和本地环境中资源生成的数据。 使用集成的搜索和自定义仪表板，轻松分析所有工作负荷和服务器上的数百万记录，而无需考虑它们的物理位置，从而获得实时见解。
+Log Analytics 是 Azure 中的一个服务，可帮助收集和分析云和本地环境中资源生成的数据。 使用集成的搜索和自定义仪表板，轻松分析所有工作负荷和服务器上的数百万记录，而无需考虑它们的物理位置，从而获得实时见解。
 
 ![Log Analytics](./media/azure-log-audit/azure-log-audit-fig8.png)
 
-Log Analytics 的中心是托管在 Azure 云中的 OMS 存储库。 通过配置数据源和向订阅添加解决方案，将连接的源中的数据收集到存储库。 数据源和解决方案将分别创建具有自身属性集的不同记录类型，但是仍可在对存储库的查询中同时对它们进行分析。 这允许使用相同的工具和方法来处理不同资源收集的各种数据。
+Log Analytics 的中心是托管在 Azure 云中的 Log Analytics 工作区。 通过配置数据源及将解决方案添加到订阅，从连接的源将数据收集到工作区中。 数据源和解决方案将分别创建具有自身属性集的不同记录类型，但是仍可在对工作区的查询中同时对它们进行分析。 这允许使用相同的工具和方法来处理不同资源收集的各种数据。
 
 连接的源是生成 Log Analytics 收集的数据的计算机和其他资源。 其中可包括直接连接的 [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) 和 [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) 计算机上安装的代理或[连接的 System Center Operations Manager 管理组](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents)中的代理。 Log Analytics 还可收集 [Azure 存储](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)中的数据。
 

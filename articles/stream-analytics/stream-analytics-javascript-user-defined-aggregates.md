@@ -1,23 +1,19 @@
 ---
-title: Azure 流分析 JavaScript 用户定义的聚合 | Microsoft Docs
-description: 使用 JavaScript 用户定义的聚合执行高级查询机制
-keywords: javascript, 用户定义的聚合, uda
+title: Azure 流分析中 JavaScript 用户定义的聚合
+description: 本文介绍如何在 Azure 流分析中通过 JavaScript 用户定义的聚合执行高级查询机制。
 services: stream-analytics
 author: minhe-msft
-manager: santoshb
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 10/28/2017
 ms.author: minhe
-ms.openlocfilehash: 9f9a2e33f97fc90265933ee9941f2d02a92cbc4c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: santoshb
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 10/28/2017
+ms.openlocfilehash: 718109d17309747a3c19f22921e4a316b0b88dc6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure 流分析 JavaScript 用户定义的聚合（预览）
 
@@ -230,7 +226,7 @@ GROUP BY TumblingWindow(minute, 5)
 
 ## <a name="get-help"></a>获取帮助
 
-如需更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
+如需更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 

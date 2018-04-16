@@ -1,6 +1,6 @@
 ---
-title: "教程：使用 Azure Active Directory 为 Workplace by Facebook 配置自动用户预配 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Workplace by Facebook 间配置单一登录。"
+title: 教程：使用 Azure Active Directory 为 Workplace by Facebook 配置自动用户预配 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Workplace by Facebook 间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 15cbaafcd86c576f4789a61ed80c526b6fe705ab
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: d42a6b63833bffc3cce1830a728ec21083b25dc9
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
@@ -75,7 +75,7 @@ Azure AD 支持将已分配的用户的帐户详细信息自动同步到 Workpla
 
     ![预配](./media/active-directory-saas-workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. 在“管理凭据”部分下，输入 Workplace by Facebook 管理员的“机密令牌”并将“租户 URL”值设为 `https://www.facebook.com/scim/v1/`。
+5. 在“管理员凭据”部分下，输入 Workplace by Facebook 管理员的“访问令牌”并将“租户 URL”值设为 `https://www.facebook.com/scim/v1/`。 请参阅这些[说明](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps)为 Workplace 创建访问令牌。 
 
 6. 在 Azure 门户中，单击“测试连接”，确保 Azure AD 可以连接到 Workplace by Facebook 应用。 如果连接失败，请确保 Workplace by Facebook 帐户具有团队管理员权限。
 
@@ -91,7 +91,7 @@ Azure AD 支持将已分配的用户的帐户详细信息自动同步到 Workpla
 
 12. 单击“保存”。
 
-如需深入了解如何配置自动设置，请参阅 [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
+有关如何配置自动预配的详细信息，请参阅 [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
 
 现可创建测试帐户。 等待最多 20 分钟即可验证该帐户是否已同步到 Workplace by Facebook。
 

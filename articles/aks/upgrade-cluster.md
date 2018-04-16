@@ -1,19 +1,19 @@
 ---
-title: "升级 Azure 容器服务 (AKS) 群集"
-description: "升级 Azure 容器服务 (AKS) 群集"
+title: 升级 Azure 容器服务 (AKS) 群集
+description: 升级 Azure 容器服务 (AKS) 群集
 services: container-service
 author: gabrtv
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 02/24/2018
+ms.date: 04/05/2018
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 9b94f858aa896eaa93430a12cd74e12d9bf02008
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 338a153ac4e00c329bf6854306a466657de1d70f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="upgrade-an-azure-container-service-aks-cluster"></a>升级 Azure 容器服务 (AKS) 群集
 
@@ -31,14 +31,17 @@ az aks get-upgrades --name myAKSCluster --resource-group myResourceGroup --outpu
 
 ```console
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  ----------------------------------
-default  myResourceGroup  1.7.9            1.7.9              1.7.12, 1.8.1, 1.8.2, 1.8.6, 1.8.7
+-------  ---------------  ---------------  -----------------  -------------------
+default  mytestaks007     1.8.10           1.8.10             1.9.1, 1.9.2, 1.9.6
 ```
 
-我们有三个版本可用于升级：1.7.9、1.8.1 和 1.8.2。 可使用 `az aks upgrade` 命令升级到最新可用版本。  在升级过程中，节点会被仔细[封锁和排除][kubernetes-drain]以尽量减少对正在运行的应用程序造成中断。  在启动群集升级之前，请确保你有足够的额外计算容量来处理你的工作负载，因为会添加和删除群集节点。
+我们有三个版本可用于升级：1.9.1、1.9.2 和 1.9.6。 可使用 `az aks upgrade` 命令升级到最新可用版本。  在升级过程中，节点会被仔细[封锁和排除][kubernetes-drain]以尽量减少对正在运行的应用程序造成中断。  在启动群集升级之前，请确保你有足够的额外计算容量来处理你的工作负载，因为会添加和删除群集节点。
+
+> [!NOTE]
+> 升级 AKS 群集时，不能跳过 Kubernetes 次要版本。 例如，允许在 1.7.x > 1.8.x 或 1.8.x > 1.9.x 之间升级，但是不允许 1.7 > 1.9。
 
 ```azurecli-interactive
-az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.8.2
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.9.6
 ```
 
 输出：
@@ -73,7 +76,7 @@ az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes
     ],
     "dnsPrefix": "myK8sClust-myResourceGroup-4f48ee",
     "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.eastus.azmk8s.io",
-    "kubernetesVersion": "1.8.2",
+    "kubernetesVersion": "1.9.6",
     "linuxProfile": {
       "adminUsername": "azureuser",
       "ssh": {
@@ -108,7 +111,7 @@ az aks show --name myAKSCluster --resource-group myResourceGroup --output table
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus     myResourceGroup  1.8.2                Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.eastus.azmk8s.io
+myAKSCluster  eastus     myResourceGroup  1.9.6                 Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric 安全性概述 | Microsoft Docs"
-description: "本文简要介绍 Azure Service Fabric 安全性。"
+title: Azure Service Fabric 安全性概述 | Microsoft Docs
+description: 本文简要介绍 Azure Service Fabric 安全性。
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 64717da922701aabd27e15a67e8da1b0acb30b77
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9b6c2463c2a782f463e64d6e350a565fa7898b63
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric 安全性概述
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 解决了开发和管理云应用程序的重大难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。
@@ -104,7 +104,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 
 -   事件聚合：需要先收集和聚合生成的事件才能显示这些事件。 通常建议使用 [Azure 诊断](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad)（类似于基于代理的日志集合）或 [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow)（进程内日志集合）。
 
--   分析：需可视化事件并能够以某种格式访问事件，以便进行分析和显示。 有多个平台可用于监视和诊断数据的分析和可视化。 建议使用 [Operations Management Suite](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) 和 [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) 这两个平台，因为它们能与 Service Fabric 完美集成。
+-   分析：需可视化事件并能够以某种格式访问事件，以便进行分析和显示。 有多个平台可用于监视和诊断数据的分析和可视化。 建议使用 [Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) 和 [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) 这两个平台，因为它们能与 Service Fabric 完美集成。
 
 还可使用 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) 来监视构建 Service Fabric 群集时所在的许多 Azure 资源。
 

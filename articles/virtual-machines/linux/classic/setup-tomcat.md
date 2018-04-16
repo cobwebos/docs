@@ -1,11 +1,11 @@
 ---
-title: "在 Linux 虚拟机上设置 Apache Tomcat | Microsoft 文档"
-description: "了解如何使用运行 Linux 的 Azure 虚拟机设置 Apache Tomcat7。"
+title: 在 Linux 虚拟机上设置 Apache Tomcat | Microsoft 文档
+description: 了解如何使用运行 Linux 的 Azure 虚拟机设置 Apache Tomcat7。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: 45ecc89c-1cb0-4e80-8944-bd0d0bbedfdc
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: f3bd3167c9a879a876774e5d91fbb10fd340c6a8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 161a56a019f8c2c8ce5e3890e73ad5c5710e7b82
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>使用 Azure 在 Linux 虚拟机上设置 Tomcat7
 Apache Tomcat（简称 Tomcat，以前也称为 Jakarta Tomcat）是由 Apache Software Foundation (ASF) 开发的一个开源 Web 服务器和 servlet 容器。 Tomcat 实现了 Sun Microsystems 提出的 Java Servlet 和 JavaServer Pages (JSP) 规范。 Tomcat 提供用于运行 Java 代码的纯 Java HTTP Web 服务器环境。 在最简单的配置中，Tomcat 在单个操作系统进程中运行。 此进程运行 Java 虚拟机 (JVM)。 浏览器向 Tomcat 发出的每个 HTTP 请求都作为 Tomcat 进程中的单独线程进行处理。  
@@ -90,9 +90,9 @@ TCP 端口 8080 是 Tomcat 用来侦听的默认端口号。 如果使用 Azure 
 
    1. 对于终结点，请在“终结点”中输入终结点的名称，并在“公用端口”中输入 80。  
 
-      如果将其设置为 80，则无需在 URL 中包括用于访问 Tomcat 的端口号。 例如 http://tomcatdemo.cloudapp.net。    
+      如果将其设置为 80，则无需在 URL 中包括用于访问 Tomcat 的端口号。 例如，http://tomcatdemo.cloudapp.net。    
 
-      如果将其设置为其他值（例如 81），则需要将端口号添加到 URL 才能访问 Tomcat。 例如 http://tomcatdemo.cloudapp.net:81/。
+      如果将其设置为其他值（例如 81），则需要将端口号添加到 URL 才能访问 Tomcat。 例如，http://tomcatdemo.cloudapp.net:81/。
    2. 在“专用端口”中输入 8080。 默认情况下，Tomcat 侦听 TCP 端口 8080。 如果更改了 Tomcat 的默认侦听端口，应将“专用端口”更新为与 Tomcat 侦听端口相同。  
       ![显示“添加”命令、“公用端口”和“专用端口”的 UI 屏幕截图][7]
 4. 单击“确定”将该终结点添加到虚拟机。
@@ -184,7 +184,7 @@ Tomcat 是用 Java 编写的。 有两种类型的 Java 开发工具包 (JDK)：
 如果未使用 Tomcat7，请使用此命令的相应变体。  
 
 #### <a name="confirm-that-tomcat7-installation-is-successful"></a>确认 Tomcat7 安装成功
-若要检查 Tomcat7 是否已成功安装，请浏览到 Tomcat 服务器的 DNS 名称。 在本文中，示例 URL 为 http://tomcatexample.cloudapp.net/。 如果看到如下消息，则表示已正确安装 Tomcat7。
+若要检查 Tomcat7 是否已成功安装，请浏览到 Tomcat 服务器的 DNS 名称。 在本文中，示例 URL 是 http://tomcatexample.cloudapp.net/。 如果看到如下消息，则表示已正确安装 Tomcat7。
 ![指出成功安装 Tomcat7 的消息][16]
 
 ### <a name="install-other-tomcat7-components"></a>安装其他 Tomcat7 组件
@@ -231,7 +231,7 @@ Tomcat 是用 Java 编写的。 有两种类型的 Java 开发工具包 (JDK)：
 
     sudo /etc/init.d/tomcat7 restart  
 
-打开浏览器，并输入 URL **http://<your tomcat server DNS name>/manager/html**。 对于本文中的示例，URL 为 http://tomcatexample.cloudapp.net/manager/html。  
+打开浏览器，并输入 URL **http://<your tomcat server DNS name>/manager/html**。 对于本文中的示例，URL 是 http://tomcatexample.cloudapp.net/manager/html。  
 
 连接后，应会看到如下内容：  
 ![Tomcat Web 应用程序管理器的屏幕截图][18]

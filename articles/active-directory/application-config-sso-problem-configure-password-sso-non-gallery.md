@@ -1,11 +1,11 @@
 ---
-title: "配置非库应用程序的密码单一登录时的遇到问题 | Microsoft Docs"
-description: "了解在为 Azure AD 应用程序库中所列非库应用程序配置密码单一登录时人们面对的常见问题"
+title: 配置非库应用程序的密码单一登录时的遇到问题 | Microsoft Docs
+description: 了解在为 Azure AD 应用程序库中所列非库应用程序配置密码单一登录时人们面对的常见问题
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: e5c8562b89b70236d9d65a5f8765ae386d6831b4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序密码单一登录时遇到的问题
 
@@ -249,9 +249,9 @@ ms.lasthandoff: 02/21/2018
 
 -   **详细信息** – 由操作导致的所发生情况的详细说明
 
-    -   示例 – **内部 URL“http://bing.com/”无效，因为它已在使用中**
+    -   示例 - **内部 URL“http://bing.com/”无效，因为它已在使用中**
 
--   **复制错误** - 单击“复制错误”文本框右侧的“复制”图标，复制所有通知的详细信息以与支持工程师或产品组工程师共享
+-   **复制错误** – 单击“复制错误”文本框右侧的“复制”图标，复制所有通知详细详细以与支持工程师或产品组工程师共享
 
     -   示例 - ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 

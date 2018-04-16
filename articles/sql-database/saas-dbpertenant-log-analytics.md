@@ -1,6 +1,6 @@
 ---
 title: 将 Log Analytics 用于 SQL 数据库多租户应用 | Microsoft Docs
-description: 安装 Log Analytics (Operations Management Suite) 并将其用于多租户 Azure SQL 数据库 SaaS 应用
+description: 通过多租户 Azure SQL 数据库 SaaS 应用设置和使用 Log Analytics
 keywords: sql 数据库教程
 services: sql-database
 author: stevestein
@@ -8,23 +8,23 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 38a849ca5f4a767a4b9d9b9b86549e89a8217a2a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 285b8d0acc8a6cbe1a6441a4aabf372de204309e
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="set-up-and-use-log-analytics-operations-management-suite-with-a-multitenant-sql-database-saas-app"></a>安装 Log Analytics (Operations Management Suite) 并将其用于多租户 SQL 数据库 SaaS 应用
+# <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>通过多租户 SQL 数据库 SaaS 应用设置和使用 Log Analytics
 
-在本教程中，你将安装并使用 Azure Log Analytics ([Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite)) 来监视弹性池和数据库。 本教程基于[性能监视和管理教程](saas-dbpertenant-performance-monitoring.md)。 它演示了如何使用 Log Analytics 来增强 Azure 门户中提供的监视和警报。 Log Analytics 支持监视数千个弹性池和数十万个数据库。 Log Analytics 提供单个监视解决方案，该方案可以集成跨多个 Azure 订阅监视不同应用程序和 Azure 服务的功能。
+在本教程中，将设置和使用 Azure [Log Analytics](/azure/log-analytics/log-analytics-overview) 来监视弹性池和数据库。 本教程基于[性能监视和管理教程](saas-dbpertenant-performance-monitoring.md)。 它演示了如何使用 Log Analytics 来增强 Azure 门户中提供的监视和警报。 Log Analytics 支持监视数千个弹性池和数十万个数据库。 Log Analytics 提供单个监视解决方案，该方案可以集成跨多个 Azure 订阅监视不同应用程序和 Azure 服务的功能。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 安装并配置 Log Analytics (Operations Management Suite)。
+> * 安装和配置 Log Analytics。
 > * 使用 Log Analytics 监视池和数据库。
 
 若要完成本教程，请确保已完成了以下先决条件：
@@ -34,11 +34,11 @@ ms.lasthandoff: 03/23/2018
 
 请参阅[性能监视和管理教程](saas-dbpertenant-performance-monitoring.md)，了解 SaaS 方案和模式以及它们对监视解决方案要求有何影响。
 
-## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-log-analytics-or-operations-management-suite"></a>使用 Log Analytics 或 Operations Management Suite 监视和管理数据库和弹性池性能
+## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-log-analytics"></a>使用 Log Analytics 监视和管理数据库和弹性池性能
 
 对于 Azure SQL 数据库，Azure 门户中提供了针对数据库和池的监视和警报功能。 此内置的监视和警报功能非常方便，但它也是特定于资源的。 这意味着它不太适用于监视大型安装或者提供跨资源和订阅的统一视图。
 
-对于大容量方案，可以将 Log Analytics 用于监视和警报。 Log Analytics 是一项单独的 Azure 服务，可以用来对诊断日志和遥测数据进行分析，这些日志和数据是在工作区中可能从许多服务收集的。 Log Analytics 提供了内置的查询语言和数据可视化工具，可用于实现具有可操作性的数据分析。 SQL Analytics 解决方案提供了多个预定义的弹性池和数据库监视和警报视图与查询。 Operations Management Suite 还提供了一个自定义视图设计器。
+对于大容量方案，可以将 Log Analytics 用于监视和警报。 Log Analytics 是一项单独的 Azure 服务，可以用来对诊断日志和遥测数据进行分析，这些日志和数据是在工作区中可能从许多服务收集的。 Log Analytics 提供了内置的查询语言和数据可视化工具，可用于实现具有可操作性的数据分析。 SQL Analytics 解决方案提供了多个预定义的弹性池和数据库监视和警报视图与查询。 Log Analytics 还提供自定义视图设计器。
 
 Log Analytics 工作区和分析解决方案可以在 Azure 门户和 Operations Management Suite 中打开。 Azure 门户是更新的访问点，但在某些区域中可能会落后于 Operations Management Suite 门户。
 
@@ -129,9 +129,9 @@ Log Analytics 是一项必须配置的单独服务。 Log Analytics 在 Log Anal
 
 在 Operations Management Suite 门户中，可以在工作区中进一步浏览日志和指标数据。 
 
-Log Analytics 和 Operations Management Suite 中的监视和警报功能基于工作区中的数据查询，这不同于在 Azure 门户中的每个资源上定义的警报功能。 通过让警报基于查询，可以定义一个监视所有数据库的警报，而不必每个数据库都定义一个。 查询仅限于工作区中可用的数据。
+Log Analytics 中的监视和警报功能基于工作区中的数据查询，不像在 Azure 门户的每个资源上定义的警报功能。 通过让警报基于查询，可以定义一个监视所有数据库的警报，而不必每个数据库都定义一个。 查询仅限于工作区中可用的数据。
 
-若要详细了解如何使用 Operations Management Suite 来查询和设置警报，请参阅[使用 Log Analytics 中的警报规则](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating)。
+若要详细了解如何使用 Log Analytics 来查询和设置警报，请参阅[使用 Log Analytics 中的警报规则](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating)。
 
 适用于 SQL 数据库的 Log Analytics 按工作区中的数据量计费。 在本教程中，你创建了一个免费工作区，其限制是每天 500 MB。 达到该限制后，不会再向工作区添加数据。
 
@@ -141,7 +141,7 @@ Log Analytics 和 Operations Management Suite 中的监视和警报功能基于�
 本教程介绍了如何：
 
 > [!div class="checklist"]
-> * 安装并配置 Log Analytics (Operations Management Suite)。
+> * 安装和配置 Log Analytics。
 > * 使用 Log Analytics 监视池和数据库。
 
 尝试[“租户分析”教程](saas-dbpertenant-log-analytics.md)。
@@ -150,4 +150,3 @@ Log Analytics 和 Operations Management Suite 中的监视和警报功能基于�
 
 * [其他基于初始 Wingtip Tickets SaaS“每租户一个数据库”应用程序部署的教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
-* [Operations Management Suite](https://blogs.technet.microsoft.com/msoms/2017/02/21/azure-sql-analytics-solution-public-preview/)

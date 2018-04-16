@@ -1,26 +1,26 @@
 ---
-title: "使用 Azure Location Based Services 执行交互式地图搜索 | Microsoft Docs"
-description: "Azure 快速入门 - 使用 Azure Location Based Services（预览版）启动演示性的交互式地图搜索"
+title: 使用 Azure Location Based Services 执行交互式地图搜索 | Microsoft Docs
+description: Azure 快速入门 - 使用 Azure Location Based Services（预览版）启动演示性的交互式地图搜索
 services: location-based-services
-keywords: 
+keywords: ''
 author: kgremban
 ms.author: kgremban
-ms.date: 11/28/2017
+ms.date: 04/03/2018
 ms.topic: quickstart
 ms.service: location-based-services
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 288044b2f8a4b996489bbd6a6b0a61b455e8f4ad
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7a61d56f8e649d60dacff8f9849ab7e26363e119
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>使用 Azure Location Based Services（预览版）启动演示性的交互式地图搜索
 
-本文使用 Azure 地图来演示 Azure Location Based Services (LBS) 执行交互式搜索的功能。 此外，还逐步讲解了自行创建 LBS 帐户，以及获取要在演示 Web 应用程序中使用的帐户密钥的基本步骤。 
+本文演示 Azure Location Based Services (LBS) 执行交互式搜索的功能。 此外，还逐步讲解了自行创建 LBS 帐户，以及获取要在演示 Web 应用程序中使用的帐户密钥的基本步骤。 
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -40,14 +40,14 @@ ms.lasthandoff: 03/08/2018
 
 5. 成功创建帐户后，请将其打开，并导航到该帐户的“设置”。 单击“密钥”获取 Azure Location Based Services 帐户的主密钥和辅助密钥。 将“主密钥”值复制到本地剪贴板，以便在下一部分中使用。 
 
-## <a name="download-the-demo-application-for-azure-maps"></a>下载 Azure 地图的演示应用程序
+## <a name="download-the-demo-application"></a>下载演示应用程序
 
 1. 下载或复制 [interactiveSearch.html](https://github.com/Azure-Samples/location-based-services-samples/blob/master/src/interactiveSearch.html) 文件的内容。
 2. 在本地将此文件的内容另存为 **AzureMapDemo.html**，并在文本编辑器中将其打开。
 3. 搜索字符串 `<insert-key>`，并将其替换为在上一部分中获取的**主密钥**值。 
 
 
-## <a name="launch-the-demo-application-for-azure-maps"></a>启动 Azure 地图的演示应用程序
+## <a name="launch-the-demo-application-for"></a>启动演示应用程序
 
 1. 在所选的浏览器中打开文件 **AzureMapDemo.html**。
 2. 观察显示的洛杉矶市地图。 城市由 *AzureMapDemo.html* 中指定给名为 **center** 的 JavaScript 变量的 `[longitude, latitude]` 对值确定。 可将这些坐标更改为所选的其他任何城市。 例如，纽约市的坐标为 *[-74.0060, 40.7128]*。

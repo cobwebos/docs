@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 04/04/2018
 ms.author: johnkem
-ms.openlocfilehash: 6e373740d6b5af4b3b7d3dca8877c952d79f8b20
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9768fd96b8023ac97d8c5711e0c02f2c147e28f6
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>使用 Azure 活动日志监视订阅活动
+
 Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级别事件的订阅日志。 这包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 活动日志之前称为“审核日志”或“操作日志”，因为“管理”类别报告订阅的控制面事件。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作、谁操作和操作时间”等信息。 还可以了解该操作和其他相关属性的状态。 活动日志未包括读取 (GET) 操作或针对使用经典/“RDFE”模型的资源的操作。
 
 ![活动日志与其他类型的日志 ](./media/monitoring-overview-activity-logs/Activity_Log_vs_other_logs_v5.png)
@@ -37,9 +38,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 可以通过 Azure 门户、CLI、PowerShell cmdlet 和 Azure 监视器 REST API 从活动日志检索事件。
 
 > [!NOTE]
-
->  [较新的警报](monitoring-overview-unified-alerts.md)在创建和管理活动日志警报规则方面提供了增强的体验。  [了解详细信息](monitoring-activity-log-alerts-new-experience.md)。
-
+>  [新型警报](monitoring-overview-unified-alerts.md)在创建和管理活动日志警报规则时提供了增强的体验。  [了解详细信息](monitoring-activity-log-alerts-new-experience.md)。
 
 请观看介绍了活动日志的以下视频。
 > [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
@@ -103,7 +102,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 * 应该导出哪些区域（位置）。 确保包含“全局”，因为活动日志中的事件多为全局事件。
 * 活动日志应当在存储帐户中保留多长时间。
     - 保留期为零天表示日志将永久保留。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
-    - 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择事件中心或 OMS 选项），则保留策略无效。
+    - 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择了“事件中心”或“Log Analytics”选项），则保留策略无效。
     - 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。
 
 可以使用与发出日志的订阅不同的订阅中的存储帐户或事件中心命名空间。 配置此设置的用户必须对两个订阅都具有合适的 RBAC 访问权限。
@@ -129,12 +128,15 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 4. 单击“保存”保存这些设置。 这些设置会即时应用到订阅。
 
 ### <a name="configure-log-profiles-using-the-azure-powershell-cmdlets"></a>通过 Azure PowerShell Cmdlet 配置日志配置文件
+
 #### <a name="get-existing-log-profile"></a>获取现有的日志配置文件
+
 ```
 Get-AzureRmLogProfile
 ```
 
 #### <a name="add-a-log-profile"></a>添加日志配置文件
+
 ```
 Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
 ```
@@ -153,33 +155,32 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 Remove-AzureRmLogProfile -name my_log_profile
 ```
 
-### <a name="configure-log-profiles-using-the-azure-cross-platform-cli"></a>通过 Azure 跨平台 CLI 配置日志配置文件
+### <a name="configure-log-profiles-using-the-azure-cli-20"></a>通过 Azure CLI 2.0 配置日志配置文件
+
 #### <a name="get-existing-log-profile"></a>获取现有的日志配置文件
+
+```azurecli
+az monitor log-profiles list
+az monitor log-profiles show --name <profile name>
 ```
-azure insights logprofile list
-```
-```
-azure insights logprofile get --name my_log_profile
-```
+
 `name` 属性应为日志配置文件的名称。
 
 #### <a name="add-a-log-profile"></a>添加日志配置文件
-```
-azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope --retentionInDays 90 –categories Write,Delete,Action
+
+```azurecli
+az monitor log-profiles create --name <profile name> \
+    --locations <location1 location2 ...> \
+    --location <location> \
+    --categories <category1 category2 ...>
 ```
 
-| 属性 | 必选 | 说明 |
-| --- | --- | --- |
-| 名称 |是 |日志配置文件的名称。 |
-| storageId |否 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
-| serviceBusRuleId |否 |服务总线命名空间（需在其中创建事件中心）的服务总线规则 ID。 是以下格式的字符串：`{service bus resource ID}/authorizationrules/{key name}`。 |
-| 位置 |是 |要为其收集活动日志事件的逗号分隔区域的列表。 |
-| retentionInDays |是 |事件的保留天数，介于 1 到 2147483647 之间。 值为零时，将无限期（永久）存储日志。 |
-| categories |否 |应收集的事件类别的逗号分隔列表。 可能值包括：Write、Delete 和 Action。 |
+有关使用 CLI 创建监视器配置文件的完整文档，请参阅 [CLI 命令参考](/cli/azure/monitor/log-profiles#az-monitor-log-profiles-create)
 
 #### <a name="remove-a-log-profile"></a>删除日志配置文件
-```
-azure insights logprofile delete --name my_log_profile
+
+```azurecli
+az monitor log-profiles delete --name <profile name>
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,11 +1,11 @@
 ---
-title: "将 Operations Manager 连接到 Log Analytics | Microsoft Docs"
-description: "要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 OMS 工作区集成。"
+title: 将 Operations Manager 连接到 Log Analytics | Microsoft Docs
+description: 要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 OMS 工作区集成。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 245ef71e-15a2-4be8-81a1-60101ee2f6e6
 ms.service: log-analytics
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/10/2017
 ms.author: magoedte
 ms.openlocfilehash: 6db47c7baa0a345a32d26d56e843acd0204ae50b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>将 Operations Manager 连接到 Log Analytics
 要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与 OMS 工作区集成。  这会允许利用 OMS 的机会，同时继续使用 Operations Manager 执行以下操作：
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/11/2017
 |\*.service.opinsights.azure.com| 443||  
 |\*.blob.core.windows.net| 443| 是|  
 |\*.ods.opinsights.azure.com| 443| 是|  
-|* .azure-automation.net | 443| 是|  
+|*.azure-automation.net | 443| 是|  
 |**Operations Manager 控制台到 OMS**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -101,7 +101,7 @@ ms.lasthandoff: 12/11/2017
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 2. 展开 Operations Management Suite，并单击“**连接**”。
 3. 在“OMS 连接”视图中，单击“**配置代理服务器**”。
-4. 在“**Operations Management Suite 向导:代理服务器**”页面上，选择“**使用代理服务器访问 Operations Management Suite**”，键入包含端口号的 URL，例如 http://corpproxy:80 ，并单击“**完成**”。
+4. 在“Operations Management Suite 向导: 代理服务器”页上，选择“使用代理服务器访问 Operations Management Suite”，键入包含端口号的 URL，例如 http://corpproxy:80，并单击“完成”。
 
 如果代理服务器要求身份验证，请执行以下步骤，配置需要向管理组中 OMS 报告的受管理计算机传播的凭据和设置。
 

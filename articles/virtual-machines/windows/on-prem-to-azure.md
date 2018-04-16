@@ -1,13 +1,13 @@
 ---
-title: "从 AWS 和其他平台迁移到 Azure 中的托管磁盘 | Microsoft Docs"
-description: "使用从 AWS 等其他云或其他虚拟化平台上传的 VHD 在 Azure 中创建 VM，并利用 Azure 托管磁盘。"
+title: 从 AWS 和其他平台迁移到 Azure 中的托管磁盘 | Microsoft Docs
+description: 使用从 AWS 等其他云或其他虚拟化平台上传的 VHD 在 Azure 中创建 VM，并利用 Azure 托管磁盘。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 02dce319c055f7988355cfadbc1d63df5e268e53
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: b7fe27ed8615b9684e14276d6d0f5bf84ee5ee81
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>从 Amazon Web Services (AWS) 和其他平台迁移到 Azure 中的托管磁盘
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/07/2017
 >
 
 
-| 方案                                                                                                                         | 文档                                                                                                                       |
+| 场景                                                                                                                         | 文档                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | 拥有要使用托管磁盘迁移至 Azure VM 的现有 AWS EC2 实例。                              | [将 VM 从 Amazon Web Services (AWS) 移动到 Azure](aws-to-azure.md)                           |
 | 拥有要用作映像的来自其他虚拟化平台的 VM，以创建多个 Azure VM。 | [上传通用 VHD 并用其在 Azure 中新建 VM](upload-generalized-managed.md) |
@@ -55,8 +55,9 @@ Azure 托管磁盘无需管理存储帐户，从而简化 VM 管理。 可用性
 
 本部分有助于在 VM 和磁盘类型方面做出最佳决策。
 
+如果打算从非托管磁盘迁移到托管磁盘，则应注意具有[虚拟机参与者](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)角色的用户不能更改 VM 大小（因为它们可以预转换）。 这是因为包含托管磁盘的 VM 要求用户对 OS 磁盘具有 Microsoft.Compute/disks/write 权限。
 
-### <a name="location"></a>位置
+### <a name="location"></a>Location
 
 选择 Azure 托管磁盘的可用位置。 如果要迁移到高级托管磁盘，还请确保高级存储在计划迁移到的目标区域中可用。 有关可用位置的最新信息，请参阅 [Azure 服务（按区域）](https://azure.microsoft.com/regions/#services)。
 

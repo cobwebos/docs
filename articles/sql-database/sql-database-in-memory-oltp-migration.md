@@ -8,16 +8,16 @@ ms.reviewer: MightyPen
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 11/22/2016
+ms.date: 04/01/2018
 ms.author: jodebrui
-ms.openlocfilehash: 77e73ec1004babb5fce1e293acfade9264cd6945
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cd76f475f330c49dec737d2c4a25aa75a18b41a7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>使用内存中 OLTP 改善 SQL 数据库中的应用程序性能
-[内存中 OLTP](sql-database-in-memory.md) 可以用来改善[高级](sql-database-service-tiers.md) Azure SQL 数据库中的事务处理、数据引入的性能以及暂时性数据状况，且不需要提高定价层。 
+[内存中 OLTP](sql-database-in-memory.md) 可以用来改善[高级和业务关键层](sql-database-service-tiers.md)数据库中事务处理、数据引入和暂时性数据方案的性能，而不需要提高定价层。 
 
 > [!NOTE] 
 > 了解 [Quorum 如何使用 SQL 数据库将关键数据库的工作负荷提高一倍，并将 DTU 降低 70%](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
@@ -25,8 +25,8 @@ ms.lasthandoff: 03/16/2018
 
 请按照以下步骤在现有数据库中采用内存中 OLTP。
 
-## <a name="step-1-ensure-you-are-using-a-premium-database"></a>步骤 1：确保使用的是高级数据库
-只有高级数据库才支持内存中 OLTP。 如果返回的结果为 1（不是 0），则支持 In-Memory：
+## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>步骤 1：确保使用的是高级和业务关键层数据库
+只有高级和业务关键层数据库才支持内存中 OLTP。 如果返回的结果为 1（不是 0），则支持 In-Memory：
 
 ```
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');

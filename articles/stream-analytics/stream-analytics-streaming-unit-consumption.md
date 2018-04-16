@@ -1,24 +1,19 @@
 ---
-title: Azure 流分析：了解和调整流式处理单元 | Microsoft 文档
-description: 了解哪些因素会影响 Azure 流分析的性能。
-keywords: 流单元, 查询性能
+title: 了解和调整 Azure 流分析中的流单元
+description: 本文介绍 Azure 流分析中的流单元设置和影响性能的其他因素。
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: ''
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 4312b5f5a64048ad697ae398697da1c59a75e75c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 04/20/2017
+ms.openlocfilehash: ede0c0aa7b0e795760123246366f947889224b2d
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
@@ -121,7 +116,7 @@ ASA 中的引用数据会被加载到内存中，以便快速查找。 在当前
 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [在 Azure 流分析中创建可并行的查询](stream-analytics-parallelization.md)

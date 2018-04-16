@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/07/2018
 ms.author: glenga
-ms.openlocfilehash: 559cfee1a8116703371a5641cf4534b7ad6f7578
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d008e94186dd3c5a18c92617ebddfffa966358d5
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/08/2018
 
 扩展以 NuGet 包的形式提供，其中，包名称通常以 [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) 开头。  安装和注册绑定扩展的方式取决于函数的开发方式： 
 
-+ [在本地使用 Visual Studio 或 VS Code 进行 C# 开发](#precompiled-functions-c)
++ [在本地使用 Visual Studio 或 VS Code 进行 C# 开发](#local-c-development-using-visual-studio-or-vs-code)
 + [在本地使用 Azure Functions Core Tools](#local-development-azure-functions-core-tools)
 + [在 Azure 门户中](#azure-portal-development) 
 
@@ -635,7 +635,7 @@ public class BlobName
 
 ## <a name="functionjson-file-schema"></a>function.json 文件架构
 
-Function.json 文件架构可在 [http://json.schemastore.org/function](http://json.schemastore.org/function) 处获取。
+*function.json* 文件架构位于 [http://json.schemastore.org/function](http://json.schemastore.org/function)。
 
 ## <a name="handling-binding-errors"></a>处理绑定错误
 

@@ -9,20 +9,19 @@ ms.author: xshi
 ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0ea2dc723c674e7119b6ef38771a73ff4c11e98d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6c94701507f86f6ecab2875f952215cc3e4cc719
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="develop-an-iot-edge-solution-with-multiple-modules-in-visual-studio-code---preview"></a>使用 Visual Studio Code 中的多个模块开发 IoT Edge 解决方案 - 预览版
-可以使用 Visual Studio Code 中的多个模块开发 IoT Edge 解决方案 本教程将指导你完成创建、更新和部署一个 IoT Edge 解决方案，该解决方案只是简单地在 Visual Studio Code 中的模拟 IoT Edge 设备上输送传感器数据。 本教程介绍如何执行下列操作：
+可以使用 Visual Studio Code 中的多个模块开发 IoT Edge 解决方案 本文将指导你完成创建、更新和部署一个 IoT Edge 解决方案，该解决方案在 Visual Studio Code 中的模拟 IoT Edge 设备上通过管道传送传感器数据。 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 使用 Visual Studio Code 创建 IoT Edge 解决方案
-> * 使用 VS Code 向用于工作的 IoT Edge 解决方案添加新模块。 
-> * 将 IoT Edge 解决方案（多个模块）部署到 IoT Edge 设备
-> * 查看生成的数据
+* 使用 Visual Studio Code 创建 IoT Edge 解决方案
+* 使用 VS Code 向用于工作的 IoT Edge 解决方案添加新模块。 
+* 将 IoT Edge 解决方案（多个模块）部署到 IoT Edge 设备
+* 查看生成的数据
 
 ## <a name="prerequisites"></a>先决条件
 * 完成以下教程
@@ -67,8 +66,7 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已创建了一个具有 C# 模块的 IoT Edge 解决方案，然后你添加了一个函数模块，更新了解决方案的路由，生成了解决方案并将其部署到了模拟的 IoT Edge 设备。 接下来可以继续学习下列教程之一来了解在 VS Code 中开发 Azure IoT Edge 时的其他方案。
+接下来可以继续学习下列文章之一来了解在 Visual Studio Code 中开发 Azure IoT Edge 时的其他方案：
 
-> [!div class="nextstepaction"]
-> [在 VS Code 中调试 C# 模块](how-to-vscode-debug-csharp-module.md)
-> [在 VS Code 中调试 C# 模块](how-to-vscode-debug-azure-function.md)
+* [在 VS Code 中调试 C# 模块](how-to-vscode-debug-csharp-module.md)
+* [在 VS Code 中调试 C# 函数](how-to-vscode-debug-azure-function.md)

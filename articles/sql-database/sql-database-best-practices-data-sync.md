@@ -1,18 +1,18 @@
 ---
-title: "Azure SQL 数据同步最佳做法（预览版）| Microsoft 文档"
-description: "了解有关配置和运行 Azure SQL 数据同步（预览版）的最佳做法。"
+title: Azure SQL 数据同步最佳做法（预览版）| Microsoft 文档
+description: 了解有关配置和运行 Azure SQL 数据同步（预览版）的最佳做法。
 services: sql-database
-ms.date: 11/13/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 1c8ad4b318d52b5cb6af284b3304cfa7ad35522b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 7ce7830d853a77b54706201fa614e9f4bee637a4
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="best-practices-for-sql-data-sync-preview"></a>SQL 数据同步最佳做法（预览版） 
 
@@ -182,7 +182,7 @@ SQL 数据同步（预览版）自动预配的限制如下：
 
 在某些情况下，向客户端代理取消注册数据库可能会导致同步失败。
 
-#### <a name="scenario"></a>方案
+#### <a name="scenario"></a>场景
 
 1. 使用 SQL 数据库实例和本地 SQL Server 数据库创建与本地代理 1 关联的同步组 A。
 2. 向本地代理 2（此代理不与任何同步组关联）注册同一本地数据库。
@@ -212,7 +212,7 @@ SQL 数据同步（预览版）自动预配的限制如下：
 
 -   [使用 Azure SQL 数据同步（预览版）跨多个云和本地数据库同步数据](sql-database-sync-data.md)
 -   [安装 Azure SQL 数据同步（预览版）](sql-database-get-started-sql-data-sync.md)
--   [使用 OMS Log Analytics 监视 Azure SQL 数据同步（预览版）](sql-database-sync-monitor-oms.md)
+-   [使用 Log Analytics 监视 Azure SQL 数据同步（预览版）](sql-database-sync-monitor-oms.md)
 -   [解决 Azure SQL 数据同步（预览版）的问题](sql-database-troubleshoot-data-sync.md)  
 -   演示如何配置 SQL 数据同步（预览版）的完整 PowerShell 示例：  
     -   [使用 PowerShell 在多个 Azure SQL 数据库之间进行同步](scripts/sql-database-sync-data-between-sql-databases.md)  

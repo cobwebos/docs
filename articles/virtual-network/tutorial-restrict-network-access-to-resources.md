@@ -1,30 +1,31 @@
 ---
-title: 限制对 PaaS 资源的网络访问 - Azure 门户 | Microsoft Docs
-description: 了解如何使用 Azure 门户通过虚拟网络服务终结点限制对 Azure 资源（例如 Azure 存储和 Azure SQL 数据库）的网络访问。
+title: 限制对 PaaS 资源的网络访问 - 教程 - Azure 门户 | Microsoft Docs
+description: 本教程介绍如何使用 Azure 门户通过虚拟网络服务终结点限制对 Azure 资源（例如 Azure 存储和 Azure SQL 数据库）的网络访问。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: ''
-ms.tgt_pltfrm: virtual-network
+ms.topic: tutorial
+ms.tgt_pltfrm: virtual-networ
 ms.workload: infrastructure
 ms.date: 03/14/2018
 ms.author: jdial
-ms.custom: ''
-ms.openlocfilehash: 9a64a5c1f63dc05cba6fdfa310b694e34bdba7d1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.custom: mvc
+ms.openlocfilehash: f53544e756bde623a604513f17f9cc92c8efe42b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>使用 Azure 门户通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
+# <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>教程：使用 Azure 门户通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
-通过虚拟网络服务终结点，可将某些 Azure 服务资源限制为仅允许某个虚拟网络子网通过网络进行访问。 还可以删除对资源的 Internet 访问。 服务终结点提供从虚拟网络到受支持 Azure 服务的直接连接，使你能够使用虚拟网络的专用地址空间访问 Azure 服务。 通过服务终结点发往 Azure 资源的流量始终保留在 Microsoft Azure 主干网络上。 在本文中，学习如何：
+通过虚拟网络服务终结点，可将某些 Azure 服务资源限制为仅允许某个虚拟网络子网通过网络进行访问。 还可以删除对资源的 Internet 访问。 服务终结点提供从虚拟网络到受支持 Azure 服务的直接连接，使你能够使用虚拟网络的专用地址空间访问 Azure 服务。 通过服务终结点发往 Azure 资源的流量始终保留在 Microsoft Azure 主干网络上。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建包含一个子网的虚拟网络
@@ -33,6 +34,8 @@ ms.lasthandoff: 03/23/2018
 > * 将虚拟机 (VM) 部署到每个子网
 > * 确认从某个子网对资源的访问
 > * 确认已拒绝从某个子网和 Internet 来访问资源
+
+如果你愿意，可以使用 [Azure CLI](tutorial-restrict-network-access-to-resources-cli.md) 或 [Azure PowerShell](tutorial-restrict-network-access-to-resources-powershell.md) 完成本教程中的步骤。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -75,7 +78,7 @@ ms.lasthandoff: 03/23/2018
     |地址范围| 10.0.1.0/24|
     |服务终结点| 在“服务”下选择“Microsoft.Storage”|
 
-## <a name="restrict-network-access-to-and-from-a-subnet"></a>限制对/从某个子网的网络访问
+## <a name="restrict-network-access-for-a-subnet"></a>限制子网的网络访问
 
 1. 选择 Azure 门户左上角的“+ 创建资源”。
 2. 依次选择“网络”、“网络安全组”。
@@ -141,7 +144,7 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="restrict-network-access-to-a-resource"></a>限制对资源的网络访问
 
-对于通过为服务终结点启用的 Azure 服务创建的资源，限制对其的网络访问时所需的步骤因服务而异。 请参阅各个服务的文档来了解适用于每个服务的具体步骤。 作为示例，本文的剩余部分包括了针对 Azure 存储帐户限制网络访问的步骤。
+对于通过为服务终结点启用的 Azure 服务创建的资源，限制对其的网络访问时所需的步骤因服务而异。 请参阅各个服务的文档来了解适用于每个服务的具体步骤。 作为示例，本教程的剩余部分包括了针对 Azure 存储帐户限制网络访问的步骤。
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -292,9 +295,9 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们为虚拟网络子网启用了服务终结点。 我们已了解，可为通过多个 Azure 服务部署的资源启用服务终结点。 我们创建了一个 Azure 存储帐户并将该存储帐户限制为仅可供某个虚拟网络子网中的资源进行网络访问。 在生产虚拟网络中创建服务终结点之前，我们建议全面了解[服务终结点](virtual-network-service-endpoints-overview.md)。
+在本教程中，我们为虚拟网络子网启用了服务终结点。 我们已了解，可为通过多个 Azure 服务部署的资源启用服务终结点。 我们创建了一个 Azure 存储帐户并将该存储帐户限制为仅可供某个虚拟网络子网中的资源进行网络访问。 若要详细了解服务终结点，请参阅[服务终结点概述](virtual-network-service-endpoints-overview.md)和[管理子网](virtual-network-manage-subnet.md)。
 
-如果帐户中有多个虚拟网络，可将两个虚拟网络连接到一起，使每个虚拟网络中的资源可以相互通信。 请继续学习下一教程，了解如何连接虚拟网络。
+如果帐户中有多个虚拟网络，可将两个虚拟网络连接到一起，使每个虚拟网络中的资源可以相互通信。 若要了解如何连接虚拟网络，请继续学习下一教程。
 
 > [!div class="nextstepaction"]
 > [连接虚拟网络](./tutorial-connect-virtual-networks-portal.md)

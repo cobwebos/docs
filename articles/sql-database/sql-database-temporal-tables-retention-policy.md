@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 04/01/2018
 ms.author: bonova
-ms.openlocfilehash: 36ce6889cccbf5ae7df519c5c73846f12eed4a08
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3175236306f05831a78ae8ca01911d0c5d19f893
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>使用保留策略管理临时表中的历史数据
 与普通的表相比，临时表数据库大小的增长幅度可能更大，尤其是长时间保留历史数据时。 因此，针对历史数据创建保留策略是规划和管理每个时态表的生命周期的一个重要方面。 Azure SQL 数据库中的临时表附带了易用的保留机制，可帮助完成此任务。
@@ -102,7 +102,7 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 
 ## <a name="how-sql-database-deletes-aged-rows"></a>SQL 数据库如何删除陈旧行？
 清理过程取决于历史记录表的索引布局。 必须注意，*只能为具有聚集索引（B 树或列存储）的历史记录表配置有限期保留策略*。 对于具有有限保留期的所有时态表，系统会创建一个后台任务来执行陈旧数据清理。
-行存储（B 树）聚集索引的清理逻辑以较小的块区（最大 10K）删除陈旧行，因此可以最大程度地减轻数据库日志和 I/O 子系统的压力。 尽管清理逻辑利用所需的 B 树索引，但不一定能够保证按顺序删除超过保留期的行。 因此，*请不要对应用程序中的清理顺序有任何依赖*。
+行存储（B 树）聚集索引的清理逻辑以较小的区块（最大 10K）删除陈旧行，从而可以最大程度地减轻数据库日志和 IO 子系统的压力。 尽管清理逻辑利用所需的 B 树索引，但不一定能够保证按顺序删除超过保留期的行。 因此，*请不要对应用程序中的清理顺序有任何依赖*。
 
 针对聚集列存储的清理任务会一次性删除整个[行组](https://msdn.microsoft.com/library/gg492088.aspx)（每个行组通常包含 1 百万行），这种方式非常高效，尤其是在高速生成历史数据时。
 

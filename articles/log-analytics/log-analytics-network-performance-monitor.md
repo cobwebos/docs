@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9b3c4efc712ebe9c0fe209d2ca0478367872d3b7
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 6e81f2cdd0cd3f62d93c85c1a073e0b9df542ec7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -124,7 +124,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
    >[!NOTE] 
    > 只发现特定的专用对等互连，这些对等互连连接到与订阅关联的虚拟网络，而订阅则通过此 Log Analytics 工作区进行链接。 如果 ExpressRoute 所连接到的虚拟网络位于链接到此工作区的订阅之外，请在这些订阅中创建 Log Analytics 工作区。 使用网络性能监视器监视这些对等互连。
 
-   ![ExpressRoute 监视器”视图](media/log-analytics-network-performance-monitor/npm-express-route.png)
+   ![“ExpressRoute 监视器”视图](media/log-analytics-network-performance-monitor/npm-express-route.png)
 
    完成发现操作以后，发现的专用对等互连就会列在表中。 
 
@@ -250,7 +250,9 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在 [Log Analytics 搜索](log-analytics-log-search-new.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板的“常见查询”区域中有一些查询非常有用，可以基于这些查询创建自己的查询和报表 **** 。 
 
- 
+##<a name="pricing"></a>定价
+
+[联机](log-analytics-network-performance-monitor-pricing-faq.md)提供了有关定价的信息。
 
 ## <a name="provide-feedback"></a>提供反馈 
 

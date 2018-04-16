@@ -8,13 +8,13 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/04/2018
 ms.author: v-daljep
-ms.openlocfilehash: 0f23a76506a6692dd907a0b9fc7cfadfe7cd8f40
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7830a8a4bfc43e158069cc7cdc186e289e166751
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>使用 Intelligent Insights 排查 Azure SQL 数据库性能问题
 
@@ -52,13 +52,13 @@ Intelligent Insights 可根据查询执行等待时间、错误或超时自动�
 
 以下部分更详细地描述了前面列出的可检测性能模式。
 
-## <a name="reaching-resource-limits"></a>达到资源上限
+## <a name="reaching-resource-limits"></a>达到资源限制
 
 ### <a name="what-is-happening"></a>发生了什么
 
 这种可检测性能模式合并了各种性能问题，涉及达到可用资源限制、工作线程限制和会话限制。 检测到这种性能问题之后，诊断日志的说明字段就会指示性能问题是否与资源、工作线程或会话限制相关。
 
-SQL 数据库上的资源通常称为 [DTU 资源](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu)， 包含 CPU 和 I/O（数据和事务日志 I/O）资源的混合度量值。 如果检测到的查询性能下降是由于达到所度量资源限制而造成的，则认为出现了“达到资源限制”模式。
+SQL 数据库上的资源通常称为 [DTU 资源](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu)， 它们包含 CPU 和 IO（数据和事务日志 IO）资源的混合度量值。 如果检测到的查询性能下降是由于达到所度量资源限制而造成的，则认为出现了“达到资源限制”模式。
 
 会话限制资源表示系统只允许一定数量的 SQL 数据库并发登录。 如果连接到 SQL 数据库的应用程序达到允许的数据库并发登录数，则认为出现了此性能模式。 如果应用程序尝试使用的会话数超过了可在数据库中使用的数目，则会影响查询性能。
 
@@ -152,9 +152,9 @@ SQL 数据库的 MAXDOP 服务器配置选项用于控制并行执行同一查�
 
 Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线程处理。 该机制可保证内存中结构（包括索引、数据页以及其他内部结构）的一致性。
 
-可在 SQL 数据库中使用许多类型的闩锁。 为了简单起见，可以使用缓冲区闩锁来保护缓冲池中的内存中页。 I/O 闩锁用于保护尚未加载到缓冲池中的页。 每当在缓冲池的页中写入或读取数据时，工作线程需要首先获取该页的缓冲区闩锁。 每当工作线程尝试访问尚未在内存中缓冲池中提供的页时，就会发出 I/O 请求，以便从存储中加载所需的信息。 这种事件序列指示更严重形式的性能降低。
+可在 SQL 数据库中使用许多类型的闩锁。 为了简单起见，可以使用缓冲区闩锁来保护缓冲池中的内存中页。 IO 闩锁用于保护尚未加载到缓冲池中的页。 每当在缓冲池的页中写入或读取数据时，工作线程需要首先获取该页的缓冲区闩锁。 每当工作线程尝试访问尚未在内存中缓冲池中提供的页时，就会发出 IO 请求，以便从存储中加载所需的信息。 这种事件序列指示更严重形式的性能降低。
 
-当多个线程同时尝试获取同一内存中结构上的闩锁，从而造成查询执行的等待时间延长时，就会发生页闩锁争用。 如果在需要从存储访问数据时发生 Pagelatch I/O 争用，这段等待时间甚至会更长， 并可能会显著影响工作负荷性能。 Pagelatch 争用是线程相互等待，在多个 CPU 系统上争用资源的最常见情景。
+当多个线程同时尝试获取同一内存中结构上的闩锁，从而造成查询执行的等待时间延长时，就会发生页闩锁争用。 如果在需要从存储访问数据时发生 Pagelatch IO 争用，这段等待时间甚至会更长， 并可能会显著影响工作负荷性能。 Pagelatch 争用是线程相互等待，在多个 CPU 系统上争用资源的最常见情景。
 
 ### <a name="troubleshooting"></a>故障排除
 
@@ -162,7 +162,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 由于 Pagelatch 是 SQL 数据库的内部控制机制，因此 SQL 数据库会自动确定何时使用它。 应用程序决策（包括架构设计）可以影响因闩锁的确定性行为而导致的 Pagelatch 行为。
 
-处理闩锁争用的一个方法是将有序索引键替换为无序键，以便在索引范围内均匀分配插入内容。 通常情况下，索引中的前导列可按比例分配工作负荷。 可考虑的另一种方法是表分区。 在分区表中创建一个包含计算列的哈希分区方案，是缓解过度闩锁争用的常用方法。 如果发生 Pagelatch I/O 争用，可以引入索引来缓解此性能问题。 
+处理闩锁争用的一个方法是将有序索引键替换为无序键，以便在索引范围内均匀分配插入内容。 通常情况下，索引中的前导列可按比例分配工作负荷。 可考虑的另一种方法是表分区。 在分区表中创建一个包含计算列的哈希分区方案，是缓解过度闩锁争用的常用方法。 如果发生 Pagelatch IO 争用，可以引入索引来缓解此性能问题。 
 
 有关详细信息，请参阅 [Diagnose and resolve latch contention on SQL Server](http://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf)（诊断和解决 SQL Server 上的闩锁争用）（PDF 下载）。
 
@@ -220,7 +220,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 ### <a name="what-is-happening"></a>发生了什么
 
-这种可检测的性能模式表示这样一种数据库性能状况：尝试访问 tempDB 资源的线程存在瓶颈。 （这种状况与 I/O 不相关。）此性能问题的典型情景是数百个并发查询都在创建、使用然后删除小型 tempDB 表。 系统已检测到使用相同 tempDB 表的并发请求数出现了统计学意义上的大幅增长，影响了数据库的性能（与过去七天的性能基线相比）。
+这种可检测的性能模式表示这样一种数据库性能状况：尝试访问 tempDB 资源的线程存在瓶颈。 （这种状况与 IO 不相关。）此性能问题的典型情景是数百个并发查询都在创建、使用然后删除小型 tempDB 表。 系统已检测到使用相同 tempDB 表的并发请求数出现了统计学意义上的大幅增长，影响了数据库的性能（与过去七天的性能基线相比）。
 
 ### <a name="troubleshooting"></a>故障排除
 
@@ -234,7 +234,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 此可检测的性能模式表示当前数据库工作负荷的性能与过去七天的基线相比有所降级。 这是由于在订阅的弹性池中缺少可用的 DTU。 
 
-SQL 数据库中的资源通常称为 [DTU 资源](sql-database-what-is-a-dtu.md)，由 CPU 和 I/O（数据和事务日志 I/O）资源的混合度量值构成。 [Azure 弹性池资源](sql-database-elastic-pool.md)用作出于缩放目的而在多个数据库之间共享的可用 eDTU 资源的池。 如果弹性池中的可用 eDTU 资源不够大，无法支持池中的所有数据库，则系统就会检测到“弹性池 DTU 不足”性能问题。
+SQL 数据库中的资源通常称为 [DTU 资源](sql-database-what-is-a-dtu.md)，由 CPU 和 IO（数据和事务日志 IO）资源的混合度量值构成。 [Azure 弹性池资源](sql-database-elastic-pool.md)用作出于缩放目的而在多个数据库之间共享的可用 eDTU 资源的池。 如果弹性池中的可用 eDTU 资源不够大，无法支持池中的所有数据库，则系统就会检测到“弹性池 DTU 不足”性能问题。
 
 ### <a name="troubleshooting"></a>故障排除
 

@@ -1,26 +1,26 @@
 ---
-title: "使用 Visual Studio Code 开发 Azure Functions 并将其部署到 Azure IoT Edge | Microsoft Docs"
-description: "在 VS Code 中在不切换上下文的情况下开发 C# Azure Functions 并通过 Azure IoT Edge 进行部署"
+title: 使用 Visual Studio Code 开发 Azure Functions 并将其部署到 Azure IoT Edge | Microsoft Docs
+description: 在 VS Code 中在不切换上下文的情况下开发 C# Azure Functions 并通过 Azure IoT Edge 进行部署
 services: iot-edge
-keywords: 
+keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
 ms.date: 12/20/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 219474a4577a76f5ceb9a9efaa3c349d633de047
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 47d420b4b283b390f67719233c4bea59495a589a
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-visual-studio-code-to-develop-and-deploy-azure-functions-to-azure-iot-edge"></a>使用 Visual Studio Code 开发 Azure Functions 并将其部署到 Azure IoT Edge
 
 本文提供了有关使用 [Visual Studio Code](https://code.visualstudio.com/) 作为主要开发工具在 IoT Edge 上开发和部署 Azure Functions 的详细说明。 
 
 ## <a name="prerequisites"></a>先决条件
-本教程假设使用运行 Windows 或 Linux 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一个物理设备，或者，你可以在开发计算机上模拟 IoT Edge 设备。
+本文假设使用运行 Windows 或 Linux 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一个物理设备，或者，你可以在开发计算机上模拟 IoT Edge 设备。
 
 在开始本指南之前，请确保已完成以下教程。
 - 在 [Windows](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-windows) 或 [Linux](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux) 中在模拟设备上部署 Azure IoT Edge
@@ -44,10 +44,10 @@ ms.lasthandoff: 01/24/2018
 > 目前，IoT Edge 上的 Azure Functions 仅支持 C#。
 
 ## <a name="deploy-azure-iot-functions-in-vs-code"></a>在 VS Code 中部署 Azure IoT Functions
-在教程[部署 Azure Functions](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-function)中，你在 VS Code 中更新、生成并发布函数模块映像，然后访问 Azure 门户来部署 Azure Functions。 本部分将介绍如何使用 VS Code 来部署和监视 Azure Functions。
+在教程[部署 Azure Functions](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-function) 中，将在 VS Code 中更新、生成并发布函数模块映像，然后访问 Azure 门户来部署 Azure Functions。 本部分将介绍如何使用 VS Code 来部署和监视 Azure Functions。
 
 ### <a name="start-a-local-docker-registry"></a>启动本地 Docker 注册表
-在此教程中，可以使用任意兼容 Docker 的注册表。 可以在云中使用的两个常见 Docker 注册表服务分别是 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)和 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。 本部分使用[本地 Docker 注册表](https://docs.docker.com/registry/deploying/)，在早期开发过程中更容易使用它进行测试。
+对于本文，可以使用任何兼容 Docker 的注册表。 可以在云中使用的两个常见 Docker 注册表服务分别是 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)和 [Docker 中心](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)。 本部分使用[本地 Docker 注册表](https://docs.docker.com/registry/deploying/)，在早期开发过程中更容易使用它进行测试。
 在 VS Code **集成终端** (Ctrl + `) 中，运行以下命令启动本地注册表。  
 
 ```cmd/sh
@@ -182,7 +182,7 @@ docker run -d -p 5000:5000 --name registry registry:2
        }
    ```
    > [!NOTE]
-   > 此运行时中的声明性规则将定义这些消息流经的位置。 本教程需要两个路由。 第一个路由会通过“input1”终结点（该终结点是通过 FilterMessages 处理程序配置的终结点）将消息从温度传感器传输到筛选器函数。 第二个路由会将消息从筛选器函数传输到 IoT 中心。 在此路由中，upstream 是一个特殊目的地，它告诉 Edge 中心将消息发送到 IoT 中心。
+   > 此运行时中的声明性规则将定义这些消息流经的位置。 本文需要两个路由。 第一个路由会通过“input1”终结点（该终结点是通过 FilterMessages 处理程序配置的终结点）将消息从温度传感器传输到筛选器函数。 第二个路由会将消息从筛选器函数传输到 IoT 中心。 在此路由中，upstream 是一个特殊目的地，它告诉 Edge 中心将消息发送到 IoT 中心。
 
 3. 保存此文件。
 4. 在命令面板中，选择 **Edge: Create deployment for Edge device**。 然后，选择 IoT Edge 设备 ID 来创建部署。 或者，在设备列表中右键单击该设备 ID 并选择“为 Edge 设备创建部署”。
@@ -202,7 +202,4 @@ docker run -d -p 5000:5000 --name registry registry:2
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已在 VS Code 中在 IoT Edge 上创建了一个 Azure 函数，并将其部署到了 IoT Edge 设备。 接下来可以继续学习下列教程之一来了解在 VS Code 中开发 Azure IoT Edge 时的其他方案。
-
-> [!div class="nextstepaction"]
-> [在 VS Code 中调试 Azure Functions](how-to-vscode-debug-azure-function.md)
+[在 VS Code 中调试 Azure Functions](how-to-vscode-debug-azure-function.md)

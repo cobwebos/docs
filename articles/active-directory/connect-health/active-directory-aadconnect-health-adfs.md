@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad8ed320a8dd91ea83dbaf71e2e9514b4df4cdb5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 630a633cf8657d43d6416d316928830634c9bf48
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 AD FS
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 AD FS 基础结构。 有关使用 Azure AD Connect Health 监视 Azure AD Connect（同步）的信息，请参阅 [使用用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)。此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)。
@@ -109,7 +109,7 @@ Azure AD Connect Health for ADFS 提供一份报告，内容有关因为用户�
 | 用户 ID |显示使用的用户 ID。 此值是用户键入的内容，在某些情况下是使用的错误用户 ID。 |
 | 失败尝试次数 |显示该特定用户 ID 的尝试失败总次数。 该表已按最多失败尝试次数的降序排序。 |
 | 上次失败时间 |显示上次发生失败时的时间戳。 |
-| 上次失败 IP |显示最后一个错误请求中的客户端 IP 地址。 |
+| 上次失败 IP |显示最后一个错误请求中的客户端 IP 地址。 如果在此值中看到多个 IP 地址，则可能是因为其中包括了转发客户端 IP 以及用户上一次尝试的请求 IP。  |
 
 > [!NOTE]
 > 此报告每隔 12 小时以该段时间内收集的新信息自动进行更新。 因此，报告中不包括过去 12 小时内的登录尝试。
@@ -191,11 +191,14 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 1. 为何在报表中发现专用 IP 地址范围？  <br />
 专用 IP 地址（<i>10.x.x.x、172.x.x.x 和 192.168.x.x</i>）和 Exchange IP 地址会在筛选后在 IP 允许列表中标记为 True。 如果看到专用 IP 地址范围，则很可能是因为外部负载均衡器在将请求传递给 Web 应用程序代理服务器时未发送客户端 IP 地址。
 
-2. 如何才能阻止 IP 地址？  <br />
+2. 为何在报表中出现负载均衡器 IP 地址？  <br />
+如果出现负载均衡器 IP 地址，很可能是因为外部负载均衡器在将请求传递给 Web 应用程序代理服务器时未发送客户端 IP 地址。 请正确配置负载均衡器，使之传递转发客户端 IP 地址。 
+
+3. 如何才能阻止 IP 地址？  <br />
 应该将标识的恶意 IP 地址添加到防火墙，或者在 Exchange 中进行阻止。   <br />
 对于 AD FS 2016 + 1803.C+ QFE，可以直接在 AD FS 中阻止 IP 地址。 
 
-3. 为何此报表中看不到任何项目？ <br />
+4. 为何此报表中看不到任何项目？ <br />
    - 失败的登录活动数未超出阈值设置。 
    - 确保在 AD FS 服务器列表中没有活动的“运行状况服务不是最新的”警报。  详细了解[如何排查此警报问题](active-directory-aadconnect-health-data-freshness.md)。
    - AD FS 场中未启用审核。

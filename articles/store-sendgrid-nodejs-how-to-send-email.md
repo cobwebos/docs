@@ -1,11 +1,11 @@
 ---
-title: "如何使用 SendGrid 电子邮件服务 (Node.js) | Microsoft Docs"
-description: "了解如何在 Azure 上使用 SendGrid 电子邮件服务发送电子邮件。 代码示例用 Node.js API 编写。"
-services: 
+title: 如何使用 SendGrid 电子邮件服务 (Node.js) | Microsoft Docs
+description: 了解如何在 Azure 上使用 SendGrid 电子邮件服务发送电子邮件。 代码示例用 Node.js API 编写。
+services: ''
 documentationcenter: nodejs
 author: erikre
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: cac444b4-26b0-45ea-9c3d-eca28d57dacb
 ms.service: multiple
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: 327cea3a24cc47a9cc463b37cc2346ebc475ef7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>如何使用 SendGrid 从 Node.js 发送电子邮件
 本指南演示了如何在 Azure 上使用 SendGrid 电子邮件服务执行常见编程任务。 相关示例是使用 Node.js API 编写的。 涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器**和**更新属性**。 有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤](#next-steps)部分。
@@ -161,7 +161,7 @@ SendGrid 可通过使用筛选器来提供其他电子邮件功能。 可将这�
     sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>如何：更新电子邮件属性
-可使用 **set** 属性**替代一些电子邮件属性，或使用 **add** 属性**追加一些电子邮件属性。 例如，可使用以下命令添加更多收件人：
+可使用 **set*Property*** 替代一些电子邮件属性，或使用 **add*Property*** 追加一些电子邮件属性。 例如，可使用以下命令添加更多收件人：
 
     email.addTo('jeff@contoso.com');
 

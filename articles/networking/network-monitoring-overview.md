@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 7b9f42607f313f5570f414e810eafc6775ea18b9
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 306d0e57449de41080d5473034e585f772771d51
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
 
@@ -60,9 +60,11 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 * 自动检测与你的订阅关联的 ER 线路
 * 检测从本地到你的云应用程序的网络拓扑
-* 容量规划，利用率分析
+* 每个虚拟网络的容量规划、利用率分析和带宽利用率
 * 针对主要路径和辅助路径进行监视并发出警报
 * 检测与 VNet 的连接的降级
+
+![显示各区域流量的地图](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
 有关详细信息，请参阅以下文章：
 
@@ -116,7 +118,6 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 相关链接：
 * [博客文章](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/)、[文档](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="next-steps"></a>后续步骤
+## <a name="miscellaneous"></a>其他
 
-* [配置网络性能监视器](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor)
-* [为 ExpressRoute 配置网络性能监视器](../expressroute/how-to-npm.md)
+* [新定价](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)

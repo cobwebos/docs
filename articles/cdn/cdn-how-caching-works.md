@@ -4,7 +4,7 @@ description: 缓存即在本地存储数据的过程，以便将来可以更快�
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: ''
+manager: akucer
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
-ms.author: v-deasim
-ms.openlocfilehash: 26a0478f8713cb3584045f59c181c0a38331ea97
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: rli; v-deasim
+ms.openlocfilehash: 88c1b98a9dcaa1d22cdc1be3853b1fa7116c8a48
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="how-caching-works"></a>缓存工作原理
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 04/03/2018
 ## <a name="cache-directive-headers"></a>缓存指令标头
 
 > [!IMPORTANT]
-> 默认情况下，针对 DSA 进行了优化的 Azure CDN 终结点将忽略缓存指令标头，绕过缓存。 对于 **Verizon 的 Azure CDN 标准版**和 **Akamai 的 Azure CDN 标准版**配置文件，可以使用 [CDN 缓存规则](cdn-caching-rules.md)启用缓存，来调整 Azure CDN 终结点处理这些标头的方式。 对于 **Verizon 的 Azure CDN 高级版**配置文件，请使用[规则引擎](cdn-rules-engine.md)来启用缓存。
+> 默认情况下，针对 DSA 进行了优化的 Azure CDN 终结点将忽略缓存指令标头，绕过缓存。 对于 **Verizon 提供的标准 Azure CDN** 和 **Akamai 提供的标准 Azure CDN** 配置文件，可以使用 [CDN 缓存规则](cdn-caching-rules.md)启用缓存，来调整 Azure CDN 终结点处理这些标头的方式。 仅对于 **Verizon 提供的高级 Azure CDN** 配置文件，可以使用[规则引擎](cdn-rules-engine.md)来启用缓存。
 
 Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时间和缓存共享。
 
@@ -95,14 +95,14 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 当缓存过时时，使用 HTTP 缓存验证程序将文件的缓存版本与源服务器上的版本进行比较。 **Verizon 的 Azure CDN** 默认支持 `ETag` 和 `Last-Modified` 验证程序，而 **Akamai 的 Azure CDN** 默认仅支持 `Last-Modified`。
 
 **ETag：**
-- Verizon 中的 Azure CDN 默认使用 `ETag`，而 Akamai 中的 Azure CDN 则不使用。
+- Verizon 提供的 Azure CDN 默认使用 `ETag`，而 Akamai 提供的 Azure CDN 则不使用。
 - `ETag` 为每个文件和文件版本定义唯一字符串。 例如，`ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`。
 - 在 HTTP 1.1 中引入，并且比 `Last-Modified` 更新。 当很难确定上次修改日期时，会非常有用。
 - 支持强验证和弱验证，不过，Azure CDN 仅支持强验证。 对于强验证，两种资源表示形式的每个字节都必须相同。 
 - 缓存通过在请求中发送带有一个或多个 `ETag` 验证程序的 `If-None-Match` 标头来验证使用 `ETag` 的文件。 例如，`If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`。 如果服务器的版本与列表中的 `ETag` 验证程序相匹配，则在其响应中发送状态代码 304（未修改）。 如果版本不同，则服务器响应状态代码 200（确定）和更新后的资源。
 
 **Last-Modified：**
-- 对于 **Verizon 的 Azure CDN（仅限）**，如果 `ETag` 不是 HTTP 响应的一部分，则使用 `Last-Modified`。 
+- 仅对于 **Verizon 提供的 Azure CDN**，如果 `ETag` 不是 HTTP 响应的一部分，则使用 `Last-Modified`。 
 - 指定源服务器已确定上次修改资源的日期和时间。 例如，`Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`。
 - 缓存通过在请求中发送带有日期和时间的 `If-Modified-Since` 标头来验证使用 `Last-Modified` 的文件。 源服务器将该日期与最新资源的 `Last-Modified` 标头进行比较。 如果自指定时间以来未修改该资源，则服务器在其响应中返回状态代码 304（未修改）。 如果已修改该资源，则服务器返回状态代码 200（确定）和更新后的资源。
 

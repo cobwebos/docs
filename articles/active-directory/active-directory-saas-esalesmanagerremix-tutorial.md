@@ -1,6 +1,6 @@
 ---
-title: "教程：将 Azure Active Directory 与 E Sales Manager Remix 集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 E Sales Manager Remix 之间配置单一登录。"
+title: 教程：将 Azure Active Directory 与 E Sales Manager Remix 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 E Sales Manager Remix 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeedes
 ms.openlocfilehash: 200d87b950ac76c85513bc11da2798562e48bec3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>将 Azure Active Directory 与 E Sales Manager Remix 集成
 
@@ -155,9 +155,9 @@ ms.lasthandoff: 03/08/2018
     
     b. 在“协作项”部分的下拉列表中选择“电子邮件”。
 
-    c. 在“协作项”框中，粘贴从 Azure 门户复制的声明值（即 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**）。
+    c. 在“协作项”框中，粘贴先前从 Azure 门户复制的声明值（即：**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**）。
 
-    d.单击“下一步”。 在“颁发者(实体 ID)”框中，粘贴前面从 Azure 门户的”E Sales Manager Remix 域和 URL”部分复制的标识符值。
+    d. 在“颁发者(实体 ID)”框中，粘贴前面从 Azure 门户的”E Sales Manager Remix 域和 URL”部分复制的标识符值。
 
     e. 若要上传从 Azure 门户下载的证书，请选择“文件选择”。
 
@@ -201,7 +201,7 @@ ms.lasthandoff: 03/08/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 选择“创建”。
+    d. 选择**创建**。
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>创建 E Sales Manager Remix 测试用户
 
@@ -225,7 +225,7 @@ ms.lasthandoff: 03/08/2018
     
     c. 如果启用了 SAML，则管理员无法从登录页登录。 选中“管理员登录”复选框，向用户授予管理员登录特权。
 
-    d.单击“下一步”。 选择“注册”。
+    d. 选择“注册”。
 
 5. 将来若要以管理员身份登录，请以具有管理员权限的用户身份登录，然后在右上角选择“到管理员菜单”。
 

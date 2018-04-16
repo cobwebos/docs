@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 624a40b1e40db6ceac9c567926b3932449e7bf7e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 12f63bc42f8450f086ed9f0e8d598c9c91a0c3d4
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>了解 Azure AD B2C 自定义策略初学者包的自定义策略
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/23/2018
 3.  最后，第三个部分列出可从用户收集的、在目录中存储的、登录期间在令牌中发送的任何其他可选声明。 可在此部分添加要从用户收集的和/或在令牌中发送的新声明类型。
 
 > [!IMPORTANT]
-> 声明架构包含针对某些声明（例如密码和用户名）的限制。 信任框架 (TF) 策略像处理其他任何声明提供程序一样处理 Azure AD，其所有限制在高级策略中建模。 可以通过修改策略来添加更多限制，或者对具有自身限制的凭据存储使用另一个声明提供程序。
+> 声明架构包含针对某些声明（例如密码和用户名）的限制。 信任框架 (TF) 策略像处理其他任何声明提供程序一样处理 Azure AD，其所有限制在自定义策略中建模。 可以通过修改策略来添加更多限制，或者对具有自身限制的凭据存储使用另一个声明提供程序。
 
 下面列出了可用的声明类型。
 
@@ -51,12 +51,12 @@ ms.lasthandoff: 03/23/2018
 |-------------|-------------|
 | *UserId* | 用户名 |
 | *signInName* | 登录名 |
-| *tenantId* | 用户对象在 Azure AD B2C Premium 中的租户标识符 (ID) |
-| *objectId* | 用户对象在 Azure AD B2C Premium 中的对象标识符 (ID) |
+| *tenantId* | 用户对象在 Azure AD B2C 中的租户标识符 (ID) |
+| *objectId* | 用户对象在 Azure AD B2C 中的对象标识符 (ID) |
 | *password* | 密码 |
 | *newPassword* | |
 | *reenterPassword* | |
-| *passwordPolicies* | Azure AD B2C Premium 用来确定密码强度、过期时间等的密码策略。 |
+| *passwordPolicies* | Azure AD B2C 用来确定密码强度、到期时间等的密码策略。 |
 | *sub* | |
 | *alternativeSecurityId* | |
 | *identityProvider* | |
@@ -66,9 +66,9 @@ ms.lasthandoff: 03/23/2018
 | *email* | 用于联系用户的电子邮件地址 |
 | *signInNamesInfo.emailAddress* | 用户登录时可以使用的电子邮件地址 |
 | *otherMails* | 可用于联系用户的电子邮件地址 |
-| *userPrincipalName* | Azure AD B2C Premium 中存储的用户名 |
+| *userPrincipalName* | Azure AD B2C 中存储的用户名 |
 | *upnUserName* | 用于创建用户主体名称的用户名 |
-| *mailNickName* | Azure AD B2C Premium 中存储的用户邮件昵称 |
+| *mailNickName* | Azure AD B2C 中存储的用户邮件昵称 |
 | *newUser* | |
 | *executed-SelfAsserted-Input* | 用于指定是否从用户收集了属性的声明 |
 | *executed-PhoneFactor-Input* | 用于指定是否从用户收集了新电话号码的声明 |

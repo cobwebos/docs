@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 2c677a1dea001c6a414304fbaa683c3787b355b1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fc859f3aa34531133b7a21e36591b011c63d511c
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>使用 Azure 报告工具来阐述对个人数据的保护
 
 本文介绍如何使用 Azure 报告服务和技术来帮助保护个人数据的隐私。 此信息可用于遵守行业或政府法规，如一般保护数据条例 (GDPR)。
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 总部位于美国的一家大型邮轮公司正在拓展其运营，以便在地中海、亚得里亚海和波罗的海以及英属岛屿提供路线。 为帮助实现这些目的，该公司并购了意大利、德国、丹麦和英国的几家小型邮轮公司。
 
@@ -95,13 +95,13 @@ Log Analytics 中的分析工具（例如日志搜索、视图和解决方案）
 
 #### <a name="how-do-i-use-log-analytics"></a>如何使用 Log Analytics？
 
-可在任何 Web 浏览器中通过 OMS 门户或 Azure 门户访问 Log Analytics。 Log Analytics 提供用于快速检索和整合存储库中数据的查询语言。 可以创建并保存日志搜索，以便直接在门户中分析数据。
+可在任何 Web 浏览器中通过 OMS 门户或 Azure 门户访问 Log Analytics。 Log Analytics 提供用于快速检索和整合 Log Analytics 工作区中数据的查询语言。 可以创建并保存日志搜索，以便直接在门户中分析数据。
 
 若要在 Azure 门户中创建 Log Analytics 工作区，请执行以下操作：
 
 1. 在 Marketplace 中的服务列表内选择“Log Analytics”。
 
-2. 选择“创建”，指定 OMS 工作区的名称，并选择订阅、资源组、位置和定价层。
+2. 选择“创建”，指定 Log Analytics 工作区的名称，并选择订阅、资源组、位置和定价层。
 
 3. 单击“确定”显示工作区列表。
 

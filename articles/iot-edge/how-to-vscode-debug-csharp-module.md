@@ -9,22 +9,19 @@ ms.author: xshi
 ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c2a1acd2c249bdbc92119bc92f055b095f318f00
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 65f2fb4526f1048ae88193f85a552a2202afa1d9
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="use-visual-studio-code-to-debug-a-c-module-with-azure-iot-edge"></a>使用 Visual Studio Code 通过 Azure IoT Edge 调试 C# 模块
 本文提供了有关使用 [Visual Studio Code](https://code.visualstudio.com/) 作为主要开发工具来调试 Azure IoT Edge 模块的详细说明。
 
 ## <a name="prerequisites"></a>先决条件
-本教程假设使用运行 Windows 或 Linux 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一个物理设备，也可以在开发计算机上模拟 IoT Edge 设备。
+本文假设使用运行 Windows 或 Linux 的计算机或虚拟机作为开发计算机。 IoT Edge 设备可以是另一个物理设备，也可以在开发计算机上模拟 IoT Edge 设备。
 
-在开始阅读本指南之前，请完成以下教程：
-- [使用 Visual Studio Code 中的多个模块开发 IoT Edge 解决方案](tutorial-multiple-modules-in-vscode.md)
-
-完成前面的教程后，应该已准备好下列项：
+在按照本文中的指导进行操作之前，请先完成[使用 Visual Studio Code 中的多个模块开发 IoT Edge 解决方案](tutorial-multiple-modules-in-vscode.md)中的步骤。 然后，应准备好以下项：
 - 在开发计算机上运行的一个本地 Docker 注册表。 对于原型和测试用途，建议使用本地 Docker 注册表。 可以在每个模块文件夹的 `module.json` 文件中更新容器注册表。
 - 包含 C# 模块子文件夹的 IoT Edge 解决方案项目工作区。
 - 包含最新模块代码的 `Program.cs` 文件。
@@ -55,8 +52,5 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已创建了一个 IoT Edge 模块并部署了它以用于调试。 在 VS Code 中开始对其进行调试。 若要在 VS Code 中开发 Azure IoT Edge 时了解其他方案，请参阅： 
-
-> [!div class="nextstepaction"]
-> [使用 Visual Studio Code 中的多个模块开发 IoT Edge 解决方案](tutorial-multiple-modules-in-vscode.md)
+[使用 Visual Studio Code 通过 Azure IoT Edge 调试 Azure Functions](how-to-vscode-debug-azure-function.md)
 

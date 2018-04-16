@@ -1,24 +1,19 @@
 ---
-title: 流分析中常见使用模式的查询示例 | Microsoft 文档
-description: 常见的 Azure 流分析查询模式
-keywords: 查询示例
+title: Azure 流分析中的常见查询模式
+description: 本文介绍了在 Azure 流分析作业中很有用的多个常见查询模式和设计。
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 6b9a7d00-fbcc-42f6-9cbb-8bbf0bbd3d0e
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 08/08/2017
+manager: kfile
 ms.author: jeanb
-ms.openlocfilehash: 9632a77afff6ba47d6ce80457e02f1f6194362a1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 08/08/2017
+ms.openlocfilehash: b929eaf17255210a5c813e3e91478f9202941b64
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>常用流分析使用模式的查询示例
 ## <a name="introduction"></a>介绍
@@ -580,7 +575,7 @@ WHERE
 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

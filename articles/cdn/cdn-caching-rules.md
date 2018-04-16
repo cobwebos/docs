@@ -4,7 +4,7 @@ description: 可以使用 CDN 缓存规则全局性地和根据条件（例如 U
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: ''
+manager: akucer
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
-ms.author: v-deasim
-ms.openlocfilehash: 735978a0986b2b16b4f96faca78c06d798915002
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: rli; v-deasim
+ms.openlocfilehash: 60693b919fad6808bfe60b504d2a70caf80fbe48
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>使用缓存规则控制 Azure CDN 缓存行为
 
 > [!NOTE] 
-> 缓存规则仅适用于 **Azure CDN from Verizon Standard** 和 **Azure CDN from Akamai Standard**。 对于 **Azure CDN from Verizon Premium**，可以在“管理”门户中使用 [Azure CDN 规则引擎](cdn-rules-engine.md)来获得类似的功能。
+> 缓存规则仅适用于 **Verizon 提供的标准 Azure CDN** 和 **Akamai 提供的标准 Azure CDN**。 对于 **Verizon 提供的高级 Azure CDN**，可以在“管理”门户中使用 [Azure CDN 规则引擎](cdn-rules-engine.md)来获得类似的功能。
  
 Azure 内容交付网络 (CDN) 提供了两种方法来控制文件的缓存方式： 
 

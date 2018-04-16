@@ -1,8 +1,8 @@
 ---
-title: "在 OMS Log Analytics 中收集 Linux 应用程序性能数据 | Microsoft Docs"
-description: "本文提供了有关对用于 Linux 的 OMS 代理进行配置以收集 MySQL 和 Apache HTTP Server 的性能计数器的详细信息。"
+title: 在 OMS Log Analytics 中收集 Linux 应用程序性能数据 | Microsoft Docs
+description: 本文提供了有关对用于 Linux 的 OMS 代理进行配置以收集 MySQL 和 Apache HTTP Server 的性能计数器的详细信息。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.openlocfilehash: 04ea6f728e59ec8b47e54fe45e1adc6cbbfb85ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>在 Log Analytics 中收集 Linux 应用程序的性能计数器 
 本文提供了有关对[用于 Linux 的 OMS 代理](https://github.com/Microsoft/OMS-Agent-for-Linux)进行配置以收集特定应用程序的性能计数器的详细信息。  本文中包括的应用程序有：  
@@ -76,7 +76,7 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 
 下表提供了有关 mycimprovauth 的使用语法的详细信息。
 
-| 操作 | 示例 | 说明
+| Operation | 示例 | 说明
 |:--|:--|:--|
 | autoupdate *false\|true* | mycimprovauth autoupdate false | 设置在重新启动或更新时是否会自动更新身份验证文件。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | 在 MySQL OMI 身份验证文件中设置默认实例。<br>应当以纯文本输入密码字段 - MySQL OMI 身份验证文件中的密码将是 Base 64 编码的。 |

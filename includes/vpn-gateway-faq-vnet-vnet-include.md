@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 04/05/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d562e58b86a6d5c18b10683dc4c14cf9c28c809b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 66ff1e2e02728e05cb0aeedce90de1882a8804ce
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 VNet 到 VNet 连接常见问题解答适用于 VPN 网关连接。 若要了解 VNet 对等互连，请参阅[虚拟网络对等互连](../articles/virtual-network/virtual-network-peering-overview.md)
 
@@ -23,6 +23,10 @@ VNet 到 VNet 连接常见问题解答适用于 VPN 网关连接。 若要了解
 ### <a name="does-vnet-to-vnet-traffic-travel-across-the-internet"></a>VNet 到 VNet 流量是否流经 Internet？
 
 不会。 VNet 到 VNet 流量通过 Microsoft Azure 主干而不是 Internet 传输。
+
+### <a name="can-i-establish-a-vnet-to-vnet-connection-across-aad-tenants"></a>是否可以跨 AAD 租户建立 VNet 到 VNet 连接？
+
+是的。可以使用 Azure VPN 网关跨 AAD 租户进行 VNet 到 VNet 连接。
 
 ### <a name="is-vnet-to-vnet-traffic-secure"></a>VNet 到 VNet 通信安全吗？
 

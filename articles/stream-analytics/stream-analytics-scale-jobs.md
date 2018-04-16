@@ -1,31 +1,25 @@
 ---
-title: 扩展流分析作业以增加吞吐量 | Microsoft 文档
-description: 了解如何通过配置输入分区、细化查询定义和设置作业流式处理单位来扩展流分析作业。
-keywords: 数据流式处理, 流数据处理, 优化分析
+title: Azure 流分析作业的纵向扩展和横向扩展
+description: 本文介绍如何通过分布输入数据、优化查询以及设置作业流单元来缩放流分析作业。
 services: stream-analytics
-documentationcenter: ''
 author: JSeb225
-manager: ryanw
-ms.assetid: 7e857ddb-71dd-4537-b7ab-4524335d7b35
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/22/2017
 ms.author: jeanb
-ms.openlocfilehash: 2e0487a9e4cd6346312c6817ef2768556cba72ba
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/22/2017
+ms.openlocfilehash: 1438ffa34652268572fe89dc63583cc25607d722
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="scale-azure-stream-analytics-jobs-to-increase--throughput"></a>扩展 Azure 流分析作业以增加吞吐量
+# <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>扩展 Azure 流分析作业以增加吞吐量
 本文介绍如何优化流分析查询，增加流分析作业的吞吐量。 可以使用以下指南来扩展作业，以便处理较高负载并充分利用更多的系统资源（如更多带宽、更多 CPU 资源、更多内存）。
 作为先决条件，你可能需要阅读以下文章：
 -   [了解和调整流式处理单元](stream-analytics-streaming-unit-consumption.md)
 -   [创建可并行的作业](stream-analytics-parallelization.md)
-
 
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>案例 1 – 在各个输入分区中，查询本质上是完全可并行的
 如果在各个输入分区中，查询本质上是完全可并行的，则可以按照以下步骤操作：
@@ -40,7 +34,6 @@ ms.lasthandoff: 03/30/2018
 >[!Note]
 > 选择适当数量的流式处理单元：由于流分析为每个添加的 6 SU 创建一个处理节点，因此，最好将节点数作为输入分区数的除数，以便分区可以均匀分布在各节点上。
 > 例如，你已经度量出 6 SU 作业可以实现 4 MB/秒的处理速率，且输入分区计数为 4。 可以选择使用 12 SU 来运行作业，以达到大约 8 MB/秒的处理速率，或使用 24 SU 来实现 16 MB/秒的处理速率。 然后，你可以决定何时增加作业的 SU 数量以及增加至多少，以作为输入速率的一个函数。
-
 
 
 ## <a name="case-2---if-your-query-is-not-embarrassingly-parallel"></a>案例 2 - 如果查询不是易并行。
@@ -150,7 +143,7 @@ ms.lasthandoff: 03/30/2018
 ![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

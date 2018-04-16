@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 030c6fbfb5eb76a745a1089acab54e74ce7a01e3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: febeb2b7e6ada69db78cb0553b4fa90874f5f2eb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>教程：在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
 本教程是一个系列中的第四部分， 介绍了使用 Application Insights 针对 Service Fabric 群集上运行的 ASP.NET Core 应用程序设置监视和诊断的步骤。 我们会从本教程第一部分（即[构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)）开发的应用程序中收集遥测数据。 
@@ -89,8 +89,12 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
 1. 右键单击解决方案资源管理器顶部的“解决方案 'Voting'”，然后单击“为解决方案管理 NuGet 包...”。
 2. 单击“NuGet - 解决方案”窗口顶部浏览菜单中的“浏览”，然后勾选搜索栏旁边的“包括预发行版”框。
 3. 搜索 `Microsoft.ApplicationInsights.ServiceFabric.Native`，然后单击相应的 NuGet 包。
+
+>[!NOTE]
+>可能需要采用类似的方式安装 Microsoft.ServiceFabric.Diagnistics.Internal 包，前提是此包在安装 Application Insights 包之前未预先安装
+
 4. 在右侧单击应用程序中两项服务旁边的复选框“VotingWeb”和“VotingData”，然后单击“安装”。
-    ![AI 注册完成](./media/service-fabric-tutorial-monitoring-aspnet/aisdk-sf-nuget.png)
+    ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
 5. 在弹出的“审阅更改”对话框中单击“确定”，接受“接受许可证”中的条款。 这样即可将 NuGet 添加到服务。
 6. 现在需在两个服务中设置遥测初始值设定项。 为此，请打开“VotingWeb.cs”和“VotingData.cs”。 对这两个文件执行下述两项步骤：
     1. 在每个 \<ServiceName>.cs 顶部添加下面这两个 using 语句：
@@ -114,6 +118,7 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
                 .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseStartup<Startup>()
+        .UseApplicationInsights()
         .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
         .UseUrls(url)
         .Build();
@@ -137,6 +142,19 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
         .Build();
     ```
 
+仔细进行检查，确保在两个文件中调用 `UseApplicationInsights()` 方法，如上所示。 
+
+>[!NOTE]
+>此示例应用使用 http 供服务通信。 如果使用 Service Remoting V2 来开发应用，则需在以前添加代码的位置添加以下代码行
+
+```csharp
+ConfigureServices(services => services
+    ...
+    .AddSingleton<ITelemetryModule>(new ServiceRemotingDependencyTrackingTelemetryModule())
+    .AddSingleton<ITelemetryModule>(new ServiceRemotingRequestTrackingTelemetryModule())
+)
+```
+
 此时可以部署应用程序了。 单击顶部的“开始”（或 F5），Visual Studio 就会生成应用程序并将其打包，设置本地群集，然后向其部署应用程序。 
 
 应用程序部署完以后，请访问 [localhost:8080](localhost:8080)，其中应该可以看到 Voting 单页应用程序示例。 投票选择各种不同的项目，以便创建一些示例数据和遥测 - 我投票选择甜点！
@@ -147,9 +165,7 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
 
 ## <a name="view-telemetry-and-the-app-map-in-application-insights"></a>在 Application Insights 中查看遥测和应用映射 
 
-转到 Azure 门户中的 Application Insights 资源，在资源的左侧导航栏的“配置”下单击“预览版”。 在可用预览版的列表中，将“多角色应用程序映射”设置为“启用”。
-
-![AI 启用 AppMap](./media/service-fabric-tutorial-monitoring-aspnet/ai-appmap-enable.png)
+在 Azure 门户中转到 Application Insights 资源。
 
 单击“概览”，回到资源的登陆页。 然后单击顶部的“搜索”，查看传入的跟踪。 跟踪显示在 Application Insights 中需要数分钟。 如果看不到任何内容，请等待一会儿，然后单击顶部的“刷新”按钮。
 ![AI 查看跟踪](./media/service-fabric-tutorial-monitoring-aspnet/ai-search.png)
@@ -160,9 +176,9 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
 
 ![AI 跟踪详细信息](./media/service-fabric-tutorial-monitoring-aspnet/trace-details.png)
 
-另外，由于已启用应用映射，因此在“概览”页上单击“应用映射”图标时，会显示已连接的两个服务。
+另外，可以单击“概览”页中左侧菜单上的“应用程序映射”，或者单击“应用映射”图标，转到显示两个服务已连接的应用映射。
 
-![AI 跟踪详细信息](./media/service-fabric-tutorial-monitoring-aspnet/app-map.png)
+![AI 跟踪详细信息](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
 可以通过应用映射更好地了解应用程序拓扑，尤其是在开始添加多个不同的一起运行的服务时。 也可通过它来获取有关请求成功率的基本数据，对失败的请求进行诊断，了解问题之所在。 若要详细了解如何使用应用映射，请参阅 [Application Insights 中的应用程序映射](../application-insights/app-insights-app-map.md)。
 

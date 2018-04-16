@@ -1,5 +1,5 @@
 ---
-title: 监视 XTP 内存中存储 | Microsoft 文档
+title: 监视 XTP 内存中存储 | Microsoft Docs
 description: 估算和监视 XTP 内存中存储用量与容量；解决容量错误 41823
 services: sql-database
 author: jodebrui
@@ -7,26 +7,26 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: c1adc6e98f7d101a6e5f3227f44b0035d9b9d157
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0802a3b51847236efb64e628ed259dc7776bac4e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>监视内存中 OLTP 存储
-使用[内存中 OLTP](sql-database-in-memory.md) 时，内存优化表中的数据和表变量将驻留在内存中 OLTP 存储内。 每个高级服务层都有最大的内存中 OLTP 存储大小，详见文档[单一数据库资源限制](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels)和[弹性池资源限制](sql-database-resource-limits.md#elastic-pool-change-storage-size)。 一旦超过此限制，可能会导致插入和更新操作失败，出现错误 41823（针对独立数据库）和错误 41840（针对弹性池）。 到时，需要删除数据以回收内存，或升级数据库的性能层。
+使用[内存中 OLTP](sql-database-in-memory.md) 时，内存优化表中的数据和表变量将驻留在内存中 OLTP 存储内。 每个高级和业务关键服务层都有最大的内存中 OLTP 存储大小，详见文档[基于 DTU 的资源限制](sql-database-dtu-resource-limits.md)和[基于 vCore 的资源限制](sql-database-vcore-resource-limits.md)。 一旦超过此限制，可能会导致插入和更新操作失败，出现错误 41823（针对独立数据库）和错误 41840（针对弹性池）。 到时，需要删除数据以回收内存，或升级数据库的性能层。
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>确定数据是否在内存中 OLTP 存储容量限制范围内
-确定不同高级服务层的存储限制。 请参阅[单一数据库资源限制](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels)和[弹性池资源限制](sql-database-resource-limits.md#elastic-pool-change-storage-size)。
+确定不同服务层的存储上限。 请参阅[基于 DTU 的资源限制](sql-database-dtu-resource-limits.md)和[基于 vCore 的资源限制](sql-database-vcore-resource-limits.md)。
 
 估计内存优化表的内存要求，如同在 Azure SQL 数据库中估计 SQL Server 的内存要求一样。 花费几分钟时间查看 [MSDN](https://msdn.microsoft.com/library/dn282389.aspx) 上的相关文章。
 
 表和表变量行以及索引都将计入最大用户数据大小。 此外，ALTER TABLE 需要足够的空间来创建新版的完整表及其索引。
 
 ## <a name="monitoring-and-alerting"></a>监视和警报
-可以在 [Azure 门户](https://portal.azure.com/)中，通过性能层的存储限制百分比来监视内存中存储用量： 
+可以在 [Azure 门户](https://portal.azure.com/)中，通过性能层的存储上限百分比来监视内存中存储用量： 
 
 1. 在“数据库”边栏选项卡上，找出“资源使用率”框并单击“编辑”。
 2. 选择指标 `In-Memory OLTP Storage percentage`。
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/16/2018
 * 将服务层升级到具有足够内存中存储的服务层，使保存需要保留在内存优化表中的数据。
 
 > [!NOTE] 
-> 在极少数情况下，错误 41823 和 41840 可能是暂时的，即有足够的可用内存中 OLTP 存储，重试后该操作成功。 因此，我们建议既要监视总体的可用内存中 OLTP 存储，又要在首次遇到错误 41823 或 41840 时重试。 有关重试逻辑的详细信息，请参阅[内存中 OLTP 的冲突检测和重试逻辑](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic)。
+> 在极少数情况下，错误 41823 和 41840 可能是暂时的，即有足够的可用内存中 OLTP 存储，重试后该操作成功。 因此，我们建议既要监视总体的可用内存中 OLTP 存储，又要在首次遇到错误 41823 或 41840 时重试。 有关重试逻辑的详细信息，请参阅[内存中 OLTP 的冲突检测和重试逻辑](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic)。
 
 ## <a name="next-steps"></a>后续步骤
 有关监视指南，请参阅[使用动态管理视图监视 Azure SQL 数据库](sql-database-monitoring-with-dmvs.md)。

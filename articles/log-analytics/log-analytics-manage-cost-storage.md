@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Log Analytics 中管理数据成本 | Microsoft Docs
-description: 了解如何在 Azure 门户中更改定价计划和管理 Log Analytics 工作区的数据量与保留策略。
+description: 了解如何在 Azure 中更改定价计划和管理 Log Analytics 工作区的数据量与保留策略。
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 629031310eba21bc3308754706bd7ba227009ac6
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 8fb20fc9e6249a2d19d62df1ce331ce873d5fd3d
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="manage-cost-by-controlling-data-volume-and-retention-with-your-log-analytics-workspace"></a>通过控制 Log Analytics 工作区的数据量和保留来管理成本
+# <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>通过在 Log Analytics 中控制数据量和保留期管理成本
 Log Analytics 用于调整和支持来自任何源的巨量数据的每日收集、索引和存储，这些源部署在企业或 Azure 中。  尽管这可能是组织的主要驱动力，但成本效益最终是基本驱动力。 为此，必须了解 Log Analytics 工作区的成本不仅仅是基于收集的数据量，而且也取决于所选的计划，以及连接源生成的数据的存储时间长短。  
 
 本文介绍如何主动监视数据量和存储增长，以及定义限制来控制这些关联的成本。 

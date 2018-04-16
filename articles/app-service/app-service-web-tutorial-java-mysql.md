@@ -1,12 +1,12 @@
 ---
-title: "在 Azure 中构建 Java 和 MySQL Web 应用"
-description: "了解如何创建一个可连接到 Azure MySQL 数据库服务的、在 Azure appservice 中运行的 Java 应用。"
+title: 在 Azure 中构建 Java 和 MySQL Web 应用
+description: 了解如何创建一个可连接到 Azure MySQL 数据库服务的、在 Azure appservice 中运行的 Java 应用。
 services: app-service\web
 documentationcenter: Java
 author: bbenz
 manager: jeffsand
 editor: jasonwhowell
-ms.assetid: 
+ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 2df08c8e3dbadbfc1a9d2cfb3adcda4f5bae2851
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0712035f317adb318d60285637526f951bf5bdec
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="build-a-java-and-mysql-web-app-in-azure"></a>在 Azure 中构建 Java 和 MySQL Web 应用
+# <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>教程：在 Azure 中构建 Java 和 MySQL Web 应用
 
 > [!NOTE]
 > 本文将应用部署到 Windows 上的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[将容器化 Spring Boot 应用部署到 Azure](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin)。
@@ -137,7 +137,7 @@ az group create --name myResourceGroup --location "North Europe"
 
 ### <a name="create-a-mysql-server"></a>创建 MySQL 服务器
 
-在 Cloud Shell 中，使用 [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) 命令在 Azure Database for MySQL（预览版）中创建一个服务器。 将出现的 `<mysql_server_name>` 占位符替换成自己的唯一 MySQL 服务器名称。 此名称是 MySQL 服务器主机名 `<mysql_server_name>.mysql.database.azure.com` 的一部分，因此必须全局唯一。 此外，请将 `<admin_user>` 和 `<admin_password>` 替换成自己的值。
+在 Cloud Shell 中，使用 [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) 命令在 Azure Database for MySQL 中创建一个服务器。 将出现的 `<mysql_server_name>` 占位符替换成自己的唯一 MySQL 服务器名称。 此名称是 MySQL 服务器主机名 `<mysql_server_name>.mysql.database.azure.com` 的一部分，因此必须全局唯一。 此外，请将 `<admin_user>` 和 `<admin_password>` 替换成自己的值。
 
 ```azurecli-interactive
 az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user <admin_user> --admin-password <admin_password>
@@ -168,7 +168,7 @@ az mysql server firewall-rule create --name allIPs --server <mysql_server_name> 
 ```
 
 > [!NOTE]
-> 用于 MySQL 的 Azure 数据库（预览版）目前不自动启用从 Azure 服务进行连接的功能。 由于 Azure 中的 IP 地址是动态分配的，因此最好是现在就启用所有 IP 地址。 该服务会继续提供预览版，而我们则会推出保护数据库的更好方法。
+> Azure Database for MySQL 目前不自动启用从 Azure 服务进行连接的功能。 由于 Azure 中的 IP 地址是动态分配的，因此最好是现在就启用所有 IP 地址。 将启用更好地保护数据库的方法。
 
 ## <a name="configure-the-azure-mysql-database"></a>配置 Azure MySQL 数据库
 

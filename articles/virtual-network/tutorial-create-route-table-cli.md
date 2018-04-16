@@ -1,12 +1,13 @@
 ---
 title: 路由网络流量 - Azure CLI | Microsoft Docs
-description: 了解如何使用 Azure CLI 通过路由表路由网络流量。
+description: 本文介绍如何使用 Azure CLI 通过路由表路由网络流量。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
@@ -16,24 +17,23 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 871b562fa12b93d1b65e23ca58615d35ef6bb34b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eb4a28b5a57d7e301e800cd4ad87c56b7c5df6d2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>使用 Azure CLI 通过路由表路由网络流量
 
-默认情况下，Azure 自动在虚拟网络中的所有子网之间路由流量。 可以创建自己的路由来覆盖 Azure 的默认路由。 创建自定义路由的功能非常有用，例如，可以通过网络虚拟设备 (NVA) 在子网之间路由流量。 本文介绍如何执行以下操作：
+默认情况下，Azure 自动在虚拟网络中的所有子网之间路由流量。 可以创建自己的路由来覆盖 Azure 的默认路由。 创建自定义路由的功能非常有用，例如，可以通过网络虚拟设备 (NVA) 在子网之间路由流量。 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 创建路由表
-> * 创建路由
-> * 创建包含多个子网的虚拟网络
-> * 将路由表关联到子网
-> * 创建用于流量路由的 NVA
-> * 将虚拟机 (VM) 部署到不同子网
-> * 通过 NVA 将从一个子网的流量路由到另一个子网
+* 创建路由表
+* 创建路由
+* 创建包含多个子网的虚拟网络
+* 将路由表关联到子网
+* 创建用于流量路由的 NVA
+* 将虚拟机 (VM) 部署到不同子网
+* 通过 NVA 将从一个子网的流量路由到另一个子网
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -203,7 +203,7 @@ az vm create \
   "resourceGroup": "myResourceGroup"
 }
 ```
-记下 publicIpAddress。 在稍后的步骤中会使用此地址通过 Internet 访问 VM。
+记下 publicIpAddress。 在后面的步骤中会使用此地址通过 Internet 访问 VM。
 
 ## <a name="route-traffic-through-an-nva"></a>通过 NVA 路由流量
 
@@ -215,7 +215,7 @@ ssh azureuser@<publicIpAddress>
 
 当系统提示输入密码时，请输入在[创建虚拟机](#create-virtual-machines)中选择的密码。
 
-使用以下命令在 *myVmPrivate* VM 上安装 traceroute：
+使用以下命令在 *myVmPrivate* VM 上安装跟踪路由：
 
 ```bash 
 sudo apt-get install traceroute
@@ -242,7 +242,7 @@ traceroute to myVmPublic (10.0.0.4), 30 hops max, 60 byte packets
 ssh azureuser@myVmPublic
 ```
 
-使用以下命令在 *myVmPublic* VM 上安装 traceroute：
+使用以下命令在 *myVmPublic* VM 上安装跟踪路由：
 
 ```bash 
 sudo apt-get install traceroute
@@ -275,9 +275,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们创建了一个路由表并将其关联到了某个子网。 还创建了一个简单 NVA，用于将流量从公共子网路由到专用子网。 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) 部署各种执行网络功能（例如防火墙和 WAN 优化）的预配置 NVA。 在部署用于生产的路由表之前，建议全面了解 [Azure 中的路由](virtual-networks-udr-overview.md)、[管理路由表](manage-route-table.md)和 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
+在本文中，我们创建了一个路由表并将其关联到了某个子网。 还创建了一个简单 NVA，用于将流量从公共子网路由到专用子网。 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) 部署各种执行网络功能（例如防火墙和 WAN 优化）的预配置 NVA。 若要了解有关路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)和[管理路由表](manage-route-table.md)。
 
-尽管可以在一个虚拟网络中部署多个 Azure 资源，但无法将某些 Azure PaaS 服务的资源部署到虚拟网络。 不过，仍可以限制为只允许来自某个虚拟网络子网的流量访问某些 Azure PaaS 服务的资源。 请继续学习下一篇教程，了解如何限制 Azure PaaS 资源的网络访问。
-
-> [!div class="nextstepaction"]
-> [限制 PaaS 资源的网络访问](tutorial-restrict-network-access-to-resources-cli.md)
+尽管可以在一个虚拟网络中部署多个 Azure 资源，但无法将某些 Azure PaaS 服务的资源部署到虚拟网络。 不过，仍可以限制为只允许来自某个虚拟网络子网的流量访问某些 Azure PaaS 服务的资源。 若要了解如何操作，请参阅[限制对 PaaS 资源的网络访问](tutorial-restrict-network-access-to-resources-cli.md)。

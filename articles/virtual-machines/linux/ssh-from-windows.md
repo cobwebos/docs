@@ -1,11 +1,11 @@
 ---
-title: "针对 Linux VM 将 SSH 密钥与 Windows 配合使用 | Microsoft Docs"
-description: "了解如何在 Windows 计算机上生成和使用 SSH 密钥连接到 Azure 上的 Linux 虚拟机。"
+title: 针对 Linux VM 将 SSH 密钥与 Windows 配合使用 | Microsoft Docs
+description: 了解如何在 Windows 计算机上生成和使用 SSH 密钥连接到 Azure 上的 Linux 虚拟机。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2cacda3b-7949-4036-bd5d-837e8b09a9c8
 ms.service: virtual-machines-linux
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: danlep
-ms.openlocfilehash: 66837a3a153cda041f5351c52c8ccb1f8ccfea50
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fcc2365c3b41fb69492aa68bf7c48c2d3b8ee5f3
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
 > [!div class="op_single_selector"]
@@ -66,7 +66,7 @@ Azure 需要至少 2048 位采用 **ssh-rsa** 格式的公钥和私钥。 如果
 ## <a name="install-git-for-windows"></a>安装 Git for Windows
 前面列出的多个程序包包含适用于 Windows 的 `openssl` 工具。 若要创建公钥和私钥，需要此工具。 以下示例详细说明了如何安装和使用 **Git for Windows**，但可以选择所喜欢的任何程序包。 使用 **Git for Windows**，可以访问某些其他开放源代码软件 ([OSS](https://en.wikipedia.org/wiki/Open-source_software))，这些工具和实用程序在使用 Linux VM 时可能会很有用。
 
-1. 从以下位置下载并安装 **Git for Windows**：[https://git-for-windows.github.io/](https://git-for-windows.github.io/)。
+1. 从以下位置下载并安装**适用于 Windows 的 Git**：[https://git-for-windows.github.io/](https://git-for-windows.github.io/)。
 2. 在安装过程中，除非特别需要更改选项，否则请接受默认选项。
 3. 从“开始”菜单 > “Git” > “Git Bash”运行“Git Bash”。 控制台与以下示例类似：
 

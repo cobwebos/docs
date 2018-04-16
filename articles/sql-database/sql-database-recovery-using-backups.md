@@ -2,18 +2,19 @@
 title: 从备份还原 Azure SQL 数据库 | Microsoft Docs
 description: 了解有关时间点还原的信息，它让你能够将 Azure SQL 数据库回滚到之前的时间点（最多 35 天）。
 services: sql-database
-author: CarlRabeler
+author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 02/13/2018
-ms.author: carlrab
-ms.openlocfilehash: d2cc2e44c13750b654e2d6acf39d4f6a80cac98a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/04/2018
+ms.author: sashan
+ms.reviewer: carlrab
+ms.openlocfilehash: afe06d6e61d4b2b99a47f3d3348299c61863fec3
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>使用自动数据库备份恢复 Azure SQL 数据库
 SQL 数据库使用[自动数据库备份](sql-database-automated-backups.md)和[长期保留的备份](sql-database-long-term-retention.md)为数据库恢复提供这些选项。 可从数据库备份还原到：
@@ -30,7 +31,7 @@ SQL 数据库使用[自动数据库备份](sql-database-automated-backups.md)和
 - 如果数据库最大大小超过 500 GB，将 P11–P15 还原为 S4-S12 或 P1–P6。
 - 如果数据库最大大小超过 250 GB，将 P1–P6 还原为 S4-S12。
 
-由于已还原数据库的最大大小超出了该性能级别附送的存储量，因此将产生额外费用，针对超出附送量的额外预配存储收取。  有关额外存储定价的详细信息，请参阅 [SQL 数据库定价页面](https://azure.microsoft.com/pricing/details/sql-database/)。  如果实际使用的空间量小于附送的存储量，只要将数据库最大大小减少到附送的量，就能避免此项额外费用。 有关数据库存储大小和更改数据库最大大小的详细信息，请参阅[单一数据库资源限制](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels)。  
+由于已还原数据库的最大大小超出了该性能级别附送的存储量，因此将产生额外费用，针对超出附送量的额外预配存储收取。  有关额外存储定价的详细信息，请参阅 [SQL 数据库定价页面](https://azure.microsoft.com/pricing/details/sql-database/)。  如果实际使用的空间量小于附送的存储量，只要将数据库最大大小减少到附送的量，就能避免此项额外费用。 有关数据库存储大小和更改数据库最大大小的详细信息，请参阅[单一数据库基于 DTU 的资源限制](sql-database-dtu-resource-limits.md#single-database-storage-sizes-and-performance-levels)和[单一数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits.md#single-database-storage-sizes-and-performance-levels)。  
 
 > [!NOTE]
 > 在创建[数据库副本](sql-database-copy.md)时，将用到[自动数据库备份](sql-database-automated-backups.md)。 
@@ -117,7 +118,7 @@ SQL 数据库使用[自动数据库备份](sql-database-automated-backups.md)和
 当前，异地辅助数据库上不支持时间点还原。 仅主数据库支持时间点还原。 有关使用异地还原在中断后恢复的详细信息，请参阅[在中断后恢复](sql-database-disaster-recovery.md)。
 
 > [!IMPORTANT]
-> 从备份中恢复是 SQL 数据库中提供的最基本的灾难恢复解决方案，具有最长的 恢复点目标 (RPO) 和估计恢复时间 (ERT)。 对于使用基本数据库的解决方案，异地还原通常是 ERT 为 12 小时的合理灾难恢复解决方案。 对于使用较大标准或高级数据库、需要更短恢复时间的解决方案，应考虑使用[活动地域复制](sql-database-geo-replication-overview.md)。 活动异地复制可提供低得多的 RPO 和 ERT，因为它只需要启动故障转移，即可故障转移到连续复制的辅助数据库。 有关业务连续性选项的详细信息，请参阅[业务连续性概述](sql-database-business-continuity.md)。
+> 从备份中恢复是 SQL 数据库中提供的最基本的灾难恢复解决方案，具有最长的 恢复点目标 (RPO) 和估计恢复时间 (ERT)。 对于使用小型数据库（例如基本服务层或弹性池中的小型租户数据库）的解决方案，异地还原在 ERT 为 12 小时的情况下通常是一个合理的 DR 解决方案。 对于使用大型数据库并需要更短恢复时间的解决方案，应考虑使用[故障转移组和活动异地复制](sql-database-geo-replication-overview.md)。 活动异地复制可提供低得多的 RPO 和 ERT，因为它只需要启动故障转移，即可故障转移到连续复制的辅助数据库。 有关业务连续性选项的详细信息，请参阅[业务连续性概述](sql-database-business-continuity.md)。
 > 
 
 ### <a name="azure-portal"></a>Azure 门户
@@ -149,6 +150,5 @@ SQL 数据库使用[自动数据库备份](sql-database-automated-backups.md)和
 ## <a name="next-steps"></a>后续步骤
 * 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)。
 * 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)。
-* 若要了解长期备份保留，请参阅[长期备份保留](sql-database-long-term-retention.md)。
-* 若要使用 Azure 门户在 Azure 恢复服务保管库中配置和管理自动备份的长期保留，并从中进行还原，请参阅[配置和使用长期备份保留](sql-database-long-term-backup-retention-configure.md)。 
+* 若要了解长期保留，请参阅[长期保留](sql-database-long-term-retention.md)。
 * 若要了解更快的恢复选项，请参阅[故障转移组和活动异地复制](sql-database-geo-replication-overview.md)。  

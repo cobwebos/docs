@@ -1,11 +1,11 @@
 ---
-title: "使用令牌身份验证保护 Azure CDN 资产 | Microsoft Docs"
-description: "了解如何使用令牌身份验证保护对 Azure CDN 资产的访问。"
+title: 使用令牌身份验证保护 Azure CDN 资产 | Microsoft Docs
+description: 了解如何使用令牌身份验证保护对 Azure CDN 资产的访问。
 services: cdn
 documentationcenter: .net
 author: zhangmanling
 manager: zhangmanling
-editor: 
+editor: ''
 ms.assetid: 837018e3-03e6-4f9c-a23e-4b63d5707a64
 ms.service: cdn
 ms.devlang: multiple
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: f6d008a92677d28d0184e64637dcb2e093299519
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: aaec713a7680aeda8317f5af41b9b99bcbdca4b7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="securing-azure-content-delivery-network-assets-with-token-authentication"></a>使用令牌身份验证保护 Azure 内容交付网络资产
+# <a name="securing-azure-cdn-assets-with-token-authentication"></a>使用令牌身份验证保护 Azure CDN 资产
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
@@ -42,6 +42,9 @@ ms.lasthandoff: 11/21/2017
 
 有关详细信息，请参阅[设置令牌身份验证](#setting-up-token-authentication)中每个参数的详细配置示例。
 
+>[!IMPORTANT] 
+> 如果对此帐户中的任何路径启用了令牌授权，则标准缓存模式是可用于查询字符串缓存的唯一模式。 有关详细信息，请参阅[使用查询字符串控制 Azure CDN 缓存行为](cdn-query-string-premium.md)。
+
 ## <a name="reference-architecture"></a>参考体系结构
 
 以下工作流关系图介绍了CDN 通过令牌身份验证来使用 Web 应用的工作原理。
@@ -56,11 +59,11 @@ ms.lasthandoff: 11/21/2017
 
 ## <a name="setting-up-token-authentication"></a>设置令牌身份验证
 
-1. 在 [Azure门户](https://portal.azure.com)中，浏览到 CDN 配置文件，并单击“管理”按钮启动补充门户。
+1. 在 [Azure门户](https://portal.azure.com)中，浏览到 CDN 配置文件，并选择“管理”按钮启动补充门户。
 
     ![CDN 配置文件管理按钮](./media/cdn-token-auth/cdn-manage-btn.png)
 
-2. 将鼠标悬停在“HTTP Large”上，然后在浮出控制中单击“令牌身份验证”。 然后即可设置加密密钥和加密参数，如下所示：
+2. 将鼠标指针悬停在“HTTP Large”上，然后在浮出控件中选择“令牌身份验证”。 然后即可设置加密密钥和加密参数，如下所示：
 
     1. 创建一个或多个加密密钥。 加密密钥区分大小写，可以包含字母数字字符的任意组合。 不允许其他任何类型的字符，包括空格。 最大长度为 250 个字符。 为了确保加密密钥随机，我们建议使用 [OpenSSL 工具](https://www.openssl.org/)创建加密密钥。 
 
@@ -76,7 +79,7 @@ ms.lasthandoff: 11/21/2017
     
     2. 在“主密钥”框中输入唯一的加密密钥，并在“备份密钥”框中输入备份密钥（可选）。
 
-    3. 从每个密钥的“最低加密版本”列表中选择其最低加密版本，单击“更新”：
+    3. 从每个密钥的“最低加密版本”列表中选择其最低加密版本，然后选择“更新”：
        - **V2**：指示该密钥可用于生成版本 2.0 和 3.0 令牌。 仅当要从旧版 2.0 加密密钥过渡到 3.0 版密钥时，才使用此选项。
        - **V3**：（建议）指示该密钥只可用于生成 3.0 令牌。
 
@@ -156,27 +159,29 @@ ms.lasthandoff: 11/21/2017
     
     6. 从“加密版本”列表中选择一个加密版本：“V2”表示版本 2，“V3”表示版本 3（建议）。 
 
-    7. 单击“加密”生成令牌。
+    7. 选择“加密”生成令牌。
 
     生成令牌后，它会显示在“生成的令牌”框中。 若要使用该令牌，请将其作为查询字符串追加​​到文件 URL 路径的末尾。 例如，`http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`。
         
-    8. 根据需要使用解密工具测试令牌，以便可以查看令牌的参数。 将令牌值粘贴到“要解密的令牌”框中。 从“要解密的密钥”列表中选择加密密钥，然后单击“解密”。
+    8. 根据需要使用解密工具测试令牌，以便可以查看令牌的参数。 将令牌值粘贴到“要解密的令牌”框中。 从“要解密的密钥”列表中选择加密密钥，然后选择“解密”。
 
     解密令牌后，其参数会显示在“原始参数”框中。
 
-    9. 可以自定义请求被拒绝时返回的响应代码类型。 选择“启用”，然后选择“响应代码”列表中的响应代码。 “标头名称”自动设置为“位置”。 单击“保存”，实现新的响应代码。 对于某些响应代码，还必须在“标头值”框中输入错误页面的 URL。 默认情况下将选择 403 响应代码（禁止）。 
+    9. 可以自定义请求被拒绝时返回的响应代码类型。 选择“启用”，然后选择“响应代码”列表中的响应代码。 “标头名称”自动设置为“位置”。 选择“保存”，实现新的响应代码。 对于某些响应代码，还必须在“标头值”框中输入错误页面的 URL。 默认情况下将选择 403 响应代码（禁止）。 
 
-3. 在“HTTP Large”下，单击“规则引擎”。 使用此规则引擎来定义应用功能、启用令牌身份验证功能以及启用其他令牌身份验证相关功能的路径。 有关详细信息，请参阅[规则引擎引用](cdn-rules-engine-reference.md)。
+3. 在“HTTP Large”下，选择“规则引擎”。 使用此规则引擎来定义应用功能、启用令牌身份验证功能以及启用其他令牌身份验证相关功能的路径。 有关详细信息，请参阅[规则引擎引用](cdn-rules-engine-reference.md)。
 
     1. 选择现有规则或创建新规则，定义想要应用令牌身份验证的资产或路径。 
-    2. 要对规则启用令牌身份验证，请从“功能”列表中选择[“令牌身份验证”](cdn-rules-engine-reference-features.md#token-auth)，然后选择“启用”。 单击“更新”更新规则，或单击“添加”创建规则。
+    2. 要对规则启用令牌身份验证，请从“功能”列表中选择[“令牌身份验证”](cdn-rules-engine-reference-features.md#token-auth)，然后选择“启用”。 选择“更新”更新规则，或选择“添加”创建规则。
         
     ![CDN 规则引擎令牌身份验证启用示例](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. 在规则引擎中，还可启用与令牌身份验证相关的其他功能。 要启用以下任意功能，请从“功能”列表中选择它，然后选择“启用”。
     
     - [令牌身份验证拒绝代码](cdn-rules-engine-reference-features.md#token-auth-denial-code)：确定拒绝请求时会返回给用户的响应类型。 在此处设置的规则将替代在基于令牌的身份验证页上的“自定义拒绝处理”部分设置的响应代码。
+
     - [令牌身份验证忽略 URL 大小写](cdn-rules-engine-reference-features.md#token-auth-ignore-url-case)：确定用于验证令牌的 URL 是否区分大小写。
+
     - [令牌身份验证参数](cdn-rules-engine-reference-features.md#token-auth-parameter)：重命名在请求 URL 中显示的令牌身份验证查询字符串参数。 
         
     ![CDN 规则引擎令牌身份验证设置示例](./media/cdn-token-auth/cdn-rules-engine2.png)
@@ -193,4 +198,4 @@ ms.lasthandoff: 11/21/2017
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN 功能和提供程序定价
 
-有关功能的信息，请参阅 [CDN 概述](cdn-overview.md)。 有关定价的信息，请参阅[内容交付网络定价](https://azure.microsoft.com/pricing/details/cdn/)。
+有关功能的信息，请参阅 [Azure CDN 产品功能](cdn-features.md)。 有关定价的信息，请参阅[内容交付网络定价](https://azure.microsoft.com/pricing/details/cdn/)。

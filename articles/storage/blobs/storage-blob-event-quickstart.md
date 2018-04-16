@@ -1,31 +1,29 @@
 ---
-title: "将 Azure Blob 存储事件路由到自定义 Web 终结点 | Microsoft Docs"
-description: "使用 Azure 事件网格订阅 Blob 存储事件。"
+title: 将 Azure Blob 存储事件路由到自定义 Web 终结点 | Microsoft Docs
+description: 使用 Azure 事件网格订阅 Blob 存储事件。
 services: storage,event-grid
-keywords: 
+keywords: ''
 author: cbrooksmsft
 ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 4f10d9b26cb75bee8103d986b7fa1197168c692f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f0764ebc423cfb5323f2b634ce5a5ecbe075135c
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>使用 Azure CLI 将 Blob 存储事件路由到自定义 Web 终结点
 
 Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 Azure CLI 订阅 Blob 存储事件，然后触发可查看结果的事件。 
 
-通常将事件发送到与该事件对应的终结点，例如 webhook 或 Azure Function。 为了简化本文中的示例，我们将事件发送到仅收集消息的 URL。 可从 [RequestBin](https://requestb.in/) 或 [Hookbin](https://hookbin.com/) 使用第三方工具创建此 URL。
+通常将事件发送到与该事件对应的终结点，例如 webhook 或 Azure Function。 为了简化本文中的示例，我们将事件发送到仅收集消息的 URL。 可以使用 [Hookbin](https://hookbin.com/) 提供的第三方工具创建此 URL。
 
 > [!NOTE]
-> RequestBin 和 Hookbin 并不适合在高吞吐量方案中使用。 在这里使用这些工具纯粹是为了演示。 如果一次推送多个事件，可能不会在工具中看到所有事件。
+> **Hookbin** 不应在高吞吐量方案中使用。 使用此工具纯粹是为了演示。 如果一次推送多个事件，可能不会在工具中看到所有事件。
 
 完成本文所述步骤后，即可看到事件数据已发送到某个终结点。
-
-![事件数据](./media/storage-blob-event-quickstart/request-result.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,11 +66,11 @@ az storage account create \
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 
-在订阅主题之前, 让我们创建事件消息的终结点。 与其编写代码来响应事件，不如创建一个终结点来收集消息，方便你查看。 RequestBin 和 Hookbin 是第三方工具，用于创建终结点和查看发送到其中的请求。 转到 [RequestBin](https://requestb.in/)，然后单击“创建 RequestBin”；或者转到 [Hookbin](https://hookbin.com/)，然后单击“新建终结点”。  复制 bin URL，因为在订阅主题时需要它。
+在订阅主题之前, 让我们创建事件消息的终结点。 与其编写代码来响应事件，不如创建一个终结点来收集消息，方便你查看。 Hookbin 是第三方工具，用于创建终结点和查看发送到其中的请求。 转到 [Hookbin](https://hookbin.com/) 并单击“创建新终结点”。  复制 bin URL，因为在订阅主题时需要它。
 
 ## <a name="subscribe-to-your-storage-account"></a>订阅存储帐户
 
-订阅主题是为了告知事件网格要跟踪哪些事件。以下示例订阅你所创建的存储帐户，并将 RequestBin 或 Hookbin 中的 URL 作为事件通知的终结点传递。 将 `<event_subscription_name>` 替换为事件订阅的唯一名称，将 `<endpoint_URL>` 替换为上一部分的值。 在订阅时指定终结点，然后事件网格就会负责将事件路由到该终结点。 对于 `<resource_group_name>` 和 `<storage_account_name>`，请使用此前创建的值。  
+订阅主题是为了告知事件网格要跟踪哪些事件。以下示例订阅你所创建的存储帐户，并将 Hookbin 中的 URL 作为事件通知的终结点传递。 将 `<event_subscription_name>` 替换为事件订阅的唯一名称，将 `<endpoint_URL>` 替换为上一部分的值。 在订阅时指定终结点，然后事件网格就会负责将事件路由到该终结点。 对于 `<resource_group_name>` 和 `<storage_account_name>`，请使用此前创建的值。  
 
 ```azurecli-interactive
 storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)

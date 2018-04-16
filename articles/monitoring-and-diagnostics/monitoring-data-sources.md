@@ -1,12 +1,12 @@
 ---
-title: "使用 Azure 中的监视数据 | Microsoft Docs"
-description: "了解现可在 Azure 上使用的所有监视数据源。"
+title: 使用 Azure 中的监视数据 | Microsoft Docs
+description: 了解现可在 Azure 上使用的所有监视数据源。
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/27/2017
 ms.author: johnkem
-ms.openlocfilehash: c7075c2e1a2500eca1d0aa9b3a797e8a0e903ede
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b10e95cd6b335468201b4cd123b3a29fb5d1bcdb
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="consume-monitoring-data-from-azure"></a>使用 Azure 中的监视数据
 
@@ -33,19 +33,19 @@ ms.lasthandoff: 10/11/2017
 | 自定义或应用程序指标 | 度量值 | 使用 Application Insights 检测的任何应用程序 | <ul><li>**REST API：**[Application Insights REST API](https://dev.applicationinsights.io/reference)</li></ul> |
 | 存储度量值 | 度量值 | Azure 存储 | <ul><li>**存储表：**[存储分析](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | 账单数据 | 度量值 | 所有 Azure 服务 | <ul><li>**REST API：**[Azure 资源使用状况和 RateCard API](../billing/billing-usage-rate-card-overview.md)</li></ul> |
-| 活动日志 | 事件 | 所有 Azure 服务 | <ul><li>**REST API：**[Azure Monitor 事件 API](https://docs.microsoft.com/rest/api/monitor/events)</li><li>**存储 blob 或事件中心：**[日志配置文件](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
-| Azure Monitor 诊断日志 | 事件 | [查看此处的列表](monitoring-diagnostic-logs-schema.md) | <ul><li>**存储 blob 或事件中心：** [诊断设置](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
-| 计算来宾 OS 日志（例如 IIS、ETW、syslog） | 事件 | [Windows](../virtual-machines-dotnet-diagnostics.md) 和 Linux 虚拟机 (v2)、[云服务](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)、[Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**存储表或 blob：**[Windows 或 Linux Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**事件中心：**[Windows Azure 诊断](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
-| 应用服务日志 | 事件 | 应用程序服务 | <ul><li>**文件、表或 blob 存储：**[Web 应用诊断](../app-service/web-sites-enable-diagnostic-log.md)</li></ul> |
-| 存储日志 | 事件 | Azure 存储 | <ul><li>**存储表：**[存储分析](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
-| 安全中心警报 | 事件 | Azure 安全中心 | <ul><li>**REST API：**[安全警报](https://msdn.microsoft.com/library/mt704050.aspx)</li></ul> |
-| Active Directory 报告 | 事件 | Azure Active Directory | <ul><li>**REST API：**[Azure Active Directory 图形 API](../active-directory/active-directory-reporting-api-getting-started.md)</li></ul> |
+| 活动日志 | 活动 | 所有 Azure 服务 | <ul><li>**REST API：**[Azure Monitor 事件 API](https://docs.microsoft.com/rest/api/monitor/events)</li><li>**存储 blob 或事件中心：**[日志配置文件](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
+| Azure Monitor 诊断日志 | 活动 | [查看此处的列表](monitoring-diagnostic-logs-schema.md) | <ul><li>**存储 blob 或事件中心：** [诊断设置](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
+| 计算来宾 OS 日志（例如 IIS、ETW、syslog） | 活动 | [Windows](../virtual-machines-dotnet-diagnostics.md) 和 Linux 虚拟机 (v2)、[云服务](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)、[Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**存储表或 blob：**[Windows 或 Linux Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**事件中心：**[Windows Azure 诊断](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
+| 应用服务日志 | 活动 | 应用程序服务 | <ul><li>**文件、表或 blob 存储：**[Web 应用诊断](../app-service/web-sites-enable-diagnostic-log.md)</li></ul> |
+| 存储日志 | 活动 | Azure 存储 | <ul><li>**存储表：**[存储分析](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
+| 安全中心警报 | 活动 | Azure 安全中心 | <ul><li>**REST API：**[安全警报](https://msdn.microsoft.com/library/mt704050.aspx)</li></ul> |
+| Active Directory 报告 | 活动 | Azure Active Directory | <ul><li>**REST API：**[Azure Active Directory 图形 API](../active-directory/active-directory-reporting-api-getting-started.md)</li></ul> |
 | 安全中心资源状态 | 状态 | [支持的所有资源](https://msdn.microsoft.com/library/mt704041.aspx#Anchor_1) | <ul><li>**REST API：**[安全状态](https://msdn.microsoft.com/library/mt704041.aspx)</li></ul> |
 | 资源运行状况 | 状态 | 支持的服务 | <ul><li>**REST API：**[资源运行状况 REST API](https://azure.microsoft.com/blog/reduce-troubleshooting-time-with-azure-resource-health/)</li></ul> |
 | Azure Monitor 指标警报 | 通知 | [查看此处的列表](monitoring-supported-metrics.md) | <ul><li>**Webhook：**[Azure 指标警报](insights-webhooks-alerts.md)</li></ul> |
 | Azure Monitor 活动日志警报 | 通知 | 所有 Azure 服务 | <ul><li>**Webhook：**Azure 活动日志警报</li></ul> |
 | 自动缩放通知 | 通知 | [查看此处的列表](monitoring-overview-autoscale.md#supported-services-for-autoscale) | <ul><li>**Webhook：**[自动缩放通知 webhook 有效负载架构](insights-autoscale-to-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| OMS 日志搜索查询警报 | 通知 | OMS Log Analytics | <ul><li>**Webhook：**[Log Analytics 警报](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
+| 日志搜索查询警报 | 通知 | Log Analytics | <ul><li>**Webhook：**[Log Analytics 警报](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
 | Application Insights 指标警报 | 通知 | Application Insights | <ul><li>**Webhook：**[Application Insights 警报](../application-insights/app-insights-alerts.md)</li></ul> |
 | Application Insights Web 测试 | 通知 | Application Insights | <ul><li>**Webhook：**[Application Insights 警报](../application-insights/app-insights-alerts.md)</li></ul> |
 

@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jonor
-ms.openlocfilehash: c4693d91fe81ce55c6faa6610ea19219ac5cfcb5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7fcd8e12a7109218387788e47eddad48e72797bb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure 虚拟数据中心：网络透视图
 **Microsoft Azure**：更快更省地迁移、集成本地应用和数据
@@ -259,9 +259,9 @@ Azure 中主要有两种日志类型：
 
 所有日志都可以存储在 Azure 存储帐户中，以便进行审核、静态分析或备份。 日志存储在 Azure 存储帐户时，客户可以对该数据使用不同类型的框架进行检索、准备、分析和可视化操作，以报告云资源的状态和运行状况。
 
-大型企业应该已经获取到用于监视本地系统的标准框架，并可以扩展该框架以集成云部署生成的日志。 对于希望将所有日志记录存储在云中的组织，[Microsoft Operations Management Suite (OMS)][OMS] 是一个不错的选择。 由于 OMS 作为基于云的服务实现，因此在基础结构服务上进行极低的投资即可快速使其启动并运行。 OMS 还可与 System Center Operations Manager 等 System Center 组件集成，将现有管理投资扩展到云。
+大型企业应该已经获取到用于监视本地系统的标准框架，并可以扩展该框架以集成云部署生成的日志。 对于希望将所有日志记录保留在云中的组织，[Log Analytics][LogAnalytics] 是一个不错的选择。 由于 Log Analytics 作为基于云的服务实现，因此在基础结构服务上进行极低的投资即可快速使其启动并运行。 Log Analytics 还可与 System Center Operations Manager 等 System Center 组件集成，将现有管理投资扩展到云。
 
-OMS Log Analytics 是 OMS 框架的组件，用于帮助收集、关联、搜索以及处理由操作系统、应用程序和基础结构云组件生成的日志和性能数据。 使用集成搜索和自定义仪表板为客户提供实时操作见解，分析 vDC 中所有工作负荷的所有记录。
+Log Analytics 是 Azure 中的一个服务，可帮助收集、关联、搜索以及处理由操作系统、应用程序和基础结构云组件生成的日志和性能数据。 使用集成搜索和自定义仪表板为客户提供实时操作见解，分析 vDC 中所有工作负荷的所有记录。
 
 #### <a name="component-type-workloads"></a>组件类型：工作负荷
 工作负荷组件是实际应用程序和服务所在的位置。 它也是应用程序开发团队花费大部分时间的地方。
@@ -332,7 +332,7 @@ Azure 数据中心遍布世界各地。 选择多个 Azure 数据中心时，客
 |网络功能|负载均衡|连接|
 |[Azure 虚拟网络][VNet]</br>[网络安全组][NSG]</br>[NSG 日志][NSGLog]</br>[用户定义的路由][UDR]</br>[网络虚拟设备][NVA]</br>[公共 IP 地址][PIP]|[Azure 负载均衡器 (L3)][ALB]</br>[应用程序网关 (L7)][AppGW]</br>[Web 应用程序防火墙][WAF]</br>[Azure 流量管理器][TM] |[VNet 对等互连][VNetPeering]</br>[虚拟专用网络][VPN]</br>[ExpressRoute][ExR]
 |标识</br>|监视</br>|最佳实践</br>|
-|[Azure Active Directory][AAD]</br>[多重身份验证][MFA]</br>[基于角色的访问控制][RBAC]</br>[默认 AAD 角色][Roles] |[活动日志][ActLog]</br>[诊断日志][DiagLog]</br>[Microsoft Operations Management Suite][OMS]</br> |[外围网络最佳实践][DMZ]</br>[订阅管理][SubMgmt]</br>[资源组管理][RGMgmt]</br>[Azure 订阅限制][Limits] |
+|[Azure Active Directory][AAD]</br>[多重身份验证][MFA]</br>[基于角色的访问控制][RBAC]</br>[默认 AAD 角色][Roles] |[活动日志][ActLog]</br>[诊断日志][DiagLog]</br>[Log Analytics][LogAnalytics]</br> |[外围网络最佳实践][DMZ]</br>[订阅管理][SubMgmt]</br>[资源组管理][RGMgmt]</br>[Azure 订阅限制][Limits] |
 |其他 Azure 服务|
 |[Azure Web 应用][WebApps]</br>[HDInsights (Hadoop)][HDI]</br>[事件中心][EventHubs]</br>[服务总线][ServiceBus]|
 
@@ -379,7 +379,7 @@ Azure 数据中心遍布世界各地。 选择多个 Azure 数据中心时，客
 [ActLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs 
 [DiagLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs
 [NSGLog]: https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log
-[OMS]: https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview
+[LogAnalytics]: https://docs.microsoft.com/azure/log-analytics/log-analytics-overview
 [WebApps]: https://docs.microsoft.com/azure/app-service/
 [HDI]: https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-introduction
 [EventHubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs 

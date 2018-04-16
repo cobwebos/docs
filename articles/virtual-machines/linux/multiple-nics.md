@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 中创建具有多个 NIC 的 Linux VM | Microsoft Docs"
-description: "了解如何使用 Azure CLI 2.0 或 Resource Manager 模板创建具有多个 NIC 的 Linux VM。"
+title: 在 Azure 中创建具有多个 NIC 的 Linux VM | Microsoft Docs
+description: 了解如何使用 Azure CLI 2.0 或 Resource Manager 模板创建具有多个 NIC 的 Linux VM。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 5d2d04d0-fc62-45fa-88b1-61808a2bc691
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 635d1373a51f2f2e4d4f7ab5053e520f5b9363a6
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: d981ffc9a0053ed8bf2d49f386f7c1c82d50c907
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机
 可以在 Azure 中创建附有多个虚拟网络接口 (NIC) 的虚拟机 (VM)。 一种常见方案是为前端和后端连接使用不同子网，或为监视或备份解决方案使用一个专用网络。 本文详细介绍如何创建具有多个 NIC 的 VM，以及如何在现有 VM 中添加或删除 NIC。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。
@@ -87,7 +87,7 @@ az network nic create \
 ## <a name="create-a-vm-and-attach-the-nics"></a>创建 VM 并附加 NIC
 创建 VM 时，指定使用 `--nics` 创建的 NIC。 还需要谨慎选择 VM 的大小。 可添加到 VM 的 NIC 数目有限制。 详细了解 [Linux VM 大小](sizes.md)。 
 
-使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 以下示例创建一个名为 myVM 的 VM：
+使用 [az vm create](/cli/azure/vm#az_vm_create) 创建 VM。 以下示例创建一个名为 *myVM* 的 VM：
 
 ```azurecli
 az vm create \
@@ -99,6 +99,8 @@ az vm create \
     --generate-ssh-keys \
     --nics myNic1 myNic2
 ```
+
+通过完成[为多个 NIC 配置来宾 OS](#configure-guest-os-for- multiple-nics) 中的步骤，将路由表添加到来宾 OS。
 
 ## <a name="add-a-nic-to-a-vm"></a>将 NIC 添加到 VM
 之前的步骤创建了具有多个 NIC 的 VM。 还可使用 Azure CLI 2.0 将 NIC 添加到现有 VM。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。 如果需要，可[调整 VM 的大小](change-vm-size.md)。
@@ -135,6 +137,8 @@ az vm nic add \
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
 ```
+
+通过完成[为多个 NIC 配置来宾 OS](#configure-guest-os-for- multiple-nics) 中的步骤，将路由表添加到来宾 OS。
 
 ## <a name="remove-a-nic-from-a-vm"></a>从 VM 中删除 NIC
 若要从现有 VM 删除 NIC，请先使用 [az vm deallocate](/cli/azure/vm#az_vm_deallocate) 解除分配 VM。 以下示例解除分配名为 myVM 的 VM ：
@@ -179,6 +183,7 @@ Azure 资源管理器模板使用声明性 JSON 文件来定义环境。 可以�
 
 可以阅读[使用 Resource Manager 模板创建多个 NIC](../../virtual-network/virtual-network-deploy-multinic-arm-template.md) 的完整示例。
 
+通过完成[为多个 NIC 配置来宾 OS](#configure-guest-os-for- multiple-nics) 中的步骤，将路由表添加到来宾 OS。
 
 ## <a name="configure-guest-os-for-multiple-nics"></a>为多个 NIC 配置来宾 OS
 将多个 NIC 添加到一个 Linux VM 时，需要创建路由规则。 这些规则允许此 VM 发送和接收属于特定 NIC 的流量。 否则，所定义的默认路由无法正确处理属于 eth1 等的流量。
@@ -190,7 +195,7 @@ echo "200 eth0-rt" >> /etc/iproute2/rt_tables
 echo "201 eth1-rt" >> /etc/iproute2/rt_tables
 ```
 
-要使更改长久有效并在网络堆栈激活期间应用，请编辑 /etc/sysconfig/network-scipts/ifcfg-eth0 和 /etc/sysconfig/network-scipts/ifcfg-eth1。 将行“NM_CONTROLLED=yes”更改为“NM_CONTROLLED=no”。 如不执行此步骤，则不会自动应用其他规则/路由。
+要使更改长久有效并在网络堆栈激活期间应用，请编辑 /etc/sysconfig/network-scripts/ifcfg-eth0 和 /etc/sysconfig/network-scripts/ifcfg-eth1。 将行“NM_CONTROLLED=yes”更改为“NM_CONTROLLED=no”。 如不执行此步骤，则不会自动应用其他规则/路由。
  
 然后扩展路由表。 假设已进行了如下设置：
 

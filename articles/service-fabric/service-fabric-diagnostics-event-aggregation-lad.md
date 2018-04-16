@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric 事件聚合与 Linux Azure 诊断 |Microsoft Docs"
-description: "了解有关聚合和使用 LAD 监视和诊断 Azure Service Fabric 群集的收集事件。"
+title: Azure Service Fabric 事件聚合与 Linux Azure 诊断 |Microsoft Docs
+description: 了解有关聚合和使用 LAD 监视和诊断 Azure Service Fabric 群集的收集事件。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: b70780b2e1d169aced3412f6fe6d13ad4dab82be
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9ad63a67d3b51cad1376eb9e97e68fb9102013e3
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>使用 Linux Azure 诊断的事件聚合和集合
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 
 当你运行 Azure Service Fabric 群集时，最好是从一个中心位置的所有节点中收集日志。 将日志放在中心位置可帮助分析和排查群集中的问题，或该群集中运行的应用程序与服务的问题。
 
-上传和收集日志的方式之一是使用可将日志上传到 Azure 存储、也能选择发送日志到Azure Application Insights 或 Azure 事件中心的 Linux Azure 诊断 (LAD) 扩展。 也可以使用外部进程读取存储中的事件，并将它们放在分析平台产品中，例如 [OMS Log Analytics](../log-analytics/log-analytics-service-fabric.md) 或其他日志分析解决方案中。
+上传和收集日志的方式之一是使用可将日志上传到 Azure 存储、也能选择发送日志到Azure Application Insights 或 Azure 事件中心的 Linux Azure 诊断 (LAD) 扩展。 也可以使用外部进程读取存储中的事件，并将它们放在分析平台产品（例如 [Log Analytics](../log-analytics/log-analytics-service-fabric.md) 或其他日志分析解决方案）中。
 
 ## <a name="log-and-event-sources"></a>日志和事件源
 
@@ -52,4 +52,4 @@ Service Fabric 通过 [LTTng](http://lttng.org) 发出几个现成可用的日�
 ## <a name="next-steps"></a>后续步骤
 
 1. 若要更详细了解在排查问题时应检查哪些事件，请参阅 [LTTng 文档](http://lttng.org/docs)和[使用 LAD](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
-2. [设置 OMS 代理](service-fabric-diagnostics-event-analysis-oms.md)来帮助收集指标、监视群集上部署的容器和直观显示日志 
+2. [设置 Log Analytics 代理](service-fabric-diagnostics-event-analysis-oms.md)来帮助收集指标、监视群集上部署的容器和直观显示日志 

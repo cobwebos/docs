@@ -1,11 +1,11 @@
 ---
-title: "将 Azure CDN 与 CORS 一起使用 | Microsoft Docs"
-description: "了解如何将 Azure 内容交付网络 (CDN) 与跨域资源共享 (CORS) 一起使用。"
+title: 将 Azure CDN 与 CORS 一起使用 | Microsoft Docs
+description: 了解如何将 Azure 内容交付网络 (CDN) 与跨域资源共享 (CORS) 一起使用。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 86740a96-4269-4060-aba3-a69f00e6f14e
 ms.service: cdn
 ms.workload: tbd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="using-azure-cdn-with-cors"></a>将 Azure CDN 与 CORS 一起使用
 ## <a name="what-is-cors"></a>什么是 CORS？
@@ -94,5 +94,5 @@ CORS 请求有两种类型：简单请求和复杂请求。
 > 
 
 ### <a name="azure-cdn-standard"></a>标准 Azure CDN
-在标准 Azure CDN 配置文件中，允许多个源但不使用通配符源的唯一机制是使用[查询字符串缓存](cdn-query-string.md)。  需要为 CDN 终结点启用查询字符串设置，然后对每个允许的域的请求使用唯一的查询字符串。 这样做将导致 CDN 缓存每个唯一查询字符串的单独对象。 然而，这种方法并不理想，因为它将导致在 CDN 上缓存的同一文件出现多个副本。  
+在标准 Azure CDN 配置文件中，允许多个源但不使用通配符源的唯一机制是使用[查询字符串缓存](cdn-query-string.md)。  需要为 CDN 终结点启用查询字符串设置，并对每个允许的域的请求使用唯一的查询字符串。 这样做将导致 CDN 缓存每个唯一查询字符串的单独对象。 然而，这种方法并不理想，因为它将导致在 CDN 上缓存的同一文件出现多个副本。  
 

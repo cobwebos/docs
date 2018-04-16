@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2018
 ms.author: johndeu;
-ms.openlocfilehash: ae726b141f5f44b1eb0887cbd988881e41e163c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cf4541aebe0c735d66f42532c74e97bf9bbc4a5f
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>实时传送视频流中的超时元数据信号
 
@@ -134,7 +134,7 @@ RTMP 支持超时元数据信号作为 RTMP 流中嵌入的 AMF 提示消息发�
 
 稀疏轨迹片段包含 Movie Fragment Box（“moof”）和 Media Data Box（“mdat”）。
 
-如 [FMP4] 中定义，MovieFragmentBox（“moof”）块必须包含 TrackFragmentExtendedHeaderBox（“uuid”）块，且具有以下字段：
+如 [MS-SSTR] 中定义，MovieFragmentBox（“moof”）框必须包含 TrackFragmentExtendedHeaderBox（“uuid”）框，且具有以下字段：
 
 | **字段名称**         | **字段类型**          | **必需？** | **说明**                                                                               |
 |------------------------|-------------------------|---------------|-----------------------------------------------------------------------------------------------|
@@ -177,7 +177,7 @@ MediaDataBox（“mdat”）块必须具有以下格式：
 
 ## <a name="31-smooth-streaming-delivery"></a>3.1 平滑流式处理交付
 
-请参阅规范 [FMP4] 和 [MS SSTR] 中的稀疏轨迹处理详细信息。
+请参阅 [MS-SSTR] 中的稀疏轨迹处理详细信息。
 
 #### <a name="smooth-client-manifest-example"></a>Smooth 客户端清单示例
 ~~~ xml
@@ -407,13 +407,11 @@ DASHEventMessageBox 字段定义如下：
 
 **[AMF0]**[ （操作消息格式 AMF0）](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
-**[FMP4]**[ IIS Smooth Streaming File/Wire Format Specification（IIS 平滑流式处理文件/数据传输格式规范）](https://microsoft.sharepoint.com/teams/mediaservices/_layouts/15/WopiFrame.aspx?sourcedoc=%7bAC5A31A4-E455-4000-96E1-AB17BD083144%7d&file=IIS%20Smooth%20Streaming%20File%20Format%20Specification%20-%20v%202%203%2001%20latest%20draft.docx&action=default)
-
-**[LIVE-FMP4]**[ Azure 媒体服务分片 MP4 实时引入规范](https://microsoft.sharepoint.com/teams/mediaservices/_layouts/15/WopiFrame.aspx?sourcedoc=%7b5CEE1122-AA28-4368-BC8E-9C0048BF1529%7d&file=AMS%20F-MP4%20Live%20Ingest%20Specification.docx&action=default)
+**[LIVE-FMP4]**[ Azure 媒体服务分片 MP4 实时引入规范](https://docs.microsoft.com/en-us/azure/media-services/media-services-fmp4-live-ingest-overview)
 
 **[ISO-14496-12]** ISO/IEC 14496-12：第 12 部分 ISO 基础媒体文件格式，2012-07-15 第 4 版。
 
-**[RTMP]**[ 2012 年 12 月 21 日，Adobe’s Real-Time Messaging Protocol（Adobe 的实时消息传送协议）](http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/rtmp/pdf/rtmp_specification_1.0.pdf) 
+**[RTMP]**[ 2012 年 12 月 21 日，Adobe’s Real-Time Messaging Protocol（Adobe 的实时消息传送协议）](https://www.adobe.com/devnet/rtmp.html) 
 
 ------------------------------------------
 

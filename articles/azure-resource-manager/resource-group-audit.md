@@ -1,8 +1,8 @@
 ---
-title: "查看 Azure 活动日志以监视资源 | Microsoft Docs"
-description: "使用活动日志查看用户操作和错误。 显示 Azure 门户、PowerShell、Azure CLI 和 REST。"
+title: 查看 Azure 活动日志以监视资源 | Microsoft Docs
+description: 使用活动日志查看用户操作和错误。 显示 Azure 门户、PowerShell、Azure CLI 和 REST。
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -12,15 +12,16 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 04/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: fb6fb3f7172673be70b1a6dcfd77e42cd982e248
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 990c3ed8c6fd79430b27c7c96673f7845e54b26f
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>查看活动日志以审核对资源的操作
+
 通过活动日志，可以确定：
 
 * 对订阅中的资源执行了什么操作
@@ -38,6 +39,7 @@ ms.lasthandoff: 02/09/2018
 可以通过门户、PowerShell、Azure CLI、Insights REST API 或 [Insights .NET 库](https://www.nuget.org/packages/Microsoft.Azure.Insights/)检索活动日志中的信息。
 
 ## <a name="portal"></a>门户
+
 1. 若要通过门户查看活动日志，请选择“监视”。
    
     ![选择活动日志](./media/resource-group-audit/select-monitor.png)
@@ -68,6 +70,7 @@ ms.lasthandoff: 02/09/2018
     ![查看操作](./media/resource-group-audit/view-operation.png)  
 
 ## <a name="powershell"></a>PowerShell
+
 1. 若要检索日志条目，请运行 **Get-AzureRmLog** 命令。 可以提供附加参数来筛选条目列表。 如果未指定开始和结束时间，将返回最后一个小时的条目。 例如，若要检索过去一小时针对某个资源组的操作，请运行：
 
   ```powershell
@@ -136,17 +139,20 @@ ms.lasthandoff: 02/09/2018
 
 
 ## <a name="azure-cli"></a>Azure CLI
-* 若要检索日志条目，请运行 **azure group log show** 命令。
+
+若要检索日志条目，请运行 [az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) 命令。
 
   ```azurecli
-  azure group log show ExampleGroup --json
+  az monitor activity-log list --resource-group <group name>
   ```
 
 
 ## <a name="rest-api"></a>REST API
+
 用于处理活动日志的 REST 操作是 [Insights REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) 的一部分。 若要检索活动日志事件，请参阅[列出订阅中的管理事件](https://msdn.microsoft.com/library/azure/dn931934.aspx)。
 
 ## <a name="next-steps"></a>后续步骤
+
 * Azure 活动日志可以与 Power BI 一起使用，以便更深入地了解在订阅中执行的操作。 请参阅 [View and analyze Azure Activity Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）。
 * 若要了解如何设置安全策略，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
 * 若要了解查看部署操作的命令，请参阅[查看部署操作](resource-manager-deployment-operations.md)。

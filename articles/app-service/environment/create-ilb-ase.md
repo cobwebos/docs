@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/13/2017
+ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 0d08d140ab338d8c742277835fdfb4316862f07b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 61a454ffb36865d4e1bc6b7ae5622fa4d4e85fd2
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>在应用服务环境中创建和使用内部负载均衡器 #
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 03/16/2018
 
 4. 选择或创建 VNet。
 
-5. 如果选择现有 VNet，需要创建子网来存放 ASE。 请确保设置的子网大小应该足够容纳 ASE 未来任何的增长。 建议的大小为 `/25`，其地址长度为 128 位且能够容纳最大尺寸的 ASE。 可以选择的大小下限为 `/28`。 如果基础结构有需要，此大小可以缩放到最多 11 个实例。
+5. 如果选择现有 VNet，需要创建子网来存放 ASE。 请确保设置的子网大小应该足够容纳 ASE 未来任何的增长。 建议的大小为 `/25`，其地址长度为 128 位且能够容纳最大尺寸的 ASE。 可以选择的大小下限为 `/28`。 如果基础结构有需要，此大小只能缩放到最多 3 个实例。
 
     * 超过应用服务计划中默认的最大值（100 个实例）。
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 03/16/2018
 
     * &lt;asename&gt;.p.azurewebsites.net
 
-   用于应用的自定义域名和 ASE 使用的域名不能重叠。 对于域名为 _contoso.com_ 的 ILB ASE，不能将如下所示的自定义域名用于应用：
+   有一项名为“自定义域名”的功能，用于将现有的 DNS 名称映射到 Web 应用。 有关该功能的详细信息，可参阅[将现有的 DNS 名称映射到 Web 应用][customdomain]文档。 用于应用的自定义域名和 ASE 使用的域名不能重叠。 对于域名为 _contoso.com_ 的 ILB ASE，不能将如下所示的自定义域名用于应用：
 
     * www.contoso.com
 
@@ -116,7 +116,7 @@ ms.lasthandoff: 03/16/2018
 
 5. 选择或创建应用服务计划。 若想创建新的应用服务计划，请选择 ASE 作为位置。 选择希望在其中创建应用服务计划的辅助角色池。 创建应用服务计划时，选择 ASE 作为位置并选择辅助角色池。 指定应用的名称时，应用名称下面的域会替换为 ASE 的域。
 
-6. 选择“创建”。 如果希望应用显示在仪表板上，请选中“固定到仪表板”复选框。
+6. 选择**创建**。 如果希望应用显示在仪表板上，请选中“固定到仪表板”复选框。
 
     ![应用服务计划创建][2]
 
@@ -250,3 +250,4 @@ Azure App Service 提供大量安全措施，既可保护系统， 也有助于�
 [Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[customdomain]: ../app-service-web-tutorial-custom-domain.md

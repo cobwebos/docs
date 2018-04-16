@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure Log Analytics 监视 Azure HDInsight 群集 | Microsoft Docs"
-description: "了解如何使用 Azure Log Analytics 监视在 HDInsight 群集中运行的作业。"
+title: 使用 Azure Log Analytics 监视 Azure HDInsight 群集 | Microsoft Docs
+description: 了解如何使用 Azure Log Analytics 监视在 HDInsight 群集中运行的作业。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 2c43b9aabda56e1204870575e86934bf93d05882
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: be71b065999c30546432895804df8633da21b43e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>使用 Azure Log Analytics 监视 HDInsight 群集
 
 了解如何使用 Azure Log Analytics 监视 HDInsight 中的 Hadoop 群集操作。
 
-[Log Analytics](../log-analytics/log-analytics-overview.md) 是 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 中的一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。 
+[Log Analytics](../log-analytics/log-analytics-overview.md) 是一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。 
 
 ## <a name="prerequisites"></a>先决条件
 
 * **一个 Azure 订阅**。 在开始学习本教程之前，必须有一个 Azure 订阅。 请参阅[立即创建免费 Azure 帐户](https://azure.microsoft.com/free)。
 
-* **一个 Azure HDInsight 群集**。 目前，可以将 Azure 操作管理套件与以下 HDInsight 群集类型配合使用：
+* **一个 Azure HDInsight 群集**。 目前，可以将 Log Analytics 与以下 HDInsight 群集类型配合使用：
 
     * Hadoop
     * HBase

@@ -1,8 +1,8 @@
 ---
-title: "在 Azure Log Analytics 中收集自定义日志 | Microsoft Docs"
-description: "Log Analytics 可以从 Windows 和 Linux 计算机上的文本文件中收集事件。  本文介绍如何定义新的自定义日志，以及这些日志在 Log Analytics 工作区中创建的记录的详细信息。"
+title: 在 Azure Log Analytics 中收集自定义日志 | Microsoft Docs
+description: Log Analytics 可以从 Windows 和 Linux 计算机上的文本文件中收集事件。  本文介绍如何定义新的自定义日志，以及这些日志在 Log Analytics 工作区中创建的记录的详细信息。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2017
+ms.date: 04/04/2018
 ms.author: bwren
-ms.openlocfilehash: 401fbb39194a24721274f55f0fc2a4cdc235a32b
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: bf9acd5d7130a5e35182271f07593adab19d448b
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics 中的自定义日志
 Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算机上的文本文件中收集事件。 许多应用程序将信息记录到文本文件，而不是标准日志记录服务（例如 Windows 事件日志或 Syslog）。  收集后，使用 Log Analytics 的[自定义字段](log-analytics-custom-fields.md)功能可将日志中的每个记录解析到各个字段中。
@@ -31,7 +31,7 @@ Log Analytics 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 
     YYYY-MM-DD HH:MM:SS<br>M/D/YYYY HH:MM:SS AM/PM <br>Mon DD,YYYY HH:MM:SS
 
-- 日志文件不允许循环更新。如需添加新条目，请添加至该日志文件末尾或添加至新文件，不允许覆盖该日志文件的旧条目。
+- 日志文件不允许会以新条目覆盖文件的循环日志记录或日志轮换。
 - 日志文件必须使用 ASCII 或 UTF-8 编码。  不支持其他格式，如 UTF-16。
 
 >[!NOTE]

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2018
 ms.author: jdial
-ms.openlocfilehash: 0d550d3bda119cfcb9ecc6f852006d5e325fdfa3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b0eb10d373f47191933eb1c3c22b779e9e8d6685
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="monitor-network-connections-with-azure-network-watcher-using-the-azure-portal"></a>使用 Azure 门户通过 Azure 网络观察程序监视网络连接
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/03/2018
 
 * 要监视其连接的区域中的网络观察程序的实例。 如果尚不具备实例，可通过完成[创建 Azure 网络观察程序实例](network-watcher-create.md)中的步骤来创建一个。
 * 要监视的源 VM。 若要了解如何创建 VM，请参阅“创建 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) VM”。
-* 要从中监视连接的 VM 中装有 `AzureNetworkWatcherExtension`。 若要在 Windows VM 中安装扩展项，请参阅 [适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)；若在 Linux VM 中安装扩展项，请参阅[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+* 要从中监视连接的 VM 中装有 `AzureNetworkWatcherExtension`。 若要在 Windows VM 中安装扩展项，请参阅 [适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)；若在 Linux VM 中安装扩展项，请参阅[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。 要监视的目标终结点上不需要该扩展。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure 
 

@@ -1,24 +1,19 @@
 ---
-title: 为流分析中的查询设置警报 | Microsoft 文档
-description: 了解流分析警报
-keywords: 设置警报
+title: 为 Azure 流分析作业设置监视警报
+description: 本文介绍如何使用 Azure 门户为 Azure 流分析作业设置监视和警报。
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 9952e2cf-b335-4a5c-8f45-8d3e1eda2e20
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 06/26/2017
 ms.author: jeanb
-ms.openlocfilehash: b88d7e82ffcd2fab1845faf92f6d7a53b72cb54d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 06/26/2017
+ms.openlocfilehash: 2498c0960ef8fd50064e40428f87d106abf10ecd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>为 Azure 流分析作业设置警报
 ## <a name="introduction-monitor-page"></a>简介：监视页
@@ -49,7 +44,7 @@ ms.lasthandoff: 03/30/2018
 
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

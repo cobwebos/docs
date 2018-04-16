@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure AD 访问评审管理来宾访问权限 | Microsoft Docs"
-description: "使用 Azure Active Directory 访问评审管理属于组的成员或已分配到应用程序的来宾用户"
+title: 使用 Azure AD 访问评审管理来宾访问权限 | Microsoft Docs
+description: 使用 Azure Active Directory 访问评审管理属于组的成员或已分配到应用程序的来宾用户
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 8d5cc8035d085ac9c8fc46077376836726afbb1a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 564f4f4a3f7532a7419e15b91fdbae9ee12088fd
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审管理来宾访问权限
 
@@ -105,15 +105,15 @@ Azure AD 支持采用多种方案评审来宾用户。
 > [!NOTE]
 > 早期版本的 Azure 门户不允许 UserType 为“来宾”的用户具有管理访问权限。 在某些情况下，目录中的管理员可能已使用 PowerShell 将来宾的 UserType 值更改为“成员”。 如果之前目录中已发生此更改，则之前的查询可能不包括以前具有管理访问权限的所有来宾用户。 在这种情况下，需要更改来宾的 UserType 或手动将来宾包含在组成员身份中。
 
-1. 如果尚不存在适当的组，请在 Azure AD 中创建一个安全组并在其中以成员的形式包含来宾。 例如，可以创建一个组并在其中包含手动维护的来宾成员身份。 或者，可以针对 Contoso 租户中 UserType 属性值为“来宾”的用户，以类似于“Guests of Contoso”的名称创建一个动态组。
+1. 如果尚不存在适当的组，请在 Azure AD 中创建一个安全组并在其中以成员的形式包含来宾。 例如，可以创建一个组并在其中包含手动维护的来宾成员身份。 或者，可以针对 Contoso 租户中 UserType 属性值为“来宾”的用户，以类似于“Guests of Contoso”的名称创建一个动态组。  为提高效率，请确保组主要是来宾 - 不要选择包含不需要被评审的用户的组。
 
 2. 若要针对该组启动访问评审，请将成员自己选择为评审者。 有关详细信息，请参阅[创建访问评审](active-directory-azure-ad-controls-create-access-review.md)。
 
-3. 让每个来宾自我评审其成员身份。 默认情况下，接受邀请的每个来宾会收到来自 Azure AD 的电子邮件，其中包含组织访问面板中访问评审的链接。 Azure AD 为来宾提供了有关[如何评审其访问权限](active-directory-azure-ad-controls-perform-access-review.md)的说明。
+3. 让每个来宾自我评审其成员身份。 默认情况下，接受邀请的每个来宾会收到来自 Azure AD 的电子邮件，其中包含组织访问面板中访问评审的链接。 Azure AD 为来宾提供了有关[如何评审其访问权限](active-directory-azure-ad-controls-perform-access-review.md)的说明。  未接受其邀请的这些来宾将在评审结果中显示为“未通知”。
 
 4. 审阅者提供输入后，将停止访问评审。 有关详细信息，请参阅[完成访问评审](active-directory-azure-ad-controls-complete-access-review.md)。
 
-5. 删除已拒绝评审、未完成评审或者事先未接受邀请的来宾的来宾访问权限。 如果某些来宾是由于以前未接受邀请而选择参与评审的联系人，则可以使用 Azure 门户或 PowerShell 禁用其帐户。 如果来宾不再需要访问权限并且不是联系人，则可以使用 Azure 门户或 PowerShell 从目录中删除其用户对象。
+5. 删除已拒绝评审、未完成评审或者事先未接受邀请的来宾的来宾访问权限。 如果某些来宾是已被选择参加评审或以前未接受邀请的联系人，则可以使用 Azure 门户或 PowerShell 禁用其帐户。 如果来宾不再需要访问权限并且不是联系人，则可以使用 Azure 门户或 PowerShell 从目录中删除其来宾用户对象。
 
 ## <a name="next-steps"></a>后续步骤
 

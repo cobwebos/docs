@@ -1,10 +1,10 @@
 ---
-title: "使用 VM 扩展监视 Linux VM | Microsoft Docs"
-description: "了解如何使用 Linux 诊断扩展监视 Azure 中 Linux VM 的性能和诊断数据。"
+title: 使用 VM 扩展监视 Linux VM | Microsoft Docs
+description: 了解如何使用 Linux 诊断扩展监视 Azure 中 Linux VM 的性能和诊断数据。
 services: virtual-machines-linux
 author: NingKuang
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ms.assetid: f54a11c5-5a0e-40ff-af6c-e60bd464058b
 ms.service: virtual-machines-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.openlocfilehash: b8c6e2e22d8478b6e92e7b7942f15d37a840fed3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd22188042c60da7c761e1fa00a12921146caf25
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>使用 Linux 诊断扩展监视 Linux VM 的性能和诊断数据
 
@@ -47,7 +47,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 
 ### <a name="current-version-of-the-extension-and-deprecation-of-old-versions"></a>此扩展的当前版本和弃用的旧版本
 
-此扩展的最新版本为 2.3，所有旧版本（2.0、2.1 和 2.2）将于今年 (2017) 年底弃用且不再发布。 如果已安装禁用自动次要版本升级的 Linux 诊断扩展，强烈建议卸载该扩展，然后在启用自动次要版本升级的情况下重新安装它。 在经典 (ASM) VM 上，如果正在通过 Azure XPLAT CLI 或 Powershell 安装该扩展，则可以通过指定“2.*”作为版本来实现此目的。 在 ARM VM 上，可以通过在 VM 部署模板中包括 '"autoUpgradeMinorVersion": true' 来实现此目的。 此外，此扩展的任何新安装都应会自动次要版本升级选项启用。
+此扩展的最新版本为 2.3，所有旧版本（2.0、2.1 和 2.2）将于今年 (2017) 年底弃用且不再发布。 如果已安装禁用自动次要版本升级的 Linux 诊断扩展，强烈建议卸载该扩展，并在启用自动次要版本升级的情况下重新安装它。 在经典 (ASM) VM 上，如果正在通过 Azure XPLAT CLI 或 Powershell 安装该扩展，则可以通过指定“2.*”作为版本来实现此目的。 在 ARM VM 上，可以通过在 VM 部署模板中包括 '"autoUpgradeMinorVersion": true' 来实现此目的。 此外，此扩展的任何新安装都应会自动次要版本升级选项启用。
 
 ## <a name="enable-the-extension"></a>启用扩展
 
@@ -81,7 +81,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 * 一组核心基础系统数据。 请注意，[System Center 跨平台解决方案站点](https://scx.codeplex.com/wikipage?title=xplatproviders)上介绍了完整的数据集。
   如果想要启用额外的数据，请继续执行方案 2 和 3 中的步骤。
 
-步骤 1。 使用以下内容创建名为 PrivateConfig.json 的文件：
+步骤 1. 使用以下内容创建名为 PrivateConfig.json 的文件：
 
     {
         "storageAccountName" : "the storage account to receive data",
@@ -94,7 +94,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 
 此节介绍如何自定义性能和诊断数据表。
 
-步骤 1。 使用方案 1 描述的内容创建名为 PrivateConfig.json 的文件。 同时也创建名为 PublicConfig.json 的文件。 指定你想要收集的特定数据。
+步骤 1. 使用方案 1 描述的内容创建名为 PrivateConfig.json 的文件。 同时也创建名为 PublicConfig.json 的文件。 指定你想要收集的特定数据。
 
 有关所有受支持的提供程序和变量，请参考 [System Center 跨平台解决方案站点](https://scx.codeplex.com/wikipage?title=xplatproviders)。 可以拥有多个查询，通过将更多查询追加到脚本中，还可以将它们存储为多个表。
 
@@ -117,7 +117,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 
 此节介绍如何收集特定的日志文件并将其上传到存储帐户。 需要指定日志文件的路径，以及要用来存储日志的表名。 可以将多个文件/表条目添加到脚本，以创建多个日志文件。
 
-步骤 1。 使用方案 1 描述的内容创建名为 PrivateConfig.json 的文件。 然后使用以下内容创建另一个名为 PublicConfig.json 的文件：
+步骤 1. 使用方案 1 描述的内容创建名为 PrivateConfig.json 的文件。 然后使用以下内容创建另一个名为 PublicConfig.json 的文件：
 
 ```json
 {
@@ -139,7 +139,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM。
 
 本节说明如何阻止扩展收集日志。 请注意，即使使用此重新配置，监视代理进程仍会启动并运行。 如果想要完全停止监视代理进程，可以通过禁用扩展来实现此目的。 禁用该扩展的命令是 `azure vm extension set --disable <vm_name> LinuxDiagnostic Microsoft.OSTCExtensions '2.*'`。
 
-步骤 1。 使用方案 1 描述的内容创建名为 PrivateConfig.json 的文件。 使用以下内容创建另一个名为 PublicConfig.json 的文件：
+步骤 1. 使用方案 1 描述的内容创建名为 PrivateConfig.json 的文件。 使用以下内容创建另一个名为 PublicConfig.json 的文件：
 
     {
         "perfCfg" : [],

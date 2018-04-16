@@ -1,24 +1,19 @@
 ---
-title: IoT 实时数据流和 Azure 流分析 | Microsoft 文档
+title: 使用 Azure 流分析的 IoT 实时数据流
 description: 带流分析和实时数据处理的 IoT 传感器标记和数据流
-keywords: iot 解决方案, iot 入门
 services: stream-analytics
-documentationcenter: ''
-author: SnehaGunda
-manager: ryanw
-ms.assetid: 3e829055-75ed-469f-91f5-f0dc95046bdb
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
 ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: sngun
-ms.openlocfilehash: 52b05d4daf75d81402d7c72cd05f3819a3456171
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 491b0fdba464e5b0c6225a75c534ca6abb710855
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>开始使用 Azure 流分析处理来自 IoT 设备的数据
 在本教程中，会学习如何创建流处理逻辑，以从物联网 (IoT) 设备收集数据。 我们会使用真实的物联网 (IoT) 用例来演示如何经济实惠地快速生成解决方案。
@@ -27,7 +22,7 @@ ms.lasthandoff: 03/30/2018
 * [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)
 * 可从 [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 Contoso 是一家工业自动化公司，该公司已将其制造流程完全自动化。 这家工厂中的设备配有可实时发送数据流的传感器。 在此方案中，产品车间经理希望通过传感器数据获得实时见解，从而找到规律并采取措施。 我们将对传感器数据使用流分析查询语言 (SAQL)，查找传入数据流的有趣规律。
 
 下图中，Texas Instruments SensorTag 设备正在生成数据。 数据的有效负载是 JSON 格式，如下所示：

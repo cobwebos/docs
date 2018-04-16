@@ -1,25 +1,25 @@
 ---
-title: "安装本地数据网关 | Microsoft 文档"
-description: "了解如何安装并配置本地数据网关。"
+title: 安装本地数据网关 | Microsoft 文档
+description: 了解如何安装并配置本地数据网关。
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: analysis-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 04/03/2018
 ms.author: owend
-ms.openlocfilehash: c2cbe1c60f67c689a38d1585245610a6fa73bff4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b57ee7d9617f8bf2e54122ac37f351ae0cf9db26
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安装并配置本地数据网关
 同一区域中的一个或多个 Azure Analysis Services 服务器连接到本地数据源时，需要具备本地数据网关。 要了解有关网关的更多信息，请参阅[本地数据网关](analysis-services-gateway.md)。
@@ -44,6 +44,7 @@ ms.lasthandoff: 02/21/2018
 * 在计算机处于开启但未处于休眠状态下安装网关。
 * 不要在使用无线网络连接的计算机上安装网关。 否则，可能会降低性能。
 * 在 Azure AD 中使用与要在其中注册网关的订阅相同[租户](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)的帐户登录到 Azure。 安装和注册网关时不支持 Azure B2B（来宾）帐户。
+* Azure 政府 (Fairfax) 不支持此处所述的（统一）网关。 对 Azure Analysis Services 使用专用本地网关。 专用网关不支持 Power BI 和 Power Apps 等附加服务。 专用网关从门户的服务器快速入门中进行安装。
 
 
 ## <a name="download"></a>下载

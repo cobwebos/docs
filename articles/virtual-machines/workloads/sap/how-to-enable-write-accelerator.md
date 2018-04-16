@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/13/2018
+ms.date: 04/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d1ca15028590824cef95e3e9c2d957f9883a0e3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b0cb9b4003faa2ccdd07ccc78c2095472690f0e7
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="azure-write-accelerator-for-sap-deployments"></a>用于 SAP 部署的 Azure 写入加速器
 Azure 写入加速器是专门针对 M 系列 VM 推出的一项功能。 Azure 写入加速器不适用于 Azure 中的其他任何 VM 系列，而只适用于 M 系列。 顾名思义，该功能的目的是改善针对 Azure 高级存储执行的写入操作的 I/O 延迟。 
@@ -28,10 +28,11 @@ Azure 写入加速器是专门针对 M 系列 VM 推出的一项功能。 Azure 
 >[!NOTE]
 > Azure 写入加速器目前以公共预览版提供，需将你的 Azure 订阅 ID 加入白名单
 
-公共预览版 Azure 写入加速器功能已在以下区域推出：
+公共预览版 Azure 写入加速器功能已在以下区域中可用于 M 系列部署：
 
 - 美国西部 2
 - 欧洲西部
+- 东南亚
 
 ## <a name="planning-for-using-azure-write-accelerator"></a>使用 Azure 写入加速器进行规划
 应该对包含事务日志或 DBMS 重做日志的卷使用 Azure 写入加速器。 不建议对 DBMS 的数据卷使用 Azure 写入加速器。 实施此限制的原因是，Azure 写入加速器要求装载 Azure 高级存储 VHD，并且不能使用适用于高级存储的 附加读取缓存。 这种缓存的优势更多地体现在传统数据库中。 由于写入加速器只会影响写入活动，而不会加快读取，因此，支持的 SAP 设计是针对 SAP 支持的数据库的事务日志或重做日志驱动器使用写入加速器。 
@@ -54,15 +55,16 @@ Azure 写入加速器在每个 VM 中支持的 Azure 高级存储 VHD 数目有�
 > 若要针对不属于基于多个磁盘构建的，且使用 Windows 磁盘或卷管理器、Windows 存储空间、Windows 横向扩展文件服务器 (SOFS)、Linux LVM 或 MDADM 的现有 Azure 磁盘启用 Azure 写入加速器，需要关闭访问该 Azure 磁盘的工作负荷。 必须关闭使用 Azure 磁盘的数据库应用程序。
 
 > [!IMPORTANT]
-> 对 VM 的 Azure 操作系统磁盘启用写入加速器会重新启动该 VM。 
+> 对 VM 的 Azure VM 操作系统磁盘启用写入加速器会重新启动该 VM。 
 
 对于 SAP 相关的 VM 配置，应该不需要为操作磁盘启用 Azure 写入加速器
 
 ### <a name="restrictions-when-using-azure-write-accelerator"></a>使用 Azure 写入加速器时的限制
 对 Azure 磁盘/VHD 使用 Azure 写入加速器时，需遵循以下限制：
 
-- 需将高级磁盘缓存设置为“无”。 不支持其他所有缓存模式。
+- 需要将高级磁盘缓存设置为“无”或“只读”。 不支持其他所有缓存模式。
 - 尚不支持已启用写入加速器的磁盘上的快照。 此限制会导致 Azure 备份服务无法对虚拟机的所有磁盘执行应用程序一致的快照。
+- 仅较小的 I/O 大小会采用加速路径。 在以下工作负荷情形下，I/O 写入到磁盘的更改不会采用加速路径：数据大容量加载或者数据在持久保存到存储之前，不同 DBMS 的事务日志缓冲区已较大程度上填满。
 
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>在特定磁盘上启用写入加速器
@@ -289,7 +291,7 @@ armclient GET /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>
 
 ```
 
-下一步是更新 JSON 文件，并在名为“log1”的磁盘上启用写入加速器。 为此，可将此属性添加到 JSON 文件中磁盘缓存条目的后面。 
+下一步是更新 JSON 文件，并在名为“log1”的磁盘上启用写入加速器。 可以通过将此属性添加到 JSON 文件中磁盘缓存条目的后面来完成此步骤。 
 
 ```
         {

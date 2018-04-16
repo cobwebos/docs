@@ -1,18 +1,18 @@
 ---
-title: "Azure 事件网格概念"
-description: "介绍 Azure 事件网格及其概念。 定义事件网格的几个关键组件。"
+title: Azure 事件网格概念
+description: 介绍 Azure 事件网格及其概念。 定义事件网格的几个关键组件。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 04/04/2018
 ms.author: babanisa
-ms.openlocfilehash: 4fd44387ac1c3dad9f0194f1b2c97d6350f9b15d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e55127e60470f8f95235893a14113b80e8d6565b
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure 事件网格中的概念
 
@@ -32,9 +32,11 @@ Azure 事件网格中的主要概念有：
 
 系统主题是 Azure 服务提供的内置主题。 自定义主题是应用程序和第三方主题。
 
+设计应用程序时，为每个类别的相关事件创建自定义主题。 例如，假设有一个应用程序发送与修改用户帐户和处理订单相关的事件。 任何事件处理程序都不太可能同时需要这两个类别的事件。 请创建两个自定义主题，让事件处理程序订阅其感兴趣的主题。 订阅自定义主题时，事件处理程序可以按事件类型进行筛选。
+
 ## <a name="event-subscriptions"></a>事件订阅
 
-订阅指示一个主题上订阅服务器有兴趣接收的事件的事件网格。  订阅还包含应如何将事件传递到订阅服务器的信息。
+订阅指示一个主题上订阅服务器有兴趣接收的事件的事件网格。 订阅还包含应如何将事件传递到订阅服务器的信息。
 
 ## <a name="event-handlers"></a>事件处理程序
 
@@ -44,7 +46,7 @@ Azure 事件网格中的主要概念有：
 
 在订阅主题时，可以筛选发送到终结点的事件。 可以按事件类型或使用者模式进行筛选。 有关详细信息，请参阅[事件网格订阅架构](subscription-creation-schema.md)。
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 
 事件网格可为订阅主题和发布主题提供安全性。 订阅时，必须对资源或主题具有足够的权限。 发布时，必须具有该主题的 SAS 令牌或密钥身份验证。 有关详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
 

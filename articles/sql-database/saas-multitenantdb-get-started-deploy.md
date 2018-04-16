@@ -9,13 +9,13 @@ ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 3806b165e0124e979f59b51d5583cdbb1f949366
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4cbf758b82bccae8efe77e197d23a090d71fd7e5
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的分片多租户应用程序
 
@@ -57,11 +57,11 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 
 通过执行本部分中的步骤，提供用户值，用于确保资源名称为全局唯一，以及一个资源组的名称，该资源组包含部署应用时创建的所有资源。 如果一个人名叫 Ann Finley，则建议输入以下名称：
 - 用户：af1（首字母缩写加数字。如果是第二次部署应用，则使用不同的值，例如 af2。）
-- 资源组：wingtip-dpt-af1（wingtip-dpt 指示这是“每租户一个数据库”应用*。追加用户名 af1 会将资源组名称与它包含的资源的名称相关联。）*
+- *资源组：***wingtip-mt-af1** *（wingtip-mt 指示这是分片式多租户应用。追加用户名 af1 会将资源组名称与它包含的资源的名称相关联。）*
 
 现在请选择自己的名称，并将其写下来。 
 
-#### <a name="steps"></a>步骤
+#### <a name="steps"></a>Steps
 
 1. 单击下面的“部署到 Azure”蓝色按钮。
     - 带有 Wingtip Tickets SaaS 部署模板的 Azure 门户随即打开。
@@ -123,7 +123,7 @@ Wingtip 应用在 Azure 云中运行，并使用 Azure SQL 数据库。 下面�
 中心式“事件中心”网页提供特定部署中租户的链接列表。 请执行以下步骤，体验**事件中心**网页和单个的 Web 应用：
 
 1. 在 Web 浏览器中打开“事件中心”：
-    - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp;（将 &lt;user&gt; 替换为部署的用户值。）
+    - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; *（将 &lt;user&gt; 替换为部署的用户值。）*
 
     ![事件中心](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 

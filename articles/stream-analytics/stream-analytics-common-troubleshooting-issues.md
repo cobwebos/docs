@@ -1,24 +1,19 @@
 ---
-title: 对 Azure 流分析中格式不正确的输入事件进行故障排除 | Microsoft Docs
+title: 对 Azure 流分析中格式不正确的输入事件进行故障排除
 description: 如何知道输入数据中的哪个事件导致了流分析作业中的问题
-keywords: ''
-documentationcenter: ''
 services: stream-analytics
-author: SnehaGunda
+author: jasonwhowell
 manager: Kfile
-ms.assetid: ''
+ms.author: jasonh
+ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/05/2018
-ms.author: sngun
-ms.openlocfilehash: 6b6c154568fe97b7495ae70dc162dc475169afea
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: fcbb03b4d9aed797cf99c374661c743d39f81276
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>流分析的常见问题以及故障排除的步骤
 
