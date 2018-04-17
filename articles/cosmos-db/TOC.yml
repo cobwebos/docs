@@ -6,8 +6,6 @@ items:
     items:
       - name: 关于 Azure Cosmos DB
         href: introduction.md
-      - name: 文档试验
-        href: experiment.md
   - name: 快速入门
     expanded: true
     items:
@@ -185,7 +183,7 @@ items:
                 href: sql-api-sql-query-metrics.md
               - name: SQL 演练
                 href: 'https://aka.ms/cosmos-db-playground'
-              - name: 分区
+              - name: SQL 数据分区
                 href: sql-api-partition-data.md
               - name: 存储过程、触发器和 UDF
                 href: programming.md
@@ -288,6 +286,8 @@ items:
             items:
               - name: Gremlin 支持
                 href: gremlin-support.md
+              - name: Graph 分区
+                href: graph-partitioning.md
           - name: 表 API
             items:
               - name: 表开发
@@ -330,8 +330,6 @@ items:
             href: geospatial.md
           - name: 索引
             href: indexing-policies.md
-          - name: Visual Studio 中的连接服务
-            href: connected-service.md
       - name: 管理
         items:
           - name: 以经济高效的方式读取和写入
@@ -396,7 +394,7 @@ items:
           - name: 将 ODBC 驱动程序用于数据可视化
             href: odbc-driver.md
           - name: 将 Spring Boot Starter 与 SQL API 配合使用
-            href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md
+            href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
   - name: 引用
     items:
       - name: 代码示例

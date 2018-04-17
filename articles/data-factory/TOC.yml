@@ -364,6 +364,10 @@
           href: create-azure-ssis-integration-runtime.md
     - name: 在 Azure 中运行 SSIS 包
       items:
+        - name: Azure-SSIS Integration Runtime 的自定义设置
+          href: how-to-configure-azure-ssis-ir-custom-setup.md
+        - name: 预配用于 Azure-SSIS Integration Runtime 的企业版
+          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: 将 Azure-SSIS 集成运行时加入 VNET
           href: join-azure-ssis-integration-runtime-virtual-network.md
         - name: 管理 Azure-SSIS 集成运行时
@@ -374,6 +378,8 @@
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: 计划 Azure-SSIS 集成运行时
           href: how-to-schedule-azure-ssis-integration-runtime.md
+        - name: 开发用于 Azure-SSIS Integration Runtime 的许可组件
+          href: how-to-develop-azure-ssis-ir-licensed-components.md
     - name: 创建触发器
       items:
         - name: 创建计划触发器

@@ -56,6 +56,7 @@
 #### [邀请电子邮件](active-directory-b2b-invitation-email.md)
 #### [邀请兑换](active-directory-b2b-redemption-experience.md)
 #### [在没有邀请的情况下添加 B2B 用户](active-directory-b2b-add-user-without-invite.md)
+#### [允许或阻止邀请](active-directory-b2b-allow-deny-list.md)
 #### [用于 B2B 的条件性访问](active-directory-b2b-mfa-instructions.md)
 #### [B2B 共享策略](active-directory-b2b-delegate-invitations.md)
 #### [将 B2B 用户添加到角色](active-directory-b2b-add-guest-to-role.md)
@@ -327,9 +328,6 @@
 #### [技术参考](active-directory-conditional-access-technical-reference.md)
 #### [常见问题](active-directory-conditional-faqs.md)
 
-### Windows Hello
-#### [无密码身份验证](active-directory-azureadjoin-passport.md)
-#### [启用 Windows Hello for Business](active-directory-azureadjoin-passport-deployment.md)
 ### 基于证书的身份验证
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)

@@ -201,6 +201,8 @@
       items:
         - name: 群集安全性
           href: service-fabric-cluster-security.md
+        - name: 扩展
+          href: service-fabric-cluster-scaling.md
         - name: Linux 和 Windows 之间的功能差异
           href: service-fabric-linux-windows-differences.md
         - name: Azure 上的群集
@@ -323,6 +325,8 @@
               href: service-fabric-resource-governance.md
             - name: 卷和日志记录驱动程序
               href: service-fabric-containers-volume-logging-drivers.md
+            - name: 查看容器日志
+              href: service-fabric-containers-view-logs.md
             - name: 容器内的服务
               href: service-fabric-services-inside-containers.md
             - name: 容器网络模式
@@ -539,8 +543,10 @@
           href: service-fabric-visualizing-your-cluster.md
         - name: 连接到安全群集
           href: service-fabric-connect-to-secure-cluster.md
-        - name: 修补群集节点
+        - name: 修补群集节点 (Windows)
           href: service-fabric-patch-orchestration-application.md
+        - name: 修补群集节点 (Linux)
+          href: service-fabric-patch-orchestration-application-linux.md
     - name: 监视和诊断
       items:
         - name: 使用 OMS 进行分析

@@ -21,7 +21,7 @@
       href: automation-tutorial-update-management.md
     - name: 通过 Runbook 载入更新和更改跟踪
       href: automation-onboard-solutions.md
-    - name: 标识 VM 上的软件
+    - name: 标识环境中的软件
       href: automation-tutorial-installed-software.md
     - name: 排查 VM 上的更改问题
       href: automation-tutorial-troubleshoot-changes.md

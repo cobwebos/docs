@@ -293,8 +293,8 @@
               href: delete-vault.md
         - name: 监视和故障排除
           items:
-            - name: 排查故障转移到 Azure 的问题
-              href: site-recovery-failover-to-azure-troubleshoot.md
+            - name: 排查 Hyper-V 复制问题
+              href: hyper-v-azure-troubleshoot.md
             - name: 监视 Azure Site Recovery
               href: site-recovery-monitor-and-troubleshoot.md
     - name: Hyper-V 到辅助站点

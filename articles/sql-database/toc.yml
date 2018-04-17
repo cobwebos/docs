@@ -48,14 +48,18 @@
       href: sql-database-design-first-database.md
     - name: 1 - 使用 .NET 设计 DB
       href: sql-database-design-first-database-csharp.md
-    - name: 2 - 迁移到 SQL Server DB
+    - name: 2 - 使用 DMS 迁移到 SQL Server DB
       href: sql-database-migrate-your-sql-server-database.md
     - name: 3 - 保护 SQL DB
       href: sql-database-security-tutorial.md
     - name: 4 - 实现地理分散的数据库
       href: sql-database-implement-geo-distributed-database.md
     - name: 5 - 创建托管实例
-      href: sql-database-managed-instance-tutorial-portal.md
+      href: sql-database-managed-instance-create-tutorial-portal.md
+    - name: 6 - 将备份还原到托管实例
+      href: sql-database-managed-instance-restore-from-backup-tutorial.md
+    - name: 7 - 使用 DMS 迁移到托管实例
+      href: ../dms/tutorial-sql-server-to-managed-instance.md
 - name: 示例
   items:
     - name: 代码示例
@@ -410,6 +414,10 @@
               href: saas-tenancy-cross-tenant-reporting.md
             - name: 用于分析的 ETL
               href: saas-tenancy-tenant-analytics.md
+            - name: 使用异地还原进行灾难恢复
+              href: saas-dbpertenant-dr-geo-restore.md
+            - name: 使用数据库异地复制进行灾难恢复
+              href: saas-dbpertenant-dr-geo-replication.md
         - name: 多租户数据库
           items:
             - name: 部署示例应用

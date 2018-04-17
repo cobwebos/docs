@@ -83,6 +83,8 @@
           href: openfaas.md
         - name: 在 AKS 上运行 Spark 作业
           href: spark-job.md
+        - name: 在 AKS 上使用 GPU
+          href: gpu-cluster.md
     - name: Kubernetes 基础知识
       items:
         - name: 使用 Kubernetes 仪表板

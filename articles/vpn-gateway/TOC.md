@@ -25,32 +25,25 @@
 ### [Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 ### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
-### [Azure 门户（经典）](vpn-gateway-howto-site-to-site-classic-portal.md)
-
 ## [下载 VPN 设备配置脚本](vpn-gateway-download-vpndevicescript.md)
-
 ## 配置点到站点连接 - 本机 Azure 证书身份验证
 ### 配置 P2S VPN
 #### [Azure 门户](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 #### [Azure PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
-#### [Azure 门户（经典）](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 ### 生成自签名证书
 #### [Azure PowerShell](vpn-gateway-certificates-point-to-site.md)
 #### [Makecert](vpn-gateway-certificates-point-to-site-makecert.md)
 ### [创建和安装 VPN 客户端配置文件](point-to-site-vpn-client-configuration-azure-cert.md)
 ### [安装客户端证书](point-to-site-how-to-vpn-client-install-azure-cert.md)
-
 ## 配置点到站点连接 - RADIUS 身份验证
 ### 配置 P2S VPN
 #### [Azure PowerShell](point-to-site-how-to-radius-ps.md)
 ### [创建和安装 VPN 客户端配置文件](point-to-site-vpn-client-configuration-radius.md)
 ### [将 P2S VPN RADIUS 身份验证与 NPS 服务器集成](vpn-gateway-radiuis-mfa-nsp.md)
-
 ## 配置 VNet 到 VNet 连接
 ### [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 ### [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
-### [Azure 门户（经典）](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 ## 配置部署模型之间的 VNet 到 VNet 连接
 ### [Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [Azure PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
@@ -58,7 +51,6 @@
 ### [Azure PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## 配置多个站点到站点连接
 ### [Azure 门户](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
-### [Azure PowerShell（经典）](vpn-gateway-multi-site.md)
 ## 连接多个基于策略的 VPN 设备
 ### [Azure PowerShell](vpn-gateway-connect-multiple-policybased-rm-ps.md)
 ## 在连接上配置 IPsec/IKE 策略
@@ -70,7 +62,6 @@
 ### [Azure CLI](bgp-how-to-cli.md)
 ## 配置强制隧道
 ### [Azure PowerShell](vpn-gateway-forced-tunneling-rm.md)
-### [Azure PowerShell（经典）](vpn-gateway-about-forced-tunneling.md)
 ## 修改本地网络网关设置
 ### [Azure 门户](vpn-gateway-modify-local-network-gateway-portal.md)
 ### [Azure PowerShell](vpn-gateway-modify-local-network-gateway.md)
@@ -80,13 +71,10 @@
 ## 删除 VPN 网关
 ### [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-### [Azure PowerShell（经典）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## [配置 VPN 网关（经典）](vpn-gateway-configure-vpn-gateway-mp.md)
 ## [网关 SKU（旧版）](vpn-gateway-about-skus-legacy.md)
 ## 配置第三方 VPN 设备
 ### [概述和 Azure 配置](vpn-gateway-3rdparty-device-config-overview.md)
 ### [示例：Cisco ASA 设备（IKEv2/无 BGP）](vpn-gateway-3rdparty-device-config-cisco-asa.md)
-## [从经典部署模型迁移到资源管理器部署模型](vpn-gateway-classic-resource-manager-migration.md)
 ## [故障排除](vpn-gateway-troubleshoot.md)
 ### [社区建议的 VPN 或防火墙设备设置](vpn-gateway-third-party-settings.md)
 ### [配置和验证 VNet 或 VPN 连接](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
@@ -98,6 +86,15 @@
 #### [站点到站点连接问题](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
 #### [站点到站点连接间歇性地断开](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 
+## 经典部署模型文章
+### [配置站点到站点连接](vpn-gateway-howto-site-to-site-classic-portal.md)
+### [配置点到站点连接](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
+### [配置 VNet 到 VNet 连接](vpn-gateway-howto-vnet-vnet-portal-classic.md)
+### [配置强制隧道](vpn-gateway-about-forced-tunneling.md)
+### [删除 VPN 网关](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+### [配置多个 S2S 连接](vpn-gateway-multi-site.md)
+### [配置 VPN 网关](vpn-gateway-configure-vpn-gateway-mp.md)
+### [从经典部署模型迁移到资源管理器部署模型](vpn-gateway-classic-resource-manager-migration.md)
 
 # 引用
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)

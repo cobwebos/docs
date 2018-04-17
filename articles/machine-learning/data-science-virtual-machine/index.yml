@@ -1,62 +1,63 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure 数据科学虚拟机文档"
+title: Azure 数据科学虚拟机文档
 metadata:
-  title: "Azure 数据科学虚拟机文档"
-  description: "了解如何使用数据科学虚拟机。"
+  title: 数据科学虚拟机文档 - Azure
+  description: 了解如何使用数据科学虚拟机，这是 Azure 云中的一个试验环境，专为进行数据科学研究而构建。 它预装并预配了许多热门数据科学和其他工具，可为高级分析快速生成智能应用程序。
   services: machine-learning
-  author: bradsev
+  author: gopitk
   manager: cgronlun
   ms.service: machine-learning
+  ms.component: data-science-vm
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/18/2018
-  ms.author: bradsev
-  ms.openlocfilehash: 291d38522adfa780629892ea6d7f7a17a82a0e39
-  ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+  ms.author: gokuma
+  ms.openlocfilehash: b4a4d167a74b89ff623fb8267c4fdc28b46923e9
+  ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/13/2018
+  ms.lasthandoff: 04/16/2018
 abstract:
-  description: "“数据科学和深入学习虚拟机”是 Azure 上的自定义 VM 映像，带有用于生成智能应用程序以进行高级分析的数据科学工具。"
+  description: “数据科学和深入学习虚拟机”是 Azure 上的自定义 VM 映像，带有用于生成智能应用程序以进行高级分析的数据科学工具。
 sections:
-- title: "5 分钟快速入门"
+- title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: "了解如何设置基于 Windows 或 Linux 的数据科学 VM："
+    text: 了解如何设置基于 Windows 或 Linux 的数据科学 VM：
   - type: list
     style: unordered
     items:
     - html: <a href="provision-vm.md">Windows</a>
     - html: <a href="linux-dsvm-intro.md">Linux CentOS</a>
     - html: <a href="dsvm-ubuntu-intro.md">Linux Ubuntu</a>
-- title: "分步教程"
+- title: 分步教程
   items:
   - type: paragraph
-    text: "了解如何预配和使用数据科学 VM："
+    text: 了解如何预配和使用数据科学 VM：
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"provision-vm\">预配 Windows DSVM</a>"
-    - html: "<a href=\"vm-do-ten-thing\">使用 Windows DSVM</a>"
-    - html: "<a href:\"linux-dsvm-intro\">预配 Linux CentOS DSVM</a>"
-    - html: "<a href=\"dsvm-ubuntu-intro\">预配 Linux Ubuntu DSVM</a>"
-    - html: "<a href=\"linux-dsvm-walkthrough\">使用 Linux DSVM</a>"
-- title: "更多 Azure 机器学习技术"
+    - html: <a href="provision-vm">预配 Windows DSVM</a>
+    - html: <a href="vm-do-ten-thing">使用 Windows DSVM</a>
+    - html: <a href:"linux-dsvm-intro">预配 Linux CentOS DSVM</a>
+    - html: <a href="dsvm-ubuntu-intro">预配 Linux Ubuntu DSVM</a>
+    - html: <a href="linux-dsvm-walkthrough">使用 Linux DSVM</a>
+- title: 更多 Azure 机器学习技术
   items:
   - type: paragraph
-    text: "Azure 机器学习中可用的其他技术："
+    text: Azure 机器学习中可用的其他技术：
   - type: list
     style: cards
     className: cardsFTitle
     items:
-    - title: "Azure 机器学习服务（预览版）"
+    - title: Azure 机器学习服务（预览版）
       href: /azure/machine-learning/preview/
       image:
         src: media/index/i_machine-learning.svg
         href: /azure/machine-learning/preview/
-    - title: "Azure 机器学习工作室"
+    - title: Azure 机器学习工作室
       href: /azure/machine-learning/studio/
       image:
         src: media/index/machine-learning-studio.svg

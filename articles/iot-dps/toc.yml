@@ -83,34 +83,36 @@
       href: concepts-auto-provisioning.md
     - name: 设备
       href: concepts-device.md
-    - name: “安全”
+    - name: 安全
       href: concepts-security.md
     - name: 服务
       href: concepts-service.md
 - name: 操作指南
   items:
-    - name: 管理设备注册
+    - name: 将 MXChip IoT DevKit 连接到 IoT 中心
+      href: how-to-connect-mxchip-iot-devkit.md
+    - name: 管理设备预配配置
       items:
-        - name: 通过 Azure 门户管理设备注册
+        - name: 配置已验证的 CA 证书
+          href: how-to-verify-certificates.md
+        - name: 管理取消预配
+          href: how-to-unprovision-devices.md
+        - name: 管理取消注册
+          href: how-to-revoke-device-access-portal.md
+        - name: 管理注册 - 门户
           href: how-to-manage-enrollments.md
-        - name: 通过服务 SDK 管理设备注册
+        - name: 管理注册 - 服务 SDK
           href: how-to-manage-enrollments-sdks.md
-    - name: 撤销设备访问权限
-      href: how-to-revoke-device-access-portal.md
-    - name: 取消预配设备
-      href: how-to-unprovision-devices.md
-    - name: 针对 X.509 CA 证书进行所有权证明
-      href: how-to-verify-certificates.md
-    - name: 将 HSM 与 SDK 配合使用
+    - name: 管理设备预配服务
+      items:
+        - name: 使用 Azure CLI 配置设备预配服务
+          href: how-to-manage-dps-with-cli.md
+        - name: 控制对预配服务 API 的访问
+          href: how-to-control-access.md
+    - name: 将证明机制与 SDK 配合使用
       href: use-hsm-with-sdk.md
-    - name: 控制对预配服务的访问
-      href: how-to-control-access.md
-    - name: 使用 Azure CLI 管理设备预配服务
-      href: how-to-manage-dps-with-cli.md
     - name: 使用 SDK 工具进行开发
       href: how-to-use-sdk-tools.md
-    - name: 连接到 MXChip IoT DevKit
-      href: how-to-connect-mxchip-iot-devkit.md
 - name: 引用
   items:
     - name: REST
