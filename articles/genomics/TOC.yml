@@ -25,6 +25,8 @@
       href: frequently-asked-questions-genomics.md
     - name: 版本发行历史记录
       href: version-release-history-genomics.md
+    - name: 业务连续性
+      href: business-continuity-genomics.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
     - name: 定价

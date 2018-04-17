@@ -3,20 +3,20 @@
 # 教程
 ## [将 DevOps 与 Azure 门户配合使用](tutorial-azureportal-devops.md)
 # 概念
-## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
+## [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)
 ## [键盘快捷方式](azure-portal-keyboard-shortcuts.md)
 ## [支持的浏览器和设备](../azure-preview-portal-supported-browsers-devices.md)
 ## [Azure 仪表板结构](azure-portal-dashboards-structure.md)
 # 操作指南
 ## 部署
-### [创建 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)
+### [创建 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)
 ### [使用 Resource Manager 模板进行部署](../azure-resource-manager/resource-group-template-deploy.md)
 ### [创建并共享 Azure 仪表板](azure-portal-dashboards.md)
 ### [以编程方式创建 Azure 仪表板](azure-portal-dashboards-create-programmatically.md)
 ## 管理
 ### [启用高对比度或更改主题](azure-portal-change-theme-high-contrast.md)
 ### [使用门户管理资源](../azure-resource-manager/resource-group-portal.md)
-### [使用基于角色的访问控制管理访问权限](../active-directory/role-based-access-control-configure.md)
+### [使用基于角色的访问控制管理访问权限](../role-based-access-control/role-assignments-portal.md)
 ### [使用基于角色的访问控制共享仪表板](azure-portal-dashboard-share-access.md)
 ### [使用标记来组织资源](../azure-resource-manager/resource-group-using-tags.md)
 ### [缩放资源](../monitoring-and-diagnostics/insights-how-to-scale.md)

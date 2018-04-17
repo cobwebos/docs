@@ -24,7 +24,7 @@
 ###[使用 Azure CLI 部署模板](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [安全性 (RBAC)](azure-operations-guide.md#security-of-azure-resource)
-###[使用角色分配管理资源](../../active-directory/role-based-access-control-configure.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+###[使用角色分配管理资源](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [虚拟机](azure-operations-guide.md#azure-virtual-machines)
 ### [适用于 Windows 的 VM 大小](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 

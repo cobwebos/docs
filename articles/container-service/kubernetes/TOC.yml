@@ -23,7 +23,7 @@
       href: container-service-tutorial-kubernetes-scale.md
     - name: 6 - 更新应用程序
       href: container-service-tutorial-kubernetes-app-update.md
-    - name: 7 - 使用 OMS 进行监视
+    - name: 7 - 使用 Log Analytics 进行监视
       href: container-service-tutorial-kubernetes-monitor.md
 - name: 概念
   items:
@@ -45,7 +45,7 @@
       href: container-service-scale.md
     - name: 监视
       items:
-        - name: 使用 OMS 进行监视
+        - name: 使用 Log Anaytics 进行监视
           href: container-service-kubernetes-oms.md
         - name: 使用 Datadog 进行监视
           href: container-service-kubernetes-datadog.md

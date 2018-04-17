@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: c2e11d89f35915ef0a0c1e1f544b0be8df0473de
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e5dc48aa5e3c614192ae140dc80b5d9845acc474
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>如何将警报从 OMS 扩展（复制）到 Azure
-从 **2018 年 4 月 23 日**开始，使用 [Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 中配置的警报的所有客户将扩展到 Azure。 扩展到 Azure 的警报的行为与在 OMS 中相同。 监视功能保持不变。 将 OMS 中创建的警报扩展到 Azure 可带来许多好处。 有关将警报从 OMS 扩展到 Azure 的优势和过程的详细信息，请参阅[将警报从 OMS 扩展到 Azure](monitoring-alerts-extend.md)。
+从 **2018 年 5 月 14 日**开始，使用在 [Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 中配置的警报的所有客户都将扩展到 Azure。 扩展到 Azure 的警报的行为与在 OMS 中相同。 监视功能保持不变。 将 OMS 中创建的警报扩展到 Azure 可带来许多好处。 有关将警报从 OMS 扩展到 Azure 的优势和过程的详细信息，请参阅[将警报从 OMS 扩展到 Azure](monitoring-alerts-extend.md)。
 
 想要立即将警报从 OMS 移到 Azure 的客户可以使用本文所述的选项之一。
 
@@ -157,8 +157,87 @@ armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupNam
 ```
 指示警报已扩展到 Azure，如 version 2 所示。 此版本仅用于检查警报是否已扩展到 Azure，在 [Log Analytics 搜索 API](../log-analytics/log-analytics-api-alerts.md) 中没有其他作用。 成功将警报扩展到 Azure 之后，系统会向 GET 期间提供的所有电子邮件地址发送一份报告，其中包含所做更改的详细信息。
 
+最后，如果指定工作区中的所有警报已计划扩展到 Azure，则对 POST 的响应将是“403 禁止访问”。 若要查看错误消息或了解扩展过程是否处于停滞状态，用户可以执行 GET 调用，如果有错误消息，将会随摘要一起返回。
 
-最后，如果指定工作区中的所有警报已计划好要扩展到 Azure，则 POST 响应将是 403 Forbidden。
+```json
+{
+    "version": 1,
+    "message": "OMS was unable to extend your alerts into Azure, Error: The subscription is not registered to use the namespace 'microsoft.insights'. OMS will schedule extending your alerts, once remediation steps illustrated in the troubleshooting guide are done.",
+    "recipients": [
+       "john.doe@email.com",
+       "jane.doe@email.com"
+     ],
+    "migrationSummary": {
+        "alertsCount": 2,
+        "actionGroupsCount": 2,
+        "alerts": [
+            {
+                "alertName": "DemoAlert_1",
+                "alertId": " /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/savedSearches/<savedSearchId>/schedules/<scheduleId>/actions/<actionId>",
+                "actionGroupName": "<workspaceName>_AG_1"
+            },
+            {
+                "alertName": "DemoAlert_2",
+                "alertId": " /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/savedSearches/<savedSearchId>/schedules/<scheduleId>/actions/<actionId>",
+                "actionGroupName": "<workspaceName>_AG_2"
+            }
+        ],
+        "actionGroups": [
+            {
+                "actionGroupName": "<workspaceName>_AG_1",
+                "actionGroupResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<resourceGroupName>/providers/microsoft.insights/actionGroups/<workspaceName>_AG_1",
+                "actions": {
+                    "emailIds": [
+                        "JohnDoe@mail.com"
+                    ],
+                    "webhookActions": [
+                        {
+                            "name": "Webhook_1",
+                            "serviceUri": "http://test.com"
+                        }
+                    ],
+                    "itsmAction": {}
+                }
+            },
+            {
+                "actionGroupName": "<workspaceName>_AG_1",
+                "actionGroupResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<resourceGroupName>/providers/microsoft.insights/actionGroups/<workspaceName>_AG_1",
+                 "actions": {
+                    "emailIds": [
+                        "test1@mail.com",
+                          "test2@mail.com"
+                    ],
+                    "webhookActions": [],
+                    "itsmAction": {
+                        "connectionId": "<Guid>",
+                        "templateInfo":"{\"PayloadRevision\":0,\"WorkItemType\":\"Incident\",\"UseTemplate\":false,\"WorkItemData\":\"{\\\"contact_type\\\":\\\"email\\\",\\\"impact\\\":\\\"3\\\",\\\"urgency\\\":\\\"2\\\",\\\"category\\\":\\\"request\\\",\\\"subcategory\\\":\\\"password\\\"}\",\"CreateOneWIPerCI\":false}"
+                    }
+                }
+            }
+        ]
+    }
+}              
+
+```
+
+## <a name="troubleshooting"></a>故障排除 
+在将警报从 OMS 扩展到 Azure 的过程中，偶尔可能会出现阻止系统创建所需[操作组](monitoring-action-groups.md)的问题。 在这种情况下，将会在 OMS 门户的“警告”部分中通过横幅以及在对 API 执行的 GET 调用中显示一条错误消息。
+
+下面列出了针对每个错误的修正步骤：
+1. **错误：订阅未注册为使用命名空间“microsoft.insights”**：![其中包含了注册错误消息的 OMS 门户警报设置页](./media/monitor-alerts-extend/ErrorMissingRegistration.png)
+
+    a. 与你的 OMS 工作区关联的订阅未注册为使用 Azure Monitor (microsoft.insights) 功能；因此，OMS 无法将你的警报扩展到 Azure Monitor 和警报。
+    
+    b. 若要解决此问题，请使用 Powershell、Azure CLI 或 Azure 门户注册 microsoft.insights（Azure Monitor 和警报）以便在订阅中使用。 若要了解详细信息，请查看有关[解决资源提供程序注册错误](../azure-resource-manager/resource-manager-register-provider-errors.md)的文章
+    
+    c. 按照文章中介绍的步骤解决问题后，OMS 将在下一天的计划运行内将你的警报扩展到 Azure，不需要执行任何操作或启动。
+2. **错误：在订阅/资源组级别存在针对写入操作的作用域锁**：![其中包含了作用域锁错误消息的 OMS 门户警报设置页](./media/monitor-alerts-extend/ErrorScopeLock.png)
+
+    a. 当启用了作用域锁时，不允许在包含 Log Analytics (OMS) 工作区的订阅或资源组中执行新更改；系统无法将警报扩展（复制）到 Azure 中并创建所需的操作组。
+    
+    b. 若要解决此问题，请使用 Azure 门户、Powershell、Azure CLI 或 API 删除包含该工作区的订阅或资源组上的“只读”锁。 若要了解详细信息，请查看有关[资源锁用法](../azure-resource-manager/resource-group-lock-resources.md)的文章。 
+    
+    c. 按照文章中介绍的步骤解决问题后，OMS 将在下一天的计划运行内将你的警报扩展到 Azure，不需要执行任何操作或启动。
 
 
 ## <a name="next-steps"></a>后续步骤

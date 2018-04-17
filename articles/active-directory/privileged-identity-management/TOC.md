@@ -37,13 +37,13 @@
 
 # 评审访问权限
 ## 用于目录角色的 PIM
-### [执行访问评审](../active-directory-privileged-identity-management-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [开始访问评审](../active-directory-privileged-identity-management-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [完成访问评审](../active-directory-privileged-identity-management-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [执行访问审阅](../active-directory-privileged-identity-management-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [开始访问审阅](../active-directory-privileged-identity-management-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [完成访问审阅](../active-directory-privileged-identity-management-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## 用于资源角色的 PIM
-### [执行访问评审](pim-resource-roles-perform-access-review.md)
-### [开始访问评审](pim-resource-roles-start-access-review.md)
-### [完成访问评审](pim-resource-roles-complete-access-review.md)
+### [执行访问审阅](pim-resource-roles-perform-access-review.md)
+### [开始访问审阅](pim-resource-roles-start-access-review.md)
+### [完成访问审阅](pim-resource-roles-complete-access-review.md)
 
 # 常见问题
 ## 用于目录角色的 PIM
@@ -55,7 +55,7 @@
 
 # 相关内容
 ## [Azure Active Directory](/azure/active-directory/)
-## [基于角色的访问控制](../role-based-access-control-what-is.md)
+## [基于角色的访问控制](../../role-based-access-control/overview.md)
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)

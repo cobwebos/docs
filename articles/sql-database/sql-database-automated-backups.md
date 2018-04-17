@@ -2,19 +2,20 @@
 title: Azure SQL 数据库自动化异地冗余备份 | Microsoft Docs
 description: SQL 数据库每隔几分钟会自动创建一个本地数据库备份，使用 Azure 读取访问异地冗余存储来提供异地冗余。
 services: sql-database
-author: CarlRabeler
-manager: jhubbard
+author: anosov1960
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
 ms.workload: Active
-ms.date: 07/05/2017
-ms.author: carlrab
-ms.openlocfilehash: 053dd680af020aa05bc071c49f0f47ebe6a8f0da
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 04/04/2018
+ms.author: sashan
+ms.reviewer: carlrab
+ms.openlocfilehash: ab1793621950fd57d3f0be545772d85b32f5d7b8
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>了解 SQL 数据库自动备份
 
@@ -22,7 +23,7 @@ SQL 数据库会自动创建数据库备份，并使用 Azure 读取访问异地
 
 ## <a name="what-is-a-sql-database-backup"></a>什么是 SQL 数据库备份？
 
-SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/library/ms186289.aspx)、[差异](https://msdn.microsoft.com/library/ms175526.aspx)和[事务日志](https://msdn.microsoft.com/library/ms191429.aspx)备份。 一般每隔 5-10 分钟创建一次事务日志备份，具体频率取决于性能级别和数据库活动量。 借助事务日志备份以及完整备份和差异备份，可将数据库还原到托管数据库的服务器上的特定时间点。 还原数据库时，服务会确定需要还原哪些完整、差异备份和事务日志备份。
+SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/library/ms186289.aspx)、[差异](https://msdn.microsoft.com/library/ms175526.aspx)和[事务日志](https://msdn.microsoft.com/library/ms191429.aspx)备份，以便用于时间点还原 (PITR)。 一般每隔 5-10 分钟创建一次事务日志备份，具体频率取决于性能级别和数据库活动量。 借助事务日志备份以及完整备份和差异备份，可将数据库还原到托管数据库的服务器上的特定时间点。 还原数据库时，服务会确定需要还原哪些完整、差异备份和事务日志备份。
 
 
 可使用这些备份执行以下任务：
@@ -30,7 +31,7 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/l
 * 在保留期内将数据库还原到某个时间点。 此操作会在与原始数据库相同的服务器中创建新数据库。
 * 将已删除的数据库还原到删除时的时间点或保留期内的任意时间点。 仅可在创建原始数据库所在的同一服务器中还原已删除的数据库。
 * 将数据库还原到其他地理区域。 在无法访问服务器和数据库的情况下，此操作可帮助从地理位置灾难中恢复， 它会在全球任意位置的任意现有服务器中创建新数据库。 
-* 从 Azure 恢复服务保管库中存储的特定备份还原数据库。 此操作允许还原旧版本的数据库，以满足符合性请求或运行旧版本的应用程序。 请参阅[长期保留](sql-database-long-term-retention.md)。
+* 如果数据库已配置了长期保留策略，请从特定的长期备份还原数据库。 此操作允许还原旧版本的数据库，以满足符合性请求或运行旧版本的应用程序。 请参阅[长期保留](sql-database-long-term-retention.md)。
 * 若要执行还原，请参阅[从备份还原数据库](sql-database-recovery-using-backups.md)。
 
 > [!NOTE]
@@ -49,10 +50,14 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/l
 * 基本服务层为 7 天。
 * 标准服务层为 35 天。
 * 高级服务层为 35 天。
+* 常规用途层是可配置的，最长为 35 天（默认为 7 天）*
+* 业务关键层（预览版）是可配置的，最长为 35 天（默认为 7 天）*
 
-如果将数据库从标准或高级服务层降级到基本服务层，备份将保存 7 天。 超过 7 天的所有现有备份会被清除。 
+\* 在预览版期间，备份保留期不可配置，固定为 7 天。
 
-如果将数据库从基本服务层升级到标准或高级服务层，SQL 数据库将保存现有备份，直到超过 35 天。 创建的新备份将保存 35 天。
+如果将具有较长备份保留期的数据库转换为具有较短保留期的数据库，则比目标层保留期旧的所有现有备份将不再可用。
+
+如果将具有较短保留期的数据库升级为具有较长保留期的数据库，则 SQL 数据库将保留现有备份，直至达到较长的保留期。 
 
 如果删除了某个数据库，SQL 数据库将保存其备份，就像保存联机数据库的备份一样。 例如，假设删除了保留期为 7 天的某个基本数据库。 已保存 4 天的备份将继续保存 3 天。
 
@@ -61,17 +66,17 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://msdn.microsoft.com/l
 > 
 
 ## <a name="how-to-extend-the-backup-retention-period"></a>如何延长备份保留期？
-如果应用程序要求备份保留更长时间，可通过为每个数据库配置长期备份保留策略（LTR 策略）来延长内置保留期。 允许将内置保持期从 35 天延长为最多 10 年。 有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
 
-将 LTR 策略添加到使用 Azure 门户或 API 的数据库后，每周的完整数据库备份会自动复制到自己的 Azure 备份服务保管库。 如果使用 TDE 加密数据库，备份会在静止时自动加密。  服务保管库会根据时间戳和 LTR 策略自动删除过期的备份。  因此，无需管理备份计划，也不用担心旧文件的清除工作。 只要保管库与 SQL 数据库位于同一订阅中，还原 API 就支持存储在保管库中的备份。 可以使用 Azure 门户或 PowerShell 访问这些备份。
+如果应用程序要求备份在比最长 PITR 备份保留期更长的时间期限内可用，可以为各个数据库配置长期备份保留策略（LTR 策略）。 允许将内置保留期从最长 35 天延长为最多 10 年。 有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
 
-> [!TIP]
-> 有关操作指南，请参阅[从 Azure SQL 数据库长期备份保留进行配置和恢复](sql-database-long-term-backup-retention-configure.md)
->
+使用 Azure 门户或 API 向数据库添加 LTR 策略后，每周完整数据库备份将自动复制到一个单独的用于长期保留的 RA-GRS 存储容器（LTR 存储）。 如果使用 TDE 加密数据库，备份会在静止时自动加密。 SQL 数据库会根据时间戳和 LTR 策略自动删除过期的备份。 在设置策略后，你无需管理备份计划，也不用担心旧文件的清除工作。 可以使用 Azure 门户或 PowerShell 查看、还原或删除这些备份。
 
 ## <a name="are-backups-encrypted"></a>备份已加密？
 
 为 Azure SQL 数据库启用 TDE 时，也会加密备份。 默认情况下，将所有新的 Azure SQL 数据库都配置为启用 TDE。 有关 TDE 的详细信息，请参阅[使用 Azure SQL 数据库进行透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。
+
+## <a name="are-the-automatic-backups-compliant-with-gdpr"></a>自动备份是否遵守 GDPR？
+如果备份包含受常规数据保护法规 (GDPR) 制约的个人数据，则会要求你应用增强的安全措施来保护数据免受未经授权的访问。 为了遵守 GDPR，你需要采用不必访问备份的方法来管理数据所有者的数据请求。  对于短期备份，一种解决方案是将备份时段缩短为 30 天以下，这是允许用来完成数据访问请求的时间。  如果需要长期备份，则建议仅在备份中存储“使用假名的”数据。 例如，如果需要删除或更新有关某人的数据，不需要删除或更新现有备份。 可以在[针对 GDPR 符合性的数据治理](https://info.microsoft.com/DataGovernanceforGDPRCompliancePrinciplesProcessesandPractices-Registration.html)中找到有关 GDPR 最佳做法的更多信息。
 
 ## <a name="next-steps"></a>后续步骤
 
