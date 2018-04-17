@@ -1,12 +1,12 @@
 ---
-title: "使用 OMS 监视并获取有关逻辑应用运行的见解 - Azure 逻辑应用 | Microsoft Docs"
-description: "使用 Log Analytics 和 Operations Management Suite (OMS) 监视逻辑应用的运行情况并获取进行故障排除和诊断的见解以及更丰富的调试详细信息"
+title: 使用 Log Analytics 监视并获取有关逻辑应用运行的见解 - Azure 逻辑应用 | Microsoft Docs
+description: 使用 Log Analytics 监视逻辑应用运行并获取用于故障排除和诊断的见解以及更丰富的调试详细信息
 author: divyaswarnkar
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 2f9f27dc74348909b89941c2bb17ccdf610dba33
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d484aaf7d7582bd474d7437a7a62f41880690dbc
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="monitor-and-get-insights-about-logic-app-runs-with-operations-management-suite-oms-and-log-analytics"></a>使用 Operations Management Suite (OMS) 和 Log Analytics 监视和获取有关逻辑应用运行的见解
+# <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>使用 Log Analytics 监视并获取有关逻辑应用运行的见解
 
-有关监视和更丰富的调试信息，可在创建逻辑应用的同时启用 Log Analytics。 Log Analytics 提供了诊断日志记录并通过 Operations Management Suite (OMS) 门户监视逻辑应用运行。 将逻辑应用管理解决方案添加到 OMS 时，你将获得逻辑应用运行的聚合状态，同时获得特定详细信息，如状态、执行时间、重新提交状态和关联 ID。
+有关监视和更丰富的调试信息，可在创建逻辑应用的同时启用 Log Analytics。 Log Analytics 提供了诊断日志记录并通过 Azure 门户监视逻辑应用运行。 添加逻辑应用管理解决方案时，你将获得逻辑应用运行的聚合状态，同时获得特定详细信息，如状态、执行时间、重新提交状态和关联 ID。
 
-本主题演示如何在 OMS 中开启 Log Analytics 或安装逻辑应用管理解决方案，以便查看逻辑应用的运行时事件和数据。
+本主题展示了如何开启 Log Analytics，以便查看逻辑应用的运行时事件和数据。
 
  > [!TIP]
- > 若要监视现有逻辑应用，请按照这些步骤[启用诊断日志记录并将逻辑应用运行时数据发送到 OMS](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
+ > 若要监视现有逻辑应用，请按照这些步骤[启用诊断日志记录并将逻辑应用运行时数据发送到 Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
 
 ## <a name="requirements"></a>要求
 
-在开始之前，需要具有 OMS 工作区。 了解[如何创建 OMS 工作区](../log-analytics/log-analytics-get-started.md). 
+在开始之前，需要具有一个 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。 
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>创建逻辑应用时请启用诊断日志记录
 
@@ -44,56 +44,47 @@ ms.lasthandoff: 02/21/2018
    1. 为逻辑应用命名，并选择 Azure 订阅。 
    2. 创建或选择 Azure 资源组。
    3. 将“Log Analytics”设置为“开”。 
-   选择希望发送逻辑应用运行数据的 OMS 工作区。 
+   选择要从中发送逻辑应用运行数据的 Log Analytics 工作区。 
    4. 准备就绪后，请选择“固定到仪表板” > “创建”。
 
       ![创建逻辑应用](./media/logic-apps-monitor-your-logic-apps-oms/create-logic-app.png)
 
-      完成此步骤后，Azure 将创建逻辑应用，该应用现在与 OMS 工作区相关联。 
-      此外，此步骤还将在 OMS 工作区中自动安装逻辑应用管理解决方案。
+      完成此步骤后，Azure 将创建逻辑应用，该应用现在与你的 Log Analytics 工作区相关联。 
+      此外，此步骤还会自动在你的工作区中安装逻辑应用管理解决方案。
 
-3. 要在 OMS 中查看逻辑应用运行，请[继续执行这些步骤](#view-logic-app-runs-oms)。
+3. 若要查看逻辑应用运行，请[继续执行这些步骤](#view-logic-app-runs-oms)。
 
-## <a name="install-the-logic-apps-management-solution-in-oms"></a>在 OMS 中安装逻辑应用管理解决方案
+## <a name="install-the-logic-apps-management-solution"></a>安装逻辑应用管理解决方案
 
-如果在创建逻辑应用时已启用了 Log Analytics，可跳过此步骤。 OMS 中已经安装了逻辑应用管理解决方案。
+如果在创建逻辑应用时已启用了 Log Analytics，可跳过此步骤。 你已经安装了逻辑应用管理解决方案。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“更多服务”。 搜索“log analytics”作为筛选器，然后选择“Log Analytics”，如下所示：
 
    ![选择“Log Analytics”](media/logic-apps-monitor-your-logic-apps-oms/find-log-analytics.png)
 
-2. 在“Log Analytics”下，查找并选择“OMS 工作区”。 
+2. 在“Log Analytics”下，查找并选择你的 Log Analytics 工作区。 
 
-   ![选择你的 OMS 工作区](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
+   ![选择你的 Log Analytics 工作区](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
 
 3. 在“管理”下，选择“OMS 门户”。
 
    ![选择“OMS 门户”](media/logic-apps-monitor-your-logic-apps-oms/oms-portal-page.png)
 
-4. 在 OMS 主页上，如果出现升级横幅，请选择横幅，以便首先升级 OMS 工作区。 然后选择“解决方案库”。
-
-   ![选择“解决方案库”](media/logic-apps-monitor-your-logic-apps-oms/solutions-gallery.png)
-
-5. 在“所有解决方案”下，查找并选择“逻辑应用管理”解决方案的磁贴。
+4. 在“所有解决方案”下，查找并选择“逻辑应用管理”解决方案的磁贴。
 
    ![选择“逻辑应用管理”](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-management-tile2.png)
 
-6. 要在 OMS 工作区中安装该解决方案，选择“添加”。
+5. 若要在 Log Analytics 工作区中安装该解决方案，请选择“添加”。
 
    ![为“逻辑应用管理”选择“添加”](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
 
 <a name="view-logic-app-runs-oms"></a>
 
-## <a name="view-your-logic-app-runs-in-your-oms-workspace"></a>在 OMS 工作区中查看逻辑应用运行
+## <a name="view-your-logic-app-runs-in-your-log-analytics-workspace"></a>在 Log Analytics 工作区中查看逻辑应用运行
 
-1. 要查看逻辑应用运行的计数和状态，请转到 OMS 工作区的概述页。 在“逻辑应用管理”磁贴上查看详细信息。
+1. 若要查看逻辑应用运行的计数和状态，请转到 Log Analytics 工作区的概述页。 在“逻辑应用管理”磁贴上查看详细信息。
 
    ![显示逻辑应用运行计数和状态的概述磁贴](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
-
-   > [!Note]
-   > 如果出现此升级横幅而不是逻辑应用管理磁贴，请选择横幅，以便首先升级 OMS 工作区。
-  
-   > ![升级“OMS 工作区”](media/logic-apps-monitor-your-logic-apps-oms/oms-upgrade-banner.png)
 
 2. 要查看有关逻辑应用运行更多详细信息的摘要，请选择“逻辑应用管理”磁贴。
 

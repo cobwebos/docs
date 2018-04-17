@@ -1,161 +1,66 @@
 ---
 title: 将 Azure SQL 数据库备份存储 10 年之久 | Microsoft Docs
-description: 了解 Azure SQL 数据库如何支持将备份存储长达 10 年。
+description: 了解 Azure SQL 数据库如何支持将完整数据库备份存储长达 10 年。
 services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 12/22/2016
+ms.date: 04/04/2018
 ms.author: sashan
-ms.openlocfilehash: 2f31e89fce2746e57d6a670aef949d0d534af4c1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: carlrab
+ms.openlocfilehash: 51f00984a8f0d750bdb478ae4bc8093adad8108e
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>将 Azure SQL 数据库备份存储 10 年之久
-出于法规要求、符合性或其他商业目的，许多应用程序要求保留 Azure SQL 数据库的[自动备份](sql-database-automated-backups.md)功能提供的过去 7-35 天的数据库备份。 使用长期备份保留功能，可将 SQL 数据库备份存储在 Azure 恢复服务保管库中长达 10 年。 每个保管库最多可存储 1000 个数据库。 然后可选择保管库中的任何备份，并将其还原为新数据库。
+
+出于法规要求、符合性或其他商业目的，许多应用程序要求保留 Azure SQL 数据库的[自动备份](sql-database-automated-backups.md)功能提供的过去 7-35 天的数据库备份。 通过使用长期保留 (LTR) 功能，可以将指定的 SQL 数据库完整备份存储在 [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) blob 存储中长达 10 年。 然后，可以将任何备份还原为新数据库。
 
 > [!IMPORTANT]
-> 长期备份保留期当前处于预览状态，在以下区域中提供：澳大利亚东部、澳大利亚东南部、巴西南部、美国中部、东亚、美国东部、美国东部 2、印度中部、印度南部、日本东部、日本西部、美国中北部、北欧、美国中南部、东南亚、西欧和美国西部。
+> 长期保留功能当前为预览版。 在此功能的以前预览版中提供的 Azure 服务恢复服务保管库中存储的现有备份将迁移到 SQL Azure 存储。<!-- and available in the following regions: Australia East, Australia Southeast, Brazil South, Central US, East Asia, East US, East US 2, India Central, India South, Japan East, Japan West, North Central US, North Europe, South Central US, Southeast Asia, West Europe, and West US.-->
 >
 
-> [!NOTE]
-> 24 小时内，每个保管库最多可启用 200 个数据库。 建议对每个服务器使用单独的保管库，将此限制的影响降至最低。 
-> 
+## <a name="how-sql-database-long-term-retention-works"></a>SQL 数据库长期保留的工作原理
 
-## <a name="how-sql-database-long-term-backup-retention-works"></a>SQL 数据库长期备份保留的工作原理
+长期备份保留利用[自动 SQL 数据库备份](sql-database-automated-backups.md)创建的快照进行时间点还原 (PITR)。 可以为每个 SQL 数据库配置长期保留策略并指定需要以何频率将备份复制到长期存储。 若要实现该灵活性，可以使用以下四个参数的组合定义策略：每周备份保留 (W)、每月备份保留 (M)、每年备份保留 (Y) 和年中的周 (WeekOfYear)。 如果指定 W，则每周会将一个备份复制到长期存储。 如果指定 M，则会在每月的第一周将一个备份复制到长期存储。 如果指定 Y，则会在 WeekOfYear 指定的周将一个备份复制到长期存储。 每个备份将在长期存储中保留由这些参数指定的期限。 
 
-通过长期备份保留，可将 SQL 数据库服务器与 Azure 恢复服务保管库相关联。 
+示例:
 
-* 必须在创建 SQL Server 的 Azure 订阅中，在相同地理区域和资源组内创建保管库。 
-* 然后为任何数据库配置保留策略。 使用该策略时，会将每周完整数据库备份复制到恢复服务保管库，并在指定的保留期（至多 10 年）内保留此数据。 
-* 此后，可从任意这些备份中将数据库还原到订阅内任意服务器中的新数据库。 Azure 存储从现有备份创建副本，且副本不会对现有数据库的性能造成影响。
+-  W=0、M=0、Y=5、WeekOfYear=3
 
-> [!TIP]
-> 有关操作指南，请参阅[从 Azure SQL 数据库长期备份保留进行配置和恢复](sql-database-long-term-backup-retention-configure.md)。
+   每年的第 3 个完整备份将保留 5 年。
 
-## <a name="enable-long-term-backup-retention"></a>启用长期备份保留
+- W=0、M=3、Y=0
 
-为数据库配置长期备份保留：
+   每月的第一个完整备份将保留 3 个月。
 
-1. 在与 SQL 数据库服务器相同的区域、订阅和资源组中创建 Azure 恢复服务保管库。 
-2. 将服务器注册到保管库。
-3. 创建 Azure 恢复服务保护策略。
-4. 向需长期备份保留的数据库应用保护策略。
+- W=12、M=0、Y=0
 
-若要从 Azure 恢复服务保管库中自动备份的长期备份保留配置、管理和还原数据库，请执行以下任一操作：
+   每个每周完整备份将保留 12 周。
 
-* 使用 Azure 门户：单击“长期备份保留”，选择一个数据库，然后单击“配置”。 
+- W=6、M=12、Y=10、WeekOfYear=16
 
-   ![选择一个数据库进行长期备份保留](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
+   每个每周完整备份将保留 6 周。 每月的第一个完整备份例外，该备份将保留 12 个月。 每年的第 16 周创建的完整备份例外，该备份将保留 10 年。 
 
-* 使用 PowerShell：请转到[从 Azure SQL 数据库长期备份保留进行配置和恢复](sql-database-long-term-backup-retention-configure.md)。
+下表说明了以下策略的长期备份的节奏和到期：
 
-## <a name="restore-a-database-thats-stored-with-the-long-term-backup-retention-feature"></a>恢复使用长期备份保留功能存储的数据库
+W=12 周（84 天）、M=12 个月（365 天）、Y=10 年（3650 天）、WeekOfYear=15（4 月 15 日后的周）
 
-从长期备份保留备份恢复：
+   ![ltr 示例](./media/sql-database-long-term-retention/ltr-example.png)
 
-1. 列出存储备份的保管库。
-2. 列出映射到逻辑服务器的容器。
-3. 列出保管库中映射到数据库的数据源。
-4. 列出可还原的恢复点。
-5. 将数据库从恢复点还原到订阅中的目标服务器。
 
-若要从 Azure 恢复服务保管库中自动备份的长期备份保留配置、管理和还原数据库，请执行以下任一操作：
+ 
+如果你打算修改以上策略并设置 W=0（无每周备份），则备份副本的节奏将更改，如上表中突出显示的日期所示。 保留这些备份所需的存储量将相应减少。 注意：LTR 副本是由 Azure 存储服务创建的，因此，复制过程对现有数据库的性能没有影响。
+若要从 LTR 存储还原数据库，可以根据时间戳选择一个特定备份。   数据库可以还原到原始数据库所在的订阅中的任何现有服务器。 
 
-* 使用 Azure 门户：请转到[使用 Azure 门户管理长期备份保留](sql-database-long-term-backup-retention-configure.md)。 
+## <a name="configure-long-term-backup-retention"></a>配置长期备份保留
 
-* 使用 PowerShell：请转到[使用 PowerShell 管理长期备份保留](sql-database-long-term-backup-retention-configure.md)。
-
-## <a name="get-pricing-for-long-term-backup-retention"></a>获取长期备份保留的定价
-
-SQL 数据库的长期备份保留按 [Azure 备份服务定价费率](https://azure.microsoft.com/pricing/details/backup/)收费。
-
-将 SQL 数据库服务器注册到保管库后，将对保管库中存储的每周备份所使用的存储总量进行收费。
-
-## <a name="view-available-backups-that-are-stored-in-long-term-backup-retention"></a>查看长期备份保留中存储的可用备份
-
-若要使用 Azure 门户从 Azure 恢复服务保管库中自动备份的长期备份保留配置、管理和还原数据库，请执行一下任一操作：
-
-* 使用 Azure 门户：请转到[使用 Azure 门户管理长期备份保留](sql-database-long-term-backup-retention-configure.md)。 
-
-* 使用 PowerShell：请转到[使用 PowerShell 管理长期备份保留](sql-database-long-term-backup-retention-configure.md)。
-
-## <a name="disable-long-term-retention"></a>禁用长期保留
-
-恢复服务将基于提供的保留策略自动处理备份的清理工作。 
-
-若要停止向保管库发送特定数据库的备份，请删除该数据库的保留策略。
-  
-```
-Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName 'RG1' -ServerName 'Server1' -DatabaseName 'DB1' -State 'Disabled' -ResourceId $policy.Id
-```
-
-> [!NOTE]
-> 不会影响保管库中已有备份。 恢复服务会在其保留期到期时将其自动删除。
-
-## <a name="long-term-backup-retention-faq"></a>长期备份保留常见问题解答
-
-可否手动删除保管库中的特定备份？
-
-目前不可以。 保管库会在保留期到期后自动清理备份。
-
-可否将服务器注册为存储备份到多个存储库？
-
-不可以，目前一次只能将备份存储到一个保管库。
-
-保管库和服务器可否位于不同订阅中？
-
-不可以，目前保管库和服务器必须位于相同的订阅和资源组中。
-
-可否使用在服务器区域外创建的保管库？
-
-不可以，保管库和服务器必须位于同一区域，以便尽量减少复制时间、节省流量费。
-
-问：一个保管库中可存储多少个数据库？
-
-目前每个保管库最多支持 1000 个数据库。 
-
-每个订阅可创建多少保管库？
-
-每个订阅最多可创建 25 个保管库。
-
-每个保管库每天可配置多少个数据库？
-
-每个保管库每天最多只能设置 200 个数据库。
-
-长期备份保留可否用于弹性池？
-
-是的。 可为池中任意数据库配置保留策略。
-
-可否选择创建备份的时间？
-
-不可以，SQL 数据库控制备份计划，以尽量减少对数据库性能的影响。
-
-**我为数据库启用了透明数据加密。能否将其用于保管库？** 
-
-可以，保管库支持透明数据加密。 即使原始数据库不复存在，也可从保管库还原该数据库。
-
-如果订阅被挂起，保管库中的备份会出现什么情况？ 
-
-如果订阅被挂起，将保留现有数据库和备份。 新的备份不会复制到保管库。 重新激活订阅后，该服务会继续将备份复制到保管库。 使用订阅挂起前复制到保管库的备份，还原操作可访问保管库。 
-
-可否访问 SQL 数据库备份文件，以便下载文件或将其还原到 SQL Server？
-
-目前不可以。
-
-SQL 保留策略中可否存在多个计划（日计划、周计划、月计划、年计划）？
-
-不可以，目前多个计划仅适用于虚拟机备份。
-
-如果某个数据库是活动异地复制辅助数据库，而我们在该数据库上设置了长期备份保留，会发生什么情况？
-
-因为我们不对副本进行备份，因此目前没有针对辅助数据库上的长期备份保留的选项。 但是，对用户而言，在活动异地复制辅助数据库上设置长期备份保留是重要的，原因如下：
-* 发生故障转移时，该辅助数据库会成为主数据库，我们会进行完整备份，随后会将这个完整的备份上传到保管库。
-* 在辅助数据库上设置长期备份保留对客户来说没有额外的费用。
+若要了解如何使用 Azure 门户或 PowerShell 配置长期保留，请参阅[配置长期备份保留](sql-database-long-term-backup-retention-configure.md)。
 
 ## <a name="next-steps"></a>后续步骤
+
 数据库备份可保护数据免遭意外损坏或删除，因此数据库备份是任何业务连续性和灾难恢复策略不可或缺的组成部分。 若要了解其他 SQL 数据库业务连续性解决方案，请参阅[业务连续性概述](sql-database-business-continuity.md)。

@@ -1,13 +1,13 @@
 ---
-title: "Azure 虚拟机规模集的自动 OS 升级 | Microsoft Docs"
-description: "了解如何自动升级规模集中 VM 实例上的 OS"
+title: Azure 虚拟机规模集的自动 OS 升级 | Microsoft Docs
+description: 了解如何自动升级规模集中 VM 实例上的 OS
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: negat
-ms.openlocfilehash: 59dad832977c4afc39db3773edf9789cd1a704e7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 28a9b3d68037aac0c1198da4232c045487b01174
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Azure 虚拟机规模集自动 OS 升级
 
@@ -93,9 +93,9 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 > [!NOTE]
 > 本部分仅适用于不带 Service Fabric 的规模集。 Service Fabric 具有其自己的应用程序运行状况概念。 使用带 Service Fabric 的自动 OS 升级时，更新域将推出新的 OS 映像，以维持 Service Fabric 中运行的服务的高可用性。 有关 Service Fabric 群集的持续性特征的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)。
 
-OS 升级过程中，规模集中的 VM 实例每次只升级一批。 只有客户应用程序在升级后的 VM 实例上正常运行时，才会继续升级。 建议应用程序向规模集 OS 升级引擎提供运行状况信号。 默认情况下，在 OS 升级期间，平台根据 VM 电源状态和扩展预配状态确定升级后 VM 实例是否正常运行。 在 VM 实例的 OS 升级期间，VM 实例上的 OS 磁盘被替换为基于最新版本映像的新磁盘。 OS 升级完毕后，配置的扩展在这些 VM 上运行。 仅当已成功预配 VM 上的所有扩展时，才视应用程序为正常运行。 
+OS 升级过程中，规模集中的 VM 实例每次只升级一批。 只有客户应用程序在升级后的 VM 实例上正常运行时，才会继续升级。 因此，我们要求应用程序向规模集 OS 升级引擎提供运行状况信号。 在 OS 升级期间，平台会根据 VM 电源状态和扩展预配状态确定升级后 VM 实例是否正常运行。 在 VM 实例的 OS 升级期间，VM 实例上的 OS 磁盘被替换为基于最新版本映像的新磁盘。 OS 升级完毕后，配置的扩展在这些 VM 上运行。 仅当已成功预配 VM 上的所有扩展时，才视应用程序为正常运行。 
 
-可以选择为规模集配置应用程序运行状况探测，用于为平台提供关于应用程序当前状态的准确信息。 应用程序运行状况探测是用作运行状况信号的自定义负载均衡器探测。 规模集 VM 实例上运行的应用程序可以响应外部的 HTTP 或 TCP 请求，指示其是否正常运行。 若要详细了解自定义负载均衡器探测的工作原理，请参阅[了解负载均衡器探测](../load-balancer/load-balancer-custom-probe-overview.md)。 自动 OS 升级不是必须配置应用程序运行状况探测，但强烈建议使用该探测。
+此外，必须为规模集配置应用程序运行状况探测，以便为平台提供关于应用程序当前状态的准确信息。 应用程序运行状况探测是用作运行状况信号的自定义负载均衡器探测。 规模集 VM 实例上运行的应用程序可以响应外部的 HTTP 或 TCP 请求，指示其是否正常运行。 若要详细了解自定义负载均衡器探测的工作原理，请参阅[了解负载均衡器探测](../load-balancer/load-balancer-custom-probe-overview.md)。
 
 如果规模集配置为使用多个放置组，则探测需使用[负载均衡器标准版](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
 
@@ -110,7 +110,7 @@ OS 升级过程中，规模集中的 VM 实例每次只升级一批。 只有客
 * 部署更新后的规模集，这将更新包括失败实例在内的所有 VM 实例。 
 
 ### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>在规模集上将自定义负载均衡器探测配置为应用程序运行状况探测
-最佳做法是为规模集运行状况显式创建负载均衡器探测。 运行状况探测可使用与现有 HTTP 探测或 TCP 探测相同的终结点，但所需的行为可能与传统负载均衡器探测不同。 例如，如果实例的负载过高，传统负载均衡器探测可能返回“不正常”，然而，这可能不符合自动 OS 升级过程中实际的实例运行状况。 请将探测配置为不超过两分钟的高探测速率。
+必须为规模集运行状况显式创建负载均衡器探测。 运行状况探测可使用与现有 HTTP 探测或 TCP 探测相同的终结点，但所需的行为可能与传统负载均衡器探测不同。 例如，如果实例的负载过高，传统负载均衡器探测可能返回“不正常”，然而，这可能不符合自动 OS 升级过程中实际的实例运行状况。 请将探测配置为不超过两分钟的高探测速率。
 
 可以在规模集的 networkProfile 中引用负载均衡器探测，并可将探测与内部或公共的负载均衡器相关联，如下所示：
 
@@ -227,7 +227,7 @@ GET 调用将返回类似以下示例输出的属性：
 2. 标识下一批要升级的 VM 实例，数量最多占实例总数的 20%。
 3. 升级下一批 VM 实例的 OS。
 4. 如果超过 20% 的升级实例处于不正常状态，停止升级，反之则继续升级。
-5. 如果客户配置了应用程序运行状况探测，升级最多等待 5 分钟，探测即显示正常运行，这时可立即继续升级下一批；否则，需等待 30 分钟后才会升级下一批。
+5. 对于不是 Service Fabric 群集一部分的规模集，升级将等待最长 5 分钟以便探测正常运行，然后立即继续执行下一批。 对于是 Service Fabric 群集一部分的规模集，规模集将等待 30 分钟，然后继续处理下一批。
 6. 如果有剩余未升级的实例，则回到步骤 1) 对下一批升级；否则升级完成。
 
 规模集 OS 升级引擎在升级每个批次前检查 VM 实例总体运行状况。 升级一批实例时，Azure 数据中心可能存在其他并发的计划内或计划外维护，可能会影响 VM 的可用性。 因此，可能会临时关闭超过 20% 的实例。 在这种情况下，当前这批处理结束时，规模集升级会停止。
@@ -237,7 +237,8 @@ GET 调用将返回类似以下示例输出的属性：
 
 可以使用以下模板部署使用自动升级<a href='https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json'>自动滚动升级 - Ubuntu 16.04-LTS</a> 的规模集
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"> <img src="http://azuredeploy.net/deploybutton.png"/>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
 

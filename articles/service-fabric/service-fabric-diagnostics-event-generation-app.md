@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2018
 ms.author: dekapur
-ms.openlocfilehash: f3e7b9c7432538c0f78662213544d4d691652f13
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7af0dd37b5c16e48ce4e504211e68a29cf8bce77
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="application-and-service-level-logging"></a>应用程序和服务级别日志记录
 
@@ -36,10 +36,11 @@ ms.lasthandoff: 03/29/2018
 
 必须认真规划如何检测代码。 适当的检测计划有助于避免代码基变得不稳定，从而需要重新检测代码。 为了降低风险，可以选择一个检测库，例如，Microsoft ASP.NET Core 中包含的 [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/)。 ASP.NET Core 提供一个可在所选提供程序中使用的 [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) 接口，同时尽量减轻对现有代码的影响。 可以在 Windows 和 Linux 上的 ASP.NET Core 中以及整个 .NET Framework 中使用代码，从而将检测代码标准化。
 
-## <a name="choosing-a-logging-provider"></a>选择日志记录提供程序
+## <a name="application-insights-sdk"></a>Application Insights SDK
 
-如果应用程序对性能的依赖程度很高，则最好使用 EventSource。 与 ASP.NET Core 日志记录或任何可用的第三方解决方案相比，**EventSource** 使用的资源*通常*更少，并且性能更佳。  对于许多服务来说这并不是一个问题，但如果服务以性能为中心，则 **EventSource** 可能是更好的选择。 但是，若要获得结构化日志记录的这些优势，EventSource 要求工程团队做出大笔投资。 如果可能，建议对一些日志记录选项执行快速原型，然后选择最符合需求的选项。
+Application Insights 具有现成的与 Service Fabric 的丰富集成。 用户可以添加 AI Service Fabric nuget 包并接收可以在 Azure 门户中查看的已创建和收集的数据和日志。 另外，建议用户添加其自己的遥测数据，以便诊断和调试其应用程序并跟踪哪些服务及其应用程序的哪些部分使用得最多。 该 SDK 中的 [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) 类提供了许多方式来用于在应用程序中跟踪遥测数据。 请在我们提供的有关[监视和诊断 .NET 应用程序](service-fabric-tutorial-monitoring-aspnet.md)的教程中查看有关如何进行检测以及向应用程序添加 Application Insights 的示例。
+
 
 ## <a name="next-steps"></a>后续步骤
 
-选择了用于检测应用程序和服务的日志记录提供程序之后，需要将日志和事件聚合才能将其发送到任何的分析平台。 阅读有关 [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) 和 [WAD](service-fabric-diagnostics-event-aggregation-wad.md) 的信息，以便更好地了解一些推荐选项。
+选择了用于检测应用程序和服务的日志记录提供程序之后，需要将日志和事件聚合才能将其发送到任何的分析平台。 阅读有关 [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)、[EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) 和 [WAD](service-fabric-diagnostics-event-aggregation-wad.md) 的信息，更好地了解推荐的一些选项。

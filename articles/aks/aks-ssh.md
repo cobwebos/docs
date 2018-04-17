@@ -1,95 +1,77 @@
 ---
-title: "以 SSH 方式登录到 Azure 容器服务 (AKS) 群集节点"
-description: "创建与 Azure 容器服务 (AKS) 群集节点的 SSH 连接"
+title: 以 SSH 方式登录到 Azure 容器服务 (AKS) 群集节点
+description: 创建与 Azure 容器服务 (AKS) 群集节点的 SSH 连接
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 2/28/2018
+ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 00affc3d1c02c477826261aeac6e092934037e81
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 085a2976443db8ece7a36dbfc133b173432ce4c8
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="ssh-into-azure-container-service-aks-cluster-nodes"></a>以 SSH 方式登录到 Azure 容器服务 (AKS) 群集节点
 
 有时，你可能需要访问 Azure 容器服务 (AKS) 节点来进行维护、收集日志以及执行其他故障排除操作。 Azure 容器服务 (AKS) 节点不会公开给 Internet。 请使用本文档中详细介绍的步骤来创建与 AKS 节点的 SSH 连接。
 
-## <a name="configure-ssh-access"></a>配置 SSH 访问
+## <a name="get-aks-node-address"></a>获取 AKS 节点地址
 
- 若要以 SSH 方式登录到特定节点，请创建一个具有 `hostNetwork` 访问权限的 pod。 还会创建用于 pod 访问的一个服务。 此配置是一项特权配置，在使用后应当删除。
+使用 `az vm list-ip-addresses` 命令获取 AKS 群集节点的 IP 地址。 将资源组名称替换为你的 AKS 资源组的名称。
 
-创建一个名为 `aks-ssh.yaml` 的文件并将其复制到此清单中。 将节点名称更新为目标 AKS 节点的名称。
+```console
+$ az vm list-ip-addresses --resource-group MC_myAKSCluster_myAKSCluster_eastus -o table
 
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: aks-ssh
-spec:
-  selector:
-    app: aks-ssh
-  type: LoadBalancer
-  ports:
-  - protocol: TCP
-    port: 22
-    targetPort: 22
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: aks-ssh
-  labels:
-    app: aks-ssh
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: aks-ssh
-  template:
-    metadata:
-      labels:
-        app: aks-ssh
-    spec:
-      containers:
-      - name: alpine
-        image: alpine:latest
-        ports:
-        - containerPort: 22
-        command: ["/bin/sh", "-c", "--"]
-        args: ["while true; do sleep 30; done;"]
-      hostNetwork: true
-      nodeName: aks-nodepool1-42032720-0
+VirtualMachine            PrivateIPAddresses
+------------------------  --------------------
+aks-nodepool1-42032720-0  10.240.0.6
+aks-nodepool1-42032720-1  10.240.0.5
+aks-nodepool1-42032720-2  10.240.0.4
 ```
 
-运行清单来创建 pod 和服务。
+## <a name="create-ssh-connection"></a>创建 SSH 连接
 
-```azurecli-interactive
-$ kubectl apply -f aks-ssh.yaml
+运行 `debian` 容器映像并将一个终端会话附加到它。 然后，可以使用该容器来建立与 AKS 群集中的任意节点的 SSH 会话。
+
+```console
+kubectl run -it --rm aks-ssh --image=debian
 ```
 
-获取已公开的服务的外部 IP 地址。 可能需要花费一分钟时间才能完成 IP 地址配置。 
+在容器中安装 SSH 客户端。
 
-```azurecli-interactive
-$ kubectl get service
-
-NAME               TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)        AGE
-kubernetes         ClusterIP      10.0.0.1      <none>          443/TCP        1d
-aks-ssh            LoadBalancer   10.0.51.173   13.92.154.191   22:31898/TCP   17m
+```console
+apt-get update && apt-get install openssh-client -y
 ```
 
-创建 ssh 连接。 
+打开另一个终端并列出所有 pod 以获取新创建的 pod 名称。
 
-AKS 群集的默认用户名是 `azureuser`。 如果此帐户在创建群集时已更改，请将其替换为正确的管理员用户名。 
+```console
+$ kubectl get pods
 
-如果密钥不在 `~/ssh/id_rsa`，请使用 `ssh -i` 参数提供正确的位置。
+NAME                       READY     STATUS    RESTARTS   AGE
+aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
+```
 
-```azurecli-interactive
-$ ssh azureuser@13.92.154.191
+将你的 SSH 密钥复制到该 pod，将 pod 名称替换为正确的值。
+
+```console
+kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
+```
+
+更新 `id_rsa` 文件以使其仅可供用户读取。
+
+```console
+chmod 0600 id_rsa
+```
+
+现在，创建到 AKS 节点的 SSH 连接。 AKS 群集的默认用户名是 `azureuser`。 如果此帐户在创建群集时已更改，请将其替换为正确的管理员用户名。
+
+```console
+$ ssh -i id_rsa azureuser@10.240.0.6
 
 Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.11.0-1016-azure x86_64)
 
@@ -114,8 +96,4 @@ azureuser@aks-nodepool1-42032720-0:~$
 
 ## <a name="remove-ssh-access"></a>删除 SSH 访问
 
-完成后，删除 SSH 访问 pod 和服务。
-
-```azurecli-interactive
-kubectl delete -f aks-ssh.yaml
-```
+完成后，退出 SSH 会话，然后退出交互式容器会话。 此操作将从 AKS 群集中删除用于 SSH 访问的 pod。

@@ -1,8 +1,7 @@
 ---
-title: Azure Active Directory B2C：参考：使用自定义策略来自定义用户旅程的 UI | Microsoft Docs
-description: 有关 Azure Active Directory B2C 自定义策略的主题
+title: 使用自定义策略来自定义用户旅程的 UI | Microsoft Docs
+description: 了解 Azure Active Directory B2C 自定义策略
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
 editor: ''
@@ -11,18 +10,18 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: b0f68f76bfb746b91cb82b2b7e9e750f15f14253
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4fe9e90996c56773480eb147e5aef7475453fe43
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>使用自定义策略来自定义用户旅程的 UI
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 > [!NOTE]
-> 本文深入介绍 UI 自定义的工作方式，以及如何使用标识体验框架通过 B2C 自定义策略实现这种自定义
+> 本文深入介绍了 UI 自定义的工作方式，以及如何使用标识体验框架通过 Azure AD B2C 自定义策略实现这种自定义。
 
 
 无缝用户体验是任何企业到消费者解决方案的关键所在。 无缝用户体验是指，不管是在设备上还是在浏览器上，用户在我们服务中的经历与他们在自己的服务中的经历没有任何差别。
@@ -35,7 +34,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 
 相比之下，在旧式传统方法中，模板页面由解决方案拥有，而解决方案提供的文本和图像以及对布局和外观的控制度都有限，因此，更难以实现无缝体验。CORS 方法支持 HTML5 和 CSS，使你能够：
 
-- 托管内容。解决方案将使用客户端脚本注入其内容。
+- 承载内容。解决方案将使用客户端脚本注入其控件。
 - 完全控制布局和外观的每个像素。
 
 可通过创建 HTML5/CSS 文件，适当地提供任意数目的内容页面。
@@ -57,7 +56,7 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 </html>
 ```
 
-页面的 Azure AD B2C 相关内容将注入此 div，页面的其余部分由你控制。 Azure AD B2C JavaScript 代码将提取内容，并将 HTML 注入此特定 div 元素。 Azure AD B2C 会适当地注入以下控件：帐户选择器控件、登录控件、多重身份验证（目前为基于电话）控件和属性集合控件。 Azure AD B2C 确保所有控件符合 HTML5 规范且可访问、可以完全设置所有控件的样式，并且控件版本不会倒退。
+页面的 Azure AD B2C 相关内容将注入此 div，页面的其余部分由你控制。 Azure AD B2C JavaScript 代码将提取内容，并将 HTML 注入到此特定 div 元素中。 Azure AD B2C 会适当地注入以下控件：帐户选择器控件、登录控件、多重身份验证（目前为基于电话）控件和属性集合控件。 Azure AD B2C 确保所有控件符合 HTML5 规范且可访问、可以完全设置所有控件的样式，并且控件版本不会倒退。
 
 合并的内容最终以动态文档的形式显示给使用者。
 
@@ -109,13 +108,13 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 3.  出现提示时，请指定：a.  存储帐户 *storageAccountName* 的名称，例如 *contoso369b2c*。
     b.  Azure Blob 存储的主访问密钥（*密钥 1*），例如 *contoso369b2c*。
     c.  存储 Blob 存储容器 *containerName* 的名称，例如 *b2c*。
-    d.单击“下一步”。  *Starter-Pack* 示例文件的路径，例如 *..\B2CTemplates\wingtiptoys*。
+    d.  *Starter-Pack* 示例文件的路径，例如 *..\B2CTemplates\wingtiptoys*。
 
 如果遵循了上述步骤，虚构公司 **wingtiptoys** 的 *UI-Customization-Pack* 的 HTML5 和 CSS 文件现在会指向存储帐户。  可以在 Azure 门户中打开相关的容器窗格，验证是否已正确上传内容。 也可以通过从浏览器访问页面来验证是否已正确上传内容。 有关详细信息，请参阅 [Azure Active Directory B2C：用于演示页面用户界面 (UI) 自定义功能的帮助程序工具](active-directory-b2c-reference-ui-customization-helper-tool.md)。
 
 ## <a name="ensure-the-storage-account-has-cors-enabled"></a>确保存储帐户已启用 CORS
 
-必须在终结点上启用 CORS（跨域资源共享），否则 Azure AD B2C 高级版无法加载内容，因为托管内容的域不同于 Azure AD B2C 高级版从其提供页面的域。
+必须在终结点上启用 CORS（跨域资源共享）才能让 Azure AD B2C 加载内容。 这是因为，该内容未承载在 Azure AD B2C 要从中提供页面的域上。
 
 若要验证托管内容的存储是否已启用 CORS，请继续执行以下步骤：
 
@@ -163,8 +162,8 @@ Azure AD B2C 允许在 Azure AD B2C 通过自定义策略提供和显示的各�
 | *api.localaccountsignin* | **本地帐户登录页面**。 此页面包含一个登录窗体，用户在使用基于电子邮件地址或用户名的本地帐户登录时必须填写此窗体。 该窗体可以包含文本输入框和密码输入框。 |
 | *api.localaccountsignup* | **本地帐户注册页面**。 此页面包含一个注册窗体，用户在注册基于电子邮件地址或用户名的本地帐户时必须填写此窗体。 该窗体可以包含不同的输入控件，如文本输入框、密码输入框、单选按钮、单选下拉框和多选复选框。 |
 | *api.phonefactor* | **多重身份验证页面** 在此页面上，用户可以在注册或登录期间（使用文字或语音）验证其电话号码。 |
-| *api.selfasserted* | **社交帐户注册页面**。 此页面包含一个注册窗体，用户在使用 Facebook 或 Google+ 等社交标识提供者的现有帐户注册时必须填写此窗体。 此页面类似于上述社交帐户注册页面，但包含密码输入字段。 |
-| *api.selfasserted.profileupdate* | **个人资料更新页面**。 此页面包含用户可以用来更新其个人资料的窗体。 此页面类似于上述社交帐户注册页面，但包含密码输入字段。 |
+| *api.selfasserted* | **社交帐户注册页面**。 此页面包含一个注册窗体，用户在使用 Facebook 或 Google+ 等社交标识提供者的现有帐户注册时必须填写此窗体。 此页面类似于上述社交帐户注册页面，但密码输入字段例外。 |
+| *api.selfasserted.profileupdate* | **个人资料更新页面**。 此页面包含用户可以用来更新其个人资料的窗体。 此页面类似于上述社交帐户注册页面，但密码输入字段例外。 |
 | *api.signuporsignin* | **统一注册或登录页面**。  此页面处理用户的注册和登录，他们可以使用企业标识提供者、社交标识提供者（例如 Facebook 或 Google+）或本地帐户。
 
 ## <a name="next-steps"></a>后续步骤

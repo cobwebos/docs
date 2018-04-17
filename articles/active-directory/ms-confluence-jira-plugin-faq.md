@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Active Directory 单一登录插件常见问题解答 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 与 Microsoft Azure Active Directory single sign-on for JIRA 之间配置单一登录。
+title: Azure Active Directory SSO 插件的常见问题解答 | Microsoft Docs
+description: 获取有关在 Azure Active Directory 与 Jira/Confluence 之间配置单一登录的常见问题的解答。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,70 +14,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 571fbd5078f66375f6e81cba2a790121366f9d60
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b642d6de9fd9265d7f7ee11b827a36d20e5bcce7
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="microsoft-azure-active-directory-single-sign-on-plugin-faq"></a>Microsoft Azure Active Directory 单一登录插件常见问题解答 
+# <a name="faq-for-the-azure-active-directory-sso-plug-in"></a>Azure Active Directory SSO 插件的常见问题解答 
 
-## <a name="1-whats-the-microsoft-sso-add-on"></a>1.什么是 Microsoft SSO 加载项？
+## <a name="what-does-the-plug-in-do"></a>此插件的功能是什么？
 
-此加载项为 Atlassian 的 JIRA（包括 JIRA 核心、JIRA 软件、JIRA 服务台）和 Confluence 本地软件提供单一登录功能。 此加载项使用 Azure AD 作为 IdP。
+此插件为 Atlassian Jira（包括 Jira 核心、Jira 软件、Jira 服务台）和 Confluence 本地软件提供单一登录功能。 此插件作为标识提供者 (IdP) 与 Azure Active Directory (Azure AD) 配合工作。
 
-## <a name="2-add-on-works-with-which-atlassian-products"></a>2.此加载项适用于哪些 Atlassian 产品？
+## <a name="which-atlassian-products-does-the-plug-in-work-with"></a>此插件与哪些 Atlassian 产品配合工作？
 
-到目前为止，此加载项适用于本地版本的 JIRA 和 Confluence。
+此插件与 Jira 和 Confluence 的本地版本配合工作。
 
-## <a name="3-does-this-add-on-work-on-cloud-version"></a>3.此加载项是否支持云版本？
+## <a name="does-the-plug-in-work-on-cloud-versions"></a>此插件是否支持云版本？
 
-不会。 仅支持本地版本的 JIRA 和 Confluence。
+不支持。 此插件仅支持 Jira 和 Confluence 的本地版本。
 
-## <a name="4-which-versions-of-jira-and-confluence-are-supported"></a>4.支持 JIRA 和 Confluence 的哪些版本？
+## <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>此插件支持 Jira 和 Confluence 的哪些版本？
 
-下面是支持的版本列表：
+此插件支持以下版本：
 
-* JIRA 核心和软件：6.0 到 7.2.2 
-* JIRA 服务台：3.0 到 3.2 
+* Jira 核心和软件：6.0 到 7.2.2 
+* Jira 服务台：3.0 到 3.2 
 * Confluence：5.0 至 5.10
 
-## <a name="5-is-this-add-on-free-or-paid"></a>5.此加载项是免费还是付费？
+## <a name="is-the-plug-in-free-or-paid"></a>此插件是免费的还是付费的？
 
-这是免费的加载项，可以从 Atlassian 市场安装。
+它是一个免费加载项。 可以从 Atlassian Marketplace 安装它。
 
-## <a name="6-do-i-need-to-restart-jiraconfluence-once-i-deploy-the-add-on"></a>6.部署此加载项后，是否需要重启 JIRA/Confluence？
+## <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>部署此插件后，是否需要重启 Jira 或 Confluence？
 
-部署加载项后不需要重启。 可以在部署后立即开始使用此加载项。
+不需要重启。 可以立即开始使用此插件。
 
-## <a name="7-how-do-i-get-support-for-the-add-on"></a>7.如何获取加载项支持？
+## <a name="how-do-i-get-support-for-the-plug-in"></a>如何获得对此插件的支持？
 
-请通过以下方式与我们联系：<email>。我们将在 <> 小时内答复。 也可以通过 Azure 门户渠道向 Microsoft 提交支持票证。 也可以致电我们：<Number>（工作日上午 <> 点到下午 <> 点）。
+联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 该团队会在 24-48 个工作小时内做出响应。 
 
-## <a name="8-would-this-add-on-work-on-mac-or-ubuntu-installation-of-jira-and-confluence"></a>8.此加载项是否支持 JIRA 和 Confluence 的 Mac 或 Ubuntu 安装？
+也可以通过 Azure 门户渠道向 Microsoft 提交支持票证。
 
-我们仅在 JIRA 和 Confluence 的 64 位 Windows Server 安装上测试了此加载项。
+## <a name="would-the-plug-in-work-on-a-mac-or-ubuntu-installation-of-jira-and-confluence"></a>此插件是否支持 Jira 和 Confluence 的 Mac 或 Ubuntu 安装？
 
-## <a name="9-does-this-add-on-work-with-other-idps-than-azure-ad"></a>9.此加载项是否适用于 Azure AD 以外的其他 Idp？
+我们仅在 Jira 和 Confluence 的 64 位 Windows Server 安装上测试了此插件。
 
-不会。 此加载项仅适用于 Azure AD。
+## <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>此插件是否可以与除 Azure AD 之外的 IdP 配合工作？
 
-## <a name="10-what-version-of-saml-does-the-add-on-work-with"></a>10.此加载项适用于哪个版本的 SAML？
+不可以。 它仅可与 Azure AD 配合工作。
 
-此加载项适用于 SAML 2.0。
+## <a name="what-version-of-saml-does-the-plug-in-work-with"></a>此插件与哪个版本的 SAML 配合工作？
 
-## <a name="11-does-the-add-on-do-use-provisioning-as-well"></a>11.此加载项也一定要使用预配吗？
+它与 SAML 2.0 配合工作。
 
-不会。 到目前为止，此加载项仅提供基于 SAML 2.0 的 SSO。 在 SSO 登录前，必须将用户预配到应用程序中。
+## <a name="does-the-plug-in-do-user-provisioning"></a>此插件是否执行用户预配？
 
-## <a name="12-are-cluster-versions-of-jira-and-confluence-supported-by-add-on"></a>12.此加载项是否支持群集版本的 JIRA 和 Confluence？
+不。 此插件仅提供基于 SAML 2.0 的 SSO。 在进行 SSO 登录前，必须将用户预配到应用程序中。
 
-不会。 此加载项适用于本地版本的 JIRA 和 Confluence。
+## <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>此插件是否支持 Jira 和 Confluence 的群集版本？
 
-## <a name="13-would-this-plugin-work-with-http-version-of-jira-and-confluence"></a>13.此插件是否适用于 HTTP 版本的 JIRA 和 Confluence？
+不支持。 此插件与 Jira 和 Confluence 的本地版本配合工作。
 
-不会。 此加载项仅适用于已启用 HTTPS 的安装。
+## <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>此插件是否可以与 Jira 和 Confluence 的 HTTP 版本配合工作？
 
-## <a name="14-do-i-need-to-buy-license-of-the-add-on"></a>14.是否需要购买此加载项的许可证？
-
-它是免费加载项。
+不可以。 此插件仅可与已启用 HTTPS 的安装配合工作。

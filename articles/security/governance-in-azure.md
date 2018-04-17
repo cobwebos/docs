@@ -1,12 +1,12 @@
 ---
-title: "Azure 中的监管 | Microsoft Docs"
-description: "了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。"
+title: Azure 中的监管 | Microsoft Docs
+description: 了解基于云的计算服务，包括大量计算实例和服务，它们可根据应用程序或企业的需求自动扩展和缩减。
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 875b78f6af330aea3333b045ee72e9632e9aa8a6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 04d9e6152c87a49a5f1b1b1a29c16d80de00f4e9
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="governance-in-azure"></a>Azure 中的监管
 
@@ -263,7 +263,7 @@ Azure 资源管理器会分析依赖关系，以确保按正确的顺序创建�
 
 资源锁目前支持两个值：CanNotDelete 和 ReadOnly。 CanNotDelete 表示用户（具有相应权限）仍可读取或修改某个资源，但无法删除该资源。 ReadOnly 表示经过授权的用户无法删除或修改某个资源。
 
-Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 <https://management.azure.com> 的操作。锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁将阻止删除或修改该数据库，但不会阻止创建、更新或删除该数据库中的数据。
+资源管理器锁仅应用于在管理平面内发生的操作，包括发送到 <https://management.azure.com> 的操作。 锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁将阻止删除或修改该数据库，但不会阻止创建、更新或删除该数据库中的数据。
 
 应用“ReadOnly”可能会导致意外结果，因为看似读取操作的某些操作实际上需要其他操作。 例如，在存储帐户上放置 **ReadOnly** 锁将阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。
 
@@ -410,33 +410,33 @@ Azure 安全中心监视以下 Azure 资源：
 
 - 与 Azure 订阅集成的合作伙伴解决方案，例如 VM 和[应用服务环境](https://docs.microsoft.com/azure/app-service/app-service-app-service-environments-readme)上的 Web 应用程序防火墙。
 
-### <a name="operations-management-suite"></a>Operations Management Suite
+### <a name="log-analytics"></a>Log Analytics
 
-OMS 软件开发和服务团队的信息安全和[监管计划](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md)支持其业务需求，并遵循 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)和 [Microsoft 信任中心符合性](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)中所述的法律和法规。 其中还介绍了 OMS 如何建立安全要求、识别安全控制、管理和监控风险。 每年，我们都会对策略、标准、过程和指导原则进行评审。
+Log Analytics 软件开发和服务团队的信息安全和[监管计划](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md)支持其业务需求，并遵循 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)和 [Microsoft 信任中心符合性](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)中所述的法律和法规。 其中还介绍了 Log Analytics 如何建立安全要求、识别安全控制、管理和监控风险。 每年，我们都会对策略、标准、过程和指导原则进行评审。
 
-每个 OMS 开发团队成员都会接受正式的应用程序安全培训。 在内部，我们将版本控制系统用于软件开发。 每个软件项目都受版本控制系统保护。
+每个 Log Analytics 开发团队成员都会接受正式的应用程序安全培训。 在内部，我们将版本控制系统用于软件开发。 每个软件项目都受版本控制系统保护。
 
-Microsoft 有安全性和合规性团队，负责对 Microsoft 中所有服务进行监控和评估。 由信息安全专员组成该团队，他们不会加入开发 OMS 的工程部门。 安全专员有其自己的管理链，负责对产品和服务进行独立评估，以确保安全性和合规性。
+Microsoft 有安全性和合规性团队，负责对 Microsoft 中所有服务进行监控和评估。 由信息安全专员组成该团队，他们不会加入开发 Log Analytics 的工程部门。 安全专员有其自己的管理链，负责对产品和服务进行独立评估，以确保安全性和合规性。
 
-Operations Management Suite（简称为 OMS）是在云中从无到有设计出的管理服务集合。 OMS 组件完全在 Azure 中托管，而不是在本地资源上部署和管理。 配置工作极少，基本上在几分钟内就能将它启动并运行。
+Azure 提供了在云中从无到有设计出的管理服务集合。 这些组件完全承载在 Azure 中，而不是在本地资源上部署和管理。 配置工作极少，基本上在几分钟内就能将它启动并运行。
 
 ![Operations Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig8.png)
 
-不能仅仅因为 OMS 服务在云中运行，就认为它们无法有效管理本地环境。
+不能仅仅因为 Log Analytics 服务在云中运行，就认为它们无法有效管理本地环境。
 
 在数据中心内的任意 Windows 或 Linux 计算机上安装一个代理，就能将数据发送到 Log Analytics，可在其中连同从云或本地服务收集的其他所有数据一起进行分析。 使用 Azure 备份和 Azure Site Recovery 可以利用云来实现本地资源的备份和高可用性。
 
 云中的 Runbook 通常无法访问本地资源，但你可以在数据中心内托管 Runbook 的一台或多台计算机上安装代理。 启动 Runbook 时，只需指定是要让它在云中还是本地辅助角色上运行即可。
 
-OMS 的核心功能由 Azure 中运行的一组服务提供。 每个服务提供特定的管理功能，可以组合这些服务来实现不同的管理方案。
+Log Analytics 的核心功能由在 Azure 中运行的一组服务提供。 每个服务提供特定的管理功能，可以组合这些服务来实现不同的管理方案。
 
 ![Operations Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig9.JPG)
 
-Azure 操作管理器通过提供管理解决方案扩展其功能。 [管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是预先打包的逻辑集，可以实现利用一个或多个 OMS 服务的管理方案。
+Azure 操作管理器通过提供管理解决方案扩展其功能。 [管理解决方案](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)是预先打包的逻辑集，可以实现利用一个或多个服务的管理方案。
 
 ![Azure 操作管理](./media/governance-in-azure/security-governance-in-azure-fig10.png)
 
-Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高 OMS 投资的价值。
+Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 订阅，提高在 Log Analytics 方面所做投资的价值。
 
 合作伙伴可以创建自己的解决方案来支持自己的应用程序和服务，并通过 Azure Marketplace 或快速启动模板将它们提供给用户。
 
@@ -455,7 +455,7 @@ Microsoft 与合作伙伴提供不同的解决方案，可将其添加到 Azure 
 >[!Note]
 > 请参阅[在 Application Insights 中设置警报](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)和[监视任何网站的可用性和响应能力](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability)。
 
-- Log Analytics (Operations Management Suite)：用于将活动日志和诊断日志路由到 Log Analytics。 Operations Management Suite 允许指标、日志和其他警报类型。
+- Log Analytics：用于将活动日志和诊断日志路由到 Log Analytics，并允许使用指标、日志和其他警报类型。
 
 >[!Note]
 > 有关详细信息，请参阅 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts) 中的警报。

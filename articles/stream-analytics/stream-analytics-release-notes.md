@@ -1,23 +1,19 @@
 ---
-title: 流分析发行说明 | Microsoft 文档
-description: 流分析发行说明
+title: Azure 流分析 - 发行说明
+description: 本文介绍了 Azure 流分析和对应的 Visual Studio 工具的发行历史记录。
 services: stream-analytics
-documentationcenter: ''
 author: jseb225
-manager: ryanw
-ms.assetid: 5e59f893-cd2c-43fb-9eca-c146ce637203
-ms.service: stream-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 05/03/2017
 ms.author: jeanb
-ms.openlocfilehash: 645c9e7014beba0312de3784bbc04734927929a9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+manager: kfile
+ms.reviewer: jasonh
+ms.service: stream-analytics
+ms.topic: conceptual
+ms.date: 05/03/2017
+ms.openlocfilehash: b5f6f4f42929127521320e56bcc9b36c324cde89
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="stream-analytics-release-notes"></a>流分析发行说明
 
@@ -31,9 +27,9 @@ ms.lasthandoff: 03/30/2018
 | 对本地测试输入的 CSV 和 Avro 支持 | 除 JSON 以外，现可对本地测试输入使用 CSV 和 Avro 文件格式。|
 
 ## <a name="notes-for-05032017-update-of-stream-analytics"></a>流分析 05/03/2017 更新说明
-此更新适用于我们的故障排除文档版本。
+此更新适用于故障排除文档版本。
 
-已发布[故障排除指南](stream-analytics-troubleshooting-guide.md)和其他文档。 请进行查看；同时，欢迎提出任何反馈。
+已发布[故障排除指南](stream-analytics-troubleshooting-guide.md)和其他文档。 请查看本指南，欢迎你提供反馈。
 
 ## <a name="notes-for-04242017-update-of-stream-analytics-tools-for-visual-studio"></a>适用于 Visual Studio 的流分析工具 2017/04/24 更新说明
 此更新适用于 Visual Studio Tools。 此版本包含以下新功能：
@@ -43,7 +39,7 @@ ms.lasthandoff: 03/30/2018
 | 在 Visual Studio 中查看本地测试结果 | 若要查看本地测试的输出结果，只需在输出控制台窗口按 Enter 或将其关闭。 结果以表格式显示在 Visual Studio 的某一窗口中。 |
 | 以 JSON 格式输出本地结果 | 运行本地测试时，系统会以 JSON 和 CSV 文件格式生成输出结果。 |
 | 预览 Blob/表存储的输入/输出数据 | 通过双击作业视图中的 Blob 或表存储输入/输出，可以轻松地在 Visual Studio 中预览数据。 |
-| 查看输入/输出的错误消息 | 如果存在一些与作业的输入或输出相关的运行时错误，这些错误会显示在作业关系图上，可将鼠标悬停在该关系图上以查看详细的错误消息。|
+| 查看输入/输出的错误消息 | 如果存在与作业的输入或输出相关的任何运行时错误，则这些错误会显示在作业关系图上，可将鼠标悬停在该关系图上来查看详细的错误消息。|
 
 
 ## <a name="notes-for-02012017-release-of-stream-analytics"></a>流分析 02/01/2017 版说明
@@ -76,7 +72,7 @@ ms.lasthandoff: 03/30/2018
 | 标题 | 说明 |
 | --- | --- |
 | REST API 版本更新 |REST API 版本已更新至 2015-10-01。 可以在 MSDN 上的[流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)和[流分析中的机器学习集成](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)中找到详细信息。 |
-| Azure 机器学习集成 |在此版本中，提供了对 Azure 机器学习用户定义的函数的支持。 有关详细信息，请参阅[教程](stream-analytics-machine-learning-integration-tutorial.md)以及[常规博客公告](http://blogs.technet.com/b/machinelearning/archive/2015/12/10/apply-azure-ml-as-a-function-in-azure-stream-analytics.aspx)。 |
+| Azure 机器学习集成 |在此版本中，提供了对 Azure 机器学习用户定义的函数的支持。 有关详细信息，请参阅[教程](stream-analytics-machine-learning-integration-tutorial.md)和[常规博客公告](http://blogs.technet.com/b/machinelearning/archive/2015/12/10/apply-azure-ml-as-a-function-in-azure-stream-analytics.aspx)。 |
 
 ## <a name="notes-for-11122015-release-of-stream-analytics"></a>流分析 11/12/2015 版说明
 此版本包含以下更新：
@@ -93,7 +89,7 @@ ms.lasthandoff: 03/30/2018
 | 其他查询语言功能 |流分析通过包括以下功能扩展了查询语言：[ABS](https://msdn.microsoft.com/library/azure/mt574054.aspx)、[CEILING](https://msdn.microsoft.com/library/azure/mt605286.aspx)、[EXP](https://msdn.microsoft.com/library/azure/mt605289.aspx)、[FLOOR](https://msdn.microsoft.com/library/azure/mt605240.aspx)、[POWER](https://msdn.microsoft.com/library/azure/mt605287.aspx)、[SIGN](https://msdn.microsoft.com/library/azure/mt605290.aspx)、[SQUARE](https://msdn.microsoft.com/library/azure/mt605288.aspx) 和 [SQRT](https://msdn.microsoft.com/library/azure/mt605238.aspx)。 |
 | 去除了聚合限制 |此版本去除了在一个查询中最多有 15 个聚合的限制。 现在，对每个查询的聚合数没有限制。 |
 | 添加了 GROUP BY System.Timestamp 功能 |[GROUP BY](https://msdn.microsoft.com/library/azure/dn835023.aspx) 函数现在允许使用 window_type 或 [System.Timestamp](https://msdn.microsoft.com/library/azure/mt598501.aspx)。 |
-| 添加了 OFFSET 用于翻转窗口和跳跃窗口 |默认情况下，[翻转](https://msdn.microsoft.com/library/azure/dn835055.aspx)和[跳跃](https://msdn.microsoft.com/library/azure/dn835041.aspx)窗口会根据零点时间 (1/1/0001 12:00:00 AM UTC) 进行调整。 新（可选）参数“offsetsize”允许指定自定义偏移量（或调整）。 |
+| 添加了 OFFSET 用于翻转窗口和跳跃窗口 |默认情况下，[翻转](https://msdn.microsoft.com/library/azure/dn835055.aspx)和[跳跃](https://msdn.microsoft.com/library/azure/dn835041.aspx)窗口会根据零点时间 (1/1/0001 12:00:00 AM UTC) 进行调整。 新的（可选）参数 `offsetsize` 允许指定自定义偏移量（或调整）。 |
 
 ## <a name="notes-for-09292015-release-of-stream-analytics"></a>流分析 09/29/2015 版说明
 此版本包含以下更新：
@@ -151,7 +147,7 @@ ms.lasthandoff: 03/30/2018
 | --- | --- |
 | Azure 存储帐户配置中的延迟 |在某个区域首次创建流分析作业时，系统会提示创建一个新的存储帐户，或者指定一个现有的帐户来监视该区域的流分析作业。 由于配置监视方面的延迟，在 30 分钟内在同一区域创建另一个流分析作业时，系统会提示指定第二个存储帐户，而不是在“监视存储帐户”下拉列表中显示最近配置的帐户。 为了避免创建不需要的存储帐户，在某个区域首次创建作业后，可等待 30 分钟，再预配该区域的其他作业。 |
 | 作业升级 |目前，流分析不支持实时编辑正在运行的作业的定义或配置。 要更改正在运行的作业的输入、输出、查询、规模或配置，必须先停止该作业。 |
-| 从输入源推断出数据类型 |如果未使用 CREATE TABLE 语句，则可从输入格式推断输入类型，例如，CSV 中的所有字段都是字符串。 要避免出现类型不匹配错误，需使用 CAST 函数将字段显式转换为正确的类型。 |
+| 从输入源推断出数据类型 |如果未使用 CREATE TABLE 语句，则可从输入格式推断输入类型，例如，CSV 中的所有字段都是字符串。 为避免出现类型不匹配错误，请使用 CAST 函数将字段显式转换为正确类型。 |
 | 缺失字段将输出为 null 值 |引用输入源中不存在的字段会导致输出事件中出现 null 值。 |
 | WITH 语句必须位于 SELECT 语句前面 |在查询中，SELECT 必须紧跟 WITH 语句中定义的子查询。 |
 | 内存不足问题 |流式处理分析作业时，如果作业对无序事件的容忍度较大，而且/或者查询很复杂，需要保留大量的状态，则可能会导致作业在运行时出现内存不足的问题，使得作业重新启动。 可以在作业的操作日志中查看启动和停止操作。 要避免出现这种行为，可以将查询横向扩展到多个分区。 在未来的版本中，为了解决这种受限问题，会降低受影响作业的性能，而不是重启它们。 |
@@ -160,7 +156,7 @@ ms.lasthandoff: 03/30/2018
 | PowerBI 数据集只能包含一个表 |PowerBI 不支持在给定数据集中设置多个表。 |
 
 ## <a name="get-help"></a>获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试使用 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

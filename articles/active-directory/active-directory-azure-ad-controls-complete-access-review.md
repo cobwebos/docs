@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure AD 完成组成员或用户对应用程序进行访问的访问评审 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 中针对有权访问应用程序的组成员或用户完成访问评审。"
+title: 使用 Azure AD 完成组成员或用户对应用程序进行访问的访问评审 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 中针对有权访问应用程序的组成员或用户完成访问评审。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: de853d633aa65c9f08f5e28088d5240c2e4d7fa6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c4efdbf5a355ddc9a31091517665f91dd8e68ec0
+ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>在 Azure AD 中完成组成员或用户对应用程序进行访问的访问评审
 
-管理员可以使用 Azure Active Directory (Azure AD) 对已分配到应用程序的组成员或用户[创建访问评审](active-directory-azure-ad-controls-create-access-review.md)。 Azure AD 会自动向评审者发送一封电子邮件，提示他们评审访问权限。 如果用户未收到电子邮件，可以向他们发送[评审访问权限](active-directory-azure-ad-controls-perform-access-review.md)中的说明。 访问评审期限结束后，或者管理员停止了访问评审后，请遵循本文中的步骤查看并应用结果。
+管理员可以使用 Azure Active Directory (Azure AD) 对已分配到应用程序的组成员或用户[创建访问评审](active-directory-azure-ad-controls-create-access-review.md)。 Azure AD 会自动向评审者发送一封电子邮件，提示他们评审访问权限。 如果用户未收到电子邮件，可以向他们发送[评审访问权限](active-directory-azure-ad-controls-perform-access-review.md)中的说明。 （注意，被指定为评审者但尚未接受邀请的来宾不会收到来自访问评审的电子邮件，因为他们在评审前必须先接受邀请。）访问评审期限结束后，或者管理员停止了访问评审后，请遵循本文中的步骤查看并应用结果。
 
 ## <a name="view-an-access-review-in-the-azure-portal"></a>在 Azure 门户中查看访问评审
 
@@ -35,13 +35,15 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="apply-the-changes"></a>应用更改 
 
-访问评审完成后（无论是达到结束日期或是管理员已手动停止），请选择“应用”。 更新组或应用程序即可执行评审结果。 如果在评审中拒绝了某个用户的访问权限，当管理员选择此选项时，Azure AD 会删除该用户的成员资格或应用程序分配。 
+如果访问评审因为已到达结束日期或者因为管理员已手动将其停止而已完成，并且没有为评审配置自动应用，则可以选择“应用”来手动应用更改。 更新组或应用程序即可执行评审结果。 如果在评审中拒绝了某个用户的访问权限，当管理员选择此选项时，Azure AD 会删除该用户的成员资格或应用程序分配。 
 
-选择“应用”不会影响源自本地目录的组，也不影响动态组。 若要更改源自本地的组，请下载结果，并将这些更改应用到该目录中组的表示形式。
+如果访问评审已完成并且配置了自动应用，则评审状态将从“已完成”更改为各种中间状态，并且最终将更改为“已应用”状态。 在几分钟后，应当会看到被拒绝的用户（如果有）被从资源组成员身份或应用分配中删除。
+
+为评审配置自动应用或者选择“应用”不会影响源自本地目录的组，也不会影响动态组。 若要更改源自本地的组，请下载结果，并将这些更改应用到该目录中组的表示形式。
 
 ## <a name="download-the-results-of-the-review"></a>下载评审结果
 
-若要检索评审结果，请选择“审批”，然后选择“下载”。 可以在 Excel 或其他可打开 CSV 文件的程序中查看生成的 CSV 文件。
+若要检索评审结果，请选择“审批”，然后选择“下载”。 可以在 Excel 中或在可打开 UTF-8 编码 CSV 文件的其他程序中查看生成的 CSV 文件。
 
 ## <a name="optional-delete-a-review"></a>可选：删除评审
 如果不再需要关注评审，则可以将其删除。 选择“删除”即可从 Azure AD 中删除评审。

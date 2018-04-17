@@ -1,108 +1,103 @@
 ---
-title: "Azure 移动应用中的身份验证和授权 | Microsoft Docs"
-description: "Azure 移动应用身份验证/授权功能的概念参考和概述"
-services: app-service\mobile
-documentationcenter: 
+title: Azure 应用服务中针对移动应用的身份验证和授权 | Microsoft Docs
+description: Azure 应用服务的身份验证/授权功能的概念性参考和概述，尤其是针对移动应用
+services: app-service
+documentationcenter: ''
 author: mattchenderson
-manager: cfowler
-editor: 
-ms.assetid: a46dbf70-867d-48f6-8885-7f5207ad102e
-ms.service: app-service-mobile
+manager: erikre
+editor: ''
+ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: 57deec4acffc1387fcb5c42c17085bb363dfdbc1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 237310c607eb8488e53631b6e69d01703d1ebf99
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="authentication-and-authorization-in-azure-mobile-apps"></a>Azure 移动应用中的身份验证和授权
-## <a name="what-is-app-service-authentication--authorization"></a>什么是应用服务身份验证/授权？
-> [!NOTE]
-> 本文将迁移到[应用服务身份验证/授权](../app-service/app-service-authentication-overview.md)合并文章，其中涵盖 Web 应用、移动应用和 API 应用。
-> 
-> 
+# <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Azure 应用服务中针对移动应用的身份验证和授权
 
-应用服务身份验证/授权是一项功能，使应用程序能够将用户登录，而无需在应用后端进行任何代码更改。 该功能可以方便地保护应用程序和处理每个用户的数据。
+本文介绍了在开发具有应用服务后端的原生移动应用时身份验证和授权功能如何工作。 应用服务提供了集成的身份验证和授权，因此，移动应用可以在不更改应用服务中的任何代码的情况下让用户登录。 该功能可以方便地保护应用程序和处理每个用户的数据。 
 
-应用服务使用联合标识，即通过第三方**标识提供者** ("IDP") 来存储帐户并对用户进行身份验证。 应用程序使用此标识而不是自己的标识。 应用服务支持现有的五个标识提供者：Azure Active Directory、Facebook、Google、Microsoft 帐户和 Twitter。 也可以通过集成其他标识提供者或自定义的标识解决方案，为应用扩展此项支持。
+本文重点介绍了移动应用开发。 若要快速了解如何将应用服务身份验证和授权用于移动应用，请参阅以下教程之一：[向 iOS 应用添加身份验证][iOS]（或 [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms] 或 [Cordova]）。 
 
-应用可以使用任意数目的此类标识提供者，以便可以为最终用户提供登录方式选项。
+有关应用服务中的身份验证和授权如何工作的信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/app-service-authentication-overview.md)。
 
-如果想要立即入门，请参阅以下教程之一：
+## <a name="authentication-with-provider-sdk"></a>在使用提供者 SDK 的情况下进行身份验证
 
-* [将身份验证添加到 iOS 应用]
-* [将身份验证添加到 Xamarin.iOS 应用]
-* [将身份验证添加到 Xamarin.Android 应用]
-* [将身份验证添加到 Windows 应用]
+在应用服务中配置所有项目后，可以将移动客户端修改为通过应用服务进行登录。 可以使用下述两种方式：
 
-## <a name="how-authentication-works"></a>身份验证的工作原理
-若要使用其中某个标识提供者进行身份验证，首先需对标识提供者进行配置，使之了解应用程序。 然后，标识提供者向用户提供 ID 和机密，再由用户将其提供给应用程序。 这样就构成了信任关系，使应用服务能够验证收到的标识。
-
-以下主题详细说明了这些步骤：
-
-* [如何将应用配置为使用 Azure Active Directory 登录]
-* [如何将应用配置为使用 Facebook 登录]
-* [如何将应用配置为使用 Google 登录]
-* [如何将应用配置为使用 Microsoft 帐户登录]
-* [如何将应用配置为使用 Twitter 登录]
-
-在后端将一切配置准备就绪后，可以修改用于登录的客户端。 可以使用下述两种方式：
-
-* 使用一行代码，让移动应用客户端 SDK 登录用户。
-* 使用给定标识提供者发布的 SDK 建立标识，并获取对应用服务的访问权限。
+* 使用给定标识提供者发布的 SDK 来建立标识，即可获得应用服务的访问权限。
+* 使用单行代码即可让移动应用客户端 SDK 登录用户。
 
 > [!TIP]
-> 大多数应用程序都应该使用提供程序 SDK 来获得更自然的登录体验，使用刷新支持和其他提供程序特定的优势。
+> 大多数应用程序应使用提供者 SDK，这样可以让用户在登录时获得更一致的体验，可以使用令牌刷新支持，还可以获得提供者指定的其他权益。
 > 
 > 
 
-### <a name="how-authentication-without-a-provider-sdk-works"></a>不使用提供程序 SDK 进行身份验证的工作原理
-如果不想要设置提供程序 SDK，可以允许移动应用自动执行登录。 移动应用客户端 SDK 将为所选的提供程序打开一个 Web 视图，以便完成登录。 有时，你可能会看到此工作流被称为“服务器流”或“服务器定向流”，因为服务器管理登录，而客户端 SDK 永远不会收到提供程序令牌。
+使用提供者 SDK 时，用户一登录即可获得与操作系统结合更紧密的体验，而应用程序就运行在该操作系统中。 此方法还提供提供者令牌以及客户端上的某些用户信息，因此可以更轻松地使用图形 API 和自定义用户体验。 在博客和论坛上，此过程有时也被称为“客户端流”或“客户端定向流”，因为客户端代码可以登录用户，还可以访问提供者令牌。
 
-适用于每个平台的身份验证教程中提供了启动此流所需的代码。 在流程结束时，客户端 SDK 将拥有一个应用服务令牌，该令牌自动附加到针对后端的所有请求。
+获取提供者令牌后，需将其发送到应用服务进行验证。 应用服务在验证令牌后会创建新的应用服务令牌，将其返回给客户端。 移动应用客户端 SDK 提供的帮助器方法可用于管理此交换，并可自动将令牌附加到针对应用程序后端的所有请求。 开发人员也可以保留对提供者令牌的引用。
 
-### <a name="how-authentication-with-a-provider-sdk-works"></a>使用提供程序 SDK 进行身份验证的工作原理
-使用提供程序 SDK 可让登录体验与应用运行所在的平台 OS 更紧密地交互。 提供程序 SDK 还提供提供者令牌以及客户端上的某些用户信息，从而可以更轻松地使用图形 API 和自定义用户体验。 有时，你可能会看到此工作流被称为“客户端流”或“客户端定向流”，因为客户端代码处理登录，还可以访问提供者令牌。
+有关身份验证流的详细信息，请参阅[应用服务身份验证流](../app-service/app-service-authentication-overview.md#authentication-flow)。 
 
-获取提供者令牌后，需将其发送到应用服务进行验证。 在流程结束时，客户端 SDK 将拥有一个应用服务令牌，该令牌自动附加到针对后端的所有请求。 开发人员也可选择性地保留对提供者令牌的引用。
+## <a name="authentication-without-provider-sdk"></a>在不使用提供者 SDK 的情况下进行身份验证
 
-## <a name="how-authorization-works"></a>授权工作原理
-应用服务身份验证/授权公开**请求未经身份验证时需执行的操作**的多个选项。 在代码收到给定的请求之前，可以进行应用服务检查来查看是否对请求进行身份验证，如果没有，则拒绝请求并尝试让用户登录，并再试一次。
+如果不希望设置提供者 SDK，可以利用 Azure 应用服务的移动应用功能进行登录。 移动应用客户端 SDK 会针对所选提供者打开一个 Web 视图，方便用户登录。 在博客和论坛上，此过程有时也被称为“服务器流”或“服务器定向流”，因为服务器管理用户登录过程，而客户端 SDK 从来不会收到提供者令牌。
 
-其中一个选项是让未经身份验证的请求重定向到其中一个标识提供者。 在 Web 浏览器中，此重定向实际上会将用户转到新页面。 但是，这样就无法重定向移动客户端，并且未经身份验证的响应将收到 HTTP“401 未授权”响应。 考虑到这一点，客户端发出的第一个请求应始终为登录终结点，并可对任何其他 API 进行调用。 如果尝试在登录之前调用另一个 API，客户端将收到错误。
+启动此流程的代码包括在每个平台的身份验证教程中。 在流程结束时，客户端 SDK 将拥有一个应用服务令牌，该令牌自动附加到针对应用程序后端的所有请求。
 
-如果想要更精细控制哪些终结点需要身份验证，也可以针对未经身份验证的请求选择“无操作(允许请求)”。 在此情况下，所有身份验证决策都将延后到应用程序代码。 也可以根据自定义的授权规则来允许特定的用户访问。
+有关身份验证流的详细信息，请参阅[应用服务身份验证流](../app-service/app-service-authentication-overview.md#authentication-flow)。 
+## <a name="more-resources"></a>更多资源
 
-## <a name="documentation"></a>文档
-以下教程说明如何使用应用服务将身份验证添加到移动客户端：
+以下教程展示了如何通过[服务器定向流](../app-service/app-service-authentication-overview.md#authentication-flow)向移动客户端添加身份验证：
 
-* [将身份验证添加到 iOS 应用]
-* [将身份验证添加到 Xamarin.iOS 应用]
-* [将身份验证添加到 Xamarin.Android 应用]
-* [将身份验证添加到 Windows 应用]
+* [将身份验证添加到 iOS 应用][iOS]
+* [将身份验证添加到 Android 应用][Android]
+* [将身份验证添加到 Windows 应用][Windows]
+* [将身份验证添加到 Xamarin.iOS 应用][Xamarin.iOS]
+* [将身份验证添加到 Xamarin.Android 应用][Xamarin.Android]
+* [将身份验证添加到 Xamarin.Forms 应用][Xamarin.Forms]
+* [将身份验证添加到 Cordova 应用][Cordova]
 
-以下教程说明了如何将应用服务配置为使用不同的身份验证提供者：
+若要为 Azure Active Directory 使用[客户端定向流](../app-service/app-service-authentication-overview.md#authentication-flow)，请参阅以下资源：
 
-* [如何将应用配置为使用 Azure Active Directory 登录]
-* [如何将应用配置为使用 Facebook 登录]
-* [如何将应用配置为使用 Google 登录]
-* [如何将应用配置为使用 Microsoft 帐户登录]
-* [如何将应用配置为使用 Twitter 登录]
+* [使用适用于 iOS 的 Active Directory 身份验证库][ADAL-iOS]
+* [使用适用于 Android 的 Active Directory 身份验证库][ADAL-Android]
+* [使用适用于 Windows 和 Xamarin 的 Active Directory 身份验证库][ADAL-dotnet]
 
-如果想要使用此处未提供的其他标识系统，也可以使用 [.NET 服务器 SDK 中的预览版自定义身份验证支持](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth)。
+若要为 Facebook 使用[客户端定向流](../app-service/app-service-authentication-overview.md#authentication-flow)，请参阅以下资源：
 
-[将身份验证添加到 iOS 应用]: app-service-mobile-ios-get-started-users.md
-[将身份验证添加到 Xamarin.iOS 应用]: app-service-mobile-xamarin-ios-get-started-users.md
-[将身份验证添加到 Xamarin.Android 应用]: app-service-mobile-xamarin-android-get-started-users.md
-[将身份验证添加到 Windows 应用]: app-service-mobile-windows-store-dotnet-get-started-users.md
+* [使用 Facebook SDK for iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
 
-[如何将应用配置为使用 Azure Active Directory 登录]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
-[如何将应用配置为使用 Facebook 登录]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
-[如何将应用配置为使用 Google 登录]: ../app-service/app-service-mobile-how-to-configure-google-authentication.md
-[如何将应用配置为使用 Microsoft 帐户登录]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
-[如何将应用配置为使用 Twitter 登录]: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md
+若要为 Twitter 使用[客户端定向流](../app-service/app-service-authentication-overview.md#authentication-flow)，请参阅以下资源：
+
+* [使用 Twitter Fabric for iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
+
+若要为 Google 使用[客户端定向流](../app-service/app-service-authentication-overview.md#authentication-flow)，请参阅以下资源：
+
+* [使用适用于 iOS 的 Google 登录 SDK](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
+
+[iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
+[Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md
+[Xamarin.iOS]: ../app-service-mobile/app-service-mobile-xamarin-ios-get-started-users.md
+[Xamarin.Android]: ../app-service-mobile/app-service-mobile-xamarin-android-get-started-users.md
+[Xamarin.Forms]: ../app-service-mobile/app-service-mobile-xamarin-forms-get-started-users.md
+[Windows]: ../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-users.md
+[Cordova]: ../app-service-mobile/app-service-mobile-cordova-get-started-users.md
+
+[AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
+[Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md
+[Google]: app-service-mobile-how-to-configure-google-authentication.md
+[MSA]: app-service-mobile-how-to-configure-microsoft-authentication.md
+[Twitter]: app-service-mobile-how-to-configure-twitter-authentication.md
+
+[custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
+
+[ADAL-Android]: ../app-service-mobile/app-service-mobile-android-how-to-use-client-library.md#adal
+[ADAL-iOS]: ../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#adal
+[ADAL-dotnet]: ../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#adal

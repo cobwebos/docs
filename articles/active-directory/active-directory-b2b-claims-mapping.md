@@ -1,53 +1,47 @@
 ---
-title: "Azure Active Directory 中的 B2B 协作用户声明映射 | Microsoft 文档"
-description: "Azure Active Directory B2B 协作的声明映射参考"
+title: Azure Active Directory 中的 B2B 协作用户声明映射 | Microsoft 文档
+description: 为 Azure Active Directory (Azure AD) B2B 用户自定义在 SAML 令牌中颁发的用户声明。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/15/2017
+ms.date: 04/06/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 3fe75e96c153a7cbcad638d606d0fbc248bd983a
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 8f5e471d4e7102300cd5581976b45c9fa8cc57bc
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/06/2018
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Azure Active Directory 中的 B2B 协作用户声明映射
 
-Azure Active Directory (Azure AD) 支持自定义 B2B 协作用户的 SAML 令牌中颁发的声明。 当用户向应用程序进行身份验证时，Azure AD 会将一个 SAML 令牌颁发给应用，其中包含用于唯一标识用户的用户相关信息（或声明）。 默认情况下，这些信息包括用户的用户名、电子邮件地址、名字和姓氏。 可以在“属性”选项卡下查看或编辑通过 SAML 令牌发送到应用程序的声明。
+Azure Active Directory (Azure AD) 支持为 B2B 协作用户自定义在 SAML 令牌中颁发的声明。 当用户向应用程序进行身份验证时，Azure AD 会将一个 SAML 令牌颁发给应用，其中包含用于唯一标识用户的用户相关信息（或声明）。 默认情况下，这些信息包括用户的用户名、电子邮件地址、名字和姓氏。
 
-有两个可能的原因使你可能需要编辑 SAML 令牌中颁发的声明。
+在 [Azure 门户](https://portal.azure.com)中，可以查看或编辑在 SAML 令牌中发送到应用程序的声明。 若要访问设置，请选择“Azure Active Directory” > “企业应用程序” > 配置了单一登录的应用程序 >“单一登录”。 在“用户属性”部分中查看 SAML 令牌设置。
 
-1. 应用程序已编写为需要一组不同的声明 URI 或声明值
+![在 UI 中显示 SAML 令牌属性](media/active-directory-b2b-claims-mapping/view-claims-in-saml-token.png)
 
-2. 应用程序要求 NameIdentifier 声明为存储在 Azure Active Directory 中的用户主体名称以外的其他内容。
+有两个可能的原因导致你可能需要编辑在 SAML 令牌中颁发的声明：
 
-  ![查看 SAML 令牌中的声明](media/active-directory-b2b-claims-mapping/view-claims-in-saml-token.png)
+1. 应用程序需要一组不同的声明 URI 或声明值。
 
-有关如何添加和编辑声明的信息，请参阅[在 Azure Active Directory 中为预先集成的应用自定义 SAML 令牌中颁发的声明](develop/active-directory-saml-claims-customization.md)一文中声明自定义的相关内容。 对于 B2B 协作用户，由于安全原因，将阻止跨租户映射 NameID 和 UPN。
+2. 应用程序要求 NameIdentifier 声明是存储在 Azure AD 中的用户主体名称 (UPN) 以外的其他内容。
 
+有关如何添加和编辑声明的信息，请参阅[在 Azure Active Directory 中为企业应用程序自定义在 SAML 令牌中颁发的声明](develop/active-directory-saml-claims-customization.md)。
+
+对于 B2B 协作用户，由于安全原因，将阻止跨租户映射 NameID 和 UPN。
 
 ## <a name="next-steps"></a>后续步骤
 
-在 Azure AD B2B 协作网站上浏览我们的其他文章：
+- 有关 B2B 协作用户属性的信息，请参阅 [Azure Active Directory B2B 协作用户的属性](active-directory-b2b-user-properties.md)。
+- 有关 B2B 协作用户的用户令牌的信息，请参阅[了解 Azure AD B2B 协作中的用户令牌](active-directory-b2b-user-token.md)。
 
-* [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [B2B 协作用户属性](active-directory-b2b-user-properties.md)
-* [将 B2B 协作用户添加到角色](active-directory-b2b-add-guest-to-role.md)
-* [委派 B2bB 协作邀请](active-directory-b2b-delegate-invitations.md)
-* [动态组和 B2B 协作](active-directory-b2b-dynamic-groups.md)
-* [B2B 协作代码和 PowerShell 示例](active-directory-b2b-code-samples.md)
-* [为 B2B 协作配置 SaaS 应用](active-directory-b2b-configure-saas-apps.md)
-* [Office 365 外部共享](active-directory-b2b-o365-external-user.md)
-* [B2B 协作用户令牌](active-directory-b2b-user-token.md)
-* [B2B 协作当前限制](active-directory-b2b-current-limitations.md)

@@ -7,17 +7,16 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 08/25/2017
+ms.date: 04/04/2018
 ms.author: sashan
-ms.openlocfilehash: 160e65130efc78bc1a98a0feceb1c824cf226156
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: carlrab
+ms.openlocfilehash: 1f125596a6cc874f285611290d5c42700009afbe
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
 
@@ -27,20 +26,20 @@ ms.lasthandoff: 03/16/2018
 
 SQL 数据库提供若干业务连续性功能，包括自动备份和可选的数据库复制。 对于最近发生的事务，每种功能在估计恢复时间 (ERT) 和可能丢失的数据方面都有不同的特性。 了解这些选项后，便可从中进行选择 — 在大多数方案中，可以针对不同方案将其搭配使用。 制定业务连续性计划时，需了解应用程序在干扰性事件之后完全恢复的最大可接受时间，即恢复时间目标 (RTO)。 此外，还需要了解从干扰性事件恢复时，应用程序可忍受丢失的最近数据更新（时间间隔）最大数量，即恢复点目标 (RPO)。
 
-下表比较了三种最常见方案的 ERT 和 RPO。
+下表针对三种最常见方案比较了每个服务层的 ERT 和 RPO。
 
-| 功能 | 基本层 | 标准层 | 高级层 |
-| --- | --- | --- | --- |
-| 从备份执行时间点还原 |7 天内的任何还原点 |35 天内的任何还原点 |35 天内的任何还原点 |
-| 从异地复制的备份执行异地还原 |ERT < 12 小时，RPO < 1 小时 |ERT < 12 小时，RPO < 1 小时 |ERT < 12 小时，RPO < 1 小时 |
-| 从 Azure 备份保管库还原 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周 |
-| 活动异地复制 |ERT < 30 秒，RPO < 5 秒 |ERT < 30 秒，RPO < 5 秒 |ERT < 30 秒，RPO < 5 秒 |
+| 功能 | 基本 | 标准 | 高级  | 常规用途 | 业务关键
+| --- | --- | --- | --- |--- |--- |
+| 从备份执行时间点还原 |7 天内的任何还原点 |35 天内的任何还原点 |35 天内的任何还原点 |所配置的时间段（最长为 35 天）内的任何还原点|所配置的时间段（最长为 35 天）内的任何还原点|
+| 从异地复制的备份执行异地还原 |ERT < 12 小时，RPO < 1 小时 |ERT < 12 小时，RPO < 1 小时 |ERT < 12 小时，RPO < 1 小时 |ERT < 12 小时，RPO < 1 小时|ERT < 12 小时，RPO < 1 小时|
+| 从 Azure 备份保管库还原 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周 |ERT < 12 小时，RPO < 1 周|ERT < 12 小时，RPO < 1 周|
+| 活动异地复制 |ERT < 30 秒，RPO < 5 秒 |ERT < 30 秒，RPO < 5 秒 |ERT < 30 秒，RPO < 5 秒 |ERT < 30 秒，RPO < 5 秒|ERT < 30 秒，RPO < 5 秒|
 
-### <a name="use-database-backups-to-recover-a-database"></a>使用数据库备份恢复数据库
+### <a name="use-point-in-time-restore-to-recover-a-database"></a>使用时间点还原恢复数据库
 
-SQL 数据库每周自动执行完整数据库备份，每小时自动执行差异数据库备份，每 5 到 10 分钟自动执行事务日志备份，防止企业丢失数据。 对于标准和高级服务层中的数据库，这些备份会在异地冗余存储中存储 35 天；对于基本服务层中的数据库，则存储 7 天。 有关详细信息，请参阅[服务层](sql-database-service-tiers.md)。 如果服务层的保留期不符合企业需求，可[更改服务层](sql-database-service-tiers.md)来延长保留期。 完整和差异数据库备份也会复制到[配对的数据中心](../best-practices-availability-paired-regions.md)，以防数据中心中断。 有关更多详细信息，请参阅[自动数据库备份](sql-database-automated-backups.md)。
+SQL 数据库每周自动执行完整数据库备份，每小时自动执行差异数据库备份，每 5 到 10 分钟自动执行事务日志备份，防止企业丢失数据。 对于“标准”和“高级”服务层中的数据库，这些备份会在 RA-GRS 存储中存储 35 天；对于“基本”服务层中的数据库，则存储 7 天。 在“常规用途”和“业务关键（预览版）”服务层中，备份保留期是可配置的，最长为 35 天。 有关详细信息，请参阅[服务层](sql-database-service-tiers.md)。 如果服务层的保留期不符合企业需求，可[更改服务层](sql-database-service-tiers.md)来延长保留期。 完整和差异数据库备份也会复制到[配对的数据中心](../best-practices-availability-paired-regions.md)，以防数据中心中断。 有关更多详细信息，请参阅[自动数据库备份](sql-database-automated-backups.md)。
 
-如果内置保留期不足以用于应用程序，则可为数据库配置长期保留策略来延长保留期。 有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
+如果支持的最长 PITR 保留期对你的应用程序而言不足，可以通过为数据库配置长期保留 (LTR) 策略来延长保留期。 有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
 
 通过这些自动数据库备份，可在自己的数据中心以及其他数据中心内从各种干扰性事件中恢复数据库。 使用自动数据库备份时，估计恢复时间取决于若干因素，包括在相同区域同时进行恢复的数据库总数、数据库大小、事务日志大小以及网络带宽。 恢复时间通常少于 12 小时。 恢复到另一个数据区域时，因为每小时会针对异地冗余存储进行差异数据库备份，因此最多只可能丢失 1 小时的数据。
 
@@ -55,7 +54,7 @@ SQL 数据库每周自动执行完整数据库备份，每小时自动执行差�
 * 数据更改率低（每小时事务数少），并且最多可接受丢失一小时的数据更改。
 * 成本有限。
 
-如需更快速的恢复，请使用[活动异地复制](sql-database-geo-replication-overview.md)（接下来将讨论）。 如果需要从 35 天前一段时间中恢复数据，请使用[长期备份保留](sql-database-long-term-retention.md)。 
+如需更快速的恢复，请使用[活动异地复制](sql-database-geo-replication-overview.md)（接下来将讨论）。 如果需要从 35 天前的一个时间段恢复数据，请使用[长期保留](sql-database-long-term-retention.md)。 
 
 ### <a name="use-active-geo-replication-and-auto-failover-groups-in-preview-to-reduce-recovery-time-and-limit-data-loss-associated-with-a-recovery"></a>使用活动异地复制和自动故障转移组（预览）缩短恢复时间，并限制与恢复相关的数据丢失
 
@@ -77,12 +76,12 @@ SQL 数据库每周自动执行完整数据库备份，每小时自动执行差�
 * 具有很高的数据更改率，而且不接受丢失一小时的数据。
 * 活动异地复制的额外成本低于潜在财务责任和相关业务损失所付出的代价。
 
->
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
 >
 
 ## <a name="recover-a-database-after-a-user-or-application-error"></a>在用户或应用程序错误之后恢复数据库
-*人无完人。 用户可能会不小心删除某些数据、无意中删除重要的表，甚至删除整个数据库。 或者，应用程序可能因为自身缺陷，意外以错误数据覆盖正确数据。
+
+人无完人！ 用户可能会不小心删除某些数据、无意中删除重要的表，甚至删除整个数据库。 或者，应用程序可能因为自身缺陷，意外以错误数据覆盖正确数据。
 
 在此方案中，可使用以下恢复选项。
 
@@ -101,8 +100,9 @@ SQL 数据库每周自动执行完整数据库备份，每小时自动执行差�
 >
 >
 
-### <a name="restore-from-azure-backup-vault"></a>从 Azure 备份保管库还原
-如果数据丢失发生在自动备份的当前保留期之外且数据库已配置长期保留，则可从 Azure 备份保管库中的每周备份还原到新数据库。 此时，可以将原始数据库替换为还原的数据库，或从还原的数据库将所需数据复制到原始数据库。 如果需要在升级主要应用程序前检索旧版数据库，满足审核员或法律指令的要求，则可以使用 Azure 备份保管库中保存的完整备份创建数据库。  有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
+### <a name="restore-backups-from-long-term-retention"></a>从长期保留存储中还原备份
+
+如果数据丢失发生在自动备份的当前保留期之外且数据库已配置长期保留，则可从 LTR 存储中的完整备份还原到新数据库。 此时，可以将原始数据库替换为还原的数据库，或从还原的数据库将所需数据复制到原始数据库。 如果需要在升级主要应用程序前检索旧版数据库，满足审核员或法律指令的要求，则可以使用 Azure 备份保管库中保存的完整备份创建数据库。  有关详细信息，请参阅[长期保留](sql-database-long-term-retention.md)。
 
 ## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Azure 区域数据中心中断时会数据库恢复到另一个区域
 <!-- Explain this scenario -->

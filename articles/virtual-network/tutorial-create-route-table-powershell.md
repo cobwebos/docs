@@ -1,12 +1,13 @@
 ---
 title: 路由网络流量 - Azure PowerShell | Microsoft Docs
-description: 了解如何使用 PowerShell 通过路由表路由网络流量。
+description: 本文介绍了如何使用 PowerShell 通过路由表来路由网络流量。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
@@ -16,24 +17,23 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: f7be6aa58c6779150d3e79893e6e179d08611567
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f6f3bd2a9683daf5f523cc5cfe43e568fb508694
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>使用 PowerShell 通过路由表路由网络流量
 
-默认情况下，Azure 自动在虚拟网络中的所有子网之间路由流量。 可以创建自己的路由来覆盖 Azure 的默认路由。 创建自定义路由的功能非常有用，例如，可以通过网络虚拟设备 (NVA) 在子网之间路由流量。 本文介绍如何执行以下操作：
+默认情况下，Azure 自动在虚拟网络中的所有子网之间路由流量。 可以创建自己的路由来覆盖 Azure 的默认路由。 创建自定义路由的功能非常有用，例如，可以通过网络虚拟设备 (NVA) 在子网之间路由流量。 在本文中，学习如何：
 
-> [!div class="checklist"]
-> * 创建路由表
-> * 创建路由
-> * 创建包含多个子网的虚拟网络
-> * 将路由表关联到子网
-> * 创建用于流量路由的 NVA
-> * 将虚拟机 (VM) 部署到不同子网
-> * 通过 NVA 将从一个子网的流量路由到另一个子网
+* 创建路由表
+* 创建路由
+* 创建包含多个子网的虚拟网络
+* 将路由表关联到子网
+* 创建用于流量路由的 NVA
+* 将虚拟机 (VM) 部署到不同子网
+* 通过 NVA 将从一个子网的流量路由到另一个子网
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -239,43 +239,43 @@ mstsc /v:<publicIpAddress>
 
 输入在创建 VM 时指定的用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后选择“确定”。 你可能会在登录过程中收到证书警告。 选择“是”以继续进行连接。 
 
-在稍后的步骤中，tracert.exe 命令用于测试路由。 Tracert 使用 Internet 控制消息协议 (ICMP)，而 Windows 防火墙会拒绝该协议。 在 PowerShell 中输入以下命令，允许 ICMP 通过 Windows 防火墙：
+在稍后的步骤中，tracert.exe 命令用于测试路由。 Tracert 使用 Internet 控制消息协议 (ICMP)，而 Windows 防火墙会拒绝该协议。 在 *myVmPrivate* VM 上，通过 PowerShell 输入以下命令来允许 ICMP 通过 Windows 防火墙：
 
 ```powershell
-New-NetFirewallRule ???DisplayName ???Allow ICMPv4-In??? ???Protocol ICMPv4
+New-NetFirewallRule -DisplayName "Allow ICMPv4-In" -Protocol ICMPv4
 ```
 
-虽然本文中使用 tracert 测试路由，但在进行生产部署时，不建议允许 ICMP 通过 Windows 防火墙。
+虽然本文中使用跟踪路由来测试路由，但在生产部署中，不建议允许 ICMP 通过 Windows 防火墙。
 
-在 *myVmPrivate* VM 中完成以下步骤，在 *myVmNva* 的操作系统中启用 IP 转发：
+在[启用 IP 转发](#enable-ip-forwarding)中已经在 Azure 中为 VM 的网络接口启用了 IP 转发。 在 VM 中，VM 中运行的操作系统或应用程序也必须能够转发网络流量。 在 *myVmNva* 的操作系统中启用 IP 转发。
 
-在 PowerShell 中使用以下命令，通过远程桌面连接到 *myVmNva* VM：
+在 *myVmPrivate* VM 中的命令提示符下，通过远程桌面连接到 *myVmNva*：
 
 ``` 
 mstsc /v:myvmnva
 ```
     
-若要在操作系统中启用 IP 转发，请在 PowerShell 中输入以下命令：
+若要在操作系统中启用 IP 转发，请通过 *myVmNva* VM 在 PowerShell 中输入以下命令：
 
 ```powershell
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
 ```
     
-重启 VM，这也会断开远程桌面会话的连接。
+重启 *myVmNva* VM，这也会断开远程桌面会话的连接。
 
-在仍与 *myVmPrivate* VM 保持连接的情况下重启 *myVmNva* VM 后，使用以下命令与 *myVmPublic* VM 建立远程桌面会话：
+在仍与 *myVmPrivate* VM 保持连接的情况下重启 *myVmNva* VM 后，与 *myVmPublic* VM 建立远程桌面会话：
 
 ``` 
 mstsc /v:myVmPublic
 ```
     
-在 PowerShell 中输入以下命令，允许 ICMP 通过 Windows 防火墙：
+在 *myVmPublic* VM 上，通过 PowerShell 输入以下命令来允许 ICMP 通过 Windows 防火墙：
 
 ```powershell
-New-NetFirewallRule ???DisplayName ???Allow ICMPv4-In??? ???Protocol ICMPv4
+New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 ```
 
-若要测试从 *myVmPublic* VM 发往 *myVmPrivate* VM 的网络流量的路由，请在 PowerShell 中输入以下命令：
+若要测试从 *myVmPublic* VM 发往 *myVmPrivate* VM 的网络流量的路由，请在 *myVmPublic* VM 上通过 PowerShell 输入以下命令：
 
 ```
 tracert myVmPrivate
@@ -293,10 +293,11 @@ over a maximum of 30 hops:
 Trace complete.
 ```
       
-可以看到，第一个跃点为 10.0.2.4，即网络虚拟设备的专用 IP 地址。 第二个跃点为 10.0.1.4，即 *myVmPrivate* VM 的专用 IP 地址。 添加到 *myRouteTablePublic* 路由表并关联到公共子网的路由导致 Azure 通过 NVA 路由流量，而不是直接将流量路由到专用子网。
+可以看到，第一个跃点为 10.0.2.4，即 NVA 的专用 IP 地址。 第二个跃点为 10.0.1.4，即 *myVmPrivate* VM 的专用 IP 地址。 添加到 *myRouteTablePublic* 路由表并关联到公共子网的路由导致 Azure 通过 NVA 路由流量，而不是直接将流量路由到专用子网。
 
 关闭与 *myVmPublic* VM 建立的远程桌面会话，这样，就会与 *myVmPrivate* VM 保持连接。
-若要测试从 *myVmPrivate* VM 发往 *myVmPublic* VM 的网络流量的路由，请在命令提示符下输入以下命令：
+
+若要测试从 *myVmPrivate* VM 发往 *myVmPublic* VM 的网络流量的路由，请在 *myVmPrivate* VM 上通过命令提示符下输入以下命令：
 
 ```
 tracert myVmPublic
@@ -309,7 +310,7 @@ Tracing route to myVmPublic.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net 
 over a maximum of 30 hops:
     
 1     1 ms     1 ms     1 ms  10.0.0.4
-    
+   
 Trace complete.
 ```
 
@@ -327,9 +328,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，我们创建了一个路由表并将其关联到了某个子网。 我们还创建了一个简单网络虚拟设备，用于将流量从公共子网路由到专用子网。 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) 部署各种执行网络功能（例如防火墙和 WAN 优化）的预配置网络虚拟设备。 在部署用于生产的路由表之前，建议全面了解 [Azure 中的路由](virtual-networks-udr-overview.md)、[管理路由表](manage-route-table.md)和 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
+在本文中，我们创建了一个路由表并将其关联到了某个子网。 我们还创建了一个简单网络虚拟设备，用于将流量从公共子网路由到专用子网。 从 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) 部署各种执行网络功能（例如防火墙和 WAN 优化）的预配置网络虚拟设备。 若要了解有关路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)和[管理路由表](manage-route-table.md)。
 
-尽管可以在一个虚拟网络中部署多个 Azure 资源，但无法将某些 Azure PaaS 服务的资源部署到虚拟网络。 不过，仍可以限制为只允许来自某个虚拟网络子网的流量访问某些 Azure PaaS 服务的资源。 请继续学习下一篇教程，了解如何限制 Azure PaaS 资源的网络访问。
-
-> [!div class="nextstepaction"]
-> [限制 PaaS 资源的网络访问](tutorial-restrict-network-access-to-resources-powershell.md)
+尽管可以在一个虚拟网络中部署多个 Azure 资源，但无法将某些 Azure PaaS 服务的资源部署到虚拟网络。 不过，仍可以限制为只允许来自某个虚拟网络子网的流量访问某些 Azure PaaS 服务的资源。 若要了解如何操作，请参阅[限制对 PaaS 资源的网络访问](tutorial-restrict-network-access-to-resources-powershell.md)。

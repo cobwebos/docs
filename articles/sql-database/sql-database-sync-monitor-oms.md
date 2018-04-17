@@ -1,21 +1,21 @@
 ---
-title: 使用 OMS Log Analytics 监视 Azure SQL 数据同步（预览版）| Microsoft Docs
-description: 了解如何使用 OMS Log Analytics 监视 Azure SQL 数据同步（预览版）
+title: 使用 Log Analytics 监视 Azure SQL 数据同步（预览版）| Microsoft Docs
+description: 了解如何使用 Log Analytics 监视 Azure SQL 数据同步（预览版）
 services: sql-database
-ms.date: 11/07/2017
+ms.date: 04/01/2018
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: c106d5bbea118c9b78cbccee187b8eb5c347f232
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1b22b4ddf9fa4880b814efc3f8c3f1fc6ec7d141
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/06/2018
 ---
-# <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>使用 OMS Log Analytics 监视 SQL 数据同步（预览版） 
+# <a name="monitor-sql-data-sync-preview-with-log-analytics"></a>使用 Log Analytics 监视 SQL 数据同步（预览版） 
 
 若要检查 SQL 数据同步活动日志并检测错误和警告，以前必须在 Azure 门户手动检查 SQL 数据同步，或者使用 PowerShell 或 REST API。 请按照本文中的步骤配置自定义解决方案，以便改进数据同步监控体验。 可以自定义该解决方案以适合你的方案。
 
@@ -23,27 +23,27 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>监视所有同步组的仪表板 
 
-再也无需单独仔细查看每个同步组的日志就能查找问题。 通过使用自定义的 OMS (Operations Management Suite) 视图，你可以在一个位置监控任何订阅中的所有同步组。 此视图显示对 SQL 数据同步客户很重要的信息。
+再也无需单独仔细查看每个同步组的日志就能查找问题。 通过使用自定义的 Log Analytics 视图，你可以在一个位置监控任何订阅中的所有同步组。 此视图显示对 SQL 数据同步客户很重要的信息。
 
 ![数据同步监控仪表板](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
 ## <a name="automated-email-notifications"></a>自动电子邮件通知
 
-不再需要在 Azure 门户中手动或通过 PowerShell、REST API 检查日志。 使用 [OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 可以创建这样的警报：在发生错误时直接发送到需要查看警报的人员的电子邮件地址。
+不再需要在 Azure 门户中手动或通过 PowerShell、REST API 检查日志。 使用 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) 可以创建这样的警报：在发生错误时直接发送到需要查看警报的人员的电子邮件地址。
 
 ![数据同步电子邮件通知](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
 ## <a name="how-do-you-set-up-these-monitoring-features"></a>如何设置这些监视功能？ 
 
-通过执行以下操作，即可在不到一小时的时间内为 SQL 数据同步实施自定义 OMS 监控解决方案：
+通过执行以下操作，即可在不到一小时的时间内为 SQL 数据同步实施自定义 Log Analytics 监控解决方案：
 
 需要配置三个组件：
 
--   将 SQL 数据同步日志数据输送到 OMS 的 PowerShell runbook。
+-   将 SQL 数据同步日志数据输送到 Log Analytics 的 PowerShell runbook。
 
--   OMS Log Analytics 电子邮件通知警报。
+-   Log Analytics 电子邮件通知警报。
 
--   可监控的 OMS 视图。
+-   用于监控的 Log Analytics 视图。
 
 ### <a name="samples-to-download"></a>要下载的示例
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 04/03/2018
 
 -   [数据同步日志 PowerShell Runbook](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [数据同步日志 OMS 视图](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [数据同步 Log Analytics 视图](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -59,11 +59,11 @@ ms.lasthandoff: 04/03/2018
 
 -   一个 Azure 自动化帐户
 
--   与 OMS 工作区链接的 Log Analytics
+-   Log Analytics 工作区
 
 ## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>要获取 SQL 数据同步日志的 PowerShell Runbook 
 
-使用托管在 Azure 自动化中的 PowerShell runbook，以便拉取 SQL 数据同步日志数据并将其发送到 OMS。 已包含示例脚本。 作为先决条件，需要有一个 Azure 自动化帐户。 然后，你需要创建 runbook 并安排它运行。 
+使用托管在 Azure 自动化中的 PowerShell runbook，以便拉取 SQL 数据同步日志数据并将其发送到 Log Analytics。 已包含示例脚本。 作为先决条件，需要有一个 Azure 自动化帐户。 然后，你需要创建 runbook 并安排它运行。 
 
 ### <a name="create-a-runbook"></a>创建 runbook
 
@@ -121,9 +121,9 @@ ms.lasthandoff: 04/03/2018
 
 若要监控你的自动化设置是否在按预期方式运行，请在自动化帐户的“概述”下，查找“监控”下的“作业统计信息”视图。 将此视图固定到仪表板以便于查看。 成功运行的 runbook 显示为“已完成”，失败的运行显示为“失败”。
 
-## <a name="create-an-oms-log-reader-alert-for-email-notifications"></a>创建 OMS Log Reader 电子邮件通知警报
+## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>创建用于电子邮件通知的 Log Analytics 读者警报
 
-若要创建一个使用 OMS Log Analytics 的警报，请执行以下操作。 作为先决条件，你需要将 Log Analytics 与一个 OMS 工作区进行链接。
+若要创建使用 Log Analytics 的警报，请执行以下操作。 作为先决条件，你需要将 Log Analytics 与一个 Log Analytics 工作区进行链接。
 
 1.  在 OMS 门户中，选择“日志搜索”。
 
@@ -179,7 +179,7 @@ ms.lasthandoff: 04/03/2018
 
 Azure 自动化：Azure 自动化帐户可能会产生成本，具体要取决于你的使用情况。 每月前 500 分钟的作业运行时间是免费的。 在大多数情况下，此解决方案预计每个月使用不到 500 分钟。 为了避免收费，请计划 Runbook 以两个小时或更长的间隔运行。 有关详细信息，请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
 
-OMS 日志分析：可能会有与 OMS 相关的成本，具体要取决于你的使用情况。 免费层包括每日 500 MB 的引入数据。 在大多数情况下，此解决方案预计每天引入的数据不超过 500 MB。 若要减少使用，请使用 runbook 中包含的“仅失败筛选”。 如果你每天使用的数据超过 500 MB，请升级到付费层，以避免在达到此限制时停止分析的风险。 有关详细信息，请参阅[Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
+**Log Analytics：**可能会有与 Log Analytics 相关的成本，具体要取决于你的使用情况。 免费层包括每日 500 MB 的引入数据。 在大多数情况下，此解决方案预计每天引入的数据不超过 500 MB。 若要减少使用，请使用 runbook 中包含的“仅失败筛选”。 如果你每天使用的数据超过 500 MB，请升级到付费层，以避免在达到此限制时停止分析的风险。 有关详细信息，请参阅[Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
 
 ## <a name="code-samples"></a>代码示例
 
@@ -187,7 +187,7 @@ OMS 日志分析：可能会有与 OMS 相关的成本，具体要取决于你�
 
 -   [数据同步日志 PowerShell Runbook](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [数据同步日志 OMS 视图](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [数据同步 Log Analytics 视图](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ## <a name="next-steps"></a>后续步骤
 有关 SQL 数据同步的详细信息，请参阅：

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: f9711f9cfaab1ef22da220a773689c95b1103970
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9c61fe7c62f0718d390509d3b0ff3327bd193f43
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/23/2018
 
  - Azure 存储帐户
  - Azure 事件中心
- - [OMS Log Analytics 存储库](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
+ - [Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
 此功能适用于所有属于 Verizon（标准版和高级版）和 Akamai（标准版）CDN 配置文件的 CDN 终结点。 
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/23/2018
 
 - 将数据导出到 Blob 存储、导出为CSV，并在 Excel 中生成图形。
 - 将数据导出到事件中心，并关联到其他 Azure 服务的数据。
-- 将数据导出到 Log Analytics，并在自己的 OMS 工作区查看数据
+- 将数据导出到 Log Analytics，并在自己的 Log Analytics 工作区中查看数据
 
 下图显示了一个典型的 CDN 核心分析数据视图。
 
@@ -68,9 +68,9 @@ ms.lasthandoff: 03/23/2018
 
 图 2 - 使用 Azure 存储的日志记录
 
-### <a name="logging-with-oms-log-analytics"></a>使用 OMS Log Analytics 的日志记录
+### <a name="logging-with-log-analytics"></a>使用 Log Analytics 进行日志记录
 
-若要使用 OMS Log Analytics 存储日志，请按照以下步骤操作：
+若要使用 Log Analytics 来存储日志，请执行以下步骤：
 
 1. 在“诊断日志”边栏选项卡中，选择“发送到 Log Analytics”。 
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 03/23/2018
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. 输入新 OMS 工作区的名称。 OMS 工作区名称必须唯一，只能包含字母、数字和连字符；不允许空格和下划线。 
+4. 输入一个新的 Log Analytics 工作区名称。 Log Analytics 工作区名称必须唯一，只能包含字母、数字和连字符；不允许空格和下划线。 
 5. 接下来，选择现有订阅、新的或现有的资源组、位置和定价层。 还可以选择将此配置固定到仪表板。 单击“**确定**”以完成配置。
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/08_Workspace-resource.png)
@@ -97,11 +97,11 @@ ms.lasthandoff: 03/23/2018
 
 6. 单击“ **保存**”。
 
-7. 若要查看新的 OMS 工作区，请转到 Azure 门户仪表板，并单击 Log Analytics 工作区的名称。 单击“OMS 门户”磁贴查看 OMS 存储库中的工作区。 
+7. 若要查看新的 Log Analytics 工作区，请转到 Azure 门户仪表板，并单击 Log Analytics 工作区的名称。 单击“OMS 门户”磁贴来查看 Log Analytics 工作区。 
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/11_OMS-dashboard.png) 
 
-    OMS 存储库现在可以记录数据。 为了使用该数据，必须使用本文后面所述的 [OMS 解决方案](#consuming-oms-log-analytics-data)。
+    Log Analytics 工作区现在已经可以用来记录数据日志。 为了使用该数据，必须使用本文下文中提供的 [Log Analytics 解决方案](#consuming-diagnostics-logs-from-a-log-analytics-workspace)。
 
 有关日志数据延迟的详细信息，请参阅[日志数据延迟](#log-data-delays)。
 
@@ -123,7 +123,7 @@ ms.lasthandoff: 03/23/2018
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
 ```
-要在 OMS 工作区中启用诊断日志，请使用以下命令：
+若要在 Log Analytics 工作区中启用诊断日志，请使用以下命令：
 
 ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
@@ -179,16 +179,16 @@ ms.lasthandoff: 03/23/2018
 4.  运行工具。
 5.  生成的 CSV 文件以简单的平面层次结构显示分析数据。
 
-## <a name="consuming-diagnostics-logs-from-an-oms-log-analytics-repository"></a>通过 OMS Log Analytics 存储库使用诊断日志
-Log Analytics 是 Operations Management Suite (OMS) 中的一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。 
+## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>从 Log Analytics 工作区使用诊断日志
+Log Analytics 是 Azure 中的一个服务，用于监视云和本地环境，使其保持较高的可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。 
 
-若要使用 Log Analytics，必须在 Azure OMS Log Analytics 存储库中[启用日志记录](#enable-logging-with-azure-storage)，本文前面已经对此进行过讨论。
+若要使用 Log Analytics，必须在 Azure Log Analytics 工作区中[启用日志记录](#enable-logging-with-azure-storage)，本文上文中已经对此进行了讨论。
 
-### <a name="using-the-oms-repository"></a>使用 OMS 存储库
+### <a name="using-the-log-analytics-workspace"></a>使用 Log Analytics 工作区
 
  下图显示了存储库的输入和输出的体系结构：
 
-![OMS Log Analytics 存储库](./media/cdn-diagnostics-log/12_Repo-overview.png)
+![Log Analytics 工作区](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
 图 3 - Log Analytics 存储库
 
@@ -196,7 +196,7 @@ Log Analytics 是 Operations Management Suite (OMS) 中的一个服务，用于�
 
 可以通过单击每个解决方案底部的“立即获取”链接从 Azure Marketplace 安装管理解决方案。
 
-### <a name="adding-an-oms-cdn-management-solution"></a>添加 OMS CDN 管理解决方案
+### <a name="adding-a-log-analytics-cdn-management-solution"></a>添加 Log Analytics CDN 管理解决方案
 
 请按照下列步骤添加管理解决方案：
 
@@ -219,7 +219,7 @@ Log Analytics 是 Operations Management Suite (OMS) 中的一个服务，用于�
 
     ![查看全部](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6.  单击“创建”后，系统将要求创建一个新的 OMS 工作区或使用现有的 OMS 工作区。 
+6.  单击“创建”后，系统将要求创建一个新的 Log Analytics 工作区或使用现有的 Log Analytics 工作区。 
 
     ![查看全部](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
@@ -241,11 +241,11 @@ Log Analytics 是 Operations Management Suite (OMS) 中的一个服务，用于�
 
     单击创建的 Log Analytics 工作区以转到工作区。 
 
-11. 单击“OMS 门户”磁贴，在 OMS 门户中查看新的解决方案。
+11. 单击“OMS 门户”磁贴来查看新解决方案。
 
     ![查看全部](./media/cdn-diagnostics-log/23_workspace.png)
 
-12. OMS 门户现在应如以下屏幕所示：
+12. 你的门户现在应如以下屏幕所示：
 
     ![查看全部](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
@@ -261,11 +261,11 @@ Log Analytics 是 Operations Management Suite (OMS) 中的一个服务，用于�
 
 ### <a name="offers-and-pricing-tiers"></a>产品和定价层
 
-可在[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)查看 OMS 管理解决方案的优惠和定价层。
+可在[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)查看管理解决方案的产品/服务和定价层。
 
 ### <a name="customizing-views"></a>自定义视图
 
-可使用“视图设计器”自定义数据视图。 若要开始设计，请转到 OMS 工作区，单击“视图设计器”磁贴。
+可使用“视图设计器”自定义数据视图。 若要开始设计，请转到 Log Analytics 工作区并单击“视图设计器”磁贴。
 
 ![视图设计器](./media/cdn-diagnostics-log/27_Designer.png)
 
@@ -410,7 +410,7 @@ Verizon 日志数据延迟 1 小时，在终结点传播完成后长达 2 小时
 
 * [Azure 诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [通过 Azure CDN 补充门户进行核心分析](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 

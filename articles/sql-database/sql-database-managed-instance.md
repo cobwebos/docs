@@ -8,13 +8,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/03/2018
 ms.author: bonova
-ms.openlocfilehash: 2d07d58114a4d89f40a4ea9e388c58f58494766c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ffe25e911273b93f1c16224d30fea5c920425f03
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>什么是托管实例（预览版）？
 
@@ -69,6 +69,23 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 
 ![单一登录](./media/sql-database-managed-instance/sso.png) 
 
+## <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
+
+基于 vCore 的购买模型提供了灵活性、控制力和透明性，并且还提供了一种简单明了的方法来将本地工作负荷要求转换到云。 此模型允许根据工作负荷需求来缩放计算、内存和存储资源。 此外，借助[面向 SQL Server 的 Azure 混合使用权益](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，vCore 模型能够节省高达 30% 的费用。
+
+虚拟核心表示逻辑 CPU，提供不同代的硬件供客户选择。
+- 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器。
+- 第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器。
+
+下表可帮助你了解如何选择计算、内存、存储和 I/O 资源的最佳配置。
+
+||第 4 代|第 5 代|
+|----|------|-----|
+|硬件|Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器、附加的 SSD vCore = 1 PP（物理核心）|Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器、快速 eNVM SSD、vCore=1 LP（超线程）|
+|性能级别|8、16、24 个 vCore|8、16、24、32、40 个 vCore|
+|内存|每个 vCore 7GB|每个 vCore 5.5GB|
+||||
+
 ## <a name="managed-instance-service-tier"></a>托管实例服务层
 
 托管实例最初在单个服务层（“常规用途”）中提供，该层适用于具有典型可用性和一般 IO 延迟要求的应用程序。
@@ -89,11 +106,11 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 
 |功能 | 说明|
 |---|---|
-| vCore 数目* | 8、16、24|
+| vCore 数目* | 8、16、24（第 4 代）<br>8、16、24、32、40（第 5 代）|
 | SQL Server 版本/内部版本 | SQL Server（最新可用版本） |
 | 最小存储大小 | 32 GB |
 | 最大存储大小 | 8 TB |
-| 每个数据库的最大存储 | 4 TB |
+| 每个数据库的最大存储 | 8 TB |
 | 预期的存储 IOPS | 每个数据文件 500-7500 IOPS（取决于数据文件）。 请参阅[高级存储](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) |
 | 每个数据库的数据文件 (ROWS) 数目 | 多个 | 
 | 每个数据库的日志文件 (LOG) 数目 | 1 | 
@@ -106,7 +123,7 @@ Azure SQL 数据库托管实例（预览版）是 Azure SQL 数据库的一项�
 | 门户支持 | 是|
 |||
 
-\* 虚拟核心表示逻辑 CPU，提供不同代的硬件供客户选择。 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器，第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器。  
+\* 虚拟核心表示逻辑 CPU，提供不同代的硬件供客户选择。 第 4 代逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器，第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器。 
 
 ## <a name="advanced-security-and-compliance"></a>高级安全性和符合性 
 
@@ -152,7 +169,7 @@ SQL 数据库的[动态数据掩码](/sql/relational-databases/security/dynamic-
 SQL 数据库身份验证是指用户连接到数据库时如何证明其身份。 SQL 数据库支持两种类型的身份验证：  
 
 - SQL 身份验证，使用用户名和密码。
-- Azure Active Directory 身份验证，使用 Azure Active Directory 管理的标识，支持托管域和集成域。  
+- Azure Active Directory 身份验证，使用 Azure Active Directory 管理的标识，支持托管域和集成域。 
 
 ### <a name="authorization"></a>授权
 
@@ -160,11 +177,11 @@ SQL 数据库身份验证是指用户连接到数据库时如何证明其身份�
 
 ## <a name="database-migration"></a>数据库迁移 
 
-托管实例面向需要从本地或 IaaS 数据库实施项目迁移大量数据库的用户方案。  托管实例支持多个数据库迁移选项： 
+托管实例面向需要从本地或 IaaS 数据库实施项目迁移大量数据库的用户方案。 托管实例支持多个数据库迁移选项： 
 
 ### <a name="data-migration-service"></a>数据迁移服务
 
-Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多个数据库源到 Azure 数据平台的无缝迁移，并且最小化停机时间。   此服务简化了将现有第三方和 SQL Server 数据库移到 Azure 所要执行的任务。 公共预览版中的部署选项包括 Azure SQL 数据库、托管实例和 Azure VM 中的 SQL Server。 请参阅[如何使用 DMS 将本地数据库迁移到托管实例](https://aka.ms/migratetoMIusingDMS)。  
+Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多个数据库源到 Azure 数据平台的无缝迁移，并且最小化停机时间。 此服务简化了将现有第三方和 SQL Server 数据库移到 Azure 所要执行的任务。 公共预览版中的部署选项包括 Azure SQL 数据库、托管实例和 Azure VM 中的 SQL Server。 请参阅[如何使用 DMS 将本地数据库迁移到托管实例](https://aka.ms/migratetoMIusingDMS)。 
 
 ### <a name="backup-and-restore"></a>备份和还原  
 
@@ -174,7 +191,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 
 在服务正式版推出之前，托管实例旨在通过分阶段的计划，实现外围应用与本地 SQL Server 的近乎 100% 的兼容性。 有关功能和比较列表，请参阅 [SQL 常用功能](sql-database-features.md)。
  
-托管实例支持与 SQL 2008 数据库的向后兼容。  支持从 SQL 2005 数据库服务器直接迁移，迁移后的 SQL 2005 数据库的兼容级别将更新为 SQL 2008。 
+托管实例支持与 SQL 2008 数据库的向后兼容。 支持从 SQL 2005 数据库服务器直接迁移，迁移后的 SQL 2005 数据库的兼容级别将更新为 SQL 2008。 
  
 下图概括描绘了托管实例中外围应用的兼容性：  
 
@@ -182,7 +199,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 
 ### <a name="key-differences-between-sql-server-on-premises-and-managed-instance"></a>本地 SQL Server 与托管实例之间的主要差异 
 
-托管实例受益于云中的一贯最新状态，这意味着，本地 SQL Server 中的某些功能可能会过时、被弃用或被取代。  在某些情况下，当工具需要识别特定的功能是否以略微不同的方式工作或者服务是否不在某个环境中运行时，你无法完全控制这一点： 
+托管实例受益于云中的一贯最新状态，这意味着，本地 SQL Server 中的某些功能可能会过时、被弃用或被取代。 在某些情况下，当工具需要识别特定的功能是否以略微不同的方式工作或者服务是否不在某个环境中运行时，你无法完全控制这一点： 
 
 - 高可用性是内置的，且是预先配置的。 Always On 高可用性功能的公开方式不同于 SQL IaaS 实施项目的类似功能 
 - 自动备份和时间点还原。 客户可以启动 `copy-only` 备份，而不会干扰自动备份链。 
@@ -192,7 +209,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
  
 ### <a name="managed-instance-administration-features"></a>托管实例管理功能  
 
-托管实例可让系统管理员专注于业务中最重要的事务。 许多系统管理员/DBA 活动都是不需要的，或者很简单。 例如，OS/RDBMS 安装和修补、动态实例大小调整和配置、备份、数据库复制（包括系统数据库）、高可用性配置，以及运行状况和性能监视数据流的配置。  
+托管实例可让系统管理员专注于业务中最重要的事务。 许多系统管理员/DBA 活动都是不需要的，或者很简单。 例如，OS/RDBMS 安装和修补、动态实例大小调整和配置、备份、数据库复制（包括系统数据库）、高可用性配置，以及运行状况和性能监视数据流的配置。 
 
 > [!IMPORTANT]
 > 有关支持、部分支持和不支持的功能列表，请参阅 [SQL 数据库功能](sql-database-features.md)。 有关托管实例与 SQL Server 的 T-SQL 差异列表，请参阅[托管实例与 SQL Server 的 T-SQL 差异](sql-database-managed-instance-transact-sql-information.md)
