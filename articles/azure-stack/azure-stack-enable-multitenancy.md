@@ -1,11 +1,11 @@
 ---
-title: "在 Azure Stack 中启用多租户 | Microsoft Docs"
-description: "了解如何在 Azure Stack 中支持多个 Azure Active Directory 目录"
+title: 在 Azure Stack 中启用多租户 | Microsoft Docs
+description: 了解如何在 Azure Stack 中支持多个 Azure Active Directory 目录
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 66689d80cbee0be36b3e8c9951a43d0d43fa01be
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9ee54827ae9e8a803a5e3d7464559aec62c67119
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="enable-multi-tenancy-in-azure-stack"></a>在 Azure Stack 中启用多租户
 
@@ -91,7 +91,7 @@ Register-AzSWithMyDirectoryTenant `
 ## <a name="direct-users-to-sign-in"></a>指导用户登录
 现在，你和 Mary 已完成到加入 Mary 目录的步骤，Mary 可以指导 Fabrikam 用户登录。  Fabrikam 用户 （即，具有 fabrikam.onmicrosoft.com 后缀的用户） 登录，请访问https://portal.local.azurestack.external。  
 
-Mary 将指示任何[外部主体](../active-directory/active-directory-understanding-resource-access.md)Fabrikam 目录 （即，而不使用后缀 fabrikam.onmicrosoft.com Fabrikam 目录中的用户） 中使用登录https://portal.local.azurestack.external/fabrikam.onmicrosoft.com。如果他们不使用此 URL，则将被发送到其默认目录 (Fabrikam)，并收到一个错误，指出其管理员未许可。
+Mary 将指示任何[外部主体](../role-based-access-control/rbac-and-directory-admin-roles.md)Fabrikam 目录 （即，而不使用后缀 fabrikam.onmicrosoft.com Fabrikam 目录中的用户） 中使用登录https://portal.local.azurestack.external/fabrikam.onmicrosoft.com。如果他们不使用此 URL，则将被发送到其默认目录 (Fabrikam)，并收到一个错误，指出其管理员未许可。
 
 ## <a name="next-steps"></a>后续步骤
 

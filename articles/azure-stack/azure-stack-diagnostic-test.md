@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 堆栈中运行的验证测试 |Microsoft 文档"
-description: "如何收集诊断 Azure 堆栈中的日志文件"
+title: 在 Azure Stack 中运行验证测试 | Microsoft Docs
+description: 如何收集日志文件以在 Azure Stack 中进行诊断
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -11,45 +11,46 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 04/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4f86397d4db5a0e67b294befd92087166d6b8109
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c28216ced2a7cd2995c55a9faacb93cf27e60c65
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="run-a-validation-test-for-azure-stack"></a>为 Azure 堆栈运行验证测试
+# <a name="run-a-validation-test-for-azure-stack"></a>为 Azure Stack 运行验证测试
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
  
-你可以验证 Azure 堆栈的状态。 当你遇到问题时，请联系 Microsoft 客户服务支持。 支持要求你从你管理的节点上运行测试 AzureStack。 验证测试隔离失败。 支持可以然后分析详细的日志、 重点放在发生错误的区域和工作与你解决此问题。
+可以验证 Azure Stack 的状态。 遇到问题时，请联系 Microsoft 客户服务支持。 支持人员会要求你从管理节点运行 Test-AzureStack。 验证测试会对故障进行隔离。 然后，支持人员可以分析详细日志，专注于发生问题的区域，并与你协作来解决问题。
 
-## <a name="run-test-azurestack"></a>Run Test-AzureStack
+## <a name="run-test-azurestack"></a>运行 Test-AzureStack
 
-当你遇到问题时，请联系 Microsoft 客户服务支持，然后运行**运行的测试 AzureStack**。
+遇到问题时，请联系 Microsoft 客户服务支持，然后**运行 Test-AzureStack**。
 
-1. 你遇到的问题。
+1. 遇到问题。
 2. 联系 Microsoft 客户服务支持。
-3. 运行**测试 AzureStack**从特权的终结点。
-    1. 访问特权终结点。 有关说明，请参阅[Azure 堆栈中使用的特权的终结点](azure-stack-privileged-endpoint.md)。 
-    2. 以登录**AzureStack\CloudAdmin**管理主机上。
+3. 从特权终结点运行 **Test-AzureStack**。
+    1. 访问特权终结点。 有关说明，请参阅[使用 Azure Stack 中的特权终结点](azure-stack-privileged-endpoint.md)。 
+    2. 在 ASDK，在登录到的管理主机**AzureStack\CloudAdmin**。  
+    在集成的系统上将需要用于提供给你的 OEM 硬件供应商的管理特权终结点的 IP 地址。
     3. 以管理员身份打开 PowerShell。
     4. 运行：`Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint`
     5. 运行：`Test-AzureStack`
-4. 如果任何测试报告失败，运行： `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` cmdlet 从测试 AzureStack 收集日志。 有关诊断日志的详细信息，请参阅[Azure 堆栈诊断工具](azure-stack-diagnostics.md)。
-5. 发送**SeedRing**向 Microsoft 客户服务支持的日志。 Microsoft 客户服务支持适用于你要解决此问题。
+4. 如果有任何测试报告了失败，请运行：`Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>`。此 cmdlet 从 Test-AzureStack 收集日志。 有关诊断日志的详细信息，请参阅 [Azure Stack 诊断工具](azure-stack-diagnostics.md)。
+5. 将 **SeedRing** 日志发送给 Microsoft 客户服务支持。 Microsoft 客户服务支持将与你协作来解决问题。
 
-## <a name="reference-for-test-azurestack"></a>测试 AzureStack 的引用
+## <a name="reference-for-test-azurestack"></a>Test-AzureStack 参考
 
-本部分概述了适合测试 AzureStack cmdlet，并验证报表的摘要。
+本部分包含了 Test-AzureStack cmdlet 的概述和验证报告的摘要。
 
 ### <a name="test-azurestack"></a>Test-AzureStack
 
-验证 Azure 堆栈的状态。 该 cmdlet 报告 Azure 堆栈硬件和软件的状态。 支持人员可以使用此报表以减少解决 Azure 堆栈支持案例的时间。
+验证 Azure Stack 的状态。 此 cmdlet 报告 Azure Stack 硬件和软件的状态。 支持人员可以使用此报告来缩短解决 Azure Stack 支持案例所需的时间。
 
 > [!Note]  
-> 测试 AzureStack 可能检测不会导致云服务中断的故障，如单个失败磁盘故障或单个物理主机节点故障。
+> Test-AzureStack 可能会检测到不会导致云中断的故障，例如单一故障磁盘或单一物理主机节点故障。
 
 #### <a name="syntax"></a>语法
 
@@ -64,18 +65,18 @@ ms.lasthandoff: 03/08/2018
 | ServiceAdminCredentials | PSCredential    | 否       | FALSE   |
 | DoNotDeployTenantVm     | SwitchParameter | 否       | FALSE   |
 | AdminCredential         | PSCredential    | 否       | 不可用      |
-<!-- | StorageConnectionString | String          | 否       | 不可用      | 不支持在 1802年-->
+<!-- | StorageConnectionString | String          | 否       | 不可用      | 在 1802 中不受支持 -->
 | 列出                    | SwitchParameter | 否       | FALSE   |
 | 忽略                  | String          | 否       | 不可用      |
 | 包括                 | String          | 否       | 不可用      |
 
-测试 AzureStack cmdlet 支持以下常见参数： Verbose、 调试、 ErrorAction、 ErrorVariable、 WarningAction、 WarningVariable、 OutBuffer、 PipelineVariable 和 OutVariable。 有关详细信息，请参阅[有关常见参数](http://go.microsoft.com/fwlink/?LinkID=113216)。 
+Test-AzureStack cmdlet 支持以下通用参数：Verbose、Debug、ErrorAction、ErrorVariable、WarningAction、WarningVariable、OutBuffer、PipelineVariable 和 OutVariable。 有关详细信息，请参阅[有关通用参数](http://go.microsoft.com/fwlink/?LinkID=113216)。 
 
-### <a name="examples-of-test-azurestack"></a>测试 AzureStack 的示例
+### <a name="examples-of-test-azurestack"></a>Test-AzureStack 的示例
 
-下面的示例假定你已作为登录**CloudAdmin**和访问特权终结点 (PEP)。 有关说明，请参阅[Azure 堆栈中使用的特权的终结点](azure-stack-privileged-endpoint.md)。 
+以下示例假定以 **CloudAdmin** 身份登录并访问特权终结点 (PEP)。 有关说明，请参阅[使用 Azure Stack 中的特权终结点](azure-stack-privileged-endpoint.md)。 
 
-#### <a name="run-test-azurestack-interactively-without-cloud-scenarios"></a>没有云方案的情况下以交互方式运行测试 AzureStack
+#### <a name="run-test-azurestack-interactively-without-cloud-scenarios"></a>在没有云方案的情况下以交互方式运行 Test-AzureStack
 
 在 PEP 会话中，运行：
 
@@ -84,24 +85,24 @@ ms.lasthandoff: 03/08/2018
       Test-AzureStack
 ````
 
-#### <a name="run-test-azurestack-with-cloud-scenarios"></a>使用云方案中运行测试 AzureStack
+#### <a name="run-test-azurestack-with-cloud-scenarios"></a>在有云方案的情况下运行 Test-AzureStack
 
-测试 AzureStack 可用于针对 Azure 堆栈运行云方案。 这些方案包括：
+可以使用 Test-AzureStack 针对 Azure Stack 运行云方案。 这些方案包括：
 
  - 创建资源组
  - 创建计划
- - 创建提议
+ - 创建产品/服务
  - 创建存储帐户
  - 创建虚拟机
- - 执行使用在测试方案中创建的存储帐户的 blob 操作
- - 执行队列操作使用在测试方案中创建的存储帐户
- - 执行使用在测试方案中创建的存储帐户的表操作
+ - 使用在测试方案中创建的存储帐户执行 blob 操作
+ - 使用在测试方案中创建的存储帐户执行队列操作
+ - 使用在测试方案中创建的存储帐户执行表操作
 
-云方案需要的云管理员凭据。 
+云方案需要云管理员凭据。 
 > [!Note]  
-> 不能运行使用 Active Directory 联合服务 (ADFS) 凭据的云方案。 **测试 AzureStack** cmdlet 才可通过 PEP 访问。 但是，PEP 不支持 ADFS 凭据。
+> 不能使用 Active Directory 联合服务 (ADFS) 凭据运行云方案。 只能通过 PEP 访问 **Test-AzureStack** cmdlet。 但是，PEP 不支持 ADFS 凭据。
 
-以 UPN 格式键入云管理员用户名serviceadmin@contoso.onmicrosoft.com(AAD)。 出现提示时，键入云管理员帐户的密码。
+以 UPN 格式 serviceadmin@contoso.onmicrosoft.com (AAD) 键入云管理员用户名。 出现提示时，键入云管理员帐户的密码。
 
 在 PEP 会话中，运行：
 
@@ -110,7 +111,7 @@ ms.lasthandoff: 03/08/2018
   Test-AzureStack -ServiceAdminCredentials <Cloud administrator user name>
 ````
 
-#### <a name="run-test-azurestack-without-cloud-scenarios"></a>没有云方案的情况下运行测试 AzureStack
+#### <a name="run-test-azurestack-without-cloud-scenarios"></a>在没有云方案的情况下运行 Test-AzureStack
 
 在 PEP 会话中，运行：
 
@@ -137,37 +138,37 @@ ms.lasthandoff: 03/08/2018
   Test-AzureStack -Include AzsSFRoleSummary, AzsInfraCapacity
 ````
 
-若要排除特定的测试：
+排除特定的测试：
 
 ````PowerShell
   Enter-PSSession -ComputerName <ERCS VM name> -ConfigurationName PrivilegedEndpoint `
   Test-AzureStack -Ignore AzsInfraPerformance
 ````
 
-### <a name="validation-test"></a>验证测试
+### <a name="validation-test"></a>验证类型
 
-下表总结了运行测试 AzureStack 的验证测试。
+下表总结了 Test-AzureStack 运行的验证测试。
 
 | 名称                                                                                                                              |
 |-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| Azure 堆栈云托管基础结构摘要                                                                                  |
-| Azure 堆栈存储服务摘要                                                                                              |
-| Azure 堆栈基础结构角色实例摘要                                                                                  |
-| Azure 堆栈云托管基础结构使用率                                                                              |
-| Azure 堆栈基础结构容量                                                                                               |
-| Azure 堆栈门户和 API 摘要                                                                                                |
-| Azure 堆栈 Azure 资源管理器证书摘要                                                                                               |
-| 基础结构管理控制器、 网络控制器、 存储服务和特权终结点基础结构角色          |
-| 基础结构管理控制器、 网络控制器、 存储服务和特权终结点基础结构角色实例 |
-| Azure 堆栈基础结构角色摘要                                                                                           |
-| Azure 堆栈云 Service Fabric 服务                                                                                         |
-| Azure 堆栈基础结构角色实例性能                                                                              |
-| Azure 堆栈云主机性能摘要                                                                                        |
-| Azure 堆栈服务资源消耗摘要                                                                                  |
-| Azure 堆栈缩放单元关键事件 （最后一个 8 小时数）                                                                             |
-| Azure 堆栈存储服务的物理磁盘摘要                                                                               |
+| Azure Stack 云托管基础结构摘要                                                                                  |
+| Azure Stack 存储服务摘要                                                                                              |
+| Azure Stack 基础结构角色实例摘要                                                                                  |
+| Azure Stack 云托管基础结构利用率                                                                              |
+| Azure Stack 基础结构容量                                                                                               |
+| Azure Stack 门户和 API 摘要                                                                                                |
+| Azure Stack Azure 资源管理器证书摘要                                                                                               |
+| 基础结构管理控制器、网络控制器、存储服务和特权终结点基础结构角色          |
+| 基础结构管理控制器、网络控制器、存储服务和特权终结点基础结构角色实例 |
+| Azure Stack 基础结构角色摘要                                                                                           |
+| Azure Stack 云 Service Fabric 服务                                                                                         |
+| Azure Stack 基础结构角色实例性能                                                                              |
+| Azure Stack 云主机性能摘要                                                                                        |
+| Azure Stack 服务资源消耗摘要                                                                                  |
+| Azure Stack 缩放单位关键事件（过去 8 小时）                                                                             |
+| Azure Stack 存储服务物理磁盘摘要                                                                               |
 
 ## <a name="next-steps"></a>后续步骤
 
- - 若要了解有关 Azure 堆栈诊断工具和问题日志记录的详细信息，请参阅[Azure 堆栈诊断工具](azure-stack-diagnostics.md)。
+ - 若要详细了解 Azure Stack 诊断工具和问题日志记录，请参阅 [Azure Stack 诊断工具](azure-stack-diagnostics.md)。
  - 若要了解有关疑难解答的详细信息，请参阅[Microsoft Azure 堆栈故障排除](azure-stack-troubleshooting.md)

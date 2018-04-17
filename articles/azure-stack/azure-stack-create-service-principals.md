@@ -1,6 +1,6 @@
 ---
-title: "创建 Azure Stack 的服务主体 | Microsoft Docs"
-description: "介绍如何创建新的服务主体，并在 Azure 资源管理器中将此服务主体与基于角色的访问控制配合使用以管理对资源的访问权限。"
+title: 创建 Azure Stack 的服务主体 | Microsoft Docs
+description: 介绍如何创建新的服务主体，并在 Azure 资源管理器中将此服务主体与基于角色的访问控制配合使用以管理对资源的访问权限。
 services: azure-resource-manager
 documentationcenter: na
 author: mattbriggs
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7b7028a92b93f29af10c5e4bc9ab4f671ca23961
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 833efa7f24d01346525af3dd9ca37012ab0ba3c4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>提供对 Azure Stack 的应用程序访问权限
 
@@ -51,14 +51,14 @@ ms.lasthandoff: 03/16/2018
 已为应用程序创建服务主体。
 
 ### <a name="get-credentials"></a>获取凭据
-如果以编程方式记录，你可以使用 ID，应用程序和 Web 应用的 / API，身份验证密钥。 若要获取这些值，请使用以下步骤：
+以编程方式登录时，需要使用应用程序、Web 应用/API 的 ID 和身份验证密钥。 若要获取这些值，请使用以下步骤：
 
 1. 从 Active Directory 中的“应用注册”，选择应用程序。
 
 2. 复制“应用程序 ID”并将其存储在应用程序代码中。 [示例应用程序](#sample-applications)部分的应用程序引用此值作为客户端 ID。
 
      ![客户端 ID](./media/azure-stack-create-service-principal/image12.png)
-3. 若要生成 Web 应用的身份验证密钥 / API 中，选择**设置** > **密钥**。 
+3. 若要为 Web 应用/API 生成身份验证密钥，请选择“设置” > “密钥”。 
 
 4. 提供密钥说明和密钥持续时间。 完成后，选择“保存”。
 
@@ -136,7 +136,7 @@ Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
 ```
 
 ## <a name="assign-role-to-service-principal"></a>为服务主体分配角色
-要访问订阅中的资源，必须将应用程序分配到角色。 决定哪个角色表示应用程序的相应权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。
+要访问订阅中的资源，必须将应用程序分配到角色。 决定哪个角色表示应用程序的相应权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](../role-based-access-control/built-in-roles.md)。
 
 可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域将继承权限。 例如，将某个应用程序添加到资源组的“读取者”角色意味着该应用程序可以读取该资源组及其包含的所有资源。
 
@@ -150,7 +150,7 @@ Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
 
      ![选择访问权限](./media/azure-stack-create-service-principal/image17.png)
 
-4. 选择“添加”。
+4. 选择 **添加** 。
 
 5. 选择要分配到应用程序的角色。
 

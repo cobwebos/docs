@@ -1,34 +1,34 @@
 ---
-title: Azure Stack 数据中心集成 - 发布终结点
+title: Azure 堆栈数据中心集成-发布终结点 |Microsoft 文档
 description: 了解如何在数据中心发布 Azure Stack 终结点
 services: azure-stack
 author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/06/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: 136d78be3cddfd6fd4e491d5ea3f5d51d0dc611f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 014dbf6ff6d30bfb988c404bfe35693fe68f22fd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack 数据中心集成 - 发布终结点
-Azure 堆栈将设置为其基础结构角色的虚拟 IP 地址 (Vip)。 这些 VIP 是从公共 IP 地址池分配的。 每个 VIP 受软件定义的网络层中的访问控制列表 (ACL) 保护。 还可以在物理交换机（TOR 和 BMC）之间使用 ACL 来进一步强化解决方案。 为每个终结点在部署时指定的外部 DNS 区域中创建 DNS 条目。
+Azure Stack 为其基础结构角色设置虚拟 IP 地址 (VIP)。 这些 VIP 是从公共 IP 地址池分配的。 每个 VIP 受软件定义的网络层中的访问控制列表 (ACL) 保护。 还可以在物理交换机（TOR 和 BMC）之间使用 ACL 来进一步强化解决方案。 将会根据部署时的指定，针对外部 DNS 区域中的每个终结点创建一个 DNS 条目。
 
 
 以下体系结构图显示了不同的网络层和 ACL：
 
-![结构化的图片](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
+![结构化图片](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
 
 ## <a name="ports-and-protocols-inbound"></a>端口和协议（入站）
 
-一组基础结构的 Vip 所需的到外部网络的发布 Azure 堆栈终结点。 *终结点 (VIP)*表显示了每个终结点、 所需的端口和协议。 请参阅需要额外的资源提供程序，如 SQL 资源提供程序的终结点的特定资源提供程序部署文档。
+将 Azure Stack 终结点发布到外部网络需要一组基础结构 VIP。 “终结点 (VIP)”表显示了每个终结点、所需的端口和协议。 请参阅特定资源提供程序部署文档，了解需要其他资源提供程序（例如 SQL 资源提供程序）的终结点。
 
-Vip 未列出，因为它们不需要发布 Azure 堆栈的内部基础结构。
+此处未列出内部基础结构 VIP，因为发布 Azure Stack 时不需要这些 VIP。
 
 > [!NOTE]
 > 用户 VIP 是动态的，由用户自己定义，而不受 Azure Stack 操作员的控制。
@@ -63,11 +63,13 @@ Azure Stack 仅支持透明代理服务器。 如果部署中的透明代理上�
 
 |目的|代码|协议|端口|
 |---------|---------|---------|---------|
-|标识|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net|HTTP<br>HTTPS|80<br>443|
+|标识|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com|HTTP<br>HTTPS|80<br>443|
 |Marketplace 联合|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|
 |修补程序和更新|https://&#42;.azureedge.net|HTTPS|443|
 |注册|https://management.azure.com|HTTPS|443|
 |使用情况|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.com|HTTPS|443|
+|Windows Defender|。 wdcp.microsoft.com<br>。 wdcpalt.microsoft.com<br>*。 updates.microsoft.com<br>*。 download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>http://crl.microsoft.com/pki/crl/products<br>http://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
+
 
 
 ## <a name="next-steps"></a>后续步骤

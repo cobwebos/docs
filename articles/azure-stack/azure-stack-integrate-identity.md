@@ -6,15 +6,15 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 04/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 3180b24454fc49a34a40bdf2873fad1d56173e3d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4ecd08f3750e8521270369a69c6801497e587a75
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack 数据中心集成 - 标识
 可以使用 Azure Active Directory (Azure AD) 或 Active Directory 联合身份验证服务 (AD FS) 作为标识提供者来部署 Azure Stack。 必须在部署 Azure Stack 之前做出选择。 使用 AD FS 的部署也称为在断开连接模式下部署 Azure Stack。
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/23/2018
 
 对于 Graph 配置，必须提供在现有 Active Directory 中拥有“读取”权限的服务帐户。 自动化需要使用此帐户作为输入来启用 RBAC 方案。
 
-在最后一个步骤中，将为默认提供程序订阅配置新的所有者。 登录到 Azure Stack 管理员门户时，此帐户对所有资源拥有完全访问权限。
+在最后一个步骤中，将为默认提供商订阅配置新的所有者。 登录到 Azure Stack 管理员门户时，此帐户对所有资源拥有完全访问权限。
 
 要求：
 
@@ -138,7 +138,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml
    ```
 
-3. 使用适用于环境的参数运行以下命令，更新默认提供程序订阅的所有者：
+3. 使用适用于环境的参数运行以下命令，更新默认提供商订阅的所有者：
 
    ```powershell
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
@@ -191,7 +191,7 @@ Azure Stack 中的 Graph 服务使用以下协议和端口来与目标 Active Di
    Register-CustomAdfs -CustomAdfsName Contoso – CustomADFSFederationMetadataFile \\share\metadataexample.xml
    ```
 
-3. 使用适用于环境的参数运行以下命令，更新默认提供程序订阅的所有者：
+3. 使用适用于环境的参数运行以下命令，更新默认提供商订阅的所有者：
 
    ```powershell
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
@@ -263,6 +263,9 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
 
 4. 使用 Internet Explorer 或 Microsoft Edge 浏览器访问 Azure Stack 时，必须忽略令牌绑定。 否则登录尝试会失败。 在 AD FS 实例或场成员上运行以下命令：
 
+   > [!note]  
+   > 使用 Windows Server 2012 或 2012 R2 AD FS 时，此步骤不适用。 则可以安全地跳过此命令并继续进行集成。
+
    ```powershell
    Set-AdfsProperties -IgnoreTokenBinding $true
    ```
@@ -308,7 +311,7 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
    运行回滚操作后，所有配置更改都会回滚。 只能使用内置的 **CloudAdmin** 用户身份进行身份验证。
 
    > [!IMPORTANT]
-   > 必须配置默认提供程序订阅的原始所有者
+   > 必须配置默认提供商订阅的原始所有者
 
    ```powershell
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "azurestackadmin@[Internal Domain]"
@@ -334,4 +337,4 @@ Microsoft 提供了用于配置信赖方信任（包括声明转换规则）的�
 
 ## <a name="next-steps"></a>后续步骤
 
-[将外部的监视解决方案集成](azure-stack-integrate-monitor.md)
+[集成外部监视解决方案](azure-stack-integrate-monitor.md)

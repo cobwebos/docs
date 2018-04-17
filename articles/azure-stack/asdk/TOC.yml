@@ -1,9 +1,9 @@
-- name: Azure 堆栈开发工具包文档
+- name: Azure Stack 开发工具包文档
   href: index.yml
 - name: 概述
   expanded: true
   items:
-    - name: 什么是 ASDK？
+    - name: 什么是 ASDK?
       href: asdk-what-is.md
     - name: ASDK 发行说明
       href: asdk-release-notes.md
@@ -11,13 +11,13 @@
   items:
     - name: 1. 部署 ASDK
       items:
-        - name: 部署 ASDK-安装程序
+        - name: 部署 ASDK - 安装程序
           href: asdk-deploy.md
-        - name: 部署 ASDK-PowerShell
+        - name: 部署 ASDK - PowerShell
           href: asdk-deploy-powershell.md
         - name: 重新部署 ASDK
           href: asdk-redeploy.md
-    - name: 2. 添加应用商店项
+    - name: 2. 添加 Marketplace 项
       items:
         - name: 从 Azure 下载
           href: asdk-marketplace-item.md
@@ -39,24 +39,26 @@
       href: asdk-architecture.md
     - name: ASDK 管理基础知识
       href: asdk-admin-basics.md
-    - name: 高级的评估任务
+    - name: 高级评估任务
       href: asdk-advanced-eval.md
 - name: 如何
   items:
-    - name: 安装程序 ASDK
+    - name: 设置 ASDK
       items:
         - name: 下载并提取开发工具包
           href: asdk-download.md
-        - name: 准备 ASDK 主计算机
+        - name: 准备 ASDK 主机
           href: asdk-prepare-host.md
         - name: 安装 ASDK
           href: asdk-install.md
-        - name: 后期部署配置
+        - name: 部署后配置
           href: asdk-post-deploy.md
     - name: 注册 ASDK
       href: asdk-register.md
-    - name: 配置 Azure 堆栈遥测设置
+    - name: 配置 Azure Stack 遥测设置
       href: asdk-telemetry.md
+    - name: 启动和停止 ASDK
+      href: asdk-start-stop.md
     - name: 故障排除
       href: asdk-troubleshooting.md
 - name: 参考
@@ -73,11 +75,11 @@
       href: /azure/azure-stack/user/
 - name: 资源
   items:
-    - name: Azure 堆栈路线图
+    - name: Azure Stack 路线图
       href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
-    - name: Azure 堆栈 MSDN 论坛
+    - name: Azure Stack MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
-    - name: Azure 堆栈文档反馈
+    - name: Azure Stack 文档反馈
       href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: 定价信息
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'

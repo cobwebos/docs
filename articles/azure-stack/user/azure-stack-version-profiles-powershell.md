@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 04/12/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 890237ff40f9c9893c57f49c96e6ddc99849c2bd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b09799fe102522e1ad91f4983cf4f5fa8122b2c1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>使用适用于 Azure 堆栈中的 PowerShell API 版本配置文件
 
@@ -34,15 +34,10 @@ API 版本配置文件提供一种管理 Azure 与 Azure Stack 之间版本差�
 ```PowerShell
 Install-Module -Name AzureRm.BootStrapper
 ```
-AzureRM.Bootstrapper 模块目前为预览版；详细信息和功能即时可能会更改。 若要从 PowerShell 库下载并安装此模块的最新版本，请运行以下 cmdlet：
-
-```PowerShell
-Update-Module -Name "AzureRm.BootStrapper"
-```
 
 ## <a name="install-a-profile"></a>安装配置文件
 
-使用 **Install-AzureRmProfile** cmdlet 搭配 **2017-03-09-profile** API 版本配置文件，安装 Azure Stack 所需的 AzureRM 模块。 请注意，Azure Stack 操作员模块不会连同此 API 版本配置文件一起安装，应该根据[安装适用于 Azure Stack 的 PowerShell](azure-stack-powershell-install.md) 一文的步骤 3 中所述，单独安装这些模块。
+使用 **Install-AzureRmProfile** cmdlet 搭配 **2017-03-09-profile** API 版本配置文件，安装 Azure Stack 所需的 AzureRM 模块。 Azure 堆栈运算符模块未安装与此 API 版本配置文件中。 它们应安装单独的步骤 3 中指定[安装适用于 Azure 堆栈的 PowerShell](azure-stack-powershell-install.md)文章。
 
 ```PowerShell 
 Install-AzureRMProfile -Profile 2017-03-09-profile

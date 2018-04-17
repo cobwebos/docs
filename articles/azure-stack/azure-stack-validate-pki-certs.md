@@ -1,6 +1,6 @@
 ---
 title: 验证用于 Azure Stack 集成系统部署的 Azure Stack 公钥基础结构证书 | Microsoft Docs
-description: 介绍如何验证 Azure Stack 集成系统的 Azure Stack PKI 证书。
+description: 介绍如何验证 Azure Stack 集成系统的 Azure Stack PKI 证书。 介绍如何使用 Azure 堆栈证书检查程序工具。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,171 +11,164 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/11/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 0bdadadb1f4ee5f76cde9d05b11e8d57b99ac191
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: cd917165804314f6ee4ee006e3f29263d8d4b4c5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>验证 Azure Stack PKI 证书
 
-本文中所述的 Azure Stack 证书检查器工具由 OEM 提供，它附带 deploymentdata.json 文件，用于验证[生成的 PKI 证书](azure-stack-get-pki-certs.md)是否适用于前期部署。 应该花费足够的时间来验证证书，以测试证书并在必要时重新颁发证书。
+在本文中所述的 Azure 堆栈准备情况检查程序工具可[从 PowerShell 库](https://aka.ms/AzsReadinessChecker)。 你可以使用该工具以验证[生成 PKI 证书](azure-stack-get-pki-certs.md)适合于部署前。 留出足够的时间来测试和重新颁发证书，如有必要，应验证证书。
 
-证书检查器工具 (Certchecker) 执行以下检查：
+准备情况检查程序工具执行以下证书验证：
 
-- **读取 PFX**。 检查 PFX 文件是否有效且密码正确，在公开的信息不受到密码保护时发出警告。 
-- **签名算法**。 检查的签名算法不是 SHA1。
-- **私钥**。 检查私钥是否存在，并且已连同“本地计算机”属性一起导出。 
-- **证书链**。 检查自签名证书的证书链是否完整。 
-- **DNS 名称**。 检查 SAN 是否包含每个终结点的相关 DNS 名称，或支持性的通配符是否存在。 
-- **密钥用法**。 检查密钥用法是否包含数字签名和密钥加密，增强型密钥用法是否包含服务器身份验证和客户端身份验证。
-- **密钥大小**。 检查密钥大小为 2048年或更大。
-- **链序**。 检查其他证书的顺序是否能使链保持正常。
-- **其他证书**。 确保除了相关叶证书及其链以外，PFX 中未打包其他证书。
-- **无配置文件**。 检查新用户是否无需加载用户配置文件即可加载 PFX 数据，可在证书有效期内模拟 gMSA 帐户的行为。
+- **读取 PFX**  
+    检查有效的 PFX 文件，正确的密码，并会发出警告如果公共信息不受密码保护密码。 
+- **签名算法**  
+    检查的签名算法不是 SHA1。
+- **私钥**  
+    检查私钥存在并具有本地计算机属性导出。 
+- **证书链**  
+    检查证书链，则包括自签名证书的检查不变。
+- **DNS 名称**  
+    检查 SAN 是否包含每个终结点的相关 DNS 名称，或支持性的通配符是否存在。
+- **密钥用法**  
+    如果密钥用法包含数字签名和密钥加密和增强型密钥用法包含服务器身份验证和客户端身份验证检查。
+- **密钥大小**  
+    检查是否 2048年或更大的密钥大小。
+- **链顺序**  
+    检查其他证书验证的顺序正确的顺序。
+- **其他证书**  
+    确保除了相关叶证书及其链以外，PFX 中未打包其他证书。
 
 > [!IMPORTANT]  
-> PKI 证书的 PFX 文件和密码应被视为敏感信息。
+> PKI 证书为 PFX 文件和密码应被视为敏感信息。
 
 ## <a name="prerequisites"></a>必备组件
-在验证用于 Azure Stack 部署的 PKI 证书之前，系统应符合以下先决条件：
-- CertChecker (在**PartnerToolKit**下**\utils\certchecker**)
+
+验证 Azure 堆栈部署的 PKI 证书之前，你的系统应满足以下先决条件：
+
+- Microsoft Azure 堆栈准备情况检查程序
 - 遵照[准备说明](azure-stack-prepare-pki-certs.md)导出的 SSL 证书
 - DeploymentData.json
 - Windows 10 或 Windows Server 2016
 
 ## <a name="perform-certificate-validation"></a>执行证书验证
 
-使用以下步骤来准备和验证 Azure Stack PKI 证书： 
+若要准备和若要验证 Azure 堆栈 PKI 证书，请使用以下步骤：
 
-1. 将 <partnerToolkit>\utils\certchecker 的内容提取到新目录，例如 **c:\certchecker**。
+1. 通过运行以下 cmdlet 从 PowerShell 提示符下 （5.1 或更高版本），安装 AzsReadinessChecker:
 
-2. 以管理员身份打开 PowerShell，并将目录切换到 certchecker 文件夹：
+    ````PowerShell  
+        Install-Module Microsoft.AzureStack.ReadinessChecker 
+    ````
 
-  ```powershell
-  cd c:\certchecker
-  ```
- 
-3. 运行以下 PowerShell 命令创建证书的目录结构：
+2. 创建证书目录结构。 在下面的示例中，你可以更改`<c:\certificates>`到所选的新的目录路径。
 
-  ```powershell 
-  $directories = "ACS","ADFS","Admin Portal","ARM Admin","ARM Public","Graph","KeyVault","KeyVaultInternal","Public Portal" 
-  $destination = '.\certs' 
-  $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}  
-  ```
+    ````PowerShell  
+    New-Item C:\Certificates -ItemType Directory
 
-  >  [!NOTE]
-  >  如果 Azure Stack 部署的标识提供者为 Azure AD，请删除 **ADFS** 和 **Graph** 目录。 
+    $directories = 'ACSBlob','ACSQueue','ACSTable','ADFS','Admin Portal','ARM Admin','ARM Public','Graph','KeyVault','KeyVaultInternal','Public Portal' 
 
-4. 将证书放入上一步骤中创建的相应目录，例如： 
-  - c:\certchecker\Certs\ACS\CustomerCertificate.pfx  
-  - c:\certchecker\Certs\Admin Portal\CustomerCertificate.pfx  
-  - c:\certchecker\Certs\ARM Admin\CustomerCertificate.pfx  
-  - 等等 
+    $destination = 'c:\certificates' 
 
-5. 将 **deploymentdata.json** 复制到 **c:\certchecker** 目录。
+    $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}  
+    ````
 
-6. 在 PowerShell 窗口中运行以下命令： 
+ - 将你的证书放在上一步中创建的相应目录。 例如：  
+    - c:\certificates\ACSBlob\CustomerCertificate.pfx 
+    - c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx 
+    - c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx 
+    - 等等 
 
-  ```powershell
-  $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
-  .\CertChecker.ps1 -CertificatePath .\Certs\ -pfxPassword $password -deploymentDataJSONPath .\DeploymentData.json  
-  ```
+3. 在 PowerShell 窗口中运行：
 
-7. 针对所有证书运行该命令并检查所有属性后，输出中应该包含 OK： 
+    ````PowerShell  
+    $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 
-  ```powershell
-  Starting Azure Stack Certificate Validation 1.1802.221.1
-  Testing: ADFS\ContosoSSL.pfx
-    Read PFX: OK
-    Signature Algorithm: OK
-    Private Key: OK
-    Cert Chain: OK
-    DNS Names: OK
-    Key Usage: OK
-    Key Size: OK
-    Chain Order: OK
-    Other Certificates: OK
-    No Profile: OK
-  Testing: KeyVaultInternal\ContosoSSL.pfx
-    Read PFX: OK
-    Signature Algorithm: OK
-    Private Key: OK
-    Cert Chain: OK
-    DNS Names: OK
-    Key Usage: OK
-    Key Size: OK
-    Chain Order: OK
-    Other Certificates: OK
-    No Profile: OK
-  Testing: ACS\ContosoSSL.pfx
-  WARNING: Pre-1803 certificate structure. The folder structure for Azure Stack 1803 and above is: ACSBlob, ACSQueue, ACSTable instead of ACS folder. Refer to deployment documentation for further informat
-  ion.
-    Read PFX: OK
-    Signature Algorithm: OK
-    Private Key: OK
-    Cert Chain: OK
-    DNS Names: OK
-    Key Usage: OK
-    Key Size: OK
-    Chain Order: OK
-    Other Certificates: OK
-    No Profile: OK
-  Detailed log can be found C:\CertChecker\CertChecker.log 
-  ```
+    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
+    ````
 
-### <a name="known-issues"></a>已知问题 
-**症状**：Certchecker 提前退出，并出现以下错误： 
-> 已失败
+4. 检查输出，以验证所有证书都通过的测试。 例如：
 
-> 详细信息: 由于发生错误，无法运行此命令: 目录名称无效。 
+    ````PowerShell
+    AzsReadinessChecker v1.1803.405.3 started
+    Starting Certificate Validation
 
-**原因**：从受限的文件夹（例如 c:\temp 或 %temp%）运行 certchecker.ps1 
+    Starting Azure Stack Certificate Validation 1.1803.405.3
+    Testing: ARM Public\ssl.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: ACSBlob\ssl.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Detailed log can be found C:\AzsReadinessChecker\CertificateValidation\CertChecker.log
 
-**解决方法**：将 certchecker 工具移到新目录，例如 C:\CertChecker 
+    Finished Certificate Validation
 
+    AzsReadinessChecker Log location: C:\AzsReadinessChecker\AzsReadinessChecker.log
+    AzsReadinessChecker Report location (for OEM): C:\AzsReadinessChecker\AzsReadinessReport.json
+    AzsReadinessChecker Completed
+    ````
 
-**症状**：Certchecker 发出了有关使用 Pre-1803 的警告（如上述步骤 7 中的示例所示）：
-
-> [!WARNING]
-> Pre-1803 证书结构。 Azure Stack 1803 和更高版本的文件夹结构为: ACSBlob、ACSQueue、ACSTable，而不是 ACS 文件夹。 有关详细信息，请参阅部署文档。
-
-**原因**：CertChecker 检测到使用了单个 ACS 文件夹，这在版本低于 1803 的部署是正确的。 对于 Azure Stack 1803 和更高版本的部署，文件夹结构已更改为 ACSTable、ACSQueue、ACSBlob。 Certchecker 已更新为支持此功能。
-
-**解决方法**：如果部署的是 1802，则无需采取任何措施。 如果部署的是 1803 和更高版本，请将 ACS 替换为 ACSTable、ACSQueue、ACSBlob，并将 ACS 证书复制到这些文件夹。
+### <a name="known-issues"></a>已知问题
 
 **症状**：已跳过测试
 
-**原因**：如果不符合依赖关系，CertChecker 会跳过某些测试：
-- 如果证书链出错，则会跳过其他证书。
-- 在以下情况下，不会跳过任何配置文件：
-  - 安全策略限制了创建临时用户的功能，并以该用户的身份运行 Powershell。
-  - 私钥检查失败。
+**可能的原因**: AzsReadinessChecker 跳过某些测试，如果不满足依赖关系：
 
-**解决方法**：遵循每个证书测试集下的详细信息部分中的工具指导。
+ - 如果证书链将失败，则将跳过其他证书。
 
+    ````PowerShell  
+    Testing: ACSBlob\singlewildcard.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: Fail
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: Skipped
+    Details:
+    The certificate records '*.east.azurestack.contoso.com' do not contain a record that is valid for '*.blob.east.azurestack.contoso.com'. Please refer to the documentation for how to create the required certificate file.
+    The Other Certificates check was skipped because Cert Chain and/or DNS Names failed. Follow the guidance to remediate those issues and recheck. 
+    Detailed log can be found C:\AzsReadinessChecker\CertificateValidation\CertChecker.log
 
-## <a name="prepare-deployment-script-certificates"></a>准备部署脚本证书 
-最后一个步骤是将已准备好的所有证书放入部署主机上的相应目录。 在部署主机上，创建名为 Certificates** 的文件夹，并将导出的证书文件放入[必需的证书](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates)部分中指定的相应子文件夹：
+    Finished Certificate Validation
 
-```
-\Certificates
-\ACS\ssl.pfx
-\Admin Portal\ssl.pfx
-\ARM Admin\ssl.pfx
-\ARM Public\ssl.pfx
-\KeyVault\ssl.pfx
-\KeyVaultInternal\ssl.pfx
-\Public Portal\ssl.pfx
-\ADFS\ssl.pfx*
-\Graph\ssl.pfx*
-```
+    AzsReadinessChecker Log location: C:\AzsReadinessChecker\AzsReadinessChecker.log
+    AzsReadinessChecker Report location (for OEM): C:\AzsReadinessChecker\AzsReadinessChecker.log
+    AzsReadinessChecker Completed
+    ````
 
-<sup>*</sup> 仅当使用 AD FS 作为标识存储时，才需要带有星号 * 标记的证书。
+**解析**： 请按照下每个组的测试的每个证书的详细信息部分中的工具的指导。
 
+## <a name="using-validated-certificates"></a>使用已验证的证书
+
+一旦通过 AzsReadinessChecker 验证了你的证书，你就可以使用它们在你的 Azure 堆栈部署或对 Azure 堆栈密钥轮换。 
+
+ - 对于部署，将安全传送你的证书到你部署的工程师，以便它们可以将它们复制到指定在部署主机[Azure 堆栈 PKI 要求文档](azure-stack-pki-certs.md)。
+ - 对密钥轮换，你可以使用证书通过以下更新 Azure 堆栈环境的公共基础结构终结点的旧证书[Azure 堆栈机密旋转文档](azure-stack-rotate-secrets.md)。
 
 ## <a name="next-steps"></a>后续步骤
+
 [数据中心标识集成](azure-stack-integrate-identity.md)

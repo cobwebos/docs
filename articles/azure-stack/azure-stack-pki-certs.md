@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/10/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: 583f827fe77ef7721b3098dee01c418c9e5cccd8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ff3fd8ea331c02aa2666ec20b56dbbaef473a4df
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公钥基础结构证书要求
+# <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure 堆栈公钥基础结构证书要求
 
 Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 Azure Stack 服务，并可能分配给租户 VM 的外部可访问公共 IP 地址。 在部署 Azure Stack 期间，需要使用这些 Azure Stack 公共基础结构终结点的、具有适当 DNS 名称的 PKI 证书。 本文提供以下方面的信息：
 
@@ -65,15 +65,15 @@ Azure Stack 有一个公共基础结构网络，该网络使用分配给少量 A
 
 | 部署文件夹 | 所需的证书使用者和使用者可选名称 (SAN) | 范围（按区域） | 子域命名空间 |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
-| 公共门户 | portal.&lt;region>.&lt;fqdn> | 门户 | &lt;region>.&lt;fqdn> |
-| 管理门户 | adminportal.&lt;region>.&lt;fqdn> | 门户 | &lt;region>.&lt;fqdn> |
-| Azure 资源管理器公共门户 | management.&lt;region>.&lt;fqdn> | Azure 资源管理器 | &lt;region>.&lt;fqdn> |
-| Azure 资源管理器管理门户 | adminmanagement。&lt;区域 >。&lt;fqdn > | Azure 资源管理器 | &lt;region>.&lt;fqdn> |
-| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | Blob 存储 | blob.&lt;region>.&lt;fqdn> |
-| ACSTable | *.table.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | 表存储 | table.&lt;region>.&lt;fqdn> |
-| ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | 队列存储 | queue.&lt;region>.&lt;fqdn> |
-| KeyVault | *.vault.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | Key Vault | vault.&lt;region>.&lt;fqdn> |
-| KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） |  内部 Key Vault |  adminvault.&lt;region>.&lt;fqdn> |
+| 公共门户 | 门户。&lt;区域 >。&lt;fqdn > | 门户 | &lt;区域 >。&lt;fqdn > |
+| 管理门户 | adminportal。&lt;区域 >。&lt;fqdn > | 门户 | &lt;区域 >。&lt;fqdn > |
+| Azure 资源管理器公共门户 | 管理。&lt;区域 >。&lt;fqdn > | Azure 资源管理器 | &lt;区域 >。&lt;fqdn > |
+| Azure 资源管理器管理门户 | adminmanagement。&lt;区域 >。&lt;fqdn > | Azure 资源管理器 | &lt;区域 >。&lt;fqdn > |
+| ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>（通配符 SSL 证书） | Blob 存储 | blob。&lt;区域 >。&lt;fqdn > |
+| ACSTable | *.table。&lt;区域 >。&lt;fqdn ><br>（通配符 SSL 证书） | 表存储 | 表。&lt;区域 >。&lt;fqdn > |
+| ACSQueue | *.queue。&lt;区域 >。&lt;fqdn ><br>（通配符 SSL 证书） | 队列存储 | 队列。&lt;区域 >。&lt;fqdn > |
+| KeyVault | *.vault。&lt;区域 >。&lt;fqdn ><br>（通配符 SSL 证书） | Key Vault | 保管库。&lt;区域 >。&lt;fqdn > |
+| KeyVaultInternal | *.adminvault。&lt;区域 >。&lt;fqdn ><br>（通配符 SSL 证书） |  内部 Key Vault |  adminvault。&lt;区域 >。&lt;fqdn > |
 
 ### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>Pre 1803 版本上的 Azure 堆栈环境
 

@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 04/09/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 5ade2a09d0729f48c075a5bcaa20bee079ead47d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e6438c353d84510ee918df120e6d54df0607c89d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="network-connectivity"></a>网络连接
 本文提供 Azure Stack 网络基础架构信息，可帮助你确定如何以最佳方式将 Azure Stack 集成到现有的网络环境。 
@@ -40,7 +40,7 @@ Azure Stack 解决方案需有弹性且高度可用的物理基础结构才能�
 
 | 本地网络 | 说明 | 大小 | 
 | -------- | ------------- | ------------ | 
-| 公共 VIP | 少量 Azure Stack 服务的公共 IP 地址，剩余的地址由租户虚拟机使用。 Azure Stack 基础结构使用此网络中的 32 个地址。 如果打算使用应用服务和 SQL 资源提供程序，则还要额外使用 7 个地址。 | /26（62 台主机）- /22（1022 台主机）<br><br>建议使用 /24（254 台主机） | 
+| 公共 VIP | Azure 堆栈使用 32 个从此网络地址的总数。 八个公共 IP 地址用于 Azure 堆栈服务一小部分，其余由租户虚拟机。 如果打算使用应用服务和 SQL 资源提供程序，则还要额外使用 7 个地址。 | /26（62 台主机）- /22（1022 台主机）<br><br>建议使用 /24（254 台主机） | 
 | 交换机基础结构 | 用于路由的专用交换机管理接口的点到点 IP 地址，以及分配给交换机的环回地址。 | /26 | 
 | 基础结构 | 用于通信的 Azure Stack 内部组件。 | /24 |
 | 专用 | 用于存储网络和专用 VIP。 | /24 | 
@@ -53,9 +53,9 @@ Azure Stack 的网络基础结构包括交换机上配置的多个逻辑网络�
 ![逻辑网络示意图和交换机连接](media/azure-stack-network/NetworkDiagram.png)
 
 ### <a name="bmc-network"></a>BMC 网络
-此网络专门用于将所有基板管理控制器（也称为服务处理器，例如 iDRAC、iLO、iBMC 等）连接到管理网络。 如果存在，硬件生命周期主机 (HLH) 位于此网络上，可以提供 OEM 特定软件的硬件维护或监视。 
+此网络专门用于将所有基板管理控制器（也称为服务处理器，例如 iDRAC、iLO、iBMC 等）连接到管理网络。 如果硬件生命周期主机 (HLH) 存在，它将位于此网络，并可提供 OEM 特定的软件，用于硬件维护或监视。 
 
-HLH 还承载部署 VM (DVM)。 DVM Azure 堆栈部署过程中使用，并且部署完成后被删除。 DVM 需要 internet 连接的部署方案，以便测试、 验证和访问多个组件中的访问权限。 这些组件可以是内部和外部企业网络;例如 NTP、 DNS 和 Azure。 有关连接要求的详细信息，请参阅[Azure 堆栈防火墙集成中的 NAT 部分](azure-stack-firewall.md#network-address-translation)。 
+HLH 也托管部署 VM (DVM)。 此 DVM 在 Azure Stack 部署期间使用，在部署完成后删除。 此 DVM 在联网部署场景中需要进行 Internet 访问，以便测试、验证和访问多个组件。 这些组件可以在公司网络内，也可以在公司网络外，例如 NTP、DNS 和 Azure。 有关连接要求的详细信息，请参阅 [Azure Stack 防火墙集成中的 NAT 部分](azure-stack-firewall.md#network-address-translation)。 
 
 ### <a name="private-network"></a>专用网络
 此 /24（254 个主机 IP）网络专用于 Azure Stack 区域（不会扩展到 Azure Stack 区域的边界交换机设备以外），并划分成两个子网：
@@ -67,10 +67,10 @@ HLH 还承载部署 VM (DVM)。 DVM Azure 堆栈部署过程中使用，并且�
 此 /24 网络专用于内部 Azure Stack 组件，使这些组件能够相互通信和交换数据。 此子网需要可路由的 IP 地址，但使用访问控制列表 (ACL) 可将它保留给解决方案专用。 此网络在路由时，不应超出边界交换机，但大小等同于 /27 网络的小范围除外，其中一些服务在需要访问外部资源和/或 Internet 时使用 /27 网络。 
 
 ### <a name="public-infrastructure-network"></a>公共基础结构网络
-此 /27 网络属于前面所述 Azure Stack 基础结构子网的较小范围，它无需公共 IP 地址，但确实需要通过 NAT 或透明代理进行 Internet 访问。 此网络将分配的紧急情况下恢复控制台系统 (ERCS)、 ERCS VM 以及基础结构备份到 Azure 的注册期间需要访问 internet。 应将路由到你的管理网络进行故障排除 ERCS VM。
+此 /27 网络属于前面所述 Azure Stack 基础结构子网的较小范围，它无需公共 IP 地址，但确实需要通过 NAT 或透明代理进行 Internet 访问。 此网络将分配给紧急恢复控制台系统 (ERCS)。ERCS VM 在注册到 Azure 期间以及进行基础结构备份期间需要访问 Internet，。 ERCS VM 应可路由到管理网络，以便进行故障排除。
 
 ### <a name="public-vip-network"></a>公共 VIP 网络
-公共 VIP 网络分配给 Azure Stack 中的网络控制器。 它不是交换机上的逻辑网络。 SLB 针对租户工作负荷使用地址池并分配 /32 网络。 在交换机路由表中，这些 /32 IP 通过 BGP 播发为可用路由。 此网络包含外部可访问的 IP 地址或公共 IP 地址。 Azure Stack 基础结构使用此公共 VIP 网络中的至少 8 个地址，剩余的地址由租户 VM 使用。 此子网中的网络大小范围为最小 /26（64 台主机）到最大 /22（1022 台主机），我们建议规划 /24 网络。
+公共 VIP 网络分配给 Azure Stack 中的网络控制器。 它不是交换机上的逻辑网络。 SLB 针对租户工作负荷使用地址池并分配 /32 网络。 在交换机路由表中，这些 /32 IP 通过 BGP 播发为可用路由。 此网络包含外部可访问的 IP 地址或公共 IP 地址。 Azure 堆栈基础结构使用此公共 VIP 网络从 8 个地址，而其余部分由租户虚拟机。 此子网中的网络大小范围为最小 /26（64 台主机）到最大 /22（1022 台主机），我们建议规划 /24 网络。
 
 ### <a name="switch-infrastructure-network"></a>交换机基础结构网络
 此 /26 网络是一个子网，其中包含可路由的点到点 IP /30（2 个主机 IP）子网和环回（专用于带内交换机管理和 BGP 路由器 ID 的 /32 子网）。 此 IP 地址范围必须可从 Azure Stack 解决方案外部路由到数据中心，可以是专用或公共 IP。
