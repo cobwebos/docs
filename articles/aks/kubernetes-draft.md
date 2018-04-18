@@ -143,7 +143,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 >> Listening on 0.0.0.0:4567
 ```
 
-现在，可以通过浏览到 http://localhost:46143（适用于前面的示例；你的端口可能与此不同）来测试应用程序。 应用程序测试完成后，请使用 `Control+C` 停止代理连接。
+现在，可以通过浏览到 http://localhost:46143 （适用于前面的示例；你的端口可能与此不同）来测试应用程序。 应用程序测试完成后，请使用 `Control+C` 停止代理连接。
 
 > [!NOTE]
 > 还可以使用 `draft up --auto-connect` 命令来生成和部署应用程序，并立即连接到第一个运行的容器，以进一步加快迭代周期。

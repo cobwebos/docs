@@ -1,6 +1,6 @@
 ---
-title: 如何通过 Azure AD B2C 使用 Application Insights 中的事件跟踪用户行为 | Microsoft Docs
-description: 有关如何通过 Azure AD B2C 用户旅程使用自定义策略在 Application Insights 中启用事件日志的分步指南 - 预览
+title: 通过 Azure AD B2C 使用 Application Insights 中的事件跟踪用户行为 | Microsoft Docs
+description: 有关如何通过 Azure AD B2C 用户旅程使用自定义策略在 Application Insights 中启用事件日志的分步指南（预览版）
 services: active-directory-b2c
 documentationcenter: dev-center-name
 author: davidmu1
@@ -10,46 +10,53 @@ ms.topic: article
 ms.workload: identity
 ms.date: 3/15/2018
 ms.author: davidmu
-ms.openlocfilehash: 1e8c4a53266072db71952ee35b15e5de54fabb95
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 28c4cefdd7604dbddf6887dcf494ecea65d658f1
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/05/2018
 ---
-# <a name="tracking-user-behavior-inside-azure-ad-b2c-journeys-using-application-insights"></a>使用 Application Insights 在 Azure AD B2C 旅程中跟踪用户行为
+# <a name="track-user-behavior-in-azure-ad-b2c-journeys-by-using-application-insights"></a>使用 Application Insights 在 Azure AD B2C 旅程中跟踪用户行为
 
-Azure Active Directory B2C 可以与 Azure Application Insights 很好地配合使用。  它们可以为通过自定义方式创建的用户旅程提供详细的自定义事件日志。  本指南介绍以下操作的入门方式： 
-* 了解用户行为
-* 排查自己在开发或生产过程中的策略问题
-* 衡量性能
-* 通过 Application Insights 创建通知
+Azure Active Directory B2C (Azure AD B2C) 可与 Azure Application Insights 很好地配合使用。 它们可以为通过自定义方式创建的用户旅程提供详细的自定义事件日志。 本文介绍以下操作的入门方式： 
+* 洞察用户行为。
+* 排查自己在开发或生产过程中的策略问题。
+* 衡量性能。
+* 通过 Application Insights 创建通知。
+
+> [!NOTE]
+> 此功能为预览版。
 
 ## <a name="how-it-works"></a>工作原理
-已向 Azure AD B2C 的标识体验框架添加新的提供程序：`Handler="Web.TPEngine.Providers.UserJourneyContextProvider, Web.TPEngine, Version=1.0.0.0`。  它会使用提供给 Azure AD B2C 的检测密钥将事件数据直接发送到 Application Insights。  某个技术配置文件会使用此提供程序来定义 B2C 提供的事件。  此配置文件可指定事件的名称、将要记录的声明以及检测密钥。  然后会在自定义用户旅程中将此技术配置文件作为 `orchestration step` 或 `validation technical profile` 添加，以便发布事件。  可以使用相关 ID 来记录用户会话，以便通过 Application Insights 来统一事件。  Application Insights 可以在数秒内提供事件和会话，并提供许多可视化工具、导出工具和分析工具。
+Azure AD B2C 中的标识体验框架现在包括提供程序 `Handler="Web.TPEngine.Providers.UserJourneyContextProvider, Web.TPEngine, Version=1.0.0.0`。 它使用提供给 Azure AD B2C 的检测密钥将事件数据直接发送到 Application Insights。 
+
+某个技术配置文件会使用此提供程序来定义 B2C 提供的事件。 此配置文件可指定事件的名称、将要记录的声明以及检测密钥。 然后，在自定义用户旅程中将技术配置文件作为业务流程步骤或验证技术配置文件添加，以便发布事件。 
+
+Application Insights 可以使用关联 ID 来记录用户会话，以便统一事件。 Application Insights 可以在数秒内提供事件和会话，并提供许多可视化、导出和分析工具。
 
 
 
 ## <a name="prerequisites"></a>先决条件
-完成[自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。  本指南假定使用的是自定义策略初学者包。  不过，该包不是必需的。
+完成[自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。 本文假设使用的是自定义策略初学者包。 但是，初学者包不是必需的。
 
 
 
 ## <a name="step-1-create-an-application-insights-resource-and-get-the-instrumentation-key"></a>步骤 1. 创建 Application Insights 资源并获取检测密钥
 
-Application Insights 是一项强大的工具。 将它与 Azure AD B2C 配合使用时，唯一的要求是创建资源并获取检测密钥。  Application Insights 必须在 [Azure 门户](https://portal.azure.com)中创建。
+将 Application Insights 与 Azure AD B2C 配合使用时，唯一的要求是创建资源并获取检测密钥。 在 [Azure 门户](https://portal.azure.com)中创建资源。
 
-[Application Insights 的完整文档](https://docs.microsoft.com/azure/application-insights/)
-
-1. 在 Azure 门户的订阅租户中单击`+ Create a resource`。  此租户不是 Azure AD B2C 租户。  
-2. 搜索并选择 `Application Insights`。  
-3. 在首选订阅下创建 `Application Type` `ASP.NET web application` 资源。
-4. 创建 Application Insights 资源后，将其打开并记下 `Instrumentation Key` 
+1. 在 Azure 门户的订阅租户中选择“+ 创建资源”。 此租户不是 Azure AD B2C 租户。  
+2. 搜索并选择“Application Insights”。  
+3. 在首选订阅下，创建使用“ASP.NET Web 应用程序”作为“应用程序类型”的资源。
+4. 创建 Application Insights 资源后，将其打开并记下检测密钥。 
 
 ![Application Insights 概览和检测密钥](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-key.png)
 
+有关详细信息，请参阅 [Application Insights 的完整文档](https://docs.microsoft.com/azure/application-insights/)。
+
 ## <a name="step-2-add-new-claimtype-definitions-to-your-trust-framework-extension-file"></a>步骤 2. 将新的 ClaimType 定义添加到信任框架扩展文件
 
-### <a name="open-the-extension-file-from-the-starter-pack-and-add-the-following-elements-to-the-buildingblocks-node--the-extensions-filename-is-typically-yourtenantonmicrosoftcom-b2c1atrustframeworkextensionsxml"></a>打开初学者包中的扩展文件，向 `<BuildingBlocks>` 节点添加以下元素。  扩展文件名通常为 `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`
+打开初学者包中的扩展文件，向 `<BuildingBlocks>` 节点添加以下元素。 文件名通常为 `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`。
 
 ```xml
 
@@ -78,7 +85,7 @@ Application Insights 是一项强大的工具。 将它与 Azure AD B2C 配合�
         <AdminHelpText />
         <UserHelpText />
       </ClaimType>
-      <!--Additional claims used for passing claims to Application Insights Provider -->
+      <!-- Additional claims used for passing claims to the Application Insights provider. -->
       <ClaimType Id="federatedUser">
         <DisplayName>federatedUser</DisplayName>
         <DataType>boolean</DataType>
@@ -100,20 +107,20 @@ Application Insights 是一项强大的工具。 将它与 Azure AD B2C 配合�
 
 ## <a name="step-3-add-new-technical-profiles-that-use-the-application-insights-provider"></a>步骤 3. 添加使用 Application Insights 提供程序的新技术配置文件
 
-可以将技术配置文件视为 Azure AD B2C 的标识体验框架中的函数。  在此示例中定义了五个技术配置文件，用于打开会话和发布事件。
+可以将技术配置文件视为 Azure AD B2C 的标识体验框架中的函数。 此示例定义五个技术配置文件，以打开会话和发布事件：
 
 | 技术配置文件       | 任务 |
 | ----------------------------- |:---------------------------------------------|
-| AzureInsights-Common | 常用参数集，可以包含在所有 Azure-Insights 技术配置文件中     | 
-| JourneyContextForInsights   | 在 App Insights 中打开会话并发送相关 ID |
-| AzureInsights-SignInRequest     | 在收到登录请求后创建包含一组声明的“SignIn”事件      | 
-| AzureInsights-UserSignup | 在注册/登录旅程中的用户触发注册选项后创建名为“UserSignup”的事件     | 
+| AzureInsights-Common | 创建要包含在所有 `AzureInsights` 技术配置文件中的通用参数集     | 
+| JourneyContextForInsights   | 在 Application Insights 中打开会话并发送关联 ID |
+| AzureInsights-SignInRequest     | 在收到登录请求后创建包含一组声明的 `SignIn` 事件      | 
+| AzureInsights-UserSignup | 当用户在注册/登录旅程中触发注册选项时创建 `UserSignup` 事件     | 
 | AzureInsights-SignInComplete | 在将令牌发送到信赖方应用程序后记录成功完成了身份验证     | 
 
-将配置文件添加到初学者包中的扩展文件的方法是将这些元素添加到 `<ClaimsProviders>` 节点。  扩展文件名通常为 `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`
+将配置文件添加到初学者包中的扩展文件的方法是将这些元素添加到 `<ClaimsProviders>` 节点。 文件名通常为 `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`。
 
 > [!IMPORTANT]
-> 请将 `ApplicationInsights-Common` 技术配置文件中的 `Instrumentation Key` 更改为 Application Insights 资源提供的 GUID。
+> 将 `ApplicationInsights-Common` 技术配置文件中的检测密钥更改为 Application Insights 资源提供的 GUID。
 
 ```xml
 <ClaimsProvider>
@@ -130,10 +137,7 @@ Application Insights 是一项强大的工具。 将它与 Azure AD B2C 配合�
 
         <TechnicalProfile Id="AzureInsights-SignInRequest">
           <InputClaims>
-            <!-- 
-                            An input claim with a PartnerClaimType="eventName" is required. This is used by the AzureApplicationInsightsProvider
-                            to create an event with the specified value.
-                        -->
+            <!-- An input claim with PartnerClaimType="eventName" is required. The Application Insights provider uses it to create an event with the specified value. -->
             <InputClaim ClaimTypeReferenceId="EventType" PartnerClaimType="eventName" DefaultValue="SignInRequest" />
           </InputClaims>
           <IncludeTechnicalProfile ReferenceId="AzureInsights-Common" />
@@ -159,23 +163,15 @@ Application Insights 是一项强大的工具。 将它与 Azure AD B2C 配合�
           <DisplayName>Alternate Email</DisplayName>
           <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.Insights.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
           <Metadata>
-            <!-- The ApplicationInsights instrumentation key which will be used for logging the events -->
+            <!-- The Application Insights instrumentation key that will be used for logging the events. -->
             <Item Key="InstrumentationKey">xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</Item>
-            <!-- 
-                            A boolean indicating whether delevoper mode is enabled. This controls how events are buffered. In a development environment
-                            with minimal event volume, enabling developer mode results in events being sent immediately to ApplicationInsights.
-                        -->
+            <!-- A Boolean that indicates whether developer mode is enabled. This controls how events are buffered. In a development environment with minimal event volume, enabling developer mode results in events being sent immediately to Application Insights.   -->
             <Item Key="DeveloperMode">false</Item>
-            <!-- 
-                            A boolean indicating whether telemetry should be enabled or not.
-                        -->
+            <!-- A Boolean that indicates whether telemetry should be enabled or not.   -->
             <Item Key="DisableTelemetry ">false</Item>
           </Metadata>
           <InputClaims>
-            <!--
-                            Properties of an event are added using the syntax {property:NAME} where NAME is the name of the property being added
-                            to the event. DefaultValue can be either a static value or one resolved by one of the supported DefaultClaimResolvers.
-                        -->
+            <!-- Properties of an event are added through the syntax {property:NAME}, where NAME is the name of the property being added to the event. DefaultValue can be either a static value or a value that's resolved by one of the supported DefaultClaimResolvers. -->
             <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
             <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" />
             <InputClaim ClaimTypeReferenceId="Culture" PartnerClaimType="{property:Culture}" DefaultValue="{Culture:RFC5646}" />
@@ -186,12 +182,12 @@ Application Insights 是一项强大的工具。 将它与 Azure AD B2C 配合�
 
 ```
 
-## <a name="step-4-add-the-technical-profiles-for-application-insights-as-orchestration-steps-in-an-existing-user-journey"></a>步骤 4. 为 Application-Insights 添加技术配置文件（充当现有用户旅程中的业务流程步骤）。
+## <a name="step-4-add-the-technical-profiles-for-application-insights-as-orchestration-steps-in-an-existing-user-journey"></a>步骤 4. 为 Application Insights 添加技术配置文件，作为现有用户旅程中的业务流程步骤
 
-调用 `JournyeContextForInsights`（充当业务流程步骤 1）
+调用 `JournyeContextForInsights`（作为业务流程步骤 1）：
 
 ```xml
-<!-- Initialize a session with Application Insights -->
+<!-- Initialize a session with Application Insights. -->
 <OrchestrationStep Order="1" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="JourneyContextForInsights" TechnicalProfileReferenceId="JourneyContextForInsights" />
@@ -199,10 +195,10 @@ Application Insights 是一项强大的工具。 将它与 Azure AD B2C 配合�
         </OrchestrationStep>
 ```
 
-调用 `Azure-Insights-SignInRequest`（充当业务流程步骤 2），对是否已收到登录/注册请求进行跟踪。
+调用 `Azure-Insights-SignInRequest`（作为业务流程步骤 2），对是否已收到登录/注册请求进行跟踪：
 
 ```xml
-<!-- Track that we have received a sign in request -->
+<!-- Track that we have received a sign-in request. -->
         <OrchestrationStep Order="2" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="TrackSignInRequest" TechnicalProfileReferenceId="AzureInsights-SignInRequest" />
@@ -210,10 +206,10 @@ Application Insights 是一项强大的工具。 将它与 Azure AD B2C 配合�
         </OrchestrationStep>
 ```
 
-添加调用 `Azure-Insights-UserSignup` 的新步骤后，再立即执行 `SendClaims` 业务流程步骤。 该新步骤是用户在注册/登录旅程中单击注册按钮后触发的。
+添加调用 `Azure-Insights-UserSignup` 的新步骤后，再立即执行 `SendClaims` 业务流程步骤。 当用户在注册/登录旅程中选择注册按钮时，会触发此步骤。
 
 ```xml
-        <!-- Handles the user clicking the sign up link in the local account sign in page -->
+        <!-- Handles the user selecting the sign-up link in the local account sign-in page. -->
         <OrchestrationStep Order="9" Type="ClaimsExchange">
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
@@ -231,10 +227,10 @@ Application Insights 是一项强大的工具。 将它与 Azure AD B2C 配合�
           </ClaimsExchanges>
 ```
 
-在 `SendClaims` 业务流程步骤后，立即调用 `Azure-Insights-SignInComplete`。   此步骤会反映成功完成的旅程。
+在 `SendClaims` 业务流程步骤后，立即调用 `Azure-Insights-SignInComplete`。 此步骤反映成功完成的旅程。
 
 ```xml
-        <!-- Track that we have successfully sent a token -->
+        <!-- Track that we have successfully sent a token. -->
         <OrchestrationStep Order="11" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="TrackSignInComplete" TechnicalProfileReferenceId="AzureInsights-SignInComplete" />
@@ -244,26 +240,26 @@ Application Insights 是一项强大的工具。 将它与 Azure AD B2C 配合�
 ```
 
 > [!IMPORTANT]
-> 添加新的业务流程步骤以后，请按顺序对这些步骤重新编号，不要跳过任何整数（1 到 N）
+> 添加新的业务流程步骤以后，请按顺序对这些步骤重新编号，不要跳过从 1 到 N 的任何整数。
 
 
 ## <a name="step-5-upload-your-modified-extensions-file-run-the-policy-and-view-events-in-application-insights"></a>步骤 5。 在 Application Insights 中上传修改的扩展文件、运行策略并查看事件
 
-保存并上传新的信任框架扩展文件。  然后，通过应用程序调用信赖方策略，或者在 Azure AD B2C 界面中使用`Run Now`。  数秒后事件就会在 Application Insights 中出现。
+保存并上传新的信任框架扩展文件。 然后，通过应用程序调用信赖方策略，或者在 Azure AD B2C 界面中使用“立即运行”。 数秒后，事件就会出现在 Application Insights 中。
 
 1. 在 Azure Active Directory 租户中打开 Application Insights 资源。
-2. 在`USAGE`子菜单中单击`Events`。
-3. 将`During`设置为`Last hour`，将`By`设置为`3 minutes`。  可能需要单击`Refresh`才能查看结果
+2. 在“用法”子菜单中选择“事件”。
+3. 将“期间”设置为“过去一小时”，将“截止时间”设置为“3 分钟”。 可能需要选择“刷新”才能查看结果。
 
-![Application Insights USAGE-Events 边栏选项卡](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-graphic.png)
-
-
+![Application Insights 用法事件的插图](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-ins-graphic.png)
 
 
 
-##  <a name="next-steps"></a>后续步骤
 
-根据需要向用户旅程添加其他声明类型和事件。  下面是一个列表，其中包含可能使用其他声明解析程序的声明。
+
+## <a name="next-steps"></a>后续步骤
+
+根据需要向用户旅程添加声明类型和事件。 下面是一个列表，其中包含可能使用其他声明解析程序的声明。
 
 ### <a name="culture-specific-claims"></a>特定于区域性的声明
 
@@ -313,7 +309,7 @@ Referenced using {Policy:One of the property names below}
 
 ```
 
-### <a name="openidconnect-specific-claims"></a>特定于 OpenIDConnect 的声明
+### <a name="openid-connect-specific-claims"></a>OpenID Connect 特定的声明
 
 ```xml
 OpenIDConnect Specific Claims
@@ -354,20 +350,20 @@ Referenced using {OIDC:One of the property names below}
  
 ```
 
-### <a name="non-protocol-parameters-included-with-oidc--oauth2-requests"></a>OIDC 和 OAuth2 请求中包括的非协议参数
+### <a name="non-protocol-parameters-included-with-oidc-and-oauth2-requests"></a>OIDC 和 OAuth2 请求中包括的非协议参数
 
 ```xml
 Referenced using { OAUTH-KV:Querystring parameter name }
 ```
 
-可以将 OIDC 或 OAuth2 请求中包括的任何参数名称映射到用户旅程中的某个声明，  然后将其记录到事件中。 例如，来自应用程序的请求可能包括名为 `app_session`、`loyalty_number` 或 `any_string` 的查询字符串参数。
+可以将 OIDC 或 OAuth2 请求中包括的任何参数名称映射到用户旅程中的某个声明， 然后可将其记录到事件中。 例如，来自应用程序的请求可能包括名为 `app_session`、`loyalty_number` 或 `any_string` 的查询字符串参数。
 
-来自应用程序的示例请求：
+下面是来自应用程序的示例请求：
 ```
 https://login.microsoftonline.com/sampletenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=e1d2612f-c2bc-4599-8e7b-d874eaca1ae1&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&app_session=0a2b45c&loyalty_number=1234567
 
 ```
-然后就可以添加这些声明，方法是使用以下代码将 Input Claim 元素添加到 Application Insights 事件：
+然后，可将 `InputClaim` 元素添加到 Application Insights 事件，以添加声明：
 ```
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="app_session" DefaultValue="{OAUTH-KV:app_session}" />
 <InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="loyalty_number" DefaultValue="{OAUTH-KV:loyalty_number}" />
