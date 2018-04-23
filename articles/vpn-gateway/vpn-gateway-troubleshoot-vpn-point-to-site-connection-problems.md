@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2018
 ms.author: genli
-ms.openlocfilehash: 51076c225167accaf386190eeda4ec159cb5657d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 503dcd87bf87ffb204b03780fc11f30825ac35ef
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
@@ -318,7 +318,7 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 
 ### <a name="solution"></a>解决方案
 
-确保正确配置 RADIUS 服务器。 有关详细信息，请参阅[将 RADIUS 身份验证与 Azure 多重身份验证服务器集成](../multi-factor-authentication/multi-factor-authentication-get-started-server-radius.md)。
+确保正确配置 RADIUS 服务器。 有关详细信息，请参阅[将 RADIUS 身份验证与 Azure 多重身份验证服务器集成](../active-directory/authentication/howto-mfaserver-dir-radius.md)。
 
 ## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>从 VPN 网关下载根证书时出现“错误 405”
 

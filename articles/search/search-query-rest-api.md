@@ -4,14 +4,15 @@ description: 在 Azure 搜索中生成搜索查询，并使用搜索参数对搜
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
+services: search
 ms.service: search
 ms.topic: quickstart
 ms.date: 01/12/2017
-ms.openlocfilehash: d6cba61c670d005b59c9bc88bd1c90399f29cc3d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d51726ee1387b8e1cae05084d9c60eb93a28c112
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="query-your-azure-search-index-using-the-rest-api"></a>使用 REST API 查询 Azure 搜索索引
 > [!div class="op_single_selector"]

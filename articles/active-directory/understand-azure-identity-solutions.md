@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: e5f76bd5da8ff040ea184544b96eb245c42d4dc2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bd8e122324ab2d4c783fb6d4e09a9f4f197f91ca
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="understand-azure-identity-solutions"></a>了解 Azure 标识解决方案
 Microsoft Azure Active Directory (Azure AD) 是一个标识和访问管理云解决方案，提供目录服务、标识监管和应用程序访问管理。 Azure AD 可以在 [Azure AD 应用程序库](https://azure.microsoft.com/marketplace/active-directory/all/)中数千个预先集成的商用和自定义应用上快速[实现单一登录 (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso)。 你也许已经在使用其中的许多应用，例如 Office 365、Salesforce.com、Box、ServiceNow 和 Workday。
@@ -107,7 +107,7 @@ Microsoft Azure 允许以多种方式管理用户的标识，不管这些标识�
 我们提供了大量的有用在线资源，以帮助你了解 Azure AD 的方方面面。 下面是一些可帮助你快速入门的佳作：
 
 * [使用 Azure AD Connect 启用目录的混合管理](active-directory-aadconnect.md)
-* [在互联世界中提高安全性](../multi-factor-authentication/multi-factor-authentication.md)
+* [在互联世界中提高安全性](authentication/multi-factor-authentication.md)
 * [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](active-directory-saas-app-provisioning.md)
 * [Azure AD 报告入门](active-directory-reporting-getting-started.md)
 * [从任意位置管理密码](active-directory-passwords-update-your-own-password.md)

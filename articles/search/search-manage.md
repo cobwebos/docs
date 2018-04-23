@@ -4,15 +4,16 @@ description: 使用 Azure 门户管理 Azure 搜索，这是 Microsoft Azure 上
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
+services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 7b38b57c4cdb84a5765946d398018022a9c72294
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 896a12db1ac196b6de1e57dde9b5910e11dcc8c7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure 门户中 Azure 搜索服务管理
 > [!div class="op_single_selector"]

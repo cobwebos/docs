@@ -4,14 +4,15 @@ description: 了解 Azure 搜索中的索引概念以及如何使用索引。
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
+services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 933db5a9790088c38d4db8c3fffb1eed3c42c225
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: cc2c56d4463203aa2561e820540acdfff651d80a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="indexes-in-azure-search"></a>Azure 搜索中的索引
 > [!div class="op_single_selector"]

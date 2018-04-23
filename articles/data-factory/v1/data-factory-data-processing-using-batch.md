@@ -15,10 +15,10 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 8f0cd8aad2d5c5142fc66c78393b57ff210a7b83
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -114,7 +114,7 @@ ms.lasthandoff: 03/23/2018
 
    c. 选择**节点定价层**。
 
-   d.单击“下一步”。 输入 **2** 作为“目标专用”设置的值。
+   d. 输入 **2** 作为“目标专用”设置的值。
 
    e. 输入 **2** 作为“每个节点最大任务”设置的值。
 
@@ -183,7 +183,7 @@ public IDictionary<string, string> Execute(
 
    c. 展开“模板”，并选择“Visual C\#”。 在此演练中使用的是 C\#，但也可使用任意 .NET 语言开发自定义活动。
 
-   d.单击“下一步”。 从右侧项目类型列表中选择“类库”。
+   d. 从右侧项目类型列表中选择“类库”。
 
    e. 对于“名称”，输入 **MyDotNetActivity**。
 
@@ -574,7 +574,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    c. 对于 **poolName** 属性，输入池 ID。 对于此属性，可指定池名称或池 ID。
 
-   d.单击“下一步”。 对于 **batchUri** JSON 属性，输入 batch URI。
+   d. 对于 **batchUri** JSON 属性，输入 batch URI。
 
       > [!IMPORTANT]
       > “Batch 帐户”边栏选项卡中的 URL 采用以下格式：\<accountname\>.\<region\>.batch.azure.com。对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 例如 `"batchUri": "https://eastus.batch.azure.com"`。

@@ -327,7 +327,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-virtual-network'
-    - name: 网络资源提供程序
-      href: resource-groups-networking.md
     - name: 常见问题
       href: virtual-networks-faq.md

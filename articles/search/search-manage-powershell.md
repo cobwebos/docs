@@ -4,16 +4,17 @@ description: 使用 PowerShell 脚本管理 Azure 搜索服务。 创建或更�
 author: HeidiSteen
 manager: cgronlun
 tags: azure-resource-manager
+services: search
 ms.service: search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/15/2016
 ms.author: heidist
-ms.openlocfilehash: fc9d23b0c11484c7fec575c411f32522b6e46e28
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 974f2df8c4c9c9730f176a1e8472199960b359f6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 搜索服务
 > [!div class="op_single_selector"]

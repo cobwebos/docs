@@ -2,23 +2,20 @@
 title: 使用 Visual Studio 创建 Azure 云服务项目 | Microsoft Docs
 description: 了解如何使用 Visual Studio 创建 Azure 云服务项目
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: ec580df7-3dcc-45a9-a1d9-8c110678dfb5
-ms.service: multiple
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+assetId: ec580df7-3dcc-45a9-a1d9-8c110678dfb5
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 03/21/2017
 ms.author: ghogen
-ms.openlocfilehash: 41c2bd0dc1f609b6b7b9cfda43c2378feb1c3b6c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 06213ecabf3669bf3b8cf2b8d73a4e8def359536
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="creating-an-azure-cloud-service-project-with-visual-studio"></a>使用 Visual Studio 创建 Azure 云服务项目
 Azure Tools for Visual Studio 提供了可用于创建 Azure 云服务的项目模板。 创建项目后，可通过 Visual Studio 调试、配置云服务，并将其部署到 Azure。

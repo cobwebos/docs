@@ -1,12 +1,12 @@
 ---
-title: "Azure 操作安全性概述 | Microsoft Docs"
-description: "本文提供 Azure 操作安全性的概述。"
+title: Azure 操作安全性概述 | Microsoft Docs
+description: 本文提供 Azure 操作安全性的概述。
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: f656edee1460ce2bb17a582ca240e3bb4089b708
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ca42e0cc76bc385f04cb2e010ff91dbb27bd627a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 Azure 操作安全性是指用户可用于在 Microsoft Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 [Azure 操作安全性](https://docs.microsoft.com/azure/security/azure-operational-security)是一个框架，它融合了通过 Microsoft 独有的各种功能获得的知识，包括 Microsoft 安全开发生命周期 (SDL)、Microsoft 安全响应中心计划以及对网络安全威胁形态的深刻认识。
@@ -65,7 +65,7 @@ OMS 的核心功能由 Azure 中运行的一组服务提供。 每个服务提�
 -   提供中心访问管理、单一登录 (SSO) 及报告功能
 -   支持应用程序库中[数千个应用程序](https://azure.microsoft.com/marketplace/active-directory/)（包括 Salesforce、Google Apps、Box、Concur 等）的集成访问管理。
 
-Azure AD 还包含整套[标识管理功能](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports)，例如[多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication)、[设备注册]( https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-overview)、[自助密码管理](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)、[自助组管理](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password)、[特权帐户管理](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)、[基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)、[应用程序使用情况监视](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health)、[多样化审核](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)以及[安全监视和警报](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)。
+Azure AD 还包含整套[标识管理功能](https://docs.microsoft.com/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports)，例如[多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication)、[设备注册]( https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-overview)、[自助密码管理](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)、[自助组管理](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-update-your-own-password)、[特权帐户管理](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)、[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)、[应用程序使用情况监视](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health)、[多样化审核](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)以及[安全监视和警报](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)。
 
 借助 Azure Active Directory，为合作伙伴与客户（企业或消费者）发布的所有应用程序都具有相同的标识和访问管理功能。 这可让你大幅降低运营成本。
 
@@ -80,7 +80,7 @@ Azure AD 还包含整套[标识管理功能](https://docs.microsoft.com/azure/se
 -   磁盘加密验证
 -   基于网络的攻击
 
-Azure 安全中心使用[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) 提供可在 Azure 中分配给用户、组和服务的[内置角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)。
+Azure 安全中心使用[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 提供可在 Azure 中分配给用户、组和服务的[内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
 
 安全中心会评估资源的配置以识别安全问题和漏洞。 如果分配有资源所属的订阅或资源组的“所有者”、“参与者”或“读取者”角色，则仅可在安全中心看到与资源相关的信息。
 

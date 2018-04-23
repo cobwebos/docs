@@ -2,23 +2,20 @@
 title: 使用 Azure Tools 发布云服务 | Microsoft Docs
 description: 了解如何使用 Visual Studio 发布 Azure 云服务项目。
 services: visual-studio-online
-documentationcenter: na
 author: ghogen
 manager: douge
-editor: ''
-ms.assetid: 1a07b6e4-3678-4cbf-b37e-4520b402a3d9
-ms.service: multiple
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: multiple
+assetId: 1a07b6e4-3678-4cbf-b37e-4520b402a3d9
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
 ms.date: 11/11/2017
 ms.author: ghogen
-ms.openlocfilehash: 59a34f92937136079d8c693a1747b2d54f37e6d8
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: bde00dfbf4a7ffde90d1a9a3d57d3a2decf74cad
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="publishing-a-cloud-service-using-visual-studio"></a>使用 Visual Studio 发布云服务
 

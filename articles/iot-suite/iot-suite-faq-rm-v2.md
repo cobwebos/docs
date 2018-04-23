@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT 套件远程监视 FAQ | Microsoft Docs"
-description: "有关 IoT 套件远程监视预配解决方案的常见问题解答"
+title: Azure IoT 套件远程监视 FAQ | Microsoft Docs
+description: 有关 IoT 套件远程监视预配解决方案的常见问题解答
 services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
 ms.service: iot-suite
 ms.devlang: na
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 3885e40eb4ddbf61b03a467a71d4dd97d00a9042
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b0d6dbb567f66537c599d7ac3e4337988b3374c0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite"></a>有关 IoT 套件的常见问题
+# <a name="frequently-asked-questions-for-iot-suite-remote-monitoring-preconfigured-solution"></a>有关 IoT 套件远程监视预配解决方案的常见问题解答
 
 请同时参阅一般的[常见问题解答](iot-suite-faq.md)。
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 02/21/2018
 
 还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
 
-* [了解远程监视预配解决方案的功能](iot-suite-remote-monitoring-explore.md)
+* [探索远程监视预配置解决方案的功能](iot-suite-remote-monitoring-explore.md)
 * [预见性维护预配置解决方案概述](iot-suite-predictive-overview.md)
 * [连接工厂预配置解决方案概述](iot-suite-connected-factory-overview.md)
 * [从头保障 IoT 的安全](securing-iot-ground-up.md)

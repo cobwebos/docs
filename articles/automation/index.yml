@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure 自动化用户文档"
+title: Azure 自动化用户文档
 metadata:
   document_id: 
-  title: "Azure 自动化文档 - 教程和 API 参考"
-  description: "了解如何使用 Azure 自动化"
+  title: Azure 自动化文档 - 教程和 API 参考
+  description: 了解如何使用 Azure 自动化
   services: automation
   author: georgewallace
   manager: carmonm
@@ -20,48 +20,48 @@ metadata:
   ms.contentlocale: zh-CN
   ms.lasthandoff: 01/11/2018
 abstract:
-  description: "了解如何在混合环境中使用自动化来配置和自动完成操作任务。 教程、API 参考和其他文档介绍了如何实现过程自动化、执行更新管理、交付所需状态配置、跟踪更改和收集清单。"
+  description: 了解如何在混合环境中使用自动化来配置和自动完成操作任务。 教程、API 参考和其他文档介绍了如何实现过程自动化、执行更新管理、交付所需状态配置、跟踪更改和收集清单。
 sections:
-- title: "5 分钟快速入门"
+- title: 5 分钟快速入门
   items:
   - type: paragraph
-    text: "了解如何使用自动化自动完成和配置 Azure 和混合环境："
+    text: 了解如何使用自动化自动完成和配置 Azure 和混合环境：
   - type: list
     style: icon48
     items:
     - image:
         src: /azure/automation/media/index/automation.svg
-      text: "创建自动化帐户"
+      text: 创建自动化帐户
       href: /azure/automation/automation-quickstart-create-account
     - image:
         src: /azure/automation/media/index/runbook.svg
-      text: "创建 runbook"
+      text: 创建 runbook
       href: /azure/automation/automation-quickstart-create-runbook
     - image:
         src: /azure/automation/media/index/dscconfig.svg
-      text: "创建 DSC 配置"
+      text: 创建 DSC 配置
       href: /azure/automation/automation-quickstart-dsc-configuration
-- title: "分步教程"
+- title: 分步教程
   items:
   - type: paragraph
-    text: "了解如何集成、部署和管理 Azure 和混合环境。"
+    text: 了解如何集成、部署和管理 Azure 和混合环境。
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/automation/automation-watchers-tutorial\">配置观察程序任务</a>"
-    - html: "<a href=\"/azure/automation/automation-tutorial-update-management\">管理 VM 上的更新</a>"
-    - html: "<a href=\"/azure/automation/automation-onboard-solutions\">大规模载入</a>"
-    - html: "<a href=\"/azure/automation/automation-tutorial-installed-software\">标识 VM 上安装的软件</a>"
-    - html: "<a href=\"/azure/automation/automation-tutorial-troubleshoot-changes\">排查 VM 上的更改问题</a>"
-- title: "引用"
+    - html: <a href="/azure/automation/automation-watchers-tutorial">配置观察程序任务</a>
+    - html: <a href="/azure/automation/automation-tutorial-update-management">管理 VM 上的更新</a>
+    - html: <a href="/azure/automation/automation-onboard-solutions">大规模载入</a>
+    - html: <a href="/azure/automation/automation-tutorial-installed-software">标识 VM 上安装的软件</a>
+    - html: <a href="/azure/automation/automation-tutorial-troubleshoot-changes">排查 VM 上的更改问题</a>
+- title: 引用
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "命令行"
+    - title: 命令行
       html: <p><a href="/powershell/module/azurerm.automation">PowerShell</a></p>
-    - title: "语言"
+    - title: 语言
       html: <p><a href="/dotnet/api/microsoft.azure.management.automation">.NET</a></p>
     - title: REST
-      html: "<p><a href=\"/rest/api/automation\">自动化 REST API</a></p>"
+      html: <p><a href="/rest/api/automation">自动化 REST API</a></p>

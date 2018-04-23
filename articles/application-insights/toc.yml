@@ -69,6 +69,8 @@
       items:
         - name: JavaScript
           href: app-insights-javascript.md
+    - name: 监视 Azure Functions
+      href: 'https://docs.microsoft.com/azure/azure-functions/functions-monitoring'
     - name: 监视其他平台
       items:
         - name: SharePoint 站点

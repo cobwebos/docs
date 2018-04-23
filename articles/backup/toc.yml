@@ -29,6 +29,8 @@
   items:
     - name: Azure PowerShell
       href: powershell-backup-samples.md
+    - name: 资源管理器模板
+      href: backup-rm-template-samples.md
 - name: 概念
   items:
     - name: 常见问题

@@ -1,23 +1,19 @@
 ---
-title: "Azure 搜索的 API 版本 | Microsoft Docs"
-description: "适用于 .NET SDK 中的 Azure 搜索 REST API 和客户端库的版本策略。"
-services: search
-documentationcenter: 
+title: Azure 搜索的 API 版本 | Microsoft Docs
+description: 适用于 .NET SDK 中的 Azure 搜索 REST API 和客户端库的版本策略。
 author: brjohnstmsft
-manager: pablocas
-editor: 
+manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
-ms.openlocfilehash: 1a7f5b9c53d3258e5f8eda40401c61a85971d8c7
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: dfa3e1996ecbd3d78fef9f85facb7da1c209fafa
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="api-versions-in-azure-search"></a>Azure 搜索中的 API 版本
 Azure 搜索会定期发布功能更新。 有时，但并非总是，这些更新需要发布 API 的新版本，以保持向后兼容性。 发布新版本使你可以控制何时以及如何在代码中集成搜索服务更新。

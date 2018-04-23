@@ -2,23 +2,20 @@
 title: 开始使用队列存储和 Visual Studio 连接服务 (ASP.NET Core) | Microsoft Docs
 description: 如何开始在 Visual Studio 中的 ASP.NET Core 项目中使用 Azure 队列存储
 services: storage
-documentationcenter: ''
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 04977069-5b2d-4cba-84ae-9fb2f5eb1006
-ms.service: storage
-ms.workload: web
-ms.tgt_pltfrm: vs-getting-started
-ms.devlang: na
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: e2d11102d07eeb151769f81e79abd22dfa1d8734
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: e56f79334aa85d9a0c81bed4f00664fee5789676
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>开始使用队列存储和 Visual Studio 连接服务 (ASP.NET Core)
 

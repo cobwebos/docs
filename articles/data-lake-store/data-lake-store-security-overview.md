@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: d3387812e064d3ce8a293db7d2c942a34cd5b364
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4dc1b070f7933f23ee615501dfbc68551068210c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Azure Data Lake Store 中的安全
 许多企业都开始利用大数据分析获取业务见解，以帮助他们做出明智的决策。 组织的环境可能复杂、规范化，不同的用户越来越多。 确保更安全地存储关键业务数据并向个人用户授予访问权限的正确级别，这一点对企业来说至关重要。 Azure Data Lake Store 旨在帮助企业实现这些安全要求。 在本文中，了解 Data Lake Store 的安全功能，包括：
@@ -35,7 +35,7 @@ ms.lasthandoff: 04/16/2018
 每个 Azure 订阅都会与 Azure Active Directory 实例关联。 通过使用 Azure 门户、命令行工具或生成组织的客户端应用程序，以及 Azure Data Lake Store SDK，只有在 Azure Active Directory 服务中定义的用户和服务标识才可以访问 Data Lake Store 账户。 作为一种集中的访问控制机制，使用 Azure Active Directory 的主要优点有：
 
 * 简化身份生命周期管理。 只需删除或禁用目录中的帐户，就可迅速创建并快速吊销用户或服务（服务主体标识）的标识。
-* 多重身份验证。 [多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)为用户登录和事务提供了额外的安全层。
+* 多重身份验证。 [多重身份验证](../active-directory/authentication/multi-factor-authentication.md)为用户登录和事务提供了额外的安全层。
 * 通过标准开放协议（如 OAuth 或 OpenID）的任何客户端认证。
 * 与企业目录服务和云标识提供程序联合。
 

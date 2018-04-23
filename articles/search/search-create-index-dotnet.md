@@ -4,16 +4,17 @@ description: 使用 Azure 搜索 .NET SDK 在代码中创建索引。
 author: brjohnstmsft
 manager: jlembicz
 tags: azure-portal
+services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.openlocfilehash: 429613b7699ada732c56b642141ff8c4505cbc33
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7e7d1f8110d8470fe7596633563529f397c5551e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-an-azure-search-index-using-the-net-sdk"></a>使用 .NET SDK 创建 Azure 搜索索引
 > [!div class="op_single_selector"]

@@ -1,12 +1,12 @@
 ---
-title: "保护 PaaS 部署 | Microsoft 文档"
+title: 保护 PaaS 部署 | Microsoft 文档
 description: " 了解 PaaS 相比其他云服务模型的安全优势，了解保护 Azure PaaS 部署的建议做法。 "
 services: security
 documentationcenter: na
 author: techlake
 manager: MBaldwin
 editor: techlake
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 4629e0ab6bbc9554128a923e92b269df79446b18
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: f19c52629a997687692eef9bce2e13b2b7894052
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
 
@@ -87,12 +87,12 @@ PaaS 与传统本地部署之间的另一个重大差别在于，前者为主要
 
 - **不会丢失密钥或凭据**保护密钥和凭据对于保护 PaaS 部署至关重要。 丢失密钥和凭据是一个常见问题。 一个不错的解决方法是使用集中式解决方案，将密钥和机密存储在硬件安全模块 (HSM) 中。 Azure 在云中提供一个包含 [Azure Key Vault](../key-vault/key-vault-whatis.md) 的 HSM。
 - **不要将凭据和其他机密放入源代码或 GitHub**比丢失密钥和凭据更遭糕的唯一问题就是让未经授权的人员获取这些密钥和凭据的访问权限。 攻击者可以利用 bot 技术来查找 GitHub 等代码存储库中存储的密钥和机密。 请不要将密钥和机密放入这些公共源代码存储库。
-- **保护混合 PaaS 和 IaaS 服务中的 VM 管理接口**IaaS 和 PaaS 服务在虚拟机 (VM) 上运行。 根据服务的类型，可以使用多个管理接口来直接远程管理这些 VM。 可以使用远程管理协议，例如[安全外壳协议 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell)、[远程桌面协议 (RDP)](https://support.microsoft.com/kb/186607)和[远程 PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting)。 通常，我们建议不要从 Internet 启用对 VM 的直接远程访问。 在可能的情况下，应使用替代方法，例如，使用虚拟专用网络接入 Azure 虚拟网络。 如果无法使用替代方法，请确保使用复杂的通行短语，并在可能的情况下使用双重身份验证（例如 [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)）。
+- **保护混合 PaaS 和 IaaS 服务中的 VM 管理接口**IaaS 和 PaaS 服务在虚拟机 (VM) 上运行。 根据服务的类型，可以使用多个管理接口来直接远程管理这些 VM。 可以使用远程管理协议，例如[安全外壳协议 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell)、[远程桌面协议 (RDP)](https://support.microsoft.com/kb/186607)和[远程 PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting)。 通常，我们建议不要从 Internet 启用对 VM 的直接远程访问。 在可能的情况下，应使用替代方法，例如，使用虚拟专用网络接入 Azure 虚拟网络。 如果无法使用替代方法，请确保使用复杂的通行短语，并在可能的情况下使用双重身份验证（例如 [Azure 多重身份验证](../active-directory/authentication/multi-factor-authentication.md)）。
 - **使用强身份验证和授权平台**
 
   - 在 Azure AD 而不是自定义用户存储中使用联合标识。 使用联合标识时，可以利用基于平台的方法，将已获授权的标识的管理权限委托给合作伙伴。 如果员工离职后，需要通过多个标识和授权系统反映该信息，则联合标识方法就特别重要。
   - 使用平台提供的身份验证和授权机制，而不要使用自定义代码。 原因是开发自定义身份验证代码可能很容易出错。 大部分开发人员都不是安全专家，不太可能会注意到身份验证和授权的细微之处与最新开发情况。 商业代码（例如 Microsoft 编写的代码）通常会接受广泛的评审。
-  - 使用多重身份验证 多重身份验证是最新的身份验证和授权标准，它避免了用户名与密码类型的身份验证所固有的安全漏洞。 需要访问 Azure 管理界面（门户/远程 PowerShell）和面向客户的服务的应用程序应设计并配置为使用 [Azure 多重身份验证 (MFA)](../multi-factor-authentication/multi-factor-authentication.md)。
+  - 使用多重身份验证 多重身份验证是最新的身份验证和授权标准，它避免了用户名与密码类型的身份验证所固有的安全漏洞。 需要访问 Azure 管理界面（门户/远程 PowerShell）和面向客户的服务的应用程序应设计并配置为使用 [Azure 多重身份验证 (MFA)](../active-directory/authentication/multi-factor-authentication.md)。
   - 使用 OAuth2 和 Kerberos 等标准身份验证协议。 这些协议经过广泛的同行评审，有时可实现为平台库的一部分用于身份验证和授权。
 
 ## <a name="next-steps"></a>后续步骤

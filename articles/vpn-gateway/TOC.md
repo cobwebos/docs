@@ -3,7 +3,6 @@
 # 概述
 ## [关于 VPN 网关](vpn-gateway-about-vpngateways.md)
 ## [VPN 网关常见问题](vpn-gateway-vpn-faq.md)
-## [订阅和服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # 入门
 ## 创建基于路由的 VPN 网关
@@ -122,6 +121,7 @@
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=networking)
 ## [博客](https://azure.microsoft.com/blog/topics/networking)
 ## [论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
+## [订阅和服务限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## [定价](https://azure.microsoft.com/pricing/details/vpn-gateway)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 ## [SLA](https://azure.microsoft.com/support/legal/sla)

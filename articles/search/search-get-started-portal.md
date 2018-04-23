@@ -4,15 +4,16 @@ description: 在 Azure 门户中，使用预定义的示例数据在 Azure 搜�
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
+services: search
 ms.service: search
 ms.topic: tutorial
 ms.date: 12/04/2017
 ms.author: heidist
-ms.openlocfilehash: a0dbc4ca0b3ca5ce59fb81e1a241982bca099aab
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f24777fe5bb482eb74aba4acbd7313665f22c38b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>在门户中创建、查询和筛选 Azure 搜索索引
 

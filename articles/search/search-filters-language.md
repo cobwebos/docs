@@ -3,15 +3,16 @@ title: Azure 搜索中的语言筛选器 | Microsoft Docs
 description: 按用户安全标识、语言、地理位置或数字值进行条件筛选可以减少 Azure 搜索（Microsoft Azure 上的托管云搜索服务）中的查询返回的搜索结果。
 author: HeidiSteen
 manager: cgronlun
+services: search
 ms.service: search
 ms.workload: search
 ms.date: 10/23/2017
 ms.author: heidist
-ms.openlocfilehash: 45d5fb127a4c9df4cf4875ecafbc4ad5ce244998
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 6d7fa7ab6db1fe9f8e2d1530c2917f4716a38079
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>如何在 Azure 搜索中按语言筛选 
 

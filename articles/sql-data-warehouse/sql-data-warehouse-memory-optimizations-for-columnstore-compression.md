@@ -10,11 +10,11 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: be167e298a4c0e76d7cf3bb638838047d4e9bcee
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3bbcf7b637a0f32751dc15664a1b7479e65503eb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
@@ -149,11 +149,3 @@ DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要
 
 若要了解提升 SQL 数据仓库中性能的更多方法，请参阅[性能概述](sql-data-warehouse-overview-manage-user-queries.md)。
 
-<!--Image references-->
-
-<!--Article references-->
-
-
-<!--MSDN references-->
-
-<!--Other Web references-->

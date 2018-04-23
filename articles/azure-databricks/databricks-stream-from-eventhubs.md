@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 03/27/2018
 ms.author: alehall
-ms.openlocfilehash: 2e4c424bb26a3b268ec893ca40dcdce7d7469217
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0d168c0a127c037c1bca2a6b875e9b3d5707ba70
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>教程：使用事件中心将数据流式传输到 Azure Databricks
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 04/16/2018
 
 若要接收推文流，请在 Twitter 中创建一个应用程序。 遵照说明创建一个 Twitter 应用程序，并记下稍后需要在本教程中使用的值。
 
-1. 在 Web 浏览器中，转到[Twitter 应用程序管理](http://twitter.com/app)，选择**创建新应用**。
+1. 在 Web 浏览器中，转到[Twitter 应用程序管理](https://apps.twitter.com/)，选择**创建新应用**。
 
     ![创建 Twitter 应用程序](./media/databricks-stream-from-eventhubs/databricks-create-twitter-app.png "创建 Twitter 应用程序")
 

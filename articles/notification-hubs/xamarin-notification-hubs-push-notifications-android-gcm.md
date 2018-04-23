@@ -1,9 +1,9 @@
 ---
-title: "通知中心入门 - Xamarin.Android 应用 | Microsoft Docs"
-description: "在本教程中，将了解如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。"
+title: 通知中心入门 - Xamarin.Android 应用 | Microsoft Docs
+description: 在本教程中，将了解如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。
 author: jwhitedev
 manager: kpiteira
-editor: 
+editor: ''
 services: notification-hubs
 documentationcenter: xamarin
 ms.assetid: 0be600fe-d5f3-43a5-9e5e-3135c9743e54
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: 1cb6fbc82c493e17815dc60ddcff183a47513bc6
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 7fee7813bbdcf902d5f5ae2d0af7540c8899ad25
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-notification-hubs-for-xamarinandroid-apps"></a>适用于 Xamarin.Android 应用的通知中心入门
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -95,6 +95,20 @@ ms.lasthandoff: 01/25/2018
 3. 搜索 **Xamarin.Firebase.Messaging**，将其添加到项目。
 
 ### <a name="set-up-notification-hubs-in-your-project"></a>在项目中设置通知中心
+
+#### <a name="registering-with-firebase-cloud-messaging"></a>注册到 Firebase Cloud Messaging
+
+打开 **AndroidManifest.xml** 文件，并将以下 `<receiver>` 元素插入 `<application>` 元素：
+
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+          <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+            <category android:name="${applicationId}" />
+          </intent-filter>
+        </receiver>
+
 1. 收集有关 Android 应用和通知中心的以下信息：
    
    * **侦听连接字符串**：在 [Azure 门户]中的仪表板上，选择“查看连接字符串”。 复制此值的 *DefaultListenSharedAccessSignature* 连接字符串。

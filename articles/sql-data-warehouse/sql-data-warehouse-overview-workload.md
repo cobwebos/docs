@@ -6,15 +6,15 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.component: design
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e48d0a3028d5ebcb5d1bc0afbfc96a391bf4c076
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 21e1f687e152cf91bd32389e0d5aa0dabd463b2f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-warehouse-workload"></a>数据仓库工作负荷
 数据仓库工作负荷是指所有针对数据仓库所发生的操作。 数据仓库工作负荷包括将数据载入仓库、对数据仓库执行分析和报告、管理数据仓库中的数据，以及从数据仓库导出数据的整个过程。 这些组件的广度与深度多半与数据仓库的成熟度相当。

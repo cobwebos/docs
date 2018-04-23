@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-ms.openlocfilehash: 906ea3c37823616597ee74dbadf50618d5c4e11d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 66a3a31574778bb1238498b523d51dc0d32ac22f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全管理和监视概述
 Azure 提供安全机制来帮助管理和监视 Azure 云服务和虚拟机。 本文概述了这些核心安全功能和服务。 提供了一些文章链接，其中每篇文章都包含详细的信息，方便用户了解更多内容。
@@ -75,7 +75,7 @@ Azure 多重身份验证 (MFA) 是需要使用多个验证方法的身份验证�
 了解更多：
 
 * [多重身份验证](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md)
+* [什么是 Azure 多重身份验证？](../active-directory/authentication/multi-factor-authentication.md)
 * [Azure 多重身份验证的工作原理](../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute

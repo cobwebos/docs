@@ -3,17 +3,18 @@ title: 为 Azure 搜索的 Azure Cosmos DB 数据源编制索引 | Microsoft Doc
 description: 本文演示如何使用 Azure Cosmos DB 数据源创建 Azure 搜索索引器。
 author: chaosrealm
 manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: 6e2e9c273456a1478a1240e7ade5f759f5e29a14
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 3e6c7c70acbfde9d82d40c884711db8e9eb6946a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>使用索引器连接 Cosmos DB 和 Azure 搜索
 

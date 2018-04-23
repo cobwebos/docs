@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 7575e25f06014caf962a4b7241a8a2d6bca8c918
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f8e9a2fbf28ace78b4ad2d361358bd394ac69ac7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
 Azure 订阅者可从多种设备管理其云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有任务特定权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)）来执行管理功能。 有其他情况下，可以从本地系统通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或 Azure 服务管理 API (SMAPI)（以编程方式）直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
@@ -99,7 +99,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 
 虚拟机部署的应用程序会根据需要提供自身的客户端工具和界面（例如 Microsoft Management Console (MMC)）、企业管理控制台（例如 Microsoft System Center 或 Windows Intune）或其他管理应用程序（例如 Microsoft SQL Server Management Studio）。 这些工具通常驻留在企业环境或客户端网络中。 它们可能依赖于需要直接有状态连接的特定网络协议，例如远程桌面协议 (RDP)。 有些可能包含不应该通过 Internet 公开发布或访问的具有 Web 功能的接口。
 
-可以使用[多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)、[X.509 管理证书](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/)和防火墙规则来限制访问 Azure 中的基础结构和平台服务管理。 Azure 门户和 SMAPI 需要传输层安全性 (TLS)。 但是，部署到 Azure 的服务和应用程序需要根据应用程序采取适当的保护措施。 可以通过标准化的强化后工作站配置更轻松地经常启用这些机制。
+可以使用[多重身份验证](../active-directory/authentication/multi-factor-authentication.md)、[X.509 管理证书](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/)和防火墙规则来限制访问 Azure 中的基础结构和平台服务管理。 Azure 门户和 SMAPI 需要传输层安全性 (TLS)。 但是，部署到 Azure 的服务和应用程序需要根据应用程序采取适当的保护措施。 可以通过标准化的强化后工作站配置更轻松地经常启用这些机制。
 
 ### <a name="management-gateway"></a>管理网关
 若要集中管理所有管理访问权限并简化监视与日志记录，可以在本地网络中部署连接到 Azure 环境的专用 [远程桌面网关](https://technet.microsoft.com/library/dd560672) （RD 网关）服务器。
@@ -110,7 +110,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 * 将 RD 网关加入管理员工作站所在的同一个 [管理域](http://technet.microsoft.com/library/bb727085.aspx)。 在具有对 Azure AD 的单向信任的域中使用站点到站点 IPsec VPN 或 ExpressRoute 时，或者要联合本地 AD DS 实例与 Azure AD 之间的凭据时，就必须这样做。
 * 配置 [客户端连接授权策略](http://technet.microsoft.com/library/cc753324.aspx) ，以让 RD 网关验证客户端计算机名称是否有效（已加入域）并可以访问 Azure 门户。
 * 针对 [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) 使用 IPsec 以进一步防止管理流量遭到窃听和令牌失窃，或考虑使用通过 [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) 隔离的 Internet 链路。
-* 针对通过 RD 网关登录的管理员启用多重身份验证（通过 [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)）或智能卡身份验证。
+* 针对通过 RD 网关登录的管理员启用多重身份验证（通过 [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)）或智能卡身份验证。
 * 在 Azure 中配置源 [IP 地址限制](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/)或[网络安全组](../virtual-network/virtual-networks-nsg.md)，将允许的管理终结点数降到最低。
 
 ## <a name="security-guidelines"></a>安全指导原则

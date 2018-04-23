@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d1d098f45c391363523b6a56ec0c6fdb40e64d68
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 599c016763fde6f1dc8221fffa554cf68e8c498f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>将 Azure 资源管理器支持与 Azure 负载均衡器配合使用
 
@@ -46,7 +46,7 @@ Azure 资源管理器可让你使用声明性模板预配应用程序。 在单�
 
 [了解有关模板的详细信息](../azure-resource-manager/resource-manager-template-walkthrough.md)
 
-[了解有关网络资源的详细信息](../virtual-network/resource-groups-networking.md)
+[了解有关网络资源的详细信息](../networking/networking-overview.md)
 
 有关使用 Azure 负载均衡器的快速入门模板，请参阅 [GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)（托管社区生成的模板集）。
 

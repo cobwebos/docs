@@ -3,15 +3,16 @@ title: 在 Azure 搜索中保护数据和操作 | Microsoft Docs
 description: Azure 搜索安全性基于 Azure 搜索筛选器中通过用户和组安全标识符进行的 SOC 2 合规、加密、身份验证和标识访问。
 author: HeidiSteen
 manager: cgronlun
+services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: heidist
-ms.openlocfilehash: 3985e4fff5eb1eb0c80b267dd8983488d10cb4e5
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7db1b6c6f72f3cea7446b5f96dac7cd6e9b4252d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="security-and-controlled-access-in-azure-search"></a>Azure 搜索中的安全性和受控访问权限
 

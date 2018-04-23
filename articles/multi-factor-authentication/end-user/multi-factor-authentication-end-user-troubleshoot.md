@@ -1,9 +1,9 @@
 ---
-title: "双重验证疑难解答 |Microsoft 文档"
-description: "本文档向用户提供有关如何解决 Azure 多重身份验证问题的信息。"
+title: 双重验证疑难解答 |Microsoft 文档
+description: 本文档向用户提供有关如何解决 Azure 多重身份验证问题的信息。
 services: multi-factor-authentication
-keywords: "多重身份验证客户端, 身份验证问题, 相关性 ID"
-documentationcenter: 
+keywords: 多重身份验证客户端, 身份验证问题, 相关性 ID
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
@@ -16,11 +16,11 @@ ms.date: 07/06/2017
 ms.author: barlan
 ms.reviewer: richagi
 ms.custom: end-user
-ms.openlocfilehash: 840f4f9e3616f5a60ebbbb0ad33cee9a67958989
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 995430a5c8a388358fcfb7c8c9bac978450df411
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-help-with-two-step-verification"></a>获取有关双重验证的帮助
 本文解答有关双重验证的最常见问题。
@@ -87,7 +87,7 @@ Microsoft 提供双重验证，但组织可以选择性地使用该功能。 如
 如果经常由于手机信号不佳导致延迟，建议在智能手机上使用 [Microsoft Authenticator 应用](microsoft-authenticator-app-how-to.md)。 应用可以生成用于登录的随机安全代码，这些代码可在没有任何手机信号或 Internet 连接的情况下生成。
 
 ## <a name="app-passwords-are-not-working"></a>应用密码不起作用
-首先，请确保正确输入应用密码。 生成的应用密码会替换普通的密码，但这只适用于不支持双重验证的旧式桌面应用程序。 如果仍然不起作用，请尝试登录并[创建新的应用密码](multi-factor-authentication-end-user-app-passwords.md)。  如果还是不起作用，请联系公司支持人员，让其[删除现有应用密码](../multi-factor-authentication-manage-users-and-devices.md)，然后便可以新建密码。
+首先，请确保正确输入应用密码。 生成的应用密码会替换普通的密码，但这只适用于不支持双重验证的旧式桌面应用程序。 如果仍然不起作用，请尝试登录并[创建新的应用密码](multi-factor-authentication-end-user-app-passwords.md)。  如果还是不起作用，请联系公司支持人员，让其[删除现有应用密码](../../active-directory/authentication/howto-mfa-userdevicesettings.md)，然后便可以新建密码。
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>我找不到问题的解答。
 如果已尝试这些故障排除步骤但仍遇到问题，请联系公司支持人员。 他们应该能够提供帮助。

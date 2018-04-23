@@ -1,12 +1,12 @@
 ---
-title: "在 Azure 中保护 PaaS 数据库 | Microsoft Docs"
+title: 在 Azure 中保护 PaaS 数据库 | Microsoft Docs
 description: " 了解有关保护 PaaS Web 和移动应用程序的 Azure SQL 数据库和 SQL 数据仓库安全最佳实践。 "
 services: security
 documentationcenter: na
 author: techlake
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: ed15ff750e73179f6979d13e45ab27aeee5c82ab
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 3e7dc4dfba001228a4d11e2b21cdeed8e7af45ac
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-paas-databases-in-azure"></a>在 Azure 中保护 PaaS 数据库
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/22/2017
 - 使用包含的数据库用户在数据库级别对标识进行身份验证。
 - 支持对连接到 SQL 数据库的应用程序进行基于令牌的身份验证。
 - 支持对本地 Azure AD 进行 ADFS（域联合）或本机用户/密码身份验证，无需进行域同步。
-- 支持从 SQL Server Management Studio 进行连接，后者使用 Active Directory 通用身份验证，其中包括[多重身份验证 (MFA)](../multi-factor-authentication/multi-factor-authentication.md)。 MFA 包括利用一系列简单的验证选项进行的强身份验证，这些选项包括电话、短信、含有 PIN 码的智能卡或移动应用通知。 有关详细信息，请参阅 [SQL 数据库和 SQL 数据仓库针对 Azure AD MFA 的 SSMS 支持](../sql-database/sql-database-ssms-mfa-authentication.md)。
+- 支持从 SQL Server Management Studio 进行连接，后者使用 Active Directory 通用身份验证，其中包括[多重身份验证 (MFA)](../active-directory/authentication/multi-factor-authentication.md)。 MFA 包括利用一系列简单的验证选项进行的强身份验证，这些选项包括电话、短信、含有 PIN 码的智能卡或移动应用通知。 有关详细信息，请参阅 [SQL 数据库和 SQL 数据仓库针对 Azure AD MFA 的 SSMS 支持](../sql-database/sql-database-ssms-mfa-authentication.md)。
 
 若要了解有关 Azure AD 身份验证的详细信息，请参阅：
 

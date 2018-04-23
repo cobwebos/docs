@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: dae93a622bad3ddfb1d9492d17b700d82e9969c0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 169234195fa75924a65680ce2f3fa6ee9633daae
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳实践
 在云中保护数据的关键问题之一是考虑数据可能将发生的状态，以及哪些控件适用于该状态。 根据 Azure 数据安全和加密最佳实践的目的，相关建议将围绕以下数据状态：
@@ -50,13 +50,13 @@ ms.lasthandoff: 04/19/2018
 * 实施文件级数据加密
 
 ## <a name="enforce-multi-factor-authentication"></a>实施多重身份验证
-在 Microsoft Azure 中访问和控制数据的第一个步骤是对用户进行身份验证。 [Azure 多重身份验证 (MFA)](../multi-factor-authentication/multi-factor-authentication.md) 是除了使用用户名与密码以外，还要求使用其他方法对用户标识进行身份验证的方法。 这种身份验证方法可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。
+在 Microsoft Azure 中访问和控制数据的第一个步骤是对用户进行身份验证。 [Azure 多重身份验证 (MFA)](../active-directory/authentication/multi-factor-authentication.md) 是除了使用用户名与密码以外，还要求使用其他方法对用户标识进行身份验证的方法。 这种身份验证方法可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。
 
 如果针对用户启用 Azure MFA，则可为用户登录和事务增加第二层安全性。 在此情况下，事务可能将访问位于文件服务器或 SharePoint Online 中的文档。 Azure MFA 还可帮助 IT 部门减少使用透露的凭据访问企业数据的可能性。
 
 例如：如果对用户实施 Azure MFA 并将它配置为使用电话呼叫或短信作为身份验证，那么，当用户的凭据透露时，攻击者无法访问任何资源，因为攻击者无权访问用户的电话。 未添加这种额外标识保护层的组织将更容易受到凭据窃取攻击，从而导致数据泄漏。
 
-想要保留本地身份验证控制的组织有一个替代方法，就是使用 [Azure 多重身份验证服务器](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)（也称为本地 MFA）。 使用此方法仍可实施多重身份身份验证，同时保留本地 MFA 服务器。
+想要保留本地身份验证控制的组织有一个替代方法，就是使用 [Azure 多重身份验证服务器](../active-directory/authentication/howto-mfaserver-deploy.md)（也称为本地 MFA）。 使用此方法仍可实施多重身份身份验证，同时保留本地 MFA 服务器。
 
 有关 Azure MFA 的详细信息，请参阅[云中的 Azure 多重身份验证入门](../active-directory/authentication/howto-mfa-getstarted.md)。
 

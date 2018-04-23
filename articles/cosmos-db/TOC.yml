@@ -307,7 +307,7 @@ items:
                       - name: .NET
                         href: table-storage-how-to-use-dotnet.md
                       - name: 'F#'
-                        href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
+                        href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
                       - name: Node.js
                         href: table-storage-cloud-service-nodejs.md
                       - name: Java
@@ -371,18 +371,17 @@ items:
           - name: 连接到 Spark GraphX
             href: spark-connector-graph.md
           - name: 通过 HDInsight 上的 Kafka 和 Spark 进行流式处理
-            href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md
-            maintainContext: true
+            href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
           - name: 使用 Azure 应用服务部署网站
             href: create-website.md
           - name: 使用逻辑应用进行应用程序日志记录
-            href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
+            href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
           - name: 绑定到 Azure Functions
-            href: ../azure-functions/functions-bindings-cosmosdb.md
+            href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
           - name: 与 Azure 搜索集成
-            href: ../search/search-howto-index-cosmosdb.md
+            href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
           - name: 使用 Azure 数据工厂移动数据
-            href: ../data-factory/connector-azure-cosmos-db.md
+            href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
           - name: 使用 Azure 流分析分析实时数据
             href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
           - name: 使用逻辑应用获取更改的 HL7 FHIR 记录
@@ -394,7 +393,7 @@ items:
           - name: 将 ODBC 驱动程序用于数据可视化
             href: odbc-driver.md
           - name: 将 Spring Boot Starter 与 SQL API 配合使用
-            href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
+            href: 'https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json'
   - name: 引用
     items:
       - name: 代码示例

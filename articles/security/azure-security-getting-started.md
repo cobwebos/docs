@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure 安全入门 | Microsoft 文档"
-description: "本文概述 Microsoft Azure 安全功能，以及组织在将其资产迁移到云提供商处时需要注意的一般性注意事项。"
+title: Microsoft Azure 安全入门 | Microsoft 文档
+description: 本文概述 Microsoft Azure 安全功能，以及组织在将其资产迁移到云提供商处时需要注意的一般性注意事项。
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: e1ee07f2284df925b8bbd9050de7ae40fa66bf65
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 7d3fab20ec238bff0664fc98c2067c919e97a7c2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Microsoft Azure 安全入门
 构建 IT 资产或将其迁移到云提供商处时，需要依赖该组织来保护应用程序和数据，并且需要依赖该组织提供的服务和控制机制来管理基于云的资产的安全性。
@@ -45,7 +45,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 * 使用 Azure AD 即可对 SaaS 应用程序启用 [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)，不管这些应用程序在何处托管。 某些应用程序会与 Azure AD 联合起来进行身份验证，其他应用程序则使用密码 SSO。 联合应用程序还可以支持用户预配和密码存储。
 * 对 [Azure 存储](https://azure.microsoft.com/services/storage/)中的数据进行访问可以通过身份验证来控制。 每个存储帐户都有一个主密钥（[存储帐户密钥](https://msdn.microsoft.com/library/azure/ee460785.aspx)，简称 SAK）和一个辅助密钥（共享访问签名，简称 SAS）。
 * Azure AD 通过联合身份验证（使用 [Active Directory 联合身份验证服务](../active-directory/fundamentals-identity.md)）、同步以及本地目录复制方式提供标识即服务。
-* [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)是多重身份验证服务，它要求用户使用移动应用、手机或短信验证登录。 它可以与 Azure AD 配合使用，帮助通过 Azure 多重身份验证服务器来保护本地资源；它还用于使用 SDK 的自定义应用程序和目录。
+* [Azure 多重身份验证](../active-directory/authentication/multi-factor-authentication.md)是多重身份验证服务，它要求用户使用移动应用、手机或短信验证登录。 它可以与 Azure AD 配合使用，帮助通过 Azure 多重身份验证服务器来保护本地资源；它还用于使用 SDK 的自定义应用程序和目录。
 * [Azure AD 域服务](https://azure.microsoft.com/services/active-directory-ds/)可让用户将 Azure 虚拟机加入一个域，且无需部署域控制器。 用户可以使用其公司的 Active Directory 凭据登录到这些虚拟机中，并使用组策略管理已加入域的虚拟机，以便在所有 Azure 虚拟机上强制实施安全基准措施。
 * [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) 提供高度可用的全局性标识管理服务，该服务适用于面向用户且可通过缩放来处理数以亿计的标识的应用程序。 它可以跨移动平台和 Web 平台进行集成。 使用者只需使用现有社交帐户或创建新凭据，即可通过可自定义的体验登录到所有应用程序。
 

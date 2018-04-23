@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: genli
-ms.openlocfilehash: 39ee42d41b41cf7c1844a49286746080db71e973
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 665e1914f44d7c5e650a1b632d8b11c6d8a5931a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>将 Azure VPN 网关 RADIUS 身份验证与 NPS 服务器集成实现多重身份验证 
 
@@ -80,5 +80,5 @@ ms.lasthandoff: 04/19/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)
+- [Azure 多重身份验证](../active-directory/authentication/multi-factor-authentication.md)
 - [将现有 NPS 基础结构与 Azure 多重身份验证集成](../active-directory/authentication/howto-mfa-nps-extension.md)

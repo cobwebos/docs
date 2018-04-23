@@ -1,6 +1,6 @@
 ---
-title: "Resource Manager 和经典部署 | Microsoft Docs"
-description: "介绍 Resource Manager 部署模型与经典（或服务管理）部署模型之间的差异。"
+title: Resource Manager 和经典部署 | Microsoft Docs
+description: 介绍 Resource Manager 部署模型与经典（或服务管理）部署模型之间的差异。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2144e3527b44e3cf508d23fedf7abb4cda595bbf
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 06da24babd470e81bed9c45a32c59ad9cfd153fe
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure 资源管理器与经典部署：了解部署模型和资源状态
 本文介绍 Azure 资源管理器和经典部署模型。 Resource Manager 和经典部署模型表示部署和管理 Azure 解决方案的两种不同方式。 通过两个不同的 API 集来处理它们，且部署的资源可能包含重要差异。 这两个模型相互不兼容。 本文介绍这些差异。
@@ -101,14 +101,14 @@ Get-AzureRmVM -ResourceGroupName ExampleGroup
 
 下表介绍了计算、网络和存储资源提供程序交互方式的更改：
 
-| 项目 | 经典 | Resource Manager |
+| Item | 经典 | 资源管理器 |
 | --- | --- | --- |
 | 面向虚拟机的云服务 |云服务是一个容器，用于容纳要求平台可用性和负载均衡的虚拟机。 |使用新模型，云服务不再是创建虚拟机所必需的对象。 |
 | 虚拟网络 |可以选择将虚拟机用于虚拟网络。 如果包含虚拟机，则无法使用 Resource Manager 部署虚拟网络。 |虚拟机需要已使用 Resource Manager 部署的虚拟网络。 |
 | 存储帐户 |虚拟机需要一个用于存储操作系统、临时文件和附加数据磁盘的 VHD 的存储帐户。 |虚拟机需要一个用于将其磁盘存储在 Blob 存储中的存储帐户。 |
 | 可用性集 |通过在虚拟机上配置相同的“AvailabilitySetName”来指出平台的可用性。 容错域的最大数量为 2。 |可用性集是 Microsoft.Compute 提供程序提供的一个资源。 要求高可用性的虚拟机必须包含在可用性集中。 现在，容错域的最大数量为 3。 |
 | 地缘组 |创建虚拟网络需要地缘组。 但是，随着区域虚拟网络的引入，不再需要地缘组了。 |为了简单起见，地缘组概念不再存在于通过 Azure 资源管理器提供的 API 中。 |
-| 负载均衡 |云服务的创建为部署的虚拟机提供了一个隐式负载均衡器。 |负载均衡器是 Microsoft.Network 提供程序提供的一个资源。 需要负载均衡的虚拟机的主网络接口应该引用负载均衡器。 负载均衡器既可以是内部的，也可以是外部的。 负载均衡器实例引用后端 IP 地址池，包括虚拟机的 NIC（可选），引用负载均衡器的公共或专用 IP 地址（可选）。 [了解详细信息。](../virtual-network/resource-groups-networking.md) |
+| 负载均衡 |云服务的创建为部署的虚拟机提供了一个隐式负载均衡器。 |负载均衡器是 Microsoft.Network 提供程序提供的一个资源。 需要负载均衡的虚拟机的主网络接口应该引用负载均衡器。 负载均衡器既可以是内部的，也可以是外部的。 负载均衡器实例引用后端 IP 地址池，包括虚拟机的 NIC（可选），引用负载均衡器的公共或专用 IP 地址（可选）。 |
 | 虚拟 IP 地址 |将 VM 添加到云服务后，云服务会获得默认 VIP（虚拟 IP 地址）。 虚拟 IP 地址是与隐式负载均衡器相关联的地址。 |公共 IP 地址是 Microsoft.Network 提供程序提供的一个资源。 公共 IP 地址既可以是静态（保留）的，也可以是动态的。 可以将动态公共 IP 分配给一个负载均衡器。 可以使用安全组保护公共 IP。 |
 | 保留 IP 地址 |可以在 Azure 中保留一个 IP 地址并将其与一个云服务关联在一起，以确保该 IP 地址具有粘性。 |可以在“静态”模式下创建公共 IP 地址，并且该地址提供与“保留 IP 地址”相同的功能。 |
 | 每个虚拟机一个公共 IP 地址 (PIP) |公共 IP 地址也可以直接关联到 VM。 |公共 IP 地址是 Microsoft.Network 提供程序提供的一个资源。 公共 IP 地址既可以是静态（保留）的，也可以是动态的。 |
