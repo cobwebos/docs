@@ -1,25 +1,25 @@
 ---
-title: "使用安全 Azure VPN 网关 RADIUS 身份验证和 NPS 服务器实现多重身份验证 | Microsoft Docs"
-description: "介绍如何将 Azure 网关 RADIUS 身份验证与 NPS 服务器集成实现多重身份验证。"
+title: 使用安全 Azure VPN 网关 RADIUS 身份验证和 NPS 服务器实现多重身份验证 | Microsoft Docs
+description: 介绍如何将 Azure 网关 RADIUS 身份验证与 NPS 服务器集成实现多重身份验证。
 services: vpn-gateway
 documentationcenter: na
 author: ahmadnyasin
 manager: willchen
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: genli
-ms.openlocfilehash: f0d95cc0dabb253a72afdbc1bc518df882c4d861
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 39ee42d41b41cf7c1844a49286746080db71e973
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>将 Azure VPN 网关 RADIUS 身份验证与 NPS 服务器集成实现多重身份验证 
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 02/14/2018
  
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>步骤 2：为 Azure MFA 配置 NPS
 
-1. 在 NPS 服务器上，[安装适用于 Azure MFA 的 NPS 扩展](../multi-factor-authentication/multi-factor-authentication-nps-extension.md#install-the-nps-extension)。
+1. 在 NPS 服务器上，[安装适用于 Azure MFA 的 NPS 扩展](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension)。
 2. 打开 NSP 控制台，右键单击“RADUIS 客户端”，然后选择“新建”。 通过指定以下设置创建 RADUIS 客户端：
 
     - **友好名称**：键入任何名称。
@@ -81,4 +81,4 @@ ms.lasthandoff: 02/14/2018
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)
-- [将现有 NPS 基础结构与 Azure 多重身份验证集成](../multi-factor-authentication/multi-factor-authentication-nps-extension.md)
+- [将现有 NPS 基础结构与 Azure 多重身份验证集成](../active-directory/authentication/howto-mfa-nps-extension.md)

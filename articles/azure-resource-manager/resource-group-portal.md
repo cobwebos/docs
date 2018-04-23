@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure 门户管理 Azure 资源 | Microsoft Docs"
-description: "使用 Azure 门户和 Azure Resource Manager 来管理资源。 说明如何使用仪表板监视资源。"
+title: 使用 Azure 门户管理 Azure 资源 | Microsoft Docs
+description: 使用 Azure 门户和 Azure Resource Manager 来管理资源。 说明如何使用仪表板监视资源。
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: 27213482c3ef6b35e1e3f887c9a336b946850802
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 61cfd9e9d955b6a722bc88542b872a4a3edf5a36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-azure-resources-through-portal"></a>通过门户管理 Azure 资源
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/16/2017
 2. 若要创建空资源组，请选择“添加”。
    
     ![添加资源组](./media/resource-group-portal/add-resource-group.png)
-3. 提供新资源组的名称和位置。 选择“创建” 。
+3. 提供新资源组的名称和位置。 选择**创建**。
    
     ![创建资源组](./media/resource-group-portal/create-empty-group.png)
 4. 可能需要选择“刷新”查看最近创建的资源组。
@@ -127,6 +127,6 @@ ms.lasthandoff: 11/16/2017
 * 若要查看活动日志，请参阅[使用 Resource Manager 进行审核操作](resource-group-audit.md)。
 * 若要查看有关部署的详细信息，请参阅[查看部署操作](resource-manager-deployment-operations.md)。
 * 若要通过门户部署资源，请参阅[使用 Resource Manager 模板和 Azure 门户部署资源](resource-group-template-deploy-portal.md)。
-* 若要管理对资源的访问，请参阅[使用角色分配管理对 Azure 订阅资源的访问](../active-directory/role-based-access-control-configure.md)。
+* 若要管理对资源的访问，请参阅[使用角色分配管理对 Azure 订阅资源的访问](../role-based-access-control/role-assignments-portal.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](resource-manager-subscription-governance.md)。
 

@@ -1,8 +1,8 @@
 ---
-title: "将 Java 用户定义函数 (UDF) 与 HDInsight 中的 Hive 配合使用 — Azure | Microsoft Docs"
-description: "了解如何创建可用于 Hive 的基于 Java 的用户定义的函数 (UDF)。 此 UDF 示例将表中的文本字符串转换为小写。"
+title: 将 Java 用户定义函数 (UDF) 与 HDInsight 中的 Hive 配合使用 — Azure | Microsoft Docs
+description: 了解如何创建可用于 Hive 的基于 Java 的用户定义的函数 (UDF)。 此 UDF 示例将表中的文本字符串转换为小写。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,16 +10,14 @@ ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: cc6b63f40dd4323ecdf0dfb75c7c8036cbc7b0b7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ef8b8630c60b209295b844f7e1b67f8631524aff
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>在 HDInsight 中通过 Hive 使用 Java UDF
 

@@ -1,25 +1,18 @@
 ---
-title: "通过 SSDT 部署到 Azure Analysis Services | Microsoft Docs"
-description: "了解如何通过 SSDT 将表格模型部署到 Azure Analysis Services 服务器。"
-services: analysis-services
-documentationcenter: 
+title: 通过 SSDT 部署到 Azure Analysis Services | Microsoft Docs
+description: 了解如何通过 SSDT 将表格模型部署到 Azure Analysis Services 服务器。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 5f1f0ae7-11de-4923-a3da-888b13a3638c
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: f356b5d8e2b047add41873ab2676bd46db8d1fd2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: a25066ef8446449148bc0ca95989dc6ca3ca6839
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-a-model-from-ssdt"></a>从 SSDT 部署模型
 在 Azure 订阅中创建服务器之后，便可以开始将表格模型数据库部署到其中。 SQL Server Data Tools (SSDT) 可用于生成和部署正在处理的表格模型项目。 

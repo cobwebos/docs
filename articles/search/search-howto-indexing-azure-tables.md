@@ -1,24 +1,18 @@
 ---
-title: "使用 Azure 搜索编制 Azure 表存储的索引 | Microsoft Docs"
-description: "了解如何使用 Azure 搜索为 Azure 表存储中存储的数据编制索引"
-services: search
-documentationcenter: 
+title: 使用 Azure 搜索编制 Azure 表存储的索引 | Microsoft Docs
+description: 了解如何使用 Azure 搜索为 Azure 表存储中存储的数据编制索引
 author: chaosrealm
-manager: pablocas
-editor: 
-ms.assetid: 1cc27411-d0cc-40ed-8aed-c7cb9ab402b9
+manager: jlembicz
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: eugenesh
-ms.openlocfilehash: b167f69f853f6ecdfd56179e6ffb946cdf2f45b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 317b76809bb7dc47f607687efe2311727859214a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>使用 Azure 搜索编制 Azure 表存储的索引
 本文介绍如何使用 Azure 搜索对 Azure 表存储中存储的数据编制索引。
@@ -70,7 +64,7 @@ ms.lasthandoff: 10/11/2017
 
 可通过以下一种方式提供表的凭据： 
 
-- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`可通过导航到“存储帐户”边栏选项卡  > “设置” > “密钥”（对于经典存储帐户）或“设置” > “访问密钥”（对于 Azure Resource Manager 存储帐户），从 Azure 门户获取连接字符串。
+- **完全访问存储帐户连接字符串**：`DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`可通过导航到“存储帐户”边栏选项卡  > “设置” > “密钥”（对于经典存储帐户）或“设置” > “访问密钥”（对于 Azure 资源管理器存储帐户），从 Azure 门户获取连接字符串。
 - **存储帐户共享访问签名连接字符串：**`TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl`共享访问签名应具有容器（本例中为表）和对象（表行）的列出和读取权限。
 -  **表共享访问签名**：`ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r`共享访问签名应具有表的查询（读取）权限。
 

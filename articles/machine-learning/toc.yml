@@ -1,5 +1,5 @@
 - name: Azure 机器学习服务（预览版）
-  href: preview/index.yml
+  href: service/index.yml
 - name: Azure 机器学习工作室
   href: studio/index.yml
 - name: 数据科学虚拟机

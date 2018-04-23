@@ -5,7 +5,7 @@ keywords: 分层模型, cosmosdb, azure, Microsoft azure
 services: cosmos-db
 documentationcenter: ''
 author: rafats
-manager: jhubbard
+manager: kfile
 ms.assetid: ef9d5c0c-0867-4317-bb1b-98e219799fd5
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 948fc84db2fd2d6f2059f9807b84194ebac59472
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f0fc8a977a172a859d6691a5b587135caf14e03f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Azure Cosmos DB 分层资源模型和核心概念
 
@@ -282,7 +282,7 @@ Azure Cosmos DB 查询模型尝试在功能、效率和简单性之间取得平�
 可以使用 [REST API](/rest/api/cosmos-db/) 或任一[客户端 SDK](sql-api-sdk-dotnet.md) 轻松创建、删除、读取或枚举 SQL API 中的集合。 SQL API 始终为集合元数据的读取或查询操作提供高度一致性。 自动删除数据库，确保不能访问任何文档、附件、存储过程、触发器和其中包含的 UDF。   
 
 ## <a name="stored-procedures-triggers-and-user-defined-functions-udf"></a>存储过程、触发器和用户定义的函数 (UDF)
-如前一节中所述，可以编写应用程序逻辑以直接在数据库引擎内部的某个事务中运行。 应用程序逻辑可以完全用 JavaScript 编写，并且可以作为存储过程、触发器或 UDF 来建模。 存储过程或触发器内的 JavaScript 代码可以插入、替换、删除、读取或查询集合中的文档。 但是，UDF 中的 JavaScript 却无法插入、替换或删除文档。 UDF 可以枚举查询的结果集的文档，并生成另一个结果集。 对于多租户，Azure Cosmos DB 将强制实施严格的基于保留项的资源调控。 每个存储过程、触发器或 UDF 都可以获取固定量的操作系统资源来完成其工作。 此外，存储过程、触发器或 UDF 不能针对外部 JavaScript 库进行链接，并且如果它们超出了分配给它们的资源预算，则会被列入阻止列表。 可以通过使用 REST API 为集合注册存储过程、触发器或 UDF，也可以取消注册。  注册时会预编译存储过程、触发器或 UDF，并将其存储为字节代码，以供以后执行。 下一节说明如何使用 Azure Cosmos DB JavaScript SDK 注册、执行和取消注册存储过程、触发器和 UDF。 JavaScript SDK 是一个比 [REST API](/rest/api/cosmos-db/) 更简单的包装器。 
+如前一节中所述，可以编写应用程序逻辑以直接在数据库引擎内部的某个事务中运行。 应用程序逻辑可以完全用 JavaScript 编写，并且可以作为存储过程、触发器或 UDF 来建模。 存储过程或触发器内的 JavaScript 代码可以插入、替换、删除、读取或查询集合中的文档。 但是，UDF 中的 JavaScript 却无法插入、替换或删除文档。 UDF 可以枚举查询的结果集的文档，并生成另一个结果集。 对于多租户，Azure Cosmos DB 将强制实施严格的基于保留项的资源调控。 每个存储过程、触发器或 UDF 都可以获取固定量的操作系统资源来完成其工作。 此外，存储过程、触发器或 UDF 不能针对外部 JavaScript 库进行链接，并且如果它们超出了分配给它们的资源预算，则会被列入黑名单。 可以通过使用 REST API 为集合注册存储过程、触发器或 UDF，也可以取消注册。  注册时会预编译存储过程、触发器或 UDF，并将其存储为字节代码，以供以后执行。 下一节说明如何使用 Azure Cosmos DB JavaScript SDK 注册、执行和取消注册存储过程、触发器和 UDF。 JavaScript SDK 是一个比 [REST API](/rest/api/cosmos-db/) 更简单的包装器。 
 
 ### <a name="registering-a-stored-procedure"></a>注册存储过程
 注册存储过程将通过 HTTP POST 在集合上创建新的存储过程资源。  

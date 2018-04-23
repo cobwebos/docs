@@ -1,17 +1,17 @@
 ---
-title: "通过 Azure Site Recovery 管理配置服务器，以便进行 VMware 灾难恢复 | Microsoft Docs"
-description: "本文介绍了如何通过 Azure Site Recovery 管理现有配置服务器，以便执行 VMware 到 Azure 的 灾难恢复。"
+title: 通过 Azure Site Recovery 管理配置服务器，以便进行 VMware 灾难恢复 | Microsoft Docs
+description: 本文介绍了如何通过 Azure Site Recovery 管理现有配置服务器，以便执行 VMware 到 Azure 的 灾难恢复。
 services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: ddb1c9426874634fea54f1b67509d4ac2af70eba
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b5ba316b21e0c31e0ecc99fc2d57f81b0f24c086
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>为 VMware VM 管理配置服务器
 
@@ -112,7 +112,7 @@ ms.lasthandoff: 03/08/2018
 1. [安装](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) Azure PowerShell 模块。
 2. 使用以下命令登录到你的 Azure 帐户：
     
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 3. 选择保管库订阅。
 
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`

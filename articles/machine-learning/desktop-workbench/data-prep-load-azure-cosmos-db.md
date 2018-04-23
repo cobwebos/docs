@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 机器学习工作台中作为数据源连接到 Azure Cosmos DB | Microsoft Docs"
-description: "本文档提供示例，说明如何通过 Azure 机器学习工作台连接到 Azure Cosmos DB"
+title: 在 Azure 机器学习工作台中作为数据源连接到 Azure Cosmos DB | Microsoft Docs
+description: 本文档提供示例，说明如何通过 Azure 机器学习工作台连接到 Azure Cosmos DB
 services: machine-learning
 author: cforbe
 ms.author: cforbe
@@ -8,15 +8,15 @@ manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 09/11/2017
 ms.openlocfilehash: d36b394a528dc4bc1b6e0a9e0e5dbde728cbee1b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connecting-to-azure-cosmos-db-as-a-data-source"></a>作为数据源连接到 Azure Cosmos DB
 本文包含了 python 示例，允许在 Azure 机器学习工作台中连接到 Cosmos DB。

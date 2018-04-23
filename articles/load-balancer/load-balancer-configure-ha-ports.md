@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/20178
 ms.author: kumud
-ms.openlocfilehash: 7f7f8e254e0ed0556446e7b08eaf46ec59977f62
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eb305986982432d7a432204e3fae8a1dff6a5d74
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>为内部负载均衡器配置高可用性端口
 
@@ -39,12 +39,6 @@ ms.lasthandoff: 03/23/2018
 ![高可用性端口示例部署](./media/load-balancer-configure-ha-ports/haports.png)
 
 
-## <a name="preview-sign-up"></a>预览版注册
-
-若要预览标准负载均衡器中高可用性端口功能，请使用 Azure CLI 2.0 或 PowerShell 注册订阅，获取访问权限。 注册[标准负载均衡器预览版](https://aka.ms/lbpreview#preview-sign-up)的订阅。
-
->[!NOTE]
->注册标准负载均衡器预览版最长可能需要一小时。
 
 ## <a name="configure-high-availability-ports"></a>配置高可用性端口
 

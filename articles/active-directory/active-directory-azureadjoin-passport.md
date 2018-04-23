@@ -1,11 +1,11 @@
 ---
-title: "通过 Windows Hello 企业版和 Azure AD 在没有密码的情况下进行身份验证 | Microsoft 文档"
-description: "提供了 Windows Hello 企业版的概述以及有关部署 Windows Hello 企业版的其他信息。"
+title: 通过 Windows Hello 企业版和 Azure AD 在没有密码的情况下进行身份验证 | Microsoft 文档
+description: 提供了 Windows Hello 企业版的概述以及有关部署 Windows Hello 企业版的其他信息。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 tags: azure-classic-portal
 ms.assetid: f907bb90-8776-46ca-9e12-279949af66ff
 ms.service: active-directory
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
 ms.openlocfilehash: 22534cc5f7f2de235bc1f1212c63ea227083c5a4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="authenticating-identities-without-passwords-through-windows-hello-for-business"></a>通过 Windows Hello 企业版在没有密码的情况下进行身份验证
 单纯使用密码进行身份验证的传统方法不足以保障用户的安全。 使用这种方法时，用户需重复使用密码，有时还会忘记密码。 密码可能会泄露、被骗取、易于破解且可猜出。 密码也很难记住，并且易于遭受攻击，例如“[传递哈希](https://technet.microsoft.com/dn785092.aspx)”。

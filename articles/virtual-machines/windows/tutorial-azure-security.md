@@ -3,7 +3,7 @@ title: Azure 安全中心和 Azure 中的 Windows 虚拟机 | Microsoft Docs
 description: 通过 Azure 安全中心了解 Azure Windows 虚拟机的安全性。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: neilpeterson
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/01/2017
-ms.author: nepeters
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4597de035e352387c22e92412ee6361f9c38a8ca
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 35b6c8910b0dd5e8d1c388ee83223ce77a08f6d1
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>使用 Azure 安全中心监视虚拟机安全
 

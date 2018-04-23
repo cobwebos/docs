@@ -1,12 +1,12 @@
 ---
-title: "连接到 Power BI 工作区集合中的数据源 | Microsoft Docs"
-description: "了解如何连接到 Power BI 工作区集合内的数据源。"
+title: 连接到 Power BI 工作区集合中的数据源 | Microsoft Docs
+description: 了解如何连接到 Power BI 工作区集合内的数据源。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 2a4caeb3-255d-4215-9554-0ca8e3568c13
 ms.service: power-bi-embedded
@@ -15,19 +15,19 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 24600c4343e3bfebe14f25020c5a7ba02d15af64
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 5a154c4899db974645bb7ade028d8bd8f267aad7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-to-a-data-source"></a>连接到数据源
 
 使用 Power BI 工作区集合，可以在自己的应用中嵌入报表。 在应用中嵌入 Power BI 报表时，可以通过**导入**数据的副本或通过使用 **DirectQuery****直接连接**到数据源将该报表连接到基础数据。
 
 > [!IMPORTANT]
-> Power BI 工作区集合已遭弃用，在 2018 年 6 月或合同上指明的时间前可用。 建议计划迁移到 Power BI Embedded，以免应用中断。 若要了解如何将数据迁移到 Power BI Embedded，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
+> Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
 以下是使用**导入**和 **DirectQuery** 之间的区别。
 

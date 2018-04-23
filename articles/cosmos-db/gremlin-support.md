@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: b13e31be58502d670b11dace1f646b0632a2f039
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c3d80fcaa38d0f1d7fa1770879ca9b40642bb796
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
 Azure Cosmos DB 支持 [Apache Tinkerpop](http://tinkerpop.apache.org) 的图形遍历语言 [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)，该语言是一种图形 API，用于创建图形实体以及执行图形查询操作。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
@@ -153,12 +153,6 @@ GraphSON 为顶点使用的属性如下：
 | 属性 | 说明 |
 | --- | --- |
 | 值 | 属性的值
-
-## <a name="gremlin-partitioning"></a>Gremlin 分区
-
-在 Azure Cosmos DB 中，图形存储在可根据存储和吞吐量（以规范化的每秒请求数表示）独立缩放的容器中。 每个容器必须定义一个可选的（但我们建议定义）分区键属性，用于确定相关数据的逻辑分区边界。 每个顶点/边缘必须具有一个 `id` 属性，该属性对于该分区键值内的实体是唯一的。 [Azure Cosmos DB 中的分区](partition-data.md)对此做了详细介绍。
-
-可以针对跨越 Azure Cosmos DB 中多个分区的图形数据无缝运行 Gremlin 操作。 但是，我们建议为图形选择一个通常在查询中用作筛选器、具有许多非重复值并以类似的频率访问这些值的分区键。 
 
 ## <a name="gremlin-steps"></a>Gremlin 的步骤
 现在，让我们了解 Azure Cosmos DB 支持的 Gremlin 步骤。 有关 Gremlin 的完整参考信息，请参阅 [TinkerPop 参考](http://tinkerpop.apache.org/docs/current/reference)。

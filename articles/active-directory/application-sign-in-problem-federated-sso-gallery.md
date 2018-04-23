@@ -1,11 +1,11 @@
 ---
-title: "登录到配置为联合单一登录的库应用程序时出现的问题 | Microsoft Docs"
-description: "关于使用 Azure AD 登录到已配置为基于 SAML 的联合单一登录的应用程序时出现的具体错误的指南"
+title: 登录到配置为联合单一登录的库应用程序时出现的问题 | Microsoft Docs
+description: 关于使用 Azure AD 登录到已配置为基于 SAML 的联合单一登录的应用程序时出现的具体错误的指南
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: fa1387c3eb11899bb74418b2ff1af4a5d22a73d9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的库应用程序时出现的问题
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="application-not-found-in-directory"></a>在目录中未找到应用程序
 
-*错误 AADSTS70001: 在目录中未找到标识符为“https://contoso.com”的应用程序*。
+错误 AADSTS70001: 目录中未找到标识符为“https://contoso.com”的应用程序。
 
 **可能的原因**
 
@@ -63,7 +63,7 @@ SAML 请求中从应用程序发送给 Azure AD 的颁发者属性与应用程�
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>回复地址与为应用程序配置的回复地址不匹配。
 
-*错误 AADSTS50011: 回复地址 "https://contoso.com" 与为应用程序配置的回复地址不匹配*
+错误 AADSTS50011：回复地址“https://contoso.com”与为应用程序配置的回复地址不匹配
 
 **可能的原因**
 

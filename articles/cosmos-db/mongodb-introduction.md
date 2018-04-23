@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: anhoh
-ms.openlocfilehash: 4baf691268fdb11f769a39144c2b5461ee9c2362
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bebf8b8830255277b5ea492f06e130ee667affa5
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB 简介：MongoDB API
 
@@ -73,5 +73,5 @@ ms.lasthandoff: 04/06/2018
 * 要了解如何在 Studio 3T 中创建 Azure Cosmos DB 数据库和 MongoDB 应用之间的连接，请参阅[将 Studio 3T (MongoChef) 与 Azure Cosmos DB 配合使用](mongodb-mongochef.md)教程。
 * 按照[将数据迁移到具有 MongoDB 协议支持的 Azure Cosmos DB](mongodb-migrate.md) 教程将数据导入到 MongoDB 的 API 数据库。
 * 使用 [Robomongo](mongodb-robomongo.md) 连接到 MongoDB 的 API 帐户。
-* 了解操作将多少 RU 用于 [GetLastRequestStatistics 命令和 Azure 门户指标](request-units.md#GetLastRequestStatistics)。
+* 了解操作将多少 RU 用于 [GetLastRequestStatistics 命令和 Azure 门户指标](set-throughput.md#GetLastRequestStatistics)。
 * 了解如何[配置全局分布的应用的读取首选项](../cosmos-db/tutorial-global-distribution-mongodb.md)。

@@ -1,24 +1,24 @@
 ---
-title: "使用 Azure Cosmos DB 输入绑定创建 HTTP 触发器 | Microsoft Docs"
-description: "了解如何使用包含 HTTP 触发器的 Azure Functions 查询 Azure Cosmos DB。"
+title: 使用 Azure Cosmos DB 输入绑定创建 HTTP 触发器 | Microsoft Docs
+description: 了解如何使用包含 HTTP 触发器的 Azure Functions 查询 Azure Cosmos DB。
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-ms.assetid: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/25/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 3fca64db9e19f8295fc462b790beb95f6796ae4c
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 85a9e66491513b016380913617d8e78cf5d82f6d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-an-azure-functions-http-trigger-with-an-azure-cosmos-db-input-binding"></a>使用 Azure Cosmos DB 输入绑定创建 Azure Functions HTTP 触发器
 
@@ -75,7 +75,7 @@ Azure Cosmos DB 是无架构、无服务器的全球分布式多模型数据库�
 
 4. Azure 函数会响应 HTTP 请求，因此 Http 触发器模板在此处适用。
    
-   在“新建 Azure 函数”框中，选择“Http 触发器”。 我们希望此 Azure 函数也是“敞开式”的，因此可将“访问权限”设置为“匿名”，使任何人都能访问它。 单击 **“确定”**。
+   在“新建 Azure 函数”框中，选择“Http 触发器”。 我们希望此 Azure 函数也是“敞开式”的，因此可将“访问权限”设置为“匿名”，使任何人都能访问它。 单击“确定”。
 
    ![将访问权限设置为匿名](./media/tutorial-functions-http-trigger/06-http-trigger.png)
 
@@ -229,9 +229,9 @@ Azure Cosmos DB 是无架构、无服务器的全球分布式多模型数据库�
    
     c. 在“资源组”中创建新的资源组，并使用与应用名称相同的名称。
    
-    d.单击“下一步”。 对于“应用服务计划”，请单击“新建”创建基于消耗量的新应用服务计划，因为我们打算对无服务器 Azure 函数使用按用量付费的计费方法。 在“配置应用服务计划”页上使用默认值，单击“确定”。
+    d. 对于“应用服务计划”，请单击“新建”创建基于消耗量的新应用服务计划，因为我们打算对无服务器 Azure 函数使用按用量付费的计费方法。 在“配置应用服务计划”页上使用默认值，单击“确定”。
    
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，并单击“确定”。 对于“存储帐户”，同样请单击“新建”创建用于 Azure 函数的新存储帐户，以便到时能够支持使用 Blob、表或队列来触发其他功能的执行。 在“存储帐户”页上使用默认值，单击“确定”。
+    e. 对于“存储帐户”，同样请单击“新建”创建用于 Azure 函数的新存储帐户，以便到时能够支持使用 Blob、表或队列来触发其他功能的执行。 在“存储帐户”页上使用默认值，单击“确定”。
 
     f. 在对话框中单击“创建”按钮，以创建 Azure 订阅中的所有资源。 Visual Studio 会下载发布配置文件（一个简单的 XML 文件），下一次发布 Azure 函数代码时，Visual Studio 会使用该配置文件。
 

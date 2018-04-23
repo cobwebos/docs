@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 520427b99c05fcbc8125bdbde7d8eb56e7487292
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3eb6f08d89daec063841eeb5fff8479c9f2f41fe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>使用 Azure 机器学习 Web 服务参数
 发布包含可配置参数的模块的实验，创建 Azure 机器学习 Web 服务。 在某些情况下，当 Web 服务在运行时，可能会要更改模块行为。 *Web 服务参数*允许执行此任务。 
@@ -52,8 +52,8 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
    * 在“请指定数据目标”下，选择“Azure Blob 存储”。
    * 在“请指定身份验证类型”下，选择“帐户”。
    * 输入 Azure Blob 存储的帐户信息。 
-     <p />
-3. 单击 **指向以容器参数开头的 blob 的路径 右侧的图标**。 如下所示：
+
+3. 单击“指向以容器参数开头的 blob 的路径”右侧的图标。 如下所示：
    
    ![Web 服务参数图标][icon]
    

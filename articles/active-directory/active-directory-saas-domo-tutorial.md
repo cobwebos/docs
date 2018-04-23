@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: jeedes
 ms.openlocfilehash: c7f74d3bd8a2f0173f8f3cc69c611696044875a9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>教程：Azure Active Directory 与 Domo 的集成
 
@@ -152,7 +152,7 @@ ms.lasthandoff: 03/23/2018
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d.单击“下一步”。 单击“确定” 。 
+    d. 单击“确定” 。 
  
 6. 在“SAML 签名证书”部分中，单击“证书(base64)”，并在计算机上保存证书文件。
 
@@ -201,7 +201,7 @@ ms.lasthandoff: 03/23/2018
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="creating-a-domo-test-user"></a>创建 Domo 测试用户
 

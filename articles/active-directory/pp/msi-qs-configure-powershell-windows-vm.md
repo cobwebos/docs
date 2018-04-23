@@ -1,11 +1,11 @@
 ---
-title: "如何使用 PowerShell 在 Azure VM 上配置 MSI"
-description: "分步说明如何使用 PowerShell 在 Azure VM 上配置托管服务标识 (MSI)。"
+title: 如何使用 PowerShell 在 Azure VM 上配置 MSI
+description: 分步说明如何使用 PowerShell 在 Azure VM 上配置托管服务标识 (MSI)。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: cb87dd88c0425383243edcf12b946cb1821aabe5
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9a466a5c695277a7b5833f997e2ad7281c962f3f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>使用 PowerShell 配置 VM 托管服务标识 (MSI)
 
@@ -61,10 +61,10 @@ ms.lasthandoff: 02/03/2018
 
 如果需要在现有虚拟机上启用 MSI，请执行以下操作：
 
-1. 使用 `Login-AzureRmAccount` 登录到 Azure 门户。 使用与包含 VM 的 Azure 订阅关联的帐户。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”：
+1. 使用 `Connect-AzureRmAccount` 登录到 Azure 门户。 使用与包含 VM 的 Azure 订阅关联的帐户。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”：
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 2. 首先，使用 `Get-AzureRmVM` cmdlet 检索 VM 属性。 然后，若要启用 MSI，请在 [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) cmdlet 上使用 `-IdentityType` 开关：
@@ -85,10 +85,10 @@ ms.lasthandoff: 02/03/2018
 
 如果虚拟机不再需要 MSI，可以使用 `RemoveAzureRmVMExtension` cmdlet 从 VM 中删除 MSI：
 
-1. 使用 `Login-AzureRmAccount` 登录到 Azure 门户。 使用与包含 VM 的 Azure 订阅关联的帐户。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”：
+1. 使用 `Connect-AzureRmAccount` 登录到 Azure 门户。 使用与包含 VM 的 Azure 订阅关联的帐户。 此外，请确保该帐户属于可授予对 VM 的写权限的角色，如“虚拟机参与者”：
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 2. 将 `-Name` 开关与 [Remove-AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) cmdlet 配合使用，以指定在添加扩展时使用的同一名称：

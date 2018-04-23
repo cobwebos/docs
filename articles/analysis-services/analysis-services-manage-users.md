@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services 中的身份验证和用户权限 | Microsoft Docs"
-description: "了解 Azure Analysis Services 中的身份验证和用户权限。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services 中的身份验证和用户权限 | Microsoft Docs
+description: 了解 Azure Analysis Services 中的身份验证和用户权限。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 1011e2c8351839cc8c93fc74a7d6f51f29e52410
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: ede05667d794267443babacaa8b016206d86ab2c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
 Azure Analysis Services 使用 Azure Active Directory (Azure AD) 进行身份管理和用户身份验证。 在相同订阅中，创建、管理或连接到 Azure Analysis Services 服务器的任何用户均需具备 [Azure AD 租户](../active-directory/active-directory-administer.md)中的有效用户标识。
@@ -69,7 +62,7 @@ Azure 资源所有者。 资源所有者管理 Azure 订阅的资源。 资源�
 
 ![Azure 门户中的访问控制](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-此级别的角色适用于符合以下条件的用户或帐户：需要执行可在门户中完成或使用 Azure 资源管理器模板完成的任务。 若要了解详细信息，请参阅[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)。 
+此级别的角色适用于符合以下条件的用户或帐户：需要执行可在门户中完成或使用 Azure 资源管理器模板完成的任务。 若要了解详细信息，请参阅[基于角色的访问控制](../role-based-access-control/overview.md)。 
 
 
 ## <a name="database-roles"></a>数据库角色
@@ -85,4 +78,4 @@ Azure 资源所有者。 资源所有者管理 Azure 订阅的资源。 资源�
 [使用 Azure Active Directory 组管理对资源的访问权限](../active-directory/active-directory-manage-groups.md)   
 [管理数据库角色和用户](analysis-services-database-users.md)  
 [管理服务器管理员](analysis-services-server-admins.md)  
-[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)  
+[基于角色的访问控制](../role-based-access-control/overview.md)  

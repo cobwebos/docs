@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services 代码、项目和数据库示例 | Microsoft Docs"
-description: "了解有关 Azure Analysis Services 的代码、项目和数据库示例。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services 代码、项目和数据库示例 | Microsoft Docs
+description: 了解有关 Azure Analysis Services 的代码、项目和数据库示例。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 17c3624804475f1f711130372a7442ddd8dbeb3f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 55f350f21111e8937fa1687c890d4f7bb4ab07ed
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services 示例
 使用以下示例资源来帮助了解和测试你的环境的 Analysis Services。

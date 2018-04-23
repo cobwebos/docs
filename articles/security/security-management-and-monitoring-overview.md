@@ -1,5 +1,5 @@
 ---
-title: "Azure 安全管理和监视概述 | Microsoft Docs"
+title: Azure 安全管理和监视概述 | Microsoft Docs
 description: " Azure 提供安全机制来帮助管理和监视 Azure 云服务和虚拟机。  本文概述了这些核心安全功能和服务。 "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-ms.openlocfilehash: 6787877deabafd0b7308e190cb45b4036049b05b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 906ea3c37823616597ee74dbadf50618d5c4e11d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全管理和监视概述
 Azure 提供安全机制来帮助管理和监视 Azure 云服务和虚拟机。 本文概述了这些核心安全功能和服务。 提供了一些文章链接，其中每篇文章都包含详细的信息，方便用户了解更多内容。
@@ -50,7 +50,7 @@ Microsoft 云服务的安全性是你与 Microsoft 之间的一个合作关系�
 了解更多：
 
 * [有关 RBAC 的 Active Directory 团队博客](http://i1.blogs.technet.com/b/ad/archive/2015/10/12/azure-rbac-is-ga.aspx)
-* [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
+* [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>反恶意软件
 通过 Azure 我们可以使用来自 Microsoft、Symantec、Trend Micro、McAfee 和 Kaspersky 等大型安全性供应商的恶意软件清除软件，以确保用户的虚拟机免受恶意文件、广告软件和其他威胁的侵害。
@@ -76,7 +76,7 @@ Azure 多重身份验证 (MFA) 是需要使用多个验证方法的身份验证�
 
 * [多重身份验证](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md)
-* [Azure 多重身份验证的工作原理](../multi-factor-authentication/multi-factor-authentication-how-it-works.md)
+* [Azure 多重身份验证的工作原理](../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 Microsoft Azure ExpressRoute 可让你通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 CRM Online 等 Microsoft 云服务建立连接。 可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。 ExpressRoute 连接不通过公共 Internet 。 与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。

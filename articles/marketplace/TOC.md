@@ -1,6 +1,8 @@
 # [Azure Marketplace 文档](index.md)
 ## [Azure Marketplace 和 AppSource 发布者指南](marketplace-publishers-guide.md)
 ## [通过 Azure Marketplace 扩展业务](grow-your-business-azure-marketplace.md)
+## [什么是 Appsource](marketplace-what-is-appsource.md)
+## [通过 AppSource 发展业务](marketplace-grow-your-business-with-appsource.md)
 ## [Azure Marketplace 咨询服务](consulting-services.md)
 ## [Azure Marketplace SaaS 应用程序技术发布指南](marketplace-saas-applications-technical-publishing-guide.md)
 ## [云合作伙伴门户](./cloud-partner-portal/cloud-partner-portal-what-is-the-cloud-partner-portal.md)

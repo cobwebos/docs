@@ -1,6 +1,6 @@
 ---
-title: "将 Azure 机器学习模型部署到 Azure IoT Edge 设备 | Microsoft Docs"
-description: "本文档介绍将 Azure 机器学习模型部署到 Azure IoT Edge 设备的方式。"
+title: 将 Azure 机器学习模型部署到 Azure IoT Edge 设备 | Microsoft Docs
+description: 本文档介绍将 Azure 机器学习模型部署到 Azure IoT Edge 设备的方式。
 services: machine-learning
 author: tedway
 ms.author: tedway
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
 ms.openlocfilehash: ceab96b1ef28527c8aa2692b83d3609f133f339c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>将 Azure 机器学习模型部署到 Azure IoT Edge 设备
 

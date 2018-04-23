@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 6668f02bb7ac9588e1bb11b3848d0a3e25cbed67
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 079eb7b89ff3d6c1e4ec0de6136cd934ba3a1f70
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>使用 Linux 应用服务创建 Ruby 应用
 
@@ -53,34 +53,6 @@ rails server
 ```
 
 使用 Web 浏览器导航到 `http://localhost:3000` 以在本地测试该应用。
-
-![Hello-world](./media/quickstart-ruby/hello-world.png)
-
-## <a name="modify-app-to-display-welcome-message"></a>修改应用程序以显示欢迎消息
-
-修改应用程序以使其显示欢迎消息。 首先，必须修改 *~/workspace/ruby-docs-hello-world/config/routes.rb* 文件，使其包含名为 `hello` 的路由，以设置路由。
-
-  ```ruby
-  Rails.application.routes.draw do
-      #For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-      root 'application#hello'
-  end
-  ```
-
-更改应用程序控制器，以使其将消息以 HTML 的形式返回到浏览器。 
-
-打开 *~/workspace/hello-world/app/controllers/application_controller.rb* 进行编辑。 修改 `ApplicationController` 类以使其类似下面的代码示例：
-
-  ```ruby
-  class ApplicationController > ActionController :: base
-    protect_from_forgery with: :exception
-    def hello
-      render html: "Hello, world from Azure Web App on Linux!"
-    end
-  end
-  ```
-
-现在已配置了应用。 使用 web 浏览器导航到 `http://localhost:3000` 来确认根登陆页面。
 
 ![已配置了 Hello World](./media/quickstart-ruby/hello-world-configured.png)
 

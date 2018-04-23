@@ -1,12 +1,12 @@
 ---
-title: "使用 JavaScript API 与报表交互 | Microsoft Docs"
-description: "Power BI JavaScript API 可轻松地将 Power BI 报表嵌入到应用程序中。"
+title: 使用 JavaScript API 与报表交互 | Microsoft Docs
+description: Power BI JavaScript API 可轻松地将 Power BI 报表嵌入到应用程序中。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: bdd885d3-1b00-4dcf-bdff-531eb1f97bfb
 ms.service: power-bi-embedded
@@ -15,19 +15,19 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 62a95807c35fcba15a8e5ffdf340a307dd22a642
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 0b10f0fc39382e1944f11eef925733cbe5733c32
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="interact-with-power-bi-reports-using-the-javascript-api"></a>使用 JavaScript API 与 Power BI 报表交互
 
 Power BI JavaScript API 可轻松地将 Power BI 报表嵌入到应用程序中。 借助 API，应用程序可以以编程方式与不同的报表元素（如页和筛选器）进行交互。 这种交互性使 Power BI 报表成为应用程序更集成的一部分。
 
 > [!IMPORTANT]
-> Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议规划迁移到 Power BI Embedded 以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
+> Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
 使用作为应用程序一部分托管的 IFrame 将 Power BI 报表嵌入到应用程序中。 IFrame 充当应用程序和报表之间的边界，如下图所示：
 

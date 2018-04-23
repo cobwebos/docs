@@ -1,12 +1,12 @@
 ---
-title: "Azure Cloud Shell 限制 | Microsoft Docs"
-description: "Azure Cloud Shell 的限制概述"
+title: Azure Cloud Shell 限制 | Microsoft Docs
+description: Azure Cloud Shell 的限制概述
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 245e2e1ca52e7d3c5bd22d5f2569e3e8d7ae6671
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 15e3dd11c371e0b23d5b506da9d824e1409fd359
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的限制
 
@@ -76,7 +76,7 @@ PowerShell in Azure Cloud Shell（预览版）最长可能需要 60 秒才能完
 
 ### <a name="gui-applications-are-not-supported"></a>不支持 GUI 应用程序
 
-如果用户运行一条会创建 Windows 对话框的命令（例如 `Connect-AzureAD` 或 `Login-AzureRMAccount`），将看到如下所示的错误消息：`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
+如果用户运行一条会创建 Windows 对话框的命令（例如 `Connect-AzureAD` 或 `Connect-AzureRmAccount`），将看到如下所示的错误消息：`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
 
 ## <a name="next-steps"></a>后续步骤
 

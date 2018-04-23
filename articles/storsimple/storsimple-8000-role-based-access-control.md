@@ -1,12 +1,12 @@
 ---
-title: "针对 StorSimple 使用基于角色的访问控制 | Microsoft Docs"
-description: "介绍如何在 StorSimple 上下文中使用 Azure 基于角色的访问控制 (RBAC)。"
+title: 针对 StorSimple 使用基于角色的访问控制 | Microsoft Docs
+description: 介绍如何在 StorSimple 上下文中使用 Azure 基于角色的访问控制 (RBAC)。
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: d040849360a47c611d44b3a5d7649c685dcc8068
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 412098ad6b8a6620b165b6cecaa0d0b3ee05f63e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="role-based-access-control-for-storsimple"></a>适用于 StorSimple 的基于角色的访问控制
 
-本文简短地说明了如何对 StorSimple 设备使用 Azure 基于角色的访问控制 (RBAC)。 RBAC 提供针对 Azure 的细化访问管理。 使用 RBAC 只向 StorSimple 用户授予执行作业所需的适当访问量，而不用向每个人授予不受限制的访问。 若要深入了解 Azure 中访问管理的基础知识，请参阅 [Azure 门户中基于角色的访问控制入门](../active-directory/role-based-access-control-what-is.md)。
+本文简短地说明了如何对 StorSimple 设备使用 Azure 基于角色的访问控制 (RBAC)。 RBAC 提供针对 Azure 的细化访问管理。 使用 RBAC 只向 StorSimple 用户授予执行作业所需的适当访问量，而不用向每个人授予不受限制的访问。 若要深入了解 Azure 中访问管理的基础知识，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
 
 本文适用于在 Azure 门户中运行 Update 3.0 或更高版本的 StorSimple 8000 系列设备。
 
@@ -30,9 +30,9 @@ ms.lasthandoff: 10/12/2017
 
 可基于角色分配 RBAC。 该角色可确保根据环境中的可用资源授予特定的权限级别。 StorSimple 用户可以选择以下两种类型的角色：内置或自定义。
 
-* **内置角色** - 内置角色可以是所有者、参与者、读者或用户访问管理员。 有关详细信息，请参阅 [Azure 基于角色的访问控制的内置角色](../active-directory/role-based-access-control-what-is.md#built-in-roles)。
+* **内置角色** - 内置角色可以是所有者、参与者、读者或用户访问管理员。 有关详细信息，请参阅 [Azure 基于角色的访问控制的内置角色](../role-based-access-control/overview.md#built-in-roles)。
 
-* **自定义角色** - 如果内置角色无法满足需求，可创建适用于 StorSimple 的自定义 RBAC 角色。 若要创建自定义 RBAC 角色，首先需使用某个内置角色，对其进行编辑，然后将其导回环境中。 使用 Azure PowerShell 或 Azure CLI 管理角色的下载和上传。 有关详细信息，请参阅[针对基于角色的访问控制创建自定义角色](../active-directory/role-based-access-control-custom-roles.md)。
+* **自定义角色** - 如果内置角色无法满足需求，可创建适用于 StorSimple 的自定义 RBAC 角色。 若要创建自定义 RBAC 角色，首先需使用某个内置角色，对其进行编辑，然后将其导回环境中。 使用 Azure PowerShell 或 Azure CLI 管理角色的下载和上传。 有关详细信息，请参阅[针对基于角色的访问控制创建自定义角色](../role-based-access-control/custom-roles.md)。
 
 若要在 Azure 门户中查看可用于 StorSimple 设备用户的不同角色，请转到 StorSimple 设备管理器服务，然后转到“访问控制(IAM)”>“角色”。
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/12/2017
 
 2. 登录 Azure。
 
-    `Login-AzureRMAccount`
+    `Connect-AzureRmAccount`
 
 3. 在计算机上将读者角色导出为 JSON 模板。
 
@@ -108,12 +108,12 @@ ms.lasthandoff: 10/12/2017
 
 ![查看 RBAC 角色](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
-有关详细信息，请转到[使用 PowerShell 创建自定义 RBAC 角色](../active-directory/role-based-access-control-create-custom-roles-for-internal-external-users.md#create-a-custom-rbac-role-to-open-support-requests-using-powershell)。
+有关详细信息，请转到[使用 PowerShell 创建自定义 RBAC 角色](../role-based-access-control/role-assignments-external-users.md#create-a-custom-rbac-role-to-open-support-requests-using-powershell)。
 
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>通过 PowerShell 创建自定义角色的示例输出
 
 ```
-PS C:\WINDOWS\system32> Login-AzureRMAccount
+PS C:\WINDOWS\system32> Connect-AzureRmAccount
 
 Environment           : AzureCloud
 Account               : john.doe@contoso.com
@@ -153,7 +153,7 @@ PS C:\WINDOWS\system32>
 
 ## <a name="add-users-to-the-custom-role"></a>将用户添加到自定义角色
 
-授予资源、资源组或订阅（即角色分配范围）内的访问权限。 提供访问权限时，请牢记在父节点上授予的访问权限会由子节点继承。 有关详细信息，请转到[资源层次结构和访问继承](../active-directory/role-based-access-control-what-is.md#resource-hierarchy-and-access-inheritance)。
+授予资源、资源组或订阅（即角色分配范围）内的访问权限。 提供访问权限时，请牢记在父节点上授予的访问权限会由子节点继承。 有关详细信息，请转到[资源层次结构和访问继承](../role-based-access-control/overview.md#resource-hierarchy-and-access-inheritance)。
 
 1. 请转到“访问控制(IAM)”。 在“访问控制”边栏选项卡上单击“+ 添加”。
 
@@ -186,5 +186,5 @@ PS C:\WINDOWS\system32>
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[为内部用户和外部用户分配自定义角色](../active-directory/role-based-access-control-create-custom-roles-for-internal-external-users.md)。
+了解如何[为内部用户和外部用户分配自定义角色](../role-based-access-control/role-assignments-external-users.md)。
 

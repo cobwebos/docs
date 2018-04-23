@@ -1,12 +1,12 @@
 ---
-title: "升级 Azure Service Fabric 运行时 | Microsoft Docs"
-description: "本教程介绍如何使用 PowerShell 升级 Azure 托管的 Service Fabric 群集的运行时。"
+title: 升级 Azure Service Fabric 运行时 | Microsoft Docs
+description: 本教程介绍如何使用 PowerShell 升级 Azure 托管的 Service Fabric 群集的运行时。
 services: service-fabric
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 49211a88e004bbcbcc41b6674a34934db39513c7
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 407268299e77d771a53c49c11995dce1ada65112
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster"></a>教程：升级 Service Fabric 群集的运行时
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 02/24/2018
 执行 Azure 命令之前，登录到你的 Azure 帐户并选择你的订阅。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionId <guid>
 ```

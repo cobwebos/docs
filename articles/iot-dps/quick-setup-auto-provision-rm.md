@@ -3,7 +3,7 @@ title: 使用 Azure 资源管理器模板设置设备预配 | Microsoft Docs
 description: Azure 快速入门 - 使用模板设置 Azure IoT 中心设备预配服务
 services: iot-dps
 keywords: ''
-author: JimacoMS2
+author: bryanla
 ms.author: v-jamebr
 ms.date: 02/26/2018
 ms.topic: hero-article
@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 389691bddf1a7d6cab0845ca0a0cf1bde1152507
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8fc014efab898bf0ab3d8cd5eaa83dce53ee275b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板设置 IoT 中心设备预配服务
 

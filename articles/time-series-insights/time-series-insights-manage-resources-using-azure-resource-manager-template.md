@@ -1,6 +1,6 @@
 ---
-title: "如何使用 Azure 资源管理器模板管理 Azure 时序见解环境 | Microsoft Docs"
-description: "本文介绍如何使用 Azure 资源管理器以编程方式管理 Azure 时序见解环境。"
+title: 如何使用 Azure 资源管理器模板管理 Azure 时序见解环境 | Microsoft Docs
+description: 本文介绍如何使用 Azure 资源管理器以编程方式管理 Azure 时序见解环境。
 services: time-series-insights
 ms.service: time-series-insights
 author: sandshadow
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 12/08/2017
-ms.openlocfilehash: b09d4a1aea56a4e306f80a1b43d519d313fd73ab
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 8355248f28a019ef4712f542c8eac731362330ce
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
 
@@ -153,7 +153,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 在 PowerShell 提示符下，运行以下命令：
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 系统会提示登录到 Azure 帐户。 登录后，运行以下命令以查看可用订阅：
@@ -266,7 +266,8 @@ Outputs                 :
 
 GitHub 上的快速入门模板主页还包含“部署到 Azure”按钮。 单击此按钮可在 Azure 门户中打开“自定义部署”页。 从此页中，可以输入或选择[必需的参数](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters)或[可选参数](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters)表中每个参数的值。 填写设置后，单击“购买”按钮会启动模板部署。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank"> <img src="http://azuredeploy.net/deploybutton.png"/>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,10 +1,10 @@
 ---
-title: "排查企业成本查看问题 - Azure | Microsoft Docs"
-description: "了解如何解决 Azure 门户中可能遇到的有关组织成本查看的任何问题。"
+title: 排查企业成本查看问题 - Azure | Microsoft Docs
+description: 了解如何解决 Azure 门户中可能遇到的有关组织成本查看的任何问题。
 author: rthorn17
 manager: rithorn
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: article
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/22/2017
 ms.author: rithorn
-ms.openlocfilehash: 54c7610f1a0d3de2503ef471ca9adc0db423f530
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 527e12cdcc4eaebf98708c389dd21e8ac6ae4ac7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>排查企业成本查看问题 
 
-在企业注册中，存在多种可能导致注册中的用户无法查看成本的设置。  如果注册并非直接通过 Microsoft 购买，那么这些设置由注册管理员或合作伙伴管理。  本文可以帮助你了解具体设置以及它们对注册的影响。 这些设置独立于 [Azure RBAC 角色](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。 
+在企业注册中，存在多种可能导致注册中的用户无法查看成本的设置。  如果注册并非直接通过 Microsoft 购买，那么这些设置由注册管理员或合作伙伴管理。  本文可以帮助你了解具体设置以及它们对注册的影响。 这些设置独立于 [Azure RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。 
 
 
 ## <a name="enabling-access-to-costs"></a>启用成本访问
@@ -44,4 +44,4 @@ ms.lasthandoff: 02/23/2018
 ![asset-not-found](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
 联系订阅或管理组的管理员以获得访问权限。  
-* 对于订阅，请参考 [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) 文档，有助于了解需要哪个角色。
+* 对于订阅，请参考 [Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 文档，有助于了解需要哪个角色。

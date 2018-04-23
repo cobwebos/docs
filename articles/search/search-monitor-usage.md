@@ -1,25 +1,19 @@
 ---
-title: "监视 Azure 搜索服务中的使用情况和统计信息 | Microsoft Docs"
-description: "跟踪 Azure 搜索（在 Microsoft Azure 上托管的云搜索服务）的资源消耗和索引大小。"
-services: search
-documentationcenter: 
+title: 监视 Azure 搜索服务中的使用情况和统计信息 | Microsoft Docs
+description: 跟踪 Azure 搜索（在 Microsoft Azure 上托管的云搜索服务）的资源消耗和索引大小。
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: 
 ms.service: search
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: required
+ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: fe852afedfc1cce99d81b8ab53c6c80df34ac6d6
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: b8c07d5965876cba45f03fa8c5ffb473c6ca3bc2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="monitoring-an-azure-search-service"></a>监视 Azure 搜索服务
 
@@ -96,7 +90,7 @@ Azure 搜索 REST API 和 .NET SDK 支持采用编程方式访问服务指标。
 每个 Blob 具有一个名为 **records** 的根对象，该对象包含一组日志对象。
 每个 blob 会记录同一小时内发生的所有操作。
 
-| Name | 类型 | 示例 | 说明 |
+| 名称 | Type | 示例 | 说明 |
 | --- | --- | --- | --- |
 | time |datetime |“2015-12-07T00:00:43.6872559Z” |操作的时间戳 |
 | resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |ResourceId |
@@ -109,7 +103,7 @@ Azure 搜索 REST API 和 .NET SDK 支持采用编程方式访问服务指标。
 | 属性 |对象 |请参阅下表 |包含特定于操作的数据的对象 |
 
 **属性架构**
-| Name | 类型 | 示例 | 说明 |
+| 名称 | Type | 示例 | 说明 |
 | --- | --- | --- | --- |
 | 说明 |字符串 |“GET /indexes('content')/docs” |操作的终结点 |
 | 查询 |字符串 |"?search=AzureSearch&$count=true&api-version=2015-02-28" |查询参数 |
@@ -117,7 +111,7 @@ Azure 搜索 REST API 和 .NET SDK 支持采用编程方式访问服务指标。
 | IndexName |字符串 |“testindex” |与操作关联的索引名称 |
 
 #### <a name="metrics-schema"></a>度量值架构
-| Name | 类型 | 示例 | 说明 |
+| 名称 | Type | 示例 | 说明 |
 | --- | --- | --- | --- |
 | resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |资源 ID |
 | metricName |字符串 |“Latency” |度量值名称 |
@@ -126,7 +120,7 @@ Azure 搜索 REST API 和 .NET SDK 支持采用编程方式访问服务指标。
 | minimum |int |37 |度量值时间间隔内原始样本的最小值 |
 | maximum |int |78 |度量值时间间隔内原始样本的最大值 |
 | total |int |258 |度量值时间间隔内原始样本的总计值 |
-| count |int |4 |用于生成度量值的原始样本数 |
+| 计数 |int |4 |用于生成度量值的原始样本数 |
 | timegrain |字符串 |“PT1M” |采用 ISO 8601 的度量值时间粒度 |
 
 所有度量值会按一分钟的时间间隔报告。 每个度量值都会显示每分钟的最小、最大和平均值。

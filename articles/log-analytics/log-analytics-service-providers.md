@@ -1,11 +1,11 @@
 ---
-title: "适用于服务提供商的 Log Analytics 功能 | Microsoft 文档"
-description: "Log Analytics 可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。"
+title: 适用于服务提供商的 Log Analytics 功能 | Microsoft 文档
+description: Log Analytics 可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: richrund
-ms.openlocfilehash: 3910038e788352df45ab00c0f697d9a5426b3498
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6934e92df562099122eaede39fd26cf51cf1ee44
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="log-analytics-features-for-service-providers"></a>适用于服务提供商的 Log Analytics 功能
 Log Analytics 可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。 
@@ -39,8 +39,8 @@ Log Analytics 可以帮助托管服务提供商 (MSP)、大型企业、独立软
 
 要登录租户的订阅，需要指定租户标识符。 租户标识符通常是用于登录的电子邮件地址的最后一部分。
 
-* 在 OMS 门户中的 URL 中添加 `?tenant=contoso.com`。 例如 `mms.microsoft.com/?tenant=contoso.com`
-* 当在 PowerShell 中使用 `Add-AzureRmAccount` cmdlet 时，请使用 `-Tenant contoso.com` 参数
+* 在 OMS 门户中的 URL 中添加 `?tenant=contoso.com`。 例如： `mms.microsoft.com/?tenant=contoso.com`
+* 当在 PowerShell 中使用 `Connect-AzureRmAccount` cmdlet 时，请使用 `-Tenant contoso.com` 参数
 * 使用 Azure 门户中的 `OMS portal` 链接打开并登录所选工作区的 OMS 门户时，系统会自动添加租户标识符
 
 作为云解决方案提供商的*客户*，可以：

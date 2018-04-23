@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure Active Directory B2C 为开发人员帐户授权 - Azure API 管理 | Microsoft 文档"
-description: "了解如何在 API 管理中使用 Azure Active Directory B2C 为用户授权。"
+title: 使用 Azure Active Directory B2C 为开发人员帐户授权 - Azure API 管理 | Microsoft 文档
+description: 了解如何在 API 管理中使用 Azure Active Directory B2C 为用户授权。
 services: api-management
 documentationcenter: API Management
-author: juliako
+author: miaojiang
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: d843757c2ed63c4f8cff09d809c2de382b2aeb59
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 1268905d8a992d0cac65174142f6a3870f38f0d8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/16/2018
 ---
 > [!WARNING]
 > 仅在[开发人员和高级](https://azure.microsoft.com/en-us/pricing/details/api-management/)层提供 Azure Active Directory B2C 集成。

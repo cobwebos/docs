@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services 教程补充课程：动态安全性 | Microsoft Docs"
-description: "介绍如何通过 Azure Analysis Services 教程中的行筛选器来使用动态安全性。"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: Azure Analysis Services 教程补充课程：动态安全性 | Microsoft Docs
+description: 介绍如何通过 Azure Analysis Services 教程中的行筛选器来使用动态安全性。
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 7512af39041090db22d4ef45ec46925c14c4adb9
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 5084bb0785e22a4b38f7f80f4c3b29a0ad92dadb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>补充课程 - 动态安全性
 
@@ -33,7 +26,7 @@ ms.lasthandoff: 01/09/2018
   
 本课程预计完成时间：**30 分钟**  
   
-## <a name="prerequisites"></a>系统必备  
+## <a name="prerequisites"></a>先决条件  
 本补充课程主题是表格建模教程的一部分，应当按顺序完成。 在执行本补充课程中的任务之前，应已完成前面的课程。  
   
 ## <a name="add-the-dimsalesterritory-table-to-the-aw-internet-sales-tabular-model-project"></a>将 DimSalesTerritory 表添加到 AW Internet 销售表格模型项目  

@@ -1,5 +1,5 @@
 ---
-title: "帮助进行标识管理的 Azure 安全功能 | Microsoft Docs"
+title: 帮助进行标识管理的 Azure 安全功能 | Microsoft Docs
 description: " 本文概述了可帮助进行标识管理的核心 Azure 安全功能。 Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，比如多重身份验证和条件性访问策略。 "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 921d7eef90a86216dc13804d3dc4dd216247fb87
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 1338f9e5c4a0e21dadbd5ae6f51b12c8f1dd44a3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，比如多重身份验证和条件性访问策略。 通过高级安全报告、审核和警报来监视可疑活动，有助于减少潜在的安全问题。 [Azure Active Directory Premium](../active-directory/active-directory-editions.md) 向数千个云 (SaaS) 应用提供单一登录，并提供对你在本地运行的 Web 应用的访问。
@@ -76,7 +76,7 @@ Azure 多重身份验证 (MFA) 是需要使用多个验证方法的身份验证�
 
 * [多重身份验证](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md)
-* [Azure 多重身份验证的工作原理](../multi-factor-authentication/multi-factor-authentication-how-it-works.md)
+* [Azure 多重身份验证的工作原理](../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>安全监控、警报和基于机器学习的报告
 安全监控、警报和基于机器学习的报告（它们识别不一致的访问模式）可以帮助保护业务。 可以使用 Azure Active Directory 的访问和使用情况报告来监控你所在组织的目录的完整性和安全性。 使用此信息，目录管理员可以更好地确定哪里可能存在安全风险，以便制定相应的计划来降低风险。
@@ -119,7 +119,7 @@ Azure AD 设备注册是基于设备的[条件性访问](../active-directory/act
 * [将已加入 Windows 域的设备自动注册到 Azure Active Directory](../active-directory/active-directory-conditional-access-automatic-device-registration.md)
 * [对已加入域的 Windows 设备在 Azure Active Directory 中的自动注册进行设置](../active-directory/active-directory-conditional-access-automatic-device-registration-setup.md)
 
-## <a name="privileged-identity-management"></a>Privileged identity management
+## <a name="privileged-identity-management"></a>Privileged Identity Management
 利用 Azure Active Directory (AD) Privileged Identity Management，可以管理、控制和监视特权标识以及对 Azure AD 中和 Office 365 或 Microsoft Intune 等其他 Microsoft Online Services 中资源的访问权限。
 
 用户有时候需要在 Azure 或 Office 365 资源或者其他 SaaS 应用中执行特权操作。 这通常意味着，组织必须授予他们永久的 Azure AD 访问特权。 这会给云中托管的资源不断增大安全风险，因为组织无法充分监视这些用户正在使用管理特权执行哪些操作。 此外，如果有访问特权的用户帐户被泄露，这个缺口可能会影响其总体云安全性。 Azure AD 特权标识管理可帮助解决这一风险。

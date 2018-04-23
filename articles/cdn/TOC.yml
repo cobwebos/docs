@@ -14,6 +14,8 @@
   items:
     - name: 添加自定义域
       href: cdn-map-content-to-custom-domain.md
+    - name: 在自定义域上配置 HTTPS
+      href: cdn-custom-ssl.md
 - name: 示例
   items:
     - name: 代码示例
@@ -38,10 +40,6 @@
               href: cdn-sas-storage-support.md
         - name: 跨域资源共享
           href: cdn-cors.md
-        - name: 将自定义域添加到 CDN 终结点
-          href: cdn-map-content-to-custom-domain.md
-        - name: 在自定义域上配置 HTTPS
-          href: cdn-custom-ssl.md
     - name: 优化内容
       items:
         - name: 优化概述
@@ -137,6 +135,11 @@
           href: cdn-rules-engine-reference-match-conditions.md
         - name: 规则引擎功能
           href: cdn-rules-engine-reference-features.md
+    - name: 特定于 Verizon 的 HTTP 标头
+      href: cdn-verizon-http-headers.md
+      items:
+        - name: X-EC-Debug 标头
+          href: cdn-http-debug-headers.md
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cdn
     - name: .NET

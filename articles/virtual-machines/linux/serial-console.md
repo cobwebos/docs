@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: b7d6e48a6f34472bc38947fd70e850b1c3bf6f8a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 69f5e29be77f25d649ce357dae6e3905ab2bf6b8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-serial-console-preview"></a>虚拟机串行控制台（预览版） 
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/28/2018
 ## <a name="prerequisites"></a>先决条件 
 
 * 虚拟机上必须已启用[启动诊断](boot-diagnostics.md) 
-* 使用串行控制台的帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[参与者角色](../../active-directory/role-based-access-built-in-roles.md)。 
+* 使用串行控制台的帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[参与者角色](../../role-based-access-control/built-in-roles.md)。 
 * 有关特定于 Linux 分发版的设置，请参阅[访问适用于 Linux 的串行控制台](#accessing-serial-console-for-linux)
 
 
@@ -56,10 +56,10 @@ ms.lasthandoff: 03/28/2018
 ## <a name="serial-console-security"></a>串行控制台安全性 
 
 ### <a name="access-security"></a>访问安全性 
-只有对虚拟机拥有 [VM 参与者](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)或更高访问权限的用户才能访问串行控制台。 如果 AAD 租户需要多重身份验证 (MFA)，则访问串行控制台时也需要执行 MFA，因为串行控制台是通过 [Azure 门户](https://portal.azure.com)访问的。
+只有对虚拟机拥有 [VM 参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)或更高访问权限的用户才能访问串行控制台。 如果 AAD 租户需要多重身份验证 (MFA)，则访问串行控制台时也需要执行 MFA，因为串行控制台是通过 [Azure 门户](https://portal.azure.com)访问的。
 
 ### <a name="channel-security"></a>通道安全性
-通过网络来回发送的所有数据经过加密。
+通过网络来回发送的所有数据都经过加密。
 
 ### <a name="audit-logs"></a>审核日志
 对串行控制台的所有访问目前都会记录在虚拟机的[启动诊断](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics)日志中。 Azure 虚拟机管理员拥有并可控制这些日志的访问权限。  
@@ -68,7 +68,7 @@ ms.lasthandoff: 03/28/2018
 尽管不会记录控制台的访问密码，但如果在控制台中运行的命令包含或输出密码、机密、用户名或其他任何形式的个人身份信息 (PII)，则在实现串行控制台的回滚功能过程中，会将这些信息连同其他所有可见文本一起写入虚拟机的启动诊断日志。 这些日志不断轮替，只有对诊断存储帐户拥有读取权限的个人才能访问它们。但是，我们建议遵循有关将 SSH 控制台用于涉及机密和/或 PII 的任何操作的最佳做法。 
 
 ### <a name="concurrent-usage"></a>并发使用
-如果某个用户已连接到串行控制台，而另一个用户已成功请求访问同一个虚拟机，则第一个用户将断开连接，第二用户将建立连接，就好比是第一个用户站起并离开物理控制台，然后一个新用户坐在控制台旁边。
+如果某个用户已连接到串行控制台，而另一个用户已成功请求访问同一个虚拟机，则第一个用户将断开连接，第二用户将建立连接，就好比是第一个用户站起来离开物理控制台，然后一个新用户在控制台旁边坐下来。
 
 >[!CAUTION] 
 这意味着，断开连接的用户并未注销！ 断开连接后强制注销（通过 SIGHUP 或类似机制）的功能目前仍在规划中。 对于 Windows，SAC 中会启用自动超时；但对于 Linux，可以配置终端超时设置。 为此，只需将 `export TMOUT=600` 添加到登录控制台时所用的用户帐户的 .bash_profile 或 .profile 中，以便在 10 分钟后使会话超时。
@@ -77,7 +77,7 @@ ms.lasthandoff: 03/28/2018
 可以通过禁用特定 VM 的启动诊断设置，针对该 VM 停用串行控制台功能。
 
 ## <a name="common-scenarios-for-accessing-serial-console"></a>访问串行控制台的常见场景 
-场景          | 串行控制台中的操作                |  OS 适用性 
+方案          | 串行控制台中的操作                |  OS 适用性 
 :------------------|:-----------------------------------------|:------------------
 受损的 FSTAB 文件 | 按 Enter 键继续，然后使用文本编辑器修复 /etc/fstab 文件。 请参阅[如何修复 fstab 问题](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) | Linux 
 错误的防火墙规则 | 访问串行控制台，并修复 iptables 或 Windows 防火墙规则 | Linux/Windows 
@@ -130,7 +130,7 @@ Azure 中提供的 Oracle Linux 映像默认已启用控制台访问。 对于�
 :---------------------------------|:--------------------------------------------|
 无法检索“<VMNAME>”的启动诊断设置。 若要使用串行控制台，请确保为此 VM 启用了启动诊断。 | 确保 VM 已启用[启动诊断](boot-diagnostics.md)。 
 VM 处于已停止/已解除分配状态。 启动 VM，然后重试串行控制台连接。 | 虚拟机必须处于已启动状态才能访问串行控制台
-没有所需的权限，无法使用此 VM 来访问串行控制台。 请确保至少拥有 VM 参与者角色权限。| 需有特定的权限才能访问串行控制台。 有关详细信息，请参阅[访问要求](#prerequisites)
+没有所需的权限，无法使用此 VM 来访问串行控制台。 请确保至少拥有 VM 参与者角色权限。| 需要特定的访问权限才能访问串行控制台。 有关详细信息，请参阅[访问要求](#prerequisites)
 无法确定启动诊断存储帐户“<STORAGEACCOUNTNAME>”的资源组。 确认是否为此 VM 启用了启动诊断，以及是否有权访问此存储帐户。 | 需有特定的权限才能访问串行控制台。有关详细信息，请参阅[访问要求](#prerequisites)
 
 ## <a name="known-issues"></a>已知问题 
@@ -151,7 +151,7 @@ A. 可以访问 https://aka.ms/serialconsolefeedback 来提供问题反馈。 �
 
 A. 这是一个已知问题，若要解决此问题，只需在 bash 模式下打开 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)，然后重试。
 
-**问：我无法访问串行控制台，在哪里可以发起支持案例？**
+**问：我无法访问串行控制台，在哪里可以提出支持案例？**
 
 A. 此预览功能遵守 Azure 预览条款。 最好是通过上面所述的渠道请求此功能的支持。 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: c5a651a24fcf5d1fc64922483045c08321a3b89c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ced4f62b4f27ede28c61e8d2670432ddd7b76f9b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>演练：使用 Application Insights 为 Microsoft Dynamics CRM Online 启用遥测
 本文演示如何使用 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 从 [Microsoft Dynamics CRM Online](https://www.dynamics.com/) 获取遥测数据。 我们将引导完成向应用程序添加 Application Insights 脚本、捕获数据和数据可视化的完整过程。
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/17/2018
     ![打开文本编辑器](./media/app-insights-sample-mscrm/00004.png)
 2. 从 Application Insights 复制代码。 复制时，请确保忽略脚本标记。 请参阅下面的屏幕快照：
 
-    ![设置检测密钥](./media/app-insights-sample-mscrm/00005.png)
+    ![设置检测密钥](./media/app-insights-sample-mscrm/000005.png)
 
     代码包括用于标识 Application insights 资源的检测密钥。
 3. 保存并发布。

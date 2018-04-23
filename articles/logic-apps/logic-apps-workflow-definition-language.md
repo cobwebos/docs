@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
 ms.openlocfilehash: 42932e6d1727a1444c62f565ae3c48dc178aeb2b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Azure 逻辑应用的工作流定义语言架构
 
@@ -126,14 +126,14 @@ ms.lasthandoff: 04/06/2018
 > [!NOTE]
 > 某些表达式从运行时操作获取其值，而这些操作在开始执行时可能不存在。 可以使用**函数**来帮助检索其中的某些值。  
   
-表达式可出现在 JSON 字符串值中的任何位置，始终生成另一个 JSON 值。 将某个 JSON 值判定为表达式时，会通过删除 \@ 符号来提取表达式的正文。 如果需要以 \@ 开头的文本字符串，必须使用 \@@ 将它转义。 以下示例演示了如何计算表达式。  
+表达式可出现在 JSON 字符串值中的任何位置，始终生成另一个 JSON 值。 将某个 JSON 值判定为表达式时，会通过删除 \@ 符号来提取表达式的正文。 如果需要以 \@\ 开头的文本字符串，必须使用 @@ 将它转义。 以下示例演示了如何计算表达式。  
   
 |JSON 值|结果|  
 |----------------|------------|  
 |"parameters"|返回字符“parameters”。|  
 |"parameters[1]"|返回字符“parameters[1]”。|  
-|"\@@\"|返回包含\“\@\”的、由 1 个字符构成的字符串。|  
-|\" \@\"|返回包含“@”的、由 2 个字符构成的字符串。|  
+|"@@"|返回包含\“\@\”的、由 1 个字符构成的字符串。|  
+|\" \@\"|返回包含 \“ \@ \”的、由 2 个字符构成的字符串。|  
   
 如果使用*字符串内插*，表达式还可以显示在 `@{ ... }` 中包装表达式的字符串内。 例如： <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
 

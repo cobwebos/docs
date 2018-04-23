@@ -1,6 +1,6 @@
 ---
-title: "Azure 机器学习预览版功能的概念性概述 | Microsoft Docs"
-description: "Azure 机器学习的预览版功能的概念性概述，例如订阅、帐户、工作区、项目，等等。"
+title: Azure 机器学习预览版功能的概念性概述 | Microsoft Docs
+description: Azure 机器学习的预览版功能的概念性概述，例如订阅、帐户、工作区、项目，等等。
 services: machine-learning
 author: serinakaye
 ms.author: serinak
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
 ms.openlocfilehash: ea9da6f23fd08c09f9e805519487648480816f35
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-machine-learning---concepts"></a>Azure 机器学习 - 概念
 

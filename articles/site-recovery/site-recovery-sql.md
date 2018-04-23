@@ -1,24 +1,24 @@
 ---
-title: "使用 SQL Server 和 Azure Site Recovery 复制应用程序 | Microsoft Docs"
-description: "本文介绍了如何使用针对 SQL Server 的 Azure Site Recovery 灾难功能来复制 SQL Server。"
+title: 使用 SQL Server 和 Azure Site Recovery 复制应用程序 | Microsoft Docs
+description: 本文介绍了如何使用针对 SQL Server 的 Azure Site Recovery 灾难功能来复制 SQL Server。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: prateek9us
 manager: gauravd
-editor: 
+editor: ''
 ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 04/09/2018
 ms.author: pratshar
-ms.openlocfilehash: 7981173b419632683a40a54bc07f51f0fccab531
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: f0c43eee127857edfd1692dce825ef295be09f7b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>使用 SQL Server 灾难恢复和 Azure Site Recovery 来保护 SQL Server
 

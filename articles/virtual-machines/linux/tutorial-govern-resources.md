@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1f52079e00c7c5f4e70acf8c86f648ed9281744e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a7d44e421162cf5784dde58f757e235d12b63cba
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-governance-with-azure-cli"></a>使用 Azure CLI 控制虚拟机
 
@@ -43,15 +43,15 @@ az group create --name myResourceGroup --location "East US"
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-你希望确保你的组织中的用户对这些资源具有合适级别的访问权限。 你不希望向用户授予不受限的访问权限，但还需要确保他们可以执行其工作。 使用[基于角色的访问控制](../../active-directory/role-based-access-control-what-is.md)，你可以管理哪些用户有权在某个范围内完成特定操作。
+你希望确保你的组织中的用户对这些资源具有合适级别的访问权限。 你不希望向用户授予不受限的访问权限，但还需要确保他们可以执行其工作。 使用[基于角色的访问控制](../../role-based-access-control/overview.md)，你可以管理哪些用户有权在某个范围内完成特定操作。
 
 若要创建和删除角色分配，用户必须具有 `Microsoft.Authorization/roleAssignments/*` 访问权限。 此访问权限是通过“所有者”或“用户访问”管理员角色授权的。
 
 若要管理虚拟机解决方案，可以使用三种特定于资源的角色来进行通常所需的访问：
 
-* [虚拟机参与者](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
-* [网络参与者](../../active-directory/role-based-access-built-in-roles.md#network-contributor)
-* [存储帐户参与者](../../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+* [虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [网络参与者](../../role-based-access-control/built-in-roles.md#network-contributor)
+* [存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
 通常情况下，与其向单个用户分配角色，不如为需要进行相似操作的用户[创建一个 Azure Active Directory 组](../../active-directory/active-directory-groups-create-azure-portal.md)， 然后向该组分配相应的角色。 为了简单起见，本文创建一个没有成员的 Azure Active Directory 组。 仍然可以为该组分配一个负责某个范围的角色。 
 

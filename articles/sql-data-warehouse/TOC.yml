@@ -11,6 +11,8 @@
   items:
     - name: 创建和连接 - 门户
       href: create-data-warehouse-portal.md
+    - name: 创建 - PowerShell
+      href: create-data-warehouse-powershell.md
     - name: 暂停和恢复计算
       items:
         - name: 门户

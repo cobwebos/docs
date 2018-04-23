@@ -4,7 +4,7 @@ description: 了解如何使用 Azure PowerShell 和 Resource Manager 部署模�
 keywords: ''
 services: virtual-machines-windows
 documentationcenter: ''
-author: Drewm3
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2016
-ms.author: drewm
-ms.openlocfilehash: 938614d7427f691dcacbafa324694a9a7f37d3ca
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 4ce76c35082775dd3fdabfb23d312c7653cb4e73
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>更改 Windows VM 的可用性集
 以下步骤说明如何使用 Azure PowerShell 来更改 VM 的可用性集。 只能在创建 VM 时将 VM 添加到可用性集。 要更改可用性集，必须将虚拟机删除，然后重新创建虚拟机。 

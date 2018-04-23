@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: simorjay
-ms.openlocfilehash: 700378d23f869427fb50b9dee5bcf8448ac73404
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bdd7dbf4f39529ac76fb496f0d459577e6f929dc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI
 
@@ -79,14 +79,14 @@ Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 蓝图提�
 ## <a name="roles"></a>角色
 
 
-此蓝图为管理用户（操作员）定义了两个角色，为负责医院管理和病人护理的用户定义了三个角色。 定义的第六个角色是针对负责评估 HIPAA 和其他法规遵循情况的审核员的。 有了 Azure 基于角色的访问控制 (RBAC)，就可以通过内置的自定义角色对解决方案的每个用户进行访问管理，既准确又有针对性。 请参阅 [Azure 门户中基于角色的访问控制入门](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)和[用于 Azure 基于角色的访问控制的内置角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)，对 RBAC、角色和权限进行详细了解。
+此蓝图为管理用户（操作员）定义了两个角色，为负责医院管理和病人护理的用户定义了三个角色。 定义的第六个角色是针对负责评估 HIPAA 和其他法规遵循情况的审核员的。 有了 Azure 基于角色的访问控制 (RBAC)，就可以通过内置的自定义角色对解决方案的每个用户进行访问管理，既准确又有针对性。 请参阅 [Azure 门户中基于角色的访问控制入门](https://docs.microsoft.com/azure/role-based-access-control/overview)和[用于 Azure 基于角色的访问控制的内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)，对 RBAC、角色和权限进行详细了解。
 
 ### <a name="site-administrator"></a>站点管理员
 
 
 站点管理员负责客户的 Azure 订阅。 他们控制总体部署，但无权访问病人记录。
 
--   默认角色分配：[所有者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#owner)
+-   默认角色分配：[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
 -   自定义角色分配：不适用
 
@@ -97,7 +97,7 @@ Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 蓝图提�
 数据库分析师管理 SQL Server 实例和数据库。
 他们无权访问病人记录。
 
--   内置角色分配：[SQL DB 参与者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-db-contributor)、[SQL Server 参与者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#sql-server-contributor)
+-   内置角色分配：[SQL DB 参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor)、[SQL Server 参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
 -   自定义角色分配：不适用
 
@@ -108,7 +108,7 @@ Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 蓝图提�
 
 数据科学家操作 Azure 机器学习服务。 他们可以导入、导出和管理数据，并且可以运行报表。 数据科学家有权访问病人数据，但没有管理员权限。
 
--   内置角色分配：[存储帐户参与者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#storage-account-contributor)
+-   内置角色分配：[存储帐户参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
 -   自定义角色分配：不适用
 
@@ -138,7 +138,7 @@ CMIO 有效地解决了医疗保健机构中医疗保健专业人员不懂信息
 
 审核员评估解决方案的符合性。 他们不能直接访问网络。
 
--   内置角色分配：[读者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#reader)
+-   内置角色分配：[读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
 -   自定义角色分配：不适用
 
@@ -222,7 +222,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 
 -   [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) 可以检测会影响组织标识的潜在漏洞，配置自动化的措施来应对所检测到的与组织标识相关的可疑操作，调查可疑的事件，并采取相应的措施予以解决。
 
--   [Azure 基于角色的访问控制 (RBAC)](/azure/active-directory/role-based-access-control-configure) 可在 Azure 中实现极有针对性的访问管理。 只有订阅管理员可以访问订阅，只有站点管理员可以访问 Azure Key Vault。 要求使用强密码（至少 12 个字符，包括至少一个大/小写字母、一个数字和一个特殊字符）。
+-   [Azure 基于角色的访问控制 (RBAC)](/azure/role-based-access-control/role-assignments-portal) 可在 Azure 中实现极有针对性的访问管理。 只有订阅管理员可以访问订阅，只有站点管理员可以访问 Azure Key Vault。 要求使用强密码（至少 12 个字符，包括至少一个大/小写字母、一个数字和一个特殊字符）。
 
 -   如果在部署过程中启用了 -enableMFA 开关，则支持多重身份验证。
 
@@ -230,7 +230,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 
 **角色：**
 
--   解决方案利用[内置角色](/azure/active-directory/role-based-access-built-in-roles)来管理对资源的访问。
+-   解决方案利用[内置角色](/azure/role-based-access-control/built-in-roles)来管理对资源的访问。
 
 -   默认情况下，会向所有用户分配特定的内置角色。
 
@@ -356,7 +356,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 
 
 -   已为机器学习 Web 服务[启用日志记录](/azure/machine-learning/studio/web-services-logging)。
-- 使用 [Machine Learning](/azure/machine-learning/preview/experimentation-service-configuration) Workbench 要求开发各种试验，以便向解决方案集提供预测功能。 [集成 Workbench](/azure/machine-learning/preview/using-git-ml-project) 有助于简化试验的管理。
+- 使用 [Machine Learning](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) Workbench 要求开发各种试验，以便向解决方案集提供预测功能。 [集成 Workbench](/azure/machine-learning/desktop-workbench/using-git-ml-project) 有助于简化试验的管理。
 
 ## <a name="security"></a>安全性
 

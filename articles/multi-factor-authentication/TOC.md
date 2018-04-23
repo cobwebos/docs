@@ -2,23 +2,23 @@
 
 # 概述
 ## [什么是 Azure 多重身份验证？](multi-factor-authentication.md)
-## [工作原理](multi-factor-authentication-how-it-works.md)
-## [如何获取 Azure MFA](multi-factor-authentication-versions-plans.md)
+## [工作原理](../active-directory/authentication/concept-mfa-howitworks.md)
+## [如何获取 Azure MFA](../active-directory/authentication/concept-mfa-licensing.md)
 
 # 入门
-## [选择部署位置](multi-factor-authentication-get-started.md)
-## [云中的 MFA](multi-factor-authentication-get-started-cloud.md)
+## [选择部署位置](../active-directory/authentication/concept-mfa-whichversion.md)
+## [云中的 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 ## [本地 MFA](multi-factor-authentication-get-started-server.md)
 ## [O365 用户的 MFA](https://support.office.com/article/Plan-for-multi-factor-authentication-for-Office-365-Deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba)
 ## [安全最佳实践](multi-factor-authentication-security-best-practices.md)
 
 # 如何
 ## 部署和使用
-### [配置设置](multi-factor-authentication-whats-next.md)
+### [配置设置](../active-directory/authentication/howto-mfa-mfasettings.md)
 ### [MFA 中的报告](multi-factor-authentication-manage-reports.md)
-### [使用现有网络策略服务器](multi-factor-authentication-nps-extension.md)
-#### [NPS 扩展的高级配置](nps-extension-advanced-configuration.md)
-### [创建身份验证提供程序](multi-factor-authentication-get-started-auth-provider.md)
+### [使用现有网络策略服务器](../active-directory/authentication/howto-mfa-nps-extension.md)
+#### [NPS 扩展的高级配置](../active-directory/authentication/howto-mfa-nps-extension-advanced.md)
+### [创建身份验证提供程序](../active-directory/authentication/concept-mfa-authprovider.md)
 ### 本地部署 MFA
 #### [安装用户门户](multi-factor-authentication-get-started-portal.md)
 #### [高级 VPN 配置](multi-factor-authentication-advanced-vpn-configurations.md)
@@ -38,9 +38,9 @@
 ### [VPN](nps-extension-vpn.md)
 ### 本地集成 MFA
 #### [联合身份验证服务](multi-factor-authentication-get-started-adfs.md)
-##### [使用 AD FS](multi-factor-authentication-get-started-adfs-cloud.md)
+##### [使用 AD FS](../active-directory/authentication/howto-mfa-adfs.md)
 ##### [使用 AD FS 2.0](multi-factor-authentication-get-started-adfs-adfs2.md)
-##### [使用 Windows Server 2012 R2 AD FS](multi-factor-authentication-get-started-adfs-w2k12.md)
+##### [使用 Windows Server 2012 R2 AD FS](../active-directory/authentication/howto-mfaserver-adfs-2012.md)
 #### 目录
 ##### [LDAP 身份验证](multi-factor-authentication-get-started-server-ldap.md)
 ##### [RADIUS 身份验证](multi-factor-authentication-get-started-server-radius.md)
@@ -54,7 +54,7 @@
 ## 故障排除
 ### [常见问题](multi-factor-authentication-faq.md)
 ### [提问](https://social.msdn.microsoft.com/Forums/newthread?category=windowsazureplatform&forum=windowsazureactiveauthentication&prof=required)
-### [NPS 扩展错误](multi-factor-authentication-nps-errors.md)
+### [NPS 扩展错误](../active-directory/authentication/howto-mfa-nps-extension-errors.md)
 
 # 资源
 ## [Azure 路线图](https://azure.microsoft.com/roadmap/?category=security-identity)

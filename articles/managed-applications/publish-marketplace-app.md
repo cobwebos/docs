@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 61815098a4935983f19b3dcea6e001230aee4771
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 753e13ea0dbfc7fe0c74987e1383f71329b76a63
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace 中的 Azure 托管应用程序
 
@@ -107,7 +107,7 @@ SKU 在 Marketplace 中显示在父级产品/服务下。 它在 Azure 门户中
 
 可以添加多个授权。 我们建议你创建 AD 用户组，并在“PrincipalId”中指定其 ID。 以此，可以将更多的用户添加到用户组，而无需更新 SKU。
 
-有关 RBAC 的详细信息，请参阅 [Azure 门户中的 RBAC 入门](../active-directory/role-based-access-control-what-is.md)。
+有关 RBAC 的详细信息，请参阅 [Azure 门户中的 RBAC 入门](../role-based-access-control/overview.md)。
 
 ## <a name="marketplace-form"></a>Marketplace 窗体
 

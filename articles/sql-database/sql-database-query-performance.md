@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 85f25946974b7ede64f9f8fb0009eed42c55c25a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c0cff73e8164bd493554b663d4ffbbf20f5155cb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Azure SQL 数据库查询性能见解
 管理和优化关系数据库性能是一项颇具挑战性的操作，需要投入大量的专业知识和时间。 查询性能见解通过提供以下内容减少数据库性能故障排除消耗的时间：
@@ -29,7 +29,7 @@ ms.lasthandoff: 04/06/2018
 * 查询性能见解要求已在数据库上启用 [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)。 如果未运行查询存储，该门户会提示将其打开。
 
 ## <a name="permissions"></a>权限
-需要具备以下[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)权限才能使用查询性能见解： 
+需要具备以下[基于角色的访问控制](../role-based-access-control/overview.md)权限才能使用查询性能见解： 
 
 * 需要具备**读者**、**所有者**、**参与者**、**SQL 数据库参与者**或 **SQL Server 参与者**权限才能查看资源占用排名靠前的查询和图表。 
 * 需要具备**所有者**、**参与者**、**SQL 数据库参与者**或 **SQL Server 参与者**权限才能查看查询文本。

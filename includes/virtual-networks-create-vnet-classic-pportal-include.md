@@ -1,7 +1,23 @@
+---
+title: include 文件
+description: include 文件
+services: virtual-network
+author: genli
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/13/2018
+ms.author: genli
+ms.custom: include file
+ms.openlocfilehash: edfcd4d59eceada9e1c6014dad9afa7fe8ab3c8f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/16/2018
+---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>如何在 Azure 门户中创建经典 VNet
 若要基于上述方案创建经典 VNet，请执行以下步骤。
 
-1. 从浏览器导航到 http://portal.azure.com，并在必要时用 Azure 帐户登录。
+1. 在浏览器中导航到 http://portal.azure.com，并根据需要使用 Azure 帐户登录。
 2. 单击“创建资源” > “网络” > “虚拟网络”。 请注意，“选择部署模型”列表已显示了“经典”。 3. 单击“创建”，如下图所示。
    
     ![在 Azure 门户中创建 VNet](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure1.gif)

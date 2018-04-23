@@ -1,11 +1,11 @@
 ---
-title: "适用于云解决方案提供商的 Azure ExpressRoute | Microsoft Docs"
-description: "本文提供的信息适用于想要将 Azure 服务和 ExpressRoute 纳入到产品/服务中去的云服务提供商。"
+title: 适用于云解决方案提供商的 Azure ExpressRoute | Microsoft Docs
+description: 本文提供的信息适用于想要将 Azure 服务和 ExpressRoute 纳入到产品/服务中去的云服务提供商。
 documentationcenter: na
 services: expressroute
 author: richcar
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f6c5f8ee-40ba-41a1-ae31-67669ca419a6
 ms.service: expressroute
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
-ms.openlocfilehash: dfae23638e31242dc795922fd62d1abb02579480
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 9991da5d5ab6f43cc8c5ebf1672d7da0f1ad061e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>适用于云解决方案提供商 (CSP) 的 ExpressRoute
 Microsoft 为传统经销商和分销商 (CSP) 提供超大规模的服务，允许他们为客户快速预配新服务和解决方案，而不需投资开发这些新服务。 为了让云解决方案提供商 (CSP) 能够直接管理这些新服务，Microsoft 提供了相应的程序和 API，以便 CSP 代表客户管理 Microsoft Azure 资源。 其中一项资源就是 ExpressRoute。 ExpressRoute 允许 CSP 将现有客户资源连接到 Azure 服务。 ExpressRoute 是一种高速专用通信链路，可以链接到 Azure 中的服务。 
@@ -65,7 +65,7 @@ Microsoft 为 CSP 提供管理 Azure 客户订阅所需的 API，允许通过编
 
 如何选择这两种模式取决于客户的需求，以及目前提供 Azure 服务的具体需要。 有关这些模型的详细信息以及关联的基于角色的访问控制、网络和标识设计模式在以下链接中有详尽介绍：
 
-* **基于角色的访问控制 (RBAC)** – RBAC 基于 Azure Active Directory。  有关 Azure RBAC 的详细信息，请参阅 [此处](../active-directory/role-based-access-control-configure.md)。
+* **基于角色的访问控制 (RBAC)** – RBAC 基于 Azure Active Directory。  有关 Azure RBAC 的详细信息，请参阅 [此处](../role-based-access-control/role-assignments-portal.md)。
 * **网络** – 介绍有关 Microsoft Azure 中网络的各种主题。
 * **Azure Active Directory (Azure AD)** – Azure AD 提供针对 Microsoft Azure 和第三方 SaaS 应用程序的标识管理。 有关 Azure AD 的详细信息，请参阅 [此处](https://azure.microsoft.com/documentation/services/active-directory/)。  
 
@@ -86,7 +86,7 @@ ExpressRoute 支持将多个 vNet 连接到单个 ExpressRoute 线路，以便�
 在 Connect-Through 配置中，需要负责所有网络基础结构，确保将客户数据中心资源连接到 Azure 中托管的订阅。 每个想要使用 Azure 功能的客户都需要建立自己的 ExpressRoute 连接，由你进行管理。 将使用客户所用的相同方法来采购 ExpressRoute 线路。 将按照 [ExpressRoute 线路预配工作流和线路状态](expressroute-workflows.md)一文中概述的相同步骤进行操作。 然后，将配置边界网关协议 (BGP) 路由，以便控制本地网络与 Azure vNet 之间的流量。
 
 ### <a name="connect-to-model"></a>Connect-To 模型
-在 Connect-To 配置中，客户已经建立了到 Azure 的连接，或者会启动一个到 Internet 服务提供商的连接，将 ExpressRoute 从你客户自己的数据中心直接链接到 Azure 而不是数据中心。 客户将遵循上述 Connect-Through 模型中描述的步骤来开始预配过程。 建立线路以后，客户需先配置本地路由器，然后才能访问网络和 Azure vNet。
+在 Connect-To 配置中，客户已经建立了到 Azure 的连接，或者会启动一个到 Internet 服务提供商的连接，将 ExpressRoute 从你客户自己的数据中心直接链接到 Azure 而不是数据中心。 客户将遵循上述 Connect-Through 模型中描述的步骤来开始预配过程。 建立线路以后，客户需先配置本地路由器，才能访问你的网络和 Azure vNet。
 
 可以协助设置连接并配置路由，以便你数据中心的资源能够与你数据中心的客户端资源通信，或者与 Azure 中托管的资源通信。
 
@@ -119,7 +119,7 @@ ExpressRoute 通过 Azure 虚拟网络网关连接到 Azure 网络。 网络网�
 ### <a name="user-defined-routing-udr"></a>用户定义的路由 (UDR)
 使用用户定义的路由，可以控制虚拟网络中从分配的子网到其他子网的出站流量，或者控制经过其他某个预定义网关（ExpressRoute；Internet 或 VPN）的出站流量。 可以将默认的系统路由表替换为用户定义的路由表，以便将默认路由表替换为自定义路由。 使用用户定义的路由，客户可以创建到某些设备（例如防火墙或入侵检测设备）的特定路由，或者阻止他人从托管用户定义的路由的子网访问特定的子网。 有关用户定义的路由的概述，请查看 [此处](../virtual-network/virtual-networks-udr-overview.md)。 
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 根据所用的模型（Connect-To 或 Connect-Through），客户可在其 vNet 中定义安全策略，或者向 CSP 提供针对其 vNet 进行定义时的安全策略要求。 可以定义以下安全标准：
 
 1. **客户隔离** — Azure 平台通过将客户 ID 和 vNet 信息存储在安全的数据库中，将每个客户的流量封装在 GRE 隧道中，从而实现客户隔离。

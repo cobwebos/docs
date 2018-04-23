@@ -1,11 +1,11 @@
 ---
-title: "用于 B2B 监视的自定义跟踪架构 - Azure 逻辑应用 | Microsoft 文档"
-description: "创建自定义跟踪架构，用于通过 Azure 集成帐户中的事务监视 B2B 消息。"
+title: 用于 B2B 监视的自定义跟踪架构 - Azure 逻辑应用 | Microsoft 文档
+description: 创建自定义跟踪架构，用于通过 Azure 集成帐户中的事务监视 B2B 消息。
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b71a4938dde2a71f1ce29403af7aa9101358d64c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 94de6afcf3f9f95a3cb45207ef43e1d33b728d99
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="enable-tracking-to-monitor-your-complete-workflow-end-to-end"></a>启用跟踪，以便监视完整的端到端工作流
 可以为企业到企业工作流的不同部分启用内置跟踪，例如跟踪 AS2 或 X12 消息。 当创建的工作流包含逻辑应用、BizTalk Server、SQL Server 或任何其他层时，用户可以启用自定义跟踪，以便从头至尾记录工作流的事件。 
@@ -61,10 +61,10 @@ ms.lasthandoff: 10/11/2017
 
 ````
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 说明 |
 | --- | --- | --- |
 | sourceType |   | 运行的源的类型。 允许的值为“Microsoft.Logic/workflows”和“自定义”。 （必需） |
-| 源 |   | 如果源类型为 **Microsoft.Logic/workflows**，则源信息必须遵循此架构。 如果源类型为“自定义”；架构为 JToken。 （必需） |
+| Source |   | 如果源类型为 **Microsoft.Logic/workflows**，则源信息必须遵循此架构。 如果源类型为“自定义”；架构为 JToken。 （必需） |
 | systemId | String | 逻辑应用系统 ID。 （必需） |
 | runId | String | 逻辑应用运行 ID。 （必需） |
 | operationName | String | 操作（例如操作或触发）的名称。 （必需） |
@@ -84,6 +84,6 @@ ms.lasthandoff: 10/11/2017
 * [X12 跟踪架构](logic-apps-track-integration-account-x12-tracking-schema.md)
 
 ## <a name="next-steps"></a>后续步骤
-* [了解有关监视 B2B 消息的详细信息](logic-apps-monitor-b2b-message.md)。   
-* 了解[在 Operations Management Suite 门户中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
-* 了解有关 [Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md)。
+* 了解有关[监视 B2B 消息](logic-apps-monitor-b2b-message.md)的详细信息。   
+* 了解[在 Log Analytics 中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
+* 了解有关 [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) 的详细信息。

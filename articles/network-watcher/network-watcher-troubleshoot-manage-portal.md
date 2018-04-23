@@ -1,11 +1,11 @@
 ---
-title: "对 Azure 虚拟网络网关和连接进行故障排除 - 门户 | Microsoft Docs"
-description: "此页说明如何使用 Azure 网络观察程序对门户进行故障排除"
+title: 对 Azure 虚拟网络网关和连接进行故障排除 - 门户 | Microsoft Docs
+description: 此页说明如何使用 Azure 网络观察程序对门户进行故障排除
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: fb8f60eea0eaa24649f584ae4183aa8e552a433e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: becc4f799e34aabba5c703f09e51a4b7d497c45a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-network-watcher-from-azure-portal"></a>从 Azure 门户使用网络观察程序对虚拟网络网关和连接进行故障排除
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-如果停止 VPN 连接的设置已更改，请参阅[管理网络安全组](../virtual-network/virtual-network-manage-nsg-arm-portal.md)找到可能有问题的网络安全组和安全规则。
+如果停止 VPN 连接的设置已更改，请参阅[管理网络安全组](../virtual-network/manage-network-security-group.md)找到可能有问题的网络安全组和安全规则。
 
 
 [2]: ./media/network-watcher-troubleshoot-manage-portal/2.png

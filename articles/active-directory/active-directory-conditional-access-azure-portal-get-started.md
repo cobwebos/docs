@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory 中的条件访问入门 | Microsoft Docs"
-description: "使用位置条件测试条件性访问。"
+title: Azure Active Directory 中的条件访问入门 | Microsoft Docs
+description: 使用位置条件测试条件性访问。
 services: active-directory
-keywords: "对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略"
-documentationcenter: 
+keywords: 对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c780efe92ec69ff692b42a586f55a1036d2ec952
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 04a7736e85c0b149cb627411f61fc147220769ad
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件访问入门
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/16/2018
 
 ## <a name="scenario-description"></a>方案描述
 
-许多组织中的一个常见要求是，只有从企业 Intranet 外部访问应用时，才需要执行多重身份验证。 使用 Azure Active Directory，可以通过配置基于位置的条件性访问策略来轻松实现此目标。 本主题详细说明如何配置相关策略。 策略利用[受信任的 IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips) 来区分从企业 Intranet 尝试的访问与从所有其他位置进行的访问。
+许多组织中的一个常见要求是，只有从企业 Intranet 外部访问应用时，才需要执行多重身份验证。 使用 Azure Active Directory，可以通过配置基于位置的条件性访问策略来轻松实现此目标。 本主题详细说明如何配置相关策略。 策略利用[受信任的 IP](authentication/howto-mfa-mfasettings.md#trusted-ips) 来区分从企业 Intranet 尝试的访问与从所有其他位置进行的访问。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -47,7 +47,7 @@ ms.lasthandoff: 01/16/2018
 
 - 配置受信任的 IP
 
-如需有关受信任 IP 的详细信息，请参阅[受信任的 IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)。
+如需有关受信任 IP 的详细信息，请参阅[受信任的 IP](authentication/howto-mfa-mfasettings.md#trusted-ips)。
 
 
 ## <a name="policy-configuration-steps"></a>策略配置步骤
@@ -84,7 +84,7 @@ ms.lasthandoff: 01/16/2018
 
     c. 在“选择”边栏选项卡中选择测试用户，并单击“选择”。
 
-    d.单击“下一步”。 在“用户和组”边栏选项卡中，单击“完成”。
+    d. 在“用户和组”边栏选项卡中，单击“完成”。
 
 7. 在“新建”边栏选项卡的“分配”部分中单击“云应用”，打开“云应用”边栏选项卡。
 
@@ -100,7 +100,7 @@ ms.lasthandoff: 01/16/2018
 
     c. 在“选择”边栏选项卡中选择你的云应用，并单击“选择”。
 
-    d.单击“下一步”。 在“云应用”边栏选项卡中，单击“完成”。
+    d. 在“云应用”边栏选项卡中，单击“完成”。
 
 9. 在“新建”边栏选项卡的“分配”部分中单击“条件”，打开“条件”边栏选项卡。
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 01/16/2018
 
     ![条件性访问](./media/active-directory-conditional-access-azure-portal-get-started/12.png)
 
-    d.单击“下一步”。 单击“Done”（完成） 。
+    d. 单击“Done”（完成） 。
 
 12. 在“条件”边栏选项卡中，单击“完成”。
 

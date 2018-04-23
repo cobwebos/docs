@@ -1,12 +1,12 @@
 ---
-title: "使用 Azure 存储保护 PaaS 应用程序 | Microsoft Docs"
+title: 使用 Azure 存储保护 PaaS 应用程序 | Microsoft Docs
 description: " 了解有关保护 PaaS Web 和移动应用程序的 Azure 存储安全最佳做法。 "
 services: security
 documentationcenter: na
 author: TomShinder
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomShinder
-ms.openlocfilehash: 16ee6d9d2f02c758d7682626a8b71a3ff17f841c
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 9d4251e61b60d8da6ce5072ba66aeaedb60cb33a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-paas-web-and-mobile-applications-using-azure-storage"></a>使用 Azure 存储保护 PaaS Web 和移动应用程序
 本文介绍有关保护 PaaS Web 和移动应用程序的 Azure 存储安全最佳做法。 这些最佳实践衍生自我们的 Azure 经验和客户经验。
 
 [Azure 存储安全指南](../storage/common/storage-security-guide.md)是有关 Azure存储和安全性的详细信息的重要来源。  本文在较高的层次上介绍了安全指南中的一些概念，以及获得详细信息的安全指南和其他来源的链接。
 
-## <a name="azure-storage"></a>Azure 存储空间
+## <a name="azure-storage"></a>Azure 存储
 Azure 可以用本地不易实现的方式来部署并使用存储。 通过 Azure 存储，可用相对较少的工作量达到高水平的可伸缩性和可用性。 Azure 存储不仅是 Windows 和 Linux Azure 虚拟机的基础，还可以支持大型分布式应用程序。
 
 Azure 存储提供以下四种服务：Blob 存储、表存储、队列存储和文件存储。 若要了解详细信息，请参阅 [Microsoft Azure 存储简介](../storage/storage-introduction.md)。
@@ -75,7 +75,7 @@ PaaS 则不同。 在 Microsoft Azure 中存储文件的最常见方式之一是
 
 之前讨论了使用共享访问签名 (SAS) 向其他客户端授予你的存储帐户中对象的访问权限，且无需公开帐户存储帐户密钥。 有时候，与针对存储帐户的特定操作相关联的风险要超过 SAS 所带来的好处。 有时候以其他方式管理访问会更简单。
 
-管理访问的另一种方法是使用 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-what-is.md) (RBAC)。 使用 RBAC 时，可根据了解内容的需要和最低特权的安全原则，专注于为员工提供所需的准确权限。 权限过多，可能会向攻击者公开帐户。 权限太少，员工无法有效完成其工作。 RBAC 通过对 Azure 提供细致的访问管理帮助解决此问题。 对于想要实施数据访问安全策略的组织，这是必须要做的事。
+管理访问的另一种方法是使用 [Azure 基于角色的访问控制](../role-based-access-control/overview.md) (RBAC)。 使用 RBAC 时，可根据了解内容的需要和最低特权的安全原则，专注于为员工提供所需的准确权限。 权限过多，可能会向攻击者公开帐户。 权限太少，员工无法有效完成其工作。 RBAC 通过对 Azure 提供细致的访问管理帮助解决此问题。 对于想要实施数据访问安全策略的组织，这是必须要做的事。
 
 可以利用 Azure 中内置的 RBAC 角色向用户分配权限。 考虑将存储帐户参与者用于需要管理存储帐户的云操作员，并使用经典存储帐户参与者角色来管理经典存储帐户。 如果云操作员需要管理 VM 但不管理他们连接到的虚拟网络或存储帐户，请考虑将他们添加到虚拟机参与者角色。
 
@@ -83,8 +83,8 @@ PaaS 则不同。 在 Microsoft Azure 中存储文件的最常见方式之一是
 
 若要了解有关 RBAC 的详细信息，请参阅：
 
-- [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
-- [用于 Azure 基于角色的访问控制的内置角色](../active-directory/role-based-access-built-in-roles.md)
+- [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)
+- [用于 Azure 基于角色的访问控制的内置角色](../role-based-access-control/built-in-roles.md)
 - [Azure 存储安全指南](../storage/common/storage-security-guide.md)，详细介绍了如何使用 RBAC 保护存储帐户
 
 ## <a name="storage-encryption"></a>存储加密

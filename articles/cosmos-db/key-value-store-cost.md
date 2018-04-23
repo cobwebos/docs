@@ -1,13 +1,12 @@
 ---
-title: "用作键值存储的 Azure Cosmos DB – 费用概述 | Microsoft Docs"
-description: "了解使用 Azure Cosmos DB 作为键值存储带来的经济性。"
-keywords: "键值存储"
+title: 用作键值存储的 Azure Cosmos DB – 费用概述 | Microsoft Docs
+description: 了解使用 Azure Cosmos DB 作为键值存储带来的经济性。
+keywords: 键值存储
 services: cosmos-db
-author: mimig1
-manager: jhubbard
-editor: 
-tags: 
-documentationcenter: 
+author: SnehaGunda
+manager: kfile
+tags: ''
+documentationcenter: ''
 ms.assetid: 7f765c17-8549-4509-9475-46394fc3a218
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: mimig
-ms.openlocfilehash: e6f87cd82ebe31965fcaac1f66d2df03fd58294f
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.author: sngun
+ms.openlocfilehash: 9854ed30672ea16650fbdd98e991fb3916afef07
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>用作键值存储的 Azure Cosmos DB – 费用概述
 

@@ -1,26 +1,24 @@
 ---
-title: "在 Azure HDInsight Spark 群集上运行交互式查询 | Microsoft Docs"
-description: "此 HDInsight Spark 快速入门介绍如何在 HDInsight 中创建 Apache Spark 群集。"
-keywords: "spark 快速入门,交互式 spark,交互式查询,hdinsight spark,azure spark"
+title: 在 Azure HDInsight Spark 群集上运行交互式查询 | Microsoft Docs
+description: 此 HDInsight Spark 快速入门介绍如何在 HDInsight 中创建 Apache Spark 群集。
+keywords: spark 快速入门,交互式 spark,交互式查询,hdinsight spark,azure spark
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: jgao
-ms.openlocfilehash: 78ab44a7afa6523e1e9e4082b3f45b1a28affe77
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 177fb47c72e9abbafcda69416643fbd3848373bd
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="run-interactive-queries-on-spark-clusters-in-hdinsight"></a>在 HDInsight 中的 Spark 群集上运行交互式查询
 

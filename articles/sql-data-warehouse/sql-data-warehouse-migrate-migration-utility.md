@@ -1,11 +1,11 @@
 ---
-title: "迁移：数据仓库迁移实用程序 | Microsoft 文档"
-description: "迁移到 SQL 数据仓库。"
+title: 迁移：数据仓库迁移实用程序 | Microsoft 文档
+description: 迁移到 SQL 数据仓库。
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 4d7ad981-ef31-4513-b337-50bdc4709c09
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
 ms.openlocfilehash: e8a8a84153a950f2d1bc002b34c83dc5ed8a5eb8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="data-warehouse-migration-utility-preview"></a>数据仓库迁移实用程序（预览版）
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.lasthandoff: 12/21/2017
 此外，要运行此迁移实用程序，需要以下某种针对要迁移的数据库的权限：CREATE DATABASE、ALTER ANY DATABASE 或 VIEW ANY DEFINITION。
 
 ### <a name="launching-the-tool-and-connecting"></a>启动工具并连接
-单击在安装后显示的桌面图标即可启动该工具。 打开工具时，系统会显示初始连接页面，提示选择迁移工具的源和目标。 目前我们支持将 SQL Server 和 Azure SQL 数据库用作源，将 SQL 数据仓库用作目标。 选择源和目标后，系统会要求填写服务器名称并执行身份验证，然后单击“连接”以连接到源服务器。
+单击在安装后显示的桌面图标即可启动该工具。 打开工具时，系统会显示初始连接页面，提示选择迁移工具的源和目标。 目前我们支持将 SQL Server 和 Azure SQL 数据库用作源，将 SQL 数据仓库用作目标。 选择源和目标后，系统会要求你填写服务器名称并执行身份验证，并单击“连接”以连接到源服务器。
 
 完成身份验证后，该工具会显示连接到的服务器中的数据库列表。 可以通过选择想要迁移的数据库，然后单击“迁移选定项目”开始迁移。
 

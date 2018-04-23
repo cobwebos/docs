@@ -1,24 +1,18 @@
 ---
-title: "如何在 Azure 搜索中对搜索结果分页 | Microsoft Docs"
-description: "Azure 搜索中的分页，这是 Microsoft Azure 上的一项托管云搜索服务。"
-services: search
-documentationcenter: 
+title: 如何在 Azure 搜索中对搜索结果分页 | Microsoft Docs
+description: Azure 搜索中的分页，这是 Microsoft Azure 上的一项托管云搜索服务。
 author: HeidiSteen
-manager: jhubbard
-editor: 
-ms.assetid: a0a1d315-8624-4cdf-b38e-ba12569c6fcc
+manager: cgronlun
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 1054e15a2751c53aad5dbc8054c4cec41102dee9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 066358241b79f8bc0fb40e5e5b5989e561d9c909
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>如何在 Azure 搜索中对搜索结果分页
 本文提供有关如何使用 Azure 搜索服务 REST API 实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。

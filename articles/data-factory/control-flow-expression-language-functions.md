@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 1625b37a41082f8536d103701b1356a13a5dd837
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure 数据工厂中的表达式和函数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,18 +41,18 @@ ms.lasthandoff: 03/28/2018
 
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)） ，请参阅[数据工厂 V1 中的函数和变量](v1/data-factory-functions-variables.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)） ，请参阅[数据工厂 V1 中的函数和变量](v1/data-factory-functions-variables.md)。
 
 
 ## <a name="expressions"></a>表达式  
-表达式可出现在 JSON 字符串值中的任何位置，始终生成另一个 JSON 值。 如果某个 JSON 值为表达式，会通过删除 @ 符号来提取表达式的正文。 如果需要以 @ 开头的文本字符串，则必须使用 @@ 将它转义。 以下示例演示了如何计算表达式。  
+表达式可出现在 JSON 字符串值中的任何位置，始终生成另一个 JSON 值。 如果某个 JSON 值为表达式，会通过删除 @ 符号来提取表达式的正文。 如果需要以 \@\ 开头的文本字符串，则必须使用 @@ 将它转义。 以下示例演示了如何计算表达式。  
   
 |JSON 值|结果|  
 |----------------|------------|  
 |"parameters"|返回字符“parameters”。|  
 |"parameters[1]"|返回字符“parameters[1]”。|  
-|\"\@\@\"|返回包含\“\@\”的、由 1 个字符构成的字符串。|  
-|\" \@\"|返回包含\“\@\”的、由 2 个字符构成的字符串。|  
+|"@@"|返回包含\“\@\”的、由 1 个字符构成的字符串。|  
+|\" \@\"|返回包含 \“ \@ \”的、由 2 个字符构成的字符串。|  
   
  如果使用称为字符串内插的功能（其中表达式封装在 `@{ ... }` 内），表达式还可以显示在字符串内。 例如： `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   

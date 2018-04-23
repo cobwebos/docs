@@ -1,11 +1,11 @@
 ---
-title: "控制 Azure 虚拟网络中的路由 - CLI - 经典 | Microsoft 文档"
-description: "了解如何在典型部署模型中使用 Azure CLI 控制 Vnet 中的路由"
+title: 控制 Azure 虚拟网络中的路由 - CLI - 经典 | Microsoft 文档
+description: 了解如何在典型部署模型中使用 Azure CLI 控制 Vnet 中的路由
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
-editor: 
+author: genli
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: ca2b4638-8777-4d30-b972-eb790a7c804f
 ms.service: virtual-network
@@ -14,19 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
-ms.author: jdial
-ms.openlocfilehash: 6bfdfcdde39d64d662bb6d2ea55fadca24d49091
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: genli
+ms.openlocfilehash: 820387d35b912d01a8a296bd1a80edecf781cbb5
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-the-azure-cli"></a>使用 Azure CLI 控制路由和使用虚拟设备（经典）
 
 > [!div class="op_single_selector"]
 > * [PowerShell](tutorial-create-route-table-powershell.md)
 > * [Azure CLI](tutorial-create-route-table-cli.md)
-> * [模板](virtual-network-create-udr-arm-template.md)
 > * [PowerShell（经典）](virtual-network-create-udr-classic-ps.md)
 > * [CLI（经典）](virtual-network-create-udr-classic-cli.md)
 

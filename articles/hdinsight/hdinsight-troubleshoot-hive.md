@@ -1,25 +1,23 @@
 ---
-title: "使用 Azure HDInsight 对 Hive 进行故障排除 | Microsoft Docs"
-description: "获取有关使用 Apache Hive 和 Azure HDInsight 的常见问题的解答。"
-keywords: "Azure HDInsight, Hive, 常见问题解答, 故障排除指南, 常见问题"
+title: 使用 Azure HDInsight 对 Hive 进行故障排除 | Microsoft Docs
+description: 获取有关使用 Apache Hive 和 Azure HDInsight 的常见问题的解答。
+keywords: Azure HDInsight, Hive, 常见问题解答, 故障排除指南, 常见问题
 services: Azure HDInsight
 documentationcenter: na
 author: dharmeshkakadia
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 15B8D0F3-F2D3-4746-BDCB-C72944AA9252
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: dharmeshkakadia
-ms.openlocfilehash: 398cc7cd0fa815f12ba5b503a1328688e1159eee
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: d397552285466dc038fe580a084e2d1d0d69bfe2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Hive 进行故障排除
 

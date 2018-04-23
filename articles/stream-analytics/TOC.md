@@ -25,6 +25,7 @@
 ## [兼容性级别](stream-analytics-compatibility-level.md)
 ## [通用查询模式](stream-analytics-stream-analytics-query-patterns.md)
 ## [事件排序注意事项](stream-analytics-out-of-order-and-late-events.md)
+## [检查点和重播](stream-analytics-concepts-checkpoint-replay.md)
 
 # 操作方法指南
 
@@ -68,7 +69,7 @@
 
 ## 故障排除
 ### [故障排除步骤](stream-analytics-troubleshooting-guide.md)
-### [常见故障排除问题](stream-analytics-common-troubleshooting-issues.md)
+### [常见问题](stream-analytics-common-troubleshooting-issues.md)
 ### [作业关系图](stream-analytics-job-diagram-with-metrics.md)
 ### [诊断日志](stream-analytics-job-diagnostic-logs.md)
 ### [检查资源运行状况](stream-analytics-resource-health.md)
@@ -94,16 +95,8 @@
 ## [论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 ## [定价](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [定价计算器](https://azure.microsoft.com/pricing/calculator/)
-## [发行说明](stream-analytics-release-notes.md)
 ## [服务更新](https://azure.microsoft.com/updates/?product=stream-analytics)
 ## [堆栈溢出](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [视频](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)
 ## [客户案例研究](https://azure.microsoft.com/case-studies/?service=stream-analytics)
 ## [白皮书 - 实时事件处理](stream-analytics-real-time-event-processing-reference-architecture.md)
-## [Storm 与流分析的比较](stream-analytics-comparison-storm.md)
-
-
-
-
-
-

@@ -1,11 +1,11 @@
 ---
-title: "排查路由问题 - PowerShell | Microsoft 文档"
-description: "了解如何使用 Azure PowerShell 在 Azure 资源管理器部署模型中排查路由问题。"
+title: 排查路由问题 - PowerShell | Microsoft 文档
+description: 了解如何使用 Azure PowerShell 在 Azure 资源管理器部署模型中排查路由问题。
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: bf7dc5e7-9399-460e-8e0d-8992dbed98a6
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: ac7f8ddaf84ba94075a9c9c3195bd57534c6821b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 2d501419dde633f89a5760af9f82604006de6b6f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>使用 Azure PowerShell 排查路由问题
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/21/2017
 ### <a name="view-effective-routes-for-a-network-interface"></a>查看网络接口的有效路由
 若要查看应用到网络接口的聚合路由，请完成以下步骤：
 
-1. 启动 Azure PowerShell 会话并登录到 Azure。 如果不熟悉 Azure PowerShell，请阅读[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文。 你的帐户必须有权对网络接口执行 *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* 操作。 若要了解如何向帐户分配操作，请参阅[创建用于 Azure 基于角色的访问控制的自定义角色](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)。
+1. 启动 Azure PowerShell 会话并登录到 Azure。 如果不熟悉 Azure PowerShell，请阅读[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文。 你的帐户必须有权对网络接口执行 *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* 操作。 若要了解如何向帐户分配操作，请参阅[创建用于 Azure 基于角色的访问控制的自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)。
 2. 以下命令返回对资源组 *RG1* 中名为 *VM1-NIC1* 的网络接口应用的所有路由。
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
@@ -101,7 +101,7 @@ ms.lasthandoff: 12/21/2017
        ---- ----- ------------- ----------- ----------------
        Active {10.9.0.0/16} VnetLocal {}
        Active {0.0.0.0/0} Internet {}
-3. 上一步骤的输出没有列出 WestUS-VNet1（前缀 10.9.0.0/16） ** 到 WestUS-VNet3 VNet（前缀 10.10.0.0/16）的路由。 如下图所示，包含 *WestUS-VNet3* VNet 的 VNet 对等互连链接处于“*已断开*”状态。
+3. 上一步骤的输出没有列出 WestUS-VNet1（前缀 10.9.0.0/16）* 到 WestUS-VNet3 VNet（前缀 10.10.0.0/16）的路由。 如下图所示，包含 *WestUS-VNet3* VNet 的 VNet 对等互连链接处于“*已断开*”状态。
    
     ![](./media/virtual-network-routes-troubleshoot-portal/image4.png)
    

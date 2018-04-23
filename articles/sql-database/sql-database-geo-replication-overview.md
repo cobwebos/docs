@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: d241bfb6245eb5a70f1e4fcedc86c969766019f4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: fc3dca82bea17b44f66b433f59e5861da3bb0ca2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>概述：故障转移组和活动异地复制
 使用活动异地复制可在相同或不同数据中心位置（区域）中最多配置四个可读的辅助数据库。 在数据中心发生服务中断或无法连接到主数据库时，可以使用辅助数据库进行查询和故障转移。 故障转移必须由用户通过应用程序手动启动。 故障转移后，新的主数据库具有不同的连接终结点。 
@@ -131,7 +131,7 @@ Azure SQL 数据库自动故障转移组（预览）是一项 SQL 数据库功�
 ## <a name="programmatically-managing-failover-groups-and-active-geo-replication"></a>以编程方式管理故障转移组和活动异地复制
 如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理自动故障转移组（预览）和活动异地复制。 下表描述了可用的命令集。
 
-Azure 资源管理器 API 和基于角色的安全性：活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)（Azure SQL 数据库 REST API）和 [Azure PowerShell cmdlets](https://docs.microsoft.com/powershell/azure/overview)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)。
+Azure 资源管理器 API 和基于角色的安全性：活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)（Azure SQL 数据库 REST API）和 [Azure PowerShell cmdlets](https://docs.microsoft.com/powershell/azure/overview)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/overview.md)。
 
 ## <a name="manage-sql-database-failover-using-transact-sql"></a>使用 Transact-SQL 管理 SQL 数据库故障转移
 

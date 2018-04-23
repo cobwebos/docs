@@ -1,24 +1,17 @@
 ---
 title: 在 Azure 搜索中保护数据和操作 | Microsoft Docs
 description: Azure 搜索安全性基于 Azure 搜索筛选器中通过用户和组安全标识符进行的 SOC 2 合规、加密、身份验证和标识访问。
-services: search
-documentationcenter: ''
 author: HeidiSteen
 manager: cgronlun
-editor: ''
-ms.assetid: ''
 ms.service: search
-ms.devlang: ''
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: heidist
-ms.openlocfilehash: 35f875e5f6345b9ebb9abc4deb71b7bf9c78907d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3985e4fff5eb1eb0c80b267dd8983488d10cb4e5
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="security-and-controlled-access-in-azure-search"></a>Azure 搜索中的安全性和受控访问权限
 
@@ -51,7 +44,7 @@ Microsoft 数据中心提供行业领先的物理安全性，符合广泛的标�
 整个 Azure Stack 提供多种安全机制，因此，创建的 Azure 搜索资源也会自动获得这些安全机制。
 
 + [订阅或资源级别的锁可防止删除](../azure-resource-manager/resource-group-lock-resources.md)
-+ [基于角色的访问控制 (RBAC) 可以控制对信息和管理操作的访问](../active-directory/role-based-access-control-what-is.md)
++ [基于角色的访问控制 (RBAC) 可以控制对信息和管理操作的访问](../role-based-access-control/overview.md)
 
 所有 Azure 服务支持使用基于角色的访问控制 (RBAC) 在不同的服务之间以一致的方式设置访问级别。 例如，仅限“所有者”和“参与者”角色查看敏感数据（如管理密钥），而任何角色的成员都可以查看服务状态。 RBAC 提供“所有者”、“参与者”和“读取者”角色。 默认情况下，所有服务管理员是“所有者”角色的成员。
 

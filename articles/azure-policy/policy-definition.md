@@ -5,15 +5,15 @@ services: azure-policy
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/17/2018
+ms.date: 04/18/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 42fdfa2eb629351c38fb72c20a62cd7d78acf229
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c98712b8fb2f8d6a85906b2c78fb678fc0f970b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 策略定义结构
 
@@ -67,7 +67,7 @@ Azure 策略使用的资源策略定义，可使你通过描述何时强制实�
 ## <a name="mode"></a>Mode
 
 **模式**确定将对策略评估哪些资源类型。 支持的模式包括：
-* `all`：评估资源组和所有资源类型 
+* `all`：评估资源组和所有资源类型
 * `indexed`：仅评估支持标记和位置的资源类型
 
 大多数情况下，建议将“mode”设置为 `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则需要手动指定 mode 参数。 如果策略定义不包含**模式**值，为提供向后兼容性，它默认为 `indexed`。

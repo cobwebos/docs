@@ -1,12 +1,12 @@
 ---
-title: "Azure 数据库安全最佳做法 | Microsoft Docs"
-description: "本文提供有关 Azure 数据库安全性的一套最佳做法。"
+title: Azure 数据库安全最佳做法 | Microsoft Docs
+description: 本文提供有关 Azure 数据库安全性的一套最佳做法。
 services: security
 documentationcenter: na
 author: unifycloud
 manager: swadhwa
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c8f49a778ab5e32108531cab05cab7f7eb092221
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3c019e8e1518c661eb75065f061ee681f0231efa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-database-security-best-practices"></a>Azure 数据库安全性最佳做法
 
@@ -112,7 +112,7 @@ SQL 数据库支持两种身份验证：SQL 身份验证和 Azure Active Directo
 因为经过授权的用户（如安全管理员或数据库管理员）可以访问数据，所以即使已使用 TDE 将数据库加密，也应遵循以下建议：
 
 -   启用数据库级别的 SQL 身份验证。
--   通过 [RBAC 角色](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)使用 Azure AD 身份验证。
+-   通过 [RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/overview)使用 Azure AD 身份验证。
 -   用户和应用程序应使用不同的帐户进行身份验证。 这样，可以限制授予用户和应用程序的权限，并降低恶意活动的风险。
 -   使用固定的数据库角色（例如 db_datareader 或 db_datawriter）实现数据库级别安全，或者为应用程序创建自定义角色，以向选定的数据库对象授予显式权限。
 

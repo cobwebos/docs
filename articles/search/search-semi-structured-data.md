@@ -1,18 +1,17 @@
 ---
-title: "在 Azure 云存储中搜索半结构化数据"
-description: "使用 Azure 搜索来搜索半结构化 Blob 数据。"
+title: 在 Azure 云存储中搜索半结构化数据
+description: 使用 Azure 搜索来搜索半结构化 Blob 数据。
 author: roygara
-manager: timlt
+manager: cgronlun
 ms.service: search
 ms.topic: tutorial
 ms.date: 10/12/2017
 ms.author: v-rogara
-ms.custom: mvc
-ms.openlocfilehash: a80ae99c2ada00885019ee93e4ef36821340d3a5
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: f05e9dd12a838199b23deddb4f6c4fb4c2fced08
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>第 2 部分：在云存储中搜索半结构化数据
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 01/13/2018
 > [!NOTE]
 > 本教程依赖于 JSON 数组支持，该项当前是 Azure 搜索中的预览功能。 该功能在门户中不可用。 为此，我们会使用可提供此功能的预览版 REST API，并使用某个 REST 客户端工具来调用该 API。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * 完成[前一教程](../storage/blobs/storage-unstructured-search.md)后，会获得前一教程中创建的存储帐户和搜索服务。
 

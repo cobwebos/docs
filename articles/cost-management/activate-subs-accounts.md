@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: a0dc2ee201c1729b10cd363553cdf5d61ec87748
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: dbbbc7ee87d53f65d51b20fd5b8ffcb6c4930f15
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>使用 Azure 成本管理激活 Azure 订阅和帐户
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/09/2018
 - 在 Azure AD 租户中注册 CloudynCollector 应用程序的权限。
 - 能够将应用程序分配到 Azure 订阅中的某个角色。
 
-在 Azure 订阅中，你的帐户必须拥有 `Microsoft.Authorization/*/Write` 访问权限，可以分配 CloudynCollector 应用程序。 通过[所有者](../active-directory/role-based-access-built-in-roles.md#owner)角色或[用户访问管理员](../active-directory/role-based-access-built-in-roles.md#user-access-administrator)角色授权此操作。
+在 Azure 订阅中，你的帐户必须拥有 `Microsoft.Authorization/*/Write` 访问权限，可以分配 CloudynCollector 应用程序。 通过[所有者](../role-based-access-control/built-in-roles.md#owner)角色或[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)角色授权此操作。
 
 如果你的帐户只是分配有“参与者”角色，则没有足够权限来分配应用程序。 尝试将 CloudynCollector 应用程序分配到 Azure 订阅时，会收到错误。
 

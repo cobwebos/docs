@@ -1,6 +1,6 @@
 ---
-title: "Azure 安全性和符合性蓝图 - UK-OFFICIAL 三层式 Web 应用程序自动化"
-description: "Azure 安全性和符合性蓝图 - UK-OFFICIAL 三层式 Web 应用程序自动化"
+title: Azure 安全性和符合性蓝图 - UK-OFFICIAL 三层式 Web 应用程序自动化
+description: Azure 安全性和符合性蓝图 - UK-OFFICIAL 三层式 Web 应用程序自动化
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9d95ccdd536efbff1540fab2b564e7745f5ac397
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: bb0a667c28e4ed0be3e67a7d89f10903be2c9d2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Azure 安全性和符合性蓝图 - UK-OFFICIAL 三层式 Web 应用程序自动化
 
@@ -193,7 +193,7 @@ ms.lasthandoff: 02/11/2018
 
 **Active Directory 集成**：客户可能希望使用 [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-azure-active-directory) 集成或 [Azure 中已加入本地林的 Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-active-directory-in-azure-joined-to-an-on-premises-forest) 作为专用 AD DS 体系结构的替代方案。
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全
 
 **管理安全性**：此蓝图允许管理员使用 RDP 从受信任的源连接到管理 VNet 和 Jumpbox。 使用 NSG 控制管理 VNet 的网络流量。 仅限受信任 IP 范围内可访问包含 Jumpbox 的子网的流量访问端口 3389。
 
@@ -211,7 +211,7 @@ ms.lasthandoff: 02/11/2018
 
 **资源管理**：将 VM、VNet 和负载均衡器等 Azure 资源分组到 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource)可对其进行管理。 然后，可将基于资源的访问控制角色分配到每个资源组，以将访问权限限制给已获授权的用户。
 
-**访问控制限制**：使用[基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (RBAC) 管理应用程序中的资源；可以使用[自定义角色](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles) RBAC 来限制 DevOps 可在每个层上执行的操作。 授予权限时，请使用[最低特权原则](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)。 记录所有管理操作并执行定期审核，确保所有配置更改按计划进行。
+**访问控制限制**：使用[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) 管理应用程序中的资源；可以使用[自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC 来限制 DevOps 可在每个层上执行的操作。 授予权限时，请使用[最低特权原则](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)。 记录所有管理操作并执行定期审核，确保所有配置更改按计划进行。
 
 **Internet 访问**：此参考体系结构利用 [Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)作为面向 Internet 的网关和负载均衡器。 某些客户还可以考虑使用第三方网络虚拟设备作为附加的网络安全层，取代 [Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)。
 

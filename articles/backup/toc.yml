@@ -100,7 +100,7 @@
         - name: 备份 VM
           items:
             - name: 将 Azure VM 备份到恢复服务保管库
-              href: backup-azure-arm-vms.md
+              href: backup-azure-vms-first-look-arm.md
             - name: 备份加密 VM
               href: backup-azure-vms-encryption.md
             - name: 在创建 VM 期间启用 VM 备份
@@ -179,9 +179,9 @@
           href: backup-azure-delete-vault.md
     - name: 故障排除
       items:
-        - name: IaaS VM 备份错误消息
+        - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
-        - name: Azure 备份 (MARS) 代理或 VM 扩展超时
+        - name: Azure 备份代理或 VM 扩展超时
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: 文件和文件夹备份速度慢
           href: backup-azure-troubleshoot-slow-backup-performance-issue.md
@@ -189,16 +189,22 @@
           href: backup-azure-mabs-troubleshoot.md
         - name: System Center DPM
           href: backup-azure-scdpm-troubleshooting.md
-        - name: Azure 备份 (MARS) 代理
+        - name: Azure 备份代理
           href: backup-azure-mars-troubleshoot.md
-        - name: Azure 文件共享备份
+        - name: Azure 文件共享
           href: troubleshoot-azure-files.md
 - name: 引用
   items:
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.recoveryservices.backup
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
+    - name: Azure CLI 2.0
+      href: /cli/azure/backup?view=azure-cli-latest
+    - name: PowerShell
+      href: /powershell/module/azurerm.recoveryservices.backup
+    - name: REST - 备份
+      href: /rest/api/backup/
+    - name: REST - 恢复服务保管库
+      href: /rest/api/recoveryservices/
 - name: 资源
   items:
     - name: Azure 路线图

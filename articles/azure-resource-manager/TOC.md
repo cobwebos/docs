@@ -47,6 +47,7 @@
 ### [Azure 门户](resource-group-portal.md)
 ### [使用标记来组织资源](resource-group-using-tags.md)
 ### [将资源移到新组或订阅](resource-group-move-resources.md)
+### [以编程方式创建 EA 订阅](programmatically-create-subscription.md)
 ### [创建管理组](management-groups-create.md)
 ### [管理你的管理组](management-groups-manage.md)
 ### [监管示例](resource-manager-subscription-examples.md)

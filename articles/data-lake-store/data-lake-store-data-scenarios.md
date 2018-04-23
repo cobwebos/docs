@@ -1,8 +1,8 @@
 ---
-title: "有关 Data Lake Store 的数据方案 | Microsoft Docs"
-description: "了解 Data Lake Store 中可进行数据引入、处理、下载和可视化的不同方案和工具"
+title: 有关 Data Lake Store 的数据方案 | Microsoft Docs
+description: 了解 Data Lake Store 中可进行数据引入、处理、下载和可视化的不同方案和工具
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: bd69d3c353c7f44efb37e2359412aa3a9f3e8f8d
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f8cd666af9e05b543b6794612ec5acf6f8a27756
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>使用 Azure Data Lake Store 满足大数据要求
 大数据处理的四个主要阶段：
@@ -131,4 +131,4 @@ ms.lasthandoff: 02/24/2018
 ![可视化 Data Lake Store 中的数据](./media/data-lake-store-data-scenarios/visualize-data.png "可视化 Data Lake Store 中的数据")
 
 * 首先通过使用 [Azure 数据工厂从 Data Lake Store 将数据移动到 Azure SQL 数据仓库](../data-factory/copy-activity-overview.md)
-* 之后，可[集成 Power BI 和 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-integrate-power-bi.md)来创建数据的可视化表示形式。
+* 之后，可[集成 Power BI 和 Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md)来创建数据的可视化表示形式。

@@ -1,8 +1,8 @@
 ---
-title: "保护密钥保管库 | Microsoft Docs"
-description: "管理用于管理保管库、密钥和机密的密钥保管库的访问权限。 密钥保管库的身份验证和授权模型以及如何保护密钥保管库"
+title: 保护密钥保管库 | Microsoft Docs
+description: 管理用于管理保管库、密钥和机密的密钥保管库的访问权限。 密钥保管库的身份验证和授权模型以及如何保护密钥保管库
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: b81791f0bce7e6f57782dfe7bc5fb5fc21369e7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a769d15fe79a56d623399d0d38b6dd9c060db36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-your-key-vault"></a>保护密钥保管库
 Azure 密钥保管库是一种云服务，用于保护云应用程序的加密密钥和机密（例如证书、连接字符串、密码）。 因为此数据是敏感数据和业务关键数据，会希望保护对密钥保管库的访问，以便只有得到授权的应用程序和用户可以访问密钥保管库。 本文章提供对密钥保管库访问模型的概述，介绍身份验证和授权，并举例描述如何保护对云应用程序的密钥保管库的访问。
@@ -46,7 +46,7 @@ Azure 密钥保管库是一种云服务，用于保护云应用程序的加密�
 * **用户+应用访问** - 这通常适用于代表已登录用户访问密钥保管库的应用程序。 此类访问的示例有 Azure PowerShell、Azure 门户。 有两种方法向用户授予访问权限：一种方法是向用户授予访问权限，以便他们可以从任何应用程序访问密钥保管库，另一种方法是授予用户仅当使用特定的应用程序时访问密钥保管库的权限（称之为复合标识）。 
 * **仅限应用访问** - 适用于运行守护程序服务、后台作业等的应用程序。向应用程序的标识授予访问密钥保管库的权限。
 
-在这两种类型的应用程序中，应用程序均通过 Azure Active Directory 使用任一[支持的身份验证方法](../active-directory/active-directory-authentication-scenarios.md)进行身份验证，并获取令牌。 所使用的身份验证方法取决于应用程序类型。 然后，应用程序会使用此令牌，并将 REST API 请求发送到密钥保管库。 如果是管理平面访问，则将通过 Azure Resource Manager 终结点路由请求。 如果访问的是数据平面，则应用程序直接与密钥保管库终结点交流。 请参阅[整个身份验证流](../active-directory/active-directory-protocols-oauth-code.md)上的更多详细信息。 
+在这两种类型的应用程序中，应用程序均通过 Azure Active Directory 使用任一[支持的身份验证方法](../active-directory/active-directory-authentication-scenarios.md)进行身份验证，并获取令牌。 所使用的身份验证方法取决于应用程序类型。 然后，应用程序会使用此令牌，并将 REST API 请求发送到密钥保管库。 如果是管理平面访问，则将通过 Azure 资源管理器终结点路由请求。 如果访问的是数据平面，则应用程序直接与密钥保管库终结点交流。 请参阅[整个身份验证流](../active-directory/active-directory-protocols-oauth-code.md)上的更多详细信息。 
 
 应用程序为其请求令牌的资源名称是不同的，具体取决于应用程序是访问管理平面还是数据平面。 因此资源名称要么是管理平面终结点，要么便是数据平面终结点（这会在后面部分的表中进行介绍），具体取决于 Azure 环境。
 
@@ -57,13 +57,13 @@ Azure 密钥保管库是一种云服务，用于保护云应用程序的加密�
 * 组织可以通过 Azure Active Directory 中的选项自定义身份验证（例如，启用多重身份验证以提高安全性）
 
 ## <a name="management-plane-and-data-plane"></a>管理平面和数据平面
-Azure 密钥保管库是一种可通过 Azure Resource Manager 部署模型使用的 Azure 服务。 在创建密钥保管库时，会获取一个虚拟容器，可以在其内部创建密钥、机密和证书等其他对象。 然后，使用管理平面和数据平面访问密钥保管库以执行特定的操作。 管理平面接口用于管理密钥保管库本身，如创建、删除、更新密钥保管库属性以及设置数据平面的访问策略。 数据平面接口用于添加、删除、修改和使用存储在密钥保管库中的密钥、机密和证书。
+Azure 密钥保管库是一种可通过 Azure 资源管理器部署模型使用的 Azure 服务。 在创建密钥保管库时，会获取一个虚拟容器，可以在其内部创建密钥、机密和证书等其他对象。 然后，使用管理平面和数据平面访问密钥保管库以执行特定的操作。 管理平面接口用于管理密钥保管库本身，如创建、删除、更新密钥保管库属性以及设置数据平面的访问策略。 数据平面接口用于添加、删除、修改和使用存储在密钥保管库中的密钥、机密和证书。
 
-可通过不同的终结点访问管理平面和数据平面接口（请参见表）。 表中的第二列描述了不同 Azure 环境中这些终结点的 DNS 名称。 第三列描述了可在每个访问平面中执行的操作。 每个访问平面也具有其自己的访问控制机制：对于管理平面访问控制，使用 Azure Resource Manager 基于角色的访问控制 (RBAC) 进行设置；而对于数据平面访问控制，则使用密钥保管库访问策略进行设置。
+可通过不同的终结点访问管理平面和数据平面接口（请参见表）。 表中的第二列描述了不同 Azure 环境中这些终结点的 DNS 名称。 第三列描述了可在每个访问平面中执行的操作。 每个访问平面也具有其自己的访问控制机制：对于管理平面访问控制，使用 Azure 资源管理器基于角色的访问控制 (RBAC) 进行设置；而对于数据平面访问控制，则使用密钥保管库访问策略进行设置。
 
 | 访问平面 | 访问终结点 | 操作 | 访问控制机制 |
 | --- | --- | --- | --- |
-| 管理平面 |**全局：**<br> management.azure.com:443<br><br> **Azure China：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> management.microsoftazure.de:443 |创建/读取/更新/删除密钥保管库 <br> 设置密钥保管库的访问策略<br>设置密钥保管库的标记 |Azure Resource Manager 基于角色的访问控制 (RBAC) |
+| 管理平面 |**全局：**<br> management.azure.com:443<br><br> **Azure China：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> management.microsoftazure.de:443 |创建/读取/更新/删除密钥保管库 <br> 设置密钥保管库的访问策略<br>设置密钥保管库的标记 |Azure 资源管理器基于角色的访问控制 (RBAC) |
 | 数据平面 |**全局：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government：**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 |对于密钥：解密、加密、UnwrapKey、WrapKey、验证、签名、获取、列出、更新、创建、导入、删除、备份、还原<br><br> 对于机密：获取、列出、设置、删除 |密钥保管库访问策略 |
 
 管理平面和数据平面访问独立控制工作。 例如，如果想要授予应用程序使用密钥保管库中的密钥的访问权限，只需使用密钥保管库访问策略授予数据平面访问权限，而无需授予此应用程序的管理平面访问权限。 相反，如果希望用户能够读取保管库属性和标记，但不让其具有任何访问密钥、机密或证书的权限，则可以使用 RBAC 向此用户授予“读取”访问权限，而无需授予数据平面访问权限。
@@ -72,11 +72,11 @@ Azure 密钥保管库是一种可通过 Azure Resource Manager 部署模型使�
 管理平面包含影响密钥保管库本身的操作。 例如，可以创建或删除密钥保管库。 可在订阅中获取保管库的列表。 可以检索密钥保管库属性（如 SKU、标记），并设置密钥保管库访问策略，该策略可控制可以访问密钥保管库中的密钥和机密的用户和应用程序。 管理平面访问控制使用 RBAC。 请参阅上一部分的表中可通过管理平面执行的密钥保管库操作的完整列表。 
 
 ### <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
-每个 Azure 订阅都有一个 Azure Active Directory。 可以向来自该目录的用户、组和应用程序授予访问权限，以便在使用 Azure Resource Manager 部署模型的 Azure 订阅中管理资源。 此类型的访问控制称为基于角色的访问控制 (RBAC)。 若要管理此访问权限，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
+每个 Azure 订阅都有一个 Azure Active Directory。 可以向来自该目录的用户、组和应用程序授予访问权限，以便在使用 Azure 资源管理器部署模型的 Azure 订阅中管理资源。 此类型的访问控制称为基于角色的访问控制 (RBAC)。 若要管理此访问权限，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure 资源管理器 REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
 
-使用 Azure Resource Manager 模型可以在资源组中创建密钥保管库，并使用 Azure Active Directory 来控制对该密钥保管库的管理平面的访问。 例如，可以向用户或组授予管理特定资源组中的密钥保管库的功能。
+使用 Azure 资源管理器模型可以在资源组中创建密钥保管库，并使用 Azure Active Directory 来控制对该密钥保管库的管理平面的访问。 例如，可以向用户或组授予管理特定资源组中的密钥保管库的功能。
 
-可以通过分配相应的 RBAC 角色，向特定范围内的用户、组和应用程序授予访问权限。 例如，要向用户授予管理密钥保管库的访问权限，需要将预定义的角色“密钥保管库参与者”分配给位于特定范围内的此用户。 在此情况下，该范围可以是订阅、资源组，或特定的密钥保管库。 在订阅级别分配的角色适用于该订阅中的所有资源组和资源。 在资源组级别分配的角色适用于该资源组中的所有资源。 为特定资源分配的角色仅适用于该资源。 有几个预定义的角色（请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)），并且如果预定义的角色不满足需求，也可以定义自己的角色。
+可以通过分配相应的 RBAC 角色，向特定范围内的用户、组和应用程序授予访问权限。 例如，要向用户授予管理密钥保管库的访问权限，需要将预定义的角色“密钥保管库参与者”分配给位于特定范围内的此用户。 在此情况下，该范围可以是订阅、资源组，或特定的密钥保管库。 在订阅级别分配的角色适用于该订阅中的所有资源组和资源。 在资源组级别分配的角色适用于该资源组中的所有资源。 为特定资源分配的角色仅适用于该资源。 有几个预定义的角色（请参阅 [RBAC：内置角色](../role-based-access-control/built-in-roles.md)），并且如果预定义的角色不满足需求，也可以定义自己的角色。
 
 > [!IMPORTANT]
 > 请注意，如果用户具有密钥保管库管理平面的参与者权限 (RBAC)，则该用户可以通过设置密钥保管库访问策略（它控制对数据平面的访问）向自己授予数据平面的访问权限。 因此，建议严格控制具有密钥保管库“参与者”权限的人员，以确保只有获得授权的人员可以访问和管理密钥保管库、密钥、机密和证书。
@@ -204,19 +204,19 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzureR
 > 
 
 ## <a name="resources"></a>资源
-* [Azure Active Directory 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
+* [Azure Active Directory 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)
   
   此文解释了 Azure Active Directory 基于角色的访问控制及其工作原理。
-* [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)
+* [RBAC：内置角色](../role-based-access-control/built-in-roles.md)
   
   本文详细说明了 RBAC 中所有可用的内置角色。
 * [了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)
   
   此文介绍了 Resource Manager 部署和经典部署模型，并说明使用 Resource Manager 和资源组的优点
-* [使用 Azure PowerShell 管理基于角色的访问控制](../active-directory/role-based-access-control-manage-access-powershell.md)
+* [使用 Azure PowerShell 管理基于角色的访问控制](../role-based-access-control/role-assignments-powershell.md)
   
   本文介绍了如何使用 Azure PowerShell 管理基于角色的访问控制
-* [使用 REST API 管理基于角色的访问控制](../active-directory/role-based-access-control-manage-access-rest.md)
+* [使用 REST API 管理基于角色的访问控制](../role-based-access-control/role-assignments-rest.md)
   
   此文说明如何使用 REST API 来管理 RBAC。
 * [Role-Based Access Control for Microsoft Azure from Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)（Ignite 中提供的适用于 Microsoft Azure 的基于角色的访问控制）

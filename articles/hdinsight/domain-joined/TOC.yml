@@ -14,8 +14,12 @@
     - name: 配置 Hive 策略
       href: apache-domain-joined-run-hive.md
       maintainContext: true
-    - name: 管理已加入域的群集
-      href: apache-domain-joined-manage.md
+    - name: 使用 VSCode 链接到已加入域的群集
+      href: ../hdinsight-for-vscode.md
+    - name: 使用 IntelliJ 链接到已加入域的群集
+      href: ../spark/apache-spark-intellij-tool-plugin.md
+    - name: 使用 Eclipse 链接到已加入域的群集
+      href: ../spark/apache-spark-eclipse-tool-plugin.md
 - name: 保护数据
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
   maintainContext: true

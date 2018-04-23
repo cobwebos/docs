@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/2/2018
+ms.date: 04/09/2018
 ms.author: vinagara
-ms.openlocfilehash: cd289d506cbe22e683392256cce14211a5db0729
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: a786ac2e241657cc0020ecfe9438e3d1a5e4c5fa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 [在 Azure 中创建警报](monitor-alerts-unified-usage.md)时，可以选择[使用操作组配置](monitoring-action-groups.md)以执行一个或多个操作。  本文介绍可用的不同 Webhook 操作，以及有关配置基于 JSON 的自定义 Webhook 的详细信息。
@@ -61,15 +61,19 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 
 例如，可以指定以下自定义负载，其中包含名为 *text* 的单一参数。  该 Webhook 调用的服务将需要此参数。
 
+```json
+
     {
         "text":"#alertrulename fired with #searchresultcount over threshold of #thresholdvalue."
     }
-
+```
 此示例的有效负载会在发送到 Webhook 时解析如下。
 
+```json
     {
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
+```
 
 若要在自定义有效负载中包含搜索结果，请确保在 json 有效负载中将 **IncudeSearchResults** 设置为顶级属性。 
 
@@ -85,7 +89,8 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 #### <a name="log-alert-for-azure-log-analytics"></a>Azure Log-Analytics 的日志警报
 下面是用于基于 Log Analytics 的警报的*不带自定义 Json 选项*的标准 Webhook 操作的示例有效负载。
 
-    {
+```json
+{
     "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
     "AlertRuleName":"AcmeRule","SearchQuery":"search *",
     "SearchResult":
@@ -95,7 +100,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
                         [
                         {"name":"$table","type":"string"},
                         {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"},
+                        {"name":"TimeGenerated","type":"datetime"}
                         ],
                     "rows":
                         [
@@ -104,7 +109,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
                         ]
                     }
                 ]
-        }
+        },
     "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
     "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
     "AlertThresholdOperator": "Greater Than",
@@ -114,15 +119,14 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
     "LinkToSearchResults": "https://workspaceID.portal.mms.microsoft.com/#Workspace/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
     "Description": null,
     "Severity": "Warning"
-    }
-    
-
+ }
+ ```   
 
 #### <a name="log-alert-for-azure-application-insights"></a>Application Insights 的日志警报
 下面是用于基于 Application Insights 的日志警报时*不带自定义 Json 选项*的标准 Webhook 的示例有效负载。
     
-
-    {
+```json
+{
     "schemaId":"Microsoft.Insights/LogAlert","data":
     { 
     "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
@@ -134,7 +138,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
                         [
                         {"name":"$table","type":"string"},
                         {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"},
+                        {"name":"TimeGenerated","type":"datetime"}
                         ],
                     "rows":
                         [
@@ -143,7 +147,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
                         ]
                     }
                 ]
-        }
+        },
     "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
     "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
     "AlertThresholdOperator": "Greater Than",
@@ -152,10 +156,11 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
     "SearchIntervalInSeconds": 3600,
     "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
     "Description": null,
-    "Severity": "Error"
+    "Severity": "Error",
     "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
     }
-    }
+}
+```
 
 > [!NOTE]
 > 用于 Application Insights 的日志警报当前处于公开预览状态，功能和用户体验可能会发生更改。
@@ -163,14 +168,16 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 #### <a name="log-alert-with-custom-json-payload"></a>带自定义 JSON 有效负载的日志警报
 例如，若要创建只包含警报名称和搜索结果的自定义负载，则可以使用以下代码： 
 
+```json
     {
        "alertname":"#alertrulename",
        "IncludeSearchResults":true
     }
+```
 
 下面是用于任何日志警报的自定义 Webhook 操作的示例有效负载。
     
-
+```json
     {
     "alertname":"AcmeRule","IncludeSearchResults":true,
     "SearchResult":
@@ -180,7 +187,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
                         [
                         {"name":"$table","type":"string"},
                         {"name":"Id","type":"string"},
-                        {"name":"TimeGenerated","type":"datetime"},
+                        {"name":"TimeGenerated","type":"datetime"}
                         ],
                     "rows":
                         [
@@ -191,8 +198,7 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
                 ]
         }
     }
-
-
+```
 
 
 ## <a name="next-steps"></a>后续步骤

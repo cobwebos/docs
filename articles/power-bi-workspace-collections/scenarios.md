@@ -1,12 +1,12 @@
 ---
-title: "常见 Microsoft Power BI 工作区集合方案"
-description: "常见 Microsoft Power BI Embedded 方案"
+title: 常见 Microsoft Power BI 工作区集合方案
+description: 常见 Microsoft Power BI Embedded 方案
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 0bf9706c-11bd-432a-bab3-89c04bc4dd1f
 ms.service: power-bi-embedded
@@ -15,19 +15,19 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: f0c64995a14c92bee56e4b7722afda2f7e1ece73
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 57eb3bc52dc61be38b94e93e7872b9a2166279cf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="common-power-bi-workspace-collection-scenarios"></a>常见 Power BI 工作区集合方案
 
 Power BI 工作区集合侧重于在 Azure 服务中提供大多数现有 Power BI API 功能，以用于开发应用。  此外，还可以编程方式预配、开发和部署所需的资源和 Power BI 内容。 若要了解详细信息，请参阅 [Microsoft Power BI 工作区集合入门](get-started.md)。
 
 > [!IMPORTANT]
-> Power BI 工作区集合已遭弃用，在 2018 年 6 月或合同上指明的时间前可用。 建议计划迁移到 Power BI Embedded，以免应用中断。 若要了解如何将数据迁移到 Power BI Embedded，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
+> Power BI 工作区集合已遭弃用，在 2018 年 6 月或合同上指明的时间前可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 若要了解如何将数据迁移到 Power BI Embedded，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
 下面介绍了几种在应用中使用 Power BI 工作区集合的方案。
 

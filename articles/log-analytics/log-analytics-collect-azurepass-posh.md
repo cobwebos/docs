@@ -1,12 +1,12 @@
 ---
-title: "使用 Log Analytics 收集 Azure PaaS 资源指标 | Microsoft Docs"
-description: "了解如何使用 PowerShell 启用 Azure PaaS 资源指标收集，以便在 Log Analytics 中保留和分析指标。"
+title: 使用 Log Analytics 收集 Azure PaaS 资源指标 | Microsoft Docs
+description: 了解如何使用 PowerShell 启用 Azure PaaS 资源指标收集，以便在 Log Analytics 中保留和分析指标。
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 83491c4902dabc6bab1e222551298cfaffbaecf4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 8a2c04c2f79f310b7e70e7add7a8d5f318f056d2
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>使用 Log Analytics 配置 Azure PaaS 资源指标的收集
 
@@ -57,7 +57,7 @@ Azure SQL 和网站（Web 应用）等 Azure 平台即服务 (PaaS) 资源原生
     PS C:\> save-script -Name Enable-AzureRMDiagnostics -Path "C:\users\<username>\desktop\temp"
     ```
 
-3. 运行 `Login-AzureRmAccount`，创建与 Azure 的连接。   
+3. 运行 `Connect-AzureRmAccount`，创建与 Azure 的连接。   
 4. 运行以下脚本 `.\Enable-AzureRmDiagnostics.ps1` 且不指定任何参数，以启用从订阅中的特定资源组收集数据；或者指定 `-ResourceGroup <myResourceGroup>` 参数，指定从特定资源组中的资源收集数据。   
 5. 输入正确的值，从列表中选择适当的订阅（如果有多个）。<br><br> ![选择脚本返回的订阅](./media/log-analytics-collect-azurepass-posh/script-select-subscription.png)<br> 否则，系统会自动选择单个可用的订阅。
 6. 接下来，脚本会返回订阅中注册的 Log Analytics 工作区列表。  从列表中选择适当的工作区。<br><br> ![选择脚本返回的工作区](./media/log-analytics-collect-azurepass-posh/script-select-workspace.png)<br> 

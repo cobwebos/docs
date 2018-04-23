@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: acdd829785c44f6683c356c135587be183cce392
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d394c856b2f27446ab28c44fe4fed2dfd59ae62f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>比较 Azure Data Lake Store 与 Azure 存储 Blob
 本文中的表总结了 Azure Data Lake Store 和 Azure 存储 Blob 在一些大数据处理的关键方面之间的差异。 Azure Blob 存储是一个常规用途和可扩展的对象存储，适用于多种存储方案。 Azure Data Lake Store 是一个超大规模存储库，优化用于大数据分析工作负荷。
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/28/2018
 | 数据操作 - 授权 |POSIX 访问控制列表 (ACL)。  可在文件和文件夹级别设置基于 Azure Active Directory 标识的 ACL。 |对于帐户级别授权 – 使用[帐户访问密钥](../storage/common/storage-create-storage-account.md#manage-your-storage-account)<br>对于帐户、容器 或 blob 授权 - 使用[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
 | 数据操作 - 审核 |可用。 详细信息参见[此处](data-lake-store-diagnostic-logs.md)。 |可用 |
 | 静态数据加密 |<ul><li>透明版服务器端</li> <ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥</li></ul></ul> |<ul><li>透明版服务器端</li> <ul><li>服务托管密钥</li><li>Azure KeyVault 中客户托管的密钥（预览版）</li></ul><li>客户端加密</li></ul> |
-| 管理操作（例如“帐户创建”） |Azure 向帐户管理提供的[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md) (RBAC) |Azure 向帐户管理提供的[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md) (RBAC) |
+| 管理操作（例如“帐户创建”） |Azure 向帐户管理提供的[基于角色的访问控制](../role-based-access-control/overview.md) (RBAC) |Azure 向帐户管理提供的[基于角色的访问控制](../role-based-access-control/overview.md) (RBAC) |
 | Developer SDK |.NET、Java、Python、Node.js |.Net、Java、Python、Node.js、C++、Ruby、PHP、Go、Android、iOS |
 | 分析工作负荷性能 |并行分析工作负荷的优化性能。 高吞吐量和 IOPS。 |并行分析工作负荷的优化性能。 |
 | 大小限制 |无帐户大小、文件大小或文件数量限制 |[此处](../storage/common/storage-scalability-targets.md)记录了具体限制。 可以联系 [Azure 支持](https://azure.microsoft.com/support/faq/)来增大帐户限制阈值 |

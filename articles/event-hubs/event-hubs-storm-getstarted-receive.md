@@ -1,24 +1,24 @@
 ---
-title: "使用 Apache Storm 从 Azure 事件中心接收事件 | Microsoft 文档"
-description: "使用 Apache Storm 从事件中心接收事件入门"
+title: 使用 Apache Storm 从 Azure 事件中心接收事件 | Microsoft 文档
+description: 使用 Apache Storm 从事件中心接收事件入门
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 04/12/2018
 ms.author: sethm
-ms.openlocfilehash: 5a120cc38b8ecfc6ec29be35eda12978ca8b035e
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 6f558ff0613937d17f2dd7c2c9db6eb2de31ab9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>使用 Apache Storm 从事件中心接收事件
 

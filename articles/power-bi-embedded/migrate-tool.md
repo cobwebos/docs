@@ -1,24 +1,24 @@
 ---
-title: "使用 Power BI Embedded 迁移工具 | Microsoft Docs"
-description: "可以使用 Power BI Embedded 迁移工具将报表从 Power BI 工作区集合复制到 Power BI Embedded。"
+title: 使用 Power BI Embedded 迁移工具 | Microsoft Docs
+description: 可以使用 Power BI Embedded 迁移工具将报表从 Power BI 工作区集合复制到 Power BI Embedded。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
-ms.author: asaxton
-ms.openlocfilehash: 0b7b5089045daf6dd88fcd84e316b2bd44f8c927
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 4f76b1efb509745653bfde0926f56032030f7d47
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-the-power-bi-embedded-migration-tool"></a>使用 Power BI Embedded 迁移工具
 
@@ -268,4 +268,4 @@ ms.lasthandoff: 10/11/2017
 
 有关详细信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](migrate-from-power-bi-workspace-collections.md)。
 
-有更多问题？ [尝试向 Power BI 社区提问](http://community.powerbi.com/)
+有更多问题？ [尝试在 Power BI 社区中提问](http://community.powerbi.com/)

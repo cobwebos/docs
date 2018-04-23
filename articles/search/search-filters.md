@@ -1,24 +1,17 @@
 ---
-title: "Azure 搜索中的筛选器 | Microsoft Docs"
-description: "按用户安全标识、语言、地理位置或数字值进行筛选可以减少 Azure 搜索（Microsoft Azure 上的托管云搜索服务）中的查询返回的搜索结果。"
-services: search
-documentationcenter: 
+title: Azure 搜索中的筛选器 | Microsoft Docs
+description: 按用户安全标识、语言、地理位置或数字值进行筛选可以减少 Azure 搜索（Microsoft Azure 上的托管云搜索服务）中的查询返回的搜索结果。
 author: HeidiSteen
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: cgronlun
 ms.service: search
-ms.devlang: 
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/19/2017
 ms.author: heidist
-ms.openlocfilehash: 2e8721684b1d4ed0e7392d85ea1df0f595860a05
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 867a0eab20c7827ca99dc4b4371dfb2d551180b3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="filters-in-azure-search"></a>Azure 搜索中的筛选器 
 

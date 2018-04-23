@@ -1,26 +1,24 @@
 ---
-title: "通过堆转储调试和分析 Hadoop 服务 — Azure | Microsoft Docs"
-description: "自动收集 Hadoop 服务的堆转储并将其放置在用于调试和分析的 Azure Blob 存储帐户内。"
+title: 通过堆转储调试和分析 Hadoop 服务 — Azure | Microsoft Docs
+description: 自动收集 Hadoop 服务的堆转储并将其放置在用于调试和分析的 Azure Blob 存储帐户内。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: e4ec4ebb-fd32-4668-8382-f956581485c4
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6d1d4d47d279eb7a1f0bf1f587445683f0ace7a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0721d20987008e5cc6370c6e853440ce93edcfa9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-hadoop-services"></a>将堆转储收集在 Blob 存储中，以便调试和分析 Hadoop 服务
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]

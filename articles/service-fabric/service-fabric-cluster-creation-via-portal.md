@@ -3,7 +3,7 @@ title: 在 Azure 门户中创建 Service Fabric 群集 | Microsoft Docs
 description: 本文介绍如何使用 Azure 门户和 Azure 密钥保管库中在 Azure 中设置安全 Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
-author: chackdan
+author: aljo-microsoft
 manager: timlt
 editor: vturecek
 ms.assetid: 426c3d13-127a-49eb-a54c-6bde7c87a83b
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/09/2018
-ms.author: chackdan
-ms.openlocfilehash: 864952554b04d8d6bc14aad92d168298e554710e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: aljo
+ms.openlocfilehash: d3efc14886d82290241e9868ea9b0e8262efddea
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -126,7 +126,7 @@ ms.lasthandoff: 03/23/2018
 > 我们仅支持那些运行受支持的 Service Fabric 版本的群集。 通过选择“**手动**”模式，由你负责将群集升级到受支持的版本。 > 
 > 
 
-#### <a name="3-security"></a>3.“安全”
+#### <a name="3-security"></a>3.安全
 ![Azure 门户上安全配置的屏幕截图。][BasicSecurityConfigs]
 
 为轻松设置安全测试群集，我们提供了“基本”选项。 如果已有证书且已上传到 Key Vault（并已启用 Key Vault 进行部署），则使用“自定义”选项

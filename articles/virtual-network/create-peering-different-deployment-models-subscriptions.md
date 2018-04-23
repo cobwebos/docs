@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 7a0104e68b07dbdff5483b771429fb9bc19a523f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 08a025acb89d3b35798688dc333038fb807284cd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>创建虚拟网络对等互连 - 不同部署模型和不同订阅
 
@@ -204,7 +204,7 @@ ms.lasthandoff: 04/03/2018
     > [!WARNING]
     > 导入更改的网络配置文件会导致订阅中现有虚拟网络（经典）发生变化。 请确保只添加之前的虚拟网络，且不会从订阅中更改或删除任何现有虚拟网络。 
 
-5. 输入 `login-azurermaccount` 命令，以用户 B 的身份登录用户 B 的订阅，使用 Resource Manager。
+5. 输入 `Connect-AzureRmAccount` 命令，以用户 B 的身份登录用户 B 的订阅，使用 Resource Manager。
 6. 向用户 A 分配访问虚拟网络 B 的权限。将以下脚本复制到电脑上的文本编辑器，并将 `<SubscriptionB-id>` 替换为订阅 B 的 ID。如果不知道订阅 ID，请输入 `Get-AzureRmSubscription` 命令查看。 返回的输出中的 ID 值就是订阅 ID。 Azure 创建了虚拟网络（经典），该网络是在步骤 4 中在名为 Default-Networking 的资源组中创建的虚拟网络。 若要执行该脚本，请复制修改后的脚本，将其粘贴到 PowerShell，然后按 `Enter`。
     
     ```powershell 
@@ -214,7 +214,7 @@ ms.lasthandoff: 04/03/2018
       -Scope /subscriptions/<SubscriptionB-id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
     ```
 
-7. 以用户 B 的身份注销 Azure，然后输入 `login-azurermaccount` 命令，以用户 A 的身份登录用户 A 的订阅。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#permissions)。
+7. 以用户 B 的身份注销 Azure，然后输入 `Connect-AzureRmAccount` 命令，以用户 A 的身份登录用户 A 的订阅。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#permissions)。
 8. 复制以下脚本，将其粘贴到 PowerShell，然后按 `Enter`，创建虚拟网络 (Resource Manager)：
 
     ```powershell

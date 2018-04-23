@@ -1,5 +1,5 @@
 ---
-title: "可与 Azure 存储配合使用的安全功能 | Microsoft Docs"
+title: 可与 Azure 存储配合使用的安全功能 | Microsoft Docs
 description: " 本文概述可与 Azure 存储配合使用的核心 Azure 安全功能。 "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: a118bde2290e68c9a741e40cda210d47db918047
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 8160ede71930bf4c15969044deb3fced855f03e6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-security-overview"></a>Azure 存储安全概述
 Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求的现代应用程序的云存储解决方案。 Azure 存储提供配套的安全功能：
@@ -44,11 +44,11 @@ Azure 存储是依赖于持续性、可用性和伸缩性来满足客户需求�
 * Azure 密钥保管库
 
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
-可以使用基于角色的访问控制 (RBAC) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全策略限制访问权限。 这些访问权限是通过将相应的 RBAC 角色分配给特定范围内的组和应用程序来授予的。 可以使用[内置 RBAC 角色](../active-directory/role-based-access-built-in-roles.md)（例如存储帐户参与者）将权限分配给用户。
+可以使用基于角色的访问控制 (RBAC) 来保护存储帐户。 对于想要实施数据访问安全策略的组织而言，必须根据[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全策略限制访问权限。 这些访问权限是通过将相应的 RBAC 角色分配给特定范围内的组和应用程序来授予的。 可以使用[内置 RBAC 角色](../role-based-access-control/built-in-roles.md)（例如存储帐户参与者）将权限分配给用户。
 
 了解更多：
 
-* [Azure Active Directory 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
+* [Azure Active Directory 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="delegated-access-to-storage-objects"></a>存储对象的委托访问权限
 共享访问签名 (SAS) 用于对存储帐户中的资源进行委托访问。 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。 SAS 是一个 URI，在其查询参数中包含对存储资源已验证访问所需的所有信息。 要使用 SAS 访问存储资源，客户端只需将 SAS 提供给相应的构造函数或方法。

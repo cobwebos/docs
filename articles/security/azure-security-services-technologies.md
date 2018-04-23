@@ -1,6 +1,6 @@
 ---
-title: "Azure 安全服务与技术 | Microsoft Docs"
-description: "本文提供了一个包含 Azure 安全服务与技术的特选列表。"
+title: Azure 安全服务与技术 | Microsoft Docs
+description: 本文提供了一个包含 Azure 安全服务与技术的特选列表。
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 1ea707d3d149734dad2d5c76d853ddd667cbf73b
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 838987e7fa5e638a980c592f5cdf775d3110fab0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-services-and-technologies"></a>Azure 安全服务与技术
 在我们与当前和未来 Azure 客户的讨论中，我们经常被问及“你们是否有 Azure 必须提供的所有安全相关服务和技术的列表？”
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/23/2017
 * [Azure SQL 数据库审核](../sql-database/sql-database-auditing.md)
 
 ## <a name="azure-identity-and-access-management"></a>Azure 标识和访问管理
-* [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
+* [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)
 * [Azure Active Directory](../active-directory/active-directory-whatis.md)
 * [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
 * [Azure Active Directory 域服务](../active-directory-domain-services/active-directory-ds-overview.md)

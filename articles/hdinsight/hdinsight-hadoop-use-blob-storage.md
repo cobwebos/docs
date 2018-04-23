@@ -1,9 +1,9 @@
 ---
-title: "从与 HDFS 兼容的 Azure 存储查询数据 - Azure HDInsight | Microsoft Docs"
-description: "了解如何从 Azure 存储和 Azure Data Lake Store 查询数据，以存储分析结果。"
-keywords: "blob 存储,hdfs,结构化数据,非结构化数据,data lake store,Hadoop 输入,Hadoop 输出, hadoop 存储, hdfs 输入,hdfs 输出,hdfs 存储,wasb azure"
+title: 从与 HDFS 兼容的 Azure 存储查询数据 - Azure HDInsight | Microsoft Docs
+description: 了解如何从 Azure 存储和 Azure Data Lake Store 查询数据，以存储分析结果。
+keywords: blob 存储,hdfs,结构化数据,非结构化数据,data lake store,Hadoop 输入,Hadoop 输出, hadoop 存储, hdfs 输入,hdfs 输出,hdfs 存储,wasb azure
 services: hdinsight,storage
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 7e60e33330357d08d69e3372fd3eea1aadb4a141
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 60b9f7f7a60872bd7d151d7ec890ba3a77be9263
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
@@ -126,7 +126,7 @@ Blob 可用于结构化和非结构化数据。 Blob 容器将数据存储为键
     $StorageAccountName = "<New Azure Storage Account Name>"
     $containerName = "<New Azure Blob Container Name>"
 
-    Add-AzureRmAccount
+    Connect-AzureRmAccount
     Select-AzureRmSubscription -SubscriptionId $SubscriptionID
 
     # Create resource group
@@ -220,7 +220,7 @@ URI 方案提供了使用 *wasb:* 前缀的未加密访问和使用 *wasbs* 的 
     $blob = "example/data/sample.log" # The name of the blob to be downloaded.
 
     # Use Add-AzureAccount if you haven't connected to your Azure subscription
-    Login-AzureRmAccount 
+    Connect-AzureRmAccount 
     Select-AzureRmSubscription -SubscriptionID "<Your Azure Subscription ID>"
 
     Write-Host "Create a context object ... " -ForegroundColor Green

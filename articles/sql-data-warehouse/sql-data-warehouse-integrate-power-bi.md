@@ -1,11 +1,11 @@
 ---
-title: "将 Power BI 与 SQL 数据仓库配合使用 | Microsoft 文档"
-description: "有关在开发解决方案时将 Power BI 与 Azure SQL 数据仓库配合使用的技巧。"
+title: 将 Power BI 与 SQL 数据仓库配合使用 | Microsoft 文档
+description: 有关在开发解决方案时将 Power BI 与 Azure SQL 数据仓库配合使用的技巧。
 services: sql-data-warehouse
 documentationcenter: NA
 author: mlee3gsd
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: b12bee87-2268-40c2-81bf-ab27588b32e8
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
 ms.openlocfilehash: 4ea9a2ff0c95a73b348d3b48e9e62957d5cce31c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-power-bi-with-sql-data-warehouse"></a>将 Power BI 与 SQL 数据仓库配合使用
 在 Azure SQL 数据库中，SQL 数据仓库 Direct Connect 可让用户利用功能强大的逻辑下推，以及 Power BI 的分析功能。  使用 Direct Connect 可在浏览数据时会查询实时发回到 Azure SQL 数据仓库。  此项功能与 SQL 数据仓库的缩放性相结合，可让用户在数分钟内针对 TB 量级的数据创建动态报表。  此外，“在 Power BI 中打开”按钮的引入可让用户直接将 Power BI 连接到其 SQL 数据仓库，而无需从其他 Azure 部分收集信息。

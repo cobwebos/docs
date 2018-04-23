@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell 脚本示例 - 备份 Web 应用 | Microsoft Docs"
-description: "Azure PowerShell 脚本示例 - 备份 Web 应用"
+title: Azure PowerShell 脚本示例 - 备份 Web 应用 | Microsoft Docs
+description: Azure PowerShell 脚本示例 - 备份 Web 应用
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: fc755f82-ca3e-4532-b251-690b699324d6
 ms.service: app-service-web
@@ -15,17 +15,17 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5984a7707552b2740b48e3c9da40a5e96a3a279b
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: ed373131a2ca62ec79d9742545c2f18f6c1e382a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="back-up-a-web-app"></a>备份 Web 应用
 
 此示例脚本使用其相关资源，在应用服务中创建 Web 应用，然后为其创建一次性备份。 
 
-必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Login-AzureRmAccount` 创建与 Azure 的连接。 
+必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Connect-AzureRmAccount` 创建与 Azure 的连接。 
 
 ## <a name="sample-script"></a>示例脚本
 

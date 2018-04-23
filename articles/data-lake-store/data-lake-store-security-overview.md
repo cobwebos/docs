@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 65319df8db339b1c124be47f27a841bbd7141921
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d3387812e064d3ce8a293db7d2c942a34cd5b364
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Azure Data Lake Store 中的安全
 许多企业都开始利用大数据分析获取业务见解，以帮助他们做出明智的决策。 组织的环境可能复杂、规范化，不同的用户越来越多。 确保更安全地存储关键业务数据并向个人用户授予访问权限的正确级别，这一点对企业来说至关重要。 Azure Data Lake Store 旨在帮助企业实现这些安全要求。 在本文中，了解 Data Lake Store 的安全功能，包括：
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/28/2018
 ## <a name="authorization-and-access-control"></a>授权和访问控制
 Azure Active Directory 对用户进行身份验证，以便用户可以访问 Azure Data Lake Store。在此之后，授权控制 Azure Data Lake Store 的访问权限。 Data Lake Store 按以下方式分隔与帐户及数据相关的活动的授权：
 
-* [基于角色的访问控制](../active-directory/role-based-access-control-what-is.md) (RBAC) 由 Azure 帐户管理提供
+* [基于角色的访问控制](../role-based-access-control/overview.md) (RBAC) 由 Azure 帐户管理提供
 * 用于访问存储区中数据的 POSIX ACL
 
 ### <a name="rbac-for-account-management"></a>用于帐户管理的 RBAC

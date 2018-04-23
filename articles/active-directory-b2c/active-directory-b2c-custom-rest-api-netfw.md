@@ -11,13 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: davidmu
-ms.openlocfilehash: 9429f690940e1282d94b4d67ad1c618a24655cb5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c4a530b3d6b4f6d4f5ec6087adcee839422dd01d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 使用构成 Azure Active Directory B2C (Azure AD B2C) 基础的标识体验框架，可在用户旅程中与 RESTful API 相集成。 本演练将会介绍 Azure AD B2C 如何与 .NET Framework RESTful 服务 (Web API) 交互。
 
 ## <a name="introduction"></a>介绍

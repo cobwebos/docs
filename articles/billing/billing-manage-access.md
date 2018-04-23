@@ -1,11 +1,11 @@
 ---
-title: "使用角色管理对 Azure 计费的访问 | Microsoft Docs"
-description: 
-services: 
-documentationcenter: 
+title: 使用角色管理对 Azure 计费的访问 | Microsoft Docs
+description: ''
+services: ''
+documentationcenter: ''
 author: vikramdesai01
 manager: vikdesai
-editor: 
+editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
 ms.service: billing
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: vikdesai
-ms.openlocfilehash: c70904097f139bc2178feed83f1cf1274f3c738d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ded7904c6cb855994d92e68c4a1af64ccdb2c3a0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>使用基于角色的访问控制管理对 Azure 计费信息的访问
 
-可通过向订阅分配以下用户角色授予团队成员访问 Azure 计费信息的权限：帐户管理员、服务管理员、协同管理员、所有者、参与者、读取者和计费读取者。 他们将有权访问 [Azure 门户](https://portal.azure.com/)中的计费信息，并可使用[计费 API](billing-usage-rate-card-overview.md) 以编程方式获取发票（加入后）和用法详细信息。 若要深入了解谁可授予角色，以及哪些角色可执行什么操作，请参阅 [Azure RBAC 中的角色](../active-directory/role-based-access-built-in-roles.md)。
+可通过向订阅分配以下用户角色授予团队成员访问 Azure 计费信息的权限：帐户管理员、服务管理员、协同管理员、所有者、参与者、读取者和计费读取者。 他们将有权访问 [Azure 门户](https://portal.azure.com/)中的计费信息，并可使用[计费 API](billing-usage-rate-card-overview.md) 以编程方式获取发票（加入后）和用法详细信息。 若要深入了解谁可授予角色，以及哪些角色可执行什么操作，请参阅 [Azure RBAC 中的角色](../role-based-access-control/built-in-roles.md)。
 
 ## <a name="opt-in"></a>允许其他用户访问发票
 

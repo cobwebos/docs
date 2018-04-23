@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 630a633cf8657d43d6416d316928830634c9bf48
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d416c8953f1e41c04a39141c79e0b1568c1dccb3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 AD FS
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 AD FS 基础结构。 有关使用 Azure AD Connect Health 监视 Azure AD Connect（同步）的信息，请参阅 [使用用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)。此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)。
@@ -127,7 +127,7 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 
 > [!NOTE]
 > 若要使用此报表，请务必启用 AD FS 审核。 有关详细信息，请参阅 [为 AD FS 启用审核](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs)。 <br />
-> 若要访问预览版，需要提供全局管理员或[安全读者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#security-reader)权限。  
+> 若要访问预览版，需要提供全局管理员或[安全读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)权限。  
 > 
 
 ### <a name="what-is-in-the-report"></a>报表内容

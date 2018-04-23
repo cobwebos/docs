@@ -1,11 +1,11 @@
 ---
-title: "将 Azure 数据工厂与 SQL 数据仓库配合使用 | Microsoft 文档"
-description: "有关在开发解决方案时将 Azure 数据工厂 (ADF) 与 Azure SQL 数据仓库配合使用的技巧。"
+title: 将 Azure 数据工厂与 SQL 数据仓库配合使用 | Microsoft 文档
+description: 有关在开发解决方案时将 Azure 数据工厂 (ADF) 与 Azure SQL 数据仓库配合使用的技巧。
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 492de762-c7a2-4cdb-943f-3135230e94f1
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 6adfa1264c9d196d6c6e57f1d108710b9ee73265
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-data-factory-with-sql-data-warehouse"></a>将 Azure 数据工厂与 SQL 数据仓库配合使用
 Azure 数据工厂提供完全托管的方法，可以协调数据传输和 SQL 数据仓库上存储过程的执行。  这样，便可以更轻松地设置和计划 SQL 数据仓库的复杂提取、转换和加载 (ETL) 过程。 有关 Azure 数据工厂更完整的概述，请参阅 [Azure 数据工厂文档][Azure Data Factory documentation]。

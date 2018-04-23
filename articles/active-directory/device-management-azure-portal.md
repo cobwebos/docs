@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a4bdea4844c4aaa9990d619d59326a83cf0aef6c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6947358c6c845ff2c2a35cb218c11294a2841dc8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>使用 Azure 门户管理设备
 
@@ -74,7 +74,7 @@ Azure 门户提供了用于管理设备的集中场所。 可以使用[直接链
 
 - **用户可向 Azure AD 注册其设备** - 需要配置此设置，以允许向 Azure AD [注册](device-management-introduction.md#azure-ad-registered-devices)设备。 如果选择“无”，则在设备未加入 Azure AD 或混合 Azure AD 时，不允许进行注册。 登记到 Microsoft Intune 或 Office 365 移动设备管理 (MDM) 需要进行注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用。
 
-- **需要进行多重身份验证才能加入设备** - 可以选择用户是否需要进行第二重身份验证因素才能将其设备[加入](device-management-introduction.md#azure-ad-joined-devices) Azure AD。 默认值为“否”。 在注册设备时，建议要求多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关各种 Azure 多重身份验证服务的详细信息，请参阅 [Azure 多重身份验证入门](../multi-factor-authentication/multi-factor-authentication-get-started.md)。 
+- **需要进行多重身份验证才能加入设备** - 可以选择用户是否需要进行第二重身份验证因素才能将其设备[加入](device-management-introduction.md#azure-ad-joined-devices) Azure AD。 默认值为“否”。 在注册设备时，建议要求多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关各种 Azure 多重身份验证服务的详细信息，请参阅 [Azure 多重身份验证入门](authentication/concept-mfa-whichversion.md)。 
 
 - **最大设备数** - 可通过此设置选择用户可在 Azure AD 中拥有的最大设备数。 如果用户达到此配额，则必须先删除一个或多个现有设备，然后才可添加其他设备。 设备配额会计入当前已加入 Azure AD 或已注册 Azure AD 的所有设备。 默认值为 20。
 

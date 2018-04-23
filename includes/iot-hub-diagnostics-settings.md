@@ -18,7 +18,7 @@
    * 设备标识操作
    * 文件上传
    * 消息路由
-   * 云到设备克隆操作
+   * 云到设备孪生操作
    * 设备到云克隆操作
    * 克隆操作
    * 作业操作
@@ -28,7 +28,7 @@
 如果想要通过 PowerShell 打开诊断设置，请使用以下代码：
 
 ```
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName <subscription that includes your IoT Hub>
 Set-AzureRmDiagnosticSetting -ResourceId <your resource Id> -ServiceBusRuleId <your service bus rule Id> -Enabled $true
 ```

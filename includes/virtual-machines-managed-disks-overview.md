@@ -24,7 +24,7 @@ Azure 磁盘具备 99.999% 的可用性。 数据具有三个副本，高持久�
 
 ### <a name="granular-access-control"></a>粒度访问控制
 
-可以使用 [Azure 基于角色的访问控制 (RBAC)](../articles/active-directory/role-based-access-control-what-is.md) 将对托管磁盘的特定权限分配给一个或多个用户。 托管磁盘公开了各种操作，包括读取、写入（创建/更新）、删除，以及检索磁盘的[共享访问签名 (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)。 可以仅将某人员执行其工作所需的操作的访问权限授予该人员。 例如，如果不希望某人员将某个托管磁盘复制到存储帐户，则可以选择不授予对该托管磁盘的导出操作的访问权限。 类似地，如果不希望某人员使用 SAS URI 复制某个托管磁盘，则可以选择不授予对该托管磁盘的该权限。
+可以使用 [Azure 基于角色的访问控制 (RBAC)](../articles/role-based-access-control/overview.md) 将对托管磁盘的特定权限分配给一个或多个用户。 托管磁盘公开了各种操作，包括读取、写入（创建/更新）、删除，以及检索磁盘的[共享访问签名 (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)。 可以仅将某人员执行其工作所需的操作的访问权限授予该人员。 例如，如果不希望某人员将某个托管磁盘复制到存储帐户，则可以选择不授予对该托管磁盘的导出操作的访问权限。 类似地，如果不希望某人员使用 SAS URI 复制某个托管磁盘，则可以选择不授予对该托管磁盘的该权限。
 
 ### <a name="azure-backup-service-support"></a>Azure 备份服务支持
 将 Azure 备份服务与托管磁盘配合使用，创建具有基于时间的备份、轻松 VM 还原和备份保留策略的备份作业。 托管磁盘仅支持使用本地冗余存储 (LRS) 作为复制选项；这意味着它在单个区域中保留三个数据副本。 对于区域性灾难恢复，必须使用 [Azure 备份服务](../articles/backup/backup-introduction-to-azure-backup.md)和作为备份保管库的 GRS 存储帐户来备份不同区域中的 VM 磁盘。 目前 Azure 备份支持将最大 1TB 的数据磁盘大小用于备份。 有关详细信息，请参阅[为具有托管磁盘的 VM 使用 Azure 备份服务](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。
@@ -104,8 +104,7 @@ Azure 磁盘具备 99.999% 的可用性。 数据具有三个副本，高持久�
 
 ### <a name="storage-service-encryption-sse"></a>存储服务加密 (SSE)
 
-[Azure 存储服务加密](../articles/storage/common/storage-service-encryption.md) 可提供静态加密和保护你的数据，使你的组织能够信守在安全性与符合性方面所做的承诺。 默认情况下，所有托管磁盘都启用了 SSE，所有可用托管磁盘的区域都有快照和映像。 从 2017 年 6 月 10 日起，所有新的托管磁盘/快照/映像和写入到现有托管磁盘的新数据默认情况下都会使用由 Microsoft 托管的密钥自动静态加密。 你可以选择自带密钥来对 Azure Blob 和文件进行加密。 对表和队列的加密将始终使用 Microsoft 托管的密钥。
-请注意，在启用存储服务加密以后，只会对新数据进行加密，该存储帐户中的任何现有文件将由后台加密进程以追溯方式进行加密。 有关详细信息请访问[托管磁盘常见问题解答页](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)。
+[Azure 存储服务加密](../articles/storage/common/storage-service-encryption.md) 可提供静态加密和保护你的数据，使你的组织能够信守在安全性与符合性方面所做的承诺。 默认情况下，所有托管磁盘都启用了 SSE，所有可用托管磁盘的区域都有快照和映像。 从 2017 年 6 月 10 日起，所有新的托管磁盘/快照/映像和写入到现有托管磁盘的新数据默认情况下都会使用由 Microsoft 托管的密钥自动静态加密。 有关详细信息请访问[托管磁盘常见问题解答页](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)。
 
 
 ### <a name="azure-disk-encryption-ade"></a>Azure 磁盘加密 (ADE)

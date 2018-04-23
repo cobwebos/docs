@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights 中的资源、角色和访问控制 | Microsoft Docs"
-description: "组织的见解的所有者、参与者和读者。"
+title: Azure Application Insights 中的资源、角色和访问控制 | Microsoft Docs
+description: 组织的见解的所有者、参与者和读者。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6e811c9b427469fa781cf1f5b7c7deff3a8e6eb3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5bb6c33c083e1be690b70b63ca087c923d43f3ee
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
-通过使用 [Microsoft Azure 中基于角色的访问控制](../active-directory/role-based-access-control-configure.md)，可以控制哪些用户对 Azure [Application Insights][start] 中的数据具有读取和更新访问权限。
+通过使用 [Microsoft Azure 中基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)，可以控制哪些用户对 Azure [Application Insights][start] 中的数据具有读取和更新访问权限。
 
 > [!IMPORTANT]
 > 将访问权限分配给应用程序资源所属**资源组或订阅**中的用户（并非资源本身）。 分配 **Application Insights 组件参与者**角色。 这可确保对 Web 测试和警报及应用程序资源的访问实现统一控制。 [了解详细信息](#access)。
@@ -91,7 +91,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="related-content"></a>相关内容
 
-* [Azure 中基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
+* [Azure 中基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)
 
 <!--Link references-->
 

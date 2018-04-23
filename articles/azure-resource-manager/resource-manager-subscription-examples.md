@@ -1,6 +1,6 @@
 ---
-title: "订阅治理方案与示例 | Microsoft Docs"
-description: "提供示例，解释如何针对常见方案实施 Azure 订阅监管。"
+title: 订阅治理方案与示例 | Microsoft Docs
+description: 提供示例，解释如何针对常见方案实施 Azure 订阅监管。
 services: azure-resource-manager
 documentationcenter: na
 author: rdendtler
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 4ab816d0392816c2293f9d70eb249bbcfa09bfba
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6bd4e9f6bbc5bba73b2c169b7f3c5931f30029e6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>实施 Azure 企业基架的示例
 本主题通过示例介绍企业如何实施 [Azure 企业基架](resource-manager-subscription-governance.md)的建议事项。 其中使用一家虚构公司 Contoso 来演示常见方案的最佳实践。
@@ -43,7 +43,7 @@ Contoso 正在构建由世界各地的开发人员使用的源代码管理系统
 ### <a name="naming-standards--resource-groups"></a>命名标准和资源组
 Dave 需要创建一个订阅，用于支持所有业务单位常用的开发人员工具。 他需要为订阅和资源组（用于应用程序和网络）创建有意义的名称。 他创建了以下订阅和资源组：
 
-| 项目 | 名称 | 说明 |
+| Item | 名称 | 说明 |
 | --- | --- | --- |
 | 订阅 |Contoso ETS DeveloperTools Production |支持常用的开发人员工具 |
 | 资源组 |bitbucket-prod-rg |包含应用程序 Web 服务器和数据库服务器 |
@@ -56,10 +56,10 @@ Dave 为订阅分配了以下角色：
 
 | 角色 | 已分配到 | 说明 |
 | --- | --- | --- |
-| [所有者](../active-directory/role-based-access-built-in-roles.md#owner) |Contoso AD 中的托管 ID |此 ID 是通过 Contoso 的标识管理工具，配合适时使用 (JIT) 访问权限控制的，可确保订阅所有者的访问完全受到审核 |
-| [安全经理](../active-directory/role-based-access-built-in-roles.md#security-manager) |安全与风险管理部门 |此角色允许用户查看 Azure 安全中心及资源状态 |
-| [网络参与者](../active-directory/role-based-access-built-in-roles.md#network-contributor) |网络团队 |此角色允许 Contoso 的网络团队管理站点到站点 VPN 和虚拟网络 |
-| *自定义角色* |应用程序所有者 |Dave 创建了一个可授权修改资源组中资源的角色。 有关详细信息，请参阅 [Custom Roles in Azure RBAC](../active-directory/role-based-access-control-custom-roles.md)（Azure RBAC 中的自定义角色） |
+| [所有者](../role-based-access-control/built-in-roles.md#owner) |Contoso AD 中的托管 ID |此 ID 是通过 Contoso 的标识管理工具，配合适时使用 (JIT) 访问权限控制的，可确保订阅所有者的访问完全受到审核 |
+| [安全经理](../role-based-access-control/built-in-roles.md#security-manager) |安全与风险管理部门 |此角色允许用户查看 Azure 安全中心及资源状态 |
+| [网络参与者](../role-based-access-control/built-in-roles.md#network-contributor) |网络团队 |此角色允许 Contoso 的网络团队管理站点到站点 VPN 和虚拟网络 |
+| *自定义角色* |应用程序所有者 |Dave 创建了一个可授权修改资源组中资源的角色。 有关详细信息，请参阅 [Custom Roles in Azure RBAC](../role-based-access-control/custom-roles.md)（Azure RBAC 中的自定义角色） |
 
 ### <a name="policies"></a>策略
 在管理订阅中的资源方面，Dave 提出以下要求：
@@ -94,7 +94,7 @@ Contoso ETS 信息安全与风险管理团队评审了 Dave 规划的将应用�
 
 他使用了以下资源：
 
-| 资源类型 | Name | 说明 |
+| 资源类型 | 名称 | 说明 |
 | --- | --- | --- |
 | 虚拟网络 |internal-vnet |用于 BitBucket 应用程序，通过 ExpressRoute 连接到 Contoso 的企业网络。  子网 (`bitbucket`) 提供具有特定 IP 地址空间的应用程序 |
 | 虚拟网络 |external-vnet |用于将来部署的、需要面向公众的终结点的应用程序 |
@@ -123,7 +123,7 @@ Contoso IT 服务管理部门需要快速识别和处理威胁。 他们还希�
 ### <a name="azure-subscriptions"></a>Azure 订阅
 Dave 登录到 Azure 企业门户，发现供应链部门已经存在。  不过，由于此项目是供应链团队在 Azure 中的第一个开发项目，Dave 认识到 Alice 的开发团队需要一个新帐户。  他为她的团队创建了“R&D”帐户，并向 Alice 分配了访问权限。 Alice 通过 Azure 门户登录并创建了两个订阅：分别用于托管开发服务器和托管生产服务器。  创建以下订阅时，她遵循了以前建立的命名标准：
 
-| 订阅用途 | Name |
+| 订阅用途 | 名称 |
 | --- | --- |
 | 开发 |Contoso SupplyChain ResearchDevelopment LoyaltyCard Development |
 | 生产 |Contoso SupplyChain Operations LoyaltyCard Production |
@@ -164,13 +164,13 @@ Contoso ETS 信息安全与风险管理团队评审了 Dave 规划的将应用�
 
 针对**开发订阅**，他们创建了：
 
-| 资源类型 | Name | 说明 |
+| 资源类型 | 名称 | 说明 |
 | --- | --- | --- |
 | 虚拟网络 |internal-vnet |为 Contoso 会员卡开发环境提供服务，通过 ExpressRoute 连接到 Contoso 的企业网络 |
 
 针对**生产订阅**，他们创建了：
 
-| 资源类型 | Name | 说明 |
+| 资源类型 | 名称 | 说明 |
 | --- | --- | --- |
 | 虚拟网络 |external-vnet |托管会员卡应用程序，不直接连接到 Contoso 的 ExpressRoute。 代码通过源代码管理系统直接推送到 PaaS 服务 |
 | 网络安全组 |loyaltycard-nsg |只允许通过 TCP 443 接收入站通信，确保最大程度地减少此工作负荷的受攻击面。  另外，Contoso 正在调研是否要 Web 应用程序防火墙来增强保护 |

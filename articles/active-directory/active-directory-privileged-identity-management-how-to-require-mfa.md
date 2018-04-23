@@ -1,11 +1,11 @@
 ---
-title: "如何请求多重身份验证 | Microsoft 文档"
-description: "了解如何使用 Azure Active Directory Privileged Identity Management 扩展请求多重身份验证 (MFA) 用于特权标识。"
+title: 如何请求多重身份验证 | Microsoft 文档
+description: 了解如何使用 Azure Active Directory Privileged Identity Management 扩展请求多重身份验证 (MFA) 用于特权标识。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 1e3dc4ad-3a6a-4a52-8417-3ca4f84ae05c
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: faee62bdaca3f80fdd8f6be8aaf28c881314333a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 42552b4b8a7b2704a94786518f411f922dbd6a81
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-require-mfa-in-azure-ad-privileged-identity-management"></a>如何在 Azure AD Privileged Identity Management 中要求 MFA
 我们建议为所有管理员请求多重身份验证 (MFA)。 这可降低因密码泄露而受到攻击的风险。
@@ -41,9 +41,9 @@ ms.lasthandoff: 12/11/2017
 ## <a name="how-azure-ad-pim-validates-mfa"></a>Azure AD PIM 如何验证 MFA
 当用户激活角色时，有两个选项可用于验证 MFA。
 
-最简单的选项是依赖于正在激活特权角色的用户的 Azure MFA。 若要执行此操作，首先检查这些用户是否已获得许可（如有必要），并且是否已注册 Azure MFA。 如何执行此操作的详细信息在[云中的 Azure 多重身份验证入门](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)中提供。 建议将 Azure AD 配置为在用户登录后针对这些用户强制执行 MFA。 这是因为 MFA 检查由 Azure AD PIM 本身执行。
+最简单的选项是依赖于正在激活特权角色的用户的 Azure MFA。 若要执行此操作，首先检查这些用户是否已获得许可（如有必要），并且是否已注册 Azure MFA。 如何执行此操作的详细信息在[云中的 Azure 多重身份验证入门](authentication/howto-mfa-getstarted.md)中提供。 建议将 Azure AD 配置为在用户登录后针对这些用户强制执行 MFA。 这是因为 MFA 检查由 Azure AD PIM 本身执行。
 
-或者，如果用户在本地进行身份验证，可以让标识提供商负责执行 MFA。 例如，如果将 AD 联合身份验证服务配置为需要基于智能卡的身份验证才能访问 Azure AD，[将 Azure 多重身份验证与 AD FS 配合使用来保护云资源](../multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud.md)包含有关配置 AD FS 以向 Azure AD 发送声明的说明。 当用户尝试激活角色时，Azure AD PIM 将接受 MFA 在收到相应声明后针对用户进行了验证。
+或者，如果用户在本地进行身份验证，可以让标识提供商负责执行 MFA。 例如，如果将 AD 联合身份验证服务配置为需要基于智能卡的身份验证才能访问 Azure AD，[将 Azure 多重身份验证与 AD FS 配合使用来保护云资源](authentication/howto-mfa-adfs.md)包含有关配置 AD FS 以向 Azure AD 发送声明的说明。 当用户尝试激活角色时，Azure AD PIM 将接受 MFA 在收到相应声明后针对用户进行了验证。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤

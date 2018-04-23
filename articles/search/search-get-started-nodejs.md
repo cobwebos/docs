@@ -1,24 +1,17 @@
 ---
-title: "Node.js 中的 Azure 搜索入门 | Microsoft Docs"
-description: "介绍使用 Node.js 作为编程语言，在 Azure 的托管云搜索服务上生成搜索应用程序的方法。"
-services: search
-documentationcenter: 
-author: EvanBoyle
-manager: pablocas
-editor: v-lincan
-ms.assetid: 0625dc1b-9db6-40d5-ba9a-4738b75cbe19
+title: Node.js 中的 Azure 搜索入门 | Microsoft Docs
+description: 介绍使用 Node.js 作为编程语言，在 Azure 的托管云搜索服务上生成搜索应用程序的方法。
+author: jj09
+manager: jlembicz
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: hero-article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 04/26/2017
-ms.author: evboyle
-ms.openlocfilehash: 511f3327972672deaa321fb34bc5f91d355370a2
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.author: jjed
+ms.openlocfilehash: 75b498d016b6c2696ef116b39186f55f3e876848
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Node.js 中的 Azure 搜索入门
 > [!div class="op_single_selector"]

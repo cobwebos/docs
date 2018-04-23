@@ -1,6 +1,6 @@
 ---
-title: "有关如何使用 Azure 机器学习数据准备的深度指南 | Microsoft Docs"
-description: "本文档提供有关如何使用 Azure 机器学习数据准备解决数据问题的概述和详细信息"
+title: 有关如何使用 Azure 机器学习数据准备的深度指南 | Microsoft Docs
+description: 本文档提供有关如何使用 Azure 机器学习数据准备解决数据问题的概述和详细信息
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 9fc0ae8929f12447123321a5c64ac89309c68dca
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-preparations-user-guide"></a>数据准备用户指南 
 Azure 机器学习数据准备体验提供大量的丰富功能。 本文阐述该体验的最深入部分。

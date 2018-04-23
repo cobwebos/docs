@@ -1,6 +1,6 @@
 ---
-title: "什么是 Azure 时序见解？ | Microsoft Docs"
-description: "简要介绍 Azure 时序见解，这是一种用于时序数据分析和 IoT 解决方案的新服务。"
+title: 什么是 Azure 时序见解？ | Microsoft Docs
+description: 简要介绍 Azure 时序见解，这是一种用于时序数据分析和 IoT 解决方案的新服务。
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
@@ -12,10 +12,10 @@ ms.workload: big-data
 ms.topic: article
 ms.date: 01/26/2018
 ms.openlocfilehash: e31cebfd027e93096e233f2963445e4fc50a7e9d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="what-is-azure-time-series-insights"></a>什么是 Azure 时序见解？
 

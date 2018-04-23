@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/30/2018
 ms.author: billmath
-ms.openlocfilehash: 87d349933a8daeaf8b7a4487612ad62dd2b9efc2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: edf22ea0cfe60cb734b4339363d50af050466000
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="pim-for-azure-resources"></a>适用于 Azure 资源的 PIM
 
@@ -43,7 +43,7 @@ Azure AD PIM 可以管理内置的 Azure 资源角色以及自定义 (RBAC) 角�
 - 安全管理器等等
 
 >[!NOTE]
-已分配到“所有者”或“用户访问管理员”角色的用户或组成员，以及在 Azure AD 中启用订阅管理的全局管理员都属于资源管理员。 这些管理员可以使用适用于 Azure 资源的 PIM 来分配角色、配置角色设置，以及审查访问权限。 查看 [Azure 资源的内置角色](../role-based-access-built-in-roles.md)列表。
+已分配到“所有者”或“用户访问管理员”角色的用户或组成员，以及在 Azure AD 中启用订阅管理的全局管理员都属于资源管理员。 这些管理员可以使用适用于 Azure 资源的 PIM 来分配角色、配置角色设置，以及审查访问权限。 查看 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)列表。
 
 ## <a name="tasks"></a>任务
 
@@ -193,6 +193,6 @@ Azure 资源的激活角色功能引入了新的体验，可让有资格的角�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 资源的内置角色](../role-based-access-built-in-roles.md)
+- [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)
 - [在此处了解如何激活 Azure AD 角色](../active-directory-privileged-identity-management-how-to-activate-role.md)
 - [PIM 审批工作流](azure-ad-pim-approval-workflow.md)

@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 911043c8fda985f25023dc1224d8e67b283f4d6c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 31e71f153c7bbf76b0f06f8f17a74c43cc1b1c81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组组织资源 
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 04/03/2018
 
 ![树](media/management-groups/MG_overview.png)
 
-创建按部门分组的层次结构后，可以分配由该管理组下的部门继承的 [Azure 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 角色。 使用管理组时，只需分配角色一次，因此可以减少工作负荷，并减少出错的风险。 
+创建按部门分组的层次结构后，可以分配由该管理组下的部门继承的 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 角色。 使用管理组时，只需分配角色一次，因此可以减少工作负荷，并减少出错的风险。 
 
 ### <a name="important-facts-about-management-groups"></a>关于管理组的重要事实
 - 在单个目录中可以支持 10,000 个管理组。 
@@ -55,7 +55,7 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="root-management-group-for-each-directory"></a>每个目录的根管理组
 
-为每个目录指定了一个称为“根”管理组的顶级管理组。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 此根管理组允许在目录级别应用全局策略和 RBAC 分配。 [目录管理员最初需要提升自身的权限](../active-directory/role-based-access-control-tenant-admin-access.md)才能成为此根组的所有者。 当管理员成为组的所有者后，可将任何 RBAC 角色分配给其他目录用户或组来管理层次结构。  
+为每个目录指定了一个称为“根”管理组的顶级管理组。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 此根管理组允许在目录级别应用全局策略和 RBAC 分配。 [目录管理员最初需要提升自身的权限](../role-based-access-control/elevate-access-global-admin.md)才能成为此根组的所有者。 当管理员成为组的所有者后，可将任何 RBAC 角色分配给其他目录用户或组来管理层次结构。  
 
 ### <a name="important-facts-about-the-root-management-group"></a>关于根管理组的重要事实
 - 默认情况下，根管理组的名称和 ID 是 Azure Active Directory 的 ID。 随时可以更新此显示名称，以便在 Azure 门户中显示其他名称。 
@@ -67,9 +67,9 @@ ms.lasthandoff: 04/03/2018
   
 ## <a name="management-group-access"></a>访问管理组
 
-Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 来访问所有资源访问和定义角色。 层次结构中的子资源继承这些权限。   
+Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 来访问所有资源访问和定义角色。 层次结构中的子资源继承这些权限。   
 
-可将任何[内置 RBAC 角色](../active-directory/role-based-access-control-what-is.md#built-in-roles)分配到管理组，不过，通常会使用四个角色： 
+可将任何[内置 RBAC 角色](../role-based-access-control/overview.md#built-in-roles)分配到管理组，不过，通常会使用四个角色： 
 - **所有者**具有对所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。 
 - 参与者可以创建和管理所有类型的 Azure 资源，但不能将访问权限授予其他用户。
 - **资源策略参与者**可以在资源的目录中创建和管理策略。     

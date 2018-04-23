@@ -1,6 +1,6 @@
 ---
-title: "Azure 资源管理器概述 | Microsoft Docs"
-description: "介绍如何使用 Azure 资源管理器在 Azure 上部署和管理资源以及对其进行访问控制。"
+title: Azure 资源管理器概述 | Microsoft Docs
+description: 介绍如何使用 Azure 资源管理器在 Azure 上部署和管理资源以及对其进行访问控制。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: cc3402b56b12e82653f673d7a5ab527231599c5b
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: a7e3d817923b0f9a691d5acaba606bdcd0012e60
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-resource-manager-overview"></a>Azure 资源管理器概述
 应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 那么，可以使用 Azure 资源管理器以组的方式处理解决方案中的资源。 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 资源管理器提供安全、审核和标记功能，以帮助你在部署后管理资源。 
@@ -215,7 +215,7 @@ Azure 还提供多个特定于资源的角色。 常见的此类角色有：
 4. SQL Server 参与者 - 可管理 SQL 服务器和数据库，但不包括其安全性相关的策略
 5. 网站参与者 - 可管理网站，但不包括与其连接的 Web 计划
 
-有关角色及允许操作的完整列表，请参阅 [RBAC：内置角色](../active-directory/role-based-access-built-in-roles.md)。 有关基于角色的访问控制的详细信息，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。 
+有关角色及允许操作的完整列表，请参阅 [RBAC：内置角色](../role-based-access-control/built-in-roles.md)。 有关基于角色的访问控制的详细信息，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。 
 
 某些情况下，可能需要运行代码或脚本以访问资源，但最好不使用用户的凭据运行。 相反，请为应用程序称创建名为服务主体的标识，并为该服务主体分配相应角色。 通过 Resource Manager，可为应用程序创建凭据，并以编程方式对该应用程序进行身份验证。 若要了解如何创建服务主体，请参阅下列主题之一：
 

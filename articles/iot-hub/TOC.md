@@ -121,7 +121,7 @@
 #### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-twin-how-to-configure.md)
 #### [Java 后端/Java 设备](iot-hub-java-java-twin-how-to-configure.md)
 #### [Python 后端/Python 设备](iot-hub-python-python-twin-how-to-configure.md)
-### 使用设备作业更新设备固件
+### 使用设备孪生更新设备固件
 #### [Node 后端/Node 设备](iot-hub-node-node-firmware-update.md)
 #### [.NET 后端/Node.js 设备](iot-hub-csharp-node-firmware-update.md)
 #### [.NET 后端/.NET 设备](iot-hub-csharp-csharp-firmware-update.md)

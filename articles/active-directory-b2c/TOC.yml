@@ -1,0 +1,251 @@
+- name: Azure AD B2C 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure AD B2C
+      expanded: true
+      href: active-directory-b2c-overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 设置登录 - ASP.NET
+      href: active-directory-b2c-quickstarts-web-app.md
+    - name: 设置登录 - 桌面
+      href: active-directory-b2c-quickstarts-desktop-app.md
+    - name: 设置登录 - 单页
+      href: active-directory-b2c-quickstarts-spa.md
+- name: 教程
+  items:
+    - name: 1 - 注册应用程序
+      href: tutorial-register-applications.md
+    - name: 2 - 对帐户进行身份验证
+      items:
+        - name: ASP.NET
+          href: active-directory-b2c-tutorials-web-app.md
+        - name: 桌面型
+          href: active-directory-b2c-tutorials-desktop-app.md
+        - name: 单页
+          href: active-directory-b2c-tutorials-spa.md
+    - name: 3 - 授予 API 访问权限
+      items:
+        - name: ASP.NET
+          href: active-directory-b2c-tutorials-web-api.md
+        - name: 桌面型
+          href: active-directory-b2c-tutorials-desktop-app-webapi.md
+        - name: 单页
+          href: active-directory-b2c-tutorials-spa-webapi.md
+- name: 示例
+  href: code-samples.md
+- name: 操作指南
+  items:
+    - name: 注册应用程序
+      href: active-directory-b2c-app-registration.md
+    - name: 内置策略
+      href: active-directory-b2c-reference-policies.md
+    - name: 移动应用和桌面应用
+      items:
+        - name: 概述
+          href: active-directory-b2c-reference-oauth-code.md
+        - name: iOS
+          items:
+            - name: 使用 MSAL 的 iOS Swift
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal'
+            - name: 使用 App Auth 的 iOS ObjC
+              href: active-directory-b2c-devquickstarts-ios.md
+        - name: Android
+          items:
+            - name: 使用 MSAL 的 Android
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-android-native-msal'
+            - name: 使用 App Auth 的 Android
+              href: active-directory-b2c-devquickstarts-android.md
+            - name: .NET
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop'
+            - name: Xamarin
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-xamarin-native'
+        - name: Web 应用
+          items:
+            - name: 概述
+              href: active-directory-b2c-reference-oidc.md
+            - name: ASP.NET
+              href: active-directory-b2c-devquickstarts-web-dotnet-susi.md
+            - name: ASP.NET Core
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp'
+            - name: Node.js
+              href: active-directory-b2c-devquickstarts-web-node.md
+        - name: 单页应用
+          items:
+            - name: 概述
+              href: active-directory-b2c-reference-spa.md
+            - name: 使用 MSAL 的 JavaScript
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp'
+            - name: 使用 Hello 的 JavaScript
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi'
+        - name: Web API
+          items:
+            - name: ASP.NET
+              href: active-directory-b2c-devquickstarts-api-dotnet.md
+            - name: ASP.NET Core
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi'
+            - name: Node.js
+              href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi'
+            - name: 调用 .NET Web API
+              href: active-directory-b2c-devquickstarts-web-api-dotnet.md
+    - name: 指南
+      items:
+        - name: 配置标识提供者
+          items:
+            - name: Microsoft 帐户
+              href: active-directory-b2c-setup-msa-app.md
+            - name: Facebook
+              href: active-directory-b2c-setup-fb-app.md
+            - name: Google
+              href: active-directory-b2c-setup-goog-app.md
+            - name: Amazon
+              href: active-directory-b2c-setup-amzn-app.md
+            - name: LinkdIn
+              href: active-directory-b2c-setup-li-app.md
+            - name: Twitter
+              href: active-directory-b2c-setup-twitter-app.md
+            - name: 微博
+              href: active-directory-b2c-setup-weibo-app.md
+            - name: QQ
+              href: active-directory-b2c-setup-qq-app.md
+            - name: 微信
+              href: active-directory-b2c-setup-wechat-app.md
+        - name: 设置自助密码重置
+          href: active-directory-b2c-reference-sspr.md
+        - name: 自定义 UI
+          href: active-directory-b2c-reference-ui-customization.md
+          items:
+            - name: 用于自定义的帮助器工具
+              href: active-directory-b2c-reference-ui-customization-helper-tool.md
+        - name: 使用 Azure AD 图形 API
+          href: active-directory-b2c-devquickstarts-graph-dotnet.md
+        - name: 获取访问令牌
+          href: active-directory-b2c-access-tokens.md
+        - name: 禁用电子邮件验证
+          href: active-directory-b2c-reference-disable-ev.md
+        - name: 配置令牌
+          href: active-directory-b2c-token-session-sso.md
+        - name: 启用 MFA
+          href: active-directory-b2c-reference-mfa.md
+        - name: 使用自定义属性
+          href: active-directory-b2c-reference-custom-attr.md
+        - name: 自定义密码
+          href: active-directory-b2c-reference-password-complexity.md
+        - name: 语言自定义
+          href: active-directory-b2c-reference-language-customization.md
+        - name: 使用报告 API
+          href: active-directory-b2c-reference-usage-reporting-api.md
+        - name: 迁移用户
+          href: active-directory-b2c-user-migration.md
+    - name: 标识体验框架
+      items:
+        - name: 自定义策略
+          href: active-directory-b2c-overview-custom.md
+        - name: 指南
+          items:
+            - name: 入门
+              href: active-directory-b2c-get-started-custom.md
+            - name: 配置 OIDC/OAUTH 提供程序
+              items:
+                - name: Azure AD
+                  href: active-directory-b2c-setup-aad-custom.md
+                - name: Microsoft 帐户
+                  href: active-directory-b2c-custom-setup-msa-idp.md
+                - name: Google+
+                  href: active-directory-b2c-custom-setup-goog-idp.md
+                - name: LinkedIn
+                  href: active-directory-b2c-custom-setup-li-idp.md
+                - name: Twitter
+                  href: active-directory-b2c-custom-setup-twitter-idp.md
+            - name: 配置 SAML 提供程序
+              items:
+                - name: ADFS
+                  href: active-directory-b2c-custom-setup-adfs2016-idp.md
+                - name: Salesforce
+                  href: active-directory-b2c-setup-sf-app-custom.md
+            - name: 集成 RESTful API
+              items:
+                - name: 验证用户输入
+                  href: active-directory-b2c-rest-api-validation-custom.md
+                - name: 获取其他声明
+                  href: active-directory-b2c-rest-api-step-custom.md
+                - name: 添加自己的 RESTful API
+                  href: active-directory-b2c-custom-rest-api-netfw.md
+                - name: 使用基本身份验证保护 RESTful API
+                  href: active-directory-b2c-custom-rest-api-netfw-secure-basic.md
+                - name: 使用证书身份验证保护 RESTful API
+                  href: active-directory-b2c-custom-rest-api-netfw-secure-cert.md
+            - name: 用户流
+              items:
+                - name: 配置用户输入
+                  href: active-directory-b2c-configure-signup-self-asserted-custom.md
+                - name: 自定义属性
+                  href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
+                - name: 自定义 UI
+                  href: active-directory-b2c-ui-customization-custom.md
+                - name: 动态自定义 UI
+                  href: active-directory-b2c-ui-customization-custom-dynamic.md
+                - name: 自定义令牌
+                  href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+                - name: 密码复杂性
+                  href: active-directory-b2c-reference-password-complexity-custom.md
+                - name: 密码更改
+                  href: active-directory-b2c-reference-password-change-custom.md
+                - name: 启用“使我保持登录状态”
+                  href: active-directory-b2c-reference-kmsi-custom.md
+            - name: 故障排除
+              items:
+                - name: 使用 Application Insights 收集日志
+                  href: active-directory-b2c-troubleshoot-custom.md
+        - name: 引用
+          items:
+            - name: 发行说明
+              href: active-directory-b2c-developer-notes-custom.md
+            - name: SSO 会话提供程序
+              href: active-directory-b2c-reference-sso-custom.md
+            - name: 语言自定义
+              href: active-directory-b2c-language-customization-custom.md
+            - name: 信任框架定义
+              href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
+    - name: 引用
+      items:
+        - name: 代码示例
+          href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
+        - name: 术语表
+          items:
+            - name: 应用程序类型
+              href: active-directory-b2c-apps.md
+            - name: 身份验证协议
+              href: active-directory-b2c-reference-protocols.md
+            - name: 令牌
+              href: active-directory-b2c-reference-tokens.md
+        - name: 上市区域和数据驻留
+          href: active-directory-b2c-reference-tenant-type.md
+        - name: 启用计费
+          href: active-directory-b2c-how-to-enable-billing.md
+        - name: 威胁管理
+          href: active-directory-b2c-reference-threat-management.md
+        - name: 创建目录时出现的问题
+          href: active-directory-b2c-support-create-directory.md
+        - name: 扩展应用
+          href: active-directory-b2c-reference-extensions-app.md
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: 常见问题
+      href: active-directory-b2c-faqs.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/active-directory-b2c/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c'
+    - name: 支持
+      href: active-directory-b2c-support.md
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'

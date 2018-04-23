@@ -10,10 +10,10 @@ ms.date: 12/20/2017
 ms.topic: article
 ms.service: iot-edge
 ms.openlocfilehash: 47d420b4b283b390f67719233c4bea59495a589a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/17/2018
 ---
 # <a name="use-visual-studio-code-to-develop-and-deploy-azure-functions-to-azure-iot-edge"></a>使用 Visual Studio Code 开发 Azure Functions 并将其部署到 Azure IoT Edge
 

@@ -1,11 +1,11 @@
 ---
-title: "构建第一个数据工厂（Azure 门户）| Microsoft Docs"
-description: "本教程使用 Azure 门户中的数据工厂编辑器创建一个示例 Azure 数据工厂管道。"
+title: 构建第一个数据工厂（Azure 门户）| Microsoft Docs
+description: 本教程使用 Azure 门户中的数据工厂编辑器创建一个示例 Azure 数据工厂管道。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c4fe0e01936ebc131b10f011b98e9d0c1782179b
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 75139e39c3391a7662e3d02ee8d56463ac9fcc7a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教程：使用 Azure 门户生成第一个数据工厂
 > [!div class="op_single_selector"]
@@ -77,10 +77,10 @@ ms.lasthandoff: 03/02/2018
 
 7. 选中“固定到仪表板”复选框。
 
-8. 选择“创建”。
+8. 选择**创建**。
 
    > [!IMPORTANT]
-   > 只有订阅/资源组级别的[数据工厂参与者](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor)角色成员才能创建数据工厂实例。
+   > 只有订阅/资源组级别的[数据工厂参与者](../../role-based-access-control/built-in-roles.md#data-factory-contributor)角色成员才能创建数据工厂实例。
    >
    >
 9. 仪表板上会显示状态为“正在部署数据工厂”的以下磁贴：    

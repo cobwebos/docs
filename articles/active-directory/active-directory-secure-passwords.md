@@ -1,11 +1,11 @@
 ---
-title: "Azure AD 分层密码安全性 | Microsoft Docs"
-description: "介绍 Azure AD 如何强制实施强密码，并防止用户密码被网络罪犯利用。"
+title: Azure AD 分层密码安全性 | Microsoft Docs
+description: 介绍 Azure AD 如何强制实施强密码，并防止用户密码被网络罪犯利用。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
-ms.openlocfilehash: 19c8d9084c9ce03d347e58b3359b65cdbcd80651
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 04e437eb5a040f418df22e0857cb96d7ef99bbbb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>Azure AD 密码安全性多层方法
 
@@ -84,4 +84,4 @@ Microsoft 会持续分析[数据破解](https://www.privacyrights.org/data-breac
 
 * [如何更新自己的密码](active-directory-passwords-update-your-own-password.md)
 * [Azure 标识管理基础知识](fundamentals-identity.md)
-* [报告密码重置活动](active-directory-passwords-reporting.md)
+* [报告密码重置活动](authentication/howto-sspr-reporting.md)

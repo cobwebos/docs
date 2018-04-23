@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 容器实例中装载机密卷"
-description: "了解如何装载机密卷以存储供容器实例访问的敏感信息"
+title: 在 Azure 容器实例中装载机密卷
+description: 了解如何装载机密卷以存储供容器实例访问的敏感信息
 services: container-instances
 author: mmacy
 manager: timlt
@@ -8,11 +8,11 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: marsma
-ms.openlocfilehash: 6f8e1b6faac11b668a143f8013a198831a428c51
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: e20dc3b37bc766b2a8a352eb62c03f5e2ee14c52
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载机密卷
 
@@ -35,6 +35,7 @@ ms.lasthandoff: 02/14/2018
 
 例如，以下资源管理器模板创建了一个包含单个容器的容器组。 该容器装载了一个包含两个 Base64 编码机密的*机密*卷。
 
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
 若要查看使用 Azure 资源管理器模板进行的容器实例部署示例，请参阅[在 Azure 容器实例中部署多容器组](container-instances-multi-container-group.md)。

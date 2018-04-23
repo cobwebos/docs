@@ -16,10 +16,10 @@ ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>如何配置联接到混合 Azure Active Directory 的设备
 
@@ -94,7 +94,7 @@ Azure AD Connect：
 
 
 
-| 步骤                                      | Windows 当前设备与密码哈希同步 | Windows 当前设备与联合 | Windows 下层设备 |
+| Steps                                      | Windows 当前设备与密码哈希同步 | Windows 当前设备与联合 | Windows 下层设备 |
 | :--                                        | :-:                                    | :-:                            | :-:                |
 | 步骤 1：配置服务连接点 | ![勾选标记][1]                            | ![勾选标记][1]                    | ![勾选标记][1]        |
 | 步骤 2：设置声明颁发           |                                        | ![勾选标记][1]                    | ![勾选标记][1]        |

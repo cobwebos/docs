@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/03/2016
 ms.author: mbaldwin;
 ms.openlocfilehash: 19f60de4a6c651885da7ff1fb7612a77f3d0c8f1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>有关 Azure Marketplace 中的虚拟机产品/服务的发布后指南
 本文介绍如何在 Azure Marketplace 中更新实时虚拟机产品。 其中将指导你完成将一个或多个新 SKU 添加到现有产品的过程。 此外，还将引导你完成删除从 Marketplace 的实时虚拟机产品或 SKU 的过程。
@@ -199,7 +199,7 @@ ms.lasthandoff: 03/16/2018
 5. 转到“发布”选项卡，并单击“推送到过渡环境”。 有关在过渡环境中测试产品的详细指导，请参阅[测试 Marketplace 的 VM 产品](marketplace-publishing-vm-image-test-in-staging.md)。
 6. 在过渡环境中测试产品后，导航到发布门户中的“发布”选项卡。 单击“请求批准推送到生产”按钮，在 Marketplace 中重新发布产品。
 
-    ![Categories](media/marketplace-publishing-vm-image-post-publishing/img02.7_06.png)
+    ![类别](media/marketplace-publishing-vm-image-post-publishing/img02.7_06.png)
 
 ## <a name="add-a-new-sku-under-a-listed-offer"></a>在已列出的产品下添加新 SKU
 若要在实时产品中添加新 SKU，请执行以下步骤：

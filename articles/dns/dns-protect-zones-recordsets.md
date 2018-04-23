@@ -1,6 +1,6 @@
 ---
-title: "保护 DNS 区域和记录 | Microsoft Docs"
-description: "如何保护 DNS 区域和 Microsoft Azure DNS 中的记录集。"
+title: 保护 DNS 区域和记录 | Microsoft Docs
+description: 如何保护 DNS 区域和 Microsoft Azure DNS 中的记录集。
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2016
 ms.author: jonatul
-ms.openlocfilehash: 0b7040d6273b3a6b85cd55850d596807226b87fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a23f5fa296be6d883229d3810e0387224b6708ff
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保护 DNS 区域和记录
 
 DNS 区域和记录是关键资源。 删除 DNS 区域或单个 DNS 记录都可能导致总服务中断。  因此，重要的是保护关键的 DNS 区域和记录，防止未经授权或意外的更改。
 
-本文介绍了 Azure DNS 如何保护 DNS 区域和记录，避免受到此类更改。  我们应用了 Azure Resource Manager 提供的两个强大的安全功能：[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)和[资源锁](../azure-resource-manager/resource-group-lock-resources.md)。
+本文介绍了 Azure DNS 如何保护 DNS 区域和记录，避免受到此类更改。  我们应用了 Azure 资源管理器提供的两个强大的安全功能：[基于角色的访问控制](../role-based-access-control/overview.md)和[资源锁](../azure-resource-manager/resource-group-lock-resources.md)。
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 用户、组和资源进行细致的访问管理。 使用 RBAC，可仅授予用户执行其作业所需的访问次数。 如需了解 RBAC 如何帮助你管理访问权限的详细信息，请参阅[什么是基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)。
+Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 用户、组和资源进行细致的访问管理。 使用 RBAC，可仅授予用户执行其作业所需的访问次数。 如需了解 RBAC 如何帮助你管理访问权限的详细信息，请参阅[什么是基于角色的访问控制](../role-based-access-control/overview.md)。
 
 ### <a name="the-dns-zone-contributor-role"></a>“DNS 区域参与者”角色
 
@@ -35,18 +35,18 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 用户、组和资�
 
 例如，假设资源组“myzones”包含 Contoso Corporation 的五个区域。 授予 DNS 管理员对该资源组的 DNS 区域参与者权限，可以完全控制这些 DNS 区域。 它还避免了授予不必要的权限，例如 DNS 管理员无法创建或停止虚拟机。
 
-分配 RBAC 权限最简单方法是[通过 Azure 门户](../active-directory/role-based-access-control-configure.md)进行分配。  打开资源组的“访问控制(IAM)”边栏选项卡，再单击“添加”，然后选择“DNS 区域参与者”角色，并选择所需用户或组来授予权限。
+分配 RBAC 权限最简单方法是[通过 Azure 门户](../role-based-access-control/role-assignments-portal.md)进行分配。  打开资源组的“访问控制(IAM)”边栏选项卡，再单击“添加”，然后选择“DNS 区域参与者”角色，并选择所需用户或组来授予权限。
 
 ![使用 Azure 门户的资源组级别 RBAC](./media/dns-protect-zones-recordsets/rbac1.png)
 
-也可以[使用 Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)授予权限：
+也可以[使用 Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)授予权限：
 
 ```powershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
-也可[通过 Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md) 提供等效命令：
+也可[通过 Azure CLI](../role-based-access-control/role-assignments-cli.md) 提供等效命令：
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
@@ -63,14 +63,14 @@ Azure RBAC 规则可应用于订阅，资源组或单个资源。 在 Azure DNS 
 
 ![使用 Azure 门户的 DNS 区域级别 RBAC](./media/dns-protect-zones-recordsets/rbac2.png)
 
-也可以[使用 Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)授予权限：
+也可以[使用 Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)授予权限：
 
 ```powershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
-也可[通过 Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md) 提供等效命令：
+也可[通过 Azure CLI](../role-based-access-control/role-assignments-cli.md) 提供等效命令：
 
 ```azurecli
 # Grant 'DNS Zone Contributor' permissions to a specific zone
@@ -85,14 +85,14 @@ azure role assignment create --signInName <user email address> --roleName "DNS Z
 
 ![使用 Azure 门户的记录集级别 RBAC](./media/dns-protect-zones-recordsets/rbac3.png)
 
-也可以[使用 Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)授予记录集级别 RBAC 权限：
+也可以[使用 Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)授予记录集级别 RBAC 权限：
 
 ```powershell
 # Grant permissions to a specific record set
 New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
-也可[通过 Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md) 提供等效命令：
+也可[通过 Azure CLI](../role-based-access-control/role-assignments-cli.md) 提供等效命令：
 
 ```azurecli
 # Grant permissions to a specific record set
@@ -136,7 +136,7 @@ azure role assignment create --signInName "<user email address>" --roleName "DNS
 * `Microsoft.Network/dnsZones/CNAME/*` 授予对 CNAME 记录的完全控制权
 * `Microsoft.Network/dnsZones/read`授予读取 DNS 区域的权限，但不能修改它们，用户可查看创建 CNAME 的区域。
 
-其余操作从 [DNS 区域参与者内置角色](../active-directory/role-based-access-built-in-roles.md#dns-zone-contributor)中复制。
+其余操作从 [DNS 区域参与者内置角色](../role-based-access-control/built-in-roles.md#dns-zone-contributor)中复制。
 
 > [!NOTE]
 > 使用自定义 RBAC 角色防止删除记录集的同时仍允许它们更新，这不是一种有效的控制方式。 此方法仅可防止记录集被删除，但不会阻止它们被修改。  允许的修改包括添加和删除记录集中的记录，还包括删除所有记录，只留下“空”记录集。 这与从 DNS 解析视点中删除记录集具有相同的效果。
@@ -157,11 +157,11 @@ azure role create -inputfile <file path>
 
 如本文前面部分所述，该角色可由与内置角色相同的方式进行分配。
 
-如需了解如何创建、管理和分配自定义角色的详细信息，请参阅 [Azure RBAC 中的自定义角色](../active-directory/role-based-access-control-custom-roles.md)。
+如需了解如何创建、管理和分配自定义角色的详细信息，请参阅 [Azure RBAC 中的自定义角色](../role-based-access-control/custom-roles.md)。
 
 ## <a name="resource-locks"></a>资源锁
 
-除支持 RBAC 外，Azure Resource Manager 还支持另一种类型的安全控制，即“锁定”资源的能力。 其中 RBAC 规则用于控制特定用户和组的操作，而资源锁将应用于资源且对所有用户和角色都有效。 有关详细信息，请参阅 [使用 Azure Resource Manager 锁定资源](../azure-resource-manager/resource-group-lock-resources.md)。
+除支持 RBAC 外，Azure 资源管理器还支持另一种类型的安全控制，即“锁定”资源的能力。 其中 RBAC 规则用于控制特定用户和组的操作，而资源锁将应用于资源且对所有用户和角色都有效。 有关详细信息，请参阅 [使用 Azure 资源管理器锁定资源](../azure-resource-manager/resource-group-lock-resources.md)。
 
 有两种类型的资源锁：**DoNotDelete** 和 **ReadOnly**。 它们都可应用到 DNS 区域或单个记录集。  以下各节描述了几种常见情况以及如何使用资源锁支持它们。
 
@@ -202,7 +202,7 @@ New-AzureRmResourceLock -LockLevel <lock level> -LockName "<lock name>" -Resourc
 
 在该区域应用 DoNotDelete 锁即可防止区域被删除。  但是由于锁由子资源继承，它还将阻止删除区域中的任何记录集（这可能是不希望发生的）。  此外，如上面的说明中所述，由于记录仍可从现有记录集中删除，因此它也不起作用。
 
-作为替代方法，请考虑将 DoNotDelete 锁应用于该区域的记录集，例如 SOA 记录集。  由于在不删除记录集的情况下不能删除区域，因此这可在防止区域删除的同时允许随意修改区域内的记录集。 如果尝试删除区域，Azure Resource Manager 检测到此操作还将删除 SOA 记录集，由于已锁定 SOA，因此会阻止调用。  而不会删除任何记录集。
+作为替代方法，请考虑将 DoNotDelete 锁应用于该区域的记录集，例如 SOA 记录集。  由于在不删除记录集的情况下不能删除区域，因此这可在防止区域删除的同时允许随意修改区域内的记录集。 如果尝试删除区域，Azure 资源管理器检测到此操作还将删除 SOA 记录集，由于已锁定 SOA，因此会阻止调用。  而不会删除任何记录集。
 
 以下 PowerShell 命令针对给定区域的 SOA 记录创建 DoNotDelete 锁：
 
@@ -219,6 +219,6 @@ New-AzureRmResourceLock -LockLevel DoNotDelete -LockName "<lock name>" -Resource
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用 RBAC 的详细信息，请参阅 [Azure 门户中的访问管理入门](../active-directory/role-based-access-control-what-is.md)。
-* 有关使用资源锁的详细信息，请参阅[使用 Azure Resource Manager 锁定资源](../azure-resource-manager/resource-group-lock-resources.md)。
+* 有关使用 RBAC 的详细信息，请参阅 [Azure 门户中的访问管理入门](../role-based-access-control/overview.md)。
+* 有关使用资源锁的详细信息，请参阅[使用 Azure 资源管理器锁定资源](../azure-resource-manager/resource-group-lock-resources.md)。
 

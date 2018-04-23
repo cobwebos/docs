@@ -12,16 +12,14 @@ ms.assetid: a7665a14-0211-4521-b3e7-3b26e8029cc0
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 2050741b46699043836cae1e6465e18dbae87d25
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 432fc630cad172255c6adcdce74291e3ec275c7b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Azure HDInsight 中的 Hadoop
 
@@ -62,8 +60,8 @@ Microsoft 的大数据解决方案将 Microsoft 商业智能 (BI) 组件与已�
    |  数据源名称 |为数据源提供名称 |
    |  主机 |输入 &lt;HDInsightClusterName>.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
    |  端口 |使用 <strong>443</strong>。 （此端口已从 563 更改为 443。） |
-   |  数据库 |使用“默认”。<strong></strong> |
-   |  机制 |选择“Azure HDInsight 服务”<strong></strong> |
+   |  数据库 |使用“默认”。 |
+   |  机制 |选择“Azure HDInsight 服务” |
    |  用户名 |输入 HDInsight 群集 HTTP 用户的用户名。 默认的用户名为 <strong>admin</strong>。 |
    |  密码 |输入 HDInsight 群集用户的密码。 |
    

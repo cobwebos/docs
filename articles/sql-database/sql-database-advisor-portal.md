@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: a9b9bec4fd48c44ece9d762b539cd3d6e10c1858
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 92a7b46469bad56af2e08de98a1f79b4b8059eda
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 04/06/2018
 
 ## <a name="viewing-recommendations"></a>查看建议
 
-若要查看和应用性能建议，需要 Azure 中相应的[基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)权限。 查看建议需要“读者”、“SQL DB 参与者”权限，执行任何操作（如创建或删除索引、取消创建索引）需要“所有者”、“SQL DB 参与者”权限。
+若要查看和应用性能建议，需要 Azure 中相应的[基于角色的访问控制](../role-based-access-control/overview.md)权限。 查看建议需要“读者”、“SQL DB 参与者”权限，执行任何操作（如创建或删除索引、取消创建索引）需要“所有者”、“SQL DB 参与者”权限。
 
 使用以下步骤在 Azure 门户上查找性能建议：
 
@@ -154,5 +154,5 @@ Azure SQL 数据库提供了提高 SQL 数据库性能的建议。 通过提供 
 ## <a name="additional-resources"></a>其他资源
 * [查询存储](https://msdn.microsoft.com/library/dn817826.aspx)
 * [创建索引](https://msdn.microsoft.com/library/ms188783.aspx)
-* [基于角色的访问控制](../active-directory/role-based-access-control-what-is.md)
+* [基于角色的访问控制](../role-based-access-control/overview.md)
 

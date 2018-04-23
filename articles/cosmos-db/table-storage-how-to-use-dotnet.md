@@ -3,9 +3,8 @@ title: 通过 .NET 开始使用 Azure 表存储 | Microsoft Docs
 description: 使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。
 services: cosmos-db
 documentationcenter: .net
-author: mimig1
-manager: jhubbard
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: fe46d883-7bed-49dd-980e-5c71df36adb3
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: mimig
-ms.openlocfilehash: d31dd1c267bcc63106616b191b6b79d5800e31e9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: sngun
+ms.openlocfilehash: ff26ab122e920d6ca8dbf837a2229f8728a471ce
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>通过 .NET 开始使用 Azure 表存储
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -49,11 +48,8 @@ Azure 表存储是一项用于在云中存储结构化 NoSQL 数据的服务，�
 ### <a name="more-samples"></a>更多示例
 有关使用表存储的其他示例，请参阅 [在 .NET 中使用 Azure 表存储入门](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/)。 可以下载示例应用程序并运行，或在 GitHub 上浏览代码。
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
-
 ## <a name="create-an-azure-service-account"></a>创建 Azure 服务帐户
-
-可以通过 Azure 表存储或 Azure Cosmos DB 使用表。 可以阅读[表产品](table-introduction.md#table-offerings)来详细了解服务之间的差别。 需要为所要使用的服务创建一个帐户。 
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
 ### <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 创建第一个 Azure 存储帐户的最简单方法是使用 [Azure 门户](https://portal.azure.com)。 若要了解更多信息，请参阅 [创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
@@ -63,8 +59,7 @@ Azure 表存储是一项用于在云中存储结构化 NoSQL 数据的服务，�
 如果暂时不想创建存储帐户，也可以使用 Azure 存储模拟器在本地环境中运行和测试代码。 有关详细信息，请参阅 [使用 Azure 存储模拟器进行开发和测试](../storage/common/storage-use-emulator.md)。
 
 ### <a name="create-an-azure-cosmos-db-table-api-account"></a>创建 Azure Cosmos DB 表 API 帐户
-
-有关创建 Azure Cosmos DB 表 API 帐户的说明，请参阅[创建表 API 帐户](create-table-dotnet.md#create-a-database-account)。
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="set-up-your-development-environment"></a>设置开发环境
 接下来在 Visual Studio 中设置开发环境，即可试用本指南中的代码示例。

@@ -1,25 +1,23 @@
 ---
-title: "运行自定义的 MapReduce 程序 - Azure HDInsight | Microsoft Docs"
-description: "何时以及如何在 HDInsight 中运行自定义的 MapReduce 程序。"
+title: 运行自定义的 MapReduce 程序 - Azure HDInsight | Microsoft Docs
+description: 何时以及如何在 HDInsight 中运行自定义的 MapReduce 程序。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: 8e65c946d2cfcc830a1b9fa59b3f7886857f4f7d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 94d199642b409a2fd087ec1543651031a907d09f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-custom-mapreduce-programs"></a>运行自定义 MapReduce 程序
 

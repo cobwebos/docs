@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c82b56cdf0fc2cb288986cf8fbf43c2dab5eacb6
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 130bb7f20c030433741a9b9ecebe740fb44f5f81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Azure 日志记录和审核
 ## <a name="introduction"></a>介绍
@@ -101,7 +101,7 @@ Azure 针对每个 Azure 服务生成大量日志记录。 这些日志按以下
 
 -   使用“日志配置文件”将活动日志导出到 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)。
 
-可以使用与发出日志的订阅不同的订阅中的存储帐户或[事件中心命名空间](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive)。 配置此设置的用户必须对两个订阅都具有合适的 [RBAC](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) 访问权限
+可以使用与发出日志的订阅不同的订阅中的存储帐户或[事件中心命名空间](https://docs.microsoft.com/azure/event-hubs/event-hubs-resource-manager-namespace-event-hub-enable-archive)。 配置此设置的用户必须对两个订阅都具有合适的 [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 访问权限
 ### <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 Azure 诊断日志由资源发出，提供与该资源的操作相关的各种频繁生成的数据。 这些日志的内容因资源类型而异（例如，[Windows 事件系统日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events)是一类针对 VM 的诊断日志，而 [blob、表和队列日志](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account)是针对存储帐户的诊断日志类别），并且不同于活动日志，后者用于了解对订阅中的资源执行的操作。
 

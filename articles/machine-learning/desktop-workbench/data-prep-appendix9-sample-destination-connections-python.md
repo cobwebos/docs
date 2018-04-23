@@ -1,6 +1,6 @@
 ---
-title: "可用于 Azure 机器学习数据准备的目标/输出示例 | Microsoft Docs"
-description: "本文档提供了一组可用于 Azure 机器学习数据准备的自定义数据目标/输出的示例"
+title: 可用于 Azure 机器学习数据准备的目标/输出示例 | Microsoft Docs
+description: 本文档提供了一组可用于 Azure 机器学习数据准备的自定义数据目标/输出的示例
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: a9476b9ac3a5cc1f82ab1c09678972fb6b78b894
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sample-of-destination-connections-python"></a>目标连接示例 (Python) 
 阅读本附录前，请先阅读 [Python 扩展性概述](data-prep-python-extensibility-overview.md)。

@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 网络观察程序安全组视图自动进行 NSG 审核 | Microsoft 文档"
-description: "本页说明如何配置网络安全组的审核"
+title: 使用 Azure 网络观察程序安全组视图自动进行 NSG 审核 | Microsoft 文档
+description: 本页说明如何配置网络安全组的审核
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 78a01bcf-74fe-402a-9812-285f3501f877
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 57f2200e541eeb629f72d60ffa0acb2d8233c018
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c9450099ad3561611796a9b45157932f9ac85a9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>使用 Azure 网络观察程序安全组视图自动进行 NSG 审核
 
@@ -30,9 +30,9 @@ ms.lasthandoff: 10/11/2017
 
 本方案将已知合理的基准与针对虚拟机返回的安全组视图结果进行比较。
 
-本方案假设已根据[创建网络观察程序](network-watcher-create.md)中的步骤创建了网络观察程序。 此外，本方案假设要使用一个包含有效虚拟机的资源组。
+此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此外，本方案假设要使用一个包含有效虚拟机的资源组。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 本文所述的方案将获取虚拟机的安全组视图。
 
@@ -187,7 +187,7 @@ SideIndicator            : <=
 
 ## <a name="next-steps"></a>后续步骤
 
-如果更改了设置，请参阅[管理网络安全组](../virtual-network/virtual-network-manage-nsg-arm-portal.md)来跟踪有问题的网络安全组和安全规则。
+如果更改了设置，请参阅[管理网络安全组](../virtual-network/manage-network-security-group.md)来跟踪有问题的网络安全组和安全规则。
 
 
 

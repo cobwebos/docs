@@ -1,12 +1,11 @@
 ---
-title: "MongoDB API 的 Azure Cosmos DB 全局分发教程 | Microsoft Docs"
-description: "了解如何使用 MongoDB API 设置 Azure Cosmos DB 全局分发。"
+title: MongoDB API 的 Azure Cosmos DB 全局分发教程 | Microsoft Docs
+description: 了解如何使用 MongoDB API 设置 Azure Cosmos DB 全局分发。
 services: cosmos-db
-keywords: "全局分发, MongoDB"
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: cgronlun
+keywords: 全局分发, MongoDB
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: d051c648ac66a42cefe0113d2571fe0a3050a237
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8bd86c5e66fdf2431e3db12a43e953b022a3770a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>如何使用 MongoDB API 设置 Azure Cosmos DB 全局分发
 

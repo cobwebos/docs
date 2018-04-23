@@ -1,11 +1,11 @@
 ---
-title: "创建具有多个 NIC 的 VM - Azure Resource Manager 模板 | Microsoft 文档"
-description: "使用 Azure Resource Manager 模板创建具有多个 NIC 的 VM。"
+title: 创建具有多个 NIC 的 VM - Azure 资源管理器模板 | Microsoft 文档
+description: 使用 Azure 资源管理器模板创建具有多个 NIC 的 VM。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 486f7dd5-cf2f-434c-85d1-b3e85c427def
 ms.service: virtual-network
@@ -17,10 +17,10 @@ ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 85bfa264c6cf2b0586816a47b3ab72f3aee8ec96
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-vm-with-multiple-nics-using-a-template"></a>使用模板创建具有多个 NIC 的 VM
 [!INCLUDE [virtual-network-deploy-multinic-arm-selectors-include.md](../../includes/virtual-network-deploy-multinic-arm-selectors-include.md)]
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-以下步骤使用名为 *IaaSStory* 的资源组作为主资源组，并在名为 *IaaSStory-BackEnd* 的资源组中实现后端服务器。
+以下步骤使用名为 *IaaSStory* 的资源组用于 WEB 服务器，将名为 *IaaSStory-BackEnd* 的资源组用于 DB 服务器。
 
 ## <a name="prerequisites"></a>先决条件
 创建数据库服务器之前，需要先使用此方案的所有必需资源创建 *IaaSStory* 资源组。 若要创建这些资源，请完成以下步骤：

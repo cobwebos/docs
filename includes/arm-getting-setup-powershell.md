@@ -26,7 +26,7 @@
 
 打开 Azure PowerShell 命令提示符，并使用此命令登录到 Azure。
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 如果有多个 Azure 订阅，可使用以下命令列出 Azure 订阅。
 

@@ -13,13 +13,18 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8b91b76d049d1a7f299b7890665dd9281e08321e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 04cab032995731b4e473793eff4b1a3fcd46496a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>通过跳过不兼容行向复制活动添加容错
+
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> * [版本 1 - 正式版](data-factory-copy-activity-fault-tolerance.md)
+> * [版本 2 - 预览版](../copy-activity-fault-tolerance.md)
+
 > [!NOTE]
 > 本文适用于数据工厂版本 1（正式版 (GA)）。 如果使用数据工厂服务版本 2（即预览版），请参阅[数据工厂版本 2 的复制活动中的容错](../copy-activity-fault-tolerance.md)。
 

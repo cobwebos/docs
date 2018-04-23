@@ -1,25 +1,20 @@
 ---
-title: "还原 Azure SQL 数据仓库（Azure 门户）| Microsoft Docs"
-description: "用于还原 Azure SQL 数据仓库的 Azure 门户任务。"
+title: 还原 Azure SQL 数据仓库（Azure 门户）| Microsoft Docs
+description: 用于还原 Azure SQL 数据仓库的 Azure 门户任务。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: b0aef539-7657-4b0e-9899-74098f5c21bc
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: backup-restore
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: 6be187784a68174b63f7fc068c772826a0db52c6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: 6268f500d44bf7ceaaccbcc8e2c2134b42032197
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>还原 Azure SQL 数据仓库（门户）
 > [!div class="op_single_selector"]

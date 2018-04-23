@@ -2,23 +2,19 @@
 title: 在 Azure SQL 数据仓库中借助 REST 进行暂停、恢复、缩放 | Microsoft Docs
 description: 通过 REST API 管理 SQL 数据仓库中的计算能力。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: kfile
-editor: ''
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 03/22/2018
-ms.author: barbkess
-ms.openlocfilehash: 518bbe23f1dcb9ffdffcfb67f875165617762c78
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 198c78c18839dea4d29e7a314835162bca5b350c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的 REST API
 用于管理 Azure SQL 数据仓库中的计算的 REST API。

@@ -1,11 +1,11 @@
 ---
-title: "排查网络安全组问题 - PowerShell | Microsoft 文档"
-description: "了解如何使用 Azure PowerShell 在 Azure 资源管理器部署模型中排查网络安全组问题。"
+title: 排查网络安全组问题 - PowerShell | Microsoft 文档
+description: 了解如何使用 Azure PowerShell 在 Azure 资源管理器部署模型中排查网络安全组问题。
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 4c732bb7-5cb1-40af-9e6d-a2a307c2a9c4
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: d556f2d6d37956c3b3bca2a2905b2c947e6be0df
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 6beaeb4b7e5c9e393427d575f1cf8bc48599dbd5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>使用 Azure PowerShell 排查网络安全组问题
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/21/2017
 ## <a name="detailed-troubleshooting-steps"></a>详细故障排除步骤
 完成以下步骤排查 VM 的 NSG 问题：
 
-1. 启动 Azure PowerShell 会话并登录到 Azure。 如果不熟悉如何使用 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文。 你的帐户必须有权对网络接口执行 *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* 操作。 若要了解如何向帐户分配操作，请参阅[创建用于 Azure 基于角色的访问控制的自定义角色](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)。
+1. 启动 Azure PowerShell 会话并登录到 Azure。 如果不熟悉如何使用 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview) 一文。 你的帐户必须有权对网络接口执行 *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* 操作。 若要了解如何向帐户分配操作，请参阅[创建用于 Azure 基于角色的访问控制的自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)。
 2. 输入以下命令，返回对资源组 *RG1* 中名为 *VM1-NIC1* 的 NIC 应用的所有 NSG 规则：
    
         Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1

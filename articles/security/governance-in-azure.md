@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 04d9e6152c87a49a5f1b1b1a29c16d80de00f4e9
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: af011cb3eea27498107cdfd650518552cd63bdf3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="governance-in-azure"></a>Azure 中的监管
 
@@ -147,7 +147,7 @@ Azure 在最初发布时，对订阅的访问控制非常直接：只允许管�
 
 现在不再需要衍生订阅。 使用基于角色的访问控制，可将用户分配到标准角色（例如常见的“读取者”和“写入者”角色类型）。 还可以自定义角色。
 
-[Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可以仅授予用户执行其作业所需的访问次数。 面向安全的公司应侧重于向员工提供他们所需的确切权限。 权限过多，攻击者可轻松威胁帐户。 权限太少，员工无法有效完成其工作。 Azure 基于角色的访问控制 (RBAC) 通过对 Azure 提供细致的访问管理帮助解决此问题。 RBAC 帮助你在团队中对职责进行分隔，仅向用户授予执行作业所需的访问权限。 而不是向每个人提供对 Azure 订阅或资源的无限权限，可以仅允许某些操作。
+[Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可以仅授予用户执行其作业所需的访问次数。 面向安全的公司应侧重于向员工提供他们所需的确切权限。 权限过多，攻击者可轻松威胁帐户。 权限太少，员工无法有效完成其工作。 Azure 基于角色的访问控制 (RBAC) 通过对 Azure 提供细致的访问管理帮助解决此问题。 RBAC 帮助你在团队中对职责进行分隔，仅向用户授予执行作业所需的访问权限。 而不是向每个人提供对 Azure 订阅或资源的无限权限，可以仅允许某些操作。
 
 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
 
@@ -161,7 +161,7 @@ Azure RBAC 有三种适用于所有资源类型的基本角色：
 
 Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例如，虚拟机参与者角色允许用户创建和管理虚拟机。 它并不授予其访问虚拟机连接的虚拟网络或子网的权限。
 
-[RBAC 内置角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)列出了 Azure 中可用的角色。 它指定每个内置角色向用户授予的操作和范围。
+[RBAC 内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)列出了 Azure 中可用的角色。 它指定每个内置角色向用户授予的操作和范围。
 
 通过将相应的 RBAC 角色分配给特定范围内的用户、组和应用程序授予访问权限。 角色分配的范围可以是订阅、资源组或单个资源。 分配在父范围内的角色也会将访问权限授予给其中所含的子范围。
 
@@ -169,9 +169,9 @@ Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例
 
 Azure RBAC 仅支持 Azure 门户和 Azure 资源管理器 API 中的 Azure 资源的管理操作。 它不能授权 Azure 资源的所有数据级别操作。 例如，可以授权某人管理存储帐户，但该用户不能管理存储帐户内的 blob 或表。 同样，可以管理SQL 数据库，但是不能管理其中的表。
 
-如果想要了解有关 RBAC 如何帮助你管理访问权限的详细信息，请参阅[什么是基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)。
+如果想要了解有关 RBAC 如何帮助你管理访问权限的详细信息，请参阅[什么是基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)。
 
-如果没有符合你特定访问需求的内置角色，也可以在 Azure 基于角色的访问控制 (RBAC) 中[创建自定义角色](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)。 可以使用 [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell)、[Azure 命令行接口](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-azure-cli) (CLI) 和 [REST API](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-rest) 创建自定义角色。 与内置角色一样，可以将自定义角色分配到订阅、资源组和资源范围内的用户、组和应用程序。
+如果没有符合你特定访问需求的内置角色，也可以在 Azure 基于角色的访问控制 (RBAC) 中[创建自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。 可以使用 [Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)、[Azure 命令行接口](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) (CLI) 和 [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest) 创建自定义角色。 与内置角色一样，可以将自定义角色分配到订阅、资源组和资源范围内的用户、组和应用程序。
 
 在每个订阅中，最多可以授予 2000 个角色分配。
 
@@ -271,7 +271,7 @@ Azure 资源管理器会分析依赖关系，以确保按正确的顺序创建�
 
 另举一例，在应用服务资源上放置 ReadOnly 锁将阻止 Visual Studio 服务器资源管理器显示资源文件，因为该交互需要写入访问权限。
 
-与基于角色的访问控制不同，可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。
+与基于角色的访问控制不同，可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
 
 在父范围应用锁时，该范围内所有资源都将继承相同的锁。 即使是之后添加的资源也会从父作用域继承该锁。 继承中限制性最强的锁优先执行。
 

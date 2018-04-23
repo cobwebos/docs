@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 335186deccaa82b9a8d262d62dd8ce5d620446b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>如何使用移动应用 Node.js SDK
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -259,7 +259,7 @@ azure-mobile-apps Node.js Server SDK 提供将存储在 Azure SQL 数据库中�
 
    c. 右键单击“TCP/IP”，并选择“启用”。 在弹出对话框中选择“确定”。
 
-   d.单击“下一步”。 右键单击“TCP/IP”，并选择“属性”。
+   d. 右键单击“TCP/IP”，并选择“属性”。
 
    e. 选择“IP 地址”选项卡。
 
@@ -373,7 +373,7 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
    
    c. 选择适当的服务定价层。 选择“全部查看”以查看其他定价选项，例如“免费”和“共享”。 
    
-   d.单击“下一步”。 单击“选择”按钮。 
+   d. 单击“选择”按钮。 
    
    e. 返回“应用服务计划”窗格，选择“确定”。
 5. 选择**创建**。 

@@ -3,8 +3,8 @@ title: 使用 Azure CLI 1.0 创建网络安全组（经典）| Microsoft Docs
 description: 了解如何使用 Azure CLI 1.0 创建和部署网络安全组（经典）。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: genli
+manager: cshepard
 editor: ''
 tags: azure-service-management
 ms.assetid: 17d98950-5fbb-4653-bef6-d822ab37541e
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
-ms.author: jdial
-ms.openlocfilehash: 67b959378521e5a456a2e464d6dd04bbdcab4f30
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: genli
+ms.openlocfilehash: a9ab1a83366919a2d05da18819ed8167bdadb20a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-network-security-group-classic-using-the-azure-cli-10"></a>使用 Azure CLI 1.0 创建网络安全组（经典）
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]

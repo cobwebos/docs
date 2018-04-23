@@ -1,3 +1,19 @@
+---
+title: include 文件
+description: include 文件
+services: active-directory-b2c
+author: davidmu1
+ms.service: active-directory-b2c
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: davidmu
+ms.custom: include file
+ms.openlocfilehash: 8363d023e89c77aabc0d123f19264c9a0758a656
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/18/2018
+---
 [!INCLUDE [active-directory-b2c-portal-add-application](active-directory-b2c-portal-add-application.md)]
 
 若要注册移动或本机应用程序，请使用表中指定的设置。
@@ -8,7 +24,7 @@
 | ------------ | ------- | -------------------------------------------------- |
 | **Name** | Contoso B2C 应用 | 输入应用程序的“名称”，用于向使用者描述应用程序。 |
 | 本机客户端 | 是 | 对于移动或本机应用程序，请选择“是”。 |
-| 自定义重定向 URI | `com.onmicrosoft.contoso.appname://redirect/path` | 输入使用自定义方案的重定向 URI。 请确保选择[正确的重定向 URI ](../articles/active-directory-b2c/active-directory-b2c-app-registration.md#choosing-a-native-application-redirect-uri)，且不能包含下划线等特殊字符。 |
+| 自定义重定向 URI | `com.onmicrosoft.contoso.appname://redirect/path` | 输入使用自定义方案的重定向 URI。 请确保选择[正确的重定向 URI ](../articles/active-directory-b2c/active-directory-b2c-app-registration.md)，且不能包含下划线等特殊字符。 |
 
 单击“ **创建** ”以注册应用程序。
 

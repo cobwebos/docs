@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/25/2017
 ms.author: ghogen
-ms.openlocfilehash: 676feb0b01ec5622feff4351ade54e9856e54b13
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: f5205bb158141a3f8e0296fefe2528d1bc5ea64c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>在 Visual Studio Cloud Explorer 中管理与 Azure 帐户关联的资源
 通过 Cloud Explorer，可在 Visual Studio 中查看 Azure 资源和资源组、检查其属性，以及执行重要的开发人员诊断操作。 
 
-与 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)一样，Cloud Explorer 基于 Azure 资源管理器堆栈。 因此，Cloud Explorer 可以识别 Azure 资源组等资源，以及逻辑应用和 API 应用等 Azure 服务，并支持[基于角色的访问控制](active-directory/role-based-access-control-configure.md) (RBAC)。 
+与 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)一样，Cloud Explorer 基于 Azure 资源管理器堆栈。 因此，Cloud Explorer 可以识别 Azure 资源组等资源，以及逻辑应用和 API 应用等 Azure 服务，并支持[基于角色的访问控制](role-based-access-control/role-assignments-portal.md) (RBAC)。 
 
 ## <a name="prerequisites"></a>先决条件
 - 已选择 **Azure 工作负载**的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)，或者包含[适用于 .NET 2.9 的 Microsoft Azure SDK](https://www.microsoft.com/en-us/download/details.aspx?id=51657) 的 Visual Studio 的早期版本。

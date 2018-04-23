@@ -1,11 +1,11 @@
 ---
-title: "将 Azure 机器学习与 SQL 数据仓库配合使用 | Microsoft 文档"
-description: "有关在开发解决方案时使用 Azure SQL 数据仓库的 Azure 机器学习功能的教程。"
+title: 将 Azure 机器学习与 SQL 数据仓库配合使用 | Microsoft 文档
+description: 有关在开发解决方案时使用 Azure SQL 数据仓库的 Azure 机器学习功能的教程。
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: barbkess
-editor: 
+editor: ''
 ms.assetid: ac6bc731-6add-47a9-b3fe-68996e656f4d
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 ms.openlocfilehash: c19860c6b5b1c15d1e29ddc67f9cf9ad4618725b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-machine-learning-with-sql-data-warehouse"></a>将 Azure 机器学习与 SQL 数据仓库配合使用
 Azure 机器学习是一项完全托管的预测分析服务，可用于在 SQL 数据仓库中针对数据创建预测模型，然后将这些模型发布为随时可供使用的 Web 服务。 可以阅读 [Azure 上的机器学习简介][Introduction to Machine Learning on Azure]，了解有关预测分析和机器学习的基本知识。  然后，可以通过[创建试验教程][Create experiment tutorial]了解如何创建、定型、评分和测试机器学习模型。

@@ -1,12 +1,12 @@
 ---
-title: "使用 Azure Cosmos DB 的适用于 MongoDB 的 API 生成 Web 应用 | Microsoft Docs"
-description: "使用适用于 MongoDB 的 API 创建联机数据库 Web 应用的 Azure Cosmos DB 教程。"
-keywords: "mongodb 示例"
+title: 使用 Azure Cosmos DB 的适用于 MongoDB 的 API 生成 Web 应用 | Microsoft Docs
+description: 使用适用于 MongoDB 的 API 创建联机数据库 Web 应用的 Azure Cosmos DB 教程。
+keywords: mongodb 示例
 services: cosmos-db
 author: AndrewHoh
-manager: jhubbard
-editor: 
-documentationcenter: 
+manager: kfile
+editor: ''
+documentationcenter: ''
 ms.assetid: 61a2ab3a-2fc3-4d49-a263-ed87c66628f6
 ms.service: cosmos-db
 ms.workload: data-services
@@ -16,15 +16,15 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: f7aed1c69e930bdd5e5b451fa2726a75b78515eb
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 76a8e19bacdbde938758bf41ed7f209521f513aa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-connect-to-a-mongodb-app-using-net"></a>Azure Cosmos DB：使用 .NET 连接到 MongoDB 应用
 
-Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、键/值，及图形数据库，它们均受益于 Azure Cosmos DB 最核心的全球分布和水平缩放功能。 
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
 
 本教程演示如何使用 Azure 门户创建 Azure Cosmos DB 帐户，以及如何使用 [MongoDB API](mongodb-introduction.md) 创建用于存储数据的数据库和集合。 
 
@@ -40,7 +40,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在首先在 Azure 门户中创建 Azure Cosmos DB 帐户。  
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 > [!TIP]

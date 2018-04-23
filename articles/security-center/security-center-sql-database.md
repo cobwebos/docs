@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心与 Azure SQL 数据库服务 | Microsoft 文档"
-description: "本文演示安全中心如何能够帮助保护 Azure SQL 数据库中的数据库。"
+title: Azure 安全中心与 Azure SQL 数据库服务 | Microsoft 文档
+description: 本文演示安全中心如何能够帮助保护 Azure SQL 数据库中的数据库。
 services: sql-database
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: f109adfd-daed-4257-9692-2042a1399480
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 46dd298a5664d914e55d45c5b7599d5983287476
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b507a62db9a80866005cb63d2008fb14612b516f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure 安全中心与 Azure SQL 数据库服务
 [Azure 安全中心](https://azure.microsoft.com/documentation/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="prerequisites"></a>先决条件
 若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 使用订阅启用安全中心的免费层。 了解有关安全中心免费层和标准层的详细信息，请参阅[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
 
-安全中心支持基于角色的访问。 若要了解 Azure 中有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Azure Active Directory 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。 安全中心常见问题提供有关[如何在安全中心处理权限](security-center-faq.md#permissions)的信息。
+安全中心支持基于角色的访问。 若要了解 Azure 中有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Azure Active Directory 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。 安全中心常见问题提供有关[如何在安全中心处理权限](security-center-faq.md#permissions)的信息。
 
 ## <a name="access-security-center"></a>访问安全中心
 从 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)访问安全中心。 [登录到门户](https://portal.azure.com/)，并选择**安全中心选项**。

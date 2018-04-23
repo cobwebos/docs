@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a153d70e077ad63a042e76d0c4ae40e3cc067a2a
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 996079e0062bf1e24ae2bf24354a94167e6adff3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
 ##  <a name="introduction"></a>介绍
@@ -52,7 +52,7 @@ Microsoft Azure 同时针对恶意和非恶意用户提供了隔离，并向架�
 每个 Azure AD 目录都是独特的，独立于其他 Azure AD 目录。 就像公司办公大楼是组织特有的安全资产一样，根据设计，Azure AD 目录也是仅供组织使用的安全资产。 Azure AD 体系结构隔离了客户数据和身份信息，避免混合存放。 这意味着，一个 Azure AD 目录的用户和管理员不可能意外或恶意性地访问另一目录中的数据。
 
 ### <a name="azure-tenancy"></a>Azure 租户
-Azure 租户（Azure 订阅）是指 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 中的“客户/账单”关系和唯一的[租户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant)。 Microsoft Azure 中的租户级别隔离是使用 Azure Active Directory 及其提供的[基于角色的控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)实现的。 每个 Azure 订阅都会与一个 Azure Active Directory (AD) 目录关联。
+Azure 租户（Azure 订阅）是指 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 中的“客户/账单”关系和唯一的[租户](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant)。 Microsoft Azure 中的租户级别隔离是使用 Azure Active Directory 及其提供的[基于角色的控制](https://docs.microsoft.com/azure/role-based-access-control/overview)实现的。 每个 Azure 订阅都会与一个 Azure Active Directory (AD) 目录关联。
 
 该目录中的用户、组和应用程序可以管理 Azure 订阅中的资源。 可以使用 Azure 门户、Azure 命令行工具及 Azure 管理 API 来分配这些访问权限。 从逻辑上讲，Azure AD 租户是使用安全边界隔离的，这样，任何客户都不能访问或入侵联合租户，而无论其行为是恶意的还是偶然的。 在“裸机”服务器上运行的 Azure AD 是在分隔的网络段中隔离的，主机级别数据包筛选和 Windows 防火墙在该网络段中阻止不需要的连接和流量。
 
@@ -80,7 +80,7 @@ Azure Active Directory 在其自己受保护的容器中托管每个租户，使
 即使多个 Azure Active Directory 租户的元数据存储在同一个物理磁盘中，除目录服务定义的容器外，各容器之间仍没有任何关系，而目录服务是由租户管理员指定的。
 
 ### <a name="azure-role-based-access-control-rbac"></a>Azure 基于角色的访问控制 (RBAC)
-[Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is) 提供针对 Azure 的精细访问权限管理，有助于共享 Azure 订阅中提供的各种组件。 借助 Azure RBAC，可分隔组织内的职责，并根据用户进行作业的需求授予访问权限。 可以仅允许某些操作，而不是向每个人提供对 Azure 订阅或资源不受限制的权限。
+[Azure 基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 提供针对 Azure 的精细访问权限管理，有助于共享 Azure 订阅中提供的各种组件。 借助 Azure RBAC，可分隔组织内的职责，并根据用户进行作业的需求授予访问权限。 可以仅允许某些操作，而不是向每个人提供对 Azure 订阅或资源不受限制的权限。
 
 Azure RBAC 有三种适用于所有资源类型的基本角色：
 
@@ -94,7 +94,7 @@ Azure RBAC 有三种适用于所有资源类型的基本角色：
 
 Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例如，虚拟机参与者角色允许用户创建和管理虚拟机。 但不会向用户授予对虚拟机连接的 Azure 虚拟网络或子网的访问权限。
 
-[RBAC 内置角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)列出了 Azure 中可用的角色。 它指定每个内置角色向用户授予的操作和范围。 若要定义自己的角色以便进一步控制，请参阅如何生成 [Azure RBAC 中的自定义角色](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)。
+[RBAC 内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)列出了 Azure 中可用的角色。 它指定每个内置角色向用户授予的操作和范围。 若要定义自己的角色以便进一步控制，请参阅如何生成 [Azure RBAC 中的自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。
 
 Azure Active Directory 的其他部分功能包括:
 - 使用 Azure AD 即可对 SaaS 应用程序启用 SSO，不管这些应用程序在何处托管。 某些应用程序会与 Azure AD 联合起来进行身份验证，其他应用程序则使用密码 SSO。 联合应用程序还可以支持用户预配和[密码存储](https://www.techopedia.com/definition/31415/password-vault)。
@@ -239,7 +239,7 @@ Azure 提供了以下加密类型来保护数据：
 适用于 Windows 的磁盘加密解决方案是基于 [Microsoft BitLocker 驱动器加密](https://technet.microsoft.com/library/cc732774.aspx)技术，Linux 解决方案基于 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)。
 
 在 Microsoft Azure 中启用 IaaS VM 时，该解决方案支持以下 IaaS VM 方案：
--   与 Azure 密钥保管库集成
+-   与 Azure Key Vault 集成
 
 -   标准层 VM：A、D、DS、G 和 GS 等系列 IaaS VM
 
@@ -337,7 +337,7 @@ Azure 部署具有多层网络隔离。 下图显示了 Azure 提供给客户的
 
 - [适用于 Microsoft Azure 虚拟网络中的计算机的网络隔离选项](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
 
-它包括经典的前端和后端方案，其中特定后端网络或子网中的计算机可能只允许某些客户端或其他计算机根据 IP 地址允许列表连接到特定终结点。
+它包括经典的前端和后端方案，其中特定后端网络或子网中的计算机可能只允许某些客户端或其他计算机根据 IP 地址白名单连接到特定终结点。
 
 - [计算隔离](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory 中设置本地条件访问 | Microsoft Docs"
-description: "在 Windows Server 2012 R2 中使用 Active Directory 联合身份验证服务 (AD FS) 启用对本地应用程序的条件访问的分步指南。"
+title: Azure Active Directory 中设置本地条件访问 | Microsoft Docs
+description: 在 Windows Server 2012 R2 中使用 Active Directory 联合身份验证服务 (AD FS) 启用对本地应用程序的条件访问的分步指南。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6ae9df8b-31fe-4d72-9181-cf50cfebbf05
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 466cd564f08b07d443db7cb1de59c5778682ed73
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 8c692323803247cd54d27f369ea749e462fbc359
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>使用 Azure Active Directory 设备注册设置本地条件访问
 当你要求用户在工作区将其个人设备加入到 Azure Active Directory (Azure AD) 设备注册服务时，他们的设备会被标记为组织已知的设备。 以下是在 Windows Server 2012 R2 中使用 Active Directory 联合身份验证服务 (AD FS) 启用对本地应用程序的条件访问的分步指南。
@@ -89,7 +89,7 @@ ms.lasthandoff: 01/18/2018
 | 完成第 2 部分“在 Azure AD Connect 中启用设备写回”。 完成后，返回到本指南。 |[在 Azure AD Connect 中启用设备写回](#upgrade-your-active-directory-domain-services-schema) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[可选] 第 4 部分：启用多重身份验证
-强烈建议配置多重身份验证的多个选项之一。 如果你希望要求进行多重身份验证，请参阅[选择多重身份验证安全解决方案](../multi-factor-authentication/multi-factor-authentication-get-started.md)。 其中包含每个解决方案的说明，以及可帮助配置所选解决方案的链接。
+强烈建议配置多重身份验证的多个选项之一。 如果你希望要求进行多重身份验证，请参阅[选择多重身份验证安全解决方案](authentication/concept-mfa-whichversion.md)。 其中包含每个解决方案的说明，以及可帮助配置所选解决方案的链接。
 
 ## <a name="part-5-verification"></a>第 5 部分：验证
 部署现已完成，你可以尝试一些方案。 使用以下链接来体验服务并熟悉各项功能。

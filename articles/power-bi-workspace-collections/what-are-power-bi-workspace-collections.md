@@ -1,12 +1,12 @@
 ---
-title: "什么是 Power BI 工作区集合？"
-description: "Power BI Embedded 使你可将 Power BI 报表集成到 Web 或移动应用程序中，因此无需构建自定义解决方案。"
+title: 什么是 Power BI 工作区集合？
+description: Power BI Embedded 使你可将 Power BI 报表集成到 Web 或移动应用程序中，因此无需构建自定义解决方案。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 03649b72-b7d7-40ca-b077-12356d72d4f3
 ms.service: power-bi-embedded
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 7df172895bb926f1715370b941964e2c29ab393d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 0bd6ba74d176ed1db1e8f1f1b38646182da2c379
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>什么是 Power BI 工作区集合？
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 ![应用程序关系图](media/what-are-power-bi-workspace-collections/what-is.png)
 
 > [!IMPORTANT]
-> Power BI 工作区集合已遭弃用，在 2018 年 6 月或合同上指明的时间前可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
+> Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
 Power BI 工作区集合是一项 **Azure 服务**，使 ISV 和应用程序开发人员能够在其自己的应用程序中融入 Power BI 数据体验。 开发人员已经构建了应用程序，并且这些应用程序具有其自己的用户和不同的功能集。 这些应用也可能碰巧具有内置的数据元素（如图表和报表），这些元素现在可以由 Microsoft Power BI 工作区集合提供支持。 不需要具有 Power BI 帐户便可使用应用。 可以继续像以前那样登录到这些应用程序，查看并与 Power BI 报表体验进行交互而无需任何额外的授权。
 
@@ -48,12 +48,12 @@ Power BI 工作区集合是一项 **Azure 服务**，使 ISV 和应用程序开�
 **工作区集合**是一个顶级 Azure 资源容器，包含 0 个或多个**工作区**。  **工作区****集合**具有所有标准 Azure 属性和下列内容：
 
 * **访问密钥** - 安全地调用 Power BI API 时使用的密钥（后面的部分中进行了介绍）。
-* **用户** - 具有管理员权限的 Azure Active Directory (AAD) 用户，通过 Azure 门户或 Azure Resource Manager API 管理 Power BI 工作区集合。
+* **用户** - 具有管理员权限的 Azure Active Directory (AAD) 用户，通过 Azure 门户或 Azure 资源管理器 API 管理 Power BI 工作区集合。
 * **区域** - 在预配**工作区集合**的过程中，可以选择要在其中预配的区域。 有关详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。
 
 ## <a name="workspace"></a>工作区
 
-**工作区**是一个包含 Power BI 内容的容器，该内容可以包括数据集和报表。 **工作区**在首次创建后为空。 将使用 Power BI Desktop 创作内容，然后使用 [Power BI Import API](https://msdn.microsoft.com/library/mt711504.aspx) 以编程方式将 PBIX 部署到工作区中。 还可以通过编程方式创建数据集，然后在应用程序内而非使用 Power BI Desktop 创建报表。
+**工作区**是一个包含 Power BI 内容的容器，该内容可以包括数据集和报表。 **工作区**在首次创建后为空。 将使用 Power BI Desktop 创作内容，然后使用 [Power BI Import API](https://msdn.microsoft.com/library/mt711504.aspx) 以编程方式将 PBIX 部署到工作区中。 还可以通过编程方式创建数据集，并在你的应用程序内而非使用 Power BI Desktop 创建报表。
 
 ## <a name="using-workspace-collections-and-workspaces"></a>使用工作区集合和工作区
 

@@ -2,23 +2,19 @@
 title: 提高列存储索引的性能 - Azure SQL 数据仓库 | Microsoft Docs
 description: 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jhubbard
-editor: ''
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 03/15/2018
-ms.author: barbkess
-ms.openlocfilehash: 74e641f9da418d678bdbef0c69f9f59ccee32303
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: be167e298a4c0e76d7cf3bb638838047d4e9bcee
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
@@ -139,7 +135,7 @@ OPTION (MAXDOP 1);
 DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要增加加载查询的内存授予，可增加 DWU 的数量或增加资源类。
 
 - 若要增加 DWU，请参阅[如何进行性能缩放？](quickstart-scale-compute-portal.md)
-- 若要更改查询的资源类，请参阅[更改用户资源类示例](resource-classes-for-workload-management.md#assigning-resource-classes)。
+- 若要更改查询的资源类，请参阅[更改用户资源类示例](resource-classes-for-workload-management.md#change-a-users-resource-class)。
 
 例如，使用 DWU 100 时，smallrc 资源类中的用户在每次分发时可使用 100 MB 的内存。 有关详细信息，请参阅 [SQL 数据仓库中的并发](resource-classes-for-workload-management.md)。
 

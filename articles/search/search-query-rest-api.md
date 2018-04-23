@@ -1,23 +1,17 @@
 ---
-title: "查询索引（REST API - Azure 搜索）| Microsoft Docs"
-description: "在 Azure 搜索中生成搜索查询，并使用搜索参数对搜索结果进行筛选和排序。"
-services: search
-documentationcenter: 
-manager: jhubbard
-author: ashmaka
-ms.assetid: 8b3ca890-2f5f-44b6-a140-6cb676fc2c9c
+title: 查询索引（REST API - Azure 搜索）| Microsoft Docs
+description: 在 Azure 搜索中生成搜索查询，并使用搜索参数对搜索结果进行筛选和排序。
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 01/12/2017
-ms.author: ashmaka
-ms.openlocfilehash: 49062bec233ad35cd457f9665fa94c1855343582
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: d6cba61c670d005b59c9bc88bd1c90399f29cc3d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="query-your-azure-search-index-using-the-rest-api"></a>使用 REST API 查询 Azure 搜索索引
 > [!div class="op_single_selector"]
@@ -43,7 +37,7 @@ ms.lasthandoff: 12/18/2017
 服务具有*管理密钥*和*查询密钥*。
 
 * 主管理密钥和辅助 *管理密钥* 授予所有操作的完全控制权限，包括管理服务以及创建和删除索引、索引器与数据源的能力。 有两个密钥的作用是确保在决定重新生成主密钥时可以继续使用辅助密钥，反之亦然。
-* *查询密钥* 授予索引和文档的只读访问权限，通常分发给发出搜索请求的客户端应用程序。
+* *查询密钥* 授予对索引和文档的只读访问权限，通常分发给发出搜索请求的客户端应用程序。
 
 可以使用其中一个查询密钥来查询索引。 查询也可使用管理密钥，但最好在应用程序代码中使用查询密钥，因为这更符合 [最低特权原则](https://en.wikipedia.org/wiki/Principle_of_least_privilege)。
 

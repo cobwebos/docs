@@ -1,24 +1,18 @@
 ---
-title: "Azure 搜索性能和优化注意事项 | Microsoft Docs"
-description: "优化 Azure 搜索性能，配置最佳规模"
-services: search
-documentationcenter: 
+title: Azure 搜索性能和优化注意事项 | Microsoft Docs
+description: 优化 Azure 搜索性能，配置最佳规模
 author: LiamCavanagh
-manager: pablocas
-editor: 
-ms.assetid: 4d3cd864-29d2-4921-be0d-a3f1a819de46
+manager: jlembicz
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: liamca
-ms.openlocfilehash: f4e371fc16bc57e6963f1ec51c0ea864fa568f0c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 14f46e2f76268f4d865d9ea6b16e8eda047ffe31
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Azure 搜索性能和优化注意事项
 强大的搜索体验是许多移动和 Web 应用程序成功的关键。 无论是房地产，还是旧车市场，或者是联机目录，快速搜索及其相关结果都将影响客户体验。 本文档旨在帮助你发现如何充分利用 Azure 搜索的最佳实践，尤其是对伸缩性、多语言支持或自定义排名有复杂要求的高级方案。  此外，本文档概述了内部运作，并涵盖了在实际客户应用中可有效工作的方法。

@@ -1,6 +1,6 @@
 ---
-title: "用于在 Azure 机器学习数据准备中派生新列的 Python 示例 | Microsoft Docs"
-description: "本文档提供用于在 Azure 机器学习数据准备中新建列的 Python 代码示例。"
+title: 用于在 Azure 机器学习数据准备中派生新列的 Python 示例 | Microsoft Docs
+description: 本文档提供用于在 Azure 机器学习数据准备中新建列的 Python 代码示例。
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 02670fa4506237ac391e467e5c7a1187b1131ece
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sample-of-custom-column-transforms-python"></a>自定义列转换示例 (Python) 
 此转换在菜单中的名称为“添加列(脚本)”。

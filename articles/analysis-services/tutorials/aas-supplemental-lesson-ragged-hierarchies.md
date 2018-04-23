@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services 教程补充课程：不规则层次结构 | Microsoft Docs"
-description: "介绍了在 Azure Analysis Services 教程中如何修复不规则层次结构。"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: Azure Analysis Services 教程补充课程：不规则层次结构 | Microsoft Docs
+description: 介绍了在 Azure Analysis Services 教程中如何修复不规则层次结构。
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: c5c4a687ffe512b15372d152b517834771e46328
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 955bc57bbf5f8bc3f0d91350f885d5dc77db93a8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>补充课程 - 不规则层次结构
 
@@ -31,7 +24,7 @@ ms.lasthandoff: 01/09/2018
   
 本课预计完成时间：**20 分钟**  
   
-## <a name="prerequisites"></a>系统必备  
+## <a name="prerequisites"></a>先决条件  
 本补充课程主题是表格建模教程的一部分。 在执行本补充课程中的任务之前，应当已完成了前面的所有课程，或者具有已完成的“Adventure Works Internet 销售”示例模型项目。 
 
 如果已经将“AW Internet 销售”项目创建为教程的一部分，则模型中尚未包含任何不规则的数据或层次结构。 若要完成本补充课程，必须首先通过添加一些其他表并创建关系、计算列、度量值和新的 Organization 层次结构来制造问题。 该部分需要花费大约 15 分钟。 然后，需要花费几分钟时间来解决此问题。  

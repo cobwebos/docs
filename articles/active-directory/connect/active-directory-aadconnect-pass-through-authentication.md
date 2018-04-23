@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: billmath
-ms.openlocfilehash: d19e63e10f2d42d97bb6fabca9c9e47028cbaf39
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 377a8255961a4c7fa55f8bbc5cb98ae4deff3205
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/29/2018
 - 出色的用户体验
   - 用户使用同样的密码登录本地和基于云的应用程序。
   - 用户花费在联系 IT 支持人员解决密码相关问题上的时间更少。
-  - 用户可以完成云中的[自助服务密码管理](../active-directory-passwords-overview.md)任务。
+  - 用户可以完成云中的[自助服务密码管理](../authentication/active-directory-passwords-overview.md)任务。
 - 易于部署和管理
   - 无需复杂的本地部署或网络配置。
   - 仅需在本地安装一个轻型代理。
@@ -56,7 +56,7 @@ ms.lasthandoff: 03/29/2018
 - 支持用户登录到所有基于 Web 浏览器的应用程序和使用[新式身份验证](https://aka.ms/modernauthga)的 Microsoft Office 客户端应用程序。
 - 登录用户名可以是本地默认用户名 (`userPrincipalName`)，也可以是 Azure AD Connect 中配置的另一个属性（称为 `Alternate ID`）。
 - 该功能可与[条件性访问](../active-directory-conditional-access-azure-portal.md)功能（例如多重身份验证 (MFA)）进行无缝配合使用，帮助保护用户安全。
-- 与基于云的[自助密码管理](../active-directory-passwords-overview.md)集成，包括本地 Active Directory 的密码写回和通过禁止常用密码的密码保护。
+- 与基于云的[自助密码管理](../authentication/active-directory-passwords-overview.md)集成，包括本地 Active Directory 的密码写回和通过禁止常用密码的密码保护。
 - 如果 AD 林之间存在信任关系并且正确配置了名称后缀路由，则支持多林环境。
 - 这是一项免费功能，不需要拥有任何付费版本的 Azure AD 即可使用此功能。
 - 可通过 [Azure AD Connect](active-directory-aadconnect.md) 启用它。

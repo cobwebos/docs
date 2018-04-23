@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell 脚本示例 - 创建 Service Fabric 群集 | Microsoft Docs"
-description: "Azure PowerShell 脚本示例 - 创建 Service Fabric 群集。"
+title: Azure PowerShell 脚本示例 - 创建 Service Fabric 群集 | Microsoft Docs
+description: Azure PowerShell 脚本示例 - 创建 Service Fabric 群集。
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 0f9c8bc5-3789-4eb3-8deb-ae6e2200795a
 ms.service: service-fabric
@@ -15,17 +15,17 @@ ms.topic: sample
 ms.date: 01/19/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: b0d33b714092a826012677c95124d74bf2c72999
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: ad3c51f0f43d63fd784156eca680218850897e8f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-service-fabric-cluster"></a>创建 Service Fabric 群集
 
 此示例脚本将创建一个由五个节点组成的 Service Fabric 群集（使用 X.509 证书保护的群集）。  该命令将创建一个自签名证书，并将其上传到新的 Key Vault。 该证书也会复制到本地目录。  设置 *-OS* 参数可选择群集节点上运行的 Windows 或 Linux 的版本。  根据需要自定义参数。
 
-必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Login-AzureRmAccount` 创建与 Azure 的连接。 
+必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Connect-AzureRmAccount` 创建与 Azure 的连接。 
 
 ## <a name="sample-script"></a>示例脚本
 

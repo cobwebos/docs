@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 机器学习中使用数据转换来准备数据 | Microsoft Docs"
-description: "本文提供的完整转换列表可用于在 Azure 机器学习中准备数据。"
+title: 在 Azure 机器学习中使用数据转换来准备数据 | Microsoft Docs
+description: 本文提供的完整转换列表可用于在 Azure 机器学习中准备数据。
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 9cd6e6cdf8d8dc2b1872d6f7b76821122fd427fa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-data-transforms-for-data-preparation-in-azure-machine-learning"></a>在 Azure 机器学习中使用数据转换来准备数据
 

@@ -1,24 +1,24 @@
 ---
-title: "使用 Azure 资源管理器模板创建 Azure 服务总线命名空间和队列 | Microsoft Docs"
-description: "使用 Azure 资源管理器模板创建服务总线命名空间和队列"
+title: 使用 Azure 资源管理器模板创建 Azure 服务总线命名空间和队列 | Microsoft Docs
+description: 使用 Azure 资源管理器模板创建服务总线命名空间和队列
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/10/2017
-ms.author: sethm;shvija
-ms.openlocfilehash: 2ac9bb07a1b690681e0b263eea233cd5373d990b
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.date: 04/11/2018
+ms.author: sethm
+ms.openlocfilehash: 47e29050ca78ee116f3c4dee0ecb53a6a71a866b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间和队列
 
@@ -100,8 +100,7 @@ ms.lasthandoff: 11/11/2017
         "location": "[variables('location')]",
         "kind": "Messaging",
         "sku": {
-            "name": "StandardSku",
-            "tier": "Standard"
+            "name": "Standard",
         },
         "resources": [{
             "apiVersion": "[variables('sbVersion')]",

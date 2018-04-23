@@ -1,25 +1,23 @@
 ---
-title: "使用 HDInsight 中的 Hadoop 分析 Twitter 数据 — Azure | Microsoft Docs"
-description: "了解如何在 HDInsight 中的 Hadoop 上使用 Hive 分析 Twitter 数据以找到特定单词的使用频率。"
+title: 使用 HDInsight 中的 Hadoop 分析 Twitter 数据 — Azure | Microsoft Docs
+description: 了解如何在 HDInsight 中的 Hadoop 上使用 Hive 分析 Twitter 数据以找到特定单词的使用频率。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 78e4ea33-9714-424d-ac07-3d60ecaebf2e
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: a5f97dfa084291cefde9bf27b5639926de1bc80e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d81f7889122bcf887676496a056df2148cdff6e9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>使用 HDInsight 中的 Hive 分析 Twitter 数据
 社交网站是采用大数据的主要推动力之一。 Twitter 等网站所提供的公共 API 是一类用于分析和了解流行趋势的有用数据源。
@@ -38,7 +36,7 @@ ms.lasthandoff: 11/03/2017
     在运行 Windows PowerShell 脚本之前，请确保已使用以下 cmdlet 连接到 Azure 订阅：
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
     如果具有多个 Azure 订阅，请使用以下 cmdlet 设置当前订阅：
@@ -83,7 +81,7 @@ Twitter 使用 OAuth 提供对其 API 的授权访问。 OAuth 是一种身份�
 
    | 字段 | 值 |
    | --- | --- |
-   |  Name |MyHDInsightApp |
+   |  名称 |MyHDInsightApp |
    |  说明 |MyHDInsightApp |
    |  网站 |http://www.myhdinsightapp.com |
 4. 选中“是，我同意”，并单击“创建 Twitter 应用程序”。
@@ -122,7 +120,7 @@ Twitter 使用 OAuth 提供对其 API 的授权访问。 OAuth 是一种身份�
 
     #region - Connect to Azure subscription
     Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     #endregion
 
     #region - Create a block blob object for writing tweets into Blob storage
@@ -396,7 +394,7 @@ HiveQL 脚本将执行以下操作：
         Get-AzureRmSubscription
     }
     Catch{
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
     }
 
     Select-AzureRmSubscription -SubscriptionId $subscriptionID

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: trinadhk;markgal;jpallavi;sogup
-ms.openlocfilehash: 89535fc22faccfb184d9b56a6138337877957829
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 93eb9a65e9d5733963f7d6269a06d5f3cde5e256
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
 可以参考下表中所列的信息，排查使用 Azure 备份时遇到的错误。
@@ -45,7 +45,6 @@ ms.lasthandoff: 03/23/2018
 | 虚拟机上不存在虚拟机代理 - 请安装任何必备组件和 VM 代理，并重启操作。 |[详细了解](#vm-agent)如何安装 VM 代理以及如何验证 VM 代理安装。 |
 | 快照操作失败，因为 VSS 编写器处于错误状态 |需重新启动处于错误状态的 VSS（卷影复制服务）编写器。 为此，请在提升权限的命令提示符处运行 _vssadmin list writers_。 输出包含所有 VSS 编写器及其状态。 对于每个状态不为“[1] 稳定”的 VSS 编写器，请在提升权限的命令提示符处运行以下命令，以便重启 VSS 编写器：<br> _net stop serviceName_ <br> _net start serviceName_|
 | 快照操作失败，因为对配置进行分析失败 |发生这种情况是因为以下 MachineKeys 目录的权限已更改：_%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys_ <br>请运行以下命令，验证 MachineKeys 目录的权限是否为默认权限：<br>_icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys_ <br><br> 默认权限为：<br>Everyone:(R,W) <br>BUILTIN\Administrators:(F)<br><br>如果看到 MachineKeys 目录的权限不同于默认权限，请执行以下步骤来更正权限、删除证书以及触发备份。<ol><li>修复 MachineKeys 目录上的权限。<br>通过目录的“浏览器安全属性”和“高级安全设置”将权限重置回默认值，从目录中删除任何多余的（相对于默认设置）用户对象，确保“Everyone”权限具有下述特殊访问权限：<br>-列出文件夹/读取数据 <br>-读取属性 <br>-读取扩展的属性 <br>-创建文件/写入数据 <br>-创建文件夹/追加数据<br>-写入属性<br>-写入扩展的属性<br>-读取权限<br><br><li>删除“颁发对象”字段为“Windows Azure Service Management for Extensions”或“Windows Azure CRP Certificate Generator”的所有证书。<ul><li>[打开证书（本地计算机）控制台](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx)<li>删除“颁发对象”字段为“Windows Azure Service Management for Extensions”或“Windows Azure CRP Certificate Generator”的所有证书（在“个人”->“证书”下）。</ul><li>触发 VM 备份。 </ol>|
-| 验证失败，因为虚拟机仅使用 BEK 进行加密。 只能对同时使用 BEK 和 KEK 加密的虚拟机启用备份。 |虚拟机应同时使用 BitLocker 加密密钥和 Key 加密密钥进行加密。 之后，应启用备份。 |
 | Azure 备份服务对 Key Vault 没有足够的权限，无法备份加密的虚拟机。 |应在 PowerShell 中使用 [PowerShell 文档](backup-azure-vms-automation.md)的**启用备份**部分中所述的步骤向备份服务提供这些权限。 |
 |快照扩展安装失败，出现错误“COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator”（COM+ 无法与 Microsoft 分布式事务处理协调器通信） | 请尝试启动 Windows 服务“COM + 系统应用程序”（通过权限提升的命令提示符：_net start COMSysApp_）。 <br>如果启动失败，请执行以下步骤：<ol><li> 验证服务“分布式事务处理协调器”的登录帐户是否为“网络服务”。 如果不是，请将其更改为“网络服务”，重启此服务，并尝试启动服务“COM + 系统应用程序”。<li>如果仍然无法启动，请通过以下步骤卸载/安装服务“分布式事务处理协调器”：<br> - 停止 MSDTC 服务<br> - 打开命令提示符 (cmd) <br> - 运行命令“msdtc -uninstall” <br> - 运行命令“msdtc -install” <br> - 启动 MSDTC 服务<li>启动 Windows 服务“COM + 系统应用程序”，启动后，从门户触发备份。</ol> |
 |  由于 COM + 错误导致快照操作失败 | 建议措施是，重启 Windows 服务“COM + 系统应用程序”（通过提升的命令提示符 net start COMSysApp）。 如果此问题一再出现，请重启 VM。 如果重启 VM 不起作用，请尝试[删除 VMSnapshot 扩展](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#cause-3-the-backup-extension-fails-to-update-or-load)并手动触发备份。 |

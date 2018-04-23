@@ -1,9 +1,9 @@
 ---
-title: "在 Azure HDInsight 中创建 Apache Spark 群集 | Microsoft Docs"
-description: "此 HDInsight Spark 快速入门介绍如何在 HDInsight 中创建 Apache Spark 群集。"
-keywords: "spark 快速入门,交互式 spark,交互式查询,hdinsight spark,azure spark"
+title: 在 Azure HDInsight 中创建 Apache Spark 群集 | Microsoft Docs
+description: 此 HDInsight Spark 快速入门介绍如何在 HDInsight 中创建 Apache Spark 群集。
+keywords: spark 快速入门,交互式 spark,交互式查询,hdinsight spark,azure spark
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: cgronlun
 editor: cgronlun
@@ -11,17 +11,15 @@ tags: azure-portal
 ms.assetid: 91f41e6a-d463-4eb4-83ef-7bbb1f4556cc
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: jgao
-ms.openlocfilehash: baad137a6f982df987faf95d7c7c595698e8e399
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 1fdae7d6e47ff70e83e8153cdc22c0b2881d2743
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>在 Azure HDInsight 中创建 Apache Spark 群集
 

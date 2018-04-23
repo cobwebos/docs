@@ -1,24 +1,24 @@
 ---
-title: "关于 Azure Power BI Embedded | Microsoft Docs"
-description: "Power BI Embedded 旨在让 ISV 和开发者更轻松地使用 Power BI 功能，帮助他们在应用中快速添加无与伦比的视觉对象、报表和仪表板。"
+title: 关于 Azure Power BI Embedded | Microsoft Docs
+description: Power BI Embedded 旨在让 ISV 和开发者更轻松地使用 Power BI 功能，帮助他们在应用中快速添加无与伦比的视觉对象、报表和仪表板。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/04/2018
-ms.author: asaxton
-ms.openlocfilehash: 2e96575e74e20c80a79803ea56cdcbd4542e54a2
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.author: maghan
+ms.openlocfilehash: 1bc641e210a5bd965c5cdbf41efe853e9b297132
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="about-power-bi-embedded"></a>关于 Power BI Embedded
 

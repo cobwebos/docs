@@ -1,13 +1,13 @@
 ---
-title: "重置有故障的 Azure ExpressRoute 线路：PowerShell | Microsoft Docs"
-description: "本文帮助你重置处于故障状态的 ExpressRoute 线路。"
+title: 重置有故障的 Azure ExpressRoute 线路：PowerShell | Microsoft Docs
+description: 本文帮助你重置处于故障状态的 ExpressRoute 线路。
 documentationcenter: na
 services: expressroute
 author: anzaman
-manager: 
-editor: 
+manager: ''
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: 0e017200193de3e4a02275cec3b09c32f1fa5c31
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 423bc1d6409e5b7fe02339a05d0775f4ff42de49
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>重置有故障的 ExpressRoute 线路
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/30/2017
 2. 使用提升的权限打开 PowerShell 控制台，并连接到帐户。 使用下面的示例来帮助连接：
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 3. 如果有多个 Azure 订阅，请查看该帐户的订阅。
 

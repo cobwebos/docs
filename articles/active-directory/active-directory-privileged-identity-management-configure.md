@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 827e3521be8918f4de00113fd9eaf4e01679cac5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f91ebe0f94c57c9ad217ffe280f9aa0a9aa6acb9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什么是 Azure AD Privileged Identity Management？
 
@@ -72,7 +72,7 @@ Azure AD Privileged Identity Management 可帮助组织实现以下目的：
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Privileged Identity Management 概述（入口点）
 
-Azure AD Privileged Identity Management 支持管理 Azure AD 目录角色，以及 Azure 资源（预览版）的角色。 Azure 资源角色的功能与 Azure AD 中的管理角色不同。 Azure 资源角色针对位于分配级别的资源以及资源层次结构中的所有附属资源（称为继承）提供粒度权限。 [详细了解 RBAC、资源层次结构和继承](role-based-access-control-configure.md)。 可以通过访问“PIM 概述”入口点左侧导航菜单的“管理”部分下的相应链接，管理 Azure AD 目录角色和 Azure 资源（预览版）的 PIM。
+Azure AD Privileged Identity Management 支持管理 Azure AD 目录角色，以及 Azure 资源（预览版）的角色。 Azure 资源角色的功能与 Azure AD 中的管理角色不同。 Azure 资源角色针对位于分配级别的资源以及资源层次结构中的所有附属资源（称为继承）提供粒度权限。 [详细了解 RBAC、资源层次结构和继承](../role-based-access-control/role-assignments-portal.md)。 可以通过访问“PIM 概述”入口点左侧导航菜单的“管理”部分下的相应链接，管理 Azure AD 目录角色和 Azure 资源（预览版）的 PIM。
 
 PIM 提供便捷的访问方式，让我们通过左侧导航菜单中的“任务”部分激活角色，以及查看等待做出答复的激活/请求、审批（适用于 Azure AD 目录角色）和评审。
 

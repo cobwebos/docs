@@ -1,12 +1,12 @@
 ---
-title: "如何创建 Azure 文件共享 | Microsoft Docs"
-description: "如何使用 Azure 门户、PowerShell 和 Azure CLI 在 Azure 文件中创建 Azure 文件共享。"
+title: 如何创建 Azure 文件共享 | Microsoft Docs
+description: 如何使用 Azure 门户、PowerShell 和 Azure CLI 在 Azure 文件中创建 Azure 文件共享。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: bc01e5427f32e9532e39694f6de9f0b1146eda35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4dfc4bca4453b5a8027086bd7c3625efc8feda03
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-file-share-in-azure-files"></a>在 Azure 文件中创建文件共享
 可以使用 [Azure 门户](https://portal.azure.com/)、Azure 存储 PowerShell cmdlet、Azure 存储客户端库或 Azure 存储 REST API 来创建 Azure 文件共享。 本教程介绍：
@@ -69,7 +69,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="create-file-share-through-command-line-interface-cli"></a>通过命令行界面 (CLI) 创建文件共享
 1. 若要准备使用命令行界面 (CLI)，请下载并安装 Azure CLI。  
-    请参阅[安装 Azure CLI 2.0](/cli/azure/install-az-cli2.md) 和 [Azure CLI 2.0 入门](/cli/azure/get-started-with-azure-cli.md)。
+    请参阅[安装 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) 和 [Azure CLI 2.0 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。
 
 2. 创建可连接到存储帐户的连接字符串，你需要在该帐户中创建共享。  
     请将以下示例中的 ```<storage-account>``` 和 ```<resource_group>``` 替换为自己的存储帐户名称和资源组：

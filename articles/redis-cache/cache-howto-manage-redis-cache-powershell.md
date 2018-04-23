@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure PowerShell 管理 Azure Redis 缓存 | Microsoft Docs"
-description: "了解如何使用 Azure PowerShell 对 Azure Redis 缓存执行管理任务。"
+title: 使用 Azure PowerShell 管理 Azure Redis 缓存 | Microsoft Docs
+description: 了解如何使用 Azure PowerShell 对 Azure Redis 缓存执行管理任务。
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 58f8601fa780ac86729f60e9e30f4c6a91c73deb
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 38b2f57811b0e952d3020c06d39350918f2f0391
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/19/2018
 
 首先，必须使用以下命令登录到 Azure。
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 在 Microsoft Azure 登录对话框中指定 Azure 帐户的电子邮件地址及其密码。
 
@@ -66,18 +66,18 @@ ms.lasthandoff: 01/19/2018
     Get-Help New-AzureRmRedisCache -Detailed
 
 ### <a name="how-to-connect-to-other-clouds"></a>如何连接到其他云
-默认情况下，Azure 环境是 `AzureCloud`，它表示全局 Azure 云实例。 若要连接到其他实例，请结合使用 `Add-AzureRmAccount` 与 `-Environment` 或结合使用 -`EnvironmentName` 命令行开关与所需环境或环境名称。
+默认情况下，Azure 环境是 `AzureCloud`，它表示全局 Azure 云实例。 若要连接到其他实例，请结合使用 `Connect-AzureRmAccount` 与 `-Environment` 或结合使用 -`EnvironmentName` 命令行开关与所需环境或环境名称。
 
 若要查看可用环境列表，请运行 `Get-AzureRmEnvironment` cmdlet。
 
 ### <a name="to-connect-to-the-azure-government-cloud"></a>连接到 Azure 政府版云
 若要连接到 Azure 政府版云，请使用以下命令之一。
 
-    Add-AzureRMAccount -EnvironmentName AzureUSGovernment
+    Connect-AzureRmAccount -EnvironmentName AzureUSGovernment
 
 或
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
 
 若要在 Azure 政府版云中创建缓存，请使用以下位置之一。
 
@@ -89,11 +89,11 @@ ms.lasthandoff: 01/19/2018
 ### <a name="to-connect-to-the-azure-china-cloud"></a>连接到 Azure 中国云
 若要连接到 Azure 中国云，请使用以下命令之一。
 
-    Add-AzureRMAccount -EnvironmentName AzureChinaCloud
+    Connect-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 或
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
 
 若要在 Azure 中国云中创建缓存，请使用以下位置之一。
 
@@ -105,12 +105,12 @@ ms.lasthandoff: 01/19/2018
 ### <a name="to-connect-to-microsoft-azure-germany"></a>连接到 Microsoft Azure Germany
 若要连接到 Microsoft Azure Germany，请使用以下命令之一。
 
-    Add-AzureRMAccount -EnvironmentName AzureGermanCloud
+    Connect-AzureRmAccount -EnvironmentName AzureGermanCloud
 
 
 或
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
 
 若要在 Microsoft Azure Germany 中创建缓存，请使用以下命令之一。
 

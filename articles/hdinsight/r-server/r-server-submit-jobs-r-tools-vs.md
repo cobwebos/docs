@@ -1,25 +1,23 @@
 ---
-title: "从针对 Visual Studio 的 R 工具提交作业 - Azure HDInsight | Microsoft Docs"
-description: "从本地 Visual Studio 计算机将 R 作业提交到 HDInsight 群集。"
+title: 从针对 Visual Studio 的 R 工具提交作业 - Azure HDInsight | Microsoft Docs
+description: 从本地 Visual Studio 计算机将 R 作业提交到 HDInsight 群集。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: maxluk
-ms.openlocfilehash: 1a82ba7790f739768156a8bee33a74d7130e24e1
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: c6f6e691ef4b317854aef1d7397d5fb840d25ff2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>从针对 Visual Studio 的 R 工具提交作业
 

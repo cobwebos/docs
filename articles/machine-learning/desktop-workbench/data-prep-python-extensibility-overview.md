@@ -1,6 +1,6 @@
 ---
-title: "将 Python 扩展性与 Azure 机器学习数据准备结合使用 | Microsoft Docs"
-description: "本文提供有关如何使用 Python 代码来扩展数据准备功能的概述和一些详细示例"
+title: 将 Python 扩展性与 Azure 机器学习数据准备结合使用 | Microsoft Docs
+description: 本文提供有关如何使用 Python 代码来扩展数据准备功能的概述和一些详细示例
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: cc1aef7ed7c4a7d03a7fa63e71c8c27aca10095a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="data-preparations-python-extensions"></a>数据准备 Python 扩展
 作为一种填补内置功能之间功能差距的方法，Azure 机器学习数据准备包含多个级别的扩展性。 在本文档中，我们将通过 Python 脚本概述扩展性。 

@@ -1,13 +1,13 @@
 ---
-title: "Azure 虚拟机规模集加密磁盘 | Microsoft Docs"
-description: "了解如何对虚拟机规模集中附加的磁盘进行加密。"
+title: Azure 虚拟机规模集加密磁盘 | Microsoft Docs
+description: 了解如何对虚拟机规模集中附加的磁盘进行加密。
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 3263ed4d6325207f38656d741fa4a1f091d4fdea
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 570764ad5d657a8b1efa2425423a89ddc518451c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set"></a>对虚拟机规模集中的操作系统和附加的数据磁盘进行加密
 Azure [虚拟机规模集](/azure/virtual-machine-scale-sets/)支持 Azure 磁盘加密 (ADE)。  可针对 Windows 和 Linux 虚拟机启用 Azure 磁盘加密，用于通过符合行业标准的加密技术来保护静态的规模集数据。 有关详细信息，请了解针对 Windows 和 Linux 虚拟机的 Azure 磁盘加密。
@@ -42,7 +42,7 @@ Azure [虚拟机规模集](/azure/virtual-machine-scale-sets/)支持 Azure 磁�
 要对虚拟机规模集预览版使用 Azure 磁盘加密功能，需要使用以下 PowerShell 命令自行注册订阅： 
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 

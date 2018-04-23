@@ -10,10 +10,10 @@ ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
 ms.openlocfilehash: 48c6cacebdeb7505c8dc2bcaed099c33862589ac
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/17/2018
 ---
 # <a name="use-visual-studio-code-to-develop-a-c-module-with-azure-iot-edge"></a>使用 Visual Studio Code 通过 Azure IoT Edge 开发 C# 模块
 本文提供有关使用 [Visual Studio Code](https://code.visualstudio.com/) 作为主要开发工具来开发和部署 Azure IoT Edge 模块的详细说明。 

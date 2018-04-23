@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure Site Recovery 针对物理本地服务器设置到 Azure 的灾难恢复 | Microsoft Docs"
-description: "了解如何使用 Azure Site Recovery 服务针对本地 Windows 和 Linux 服务器设置到 Azure 的灾难恢复。"
+title: 使用 Azure Site Recovery 针对物理本地服务器设置到 Azure 的灾难恢复 | Microsoft Docs
+description: 了解如何使用 Azure Site Recovery 服务针对本地 Windows 和 Linux 服务器设置到 Azure 的灾难恢复。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: d460da197c6e9f0bface402d83d4788f8164cc9c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 207ff17f7b113bf4a94bb6c157cf53e7b1c46b45
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 03/09/2018
 请确保 Azure 帐户具有将 VM 复制到 Azure 的权限。
 
 - 查看将计算机复制到 Azure 所需的[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
-- 验证和修改[基于角色的访问](../active-directory/role-based-access-control-configure.md)权限。 
+- 验证和修改[基于角色的访问](../role-based-access-control/role-assignments-portal.md)权限。 
 
 
 

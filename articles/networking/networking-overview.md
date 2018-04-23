@@ -1,13 +1,13 @@
 ---
-title: "Azure 网络 | Microsoft Docs"
-description: "了解 Azure 网络服务与功能。"
+title: Azure 网络 | Microsoft Docs
+description: 了解 Azure 网络服务与功能。
 services: networking
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: b0de4aa816d7decab1831449f855ab01b101db3a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a4f1c7c3342a2a78a2a5b765bd688bed4c85392f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-networking"></a>Azure 网络
 
@@ -138,7 +138,7 @@ Azure 提供以下工具用于监视和管理网络：
 - **诊断日志：**定期和自发性事件由网络资源创建，记录在 Azure 存储帐户中并发送到事件中心或 Azure Log Analytics。 诊断日志提供资源运行状况的见解。 诊断日志是针对负载均衡器（面向 Internet）、网络安全组、路由和应用程序网关提供的。 若要详细了解诊断日志，请参阅[诊断日志概述](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 - **指标：**指标是在一段时间内从资源收集的性能度量值与计数器。 使用指标可以基于阈值触发警报。 指标目前适用于应用程序网关。 若要详细了解指标，请参阅[指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 - **故障排除：**可直接在 Azure 门户中访问故障排除信息。 这些信息可帮助诊断 ExpressRoute、VPN 网关、应用程序网关、网络安全日志、路由、DNS、负载均衡器和流量管理器的常见问题。
-- **基于角色的访问控制 (RBAC)：**控制谁可以使用基于角色的访问控制 (RBAC) 创建和管理网络资源。 请参阅 [RBAC 入门](../active-directory/role-based-access-control-what-is.md?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 RBAC 的详细信息。 
+- **基于角色的访问控制 (RBAC)：**控制谁可以使用基于角色的访问控制 (RBAC) 创建和管理网络资源。 请参阅 [RBAC 入门](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文，了解有关 RBAC 的详细信息。 
 - **数据包捕获：**使用 Azure 网络观察程序服务可以通过 VM 中的某个扩展在 VM 上运行数据包捕获。 此功能适用于 Linux 和 Windows VM。 若要详细了解数据包捕获，请参阅[数据包捕获概述](../network-watcher/network-watcher-packet-capture-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 - **验证 IP 流：**使用网络观察程序可以验证 Azure VM 与远程资源之间的 IP 流，以确定是允许还是拒绝了数据包。 此功能可让管理员快速诊断连接问题。 若要详细了解如何验证 IP 流，请参阅[“IP 流验证”概述](../network-watcher/network-watcher-ip-flow-verify-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。
 - **排查 VPN 连接问题：**使用网络观察程序的 VPN 故障排除功能可以查询连接或网关，并验证资源的运行状况。 若要详细了解如何排查 VPN 连接问题，请参阅 [VPN 连接故障排除概述](../network-watcher/network-watcher-troubleshoot-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)一文。

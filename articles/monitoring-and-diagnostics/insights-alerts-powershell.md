@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: robb
-ms.openlocfilehash: 8f7df424b27e6899821a9bdd2f1d8397a0de35a7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ca9df36c642334d9323736abb51a931a6610fd3e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>在 Azure Monitor 中为 Azure 服务创建经典指标警报 - PowerShell
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.lasthandoff: 04/03/2018
 ## <a name="overview"></a>概述
 
 > [!NOTE]
-> 本文介绍了如何创建较早的经典指标警报。 Azure Monitor 现在支持[较新、更好的指标警报](monitoring-near-real-time-metric-alerts.md)。 这些警报可监视多个指标，并允许对维度指标发出警报。 即将推出对较新指标警报的 Powershell 支持。
+> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新、更好的指标警报](monitoring-near-real-time-metric-alerts.md)。 这些警报可监视多个指标，并允许对维度指标发出警报。 即将推出对较新指标警报的 Powershell 支持。
 >
 >
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 04/03/2018
 1. 登录 Azure。   
 
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     ```
 2. 获取可用订阅的列表。 验证正在使用的正确订阅。 如果没有，则使用 `Get-AzureRmSubscription` 中的输出将其设置为正确订阅。

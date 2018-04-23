@@ -3,7 +3,7 @@
 
 * 转换是不可逆的。 
 
-* 请注意，任何具有[虚拟机参与者](../articles/active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)角色的用户将不能更改 VM 大小（因为它们可以预转换）。 这是因为包含托管磁盘的 VM 要求用户对 OS 磁盘具有 Microsoft.Compute/disks/write 权限。
+* 请注意，任何具有[虚拟机参与者](../articles/role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色的用户将不能更改 VM 大小（因为它们可以预转换）。 这是因为包含托管磁盘的 VM 要求用户对 OS 磁盘具有 Microsoft.Compute/disks/write 权限。
 
 * 请务必测试转换。 在生产环境中执行迁移之前迁移测试性虚拟机。
 

@@ -1,12 +1,12 @@
 ---
-title: "面向 Azure 开发人员的入门指南 | Microsoft 文档"
-description: "本主题面向希望开始使用 Microsoft Azure 平台以满足自己开发需求的开发人员提供了相关的基本信息。"
-services: 
-cloud: 
-documentationcenter: 
+title: 面向 Azure 开发人员的入门指南 | Microsoft 文档
+description: 本主题面向希望开始使用 Microsoft Azure 平台以满足自己开发需求的开发人员提供了相关的基本信息。
+services: ''
+cloud: ''
+documentationcenter: ''
 author: ggailey777
 manager: erikre
-ms.assetid: 
+ms.assetid: ''
 ms.service: na
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: e740b655cbd22a08aab988e83a057cc770e8dfe3
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: b1cda302636d8bd4d0f14536f186c7b4951c09c1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -295,7 +295,7 @@ Azure 资源浏览器是一款非常出色的工具，可用于可视化已在�
 
     >何时使用：当你需要对用户和组进行精确的访问管理时。
 
-    >开始使用：若要了解详细信息，请参阅 [Azure 门户中的访问管理入门](../../active-directory/role-based-access-control-what-is.md)。
+    >开始使用：若要了解详细信息，请参阅 [Azure 门户中的访问管理入门](../../role-based-access-control/overview.md)。
 
 -   **服务主体对象**：除了为用户主体和组提供访问权限外，还可以向服务主体授予相同的访问权限。
 

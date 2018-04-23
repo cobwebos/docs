@@ -1,10 +1,10 @@
 ---
-title: "如何更改、删除或管理管理组 - Azure | Microsoft Docs"
-description: "了解如何维护和更新管理组层次结构。"
+title: 如何更改、删除或管理管理组 - Azure | Microsoft Docs
+description: 了解如何维护和更新管理组层次结构。
 author: rthorn17
 manager: rithorn
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: 33797ddcd2a6ff083c5fb4b2fa7ddb8f9d6bd76c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: cba3f9290aff1808133b9d7780e4169fa25a10b2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源 
-管理组是一些容器，可以帮助跨多个订阅管理访问权限、策略和符合性。 可以更改、删除和管理这些容器来构建可与 [Azure 策略](../azure-policy/azure-policy-introduction.md)和 [Azure 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 配合使用的层次结构。 有关管理组的详细信息，请参阅[使用 Azure 管理组来组织资源](management-groups-overview.md)。
+管理组是一些容器，可以帮助跨多个订阅管理访问权限、策略和符合性。 可以更改、删除和管理这些容器来构建可与 [Azure 策略](../azure-policy/azure-policy-introduction.md)和 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 配合使用的层次结构。 有关管理组的详细信息，请参阅[使用 Azure 管理组来组织资源](management-groups-overview.md)。
 
 管理组功能目前以公共预览版提供。 若要开始使用管理组，请登录到 [Azure 门户](https://portal.azure.com)，也可以使用 [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)、[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az_extension_list_available) 或 [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) 来管理管理组。
 
-若要对管理组进行更改，必须在管理组中拥有“所有者”或“参与者”角色。 若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../active-directory/role-based-access-control-what-is.md)。
+若要对管理组进行更改，必须在管理组中拥有“所有者”或“参与者”角色。 若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../role-based-access-control/overview.md)。
 
 ## <a name="change-the-name-of-a-management-group"></a>更改管理组的名称 
 可以使用门户、PowerShell 或 Azure CLI 更改管理组的名称。
@@ -64,7 +64,7 @@ C:\> az account management-group update --group-name Contoso --display-name "Con
 1. 该管理组下面没有任何子管理组或订阅。 
     - 若要将订阅移出管理组，请参阅[将订阅移到另一个管理组](#Move-subscriptions-in-the-hierarchy)。 
     - 若要将管理组移到另一个管理组，请参阅[在层次结构中移动管理组](#Move-management-groups-in-the-hierarchy)。 
-2. 在管理组中拥有管理组“所有者”或“参与者”角色的写入权限。 若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../active-directory/role-based-access-control-what-is.md)。  
+2. 在管理组中拥有管理组“所有者”或“参与者”角色的写入权限。 若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../role-based-access-control/overview.md)。  
 
 ### <a name="delete-in-the-portal"></a>在门户中删除
 
@@ -139,7 +139,7 @@ az account management-group show --group-name Contoso
 - 子订阅中的“所有者”角色。
 - 新父管理组中的“所有者”或“参与者”角色。 
 - 旧父管理组中的“所有者”或“参与者”角色。
-若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../active-directory/role-based-access-control-what-is.md)。 
+若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 有关 RBAC 角色的详细信息，请参阅[使用 RBAC 管理访问权限和权限](../role-based-access-control/overview.md)。 
 
 ### <a name="move-subscriptions-in-the-portal"></a>在门户中移动订阅
 

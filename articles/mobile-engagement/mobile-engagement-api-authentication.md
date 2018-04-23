@@ -14,11 +14,11 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 5979ded9afaa31054f835b5f16fe525809f5730d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 52843c926248627e4e530612cfe9326d4302eb95
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>使用 Mobile Engagement REST API 进行身份验证
 > [!IMPORTANT]
@@ -67,7 +67,7 @@ ms.lasthandoff: 03/30/2018
         Import-Module Azure
 3. 运行以下命令从 PowerShell 登录到 Azure 资源管理器。 提供 Azure 帐户的用户名和密码： 
 
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
 4. 如果有多个订阅，请执行以下步骤：
 
     a. 获取所有订阅的列表。 然后复制要使用的订阅的 **SubscriptionId**。 确保此订阅包含 Mobile Engagement 应用。 稍后将要使用此应用来与 API 交互。 

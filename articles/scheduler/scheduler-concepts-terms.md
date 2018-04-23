@@ -1,11 +1,11 @@
 ---
-title: "计划程序的概念、术语和实体 | Microsoft Docs"
-description: "Azure 计划程序的概念、术语和实体层次结构，包括作业和作业集合。  显示了一个计划作业的综合示例。"
+title: 计划程序的概念、术语和实体 | Microsoft Docs
+description: Azure 计划程序的概念、术语和实体层次结构，包括作业和作业集合。  显示了一个计划作业的综合示例。
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 91302d57c43a6c9d14aeeee95df3d61fa6f73172
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scheduler-concepts-terminology--entity-hierarchy"></a>计划程序的概念、术语和实体层次结构
 ## <a name="scheduler-entity-hierarchy"></a>计划程序实体层次结构
@@ -176,7 +176,7 @@ ms.lasthandoff: 10/11/2017
 
 若要设置重试策略，可指定两个附加设置：重试间隔 (**retryInterval**) 和重试次数 (**retryCount**)。
 
-重试间隔使用 **retryInterval** 对象指定，表示两次重试之间的时间间隔。 其默认值为 30 秒，最小可配置值为 15 秒，最大值为 18 个月。 空闲作业集合中的作业的最小可配置值为 1 小时。  它使用 ISO 8601 格式定义。 同样，重试次数的值使用 **retryCount** 对象指定；它是尝试重试的次数。 其默认值为 4，其最大值为 20\。 retryInterval 和 retryCount 均为可选。 如果 **retryType** 设为 **fixed** 并且未为它们显式指定任何值，则为它们赋予默认值。
+重试间隔使用 **retryInterval** 对象指定，表示两次重试之间的时间间隔。 其默认值为 30 秒，最小可配置值为 15 秒，最大值为 18 个月。 它使用 ISO 8601 格式定义。 同样，重试次数的值使用 **retryCount** 对象指定；它是尝试重试的次数。 其默认值为 4，其最大值为 20\。 retryInterval 和 retryCount 均为可选。 如果 **retryType** 设为 **fixed** 并且未为它们显式指定任何值，则为它们赋予默认值。
 
 ## <a name="see-also"></a>另请参阅
  [计划程序是什么？](scheduler-intro.md)

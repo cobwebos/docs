@@ -1,33 +1,33 @@
 ---
-title: "在 Power BI 工作区集合中保存报表 | Microsoft Docs"
-description: "了解如何在 Power BI 工作区集合中保存报表。 需要有适当的权限才能成功执行此操作。"
+title: 在 Power BI 工作区集合中保存报表 | Microsoft Docs
+description: 了解如何在 Power BI 工作区集合中保存报表。 需要有适当的权限才能成功执行此操作。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 94a72ba4478aa317b4a1930b2894c1346d0590c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: c5512584531c9f5c8a13e9a50161eb6b5a1f8a7b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>在 Power BI 工作区集合中保存报表
 
 了解如何在 Power BI 工作区集合中保存报表。 保存报表需要有适当的权限才能成功执行。
 
 > [!IMPORTANT]
-> Power BI 工作区集合已弃用，到 2018 年 6 月或合同指示时可用。 建议规划迁移到 Power BI Embedded 以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
+> Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
 在 Power BI 工作区集合中，可编辑和保存现有报表。 还可以创建一个新报表，然后将它另存为新报表来创建另一个报表。
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="embed-report-in-edit-mode"></a>嵌入处于编辑模式的报表
 
-假设要在应用中嵌入一个处于编辑模式的报表，为此，只需在 Embed 配置中传递适当的属性，然后调用 powerbi.embed()。 提供权限和 viewMode 才能在编辑模式下看到“保存”和“另存为”按钮。 有关详细信息，请参阅[嵌入配置详细信息](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details)。
+假设要在应用中嵌入一个处于编辑模式的报表，为此，只需在 Embed 配置中传递适当的属性，并调用 powerbi.embed()。 提供权限和 viewMode 才能在编辑模式下看到“保存”和“另存为”按钮。 有关详细信息，请参阅[嵌入配置详细信息](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details)。
 
 例如，在 JavaScript 中：
 

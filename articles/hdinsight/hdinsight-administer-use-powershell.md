@@ -1,26 +1,24 @@
 ---
-title: "使用 PowerShell 管理 HDInsight 中的 Hadoop 群集 - Azure | Microsoft Docs"
-description: "了解如何使用 Azure PowerShell 执行针对 HDInsight 中 Hadoop 的管理任务。"
+title: 使用 PowerShell 管理 HDInsight 中的 Hadoop 群集 - Azure | Microsoft Docs
+description: 了解如何使用 Azure PowerShell 执行针对 HDInsight 中 Hadoop 的管理任务。
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 tags: azure-portal
 author: mumian
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bfdfa754-18e5-4ef9-b0d6-2dbdcebc0283
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: 04bb16d4779741d71f686f53a8f325243ab8499e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7d2f68773c78eed001f14ca86a46fb9e18563d77
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 HDInsight 中的 Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -178,7 +176,7 @@ Grant-AzureRmHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredenti
 以下 PowerShell 脚本演示了如何获取群集的默认存储帐户名称和相关信息：
 
 ```powershell
-#Login-AzureRmAccount
+#Connect-AzureRmAccount
 $clusterName = "<HDInsight Cluster Name>"
 
 $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName

@@ -1,8 +1,8 @@
 ---
-title: "使用 PowerShell 启用 Azure Active Directory 域服务 | Microsoft 文档"
-description: "使用 PowerShell 启用 Azure Active Directory 域服务"
+title: 使用 PowerShell 启用 Azure Active Directory 域服务 | Microsoft 文档
+description: 使用 PowerShell 启用 Azure Active Directory 域服务
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: maheshu
-ms.openlocfilehash: a456a6265400abe1d3a3620df74e41d8b4399b97
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 22be243b9da5afd93744ca9410b63a8ec936088a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 启用 Azure Active Directory 域服务
 本文介绍如何使用 PowerShell 来启用 Azure Active Directory (AD) 域服务。
@@ -161,7 +161,7 @@ $AzureLocation = "westus"
 Connect-AzureAD
 
 # Login to your Azure subscription.
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # Create the service principal for Azure AD Domain Services.
 New-AzureADServicePrincipal -AppId “2565bd9d-da50-47d4-8b85-4c97f669dc36”

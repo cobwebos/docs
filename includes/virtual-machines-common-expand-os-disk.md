@@ -22,7 +22,7 @@
 1. 在资源管理模式下登录 Microsoft Azure 帐户，并选择订阅，如下所示：
    
    ```Powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. 设置资源组名称和 VM 名称，如下所示：
@@ -65,7 +65,7 @@
 1. 在资源管理模式下登录 Microsoft Azure 帐户，并选择订阅，如下所示：
    
    ```Powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. 设置资源组名称和 VM 名称，如下所示：
@@ -109,7 +109,7 @@
 非托管磁盘：
 
 ```Powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'
@@ -122,7 +122,7 @@ Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 托管磁盘：
 
 ```Powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'

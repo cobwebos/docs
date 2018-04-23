@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 1ac3c341f7ffc1911fc063202c043351e412843f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 682998bb979c9b155b7b1389d8f605018ae135b6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>使用 Windows VM 托管服务标识 (MSI) 访问 Azure SQL
 
@@ -101,7 +101,7 @@ ObjectId                             DisplayName          Description
 6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM MSI access to SQL
 ```
 
-接下来，将 VM 的 MSI 添加到该组。  需要 MSI 的 **ObjectId**（可以使用 Azure PowerShell 获取）。  首先，下载 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。 然后使用 `Login-AzureRmAccount` 登录，并运行以下命令：
+接下来，将 VM 的 MSI 添加到该组。  需要 MSI 的 **ObjectId**（可以使用 Azure PowerShell 获取）。  首先，下载 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。 然后使用 `Connect-AzureRmAccount` 登录，并运行以下命令：
 - 如果有多个 Azure 订阅，请确保将会话上下文设置为所需的订阅。
 - 列出 Azure 订阅中的可用资源，并检查资源组和 VM 名称是否正确。
 - 使用 `<RESOURCE-GROUP>` 和 `<VM-NAME>` 的相应值获取 MSI VM 的属性。

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: bradsev
-ms.openlocfilehash: f22da892868a10ac18fdcd703249eaa172f8bf65
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 47c8b9c9d364a7959066132a873b93c2bb001e26
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="predict-twitter-sentiment-with-word-embeddings-by-using-the-team-data-science-process"></a>使用团队数据科学过程，通过字词嵌入预测 Twitter 情绪
 
-本文演示如何使用 _Word2Vec_ 字词嵌入算法和_情绪特定字词嵌入 (SSWE)_ 算法，通过 [Azure 机器学习](../preview/index.yml)预测 Twitter 情绪，从而实现有效协作。 有关预测 Twitter 情绪极性的详细信息，请参阅 GitHub 上的 [MachineLearningSamples-TwitterSentimentPrediction 存储库](https://github.com/Azure/MachineLearningSamples-TwitterSentimentPrediction)。 促进数据科学项目的有效团队协作的关键，是通过既有的数据科学生命周期实现项目结构和文档的标准化。 [团队数据科学过程 (TDSP)](overview.md) 提供这种类型的结构化[生命周期](lifecycle.md)。 
+本文演示如何使用 _Word2Vec_ 字词嵌入算法和_情绪特定字词嵌入 (SSWE)_ 算法，通过 [Azure 机器学习](../service/index.yml)预测 Twitter 情绪，从而实现有效协作。 有关预测 Twitter 情绪极性的详细信息，请参阅 GitHub 上的 [MachineLearningSamples-TwitterSentimentPrediction 存储库](https://github.com/Azure/MachineLearningSamples-TwitterSentimentPrediction)。 促进数据科学项目的有效团队协作的关键，是通过既有的数据科学生命周期实现项目结构和文档的标准化。 [团队数据科学过程 (TDSP)](overview.md) 提供这种类型的结构化[生命周期](lifecycle.md)。 
 
-通过 _TDSP 模板_创建数据科学项目，为 Azure 机器学习项目提供了标准化框架。 此前，TDSP 团队已发布[适用于 TDSP 项目结构和模板的 GitHub 存储库](https://github.com/Azure/Azure-TDSP-ProjectTemplate) 现在，启用了使用[适用于 Azure 机器学习的 TDSP 模板](https://github.com/amlsamples/tdsp)实例化的机器学习项目。 有关说明，请参阅 Azure 机器学习中的[如何通过 TDSP 模板使用 TDSP 结构项目](../preview/how-to-use-tdsp-in-azure-ml.md)。 
+通过 _TDSP 模板_创建数据科学项目，为 Azure 机器学习项目提供了标准化框架。 此前，TDSP 团队已发布[适用于 TDSP 项目结构和模板的 GitHub 存储库](https://github.com/Azure/Azure-TDSP-ProjectTemplate) 现在，启用了使用[适用于 Azure 机器学习的 TDSP 模板](https://github.com/amlsamples/tdsp)实例化的机器学习项目。 有关说明，请参阅 Azure 机器学习中的[如何通过 TDSP 模板使用 TDSP 结构项目](../desktop-workbench/how-to-use-tdsp-in-azure-ml.md)。 
 
 
 ## <a name="twitter-sentiment-polarity-sample"></a>Twitter 情绪极性示例
@@ -131,7 +131,7 @@ Skip-Gram 模型是浅表神经网络。 将输入的目标单词编码为独热
 
 ![Kubernetes 仪表板](./media/predict-twitter-sentiment/kubernetes-dashboard.PNG)
 
-有关操作化过程的详细信息，请参阅[将 Azure 机器学习模型部署为 Web 服务](../preview/model-management-service-deploy.md)。
+有关操作化过程的详细信息，请参阅[将 Azure 机器学习模型部署为 Web 服务](../desktop-workbench/model-management-service-deploy.md)。
 
 ## <a name="conclusion"></a>结束语
 
@@ -143,8 +143,8 @@ Skip-Gram 模型是浅表神经网络。 将输入的目标单词编码为独热
 * [团队数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) 
 * [如何在 Azure 机器学习中使用 Team Data Science Process (TDSP)](https://aka.ms/how-to-use-tdsp-in-aml)
 * [适用于 Azure 机器学习的 TDSP 项目模板](https://aka.ms/tdspamlgithubrepo)
-* [Azure Machine Learning Workbench](../preview/index.yml)
+* [Azure Machine Learning Workbench](../service/index.yml)
 * [UCI ML 存储库中的美国收入数据集](https://archive.ics.uci.edu/ml/datasets/adult)
-* [使用 TDSP 模板进行生物医学实体识别](../preview/scenario-tdsp-biomedical-recognition.md)
+* [使用 TDSP 模板进行生物医学实体识别](../desktop-workbench/scenario-tdsp-biomedical-recognition.md)
 * [Tomas Mikolov 等人《Distributed Representations of Words and Phrases and their Compositionality.Advances in neural information processing systems.》（单词和短语的分布式表示形式及其组成暨神经信息处理系统的进步）。2013.](https://arxiv.org/abs/1310.4546)
 * [Duyu Tang 等人《Learning Sentiment-Specific Word Embedding for Twitter Sentiment Classification》（学习 Twitter 情绪分类所用的情绪特定单词嵌入）。ACL (1).2014.](http://www.aclweb.org/anthology/P14-1146)

@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 开发测试实验室中添加所有者和用户 | Microsoft Docs"
-description: "使用 Azure 门户或 PowerShell 在 Azure 开发测试实验室中添加所有者和用户"
+title: 在 Azure 开发测试实验室中添加所有者和用户 | Microsoft Docs
+description: 使用 Azure 门户或 PowerShell 在 Azure 开发测试实验室中添加所有者和用户
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 4f51d9a5-2702-45f0-a2d5-a3635b58c416
 ms.service: devtest-lab
 ms.workload: na
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-craic
-ms.openlocfilehash: 348952626e13b9ac73ca2ec8e101bf02e416dc9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f7f7562f0af4753bc08018227a967f9ca3736021
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中添加所有者和用户
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-[Azure 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 控制 Azure 开发测试实验室中的访问。 使用RBAC，可以将团队中的职责分配给*角色*，仅授予用户执行其作业所需的访问权限。 RBAC 的三个角色分别是所有者、开发实验室用户和参与者。 在本文中，将了解这三个主要 RBAC 角色的每个角色可以执行的操作。 在这里，将了解如何通过门户和 PowerShell 脚本将用户添加到实验室，以及如何在订阅级别添加用户。
+[Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 控制 Azure 开发测试实验室中的访问。 使用RBAC，可以将团队中的职责分配给*角色*，仅授予用户执行其作业所需的访问权限。 RBAC 的三个角色分别是所有者、开发实验室用户和参与者。 在本文中，将了解这三个主要 RBAC 角色的每个角色可以执行的操作。 在这里，将了解如何通过门户和 PowerShell 脚本将用户添加到实验室，以及如何在订阅级别添加用户。
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>每个角色可以执行的操作
 可以为用户分配一下三种主要角色：
@@ -97,7 +97,7 @@ ms.lasthandoff: 02/21/2018
     $userDisplayName = "<Enter user's display name here>"
 
     # Log into your Azure account
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     # Select the Azure subscription that contains the lab. 
     # This step is optional if you have only one subscription.

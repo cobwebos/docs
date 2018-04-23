@@ -14,30 +14,30 @@ ms.workload: identity
 ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 8d70f36c5e434a26fce4d6b4bd1ddefc22234ab5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 580dc7414baea80ef005826d27fb5f2d35ee8895
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-for-developers"></a>针对开发人员的 Azure Active Directory
-Azure Active Directory (Azure AD) 是一个云标识服务，开发人员可以使用它来生成应用，让用户使用 Microsoft 工作或学校帐户安全登录。 Azure AD 支持开发人员生成单租户业务线 (LOB) 应用和多租户应用。 除了基本登录以外，Azure AD 还可以让应用调用 [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/concepts/overview) 等 Microsoft API，以及在 Azure AD 平台上生成的自定义 API。  本文档介绍了如何使用行业标准协议（例如 OAuth2.0 与 OpenID Connect）向应用程序添加 Azure AD 支持。 
+Azure Active Directory (Azure AD) 是一个云标识服务，开发人员可以使用它来生成应用，让用户使用 Microsoft 工作或学校帐户安全登录。 Azure AD 支持开发人员生成单租户业务线 (LOB) 应用和多租户应用。 除了基本登录以外，Azure AD 还可以让应用调用 [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/concepts/overview) 等 Microsoft API，以及在 Azure AD 平台上生成的自定义 API。  本文档介绍了如何使用行业标准协议（例如 OAuth2.0 与 OpenID Connect）向应用程序添加 Azure AD 支持。
 
 > [!NOTE]
-> 本页面中的大部分内容侧重于仅支持 Microsoft 工作或学校帐户的 Azure AD v1 终结点。 若要通过使用者或个人 Microsoft 帐户登录，请参阅有关 [Azure AD v2.0 终结点](active-directory-appmodel-v2-overview.md)的详细信息。 对于想要让用户使用 Azure AD 帐户（工作和学校）和个人 Microsoft 帐户登录的应用，Azure AD v2.0 终结点提供统一的开发人员体验。 
+> 本页面中的大部分内容侧重于仅支持 Microsoft 工作或学校帐户的 Azure AD v1 终结点。 若要通过使用者或个人 Microsoft 帐户登录，请参阅有关 [Azure AD v2.0 终结点](active-directory-appmodel-v2-overview.md)的详细信息。 对于想要让用户使用 Azure AD 帐户（工作和学校）和个人 Microsoft 帐户登录的应用，Azure AD v2.0 终结点提供统一的开发人员体验。
 
 | | |
 | --- | --- |
 |[身份验证基础知识](active-directory-authentication-scenarios.md) | 使用 Azure AD 进行身份验证简介 |
 |[应用程序的类型](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Azure AD 支持的身份验证方案概述。 |                                
-                                                                              
+
 ## <a name="get-started"></a>入门
 以下指导逐步讲解如何使用 Azure Active Directory 库 (ADAL) SDK 在偏好的平台上生成应用。 如需 Microsoft 身份验证库 (MSAL) 的用法信息，请参阅有关 [Azure AD v2.0 终结点](active-directory-appmodel-v2-overview.md)的文档。
 
 |  |  |  |  |
 | --- | --- | --- | --- |
 | <center>![移动和桌面应用](./media/active-directory-developers-guide/NativeApp_Icon.png)<br />移动和桌面应用</center> | [概述](active-directory-authentication-scenarios.md#native-application-to-web-api)<br /><br />[iOS](active-directory-devquickstarts-ios.md)<br /><br />[Android](active-directory-devquickstarts-android.md) | [.NET (WPF)](active-directory-devquickstarts-dotnet.md)<br /><br />[.NET (UWP)](active-directory-devquickstarts-windowsstore.md)<br /><br />[Xamarin](active-directory-devquickstarts-xamarin.md) | [Cordova](active-directory-devquickstarts-cordova.md) |
-| <center>![Web 应用](./media/active-directory-developers-guide/Web_app.png)<br />Web 应用</center> | [概述](active-directory-authentication-scenarios.md#web-browser-to-web-application)<br /><br />[ASP.NET](active-directory-devquickstarts-webapp-dotnet.md)<br /><br />[Java](active-directory-devquickstarts-webapp-java.md) | [Node.js](active-directory-devquickstarts-openidconnect-nodejs.md) |  |
+| <center>![Web 应用](./media/active-directory-developers-guide/Web_app.png)<br />Web 应用</center> | [概述](active-directory-authentication-scenarios.md#web-browser-to-web-application)<br /><br />[ASP.NET](active-directory-devquickstarts-webapp-dotnet.md)<br /><br />[Java](active-directory-devquickstarts-webapp-java.md) | [Python](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)<br/><br/> [Node.js](active-directory-devquickstarts-openidconnect-nodejs.md) | |
 | <center>![单页应用](./media/active-directory-developers-guide/SPA.png)<br />单页应用</center> | [概述](active-directory-authentication-scenarios.md#single-page-application-spa)<br /><br />[AngularJS](active-directory-devquickstarts-angular.md)<br /><br />[JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |  |  |
 | <center>![Web API](./media/active-directory-developers-guide/Web_API.png)<br />Web API</center> | [概述](active-directory-authentication-scenarios.md#web-application-to-web-api)<br /><br />[ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)<br /><br />[Node.js](active-directory-devquickstarts-webapi-nodejs.md) | &nbsp; |
 | <center>![服务到服务](./media/active-directory-developers-guide/Service_App.png)<br />服务到服务</center> | [概述](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)|  |

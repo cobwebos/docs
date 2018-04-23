@@ -1,6 +1,6 @@
 ---
-title: "增强 Azure 中的远程管理安全性 | Microsoft 文档"
-description: "本文详细介绍了在管理 Microsoft Azure 环境（包括云服务、虚拟机和自定义应用程序）时增强远程管理安全的步骤。"
+title: 增强 Azure 中的远程管理安全性 | Microsoft 文档
+description: 本文详细介绍了在管理 Microsoft Azure 环境（包括云服务、虚拟机和自定义应用程序）时增强远程管理安全的步骤。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 026a22355ab1d35fa1fe6b7ba624fed5d10b3e38
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 7575e25f06014caf962a4b7241a8a2d6bca8c918
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
 Azure 订阅者可从多种设备管理其云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有任务特定权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)）来执行管理功能。 有其他情况下，可以从本地系统通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或 Azure 服务管理 API (SMAPI)（以编程方式）直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
@@ -64,7 +64,7 @@ Azure 订阅者可从多种设备管理其云环境，这些设备包括管理�
 ### <a name="providing-security-for-azure-remote-management"></a>为 Azure 远程管理提供安全性
 Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机。 这些机制包括：
 
-* 身份验证和 [基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
+* 身份验证和 [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
 * 监视、日志记录和审核。
 * 证书和加密通信。
 * Web 管理门户。

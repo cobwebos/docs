@@ -1,25 +1,20 @@
 ---
-title: "什么是 Azure SQL 数据仓库？ | Microsoft Docs"
-description: "企业级分布式数据库，可处理 PB 量级的关系数据和非关系数据。 它是行业首个云数据仓库，可以在数秒内增长、收缩和暂停。"
+title: 什么是 Azure SQL 数据仓库？ | Microsoft Docs
+description: 企业级分布式数据库，可处理 PB 量级的关系数据和非关系数据。 它是行业首个云数据仓库，可以在数秒内增长、收缩和暂停。
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jenniehubbard
-editor: 
-ms.assetid: 4006c201-ec71-4982-b8ba-24bba879d7bb
+author: igorstanko
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: hero-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: overview
-ms.date: 10/23/2017
-ms.author: jrj
-ms.openlocfilehash: 7fd17c29c413905084c6b3736018d111d3b28fea
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.topic: overview
+ms.component: design
+ms.date: 04/17/2018
+ms.author: igorstan
+ms.reviewer: igorstan
+ms.openlocfilehash: 57b94a57ae0279a391cb4269f7b1625499748bae
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>什么是 Azure SQL 数据仓库？
 
@@ -37,13 +32,6 @@ SQL 数据仓库通过列存储将数据存储到关系表中。 此格式可显
 
 分析结果可以传输到世界各地的报告数据库或应用程序。 然后即可通过业务分析获得进行明智的业务决策所需的见解。
 
-## <a name="optimization-choices"></a>优化选项
-
-SQL 数据仓库提供[性能层](performance-tiers.md)，方便用户根据数据需求（不管大小）进行灵活的设置。 可以选择经过弹性优化或计算优化的数据仓库。 
-
-- 弹性优化性能层在体系结构中将计算层和存储层分开。 此选项非常适合可以根据短期的高峰活动频繁进行缩放，从而充分利用独立的计算层和存储层的工作负荷。 此计算层的价格门槛最低，可以根据大多数客户工作负荷的需求进行缩放。
-
-- **“计算优化”性能层**使用最新的 Azure 硬件，引入了新的 NVMe 固态磁盘缓存，让访问频率最高的数据靠近 CPU，这正是你所需要的。 此性能层可以对存储自动分层，尤其适合复杂的查询，因为所有 IO 对计算层来说都是本地的。 另外，列存储进行了增强，以便在 SQL 数据仓库中存储无限数量的数据。 计算优化性能层提供最高级别的可伸缩性，允许扩展到 30,000 个计算数据仓库单位 (cDWU)。 对于需要进行持续且速度极快的操作的工作负荷，请选择此层。
 
 ## <a name="next-steps"></a>后续步骤
 对 SQL 数据仓库有了初步的认识后，请继续学习如何快速[创建 SQL 数据仓库][create a SQL Data Warehouse]和[加载示例数据][load sample data]。 如果不熟悉 Azure，在遇到新术语时，可以参考 [Azure 术语表][Azure glossary]。 或者，查看一下以下一些其他 SQL 数据仓库资源。  

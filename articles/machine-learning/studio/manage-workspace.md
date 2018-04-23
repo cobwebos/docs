@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
-ms.openlocfilehash: 4d971d75424f85bb07c0be779b9dfedb1ef41c1e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f5561ac0089225ae2d06e51a90fa2081e409ce41
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>管理 Azure 机器学习工作区
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/23/2018
 > [!NOTE]
 > 若要部署或管理新 Web 服务，必须分配有该 Web 服务部署到的订阅上的参与者或管理员角色。 如果邀请其他用户加入机器学习工作区，必须向其分配订阅上的参与者或管理员角色，他们才能部署或管理 Web 服务。 
 > 
->有关设置访问权限的详细信息，请参阅[在 Azure 门户中查看用户和组的访问权限分配](../../active-directory/role-based-access-control-manage-assignments.md)。
+>有关设置访问权限的详细信息，请参阅[在 Azure 门户中查看用户和组的访问权限分配](../../role-based-access-control/role-assignments-users.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解[使用 Azure 资源管理器模板部署机器学习](deploy-with-resource-manager-template.md)。 

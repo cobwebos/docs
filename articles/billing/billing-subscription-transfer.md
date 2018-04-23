@@ -1,12 +1,12 @@
 ---
-title: "将 Azure 订阅所有权转让给其他帐户 |Microsoft Docs"
-description: "介绍如何将 Azure 订阅转让给其他用户，以及有关转让过程的一些常见问题 (FAQ)"
-keywords: "转让 Azure 订阅, Azure 转让订阅, 将 Azure 订阅移至其他帐户, Azure 更改订阅所有者, 将 Azure 订阅转让给其他帐户"
-services: 
-documentationcenter: 
+title: 将 Azure 订阅所有权转让给其他帐户 |Microsoft Docs
+description: 介绍如何将 Azure 订阅转让给其他用户，以及有关转让过程的一些常见问题 (FAQ)
+keywords: 转让 Azure 订阅, Azure 转让订阅, 将 Azure 订阅移至其他帐户, Azure 更改订阅所有者, 将 Azure 订阅转让给其他帐户
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing,top-support-issue
 ms.assetid: c8ecdc1e-c9c5-468c-a024-94ae41e64702
 ms.service: billing
@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 12/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff694ee7c2ecf7f8ee5ea89902fa77efad3f501c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7e81037aeb3a8aee4f70eaf33280b1dc0d483332
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/02/2018
 
 > [!IMPORTANT]
 > 
-> 如果将订阅转让给新的 Azure AD 租户，则[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 中的所有角色分配都将从源租户中永久删除，不会迁移到目标租户。
+> 如果将订阅转让给新的 Azure AD 租户，则[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中的所有角色分配都将从源租户中永久删除，不会迁移到目标租户。
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>转让 Azure 订阅的所有权
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 03/02/2018
 
    > [!IMPORTANT]
    > 
-   > 如果将订阅转让给新的 Azure AD 租户，则[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-what-is.md) 中的所有角色分配都将从源租户中永久删除，不会迁移到目标租户。
+   > 如果将订阅转让给新的 Azure AD 租户，则[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中的所有角色分配都将从源租户中永久删除，不会迁移到目标租户。
 
    ![“转让订阅”对话框](./media/billing-subscription-transfer/image2.PNG)
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 03/02/2018
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>所有内容都会转让吗？ 包括资源组、VM、磁盘和其他正在运行的服务吗？
 
-所有资源（如 VM、磁盘和网站）都会转让给新的所有者。 但是，不会在不同目录之间传递所设置的任何[管理员角色](billing-add-change-azure-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 策略。 此外，[应用注册](../active-directory//develop/active-directory-integrating-applications.md)和其他特定于租户的服务不会一同转让。
+所有资源（如 VM、磁盘和网站）都会转让给新的所有者。 但是，不会在不同目录之间传递所设置的任何[管理员角色](billing-add-change-azure-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 策略。 此外，[应用注册](../active-directory//develop/active-directory-integrating-applications.md)和其他特定于租户的服务不会一同转让。
 
 ### <a id="no-button"></a> 为什么我没有看到“转让订阅”按钮？
 

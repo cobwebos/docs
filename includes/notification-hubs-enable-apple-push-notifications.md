@@ -113,6 +113,6 @@ Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。
 6. 最后，在“Profile Name”（配置文件名称）中为配置文件选取一个名称，并单击“Generate”（生成）。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
-7. 创建新的预配配置文件后，请单击下载该文件，并将其安装在 Xcode 开发计算机上。 然后单击“Done”（完成）。
+7. 创建新的预配配置文件后，请单击下载该文件，并将其安装在 Xcode 开发计算机上。 然后单击“完成”。
    
       ![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)

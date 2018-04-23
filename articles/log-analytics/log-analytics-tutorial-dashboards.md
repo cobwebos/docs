@@ -1,11 +1,11 @@
 ---
-title: "创建和共享 Azure Log Analytics 数据的仪表板 | Microsoft Docs"
-description: "本教程可帮助你了解 Log Analytics 仪表板如何直观显示所有已保存的日志搜索，从而提供单个可重用功能区来查看环境。"
+title: 创建和共享 Azure Log Analytics 数据的仪表板 | Microsoft Docs
+description: 本教程可帮助你了解 Log Analytics 仪表板如何直观显示所有已保存的日志搜索，从而提供单个可重用功能区来查看环境。
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 272945134b534a5ded794379ce5e96b0902a4227
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: f6a70f33b143a5b9354411af9717d2a21e24af0c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>创建和共享 Log Analytics 数据的仪表板
 
@@ -34,7 +34,7 @@ Log Analytics 仪表板可直观显示所有已保存的日志搜索，使你能
 要完成本教程中的示例，必须将现有虚拟机[连接到 Log Analytics 工作区](log-analytics-quick-collect-azurevm.md)。  
  
 ## <a name="log-in-to-azure-portal"></a>登录到 Azure 门户
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。 
+通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。 
 
 ## <a name="create-a-shared-dashboard"></a>创建共享仪表板
 
@@ -48,7 +48,7 @@ Log Analytics 仪表板可直观显示所有已保存的日志搜索，使你能
 
 创建仪表板时，默认该仪表板是专用的，这意味着只有你才可以看到它。 若要让其对其他人可见，请使用与其他仪表板命令一起出现的“共享”按钮。<br> ![在 Azure 门户中共享新的仪表板](media/log-analytics-tutorial-dashboards/log-analytics-share-dashboard.png) 
 
-系统会要求选择可将仪表板发布到的订阅和资源组。 为方便起见，门户的发布体验会引导完成将仪表板放在名为**仪表板**的资源组中的模式。  验证所选订阅，然后单击“发布”。  通过 [Azure 基于资源的访问控制](../active-directory/role-based-access-control-configure.md)来控制对仪表板中所显示信息的访问。   
+系统会要求选择可将仪表板发布到的订阅和资源组。 为方便起见，门户的发布体验会引导完成将仪表板放在名为**仪表板**的资源组中的模式。  验证所选订阅，然后单击“发布”。  通过 [Azure 基于资源的访问控制](../role-based-access-control/role-assignments-portal.md)来控制对仪表板中所显示信息的访问。   
 
 ## <a name="visualize-a-log-search"></a>可视化日志搜索
 

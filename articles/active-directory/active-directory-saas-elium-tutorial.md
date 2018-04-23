@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2018
+ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 6a72cc1829b7b8a5c7c588543d0b5c91f9f36bf5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2c41b2c297d8d89554950e8c77201ff5bedf743e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>教程：Azure Active Directory 与 Elium 集成
 
@@ -117,7 +117,7 @@ ms.lasthandoff: 04/05/2018
     在“登录 URL”文本框中，使用以下模式键入 URL：` https://<platform-domain>.elium.com/login/saml2/login`
      
     > [!NOTE] 
-    > 这些不是实际值。 从可以在 `https://<platform-domain>/login/saml2/metadata` 中下载的 **SP 元数据文件**获取这些值。本教程稍后将对此做出说明。
+    > 这些不是实际值。 从可以在 `https://<platform-domain>.elium.com/login/saml2/metadata` 中下载的 **SP 元数据文件**获取这些值。本教程稍后将对此做出说明。
 
 5. Elium 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。
 

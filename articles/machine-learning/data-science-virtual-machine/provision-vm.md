@@ -3,26 +3,26 @@ title: 在 Azure 上预配 Windows 数据科学虚拟机 | Microsoft Docs
 description: 在 Azure 上配置和创建数据科学虚拟机，用于进行分析和机器学习。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
-ms.author: bradsev
-ms.openlocfilehash: 9f01ba69f6511a3f9a7f99e379522be3c00554f5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: gokuma
+ms.openlocfilehash: 445b18dee9efa9561ba1274ef59a9a426332d745
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>在 Azure 上预配 Windows 数据科学虚拟机
 Microsoft 数据科学虚拟机是一种 Windows Azure 虚拟机 (VM) 映像，它已预装并配置了多个常用于数据分析和机器学习的热门工具。 这些工具包括：
 
-* [Azure Machine Learning](../preview/index.yml) Workbench
+* [Azure Machine Learning](../service/index.yml) Workbench
 * [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/index) 开发人员版
 * Enthought Python 分发版
 * Jupyter Notebook（使用 R、Python、PySpark 内核）
@@ -192,7 +192,7 @@ Azure Machine Learning Workbench 是一个桌面应用程序和命令行接口�
 以下后续步骤可帮助你继续学习和探索。 
 
 * 单击开始菜单并查看菜单中列出的工具可以浏览数据科研 VM 上的各种数据科研工具。
-* 访问产品的[快速入门和教程页](../preview/index.yml)，了解 Azure 机器学习服务和 Workbench。 
+* 访问产品的[快速入门和教程页](../service/index.yml)，了解 Azure 机器学习服务和 Workbench。 
 * 导航到 **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts**，获取有关在 R 中使用 RevoScaleR 库的示例，该库支持企业级数据分析。  
 * 阅读文章：[数据科研虚拟机的十大功能](http://aka.ms/dsvmtenthings)
 * 通过使用 [Team Data Science Process](../team-data-science-process/index.yml)，了解如何系统性地构建端到端分析解决方案。

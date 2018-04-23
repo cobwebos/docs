@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 18f904a2bac70bce3e1208945a7b94b59f6225f7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0466b0e911736d2e1e7fc50649feda932c3163e5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>创建并管理 Azure SQL 数据库服务器和数据库
 
@@ -46,7 +46,7 @@ Azure 数据库逻辑服务器：
 - 是数据库、弹性池和数据仓库的父资源
 - 为数据库、弹性池和数据仓库提供命名空间
 - 是具有强生存期语义的逻辑容器。也就是说，删除服务器也会随之删除包含的数据库、弹性池和数据仓库
-- 参与 [Azure 基于角色的访问控制 (RBAC)](/active-directory/role-based-access-control-what-is)。也就是说，服务器中的数据库、弹性池和数据库从服务器继承访问权限
+- 参与 [Azure 基于角色的访问控制 (RBAC)](/azure/role-based-access-control/overview)。也就是说，服务器中的数据库、弹性池和数据库从服务器继承访问权限
 - 是位置靠前的数据库、弹性池和数据仓库标识元素，用于管理 Azure 资源（请参阅“数据库和池的 URL 方案”）
 - 并置区域中的资源
 - 为数据库访问提供连接终结点 (<serverName>.database.windows.net)
@@ -79,9 +79,8 @@ Azure 数据库逻辑服务器：
 
 > [!IMPORTANT]
 > 有关如何选择数据库定价层的信息，请参阅[服务层](sql-database-service-tiers.md)。
->
 
-要创建托管实例，请参阅[创建托管实例](sql-database-managed-instance-tutorial-portal.md)
+要创建托管实例，请参阅[创建托管实例](sql-database-managed-instance-create-tutorial-portal.md)
 
 ### <a name="manage-an-existing-sql-server"></a>管理现有 SQL 服务器
 

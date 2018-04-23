@@ -1,25 +1,18 @@
 ---
-title: "Azure 搜索的 Lucene 查询示例 | Microsoft Docs"
-description: "模糊搜索、邻近搜索、术语提升、正则表达式搜索和通配符搜索的 Lucene 查询语法"
-services: search
-documentationcenter: 
+title: Azure 搜索的 Lucene 查询示例 | Microsoft Docs
+description: 模糊搜索、邻近搜索、术语提升、正则表达式搜索和通配符搜索的 Lucene 查询语法
 author: LiamCa
-manager: pablocas
-editor: 
+manager: jlembicz
 tags: Lucene query analyzer syntax
-ms.assetid: 147f360d-a5ce-4d7b-a909-c8b65bfb748c
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: liamca
-ms.openlocfilehash: 1faed621039ecd04064cb074e6b9011418e6ec47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bf033d7549f3a1213d7a2b2c3694ae7415643eb
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>在 Azure 搜索中生成查询的 Lucene 查询语法示例
 为 Azure 搜索构建查询时，可使用默认的[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)或备用的 [Azure 搜索中的 Lucene 查询分析器](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)。 Lucene 查询分析程序支持更复杂的查询构造，如字段范围查询、模糊搜索、邻近搜索、字词提升和正则表达式搜索。

@@ -15,17 +15,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: bd2b65c31e7736346957dde4edfb7c32894c833e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 02849fb63a8d696fa4296f5ec885a2d24f9adca1
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>将本地目录与 Azure Active Directory 集成
 Azure AD Connect 会将本地目录与 Azure Active Directory 集成。 这样，便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。 本主题介绍计划、部署和操作步骤。 其中统合了与这些操作相关的主题的链接。
 
 > [!IMPORTANT]
 > [Azure AD Connect 是连接本地目录与 Azure AD 和 Office 365 的最佳方式。这是从 Windows Azure Active Directory Sync (DirSync) 或 Azure AD Sync 升级到 Azure AD Connect 的最佳时机，因为这些工具现已弃用，从 2017 年 4 月 13 日起不再受支持。](active-directory-aadconnect-dirsync-deprecated.md)  此外：
+
+
+
 > 
 > - 将用户同步到 Azure AD 是一项**免费功能**，不需要客户付费购买任何订阅。
 >- 同步的用户**不会自动获得***任何*许可证。 管理员仍对许可证分配拥有总体控制权。 
@@ -51,6 +54,10 @@ Azure Active Directory Connect 由三个主要组件构成：同步服务、可�
 * 运行状况监视 - Azure AD Connect Health 提供可靠监视，并在 Azure 门户中提供一个中心位置用于查看此活动。 有关更多信息，请参阅 [Azure Active Directory Connect Health](../connect-health/active-directory-aadconnect-health.md)。
 
 ## <a name="install-azure-ad-connect"></a>安装 Azure AD Connect
+
+> [!IMPORTANT]
+> Microsoft 不支持在正式记录的这些操作之外修改或操作 Azure AD Connect 同步。 其中的任何操作都可能会导致 Azure AD Connect 同步出现不一致或不受支持状态。因此，Microsoft 无法提供这种部署的技术支持。
+
 可以在 [Microsoft 下载中心](http://go.microsoft.com/fwlink/?LinkId=615771)找到 Azure AD Connect 的下载文件。
 
 | 解决方案 | 方案 |

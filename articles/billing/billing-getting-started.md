@@ -1,11 +1,11 @@
 ---
-title: "防止意外成本，管理计费 - Azure | Microsoft Docs"
-description: "了解如何在 Azure 帐单上避免意外费用。 将成本跟踪和管理功能用于 Microsoft Azure 订阅。"
-services: 
-documentationcenter: 
+title: 防止意外成本，管理计费 - Azure | Microsoft Docs
+description: 了解如何在 Azure 帐单上避免意外费用。 将成本跟踪和管理功能用于 Microsoft Azure 订阅。
+services: ''
+documentationcenter: ''
 author: tonguyen10
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: billing
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: 885dcbc0e0d3d9490d745a07ade5d9dece7ff3d6
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: a13552e36b4c74b6d3165168c727dbcc8a00704e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
@@ -172,7 +172,7 @@ ms.lasthandoff: 01/25/2018
 
 ![Azure 门户中订阅视图中的角色的屏幕截图](./media/billing-getting-started/sub-blade-view.PNG)
 
-如果不是帐户管理员，则其他人可以通过 [Azure Active Directory 基于角色的访问控制](../active-directory/role-based-access-control-configure.md) (RBAC) 授予部分访问权限。 要管理订阅和更改计费信息，请[查找帐户管理员](billing-subscription-transfer.md#whoisaa)，请其执行该任务或请其[将订阅转交给你](billing-subscription-transfer.md)。
+如果不是帐户管理员，则其他人可以通过 [Azure Active Directory 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md) (RBAC) 授予部分访问权限。 要管理订阅和更改计费信息，请[查找帐户管理员](billing-subscription-transfer.md#whoisaa)，请其执行该任务或请其[将订阅转交给你](billing-subscription-transfer.md)。
 
 当帐户管理员不再属于组织，并且需要管理帐单时，请[与支持人员联系](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员

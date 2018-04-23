@@ -11,13 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 90bbcc865f13a1d048ea12fdccd3ca848cf362ba
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 749157d16c1c394b173545dddb8751d58fdcfd56
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 在[相关的 Azure AD B2C 文章](active-directory-b2c-custom-rest-api-netfw.md)中，我们已创建一个无需身份验证即可集成到 Azure Active Directory B2C (Azure AD B2C) 用户旅程的 RESTful 服务 (Web API)。 
 
 本文介绍如何将 HTTP 基本身份验证添加到 RESTful 服务，以便只有经过验证的用户（包括 B2C）可以访问你的 API。 使用 HTTP 基本身份验证在自定义策略中设置用户凭据（应用 ID 和应用机密）。 
@@ -225,7 +228,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 2. 选择“策略密钥”，查看租户中的可用密钥。
 
-3. 选择“添加”。
+3. 选择 **添加** 。
 
 4. 对于“选项”，请选择“手动”。
 
@@ -245,7 +248,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 2. 选择“策略密钥”，查看租户中的可用密钥。
 
-3. 选择“添加”。
+3. 选择 **添加** 。
 
 4. 对于“选项”，请选择“手动”。
 

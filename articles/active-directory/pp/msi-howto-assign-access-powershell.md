@@ -1,11 +1,11 @@
 ---
-title: "如何使用 PowerShell 将 MSI 访问权限分配给 Azure 资源"
-description: "分步说明如何使用 PowerShell 将 MSI 分配给一个资源，将访问权限分配给另一个资源。"
+title: 如何使用 PowerShell 将 MSI 访问权限分配给 Azure 资源
+description: 分步说明如何使用 PowerShell 将 MSI 分配给一个资源，将访问权限分配给另一个资源。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c9f146e829e463fbdaf1bcff8747ffc5dd055ecb
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: ac8cca1e80defca33a879db5d4c160362314931a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-powershell"></a>使用 PowerShell 将托管服务标识 (MSI) 访问权限分配给一个资源
 
@@ -36,10 +36,10 @@ ms.lasthandoff: 02/03/2018
 
 在 Azure 资源（[如 Azure VM](msi-qs-configure-powershell-windows-vm.md)）上启用 MSI 后：
 
-1. 使用 `Login-AzureRmAccount` cmdlet 登录到 Azure。 使用与其下配置了 MSI 的 Azure 订阅关联的帐户：
+1. 使用 `Connect-AzureRmAccount` cmdlet 登录到 Azure。 使用与其下配置了 MSI 的 Azure 订阅关联的帐户：
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 2. 在本示例中，我们将向 Azure VM 提供对存储帐户的访问权限。 首先，我们使用 [Get-AzureRMVM](/powershell/module/azurerm.compute/get-azurermvm) 获取名为“myVM”的 VM 的服务主体，该 VM 在启用 MSI 时创建。 然后，我们使用 [New-AzureRmRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment) 向 VM 提供对名为“myStorageAcct”的存储帐户的“读者”访问权限：
 

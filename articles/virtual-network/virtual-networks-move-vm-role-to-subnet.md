@@ -1,10 +1,10 @@
 ---
-title: "将 VM（经典）或云服务角色实例移动到其他子网 - Azure PowerShell | Microsoft 文档"
-description: "了解如何使用 PowerShell 将 VM（经典）和云服务角色实例移动到其他子网。"
+title: 将 VM（经典）或云服务角色实例移动到其他子网 - Azure PowerShell | Microsoft 文档
+description: 了解如何使用 PowerShell 将 VM（经典）和云服务角色实例移动到其他子网。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: genli
+manager: cshepard
 editor: tysonn
 ms.assetid: de4135c7-dc5b-4ffa-84cc-1b8364b7b427
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2016
-ms.author: jdial
+ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b094f8338394ef2e84cad3070936d715411326a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9fcd217289912f542c28e2d99392e46f1fbe6f4
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>使用 PowerShell 将 VM（经典）和云服务角色实例移动到其他子网
 可以使用 PowerShell 将 VM（经典）从一个子网移动到同一虚拟网络 (VNet) 中的另一个子网。 可以通过编辑 CSCFG 文件（而不是使用 PowerShell）移动角色实例。

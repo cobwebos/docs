@@ -11,13 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.openlocfilehash: f1b9ef9a78715c08c5361e4bab6a31384c5c98d3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fb5c8a48a676a2909cce3c4d126218e48a4c8ce2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>使用客户端证书保护 RESTful 服务
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
 在相关的文章中，我们已[创建一个 RESTful 服务](active-directory-b2c-custom-rest-api-netfw.md)，该服务可与 Azure Active Directory B2C (Azure AD B2C) 交互。
 
 本文介绍如何使用客户端证书来限制对 Azure Web 应用 (RESTful API) 的访问。 此机制称为 TLS 相互身份验证或客户端证书身份验证。 只有包含适当证书的服务（例如 Azure AD B2C）能够访问你的服务。
@@ -57,7 +60,7 @@ ms.lasthandoff: 03/23/2018
 
 2. 若要查看租户中的可用密钥，请选择“策略密钥”。
 
-3. 选择“添加”。  
+3. 选择 **添加** 。  
     此时会打开“创建密钥”窗口。
 
 4. 在“选项”框中，选择“上传”。

@@ -1,28 +1,28 @@
 ---
-title: "使用事件中心集成来自 Azure Key Vault 的日志 | Microsoft Docs"
-description: "本教程提供了使用 Azure 日志集成使 Key Vault 日志可供 SIEM 使用需要执行的步骤"
+title: 使用事件中心集成来自 Azure Key Vault 的日志 | Microsoft Docs
+description: 本教程提供了使用 Azure 日志集成使 Key Vault 日志可供 SIEM 使用需要执行的步骤
 services: security
 author: barclayn
 manager: MBaldwin
 editor: TomShinder
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.topic: article
 ms.date: 02/16/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: e5bd27c94569228693d1a9c80c6e5362b50c4a44
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9b3ae914774d2d6a66c5732f1d63f09926bb48fc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure 日志集成教程：使用事件中心处理 Azure Key Vault 事件
 
 可以使用 Azure 日志集成检索已记录的事件并使其可供安全信息和事件管理 (SIEM) 系统使用。 本教程展示如何使用 Azure 日志集成处理通过 Azure 事件中心获取的日志。
 
 >[!IMPORTANT]
->用于集成 Azure 日志的首选方法是通过使用 SIEM 供应商的 Azure Monitor 连接器并遵循这些[说明](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)。 但是，如果 SIEM 供应商不提供连接到 Azure Monitor 的连接器，你或许可以使用 Azure 日志集成作为临时解决方案（如果你的 SIEM 受 Azure 日志集成支持），直到有此类连接器可用时。
+>用于集成 Azure 日志的首选方法是通过使用 SIEM 供应商的 Azure Monitor 连接器并遵循这些[说明](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)。 但是，如果你的 SIEM 供应商未提供 Azure Monitor 连接器，你或许可以使用 Azure 日志集成作为临时解决方案（如果你的 SIEM 受 Azure 日志集成支持），直到有此类连接器可用。
 
  
 应使用本教程，按照以下示例步骤操作，了解 Azure 日志集成和事件中心如何协同工作以及每个步骤如何支持该解决方案。 然后可使用此处学到的内容，创建自己的步骤来满足公司的独特需求。
@@ -58,7 +58,7 @@ ms.lasthandoff: 02/21/2018
    a. 使用远程桌面连接到步骤 2 中提到的系统。   
    b. 将 Azure 日志集成安装程序复制到该系统。 可以[下载安装文件](https://www.microsoft.com/download/details.aspx?id=53324)。   
    c. 启动安装程序，并接受 Microsoft 软件许可条款。   
-   d.单击“下一步”。 如果你将提供遥测信息，请使复选框保持选中状态。 如果不希望向 Microsoft 发送使用情况信息，请清除复选框。
+   d. 如果你将提供遥测信息，请使复选框保持选中状态。 如果不希望向 Microsoft 发送使用情况信息，请清除复选框。
    
    有关 Azure 日志集成以及如何安装它的详细信息，请参阅[包含 Azure 诊断日志记录和 Windows 事件转发功能的 Azure 日志集成](security-azure-log-integration-get-started.md)。
 
@@ -81,14 +81,14 @@ ms.lasthandoff: 02/21/2018
 
    ![已加载的模块列表](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
-3. 输入 `Login-AzureRmAccount` 命令。 在登录窗口中，输入将用于本教程的订阅的凭据信息。
+3. 输入 `Connect-AzureRmAccount` 命令。 在登录窗口中，输入将用于本教程的订阅的凭据信息。
 
    >[!NOTE]
    >如果这是你首次从此计算机登录到 Azure，将会看到一条有关允许 Microsoft 收集 PowerShell 使用情况数据的消息。 建议启用此数据收集，因为该数据将用来改进 Azure PowerShell。
 
 4. 在身份验证成功后，你将完成登录并看到以下屏幕截图中的信息。 请记下订阅 ID 和订阅名称，因为将需要使用它们完成后面的步骤。
 
-   ![PowerShell 窗口](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
+   ![PowerShell 窗口](./media/security-azure-log-integration-keyvault-eventhub/Connect-AzureRmAccount.png)
 5. 创建变量来存储后面将使用的值。 输入以下每个 PowerShell 行。 可能需要调整值来匹配你的环境。
     - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’```（你的订阅名称可能不同。 可以在前面命令的输出中看到该名称。）
     - ```$location = 'West US'```（此变量将用来传递应当在其中创建资源的位置。 可以将此变量更改为你选择的任何位置。）

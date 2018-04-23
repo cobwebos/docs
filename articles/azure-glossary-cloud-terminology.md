@@ -1,12 +1,12 @@
 ---
-title: "Azure 词汇表 - Azure 字典 | Microsoft Docs"
-description: "使用 Azure 词汇表来理解 Azure 平台上的云术语。 这份简短的 Azure 字典提供 Azure 通用云术语的定义。"
-keywords: "Azure 字典, 云术语, Azure 词汇表, 术语定义, 云名词"
+title: Azure 词汇表 - Azure 字典 | Microsoft Docs
+description: 使用 Azure 词汇表来理解 Azure 平台上的云术语。 这份简短的 Azure 字典提供 Azure 通用云术语的定义。
+keywords: Azure 字典, 云术语, Azure 词汇表, 术语定义, 云名词
 services: na
 documentationcenter: na
 author: MonicaRush
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: d7ac12f7-24b5-4bcd-9e4d-3d76fbd8d297
 ms.service: multiple
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: fd20405c284161a1a66493056f21c147efa632cb
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 953320734c1601c411144bd7a6496716a65e452e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -111,7 +111,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 
 ## <a name="role"></a>role
 用于控制可分配给用户、组和服务的访问权限的方式。 角色能够对 Azure 资源执行创建、管理和读取等操作。  
-请参阅 [RBAC：内置角色](active-directory/role-based-access-built-in-roles.md)
+请参阅 [RBAC：内置角色](role-based-access-control/built-in-roles.md)
 
 ## <a name="sla"></a>服务级别协议 (SLA)
 用于描述 Microsoft 在运行时间和连接性方面所做承诺的协议。 每个 Azure 服务都有具体的 SLA。  

@@ -1189,7 +1189,7 @@ Terraform </a>
                                         <li>
                                             <a href="/azure/monitoring-and-diagnostics/">
                                                 <img src="media/index/AzureMonitoring.svg" alt="" />
-                                                <p>Azure 监视器</p>
+                                                <p>Azure Monitor</p>
                                             </a>
                                         </li>
                                         <li>
@@ -3590,7 +3590,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure 监视器</h3>
+                                                    <h3>Azure Monitor</h3>
                                                     <p>针对任何 Azure 资源的高精度和实时监视数据</p>
                                                 </div>
                                             </div>

@@ -1,8 +1,23 @@
+---
+title: include 文件
+description: include 文件
+services: virtual-network
+author: jimdial
+ms.service: virtual-network
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: jdial
+ms.custom: include file
+ms.openlocfilehash: f1dc43b6fea4ebfb47439ec64b573cc471614d98
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/18/2018
+---
 > [!div class="op_single_selector"]
 > * [Azure 门户](../articles/virtual-network/virtual-network-multiple-ip-addresses-portal.md)
 > * [PowerShell](../articles/virtual-network/virtual-network-multiple-ip-addresses-powershell.md)
 > * [Azure CLI](../articles/virtual-network/virtual-network-multiple-ip-addresses-cli.md)
-> * [模板](../articles/virtual-network/virtual-network-multiple-ip-addresses-template.md)
 >
 
 在一个 Azure 虚拟机 (VM) 上可以附加一个或多个网络接口 (NIC)。 可为任何 NIC 分配一个或多个静态或动态的公共与专用 IP 地址。 为 VM 分配多个 IP 地址可实现以下功能：

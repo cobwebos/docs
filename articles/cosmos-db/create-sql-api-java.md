@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 99b400d17164881f75cb8313c939d713610c221e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5be05ebd201796707934eac665793dd2c1dc8f2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB：使用 Java 和 Azure 门户创建文档数据库
 
@@ -54,43 +54,11 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 <a id="add-sample-data"></a>
 ## <a name="add-sample-data"></a>添加示例数据
 
-现在可以使用数据资源管理器将数据添加到新集合。
-
-1. 展开“项”集合，依次单击“文档” > “新建文档”。
-
-   ![在 Azure 门户的数据资源管理器中创建新文档](./media/create-sql-api-java/azure-cosmosdb-data-explorer-new-document.png)
-  
-2. 现在，采用以下结构将文档添加到集合中，再单击“保存”。 使用代码框中的“复制”按钮，将 json 复制到剪贴板。
-
-     ```json
-     {
-         "id": "1",
-         "category": "personal",
-         "name": "groceries",
-         "description": "Pick up apples and strawberries.",
-         "isComplete": false
-     }
-     ```
-
-    ![通过复制添加 json 数据，然后在 Azure 门户的数据资源管理器中单击“保存”](./media/create-sql-api-java/azure-cosmosdb-data-explorer-save-document.png)
-
-3.  再创建并保存一个文档，将 `id` 更改为 2，并将其他属性更改为自己认为适当的值。 新文档可以具有所需的任何结构，因为 Azure Cosmos DB 不对数据施加任何架构。
+[!INCLUDE [cosmos-db-create-sql-api-add-sample-data](../../includes/cosmos-db-create-sql-api-add-sample-data.md)]
 
 ## <a name="query-your-data"></a>查询数据
 
-现在可以在数据资源管理器中使用查询来检索和筛选数据。
-
-1. 请注意，查询默认设置为 `SELECT * FROM c`。 此默认查询检索并显示集合中的所有文档。 
-
-    ![数据资源管理器中的默认查询是“SELECT * FROM c”](./media/create-sql-api-java/azure-cosmosdb-data-explorer-query.png)
-
-2. 在“文档”选项卡上，单击“编辑筛选器”按钮，将 `ORDER BY c._ts DESC` 添加到查询谓词框中，再单击“应用筛选器”，从而更改查询。
-
-    ![添加“ORDER BY c._ts DESC”并单击“应用筛选器”，更改默认查询](./media/create-sql-api-java/azure-cosmosdb-data-explorer-edit-query.png)
-
-此修改后的查询根据文档的时间戳按降序列出文档，所以现在最先列出的是第二个文档。 如果熟悉 SQL 语法，可以在此框中输入任何受支持的 [SQL 查询](sql-api-sql-query.md)。 
-
-数据资源管理器中的工作到此结束。 继续处理代码前，请注意，还可以使用数据资源管理器创建存储过程、UDF 和触发器，实现服务器端业务逻辑和缩放吞吐量。 数据资源管理器公开 API 中提供的所有内置编程数据访问，但可以使用它轻松访问 Azure 门户中的数据。
+[!INCLUDE [cosmos-db-create-sql-api-query-data](../../includes/cosmos-db-create-sql-api-query-data.md)]
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 

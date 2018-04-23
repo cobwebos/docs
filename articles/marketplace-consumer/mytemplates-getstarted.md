@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mbaldwin
-ms.openlocfilehash: e3a0bbe75177ac25a0aeff89d171dfe88bd0880f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c716f54a1361d41dbad00e2e45562d5fbf8fd6ca
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-private-templates-on-the-azure-portal"></a>Azure 门户中的专用模板入门
 [Azure 资源管理器](../azure-resource-manager/resource-group-authoring-templates.md)模板是声明性模板，用于定义部署。 可以定义要为解决方案部署的资源，以及指定可让用户根据不同的环境输入值的参数和变量。 模板中包含可用于构造部署值的 JSON 和表达式。
@@ -103,7 +103,7 @@ ms.lasthandoff: 03/16/2018
 ![部署模板](media/deploy-template-portal1b.png)
 
 ## <a name="share-a-template-resource"></a>共享模板资源
-可以与同事共享 **模板** 资源。 共享行为类似于 [Azure 上的任何资源的角色分配](../active-directory/role-based-access-control-configure.md)。 **模板** 所有者向可以与模板资源进行交互的其他用户提供权限。 你与之共享**模板**的用户或用户组能够看到资源管理器模板及其库属性。
+可以与同事共享 **模板** 资源。 共享行为类似于 [Azure 上的任何资源的角色分配](../role-based-access-control/role-assignments-portal.md)。 **模板** 所有者向可以与模板资源进行交互的其他用户提供权限。 你与之共享**模板**的用户或用户组能够看到资源管理器模板及其库属性。
 
 ### <a name="access-control-for-the-microsoftgallery-resources"></a>对 Microsoft.Gallery 资源的访问控制
 | 角色 | 权限 |

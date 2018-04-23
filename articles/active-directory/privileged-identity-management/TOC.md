@@ -5,7 +5,7 @@
 ## [适用于 Azure 资源的 PIM](azure-pim-resource-rbac.md)
 ## [PIM 审批工作流](azure-ad-pim-approval-workflow.md)
 ## [角色](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Privileged Identity Management 审批工作流](azure-ad-pim-approval-workflow.md)
+
 
 
 # 入门

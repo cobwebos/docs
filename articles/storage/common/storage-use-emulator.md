@@ -1,8 +1,8 @@
 ---
-title: "使用 Azure 存储模拟器进行开发和测试 | Microsoft Docs"
-description: "Azure 存储模拟器为开发和测试 Azure 存储应用程序提供了免费的本地开发环境。 了解如何对请求进行身份验证、如何从应用程序连接到模拟器以及如何使用命令行工具。"
+title: 使用 Azure 存储模拟器进行开发和测试 | Microsoft Docs
+description: Azure 存储模拟器为开发和测试 Azure 存储应用程序提供了免费的本地开发环境。 了解如何对请求进行身份验证、如何从应用程序连接到模拟器以及如何使用命令行工具。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: tamram
-ms.openlocfilehash: 13aee7bbbe58c0a4183eddc0881aaed8cbebd956
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f98b8c3a8217b60fd0ba3754ac4ba72e09039f24
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
@@ -27,7 +27,7 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 ## <a name="get-the-storage-emulator"></a>获取存储模拟器
 存储模拟器作为 [Microsoft Azure SDK](https://azure.microsoft.com/downloads/) 的一部分提供。 此外，还可使用[独立安装程序](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)（直接下载）来安装存储模拟器。 若要安装存储模拟器，必须在计算机上具有管理权限。
 
-存储模拟器目前仅在 Windows 上运行。 若考虑使用 Linux 的存储模拟器，一个选择是使用由社区维护的开源存储模拟器 [Azurite](https://github.com/arafato/azurite)。
+存储模拟器目前仅在 Windows 上运行。 若考虑使用 Linux 的存储模拟器，一个选择是使用由社区维护的开源存储模拟器 [Azurite](https://github.com/azure/azurite)。
 
 > [!NOTE]
 > 在一个版本的存储模拟器中创建的数据不保证在使用不同版本时可以访问。 如果需要长期保存数据，建议将该数据存储在 Azure 存储帐户中，而不是在存储模拟器中。

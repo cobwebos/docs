@@ -1,24 +1,24 @@
 ---
-title: "IoT DevKit 到云：将 IoT DevKit AZ3166 连接到 Azure IoT 中心 | Microsoft Docs"
-description: "在本教程中了解如何设置 IoT DevKit AZ3166 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。"
+title: IoT DevKit 到云：将 IoT DevKit AZ3166 连接到 Azure IoT 中心 | Microsoft Docs
+description: 在本教程中了解如何设置 IoT DevKit AZ3166 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。
 services: iot-hub
-documentationcenter: 
-author: shizn
+documentationcenter: ''
+author: rangv
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.service: iot-hub
 ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/20/2017
-ms.author: xshi
-ms.openlocfilehash: 1ad9200376bc4959e7572ae8d5be11b278a42cc0
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.date: 4/11/2018
+ms.author: rangv
+ms.openlocfilehash: 3d83875171c7c097bac5a70852f049a6ce4219b3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>将 IoT DevKit AZ3166 连接到云中的 Azure IoT 中心
 

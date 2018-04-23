@@ -1,11 +1,11 @@
 ---
-title: "Azure 虚拟机安全最佳做法"
-description: "本文提供了可用于 Azure 中虚拟机的各项最佳安全做法。"
+title: Azure 虚拟机安全最佳做法
+description: 本文提供了可用于 Azure 中虚拟机的各项最佳安全做法。
 services: security
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 5e757abe-16f6-41d5-b1be-e647100036d8
 ms.service: security
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 6541d09d7f1a7e85333f54797dba7db79328e9de
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ddddf72d1ded0fb7952a641c287a4a5696e3aaef
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM 安全最佳做法
 
@@ -49,14 +49,14 @@ ms.lasthandoff: 01/09/2018
 
 保护 VM 安全的第一步是确保只有授权用户才能设置新的 VM。 可使用 [Azure 策略](../azure-policy/azure-policy-introduction.md)建立组织中的资源约定、创建自定义策略和将策略应用到资源，例如[资源组](../azure-resource-manager/resource-group-overview.md)。
 
-属于该资源组的 VM 自然而然将继承该组的策略。 尽管我们建议使用此方法来管理 VM，但也可使用[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 来控制对单个 VM 策略的访问。
+属于该资源组的 VM 自然而然将继承该组的策略。 尽管我们建议使用此方法来管理 VM，但也可使用[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 来控制对单个 VM 策略的访问。
 
 启用 Resource Manager 策略和 RBAC 来控制 VM 访问有助于提高 VM 的整体安全性。 建议将具有相同生命周期的 VM 合并到同一个资源组中。 使用资源组可以部署和监视资源，并统计资源的计费成本。 若要让用户访问和设置 VM，可使用[最低特权方法](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)。 向用户分配特权时，请规划使用以下内置 Azure 角色：
 
-- [虚拟机参与者](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)：可管理 VM，但无法管理虚拟机连接的虚拟网络或存储帐户。
-- [经典虚拟机参与者](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor)：可管理使用经典部署模型创建的 VM，但无法管理这些 VM 连接到的虚拟网络或存储帐户。
-- [安全管理员](../active-directory/role-based-access-built-in-roles.md#security-manager)：可管理安全组件、安全策略和 VM。
-- [开发测试实验室用户](../active-directory/role-based-access-built-in-roles.md#devtest-labs-user)：可查看所有内容，以及连接、启动、重新启动和关闭 VM。
+- [虚拟机参与者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)：可管理 VM，但无法管理虚拟机连接的虚拟网络或存储帐户。
+- [经典虚拟机参与者](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor)：可管理使用经典部署模型创建的 VM，但无法管理这些 VM 连接到的虚拟网络或存储帐户。
+- [安全管理员](../role-based-access-control/built-in-roles.md#security-manager)：可管理安全组件、安全策略和 VM。
+- [开发测试实验室用户](../role-based-access-control/built-in-roles.md#devtest-labs-user)：可查看所有内容，以及连接、启动、重新启动和关闭 VM。
 
 不要在管理员之间共享帐户和密码，或在多个用户帐户或服务之间重复使用密码，特别是用于社交媒体或其他非管理活动的密码。 最好是使用 [Azure 资源管理器](../azure-resource-manager/resource-group-authoring-templates.md)模板来安全设置 VM。 通过此方法可以增强部署选项并在整个部署中实施安全设置。
 

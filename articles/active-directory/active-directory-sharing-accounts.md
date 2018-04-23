@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure AD 共享帐户 | Microsoft Docs"
-description: "介绍组织如何使用 Azure Active Directory 来安全共享本地应用和使用者云服务的帐户。"
+title: 使用 Azure AD 共享帐户 | Microsoft Docs
+description: 介绍组织如何使用 Azure Active Directory 来安全共享本地应用和使用者云服务的帐户。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: e2d77104-d978-46a3-bfea-03ffdf3b61e6
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 11/13/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 3b6a83d91ec5d8466669655d6c3bd7ae7b42dd2f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e5c0687a2d0dd9bb42f566daf3835c1c3130054e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共享帐户
 ## <a name="overview"></a>概述
@@ -69,7 +69,7 @@ Azure AD 支持任何 Enterprise Mobility Suite (EMS)、高级或基本许可用
 * 使用[基于组的分配](active-directory-accessmanagement-group-saasapps.md)，并选择输入共享凭据的选项
 * 可选：在某些应用程序（例如 Facebook、Twitter 或 LinkedIn）中，可启用 [Azure AD 自动轮换密码](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx)选项
 
-还可使用多重身份验证 (MFA) 提高共享帐户的安全性（深入了解[使用 Azure AD 保护应用程序](../multi-factor-authentication/multi-factor-authentication-get-started.md)），并可使用 [Azure AD 自助服务](active-directory-accessmanagement-self-service-group-management.md)“组管理”来委派有关谁有权访问应用程序的管理权。
+还可使用多重身份验证 (MFA) 提高共享帐户的安全性（深入了解[使用 Azure AD 保护应用程序](authentication/concept-mfa-whichversion.md)），并可使用 [Azure AD 自助服务](active-directory-accessmanagement-self-service-group-management.md)“组管理”来委派有关谁有权访问应用程序的管理权。
 
 ## <a name="related-articles"></a>相关文章
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)

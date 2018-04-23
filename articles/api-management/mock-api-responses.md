@@ -1,11 +1,11 @@
 ---
-title: "教程：使用 Azure 门户模拟 API 响应 | Microsoft Docs"
-description: "本教程介绍如何使用 API 管理 (APIM) 对 API 设置一个策略，使该 API 返回模拟响应。 当后端不可用于发送实际响应时，开发人员可以使用此方法继续实现和测试 API 管理实例。"
+title: 教程：使用 Azure 门户模拟 API 响应 | Microsoft Docs
+description: 本教程介绍如何使用 API 管理 (APIM) 对 API 设置一个策略，使该 API 返回模拟响应。 当后端不可用于发送实际响应时，开发人员可以使用此方法继续实现和测试 API 管理实例。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: e485071b026c52eb23532639546ad475fc92cde3
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: f3209edb23577d656e228aa0d75d852f35cd93ef
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="mock-api-responses"></a>模拟 API 响应
 
@@ -41,8 +41,6 @@ ms.lasthandoff: 12/04/2017
 
 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
-
 ## <a name="create-a-test-api"></a>创建测试 API 
 
 本部分中的步骤说明如何创建不带后端的空白 API。 此外，说明如何将某个操作添加到该 API。 完成本部分中的步骤之后调用该操作会生成错误。 完成“启用响应模拟”部分中的步骤后，不会出现任何错误。
@@ -52,11 +50,11 @@ ms.lasthandoff: 12/04/2017
 3. 从列表中选择“空白 API”。
 4. 输入“测试 API”作为“显示名称”。
 5. 输入“无限制”作为“产品”。
-6. 选择“创建” 。
+6. 选择**创建**。
 
 ## <a name="add-an-operation-to-the-test-api"></a>将操作添加到测试 API
 
-1. 选择在上一步骤中创建的 API。
+1. 选择上一步中创建的 API。
 2. 单击“+ 添加操作”。
 
     ![模拟操作响应](./media/mock-api-responses/mock-api-responses02.png)

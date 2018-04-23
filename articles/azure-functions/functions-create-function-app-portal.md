@@ -1,13 +1,13 @@
 ---
-title: "通过 Azure 门户创建 Function App | Microsoft Docs"
-description: "通过门户在 Azure 应用服务中创建新的 Function App。"
+title: 通过 Azure 门户创建 Function App | Microsoft Docs
+description: 通过门户在 Azure 应用服务中创建新的 Function App。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: quickstart
@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 4f9882ebc86b8119e6e683c7442ee3448a8d111b
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 4716d29a7b8c0830e2311398f033f8358ef24529
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>通过 Azure 门户创建 Function App
 
 Azure Function App 使用 Azure 应用服务基础结构。 本主题演示如何在 Azure 门户中创建 Function App。 Function App 是托管各个函数执行的容器。 如果在应用服务托管计划中创建 Function App，则 Function App 可以使用应用服务的所有功能。
 
-## <a name="create-a-function-app"></a>创建 Function App
+## <a name="create-a-function-app"></a>创建函数应用
 
 [!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -51,7 +51,7 @@ Azure Functions 有两个不同的服务计划：消耗量计划和应用服务�
 >[!NOTE]
 >使用消耗托管计划时，函数代码和绑定配置文件存储在主存储帐户的 Azure 文件存储中。 删除主存储帐户时，此内容将随之删除且无法恢复。
 
-若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#introducing-the-azure-storage-services)。 
+若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#azure-storage-services)。 
 
 ## <a name="next-steps"></a>后续步骤
 

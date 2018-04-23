@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 2b9ed5b3374c98740923790dac90cb1eb2f065d8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1e258473614e01ca35eaa5970d02544844da6972
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>如何将 Azure 订阅关联或添加到 Azure Active Directory
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 03/16/2018
 2. 单击“更改目录”。
 
     ![显示“更改目录”按钮的屏幕截图](./media/active-directory-how-subscriptions-associated-directory/edit-directory-button.PNG)
-3. 查看警告。 订阅目录更改后，所有已分配访问权限的[基于角色的访问控制 (RBAC)](role-based-access-control-configure.md) 用户和所有订阅管理员都会失去访问权限。
+3. 查看警告。 订阅目录更改后，所有已分配访问权限的[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 用户和所有订阅管理员都会失去访问权限。
 4. 选择目录。
 
     ![显示更改目录 UI 的屏幕截图](./media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.PNG)
@@ -60,7 +60,7 @@ ms.lasthandoff: 03/16/2018
 
 * 若要详细了解如何创建免费的全新 Azure AD 目录，请参阅[如何获取 Azure Active Directory 租户](develop/active-directory-howto-tenant.md)
 * 若要详细了解如何转让 Azure 订阅的账单所有权，请参阅[将 Azure 订阅所有权转让给其他帐户](../billing/billing-subscription-transfer.md)
-* 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅 [了解 Azure 中的资源访问权限](active-directory-understanding-resource-access.md)
+* 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅 [了解 Azure 中的资源访问权限](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * 有关如何在 Azure AD 中分配角色的详细信息，请参阅 [在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles-azure-portal.md)
 
 <!--Image references-->

@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 自动化中的 runbook 收集 Log Analytics 数据 | Microsoft Docs"
-description: "分步教程，逐步讲解如何在 Azure 自动化中创建 runbook，将数据收集到 OMS 存储库，供 Log Analytics 进行分析。"
+title: 使用 Azure 自动化中的 runbook 收集 Log Analytics 数据 | Microsoft Docs
+description: 分步教程，逐步讲解如何在 Azure 自动化中创建 runbook，将数据收集到 OMS 存储库，供 Log Analytics 进行分析。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: operations-management-suite
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 59f674c9c6404da7f5384539189f41a4ba1a939a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0784e2317fbc98561b486547654ca27bb30e76c3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>使用 Azure 自动化 runbook 收集 Log Analytics 中的数据
 可以从各种源中收集 Log Analytics 中的大量数据，包括代理上的[数据源](../log-analytics/log-analytics-data-sources.md)以及[从 Azure 中收集的数据](../log-analytics/log-analytics-azure-storage.md)。  尽管某些情况下，需要收集无法通过这些标准源访问的数据。  这时，可以使用 [HTTP 数据收集器 API](../log-analytics/log-analytics-data-collector-api.md) 将数据从任何 REST API 客户端写入到 Log Analytics。  一种执行此数据收集的常用方法是使用 Azure 自动化中的 runbook。   
@@ -66,7 +66,7 @@ ms.lasthandoff: 10/11/2017
 | 属性 | 工作区 ID 值 | 工作区密钥值 |
 |:--|:--|:--|
 | 名称 | WorkspaceId | WorkspaceKey |
-| 类型 | String | String |
+| Type | String | String |
 | 值 | 粘贴在 Log Analytics 工作区的“工作区 ID”中。 | 粘贴在 Log Analytics 工作区的“主密钥”或“辅助密钥”中。 |
 | 加密 | 否 | 是 |
 
@@ -97,7 +97,7 @@ Azure 自动化在门户中具有编辑器，可在其中编辑和测试 runbook
         # Code copied from the runbook AzureAutomationTutorial.
         $connectionName = "AzureRunAsConnection"
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
-        Add-AzureRmAccount `
+        Connect-AzureRmAccount `
             -ServicePrincipal `
             -TenantId $servicePrincipalConnection.TenantId `
             -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -171,7 +171,7 @@ Azure 自动化包含用于[测试 runbook](../automation/automation-testing-run
 
 1. 在 runbook 的属性中，在“Runbook 设置”下选择“日志记录和跟踪”。
 2. 将“日志详细记录”的设置更改为“开”。
-3. 单击“保存” 。
+3. 单击“ **保存**”。
 
 ## <a name="8-schedule-runbook"></a>8.计划 Runbook
 启动用于收集监视数据的 runbook，其最常见的方式是将其安排为自动运行。  具体方法是创建 [Azure 自动化中的计划](../automation/automation-schedules.md)，并将其附加到 runbook。
@@ -194,7 +194,7 @@ Azure 自动化包含用于[测试 runbook](../automation/automation-testing-run
 
 6. 单击“配置参数和运行设置”。
 7. 填写“ResourceGroupName”和“AutomationAccountName”的值。
-8. 单击 **“确定”**。 
+8. 单击“确定”。 
 
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9.验证 runbook 是否按计划启动
 每次启动 runbook，都会[创建一个作业](../automation/automation-runbook-execution.md)并记录任何输出。  实际上，这些正是 runbook 在收集的作业。  通过在计划启动时间已过去后，检查 runbook 作业，可以验证 runbook 是否按预期启动。

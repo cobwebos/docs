@@ -1,9 +1,9 @@
 ---
-title: "在组织中启用 Microsoft Windows Hello 企业版 | Microsoft 文档"
-description: "在组织中启用 Microsoft Passport 的部署说明。"
+title: 在组织中启用 Microsoft Windows Hello 企业版 | Microsoft 文档
+description: 在组织中启用 Microsoft Passport 的部署说明。
 services: active-directory
-documentationcenter: 
-keywords: "配置 Microsoft Passport、Microsoft Windows Hello for Business 部署"
+documentationcenter: ''
+keywords: 配置 Microsoft Passport、Microsoft Windows Hello for Business 部署
 author: MarkusVi
 manager: mtillman
 tags: azure-classic-portal
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.openlocfilehash: 0aa16e3466b36b6d1d83308cf37623aa15d61fcb
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/14/2018
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>在组织中启用 Microsoft Windows Hello for Business
 在[将已加入域的 Windows 10 设备与 Azure Active Directory 相连](active-directory-azureadjoin-devices-group-policy.md)后，执行以下操作在组织中启用 Microsoft Windows Hello for Business：
@@ -90,7 +90,7 @@ ms.lasthandoff: 01/16/2018
    
     c. 显示“身份验证方法”时，选择“基于证书”。
    
-    d.单击“下一步”。 单击“资源组名称” 的 Azure 数据工厂。
+    d. 单击“资源组名称” 的 Azure 数据工厂。
 6. 在“摘要”对话框中，单击“下一步”。
 7. 在“完成”对话框中，单击“关闭”。
 8. 在顶部工具栏中，单击“部署”。
