@@ -3,22 +3,21 @@ title: 如何通过 Java 使用 Azure 表存储或 Azure Cosmos DB 表 API | Mic
 description: 使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。
 services: cosmos-db
 documentationcenter: java
-author: mimig1
-manager: jhubbard
-editor: tysonn
+author: SnehaGunda
+manager: kfile
 ms.assetid: 45145189-e67f-4ca6-b15d-43af7bfd3f97
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 03/20/2018
-ms.author: mimig
-ms.openlocfilehash: b11faf56ac700399fc411c7feb9910ada355e952
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 04/05/2018
+ms.author: sngun
+ms.openlocfilehash: 4ac25fd9e1d7233546b34da89eb1bcaf37f6f38b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>如何通过 Java 使用 Azure 表存储或 Azure Cosmos DB 表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -31,9 +30,14 @@ ms.lasthandoff: 03/28/2018
 > SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅[用于 Android 的 Azure 存储 SDK][Azure Storage SDK for Android]。
 >
 
-[!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+## <a name="create-an-azure-service-account"></a>创建 Azure 服务帐户
+[!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+### <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
+[!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
+
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>创建 Azure Cosmos DB 表 API 帐户
+[!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-java-application"></a>创建 Java 应用程序
 在本指南中，将使用存储功能，这些功能可在本地 Java 应用程序中运行，或通过 Azure 的 Web 角色或辅助角色中运行的代码运行。

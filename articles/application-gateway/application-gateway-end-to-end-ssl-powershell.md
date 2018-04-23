@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/27/2018
 ms.author: victorh
-ms.openlocfilehash: f4552960cf16e8f7cb89868a03e4b4699eba2540
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 08d31bb15b7bd710a51858f2100fb52219314673
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>使用 PowerShell 通过应用程序网关配置端到端 SSL
 
@@ -31,7 +31,7 @@ Azure 应用程序网关支持对流量进行端到端加密。 应用程序网�
 
 ![方案图像][scenario]
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 在此方案中，可学习如何通过 PowerShell 使用端到端 SSL 创建应用程序网关。
 
@@ -58,7 +58,7 @@ Azure 应用程序网关支持对流量进行端到端加密。 应用程序网�
    1. 登录到 Azure 帐户。
 
    ```powershell
-   Login-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 

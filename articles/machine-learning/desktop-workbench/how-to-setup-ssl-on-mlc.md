@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 01/24/2018
 ms.openlocfilehash: 444803eeb77e79a8bfe3271ddf27bd428042c875
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="enable-ssl-on-an-azure-machine-learning-compute-mlc-cluster"></a>在 Azure 机器学习计算 (MLC) 群集上启用 SSL 
 

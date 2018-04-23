@@ -1,8 +1,8 @@
 ---
-title: "创建在 Spark 群集上运行的 Scala 应用 — Azure HDInsight | Microsoft Docs"
-description: "使用 Apache Maven 作为生成系统，并使用 IntelliJ IDEA 提供的适用于 Scala 的现有 Maven 原型，创建使用 Scala 编写的 Spark 应用程序。"
+title: 创建在 Spark 群集上运行的 Scala 应用 — Azure HDInsight | Microsoft Docs
+description: 使用 Apache Maven 作为生成系统，并使用 IntelliJ IDEA 提供的适用于 Scala 的现有 Maven 原型，创建使用 Scala 编写的 Spark 应用程序。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: b2467a40-a340-4b80-bb00-f2c3339db57b
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 24becbf5f539ac031d6f5b217a4c5a6b59f572f8
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: d64d60112641992a5a56ee5d129e7cbe754bde9d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-scala-maven-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>创建要在 HDInsight 上的 Apache Spark 群集中运行的 Scala Maven 应用程序
 
@@ -42,7 +40,7 @@ ms.lasthandoff: 11/29/2017
 * Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 * Oracle Java 开发工具包。 可以从[此处](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)安装。
-* Java IDE。 本文使用 IntelliJ IDEA 15.0.1。 可以从[此处](https://www.jetbrains.com/idea/download/)安装。
+* Java IDE。 本文使用 IntelliJ IDEA 15.0.1。 可从[此处](https://www.jetbrains.com/idea/download/)进行安装。
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>安装适用于 IntelliJ IDEA 的 Scala 插件
 如果 IntelliJ IDEA 安装未提示启用 Scala 插件，请启动 IntelliJ IDEA 并完成以下步骤来安装该插件：
@@ -64,7 +62,7 @@ ms.lasthandoff: 11/29/2017
    * 指定“项目 SDK”。 单击“新建”并导航到 Java 安装目录，通常是 `C:\Program Files\Java\jdk1.8.0_66`。
    * 选择“从原型创建”选项。
    * 从原型列表中，选择“org.scala-tools.archetypes:scala-archetype-simple”。 这会创建适当的目录结构，并下载所需的默认依赖项来编写 Scala 程序。
-2. 提供 **GroupId**、**ArtifactId** 和 **Version** 的相关值。 单击“下一步”。
+2. 提供 **GroupId**、**ArtifactId** 和 **Version** 的相关值。 单击“资源组名称” 的 Azure 数据工厂。
 3. 在下一个对话框中（在其中指定 Maven 主目录和其他用户设置），接受默认值，并单击“下一步”。
 4. 在最后一个对话框中，指定项目名称和位置，并单击“完成”。
 5. 删除位于 **src\test\scala\com\microsoft\spark\example** 的 **MySpec.Scala** 文件。 应用程序不需要此文件。

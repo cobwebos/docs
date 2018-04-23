@@ -1,13 +1,13 @@
 ---
-title: "配置用于 Azure ExpressRoute Microsoft 对等互连的路由筛选器：PowerShell | Microsoft Docs"
-description: "本文介绍如何使用 PowerShell 配置用于 Microsoft 对等互连的路由筛选器"
+title: 配置用于 Azure ExpressRoute Microsoft 对等互连的路由筛选器：PowerShell | Microsoft Docs
+description: 本文介绍如何使用 PowerShell 配置用于 Microsoft 对等互连的路由筛选器
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: ganesr
-ms.openlocfilehash: 9d953ea68e1e14ae12aa401af935d207f0747e8c
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 6e767166ecf248aa0e7fc16dc21361394e03107d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>配置用于 Microsoft 对等互连的路由筛选器：PowerShell
 > [!div class="op_single_selector"]
-> * [在 Azure 应用服务中创建 Java Web 应用](how-to-routefilter-portal.md)
+> * [Azure 门户](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Azure CLI](how-to-routefilter-cli.md)
 > 
@@ -91,7 +91,7 @@ Dynamics 365 服务、Office 365 服务（例如 Exchange Online、SharePoint On
 使用提升的权限打开 PowerShell 控制台，并连接到帐户。 使用下面的示例来帮助连接：
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 如果有多个 Azure 订阅，请查看该帐户的订阅。

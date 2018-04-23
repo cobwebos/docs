@@ -1,12 +1,12 @@
 ---
-title: "在 Azure 上使用 PySpark 和 Scala 进行 HDInsight Spark 演练 | Microsoft Docs"
-description: "Team Data Science Process 的示例，演练如何在 Azure HDInsight Spark 上使用 PySpark 和 Scala 来执行预测分析。"
+title: 在 Azure 上使用 PySpark 和 Scala 进行 HDInsight Spark 演练 | Microsoft Docs
+description: Team Data Science Process 的示例，演练如何在 Azure HDInsight Spark 上使用 PySpark 和 Scala 来执行预测分析。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.openlocfilehash: 13e681ec8893aa2cbd97f6c4e2ca66be634c9cb9
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 30204d1859cd72e5fb821d2f027b82c4eacaa5fc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="team-data-science-structured-projects-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 中的团队数据科学结构化项目
 
@@ -28,12 +28,12 @@ ms.lasthandoff: 11/03/2017
 
 ## <a name="classify-uci-incomes-in-azure-machine-learning-workbench"></a>在 Azure Machine Learning Workbench 中对 UCI 收入进行分类
 
-有关说明如何在 Azure Machine Learning Workbench 中创建 TDSP 项目的教程，请参阅 [Team Data Science Process 教程：在 Azure Machine Learning Workbench 中对 UCI 收入进行分类](../preview/scenario-tdsp-classifying-us-incomes.md) 
+有关说明如何在 Azure Machine Learning Workbench 中创建 TDSP 项目的教程，请参阅 [Team Data Science Process 教程：在 Azure Machine Learning Workbench 中对 UCI 收入进行分类](../desktop-workbench/scenario-tdsp-classifying-us-incomes.md) 
 
 
 ## <a name="biomedical-entity-recognition-using-natural-language-processing-with-deep-learning"></a>通过深度学习使用自然语言处理进行生物医学实体识别
 
-有关在 Azure Machine Learning Workbench 中使用 TDSP 实例化项目的示例，请参阅[通过深度学习使用自然语言处理进行生物医学实体识别](../preview/scenario-tdsp-biomedical-recognition.md)
+有关在 Azure Machine Learning Workbench 中使用 TDSP 实例化项目的示例，请参阅[通过深度学习使用自然语言处理进行生物医学实体识别](../desktop-workbench/scenario-tdsp-biomedical-recognition.md)
 
 ## <a name="next-steps"></a>后续步骤
 

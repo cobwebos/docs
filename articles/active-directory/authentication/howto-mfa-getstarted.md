@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/24/2017
 ms.author: joflore
-ms.openlocfilehash: e6210cf7ece0aa0cdeec8f95b74910893c22b1bb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e7ae9ad5429c9bdfe8fba2648f8b7a3390705b23
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>云中的 Azure 多重身份验证入门
 本文介绍如何在云中开始使用 Azure 多重身份验证。
@@ -41,7 +41,7 @@ ms.lasthandoff: 04/19/2018
 
 ## <a name="turn-on-two-step-verification-for-users"></a>为用户开启双重验证
 
-执行[如何要求对用户或组进行双重验证](../../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md)中列出的某个过程，开始使用 Azure MFA。 可以选择强制要求所有登录都进行双重验证，也可以创建条件性访问策略，仅在事关重大时要求双重验证。
+执行[如何要求对用户或组进行双重验证](howto-mfa-userstates.md)中列出的某个过程，开始使用 Azure MFA。 可以选择强制要求所有登录都进行双重验证，也可以创建条件性访问策略，仅在事关重大时要求双重验证。
 
 ## <a name="next-steps"></a>后续步骤
 在云中设置 Azure 多重身份验证以后，即可配置和设置部署。 请参阅[配置 Azure 多重身份验证](howto-mfa-mfasettings.md)了解更多详细信息。

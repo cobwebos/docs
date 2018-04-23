@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
 
@@ -502,7 +502,7 @@ Azure AD 中的预配连接器实例与应用实例之间存在一对一的关�
 ## <a name="configuring-user-provisioning-to-azure-active-directory"></a>配置到 Azure Active Directory 的用户预配
 如何配置到 Azure Active Directory 的预配取决于预配要求，下表对此做了详述。
 
-| 方案 | 解决方案 |
+| 场景 | 解决方案 |
 | -------- | -------- |
 | **需要将用户预配到 Active Directory 和 Azure AD** | 使用 **[AAD Connect](connect/active-directory-aadconnect.md)** |
 | **只需将用户预配到 Active Directory** | 使用 **[AAD Connect](connect/active-directory-aadconnect.md)** |

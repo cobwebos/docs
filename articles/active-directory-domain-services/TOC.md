@@ -61,7 +61,7 @@
 # 相关内容
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)
-## [多重身份验证](../multi-factor-authentication/multi-factor-authentication.md)
+## [多重身份验证](../active-directory/authentication/multi-factor-authentication.md)
 
 # 资源
 ## [Azure AD 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory)

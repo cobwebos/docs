@@ -238,6 +238,8 @@
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: 服务移动
               href: service-fabric-cluster-resource-manager-movement-cost.md
+            - name: 自动缩放服务
+              href: service-fabric-cluster-resource-manager-autoscaling.md
     - name: 监视和诊断
       items:
         - name: 监视概述
@@ -261,8 +263,6 @@
           href: service-fabric-health-introduction.md
         - name: 报告运行状况事件
           href: service-fabric-report-health.md
-        - name: 使用 OMS 进行监视
-          href: service-fabric-diagnostics-event-analysis-oms.md
     - name: 与 API 管理集成
       href: service-fabric-api-management-overview.md
 - name: 操作指南
@@ -405,6 +405,10 @@
               href: service-fabric-securing-containers.md
             - name: 设置 Windows 容器的 gMSA
               href: service-fabric-setup-gmsa-for-windows-containers.md
+        - name: 配置定期备份（Azure 上的群集）
+          href: service-fabric-backuprestoreservice-quickstart-azurecluster.md
+        - name: 配置定期备份（独立群集）
+          href: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
         - name: 迁移旧的 Java 应用程序以支持 Maven
           href: service-fabric-migrate-old-javaapp-to-use-maven.md
     - name: 在 Windows/VS 开发环境中工作
@@ -555,6 +559,8 @@
               href: service-fabric-diagnostics-oms-setup.md
             - name: 添加 OMS 代理
               href: service-fabric-diagnostics-oms-agent.md
+            - name: 使用 OMS 进行监视
+              href: service-fabric-diagnostics-event-analysis-oms.md
             - name: 监视容器
               href: service-fabric-diagnostics-oms-containers.md
         - name: 使用 Application Insights 进行分析

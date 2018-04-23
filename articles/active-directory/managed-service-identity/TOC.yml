@@ -9,6 +9,34 @@
               href: tutorial-windows-vm-access-arm.md
             - name: Linux VM
               href: tutorial-linux-vm-access-arm.md
+    - name: 教程
+      items:
+        - name: Windows VM/VMSS
+          items:
+            - name: 访问 Azure Data Lake Store
+              href: tutorial-windows-vm-access-datalake.md
+            - name: 使用访问密钥访问 Azure 存储
+              href: tutorial-windows-vm-access-storage.md
+            - name: 使用 SAS 访问 Azure 存储
+              href: tutorial-windows-vm-access-storage-sas.md
+            - name: 访问 Azure SQL
+              href: tutorial-windows-vm-access-sql.md
+            - name: 访问 Azure Key Vault
+              href: tutorial-windows-vm-access-nonaad.md
+            - name: 访问 Azure Cosmos DB
+              href: tutorial-windows-vm-access-cosmos-db.md
+        - name: Linux VM/VMSS
+          items:
+            - name: 访问 Azure Data Lake Store
+              href: tutorial-linux-vm-access-datalake.md
+            - name: 使用访问密钥访问 Azure 存储
+              href: tutorial-linux-vm-access-storage-access-key.md
+            - name: 使用 SAS 访问 Azure 存储
+              href: tutorial-linux-vm-access-storage-sas.md
+            - name: 访问 Azure Key Vault
+              href: tutorial-linux-vm-access-nonaad.md
+            - name: 访问 Azure Cosmos DB
+              href: tutorial-linux-vm-access-cosmos-db.md
     - name: 为 Azure VM 配置 MSI
       items:
         - name: 使用 Azure 门户
@@ -45,30 +73,6 @@
           href: how-to-use-vm-sign-in.md
         - name: 与 Azure SDK 配合使用
           href: how-to-use-vm-sdk.md
-    - name: 使用 Windows VM/VMSS 托管的标识
-      items:
-        - name: 访问 Azure Data Lake Store
-          href: tutorial-windows-vm-access-datalake.md
-        - name: 访问 Azure SQL
-          href: tutorial-windows-vm-access-sql.md
-        - name: 使用访问密钥访问 Azure 存储
-          href: tutorial-windows-vm-access-storage.md
-        - name: 使用 SAS 访问 Azure 存储
-          href: tutorial-windows-vm-access-storage-sas.md
-        - name: 访问 Azure Key Vault
-          href: tutorial-windows-vm-access-nonaad.md
-    - name: 使用 Linux VM/VMSS 托管的标识
-      items:
-        - name: 访问 Azure Data Lake Store
-          href: tutorial-linux-vm-access-datalake.md
-        - name: 使用访问密钥访问 Azure 存储
-          href: tutorial-linux-vm-access-storage.md
-        - name: 使用 SAS 访问 Azure 存储
-          href: tutorial-linux-vm-access-storage-sas.md
-        - name: 访问 Azure Key Vault
-          href: tutorial-linux-vm-access-nonaad.md
-        - name: 访问 Azure Cosmos DB
-          href: tutorial-linux-vm-access-cosmos-db.md
     - name: 反馈和已知问题
       href: known-issues.md
     - name: 引用

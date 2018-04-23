@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: bradsev
-ms.openlocfilehash: da09ab7daba115e570bb8b97549cc5f01e7496b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f0e0c04e48a551db6d7d7cd221a35e267dc0a63f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>执行数据科学任务：探索、建模和部署
 
 典型的数据科学任务包括数据探索、建模和部署。 本文介绍如何使用**交互式数据探索、分析和报告 (IDEAR)** 与**自动建模和报告 (AMAR)** 实用工具来完成多个常见数据科学任务，例如交互式数据探索、数据分析、报告和建模。 此外，还概述了用于通过如下所述的各种工具包和数据平台在生产环境中部署模型的选项：
 
-- [Azure 机器学习](../preview/index.yml)
+- [Azure 机器学习](../service/index.yml)
 - [包含机器学习服务的 SQL-Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-services#in-database-analytics-with-sql-server)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 03/28/2018
 
 数据科学家可通过各种方法执行探索和报告：使用适用于 Python 的库和包（例如 matplotlib）或使用 R（例如 ggplot 或 lattice）。 数据科学家可以自定义此类代码，以满足特定方案中数据探索的需要。 结构化数据与非结构化数据（例如文本或图像）的处理需求有所不同。 
 
-Azure Machine Learning Workbench 等产品还提供了[高级数据准备](../preview/tutorial-bikeshare-dataprep.md)用于数据整理和探索，包括特征创建。 用户应确定哪种工具、库和包最适合其需要。 
+Azure Machine Learning Workbench 等产品还提供了[高级数据准备](../desktop-workbench/tutorial-bikeshare-dataprep.md)用于数据整理和探索，包括特征创建。 用户应确定哪种工具、库和包最适合其需要。 
 
 完成此阶段后，交付件是一份数据探索报告。 该报告应提供相当全面的数据视图用于建模，并评估这些数据是否适合继续在建模步骤中使用。 以下部分所述的，用于半自动化探索、建模和报告的 Team Data Science Process (TDSP) 实用工具也提供标准化的数据探索和建模报告。 
 
@@ -75,7 +75,7 @@ YAML 文件用于指定：
 ### <a name="model-management"></a>模型管理
 生成多个模型后，往往需要配置一个系统来注册和管理这些模型。 通常，需要创建脚本或 API 的组合，以及后端数据库或版本控制系统。 可考虑用于这些管理任务的几个选项包括：
 
-1. [Azure 机器学习 - 模型管理服务](../preview/index.yml)
+1. [Azure 机器学习 - 模型管理服务](../service/index.yml)
 2. [MIT 提供的 ModelDB](https://mitdbg.github.io/modeldb/) 
 3. [用作模型管理系统的 SQL-Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
@@ -88,7 +88,7 @@ YAML 文件用于指定：
 可通过多种方法和平台将模型投入生产。 下面是几个选项：
 
 
-- [Azure 机器学习中的模型部署](../preview/model-management-overview.md)
+- [Azure 机器学习中的模型部署](../desktop-workbench/model-management-overview.md)
 - [SQL-Server 中的模型部署](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

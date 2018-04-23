@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory v2.0 终结点局限和限制 | Microsoft Docs"
-description: "Azure AD v2.0 终结点的局限和限制列表。"
+title: Azure Active Directory v2.0 终结点局限和限制 | Microsoft Docs
+description: Azure AD v2.0 终结点的局限和限制列表。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a99289c0-e6ce-410c-94f6-c279387b4f66
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a81f505c189da31edb91d1b522d9f3140f821cb4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a36f55c57a75f671b3e5eeae3d91ff60483afd37
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>我是否应使用 v2.0 终结点？
 构建与 Azure Active Directory 集成的应用程序时，需确定 v2.0 终结点和身份验证协议是否满足需求。 Azure Active Directory 的原始终结点仍完全受支持，并且在某些方面比 v2.0 的功能更丰富。 但是，v2.0 终结点为开发人员[带来了极大的好处](active-directory-v2-compare.md)。
@@ -84,15 +84,6 @@ v2.0 终结点目前不支持以下应用类型。 有关支持的应用类型�
 另请注意，只能为特定应用程序设置 20 个答复 URL。
 
 若要了解如何在应用程序注册门户中注册应用，请参阅[如何使用 v2.0 终结点注册应用](active-directory-v2-app-registration.md)。
-
-## <a name="restrictions-on-services-and-apis"></a>服务和 API 限制
-v2.0 终结点目前支持登录所有已在应用程序注册门户中注册的应用，并且该应用已在[支持的身份验证流](active-directory-v2-flows.md)列表中列出。 但这些应用可获取 OAuth 2.0 访问令牌来访问非常有限的资源集。 V2.0 终结点仅对以下应用颁发访问令牌：
-
-* 请求令牌的应用。 如果逻辑应用包含多个不同的组件或层，则应用可为自身获取访问令牌。 若要查看此方案的工作方式，请参阅[入门](active-directory-appmodel-v2-overview.md#getting-started)教程。
-* Outlook 邮件、日历和联系人 REST API，全都位于 https://outlook.office.com。若要了解如何编写访问这些 API 的应用，请参阅 [Office 入门](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)教程。
-* Microsoft Graph API。 可以详细了解 [Microsoft Graph](https://graph.microsoft.io) 以及可用的数据。
-
-目前不支持其他服务。 将来会添加更多的 Microsoft Online Services，并支持自定义构建的 Web API 和服务。
 
 ## <a name="restrictions-on-libraries-and-sdks"></a>库和 SDK 限制
 当前，对 v2.0 终结点的库支持有所限制。 如果想要在生产应用程序中使用 v2.0 终结点，可使用以下选项：

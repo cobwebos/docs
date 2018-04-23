@@ -1,25 +1,18 @@
 ---
-title: "使用 Azure Analysis Services Web 设计器创建表格模型 | Microsoft Docs"
-description: "介绍如何在 Azure 门户中使用 Web 设计器创建 Azure Analysis Services 表格模型。"
-services: analysis-services
-documentationcenter: 
+title: 使用 Azure Analysis Services Web 设计器创建表格模型 | Microsoft Docs
+description: 介绍如何在 Azure 门户中使用 Web 设计器创建 Azure Analysis Services 表格模型。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: ff2f1dd89796a30d4e0fee0810ff45ff57f5f8bf
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.reviewer: minewiskan
+ms.openlocfilehash: 30a7f78e7bf13e6e6197e95b266dfd0d6b8f83c0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-model-in-azure-portal"></a>在 Azure 门户中创建模型
 

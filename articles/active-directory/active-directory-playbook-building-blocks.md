@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 1efb8d89b0a78dcf88c60c2e8cd3b968a725e8b9
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 019785ae0bde58b33cc4b09e2e2746f3fd474b70
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念证明操作手册：构建基块
 
@@ -213,7 +213,7 @@ ms.lasthandoff: 03/29/2018
 | 至少两位将访问同一帐户的团队成员的凭据。 两位成员必须都属于安全组。 | [在 Azure Active Directory 中向企业应用分配用户或组](active-directory-coreapps-assign-user-azure-portal.md) |
 | 对计算机的本地管理员访问权限，以便为 Internet Explorer、Chrome 或 Firefox 部署访问面板扩展 | [适用于 IE 的访问面板扩展](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[适用于 Chrome 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[适用于 Firefox 的访问面板扩展](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -248,7 +248,7 @@ ms.lasthandoff: 03/29/2018
 | 如果组织使用代理服务器连接 Internet，请查看博客文章《使用现有本地代理服务器》了解配置方法的详细信息 | [使用现有的本地代理服务器](application-proxy-working-with-proxy-servers.md) |
 
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -310,7 +310,7 @@ ms.lasthandoff: 03/29/2018
 | 已标识访问应用的信息辅助角色的凭据 | [访问面板是什么？](active-directory-saas-access-panel-introduction.md) |
 
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -358,7 +358,7 @@ ms.lasthandoff: 03/29/2018
 | 标识将请求访问应用程序并且属于安全组的 POC 用户 | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) |
 | 已部署目标应用程序 | 构建基块：[SaaS 联合 SSO 配置](#saas-federated-sso-configuration) |
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -380,8 +380,8 @@ ms.lasthandoff: 03/29/2018
 | 先决条件 | 资源 |
 | --- | --- |
 | 在租户中启用自助密码管理。 | [Azure Active Directory 中针对 IT 管理员的密码重置](active-directory-passwords-update-your-own-password.md) |
-| 启用密码写回，以便在本地管理密码。 请注意，此操作需要特定的 Azure AD Connect 版本 | [密码写回先决条件](active-directory-passwords-writeback.md) |
-| 标识将使用此功能的 PoC 用户，并确保这些用户是安全组的成员。 这些用户不能是管理员，这样才能完全展示此功能 | [自定义：Azure AD 密码管理：限制对密码重置的访问](active-directory-passwords-writeback.md) |
+| 启用密码写回，以便在本地管理密码。 请注意，此操作需要特定的 Azure AD Connect 版本 | [密码写回先决条件](authentication/howto-sspr-writeback.md) |
+| 标识将使用此功能的 PoC 用户，并确保这些用户是安全组的成员。 这些用户不能是管理员，这样才能完全展示此功能 | [自定义：Azure AD 密码管理：限制对密码重置的访问](authentication/howto-sspr-writeback.md) |
 
 
 ### <a name="steps"></a>Steps
@@ -412,7 +412,7 @@ ms.lasthandoff: 03/29/2018
 | 先决条件 | 资源 |
 | --- | --- |
 | 标识将使用 MFA 的 POC 用户  |  |
-| 用于接收 MFA 质询的信号良好的电话  | [什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md) |
+| 用于接收 MFA 质询的信号良好的电话  | [什么是 Azure 多重身份验证？](authentication/multi-factor-authentication.md) |
 
 ### <a name="steps"></a>步骤
 
@@ -421,7 +421,7 @@ ms.lasthandoff: 03/29/2018
 | 在 Azure AD 管理门户中导航到“用户和组”边栏选项卡 | [Azure AD 管理门户：用户和组](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Overview/menuId/) |
 | 选择“所有用户”边栏选项卡 |  |
 | 在顶栏中选择“多重身份验证”按钮 | Azure MFA 门户的的直接 URL：https://aka.ms/mfaportal |
-| 在“用户”设置中选择 PoC 用户，并为其启用 MFA | [Azure 多重身份验证中的用户状态](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) |
+| 在“用户”设置中选择 PoC 用户，并为其启用 MFA | [Azure 多重身份验证中的用户状态](authentication/howto-mfa-userstates.md) |
 | 以 PoC 用户身份登录，并完成验证过程  |  |
 
 ### <a name="considerations"></a>注意事项
@@ -446,7 +446,7 @@ ms.lasthandoff: 03/29/2018
 | 内部网络中的设备。 已配置内部地址范围中的 IP 地址 | 查找 IP 地址：https://www.bing.com/search?q=what%27s+my+ip |
 | 外部网络中的设备（可以是使用运营商的移动网络的手机） |  |
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -457,7 +457,7 @@ ms.lasthandoff: 03/29/2018
 
 ### <a name="considerations"></a>注意事项
 
-如果使用的是联合身份验证，则可以通过声明使用本地标识提供程序 (IdP) 在内部/外部公司网络状态之间通信。 在大型组织中评估和管理 IP 地址列表是一项非常复杂的工作，使用此方法可以不用管理 IP 地址列表。 在设置过程中，需用于“网络漫游”方案（用户从咖啡店等其他位置进行登录后，从内部网络进行登录）的帐户，并确保你了解其含义。 有关详细信息，请参阅[将 Azure 多重身份验证与 AD FS 配合使用来保护云资源：联合用户的受信任 IP](../multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud.md#trusted-ips-for-federated-users)
+如果使用的是联合身份验证，则可以通过声明使用本地标识提供程序 (IdP) 在内部/外部公司网络状态之间通信。 在大型组织中评估和管理 IP 地址列表是一项非常复杂的工作，使用此方法可以不用管理 IP 地址列表。 在设置过程中，需用于“网络漫游”方案（用户从咖啡店等其他位置进行登录后，从内部网络进行登录）的帐户，并确保你了解其含义。 有关详细信息，请参阅[将 Azure 多重身份验证与 AD FS 配合使用来保护云资源：联合用户的受信任 IP](authentication/howto-mfa-adfs.md#trusted-ips-for-federated-users)
 
 ## <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PIM)
 
@@ -528,7 +528,7 @@ ms.lasthandoff: 03/29/2018
 | 已注册 MFA 的 POC 用户。 请务必使用信号良好的手机 | 构建基块：[通过电话呼叫进行 Azure 多重身份验证](#azure-multi-factor-authentication-with-phone-calls) |
 
 
-### <a name="steps"></a>Steps
+### <a name="steps"></a>步骤
 
 | 步骤 | 资源 |
 | --- | --- |
@@ -554,7 +554,7 @@ ms.lasthandoff: 03/29/2018
 | 与 ADFS 联合的 Azure AD 域 | [Azure AD Connect 和联合身份验证](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory 证书服务概述](https://technet.microsoft.com/library/hh831740.aspx)|
 | iOS 设备需要安装 Microsoft Authenticator 应用 | [Microsoft Authenticator 应用入门](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
 
-### <a name="steps"></a>步骤
+### <a name="steps"></a>Steps
 
 | 步骤 | 资源 |
 | --- | --- |

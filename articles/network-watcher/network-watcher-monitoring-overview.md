@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 792b96e4f5ba5dc0f2f943f099a2fee339407d66
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a546296749ba9373355cfe2b857b83d8af94d5a1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-network-monitoring-overview"></a>Azure 网络监视概述
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 04/03/2018
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>网络观察程序中基于角色的访问控制 (RBAC)
 
-网络观察程序使用 [Azure 基于角色的访问控制 (RBAC) 模型](../active-directory/role-based-access-control-what-is.md)。 网络观察程序需要以下权限。 请务必确保用于启动网络观察程序 API 或者在门户中使用网络观察程序的角色具有所需的权限。
+网络观察程序使用 [Azure 基于角色的访问控制 (RBAC) 模型](../role-based-access-control/overview.md)。 网络观察程序需要以下权限。 请务必确保用于启动网络观察程序 API 或者在门户中使用网络观察程序的角色具有所需的权限。
 
 |资源| 权限|
 |---|---| 

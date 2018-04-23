@@ -1,6 +1,6 @@
 ---
-title: "数据安全与加密最佳做法 | Microsoft Docs"
-description: "本文提供一系列有关使用内置 Azure 功能实现数据安全与加密的最佳实践。"
+title: 数据安全与加密最佳做法 | Microsoft Docs
+description: 本文提供一系列有关使用内置 Azure 功能实现数据安全与加密的最佳实践。
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 0cebc7ae5279b720e8fd0d6c986e1706d944476f
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: dae93a622bad3ddfb1d9492d17b700d82e9969c0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳实践
 在云中保护数据的关键问题之一是考虑数据可能将发生的状态，以及哪些控件适用于该状态。 根据 Azure 数据安全和加密最佳实践的目的，相关建议将围绕以下数据状态：
@@ -58,16 +58,16 @@ ms.lasthandoff: 11/22/2017
 
 想要保留本地身份验证控制的组织有一个替代方法，就是使用 [Azure 多重身份验证服务器](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)（也称为本地 MFA）。 使用此方法仍可实施多重身份身份验证，同时保留本地 MFA 服务器。
 
-有关 Azure MFA 的详细信息，请参阅[云中的 Azure 多重身份验证入门](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)。
+有关 Azure MFA 的详细信息，请参阅[云中的 Azure 多重身份验证入门](../active-directory/authentication/howto-mfa-getstarted.md)。
 
 ## <a name="use-role-based-access-control-rbac"></a>使用基于角色的访问控制 (RBAC)
 根据[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全策略限制访问权限。 对于想要实施数据访问安全策略的组织，这是必须要做的事。 Azure 基于角色的访问控制 (RBAC) 可用于向特定范围的用户、组和应用程序分配权限。 角色分配的范围可以是订阅、资源组或单个资源。
 
-可以利用 Azure 中[内置的 RBAC 角色](../active-directory/role-based-access-built-in-roles.md)向用户分配权限。 考虑将*存储帐户参与者*用于需要管理存储帐户的云操作员，并使用*经典存储帐户参与者*角色来管理经典存储帐户。 对于需要管理 VM 和存储帐户的云操作员，请考虑将他们添加到*虚拟机参与者*角色。
+可以利用 Azure 中[内置的 RBAC 角色](../role-based-access-control/built-in-roles.md)向用户分配权限。 考虑将*存储帐户参与者*用于需要管理存储帐户的云操作员，并使用*经典存储帐户参与者*角色来管理经典存储帐户。 对于需要管理 VM 和存储帐户的云操作员，请考虑将他们添加到*虚拟机参与者*角色。
 
 未使用 RBAC 等功能实施数据访问控制的组织可能会给其用户分配超过需要的权限。 一开始就允许某些用户访问他们不应有权访问的数据可能会导致数据泄漏。
 
-有关 Azure RBAC 的详细信息，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)一文。
+有关 Azure RBAC 的详细信息，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)一文。
 
 ## <a name="encrypt-azure-virtual-machines"></a>加密 Azure 虚拟机
 对许多组织而言，[静态数据加密](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是实现数据隐私性、合规性和数据所有权的必要步骤。 Azure 磁盘加密可让 IT 管理员加密 Windows 和 Linux IaaS 虚拟机 (VM) 磁盘。 Azure 磁盘加密利用 Windows 的行业标准 BitLocker 功能和 Linux 的 DM-Crypt 功能，为 OS 和数据磁盘提供卷加密。

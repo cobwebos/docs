@@ -1,11 +1,11 @@
 ---
-title: "创建自定义探测 - Azure 应用程序网关 - PowerShell | Microsoft Docs"
-description: "了解如何使用 Resource Manager 中的 PowerShell 创建应用程序网关的自定义探测"
+title: 创建自定义探测 - Azure 应用程序网关 - PowerShell | Microsoft Docs
+description: 了解如何使用 Resource Manager 中的 PowerShell 创建应用程序网关的自定义探测
 services: application-gateway
 documentationcenter: na
 author: davidmu1
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 68feb660-7fa4-4f69-a7e4-bdd7bdc474db
 ms.service: application-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: davidmu
-ms.openlocfilehash: 344d6922d1649449e26f2500e538b5a0b440476d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5d17a05f964367ff12a58c3e301a1741181003fc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用适用于 Azure 资源管理器的 PowerShell 创建 Azure 应用程序网关的自定义探测
 
@@ -39,10 +39,10 @@ ms.lasthandoff: 12/21/2017
 
 ### <a name="sign-in-and-create-resource-group"></a>登录并创建资源组
 
-1. 使用 `Login-AzureRmAccount` 进行身份验证。
+1. 使用 `Connect-AzureRmAccount` 进行身份验证。
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
 1. 获取该帐户的订阅。
@@ -174,7 +174,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 
 ## <a name="get-application-gateway-dns-name"></a>获取应用程序网关 DNS 名称
 
-创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配 DNS 名称，该名称不友好。 若要确保最终用户可以访问应用程序网关，可以使用 CNAME 记录以指向应用程序网关的公共终结点。 [在 Azure 中配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 为此，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 应使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不方便。 若要确保最终用户可以访问应用程序网关，可以使用 CNAME 记录以指向应用程序网关的公共终结点。 [在 Azure 中配置自定义域名](../cloud-services/cloud-services-custom-domain-name-portal.md)。 为此，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 应使用应用程序网关的 DNS 名称来创建 CNAME 记录，使两个 Web 应用程序都指向此 DNS 名称。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01

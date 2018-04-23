@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell 脚本示例 - 将自定义 SSL 证书绑定到 Web 应用 | Microsoft 文档"
-description: "Azure PowerShell 脚本示例 - 将自定义 SSL 证书绑定到 Web 应用"
+title: Azure PowerShell 脚本示例 - 将自定义 SSL 证书绑定到 Web 应用 | Microsoft 文档
+description: Azure PowerShell 脚本示例 - 将自定义 SSL 证书绑定到 Web 应用
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
 ms.service: app-service-web
@@ -15,17 +15,17 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 851b172cd9218c9ade692e4c9e50a59b4b677ac5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66ebb3f20616d82c28a6c6f51ec3050f01f59537
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-web-app"></a>将自定义 SSL 证书绑定到 Web 应用
 
 此示例脚本在应用服务中创建一个 Web 应用及其相关资源，然后将自定义域名的 SSL 证书绑定到该应用。 
 
-必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Login-AzureRmAccount` 创建与 Azure 的连接。 同时，请确保：
+必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Connect-AzureRmAccount` 创建与 Azure 的连接。 同时，请确保：
 
 - 已使用 `az login` 命令创建与 Azure 的连接。
 - 可以访问域注册机构的 DNS 配置页。

@@ -1,8 +1,8 @@
 ---
-title: "使用命令行创建 Hadoop 群集 — Azure HDInsight | Microsoft Docs"
-description: "了解如何使用跨平台 Azure CLI 1.0 创建 HDInsight 群集。"
+title: 使用命令行创建 Hadoop 群集 — Azure HDInsight | Microsoft Docs
+description: 了解如何使用跨平台 Azure CLI 1.0 创建 HDInsight 群集。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 50b01483-455c-4d87-b754-2229005a8ab9
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 983e167d248d711efde9c64a70f59d5a9e81769a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: e56829c771ae47933f79c519920a20c1308873fe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 创建 HDInsight 群集
 

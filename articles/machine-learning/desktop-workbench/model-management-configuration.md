@@ -1,6 +1,6 @@
 ---
-title: "Azure 机器学习模型管理安装和配置 | Microsoft Docs"
-description: "本文档介绍了安装和配置 Azure 机器学习中的模型管理时所涉及的步骤和概念。"
+title: Azure 机器学习模型管理安装和配置 | Microsoft Docs
+description: 本文档介绍了安装和配置 Azure 机器学习中的模型管理时所涉及的步骤和概念。
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
 ms.openlocfilehash: 45ddd4dc6fb5559c020706e2784158b1319f9b52
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="model-management-setup"></a>模型管理安装
 
@@ -83,7 +83,7 @@ sudo /opt/microsoft/azureml/initial_setup.sh
 首先，需要设置部署环境。 环境设置是一个一次性任务。 设置完成后，可以重复使用环境进行后续部署。 有关详细信息，请参阅下一部分。
 
 完成环境设置后：
-- 系统会提示你登录到 Azure。 若要登录，请使用 Web 浏览器打开页面 https://aka.ms/devicelogin，然后输入提供的代码进行身份验证。
+- 系统会提示你登录到 Azure。 若要登录，请使用 Web 浏览器打开页 https://aka.ms/devicelogin，然后输入所提供的代码进行身份验证。
 - 在身份验证过程中，系统会提示你输入帐户进行身份验证。 重要说明：选择一个具有有效 Azure 订阅和足够权限的帐户，以在帐户中创建资源。登录完成后，会显示订阅信息，并且会提示你确认是否要继续使用所选帐户。
 
 ### <a name="environment-setup"></a>环境设置

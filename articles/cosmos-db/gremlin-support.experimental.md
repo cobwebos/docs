@@ -14,10 +14,10 @@ ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.openlocfilehash: c5e904c741c96808555718b0d90368e1bf770ecb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
 Azure Cosmos DB 支持 [Apache Tinkerpop](http://tinkerpop.apache.org) 的图形遍历语言 [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)，该语言是一种图形 API，用于创建图形实体以及执行图形查询操作。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 

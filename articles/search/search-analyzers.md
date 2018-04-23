@@ -1,22 +1,17 @@
 ---
-title: "Azure 搜索中的分析器 | Microsoft Docs"
-description: "将分析器分配到索引中的可搜索文本字段，以将默认标准 Lucene 替换为自定义、预定义或特定语言替代项。"
-services: search
-manager: jhubbard
-author: HeidiSteen
-documentationcenter: 
+title: Azure 搜索中的分析器 | Microsoft Docs
+description: 将分析器分配到索引中的可搜索文本字段，以将默认标准 Lucene 替换为自定义、预定义或特定语言替代项。
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: heidist
-ms.openlocfilehash: 1b9dea2978c11955da3ea4df8b90dc10a866d3f1
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+manager: cgronlun
+author: HeidiSteen
+ms.openlocfilehash: ef578d880c832ed5f853275f9194e15eefecfcaa
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="analyzers-in-azure-search"></a>Azure 搜索中的分析器
 
@@ -53,7 +48,7 @@ Azure 搜索使用[标准 Lucene 分析器](https://lucene.apache.org/core/4_0_0
 
 3. 向字段定义中添加分析器会在索引上引发写入操作。 如果向现有索引中添加**分析器**，请注意以下步骤：
  
- | 方案 | 影响 | 步骤 |
+ | 场景 | 影响 | Steps |
  |----------|--------|-------|
  | 添加新字段 | 轻微 | 如果字段尚不存在于架构中，则不需要进行任何字段修订，因为索引中尚不存在字段的物理形式。 使用[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)和 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 处理此任务。|
  | 向现有索引字段添加分析器。 | 重新生成 | 该字段的倒排索引必须从头开始重新创建，并且必须对这些字段的内容重新编制索引。 <br/> <br/>对于正在开发中的索引，[删除](https://docs.microsoft.com/rest/api/searchservice/delete-index)并[创建](https://docs.microsoft.com/rest/api/searchservice/create-index)索引，以获得新的字段定义。 <br/> <br/>对于正在生产中的索引，应创建一个新字段来提供修改后的定义并开始使用该字段。 使用[更新索引](https://docs.microsoft.com/rest/api/searchservice/update-index)和 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 以包含新字段。 之后在计划索引服务中，可清除索引以删除过时字段。 |

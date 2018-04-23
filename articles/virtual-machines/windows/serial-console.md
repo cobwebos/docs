@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: 2ff0dcba0912461d8528fc76c7c67d90febc0324
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d5d855cac9f09f92798d955dda3d66ab6b631091
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-machine-serial-console-preview"></a>虚拟机串行控制台（预览版） 
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/30/2018
 ## <a name="prerequisites"></a>先决条件 
 
 * 虚拟机上必须已启用[启动诊断](boot-diagnostics.md) 
-* 使用串行控制台的帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[参与者角色](../../active-directory/role-based-access-built-in-roles.md)。 
+* 使用串行控制台的帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[参与者角色](../../role-based-access-control/built-in-roles.md)。 
 
 ## <a name="open-the-serial-console"></a>打开串行控制台
 只能通过 [Azure 门户](https://portal.azure.com)访问虚拟机的串行控制台。 下面是通过门户访问虚拟机串行控制台的步骤 
@@ -51,7 +51,7 @@ ms.lasthandoff: 03/30/2018
 ## <a name="serial-console-security"></a>串行控制台安全性 
 
 ### <a name="access-security"></a>访问安全性 
-只有对虚拟机拥有 [VM 参与者](../../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)或更高访问权限的用户才能访问串行控制台。 如果 AAD 租户需要多重身份验证 (MFA)，则访问串行控制台时也需要执行 MFA，因为串行控制台是通过 [Azure 门户](https://portal.azure.com)访问的。
+只有对虚拟机拥有 [VM 参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)或更高访问权限的用户才能访问串行控制台。 如果 AAD 租户需要多重身份验证 (MFA)，则访问串行控制台时也需要执行 MFA，因为串行控制台是通过 [Azure 门户](https://portal.azure.com)访问的。
 
 ### <a name="channel-security"></a>通道安全性
 通过网络来回发送的所有数据都经过加密。

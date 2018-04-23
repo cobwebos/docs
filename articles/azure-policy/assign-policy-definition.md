@@ -1,19 +1,19 @@
 ---
-title: "创建策略分配以识别 Azure 环境中的不合规资源 | Microsoft Docs"
-description: "本文引导你完成创建策略定义的步骤，以识别不合规的资源。"
+title: 创建策略分配以识别 Azure 环境中的不合规资源 | Microsoft Docs
+description: 本文引导你完成创建策略定义的步骤，以识别不合规的资源。
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/10/2018
+ms.date: 04/18/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 4287b139f26d17e58f6caffbadb2c7da2a9b7b82
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: e5b27bdc2aef15b619022d1c08fa3e6dccaa5736
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>创建策略分配，识别 Azure 环境中的不合规资源
 若要了解 Azure 中的符合性，第一步是确定资源的状态。 本快速入门教程指导你完成创建策略分配的过程，以识别未使用托管磁盘的虚拟机。
@@ -71,15 +71,14 @@ ms.lasthandoff: 01/11/2018
 
 针对现有资源评估某条件时，如果结果为 true，则会将这些资源标记为与策略不符。 上一示例图显示了不符合的资源。 下表显示对于生成的符合性状态，不同的策略操作是如何与条件评估配合使用的。 虽然不显示 Azure 门户中的评估逻辑，但会显示符合性状态结果。 符合性状态结果为符合或不符合。
 
-|资源  |如果策略中条件的评估结果为  |策略中的操作   |符合性状态  |
-|-----------|---------|---------|---------|
-|Exists     |True     |拒绝     |不符合 |
-|Exists     |False    |拒绝     |符合     |
-|Exists     |True     |附加   |不符合 |
-|Exists     |False    |附加   |符合     |
-|Exists     |True     |审核    |不符合 |
-|Exists     |False    |审核    |不符合 |
+| **资源状态** | **Action** | **策略评估** | **符合性状态** |
+| --- | --- | --- | --- |
+| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 不合规 |
+| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 符合 |
+| 新建 | Audit、AuditIfNotExist\* | True | 不合规 |
+| 新建 | Audit、AuditIfNotExist\* | False | 符合 |
 
+\* Append、DeployIfNotExist 和 AuditIfNotExist 操作要求 IF 语句为 TRUE。 这些操作还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
 ## <a name="clean-up-resources"></a>清理资源
 
 本教程系列中的其他指南建立在本快速入门的基础之上。 如何打算继续浏览后续教程，请勿清除本快速入门中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤来删除此快速入门创建的所有资源。

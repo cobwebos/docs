@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
-ms.openlocfilehash: d558db176f2fa6888ead1dd3228f31d942049fc4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c02ded6605b6374e0e37462205f8390f54b24b58
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>使用 Azure 机器学习 Web 服务门户管理 Web 服务
 可以使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
@@ -43,7 +43,7 @@ ms.lasthandoff: 03/23/2018
 
 有关创建工作区的详细信息，请参阅[创建并共享 Azure 机器学习工作区](create-workspace.md)。
 
-有关设置访问权限的详细信息，请参阅[在 Azure 门户中查看用户和组的访问权限分配 — 公开预览版](../../active-directory/role-based-access-control-manage-assignments.md)。
+有关设置访问权限的详细信息，请参阅[在 Azure 门户中查看用户和组的访问权限分配 — 公开预览版](../../role-based-access-control/role-assignments-users.md)。
 
 
 ## <a name="manage-new-web-services"></a>管理新的 Web 服务

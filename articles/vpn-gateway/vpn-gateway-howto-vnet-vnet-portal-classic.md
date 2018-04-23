@@ -1,13 +1,13 @@
 ---
-title: "在 VNet 之间创建连接：经典：Azure 门户 l | Microsoft Docs"
-description: "使用 PowerShell 和 Azure 门户将 Azure 虚拟网络连接到一起。"
+title: 在 VNet 之间创建连接：经典：Azure 门户 l | Microsoft Docs
+description: 使用 PowerShell 和 Azure 门户将 Azure 虚拟网络连接到一起。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9e0c96d0d2c321869f7dc90e18f8dd25d58edc8f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d9766afefa793baf66ea5218843f06031b1b364c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>配置 VNet 到 VNet 连接（经典）
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/21/2018
 本文介绍如何在虚拟网络之间创建 VPN 网关连接。 虚拟网络可以位于相同或不同的区域，也可以来自相同或不同的订阅。 本文中的步骤适用于经典部署模型和 Azure 门户。 也可使用不同的部署工具或部署模型来创建此配置，方法是从以下列表中选择另一选项：
 
 > [!div class="op_single_selector"]
-> * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure 门户（经典）](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -218,7 +218,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 2. 使用提升的权限打开 PowerShell 控制台，并连接到帐户。 使用下面的示例来帮助连接：
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ```
 
   检查该帐户的订阅。

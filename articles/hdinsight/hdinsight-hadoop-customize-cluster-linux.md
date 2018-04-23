@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 48e85f53-87c1-474f-b767-ca772238cc13
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: bc8078a1681b8977a0748f633df02beb2f2bdc8a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5d1af5ae008fb2811f1ae59396a03833b8c1b15f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>使用脚本操作自定义基于 Linux 的 HDInsight 群集
 
@@ -50,8 +48,8 @@ HDInsight 提供一个称为**脚本操作**的配置选项，该选项可调用
 
 有关使用访问管理的详细信息，请参阅以下文档：
 
-* [Azure 门户中的访问管理入门](../active-directory/role-based-access-control-what-is.md)
-* [使用角色分配管理对 Azure 订阅资源的访问权限](../active-directory/role-based-access-control-configure.md)
+* [Azure 门户中的访问管理入门](../role-based-access-control/overview.md)
+* [使用角色分配管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="understanding-script-actions"></a>了解脚本操作
 

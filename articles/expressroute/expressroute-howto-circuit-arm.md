@@ -1,11 +1,11 @@
 ---
-title: "创建和修改 ExpressRoute 线路：PowerShell：Azure 资源管理器 | Microsoft 文档"
-description: "本文介绍如何创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。"
+title: 创建和修改 ExpressRoute 线路：PowerShell：Azure 资源管理器 | Microsoft 文档
+description: 本文介绍如何创建、预配、验证、更新、删除和取消预配 ExpressRoute 线路。
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f997182e-9b25-4a7a-b079-b004221dadcc
 ms.service: expressroute
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/18/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: ef092a48994b68268109cb98bd6cd4526e259d5b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0d45e97cc42826375a99df16a73c9a7b0c359224
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/21/2017
 要开始配置，请登录到 Azure 帐户。 使用下面的示例来帮助连接：
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 检查该帐户的订阅：

@@ -1,12 +1,12 @@
 ---
-title: "Azure VM 备份常见问题解答 | Microsoft Docs"
-description: "针对下述常见问题的解答：Azure VM 备份原理、限制以及更改策略时会发生什么情况"
+title: Azure VM 备份常见问题解答 | Microsoft Docs
+description: 针对下述常见问题的解答：Azure VM 备份原理、限制以及更改策略时会发生什么情况
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: 
-keywords: "azure vm 备份, azure vm 还原, 备份策略"
+editor: ''
+keywords: azure vm 备份, azure vm 还原, 备份策略
 ms.assetid: c4cd7ff6-8206-45a3-adf5-787f64dbd7e1
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 9a08495c1b395871c04c0c2b06a6efbdb4bfeaa2
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: e0337a7ce1392d78eba9791095f5d7a9c7d4afdd
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>有关 Azure VM 备份服务的问题
 本文提供常见问题的解答，有助于快速了解 Azure VM 备份组件。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/22/2018
 
 ### <a name="why-cant-i-see-my-vm-in-configure-backup-wizard"></a>为什么在配置备份向导中看不到我的 VM？
 在配置备份向导中，Azure 备份只列出符合以下条件的 VM：
-  * 尚未进行保护 - 可以验证 VM 的备份状态，方法是：转到 VM 边栏选项卡，从“设置”菜单查看备份状态。 详细了解如何[查看 VM 的备份状态](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-management-blade)
+  * 尚未进行保护 - 可以验证 VM 的备份状态，方法是：转到 VM 边栏选项卡，从“设置”菜单查看备份状态。 详细了解如何[查看 VM 的备份状态](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-operations-menu)
   * 与 VM 属于同一区域
 
 ## <a name="backup"></a>备份

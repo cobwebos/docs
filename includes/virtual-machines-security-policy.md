@@ -28,7 +28,7 @@
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-使用[基于角色的访问控制 (RBAC)](../articles/active-directory/role-based-access-control-what-is.md)，可以在团队中对职责进行分配，仅向 VM 上的用户授予执行作业所需的访问权限。 可以仅允许某些操作，而不是向 VM 上的每个人授予不受限制的权限。 可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/role) 或 [Azure PowerShell](../articles/active-directory/role-based-access-control-manage-access-powershell.md) 为 [Azure 门户](../articles/active-directory/role-based-access-control-configure.md)中的 VM 配置访问控制。
+使用[基于角色的访问控制 (RBAC)](../articles/role-based-access-control/overview.md)，可以在团队中对职责进行分配，仅向 VM 上的用户授予执行作业所需的访问权限。 可以仅允许某些操作，而不是向 VM 上的每个人授予不受限制的权限。 可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/role) 或 [Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md) 为 [Azure 门户](../articles/role-based-access-control/role-assignments-portal.md)中的 VM 配置访问控制。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,25 +1,20 @@
 ---
-title: "了解 Azure SQL 数据仓库操作 | Microsoft Docs"
-description: "借助 SQL 数据仓库的弹性，可以使用数据仓库单位 (DWU) 的可调缩放性扩大、收缩或暂停计算容量。 本文介绍数据仓库指标以及它们如何与 DWU 相关。 "
+title: 了解 Azure SQL 数据仓库操作 | Microsoft Docs
+description: '借助 SQL 数据仓库的弹性，可以使用数据仓库单位 (DWU) 的可调缩放性扩大、收缩或暂停计算容量。 本文介绍数据仓库指标以及它们如何与 DWU 相关。 '
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: cadffa9c-589d-4db7-888a-1f202a753bc5
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 629ce22bf669a760d041bbd006b836d2da5d237b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: e48d0a3028d5ebcb5d1bc0afbfc96a391bf4c076
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="data-warehouse-workload"></a>数据仓库工作负荷
 数据仓库工作负荷是指所有针对数据仓库所发生的操作。 数据仓库工作负荷包括将数据载入仓库、对数据仓库执行分析和报告、管理数据仓库中的数据，以及从数据仓库导出数据的整个过程。 这些组件的广度与深度多半与数据仓库的成熟度相当。

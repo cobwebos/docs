@@ -1,8 +1,8 @@
 ---
-title: "Azure 多重身份验证与 Active Directory 之间的目录集成"
-description: "这是与多重身份验证相关的页面，介绍如何将多重身份验证服务器与 Active Directory 集成以便可以同步目录。"
+title: Azure 多重身份验证与 Active Directory 之间的目录集成
+description: 这是与多重身份验证相关的页面，介绍如何将多重身份验证服务器与 Active Directory 集成以便可以同步目录。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: def7a534-cfb2-492a-9124-87fb1148ab1f
@@ -16,10 +16,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: 9d06da0d15bfeffb17da81e4b5ae4423d01ed770
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA 服务器与 Active Directory 之间的目录集成
 使用 Azure MFA 服务器的“目录集成”部分可与 Active Directory 或其他 LDAP 目录集成。 可以配置属性来匹配目录架构，并设置用户自动同步。

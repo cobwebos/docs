@@ -1,19 +1,17 @@
 ---
-title: "为 Blob 存储添加 Azure 搜索 | Microsoft Docs"
-description: "使用 Azure 搜索 HTTP REST API 在代码中创建索引。"
-services: search
-documentationcenter: 
-author: ashmaka
-manager: jhubbard
+title: 为 Blob 存储添加 Azure 搜索 | Microsoft Docs
+description: 使用 Azure 搜索 HTTP REST API 在代码中创建索引。
 ms.service: search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/04/2017
-ms.author: ashmaka
-ms.openlocfilehash: 15469e8a2d28bdf00d6e8d8c9f823c51975ee90e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+author: chaosrealm
+manager: jlembicz
+ms.author: eugenesh
+ms.openlocfilehash: 64032f59bad05746a07faadae6b0275eb4921b92
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>使用 Azure 搜索来搜索 Blob 存储
 
@@ -44,7 +42,7 @@ Azure 搜索的全文搜索、分面导航和排序功能现在可以应用于 b
 
 JSON 解析当前不可通过门户进行配置。 [了解有关 Azure 搜索中的 JSON 解析的详细信息。](https://aka.ms/azsjsonblobindexing)
 
-## <a name="quick-start"></a>快速启动
+## <a name="quick-start"></a>快速入门
 可以直接从 Blob 存储门户页将 Azure 搜索添加到 blob。
 
 ![](./media/search-blob-storage-integration/blob-blade.png)

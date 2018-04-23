@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: cshoe
-ms.openlocfilehash: 73353d3b27b65298d804a138b33cdf2de23726fe
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 2debe3bb06f00741100883ff7c9978f11f5be799
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 
@@ -85,16 +85,16 @@ Azure 存储提供一整套安全性功能，这些功能相辅相成，帮助�
 * 可以创建一份报告，其中描述了哪个用户已使用 PowerShell 或 Azure CLI 在哪个范围为哪些对象授予/吊销哪种类型的访问权限。
 
 #### <a name="resources"></a>资源
-* [Azure Active Directory 基于角色的访问控制](../../active-directory/role-based-access-control-configure.md)
+* [Azure Active Directory 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)
 
   此文解释了 Azure Active Directory 基于角色的访问控制及其工作原理。
-* [RBAC：内置角色](../../active-directory/role-based-access-built-in-roles.md)
+* [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)
 
   此文详细说明了 RBAC 中所有可用的内置角色。
 * [了解 Resource Manager 部署和经典部署](../../azure-resource-manager/resource-manager-deployment-model.md)
 
   此文介绍了 Resource Manager 部署和经典部署模型，并阐释了使用 Resource Manager 和资源组的优点。 本文介绍了 Azure 计算、网络和存储提供程序在 Resource Manager 模式下的工作方式。
-* [使用 REST API 管理基于角色的访问控制](../../active-directory/role-based-access-control-manage-access-rest.md)
+* [使用 REST API 管理基于角色的访问控制](../../role-based-access-control/role-assignments-rest.md)
 
   此文说明如何使用 REST API 来管理 RBAC。
 * [Azure Storage Resource Provider REST API Reference](https://msdn.microsoft.com/library/azure/mt163683.aspx)（Azure 存储资源提供程序 REST API 参考）

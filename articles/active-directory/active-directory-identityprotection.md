@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory Identity Protection | Microsoft 文档"
-description: "了解如何使用 Azure AD Identity Protection 来限制攻击者利用已泄露标识或设备的能力，以及保护之前怀疑或已知受到威胁的标识或设备。"
+title: Azure Active Directory Identity Protection | Microsoft 文档
+description: 了解如何使用 Azure AD Identity Protection 来限制攻击者利用已泄露标识或设备的能力，以及保护之前怀疑或已知受到威胁的标识或设备。
 services: active-directory
-keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略"
-documentationcenter: 
+keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e66d033d95efccf53ea2de889b5811fe2eafb76a
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: b8ae865e06e085ebe1bb71b35d812024190e2b21
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护
 
@@ -368,7 +368,7 @@ Azure 多重身份验证是要求使用多种方式（而不仅仅是用户名�
 
 ![用户风险策略](./media/active-directory-identityprotection/1019.png "用户风险策略")
 
-有关更多详细信息，请参阅[什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md)
+有关更多详细信息，请参阅[什么是 Azure 多重身份验证？](authentication/multi-factor-authentication.md)
 
 Azure AD Identity Protection 可以通过配置一个策略来帮助管理首次多重身份验证注册，在该策略中，可以：
 

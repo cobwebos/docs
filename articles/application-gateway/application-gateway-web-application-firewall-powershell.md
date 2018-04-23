@@ -1,6 +1,6 @@
 ---
-title: "创建具有 Web 应用程序防火墙的应用程序网关 - Azure PowerShell | Microsoft Docs"
-description: "了解如何使用 Azure PowerShell 创建具有 Web 应用程序防火墙的应用程序网关。"
+title: 创建具有 Web 应用程序防火墙的应用程序网关 - Azure PowerShell | Microsoft Docs
+description: 了解如何使用 Azure PowerShell 创建具有 Web 应用程序防火墙的应用程序网关。
 services: application-gateway
 author: davidmu1
 manager: timlt
@@ -11,11 +11,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: fe36076988e65837340ec70982de788e532c455d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 662e8bc8b1119022cf88bf40108bb8d1e680f122
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-azure-powershell"></a>使用 Azure PowerShell 创建具有 Web 应用程序防火墙的应用程序网关
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 02/01/2018
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块版本 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块版本 3.6 或更高版本。 运行 ` Get-Module -ListAvailable AzureRM` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzureRmAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -258,7 +258,7 @@ Set-AzureRmDiagnosticSetting `
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-![应用程序网关中的测试基 URL](./media/application-gateway-web-application-firewall-powershell/application-gateway-iistest.png)
+![在应用程序网关中测试基 URL](./media/application-gateway-web-application-firewall-powershell/application-gateway-iistest.png)
 
 ## <a name="next-steps"></a>后续步骤
 

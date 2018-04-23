@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions 的缩放和托管 | Microsoft Docs"
-description: "了解如何在 Azure Functions 消耗量计划和应用服务计划之间进行选择。"
+title: Azure Functions 的缩放和托管 | Microsoft Docs
+description: 了解如何在 Azure Functions 消耗量计划和应用服务计划之间进行选择。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, Functions, 消耗量计划, 应用服务计划, 事件处理, webhook, 动态计算, 无服务体系结构"
+editor: ''
+tags: ''
+keywords: Azure Functions, Functions, 消耗量计划, 应用服务计划, 事件处理, webhook, 动态计算, 无服务体系结构
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: functions
 ms.devlang: multiple
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5be2fe57287f816434b6d6fdf40dbbcb0dd435f4
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: a4c43477a28efe01fd197a0c09afadb338638036
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -86,7 +86,7 @@ VM 使得成本不再取决于执行数量、执行时间和所用内存。 因�
 
 <!-- JH: Does using a PRemium Storage account improve perf? -->
 
-若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#introducing-the-azure-storage-services)。
+若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#azure-storage-services)。
 
 ## <a name="how-the-consumption-plan-works"></a>如何使用消耗量计划
 

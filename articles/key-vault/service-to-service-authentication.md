@@ -1,22 +1,22 @@
 ---
-title: "使用 .NET 向 Azure Key Vault 进行服务到服务身份验证"
-description: "使用 Microsoft.Azure.Services.AppAuthentication 库通过 .NET 向 Azure Key Vault 进行身份验证。"
-keywords: "azure key-vault 身份验证本地凭据"
+title: 使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
+description: 使用 Microsoft.Azure.Services.AppAuthentication 库通过 .NET 向 Azure Key Vault 进行身份验证。
+keywords: azure key-vault 身份验证本地凭据
 author: lleonard-msft
 manager: mbaldwin
 services: key-vault
 ms.author: alleonar
 ms.date: 11/15/2017
 ms.topic: article
-ms.prod: 
-ms.service: microsoft-keyvault
-ms.technology: 
+ms.prod: ''
+ms.service: key-vault
+ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: bff4b15ca2f1c985c4b4e27d159adaa5fd039553
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: db0b0ca72f41c68e19db6635d9ba0e9144183204
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
@@ -222,7 +222,7 @@ az account list
 
 可以使用以下选项：
 
-| 连接&nbsp;字符串&nbsp;选项 | 方案 | 注释|
+| 连接&nbsp;字符串&nbsp;选项 | 场景 | 注释|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | 本地开发 | AzureServiceTokenProvider 使用 AzureCli 来获取令牌。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | 本地开发 | AzureServiceTokenProvider 使用 Visual Studio 来获取令牌。 |

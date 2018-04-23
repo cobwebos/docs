@@ -1,6 +1,6 @@
 ---
-title: "适用于 Azure 机器学习数据准备的受支持数据源 | Microsoft Docs"
-description: "本文档提供适用于 Azure 机器学习数据准备的受支持数据源的完整列表。"
+title: 适用于 Azure 机器学习数据准备的受支持数据源 | Microsoft Docs
+description: 本文档提供适用于 Azure 机器学习数据准备的受支持数据源的完整列表。
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -8,15 +8,15 @@ manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: 
-ms.devlang: 
+ms.custom: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ms.openlocfilehash: 7b42080ea4bf9a9e49f2695ab8746d9ead7348bd
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>适用于 Azure 机器学习数据准备的受支持数据源 
 本文概述了当前适用于 Azure 机器学习数据准备的受支持数据源。

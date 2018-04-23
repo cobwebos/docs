@@ -1,6 +1,6 @@
 ---
-title: "Azure 机器学习日志记录 API 参考 | Microsoft Docs"
-description: "日志记录 API 参考。"
+title: Azure 机器学习日志记录 API 参考 | Microsoft Docs
+description: 日志记录 API 参考。
 services: machine-learning
 author: akshaya-a
 ms.author: akannava
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
 ms.openlocfilehash: 1906425c6657fb6232a9dc306b05f9171c9c7bef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="logging-api-reference"></a>日志记录 API 参考
 
@@ -39,7 +39,7 @@ logger.log("simple string value", "this is a string metric")
 logger.log("chart data points", [1, 3, 5, 10, 6, 4])
 ```
 
-默认情况下，所有指标以异步方式提交，使提交操作不会妨碍程序的执行。 在边缘方案中发送多个指标时，这可能导致顺序问题。 例如，同时记录了两个指标，但出于某种原因，用户希望保留确切的指标顺序。 另一种情况是，在运行已知可能很快失败的某段代码之前，必须跟踪指标。 在这两种情况下，解决方法都是先等到已完全记录指标，然后再继续：
+默认情况下，所有指标以异步方式提交，使提交操作不会妨碍程序的执行。 在边缘方案中发送多个指标时，这可能导致顺序问题。 例如，同时记录了两个指标，但出于某种原因，用户希望保留确切的指标顺序。 另一种情况是，在运行已知可能快速失败的某段代码之前，必须跟踪指标。 在这两种情况下，解决方法都是先等到已完全记录指标，然后再继续：
 
 ```python
 # blocking call

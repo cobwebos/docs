@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 03/27/2018
 ms.author: alehall
-ms.openlocfilehash: c43edc6673c42a8b69bfa296e288e77adee4d0af
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2e4c424bb26a3b268ec893ca40dcdce7d7469217
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>教程：使用事件中心将数据流式传输到 Azure Databricks
 
@@ -173,6 +173,7 @@ ms.lasthandoff: 03/29/2018
 
 在 **SendTweetsToEventHub** 笔记本中粘贴以下代码，并将占位符替换为前面创建的事件中心命名空间和 Twitter 应用程序的值。 此笔记本会将包含关键字“Azure”的推文实时流式传输到事件中心。
 
+```scala
     import java.util._
     import scala.collection.JavaConverters._
     import com.microsoft.azure.eventhubs._
@@ -242,6 +243,7 @@ ms.lasthandoff: 03/29/2018
 
     // Closing connection to the Event Hub
     eventHubClient.get().close()
+```
 
 若要运行该笔记本，请按 **SHIFT + ENTER**。 随后会显示类似于以下片段的输出： 输出中的每个事件是包含“Azure”一词的、已引入事件中心的推文。
 
@@ -264,6 +266,7 @@ ms.lasthandoff: 03/29/2018
 
 在 **ReadTweetsFromEventHub** 笔记本中粘贴以下代码，并将占位符替换为前面创建的 Azure 事件中心的值。 此笔记本读取前面已使用 **SendTweetsToEventHub** 笔记本流式传输到事件中心的推文。
 
+```scala
     import org.apache.spark.eventhubs._
 
     // Build connection string with the above information
@@ -282,6 +285,7 @@ ms.lasthandoff: 03/29/2018
     // Sending the incoming stream into the console.
     // Data comes in batches!
     incomingStream.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
+```
 
 将返回以下输出：
 
@@ -312,6 +316,7 @@ ms.lasthandoff: 03/29/2018
 
 由于输出采用二进制模式，因此请使用以下代码片段将其转换为字符串。
 
+```scala
     import org.apache.spark.sql.types._
     import org.apache.spark.sql.functions._
 
@@ -328,6 +333,7 @@ ms.lasthandoff: 03/29/2018
     messages.printSchema
 
     messages.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
+```
 
 现在，输出如以下代码片段所示：
 

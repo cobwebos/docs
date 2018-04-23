@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: c4c85395856756e8ec6a788aa958b479a297892d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: a56ff1d70d56b742966c9980f01b4de03f7f30b2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-sql-database-dtu-based-resource-model-limits"></a>Azure SQL 数据库基于 DTU 的资源模型限制
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 04/05/2018
 ### <a name="standard-service-tier"></a>标准服务层
 | **性能级别** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|---:|
-| 最大 DTU 数** | 10 | 20 | 50 | 100 |
+| 最大 DTU 数 | 10 | 20 | 50 | 100 |
 | 包含的存储 (GB) | 250 | 250 | 250 | 250 |
 | 最大存储选择 (GB)* | 250 | 250 | 250 | 250, 500, 750, 1024 |
 | 最大内存中 OLTP 存储 (GB) | 不适用 | 不适用 | 不适用 | 不适用 |
@@ -51,7 +51,7 @@ ms.lasthandoff: 04/05/2018
 ### <a name="standard-service-tier-continued"></a>标准服务层（续）
 | **性能级别** | **S4** | **S6** | S7 | S9 | S12 |
 | :--- |---:| ---:|---:|---:|---:|---:|
-| 最大 DTU 数** | 200 | 400 | 800 | 1600 | 3000 |
+| 最大 DTU 数 | 200 | 400 | 800 | 1600 | 3000 |
 | 包含的存储 (GB) | 250 | 250 | 250 | 250 | 250 |
 | 最大存储选择 (GB)* | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
 | 最大内存中 OLTP 存储 (GB) | 不适用 | 不适用 | 不适用 | 不适用 |不适用 |
@@ -78,8 +78,6 @@ ms.lasthandoff: 04/05/2018
 >
 >\* 在高级层中，以下区域目前提供的存储超出 1 TB：澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、美国中部、法国中部、德国中部、日本东部、日本西部、韩国中部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、美国东部 2、美国西部、美国弗吉尼亚州政府和西欧。 请参阅 [P11-P15 当前限制](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。  
 > 
->\*\* 标准池中每个数据库的最大 DTU 数至少为 200 DTU 的为预览版。
->
 
 
 ## <a name="single-database-change-storage-size"></a>单一数据库：更改存储大小
@@ -290,7 +288,7 @@ ms.lasthandoff: 04/05/2018
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅 [SQL 数据库常见问题解答](sql-database-faq.md)，了解常见问题的解答。
+- 有关常见问题的解答，请参阅 [SQL 数据库常见问题解答](sql-database-faq.md)。
 - 有关常规 Azure 限制的相关信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。
 - 有关 DTU 和 eDTU 的信息，请参阅 [DTU 和 eDTU](sql-database-what-is-a-dtu.md)。
 - 有关 tempdb 大小限制的信息，请参阅 https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database。

@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure 容器注册表进行身份验证"
-description: "Azure 容器注册表的身份验证选项包括 Azure Active Directory 服务主体直接登录和注册表登录。"
+title: 使用 Azure 容器注册表进行身份验证
+description: Azure 容器注册表的身份验证选项包括 Azure Active Directory 服务主体直接登录和注册表登录。
 services: container-registry
 author: stevelas
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70758f938718aef160670bc023aff5fc0c9fb92a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 349d4f8cba2967edcedb202979695d271283fa8b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>使用私有 Docker 容器注册表进行身份验证
 
@@ -31,11 +31,11 @@ Azure 容器注册表不支持未经身份验证的 Docker 操作或匿名访问
 az acr login --name <acrName>
 ```
 
-使用 `az acr login` 登录时，CLI 将使用执行 `az login` 时创建的令牌和注册表对会话进行无缝身份验证。 以这种方式登录后，系统会缓存凭据并且后续 `docker` 命令将不再需要用户名或密码。 如果令牌过期，可以通过再次使用 `az acr login` 命令重新进行身份验证来刷新令牌。 配合使用 `az acr login` 和 Azure 标识可提供[基于角色的访问](../active-directory/role-based-access-control-configure.md)。
+使用 `az acr login` 登录时，CLI 将使用执行 `az login` 时创建的令牌和注册表对会话进行无缝身份验证。 以这种方式登录后，系统会缓存凭据并且后续 `docker` 命令将不再需要用户名或密码。 如果令牌过期，可以通过再次使用 `az acr login` 命令重新进行身份验证来刷新令牌。 配合使用 `az acr login` 和 Azure 标识可提供[基于角色的访问](../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="service-principal"></a>服务主体
 
-可以为注册表分配[服务主体](../active-directory/develop/active-directory-application-objects.md)，并且应用程序或服务可以将其用于无外设身份验证。 服务主体允许通过[基于角色的访问](../active-directory/role-based-access-control-configure.md)来访问注册表，并且可以为注册表分配多个服务主体。 如果拥有多个服务主体，则可为不同应用程序定义不同的访问权限。
+可以为注册表分配[服务主体](../active-directory/develop/active-directory-application-objects.md)，并且应用程序或服务可以将其用于无外设身份验证。 服务主体允许通过[基于角色的访问](../role-based-access-control/role-assignments-portal.md)来访问注册表，并且可以为注册表分配多个服务主体。 如果拥有多个服务主体，则可为不同应用程序定义不同的访问权限。
 
 可用的角色如下：
 

@@ -1,26 +1,24 @@
 ---
-title: "Azure HDInsight 中的 Spark 结构化流 | Microsoft Docs"
-description: "如何在 HDInsight Spark 群集上使用 Spark 结构化流应用程序。"
+title: Azure HDInsight 中的 Spark 结构化流 | Microsoft Docs
+description: 如何在 HDInsight Spark 群集上使用 Spark 结构化流应用程序。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: aa56c1e2f1f506be51f449a1cf10b4f0bc57a152
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: ca4a248e9da2c0d50aaf320370b1f3050a0ff263
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="overview-of-spark-structured-streaming"></a>Spark 结构化流的概述
 
@@ -138,9 +136,9 @@ Spark 结构化流以表的形式表示数据流，该表的深度受限，即�
 
 ## <a name="deploying-spark-streaming-applications"></a>部署 Spark 流式处理应用程序
 
-通常在本地的 JAR 文件中生成 Spark 流应用程序，然后通过将此 JAR 文件复制到 HDInsight 群集上附加的默认存储，在 Spark on HDInsight 中部署此应用程序。 可以使用 POST 操作，在群集上可用的 LIVY REST API 中启动该应用程序。 POST 的正文包括提供 JAR 路径的 JSON 文档、其 main 方法定义并运行流应用程序的类的名称，可选的作业资源要求（例如执行器、内存和核心的数量）以及应用程序代码所需的任何配置设置。
+通常在本地将 Spark 流应用程序生成为 JAR 文件，然后通过将此 JAR 文件复制到 HDInsight 群集上附加的默认存储，在 Spark on HDInsight 中部署此应用程序。 可以使用 POST 操作，通过群集上可用的 LIVY REST API 启动该应用程序。 POST 的正文包括提供 JAR 路径的 JSON 文档、其 main 方法定义并运行流应用程序的类的名称，可选的作业资源要求（例如执行器、内存和核心的数量）以及应用程序代码所需的任何配置设置。
 
-![部署 Spark 流应用程序](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+![部署 Spark 流式处理应用程序](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
 此外，可以使用 GET 请求针对 LIVY 终结点检查所有应用程序的状态。 最后，可以通过针对 LIVY 终结点发出 DELETE 请求终止正在运行的应用程序。 有关 LIVY API 的详细信息，请参阅[通过 LIVY 远程作业](apache-spark-livy-rest-interface.md)
 

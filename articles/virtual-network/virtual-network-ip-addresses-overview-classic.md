@@ -1,10 +1,10 @@
 ---
-title: "Azure 中的 IP 地址类型（经典）| Microsoft 文档"
-description: "了解如何在 Azure 中使用公共和专用 IP 地址（经典）。"
+title: Azure 中的 IP 地址类型（经典）| Microsoft 文档
+description: 了解如何在 Azure 中使用公共和专用 IP 地址（经典）。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
+author: genli
+manager: cshepard
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 2f8664ab-2daf-43fa-bbeb-be9773efc978
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
-ms.author: jdial
-ms.openlocfilehash: d5eea5e4499b9de40002ce2fc6aac39239c41b19
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.author: genli
+ms.openlocfilehash: f9e36abd44c2012d96a6ead8659197dcf66c6032
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure 中的 IP 地址类型和分配方法（经典）
 可以将 IP 地址分配到与其他 Azure 资源通信的 Azure 资源，也可以将其分配到本地网络和 Internet。 可以在 Azure 中使用两种类型的 IP 地址：公共地址和专用地址。
@@ -164,7 +164,7 @@ Azure [应用程序网关](../application-gateway/application-gateway-introducti
 ## <a name="differences-between-resource-manager-and-classic-deployments"></a>Resource Manager 与经典部署之间的差异
 下面是 Resource Manager 和经典部署模型中的 IP 寻址功能的比较。
 
-|  | 资源 | 经典 | Resource Manager |
+|  | 资源 | 经典 | 资源管理器 |
 | --- | --- | --- | --- |
 | **公共 IP 地址** |***VM*** |称为 ILPIP（仅限动态） |称为公共 IP（动态或静态） |
 |  ||分配到 IaaS VM 或 PaaS 角色实例 |与 VM 的 NIC 关联 | |

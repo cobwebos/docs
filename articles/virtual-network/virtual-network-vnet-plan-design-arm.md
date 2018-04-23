@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: f11b2d1b4061b395918a274c4c53688bf34fbae1
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6e41dae2f4e93fe2e3cef689596612a6a192c844
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>规划和设计 Azure 虚拟网络
 创建用于试验的 VNet 非常简单，但却可能是，会在一段时间内部署多个 VNet 以支持组织的生产需要。 通过进行一些规划和设计，能够更有效地部署 VNet 和连接所需的资源。 如果不熟悉 VNet，我们建议先[了解 VNet](virtual-networks-overview.md) 以及[如何部署](quick-create-portal.md) VNet，再继续阅读本文。
@@ -87,12 +87,12 @@ VNet 包含以下属性。
 请查看 [Azure 限制](../azure-subscription-service-limits.md#networking-limits)一文中的网络限制，确保设计不会与任何限制相互冲突。 可以通过开具支持票证增加某些限制。
 
 ### <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
-可以使用 [Azure RBAC](../active-directory/role-based-access-built-in-roles.md) 来控制不同用户可能对 Azure 中的不同资源拥有的访问权限级别。 这样就可以根据团队的需要分隔团队完成的工作。
+可以使用 [Azure RBAC](../role-based-access-control/built-in-roles.md) 来控制不同用户可能对 Azure 中的不同资源拥有的访问权限级别。 这样就可以根据团队的需要分隔团队完成的工作。
 
 就虚拟网络而言，拥有**网络参与者**角色的用户可以完全控制 Azure 资源管理器虚拟网络资源。 同样，拥有**经典网络参与者**角色的用户可以完全控制经典虚拟网络资源。
 
 > [!NOTE]
-> 还可以[创建自己的角色](../active-directory/role-based-access-control-configure.md)来区分管理需求。
+> 还可以[创建自己的角色](../role-based-access-control/role-assignments-portal.md)来区分管理需求。
 >
 >
 
@@ -110,7 +110,7 @@ VNet 包含以下属性。
 ### <a name="subscription-and-vnet-design-patterns"></a>订阅和 VNet 设计模式
 下表展示了有关使用订阅和 VNet 的一些常用设计模式。
 
-| 方案 | 图表 | 优点 | 缺点 |
+| 场景 | 图表 | 优点 | 缺点 |
 | --- | --- | --- | --- |
 | 一个订阅，每个应用两个 VNet |![一个订阅](./media/virtual-network-vnet-plan-design-arm/figure1.png) |只有一个订阅要管理。 |每个 Azure 区域的 Vnet 数量上限。 之后需要更多订阅。 有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md#networking-limits)一文。 |
 | 每个应用一个订阅，每个应用两个 VNet |![一个订阅](./media/virtual-network-vnet-plan-design-arm/figure2.png) |每个订阅仅使用两个 Vnet。 |当有太多应用时，难于管理。 |
@@ -128,7 +128,7 @@ VNet 包含以下属性。
 ### <a name="subnet-and-nsg-design-patterns"></a>子网和 NSG 设计模式
 下表显示了使用子网的一些常用设计模式。
 
-| 方案 | 图表 | 优点 | 缺点 |
+| 场景 | 图表 | 优点 | 缺点 |
 | --- | --- | --- | --- |
 | 每个应用每个应用程序层单个子网、多个 NSG |![单个子网](./media/virtual-network-vnet-plan-design-arm/figure5.png) |只需要管理一个子网。 |要隔离每个应用程序，需要多个 NSG。 |
 | 每个应用一个子网，每个应用程序层多个 NSG |![每个应用的子网](./media/virtual-network-vnet-plan-design-arm/figure6.png) |需要管理更少 NSG。 |需要管理多个子网。 |

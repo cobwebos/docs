@@ -1,11 +1,11 @@
 ---
-title: "用于 B2B 监视的 X12 跟踪架构 - Azure 逻辑应用 | Microsoft 文档"
-description: "使用 X12 跟踪架构通过 Azure 集成帐户中的事务监视 B2B 消息。"
+title: 用于 B2B 监视的 X12 跟踪架构 - Azure 逻辑应用 | Microsoft 文档
+description: 使用 X12 跟踪架构通过 Azure 集成帐户中的事务监视 B2B 消息。
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3782c0a76ea8728a146b3d73774f74c31187cbfd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e5a43b9bdf522b6b26f27c082f5cb623f7a76a8b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>启动或启用对 X12 消息的跟踪，监视成功、错误和消息属性
 可以在 Azure 集成帐户中使用这些 X12 跟踪架构来帮助监视企业到企业 (B2B) 的事务：
@@ -60,7 +60,7 @@ ms.lasthandoff: 10/11/2017
     }
 ````
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 说明 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -115,7 +115,7 @@ ms.lasthandoff: 10/11/2017
     }
 ````
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 说明 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -172,7 +172,7 @@ ms.lasthandoff: 10/11/2017
     }
 ````
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 说明 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -221,7 +221,7 @@ ms.lasthandoff: 10/11/2017
     }
 ````
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 说明 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -273,7 +273,7 @@ ms.lasthandoff: 10/11/2017
     }
 ````
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 说明 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -327,7 +327,7 @@ ms.lasthandoff: 10/11/2017
     }
 ````
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 说明 |
 | --- | --- | --- |
 | senderPartnerName | String | X12 消息发送者的合作伙伴名称。 (可选) |
 | receiverPartnerName | String | X12 消息接收者的合作伙伴名称。 (可选) |
@@ -354,5 +354,5 @@ ms.lasthandoff: 10/11/2017
 * 了解有关[监视 B2B 消息](logic-apps-monitor-b2b-message.md)的详细信息。
 * 了解有关 [AS2 跟踪架构](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)的详细信息。
 * 了解有关 [B2B 自定义跟踪架构](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)的详细信息。
-* 了解有关[在 Operations Management Suite 门户中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)的信息。
-* 了解有关 [Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md)。  
+* 了解[在 Log Analytics 中跟踪 B2B 消息](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
+* 了解有关 [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) 的详细信息。  

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: ae8e9f46923928853c0c63e8c50f4e95b915e277
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: fa6a994f30c301fd6c7b431467aebc9d3489c6bc
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 Azure AD Connect 安装向导提供提供两种不同的路径：
@@ -90,7 +90,7 @@ Azure AD Connect 版本 1.1.524.0 及更高版本提供了相应选项，让 Azu
 | 密码同步 |<li>复制目录更改</li>  <li>复制所有目录更改 |
 | Exchange 混合部署 |针对用户、组和联系人的属性的写入权限，详见[Exchange 混合写回](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)。 |
 | Exchange 邮件公用文件夹 |对 [Exchange 邮件公用文件夹](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公用文件夹属性的读取权限。 | 
-| 密码写回 |针对用户的属性的写入权限，详见[密码管理入门](../active-directory-passwords-writeback.md)。 |
+| 密码写回 |针对用户的属性的写入权限，详见[密码管理入门](../authentication/howto-sspr-writeback.md)。 |
 | 设备写回 |通过 PowerShell 脚本授予的权限，详见[设备写回](active-directory-aadconnect-feature-device-writeback.md)。 |
 | 组写回 |读取、创建、更新和删除同步的 **Office 365 组**的组对象。  有关详细信息，请参阅[组写回](active-directory-aadconnect-feature-preview.md#group-writeback)。|
 

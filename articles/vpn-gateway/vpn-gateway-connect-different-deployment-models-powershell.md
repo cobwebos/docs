@@ -1,11 +1,11 @@
 ---
-title: "将经典虚拟网络连接到 Azure 资源管理器 VNet：PowerShell | Microsoft Docs"
-description: "使用 VPN 网关和 PowerShell 在经典 VNet 与资源管理器 VNet 之间创建 VPN 连接。"
+title: 将经典虚拟网络连接到 Azure 资源管理器 VNet：PowerShell | Microsoft Docs
+description: 使用 VPN 网关和 PowerShell 在经典 VNet 与资源管理器 VNet 之间创建 VPN 连接。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: f17c3bf0-5cc9-4629-9928-1b72d0c9340b
 ms.service: vpn-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: a3afd89a928854a1b03bfd4c5645ea12dbb638fc
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 65faf1a4f78244d9fdd03b6415bf2cadac923504
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>使用 PowerShell 从不同的部署模型连接虚拟网络
 
@@ -176,7 +176,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 1. 在 PowerShell 控制台中，登录到 Azure 帐户。 以下 cmdlet 会提示提供 Azure 帐户的登录凭据。 登录后将下载帐户设置，以便 Azure PowerShell 使用这些设置。
 
   ```powershell
-  Login-AzureRmAccount
+  Connect-AzureRmAccount
   ``` 
    
   获取 Azure 订阅的列表。

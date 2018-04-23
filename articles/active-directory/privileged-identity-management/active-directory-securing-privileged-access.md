@@ -1,8 +1,8 @@
 ---
-title: "保护 Azure AD 中的特权访问 | Microsoft Docs"
-description: "本主题介绍在 Azure、Azure Active Directory 和 Microsoft 在线服务中保护特许访问的方法。"
+title: 保护 Azure AD 中的特权访问 | Microsoft Docs
+description: 本主题介绍在 Azure、Azure Active Directory 和 Microsoft 在线服务中保护特许访问的方法。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mtillman
 editor: mwahl
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: 6611bd07ad4c65953349c62cae3ece735fd85e70
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f49d5a629b9643df81253c57ee8e3458b43b0c59
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>保护 Azure AD 中的特权访问
 保护特权访问是帮助保护现代组织中的业务资产的首要步骤。 特权帐户是指掌控和管理 IT 系统的帐户。 网络攻击者会攻击这些帐户来获取组织数据和系统的访问权限。 为了保护特权访问，应隔离此类帐户和系统，使其免受恶意用户的威胁。
@@ -63,7 +63,7 @@ Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案，可�
 借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查选择的特定条件，才允许访问应用程序。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
 
 ## <a name="related-articles"></a>相关文章
-* 启用 [Azure 多重身份验证](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)
+* 启用 [Azure 多重身份验证](../authentication/howto-mfa-getstarted.md)
 * 启用 [Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-configure.md)
 * 启用 [Azure AD Identity Protection](../active-directory-identityprotection.md)
 * 启用[条件性访问控制](../active-directory-conditional-access-azure-portal.md)

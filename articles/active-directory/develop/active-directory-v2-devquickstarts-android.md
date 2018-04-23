@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory v2.0 Android 应用 | Microsoft Docs"
-description: "如何生成一个使用 Microsoft 个人帐户和工作或学校帐户让用户登录并通过第三方库调用图形 API 的 Android 应用。"
+title: Azure Active Directory v2.0 Android 应用 | Microsoft Docs
+description: 如何生成一个使用 Microsoft 个人帐户和工作或学校帐户让用户登录并通过第三方库调用图形 API 的 Android 应用。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: danieldobalian
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 16294c07-f27d-45c9-833f-7dbb12083794
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 05/07/2017
 ms.author: dadobali
 ms.custom: aaddev
 ms.openlocfilehash: b1c30362a7b14c8f7f0c44d911c46c491b3de3c0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/17/2018
 ---
 # <a name="add-sign-in-to-an-android-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>使用 v2.0 终结点，通过图形 API 将登录添加到使用第三方库的 Android 应用
 Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect。 开发人员可以使用任何想要的库来与我们的服务集成。 为了帮助开发人员将我们的平台与其他库结合使用，我们撰写了数篇演练（例如本演练），演示如何配置第三方库，使其连接到 Microsoft 标识平台。 大部分实施 [RFC6749 OAuth2 规范](https://tools.ietf.org/html/rfc6749)的库都能连接到 Microsoft 标识平台。

@@ -1,12 +1,12 @@
 ---
-title: "使用 Azure App Service 保护 PaaS Web 和移动应用程序 | Microsoft Docs"
+title: 使用 Azure App Service 保护 PaaS Web 和移动应用程序 | Microsoft Docs
 description: " 了解有关保护 PaaS Web 和移动应用程序的 Azure App Service 安全最佳实践。 "
 services: security
 documentationcenter: na
 author: techlake
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: dec45d91ad1a73306b3e2656dd9bf7fdbe456720
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: d2e606fe23a3a6eb9d2310b0932ccec8fcfc518c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-paas-web-and-mobile-applications-using-azure-app-service"></a>使用 Azure App Service 保护 PaaS Web 和移动应用程序
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/22/2017
 使用应用服务时，请遵循以下最佳实践：
 
 - [通过 Azure Active Directory (AD) 进行身份验证](../app-service/app-service-authentication-overview.md)。 应用服务为标识提供者提供 OAuth 2.0 服务。 OAuth 2.0 注重简化客户端开发人员的工作，同时为 Web 应用程序、桌面应用程序和移动电话提供特定的授权流。 Azure AD 使用 OAuth 2.0，可让你授予移动和 Web 应用程序的访问权限。
-- 根据“需要知道”和“最低权限”安全原则限制访问。 对于想要实施数据访问安全策略的组织，限制访问是必须要做的事。 基于角色的访问控制 (RBAC) 可用于向特定范围的用户、组和应用程序分配权限。 若要了解有关向用户授予应用程序访问权限的详细信息，请参阅[访问管理入门](../active-directory/role-based-access-control-what-is.md)。
+- 根据“需要知道”和“最低权限”安全原则限制访问。 对于想要实施数据访问安全策略的组织，限制访问是必须要做的事。 基于角色的访问控制 (RBAC) 可用于向特定范围的用户、组和应用程序分配权限。 若要了解有关向用户授予应用程序访问权限的详细信息，请参阅[访问管理入门](../role-based-access-control/overview.md)。
 - 保护密钥。 如果丢失了订阅密钥，安全做得再好也无济于事。 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 通过密钥保管库，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了提升可靠性，可以在 HSM 中导入或生成密钥。 请参阅 [Azure Key Vault](../key-vault/key-vault-whatis.md) 了解详细信息。 还可以使用 Key Vault 和自动续订来管理 TLS 证书。
 - 限制传入的源 IP 地址。 [应用服务环境](../app-service/environment/intro.md)提供虚拟网络集成功能，可帮助你通过网络安全组 (NSG) 限制传入的源 IP 地址。 如果不熟悉 Azure 虚拟网络 (VNET)，可使用此功能将多个 Azure 资源放置在可以控制其访问权限但无法通过 Internet 路由的网络中。 若要了解详细信息，请参阅[将应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)。
 

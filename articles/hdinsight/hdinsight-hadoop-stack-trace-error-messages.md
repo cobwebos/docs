@@ -1,7 +1,7 @@
 ---
-title: "Hadoop 堆栈跟踪错误消息 - Azure HDInsight | Microsoft Docs"
-description: "Azure HDInsight 中的 Hadoop 堆栈跟踪错误消息的索引。 在列表中查找错误以查看故障排除信息。"
-keywords: "堆栈跟踪, 错误消息"
+title: Hadoop 堆栈跟踪错误消息 - Azure HDInsight | Microsoft Docs
+description: Azure HDInsight 中的 Hadoop 堆栈跟踪错误消息的索引。 在列表中查找错误以查看故障排除信息。
+keywords: 堆栈跟踪, 错误消息
 services: hdinsight
 documentationcenter: NA
 author: mumian
@@ -11,16 +11,14 @@ ms.assetid: 310051e5-5e2f-4be2-9780-2e8c0430e52d
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 49a7629987df77da0844a65b265cde87473b4d0c
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 8bf02df1dd2a82e9b2ea8b07ddc39bc9cc8b13f5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="index-of-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight 中的 Hadoop 索引疑难解答文章
 这些文章已按错误类型进行组织。

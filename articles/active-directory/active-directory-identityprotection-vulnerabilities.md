@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory Identity Protection 检测到的漏洞 | Microsoft 文档"
-description: "Azure Active Directory Identity Protection 检测到的漏洞概述。"
+title: Azure Active Directory Identity Protection 检测到的漏洞 | Microsoft 文档
+description: Azure Active Directory Identity Protection 检测到的漏洞概述。
 services: active-directory
-keywords: "Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略"
-documentationcenter: 
+keywords: Azure Active Directory Identity Protection, Cloud App Discovery, 管理应用程序, 安全, 风险, 风险级别, 漏洞, 安全策略
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 92233a5b-cb34-4d28-88cc-d5d29c0f3256
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 65b1ae76794c812f9fcf2955d09e023195ef6342
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 90fb659abfcff09eb715fcc29bbfb7e4facd3a6b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection 检测到的漏洞
 漏洞是环境中可能由攻击者利用的弱点。 我们建议解决这些漏洞，以提高组织的安全状态并防止攻击者利用它们。
@@ -38,7 +38,7 @@ Azure 多重身份验证提供用户身份验证的第二层安全。 它可帮�
 
 我们建议将 Azure 多重身份验证用于用户登录。多重身份验证在通过 Identity Protection 提供的基于风险的条件访问策略中起重要作用。
 
-有关更多详细信息，请参阅[什么是 Azure 多重身份验证？](../multi-factor-authentication/multi-factor-authentication.md)
+有关更多详细信息，请参阅[什么是 Azure 多重身份验证？](authentication/multi-factor-authentication.md)
 
 ## <a name="unmanaged-cloud-apps"></a>非托管的云应用
 此漏洞可帮助你标识组织中的非托管云应用。

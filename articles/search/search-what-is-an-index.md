@@ -1,22 +1,17 @@
 ---
-title: "Azure 搜索中的索引 | Microsoft Docs"
-description: "了解 Azure 搜索中的索引概念以及如何使用索引。"
-services: search
-documentationcenter: 
-author: ashmaka
-ms.assetid: a395e166-bf2e-4fca-8bfc-116a46c5f7b1
+title: Azure 搜索中的索引 | Microsoft Docs
+description: 了解 Azure 搜索中的索引概念以及如何使用索引。
+author: brjohnstmsft
+manager: jlembicz
+ms.author: brjohnst
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 11/08/2017
-ms.author: ashmaka
-ms.openlocfilehash: 87f1121594d8577b5dacac4026aa7d86b2921d10
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 933db5a9790088c38d4db8c3fffb1eed3c42c225
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="indexes-in-azure-search"></a>Azure 搜索中的索引
 > [!div class="op_single_selector"]
@@ -35,7 +30,7 @@ ms.lasthandoff: 12/18/2017
 定义架构时，必须在索引中指定每个字段的名称、类型和属性。 字段类型的作用是对该字段中存储的数据进行分类。 对各个字段设置属性的目的是指定字段的使用方式。 下表枚举了可以指定的类型和属性。
 
 ### <a name="field-types"></a>字段类型
-| 类型 | 说明 |
+| Type | 说明 |
 | --- | --- |
 | *Edm.String* |全文搜索可以选择性地标记化（断词、词干提取等）的文本。 |
 | *Collection(Edm.String)* |全文搜索可以选择性标记化的字符串列表。 理论上，集合中的项目数没有上限，但集合的有效负载大小上限为 16 MB。 |

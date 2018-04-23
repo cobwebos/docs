@@ -1,8 +1,8 @@
 ---
-title: "在 HDInsight 中使用基于时间的 Hadoop Oozie 协调器 | Microsoft Docs"
-description: "在 HDInsight 中使用基于时间的 Hadoop Oozie 协调器（大数据服务）。 了解如何定义 Oozie 工作流和协调器，并提交作业。"
+title: 在 HDInsight 中使用基于时间的 Hadoop Oozie 协调器 | Microsoft Docs
+description: 在 HDInsight 中使用基于时间的 Hadoop Oozie 协调器（大数据服务）。 了解如何定义 Oozie 工作流和协调器，并提交作业。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 manager: jhubbard
@@ -10,18 +10,16 @@ editor: cgronlun
 ms.assetid: 00c3a395-d51a-44ff-af2d-1f116c4b1c83
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0fa8e3630610913d909a75bf76236d120c8f1a2b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: db7f1f85601cfcf4531bb11176a21126625ce7f0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>将基于时间的 Oozie 协调器与 HDInsight 中的 Hadoop 配合使用以定义工作流和协调作业
 在本文中，学习如何定义工作流和协调器，以及如何基于时间触发协调器作业。 阅读本文前，浏览[将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]很有帮助。 除了 Oozie，还可以使用 Azure 数据工厂计划作业。 要了解 Azure 数据工厂，请参阅[将 Pig 和 Hive 用于数据工厂](../data-factory/transform-data.md)。
@@ -200,7 +198,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。 
     <tr><th>工作流变量</th><th>说明</th></tr>
     <tr><td>${jobTracker}</td><td>指定 Hadoop 作业跟踪器的 URL。 在 HDInsight 群集版本 2.0 和 3.0 上使用 <strong>jobtrackerhost:9010</strong>。</td></tr>
     <tr><td>${nameNode}</td><td>指定 Hadoop 名称节点的 URL。 请使用默认的文件系统 wasb:// 地址，例如 <i>wasb://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>。</td></tr>
-    <tr><td>${queueName}</td><td>指定要将作业提交到的队列名称。 使用“默认”<strong></strong>。</td></tr>
+    <tr><td>${queueName}</td><td>指定要将作业提交到的队列名称。 使用“默认”。</td></tr>
     </table>
 
     Hive 操作变量
@@ -309,7 +307,7 @@ HDInsight 将 Azure Blob 存储用于数据存储。 在 Azure Blob 存储中，
    > [!NOTE]
    > 如果有多个 Azure 订阅，而默认订阅不是想使用的，则请使用 <strong>Select-AzureSubscription</strong> cmdlet 来选择订阅。
 
-3. 将以下脚本复制到脚本窗格，并设置前六个变量：
+3. 将以下脚本复制到脚本窗格，然后设置前六个变量：
 
     ```powershell
     # WASB variables

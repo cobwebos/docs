@@ -1,5 +1,21 @@
-- 标题：“教程：使用 Azure CLI 设计 Azure Database for PostgreSQL” 描述：本教程演示如何使用 Azure CLI 创建、配置和查询首个 Azure Database for PostgreSQL 服务器。
-services: postgresql author: rachel-msft ms.author: raagyema manager: kfile editor: jasonwhowell ms.service: postgresql ms.custom: mvc ms.devlang: azure-cli ms.topic: tutorial ms.date: 04/01/2018
+---
+title: 教程：使用 Azure CLI 设计 Azure Database for PostgreSQL
+description: 本教程演示如何使用 Azure CLI 创建、配置和查询第一个 Azure Database for PostgreSQL 服务器。
+services: postgresql
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
+editor: jasonwhowell
+ms.service: postgresql
+ms.custom: mvc
+ms.devlang: azure-cli
+ms.topic: tutorial
+ms.date: 04/01/2018
+ms.openlocfilehash: acba480631ba69a81da3029aadfb9cb51797549a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for PostgreSQL 
 在本教程中，需使用 Azure CLI（命令行接口）以及其他实用工具了解如何完成以下操作：
@@ -27,31 +43,6 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 使用 [az group create](/cli/azure/group#az_group_create) 命令创建 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 `westus` 位置创建名为 `myresourcegroup` 的资源组。
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
-```
-
-## <a name="add-the-extension"></a>添加扩展
-使用以下命令添加更新的 Azure Database for PostgreSQL 管理扩展：
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-检查是否已安装正确的扩展版本。 
-```azurecli-interactive
-az extension list
-```
-
-返回的 JSON 应包括以下内容： 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-如果未返回版本 0.0.5，请运行以下命令来更新扩展： 
-```azurecli-interactive
-az extension update --name rdbms
 ```
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>创建 Azure Database for PostgreSQL 服务器

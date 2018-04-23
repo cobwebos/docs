@@ -1,25 +1,20 @@
 ---
-title: "将架构迁移到 SQL 数据仓库 | Microsoft 文档"
-description: "有关在开发解决方案时会架构迁移到 Azure SQL 数据仓库的技巧。"
+title: 将架构迁移到 SQL 数据仓库 | Microsoft 文档
+description: 有关在开发解决方案时会架构迁移到 Azure SQL 数据仓库的技巧。
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: 
-ms.assetid: 538b60c9-a07f-49bf-9ea3-1082ed6699fb
+author: jrowlandjones
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: migrate
-ms.date: 10/31/2016
-ms.author: joeyong;barbkess
-ms.openlocfilehash: 07ca2321852e276502187e768177e7e82bdfd080
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: jrj
+ms.reviewer: igorstan
+ms.openlocfilehash: fb1085450a16acb0f9a06a9dea9d91fc5ca23363
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="migrate-your-schemas-to-sql-data-warehouse"></a>将架构迁移到 SQL 数据仓库
 有关如何将 SQL 架构迁移到 SQL 数据仓库的指南。 

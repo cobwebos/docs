@@ -1,8 +1,8 @@
 ---
-title: "在 HDInsight (Hadoop) 上安装并使用 Giraph — Azure | Microsoft Docs"
-description: "了解如何使用脚本操作在基于 Linux 的 HDInsight 群集上安装 Giraph。 脚本操作可让你通过更改群集配置或安装服务和实用工具，在创建期间自定义群集。"
+title: 在 HDInsight (Hadoop) 上安装并使用 Giraph — Azure | Microsoft Docs
+description: 了解如何使用脚本操作在基于 Linux 的 HDInsight 群集上安装 Giraph。 脚本操作可让你通过更改群集配置或安装服务和实用工具，在创建期间自定义群集。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 9fcac906-8f06-4002-9fe8-473e42f8fd0f
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 1f2ee45d5d3a4dbb53faf43f67989ea92488b92a
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: dcfd37a40ce16a1574c21e3a6e9520cb2e773166
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>在 HDInsight Hadoop 群集上安装 Giraph 并使用 Giraph 处理大型图形
 

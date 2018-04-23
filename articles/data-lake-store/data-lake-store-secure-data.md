@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4d926ee08da593e590aa77a2ca09d8d1e1f6bb46
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5d91d8d00a37422dcead195354447d602b801f9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>保护 Azure Data Lake Store 中存储的数据
 保护 Azure Data Lake Store 中的数据包含三个步骤。  必须同时设置基于角色的访问控制 (RBAC) 和访问控制列表 (ACL) 才能为用户和安全组完全启用对数据的访问权限。
 
-1. 首先在 Azure Active Directory (AAD) 中创建安全组。 这些安全组用于实现 Azure 门户中基于角色的访问控制 (RBAC)。 有关详细信息，请参阅 [Microsoft Azure 中基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
+1. 首先在 Azure Active Directory (AAD) 中创建安全组。 这些安全组用于实现 Azure 门户中基于角色的访问控制 (RBAC)。 有关详细信息，请参阅 [Microsoft Azure 中基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
 2. 将 AAD 安全组分配到 Azure Data Lake Store 帐户。 这会控制从门户访问 Data Lake Store 帐户的访问权限和从门户或 API 的管理操作。
 3. 将 AAD 安全组分配为 Data Lake Store 文件系统上的访问控制列表 (ACL)
 4. 此外，也可设置可访问 Data Lake Store 中数据的客户端的 IP 地址范围。

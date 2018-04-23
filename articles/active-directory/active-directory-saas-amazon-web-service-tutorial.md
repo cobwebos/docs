@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 018893a2124f1ab9c98e0728bc90ad0a69cf471f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3f553b9ea3629a38ab9dea0e93b16c62aebe301f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 与 Amazon Web Services (AWS) 集成
 
@@ -202,9 +202,9 @@ ms.lasthandoff: 04/03/2018
 
     b. 在“角色说明”文本框中，输入说明。
 
-    a. 单击“创建角色”。
+    c. 单击“创建角色”。
 
-    b. 创建所需数量的角色，并将其映射到标识提供者。
+    d. 创建所需数量的角色，并将其映射到标识提供者。
 
 18. 在 Azure AD 用户预配中使用 AWS 服务帐户凭据从 AWS 帐户提取角色。 为此，请打开 AWS 控制台主页。
 
@@ -270,16 +270,7 @@ ms.lasthandoff: 04/03/2018
     
     c. 单击“创建策略”按钮。
 
-24. 在“审阅”对话框中，执行以下步骤：   
-    
-    ![配置单一登录审阅][34] 
-
-    a. 单击“创建角色”。
-
-    b. 创建所需数量的角色，并将其映射到标识提供者。
-
-
-25. 通过执行以下步骤，在 AWS IAM 服务中创建新的用户帐户：
+24. 通过执行以下步骤，在 AWS IAM 服务中创建新的用户帐户：
 
     a. 在 AWS IAM 控制台中单击“用户”导航。
 
@@ -299,7 +290,7 @@ ms.lasthandoff: 04/03/2018
     
     * 单击右下角的“后续权限”按钮。
 
-26. 现在，通过执行以下步骤为此用户创建新策略：
+25. 现在，通过执行以下步骤为此用户创建新策略：
 
     ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/adduser2.png)
     
@@ -309,7 +300,7 @@ ms.lasthandoff: 04/03/2018
     
     c. 选择“策略”，然后单击“下一步: 审阅”按钮。
 
-27. 通过执行以下步骤，审阅附加用户的策略：
+26. 通过执行以下步骤，审阅附加用户的策略：
 
     ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/adduser3.png)
     
@@ -317,7 +308,7 @@ ms.lasthandoff: 04/03/2018
     
     b. 单击右下角的“创建用户”按钮创建用户。
 
-28. 通过执行以下步骤，下载用户的用户凭据：
+27. 通过执行以下步骤，下载用户的用户凭据：
 
     ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/adduser4.png)
     
@@ -327,11 +318,11 @@ ms.lasthandoff: 04/03/2018
     
     c. 单击底部的“关闭”按钮。
 
-29. 在 Azure AD 管理门户中导航到 Amazon Web Services 应用的“用户预配”部分。
+28. 在 Azure AD 管理门户中导航到 Amazon Web Services 应用的“用户预配”部分。
 
     ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/provisioning.png)
 
-30. 分别在“客户端密码”和“密码令牌”字段中输入**访问密钥**和**密码**。
+29. 分别在“客户端密码”和“密码令牌”字段中输入**访问密钥**和**密码**。
 
     ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/provisioning1.png)
     
@@ -343,7 +334,7 @@ ms.lasthandoff: 04/03/2018
 
     d. 单击顶部的“保存”按钮保存此设置。
  
-31. 现在，确保在“设置”部分中将“预配状态”设置为“开”，方法是打开开关，然后单击顶部的“保存”按钮。
+30. 现在，确保在“设置”部分中将“预配状态”设置为“开”，方法是打开开关，然后单击顶部的“保存”按钮。
 
     ![添加用户](./media/active-directory-saas-amazon-web-service-tutorial/provisioning2.png)
 

@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 5a76f897-02e8-4437-8f2b-4fb12225854a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 9b5df3d5e355fac0c0ea4203d28170a2d3c04ad9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ea5b19abed0b9d2a2b8131f2be3be14e94e17405
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
 
@@ -63,7 +61,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
     1. 登录到 [Azure 门户](https://portal.azure.com)。
     2. 从左侧菜单中单击“订阅”。 它有一个黄色的密钥图标。 会看到订阅列表。
     3. 单击用于创建群集的订阅。 
-    4. 单击“我的权限”。  它显示你在订阅中的[角色](../active-directory/role-based-access-control-what-is.md#built-in-roles)。 至少需要具有“参与者”访问权限才能创建 HDInsight 群集。
+    4. 单击“我的权限”。  它显示你在订阅中的[角色](../role-based-access-control/overview.md#built-in-roles)。 至少需要具有“参与者”访问权限才能创建 HDInsight 群集。
 
 - 要使用现有资源组：
 
@@ -89,7 +87,7 @@ HDInsight 使用各种 Hadoop 组件。 有关已验证和支持的组件的列�
 
     **左侧菜单：**
     * **活动日志**：显示和查询活动日志。
-    * **访问控制 (IAM)**：使用角色分配。  请参阅[使用角色分配管理对 Azure 订阅资源的访问权限](../active-directory/role-based-access-control-configure.md)。
+    * **访问控制 (IAM)**：使用角色分配。  请参阅[使用角色分配管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)。
     * **标记**：允许设置键/值对，以定义云服务的自定义分类。 例如，可以创建名为 **project** 的键，并对与特定项目关联的所有服务使用一个公用值。
     * **诊断并解决问题**：显示疑难解答信息。
     * 锁定：添加锁防止群集遭到修改或删除。

@@ -1,8 +1,8 @@
 ---
-title: "在 HDInsight 中将 Hadoop Hive 与 PowerShell 配合使用 — Azure | Microsoft Docs"
-description: "使用 PowerShell 在 HDInsight 上的 Hadoop 中运行 Hive 查询。"
+title: 在 HDInsight 中将 Hadoop Hive 与 PowerShell 配合使用 — Azure | Microsoft Docs
+description: 使用 PowerShell 在 HDInsight 上的 Hadoop 中运行 Hive 查询。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: cb795b7c-bcd0-497a-a7f0-8ed18ef49195
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/26/2018
 ms.author: larryfr
-ms.openlocfilehash: fbd5ad2aedf0c3022e702a63f8e3d12735b41313
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 20ae2c93a231051d3802e8b2329d218d207204e3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="run-hive-queries-using-powershell"></a>使用 PowerShell 运行 Hive 查询
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -47,7 +45,7 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Hive 查询�
 
 在远程 HDInsight 群集上运行 Hive 查询时，将使用以下 Cmdlet：
 
-* `Add-AzureRmAccount`：在 Azure 订阅中进行 Azure PowerShell 身份验证。
+* `Connect-AzureRmAccount`：在 Azure 订阅中进行 Azure PowerShell 身份验证。
 * `New-AzureRmHDInsightHiveJobDefinition`：使用指定的 HiveQL 语句创建“作业定义”。
 * `Start-AzureRmHDInsightJob`：将作业定义发送到 HDInsight 并启动作业。 将返回作业对象。
 * `Wait-AzureRmHDInsightJob`：使用作业对象来检查作业的状态。 它等到作业完成或超出等待时间。

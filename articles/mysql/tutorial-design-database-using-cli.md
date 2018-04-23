@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 0c1c9364d6d7071e0aa454889417eeec3807f406
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3a06374119851560d517704b817fb9bf18728059
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>教程：使用 Azure CLI 设计 Azure Database for MySQL
 
@@ -48,30 +48,6 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
-```
-## <a name="add-the-extension"></a>添加扩展
-使用以下命令添加更新的 Azure Database for MySQL 管理扩展：
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-检查是否已安装正确的扩展版本。 
-```azurecli-interactive
-az extension list
-```
-
-返回的 JSON 应包括以下内容： 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-如果未返回版本 0.0.5，请运行以下命令来更新扩展： 
-```azurecli-interactive
-az extension update --name rdbms
 ```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>创建 Azure Database for MySQL 服务器

@@ -1,25 +1,19 @@
 ---
 title: 创建、管理和保护 Azure 搜索的管理员和查询 API 密钥 | Microsoft Docs
 description: API 密钥控制服务终结点的访问权限。 管理员密钥授予写入权限。 可为只读访问权限创建查询密钥。
-services: search
-documentationcenter: ''
 author: HeidiSteen
 manager: cgronlun
-editor: ''
 tags: azure-portal
-ms.assetid: ''
 ms.service: search
 ms.devlang: rest-api
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: heidist
-ms.openlocfilehash: ab04214dc02f337afdf8268b7d05b5e0896efc73
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6e2201778fe9cc75701fdb6a89cde268d1481994
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>创建和管理 Azure 搜索服务的 API 密钥
 
@@ -65,7 +59,7 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
 
 + 在服务仪表板中，单击“访问控制 (IAM)”可查看服务的角色分配。
 
-以下角色的成员可以查看和重新生成密钥：所有者、参与者和[搜索服务参与者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#search-service-contributor)
+以下角色的成员可以查看和重新生成密钥：所有者、参与者和[搜索服务参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
 
 > [!Note]
 > 如果要实现针对搜索结果的、基于标识的访问，可创建安全筛选器按标识来细化结果，由此去除请求者不应具有访问权限的那些文档。 有关详细信息，请参阅[安全筛选器](search-security-trimming-for-azure-search.md)和[使用 Active Directory 进行保护](search-security-trimming-for-azure-search-with-aad.md)。

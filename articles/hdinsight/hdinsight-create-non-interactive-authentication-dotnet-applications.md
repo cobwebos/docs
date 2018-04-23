@@ -1,26 +1,24 @@
 ---
-title: "在 Azure HDInsight 中创建非交互式身份验证 .NET 应用程序 | Microsoft Docs"
-description: "了解如何在 Azure HDInsight 中创建非交互式身份验证 Microsoft .NET 应用程序。"
+title: 在 Azure HDInsight 中创建非交互式身份验证 .NET 应用程序 | Microsoft Docs
+description: 了解如何在 Azure HDInsight 中创建非交互式身份验证 Microsoft .NET 应用程序。
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: mumian
 ms.assetid: 8e32430f-6404-498a-9fcd-f20338d964af
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: b2b24747ce4ea8499c999c693f00fb09178d52b0
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 5672dae5600634b53cfbc8d677f6e1b8e3fa327d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>创建非交互式身份验证 .NET HDInsight 应用程序
 可以在应用程序自身的标识（非交互式）或应用程序的已登录用户标识（交互式）下运行 Microsoft .NET Azure HDInsight 应用程序。 本文介绍了如何创建非交互式身份验证 .NET 应用程序以连接到 Azure 并管理 HDInsight。 有关交互式应用程序的示例，请参阅[连接到 Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)。 
@@ -35,7 +33,7 @@ ms.lasthandoff: 01/03/2018
 * HDInsight 群集。 请参阅[入门教程](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>将角色分配给 Azure AD 应用程序
-向 Azure AD 应用程序分配[角色](../active-directory/role-based-access-built-in-roles.md)，为其授予执行操作的权限。 可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域将继承权限。 （例如，将某个应用程序添加到资源组的“读取者”角色意味着该应用程序可以读取该资源组及其中包含的所有资源。）在本教程中，将在资源组级别设置作用域。 有关详细信息，请参阅[使用角色分配管理对 Azure 订阅资源的访问权限](../active-directory/role-based-access-control-configure.md)。
+向 Azure AD 应用程序分配[角色](../role-based-access-control/built-in-roles.md)，为其授予执行操作的权限。 可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域将继承权限。 （例如，将某个应用程序添加到资源组的“读取者”角色意味着该应用程序可以读取该资源组及其中包含的所有资源。）在本教程中，将在资源组级别设置作用域。 有关详细信息，请参阅[使用角色分配管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)。
 
 **将“所有者”角色添加到 Azure AD 应用程序**
 
@@ -127,4 +125,4 @@ ms.lasthandoff: 01/03/2018
 ## <a name="next-steps"></a>后续步骤
 * [在 Azure 门户中创建 Azure Active Directory 应用程序和服务主体](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
 * 了解如何[使用 Azure 资源管理器对服务主体进行身份验证](../azure-resource-manager/resource-group-authenticate-service-principal.md)。
-* 了解 [Azure 基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md)。
+* 了解 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md)。

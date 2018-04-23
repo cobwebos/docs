@@ -16,10 +16,10 @@ ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bbfb40b3740f9ea43df327a01ba6f4cf52d80457
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net-to-persist"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 46ba4ce992640e8a6d171ab839dd7cdb24e0b404
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 56a2b95aa11a7cea3c7b60bd1d3f2835e7dd17a8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>使用 PowerShell 创建 Application Insights 资源
 本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](app-insights-overview.md) 资源。 例如，可能在生成过程中执行此操作。 除了基本的 Application Insights 资源，还可创建[可用性 Web 测试](app-insights-monitor-web-app-availability.md)、设置[警报](app-insights-alerts.md)、设置[定价方案](app-insights-pricing.md)和创建其他 Azure 资源。
@@ -155,7 +155,7 @@ ms.lasthandoff: 04/03/2018
 ## <a name="create-application-insights-resources"></a>创建 Application Insights 资源
 1. 在 PowerShell 中，登录到 Azure：
    
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 2. 运行如下命令：
    
     ```PS

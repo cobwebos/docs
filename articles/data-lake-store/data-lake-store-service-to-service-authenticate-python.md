@@ -1,8 +1,8 @@
 ---
-title: "服务到服务身份验证：通过 Azure Active Directory 将 Python 与 Data Lake Store 配合使用 | Microsoft Docs"
-description: "了解如何通过 .Python 使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证"
+title: 服务到服务身份验证：通过 Azure Active Directory 将 Python 与 Data Lake Store 配合使用 | Microsoft Docs
+description: 了解如何通过 .Python 使用 Azure Active Directory 进行 Data Lake Store 服务到服务身份验证
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: c04b870e72c5d29df95d16b96cc423441af6fd85
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4a60ce14b711f50dd6cca996438ba0405ba4abcb
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-python"></a>使用 Python 进行 Data Lake Store 服务到服务身份验证
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.lasthandoff: 01/10/2018
 本文介绍了如何使用 Python SDK 执行 Azure Data Lake Store 服务到服务身份验证。 有关使用 .Python 的 Data Lake Store 最终用户身份验证，请参阅[使用 .Python 进行 Data Lake Store 最终用户身份验证](data-lake-store-end-user-authenticate-python.md)。
 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * **Python**。 可以从[此处](https://www.python.org/downloads/)下载 Python。 本文使用的是 Python 3.6.2。
 
@@ -102,7 +102,15 @@ pip install azure-datalake-store
 
 使用以下代码片段通过 Azure AD 对 Data Lake Store 上的文件系统操作（例如，创建文件夹、上传文件，等等）进行身份验证。可以使用以下代码片段通过应用程序/服务主体的客户端机密对应用程序进行非交互式身份验证。 请对现有的 Azure AD“Web 应用”应用程序使用这种身份验证。
 
-    adlCreds = lib.auth(tenant_id = 'FILL-IN-HERE', client_secret = 'FILL-IN-HERE', client_id = 'FILL-IN-HERE', resource = 'https://datalake.azure.net/')
+    tenant = '<TENANT>'
+    RESOURCE = 'https://datalake.azure.net/'
+    client_id = '<CLIENT_ID>'
+    client_secret = '<CLIENT_SECRET>'
+    
+    adlCreds = lib.auth(tenant_id = tenant,
+                    client_secret = client_secret,
+                    client_id = client_id,
+                    resource = RESOURCE)
 
 <!-- ## Service-to-service authentication with certificate for account management
 

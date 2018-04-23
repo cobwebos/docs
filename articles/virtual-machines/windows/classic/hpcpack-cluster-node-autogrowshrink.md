@@ -1,10 +1,10 @@
 ---
-title: "自动缩放 HPC Pack 群集节点 | Microsoft Docs"
-description: "自动扩展和收缩 Azure 中的 HPC Pack 群集计算节点数"
+title: 自动缩放 HPC Pack 群集节点 | Microsoft Docs
+description: 自动扩展和收缩 Azure 中的 HPC Pack 群集计算节点数
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
-manager: 
+manager: ''
 editor: tysonn
 ms.assetid: 38762cd1-f917-464c-ae5d-b02b1eb21e3f
 ms.service: virtual-machines-windows
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/08/2016
 ms.author: danlep
-ms.openlocfilehash: 0c8a5aacd19d83b26cfeb3750d57dd783687f1c4
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 4a2350183bc0cb9360e9315cd8a351be20b66584
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>在 Azure 中根据群集工作负荷自动扩展和收缩 HPC Pack 群集资源
 如果在 HPC Pack 群集中部署 Azure“突发”节点，或者在 Azure VM 中创建 HPC Pack 群集，可能希望有一种方法能够根据群集上的工作负荷自动扩展或收缩群集资源（例如节点或核心）。 以这种方式缩放群集资源，可更有效地使用 Azure 资源并控制其成本。
@@ -39,8 +39,7 @@ ms.lasthandoff: 10/27/2017
 
 * **HPC Pack 2012 R2 Update 2 或更高版群集** - 群集头节点既可以部署在本地，也可以部署在 Azure VM 中。 请参阅[使用 HPC Pack 设置一个混合群集](../../../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)，开始使用本地头节点和 Azure“突发”节点。 若要在 Azure VM 中快速部署 HPC Pack 群集，请参阅 [HPC Pack IaaS deployment script](hpcpack-cluster-powershell-script.md)（HPC Pack IaaS 部署脚本）。
 
-* 
-            **对于 Azure 中包含头节点的群集（资源管理器部署模型）** - 从 HPC Pack 2016 开始，Azure Active Directory 应用程序中的证书身份验证用于自动扩展和收缩使用 Azure 资源管理器部署的群集 VM。 配置证书，如下所示：
+* **对于 Azure 中包含头节点的群集（资源管理器部署模型）** - 从 HPC Pack 2016 开始，Azure Active Directory 应用程序中的证书身份验证用于自动扩展和收缩使用 Azure 资源管理器部署的群集 VM。 配置证书，如下所示：
 
   1. 部署群集后，远程桌面将连接到一个头节点。
 
@@ -51,13 +50,13 @@ ms.lasthandoff: 10/27/2017
     ```powershell
         cd $env:CCP_HOME\bin
 
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
     ```
         
     如果帐户存在于多个 Azure Active Directory 租户或 Azure 订阅中，则可以运行以下命令来选择正确的租户和订阅：
   
     ```powershell
-        Login-AzureRMAccount -TenantId <TenantId> -SubscriptionId <subscriptionId>
+        Connect-AzureRmAccount -TenantId <TenantId> -SubscriptionId <subscriptionId>
     ```     
        
     运行以下命令来查看当前所选的租户和订阅：
@@ -187,12 +186,12 @@ Set-HpcClusterProperty –ExcludeNodeGroups <group1,group2,group3>
 * **HPC Pack 2012 R2 Update 1 或更高版本群集** - **AzureAutoGrowShrink.ps1** 脚本已安装在 %CCP_HOME%bin 文件夹中。 群集头节点既可以部署在本地，也可以部署在 Azure VM 中。 请参阅[使用 HPC Pack 设置一个混合群集](../../../cloud-services/cloud-services-setup-hybrid-hpcpack-cluster.md)，开始使用本地头节点和 Azure“突发”节点。 若要在 Azure VM 中快速部署 HPC Pack 群集，请参阅 [HPC Pack IaaS deployment script](hpcpack-cluster-powershell-script.md)（HPC Pack IaaS 部署脚本），或使用 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)。
 * **Azure PowerShell 1.4.0** - 该脚本当前依赖于此特定版本的 Azure PowerShell。
 * **对于具有 Azure 突发节点的群集** - 在安装了 HPC Pack 的客户端计算机上或在头节点上运行脚本。 如果在客户端计算机上运行，请确保将变量 $env:CCP_SCHEDULER 设置为指向头节点。 Azure“突发”节点必须已添加到群集，但是其可能处于“未部署”状态。
-* **对于 Azure VM（Resource Manager 部署模型）中部署的群集** - 对于 Resource Manager 部署模型中部署的 Azure VM 群集，该脚本支持两种 Azure 身份验证方法：通过运行 `Login-AzureRmAccount` 登录到 Azure 帐户以每次运行该脚本，或者将服务主体配置为使用证书进行身份验证。 HPC Pack 提供了脚本 **ConfigARMAutoGrowShrinkCert.ps**，用于使用证书创建服务主体。 此脚本将创建 Azure Active Directory (Azure AD) 应用程序和服务主体，并将参与者角色分配给服务主体。 若要运行脚本，以管理员身份启动 Azure PowerShell 并运行以下命令：
+* **对于 Azure VM（Resource Manager 部署模型）中部署的群集** - 对于 Resource Manager 部署模型中部署的 Azure VM 群集，该脚本支持两种 Azure 身份验证方法：通过运行 `Connect-AzureRmAccount` 登录到 Azure 帐户以每次运行该脚本，或者将服务主体配置为使用证书进行身份验证。 HPC Pack 提供了脚本 **ConfigARMAutoGrowShrinkCert.ps**，用于使用证书创建服务主体。 此脚本将创建 Azure Active Directory (Azure AD) 应用程序和服务主体，并将参与者角色分配给服务主体。 若要运行脚本，以管理员身份启动 Azure PowerShell 并运行以下命令：
 
     ```powershell
     cd $env:CCP_HOME\bin
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
     .\ConfigARMAutoGrowShrinkCert.ps1 -DisplayName “YourHpcPackAppName” -HomePage "https://YourHpcPackAppHomePage" -IdentifierUri "https://YourHpcPackAppUri" -PfxFile "d:\yourcertificate.pfx"
     ```

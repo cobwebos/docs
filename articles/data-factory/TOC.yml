@@ -374,7 +374,9 @@
           href: manage-azure-ssis-integration-runtime.md
         - name: 配置 Azure-SSIS Integration Runtime 的性能设置
           href: configure-azure-ssis-integration-runtime-performance.md
-        - name: 使用存储过程活动调用 SSIS 包
+        - name: 使用 SSIS 活动运行 SSIS 包
+          href: how-to-invoke-ssis-package-ssis-activity.md
+        - name: 使用存储过程活动运行 SSIS 包
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: 计划 Azure-SSIS 集成运行时
           href: how-to-schedule-azure-ssis-integration-runtime.md

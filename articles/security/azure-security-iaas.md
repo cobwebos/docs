@@ -1,5 +1,5 @@
 ---
-title: "Azure 中 IaaS 工作负荷的安全性最佳实践 | Microsoft Docs"
+title: Azure 中 IaaS 工作负荷的安全性最佳实践 | Microsoft Docs
 description: " 将工作负荷迁移到 Azure IaaS 为重新评估设计带来了机会 "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
-ms.openlocfilehash: 376a3e47e5099aa4d74732e0b6ed14ed9af14091
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 8561d9ca2570975f4cd20a0606ce5b9cdee632b7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
 
@@ -83,7 +83,7 @@ PAW 方法是获得广泛认可的推荐做法的延伸，以使用单独分配�
 
 在实验室和开发环境中使用 Azure，组织可通过移除由硬件采购引入的延迟问题来增加测试和开发中的的灵活度。 遗憾的是，对 Azure 不熟悉或期望帮助提高其采用率可能导致管理员对权限分配过于随意。 这种风险可能会无意间将组织暴露于内部攻击之下。 可能会授予一些用户更多的访问权限，超过了其应具有的访问权限。
 
-[Azure 开发测试实验室](../devtest-lab/devtest-lab-overview.md)服务使用 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-what-is.md) (RBAC)。 使用 RBAC 可将团队内的责任分到各角色，这些角色仅授予用户完成其工作所需的访问级别。 RBAC 附带了预定义角色（所有者、实验室用户和参与者）。 甚至可以使用这些角色将权限分配给外部合作伙伴，大幅简化协作。
+[Azure 开发测试实验室](../devtest-lab/devtest-lab-overview.md)服务使用 [Azure 基于角色的访问控制](../role-based-access-control/overview.md) (RBAC)。 使用 RBAC 可将团队内的责任分到各角色，这些角色仅授予用户完成其工作所需的访问级别。 RBAC 附带了预定义角色（所有者、实验室用户和参与者）。 甚至可以使用这些角色将权限分配给外部合作伙伴，大幅简化协作。
 
 由于开发测试实验室使用了 RBAC，因此可以创建其他[自定义角色](../devtest-lab/devtest-lab-grant-user-permissions-to-specific-lab-policies.md)。 开发测试实验室不仅简化了权限管理，还简化了设置预配过程。 此外，它还可以帮助处理开发和测试环境中团队的其他典型挑战。 它需要一些准备工作，但从长远来看，它将使团队处理事情变得更轻松。
 

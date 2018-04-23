@@ -1,9 +1,9 @@
 ---
-title: "在 HDInsight 上运行 Hadoop MapReduce 示例 — Azure | Microsoft Docs"
-description: "开始使用 HDInsight 随附的 jar 文件中的 MapReduce 示例。 使用 SSH 连接到群集，然后使用 Hadoop 命令运行示例作业。"
-keywords: "hadoop 示例 jar,hadoop 示例 jar,hadoop mapreduce 示例,mapreduce 示例"
+title: 在 HDInsight 上运行 Hadoop MapReduce 示例 — Azure | Microsoft Docs
+description: 开始使用 HDInsight 随附的 jar 文件中的 MapReduce 示例。 使用 SSH 连接到群集，然后使用 Hadoop 命令运行示例作业。
+keywords: hadoop 示例 jar,hadoop 示例 jar,hadoop mapreduce 示例,mapreduce 示例
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,17 +11,15 @@ tags: azure-portal
 ms.assetid: e1d2a0b9-1659-4fab-921e-4a8990cbb30a
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: 1882412236e630322d52cb1875060798fef6c017
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 71283f74242db8ea8811300e38ef0a6c22e9e541
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>运行 HDInsight 随附的 MapReduce 示例
 

@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services 教程第 1 课：创建新的表格模型项目 | Microsoft Docs"
-description: "介绍如何创建新的 Azure Analysis Services 教程项目。"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: Azure Analysis Services 教程第 1 课：创建新的表格模型项目 | Microsoft Docs
+description: 介绍如何创建新的 Azure Analysis Services 教程项目。
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: fbe0784ae133a0b9a54c94b4ba3db317c14b3766
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 73764e7595d5b0bbc55ee9242e86ba19d5f80254
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-tabular-model-project"></a>创建表格模型项目
 
@@ -27,7 +20,7 @@ ms.lasthandoff: 01/09/2018
   
 本课预计完成时间：**10 分钟**  
   
-## <a name="prerequisites"></a>系统必备  
+## <a name="prerequisites"></a>先决条件  
 本主题是表格模型创作教程的第一课。 若要完成本课程，需要满足一些先决条件。 有关详细信息，请参阅 [Azure Analysis Services - Adventure Works 教程](../tutorials/aas-adventure-works-tutorial.md)。  
   
 ## <a name="create-a-new-tabular-model-project"></a>创建新的表格模型项目  

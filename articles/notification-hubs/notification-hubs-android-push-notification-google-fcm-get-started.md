@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: 0f4c766bd68227a85e2438bc68b2d61c69ce706c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: dc83ac568ddf3b7a70ec2d39c94c8bb2952c8386
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-notification-hubs-for-android-apps-and-firebase-cloud-messaging"></a>适用于 Android 应用和 Firebase Cloud Messaging 的 Azure 通知中心入门
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -285,8 +285,8 @@ ms.lasthandoff: 03/23/2018
         import android.util.Log;
         import android.widget.TextView;
         import android.widget.Toast;
-
-3. Add the following private members at the top of the class. You use these to [check the availability of Google Play Services as recommended by Google](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk).
+    ```
+3. 将以下私有成员添加到类的顶部。 可使用这些成员来[检查 Google 推荐的 Google Play 服务的可用性](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk)。
    
     ```java
         public static MainActivity mainActivity;

@@ -1,25 +1,18 @@
 ---
-title: "选择 Azure 搜索的 SKU 或定价层 | Microsoft Docs"
-description: "Azure 搜索可在以下 SKU 上进行预配：“免费”、“基本”和“标准”，其中“标准”在各种资源配置和容量级别中均可用。"
-services: search
-documentationcenter: 
+title: 选择 Azure 搜索的 SKU 或定价层 | Microsoft Docs
+description: Azure 搜索可在以下 SKU 上进行预配：“免费”、“基本”和“标准”，其中“标准”在各种资源配置和容量级别中均可用。
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: azure-portal
-ms.assetid: 8d4b7bca-02a5-43ee-b3f8-03551dfb32fd
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/24/2016
 ms.author: heidist
-ms.openlocfilehash: 781683f27c943e25d5629dd846da357f51c9d4f9
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 498ceb4a5d9e0bb9c8c5b5711c8c2687df3a3409
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="choose-a-sku-or-pricing-tier-for-azure-search"></a>选择 Azure 搜索的 SKU 或定价层
 在 Azure 搜索中，[服务已在特定的定价层或 SKU 上进行预配](search-create-service-portal.md)。 选项包括“免费”、“基本”或“标准”，其中“标准”在多个配置和容量中均可用。

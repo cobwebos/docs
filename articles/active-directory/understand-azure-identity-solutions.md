@@ -1,23 +1,23 @@
 ---
-title: "了解 Azure 标识 | Microsoft Docs"
-description: "大致了解 Microsoft Azure 标识解决方案的术语、概念和建议，以便为组织做出最明智的标识监管决策。"
-keywords: 
+title: 了解 Azure 标识 | Microsoft Docs
+description: 大致了解 Microsoft Azure 标识解决方案的术语、概念和建议，以便为组织做出最明智的标识监管决策。
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: jeffgilb
 ms.date: 7/17/2017
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 4438917db93c37ddbba3e7ee692b2e3c065d2beb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e5f76bd5da8ff040ea184544b96eb245c42d4dc2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="understand-azure-identity-solutions"></a>了解 Azure 标识解决方案
 Microsoft Azure Active Directory (Azure AD) 是一个标识和访问管理云解决方案，提供目录服务、标识监管和应用程序访问管理。 Azure AD 可以在 [Azure AD 应用程序库](https://azure.microsoft.com/marketplace/active-directory/all/)中数千个预先集成的商用和自定义应用上快速[实现单一登录 (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso)。 你也许已经在使用其中的许多应用，例如 Office 365、Salesforce.com、Box、ServiceNow 和 Workday。
@@ -53,7 +53,7 @@ Microsoft Azure 根据每个组织的需求提供复杂程度不一的多种方�
 |-----|-----|
 |[Azure 订阅与 Azure Active Directory 的关联方式](https://docs.microsoft.com/azure/active-directory/active-directory-how-subscriptions-associated-directory) |每个 Azure 订阅都与 Azure AD 目录建立了信任关系，以便对用户、服务和设备进行身份验证。 *多个订阅可以信任同一个 Azure AD 目录，但订阅只会信任单个 Azure AD 目录*。 这种信任关系不同于订阅与其他 Azure 资源（网站、数据库等）之间的信任关系，在后一种关系中，这些资源更像是订阅的子资源。 如果某个订阅过期，则对该订阅关联的非 Azure AD 资源的访问权限也将终止。 但是，Azure AD 目录将保留在 Azure 中，并且可以将另一个订阅与该目录相关联，然后继续管理租户资源。|
 |[Azure AD 许可的工作原理](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-get-started-azure-portal) | 当购买或激活 Enterprise Mobility Suite、Azure AD Premium 或 Azure AD Basic 时，目录会随着订阅更新，包括其有效期和预付许可证。 一旦激活订阅，该服务就可以由 Azure AD 全局管理员管理，并可以由许可的用户使用。 可以在 Azure 门户中的“Azure Active Directory” > “许可证”边栏选项卡上查看订阅信息，包括已分配或可用的许可证数目。 这也是管理许可证分配的最佳位置。|
-|[Azure 门户中基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)|Azure 基于角色的访问控制 (RBAC) 可帮助为 Azure 资源提供精细的访问管理。 权限过多，可能会向攻击者公开帐户。 权限太少，员工无法有效完成其工作。 使用 RBAC，可以根据应用到所有资源组的以下三个基本角色为员工分配所需的确切权限：所有者、参与者、读取者。 此外，还可以根据具体的需求，最多创建 2,000 个自己的[自定义 RBAC 角色](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)。 |
+|[Azure 门户中基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)|Azure 基于角色的访问控制 (RBAC) 可帮助为 Azure 资源提供精细的访问管理。 权限过多，可能会向攻击者公开帐户。 权限太少，员工无法有效完成其工作。 使用 RBAC，可以根据应用到所有资源组的以下三个基本角色为员工分配所需的确切权限：所有者、参与者、读取者。 此外，还可以根据具体的需求，最多创建 2,000 个自己的[自定义 RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。 |
 |[混合标识](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)|使用 [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) 将本地 Windows Server Active Directory (AD DS) 与 Azure AD 相集成可以实现混合标识。 这样，便可为集成到 Azure AD 的 Office 365、Azure 和本地应用或 SaaS 应用程序的用户提供一个通用标识。 使用混合标识可以有效地将本地环境扩展到云中，以进行标识和访问管理。|
 
 ### <a name="the-difference-between-windows-server-ad-ds-and-azure-ad"></a>Windows Server AD DS 与 Azure AD 之间的差别
@@ -111,7 +111,7 @@ Microsoft Azure 允许以多种方式管理用户的标识，不管这些标识�
 * [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](active-directory-saas-app-provisioning.md)
 * [Azure AD 报告入门](active-directory-reporting-getting-started.md)
 * [从任意位置管理密码](active-directory-passwords-update-your-own-password.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](active-directory-appssoaccess-whatis.md)
 * [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](active-directory-saas-app-provisioning.md)
 * [如何提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started.md)
 * [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)

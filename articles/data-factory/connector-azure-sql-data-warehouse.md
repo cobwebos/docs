@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 04/13/2018
 ms.author: jingwang
-ms.openlocfilehash: 5d284277f600465345be0058468192f2f5609d89
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0bc24fb0206455c723acf5e6f4b82d82002f727c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/23/2018
 本文概述了如何使用 Azure 数据工厂中的复制活动将数据复制到 Azure SQL 数据仓库以及从 Azure SQL 数据仓库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的 Azure SQL 数据仓库连接器](v1/data-factory-azure-sql-data-warehouse-connector.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅 [V1 中的 Azure SQL 数据仓库连接器](v1/data-factory-azure-sql-data-warehouse-connector.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -130,7 +130,7 @@ Azure SQL 数据仓库链接服务支持以下属性：
         "typeProperties": {
             "connectionString": {
                 "type": "SecureString",
-                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30"
             },
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {

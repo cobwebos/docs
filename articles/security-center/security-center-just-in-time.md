@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2018
 ms.author: terrylan
-ms.openlocfilehash: f1ea31d1081bc263cf85cf4dcc3d73d4cc0b842d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 22eee6c2253e6b1ff92de0cebf4fea451a0a8fe5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用恰时功能管理虚拟机访问
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 03/08/2018
 
 当启用了恰时访问时，安全中心会通过创建 NSG 规则来锁定发往 Azure VM 的入站流量。 你需要选择要锁定 VM 上的哪些端口的入站流量。 这些端口将受恰时解决方案控制。
 
-当用户请求访问 VM 时，安全中心会检查该用户是否具有为 VM 提供写入访问的[基于角色的访问控制 (RBAC)](../active-directory/role-based-access-control-configure.md) 权限。 如果用户具有写入权限，则会批准请求并且安全中心会自动将网络安全组 (NSG) 配置为在你指定的时间内允许发往管理端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。
+当用户请求访问 VM 时，安全中心会检查该用户是否具有为 VM 提供写入访问的[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。 如果用户具有写入权限，则会批准请求并且安全中心会自动将网络安全组 (NSG) 配置为在你指定的时间内允许发往管理端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。
 
 > [!NOTE]
 > 安全中心恰时 VM 访问当前仅支持通过 Azure 资源管理器部署的 VM。 若要了解有关经典部署模型和资源管理器部署模型的详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。

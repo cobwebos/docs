@@ -1,6 +1,6 @@
 ---
-title: "创建网络安全组 - Azure 门户 | Microsoft 文档"
-description: "了解如何使用 Azure 门户创建和部署网络安全组。"
+title: 创建网络安全组 - Azure 门户 | Microsoft 文档
+description: 了解如何使用 Azure 门户创建和部署网络安全组。
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 865032f350735d35668bb199ccf1ef3f0fae81de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd05df542327f9d8dae924b7097d247980a0558b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-network-security-groups-using-the-azure-portal"></a>使用 Azure 门户创建网络安全组
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="create-the-nsg-frontend-nsg"></a>创建 NSG-FrontEnd NSG
 若要如上述方案所示创建 **NSG-FrontEnd** NSG，请按照以下步骤进行操作。
 
-1. 从浏览器导航到 http://portal.azure.com，并在必要时用 Azure 帐户登录。
+1. 在浏览器中导航到 http://portal.azure.com，并根据需要使用 Azure 帐户登录。
 2. 单击“**浏览**” > “**网络安全组**”。
    
     ![Azure 门户 - NSG](./media/virtual-networks-create-nsg-arm-pportal/figure11.png)
@@ -92,6 +92,6 @@ ms.lasthandoff: 10/11/2017
 3. 重复[将 NSG 关联到 FrontEnd 子网](#Associate-the-NSG-to-the-FrontEnd-subnet)中的步骤以将 **NSG-Backend** NSG 关联到 **BackEnd** 子网。
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何[管理现有 NSG](virtual-network-manage-nsg-arm-portal.md)
+* 了解如何[管理现有 NSG](manage-network-security-group.md)
 * 为 NSG [启用日志记录](virtual-network-nsg-manage-log.md)。
 

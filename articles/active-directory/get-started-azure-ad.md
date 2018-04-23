@@ -1,25 +1,25 @@
 ---
-title: "Azure Active Directory 入门 | Microsoft Docs"
-description: "获取许可证，在 Azure Active Diretory 中添加域名，创建自定义登录页，并添加自助密码重置"
-keywords: 
+title: Azure Active Directory 入门 | Microsoft Docs
+description: 获取许可证，在 Azure Active Diretory 中添加域名，创建自定义登录页，并添加自助密码重置
+keywords: ''
 author: curtand
 manager: mtillman
 ms.author: curtand
 ms.reviewer: jsnow
 ms.date: 11/14/2017
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: active-directory
 ms.workload: identity
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: 9e1a7337c2477455aa0b56f2147f46f3bf5293a8
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: eedcb80038179cf74666880816cb0b5416ac63fd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-started-with-azure-ad"></a>Azure AD 入门
 现代的标识管理需要一贯的可伸缩性和可靠性，确保只向经过身份验证的用户提供应用程序和服务。 为了充分支持用户对标识管理的需求，IT 部门需要通过某种方式提供对已批准的公用软件即服务 (SaaS) 应用的访问，托管内部业务线应用，甚至还需要通过某些方式来增强本地应用的开发与使用。 满足所有这些要求需要一种基于云的标识管理解决方案。      
@@ -81,7 +81,7 @@ Azure AD 提供整套标识管理功能，包括同步本地资源信息、可�
 在“Azure Active Directory” > “许可证” > “所有产品”下面查看已分配的和可用的许可证。
 
 ## <a name="configure-self-service-password-reset"></a>配置自助密码重置
-IT 管理员可以让用户通过[自助密码重置 (SSPR)](active-directory-passwords-getting-started.md) 这种简单方法来重置或解锁其密码或帐户。 系统提供详细的报告，用于跟踪用户使用系统的时间，同时还提供通知，提醒用户存在误用或滥用情况。
+IT 管理员可以让用户通过[自助密码重置 (SSPR)](authentication/quickstart-sspr.md) 这种简单方法来重置或解锁其密码或帐户。 系统提供详细的报告，用于跟踪用户使用系统的时间，同时还提供通知，提醒用户存在误用或滥用情况。
 
 ### <a name="verification-step"></a>验证步骤
 在“Azure Active Directory” > “密码重置”下面查看已启用的 SSPR 属性，确保已完成适当的用户和组分配。 

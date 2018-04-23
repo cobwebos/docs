@@ -134,24 +134,24 @@
 #### [使用证书](active-directory-reporting-api-with-certificates.md)
 
 ## 管理密码
-### [密码概述](active-directory-passwords-overview.md)
+### [密码概述](authentication/active-directory-passwords-overview.md)
 ### 用户文档
 #### [重置或更改密码](active-directory-passwords-update-your-own-password.md)
 #### [密码最佳做法](active-directory-secure-passwords.md)
 #### [注册自助密码重置](active-directory-passwords-reset-register.md)
-### [SSPR 工作原理](active-directory-passwords-how-it-works.md)
-### [SSPR 部署指南](active-directory-passwords-best-practices.md)
+### [SSPR 工作原理](authentication/concept-sspr-howitworks.md)
+### [SSPR 部署指南](authentication/howto-sspr-deployment.md)
 ### [SSPR 和 Windows 10](active-directory-passwords-login.md)
-### [SSPR 策略](active-directory-passwords-policy.md)
-### [SSPR 自定义](active-directory-passwords-customize.md)
-### [SSPR 数据要求](active-directory-passwords-data.md)
-### [SSPR 报告](active-directory-passwords-reporting.md)
+### [SSPR 策略](authentication/concept-sspr-policy.md)
+### [SSPR 自定义](authentication/concept-sspr-customization.md)
+### [SSPR 数据要求](authentication/howto-sspr-authenticationdata.md)
+### [SSPR 报告](authentication/howto-sspr-reporting.md)
 ### IT 管理员：重置密码
 #### [Azure 门户](active-directory-users-reset-password-azure-portal.md)
-### [许可 SSPR](active-directory-passwords-licensing.md)
+### [许可 SSPR](authentication/concept-sspr-licensing.md)
 ### [密码写回](active-directory-passwords-writeback.md)
-### [故障排除](active-directory-passwords-troubleshoot.md)
-### [常见问题](active-directory-passwords-faq.md)
+### [故障排除](authentication/active-directory-passwords-troubleshoot.md)
+### [常见问题](authentication/active-directory-passwords-faq.md)
 
 
 ## 管理设备

@@ -1,11 +1,11 @@
 ---
-title: "媒体服务操作 REST API 概述 | Microsoft 文档"
-description: "媒体服务 REST API 概述"
+title: 媒体服务操作 REST API 概述 | Microsoft 文档
+description: 媒体服务 REST API 概述
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: juliako;johndeu
-ms.openlocfilehash: 066959058576af830103aa98a12f0c36acfdbb14
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 472408f1c367984d5f4e0e435366c4a0af2e5b34
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/08/2017
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
         x-ms-version: 2.17
-        Authorization: Bearer <token> 
+        Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
         {
@@ -54,7 +54,7 @@ ms.lasthandoff: 12/08/2017
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 请求标头
 每次调用媒体服务时，必须在请求中包括一组必需标头，还可以根据需要包括一组可选标头。 下表列出了必需的标头：
 
-| 标头 | 类型 | 值 |
+| 标头 | Type | 值 |
 | --- | --- | --- |
 | 授权 |持有者 |持有者是唯一接受的授权机制。 该值还必须包括由 Azure Active Directory 提供的访问令牌。 |
 | x-ms-version |小数 |2.17（或最新版本）|
@@ -68,7 +68,7 @@ ms.lasthandoff: 12/08/2017
 
 以下是一组可选标头：
 
-| 标头 | 类型 | 值 |
+| 标头 | Type | 值 |
 | --- | --- | --- |
 | 日期 |RFC 1123 日期 |请求的时间戳 |
 | Accept |内容类型 |响应的请求内容类型，例如：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 响应可能具有不同的内容类型，如 BLOB 提取，在该类型中成功的响应包含 BLOB 流作为负载。 |
@@ -77,15 +77,15 @@ ms.lasthandoff: 12/08/2017
 | Accept-Charset |字符集类型，如“UTF-8” |默认值为 UTF-8。 |
 | X-HTTP-Method |HTTP 方法 |允许不支持 HTTP 方法（例如 PUT 或 DELETE）的客户端或防火墙使用这些通过 GET 调用隧道化的方法。 |
 | Content-Type |内容类型 |PUT 或 POST 请求中请求正文的内容类型。 |
-| client-request-id |字符串 |调用方定义的值，用于标识给定请求。 如果指定，会在响应消息中包括此值，作为一种映射请求的方法。 <p><p>**重要说明**<p>值的上限应为 2096b (2k)。 |
+| client-request-id |String |调用方定义的值，用于标识给定请求。 如果指定，会在响应消息中包括此值，作为一种映射请求的方法。 <p><p>**重要说明**<p>值的上限应为 2096b (2k)。 |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>媒体服务支持的标准 HTTP 响应标头
 下面是可以根据你请求的资源以及要执行的操作返回给一组标头。
 
-| 标头 | 类型 | 值 |
+| 标头 | Type | 值 |
 | --- | --- | --- |
-| request-id |字符串 |当前操作的唯一标识符，由服务生成。 |
-| client-request-id |字符串 |调用方在原始请求（如果存在）中指定的标识符。 |
+| request-id |String |当前操作的唯一标识符，由服务生成。 |
+| client-request-id |String |调用方在原始请求（如果存在）中指定的标识符。 |
 | 日期 |RFC 1123 日期 |处理请求的日期/时间。 |
 | Content-Type |多种多样 |响应正文的内容类型。 |
 | Content-Encoding |多种多样 |Gzip 或 deflate（视情况而定）。 |

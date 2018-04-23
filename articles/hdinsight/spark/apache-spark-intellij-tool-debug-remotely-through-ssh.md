@@ -1,27 +1,25 @@
 ---
-title: "Azure Toolkit for IntelliJ：通过 SSH 远程调试 Spark 应用程序 | Microsoft Docs"
-description: "逐步介绍如何使用用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具通过 SSH 远程调试 HDInsight 群集上的应用程序"
-keywords: "远程调试 intellij, 远程调试 intellij, ssh, intellij, hdinsight, 调试 intellij, 调试"
+title: Azure Toolkit for IntelliJ：通过 SSH 远程调试 Spark 应用程序 | Microsoft Docs
+description: 逐步介绍如何使用用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具通过 SSH 远程调试 HDInsight 群集上的应用程序
+keywords: 远程调试 intellij, 远程调试 intellij, ssh, intellij, hdinsight, 调试 intellij, 调试
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: jejiang
 manager: DJ
 editor: Jenny Jiang
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
-ms.tgt_pltfrm: 
-ms.devlang: 
-ms.topic: article
+ms.devlang: ''
+ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: jejiang
-ms.openlocfilehash: dfffe935cd7e896fb251a3ed40a5493fbf836a6c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ede6267d55808fef7ddb8f076bd9c4927ce2e924
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>使用用于 IntelliJ 的 Azure 工具包通过 SSH 本地或远程调试 HDInsight 群集上的 Spark 应用程序
 
@@ -57,7 +55,7 @@ ms.lasthandoff: 02/21/2018
 
       ![创建调试项目](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
 
-   d.单击“下一步”。 选择“**下一步**”。     
+   d. 选择“**下一步**”。     
  
 2. 在下一个“新建项目”窗口中执行以下操作：
 
@@ -69,7 +67,7 @@ ms.lasthandoff: 02/21/2018
 
    c. 在“Spark 版本”下拉列表中，Scala 项目创建向导集成了 Spark SDK 和 Scala SDK 的正确版本。 如果 Spark 群集版本低于 2.0，请选择“Spark 1.x”。 否则，请选择“Spark 2.x”。 本示例使用“Spark 2.0.2 (Scala 2.11.8)”。
 
-   d.单击“下一步”。 选择“完成”。
+   d. 选择“完成”。
 
 3. 选择“src” > “main” > “scala”，在项目中打开代码。 本示例使用“SparkCore_wasbloTest”脚本。
 

@@ -1,9 +1,9 @@
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-使用 `Login-AzureRmAccount` 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
+使用 `Connect-AzureRmAccount` 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 如果你不知道要使用哪个位置，可以列出可用的位置。 显示列表后，找到要使用的位置。 本示例使用 **eastus**。 将其存储在变量中，并使用该变量，这样就可以在某个位置更改它。

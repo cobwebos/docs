@@ -1,25 +1,18 @@
 ---
-title: "Azure 搜索中的索引器 | Microsoft Docs"
-description: "对 Azure SQL 数据库、Azure Cosmos DB 或 Azure 存储爬网，提取可搜索的数据并填充 Azure 搜索索引。"
-services: search
-documentationcenter: 
+title: Azure 搜索中的索引器 | Microsoft Docs
+description: 对 Azure SQL 数据库、Azure Cosmos DB 或 Azure 存储爬网，提取可搜索的数据并填充 Azure 搜索索引。
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 
+manager: cgronlun
 ms.service: search
 ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: heidist
-ms.openlocfilehash: a51aa48a9a2c3c062c374885d45f08ae0b397ce1
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: a4130ceb3b60ac6b332e64964aa9e6c8b6e62450
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="indexers-in-azure-search"></a>Azure 搜索中的索引器
 > [!div class="op_single_selector"]

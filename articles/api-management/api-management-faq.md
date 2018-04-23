@@ -1,11 +1,11 @@
 ---
-title: "Azure API 管理常见问题解答 | Microsoft Docs"
-description: "了解 Azure API 管理中的常见问题解答 (FAQ)、模式和最佳做法。"
+title: Azure API 管理常见问题解答 | Microsoft Docs
+description: 了解 Azure API 管理中的常见问题解答 (FAQ)、模式和最佳做法。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2fa193cd-ea71-4b33-a5ca-1f55e5351e23
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 091cfaaf8fa1cccf2f8b819732946bbbd08fd426
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 243f0b8206166e3e054dfc423259bd3444d8a2db
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
@@ -88,7 +88,7 @@ ms.lasthandoff: 03/05/2018
 
 现在，新添加的参与者可以使用 Azure PowerShell [cmdlet](https://msdn.microsoft.com/library/mt613507.aspx)。 下面是以管理员身份登录的方法：
 
-1. 使用 `Login-AzureRmAccount` cmdlet 登录。
+1. 使用 `Connect-AzureRmAccount` cmdlet 登录。
 2. 使用 `Set-AzureRmContext -SubscriptionID <subscriptionGUID>` 将上下文设置为具有该服务的订阅。
 3. 使用 `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` 获取单一登录 URL。
 4. 使用 URL 访问管理员门户。

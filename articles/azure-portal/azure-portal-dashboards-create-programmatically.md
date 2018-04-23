@@ -1,8 +1,8 @@
 ---
-title: "以编程方式创建 Azure 仪表板 | Microsoft Docs"
-description: "本文介绍如何以编程方式创建 Azure 仪表板。"
+title: 以编程方式创建 Azure 仪表板 | Microsoft Docs
+description: 本文介绍如何以编程方式创建 Azure 仪表板。
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: adamab
 manager: timlt
 editor: tysonn
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 0e84ff61346f2788cf475cee2783ba2056a091ad
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3d72c8b026dd7c72be01aabcb47e76174d7afd6b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
@@ -55,7 +55,7 @@ Azure 中的共享仪表板与虚拟机和存储帐户一样，是一种[资源]
 
 ![“共享”命令](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-单击“共享”命令后显示一个对话框，提示选择要发布到的订阅和资源组。 请记住，必须对所选订阅和资源组[具有写入权限](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)。
+单击“共享”命令后显示一个对话框，提示选择要发布到的订阅和资源组。 请记住，必须对所选订阅和资源组[具有写入权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
 
 ![共享和访问](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 

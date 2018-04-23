@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 810c585e104f6b7bc63222594375527c45c6082d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e084db41cd199a9609e3edaf8b427a85ab2366b4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>面向 IT 专业人员的 Azure AD 自助服务密码重置
 
@@ -42,7 +42,7 @@ Azure AD SSPR 有助于：
 * **促进移动**，因为用户可以从任何位置重置其密码。
 * **保持控制**安全策略。 管理员可继续强制实施当前已有的策略。
 
-如果已准备好，可以按照我们的[快速入门指南](../active-directory-passwords-getting-started.md)开始使用 Azure AD SSPR。 可以快速为用户提供重置其自己的密码的功能。
+如果已准备好，可以按照我们的[快速入门指南](quickstart-sspr.md)开始使用 Azure AD SSPR。 可以快速为用户提供重置其自己的密码的功能。
 
 ## <a name="azure-ad-sspr-availability"></a>Azure AD SSPR 可用性
 
@@ -65,7 +65,7 @@ Azure AD SSPR 在三个层中可用，具体取决于订阅：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 是否已准备好开始使用 SSPR？ [设置 Azure AD 自助密码重置](../active-directory-passwords-getting-started.md)。
+* 是否已准备好开始使用 SSPR？ [设置 Azure AD 自助密码重置](quickstart-sspr.md)。
 * 使用[推出指南](howto-sspr-deployment.md)中的指南计划到用户的成功 SSPR 部署。
 * [重置或更改密码](../active-directory-passwords-update-your-own-password.md)。
 * [注册自助服务密码重置](../active-directory-passwords-reset-register.md)。

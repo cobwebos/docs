@@ -1,25 +1,18 @@
 ---
-title: "上传数据（.NET - Azure 搜索）| Microsoft Docs"
-description: "了解如何使用 .NET SDK 将数据上传到 Azure 搜索中的索引。"
-services: search
-documentationcenter: 
+title: 上传数据（.NET - Azure 搜索）| Microsoft Docs
+description: 了解如何使用 .NET SDK 将数据上传到 Azure 搜索中的索引。
 author: brjohnstmsft
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 0e0e7e7b-7178-4c26-95c6-2fd1e8015aca
+manager: jlembicz
+ms.author: brjohnst
 ms.service: search
 ms.devlang: dotnet
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 01/13/2017
-ms.author: brjohnst
-ms.openlocfilehash: bdd952869143c6ca6374bb9264db5bcba1f32b50
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 48b697c67d4a860c10375de249eb842b2cc4830d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>使用 .NET SDK 将数据上传到 Azure 搜索
 > [!div class="op_single_selector"]
@@ -62,7 +55,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 | 操作 | 说明 | 每个文档必需的字段 | 说明 |
 | --- | --- | --- | --- |
 | `Upload` |`Upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |关键字段以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
-| `Merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 包括 `DataType.Collection(DataType.String)`类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
+| `Merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 这包括 `DataType.Collection(DataType.String)`类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
 | `MergeOrUpload` |如果索引中已存在具有给定关键字段的文档，则此操作的行为类似于 `Merge`。 如果该文档不存在，则它的行为类似于对新文档进行 `Upload` 。 |关键字段以及要定义的任何其他字段 |- |
 | `Delete` |从索引中删除指定文档。 |仅关键字段 |所指定关键字段以外的所有字段都会被忽略。 如果要从文档中删除单个字段，请改用 `Merge`，只需将该字段显式设置为 null。 |
 
@@ -160,7 +153,7 @@ Thread.Sleep(2000);
 <a name="HotelClass"></a>
 
 ### <a name="how-the-net-sdk-handles-documents"></a>.NET SDK 如何处理文档
-用户可能想知道 Azure 搜索 .NET SDK 如何将用户定义的类（如 `Hotel` ）的实例上传到索引。 为了帮助回答这个问题，让我们看一下 `Hotel` 类，该类映射到 [使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md#DefineIndex)中定义的索引架构：
+用户可能想知道 Azure 搜索 .NET SDK 如何将用户定义的类（如 `Hotel`）的实例上传到索引。 为了帮助回答这个问题，让我们看一下 `Hotel` 类，该类映射到 [使用 .NET SDK 创建 Azure 搜索索引](search-create-index-dotnet.md#DefineIndex)中定义的索引架构：
 
 ```csharp
 [SerializePropertyNamesAsCamelCase]

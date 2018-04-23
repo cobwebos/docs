@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: 730a59aab76140159536c3d564d8bd66e0466899
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a7c86ab78704baf4048bc0415d89c1ab826e16bc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB：使用 Java 和 Azure 门户创建图形数据库
 
@@ -47,24 +47,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="add-a-graph"></a>添加图形
 
-现在可以在 Azure 门户中使用数据资源管理器工具来创建图形数据库。 
-
-1. 依次单击“数据资源管理器” > “新图形”。
-
-    此时，最右侧显示“添加图形”区域，可能需要向右滚动才能看到。
-
-    ![Azure 门户“数据资源管理器”中的“添加图形”页](./media/create-graph-java/azure-cosmosdb-data-explorer-graph.png)
-
-2. 在“添加图形”页上，输入新图形的设置。
-
-    设置|建议的值|说明
-    ---|---|---
-    数据库 ID|sample-database|输入“sample-database”作为新数据库的名称。 数据库名称的长度必须为 1 到 255 个字符，不能包含 `/ \ # ?` 或尾随空格。
-    图形 ID|sample-graph|输入“sample-graph”作为新集合的名称。 图形名称与数据库 ID 的字符要求相同。
-    存储容量|固定 (10 GB)|保留默认值为“固定 (10 GB)”。 此值是数据库的存储容量。
-    Throughput|400 RU|将吞吐量更改为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。
-
-3. 填写表单后，请单击“确定”。
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
