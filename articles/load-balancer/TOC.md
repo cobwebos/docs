@@ -12,15 +12,15 @@
 ## [标准负载均衡器指标和诊断](load-balancer-standard-diagnostics.md)
 
 # 入门
-## [创建基本负载均衡器](load-balancer-get-started-internet-portal.md)
-### [创建基本负载均衡器 (CLI)](load-balancer-get-started-internet-arm-cli.md)
-### [创建基本负载均衡器 (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
-## [创建标准负载均衡器](load-balancer-standard-public-portal.md)
-### [创建标准负载均衡器 (CLI)](load-balancer-standard-public-cli.md)
+## [创建基本负载均衡器](quickstart-create-basic-load-balancer-portal.md)
+### [创建基本负载均衡器 (CLI)](quickstart-create-basic-load-balancer-cli.md)
+### [创建基本负载均衡器 (PowerShell)](quickstart-create-basic-load-balancer-powershell.md)
+## [创建标准负载均衡器](quickstart-load-balancer-standard-public-portal.md)
+### [创建标准负载均衡器 (CLI)](quickstart-load-balancer-standard-public-cli.md)
 
 # 如何
 
-## [创建区域冗余的公共标准负载均衡器](load-balancer-get-started-internet-az-portal.md)
+## [创建区域冗余的公共标准负载均衡器](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
 ### [创建区域冗余的公共标准负载均衡器 (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
 ### [创建区域冗余的公共标准负载均衡器 (CLI)](load-balancer-get-started-internet-az-cli.md)
 ## [创建区域的公共标准负载均衡器](load-balancer-get-started-internet-availability-zones-zonal-portal.md)
@@ -28,7 +28,8 @@
 ### [创建区域冗余的公共标准负载均衡器 (CLI)](load-balancer-get-started-internet-availability-zones-zonal-cli.md)
 ## [跨可用性区域对 VM 进行负载均衡](load-balancer-standard-public-availability-zones-portal.md)
 ###  [跨可用性区域对 VM 进行负载均衡 (CLI)](load-balancer-standard-public-zone-redundant-cli.md)
-##  [在区域内对 VM 进行负载均衡 (CLI)](load-balancer-standard-public-zonal-cli.md)   
+## [在区域内对 VM 进行负载均衡](tutorial-load-balancer-standard-public-zonal-portal.md)  
+###  [在区域内对 VM 进行负载均衡 (CLI)](load-balancer-standard-public-zonal-cli.md)   
 ## [创建基本负载均衡器（模板）](load-balancer-get-started-internet-arm-template.md)
 ## [使用 IPv6 创建公共负载均衡器](load-balancer-ipv6-internet-ps.md)
 ### [使用 IPv6 创建公共负载均衡器 (CLI)](load-balancer-ipv6-internet-cli.md)

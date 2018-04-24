@@ -48,6 +48,7 @@
 ### [前瞻性维护解决方案演练](iot-suite-predictive-walkthrough.md)
 
 ## 连接工厂
+### [什么是连接工厂？](iot-suite-connected-factory-features.md)
 ### [已连接的工厂解决方案概述](iot-suite-connected-factory-overview.md)
 ### [已连接的工厂解决方案演练](iot-suite-connected-factory-sample-walkthrough.md)
 

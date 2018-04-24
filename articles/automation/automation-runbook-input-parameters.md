@@ -271,7 +271,7 @@ Runbook 有多种启动方式：通过 Azure 门户、Webhook、PowerShell cmdle
 
 ![创建 webhook 并分配参数](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
-使用 Webhook 执行 Runbook 时，会发送预定义的输入参数 **[Webhookdata](automation-webhooks.md#details-of-a-webhook)**定义的输入参数。 可单击 **WebhookData** 参数将它展开，以查看更多详细信息。
+使用 Webhook 执行 Runbook 时，会发送预定义的输入参数 **[Webhookdata](automation-webhooks.md#details-of-a-webhook)** 定义的输入参数。 可单击 **WebhookData** 参数将它展开，以查看更多详细信息。
 
 ![WebhookData 参数](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 

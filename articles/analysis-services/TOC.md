@@ -31,6 +31,7 @@
 ### [管理服务器管理员](analysis-services-server-admins.md)
 ### [监视服务器指标](analysis-services-monitor.md)
 ### [设置诊断日志记录](analysis-services-logging.md)
+### [将网关用于 VNET 上的数据源](analysis-services-vnet-gateway.md)
 ## 连接
 ### [获取客户端库](analysis-services-data-providers.md)
 ### [使用 Excel 进行连接](analysis-services-connect-excel.md)

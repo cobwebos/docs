@@ -29,7 +29,7 @@
       href: app-service-web-get-started-html.md
 - name: 教程
   items:
-    - name: 1 - 将应用与 DB 配合使用
+    - name: 将应用与 DB 配合使用
       items:
         - name: 将 .NET Core 与 SQL DB 配合使用
           href: app-service-web-tutorial-dotnetcore-sqldb.md
@@ -43,15 +43,17 @@
           href: app-service-web-tutorial-java-mysql.md
         - name: 将 Python 与 PostgreSQL 配合使用
           href: app-service-web-tutorial-python-postgresql.md
-    - name: 1 - 托管 RESTful API
+    - name: 安全访问 SQL DB
+      href: app-service-web-tutorial-connect-msi.md
+    - name: 托管 RESTful API
       href: app-service-web-tutorial-rest-api.md
-    - name: 2 - 映射自定义域
+    - name: 映射自定义域
       href: app-service-web-tutorial-custom-domain.md
-    - name: 3 - 绑定 SSL 证书
+    - name: 绑定 SSL 证书
       href: app-service-web-tutorial-custom-ssl.md
-    - name: 4 - 添加 CDN
+    - name: 添加 CDN
       href: app-service-web-tutorial-content-delivery-network.md
-    - name: 5 - 对用户进行身份验证
+    - name: 对用户进行身份验证
       href: app-service-web-tutorial-auth-aad.md
 - name: 示例
   items:
@@ -69,6 +71,8 @@
       href: azure-web-sites-web-hosting-plans-in-depth-overview.md
     - name: OS 功能
       href: web-sites-available-operating-system-functionality.md
+    - name: 入站和出站 IP
+      href: app-service-ip-addresses.md
     - name: 身份验证和授权
       href: app-service-authentication-overview.md
     - name: 混合连接
@@ -143,6 +147,8 @@
               href: app-service-mobile-how-to-configure-twitter-authentication.md
         - name: 自定义身份验证
           href: app-service-authentication-how-to.md
+        - name: 限制 IP
+          href: app-service-ip-restrictions.md
         - name: 使用托管服务标识
           href: app-service-managed-service-identity.md
         - name: 在应用程序代码中使用 SSL 证书

@@ -320,7 +320,7 @@ return $WebDeployPackage
 | Find-AzureVM |获取指定的 Azure 虚拟机。 |
 | Format-DevTestMessageWithTime |在消息的前面添加日期和时间。 此函数适用于写入到错误流和详细流的消息。 |
 | Get-AzureSQLDatabaseConnectionString |汇编一个连接字符串以连接到 Azure SQL 数据库。 |
-| Get-AzureVMStorage |返回指定的位置或地缘组中名称模式为 "devtest*"（不区分大小写）的第一个存储帐户的名称。如果“devtest*存储帐户与该位置或地缘组不匹配，则该函数会将其忽略。 指定一个位置或地缘组。 |
+| Get-AzureVMStorage |返回指定的位置或地缘组中名称模式为 "devtest *"（不区分大小写）的第一个存储帐户的名称。如果“devtest*存储帐户与该位置或地缘组不匹配，则该函数会将其忽略。 指定一个位置或地缘组。 |
 | Get-MSDeployCmd |返回一个用于运行 MsDeploy.exe 工具的命令。 |
 | New-AzureVMEnvironment |在订阅中查找或创建与 JSON 配置文件中的值匹配的虚拟机。 |
 | Publish-WebPackage |使用 MsDeploy.exe 和 Web 发布包 .Zip 文件将资源部署到网站。 此函数不生成任何输出。 如果调用 MSDeploy.exe 失败，该函数将引发异常。 若要获取更详细的输出，请使用 **-Verbose** 选项。 |

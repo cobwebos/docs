@@ -17,7 +17,7 @@
 ## [配置公司品牌](customize-branding.md)
 ## [将用户添加到 Azure AD](add-users-azure-active-directory.md)
 ## [将许可证分配给用户](license-users-groups.md)
-## [配置自助服务密码重置](active-directory-passwords-getting-started.md)
+## [配置自助服务密码重置](authentication/quickstart-sspr.md)
 
 
 # 如何
@@ -63,6 +63,8 @@
 #### [动态组和 B2B 用户](active-directory-b2b-dynamic-groups.md)
 #### [审核和报表](active-directory-b2b-auditing-and-reporting.md)
 #### [适用于混合组织的 B2B](active-directory-b2b-hybrid-organizations.md)
+##### [授予 B2B 用户对本地应用的访问权限](active-directory-b2b-hybrid-cloud-to-on-premises.md)
+##### [授予本地用户对云应用的访问权限](active-directory-b2b-hybrid-on-premises-to-cloud.md)
 #### [B2B 和 Office 365 外部共享](active-directory-b2b-o365-external-user.md)
 #### [B2B 许可](active-directory-b2b-licensing.md)
 #### [当前限制](active-directory-b2b-current-limitations.md)
@@ -119,6 +121,7 @@
 #### [保留](active-directory-reporting-retention.md)
 #### [延迟](active-directory-reporting-latencies-azure-portal.md)
 #### [通知](active-directory-reporting-notifications.md)
+#### [审核活动参考](active-directory-reporting-activity-audit-reference.md)
 #### [登录活动错误代码](active-directory-reporting-activity-sign-ins-errors.md)
 #### [多重身份验证](active-directory-reporting-activity-sign-ins-mfa.md)
 ### 故障排除
@@ -141,7 +144,7 @@
 #### [注册自助密码重置](active-directory-passwords-reset-register.md)
 ### [SSPR 工作原理](authentication/concept-sspr-howitworks.md)
 ### [SSPR 部署指南](authentication/howto-sspr-deployment.md)
-### [SSPR 和 Windows 10](active-directory-passwords-login.md)
+### [SSPR 和 Windows 10](authentication/tutorial-sspr-windows.md)
 ### [SSPR 策略](authentication/concept-sspr-policy.md)
 ### [SSPR 自定义](authentication/concept-sspr-customization.md)
 ### [SSPR 数据要求](authentication/howto-sspr-authenticationdata.md)
@@ -149,7 +152,7 @@
 ### IT 管理员：重置密码
 #### [Azure 门户](active-directory-users-reset-password-azure-portal.md)
 ### [许可 SSPR](authentication/concept-sspr-licensing.md)
-### [密码写回](active-directory-passwords-writeback.md)
+### [密码写回](authentication/howto-sspr-writeback.md)
 ### [故障排除](authentication/active-directory-passwords-troubleshoot.md)
 ### [常见问题](authentication/active-directory-passwords-faq.md)
 

@@ -12,4 +12,5 @@
 ## 使用 Microsoft Authenticator 应用
 ### [应用入门](microsoft-authenticator-app-how-to.md)
 ### [使用手机登录](microsoft-authenticator-app-phone-signin-faq.md)
+### [备份和恢复帐户凭据](microsoft-authenticator-app-backup-and-recovery.md)
 ### [常见问题](microsoft-authenticator-app-faq.md)

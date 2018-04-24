@@ -13,6 +13,7 @@
 #### [Java](iot-hub-java-java-getstarted.md)
 #### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
+#### [iOS (Swift)](quickstart-send-telemetry-ios.md)
 
 ### [使用联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)
 
@@ -92,6 +93,7 @@
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.js](iot-hub-node-node-c2d.md)
 #### [Python](iot-hub-python-python-c2d.md)
+#### [iOS](iot-hub-ios-swift-c2d.md)
 ### 从设备上传文件
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
