@@ -24,7 +24,7 @@ Azure IoT 套件具有独特的功能，使得从 IoT 设备预配、连接和�
 
 Microsoft Azure 提供完整的云解决方案，其中结合了持续成长的集成式云服务（分析、机器学习、存储、安全、网络功能和 Web）集合，通过行业领先的承诺来为数据提供保护与隐私。 Microsoft 的[假设性违规](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/)策略将通过由软件安全专家组成的专属“红色团队”，来模拟攻击、测试要检测的 Azure 能力、防范新兴威胁，以及从违规中恢复。 Microsoft 的[全球事件响应](https://www.microsoft.com/TrustCenter/Security/DesignOpSecurity)团队夜以继日地工作，以减缓攻击与恶意活动造成的影响。 该团队遵循事件管理、通信和恢复所创建的过程，并与内部和外部伙伴合作来使用可探索且可预测的接口。
 
-Microsoft 的系统提供持续的入侵检测和防护、服务攻击预防、定期渗透测试和法医式工具帮助识别与缓解威胁。 [多重身份验证](../articles/multi-factor-authentication/multi-factor-authentication.md)可为访问网络的最终用户提供额外的安全层。 此外，对于应用程序和主机提供程序，Microsoft 提供访问控制、监视、反恶意软件、漏洞扫描、修补和配置管理。
+Microsoft 的系统提供持续的入侵检测和防护、服务攻击预防、定期渗透测试和法医式工具帮助识别与缓解威胁。 [多重身份验证](../articles/active-directory/authentication/multi-factor-authentication.md)可为访问网络的最终用户提供额外的安全层。 此外，对于应用程序和主机提供程序，Microsoft 提供访问控制、监视、反恶意软件、漏洞扫描、修补和配置管理。
 
 Microsoft Azure IoT 套件使用内置于 Azure 平台中的安全和隐私功能，以及针对所有 Microsoft 软件的安全开发和操作提供的 SDL 和 OSA 过程。 这些过程提供基础结构保护、网络保护，以及标识与管理功能，作为任何解决方案安全的基础。
 

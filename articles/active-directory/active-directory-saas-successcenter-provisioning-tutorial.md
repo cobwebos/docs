@@ -1,8 +1,8 @@
 ---
-title: "教程：使用 Azure Active Directory 为 Cornerstone OnDemand 配置自动用户预配 | Microsoft Docs"
-description: "了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Cornerstone OnDemand 以及取消其预配。"
+title: 教程：使用 Azure Active Directory 为 Cornerstone OnDemand 配置自动用户预配 | Microsoft Docs
+description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Cornerstone OnDemand 以及取消其预配。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: zhchia
 writer: zhchia
 manager: beatrizd
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.openlocfilehash: 8aed9bdcdd54f2f0ef3cd81f979635e5716f0b5f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>教程：为 Cornerstone OnDemand 配置自动用户预配
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/05/2018
 
 若要从 Azure AD 应用程序库中添加 Cornerstone OnDemand，请执行以下步骤：
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
