@@ -10,11 +10,11 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 3cea41a7c129ee5a691226097d087539f943bec6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5ceb8cfd8efea66dbf17b8c522316b9a010e437d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>为 Azure SQL 数据仓库设计提取、加载和转换 (ELT)
 
@@ -56,7 +56,7 @@ PolyBase 技术可以通过 T-SQL 语言访问数据库外部的数据。 它是
 PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 除了带分隔符的文本文件以外，它还可以从 Hadoop 文件格式、RC 文件、ORC 和 Parquet 加载数据。 PolyBase 可以从 Gzip 和 Snappy 压缩文件加载数据。 PolyBase 目前不支持扩展的 ASCII、固定宽度格式以及 WinZip、JSON 和 XML 等嵌套格式。
 
 ### <a name="non-polybase-loading-options"></a>非 PolyBase 加载选项
-如果数据与 PolyBase 不兼容，可以使用 [bcp](sql-data-warehouse-load-with-bcp.md) 或 [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx)。 bcp 将数据直接加载到 SQL 数据仓库，而无需经过 Azure Blob 存储，但只适用于小规模的加载。 请注意，这些选项的加载性能明显低于 PolyBase。 
+如果数据与 PolyBase 不兼容，可以使用 [bcp](/sql/tools/bcp-utility) 或 [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx)。 bcp 将数据直接加载到 SQL 数据仓库，而无需经过 Azure Blob 存储，但只适用于小规模的加载。 请注意，这些选项的加载性能明显低于 PolyBase。 
 
 
 ## <a name="extract-source-data"></a>提取源数据

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: d9720cb148af4199ab50a724b17158f9548f35b6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 53afdfd3286a224a824b58287fb835c3b98ede3d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>排查自助密码重置问题
 
@@ -304,7 +304,7 @@ Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密�
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)
-* [什么是密码写回？我为什么关心它？](../active-directory-passwords-writeback.md)
+* [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)

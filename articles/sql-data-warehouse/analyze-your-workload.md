@@ -2,24 +2,25 @@
 title: 分析工作负荷 - Azure SQL 数据仓库 | Microsoft Docs
 description: 分析针对 Azure SQL 数据仓库中工作负荷的查询优化的技巧。
 services: sql-data-warehouse
-author: sqlmojo
-manager: jhubbard
+author: kevinvngo
+manager: craigg-msft
+ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 03/28/2018
-ms.author: joeyong
-ms.reviewer: jrj
-ms.openlocfilehash: 7fa5bbd8d9a50bb1dcd1ab5be73f4e248cbbf8fc
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: c2f6e1092b9375a90eb1909696a196c9ab4b5dad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="analyze-your-workload"></a>分析工作负荷
+# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>分析 Azure SQL 数据仓库中的工作负荷
 分析针对 Azure SQL 数据仓库中工作负荷的查询优化的技巧。
 
 ## <a name="workload-groups"></a>工作负荷组 
-SQL 数据仓库通过使用工作负荷组来实现资源类。 总共有八个工作负荷组用于控制不同 DWU 大小的资源类的行为。 对于任何 DWU，SQL 数据仓库只使用八个工作负荷组中的四个。 这样做是合理的，因为每个工作负荷组会被分配到以下四个资源类中的一个：smallrc、mediumrc、largerc 或 xlargerc。 了解工作负荷组的重要性在于其中一些工作负荷组已设置为较高的重要性。 重要性用于 CPU 计划。 重要性为高的查询在运行时所获得的 CPU 周期数将是重要性为中的查询的 3 倍。 因此，并发槽映射也决定了 CPU 优先级。 如果某个查询使用了至少 16 个槽，则该查询是作为重要性高的查询运行的。
+SQL 数据仓库通过使用工作负荷组来实现资源类。 总共有八个工作负荷组用于控制不同 DWU 大小的资源类的行为。 对于任何 DWU，SQL 数据仓库只使用八个工作负荷组中的四个。 此方法是合理的，因为每个工作负荷组会被分配到以下四个资源类中的一个：smallrc、mediumrc、largerc 或 xlargerc。 了解工作负荷组的重要性在于其中一些工作负荷组已设置为较高的重要性。 重要性用于 CPU 计划。 重要性为高的查询在运行时所获得的 CPU 周期数是重要性为中的查询的 3 倍。 因此，并发槽映射也决定了 CPU 优先级。 如果某个查询使用了至少 16 个槽，则该查询是作为重要性高的查询运行的。
 
 下表显示了每个工作负荷组的重要性映射。
 
@@ -38,7 +39,7 @@ SQL 数据仓库通过使用工作负荷组来实现资源类。 总共有八个
 | SloDWGroupC08   | 256                      | 25,600                         | 64,000                      | 高               |
 
 <!-- where are the allocation and consumption of concurrency slots charts? -->
-从**分配和使用并发槽**图中可以看到，对于 smallrc、mediumrc、largerc 和 xlargerc，DW500 分别使用 1、4、8 和 16 个并发槽。 可以在上面的图中查找这些值，以找到每个资源类的重要性。
+**并发槽的分配和使用**图表表明，对于 smallrc、mediumrc、largerc 和 xlargerc，DW500 分别使用 1、4、8 和 16 个并发槽。 若要查明每个资源类的重要性，可以在上面的图表中查找这些值。
 
 ### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500 的资源类到重要性的映射
 | 资源类 | 工作负荷组 | 使用的并发槽数 | MB / 分布区 | Importance |
@@ -57,7 +58,7 @@ SQL 数据仓库通过使用工作负荷组来实现资源类。 总共有八个
 | staticrc80     | SloDWGroupC03  | 16                     | 1,600             | 高       |
 
 ## <a name="view-workload-groups"></a>查看工作负荷组
-在进行故障诊断时，可以使用以下 DMV 查询，从资源调控器的角度来详细查看内存资源分配的差异，或者分析工作负荷组目前的和历史上的使用情况：
+以下查询从资源调控器的角度显示了内存资源分配详细信息。 在进行故障排除时，这有助于分析工作负荷组的活动使用情况和历史使用情况。
 
 ```sql
 WITH rg
@@ -106,7 +107,7 @@ ORDER BY
 ```
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>对排队的查询进行的检测，以及其他 DMV
-可以使用 `sys.dm_pdw_exec_requests` DMV 来确定在并发队列中等待的查询。 正在等待并发槽的查询的状态为**挂起**。
+可以使用 `sys.dm_pdw_exec_requests` DMV 来确定在并发队列中等待的查询。 正在等待并发槽的查询的状态为“已挂起”。
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -146,7 +147,7 @@ SQL 数据仓库具有以下等待类型：
 * **LocalQueriesConcurrencyResourceType**：位于并发槽框架外部的查询。 DMV 查询和 `SELECT @@VERSION` 等系统函数是本地查询的示例。
 * **UserConcurrencyResourceType**：位于并发槽框架内部的查询。 针对最终用户表的查询代表使用此资源类型的示例。
 * **DmsConcurrencyResourceType**：数据移动操作生成的等待。
-* **BackupConcurrencyResourceType**：此等待表明正在备份数据库。 此资源类型的最大值为 1。 如果同时请求了多个备份，其他备份会排队。
+* **BackupConcurrencyResourceType**：此等待表明正在备份数据库。 此资源类型的最大值为 1。 如果同时请求了多个备份，则其他备份会排队。
 
 可以使用 `sys.dm_pdw_waits` DMV 来查看请求所等待的具体资源。
 

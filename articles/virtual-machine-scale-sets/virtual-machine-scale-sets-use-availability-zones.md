@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: iainfou
-ms.openlocfilehash: 660f75440d7d93562a3a17f646d5d284196e073d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 9093fcf008f199cc1a78d50979f6387a2e1b5262
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 04/18/2018
 
 ## <a name="use-the-azure-cli-20"></a>使用 Azure CLI 2.0
 
-创建使用可用性区域的规模集的过程与[入门文章](quick-create-cli.md)中详述的过程相同。 为使用可用性区域，必须在受支持的 Azure 区域中创建程序集，并[注册可用性区域预览版](http://aka.ms/azenroll)。
+创建使用可用性区域的规模集的过程与[入门文章](quick-create-cli.md)中详述的过程相同。 若要使用可用性区域，必须在受支持的 Azure 区域中创建规模集。
 
 在 [az vmss create](/cli/azure/vmss#az_vmss_create) 命令中添加 `--zones` 参数并指定要使用的区域（例如区域 *1*、*2* 或 *3*）。 以下示例在区域 1 中创建名为 myScaleSet 的单个区域规模集：
 

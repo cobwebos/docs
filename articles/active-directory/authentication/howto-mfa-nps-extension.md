@@ -15,11 +15,11 @@ ms.date: 08/14/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: fd0f021d451dbf722fe23da7bc414ceb523af17a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 38556392624e87611d59e3b96ae63ce8ea30afbd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -52,7 +52,7 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 
 ### <a name="licenses"></a>许可证
 
-适用于 Azure MFA 的 NPS 扩展向持有 [Azure 多重身份验证许可证](../../multi-factor-authentication/multi-factor-authentication.md)（Azure AD Premium、EMS 或 MFA 独立证书已随附）的客户提供。 Azure MFA 的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。 
+适用于 Azure MFA 的 NPS 扩展向持有 [Azure 多重身份验证许可证](multi-factor-authentication.md)（Azure AD Premium、EMS 或 MFA 独立证书已随附）的客户提供。 Azure MFA 的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。 
 
 ### <a name="software"></a>软件
 
@@ -124,7 +124,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 使用以下步骤以启动一个测试帐户：
 1. 通过测试帐户登录 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 
 2. 按照提示设置验证方法。
-3. 创建条件性访问策略或[更改用户状态](../../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md)需要对测试帐户进行双重验证。 
+3. 创建条件性访问策略或[更改用户状态](howto-mfa-userstates.md)需要对测试帐户进行双重验证。 
 
 用户还需要按照以下步骤注册，然后才能使用 NPS 扩展进行身份验证。
 
@@ -176,7 +176,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 ### <a name="configuration-limitations"></a>配置限制
 
 - Azure MFA 的 NPS 扩展不包含用于将用户和设置从 MFA 服务器迁移到云的工具。 出于此原因，我们建议将扩展用于新部署，而非现有部署。 如果在现有部署上使用扩展，用户必须重新进行证明才能在云中填充其 MFA 详细信息。  
-- NPS 扩展使用本地 Active Directory 中的 UPN 来标识 Azure MFA 中的用户，以便执行辅助身份验证。可将该扩展配置为使用其他标识符，例如备用登录 ID，或者除 UPN 以外的自定义 Active Directory 字段。 有关详细信息，请参阅[用于多重身份验证的 NPS 扩展的高级配置选项](../../multi-factor-authentication/multi-factor-authentication-advanced-vpn-configurations.md)。
+- NPS 扩展使用本地 Active Directory 中的 UPN 来标识 Azure MFA 中的用户，以便执行辅助身份验证。可将该扩展配置为使用其他标识符，例如备用登录 ID，或者除 UPN 以外的自定义 Active Directory 字段。 有关详细信息，请参阅[用于多重身份验证的 NPS 扩展的高级配置选项](howto-mfaserver-nps-vpn.md)。
 - 并非所有加密协议都支持所有验证方法。
    - PAP 支持电话呼叫、单向短信、移动应用通知和移动应用验证码
    - **CHAPV2** 和 **EAP** 支持电话呼叫和移动应用通知
@@ -247,6 +247,6 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 - 在[适用于多重身份验证 NPS 扩展的高级配置选项](howto-mfa-nps-extension-advanced.md)中配置登录名的备用 ID 或设置不应执行双重验证的 IP 的异常列表
 
-- 了解如何使用 NPS 扩展来集成[远程桌面网关](../../multi-factor-authentication/nps-extension-remote-desktop-gateway.md)和 [VPN 服务器](../../multi-factor-authentication/nps-extension-vpn.md)
+- 了解如何使用 NPS 扩展来集成[远程桌面网关](howto-mfa-nps-extension-rdg.md)和 [VPN 服务器](howto-mfa-nps-extension-vpn.md)
 
 - [解决 Azure 多重身份验证的 NPS 扩展出现的错误消息](howto-mfa-nps-extension-errors.md)

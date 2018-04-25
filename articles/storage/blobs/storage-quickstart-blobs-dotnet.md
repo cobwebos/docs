@@ -1,19 +1,19 @@
 ---
-title: Azure 快速入门 - 使用 .NET 在 Azure 存储中上传、下载和列出 Blob | Microsoft Docs
-description: 在本快速入门中，请创建存储帐户和容器。 然后，使用适用于 .NET 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
+title: Azure 快速入门 - 使用 .NET 在对象存储中创建 blob | Microsoft Docs
+description: 本快速入门将在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用适用于 .NET 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
 services: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 04/09/2018
 ms.author: tamram
-ms.openlocfilehash: a34a94a9421c65a2b1d4ce5c390732e0adbb69d6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5f8672f448c4c8c13df14608a03e53b3a3dce98d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>快速入门：使用 .NET 上传、下载和列出 Blob
 
@@ -185,7 +185,7 @@ else
 
 接下来，此示例创建一个容器并设置其权限，使容器中的任何 Blob 都是公开的。 如果某个 Blob 是公开的，则任何客户端都可以对其进行匿名访问。
 
-若要创建容器，请先创建 [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) 对象的实例，该对象指向存储帐户中的 Blob 存储。 接下来，请创建 [CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer) 对象的实例，然后创建容器。 
+若要创建容器，请先创建 [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) 对象的实例，该对象指向存储帐户中的 Blob 存储。 接下来，请创建[CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer) 对象的实例，然后创建容器。 
 
 在此示例中，示例调用 [CreateAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createasync) 方法来创建容器。 GUID 值会追加到容器名称，确保其是唯一的。 在生产环境中，通常情况下，首选使用 [CreateIfNotExistsAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexistsasync) 方法来创建容器的前提是该方法不存在，以免出现名称冲突。
 

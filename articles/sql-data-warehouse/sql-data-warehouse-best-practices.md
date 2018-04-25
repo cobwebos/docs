@@ -7,14 +7,14 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/12/2018
+ms.date: 04/18/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 7c5eb4d2176e12874a4fd7be8c29f4ce6ffe17ba
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c39adbfbb85173f7ac3fa129e7551efab6ddefd6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库最佳实践
 本文包含一系列最佳实践，可帮助你从 Azure SQL 数据仓库获得最佳性能。  本文的有些概念很基本且很容易解释，而有些概念则相对高级，本文只对其进行大致介绍。  本文的目的是提供一些基本指导，让用户在生成数据仓库时更加关注那些重要的方面。  每部分都介绍一个概念，并提供哪里可以阅读深度介绍的详细文章。
@@ -121,7 +121,7 @@ SQL 数据仓库有多个 DMV 可用于监视查询执行。  以下监视相关
 [Load data]: ./design-elt-data-loading.md
 [Move data with Azure Data Factory]: ../data-factory/transform-data-using-machine-learning.md
 [Load data with Azure Data Factory]: ../data-factory/load-azure-sql-data-warehouse.md
-[Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
+[Load data with bcp]: /sql/tools/bcp-utility
 [Load data with PolyBase]: ./load-data-wideworldimportersdw.md
 [Monitor your workload using DMVs]: ./sql-data-warehouse-manage-monitor.md
 [Pause compute resources]: ./sql-data-warehouse-manage-compute-overview.md#pause-compute-bk

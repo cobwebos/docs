@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: bcc4ab2f4383f16d64858e50c1857c6fa0e87bcf
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f000e59195155f645d137233a9fa9896e21102b7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>为自助密码重置自定义 Azure AD 功能
 
@@ -92,7 +92,7 @@ Active Directory 联合身份验证服务 (AD FS) 管理员可以使用[添加�
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)
-* [什么是密码写回？我为什么关心它？](../active-directory-passwords-writeback.md)
+* [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)

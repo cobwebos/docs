@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 7efcdd89de56cb80781dc06ebe5f590573f23b5a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f587800d3b1d205107b6c8091ca424b01b9e67e6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -147,7 +147,7 @@ ms.lasthandoff: 04/19/2018
 
 ## <a name="trusted-ips"></a>受信任的 IP
 
-托管或联合租户的管理员可使用 Azure 多重身份验证的“受信任 IP”功能。 此功能将为从公司 Intranet 登录的用户绕过双重验证。 Azure 多重身份验证的完整版本中为管理员提供了此功能，免费版本中没有提供。 有关如何获取 Azure 多重身份验证的完整版本的详细信息，请参阅 [Azure 多重身份验证](../../multi-factor-authentication/multi-factor-authentication.md)。
+托管或联合租户的管理员可使用 Azure 多重身份验证的“受信任 IP”功能。 此功能将为从公司 Intranet 登录的用户绕过双重验证。 Azure 多重身份验证的完整版本中为管理员提供了此功能，免费版本中没有提供。 有关如何获取 Azure 多重身份验证的完整版本的详细信息，请参阅 [Azure 多重身份验证](multi-factor-authentication.md)。
 
 如果你的组织部署 NPS 扩展，向本地应用程序提供 MFA，请注意源 IP 地址将始终显示为身份验证尝试流经的 NPS 服务器。
 
@@ -302,7 +302,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 多重身份验证用户可免费对其信任的设备和浏览器使用“记住多重身份验证”功能。 用户使用多重身份验证成功登录到设备后，可在指定天数内跳过后续验证。 此功能可以尽量减少用户须在同一设备上执行双重验证的次数，从而可以提高可用性。
 
 >[!IMPORTANT]
->请记住，如果帐户或设备遭到入侵，受信任的设备的多重身份验证可能影响安全性。 如果公司帐户受到安全威胁，或者受信任的设备已丢失或被盗，则应[在所有设备上还原多重身份验证](../../multi-factor-authentication/multi-factor-authentication-manage-users-and-devices.md#restore-mfa-on-all-remembered-devices-for-a-user)。
+>请记住，如果帐户或设备遭到入侵，受信任的设备的多重身份验证可能影响安全性。 如果公司帐户受到安全威胁，或者受信任的设备已丢失或被盗，则应[在所有设备上还原多重身份验证](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)。
 >
 >还原操作会撤销所有设备的受信任状态，需要用户重新执行双重验证。 还可以指示用户按照[管理双重验证设置](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)中的说明在其自己的设备上还原多重身份验证。
 >

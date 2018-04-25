@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: 34f014c98d9333598c10e85d100251e62685c476
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7500b456296dc69c70cd1b5500d40f7e007569b1
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -249,7 +249,7 @@ ms.lasthandoff: 04/19/2018
 
 * **问：密码写回如何在后台工作？**
 
-  > **答：**请参阅[密码写回的工作原理](../active-directory-passwords-writeback.md)一文，了解有关启用密码写回时发生的情况以及数据如何通过系统流回本地环境的说明。
+  > **答：**请参阅[密码写回的工作原理](howto-sspr-writeback.md)一文，了解有关启用密码写回时发生的情况以及数据如何通过系统流回本地环境的说明。
   >
   >
 * **问：密码写回需要多长时间才工作？是否和使用密码哈希同步一样也存在同步延迟？**
@@ -279,7 +279,7 @@ ms.lasthandoff: 04/19/2018
   >
 * **问：密码写回是否安全？如何确保我不会受到黑客攻击？**
 
-  > **答：**是的。密码写回具有很高的安全性。 若要阅读有关密码写回服务实施的四个安全层的详细信息，请查看[密码写回概述](../active-directory-passwords-writeback.md)一文中的[密码写回安全模型](../active-directory-passwords-writeback.md#password-writeback-security-model)部分。
+  > **答：**是的。密码写回具有很高的安全性。 若要阅读有关密码写回服务实施的四个安全层的详细信息，请查看[密码写回概述](howto-sspr-writeback.md)一文中的[密码写回安全模型](howto-sspr-writeback.md#password-writeback-security-model)部分。
   >
   >
 
@@ -292,7 +292,7 @@ ms.lasthandoff: 04/19/2018
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)
-* [什么是密码写回？我为什么关心它？](../active-directory-passwords-writeback.md)
+* [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)

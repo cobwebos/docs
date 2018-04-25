@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 9a19ac74cd8f7ed6ae680b2acb743101bbcaed44
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5933448b40a590b39df5ae4cf07fd858bebcd28f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD 中的自助密码重置深入探讨
 
@@ -207,7 +207,7 @@ ms.lasthandoff: 04/19/2018
 
 ## <a name="on-premises-integration"></a>本地集成
 
-如果已安装、配置并启用 Azure AD Connect，可以使用以下附加选项进行本地集成。 如果这些选项灰显，则表示写回配置不正确。 有关详细信息，请参阅[配置密码写回](../active-directory-passwords-writeback.md#configure-password-writeback)。
+如果已安装、配置并启用 Azure AD Connect，可以使用以下附加选项进行本地集成。 如果这些选项灰显，则表示写回配置不正确。 有关详细信息，请参阅[配置密码写回](howto-sspr-writeback.md#configure-password-writeback)。
 
 ![写回][Writeback]
 
@@ -217,7 +217,7 @@ ms.lasthandoff: 04/19/2018
 * Azure AD 处于联机状态并连接到本地写回客户端。 但是，似乎 Azure AD Connect 的已安装版本已经过期了。 请考虑[更新 Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md)，确保拥有最新连接功能和重要 bug 修复。
 * 很遗憾，因为 Azure AD Connect 的已安装版本已过期，因此无法查看本地写回客户端状态。 [更新 Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md) 可查看连接状态。
 * 很遗憾，现在似乎无法连接到本地写回客户端。 [对 Azure AD Connect 进行故障排除](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)以还原连接。
-* 很遗憾，因为密码写回未正确配置，无法连接到本地写回客户端。 [配置密码写回](../active-directory-passwords-writeback.md#configure-password-writeback)以还原连接。
+* 很遗憾，因为密码写回未正确配置，无法连接到本地写回客户端。 [配置密码写回](howto-sspr-writeback.md#configure-password-writeback)以还原连接。
 * 很遗憾，现在似乎无法连接到本地写回客户端。 这可能是因我们终端的临时问题导致。 如果问题仍然存在，[对 Azure AD Connect 进行故障排除](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity)以还原连接。
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>将密码写回到本地目录
@@ -257,7 +257,7 @@ ms.lasthandoff: 04/19/2018
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)
-* [什么是密码写回？我为什么关心它？](../active-directory-passwords-writeback.md)
+* [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)

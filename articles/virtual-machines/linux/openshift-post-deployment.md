@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 1fe44f6d18199fe1a37db566f8b30eeaa4fbfab2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bdfd075b9438ee12e940f3ec4fddebf467c93ca8
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
 
@@ -326,11 +326,11 @@ OpenShift 容器平台的 Azure 资源管理器模板提供输入参数用于启
 在第一个主节点 (Origin) 或守护节点 (OCP) 上，使用部署期间提供的凭据通过 SSH 建立连接。 发出以下命令：
 
 ```bash
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
+ansible-playbook $HOME/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
 -e openshift_metrics_install_metrics=True \
 -e openshift_metrics_cassandra_storage_type=dynamic
 
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
+ansible-playbook $HOME/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
 -e openshift_logging_install_logging=True \
 -e openshift_hosted_logging_storage_kind=dynamic
 ```
@@ -340,10 +340,10 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cl
 在第一个主节点 (Origin) 或守护节点 (OCP) 上，使用部署期间提供的凭据通过 SSH 建立连接。 发出以下命令：
 
 ```bash
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
+ansible-playbook $HOME/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
 -e openshift_metrics_install_metrics=True 
 
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
+ansible-playbook $HOME/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
 -e openshift_logging_install_logging=True 
 ```
 

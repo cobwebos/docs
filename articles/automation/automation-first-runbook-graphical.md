@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 04/13/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: d47a8a3d8343aaa17346cd63c055e8687f25f812
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6893d3c79a5f827f214b12ce1dc5f5af7bbc2891
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="my-first-graphical-runbook"></a>我的第一个图形 Runbook
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 04/19/2018
 1. 在画布上选择“Connect-AzureRmAccount”，并在“配置控件”窗格的“标签”文本框中键入“登录到 Azure”。
 1. 单击“参数”，此时会显示“活动参数配置”页。
 1. Connect-AzureRmAccount 有多个参数集，因此需要选择其中一个，才能提供参数值。 单击“参数集”，并选择“ServicePrincipalCertificate”参数集。
-1. 选择参数集后，这些参数会显示在“活动参数配置”页中。 单击“APPLICATIONID”。<br> ![添加 Azure RM 帐户参数](media/automation-first-runbook-graphical/Connect-AzureRmAccount-params.png)
+1. 选择参数集后，这些参数会显示在“活动参数配置”页中。 单击“APPLICATIONID”。<br> ![添加 Azure RM 帐户参数](media/automation-first-runbook-graphical/Add-AzureRmAccount-params.png)
 1. 在“参数值”页中，选择“活动输出”作为“数据源”，并从列表中选择“获取运行方式连接”，在“字段路径”文本框中键入“ApplicationId”，单击“确定”。 需指定“字段路径”的属性的名称，因为活动所输出的对象包含多个属性。
 1. 单击“CERTIFICATETHUMBPRINT”，并在“参数值”页中，选择“活动输出”作为“数据源”。 从列表中选择“获取运行方式连接”，在“字段路径”文本框中键入“CertificateThumbprint”，并单击“确定”。
 1. 单击“SERVICEPRINCIPAL”，在“参数值”页中选择“ConstantValue”作为“数据源”，单击选项“True”，并单击“确定”。

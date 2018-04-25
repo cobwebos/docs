@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-ms.openlocfilehash: 2b77167992704bd342d67dc03b66af1e55955532
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 761013ad82fb8fa7d84e7929341d2e7d9e2d724c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 许多人将标识视为安全性的新边界层，从传统的以网络为中心的角度来看可以接管这种角色。 安全关注与投资主轴的这种演变来源于这样一个事实：网络周边的漏洞越来越多，在 [BYOD](http://aka.ms/byodcg) 设备和云应用程序呈爆炸性增长之前，周边防御不如以前那么有效。
@@ -88,7 +88,7 @@ ms.lasthandoff: 04/20/2018
 
 例如：针对用户实施 Azure MFA，并将其配置为使用电话呼叫或短信作为验证方法。 如果用户的凭据被透露，攻击者无法访问任何资源，因为攻击者无权访问用户的电话。 未添加额外标识保护层的组织将更容易受到凭据窃取攻击，从而导致数据泄漏。
 
-想要保留完整本地身份验证控制权的组织可使用替代方法：使用 [Azure 多重身份验证服务器](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)（也称为本地 MFA）。 使用此方法仍可实施多重身份验证，同时本地保留 MFA 服务器。
+想要保留完整本地身份验证控制权的组织可使用替代方法：使用 [Azure 多重身份验证服务器](../active-directory/authentication/howto-mfaserver-deploy.md)（也称为本地 MFA）。 使用此方法仍可实施多重身份验证，同时本地保留 MFA 服务器。
 
 有关 Azure MFA 的详细信息，请参阅[云中的 Azure 多重身份验证入门](../active-directory/authentication/howto-mfa-getstarted.md)一文。
 

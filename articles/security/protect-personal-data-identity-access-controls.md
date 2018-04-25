@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: ''
-ms.openlocfilehash: 08c26942294d7027ffdcd3fcaa0ff0831e95509f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c0e7f2060f81812cd69ed1af0246287757985243
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory 和多重身份验证：使用标识和访问控制保护个人数据
 
 本文提供使用 Azure Active Directory 和多重身份验证安全功能与服务保护个人数据时可以使用的信息和过程。 本文中包含的信息有助于遵守一般数据保护条例 (GDPR)。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 总部位于美国的一家大型邮轮公司正在拓展其运营，以便在地中海、亚得里亚海和波罗的海以及英属岛屿提供路线。 为支持这些工作，该公司并购了意大利、德国、丹麦和英国的几家小型邮轮公司。 
 
@@ -137,7 +137,7 @@ Microsoft Azure 提供标识和访问管理工具来帮助公司控制谁有权�
 
 4. 单击“保存”
 
-在此窗口中，你还可以选择“下载 MFA 服务器”。 有关如何设置部署的规模并对其进行规划的更多详细信息，请参阅[开始使用 Azure 多重身份验证服务器](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)一文。
+在此窗口中，你还可以选择“下载 MFA 服务器”。 有关如何设置部署的规模并对其进行规划的更多详细信息，请参阅[开始使用 Azure 多重身份验证服务器](../active-directory/authentication/howto-mfaserver-deploy.md)一文。
 
 有关如何管理多重身份验证提供程序的详细说明，请参阅 [Azure 多重身份验证提供程序入门](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-auth-provider)。
 

@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 06/28/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9968d18f9e27d7a138831394658b40a483b66709
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dbd96187ad73a9c7e27b28f137e25fe66e2944ad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>通过适用于 .NET 的 Batch 客户端库开始构建解决方案
 
@@ -40,18 +40,14 @@ ms.lasthandoff: 04/03/2018
 ### <a name="accounts"></a>帐户
 * **Azure 帐户**：如果没有 Azure 订阅，可以[创建一个免费 Azure 帐户][azure_free_account]。
 * **Batch 帐户**：获取 Azure 订阅后，请 [创建 Azure Batch 帐户](batch-account-create-portal.md)。
-* **存储帐户**：请参阅[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)中的[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)。
+* **存储帐户**：有关 Batch 中的存储帐户选项，请参阅 [Batch 功能概述](batch-api-basics.md#azure-storage-account)。
 
-> [!IMPORTANT]
-> Batch 目前仅支持常规用途存储帐户类型，如[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)的[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)中的步骤 5 所述。
->
->
 
 ### <a name="visual-studio"></a>Visual Studio
 必须拥有 **Visual Studio 2015 或更高版本**才能生成示例项目。 可以在 [Visual Studio 产品概述][visual_studio]中找到免费试用版的 Visual Studio。
 
 ### <a name="dotnettutorial-code-sample"></a>*DotNetTutorial* 代码示例
-[DotNetTutorial][github_dotnettutorial] 示例是 GitHub 上的 [azure-batch-samples][github_samples] 存储库中提供的众多批处理代码示例之一。 单击存储库主页上的“克隆或下载”>“下载 ZIP”，或单击“azure-batch-samples-master.zip[github_samples_zip]”直接下载链接，即可下载所有示例。[] 将 ZIP 文件的内容解压缩后，可在以下文件夹中找到该解决方案：
+[DotNetTutorial][github_dotnettutorial] 示例是 GitHub 上的 [azure-batch-samples][github_samples] 存储库中提供的众多批处理代码示例之一。 单击存储库主页上的**克隆或下载>** 下载 ZIP[，或单击“azure-batch-samples-master.zip][github_samples_zip]”直接下载链接，即可下载所有示例。 将 ZIP 文件的内容解压缩后，可在以下文件夹中找到该解决方案：
 
 `\azure-batch-samples\CSharp\ArticleProjects\DotNetTutorial`
 
@@ -101,11 +97,6 @@ private const string BatchAccountUrl  = "";
 private const string StorageAccountName = "";
 private const string StorageAccountKey  = "";
 ```
-
-> [!IMPORTANT]
-> 如上所述，目前必须为 Azure 存储中的常规用途存储帐户指定凭据。 Batch 应用程序使用常规用途存储帐户中的 Blob 存储。 请不要为通过选择 *Blob 存储* 帐户类型创建的存储帐户指定凭据。
->
->
 
 可以在 [Azure 门户][azure_portal]中每项服务的帐户边栏选项卡中找到批处理和存储帐户凭据：
 

@@ -2,19 +2,19 @@
 title: 安装适用于 SQL 数据仓库的 Visual Studio 和 SSDT | Microsoft Docs
 description: 安装适用于 Azure SQL 数据仓库的 Visual Studio 和 SQL Server 开发工具 (SSDT)
 services: sql-data-warehouse
-author: ronortloff
+author: kavithaj
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.component: consume
 ms.date: 04/17/2018
-ms.author: rortloff
+ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 2aade79d003e1c4d63eab93a7ac83730faeefee0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a2f01424dedb977000d0e4150f4a31c1a9a21cfb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>安装适用于 SQL 数据仓库的 Visual Studio 和 SSDT
 若要开发 SQL 数据仓库的应用程序，建议使用最新版本的 Visual Studio，并结合最新版本的 SQL Server Data Tools (SSDT)。  向后兼容也支持装有 SSDT 的 Visual Studio 2013 Update 5。  

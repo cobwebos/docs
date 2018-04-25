@@ -2,17 +2,17 @@
 title: include 文件
 description: include 文件
 services: virtual-network
-author: genli
+author: genlin
 ms.service: virtual-network
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 09c6871fc5243296da2f2defd594afb80c62ac95
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 873549442284ede2e9f020bd90879f721b9c1a18
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 ## <a name="scenario"></a>场景
 为了更好地说明如何创建 NSG，本文档使用以下方案：

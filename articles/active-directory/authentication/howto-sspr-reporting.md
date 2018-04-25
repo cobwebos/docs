@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 5f8bcff82444358a8f379f4956101ba4baca1e0b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 616c80b55aee03234fed0b80b76c29cecada0b0d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -203,7 +203,7 @@ Azure AD 报表和事件 API 支持检索密码重置和密码重置注册报表
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)
-* [什么是密码写回？我为什么关心它？](../active-directory-passwords-writeback.md)
+* [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [SSPR 中的所有选项是什么？它们有哪些含义？](concept-sspr-howitworks.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)

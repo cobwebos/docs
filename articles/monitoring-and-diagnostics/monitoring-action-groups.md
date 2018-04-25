@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/12/2018
 ms.author: dukek
-ms.openlocfilehash: a7f8697b7a92de1c19ceb65fadbcd7e4186e83f7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e3185b8d8ce97ffd04188b2b49a457bd14d5c6c8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 ## <a name="overview"></a>概述 ##
@@ -26,10 +26,10 @@ ms.lasthandoff: 03/23/2018
 
 通过操作组可以配置操作列表。 之后，这些组可由你定义的每个警报使用，从而确保每次触发警报时采取相同的操作。
 
-操作组可以具有最多 10 种不同的操作类型。 每个操作包含以下属性：
+每个操作包含以下属性：
 
 * 名称：操作组中的唯一标识符。  
-* **操作类型**：发送语音呼叫或短信、发送电子邮件、调用 Webhook、将数据发送到 ITSM 工具、调用 Azure 应用或运行自动化 Runbook。
+* **操作类型**：发送语音呼叫或短信、发送电子邮件、调用 Webhook、将数据发送到 ITSM 工具、调用逻辑应用、向 Azure 应用发送推送通知，或者运行自动化 Runbook。
 * **详细信息**：相应电话号码、电子邮件地址、webhook URI 或 ITSM 连接详细信息。
 
 有关如何使用 Azure 资源管理器模板以配置操作组的信息，请参阅[操作组资源管理器模板](monitoring-create-action-group-with-resource-manager-template.md)。
@@ -56,14 +56,45 @@ ms.lasthandoff: 03/23/2018
 
     a. 名称：输入此操作的唯一标识符。
 
-    b. **操作类型**：选择电子邮件/短信/推送/语音、Webhook、ITSM 或自动化 Runbook。
+    b. **操作类型**：选择电子邮件/短信/推送/语音、逻辑应用、Webhook、ITSM 或自动化 Runbook。
 
     c. **详细信息**：根据操作类型，输入电话号码、电子邮件地址、webhook URI、Azure 应用、ITSM 连接或自动化 runbook。 对于 ITSM 操作，另外指定 ITSM 工具需要的“工作项”和其他字段。
 
-   > [!NOTE]
-   > ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../log-analytics/log-analytics-itsmc-overview.md)。 
-
 8. 选择“确定”创建操作组。
+
+## <a name="action-specific-information"></a>特定于操作的信息
+<dl>
+<dt>Azure 应用推送</dt>
+<dd>一个操作组中最多可以有 10 个 Azure 应用操作。</dd>
+<dd>目前，Azure 应用操作只支持 ServiceHealth 警报。 任何其他警报时间都会被忽略。 请参阅[配置每次发布服务运行状况通知时的警报](monitoring-activity-log-alerts-on-service-notifications.md)。</dd>
+
+<dt>电子邮件</dt>
+<dd>一个操作组中最多可以有 50 个电子邮件操作</dd>
+<dd>请参阅[速率限制信息](./monitoring-alerts-rate-limiting.md)一文</dd>
+
+<dt>ITSM</dt>
+<dd>一个操作组中最多可以有 10 个 ITSM 操作</dd>
+<dd>ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../log-analytics/log-analytics-itsmc-overview.md)。</dd>
+
+<dt>逻辑应用</dt>
+<dd>一个操作组中最多可以有 10 个逻辑应用操作</dd>
+
+<dt>Runbook</dt>
+<dd>一个操作组中最多可以有 10 个 Runbook 操作</dd>
+
+<dt>短信</dt>
+<dd>一个操作组中最多可以有 10 个短信操作</dd>
+<dd>请参阅[速率限制信息](./monitoring-alerts-rate-limiting.md)一文</dd>
+<dd>请参阅[短信警报行为](monitoring-sms-alert-behavior.md)一文</dd>
+
+<dt>语音</dt>
+<dd>一个操作组中最多可以有 10 个语音操作</dd>
+<dd>请参阅[速率限制信息](./monitoring-alerts-rate-limiting.md)一文</dd>
+
+<dt>Webhook</dt>
+<dd>一个操作组中最多可以有 10 个 Webhook 操作
+<dd>重试逻辑 - 返回的 HTTP 状态代码为 408、429、503、504 时，最多可以重试 3 次 Webhook 调用</dd>
+</dl>
 
 ## <a name="manage-your-action-groups"></a>管理操作组 ##
 创建操作组后，它会在“监视器”边栏选项卡的“操作组”部分显示。 选择要管理的操作组：
