@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 81678f6a8659ffb763ebfe418098e510c73f6ae0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e2bd041bd5848ceb5f04f06601190fb0508aca1c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -29,7 +29,8 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>VM 代理无法与 Azure 备份进行通信
 
-错误消息：“VM 代理无法与 Azure 备份进行通信”
+错误消息：“VM 代理无法与 Azure 备份进行通信”<br>
+错误代码：“UserErrorGuestAgentStatusUnavailable”
 
 注册并计划备份服务的 VM 后，备份将通过与 VM 代理进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：
 
@@ -41,7 +42,8 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>由于虚拟机未连接到网络，快照操作失败
 
-错误消息：“由于虚拟机未建立网络连接，快照操作失败”
+错误消息：“由于虚拟机未建立网络连接，快照操作失败”<br>
+错误代码：“ExtensionSnapshotFailedNoNetwork”
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：    
 **原因 1：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**  
@@ -50,7 +52,8 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="vmsnapshot-extension-operation-failed"></a>VMSnapshot 扩展操作失败
 
-错误消息：“VMSnapshot 扩展操作失败”
+错误消息：“VMSnapshot 扩展操作失败”<br>
+错误代码：“ExtentionOperationFailed”
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
 **原因 1：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
@@ -60,7 +63,8 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>由于 VM 代理无响应，备份失败
 
-错误消息：“由于 VM 代理无响应，无法执行操作”
+错误消息：“由于 VM 代理无响应，无法执行操作” <br>
+错误代码：“GuestAgentSnapshotTaskStatusError”
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
 **原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
@@ -69,7 +73,8 @@ ms.lasthandoff: 04/03/2018
 
 ## <a name="backup-fails-with-an-internal-error"></a>备份失败并出现内部错误
 
-错误消息：“备份失败并出现内部错误 - 请在几分钟后重试操作”
+错误消息：“备份失败并出现内部错误 - 请在几分钟后重试操作” <br>
+错误代码：“BackUpOperationFailed”/“BackUpOperationFailedV2”
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
 **原因 1：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**  
@@ -177,6 +182,8 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 3. 选择“扩展”。
 4. 选择“Vmsnapshot 扩展”。
 5. 选择“卸载”。
+
+对于 Linux VM，如果 VMSnapshot 扩展未显示在 Azure 门户中，请[更新 Azure Linux 代理](../virtual-machines/linux/update-agent.md)，然后运行备份。 
 
 完成这些步骤可在下一次备份期间重新安装扩展。
 

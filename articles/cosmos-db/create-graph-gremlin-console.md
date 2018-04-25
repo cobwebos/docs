@@ -12,11 +12,11 @@ ms.devlang: terminal
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: a2855a05cf77afa69e79ecc602797524b80219d2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0f50443385f483fd948d7f19164050600fa8c143
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB：在 Gremlin 控制台中创建、查询和遍历图形
 
@@ -50,7 +50,7 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 
     设置|建议的值|说明
     ---|---|---
-    hosts|[***.gremlin.cosmosdb.azure.com] 或 [***.graphs.azure.com]，适用于 2017 年 12 月 20 日之前创建的帐户|参阅以下屏幕截图。 这是 Azure 门户的“概述”页上的“Gremlin URI”值，方括号中已删除尾部的 :443/。<br><br>也可以在“密钥”选项卡中使用“URI”值来检索此值，方法是：删除 https://，将 documents 更改为 graphs pr gremlin.cosmosdb 并删除尾部的 :443/。
+    hosts|[*account-name*.gremlin.cosmosdb.azure.com] 或 [*account-name*.graphs.azure.com]，适用于 2017 年 12 月 20 日之前创建的帐户|请参阅下面的屏幕截图。 这是 Azure 门户的“概述”页上的“Gremlin URI”值，方括号中已删除尾部的 :443/。<br><br>也可以在“密钥”选项卡中使用“URI”值来检索此值，方法是：删除 https://，将 documents 更改为 graphs pr gremlin.cosmosdb 并删除尾部的 :443/。
     端口|443|设置为 443。
     username|*用户名*|采用 `/dbs/<db>/colls/<coll>` 格式的资源，其中，`<db>` 是数据库名称，`<coll>` 是集合名称。
     password|*主密钥*| 请参阅下面的第二幅屏幕截图。 这是主密钥，可以从 Azure 门户的“密钥”页上的“主密钥”框中检索到。 使用该框左侧的复制按钮可复制该值。
@@ -306,10 +306,7 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下：  
-
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

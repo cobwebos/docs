@@ -5,25 +5,25 @@ services: iot-dps
 keywords: ''
 author: dsk-2015
 ms.author: dkshir
-ms.date: 12/20/2017
+ms.date: 04/16/2018
 ms.topic: hero-article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 484b82b79d796536a2c9a527b42e90f4e37c7bda
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e5fe9282dd10bd6bdc41c63718a884a92da4d7c6
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-and-provision-an-x509-simulated-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 C 设备 SDK 创建和预配 X.509 模拟设备
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 以下步骤演示了如何在运行 Windows OS 的开发计算机上模拟 X.509 设备，以及如何使用代码示例通过设备预配服务和 IoT 中心连接该模拟设备。 
 
-在继续操作之前，请确保完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。
+如果不熟悉自动预配过程，请务必还查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
 [!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 04/03/2018
     cd cmake
     ```
 
-6. 运行以下命令，为预配客户端创建 Visual Studio 解决方案。
+6. 代码示例使用 X.509 证书通过 X.509 身份验证提供证明。 运行以下命令生成特定于开发客户端平台和[证明机制](concepts-security.md#attestation-mechanism)（X.509 证书）的 SDK 版本。 该命令还会为模拟设备生成 Visual Studio 解决方案。 
 
     ```cmd
     cmake -Duse_prov_client:BOOL=ON ..
@@ -62,7 +62,7 @@ ms.lasthandoff: 04/03/2018
 
 <a id="portalenroll"></a>
 
-## <a name="create-a-device-enrollment-entry-in-the-device-provisioning-service"></a>在设备预配服务中创建设备注册条目
+## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>创建自签名的 X.509 设备证书和单个注册项
 
 1. 打开在 cmake 文件夹中生成的名为 `azure_iot_sdks.sln` 的解决方案，将其内置到 Visual Studio 中。
 
@@ -72,18 +72,18 @@ ms.lasthandoff: 04/03/2018
 
 4. 登录到 Azure 门户，单击左侧菜单上的“所有资源”按钮，打开预配服务。
 
-4. 打开服务的“管理注册”边栏选项卡。 选择“单个注册”选项卡，单击顶部的“添加”按钮。 
+5. 在“设备预配服务摘要”边栏选项卡上，选择“管理注册”。 选择“单个注册”选项卡，单击顶部的“添加”按钮。 
 
-5. 在“添加注册列表项”下，输入以下信息：
+6. 在“添加注册”面板下，输入以下信息：
     - 选择“X.509”作为标识证明机制。
-    - 使用“文件资源管理器”小组件，在“证书 .pem 或 .cer 文件”下选择在前述步骤中创建的证书文件 **_X509testcert.pem_**。
+    - 在“主要证书 .pem 或 .cer 文件”下，单击“选择文件”选择在前述步骤中创建的证书文件 X509testcert.pem。
     - （可选）可以提供以下信息：
-        - 选择与预配服务链接的 IoT 中心。
-        - 输入唯一设备 ID。 为设备命名时，请确保避免使用敏感数据。 
-        - 使用设备所需的初始配置更新“初始设备孪生状态”。
+      - 选择与预配服务链接的 IoT 中心。
+      - 输入唯一设备 ID。 为设备命名时，请确保避免使用敏感数据。 
+      - 使用设备所需的初始配置更新“初始设备孪生状态”。
     - 完成后，单击“保存”按钮。 
 
-    ![在门户边栏选项卡中输入 X.509 设备注册信息](./media/quick-create-simulated-device-x509/enter-device-enrollment.png)  
+    [![在门户中为 X.509 证明添加单个注册](./media/quick-create-simulated-device-x509/individual-enrollment.png)](./media/quick-create-simulated-device-x509/individual-enrollment.png#lightbox)
 
    成功注册以后，X.509 设备会在“单独注册”选项卡的“注册 ID”列下显示为 **riot-device-cert**。 
 

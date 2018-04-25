@@ -3,18 +3,18 @@ title: 为 Azure SQL 数据仓库设计 ELT 而非 ETL | Microsoft Docs
 description: 设计用于将数据加载到 Azure SQL 数据仓库的提取、加载和转换 (ELT) 过程而非 ETL 过程。
 services: sql-data-warehouse
 author: ckarst
-manager: jhubbard
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 03/28/2018
+ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 18d5f4131718021de82328719e0538db759dde9c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3cea41a7c129ee5a691226097d087539f943bec6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>为 Azure SQL 数据仓库设计提取、加载和转换 (ELT)
 
@@ -48,8 +48,8 @@ PolyBase 技术可以通过 T-SQL 语言访问数据库外部的数据。 它是
 
 - 如果数据位于 Azure Blob 存储或 Azure Data Lake Store 中，则 [PolyBase 与 T-SQL](load-data-from-azure-blob-storage-using-polybase.md) 可以发挥作用。 使用此方法可以获得加载过程的最大控制度，不过同时需要定义外部数据对象。 其他方法在你将源表映射到目标表时，在幕后定义这些对象。  若要协调 T-SQL 负载，可以使用 Azure 数据工厂、SSIS 或 Azure Functions。 
 - 如果源数据位于本地 SQL Server 或云中的 SQL Server，则 [PolyBase 与 SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) 可以发挥作用。 SSIS 定义源到目标表的映射，同时可协调负载。 如果已有 SSIS 包，可将这些包修改为使用新的数据仓库目标。 
-- [PolyBase 与 Azure 数据工厂 (ADF)](sql-data-warehouse-load-with-data-factory.md) 是另一个业务流程工具。  它定义管道并计划作业。 可以使用 ADF 分析 JSON 数据并将其加载到 SQL 数据仓库中。
-- [包含 Azure DataBricks 的 PolyBase](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) 将 Azure Data Lake Store 中的数据传输到 SQL 数据仓库。 可以使用 Azure DataBricks 分析 JSON 数据并将数据加载到 SQL 数据仓库中。 
+- [PolyBase 与 Azure 数据工厂 (ADF)](sql-data-warehouse-load-with-data-factory.md) 是另一个业务流程工具。  它定义管道并计划作业。 
+- [将 PolyBase 与 Azure DataBricks 配合使用](../azure-databricks/databricks-extract-load-sql-data-warehouse.md)，可将数据从 SQL 数据仓库表传输到 Databricks 数据帧，并且/或者可将 Databricks 数据帧中的数据写入 SQL 数据仓库表。
 
 ### <a name="polybase-external-file-formats"></a>PolyBase 外部文件格式
 
@@ -70,11 +70,8 @@ PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 �
 可使用以下工具和服务将数据移到 Azure 存储。
 
 - [Azure ExpressRoute](../expressroute/expressroute-introduction.md) 服务可以增强网络吞吐量、性能和可预测性。 ExpressRoute 是通过专用连接将数据路由到 Azure 的服务。 ExpressRoute 连接不通过公共 Internet 路由数据。 与基于公共 Internet 的典型连接相比，这些连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。
-- [AZCopy 实用工具](../storage/common/storage-use-azcopy.md)可以通过公共 Internet 将数据移到 Azure 存储。 如果数据小于 10 TB，则很适合使用此工具。 若要使用 AZCopy 定期执行加载操作，请测试网络速度是否在可接受的范围内。 
-- [Azure 数据工厂 (ADF)](../data-factory/introduction.md) 提供一个可以安装在本地服务器上的网关。 然后，你可以创建管道，以便将数据从本地服务器移到 Azure 存储。
-
-有关详细信息，请参阅[将数据移入和移出 Azure 存储](../storage/common/storage-moving-data.md)。
-
+- [AZCopy 实用工具](../storage/common/storage-moving-data.md)可以通过公共 Internet 将数据移到 Azure 存储。 如果数据小于 10 TB，则很适合使用此工具。 若要使用 AZCopy 定期执行加载操作，请测试网络速度是否在可接受的范围内。 
+- [Azure 数据工厂 (ADF)](../data-factory/introduction.md) 提供一个可以安装在本地服务器上的网关。 然后，你可以创建管道，以便将数据从本地服务器移到 Azure 存储。 若要将数据工厂与 SQL 数据仓库配合使用，请参阅[将数据加载到 SQL 数据仓库中](/azure/data-factory/load-azure-sql-data-warehouse)。
 
 ## <a name="prepare-data"></a>准备数据
 

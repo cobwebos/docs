@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: c62f3a92e6199f6467556054c9f58c20b6ceba2c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 21b09d9c428f9c29e0048faa32ce5349a127be89
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob 存储：热、冷、存档存储层
 
@@ -32,9 +32,9 @@ Azure 存储为 Blob 对象存储提供三个存储层，因此你可以根据�
 
 ## <a name="storage-accounts-that-support-tiering"></a>支持分层的存储帐户
 
-在 Blob 存储或常规用途 v2 (GPv2) 帐户中，只能将对象存储数据分为热层、冷层、存档层。 常规用途 v1 (GPv1) 帐户不支持分层。 不过，客户可以轻松地将其现有的 GPv1 或 Blob 存储帐户转换为 GPv2 帐户，只需在 Azure 门户中单击一下即可。 GPv2 为 Blob、文件和队列提供新的定价结构，还可以访问各种其他的全新存储功能。 另外，以后只对 GPv2 帐户提供某些新功能和价格折扣。 因此，客户应使用 GPv2 帐户进行评估，但只应在查看所有服务的定价以后再使用此类帐户，因为某些工作负荷的价格在 GPv2 中可能比在 GPv1 中更高。 若要了解详细信息，请参阅 [Azure 存储帐户选项](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+在 Blob 存储或常规用途 v2 (GPv2) 帐户中，只能将对象存储数据分到热层、冷层或存档层。 常规用途 v1 (GPv1) 帐户不支持分层。 不过，客户可以轻松地将其现有的 GPv1 或 Blob 存储帐户转换为 GPv2 帐户，只需在 Azure 门户中单击一下即可。 GPv2 为 Blob、文件和队列提供新的定价结构，还可以访问各种其他的全新存储功能。 另外，以后只对 GPv2 帐户提供某些新功能和价格折扣。 因此，客户应使用 GPv2 帐户进行评估，但只应在查看所有服务的定价以后再使用此类帐户，因为某些工作负荷的价格在 GPv2 中可能比在 GPv1 中更高。 若要了解详细信息，请参阅 [Azure 存储帐户选项](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你将存储帐户中任何 Blob 的默认存储层指定为热层或冷层，前提是该 Blob 尚未在对象级别设置该层。 对于已在对象级别设置该层的对象，不会应用帐户层。 存档层仅适用于对象级别。 可以随时在这些存储层之间进行切换。
+Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你将存储帐户中任何 Blob 的默认存储层指定为热层或冷层，前提是该 Blob 尚未在对象级别设置层。 对于已在对象级别设置该层的对象，不会应用帐户层。 存档层仅适用于对象级别。 可以随时在这些存储层之间进行切换。
 
 ## <a name="hot-access-tier"></a>热访问层
 
@@ -102,7 +102,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你
 | **可伸缩性和性能目标** | 与通用存储帐户相同 | 与通用存储帐户相同 | 与通用存储帐户相同 |
 
 > [!NOTE]
-> Blob 存储帐户支持与常规用途存储帐户相同的性能和可伸缩性目标。 有关详细信息，请参阅 [Azure 存储的可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 。
+> Blob 存储帐户支持与通用存储帐户相同的性能和可伸缩性目标。 有关详细信息，请参阅 [Azure 存储的可伸缩性和性能目标](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 。
 
 ## <a name="quickstart-scenarios"></a>快速入门方案
 
@@ -137,7 +137,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性，方便你
 
 **如果要对数据分层，是应该使用 Blob 存储帐户还是 GPv2 帐户？**
 
-建议使用 GPv2 帐户而非 Blob 存储帐户进行分层。 GPv2 支持 Blob 存储帐户支持的所有功能，以及许多其他的功能。 Blob 存储和 GPv2 的定价几乎相同，但某些新功能和价格折扣只提供给 GPv2 帐户。 GPv1 帐户不支持分层。
+建议使用 GPv2 帐户而非 Blob 存储帐户进行分层。 GPv2 支持 Blob 存储帐户支持的所有功能，以及许多其他功能。 Blob 存储和 GPv2 的定价几乎相同，但某些新功能和价格折扣只提供给 GPv2 帐户。 GPv1 帐户不支持分层。
 
 GPv1 和 GPv2 帐户的定价结构不同，客户在决定使用 GPv2 帐户之前，应仔细评估这二者。 只需单击一下，即可轻松地将现有的 Blob 存储或 GPv1 帐户转换为 GPv2 帐户。 若要了解详细信息，请参阅 [Azure 存储帐户选项](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 

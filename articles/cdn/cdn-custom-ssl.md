@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 内容交付网络自定义域上配置 HTTPS | Microsoft Docs
-description: 了解如何在具有自定义域的 Azure CDN 终结点上启用或禁用 HTTPS。
+title: 教程 - 在 Azure CDN 自定义域上配置 HTTPS | Microsoft Docs
+description: 在本教程中，你将了解如何在 Azure CDN 终结点自定义域上启用和禁用 HTTPS。
 services: cdn
 documentationcenter: ''
 author: dksimpson
@@ -11,22 +11,23 @@ ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/22/2018
-ms.author: rli; v-deasim
-ms.openlocfilehash: 554ae4c19d1a3d35075ad174549a62a20329e5fa
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.topic: tutorial
+ms.date: 04/12/2018
+ms.author: rli
+ms.custom: mvc
+ms.openlocfilehash: a8f2da5a68552c35a55a7bbb764afc7b36af6962
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>在 Azure 内容交付网络自定义域上配置 HTTPS
+# <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域上配置 HTTPS
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Microsoft 支持对 Azure 内容交付网络 (CDN) 上的自定义域使用 HTTPS 协议。 借助 HTTPS 自定义域支持，可以通过 SSL 使用自己的域名传送安全内容以提高在传输过程中数据的安全性。 通过一键式启用、完整的证书管理可简化为自定义域启用 HTTPS 的工作流，所有这些都不会增加成本。
+本教程展示了如何为与 Azure 内容分发网络 (CDN) 终结点关联的自定义域启用 HTTP 协议。 通过在自定义域上使用 HTTPS 协议（例如 https:\//www.contoso.com），可以确保敏感数据在通过 Internet 发送时可以通过 SSL 加密安全地进行分发。 HTTPS 提供信任、身份验证并保护 Web 应用程序免受攻击。 借助一键式启用和完整的证书管理，用来启用 HTTPS 的工作流得以简化，所有这些都不会增加成本。
 
-在传输过程中确保 Web 应用程序敏感数据的隐私和数据完整性至关重要。 使用 HTTPS 协议可确保通过 Internet 发送敏感数据时对其进行加密。 它提供信任、身份验证并保护 Web 应用程序免受攻击。 默认情况下，Azure CDN 在 CDN 终结点上支持 HTTPS。 例如，如果从 Azure CDN（例如 https:\//contoso.azureedge.net）创建 CDN 终结点，将自动启用 HTTPS。 此外，借助自定义域 HTTPS 支持，还可以为自定义域（例如 https:\//www.contoso.com）启用安全交付。 
+默认情况下，Azure CDN 支持对 CDN 终结点主机名使用 HTTPS。 例如，如果创建 CDN 终结点（例如 https:\//contoso.azureedge.net），则会自动启用 HTTPS。  
 
 HTTPS 功能的一些关键属性包括：
 
@@ -36,36 +37,49 @@ HTTPS 功能的一些关键属性包括：
 
 - 完整的证书管理：处理所有证书获取和管理。 证书在过期之前将自动进行设置并续订，这可消除由于证书过期而导致服务中断的风险。
 
->[!NOTE] 
->在启用 HTTPS 支持前，必须已建立 [Azure CDN 自定义域](./cdn-map-content-to-custom-domain.md)。
+本教程介绍如何执行下列操作：
+> [!div class="checklist"]
+> - 在自定义域上启用 HTTPS 协议
+> - 验证域
+> - 在自定义域上禁用 HTTPS 协议
 
-## <a name="enabling-https"></a>启用 HTTPS
+## <a name="prerequisites"></a>先决条件
+
+在完成本教程中的步骤之前，必须先创建一个 CDN 配置文件，一个至少一个 CDN 终结点。 有关详细信息，请参阅[快速入门：创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
+
+此外，还必须在 CDN 终结点上关联一个 Azure CDN 自定义域。 有关详细信息，请参阅[教程：将自定义域添加到 Azure CDN 终结点](cdn-map-content-to-custom-domain.md)
+
+## <a name="enable-the-https-feature"></a>启用 HTTPS 功能
 
 若要在自定义域上启用 HTTPS，请执行以下步骤：
 
-### <a name="step-1-enable-the-feature"></a>步骤 1：启用该功能 
-
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** CDN 配置文件。
 
-2. 在终结点的列表中，单击包含自定义域的终结点。
+2. 在 CDN 终结点列表中，选择包含自定义域的终结点。
 
-3. 单击要启用 HTTPS 的自定义域。
+    ![终结点列表](./media/cdn-custom-ssl/cdn-select-custom-domain-endpoint.png)
+
+    此时会显示“终结点”页。
+
+3. 在自定义域列表中，选择要为其启用 HTTPS 的自定义域。
 
     ![自定义域列表](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
-4. 单击“打开”以启用 HTTPS，然后单击“应用”。
+    此时将显示“自定义域”页。
+
+4. 选择“打开”以启用 HTTPS，然后选择“应用”。
 
     ![自定义域 HTTPS 状态](./media/cdn-custom-ssl/cdn-enable-custom-ssl.png)
 
 
-### <a name="step-2-validate-domain"></a>步骤 2：验证域
+## <a name="validate-the-domain"></a>验证域
 
->[!NOTE]
->如果通过 DNS 提供商获得证书颁发机构授权 (CAA) 记录，则必须包含 DigiCert 作为一个有效的 CA。 CAA 记录允许域名所有者通过自己的 DNS 提供商指定哪些 CA 有权为其域名颁发证书。 如果某个 CA 收到具有 CAA 记录的域证书订单，但该 CA 未被列为授权的颁发者，则禁止向该域或子域颁发证书。 有关管理 CAA 记录的信息，请参阅[管理 CAA 记录](https://support.dnsimple.com/articles/manage-caa-record/)。 有关 CAA 记录工具，请参阅 [CAA 记录帮助器](https://sslmate.com/caa/)。
+如果你已有正在使用的通过 CNAME 记录映射到自定义终结点的自定义域，请转至  
+[自定义域已映射到 CDN 终结点](#custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record)。 否则，如果终结点的 CNAME 记录条目不再存在或者它包含 cdnverify 子域，请转至[自定义域未映射到 CDN 终结点](#custom-domain-is-not-mapped-to-your-cdn-endpoint)。
 
-#### <a name="custom-domain-is-mapped-to-cdn-endpoint"></a>自定义域将映射到 CDN 终结点
+### <a name="custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record"></a>自定义域已通过 CNAME 记录映射到 CDN 终结点
 
-将自定义域添加到终结点时，会在域注册机构的 DNS 表中创建一条 CNAME 记录，以映射到 CDN 终结点主机名。 如果该 CNAME 记录仍然存在，并且不包含 cdnverify 子域，则 DigiCert 证书颁发机构 (CA) 将使用它来验证自定义域的所有权。 
+将自定义域添加到终结点时，会在域注册机构的 DNS 表中创建一条 CNAME 记录，以将其映射到 CDN 终结点主机名。 如果该 CNAME 记录仍然存在，并且不包含 cdnverify 子域，则 DigiCert 证书颁发机构 (CA) 将使用它来验证自定义域的所有权。 
 
 CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* 是 CDN 终结点主机名：
 
@@ -73,11 +87,16 @@ CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* �
 |-----------------|-------|-----------------------|
 | www.contoso.com | CNAME | contoso.azureedge.net |
 
-有关 CNAME 记录的详细信息，请参阅[创建 CNAME DNS 记录](https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain#step-2-create-the-cname-dns-records)。
+有关 CNAME 记录的详细信息，请参阅[创建 CNAME DNS 记录](https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records)。
 
-如果 CNAME 记录采用正确的格式，DigiCert 会自动验证自定义域名，并将其添加到使用者可选名称 (SAN) 证书。 DigitCert 不会向你发送验证电子邮件，并且你无需批准请求。 该证书会在一年内有效，并会在过期前自动续订。 继续执行[步骤 3：等待传播](#step-3-wait-for-propagation)。 
+如果 CNAME 记录采用正确的格式，DigiCert 会自动验证自定义域名，并将其添加到使用者可选名称 (SAN) 证书。 DigitCert 不会向你发送验证电子邮件，并且你无需批准请求。 该证书会在一年内有效，并会在过期前自动续订。 转至[等待传播](#wait-for-propagation)。 
 
-#### <a name="cname-record-is-not-mapped-to-cdn-endpoint"></a>CNAME 记录未映射到 CDN 终结点
+自动验证通常要花费几分钟时间。 如果在一小时内未看到域完成验证，请创建一个支持票证。
+
+>[!NOTE]
+>如果通过 DNS 提供商获得证书颁发机构授权 (CAA) 记录，则必须包含 DigiCert 作为一个有效的 CA。 CAA 记录允许域名所有者通过自己的 DNS 提供商指定哪些 CA 有权为其域名颁发证书。 如果某个 CA 收到具有 CAA 记录的域证书订单，但该 CA 未被列为授权的颁发者，则禁止向该域或子域颁发证书。 有关管理 CAA 记录的信息，请参阅[管理 CAA 记录](https://support.dnsimple.com/articles/manage-caa-record/)。 有关 CAA 记录工具，请参阅 [CAA 记录帮助器](https://sslmate.com/caa/)。
+
+### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>自定义域未映射到 CDN 终结点
 
 如果终结点的 CNAME 记录条目不再存在，或者它包含 cdnverify 子域，请按照此步骤中的其余说明进行操作。
 
@@ -109,7 +128,7 @@ postmaster@&lt;your-domain-name.com&gt;
 
 批准后，DigiCert 会将自定义域名添加到 SAN 证书。 该证书会在一年内有效，并会在过期前自动续订。
 
-### <a name="step-3-wait-for-propagation"></a>步骤 3：等待传播
+## <a name="wait-for-propagation"></a>等待传播
 
 验证域名后，将需要长达 6-8 小时才能使自定义域 HTTPS 功能激活。 此过程完成后，Azure 门户中的自定义 HTTPS 状态会设置为“已启用”，且自定义域对话框中的四个操作步骤会标记为完成。 自定义域现可使用 HTTPS。
 
@@ -124,7 +143,7 @@ postmaster@&lt;your-domain-name.com&gt;
 | 1 个提交请求 | 提交请求 |
 | | 正在提交 HTTPS 请求。 |
 | | 已成功提交 HTTPS 请求。 |
-| 2 个域验证 | 已向你发送电子邮件，要求你验证域所有权。 正在等待确认。 ** |
+| 2 个域验证 | 如果域是映射到 CDN 终结点的 CNAME，则会自动验证域。 否则，将会向域的注册记录中列出的电子邮件（WHOIS 注册者）发送一个验证请求。 请尽快验证域。 |
 | | 已成功验证域所有权。 |
 | | 域所有权验证请求已过期（很可能是客户在 6 天内未响应）。 将不会在域中启用 HTTPS。 * |
 | | 客户已拒绝域所有权验证请求。 将不会在域中启用 HTTPS。 * |
@@ -135,19 +154,17 @@ postmaster@&lt;your-domain-name.com&gt;
 
 \* 除非出现错误，否则不会显示此消息。 
 
-\** 如果自定义域的 CNAME 条目直接指向 CDN 终结点主机名，则不会显示此消息。
-
 如果提交请求之前出现错误，则会显示以下错误消息：
 
 <code>
 We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
 </code>
 
-## <a name="disabling-https"></a>禁用 HTTPS
+## <a name="clean-up-resources---disable-https"></a>清理资源 - 禁用 HTTPS
 
-在自定义域上启用 HTTPS 后，可将其禁用。 若要禁用 HTTPS，请执行下列步骤：
+在前面的步骤中，你在自定义域上启用了 HTTPS 协议。 如果不再希望为自定义域使用 HTTPS，可以通过执行下列步骤来禁用 HTTPS：
 
-### <a name="step-1-disable-the-feature"></a>步骤 1：禁用该功能 
+### <a name="disable-the-https-feature"></a>禁用 HTTPS 功能 
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** CDN 配置文件。
 
@@ -161,13 +178,13 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
     ![“自定义 HTTPS”对话框](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 
-### <a name="step-2-wait-for-propagation"></a>步骤 2：等待传播
+### <a name="wait-for-propagation"></a>等待传播
 
 禁用自定义域 HTTPS 功能后，最多可能需要 6-8 小时才会生效。 此过程完成后，Azure 门户中的自定义 HTTPS 状态会设置为“已禁用”，且自定义域对话框中的三个操作步骤会标记为完成。 自定义域不再能够使用 HTTPS。
 
 ![禁用 HTTPS 对话框](./media/cdn-custom-ssl/cdn-disable-custom-ssl-complete.png)
 
-### <a name="operation-progress"></a>操作进程
+#### <a name="operation-progress"></a>操作进程
 
 下表显示在禁用 HTTPS 时发生的操作进程。 禁用 HTTPS 后，自定义域对话框中将出现三个操作步骤。 每个步骤变为活动状态时，其他详细信息将显示在相应步骤下。 步骤成功完成后，它旁边会显示一个绿色的复选标记。 
 
@@ -189,7 +206,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 3. *如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？*
 
-    如果未在 24 小时内收到电子邮件，请与 Microsoft 支持部门联系。 如果自定义域的 CNAME 条目直接指向终结点主机名（并且你未使用 cdnverify 子域名称），则你不会收到域验证电子邮件。 验证会自动进行。
+    如果自定义域的 CNAME 条目直接指向终结点主机名（并且你未使用 cdnverify 子域名称），则你不会收到域验证电子邮件。 验证会自动进行。 否则，如果你没有 CNAME 条目，并且在 24 小时内未收到电子邮件，请联系 Microsoft 支持部门。
 
 4. *使用 SAN 证书是否没有使用专用证书安全？*
     
@@ -206,6 +223,15 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[在Azure CDN 终结点上设置自定义域](./cdn-map-content-to-custom-domain.md)
+你已了解：
 
+> [!div class="checklist"]
+> - 在自定义域上启用 HTTPS 协议
+> - 验证域
+> - 在自定义域上禁用 HTTPS 协议
+
+继续学习下一教程，了解如何在 CDN 终结点上配置缓存。
+
+> [!div class="nextstepaction"]
+> [使用缓存规则控制 Azure CDN 缓存行为](cdn-caching-rules.md)
 

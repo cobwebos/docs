@@ -1,6 +1,6 @@
 ---
-title: "使用 Azure CLI 创建 Azure 托管应用程序 | Microsoft Docs"
-description: "演示如何创建适用于组织中成员的 Azure 托管应用程序。"
+title: 使用 Azure CLI 创建 Azure 托管应用程序 | Microsoft Docs
+description: 演示如何创建适用于组织中成员的 Azure 托管应用程序。
 services: azure-resource-manager
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 12/15/2017
+ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35059603096279f7d58da1c1b40dd2ab3f1b5c38
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 46ea192220ced18b25d60030527d1f76fb37962a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-and-deploy-an-azure-managed-application-with-azure-cli"></a>使用 Azure CLI 创建和部署 Azure 托管应用程序
 
@@ -75,7 +75,7 @@ az managedapp definition create \
 前述示例中使用的部分参数包括：
 
 * **resource-group**：在其中创建托管应用程序定义的资源组的名称。
-* lock-level：在托管资源组上放置的锁的类型。 它防止客户对此资源组执行不良操作。 当前，ReadOnly 是唯一受支持的锁级别。 当指定了 ReadOnly 时，客户只能读取托管资源组中存在的资源。
+* lock-level：在托管资源组上放置的锁的类型。 它防止客户对此资源组执行不良操作。 当前，ReadOnly 是唯一受支持的锁级别。 当指定了 ReadOnly 时，客户只能读取托管资源组中存在的资源。 授予对托管资源组的访问权限的发布者标识不受该锁控制。
 * authorizations：描述用于授予对托管资源组权限的主体 ID 和角色定义 ID。 它是以 `<principalId>:<roleDefinitionId>` 格式指定的。 另外还可以为此属性指定多个值。 如果需要多个值，则应当以 `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` 形式指定它们。 请以空格分隔多个值。
 * **package-file-uri**：包含所需文件的 .zip 包的位置。 该包至少包含 mainTemplate.json 和 createUiDefinition.json 文件。 mainTemplate.json 定义作为托管应用程序的一部分预配的 Azure 资源。 该模板与常规资源管理器模板并没有不同。 createUiDefinition.json：生成用户界面，供用户通过门户创建托管应用程序。
 

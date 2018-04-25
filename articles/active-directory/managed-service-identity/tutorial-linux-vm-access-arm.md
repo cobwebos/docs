@@ -1,8 +1,8 @@
 ---
-title: "使用 Linux VM MSI 访问 Azure 资源管理器"
-description: "本教程逐步介绍了如何使用 Linux VM 托管服务标识 (MSI) 访问 Azure 资源管理器。"
+title: 使用 Linux VM MSI 访问 Azure 资源管理器
+description: 本教程逐步介绍了如何使用 Linux VM 托管服务标识 (MSI) 访问 Azure 资源管理器。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: bryanla
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 842e0b42dee7e03f0ddb3f3a2445007a812ceb7e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 130d4756ff6be6b3a625e71536968c9dcbf92ad0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-resource-manager"></a>使用 Linux VM 托管服务标识 (MSI) 访问 Azure 资源管理器
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Linux 虚拟机
 
@@ -56,7 +56,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI
 
-通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 幕后运行机制是，启用 MSI 可以在 VM 上安装 MSI VM 扩展，并为 VM 启用 MSI。  
+通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
 
 1. 选择要在其上启用 MSI 的虚拟机。
 2. 在左侧导航栏中，单击“配置”。
@@ -64,10 +64,6 @@ ms.lasthandoff: 03/08/2018
 4. 务必单击“保存”，以保存配置。
 
     ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. 若要检查在此 Linux VM 上安装了哪些扩展，请单击“扩展”。 如果 MSI 已启用，列表中会显示“ManagedIdentityExtensionforLinux”。
-
-    ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-arm/msi-extension-value.png)
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-azure-resource-manager"></a>授予 VM 对 Azure 资源管理器中资源组的访问权限 
 
@@ -94,7 +90,7 @@ ms.lasthandoff: 03/08/2018
     下面是用于获取访问令牌的 CURL 请求。  
     
     ```bash
-    curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true   
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true   
     ```
     
     > [!NOTE]

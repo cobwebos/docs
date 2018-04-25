@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 804bc3f3708a6b5e70c91d68f954ebc10c477831
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: cf678eac16f8b13c5ffaa1d5673ca1cb47440cf9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -41,16 +41,17 @@ ms.lasthandoff: 04/06/2018
 
     * Ubuntu 16.04 (`Xenial Xerus`)
 
-* 确保已安装 `apt-transport-https` 包。
-
-      ```bash
-      sudo apt-get install apt-transport-https
-      ```
+      * 确保已安装 `apt-transport-https` 包。
+         
+         ```bash
+         sudo apt-get install apt-transport-https
+         ```
+    * Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
 
 
 ## <a name="installation-methods"></a>安装方法
 
-### <a name="1-script-installation"></a>1.脚本安装
+### <a name="1-script-installation-ubuntu"></a>1.脚本安装 (Ubuntu)
 
 为方便起见，我们提供了一个脚本用于连同 **sfctl** CLI 一起安装 Service Fabric 运行时和 Service Fabric 通用 SDK。 在以下部分中运行手动安装步骤，以确定正在安装的组件以及同意的许可证。 运行该脚本即认为你同意所要安装的所有软件的许可条款。 
 
@@ -63,8 +64,10 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
 ### <a name="2-manual-installation"></a>2.手动安装
 若要手动安装 Service Fabric 运行时和通用 SDK，请遵照本指南的余下部分。
 
-## <a name="update-your-apt-sources"></a>更新 APT 源
+## <a name="update-your-apt-sourcesyum-repositories"></a>更新 APT 源/Yum 存储库
 若要通过 apt-get 命令行工具安装 SDK 和关联的运行时包，必须首先更新高级打包工具 (APT) 源。
+
+### <a name="ubuntu"></a>Ubuntu
 
 1. 打开终端。
 2. 将 Service Fabric 存储库添加到源列表。
@@ -105,9 +108,43 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
     sudo apt-get update
     ```
 
+
+### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
+
+1. 打开终端。
+2. 下载并安装 Extra Packages for Enterprise Linux(EPEL)。
+
+    ```bash
+    wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    sudo yum install epel-release-latest-7.noarch.rpm
+    ```
+3. 将 EfficiOS RHEL7 包存储库添加到系统。
+
+    ```bash
+    sudo wget -P /etc/yum.repos.d/ https://packages.efficios.com/repo.files/EfficiOS-RHEL7-x86-64.repo
+    ```
+
+4. 将 efficios 包签名密钥导入到本地 GPG keyring。
+
+    ```bash
+    sudo rpmkeys --import https://packages.efficios.com/rhel/repo.key
+    ```
+5. 将 Microsoft RHEL 存储库添加到系统。
+   ```bash
+      curl https://packages.microsoft.com/config/rhel/7.4/prod.repo > ./microsoft-prod.repo
+      sudo cp ./microsoft-prod.repo /etc/yum.repos.d/
+   ```
+6. 安装 dotnet sdk。
+   ```bash
+      yum install rh-dotnet20 -y
+      scl enable rh-dotnet20 bash
+   ```
+
 ## <a name="install-and-set-up-the-service-fabric-sdk-for-local-cluster-setup"></a>为本地群集设置安装并设置 Service Fabric SDK
 
 源进行更新后，即可安装 SDK。 安装 Service Fabric SDK 包，确认安装，并同意许可协议。
+
+### <a name="ubuntu"></a>Ubuntu
 
 ```bash
 sudo apt-get install servicefabricsdkcommon
@@ -120,11 +157,18 @@ sudo apt-get install servicefabricsdkcommon
 >   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-ga select true" | sudo debconf-set-selections
 >   ```
 
+### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
+
+```bash
+sudo yum install servicefabricsdkcommon
+```
+
 上述安装随附的 Service Fabric 运行时包含下表中所述的包。 
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
 Ubuntu | 2.0.0 | OpenJDK 1.8 | Implicit from npm | 最新 |
+RHEL | - | OpenJDK 1.8 | Implicit from npm | 最新 |
 
 ## <a name="set-up-a-local-cluster"></a>设置本地群集
   完成安装后，应该能够启动本地群集。
@@ -135,7 +179,7 @@ Ubuntu | 2.0.0 | OpenJDK 1.8 | Implicit from npm | 最新 |
       sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
       ```
 
-  2. 打开 Web 浏览器，转到 [Service Fabric Explorer](http://localhost:19080/Explorer)。 如果群集已开始，应看到 Service Fabric Explorer 仪表板。
+  2. 打开 Web 浏览器，转到 [Service Fabric Explorer](http://localhost:19080/Explorer) (`http://localhost:19080/Explorer`)。 如果群集已开始，应看到 Service Fabric Explorer 仪表板。 群集完全设置可能需要几分钟时间。 如果浏览器无法打开该 URL 或者 Service Fabric Explorer 未显示系统已准备就绪，请等待几分钟，然后重试。
 
       ![Linux 上的 Service Fabric Explorer][sfx-linux]
 
@@ -167,6 +211,11 @@ Ubuntu
   sudo apt install nodejs-legacy
   ```
 
+Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
+  ```bash
+  sudo yum install nodejs
+  sudo yum install npm
+  ```
 2. 通过 NPM 在计算机上安装 [Yeoman](http://yeoman.io/) 模板生成器
 
   ```bash
@@ -189,21 +238,30 @@ Ubuntu
 
 若要使用 Java 生成 Service Fabric 服务，请安装 JDK 1.8 和 Gradle 以运行生成任务。 以下代码片段安装 Open JDK 1.8 和 Gradle。 Service Fabric Java 库是从 Maven 拉取的。
 
+
+Ubuntu 
  ```bash
   sudo apt-get install openjdk-8-jdk-headless
   sudo apt-get install gradle
   ```
 
+Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
+  ```bash
+  sudo yum install java-1.8.0-openjdk-devel
+  curl -s https://get.sdkman.io | bash
+  sdk install gradle
+  ```
+ 
 ## <a name="install-the-eclipse-plug-in-optional"></a>安装 Eclipse 插件（可选）
 
-可以在面向 Java 开发人员的 Eclipse IDE 中安装用于 Service Fabric 的 Eclipse 插件。 可以使用 Eclipse，在 Service Fabric Java 应用程序的基础上创建 Service Fabric 来宾可执行应用程序和容器应用程序。
+可以在面向 Java 开发人员或 Java EE 开发人员的 Eclipse IDE 中安装用于 Service Fabric 的 Eclipse 插件。 可以使用 Eclipse，在 Service Fabric Java 应用程序的基础上创建 Service Fabric 来宾可执行应用程序和容器应用程序。
 
 > [!IMPORTANT]
 > Service Fabric 插件需要 Eclipse Neon 或更高版本。 请参阅此注意事项后面的说明，了解如何查看 Eclipse 的版本。 如果安装的是较旧版本的 Eclipse，可以从 [Eclipse 站点](https://www.eclipse.org)下载较新的版本。 建议不要在现有 Eclipse 安装版本的基础上进行安装（覆盖）。 可以先删除现有版本，然后再运行安装程序，也可以在另一目录中安装较新的版本。 
 > 
-> 在 Ubuntu 上，建议直接从 Eclipse 站点进行安装，而不是使用包安装程序（`apt` 或 `apt-get`）。 这样做可确保获取最新版 Eclipse。 
+> 在 Ubuntu 上，建议直接从 Eclipse 站点进行安装，而不是使用包安装程序（`apt` 或 `apt-get`）。 这样做可确保获取最新版 Eclipse。 可以安装面向 Java 开发人员或 Java EE 开发人员的 Eclipse IDE。
 
-1. 在 Eclipse 中，请确保已安装 Eclipse Neon 或更高版本，以及最新的 Buildship 版本（1.0.17 或更高）。 可以通过“帮助” > “安装详细信息”检查已安装组件的版本。 可以按 [Eclipse Buildship：适用于 Gradle 的 Eclipse 插件][buildship-update]中的说明更新 Buildship。
+1. 在 Eclipse 中，请确保已安装 Eclipse Neon 或更高版本，以及 Buildship 2.2.1 版或更高版本。 可以通过选择“帮助” > “关于 Eclipse” > “安装详细信息”检查已安装组件的版本。 可以按 [Eclipse Buildship：适用于 Gradle 的 Eclipse 插件][buildship-update]中的说明更新 Buildship。
 
 2. 若要安装 Service Fabric 插件，请选择“帮助” > “安装新软件”。
 
@@ -217,7 +275,7 @@ Ubuntu
 
 6. 完成安装步骤，然后接受最新用户许可协议。
 
-如果已安装 Service Fabric Eclipse 插件，请确保使用最新版本。 可以通过选择“帮助” > “安装详细信息”并在已安装插件的列表中搜索 Service Fabric 来进行检查。如果可以使用更新的版本，请选择“更新”。
+如果已安装 Service Fabric Eclipse 插件，请确保使用最新版本。 可以通过选择“帮助” > “关于 Eclipse” > “安装详细信息”并在已安装插件的列表中搜索 Service Fabric 来检查版本。如果可以使用更新的版本，请选择“更新”。
 
 有关详细信息，请参阅[使用适用于 Eclipse 的 Service Fabric 插件开发 Java 应用程序](service-fabric-get-started-eclipse.md)。
 
@@ -237,11 +295,22 @@ sudo apt-get install servicefabric servicefabricsdkcommon
 ## <a name="remove-the-sdk"></a>删除 SDK
 若要删除 Service Fabric SDK，请运行以下命令：
 
+### <a name="ubuntu"></a>Ubuntu
+
 ```bash
 sudo apt-get remove servicefabric servicefabicsdkcommon
 sudo npm uninstall generator-azuresfcontainer
 sudo npm uninstall generator-azuresfguest
 sudo apt-get install -f
+```
+
+
+### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4（Service Fabric 预览版支持）
+
+```bash
+sudo yum remote servicefabric servicefabicsdkcommon
+sudo npm uninstall generator-azuresfcontainer
+sudo npm uninstall generator-azuresfguest
 ```
 
 ## <a name="next-steps"></a>后续步骤

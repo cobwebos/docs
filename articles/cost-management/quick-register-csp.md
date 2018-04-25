@@ -1,20 +1,20 @@
 ---
-title: "使用 CSP 合作伙伴信息注册 Azure 成本管理 | Microsoft Docs"
-description: "使用 CSP 合作伙伴信息注册到 Azure 成本管理。"
+title: 使用 CSP 合作伙伴信息注册 Azure 成本管理 | Microsoft Docs
+description: 使用 CSP 合作伙伴信息注册到 Azure 成本管理。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 04/17/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: cf4fb7e82529388a030fd37da9469bf17c8dc343
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 9e09961685ad688098970ae4ea73e1a90f6a95ca
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>注册 CSP 合作伙伴计划并查看成本数据
 
@@ -34,14 +34,14 @@ ms.lasthandoff: 03/09/2018
 
 - 通过 http://portal.azure.com 登录到 Azure 门户。
 
-## <a name="create-a-trial-registration"></a>创建试用注册
+## <a name="register-with-azure-cost-management"></a>向 Azure 成本管理注册
 
 1. 在 Azure 门户中，单击服务列表中的“成本管理 + 计费”。
 2. 在“概览”下，单击“成本管理”  
     ![成本管理页](./media/quick-register-csp/cost-mgt-billing-service.png)
 3. 在“成本管理”页上，单击“转到成本管理”，在新窗口中打开“Cloudyn 注册”页。
 4. 在 Cloudyn 门户试用注册页上，键入公司名称，选择“Microsoft CSP 合作伙伴计划管理员”，然后单击“下一步”。  
-5. 输入 **应用程序 ID**、**商务 ID**、**应用程序密钥**，然后选择“默认定价计划”。 如果手边没有相关信息，请使用主管理员帐户登录到合作伙伴中心门户（[https://partnercenter.microsoft.com](https://partnercenter.microsoft.com)）并执行以下步骤：
+5. 输入 **应用程序 ID**、**商务 ID**、**应用程序密钥**，然后选择“默认定价计划”。 如果手边没有相关信息，请使用主管理员帐户登录到合作伙伴中心门户 ([https://partnercenter.microsoft.com](https://partnercenter.microsoft.com)) 并执行以下步骤：
   1. 转到“仪表板” > “帐户设置” > “应用管理”。
   2. 如果之前已创建 Web 应用，请跳过此步骤。 否则，请单击“Web 应用”部分中的“添加新 Web 应用”。
   3. 从 Web 应用程序复制“应用程序 ID”GUID。

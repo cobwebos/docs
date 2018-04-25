@@ -12,17 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/09/2018
+ms.date: 04/06/2018
 ms.author: mazha
 ms.custom: mvc
-ms.openlocfilehash: de04253a51d30885e936cb65a1925df4e5e96eaf
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: dad9866a3d61421987bc4a62057498e004f65e7f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教程：将自定义域添加到 Azure CDN 终结点
-本教程介绍如何将自定义域添加到 Azure CDN 终结点。 使用 CDN 终结点来交付内容时，如果希望自己的域名在 CDN URL 中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。 
+本教程介绍如何将自定义域添加到 Azure 内容分发网络 (CDN) 终结点。 使用 CDN 终结点来交付内容时，如果希望自己的域名在 CDN URL 中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。 
 
 在配置文件中创建 CDN 终结点以后，终结点名称（azureedge.net 的子域）就会默认包括在用于交付 CDN 内容的 URL（例如 https:\//contoso.azureedge.net/photo.png）中。 为方便起见，Azure CDN 提供了用于将自定义域与 CDN 终结点相关联的选项。 使用此选项时，请在 URL 中使用自定义域而不是终结点名称来交付内容（例如，https:\//www.contoso.com/photo.png）。 
 
@@ -49,7 +49,8 @@ ms.lasthandoff: 04/05/2018
 
 一个自定义域及其子域一次只能与一个终结点相关联。 但是，可以通过使用多个 CNAME 记录，将同一自定义域中的不同子域用于不同的 Azure 服务终结点。 还可以将包含不同子域的自定义域映射到同一 CDN 终结点。
 
-## <a name="map-temporary-cdnverify-subdomain"></a>映射临时的 cdnverify 子域
+
+## <a name="map-the-temporary-cdnverify-subdomain"></a>映射临时的 cdnverify 子域
 
 映射现有的生产环境中的域时，有一些特殊注意事项。 在 Azure 门户中注册自定义域时，该域可能会出现短暂的停机现象。 为了避免 Web 流量中断，请先将自定义域映射到包含 Azure cdnverify 子域的 CDN 终结点主机名，以便创建临时的 CNAME 映射。 使用此方法，用户可以在进行 DNS 映射时访问域，不会出现中断现象。 
 
@@ -135,7 +136,8 @@ ms.lasthandoff: 04/05/2018
 
 2. 在浏览器中，使用自定义域导航到文件的地址。 例如，如果自定义域为 cdn.contoso.com，则指向已缓存文件的 URL 应该类似于以下 URL：http:\//cdn.contoso.com/my-public-container/my-file.jpg。
 
-## <a name="map-permanent-custom-domain"></a>映射永久自定义域
+
+## <a name="map-the-permanent-custom-domain"></a>映射永久自定义域
 
 如果已验证 cdnverify 子域已成功映射到终结点（或者如果使用的是不在生产环境中的新自定义域），则可将自定义域直接映射到 CDN 终结点主机名。
 
@@ -160,6 +162,8 @@ ms.lasthandoff: 04/05/2018
 4. 保存所做更改。
 
 5. 如果此前已创建临时的 cdnverify 子域 CNAME 记录，请将其删除。 
+
+6. 如果是在生产环境中第一次使用此自定义域，请按[将自定义域与 CDN 终结点相关联](#associate-the-custom-domain-with-your-cdn-endpoint)和[验证自定义域](#verify-the-custom-domain)所述步骤进行操作。
 
 例如，GoDaddy 域注册机构的过程如下：
 
@@ -192,8 +196,6 @@ ms.lasthandoff: 04/05/2018
 7. 如果有一个 cdnverify CNAME 记录，请选择其旁边的铅笔图标，然后选择垃圾桶图标。
 
 8. 选择“删除”，以便删除 CNAME 记录。
-
-如果是在生产环境中第一次使用此自定义域，请按[将自定义域与 CDN 终结点相关联](#associate-the-custom-domain-with-your-cdn-endpoint)和[验证自定义域](#verify-the-custom-domain)所述步骤进行操作。
 
 
 ## <a name="clean-up-resources"></a>清理资源

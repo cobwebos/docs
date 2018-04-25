@@ -1,26 +1,23 @@
 ---
-title: "将 Azure VM 复制到另一个 Azure 区域（预览）"
-description: "本快速入门提供将一个 Azure 区域中的 Azure VM 复制到其他区域所需的步骤。"
+title: 将 Azure VM 复制到另一个 Azure 区域（预览）
+description: 本快速入门提供将一个 Azure 区域中的 Azure VM 复制到其他区域所需的步骤。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 02/07/2018
+ms.date: 04/08/2018
 ms.author: raynew
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 213b218a50506ace2298aa3f77721db1b81e2efe
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a317d54b56f72373d99af35b806cb231c2ef962e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region-preview"></a>将 Azure VM 复制到另一个 Azure 区域（预览）
 
-[Azure Site Recovery](site-recovery-overview.md) 服务通过在计划内和计划外停机期间使商业应用程序保持启动和运行可用状态，帮助实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
+[Azure Site Recovery](site-recovery-overview.md) 服务通过在计划内和计划外中断期间使商业应用程序保持启动和运行状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 
 本快速入门介绍如何将 Azure VM 复制到不同的 Azure 区域。
 

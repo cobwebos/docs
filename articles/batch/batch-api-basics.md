@@ -1,25 +1,25 @@
 ---
-title: "面向开发人员的 Azure Batch 概述 | Microsoft 文档"
-description: "从开发的角度了解 Batch 服务的功能及其 API。"
+title: 面向开发人员的 Azure Batch 概述 | Microsoft 文档
+description: 从开发的角度了解 Batch 服务的功能及其 API。
 services: batch
 documentationcenter: .net
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
 ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 02/28/2018
+ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0a18f975530d2a291e529308ee53d6d48a68e42
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1a202efd08de69e6e766c9c42047c01a03be4d96
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -79,10 +79,15 @@ ms.lasthandoff: 03/09/2018
 
 ## <a name="azure-storage-account"></a>Azure 存储帐户
 
-大多数 Batch 解决方案使用 Azure 存储来存储资源文件和输出文件。  
+大多数 Batch 解决方案使用 Azure 存储来存储资源文件和输出文件。 例如，Batch 任务（包括标准任务、启动任务、作业准备任务和作业释放任务）通常指定位于存储帐户中的资源文件。
 
-Batch 目前仅支持常规用途存储帐户类型，如[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)的[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)中步骤 5 所述。 Batch 任务（包括标准任务、启动任务、作业准备任务和作业释放任务）只能指定位于常规用途存储帐户中的资源文件。
+Batch 支持以下 Azure 存储[帐户选项](../storage/common/storage-account-options.md)：
 
+* 常规用途 v2 (GPv2) 帐户 
+* 常规用途 v1 (GPv1) 帐户
+* Blob 存储帐户
+
+创建 Batch 帐户时可以将存储帐户与 Batch 帐户关联，也可以稍后关联。 选择存储帐户时，请考虑成本和性能要求。 例如，与 GPv1 相比，GPv2 和 blob 存储帐户选项支持更大的[容量和可伸缩性限制](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。 （请联系 Azure 支持以请求提高存储上限。）对于包含大量读取或写入存储帐户的并行任务的 Batch 解决方案，这些帐户选项可以提高其性能。
 
 ## <a name="compute-node"></a>计算节点
 计算节点是专门用于处理一部分应用程序工作负荷的 Azure 虚拟机 (VM) 或云服务 VM。 节点大小确定了 CPU 核心数目、内存容量，以及分配给节点的本地文件系统大小。 可以使用 [Azure 虚拟机 Marketplace][vm_marketplace] 提供的 Azure 云服务映像或自己准备的自定义映像创建 Windows 或 Linux 节点池。 有关这些选项的详细信息，请参阅下面的 [池](#pool) 部分。
@@ -252,7 +257,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
     `/bin/sh -c MyTaskApplication $MY_ENV_VAR`
 
     如果任务需要运行不在节点的 `PATH` 中的应用程序或脚本，或在引用环境变量，请在任务命令行中显式调用 shell。
-* **资源文件** 。 在执行任务的命令行之前，这些文件将自动从常规用途 Azure 存储帐户中的 Blob 存储复制到节点。 有关详细信息，请参阅下面的[启动任务](#start-task)与[文件和目录](#files-and-directories)部分。
+* **资源文件** 。 在执行任务的命令行之前，这些文件将自动从 Azure 存储帐户中的 Blob 存储复制到节点。 有关详细信息，请参阅下面的[启动任务](#start-task)与[文件和目录](#files-and-directories)部分。
 * 应用程序所需的 **环境变量** 。 有关详细信息，请参阅下面的 [任务的环境设置](#environment-settings-for-tasks) 部分。
 * 执行任务所依据的 **约束** 。 例如，约束包括允许运行任务的最长时间、重试失败任务的次数上限，以及文件保留在任务工作目录中的最长时间。
 * **Application packages** 。 [应用程序包](#application-packages) 提供任务运行的应用程序的简化部署和版本控制。 在共享池的环境中，任务级应用程序包特别有用：不同的作业在一个池上运行，完成某个作业时不删除该池。 如果作业中的任务少于池中的节点，任务应用程序包可以减少数据传输，因为应用程序只部署到运行任务的节点。

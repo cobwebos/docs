@@ -1,8 +1,8 @@
 ---
-title: "将 Azure 企业协议注册到 Azure 成本管理中 | Microsoft Docs"
-description: "使用企业协议注册到 Azure 成本管理。"
+title: 将 Azure 企业协议注册到 Azure 成本管理中 | Microsoft Docs
+description: 使用企业协议注册到 Azure 成本管理。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 75ae3aabf51a14ceb3326e7f3cee3e20d9b98579
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f0769340ca15f2b60cbcb2669e1a5cf9beef6b8e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>注册 Azure 企业协议并查看成本数据
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 03/09/2018
 
 - 通过 http://portal.azure.com 登录到 Azure 门户。
 
-## <a name="create-a-trial-registration"></a>创建试用注册
+## <a name="register-with-azure-cost-management"></a>向 Azure 成本管理注册
 
 1. 在 Azure 门户中，单击服务列表中的“成本管理 + 计费”。
 2. 在“概览”下，单击“成本管理”  

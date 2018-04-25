@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: f6d8b8773719a59ad5326196f32a69a13a9a5d34
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4c7046c335039f5bc689790aaf53f5dff65991d6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB：使用 PHP 和 Azure 门户创建图形数据库
 
@@ -42,24 +42,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="add-a-graph"></a>添加图形
 
-现在可以在 Azure 门户中使用数据资源管理器工具来创建图形数据库。 
-
-1. 依次单击“数据资源管理器” > “新图形”。
-
-    此时，最右侧显示“添加图形”区域，可能需要向右滚动才能看到。
-
-    ![Azure 门户“数据资源管理器”中的“添加图形”页](./media/create-graph-php/azure-cosmosdb-data-explorer-graph.png)
-
-2. 在“添加图形”页上，输入新图形的设置。
-
-    设置|建议的值|说明
-    ---|---|---
-    数据库 ID|sample-database|输入“sample-database”作为新数据库的名称。 数据库名称的长度必须为 1 到 255 个字符，不能包含 `/ \ # ?` 或尾随空格。
-    图形 ID|sample-graph|输入“sample-graph”作为新集合的名称。 图形名称与数据库 ID 的字符要求相同。
-    存储容量|固定 (10 GB)|保留默认值为“固定 (10 GB)”。 此值是数据库的存储容量。
-    Throughput|400 RU|将吞吐量更改为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。
-
-3. 填写表单后，请单击“确定”。
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -85,7 +68,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 这些代码片段全部摘自 C:\git-samples\azure-cosmos-db-graph-php-getting-started\ 文件夹中的 `connect.php` 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-information)。 
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 这些代码片段全部摘自 C:\git-samples\azure-cosmos-db-graph-php-getting-started\ 文件夹中的 connect.php 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-information)。 
 
 * 在使用 `$db` 对象的 `connect.php` 文件开头将 Gremlin `connection` 进行初始化。
 
@@ -122,7 +105,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ![在 Azure 门户的“密钥”页中，查看并复制访问密钥](./media/create-graph-php/keys.png)
 2. 打开 `connect.php` 文件，并将 URI 值粘贴至第 8 行的 `your_server_address` 位置。
 
-    连接对象初始化现在应如下所示：
+    现在，连接对象初始化应该类似于下面的代码：
 
     ```php
     $db = new Connection([
@@ -136,13 +119,13 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ]);
     ```
 
-3. 如果图形数据库帐户是在 2017 年 12 月 20 日当天或之后创建的，请将主机名中的 `graphs.azure.com` 更改为 `gremlin.cosmosdb.azure.com`。
+3. 如果图形数据库帐户是在 2017 年 12 月 20 日或之后创建的，请将主机名中的 `graphs.azure.com` 更改为 `gremlin.cosmosdb.azure.com`。
 
-4. 将连接对象中的 `username` 参数更改为你的数据库和图形名称。 如果使用建议的 `sample-database` 和 `sample-graph` 值，应如下所示：
+4. 将连接对象中的 `username` 参数更改为你的数据库和图形名称。 如果使用了建议值 `sample-database` 和 `sample-graph`，则它应如以下代码所示：
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
-    此时，整个连接对象应如下所示：
+    此时，整个连接对象应类似于下面的代码片段：
 
     ```php
     $db = new Connection([
@@ -158,7 +141,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 5. 在 Azure 门户中，使用“复制”按钮复制主密钥，并将它粘贴到密码参数中的 `your_primary_key` 位置。
 
-    连接对象初始化现在应如下所示：
+    现在，连接对象初始化应该类似于下面的代码：
 
     ```php
     $db = new Connection([
@@ -228,7 +211,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     技术 | java | 
 
     > [!NOTE]
-    > 在本快速入门中，我们创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
+    > 在本快速入门中，将创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
 
 6. 单击“确定”。 可能需要展开屏幕才能在屏幕底部看到“确定”。
 
@@ -262,7 +245,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
    ![在数据资源管理器中连接的两个顶点](./media/create-graph-php/azure-cosmosdb-graph-explorer.png)
 
-   这就完成了本教程的资源创建部分。可以继续向图形添加顶点、修改现有顶点，也可以更改查询。 现在，回顾一下 Azure Cosmos DB 提供的指标，然后清理资源。 
+   这就完成了本快速入门的资源创建部分。 可以继续向图形添加顶点、修改现有顶点，也可以更改查询。 现在，回顾一下 Azure Cosmos DB 提供的指标，然后清理资源。 
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

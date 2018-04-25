@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: ecf9df0d94f34df69750a8baa7f5502764cf9b06
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: c4f4c89eccd1faa4c947048a6d634c4cf8483cb6
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>在 Visual Studio 中配置和使用存储模拟器
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
@@ -54,5 +54,5 @@ Azure SDK 开发环境包含存储模拟器，这是一个用于模拟本地开�
 存储模拟器提供一个用户界面，用于查看本地存储服务的状态以及启动、停止和重置这些服务。 启动存储模拟器服务之后，可以通过在 Windows 任务栏中右键单击“Microsoft Azure 模拟器”的通知区域图标，来显示用户界面或者启动或停止服务。
 
 ## <a name="viewing-storage-emulator-data-in-server-explorer"></a>在服务器资源管理器中查看存储模拟器数据
-可以通过服务器资源管理器中的“Azure 存储”节点查看存储帐户（包括存储模拟器）中的数据，以及更改 Blob 和表数据的设置。 有关详细信息，[使用存储资源管理器（预览）管理 Azure Blob 存储资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)。
+可以通过服务器资源管理器中的“Azure 存储”节点查看存储帐户（包括存储模拟器）中的数据，以及更改 Blob 和表数据的设置。 有关详细信息，请参阅[使用存储资源管理器管理 Azure Blob 存储资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)。
 

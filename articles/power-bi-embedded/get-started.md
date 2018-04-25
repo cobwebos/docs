@@ -3,8 +3,8 @@ title: Microsoft Power BI Embedded 入门 | Microsoft Docs
 description: 商业智能应用程序中的 Power BI Embedded
 services: power-bi-embedded
 documentationcenter: ''
-author: guyinacube
-manager: erikre
+author: markingmyname
+manager: kfile
 editor: ''
 tags: ''
 ms.assetid: 4787cf44-5d1c-4bc3-b3fd-bf396e5c1176
@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
-ms.author: asaxton
-ms.openlocfilehash: 3ea302d8cdd9a08d41f863917adeb4505552649d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: maghan
+ms.openlocfilehash: 7b604f9a26fc4c9a2c76a28ca01d066fe1640718
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Microsoft Power BI Embedded 入门
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 03/28/2018
 
 ![嵌入流关系图](media/get-started/introduction.png)
 
-Power BI Embedded 为 ISV 及其开发人员和客户带来优势。 例如，ISV 一开始可以免费使用 Power BI Desktop 创建视觉对象。 ISV 可以通过尽量减少视觉分析开发工作来加快入市速度，通过差异化的数据体验在竞争中脱颖而出。 ISV 还可以选择对通过嵌入式分析创建的附加价值收取额外费用。
+Power BI Embedded 为 ISV 及其开发人员和客户带来优势。 例如，ISV 可以开始免费使用 Power BI Desktop 创建视觉对象。 ISV 可以通过尽量减少视觉分析开发工作来加快入市速度，通过差异化的数据体验在竞争中脱颖而出。 ISV 还可以选择对通过嵌入式分析创建的附加价值收取额外费用。
 
 开发人员可以将时间集中在增强应用程序的核心竞争力，而不是花在开发视觉对象和分析内容上。 开发人员可以快速满足客户的报表和仪表板需求，可以轻松地嵌入具有完整文档记录的 API 和 SDK。 最后，ISV 可以在其应用中启用易于导航的数据探索，使其客户可以根据任何设备的情况充满自信地进行快速的数据驱动型决策。
 

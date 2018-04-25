@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: 53d5f413f58cea7bc8eab081d46eff2ab83e7ecb
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2328f7e233025d9f9ee9113aa28fb74754dd9193
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Azure Data Lake Store 中的数据加密
 
@@ -138,3 +138,6 @@ Data Lake Store 提供两种管理主加密密钥 (MEK) 的模式。 现在，�
     ![Data Lake Store 窗口的屏幕截图，突出显示消息和“轮换密钥”](./media/data-lake-store-encryption/rotatekey.png)
 
 此操作应该在不到两分钟内完成，且密钥轮换不会造成停机。 完成此操作后，可以看到新版密钥处于使用状态。
+
+> [!IMPORTANT]
+> 密钥轮换操作完成后，旧版本的密钥不再活跃地用于加密数据。  但是，在数据的冗余副本甚至都受影响的意外失败的极少数情况下，可能会从仍使用旧密钥的备份还原数据。 若要确保在这些少数情况下数据可访问，请保留以前版本的加密密钥的副本。 有关灾难恢复规划的最佳做法，请参阅 [Data Lake Store 数据灾难恢复指南](data-lake-store-disaster-recovery-guidance.md)。 

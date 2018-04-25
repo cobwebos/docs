@@ -1,12 +1,12 @@
 ---
-title: "采用 Azure 数据目录的方法和过程 | Microsoft 文档"
-description: "本文介绍组织考虑采用 Azure 数据目录时可用的方法和过程，包括定义愿景、识别关键业务用例，以及选择试运行项目。"
+title: 采用 Azure 数据目录的方法和过程 | Microsoft 文档
+description: 本文介绍组织考虑采用 Azure 数据目录时可用的方法和过程，包括定义愿景、识别关键业务用例，以及选择试运行项目。
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 0c771e7a-6fcd-417f-9247-897177719567
 ms.service: data-catalog
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: d092613d88a4186c17c8c91046bb598c4f60b307
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: e7c104fa9b136df8ac4b94ee1e444100e2a2f969
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>采用 Azure 数据目录的方法和过程
 本文介绍如何在组织中采用 **Azure 数据目录**。 要成功采用 **Azure 数据目录**，请将重点放在三个要点上：定义愿景、找到组织内的重要业务用例，以及选择试运行项目。
@@ -142,7 +142,7 @@ ms.lasthandoff: 01/19/2018
 在试运行团队开始使用数据目录之前安排启动会议，介绍对于试运行项目的期望，并提供初始培训。
 
 ### <a name="set-expectations"></a>设立期望
-设立期望和目标可帮助业务用户专注于特定交付成果上。 若要让项目如期展开，请分配（例如：每天或每周，根据试运行的范围和期间而定）家庭作业。 数据目录的其中一个最有价值的功能是将数据资产众包，使业务用户可以受益于企业数据的知识。 对于每个试运行团队成员而言，注册至少一个他们使用的数据源并为其加上批注，便是绝佳的家庭作业。 请参阅[注册数据源](data-catalog-get-started.md)和[如何批注数据源](data-catalog-get-started.md)。
+设立期望和目标可帮助业务用户专注于特定可交付成果。 若要让项目如期展开，请分配（例如：每天或每周，根据试运行的范围和期间而定）家庭作业。 数据目录的其中一个最有价值的功能是将数据资产众包，使业务用户可以受益于企业数据的知识。 对于每个试运行团队成员而言，注册至少一个他们使用的数据源并为其加上批注，便是绝佳的家庭作业。 请参阅[注册数据源](data-catalog-get-started.md)和[如何批注数据源](data-catalog-get-started.md)。
 
 定期与团队碰面，评审其中的一些批注。 好的数据源批注是成功采用数据目录的关键，因为它们可以在集中位置提供有意义的数据源见解。 如果没有良好的批注，整个企业中关于数据源的知识就杂乱无章。 请参阅 [How to annotate data sources](data-catalog-get-started.md)（如何批注数据源）。
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: ed8b76655ff0fc1a0604e59c704646aac95bd744
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 66b12b25787fc029b1f20b78cac578b7cc18c9b1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB：使用图形 API 生成 Node.js 应用程序
 
@@ -46,9 +46,19 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 现在从 GitHub 克隆图形 API 应用，设置连接字符串，并运行应用。 会看到以编程方式处理数据是多么容易。 
 
-1. 打开 Git 终端窗口（例如 Git Bash）并更改（通过 `cd` 命令）为工作目录。
+1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
 
-2. 运行下列命令以克隆示例存储库： 
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. 打开诸如 git bash 之类的 git 终端窗口，并使用 `cd` 命令更改为要安装示例应用的新文件夹。
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started.git
@@ -58,7 +68,9 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 ## <a name="review-the-code"></a>查看代码
 
-快速查看应用中发生的情况。 打开 `app.js` 文件，会看到以下代码行。 
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
+
+以下代码片段全部摘自 app.js 文件。
 
 * 将创建 Gremlin 客户端。
 
@@ -178,11 +190,7 @@ module.exports = config;
 
 ## <a name="clean-up-your-resources"></a>清理资源
 
-如果不打算继续使用此应用，可通过执行以下操作删除本文中创建的所有资源： 
-
-1. 在 Azure 门户的左侧导航菜单中，选择“资源组”。 然后选择所创建的资源名称。 
-
-2. 在资源组页上，选择“删除”。 键入要删除的资源名称，然后选择“删除”。
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

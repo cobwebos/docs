@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/21/2016
+ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: d415c3eb540056dc7ad6f1ab14fc8250903d6744
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 905eb170d2458f92469034b1cbf38ccd017d8f58
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>使用适用于 Eclipse 的 Service Fabric 插件开发 Java 应用程序
 Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一。 本文介绍如何设置适用于 Azure Service Fabric 的 Eclipse 开发环境。 了解如何安装 Service Fabric 插件、创建 Service Fabric 应用程序，以及将 Service Fabric 应用程序部署到 Eclipse 中的本地或远程 Service Fabric 群集。 
@@ -34,20 +34,22 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
 > 
 > 在 Ubuntu 上，建议直接从 Eclipse 站点进行安装，而不是使用包安装程序（`apt` 或 `apt-get`）。 这样做可确保获取最新版 Eclipse。 
 
-1.  请确保安装 Eclipse Neon 或更高版本，以及安装最新版本的 Buildship（1.0.17 或更高版本）：
-    -   若要检查已安装组件的版本，请在 Eclipse 中转到“帮助” > “安装详细信息”。
-    -   若要更新 Buildship，请参阅 [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update]（Eclipse Buildship：适用于 Gradle 的 Eclipse 插件）。
-    -   若要检查并安装 Eclipse 的更新，请转到“帮助” > “检查更新”。
+从 [Eclipse 站点](https://www.eclipse.org)安装 Eclipse Neon 或更高版本。  还安装 Buildship 2.2.1 版或更高版本（Service Fabric 插件与更旧版本的 Buildship 不兼容）：
+-   若要检查已安装组件的版本，请在 Eclipse 中转到“帮助” > “关于 Eclipse” > “安装详细信息”。
+-   若要更新 Buildship，请参阅 [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update]（Eclipse Buildship：适用于 Gradle 的 Eclipse 插件）。
+-   若要检查并安装 Eclipse 的更新，请转到“帮助” > “检查更新”。
 
-2.  若要安装 Service Fabric 插件，请在 Eclipse 中转到“帮助” > “安装新软件”。
-  1.    在“使用”框中，输入 **http://dl.microsoft.com/eclipse**。
-  2.    单击 **“添加”**。
-
-         ![适用于 Eclipse 的 Service Fabric 插件][sf-eclipse-plugin-install]
-  3.    选择 Service Fabric 插件，并单击“下一步”。
-  4.    完成安装步骤，并接受 Microsoft 软件许可条款。
-
-如果已安装 Service Fabric 插件，请确保使用最新版本。 若要检查可用的更新，请转到“帮助” > “安装详细信息”。 在已安装的插件列表中选择“Service Fabric”，并单击“更新”。 随后将安装可用的更新。
+若要安装 Service Fabric 插件，请在 Eclipse 中转到“帮助” > “安装新软件”。
+1. 在“使用”框中，输入 **http://dl.microsoft.com/eclipse**。
+2. 单击 **“添加”**。
+    ![适用于 Eclipse 的 Service Fabric 插件][sf-eclipse-plugin-install]
+3. 选择 Service Fabric 插件，并单击“下一步”。
+4. 完成安装步骤，并接受 Microsoft 软件许可条款。
+  
+如果已安装 Service Fabric 插件，请安装最新版本。 
+1. 若要检查可用的更新，请转到“帮助” > “关于 Eclipse” > “安装详细信息”。 
+2. 在已安装的插件列表中选择“Service Fabric”，并单击“更新”。 随后将安装可用的更新。
+3. 更新 Service Fabric 插件后，还需刷新 Gradle 项目。  右键单击 **build.gradle**，然后选择“刷新”。
 
 > [!NOTE]
 > 如果安装或更新 Service Fabric 插件时运行缓慢，原因可能是 Eclipse 设置有问题。 Eclipse 将收集有关所有更改的元数据，以更新已注册到 Eclipse 实例的站点。 若要加速 Service Fabric 插件更新的检查和安装过程，请转到“可用软件站点”。 清除所有站点对应的复选框，但指向 Service Fabric 插件位置 (http://dl.microsoft.com/eclipse/azure/servicefabric) 的站点除外。

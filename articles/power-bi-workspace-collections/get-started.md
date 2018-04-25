@@ -1,12 +1,12 @@
 ---
-title: "Microsoft Power BI 工作区集合入门"
-description: "Power BI 工作区集合是一项 Azure 服务，应用程序开发人员可通过它将交互式 Power BI 报表添加到自己的应用程序中。"
+title: Microsoft Power BI 工作区集合入门
+description: Power BI 工作区集合是一项 Azure 服务，应用程序开发人员可通过它将交互式 Power BI 报表添加到自己的应用程序中。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 4787cf44-5d1c-4bc3-b3fd-bf396e5c1176
 ms.service: power-bi-embedded
@@ -15,19 +15,19 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: asaxton
-ms.openlocfilehash: 4ee113ed25142507f381d8c9d49b25ee6553c525
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: ce8638bab55b18ec4f15ed9fc11f3256659bfbd9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Microsoft Power BI 工作区集合入门
 
 **Power BI 工作区集合**是一项 Azure 服务，应用程序开发人员可通过它将交互式 Power BI 报表添加到自己的应用程序中。 **Power BI 工作区集合**可配合现有应用程序使用，无需重新设计或更改用户登录方式。
 
 > [!IMPORTANT]
-> Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议规划迁移到 Power BI Embedded 以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
+> Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
 **Microsoft Power BI 工作区集合**的资源通过 [Azure 资源管理器 API](https://msdn.microsoft.com/library/mt712306.aspx) 进行预配。 在这种情况下，预配的资源为 **Power BI 工作区集合**。
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 
 以下让我们逐步完成使用 Azure 门户构建工作区集合的步骤。
 
-1. 打开并登录 **Azure 门户**：[http://portal.azure.com](http://portal.azure.com)。
+1. 打开 **Azure 门户** ([http://portal.azure.com](http://portal.azure.com)) 并登录到其中。
 2. 在顶部面板上选择“+ 新建”。
    
    ![Azure 门户中的“+ 新建”](media/get-started/create-workspace-1.png)
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/11/2017
 5. 在“工作区集合”上输入所需的信息。
    
    ![创建工作区集合](media/get-started/create-workspace-2.png)
-1. 选择“创建” 。
+1. 选择**创建**。
 
 工作区集合需要一些时间进行预配。 完成后会转到“工作区集合”。
 

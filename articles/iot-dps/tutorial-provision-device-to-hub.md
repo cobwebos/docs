@@ -5,22 +5,22 @@ services: iot-dps
 keywords: ''
 author: dsk-2015
 ms.author: dkshir
-ms.date: 03/28/2018
+ms.date: 04/12/2018
 ms.topic: tutorial
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4d98ce103bed7f9d14eb45422b70ceca1328afaa
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 9f151a8fbcdc20124467a1db290f6a05f574e4fe
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务将设备预配到 IoT 中心
 
-前面的教程介绍了设置设备以连接到设备预配服务的方法。 本教程介绍如何通过此服务使用“注册列表”将设备预配到单一 IoT 中心。 本教程演示如何：
+前面的教程介绍了设置设备以连接到设备预配服务的方法。 本教程介绍如何通过此服务使用自动预配和**_注册列表_** 将设备预配到单一 IoT 中心。 本教程演示如何：
 
 > [!div class="checklist"]
 > * 注册设备
@@ -42,18 +42,18 @@ ms.lasthandoff: 03/30/2018
     - 特定于每个 TPM 芯片或模拟的“认可密钥”，可以从 TPM 芯片制造商处获得。  请阅读[了解 TPM 认可密钥](https://technet.microsoft.com/library/cc770443.aspx)获取详细信息。
     - 注册 ID，用于在命名空间/作用域内唯一标识设备。 此 ID 可能与设备 ID 相同或不同。 此 ID 是每台设备的必备项。 对于基于 TPM 的设备，可能从 TPM 本身派生注册 ID，例如 TPM 认可密钥的 SHA-256 哈希。
 
-    ![门户中有关 TPM 的注册信息](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)
+    [![门户中有关 TPM 的注册信息](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - 对于基于 X.509 的设备，你需要提供：
     - [颁发给 X.509（芯片或模拟）的证书](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) 采用 .pem 或 .cer 文件的格式。 对于单独注册，需要对 X.509 系统使用基于设备的“签名人证书”；而对于注册组，则需要使用“根证书”。 
 
-    ![门户中有关 X.509 的注册信息](./media/tutorial-provision-device-to-hub/x509-device-enrollment.png)
+    [![在门户中为 X.509 证明添加单个注册](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
 可通过两种方法向设备预配服务注册设备：
 
 - **注册组** 表示共享特定证明机制的一组设备。 对于共享所需初始配置的大量设备，或者全部转到同一租户的设备，建议使用注册组。
 
-    ![门户中 X.509 的注册组](./media/tutorial-provision-device-to-hub/x509-enrollment-groups.png)
+    [![在门户中为 X.509 证明添加组注册](./media/tutorial-provision-device-to-hub/group-enrollment.png)](./media/tutorial-provision-device-to-hub/group-enrollment.png#lightbox)
 
 - **单独注册** 表示可使用设备预配服务进行注册的单一设备条目。 单独注册可使用 x509 证书或 SAS 令牌（在真实或虚拟 TPM 中）作为证明机制。 建议对需要唯一初始配置的设备以及仅能通过 TPM 或虚拟 TPM 使用 SAS 令牌作为证明机制的设备使用单独注册。 单独注册可能会指定所需 IoT 中心设备 ID。
 

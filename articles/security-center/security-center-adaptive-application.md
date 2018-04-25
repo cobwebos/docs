@@ -1,30 +1,30 @@
 ---
-title: "Azure 安全中心的自适应应用程序控制 | Microsoft Docs"
-description: "本文档介绍如何在 Azure 安全中心使用自适应应用程序控制将在 Azure VM 中运行的应用程序加入允许列表。"
+title: Azure 安全中心的自适应应用程序控制 | Microsoft Docs
+description: 本文档介绍如何在 Azure 安全中心使用自适应应用程序控制将在 Azure VM 中运行的应用程序加入允许列表。
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
 ms.service: security-center
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2018
+ms.date: 04/15/2018
 ms.author: yurid
-ms.openlocfilehash: ee15b602dc90b0e777b7ccd29572b9d560ee719b
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 04f557d30f9b7f76bdb2a596bc3e96873876061f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Azure 安全中心（预览版）的自适应应用程序控制
 了解如何通过本演练在 Azure 安全中心配置应用程序控制。
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>安全中心的自适应应用程序控制是什么？
-可以通过自适应应用程序控制来控制哪些应用程序能够在位于 Azure 中的 VM 上运行，这样有很多好处，其中之一是能够增强 VM 对恶意软件的抵抗力。 安全中心使用机器学习来分析在 VM 中运行的进程，帮助你运用此智能来应用允许列表规则。 此功能大大简化配置和维护应用程序允许列表的过程，让你可以：
+可以通过自适应应用程序控制来控制哪些应用程序能够在位于 Azure 中的 VM 上运行，这样有很多好处，其中之一是能够增强 VM 对恶意软件的抵抗力。 安全中心使用机器学习来分析在 VM 中运行的应用程序，帮助你运用此智能来应用允许列表规则。 此功能大大简化配置和维护应用程序允许列表的过程，让你可以：
 
 - 阻止运行恶意应用程序的尝试（包括在其他情况下可能会被反恶意软件解决方案遗漏的尝试）或者向用户发出此方面的警报。
 - 遵循组织要求只能使用许可软件的安全策略。
@@ -43,39 +43,48 @@ ms.lasthandoff: 02/03/2018
 
 此时会显示“自适应应用程序控件”页。
 
-![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+![控制](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 
-“资源组”部分包含三个选项卡：
+“VM 组”部分包含三个选项卡：
 
-* 已配置：所含 VM 已配置了应用程序控制的资源组的列表。
-* 已建议：建议对其实施应用程序控制的资源组的列表。 安全中心使用机器学习，根据 VM 是否一致地运行相同应用程序来确定适用于应用程序控制的 VM。
-* 无建议：所含 VM 没有任何应用程序控制建议的资源组的列表。 例如，其上的应用程序始终变化，尚未达到稳定状态的 VM。
+* **已配置**：其中包含已配置了应用程序控制的 VM 的组列表。
+* **已建议**：建议对其实施应用程序控制的组的列表。 安全中心使用机器学习，根据 VM 是否一致地运行相同应用程序来确定适用于应用程序控制的 VM。
+* **无建议**：其中包含没有任何应用程序控制建议的 VM 的组列表。 例如，其上的应用程序始终变化，尚未达到稳定状态的 VM。
+
+> [!NOTE]
+> 安全中心使用专有聚类算法来创建 VM 组，确保相似的 VM 获得推荐的最佳应用程序控制策略。
+>
+>
 
 ### <a name="configure-a-new-application-control-policy"></a>配置新的应用程序控制策略
-1. 单击“已建议”选项卡会出现一个列表，其中包含的资源组带有应用程序控制建议：
+1. 单击“已建议”选项卡会出现一个列表，其中列出了具有应用程序控制建议的组：
 
   ![建议](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
   此列表包括：
 
-  - 名称：订阅和资源组的名称
-  - VM 数：资源组中虚拟机的数目
+  - 名称：订阅和组的名称。
+  - VM 数：组中虚拟机的数目
   - 状态：建议的状态，大多数情况下为“开放”
   - 严重性：建议的严重性级别
 
-2. 选择一个资源组，打开“创建应用程序控制规则”选项。
+2. 选择一个组，打开“创建应用程序控制规则”选项。
 
   ![应用程序控制规则](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
 
-3. 在“选择 VM”中查看建议的 VM 的列表，取消选中不需向其应用应用程序控制的 VM。 在“选择适用于允许列表规则的进程”中查看建议的应用程序的列表，取消选中不需向其应用应用程序控制的应用程序。 此列表包括：
+3. 在“选择 VM”中查看建议的 VM 的列表，取消选中不需向其应用应用程序控制的 VM。 接下来，你将看到两个列表：
 
-  - 名称：完整的应用程序路径
-  - 进程数：每个路径中驻留的应用程序数
-  - **常用**：“是”表示这些进程已在此资源组的大多数 VM 上执行。
+  - **建议的应用程序**：此列表中的应用程序在此组中的 VM 上频繁出现，因此安全中心建议对其实施应用程序控制策略。
+  - **更多应用程序**：此列表中的应用程序在此组中的 VM 上不太频繁地出现（这类应用程序也称为“可利用项”，详见下文），因此建议在应用规则前进行复查。
+
+4. 复查每个列表中的应用程序，并取消选中不希望应用规则的任何应用程序。 每个列表包括：
+
+  - **名称**：应用程序的证书信息或其完整的应用程序路径
+  - **文件类型**：应用程序文件类型。 这可能是 EXE、脚本或 MSI。
   - **可利用**：警告图标表示攻击者可能会利用应用程序来规避应用程序允许列表。 建议在这些应用程序审批前查看它们。
-  - **用户**：允许运行应用程序的用户
+  - **用户**：建议允许其运行应用程序的用户
 
-4. 选择完以后，请选择“创建”。
+5. 选择完以后，请选择“创建”。
 
 安全中心始终默认在“审核”模式下启用应用程序控制。 在验证允许列表对工作负荷没有任何负面影响之后，即可更改为“强制”模式。
 
@@ -87,18 +96,18 @@ ms.lasthandoff: 02/03/2018
 
 ### <a name="editing-and-monitoring-a-group-configured-with-application-control"></a>编辑和监视配置了应用程序控制的组
 
-1. 若要编辑和监视使用应用程序控制配置的组，请返回到“自适应应用程序控制”页，在“资源组”下选择“已配置”：
+1. 若要编辑和监视使用应用程序控制配置的组，请返回到“自适应应用程序控制”页，在“VM 组”下选择“已配置”：
 
-  ![资源组](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
+  ![组](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
 
   此列表包括：
 
-  - 名称：订阅和资源组的名称
-  - VM 数：资源组中虚拟机的数目
-  - 模式：“审核”模式会记录运行未加入允许列表的应用程序的尝试；“阻止”模式会阻止未加入允许列表的应用程序运行
+  - 名称：订阅和组的名称。
+  - VM 数：组中虚拟机的数目
+  - 模式：“审核”模式将记录运行未加入允许列表的应用程序的尝试；“强制”模式将阻止未加入允许列表的应用程序运行
   - **问题**：任何当前的冲突
 
-2. 选择一个资源组，在“编辑应用程序控制策略”页中进行更改。
+2. 选择一个组，在“编辑应用程序控制策略”页中进行更改。
 
   ![保护](./media/security-center-adaptive-application/security-center-adaptive-application-fig6.png)
 
@@ -118,7 +127,6 @@ ms.lasthandoff: 02/03/2018
 
       - ViolationsBlocked：当解决方案启用“强制”模式时，尝试执行未加入允许列表的应用程序所出现的冲突。
       - ViolationsAudited：当解决方案启用“审核”模式时，执行未加入允许列表的应用程序所出现的冲突。
-      - RulesViolatedManually：当用户尝试在 VM 上手动配置规则（而不是通过 ASC 管理门户进行配置）时出现的冲突。
 
  - VM 和数：有此类问题的虚拟机数。
 
@@ -129,6 +137,7 @@ ms.lasthandoff: 02/03/2018
   在“发布服务器允许列表规则”下，列表包含：
 
   - **规则**：根据证书信息为其创建发布服务器规则的应用程序，这些信息是为每个应用程序找到的
+  - **文件类型**：特定发布服务器规则涵盖的文件类型。 这可能是以下任意类型：EXE、脚本或 MSI。
   - **用户数**：允许运行每个应用程序的用户数
 
   有关详细信息，请参阅 [Understanding Publisher Rules in Applocker](https://docs.microsoft.com/windows/device-security/applocker/understanding-the-publisher-rule-condition-in-applocker)（了解 Applocker 中的发布者规则）。
@@ -137,7 +146,7 @@ ms.lasthandoff: 02/03/2018
 
   如果单击每行末尾的三点符号，则可删除该特定规则或编辑允许的用户。
 
-  “路径允许列表规则”部分列出了整个应用程序路径（包括可执行文件），该路径适用于未使用数字证书进行签名但目前仍在允许列表规则中的应用程序。
+  “路径允许列表规则”部分列出了整个应用程序路径（包括具体文件类型），该路径适用于未使用数字证书进行签名但目前仍在允许列表规则中的应用程序。
 
   > [!NOTE]
   > 默认情况下，安全中心始终会遵循安全方面的最佳做法，尝试为应该加入允许列表的 EXE 创建发布者规则，只有在 EXE 没有发布者信息（即未签名）的情况下，才会为特定 EXE 的完整路径创建路径规则。
@@ -146,6 +155,7 @@ ms.lasthandoff: 02/03/2018
 
   此列表包含：
   - 名称：可执行文件的完整路径
+  - **文件类型**：特定路径规则涵盖的文件类型。 这可能是以下任意类型：EXE、脚本或 MSI。
   - **用户数**：允许运行每个应用程序的用户数
 
   如果单击每行末尾的三点符号，则可删除该特定规则或编辑允许的用户。
@@ -159,8 +169,8 @@ ms.lasthandoff: 02/03/2018
 ![建议](./media/security-center-adaptive-application/security-center-adaptive-application-fig11.png)
 
 此列表包含：
-- 名称：订阅和资源组的名称
-- VM 数：资源组中虚拟机的数目
+- 名称：订阅和组的名称。
+- VM 数：组中虚拟机的数目
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何在 Azure 安全中心使用自适应应用程序控制将在 Azure VM 中运行的应用程序加入允许列表。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：

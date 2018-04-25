@@ -1,6 +1,6 @@
 ---
-title: "Visual Studio Azure 资源组项目 | Microsoft 文档"
-description: "使用 Visual Studio 创建 Azure 资源组项目，并将资源部署到 Azure。"
+title: Visual Studio Azure 资源组项目 | Microsoft 文档
+description: 使用 Visual Studio 创建 Azure 资源组项目，并将资源部署到 Azure。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,16 +12,16 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2017
+ms.date: 04/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: d647206b882059e0651223dc84f2ad2a314f8a87
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: bd0680a16596931b5f595bbdd4e48414c8dbde73
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
-使用 Visual Studio 和 [Azure SDK](https://azure.microsoft.com/downloads/)可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，可以为应用定义 Web 主机、网站和数据库，然后将该基础结构与代码一起部署。 或者，可以定义虚拟机、虚拟网络和存储帐户，然后连同虚拟机上执行的脚本一起部署该基础结构。 使用 Azure 资源组部署项目，只需单个可重复的操作即可部署所有需要的资源。 有关部署和管理资源的详细信息，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。
+使用 Visual Studio 和 [Azure SDK](https://azure.microsoft.com/downloads/)可以创建一个项目，用于将基础结构和代码部署到 Azure。 例如，可以为应用定义 Web 主机、网站和数据库，并将该基础结构与代码一起部署。 或者，可以定义虚拟机、虚拟网络和存储帐户，并连同虚拟机上执行的脚本一起部署该基础结构。 使用 Azure 资源组部署项目，只需单个可重复的操作即可部署所有需要的资源。 有关部署和管理资源的详细信息，请参阅 [Azure 资源管理器概述](resource-group-overview.md)。
 
 Azure 资源组项目包含 Azure 资源管理器 JSON 模板，用于定义部署到 Azure 的资源。 若要了解资源管理器模板的元素，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。 Visual Studio 允许编辑这些模板，并提供工具来简化模板的使用。
 
@@ -148,7 +148,7 @@ Visual Studio 还提供 intellisense，帮助你了解在编辑模板时哪些�
 5. 选择“部署”按钮将项目部署到 Azure。 PowerShell 控制台会在 Visual Studio 实例外部打开。 出现密码输入提示时，在 PowerShell 控制台中输入 SQL Server 管理员密码。 **PowerShell 控制台可能隐藏在其他项目后面或最小化到任务栏。** 查找此控制台，选择它以提供密码。
    
    > [!NOTE]
-   > Visual Studio 可能会要求安装 Azure PowerShell cmdlet。 需要安装 Azure PowerShell cmdlet 才能成功部署资源组。 如果出现提示，请安装 Azure PowerShell cmdlet。
+   > Visual Studio 可能会要求安装 Azure PowerShell cmdlet。 需要安装 Azure PowerShell cmdlet 才能成功部署资源组。 如果出现提示，请安装 Azure PowerShell cmdlet。 有关详细信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/install-azurerm-ps)。
    > 
    > 
 6. 该部署可能需要几分钟时间。 在“输出”窗口中可查看部署状态。 完成部署后，最后一条消息指示部署成功，其内容与下面的消息类似：
@@ -216,6 +216,102 @@ Visual Studio 还提供 intellisense，帮助你了解在编辑模板时哪些�
     
      ![显示已部署的应用](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
+## <a name="add-an-operations-dashboard-to-your-deployment"></a>将操作仪表板添加到部署
+现在，我们已创建解决方案，可以到最后阶段使其可操作了。 并不仅限于通过 Visual Studio 界面提供的资源。 我们可以利用共享仪表板，它们以 JSON 格式定义为资源。 可以通过编辑模板和添加自定义资源来执行此操作。 
+
+1. 打开 WebsiteSqlDeploy.json 文件，在存储帐户资源后但在资源节的右 ] 前添加以下 json 代码块。
+
+```json
+    ,{
+      "properties": {
+        "lenses": {
+          "0": {
+            "order": 0,
+            "parts": {
+              "0": {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "colSpan": 4,
+                  "rowSpan": 6
+                },
+                "metadata": {
+                  "inputs": [
+                    {
+                      "name": "resourceGroup",
+                      "isOptional": true
+                    },
+                    {
+                      "name": "id",
+                      "value": "[resourceGroup().id]",
+                      "isOptional": true
+                    }
+                  ],
+                  "type": "Extension/HubsExtension/PartType/ResourceGroupMapPinnedPart"
+                }
+              },
+              "1": {
+                "position": {
+                  "x": 4,
+                  "y": 0,
+                  "rowSpan": 3,
+                  "colSpan": 4
+                },
+                "metadata": {
+                  "inputs": [],
+                  "type": "Extension[azure]/HubsExtension/PartType/MarkdownPart",
+                  "settings": {
+                    "content": {
+                      "settings": {
+                        "content": "__Customizations__\n\nUse this dashboard to create and share the operational views of services critical to the application performing. To customize simply pin components to the dashboard and then publish when you're done. Others will see your changes when you publish and share the dashboard.\n\nYou can customize this text too. It supports plain text, __Markdown__, and even limited HTML like images <img width='10' src='https://portal.azure.com/favicon.ico'/> and <a href='https://azure.microsoft.com' target='_blank'>links</a> that open in a new tab.\n",
+                        "title": "Operations",
+                        "subtitle": "[resourceGroup().name]"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "metadata": {
+          "model": {
+            "timeRange": {
+              "value": {
+                "relative": {
+                  "duration": 24,
+                  "timeUnit": 1
+                }
+              },
+              "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+            }
+          }
+        }
+      },
+      "apiVersion": "2015-08-01-preview",
+      "name": "[concat('ARM-',resourceGroup().name)]",
+      "type": "Microsoft.Portal/dashboards",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "hidden-title": "[concat('OPS-',resourceGroup().name)]"
+      }
+    }
+}
+```
+
+2. 重新部署资源组，然后在 Azure 门户中查看仪表板时，将看到已添加到所选列表的共享仪表板。 
+
+    ![自定义仪表板](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/view-custom-dashboards.png)
+
+
+
+   > [!NOTE] 
+   > 可以使用 RBAC 组管理对仪表板的访问权限，部署资源后可以将自定义项发布到资源。 请注意，重新部署资源组时，会将其重置回模板中的默认值。 应考虑使用自定义项更新模板。 有关如何执行此操作的帮助，请参阅[以编程方式创建 Azure 仪表板](../azure-portal/azure-portal-dashboards-create-programmatically.md)
+
+
+    ![自定义仪表板](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/Ops-DemoSiteGroup-dashboard.png)
+    
+    
 ## <a name="next-steps"></a>后续步骤
 * 若要了解如何通过门户管理资源，请参阅[使用 Azure 门户管理 Azure 资源](resource-group-portal.md)。
 * 若要详细了解模板，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。

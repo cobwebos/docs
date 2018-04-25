@@ -1,5 +1,5 @@
 ---
-title: 在浏览器中使用 JavaScript 和 HTML 通过 Azure 存储来上传、列出和删除 Blob
+title: Azure 快速入门 - 在浏览器中使用 JavaScript 和 HTML 在对象存储中创建 blob
 description: 了解如何通过 BlobService 实例在 HTML 页面中使用 JavaScript 上传、列出和删除 Blob。
 services: storage
 keywords: 存储, javascript, html
@@ -10,23 +10,18 @@ ms.service: storage
 ms.author: cshoe
 ms.date: 04/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: 83db6539e6ad8ec8e18d99bf7eedbc037d95509e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3d01788050779ea5d6e67b345f048775f8e98e9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-with-azure-storage-using-javascripthtml-in-the-browser"></a>快速入门：在浏览器中使用 JavaScript/HTML 通过 Azure 存储来上传、列出和删除 Blob
-本快速入门演示如何通过完全在浏览器中运行的代码来管理 Blob，并通过必要的安全措施来确保对 Blob 存储帐户进行受保护的访问。 若要完成本快速入门，需要一个 [Azure 订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>快速入门：在浏览器中使用 JavaScript/HTML 上传、列出和删除 Blob
+本快速入门演示如何通过完全在浏览器中运行的代码管理 blob。 此处使用的方法演示如何使用所需的安全措施确保对 blob 存储帐户的受保护访问。 若要完成本快速入门，需要一个 [Azure 订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
-
-### <a name="copy-security-settings"></a>复制安全设置
-在本快速入门过程中，需要一些与安全相关的值来创建安全令牌。 可以将值从门户复制到文本编辑器中，供以后使用。 
-
-在门户中选择存储帐户，找到“设置”部分。 在“设置”下选择“访问密钥”，搁置 **key1** 标题下的“存储帐户名称”和“密钥”值。 （可以使用输入框右侧的“复制”按钮将值复制到剪贴板。）
 
 ## <a name="setting-up-storage-account-cors-rules"></a>设置存储帐户 CORS 规则 
 必须先将帐户配置为启用[跨域资源共享](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)（简称 CORS），然后 Web 应用程序才能从客户端访问 Blob 存储。 
@@ -55,7 +50,7 @@ ms.lasthandoff: 04/06/2018
 ## <a name="create-a-shared-access-signature"></a>创建共享访问签名
 在浏览器中运行的代码可以使用共享访问签名 (SAS) 对发往 Blob 存储的请求进行身份验证。 使用 SAS 时，客户端可以在没有帐户访问密钥或连接字符串的情况下进行身份验证。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md)。
 
-可以通过 Azure Cloud Shell 使用 Azure CLI 创建 SAS。 下表对生成 SAS 时需要提供值的参数进行了描述。
+可以通过 Azure Cloud Shell 或 Azure 存储资源管理器使用 Azure CLI 创建 SAS。 下表对使用 CLI 生成 SAS 时需要提供值的参数进行了说明。
 
 | 参数      |说明  | 占位符 |
 |----------------|-------------|-------------|
@@ -121,7 +116,7 @@ npm i http-server
 npm start
 ```
 
-### <a name="get-the-blob-storage-client-scripts"></a>获取 Blob 存储客户端脚本
+### <a name="get-the-blob-storage-client-library"></a>获取 Blob 存储客户端库
 [下载 JavaScript 客户端库](https://aka.ms/downloadazurestoragejs)，提取该 zip 的内容，将 *bundle* 文件夹中的脚本文件置于名为 *scripts* 的文件夹中。
 
 ### <a name="add-the-client-script-reference-to-the-page"></a>向页面添加客户端脚本引用
@@ -153,7 +148,7 @@ npm start
 - 一个 *INPUT* 元素，用于上传文件
 - 一个占位符，适用于特定于存储的代码
 
-### <a name="create-a-blob-service"></a>创建 Blob 服务 
+### <a name="create-an-instance-of-blobservice"></a>创建 BlobService 的实例 
 [BlobService](https://azure.github.io/azure-storage-node/BlobService.html) 提供适用于 Azure Blob 存储的接口。 若要创建服务实例，需提供存储帐户名称以及在前面的步骤中生成的 SAS。
 
 ```javascript
@@ -184,7 +179,7 @@ document.getElementById('create-button').addEventListener('click', () => {
 ```
 
 ### <a name="upload-a-blob"></a>上传 blob
-若要从 HTML 窗体上传 Blob，请首先通过 `files` 数组获取所选文件的引用。该数组包含一个 *INPUT* 元素，其中的 *type* 设置为 *file*。
+若要从 HTML 表单上传 blob，可以从 *INPUT* 元素获取对所选文件的引用。 当元素的 *type* 设置为 *file* 时，所选文件通过 `files` 数组提供。
 
 在脚本中，可以引用 HTML 元素并将所选文件传递到 Blob 服务。
 
@@ -227,6 +222,9 @@ document.getElementById('list-button').addEventListener('click', () => {
     
 });
 ```
+
+*listBlobsSegmented* 方法会返回 blob 的集合。 默认情况下，集合数量是 5,000 个 blob，但可以调整此值以满足你的需求。 [继续示例](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js#L132)演示如何使用大量 blob 以及客户端库如何支持分页。 
+
 
 ### <a name="delete-blobs"></a>删除 Blob
 可以通过调用 [deleteBlobIfExists](https://azure.github.io/azure-storage-node/BlobService.html#deleteBlobIfExists__anchor) 来删除已上传的 Blob。

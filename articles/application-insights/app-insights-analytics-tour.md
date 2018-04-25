@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights 中 Analytics 的演示 | Microsoft Docs"
-description: "Analytics 是 Application Insights 的强大搜索工具，本演示提供了 Analytics 中所有主要查询的简短示例。"
+title: Azure Application Insights 中 Analytics 的演示 | Microsoft Docs
+description: Analytics 是 Application Insights 的强大搜索工具，本演示提供了 Analytics 中所有主要查询的简短示例。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: bddf4a6d-ea8d-4607-8531-1fe197cc57ad
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: mbullwin
-ms.openlocfilehash: 271ccc126eeb9411646b68b32fd30ce32b5eef5c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9727e3b715334837b959f22dd526caba221be62c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights 中 Analytics 的演示
 [Analytics](app-insights-analytics.md) 是 [Application Insights](app-insights-overview.md) 的强大搜索功能。 这些页面介绍 Log Analytics 查询语言。
 
 * **[观看介绍视频](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
 * **[在模拟数据上体验 Analytics](https://analytics.applicationinsights.io/demo)**（如果应用尚未将数据发送到 Application Insights）。
-* **[SQL 用户的备忘单](https://aka.ms/sql-analytics)**转换最常见的惯用语言。
+* **[SQL 用户的备忘单](https://aka.ms/sql-analytics)** 转换最常见的惯用语言。
 
 让我们一起逐步了解一些基本查询，帮助入门。
 
@@ -170,7 +170,7 @@ ms.lasthandoff: 02/01/2018
 
 ```
 
-[日期和时间参考](https://docs.loganalytics.io/concepts/concepts_datatypes_datetime.html)。
+[日期和时间参考](https://docs.loganalytics.io/docs/Language-Reference/Data-types/datetime)。
 
 
 ## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[Project](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html)：选择、重命名和计算列
@@ -541,7 +541,7 @@ requests
 ```csharp
 
     var dimensions = new Dictionary<string, string>
-                     {{"p1", "v1"},{"p2", "v2"}};
+                     {{"p1", "v1"},{"p2.d2", "v2"}};
     var measurements = new Dictionary<string, double>
                      {{"m1", 42.0}, {"m2", 43.2}};
     telemetryClient.TrackEvent("myEvent", dimensions, measurements);
@@ -554,7 +554,6 @@ requests
     customEvents
     | extend p1 = customDimensions.p1,
       m1 = todouble(customMeasurements.m1) // cast to expected type
-
 ```
 
 验证自定义维度是否为特定类型：
@@ -565,6 +564,18 @@ requests
     | extend p1 = customDimensions.p1,
       iff(notnull(todouble(customMeasurements.m1)), ...
 ```
+
+### <a name="special-characters"></a>特殊字符
+
+对于名称中有特殊字符或语言关键字的标识符，需要通过 `['` 和 `']` 或使用 `["` 和 `"]` 访问它们。
+
+```AIQL
+
+    customEvents
+    | extend p2d2 = customDimensions.['p2.d2'], ...
+```
+
+[标识符命名规则参考](https://docs.loganalytics.io/docs/Learn/References/Naming-principles)
 
 ## <a name="dashboards"></a>仪表板
 可将结果固定到仪表板，以便汇总所有重要的图表和表。

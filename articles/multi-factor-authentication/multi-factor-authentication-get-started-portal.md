@@ -1,8 +1,8 @@
 ---
-title: "Azure MFA 服务器的用户门户 | Microsoft 文档"
-description: "这是与 Azure Multi-Factor Authentication 相关的页面，介绍如何开始使用 Azure MFA 和用户门户。"
+title: Azure MFA 服务器的用户门户 | Microsoft 文档
+description: 这是与 Azure Multi-Factor Authentication 相关的页面，介绍如何开始使用 Azure MFA 和用户门户。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 06b419fa-3507-4980-96a4-d2e3960e1772
@@ -16,10 +16,10 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ms.openlocfilehash: 15f4ef7b70027a820dc50a9399891bbab77d7e12
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>适用于 Azure 多重身份验证服务器的用户门户
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 12/11/2017
    > [!NOTE]
    > 此 SSL 证书通常是公开签名的 SSL 证书。
 
-4. 从任何计算机打开 Web 浏览器，并导航到安装用户门户的 URL（示例：https://mfa.contoso.com/MultiFactorAuth）。 确保未显示证书警告或错误。
+4. 从任何计算机打开 Web 浏览器，并导航到已安装用户门户的 URL（示例：https://mfa.contoso.com/MultiFactorAuth)。 确保未显示证书警告或错误。
 
 ![MFA 服务器用户门户安装](./media/multi-factor-authentication-get-started-portal/install.png)
 
@@ -105,10 +105,10 @@ ms.lasthandoff: 12/11/2017
     * 找到项 "USE_WEB_SERVICE_SDK"，将 value="false" 更改为 value="true"
     * 找到项 "WEB_SERVICE_SDK_AUTHENTICATION_USERNAME"，将 value="" 更改为 value="DOMAIN\User"，其中，DOMAIN\User 是属于“PhoneFactor Admins”组的服务帐户。
     * 找到项 "WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD"，将 value="" 更改为 value="Password"，其中，Password 是在上一行中输入的服务帐户的密码。
-    * 找到值 https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx，将此占位符 URL 更改为在步骤 2 中安装的 Web 服务 SDK URL。
+    * 找到值 **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx**，并将此占位符 URL 更改为我们在步骤 2 中安装的 Web 服务 SDK URL。
     * 保存 Web.Config 文件并关闭记事本。
 
-6. 从任何计算机打开 Web 浏览器，并导航到安装用户门户的 URL（示例：https://mfa.contoso.com/MultiFactorAuth）。 确保未显示证书警告或错误。
+6. 从任何计算机打开 Web 浏览器，并导航到已安装用户门户的 URL（示例：https://mfa.contoso.com/MultiFactorAuth)。 确保未显示证书警告或错误。
 
 如果对如何在 IIS 服务器上配置 SSL 证书存在疑问，请参阅 [How to Set Up SSL on IIS](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)（如何在 IIS 上设置 SSL）一文。
 

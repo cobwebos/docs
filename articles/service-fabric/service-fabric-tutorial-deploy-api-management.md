@@ -1,12 +1,12 @@
 ---
-title: "将 Azure Service Fabric 与 API 管理集成 | Microsoft Docs"
-description: "本教程介绍 Azure API 管理和 Service Fabric 的快速入门方法。"
+title: 将 Azure Service Fabric 与 API 管理集成 | Microsoft Docs
+description: 本教程介绍 Azure API 管理和 Service Fabric 的快速入门方法。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 3/9/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 430e813b89f3e0004c517ef77f1028e00ebe5404
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f209e992c4562f11727613c58e1e94483af03bb7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-deploy-api-management-with-service-fabric"></a>教程：部署 API 管理与 Service Fabric
 本教程是一个系列中的第四部分，  使用 Service Fabric 部署 Azure API 管理是一个高级方案。  当需要使用一组丰富的路由规则为后端 Service Fabric 服务发布 API 时，API 管理非常有用。 云应用程序通常都需要使用前端网关，为用户、设备或其他应用程序提供同一个入口点。 在 Service Fabric 中，网关可以是专为流量入口（如 ASP.NET Core 应用程序、事件中心、IoT 中心或 Azure API 管理）设计的任意无状态服务。 
@@ -59,7 +59,7 @@ ms.lasthandoff: 03/12/2018
 执行 Azure 命令之前，登录到你的 Azure 帐户并选择你的订阅。
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionId <guid>
 ```

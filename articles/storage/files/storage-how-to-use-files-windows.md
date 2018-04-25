@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 04/11/2018
 ms.author: renash
-ms.openlocfilehash: 8905b708101e78691c14168edf7afd659afa92a4
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: e283619c7e634a1fbba5940e5c8545b0ee4de3d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>在 Windows 中装载 Azure 文件共享并对其进行访问
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以在 Windows 和 Windows Server 中装载 Azure 文件共享。 本文介绍了三种在 Windows 中装载 Azure 文件共享的不同方式：使用文件资源管理器 UI、通过 PowerShell，以及通过命令提示符。 
@@ -49,7 +49,16 @@ ms.lasthandoff: 03/29/2018
 
 * 存储帐户密钥：需提供主要（或辅助）存储密钥才能装载 Azure 文件共享。 目前不支持使用 SAS 密钥进行装载。
 
-* **确保端口 445 处于打开状态**：Azure 文件使用 SMB 协议。 SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。
+* **确保端口 445 处于打开状态**：Azure 文件使用 SMB 协议。 SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。 可以使用 Portqry 检查 TCP 端口 445 是否处于打开状态。 如果 TCP 端口 445 显示为“已筛选”，则 TCP 端口被阻止。 下面是一个示例查询：
+
+    `g:\DataDump\Tools\Portqry>PortQry.exe -n [storage account name].file.core.windows.net -p TCP -e 445`
+
+    如果 TCP 端口 445 遭到网络路径上的某条规则阻止，则输出如下所示：
+
+    `TCP port 445 (Microsoft-ds service): FILTERED`
+
+    若要详细了解如何使用 Portqry，请参阅 [Portqry.exe 命令行实用工具说明](https://support.microsoft.com/help/310099)。
+
 
 ## <a name="persisting-connections-across-reboots"></a>重新启动后保持连接
 ### <a name="cmdkey"></a>CmdKey
@@ -102,7 +111,7 @@ User: AZURE\<yourstorageaccountname>
     
     ![Azure 文件共享现已装载](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. 做好卸载（或断开连接）Azure 文件共享的准备以后，即可在文件资源管理器中右键单击“网络位置”下对应于共享的条目，然后选择“断开连接”。
+7. 做好卸载（或断开连接）Azure 文件共享的准备以后，即可通过在文件资源管理器中右键单击“网络位置”下对应于共享的条目，然后选择“断开连接”来完成此操作。
 
 ## <a name="mount-the-azure-file-share-with-powershell"></a>使用 PowerShell 装载 Azure 文件共享
 1. 使用以下命令装载 Azure 文件共享：记住将 `<storage-account-name>`、`<share-name>`、`<storage-account-key>`、`<desired-drive-letter>` 替换为相应的内容。

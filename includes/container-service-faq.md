@@ -92,6 +92,16 @@ ssh userName@masterFQDN –A –p 22
 
 有关详细信息，请参阅[连接到 Azure 容器服务群集](../articles/container-service/kubernetes/container-service-connect.md)。
 
+### <a name="my-dns-name-resolution-isnt-working-on-windows-what-should-i-do"></a>我的 DNS 名称解析在 Windows 上不正常工作。 我该怎么办？
+
+Windows 上存在一些已知的 DNS 问题，其修补程序仍在被积极地逐步淘汰。请确保使用的是最新的 acs-engine 和 Windows 版本（已安装 [KB4074588](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4074588) 和 [KB4089848](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4089848)），以便环境可以从中受益。 否则，请参阅下表了解缓解步骤：
+
+| DNS 症状 | 解决方法  |
+|-------------|-------------|
+|当工作负荷容器不稳定和崩溃时，清理网络命名空间 | 重新部署任何受影响的服务 |
+| 服务 VIP 访问被中断 | 配置 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)，以始终使一个标准（非特权）pod 处于运行状态 |
+|运行容器的节点变为不可用时，DNS 查询可能会失败，从而产生一个“负缓存条目” | 运行以下影响内部的容器： <ul><li> `New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxCacheTtl -Value 0 -Type DWord`</li><li>`New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord`</li><li>`Restart-Service dnscache` </li></ul><br> 如果这样仍不能解决问题，请尝试完全禁用 DNS 缓存： <ul><li>`Set-Service dnscache -StartupType disabled`</li><li>`Stop-Service dnscache`</li></ul> |
+
 ## <a name="next-steps"></a>后续步骤
 
 * [详细了解](../articles/container-service/kubernetes/container-service-intro-kubernetes.md) Azure 容器服务。

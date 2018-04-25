@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: df97d2020309fa9af7f67170729ce9c2d723572d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7800c2e72b1bfd78f83bf7b90a35e47f6109a014
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
@@ -32,22 +32,13 @@ Linux 应用服务支持大量内置映像，以便提高开发人员工作效�
 
 | 语言 | 支持的版本 |
 |---|---|
-| Node.js | 4.4, 4.5, 6.2, 6.6, 6.9-6.11, 8.0, 8.1 |
+| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 9.4 |
 | Java * | 8.0 |
-| PHP | 5.6, 7.0 |
+| PHP | 5.6, 7.0, 7.2 |
 | .NET Core | 1.0, 1.1, 2.0 |
 | Ruby | 2.3 |
-
-* 预览功能支持
-
-### <a name="preview-supported-java-runtimes"></a>预览：支持的 Java 运行时
-
-基于 Linux 的应用服务提供的 Java 运行时如下：
-
-| 运行时 | 版本 |
-|---|---|
-| Apache Tomcat | 8.5 |
-| Apache Tomcat | 9.0 |
+| Go | 1.0 |
+| Apache Tomcat | 8.5, 9.0 |
 
 如需更多详细信息，请参阅[在基于 Linux 的应用服务中创建 Java Web 应用](https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-java)。
 
@@ -84,10 +75,7 @@ Azure 门户仅显示当前对用于容器的 Web 应用有效的功能。 当�
 
 某些功能（例如虚拟网络集成、Azure Active Directory/第三方身份验证或 Kudu 站点扩展）尚不可用。 这些功能可用后，我们将更新文档和博客，以反映所做更改。
 
-Linux 应用服务仅支持[基本和标准](https://azure.microsoft.com/pricing/details/app-service/plans/)应用服务计划，没有[免费或共享](https://azure.microsoft.com/pricing/details/app-service/plans/)层。 以下也是有关 Linux 应用服务的重要限制：
-
-* 不能在已经托管非 Linux Web 应用的应用服务计划中创建用于容器的 Web 应用。
-* 在包含非 Linux Web 应用的资源组中创建用于容器的 Web 应用时，必须在不同于现有应用服务计划的资源组中创建应用服务计划。
+Linux 应用服务仅支持[基本和标准](https://azure.microsoft.com/pricing/details/app-service/plans/)应用服务计划，没有[免费或共享](https://azure.microsoft.com/pricing/details/app-service/plans/)层。 不能在已经托管非 Linux Web 应用的应用服务计划中创建用于容器的 Web 应用。
 
 ## <a name="troubleshooting"></a>故障排除
 

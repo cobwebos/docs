@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/29/2018
 ms.author: ryanwi, mikhegn
-ms.openlocfilehash: 4593f6f01759e41ee3cf4262b2eeb5295546e955
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1012cdc73e721c65502d749ce27eb6e9cbda6bf4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 > [!div class="op_single_selector"]
@@ -84,6 +84,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 * [了解如何在本地群集上部署和管理应用程序](service-fabric-get-started-with-a-local-cluster.md)
 * [在 Windows 上准备 Linux 开发环境](service-fabric-local-linux-cluster-windows.md)
 * [了解编程模型：Reliable Services 和 Reliable Actors](service-fabric-choose-framework.md)
+* [在 Azure Service Fabric 中定期备份和还原](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 * [在 GitHub 上检查 Service Fabric 代码示例](https://aka.ms/servicefabricsamples)
 * [使用 Service Fabric 资源管理器可视化群集](service-fabric-visualizing-your-cluster.md)
 * [按照 Service Fabric 学习路径获取平台的概括性介绍](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)

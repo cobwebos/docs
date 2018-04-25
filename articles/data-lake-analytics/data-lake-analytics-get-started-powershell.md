@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/04/2017
 ms.author: saveenr
-ms.openlocfilehash: f37a4563a758d442760f4a6be3c11bb9a9ddfc28
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 332b6c90ea51d16a439bfb21222bb753e93a02b9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>通过 Azure PowerShell 开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -39,13 +39,13 @@ ms.lasthandoff: 03/16/2018
 使用订阅名称登录：
 
 ```
-Login-AzureRmAccount -SubscriptionName "ContosoSubscription"
+Connect-AzureRmAccount -SubscriptionName "ContosoSubscription"
 ```
 
 除订阅名称外，还可使用订阅 ID 登录：
 
 ```
-Login-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Connect-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 如果成功，此命令的输出将类似于以下文本：
@@ -96,13 +96,13 @@ OUTPUT @a
 "@
 ```
 
-提交该脚本。
+使用 `Submit-AdlJob` cmdlet 和 `-Script` 参数提交脚本文本。
 
 ```
 $job = Submit-AdlJob -Account $adla -Name "My Job" –Script $script
 ```
 
-或者，可将脚本保存为文件，然后使用以下命令提交：
+作为替代方法，可以使用 `-ScriptPath` 参数提交脚本文件：
 
 ```
 $filename = "d:\test.usql"
@@ -110,20 +110,19 @@ $script | out-File $filename
 $job = Submit-AdlJob -Account $adla -Name "My Job" –ScriptPath $filename
 ```
 
-
-获取特定作业的状态。 继续使用此 cmdlet，直至作业完成。
+使用 `Get-AdlJob` 获取作业的状态。 
 
 ```
 $job = Get-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-可以使用 Wait-AdlJob cmdlet，而不必反复调用 Get-AdlAnalyticsJob 直至作业完成。
+可以使用 `Wait-AdlJob` cmdlet，而不必反复调用 Get-AdlJob 直至作业完成。
 
 ```
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-下载输出文件。
+使用 `Export-AdlStoreItem` 下载输出文件。
 
 ```
 Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"

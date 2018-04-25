@@ -1,8 +1,8 @@
 ---
-title: "Azure 密钥保管库日志记录 | Microsoft Docs"
-description: "借助本教程开始使用 Azure 密钥保管库日志记录。"
+title: Azure 密钥保管库日志记录 | Microsoft Docs
+description: 借助本教程开始使用 Azure 密钥保管库日志记录。
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: 2faf45c7329f1c98a26bcf7ec5d569dfa16cbbda
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 3406d314fb4dba92830933c4e4d373fc8bebeba3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-key-vault-logging"></a>Azure 密钥保管库日志记录
 在大多数区域中提供了 Azure 密钥保管库。 有关详细信息，请参阅 [密钥保管库定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/17/2017
 ## <a id="connect"></a>连接到订阅
 启动 Azure PowerShell 会话，并使用以下命令登录 Azure 帐户：  
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 在弹出的浏览器窗口中，输入 Azure 帐户用户名和密码。 Azure PowerShell 会获取与此帐户关联的所有订阅，并按默认使用第一个订阅。
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 10/17/2017
 
 此输出确认密钥保管库日志记录现已启用，系统会将信息保存到存储帐户。
 
-还可以选择性地为日志设置保留期策略，以便自动删除较旧的日志。 例如，使用 **-RetentionEnabled** 标志将保留期策略设置为**$true**，并将 **-RetentionInDays** 参数设置为 **90**，以便自动删除 90 天以上的日志。
+还可以选择性地为日志设置保留期策略，以便自动删除较旧的日志。 例如，使用 **-RetentionEnabled** 标志将保留期策略设置为 **$true**，并将 **-RetentionInDays** 参数设置为 **90**，以便自动删除 90 天以上的日志。
 
     Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent -RetentionEnabled $true -RetentionInDays 90
 
@@ -211,7 +211,7 @@ ms.lasthandoff: 10/17/2017
 | 字段名称 | 说明 |
 | --- | --- |
 | time |日期和时间 (UTC)。 |
-| resourceId |Azure Resource Manager 资源 ID。 对于密钥保管库日志，这始终是密钥保管库资源 ID。 |
+| resourceId |Azure 资源管理器资源 ID。 对于密钥保管库日志，这始终是密钥保管库资源 ID。 |
 | operationName |下一份表格中所述操作的名称。 |
 | operationVersion |客户端请求的 REST API 版本。 |
 | category |对于密钥保管库日志而言，AuditEvent 是唯一可用值。 |
@@ -222,7 +222,7 @@ ms.lasthandoff: 10/17/2017
 | callerIpAddress |发出请求的客户端的 IP 地址。 |
 | correlationId |一个可选 GUID，客户端可传递此 GUID 来使客户端日志与服务端（密钥保管库）日志相关联。 |
 | identity |发出 REST API 请求时提供的令牌中的标识。 与通过 Azure PowerShell cmdlet 发出请求一样，这通常是“用户”、“服务主体”，或者“用户+应用程序 ID”的组合。 |
-| properties |此字段根据操作 (operationName) 包含不同的信息。 在大多数情况下，包含客户端信息（客户端传递的 useragent 字符串）、确切的 REST API 请求 URI 和 HTTP 状态代码。 此外，在根据请求（例如，KeyCreate 或 VaultGet）返回对象时，此字段还将包含密钥 URI（“id”形式）、保管库 URI 或机密 URI。 |
+| 属性 |此字段根据操作 (operationName) 包含不同的信息。 在大多数情况下，包含客户端信息（客户端传递的 useragent 字符串）、确切的 REST API 请求 URI 和 HTTP 状态代码。 此外，在根据请求（例如，KeyCreate 或 VaultGet）返回对象时，此字段还将包含密钥 URI（“id”形式）、保管库 URI 或机密 URI。 |
 
 **operationName** 字段值采用 ObjectVerb 格式。 例如：
 

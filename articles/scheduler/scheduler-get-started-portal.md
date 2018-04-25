@@ -1,11 +1,11 @@
 ---
-title: "Azure 门户中的 Azure 计划程序入门 | Microsoft Docs"
-description: "Azure 门户中的 Azure 计划程序入门"
+title: Azure 门户中的 Azure 计划程序入门 | Microsoft Docs
+description: Azure 门户中的 Azure 计划程序入门
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: deli
-ms.openlocfilehash: 3861ee121ed1c4d086ea81640e84d924d7d17ea1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f03ddb475835b30e9b931b7f057c062b57ac45f3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Azure 门户中的 Azure 计划程序入门
 在 Azure 计划程序中创建计划的作业很简单。 在本教程中，将了解如何创建作业。 还将学习计划程序的监视和管理功能。
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 2. 单击“+新建”> 在搜索框中键入“计划程序”> 在结果中选择“计划程序”> 单击“创建”。
    
     ![][marketplace-create]
-3. 让我们来创建一个作业，这只需要使用 GET 请求访问 http://www.microsoft.com/。 在“计划程序作业”  屏幕上，输入以下信息：
+3. 让我们来创建一个作业，该作业只需要使用 GET 请求访问 http://www.microsoft.com/。 在“计划程序作业”  屏幕上，输入以下信息：
    
    1. **名称：**`getmicrosoft`  
    2. **订阅：**Azure 订阅   
@@ -105,7 +105,7 @@ ms.lasthandoff: 10/11/2017
    ![][job-history-details]
 
 ### <a name="users"></a>用户
-Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 计划程序进行细致的访问管理。 若要了解如何使用“用户”选项卡，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)
+Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 计划程序进行细致的访问管理。 若要了解如何使用“用户”选项卡，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="see-also"></a>另请参阅
  [计划程序是什么？](scheduler-intro.md)

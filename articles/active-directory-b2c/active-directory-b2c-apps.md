@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: davidmu1
-ms.openlocfilehash: 011426f3d8eab4eb2513270a9bcd1562e3c12b31
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0329cb9e49196f77ba12940e5987487eb2b6fda9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C：应用程序的类型
-Azure Active Directory (Azure AD) B2C 支持各种新式应用体系结构的身份验证。 所有这些体系结构都以行业标准协议 [OAuth 2.0](active-directory-b2c-reference-protocols.md) 或 [OpenID Connect](active-directory-b2c-reference-protocols.md) 为基础。 本文档简要介绍可以构建的应用类型（无论使用哪种语言或平台）。 在 [开始构建应用程序](active-directory-b2c-overview.md#get-started)之前，它还可以帮助了解一些高级方案。
+Azure Active Directory (Azure AD) B2C 支持各种新式应用体系结构的身份验证。 所有这些体系结构都以行业标准协议 [OAuth 2.0](active-directory-b2c-reference-protocols.md) 或 [OpenID Connect](active-directory-b2c-reference-protocols.md) 为基础。 本文档简要介绍可以构建的应用类型（无论使用哪种语言或平台）。 在 [开始构建应用程序](active-directory-b2c-overview.md)之前，它还可以帮助了解一些高级方案。
 
 ## <a name="the-basics"></a>基础知识
 使用 Azure AD B2C 的每个应用必须通过 [Azure 门户](https://portal.azure.com/)在 [B2C 目录](active-directory-b2c-get-started.md)中注册。 应用注册过程将收集一些值并将其分配给应用：
@@ -30,16 +30,9 @@ Azure Active Directory (Azure AD) B2C 支持各种新式应用体系结构的身
 * 用于将响应定向回到应用的 **重定向 URI**。
 * 特定于方案的其他任何值。 请了解如何 [注册应用](active-directory-b2c-app-registration.md)获取详细信息。
 
-应用在注册后，将通过向 Azure AD v2.0 终结点发送请求来与 Azure AD 通信：
-
-```
-https://login.microsoftonline.com/common/oauth2/v2.0/authorize
-https://login.microsoftonline.com/common/oauth2/v2.0/token
-```
-
 发送到 Azure AD B2C 的每个请求都指定了一个 **策略**。 策略控制 Azure AD 的行为。 也可以使用这些终结点来创建一系列高度可自定义的用户体验。 常见的策略包括注册、登录和配置文件编辑策略。 如果不熟悉策略，请先了解 Azure AD B2C 的 [可扩展策略框架](active-directory-b2c-reference-policies.md) ，再继续下一步。
 
-每个应用与 v2.0 终结点之间的交互遵循类似的高级模式：
+每个应用的交互均遵循类似的高级模式：
 
 1. 应用将用户定向到 v2.0 终结点以执行 [策略](active-directory-b2c-reference-policies.md)。
 2. 用户根据策略定义完成策略。
@@ -49,7 +42,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 6. 应用定期刷新安全令牌。
 
 <!-- TODO: Need a page for libraries to link to -->
-根据要构建的应用程序类型，这些步骤可能稍有不同。 开源库可以处理细节。
+根据要构建的应用程序类型，这些步骤可能稍有不同。
 
 ## <a name="web-apps"></a>Web 应用
 对于托管在服务器中通过浏览器访问的 Web 应用（包括 .NET、PHP、Java、Ruby、Python、Node.js），Azure AD B2C 支持使用 [OpenID Connect](active-directory-b2c-reference-protocols.md) 实现所有用户体验。 这包括登录、注册和配置文件管理。 在 Azure AD B2C 的 OpenID Connect 实现中，Web 应用向 Azure AD 发出身份验证请求，发起这些用户体验。 请求的结果是 `id_token`。 此安全令牌代表用户的标识。 它还以声明形式提供用户的相关信息：
@@ -75,7 +68,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 使用从 Azure AD 收到的公共签名密钥来验证 `id_token` ，就足以验证用户的标识。 这也会设置可在后续页面请求中用于识别用户的会话 Cookie。
 
-若要查看此方案的工作方式，请尝试运行 [入门部分](active-directory-b2c-overview.md#get-started)中提供的 Web 应用登录代码示例之一。
+若要查看此方案的工作方式，请尝试运行 [入门部分](active-directory-b2c-overview.md)中提供的 Web 应用登录代码示例之一。
 
 除了简化登录，Web 服务器应用可能还需要访问后端 Web 服务。 在此情况下，Web 应用可以执行稍有不同的 [OpenID Connect 流](active-directory-b2c-reference-oidc.md) ，使用授权代码和刷新令牌来获取令牌。 以下 [Web API 部分](#web-apis)描述了此方案。
 
@@ -105,7 +98,7 @@ Web API 可以从许多类型的客户端（包括 Web 应用、桌面和移动�
 
 有关授权代码、刷新令牌的详细信息和获取令牌的步骤，请参阅 [OAuth 2.0 protocol](active-directory-b2c-reference-oauth-code.md)（OAuth 2.0 协议）。
 
-若要了解如何使用 Azure AD B2C 保护 Web API，请查看 [入门部分](active-directory-b2c-overview.md#get-started)中的 Web API 教程。
+若要了解如何使用 Azure AD B2C 保护 Web API，请查看 [入门部分](active-directory-b2c-overview.md)中的 Web API 教程。
 
 ## <a name="mobile-and-native-apps"></a>移动和本机应用
 安装在设备中的应用（例如移动和桌面应用）通常需要代表用户访问后端服务或 Web API。 可以将自定义的标识管理体验添加到本机应用，使用 Azure AD B2C 和 [OAuth 2.0 授权代码流](active-directory-b2c-reference-oauth-code.md)安全调用后端服务。  

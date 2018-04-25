@@ -6,19 +6,18 @@ services: application-gateway
 author: amsriva
 manager: rossort
 editor: amsriva
-ms.assetid: 04b362bc-6653-4765-86f6-55ee8ec2a0ff
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2017
+ms.date: 4/16/2018
 ms.author: amsriva
-ms.openlocfilehash: d3945436a369f624ccb1d862b9623b8cfb1ed376
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 35a7e60dc65b54cbddfcd85fa0e704823152889e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="web-application-firewall-waf"></a>Web 应用程序防火墙 (WAF)
 
@@ -60,7 +59,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 * 防止 HTTP 协议违反行为
 * 防止 HTTP 协议异常行为，例如缺少主机用户代理和接受标头
 * 防止自动程序、爬网程序和扫描程序
-* 检测常见应用程序错误配置（即 Apache、IIS 等）
+* 检测常见应用程序错误配置（即 Apache、IIS 等）。
 
 有关规则及其保护措施的更详细列表，请参阅下面的[核心规则集](#core-rule-sets)。
 
@@ -74,9 +73,7 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 |RuleGroup|说明|
 |---|---|
-|**[REQUEST-910-IP-REPUTATION](application-gateway-crs-rulegroups-rules.md#crs910)**|包含用于防范已知垃圾邮件制造者或恶意活动的规则。|
 |**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|包含用于锁定方法（PUT、PATCH< 等）的规则。|
-|**[REQUEST-912-DOS-PROTECTION](application-gateway-crs-rulegroups-rules.md#crs912)**| 包含用于防范拒绝服务 (DoS) 攻击的规则。|
 |**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| 包含用于防范端口和环境扫描程序的规则。|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|包含用于防范协议和编码问题的规则。|
 |**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|包含用于防范标头注入、请求走私和响应拆分的规则|
@@ -166,7 +163,6 @@ Web 应用程序防火墙中默认已预先配置 CRS 3.0，也可以选择使�
 
 Web 应用程序防火墙在新的 WAF SKU 中提供。 此 SKU 仅在 Azure 资源管理器预配模型中可用，在经典部署模型中不可用。 此外，WAF SKU 仅提供中型和大型应用程序网关实例大小。 应用程序网关的所有限制同样适用于 WAF SKU。 定价基于每小时网关实例费和数据处理费。 WAF SKU 的每小时网关定价不同于标准 SKU 费用，具体请参阅[应用程序网关定价详细信息](https://azure.microsoft.com/pricing/details/application-gateway/)。 数据处理费保持不变。 不会按规则或规则组收费。 可以使用同一个 Web 应用程序防火墙保护多个 Web 应用程序，支持多个应用程序不会产生额外的费用。 
 
-WAF 的计费方式从 2017 年 5 月 5 日开始生效，在此之前，WAF SKU 网关继续按标准费率计费。
 
 ## <a name="next-steps"></a>后续步骤
 

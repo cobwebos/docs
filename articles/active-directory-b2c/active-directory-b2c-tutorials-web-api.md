@@ -1,22 +1,22 @@
 ---
-title: “使用 Azure Active Directory B2C 保护 ASP.NET Web API”教程
+title: 教程 - 使用 Azure Active Directory B2C 通过 Web 应用授予对 ASP.NET Web API 的访问权限 | Microsoft Docs
 description: 有关如何使用 Active Directory B2C 保护 ASP.NET Web API 并通过 ASP.NET Web 应用对其进行调用的教程。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 editor: ''
 ms.author: davidmu
-ms.date: 1/23/2018
+ms.date: 01/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: f4e1c18f151a9c815258f01ea198d3d173d0b44e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f61a3b103d8738e1b86fb64aff99dab9c6986fdf
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="tutorial-use-azure-active-directory-b2c-to-protect-an-aspnet-web-api"></a>教程：使用 Azure Active Directory B2C 保护 ASP.NET Web API
+# <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 通过 Web 应用授予对 ASP.NET Web API 的访问权限
 
 本教程介绍如何从 ASP.NET Web 应用调用受 Azure Active Directory (Azure AD) B2C 保护的 Web API 资源。
 
@@ -45,7 +45,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
 
 1. 从 Azure 门户的服务列表中选择“Azure AD B2C”。
 
-2. 在 B2C 设置中，单击“应用程序”，然后单击“+ 添加”。
+2. 在 B2C 设置中，单击“应用程序”，然后单击“添加”。
 
     若要在租户中注册示例 Web API，请使用以下设置。
     
@@ -89,11 +89,13 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
 | **范围** | Hello.Read | 对 hello 的读取访问权限 |
 | **范围** | Hello.Write | 对 hello 的写入访问权限 |
 
+单击“ **保存**”。
+
 可以使用发布的作用域向客户端应用授予对 Web API 的权限。
 
 ### <a name="grant-app-permissions-to-web-api"></a>授予应用访问 Web API 的权限
 
-若要从应用调用受保护的 Web API，需授予应用访问该 API 的权限。 
+若要从应用调用受保护的 Web API，需授予应用访问该 API 的权限。 在本教程中，将使用在[“使用 Azure Active Directory B2C 在 ASP.NET Web 应用中进行用户身份验证”教程](active-directory-b2c-tutorials-web-app.md)中创建的 Web 应用。 
 
 1. 从 Azure 门户的服务列表中选择“Azure AD B2C”，然后单击“应用程序”，查看已注册应用的列表。
 
@@ -109,7 +111,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
 
 “我的示例 Web 应用”已注册，可以调用受保护的“我的示例 Web API”了。 用户通过 Azure AD B2C 进行[身份验证](../active-directory/develop/active-directory-dev-glossary.md#authentication)，以便使用 Web 应用。 Web 应用从 Azure AD B2C 获取[授权](../active-directory/develop/active-directory-dev-glossary.md#authorization-grant)，以便访问受保护的 Web API。
 
-## <a name="update-web-api-code"></a>更新 Web API 代码
+## <a name="update-code"></a>更新代码
 
 注册 Web API 并定义作用域以后，需配置 Web API 代码，以便使用 Azure AD B2C 租户。 在本教程中，可以配置一个示例 Web API。 
 
@@ -137,11 +139,11 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
 
 3. 配置 API 的 URI。 这是 Web 应用用来发起 API 请求的 URI。 另请配置所请求的权限。
 
-```C#
-<add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/myAPISample/" />
-<add key="api:ReadScope" value="Hello.Read" />
-<add key="api:WriteScope" value="Hello.Write" />
-```
+    ```C#
+    <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/myAPISample/" />
+    <add key="api:ReadScope" value="Hello.Read" />
+    <add key="api:WriteScope" value="Hello.Write" />
+    ```
 
 ### <a name="configure-the-web-api"></a>配置 Web API
 
@@ -162,7 +164,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
 4. 使用在创建注册和登录策略时生成的名称更新策略设置。
 
     ```C#
-    <add key="ida:SignUpSignInPolicyId" value="b2c_1_SiUpIn" />
+    <add key="ida:SignUpSignInPolicyId" value="B2C_1_SiUpIn" />
     ```
 
 5. 配置作用域设置，使之与门户中创建的设置相匹配。
@@ -172,7 +174,7 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过 Az
     <add key="api:WriteScope" value="Hello.Write" />
     ```
 
-## <a name="run-the-sample-web-app-and-web-api"></a>运行示例 Web 应用和 Web API
+## <a name="run-the-sample"></a>运行示例
 
 **TaskWebApp** 和 **TaskService** 项目都需要运行。 
 

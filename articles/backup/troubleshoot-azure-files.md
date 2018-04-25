@@ -9,11 +9,11 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 2e067e0a1f673480bc08abfee61d2b1b2c92f885
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 225d11c8609c81ed7877283e8dc0fd920b14d838
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-problems-backing-up-azure-files"></a>排查 Azure 文件备份问题
 可参考下表中所列信息，排查使用 Azure 文件备份时遇到的问题和错误。
@@ -59,6 +59,7 @@ Azure 文件备份为预览版。 Azure 文件共享不支持以下备份场景�
 | 还原失败，因为源中的某个文件不存在。 | <ul><li> 所选项不在恢复点数据中。 若要恢复这些文件，请提供正确的文件列表。 <li> 与恢复点对应的文件共享快照已手动删除。 请选择另一恢复点，然后重试还原操作。 |
 | 正在进行恢复到同一目标的恢复作业。 | <ul><li>文件共享备份不支持并行恢复到同一目标文件共享。 <li>等待现有恢复完成，然后再试一次。 如果在恢复服务保管库中找不到恢复作业，请查看同一订阅中的其他恢复服务保管库。 |
 | 还原操作失败，因为目标文件共享已满。 | 增加目标文件共享大小配额，使之能够容纳还原数据，然后重试该操作。 |
+| 由于对与目标文件共享关联的文件同步服务资源执行预还原操作时出错，还原操作失败。 | 请稍后重试，如果问题仍然存在，请联系 Microsoft 支持部门。 |
 | 一个或多个文件无法成功恢复。 有关详细信息，请查看上面给出的路径中的故障文件列表。 | <ul> <li> 恢复失败原因已在文件中列出（作业详细信息中提供了路径），请针对原因解决相关问题，只对故障文件重试还原操作。 <li> 文件还原失败的常见原因如下： <br/> - 确保目前没有在使用故障文件。 <br/> - 父目录中存在其名称与故障文件名称相同的目录。 |
 
 ## <a name="see-also"></a>另请参阅

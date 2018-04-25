@@ -1,25 +1,18 @@
 ---
-title: "有关在 Azure 搜索中为 Azure SQL 数据库编制索引的教程 | Microsoft Docs"
-description: "对 Azure SQL 数据库进行爬网，提取可搜索的数据并填充 Azure 搜索索引。"
-services: search
-documentationcenter: 
+title: 有关在 Azure 搜索中为 Azure SQL 数据库编制索引的教程 | Microsoft Docs
+description: 对 Azure SQL 数据库进行爬网，提取可搜索的数据并填充 Azure 搜索索引。
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+manager: cgronlun
 ms.service: search
 ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: tutorial
 ms.date: 11/10/2017
 ms.author: heidist
-ms.openlocfilehash: 22eeccfd692cca74bc0cf12c3400d717c103332f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f123b4f5d0a51a4ab5015a2a0008a76fbfa0318e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>如何使用 Azure 搜索索引器对 Azure SQL 数据库进行爬网
 
@@ -95,7 +88,7 @@ ms.lasthandoff: 02/21/2018
 4. 在 Visual Studio 中将其作为第一个条目复制并粘贴到 **appsettings.json**。
 
   > [!Note]
-  > 服务名称是包含 search.windows.net 的终结点的一部分。 如果有兴趣，可以在“概述”页的“概要”中查看完整 URL。 该 URL 类似于以下示例：https://your-service-name.search.windows.net
+  > 服务名称是包含 search.windows.net 的终结点的一部分。 如果有兴趣，可以在“概述”页的“概要”中查看完整 URL。 URL 如以下示例所示：https://your-service-name.search.windows.net
 
 5. 在左侧的“设置” > “密钥”中，复制其中一个管理密钥并将其作为第二个条目粘贴到 **appsettings.json**。 密钥是在预配期间为服务生成的字母数字字符串，是对服务操作进行授权访问所必需的。 
 

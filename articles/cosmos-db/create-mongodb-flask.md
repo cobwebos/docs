@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/2/2017
 ms.author: hshapiro
-ms.openlocfilehash: 7fd25a1181e1a4d69bf8233b34a4c416378e0181
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d089dd24df3308994aab0cf135da8be9a3e28d79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB：借助 MongoDB API 构建 Flask 应用
 
@@ -42,8 +42,19 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在，请从 github 克隆 Flask-MongoDB API 应用、设置连接字符串并运行。 会看到以编程方式处理数据是多么容易。
 
-1. 打开 git 终端窗口（例如 git bash）并使用 `cd` 切换到工作目录。
-2. 运行下列命令以克隆示例存储库。
+1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. 打开诸如 git bash 之类的 git 终端窗口，并使用 `cd` 命令更改为要安装示例应用的新文件夹。
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample.git
@@ -57,7 +68,9 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="review-the-code"></a>查看代码
 
-快速查看应用中发生的情况。 打开根目录下的 app.py 文件，会发现以下代码行创建 Azure Cosmos DB 连接。 以下代码使用适用于本地 Azure Cosmos DB 模拟器的连接字符串。 密码需要进行拆分（如下所示）以适应在其他方面无法解析的正斜杠。
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 否则，可以跳到[运行 Web 应用](#run-the-web-app)。 
+
+以下代码片段全部摘自 app.py 文件，并对本地 Azure Cosmos DB 模拟器使用连接字符串。 密码需要进行拆分（如下所示）以适应在其他方面无法解析的正斜杠。
 
 * 初始化 MongoDB 客户端、检索数据库，并进行身份验证。
 
@@ -142,10 +155,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下：
-
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

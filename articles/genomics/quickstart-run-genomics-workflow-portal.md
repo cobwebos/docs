@@ -1,6 +1,6 @@
 ---
-title: "快速入门：通过 Microsoft 基因组学服务运行工作流 | Microsoft Docs"
-description: "本快速入门演示如何将输入数据加载到 Azure Blob 存储中并通过 Microsoft 基因组学服务运行工作流。"
+title: 快速入门：通过 Microsoft 基因组学服务运行工作流 | Microsoft Docs
+description: 本快速入门演示如何将输入数据加载到 Azure Blob 存储中并通过 Microsoft 基因组学服务运行工作流。
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -10,11 +10,11 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: ed2048755317649d160bcfd71519af715067b99b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1436ad54eb13052aa87ccfd5adc371c8d7d5a100
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>快速入门：通过 Microsoft 基因组学服务运行工作流
 
@@ -39,7 +39,7 @@ Microsoft 基因组学是一种可缩放的安全服务，适用于二次分析�
  |:-------------       |:-------------         |:----------            |
  |帐户名         | MyGenomicsAccount     |选择唯一的帐户标识符。 至于有效的名称，请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
  |订阅         | 订阅名称|这是 Azure 服务的计费单位 - 有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions) |      
- |资源组       | MyResourceGroup       |  可以通过资源组将多个 Azure 资源（存储帐户、基因组学帐户等）分到一个组中，方便管理。 有关详细信息，请参阅[资源组] (https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)。 至于有效的资源组名称，请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
+ |资源组       | MyResourceGroup       |  可以通过资源组将多个 Azure 资源（存储帐户、基因组学帐户等）分到一个组中，方便管理。 有关详细信息，请参阅 [资源组] (https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)。 至于有效的资源组名称，请参阅[命名规则](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
  |Location                   | 美国西部 2                    |    在美国西部 2、西欧和东南亚提供服务 |
 
 
@@ -174,4 +174,4 @@ msgen list -f c:\temp\config.txt
 
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何将示例输入数据上传到 Azure 存储中，以及如何通过 `msgen` Python 客户端将工作流提交到 Microsoft 基因组学服务。 若要详细了解可以与 Microsoft 基因组学服务配合使用的其他输入文件类型，请查看以下页面：[配对的 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [多个 FASTQ 或 BAM](quickstart-input-multiple.md) 
+本文介绍了如何将示例输入数据上传到 Azure 存储中，以及如何通过 `msgen` Python 客户端将工作流提交到 Microsoft 基因组学服务。 若要详细了解可以与 Microsoft 基因组学服务配合使用的其他输入文件类型，请查看以下页面：[配对的 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [多个 FASTQ 或 BAM](quickstart-input-multiple.md)。 还可以使用 [Azure Notebook 教程](http://aka.ms/genomicsnotebook)浏览本教程。

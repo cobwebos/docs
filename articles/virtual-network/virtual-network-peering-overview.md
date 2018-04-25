@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 04/17/2018
 ms.author: jdial
-ms.openlocfilehash: 69264ac7ffe8124b964a10c11aacaca5c712fd63
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dcb46c7127590f1986fe1fd66c2f6ac4fd8b107d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
-使用虚拟网络对等互连可以无缝连接两个 Azure [虚拟网络](virtual-networks-overview.md)。 建立对等互连后，出于连接目的，两个虚拟网络会显示为一个。 对等虚拟网络中虚拟机之间的流量通过 Microsoft 主干基础结构路由，非常类似于只通过专用 IP 地址在同一虚拟网络中的虚拟机之间路由流量。 
+使用虚拟网络对等互连可以无缝连接两个 Azure [虚拟网络](virtual-networks-overview.md)。 建立对等互连后，出于连接目的，两个虚拟网络会显示为一个。 对等虚拟网络中虚拟机之间的流量通过 Microsoft 主干基础结构路由，非常类似于只通过专用 IP 地址在同一虚拟网络中的虚拟机之间路由流量。 Azure 支持：
+* VNet 对等互连 - 连接同一 Azure 区域中的 VNet
+* 全局 VNet 对等互连 - 跨 Azure 区域连接 VNet
 
-使用虚拟网络对等互连的优点包括：
+使用虚拟网络对等互连（无论本地还是全局）的优点包括：
 
 * 对等虚拟网络之间的网络流量是专用的。 虚拟网络之间的流量仅限于 Microsoft 主干网络。 在虚拟网络之间通信不需公共 Internet、网关或加密。
 * 不同虚拟网络中资源之间的连接延迟低且带宽高。

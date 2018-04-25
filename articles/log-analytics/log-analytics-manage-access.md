@@ -1,11 +1,11 @@
 ---
-title: "管理 Azure Log Analytics 中的工作区 | Microsoft Docs"
-description: "可以通过对用户、帐户、工作区和 Azure 帐户使用各种管理任务来管理 Azure Log Analytics 中的工作区。"
+title: 管理 Azure Log Analytics 中的工作区 | Microsoft Docs
+description: 可以通过对用户、帐户、工作区和 Azure 帐户使用各种管理任务来管理 Azure Log Analytics 中的工作区。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: d0e5162d-584b-428c-8e8b-4dcaa746e783
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 6caa0c8769ea6e62a22659089f37f74f6962e1c7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: af648e97f5913ef7413f72db8e19aa5ea69d6d09
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-workspaces"></a>管理工作区
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 03/08/2018
 可以通过两种权限模型控制对 Log Analytics 工作区的访问：
 
 1. 旧式 Log Analytics 用户角色
-2. [Azure 基于角色的访问权限](../active-directory/role-based-access-control-configure.md)
+2. [Azure 基于角色的访问权限](../role-based-access-control/role-assignments-portal.md)
 
 下表汇总了可以通过每个权限模型设置的访问权限：
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 03/08/2018
 
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>使用 Azure 权限管理对 Log Analytics 的访问
-若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[使用角色分配来管理对 Azure 订阅资源的访问权限](../active-directory/role-based-access-control-configure.md)中的步骤。
+若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[使用角色分配来管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)中的步骤。
 
 Azure 有两个内置的适用于 Log Analytics 的用户角色：
 - Log Analytics 读者
@@ -156,7 +156,7 @@ Log Analytics 参与者角色的成员可以：
 - 资源组 - 访问资源组中的所有工作区
 - 资源 - 仅访问指定工作区
 
-使用[自定义角色](../active-directory/role-based-access-control-custom-roles.md)，创建具有所需的特定权限的角色。
+使用[自定义角色](../role-based-access-control/custom-roles.md)，创建具有所需的特定权限的角色。
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Azure 用户角色和 Log Analytics 门户用户角色
 如果对 Log Analytics 工作区的权限至少为 Azure 读取权限，则可在查看 Log Analytics 工作区时单击“OMS 门户”任务，打开 OMS 门户。
@@ -174,7 +174,7 @@ Log Analytics 参与者角色的成员可以：
 | 适用于云解决方案提供商 (CSP) 托管的订阅 <br> 登录时使用的帐户位于链接到工作区的 Azure Active Directory 中 | 管理员 | 通常为 CSP 的客户 |
 | 适用于云解决方案提供商 (CSP) 托管的订阅 <br> 登录时使用的帐户不在链接到工作区的 Azure Active Directory 中 | 参与者 | 通常为 CSP |
 
-<sup>1</sup> 有关角色定义的详细信息，请参阅 [Azure 权限](../active-directory/role-based-access-control-custom-roles.md)。 在评估角色时，`*` 操作与 `Microsoft.OperationalInsights/workspaces/*` 不等效。
+<sup>1</sup> 有关角色定义的详细信息，请参阅 [Azure 权限](../role-based-access-control/custom-roles.md)。 在评估角色时，`*` 操作与 `Microsoft.OperationalInsights/workspaces/*` 不等效。
 
 有关 Azure 门户需记住的一些要点：
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: a2e29fd6f2dbd4bd573b780a14bd09c0cd03395f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8fd8bd81191d2019d5fa41ce1b6a029f3587adfd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Azure Data Lake Store 中的访问控制
 
@@ -150,7 +150,7 @@ Azure Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又�
 * 参与者
 * 读取者
 
-具有 Data Lake Store 帐户“所有者”角色的每个人都自动成为该帐户的超级用户。 若要了解详细信息，请参阅[基于角色的访问控制](../active-directory/role-based-access-control-configure.md)。
+具有 Data Lake Store 帐户“所有者”角色的每个人都自动成为该帐户的超级用户。 若要了解详细信息，请参阅[基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
 如果想要创建拥有超级用户权限的自定义基于角色的访问控制 (RBAC) 角色，该角色需要拥有以下权限：
 - Microsoft.DataLakeStore/accounts/Superuser/action
 - Microsoft.Authorization/roleAssignments/write
@@ -184,7 +184,7 @@ Azure Data Lake Store 实现派生自 HDFS 的访问控制模型，而 HDFS 又�
 * 拥有用户，前提是该拥有用户也是目标组的成员。
 
 > [!NOTE]
-> 所有者组无法更改某个文件或文件夹的 ACL。
+> 所有者组无法更改某个文件或文件夹的 ACL。  虽然负责人组设置为在根文件夹（上述 **Case 1** ）的情况下创建了帐户的用户，但单个用户帐户不能有效地用于通过负责人组提供权限。  可以将此权限分配给有效的用户组（如果适用）。
 
 ## <a name="access-check-algorithm"></a>访问检查算法
 

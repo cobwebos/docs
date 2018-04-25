@@ -1,25 +1,25 @@
 ---
-title: "适用于 Azure 的 MongoDB、Angular 和 Node 教程 - 第 3 部分 | Microsoft Docs"
-description: "本教程系列的第 3 部分，介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与用于 MongoDB 的 API 完全相同。"
+title: 适用于 Azure 的 MongoDB、Angular 和 Node 教程 - 第 3 部分 | Microsoft Docs
+description: 本教程系列的第 3 部分，介绍如何通过 Angular 和 Node 在 Azure Cosmos DB 上创建 MongoDB 应用，所使用的 API 与用于 MongoDB 的 API 完全相同。
 services: cosmos-db
-documentationcenter: 
-author: mimig1
-manager: jhubbard
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: SnehaGunda
+manager: kfile
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: mimig
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: ff75b4546a85c1c0bbf5c256977a3d33016c8c44
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: de645f46a889ba05fc54b1c5d2b9da64393d348e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>通过 Angular 和 Azure Cosmos DB 创建 MongoDB 应用 - 第 3 部分：通过 Angular 生成 UI
 
@@ -99,9 +99,9 @@ ms.lasthandoff: 12/05/2017
     > 可以使用 John Papa 提供的适用于 Visual Studio Code 的 Angular Essentials 扩展和代码片段来加快开发速度。 
     > 1. 单击“扩展”按钮 ![Visual Studio Code 的“扩展”按钮](./media/tutorial-develop-mongodb-nodejs-part3/extensions-button.png)。
     > 2. 在搜索框中键入“angular essentials”。
-    > 3. 单击“安装” 。 
+    > 3. 单击“安装”。 
     > 4. 单击“重新加载”按钮以使用新扩展。
-    > 或者从 [http://jpapa.me/angularessentials](http://jpapa.me/angularessentials) 下载。 
+    > 或从 [http://jpapa.me/angularessentials](http://jpapa.me/angularessentials) 下载。 
     > ![Angular Essentials 扩展](./media/tutorial-develop-mongodb-nodejs-part3/angular-essentials-extension.png)
 
 7. 返回到 heroes.component.html 文件，将此代码复制到其中。 `<div>` 是整个页面的容器。 容器内有一个需创建的 hero 的列表。创建这些组件后，在 UI 中单击其中一个组件即可将其选定进行编辑或删除操作。 然后就会在 HTML 中显示某种样式，可以据此判断选择了哪个组件。 此外还有编辑区域，用于添加新的 hero 或编辑现有的 hero。 

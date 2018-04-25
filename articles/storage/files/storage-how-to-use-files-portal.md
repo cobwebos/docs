@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
-ms.openlocfilehash: 588d260bb939c8f6439ca66828296ea455f1524a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 9b8a7988be2c3a2622dd45a264abcb674b7d169e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="managing-azure-file-shares-with-the-azure-portal"></a>使用 Azure 门户管理 Azure 文件共享 
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以在 Windows、Linux 和 macOS 中装载 Azure 文件共享。 本指南介绍通过 [Azure 门户](https://portal.azure.com/)来使用 Azure 文件共享的基本知识。 了解如何：
@@ -47,10 +47,10 @@ ms.lasthandoff: 03/29/2018
 4. 在“名称”中，键入 *myshare*。
 5. 单击“确定”以创建 Azure 文件共享。
 
-## <a name="manipulating-the-contents-of-the-azure-file-share"></a>操作 Azure 文件共享的内容
-创建 Azure 文件共享以后，即可使用 SMB 在 [Windows](storage-how-to-use-files-windows.md)、[Linux](storage-how-to-use-files-linux.md) 或 [macOS](storage-how-to-use-files-mac.md) 上装载该文件共享。 也可通过 Azure 门户操作 Azure 文件共享。 所有通过 Azure 门户发出的请求都是通过文件 REST API 发出的，因此不需 SMB 访问权限即可在客户端创建、修改和删除文件和目录。
+## <a name="work-with-the-contents-of-the-azure-file-share"></a>使用 Azure 文件共享的内容
+创建 Azure 文件共享以后，即可使用 SMB 在 [Windows](storage-how-to-use-files-windows.md)、[Linux](storage-how-to-use-files-linux.md) 或 [macOS](storage-how-to-use-files-mac.md) 上装载该文件共享。 也可通过 Azure 门户使用 Azure 文件共享。 所有通过 Azure 门户发出的请求都是通过文件 REST API 发出的，因此不需 SMB 访问权限即可在客户端创建、修改和删除文件和目录。
 
-### <a name="create-directory"></a>创建目录
+### <a name="create-a-directory"></a>创建目录
 若要在 Azure 文件共享的根目录中创建名为 *myDirectory* 的新目录，请执行以下操作：
 
 1. 在“文件服务”页面中，选择“myshare”文件共享。 文件共享的页面此时会打开。

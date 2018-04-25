@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/29/2018
 ms.author: billmath
-ms.openlocfilehash: 208a65c09b13acad62c9b6d8e55b6050041c9f5d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ea68bad3a2c5e905ccf705404dff0049b451268e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 Azure AD 使用条款提供了一个简单方法，组织可以使用它向最终用户显示信息。  可以通过这样的呈现方式确保用户看到法律要求或合规性要求的相关免责声明。
@@ -96,7 +96,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。   此 PDF 可以是任意�
 2. 单击“查看审核日志”。</br>
 ![审核事件](media/active-directory-tou/tou8.png)
 3.  在 Azure AD 审核日志屏幕上，可以使用提供的下拉列表筛选信息，将特定审核日志信息作为目标。
-![审核事件](media/active-directory-tou/tou9.png)
+[审核事件](media/active-directory-tou/tou9.png)
 4.  还可以将信息下载为 .csv 文件中，在本地使用它。
 
 ## 

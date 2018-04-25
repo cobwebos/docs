@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 17ea97e34deb375123de12508c2c0845cd25c27a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 75d291c10f732f2d18fb78b0262c42052acc713e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。 
@@ -179,7 +179,7 @@ END
 8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-incremental-copy-portal/deploying-data-factory.png)
-9. 创建完成后，会显示图中所示的“数据工厂”页。
+9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
    ![数据工厂主页](./media/tutorial-incremental-copy-portal/data-factory-home-page.png)
 10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
@@ -302,7 +302,7 @@ END
 24. 在管道设计器中选择“存储过程活动”，将其名称更改为 **StoredProceduretoWriteWatermarkActivity**。 
 
     ![存储过程活动 - 名称](./media/tutorial-incremental-copy-portal/stored-procedure-activity-name.png)
-25. 切换到“SQL 帐户”选项卡。对于“链接服务”，请选择 *AzureSqlDatabaseLinkedService*\*。 
+25. 切换到“SQL 帐户”选项卡。对于“链接服务”，请选择 *AzureSqlDatabaseLinkedService**。 
 
     ![存储过程活动 - SQL 帐户](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. 切换到“存储过程”选项卡，然后执行以下步骤： 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory 常见问题解答 | Microsoft Docs"
-description: "“Azure Active Directory 常见问题解答”提供的常见问题解答涉及 Azure 和 Azure Active Directory、密码管理和应用程序访问。"
+title: Azure Active Directory 常见问题解答 | Microsoft Docs
+description: “Azure Active Directory 常见问题解答”提供的常见问题解答涉及 Azure 和 Azure Active Directory、密码管理和应用程序访问。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 80df81f365ac884bc1f44268e615975407f485f0
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: be5f5a6c39e27ae7fedab32fea12f5cf9b7cd3bd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory 常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -112,18 +112,18 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 **答：**密码写回实时进行。
 
-有关详细信息，请参阅[密码管理入门](active-directory-passwords-getting-started.md)。
+有关详细信息，请参阅[密码管理入门](authentication/quickstart-sspr.md)。
 
 - - -
 **问：是否可以对管理员管理的密码使用密码写回？**
 
 **答：**可以。如果已启用密码写回，管理员执行的密码操作将写回到用户的本地环境。  
 
-有关密码相关问题的详细解答，请参阅[密码管理常见问题](active-directory-passwords-faq.md)。
+有关密码相关问题的详细解答，请参阅[密码管理常见问题](authentication/active-directory-passwords-faq.md)。
 - - -
 **问：如果我在尝试更改 Office 365/Azure AD 密码时忘记了现有的密码，该怎么办？**
 
-**答：**对于这种情况，有几个选项。  在可行的情况下，使用自助服务密码重置 (SSPR)。  SSPR 是否适用取决于其配置方式。  有关详细信息，请参阅[密码重置门户的工作原理](active-directory-passwords-best-practices.md)。
+**答：**对于这种情况，有几个选项。  在可行的情况下，使用自助服务密码重置 (SSPR)。  SSPR 是否适用取决于其配置方式。  有关详细信息，请参阅[密码重置门户的工作原理](authentication/howto-sspr-deployment.md)。
 
 对于 Office 365 用户，管理员可以使用 [Reset user passwords](https://support.office.com/en-us/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)（重置用户密码）中概述的步骤重置密码。
 
@@ -134,7 +134,7 @@ Azure AD 提供另一组管理员角色来管理与目录和标识相关的功�
 
 
 - - -
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全
 **问：帐户在经过特定次数的失败尝试后被锁定还是使用了更复杂的策略？**
 
 我们使用更复杂的策略来锁定帐户。  这基于请求的 IP 和输入的密码。 锁定的持续时间也会根据存在攻击的可能性而延长。  

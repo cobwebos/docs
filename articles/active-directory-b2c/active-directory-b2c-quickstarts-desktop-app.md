@@ -1,6 +1,6 @@
 ---
-title: 体验启用了 Azure AD B2C 的桌面应用
-description: 快速入门：尝试使用示例性的 ASP.NET 桌面应用，通过 Azure Active Directory B2C 进行用户登录。
+title: 快速入门 - 使用 Azure Active Directory B2C 为桌面应用设置登录 | Microsoft Docs
+description: 运行一个使用 Azure Active Directory B2C 提供帐户登录的示例 ASP.NET 桌面应用程序。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
-ms.openlocfilehash: 8726a5816623d42deb495aa062ef82f1f95b76b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a312169217ac5476a503d5ad5a9126674f999eac
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-desktop-app"></a>快速入门：体验启用了 Azure AD B2C 的桌面应用
+# <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为桌面应用设置登录 
 
 Azure Active Directory (Azure AD) B2C 提供云身份管理来保护应用程序、业务和客户。 应用可以使用 Azure AD B2C 通过开放式标准协议对社交帐户和企业帐户进行身份验证。
 

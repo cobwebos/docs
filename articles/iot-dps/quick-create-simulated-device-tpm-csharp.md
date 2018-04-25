@@ -3,20 +3,20 @@ title: 使用 C# 将模拟的 TPM 设备预配到 Azure IoT 中心 | Microsoft D
 description: Azure 快速入门 - 使用适用于 Azure IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 TPM 设备
 services: iot-dps
 keywords: ''
-author: JimacoMS2
-ms.author: v-jamebr
-ms.date: 12/21/2017
+author: bryanla
+ms.author: v-jamebr;bryanla
+ms.date: 04/09/2018
 ms.topic: hero-article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8c292f998a719f8bc6d64655c1f2cdd75054653b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4bca89f71922e36707c0c4893a7190d508242ffc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>使用适用于 IoT 中心设备预配服务的 C# 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 04/03/2018
 
 以下步骤演示了如何在运行 Windows OS 的开发计算机上生成 Azure IoT 中心 C# SDK 模拟的 TPM 设备示例，以及如何通过设备预配服务和 IoT 中心连接该模拟设备。 示例代码使用 Windows TPM 模拟器作为设备的[硬件安全模块 (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)。 
 
-在继续操作之前，请确保完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。
+如果不熟悉自动预配过程，请务必还查看[自动预配概念](concepts-auto-provisioning.md)。 在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
 
 [!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
 

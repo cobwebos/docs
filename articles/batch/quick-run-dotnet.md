@@ -1,6 +1,6 @@
 ---
-title: "Azure 快速入门 - 运行 Batch 作业 - .NET"
-description: "使用 Batch .NET 客户端库快速运行 Batch 作业和任务。"
+title: Azure 快速入门 - 运行 Batch 作业 - .NET
+description: 使用 Batch .NET 客户端库快速运行 Batch 作业和任务。
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 01/16/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: efa697482b5b27846f2be129998c100787466467
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b5431feec23e2e0681967a9fe0345edc1db567aa
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>快速入门：使用 .NET API 运行第一个 Azure Batch 作业
 
@@ -28,11 +28,11 @@ ms.lasthandoff: 02/01/2018
 
 * [Visual Studio IDE](https://www.visualstudio.com/vs)（Visual Studio 2015 或更新版本）。 
 
-* Batch 帐户和关联的常规用途存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。 
+* Batch 帐户和关联的 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 

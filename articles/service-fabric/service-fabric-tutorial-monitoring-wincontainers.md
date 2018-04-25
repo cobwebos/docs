@@ -1,12 +1,12 @@
 ---
-title: "监视和诊断 Azure Service Fabric 中的 Windows 容器 | Microsoft 文档"
-description: "在本教程中，请设置对 Azure Service Fabric 上安排的 Windows 容器的监视和诊断。"
+title: 监视和诊断 Azure Service Fabric 中的 Windows 容器 | Microsoft 文档
+description: 在本教程中，请设置对 Azure Service Fabric 上安排的 Windows 容器的监视和诊断。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,21 +15,21 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: de77d10e4875173c7a067e945e473887d3cc7422
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 087dafe426b835d447c69a44f6842c41a48cec8c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-oms"></a>教程：使用 OMS 监视 Service Fabric 上的 Windows 容器
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>教程：使用 Log Analytics 监视 Service Fabric 上的 Windows 容器
 
-这是教程的第三部分，将详细介绍设置 OMS，以监视 Service Fabric 上安排的 Windows 容器的过程。
+这是教程的第三部分，将详细介绍如何设置 Log Analytics，以监视 Service Fabric 上安排的 Windows 容器。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 为 Service Fabric 群集配置 OMS
-> * 使用 OMS 工作区查看和查询容器和节点中的日志
+> * 为 Service Fabric 群集配置 Log Analytics
+> * 使用 Log Analytics 工作区查看和查询容器和节点中的日志
 > * 配置 OMS 代理，以收集容器和节点指标
 
 ## <a name="prerequisites"></a>先决条件
@@ -37,24 +37,24 @@ ms.lasthandoff: 02/24/2018
 - 在 Azure 上拥有一个群集，或者[使用此教程创建一个群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 - [将容器化的应用程序部署到该群集](service-fabric-host-app-in-a-container.md)
 
-## <a name="setting-up-oms-with-your-cluster-in-the-resource-manager-template"></a>在资源管理器模板中为群集设置 OMS
+## <a name="setting-up-log-analytics-with-your-cluster-in-the-resource-manager-template"></a>在资源管理器模板中为群集设置 Log Analytics
 
-如果使用了本教程第一部分中[提供的模板](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial)，则它应包含常规 Service Fabric Azure 资源管理器模板的下列附加件。 如果拥有自己的群集，并且想要对它进行设置，以便使用 OMS 监视容器：
+如果使用了本教程第一部分中[提供的模板](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial)，则它应包含常规 Service Fabric Azure 资源管理器模板的下列附加件。 如果拥有自己的群集，并且想要对它进行设置，以便使用 Log Analytics 监视容器：
 * 在资源管理器模板中进行以下更改。
 * 使用 PowerShell 部署它，以通过[部署模板](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)升级群集。 Azure 资源管理器会确认此资源的存在，以将它作为升级内容推出。
 
-### <a name="adding-oms-to-your-cluster-template"></a>将 OMS 添加到群集模板
+### <a name="adding-log-analytics-to-your-cluster-template"></a>将 Log Analytics 添加到群集模板
 
 在 template.json 中进行以下更改：
 
-1. 将 OMS 工作区的位置和名称添加到参数部分：
+1. 将 Log Analytics 工作区的位置和名称添加到 *parameters* 节：
     
     ```json
     "omsWorkspacename": {
       "type": "string",
       "defaultValue": "[toLower(concat('sf',uniqueString(resourceGroup().id)))]",
       "metadata": {
-        "description": "Name of your OMS Log Analytics Workspace"
+        "description": "Name of your Log Analytics Workspace"
       }
     },
     "omsRegion": {
@@ -66,7 +66,7 @@ ms.lasthandoff: 02/24/2018
         "Southeast Asia"
       ],
       "metadata": {
-        "description": "Specify the Azure Region for your OMS workspace"
+        "description": "Specify the Azure Region for your Log Analytics workspace"
       }
     }
     ```
@@ -100,7 +100,7 @@ ms.lasthandoff: 02/24/2018
     },
     ```
 
-4. 将 OMS 工作区添加为个人资源。 在“资源”中的虚拟机规模集资源后面，添加以下内容：
+4. 将 Log Analytics 工作区添加为单个资源。 在“资源”中的虚拟机规模集资源后面，添加以下内容：
     
     ```json
     {
@@ -180,17 +180,17 @@ ms.lasthandoff: 02/24/2018
     },
     ```
 
-可在[此处](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json)找到示例模板（本教程第一部分中使用过），其中包含上述所有更改，你可以根据需要参考这些更改。 通过这些更改，可将 OMS Log Analytics 工作区添加到资源组。 该工作区将被配置为收集已配置 [Windows Azure 诊断](service-fabric-diagnostics-event-aggregation-wad.md)代理的存储表中的 Service Fabric 平台事件。 此外，还将 OMS 代理 (Microsoft Monitoring Agent) 作为虚拟机扩展已添加到群集中的每个节点 - 这意味着，当你缩放群集时，会自动在每个虚拟机上配置此代理，并将它关联到同一个工作区。
+可在[此处](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json)找到示例模板（本教程第一部分中使用过），其中包含上述所有更改，你可以根据需要参考这些更改。 通过这些更改，可将 Log Analytics 工作区添加到资源组。 该工作区将被配置为收集已配置 [Windows Azure 诊断](service-fabric-diagnostics-event-aggregation-wad.md)代理的存储表中的 Service Fabric 平台事件。 此外，还将 OMS 代理 (Microsoft Monitoring Agent) 作为虚拟机扩展已添加到群集中的每个节点 - 这意味着，当你缩放群集时，会自动在每个虚拟机上配置此代理，并将它关联到同一个工作区。
 
-部署包含新更改的模板，以升级当前的群集。 部署完成后，应在资源组中看到 OMS 资源。 群集就绪后，将容器化应用程序部署到该群集。 在下一步中，我们将设置对容器的监视。
+部署包含新更改的模板，以升级当前的群集。 部署完成后，应在资源组中看到 Log Analytics 资源。 群集就绪后，将容器化应用程序部署到该群集。 在下一步中，我们将设置对容器的监视。
 
-## <a name="add-the-container-monitoring-solution-to-your-oms-workspace"></a>将容器监视解决方案添加到 OMS 工作区
+## <a name="add-the-container-monitoring-solution-to-your-log-analytics-workspace"></a>将容器监视解决方案添加到 Log Analytics 工作区
 
 若要在工作区中设置容器解决方案，请搜索容器监视解决方案，并创建容器资源（在“监视和管理”类别下）。
 
 ![添加容器解决方案](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-出现针对 OMS 工作区的提示后，选择已在资源组创建的工作区，然后单击“创建”。 此操作会将容器监视解决方案添加到工作区，并会自动让模板部署的 OMS 代理开始收集 docker 日志和统计信息。 
+出现针对 Log Analytics 工作区的提示后，选择已在资源组中创建的工作区，然后单击“创建”。 此操作会将容器监视解决方案添加到工作区，并会自动让模板部署的 OMS 代理开始收集 docker 日志和统计信息。 
 
 重新导航到资源组，现在你应该在该位置看到新添加的监视解决方案。 单击它后，登陆页面应显示正在运行的容器映像数量。 
 
@@ -219,7 +219,7 @@ ms.lasthandoff: 02/24/2018
 此操作会将你转到 OMS 门户中的工作区，可以从中查看你的解决方案，创建自定义仪表板，以及配置 OMS 代理。 
 * 单击屏幕右上角的齿轮，打开“设置”菜单。
 * 单击“连接的源” > “Windows Server”，验证是否已连接了 5 个 Windows 计算机。
-* 单击“数据” > “Windows 性能计数器”，搜索并添加新性能计数器。 此处，你将看到 OMS 提供的关于可收集的性能计数器的建议列表，以及用于搜索其他计数器的选项。 单击“添加选定的性能计数器”，以开始收集建议的指标。
+* 单击“数据” > “Windows 性能计数器”，搜索并添加新性能计数器。 此处，你将看到 Log Analytics 提供的关于可收集的性能计数器的建议列表，以及用于搜索其他计数器的选项。 单击“添加选定的性能计数器”，以开始收集建议的指标。
 
     ![性能计数器](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters.png)
 
@@ -235,13 +235,13 @@ ms.lasthandoff: 02/24/2018
 本教程介绍了如何：
 
 > [!div class="checklist"]
-> * 为 Service Fabric 群集配置 OMS
-> * 使用 OMS 工作区查看和查询容器和节点中的日志
-> * 配置 OMS 代理，以收集容器和节点指标
+> * 为 Service Fabric 群集配置 Log Analytics
+> * 使用 Log Analytics 工作区查看和查询容器和节点中的日志
+> * 配置 Log Analytics 代理，以选取容器和节点指标
 
 至此，你已设置对容器化应用程序的监视，接下来请尝试以下操作：
 
-* 按照上述类似步骤操作，为 Linux 群集设置 OMS。 请参考[此模板](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux)，对资源管理器模板进行更改。
-* 配置 OMS，设置[自动警报](../log-analytics/log-analytics-alerts.md)，以辅助检测和诊断。
+* 按照上述类似步骤操作，为 Linux 群集设置 Log Analytics。 请参考[此模板](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux)，对资源管理器模板进行更改。
+* 配置 Log Analytics，设置[自动警报](../log-analytics/log-analytics-alerts.md)，以辅助检测和诊断。
 * 浏览 Service Fabric 的[性能计数器建议](service-fabric-diagnostics-event-generation-perf.md)列表，以为群集配置它们。
 * 掌握 Log Analytics 中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能。

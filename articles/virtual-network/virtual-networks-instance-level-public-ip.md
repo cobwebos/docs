@@ -1,10 +1,10 @@
 ---
-title: "Azure 实例层级公共 IP（经典）地址 | Microsoft Docs"
-description: "了解实例层级公共 IP (ILPIP) 地址以及如何使用 PowerShell 进行管理。"
+title: Azure 实例层级公共 IP（经典）地址 | Microsoft Docs
+description: 了解实例层级公共 IP (ILPIP) 地址以及如何使用 PowerShell 进行管理。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: genlin
+manager: cshepard
 editor: tysonn
 ms.assetid: 07eef6ec-7dfe-4c4d-a2c2-be0abfb48ec5
 ms.service: virtual-network
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2016
-ms.author: jdial
-ms.openlocfilehash: 773043f2841ec7539b0d49357dec6bcb9f4f78a1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: 4b4350e6b1616450ce45f9e947cc3b639a341ae7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>实例层级公共 IP（经典）概述
 实例层级公共 IP (ILPIP) 是可直接分配至 VM 或云服务角色实例（而非 VM 或角色实例所在的云服务）的公共 IP 地址。 ILPIP 不会取代分配给云服务的虚拟 IP (VIP)。 而是可以用来直接连接到 VM 或角色实例的其他 IP 地址。
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="why-would-i-request-an-ilpip"></a>为什么要请求 ILPIP？
 如果想要能够通过直接向其分配的 IP 地址链接到 VM 或角色实例，请为 VM 或角色实例请求 ILPIP，而不是使用云服务VIP:&lt;端口号&gt;。
 
-* **主动 FTP** - 通过向 VM 分配 ILPIP，可在任何端口上接收流量。 VM 不需要终结点来接收流量。  有关 FTP 协议的详细信息，请参阅 (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)[FTP 协议概述]。
+* **主动 FTP** - 通过向 VM 分配 ILPIP，可在任何端口上接收流量。 VM 不需要终结点来接收流量。  请参阅 (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview)[FTP 协议概述] 了解有关 FTP 协议的详细信息。
 * **出站 IP** - 源自 VM 的出站流量会映射到充当源的 ILPIP，而 ILPIP 唯一标识针对外部实体的 VM。
 
 > [!NOTE]

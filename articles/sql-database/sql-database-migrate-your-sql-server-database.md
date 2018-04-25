@@ -1,23 +1,28 @@
 ---
-title: 将 SQL Server DB 迁移到 Azure SQL 数据库 | Microsoft Docs
-description: 了解如何将 SQL Server 数据库迁移至 Azure SQL 数据库。
+title: 使用 DMS 将 SQL Server DB 迁移到 Azure SQL 数据库 | Microsoft Docs
+description: 了解如何使用 DMS 将 SQL Server 数据库迁移到 Azure SQL 数据库。
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: mvc,migrate
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: c4b4354cb1090b9abc388da9d1d1b135f135144d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 14e9949fe0c292a366fa55e3f16d14d885606f6b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>将 SQL Server 数据库迁移至 Azure SQL 数据库
+# <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dms"></a>使用 DMS 将 SQL Server 数据库迁移到 Azure SQL 数据库
 
-将 SQL Server 数据库移至 Azure SQL 数据库很简单，与在 Azure 中创建空 SQL 数据库然后使用 [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) 将数据导入到 Azure 一样简单。 在本教程中，学习：
+将 SQL Server 数据库移至 Azure SQL 数据库的单个数据库，与在 Azure 中创建空 SQL 数据库然后使用[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) 将数据库导入到 Azure 一样简单。 有关其他迁移选项，请参阅[将数据库迁移到 Azure SQL 数据库](sql-database-cloud-migrate.md)。
+
+> [!IMPORTANT]
+> 若要迁移到 Azure SQL 数据库托管实例，请参阅[从 SQL Server 迁移到托管实例](sql-database-managed-instance-migrate.md)
+
+在本教程中，学习：
 
 > [!div class="checklist"]
 > * 在 Azure 门户中创建空 Azure SQL 数据库（使用新的或现有的 Azure SQL 数据库服务器）

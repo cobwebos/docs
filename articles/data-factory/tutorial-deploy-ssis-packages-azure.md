@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: hero-article
-ms.date: 01/29/2018
+ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: aca9f822bf3fd3b26e554240a4fee2474b89143d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cc0c26d83794cfb0b398e668ae89e268901df345
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="deploy-sql-server-integration-services-packages-to-azure"></a>将 SQL Server Integration Services 包部署到 Azure
 本教程提供使用 Azure 门户在 Azure 数据工厂中预配 Azure-SSIS 集成运行时 (IR) 的步骤。 然后，可以使用 SQL Server Data Tools 或 SQL Server Management Studio 将 SQL Server Integration Services (SSIS) 包部署到 Azure 上的此运行时。 有关 Azure-SSIS IR 的概念性信息，请参阅 [Azure-SSIS 集成运行时概述](concepts-integration-runtime.md#azure-ssis-integration-runtime)。
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/23/2018
 > * 预配 Azure-SSIS 集成运行时。
 
 > [!NOTE]
-> 本文适用于目前处于预览状态的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+> 本文适用于目前处于预览版的数据工厂版本 2。 如果使用数据工厂服务版本 1（即正式版 (GA)），请参阅[数据工厂版本 1 文档](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -41,7 +41,7 @@ ms.lasthandoff: 03/23/2018
 
 > [!NOTE]
 > - 可以在下述区域创建第 2 版数据工厂：美国东部、美国东部 2、东南亚、西欧。 
-> - 可以在下述区域创建 Azure-SSIS IR：美国东部、美国东部 2、美国中部、北欧、西欧、澳大利亚东部。 
+> - 可以在下述区域创建 Azure-SSIS IR：美国东部、美国东部 2、美国中部、美国西部 2、北欧、西欧、英国南部和澳大利亚东部。 
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 03/23/2018
 
    c. 至于“节点大小”，请选择要为 SSIS 运行时配置的节点大小。
 
-   d.单击“下一步”。 至于“节点数”，请指定群集中的节点数。
+   d. 至于“节点数”，请指定群集中的节点数。
    
    e. 选择“**下一步**”。 
 3. 在“SQL 设置”页上，完成以下步骤： 
@@ -104,7 +104,7 @@ ms.lasthandoff: 03/23/2018
 
    c. 至于“管理员用户名”，请输入管理员用户名。
 
-   d.单击“下一步”。 至于“管理员密码”，请输入管理员的密码。
+   d. 至于“管理员密码”，请输入管理员的密码。
 
    e. 至于“目录数据库服务器层”，请选择 SSISDB 数据库的服务层。 默认值为“基本”。
 
@@ -128,7 +128,7 @@ ms.lasthandoff: 03/23/2018
    >
    > 数据工厂服务将连接到 Azure SQL 数据库，以便准备 SSIS 目录（SSISDB 数据库）。 在指定的情况下，此脚本还为虚拟网络配置权限和设置。 它会将 Azure-SSIS 集成运行时的新实例加入虚拟网络。
    > 
-   > 预配 Azure-SSIS IR 的实例时，还会安装 Azure Feature Pack for SSIS 和 Access Redistributable。 除了内置组件支持的数据源外，这些组件还提供与 Excel 和 Access 文件和各种 Azure 数据源的连接。 目前无法为 SSIS 安装第三方组件 （此限制包括 Microsoft 提供的第三方组件，如 Attunity 提供的 Oracle 和 Teradata 组件以及 SAP BI 组件）。
+   > 预配 Azure-SSIS IR 的实例时，还会安装 Azure Feature Pack for SSIS 和 Access Redistributable。 除了内置组件支持的数据源外，这些组件还提供与 Excel 和 Access 文件和各种 Azure 数据源的连接。 还可以安装其他组件。 有关详细信息，请参阅 [Azure-SSIS Integration Runtime 的自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。
 
 7. 在“连接”选项卡中，根据需要切换到“集成运行时”。 选择“刷新”可刷新状态。 
 

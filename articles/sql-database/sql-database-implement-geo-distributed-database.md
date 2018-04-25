@@ -9,11 +9,11 @@ ms.custom: mvc,business continuity
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 569eef6e1d930e505bc6dff9b692814438e5bd4d
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: fbd239c3c8c11b1907a6d28eb95d2c0ad26cfe61
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="implement-a-geo-distributed-database"></a>实现地理分散的数据库
 
@@ -380,4 +380,17 @@ sudo apt-get install maven
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅[活动异地复制和故障转移组](sql-database-geo-replication-overview.md)。
+在本教程中，已学习配置 Azure SQL 数据库和应用程序以便故障转移到远程区域，然后测试故障转移计划。  你已了解如何： 
+
+> [!div class="checklist"]
+> * 创建数据库用户并授予权限
+> * 设置数据库级防火墙规则
+> * 创建异地复制故障转移组
+> * 创建并编译 Java 应用程序以查询 Azure SQL 数据库
+> * 执行灾难恢复演练
+
+转到下一教程，了解如何创建托管实例。
+
+> [!div class="nextstepaction"]
+>[创建托管实例](sql-database-managed-instance-create-tutorial-portal.md)
+

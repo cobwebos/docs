@@ -1,6 +1,6 @@
 ---
-title: "在云中渲染场景 - Azure Batch"
-description: "教程 - 如何使用 Batch 渲染服务和 Azure 命令行界面通过 Arnold 来渲染 Autodesk 3ds Max 场景"
+title: 在云中渲染场景 - Azure Batch
+description: 教程 - 如何使用 Batch 渲染服务和 Azure 命令行界面通过 Arnold 来渲染 Autodesk 3ds Max 场景
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/05/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0531406ce50cf8cb549965d1f30b327afe52b003
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f8a93e873f79e99777fe2d8675c9426f5fc5ecda
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>教程：使用 Azure Batch 渲染场景 
 
@@ -50,7 +50,7 @@ az group create \
     --location eastus2
 ```
 
-使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令在资源组中创建常规用途存储帐户。 本教程使用该存储帐户来存储输入的 3ds Max 场景以及渲染的输出。
+使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令在资源组中创建 Azure 存储帐户。 本教程使用该存储帐户来存储输入的 3ds Max 场景以及渲染的输出。
 
 ```azurecli-interactive
 az storage account create \

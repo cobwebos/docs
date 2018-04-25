@@ -1,25 +1,19 @@
 ---
-title: "在门户中将数据导入 Azure 搜索 | Microsoft 文档"
-description: "在 Azure 门户中使用 Azure 搜索的“导入数据”向导从 NoSQL Azure Cosmos DB、Blob 存储、表存储、SQL 数据库和 Azure VM 上的 SQL Server 搜索 Azure 数据。"
-services: search
-documentationcenter: 
+title: 在门户中将数据导入 Azure 搜索 | Microsoft 文档
+description: 在 Azure 门户中使用 Azure 搜索的“导入数据”向导从 NoSQL Azure Cosmos DB、Blob 存储、表存储、SQL 数据库和 Azure VM 上的 SQL Server 搜索 Azure 数据。
 author: HeidiSteen
-manager: jhubbard
-editor: 
+manager: cgronlun
 tags: Azure Portal
-ms.assetid: f40fe07a-0536-485d-8dfa-8226eb72e2cd
+services: search
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.topic: quickstart
 ms.date: 05/01/2017
 ms.author: heidist
-ms.openlocfilehash: 286408fb0c3aa2b83cf17a4646f6f7420b6884f4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ee27b63a5df658ff5d575f0599dadd1cbafd3c18
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>使用门户将数据导入到 Azure 搜索中
 Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导，用于将数据加载到索引中。 
@@ -94,7 +88,7 @@ Azure 门户在“Azure 搜索”仪表板上提供了“导入数据”向导�
 
 门户中提供了“搜索资源管理器”用于查询索引，无需编写任何代码。 可以针对任何索引使用[搜索资源管理器](search-explorer.md)。
 
-搜索体验取决于默认设置，例如[简单语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和默认的 [searchMode 查询参数](https://docs.microsoft.com/rest/api/searchservice/search-documents)。 
+搜索体验取决于默认设置，例如[简单语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)和默认的 [searchMode 查询参数(https://docs.microsoft.com/rest/api/searchservice/search-documents)。 
 
 结果以详细的 JSON 格式返回，方便用户检查整个文档。
 

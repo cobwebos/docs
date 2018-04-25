@@ -9,17 +9,21 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4294169e89533150cade700fb89e14c4121c4404
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b0bc6035c3004587ae50f1c331dd3976883e9d34
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Azure 容器服务 (AKS) 中的 HTTPS 入口
 
 入口控制器是一个软件片段，为 Kubernetes 服务提供反向代理、可配置的流量路由和 TLS 终止。 Kubernetes 入口资源用于配置各个 Kubernetes 服务的入口规则和路由。 借助入口控制器和入口规则，可以使用单个外部地址中将流量路由到 Kubernetes 群集中的多个服务。
 
 本文档通过一个示例演示如何在 Azure 容器服务 (AKS) 群集中部署 [NGINX 入口控制器][nginx-ingress]。 此外，使用 [KUBE-LEGO][kube-lego] 项目自动生成并配置 [Let's Encrypt][lets-encrypt] 证书。 最后，在 AKS 群集中运行多个应用程序（可通过单个地址访问其中的每个应用程序）。
+
+## <a name="prerequisite"></a>先决条件
+
+安装 Helm CLI - 有关安装说明，请参阅 Helm CLI [文档][helm-cli]。
 
 ## <a name="install-an-ingress-controller"></a>安装入口控制器
 
@@ -179,10 +183,12 @@ kubectl apply -f hello-world-ingress.yaml
 
 详细了解本文档中演示的软件。 
 
+- [Helm CLI][helm-cli]
 - [NGINX 入口控制器][nginx-ingress]
 - [KUBE-LEGO][kube-lego]
 
 <!-- LINKS - external -->
+[helm-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
 [kube-lego]: https://github.com/jetstack/kube-lego
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

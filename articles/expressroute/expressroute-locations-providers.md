@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/04/2018
+ms.date: 04/13/2018
 ms.author: pareshmu
-ms.openlocfilehash: 4750898b138a726cac15aa7a0e2b8863c46d4ee8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b6ea9c64f8363821eb3e61c2979f249816675bf7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 04/06/2018
 | **欧洲** |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |阿姆斯特丹、都柏林、伦敦、纽波特（威尔士）、巴黎 |
 | **亚洲** |东亚、东南亚 |香港特别行政区、新加坡、新加坡 2 |
 | **日本** |日本西部、日本东部 |大坂、东京 |
-| **澳大利亚** |澳大利亚东南部、澳大利亚东部 |墨尔本、悉尼 |
+| **澳大利亚** |澳大利亚东南部、澳大利亚东部、澳大利亚中部、澳大利亚中部 2 |墨尔本、悉尼 |
 | **印度** |印度西部、印度中部、印度南部 |金奈、孟买 |
 | **韩国** |韩国中部、韩国南部 |釜山、首尔 |
 
@@ -150,9 +150,9 @@ ms.lasthandoff: 04/06/2018
 ## <a name="c1partners"></a>通过其他服务提供商建立的连接
 | **位置** | **Exchange** | **连接提供商** |
 | --- | --- | --- |
-| **阿姆斯特丹** | Equinix、Telecity | BICS、Eurofiber、Fastweb S.p.A、MainOne、Nianet、Telia |
+| **阿姆斯特丹** | Equinix、Telecity | BICS、Eurofiber、Fastweb S.p.A、MainOne、Nianet、Post、Proximus、Telia |
 | **芝加哥** | Equinix | Lightower、Windstream |
-| **达拉斯** | Equinix、Megaport | C3ntro Telecom、Cox Business、Data Foundry、Transtelco |
+| **达拉斯** | Equinix、Megaport | Axtel、C3ntro Telecom、Cox Business、Data Foundry、Transtelco |
 | **法兰克福** | Telecity | BICS、Nianet、QSC AG |
 | **香港** | Equinix | Macroview Telecom |
 | **伦敦** | Equinix、euNetworks、Telecity | Bezeq International Ltd.、Epsilon、Exponential E、HSO、NexGen Networks、Tamares Telecom、Zain |

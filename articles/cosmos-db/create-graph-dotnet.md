@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: e70e3d7b4cfd37cb28bda7df6210ad45415d9673
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: dd2ff95c23b149cd8d5becf086c021060b0ec5a8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB：使用图形 API 生成 .NET Framework 或 Core 应用程序
 
@@ -46,19 +46,29 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 现在从 GitHub 克隆图形 API 应用，设置连接字符串，并运行应用。 会看到以编程方式处理数据是多么容易。 
 
-1. 打开 git 终端窗口（例如 git bash）并使用 `cd` 切换到工作目录。  
+1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
 
-2. 运行下列命令以克隆示例存储库。 
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. 打开诸如 git bash 之类的 git 终端窗口，并使用 `cd` 命令更改为要安装示例应用的新文件夹。
+
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-gremlindotnet-getting-started.git
     ```
 
-3. 然后打开 Visual Studio，再打开解决方案文件。
+4. 然后打开 Visual Studio，再打开解决方案文件。
 
-4. 在项目中还原 NuGet 包。 这应该包括 Gremlin.Net 驱动程序和 Newtonsoft.Json 包。
+5. 在项目中还原 NuGet 包。 这应该包括 Gremlin.Net 驱动程序和 Newtonsoft.Json 包。
 
-5. 也可使用 NuGet 包管理器或 [NuGet 命令行实用程序](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools)手动安装 Gremlin.Net 驱动程序 3.2.7 版： 
+6. 也可使用 NuGet 包管理器或 [NuGet 命令行实用程序](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools)手动安装 Gremlin.Net 驱动程序 3.2.7 版： 
 
     ```bash
     nuget install Gremlin.Net -Version 3.2.7
@@ -66,7 +76,9 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="review-the-code"></a>查看代码
 
-快速查看应用中发生的情况。 打开 Program.cs 文件，会发现以下代码行创建 Azure Cosmos DB 资源。 
+此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看下面的代码段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
+
+以下代码片段全部摘自 Program.cs 文件。
 
 * 跟踪上面创建的帐户设置连接参数（第 19 行）： 
 
@@ -196,10 +208,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不打算继续使用此应用，请删除本快速入门教程在 Azure 门户中创建的所有资源，步骤如下： 
-
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。 
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,25 +1,20 @@
 ---
-title: "将数据迁移到 SQL 数据仓库 | Microsoft 文档"
-description: "有关在开发解决方案时会数据迁移到 Azure SQL 数据仓库的技巧。"
+title: 将数据迁移到 SQL 数据仓库 | Microsoft 文档
+description: 有关在开发解决方案时会数据迁移到 Azure SQL 数据仓库的技巧。
 services: sql-data-warehouse
-documentationcenter: NA
-author: sqlmojo
-manager: jhubbard
-editor: 
-ms.assetid: d78f954a-f54c-4aa4-9040-919bc6414887
+author: jrowlandjones
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: migrate
-ms.date: 06/29/2017
-ms.author: joeyong;barbkess
-ms.openlocfilehash: 0d156bc2eecf8220bd5ff4eb811d91482f216837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: jrj
+ms.reviewer: igorstan
+ms.openlocfilehash: ca467ae5fbe784399e4e046c47c920ff7dec638e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="migrate-your-data"></a>迁移数据
 数据可以使用各种工具从不同源移动到 SQL 数据仓库中。  ADF 复制、SSIS 和 bcp 都可用来实现此目标。 但是，随着数据量的增加，应该考虑将数据迁移过程划分成多个步骤。 这样，便有机会优化每个步骤以提高性能和弹性，确保顺利迁移数据。
@@ -90,7 +85,7 @@ SQLDW 数据迁移过程可以有效地划分成三个独立的步骤：
 每个步骤可以单独进行优化，创建稳健、可重新启动且富有弹性的迁移过程，让每个步骤发挥最高的性能。
 
 ## <a name="optimizing-data-load"></a>优化数据加载
-反过来看，加载数据最快的方式是通过 PolyBase。 优化 PolyBase 加载过程对上述步骤规定了先决条件，最好先了解这一点。 它们具有以下特点：
+反过来看，加载数据最快的方式是通过 PolyBase。 优化 PolyBase 加载过程对上述步骤规定了先决条件，最好先了解这一点。 它们是：
 
 1. 数据文件的编码
 2. 数据文件的格式
@@ -106,7 +101,7 @@ PolyBase 规定要有固定的行终止符 \n 或换行符。 数据文件必须
 
 在 PolyBase 中，必须将文件中的每个列定义为外部表的一部分。 请确保所有导出的列都是必需的，且类型符合所需的标准。
 
-有关支持的数据类型的详细信息，请参阅前面的 [迁移架构] 一文。
+有关支持的数据类型的详细信息，请参阅前面的[迁移架构]一文。
 
 ### <a name="location-of-data-files"></a>数据文件的位置
 SQL 数据仓库只使用 PolyBase 从 Azure Blob 存储加载数据。 因此，数据必须先传输到 Blob 存储。
@@ -190,10 +185,11 @@ PolyBase 还支持名为“递归文件夹遍历”的功能。 可以使用此�
 [ADF samples]: ../data-factory/v1/data-factory-samples.md
 [ADF Copy examples]: ../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md
 [development overview]: sql-data-warehouse-overview-develop.md
+[迁移架构]: sql-data-warehouse-migrate-schema.md
 [Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md
-[Use bcp to load data into SQL Data Warehouse]: sql-data-warehouse-load-with-bcp.md
-[Use PolyBase to load data into SQL Data Warehouse]: sql-data-warehouse-get-started-load-with-polybase.md
+[Use bcp to load data into SQL Data Warehouse]: /sql/tools/bcp-utility
+[Use PolyBase to load data into SQL Data Warehouse]: load-data-wideworldimportersdw.md
 
 
 <!--MSDN references-->

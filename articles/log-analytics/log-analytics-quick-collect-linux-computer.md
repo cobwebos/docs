@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 04/02/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 92d2cb0cb21cbbb0e72f9704ac92cc36670385fc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 30bb21ebd6b19f4cc52e364039b9be8a9a7695e5
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="collect-data-from-linux-computer-hosted-in-your-environment"></a>从托管在环境中的 Linux 计算机收集数据
 [Azure Log Analytics](log-analytics-overview.md) 可直接从物理或虚拟 Linux 计算机及环境中的其他资源收集数据，并将数据置于单个存储库中进行详细的分析和关联。  本快速入门介绍如何通过几个简单步骤，从 Linux 计算机中配置或收集数据。  有关 Azure Linux VM 的信息，请参阅以下主题[收集 Azure 虚拟机的相关数据](log-analytics-quick-collect-azurevm.md)。  
@@ -102,7 +102,7 @@ Log Analytics 可从 Linux Syslog 以及指定用于长期分析的性能计数�
 2. 可通过键入日志名称添加事件日志。  键入“Syslog”，然后单击加号 +。  
 3. 在表中，取消选中严重性“信息”、“通知”和“调试”。 
 4. 单击页面顶部的“保存”来保存配置。
-5. 选择“Linux 性能数据”，在 Windows 计算机上启用性能计数器收集。 
+5. 选择“Linux 性能数据”，在 Linux 计算机上启用性能计数器收集。 
 6. 首次为新的 Log Analytics 工作区配置 Linux 性能计数器时，可以选择快速创建几个通用的计数器。 将这些计数器在一个复选框中依次列出。<br><br> ![选中的默认 Windows 性能计数器](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png)<br> 单击“添加所选性能计数器”。  随即会添加它们，并且通过 10 秒收集示例间隔进行预设。  
 7. 单击页面顶部的“保存”来保存配置。
 

@@ -6,20 +6,20 @@ services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
-editor: cgronlun
 ms.assetid: d4f91270-dbd2-4290-ab2b-b7bfad0b2703
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 8ee4af162ddaa64d4dbe83bebbb93e22409f041d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 9ef6b216889416ea00786dcd3043d6e0f246b305
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Azure 数据科学虚拟机简介
 
@@ -62,23 +62,24 @@ ms.lasthandoff: 03/29/2018
 | [Microsoft Office](https://products.office.com/en-us/business/office-365-proplus-business-software) 专业且具有共享激活功能 - Excel、Word 和 PowerPoint   |Y                      |N              |
 | 预安装了常用包的 [Anaconda Python](https://www.continuum.io/) 2.7、3.5    |Y                      |Y              |
 | 预安装了具有 Julia 语言的常用包的 [JuliaPro](https://juliacomputing.com/products/juliapro.html)                         |Y                      |Y              |
-| 关系数据库                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/)（仅限 CentOS） |
+| 关系数据库                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (CentOS)、<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) |
 | 数据库工具                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp、sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * ODBC/JDBC 驱动程序| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/)（查询工具）、 <br /> * bcp、sqlcmd <br /> * ODBC/JDBC 驱动程序|
 | 在带有 SQL Server ML 服务（R、Python）的数据库内分析中可扩展 | Y     |N              |
 | **带有以下内核的 [Jupyter Notebook Server](http://jupyter.org/)：**                                  | Y     | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* R | Y | Y |
-|     &nbsp;&nbsp;&nbsp;&nbsp;* Python 2.7 和 3.5 | Y | Y |
+|     &nbsp;&nbsp;&nbsp;&nbsp;* Python | Y | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Julia | Y | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* PySpark | Y | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* [Sparkmagic](https://github.com/jupyter-incubator/sparkmagic) | N | 是（仅适用于 Ubuntu） |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* SparkR     | N | Y |
 | JupyterHub（多用户笔记本服务器）| N | Y |
+| JupyterLab（多用户笔记本服务器） | N | 是（仅适用于 Ubuntu） |
 | **开发工具、IDE 和代码编辑器**| | |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio 2017（社区版）](https://www.visualstudio.com/community/)，包括 Git 插件、Azure HDInsight (Hadoop)、Data Lake、SQL Server Data Tools、[Node.js](https://github.com/Microsoft/nodejstools)、[Python](http://aka.ms/ptvs) 和[针对 Visual Studio 的 R 工具 (RTVS)](http://microsoft.github.io/RTVS-docs/) | Y | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio Code](https://code.visualstudio.com/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) | N | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [PyCharm](https://www.jetbrains.com/pycharm/) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [PyCharm Community Edition](https://www.jetbrains.com/pycharm/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Atom](https://atom.io/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Juno (Julia IDE)](http://junolab.org/)| Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Vim 和 Emacs | Y | Y |
@@ -105,12 +106,14 @@ ms.lasthandoff: 03/29/2018
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Weka](http://www.cs.waikato.ac.nz/ml/weka/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Rattle](http://rattle.togaware.com/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [LightGBM](https://github.com/Microsoft/LightGBM) | N | 是（仅适用于 Ubuntu） |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [H2O](https://www.h2o.ai/h2o/) | N | 是（仅适用于 Ubuntu） |
-| **基于 GPU 的深度学习工具** |Windows Server 2016 版本  | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft 认知工具包（以前称为 CNTK）](https://www.microsoft.com/en-us/cognitive-toolkit/) | Y | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow](https://www.tensorflow.org/) | Y | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](http://mxnet.io/) | Y | Y|
+| &nbsp;&nbsp;&nbsp;&nbsp;* [H2O](https://www.h2o.ai/h2o/)、[Sparkling Water](https://www.h2o.ai/sparkling-water/)、[Deep Water](https://www.h2o.ai/deep-water/) | N | 是（仅适用于 Ubuntu） |
+| **深度学习工具** <br>所有工具均可在 GPU 或 CPU 上正常工作 |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) (Windows 2016) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow](https://www.tensorflow.org/) | Y (Windows 2016) | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Horovod](https://github.com/uber/horovod) | N | Y (Ubuntu) |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](http://mxnet.io/) | Y (Windows 2016) | Y|
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Caffe 和 Caffe2](https://github.com/caffe2/caffe2) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Chainer](https://chainer.org/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Torch](http://torch.ch/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Theano](https://github.com/Theano/Theano) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Keras](https://keras.io/)| N | Y |
@@ -118,43 +121,18 @@ ms.lasthandoff: 03/29/2018
 | &nbsp;&nbsp;&nbsp;&nbsp;* [NVidia Digits](https://github.com/NVIDIA/DIGITS) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet 模型服务器](https://github.com/awslabs/mxnet-model-server) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow 服务](https://www.tensorflow.org/serving/) | N | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [CUDA、CUDNN、Nvidia 驱动程序](https://developer.nvidia.com/cuda-toolkit) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [TensorRT](https://developer.nvidia.com/tensorrt) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [CUDA、CUDNN、NVIDIA 驱动程序](https://developer.nvidia.com/cuda-toolkit) | Y | Y |
 | **大数据平台（仅限 Devtest）**|||
-| &nbsp;&nbsp;&nbsp;&nbsp;* 本地独立 [Spark](http://spark.apache.org/) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* 本地独立 [Spark](http://spark.apache.org/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* 本地 [Hadoop](http://hadoop.apache.org/)（HDFS、YARN） | N | Y |
 
+## <a name="get-started"></a>入门
 
+### <a name="windows-data-science-vm"></a>Windows 数据科学 VM
+* 有关如何创建 Windows DSVM 并使用它的详细信息，请参阅[预配 Windows 数据科学虚拟机](provision-vm.md)。 有关如何在 Windows DSVM 上执行数据科学项目所需的各种任务的详细信息，请参阅[数据科学虚拟机的十大功能](vm-do-ten-things.md)。
 
-## <a name="get-started-with-the-windows-data-science-vm"></a>Windows 数据科学 VM 入门
-* 通过导航到以下位置创建所需 Windows DSVM 版本的实例
-  * [基于 Windows Server 2016 的 DSVM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm)
-  
-  或 
-  * [基于 Windows Server 2012 的 DSVM](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) 
-* 单击“立即获取”按钮。
-* 使用创建 VM 时指定的凭据从远程桌面登录 VM。
-* 若要发现和启动可用工具，请单击“启动”菜单。
-
-## <a name="get-started-with-the-linux-data-science-vm"></a>使用 Linux 数据科学 VM
-* 通过导航到以下位置创建所需 Linux DSVM 版本的实例 
-  * [基于 Ubuntu 的 DSVM](http://aka.ms/dsvm/ubuntu)
-
-  或
-
-  * [基于 CentOS 的 DSVM](http://aka.ms/dsvm/centos)
-
-  
-* 单击“立即获取”按钮。
-* 使用创建 VM 时指定的凭据从 SSH 客户端（例如 Putty 或 SSH 命令）登录 VM。
-* 在 Shell 提示符中，输入 dsvm-more-info。
-* 对于图形桌面，请在[此处](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)下载用于客户端平台的 X2Go 客户端，并遵循 Linux 数据科学 VM 文档[预配 Linux 数据科学虚拟机](linux-dsvm-intro.md#installing-and-configuring-x2go-client)中的说明操作。
-
-## <a name="next-steps"></a>后续步骤
-### <a name="for-the-windows-data-science-vm"></a>对于 Windows 数据科学 VM
-* 有关如何运行 Windows 版本提供的特定工具的详细信息，请参阅[预配 Microsoft 数据科学虚拟机](provision-vm.md)
-* 有关如何在 Windows VM 上执行数据科学项目所需的各种任务的详细信息，请参阅[数据科学虚拟机的十大功能](vm-do-ten-things.md)。
-
-### <a name="for-the-linux-data-science-vm"></a>对于 Linux 数据科学 VM
-* 有关如何运行 Linux 版本提供的特定工具的详细信息，请参阅[预配 Linux 数据科学虚拟机](linux-dsvm-intro.md)。
-* 有关介绍如何通过 Linux VM 执行多个常见数据科学任务的演示，请参阅 [Linux 数据科学虚拟机上的数据科学](linux-dsvm-walkthrough.md)。
+### <a name="linux-data-science-vm"></a>Linux 数据科学 VM
+* 有关如何创建 Ubuntu DSVM 并使用它的详细信息，请参阅[预配适用于 Linux (Ubuntu) 的数据科学虚拟机](dsvm-ubuntu-intro.md)。 有关如何创建 CentOS DSVM 并使用它的详细信息，请参阅[在 Azure 上预配 Linux CentOS 数据科学虚拟机](linux-dsvm-intro.md)。
+* 有关介绍如何通过 Linux VM（CentOS 和 Ubuntu）执行多个常见数据科学任务的演示，请参阅 [Linux 数据科学虚拟机上的数据科学](linux-dsvm-walkthrough.md)。
 

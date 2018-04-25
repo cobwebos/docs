@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: ganesr
-ms.openlocfilehash: 7380629344b27d5bb1e7af0aeddcb8f7665c1a5c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8bf1381ad089b9db41a3ef9f6fd3b9521a16da7e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -183,6 +183,8 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | 日本东部 | 12076:51012 |
 | 日本西部 | 12076:51013 |
 | **澳大利亚** | |
+| 澳大利亚中部 | 12076:51032 |
+| 澳大利亚中部 2 | 12076:51033 |
 | 澳大利亚东部 | 12076:51015 |
 | 澳大利亚东南部 | 12076:51016 |
 | **印度** | |

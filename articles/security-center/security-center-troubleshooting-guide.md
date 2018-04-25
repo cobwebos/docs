@@ -1,11 +1,11 @@
 ---
-title: "Azure 安全中心故障排除指南 | Microsoft Docs"
-description: "本文档可以帮助排除 Azure 安全中心中的问题。"
+title: Azure 安全中心故障排除指南 | Microsoft Docs
+description: 本文档可以帮助排除 Azure 安全中心中的问题。
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/01/2018
 ms.author: yurid
-ms.openlocfilehash: e2e8b16bf720e2be8b8bc8ae81fc944af79dddab
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 0c5f7a932cef904abbca25b63cf8e0d96db73c29
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 本指南适用于信息技术 (IT) 专业人员、信息安全分析人员，以及那些组织中正在使用 Azure 安全中心并需要进行排除安全中心相关问题的云管理员。
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/03/2018
 审核日志包含针对资源执行的所有写入操作（PUT、POST、DELETE），但它不包含读取属性 (GET)。
 
 ## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
-安全中心使用 Microsoft Monitoring Agent（Operations Management Suite 和 Log Analytics 服务同样适用此代理）从 Azure 虚拟机中收集安全数据。 启用数据收集并在目标计算机中正确安装代理后，应执行以下进程：
+安全中心使用 Microsoft Monitoring Agent（Log Analytics 服务同样使用此代理）从 Azure 虚拟机中收集安全数据。 启用数据收集并在目标计算机中正确安装代理后，应执行以下进程：
 
 * HealthService.exe
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 02/03/2018
 若要让代理连接和注册到安全中心，必须允许其访问包括端口号和域 URL 在内的网络资源。
 
 - 对于代理服务器，需确保在代理设置中配置适当的代理服务器资源。 阅读本文，详细了解[如何更改代理设置](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings)。
-- 对于限制 Internet 访问的防火墙，需要将其配置为允许访问 OMS。 代理设置中不需要任何操作。
+- 对于限制 Internet 访问的防火墙，需要将其配置为允许访问 Log Analytics。 代理设置中不需要任何操作。
 
 下表显示通信所需的资源。
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 10e5b1a261f28391bed8cf3f111b1124b52d7816
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6f184ac0b2af3a66affecd1a3a9c247a96e616f8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>教程：使用 Azure CLI 2.0 自动缩放虚拟机规模集
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。 本教程介绍如何执行下列操作：
@@ -232,7 +232,7 @@ az monitor autoscale-settings create \
 ## <a name="generate-cpu-load-on-scale-set"></a>在规模集上生成 CPU 负载
 若要测试自动缩放规则，请在规模集的 VM 实例上生成一些 CPU 负载。 这种模拟的 CPU 负载会导致自动缩放以横向扩展的方式增加 VM 实例数。 随着模拟的 CPU 负载下降，自动缩放规则会进行横向缩减，减少 VM 实例数。
 
-首先，请使用 [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) 列出规模集中连接 VM 实例的地址和端口：
+首先，请使用 [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) 列出用于连接到规模集中的 VM 实例的地址和端口：
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -240,7 +240,7 @@ az vmss list-instance-connection-info \
   --name $scaleset_name
 ```
 
-以下示例输出显示了实例名称、负载均衡器的公共 IP 地址，以及可以通过网络地址转换 (NAT) 规则将流量转发到其中的端口号：
+以下示例输出显示了实例名称、负载均衡器的公共 IP 地址，以及可以通过网络地址转换 (NAT) 规则将流量转发到的端口号：
 
 ```json
 {
@@ -249,13 +249,13 @@ az vmss list-instance-connection-info \
 }
 ```
 
-通过 SSH 连接到第一个 VM 实例。 使用 `-p` 参数指定你自己的公共 IP 地址和端口号，如前述命令所示：
+通过 SSH 连接到第一个 VM 实例。 使用 `-p` 参数指定自己的公共 IP 地址和端口号，如前述命令所示：
 
 ```azurecli-interactive
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-登录后，安装 **stress** 实用程序。 启动 *10* 个可以生成 CPU 负载的 **stress** 辅助角色。 这些辅助角色运行 *420* 秒，此时间足以让自动缩放规则实施所需的操作。
+登录后，安装 **stress** 实用工具。 启动 *10* 个可以生成 CPU 负载的 **stress** 辅助角色。 这些辅助角色运行 *420* 秒，此时间足以让自动缩放规则实施所需的操作。
 
 ```azurecli-interactive
 sudo apt-get -y install stress
@@ -264,20 +264,20 @@ sudo stress --cpu 10 --timeout 420 &
 
 当 **stress** 显示类似于 *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
 
-若要确认 **stress** 是否生成了 CPU 负载，请使用 **top** 实用程序检查活动的系统负载：
+若要确认 **stress** 是否生成了 CPU 负载，请使用 **top** 实用工具检查活动的系统负载：
 
 ```azuecli-interactive
 top
 ```
 
-退出 **top**，然后关闭到 VM 实例的连接。 **stress** 继续在 VM 实例上运行。
+退出 **top**，然后关闭与 VM 实例的连接。 **stress** 继续在 VM 实例上运行。
 
 ```azurecli-interactive
 Ctrl-c
 exit
 ```
 
-连接到第二个 VM 实例，所使用的端口号是在前面的 [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) 中列出的：
+连接到第二个 VM 实例，所使用的端口号是前面的 [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) 列出的：
 
 ```azurecli-interactive
 ssh azureuser@13.92.224.66 -p 50003
@@ -292,14 +292,14 @@ sudo stress --cpu 10 --timeout 420 &
 
 当 **stress** 再次显示类似于 *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
 
-关闭到第二个 VM 实例的连接。 **stress** 继续在 VM 实例上运行。
+关闭与第二个 VM 实例的连接。 **stress** 继续在 VM 实例上运行。
 
 ```azurecli-interactive
 exit
 ```
 
 ## <a name="monitor-the-active-autoscale-rules"></a>监视活动的自动缩放规则
-若要监视规模集中的 VM 实例数，请使用 **watch**。 自动缩放规则需要 5 分钟的时间才能启动横向扩展过程，以便响应由每个 VM 实例上的 **stress** 生成的 CPU 负载：
+若要监视规模集中的 VM 实例数，请使用 **watch**。 自动缩放规则需要 5 分钟的时间才能开始横向扩展过程，以便响应由每个 VM 实例上的 **stress** 生成的 CPU 负载：
 
 ```azurecli-interactive
 watch az vmss list-instances \
@@ -322,7 +322,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
            6  True                  eastus      myScaleSet_6  Creating             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-当 **stress** 在初始 VM 实例上停止后，平均 CPU 负载会回到正常。 另一个 5 分钟后，自动缩放规则会缩减 VM 实例数。 横向缩减操作会首先删除 ID 值最高的 VM 实例。 以下示例输出显示，在规模集进行自动横向缩减时删除了一个 VM 实例：
+当 **stress** 在初始 VM 实例上停止后，平均 CPU 负载会回到正常。 另一个 5 分钟后，自动缩放规则会缩减 VM 实例数。 横向缩减操作会首先删除 ID 值最高的 VM 实例。 如果规模集使用可用性集或可用性区域，则缩减操作将均匀分布到这些 VM 实例上。 以下示例输出显示，在规模集进行自动横向缩减时删除了一个 VM 实例：
 
 ```bash
            6  True                  eastus      myScaleSet_6  Deleting             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336

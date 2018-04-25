@@ -1,18 +1,17 @@
 ---
-title: "用于使用 Active Directory 标识修剪 Azure 搜索结果的安全筛选器 | Microsoft Docs"
-description: "使用安全筛选器和 Active Directory 标识对 Azure 搜索内容进行访问控制。"
-services: search
+title: 用于使用 Active Directory 标识修剪 Azure 搜索结果的安全筛选器 | Microsoft Docs
+description: 使用安全筛选器和 Active Directory 标识对 Azure 搜索内容进行访问控制。
 author: revitalbarletz
 manager: jlembicz
 ms.service: search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: 2113b59d6fec15067acbef8b4d4c1fc34c141e62
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: d7df9ede1851680fb6327cac7eed0a479928cea0
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>用于使用 Active Directory 标识修剪 Azure 搜索结果的安全筛选器
 
@@ -97,7 +96,7 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>步骤 4：缓存组标识符
-（可选）为了降低网络延迟，可以缓存用户与组之间的关联，以便在发出搜索请求后，可以从缓存返回组，免除与 AAD 之间的一次往返。 可以使用 (AAD Batch API)[https://developer.microsoft.com/graph/docs/concepts/json_batching] 发送包含多个用户的单个 HTTP 请求并生成缓存。
+（可选）为了降低网络延迟，可以缓存用户与组之间的关联，以便在发出搜索请求后，可以从缓存返回组，免除与 AAD 之间的一次往返。 可以使用 (AAD Batch API)[https://developer.microsoft.com/graph/docs/concepts/json_batching] 发送包含多个用户的单个 Http 请求并生成缓存。
 
 Microsoft Graph 能够处理大量的请求。 如果发出无以数计的请求，Microsoft Graph 将会失败并返回 HTTP 状态代码 429。 有关详细信息，请参阅 [Microsoft Graph 限制](https://developer.microsoft.com/graph/docs/concepts/throttling)。
 

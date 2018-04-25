@@ -10,11 +10,11 @@ ms.service: app-service-web
 manager: erikre
 ms.workload: web
 ms.custom: mvc
-ms.openlocfilehash: 74344b72869ef6b27f9e7329c7a1777a40662b17
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 131424b4a09beeca7c2e318a04e454bea7dab6a7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>教程：向 Azure 应用服务添加内容交付网络 (CDN)
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="have-a-custom-domain-ready"></a>准备自定义域
 
-若要完成本教程的自定义域步骤，需要拥有自定义域并能够访问域提供商（例如 GoDaddy）的 DNS 注册表。 例如，若要添加 `contoso.com` 和 `www.contoso.com` 的 DNS 条目，必须有权配置 `contoso.com` 根域的 DNS 设置。
+若要完成本教程的自定义域步骤，需要拥有自定义域并能够访问域提供商的 DNS 注册表。 例如，若要添加 `contoso.com` 和 `www.contoso.com` 的 DNS 条目，必须有权配置 `contoso.com` 根域的 DNS 设置。
 
 如果还没有域名，请考虑遵照[应用服务域教程](custom-dns-web-site-buydomains-web-app.md)使用 Azure 门户购买一个域。 
 

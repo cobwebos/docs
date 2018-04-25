@@ -1,11 +1,11 @@
 ---
-title: "Azure AD v2.0 .NET Web 应用登录入门 | Microsoft Docs"
-description: "如何构建一个使用个人 Microsoft 帐户和工作或学校帐户来登录用户的 .NET MVC Web 应用。"
+title: Azure AD v2.0 .NET Web 应用登录入门 | Microsoft Docs
+description: 如何构建一个使用个人 Microsoft 帐户和工作或学校帐户来登录用户的 .NET MVC Web 应用。
 services: active-directory
 documentationcenter: .net
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c8b97ac6-0a06-4367-81b6-7d1d98152b14
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: a23b3b1084cf6776cee8583891ae3d879183d072
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/25/2018
 ---
 # <a name="add-sign-in-to-an-net-mvc-web-app"></a>将登录凭据添加到 .NET MVC Web 应用
 通过 v2.0 终结点，可以快速地将身份验证添加 Web 应用，同时支持个人 Microsoft 帐户以及工作或学校帐户。  在 ASP.NET Web 应用中，可以使用随附在 .NET Framework 4.5 中的 Microsoft OWIN 中间件来完成此操作。

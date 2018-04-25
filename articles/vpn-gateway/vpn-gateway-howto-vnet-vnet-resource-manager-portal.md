@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: a95fdf078baa35eb9ca8ade462223b204be77d8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7e72e9ff9be0b092bc9425828bab46ffd60f0822
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet VPN 网关连接
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 03/23/2018
 [!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
 ## <a name="gatewaysubnet"></a>3.创建网关子网
-为虚拟网络创建虚拟网络网关前，先要创建网关子网。 网关子网包含虚拟网络网关使用的 IP 地址。 在可能的情况下，最好是使用 CIDR 块 /28 或 /27 创建网关子网，以便提供足够的 IP 地址，满足将来的其他配置要求。
+为虚拟网络创建虚拟网络网关前，需要先创建网关子网。 网关子网包含虚拟网络网关使用的 IP 地址。 在可能的情况下，最好是使用 CIDR 块 /28 或 /27 创建网关子网，以便提供足够的 IP 地址，满足将来的其他配置要求。
 
 如果正在练习创建此配置，请在创建网关子网时参考[示例设置](#values)。
 

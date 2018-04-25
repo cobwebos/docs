@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 98665ab215c98ea60273ce3aae2757cf20817a90
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 109a5b50688ca0b2c4edc63b6ba5c89bac74a6d3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -118,7 +118,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>启用多重身份验证，并注册所有其他的特许权限高的单用户非联合管理员帐户 
 
-对于所有永久分配了一个或多个 Azure AD 管理员角色（全局管理员、特权角色管理员、Exchange Online 管理员和 SharePoint Online 管理员）的单个用户，要求在登录时进行 Azure 多重身份验证 (MFA)。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，可参阅[保护对 Office 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步骤 2 和步骤 3。 
+对于所有永久分配了一个或多个 Azure AD 管理员角色（全局管理员、特权角色管理员、Exchange Online 管理员和 SharePoint Online 管理员）的单个用户，要求在登录时进行 Azure 多重身份验证 (MFA)。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](authentication/howto-mfa-userstates.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，可参阅[保护对 Office 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步骤 2 和步骤 3。 
 
 ## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>阶段 2：减轻最常用攻击手段的危害
 
@@ -154,9 +154,9 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 确保所有用户在过去 90 天中至少有一次登录到其管理帐户并更改了密码。 另外，对于多个用户知道密码的共享帐户，确保最近更改了这些帐户的密码。
 
-#### <a name="turn-on-password-synchronization"></a>启用密码同步
+#### <a name="turn-on-password-hash-synchronization"></a>启用密码哈希同步
 
-密码同步是一种功能，用于将用户密码哈希的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。 即使决定使用 Active Directory 联合身份验证服务 (AD FS) 或其他标识提供者进行联合身份验证，也可以选择性地设置密码同步，作为在本地基础结构（例如 AD 或 ADFS 服务器）发生故障或变得临时不可用时的备用身份验证方式。 这样用户就可以在登录到该服务时使用登录到本地 AD 实例时使用的密码。 另外，如果用户在其他未连接到 Azure AD 的服务上使用过相同的电子邮件地址和密码，则还可以通过 Identity Protection 将这些密码哈希与已知泄露的密码进行比较，从而检测出那些泄露的凭据。  有关详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)。
+密码哈希同步是一种功能，用于将用户密码哈希的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。 即使决定使用 Active Directory 联合身份验证服务 (AD FS) 或其他标识提供者进行联合身份验证，也可以选择性地设置密码哈希同步，作为在本地基础结构（例如 AD 或 ADFS 服务器）发生故障或变得临时不可用时的备用身份验证方式。 这样用户就可以在登录到该服务时使用登录到本地 AD 实例时使用的密码。 另外，如果用户在其他未连接到 Azure AD 的服务上使用过相同的电子邮件地址和密码，则还可以通过 Identity Protection 将这些密码哈希与已知泄露的密码进行比较，从而检测出那些泄露的凭据。  有关详细信息，请参阅[使用 Azure AD Connect 同步实现密码哈希同步](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)。
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>要求对所有特权角色用户和公开的用户进行多重身份验证 (MFA)
 
@@ -164,8 +164,8 @@ Azure AD 建议你要求对所有用户进行多重身份验证 (MFA)，这包�
 
 启用以下功能：
 
-* [为暴露风险高的帐户启用 MFA](../multi-factor-authentication/multi-factor-authentication-security-best-practices.md)，例如为组织执行官的帐户启用 MFA 
-* [为每个与单个用户相关联的管理员帐户启用 MFA](../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md)，这适用于其他连接的 SaaS 应用 
+* [为暴露风险高的帐户启用 MFA](authentication/multi-factor-authentication-security-best-practices.md)，例如为组织执行官的帐户启用 MFA 
+* [为每个与单个用户相关联的管理员帐户启用 MFA](authentication/howto-mfa-userstates.md)，这适用于其他连接的 SaaS 应用 
 * 为 Microsoft SaaS 应用的所有管理员启用 MFA，包括其角色在 Exchange Online 和 Office 门户中管理的管理员
 
 如果使用 Windows Hello for Business，则可通过 Windows Hello 登录体验来满足 MFA 要求。 有关详细信息，请参阅 [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport)。 
@@ -282,11 +282,11 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>清点托管的虚拟机中的特权帐户
 
-大多数情况下，不需为用户提供可以访问所有 Azure 订阅或资源的不受限权限。 可以使用 Azure AD 管理员角色对组织中的职责进行分隔，仅向需要进行特定作业的用户授权相应的访问权限。 例如，使用 Azure AD 管理员角色，让一个管理员只管理员某个订阅中的 VM，让另一个管理员管理同一订阅中的 SQL 数据库。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](role-based-access-control-what-is.md)。
+大多数情况下，不需为用户提供可以访问所有 Azure 订阅或资源的不受限权限。 可以使用 Azure AD 管理员角色对组织中的职责进行分隔，仅向需要进行特定作业的用户授权相应的访问权限。 例如，使用 Azure AD 管理员角色，让一个管理员只管理员某个订阅中的 VM，让另一个管理员管理同一订阅中的 SQL 数据库。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>为 Azure AD 管理员角色实施 PIM
 
-将 Privileged Identity Management 与 Azure AD 管理员角色配合使用，对 Azure 资源的访问权限进行管理、控制和监视。 可以降低权限的暴露时间并通过报表和警报增加对使用情况的可见性，从而使用 PIM 保护特权帐户免受网络攻击。 有关详细信息，请参阅[使用 Privileged Identity Management 管理对 Azure 资源的 RBAC 访问](pim-azure-resource.md)。
+将 Privileged Identity Management 与 Azure AD 管理员角色配合使用，对 Azure 资源的访问权限进行管理、控制和监视。 可以降低权限的暴露时间并通过报表和警报增加对使用情况的可见性，从而使用 PIM 保护特权帐户免受网络攻击。 有关详细信息，请参阅[使用 Privileged Identity Management 管理对 Azure 资源的 RBAC 访问](../role-based-access-control/pim-azure-resource.md)。
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>使用 Azure 日志集成将相关的 Azure 日志发送到 SIEM 系统 
 

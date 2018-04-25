@@ -1,20 +1,20 @@
 ---
-title: "在 Azure 成本管理中注册你的 Azure 订阅 | Microsoft 文档"
-description: "使用 Azure 订阅在 Azure 成本管理中注册。"
+title: 在 Azure 成本管理中注册你的 Azure 订阅 | Microsoft 文档
+description: 使用 Azure 订阅在 Azure 成本管理中注册。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 04/17/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: b7c1fee3276d98b6b7c611a09133804c1253384a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a8ff85d9d40d2d6b1169e41ac69fac7e808a1df2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>注册一个单独的 Azure 订阅并查看成本数据
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 03/09/2018
 
 - 通过 http://portal.azure.com 登录到 Azure 门户。
 
-## <a name="create-a-trial-registration"></a>创建试用注册
+## <a name="register-with-azure-cost-management"></a>向 Azure 成本管理注册
 
 1. 在 Azure 门户中，单击服务列表中的“成本管理 + 计费”。
 2. 在“概览”下，单击“成本管理”  

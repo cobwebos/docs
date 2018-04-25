@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6ee23beaa450129be7c173da9efc687cc3790a15
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ee4e200fa57a38249b0be2997de7e3268a9302cb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 04/03/2018
 如果选择在本地安装和使用 PowerShell，请安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 PowerShell cmdlet 经常会更新，因此，你通常需要更新 PowerShell cmdlet 才能获取最新的功能。 如果未更新 PowerShell cmdlet，指定的值可能无法使用。 
 
 若要查找所使用的版本，请运行“Get-Module -ListAvailable AzureRM”。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
-如果在本地运行 PowerShell，则还需运行“Login-AzureRmAccount”以创建与 Azure 的连接。
+如果在本地运行 PowerShell，则还需运行“Connect-AzureRmAccount”以创建与 Azure 的连接。
 
 
 ### <a name="example"></a>示例值

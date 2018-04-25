@@ -1,19 +1,21 @@
 ---
-title: 从 Azure 流分析作业运行 Azure Functions
-description: 本文介绍如何在流分析作业中将 Azure Functions 配置为事件驱动工作负荷的输出接收器。
+title: 教程：使用 Azure 流分析作业运行 Azure Functions | Microsoft Docs
+description: 本教程介绍如何将 Azure Functions 配置为流分析作业的输出接收器。
 services: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
-ms.reviewer: jasonh
 manager: kfile
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 12/19/2017
-ms.openlocfilehash: a8eebfa0c40caa455eb20431e5cf4acb8eeb248c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.topic: tutorial
+ms.custom: mvc
+ms.workload: data-services
+ms.date: 04/09/2018
+ms.author: jasonh
+ms.reviewer: jasonh
+ms.openlocfilehash: 1d33c3f0a4c36dc681aaa42bc68ae56eec234401
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>从 Azure 流分析作业运行 Azure Functions 
 
@@ -21,7 +23,14 @@ ms.lasthandoff: 04/06/2018
 
 流分析通过 HTTP 触发调用 Functions。 通过 Functions 输出适配器，用户可以将 Functions 连接到流分析，以便基于流分析查询触发事件。 
 
-本教程演示如何使用 [Azure Functions](../azure-functions/functions-overview.md) 将流分析连接到 [Azure Redis 缓存](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md)。 
+本教程介绍如何执行下列操作：
+
+> [!div class="checklist"]
+> * 创建流分析作业
+> * 创建 Azure 函数
+> * 将 Azure 函数配置为作业的输出
+
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="configure-a-stream-analytics-job-to-run-a-function"></a>创建流分析作业以运行函数 
 
@@ -191,3 +200,16 @@ ms.lasthandoff: 04/06/2018
 
 在 Azure 门户中，尝试将最大批次大小/最大批次数值重置为空（默认），值将在保存时改回上次输入的值。 这时，请手动输入这些字段的默认值。
 
+## <a name="clean-up-resources"></a>清理资源
+
+若不再需要资源组、流式处理作业以及所有相关资源，请将其删除。 删除作业可避免对作业使用的流单元进行计费。 如果计划在将来使用该作业，可以先停止该作业，以后在需要时再重启该作业。 如果不打算继续使用该作业，请按照以下步骤删除本快速入门创建的所有资源：
+
+1. 在 Azure 门户的左侧菜单中，单击“资源组”，并单击已创建资源的名称。  
+2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。
+
+## <a name="next-steps"></a>后续步骤
+
+在本教程中，创建了一个运行 Azure 函数的简单流分析作业，若要详细了解流分析作业，请继续学习下一教程：
+
+> [!div class="nextstepaction"]
+> [在流分析作业中运行 JavaScript 用户定义的函数](stream-analytics-javascript-user-defined-functions.md)

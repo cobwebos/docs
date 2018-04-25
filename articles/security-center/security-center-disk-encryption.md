@@ -1,11 +1,11 @@
 ---
-title: "加密 Azure 虚拟机 | Microsoft Docs"
-description: "本文档介绍如何在收到 Azure 安全中心的警报后加密 Azure 虚拟机。"
+title: 加密 Azure 虚拟机 | Microsoft Docs
+description: 本文档介绍如何在收到 Azure 安全中心的警报后加密 Azure 虚拟机。
 services: security, security-center
 documentationcenter: na
 author: TomShinder
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: f6c28bc4-1f79-4352-89d0-03659b2fa2f5
 ms.service: security
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: fa55df0c4d5291834035ea5cae58fa3d75de7e02
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9a376eb63e7ba054a125666f95c05d5e7dfb5470
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>加密 Azure 虚拟机
 如果用户的虚拟机未加密，Azure 安全中心会向用户发送警报。 这些警报会显示为“高严重级别”，建议加密这些虚拟机。
@@ -92,8 +92,8 @@ Azure 磁盘加密先决条件脚本会要求用户在启动脚本后提供以�
 1. 如果关闭了 PowerShell ISE，可打开一个提升了权限的 PowerShell ISE 实例。 如果尚未打开 PowerShell ISE，可按本文中的前述说明操作。 如果关闭了脚本，则请打开 **ADEPrereqScript.ps1**，单击“文件”，单击“打开”并从 **c:\AzureADEScript** 文件夹选择脚本。 如果从一开始就遵循了本文的说明操作，则可直接转到下一步。
 2. 在 PowerShell ISE 的控制台（PowerShell ISE 的底部窗格）中，键入 **cd c:\AzureADEScript** 再按 **ENTER**，将焦点变到脚本本地。
 3. 在计算机上设置执行策略，以便运行脚本。 在控制台中键入 **Set-ExecutionPolicy Unrestricted**，并按 ENTER。 如果看到一个对话框，其中说明了更改执行策略的效果，请单击“全部选是”或“是”（如果看到“全部选是”，则可选择该选项 – 如果没有看到“全部选是”，则单击“是”）。
-4. 登录到 Azure 帐户。 在控制台中，键入 **Login-AzureRmAccount** 并按 **ENTER**。 此时会出现一个对话框，可在其中输入凭据（请确保有权更改虚拟机 – 如果没有相应的权限，将无法对虚拟机加密。 如果不确定是否有权限，请询问订阅所有者或管理员）。 此时会看到**环境**、**帐户**、**TenantId****SubscriptionId** 和 **CurrentStorageAccount** 的相关信息。 将 **SubscriptionId** 复制到记事本。 在步骤 6 中需用到此 ID。
-5. 查找虚拟机所属的订阅及其位置。 转到 [https://portal.azure.com](ttps://portal.azure.com) 登录。  在页面左侧，单击“虚拟机”。 此时会看到虚拟机的列表及所属的订阅。
+4. 登录到 Azure 帐户。 在控制台中，键入 **Connect-AzureRmAccount** 并按 **ENTER**。 此时会出现一个对话框，可在其中输入凭据（请确保有权更改虚拟机 – 如果没有相应的权限，将无法对虚拟机加密。 如果不确定是否有权限，请询问订阅所有者或管理员）。 此时会看到**环境**、**帐户**、**TenantId****SubscriptionId** 和 **CurrentStorageAccount** 的相关信息。 将 **SubscriptionId** 复制到记事本。 在步骤 6 中需用到此 ID。
+5. 查找虚拟机所属的订阅及其位置。 转到 [https://portal.azure.com](ttps://portal.azure.com) 并登录。  在页面左侧，单击“虚拟机”。 此时会看到虚拟机的列表及所属的订阅。
 
    ![虚拟机](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
 6. 回到 PowerShell ISE。 设置运行脚本所需的订阅上下文。 在控制台中，键入 **Select-AzureRmSubscription –SubscriptionId <your_subscription_Id>**（将 **< your_subscription_Id >** 替换为实际订阅 ID），并按 **ENTER**。 此时会看到环境、**帐户**、**TenantId**、**SubscriptionId** 和 **CurrentStorageAccount** 的相关信息。
@@ -172,7 +172,7 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMNa
 ![磁盘属性](./media/security-center-disk-encryption/security-center-disk-encryption-fig12.png)
 
 ## <a name="next-steps"></a>后续步骤
-本文档介绍如何加密 Azure 虚拟机。 若要详细了解 Azure 安全中心，请参阅以下内容：
+本文档介绍如何加密 Azure 虚拟机。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：
 
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md) （Azure 安全中心的安全运行状况监视）- 了解如何监视 Azure 资源的运行状况
 * [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) （管理和响应 Azure 安全中心的安全警报）- 了解如何管理和响应安全警报

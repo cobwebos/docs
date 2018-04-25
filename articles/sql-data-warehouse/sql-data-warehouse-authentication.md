@@ -1,35 +1,23 @@
 ---
-title: "对 Azure SQL 数据仓库进行身份验证 | Microsoft 文档"
-description: "对 Azure SQL 数据仓库进行的 Azure Active Directory (AAD) 和 SQL Server 身份验证。"
+title: 向 Azure SQL 数据仓库进行身份验证 | Microsoft Docs
+description: 了解如何使用 Azure Active Directory (AAD) 或 SQL Server 身份验证向 Azure SQL 数据仓库进行身份验证。
 services: sql-data-warehouse
-documentationcenter: 
 author: ronortloff
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: fefaaa75-2d0c-4e5d-aadb-410342d1ad73
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-management
-ms.custom: security
-ms.date: 03/21/2017
-ms.author: rortloff;barbkess
-ms.openlocfilehash: 92f48027051bc4aff4d6b8d66fdd6de81bba3657
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 2340168e736c13b5d911a987d36b0224d3c3b1ed
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="authentication-to-azure-sql-data-warehouse"></a>对 Azure SQL 数据仓库进行身份验证
-> [!div class="op_single_selector"]
-> * [安全性概述](sql-data-warehouse-overview-manage-security.md)
-> * [身份验证](sql-data-warehouse-authentication.md)
-> * [加密（门户）](sql-data-warehouse-encryption-tde.md)
-> * [加密 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
-> 
-> 
+# <a name="authenticate-to-azure-sql-data-warehouse"></a>向 Azure SQL 数据仓库进行身份验证
+了解如何使用 Azure Active Directory (AAD) 或 SQL Server 身份验证向 Azure SQL 数据仓库进行身份验证。
 
 若要连接到 SQL 数据仓库，必须传入安全凭据进行身份验证。 建立连接时，特定的连接设置已配置为建立查询会话的一部分。  
 

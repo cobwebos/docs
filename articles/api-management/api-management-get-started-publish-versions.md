@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure API 管理发布 API 版本 | Microsoft Docs"
-description: "遵循本教程的步骤了解如何在 API 管理中发布多个版本。"
+title: 使用 Azure API 管理发布 API 版本 | Microsoft Docs
+description: 遵循本教程的步骤了解如何在 API 管理中发布多个版本。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,15 +14,15 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: d63bdd3110f5c5db3e7bfec424644fdbc8d8d90c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 7d61fa25f29f1380fe58069dbc25ed9ce1fff53c
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>发布 API 的多个版本 
 
-有时，让 API 的所有调用方都使用完全相同的版本是不切实际的。 有时，你希望将新的或不同的 API 功能发布给某些用户，还有一些人希望坚持使用目前他们所用的 API。 如果调用方想要升级到更高的版本，他们会希望以一种易于理解的方法实现此目的。  在 Azure API 管理中使用**版本**即可实现此目的。 有关详细信息，请参阅[版本和修订](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)。
+有时，让 API 的所有调用方都使用完全相同的版本是不切实际的。 如果调用方想要升级到更高的版本，他们会希望以一种易于理解的方法实现此目的。 在 Azure API 管理中使用**版本**即可实现此目的。 有关详细信息，请参阅[版本和修订](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)。
 
 本教程介绍如何执行下列操作：
 
@@ -36,10 +36,8 @@ ms.lasthandoff: 12/04/2017
 
 ## <a name="prerequisites"></a>先决条件
 
-+ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
-+ 此外，完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
-
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+* 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
+* 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
 
 ## <a name="add-a-new-version"></a>添加新版本
 
@@ -54,7 +52,7 @@ ms.lasthandoff: 12/04/2017
 
 ## <a name="choose-a-versioning-scheme"></a>选择版本控制方案
 
-在 Azure API 管理中，可以选择调用方指定其所需 API 版本的允许方式。 为此，可以选择一种**版本控制方案**。 此方案可以是**路径、标头或查询字符串**。 本示例使用路径。
+在 Azure API 管理中，可以选择调用方指定其所需 API 版本的允许方式。 通过选择“版本控制方案”可指定要使用的 API 版本。 此方案可以是**路径、标头或查询字符串**。 在下面的示例中，路径用于选择版本控制方案。
 
 ![“添加版本”屏幕](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
@@ -71,20 +69,20 @@ ms.lasthandoff: 12/04/2017
     ![Azure 门户中 API 下面列出的版本](media/api-management-getstarted-publish-versions/VersionList.PNG)
 
     > [!Note]
-    > 如果你为版本不受控制的 API 添加了版本，我们始终会创建“原始”API - 这是对默认 URL 的响应。 这可以确保所有现有调用方不会被添加版本的过程中断。 如果在一开始就启用了版本的情况下创建新 API，则不会创建“原始”API。
+    > 如果为不受版本控制的 API 添加了版本，则会自动创建“原始”API - 这是对默认 URL 的响应。 这可以确保所有现有调用方不会被添加版本的过程中断。 如果在一开始就启用了版本的情况下创建新 API，则不会创建“原始”API。
 
 6. 现在，可以编辑和配置“v1”使其作为与“原始”API 不同的独立 API。 对一个版本进行更改不会影响另一个版本。
 
 ## <a name="add-the-version-to-a-product"></a>将版本添加到产品
 
-要让调用方看到新版本，必须将该版本添加到**产品**（产品不会从父版本继承）。
+要使调用方看到新版本，必须将该版本添加到**产品**。
 
-1. 在服务管理页中选择“产品”。
+1. 从经典部署模型页选择“产品”。
 2. 选择“不受限制”。
 3. 选择“API”。
-4. 选择“添加”。
+4. 选择 **添加** 。
 5. 选择“会议 API，版本 v1”。
-6. 返回到服务管理页并选择“API”。
+6. 导航到服务管理页并选择“API”。
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>浏览开发人员门户以查看版本
 

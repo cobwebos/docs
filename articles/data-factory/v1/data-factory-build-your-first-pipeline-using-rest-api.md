@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4c9b4408e6ac92a2f86a10f63ddd254486b82b3e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7b24d4b15d83d746c5a514725bcd474828c62001
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ ms.lasthandoff: 03/23/2018
   4. 将 **ADFGetStartedApp** 应用程序分配到“数据工厂参与者”角色。
 * 安装 [Azure PowerShell](/powershell/azure/overview)。
 * 启动 **PowerShell** 并运行以下命令。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。
-  1. 运行 **Login-AzureRmAccount** 并输入用于登录 Azure 门户的用户名和密码。
+  1. 运行 **Connect-AzureRmAccount** 并输入用于登录 Azure 门户的用户名和密码。
   2. 运行 **Get-AzureRmSubscription** ，查看此帐户的所有订阅。
   3. 运行 **Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription | Set-AzureRmContext** 选择要使用的订阅。 将 **NameOfAzureSubscription** 替换为 Azure 订阅的名称。
 * 在 PowerShell 中运行以下命令，创建名为 **ADFTutorialResourceGroup** 的 Azure 资源组：

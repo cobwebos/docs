@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 10/10/2017
+ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c79d82ddc65b7302552f745ab653109677205aa4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 494f2864f61ed9717dbddd7bf85981dc84bd3aad
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 .NET Core 和 SQL 数据库 Web 应用
 
@@ -47,8 +47,8 @@ ms.lasthandoff: 03/16/2018
 
 完成本教程：
 
-1. [安装 Git](https://git-scm.com/)
-1. [安装 .NET Core SDK 1.1.2](https://github.com/dotnet/core/blob/master/release-notes/download-archives/1.1.2-download.md)
+* [安装 Git](https://git-scm.com/)
+* [安装 .NET Core](https://www.microsoft.com/net/core/)
 
 ## <a name="create-local-net-core-app"></a>创建本地 .NET Core 应用
 
@@ -147,7 +147,7 @@ az sql db create --resource-group myResourceGroup --server <server_name> --name 
 将下列字符串替换为先前所使用的 \<server_name>、\<db_username> 和 \<db_password>。
 
 ```
-Server=tcp:<server_name>.database.windows.net,1433;Initial Catalog=coreDB;Persist Security Info=False;User ID=<db_username>;Password=<db_password>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_username>;Password=<db_password>;Encrypt=true;Connection Timeout=30;
 ```
 
 这是 .NET Core 应用的连接字符串。 将其进行复制，留待稍后使用。
@@ -215,7 +215,8 @@ services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate
 保存所做的更改，然后将其提交到 Git 存储库。 
 
 ```bash
-git commit -am "connect to SQLDB in Azure"
+git add .
+git commit -m "connect to SQLDB in Azure"
 ```
 
 ### <a name="push-to-azure-from-git"></a>从 Git 推送到 Azure
@@ -347,8 +348,8 @@ dotnet run
 ### <a name="publish-changes-to-azure"></a>发布对 Azure 所做的更改
 
 ```bash
-
-git commit -am "added done field"
+git add .
+git commit -m "added done field"
 git push azure master
 ```
 

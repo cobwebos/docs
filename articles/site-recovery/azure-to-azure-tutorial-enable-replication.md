@@ -5,18 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 03/16/2018
+ms.topic: tutorial
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7dd0bfbd96e6ba7b5d2174334419797c4fd60a51
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d1bc6fcb17732da7f6b0985122dd2cff3c2c9cdf
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>为 Azure VM 设置到辅助 Azure 区域的灾难恢复（预览版）
 
@@ -77,7 +74,7 @@ ms.lasthandoff: 03/28/2018
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
-当使用任何基于 IP 的防火墙、 代理或 NSG 规则来控制出站连接时，需要将以下 IP 地址范围列入允许列表。 从以下链接下载范围列表：
+如果想要使用 IP 地址而不是 URL 控制出站连接，请将相应的数据中心范围、Office 365 地址和服务终结点地址加入到基于 IP 的防火墙、代理或 NSG 规则的允许列表。
 
   - [Microsoft Azure 数据中心 IP 范围](http://www.microsoft.com/en-us/download/details.aspx?id=41653)
   - [德国的 Windows Azure 数据中心 IP 范围](http://www.microsoft.com/en-us/download/details.aspx?id=54770)
@@ -85,7 +82,7 @@ ms.lasthandoff: 03/28/2018
   - [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Site Recovery 服务终结点 IP 地址](https://aka.ms/site-recovery-public-ips)
 
-使用这些列表配置网络中的网络访问控制。 可以使用此[脚本](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702)创建所需的 NSG 规则。
+可以使用此[脚本](https://gallery.technet.microsoft.com/Azure-Recovery-script-to-0c950702)创建所需的 NSG 规则。
 
 ## <a name="verify-azure-vm-certificates"></a>验证 Azure VM 证书
 
@@ -105,7 +102,7 @@ Azure Site Recovery 提供了三个用于控制 Site Recovery 管理操作的内
 
 - **Site Recovery 读者** - 此角色有权查看所有 Site Recovery 管理操作。 此角色最适合分配给 IT 监视主管，这样他们就可以监视当前保护状态并创建支持票证。
 
-详细了解 [Azure RBAC 内置角色](../active-directory/role-based-access-built-in-roles.md)
+详细了解 [Azure RBAC 内置角色](../role-based-access-control/built-in-roles.md)
 
 ## <a name="enable-replication"></a>启用复制
 

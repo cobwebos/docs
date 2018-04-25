@@ -1,25 +1,18 @@
 ---
-title: "Azure 搜索中的视频、示例和教程 | Microsoft Azure | Microsoft Docs"
-description: "针对 Azure 搜索、MIcrosoft Azure 上的托管云服务创建的所有视频、示例、示例、演示和教程的集中列表。"
-services: search
-documentationcenter: 
+title: Azure 搜索中的视频、示例和教程 | Microsoft Azure | Microsoft Docs
+description: 为 Azure 搜索（Microsoft Azure 上的托管云服务）创建的所有视频、示例、演示和教程的集中列表。
 author: HeidiSteen
-manager: jhubbard
-editor: 
-tags: azure-portal
-ms.assetid: 4ffa17a3-9e2b-4172-ad77-30c6a1354b24
+manager: cgronlun
+services: search
 ms.service: search
-ms.devlang: NA
-ms.workload: search
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 06/06/2017
 ms.author: heidist
-ms.openlocfilehash: bb4cb64260f489e1b316140e4214933cf2b334cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e71a8abcebb95f2d34dee2f26dc2c7f341465a55
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-search-code-samples-demos-videos-and-tutorials"></a>Azure 搜索：代码示例、演示、视频和教程
 借助以下视频、演示、教程和示例应用更快入门。

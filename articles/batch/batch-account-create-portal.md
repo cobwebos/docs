@@ -1,11 +1,11 @@
 ---
-title: "在 Azure 门户中创建批处理帐户 | Microsoft Docs"
-description: "了解如何在 Azure 门户中创建 Azure Batch 帐户，以便在云中运行大规模并行工作负荷"
+title: 在 Azure 门户中创建批处理帐户 | Microsoft Docs
+description: 了解如何在 Azure 门户中创建 Azure Batch 帐户，以便在云中运行大规模并行工作负荷
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
 ms.service: batch
 ms.workload: big-compute
@@ -15,16 +15,16 @@ ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5efe804806cb9c14a483e7393f0e8202897d53d6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6374e49f3f682d022613e3e5244d273337213311
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
 > [!div class="op_single_selector"]
-> * [Azure portal](batch-account-create-portal.md)
+> * [Azure 门户](batch-account-create-portal.md)
 > * [Batch Management .NET](batch-management-dotnet.md)
 >
 >
@@ -56,9 +56,9 @@ ms.lasthandoff: 02/21/2018
 
     c. **资源组**：为新批处理帐户选择现有的资源组，或选择创建一个新组。
 
-    d.单击“下一步”。 **位置**：要在其中创建批处理帐户的 Azure 区域。 只有订阅和资源组支持的区域显示为选项。
+    d. **位置**：要在其中创建批处理帐户的 Azure 区域。 只有订阅和资源组支持的区域显示为选项。
 
-    e. **存储帐户**（可选）：与批处理帐户关联的通用 Azure 存储帐户。 建议大多数批处理帐户采用此设置。 如需详细信息，请参阅本文后面的[关联的 Azure 存储帐户](#linked-azure-storage-account)。
+    e. **存储帐户**（可选）：与 Batch 帐户关联的 Azure 存储帐户。 建议大多数批处理帐户采用此设置。 如需详细信息，请参阅本文后面的[关联的 Azure 存储帐户](#linked-azure-storage-account)。
 
 4. 单击“创建”  以创建帐户。
 
@@ -85,11 +85,11 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="linked-azure-storage-account"></a>链接的 Azure 存储帐户
 
-可以将通用 Azure 存储帐户关联到 Batch 帐户，这适用于很多情况。 与[批处理文件约定 .NET](batch-task-output.md) 库一样，批处理的[应用程序包](batch-application-packages.md)功能使用 Azure Blob 存储。 这些可选功能可用于部署批处理任务运行的应用程序，以及保存它们生成的数据。
+可以将 Azure 存储帐户关联到 Batch 帐户，这适用于很多情况。 与[批处理文件约定 .NET](batch-task-output.md) 库一样，批处理的[应用程序包](batch-application-packages.md)功能使用 Azure Blob 存储。 这些可选功能可用于部署批处理任务运行的应用程序，以及保存它们生成的数据。
 
-我们建议创建批处理帐户专用的新存储帐户。 Azure Batch 目前仅支持通用存储帐户类型。 此帐户类型在[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)的步骤 5：[创建存储帐户](../storage/common/storage-create-storage-account.md#create-a-storage-account)中介绍。
+有关 Batch 中的存储帐户选项，请参阅 [Batch 功能概述](batch-api-basics.md#azure-storage-account)。
 
-![创建通用存储帐户][storage_account]
+![创建存储帐户][storage_account]
 
 > [!NOTE]
 > 重新生成关联的存储帐户的访问密钥时请小心。 只重新生成一个存储帐户密钥，并单击“链接的存储帐户”页上的“同步密钥”。 等待五分钟，让密钥传播到池中的计算节点，重新生成并同步其他密钥（如有必要）。 如果同时重新生成这两个密钥，计算节点将无法同步任何一个密钥，并且无法访问存储帐户。

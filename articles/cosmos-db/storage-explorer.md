@@ -17,17 +17,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: 18f580f1eae31c9bf3626e100217467bb48ca881
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8c584ec0c8d89a232d573399cfabe02fc8aa1c87
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>在 Azure 存储资源管理器（预览版）中管理 Azure Cosmos DB
+# <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>在 Azure 存储资源管理器中管理 Azure Cosmos DB
 
 通过在 Azure 存储资源管理器中使用 Azure Cosmos DB，用户可以管理 Azure Cosmos DB 实体、操作数据、更新存储过程和触发器以及其他 Azure 实体（如存储 blob 和队列）。 现在可以使用相同工具在一个位置管理不同 Azure 实体。 目前，Azure 存储资源管理器支持 SQL、MongoDB、Graph 和表帐户。
-
-在本文中，你可以了解如何使用存储资源管理器管理 Azure Cosmos DB。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -75,8 +73,11 @@ ms.lasthandoff: 03/28/2018
     ![连接字符串](./media/storage-explorer/connection-string.png)
 
 ## <a name="connect-to-azure-cosmos-db-by-using-local-emulator"></a>使用本地模拟器连接到 Azure Cosmos DB
+
 使用以下步骤通过模拟器连接到 Azure Cosmos DB（目前仅支持 SQL 帐户）。
+
 1. 安装并启动模拟器。 有关如何安装模拟器的信息，请参阅 [Cosmos DB 模拟器](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator)
+
 2. 在左侧树中找到“本地和附加”，右键单击“Cosmos DB 帐户”，然后选择“连接到 Cosmos DB 模拟器...”
 
     ![通过模拟器连接到 Cosmos DB](./media/storage-explorer/emulator-entry.png)
@@ -84,7 +85,6 @@ ms.lasthandoff: 03/28/2018
 3. 目前仅支持 SQL API。 粘贴**连接字符串**，输入**帐户标签**，单击“下一步”查看摘要，然后单击“连接”以连接 Azure Cosmos DB 帐户。 有关检索连接字符串的信息，请参阅[获取连接字符串](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string)。
 
     ![通过模拟器对话框连接到 Cosmos DB](./media/storage-explorer/emulator-dialog.png)
-
 
 
 ## <a name="azure-cosmos-db-resource-management"></a>Azure Cosmos DB 资源管理
@@ -208,8 +208,111 @@ ms.lasthandoff: 03/28/2018
     ![存储过程](./media/storage-explorer/stored-procedure.png)
 * 适用于**触发器**和 **UDF** 的操作与**存储过程**类似。
 
+## <a name="troubleshooting"></a>故障排除
+
+[Azure 存储资源管理器中的 Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer) 是一个独立的应用，用于连接到 Azure Cosmos DB 帐户，而该帐户托管在 Windows、macOS 或 Linux 版本的 Azure 和主权云上。 它可以用来管理 Azure Cosmos DB 实体、操作数据、更新存储过程和触发器以及其他 Azure 实体（如存储 Blob 和队列）。
+
+以下解决方案适用于存储资源管理器中 Azure Cosmos DB 的常见问题。
+
+### <a name="sign-in-issues"></a>登录问题
+
+继续之前，请尝试重启应用程序，看问题是否能够解决。
+
+#### <a name="self-signed-certificate-in-certificate-chain"></a>证书链中的自签名证书
+
+出现此错误有多个原因，最常见的两个原因是：
+
++ 你位于“透明代理”之后，这意味着某人（例如 IT 部门）在拦截 HTTPS 流量，将其解密后又使用自签名证书对其加密。
+
++ 正在运行的软件（如防病毒软件）在向收到的 HTTPS 消息注入自签名 SSL 证书。
+
+存储资源管理器在遇到其中一个这样的“自签名证书”时，将再也无法判断收到的 HTTPS 消息是否已被篡改。 但若拥有一份自签名证书的副本，则可让存储资源管理器信任它。 若无法确定谁在注入证书，则可自行尝试通过以下步骤找到它：
+
+1. 安装 Open SSL
+     - [Windows](https://slproweb.com/products/Win32OpenSSL.html)（任意轻量版本均可）
+     - Mac 和 Linux：应包含在操作系统中
+2. 运行 Open SSL
+    - Windows：转到安装目录，然后转到“/bin/”，然后双击“openssl.exe”。
+    - Mac 和 Linux：从终端执行“openssl”
+3. 执行 `s_client -showcerts -connect microsoft.com:443`
+4. 查找自签名证书。 若不确定哪个证书为自签名，则请查找使用者（“s:”）和证书颁发者（“i:”）相同的任意位置。
+5.  找到任何自签名证书后，将每个证书中从“-----BEGIN CERTIFICATE-----”（含）到“-----END CERTIFICATE-----”（含）的部分复制和粘贴到新的 .cer 文件。
+6.  打开存储资源管理器，然后转到“编辑” > “SSL 证书” > “导入证书”。 使用文件选取器查找、选择和打开所创建的 .cer 文件。
+
+若通过上述步骤无法找到任何自签名证书，可通过发送反馈以获取更多帮助。
+
+#### <a name="unable-to-retrieve-subscriptions"></a>无法检索订阅
+
+若成功登录后无法检索订阅，请执行以下操作：
+
+- 通过登录 [Azure 门户](http://portal.azure.com/)验证帐户是否有权访问该订阅
+- 请确保使用正确的环境登录（[Azure](http://portal.azure.com/)、[Azure 中国](https://portal.azure.cn/)、[Azure 德国](https://portal.microsoftazure.de/)、[Azure 美国政府](http://portal.azure.us/)或自定义环境/Azure Stack）
+- 如果使用代理，请确保已正确配置存储资源管理器代理
+- 尝试移除并重新添加帐户
+- 尝试从主目录（例如：C:\Users\ContosoUser）删除以下文件，然后重新添加帐户：
+  - .adalcache
+  - .devaccounts
+  - .extaccounts
+- 登录查询任何错误消息时，请查看开发人员工具控制台（F12）
+
+![console](./media/storage-explorer/console.png)
+
+#### <a name="unable-to-see-the-authentication-page"></a>无法看到身份验证页面 
+
+如果无法看到身份验证页面：
+
+- 根据连接速度不同，加载登录页面可能需要一会儿，请至少等待一分钟再关闭身份验证对话框
+- 如果使用代理，请确保已正确配置存储资源管理器代理
+- 按 F12 键显示开发人员控制台。 从开发人员控制台查看响应，看能否找到身份验证不起作用的任何线索
+
+#### <a name="cannot-remove-account"></a>无法移除帐户
+
+如果无法移除帐户，或重新验证链接不起作用
+
+- 尝试从主目录删除以下文件，然后重新添加帐户：
+  - .adalcache
+  - .devaccounts
+  - .extaccounts
+- 若要删除附加了 SAS 的存储资源，请删除：
+  - Windows 中的 %AppData%/StorageExplorer 文件夹
+  - Mac 中的 /Users/<your_name>/Library/Applicaiton SUpport/StorageExplorer
+  - Linux 中的 ~/.config/StorageExplorer
+  - 删除这些文件之后，**需要重新输入所有凭据**
+
+
+### <a name="httphttps-proxy-issue"></a>Http/Https 代理问题
+
+在 ASE 中配置 http/https 代理时，无法列出左侧树中的 Azure Cosmos DB 节点。 这是一个已知问题，下一版本会修复此问题。 目前可以在 Azure 门户中使用 Azure Cosmos DB 数据资源管理器作为解决方法。 
+
+### <a name="development-node-under-local-and-attached-node-issue"></a>“本地和附加”节点下的“开发”节点问题
+
+在左侧树中单击“本地和附加”节点下的“开发”节点时没有响应。  此行为是预期的行为。 下一版本会支持 Azure Cosmos DB 本地模拟器。
+
+![开发节点](./media/storage-explorer/development.png)
+
+### <a name="attaching-azure-cosmos-db-account-in-local-and-attached-node-error"></a>在“本地和附加”节点中附加 Azure Cosmos DB 帐户错误
+
+如果在“本地和附加”节点中附加 Azure Cosmos DB 帐户时看到以下错误，则请检查是否使用了正确的连接字符串。
+
+![在“本地和附加”中附加 Azure Cosmos DB 错误](./media/storage-explorer/attached-error.png)
+
+### <a name="expand-azure-cosmos-db-node-error"></a>展开 Azure Cosmos DB 节点错误
+
+尝试展开左侧的树节点时可能会看到以下错误。 
+
+![展开错误](./media/storage-explorer/expand-error.png)
+
+请尝试以下建议：
+
+- 检查 Azure Cosmos DB 帐户是否正在进行预配，然后在帐户成功创建以后再次进行尝试。
+- 如果帐户位于“快速访问”节点或“本地和附加”节点下，则请检查该帐户是否已删除。 如果是这样，则需手动删除节点。
+
+## <a name="contact-us"></a>联系我们
+
+如果以上解决方案均不起作用，请向 Azure Cosmos DB 开发人员工具团队发送电子邮件 ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com))，对问题进行详细说明，以便解决问题。
+
 ## <a name="next-steps"></a>后续步骤
 
 * 观看以下视频，了解如何在 Azure 存储资源管理器中使用 Azure Cosmos DB：[在 Azure 存储资源管理器中使用 Azure Cosmos DB](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)。
-* 在[存储资源管理器（预览版）入门](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)中了解有关存储资源管理器和连接更多服务的详细信息。
+* 在[存储资源管理器入门](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)中了解有关存储资源管理器和连接更多服务的详细信息。
 

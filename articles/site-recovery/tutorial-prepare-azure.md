@@ -1,18 +1,18 @@
 ---
-title: "创建用于 Azure Site Recovery 的资源 | Microsoft 文档"
-description: "了解如何使用 Azure Site Recovery 准备 Azure ，以进行本地计算机复制。"
+title: 创建用于 Azure Site Recovery 的资源 | Microsoft 文档
+description: 了解如何使用 Azure Site Recovery 准备 Azure ，以进行本地计算机复制。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 04/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2f6ff1d30eef1fe34e55457d9bdd4295804ec16a
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 0aec94ce4d53e1d0f5ecfbc7c667f7d4ceea1d2d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>准备 Azure 资源以进行本地计算机复制
 
@@ -21,8 +21,9 @@ ms.lasthandoff: 02/23/2018
 本教程介绍如何在将本地 VM（Hyper-V 或 VMware）或 Windows/Linux 物理服务器复制到 Azure 时准备 Azure 组件。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 验证帐户是否具有复制权限。
-> * 创建 Azure 存储帐户。
+> * 验证 Azure 帐户是否具有复制权限。
+> * 创建 Azure 存储帐户。 复制的数据存储在其中。
+> * 创建恢复服务保管库。
 > * 设置 Azure 网络。 在故障转移后创建的 Azure VM 会加入此 Azure 网络。
 
 如果你还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
@@ -39,7 +40,7 @@ ms.lasthandoff: 02/23/2018
 - 在所选虚拟网络中创建 VM。
 - 向所选存储帐户进行写入。
 
-“虚拟机参与者”内置角色具有这些权限。 还需要管理 Site Recovery 操作的权限。 “Site Recovery 参与者”角色拥有管理恢复服务保管库中 Site Recovery 操作所需的全部权限。
+若要完成这些任务，应为帐户分配“虚拟机参与者”内置角色。 此外，若要在保管库中管理 Site Recovery 操作，应为帐户分配“Site Recovery 参与者”内置角色。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -83,13 +84,13 @@ ms.lasthandoff: 02/23/2018
 
    c. 在“地址范围”中，输入网络地址范围 **10.0.0.0/24**。
 
-   d.单击“下一步”。 本教程中不需要子网。
+   d. 本教程中不需要子网。
 
    e. 在“订阅”中，选择要在其中创建网络的订阅。
 
    f. 在“位置”中，选择“西欧”。 该网络必须位于与恢复服务保管库相同的区域中。
 
-3. 选择“创建”。
+3. 选择**创建**。
 
    ![创建虚拟网络](media/tutorial-prepare-azure/create-network.png)
 

@@ -1,24 +1,18 @@
 ---
-title: "Java 中的 Azure 搜索入门 | Microsoft Docs"
-description: "如何使用 Java 作为编程语言在 Azure 上生成托管云搜索应用程序。"
+title: Java 中的 Azure 搜索入门 | Microsoft Docs
+description: 如何使用 Java 作为编程语言在 Azure 上生成托管云搜索应用程序。
 services: search
-documentationcenter: 
-author: EvanBoyle
-manager: pablocas
-editor: v-lincan
-ms.assetid: 8b4df3c9-3ae5-4e3a-b4bb-74b516a91c8e
+author: jj09
+manager: jlembicz
 ms.service: search
-ms.devlang: na
-ms.workload: search
-ms.topic: hero-article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.date: 07/14/2016
-ms.author: evboyle
-ms.openlocfilehash: 8b253ef1eccfbc6ca703657b124d17d1482c2eed
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.author: jjed
+ms.openlocfilehash: d95abab1d1a489deba2ebc260e1e32963aa5639e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java 中的 Azure 搜索入门
 > [!div class="op_single_selector"]
@@ -91,7 +85,7 @@ ms.lasthandoff: 01/18/2018
 ## <a name="configure-the-service-url-and-api-key"></a>配置服务 URL 和 API 密钥
 1. 在“项目资源管理器”中，双击 **config.properties** 编辑包含服务器名称和 API 密钥的配置设置。
 2. 请参考本文中前面的步骤，在 [Azure 门户](https://portal.azure.com)中找到服务 URL 和 API 密钥，获取现在会在 **config.properties**中输入的值。
-3. 在 **config.properties**中，将“Api Key”替换为服务的 API 密钥。 接下来，使用服务名称（URL http://servicename.search.windows.net 的第一部分）替换同一文件中的“service name”。
+3. 在 **config.properties**中，将“Api Key”替换为服务的 API 密钥。 接下来，使用服务名称（URL http://servicename.search.windows.net) 的第一部分）替换同一文件中的“service name”。
    
     ![][5]
 

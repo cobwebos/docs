@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/11/2017
-ms.openlocfilehash: 0a90e97779416db7b7244cce9d6bdad740161051
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2db5398b7f252f723f342c1b978b27dd273321ec
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>数据连接：了解从事件到流分析的数据流输入
 与流分析作业的数据连接是数据源提供的事件流，这称为“输入”。 流分析与包括 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)、[Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)和 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)在内的 Azure 数据流源具有一流的集成。 这些输入源可以来自与分析作业相同的 Azure 订阅，也可以来自其他订阅。
@@ -129,6 +129,8 @@ Azure Iot 中心是已针对 IoT 进行优化，具有高度伸缩性的发布-�
 流分析中 Blob 存储事件的默认时间戳是上次修改 Blob 的时间戳，即 `BlobLastModifiedUtcTime`。 若要在事件负载中使用时间戳以流方式处理数据，则必须使用 [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) 关键字。
 
 CSV 格式的输入需要标头行，以便为数据集定义字段。 此外，所有标头行字段都必须唯一。
+
+如果原始消息（JSON、 CSV 或 AVRO）已经以 AVRO 格式从 IoT 或事件中心路由到 Blob 存储，流分析将无法从 Blob 存储反序列化这种输入。
 
 > [!NOTE]
 > 流分析不支持将内容添加到现有 blob 文件。 流分析将仅查看每个文件一次，并且在作业读取数据后对文件所做的任何更改都不会得到处理。 最佳做法是立即上传 blob 文件的全部数据，然后将其他较新的事件添加到其他全新的 blob 文件中。

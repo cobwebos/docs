@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: e843bc0d3a56b9e99cd3fbb865bb0066321475df
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8730cb61ac598a547c58e473bcd26589bd1b2a52
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>快速入门：使用 Python API 运行第一个 Batch 作业
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 04/03/2018
 
 * [pip](https://pip.pypa.io/en/stable/installing/) 包管理器
 
-* Azure Batch 帐户和关联的常规用途 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。 
+* Azure Batch 帐户和关联的 Azure 存储帐户。 若要创建这些帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

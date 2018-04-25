@@ -1,8 +1,8 @@
 ---
-title: "使用 Windows VM MSI 访问 Azure Key Vault"
-description: "本教程逐步介绍了如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure Key Vault。"
+title: 使用 Windows VM MSI 访问 Azure Key Vault
+description: 本教程逐步介绍了如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure Key Vault。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 3c1f41f407dc85eac40d1aa545c588426db6a382
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a4bf44dc444c144991e3a96efc130ec97b90ec9f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>使用 Windows VM 托管服务标识 (MSI) 访问 Azure Key Vault 
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Windows 虚拟机
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI 
 
-通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 启用 MSI 会告诉 Azure 为虚拟机创建托管标识。 事实上，启用 MSI 会执行两项操作：在 VM 上安装 MSI VM 扩展，以及在 Azure 资源管理器中启用 MSI。
+通过虚拟机 MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 启用 MSI 会告诉 Azure 为虚拟机创建托管标识。 事实上，启用 MSI 会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
 
 1.  选择要在其上启用 MSI 的虚拟机。  
 2.  在左侧导航栏中，单击“配置”。 
@@ -66,10 +66,6 @@ ms.lasthandoff: 03/08/2018
 4.  务必单击“保存”，以保存配置。  
 
     ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. 若要查看并确认在此 VM 上安装了哪些扩展，请单击“扩展”。 如果 MSI 已启用，列表中会显示现“ManagedIdentityExtensionforWindows”。
-
-    ![Alt 图像文本](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>授予 VM 对 Key Vault 中存储的密钥的访问权限 
  
@@ -112,7 +108,7 @@ ms.lasthandoff: 03/08/2018
     PowerShell 请求：
     
     ```powershell
-    PS C:\> $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://vault.azure.net"} -Headers @{Metadata="true"} 
+    PS C:\> $response = Invoke-WebRequest -Uri http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net -Method GET -Headers @{Metadata="true"} 
     ```
     
     接下来，提取完整响应，响应以 JavaScript 对象表示法 (JSON) 格式字符串的形式存储在 $response 对象中。  

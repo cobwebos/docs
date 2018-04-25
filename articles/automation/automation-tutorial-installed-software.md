@@ -1,20 +1,20 @@
 ---
-title: "使用 Azure 自动化发现在计算机上安装的软件 | Microsoft Docs"
-description: "使用清单发现在环境中的计算机上安装的软件。"
+title: 使用 Azure 自动化发现在计算机上安装的软件 | Microsoft Docs
+description: 使用清单发现在环境中的计算机上安装的软件。
 services: automation
-keywords: "清单, 自动化, 更改, 跟踪"
+keywords: 清单, 自动化, 更改, 跟踪
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 02/28/2018
+ms.date: 04/11/2018
 ms.topic: tutorial
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 97cd2c91ca2c70b044518c43d49356918202d5ff
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: bd9fdc237a3c6f1c2a57ddf0f4448d7c3402a798
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>发现在 Azure 计算机和非 Azure 计算机上安装的软件
 
@@ -23,7 +23,9 @@ ms.lasthandoff: 02/28/2018
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 载入适用于更改跟踪和清单的 VM
+> * 启用此解决方案
+> * 载入 Azure VM
+> * 载入非 Azure VM
 > * 查看已安装软件
 > * 在清单日志中搜索已安装软件
 
@@ -41,14 +43,15 @@ ms.lasthandoff: 02/28/2018
 
 ## <a name="enable-change-tracking-and-inventory"></a>启用更改跟踪和清单
 
-就本教程来说，首先需为 VM 启用更改跟踪和清单。 如果以前已为 VM 启用**更改跟踪**解决方案，则此步骤不是必需的。
+就本教程来说，首先需要启用更改跟踪和清单。 如果以前已经启用了**更改跟踪**解决方案，则此步骤不是必需的。
 
-1. 在左侧菜单上选择“虚拟机”，然后从列表中选择一个 VM。
-2. 在左侧菜单的“操作”部分单击“清单”。 此时会打开“启用更改跟踪和清单”页。
+导航到你的自动化帐户，在“配置管理”下选择“清单”。
+
+选择 Log Analytics 工作区和自动化帐户，然后单击“启用”以启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
 
 ![清单载入配置横幅](./media/automation-tutorial-installed-software/enableinventory.png)
 
-若要启用此解决方案，请配置要使用的位置、Log Analytics 工作区和自动化帐户，然后单击“启用”。 如果这些字段灰显，则意味着已为 VM 启用其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
+若要启用此解决方案，请配置要使用的位置、Log Analytics 工作区和自动化帐户，然后单击“启用”。 如果这些字段灰显，则意味着已经为 VM 启用了其他自动化解决方案，因此必须使用同一工作区和自动化帐户。
 
 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) 工作区用于收集由功能和服务（如清单）生成的数据。
 工作区提供了一个位置来查看和分析来自多个数据源的数据。
@@ -57,15 +60,31 @@ ms.lasthandoff: 02/28/2018
 启用该解决方案后，VM 中有关已安装软件和更改的信息会流向 Log Analytics。
 这些数据需花费 30 分钟到 6 小时的时间才能用于分析。
 
+## <a name="onboard-a-vm"></a>载入 VM
+
+在你的自动化帐户中，导航到“配置管理”下的“清单”。
+
+选择“+ 添加 Azure VM”，这将打开“虚拟机”页面并允许从列表中选择现有 VM。 选择要载入的 VM。 在打开的页面上，单击“启用”以在 VM 上启用此解决方案。 Microsoft 管理代理部署到 VM，并配置代理来与你在启用解决方案时配置的 Log Analytics 工作区进行通信。 可能需要花费几分钟时间才能完成载入。 此时，可以从列表中选择一台新的 VM 并载入另一 VM。
+
+## <a name="onboard-a-non-azure-machine"></a>载入非 Azure 计算机
+
+若要添加非 Azure 计算机，请根据你的操作系统安装适用于 [Windows](../log-analytics/log-analytics-agent-windows.md) 或 [Linux](automation-linux-hrw-install.md) 的代理。 安装代理后，导航到你的自动化帐户，然后转到“配置管理”下的“清单”。 单击“管理计算机”时，可以看到向你的 Log Analytics 工作区进行报告且尚未启用此解决方案的计算机的列表。 选择适合你的环境的选项。
+
+* **在所有可用计算机上启用** - 此选项在当前向你的 Log Analytics 工作区进行报告的所有计算机上启用此解决方案。
+* **在所有可用计算机以及将来的计算机上启用** - 此选项在向你的 Log Analytics 工作区进行报告的所有计算机上启用此解决方案，并且会在将来添加到该工作区的所有计算机上启用此解决方案。
+* **在所选计算机上启用** - 此选项仅在你选择的计算机上启用此解决方案。
+
+![管理计算机](./media/automation-tutorial-installed-software/manage-machines.png)
+
 ## <a name="view-installed-software"></a>查看已安装软件
 
 启用更改跟踪和清单解决方案以后，即可在“清单”页查看结果。
 
-在 VM 中的“操作”下选择“清单”。
+从你的自动化帐户中，在“配置管理”下选择“清单”。
 
 在“清单”页上单击“软件”选项卡。
 
-在“软件”选项卡上有一个表，列出了已发现的软件。 软件按软件名称和版本分组。
+“软件”选项卡上有一个表，其中列出了已发现的软件。 软件按软件名称和版本分组。
 
 可在表中查看每个软件记录的高级详细信息。 这些详细信息包括：软件名称、版本、发布者、上次刷新时间（由组中的计算机报告的最近刷新时间）、计算机数（装有该软件的计算机的计数）。
 
@@ -83,28 +102,29 @@ ms.lasthandoff: 02/28/2018
 清单生成发送到 Log Analytics 的日志数据。 若要通过运行查询来搜索日志，请选择“清单”窗口顶部的“Log Analytics”。
 
 清单数据存储在 **ConfigurationData** 类型下。
-以下 Log Analytics 查询示例返回包含“Microsoft”的发布者，以及每个发布者的软件记录（按 SoftwareName 和计算机分组）数。
+以下示例 Log Analytics 查询返回 Publisher 等于“Microsoft Corporation”的清单结果。
 
-```
+```loganalytics
 ConfigurationData
-| summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 | where ConfigDataType == "Software"
-| search Publisher:"Microsoft"
-| summarize count() by Publisher
+| where Publisher == "Microsoft Corporation"
+| summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
 若要详细了解如何在 Log Analytics 中运行和搜索日志文件，请参阅 [Azure Log Analytics](https://docs.loganalytics.io/index)。
 
 ### <a name="single-machine-inventory"></a>单个计算机的清单
 
-若要查看单个计算机的软件清单，可以访问 Azure VM 资源页中的“清单”，也可以使用 Log Analytics 筛选出相应的计算机。 以下 Log Analytics 查询示例返回名为 ContosoVM 的计算机的软件列表。
+若要查看单个计算机的软件清单，可以访问 Azure VM 资源页中的“清单”，也可以使用 Log Analytics 筛选出相应的计算机。
+以下 Log Analytics 查询示例返回名为 ContosoVM 的计算机的软件列表。
 
-```
+```loganalytics
 ConfigurationData
-| where ConfigDataType == "Software" 
+| where ConfigDataType == "Software"
 | summarize arg_max(TimeGenerated, *) by SoftwareName, CurrentVersion
 | where Computer =="ContosoVM"
 | render table
+| summarize by Publisher, SoftwareName
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -112,7 +132,9 @@ ConfigurationData
 本教程介绍了如何查看软件清单，例如，如何：
 
 > [!div class="checklist"]
-> * 载入适用于更改跟踪和清单的 VM
+> * 启用此解决方案
+> * 载入 Azure VM
+> * 载入非 Azure VM
 > * 查看已安装软件
 > * 在清单日志中搜索已安装软件
 

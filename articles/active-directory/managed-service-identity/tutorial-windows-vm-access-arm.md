@@ -1,8 +1,8 @@
 ---
-title: "使用 Windows VM MSI 访问 Azure 资源管理器"
-description: "本教程逐步介绍了如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure 资源管理器。"
+title: 使用 Windows VM MSI 访问 Azure 资源管理器
+description: 本教程逐步介绍了如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure 资源管理器。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 616bbc9c657d5d6afba962c676d44ac0baa6841e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a19f0b9a333cbd01827ce54576c1bb77a0ce7c1d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>使用 Windows VM 托管服务标识 (MSI) 访问资源管理器
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 03/08/2018
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Windows 虚拟机
 
@@ -54,17 +54,13 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI 
 
-通过 VM MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 启用 MSI 会告诉 Azure 为 VM 创建托管标识。 事实上，启用 MSI 会执行两项操作：在 VM 上安装 MSI VM 扩展，以及在 Azure 资源管理器中启用 MSI。
+通过 VM MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 在 VM 上启用托管服务标识会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，以及在 VM 上配置标识。
 
 1.  选择要在其上启用 MSI 的虚拟机。  
 2.  在左侧导航栏中，单击“配置”。 
 3.  此时，将会看到托管服务标识。 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。 
 4.  务必单击“保存”，以保存配置。  
     ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. 若要查看并确认在此 VM 上安装了哪些扩展，请单击“扩展”。 如果启用了 MSI，列表中会显示“ManagedIdentityExtensionforWindows”。
-
-    ![Alt 图像文本](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>授予 VM 对资源管理器中资源组的访问权限
 使用 MSI，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。  Azure 资源管理器支持 Azure AD 身份验证。  首先，需要授予此 VM 标识对资源管理器中资源（在此示例中，为包含 VM 的资源组）的访问权限。  
@@ -89,7 +85,7 @@ ms.lasthandoff: 03/08/2018
 4.  使用 Powershell 的 Invoke-WebRequest，向本地 MSI 终结点发出请求以获取 Azure 资源管理器的访问令牌。
 
     ```powershell
-       $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://management.azure.com/"} -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}
     ```
     
     > [!NOTE]

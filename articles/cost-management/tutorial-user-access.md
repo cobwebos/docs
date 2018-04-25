@@ -1,20 +1,20 @@
 ---
-title: "教程 - 在 Azure 成本管理中分配访问权限 | Microsoft Docs"
-description: "本教程介绍如何使用定义对实体的访问级别的用户帐户分配对成本管理数据的访问权限。"
+title: 教程 - 在 Azure 成本管理中分配访问权限 | Microsoft Docs
+description: 本教程介绍如何使用定义对实体的访问级别的用户帐户分配对成本管理数据的访问权限。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/27/2018
+ms.date: 04/09/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 6434eb9780eefdcd492273f11f8675668d8d6479
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: db5cdecc57cf07876ca8d4e981860615643cfd79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>教程：分配对成本管理数据的访问权限
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/09/2018
 
 虽然你已经拥有管理员访问权限，但是组织中的同事可能也需要拥有管理员访问权限。 在 Cloudyn 门户中，单击右上方的齿轮符号，然后选择“用户管理”。 单击“添加新用户”以添加新用户。
 
-输入有关用户的必需信息。 可以将密码字段留空，以便用户可以在首次登录时设置新密码。 当你选择“通过电子邮件通知用户”时，一个包含登录信息的链接会从 Cloudyn 通过电子邮件发送给用户。 选择允许进行用户管理的权限，以便用户可以创建和修改其他用户。 收件人列表管理允许用户编辑收件人列表。
+输入有关用户的必需信息。 登录 ID 必须是有效的电子邮件地址。 选择允许进行用户管理的权限，以便用户可以创建和修改其他用户。 收件人列表管理允许用户编辑收件人列表。 当你选择“通过电子邮件通知用户”时，一个包含登录信息的链接会从 Cloudyn 通过电子邮件发送给用户。 用户在首次登录时设置密码。
 
 在“用户拥有管理员访问权限”下，组织的根实体处于选择状态。 保留选择根，然后保存用户信息。 选择根实体使用户不仅对树中的根实体，而且对位于其下的所有实体都拥有管理员权限。  
   ![添加拥有管理员访问权限的新用户](.\media\tutorial-user-access\new-admin-access.png)
@@ -64,7 +64,7 @@ ms.lasthandoff: 03/09/2018
 
 向 Cloudyn 注册你的 Azure 协议或帐户时，来自你的订阅的 Azure 资源数据（包括使用情况、性能、帐单和标记数据）会复制到 Cloudyn 帐户。 但是，你必须手动创建实体树。 如果你跳过 Azure 资源管理器注册，则 Cloudyn 门户中只提供帐单数据和几个资产报表。
 
-在 Cloudyn 门户中，单击右上方的“设置”，然后“云帐户”。 从单个实体（根）开始，在根下构建实体树。 下面是树完成之后可能类似于许多 IT 组织的实体层次结构示例：
+在 Cloudyn 门户中，单击右上方的齿轮符号，然后选择“云帐户”。 从单个实体（根）开始，在根下构建实体树。 下面是树完成之后可能类似于许多 IT 组织的实体层次结构示例：
 
 ![实体树](.\media\tutorial-user-access\entity-tree.png)
 

@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 40e79ba584843787ad7744f91e14907deb99ccaa
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3f5ad64a73bddbb64556ae7a329f91f93b99b016
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -173,7 +173,7 @@ ms.lasthandoff: 04/03/2018
 * 托管磁盘 - 请参阅[虚拟机限制](#virtual-machines-limitations)
 * 公共 IP - 请参阅[公共 IP 限制](#pip-limitations)
 * 恢复服务保管库 - 此外，也不可以移动与恢复服务保管库关联的计算、网络和存储资源，请参阅[恢复服务限制](#recovery-services-limitations)。
-* “安全”
+* 安全
 * StorSimple 设备管理器
 * 虚拟网络（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 
@@ -192,6 +192,8 @@ ms.lasthandoff: 04/03/2018
 证书存储在 Key Vault 中的虚拟机可以移动到同一订阅中的新资源组，但无法跨订阅进行移动。
 
 ## <a name="virtual-networks-limitations"></a>虚拟网络限制
+
+移动虚拟网络时，还必须移动其从属资源。 例如，必须随虚拟网络一起移动网关。
 
 若要移动对等的虚拟网络，必须首先禁用虚拟网络对等互连。 在禁用后，可以移动虚拟网络。 在移动后，重新启用虚拟网络对等互连。
 

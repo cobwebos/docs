@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7c14b241155e10f0bb325b50819e2277622e4dff
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5a6fd54e4d20e55116bc0fa771e039e5ea2bb30b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>教程：将现有的自定义 SSL 证书绑定到 Azure Web 应用
 
@@ -149,7 +149,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ### <a name="upload-your-ssl-certificate"></a>上传 SSL 证书
 
-若要上传 SSL 证书，请在 Web 应用的左侧导航窗格中单击“SSL 证书”。
+若要上传 SSL 证书，请在 Web 应用的左侧导航窗格中单击“SSL 设置”。
 
 单击“上传证书”。 
 
@@ -159,7 +159,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ![上传证书](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
 
-应用服务上传完证书后，该证书将显示在“SSL 证书”页中。
+应用服务上传完证书后，该证书会显示在“SSL 设置”页中。
 
 ![上传的证书](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
 
@@ -216,7 +216,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 默认情况下，任何人都仍可使用 HTTP 访问 Web 应用。 可以将所有 HTTP 请求都重定向到 HTTPS 端口。
 
-在 Web 应用页的左侧导航窗格中，选择“自定义域”。 然后，在“仅 HTTPS”中，选择“启用”。
+在 Web 应用页的左侧导航窗格中，选择“SSL 设置”。 然后，在“仅 HTTPS”中，选择“启用”。
 
 ![实施 HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
@@ -225,6 +225,16 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
 - `http://www.contoso.com`
+
+## <a name="enforce-tls-1112"></a>强制实施 TLS 1.1/1.2
+
+你的应用默认情况下允许 [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0，但后者已不再被行业标准（如 [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)）视为安全。 若要强制实施更高的 TLS 版本，请按照下列步骤操作：
+
+在 Web 应用页的左侧导航窗格中，选择“SSL 设置”。 然后，在“TLS 版本”中，选择所需的最低 TLS 版本。
+
+![实施 HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
+
+该操作完成后，你的应用将拒绝使用更低 TLS 版本的所有连接。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 

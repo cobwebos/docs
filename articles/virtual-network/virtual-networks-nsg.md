@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 3a581111587d0fe3cba04cd05272b3154374ce52
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 87ca0a1cd9766d3ad76d0fe5dd29a34ec40ea276
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>使用网络安全组筛选网络流量
 
@@ -50,8 +50,8 @@ NSG 规则包含以下属性：
 | **协议** |要与规则匹配的协议。 |TCP、UDP 或 * |使用 * 作为协议时，会包括 ICMP（仅限东西通信），以及 UDP 和 TCP，可能会减少所需规则的数量。<br/>同时，使用 * 可能是过于宽泛的方法，因此建议只在必要时使用 *。 |
 | **Source port range** |要与规则匹配的源端口范围。 |单个端口号（从 1 到 65535）、端口范围（示例：1-65535）、或 *（表示所有端口）。 |源端口可以是暂时的。 除非客户端程序在使用特定端口，否则请在大多数情况下使用 *。<br/>尽可能尝试使用端口范围，这样就不需使用多个规则。<br/>不能使用逗号对多个端口或端口范围分组。 |
 | **Destination port range** |要与规则匹配的目标端口范围。 |单个端口号（从 1 到 65535）、端口范围（示例：1-65535）、或 \*（表示所有端口）。 |尽可能尝试使用端口范围，这样就不需使用多个规则。<br/>不能使用逗号对多个端口或端口范围分组。 |
-| **Source address prefix** |要与规则匹配的源地址前缀或标记。 |单个 IP 地址（示例：10.10.10.10）、IP 子网（示例：192.168.1.0/24）、[默认标记](#default-tags)或 *（表示所有地址）。 |考虑使用范围、默认标记和 * 来减少规则数。 |
-| **Destination address prefix** |要与规则匹配的目标地址前缀或标记。 | 单个 IP 地址（示例：10.10.10.10）、IP 子网（示例：192.168.1.0/24）、[默认标记](#default-tags)或 *（表示所有地址）。 |考虑使用范围、默认标记和 * 来减少规则数。 |
+| **Source address prefix** |要与规则匹配的源地址前缀或标记。 |单个 IP 地址（示例：10.10.10.10）、IP 子网（示例：192.168.1.0/24）、[服务标记](#service-tags)或 *（表示所有地址）。 |请考虑使用范围、服务标记和 * 来减少规则数。 |
+| **Destination address prefix** |要与规则匹配的目标地址前缀或标记。 | 单个 IP 地址（示例：10.10.10.10）、IP 子网（示例：192.168.1.0/24）、[默认标记](#service-tags)或 *（表示所有地址）。 |请考虑使用范围、服务标记和 * 来减少规则数。 |
 | **Direction** |要与规则匹配的流量方向。 |入站或出站。 |入站和出站规则会根据方向分别处理。 |
 | **Priority** |将按优先级顺序来检查规则。 一旦应用某个规则，不再检查其他规则的匹配情况。 | 介于 100 到 4096 之间的数字。 | 考虑以 100 为增量，为每个规则创建规则跳转优先级，为将来可能创建的新规则留出空间。 |
 | **Access** |规则匹配时要应用的访问类型。 | 允许或拒绝。 | 请记住，如果找不到某个数据包的允许规则，则会丢弃该数据包。 |
@@ -62,36 +62,13 @@ NSG 包含两组规则：入站规则和出站规则。 在每组中，规则的
 
 上图显示如何处理 NSG 规则。
 
-### <a name="default-tags"></a>默认标记
-默认标记是系统提供的针对某类 IP 地址的标识符。 可以使用任何规则的**源地址前缀**和**目标地址前缀**属性中的默认标记。 有三个可使用的默认标记：
+### <a name="default-tags"></a>系统标记
 
-* **VirtualNetwork** (Resource Manager)（如果是经典部署模型，则为 **VIRTUAL_NETWORK**）：此标记包括虚拟网络地址空间（Azure 中定义的 CIDR 范围）、所有连接的本地地址空间，以及连接的 Azure VNet（本地网络）。
-* **AzureLoadBalancer** (Resource Manager)（如果是经典部署模型，则为 **AZURE_LOADBALANCER**）：此标记表示 Azure 的基础结构负载均衡器。 此标记将转换为 Azure 数据中心 IP，Azure 负载均衡器的运行状况探测源于该 IP。
-* **Internet** (Resource Manager)（如果是经典部署模型，则为 **INTERNET**）：此标记表示虚拟网络外部的 IP 地址空间，可以通过公共 Internet 进行访问。 范围包括 [Azure 拥有的公共 IP 空间](https://www.microsoft.com/download/details.aspx?id=41653)。
+服务标记是系统提供的针对某类 IP 地址的标识符。 可以在任何安全规则的**源地址前缀**和**目标地址前缀**属性中使用服务标记。 详细了解[服务标记](security-overview.md#service-tags)。
 
-### <a name="default-rules"></a>默认规则
-所有 NSG 都包含一组默认规则。 默认规则无法删除，但由于给它们分配的优先级最低，可以用创建的规则来重写它们。 
+### <a name="default-rules"></a>默认安全规则
 
-默认规则允许和禁止的流量如下所示：
-- **虚拟网络：**从方向上来说，在虚拟网络中发起和结束的通信可以是入站通信，也可以是出站通信。
-- **Internet：**允许出站通信，但阻止入站通信。
-- **负载均衡器：**允许 Azure 负载均衡器探测 VM 和角色实例的运行状况。 如果重写此规则，Azure 负载均衡器运行状况探测会失败，这可能对服务造成影响。
-
-**入站默认规则**
-
-| 名称 | Priority | Source IP | Source Port | Destination IP | Destination Port | 协议 | Access |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| AllowVNetInBound |65000 | VirtualNetwork | * | VirtualNetwork | * | * | 允许 |
-| AllowAzureLoadBalancerInBound | 65001 | AzureLoadBalancer | * | * | * | * | 允许 |
-| DenyAllInBound |65500 | * | * | * | * | * | 拒绝 |
-
-**出站默认规则**
-
-| 名称 | Priority | Source IP | Source Port | Destination IP | Destination Port | 协议 | Access |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| AllowVnetOutBound | 65000 | VirtualNetwork | * | VirtualNetwork | * | * | 允许 |
-| AllowInternetOutBound | 65001 | * | * | Internet | * | * | 允许 |
-| DenyAllOutBound | 65500 | * | * | * | * | * | 拒绝 |
+所有 NSG 均包含一组默认安全规则。 默认规则无法删除，但由于给它们分配的优先级最低，可以用创建的规则来重写它们。 详细了解[默认安全规则](security-overview.md#default-security-rules)。
 
 ## <a name="associating-nsgs"></a>将 NSG 相关联
 可以根据所使用的部署模型将 NSG 关联到 VM、NIC 和子网，如下所示：
@@ -127,7 +104,7 @@ NSG 包含两组规则：入站规则和出站规则。 在每组中，规则的
 | PowerShell     | [是](virtual-networks-create-nsg-classic-ps.md) | [是](tutorial-filter-network-traffic.md) |
 | Azure CLI **V1**   | [是](virtual-networks-create-nsg-classic-cli.md) | [是](tutorial-filter-network-traffic-cli.md) |
 | Azure CLI **V2**   | 否 | [是](tutorial-filter-network-traffic-cli.md) |
-| Azure 资源管理器模板   | 否  | [是](virtual-networks-create-nsg-arm-template.md) |
+| Azure 资源管理器模板   | 否  | [是](template-samples.md) |
 
 ## <a name="planning"></a>规划
 在实施 NSG 之前，需要回答以下问题：

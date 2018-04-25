@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: dbcb1d87fafe085d6232fa621fbd9e211fa4174d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e91e27da5ef80236768d19c5870ac96f19f6b074
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -87,6 +87,7 @@ ms.lasthandoff: 03/23/2018
 - **对等互连的、连接的或多个虚拟网络**：若要在一个虚拟网络中的多个子网内或者跨多个虚拟网络保护 Azure 服务，可以针对每个子网单独启用服务终结点，在所有子网中保护 Azure 服务资源。
 - **筛选从虚拟网络发往 Azure 服务的出站流量**：如果想要检查或筛选从虚拟网络发往 Azure 服务的流量，可在该虚拟网络中部署网络虚拟设备。 然后，可将服务终结点应用到部署了网络虚拟设备的子网，只在该子网中保护 Azure 服务资源。 如果希望使用网络虚拟设备筛选将从虚拟网络发起的 Azure 服务访问限制为特定的 Azure 资源，此方案可能很有帮助。 有关详细信息，请阅读[网络虚拟设备出口](/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。
 - **在直接部署到虚拟网络的服务中保护 Azure 资源**：可将各种 Azure 服务直接部署到虚拟网络中的特定子网。 可以通过在托管服务子网上设置服务终结点，在[托管服务](virtual-network-for-azure-services.md)子网中保护 Azure 服务资源。
+- **来自 Azure 虚拟机的磁盘流量**：托管/非托管磁盘的虚拟机磁盘流量（包括装载和卸载 diskIO），不受路由 Azure 存储更改的服务终结点影响。 可以通过服务终结点和 [Azure 存储网络规则](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)限制对页 blob 的 REST 访问以选择网络。 
 
 ### <a name="logging-and-troubleshooting"></a>日志记录和故障排除
 
@@ -105,7 +106,7 @@ ms.lasthandoff: 03/23/2018
 
 对虚拟网络拥有写入访问权限的用户可在虚拟网络上单独配置服务终结点。 若要在 VNet 中保护 Azure 服务资源，用户必须对所添加的子网拥有 *Microsoft.Network/JoinServicetoaSubnet* 权限。 此权限默认包含在内置的服务管理员角色中，可以通过创建自定义角色进行修改。
 
-详细了解[内置角色](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)以及将特定的权限分配到[自定义角色](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+详细了解[内置角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)以及将特定的权限分配到[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 虚拟网络和 Azure 服务资源可以位于相同或不同的订阅中。 如果虚拟网络和 Azure 服务资源位于不同的订阅中，资源必须在相同的 Active Directory (AD) 租户下。 
 

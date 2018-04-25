@@ -1,19 +1,19 @@
 ---
-title: Azure 快速入门 - 使用 Node.js 在 Azure 存储中上传、下载和列出 Blob | Microsoft Docs
-description: 在本快速入门中，请创建存储帐户和容器。 然后，使用适用于 Node.js 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
+title: Azure 快速入门 - 使用 Node.js 在对象存储中创建 blob | Microsoft Docs
+description: 本快速入门将在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用适用于 Node.js 的存储客户端库将一个 Blob 上传到 Azure 存储，下载一个 Blob，然后列出容器中的 Blob。
 services: storage
 author: craigshoemaker
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/15/2018
+ms.date: 04/09/2018
 ms.author: cshoe
-ms.openlocfilehash: 8783b83a1a94caf4a49f9da7a2dd30c9cb52df22
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 30a64ec6fd4df63eba9c35f1774c81c35fa3506f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>快速入门：使用 Node.js 上传、下载和列出 Blob
 
@@ -82,7 +82,7 @@ const storage = require('azure-storage');
 - *dotenv* 将 *.env* 文件中定义的环境变量加载到当前的执行上下文中
 - 若要确定要上传到 Blob 存储的文件的绝对路径，*path* 是必需的
 - *yargs* 可以公开一个简单的接口，用于访问命令行参数
-- *azure-storage* 是适用于 Node.js 的 [Azure 存储 SDK](/nodejs/api/azure-storage) 模块
+- *azure-storage* 是适用于 Node.js 的 [Azure 存储 SDK](https://docs.microsoft.com/javascript/api/azure-storage) 模块
 
 接下来是初始化一系列变量：
 
@@ -294,4 +294,4 @@ try {
 > [!div class="nextstepaction"]
 > [Blob 存储操作说明](storage-nodejs-how-to-use-blob-storage.md)
 
-有关 Azure 存储的 Node.js 参考，请参阅 [azure-storage package](https://docs.microsoft.com/javascript/api/azure-storage/?view=azure-node-latest)。
+有关 Azure 存储的 Node.js 参考，请参阅 [azure-storage package](https://docs.microsoft.com/javascript/api/azure-storage)。

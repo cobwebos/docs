@@ -1,6 +1,6 @@
 ---
-title: "在 Azure 中监视云存储应用程序并排查其问题 | Microsoft Docs"
-description: "利用诊断工具、指标和警报来排查云应用程序问题和监视云应用程序。"
+title: 在 Azure 中监视云存储应用程序并排查其问题 | Microsoft Docs
+description: 利用诊断工具、指标和警报来排查云应用程序问题和监视云应用程序。
 services: storage
 author: tamram
 manager: jeconnoc
@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: a1b3a1d4bb397e19f033b8f3bfe68ca6a63725c4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: eb58104309802125a8424cbbf8a1bef3d1c5e79c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>监视云存储应用程序并排查其问题
 
@@ -41,11 +41,11 @@ ms.lasthandoff: 02/22/2018
 
 在左侧菜单中，依次选择“资源组”、“myResourceGroup”，然后在资源列表中选择存储帐户。
 
-在“诊断”下，将“状态”设置为“开”。 确保已启用“Blob 聚合指标”、“Blob 按 API 指标”和“Blob 日志”。
+在“诊断”下，将“状态”设置为“开”。 确保“Blob 属性”下的所有选项均已启用。
 
 完成后，单击“保存”
 
-![“诊断”窗格](media/storage-monitor-troubleshoot-storage-application/figure1.png)
+![“诊断”窗格](media/storage-monitor-troubleshoot-storage-application/contoso.png)
 
 ## <a name="enable-alerts"></a>启用警报
 

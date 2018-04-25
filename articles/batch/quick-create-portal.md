@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a00c8ea07c31d2ab4ba2638f2a7e4adcf5ca4a10
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f6b2cc8f3e27b65f225014ec92a7e99851eac743
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>快速入门：在 Azure 门户中运行第一个 Batch 作业
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="sign-in-to-azure"></a>登录 Azure 
 
-登录 Azure 门户 ( https://portal.azure.com )。
+通过 https://portal.azure.com 登录到 Azure 门户。
 
 ## <a name="create-a-batch-account"></a>创建批处理帐户
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/01/2018
 
 2. 在“帐户名称”和“资源组”中输入值。 帐户名称必须在所选 Azure **位置**中唯一，只能使用小写字符或数字，包含 3-24 个字符。 
 
-3. 在“存储帐户”中选择一个现有的常规用途存储帐户，或者创建一个新的。
+3. 在**存储帐户**中选择一个现有存储帐户，或创建一个新的存储帐户。
 
 4. 让其余设置保留默认值，然后单击“创建”以创建该帐户。
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 02/01/2018
   |设置  |值  |
   |---------|---------|
   |**节点定价层**     |Standard_A1|
-  |**目标专用节点**     |#N/A|
+  |**目标专用节点**     |2|
 
   ![选择池大小][pool_size] 
 
