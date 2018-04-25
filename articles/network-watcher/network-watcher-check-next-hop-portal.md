@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure 网络观察程序“下一跃点”功能查找下一跃点 - Azure 门户 | Microsoft 文档"
-description: "本文介绍如何使用 Azure 门户通过“下一跃点”功能查找下一跃点类型和 ip 地址"
+title: 使用 Azure 网络观察程序“下一跃点”功能查找下一跃点 - Azure 门户 | Microsoft 文档
+description: 本文介绍如何使用 Azure 门户通过“下一跃点”功能查找下一跃点类型和 ip 地址
 services: network-watcher
 documentationcenter: na
 author: georgewallace
 manager: jimdial
-editor: 
+editor: ''
 ms.assetid: 7b459dcf-4077-424e-a774-f7bfa34c5975
 ms.service: network-watcher
 ms.devlang: na
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 445ec8c7eeb8dd715d3778b44372d16666da7fb8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/24/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-the-portal"></a>使用门户通过 Azure 网络观察程序中的“下一跃点”功能找到下一跃点类型
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/21/2017
 
 此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此外，本方案假设要使用一个包含有效虚拟机的资源组。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 本文中介绍的方案使用“下一跃点”找出资源的下一跃点类型和 IP 地址。 若要了解有关下一跃点的详细信息，请访问[下一跃点概述](network-watcher-next-hop-overview.md)。
 
