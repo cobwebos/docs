@@ -1,8 +1,8 @@
 ---
-title: "使用 Windows VM MSI 访问 Azure SQL"
-description: "本教程逐步讲解如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure SQL。"
+title: 使用 Windows VM MSI 访问 Azure SQL
+description: 本教程逐步讲解如何使用 Windows VM 托管服务标识 (MSI) 访问 Azure SQL。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: bryanla
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: 863054ea8c69206d4068a35f09ec946aec67ea1f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: aaec2fe989c4b0ae1867e629f6b46ab29297cb41
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>使用 Windows VM 托管服务标识 (MSI) 访问 Azure SQL
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 Azure 门户 ([https://portal.azure.com](https://portal.azure.com))。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>在新的资源组中创建 Windows 虚拟机
 
@@ -55,17 +55,13 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="enable-msi-on-your-vm"></a>在 VM 上启用 MSI 
 
-通过 VM MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 启用 MSI 会告诉 Azure 为 VM 创建托管标识。 事实上，启用 MSI 会执行两项操作：在 VM 上安装 MSI VM 扩展，以及在 Azure 资源管理器中启用 MSI。
+通过 VM MSI，可以从 Azure AD 获取访问令牌，而无需在代码中插入凭据。 启用 MSI 会告诉 Azure 为 VM 创建托管标识。 事实上，启用 MSI 会执行两项操作：向 Azure Active Directory 注册 VM 以创建其托管标识，和在 VM 上配置该标识。
 
 1.  选择要在其上启用 MSI 的虚拟机。  
 2.  在左侧导航栏中，单击“配置”。 
 3.  此时，将会看到托管服务标识。 若要注册并启用 MSI，请选择“是”，若要禁用，请选择“否”。 
 4.  务必单击“保存”，以保存配置。  
     ![Alt 图像文本](../media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-
-5. 若要查看并确认在此 VM 上安装了哪些扩展，请单击“扩展”。 如果 MSI 已启用，列表中会显示现“ManagedIdentityExtensionforWindows”。
-
-    ![Alt 图像文本](../media/msi-tutorial-windows-vm-access-arm/msi-windows-extension.png)
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>授予 VM 对 Azure SQL 服务器中的数据库的访问权限
 
@@ -100,7 +96,7 @@ ObjectId                             DisplayName          Description
 6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM MSI access to SQL
 ```
 
-接下来，将 VM 的 MSI 添加到该组。  需要 MSI 的 **ObjectId**（可以使用 Azure PowerShell 获取）。  首先，下载 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。 然后使用 `Login-AzureRmAccount` 登录，并运行以下命令：
+接下来，将 VM 的 MSI 添加到该组。  需要 MSI 的 **ObjectId**（可以使用 Azure PowerShell 获取）。  首先，下载 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。 然后使用 `Connect-AzureRmAccount` 登录，并运行以下命令：
 - 如果有多个 Azure 订阅，请确保将会话上下文设置为所需的订阅。
 - 列出 Azure 订阅中的可用资源，并检查资源组和 VM 名称是否正确。
 - 使用 `<RESOURCE-GROUP>` 和 `<VM-NAME>` 的相应值获取 MSI VM 的属性。
@@ -193,7 +189,7 @@ using System.Web.Script.Serialization;
 //
 // Get an access token for SQL.
 //
-HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:50342/oauth2/token?resource=https://database.windows.net/");
+HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://database.windows.net/");
 request.Headers["Metadata"] = "true";
 request.Method = "GET";
 string accessToken = null;
@@ -234,7 +230,7 @@ if (accessToken != null) {
 4.  使用 PowerShell 的 `Invoke-WebRequest` 向本地 MSI 终结点发出请求，以获取 Azure SQL 的访问令牌。
 
     ```powershell
-       $response = Invoke-WebRequest -Uri http://localhost:50342/oauth2/token -Method GET -Body @{resource="https://database.windows.net/"} -Headers @{Metadata="true"}
+       $response = Invoke-WebRequest -Uri http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatabase.windows.net%2F -Method GET -Headers @{Metadata="true"}
     ```
     
     将响应从 JSON 对象转换为 PowerShell 对象。 

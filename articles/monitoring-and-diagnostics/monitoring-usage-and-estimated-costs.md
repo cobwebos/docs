@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 04/09/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: f87705ebbdd14b1bbf7cade481a7dbe7dd3d5131
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ce295c449b01de4fa99df9198805a6b0727c0d18
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>监视使用情况和预估成本
 
@@ -61,12 +61,16 @@ ms.lasthandoff: 04/03/2018
 3. Application Insights\基本超额数据
 4. Application Insights\已包含的数据
 
-等数据引入计量器已合并为称作“共享服务\数据引入”的新通用数据引入计量器，因为新定价模型不提供基于节点的包含数据分配。
+等数据引入计量器已合并为称作“共享服务\数据引入”的新通用数据引入计量器，因为新定价模型不提供每节点包括的数据权利。
 
 会看到的另一处变化是，引入到成本较高区域中 Log Analytics 或 Application Insights 的数据附带一个新的区域计量器以正确反映此情况，例如“数据引入(美国中西部)”。
 
 > [!NOTE]
-> 如果你有一个 Operations Management Suite (OMS) 订阅，将会收到购买的每个节点的 Log Analytics 和 Application Insights 数据引入分配。 由于此模型是在帐户级别（而不是订阅级别）应用的，因此，这种预估不能显示这些分配的效果。 请咨询客户代表，以更深入地探讨这种情况下的新定价模型。
+> 每订阅估计成本未纳入到 Operations Management Suite (OMS) 订阅的帐户级每节点权利中。 请咨询客户代表，以更深入地探讨这种情况下的新定价模型。
+
+## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>新定价模型和 Operations Management Suite 订阅权利
+
+购买了 Microsoft Operations Management Suite E1 和 E2 的客户有资格享受 [Log Analytics](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite) 和 [Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-pricing#the-price-plans) 的每节点数据引入权利。 若要在给定的订阅中享受 Log Analytics 工作区或 Application Insights 资源的这些权利，该订阅的定价模型必须保持为 2018 年 4 月之前的定价模型，该定价模型中提供了 Log Analytics“每节点 (OMS)”定价层和 Application Insights“企业”定价计划。 取决于你的组织购买的套件的节点数，将某些订阅转移到新定价模型可能还是有利的，但这需要仔细考虑。 
 
 ## <a name="changes-when-moving-to-the-new-pricing-model"></a>转移到新定价模型时的变化
 

@@ -1,30 +1,26 @@
 ---
-title: "MPP 体系结构 - Azure SQL 数据仓库？ | Microsoft Docs"
-description: "了解 Azure SQL 数据仓库如何将大规模并行处理 (MPP) 与 Azure 存储结合，实现高性能和可伸缩性。"
+title: Azure SQL 数据仓库 - MPP 体系结构 | Microsoft Docs
+description: 了解 Azure SQL 数据仓库如何将大规模并行处理 (MPP) 与 Azure 存储结合，实现高性能和可伸缩性。
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: architecture
-ms.date: 11/15/2017
-ms.author: jrj;barbkess
-ms.openlocfilehash: 4c230eb0633b2917b90a5c1f9f4176882bfd0290
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: dd148b8fdf6a816233f7adc0a8a22f87c417a156
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL 数据仓库 - 大规模并行处理 (MPP) 体系结构
 了解 Azure SQL 数据仓库如何将大规模并行处理 (MPP) 与 Azure 存储结合，实现高性能和可伸缩性。 
 
 ## <a name="mpp-architecture-components"></a>MPP 体系结构组件
-SQL 数据仓库利用向外扩展体系结构在多个节点间分布数据的计算处理。 缩放单位是抽象的计算能力（称为数据仓库单位）。 SQL 数据仓库将计算与存储分离开来，使用户能够独立于系统中数据进行规模计算。
+SQL 数据仓库利用向外扩展体系结构在多个节点间分布数据的计算处理。 缩放单位是抽象的计算能力（称为数据仓库单位）。 SQL 数据仓库将计算与存储分离开来，使用户能够独立于系统中的数据进行规模计算。
 
 ![SQL 数据仓库体系结构](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 

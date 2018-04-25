@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/06/2018
 ms.author: barclayn
 ms.custom: ''
-ms.openlocfilehash: fd3beb57cda4993f922fb935263b0e962b38da6a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 08c26942294d7027ffdcd3fcaa0ff0831e95509f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory 和多重身份验证：使用标识和访问控制保护个人数据
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="company-goal"></a>公司目标
 
-公司的目标是确保对个人数据的访问受到严格控制。 有权访问个人数据的用户的标识受到强身份验证的保护，这一点至关重要。 必须强制实施 [最低特权] 策略(https://en.wikipedia.org/wiki/Principle_of_least_privilege)，使合法用户只拥有所需的访问权限级别，而没有更高的特权。
+公司的目标是确保对个人数据的访问受到严格控制。 有权访问个人数据的用户的标识受到强身份验证的保护，这一点至关重要。 必须强制实施 [最低特权] (https://en.wikipedia.org/wiki/Principle_of_least_privilege)) 策略，使合法用户只拥有所需的访问权限级别，而没有更高的特权。
 
 ## <a name="solutions"></a>解决方案
 
@@ -83,11 +83,11 @@ Microsoft Azure 提供标识和访问管理工具来帮助公司控制谁有权�
 
 ### <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 
-[Azure 基于角色的访问控制](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) (RBAC) 可以基于用户的已分配角色授予访问权限，帮助 Azure 管理员管理对 Azure 资源的访问。 可在团队中对职责进行划分，仅授予执行作业所需的对用户、组和应用程序的适当访问权限。
+[Azure 基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) 可以基于用户的已分配角色授予访问权限，帮助 Azure 管理员管理对 Azure 资源的访问。 可在团队中对职责进行划分，仅授予执行作业所需的对用户、组和应用程序的适当访问权限。
 
 可以使用 Azure 门户、Azure 命令行工具或 Azure 管理 API 将基于角色的访问权限授予用户。
 
-有关 Azure RBAC 基础知识的详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](https://docs.microsoft.com/active-directory/role-based-access-control-what-is)。
+有关 Azure RBAC 基础知识的详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](https://docs.microsoft.com/azure/role-based-access-control/overview)。
 
 #### <a name="how-do-i-manage-azure-rbac-with-powershell"></a>如何使用 PowerShell 管理 Azure RBAC？
 
@@ -111,7 +111,7 @@ Microsoft Azure 提供标识和访问管理工具来帮助公司控制谁有权�
 
 - 列出自定义角色
 
-有关如何使用 PowerShell 管理 Azure RBAC 的说明，请参阅[使用 Azure PowerShell 管理基于角色的访问](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell)。
+有关如何使用 PowerShell 管理 Azure RBAC 的说明，请参阅[使用 Azure PowerShell 管理基于角色的访问](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
 
 ### <a name="azure-multi-factor-authentication"></a>Azure 多重身份验证
 
@@ -125,7 +125,7 @@ Microsoft Azure 提供标识和访问管理工具来帮助公司控制谁有权�
 
 ![启用了 MFA 的用户](media/protect-personal-data-identity-access-controls/enable-mfa.png)
 
-如果当前没有许可证，则需要完成为你的方案确定最适合部署类型的整个过程。 可以从查看标题为[选择 Azure 多重身份验证解决方案](../multi-factor-authentication/multi-factor-authentication-get-started.md)的文章开始。 如果确定需要创建一个多重身份验证服务器， 则可按以下步骤操作：
+如果当前没有许可证，则需要完成为你的方案确定最适合部署类型的整个过程。 可以从查看标题为[选择 Azure 多重身份验证解决方案](../active-directory/authentication/concept-mfa-whichversion.md)的文章开始。 如果确定需要创建一个多重身份验证服务器， 则可按以下步骤操作：
 
 1. 在 Azure 门户中选择“Active Directory”（以管理员身份登录）。
 
@@ -184,6 +184,6 @@ Microsoft Azure 提供标识和访问管理工具来帮助公司控制谁有权�
 
 - [有关 Azure 多重身份验证的常见问题](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-faq)
 
-- [基于角色的访问控制故障排除](https://docs.microsoft.com/azure/active-directory/role-based-access-control-troubleshooting)
+- [基于角色的访问控制故障排除](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting)
 
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)

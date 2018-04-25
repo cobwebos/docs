@@ -1,6 +1,6 @@
 ---
-title: "Azure 标识和访问安全最佳实践 | Microsoft 文档"
-description: "本文提供一系列有关使用内置 Azure 功能进行标识管理和访问控制的最佳实践。"
+title: Azure 标识和访问安全最佳实践 | Microsoft 文档
+description: 本文提供一系列有关使用内置 Azure 功能进行标识管理和访问控制的最佳实践。
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-ms.openlocfilehash: d80fdd5a2e4339823c05368d76de333f3314d4ec
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2b77167992704bd342d67dc03b66af1e55955532
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 许多人将标识视为安全性的新边界层，从传统的以网络为中心的角度来看可以接管这种角色。 安全关注与投资主轴的这种演变来源于这样一个事实：网络周边的漏洞越来越多，在 [BYOD](http://aka.ms/byodcg) 设备和云应用程序呈爆炸性增长之前，周边防御不如以前那么有效。
 
 本文介绍一系列 Azure 标识管理和访问控制安全最佳实践。 这些最佳做法衍生自我们的 [Azure AD](../active-directory/active-directory-whatis.md) 经验和客户经验。
 
-对于每项最佳实践，我们将说明：
+对于每项最佳做法，本文将说明：
 
 * 最佳实践是什么
 * 为何要启用该最佳实践
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/15/2017
 * 部署密码管理
 * 对用户实施多重身份验证 (MFA)
 * 使用基于角色的访问控制 (RBAC)
-* 使用 Resource Manager 控制创建资源的位置
+* 使用资源管理器控制创建资源的位置
 * 指导开发人员利用适用于 SaaS 应用的标识功能
 * 主动监视可疑活动
 
@@ -52,11 +52,11 @@ ms.lasthandoff: 11/15/2017
 若要实现这种[混合标识](../active-directory/active-directory-hybrid-identity-design-considerations-overview.md)方案，建议采用两种做法：
 
 * 使用 Azure AD Connect 将本地目录与云目录同步
-* 使用 [Active Directory 联合身份验证服务](https://msdn.microsoft.com/library/bb897402.aspx) (AD FS) 将本地标识与云目录联合
+* 通过[密码哈希同步](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)、[传递身份验证](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq)启用单一登录，或使用 [Active Directory 联合身份验证服务](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/deploying-federation-servers) (AD FS) 来集成本地标识和云目录。
 
 无法将本地标识与云标识集成的组织在管理帐户时会遇到管理开销增大的情况，从而增加出错和安全违规的可能性。
 
-有关 Azure AD 同步的详细信息，请阅读[将本地标识与 Azure Active Directory 集成](../active-directory/active-directory-aadconnect.md)一文。
+有关 Azure AD 同步的详细信息，参阅[将本地标识与 Azure Active Directory 集成](../active-directory/active-directory-aadconnect.md)一文。
 
 ## <a name="enable-single-sign-on-sso"></a>启用单一登录 (SSO)
 如果要管理多个目录，则不仅会给 IT 人员造成管理问题，而且最终用户还必须记住多个密码。 通过使用 [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)，可让用户能够使用相同凭据集登录并访问所需资源，无需考虑此资源是位于本地还是云中。
@@ -75,11 +75,11 @@ ms.lasthandoff: 11/15/2017
 ## <a name="deploy-password-management"></a>部署密码管理
 如果有多个租户或者想要允许用户[重置自己的密码](../active-directory/active-directory-passwords-update-your-own-password.md)，则必须使用适当的安全策略来防止滥用。 在 Azure 中，可以利用自助密码重置功能并自定义安全选项来满足业务要求。
 
-必须从这些用户获取反馈，并在用户尝试执行这些步骤时，从用户的体验中获得经验教训，这一点尤其重要。 根据这些经验制定计划，以减少在部署大型组时可能出现的潜在问题。 此外，建议使用[密码重置注册活动报告](../active-directory/active-directory-passwords-get-insights.md)来监视正在注册的用户。
+必须从这些用户获取反馈，并在用户尝试执行这些步骤时，从用户的体验中获得经验教训，这一点很重要。 根据这些经验制定计划，以减少在部署大型组时可能出现的潜在问题。 此外，建议使用[密码重置注册活动报告](../active-directory/active-directory-passwords-get-insights.md)来监视正在注册的用户。
 
 对于想要避免密码更改支持电话但又允许用户重置其自身密码的组织，服务台更容易收到大量由于密码问题而打来的电话。 在具有多个租户的组织中，必须实施这种类型的功能，并允许用户在安全策略中规定的安全边界范围内执行密码重置。
 
-有关密码重置的详细信息，请阅读[部署密码管理并培训用户进行使用](../active-directory/active-directory-passwords-best-practices.md)一文。
+有关密码重置的详细信息，请阅读[部署密码管理并培训用户进行使用](../active-directory/authentication/howto-sspr-deployment.md)一文。
 
 ## <a name="enforce-multi-factor-authentication-mfa-for-users"></a>对用户实施多重身份验证 (MFA)
 对于需要遵守行业标准（如 [PCI DSS 版本 3.2](http://blog.pcisecuritystandards.org/preparing-for-pci-dss-32)）的组织，必须使用多重身份验证功能来对用户进行身份验证。 除了能够遵守行业标准以外，实施 MFA 来对用户进行身份验证还可帮助组织减少凭据失窃类型的攻击，如[传递哈希 (PtH)](http://aka.ms/PtHPaper)。
@@ -90,21 +90,21 @@ ms.lasthandoff: 11/15/2017
 
 想要保留完整本地身份验证控制权的组织可使用替代方法：使用 [Azure 多重身份验证服务器](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)（也称为本地 MFA）。 使用此方法仍可实施多重身份验证，同时本地保留 MFA 服务器。
 
-有关 Azure MFA 的详细信息，请参阅[云中的 Azure 多重身份验证入门](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)。
+有关 Azure MFA 的详细信息，请参阅[云中的 Azure 多重身份验证入门](../active-directory/authentication/howto-mfa-getstarted.md)一文。
 
 ## <a name="use-role-based-access-control-rbac"></a>使用基于角色的访问控制 (RBAC)
 对于想要实施数据访问安全策略的组织而言，必须根据[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全策略限制访问权限。 Azure 基于角色的访问控制 (RBAC) 可用于向特定范围的用户、组和应用程序分配权限。 角色分配的范围可以是订阅、资源组或单个资源。
 
-可以利用 Azure 中[内置的 RBAC](../active-directory/role-based-access-built-in-roles.md) 角色向用户分配权限。 考虑将*存储帐户参与者*用于需要管理存储帐户的云操作员，并使用*经典存储帐户参与者*角色来管理经典存储帐户。 对于需要管理 VM 和存储帐户的云操作员，请考虑将他们添加到*虚拟机参与者*角色。
+可以利用 Azure 中[内置的 RBAC](../role-based-access-control/built-in-roles.md) 角色向用户分配权限。 考虑将*存储帐户参与者*用于需要管理存储帐户的云操作员，并使用*经典存储帐户参与者*角色来管理经典存储帐户。 对于需要管理 VM 和存储帐户的云操作员，请考虑将他们添加到*虚拟机参与者*角色。
 
 未使用 RBAC 等功能实施数据访问控制的组织可能会向其用户分配超过需要的权限。 一开始就允许用户访问他们不应有权访问的某些类型的数据（例如，对业务有重大影响的数据）可能会导致数据泄漏。
 
-有关 Azure RBAC 的详细信息，请参阅 [Azure 基于角色的访问控制](../active-directory/role-based-access-control-configure.md)一文。
+有关 Azure RBAC 的详细信息，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)一文。
 
-## <a name="control-locations-where-resources-are-created-using-resource-manager"></a>使用 Resource Manager 控制创建资源的位置
+## <a name="control-locations-where-resources-are-created-using-resource-manager"></a>使用资源管理器控制创建资源的位置
 非常重要的一点是，既要允许云操作员执行任务，同时又要防止他们违反管理组织资源所需的惯例。 想要控制创建资源的位置的组织应该对这些位置进行硬编码。
 
-若要实现此目的，组织可以创建安全策略，其中的定义描述了会明确遭到拒绝的操作或资源。 可以在所需范围（例如订阅、资源组或是单个资源）分配这些策略定义。
+若要实现此目的，组织可以创建安全策略，其中的定义描述了会遭到拒绝的操作或资源。 可以在所需范围（例如订阅、资源组或是单个资源）分配这些策略定义。
 
 > [!NOTE]
 > 这与 RBAC 不同，实际上它利用 RBAC 来对有权创建这些资源的用户进行身份验证。
@@ -129,7 +129,7 @@ ms.lasthandoff: 11/15/2017
 ## <a name="actively-monitor-for-suspicious-activities"></a>主动监视可疑活动
 根据 [Verizon 2016 年数据违规报告](http://www.verizonenterprise.com/verizon-insights-lab/dbir/2016/)，凭据泄露仍呈上升趋势，即将成为网络罪犯最有利可图的业务之一。 出于此原因，必须部署主动标识监视系统，以便快速检测可疑行为活动，并触发警报以进行深入调查。 Azure AD 中的两项主要功能可帮助组织监视其标识：Azure AD 高级版中的[异常报告](../active-directory/active-directory-view-access-usage-reports.md)和 Azure AD 中的[标识保护功能](../active-directory/active-directory-identityprotection.md)。
 
-请务必使用异常报告来识别以下企图：在[未受跟踪](../active-directory/active-directory-reporting-sign-ins-from-unknown-sources.md)的情况下登录、针对特定帐户展开[暴力破解](../active-directory/active-directory-reporting-sign-ins-after-multiple-failures.md)攻击、尝试从多个位置登录、从[受感染的设备](../active-directory/active-directory-reporting-sign-ins-from-possibly-infected-devices.md)和可疑 IP 地址登录。 请记住这只是一些报告。 换而言之，必须制定相应的流程和过程，使 IT 管理员每天或按需（通常在事件响应方案中）运行这些报告。
+请务必使用异常报告来识别以下企图：在[未受跟踪](../active-directory/active-directory-reporting-sign-ins-from-unknown-sources.md)的情况下登录、针对特定帐户展开[暴力破解](../active-directory/active-directory-reporting-sign-ins-after-multiple-failures.md)攻击、尝试从多个位置登录、从[受感染的设备和可疑 IP 地址]登录。 请记住这只是一些报告。 换而言之，必须制定相应的流程和过程，使 IT 管理员每天或按需（通常在事件响应方案中）运行这些报告。
 
 相比之下，Azure AD Identity Protection 是一种主动监视系统，它会在自身的仪表板上标记当前风险。 除此之外，还会通过电子邮件收到每日摘要通知。 我们建议根据业务要求调整风险级别。 某个风险事件的风险级别指示该风险事件的严重性（高、中或低）。 风险级别可帮助标识保护用户确定他们为了减少组织遇到的风险，而必须采取的措施的优先级。
 

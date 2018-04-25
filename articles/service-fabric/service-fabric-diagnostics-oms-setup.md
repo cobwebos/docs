@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric - 使用 OMS Log Analytics 设置监视 | Microsoft Docs
-description: 了解如何设置 Operations Management Suite 来可视化和分析事件，进而监视 Azure Service Fabric 群集。
+title: Azure Service Fabric - 使用 Log Analytics 设置监视 | Microsoft Docs
+description: 了解如何设置 Log Analytics 来可视化和分析事件，进而监视 Azure Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/30/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: 2589efa1808a394f2e32b842efa2ee70809da232
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: af09df52fe733b69cfe4470de2fd6e978f126ca0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>为群集设置 Operations Management Suite Log Analytics
+# <a name="set-up-log-analytics-for-a-cluster"></a>为群集设置 Log Analytics
 
-可通过 Azure 资源管理器、PowerShell 或 Azure Marketplace 设置 Operations Management Suite (OMS) 工作区。 如果要保留已更新的资源管理器部署模板供将来使用，请使用同一模板设置 OMS 环境。 如果部署的群集已启用诊断，则通过 Marketplace 部署更方便。 如果要将 OMS 部署到的帐户没有订阅级别访问权限，请通过 PowerShell 或资源管理器模板进行部署。
+可以通过 Azure 资源管理器、PowerShell 或 Azure Marketplace 设置 Log Analytics 工作区。 如果要保留已更新的资源管理器部署模板供将来使用，请使用同一模板设置 OMS 环境。 如果部署的群集已启用诊断，则通过 Marketplace 部署更方便。 如果要将 OMS 部署到的帐户没有订阅级别访问权限，请通过 PowerShell 或资源管理器模板进行部署。
 
 > [!NOTE]
-> 要设置 OMS 来监视群集，需要启用诊断功能以监视群集级别或平台级别事件。
+> 要设置 Log Analytics 来监视群集，需要启用诊断功能以监视群集级别或平台级别事件。
 
 ## <a name="deploy-oms-by-using-azure-marketplace"></a>使用 Azure Marketplace 部署 OMS
 
@@ -200,7 +200,7 @@ $WorkspaceName = "<OMS Log Analytics workspace name>"
 $solution = "ServiceFabric"
 
 # Log in to Azure and access the correct subscription
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionId $SubID 
 
 # Create the resource group if needed

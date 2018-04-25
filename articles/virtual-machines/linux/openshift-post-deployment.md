@@ -1,32 +1,32 @@
 ---
-title: "Azure 上的 OpenShift 部署后任务 | Microsoft Docs"
-description: "部署 OpenShift 群集之后的附加任务。"
+title: Azure 上的 OpenShift 部署后任务 | Microsoft Docs
+description: 部署 OpenShift 群集之后的附加任务。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
 manager: najoshi
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 
+ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 77c4719b5cee7f5736d73ee10cf6abf12229ea11
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 1fe44f6d18199fe1a37db566f8b30eeaa4fbfab2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
 
 部署 OpenShift 群集后，可以配置附加的项。 本文介绍以下内容：
 
 - 了解如何使用 Azure Active Directory (Azure AD) 配置单一登录
-- 如何配置 Operations Management Suite 以监视 OpenShift
+- 如何配置 Log Analytics 来监视 OpenShift
 - 如何配置指标和日志记录
 
 ## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>使用 Azure Active Directory 配置单一登录
@@ -38,9 +38,9 @@ ms.lasthandoff: 11/11/2017
 这些步骤使用 Azure CLI 创建应用注册，然后使用 GUI（门户）设置权限。 若要创建应用注册，需要提供以下五项信息：
 
 - 显示名称：应用注册名称（例如 OCPAzureAD）
-- 主页：OpenShift 控制台 URL（例如 https://masterdns343khhde.westus.cloudapp.azure.com:8443/console）
-- 标识符 URI：OpenShift 控制台 URL（例如 https://masterdns343khhde.westus.cloudapp.azure.com:8443/console）
-- 回复 URL：主机公共 URL 和应用注册名称（例如 https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/OCPAzureAD）
+- 主页：OpenShift 控制台 URL（例如 https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
+- 标识符 URI：OpenShift 控制台 URL（例如 https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
+- 答复 URL：主公用 URL 和应用注册名称（例如 https://masterdns343khhde.westus.cloudapp.azure.com:8443/oauth2callback/OCPAzureAD)
 - 密码：安全密码（使用强密码）
 
 以下示例使用上述信息创建应用注册：
@@ -171,11 +171,11 @@ sudo systemctl restart atomic-openshift-master
 
 在 OpenShift 控制台中，现在可以看到两个身份验证选项：“htpasswd_auth”和“[应用注册]”。
 
-## <a name="monitor-openshift-with-operations-management-suite"></a>使用 Operations Management Suite 监视 OpenShift
+## <a name="monitor-openshift-with-log-analytics"></a>使用 Log Analytics 监视 OpenShift
 
-若要使用 Operations Management Suite 监视 OpenShift，可以使用以下两个选项之一：VM 主机上安装的 OMS 代理，或 OMS 容器。 本文提供有关部署 OMS 容器的说明。
+若要使用 Log Analytics 监视 OpenShift，可以使用以下两个选项之一：VM 主机上安装的 OMS 代理，或 OMS 容器。 本文提供有关部署 OMS 容器的说明。
 
-## <a name="create-an-openshift-project-for-operations-management-suite-and-set-user-access"></a>为 Operations Management Suite 创建 OpenShift 项目并设置用户访问权限
+## <a name="create-an-openshift-project-for-log-analytics-and-set-user-access"></a>为 Log Analytics 创建 OpenShift 项目并设置用户访问权限
 
 ```bash
 oadm new-project omslogging --node-selector='zone=default'
@@ -244,7 +244,7 @@ spec:
 
 ## <a name="create-a-secret-yaml-file"></a>创建机密 yaml 文件
 
-若要创建机密 yaml 文件，需要提供两项信息：OMS 工作区 ID 和 OMS 工作区共享密钥。 
+若要创建机密 yaml 文件，需要提供两项信息：Log Analytics 工作区 ID 和 Log Analytics 工作区共享密钥。 
 
 示例 ocp-secret.yml 文件如下： 
 
@@ -258,7 +258,7 @@ data:
   KEY: key_data
 ```
 
-请将 wsid_data 替换为 Base64 编码的 OMS 工作区 ID。 然后将 key_data 替换为 Base64 编码的 OMS 工作区共享密钥。
+请将 wsid_data 替换为 Base64 编码的 Log Analytics 工作区 ID。 然后将 key_data 替换为 Base64 编码的 Log Analytics 工作区共享密钥。
 
 ```bash
 wsid_data='11111111-abcd-1111-abcd-111111111111'

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 4df404bbf56efbc3bb68f006f8aa0c7cdf0e86ac
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ac23d0f9b8f6899df6941791b22ec384ea0f3977
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>如何使用 Azure VM 托管服务标识 (MSI) 登录 
 
@@ -51,7 +51,7 @@ MSI 提供一个[服务主体对象](../develop/active-directory-dev-glossary.md
 2. 调用 Azure 资源管理器并获取 VM 的服务主体 ID。 CLI 负责自动管理令牌的获取和使用。 请务必将 `<VM-NAME>` 替换为自己的虚拟机名称。  
 
    ```azurecli
-   az login --msi
+   az login --identity
    
    spID=$(az resource list -n <VM-NAME> --query [*].identity.principalId --out tsv)
    echo The MSI service principal ID is $spID
@@ -74,7 +74,7 @@ MSI 提供一个[服务主体对象](../develop/active-directory-dev-glossary.md
    echo "The MSI access token is $access_token"
 
    # Use the access token to sign in under the MSI service principal. -AccountID can be any string to identify the session.
-   Login-AzureRmAccount -AccessToken $access_token -AccountId "MSI@50342"
+   Connect-AzureRmAccount -AccessToken $access_token -AccountId "MSI@50342"
 
    # Call Azure Resource Manager to get the service principal ID for the VM's MSI. 
    $vmInfoPs = Get-AzureRMVM -ResourceGroupName <RESOURCE-GROUP> -Name <VM-NAME>
@@ -91,7 +91,7 @@ MSI 提供一个[服务主体对象](../develop/active-directory-dev-glossary.md
 如下所示的响应可能表示未正确配置 VM 的 MSI：
 
 - PowerShell：“Invoke-WebRequest: 无法连接到远程服务器”
-- CLI：“MSI: 无法从 'http://localhost:50342/oauth2/token' 检索令牌，出现错误 'HTTPConnectionPool (主机='localhost'，端口=50342)” 
+- CLI：“MSI: 无法从 'http://localhost:50342/oauth2/token' 检索令牌，出现错误 HTTPConnectionPool (主机='localhost'，端口=50342)” 
 
 如果收到以下错误之一，请在 [Azure 门户](https://portal.azure.com)中返回到 Azure VM 并执行以下操作：
 

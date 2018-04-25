@@ -1,30 +1,26 @@
 ---
-title: 优化 SQL 数据仓库的事务 | Microsoft 文档
-description: 在 Azure SQL 数据仓库中编写有效事务更新的最佳做法指南
+title: 优化 Azure SQL 数据仓库的事务 | Microsoft Docs
+description: 了解如何在尽量降低长时间回退风险的情况下优化 Azure SQL 数据仓库中的事务性代码的性能。
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: ''
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 03/15/2018
-ms.author: jrj;barbkess
-ms.openlocfilehash: 607c169e3d9e8aa741084392439da383f46cfe0c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/12/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: 55fc317dc9e7a1401aef8c5431ba04d86822d333
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="optimizing-transactions-for-sql-data-warehouse"></a>优化 SQL 数据仓库的事务
-本文介绍了如何在尽量降低长时间回退风险的情况下优化事务性代码的性能。
+# <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>优化 Azure SQL 数据仓库中的事务
+了解如何在尽量降低长时间回退风险的情况下优化 Azure SQL 数据仓库中的事务性代码的性能。
 
 ## <a name="transactions-and-logging"></a>事务和日志记录
-事务是关系数据库引擎的一个重要组成部分。 SQL 数据仓库在数据修改期间使用事务。 这些事务可以是显式或隐式。 单个 `INSERT`、`UPDATE` 和 `DELETE` 语句都是隐式事务示例。 显式事务使用 `BEGIN TRAN`、`COMMIT TRAN` 或 `ROLLBACK TRAN`。 显式事务通常用于多个修改语句需要绑定在单个原子单元的时候。 
+事务是关系数据库引擎的一个重要组成部分。 SQL 数据仓库在数据修改期间使用事务。 这些事务可以是显式或隐式。 单个 INSERT、UPDATE 和 DELETE 语句都是隐式事务的示例。 显式事务使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 显式事务通常用于多个修改语句需要绑定在单个原子单元的时候。 
 
 Azure SQL 数据仓库使用事务日志将更改提交到数据库。 每个分布区都具有其自己的事务日志。 事务日志写入都是自动的。 无需任何配置。 尽管此过程可保证写入，但它确在系统中引入一项开销。 编写事务性高效的代码，可以尽量减少这种影响。 事务性高效的代码大致分为两类。
 
@@ -33,7 +29,7 @@ Azure SQL 数据仓库使用事务日志将更改提交到数据库。 每个分
 * 对于给定分区的大型修改，采用分区切换模式
 
 ## <a name="minimal-vs-full-logging"></a>最少日志记录与完整日志记录
-完整记录的操作使用事务日志来跟踪每个行更改，而最少记录的操作只跟踪扩展分配和元数据更改。 因此，最少日志记录涉及只记录失败或显式请求 (`ROLLBACK TRAN`) 后回退事务所需的信息。 由于事务日志中跟踪的信息少得多，因此最少记录操作的执行性能优于同样大小的完整记录操作。 此外，事务日志中写入较少，因此生成的日志数据量也更少，并且 I/O 更高效。
+完整记录的操作使用事务日志来跟踪每个行更改，而最少记录的操作只跟踪扩展分配和元数据更改。 因此，最少日志记录涉及只记录失败或显式请求 (ROLLBACK TRAN) 后回退事务所需的信息。 由于事务日志中跟踪的信息少得多，因此最少记录操作的执行性能优于同样大小的完整记录操作。 此外，事务日志中写入较少，因此生成的日志数据量也更少，并且 I/O 更高效。
 
 事务安全限制仅适用于完整记录的操作。
 
@@ -45,7 +41,7 @@ Azure SQL 数据仓库使用事务日志将更改提交到数据库。 每个分
 ## <a name="minimally-logged-operations"></a>最少记录的操作
 以下操作可以实现最少记录：
 
-* CREATE TABLE AS SELECT ([CTAS][CTAS])
+* CREATE TABLE AS SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
 * INSERT..SELECT
 * CREATE INDEX
 * ALTER INDEX REBUILD
@@ -61,12 +57,12 @@ Azure SQL 数据仓库使用事务日志将更改提交到数据库。 每个分
 -->
 
 > [!NOTE]
-> 内部数据移动操作（如 `BROADCAST` 和 `SHUFFLE`不受事务安全限制影响。
+> 内部数据移动操作（例如 BROADCAST 和 SHUFFLE）不受事务安全限制影响。
 > 
 > 
 
 ## <a name="minimal-logging-with-bulk-load"></a>带批量加载的最少日志记录
-`CTAS` 和 `INSERT...SELECT` 都是批量加载操作。 但两者都受目标表定义影响，并且取决于加载方案。 下表说明了什么时候批量操作是完整记录的或最少记录的：  
+CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定义影响，并且取决于加载方案。 下表说明了什么时候批量操作是完整记录的或最少记录的：  
 
 | 主索引 | 加载方案 | 日志记录模式 |
 | --- | --- | --- |
@@ -87,7 +83,7 @@ Azure SQL 数据仓库使用事务日志将更改提交到数据库。 每个分
 将数据加载到含聚集索引的非空表通常可以包含完整记录和最少记录的行的组合。 聚集索引是页面的平衡树 (b-tree)。 如果正写入的页面已包含其他事务中的行，则这些写入操作会被完整记录。 但如果该页面为空，则写入到该页面会按最少记录的方式记录。
 
 ## <a name="optimizing-deletes"></a>优化删除
-`DELETE` 是完整记录的操作。  如果需要删除表或分区中的大量数据，`SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS][CTAS] 创建新表。  创建后，可通过 [RENAME][RENAME] 操作使用新创建的表将旧表交换出来。
+DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据，`SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](sql-data-warehouse-develop-ctas.md) 创建新表。  创建后，可通过 [RENAME](/sql/t-sql/statements/rename-transact-sql) 操作使用新创建的表将旧表交换出来。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -118,9 +114,9 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>优化更新
-`UPDATE` 是完整记录的操作。  如果需要更新表或分区中的大量行，通常更有效的方法是使用最少记录的操作（如 [CTAS][CTAS]）来实现。
+UPDATE 是一个完整记录的操作。  如果需要更新表或分区中的大量行，通常更有效的方法是使用最少记录的操作（如 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)）来实现。
 
-在下面的示例中，完整的表更新已转换为 `CTAS`，以便使最少日志记录成为可能。
+在下面的示例中，完整的表更新已转换为 CTAS，以便使最少日志记录成为可能。
 
 在此示例中，我们回顾性地向表中的销售额添加折扣金额：
 
@@ -184,7 +180,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 > 
 
 ## <a name="optimizing-with-partition-switching"></a>使用分区切换进行优化
-面对[表分区][table partition]内较大规模修改时，分区切换模式非常有用。 如果数据修改非常重要且跨越多个分区，则遍历分区可获得相同的结果。
+面对[表分区](sql-data-warehouse-tables-partition.md)内较大规模修改时，分区切换模式非常有用。 如果数据修改非常重要且跨越多个分区，则遍历分区可获得相同的结果。
 
 执行分区切换的步骤如下所示：
 
@@ -416,23 +412,9 @@ END
 
 最佳方案是在暂停或缩放 SQL 数据仓库前就完成正提交的数据修改事务。 但是，此方案不一定始终可行。 若要降低长时间回退的风险，请考虑以下选项之一：
 
-* 使用 [CTAS][CTAS] 重新编写长时间运行的操作
+* 使用 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 重新编写长时间运行的操作
 * 将该操作分解为多个块；针对行的子集进行操作
 
 ## <a name="next-steps"></a>后续步骤
-请参阅 [SQL 数据仓库中的事务][Transactions in SQL Data Warehouse]，以便详细了解隔离级别和事务限制。  有关其他最佳实践的概述，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。
-
-<!--Image references-->
-
-<!--Article references-->
-[Transactions in SQL Data Warehouse]: ./sql-data-warehouse-develop-transactions.md
-[table partition]: ./sql-data-warehouse-tables-partition.md
-[CTAS]: ./sql-data-warehouse-develop-ctas.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!--MSDN references-->
-[alter index]:https://msdn.microsoft.com/library/ms188388.aspx
-[RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
-
-<!-- Other web references -->
+参阅 [SQL 数据仓库中的事务](sql-data-warehouse-develop-transactions.md)，以便详细了解隔离级别和事务限制。  有关其他最佳实践的概述，请参阅 [SQL 数据仓库最佳实践](sql-data-warehouse-best-practices.md)。
 
