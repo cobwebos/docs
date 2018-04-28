@@ -1,6 +1,6 @@
 ---
-title: "Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化 - 系统和通信保护"
-description: "FedRAMP Web 应用程序自动化 - 系统和通信保护"
+title: Azure 安全性和符合性蓝图 - FedRAMP Web 应用程序自动化 - 系统和通信保护
+description: FedRAMP Web 应用程序自动化 - 系统和通信保护
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: ce0917cec67612736103932903eab18d7f0f21bb
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 6749ad50cd1ea1cd4ec6ca2f86fef43a9f1515d9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="system-and-communications-protection-sc"></a>系统和通信保护 (SC)
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **客户** | 此蓝图部署应用程序网关、负载均衡器，并配置网络安全组规则来控制外部边界和内部子网之间的通信。 为方便客户监视，OMS Log Analytics 收集应用程序网关、负载均衡器、网络安全组事件和诊断日志。 |
+| **客户** | 此蓝图部署应用程序网关、负载均衡器，并配置网络安全组规则来控制外部边界和内部子网之间的通信。 为方便客户监视，Log Analytics 收集应用程序网关、负载均衡器、网络安全组事件和诊断日志。 |
 | **提供商 (Microsoft Azure)** | 不适用 |
 
 

@@ -1,41 +1,30 @@
 ---
-title: "使用 IDENTITY 创建代理键 | Microsoft Docs"
-description: "了解如何使用 IDENTITY 在表上创建代理键。"
+title: 使用 IDENTITY 创建代理键 - Azure SQL 数据仓库 | Microsoft Docs
+description: 关于如何使用 IDENTITY 属性在 Azure SQL 数据仓库中创建基于表的代理键的建议和示例。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: faa1034d-314c-4f9d-af81-f5a9aedf33e4
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: e10b58743fad5f7c2c4f00b51f06d4ec9bcb6768
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: ab028705f5af7c37017d2e697240b7d3436f5f71
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="create-surrogate-keys-by-using-identity"></a>使用 IDENTITY 创建代理键
-> [!div class="op_single_selector"]
-> * [概述][Overview]
-> * [数据类型][Data Types]
-> * [分布][Distribute]
-> * [索引][Index]
-> * [分区][Partition]
-> * [统计信息][Statistics]
-> * [临时][Temporary]
-> * [标识][Identity]
-> 
-> 
+# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>使用 IDENTITY 在 Azure SQL 数据仓库中创建代理键
+关于如何使用 IDENTITY 属性在 Azure SQL 数据仓库中创建基于表的代理键的建议和示例。
 
-许多数据建模者想要在设计数据仓库模型时在其表上创建代理键。 可以使用 IDENTITY 属性轻松高效地实现此目标，而不会影响负载性能。 
+## <a name="what-is-a-surrogate-key"></a>什么是代理键？
+基于表的代理键是一个列，其中包含针对每个行的唯一标识符。 此键不是从表数据生成的。 数据建模者想要在设计数据仓库模型时在其表上创建代理键。 可以使用 IDENTITY 属性轻松高效地实现此目标，而不会影响负载性能。  
 
-## <a name="get-started-with-identity"></a>IDENTITY 入门
+## <a name="creating-a-table-with-an-identity-column"></a>创建包含 IDENTITY 列的表
+IDENTITY 属性设计为能够在数据仓库的所有分发中扩展，而不会影响负载性能。 因此，IDENTITY 的实现旨在实现这些目标。 
+
 在首次使用类似以下语句的语法创建表时，可以将表定义为具有 IDENTITY 属性：
 
 ```sql
@@ -52,8 +41,7 @@ WITH
 
 然后，可以使用 `INSERT..SELECT` 来填充表。
 
-## <a name="behavior"></a>行为
-IDENTITY 属性设计为能够在数据仓库的所有分发中扩展，而不会影响负载性能。 因此，IDENTITY 的实现旨在实现这些目标。 本部分重点介绍实现的细微差别，以帮助用户更全面地了解这些实现。  
+本部分的此剩余部分重点介绍实现的细微差别，以帮助用户更全面地了解这些实现。  
 
 ### <a name="allocation-of-values"></a>值的分配
 IDENTITY 属性不保证分配代理值的顺序，这反映了 SQL Server 和 Azure SQL 数据库的行为。 但是，在 Azure SQL 数据仓库中，保证的缺乏更为明显。 
@@ -100,7 +88,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 CREATE TABLE AS SELECT (CTAS) 遵循 SELECT..INTO 中记录的相同 SQL Server 行为。 但是，不能指定语句的 `CREATE TABLE` 部分的列定义中的 IDENTITY 属性。 同样，也不能在 CTAS 的 `SELECT` 部分中使用 IDENTITY 函数。 若要填充表，需要使用 `CREATE TABLE` 来定义后跟 `INSERT..SELECT` 的表来进行填充。
 
-## <a name="explicitly-insert-values-into-an-identity-column"></a>将值显式插入到 IDENTITY 列 
+## <a name="explicitly-inserting-values-into-an-identity-column"></a>将值显式插入到 IDENTITY 列 
 SQL 数据仓库支持 `SET IDENTITY_INSERT <your table> ON|OFF` 语法。 可以使用此语法将值显式插入 IDENTITY 列。
 
 许多数据建模者喜欢在其维度中为某些行使用预定义的负值。 例如，-1 或“未知成员”行。 
@@ -124,11 +112,10 @@ FROM    dbo.T1
 ;
 ```    
 
-## <a name="load-data-into-a-table-with-identity"></a>将数据加载到具有 IDENTITY 的表
+## <a name="loading-data"></a>加载数据
 
 IDENTITY 属性的存在对数据加载代码有一定影响。 本节重点介绍使用 IDENTITY 将数据加载到表中的一些基本模式。 
 
-### <a name="load-data-with-polybase"></a>使用 PolyBase 加载数据
 若要使用 IDENTITY 将数据加载到表中并生成代理键，请创建表，然后使用 INSERT..SELECT 或 INSERT..VALUES 执行加载。
 
 以下示例重点介绍基本模式：
@@ -160,28 +147,16 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE] 
-> 在将数据加载到包含 IDENTITY 列的表时，当前无法使用 `CREATE TABLE AS SELECT`。
+> 目前，在将数据加载到包含 IDENTITY 列的表时，无法使用 CREATE TABLE AS SELECT。
 > 
 
-有关使用大容量复制程序 (BCP) 工具加载数据的详细信息，请参阅以下文章：
+有关如何加载数据的详细信息，请参阅[为 Azure SQL 数据仓库设计提取、加载和转换 (ELT)](design-elt-data-loading.md) 和[有关加载的最佳做法](guidance-for-loading-data.md)。
 
-- [使用 PolyBase 加载][]
-- [PolyBase 最佳实践][]
 
-### <a name="load-data-with-bcp"></a>使用 BCP 加载数据
-BCP 是一个命令行工具，可用于将数据加载到 SQL 数据仓库。 在将数据加载到包含 IDENTITY 列的表中时，其中一个参数 (-E) 控制 BCP 的行为。 
+## <a name="system-views"></a>系统视图
+可以使用 [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) 目录视图来标识具有 IDENTITY 属性的列。
 
-在指定 -E 后，会保留输入文件中为 IDENTITY 列保留的值。 如果未指定 -E，则会忽略此列中的值。 如果不包括 IDENTITY 列，则会正常加载数据。 根据属性的增量和种子策略生成这些值。
-
-有关使用 BCP 加载数据的详细信息，请参阅以下文章：
-
-- [使用 BCP 加载][]
-- [MSDN 中的 BCP][]
-
-## <a name="catalog-views"></a>目录视图
-SQL 数据仓库支持 `sys.identity_columns` 目录视图。 此视图可用于标识具有 IDENTITY 属性的列。
-
-为了帮助更好地了解数据库架构，本示例演示如何将 `sys.identity_columns` 与其他系统目录视图集成：
+为了更好地了解数据库架构，本示例演示如何将 sys.identity_column 与其他系统目录视图集成：
 
 ```sql
 SELECT  sm.name
@@ -202,28 +177,27 @@ AND     tb.name = 'T1'
 ```
 
 ## <a name="limitations"></a>限制
-不能在以下方案中使用 IDENTITY 属性：
-- 其中的列数据类型不是 INT 或 BIGINT
-- 其中的列也同样是分发键
-- 其中的表是外部表 
+以下情况不能使用 IDENTITY 属性：
+- 当列数据类型不是 INT 或 BIGINT 时
+- 当列也同样是分发键时
+- 当表是外部表时 
 
 SQL 数据仓库中不支持以下相关函数：
 
-- [IDENTITY()][]
-- [@@IDENTITY][]
-- [SCOPE_IDENTITY][]
-- [IDENT_CURRENT][]
-- [IDENT_INCR][]
-- [IDENT_SEED][]
-- [DBCC CHECK_IDENT()][]
+- [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql)
+- [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)
+- [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql)
+- [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql)
+- [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql)
+- [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql)
+- [DBCC CHECK_IDENT()](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)
 
-## <a name="tasks"></a>任务
+## <a name="common-tasks"></a>常见任务
 
-本部分提供在使用 IDENTITY 列时可用于执行常见任务的一些示例代码。
+本部分提供在使用 IDENTITY 列时可用于执行常见任务的一些示例代码。 
 
-> [!NOTE] 
-> 在以下所有任务中，列 C1 是 IDENTITY。
-> 
+在以下所有任务中，列 C1 是 IDENTITY。
+ 
  
 ### <a name="find-the-highest-allocated-value-for-a-table"></a>查找表的最大分配值
 使用 `MAX()` 函数来确定分布式表的最大分配值：
@@ -254,39 +228,5 @@ AND     tb.name = 'T1'
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关开发表的详细信息，请参阅[表概述][Overview]、[表数据类型][Data Types]、[分布表][Distribute]、[为表编制索引][Index]、[将表分区][Partition]和[临时表][Temporary]。 
-* 有关最佳实践的详细信息，请参阅 [SQL 数据仓库最佳实践][SQL Data Warehouse Best Practices]。  
+* 若要详细了解如何开发表，请参阅[表概述][概述]。  
 
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[Identity]: ./sql-data-warehouse-tables-identity.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-[使用 BCP 加载]: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-with-bcp/
-[使用 PolyBase 加载]: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase/
-[PolyBase 最佳实践]: https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-polybase-guide/
-
-
-<!--MSDN references-->
-[Identity property]: https://msdn.microsoft.com/library/ms186775.aspx
-[sys.identity_columns]: https://msdn.microsoft.com/library/ms187334.aspx
-[IDENTITY()]: https://msdn.microsoft.com/library/ms189838.aspx
-[@@IDENTITY]: https://msdn.microsoft.com/library/ms187342.aspx
-[SCOPE_IDENTITY]: https://msdn.microsoft.com/library/ms190315.aspx
-[IDENT_CURRENT]: https://msdn.microsoft.com/library/ms175098.aspx
-[IDENT_INCR]: https://msdn.microsoft.com/library/ms189795.aspx
-[IDENT_SEED]: https://msdn.microsoft.com/library/ms189834.aspx
-[DBCC CHECK_IDENT()]: https://msdn.microsoft.com/library/ms176057.aspx
-
-[MSDN 中的 BCP]: https://msdn.microsoft.com/library/ms162802.aspx
-  
-
-<!--Other Web references-->  

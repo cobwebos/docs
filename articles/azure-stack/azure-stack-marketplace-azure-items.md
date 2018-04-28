@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 413485fc764000dadca1a2cccf9ee0de7e9046aa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1081fe9f8aceb6b849d595177b7c7cac2a26cbfc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>适用于 Azure Stack 的 Azure Marketplace 项
 
@@ -32,10 +32,10 @@ ms.lasthandoff: 04/16/2018
 |  | 项名称 | 说明 | 发布者 | OS 类型 |
 | --- | --- | --- | --- | --- |
 |![SQL IaaS 扩展](media/azure-stack-marketplace-azure-items/cse.png) | [ SQL IaaS 扩展 ](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)| <b>下载此扩展来部署 Windows 应用商店项上的任何 SQL Server-此扩展名是必需的。</b> | Microsoft | Windows |
-|![自定义脚本扩展](media/azure-stack-marketplace-azure-items/cse.png) | [ 自定义脚本扩展 ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>请下载此更新，此更新针对用于 Windows 的自定义脚本扩展的内置版本。</b> | Microsoft | Windows |
+|![自定义脚本扩展](media/azure-stack-marketplace-azure-items/cse.png) | [ 自定义脚本扩展 ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| <b>请下载此更新，此更新针对用于 Windows 的自定义脚本扩展的内置版本。</b> | Microsoft | Windows |
 |![PowerShell DSC 扩展](media/azure-stack-marketplace-azure-items/dsc.png) | [ PowerShell DSC 扩展 ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| <b>下载此更新的现成新版 PowerShell DSC 扩展。更新以支持 TLS v1.2。</b> | Microsoft | Windows |
-| ![Microsoft 反恶意软件扩展](media/azure-stack-marketplace-azure-items/cse.png) | [ Microsoft 反恶意软件扩展 ](https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware)| 适用于 Azure 的 Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的单一代理解决方案，可在在后台运行而无需人工干预。 | Microsoft | Windows |
-|![自定义脚本扩展](media/azure-stack-marketplace-azure-items/cse.png) | [ 自定义脚本扩展 ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-customscript)| <b>下载此更新适用于 Linux 的现成新版自定义脚本扩展。没有此扩展的多个版本，并且你应下载 1.5.2.1 和 2.0.x。 </b> | Microsoft | Linux |
+| ![Microsoft 反恶意软件扩展](media/azure-stack-marketplace-azure-items/cse.png) | [ Microsoft 反恶意软件扩展 ](https://docs.microsoft.com/azure/security/azure-security-antimalware)| 适用于 Azure 的 Microsoft 反恶意软件是一个针对应用程序和租户环境所提供的单一代理解决方案，可在在后台运行而无需人工干预。 | Microsoft | Windows |
+|![自定义脚本扩展](media/azure-stack-marketplace-azure-items/cse.png) | [ 自定义脚本扩展 ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript)| <b>下载此更新适用于 Linux 的现成新版自定义脚本扩展。没有此扩展的多个版本，并且你应下载 1.5.2.1 和 2.0.x。 </b> | Microsoft | Linux |
 | ![Docker 扩展](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.docker-arm) | 适用于 Linux 虚拟机的 Docker 扩展。 | Microsoft | Linux |
 | ![适用于 Linux 的 VM 访问](media/azure-stack-marketplace-azure-items/cse.png) | [ 适用于 Linux 的 VM 访问权限 ](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>请下载此更新，此更新针对适用于 Linux 的 VM 访问权限扩展的内置版本。如果计划使用 Debian Linux VM，此更新很重要。</b> | Microsoft | Linux |
 | ![适用于 Linux Acronis 备份扩展](media/azure-stack-marketplace-azure-items/acronis.png) | [ 适用于 Linux 的 Acronis 备份扩展 ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | Microsoft Azure Acronis 备份扩展是 Acronis 备份产品系列的数据保护的一部分。 | Acronis International GmbH。 | Linux |

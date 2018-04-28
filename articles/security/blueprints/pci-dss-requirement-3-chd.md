@@ -1,6 +1,6 @@
 ---
-title: "Azure 付款处理蓝图 - CHD 要求"
-description: "PCI DSS 要求 3"
+title: Azure 付款处理蓝图 - CHD 要求
+description: PCI DSS 要求 3
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 356599cbe1e4e1948a5ec16d0d504835fa7dcd43
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 3bbed692bfccaa2a3296ba4697c66e9069b6e914
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="chd-requirements-for-pci-dss-compliant-environments"></a>PCI DSS 相容环境的 CHD 要求
 ## <a name="pci-dss-requirement-3"></a>PCI DSS 要求 3
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Azure 有责任确保指定要删除的客户数据已使用在安全处置策略中指定的 NIST 800-88 兼容协议安全地取消配置。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Azure 有责任确保指定要删除的客户数据已使用在安全处置策略中指定的 NIST 800-88 兼容协议安全地取消配置。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 不删除或销毁任何存储的 CHD。 但是，所有数据都会加密，不存储任何主帐号 (PAN) 数据。<br /><br />|
 
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 不删除或销毁任何存储的 CHD：存储示例数据只是为了进行演示。 但是，所有数据都会加密，不存储任何主帐号 (PAN) 数据。<br /><br />|
 
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 不存储任何 CHD 的完整内容。|
 
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 加密所有数据，包括 CVV 示例。|
 
 
@@ -108,7 +108,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 不存储 PIN 信息。|
 
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用透明数据加密、Always Encrypted 列和动态数据掩码来屏蔽主帐号 (PAN)。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。|
 
 
@@ -144,7 +144,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 加密所有信用卡数据，并使用 Azure Key Vault 管理密钥，防止检索 CHD。<br /><br />有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。|
 
 
@@ -160,8 +160,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 加密所有存储的数据，并将流量分开，防止针对 DevOps 功能的特权提升。<br /><br />对应用服务环境进行保护和锁定以后，需实施一项机制来允许任何可能是必需的 DevOps 版本或更改，例如使用 Kudu 监视 Web 应用的功能。<br /><br />可以使用以下配置将虚拟机设置为 jumpbox（守护主机）：<br /><br /><ul><li>[反恶意软件扩展](/azure/security/azure-security-antimalware)</li><li>[OMS 监视扩展](/azure/virtual-machines/virtual-machines-windows-extensions-oms)</li><li>[VM 诊断扩展](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)</li><li>[Bitlocker 加密磁盘](/azure/security/azure-security-disk-encryption)</li></ul>使用 Azure Key Vault 符合 Azure 政府、PCI DSS 和 HIPAA 要求。|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 加密所有存储的数据，并将流量分开，防止针对 DevOps 功能的特权提升。<br /><br />对应用服务环境进行保护和锁定以后，需实施一项机制来允许任何可能是必需的 DevOps 版本或更改，例如使用 Kudu 监视 Web 应用的功能。<br /><br />可以使用以下配置将虚拟机设置为 jumpbox（守护主机）：<br /><br /><ul><li>[反恶意软件扩展](/azure/security/azure-security-antimalware)</li><li>[Log Analytics 监视扩展](/azure/virtual-machines/virtual-machines-windows-extensions-oms)</li><li>[VM 诊断扩展](/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)</li><li>[Bitlocker 加密磁盘](/azure/security/azure-security-disk-encryption)</li></ul>使用 Azure Key Vault 符合 Azure 政府、PCI DSS 和 HIPAA 要求。|
 
 
 
@@ -176,7 +176,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />Microsoft Azure 确保客户密钥保管库在逻辑上彼此隔离，以及在逻辑上与 Key Vault 服务的管理平面隔离。 Key Vault 的设计使得 Microsoft 也没有客户密钥保管库的访问权限。 <br /><br />密钥由 Microsoft Azure 使用行业标准算法、密钥长度和硬件安全模块 (HSM) 进行保护。<br /><br />在 Microsoft Azure Key Vault 中存储的密钥可以用来保护另一密钥。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />Microsoft Azure 确保客户密钥保管库在逻辑上彼此隔离，以及在逻辑上与 Key Vault 服务的管理平面隔离。 Key Vault 的设计使得 Microsoft 也没有客户密钥保管库的访问权限。 <br /><br />密钥由 Microsoft Azure 使用行业标准算法、密钥长度和硬件安全模块 (HSM) 进行保护。<br /><br />在 Microsoft Azure Key Vault 中存储的密钥可以用来保护另一密钥。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以利用 Contoso Webstore 提供的演示和帮助文档来部署受保护密钥解决方案，从而保护演示 CHD。|
 
 
@@ -195,7 +195,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />Microsoft Azure 确保客户密钥保管库在逻辑上彼此隔离，以及在逻辑上与 Key Vault 服务的管理平面隔离。 Key Vault 的设计使得 Microsoft 也没有客户密钥保管库的访问权限。 <br /><br />密钥由 Microsoft Azure 使用行业标准算法、密钥长度和硬件安全模块 (HSM) 进行保护。<br /><br />在 Microsoft Azure Key Vault 中存储的密钥可以用来保护另一密钥。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />Microsoft Azure 确保客户密钥保管库在逻辑上彼此隔离，以及在逻辑上与 Key Vault 服务的管理平面隔离。 Key Vault 的设计使得 Microsoft 也没有客户密钥保管库的访问权限。 <br /><br />密钥由 Microsoft Azure 使用行业标准算法、密钥长度和硬件安全模块 (HSM) 进行保护。<br /><br />在 Microsoft Azure Key Vault 中存储的密钥可以用来保护另一密钥。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 可以利用 Contoso Webstore 提供的演示和帮助文档来部署受保护密钥解决方案，从而保护演示 CHD。|
 
 
@@ -209,7 +209,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />Key Vault 支持细化的访问策略，允许 Key Vault 所有者授予特定功能的访问权限，对特定实体执行特定操作。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />Key Vault 支持细化的访问策略，允许 Key Vault 所有者授予特定功能的访问权限，对特定实体执行特定操作。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 密钥管理只能使用一个用户帐户 (admin##@contosowebstore.com)。|
 
 
@@ -228,7 +228,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />密钥存储在客户标识的特定密钥保管库中。<br /><br />Key Vault 允许多个应用程序对其同时进行全局访问，这样就减少了复制密钥并将其存储在多个位置的需求。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />密钥存储在客户标识的特定密钥保管库中。<br /><br />Key Vault 允许多个应用程序对其同时进行全局访问，这样就减少了复制密钥并将其存储在多个位置的需求。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Key Vault 进行所有密钥管理。 有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。|
 
 
@@ -242,7 +242,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />密钥存储在客户标识的特定密钥保管库中。 <br /><br />Key Vault 允许多个应用程序对其同时进行全局访问，这样就减少了复制密钥并将其存储在多个位置的需求。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />密钥存储在客户标识的特定密钥保管库中。 <br /><br />Key Vault 允许多个应用程序对其同时进行全局访问，这样就减少了复制密钥并将其存储在多个位置的需求。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Key Vault 进行所有密钥管理。有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。|
 
 
@@ -252,13 +252,13 @@ ms.lasthandoff: 11/16/2017
 **3.6** 对于用于加密持卡人数据的加密密钥，完整地记录和实施包括以下内容在内的所有密钥管理流程和过程。 
 
 > [!NOTE]
-> 各种密钥管理行业标准具有不同的来源，其中包括 NIST，网址为 http://csrc.nist.gov。
+> 密钥管理的许多行业标准在各种资源（包括 NIST，可在 http://csrc.nist.gov 中找到）中提供。
 
 **责任：&nbsp;&nbsp;`Customer Only`**
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Key Vault 进行所有密钥管理。 有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。|
 
 
@@ -271,7 +271,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：** <br /><br />在 Key Vault 中生成密钥时，Azure 负责根据客户的规范生成密钥。 密钥使用 HSM 生成。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：** <br /><br />在 Key Vault 中生成密钥时，Azure 负责根据客户的规范生成密钥。 密钥使用 HSM 生成。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Key Vault 进行所有密钥管理。 有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。|
 
 
@@ -284,7 +284,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />自带密钥 (BYOK) 工具可封装客户密钥，并以绑定到特定 Azure 订阅的特定安全保管库为目标。 只能将密钥导入到已定义订阅的密钥保管库，后者位于指定的区域。 此流程使用硬件制造商规定的加密过程。 客户会收到传输成功的通知。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />自带密钥 (BYOK) 工具可封装客户密钥，并以绑定到特定 Azure 订阅的特定安全保管库为目标。 只能将密钥导入到已定义订阅的密钥保管库，后者位于指定的区域。 此流程使用硬件制造商规定的加密过程。 客户会收到传输成功的通知。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Key Vault 进行所有密钥管理。 有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。|
 
 
@@ -297,7 +297,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />密钥存储在 HSM 中，使用硬件制造商的加密安全措施进行保护。 密钥的元数据以加密状态存储在 Azure 存储中，该状态特定于每个密钥保管库。 <br /><br /> |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />密钥存储在 HSM 中，使用硬件制造商的加密安全措施进行保护。 密钥的元数据以加密状态存储在 Azure 存储中，该状态特定于每个密钥保管库。 <br /><br /> |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Key Vault 进行所有密钥管理。 有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。|
 
 
@@ -310,7 +310,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />Key Vault 支持客户定义的更新或轮替密钥的功能。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />Key Vault 支持客户定义的更新或轮替密钥的功能。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Key Vault 进行所有密钥管理。 有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。|
 
 
@@ -326,7 +326,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />Key Vault 支持客户定义的停用或替换功能。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />Key Vault 支持客户定义的停用或替换功能。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Key Vault 进行所有密钥管理。 有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。|
 
 
@@ -342,7 +342,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Key Vault 进行所有密钥管理。 有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。|
 
 
@@ -355,7 +355,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />Key Vault 在逻辑上是隔离的，不支持跨目录授权， 因此可以阻止非授权替换。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | **对于使用 Key Vault 的客户：**<br /><br />Key Vault 在逻辑上是隔离的，不支持跨目录授权， 因此可以阻止非授权替换。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Key Vault 进行所有密钥管理。 有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。|
 
 
@@ -368,7 +368,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 密钥管理只能使用一个用户帐户 (admin##@contosowebstore.com)。|
 
 
@@ -381,7 +381,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 Azure Key Vault 进行所有密钥管理。 有关详细信息，请参阅 [PCI 指南 - 加密](payment-processing-blueprint.md#encryption-and-secrets-management)。|
 
 

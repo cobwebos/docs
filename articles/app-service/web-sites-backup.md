@@ -1,8 +1,8 @@
 ---
-title: "在 Azure 中备份应用"
-description: "了解如何在 Azure 应用服务中创建应用备份。"
+title: 在 Azure 中备份应用
+description: 了解如何在 Azure 应用服务中创建应用备份。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 435370a8758d439a5fcce2e04efd11b4aaaf0357
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 66423fecce92cd933cc8680810aa2abe5e25a90d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 利用 [Azure App Service](app-service-web-overview.md) 中的备份和还原功能，可以轻松地手动或按计划创建应用备份。 通过覆盖现有应用或还原为另一应用可将应用还原为先前状态的快照。 
@@ -35,9 +35,9 @@ ms.lasthandoff: 11/18/2017
 * 连接到应用的数据库
 
 备份功能支持以下数据库解决方案： 
-   - [SQL 数据库](https://azure.microsoft.com/en-us/services/sql-database/)
-   - [用于 MySQL 的 Azure 数据库（预览版）](https://azure.microsoft.com/en-us/services/mysql)
-   - [用于 PostgreSQL 的 Azure 数据库（预览版）](https://azure.microsoft.com/en-us/services/postgres)
+   - [SQL 数据库](https://azure.microsoft.com/services/sql-database/)
+   - [用于 MySQL 的 Azure 数据库（预览版）](https://azure.microsoft.com/services/mysql)
+   - [用于 PostgreSQL 的 Azure 数据库（预览版）](https://azure.microsoft.com/services/postgres)
    - [MySQL 应用内产品](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
  
 

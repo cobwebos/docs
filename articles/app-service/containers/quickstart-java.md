@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 2c37151c09c7b180993056532c07ff081f576b83
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 657a5a72650b330323406703d2c479c96c096f2e
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="preview-create-a-java-web-app-in-app-service-on-linux"></a>预览版：在 Linux 上的应用服务中创建 Java Web 应用
 
@@ -60,7 +60,10 @@ Linux 上的应用服务目前提供一项支持 Java Web 应用的预览版功�
 在 Cloud Shell 的 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../app-service-web-overview.md)。 可以通过使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) 命令完成此操作。 在以下示例中，将 \<app_name> 替换为全局唯一的应用名称（有效字符为 `a-z`、`0-9` 和 `-`）。 
 
 ```azurecli-interactive
+# Bash
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --runtime "TOMCAT|8.5-jre8"
+# PowerShell
+az --% webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --runtime "TOMCAT|8.5-jre8"
 ```
 
 对于 **runtime** 参数，请使用以下某个运行时：
@@ -177,7 +180,7 @@ curl -T war_file_path -u "app_name\username" ftp://webappFTPURL/site/wwwroot/web
 * `war_file_path` - 使用本地 WAR 文件路径。
 * `app_name` - 使用以前创建的应用名称。
 * `username` - 使用以前创建的部署凭据用户名。
-* `webappFTPURL` - 将 **FTP 主机名**值用于以前复制的 Web 应用。 FTP 主机名也列在 **Azure 门户**的 Web 应用的“概览”边栏选项卡中。[Azure portal](https://portal.azure.com/)
+* `webappFTPURL` - 将 **FTP 主机名**值用于以前复制的 Web 应用。 FTP 主机名也列在 **Azure 门户**的 Web 应用的“概览”边栏选项卡中。[](https://portal.azure.com/)
 
 执行此命令。 出现 cURL 提示时，键入部署凭据的密码。
 

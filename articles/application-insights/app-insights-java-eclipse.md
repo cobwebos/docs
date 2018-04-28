@@ -1,6 +1,6 @@
 ---
-title: "通过 Eclipse 中的 Java 开始使用 Azure Application Insights | Microsoft docs"
-description: "在 Application Insights 中使用 Eclipse 插件为 Java 网站添加性能和使用情况监视功能"
+title: 通过 Eclipse 中的 Java 开始使用 Azure Application Insights | Microsoft docs
+description: 在 Application Insights 中使用 Eclipse 插件为 Java 网站添加性能和使用情况监视功能
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 616cbfed405454d2abbb6bb526166d2c72e4365d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 3cddfb918f98dfd41e84a6cc5473df6e26d1a482
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>通过 Eclipse 中的 Java 开始使用 Application Insights
 Application Insights SDK 通过 Java Web 应用程序发送遥测数据，使用户能够分析使用情况和性能。 适用于 Application Insights 的 Eclipse 插件自动在项目中安装 SDK，使用户能够获取现成的遥测功能，另外，还可以使用一个 API 来编写自定义遥测。   
@@ -28,7 +28,7 @@ Application Insights SDK 通过 Java Web 应用程序发送遥测数据，使用
 
 需要：
 
-* Oracle JRE 1.6 或更高版本
+* JRE 1.7 或 1.8
 * [Microsoft Azure](https://azure.microsoft.com/) 订阅。
 * [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/)、Indigo 或更高版本。
 * Windows 7 或更高版本，或 Windows Server 2008 或更高版本
@@ -39,7 +39,7 @@ Application Insights SDK 通过 Java Web 应用程序发送遥测数据，使用
 1. 在 Eclipse 中单击“帮助”，并单击“安装新软件”。
 
     ![“帮助”->“安装新软件”](./media/app-insights-java-eclipse/0-plugin.png)
-2. 该 SDK 位于 http://dl.microsoft.com/eclipse 中的“Azure 工具包”下。
+2. SDK 在 http://dl.microsoft.com/eclipse 中的“Azure 工具包”下。
 3. 取消选中“联系所有更新站点...”
 
     ![对于 Application Insights SDK，请清除“联系所有更新站点”](./media/app-insights-java-eclipse/1-plugin.png)

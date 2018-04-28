@@ -3,18 +3,18 @@ title: 使用 Azure 策略以编程方式创建策略和查看符合性数据 | 
 description: 本文逐步讲解如何以编程方式创建和管理适用于 Azure 策略的策略。
 services: azure-policy
 keywords: ''
-author: bandersmsft
-ms.author: banders
+author: DCtheGeek
+ms.author: dacoulte
 ms.date: 03/28/2018
 ms.topic: article
 ms.service: azure-policy
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: 1809f0b7ef386bb9eeaa55982178e4cd5e1dd2e2
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: bd0dbb1b6b44b34fc86b8c73fa586b1b4cf880f3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>以编程方式创建策略和查看符合性数据
 
@@ -28,12 +28,11 @@ ms.lasthandoff: 03/30/2018
 2. 将 AzureRM PowerShell 模块更新到最新版本。 有关最新版本的详细信息，请参阅 Azure PowerShell https://github.com/Azure/azure-powershell/releases。
 3. 使用 Azure PowerShell 注册策略见解资源提供程序，以确保订阅可使用资源提供程序。 若要注册资源提供程序，必须具有为资源提供程序执行注册操作的权限。 此操作包含在“参与者”和“所有者”角色中。 运行以下命令，注册资源提供程序：
 
-    ```
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.PolicyInsights
-    ```
+  ```azurepowershell-interactive
+  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.PolicyInsights
+  ```
 
-    有关注册和查看资源提供程序的详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md)。
-
+  有关注册和查看资源提供程序的详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/resource-manager-supported-services.md)。
 4. 安装 Azure CLI（如果尚未安装）。 可以通过[在 Windows 上安装 Azure CLI 2.0](/azure/install-azure-cli-windows?view=azure-cli-latest) 获取最新版本。
 
 ## <a name="create-and-assign-a-policy-definition"></a>创建并分配策略定义
@@ -46,54 +45,46 @@ ms.lasthandoff: 03/30/2018
 
 1. 使用以下 JSON 代码片段创建名为 AuditStorageAccounts.json 的 JSON 文件。
 
-    ```
-    {
-    "if": {
-      "allOf": [
-        {
-          "field": "type",
-          "equals": "Microsoft.Storage/storageAccounts"
-        },
-        {
-          "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction",
-          "equals": "Allow"
-        }
-      ]
-    },
-    "then": {
-      "effect": "audit"
-    }
+  ```json
+  {
+      "if": {
+          "allOf": [{
+                  "field": "type",
+                  "equals": "Microsoft.Storage/storageAccounts"
+              },
+              {
+                  "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction",
+                  "equals": "Allow"
+              }
+          ]
+      },
+      "then": {
+          "effect": "audit"
+      }
   }
+  ```
 
-    ```
-
-    有关编写策略定义的详细信息，请参阅 [Azure 策略定义结构](policy-definition.md)。
-
+  有关编写策略定义的详细信息，请参阅 [Azure 策略定义结构](policy-definition.md)。
 2. 运行以下命令，使用 AuditStorageAccounts.json 文件创建策略定义。
 
-    ```
-    PS C:\>New-AzureRmPolicyDefinition -Name "AuditStorageAccounts" -DisplayName "Audit Storage Accounts Open to Public Networks" -Policy C:\AuditStorageAccounts.json
-    ```
+  ```azurepowershell-interactive
+  New-AzureRmPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy AuditStorageAccounts.json
+  ```
 
-    该命令创建名为 _Audit Storage Accounts Open to Public Networks_ 的策略定义。 有关可用的其他参数的详细信息，请参阅 [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition?view=azurermps-4.4.1)。
-
+  该命令创建名为 _Audit Storage Accounts Open to Public Networks_ 的策略定义。 有关可用的其他参数的详细信息，请参阅 [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition)。
 3. 创建策略定义后，可运行以下命令创建策略分配：
 
-    ```
-$rg = Get-AzureRmResourceGroup -Name "ContosoRG"
-```
+  ```azurepowershell-interactive
+  $rg = Get-AzureRmResourceGroup -Name 'ContosoRG'
 
-    ```
-$Policy = Get-AzureRmPolicyDefinition -Name "AuditStorageAccounts"
-    ```
+  $Policy = Get-AzureRmPolicyDefinition -Name 'AuditStorageAccounts'
 
-    ```
-New-AzureRmPolicyAssignment -Name "AuditStorageAccounts" -PolicyDefinition $Policy -Scope $rg.ResourceId –Sku @{Name='A1';Tier='Standard'}
-    ```
+  New-AzureRmPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId –Sku @{Name='A1';Tier='Standard'}
+  ```
 
-    将 _ContosoRG_ 替换为所需资源组的名称。
+  将 _ContosoRG_ 替换为所需资源组的名称。
 
-有关使用 Azure 资源管理器 PowerShell 模块管理资源策略的详细信息，请参阅 [AzureRM.Resources](/powershell/module/azurerm.resources/?view=azurermps-4.4.1#policies)。
+有关使用 Azure 资源管理器 PowerShell 模块管理资源策略的详细信息，请参阅 [AzureRM.Resources](/powershell/module/azurerm.resources/#policies)。
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>使用 ARMClient 创建并分配策略定义
 
@@ -101,75 +92,71 @@ New-AzureRmPolicyAssignment -Name "AuditStorageAccounts" -PolicyDefinition $Poli
 
 1. 复制以下 JSON 代码片段以创建 JSON 文件。 在下一步骤中将会调用该文件。
 
-    ```
-    {
-    "properties": {
-        "displayName": "Audit Storage Accounts Open to Public Networks",
-        "policyType": "Custom",
-        "mode": "Indexed",
-        "description": "This policy ensures that storage accounts with exposure to Public Networks are audited.",
-        "parameters": {},
-        "policyRule": {
-              "if": {
-                "allOf": [
-                  {
-                    "field": "type",
-                    "equals": "Microsoft.Storage/storageAccounts"
+  ```json
+  "properties": {
+      "displayName": "Audit Storage Accounts Open to Public Networks",
+      "policyType": "Custom",
+      "mode": "Indexed",
+      "description": "This policy ensures that storage accounts with exposure to Public Networks are audited.",
+      "parameters": {},
+      "policyRule": {
+          "if": {
+              "allOf": [{
+                      "field": "type",
+                      "equals": "Microsoft.Storage/storageAccounts"
                   },
                   {
-                    "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction",
-                    "equals": "Allow"
+                      "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction",
+                      "equals": "Allow"
                   }
-                ]
-              },
-              "then": {
-                "effect": "audit"
-              }
-            }
-    }
-}
-```
+              ]
+          },
+          "then": {
+              "effect": "audit"
+          }
+      }
+  }
+  ```
 
 2. 使用以下调用创建策略定义：
 
-    ```
-    armclient PUT "/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01 @<path to policy definition JSON file>"
-    ```
+  ```
+  armclient PUT "/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/AuditStorageAccounts?api-version=2016-12-01" @<path to policy definition JSON file>
+  ```
 
-    请将前置的 &lt;subscriptionId&gt; 替换为所需订阅的 ID。
+  请将前置的 &lt;subscriptionId&gt; 替换为所需订阅的 ID。
 
 有关查询结构的详细信息，请参阅[策略定义 – 创建或更新](/rest/api/resources/policydefinitions/createorupdate)。
-
 
 使用以下过程创建策略分配，并在资源组级别分配策略定义。
 
 1. 复制以下 JSON 代码片段以创建 JSON 策略分配文件。 请将 &lt;&gt; 符号中的示例信息替换为自己的值。
 
-    ```
-    {
-  "properties": {
-"description": "This policy assignment makes sure that storage accounts with exposure to Public Networks are audited.",
-"displayName": "Audit Storage Accounts Open to Public Networks Assignment",
-"parameters": {},
-"policyDefinitionId":"/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks",
-"scope": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>"
-},
-"sku": {
-    "name": "A1",
-    "tier": "Standard"
-    }
-}
-    ```
+  ```json
+  {
+      "properties": {
+          "description": "This policy assignment makes sure that storage accounts with exposure to Public Networks are audited.",
+          "displayName": "Audit Storage Accounts Open to Public Networks Assignment",
+          "parameters": {},
+          "policyDefinitionId": "/subscriptions/<subscriptionId>/providers/Microsoft.Authorization/policyDefinitions/Audit Storage Accounts Open to Public Networks",
+          "scope": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>"
+      },
+      "sku": {
+          "name": "A1",
+          "tier": "Standard"
+      }
+  }
+  ```
 
 2. 使用以下调用创建策略分配：
 
-    ```
-    armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2017-06-01-preview" @<path to Assignment JSON file>
-    ```
+  ```
+  armclient PUT "/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/Audit Storage Accounts Open to Public Networks?api-version=2017-06-01-preview" @<path to Assignment JSON file>
+  ```
 
-    请将 &lt;&gt; 符号中的示例信息替换为自己的值。
+  请将 &lt;&gt; 符号中的示例信息替换为自己的值。
 
- 有关向 REST API 发出 HTTP 调用的详细信息，请参阅 [Azure REST API 资源](/rest/api/resources/)。
+  有关向 REST API 发出 HTTP 调用的详细信息，请参阅 [Azure REST API 资源](/rest/api/resources/)。
 
 ### <a name="create-and-assign-a-policy-definition-with-azure-cli"></a>使用 Azure CLI 创建并分配策略定义
 
@@ -177,41 +164,40 @@ New-AzureRmPolicyAssignment -Name "AuditStorageAccounts" -PolicyDefinition $Poli
 
 1. 复制以下 JSON 代码片段以创建 JSON 策略分配文件。
 
-    ```
-    {
-                  "if": {
-                    "allOf": [
-                      {
-                        "field": "type",
-                        "equals": "Microsoft.Storage/storageAccounts"
-                      },
-                      {
-                        "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction",
-                        "equals": "Allow"
-                      }
-                    ]
-                  },
-                  "then": {
-                    "effect": "audit"
-                  }
-    }
-    ```
+  ```json
+  {
+      "if": {
+          "allOf": [{
+                  "field": "type",
+                  "equals": "Microsoft.Storage/storageAccounts"
+              },
+              {
+                  "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction",
+                  "equals": "Allow"
+              }
+          ]
+      },
+      "then": {
+          "effect": "audit"
+      }
+  }
+  ```
 
 2. 运行以下命令创建策略定义：
 
-    ```
+  ```azurecli-interactive
 az policy definition create --name 'audit-storage-accounts-open-to-public-networks' --display-name 'Audit Storage Accounts Open to Public Networks' --description 'This policy ensures that storage accounts with exposures to public networks are audited.' --rules '<path to json file>' --mode All
-    ```
+  ```
 
-使用以下命令创建策略分配。 请将 &lt;&gt; 符号中的示例信息替换为自己的值。
+3. 使用以下命令创建策略分配。 请将 &lt;&gt; 符号中的示例信息替换为自己的值。
 
-```
-az policy assignment create --name '<Audit Storage Accounts Open to Public Networks in Contoso RG' --scope '<scope>' --policy '<policy definition ID>' --sku 'standard'
-```
+  ```azurecli-interactive
+  az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>' --sku 'standard'
+  ```
 
 可以在 PowerShell 中使用以下命令获取策略定义 ID：
 
-```
+```azurecli-interactive
 az policy definition show --name 'Audit Storage Accounts with Open Public Networks'
 ```
 
@@ -250,45 +236,42 @@ az policy definition show --name 'Audit Storage Accounts with Open Public Networ
 
 1. 运行以下命令获取策略分配 ID：
 
-    ```
-    $policyAssignment = Get-AzureRmPolicyAssignment | where {$_.properties.displayName -eq "Audit Storage Accounts with Open Public Networks"}
-    ```
+  ```azurepowershell-interactive
+  $policyAssignment = Get-AzureRmPolicyAssignment | Where-Object {$_.Properties.displayName -eq 'Audit Storage Accounts with Open Public Networks'}
 
-    ```
-    $policyAssignment.PolicyAssignmentId
-    ```
+  $policyAssignment.PolicyAssignmentId
+  ```
 
-    有关获取策略分配 ID 的详细信息，请参阅 [Get-AzureRMPolicyAssignment](https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/Get-AzureRmPolicyAssignment?view=azurermps-4.4.1)。
+  有关获取策略分配 ID 的详细信息，请参阅 [Get-AzureRMPolicyAssignment](https://docs.microsoft.com/powershell/module/azurerm.resources/Get-AzureRmPolicyAssignment)。
 
 2. 运行以下命令，获取已复制到 JSON 文件中的不合规资源的资源 ID：
 
-    ```
-    armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
-    ```
+  ```
+  armclient POST "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
+  ```
 
 3. 结果应如以下示例所示：
 
-  ```
-      {
-  "@odata.context":"https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest",
-  "@odata.count": 3,
-  "value": [
+  ```json
   {
-      "@odata.id": null,
-      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-        "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount1Id>"
-      },
-      {
-        "@odata.id": null,
-        "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-        "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount2Id>"
-             },
-  {
-        "@odata.id": null,
-        "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-        "ResourceId": "/subscriptions/<subscriptionName>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount3ID>"
-             }
-  ]
+      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest",
+      "@odata.count": 3,
+      "value": [{
+              "@odata.id": null,
+              "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+              "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount1Id>"
+          },
+          {
+              "@odata.id": null,
+              "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+              "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount2Id>"
+          },
+          {
+              "@odata.id": null,
+              "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+              "ResourceId": "/subscriptions/<subscriptionName>/resourcegroups/<rgname>/providers/microsoft.storage/storageaccounts/<storageaccount3ID>"
+          }
+      ]
   }
   ```
 
@@ -306,19 +289,16 @@ armclient POST "/subscriptions/<subscriptionId>/providers/Microsoft.Authorizatio
 
 结果应如以下示例所示：
 
-```
+```json
 {
-  "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyEvents/$metadata#default",
-  "@odata.count": 1,
-  "value": [
-    {
-      "@odata.id": null,
-      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyEvents/$metadata#default/$entity",
-      "NumAuditEvents": 3
-    }
-  ]
+    "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyEvents/$metadata#default",
+    "@odata.count": 1,
+    "value": [{
+        "@odata.id": null,
+        "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyEvents/$metadata#default/$entity",
+        "NumAuditEvents": 3
+    }]
 }
-
 ```
 
 与处理策略状态时一样，只能使用 HTTP 请求查看策略事件。 有关查询策略事件的详细信息，请参阅[策略事件](/rest/api/policy-insights/policyevents)参考文章。
@@ -327,17 +307,17 @@ armclient POST "/subscriptions/<subscriptionId>/providers/Microsoft.Authorizatio
 
 可以使用 *Set-AzureRmPolicyAssignment* PowerShell cmdlet 将现有策略分配的定价层更新为“标准”或“免费”。 例如：
 
-```
-Set-AzureRmPolicyAssignment -Id /subscriptions/<subscriptionId/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/<policyAssignmentID> -Sku @{Name='A1';Tier='Standard'}
+```azurepowershell-interactive
+Set-AzureRmPolicyAssignment -Id '/subscriptions/<subscriptionId/resourceGroups/<resourceGroupName>/providers/Microsoft.Authorization/policyAssignments/<policyAssignmentID>' -Sku @{Name='A1';Tier='Standard'}
 ```
 
-有关该 cmdlet 的详细信息，请参阅 [Set-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/Set-AzureRmPolicyAssignment?view=azurermps-4.4.1)。
+有关该 cmdlet 的详细信息，请参阅 [Set-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/Set-AzureRmPolicyAssignment)。
 
 ## <a name="next-steps"></a>后续步骤
 
 查看以下文章，详细了解本文中所示的命令和查询。
 
 - [Azure REST API 资源](/rest/api/resources/)
-- [Azure RM PowerShell 模块](/powershell/module/azurerm.resources/?view=azurermps-4.4.1#policies)
+- [Azure RM PowerShell 模块](/powershell/module/azurerm.resources/#policies)
 - [Azure CLI 策略命令](/cli/azure/policy?view=azure-cli-latest)
 - [策略见解资源提供程序 REST API 参考](/rest/api/policy-insights)

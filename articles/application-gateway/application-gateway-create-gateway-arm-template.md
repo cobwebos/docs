@@ -1,6 +1,6 @@
 ---
-title: "创建 Azure 应用程序网关 - 模板 | Microsoft Docs"
-description: "本页提供有关使用 Azure 资源管理器模板创建 Azure 应用程序网关的说明"
+title: 创建 Azure 应用程序网关 - 模板 | Microsoft Docs
+description: 本页提供有关使用 Azure 资源管理器模板创建 Azure 应用程序网关的说明
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
-ms.openlocfilehash: 0aa16e9d7472d2d8c3c251e60a506a7f4223ac1d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ba100189cec2060efa97914a2c90f7b0cccbc33f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建应用程序网关
 
@@ -34,7 +34,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 
 如果只是直接从 GitHub 部署模板，而不进行任何更改，请跳到“从 GitHub 部署模板”。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 在此方案中，将：
 
@@ -46,7 +46,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 > [!NOTE]
 > 这些设置是适用于此模板的参数。 若要自定义模板，可更改 azuredeploy.json 文件中的规则、侦听程序、SSL 以及其他选项。
 
-![方案](./media/application-gateway-create-gateway-arm-template/scenario.png)
+![场景](./media/application-gateway-create-gateway-arm-template/scenario.png)
 
 ## <a name="download-and-understand-the-azure-resource-manager-template"></a>下载 Azure 资源管理器模板并对其进行了解
 
@@ -129,7 +129,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 1. 登录 PowerShell
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1. 检查该帐户的订阅。
@@ -189,7 +189,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地�
 
 1. 单击 **“部署到 Azure”**。
 
-    ![部署到 Azure](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
+    ![“部署到 Azure”](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
     
 1. 在门户上填写部署模板的参数，并单击“确定” 。
 

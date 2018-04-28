@@ -1,12 +1,12 @@
 ---
-title: "Azure 顾问安全性建议 | Microsoft Docs"
-description: "使用 Azure 顾问提高 Azure 部署的安全性。"
+title: Azure 顾问安全性建议 | Microsoft Docs
+description: 使用 Azure 顾问提高 Azure 部署的安全性。
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: ea6fc67a0f5bdfe09435a00c4d2651f312695d25
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: e8a2350744e7b967cc19d0e73686f32edf980eac
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="advisor-security-recommendations"></a>顾问安全性建议
 
@@ -26,7 +26,7 @@ Azure 顾问针对所有 Azure 资源提供一个一致且统一的建议视图�
 
 安全中心有助于预防、检测和响应威胁，同时增加 Azure 资源的可见性和安全可控性。 可定期分析 Azure 资源的安全状态。 安全中心识别到潜在的安全漏洞时，会创建建议。 此建议指导完成配置所需控件的过程。 
 
-有关安全性建议的详细信息，请参阅[管理 Azure 安全中心的安全性建议](https://azure.microsoft.com/en-us/documentation/articles/security-center-recommendations/)。
+有关安全性建议的详细信息，请参阅[管理 Azure 安全中心的安全性建议](https://azure.microsoft.com/documentation/articles/security-center-recommendations/)。
 
 ## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>如何访问 Azure 顾问中的安全性建议
 

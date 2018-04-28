@@ -1,11 +1,11 @@
 ---
-title: "Azure 计费企业 API | Microsoft Docs"
-description: "了解使企业 Azure 客户能够以编程方式提取消耗数据的报告 API。"
-services: 
-documentationcenter: 
+title: Azure 计费企业 API | Microsoft Docs
+description: 了解使企业 Azure 客户能够以编程方式提取消耗数据的报告 API。
+services: ''
+documentationcenter: ''
 author: anandedwin
 manager: aedwin
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
 ms.service: billing
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: f7a480c77c93035e655606433aea2547a1c105cc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7ae04c7c1fdddecf40583d14f7b08dcf41941c6f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>面向企业客户的报告 API 概述
 报告 API 使企业 Azure 客户能够以编程方式将消耗数据和计费数据提取到首选的数据分析工具。 
 
 ## <a name="enabling-data-access-to-the-api"></a>实现对 API 的数据访问
-* 生成或检索 API 密钥 - 登录到企业门户并按照“帮助”下的教程操作 - 报告 API。 此帮助文章下的第一部分介绍如何为指定的注册生成或检索 API 密钥。
+* **生成或检索 API 密钥** - 登录到 Enterprise Portal，并导航到“报告”>“下载使用情况”>“API 访问密钥”，生成或检索 API 密钥。
 * 传递 API 密钥 - 需要为每个调用传递 API 密钥，以便进行身份验证和授权。 以下属性需要是 HTTP 标头
 
 |请求标头密钥 | 值|

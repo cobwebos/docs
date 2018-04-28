@@ -1,6 +1,6 @@
 ---
-title: "将 Azure 文件与 AKS 配合使用"
-description: "将 Azure 磁盘与 AKS 配合使用"
+title: 将 Azure 文件与 AKS 配合使用
+description: 将 Azure 磁盘与 AKS 配合使用
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1def417f97a94fa0770b99606cd3a68189d1d51b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 04380e5e9e0f1f9b0c88fdba8d21b3e7e8e8a358
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="volumes-with-azure-files"></a>含 Azure 文件的卷
 
@@ -94,7 +94,7 @@ spec:
 kubectl apply -f azure-files-pod.yaml
 ```
 
-现在你有一个正在运行的容器，其中 Azure 文件共享被装载到 `/mnt/azure` 目录中。 通过 `kubectl describe pod azure-files-pod` 检查 pod 时，可以看到此卷装载。
+现在你有一个正在运行的容器，其中 Azure 文件共享被装载到 `/mnt/azure` 目录中。  通过 `kubectl describe pod azure-files-pod` 检查 pod 时，可以看到此卷装载。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,11 +1,11 @@
 ---
-title: "横向扩展应用程序服务-Azure 堆栈中的辅助角色 |Microsoft 文档"
-description: "缩放 Azure 堆栈应用程序服务的详细的指南"
+title: 横向扩展应用服务中的辅助角色 - Azure Stack | Microsoft Docs
+description: Azure Stack 应用服务伸缩详细指南
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: 3cbe87bd-8ae2-47dc-a367-51e67ed4b3c0
 ms.service: azure-stack
 ms.workload: app-service
@@ -15,43 +15,43 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 680cb70777574d0ed88c5f83fb0a6fa20263b951
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
-ms.translationtype: MT
+ms.openlocfilehash: f22b16979638d3ef53a6978f95b921aef7688276
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>Azure 堆栈上的 app Service： 添加更多的基础结构或辅助角色
+# <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>基于 Azure Stack 的应用服务：添加更多的基础结构或辅助角色
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*  
 
-本文档提供有关如何在 Azure 堆栈的基础结构和辅助角色上缩放 App Service 的说明。 它不包含用于创建其他辅助角色来支持的任何大小的应用程序的步骤。
+本文档说明如何在 Azure Stack 基础结构和辅助角色上缩放应用服务。 本文档包含的步骤介绍了如何创建额外的辅助角色来支持任意大小的应用程序。
 
 > [!NOTE]
-> 如果你的 Azure 堆栈环境不具有多个 96 GB RAM 的情况下，你可能会遇到困难增加额外容量。
+> 如果 Azure Stack 环境没有 96 GB 以上的 RAM，则可能难以添加更多的容量。
 
-默认情况下，Azure 堆栈上的 app Service 支持免费和共享辅助角色层。 若要添加其他辅助角色层，你需要添加更多的辅助角色。
+基于 Azure Stack 的应用服务默认支持免费的和共享的辅助角色层。 若要添加其他辅助角色层，需添加更多的辅助角色。
 
-如果你不确定什么与 Azure 堆栈安装上的默认值 App Service 一起部署，你可以查看中的其他信息[App Service 上 Azure 堆栈概述](azure-stack-app-service-overview.md)。
+如果不确定默认的基于 Azure Stack 的应用服务安装的部署内容，可以参阅[基于 Azure Stack 的应用服务概述](azure-stack-app-service-overview.md)以获取更多信息。
 
-Azure 堆栈上的 azure App Service 部署使用虚拟机规模集的所有角色，并因此可充分利用此工作负荷的缩放功能。 因此，所有辅助角色层缩放是通过应用程序服务管理员联系。
+基于 Azure Stack 的 Azure 应用服务使用虚拟机规模集来部署所有角色，因此可充分利用此工作负荷的缩放功能。 因此，辅助角色层的所有缩放都是通过应用服务管理员完成的。
 
 > [!IMPORTANT]
-> 目前不可能要在门户中标识的 Azure 堆栈发行说明中缩放虚拟机规模集，因此使用 PowerShell 示例来向外扩展。
+> 目前无法按照 Azure Stack 发行说明中介绍的那样在门户中缩放虚拟机规模集，因此请使用 PowerShell 示例进行横向扩展。
 >
 >
 
-## <a name="add-additional-workers-with-powershell"></a>添加使用 PowerShell 的其他工作进程
+## <a name="add-additional-workers-with-powershell"></a>使用 PowerShell 添加更多辅助角色
 
-1. [安装 PowerShell 中的 Azure 堆栈管理环境](azure-stack-powershell-configure-admin.md)
+1. [在 PowerShell 中设置 Azure Stack 管理环境](azure-stack-powershell-configure-admin.md)
 
-2. 使用此示例向外缩放集扩展：
+2. 使用以下示例来横向扩展规模集：
    ```powershell
    
     ##### Scale out the AppService Role instances ######
    
     # Set context to AzureStack admin.
-    Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+    Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
                                                  
     ## Name of the Resource group where AppService is deployed.
     $AppServiceResourceGroupName = "AppService.local"
@@ -72,46 +72,46 @@ Azure 堆栈上的 azure App Service 部署使用虚拟机规模集的所有角�
    ```    
 
    > [!NOTE]
-   > 此步骤可能需要数小时才能完成，具体取决于角色的类型和实例数。
+   > 根据角色类型和实例数目，此步骤可能需要几小时才能完成。
    >
    >
 
-3. 监视应用程序服务管理中的新角色实例的状态，若要检查单个角色实例的状态，请单击列表中的角色类型。
+3. 在“应用服务管理”中监视新角色实例的状态。若要查看单个角色实例的状态，请单击列表中的角色类型。
 
-## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>添加其他工作进程直接在应用程序服务资源提供程序管理员联系。
+## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>在“应用服务资源提供程序管理”中直接添加更多辅助角色。
 
-1. 服务管理员身份登录到 Azure 堆栈管理门户。
+1. 以服务管理员身份登录到 Azure Stack 管理门户。
 
-2. 浏览到**应用程序服务**。
+2. 浏览到“应用服务”。
 
     ![](media/azure-stack-app-service-add-worker-roles/image01.png)
 
-3. 单击“角色”。 你看到的所有部署的应用程序服务角色的明细。
+3. 单击“角色”。 在这里会看到所有已部署的应用服务角色的明细。
 
-4. 右键单击你想要缩放，然后单击类型的行**ScaleSet**。
+4. 右键单击要缩放的类型所在的行，然后单击“ScaleSet”。
 
     ![](media/azure-stack-app-service-add-worker-roles/image02.png)
 
-5. 单击**缩放**，选择你想要扩展到，然后单击的实例数**保存**。
+5. 单击“缩放”，选择要缩放到的实例数，然后单击“保存”。
 
     ![](media/azure-stack-app-service-add-worker-roles/image03.png)
 
-6. Azure 堆栈上的 app Service 现在将添加更多的虚拟机、 将其配置，安装所有所需的软件，和将其标记为准备此过程完成后。 此过程可能需要大约 80 分钟。
+6. 基于 Azure Stack 的应用服务此时会添加其他 VM，对其进行配置，安装所有必需的软件，并在此过程完成后将其标记为“就绪”。 此过程可能需要大约 80 分钟。
 
-7. 你可以通过查看中的辅助角色监视新的角色的就绪状态的进度**角色**边栏选项卡。
+7. 可以监视新角色就绪标记操作的进度，只需在“角色”边栏选项卡中查看辅助角色即可。
 
 ## <a name="result"></a>结果
 
-完全部署，并准备就绪后，工作人员变为可供用户部署其工作负荷到它们。 以下举例说明的多个可用的定价层默认情况下。 如果有可用的辅助角色有关的特定辅助角色层，用于选择相应的定价层选项不可用。
+在完全部署并就绪以后，辅助角色即可供用户使用，用户可以将其工作负荷部署到辅助角色上。 下面显示的示例为默认提供的多个定价层。 如果特定的辅助角色层没有可用的辅助角色，则用于选择相应定价层的选项不可用。
 
 ![](media/azure-stack-app-service-add-worker-roles/image04.png)
 
 >[!NOTE]
-> 若要向外管理扩展，前端或发布服务器角色添加必须横向扩展相应的角色类型。 
+> 若要横向扩展“管理”、“前端”或“发布者”角色，必须横向扩展相应的角色类型。 
 >
 >
 
-若要向外管理、 前端或发布服务器角色扩展，请按照相同的步骤选择相应的角色类型。 控制器不作为缩放集部署并因此，应该两个部署在所有的生产部署的安装时间。
+若要横向扩展“管理”、“前端”或“发布者”角色，请执行选择相应角色类型时执行的步骤。 控制器不是作为规模集来部署的，因此应该在安装时部署两个，这适用于所有生产部署。
 
 ### <a name="next-steps"></a>后续步骤
 

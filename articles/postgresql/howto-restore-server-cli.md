@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 8ca129640db862f6031325279cc98c1e08dcef59
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5c5cc1fdbe48fb93eea204e4619038052e685f1f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for PostgreSQL 中备份和还原服务器
 
@@ -114,6 +114,10 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 若要使用异地冗余备份创建服务器，请使用 Azure CLI `az postgres server georestore` 命令。
 
+> [!NOTE]
+> 首次创建服务器时，该服务器可能不会立即可用于异地还原。 填充必需的元数据可能需要几个小时。
+>
+
 若要异地还原服务器，请在 Azure CLI 命令提示符下输入以下命令：
 
 ```azurecli-interactive
@@ -132,7 +136,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 | 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新服务器将属于的资源组的名称。|
-|name | mydemoserver-georestored | 新服务器的名称。 |
+|名称 | mydemoserver-georestored | 新服务器的名称。 |
 |source-server | mydemoserver | 将使用其异地冗余备份的现有服务器的名称。 |
 |location | eastus | 新服务器的位置。 |
 |sku-name| GP_Gen4_8 | 此参数设置新服务器的定价层、计算层代和 vCore 数。 GP_Gen4_8 映射为一台第 4 代常规用途服务器，具有 8 个 vCore。|

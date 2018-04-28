@@ -1,28 +1,26 @@
 ---
-title: "在 Azure HDInsight Linux 群集上安装 Presto | Microsoft Docs"
-description: "了解如何使用脚本操作在基于 Linux 的 HDInsight Hadoop 群集上安装 Presto 和 Airpal。"
+title: 在 Azure HDInsight Linux 群集上安装 Presto | Microsoft Docs
+description: 了解如何使用脚本操作在基于 Linux 的 HDInsight Hadoop 群集上安装 Presto 和 Airpal。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 1e6f1e1ee37592d974cab01ca229995c4ff6b70e
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 32b7925b7414f00dfdd7d5c8a45b3601bf58942e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Presto
 
-本主题介绍如何使用脚本操作在 HDInsight Hadoop 群集上安装 Presto。 此外，还介绍如何在现有的 Presto HDInsight 群集上安装 Airpal。
+本文档介绍如何使用脚本操作在 HDInsight Hadoop 群集上安装 Presto。 此外，还介绍如何在现有的 Presto HDInsight 群集上安装 Airpal。
 
 > [!IMPORTANT]
 > 本文档中的步骤需要使用 Linux 的 **HDInsight 3.5 Hadoop 群集**。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 版本](hdinsight-component-versioning.md)。
@@ -42,15 +40,15 @@ ms.lasthandoff: 02/24/2018
 
 本部分提供有关如何在通过使用 Azure 门户创建新群集时使用示例脚本的说明。 
 
-1. 使用[预配基于 Linux 的 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)中的步骤开始预配群集。 请确保使用**自定义**群集创建流创建群集。 必须确保创建的群集满足以下要求。
+1. 使用[预配基于 Linux 的 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)中的步骤开始预配群集。 请确保使用**自定义**群集创建流创建群集。 群集必须满足以下要求：
 
-    a. 它必须是装有 HDInsight 3.5 的 Hadoop 群集。
+    * 它必须是装有 HDInsight 3.5 的 Hadoop 群集。
 
-    b. 它必须使用 Azure 存储作为数据存储。 目前不支持在将 Azure Data Lake Store 用作存储选项的群集上使用 Presto。 
+    * 它必须使用 Azure 存储作为数据存储。 目前不支持在将 Azure Data Lake Store 用作存储选项的群集上使用 Presto。 
 
     ![使用自定义选项创建 HDInsight 群集](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
-2. 在“高级设置”边栏选项卡上，选择“脚本操作”，并提供以下信息：
+2. 在“高级设置”区域中，选择“脚本操作”，并提供以下信息：
    
    * **名称**：输入脚本操作的友好名称。
    * **Bash 脚本 URI**：`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`
@@ -60,7 +58,7 @@ ms.lasthandoff: 02/24/2018
    * **参数**：将此字段留空
 
 
-3. 在“脚本操作”边栏选项卡底部，单击“选择”按钮保存配置。 最后，单击“高级设置”边栏选项卡底部的“选择”按钮保存配置信息。
+3. 在“脚本操作”区域底部，单击“选择”按钮以保存配置。 最后，单击“高级设置”区域底部的“选择”按钮来保存配置信息。
 
 4. 根据[预配基于 Linux 的 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-portal.md)中所述继续预配群集。
 
@@ -71,7 +69,7 @@ ms.lasthandoff: 02/24/2018
 
 ## <a name="use-presto-with-hdinsight"></a>在 HDInsight 中使用 Presto
 
-使用前面所述的步骤安装 Presto 后，请执行以下步骤在 HDInsight 群集中使用 Presto。
+若要在 HDInsight 群集中使用 Presto，请使用以下步骤：
 
 1. 使用 SSH 连接到 HDInsight 群集：
    
@@ -90,13 +88,13 @@ ms.lasthandoff: 02/24/2018
    
     默认情况下，已配置适用于 Presto 的 [Hive](https://prestodb.io/docs/current/connector/hive.html) 和 [TPCH](https://prestodb.io/docs/current/connector/tpch.html) 连接器。 Hive 连接器配置为使用默认安装的 Hive 安装，因此 Hive 中的所有表会自动在 Presto 中显示。
 
-    有关如何使用 Presto 的详细说明，请参阅 [Presto 文档](https://prestodb.io/docs/current/index.html)。
+    有关详细信息，请参阅 [Presto 文档](https://prestodb.io/docs/current/index.html)。
 
 ## <a name="use-airpal-with-presto"></a>将 Airpal 与 Presto 配合使用
 
 [Airpal](https://github.com/airbnb/airpal#airpal) 是适用于 Presto 的基于 Web 的开源查询接口。 有关 Airpal 的详细信息，请参阅 [Airpal 文档](https://github.com/airbnb/airpal#airpal)。
 
-本部分介绍在 Presto 已安装的 HDInsight Hadoop 群集边缘节点上**安装 Airpal** 的步骤。 这可确保能够通过 Internet 使用 Airpal Web 查询接口。
+使用以下步骤在边缘节点上安装 Airpal：
 
 1. 使用 SSH 连接到 Presto 已安装的 HDInsight Hadoop 群集边缘节点：
    
@@ -108,7 +106,7 @@ ms.lasthandoff: 02/24/2018
 
         sudo slider registry  --name presto1 --getexp presto 
    
-    应该看到如下输出：
+    将显示类似于以下 JSON 的输出：
 
         {
             "coordinator_address" : [ {
@@ -117,9 +115,9 @@ ms.lasthandoff: 02/24/2018
                 "updatedTime" : "Mon Apr 03 20:13:41 UTC 2017"
         } ]
 
-3. 在输出中，记下 **value** 属性的值。 在群集边缘节点上安装 Airpal 时需要用到它。 从上面的输出中，所需的值为 **10.0.0.12:9090**。
+3. 在输出中，记下 **value** 属性的值。 在群集边缘节点上安装 Airpal 时需要此值。 从上面的输出中，所需的值为 **10.0.0.12:9090**。
 
-4. 使用**[此处](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2Fpresto-hdinsight%2Fmaster%2Fairpal-deploy.json)**的模板创建 HDInsight 群集边缘节点并提供值，如以下屏幕截图中所示。
+4. 使用**[此处](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2Fpresto-hdinsight%2Fmaster%2Fairpal-deploy.json)** 的模板创建 HDInsight 群集边缘节点并提供值，如以下屏幕截图中所示。
 
     ![HDInsight 在 Presto 群集上安装 Airpal](./media/hdinsight-hadoop-install-presto/hdinsight-install-airpal.png)
 
@@ -127,19 +125,19 @@ ms.lasthandoff: 02/24/2018
 
 6. 将更改应用到群集配置后，可以使用以下步骤访问 Airpal Web 接口。
 
-    a. 在群集边栏选项卡中单击“应用程序”。
+    1. 在群集对话框中，单击“应用程序”。
 
-    ![HDInsight 在 Presto 群集上启动 Airpal](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal.png)
+        ![HDInsight 在 Presto 群集上启动 Airpal](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal.png)
 
-    b. 在“已安装的应用”边栏选项卡中，单击 Airpal 对应的“门户”。
+    2. 在“已安装的应用”区域中，单击 Airpal 对应的“门户”。
 
-    ![HDInsight 在 Presto 群集上启动 Airpal](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal-1.png)
+        ![HDInsight 在 Presto 群集上启动 Airpal](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal-1.png)
 
-    c. 出现提示时，请输入创建 HDInsight Hadoop 群集时指定的管理员凭据。
+    3. 出现提示时，请输入创建 HDInsight Hadoop 群集时指定的管理员凭据。
 
 ## <a name="customize-a-presto-installation-on-hdinsight-cluster"></a>自定义 HDInsight 群集上的 Presto 安装
 
-在 HDInsight Hadoop 群集上安装 Presto 后，可以自定义安装，以进行各种更改，例如更新内存设置、更改连接器，等等。为此，请执行以下步骤。
+若要自定义安装，请使用以下步骤：
 
 1. 使用 SSH 连接到 Presto 已安装的 HDInsight Hadoop 群集边缘节点：
    
@@ -165,12 +163,12 @@ ms.lasthandoff: 02/24/2018
 
 ## <a name="generate-benchmark-data-for-hdinsight-clusters-that-run-presto"></a>为运行 Presto 的 HDInsight 群集生成基准数据
 
-TPC-DS 是有关测量多个决策支持系统（包括大数据系统）的性能的行业标准。 可以在 HDInsight 群集上使用 Presto 生成数据，并将它与自己的 HDInsight 基准数据进行比较并评估结果。 有关详细信息，请参阅[此文](https://github.com/hdinsight/tpcds-datagen-as-hive-query/blob/master/README.md)。
+TPC-DS 是有关测量多个决策支持系统（包括大数据系统）的性能的行业标准。 可以使用 Presto 生成数据，并将它与自己的 HDInsight 基准数据进行比较并评估结果。 有关详细信息，请参阅[此文](https://github.com/hdinsight/tpcds-datagen-as-hive-query/blob/master/README.md)。
 
 
 
 ## <a name="see-also"></a>另请参阅
-* [在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 Hue 是一个 Web UI，可用于轻松创建、运行和保存 Pig 与 Hive 作业，以及浏览 HDInsight 群集的默认存储。
+* [在 HDInsight 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 Hue 是一个 Web UI，可以使用它轻松创建、运行及保存 Pig 和 Hive 作业。
 
 * [在 HDInsight 群集上安装 Giraph](hdinsight-hadoop-giraph-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Giraph。 Giraph 可让你通过使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。
 

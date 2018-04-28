@@ -17,10 +17,10 @@ ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.openlocfilehash: 3b7f2f104046313e7d60cea4ef296f265d204aec
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统将用户和组从 Azure Active Directory 自动预配到应用程序
 
@@ -168,7 +168,7 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 2. [快速路由处理程序](http://expressjs.com/guide/routing.html)用于分析代表对 node.js Web 服务的调用（由 SCIM 规范定义）的 node.js 请求对象。   
 
 ### <a name="building-a-custom-scim-endpoint"></a>构建自定义 SCIM 终结点
-通过 CLI 库，使用这些库的开发者将其服务托管在任何可执行的公共语言基础结构程序集或 Internet Information Services 中。 以下代码示例用于将服务托管在地址为 http://localhost:9000 的可执行程序集中： 
+通过 CLI 库，使用这些库的开发者将其服务托管在任何可执行的公共语言基础结构程序集或 Internet Information Services 中。 以下代码示例用于将服务托管在地址为 http://localhost:9000: 的可执行程序集中： 
 
     private static void Main(string[] arguments)
     {
@@ -288,7 +288,7 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
     }
 
 ### <a name="handling-endpoint-authentication"></a>处理终结点身份验证
-来自 Azure Active Directory 的请求包括 OAuth 2.0 持有者令牌。   接收请求的任何服务应该代表所需的 Azure Active Directory 租户将颁发者作为 Azure Active Directory 进行身份验证，以访问 Azure Active Directory Graph Web 服务。  在令牌中，颁发者由 iss 声明，例如："iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"。  在此示例中，声明值的基址 https://sts.windows.net 将 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 代表颁发令牌时 Azure Active Directory 租户的唯一标识符。  如果颁发的令牌用于访问 Azure Active Directory Graph Web 服务，该服务的标识符 00000002-0000-0000-c000-000000000000 应在令牌的 aud 声明值中。  
+来自 Azure Active Directory 的请求包括 OAuth 2.0 持有者令牌。   接收请求的任何服务应该代表所需的 Azure Active Directory 租户将颁发者作为 Azure Active Directory 进行身份验证，以访问 Azure Active Directory Graph Web 服务。  在令牌中，颁发者是由一个 iss 声明标识的，例如 "iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"。  在此示例中，声明值的基址 https://sts.windows.net 将 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 代表颁发令牌时 Azure Active Directory 租户的唯一标识符。  如果颁发的令牌用于访问 Azure Active Directory Graph Web 服务，该服务的标识符 00000002-0000-0000-c000-000000000000 应在令牌的 aud 声明值中。  
 
 使用 Microsoft 提供的 CLA 库构建 SCIM 服务的开发者可以按照以下步骤使用 Microsoft.Owin.Security.ActiveDirectory 包对 Azure Active Directory 的请求进行身份验证： 
 
@@ -347,9 +347,9 @@ Azure AD 可配置为自动将已分配的用户和组预配到实现[跨域标�
 ## <a name="user-and-group-schema"></a>用户和组架构
 Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  这些类型的资源是用户和组。  
 
-用户资源由协议规范 http://tools.ietf.org/html/draft-ietf-scim-core-schema 中包含的架构标识符 urn:ietf:params:scim:schemas:extension:enterprise:2.0:User 标识。  以下表 1 提供了 Azure Active Directory 中用户属性与 urn:ietf:params:scim:schemas:extension:enterprise:2.0:User 资源属性之间的默认映射。  
+用户资源由协议规范 http://tools.ietf.org/html/draft-ietf-scim-core-schema 中包含的架构标识符 urn:ietf:params:scim:schemas:extension:enterprise:2.0:User 予以标识。  以下表 1 提供了 Azure Active Directory 中用户属性与 urn:ietf:params:scim:schemas:extension:enterprise:2.0:User 资源属性之间的默认映射。  
 
-组资源由架构标识符 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group 标识。  下表 2 显示了 Azure Active Directory 中组属性与 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group 资源属性之间的默认映射。  
+组资源由架构标识符 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group 予以标识。  下表 2 显示了 Azure Active Directory 中的组属性与 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group 资源的属性之间的默认映射。  
 
 ### <a name="table-1-default-user-attribute-mapping"></a>表 1：默认用户属性映射
 | Azure Active Directory 用户 | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User |

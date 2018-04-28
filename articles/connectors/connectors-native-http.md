@@ -1,11 +1,11 @@
 ---
-title: "通过 HTTP 向任意终结点通信 - Azure 逻辑应用 | Microsoft Docs"
-description: "创建可以通过 HTTP 向任意终结点通信的逻辑应用"
+title: 通过 HTTP 向任意终结点通信 - Azure 逻辑应用 | Microsoft Docs
+description: 创建可以通过 HTTP 向任意终结点通信的逻辑应用
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 tags: connectors
 ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.service: logic-apps
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 3eae7a4a47680fc36849fd413b76a80865cf3c9f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 355d1e02ef8195bcee469b77976f1a5834f192d8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-the-http-action"></a>HTTP 操作入门
 
@@ -150,7 +150,7 @@ HTTP 触发器按重复间隔对 HTTP 终结点发送调用。 任何低于 300 
 
 > [!TIP]
 > 如果要使用无法从定义检索的密码，则使用 `securestring` 参数和 `@parameters()` 
-> [ 工作流定义函数](http://aka.ms/logicappdocs)。
+> [ 工作流定义函数](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow)。
 
 例如：
 
@@ -174,7 +174,7 @@ HTTP 触发器按重复间隔对 HTTP 终结点发送调用。 任何低于 300 
 
 > [!TIP]
 > 要使用定义中会在保存逻辑应用后不可读的参数，可使用 `securestring` 参数和 `@parameters()` 
-> [工作流定义函数](http://aka.ms/logicappdocs)。
+> [工作流定义函数](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow)。
 
 例如：
 
@@ -198,7 +198,7 @@ Azure AD OAuth 身份验证需要以下身份验证对象。 * 表示它是必�
 | 机密* |secret |正在请求令牌的客户端的机密 |
 
 > [!TIP]
-> 可使用 `securestring` 参数和 `@parameters()` [工作流定义函数](http://aka.ms/logicappdocs)在定义中使用保存后不可读的参数。
+> 可使用 `securestring` 参数和 `@parameters()` [工作流定义函数](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow)在定义中使用保存后不可读的参数。
 > 
 > 
 

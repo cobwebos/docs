@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 04/19/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 6f654e7897a9a00b0e53849002d5d4b16eab2bd6
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c5237f8e97f76e5dc348322abeb16682aee62f3b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure Stack 1802 更新
 
@@ -56,9 +56,10 @@ Azure Stack 1802 更新内部版本号为 **20180302.1**。
 
 
 ### <a name="post-update-steps"></a>更新后步骤
-安装之后 1802年，安装任何适用的修补程序。 有关详细信息中，查看以下知识库文章，以及我们[维护策略](azure-stack-servicing-policy.md)。  
-- [KB 4103348-网络控制器 API 服务崩溃时尝试安装 Azure 堆栈更新](https://support.microsoft.com/help/4103348)
+安装之后 1802年，安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。 
+- Azure 堆栈修补程序**1.0.180302.4**。 [KB 4131152 的现有虚拟机规模集可能会变得不可用]( https://support.microsoft.com/help/4131152) 
 
+  此修补程序还可解决中详述的问题[KB 4103348-当你尝试安装 Azure 堆栈更新时的网络控制器 API 服务崩溃](https://support.microsoft.com/help/4103348)。
 
 
 ### <a name="new-features-and-fixes"></a>新功能和修复

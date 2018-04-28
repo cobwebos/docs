@@ -1,29 +1,27 @@
 ---
-title: "迁移到适用于 HDInsight 的 Azure 资源管理器工具 | Microsoft Docs"
-description: "如何迁移到适用于 HDInsight 群集的 Azure 资源管理器开发工具"
+title: 迁移到适用于 HDInsight 的 Azure 资源管理器工具 | Microsoft Docs
+description: 如何迁移到适用于 HDInsight 群集的 Azure 资源管理器开发工具
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
 author: nitinme
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 05efedb5-6456-4552-87ff-156d77fbe2e1
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 8ce1d6300731af5ae972675a08ef64f5c4ffa342
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: d0182afbd1a6beaabadf68f08905316be4ba034f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具
 
-HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 的工具。 如果一直在使用 Azure PowerShell、Azure CLI 或 HDInsight.NET SDK 来处理 HDInsight 群集，我们建议跟随潮流，使用基于 Azure 资源管理器 (ARM) 的 PowerShell、CLI 和.NET SDK 版本。 本文章提供有关如何迁移到基于 ARM 的新方法的指导。 本文还将指出适用于 HDInsight 的 ASM 与 ARM 方法之间的差异（如果适用）。
+HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 的工具。 如果一直在使用 Azure PowerShell、Azure CLI 或 HDInsight.NET SDK 来处理 HDInsight 群集，我们建议跟随潮流，使用 Azure 资源管理器的 PowerShell、CLI 和.NET SDK 版本。 本文章提供有关如何迁移到基于资源管理器的新方法的指导。 本文档将重点介绍适用于 HDInsight 的 ASM 与资源管理器方法之间的差异（如果适用）。
 
 > [!IMPORTANT]
 > **2017 年 1 月 1 日**，对基于 ASM 的 PowerShell CLI 和 .NET SDK 的支持会终止。
@@ -31,11 +29,11 @@ HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 
 > 
 
 ## <a name="migrating-azure-cli-to-azure-resource-manager"></a>将 Azure CLI 迁移到 Azure 资源管理器
-Azure CLI 目前默认为 Azure 资源管理器 (ARM) 模式，但如果从以前的安装版本升级则例外，在此情况下，可能需要使用 `azure config mode arm` 命令切换到 ARM 模式。
 
-Azure CLI 提供的用于通过 Azure 服务管理 (ASM) 使用 HDInsight 的基本命令与使用 ARM 时相同；不过，某些参数和开关可能有新名称，并且在使用 ARM 时，有许多新参数可供使用。 例如，现在可以使用 `azure hdinsight cluster create` 来指定创建群集所在的 Azure 虚拟网络，或者 Hive 和 Oozie 的元存储信息。
+> [!IMPORTANT]
+> Azure CLI 2.0 未提供针对使用 HDInsight 群集的支持。 因此，仍可通过 Azure CLI 1.0 来使用 HDInsight，但是 Azure CLI 1.0 已弃用。
 
-用于通过 Azure 资源管理器使用 HDInsight 的基本命令包括：
+以下是通过 Azure CLI 1.0 使用 HDInsight 的基本命令：
 
 * `azure hdinsight cluster create` - 创建新的 HDInsight 群集
 * `azure hdinsight cluster delete` - 删除现有的 HDInsight 群集
@@ -54,7 +52,7 @@ Azure CLI 提供的用于通过 Azure 服务管理 (ASM) 使用 HDInsight 的基
 * `azure hdinsight config` - 提供用于创建配置文件的命令，该配置文件可与 `hdinsight cluster create` 命令一起使用以提供配置信息。
 
 ### <a name="deprecated-commands"></a>已过时的命令
-如果使用 `azure hdinsight job` 命令将作业提交到 HDInsight 群集，则无法通过 ARM 命令使用这些作业。 如果需要以编程方式通过脚本将作业提交到 HDInsight，应改用 HDInsight 提供的 REST API。 有关如何使用 REST API 提交作业的详细信息，请参阅以下文档。
+如果使用 `azure hdinsight job` 命令将作业提交到 HDInsight 群集，则这些命令无法通过资源管理器命令提供。 如果需要以编程方式通过脚本将作业提交到 HDInsight，应改用 HDInsight 提供的 REST API。 有关如何使用 REST API 提交作业的详细信息，请参阅以下文档。
 
 * [使用 cURL 在 HDInsight 上的 Hadoop 上远程运行 MapReduce 作业](hadoop/apache-hadoop-use-mapreduce-curl.md)
 * [使用 cURL 对 HDInsight 上的 Hadoop 运行 Hive 查询](hadoop/apache-hadoop-use-hive-curl.md)
@@ -66,17 +64,17 @@ Azure CLI 提供的用于通过 Azure 服务管理 (ASM) 使用 HDInsight 的基
 **创建群集**
 
 * 旧命令 (ASM) - `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
-* 新命令 (ARM) - `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
+* 新命令 - `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
 
 **删除群集**
 
 * 旧命令 (ASM) - `azure hdinsight cluster delete myhdicluster`
-* 新命令 (ARM) - `azure hdinsight cluster delete mycluster -g myresourcegroup`
+* 新命令 - `azure hdinsight cluster delete mycluster -g myresourcegroup`
 
 **列出群集**
 
 * 旧命令 (ASM) - `azure hdinsight cluster list`
-* 新命令 (ARM) - `azure hdinsight cluster list`
+* 新命令 - `azure hdinsight cluster list`
 
 > [!NOTE]
 > 运行 list 命令时，使用 `-g` 指定资源组只会返回指定资源组中的群集。
@@ -86,16 +84,16 @@ Azure CLI 提供的用于通过 Azure 服务管理 (ASM) 使用 HDInsight 的基
 **显示群集信息**
 
 * 旧命令 (ASM) - `azure hdinsight cluster show myhdicluster`
-* 新命令 (ARM) - `azure hdinsight cluster show myhdicluster -g myresourcegroup`
+* 新命令 - `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>将 Azure PowerShell 迁移到 Azure 资源管理器
-有关处于 Azure 资源管理器 (ARM) 模式的 Azure PowerShell 的一般信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
+有关处于 Azure 资源管理器模式的 Azure PowerShell 的一般信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
 
-Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的 cmdlet 可按其名称来区分。  ARM 模式下的 cmdlet 名称中包含 *AzureRmHDInsight*，而在 ASM 模式下则包含 *AzureHDInsight*。  例如，前者为 *New-AzureRmHDInsightCluster*，后者为*New-AzureHDInsightCluster*. 某些参数和开关可能有新名称，并且在使用 ARM 时，有许多新参数可供使用。  例如，多个 cmdlet 需要名为 *-ResourceGroupName* 的新开关。 
+Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的 cmdlet 可按其名称来区分。  资源管理器模式下的 cmdlet 名称中包含 AzureRmHDInsight，而在 ASM 模式下则包含 AzureHDInsight。  例如，前者为 *New-AzureRmHDInsightCluster*，后者为*New-AzureHDInsightCluster*. 某些参数和开关可能有新名称，并且在使用资源管理器时，有许多新参数可供使用。  例如，多个 cmdlet 需要名为 *-ResourceGroupName* 的新开关。 
 
 在使用这些 HDInsight cmdlet 之前，必须先连接到 Azure 帐户并创建新资源组：
 
-* Login-AzureRmAccount 或 [Select-AzureRmProfile](https://msdn.microsoft.com/library/mt619310.aspx)。 请参阅[使用 Azure 资源管理器对服务主体进行身份验证](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+* Connect-AzureRmAccount 或 [Select-AzureRmProfile](https://msdn.microsoft.com/library/mt619310.aspx)。 请参阅[使用 Azure 资源管理器对服务主体进行身份验证](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 * [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
 
 ### <a name="renamed-cmdlets"></a>已重命名的 cmdlet
@@ -103,9 +101,9 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
 
     help *azurermhdinsight*
 
-下表列出了 ASM cmdlet 及其在 ARM 模式下的名称：
+下表列出了 ASM cmdlet 及其在资源管理器模式下的名称：
 
-| ASM cmdlet | ARM cmdlet |
+| ASM cmdlet | 资源管理器 cmdlet |
 | --- | --- |
 | Add-AzureHDInsightConfigValues |[Add-AzureRmHDInsightConfigValues](https://msdn.microsoft.com/library/mt603530.aspx) |
 | Add-AzureHDInsightMetastore |[Add-AzureRmHDInsightMetastore](https://msdn.microsoft.com/library/mt603670.aspx) |
@@ -136,7 +134,7 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
 | Wait-AzureHDInsightJob |[Wait-AzureRmHDInsightJob](https://msdn.microsoft.com/library/mt603834.aspx) |
 
 ### <a name="new-cmdlets"></a>新 cmdlet
-下面是只能在 ARM 模式下使用的新 cmdlet。 
+以下是只能在资源管理器模式下使用的新 cmdlet。 
 
 **与脚本操作相关的 cmdlet：**
 
@@ -170,7 +168,7 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
         -Credential $httpCredential `
         -SshCredential $sshCredential
 
-新命令 (ARM)：
+新命令：
 
     New-AzureRmHDInsightCluster `
         -ClusterName $clusterName `
@@ -193,7 +191,7 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
 
     Remove-AzureHDInsightCluster -name $clusterName 
 
-新命令 (ARM)：
+新命令：
 
     Remove-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName 
 
@@ -203,7 +201,7 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
 
     Get-AzureHDInsightCluster
 
-新命令 (ARM)：
+新命令：
 
     Get-AzureRmHDInsightCluster 
 
@@ -213,7 +211,7 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
 
     Get-AzureHDInsightCluster -Name $clusterName
 
-新命令 (ARM)：
+新命令：
 
     Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clusterName
 
@@ -224,15 +222,15 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
 * [提交 Pig 作业](hadoop/apache-hadoop-use-pig-powershell.md)
 * [提交 Sqoop 作业](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
-## <a name="migrating-to-the-arm-based-hdinsight-net-sdk"></a>迁移到基于 ARM 的 HDInsight .NET SDK
-基于 Azure 服务管理 (ASM) 的 [HDInsight.NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) 现已弃用。 建议使用基于 Azure 资源管理 (ARM) 的 [HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt271028.aspx)。 以下基于 ASM 的 HDInsight 包即将过时。
+## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>迁移到新的 HDInsight .NET SDK
+基于 Azure 服务管理 (ASM) 的 [HDInsight.NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) 现已弃用。 建议使用基于 Azure 资源管理器的 [基于资源管理器的 HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt271028.aspx)。 以下基于 ASM 的 HDInsight 包即将过时。
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`
 
-本部分提供有关如何使用基于 ARM 的 SDK 来执行特定任务的详细指导。
+本部分提供有关如何使用基于资源管理器的 SDK 来执行特定任务的详细指导。
 
-| 如何...使用基于 ARM 的 HDInsight SDK | 链接 |
+| 如何...使用基于资源管理器的 HDInsight SDK | 链接 |
 | --- | --- |
 | 使用 .NET SDK 创建 HDInsight 群集 |请参阅[使用 .NET SDK 创建 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |
 | 配合使用脚本操作与 .NET SDK 来自定义群集 |请参阅[使用脚本操作自定义 HDInsight Linux 群集](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
@@ -249,19 +247,19 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
 | 使用 .NET SDK 删除 HDInsight 群集 |请参阅[删除 HDInsight 群集](hdinsight-administer-use-dotnet-sdk.md#delete-clusters) |
 
 ### <a name="examples"></a>示例
-下面是有关如何使用基于 ASM 的 SDK 和基于 ARM 的 SDK 的等效代码段来执行操作的一些示例。
+以下是有关如何使用基于 ASM 的 SDK 和基于资源管理器的 SDK 的等效代码段来执行操作的一些示例。
 
 **创建群集 CRUD 客户端**
 
 * 旧命令 (ASM)
   
         //Certificate auth
-        //This logs the application in using a subscription administration certificate, which is not offered in Azure Resource Manager (ARM)
+        //This logs the application in using a subscription administration certificate, which is not offered in Azure Resource Manager
   
         const string subid = "454467d4-60ca-4dfd-a556-216eeeeeeee1";
         var cred = new HDInsightCertificateCredential(new Guid(subid), new X509Certificate2(@"path\to\certificate.cer"));
         var client = HDInsightClient.Connect(cred);
-* 新命令 (ARM)（服务主体授权）
+* 新命令（服务主体授权）
   
         //Service principal auth
         //This will log the application in as itself, rather than on behalf of a specific user.
@@ -279,7 +277,7 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
         var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
   
         _hdiManagementClient = new HDInsightManagementClient(creds);
-* 新命令 (ARM)（用户授权）
+* 新命令（用户授权）
   
         //User auth
         //This will log the application in on behalf of the user.
@@ -317,7 +315,7 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
                     };
         clusterInfo.CoreConfiguration.Add(new KeyValuePair<string, string>("config1", "value1"));
         client.CreateCluster(clusterInfo);
-* 新命令 (ARM)
+* 新命令
   
         var clusterCreateParameters = new ClusterCreateParameters
             {
@@ -344,7 +342,7 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
 * 旧命令 (ASM)
   
         client.EnableHttp(dnsName, "West US", "admin", "*******");
-* 新命令 (ARM)
+* 新命令
   
         var httpParams = new HttpSettingsParameters
         {
@@ -359,7 +357,7 @@ Azure PowerShell ARM cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的
 * 旧命令 (ASM)
   
         client.DeleteCluster(dnsName);
-* 新命令 (ARM)
+* 新命令
   
         client.Clusters.Delete(resourceGroup, dnsname);
 

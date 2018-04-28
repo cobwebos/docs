@@ -1,12 +1,12 @@
 ---
 title: Azure Service Fabric CLI - sfctl compose | Microsoft Docs
-description: "介绍 Service Fabric CLI sfctl compose 命令。"
+description: 介绍 Service Fabric CLI sfctl compose 命令。
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 02/22/2018
 ms.author: ryanwi
 ms.openlocfilehash: 19afd35248cc0796eddbb50db4f38b813f5d568e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 创建、删除和管理 Docker Compose 部署。
@@ -56,7 +56,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                 | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h               | 显示此帮助消息并退出。|
 | --output -o             | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query                 | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                 | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose               | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-compose-list"></a>sfctl compose list
@@ -79,7 +79,7 @@ ms.lasthandoff: 02/27/2018
 | --debug          | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h        | 显示此帮助消息并退出。|
 | --output -o      | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query          | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query          | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose        | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-compose-remove"></a>sfctl compose remove
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                 | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h               | 显示此帮助消息并退出。|
 | --output -o             | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query                 | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                 | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose               | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-compose-status"></a>sfctl compose status
@@ -123,7 +123,7 @@ ms.lasthandoff: 02/27/2018
 | --debug                 | 提高日志记录详细程度，以显示所有调试日志。|
 | --help -h               | 显示此帮助消息并退出。|
 | --output -o             | 输出格式。  允许的值：json、jsonc、table、tsv。  默认值：json。|
-| --query                 | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+| --query                 | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 | --verbose               | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="sfctl-compose-upgrade"></a>sfctl compose upgrade
@@ -161,7 +161,7 @@ ms.lasthandoff: 02/27/2018
 |   --debug                      | 提高日志记录详细程度，以显示所有调试日志。|
 |    --help -h                    | 显示此帮助消息并退出。|
 |   --output -o                  | 输出格式。  允许的值：json、jsonc、table、tsv。 默认值：json。|
-|   --query                      | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http://jmespath.org/。|
+|   --query                      | JMESPath 查询字符串。 有关更多信息和示例，请参阅 http://jmespath.org/。|
 |   --verbose                    | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。|
 
 ## <a name="next-steps"></a>后续步骤

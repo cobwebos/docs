@@ -1,31 +1,24 @@
 ---
-title: "使用 PowerShell 创建 Azure Analysis Services 服务器 | Microsoft Docs"
-description: "了解如何使用 PowerShell 创建 Azure Analysis Services 服务器"
-services: analysis-services
-documentationcenter: 
+title: 使用 PowerShell 创建 Azure Analysis Services 服务器 | Microsoft Docs
+description: 了解如何使用 PowerShell 创建 Azure Analysis Services 服务器
 author: minewiskan
 manager: kfile
-editor: 
-ms.assetid: 
 ms.service: analysis-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.custom: mvc
-ms.openlocfilehash: 083c5a9bb5c57f3287c259900e6a23d6f0a886de
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.reviewer: minewiskan
+ms.openlocfilehash: 3f0d3ae6786e9f63f0e4eb025118d0d217eced64
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-azure-analysis-services-server-by-using-powershell"></a>使用 PowerShell 创建 Azure Analysis Services 服务器
 
 本快速入门介绍如何从命令行使用 PowerShell，以便在 Azure 订阅的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)中创建 Azure Analysis Services 服务器。
 
-本任务需要 Azure PowerShell 模块 4.0 或更高版本。 若要查找版本，请运行 ` Get-Module -ListAvailable AzureRM`。 若要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。 
+本任务需要 Azure PowerShell 模块 4.0 或更高版本。 若要查找版本，请运行 ` Get-Module -ListAvailable AzureRM`。 若要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-azurerm-ps)。
 
 > [!NOTE]
 > 创建服务器可能会导致新的计费服务。 有关详细信息，请参阅 [Analysis Services 定价](https://azure.microsoft.com/pricing/details/analysis-services/)。
@@ -45,14 +38,14 @@ Import-Module AzureRM.AnalysisServices
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-使用 [Add-AzureRmAccount](/powershell/module/azurerm.profile/add-azurermaccount) 命令登录到 Azure 订阅。 按屏幕指令操作。
+使用 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) 命令登录到 Azure 订阅。 按屏幕指令操作。
 
 ```powershell
-Add-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
- 
+
 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 创建服务器时，必须在订阅中指定资源组。 如果还没有资源组，可以使用 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) 命令新建一个。 以下示例在美国西部区域创建一个名为 `myResourceGroup` 的资源组。
 
 ```powershell
@@ -77,6 +70,6 @@ Remove-AzureRmAnalysisServicesServer -Name "myServer" -ResourceGroupName "myReso
 ```
 
 ## <a name="next-steps"></a>后续步骤
-[使用 PowerShell 管理 Azure Analysis Services](analysis-services-powershell.md)   
-[从 SSDT 部署模型](analysis-services-deploy.md)   
+[使用 PowerShell 管理 Azure Analysis Services](analysis-services-powershell.md)
+[从 SSDT 部署模型](analysis-services-deploy.md)
 [在 Azure 门户中创建模型](analysis-services-create-model-portal.md)

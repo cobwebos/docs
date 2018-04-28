@@ -1,6 +1,6 @@
 ---
-title: "将 Azure 磁盘与 AKS 配合使用"
-description: "将 Azure 磁盘与 AKS 配合使用"
+title: 将 Azure 磁盘与 AKS 配合使用
+description: 将 Azure 磁盘与 AKS 配合使用
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -8,17 +8,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: 36e25d7e5f1e5c6e1cf72442b73ac081810d216a
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a6bc79d0556299634a78c5232bbab4e20810172c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>含 Azure 磁盘的永久性卷
 
 永久性卷表示已经过预配可以用于 Kubernetes Pod 的存储块。 永久性卷可供一个或多个 Pod 使用，并可动态或静态预配。 有关 Kubernetes 永久性卷的详细信息，请参阅 [Kubernetes 永久性卷][kubernetes-volumes]。
 
 本文档详细介绍如何在 Azure 容器服务 (AKS) 群集的 Azure 磁盘中使用永久性卷。
+
+> [!NOTE]
+> Azure 磁盘只能使用访问模式类型 ReadWriteOnce 装载，这使其只可供单个 AKS 节点使用。 如果需要在多个节点之间共享持久卷，请考虑使用 [Azure 文件][azure-files-pvc]。
 
 ## <a name="built-in-storage-classes"></a>内置存储类
 
@@ -40,7 +43,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 
 创建名为 `azure-premimum.yaml` 的文件，并将其复制到以下清单中。
 
-请注意，`managed-premium` 存储类在注释中指定，该声明使用 `ReadWriteOnce` 访问权限请求大小为 `5GB` 的磁盘。 
+请注意，`managed-premium` 存储类在注释中指定，该声明使用 `ReadWriteOnce` 访问权限请求大小为 `5GB` 的磁盘。
 
 ```yaml
 apiVersion: v1
@@ -63,12 +66,9 @@ spec:
 kubectl create -f azure-premimum.yaml
 ```
 
-> [!NOTE]
-> Azure 磁盘只能使用访问模式类型 ReadWriteOnce 装载，这使其只可供单个 AKS 节点使用。 如果需要在多个节点之间共享持久卷，请考虑使用 [Azure 文件][azure-files-pvc]。
-
 ## <a name="using-the-persistent-volume"></a>使用永久性卷
 
-创建永久性卷声明并成功预配磁盘以后，即可创建可以访问磁盘的 Pod。 以下清单创建的 Pod 使用永久性卷声明 `azure-managed-disk` 将 Azure 磁盘装载到 `/mnt/azure` 路径。 
+创建永久性卷声明并成功预配磁盘以后，即可创建可以访问磁盘的 Pod。 以下清单创建的 Pod 使用永久性卷声明 `azure-managed-disk` 将 Azure 磁盘装载到 `/mnt/azure` 路径。
 
 创建名为 `azure-pvc-disk.yaml` 的文件，并将其复制到以下清单中。
 
@@ -96,7 +96,7 @@ spec:
 kubectl create -f azure-pvc-disk.yaml
 ```
 
-现在你有一个正在运行的 Pod，其中 Azure 磁盘被装载到 `/mnt/azure` 目录中。 通过 `kubectl describe pod mypod` 检查 pod 时，可以看到此卷装载。
+现在你有一个正在运行的 Pod，其中 Azure 磁盘被装载到 `/mnt/azure` 目录中。 通过 `kubectl describe pod mypod` 检查 pod 时，可以看到此配置。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,24 +1,24 @@
 ---
-title: "安全中心平台迁移常见问题解答 | Microsoft Docs"
-description: "此常见问题解答会回答有关 Azure 安全中心平台迁移的问题。"
+title: 安全中心平台迁移常见问题解答 | Microsoft Docs
+description: 此常见问题解答会回答有关 Azure 安全中心平台迁移的问题。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2017
+ms.date: 04/13/2018
 ms.author: terrylan
-ms.openlocfilehash: 6ccf104ea09dc1fbce1dd34a06168205d6f5fac8
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 6a88fbadd8fbf05a4942e42b535770f6f068af28
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="security-center-platform-migration-faq"></a>安全中心平台迁移常见问题解答
 2017 年 6 月初，Azure 安全中心开始使用 Microsoft Monitoring Agent 收集和存储数据。 若要了解详细信息，请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)。 此常见问题解答会回答有关平台迁移的问题。
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/13/2017
 代理收集的数据存储在连接到 VM 的现有 Log Analytics 工作区或安全中心创建的新工作区中。 安全中心创建新的工作区时，需要考虑 VM 的地理位置。
 
 > [!NOTE]
-> Microsoft Monitoring Agent 正是 Operations Management Suite (OMS)、Log Analytics 服务和 System Center Operations Manager (SCOM) 使用的代理。
+> Microsoft Monitoring Agent 正是 Log Analytics 服务和 System Center Operations Manager (SCOM) 使用的代理。
 >
 >
 
@@ -64,8 +64,8 @@ ms.lasthandoff: 12/13/2017
 >
 >
 
-### <a name="am-i-billed-for-log-analytics-or-oms-on-the-workspaces-created-by-security-center"></a>安全中心创建的工作区中的 Log Analytics 或 OMS 是否会产生费用？
-不能。 OMS 配置为按节点计费时，安全中心创建的工作区不会产生 OMS 费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
+### <a name="am-i-billed-for-log-analytics-on-the-workspaces-created-by-security-center"></a>安全中心创建的工作区中的 Log Analytics 是否会产生费用？
+不会。 Log Analytics 配置为按节点计费时，安全中心创建的工作区不会产生 Log Analytics 费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
 
 - **免费层** – 安全中心在默认工作区中启用“SecurityCenterFree”解决方案。 免费层不会产生费用。
 - **标准层** – 安全中心在默认工作区中启用“Security”解决方案。
@@ -73,7 +73,7 @@ ms.lasthandoff: 12/13/2017
 有关详细信息，请参阅[安全中心 定价](https://azure.microsoft.com/pricing/details/security-center/)。 定价页说明了 2017 年 6 月起安全数据存储和按比例计费的更改。
 
 > [!NOTE]
-> 安全中心创建的工作区的 OMS 定价层不会影响安全中心计费。
+> 安全中心创建的工作区的 Log Analytics 定价层不会影响安全中心计费。
 >
 >
 
@@ -121,9 +121,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
    >
    >
 
-   - 选择“取消”，以取消此操作。
-
-      ![重新配置受监视的 VM][6]
+   - 选择“取消”，以取消该操作。
 
 ### <a name="what-if-the-microsoft-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>如果 Microsoft Monitoring Agent 已作为扩展安装到 VM 上，会怎样？
 安全中心不会覆盖用户工作区的现有连接。 安全中心会在已连接的工作区中存储 VM 的安全数据。 安全中心会将扩展版本更新为包含 VM 的 Azure 资源 ID，以支持安全中心的使用。
@@ -204,12 +202,12 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 >
 >
 
-## <a name="existing-oms-customers"></a>现有 OMS 客户
+## <a name="existing-log-analytics-customers"></a>现有 Log Analytics 客户
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>安全中心是否会覆盖 VM 和工作区之间的任何现有连接？
 如果 VM 已将 Microsoft Monitoring Agent 作为 Azure 扩展进行安装，则安全中心不会覆盖现有工作区连接。 相反，安全中心会使用现有工作区。
 
-如果没有安全中心解决方案，则会在工作区安装，并且此解决方案仅适用于相关的 VM。 添加解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 工作区的所有 Windows 和 Linux 代理。 借助 [解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)这一 OMS 功能，可以限定解决方案的范围。
+如果没有安全中心解决方案，则会在工作区安装，并且此解决方案仅适用于相关的 VM。 添加解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 工作区的所有 Windows 和 Linux 代理。 [解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)可用于限定解决方案的范围。
 
 如果 Microsoft Monitoring Agent 是直接安装到 VM 上（而不是作为 Azure 扩展进行安装），那么安全中心不会安装 Microsoft Monitoring Agent，并且安全监视也会受限。
 
@@ -220,18 +218,13 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 - 连接中断前，在扩展上配置的工作区的 Azure 资源 ID
 - 之前已安装的代理和版本
 
-### <a name="does-security-center-install-solutions-on-my-existing-oms-workspaces-what-are-the-billing-implications"></a>安全中心是否在现有 OMS 工作区上安装解决方案？ 计费会产生什么影响？
+### <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>安全中心是否在现有 Log Analytics 工作区上安装解决方案？ 计费会产生什么影响？
 安全中心确定 VM 已连接到所创建的工作区时，会根据定价层启用此工作区上的解决方案。 由于[解决方案目标](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solution-targeting)，解决方案仅应用于相关的 Azure VM，因此计费保持不变。
 
 - 免费层 – 安全中心在工作区中安装“SecurityCenterFree”解决方案。 免费层不会产生费用。
 - **标准层** – 安全中心在工作区中安装“Security”解决方案。
 
    ![默认工作区上的解决方案][4]
-
-> [!NOTE]
-> Log Analytics 中的“安全性”解决方案是 OMS 中的“安全性与审核”解决方案。
->
->
 
 ### <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>环境中已存在工作区，是否可以将其用于收集安全数据？
 如果 VM 已将 Microsoft Monitoring Agent 作为 Azure 扩展进行安装，则安全中心会使用现有连接的工作区。 如果没有安全中心解决方案，则会在工作区安装，并且由于[解决方案目标](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solution-targeting)此解决方案仅适用于相关的 VM。
@@ -253,4 +246,3 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/solutions.png
 [5]: ./media/security-center-platform-migration-faq/use-another-workspace.png
-[6]: ./media/security-center-platform-migration-faq/reconfigure-monitored-vm.png

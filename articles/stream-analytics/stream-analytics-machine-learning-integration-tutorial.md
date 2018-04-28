@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.openlocfilehash: 93397e5370863b11b7c153bbf234d6bfdd808718
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/16/2018
+ms.openlocfilehash: 63648dfe02a0b5ed00d0a7206a6aabbe200f94c4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>使用 Azure 流分析和 Azure 机器学习执行情绪分析
 本文介绍了如何快速设置集成了 Azure 机器学习的简单 Azure 流分析作业。 你将使用 Cortana Intelligence 库中的机器学习情绪分析模型来实时分析流文本数据并确定情绪分数。 可以使用 Cortana Intelligence Suite 完成此任务，不必担心构建情绪分析模型的复杂性。
@@ -25,7 +25,7 @@ ms.lasthandoff: 04/06/2018
 * 评估论坛、博客和视频上的评论。 
 * 许多其他实时的预测性评分方案。
 
-在实际方案中，将直接从 Twitter 数据流获取数据。 为简化教程，我们已将教程编写为让流分析作业从 Azure Blob 存储中的 CSV 文件获取推文。 可以创建自己的 CSV 文件，也可以使用示例 CSV 文件，如下图中所示：
+在实际方案中，将直接从 Twitter 数据流获取数据。 为简化教程，已将教程编写为让流分析作业从 Azure Blob 存储中的 CSV 文件获取推文。 可以创建自己的 CSV 文件，也可以使用示例 CSV 文件，如下图中所示：
 
 ![CSV 文件中的示例推文](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 04/06/2018
 在开始之前，请确保具有以下各项：
 
 * 一个有效的 Azure 订阅。
-* 包含某些数据的 CSV 文件。 可以从 [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv) 下载前面所示的文件，也可以创建自己的文件。 对于本文，我们假定使用的是来自 GitHub 的文件。
+* 包含某些数据的 CSV 文件。 可以从 [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv) 下载前面所示的文件，也可以创建自己的文件。 对于本文，假定使用的是来自 GitHub 的文件。
 
 概括来说，若要完成本文展示的任务，需要执行以下操作：
 
@@ -157,7 +157,7 @@ ms.lasthandoff: 04/06/2018
 
    |字段  |值  |
    |---------|---------|
-   |**输出别名** | 使用名称 `datainput` 并选择“从订阅选择 Blob 存储”       |
+   |**输出别名** | 使用名称 `datamloutput` 并选择“从订阅选择 Blob 存储”       |
    |**存储帐户**  |  选择前面创建的存储帐户。  |
    |**容器**  | 选择前面创建的容器 (`azuresamldemoblob`)        |
    |**事件序列化格式**  |  选择“CSV”       |
@@ -168,7 +168,7 @@ ms.lasthandoff: 04/06/2018
 
 
 ### <a name="add-the-machine-learning-function"></a>添加机器学习函数 
-在前面，你向 Web 服务发布了一个机器学习模型。 在我们的方案中，当流分析作业运行时，它将来自输入的每个示例推文发送到用于情绪分析的 Web 服务。 机器学习 Web 服务返回一种情绪（`positive`、`neutral` 或 `negative`）和推文为正面内容的概率。 
+在前面，你向 Web 服务发布了一个机器学习模型。 在此方案中，当流分析作业运行时，它将来自输入的每个示例推文发送到用于情绪分析的 Web 服务。 机器学习 Web 服务返回一种情绪（`positive`、`neutral` 或 `negative`）和推文为正面内容的概率。 
 
 在教程的本部分中，将在流分析作业中定义一个函数。 可以调用该函数来将推文发送到 Web 服务并返回响应。 
 
@@ -200,12 +200,13 @@ ms.lasthandoff: 04/06/2018
 
     ```
     WITH sentiment AS (  
-    SELECT text, sentiment(text) as result from datainput  
+    SELECT text, sentiment(text) as result 
+    FROM datainput  
     )  
 
-    Select text, result.[Score]  
-    Into datamloutput
-    From sentiment  
+    SELECT text, result.[Score]  
+    INTO datamloutput
+    FROM sentiment  
     ```    
 
     该查询调用前面创建的函数 (`sentiment`) 来对输入中的每条推文执行情绪分析。 

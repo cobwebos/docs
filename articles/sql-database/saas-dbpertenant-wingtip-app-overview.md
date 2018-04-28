@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 224639dcc7da950801c7a5959ec14fc5ac7313e0
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: cf54c789d766c4bd3d353028e75e34c961470070
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>多租户 SaaS 应用简介，该应用通过“每个租户各有数据库”模式使用 SQL 数据库
 
@@ -24,7 +24,7 @@ Wingtip SaaS 应用程序是一个示例多租户应用。 该应用使用“每
 
 ## <a name="application-architecture"></a>应用程序体系结构
 
-Wingtip SaaS 应用使用“每个租户各有数据库”模型。 它使用 SQL 弹性池最大程度提高效率。 为了预配租户并将其映射到租户数据，需使用目录数据库。 核心 Wingtip SaaS 应用程序使用一个池和三个示例租户，外加目录数据库。 完成许多 Wingtip SaaS 教程都会导致在初始部署中使用加载项。 将介绍分析数据库和跨数据库架构管理等加载项。
+Wingtip SaaS 应用使用“每个租户各有数据库”模型。 它使用 SQL 弹性池最大程度提高效率。 为了预配租户并将其映射到租户数据，需使用目录数据库。 核心 Wingtip SaaS 应用程序使用一个池和三个示例租户，外加目录数据库。 已使用 DNS 别名预配目录和租户服务器。 这些别名用于维持对 Wingtip 应用程序使用的活动资源的引用。 这些别名已更新以指向灾难恢复教程中的恢复资源。 完成许多 Wingtip SaaS 教程都会导致在初始部署中使用加载项。 将介绍分析数据库和跨数据库架构管理等加载项。
 
 
 ![Wingtip SaaS 体系结构](media/saas-dbpertenant-wingtip-app-overview/app-architecture.png)

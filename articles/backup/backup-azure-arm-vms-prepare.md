@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: cd8274ab6b50eee83bc3e41ea543930aa309e790
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: caf2c54c986f8c4dd951628fd6908d42e7ddd281
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>准备环境以备份 Resource Manager 部署的虚拟机
 
-本文提供有关准备环境以备份 Azure 资源管理器部署的虚拟机 (VM) 的步骤。 过程中显示的步骤将使用 Azure 门户。 在恢复服务保管库中存储虚拟机备份数据。 该保管库可保存经典部署虚拟机和资源管理器部署虚拟机的备份数据。
+本文提供有关准备环境以备份 Azure 资源管理器部署的虚拟机 (VM) 的步骤。 过程中显示的步骤将使用 Azure 门户。 备份虚拟机时，备份数据或恢复点存储在恢复服务保管库。 恢复服务保管库可保存经典部署虚拟机和资源管理器部署虚拟机的备份数据。
 
 > [!NOTE]
 > Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 部署模型和经典部署模型](../azure-resource-manager/resource-manager-deployment-model.md)。
 
 在保护（或备份）资源管理器部署虚拟机之前，请确保符合以下先决条件：
 
-* 在 VM 所在区域中创建恢复服务保管库（或标识现有的恢复服务保管库）。
+* 在虚拟机所在区域创建或标识恢复服务保管库。
 * 选择方案、定义备份策略并定义要保护的项。
-* 检查虚拟机上的 VM 代理安装。
+* 检查虚拟机上的 VM 代理（扩展）的安装情况。
 * 检查网络连接。
 * 对于 Linux VM，如果要自定义备份环境以进行应用程序一致的备份，请按照[配置快照前和快照后脚本的步骤](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)进行操作。
 
@@ -51,11 +51,11 @@ ms.lasthandoff: 03/16/2018
 * 不支持备份超过 16 个数据磁盘的虚拟机。
 * 不支持备份使用保留 IP 地址且未定义终结点的虚拟机。
 * 不支持备份通过 Linux 统一密钥设置 (LUKS) 加密法加密的 Linux VM。
-* 不建议备份包含群集共享卷 (CSV) 或横向扩展文件服务器配置的 VM。 这些操作涉及到在执行快照任务执行期间包含在群集配置中的所有 VM。 Azure 备份不支持多 VM 一致性。 
+* 不建议备份包含群集共享卷 (CSV) 或横向扩展文件服务器配置的 VM。 如果已备份，会造成 CSV 编写器故障。 这些操作涉及到在执行快照任务执行期间包含在群集配置中的所有 VM。 Azure 备份不支持多 VM 一致性。 
 * 备份数据不包括连接到 VM 的网络挂载驱动器。
 * 不支持在恢复过程中替换现有虚拟机。 如果在 VM 存在时尝试还原 VM，还原操作会失败。
 * 不支持跨区域备份和还原。
-* 不支持在应用了网络规则的存储帐户中备份和还原使用非托管磁盘的虚拟机。 
+* 如果客户使用旧的 VM 备份堆栈，则不支持在应用了网络规则的存储帐户中备份和还原使用非托管磁盘的虚拟机。 
 * 配置备份时，请确保“防火墙和虚拟网络”存储帐户设置允许从“所有网络”进行访问。
 * 可以在 Azure 的所有公共区域中备份虚拟机。 （请参阅支持区域的[清单](https://azure.microsoft.com/regions/#services)。）在创建保管库期间，如果要寻找的区域目前不受支持，则不会在下拉列表中显示它。
 * 仅支持通过 PowerShell 还原属于多 DC 配置的域控制器 (DC) VM。 有关详细信息，请参阅[还原多 DC 域控制器](backup-azure-arm-restore-vms.md#restore-domain-controller-vms)。
@@ -92,7 +92,7 @@ ms.lasthandoff: 03/16/2018
    >
    >
 
-8. 选择“创建”。 创建恢复服务保管库可能需要一段时间。 可以在门户的右上区域中监视状态通知。 创建保管库后，它会显示在“恢复服务保管库”的列表中。 如果未看到创建的保管库，请选择“刷新”。
+8. 选择**创建**。 创建恢复服务保管库可能需要一段时间。 可以在门户的右上区域中监视状态通知。 创建保管库后，它会显示在“恢复服务保管库”的列表中。 如果未看到创建的保管库，请选择“刷新”。
 
     ![备份保管库列表](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
@@ -167,7 +167,7 @@ ms.lasthandoff: 03/16/2018
 
    ![“启用备份”按钮](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
-成功启用备份后，备份策略将按计划运行。 如果现在想要生成按需备份来备份虚拟机，请参阅[触发备份作业](./backup-azure-arm-vms.md#triggering-the-backup-job)。
+成功启用备份后，备份策略将按计划运行。 如果现在想要生成按需备份来备份虚拟机，请参阅[触发备份作业](./backup-azure-vms-first-look-arm.md#initial-backup)。
 
 如果注册虚拟机出现问题，请参阅以下信息，了解安装 VM 代理的方法和网络连接的相关信息。 如果要保护在 Azure 中创建的虚拟机，则可能不需要以下信息。 但是，如果已将虚拟机迁移到 Azure，请确保已正确安装 VM 代理，并且虚拟机可与虚拟网络通信。
 
@@ -208,6 +208,10 @@ ms.lasthandoff: 03/16/2018
 可以允许使用[服务标记](../virtual-network/security-overview.md#service-tags)与特定区域的存储建立连接。 请确保允许访问存储帐户的规则的优先级高于阻止 Internet 访问的规则。 
 
 ![具有区域存储标记的 NSG](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+以下视频逐步讲解了配置服务标记的过程： 
+
+>[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
 > [!WARNING]
 > 存储服务标记仅在特定区域中可用，并且处于预览状态。 有关区域列表，请参阅[存储的服务标记](../virtual-network/security-overview.md#service-tags)。

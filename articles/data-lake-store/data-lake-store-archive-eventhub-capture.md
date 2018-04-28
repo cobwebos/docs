@@ -1,8 +1,8 @@
 ---
-title: "将事件中心的数据捕获到 Azure Data Lake Store 中 | Microsoft Docs"
-description: "使用 Azure Data Lake Store 捕获事件中心的数据"
+title: 将事件中心的数据捕获到 Azure Data Lake Store 中 | Microsoft Docs
+description: 使用 Azure Data Lake Store 捕获事件中心的数据
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: ac8000abc35cba89c4bf655a4806636933ab8d08
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9f91acf8c26fdec0c8d128f598f218cff091c7aa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Store 捕获事件中心的数据
 
@@ -58,9 +58,12 @@ ms.lasthandoff: 02/23/2018
 
     c. 在“分配权限”下，单击“选择权限”。 将“权限”设为“执行”。 将“添加到”设为“此文件夹和所有子文件夹”。 将“添加为”设为“一个访问权限入口和一个默认权限入口”。
 
-    ![分配 Data Lake Store 根目录的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Assign permissions for Data Lake Store root")
+> [!IMPORTANT]
+> 创建用于捕获 Azure 事件中心接收的数据时，有一种简单的方法可用来确保对目标文件夹的访问。  但是，如果顶层文件夹具有许多子文件和文件夹，则添加对顶层文件夹的所有子代的权限时，可能需要花费很长时间。  如果根文件夹包含大量文件和文件夹，则分别对最终目标文件夹的路径中的每个文件夹添加对 `Microsoft.EventHubs` 的**执行**权限可能更快。 
 
-    单击“确定”。
+    ![Assign permissions for Data Lake Store root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Assign permissions for Data Lake Store root")
+
+    Click **OK**.
 
 4. 为 Data Lake Store 帐户下要在其中捕获数据的文件夹分配权限。
 
@@ -98,7 +101,7 @@ ms.lasthandoff: 02/23/2018
     
     c. 将“捕获”设为“开”。 设置“时间窗口”（捕获频率）和“大小窗口”（捕获的数据大小）。 
     
-    d.单击“下一步”。 对于“捕获提供程序”，选择“Azure Data Lake Store”以及之前创建的 Data Lake Store。 对于“Data Lake 路径”，输入之前在 Data Lake Store 帐户中创建的文件夹的名称。 只需提供文件夹的相对路径。
+    d. 对于“捕获提供程序”，选择“Azure Data Lake Store”以及之前创建的 Data Lake Store。 对于“Data Lake 路径”，输入之前在 Data Lake Store 帐户中创建的文件夹的名称。 只需提供文件夹的相对路径。
 
     e. 将“示例捕获文件名格式”保留为默认值。 此选项用于管理在捕获文件夹下创建的文件夹结构。
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure 付款处理蓝图 - 防火墙要求"
-description: "PCI DSS 要求 1"
+title: Azure 付款处理蓝图 - 防火墙要求
+description: PCI DSS 要求 1
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 995ecd5ef876695145fc6313aba2a46d2cc085cc
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 4e04d6417f1468c1bafada1a93ab63a73e39653d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="firewall-requirements-for-pci-dss-compliant-environments"></a>PCI DSS 相容环境的防火墙要求 
 ## <a name="pci-dss-requirement-1"></a>PCI DSS 要求 1
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 通过 PaaS 隔离提供 CDE 的防火墙功能，而应用服务环境实施则确保 CDE 的数据出入受到保护。<br /><br />[应用服务环境 (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) 是一项“高级”服务计划，其使用是出于符合性原因。 有关 ASE 控制和配置的详细信息，请参阅 [PCI 指南 - 应用服务环境](payment-processing-blueprint.md#app-service-environment)。|
 
 
@@ -56,8 +56,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 实例可建立一个 CI/CD DevOps 模型，确保对所有更改进行正确的管理。 [Operations Management Suite (OMS)](/azure/operations-management-suite/) 可以大量记录更改。 可以对更改进行审核和验证，确保准确性。 如需更具体的指南，请参阅 [PCI 指南 - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing)。<br /><br />[Azure 安全中心](https://azure.microsoft.com/services/security-center/)允许集中查看所有 Azure 资源的安全状况。 一眼就可验证适当的安全控制是否配置到位且配置正确，还可快速确认任何需要注意的资源。|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 实例可建立一个 CI/CD DevOps 模型，确保对所有更改进行正确的管理。 Log Analytics 可广泛记录更改。 可以检查和验证更改的准确性。 如需更具体的指南，请参阅 [PCI 指南 - Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing)。<br /><br />[Azure 安全中心](https://azure.microsoft.com/services/security-center/)允许集中查看所有 Azure 资源的安全状况。 一眼就可验证适当的安全控制是否配置到位且配置正确，还可快速确认任何需要注意的资源。|
 
 
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 请参阅 Contoso Webstore 参考体系结构和设计文档（已作为解决方案安装模式内容提供）。|
 
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 请参阅 Contoso Webstore DFD 和威胁模型。|
 
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 采用边界保护设备（例如网关、网络 ACL、应用程序防火墙），在平台级别控制外部和内部边界的通信。 然后，客户就可以根据自己的规格和要求对其进行配置。 Microsoft Azure 对进入平台的通信进行筛选。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 采用边界保护设备（例如网关、网络 ACL、应用程序防火墙），在平台级别控制外部和内部边界的通信。 然后，客户就可以根据自己的规格和要求对其进行配置。 Microsoft Azure 对进入平台的通信进行筛选。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 通过 PaaS 隔离提供外围网络，而应用服务环境实施则确保 CDE 的数据出入受到保护。<br /><br />[应用服务环境 (ASE)](/azure/app-service-web/app-service-app-service-environment-intro) 是一项“高级”服务计划，其使用是出于符合性原因。 有关 ASE 控制和配置的详细信息，请参阅 [PCI 指南 - 应用服务环境](payment-processing-blueprint.md#app-service-environment)。|
 
 
@@ -108,8 +108,8 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
-| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 [Azure 基于角色的访问控制 (RBAC)](/azure/active-directory/role-based-access-control-configure) 来隔离用户角色。 可以通过 RBAC 对 Azure 进行访问管理，既准确又集中。 针对订阅访问和 Azure Key Vault 访问进行具体的配置。|
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
+| **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 使用 [Azure 基于角色的访问控制 (RBAC)](/azure/role-based-access-control/role-assignments-portal) 来隔离用户角色。 可以通过 RBAC 对 Azure 进行访问管理，既准确又集中。 针对订阅访问和 Azure Key Vault 访问进行具体的配置。|
 
 
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 在整个 RA 设计过程中，Contoso Webstore 只打开必需的端口和协议。 可以在 DFD 和威胁模型中查看数据流详细信息。|
 
 
@@ -134,7 +134,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 在 Contoso Webstore 中，对防火墙规则集进行审核的目的是确保不包括任何不需要的或不使用的规则。 按设计，演示版在部署时会尽量少启用特权，并使用最短的路径。|
 
 
@@ -150,7 +150,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 的 CDE 在 RA 和部署文档中定义。 根据设计，不受信任网络会被拒绝。|
 
 
@@ -163,7 +163,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 的 CDE 在 RA 和部署文档中定义。 根据设计，不受信任网络会被拒绝。 Contoso Webstore 演示版将 Microsoft Azure 应用程序防火墙配置为只允许指定范围的 IP 地址访问 Microsoft Azure 服务。 Contoso Webstore 在所有 CDE 边界提供“全部拒绝”形式的防火墙。 所有配置在部署的初始设置阶段执行。
 
 > [!NOTE]
@@ -179,7 +179,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 提供为了方便 Microsoft Azure 本机网络控制而同步的配置。|
 
 
@@ -192,7 +192,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 不启用任何无线解决方案或功能。|
 
 
@@ -205,7 +205,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 采用基于网络和基于主机的边界保护设备，例如防火墙、负载均衡器和 ACL。 这些设备使用 VLAN 隔离、NAT、数据包筛选等机制，将客户流量与 Internet 和管理人员流量分开。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 采用基于网络和基于主机的边界保护设备，例如防火墙、负载均衡器和 ACL。 这些设备使用 VLAN 隔离、NAT、数据包筛选等机制，将客户流量与 Internet 和管理人员流量分开。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 在部署时提供 Azure 应用程序防火墙的配置，此类配置只允许使用指定范围的 IP 地址来访问站点，并在其 CDE 中提供守护 Azure VM。|
 
 
@@ -219,7 +219,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 实施其外围网络是为了确保仅授权的服务可以与 CDE 连接。|
 
 
@@ -232,7 +232,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 实施其外围网络是为了确保仅授权的服务可以与 CDE 连接。|
 
 
@@ -245,7 +245,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 实施网络筛选是为了防止欺骗流量，将传入和传出流量限制为可信平台组件。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 实施网络筛选是为了防止欺骗流量，将传入和传出流量限制为可信平台组件。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 体系结构阻止未授权出站流量从范围内环境流向 Internet。 为此，可以在 Microsoft Azure 中为核准的端口和协议配置出站流量 ACL。 这些控制包括 SQL Server 数据库中 CDE 的访问权限。 <br /><br />PaaS SQL 数据库实例用于展示数据库的安全措施。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。|
 
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 实施网络筛选是为了防止欺骗流量，将传入和传出流量限制为可信平台组件。 隔离 Microsoft Azure 网络，以便将客户流量与管理人员流量分开。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 实施网络筛选是为了防止欺骗流量，将传入和传出流量限制为可信平台组件。 隔离 Microsoft Azure 网络，以便将客户流量与管理人员流量分开。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | 不适用。|
 
 
@@ -287,7 +287,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 使用网络隔离和 NAT 将客户流量与管理人员流量分开。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 使用网络隔离和 NAT 将客户流量与管理人员流量分开。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 体系结构阻止未授权出站流量从范围内环境流向 Internet。 为此，可以在 Microsoft Azure 中为核准的端口和协议配置出站流量 ACL。 这些控制包括 SQL Server 数据库中 CDE 的访问权限。 <br /><br />PaaS SQL 数据库实例用于展示数据库的安全措施。 有关详细信息，请参阅 [PCI 指南 - Azure SQL 数据库](payment-processing-blueprint.md#azure-sql-database)。|
 
 
@@ -308,7 +308,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | Microsoft Azure 使用网络地址转换 (NAT) 和网络隔离将客户流量与管理人员流量分开。 Azure 设备由其 UUID 唯一标识，并使用 Kerberos 进行身份验证。 Azure 托管的网络设备通过 RFC 1918 IP 地址进行标识。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | Microsoft Azure 使用网络地址转换 (NAT) 和网络隔离将客户流量与管理人员流量分开。 Azure 设备由其 UUID 唯一标识，并使用 Kerberos 进行身份验证。 Azure 托管的网络设备通过 RFC 1918 IP 地址进行标识。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 将所有持卡人数据置于代理服务器/防火墙后，在内部使用 RFC1918 地址空间。|
 
 
@@ -323,7 +323,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 不提供对最终用户设备的保护。 [Microsoft Intune](https://www.microsoft.com/cloud-platform/microsoft-intune) 可以用来管理工作人员访问公司数据时所用的移动设备。|
 
 
@@ -336,7 +336,7 @@ ms.lasthandoff: 11/16/2017
 
 |||
 |---|---|
-| **提供商<br />(Microsoft&nbsp;Azure)** | 不适用。 |
+| **提供商<br /> (Microsoft&nbsp;Azure)** | 不适用。 |
 | **客户<br />（PCI&#8209;DSS&nbsp;蓝图）** | Contoso Webstore 在部署时提供 Azure 应用程序防火墙的配置，此类配置只允许使用指定范围的 IP 地址来访问站点，并在其 CDE 中提供守护 Azure VM。|
 
 

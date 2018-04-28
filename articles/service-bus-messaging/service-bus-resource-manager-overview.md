@@ -1,24 +1,24 @@
 ---
-title: "使用资源管理器模板创建 Azure 服务总线资源 | Microsoft Docs"
-description: "使用 Azure 资源管理器模板自动创建服务总线资源"
+title: 使用资源管理器模板创建 Azure 服务总线资源 | Microsoft Docs
+description: 使用 Azure 资源管理器模板自动创建服务总线资源
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 24f6a207-0fa4-49cf-8a58-963f9e2fd655
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/10/2017
+ms.date: 04/11/2018
 ms.author: sethm
-ms.openlocfilehash: 0ceeb138a7432e51cabe2597c680cb01ea9eac4a
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: c8d84de608ccf3d9a9293c20c07c10a00b73da68
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建服务总线资源
 
@@ -61,7 +61,7 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
 
 ### <a name="create-a-template"></a>创建模板
 
-从 GitHub 克隆或复制 [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) 模板：
+从 GitHub 克隆存储库或复制 [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) 模板：
 
 ```json
 {
@@ -163,7 +163,7 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
 在 PowerShell 提示符下，运行以下命令：
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 ```
 
 系统会提示登录到 Azure 帐户。 登录后，运行以下命令以查看可用订阅：

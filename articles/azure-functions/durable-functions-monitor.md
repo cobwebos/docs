@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7e520429e5f5e219e05a77eb4ca18d0d6b6b3977
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9cb7a076ea922b9868bd439d160aec96f044e3b6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 03/23/2018
 * 监视器可以在满足某种条件时终止，或者由其他进程终止。
 * 监视器可以采用参数。 此示例演示如何将同一个天气监视进程应用到任何请求的地点和电话号码。
 * 监视器可缩放。 由于每个监视器是一个业务流程实例，因此可以创建多个监视器，而无需创建新函数或定义更多的代码。
-* 监视器可轻松集成到更大的工作流。 监视器可以是更复杂业务流程函数或[子业务流程](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-sub-orchestrations)的一部分。
+* 监视器可轻松集成到更大的工作流。 监视器可以是更复杂业务流程函数或[子业务流程](https://docs.microsoft.com/azure/azure-functions/durable-functions-sub-orchestrations)的一部分。
 
 ## <a name="configuring-twilio-integration"></a>配置 Twilio 集成
 

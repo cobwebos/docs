@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Connect Health 操作"
-description: "本文介绍在部署 Azure AD Connect Health 后可以执行的其他操作。"
+title: Azure Active Directory Connect Health 操作
+description: 本文介绍在部署 Azure AD Connect Health 后可以执行的其他操作。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 98dc12a857d910e8822dcfbb61209aa9ef773f47
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: c9920857f7d1910921b4bb3771e770fb4c3a42c3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。
@@ -91,9 +91,9 @@ ms.lasthandoff: 02/22/2018
 4. 单击“删除” 。
    <br><br>
 
-[//]: # (Start of RBAC section)
+[//]: # (开始 RBAC 部分)
 ## <a name="manage-access-with-role-based-access-control"></a>使用基于角色的访问控制管理访问权限
-用于 Azure AD Connect Health 的[基于角色的访问控制 (RBAC)](../role-based-access-control-configure.md) 可向全局管理员以外的用户和组提供访问权限。 RBAC 会将角色分配给目标用户和组，并提供一个机制将全局管理员的权限限制到目录以内。
+用于 Azure AD Connect Health 的[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 可向全局管理员以外的用户和组提供访问权限。 RBAC 会将角色分配给目标用户和组，并提供一个机制将全局管理员的权限限制到目录以内。
 
 ### <a name="roles"></a>角色
 Azure AD Connect Health 支持以下内置角色：
@@ -122,7 +122,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>步骤 2：添加用户、组并分配角色
 1. 在“配置”部分中，单击“用户”。<br>
    ![Azure AD Connect Health RBAC 主边栏选项卡的屏幕截图（其中突出显示了“用户”）](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
-2. 选择“添加”。
+2. 选择 **添加** 。
 3. 在“选择角色”窗格中，选择一个角色（例如“所有者”）。<br>
    ![Azure AD Connect Health RBAC“用户”窗口的屏幕快照](./media/active-directory-aadconnect-health/RBAC_add.png)
 4. 键入目标用户或组的名称或标识符。 可以同时选择一个或多个用户或组。 单击“选择”。
@@ -153,7 +153,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
 可删除已添加到 Azure AD Connect Health RBAC 中的用户或组。 只需右键单击用户或组，然后选择“删除”。<br>
 ![Azure AD Connect Health RBAC 用户窗口的屏幕截图（其中突出显示了“删除”）](./media/active-directory-aadconnect-health/RBAC_remove.png)
 
-[//]: # (End of RBAC section)
+[//]: # (结束 RBAC 部分)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

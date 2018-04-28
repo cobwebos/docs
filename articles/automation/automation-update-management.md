@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 04/05/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c9a546f82d3300b37f861fff53421ebbf9fe3804
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2c54435d893753306e903c0851e319fc3d1621b1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 04/06/2018
 |操作系统  |说明  |
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 仅支持更新评估         |
-|Windows Server 2008 R2 SP1 和更高版本     |Windows Server 2008 R2 SP1 需要 .NET Framework 4.5 和 WMF 5.0 或更高版本        |
+|Windows Server 2008 R2 SP1 和更高版本     |Windows PowerShell 4.0 或更高版本是必需的（[下载 WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)）。<br> 为提高可靠性，建议使用 Windows PowerShell 5.1（[下载 WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）。         |
 |CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。        |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
@@ -252,7 +252,7 @@ Heartbeat
 | 无法注册进行修补程序管理的计算机，<br>注册失败，出现异常<br>System.Net.Http.HttpRequestException: 发送请求时出错。 ---><br>System.Net.WebException: 基础连接<br>已关闭: 在接收时<br>发生意外错误。 ---> System.ComponentModel.Win32Exception:<br>客户端和服务器无法通信，<br>因为没有通用算法 | 代理/网关/防火墙阻止通信 | [查看网络要求](automation-offering-get-started.md#network-planning)|
 | 无法注册进行修补程序管理的计算机，<br>注册失败，出现异常<br>Newtonsoft.Json.JsonReaderException: 分析正无穷大值时出错。 | 代理/网关/防火墙阻止通信 | [查看网络要求](automation-offering-get-started.md#network-planning)|
 | 由服务 <wsid>.oms.opinsights.azure.com 出示的证书<br>不是由<br>用于 Microsoft 服务的证书颁发机构颁发的。 联系人<br>网络管理员，确定其运行的代理是否截获<br>TLS/SSL 通信。 |代理/网关/防火墙阻止通信 | [查看网络要求](automation-offering-get-started.md#network-planning)|
-| 无法注册进行修补程序管理的计算机，<br>注册失败，出现异常<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>无法创建自签名证书。 ---><br>System.UnauthorizedAccessException: 访问被拒绝。 | 自签名证书生成失败 | 请验证系统帐户是否具有<br>以下文件夹的读取访问权限:<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|
+| 无法注册进行修补程序管理的计算机，<br>注册失败，出现异常<br>AgentService.HybridRegistration.<br>PowerShell.Certificates.CertificateCreationException:<br>无法创建自签名证书。 ---><br>System.UnauthorizedAccessException: 访问被拒绝。 | 自签名证书生成失败 | 请验证系统帐户是否具有<br>以下文件夹的读取访问权限:<br>**C:\ProgramData\Microsoft\**<br>** Crypto\RSA**|
 
 ## <a name="next-steps"></a>后续步骤
 

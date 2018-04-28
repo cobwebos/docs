@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8238e0f55b88e4fa207357630aa4228250c33249
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7ebe7a88fcb0a0785b72c512e64a2d9aeb5fc506
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>使用 Jenkins 和 Azure 容器服务进行持续部署
 
-本文档演示如何在 Jenkins 与 Azure 容器服务 (AKS) 群集之间设置基本的持续部署工作流。 
+本文档演示如何在 Jenkins 与 Azure 容器服务 (AKS) 群集之间设置基本的持续部署工作流。
 
 示例工作流包括以下步骤：
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 03/28/2018
 
 ## <a name="prepare-application"></a>准备应用程序
 
-本文档中通篇使用的 Azure 投票应用程序包含一个或多个 pod 中托管的 Web 接口，以及另一个用于托管 Redis（用作临时数据存储）的 pod。 
+本文档中通篇使用的 Azure 投票应用程序包含一个或多个 pod 中托管的 Web 接口，以及另一个用于托管 Redis（用作临时数据存储）的 pod。
 
 在生成 Jenkins/AKS 集成之前，请准备好 Azure 投票应用程序并将其部署到 AKS 群集。 在应用程序的第一个版本中就应该考虑这些工作。
 
@@ -94,7 +94,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-使用 ACR 登录服务器名称更新 ACR 登录服务器值，并将 `azure-vote-front` 映像推送到注册表。 
+使用 ACR 登录服务器名称更新 ACR 登录服务器值，并将 `azure-vote-front` 映像推送到注册表。
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -118,7 +118,7 @@ containers:
 kubectl create -f azure-vote-all-in-one-redis.yaml
 ```
 
-创建向 Internet 公开应用程序的 [Kubernetes 服务][kubernetes-service]。 此过程可能需要几分钟。 
+创建向 Internet 公开应用程序的 [Kubernetes 服务][kubernetes-service]。 此过程可能需要几分钟。
 
 若要监视进度，请将 [kubectl get service][kubectl-get] 命令与 `--watch` 参数配合使用。
 
@@ -127,12 +127,12 @@ kubectl get service azure-vote-front --watch
 ```
 
 azure-vote-front 服务的 EXTERNAL-IP 一开始显示为“挂起”。
-  
+
 ```
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 ```
 
-EXTERNAL-IP 地址从“挂起”变为 IP 地址以后，请使用 `control+c` 停止 kubectl 监视进程。 
+EXTERNAL-IP 地址从“挂起”变为 IP 地址以后，请使用 `control+c` 停止 kubectl 监视进程。
 
 ```
 azure-vote-front   10.0.34.242   13.90.150.118   80:30676/TCP   2m
@@ -160,20 +160,6 @@ Open a browser to http://52.166.118.64:8080
 Enter the following to Unlock Jenkins:
 667e24bba78f4de6b51d330ad89ec6c6
 ```
-
-如果登录 Jenkins 时遇到问题，请使用 Jenkins VM 创建 SSH 会话并重启 Jenkins 服务。 VM 的 IP 地址与生成脚本所提供的 IP 地址相同。 VM 管理员用户名为 `azureuser`。
-
-```bash
-ssh azureuser@52.166.118.64
-```
-
-重启 Jenkins 服务。
-
-```bash
-sudo service jenkins restart
-```
-
-刷新浏览器后应会显示 Jenkins 登录窗体。
 
 ## <a name="jenkins-environment-variables"></a>Jenkins 环境变量
 
@@ -209,7 +195,7 @@ Jenkins 环境变量用于保存 Azure 容器注册表 (ACR) 登录服务器名�
 
 在 Jenkins 管理门户中，单击“新建项”。
 
-为项目命名（例如 `azure-vote`），依次选择“自由风格项目”、“确定”。 
+为项目命名（例如 `azure-vote`），依次选择“自由风格项目”、“确定”。
 
 ![Jenkins 项目](media/aks-jenkins/jenkins-project.png)
 
@@ -217,9 +203,9 @@ Jenkins 环境变量用于保存 Azure 容器注册表 (ACR) 登录服务器名�
 
 ![GitHub 项目](media/aks-jenkins/github-project.png)
 
-在“源代码管理”下选择“Git”，输入 Azure 投票 GitHub 存储库分叉的 URL。 
+在“源代码管理”下选择“Git”，输入 Azure 投票 GitHub 存储库分叉的 URL。
 
-单击“添加” > “Jenkins”输入凭据。 在“类型”下选择“机密文本”，输入 [GitHub 个人访问令牌][git-access-token]作为机密。 
+单击“添加” > “Jenkins”输入凭据。 在“类型”下选择“机密文本”，输入 [GitHub 个人访问令牌][git-access-token]作为机密。
 
 完成时请选择“添加”。
 
@@ -233,7 +219,7 @@ Jenkins 环境变量用于保存 Azure 容器注册表 (ACR) 登录服务器名�
 
 ![Jenkins 生成环境](media/aks-jenkins/build-environment.png)
 
-在“绑定”下，选择“添加” > “用户名和密码(分隔)”。 
+在“绑定”下，选择“添加” > “用户名和密码(分隔)”。
 
 在“用户名变量”中输入 `ACR_ID`，在“密码变量”中输入 `ACR_PASSWORD`。
 
@@ -263,13 +249,13 @@ kubectl set image deployment/azure-vote-front azure-vote-front=$WEB_IMAGE_NAME -
 
 在继续之前，请测试 Jenkins 生成。 这会验证是否已正确配置生成作业、准备好适当的 Kubernetes 身份验证文件，并提供了适当的 ACR 凭据。
 
-在项目的左侧菜单中单击“立即生成”。 
+在项目的左侧菜单中单击“立即生成”。
 
 ![Jenkins 测试生成](media/aks-jenkins/test-build.png)
 
 在此过程中，GitHub 存储库将克隆到 Jenkins 生成服务器。 将会生成新的容器映像并将其推送到 ACR 注册表。 最后，AKS 群集上运行的 Azure 投票应用程序会更新为使用新映像。 由于未对应用程序代码进行任何更改，因此应用程序不会更改。
 
-完成该过程后，可以单击生成历史记录下的“生成 #1”并选择“控制台输出”来查看生成过程的所有输出。 最后一行应指示生成成功。 
+完成该过程后，可以单击生成历史记录下的“生成 #1”并选择“控制台输出”来查看生成过程的所有输出。 最后一行应指示生成成功。
 
 ## <a name="create-github-webhook"></a>创建 GitHub Webhook
 
@@ -280,14 +266,14 @@ kubectl set image deployment/azure-vote-front azure-vote-front=$WEB_IMAGE_NAME -
 3. 选择“添加服务”，在筛选框中输入 `Jenkins (GitHub plugin)`，然后选择插件。
 4. 对于 Jenkins 挂钩 URL，请输入 `http://<publicIp:8080>/github-webhook/`，其中，`publicIp` 是 Jenkins 服务器的 IP 地址。 请务必包含尾部的 /。
 5. 选择“添加服务”。
-  
+
 ![GitHub Webhook](media/aks-jenkins/webhook.png)
 
 ## <a name="test-cicd-process-end-to-end"></a>测试 CI/CD 端到端过程
 
-在开发计算机上，使用代码编辑器打开克隆的应用程序。 
+在开发计算机上，使用代码编辑器打开克隆的应用程序。
 
-在 **/azure-vote/azure-vote** 目录下，可以看到名为 **config_file.cfg** 的文件。 将此文件中的投票值更新为除 cats 和 dogs 以外的值。 
+在 **/azure-vote/azure-vote** 目录下，找到名为 **config_file.cfg** 的文件。 将此文件中的投票值更新为除 cats 和 dogs 以外的值。
 
 以下示例显示了更新的 **config_file.cfg** 文件。
 
@@ -299,7 +285,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-完成后，保存该文件、提交更改，并将更改推送到 GitHub 存储库的分叉。 完成提交后，GitHub Webhook 会触发新的 Jenkins 生成，从而更新容器映像和 AKS 部署。 可在 Jenkins 管理控制台上监视生成过程。 
+完成后，保存该文件、提交更改，并将更改推送到 GitHub 存储库的分叉。 完成提交后，GitHub Webhook 会触发新的 Jenkins 生成，从而更新容器映像和 AKS 部署。 可在 Jenkins 管理控制台上监视生成过程。
 
 完成生成后，再次浏览到应用程序终结点以观察所做的更改。
 

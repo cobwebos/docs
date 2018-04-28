@@ -10,18 +10,18 @@ ms.topic: article
 manager: carmonm
 tags: top-support-issue
 keywords: 自动化错误, 故障排除, 问题
-ms.openlocfilehash: 9764068dd7a1a499c61695f39bff726a8ea3aac9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 44200ae9deb1a5c11c81550173b3f6f90b5d62ab
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure 自动化中的常见问题解答 
 本文介绍如何排除会在 Azure 自动化中遇到的常见错误，并提供可能的解决方案建议。
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>使用 Azure 自动化 Runbook 时遇到的身份验证错误
 ### <a name="scenario-sign-in-to-azure-account-failed"></a>场景：登录 Azure 帐户失败
-**错误：**使用 Add-AzureAccount 或 Login-AzureRmAccount cmdlet 时收到“Unknown_user_type: 用户类型未知”错误。
+**错误：**使用 Add-AzureAccount 或 Connect-AzureRmAccount cmdlet 时收到“Unknown_user_type: 用户类型未知”错误。
 
 **错误原因：**如果凭据资产名称无效或者用于设置自动化凭据资产的用户名和密码无效，则会出现此错误。
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/23/2018
         #Using Azure Service Management   
         Add-AzureAccount –Credential $Cred  
         #Using Azure Resource Manager  
-        Login-AzureRmAccount –Credential $Cred
+        Connect-AzureRmAccount –Credential $Cred
 3. 如果无法在本地进行身份验证，则意味着你尚未设置好 Azure Active Directory 凭据。 请参阅[使用 Azure Active Directory 向 Azure 进行身份验证](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)博客文章，了解如何正确设置 Azure Active Directory 帐户。  
 
 ### <a name="scenario-unable-to-find-the-azure-subscription"></a>场景：无法找到 Azure 订阅

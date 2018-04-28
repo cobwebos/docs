@@ -13,11 +13,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 6d214072bccb8b2b42828ee003dcf349985b4f43
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7e092dc1448a45277e01b1a8c6d2bc0e2a8a22a3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="upgrade-to-vm-backup-stack-v2"></a>升级到 VM 备份堆栈 V2
 虚拟机 (VM) 备份堆栈 V2 升级提供以下功能增强：
@@ -49,7 +49,9 @@ ms.lasthandoff: 03/23/2018
 * 这是 VM 备份堆栈的单向升级。 因此，将来的所有备份都要经历此工作流。 由于**此功能是在订阅级别启用的，所有 VM 都要经历此工作流**。 所有新功能补充都基于同一个堆栈。 将来的版本将会支持在策略级别控制此功能。 
 * 对于包含高级磁盘的 VM，在首次备份期间，请确保在首次备份完成之前，存储帐户中能够提供与 VM 大小相当的存储空间。 
 * 由于快照存储在本地以便大幅提升恢复点创建速度和加速还原速度，因此，在七天期限内，可以看到对应于快照的存储成本。
+* 增量快照作为页 blob 存储。 将对所有使用非托管磁盘的客户收取快照存储在客户本地存储帐户 7 天的费用。 根据当前定价模型，不对托管磁盘上的客户收费。
 * 如果从快照恢复点执行高级 VM 还原，在还原过程中创建 VM 时，会看到使用了一个临时存储位置。 
+* 对于高级存储帐户，即时恢复所用的快照将占用高级存储帐户中分配的 10TB 空间。
 
 ## <a name="how-to-upgrade"></a>如何升级？
 ### <a name="the-azure-portal"></a>Azure 门户
@@ -66,7 +68,7 @@ ms.lasthandoff: 03/23/2018
 1.  登录到 Azure 帐户。 
 
 ```
-PS C:> Login-AzureRmAccount
+PS C:> Connect-AzureRmAccount
 ```
 
 2.  选择要注册其预览版的订阅：
@@ -78,14 +80,14 @@ PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select
 3.  注册此订阅的个人预览版：
 
 ```
-PS C:>  Register-AzureRmProviderFeature -FeatureName “InstantBackupandRecovery” –ProviderNamespace Microsoft.RecoveryServices
+PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
 ## <a name="verify-whether-the-upgrade-is-complete"></a>检查升级是否已完成
 在权限提升的 PowerShell 终端中运行以下 cmdlet：
 
 ```
-Get-AzureRmProviderFeature -FeatureName “InstantBackupandRecovery” –ProviderNamespace Microsoft.RecoveryServices
+Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
 如果输出中显示 Registered，则表示订阅已升级到 VM 备份堆栈 V2。 

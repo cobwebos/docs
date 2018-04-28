@@ -1,25 +1,18 @@
 ---
-title: "管理 Azure Analysis Services | Microsoft Docs"
-description: "了解如何在 Azure 中管理 Analysis Services 服务器。"
-services: analysis-services
-documentationcenter: 
+title: 管理 Azure Analysis Services | Microsoft Docs
+description: 了解如何在 Azure 中管理 Analysis Services 服务器。
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 79491d0b-b00d-4e02-9ca7-adc99bc02fdb
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 11aa42fbe15dd68dfac128b707fd6bdbfd0b24d1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: 0cad50788eeb4a31d1e3f6f7e6c038ba2a8d4d9b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="manage-analysis-services"></a>管理 Analysis Services
 在 Azure 中创建 Analysis Services 服务器后，可能会有一些需要立即执行或在稍后操作期间执行的管理任务。 例如，处理刷新数据、控制谁有权访问服务器上的模型，或者监视服务器的运行状况。 某些管理任务仅可在 Azure 门户中执行，而其他一些可在 SQL Server Management Studio (SSMS) 中执行，还有部分在两者中均可执行。
@@ -47,13 +40,18 @@ ms.lasthandoff: 02/21/2018
    
     ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. 在 SSMS >“对象资源管理器”中，单击“连接” > “Analysis Services”。
-3. 在“连接到服务器”对话框中，粘贴服务器名称，然后在“身份验证”中选择以下身份验证类型之一：
-   
+3. 在“连接到服务器”对话框中，粘贴服务器名称，然后在“身份验证”中选择以下身份验证类型之一：   
+    > [!NOTE]
+    > 建议选择“Active Directory - 通用且具有 MFA 支持”身份验证类型。
+
+    > [!NOTE]
+    > 如果使用 Microsoft 帐户、Live ID、Yanoo、Gmail 等登录，请将密码字段留空。 单击“连接”后，系统将提示你输入密码。
+
     选择“Windows 身份验证”，以使用 Windows 域\用户名和密码凭据。
 
     **Active Directory 密码身份验证**，其使用组织帐户。 例如，从未加入域的计算机进行连接时。
 
-    选择“Active Directory 通用身份验证”，以使用[非交互式或多重身份验证](../sql-database/sql-database-ssms-mfa-authentication.md)。 
+    选择“Active Directory - 通用且具有 MFA 支持”，以使用[非交互式或多重身份验证](../sql-database/sql-database-ssms-mfa-authentication.md)。 
    
     ![在 SSMS 中连接](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 

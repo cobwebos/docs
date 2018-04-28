@@ -19,8 +19,8 @@
 
 1. 在 [Azure 门户](https://portal.azure.com/)中打开 IoT 中心。
 
-2. 单击“设备资源管理器”。
-3. 在“设备资源管理器”窗格中，单击“添加”将设备添加到 IoT 中心。 然后执行以下操作：
+2. 单击“IoT 设备”。
+3. 在“IoT 设备”窗格中，单击“添加”将设备添加到 IoT 中心。 然后执行以下操作：
 
    **设备 ID**：输入新设备的 ID。 设备 ID 区分大小写。
 
@@ -30,12 +30,15 @@
 
    **将设备连接到 IoT 中心**：单击“启用”。
 
-   ![在 IoT 中心的设备资源管理器中添加设备](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-device-explorer-portal.png)
+   ![在 IoT 中心的“IoT 设备”中添加设备](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-iot-devices-portal.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 4. 单击“ **保存**”。
-5. 创建设备后，在“设备资源管理器”窗格中打开设备。
+5. 创建设备后，在“IoT 设备”窗格中打开该设备。
+
+   ![IoT 中心内的“IoT 设备”列表](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_device-list-in-iot-devices-portal.png)
+
 6. 记下连接字符串的主密钥。
 
-   ![获取设备连接字符串](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_get-device-connection-string-in-device-explorer-portal.png)
+   ![获取设备连接字符串](../articles/iot-hub/media/iot-hub-create-hub-and-device/8_get-device-connection-string-in-iot-devices-portal.png)

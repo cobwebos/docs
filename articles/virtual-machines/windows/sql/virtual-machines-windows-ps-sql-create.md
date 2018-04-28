@@ -1,11 +1,11 @@
 ---
-title: "使用 Azure PowerShell 预配 SQL Server VM 的指南 | Microsoft Docs"
-description: "提供了用于使用 SQL Server 虚拟机库映像创建 Azure VM 的步骤和 PowerShell 命令。"
+title: 使用 Azure PowerShell 预配 SQL Server VM 的指南 | Microsoft Docs
+description: 提供了用于使用 SQL Server 虚拟机库映像创建 Azure VM 的步骤和 PowerShell 命令。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 2f94cf2ab84179161c8d0a4f2ae6f73ded1d65c3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7dff9fd736b1b0c616ee2d4f2591d632345156b9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>如何使用 Azure PowerShell 预配 SQL Server 虚拟机
 
@@ -31,10 +31,10 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="configure-your-subscription"></a>配置订阅
 
-1. 打开 PowerShell，通过运行 **Add-AzureRmAccount** 命令建立对 Azure 帐户的访问。
+1. 打开 PowerShell，通过运行 **Connect-AzureRmAccount** 命令建立对 Azure 帐户的访问。
 
    ```PowerShell
-   Add-AzureRmAccount
+   Connect-AzureRmAccount
    ```
 
 1. 应当会出现用来输入凭据的登录屏幕。 使用登录 Azure 门户时所用的相同电子邮件和密码。
@@ -327,7 +327,7 @@ Stop-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
 还可以使用 **Remove-AzureRmResourceGroup** 命令永久删除与虚拟机关联的所有资源。 请小心使用此命令，因为它也会永久删除该虚拟机。
 
 ## <a name="example-script"></a>示例脚本
-以下脚本包含本教程的完整 PowerShell 脚本。 其中假设已将 Azure 订阅设置为配合使用 **Add-AzureRmAccount** 和 **Select-AzureRmSubscription** 命令。
+以下脚本包含本教程的完整 PowerShell 脚本。 其中假设已将 Azure 订阅设置为配合使用 **Connect-AzureRmAccount** 和 **Select-AzureRmSubscription** 命令。
 
 ```PowerShell
 # Variables

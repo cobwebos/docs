@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/12/2017
-ms.author: dekapur;maburlik;chackdan
-ms.openlocfilehash: b1190ec5a3ff70a368b29465699f9082d2b989bf
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: dekapur;maburlik;aljo
+ms.openlocfilehash: 62673025f5c597f6ed958ad523190d937a52c912
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 <a id="preparemachines"></a>
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 12/08/2017
 
 有关 FD 和 UD 的更多详细信息，请参阅 [Service Fabric 群集介绍](service-fabric-cluster-resource-manager-cluster-description.md)。
 
-如果能够完全控制节点的维护和管理（例如，负责更新和更换计算机），则应该将生产环境中的群集至少跨越三个 FD，这样才能使它在生产环境中受支持。 对于在无法完全控制计算机的环境（例如 Amazon Web Services VM 实例）中运行的群集，至少应在群集中部署五个 FD。 每个 FD 可以包含一个或多个节点。 这是为了防止计算机升级和更新造成问题，根据升级和更新的时间，这些问题可能会干扰群集中应用程序和服务的运行。
+如果能够完全控制节点的维护和管理（即负责更新和更换计算机），则应该将生产环境中的群集至少跨越三个 FD，这样才能使它在生产环境中受支持。 对于在无法完全控制计算机的环境（例如 Amazon Web Services VM 实例）中运行的群集，至少应在群集中部署五个 FD。 每个 FD 可以包含一个或多个节点。 这是为了防止计算机升级和更新造成问题，根据升级和更新的时间，这些问题可能会干扰群集中应用程序和服务的运行。
 
 ## <a name="determine-the-initial-cluster-size"></a>确定初始群集大小
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 12/08/2017
 * 已卸载 Service Fabric SDK
 * 已卸载 Service Fabric 运行时 
 * 已启用 Windows 防火墙服务 (mpssvc)
-* 已启用远程注册表服务 (remoteregistry)
+* 已启用远程注册表服务（远程注册表）
 * 已启用文件共享 (SMB)
 * 已基于群集配置端口打开所需的端口
 * 已打开 Windows SMB 和远程注册表服务所需的端口：135、137、138、139 和 445

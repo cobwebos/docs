@@ -7,14 +7,14 @@ ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 04/10/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: b633c3c4a4f476cb8e89afde8adeb94558643d4b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b36099c6fd2deb6b627c8ccd7cc9e13c328f54e3
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异 
 
@@ -239,7 +239,7 @@ WITH PRIVATE KEY ( <private_key_options> )
 ### <a name="linked-servers"></a>链接的服务器
  
 托管实例中的链接服务器支持有限数量的目标： 
-- 支持的目标：SQL Server、SQL 数据库、托管实例，以及虚拟机上的 SQL Server。
+- 支持的目标：SQL Server 和 SQL 数据库
 - 不支持的目标：文件、Analysis Services 和其他 RDBMS。
 
 操作
@@ -393,7 +393,7 @@ WITH PRIVATE KEY ( <private_key_options> )
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小型数据库文件超出存储空间
 
-每个托管实例都为 Azure 高级磁盘空间保留了高达 35 TB 的存储空间，并且每个数据库文件都放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8 TB 的托管实例可能会超过 35TB 的 Azure 存储大小限制。 
+每个托管实例都为 Azure 高级磁盘空间保留了高达 35 TB 的存储空间，并且每个数据库文件都放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8 TB 的托管实例可能会超过 35 TB 的 Azure 存储大小限制。 
 
 例如，某托管实例的一个文件大小为 1.2 TB 而使用 4 TB 磁盘，另外 248 个大小均为 1 GB 的文件分别位于 248 个大小各为 128 GB 的磁盘上。 这种情况下，磁盘存储大小总计为 1 x 4 TB + 248 x 128 GB = 35 TB。 但是，数据库的总保留实例大小为 1 x 1.2 TB + 248 x 1 GB = 1.4 TB。 这说明在某些情况下，由于文件分布极为具体，托管实例可能会出乎意料地达到 Azure 高级磁盘存储空间上限。 
 
@@ -419,4 +419,4 @@ WITH PRIVATE KEY ( <private_key_options> )
 
 - 有关托管实例的详细信息，请参阅[什么是托管实例？](sql-database-managed-instance.md)
 - 有关功能和比较列表，请参阅 [SQL 常用功能](sql-database-features.md)。
-- 有关教程，请参阅[创建托管实例](sql-database-managed-instance-tutorial-portal.md)。
+- 有关演示如何新建托管实例的教程，请参阅[创建托管实例](sql-database-managed-instance-create-tutorial-portal.md)。

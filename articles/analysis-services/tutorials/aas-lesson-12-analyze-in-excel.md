@@ -1,25 +1,18 @@
 ---
-title: "Azure Analysis Services 教程第 12 课：在 Excel 中分析 | Microsoft Docs"
-description: "介绍了在 Azure Analysis Services 教程项目中如何使用“在 Excel 中分析”功能。"
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+title: Azure Analysis Services 教程第 12 课：在 Excel 中分析 | Microsoft Docs
+description: 介绍了在 Azure Analysis Services 教程项目中如何使用“在 Excel 中分析”功能。
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 8d7f79db612ee02eaf585f9b45d888b3533a91b2
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 17dba7be2acab18108dc50a5c16d55e0e720cbcc
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="analyze-in-excel"></a>在 Excel 中分析
 
@@ -29,7 +22,7 @@ ms.lasthandoff: 01/09/2018
   
 本课预计完成时间：5 分钟  
   
-## <a name="prerequisites"></a>系统必备  
+## <a name="prerequisites"></a>先决条件  
 本主题是表格建模教程的一部分，应当按顺序完成。 在执行本课中的任务之前，应当已完成上一课：[第 11 课：创建角色](../tutorials/aas-lesson-11-create-roles.md)。  
   
 ## <a name="browse-using-the-default-and-internet-sales-perspectives"></a>使用默认透视和 Internet 销售透视进行浏览  

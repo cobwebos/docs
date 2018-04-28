@@ -1,11 +1,11 @@
 ---
-title: "在 Operations Management Suite 门户中查询 B2B 消息 - Azure 逻辑应用 | Microsoft Docs"
-description: "创建查询，以便在 Operations Management Suite 中跟踪 AS2、X12 和 EDIFACT 消息"
+title: 在 Log Analytics 中查询 B2B 消息 - Azure 逻辑应用 | Microsoft Docs
+description: 创建查询来跟踪 Log Analytics 中的 AS2、X12 和 EDIFACT 消息
 author: padmavc
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
 ms.workload: integration
@@ -14,57 +14,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: bc1ea42c9fb81fe1e2a2594fda48500132cbb539
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 345857801035fb7f149a57a4f0d58e7668f35b81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="query-for-as2-x12-and-edifact-messages-in-the-microsoft-operations-management-suite-oms"></a>在 Microsoft Operations Management Suite (OMS) 中查询 AS2、X12 和 EDIFACT 消息
+# <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>查询 Log Analytics 中的 AS2、X12 和 EDIFACT 消息
 
-要在 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 中查找使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 跟踪的 AS2、X12 或 EDIFACT 消息，可以创建基于具体情况筛选操作的查询。 例如，你可以根据特定的交换控制编号查找消息。
+若要查找使用 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) 跟踪的 AS2、X12 或 EDIFACT 消息，可以创建基于具体情况筛选操作的查询。 例如，你可以根据特定的交换控制编号查找消息。
 
 ## <a name="requirements"></a>要求
 
 * 已设置诊断日志记录的逻辑应用。 了解[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)以及[如何为逻辑应用设置日志记录](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)。
 
-* 已设置监视和日志记录的集成帐户。 了解[如何创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)以及[如何为该帐户设置监视和日志记录](../logic-apps/logic-apps-monitor-b2b-message.md)。
+* 已设置监视和日志记录的集成帐户。 了解[如何创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)以及[如何为集成帐户设置监视和日志记录](../logic-apps/logic-apps-monitor-b2b-message.md)。
 
-* 如果尚未准备好，则[将诊断数据发布到 Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)并[在 OMS 中设置消息跟踪](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)。
+* [将诊断数据发布到 Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)并[在 Log Analytics 中设置消息跟踪](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)（如果尚未执行这些操作）。
 
 > [!NOTE]
-> 在满足此前的要求后，在 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 中应该已经有一个工作区了。 应使用相同的 OMS 工作区来跟踪你在 OMS 上的 B2B 通信。 
+> 满足上述要求后，Log Analytics 中应该已经有一个工作区。 应使用同一工作区来跟踪 Log Analytics 上的 B2B 通信。 
 >  
-> 如果没有 OMS 工作区，了解[如何创建 OMS 工作区](../log-analytics/log-analytics-get-started.md)。
+> 如果没有 Log Analytics 工作区，请了解[如何创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)。
 
-## <a name="create-message-queries-with-filters-in-the-operations-management-suite-portal"></a>在 Operations Management Suite 门户中使用筛选器创建消息查询
+## <a name="create-message-queries-with-filters-in-log-analytics"></a>在 Log Analytics 中使用筛选器创建消息查询
 
 本示例演示如何根据交换控制编号查找消息。
 
 > [!TIP] 
-> 如果你知道自己的 OMS 工作区名称，请转到工作区主页 (`https://{your-workspace-name}.portal.mms.microsoft.com`)，然后从步骤 4 开始操作。 否则，从步骤 1 开始。
+> 如果知道自己的 Log Analytics 工作区名称，请转到工作区主页 (`https://{your-workspace-name}.portal.mms.microsoft.com`)，然后从步骤 4 开始操作。 否则，从步骤 1 开始。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“所有服务”。 搜索“日志分析”，然后选择“Log Analytics”，如下所示：
 
    ![查找 Log Analytics](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/browseloganalytics.png)
 
-2. 在“Log Analytics”下，查找并选择 OMS 工作区。
+2. 在“Log Analytics”下，查找并选择你的 Log Analytics 工作区。
 
-   ![选择你的 OMS 工作区](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
+   ![选择你的 Log Analytics 工作区](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
 
 3. 在“管理”下，选择“OMS 门户”。
 
-   ![选择 OMS 门户](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/omsportalpage.png)
+   ![选择“OMS 门户”](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/omsportalpage.png)
 
-4. 在 OMS 主页上，选择“日志搜索”。
+4. 在主页上，选择“日志搜索”。
 
-   ![在 OMS 主页上，选择“日志搜索”](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![在主页上，选择“日志搜索”](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
 
    -或-
 
-   ![在 OMS 菜单上，选择“日志搜索”](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![在菜单上，选择“日志搜索”](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
-5. 在搜索框中，输入要查找的字段，然后按下 Enter 键。 开始输入时，OMS 会显示你可以使用的可能的匹配和操作。 详细了解[如何在 Log Analytics 中查找数据](../log-analytics/log-analytics-log-searches.md)。
+5. 在搜索框中，输入要查找的字段，然后按下 Enter 键。 开始输入时，Log Analytics 会显示你可以使用的可能的匹配和操作。 详细了解[如何在 Log Analytics 中查找数据](../log-analytics/log-analytics-log-searches.md)。
 
    本示例搜索 Type=AzureDiagnostics 的事件。
 
@@ -106,15 +106,15 @@ ms.lasthandoff: 02/21/2018
 
    ![选择查询](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-find-favorites.png)
 
-## <a name="find-and-run-saved-queries-in-the-operations-management-suite-portal"></a>在 Operations Management Suite 门户中查找并运行保存的查询
+## <a name="find-and-run-saved-queries-in-log-analytics"></a>查找和运行 Log Analytics 中的已保存查询
 
-1. 打开 OMS 工作区中主页 (`https://{your-workspace-name}.portal.mms.microsoft.com`)，然后选择“日志搜索”。
+1. 打开 Log Analytics 工作区中主页 (`https://{your-workspace-name}.portal.mms.microsoft.com`)，然后选择“日志搜索”。
 
-   ![在 OMS 主页上，选择“日志搜索”](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![在 Log Analytics 主页上，选择“日志搜索”](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
 
    -或-
 
-   ![在 OMS 菜单上，选择“日志搜索”](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![在菜单上，选择“日志搜索”](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
 
 2. 在“日志搜索”主页上，选择“收藏夹”。
 

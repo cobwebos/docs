@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: a62268cee0750c544703fb4c3f7e91238e26b872
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 30013c0bd8ded31ccaf3cdc142bbf8dc6b375031
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>用于 .NET 2.9 的 Azure SDK 发行说明
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 03/23/2018
  
 ### <a name="windows-server-2016-virtual-machines"></a>Windows Server 2016 虚拟机
 
-- Visual Studio 现在支持将云服务部署到操作系统系列 5 (Windows Server 2016) 虚拟机。 对于现有云服务，可更改设置以面向新的 OS 系列。 创建新的云服务时，如果选择创建使用 .NET 4.6 或更高版本的服务，则该服务将默认使用 OS 系列 5。  有关详细信息，可查看[来宾 OS 系列支持表](https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/)。
+- Visual Studio 现在支持将云服务部署到操作系统系列 5 (Windows Server 2016) 虚拟机。 对于现有云服务，可更改设置以面向新的 OS 系列。 创建新的云服务时，如果选择创建使用 .NET 4.6 或更高版本的服务，则该服务将默认使用 OS 系列 5。  有关详细信息，可查看[来宾 OS 系列支持表](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/)。
 
 #### <a name="known-issues"></a>已知问题
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 03/23/2018
  
 ### <a name="azure-in-role-cache"></a>Azure 角色中缓存 
 
-- 从 2016 年 11 月 30 日起，不再支持 Azure 角色中缓存。 有关详细信息，请单击[此处](https://azure.microsoft.com/en-us/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)。
+- 从 2016 年 11 月 30 日起，不再支持 Azure 角色中缓存。 有关详细信息，请单击[此处](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)。
 
 ### <a name="azure-resource-manager-templates-for-azure-stack"></a>用于 Azure Stack 的 Azure 资源管理器模板
 

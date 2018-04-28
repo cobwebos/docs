@@ -1,24 +1,18 @@
 ---
-title: "Azure Analysis Services 别名服务器名称 | Microsoft Docs"
-description: "介绍了如何创建和使用服务器名称别名。"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services 别名服务器名称 | Microsoft Docs
+description: 介绍了如何创建和使用服务器名称别名。
 author: minewiskan
 manager: kfile
-editor: 
-ms.assetid: 
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: e0119580c4128ffd237127a62e29dac34297da5d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: e55438c629b861e8dc095892c6c519855cd5e632
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="alias-server-names"></a>别名服务器名称
 
@@ -31,7 +25,7 @@ ms.lasthandoff: 02/21/2018
 - 在一天中的不同时间将用户定向到不同的服务器。 
 - 将不同区域中的用户定向到在地理上更近的实例，就像使用 Azure 流量管理器时一样。 
 
-返回有效的 Azure Analysis Services 服务器名称的 HTTP 终结点可以充当别名。
+任何返回有效的 Azure Analysis Services 服务器名称的 HTTPS 终结点都可以充当别名。 终结点必须通过端口 443 支持 HTTPS，且不得在 URI 中指定端口。
 
 ![使用链接格式的别名](media/analysis-services-alias/aas-alias-browser.png)
 

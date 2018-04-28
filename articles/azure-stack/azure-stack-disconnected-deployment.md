@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 04/26/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 8fbc489bacb3c8592ee99fc5a4486fd864f498ee
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 49697a57e59b652fed4997d57bc7ae15cc596cf7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 集成系统的 Azure 断开连接部署计划决策
 在决定[如何将 Azure Stack 集成到混合云环境](azure-stack-connection-models.md)后，可以完成你的 Azure Stack 部署决策。
@@ -47,7 +47,7 @@ Azure Stack 设计为在连接到 Azure 的情况下功能最佳，因此请务�
 |引用联机修正指南的警报修正/缓解|不可用 – 任何警报修正链接的使用 Internet URL 将不起作用。|
 |应用商店联合 – 选择并直接从 Azure 应用商店添加库程序包的功能|受到影响-在断开连接 （不带任何 internet 连接） 模式下部署 Azure 堆栈时，你无法通过 Azure 堆栈门户下载的应用商店项。 但是，你可以使用[marketplace 联合工具](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity)下载到计算机具有 internet 连接的应用商店项，然后将它们传输到 Azure 堆栈环境。|
 |使用 Azure Active Directory 联合身份验证帐户管理 Azure Stack 部署|不可用 – 此功能要求连接至 Azure。 必须改用具有本地 Active Directory 实例的 AD FS。|
-|诸如 WebApps 和 SQL 的资源提供程序|不可用 - 诸如 WebApps 和 SQL 的资源提供程序要求通过 Internet 访问内容。|
+|应用服务|受到影响-WebApps 可能需要 Internet 访问，为更新的内容。|
 |命令行接口 (CLI)|受到影响-CLI 已减少在身份验证和配置的服务主体方面的功能。|
 |Visual Studio – Cloud discovery|受到影响-Cloud Discovery 或者发现不同的云，否则将不会工作。|
 |Visual Studio-AD FS|受到影响-仅 Visual Studio Enterprise 支持 AD FS。

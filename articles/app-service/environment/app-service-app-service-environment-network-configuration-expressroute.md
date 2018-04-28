@@ -1,11 +1,11 @@
 ---
-title: "使用 Express Route 时的网络配置详细信息"
-description: "在已连接到 ExpressRoute 线路的虚拟网络中运行应用服务环境时的网络配置详细信息。"
+title: 使用 Express Route 时的网络配置详细信息
+description: 在已连接到 ExpressRoute 线路的虚拟网络中运行应用服务环境时的网络配置详细信息。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: nirma
-editor: 
+editor: ''
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
 ms.service: app-service
 ms.workload: na
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
-ms.openlocfilehash: bb3e283e8a9327a9c66c8d8ded037cee5195ffc6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fcb9fa9004039205fa49f63c50d5907a8029a079
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="network-configuration-details-for-app-service-environments-with-expressroute"></a>使用 ExpressRoute 的应用服务环境的网络配置详细信息
 ## <a name="overview"></a>概述
 客户可以将 [Azure ExpressRoute][ExpressRoute] 线路连接到虚拟网络基础结构，从而将其本地网络扩展到 Azure。  可以在这个[虚拟网络][virtualnetwork]基础结构的子网中创建应用服务环境。  然后，应用服务环境中运行的应用可以与只能通过 ExpressRoute 连接访问的后端资源建立安全连接。  
 
-可以在 Azure Resource Manager 虚拟网络**或**经典部署模型虚拟网络中创建应用服务环境。  随着 2016 年 6 月的最新更改，现在可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络中。 
+可以在 Azure 资源管理器虚拟网络**或**经典部署模型虚拟网络中创建应用服务环境。  随着 2016 年 6 月的最新更改，现在可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络中。 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 10/11/2017
 [UDROverview]: http://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/
 [UDRHowTo]: http://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
-[AzureDownloads]: http://azure.microsoft.com/en-us/downloads/ 
+[AzureDownloads]: http://azure.microsoft.com/downloads/ 
 [DownloadCenterAddressRanges]: http://www.microsoft.com/download/details.aspx?id=41653  
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md

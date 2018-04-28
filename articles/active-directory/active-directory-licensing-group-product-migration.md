@@ -1,13 +1,13 @@
 ---
-title: "如何在 Azure Active Directory 中使用基于组的许可安全地在产品许可证之间迁移用户 | Microsoft Docs"
-description: "介绍使用基于组的许可在不同的产品许可证（例如 Office 365 企业版 E1 和 E3）之间迁移用户的建议过程"
+title: 如何在 Azure Active Directory 中使用基于组的许可安全地在产品许可证之间迁移用户 | Microsoft Docs
+description: 介绍使用基于组的许可在不同的产品许可证（例如 Office 365 企业版 E1 和 E3）之间迁移用户的建议过程
 services: active-directory
-keywords: "Azure AD 许可"
-documentationcenter: 
+keywords: Azure AD 许可
+documentationcenter: ''
 author: piotrci
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/07/2018
 ms.author: piotrci
-ms.openlocfilehash: bb27b3fb739bbcea56026733b41e6cadf21b8953
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 068457044af7af7a55bdbcc4043da3028a68b2d0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>如何使用基于组的许可安全地在产品许可证之间迁移用户
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/24/2018
 
 -   在不包含有冲突服务计划的产品许可证之间进行简单的迁移，例如，在 Office 365 企业版 E3 与 Office 365 企业版 E5 之间进行迁移。
 
--   在包含某些有冲突服务计划的产品许可证之间进行较复杂的迁移，例如，在 Office 365 企业版 E1 与 Office 365 企业版 E3 之间进行迁移。 有关冲突的详细信息，请参阅[有冲突的服务计划](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)和[无法同时分配的服务计划](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time)。
+-   在包含某些有冲突服务计划的产品许可证之间进行较复杂的迁移，例如，在 Office 365 企业版 E1 与 Office 365 企业版 E3 之间进行迁移。 有关冲突的详细信息，请参阅[有冲突的服务计划](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)和[无法同时分配的服务计划](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-product-and-service-plan-reference#service-plans-that-cannot-be-assigned-at-the-same-time)。
 
 本文包含可用于执行迁移和验证步骤的示例 PowerShell 代码。 对于无法手动执行步骤的大规模操作，这些代码特别有用。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/24/2018
 -   已使用基于组的许可为用户分配了源许可证。 要从中移动产品的许可证继承自单个源组，而不是直接分配的。
 
     >[!NOTE]
-    >如果许可证也是直接分配的，它们可能会阻止应用目标许可证。 详细了解[直接许可证分配和组许可证分配](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-advanced#direct-licenses-coexist-with-group-licenses)。 可以使用 [PowerShell 脚本](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-ps-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)来检查用户是否具有直接许可证。
+    >如果许可证也是直接分配的，它们可能会阻止应用目标许可证。 详细了解[直接许可证分配和组许可证分配](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-advanced#direct-licenses-coexist-with-group-licenses)。 可以使用 [PowerShell 脚本](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-ps-examples#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)来检查用户是否具有直接许可证。
 
 -   目标产品有足够的许可证。 如果没有足够的许可证，则某些用户可能无法获取目标许可证。 可以检查[可用的许可证数目](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)。
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 02/24/2018
 
 3.  将一批用户添加到目标组。 基于组的许可拾取更改，并分配目标许可证。 该过程可能需要较长的时间，具体时间取决于批的大小和租户中的其他活动。
 
-4.  验证基于组的许可是否已完全处理用户批。 确认是否为每个用户分配了目标许可证。 检查用户最终是否未进入错误状态，例如，与其他产品相冲突，或缺少足够的许可证。 有关错误的详细信息，请参阅[解决 Active Directory 许可组问题](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal)。
+4.  验证基于组的许可是否已完全处理用户批。 确认是否为每个用户分配了目标许可证。 检查用户最终是否未进入错误状态，例如，与其他产品相冲突，或缺少足够的许可证。 有关错误的详细信息，请参阅[解决 Active Directory 许可组问题](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal)。
 
 5.  此时，同时为用户分配了源许可证和目标许可证。
 
@@ -175,7 +175,7 @@ Check passed for all users. Exiting check loop.
 ```
 
 ## <a name="migrate-users-between-products-that-have-conflicting-service-plans"></a>在包含有冲突服务计划的产品之间迁移用户
-迁移目标是使用基于组的许可将用户许可证从源许可证（在本示例中为 Office 365 企业版 E1）更改为目标许可证（在本示例中为 Office 365 企业版 E3）。 此方案中的两种产品包含有冲突的服务计划（在此文中详细了解冲突），因此，我们必须先解决冲突，然后才能无缝迁移用户。 有关这些冲突的详细信息，请参阅[解决 Active Directory 许可组问题：有冲突的服务计划](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)。 在迁移过程中，用户始终可以访问服务或数据。 迁移是以小型的“批”执行的。 可以验证每个批的结果，并最大程度地缩小迁移过程中可能发生的任何问题的范围。 总体过程如下：
+迁移目标是使用基于组的许可将用户许可证从源许可证（在本示例中为 Office 365 企业版 E1）更改为目标许可证（在本示例中为 Office 365 企业版 E3）。 此方案中的两种产品包含有冲突的服务计划（在此文中详细了解冲突），因此，我们必须先解决冲突，然后才能无缝迁移用户。 有关这些冲突的详细信息，请参阅[解决 Active Directory 许可组问题：有冲突的服务计划](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)。 在迁移过程中，用户始终可以访问服务或数据。 迁移是以小型的“批”执行的。 可以验证每个批的结果，并最大程度地缩小迁移过程中可能发生的任何问题的范围。 总体过程如下：
 
 1.  用户是源组的成员，从该组继承源许可证。
 
@@ -183,7 +183,7 @@ Check passed for all users. Exiting check loop.
 
 3.  将一批用户添加到目标组。 基于组的许可拾取更改，并尝试分配目标许可证。 由于两个产品中的服务之间存在冲突，因此分配将会失败。 基于组的许可会记录每个用户发生的失败（错误）。 该过程可能需要较长的时间，具体时间取决于批的大小和租户中的其他活动。
 
-4.  验证基于组的许可是否已完全处理用户批。 确认已记录每个用户发生的冲突错误。 检查某些用户是否最终未进入意外的错误状态。 有关错误的详细信息，请参阅[解决 Active Directory 许可组问题](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal)。
+4.  验证基于组的许可是否已完全处理用户批。 确认已记录每个用户发生的冲突错误。 检查某些用户是否最终未进入意外的错误状态。 有关错误的详细信息，请参阅[解决 Active Directory 许可组问题](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal)。
 
 5.  此时，用户仍有源许可证，而目标许可证存在冲突错误。 并没有为用户分配目标许可证。
 
@@ -317,7 +317,7 @@ Check passed for all users. Exiting check loop.
 >[!WARNING]
 >此示例代码用于演示目的。 如果想要在环境中使用，请考虑先对代码进行小规模的测试，或者在单独的测试租户中使用。 可能需要根据具体的环境需求调整该代码。
 
-若要执行该代码，请参考 [Azure AD PowerShell v1.0 库](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)中的说明。 在执行脚本之前，请先运行 `connect-msolservice` cmdlet 登录到租户。
+若要执行该代码，请参考 [Azure AD PowerShell v1.0 库](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)中的说明。 在执行脚本之前，请先运行 `connect-msolservice` cmdlet 登录到租户。
 
 ```
 # BEGIN: Helper functions that are used in the scripts.

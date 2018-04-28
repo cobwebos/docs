@@ -9,18 +9,16 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 836d68a8-8b21-4d69-8b61-281a7fe67f21
 ms.service: hdinsight
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: ac2a087bb0a9d8cac15dfea2448a9c42cee4a1f4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 98040f10eb15245f36eb0b365dcdf0f5ba7f107a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>为 HDInsight 基于 Windows 的群集开发脚本操作脚本
 了解如何为 HDInsight 编写脚本操作脚本。 有关如何使用脚本操作脚本的信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster.md)。 有关为基于 Linux 的 HDInsight 群集编写的同一篇文章，请参阅[为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)。
@@ -178,7 +176,7 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 
     HDInsight 具有实现高可用性的主-被体系结构，在该结构中，一个头节点处于主动模式（HDInsight 服务正在运行），而另一头节点处于备用模式（HDInsight 服务未在运行）。 如果 HDInsight 服务中断，则节点会在主动和被动模式之间切换。 如果使用脚本操作在两个头节点上安装服务以实现高可用性，请注意，HDInsight 故障转移机制无法对这些用户安装的服务自动执行故障转移。 因此，用户在 HDInsight 头节点上安装的服务如果预期具有高可用性，则必须具有自己的故障转移机制，无论是在主-被模式还是在主-主模式下。
 
-    如果将头节点角色指定为 *ClusterRoleCollection* 参数中的值，则 HDInsight 脚本操作命令会在两个头节点上运行。 因此，设计自定义脚本时，请确保脚本知道此设置。 如果在两个头节点上安装并启动相同服务，并且这两个服务以相互争用结束，则你不会遇到问题。 另请注意，数据会在重置映像期间丢失，因此，通过脚本操作安装的软件必须能够灵活应对此类事件。 应用程序应设计使用分布在很多节点上的高可用数据。 请注意，有 1/5 之多的群集节点可以同时重置映像。
+    如果将头节点角色指定为 *ClusterRoleCollection* 参数中的值，则 HDInsight 脚本操作命令会在两个头节点上运行。 因此，设计自定义脚本时，请确保脚本知道此设置。 如果在两个头节点上安装并启动相同服务，并且这两个服务以相互争用结束，则你不会遇到问题。 另请注意，数据会在重置映像期间丢失，因此，通过脚本操作安装的软件必须能够灵活应对此类事件。 应用程序应设计使用分布在很多节点上的高可用数据。 有 1/5 之多的群集节点可以同时重置映像。
 * 配置自定义组件以使用 Azure Blob 存储
 
     在群集节点上安装的自定义组件可能具有使用 Hadoop 分布式文件系统 (HDFS) 存储的默认配置。 应该更改该配置以改用 Azure Blob 存储。 在对群集重置映像时，HDFS 文件系统会进行格式化，因此，可能会丢失存储在此处的所有数据。 改用 Azure Blob 存储可确保保留数据。
@@ -192,14 +190,14 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
     Write-HDILog "Starting environment variable setting at: $(Get-Date)";
     [Environment]::SetEnvironmentVariable('MDS_RUNNER_CUSTOM_CLUSTER', 'true', 'Machine');
 
-此语句将环境变量 **MDS_RUNNER_CUSTOM_CLUSTER** 设置为值“true”，同时将此变量的作用域设置为计算机范围。 有时，在相应的作用域（计算机或用户）内设置环境变量很重要。 有关设置环境变量的详细信息，请参阅[此处][1]。
+此语句将环境变量 **MDS_RUNNER_CUSTOM_CLUSTER** 设置为值“true”，同时将此变量的作用域设置为计算机范围。 在相应的作用域（计算机或用户）内设置环境变量很重要。 有关设置环境变量的详细信息，请参阅[此处][1]。
 
 ### <a name="access-to-locations-where-the-custom-scripts-are-stored"></a>访问存储自定义脚本的位置
-用于自定义群集的脚本需要位于群集的默认存储帐户中，或其他任何存储帐户的公共只读容器中。 如果脚本访问位于其他位置的资源，则这些资源需要具有公共可访问性（至少是公共只读性）。 例如，可能需要访问文件，并使用 SaveFile-HDI 命令保存该文件。
+用于自定义群集的脚本需要位于群集的默认存储帐户中，或其他任何存储帐户的公共只读容器中。 如果脚本访问位于其他位置的资源，则这些资源必须可供公开读取。 例如，可能需要访问文件，并使用 SaveFile-HDI 命令保存该文件。
 
     Save-HDIFile -SrcUri 'https://somestorageaccount.blob.core.windows.net/somecontainer/some-file.jar' -DestFile 'C:\apps\dist\hadoop-2.4.0.2.1.9.0-2196\share\hadoop\mapreduce\some-file.jar'
 
-在此示例中，必须确保存储帐户“somestorageaccount”中的容器“somecontainer”可公开访问。 否则，该脚本引发“未找到”异常并失败。
+在此示例中，必须确保存储帐户 `somestorageaccount` 中的容器 `somecontainer` 可供公开访问。 否则，该脚本引发“未找到”异常并失败。
 
 ### <a name="pass-parameters-to-the-add-azurermhdinsightscriptaction-cmdlet"></a>将参数传递给 Add-AzureRmHDInsightScriptAction cmdlet
 要将多个参数传递给 Add-AzureRmHDInsightScriptAction cmdlet，需要将字符串值的格式设置为包含脚本的所有参数。 例如：
@@ -238,9 +236,9 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 
 1. 将包含自定义脚本的文件放置在群集节点在部署期间可访问的位置中。 这可能是在部署群集时指定的任何默认或其他存储帐户，或任何其他可公共访问的存储容器。
 2. 向脚本中添加检查，以确保这些脚本可以幂等方式执行，从而使脚本可在同一节点上多次执行。
-3. 使用 **Write-Output** Azure PowerShell cmdlet 输出到 STDOUT 以及 STDERR。 请勿使用 **Write-Host**。
-4. 使用临时文件夹，例如 $env:TEMP，来保留脚本使用的下载文件，并在执行脚本后将其清除。
-5. 仅在 D:\ 或 C:\apps 上安装自定义软件。 不应使用 C: 驱动器上的其他位置，因为这些位置已保留。 请注意，在 C: 盘的 C:\apps 文件夹外安装文件可能会导致在对节点重置映像时设置失败。
+3. 使用 `Write-Output` Azure PowerShell cmdlet 输出到 STDOUT 以及 STDERR。 请勿使用 `Write-Host`。
+4. 使用临时文件夹（例如 `$env:TEMP`）来保留脚本使用的下载文件，并在执行脚本后将其清除。
+5. 仅在 D:\ 或 C:\apps 上安装自定义软件。 不应使用 C: 驱动器上的其他位置，因为这些位置已保留。 在 C: 盘的 C:\apps 文件夹外安装文件可能会导致在对节点重置映像时设置失败。
 6. 如果 OS 级设置或 Hadoop 服务配置文件发生更改，则你可能需要重新启动 HDInsight 服务，使其可以选取任何 OS 级设置，例如脚本中设置的环境变量。
 
 ## <a name="debug-custom-scripts"></a>调试自定义脚本

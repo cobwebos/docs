@@ -1,24 +1,18 @@
 ---
-title: "Azure Analysis Services 横向扩展 | Microsoft Docs"
-description: "通过横向扩展复制 Azure Analysis Services 服务器"
-services: analysis-services
-documentationcenter: 
+title: Azure Analysis Services 横向扩展 | Microsoft Docs
+description: 通过横向扩展复制 Azure Analysis Services 服务器
 author: minewiskan
-manager: erikre
-editor: 
-ms.assetid: 
+manager: kfile
 ms.service: analysis-services
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/14/2018
+ms.topic: conceptual
+ms.date: 04/16/2018
 ms.author: owend
-ms.openlocfilehash: d00f6bbc285cca028f22ced69ad03d8a2814d76a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: minewiskan
+ms.openlocfilehash: ee9210953306fbe317e9ed63c02fb90452ffbd15
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -28,7 +22,7 @@ ms.lasthandoff: 02/21/2018
 
 在典型的服务器部署中，一台服务器同时用作处理服务器和查询服务器。 如果服务器上针对模型的客户端查询数量超过服务器计划的查询处理单元 (QPU)，或模型处理与高查询工作负载同时发生，就会导致性能降低。 
 
-通过横向扩展，可创建查询池，最多可添加 7 个查询副本（含你的服务器在内共 8 个）。 可减少查询副本的数量以满足关键时刻对 QPU 的需求，还可随时将处理服务器与查询池分开。 
+通过横向扩展，可创建查询池，最多可添加 7 个查询副本（含你的服务器在内共 8 个）。 可减少查询副本的数量以满足关键时刻对 QPU 的需求，还可随时将处理服务器与查询池分开。 将在服务器所在的同一区域中创建所有查询副本。
 
 不论查询池中查询副本的数量如何，处理工作负载都不会分布在查询副本中。 一台服务器用作处理服务器。 查询副本在查询池中仅向针对在每个副本之间同步的模型的查询提供服务。 
 
@@ -79,11 +73,17 @@ ms.lasthandoff: 02/21/2018
 `GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
-若要从 PowerShell 运行同步，请[更新到最新](https://github.com/Azure/azure-powershell/releases) 5.01 版或更高版本 AzureRM 模块。 使用 [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance)。
+在使用 PowerShell 之前，请[安装或更新最新的 AzureRM 模块](https://github.com/Azure/azure-powershell/releases)。 
+
+若要设置查询副本数，请使用 [Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver)。 指定可选的 `-ReadonlyReplicaCount` 参数。
+
+若要运行同步，请使用 [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance)。
+
+
 
 ## <a name="connections"></a>连接
 
-服务器的“概述”页上有两个服务器名称。 如果尚未对服务器配置横向扩展，则这两个服务器名称的工作方式相同。 对服务器配置横向扩展之后，需根据连接类型指定适当的服务器名称。 
+服务器的“概述”页上有两个服务器名称。 如果尚未对服务器配置横向扩展，则这两个服务器名称的工作方式相同。 为服务器配置横向扩展之后，需要根据连接类型指定适当的服务器名称。 
 
 对于最终用户客户端连接（如 Power BI Desktop、Excel 和自定义应用），请使用“服务器名称”。 
 

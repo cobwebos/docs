@@ -5,21 +5,19 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 84475302-EFC2-4C35-B4CF-60C857A96345
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/02/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 09a774e5dda71d87c3862a6152ff5d2c9468c40c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5b881c17b6ad1c9a7e46492f8549f563cfd6d796
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>使用转到 Azure 堆栈中的 API 版本配置文件
 
@@ -82,7 +80,7 @@ import "github.com/Azure/azure-sdk-for-go/profi1es/2e17-e3-eg/compute/mgmt/compu
   ```
 
   3. 如果不可用，创建订阅并保存更高版本使用的订阅 ID。 有关创建订阅的信息，请参阅[在 Azure 堆栈中创建服务的订阅](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm)。 
-  4. 创建具有"订阅"作用域的服务主体和**所有者**角色。 保存该服务主体的 ID 和密码。 有关创建 Azure 堆栈的服务主体的信息，请参阅[创建服务主体](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad)。 设置 Azure 堆栈环境。
+  4. 创建具有"订阅"作用域的服务主体和**所有者**角色。 保存服务主体 ID 和密码。 有关创建 Azure 堆栈的服务主体的信息，请参阅[创建服务主体](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-azure-ad)。 设置 Azure 堆栈环境。
   5. 从代码中的转 SDK 配置文件导入服务模块。 Azure 堆栈配置文件的当前版本是**自 2017 年 1-03-09**。 例如，若要导入从网络模块**自 2017 年 1-03-09**配置文件类型： 
 
   ````go
@@ -129,7 +127,7 @@ func main() {
 
 本节提供的常用方法，以获取 Azure 堆栈上的授权者的令牌，通过使用客户端凭据：
 
-  1. 如果可用的订阅的所有者角色的服务主体，跳过此步骤。 否则创建服务主体[说明]( https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals)并将其分配作用域为你的订阅"所有者"角色[说明]( https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal)。 保存的服务主体的应用程序 ID 和机密。 
+  1. 如果可用的订阅的所有者角色的服务主体，跳过此步骤。 否则创建服务主体[说明]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals)并将其分配作用域为你的订阅"所有者"角色[说明]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal)。 保存的服务主体的应用程序 ID 和机密。 
 
   2. 导入**adal**转 AutoRest 从代码中的包。 
   

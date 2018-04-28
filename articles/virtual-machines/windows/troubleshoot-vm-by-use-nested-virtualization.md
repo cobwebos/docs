@@ -12,31 +12,31 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 04/06/2018
 ms.author: genli
-ms.openlocfilehash: 2743a00404a2ee990147dfb6e73e9c2369eb4753
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9026b702e6e0d27817955c70c733bf372005dd4b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>使用 Azure 中的嵌套虚拟化排查问题 Azure VM
 
-本文介绍如何在 Microsoft Azure 中创建一个嵌套虚拟化环境，以便能在 Hyper-V 主机（恢复 VM）上装载问题 VM 磁盘来进行故障排除。
+本文介绍如何在 Microsoft Azure 中创建一个嵌套虚拟化环境，以便能在 Hyper-V 主机（救援 VM）上装载问题 VM 的磁盘来进行故障排除。
 
-## <a name="prerequisite"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
-若要装载问题 VM，恢复 VM 必须满足以下先决条件：
+若要装载问题 VM，救援 VM 必须满足以下先决条件：
 
--   恢复 VM 必须与问题 VM 处于相同位置。
+-   救援 VM 必须与问题 VM 位于同一位置。
 
--   恢复 VM 必须与问题 VM 位于同一资源组中。
+-   救援 VM 必须与问题 VM 位于同一资源组中。
 
--   恢复 VM 和问题 VM 必须使用相同类型的存储帐户（标准或高级）。
+-   救援 VM 与问题 VM 必须使用相同类型的存储帐户（标准或高级）。
 
-## <a name="step-1-create-a-recovery-vm-and-install-hyper-v-role"></a>步骤 1：创建恢复 VM 并安装 Hyper-V 角色
+## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>步骤 1：创建救援 VM 并安装 Hyper-V 角色
 
-1.  创建新的恢复 VM：
+1.  创建一台新的救援 VM：
 
     -  操作系统：Windows Server 2016 Datacenter
 
@@ -46,13 +46,13 @@ ms.lasthandoff: 04/06/2018
 
     -  选择与问题 VM 相同的存储类型（标准或高级）。
 
-2.  创建恢复 VM 后，远程桌面到恢复 VM。
+2.  创建救援 VM 后，通过远程桌面连接到救援 VM。
 
 3.  在服务器管理器中，选择“管理” > “添加角色和功能”。
 
 4.  在“安装类型”部分，选择“基于角色或基于功能的安装”。
 
-5.  在“选择目标服务器”部分，请确保已选择“恢复 VM”。
+5.  在“选择目标服务器”部分中，请确保已选择“救援 VM”。
 
 6.  选择“HYPER-V 角色” > “添加功能”。
 
@@ -70,25 +70,25 @@ ms.lasthandoff: 04/06/2018
 
 13. 允许服务器安装 Hyper-V 角色。 这需要几分钟的时间，服务器将自动重新启动。
 
-## <a name="step-2-create-the-problem-vm-on-the-recovery-vms-hyper-v-server"></a>步骤 2：在恢复 VM 的 Hyper-V 服务器上创建问题 VM
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>步骤 2：在救援 VM 的 Hyper-V 服务器上创建问题 VM
 
 1.  记录问题 VM 中的磁盘名称，然后删除问题 VM。 请确保已保留所有附加磁盘。 
 
-2.  将问题 VM 的操作系统磁盘作为恢复 VM 的数据磁盘附加。
+2.  将问题 VM 的 OS 磁盘附加为救援 VM 的数据磁盘。
 
-    1.  删除问题 VM 后，请转到“恢复 VM”。
+    1.  删除问题 VM 后，转到“救援 VM”。
 
     2.  选择“磁盘”，并“添加数据磁盘”。
 
     3.  选择问题 VM 的磁盘，然后选择“保存”。
 
-3.  在磁盘成功附加后，远程桌面到恢复 VM。
+3.  在磁盘成功附加后，通过远程桌面连接到救援 VM。
 
 4.  打开磁盘管理 (diskmgmt.msc)。 请确保将问题 VM 的磁盘设置为“离线”。
 
 5.  打开 Hyper-V 管理器：在“服务器管理器”中，选择“Hyper-V 角色”。 右键单击服务器，然后选择“Hyper-V 管理器”。
 
-6.  在 HYPER-V 管理器中，右键单击恢复 VM，然后选择“新建” > “虚拟机” > “下一步”。
+6.  在 HYPER-V 管理器中，右键单击救援 VM，然后选择“新建” > “虚拟机” > “下一步”。
 
 7.  键入 VM 的名称，然后选择“下一步”。
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 04/06/2018
 
 1.  重新在线获得 VM 后，关闭 Hyper-V 管理器中的 VM。
 
-2.  转到 [Azure 门户](https://portal.azure.com)并选择“恢复VM”>“磁盘”，复制磁盘名称。 你会在下一步中使用名称。 将修复的磁盘从恢复 VM 拆离。
+2.  转到 [Azure 门户](https://portal.azure.com)并选择“救援 VM”>“磁盘”，复制磁盘名称。 你会在下一步中使用名称。 将已修复的磁盘从救援 VM 拆离。
 
 3.  转到“所有资源”，搜索磁盘名称，然后选择该磁盘。
 

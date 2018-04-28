@@ -1,8 +1,8 @@
 ---
-title: "将 ScaleR 和 SparkR 与 Azure HDInsight 配合使用 | Microsoft Docs"
-description: "将 ScaleR 和 SparkR 与 R Server 和 HDInsight 配合使用"
+title: 将 ScaleR 和 SparkR 与 Azure HDInsight 配合使用 | Microsoft Docs
+description: 将 ScaleR 和 SparkR 与 R Server 和 HDInsight 配合使用
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -10,37 +10,37 @@ tags: azure-portal
 ms.assetid: 5a76f897-02e8-4437-8f2b-4fb12225854a
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: b84c365defbaadbc83c86e6e387c15a63e0f17ce
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4306f265bf7f52f9bc307def2256dd62e94e004f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
 
-本文演示如何使用 **ScaleR** 逻辑回归模型，根据通过 **SparkR** 相联接的航班延误数据和天气数据，来预测航班抵达延误时间。 此方案演示如何结合使用用于在 Spark 中处理数据的 ScaleR 功能与用于分析的 Microsoft R Server 功能。 通过将这些技术相结合，可以在进行分布式处理时应用最新的功能。
+本文档演示如何使用 **ScaleR** 逻辑回归模型来预测航班抵达延误时间。 此示例使用通过 **SparkR** 联接的航班延误数据和天气数据。
 
 尽管这两个包在 Hadoop 的 Spark 执行引擎上运行，但它们需要自身的 Spark 会话，因此无法共享内存中的数据。 在将来的 R Server 版本中解决此问题之前，解决方法是保留非重叠的 Spark 会话，并通过中间文件交换数据。 从此处的说明可以看到，这些要求的实现都相当直截了当。
 
-我们将使用最初由 Mario Inchiosa 和 Roni Burd 在 Strata 2016 研讨会中分享的一个示例，网络研讨会 [Building a Scalable Data Science Platform with R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio)（使用 R 构建可缩放的数据科学平台）中也提供了此示例。此示例使用 SparkR 将已知的航班抵达延误数据集与出发地和目的地机场的天气数据相联接。 然后使用这些联接数据作为 ScaleR 逻辑回归模型的输入来预测航班抵达延误时间。
+此示例最初由 Mario Inchiosa 和 Roni Burd 在 Strata 2016 研讨会中分享。 也可在 [Building a Scalable Data Science Platform with R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio)（使用 R 构建可缩放的数据科学平台）中找到此研讨会。
 
-演练的代码原本是针对 Azure 上 HDInsight 群集中的 Spark 上运行的 R Server 编写的。 但在一个脚本中混合使用 SparkR 和 ScaleR 的思路同样适用于本地环境。 下面假设读者对 R 和 R Server 的 [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) 库有中等水平的了解。 本文在演练此方案时还会介绍 [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) 的用法。
+此代码原本是针对 Azure 上 HDInsight 群集中的 Spark 上运行的 R Server 编写的。 但在一个脚本中混合使用 SparkR 和 ScaleR 的思路同样适用于本地环境。 
+
+本文档中的步骤假定你对 R 和 R Server 的 [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) 库有中等水平的了解。 在演练此方案时还会介绍 [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html)。
 
 ## <a name="the-airline-and-weather-datasets"></a>航班和天气数据集
 
-**AirOnTime08to12CSV** 航空公司公用数据集包含美国境内从 1987 年 10 月到 2012 年 12 月所有商务航班的抵达和出发详细信息。 这是一个大型数据集：总共有大约 1.5 亿条记录， 解压缩后略小于 4 GB。 该数据集是从[美国政府存档](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)获取的。 为了方便使用，它以 zip 文件 (AirOnTimeCSV.zip) 的形式提供，其中包含 [Revolution Analytics 数据集存储库](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/)中的 303 个单独的每月 CSV 文件
+航班数据是从[美国政府存档](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)获取的。 也可从 [AirOnTimeCSV.zip](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip) 获取 zip 文件形式的该数据。
 
-为了查看天气对航班延误的影响，还需要获取每个机场的天气数据。 可以从[美国海洋与大气管理存储库](http://www.ncdc.noaa.gov/orders/qclcd/)下载原始格式的每月天气数据 zip 文件。 为了演示此示例，已拉取 2007 年 5 月到 2012 年 12 月的天气数据，并使用 68 个月的 zip 天气数据文件中每个文件内的每小时数据文件。 每月 zip 文件还包含气象站 ID (WBAN)、关联的机场 (CallSign) 与机场时区与 UTC 的偏差 (TimeZone) 之间的映射 (YYYYMMstation.txt)。 联接航班延误数据和天气数据时需要用到所有这些信息。
+可以从[美国海洋与大气管理存储库](http://www.ncdc.noaa.gov/orders/qclcd/)下载原始格式的每月天气数据 zip 文件。 就此示例来说，请下载 2007 年 5 月 – 2012 年 12 月期间的数据。 使用每个 zip 中的每小时数据文件和 `YYYYMMMstation.txt` 文件。 
 
 ## <a name="setting-up-the-spark-environment"></a>设置 Spark 环境
 
-第一步是设置 Spark 环境。 首先，指向包含输入数据目录的目录，创建 Spark 计算上下文，然后创建一个日志记录函数用于在控制台上记录参考信息：
+请使用以下代码设置 Spark 环境：
 
 ```
 workDir        <- '~'  
@@ -85,7 +85,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-接下来，将“Spark_Home”添加到 R 包的搜索路径，以便可以使用 SparkR 并初始化 SparkR 会话：
+接下来，请将 `Spark_Home` 添加到 R 包的搜索路径。 将其添加到搜索路径即可使用 SparkR 并初始化 SparkR 会话：
 
 ```
 #..setup for use of SparkR  
@@ -108,7 +108,7 @@ sqlContext <- sparkRSQL.init(sc)
 
 ## <a name="preparing-the-weather-data"></a>准备天气数据
 
-为了准备天气数据，将这些数据放入建模时所需的列： 
+为了准备天气数据，请将这些数据放入建模时所需的列： 
 
 - “Visibility”
 - “DryBulbCelsius”
@@ -119,15 +119,7 @@ sqlContext <- sparkRSQL.init(sc)
 
 然后添加与气象站关联的机场代码，将测量值从当地时间转换为 UTC。
 
-先创建一个文件，用于将气象站 (WBAN) 信息映射到机场代码。 在天气数据随附的映射文件中， 通过将天气数据文件中的 *CallSign*（例如 LAX）字段映射到航班数据中的 *Origin* 即可实现此关联。 但是，我们手头正好有另一个映射文件可将 *WBAN* 映射到 *AirportID*（例如，与 LAX 对应的 12892），其中包含已保存到要使用的、名为“wban-to-airport-id-tz.CSV”的 CSV 文件的 *TimeZone*。 例如：
-
-| AirportID | WBAN | TimeZone
-|-----------|------|---------
-| 10685 | 54831 | -6
-| 14871 | 24232 | -8
-| .. | .. | ..
-
-以下代码读取每小时原始天气数据文件、将文件放入所需的列、合并气象站映射文件、将测量值的日期时间调整为 UTC，然后写出文件的新版本：
+先创建一个文件，用于将气象站 (WBAN) 信息映射到机场代码。 以下代码读取每小时原始天气数据文件、将文件放入所需的列、合并气象站映射文件、将测量值的日期时间调整为 UTC，然后写出文件的新版本：
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time
@@ -519,7 +511,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>在其他位置评分
 
-还可以使用该模型在另一个平台上为数据评分： 将数据保存到 RDS 文件，然后将该 RDS 传输并导入到 SQL Server R Services 等目标评分环境。 必须确保要评分的数据的系数级别与构建的模型上的级别匹配。 为此，可以通过 ScaleR 的 `rxCreateColInfo()` 函数来提取并保存与建模数据关联的列信息，然后将该列信息应用到输入数据源用于预测。 下面保存了测试数据集的几行数据，接下来将从此示例中提取列信息并在预测脚本中使用：
+还可以使用该模型在另一个平台上为数据评分： 将数据保存到 RDS 文件，然后将该 RDS 传输并导入到 SQL Server R Services 等目标评分环境。 必须确保要评分的数据的系数级别与构建的模型上的级别匹配。 为此，可以通过 ScaleR 的 `rxCreateColInfo()` 函数来提取并保存与建模数据关联的列信息，然后将该列信息应用到预测用的输入数据源。 下面保存了测试数据集的几行数据，接下来将从此示例中提取列信息并在预测脚本中使用：
 
 ```
 # save the model and a sample of the test dataset 

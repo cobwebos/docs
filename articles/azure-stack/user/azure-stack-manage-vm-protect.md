@@ -3,7 +3,7 @@ title: 保护在 Azure Stack 上部署的 VM | Microsoft Docs
 description: 有关如何保护在 Azure Stack 上部署的虚拟机的指南。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
@@ -11,20 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: 02get-started-article
-ms.date: 02/27/2018
-ms.author: mabrigg
+ms.topic: get-started-article
+ms.date: 04/25/2018
+ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 0e74c6af36130d206456634548f452a1f1a2d4af
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b49a8650611472b5e35c4bdf8373a1d7e3a45589
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>保护在 Azure Stack 上部署的虚拟机
-
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
-
 本文介绍有关如何保护在 Azure Stack 上部署的用户 VM 的指南。
 
 为了防止数据丢失和计划外停机，需要为用户应用程序和数据实施备份恢复或灾难恢复计划。 该计划对每个应用程序来说都是唯一的，但会遵循一个框架，而该框架是按组织的综合性业务连续性和灾难恢复 (BC/DR) 策略制定的。 如需应用程序可用性和复原能力的常规模式和做法，请参阅 Azure 体系结构中心的[设计适用于 Azure 的可复原应用程序](https://docs.microsoft.com/azure/architecture/resiliency)。
@@ -147,7 +144,8 @@ Azure Stack 部署的重要注意事项：
 ## <a name="next-steps"></a>后续步骤 
 
 本文介绍了有关如何保护在 Azure Stack 上部署的用户 VM 的指南。 若要详细了解如何使用 Azure 服务来保护 VM，请参阅：
- - [针对 Azure Stack 的 Azure 备份服务器支持](https://docs.microsoft.com/en-us/azure/backup/ ) 
- - [针对 Azure Stack 的 Azure Site Recovery 支持](https://docs.microsoft.com/en-us/azure/site-recovery/)  
+ - [使用 Azure 备份来备份 Azure 堆栈上的文件和应用程序](https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack)
+ - [针对 Azure Stack 的 Azure 备份服务器支持](https://docs.microsoft.com/azure/backup/ ) 
+ - [针对 Azure Stack 的 Azure Site Recovery 支持](https://docs.microsoft.com/azure/site-recovery/)  
  
 若要详细了解在 Azure Stack 上提供 VM 保护的合作伙伴产品，请参阅“[Protecting applications and data on Azure Stack](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/)（保护 Azure Stack 上的应用程序和数据）”。

@@ -1,8 +1,8 @@
 ---
-title: "最终用户身份验证：通过 Azure Active Directory 将 .NET SDK 与 Data Lake Store 配合使用 | Microsoft Docs"
-description: "了解如何通过 .NET SDK 使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证"
+title: 最终用户身份验证：通过 Azure Active Directory 将 .NET SDK 与 Data Lake Store 配合使用 | Microsoft Docs
+description: 了解如何通过 .NET SDK 使用 Azure Active Directory 进行 Data Lake Store 最终用户身份验证
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: ea71743e775da8cfd85ecbd20e9c5981a198e05c
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 524b00c9fac8b874576cb756c1c8ee39e15e9882
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-net-sdk"></a>使用 .NET SDK 进行 Data Lake Store 最终用户身份验证
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/12/2018
 
 本文介绍了如何使用 .NET SDK 进行 Azure Data Lake Store 最终用户身份验证。 有关使用 .NET SDK 的 Data Lake Store 服务到服务身份验证，请参阅[使用 .NET SDK 进行 Data Lake Store 的服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 * **Visual Studio 2013、2015 或 2017**。 以下说明使用的是 Visual Studio 2017。
 
 * **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -46,7 +46,7 @@ ms.lasthandoff: 01/12/2018
    | --- | --- |
    | 类别 |模板/Visual C#/Windows |
    | 模板 |控制台应用程序 |
-   | 名称​​ |CreateADLApplication |
+   | 名称 |CreateADLApplication |
 
 4. 单击“确定”以创建该项目  。
 

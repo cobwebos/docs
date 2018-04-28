@@ -1,6 +1,6 @@
 ---
-title: "教程：Azure Active Directory 与 Nexonia 的集成 | Microsoft Docs"
-description: "了解如何在 Azure Active Directory 和 Nexonia 之间配置单一登录。"
+title: 教程：Azure Active Directory 与 Nexonia 的集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Nexonia 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: a7a71eb4de1723be1fd32a35bee848885738b029
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 027b7ae5b87cc8349670b2270124c18d68242a9f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nexonia"></a>教程：Azure Active Directory 与 Nexonia 集成
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 01/19/2018
 
 **若要从库中添加 Nexonia，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![“Azure Active Directory”按钮][1]
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 01/19/2018
 本部分会在 Azure 门户中启用 Azure AD 单一登录，并在 Nexonia 应用程序中配置单一登录。
 
   > [!Note]
-   > 如果在集成中遇到问题，请参考此[链接](https://docs.microsoft.com/en-us/azure/active-directory/application-sign-in-problem-federated-sso-gallery)获取故障排除指南。 如果仍未找到解决方案，则从 Azure 门户提出支持请求。
+   > 如果在集成中遇到问题，请参考此[链接](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery)获取故障排除指南。 如果仍未找到解决方案，则从 Azure 门户提出支持请求。
 
 **若要配置 Nexonia 的 Azure AD 单一登录，请执行以下步骤：**
 
@@ -165,7 +165,7 @@ ms.lasthandoff: 01/19/2018
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
   
 ### <a name="create-a-nexonia-test-user"></a>创建 Nexonia 测试用户
 

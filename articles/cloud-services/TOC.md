@@ -92,7 +92,7 @@
 #### [部署常见问题解答](cloud-services-deployment-faq.md)
 
 # 引用
-## [代码示例](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
+## [代码示例](https://azure.microsoft.com/resources/samples/?service=cloud-services)
 ## [.csdef XML 架构](schema-csdef-file.md)
 ### [LoadBalancerProbe 架构](schema-csdef-loadbalancerprobe.md)
 ### [WebRole 架构](schema-csdef-webrole.md)

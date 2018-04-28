@@ -1,9 +1,9 @@
 ---
-title: "Azure 诊断日志支持的服务和架构 | Microsoft Docs"
-description: "了解 Azure 诊断日志支持的服务和事件架构。"
+title: Azure 诊断日志支持的服务和架构 | Microsoft Docs
+description: 了解 Azure 诊断日志支持的服务和事件架构。
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: fe8887df-b0e6-46f8-b2c0-11994d28e44f
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/24/2018
+ms.date: 4/12/2018
 ms.author: johnkem
-ms.openlocfilehash: 3e2b5305b969c96e6b14122af03da9249373094a
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 91c3f1507bb4fb64d5395917e8e431951f77e72b
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 诊断日志支持的服务、架构和类别
 
@@ -73,6 +73,7 @@ ms.lasthandoff: 01/25/2018
 |Microsoft.DataLakeAnalytics/accounts|请求|请求日志|
 |Microsoft.DataLakeStore/accounts|审核|审核日志|
 |Microsoft.DataLakeStore/accounts|Requests|请求日志|
+|Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL 服务器日志|
 |Microsoft.Devices/IotHubs|连接|连接|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|设备遥测|
 |Microsoft.Devices/IotHubs|C2DCommands|C2D 命令|
@@ -84,6 +85,7 @@ ms.lasthandoff: 01/25/2018
 |Microsoft.Devices/IotHubs|TwinQueries|孪生查询|
 |Microsoft.Devices/IotHubs|JobsOperations|作业操作|
 |Microsoft.Devices/IotHubs|DirectMethods|直接方法|
+|Microsoft.Devices/IotHubs|E2EDiagnostics|E2E 诊断（预览版）|
 |Microsoft.Devices/provisioningServices|DeviceOperations|设备操作|
 |Microsoft.Devices/provisioningServices|ServiceOperations|服务操作|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
@@ -96,7 +98,6 @@ ms.lasthandoff: 01/25/2018
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|集成帐户跟踪事件|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|网络安全组事件|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|网络安全组规则计数器|
-|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|网络安全组规则流事件|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|负载均衡器警报事件|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|负载均衡器探测运行状况|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|DDoS 保护通知|
@@ -107,6 +108,8 @@ ms.lasthandoff: 01/25/2018
 |Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog|网关诊断日志|
 |Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog|隧道诊断日志|
 |Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog|路由诊断日志|
+|Microsoft.Network/virtualNetworkGateways|IKEDiagnosticLog|IKE 诊断日志|
+|Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S 诊断日志|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|流量管理器探测运行状况结果事件|
 |Microsoft.Network/expressRouteCircuits|GWMCountersTable|GWM 计数器表|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure 备份报告数据|
@@ -127,6 +130,7 @@ ms.lasthandoff: 01/25/2018
 |Microsoft.Sql/servers/databases|块|块|
 |Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/servers/databases|审核|审核日志|
+|Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL 安全审核事件|
 |Microsoft.StreamAnalytics/streamingjobs|执行|执行|
 |Microsoft.StreamAnalytics/streamingjobs|创作|创作|
 

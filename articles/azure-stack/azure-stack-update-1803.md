@@ -1,6 +1,6 @@
 ---
-title: Azure 堆栈 1803年更新 |Microsoft 文档
-description: 了解什么是 Azure 堆栈 1803年更新中集成的系统、 已知的问题和下载更新的位置。
+title: Azure Stack 1803 更新 | Microsoft Docs
+description: 了解 Azure Stack 集成系统 1803 更新的功能、已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 04/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 11f57f866981cd4d376705dd24e2f0c54126e337
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
-ms.translationtype: MT
+ms.openlocfilehash: ac7fa42c93e42e93800c3b26154cdabb85756698
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="azure-stack-1803-update"></a>Azure 堆栈 1803年更新
+# <a name="azure-stack-1803-update"></a>Azure Stack 1803 更新
 
 *适用于：Azure Stack 集成系统*
 
-本文介绍改进和 1803年更新包的已知问题有关此版本中，以及在何处下载此更新中修复。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
+本文介绍 1803 更新包中的改进与修复、此版本的已知问题，以及更新的下载位置。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
 > [!IMPORTANT]        
 > 此更新包仅适用于 Azure Stack 集成系统。 请勿将此更新包应用于 Azure Stack 开发工具包。
 
 ## <a name="build-reference"></a>内部版本参考    
-Azure 堆栈 1803年更新生成号是**20180329.1**。
+Azure Stack 1803 更新内部版本号为 **20180329.1**。
 
 
 ## <a name="before-you-begin"></a>开始之前    
@@ -40,19 +40,20 @@ Azure 堆栈 1803年更新生成号是**20180329.1**。
 
 
 ### <a name="prerequisites"></a>必备组件
-- 安装 Azure 堆栈[1802年更新](azure-stack-update-1802.md)应用 Azure 堆栈 1803年更新前。    
+- 在应用 Azure Stack 1803 更新之前安装 Azure Stack [1802 更新](azure-stack-update-1802.md)。    
 
 
 ### <a name="post-update-steps"></a>更新后步骤
-安装之后 1803年，安装任何适用的修补程序。 有关详细信息中，查看以下知识库文章，以及我们[维护策略](azure-stack-servicing-policy.md)。
+- 安装 1803 之后，请安装任何适用的修补程序。 有关详细信息，请查看以下知识库文章，以及我们的[服务策略](azure-stack-servicing-policy.md)。
 
-- [KB 4103348-网络控制器 API 服务崩溃时尝试安装 Azure 堆栈更新](https://support.microsoft.com/en-us/help/4103348)
+  - [KB 4103348 - 尝试安装 Azure Stack 更新时，网络控制器 API 服务崩溃](https://support.microsoft.com/en-us/help/4103348)
 
+- 在安装此更新之后, 查看你的防火墙配置，以确保[必要的端口](azure-stack-integrate-endpoints.md)处于打开状态。 例如，此更新引入了 Azure 监视器包括到活动日志的审核日志的更改。 进行此更改后，端口 13012 现在使用，还必须打开。  
 
 ### <a name="new-features"></a>新增功能 
 此更新包含以下适用于 Azure Stack 的改进和修复。
 
-- **更新 Azure 堆栈机密**-（帐户和证书）。 有关管理机密的详细信息，请参阅[旋转 Azure 堆栈中的机密](azure-stack-rotate-secrets.md)。 
+- **更新 Azure Stack 机密** -（帐户和证书）。 有关如何管理机密的详细信息，请参阅[在 Azure Stack 中轮换机密](azure-stack-rotate-secrets.md)。 
 
 - <!-- 1914853 --> **Automatic redirect to HTTPS** when you use HTTP to access the administrator and user portals. This improvement was made based on [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) feedback for Azure Stack. 
 
@@ -60,11 +61,11 @@ Azure 堆栈 1803年更新生成号是**20180329.1**。
  
 - <!-- 2202621 --> **Azure Monitor** - Azure Stack adds [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) to the admin and user portals. This includes new explorers for metrics and activity logs. To access this Azure Monitor from external networks, port **13012** must be open in firewall configurations. For more information about ports required by Azure Stack, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md).
 
-   也可用作此过程中更改下,**更多的服务**，*审核日志*现在显示为*活动日志*。 功能现已与 Azure 门户一致。 
+   另外，“更多服务”下的“审核日志”现在显示为“活动日志”，这也是此次更改的内容。 此功能现在与 Azure 门户一致。 
 
 - <!-- 1664791 --> **Sparse files** -  When you add a New image to Azure Stack, or add an image through marketplace syndication, the image is converted to a sparse file. Images that were added prior to using Azure Stack version 1803 cannot be converted. Instead, you must use marketplace syndication to resubmit those images to take advantage of this feature. 
  
-   稀疏文件是用于减少存储空间使用和改进 I/O 高效的文件格式。  有关详细信息，请参阅[Fsutil 稀疏](https://docs.microsoft.com/windows-server/administration/windows-commands/fsutil-sparse)for Windows Server。 
+   稀疏文件是一种文件格式，在减少存储空间占用并提高 I/O 方面很有效。  有关详细信息，请参阅 [Fsutil sparse](https://docs.microsoft.com/windows-server/administration/windows-commands/fsutil-sparse)（适用于 Windows Server）。 
 
 ### <a name="fixed-issues"></a>修复的问题
 
@@ -82,13 +83,13 @@ Azure 堆栈 1803年更新生成号是**20180329.1**。
 
 - <!--  2253274 --> The issue where in the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet to view and manage this information.
 
-- 当你创建虚拟机时，消息*无法显示定价*不会再出现在选择 VM 大小的大小。
+- 在创建虚拟机时，“无法显示定价”消息不再在选择某个大小作为 VM 大小时显示。
 
-- 各种修补程序的性能、 稳定性、 安全性和使用由 Azure 堆栈的操作系统。
+- 针对性能、稳定性、安全性以及 Azure Stack 所用操作系统的各种修复。
 
 
 ### <a name="changes"></a>更改
-- 从新创建的产品/服务的状态更改的方式*私有*到*公共*或*已解除授权*已更改。 有关详细信息，请参阅[创建提议](azure-stack-create-offer.md)。
+- 将新创建的产品/服务的状态从“专用”更改为“公用”或“停止使用”的方式已变。 有关详细信息，请参阅[创建产品/服务](azure-stack-create-offer.md)。
 
 
 ### <a name="known-issues-with-the-update-process"></a>更新过程的已知问题    
@@ -96,7 +97,7 @@ Azure 堆栈 1803年更新生成号是**20180329.1**。
 
 
 ### <a name="known-issues-post-installation"></a>已知问题（安装后）
-以下是安装后的生成的已知的问题**20180323.2**。
+下面是内部版本 **20180323.2** 的安装后已知问题。
 
 #### <a name="portal"></a>门户
 - 在管理员门户中[从下拉列表提交新的支持请求](azure-stack-manage-portals.md#quick-access-to-help-and-support)的功能不可用。 请改用以下链接：     
@@ -116,7 +117,7 @@ Azure 堆栈 1803年更新生成号是**20180329.1**。
 
 - 在管理门户的仪表板中，“更新”磁贴无法显示有关更新的信息。 若要解决此问题，请单击该磁贴对其进行刷新。
 
-- 在管理门户中，你可能会看到的严重警报*Microsoft.Update.Admin*组件。 警报名称、说明和修正均显示为：  
+- 在管理门户中，可能会看到针对 *Microsoft.Update.Admin* 组件的严重警报。 警报名称、说明和修正均显示为：  
     - 错误 - FaultType 为 ResourceProviderTimeout 的模板缺失。
 
   可以放心地忽略此警报。 
@@ -169,7 +170,7 @@ Azure 堆栈 1803年更新生成号是**20180329.1**。
     - *Allow：*
  
       ```powershell    
-      Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+      Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
       
       $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
       
@@ -199,7 +200,7 @@ Azure 堆栈 1803年更新生成号是**20180329.1**。
 
         ```powershell
         
-        Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+        Connect-AzureRmAccount -EnvironmentName AzureStackAdmin
         
         $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
         
@@ -235,9 +236,9 @@ Azure 堆栈 1803年更新生成号是**20180329.1**。
 
 
 > [!NOTE]  
-> 更新到 Azure 堆栈 1803年后，你可以继续使用以前部署的 SQL 和 MySQL 资源提供。  建议在新版本发布后更新 SQL 和 MySQL。 与 Azure Stack 一样，请将更新按顺序应用到 SQL 和 MySQL 资源提供程序。  例如，如果你使用版本 1711年，首先应用版本 1712，然后 1802，，然后更新到 1803年。      
+> 更新到 Azure Stack 1803 以后，可以继续使用以前部署的 SQL 和 MySQL 资源提供程序。  建议在新版本发布后更新 SQL 和 MySQL。 与 Azure Stack 一样，请将更新按顺序应用到 SQL 和 MySQL 资源提供程序。  例如，如果使用版本 1711，请先应用版本 1712，然后应用 1802,，再应用 1803 的更新。      
 >   
-> 更新 1803年安装不影响当前使用的 SQL 或 MySQL 资源提供程序由你的用户。
+> 安装更新 1803 不会影响用户现在使用 SQL 或 MySQL 资源提供程序。
 > 不管所用资源提供程序的版本如何，在其数据库中的用户数据不会受到影响，仍然可用。    
 
 
@@ -249,7 +250,7 @@ Azure 堆栈 1803年更新生成号是**20180329.1**。
 
 
 #### <a name="usage"></a>使用情况  
-- 使用公共 IP 地址使用情况计数数据演示如何将相同*EventDateTime*而不是每个记录的值*TimeDate*显示时已创建了记录的 stamp。 目前，无法使用此数据来执行公共 IP 地址用量的准确计帐。
+- 公共 IP 地址使用计量数据针对每条记录显示相同的 *EventDateTime* 值，而不是创建记录时显示的 *TimeDate* 时间戳。 目前，无法使用此数据来执行公共 IP 地址用量的准确计帐。
 
 <!--
 #### Identity
@@ -265,10 +266,10 @@ Azure 堆栈 1803年更新生成号是**20180329.1**。
 
 
 ## <a name="download-the-update"></a>下载更新
-你可以下载 Azure 堆栈 1803年更新包从[此处](https://aka.ms/azurestackupdatedownload)。
+可从[此处](https://aka.ms/azurestackupdatedownload)下载 Azure Stack 1803 更新包。
 
 
 ## <a name="see-also"></a>另请参阅
-- 若要使用特权终结点 (PEP) 监视和恢复更新，请参阅[监视 Azure 堆栈使用特权终结点中的更新](azure-stack-monitor-update.md)。
+- 若要使用特权终结点 (PEP) 来监视和恢复更新，请参阅[使用特权终结点监视 Azure Stack 中的更新](azure-stack-monitor-update.md)。
 - 有关 Azure Stack 中更新管理的概述，请参阅[在 Azure Stack 中管理更新的概述](azure-stack-updates.md)。
 - 有关如何在 Azure Stack 中应用更新的详细信息，请参阅[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)。

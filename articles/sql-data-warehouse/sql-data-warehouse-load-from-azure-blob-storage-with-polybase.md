@@ -1,36 +1,24 @@
 ---
-title: "从 Azure Blob 加载到 Azure 数据仓库| Microsoft Docs"
-description: "了解如何使用 PolyBase 将数据从 Azure Blob 存储载入 SQL 数据仓库。 将公共数据中的一些表载入 Contoso 零售数据仓库架构。"
+title: 将 Contoso 零售数据加载到 Azure SQL 数据仓库 | Microsoft Docs
+description: 使用 PolyBase 和 T-SQL 命令可将两张表从 Contoso 零售数据加载到 Azure SQL 数据仓库。
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: barbkess
-editor: 
-ms.assetid: faca0fe7-62e7-4e1f-a86f-032b4ffcb06e
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 10/31/2016
-ms.author: barbkess
-ms.openlocfilehash: 4221bcd5a50fad680427a500e32837c1e75dd990
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 8a1c10755d6f0273b05660e39f3c59b37352d427
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-polybase"></a>将数据从 Azure Blob 存储载入 SQL 数据仓库 (PolyBase)
-> [!div class="op_single_selector"]
-> * [Data Factory](sql-data-warehouse-load-from-azure-blob-storage-with-data-factory.md)
-> * [PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
-> 
-> 
+# <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>将 Contoso 零售数据加载到 Azure SQL 数据仓库
 
-使用 PolyBase 和 T-SQL 命令可将数据从 Azure Blob 存储载入 Azure SQL 数据仓库。 
-
-为简单起见，本教程会将两个表从公共 Azure 存储 Blob 载入 Contoso 零售数据仓库架构。 若要加载完整的数据集，请运行 Microsoft SQL Server 示例存储库中的 [加载完整的 Contoso 零售数据仓库][Load the full Contoso Retail Data Warehouse]示例。
+使用 PolyBase 和 T-SQL 命令可将两张表从 Contoso 零售数据加载到 Azure SQL 数据仓库。 若要加载完整的数据集，请运行 Microsoft SQL Server 示例存储库中的 [Load the full Contoso Retail Data Warehouse](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md)（加载完整的 Contoso 零售数据仓库）示例。
 
 在本教程中，将：
 

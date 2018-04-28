@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 89575f94e95c5ae378d95220d63c162e53158069
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ca9e2935f3d44952235a1669b3f5bebc7708f4bf
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>优化 Azure SQL 数据库性能
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/05/2018
 
 ## <a name="increasing-performance-tier-of-your-database"></a>增加数据库性能层
 
-Azure SQL 数据库提供以下三个[服务层](sql-database-service-tiers.md)可供选择：基本、标准和高级（通过数据库吞吐量单位 ([DTU](sql-database-what-is-a-dtu.md)) 衡量性能）。 每个服务层可严格隔离 SQL 数据库可以使用的资源，并保证相应服务级别的可预测性能。 在本文中，我们将提供指南，帮助你选择应用程序的服务层。 另外，还会讨论如何优化应用程序以充分利用 Azure SQL 数据库。
+Azure SQL 数据库提供两种购买模型：基于 DTU 的购买模型和基于 V 核心的购买模型。 每个模型都有多个[服务层](sql-database-service-tiers.md)可供选择。 每个服务层可严格隔离 SQL 数据库可以使用的资源，并保证相应服务级别的可预测性能。 在本文中，我们将提供指南，帮助你选择应用程序的服务层。 另外，还会讨论如何优化应用程序以充分利用 Azure SQL 数据库。
 
 > [!NOTE]
 > 本文侧重于 Azure SQL 数据库中单一数据库的性能指南。 有关弹性池的性能指南，请参阅[弹性池的价格和性能注意事项](sql-database-elastic-pool-guidance.md)。 不过，请注意，也可以将本文中的多项优化建议应用于弹性池中的数据库，获得类似的性能优势。

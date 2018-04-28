@@ -12,15 +12,13 @@ ms.assetid: ''
 ms.service: HDInsight
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 8c976e5508c928943e2a5e4820f72520554f9b5d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e8dc802d67b4cd2e38ab195b771ceeaa07876e58
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具
 
@@ -31,7 +29,7 @@ ms.lasthandoff: 03/28/2018
 
 完成本文中的步骤需要具有以下项：
 
-- HDInsight 群集。  若要创建群集，请参阅 [HDInsight 入门]( hdinsight-hadoop-linux-tutorial-get-started.md)。
+- HDInsight 群集。 若要创建群集，请参阅 [HDInsight 入门]( hdinsight-hadoop-linux-tutorial-get-started.md)。
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)。
 - [Mono](http://www.mono-project.com/docs/getting-started/install/)。 只有 Linux 和 macOS 需要 Mono。
 
@@ -102,7 +100,7 @@ ms.lasthandoff: 03/28/2018
     - 提交 PySpark 批处理脚本
     - 设置配置
 
-**链接群集**
+<a id="linkcluster"></a>**链接群集**
 
 可以使用 Ambari 管理的用户名链接标准群集，还可以使用域用户名（例如：user1@contoso.com）链接安全 hadoop 群集。
 1. 通过选择 **CTRL+SHIFT+P** 打开命令面板，然后输入“HDInsight: Link a cluster”。
@@ -114,7 +112,7 @@ ms.lasthandoff: 03/28/2018
    ![“链接群集”对话框](./media/hdinsight-for-vscode/link-cluster-process.png)
 
    > [!NOTE]
-   > 如果群集已登录到 Azure 订阅中并且已链接群集，则我们使用链接用户名和密码。 
+   > 如果群集已登录到 Azure 订阅中并且已链接群集，则使用链接用户名和密码。 
    
 3. 可以使用命令**列出群集**来查看链接群集。 现在可以将脚本提交到此链接群集。
 
@@ -277,8 +275,50 @@ ms.lasthandoff: 03/28/2018
 
 提交 Python 作业后，提交日志会显示在 VS Code 的“输出”窗口中。 同时还会显示 **Spark UI URL** 和 **Yarn UI URL**。 可以在 Web 浏览器中打开 URL 来跟踪作业状态。
 
-
+>[!NOTE]
+>Livy 0.4（即 HDI spark 2.2 群集）不再支持 PySpark3。 仅 python 支持“PySpark”。 使用 python3 提交到 spark 2.2 失败，这是已知问题。
    
+## <a name="livy-configuration"></a>Livy 配置
+支持 Livy 配置，可在工作空间文件夹的项目设置中设置。 详细信息请参阅 [Livy README](https://github.com/cloudera/livy/blob/master/README.rst )。
+
++ 项目设置：
+
+    ![Livy 配置](./media/hdinsight-for-vscode/hdi-livyconfig.png)
+
++ 支持的 Livy 配置：   
+
+    **POST /batches**   
+    请求正文
+
+    | 名称 | description | type | 
+    | :- | :- | :- | 
+    | file | 包含要执行的应用程序的文件 | path（必需） | 
+    | proxyUser | 运行作业时要模拟的用户 | 字符串 | 
+    | className | 应用程序 Java/Spark main 类 | 字符串 |
+    | args | 应用程序的命令行参数 | 字符串列表 | 
+    | jars | 此会话中要使用的 jars | 字符串列表 | 
+    | pyFiles | 此会话中要使用的 Python 文件 | 字符串列表 |
+    | 文件 | 此会话中要使用的文件 | 字符串列表 |
+    | driverMemory | 要用于驱动程序进程的内存量 | 字符串 |
+    | driverCores | 要用于驱动程序进程的内核数 | int |
+    | executorMemory | 每个执行程序进程要使用的内存量 | 字符串 |
+    | executorCores | 用于每个执行程序的内核数 | int |
+    | numExecutors | 为此会话启动的执行程序数量 | int |
+    | archives | 此会话中要使用的存档 | 字符串列表 |
+    | 队列 | 要提交的 YARN 队列的名称 | 字符串 |
+    | 名称 | 此会话的名称 | 字符串 |
+    | conf | Spark 配置属性 | key=val 的映射 |
+
+    响应正文   
+    创建的批处理对象。
+
+    | 名称 | description | type | 
+    | :- | :- | :- | 
+    | id | 会话 id | int | 
+    | appId | 此会话的应用程序 id |  String |
+    | appInfo | 应用程序详细信息 | key=val 的映射 |
+    | log | 日志行 | 字符串列表 |
+    | state |   批处理状态 | 字符串 |
 
 
 ## <a name="additional-features"></a>其他功能

@@ -1,25 +1,23 @@
 ---
-title: "将其他 Azure 存储帐户添加到 HDInsight | Microsoft Docs"
-description: "了解如何将其他 Azure 存储帐户添加到现有 HDInsight 群集。"
+title: 将其他 Azure 存储帐户添加到 HDInsight | Microsoft Docs
+description: 了解如何将其他 Azure 存储帐户添加到现有 HDInsight 群集。
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.devlang: ''
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 72045d363516a2f16d45e3f8ee157ddd9d9242bd
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 569a41dfdbf2f9d911e67f283f413130ba7e1f79
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
@@ -68,7 +66,7 @@ __要求__：
 > [!IMPORTANT]
 > 当使用自定义文档中所提供的步骤时，请使用以下信息来应用此脚本：
 >
-> * 将任意示例脚本操作 URI 替换为此脚本的 URI (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)。
+> * 将任何示例脚本操作 URI 替换为此脚本的 URI (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)。
 > * 使用要添加到群集的存储帐户的 Azure 存储帐户名称和密钥替换任何示例参数。 如果使用 Azure 门户，则必须以空格来分隔这些参数。
 > * 无需将此脚本标记为“持久化”，因为它直接更新群集的 Ambari 配置。
 
@@ -100,7 +98,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 > [!NOTE]
 > 将 `$PASSWORD` 设置为群集登录（管理员）帐户密码。 将 `$CLUSTERNAME` 设置为 HDInsight 群集的名称。 将 `$STORAGEACCOUNTNAME` 设置为存储帐户的名称。
 >
-> 此示例使用 [curl (http://curl.haxx.se/)](http://curl.haxx.se/) 和 [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) 来检索和分析 JSON 数据。
+> 此示例使用 [curl (http://curl.haxx.se/)](http://curl.haxx.se/) 和 [jq (https://stedolan.github.io/jq/)](https://stedolan.github.io/jq/) 检索和分析 JSON 数据。
 
 使用此命令时，将 __CLUSTERNAME__ 替换为 HDInsight 群集的名称。 将 __PASSWORD__ 替换为群集的 HTTP 登录密码。 将 __STORAGEACCOUNT__ 替换为使用脚本操作添加的存储帐户的名称。 此命令返回类似于以下文本的信息：
 
@@ -116,7 +114,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 
 若要解决此问题，必须删除存储帐户的现有条目。 按以下步骤删除现有条目：
 
-1. 在 Web 浏览器中，打开 HDInsight 群集的 Ambari Web UI。 该 URI 是 https://CLUSTERNAME.azurehdinsight.net。 将 __CLUSTERNAME__ 替换为群集名称。
+1. 在 Web 浏览器中，打开 HDInsight 群集的 Ambari Web UI。 该 URI 为 https://CLUSTERNAME.azurehdinsight.net。 将 __CLUSTERNAME__ 替换为群集名称。
 
     出现提示时，请输入群集的 HTTP 登录用户和密码。
 

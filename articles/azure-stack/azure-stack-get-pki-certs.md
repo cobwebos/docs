@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/26/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: fbf3c66979730a9162c56e8583f0a32977a0310d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: cbc1efaee7404c3ffc82acea0846136c43eba2a9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure 堆栈证书签名请求生成
 
@@ -82,13 +82,13 @@ Azure 堆栈准备情况检查器工具 (AzsReadinessChecker) 执行的以下证
 5. 若要使用多个使用者备用名称包括那些需要 PaaS 服务生成的单个证书请求：
 
     ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleSAN -OutputRequestPath $OutputDirectory -IncludePaaS
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IncludePaaS
     ````
 
 6. 若要生成单个证书签名请求不使用 PaaS 服务的每个 DNS 名称：
 
     ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleSAN -OutputRequestPath $OutputDirectory
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory
     ````
 
 7. 查看的输出：
@@ -112,4 +112,6 @@ Azure 堆栈准备情况检查器工具 (AzsReadinessChecker) 执行的以下证
 8.  提交**。请求**到你的 CA （内部或公共） 生成的文件。  输出目录**开始 AzsReadinessChecker**包含 CSR(s) 必要以便提交至证书颁发机构。  它还包含子目录包含在证书请求生成，作为引用过程中使用的 INF 文件。 请确保你的 CA 会生成使用生成的请求的证书，满足[Azure 堆栈的 PKI 要求](azure-stack-pki-certs.md)。
 
 ## <a name="next-steps"></a>后续步骤
+
 [准备 Azure Stack PKI 证书](azure-stack-prepare-pki-certs.md)
+

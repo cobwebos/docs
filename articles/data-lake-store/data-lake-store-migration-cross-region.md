@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Store 跨区域迁移 | Microsoft 文档"
-description: "了解 Azure Data Lake Store 的跨区域迁移。"
+title: Azure Data Lake Store 跨区域迁移 | Microsoft 文档
+description: 了解 Azure Data Lake Store 的跨区域迁移。
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: swums
 manager: amitkul
 editor: swums
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: b04cca6e551a15a31bbebc4932ea05dd39e8e916
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 488a9954cef210b727518375e218fe084129a6f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="migrate-data-lake-store-across-regions"></a>跨区域迁移 Data Lake Store
 
@@ -45,7 +45,7 @@ Azure Data Lake Store 在新区域中推出后，用户可以选择执行一次�
 
 * **工具**。 建议使用 [Azure 数据工厂复制活动](../data-factory/connector-azure-data-lake-store.md)来复制 Data Lake Store 文件。 数据工厂支持高性能、高可靠性的数据移动。 请记住，数据工厂只会复制文件夹层次结构和文件内容。 需要手动将旧帐户中使用的任何访问控制列表 (ACL) 应用到新帐户。 有关详细信息，包括最佳方案的性能目标，请参阅[复制活动性能和优化指南](../data-factory/copy-activity-performance.md)。 如果想要更快地复制数据，可能需要使用其他云数据移动单元。 其他某些工具（例如 AdlCopy）不支持在区域之间复制数据。  
 
-* **带宽费用**。 由于要将数据传出 Azure 区域，因此会产生[带宽费用](https://azure.microsoft.com/en-us/pricing/details/bandwidth/)。
+* **带宽费用**。 由于要将数据传出 Azure 区域，因此会产生[带宽费用](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
 * **数据 ACL**。 可以通过向文件和文件夹应用 ACL 来保护新区域中的数据。 有关详细信息，请参阅 [Securing data stored in Azure Data Lake Store](data-lake-store-secure-data.md)（保护 Azure Data Lake 中存储的数据）。 我们建议通过迁移来更新和调整 ACL。 可以使用类似于当前设置的设置。 可以使用 Azure 门户、[PowerShell cmdlet](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission) 或 SDK 查看已应用到任何文件的 ACL。  
 

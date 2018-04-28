@@ -1,12 +1,12 @@
 ---
-title: "创建具有加速网络的 Azure 虚拟机 | Microsoft Docs"
-description: "了解如何创建具有加速网络的 Linux 虚拟机。"
+title: 创建具有加速网络的 Azure 虚拟机 | Microsoft Docs
+description: 了解如何创建具有加速网络的 Linux 虚拟机。
 services: virtual-network
-documentationcenter: 
+documentationcenter: ''
 author: jdial
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: jimdial
-ms.openlocfilehash: c0017b8759a1f01b010172be562ed869d1d51a25
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 995f40599c059434c419bea95019f8700f756ad8
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的 Windows 虚拟机
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 必须创建启用加速网络的虚拟机。 现有虚拟机不能启用此功能。 若要启用加速网络，请完成以下步骤：
 >   1. 删除虚拟机
 >   2. 重新创建启用加速网络的虚拟机
@@ -52,7 +52,7 @@ Microsoft Windows Server 2012 R2 Datacenter 和 Windows Server 2016。
 有关 VM 实例的详细信息，请参阅[Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="regions"></a>区域
-在所有公共 Azure 区域和 Azure 政府云中均可用。 
+在所有公共 Azure 区域和 Azure 政府云中均可用。
 
 ## <a name="limitations"></a>限制
 此功能存在以下限制：
@@ -61,11 +61,11 @@ Microsoft Windows Server 2012 R2 Datacenter 和 Windows Server 2016。
 * **VM 创建：**已启用加速网络的 NIC 只能在创建 VM 时附加到该 VM。 该 NIC 无法附加到现有 VM。 如果将 VM 添加到现有可用性集，可用性集中的所有 VM 也必须启用加速网络。
 * **仅通过 Azure 资源管理器部署：**不能部署具有加速网络的虚拟机（经典）。
 
-尽管本文提供了使用 Azure PowerShell 创建具有加速网络的虚拟机的步骤，但也可以[使用 Azure 门户创建具有加速网络的虚拟机](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在门户中创建具有支持的操作系统和 VM 大小的虚拟机时，请在“设置”的“加速网络”下，选择“启用”。 创建虚拟机后，需要按照[确认操作系统中安装了驱动程序](#confirm-the-driver-is-installed-in-the-operating-system)中的说明完成操作。
+尽管本文提供了使用 Azure PowerShell 创建具有加速网络的虚拟机的步骤，但也可以[使用 Azure 门户创建具有加速网络的虚拟机](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在门户中创建虚拟机时，请在“设置”的“加速网络”下选择“启用”。 除非选择了[支持的操作系统](#supported-operating-systems)和 [VM 大小](#supported-vm-instances)，否则启用加速网络的选项不会显示在门户中。 创建虚拟机后，需要按照[确认操作系统中安装了驱动程序](#confirm-the-driver-is-installed-in-the-operating-system)中的说明完成操作。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-安装 [Azure PowerShell](/powershell/azure/install-azurerm-ps) 5.1.1 版或更高版本。 要查找当前安装的版本，请运行 `Get-Module -ListAvailable AzureRM`。 如果需要进行安装或升级，请从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureRM)安装最新版本的 AzureRM 模块。 在 PowerShell 会话中，使用 [Add-AzureRmAccount](/powershell/module/AzureRM.Profile/Add-AzureRmAccount) 登录到 Azure 帐户。
+安装 [Azure PowerShell](/powershell/azure/install-azurerm-ps) 5.1.1 版或更高版本。 要查找当前安装的版本，请运行 `Get-Module -ListAvailable AzureRM`。 如果需要进行安装或升级，请从 [PowerShell 库](https://www.powershellgallery.com/packages/AzureRM)安装最新版本的 AzureRM 模块。 在 PowerShell 会话中，使用 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) 登录到 Azure 帐户。
 
 在以下示例中，请将示例参数名称替换为自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVM。
 
@@ -121,7 +121,7 @@ $nsg = New-AzureRmNetworkSecurityGroup `
     -SecurityRules $rdp
 ```
 
-使用 *Set-AzureRmVirtualNetworkSubnetConfig* 将网络安全组关联到 mySubnet 子网[](/powershell/module/AzureRM.Network/Set-AzureRmVirtualNetworkSubnetConfig)。 网络安全组中的规则对子网中部署的所有资源都是有效的。
+使用 *Set-AzureRmVirtualNetworkSubnetConfig* 将网络安全组关联到 mySubnet [子网](/powershell/module/AzureRM.Network/Set-AzureRmVirtualNetworkSubnetConfig)。 网络安全组中的规则对子网中部署的所有资源都是有效的。
 
 ```powershell
 Set-AzureRmVirtualNetworkSubnetConfig `
@@ -200,13 +200,13 @@ New-AzureRmVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "cent
 
 ## <a name="confirm-the-driver-is-installed-in-the-operating-system"></a>确认操作系统中安装了驱动程序
 
-在 Azure 中创建 VM 后，立即连接到 VM 并确认 Windows 中安装了驱动程序。 
+在 Azure 中创建 VM 后，立即连接到 VM 并确认 Windows 中安装了驱动程序。
 
 1. 在 Internet 浏览器中打开 Azure [门户](https://portal.azure.com)并使用 Azure 帐户登录。
 2. 在 Azure 门户顶部包含“搜索资源”文本的框中，键入 myVm。 当“myVm”出现在搜索结果中时，请单击它。 如果“连接”按钮下方显示“正在创建”，则表示 Azure 尚未完成创建 VM。 仅在“连接”按钮下方不再显示“正在创建”时，才在概述的左上角单击“连接”。
 3. 输入在[创建虚拟机](#create-the-virtual-machine)中输入的用户名和密码。 如果从未连接到 Azure 中的 Windows VM，请参阅[连接到虚拟机](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine)。
 4. 右键单击 Windows“开始”按钮，并单击“设备管理器”。 展开“网络适配器”节点。 确认已显示“Mellanox ConnectX-3 Virtual Function Ethernet Adapter”，如下图所示：
-   
+
     ![设备管理器](./media/create-vm-accelerated-networking/device-manager.png)
 
 现在已为 VM 启用加速网络。

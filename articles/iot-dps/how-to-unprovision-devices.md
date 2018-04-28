@@ -1,43 +1,48 @@
 ---
-title: "如何取消预配使用 Azure IoT 中心设备预配服务登记的设备 | Microsoft Docs"
-description: "如何在 Azure 门户中取消预配 DPS 服务登记的设备"
+title: 如何取消预配使用 Azure IoT 中心设备预配服务预配的设备 | Microsoft Docs
+description: 如何取消预配使用 Azure IoT 中心设备预配服务预配的设备
 services: iot-dps
-keywords: 
-author: JimacoMS
-ms.author: v-jamebr
-ms.date: 01/08/2018
+keywords: ''
+author: bryanla
+ms.author: v-jamebr;bryanla
+ms.date: 04/06/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 1d057a4df43cf25e6817672d198207d9a50e462e
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 439d4ffa8eec12481f52bd15f0060800411f316e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="how-to-unprovision-devices-enrolled-by-your-provisioning-service"></a>如何取消预配由预配服务登记的设备
+# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>如何取消预配以前自动预配的设备 
 
-有时，我们可能需要取消预配通过设备预配服务预配的设备。 例如，设备已转售、移到不同的 IoT 中心、丢失、被盗或者信息泄露。 
+有时，可能需要取消预配以前通过设备预配服务自动预配的设备。 例如，设备已转售、移到不同的 IoT 中心、丢失、被盗或者信息泄露。 
 
 一般情况下，取消预配设备涉及到两个步骤：
 
-1. 撤销设备对预配服务的访问权限。 根据是要暂时还是永久撤销访问权限，或者是否使用了 X.509 认证机制，在现有登记组的层次结构中，可能需要禁用或删除登记条目。 
+1. 将设备从预配服务中取消注册，以免将来自动进行预配。 根据是要暂时还是永久撤销访问权限，可能需要禁用或删除登记条目。 对于使用 X.509 认证的设备，可能需要在现有注册组的层次结构中禁用/删除某个条目。  
  
-   - 若要了解如何使用门户撤销设备访问权限，请参阅[撤销设备访问权限](how-to-revoke-device-access-portal.md)。
-   - 若要了解如何使用某个预配服务 SDK 以编程方式撤销设备访问权限，请参阅[使用服务 SDK 管理设备登记](how-to-manage-enrollments-sdks.md)。
+   - 若要了解如何取消注册某个设备，请参阅[如何从 Azure IoT 中心设备预配服务中取消注册某个设备](how-to-revoke-device-access-portal.md)。
+   - 若要了解如何使用某个预配服务 SDK 以编程方式取消注册某个设备，请参阅[使用服务 SDK 管理设备注册](how-to-manage-enrollments-sdks.md)。
 
-2. 在预配设备的 IoT 中心的标识注册表中禁用或删除该设备的条目。 有关详细信息，请参阅 Azure IoT 中心文档中的[管理设备标识](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices)。 
+2. 从 IoT 中心取消注册设备，防止未来的通信和数据传输。 另外，可以在预配设备的 IoT 中心的标识注册表中临时禁用或永久删除该设备的条目。 若要详细了解禁用，请参阅[禁用设备](/azure/iot-hub/iot-hub-devguide-identity-registry.md#disable-devices)。 对于 IoT 中心资源，请参阅 [Azure 门户](https://portal.azure.com)中的“设备管理/IoT 设备”。
 
-执行取消设置设备的确切步骤取决于其证明机制和你设置的服务具有其适用的注册条目。
+取消预配设备所需执行的确切步骤取决于其证明机制和其适用于预配服务的注册条目。 以下部分概述了此过程，具体取决于注册和证明类型。
 
 ## <a name="individual-enrollments"></a>个人注册
 结合自签名叶证书（无证书链）使用 TPM 认证或 X.509 认证的设备是通过单独的登记条目预配的。 
 
-取消设置了单独的注册的设备： 
-1. 对于使用 TPM 证明的设备，删除要永久撤消对预配的服务的设备的访问权限或禁用该条目，暂时撤消其访问权限的单独的注册项。 对于使用 X.509 证明的设备，可以删除或禁用该条目。 请注意，不过，如果你删除单个设备的注册，它使用 X.509 证明并且启用的注册组存在签名证书，因为设备的证书链，可以重新登记设备。 对于此类设备，可能有更安全，若要禁用的注册项。 这样做因此阻止的设备重新注册，而不考虑启用的注册组是否存在为其签名的证书之一。
+若要取消预配具有单独注册的设备，请执行以下操作： 
+
+1. 从预配服务中取消注册设备：
+
+   - 对于使用 TPM 证明的设备，请删除单独的注册项，以便永久撤消设备对预配服务的访问权限，或者禁用该项，以便暂时撤消其访问权限。 
+   - 对于使用 X.509 证明的设备，可以删除或禁用该条目。 但请注意，如果删除设备的单个注册，该设备使用 X.509 并且在该设备的证书链中存在针对签名证书的已启用的注册组，则可以重新注册设备。 对于此类设备，可能有更安全，若要禁用的注册项。 这样做因此阻止的设备重新注册，而不考虑启用的注册组是否存在为其签名的证书之一。
+
 2. 在预配设备的 IoT 中心的标识注册表中禁用或删除该设备的条目。 
 
 
@@ -55,11 +60,12 @@ ms.lasthandoff: 02/03/2018
 
 使用登记组时，需要考虑两种情况：
 
-- 取消设置的所有设备已经通过注册组设置：
+- 若要取消预配已通过注册组预配的所有设备，请执行以下操作：
   1. 禁用其签名的证书的方块列表的注册组。 
   2. 然后，可以使用该登记组的预配设备列表，从每个设备的相应 IoT 中心的标识注册表中禁用或删除该设备。 
   3. 从相应的 IoT 中心禁用或删除所有设备后，可以选择删除登记组。 但请注意，如果删除登记组，并且在一个或多个设备的证书链中为某个级别较高的签名证书启用了登记组，则这些设备可能重新登记。 
-- 取消设置从注册组的单个设备：
+
+- 若要从注册组取消预配单个设备，请执行以下操作：
   1. 创建其叶（设备）证书已禁用各个注册。 这会撤销该设备对预配服务的访问权限，同时仍允许链中具有登记组签名证书的其他设备访问。 不要删除设备的已禁用单独登记。 否则，设备会通过登记组重新登记。 
   2. 然后，可以使用登记组详细信息中的预配设备列表来查找设备已预配到的 IoT 中心，并从该中心的标识注册表中禁用或删除该设备。 
   

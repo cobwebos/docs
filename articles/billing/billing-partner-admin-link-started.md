@@ -10,11 +10,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: d1f6515c63e789643c285218aa121f1182902e0f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: abab0e63f91ad34d2671c37773d47c31eeeb8339
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户 
 合作伙伴可以通过将合作伙伴 ID 链接到用于管理客户资源的帐户，来跟踪自己在客户互动中的影响度。
@@ -37,7 +37,7 @@ ms.lasthandoff: 04/19/2018
 
 1. 安装 [AzurePartnerRP](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner/0.1.0-preview) Powershell 模块。
 
-2. 使用用户帐户或服务主体登录到客户的租户。有关详细信息，请参阅[使用 Powershell 登录](https://docs.microsoft.com/en-us/powershell/azure/authenticate-azureps?view=azurermps-5.2.0)。
+2. 使用用户帐户或服务主体登录到客户的租户。有关详细信息，请参阅[使用 Powershell 登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-5.2.0)。
  
    ```azurepowershell-interactive
     C:\> Connect-AzureRmAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 

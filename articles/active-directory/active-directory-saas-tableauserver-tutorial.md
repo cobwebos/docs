@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
 ms.openlocfilehash: 3b0390c8b95a46b2c134252532bef118ea4df52d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>教程：Azure Active Directory 与 Tableau Server 集成
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 03/08/2018
 
 **若要从库中添加 Tableau Server，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)**的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 03/08/2018
     
     c. 在“值”列表中，选择为该行显示的属性值。
     
-    d.单击“下一步”。 单击“确定”
+    d. 单击“确定”
 
 
 6. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
@@ -158,9 +158,9 @@ ms.lasthandoff: 03/08/2018
   
    b. 选中“使用 SAML 进行单一登录”复选框。
    
-   c. Tableau Server 返回 URL（Tableau Server 用户将要访问的 URL），例如 http://tableau_server。 不建议使用 http://localhost。 不支持使用带尾部反斜杠的 URL（例如，http://tableau_server/）。 在“Tableau Server 域和 URL”部分中，复制“Tableau Server 返回 URL”并将其粘贴到 Azure AD“登录 URL”文本框中。
+   c. Tableau Server 返回 URL（Tableau Server 用户将要访问的 URL），例如 http://tableau_server。 但不建议使用 http://localhost。 不支持使用带尾部反斜杠的 URL（例如，http://tableau_server/)。 在“Tableau Server 域和 URL”部分中，复制“Tableau Server 返回 URL”并将其粘贴到 Azure AD“登录 URL”文本框中。
    
-   d.单击“下一步”。 SAML 实体 ID - 此实体 ID 唯一标识安装到 IdP 的 Tableau Server。 可以在此处再次输入 Tableau Server URL（如果需要），但它不必须是 Tableau Server URL。 在“Tableau Server 域和 URL”部分中，复制“SAML 实体 ID”并将其粘贴到 Azure AD“标识符”文本框中。
+   d. SAML 实体 ID - 此实体 ID 唯一标识安装到 IdP 的 Tableau Server。 可以在此处再次输入 Tableau Server URL（如果需要），但它不必须是 Tableau Server URL。 在“Tableau Server 域和 URL”部分中，复制“SAML 实体 ID”并将其粘贴到 Azure AD“标识符”文本框中。
      
    e. 单击“导出元数据文件”，并在文本编辑器应用程序中打开该文件。 找到包含 Http Post 和索引 0 的断言使用者服务 URL 并复制该 URL。 现在将其粘贴到“Tableau Server 域和 URL”部分中的 Azure AD“答复 URL”文本框中。
    
@@ -207,7 +207,7 @@ ms.lasthandoff: 03/08/2018
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d.单击“下一步”。 单击“创建”。
+    d. 单击“创建”。
  
 ### <a name="creating-a-tableau-server-test-user"></a>创建 Tableau Server 测试用户
 

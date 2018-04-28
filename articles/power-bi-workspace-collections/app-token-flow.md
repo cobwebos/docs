@@ -1,12 +1,12 @@
 ---
-title: "通过 Power BI 工作区集合进行身份验证和授权 | Microsoft Docs"
-description: "通过 Power BI 工作区集合进行身份验证和授权。"
+title: 通过 Power BI 工作区集合进行身份验证和授权 | Microsoft Docs
+description: 通过 Power BI 工作区集合进行身份验证和授权。
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
 ms.assetid: 1c1369ea-7dfd-4b6e-978b-8f78908fd6f6
 ms.service: power-bi-embedded
@@ -15,19 +15,19 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: ae9627c6bb5e7bb099598acaa2eb29375c35593e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 74d34e708fb74daa295642d50643b78af8f6cb7a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>通过 Power BI 工作区集合进行身份验证和授权
 
 Power BI 工作区集合使用**密钥**和**应用令牌**进行身份验证和授权，而不是使用显式的最终用户身份验证。 在此模型中，由应用程序管理对最终用户的身份验证和授权。 如有必要，应用将创建并发送应用令牌，以指示服务来呈现所请求的报表。 此设计不要求应用使用 Azure Active Directory 进行用户身份验证和授权，但仍然可以这样做。
 
 > [!IMPORTANT]
-> Power BI 工作区集合已遭弃用，在 2018 年 6 月或合同上指明的时间前可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
+> Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
 ## <a name="two-ways-to-authenticate"></a>进行身份验证的两种方式
 
@@ -46,9 +46,9 @@ Power BI 工作区集合使用**密钥**和**应用令牌**进行身份验证和
 | 声明 | 说明 |
 | --- | --- |
 | **ver** |应用令牌的版本。 当前版本为 0.2.0。 |
-| **aud** |令牌的目标接收方。 对于 Power BI 工作区集合，请使用：“https://analysis.windows.net/powerbi/api”。 |
+| **aud** |令牌的目标接收方。 对于 Power BI 工作区集合，使用：“https://analysis.windows.net/powerbi/api”。 |
 | **iss** |一个字符串，指示颁发了令牌的应用程序。 |
-| **type** |要创建的应用令牌的类型。 当前唯一支持的类型是 **embed**。 |
+| **类型** |要创建的应用令牌的类型。 当前唯一支持的类型是 **embed**。 |
 | **wcn** |要为其颁发令牌的工作区集合名称。 |
 | **wid** |要为其颁发令牌的工作区 ID。 |
 | **rid** |要为其颁发令牌的报表 ID。 |
@@ -99,7 +99,7 @@ SDK 中提供了可以更轻松地创建应用令牌的方法。 例如，对于
 
 下面是针对 Power BI 工作区集合的可用作用域。
 
-|作用域|说明|
+|范围|说明|
 |---|---|
 |Dataset.Read|提供对指定数据集进行读取的权限。|
 |Dataset.Write|提供向指定数据集进行写入的权限。|
@@ -147,7 +147,7 @@ Body
 
 ### <a name="operations-and-scopes"></a>操作和作用域
 
-|操作|目标资源|令牌权限|
+|Operation|目标资源|令牌权限|
 |---|---|---|
 |基于数据集创建（在内存中）新报表。|数据集|Dataset.Read|
 |基于数据集创建（在内存中）新报表并保存该报表。|数据集|* Dataset.Read<br>* Workspace.Report.Create|
