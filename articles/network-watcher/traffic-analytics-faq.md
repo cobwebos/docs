@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 01d5150bff8642a1a3fe9b7ac063923916f191c0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3ab06b624d1e433641d190d9621592ef83df3344
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -95,7 +95,7 @@ ms.lasthandoff: 03/28/2018
 12.  如果收到以下消息：“1) 正在首次分析 NSG 流日志。 此过程可能需要 20-30 分钟才能完成。 请过一段时间回来查看。 2) 如果上述步骤不起作用，并且工作区位于免费 SKU，请在此处检查工作区使用情况，以验证是否超出配额，或者参阅常见问题解答中的其他信息”，该如何解决？
 
         此错误可能由以下原因导致：
-        - 流量分析可能是最近启用的，它正在聚合足够的数据以派生有意义的见解，然后才能生成任何报告。 对于这种情况，请在 30 分钟后重试
+        - 流量分析可能是最近启用的，可能尚未聚合足够的数据，无法获得有意义的见解。
         - OMS 工作区位于免费 SKU，并违反了配额限制。 对于这种情况，可能需要使用容量更大的 SKU 中的工作区。
     
         如果问题仍未解决，请在 [User Voice 论坛](https://feedback.azure.com/forums/217313-networking?category_id=195844)中咨询。
@@ -104,11 +104,15 @@ ms.lasthandoff: 03/28/2018
 
         仪表板上显示了资源信息，但未显示与流相关的统计信息。 不显示这些数据的原因是资源之间没有通信流。 请在 60 分钟后重新检查状态。 如果确信资源之间存在通信流，请在 [User Voice 论坛](https://feedback.azure.com/forums/217313-networking?category_id=195844)中咨询。
 
-14.  流量分析如何计费？
+14. 是否可以使用 PowerShell 或 Azure 资源管理器模板配置流量分析？
+
+    否，只能使用 Azure 门户配置流量分析。
+
+15.  流量分析如何计费？
 
         流量分析按以下内容计费：增强精简的日志并将它们存储在 Log Analytics 工作区中。 在预览版中，不会因增强精简的日志而对流量分析计费，但工作区中的数据保留需按照发布的费率计费。 发布流量分析的定价后，将更新本答案。
 
-15.  如何使用地图视图中的键盘导航？
+16.  如何使用地图视图中的键盘导航？
 
         地图页面包含两个主要部分：
     

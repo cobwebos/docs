@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: brenduns
 ms.reviewer: scottnap
-ms.openlocfilehash: 8bb10be63ef31ebe6241c15a79dafe71923a4cf7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e6520da6b866ebddd66604dd8f27acfc5a9bcef4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>在不同 Azure Stack 开发工具包环境中的两个虚拟网络之间创建站点到站点 VPN 连接
 ## <a name="overview"></a>概述
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/23/2018
 若要完成连接配置，请确保在开始之前准备好以下各项：
 
 * 两个服务器和中所述满足 Azure 堆栈开发工具包的硬件需求，其他先决条件[快速入门： 评估 Azure 堆栈开发工具包](azure-stack-deploy-overview.md)。 
-* [Azure Stack 开发工具包](https://azure.microsoft.com/en-us/overview/azure-stack/try/)部署包。
+* [Azure Stack 开发工具包](https://azure.microsoft.com/overview/azure-stack/try/)部署包。
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>部署 Azure Stack 开发工具包环境
 若要完成连接配置，必须部署两个 Azure Stack 开发工具包环境。
@@ -101,7 +101,7 @@ ms.lasthandoff: 03/23/2018
 7. 对于“资源组”，可以创建资源组，也可以选择“使用现有项”（如果已有了一个）。
 8. 验证默认位置。
 9. 选择“固定到仪表板”。
-10. 选择“创建”。
+10. 选择**创建**。
 
 ### <a name="create-the-gateway-subnet"></a>创建网关子网
 1. 在仪表板上，打开前面创建的 VNET-01 虚拟网络资源。
@@ -126,7 +126,7 @@ ms.lasthandoff: 03/23/2018
 7. 在“名称”中输入 **GW1-PiP**，然后选择“确定”。
 8.  对于“VPN 类型”，默认已选择“基于路由”。
     保留“基于路由”VPN 类型。
-9. 验证“订阅”和“位置”是否正确。 可将资源固定到仪表板。 选择“创建”。
+9. 验证“订阅”和“位置”是否正确。 可将资源固定到仪表板。 选择**创建**。
 
 ### <a name="create-the-local-network-gateway"></a>创建本地网关
 在此 Azure Stack 评估部署中实现*本地网关* 稍微不同于实际 Azure 部署中的情况。
@@ -191,7 +191,7 @@ ms.lasthandoff: 03/23/2018
 7. 对于“资源组”，可以创建新的资源组，也可以选择“使用现有项”（如果已有了一个）。
 8. 确认默认“位置”。
 9. 选择“固定到仪表板”。
-10. 选择“创建”。
+10. 选择**创建**。
 
 ### <a name="create-the-gateway-subnet"></a>创建网关子网
 1. 从仪表板打开刚创建的虚拟网络资源 (**VNET-02**)。
@@ -212,7 +212,7 @@ ms.lasthandoff: 03/23/2018
 7. 在“名称”中输入 **GW2-PiP**，然后选择“确定”。
 8. 对于“VPN 类型”，默认已选择“基于路由”。
     保留“基于路由”VPN 类型。
-9. 验证“订阅”和“位置”是否正确。 可将资源固定到仪表板。 选择“创建”。
+9. 验证“订阅”和“位置”是否正确。 可将资源固定到仪表板。 选择**创建**。
 
 ### <a name="create-the-local-network-gateway-resource"></a>创建本地网关资源
 

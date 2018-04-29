@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 ms.openlocfilehash: a00b908f9811822f262d2c6113e3ff5fc364b1b4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-user-defined-routes-udr-using-a-template"></a>使用模板创建用户定义的路由 (UDR)
 
@@ -186,7 +186,7 @@ ms.lasthandoff: 03/08/2018
 
         info:    New mode is arm
 
-3. 从浏览器中导航到 **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**，复制 json 文件的内容并粘贴到计算机的新建文件中。 对于此方案，请将下面的值复制到名为“c:\udr\azuredeploy.parameters.json”的文件。
+3. 从浏览器中，导航到 **https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json**，复制 json 文件的内容并粘贴到计算机中的一个新文件。 对于此方案，请将下面的值复制到名为“c:\udr\azuredeploy.parameters.json”的文件。
 
     ```json
         {

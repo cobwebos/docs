@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 78f447c96afe7955f115de4bbd28015cd231bb53
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ab118cd43f1e3e57627d940072e50405cd85ca58
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="persistent-volumes-with-azure-files"></a>含 Azure 文件的持久卷
 
-永久性卷表示已经过预配的可以在 Kubernetes 群集中使用的存储块。 永久性卷可供一个或多个 Pod 使用，并可动态或静态预配。 本文档详述了如何在 AKS 群集中将 Azure 文件共享动态预配为 Kubernetes 永久性卷。 
+永久性卷表示已经过预配的可以在 Kubernetes 群集中使用的存储块。 永久性卷可供一个或多个 Pod 使用，并可动态或静态预配。 本文档详述了如何在 AKS 群集中将 Azure 文件共享动态预配为 Kubernetes 永久性卷。
 
 有关 Kubernetes 永久性卷的详细信息，请参阅 [Kubernetes 永久性卷][kubernetes-volumes]。
 
 ## <a name="create-storage-account"></a>创建存储帐户
 
-将 Azure 文件共享动态预配为 Kubernetes 卷时，可以使用任何存储帐户，只要该帐户与 AKS 群集包含在同一资源组中。 根据需要在 AKS 群集所在的资源组中创建一个存储帐户。 
+将 Azure 文件共享动态预配为 Kubernetes 卷时，可以使用任何存储帐户，只要该帐户与 AKS 群集包含在同一资源组中。 根据需要在 AKS 群集所在的资源组中创建一个存储帐户。
 
 若要标识正确的资源组，请使用 [az group list][az-group-list] 命令。
 
@@ -40,7 +40,7 @@ MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
 myAKSCluster                         eastus      Succeeded
 ```
 
-可使用 [az storage account create][az-storage-account-create] 命令创建存储帐户。 
+可使用 [az storage account create][az-storage-account-create] 命令创建存储帐户。
 
 使用此示例，将 `--resource-group` 更新为资源组的名称，并将 `--name` 更新为你选择的名称。
 
@@ -74,7 +74,7 @@ kubectl create -f azure-file-sc.yaml
 
 ## <a name="create-persistent-volume-claim"></a>创建永久性卷声明
 
-永久性卷声明 (PVC) 使用存储类对象来动态预配 Azure 文件共享。 
+永久性卷声明 (PVC) 使用存储类对象来动态预配 Azure 文件共享。
 
 可以使用以下清单创建大小为 `5GB`、访问权限为 `ReadWriteOnce` 的永久性卷声明。
 
@@ -132,12 +132,12 @@ spec:
 kubectl create -f azure-pvc-files.yaml
 ```
 
-现在你有一个正在运行的 Pod，其中 Azure 磁盘被装载到 `/mnt/azure` 目录中。 通过 `kubectl describe pod mypod` 检查 pod 时，可以看到此卷装载。
+现在你有一个正在运行的 Pod，其中 Azure 磁盘被装载到 `/mnt/azure` 目录中。 通过 `kubectl describe pod mypod` 检查 pod 时，可以看到此配置。
 
 ## <a name="mount-options"></a>装载选项
- 
+
 默认的 fileMode 和 dirMode 值的 Kubernetes 版本有差异，如下表所述。
- 
+
 | 版本 | 值 |
 | ---- | ---- |
 | v1.6.x、v1.7.x | 0777 |
@@ -145,9 +145,9 @@ kubectl create -f azure-pvc-files.yaml
 | v1.8.6 或更高版本 | 0755 |
 | v1.9.0 | 0700 |
 | v1.9.1 或更高版本 | 0755 |
- 
+
 如果使用 1.8.5 或更高版本的群集，则可在存储类对象上指定装载选项。 以下示例设置 `0777`。
- 
+
 ```yaml
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -162,7 +162,7 @@ mountOptions:
 parameters:
   skuName: Standard_LRS
 ```
- 
+
 如果使用版本为 1.8.0 - 1.8.4 的群集，则可在指定安全性上下文时，将 `runAsUser` 值设置为 `0`。 有关 Pod 安全性上下文的详细信息，请参阅[配置安全性上下文][kubernetes-security-context]。
 
 ## <a name="next-steps"></a>后续步骤

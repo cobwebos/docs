@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: vinagara
-ms.openlocfilehash: 445adb7f57332a285494c744763f633806d2675e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 54ec12f24ddbad6227a306aeae86658807f85b4e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="extend-copy-alerts-from-oms-portal-into-azure"></a>将警报从 OMS 门户扩展（复制）到 Azure
 Operations Management Suite (OMS) 门户仅显示 Log Analytics 警报。  新的警报体验现在已在 Microsoft Azure 中的各种服务和部件中集成了警报体验。 新体验在 Azure 门户中通过 Azure Monitor 下的“警报”提供，包含活动日志警报、指标警报以及有关 Log Analytics 和 Application Insights 的日志警报。 
@@ -43,7 +43,7 @@ Operations Management Suite (OMS) 门户仅显示 Log Analytics 警报。  新�
  ![在计划的期限内，用户对警报的操作会重定向到 Azure](./media/monitor-alerts-extend/ScheduledDirection.png)
 
 > [!NOTE]
-> 将警报从 OMS 门户扩展到 Azure 是免费的，并且，当在 [Azure Monitor 定价策略](https://azure.microsoft.com/en-us/pricing/details/monitor/)中声明的限制和条件范围内使用时，将 Azure 警报用于基于查询的 Log Analytics 警报也不会计费。  
+> 将警报从 OMS 门户扩展到 Azure 是免费的，并且，当在 [Azure Monitor 定价策略](https://azure.microsoft.com/pricing/details/monitor/)中声明的限制和条件范围内使用时，将 Azure 警报用于基于查询的 Log Analytics 警报也不会计费。  
 
 在此日期之前，用户可以通过主动选择使其警报可在 Azure 中进行管理，来享受对警报进行扩展的好处。
 

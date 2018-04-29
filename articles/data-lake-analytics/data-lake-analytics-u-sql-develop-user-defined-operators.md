@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: 7c0b9c193f8f1c3a3043824186e337f942ebfd56
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c0164d9f1e40778d3ce0dc7e947f6d2807234468
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>开发 U-SQL 用户定义的运算符 (UDO)
 了解如何开发用户定义的运算符以处理 U-SQL 作业中的数据。
@@ -130,5 +130,5 @@ ms.lasthandoff: 03/16/2018
 2. 展开示例、展开输出，并双击 “Drivers.csv”。
 
 ## <a name="see-also"></a>另请参阅
-* [Extending U-SQL Expressions with User-Code](https://msdn.microsoft.com/en-us/library/azure/mt621316.aspx)（使用用户代码扩展 U-SQL 表达式）
+* [Extending U-SQL Expressions with User-Code](https://msdn.microsoft.com/library/azure/mt621316.aspx)（使用用户代码扩展 U-SQL 表达式）
 * [使用适用于 Visual Studio 的工具开发 U-SQL 应用程序](data-lake-analytics-data-lake-tools-get-started.md)

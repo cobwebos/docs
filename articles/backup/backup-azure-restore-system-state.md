@@ -1,12 +1,12 @@
 ---
-title: "Azure 备份：将系统状态还原为 Windows Server | Microsoft Docs"
-description: "逐步介绍如何从 Azure 备份中还原 Windows Server 系统状态。"
+title: Azure 备份：将系统状态还原为 Windows Server | Microsoft Docs
+description: 逐步介绍如何从 Azure 备份中还原 Windows Server 系统状态。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: saurabhsensharma
 manager: shivamg
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/18/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 57277b36c0a77247b7c91d7a0035f7b4ec60c7e0
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: c673cca6a35cfdc0edaecdc69a797f48772d847c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="restore-system-state-to-windows-server"></a>将系统状态还原为 Windows Server
 
@@ -171,7 +171,7 @@ ms.lasthandoff: 12/19/2017
 系统状态备份包括 Active Directory 数据。 使用以下步骤将 Active Directory 域服务 (AD DS) 从当前状态还原为以前的状态。
 
 1. 在目录服务还原模式 (DSRM) 下重启域控制器。
-2. 按照[此处](https://technet.microsoft.com/en-us/library/cc794755(v=ws.10).aspx)的步骤使用 Windows Server 备份 cmdlet 恢复 AD DS。
+2. 按照[此处](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx)的步骤使用 Windows Server 备份 cmdlet 恢复 AD DS。
 
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>解决系统状态还原失败的问题

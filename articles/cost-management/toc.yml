@@ -55,3 +55,5 @@
       href: 'https://azure.microsoft.com/en-us/regions/services/'
     - name: 常见问题
       href: cost-mgt-faq.md
+    - name: 联系支持人员
+      href: support-request-cost-management.md

@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: a24695f7bbb5fb0546e27c934319a60a3418b9e1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ef6d8cb47971b1cf261edceb13485b940eff3d13
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>为 Azure VM、Service Fabric 和 Azure 云服务启用 Application Insights Profiler
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 03/08/2018
 
 ## <a name="set-up-the-application-insights-instance"></a>设置 Application Insights 实例
 
-1. [新建一个 Application Insights 资源](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-create-new-resource)或选择一个现有 Application Insights 资源。 
+1. [新建一个 Application Insights 资源](https://docs.microsoft.com/azure/application-insights/app-insights-create-new-resource)或选择一个现有 Application Insights 资源。 
 
 2. 转到 Application Insights 资源并复制检测密钥。
 

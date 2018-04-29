@@ -1,12 +1,12 @@
 ---
-title: "Azure 资源管理器模板函数 - 资源 | Microsoft Docs"
-description: "介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。"
+title: Azure 资源管理器模板函数 - 资源 | Microsoft Docs
+description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: f92afd27540e935ed901151d980377b9b34ea8f5
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f2ff44fc6644f3a4294f7b2c752a7f3ab05f351d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
 Resource Manager 提供以下用于获取资源值的函数：
 
-* [listKeys and list{Value}](#listkeys)
+* [listKeys](#listkeys)
+* [listSecrets](#list)
+* [list*](#list)
 * [providers](#providers)
 * [reference](#reference)
 * [resourceGroup](#resourcegroup)
@@ -36,12 +38,14 @@ Resource Manager 提供以下用于获取资源值的函数：
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="listkeys-and-listvalue"></a>listKeys 和 list{Value}
+## <a name="listkeys-listsecrets-and-list"></a>listKeys、listSecrets 和 list*
 `listKeys(resourceName or resourceIdentifier, apiVersion)`
+
+`listSecrets(resourceName or resourceIdentifier, apiVersion)`
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion)`
 
-返回支持 list 操作的任何资源类型的值。 最常见的用法是 `listKeys`。 
+返回支持 list 操作的任何资源类型的值。 最常见的用法是 `listKeys` 和 `listSecrets`。 
 
 ### <a name="parameters"></a>parameters
 

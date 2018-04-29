@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 509570dfe0e3d4be2e589ac1958dd377dc4e8e03
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a158da6fb397b864a439e067ca99d79814e2b8d2
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>在 Azure Stack 中轮换机密
 
@@ -40,7 +40,7 @@ Azure 堆栈使用各种机密维护 Azure 堆栈基础结构资源和服务之�
     - KeyVault 
     - ACS （包括 blob、 表和队列存储） 
     - ADFS<sup>*</sup>
-    - Graph<sup>*</sup>
+    - 关系图<sup>*</sup>
 
     > <sup>*</sup> 仅当环境的标识提供程序是 Active Directory 联合服务 (AD FS) 才适用。
 
@@ -70,13 +70,13 @@ Azure 堆栈使用各种机密维护 Azure 堆栈基础结构资源和服务之�
 3.  将存储备份到用于在安全的备份位置旋转的证书。 如果你旋转运行然后失败，将证书文件共享中的替换的备份副本之前重新运行旋转。 请注意，将备份副本保存在安全的备份位置。
 3.  创建文件共享，你可以从 ERCS Vm 访问。 文件共享必须可读和可写的**CloudAdmin**标识。
 4.  从有权访问文件共享的位置的计算机打开 PowerShell ISE 控制台。 导航到你的文件共享。 
-5.  运行**[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)**创建所需的目录的外部证书。
+5.  运行**[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** 创建所需的目录的外部证书。
 
 ## <a name="rotating-external-and-internal-secrets"></a>旋转的外部和内部机密
 
 要旋转这两个外部内部机密：
 
-1. 在新创建**/证书**中预先步骤中，创建目录的目录结构根据必需证书一节中介绍的格式将替换外部证书新组[Azure 堆栈 PKI 证书要求](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates)。
+1. 在新创建 **/证书**中预先步骤中，创建目录的目录结构根据必需证书一节中介绍的格式将替换外部证书新组[Azure 堆栈 PKI 证书要求](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates)。
 2. 创建一个 PowerShell 会话[特权终结点](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)使用**CloudAdmin**帐户和存储变量的会话。 你将使用此变量作为下一步中的参数。
 
     > [!IMPORTANT]  
@@ -105,9 +105,9 @@ $PEPCreds = Get-Credential
 $PEPsession = New-PSSession -computername <IPofERCSMachine> -Credential $PEPCreds -ConfigurationName PrivilegedEndpoint 
 
 #Run Secret Rotation
-$CertPassword = "CertPasswordHere" | ConvertTo-SecureString
+$CertPassword = ConvertTo-SecureString "Certpasswordhere" -AsPlainText -Force
 $CertShareCred = Get-Credential 
-$CertSharePath = <NetworkPathofCertShare>   
+$CertSharePath = "<NetworkPathofCertShare>"
 Invoke-Command -session $PEPsession -ScriptBlock { 
 Start-SecretRotation -PfxFilesPath $using:CertSharePath -PathAccessCredential $using:CertShareCred -CertificatePassword $using:CertPassword }
 Remove-PSSession -Session $PEPSession
@@ -139,7 +139,7 @@ Start-SecretRotation [-PfxFilesPath <string>] [-PathAccessCredential] <PSCredent
 
 | 参数 | Type | 需要 | 位置 | 默认 | 说明 |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | String  | False  | 名为  | 无  | 文件共享路径**\Certificates**目录包含所有外部网络终结点证书。 仅在轮换内部和外部机密时需要。 必须是目录结尾**\Certificates**。 |
+| PfxFilesPath | String  | False  | 名为  | 无  | 文件共享路径 **\Certificates**目录包含所有外部网络终结点证书。 仅在轮换内部和外部机密时需要。 必须是目录结尾 **\Certificates**。 |
 | CertificatePassword | SecureString | False  | 名为  | 无  | -PfXFilesPath 中提供的所有证书的密码。 如果 PfxFilesPath 提供内部和外部的机密转动时所需的值。 |
 |
 

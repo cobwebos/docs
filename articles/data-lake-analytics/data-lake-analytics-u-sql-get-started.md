@@ -1,8 +1,8 @@
 ---
-title: "U-SQL 语言入门 | Microsoft Docs"
-description: "学习 U-SQL 语言基础知识。"
+title: U-SQL 语言入门 | Microsoft Docs
+description: 学习 U-SQL 语言基础知识。
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: saveenr
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/23/2017
 ms.author: saveenr
-ms.openlocfilehash: 38c4e1b9bd24ef0b8a81f6154620f3f98d3b5ac1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e7efdac8b032055b5344f34f5f9ad2679bddb107
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-u-sql"></a>U-SQL 入门
 U-SQL 是一种将声明性 SQL 与命令性 C# 相结合的语言，能够处理任何规模的数据。 通过 U-SQL 的可缩放分布式查询功能，可以跨关系存储（如 Azure SQL 数据库）高效分析其中的数据。 使用 U-SQL，可以通过在读取和插入自定义逻辑和 UDF 时应用架构来处理非结构化数据。 此外，U-SQL 还提供可扩展性，可更精细地控制大规模执行的方式。 
@@ -226,8 +226,8 @@ U-SQL 行集不为下一个查询保留其顺序。 因此，若要对输出进�
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-有关高级聚合方案，请参阅有关[聚合、分析和引用函数](https://msdn.microsoft.com/en-us/library/azure/mt621335.aspx)的 U-SQL 参考文档
+有关高级聚合方案，请参阅有关[聚合、分析和引用函数](https://msdn.microsoft.com/library/azure/mt621335.aspx)的 U-SQL 参考文档
 
 ## <a name="next-steps"></a>后续步骤
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
-* [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
+* [使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)

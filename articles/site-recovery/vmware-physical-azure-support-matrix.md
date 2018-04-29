@@ -5,37 +5,57 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/29/2018
+ms.topic: conceptual
+ms.date: 04/08/2018
 ms.author: raynew
-ms.openlocfilehash: 28ddecc45faa213d1fd536b5ad8690e151037505
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b2a6e3052c64ab6a2865a0c24a4876cb2b98d1a8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware 和物理服务器到 Azure 的复制支持矩阵
 
 本文汇总了使用 [Azure Site Recovery](site-recovery-overview.md) 服务执行从 VMware VM 到 Azure 的灾难恢复时支持的组件和设置。
 
-## <a name="supported-scenarios"></a>支持的方案
+## <a name="replication-scenario"></a>复制方案
 
 **方案** | **详细信息**
 --- | ---
-VMware VM | 可以针对本地 VMware VM 执行到 Azure 的灾难恢复。 可以在 Azure 门户中部署此方案，也可使用 PowerShell 进行部署。
-物理服务器 | 可以针对本地 Windows/Linux 物理服务器执行到 Azure 的灾难恢复。 可以在 Azure 门户中部署此方案。
+VMware VM | 将本地 VMware VM 复制到 Azure。 可以在 Azure 门户中部署此方案，也可使用 PowerShell 进行部署。
+物理服务器 | 将本地 Windows/Linux 物理服务器复制到 Azure。 可以在 Azure 门户中部署此方案。
 
 ## <a name="on-premises-virtualization-servers"></a>本地虚拟化服务器
 
 **服务器** | **要求** | **详细信息**
 --- | --- | ---
-VMware | vCenter Server 6.5、6.0、5.5 或 vSphere 6.5、6.0、5.5 | 建议使用 vCenter 服务器。
+VMware | vCenter Server 6.5、6.0、5.5 或 vSphere 6.5、6.0、5.5 | 建议使用 vCenter 服务器。<br/><br/> 建议 vSphere 主机和 vCenter 服务器与进程服务器位于同一网络。 默认情况下，进程服务器组件在配置服务器上运行，因此应在此网络中设置配置服务器，除非已设置专用进程服务器。 
 物理 | 不适用
 
+## <a name="site-recovery-configuration-server"></a>Site Recovery 配置服务器
+
+配置服务器是运行 Site Recovery 组件的本地计算机，这些组件包括配置服务器、进程服务器和主目标服务器。 对于 VMware 复制，请按所有要求设置配置服务器，使用 OVF 模板来创建 VMware VM。 对于物理服务器复制，请手动设置配置服务器计算机。
+
+**组件** | **要求**
+--- |---
+CPU 核心数 | 8 
+RAM | 12 GB
+磁盘数目 | 3 磁盘<br/><br/> 磁盘包括 OS 磁盘、进程服务器缓存磁盘和用于故障回复的保留驱动器。
+磁盘可用空间 | 对于进程服务器缓存，600 GB 的空间是必需的。
+磁盘可用空间 | 对于保留驱动器，600 GB 的空间是必需的。
+操作系统  | Windows Server 2012 R2 或 Windows Server 2016 | 
+操作系统区域设置 | 美国英语 
+PowerCLI | 应安装 [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")。
+Windows Server 角色 | 请勿启用： <br> - Active Directory 域服务 <br>- Internet Information Services <br> - Hyper-V |
+组策略| 请勿启用： <br> - 阻止访问命令提示符。 <br> - 阻止访问注册表编辑工具。 <br> - 信任文件附件的逻辑。 <br> - 打开脚本执行。 <br> [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+IIS | 确保：<br/><br/> - 无预先存在的默认网站 <br> - 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - 启用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 设置  <br> - 端口 443 上没有预先存在的网站/应用侦听<br>
+NIC 类型 | VMXNET3（部署为 VMware VM 时） 
+IP 地址类型 | 静态 
+端口 | 443，用于控制通道协调<br>9443，用于数据传输
 
 ## <a name="replicated-machines"></a>复制的计算机
 
-下表汇总了对 VMware VM 和物理服务器的复制支持。 Site Recovery 支持复制在具有受支持操作系统上运行的任何工作负荷。
+Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。
 
 **组件** | **详细信息**
 --- | ---

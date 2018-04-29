@@ -12,15 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 8734daa5303aa76e9f8a074b5f709727cabb58b2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 9a03588b3327c3ab231f5c2cae17488f4d63bde7
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>安装已发布的应用程序 - H2O Sparkling Water
 
@@ -84,9 +82,9 @@ H2O Sparkling Water 提供：
 
     ![选择 Million_Songs.flow](./media/hdinsight-apps-install-h2o/million-songs.png)
 
-7. 找到包含 **milsongs-cls-train.csv.gz** 的路径，并将整个路径替换为 **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz**。
+7. 查找包含 **milsongs-cls-train.csv.gz** 的路径，并将整个路径替换为 **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-train.csv.gz**。
 
-8. 找到包含 **milsongs-cls-test.csv.gz** 的路径，并将它替换为 **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-test.csv.gz**。
+8. 查找包含 **milsongs-cls-test.csv.gz** 的路径，并将该路径替换为 **https://h2o-public-test-data.s3.amazonaws.com/bigdata/laptop/milsongs/milsongs-cls-test.csv.gz**。
 
 9. 若要执行 Notebook 单元中的所有语句，请在工具栏上选择“全部运行”按钮。
 

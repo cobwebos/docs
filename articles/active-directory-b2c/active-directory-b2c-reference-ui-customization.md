@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: ea33fa95aa7b73668aeee313a9d71a7f78e89a77
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e6d1e093fafc6ea74dfcdfa498810ff33d27d89f
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C：自定义 Azure AD B2C 用户界面 (UI)
 
@@ -341,7 +341,8 @@ ms.lasthandoff: 03/23/2018
 * 请勿复制 Azure AD B2C 的默认内容并尝试修改。 最好从头开始构建 HTML5 内容，将默认内容用作参考。
 * 出于安全考虑，我们不允许在自己的内容中包含任何 JavaScript。 所需的大部分功能应该都是现成的。 如果不是，请使用[User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)（用户之声）请求新功能。
 * 支持的浏览器版本：
-  * Internet Explorer 11、10、Microsoft Edge
+  * Internet Explorer 11、10、Edge
   * 对 Internet Explorer 9 和 8 的支持有限
   * Google Chrome 42.0 和更高版本
   * Mozilla Firefox 38.0 和更高版本
+* 确保在 HTML 中不包括 `<form>` 标记，因为这会干扰从 Azure AD B2C 注入的 HTML 生成的 POST 操作。

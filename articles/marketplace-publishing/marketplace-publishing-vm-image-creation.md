@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: mbaldwin
-ms.openlocfilehash: f7b19066ca3fa156456766ff82afeadadc6b1efa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: cb1d529f8e3eaabb4d49e8bbea03cab8e838cfa2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>为 Azure Marketplace 创建虚拟机映像指南
 本文的**步骤 2** 将引导用户完成虚拟硬盘 (VHD) 的准备工作，并将其部署到 Azure Marketplace。 VHD 是 SKU 的基础。 此过程各有不同，具体取决于提供的是基于 Linux 还是基于 Windows 的 SKU。 本文对这两种方案都做了介绍。 此过程可与[帐户创建和注册][link-acct-creation] 并行执行。
@@ -43,7 +43,7 @@ SKU 是 VM 映像的商业名称。 一个 VM 映像包含一个操作系统磁�
 ### <a name="11-add-an-offer"></a>1.1 添加产品/服务
 1. 使用卖方帐户登录[发布门户][link-pubportal]。
 2. 在发布门户上选择“虚拟机”选项卡。 在提示的输入字段中，输入产品/服务名称。 产品/服务名称通常是计划在 Azure Marketplace 中销售的产品或服务的名称。
-3. 选择“创建”。
+3. 选择**创建**。
 
 ### <a name="12-define-a-sku"></a>1.2 定义 SKU
 添加了产品/服务后，需要定义并标识 SKU。 客户可拥有多个产品/服务，并且每个产品/服务下面均可有多个 SKU。 将产品/服务推送到过渡环境时，它会随其所有的 SKU 一起推送。
@@ -446,7 +446,7 @@ Azure Marketplace 中的所有映像必须可采用一般形式重复使用。 �
 
     b. `<Storage Account Key>`：指定存储帐户密钥
 
-    c. `<Permission Start Date>`：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前日期是 2016 年 10 月 26 日，则值应为 10/25/2016。 如果使用 Azure CLI 2.0（az 命令），请提供开始日期和结束日期的日期和时间，例如：10-25-2016T00:00:00Z。
+    c. `<Permission Start Date>`：为了保证 UTC 时间，请选择当前日期的前一天。 例如，如果当前日期是 2016 年 10 月 25 日，则值应为 10/25/2016。 如果使用 Azure CLI 2.0（az 命令），请提供开始日期和结束日期的日期和时间，例如：10-25-2016T00:00:00Z。
 
     d. `<Permission End Date>`：选择至少为“开始日期”后 3 周的日期。 值应为 11/02/2016。 如果使用 Azure CLI 2.0（az 命令），请提供开始日期和结束日期的日期和时间，例如：11-02-2016T00:00:00Z。
 

@@ -3,17 +3,17 @@ title: 快速入门 - 使用 PowerShell 在 Azure 中创建专用 Docker 注册�
 description: 快速了解如何使用 PowerShell 创建专用 Docker 容器注册表。
 services: container-registry
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ae21fc7ab016071d075324bf813243cef58dcd04
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3097696d85c738730e725ede84437d0e36ec6bc4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-powershell"></a>教程：使用 PowerShell 创建 Azure 容器注册表
 

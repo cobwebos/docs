@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据库迁移服务将 SQL Server 迁移到 Azure SQL 数据库托管实例 | Microsoft Docs
+title: 使用 DMS 迁移到 Azure SQL 数据库托管实例 | Microsoft Docs
 description: 了解如何使用 Azure 数据库迁移服务从本地 SQL Server 迁移到 Azure SQL 数据库托管实例。
 services: dms
 author: edmacauley
@@ -10,19 +10,21 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 03/29/2018
-ms.openlocfilehash: 8abf3bae3a2274ed5514a5c621675b4c9ec27ae2
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.date: 04/10/2018
+ms.openlocfilehash: 6628ea218c4c7a9aacc0c2899c1ea4e5b6169b51
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-managed-instance"></a>将 SQL Server 迁移到 Azure SQL 数据库托管实例
-可以使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 Azure SQL 数据库。 本教程介绍如何使用 Azure 数据库迁移服务，将 **Adventureworks2012** 数据库从 SQL Server 的本地实例迁移到 Azure SQL 数据库。
+# <a name="migrate-sql-server-to-azure-sql-database-managed-instance-using-dms"></a>使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库托管实例
+可以使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance.md)，停机时间几乎为零。 有关需要一定的停机时间的其他方法，请参阅[将 SQL Server 实例迁移到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-migrate.md)。
+
+本教程介绍如何使用 Azure 数据库迁移服务，将 **Adventureworks2012** 数据库从 SQL Server 的本地实例迁移到 Azure SQL 数据库。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
-> * 创建 Azure 数据库迁移服务的实例。
+> * 创建 Azure 数据库迁移服务实例。
 > * 使用 Azure 数据库迁移服务创建迁移项目。
 > * 运行迁移。
 > * 监视迁移。
@@ -41,7 +43,7 @@ ms.lasthandoff: 03/29/2018
 - 创建网络共享，供 Azure 数据库迁移服务用来备份源数据库。
 - 确保运行源 SQL Server 实例的服务帐户在创建的网络共享中拥有写入特权。
 - 记下在前面创建的网络共享中拥有完全控制特权的 Windows 用户（和密码）。 Azure 数据库迁移服务可模拟用户凭据，将备份文件上传到 Azure 存储容器，以执行还原操作。
-- 遵循[使用存储资源管理器（预览版）管理 Azure Blob 存储资源](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)一文中的步骤创建 Blob 容器并检索其 SAS URI。创建 SAS URI 时，请务必在策略窗口中选择所有权限（读取、写入、删除、列出）。 这样，Azure 数据库迁移服务便可以访问你的存储帐户容器，以便将用于迁移数据库的备份文件上传到 Azure SQL 数据库托管实例
+- 遵循[使用存储资源管理器管理 Azure Blob 存储资源](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)一文中的步骤创建 Blob 容器并检索其 SAS URI。创建 SAS URI 时，请务必在策略窗口中选择所有权限（读取、写入、删除、列出）。 这样，Azure 数据库迁移服务便可以访问你的存储帐户容器，以便将用于迁移数据库的备份文件上传到 Azure SQL 数据库托管实例
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
@@ -54,7 +56,7 @@ ms.lasthandoff: 03/29/2018
 1.  搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册”。
 ![注册资源提供程序](media\tutorial-sql-server-to-managed-instance\portal-register-resource-provider.png)    
 
-## <a name="create-an-instance"></a>创建实例
+## <a name="create-an-azure-database-migration-service-instance"></a>创建 Azure 数据库迁移服务实例
 
 1.  在 Azure 门户中，选择“+ 创建资源”，搜索“Azure 数据库迁移服务”，然后从下拉列表选择“Azure 数据库迁移服务”。
 
@@ -145,3 +147,9 @@ ms.lasthandoff: 03/29/2018
 
     ![监视迁移](media\tutorial-sql-server-to-managed-instance\dms-monitor-migration.png)
 
+## <a name="next-steps"></a>后续步骤
+
+- 有关展示了如何使用 T-SQL RESTORE 命令将数据库迁移到托管实例的教程，请参阅[使用 restore 命令将备份还原到托管实例](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)。
+- 有关从 BACPAC 文件导入数据库的信息，请参阅[将 BACPAC 文件导入到新的 Azure SQL 数据库](../sql-database/sql-database-import.md)。
+- 有关托管实例的信息，请参阅[什么是托管实例](../sql-database/sql-database-managed-instance.md)。
+- 有关将应用连接到托管实例的信息，请参阅[连接应用程序](../sql-database/sql-database-managed-instance-connect-app.md)。

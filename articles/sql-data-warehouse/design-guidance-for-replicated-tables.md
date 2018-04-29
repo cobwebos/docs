@@ -1,24 +1,20 @@
 ---
-title: "复制表的设计指南 - Azure SQL 数据仓库 | Microsoft Docs"
-description: "在 Azure SQL 数据仓库架构中设计复制表的建议。"
+title: 复制表的设计指南 - Azure SQL 数据仓库 | Microsoft Docs
+description: 在 Azure SQL 数据仓库架构中设计复制表的建议。
 services: sql-data-warehouse
-documentationcenter: NA
 author: ronortloff
-manager: jhubbard
-editor: 
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 10/23/2017
-ms.author: rortloff;barbkess
-ms.openlocfilehash: 575b3c5710d744e99c6e02439577a362eb17c67e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: b1d60cc0a83c95c5e33fbaae6083572af3e183ad
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中使用复制表的设计指南
 本文提供在 SQL 数据仓库架构中设计复制表的建议。 使用这些建议，可减少数据移动并降低查询复杂性，从而提高查询性能。
@@ -84,7 +80,7 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>将现有轮循表转换为复制表
 如果已有轮循表，在其符合本文中概述的条件时，建议将其转换为复制表。 复制表提高了轮循表的性能，因为前者不需要移动数据。  循环表的联接总是需要移动数据。 
 
-下面的示例使用 [CTAS](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 将 DimSalesTerritory 表更改为复制表。 无论 DimSalesTerritory 是哈希分布表还是轮询表，此示例都适用。
+下面的示例使用 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 将 DimSalesTerritory 表更改为复制表。 无论 DimSalesTerritory 是哈希分布表还是轮询表，此示例都适用。
 
 ```sql
 CREATE TABLE [dbo].[DimSalesTerritory_REPLICATE]   
@@ -112,7 +108,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 ### <a name="query-performance-example-for-round-robin-versus-replicated"></a>轮循表与复制表的查询性能示例 
 
-复制表的联接不需要移动数据，因为整个表都存在于每个计算节点上。 如果维度表是轮循分布表，则联接会将维度表完整复制到每个计算节点上。 为了移动数据，查询计划包含一个名为 BroadcastMoveOperation 的操作。 此类数据移动操作会降低查询性能，可通过使用复制表避免此问题。 要查看查询计划步骤，请使用 [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) 系统目录视图。 
+复制表的联接不需要移动数据，因为整个表都存在于每个计算节点上。 如果维度表是轮循分布表，则联接会将维度表完整复制到每个计算节点上。 为了移动数据，查询计划包含一个名为 BroadcastMoveOperation 的操作。 此类数据移动操作会降低查询性能，可通过使用复制表避免此问题。 要查看查询计划步骤，请使用 [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) 系统目录视图。 
 
 例如，在针对 AdventureWorks 架构的以下查询中，` FactInternetSales` 表是哈希分布表。 `DimDate` 和 `DimSalesTerritory` 表是较小的维度表。 此查询将返回 2004 财年北美地区的销售总额：
  
@@ -140,7 +136,7 @@ SQL 数据仓库通过维护表的主版本来实现复制表。 它将主版本
 
 执行以下操作后需要重新生成：
 - 加载或修改数据
-- 数据仓库缩放为不同的[服务级别](performance-tiers.md#service-levels)
+- 数据仓库缩放为不同级别
 - 更新表定义
 
 执行以下操作后不需要重新生成：
@@ -178,7 +174,7 @@ SQL 数据仓库通过维护表的主版本来实现复制表。 它将主版本
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>批量加载后重新生成复制表
 为了确保查询执行时间一致，建议在批量加载后强制刷新复制表。 否则，第一个查询必须等待表刷新，包括重新生成索引。 受影响的复制表的大小和数量可显著影响性能。  
 
-此查询使用 [sys.pdw_replicated_table_cache_state ](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV列出已修改但未重新生成的复制表。
+此查询使用 [sys.pdw_replicated_table_cache_state ](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV列出已修改但未重新生成的复制表。
 
 ```sql 
 SELECT [ReplicatedTable] = t.[name]
@@ -200,8 +196,8 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 ## <a name="next-steps"></a>后续步骤 
 若要创建复制表，请使用以下语句之一：
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)（创建表（Azure SQL 数据仓库））
-- [CREATE TABLE AS SELECT（Azure SQL 数据仓库）](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)（创建表（Azure SQL 数据仓库））
+- [CREATE TABLE AS SELECT（Azure SQL 数据仓库）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 有关分布式表的概述，请参阅[分布式表](sql-data-warehouse-tables-distribute.md)。
 

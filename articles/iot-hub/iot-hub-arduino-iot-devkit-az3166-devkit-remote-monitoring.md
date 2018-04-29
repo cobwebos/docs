@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: b288595ca06c3a3cccb72082658f1927f2ae558a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 17b24244180436c2d1f97433e13a530dae565a10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-suite-for-remote-monitoring"></a>将 MXChip IoT DevKit 连接到 Azure IoT 套件以进行远程监视
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 04/03/2018
 
 一个有效的 Azure 订阅。 如果没有订阅，可以通过以下两种方法之一进行注册：
 
-* 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/en-us/free/)
+* 激活 [30 天免费试用版 Microsoft Azure 帐户](https://azure.microsoft.com/free/)
 * 声明你的 [Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)（如果你是 MSDN 或 Visual Studio 订阅者）
 
 ## <a name="create-an-azure-iot-suite"></a>创建 Azure IoT 套件
@@ -124,4 +124,4 @@ DevKit 将重新启动并开始运行代码。
 现在，你已学习了如何将 DevKit 设备连接到 Azure IoT 套件并将传感器数据可视化，下面是建议执行的后续步骤：
 
 * [Azure IoT 套件概述](https://docs.microsoft.com/azure/iot-suite/)
-* [将 MXChip IoT DevKit 设备连接到 Microsoft IoT Central 应用程序](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [将 MXChip IoT DevKit 设备连接到 Microsoft IoT Central 应用程序](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

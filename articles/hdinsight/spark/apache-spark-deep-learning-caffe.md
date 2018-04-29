@@ -1,8 +1,8 @@
 ---
-title: "使用 Caffe on Azure HDInsight Spark 进行分布式深度学习 | Microsoft 文档"
-description: "使用 Caffe on Azure HDInsight Spark 进行分布式深度学习"
+title: 使用 Caffe on Azure HDInsight Spark 进行分布式深度学习 | Microsoft 文档
+description: 使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: xiaoyongzhu
 manager: asadk
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 71dcd1ad-4cad-47ad-8a9d-dcb7fa3c2ff9
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-ms.openlocfilehash: 7565efd82945f21b83471ee66098cd476b7bb59f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 27ce89f205efa6b8f2d29e034c6e5002065879fc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
 
@@ -31,27 +29,27 @@ ms.lasthandoff: 12/08/2017
 
 有[许多常用框架](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)，其中包括 [Microsoft 认知工具包](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、MXNet、Theano 等。Caffe 是最著名的非符号（命令式）神经网络框架之一，广泛用于包括计算机视觉在内的许多领域。 此外，[CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) 将 Caffe 与 Apache Spark 相结合，因此，可在现有 Hadoop 集群上轻松使用深度学习。 可将深度学习与 Spark ETL 管道搭配使用，降低系统复杂性和完整解决方案学习中的延迟。
 
-[HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) 是云 Hadoop 产品，为 Spark、Hive、Hadoop、HBase、Storm、Kafka 和 R 服务器提供优化的开源分析群集。 HDInsight 提供 99.9% SLA 支持。 这些大数据技术和 ISV 应用程序均可轻松部署为受企业保护和监视的托管群集。
+[HDInsight](https://azure.microsoft.com/services/hdinsight/) 是云 Hadoop 产品，为 Spark、Hive、Hadoop、HBase、Storm、Kafka 和 R Server 提供优化的开源分析群集。 HDInsight 提供 99.9% SLA 支持。 这些大数据技术和 ISV 应用程序均可轻松部署为受企业保护和监视的托管群集。
 
 本文演示如何为 HDInsight 群集安装 [CaffeonSpark](https://github.com/yahoo/CaffeOnSpark)。 本文还内置了 MNIST 演示，展示如何通过 CPU 上的 HDInsight Spark 使用分布式深度学习。
 
-需完成四大步骤才能让其在 HDInsight 上运行。
+完成此任务需要四个步骤：
 
 1. 在所有节点上安装必需的依赖项
 2. 在头节点上生成 Caffe on Spark for HDInsight
 3. 将所需库分发到所有工作节点
 4. 编写 Caffe 模型，以分布式方式运行。
 
-HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，可以轻松地执行某些任务。 我们在本博客文章中多次使用的一项功能称为[脚本操作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)，适合执行 Shell 命令来自定义群集节点（头节点、工作节点或边缘节点）。
+HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，可以轻松地执行某些任务。 我们在本博客文章中使用的一项功能称为[脚本操作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)，适合执行 Shell 命令来自定义群集节点（头节点、工作节点或边缘节点）。
 
 ## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>步骤 1：在所有节点上安装必需的依赖项
 
-若要开始，需安装所需依赖项。 Caffe 站点和 [CaffeOnSpark 站点](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)提供一些有用 wiki，用于安装 Spark on YARN 模式的依赖项。 HDInsight 也使用 Spark on YARN 模式。 但是，我们还需要为 HDInsight 平台添加一些其他依赖项。 因此，我们使用脚本操作并让其在所有头节点和工作节点上运行。 该脚本操作需时约 20 分钟，因为那些依赖项也依赖于其他包。 应将其置于某个可供 HDInsight 群集访问的位置，例如置于 GitHub 或默认的 BLOB 存储帐户中。
+若要开始，需安装依赖项。 Caffe 站点和 [CaffeOnSpark 站点](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)提供一些有用 wiki，用于安装 Spark on YARN 模式的依赖项。 HDInsight 也使用 Spark on YARN 模式。 但是，需要为 HDInsight 平台添加一些其他依赖项。 因此，请使用脚本操作并让其在所有头节点和工作节点上运行。 该脚本操作需时约 20 分钟，因为那些依赖项也依赖于其他包。 应将其置于某个可供 HDInsight 群集访问的位置，例如置于 GitHub 或默认的 BLOB 存储帐户中。
 
     #!/bin/bash
     #Please be aware that installing the below will add additional 20 mins to cluster creation because of the dependencies
     #installing all dependencies, including the ones mentioned in http://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
-    #It seems numpy will only needed during compilation time, but for safety purpose we install them on all the nodes
+    #It seems numpy will only needed during compilation time, but for safety purpose you install them on all the nodes
 
     sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler maven libatlas-base-dev libgflags-dev libgoogle-glog-dev liblmdb-dev build-essential  libboost-all-dev python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
 
@@ -67,7 +65,7 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
     echo "protobuf installation done"
 
 
-脚本操作有两个步骤。 第一步是安装所有必需的库。 这些库包括编译 Caffe 所必需的库（例如 gflags、glog）和运行 Caffe 所必需的库（例如 numpy）。 考虑到 CPU 优化，我们使用的是 libatlas，但用户始终可以按照 CaffeOnSpark Wiki 上的说明来安装其他优化库，例如 MKL 或 CUDA（适合 GPU）。
+脚本操作有两个步骤。 第一步是安装所有必需的库。 这些库包括编译 Caffe 所必需的库（例如 gflags、glog）和运行 Caffe 所必需的库（例如 numpy）。 考虑到 CPU 优化，你使用的是 libatlas，但始终可以按照 CaffeOnSpark Wiki 上的说明来安装其他优化库，例如 MKL 或 CUDA（适合 GPU）。
 
 第二步是在运行时下载、编译和安装适用于 Caffe 的 protobuf 2.5.0。 Protobuf 2.5.0 [是必需的](https://github.com/yahoo/CaffeOnSpark/issues/87)，但 Ubuntu 16 不提供包形式的该版本，因此需从源代码对其进行编译。 Internet 上也有一些介绍其编译方法的资源。 有关详细信息，请参阅[此文](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html)。
 
@@ -155,7 +153,7 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 
 ## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>步骤 3：将所需库分发到所有工作节点
 
-下一步是将库（基本上是 CaffeOnSpark/caffe-public/distribute/lib/ 和 CaffeOnSpark/caffe-distri/distribute/lib/ 中的库）分发到所有节点。 在步骤 2 中，我们将这些库置于 BLOB 存储，而在此步骤中，我们需使用脚本操作将其复制到所有头节点和工作节点。
+下一步是将库（基本上是 CaffeOnSpark/caffe-public/distribute/lib/ 和 CaffeOnSpark/caffe-distri/distribute/lib/ 中的库）分发到所有节点。 在步骤 2 中，你将这些库置于 BLOB 存储，而在此步骤中，请使用脚本操作将其复制到所有头节点和工作节点。
 
 因此，请运行脚本操作，如以下片段所示：
 
@@ -164,7 +162,7 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 
 请确保指向特定群集的正确位置
 
-我们已在步骤 2 中将其置于可供所有节点访问的 BLOB 存储，因此在此步骤中，只需直接将其复制到所有节点即可。
+你已在步骤 2 中将其置于可供所有节点访问的 BLOB 存储，因此在此步骤中，只需直接将其复制到所有节点即可。
 
 ## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>步骤 4：编写 Caffe 模型，以分布式方式运行
 
@@ -172,13 +170,13 @@ HDInsight 是一种 PaaS 解决方案，因此提供了出色的平台功能，�
 
 Caffe 使用的是“富有表现力的体系结构”，因此若要编写模型，只需定义配置文件即可，根本不需编码（大多数情况下）。 让我们看看实际情况。 
 
-我们要训练的模型是用于 MNIST 训练的示例模型。 包含手写数字的 MNIST 数据库有一个 60,000 示例的训练集，还有一个 10,000 示例的测试集。 它是 NIST 提供的更大型集的子集。 这些数字已在大小方面规范化，在固定大小的图像中居中。 CaffeOnSpark 提供的一些脚本可以下载该数据集并将其转换成正确的格式。
+你训练的模型是用于 MNIST 训练的示例模型。 包含手写数字的 MNIST 数据库有一个 60,000 示例的训练集，还有一个 10,000 示例的测试集。 它是 NIST 提供的更大型集的子集。 这些数字已在大小方面规范化，在固定大小的图像中居中。 CaffeOnSpark 提供的一些脚本可以下载该数据集并将其转换成正确的格式。
 
 CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具有良好的设计，将网络体系结构（网络拓扑）和优化进行了拆分。 在本示例中，需要两个文件： 
 
-“解算器”文件 (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) 用于监控优化情况和生成参数更新。 例如，它可以定义是使用 CPU 还是 GPU，以及具体的动量和迭代次数等。它还定义程序应使用哪个神经元网络拓扑（即我们需要的第二个文件）。 有关解算器的详细信息，请参阅 [Caffe 文档](http://caffe.berkeleyvision.org/tutorial/solver.html)。
+“解算器”文件 (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) 用于监控优化情况和生成参数更新。 例如，它可以定义是使用 CPU 还是 GPU，以及具体的动量和迭代次数等。它还定义程序应使用哪个神经元网络拓扑（即你需要的第二个文件）。 有关解算器的详细信息，请参阅 [Caffe 文档](http://caffe.berkeleyvision.org/tutorial/solver.html)。
 
-就此示例来说，我们使用的是 CPU 而不是 GPU，因此应将最后一行更改为：
+就此示例来说，你使用的是 CPU 而不是 GPU，因此应将最后一行更改为：
 
     # solver mode: CPU or GPU
     solver_mode: CPU
@@ -196,7 +194,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
 
 如需详细了解如何定义网络，请查看[有关 MNIST 数据集的 Caffe 文档](http://caffe.berkeleyvision.org/gathered/examples/mnist.html)
 
-对于本文，我们使用此 MNIST 示例。 从头节点运行以下命令：
+对于本文，请使用此 MNIST 示例。 从头节点运行以下命令：
 
     spark-submit --master yarn --deploy-mode cluster --num-executors 8 --files ${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt,${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt --conf spark.driver.extraLibraryPath="${LD_LIBRARY_PATH}" --conf spark.executorEnv.LD_LIBRARY_PATH="${LD_LIBRARY_PATH}" --class com.yahoo.ml.caffe.CaffeOnSpark ${CAFFE_ON_SPARK}/caffe-grid/target/caffe-grid-0.1-SNAPSHOT-jar-with-dependencies.jar -train -features accuracy,loss -label label -conf lenet_memory_solver.prototxt -devices 1 -connection ethernet -model wasb:///mnist.model -output wasb:///mnist_features_result
 
@@ -204,7 +202,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
 
 ## <a name="monitoring-and-troubleshooting"></a>监视和故障排除
 
-我们使用的是 YARN 群集模式，可将 Spark 驱动程序调度到任意容器（以及任意工作节点），因此用户会在控制台中看到类似如下的输出：
+你使用的是 YARN 群集模式，可将 Spark 驱动程序调度到任意容器（以及任意工作节点），因此在控制台中只会看到类似如下的输出：
 
     17/02/01 23:22:16 INFO Client: Application report for application_1485916338528_0015 (state: RUNNING)
 
@@ -214,7 +212,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
    
 ![YARN UI](./media/apache-spark-deep-learning-caffe/YARN-UI-1.png)
 
-可以看看为这个特定的应用程序分配了多少资源。 单击“计划程序”链接即可查看此应用程序的资源分配情况，有 9 个容器正在运行。 我们要求 YARN 提供 8 个执行程序，另一个容器用于驱动程序进程。 
+可以看看为这个特定的应用程序分配了多少资源。 单击“计划程序”链接即可查看此应用程序的资源分配情况，有九个容器正在运行。 你要求 YARN 提供八个执行程序，另一个容器用于驱动程序进程。 
 
 ![YARN 计划程序](./media/apache-spark-deep-learning-caffe/YARN-Scheduler.png)
 
@@ -271,7 +269,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
 
 ## <a name="getting-results"></a>获取结果
 
-由于我们分配的执行程序为 8 个，且网络拓扑简单，获取结果应该只需要大约 30 分钟。 从命令行中，可以看到我们将模型置于 wasb:///mnist.model 中，将结果置于名为 wasb:///mnist_features_result 的文件夹中。
+由于分配的执行程序为 8 个，且网络拓扑简单，获取结果应该只需要大约 30 分钟。 从命令行中，可以看到模型置于 wasb:///mnist.model 中，结果置于名为 wasb:///mnist_features_result 的文件夹中。
 
 可以通过运行以下命令获取结果：
 
